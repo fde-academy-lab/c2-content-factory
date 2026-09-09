@@ -10,9 +10,9 @@ Nothing to install. The Codespace you opened on Monday stays the environment for
 
 Three things to have ready before tomorrow starts:
 
-1. Your `output` folder from today, holding your clean file and your rejects file. Tomorrow starts from it.
-2. Your two functions, `normalise_amount` and `clean_records`, in a cell you can find quickly. You will be asked for them by name and you will call them without editing them.
-3. Your take-home notebook, finished. Tomorrow opens by walking one.
+1. Your three functions, `normalise_amount`, `clean_record` and `clean_records`, in a cell you can find quickly. You will be asked for them by name and you will call them without editing them. Tomorrow supplies its own data and calls your code.
+2. Your `output` folder from today, so you can point at what you produced when a decision is questioned.
+3. Your take-home notebook, finished. The solution is released tomorrow and one notebook is discussed.
 
 If your notebook does not run cold from top to bottom, fix that tonight rather than tomorrow. Restart the kernel and run all. Anything that fails now will fail in front of the room later.
 

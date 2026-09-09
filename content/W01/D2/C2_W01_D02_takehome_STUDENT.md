@@ -1,6 +1,6 @@
 # Day 2 take-home: a file nobody prepared for you
 
-Due at the start of tomorrow's session. Tomorrow opens by walking one of these.
+Due at the start of tomorrow's session, where the solution is released and discussed.
 
 You are not being asked to write new machinery. You are being asked to point this morning's machinery at a file it has never seen and to defend what came out.
 
@@ -31,7 +31,7 @@ One record in this file converts perfectly well and is still wrong. Find it.
 Write a markdown cell of at most six lines that states:
 
 - Which record, and what is wrong with it.
-- The rule you are adopting, stated so someone else could apply it without asking you. "Looks odd" is not a rule. "Amounts below zero are rejected with reason `negative amount`" is a rule.
+- The rule you are adopting, stated so someone else could apply it without asking you. "Looks odd" fails that test. A rule reads more like "any amount outside the range X to Y is set aside with reason `out of range`", where you chose X and Y and can say why.
 - What your rule costs. Every rule throws away something, and you should know what.
 - One case where your own rule would give the wrong answer.
 
@@ -67,12 +67,13 @@ When you have read it, add one line to your notebook naming one thing the chapte
 
 ## How this is checked
 
-Tomorrow's session opens on one of these notebooks. What gets looked at, in this order:
+The solution is released tomorrow and one of these notebooks is discussed. What gets looked at, in this order:
 
 1. Does the reconciliation line print, and does it add up.
 2. Is the threshold rule stated well enough that someone else could apply it.
 3. Does the challenges log contain real error text.
 4. Do the rejections carry the interpreter's reasons rather than invented ones.
+5. Does the run go through your own `clean_record`, rather than a fresh loop written tonight.
 
 The totals matter least. Two learners can hand in different totals and both be right, if both stated their rule.
 

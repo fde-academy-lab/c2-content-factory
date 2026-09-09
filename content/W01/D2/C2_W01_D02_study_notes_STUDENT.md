@@ -33,9 +33,23 @@ The parameter list is a promise. `def accepted_total(records)` says give me reco
 def normalise_amount(raw):
     """Return the amount as an integer, or raise ValueError describing what arrived."""
     return int(raw)
+
+
+def clean_record(record):
+    """Return one record with its amount as a number, or raise ValueError saying what arrived."""
+    keeper = dict(record)
+    keeper["amount"] = normalise_amount(record["amount"])
+    return keeper
 ```
 
-It converts. It does not decide what a failure means. A function that both converts and handles failure is two functions wearing one name.
+`normalise_amount` converts and nothing else. `clean_record` is the day's named deliverable and handles one record. Neither decides what a failure means, because a function that both converts and handles failure is two functions wearing one name. The decision lives one level up, in `clean_records`.
+
+You also saw a raise you write yourself, for a value that converts and is still unacceptable:
+
+```
+if value < 0:
+    raise ValueError(f"amount below zero: {value}")
+```
 
 ## 4. Errors
 

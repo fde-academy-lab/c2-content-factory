@@ -27,10 +27,15 @@ Every count, total and error string in this pack is independent of the naming. R
 
 | Value | Where it appears |
 |---|---|
-| 30 records in, 28 clean, 2 rejected, total 230380 | deck half one, both notebooks, activity, exercises, solutions, study notes |
-| 24 in, 21 clean, 3 rejected, total 181950 | exercises, solutions |
+| 30 records in, 28 clean, 2 rejected, total 230380 | deck half one, deck half two, both notebooks, activity, solutions, study notes, day sheet, tiered extras |
+| 24 in, 21 clean, 3 rejected, total 181950 | solutions holds all four; tiered extras holds 24, 21 and 3 without the total; the exercises name the lab file and withhold the counts on purpose |
 | 30 in, and either 27 clean at 219050 or 26 clean at 223550 | take-home self-check |
-| `line 48 column 1 (char 841)` | notebook 2, exercises, solutions, day sheet |
+
+One value does move under the rename, and it is the exception to this table.
+
+| Value | What happens |
+|---|---|
+| `line 48 column 1 (char 841)`. The full string with the offset is in the exercises and the day sheet, and notebook 2 produces it at runtime. The solutions and the study notes name line 48 without the offset. | The line and column survive, since the truncated file's shape is unchanged. The character offset 841 counts bytes, so it shifts as soon as a field name changes length. Re-run the truncated load after renaming and paste the real offset back into the exercises and the day sheet. The files that name only the line need no edit. |
 
 ## How to do it
 

@@ -61,7 +61,7 @@ If this does not hold, a record went somewhere you did not intend. The usual cau
 
 Your reconciliation must count rows read back **from the files on disk**, never the lists still sitting in memory.
 
-Quick test: restart your kernel, run only the reconciliation cell, and see whether it still works. If it fails, you were counting memory.
+Quick test: restart your kernel, run your setup cell, then skip straight to the reconciliation cell. If it still reports the right counts, it is reading the files. If it raises `NameError` on a list you built earlier, it was counting memory.
 
 ---
 

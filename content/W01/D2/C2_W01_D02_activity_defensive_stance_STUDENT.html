@@ -182,6 +182,9 @@ function run(){
   if (bare && silent){
     text = "You cannot defend this number. The line claims " + rows.length +
            " records and " + counted + " went in, and there is no record of the difference.";
+  } else if (lostGood && silent){
+    text = "The worst of both. A good record was thrown away for wearing spaces, and nothing was recorded, " +
+           "so the total is short by 4500 and no trace of the loss exists.";
   } else if (silent){
     text = "The total is right and you cannot show it. Every rejected record left without a trace.";
   } else if (bare){

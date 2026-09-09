@@ -37,6 +37,8 @@ Half two: a file format is an agreement about structure and everything a CSV agr
 
 Scope and the list comprehension ride as single beats inside the first idea of each half. They are notation, and they are not counted. If you find yourself teaching either as its own topic, you have added a fifth idea and something else will have to go.
 
+The deck's half-two JSON section is not a fifth idea either. It is the first idea met a second time, on a format that agrees about more, which is the spiral doing its job. Say that connection out loud at slide 19 or the room will count it as new.
+
 ---
 
 ## The breaks to run, with exact text
@@ -59,8 +61,10 @@ The bare except demonstration is the one that must not be cut under any time pre
 
 | Slide | Label | Note |
 |---|---|---|
+| Opening | THEN | Before any slide, run the opening demo cell of notebook 1, headed "Where this is going": `clean_record` working on three records, rejected, rejected, kept, with each rejection saying why. Say "you will have written this within the hour" and move on. Application before theory, and it is the row's own opening. |
 | S3 | ASK | "Three copies of this cell. One has a typo. Which one?" Wait. Do not answer it. |
 | S5 | DRAW | Box the function on the board with an arrow in and an arrow out. Leave it up all half. |
+| S5 | SAY | The comprehension lands in notebook 1 section 2 as one line beside the loop it replaces. One beat, then move. Teaching it as a topic adds a fifth idea. |
 | S7 | SAY | "The function cannot see anything you did not hand it." That sentence is all of scope for today. |
 | S9 | ASK | "What is inside result now?" Take three answers before you run it. |
 | S10 | TRAP | Let the silence sit after the TypeError. Someone will say `None`. Let them say it. |
@@ -90,6 +94,16 @@ The bare except demonstration is the one that must not be cut under any time pre
 
 ---
 
+## The activity, and where it drops
+
+`activity_defensive_stance_STUDENT.html` runs inside the errors section of half one, at slides S17 to S19, in place of talking through the bare except a second time. Budget about 15 minutes from that section.
+
+Open it on the projector first and flip one switch. Then let them open it themselves and find a setting they would sign. Ask three learners to say which setting they chose and why, and press the one who chose validate-first with the awkward record included, because that setting is honest and still throws away a good record.
+
+It doubles as a takeaway. Tell them to keep the file.
+
+If half one has overrun, this is the first thing to shorten, since the notebook already carries the same demonstration. It is not on the row's cut list, so shorten it rather than dropping it.
+
 ## Checkpoint questions, ask by name
 
 1. After the functions section: "Give me one reason a function beats a copied cell that is not about typing less."
@@ -102,11 +116,13 @@ The bare except demonstration is the one that must not be cut under any time pre
 
 ## Ranked cut list
 
-Cut in this order and no other. The row fixes this ranking.
+The row fixes the first two ranks. The third is this pack's own addition and is marked as such.
 
-1. The list comprehension variant. It is one line of notation and nothing depends on it.
-2. `json.dump`, so the day writes CSV only. Reading JSON stays.
-3. The second mid-session exercise, if the first half has overrun badly.
+1. The list comprehension variant, in notebook 1 section 2. It is one line of notation and nothing downstream depends on it. From the row.
+2. `json.dump`, in notebook 2 section 5, so the day writes CSV only. Reading JSON stays. From the row.
+3. The second mid-session exercise, if the first half has overrun badly. This pack's addition, not the row's, so drop it only after the two above.
+
+Both of the row's cuts are built rather than pre-applied, so cutting them is a live decision on the day rather than a note about something that was never there.
 
 Never cut: the bare except demonstration, the rejects log, the reconciliation, or the AI-free lab. If all four will not fit, the guided carve shortens and the lab still runs.
 
@@ -131,3 +147,5 @@ The pre-read for tomorrow goes out at the close, without exception. Tomorrow's s
 Every reference link is a "to be found" slot. The build session had no network access to verify any URL, and an unverified link never ships. See the internal link register in this folder, and paste the verified links in before release.
 
 Segment values in the data files are placeholders that survive until the client-zero scenario locks. See the internal rename map in this folder.
+
+The row's STOP BEFORE bars imports beyond `csv` and `json`. The notebooks import `traceback` and `os` as plumbing, so a failure can print itself without halting the run and so the output folder exists. Both are labelled in the setup cell as not being today's topic, and neither is taught. If you would rather hold the line exactly, the alternative is a notebook that stops at its first deliberate failure, which costs more than it saves.

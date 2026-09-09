@@ -22,6 +22,22 @@ Yesterday you answered a question about the records. Today that answer becomes s
 
 ---
 
+## S2b. Where this is going
+
+`clean_record`, on three records from today's file:
+
+```
+rejected 1011 because: invalid literal for int() with base 10: 'twelve'
+rejected 1015 because: invalid literal for int() with base 10: ''
+kept     {'id': '1001', 'amount': 4500, ...}
+```
+
+One function. Three records. Three outcomes, and the rejected ones say why.
+
+You will have written this within the hour.
+
+---
+
 ## S3. The anchor
 
 You have written this cell three times already.
@@ -248,8 +264,15 @@ Only the third one survives a question from your manager.
 ## S22. The rejects list
 
 ```
-rejects = []
-...
+def clean_record(record):
+    keeper = dict(record)
+    keeper["amount"] = normalise_amount(record["amount"])
+    return keeper
+```
+
+`clean_record` handles one record and decides nothing about failure. `clean_records` handles the list and owns that decision.
+
+```
 except ValueError as e:
     rejects.append({"id": record["id"], "reason": str(e)})
 ```
@@ -305,5 +328,7 @@ You can answer this now, with today's two output lines as your evidence.
 ---
 
 ## S28. Crux, half one
+
+You have `clean_record`. That was the promise on the third slide.
 
 A function is a decision you can call again. A named exception is a failure you chose to survive. A rejects log is the difference between a number and a number you can defend.
