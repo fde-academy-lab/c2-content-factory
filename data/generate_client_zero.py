@@ -160,6 +160,24 @@ def build_w1d2_takehome():
     return rows
 
 
+def build_w1d3_takehome():
+    """A second file for Wednesday's take-home, so profile_dataset() runs on data it has not seen."""
+    rng = random.Random(SEED + 4)
+    rows = _base_rows(rng, 40, _segment_plan(rng, 40, student_count=7))
+    for i, r in enumerate(rows):
+        r["order_id"] = f"KR7{500 + i}"
+    rows[6]["amount"] = "eleven hundred"    # will not convert
+    rows[19]["amount"] = ""                 # missing required field
+    rows[27]["amount"] = "3,150"            # thousands separator
+    rows[33]["amount"] = "96000"            # a second whale, smaller and more arguable
+    twin = dict(rows[11])                   # a near-duplicate, this time differing on status
+    twin["status"] = "returned" if rows[11]["status"] != "returned" else "delivered"
+    rows.append(twin)
+    for r in rows[:22]:
+        r["discount"] = ""
+    return rows
+
+
 def _customer_block(rng, row):
     return {
         "customer_id": row["customer_id"],
@@ -169,12 +187,14 @@ def _customer_block(rng, row):
 
 
 # Exercise variants ship as a single CSV. Only the spine versions get the JSON pair.
-CSV_ONLY = {"w1d2-lab": "data_lab", "w1d2-takehome": "data_takehome"}
+CSV_ONLY = {"w1d2-lab": "data_lab", "w1d2-takehome": "data_takehome",
+            "w1d3-takehome": "data_takehome"}
 
 
 def write(version, out_dir, stem):
     rows = {"v0": build_v0, "v1": build_v1,
-            "w1d2-lab": build_w1d2_lab, "w1d2-takehome": build_w1d2_takehome}[version]()
+            "w1d2-lab": build_w1d2_lab, "w1d2-takehome": build_w1d2_takehome,
+            "w1d3-takehome": build_w1d3_takehome}[version]()
     out = pathlib.Path(out_dir); out.mkdir(parents=True, exist_ok=True)
     rng = random.Random(SEED + 7)
 
@@ -218,7 +238,7 @@ def write(version, out_dir, stem):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--version", choices=["v0", "v1", "w1d2-lab", "w1d2-takehome"])
+    ap.add_argument("--version", choices=["v0", "v1", "w1d2-lab", "w1d2-takehome", "w1d3-takehome"])
     ap.add_argument("--out")
     ap.add_argument("--stem", help="filename stem, for example C2_W01_D03")
     ap.add_argument("--list", action="store_true", help="list every version and its witnesses")
