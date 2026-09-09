@@ -1,7 +1,7 @@
 # CLIENT ZERO
 ## The one company every example in the programme lives inside
 
-**Status: LOCKED, v1.0.** Every day pack builds against this file and nothing in it changes without a versioned edit recorded in section 9.
+**Status: LOCKED, v1.1.** Every day pack builds against this file and nothing in it changes without a versioned edit recorded in section 9.
 
 Locked by: Programme Head  Date: 09 September 2026
 
@@ -70,6 +70,7 @@ erDiagram
         number amount "Rs"
         string channel "app, web, store"
         string status "delivered, returned, cancelled"
+        number discount "optional, absent on a known subset"
     }
     ORDER_ITEMS {
         string order_id FK
@@ -96,7 +97,16 @@ erDiagram
     }
 ```
 
-Segments are four: Retail-Core, Retail-Plus, Business and Student. Amounts are in Rs; a typical order sits between Rs 800 and Rs 3,000.
+Segments are four: Retail-Core, Retail-Plus, Business and Student.
+
+Amounts are in Rs. A **typical** order sits between Rs 800 and Rs 3,000, and that band describes the
+ordinary population rather than the whole file. Planted witnesses sit outside it on purpose: the
+whale order in v1 is Rs 480,000 precisely because it is nothing like a typical order, and a dataset
+where every value obeyed the band would carry no outlier to teach on.
+
+Two optional fields exist and they are not the same thing. `discount` sits on the order and is absent
+on a known subset from v0 onward, which is the Week 1 `.get()` lesson. `loyalty_tier` sits on the
+customer and is untouched until a session needs it.
 
 ## 4. The spine dataset, version by version
 
@@ -104,8 +114,8 @@ The same records, growing in shape and dirtiness as the curriculum needs them. E
 
 | Version | First used | Shape | Planted witnesses |
 |---|---|---|---|
-| v0 | Week 1, Monday | About 30 flat order records loaded by a setup cell, each with order_id, customer segment, amount, status and order_date, and a nested customer sub-record on some | One amount stored as the text "4500" (the type break); the optional field discount absent on a known subset (the KeyError and .get() lesson) |
-| v1 | Week 1, Tuesday to Thursday | 50 records, first as a Python list, then as orders.csv and orders.json | One amount spelled "twelve"; one record missing a required field; a near-duplicate pair sharing an order_id with one differing timestamp; one whale order of Rs 480,000; a Student segment of exactly 12 records so sample size bites; a truncated line in the JSON; a companion file with the header row duplicated |
+| v0 | Week 1, Monday and Tuesday | About 30 flat order records loaded by a setup cell, each with order_id, customer segment, amount, status and order_date, and a nested customer sub-record on some | One amount stored as the text "4500" (the type break); the optional field discount absent on a known subset (the KeyError and .get() lesson) |
+| v1 | Week 1, Wednesday and Thursday | 50 records, first as a Python list, then as orders.csv and orders.json | One amount spelled "twelve"; one record missing a required field; a near-duplicate pair sharing an order_id with one differing order_date; one whale order of Rs 480,000; a Student segment of exactly 12 records so sample size bites; a truncated line in the JSON; a companion file with the header row duplicated |
 | v2 | Week 2, Tuesday to Thursday | 1,000 orders and their customers as Postgres tables, plus a payments table | 50 orders with two payments each so a LEFT JOIN grows 1,000 rows to 1,450 and revenue doubles; a handful of orphan rows on each side; exact ties in amount so RANK returns 1, 1, 3; a segment composition that reverses at segment level for the Simpson demonstration |
 | v3 | Week 2 Friday, Week 4 | The same tables plus order_items, products and events, and a monthly volume series | One very popular product that yields confidence 0.82 at lift 0.97 (the confidence trap); a growing new-cohort mix that holds blended retention flat at 41 percent while every cohort declines; one funnel stage whose drop is a denominator artefact |
 | v4 | Week 4 Friday, Week 5 | The feature table per customer with a provided propensity score column and the modelling target | The return flag as the target at roughly 96 to 4 imbalance; a settlement_status field set after the outcome, which leaks; one curved relationship so residuals bow; two correlated features so a coefficient sign flips when both are included |
@@ -151,16 +161,18 @@ Day 1 opens on Kalpa as a story before any code runs: who the company is, what t
 | Version | Date | Change |
 |---|---|---|
 | v1.0 | 09 September 2026 | Locked. Sections 1 to 8 frozen as written. |
+| v1.1 | 09 September 2026 | The four conflicts raised at lock are ruled on and the file is edited to match. Section 3 gains `discount` on ORDERS and a paragraph separating the typical band from the planted witnesses. Section 4 moves v0 to Monday and Tuesday, moves v1 to Wednesday and Thursday, and describes the near-duplicate pair as differing on order_date. |
 
-### Conflicts with docs/curriculum/, raised at lock and not yet ruled on
+### The four conflicts, ruled on at v1.1
 
-These were found while building against the file. The curriculum export outranks this file, so each is
-resolved in the curriculum's favour until the owner rules otherwise, and each needs a versioned edit
-here or a workbook edit there.
+Each was found while building Week 1 against this file. The curriculum export outranks this file, so
+each ruling moves this file rather than the curriculum, and each is now applied above.
 
-| # | This file says | The curriculum row says | Resolved as, for now |
+| # | The conflict | Ruling | What changed |
 |---|---|---|---|
-| 1 | Section 4, v1 is first used "Week 1, Tuesday to Thursday" with 50 records | Tuesday's row says the data is "the same records" as Monday's, and Monday's row says about 30 | v0 at 30 records carries Monday and Tuesday. v1 at 50 records starts Wednesday, whose row calls for "the full client-zero dataset at its dirtiest" |
-| 2 | Section 4, v1 plants a near-duplicate pair "with one differing timestamp" | The Wednesday row says "the near-duplicate pair (same id, one differing field)" | The pair differs on order_date, since the section 3 entity model gives ORDERS a date and no timestamp |
-| 3 | Section 4, v0 names the optional field `discount` | The section 3 entity model gives CUSTOMERS an optional `loyalty_tier` and no `discount` anywhere | Both exist. `discount` sits on the order and is the Week 1 optional field the Monday row uses through `.get()`; `loyalty_tier` sits on the customer and is untouched until it is needed |
-| 4 | Section 3 says a typical order sits between Rs 800 and Rs 3,000 | No row states an amount range | The generator draws typical orders inside that band. The Week 1 Day 2 pack, built before this lock, used a wider band and has been regenerated to match |
+| 1 | Section 4 placed v1's 50 records at "Tuesday to Thursday", while the Tuesday row says the data is "the same records" as Monday's and Monday's row says about 30 | The curriculum is right and the file was off by one day. Tuesday teaches on 30 orders because its subject is one record at a time, and 50 arrives on Wednesday because that is the day the subject becomes the dataset | Section 4 now reads v0 for Monday and Tuesday, v1 for Wednesday and Thursday |
+| 2 | Section 4 said the near-duplicate pair differs on a "timestamp", which the section 3 entity model never gives ORDERS | The entity model is right. Adding a timestamp to ORDERS to justify one sentence would ripple into Week 2's Postgres tables for no teaching gain, and `order_date` carries the lesson intact | Section 4 now says the pair differs on `order_date` |
+| 3 | Section 4 named `discount` as v0's optional field, while section 3 gave CUSTOMERS an optional `loyalty_tier` and no `discount` anywhere | Both fields are real and the entity model was simply incomplete. `discount` belongs on the order, since it is a property of what was bought rather than of who bought it | Section 3 gains `discount` on ORDERS as an optional field, and a paragraph says plainly which optional field is which |
+| 4 | Section 3 caps a typical order at Rs 3,000, and v1 plants a Rs 480,000 whale | No conflict once the sentence is read as intended. The band describes the ordinary population, and the whale is a witness that exists precisely because it violates the band | Section 3 now says so explicitly, so the next reader does not have to rediscover it |
+
+No conflicts are open. Anything found from here starts a new row in the table above and a new version.

@@ -54,15 +54,31 @@ Two lines. Not two paragraphs. If you cannot say it in two lines you have not de
 
 ---
 
-## The reading
+## The reading, and the one thing you must bring back from it
 
-Watch the Khan Academy material on mean, median and mode before tomorrow.
+The Python standard library will happily guess whether the first row of a file is a header. Today
+you met a file where that guess would have been wrong, so go and read how the guess is made.
 
-Link status: to be found. The reference is on today's curriculum row and the verified link goes on this line before this pack is released.
+The CSV module, Python 3.12.0 (verified 09 Sep 2026): https://raw.githubusercontent.com/python/cpython/v3.12.0/Lib/csv.py
 
-Tomorrow opens on the largest order in today's file and what it does to an average, so arrive knowing which of those three you would quote to a manager.
+Find `Sniffer.has_header`, which begins at line 390. Read its opening comment, then read the vote at
+lines 434 to 451.
 
----
+Answer in four lines:
+
+- In one sentence, how does `has_header` decide? Quote the line number where the decision is finally
+  returned.
+- The comment at the top of the method describes two different tests. Name both.
+- Today's companion file had its header row repeated as the first data row. Would `has_header` have
+  noticed? Say why, using the vote rather than your intuition.
+- You wrote an identity rule today because the data could not tell you what counted as the same
+  order. `has_header` is the standard library choosing to guess instead. In one line, say when
+  guessing is the right call and when stating a rule is.
+
+Quote a line number for the first answer. An answer without one does not count, because the point is
+that you opened the file.
+
+That last question is the one tomorrow opens on, so it is worth more than the other three together.
 
 ## How this is checked
 
@@ -73,6 +89,7 @@ Tomorrow's discussion looks at these, in this order:
 3. Is the identity rule stated well enough for somebody else to apply.
 4. Does the reconciliation print, and does it hold.
 5. Does the clean go through Tuesday's functions rather than a fresh loop.
+6. Does your reading answer carry a line number from the actual source file.
 
 The totals matter least. Two learners can hand in different totals and both be right, if both wrote down the rule that produced them.
 
