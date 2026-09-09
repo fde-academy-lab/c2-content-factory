@@ -49,9 +49,9 @@ Verified against Python 3.11.15 in the build session. Re-run each one in the Cod
 |---|---|---|
 | Opening, half one | Run yesterday's cell, unchanged, against today's file | `ValueError: invalid literal for int() with base 10: 'twelve'` |
 | Functions, half one | Call a print-only function and subscript the result | `TypeError: 'NoneType' object is not subscriptable` |
-| Errors, half one, never cut | Bare except around the conversion, then the honest version | Both print `230380`. First claims `Processed 30 records`. Second says `Clean 28, rejected 2` |
+| Errors, half one, never cut | Bare except around the conversion, then the honest version | Both print `53745`. First claims `Processed 30 records`. Second says `Clean 28, rejected 2` |
 | Files, half two | Open a mistyped path | `FileNotFoundError: [Errno 2] No such file or directory: 'data/orderz.csv'` |
-| Exercise, half two | Learners load the truncated feed themselves | `json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 48 column 1 (char 841)` |
+| Exercise, half two | Learners load the truncated feed themselves | `json.decoder.JSONDecodeError: Expecting ',' delimiter: line 48 column 1 (char 1027)` |
 
 The bare except demonstration is the one that must not be cut under any time pressure. It is the argument the whole day rests on.
 
@@ -134,7 +134,7 @@ State the rule before you hand out the file, in these terms: no assistant, no ac
 
 Walk the room. Learners who freeze in the first five minutes usually have a `FileNotFoundError` and have not read it. Point at the path in the message and walk away.
 
-The defect that catches people is `12,400`, which is a real number wearing a thousands separator. Do not name it. When someone finds it, ask them what they are going to do about it and let the room hear the answer.
+The defect that catches people is `1,240`, which is a real number wearing a thousands separator. Do not name it. When someone finds it, ask them what they are going to do about it and let the room hear the answer.
 
 ---
 

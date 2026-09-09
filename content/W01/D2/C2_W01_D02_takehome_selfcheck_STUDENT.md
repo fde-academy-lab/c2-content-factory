@@ -16,14 +16,14 @@ If you got 31, you are counting the header. If you got 29, your reader is skippi
 
 Exactly **3 records** will not convert with `int()`.
 
-Their ids are `3008`, `3011` and `3019`. If you found fewer than three, one of them slipped past you, and the one people miss is not the one they expect.
+Their ids are `KR6407`, `KR6410` and `KR6418`. If you found fewer than three, one of them slipped past you, and the one people miss is not the one they expect.
 
 Their reasons, in the interpreter's own wording:
 
 ```
 invalid literal for int() with base 10: 'forty two'
 invalid literal for int() with base 10: ''
-invalid literal for int() with base 10: '24 500'
+invalid literal for int() with base 10: '2 450'
 ```
 
 If your reasons read differently from these, you invented wording instead of carrying `str(e)`.
@@ -40,8 +40,8 @@ Two totals are defensible, and which one you land on depends entirely on the rul
 
 | If your rule is | Clean records | Total |
 |---|---|---|
-| Reject only what `int()` refuses | 27 | 219050 |
-| Also reject the record from checkpoint 3 | 26 | 223550 |
+| Reject only what `int()` refuses | 27 | 47645 |
+| Also reject the record from checkpoint 3 | 26 | 49495 |
 
 If your total is neither of these, work backwards: check your reconciliation before you check your arithmetic.
 

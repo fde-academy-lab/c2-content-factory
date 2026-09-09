@@ -18,7 +18,9 @@ The three questions this half answers: what do I call again tomorrow, what do I 
 
 `[inline cell] > [packaged decision] > [read the failure] > [log the rejection] > [cross the boundary]`
 
-Yesterday you answered a question about the records. Today that answer becomes something you can run again on records you have not seen.
+Every order in this file is a Kalpa Retail order, and it will still be Kalpa Retail in Week 15.
+
+Yesterday you answered a question about the orders. Today that answer becomes something you can run again on records you have not seen.
 
 ---
 
@@ -27,9 +29,9 @@ Yesterday you answered a question about the records. Today that answer becomes s
 `clean_record`, on three records from today's file:
 
 ```
-rejected 1011 because: invalid literal for int() with base 10: 'twelve'
-rejected 1015 because: invalid literal for int() with base 10: ''
-kept     {'id': '1001', 'amount': 4500, ...}
+rejected KR4210 because: invalid literal for int() with base 10: 'twelve'
+rejected KR4214 because: invalid literal for int() with base 10: ''
+kept     KR4200 4500
 ```
 
 One function. Three records. Three outcomes, and the rejected ones say why.
@@ -45,7 +47,7 @@ You have written this cell three times already.
 ```
 total = 0
 for r in records:
-    if r["outcome"] == "accepted":
+    if r["status"] == "delivered":
         total = total + int(r["amount"])
 ```
 
@@ -70,10 +72,10 @@ When the rule changes, you have to remember where all three are. The one you for
 ## S5. Same rule, one place
 
 ```
-def accepted_total(records):
+def delivered_total(records):
     total = 0
     for r in records:
-        if r["outcome"] == "accepted":
+        if r["status"] == "delivered":
             total = total + int(r["amount"])
     return total
 ```
@@ -94,7 +96,7 @@ You can run it on a file that arrives next week.
 
 ## S7. The parameter is the promise
 
-`def accepted_total(records)` says: give me records, I give you a number.
+`def delivered_total(records)` says: give me records, I give you a number.
 
 The function cannot see anything you did not hand it. That is the whole of scope for today.
 
@@ -102,7 +104,7 @@ The function cannot see anything you did not hand it. That is the whole of scope
 
 ## S8. Live demo
 
-Carve `accepted_total` out of the inline cell together.
+Carve `delivered_total` out of the inline cell together.
 
 Then break it: rename the variable outside the function and watch the function keep working.
 
@@ -112,7 +114,7 @@ Then break it: rename the variable outside the function and watch the function k
 
 ```
 def fix(record):
-    print(record["id"])
+    print(record["order_id"])
 
 result = fix(rec)
 ```
@@ -215,13 +217,13 @@ This runs. It produces a number. The number is wrong and nothing on screen says 
 Bare except, on today's 30 records:
 
 ```
-Processed 30 records. Total: 230380
+Processed 30 records. Total: 53745
 ```
 
 Narrow except, same 30 records:
 
 ```
-Clean 28, rejected 2, total 230380
+Clean 28, rejected 2, total 53745
 ```
 
 Same number. One of these two lines is a lie.
@@ -274,7 +276,7 @@ def clean_record(record):
 
 ```
 except ValueError as e:
-    rejects.append({"id": record["id"], "reason": str(e)})
+    rejects.append({"order_id": record["order_id"], "reason": str(e)})
 ```
 
 `str(e)` carries the exact reason the interpreter gave you. You do not have to invent wording.
@@ -284,8 +286,8 @@ except ValueError as e:
 ## S23. What a good reason looks like
 
 ```
-{"id": "1011", "reason": "invalid literal for int() with base 10: 'twelve'"}
-{"id": "1015", "reason": "invalid literal for int() with base 10: ''"}
+{"id": "KR4210", "reason": "invalid literal for int() with base 10: 'twelve'"}
+{"id": "KR4214", "reason": "invalid literal for int() with base 10: ''"}
 ```
 
 Someone who was not in the room can act on both of these.

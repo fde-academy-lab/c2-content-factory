@@ -2,6 +2,14 @@
 
 Internal working file. Never given to a learner and never merged into a student artifact.
 
+## What is settled, and what is not
+
+The data in this pack is settled. Client zero locked at v1.0 on 09 September 2026 and every data
+file here is regenerated from `data/generate_client_zero.py`, so nothing about the dataset is
+pending any more. See the provenance file in this folder.
+
+The links are still open, for the reason below.
+
 ## Why every link in this pack says "to be found"
 
 The build session had no outbound network access. The egress proxy refused every reference domain on the curriculum row, tested and confirmed:

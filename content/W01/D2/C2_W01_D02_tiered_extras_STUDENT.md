@@ -18,7 +18,7 @@ You should see 24 records.
 
 Loop over the records. For each one, try `int(record["amount"])` inside a `try`, and when it fails print the id and the reason. Do not build any lists yet. Just print.
 
-You should see three ids: 2004, 2008 and 2013.
+You should see three ids: KR5303, KR5307 and KR5312.
 
 **Step 3. Now build the two lists.**
 
@@ -40,18 +40,18 @@ Do not go looking for pandas. Go deeper into what you already have.
 
 **The recovery question.**
 
-In `C2_W01_D02_data_records_STUDENT.json`, record 1015 has `"amount": null` and its original value sits inside the nested `source` block. Your morning run rejected that record on the CSV, and the value was available the whole time.
+In `C2_W01_D02_data_orders_STUDENT.json`, record KR4214 has `"amount": null` and its original value sits inside the nested `source` block. Your morning run rejected that record on the CSV, and the value was available the whole time.
 
 Write a function `recover_amount(record)` that takes a JSON record and returns the amount, preferring the top-level value and falling back to the nested one. Then answer these in a markdown cell:
 
 1. How many of the 30 records could be recovered this way?
-2. Your total was 230380 without recovery. What is it with recovery?
+2. Your total was 53745 without recovery. What is it with recovery?
 3. Here is the hard one. You now have two defensible totals for the same dataset, produced by the same person on the same afternoon. What has to be written down so that a reader knows which one they are looking at?
 
 Question 3 is the entire reason tomorrow exists.
 
 **The awkward record.**
 
-`int(" 4500 ")` succeeds. `int("24 500")` raises. `int("12,400")` raises.
+`int(" 1360 ")` succeeds. `int("2 450")` raises. `int("1,240")` raises.
 
 Write down the rule Python is actually applying, in one sentence, then test your rule on three inputs you invent yourself. If any of the three surprises you, your rule is wrong and the surprise is the interesting part.

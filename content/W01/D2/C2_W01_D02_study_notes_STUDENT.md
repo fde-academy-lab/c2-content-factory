@@ -6,6 +6,13 @@ These notes are written from the planned session. They are revised against the r
 
 ---
 
+## 0. The world these orders live in
+
+Every order you handled today belongs to Kalpa Retail, one of the five business units of Kalpa Group,
+and the Kalpa Retail order book is the dataset this programme returns to for the next nineteen weeks.
+The columns you cleaned today, `order_id`, `segment`, `amount`, `status` and `order_date`, are the
+same columns you will meet as Postgres tables in Week 2 and as a feature table in Week 5.
+
 ## 1. The one sentence
 
 Yesterday's code ran once, on records that were already clean and already in memory. Today it became a named decision you can call again, a failure you read instead of fear, and a file that survives the notebook being closed.
@@ -23,7 +30,7 @@ Every remaining day of Week 1 walks further right on that line. Tomorrow you poi
 
 A function gives one decision a name and one home. That buys you three things: you can say the name out loud to a colleague, you change the rule in one place, and you can run it next week on a file that does not exist yet.
 
-The parameter list is a promise. `def accepted_total(records)` says give me records and I hand back a number. The function sees only what you handed it, which is the whole of scope you need this week.
+The parameter list is a promise. `def delivered_total(records)` says give me records and I hand back a number. The function sees only what you handed it, which is the whole of scope you need this week.
 
 `print` shows a human. `return` hands a value to the next line of code. A function that only prints returns `None`.
 
@@ -70,15 +77,15 @@ Three questions, in order: what is the exception type, which line is mine, and w
 | `TypeError: 'NoneType' object is not subscriptable` | A function printed instead of returning, so the caller received `None` | Return the value the caller needs |
 | `ValueError: invalid literal for int() with base 10: 'twelve'` | A word arrived where a number was expected | Catch `ValueError` and reject the record with the reason |
 | `FileNotFoundError: [Errno 2] No such file or directory: 'data/orderz.csv'` | The path does not exist relative to the running kernel | Read the path in the message before editing anything |
-| `json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 48 column 1` | The file ends at line 47, part way through a record | Ask for the file again. Do not hand-repair it |
+| `json.decoder.JSONDecodeError: Expecting ',' delimiter: line 48 column 1` | The file ends at line 47, part way through a record | Ask for the file again. Do not hand-repair it |
 
 ## 5. The argument the whole day rests on
 
 Two cells, same 30 records, same total:
 
 ```
-Processed 30 records. Total: 230380     <- bare except
-Clean 28, rejected 2, total 230380      <- named except with a rejects log
+Processed 30 records. Total: 53745     <- bare except
+Clean 28, rejected 2, total 53745      <- named except with a rejects log
 ```
 
 The number is identical. The first line claims thirty records went into it and two did not. The lie is in the claim rather than in the arithmetic.
@@ -92,7 +99,7 @@ A bare `except` also swallows failures you never considered: a misspelled key, a
 Three things can happen to a record you cannot use. Fix it silently, drop it silently, or set it aside with a reason. Only the third survives a question from someone who was not in the room.
 
 ```
-{'id': '1011', 'reason': "invalid literal for int() with base 10: 'twelve'"}
+{'order_id': 'KR4210', 'reason': "invalid literal for int() with base 10: 'twelve'"}
 ```
 
 `str(e)` carries the interpreter's own wording, so nobody has to maintain invented messages and everyone's log reads the same.
@@ -114,7 +121,7 @@ Monday's planted defect proves it. One amount stored as text broke a comparison 
 
 **Nesting and its cost.** JSON can hold a record inside a record. To flatten that into CSV you either drop the nested block or invent a column for it. Either way the shape changes and the person downstream has to be told. That conversation is the cost.
 
-Record 1015 makes it concrete: its amount was empty in the CSV and your run rejected it, while the JSON still carried the original value one level down. The record was never unrecoverable. The export threw it away.
+Record KR4214 makes it concrete: its amount was empty in the CSV and your run rejected it, while the JSON still carried the original value one level down. The record was never unrecoverable. The export threw it away.
 
 ## 8. From the field
 

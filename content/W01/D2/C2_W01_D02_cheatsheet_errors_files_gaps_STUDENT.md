@@ -23,8 +23,8 @@ Three questions every time: exception type, my line, and ________________.
 ## Panel 2: return against print
 
 ```
-def f(r): print(r["id"])      # hands back ______
-def g(r): return r["id"]      # hands back ______
+def f(r): print(r["order_id"])      # hands back ______
+def g(r): return r["order_id"]      # hands back ______
 ```
 
 `print` is for ________________. `return` is for ________________.

@@ -23,8 +23,8 @@ Three questions every time: exception type, my line, the value it held.
 ## Panel 2: return against print
 
 ```
-def f(r): print(r["id"])      # hands back None
-def g(r): return r["id"]      # hands back the value
+def f(r): print(r["order_id"])      # hands back None
+def g(r): return r["order_id"]      # hands back the value
 ```
 
 `print` is for the human at the screen. `return` is for the next line of code.

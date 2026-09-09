@@ -54,7 +54,7 @@
 <body>
 <div class="wrap">
   <h1>The defensive stance bench</h1>
-  <p class="sub">Four switches, one fixed set of 30 records, and the line your code would print. Flip the switches until you find a setting you would put your name on, then screenshot it. You will be asked to defend the setting you chose.</p>
+  <p class="sub">Four switches, one fixed set of 30 Kalpa Retail orders, and the line your code would print. Flip the switches until you find a setting you would put your name on, then screenshot it. You will be asked to defend the setting you chose.</p>
 
   <div class="grid">
     <div class="panel">
@@ -89,7 +89,7 @@
 
       <div class="toggle" id="t-edge">
         <div class="q">Add the awkward record?</div>
-        <div class="why">One record arrives as <code>" 4500 "</code>, with spaces around it.</div>
+        <div class="why">One record arrives as <code>" 1360 "</code>, with spaces around it.</div>
         <div class="seg">
           <button data-k="edge" data-v="off">Leave it out</button>
           <button data-k="edge" data-v="on">Put it in</button>
@@ -115,21 +115,23 @@
     </div>
   </div>
 
-  <footer>The 30 records are the same ones in your notebook. Two of them carry a defect: one amount reads <code>twelve</code> and one is empty. The awkward record is a good value wearing spaces, which is why the two stances disagree about it.</footer>
+  <footer>The 30 orders are the same ones in your notebook. Two of them carry a defect: one amount reads <code>twelve</code> and one is empty. The awkward record is a good value wearing spaces, which is why the two stances disagree about it.</footer>
 </div>
 
 <script>
-const RECORDS = [
-  {id:"1001",amount:"4500"},{id:"1002",amount:"12800"},{id:"1003",amount:"7350"},{id:"1004",amount:"2100"},
-  {id:"1005",amount:"19400"},{id:"1006",amount:"5600"},{id:"1007",amount:"880"},{id:"1008",amount:"15250"},
-  {id:"1009",amount:"3300"},{id:"1010",amount:"9750"},{id:"1011",amount:"twelve"},{id:"1012",amount:"6400"},
-  {id:"1013",amount:"1450"},{id:"1014",amount:"8900"},{id:"1015",amount:""},{id:"1016",amount:"11200"},
-  {id:"1017",amount:"4050"},{id:"1018",amount:"23600"},{id:"1019",amount:"2750"},{id:"1020",amount:"1900"},
-  {id:"1021",amount:"14300"},{id:"1022",amount:"5150"},{id:"1023",amount:"7800"},{id:"1024",amount:"10600"},
-  {id:"1025",amount:"3950"},{id:"1026",amount:"2400"},{id:"1027",amount:"16750"},{id:"1028",amount:"6900"},
-  {id:"1029",amount:"8250"},{id:"1030",amount:"13100"}
+const ORDERS = [
+  {id:"KR4200",amount:"4500"},{id:"KR4201",amount:"2395"},{id:"KR4202",amount:"1360"},
+  {id:"KR4203",amount:"1440"},{id:"KR4204",amount:"2905"},{id:"KR4205",amount:"2095"},
+  {id:"KR4206",amount:"920"},{id:"KR4207",amount:"1420"},{id:"KR4208",amount:"2605"},
+  {id:"KR4209",amount:"840"},{id:"KR4210",amount:"twelve"},{id:"KR4211",amount:"2880"},
+  {id:"KR4212",amount:"2900"},{id:"KR4213",amount:"2515"},{id:"KR4214",amount:""},
+  {id:"KR4215",amount:"2170"},{id:"KR4216",amount:"1050"},{id:"KR4217",amount:"1965"},
+  {id:"KR4218",amount:"1205"},{id:"KR4219",amount:"1200"},{id:"KR4220",amount:"1205"},
+  {id:"KR4221",amount:"1270"},{id:"KR4222",amount:"1450"},{id:"KR4223",amount:"2720"},
+  {id:"KR4224",amount:"1460"},{id:"KR4225",amount:"1320"},{id:"KR4226",amount:"1905"},
+  {id:"KR4227",amount:"1555"},{id:"KR4228",amount:"2030"},{id:"KR4229",amount:"2465"}
 ];
-const EDGE = {id:"1031", amount:" 4500 "};
+const EDGE = {id:"KR4250", amount:" 1360 "};
 
 const state = {stance:"eafp", width:"bare", log:"drop", edge:"off"};
 
@@ -141,7 +143,7 @@ function pythonInt(s){
 }
 
 function run(){
-  const rows = state.edge === "on" ? RECORDS.concat([EDGE]) : RECORDS;
+  const rows = state.edge === "on" ? ORDERS.concat([EDGE]) : ORDERS;
   let total = 0, counted = 0;
   const rejects = [];
 
@@ -184,7 +186,7 @@ function run(){
            " records and " + counted + " went in, and there is no record of the difference.";
   } else if (lostGood && silent){
     text = "The worst of both. A good record was thrown away for wearing spaces, and nothing was recorded, " +
-           "so the total is short by 4500 and no trace of the loss exists.";
+           "so the total is short by 1360 and no trace of the loss exists.";
   } else if (silent){
     text = "The total is right and you cannot show it. Every rejected record left without a trace.";
   } else if (bare){

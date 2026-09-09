@@ -1,0 +1,482 @@
+[
+  {
+    "order_id": "KR4200",
+    "segment": "Retail-Core",
+    "status": "returned",
+    "order_date": "2026-08-03",
+    "amount": 4500,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "4500"
+    },
+    "customer": {
+      "customer_id": "C1645",
+      "city": "Pune",
+      "signup_date": "2026-08-04"
+    }
+  },
+  {
+    "order_id": "KR4201",
+    "segment": "Retail-Plus",
+    "status": "delivered",
+    "order_date": "2026-08-03",
+    "amount": 2395,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "2395"
+    },
+    "customer": {
+      "customer_id": "C1178",
+      "city": "Chennai",
+      "signup_date": "2026-08-12"
+    }
+  },
+  {
+    "order_id": "KR4202",
+    "segment": "Retail-Plus",
+    "status": "delivered",
+    "order_date": "2026-08-04",
+    "amount": 1360,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "1360"
+    },
+    "customer": {
+      "customer_id": "C1184",
+      "city": "Singapore",
+      "signup_date": "2026-08-10"
+    }
+  },
+  {
+    "order_id": "KR4203",
+    "segment": "Student",
+    "status": "returned",
+    "order_date": "2026-08-04",
+    "amount": 1440,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "1440"
+    },
+    "customer": {
+      "customer_id": "C1365",
+      "city": "Pune",
+      "signup_date": "2026-08-21"
+    }
+  },
+  {
+    "order_id": "KR4204",
+    "segment": "Business",
+    "status": "cancelled",
+    "order_date": "2026-08-05",
+    "amount": 2905,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "2905"
+    },
+    "customer": {
+      "customer_id": "C1805",
+      "city": "Hyderabad",
+      "signup_date": "2026-08-20"
+    }
+  },
+  {
+    "order_id": "KR4205",
+    "segment": "Retail-Core",
+    "status": "cancelled",
+    "order_date": "2026-08-05",
+    "amount": 2095,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "2095"
+    },
+    "customer": {
+      "customer_id": "C1357",
+      "city": "Pune",
+      "signup_date": "2026-08-14"
+    }
+  },
+  {
+    "order_id": "KR4206",
+    "segment": "Retail-Plus",
+    "status": "delivered",
+    "order_date": "2026-08-06",
+    "amount": 920,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "920"
+    },
+    "customer": {
+      "customer_id": "C1800",
+      "city": "Hyderabad",
+      "signup_date": "2026-08-13"
+    }
+  },
+  {
+    "order_id": "KR4207",
+    "segment": "Student",
+    "status": "delivered",
+    "order_date": "2026-08-06",
+    "amount": 1420,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "1420"
+    },
+    "customer": {
+      "customer_id": "C1777",
+      "city": "Bengaluru",
+      "signup_date": "2026-08-05"
+    }
+  },
+  {
+    "order_id": "KR4208",
+    "segment": "Student",
+    "status": "cancelled",
+    "order_date": "2026-08-07",
+    "amount": 2605,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "2605"
+    },
+    "customer": {
+      "customer_id": "C1745",
+      "city": "Bengaluru",
+      "signup_date": "2026-08-18"
+    }
+  },
+  {
+    "order_id": "KR4209",
+    "segment": "Retail-Plus",
+    "status": "cancelled",
+    "order_date": "2026-08-07",
+    "amount": 840,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "840"
+    },
+    "customer": {
+      "customer_id": "C1440",
+      "city": "Bengaluru",
+      "signup_date": "2026-08-19"
+    }
+  },
+  {
+    "order_id": "KR4210",
+    "segment": "Business",
+    "status": "delivered",
+    "order_date": "2026-08-10",
+    "amount": null,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "twelve"
+    },
+    "customer": {
+      "customer_id": "C1371",
+      "city": "Bengaluru",
+      "signup_date": "2026-08-06"
+    }
+  },
+  {
+    "order_id": "KR4211",
+    "segment": "Retail-Core",
+    "status": "delivered",
+    "order_date": "2026-08-10",
+    "amount": 2880,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "2880"
+    },
+    "customer": {
+      "customer_id": "C1093",
+      "city": "Chennai",
+      "signup_date": "2026-08-05"
+    }
+  },
+  {
+    "order_id": "KR4212",
+    "segment": "Retail-Core",
+    "status": "cancelled",
+    "order_date": "2026-08-10",
+    "amount": 2900,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "2900"
+    },
+    "customer": {
+      "customer_id": "C1527",
+      "city": "Singapore",
+      "signup_date": "2026-08-13"
+    }
+  },
+  {
+    "order_id": "KR4213",
+    "segment": "Retail-Core",
+    "status": "delivered",
+    "order_date": "2026-08-10",
+    "amount": 2515,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "2515"
+    },
+    "customer": {
+      "customer_id": "C1694",
+      "city": "Hyderabad",
+      "signup_date": "2026-08-17"
+    }
+  },
+  {
+    "order_id": "KR4214",
+    "segment": "Student",
+    "status": "delivered",
+    "order_date": "2026-08-10",
+    "amount": null,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "2840"
+    },
+    "customer": {
+      "customer_id": "C1517",
+      "city": "Bengaluru",
+      "signup_date": "2026-08-10"
+    }
+  },
+  {
+    "order_id": "KR4215",
+    "segment": "Student",
+    "status": "delivered",
+    "order_date": "2026-08-10",
+    "amount": 2170,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "2170"
+    },
+    "customer": {
+      "customer_id": "C1769",
+      "city": "Singapore",
+      "signup_date": "2026-08-10"
+    }
+  },
+  {
+    "order_id": "KR4216",
+    "segment": "Retail-Core",
+    "status": "cancelled",
+    "order_date": "2026-08-11",
+    "amount": 1050,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "1050"
+    },
+    "customer": {
+      "customer_id": "C1670",
+      "city": "Singapore",
+      "signup_date": "2026-08-21"
+    }
+  },
+  {
+    "order_id": "KR4217",
+    "segment": "Business",
+    "status": "delivered",
+    "order_date": "2026-08-11",
+    "amount": 1965,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "1965"
+    },
+    "customer": {
+      "customer_id": "C1545",
+      "city": "Chennai",
+      "signup_date": "2026-08-11"
+    }
+  },
+  {
+    "order_id": "KR4218",
+    "segment": "Business",
+    "status": "returned",
+    "order_date": "2026-08-12",
+    "amount": 1205,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "1205"
+    },
+    "customer": {
+      "customer_id": "C1777",
+      "city": "Singapore",
+      "signup_date": "2026-08-17"
+    }
+  },
+  {
+    "order_id": "KR4219",
+    "segment": "Student",
+    "status": "cancelled",
+    "order_date": "2026-08-12",
+    "amount": 1200,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "1200"
+    },
+    "customer": {
+      "customer_id": "C1103",
+      "city": "Pune",
+      "signup_date": "2026-08-19"
+    }
+  },
+  {
+    "order_id": "KR4220",
+    "segment": "Business",
+    "status": "cancelled",
+    "order_date": "2026-08-13",
+    "amount": 1205,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "1205"
+    },
+    "customer": {
+      "customer_id": "C1100",
+      "city": "Singapore",
+      "signup_date": "2026-08-17"
+    }
+  },
+  {
+    "order_id": "KR4221",
+    "segment": "Student",
+    "status": "returned",
+    "order_date": "2026-08-13",
+    "amount": 1270,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "1270"
+    },
+    "customer": {
+      "customer_id": "C1705",
+      "city": "Singapore",
+      "signup_date": "2026-08-12"
+    }
+  },
+  {
+    "order_id": "KR4222",
+    "segment": "Business",
+    "status": "delivered",
+    "order_date": "2026-08-14",
+    "amount": 1450,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "1450"
+    },
+    "customer": {
+      "customer_id": "C1271",
+      "city": "Hyderabad",
+      "signup_date": "2026-08-18"
+    }
+  },
+  {
+    "order_id": "KR4223",
+    "segment": "Retail-Plus",
+    "status": "delivered",
+    "order_date": "2026-08-14",
+    "amount": 2720,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "2720"
+    },
+    "customer": {
+      "customer_id": "C1232",
+      "city": "Bengaluru",
+      "signup_date": "2026-08-21"
+    }
+  },
+  {
+    "order_id": "KR4224",
+    "segment": "Retail-Core",
+    "status": "delivered",
+    "order_date": "2026-08-17",
+    "amount": 1460,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "1460"
+    },
+    "customer": {
+      "customer_id": "C1858",
+      "city": "Pune",
+      "signup_date": "2026-08-11"
+    }
+  },
+  {
+    "order_id": "KR4225",
+    "segment": "Retail-Plus",
+    "status": "returned",
+    "order_date": "2026-08-17",
+    "amount": 1320,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "1320"
+    },
+    "customer": {
+      "customer_id": "C1229",
+      "city": "Chennai",
+      "signup_date": "2026-08-07"
+    }
+  },
+  {
+    "order_id": "KR4226",
+    "segment": "Business",
+    "status": "returned",
+    "order_date": "2026-08-17",
+    "amount": 1905,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "1905"
+    },
+    "customer": {
+      "customer_id": "C1507",
+      "city": "Hyderabad",
+      "signup_date": "2026-08-07"
+    }
+  },
+  {
+    "order_id": "KR4227",
+    "segment": "Retail-Core",
+    "status": "cancelled",
+    "order_date": "2026-08-17",
+    "amount": 1555,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "1555"
+    },
+    "customer": {
+      "customer_id": "C1317",
+      "city": "Pune",
+      "signup_date": "2026-08-18"
+    }
+  },
+  {
+    "order_id": "KR4228",
+    "segment": "Retail-Plus",
+    "status": "returned",
+    "order_date": "2026-08-17",
+    "amount": 2030,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "2030"
+    },
+    "customer": {
+      "customer_id": "C1146",
+      "city": "Hyderabad",
+      "signup_date": "2026-08-17"
+    }
+  },
+  {
+    "order_id": "KR4229",
+    "segment": "Retail-Plus",
+    "status": "cancelled",
+    "order_date": "2026-08-17",
+    "amount": 2465,
+    "source": {
+      "system": "kalpa_retail_orders",
+      "amount_raw": "2465"
+    },
+    "customer": {
+      "customer_id": "C1643",
+      "city": "Hyderabad",
+      "signup_date": "2026-08-07"
+    }
+  }
+]
