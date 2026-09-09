@@ -12,8 +12,13 @@ Slide source format: every `## ` heading starts a slide. A heading beginning wit
 section-boundary treatment. `---` rules are ignored.
 """
 import argparse
+import hashlib
+import os
 import pathlib
 import re
+import shutil
+import subprocess
+import tempfile
 
 from pptx import Presentation
 from pptx.dml.color import RGBColor
@@ -132,25 +137,89 @@ def parse(md):
     return slides
 
 
+FENCED = ("code", "mermaid")
+
+
 def split_blocks(body):
-    """Split a slide body into ('text'|'code'|'table', lines) blocks."""
+    """Split a slide body into ('text'|'code'|'mermaid'|'table', lines) blocks."""
     blocks, buf, mode = [], [], "text"
     for line in body:
-        if line.strip().startswith("```"):
+        stripped = line.strip()
+        if stripped.startswith("```"):
             if buf:
                 blocks.append((mode, buf)); buf = []
-            mode = "code" if mode != "code" else "text"
+            if mode in FENCED:
+                mode = "text"
+            else:
+                mode = "mermaid" if stripped[3:].strip().lower() == "mermaid" else "code"
             continue
-        is_row = line.strip().startswith("|") and line.strip().endswith("|")
-        want = "code" if mode == "code" else ("table" if is_row else "text")
-        if want != mode and mode != "code":
+        is_row = stripped.startswith("|") and stripped.endswith("|")
+        want = mode if mode in FENCED else ("table" if is_row else "text")
+        if want != mode and mode not in FENCED:
             if buf:
                 blocks.append((mode, buf)); buf = []
             mode = want
         buf.append(line)
     if buf:
         blocks.append((mode, buf))
-    return [(m, [l for l in b if l.strip() or m == "code"]) for m, b in blocks if any(l.strip() for l in b)]
+    return [(m, [l for l in b if l.strip() or m in FENCED])
+            for m, b in blocks if any(l.strip() for l in b)]
+
+
+CACHE = pathlib.Path(tempfile.gettempdir()) / "c2_mermaid_cache"
+
+
+def _chromium():
+    for path in sorted(pathlib.Path("/opt/pw-browsers").glob("chromium-*/chrome-linux/chrome")):
+        return str(path)
+    return None
+
+
+def render_mermaid(lines):
+    """Render a mermaid fence to a PNG and return its path, or None when mmdc is not installed.
+
+    A mermaid fence renders as nothing at all in PowerPoint, so a deck that draws its thinking in
+    mermaid needs the picture baked in. The markdown stays the authoritative source, which is what
+    the verification gate reads and what renders on GitHub. Install the renderer with
+    `npm install -g @mermaid-js/mermaid-cli`; without it the fence falls back to monospace text.
+    Renders are cached by content hash, so rebuilding a deck re-renders only what changed.
+    """
+    code = "\n".join(lines).strip() + "\n"
+    key = hashlib.sha256(code.encode()).hexdigest()[:16]
+    CACHE.mkdir(parents=True, exist_ok=True)
+    png = CACHE / f"{key}.png"
+    if png.exists():
+        return png
+    if not shutil.which("mmdc"):
+        return None
+    (CACHE / f"{key}.mmd").write_text(code)
+    config = CACHE / "puppeteer.json"
+    if not config.exists():
+        config.write_text('{"args":["--no-sandbox","--disable-setuid-sandbox"]}\n')
+    env = dict(os.environ)
+    chrome = _chromium()
+    if chrome:
+        env["PUPPETEER_EXECUTABLE_PATH"] = chrome
+    try:
+        subprocess.run(["mmdc", "-i", str(CACHE / f"{key}.mmd"), "-o", str(png),
+                        "-b", "transparent", "-w", "2400", "-p", str(config)],
+                       capture_output=True, text=True, env=env, timeout=240)
+    except Exception:
+        return None
+    return png if png.exists() else None
+
+
+def place_picture(s, png, top, width_in=11.6):
+    """Drop a rendered diagram into the body area, scaled to fit and centred."""
+    from PIL import Image
+    with Image.open(png) as img:
+        w, h = img.size
+    max_w, max_h = width_in, max(1.2, 6.55 - top)
+    scale = min(max_w / (w / 96), max_h / (h / 96))
+    draw_w, draw_h = (w / 96) * scale, (h / 96) * scale
+    s.shapes.add_picture(str(png), Inches(0.85 + (width_in - draw_w) / 2), Inches(top),
+                         Inches(draw_w), Inches(draw_h))
+    return top + draw_h + 0.15
 
 
 def box_height(lines, mono=False):
@@ -227,10 +296,21 @@ def build(src, out, footer):
         s = prs.slides.add_slide(prs.slide_layouts[6])
         add_bg(s, prs, SECBG if section else BG)
 
+        depth = bool(re.match(r"^D\d+[a-z]?\.", title))
+        if depth:
+            chip = s.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(11.15), Inches(0.42),
+                                      Inches(1.3), Inches(0.34))
+            chip.fill.solid(); chip.fill.fore_color.rgb = ACC
+            chip.line.fill.background(); chip.shadow.inherit = False
+            cp = chip.text_frame.paragraphs[0]; cp.alignment = PP_ALIGN.CENTER
+            cr = cp.add_run(); cr.text = "DEPTH"
+            cr.font.size = Pt(11); cr.font.bold = True
+            cr.font.name = "Calibri"; cr.font.color.rgb = WHITE
+
         tb = s.shapes.add_textbox(Inches(0.85), Inches(0.7), width, Inches(1.3))
         tb.text_frame.word_wrap = True
         p0 = tb.text_frame.paragraphs[0]
-        add_runs(p0, clean(re.sub(r"^S\d+[a-z]?\.\s*", "", title)), 36 if section else 32,
+        add_runs(p0, clean(re.sub(r"^[SD]\d+[a-z]?\.\s*", "", title)), 36 if section else 32,
                  WHITE if section else INK)
         for r in p0.runs:
             r.font.bold = True
@@ -268,6 +348,11 @@ def build(src, out, footer):
             if mode == "table" and not section:
                 top = add_table(s, lines, top, width)
                 continue
+            if mode == "mermaid" and not section:
+                png = render_mermaid(lines)
+                if png:
+                    top = place_picture(s, png, top)
+                    continue
             h = max(0.55, min(4.6, box_height(lines, mono=mode == "code")))
             bb = s.shapes.add_textbox(Inches(0.85), Inches(top), width, Inches(h))
             bb.text_frame.word_wrap = True
@@ -319,3 +404,9 @@ if __name__ == "__main__":
 #     Gets the dark background, centred text and white type.
 # A slide holding the client-zero unit map or entity mermaid fence
 #     Gets boxes and connectors drawn as PowerPoint shapes, never the mermaid source as text.
+# Any other mermaid fence, with mmdc installed
+#     Renders to a PNG and is placed scaled and centred in the body area. Without mmdc it falls
+#     back to monospace text and the build still succeeds.
+# A slide titled "D12. Going deeper: ..."
+#     Gets a DEPTH chip at the top right and its number stripped from the heading, which is how a
+#     trainer knows at a glance to skip it live.

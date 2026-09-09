@@ -149,3 +149,67 @@ Every reference link is a "to be found" slot. The build session had no network a
 Segment values in the data files are placeholders that survive until the client-zero scenario locks. See the internal rename map in this folder.
 
 The row's STOP BEFORE bars imports beyond `csv` and `json`. The notebooks import `traceback` and `os` as plumbing, so a failure can print itself without halting the run and so the output folder exists. Both are labelled in the setup cell as not being today's topic, and neither is taught. If you would rather hold the line exactly, the alternative is a notebook that stops at its first deliberate failure, which costs more than it saves.
+
+---
+
+## The two tracks in each deck
+
+Each deck now carries two kinds of slide and the deck tells you which is which.
+
+Slides numbered `S` are the spine. They are the delivered path, they are in delivery order, and their
+count and pacing are unchanged from the version this pack shipped with. Walk them.
+
+Slides numbered `D` carry a DEPTH mark in the top right corner. They sit immediately after the slide
+they deepen. Skip them live. They exist so the deck is worth reading alone afterwards, so a learner
+who asks a harder question has somewhere to be sent, and so you have somewhere to go when the room
+is ahead of you.
+
+If the room is running fast, the depth slides worth adding first are the ones carrying a diagram of
+a mechanism, because they save you drawing it on the board. If the room is running slow, every
+depth slide goes and nothing in the spine changes.
+
+**Half one.** 39 spine slides and 19 depth slides.
+
+| Depth slide | What it adds |
+|---|---|
+| `D2` | What three copies costs, counted |
+| `D4` | Scope, drawn once |
+| `D5` | Prove it to yourself in four lines |
+| `D6` | The same function, both ways, side by side |
+| `D7` | The compact loop, once, as notation |
+| `D8` | Every part of a traceback, labelled |
+| `D9` | Why the stack reads bottom-up |
+| `D11` | The exception family, and why the name you choose matters |
+| `D12` | Two defensive stances, and when each wins |
+| `D13` | The size of the lie, as a formula |
+| `D15` | Who decides what, and why the split matters |
+| `D16` | The fields a reject row needs, and why |
+| `D17` | The reconciliation, as an identity you check every time |
+| `D18` | Knight Capital, the mechanism |
+| `D19` | Knight Capital, what it cost |
+| `D20` | The line from that to your cell today |
+| `D21` | Where a rejects log lives in production |
+| `D22` | Question 1, the deeper version |
+| `D23` | Question 2, the numbers that make it land |
+
+**Half two.** 43 spine slides and 17 depth slides.
+
+| Depth slide | What it adds |
+|---|---|
+| `D1` | The round trip that loses types, watched |
+| `D2` | Where to convert, and why the answer is once |
+| `D3` | What the with block is doing for you |
+| `D4` | Running out of handles, as arithmetic |
+| `D5` | The modes you will actually use |
+| `D6` | What happens when a row is the wrong length |
+| `D7` | So the row count is not enough |
+| `D8` | The flattening decision, drawn |
+| `D9` | Reading a JSONDecodeError, position by position |
+| `D10` | CSV or JSON, decided rather than defaulted |
+| `D11` | What DictWriter does with a field you did not name |
+| `D12` | The four line ritual that ends every load |
+| `D13` | Public Health England, the mechanism |
+| `D14` | Public Health England, the arithmetic |
+| `D15` | The line from that to your cell today |
+| `D16` | Question 1, the deeper version |
+| `D17` | Question 2, with the evidence in front of you |
