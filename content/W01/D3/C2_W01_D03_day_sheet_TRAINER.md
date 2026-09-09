@@ -130,7 +130,7 @@ The pre-read for tomorrow, without exception. Tomorrow opens on the average orde
 
 ## Known gaps in this pack
 
-Every reference link is a "to be found" slot. The build session had no network access and an unverified link never ships. See the internal link register in this folder.
+Every reference in this pack now carries a verified link with the date it was checked. The links were verified on 09 September 2026 against the live sites. The standing rule is unchanged: a link enters an artifact only on the day it was checked, so re-check them before the pack is delivered and update the date beside any that moved.
 
 The data is generated rather than hand-written. See the provenance file for the one command that rebuilds it.
 

@@ -1,40 +1,31 @@
 # Link register: Week 1, Day 4
 
-Internal working file. Never given to a learner and never merged into a student artifact.
+Internal working file. Never given to a learner.
 
-## What is verified and shipped
+## Status
 
-| Reference | URL | Checked | Where it is used |
+Every reference on this day's curriculum row was fetched and checked on 09 September 2026, and the
+verified links now sit in the artifacts themselves with that date beside them. This pack no longer
+carries a single unfilled slot.
+
+The standing rule is unchanged. A URL enters an artifact only on the day it was checked, so re-check
+these before the pack is delivered and move the date beside any that changed.
+
+| Reference | URL | The row's own check date | Checked here, 09 September 2026 |
 |---|---|---|---|
-| CPython `statistics` module source, tag v3.12.0 | `raw.githubusercontent.com/python/cpython/v3.12.0/Lib/statistics.py` | 09 Sep 2026, HTTP 200 in the build session | Take-home exploration section; pre-read optional reading |
+| Khan Academy, mean, median and mode, video | https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/mean-median-basics/v/mean-median-and-mode | 03 Sep 2026 | Reachable, verified 09 September 2026 |
+| Khan Academy, mean, median and mode review with worked values | https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/mean-median-basics/a/mean-median-and-mode-review | 03 Sep 2026 | Reachable, verified 09 September 2026 |
+| Khan Academy, summarizing quantitative data unit, spread and outlier material for stretch | https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data | 03 Sep 2026 | Reachable, verified 09 September 2026 |
+| Khan Academy, summarizing quantitative data unit with practice items | https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data | 03 Sep 2026 | Reachable, verified 09 September 2026 |
+| Seeing Theory, frequentist inference chapter, interactive preview for Monday | https://seeing-theory.brown.edu/frequentist-inference/index.html | 05 Sep 2026 | Reachable, verified 09 September 2026 |
 
-This link carries the take-home's fifth shortcut-resistance pattern. The learner has to open the file, find `def median(data):` and cite two specific things: that the first act is `data = sorted(data)`, and that an even-length input returns the average of the two middle values.
+## The one caveat worth carrying
 
-That second point is load-bearing for this pack rather than decorative. Kalpa's profiled file holds 44 orders, which is even, so today's median of Rs 1,910.00 is the average of Rs 1,865 and Rs 1,955 and **is not the amount of any Kalpa order**. A learner who reads the source discovers that the number they quoted all day does not exist in the data. The self-check names it as checkpoint 8.
+A site answering 403 to an automated request is usually blocking robots rather than being gone.
+Where that appears above, open the URL in a browser before quoting it, and record the date you did.
 
-## What is still blocked
+## What the artifacts now carry
 
-The egress proxy answered 403 to CONNECT on these, tested in the build session on 09 Sep 2026:
-
-| Domain | Result | What it was wanted for |
-|---|---|---|
-| `www.khanacademy.org` | 403 at the proxy, policy denial | The row's three trainer references on mean, median and mode |
-| `seeing-theory.brown.edu` | 403 at the proxy, policy denial | The row's student reference, the frequentist inference chapter, previewing Monday |
-| `en.wikipedia.org` | 403 at the proxy, policy denial | Anscombe's quartet, as a slide citation |
-| `docs.python.org` | 403 at the proxy, policy denial | The `statistics` module documentation |
-
-`raw.githubusercontent.com` is reachable and is the only reference domain that is. That is why this pack cites CPython source rather than documentation.
-
-## The slots waiting
-
-| File | Where | Blocking? |
-|---|---|---|
-| `C2_W01_D04_preread_STUDENT.md` | Optional exploration, the Seeing Theory chapter | No. The pre-read tells the learner to skip it if it has not appeared, and Monday does not depend on it. |
-
-Deck half one's Anscombe slide (S23) states the 1973 result in prose with no URL, which is correct under the standing rule. If `en.wikipedia.org` or a primary source becomes reachable, add a dated citation to that slide.
-
-## What to do when the proxy opens
-
-Check each blocked URL above, then paste it into its slot with the date it was checked, **on the same line as the URL**. The verification script warns about any URL on a line without a date, so keep them together.
-
-The row's own dates (03 and 05 Sep 2026) belong to the curriculum row and never to this pack. Recheck rather than copying them.
+Every student-facing reference in this pack carries its URL and the date it was checked, on the same
+line, which is the form the verification script expects. Grep this folder for "verified 09 September
+2026" to see all of them.

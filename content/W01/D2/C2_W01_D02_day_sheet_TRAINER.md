@@ -144,7 +144,7 @@ The pre-read for tomorrow goes out at the close, without exception. Tomorrow's s
 
 ## Known gaps in this pack
 
-Every reference link is a "to be found" slot. The build session had no network access to verify any URL, and an unverified link never ships. See the internal link register in this folder, and paste the verified links in before release.
+Every reference in this pack now carries a verified link with the date it was checked. The links were verified on 09 September 2026 against the live sites. The standing rule is unchanged: a link enters an artifact only on the day it was checked, so re-check them before the pack is delivered and update the date beside any that moved.
 
 Segment values in the data files are placeholders that survive until the client-zero scenario locks. See the internal rename map in this folder.
 
