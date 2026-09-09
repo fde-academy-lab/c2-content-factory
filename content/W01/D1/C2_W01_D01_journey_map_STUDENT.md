@@ -2,8 +2,6 @@
 
 **Current position: Week 1, Day 1, the Genesis phase, the module Foundations of AI and Data.**
 
-To reissue this map at the next week boundary, edit the current position line above and change nothing else on this page.
-
 ---
 
 ## 1. The five phases
@@ -68,7 +66,7 @@ Each phase is a promise about what you can do when it closes, and none of them i
 | 12 | Ascent | This is a build week, and it carries Build 4, the retrieval assistant. |
 | 13 | Build | This is a teaching week. |
 | 14 | Build | This is a teaching week. |
-| 15 | Build | This is a build week and it carries Build 5, the agentic system. The third major exam falls in the same week, which makes Week 15 the one week that carries both, and how the two sit alongside each other is set when the week is planned. |
+| 15 | Build | This is a build week and it carries Build 5, the agentic system. The third major exam falls in the same week. |
 | 16 | Build | This is a teaching week, and it produces the solution proposal. |
 | 17 | Launch | This is a capstone week, and the capstone project runs from here to Week 20. |
 | 18 | Launch | This is a capstone week and the capstone build continues. |
@@ -93,9 +91,3 @@ Each day is a promise about what you can do when it closes.
 | Saturday | You can answer the week's interview question set on paper without an assistant, defend any of those answers aloud when you are called, and mark a peer's paper against the discussed solution. |
 
 The week adds up to one sentence: by Saturday you can take a file nobody prepared to a defensible answer.
-
----
-
-## 5. How far this map can see
-
-The curriculum carries day-level detail through Week 9. Past Week 9 this map names only the module and the phase, and it goes no finer until the later weeks are detailed.

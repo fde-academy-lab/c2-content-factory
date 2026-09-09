@@ -30,6 +30,8 @@ Trainer file. Never given to learners, never pasted into a student artifact.
 | 6 | Introduction C, session mechanics | 10 minutes | `deck_00_intro`, S18 to S23 |
 | 7 | Kahoot and close-out | 20 minutes | `deck_00_intro`, S24, with the Kahoot pack |
 
+The four exercises drop inside that shape in this order. E2, the prediction drill, drops at the close of block one, after the accumulators, and runs about 15 minutes. E3, the find-the-mistake drill, drops immediately after E2 at that same close, on the misplaced accumulator you have just run at half one S26, and runs about 15 minutes. E1, the guided threshold build, opens block two and runs about 40 minutes with the room mirroring. E4, the unguided three, closes block two and runs about 30 minutes.
+
 Fixed content totals 290 minutes, which is the row's own 240 minutes plus 50 minutes of introduction pack taken from Day 1's trainer discretion. Trainer discretion fills whatever remains.
 
 The introduction is deliberately broken into three pieces rather than delivered as one long opening. Introduction A and Introduction B run while the room is fresh, and Introduction C sits after the unguided exercise, when the room needs the change of gear more than it needs another concept.
@@ -55,7 +57,7 @@ Verified against Python 3.11.15 in the build session. Re-run every one of these 
 | Where | What you do | Exact text |
 |---|---|---|
 | Kernel, block one | Run the counting cell before the setup cell, on the projected screen, with the room watching | `NameError: name 'records' is not defined` |
-| Types, block one, never cut | Compare the text `"4500"` against 2000, first on a value you type yourself at half one S18, then on KR4200 inside the guided loop at half two S6 | `TypeError: '>' not supported between instances of 'str' and 'int'` |
+| Types, block one, never cut | Compare the text `"4500"` against 2000, first on a typed value at half one S18 and on KR4200 inside notebook 1 during block one, then live on KR4200 in the guided loop at half two S6 | `TypeError: '>' not supported between instances of 'str' and 'int'` |
 | Accumulators, block one | Run the loop with `total = 0` moved inside it, after you have taken predictions from the room | It runs clean and prints `1460`, which is the amount of KR4224, the last delivered order in the file, and is a sum of nothing at all |
 | Dictionaries, block two | Ask any of the twenty-eight records without the key for `r["discount"]` | `KeyError: 'discount'` |
 
@@ -69,7 +71,7 @@ The misplaced accumulator is the only one of the four that names no error and st
 
 | Slide | Label | Note |
 |---|---|---|
-| Opening | THEN | Before any slide at all, run the opening cell of notebook 1, headed "The answer, before anything is explained". Say the question out loud, "Of these thirty Kalpa Retail orders, how much did we actually collect?", run the four lines and let 13 delivered orders and Rs 25,720 sit on the screen. Explain nothing. Application before theory, and it is the row's own opening. |
+| Opening | THEN | Before any slide at all, run the opening cell of notebook 1, headed "The answer, before anything is explained". Say the question out loud, "Of these thirty Kalpa Retail orders, how much did we actually collect?", run the cell and let 13 delivered orders and Rs 25,720 sit on the screen. Explain nothing. Application before theory, and it is the row's own opening. |
 | S1 | SAY | "Nobody has told you who Kalpa is." That sentence is the reason the next 25 minutes exist. |
 | S3 | DRAW | Five boxes on the board as you name the five units. Leave them up for the rest of the day. |
 | S5 | SAY | Name each unit in one sentence and move. The room does not need the business detail today and it will forget any of it that you add. |
@@ -105,7 +107,7 @@ The misplaced accumulator is the only one of the four that names no error and st
 | S19 | THEN | Mars Climate Orbiter. Give the number before the story. Do not add a second case and do not add detail beyond the row. |
 | S20 | SAY | "You lose ten seconds and you keep the truth." That is the answer they give when an interviewer asks why an error was the good outcome. |
 | S22 | DRAW | Draw the three branches on the board and mark the point where Python stops testing. |
-| S25 | THEN | Build the sum accumulator live and land on Rs 25,720, then say out loud that this is the number the day opened with. The room should feel the loop close. |
+| S25 | THEN | Build the sum accumulator live and land on Rs 25,720, then say out loud that this is the number the day opened with. The room should feel the loop close. The converter is on this slide because notebook 1 has already met the text amount in KR4200, and the guardrail on `int()` sits at block two S7, so read that note before you take a question about it here. |
 | S26 | TRAP | Take predictions before you run the misplaced accumulator. Somebody will predict an error. Run it, print `1460`, and let the silence sit. |
 | S28 | BRIDGE | Read the crux line as written: "The kernel remembers exactly what you gave it and nothing else, and the type of a value decides what every operator means." |
 
@@ -115,7 +117,7 @@ The misplaced accumulator is the only one of the four that names no error and st
 |---|---|---|
 | S3 | ASK | "How many of these orders are above Rs 2,000, and what do they add up to?" Ask it as a person at Kalpa would ask it, then start typing. |
 | S5 | THEN | Build the cell one line at a time with the room mirroring on their own Codespaces. Do not paste. Your typing speed is the room's pace and it should feel slow to you. |
-| S6 | TRAP | The TypeError lands on the very first record in the file. Say that they met this error an hour ago on a value they typed themselves, and here it is on a record somebody handed them. |
+| S6 | TRAP | The TypeError lands on the very first record in the file. Say that they met this error in block one, and here it is inside the cell they are typing themselves. |
 | S7 | SAY | `int()` is a converter today and it is never shown failing. Do not show it failing, do not mention `int("twelve")`, and do not answer the question if it comes from the room beyond saying that tomorrow opens on exactly that. Tomorrow's opening is already built around it. |
 | S8 | THEN | Print, then say the answer out loud as a sentence before anyone writes anything down. |
 | S9 | TRAP | The two thirteens. See the dedicated section below. Name it here, once, deliberately. |

@@ -94,7 +94,7 @@ One thing to write in your own notebook before you close this exercise. The open
 
 ## E2. Mid-session: predict the output
 
-Drop point: the break in the first half, after types and comparisons. About 15 minutes. Write every prediction down before you run a single cell.
+Drop point: the close of the first half, after the accumulators, and it runs before the find-the-mistake drill below it. About 15 minutes. Write every prediction down before you run a single cell.
 
 Three short cells. For each one, write what you think it prints, then run it and write what it actually printed. The gap between your two columns is the exercise.
 
@@ -125,10 +125,8 @@ print(total)
 Cell 3.
 
 ```
-r = {"order_id": "KR4202", "segment": "Retail-Plus", "amount": 1360,
-     "status": "delivered", "order_date": "2026-08-04"}
-
-print(r.get("discount", 0))
+print("900" > "2000")
+print(900 > 2000)
 ```
 
 Fill this in as you go, and fill the middle column in first.
@@ -137,9 +135,9 @@ Fill this in as you go, and fill the middle column in first.
 |---|---|---|
 | Cell 1, the two calls to `type()` | | |
 | Cell 2, the accumulator over three records | | |
-| Cell 3, the `.get()` with a default of 0 | | |
+| Cell 3, the two comparisons written with the same operator | | |
 
-Then answer two more questions in one line each, without running anything. What would cell 3 print if the default were 100 instead of 0, and what happens if you ask that same record for `r["discount"]` with square brackets?
+Then answer one more question in one line, without running anything. Somebody reads the two lines cell 3 printed and never sees the code that produced them. Say which of those two outputs they should trust, and say what they would have to look at before they could tell.
 
 ---
 
@@ -153,7 +151,7 @@ This cell runs all the way to the end and prints a number.
 for r in records:
     if r["status"] == "delivered":
         total = 0
-        total = total + r["amount"]
+        total = total + int(r["amount"])
 
 print(total)
 ```
@@ -184,4 +182,4 @@ Three rules that make this the real job rather than an exercise.
 
 Before the solution appears, write down one more thing. Your three counts do not add up to thirty. Say whether that is allowed, and name one order that lands inside two of your three answers.
 
-The solution is released at the close of the session. The same three questions continue as tonight's take-home, so keep the notebook you built them in and do not throw the cells away.
+The solution is released at the close of the session. Keep the notebook you built these three answers in and do not throw the cells away. Tonight's take-home is added to the bottom of that same notebook, and it turns this counter into two buckets either side of a boundary you choose.

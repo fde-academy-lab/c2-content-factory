@@ -56,7 +56,7 @@ be, and the Codespace you opened today is the environment for the whole programm
 | The explorer down the left | It lists the files in the repository, and today's notebook is one of them. |
 | The editor in the middle | It holds the notebook, one cell under another, with a run button on the left of each cell. |
 | The output under a cell | It shows what that cell produced, and it stays there until you run the cell again. |
-| The kernel indicator at the top right | It names the Python that is running your cells, and it is where you go to restart. |
+| The kernel indicator at the top right | It names the Python that is running your cells. |
 | The terminal panel at the bottom | It is a shell on the same machine, and you had no reason to open it today. |
 
 ## 4. Cells, the kernel, and what a restart erases
@@ -197,7 +197,7 @@ The sum accumulator has the same shape with the amount going in where the one wa
 total = 0
 for r in records:
     if r["status"] == "delivered":
-        total = total + r["amount"]
+        total = total + int(r["amount"])
 
 print(total)
 ```
@@ -215,7 +215,7 @@ start of the day.
 for r in records:
     if r["status"] == "delivered":
         total = 0
-        total = total + r["amount"]
+        total = total + int(r["amount"])
 
 print(total)
 ```

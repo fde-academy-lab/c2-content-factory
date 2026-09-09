@@ -52,7 +52,7 @@ You wrote three cells and ran them in the order 3, 1, 2. Which error appears, an
 
 ## Q3. Loops and accumulators
 
-Your accumulator adds the amount whenever the status is delivered. Three records go past it: KR4201 delivered at Rs 2,395, then KR4202 delivered at Rs 1,360, then KR4203 returned at Rs 1,440. What does `total` hold at the end?
+Your accumulator adds the amount when the status is delivered. KR4201 delivered Rs 2,395, KR4202 delivered Rs 1,360, KR4203 returned Rs 1,440. What does `total` hold?
 
 1. Rs 5,195, because every amount that went past was added
 2. Rs 3,755, because the returned order never reached the addition  <- correct
@@ -173,4 +173,4 @@ Key positions used: slot 1 appears 1 time, slot 2 appears 2 times, slot 3 appear
 
 In every item the key sits second or third longest of the four, so a learner who always picks the longest option and a learner who always picks the shortest one both finish with nothing. Every option in every item is a clause that answers the question and then states a reason for it, so no option gives itself away by being the only one shaped like a real answer, and every one of them is grammatical against its own stem.
 
-Longest question text: 226 characters in Q3, which will not fit the Kahoot question field, so Q3 goes in with a shortened stem and the three records shown on the slide behind it. Longest answer text: 86 characters. Check both against the field limits in Kahoot before pasting.
+Longest question text: 166 characters in Q3. Longest answer text: 86 characters. Check both against the field limits in Kahoot before pasting.

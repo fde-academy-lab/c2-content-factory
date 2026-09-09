@@ -67,14 +67,14 @@ this table does not belong in an artifact.
 | Records in the file | 30 | Every artifact in the pack states it |
 | Total of all amounts | Rs 58,210 | notebook 1, take-home self-check, tiered extras |
 | Smallest and largest amount | Rs 840 and Rs 4,500 | The largest amount reaches both teaching decks, both cheat sheets, exercises, the Kahoot pack, solutions, study notes, tiered extras, both notebooks, the activity and the day sheet, because it is also the planted text amount. The smallest amount is stated nowhere and sits only in the data file. |
-| delivered | 13 orders, Rs 25,720 | introduction deck, deck half one, deck half two, both cheat sheets, exercises, solutions, study notes, take-home self-check, notebook 1, day sheet |
+| delivered | 13 orders, Rs 25,720 | introduction deck, deck half one, deck half two, both cheat sheets, exercises, solutions, study notes, take-home self-check, notebook 1, the activity, day sheet |
 | returned | 7 orders, Rs 13,670 | solutions, study notes |
-| cancelled | 10 orders, Rs 18,820 | Approved and stated nowhere in the pack |
+| cancelled | 10 orders, Rs 18,820 | The count of 10 reaches the tiered extras recovery ladder, where it is the answer to steps 4 and 5. The total of Rs 18,820 is stated nowhere. |
 | Retail-Core | 8 orders, Rs 18,955 | Approved and stated nowhere in the pack |
 | Retail-Plus | 8 orders, Rs 14,050 | notebook 2 |
 | Student | 7 orders, Rs 12,945 | solutions, study notes |
 | Business | 7 orders, Rs 12,260 | Approved and stated nowhere in the pack |
-| Above Rs 2,000 | 13 orders, Rs 35,020 | both cheat sheets, deck half two, exercises, solutions, study notes, take-home self-check, notebook 2, activity, day sheet |
+| Above Rs 2,000 | 13 orders, Rs 35,020 | both cheat sheets, deck half two, exercises, solutions, study notes, take-home self-check, notebook 2, day sheet |
 | At or below Rs 2,000 | 17 orders, Rs 23,190 | take-home self-check |
 | Above Rs 1,500 | 17 orders, Rs 42,070 | take-home self-check |
 | At or below Rs 1,500 | 13 orders, Rs 16,140 | take-home self-check |
@@ -92,10 +92,10 @@ this table does not belong in an artifact.
 | Returned order ids | KR4200, KR4203, KR4218, KR4221, KR4225, KR4226, KR4228 | solutions, study notes, both notebooks |
 | The misplaced accumulator result | Rs 1,460, which is the amount of KR4224, the last delivered order in the file, and not a sum of anything | deck half one, solutions, study notes, notebook 1, day sheet |
 
-Five approved figures reach no artifact: the smallest amount, the cancelled group, the Retail-Core
-group, the Business group, and the count of distinct order dates. They stay in this table because a
-trainer who is asked one of them in the room can read the checked value here rather than guess at
-it, and because a later edit that needs one already has it.
+Five approved figures reach no artifact: the smallest amount, the cancelled group's total, the
+Retail-Core group, the Business group, and the count of distinct order dates. They stay in this
+table because a trainer who is asked one of them in the room can read the checked value here rather
+than guess at it, and because a later edit that needs one already has it.
 
 ## The two thirteens
 

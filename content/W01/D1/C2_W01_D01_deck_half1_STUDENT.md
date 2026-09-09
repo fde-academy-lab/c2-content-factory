@@ -304,7 +304,7 @@ The counter is set to zero once, above the loop, and each card that passes the c
 total = 0
 for r in records:
     if r["status"] == "delivered":
-        total = total + r["amount"]
+        total = total + int(r["amount"])
 
 print(total)
 ```
@@ -323,7 +323,7 @@ The shape is the same and the amount goes in where the one was. That is 13 deliv
 for r in records:
     if r["status"] == "delivered":
         total = 0
-        total = total + r["amount"]
+        total = total + int(r["amount"])
 
 print(total)
 ```

@@ -41,6 +41,8 @@ Sources below are copied from the Week 1 Day 1 curriculum row, which dates every
 | Automate the Boring Stuff 3e, Ch 1 to 3 | automatetheboringstuff.com/3e/ | 03 Sep 2026 |
 | GeeksforGeeks, Python interview questions | geeksforgeeks.org/python/python-interview-questions/ | 03 Sep 2026 |
 
+The same pass should also read the VS Code notebooks page listed above to confirm where the Restart control sits on the screen, because no file in this pack may name its position until that has been checked.
+
 ## Student references to verify
 
 | Reference | Row's URL | Row's stated check date |

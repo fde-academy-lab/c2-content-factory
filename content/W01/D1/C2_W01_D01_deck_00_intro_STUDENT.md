@@ -168,7 +168,7 @@ Close the laptop and take a sheet of paper.
 
 In 3 minutes, draw Kalpa from memory: five boxes for the five units, then the six tables of Kalpa Retail with the lines that join them.
 
-Compare with the person next to you and fix whichever box either of you missed. You will be drawing this again in Week 15.
+Compare with the person next to you and fix whichever box either of you missed. By the end of this week you should be able to draw this from memory, because every example for the rest of the programme lands inside it.
 
 ---
 
@@ -202,7 +202,7 @@ Each phase is a promise about what you can do when it closes.
 
 ## S13. The weeks that run differently
 
-Build weeks fall at Weeks 3, 6, 9, 12 and 15. Every other week teaches.
+Build weeks fall at Weeks 3, 6, 9, 12 and 15. Weeks 17 to 20 are the capstone weeks. Every other week teaches.
 
 The three major exams fall in Weeks 5, 10 and 15. Each one runs across its week as a continuous activity.
 

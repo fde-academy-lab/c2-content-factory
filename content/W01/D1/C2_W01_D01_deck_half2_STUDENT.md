@@ -68,7 +68,7 @@ TypeError: '>' not supported between instances of 'str' and 'int'
 
 It stops on the very first record in the file, which is KR4200 storing its amount as the text "4500".
 
-You met this error in half one on a value you typed yourself. Here it is on a record that was handed to you.
+You met this error in half one, and here it is inside the cell you are typing yourself.
 
 ---
 
