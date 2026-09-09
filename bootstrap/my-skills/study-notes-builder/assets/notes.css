@@ -1,0 +1,204 @@
+:root {
+  --ink: #161616;
+  --soft: #4A4A4A;
+  --muted: #8A8A8A;
+  --rule: #E2E2E2;
+  --panel: #F7F7F5;
+  --accent: #1E6B7A;
+  --ground: #FFFFFF;
+}
+
+@page {
+  size: A4;
+  margin: 20mm 18mm 18mm 18mm;
+  @bottom-left {
+    content: string(runfoot);
+    font-family: Poppins, Helvetica, sans-serif;
+    font-size: 7pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  @bottom-right {
+    content: counter(page);
+    font-family: Poppins, Helvetica, sans-serif;
+    font-size: 8pt;
+    color: var(--muted);
+  }
+}
+
+@page :first { margin-top: 24mm; }
+
+html { font-size: 11pt; }
+
+body {
+  font-family: Lora, Georgia, serif;
+  color: var(--ink);
+  background: var(--ground);
+  line-height: 1.58;
+  hyphens: none;
+}
+
+.runfoot { string-set: runfoot content(); position: absolute; visibility: hidden; }
+
+/* Header block */
+.note-head { margin-bottom: 14mm; }
+.note-head .meta {
+  font-family: Poppins, Helvetica, sans-serif;
+  font-size: 7.5pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 4mm 0;
+}
+.note-head h1 {
+  font-family: Poppins, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 21pt;
+  line-height: 1.22;
+  margin: 0 0 4mm 0;
+  letter-spacing: -0.01em;
+}
+.note-head .promise {
+  font-size: 12pt;
+  color: var(--soft);
+  font-style: italic;
+  margin: 0 0 5mm 0;
+  max-width: 34em;
+}
+.note-head .stamp {
+  font-family: Poppins, Helvetica, sans-serif;
+  font-size: 8pt;
+  color: var(--muted);
+  border-top: 1px solid var(--rule);
+  padding-top: 2.5mm;
+  margin: 0;
+}
+
+/* Headings */
+h2 {
+  font-family: Poppins, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 14.5pt;
+  line-height: 1.28;
+  margin: 11mm 0 3mm 0;
+  padding-top: 3mm;
+  border-top: 1px solid var(--rule);
+  break-after: avoid;
+}
+h3 {
+  font-family: Poppins, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 11.5pt;
+  margin: 7mm 0 2mm 0;
+  break-after: avoid;
+}
+h4 {
+  font-family: Poppins, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 9pt;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--soft);
+  margin: 5mm 0 1.5mm 0;
+  break-after: avoid;
+}
+
+p { margin: 0 0 3.2mm 0; orphans: 2; widows: 2; }
+strong { font-weight: 700; }
+a { color: var(--accent); text-decoration: none; }
+
+ul, ol { margin: 0 0 3.6mm 0; padding-left: 5.5mm; }
+li { margin-bottom: 1.6mm; }
+ol { counter-reset: none; }
+
+/* Tables: hairlines only, no fills, no borders */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 3mm 0 5mm 0;
+  font-size: 9.5pt;
+  break-inside: avoid;
+}
+thead th {
+  font-family: Poppins, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 7.5pt;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--soft);
+  text-align: left;
+  padding: 0 4mm 1.8mm 0;
+  border-bottom: 1.2px solid var(--ink);
+}
+tbody td {
+  vertical-align: top;
+  padding: 2.2mm 4mm 2.2mm 0;
+  border-bottom: 1px solid var(--rule);
+  line-height: 1.42;
+}
+tbody tr:last-child td { border-bottom: none; }
+td:first-child { font-family: Poppins, Helvetica, sans-serif; font-size: 9pt; }
+
+/* Figures */
+figure { margin: 5mm 0 6mm 0; break-inside: avoid; }
+figure img { width: 100%; height: auto; display: block; }
+figcaption {
+  font-family: Poppins, Helvetica, sans-serif;
+  font-size: 8pt;
+  line-height: 1.45;
+  color: var(--muted);
+  margin-top: 2.2mm;
+  padding-top: 1.8mm;
+  border-top: 1px solid var(--rule);
+}
+
+/* The four devices */
+blockquote.device {
+  margin: 4mm 0 4mm 0;
+  padding: 0 0 0 4.5mm;
+  border-left: 2px solid var(--rule);
+  break-inside: avoid;
+}
+blockquote.device p { margin: 0; font-size: 10pt; line-height: 1.5; color: var(--soft); }
+blockquote.device p strong:first-child {
+  font-family: Poppins, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 7.5pt;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+blockquote.device + blockquote.device { margin-top: 3.6mm; }
+blockquote.dev-field { border-left-color: var(--accent); }
+blockquote.dev-field p strong:first-child { color: var(--accent); }
+blockquote.dev-watch p strong:first-child { color: var(--ink); }
+blockquote.dev-origin p strong:first-child { color: var(--muted); }
+blockquote.dev-callback p strong:first-child { color: var(--muted); }
+
+/* Self-check and challenge */
+.panel {
+  background: var(--panel);
+  padding: 4.5mm 5mm 3mm 5mm;
+  margin: 4mm 0 5mm 0;
+  break-inside: avoid;
+}
+.panel p:last-child, .panel ul:last-child, .panel ol:last-child { margin-bottom: 0; }
+
+code, pre {
+  font-family: "DejaVu Sans Mono", Consolas, monospace;
+  font-size: 8.8pt;
+}
+pre {
+  background: var(--panel);
+  padding: 3.5mm 4mm;
+  margin: 3mm 0 4mm 0;
+  white-space: pre-wrap;
+  break-inside: avoid;
+}
+code { background: var(--panel); padding: 0.3mm 1mm; }
+pre code { background: none; padding: 0; }
+
+hr { border: none; border-top: 1px solid var(--rule); margin: 7mm 0; }
+.pagebreak { break-after: page; }
+
+h2 + p, h3 + p { margin-top: 0; }

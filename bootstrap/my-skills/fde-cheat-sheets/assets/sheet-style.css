@@ -1,0 +1,159 @@
+/* FDE Academy cheat sheet stylesheet.
+   Landscape A4, block grid, fixed function colour code.
+   Palette and type are established from the programme curriculum PDFs. */
+
+:root {
+  --pink: #FF4989;
+  --magenta: #C2007A;
+  --dark: #1A1A2E;
+  --body: #3F3F58;
+  --muted: #8A88A4;
+  --grid: #E4E2EE;
+  --rose: #FFF1F6;
+}
+
+@page {
+  size: A4 landscape;
+  margin: 9mm 10mm 8mm 10mm;
+}
+
+html, body {
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 7.6pt;
+  line-height: 1.38;
+  color: #3F3F58;
+  margin: 0;
+}
+
+/* Title band */
+.titleband {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 2pt solid #FF4989;
+  padding-bottom: 4pt;
+  margin-bottom: 7pt;
+}
+.titleband h1 {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 19pt;
+  color: #1A1A2E;
+  margin: 0;
+}
+.titleband .promise {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 8.6pt;
+  color: #C2007A;
+  margin-left: 12pt;
+  flex: 1;
+}
+.titleband .verified {
+  font-size: 6.6pt;
+  color: #8A88A4;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 6pt;
+}
+.w3 { grid-column: span 3; }
+.w4 { grid-column: span 4; }
+.w5 { grid-column: span 5; }
+.w6 { grid-column: span 6; }
+.w7 { grid-column: span 7; }
+.w8 { grid-column: span 8; }
+.w12 { grid-column: span 12; }
+
+/* Blocks: shared shell */
+.block {
+  border-radius: 5pt;
+  padding: 6pt 7pt;
+  page-break-inside: avoid;
+}
+.block h2 {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 8.6pt;
+  color: #1A1A2E;
+  margin: 0 0 4pt 0;
+}
+.block p { margin: 0 0 3.5pt 0; }
+.block ul { margin: 0; padding-left: 9pt; }
+.block li { margin-bottom: 2.5pt; }
+.block li::marker { color: #FF4989; }
+strong { color: #1A1A2E; }
+
+/* Function colour code */
+.anchor { background: white; border: 1pt solid #E4E2EE; }
+.def { background: #FFF1F6; }
+.decide { background: white; border: 1.2pt solid #FF4989; }
+.numbers { background: #1A1A2E; }
+.numbers h2, .numbers p, .numbers li { color: #F4F3F9; }
+.numbers .src { color: #C9C7DD; font-size: 6.3pt; }
+.trap { background: white; border: 1pt solid #E4E2EE; border-left: 3pt solid #C2007A; }
+.moves { background: white; border: 1.2pt solid #FF4989; font-family: "Liberation Mono", monospace; }
+.say { background: white; border: 1pt solid #E4E2EE; }
+.say p { font-style: italic; }
+.mnemonic { background: #FFF1F6; border: 1.2pt solid #FF4989; }
+.coined {
+  font-size: 6.3pt;
+  color: #C2007A;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Cards inside a block */
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4pt; }
+.cards.two { grid-template-columns: repeat(2, 1fr); }
+.card {
+  background: white;
+  border: 0.7pt solid #E4E2EE;
+  border-radius: 4pt;
+  padding: 4pt 5pt;
+}
+.card .cnum {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 7pt;
+  color: #FF4989;
+}
+.card .cname {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 7.4pt;
+  color: #1A1A2E;
+}
+
+/* Compact tables inside blocks */
+table { width: 100%; border-collapse: collapse; font-size: 7.3pt; }
+th {
+  font-family: "Poppins"; font-weight: 500; font-size: 6.8pt;
+  text-align: left; color: #C2007A; padding: 2pt 4pt;
+  border-bottom: 0.8pt solid #FF4989;
+}
+td { padding: 2.5pt 4pt; border-bottom: 0.5pt solid #E4E2EE; vertical-align: top; }
+
+/* Foot strip */
+.foot {
+  border-top: 1.4pt solid #1A1A2E;
+  margin-top: 7pt;
+  padding-top: 4pt;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3pt 14pt;
+  font-size: 6.9pt;
+}
+.foot .term { font-family: "Poppins"; font-weight: 700; font-size: 6.9pt; color: #C2007A; }
+
+figure { margin: 0; }
+figure img, .anchor img, .anchor svg { max-width: 100%; }
+figcaption { font-size: 6.4pt; color: #8A88A4; margin-top: 2pt; }
+
+/* Figures must stay visible on the dark numbers block */
+.numbers strong { color: #FF4989; }

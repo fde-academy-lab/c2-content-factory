@@ -1,0 +1,200 @@
+/* FDE Academy study note stylesheet.
+   Palette and type are established from the programme curriculum PDFs.
+   Render route: HTML plus this file through weasyprint. Do not restyle per note. */
+
+:root {
+  --pink: #FF4989;
+  --magenta: #C2007A;
+  --dark: #1A1A2E;
+  --body: #3F3F58;
+  --muted: #8A88A4;
+  --grid: #E4E2EE;
+  --rose: #FFF1F6;
+}
+
+@page {
+  size: A4;
+  margin: 18mm 16mm 20mm 16mm;
+  @bottom-right {
+    content: counter(page) " / " counter(pages);
+    font-family: "Poppins";
+    font-weight: 500;
+    font-size: 8pt;
+    color: #8A88A4;
+  }
+  @bottom-left {
+    content: "FDE Academy · Study note";
+    font-family: "Poppins";
+    font-weight: 500;
+    font-size: 8pt;
+    color: #8A88A4;
+  }
+}
+
+html, body {
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 9.8pt;
+  line-height: 1.55;
+  color: #3F3F58;
+}
+
+/* Header band, section 1 of the template */
+.kicker {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 8.5pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #FF4989;
+  margin: 0 0 6pt 0;
+}
+
+h1 {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 24pt;
+  line-height: 1.15;
+  color: #1A1A2E;
+  margin: 0 0 8pt 0;
+}
+
+.promise {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 11.5pt;
+  color: #C2007A;
+  border-bottom: 2pt solid #FF4989;
+  padding-bottom: 10pt;
+  margin-bottom: 16pt;
+}
+
+h2 {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 14pt;
+  color: #1A1A2E;
+  border-left: 4pt solid #FF4989;
+  padding-left: 8pt;
+  margin: 20pt 0 8pt 0;
+  page-break-after: avoid;
+}
+
+h3 {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 11pt;
+  color: #C2007A;
+  margin: 14pt 0 5pt 0;
+  page-break-after: avoid;
+}
+
+p { margin: 0 0 7pt 0; }
+
+ul, ol { margin: 0 0 8pt 0; padding-left: 16pt; }
+li { margin-bottom: 4pt; }
+li::marker { color: #FF4989; }
+
+strong { color: #1A1A2E; }
+a { color: #C2007A; text-decoration: none; }
+
+/* Takeaway list, section 2 */
+.takeaways {
+  background: #FFF1F6;
+  border: 0.6pt solid #E4E2EE;
+  border-radius: 4pt;
+  padding: 10pt 14pt 10pt 26pt;
+  page-break-inside: avoid;
+}
+.takeaways li { margin-bottom: 6pt; }
+
+/* Figures and their captions */
+figure { margin: 10pt 0; page-break-inside: avoid; text-align: center; }
+figure img { max-width: 100%; }
+figcaption {
+  font-size: 8.3pt;
+  color: #8A88A4;
+  margin-top: 4pt;
+  text-align: center;
+}
+
+/* Trivia and history box, at most one per concept */
+.trivia {
+  background: #FFF1F6;
+  border-left: 3pt solid #FF4989;
+  padding: 8pt 12pt;
+  margin: 10pt 0;
+  font-size: 9.2pt;
+  page-break-inside: avoid;
+}
+
+/* Self-check box, section 6 */
+.check {
+  border: 1.2pt solid #C2007A;
+  border-radius: 4pt;
+  padding: 10pt 12pt;
+  margin: 12pt 0;
+  page-break-inside: avoid;
+}
+.check .label {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 9pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #C2007A;
+  margin-bottom: 5pt;
+}
+
+/* Tables: glossary, comparisons, further reading */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8pt 0 12pt 0;
+  font-size: 9.2pt;
+}
+th {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 8.8pt;
+  text-align: left;
+  background: #1A1A2E;
+  color: #FFFFFF;
+  padding: 5pt 7pt;
+}
+td {
+  border: 0.6pt solid #E4E2EE;
+  padding: 5pt 7pt;
+  vertical-align: top;
+}
+tr:nth-child(even) td { background: #FAFAFC; }
+
+/* Inline code and code blocks, rare in a note but styled for safety */
+code {
+  font-family: "Liberation Mono", monospace;
+  font-size: 8.8pt;
+  background: #FAFAFC;
+  border: 0.6pt solid #E4E2EE;
+  border-radius: 2pt;
+  padding: 0 3pt;
+  color: #1A1A2E;
+}
+pre {
+  background: #FAFAFC;
+  border: 0.6pt solid #E4E2EE;
+  border-radius: 4pt;
+  padding: 8pt;
+  page-break-inside: avoid;
+}
+pre code { border: none; background: none; }
+
+/* Code panels for snippets harvested from session code files */
+.code-panel {
+  background: #1A1A2E;
+  border-radius: 6pt;
+  padding: 10pt 12pt;
+  margin: 10pt 0 4pt 0;
+  page-break-inside: avoid;
+}
+.code-panel pre { background: none; border: none; padding: 0; margin: 0; }
+.code-panel code { background: none; border: none; color: #F4F3F9; font-size: 8.6pt; }
+.code-caption { font-size: 8.3pt; color: #8A88A4; margin: 0 0 10pt 2pt; }
