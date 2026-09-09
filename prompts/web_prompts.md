@@ -2,6 +2,35 @@
 
 One task per prompt. Start each from claude.ai/code with `c2-content-factory` selected.
 
+## Filling in the day prompts
+
+Prompts 3 and 4 are templates. Every value that changes per day is a placeholder, and the same
+placeholder appears everywhere it is needed, so substituting once gets the whole prompt right.
+
+| Placeholder | Means | Wednesday of Week 1 |
+|---|---|---|
+| `{WW}` | Week number, always two digits | `01` |
+| `{D}` | Day number as the **folder** is named, one digit | `3` |
+| `{DD}` | Day number as **filenames and the branch** are written, two digits | `03` |
+| `{WEEKDAY}` | Weekday name | `Wednesday` |
+| `{DATE}` | Full date | `30 September 2026` |
+| `{WEEK_FILE}` | The week tab export in `docs/curriculum/`, which uses a single-digit week | `W1_Curriculum.md` |
+
+Three of these bite if you skim them.
+
+The folder is `D{D}` with one digit and the filename stem is `D{DD}` with two, so Wednesday
+lives in `content/W01/D3/` as `C2_W01_D03_...`. They do not match by design and the verifier
+now fails when they disagree.
+
+The week tab file uses a single-digit week, so Week 1 is `W1_Curriculum.md` while the content
+folder is `W01`. Build weeks use a different name again, such as `W3_Build_1.md`.
+
+Before pasting, search the filled prompt for any of the six placeholders above still in braces.
+One unreplaced `{D}` is how a Day 3 build ends up writing over a merged Day 2 pack.
+
+`{artifact}`, `{AUDIENCE}` and `{ext}` are different. They are part of the naming rule itself and
+stay in braces, because the session fills them per file.
+
 ---
 
 ## Prompt 1. Install the skill and finish the scaffold
@@ -36,42 +65,46 @@ The answers must come from the files. If anything is vague or invented, stop and
 
 ---
 
-## Prompt 3. Build one teaching day (use for D2, D3, D4)
+## Prompt 3. Build one teaching day (use for any regular teaching day)
 
-Replace the three values in the first line.
+Substitute the six placeholders from the table above, then read the filled prompt back looking for any of them still in braces.
 
 ```
-Build the full day pack for Cohort 2, Week 1, Day 2, Tuesday 29 September 2026.
+Build the full day pack for Cohort 2, Week {WW}, Day {DD}, {WEEKDAY} {DATE}.
 
-Source of truth, in order: this prompt, the day's row in docs/curriculum/W1_Curriculum.md, docs/curriculum/Structure.md, and docs/06_Day_Pack_Method.md. Follow .claude/skills/day-pack-builder/SKILL.md. If the row is missing, the client-zero lock is needed and absent, or a link on the row is unverified, stop and name the gap instead of building around it.
+Source of truth, in order: this prompt, the day's row in docs/curriculum/{WEEK_FILE}, docs/curriculum/Structure.md, and docs/06_Day_Pack_Method.md. Follow .claude/skills/day-pack-builder/SKILL.md. If the row is missing, the client-zero lock is needed and absent, or a link on the row is unverified, stop and name the gap instead of building around it.
 
 Run the gates in order and stop after gate 2 for my approval:
 1. Envelope and continuity: what the room already knows, what today must not repeat, what comes later, all from the row, in one short block.
-2. The spine, one screen: the deck decision (one deck, or half one and half two), section list per artifact, the day's mental-model arc in one sentence, the deliberate failures with exact error text, the activity choice and its toggle, the take-home shape with its resistance patterns named. Wait for my approval.
+2. The spine, one screen: the deck decision (one deck, or half one and half two), section list per artifact, the day's mental-model arc in one sentence, the deliberate failures with their exact error text or exact wrong output, the activity choice and its toggle, the take-home shape with its resistance patterns named. Wait for my approval.
 3. Build passes after approval, one artifact family per message: (a) deck or deck halves, (b) notebooks, (c) activity, (d) exercises with solutions, (e) take-home with its self-check spine, (f) Kahoot pack, (g) study notes, cheat sheet and pre-read.
-4. Run python3 scripts/verify.py content/W01/D2 and fix every failure, then report the results including what failed and was fixed.
+4. Run python3 scripts/verify.py content/W{WW}/D{D} --execute and fix every failure, then report the results including what failed and was fixed.
 
-Write every file under content/W01/D2/ using C2_W01_D02_{artifact}_{AUDIENCE}.{ext}. Commit on branch w01-d2.
+Write every file under content/W{WW}/D{D}/ using C2_W{WW}_D{DD}_{artifact}_{AUDIENCE}.{ext}. Commit on branch w{WW}-d{DD}.
 
-Binding rules: mental model first and spiral always; at most four new ideas per two-hour block; application before theory; one deliberate failure per block with exact error text; notebooks rich and progressive (idea, diagram, demo, output, failure, fix, industry example and interview question at milestones, one new element per section); activity toggle-driven with minimal typing; exercises few and think-heavy with selection or repair answers; take-home shortcut-resistant with verified exploration links and a self-check spine; durations only, role labels only, Rs never the glyph, no em-dashes.
+Binding rules: mental model first and spiral always; at most four new ideas per two-hour block; application before theory; one deliberate failure per block, carrying its exact error text where the break is a crash and its exact wrong output where the break is not; notebooks rich and progressive (idea, diagram, demo, output, failure, fix, industry example and interview question at milestones, one new element per section); activity toggle-driven with minimal typing; exercises few and think-heavy with selection or repair answers; take-home shortcut-resistant with verified exploration links and a self-check spine; durations only, role labels only, Rs never the glyph, no em-dashes.
 ```
 
 Then: approve the spine in the same session, let the passes run, read the verification report, open the diff, create the pull request, merge.
 
+One session per day pack. Start a new task for the next day rather than continuing this one.
+
 ---
 
-## Prompt 4. Build the Saturday recap pack (D6)
+## Prompt 4. Build the Saturday recap pack (the D6 of any regular week)
+
+Substitute the six placeholders from the table above. Saturday is day 6, so `{D}` is `6` and `{DD}` is `06`.
 
 ```
-Build the Saturday pack for Cohort 2, Week 1, Day 6, Saturday 3 October 2026.
+Build the Saturday pack for Cohort 2, Week {WW}, Day {DD}, {WEEKDAY} {DATE}.
 
-Source of truth: the Saturday row in docs/curriculum/W1_Curriculum.md, docs/curriculum/Structure.md, and docs/06_Day_Pack_Method.md. Saturday is not a teaching day, so build only these:
+Source of truth: the Saturday row in docs/curriculum/{WEEK_FILE}, docs/curriculum/Structure.md, and docs/06_Day_Pack_Method.md. Saturday is not a teaching day, so build only these:
 
 1. The recap paper: pen and paper, AI-free, about two hours, built from the question set on the Saturday row, short-answer format so papers can be swapped for peer cross-evaluation. Questions carry no answers on the student paper.
 2. The answer key and marking guide for the peer cross-evaluation, with the mark split per question and what a full-credit answer contains.
 3. The discussion guide for the Academic TA: the order to walk the answers, the two follow-ups per question, and the random call-out list.
 
-Stop after a one-screen spine for my approval before writing anything. Then write to content/W01/D6/ as C2_W01_D06_recap_paper_STUDENT.md, C2_W01_D06_answer_key_TRAINER.md and C2_W01_D06_discussion_guide_TRAINER.md. Run python3 scripts/verify.py content/W01/D6 and report. Commit on branch w01-d6.
+Stop after a one-screen spine for my approval before writing anything. Then write to content/W{WW}/D{D}/ as C2_W{WW}_D{DD}_recap_paper_STUDENT.md, C2_W{WW}_D{DD}_answer_key_TRAINER.md and C2_W{WW}_D{DD}_discussion_guide_TRAINER.md. Run python3 scripts/verify.py content/W{WW}/D{D} and report. Commit on branch w{WW}-d{DD}.
 
 The paper is ungraded and is a performance indicator, so state no marks total anywhere in the student file.
 ```
