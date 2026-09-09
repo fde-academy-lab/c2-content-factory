@@ -1,8 +1,12 @@
-"""Verification gate for a day pack. Usage: python3 scripts/verify.py content/W01/D1 [--execute]
+"""Verification gate for a day pack. Usage: python3 scripts/verify.py content/W01/D2 [--execute]
 --execute additionally cold-runs every notebook via jupyter nbconvert (needs jupyter installed).
-Every filename must carry the C2_W{ww}_D{dd} stem matching the day folder it sits in, so a build
-pointed at the wrong day fails here rather than overwriting another day's pack.
-Exit code 0 means pass; any FAIL line means the pack is not done."""
+
+Three things are checked beyond the writing rules. Every filename must carry the
+C2_W{ww}_D{dd} or C2_W{ww}_SAT stem matching the folder it sits in, so a build pointed at the
+wrong day fails here rather than overwriting another day's pack. Every file must sit in one of
+the subfolders its folder type allows, so a pack cannot quietly invent its own layout. And no
+file may sit loose at the day folder's root.
+"""
 import sys, re, json, pathlib, subprocess
 
 BANNED = ["Additionally","Moreover","However","Hence","Thus","Nonetheless","Furthermore","Accordingly",
@@ -13,34 +17,64 @@ TRAINER_NAMES = ["Akash","Ishu","Anmol","Rushikesh","Navaid","Kanchan","Umashank
 CLOCK = re.compile(r"\b\d{1,2}[:.]\d{2}\s?(AM|PM|am|pm)\b")
 NXBY = re.compile(r"\bnot\s+\w+[^.\n]{0,40},\s*but\b", re.IGNORECASE)
 URL = re.compile(r"https?://\S+")
-DAY_FOLDER = re.compile(r"W(\d{1,2})[/\\]D(\d{1,2})$")
-DAY_STEM = re.compile(r"^C2_W(\d{2})_D(\d{2})_")
+DAY_FOLDER = re.compile(r"W(\d{1,2})[/\\](D(\d{1,2})|SAT)$")
+DAY_STEM = re.compile(r"^C2_W(\d{2})_(D\d{2}|SAT)_")
 DATED = re.compile(r"(verified|checked)\s+\d{1,2}\s+\w+\s+\d{4}", re.IGNORECASE)
 
-def check_targeting(target, files):
-    """Fail when a file's C2_W{ww}_D{dd} stem disagrees with the day folder it sits in.
+# Build weeks per the Structure tab: 3, 6 and 9 in this workbook, then 12 and 15 later in the
+# programme. They ship the build-week pack instead of the teaching manifest, so their folders differ.
+BUILD_WEEKS = {3, 6, 9, 12, 15}
 
-    The folder is single digit (D2) and the stem is zero padded (D02), so they are compared
-    as integers. This catches a build that was pointed at the wrong day, which is otherwise
-    invisible: every other check still passes while the files overwrite another day's pack.
-    """
+TEACHING_DIRS = {
+    "slides", "notebooks", "demos", "whiteboards", "cheatsheets", "study-notes",
+    "exercises", "exercises/guided", "exercises/unguided", "exercises/solutions",
+    "takehome", "kahoot", "preread", "extras", "data", "trainer", "internal", "corrections",
+}
+BUILD_DIRS = {
+    "briefs", "rubrics", "gd", "parallel-build", "checkpoints", "mocks", "trainer", "internal",
+}
+SAT_RECAP_DIRS = {"paper", "answer-key", "discussion"}
+
+
+def folder_shape(week, day_label):
+    """Which subfolders this day folder is allowed to hold, and what to call the shape."""
+    if week in BUILD_WEEKS:
+        return ("build day" if day_label != "SAT" else "build week Saturday"), BUILD_DIRS
+    if day_label == "SAT":
+        return "Saturday recap", SAT_RECAP_DIRS
+    return "teaching day", TEACHING_DIRS
+
+
+def check_layout(target, files):
+    """Fail on a wrong day stem, a file loose at the root, or a folder outside the shape."""
     m = DAY_FOLDER.search(str(target).rstrip("/\\"))
     if not m:
-        print(f"INFO  {target} is not a W{{ww}}/D{{d}} day folder, so the day-stem check is skipped")
+        print(f"INFO  {target} is not a W{{ww}}/D{{d}} or W{{ww}}/SAT folder, so layout checks are skipped")
         return 0
-    want = f"C2_W{int(m.group(1)):02d}_D{int(m.group(2)):02d}_"
+    week = int(m.group(1))
+    day_label = "SAT" if m.group(2) == "SAT" else f"D{int(m.group(3)):02d}"
+    want = f"C2_W{week:02d}_{day_label}_"
+    shape_name, allowed = folder_shape(week, day_label)
     fails = 0
     for p in files:
         found = DAY_STEM.match(p.name)
         if not found:
-            print(f"FAIL  {p.name}: no C2_W{{ww}}_D{{dd}}_ stem in the filename; {target} expects {want}")
+            print(f"FAIL  {p.name}: no C2_W{{ww}}_D{{dd}}_ or C2_W{{ww}}_SAT_ stem; {target} expects {want}")
             fails += 1
         elif found.group(0) != want:
-            print(f"FAIL  {p.name}: stem says week {found.group(1)} day {found.group(2)}, "
+            print(f"FAIL  {p.name}: stem says week {found.group(1)} {found.group(2)}, "
                   f"but the file sits in {target}, which expects {want}")
             fails += 1
+        rel = p.parent.relative_to(target).as_posix()
+        if rel == ".":
+            print(f"FAIL  {p.name}: loose at the day folder root; every file belongs in a subfolder")
+            fails += 1
+        elif rel not in allowed:
+            print(f"FAIL  {p.name}: sits in '{rel}', which is not a {shape_name} folder. "
+                  f"Allowed: {', '.join(sorted(allowed))}")
+            fails += 1
     if not fails:
-        print(f"PASS  every filename carries the {want} stem for {target}")
+        print(f"PASS  {len(files)} files, every stem {want} and every folder valid for a {shape_name}")
     return fails
 
 
@@ -63,14 +97,14 @@ def main():
     files = [p for p in target.rglob("*") if p.is_file() and p.name != ".gitkeep"]
     if not files:
         print("FAIL  no files found under", target); sys.exit(1)
-    fails += check_targeting(target, files)
+    fails += check_layout(target, files)
     for p in files:
         name = p.name
         if not re.search(r"_(STUDENT|TRAINER|INTERNAL)\.", name):
             print(f"FAIL  {name}: missing audience tag in filename"); fails += 1
         student = "_STUDENT." in name
         for txt in texts_from(p):
-            if "\u2014" in txt or "\u2013" in txt:
+            if "—" in txt or "–" in txt:
                 print(f"FAIL  {name}: em or en dash present"); fails += 1
             for b in BANNED:
                 if re.search(r"\b" + re.escape(b) + r"\b", txt, re.IGNORECASE if b[0].islower() else 0):
@@ -79,7 +113,7 @@ def main():
                 print(f"FAIL  {name}: 'not X, but Y' construction"); fails += 1
             if CLOCK.search(txt):
                 print(f"FAIL  {name}: clock time found (durations only)"); fails += 1
-            if "\u20b9" in txt:
+            if "₹" in txt:
                 print(f"FAIL  {name}: rupee glyph (use Rs)"); fails += 1
             if student:
                 for nm in TRAINER_NAMES:
@@ -91,6 +125,8 @@ def main():
                 if URL.search(line) and not DATED.search(line) and "to be found" not in line.lower():
                     print(f"WARN  {name}: undated link: {line.strip()[:90]}")
         if execute and p.suffix == ".ipynb":
+            # nbconvert runs the notebook with its own folder as the working directory, which is
+            # what makes the ../data paths in a notebook resolve the way they do for a learner.
             r = subprocess.run(["jupyter", "nbconvert", "--to", "notebook", "--execute",
                                 "--output", "/tmp/_exec_check.ipynb", str(p)],
                                capture_output=True, text=True)

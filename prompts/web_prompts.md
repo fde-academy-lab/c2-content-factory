@@ -12,6 +12,9 @@ placeholder appears everywhere it is needed, so substituting once gets the whole
 | `{WW}` | Week number, always two digits | `01` |
 | `{D}` | Day number as the **folder** is named, one digit | `3` |
 | `{DD}` | Day number as **filenames and the branch** are written, two digits | `03` |
+
+Saturday is the exception: its folder is `content/W{WW}/SAT/`, its filenames use the stem
+`C2_W{WW}_SAT_`, and its branch is `w{WW}-sat`. Prompt 4 has this already filled in.
 | `{WEEKDAY}` | Weekday name | `Wednesday` |
 | `{DATE}` | Full date | `30 September 2026` |
 | `{WEEK_FILE}` | The week tab export in `docs/curriculum/`, which uses a single-digit week | `W1_Curriculum.md` |
@@ -21,6 +24,10 @@ Three of these bite if you skim them.
 The folder is `D{D}` with one digit and the filename stem is `D{DD}` with two, so Wednesday
 lives in `content/W01/D3/` as `C2_W01_D03_...`. They do not match by design and the verifier
 now fails when they disagree.
+
+Inside the day folder every file sits in a subfolder by artifact type, and the verifier fails a
+file left loose at the root or filed in a folder that day shape does not have. `content/README.md`
+is the layout.
 
 The week tab file uses a single-digit week, so Week 1 is `W1_Curriculum.md` while the content
 folder is `W01`. Build weeks use a different name again, such as `W3_Build_1.md`.
@@ -40,7 +47,7 @@ Set up this repository so future sessions load the day-pack skill automatically.
 
 1. Create the directory .claude/skills and move bootstrap/day-pack-builder into it, so the result is .claude/skills/day-pack-builder/SKILL.md plus its references folder. Remove the now-empty bootstrap directory.
 2. Create a .gitignore containing: .DS_Store, __pycache__/, *.pyc, .ipynb_checkpoints/
-3. Create the directories content/W01 through content/W09, each with subdirectories D1 to D6, and put an empty .gitkeep file in each so git tracks them.
+3. Create the directories content/W01 through content/W09. Each gets a D{n} subdirectory for every weekday that has a session, numbered Monday to Friday as D1 to D5 with holidays left out, plus a SAT subdirectory. Read content/README.md for which days each week has. Put an empty .gitkeep file in each so git tracks them.
 4. Read CLAUDE.md and .claude/skills/day-pack-builder/SKILL.md, then reply with: the ground-truth order, the six build-workflow steps, and the name of the file you must read before building any day pack. Do not build any content.
 5. Commit on a branch named setup-skill and stop.
 ```
@@ -80,7 +87,7 @@ Run the gates in order and stop after gate 2 for my approval:
 3. Build passes after approval, one artifact family per message: (a) deck or deck halves, (b) notebooks, (c) activity, (d) exercises with solutions, (e) take-home with its self-check spine, (f) Kahoot pack, (g) study notes, cheat sheet and pre-read.
 4. Run python3 scripts/verify.py content/W{WW}/D{D} --execute and fix every failure, then report the results including what failed and was fixed.
 
-Write every file under content/W{WW}/D{D}/ using C2_W{WW}_D{DD}_{artifact}_{AUDIENCE}.{ext}. Commit on branch w{WW}-d{DD}.
+Write every file under content/W{WW}/D{D}/ inside the subfolder its artifact type belongs in, named C2_W{WW}_D{DD}_{topic}_{AUDIENCE}.{ext}. Read content/README.md for the folder set before pass 1, and leave no file loose at the day folder root. Commit on branch w{WW}-d{DD}.
 
 Binding rules: mental model first and spiral always; at most four new ideas per two-hour block; application before theory; one deliberate failure per block, carrying its exact error text where the break is a crash and its exact wrong output where the break is not; notebooks rich and progressive (idea, diagram, demo, output, failure, fix, industry example and interview question at milestones, one new element per section); activity toggle-driven with minimal typing; exercises few and think-heavy with selection or repair answers; take-home shortcut-resistant with verified exploration links and a self-check spine; durations only, role labels only, Rs never the glyph, no em-dashes.
 ```
@@ -91,12 +98,12 @@ One session per day pack. Start a new task for the next day rather than continui
 
 ---
 
-## Prompt 4. Build the Saturday recap pack (the D6 of any regular week)
+## Prompt 4. Build the Saturday recap pack (the SAT folder of any regular week)
 
-Substitute the six placeholders from the table above. Saturday is day 6, so `{D}` is `6` and `{DD}` is `06`.
+Substitute `{WW}`, `{WEEKDAY}`, `{DATE}` and `{WEEK_FILE}` from the table above. Saturday uses `SAT` everywhere a numbered day would appear, so there is no `{D}` or `{DD}` to fill.
 
 ```
-Build the Saturday pack for Cohort 2, Week {WW}, Day {DD}, {WEEKDAY} {DATE}.
+Build the Saturday pack for Cohort 2, Week {WW}, Saturday {DATE}.
 
 Source of truth: the Saturday row in docs/curriculum/{WEEK_FILE}, docs/curriculum/Structure.md, and docs/06_Day_Pack_Method.md. Saturday is not a teaching day, so build only these:
 
@@ -104,7 +111,7 @@ Source of truth: the Saturday row in docs/curriculum/{WEEK_FILE}, docs/curriculu
 2. The answer key and marking guide for the peer cross-evaluation, with the mark split per question and what a full-credit answer contains.
 3. The discussion guide for the Academic TA: the order to walk the answers, the two follow-ups per question, and the random call-out list.
 
-Stop after a one-screen spine for my approval before writing anything. Then write to content/W{WW}/D{D}/ as C2_W{WW}_D{DD}_recap_paper_STUDENT.md, C2_W{WW}_D{DD}_answer_key_TRAINER.md and C2_W{WW}_D{DD}_discussion_guide_TRAINER.md. Run python3 scripts/verify.py content/W{WW}/D{D} and report. Commit on branch w{WW}-d{DD}.
+Stop after a one-screen spine for my approval before writing anything. Then write content/W{WW}/SAT/paper/C2_W{WW}_SAT_paper_STUDENT.md, content/W{WW}/SAT/answer-key/C2_W{WW}_SAT_answer_key_TRAINER.md and content/W{WW}/SAT/discussion/C2_W{WW}_SAT_discussion_TRAINER.md. Run python3 scripts/verify.py content/W{WW}/SAT and report. Commit on branch w{WW}-sat.
 
 The paper is ungraded and is a performance indicator, so state no marks total anywhere in the student file.
 ```

@@ -22,8 +22,8 @@ Trainer file. Never given to learners, never pasted into a student artifact.
 
 | Block | Agenda items | Duration | Deck |
 |---|---|---|---|
-| Half one | Opening demo, functions, errors, guided carve | 150 minutes | `deck_half1` |
-| Half two | Files, the AI-free lab, Kahoot and close | 120 minutes | `deck_half2` |
+| Half one | Opening demo, functions, errors, guided carve | 150 minutes | `slides/half1` |
+| Half two | Files, the AI-free lab, Kahoot and close | 120 minutes | `slides/half2` |
 
 Fixed content totals 270 minutes. Trainer discretion fills whatever remains.
 
@@ -96,7 +96,7 @@ The bare except demonstration is the one that must not be cut under any time pre
 
 ## The activity, and where it drops
 
-`activity_defensive_stance_STUDENT.html` runs inside the errors section of half one, at slides S17 to S19, in place of talking through the bare except a second time. Budget about 15 minutes from that section.
+`demos/C2_W01_D02_defensive_stance_STUDENT.html` runs inside the errors section of half one, at slides S17 to S19, in place of talking through the bare except a second time. Budget about 15 minutes from that section.
 
 Open it on the projector first and flip one switch. Then let them open it themselves and find a setting they would sign. Ask three learners to say which setting they chose and why, and press the one who chose validate-first with the awkward record included, because that setting is honest and still throws away a good record.
 

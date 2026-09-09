@@ -52,7 +52,7 @@ Sources below are copied from the Week 1 Day 2 curriculum row, which carries its
 
 | File | Where |
 |---|---|
-| `C2_W01_D02_takehome_STUDENT.md` | The reading section, Automate the Boring Stuff chapter 10 |
-| `C2_W01_D02_preread_STUDENT.md` | Optional reading, same chapter |
+| `takehome/C2_W01_D02_brief_STUDENT.md` | The reading section, Automate the Boring Stuff chapter 10 |
+| `preread/C2_W01_D02_preread_STUDENT.md` | Optional reading, same chapter |
 
 The take-home currently rests on four shortcut-resistance patterns out of five. The fifth pattern, requiring a learner to read a named verified source and cite one specific thing found there, is the one waiting on these links. Adding it is a two-line edit to the take-home once the URLs are verified.

@@ -8,7 +8,7 @@ You are not being asked to write new machinery. You are being asked to point thi
 
 ## What you are given
 
-`C2_W01_D02_data_takehome_STUDENT.csv`. Same five fields as today. Defects you have not met.
+`../data/C2_W01_D02_takehome_STUDENT.csv`. Same five fields as today. Defects you have not met.
 
 ## What you hand in
 
@@ -81,6 +81,6 @@ The totals matter least. Two learners can hand in different totals and both be r
 
 ## Before you hand it in
 
-Open `C2_W01_D02_takehome_selfcheck_STUDENT.md`. It contains checkpoints you can verify alone, so you know where you stand before anybody else looks.
+Open `C2_W01_D02_selfcheck_STUDENT.md`. It contains checkpoints you can verify alone, so you know where you stand before anybody else looks.
 
 Open it after you have finished, not before. Reading it first turns this into a copying exercise and you will feel the difference tomorrow.

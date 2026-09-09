@@ -10,7 +10,7 @@ No shame in this. Work through these in order and stop when you are moving again
 
 **Step 1. Prove you can read the file.**
 
-Open `C2_W01_D02_data_lab_STUDENT.csv` with `csv.DictReader` and print the first record and the record count. Nothing else. If this fails, the problem is the path, and the error message contains the path it tried.
+Open `../data/C2_W01_D02_lab_STUDENT.csv` with `csv.DictReader` and print the first record and the record count. Nothing else. If this fails, the problem is the path, and the error message contains the path it tried.
 
 You should see 24 records.
 
@@ -40,7 +40,7 @@ Do not go looking for pandas. Go deeper into what you already have.
 
 **The recovery question.**
 
-In `C2_W01_D02_data_orders_STUDENT.json`, record KR4214 has `"amount": null` and its original value sits inside the nested `source` block. Your morning run rejected that record on the CSV, and the value was available the whole time.
+In `../data/C2_W01_D02_orders_STUDENT.json`, record KR4214 has `"amount": null` and its original value sits inside the nested `source` block. Your morning run rejected that record on the CSV, and the value was available the whole time.
 
 Write a function `recover_amount(record)` that takes a JSON record and returns the amount, preferring the top-level value and falling back to the nested one. Then answer these in a markdown cell:
 

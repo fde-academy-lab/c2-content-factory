@@ -4,8 +4,8 @@ Every version in section 4 of docs/07_Client_Zero.md is produced here, so day pa
 data rather than invent it and all sixty learners hold byte-identical files.
 
 Usage:
-    python3 data/generate_client_zero.py --version v0 --out content/W01/D2
-    python3 data/generate_client_zero.py --version v1 --out content/W01/D3
+    python3 data/generate_client_zero.py --version v0 --out content/W01/D2/data --stem C2_W01_D02
+    python3 data/generate_client_zero.py --version v1 --out content/W01/D3/data --stem C2_W01_D03
     python3 data/generate_client_zero.py --list
 
 Every planted defect is a witness for exactly one teaching point, and each one is named in
@@ -169,7 +169,7 @@ def _customer_block(rng, row):
 
 
 # Exercise variants ship as a single CSV. Only the spine versions get the JSON pair.
-CSV_ONLY = {"w1d2-lab": "data_lab", "w1d2-takehome": "data_takehome"}
+CSV_ONLY = {"w1d2-lab": "lab", "w1d2-takehome": "takehome"}
 
 
 def write(version, out_dir, stem):
@@ -185,7 +185,7 @@ def write(version, out_dir, stem):
             w.writeheader(); w.writerows(rows)
         return rows, [only]
 
-    csv_path = out / f"{stem}_data_orders_STUDENT.csv"
+    csv_path = out / f"{stem}_orders_STUDENT.csv"
     with csv_path.open("w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS, extrasaction="ignore")
         w.writeheader(); w.writerows(rows)
@@ -198,16 +198,16 @@ def write(version, out_dir, stem):
                          "amount_raw": r.get("_true_amount", r["amount"]) or r["amount"]}
         rec["customer"] = _customer_block(rng, r)
         nested.append(rec)
-    json_path = out / f"{stem}_data_orders_STUDENT.json"
+    json_path = out / f"{stem}_orders_STUDENT.json"
     json_path.write_text(json.dumps(nested, indent=2) + "\n")
 
     lines = json.dumps(nested[:8], indent=2).splitlines()
-    trunc = out / f"{stem}_data_vendor_truncated_STUDENT.json"
+    trunc = out / f"{stem}_vendor_truncated_STUDENT.json"
     trunc.write_text("\n".join(lines[:47]) + "\n")
 
     written = [csv_path, json_path, trunc]
     if version in ("v1",):
-        dup = out / f"{stem}_data_companion_STUDENT.csv"
+        dup = out / f"{stem}_companion_STUDENT.csv"
         with dup.open("w", newline="") as f:
             w = csv.DictWriter(f, fieldnames=FIELDS, extrasaction="ignore")
             w.writeheader(); w.writeheader()   # witness: the header row duplicated
@@ -219,7 +219,7 @@ def write(version, out_dir, stem):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--version", choices=["v0", "v1", "w1d2-lab", "w1d2-takehome"])
-    ap.add_argument("--out")
+    ap.add_argument("--out", help="the day pack's data folder, for example content/W01/D3/data")
     ap.add_argument("--stem", help="filename stem, for example C2_W01_D03")
     ap.add_argument("--list", action="store_true", help="list every version and its witnesses")
     a = ap.parse_args()
@@ -249,10 +249,10 @@ if __name__ == "__main__":
 # --------------------------------
 # --list
 #     Prints six v0 witnesses and eight v1 witnesses, then the note about v2 onward.
-# --version v0 --out content/W01/D2 --stem C2_W01_D02
+# --version v0 --out content/W01/D2/data --stem C2_W01_D02
 #     30 rows. Exactly one amount reads "4500" as text, one reads "twelve", one is empty.
 #     The first six rows carry no discount. Writes three files.
-# --version v1 --out content/W01/D3 --stem C2_W01_D03
+# --version v1 --out content/W01/D3/data --stem C2_W01_D03
 #     50 rows, 49 distinct order_ids. Whole-record duplicate count is 0 and the near-duplicate
 #     pair differs only on order_date. Exactly 12 rows are Student. One amount is 480000.
 #     Six amounts fail int(). Writes four files, the fourth having its header row twice.
