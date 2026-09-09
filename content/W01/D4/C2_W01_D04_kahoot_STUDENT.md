@@ -8,66 +8,66 @@ Run it at the close of half two. Each item is twenty seconds except Q3 and Q8, w
 
 ---
 
-## Q1. Seven values are on screen, sorted. Give the median.
+## Q1. Seven order amounts are on screen, sorted. Give the median.
 
 ```
-1,800   3,000   4,500   6,750   9,900   12,900   17,400
+1,030   1,145   1,280   1,310   1,865   2,270   2,835
 ```
 
-- **6,750** ← correct
-- 8,036
-- 9,900
-- 4,500
+- **1,310** ← correct
+- 1,676
+- 1,865
+- 2,835
 
 *Why:* seven values, so the fourth is the middle. Position, not arithmetic.
-*Trap:* 8,036 is the mean, for anyone who started adding.
+*Trap:* 1,676 is the mean, for anyone who started adding.
 
 ---
 
-## Q2. One record in a column becomes 100 times larger. What moves?
+## Q2. One order in a column becomes 170 times larger. What moves?
 
 - **The mean moves a lot and the median barely moves** ← correct
 - Both move by roughly the same amount
 - The median moves and the mean stays put
-- Neither moves, since it is only one record
+- Neither moves, since it is only one order
 
-*Why:* the mean divides a total that just grew enormously. The median only cares which record is standing in the middle position, and that record did not change.
+*Why:* the mean divides a total that just grew enormously. The median only cares which order is standing in the middle position, and that order did not change.
 
 ---
 
 ## Q3. Which claim do you trust? (30 seconds)
 
 ```
-segment A:  accepted 42 percent, on 12 records
-segment B:  accepted 31 percent, on 1,200 records
+segment A:  returned 5 of 12          41.7%
+segment B:  returned 500 of 1,200     41.7%
 ```
 
-- **B, because one record moves A by more than eight points** ← correct
-- A, because 42 is higher than 31
+- **B, because one order moves A by more than eight points** ← correct
 - A, because a smaller sample is easier to verify
 - Neither, since the two cannot be compared at all
+- A, because 41.7 is the same in both so it makes no difference
 
-*Why:* one record flips A's rate by 8.3 points and moves B's by less than 0.1. A is not bad, it is unmeasured.
-*Trap:* the last option is the one careful people pick. They can be compared. B is the number you would act on, and A is the one you would ask for more data on.
+*Why:* one order flips A's rate by 8.3 points and moves B's by less than 0.1. A is not bad, it is unmeasured.
+*Trap:* option three is the one careful people pick. They can be compared. B is the number you would act on, and A is the one you would ask for more data on.
 
 ---
 
 ## Q4. Read the skew off this sorted tail.
 
 ```
-... 13,000   13,600   14,200   14,800   15,600   17,400   480,000
+... 2,855   2,895   2,930   2,990   2,995   480,000
 ```
 
-- **A long right tail, so the mean sits above almost every record** ← correct
+- **A long right tail, so the mean sits above almost every order** ← correct
 - A long left tail
 - Roughly even, since only one value is unusual
 - You cannot tell without the full column
 
-*Why:* one value twenty-seven times the one below it is a right tail by definition, and the mean is pulled towards it.
+*Why:* one value a hundred and sixty times the one below it is a right tail by definition, and the mean is pulled towards it.
 
 ---
 
-## Q5. A money column with a few enormous values. Which statistic goes to the stakeholder?
+## Q5. A money column with one enormous order. Which statistic goes to the stakeholder?
 
 - **The median, named as the median** ← correct
 - The mean, since it uses all the data
@@ -79,22 +79,22 @@ segment B:  accepted 31 percent, on 1,200 records
 
 ---
 
-## Q6. Every rate you report must carry what beside it?
+## Q6. Business returns at 11.1 percent, the best in the file. What must travel with that number?
 
-- **The count it was computed on** ← correct
+- **The nine orders it was computed on** ← correct
 - The date it was computed
-- The name of the person who computed it
+- The segment's median order value
 - The percentage change since last month
 
-*Why:* 58.3 percent on twelve records and 58.3 percent on twelve hundred are different claims wearing the same number.
+*Why:* 11.1 percent on nine orders and 11.1 percent on nine hundred are different claims wearing the same number. One more return takes this one to 22.2 percent.
 
 ---
 
-## Q7. This code runs on a file with four segments. What happens?
+## Q7. This code runs on Kalpa's four segments. What happens?
 
 ```python
-counts = {"segment_a": 0, "segment_b": 0, "segment_c": 0}
-for r in records:
+counts = {"Retail-Core": 0, "Retail-Plus": 0, "Business": 0}
+for r in orders:
     counts[r["segment"]] += 1
 ```
 
@@ -103,23 +103,25 @@ for r in records:
 - ValueError
 - TypeError
 
-*Why:* a dictionary asked for a key it does not hold raises `KeyError`, and prints the missing key for you.
-*Trap:* option two is what people expect and hope for. Python does not skip quietly here, which is the good news.
+*Why:* a dictionary asked for a key it does not hold raises `KeyError`, and prints the missing key for you. Here that is `'Student'`, and it fires on the first order in the file.
+*Trap:* option two is what people expect and hope for. Python does not skip quietly, which is the good news.
 
 ---
 
 ## Q8. Return question from Wednesday, one level up. (30 seconds)
 
-Wednesday you learned that two records sharing an id and disagreeing need an identity rule and a named decision-maker.
+Wednesday you found that fifty orders held only forty-nine distinct order ids, and you decided to keep both rows of the pair and flag it.
 
-Today: your cleaned file has 47 records. Your segment counts print as 20, 9, 6 and 12. Somebody asks whether your summary is trustworthy. What is your **first** check?
+Today: your segment counts print as 9, 14, 11 and 10. Somebody asks whether your summary is trustworthy. What is your **first** check?
 
-- **Add the four counts and confirm they total 47** ← correct
+- **Add the four counts and confirm they total 44** ← correct
 - Recompute the medians by hand
-- Re-run the cleaning pass from Wednesday
+- Re-run yesterday's cleaning pass
 - Ask which segment they care about
 
-*Why:* the reconciliation habit from Wednesday, applied to a grouping instead of a cleaning pass. Input must equal the sum of the parts. Twenty plus nine plus six plus twelve is forty-seven, so no record was lost or double-counted, and that is one addition rather than an afternoon.
+*Why:* the reconciliation habit from Wednesday, applied to a grouping instead of a cleaning pass. Input must equal the sum of the parts. Nine plus fourteen plus eleven plus ten is forty-four, so no order was lost or double-counted, and that is one addition rather than an afternoon.
+
+*Follow-up to ask aloud, not on screen:* the pair you kept is still in there, so one customer's order is counted twice in Retail-Core. Does that break the reconciliation? No. It was a decision, it is in the log, and the count is right for the file as it stands.
 
 ---
 
@@ -127,10 +129,10 @@ Today: your cleaned file has 47 records. Your segment counts print as 20, 9, 6 a
 
 | Check | Result |
 |---|---|
-| Is any correct answer the longest option? | Q1 no, Q2 no (option 1 and 2 are close, option 2 is longer), Q3 no (option 3 is longer), Q4 no (option 4 is longer), Q5 no (options 2, 3, 4 all longer), Q6 no (option 4 longer), Q7 no (shortest), Q8 no (option 4 is comparable, option 2 longer) |
-| Key positions | Q1 pos 1, Q2 pos 1, Q3 pos 1, Q4 pos 1, Q5 pos 1, Q6 pos 1, Q7 pos 1, Q8 pos 1 |
+| Is any correct answer the longest option? | Q1 no. Q2 no, option 2 is comparable and option 4 is longer. Q3 no, options 2 and 4 are longer. Q4 no, option 4 is longer. Q5 no, options 2, 3 and 4 are all longer. Q6 no, options 3 and 4 are longer. Q7 no, it is the shortest. Q8 no, option 3 is comparable and option 4 longer. |
+| Key positions as written | Q1 pos 1, Q2 pos 1, Q3 pos 1, Q4 pos 1, Q5 pos 1, Q6 pos 1, Q7 pos 1, Q8 pos 1 |
 | Position spread | **Fails as written.** Shuffle before delivery. |
 
-**Shuffle instruction for whoever loads this into Kahoot.** Every key above sits in position one because the correct answer is written first for readability. Randomise the option order on all eight items when you build the quiz. Target roughly two keys in each of the four positions. A learner who notices the first option is always right has stopped reading the question, and the indicator stops measuring anything.
+**Shuffle instruction for whoever loads this into Kahoot.** Every key sits in position one because the correct answer is written first for readability. Randomise the option order on all eight items when you build the quiz. Target roughly two keys in each of the four positions. A learner who notices the first option is always right has stopped reading the question, and the indicator stops measuring anything.
 
-Keep the options themselves intact. The distractors were chosen against specific wrong reasoning: the mean in Q1, the higher percentage in Q3, "uses all the data" in Q5, and the silent skip in Q7 each correspond to a mistake somebody in the room is actively making.
+Keep the options themselves intact. The distractors were chosen against specific wrong reasoning: the mean in Q1, "easier to verify" in Q3, "uses all the data" in Q5, and the silent skip in Q7 each correspond to a mistake somebody in the room is actively making.

@@ -9,73 +9,82 @@ Work down the list in order. The first checkpoint that fails tells you where to 
 ## Checkpoint 0: you opened the right file
 
 ```
-records in C2_W01_D04_data_takehome_STUDENT.csv: 39
+orders in C2_W01_D04_data_profiled_STUDENT.csv: 44
+total amount: Rs 561,145
 ```
 
-Thirty-nine, not forty-seven. Forty-seven is today's class file and it is a different dataset. If you see 47, you are describing the wrong records and every number below will disagree with you.
+Forty-four, not fifty. Fifty is yesterday's raw file and six of those orders never converted. If you see 50, you are describing orders your own cleaning pass rejected.
 
 ---
 
-## Checkpoint 1: the month buckets exist and add up
+## Checkpoint 1: cut one splits cleanly
 
 ```
-number of distinct months: 4
-sum of the four month counts: 39
+discount present:  10 orders
+discount absent:   34 orders
+sum:               44
 ```
 
-The sum has to equal checkpoint 0. If it does not, your grouping is dropping records, and the usual cause is a key built from the wrong slice of the date string.
+The sum has to equal checkpoint 0. If it does not, your test for "empty" is missing a case. An empty CSV field arrives as an empty string, not as `None`.
 
 ---
 
-## Checkpoint 2: the thin month
+## Checkpoint 2: cut one has a finding in it
 
 ```
-the smallest month bucket holds 4 records
+discount present:  2 returned of 10   ->  20.0%
+discount absent:  10 returned of 34   ->  29.4%
 ```
 
-Exactly one month is far smaller than the others. It should be obvious in your table without hunting.
+Discounted orders came back **less** often, which is the opposite of what most people guess before running it.
 
-That month also carries the **highest accepted rate in the whole table**. If your highest rate sits on your largest bucket, recheck your rate arithmetic, because you have almost certainly divided by the wrong denominator.
+Both rates rest on fewer than 35 orders, so the honest write-up says the direction is interesting and the evidence is thin. If your markdown cell states this as a finding without that caveat, reread step 2 of the brief.
 
 ---
 
-## Checkpoint 3: the overall median
+## Checkpoint 3: cut two is lopsided, and that is correct
 
 ```
-median amount across all 39 records: Rs 9,400
+number of distinct months: 2
+2026-08:  43 orders
+2026-09:   1 order
 ```
 
-An exact match. If you get a number near this but not equal to it, you are probably averaging the two middle values on an odd-length list. Thirty-nine is odd, so the median is a single record's amount and no arithmetic is involved.
+If you got four or five months, you sliced the wrong characters out of the date.
+
+**One month holds a single order.** Its return rate is 100.0 percent. That number is real, arithmetically correct, and completely worthless, which is the whole reason this cut is in the brief.
 
 ---
 
-## Checkpoint 4: one month is lying the way today's file lied
+## Checkpoint 4: where the September order came from
 
-One of the four months has a **mean more than three times its median**.
+Find the one September order and look at its `order_id`.
 
 ```
-that month's median: Rs 9,600
-that month's mean:   Rs 35,463.64
+order_id: KR4201
 ```
 
-Find it. It contains a single very large amount, exactly as `segment_b` did in session. If your month table reports means at all, this is the row that proves why it should not.
+It is the second half of the near-duplicate pair you decided to keep and flag yesterday. The two rows share an order id and differ on `order_date` by six weeks.
 
-You do not have to fix anything here. You have to notice it, and say one line about it in your challenges log.
+So a decision you made on Wednesday created a one-order group on Thursday with a 100 percent return rate in it. Nothing went wrong. A judgement call travelled downstream and showed up in a summary, which is what judgement calls do.
+
+Two lines on that in your notebook is what step 3 is asking for.
 
 ---
 
-## Checkpoint 5: the same function, two ways
+## Checkpoint 5: the same function, three ways
 
-Call your function twice, once grouping by month and once by segment.
+Call your function three times, grouping by segment, by discount presence and by month.
 
 ```
-month buckets: 4    counts sum to 39
-segment buckets: 4  counts sum to 39
+segment buckets:  4   counts sum to 44
+discount buckets: 2   counts sum to 44
+month buckets:    2   counts sum to 44
 ```
 
-Both totals must equal 39. The bucket counts differ between the two views and the totals cannot.
+All three totals must equal 44. The bucket counts differ between views and the totals cannot.
 
-If you had to edit your function between the two calls, the function was not parameterised, and step 1 of the take-home asked you to say so honestly. Saying so is worth more than quietly fixing it.
+If you had to edit your function between calls, it was not parameterised, and step 1 asked you to say so honestly. Saying so is worth more than quietly fixing it.
 
 ---
 
@@ -91,9 +100,19 @@ If the warning lives on a different line, in a legend, or in a comment, it does 
 
 ## Checkpoint 7: your threshold cell says a number
 
-Read your own markdown cell from step 3 and find the digits.
+Read your own markdown cell from step 4 and find the digits.
 
 If the cell explains the trade-off without ever landing on a number you applied, it is not finished. A defended threshold has a value in it. "It depends on the size of the difference being claimed" is a good second sentence and a poor only sentence.
+
+---
+
+## Checkpoint 8: you actually opened the source
+
+Your exploration cell should quote a line from the file, not describe it.
+
+The first thing `median` does is sort. Your file has 44 orders, which is even, so the function averages the two middle values and can return an amount that no Kalpa order ever carried. Today's median of Rs 1,910.00 is exactly that: an average of two orders, not an order.
+
+If you wrote that the median is always a real data point, go back and read the function.
 
 ---
 

@@ -31,9 +31,9 @@ Notebook 2 stops on a `KeyError` on purpose and keeps going, so a red block in t
 While you are there, confirm three numbers on screen:
 
 ```
-records loaded: 47
-mean amount over 47 records: Rs 18000.00
-segment_a 20, segment_b 9, segment_c 6, segment_d 12   ->   total 47
+orders loaded: 44
+mean amount over 44 orders: Rs 12,753.30
+Business 9, Retail-Core 14, Retail-Plus 11, Student 10   ->   total 44
 ```
 
 If those three agree, your environment is fine for the weekend.
@@ -61,7 +61,7 @@ The paper is built from the week's interview question set. The questions are alr
 
 **How to prepare.** Answer all eight out loud, to nobody, in under a minute each. Two of the eight came from today, and you should be able to answer those with the file's own numbers rather than in the abstract.
 
-Answers that cite your own week beat answers that recite a definition. "The median, because our own file's mean was Rs 18,000 and only one order out of forty-seven reached it" is a better answer than "the median, because outliers do not pull it", and it takes the same breath to say.
+Answers that cite your own week beat answers that recite a definition. "The median, because our own file's mean was Rs 12,753 and only one order out of forty-four reached it" is a better answer than "the median, because outliers do not pull it", and it takes the same breath to say.
 
 ---
 
@@ -90,11 +90,11 @@ Bring the sheet on Monday with something written in every row. The session opens
 
 You ended today with this written in your own notebook:
 
-> Open question: `segment_d` 58.3 percent on 12 records against `segment_a` 45.0 percent on 20 records. Is that gap real?
+> Open question: Business 11.1 percent on 9 orders against Retail-Plus 36.4 percent on 11 orders. Is that gap real?
 
 Monday's whole session is the method for answering it, and it starts with an idea you can hold before any of the vocabulary above lands:
 
-**If you took the same 47 records and shuffled which segment each one belonged to, at random, you would still see gaps between the groups.** Some of those gaps would be large. So the real question is not "is there a gap", since there is always a gap. It is "is this gap bigger than the ones chance produces on its own".
+**If you took the same 44 orders and shuffled which segment each one belonged to, at random, you would still see gaps between the groups.** Some of those gaps would be large. So the real question is not "is there a gap", since there is always a gap. It is "is this gap bigger than the ones chance produces on its own".
 
 Sit with that for a minute over the weekend. It is the whole session.
 
@@ -102,7 +102,9 @@ Sit with that for a minute over the weekend. It is the whole session.
 
 ## Optional exploration
 
-There is an interactive chapter on frequentist inference that makes the shuffle idea visual before any formula arrives. **The link is to be found** and will be posted with its verification date in the student references; the Week 1 curriculum row carries the source.
+Your take-home already sends you to CPython's own `statistics` module source, which is worth reading twice (verified 09 Sep 2026): https://raw.githubusercontent.com/python/cpython/v3.12.0/Lib/statistics.py
+
+The Week 1 row also names an interactive chapter on frequentist inference that makes the shuffle idea visual before any formula arrives. **That link is to be found** and will be posted with its verification date in the student references once it can be checked.
 
 If it has not appeared by the time you sit down, skip it. An unverified link is worth less than an honest blank, and Monday does not depend on it.
 
@@ -110,6 +112,6 @@ If it has not appeared by the time you sit down, skip it. An unverified link is 
 
 ## Optional, for the restless
 
-Rerun the whole week's pipeline in a fresh Codespace, Monday's records through to today's segment summary, top to bottom, cold. Note anything that fails when nothing is in memory.
+Rerun the whole week's pipeline in a fresh Codespace, Monday's orders through to today's segment summary, top to bottom, cold. Note anything that fails when nothing is in memory.
 
 It is the single best use of the holiday, it takes about half an hour, and every learner who does it starts Week 2 without an environment problem.

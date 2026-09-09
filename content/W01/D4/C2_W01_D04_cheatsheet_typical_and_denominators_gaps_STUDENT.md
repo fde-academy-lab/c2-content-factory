@@ -37,8 +37,8 @@ Run it first on any column you have never seen.
 ## Panel 3: what one record does
 
 ```
-seven values          mean 5,000    median 4,500
-last one x8           mean ______   median ______
+seven orders             mean Rs 1,676.43   median Rs 1,310
+swap the top for 480000  mean Rs ________   median Rs ______
 ```
 
 **Crux:** the mean ____________, the median moved by ________. Not "a little".
@@ -62,20 +62,20 @@ lower = ________________
 
 ```python
 buckets = {}
-for r in records:
+for r in orders:
     key = r[field]
     if ________________________:
-        buckets[key] = {"count": 0, "amounts": [], "accepted": 0}
+        buckets[key] = {"count": 0, "amounts": [], "returned": 0}
     buckets[key]["count"] += 1
     buckets[key]["amounts"].________(r["amount"])
-    if r["outcome"] == "accepted":
-        buckets[key]["accepted"] += 1
+    if r["status"] == "________":
+        buckets[key]["returned"] += 1
 ```
 
 Short form of the same idea: `counts[key] = counts.________(key, ____) + 1`
 
 **Crux:** every hard-coded list of categories is ____________________________________.
-Hard-code three and the file holds four, and you get `________: 'segment_d'`.
+Hard-code three and Kalpa has four, and you get `________: '________'`.
 
 ---
 
@@ -83,7 +83,7 @@ Hard-code three and the file holds four, and you get `________: 'segment_d'`.
 
 | Accumulate one record at a time | Needs the whole group first |
 |---|---|
-| count, sum, accepted count, ________, ________ | ________, ________, the fence |
+| count, sum, returned count, ________, ________ | ________, ________, the fence |
 
 **Crux:** there is no ________________.
 
@@ -95,7 +95,7 @@ Hard-code three and the file holds four, and you get `________: 'segment_d'`.
 [________________]   [________________]   [________________]
 ```
 
-Write the sentence for `segment_d`, which had 7 accepted of 12 records:
+Write the sentence for Business, which had 1 returned of 9 orders:
 
 > ________________________________________________________________
 

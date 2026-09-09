@@ -6,9 +6,11 @@ Trainer file. Never given to learners, never pasted into a student artifact.
 
 ## The two minute continuity block, read before you open the deck
 
-**Start from.** They own a cleaned dataset and a decisions log they wrote themselves yesterday. They have watched three tracebacks land and read them bottom-up. They have already met the sorted-tail outlier read, so today's fence is a rule attached to something they did by eye.
+**Start from.** They own 44 profiled orders and a decisions log they wrote themselves yesterday: 50 in, 6 rejected for failing conversion. They have watched tracebacks land and read them bottom-up. They already flagged the whale with a fence at ten times the middle order, so today's IQR fence is a better-built version of something they did on Wednesday.
 
-**Do not repeat.** Cleaning, in any form. The row is explicit: compute on the cleaned data only. Describing dirty data contradicts yesterday and the room will notice and say so. Also do not re-teach dictionaries, `.get()` or accumulators. Those are today's tools rather than today's topic, and explaining what a dictionary is costs you fifteen minutes you need in half two.
+**Do not repeat.** Cleaning, in any form. The row is explicit: compute on the profiled data only. Describing dirty data contradicts yesterday and the room will notice and say so. Also do not re-teach dictionaries, `.get()` or accumulators. Those are today's tools rather than today's topic, and explaining what a dictionary is costs you fifteen minutes you need in half two.
+
+**Two inherited facts to state in the first two minutes.** `KR4201` is still in the file twice, because they chose to keep both rows and flag the pair. Student holds ten orders today and held twelve in the raw file, because two Student orders failed conversion. Both change today's denominators, and both are in their own rejects log rather than in any code.
 
 **Go as far as.** Every learner ships the segment summary and writes one honest sentence per segment, each carrying its denominator.
 
@@ -47,8 +49,8 @@ Verified against Python 3.11.15 in the build session, both notebooks executed co
 
 | Where | What you do | Exact output |
 |---|---|---|
-| Half one, section 2, **never cut** | Run the mean on the amount column, then the two count lines under it | `mean amount over 47 records: Rs 18000.00` / `records at or above Rs 18000.00: 1` / `records below Rs 18000.00: 46` |
-| Half two, section 1 | Run the accumulator with three hard-coded segment keys | `KeyError: 'segment_d'` |
+| Half one, section 2, **never cut** | Run the mean on the amount column, then the two count lines under it | `mean amount over 44 orders: Rs 12,753.30` / `orders at or above Rs 12,753.30: 1` / `orders below Rs 12,753.30: 43` |
+| Half two, section 1 | Run the accumulator with Retail-Core, Retail-Plus and Business hard-coded | `KeyError: 'Student'`, and it fires on the very first order in the file |
 
 The first is a wrong-output failure and it never raises. That is the entire point and it needs saying out loud: nothing in Tuesday's toolkit fires, because nothing went wrong in the sense Python understands. Let the silence sit before you sort the column.
 
@@ -98,7 +100,7 @@ The second is an ordinary crash, and it is quick. Do not dwell. Its value is the
 
 `activity_typical_number_bench_STUDENT.html` runs at the end of half one, in place of a second pass over the whale.
 
-Open it on the projector and flip one switch: statistic to mean, whale kept in, scope `segment_b`. It reads Rs 60,255.56 on nine records with a red verdict. Say nothing for a moment, then flip the whale out and let them watch the number collapse to Rs 7,787.50.
+Open it on the projector and flip one switch: statistic to mean, whale kept in, scope Retail-Core. It reads Rs 36,027.14 on fourteen orders with a red verdict. Say nothing for a moment, then flip the whale out and let them watch the number collapse to Rs 1,875.38 on the thirteen remaining orders.
 
 Then hand it over. Budget about fifteen minutes. Ask three learners which settings they would sign their name to.
 
@@ -112,11 +114,11 @@ If half one has overrun, shorten this rather than dropping it. The notebook carr
 
 ## Checkpoint questions, ask by name
 
-1. After the typical section: "The median moved by how much when we changed the largest value?" (Zero. Not "a little".)
-2. After the whale section: "The mean is correct. Name what is wrong with it anyway."
+1. After the typical section: "The median moved by how much when we swapped in the Rs 480,000 order?" (Zero. Not "a little".)
+2. After the whale section: "The mean is correct. Name what is wrong with it anyway." Follow with: "What happened to the mean when we removed one order, and what does that tell you?" (It landed within Rs 22 of the median.)
 3. After the fence: "The fence flagged one record. What do you do to that record?"
-4. After the accumulator fix: "Why not just type the four segment names, since we now know there are four?"
-5. After the ranking: "Which two segments came top, and what do those two have in common?"
+4. After the accumulator fix: "Why not just type the four segment names, since we now know Kalpa has four?"
+5. After the ranking: "Business came top. How many orders is that resting on, and how many would have to change to lose it?" (Nine, and one.)
 6. At the close: "What does Monday do with the number you wrote down today?"
 
 ---
@@ -147,6 +149,6 @@ Do not name a slot, a duration for the shifted version, or any marks. The Struct
 
 - The segment summary table with counts beside every rate.
 - Four sentences, at least two declining to make a claim.
-- The open question about `segment_d` against `segment_a` written in their own notebook, in their own words.
+- The open question about Business against Retail-Plus written in their own notebook, in their own words.
 
 The third one is Monday's opening. If a learner has not written it, they will not have it on Monday, so walk the room during the close and check.

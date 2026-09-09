@@ -61,7 +61,7 @@
 <body>
 <div class="wrap">
   <h1>The Typical-Number Bench</h1>
-  <p class="sub">Four switches, one file, forty-seven cleaned records. Flip them and watch what happens to the number
+  <p class="sub">Four switches, one file, forty-four profiled Kalpa orders. Flip them and watch what happens to the number
      you were about to send. Nothing is typed and nothing is saved; close the tab and it resets. Keep this file, since
      it is the decision tool from today that you can reopen on any dataset argument later.</p>
 
@@ -81,7 +81,7 @@
 
       <div class="toggle">
         <div class="q">Is the Rs 480,000 order in the file?</div>
-        <div class="why">It is a real order that survived cleaning. Taking it out is a decision somebody has to defend.</div>
+        <div class="why">Order KR4232, real and retained. Taking it out is a decision somebody has to defend.</div>
         <div class="seg" id="whaleSeg">
           <button data-v="in" aria-pressed="true">Kept in</button>
           <button data-v="out" aria-pressed="false">Removed</button>
@@ -89,19 +89,19 @@
       </div>
 
       <div class="toggle">
-        <div class="q">Which records are you describing?</div>
+        <div class="q">Which orders are you describing?</div>
         <div class="why">The whole file, or one segment at a time.</div>
         <div class="seg" id="scopeSeg">
           <button data-v="all" aria-pressed="true">All</button>
-          <button data-v="segment_a" aria-pressed="false">a</button>
-          <button data-v="segment_b" aria-pressed="false">b</button>
-          <button data-v="segment_c" aria-pressed="false">c</button>
-          <button data-v="segment_d" aria-pressed="false">d</button>
+          <button data-v="Business" aria-pressed="false">Business</button>
+          <button data-v="Retail-Core" aria-pressed="false">Retail-Core</button>
+          <button data-v="Retail-Plus" aria-pressed="false">Retail-Plus</button>
+          <button data-v="Student" aria-pressed="false">Student</button>
         </div>
       </div>
 
       <div class="toggle">
-        <div class="q">Below how many records do you refuse to make a claim?</div>
+        <div class="q">Below how many orders do you refuse to make a claim?</div>
         <div class="why">There is no correct answer here. Pick one you would defend out loud, then look at the table.</div>
         <div class="seg" id="floorSeg">
           <button data-v="0" aria-pressed="true">No floor</button>
@@ -116,9 +116,9 @@
       <h2>What you would be sending</h2>
 
       <div class="stats">
-        <div class="stat"><b id="sNum">Rs 18,000</b><span id="sNumLabel">Mean amount</span></div>
-        <div class="stat"><b id="sCount">47</b><span>Records behind it</span></div>
-        <div class="stat"><b id="sCovered">1</b><span id="sCoveredLabel">Records at or above</span></div>
+        <div class="stat"><b id="sNum">Rs 12,753</b><span id="sNumLabel">Mean amount</span></div>
+        <div class="stat"><b id="sCount">47</b><span>Orders behind it</span></div>
+        <div class="stat"><b id="sCovered">1</b><span id="sCoveredLabel">Orders at or above</span></div>
       </div>
 
       <div class="verdict" id="verdict"></div>
@@ -131,9 +131,9 @@
       <div class="striplabel">The sentence this produces</div>
       <div class="sentence" id="sentence"></div>
 
-      <div class="striplabel">Every segment against your floor</div>
+      <div class="striplabel">Every segment against your floor (return rate: lower is better)</div>
       <table id="segTable">
-        <thead><tr><th>Segment</th><th class="num">Records</th><th class="num">Median</th><th class="num">Accepted rate</th></tr></thead>
+        <thead><tr><th>Segment</th><th class="num">Orders</th><th class="num">Median</th><th class="num">Return rate</th></tr></thead>
         <tbody></tbody>
       </table>
     </div>
@@ -149,23 +149,51 @@
 
 <script>
 const DATA = [
- ["segment_a",2000,"accepted"],["segment_d",3000,"declined"],["segment_a",4000,"accepted"],
- ["segment_b",4500,"pending"],["segment_c",5000,"accepted"],["segment_a",6500,"declined"],
- ["segment_d",10000,"accepted"],["segment_a",3600,"accepted"],["segment_a",4500,"declined"],
- ["segment_a",5200,"accepted"],["segment_a",5900,"pending"],["segment_a",6500,"accepted"],
- ["segment_a",7100,"declined"],["segment_a",7500,"accepted"],["segment_a",8400,"pending"],
- ["segment_a",9000,"accepted"],["segment_a",9700,"declined"],["segment_a",10400,"accepted"],
- ["segment_a",11200,"declined"],["segment_a",12100,"accepted"],["segment_a",13000,"pending"],
- ["segment_a",14200,"declined"],["segment_a",15600,"declined"],["segment_a",17400,"declined"],
- ["segment_b",4800,"accepted"],["segment_b",5000,"declined"],["segment_b",6300,"accepted"],
- ["segment_b",8000,"pending"],["segment_b",9200,"declined"],["segment_b",10900,"accepted"],
- ["segment_b",13600,"declined"],["segment_b",480000,"accepted"],["segment_c",4000,"accepted"],
- ["segment_c",4500,"declined"],["segment_c",8600,"accepted"],["segment_c",10700,"declined"],
- ["segment_c",14800,"pending"],["segment_d",1800,"accepted"],["segment_d",2700,"accepted"],
- ["segment_d",3500,"declined"],["segment_d",5200,"accepted"],["segment_d",6400,"pending"],
- ["segment_d",7100,"accepted"],["segment_d",8300,"declined"],["segment_d",9900,"accepted"],
- ["segment_d",11500,"pending"],["segment_d",12900,"accepted"]
-].map(function(r){ return {segment:r[0], amount:r[1], outcome:r[2]}; });
+ ["Student",1280,"cancelled"],
+ ["Retail-Core",1865,"returned"],
+ ["Retail-Core",2270,"delivered"],
+ ["Retail-Plus",2835,"cancelled"],
+ ["Student",1310,"delivered"],
+ ["Student",1145,"cancelled"],
+ ["Retail-Plus",1030,"delivered"],
+ ["Retail-Plus",985,"delivered"],
+ ["Student",2430,"delivered"],
+ ["Retail-Plus",2895,"returned"],
+ ["Business",2360,"delivered"],
+ ["Business",2855,"returned"],
+ ["Student",2745,"returned"],
+ ["Business",950,"delivered"],
+ ["Student",2140,"delivered"],
+ ["Student",1475,"returned"],
+ ["Retail-Core",1445,"delivered"],
+ ["Business",2050,"delivered"],
+ ["Retail-Plus",2795,"delivered"],
+ ["Business",1425,"cancelled"],
+ ["Student",2990,"cancelled"],
+ ["Student",965,"cancelled"],
+ ["Retail-Plus",1170,"returned"],
+ ["Retail-Plus",1435,"delivered"],
+ ["Retail-Plus",1190,"returned"],
+ ["Retail-Core",800,"returned"],
+ ["Retail-Plus",1355,"cancelled"],
+ ["Retail-Plus",1555,"delivered"],
+ ["Business",2930,"cancelled"],
+ ["Retail-Core",480000,"delivered"],
+ ["Retail-Core",970,"delivered"],
+ ["Retail-Plus",2995,"returned"],
+ ["Business",2035,"cancelled"],
+ ["Retail-Core",2895,"returned"],
+ ["Business",2050,"delivered"],
+ ["Retail-Core",2845,"delivered"],
+ ["Retail-Core",2640,"cancelled"],
+ ["Student",1385,"delivered"],
+ ["Business",2005,"cancelled"],
+ ["Retail-Core",1955,"returned"],
+ ["Retail-Core",1980,"delivered"],
+ ["Retail-Core",1640,"delivered"],
+ ["Retail-Core",1210,"cancelled"],
+ ["Retail-Core",1865,"returned"]
+].map(function(r){ return {segment:r[0], amount:r[1], status:r[2]}; });
 
 const WHALE = 480000;
 const state = {stat:"mean", whale:"in", scope:"all", floor:0};
@@ -204,15 +232,15 @@ function render(){
   if(state.stat === "mean"){
     value = mean; label = "Mean amount";
     covered = amts.filter(function(a){ return a >= mean; }).length;
-    coveredLabel = "Records at or above";
+    coveredLabel = "Orders at or above";
   } else if(state.stat === "median"){
     value = med; label = "Median amount";
     covered = amts.filter(function(a){ return a >= med; }).length;
-    coveredLabel = "Records at or above";
+    coveredLabel = "Orders at or above";
   } else {
     value = mo.value; label = "Most common amount";
     covered = mo.n;
-    coveredLabel = "Records holding it";
+    coveredLabel = "Orders holding it";
   }
 
   document.getElementById("sNum").textContent = rupees(value);
@@ -227,11 +255,11 @@ function render(){
   let cls = "good", head = "", note = "";
   if(state.floor > 0 && n < state.floor){
     cls = "bad";
-    head = "You set your own floor at " + state.floor + " records and this rests on " + n + ".";
+    head = "You set your own floor at " + state.floor + " orders and this rests on " + n + ".";
     note = "By your own stated rule you do not have a claim here. Report it as unmeasured and say what volume would change that.";
   } else if(state.stat === "mean" && ratio >= 1.5){
     cls = "bad";
-    head = "This mean describes " + covered + " of " + n + " records.";
+    head = "This mean describes " + covered + " of " + n + " orders.";
     note = "The mean is " + ratio.toFixed(1) + " times the median, so a long right tail is pulling it. Send the median instead.";
   } else if(state.stat === "mode"){
     cls = "warn";
@@ -243,7 +271,7 @@ function render(){
     note = "The Rs 480,000 order survived cleaning because it is genuine. Removing it from the description is a decision that belongs in the decisions log, in writing, with your name on it.";
   } else if(state.stat === "median"){
     cls = "good";
-    head = "The median sits with " + covered + " of " + n + " records at or above it.";
+    head = "The median sits with " + covered + " of " + n + " orders at or above it.";
     note = "This is the number to send on a money column. Put the count of " + n + " on the same line as the number.";
   } else {
     cls = "good";
@@ -273,26 +301,26 @@ function render(){
 
   // sentence
   const scopeName = state.scope === "all" ? "the file" : state.scope;
-  let sent = "Typical amount in " + scopeName + ": " + rupees(value) + " (" + label.toLowerCase() + "), on " + n + " records.";
+  let sent = "Typical amount in " + scopeName + ": " + rupees(value) + " (" + label.toLowerCase() + "), on " + n + " orders.";
   if(state.floor > 0 && n < state.floor){
-    sent += "\nFewer than " + state.floor + " records, so this is an indication rather than a measurement.";
+    sent += "\nFewer than " + state.floor + " orders, so this is an indication rather than a measurement.";
   }
   if(state.whale === "out"){
     sent += "\nOne real order of Rs 480,000 was excluded from this figure.";
   }
   if(state.stat === "mean" && ratio >= 1.5){
-    sent += "\nWARNING: this mean sits above " + (n - covered) + " of " + n + " records.";
+    sent += "\nWARNING: this mean sits above " + (n - covered) + " of " + n + " orders.";
   }
   document.getElementById("sentence").textContent = sent;
 
   // segment table
   const tb = document.querySelector("#segTable tbody");
-  const segs = ["segment_a","segment_b","segment_c","segment_d"];
+  const segs = ["Business","Retail-Core","Retail-Plus","Student"];
   tb.innerHTML = segs.map(function(sg){
     let srs = DATA.filter(function(r){ return r.segment === sg; });
     if(state.whale === "out") srs = srs.filter(function(r){ return r.amount !== WHALE; });
     const sa = srs.map(function(r){ return r.amount; });
-    const acc = srs.filter(function(r){ return r.outcome === "accepted"; }).length;
+    const acc = srs.filter(function(r){ return r.status === "returned"; }).length;
     const rate = (acc / srs.length * 100).toFixed(1);
     let cls = "";
     if(state.floor > 0 && srs.length < state.floor) cls = "dim";

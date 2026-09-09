@@ -2,6 +2,8 @@
 
 Week 1, Day 4. Landscape, eight panels. Print it, keep it beside the keyboard.
 
+Every number here comes off Kalpa's 44 profiled orders: total Rs 561,145, mean Rs 12,753.30, median Rs 1,910.00.
+
 ---
 
 ## Panel 1: the three "typical" numbers
@@ -35,11 +37,11 @@ Run it first on any column you have never seen. It costs one line and it tells y
 ## Panel 3: what one record does
 
 ```
-seven values          mean 5,000    median 4,500
-last one x8           mean 15,000   median 4,500
+seven orders             mean Rs  1,676.43   median Rs 1,310
+swap the top for 480000  mean Rs 69,842.86   median Rs 1,310
 ```
 
-**Crux:** the mean tripled, the median moved by zero. Not "a little". Zero.
+**Crux:** the mean grew nearly 42 times, the median moved by zero. Not "a little". Zero.
 
 ---
 
@@ -60,19 +62,19 @@ lower = q1 - 1.5 * iqr
 
 ```python
 buckets = {}
-for r in records:
+for r in orders:
     key = r[field]
     if key not in buckets:
-        buckets[key] = {"count": 0, "amounts": [], "accepted": 0}
+        buckets[key] = {"count": 0, "amounts": [], "returned": 0}
     buckets[key]["count"] += 1
     buckets[key]["amounts"].append(r["amount"])
-    if r["outcome"] == "accepted":
-        buckets[key]["accepted"] += 1
+    if r["status"] == "returned":
+        buckets[key]["returned"] += 1
 ```
 
 Short form of the same idea: `counts[key] = counts.get(key, 0) + 1`
 
-**Crux:** every hard-coded list of categories is a promise about data you have not read yet. Hard-code three and the file holds four, and you get `KeyError: 'segment_d'`.
+**Crux:** every hard-coded list of categories is a promise about data you have not read yet. Hard-code three and Kalpa has four, and you get `KeyError: 'Student'`.
 
 ---
 
@@ -80,7 +82,7 @@ Short form of the same idea: `counts[key] = counts.get(key, 0) + 1`
 
 | Accumulate one record at a time | Needs the whole group first |
 |---|---|
-| count, sum, accepted count, min, max | median, quartiles, the fence |
+| count, sum, returned count, min, max | median, quartiles, the fence |
 
 **Crux:** collect the amounts into a list during the pass and take the median after the loop ends. There is no running median.
 
@@ -92,7 +94,7 @@ Short form of the same idea: `counts[key] = counts.get(key, 0) + 1`
 [the number]   [the denominator]   [what it does not yet support]
 ```
 
-> `segment_d`: accepted on 7 of 12 records, 58.3 percent. Highest in the file, resting on twelve records; two different outcomes erase the lead.
+> Business: returned on 1 of 9 orders, 11.1 percent. Lowest in the file and the smallest segment in it. One more return takes it to 22.2 percent and behind Student.
 
 **Crux:** the third part is the one that goes missing between your notebook and somebody else's slide, so it goes in the sentence rather than in a footnote.
 

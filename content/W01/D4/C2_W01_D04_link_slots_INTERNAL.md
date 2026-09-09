@@ -2,56 +2,39 @@
 
 Internal working file. Never given to a learner and never merged into a student artifact.
 
-## Why every link in this pack says "to be found"
+## What is verified and shipped
 
-The build session had no outbound network access. The egress proxy answered 403 to CONNECT on every reference domain on the curriculum row, tested and confirmed in this session:
+| Reference | URL | Checked | Where it is used |
+|---|---|---|---|
+| CPython `statistics` module source, tag v3.12.0 | `raw.githubusercontent.com/python/cpython/v3.12.0/Lib/statistics.py` | 09 Sep 2026, HTTP 200 in the build session | Take-home exploration section; pre-read optional reading |
 
-| Domain | Result |
-|---|---|
-| `www.khanacademy.org` | 403 at the proxy, policy denial |
-| `seeing-theory.brown.edu` | 403 at the proxy, policy denial |
-| `en.wikipedia.org` | 403 at the proxy, policy denial |
-| `docs.python.org` | 403 at the proxy, policy denial |
+This link carries the take-home's fifth shortcut-resistance pattern. The learner has to open the file, find `def median(data):` and cite two specific things: that the first act is `data = sorted(data)`, and that an even-length input returns the average of the two middle values.
 
-The standing rule is that a URL enters an artifact only if it was verified on the day it entered, and a link from memory never ships. No link could be verified, so no link was written.
+That second point is load-bearing for this pack rather than decorative. Kalpa's profiled file holds 44 orders, which is even, so today's median of Rs 1,910.00 is the average of Rs 1,865 and Rs 1,955 and **is not the amount of any Kalpa order**. A learner who reads the source discovers that the number they quoted all day does not exist in the data. The self-check names it as checkpoint 8.
 
-## What to do
+## What is still blocked
 
-Open a session on an environment with the trusted network access level, check each URL below, and paste it into the named slot with the date it was checked, **on the same line as the URL**. The verification script warns about any URL on a line without a date, so keep them together.
+The egress proxy answered 403 to CONNECT on these, tested in the build session on 09 Sep 2026:
 
-Sources below are copied from the Week 1 Day 4 curriculum row, which carries its own verification dates from early September 2026. Those dates belong to the row and never to this pack.
-
-## Trainer resources to verify
-
-| Reference | Row's URL | Row's stated check date |
+| Domain | Result | What it was wanted for |
 |---|---|---|
-| Khan Academy, mean, median and mode, video | khanacademy.org, statistics-probability, mean-median-basics, video | 03 Sep 2026 |
-| Khan Academy, mean, median and mode review with worked values | khanacademy.org, same unit, review article | 03 Sep 2026 |
-| Khan Academy, summarizing quantitative data unit | khanacademy.org, summarizing-quantitative-data | 03 Sep 2026 |
+| `www.khanacademy.org` | 403 at the proxy, policy denial | The row's three trainer references on mean, median and mode |
+| `seeing-theory.brown.edu` | 403 at the proxy, policy denial | The row's student reference, the frequentist inference chapter, previewing Monday |
+| `en.wikipedia.org` | 403 at the proxy, policy denial | Anscombe's quartet, as a slide citation |
+| `docs.python.org` | 403 at the proxy, policy denial | The `statistics` module documentation |
 
-## Student references to verify
+`raw.githubusercontent.com` is reachable and is the only reference domain that is. That is why this pack cites CPython source rather than documentation.
 
-| Reference | Row's URL | Row's stated check date |
+## The slots waiting
+
+| File | Where | Blocking? |
 |---|---|---|
-| Khan Academy, summarizing quantitative data unit with practice items | khanacademy.org, summarizing-quantitative-data | 03 Sep 2026 |
-| Seeing Theory, frequentist inference chapter, interactive preview for Monday | seeing-theory.brown.edu, frequentist-inference | 05 Sep 2026 |
+| `C2_W01_D04_preread_STUDENT.md` | Optional exploration, the Seeing Theory chapter | No. The pre-read tells the learner to skip it if it has not appeared, and Monday does not depend on it. |
 
-## The slots waiting for them
+Deck half one's Anscombe slide (S23) states the 1973 result in prose with no URL, which is correct under the standing rule. If `en.wikipedia.org` or a primary source becomes reachable, add a dated citation to that slide.
 
-| File | Where | What it is holding up |
-|---|---|---|
-| `C2_W01_D04_takehome_STUDENT.md` | The "Exploration, before Monday" section | The fifth shortcut-resistance pattern |
-| `C2_W01_D04_preread_STUDENT.md` | The "Optional exploration" section | Nothing blocking; Monday does not depend on it |
+## What to do when the proxy opens
 
-## The cost, stated plainly
+Check each blocked URL above, then paste it into its slot with the date it was checked, **on the same line as the URL**. The verification script warns about any URL on a line without a date, so keep them together.
 
-The take-home currently rests on **four** shortcut-resistance patterns out of five:
-
-1. It runs on the learner's own `summarise_by` function from today, which no assistant has seen.
-2. The answer is a defended threshold with a number in it rather than paddable prose.
-3. The challenges log requires pasted output text, and paraphrases are explicitly refused.
-4. The self-check spine plants seven exact values on a file no assistant has seen.
-
-The missing fifth is the one that requires reading a named verified source and citing one specific thing found there. Both the take-home and the pre-read tell the learner to skip that section and say so in the challenges log if the link has not appeared, rather than substituting a source they found themselves. Adding the pattern back is a two-line edit to the take-home once the Seeing Theory URL is verified.
-
-The Khan Academy links are the row's own trainer and student references and are not load-bearing for any artifact in this pack; the day teaches from the file's own numbers throughout.
+The row's own dates (03 and 05 Sep 2026) belong to the curriculum row and never to this pack. Recheck rather than copying them.
