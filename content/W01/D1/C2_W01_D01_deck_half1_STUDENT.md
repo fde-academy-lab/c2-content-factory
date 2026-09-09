@@ -9,9 +9,9 @@ Position bar, repeated at every section boundary:
 
 ## S1. The machine that remembers
 
-You have just watched a notebook answer a question about a business you have never worked in.
+The notebook that opened the day is a machine that holds on to whatever you hand it.
 
-By the end of today you are the one writing that notebook.
+For the next stretch you learn what it is holding, why it sometimes refuses you, and how to get it back when it forgets.
 
 ---
 
