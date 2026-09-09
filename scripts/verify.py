@@ -1,5 +1,7 @@
 """Verification gate for a day pack. Usage: python3 scripts/verify.py content/W01/D1 [--execute]
 --execute additionally cold-runs every notebook via jupyter nbconvert (needs jupyter installed).
+Every filename must carry the C2_W{ww}_D{dd} stem matching the day folder it sits in, so a build
+pointed at the wrong day fails here rather than overwriting another day's pack.
 Exit code 0 means pass; any FAIL line means the pack is not done."""
 import sys, re, json, pathlib, subprocess
 
@@ -11,7 +13,36 @@ TRAINER_NAMES = ["Akash","Ishu","Anmol","Rushikesh","Navaid","Kanchan","Umashank
 CLOCK = re.compile(r"\b\d{1,2}[:.]\d{2}\s?(AM|PM|am|pm)\b")
 NXBY = re.compile(r"\bnot\s+\w+[^.\n]{0,40},\s*but\b", re.IGNORECASE)
 URL = re.compile(r"https?://\S+")
+DAY_FOLDER = re.compile(r"W(\d{1,2})[/\\]D(\d{1,2})$")
+DAY_STEM = re.compile(r"^C2_W(\d{2})_D(\d{2})_")
 DATED = re.compile(r"(verified|checked)\s+\d{1,2}\s+\w+\s+\d{4}", re.IGNORECASE)
+
+def check_targeting(target, files):
+    """Fail when a file's C2_W{ww}_D{dd} stem disagrees with the day folder it sits in.
+
+    The folder is single digit (D2) and the stem is zero padded (D02), so they are compared
+    as integers. This catches a build that was pointed at the wrong day, which is otherwise
+    invisible: every other check still passes while the files overwrite another day's pack.
+    """
+    m = DAY_FOLDER.search(str(target).rstrip("/\\"))
+    if not m:
+        print(f"INFO  {target} is not a W{{ww}}/D{{d}} day folder, so the day-stem check is skipped")
+        return 0
+    want = f"C2_W{int(m.group(1)):02d}_D{int(m.group(2)):02d}_"
+    fails = 0
+    for p in files:
+        found = DAY_STEM.match(p.name)
+        if not found:
+            print(f"FAIL  {p.name}: no C2_W{{ww}}_D{{dd}}_ stem in the filename; {target} expects {want}")
+            fails += 1
+        elif found.group(0) != want:
+            print(f"FAIL  {p.name}: stem says week {found.group(1)} day {found.group(2)}, "
+                  f"but the file sits in {target}, which expects {want}")
+            fails += 1
+    if not fails:
+        print(f"PASS  every filename carries the {want} stem for {target}")
+    return fails
+
 
 def texts_from(path):
     if path.suffix == ".ipynb":
@@ -32,6 +63,7 @@ def main():
     files = [p for p in target.rglob("*") if p.is_file() and p.name != ".gitkeep"]
     if not files:
         print("FAIL  no files found under", target); sys.exit(1)
+    fails += check_targeting(target, files)
     for p in files:
         name = p.name
         if not re.search(r"_(STUDENT|TRAINER|INTERNAL)\.", name):
