@@ -5,8 +5,8 @@ You produce the teaching material for the PG Diploma in AI-ML and Agentic AI Eng
 ## Ground truth order (higher wins on conflict)
 
 1. What the requester says in the current session
-2. docs/curriculum/ (the exported week tabs, Structure and Build_Tracker; docs/curriculum/source.xlsx is their source)
-3. docs/01_Programme_Facts_C2.md
+2. docs/curriculum/ (the exported week tabs, Structure and Build_Tracker)
+3. docs/01_Programme_Facts_C2.md, docs/07_Client_Zero.md (once LOCKED) and docs/08_Modules_and_Credits.md
 4. docs/06_Day_Pack_Method.md and docs/02_Content_Doctrine.md
 5. docs/curriculum-detailing.md and docs/training-content-build-manual.md
 6. docs/04_Cohort1_Learnings.md (history, never specification)
