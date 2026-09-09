@@ -625,39 +625,39 @@ At no point does the tree reach a box that says delete. That is deliberate.
 
 ---
 
-## S35. A fence, done properly
+## S35. A simple fence
 
 A fence is arithmetic that flags a value for a human to look at. It is not a filter.
 
-$$\text{IQR} = Q_3 - Q_1 \qquad \text{upper fence} = Q_3 + 1.5 \times \text{IQR}$$
+Today's version is deliberately crude. Take the middle order and multiply it by ten.
 
-On today's 44 usable amounts:
+$$\text{fence} = 10 \times \text{median} = 10 \times 1910 = 19{,}100$$
 
-$$Q_1 = 1302.5 \qquad Q_3 = 2666.25 \qquad \text{IQR} = 1363.75$$
-
-$$\text{upper fence} = 2666.25 + 1.5 \times 1363.75 = 4711.875$$
+Somebody chose the ten, and that somebody is you. Tomorrow you replace it with a threshold built from the spread of the data itself, so that nobody has to choose a number.
 
 ---
 
 ## S36. What the fence catches here
 
-Exactly one value sits above Rs 4,711.88, and it is the Rs 480,000 order.
+Exactly one value sits above Rs 19,100, and it is the Rs 480,000 order.
 
-Nothing sits below the lower fence, which comes out negative, so it could not flag anything even if a negative amount existed.
+The largest ordinary order is Rs 2,995, which is not close to the fence, so nothing borderline is being swept up with it.
 
-The fence found the row you had already spotted by sorting. That agreement is what tells you the fence is calibrated for this column rather than borrowed from somewhere else.
+The fence found the row you had already spotted by sorting. That agreement is what tells you the number you picked is doing its job on this column.
 
 ---
 
-## D15. Where the 1.5 comes from, and why you should say so out loud
+## D15. What is wrong with choosing the ten, and what replaces it
 
-The 1.5 is a convention, not a law. It comes from the box plot as it was popularised in exploratory data analysis, chosen so that on a normal distribution roughly 0.7 percent of values fall outside the fence.
+The fence works and it is still crude, because the ten came from your judgement rather than from the data.
 
-Two consequences you should be able to state:
+Two consequences you should be able to state.
 
-The first is that order amounts are not normally distributed. Money is skewed to the right in almost every business, because there is a floor at zero and no ceiling. So a fence tuned for a normal distribution will flag ordinary large orders in a healthy business, and you should expect to look at the flags rather than trust them.
+The first is that the number does not travel. Ten times the median is a sensible fence on order amounts in this business and a useless one on delivery times, on ages, or on a column where the median is near zero. Every new column needs you to choose again, and there is nothing to argue with when somebody disagrees with your choice.
 
-The second is that changing 1.5 changes what you find, so the multiplier is part of your written decision. A fence at 3.0 instead of 1.5 gives an upper bound of Rs 6,757.50 here and still catches only the same one order, which is worth knowing before somebody accuses the number of being arbitrary.
+The second is that it moves when the data moves. The median here is Rs 1,910 and the whale is inside the same file, so a fence built from the median is already being pulled by the record it is meant to catch.
+
+Tomorrow's version fixes both. It builds the threshold out of the spread of the middle half of the data, which ignores the tail by construction, and it is the same arithmetic on every column so nobody has to pick a number. Today's fence is the version you can compute in your head, and the point of computing it today is that tomorrow you will know what the better one is better than.
 
 ---
 
