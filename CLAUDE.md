@@ -15,12 +15,12 @@ Anything absent from these files is unknown. Never invent: week or day content b
 
 ## The build workflow (every day pack)
 
-1. Read the day's row in docs/curriculum/W{n}_*.md plus Structure.md, then read .claude/skills/day-pack-builder/SKILL.md and its references.
+1. Read the day's row in docs/curriculum/W{n}_*.md plus Structure.md, then read .claude/skills/day-pack-builder/SKILL.md and its references, then content/README.md for the folder layout.
 2. State envelope and continuity, then the one-screen spine. STOP for approval. Build nothing past the spine without an explicit yes.
 3. Build in passes, one artifact family per pass: deck(s), notebooks, activity, exercises with solutions, take-home with self-check spine, Kahoot pack, study notes plus cheat sheet plus pre-read.
-4. Write outputs only under content/W{ww}/D{d}/ using C2_W{ww}_D{d}_{artifact}_{AUDIENCE}.{ext}; AUDIENCE is STUDENT, TRAINER or INTERNAL and is never omitted.
-5. Run: python3 scripts/verify.py content/W{ww}/D{d} and fix every failure. A pack that has not passed verify is not done.
-6. Commit on a branch named w{ww}-d{d}; never commit directly to main. In a cloud session, stop after committing and let the reviewer open the pull request.
+4. Write outputs only under content/W{ww}/D{d}/ for a teaching or build day and content/W{ww}/SAT/ for a Saturday, always inside the subfolder that fits the artifact (slides, notebooks, demos, whiteboards, cheatsheets, study-notes, exercises with its guided, unguided and solutions folders, takehome, kahoot, preread, extras, data, trainer, internal). Never leave a file loose at the day folder root. content/README.md carries the full layout, including the different shapes a build day and a Saturday take. Name files C2_W{ww}_D{dd}_{topic}_{AUDIENCE}.{ext}, or C2_W{ww}_SAT_{topic}_{AUDIENCE}.{ext} on a Saturday; the topic half carries only what the folder and the extension do not already say, and AUDIENCE is STUDENT, TRAINER or INTERNAL and is never omitted.
+5. Run: python3 scripts/verify.py content/W{ww}/D{d} (or content/W{ww}/SAT) and fix every failure. A pack that has not passed verify is not done.
+6. Commit on a branch named w{ww}-d{d}, or w{ww}-sat for a Saturday; never commit directly to main. In a cloud session, stop after committing and let the reviewer open the pull request.
 
 ## Hard rules
 

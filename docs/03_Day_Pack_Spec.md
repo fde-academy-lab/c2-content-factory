@@ -79,18 +79,23 @@ Each pass is a separate generation because mixing them produces shallower output
 ## FILE NAMING
 
 ```
-C2_W{week}_D{day}_{artifact}_{AUDIENCE}.{ext}
+content/W{ww}/D{d}/{folder}/C2_W{ww}_D{dd}_{topic}_{AUDIENCE}.{ext}
+content/W{ww}/SAT/{folder}/C2_W{ww}_SAT_{topic}_{AUDIENCE}.{ext}
 ```
 
 Examples:
 
 ```
-C2_W02_D03_deck_STUDENT.pptx
-C2_W02_D03_trainer_notes_TRAINER.md
-C2_W02_D03_demo_STUDENT.ipynb
-C2_W02_D03_unguided_STUDENT.md
-C2_W02_D03_day_sheet_TRAINER.md
+content/W02/D3/slides/C2_W02_D03_deck_STUDENT.pptx
+content/W02/D3/trainer/C2_W02_D03_day_sheet_TRAINER.md
+content/W02/D3/notebooks/C2_W02_D03_01_joins_STUDENT.ipynb
+content/W02/D3/exercises/unguided/C2_W02_D03_row_counts_STUDENT.md
+content/W02/SAT/paper/C2_W02_SAT_paper_STUDENT.md
 ```
+
+The folder set per day is in `content/README.md`, and `scripts/verify.py` fails a file that sits
+outside it. The topic half of the name carries only what the folder and the extension do not
+already say.
 
 The audience tag is not optional. It is the mechanism that stops a trainer notes file reaching students.
 

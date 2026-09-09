@@ -31,7 +31,7 @@ Cognitive load is the design constraint throughout: at most four new ideas per t
 | 12 | Tiered extras | STUDENT | 1 pair | Stretch and recovery, built in advance, weekly build allowed. |
 | 13 | Corrections card | STUDENT | Conditional | Whenever a live claim proved wrong: claim, correction, source, as a slide. |
 
-Weekly addition on regular weeks: the Saturday recap paper, built from the week's question-set row, pen and paper, AI-free, about two hours, short-answer so peers cross-evaluate, with the Academic TA's discussion guide. Build weeks swap the manifest for the build-week pack (five sub-problem briefs at three groups each, assessor rubric, GD prompts for the expert's Friday and Saturday, the parallel build, checkpoints, scoring sheet, catch-up plan).
+Weekly addition on regular weeks: the Saturday recap paper, built from the week's question-set row, pen and paper, AI-free, about two hours, short-answer so peers cross-evaluate, with the Academic TA's discussion guide. It ships in `content/W{ww}/SAT/` rather than a numbered day folder, since Saturday is not a teaching day. Build weeks swap the manifest for the build-week pack (five sub-problem briefs at three groups each, assessor rubric, GD prompts for the expert's Friday and Saturday, the parallel build, checkpoints, scoring sheet, catch-up plan).
 
 ## 3. Shortcut resistance for take-homes
 
@@ -52,7 +52,7 @@ Exploration links follow the standing verification rule: fetched on the day they
 3. **The spine, one screen, for approval**: deck decision, section lists, the mental-model arc in one sentence, the failures, the activity toggle, the take-home shape. Nothing downstream is built before approval.
 4. **Build passes**, one artifact family per pass: decks; notebooks; activity; exercises with solutions; take-home with spine; quiz; study notes, cheat sheet and pre-read.
 5. **Verification**: idea caps, cold runs, segment-order parity, link dates, the shortcut test, the distractor audit, audience tags, the banned-word and em-dash scans.
-6. **Ship** with `C2_W{ww}_D{d}_{artifact}_{AUDIENCE}.{ext}` naming.
+6. **Ship** into the day folder's subfolders, named `C2_W{ww}_D{dd}_{topic}_{AUDIENCE}.{ext}`, or `C2_W{ww}_SAT_{topic}_{AUDIENCE}.{ext}` on a Saturday. The layout is in `content/README.md` and the verifier fails a file that sits in the wrong folder.
 
 ## 5. The Day 1 exception
 
@@ -69,6 +69,7 @@ The opening day ships the introduction pack: the client-zero narrative deck (the
 7. The daily Neo MCQ pool is removed; Kahoot is the sole daily check and it is ungraded.
 8. The Saturday recap paper joins as the weekly artifact on regular weeks.
 9. Exercise volume is capped by session minutes rather than by the manifest, with think-heavy, type-light answers.
+10. A day folder is a set of subfolders by artifact type rather than a flat list of files, Saturday moves out of the numbered days into `SAT/`, and a day with no session gets no folder at all. `content/README.md` is the layout's home and `scripts/verify.py` enforces it.
 
 ## 7. Blind spots this method now covers
 
