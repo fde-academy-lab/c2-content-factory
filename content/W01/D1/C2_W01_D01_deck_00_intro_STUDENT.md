@@ -214,11 +214,11 @@ That is the whole of what is fixed about them today. The rest arrives with the w
 
 Monday, today: you can open the Codespace, run and recover a notebook, and answer a counting question on records nobody explained to you.
 
-Tuesday: you can package a rule into a function you call again, survive a bad record by name, log why you rejected it, and move data across the file boundary in both directions.
+Tuesday: you can package a rule into a function, survive a bad record by name, log why you rejected it, and move data across the file boundary.
 
-Wednesday: you can profile a dataset before you touch it, clean it with a written reason behind every decision, and prove that input equals clean plus rejected.
+Wednesday: you can profile a dataset before you touch it, clean it with a reason written behind every decision, and prove that input equals clean plus rejected.
 
-Thursday: you can say what is typical and how spread out the data is without misleading anyone, and hand over a segment summary that carries its denominators.
+Thursday: you can say what is typical without misleading anyone, and hand over a segment summary that carries its denominators.
 
 ---
 
@@ -240,15 +240,15 @@ Four days build that sentence, one step each: read it, clean it, profile it, des
 
 ## S17. Today, as four promises
 
-You understand that the kernel holds what you gave it between runs, that a value's type decides what an operator means, and that a dataset is a list of named records.
+You understand that the kernel holds what you gave it, that a value's type decides what an operator means, and that a dataset is a list of named records.
 
-You can launch the Codespace, run and edit and recover the notebook, and answer counting and totalling questions with a loop, a condition and an accumulator.
+You can launch the Codespace, run and recover the notebook, and answer counting and totalling questions with a loop, a condition and an accumulator.
 
-You can handle a NameError that came from running cells out of order, a TypeError when a text amount meets a number, and a missing key through `.get()` with a default you chose on purpose.
+You can handle a NameError from cells run out of order, a TypeError when a text amount meets a number, and a missing key through `.get()` with a default you chose.
 
 You can defend what a kernel restart resets, and say why refusing a cross-type comparison is safer than a spreadsheet quietly guessing.
 
-The one line to carry out of today. You can take thirty records nobody explained to you and come back with a number, and you can say what would break it.
+The line to carry out of today: you can take thirty records nobody explained to you and come back with a number, and you can say what would break it.
 
 ---
 
@@ -272,9 +272,9 @@ The one line to carry out of today. You can take thirty records nobody explained
 
 ## S19. How Saturday runs on a teaching week
 
-Saturday opens with a pen-and-paper recap paper drawn from the week's own interview question set. It runs for about two hours, it is AI-free by its format, and it is ungraded.
+Saturday opens with a pen-and-paper recap paper drawn from the week's own interview question set. It runs for about two hours, it is AI-free by format, and it is ungraded.
 
-After a break, the Academic TA leads the solution discussion. Papers are swapped so that you cross-evaluate a peer's answers against the discussed solution, every answer is treated as an interview answer, and call-outs land at random throughout.
+After a break, the Academic TA leads the solution discussion. Papers are swapped so you cross-evaluate a peer's answers, every answer is treated as an interview answer, and call-outs land at random.
 
 ---
 
@@ -323,9 +323,9 @@ Individual labs are marked AI-free on the day they run, and tomorrow's read-clea
 
 ## S24. Before tomorrow
 
-Finish the take-home, `C2_W01_D01_takehome_STUDENT.md`. It extends today's counter to report two buckets, above and below the threshold, and it asks for one markdown cell explaining the planted text amount in your own words.
+Finish the take-home, `C2_W01_D01_takehome_STUDENT.md`. It extends today's counter into two buckets and asks you to explain the planted text amount in your own words.
 
-Read the pre-read, `C2_W01_D01_preread_STUDENT.md`, and fill its gap sheet before you sleep. Tomorrow's first hour will feel like revision.
+Read the pre-read, `C2_W01_D01_preread_STUDENT.md`, and fill its gap sheet tonight. Tomorrow's first hour will feel like revision.
 
 Watch the dictionaries video on the student reference list: Corey Schafer, Dictionaries, video: link to be found.
 

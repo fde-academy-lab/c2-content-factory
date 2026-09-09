@@ -1,4 +1,4 @@
-# Link register: Week 1, Day 2
+# Link register: Week 1, Day 3
 
 Internal working file. Never given to a learner.
 
@@ -25,14 +25,14 @@ So a reference can ship verified today if it lives in a public git repository, a
 
 ## What that changed in this pack
 
-The take-home's reading section no longer waits on anything. It now sends learners to two files in
-the CPython source, pinned to the v3.12.0 tag so the line numbers stay put, and asks for an answer
-that quotes a line number:
+The take-home's reading section no longer waits on anything. It now sends learners to
+`Lib/csv.py` in the CPython source, pinned to the v3.12.0 tag, to read `Sniffer.has_header` starting
+at line 390 and the vote that ends it at line 451.
 
-- `Lib/csv.py` lines 118 to 132, which is what `DictReader` does with a row that has too many or too
-  few fields. Neither case raises, which is the point.
-- `Lib/json/decoder.py` line 34, which is where the `line 48 column 1 (char 1027)` message this pack
-  quotes is actually built.
+That reading was chosen because it is the day's own lesson from the other side: the standard library
+guesses whether row one is a header, and Wednesday's companion file is the case where guessing loses.
+The last of its four questions asks when guessing is right and when stating a rule is, which is what
+Thursday opens on.
 
 That restores the fifth shortcut-resistance pattern, so the take-home now rests on five of five:
 process evidence, the learner's own artifact, a named verified source with a specific thing cited
@@ -46,15 +46,11 @@ from early September 2026; those dates belong to the row and never to this pack.
 
 | Reference | Row's URL | Row's stated check date |
 |---|---|---|
-| Corey Schafer, Functions | youtube.com watch 9Os0o3wzS_I | 03 Sep 2026 |
-| Corey Schafer, try/except blocks | youtube.com watch NIWwJbo-9_8 | 03 Sep 2026 |
-| Real Python, LBYL against EAFP | realpython.com/python-lbyl-vs-eafp/ | 03 Sep 2026 |
-| Corey Schafer, CSV module | youtube.com watch q5uM4VKywbA | 03 Sep 2026 |
-| Real Python, Reading and Writing CSV Files | realpython.com/python-csv/ | 03 Sep 2026 |
-| Official json docs | docs.python.org/3/library/json.html | 03 Sep 2026 |
-| Corey Schafer, Working with JSON data | youtube.com watch 9N6a-VLBa2I | 05 Sep 2026 |
-| Automate the Boring Stuff 3e, Ch 4 and Ch 10 | automatetheboringstuff.com/3e/ | 03 Sep 2026 |
-| Official Python tutorial, Errors and Exceptions | docs.python.org/3/tutorial/errors.html | 03 Sep 2026 |
+| Real Python, csv module reference | realpython.com/ref/stdlib/csv | 03 Sep 2026 |
+| GeeksforGeeks, Data Analyst interview questions | geeksforgeeks.org/data-analysis/data-analyst-interview-questions-and-answers/ | 03 Sep 2026 |
+| LearnPython, 15 Python questions for data analysts | learnpython.com/blog/python-interview-questions-for-data-analyst/ | 03 Sep 2026 |
+| Automate the Boring Stuff 3e, Ch 18 | automatetheboringstuff.com/3e/ | 03 Sep 2026 |
+| Khan Academy, mean, median and mode | on the Thursday row's student references | 03 Sep 2026 |
 
 ## What to do with them
 
@@ -62,5 +58,7 @@ Open a session on an environment with the trusted network access level, check ea
 into its slot with the date it was checked, **on the same line as the URL**. The verification script
 warns about any URL on a line without a date, so keep them together.
 
-These are the trainer's own background reading and the optional extras. No student artifact in this
-pack is now blocked on any of them, so this is a nice-to-have rather than a release blocker.
+One student-facing slot is still open: the optional Khan Academy watch in
+`C2_W01_D03_preread_STUDENT.md`. It is optional by design and the pre-read's gap sheet carries the
+vocabulary without it, so this is not a release blocker. Everything else is the trainer's background
+reading.

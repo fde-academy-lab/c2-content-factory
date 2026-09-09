@@ -105,26 +105,30 @@ between the two sets is the 6 orders totalling Rs 15,520 that answer the third u
 sentence in any artifact may imply that the two thirteens describe the same set of orders, and any
 edit that puts both numbers on one screen has to name the condition beside each of them.
 
-## Open conflicts
+## Conflicts
 
-### New, and raised by this day's build
+### Closed at client zero v1.1, and each ruling matches how this pack was built
+
+Section 9 of `docs/07_Client_Zero.md` recorded four conflicts at lock. All four were ruled on at
+v1.1 on 09 September 2026, in the curriculum's favour, and the client-zero file was edited to match
+rather than the other way round. Nothing in this pack changes as a result, because this pack was
+already built the way each ruling went. They are listed so the pack can be read on its own.
+
+| # | The conflict | How it was ruled, and what this pack already does |
+|---|---|---|
+| 1 | Section 4 put v1's 50 records at Tuesday to Thursday, while the curriculum puts 30 at Tuesday and 50 at Wednesday. | v0 at 30 records carries Monday and Tuesday. The `w1d1` build draws the same thirty orders as v0. |
+| 2 | Section 4 planted the near-duplicate pair on a timestamp the entity model never gave ORDERS. | The pair differs on `order_date`. Monday's records carry no duplicate pair at all, so this does not reach this pack. |
+| 3 | Section 4 named `discount` as v0's optional field while section 3 gave it nowhere. | `discount` now sits on ORDERS as an optional field, which is exactly where Monday reads it through `.get()`. |
+| 4 | Section 3 caps a typical order at Rs 3,000 while a planted witness sits far outside the band. | The band describes the ordinary population and a witness may sit outside it on purpose. KR4200 at Rs 4,500 is Monday's case. |
+
+### Open, and raised by this day's build
 
 | # | The locked file says | The curriculum row says | Resolved as, for now |
 |---|---|---|---|
-| 5 | Section 4 describes v0 as about 30 flat order records with a nested customer sub-record on some of them. | The Monday row calls for about 30 flat client-zero records loaded by a setup cell, with an id, a segment, an amount, an outcome and a date. | Resolved in the curriculum's favour, since the curriculum outranks the client-zero file. Monday's thirty records are flat, and the nested customer sub-record first appears in Tuesday's JSON, where the cost of flattening it is the lesson. |
+| 5 | Section 4 still describes v0 as about 30 flat order records with a nested customer sub-record on some of them, and v1.1 did not change that line. | The Monday row calls for about 30 flat client-zero records loaded by a setup cell, with an id, a segment, an amount, an outcome and a date. | Resolved in the curriculum's favour, since the curriculum outranks the client-zero file. Monday's thirty records are flat, and the nested customer sub-record first appears in Tuesday's JSON, where the cost of flattening it is the lesson. |
 | 6 | Section 4 lists v0's witnesses as one set, so the word `twelve`, the record missing a required amount, the nested sub-record and the truncated line all sit inside the version first used on Monday. | The Monday row names one planted text amount and the optional field reached through `.get()`, and no other defect. | Resolved in the curriculum's favour. The `w1d1` build takes the same thirty orders and holds back the two defects that belong to Tuesday, so Tuesday's opening `ValueError` still lands on a room that has never seen it. |
 
-### Carried forward from section 9 of docs/07_Client_Zero.md
-
-These four are already recorded there and none of them is new. They are repeated in one line each so
-that this pack can be read on its own.
-
-| # | The conflict | Resolved as, for now |
-|---|---|---|
-| 1 | Section 4 puts v1 at 50 records from Week 1 Tuesday to Thursday, while the curriculum rows put 50 records at Wednesday and about 30 at Tuesday. | v0 at 30 records carries Monday and Tuesday, and v1 at 50 records starts on Wednesday. |
-| 2 | Section 4 plants the near-duplicate pair with one differing timestamp, while the Wednesday row says the pair shares an id and differs on one field. | The pair differs on `order_date`, since the section 3 entity model gives ORDERS a date and no timestamp. |
-| 3 | Section 4 names `discount` as v0's optional field, while the section 3 entity model gives CUSTOMERS an optional `loyalty_tier` and no `discount` anywhere. | Both fields exist. `discount` sits on the order and is the optional field Monday reads through `.get()`, and `loyalty_tier` sits on the customer and stays untouched until it is needed. |
-| 4 | Section 3 says a typical order sits between Rs 800 and Rs 3,000, while no curriculum row states an amount range. | The generator draws typical orders inside that band, and KR4200 at Rs 4,500 sits outside it on purpose as the planted largest amount. |
+Both need a versioned edit in `docs/07_Client_Zero.md` or a workbook edit to close properly.
 
 ## Rulings from the Programme Head, made during this build
 
