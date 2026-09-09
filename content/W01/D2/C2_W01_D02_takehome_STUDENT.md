@@ -55,15 +55,45 @@ Write it as though explaining to a colleague who was not in the room. Under 120 
 
 ---
 
-## The reading
+## The reading, and the one thing you must bring back from it
 
-Skim the chapter on reading and writing files, from the book on the trainer resource list.
+Two files from the Python standard library's own source. Not a tutorial about them. The source.
 
-Link status: to be found. The reference is `Automate the Boring Stuff with Python`, 3rd edition, chapter 10. The verified link goes on this line before this pack is released.
+Both links are pinned to a released version, so the line numbers below will still be there when you
+open them.
 
-When you have read it, add one line to your notebook naming one thing the chapter does differently from what we did today, and say whether you would change your code because of it.
+The CSV reader, Python 3.12.0 (verified 09 Sep 2026): https://raw.githubusercontent.com/python/cpython/v3.12.0/Lib/csv.py
 
----
+The JSON decoder, Python 3.12.0 (verified 09 Sep 2026): https://raw.githubusercontent.com/python/cpython/v3.12.0/Lib/json/decoder.py
+
+### Question 1, from `csv.py`
+
+Read lines 118 to 132, inside `DictReader.__next__`.
+
+Today every row in your file had exactly the right number of fields. Those lines are what happens
+when one does not.
+
+Answer in three lines:
+
+- What does `DictReader` do with a row that has **more** fields than the header?
+- What does it do with a row that has **fewer**?
+- Neither case raises. Say what that means for a rejects log built the way you built yours today.
+
+Quote the line number you took each answer from. An answer without a line number does not count,
+because the point of this is that you opened the file.
+
+### Question 2, from `json/decoder.py`
+
+Find the line that builds the error message you saw today. You are looking for the one that
+produces `line 48 column 1 (char 1027)`.
+
+Answer in two lines:
+
+- The line number, and the format string on it.
+- `colno` is computed on the line above it. Read that computation and say, in your own words, why a
+  file with no newline characters at all would report every error as being on line 1.
+
+If you find yourself writing a general description of JSON parsing, you have not opened the file.
 
 ## How this is checked
 
@@ -74,6 +104,7 @@ The solution is released tomorrow and one of these notebooks is discussed. What 
 3. Does the challenges log contain real error text.
 4. Do the rejections carry the interpreter's reasons rather than invented ones.
 5. Does the run go through your own `clean_record`, rather than a fresh loop written tonight.
+6. Do your two reading answers carry line numbers from the actual source files.
 
 The totals matter least. Two learners can hand in different totals and both be right, if both stated their rule.
 
