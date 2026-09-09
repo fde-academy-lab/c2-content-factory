@@ -67,3 +67,17 @@ Every task starts with skill selection, and it is a step, never an afterthought.
 | Before committing any written artifact | llm-tic-scrubber, then `python3 scripts/verify.py` |
 
 One-time: run `/setup-matt-pocock-skills` in a session once, choosing local files as the issue tracker and `docs/` for generated docs, so the engineering skills know where to write.
+
+## Agent skills
+
+### Issue tracker
+
+Issues and specs live as committed markdown files under `.scratch/<feature-slug>/`, not in GitHub Issues. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+The five canonical role strings are used unchanged, running from `needs-triage` to `wontfix`, and they sit on a `Status:` line inside each issue file. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context, so `CONTEXT.md` and `docs/adr/` both sit at the repository root. See `docs/agents/domain.md`.
