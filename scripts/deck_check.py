@@ -8,8 +8,8 @@ headless browser that does work to do two things at once:
   2. Save a contact sheet PNG, so a person can actually look at the deck.
 
 Usage:
-    python3 scripts/deck_check.py content/W01/D3/C2_W01_D03_deck_STUDENT.pptx
-    python3 scripts/deck_check.py content/W01/D2/*.pptx --png /tmp/deck.png
+    python3 scripts/deck_check.py content/W01/D3/slides/C2_W01_D03_deck_STUDENT.pptx
+    python3 scripts/deck_check.py content/W01/D2/slides/*.pptx --png /tmp/deck.png
 
 Exit code 0 means every box fits. Any FAIL line means a slide needs shortening.
 The HTML is written next to the PNG and is worth opening on its own when a slide fails.
@@ -141,10 +141,10 @@ if __name__ == "__main__":
 
 # Test inputs and expected outcomes
 # --------------------------------
-# scripts/deck_check.py content/W01/D3/C2_W01_D03_deck_STUDENT.pptx
+# scripts/deck_check.py content/W01/D3/slides/C2_W01_D03_deck_STUDENT.pptx
 #     Renders 40 slides, writes a PNG contact sheet, and reports any box whose content is taller
 #     than the box. Exit 0 when every box fits.
-# scripts/deck_check.py content/W01/D2/C2_W01_D02_deck_half1_STUDENT.pptx --png /tmp/h1.png
+# scripts/deck_check.py content/W01/D2/slides/C2_W01_D02_half1_STUDENT.pptx --png /tmp/h1.png
 #     Same for one deck, with the sheet written where you asked.
 # scripts/deck_check.py does_not_exist.pptx
 #     FAIL on the missing path, exit 1, before any rendering is attempted.

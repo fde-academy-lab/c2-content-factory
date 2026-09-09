@@ -5,7 +5,7 @@ pptx. This turns it into slides without leaking markdown syntax onto them: table
 PowerPoint tables, bold markers become bold runs, and backticks disappear.
 
 Usage:
-    python3 scripts/build_deck.py content/W01/D3/C2_W01_D03_deck_STUDENT.md \
+    python3 scripts/build_deck.py content/W01/D3/slides/C2_W01_D03_deck_STUDENT.md \
         --footer "Week 1 Day 3: profile before you touch"
 
 Slide source format: every `## ` heading starts a slide. A heading beginning with SECTION gets the
@@ -395,7 +395,7 @@ if __name__ == "__main__":
 
 # Test inputs and expected outcomes
 # --------------------------------
-# scripts/build_deck.py content/W01/D3/C2_W01_D03_deck_STUDENT.md --footer "Week 1 Day 3"
+# scripts/build_deck.py content/W01/D3/slides/C2_W01_D03_deck_STUDENT.md --footer "Week 1 Day 3"
 #     Writes C2_W01_D03_deck_STUDENT.pptx with 40 slides, no pipe characters and no asterisks
 #     anywhere in the slide text, and markdown tables rendered as PowerPoint tables.
 # A slide whose body holds a markdown table

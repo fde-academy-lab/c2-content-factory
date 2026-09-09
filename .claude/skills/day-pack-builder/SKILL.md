@@ -37,7 +37,7 @@ Binding rules while building:
 2. **The spine, for approval.** One screen: the deck decision (one deck, or half one and half two when the day carries two arcs), section list per artifact, the day's mental-model arc in one sentence, the deliberate failures, the activity choice with its toggle, the take-home shape. Stop and wait. Nothing downstream is built before the spine is approved.
 3. **Build passes**, one artifact family per pass, in this order: deck(s); notebooks; activity; exercises plus solutions; take-home plus self-check spine; Kahoot pack; study notes, cheat sheet and pre-read. Each pass is a separate generation because mixing them flattens all of them.
 4. **Verification.** Run the checklist at the end of this file and report results, including what failed and was fixed.
-5. **Ship.** File names per the naming rule below, audience tags mandatory, files presented together.
+5. **Ship.** Folders and file names per the naming rule below, audience tags mandatory, files presented together.
 
 ## The artifact set
 
@@ -74,16 +74,19 @@ The opening day ships the introduction pack instead of a standard pack: the clie
 6. The take-home fails the shortcut test: pasting it into a chat assistant does not produce the deliverable (see the manifest for the resistance patterns).
 7. No trainer names, marks, weights or clock times in any STUDENT artifact; Rs, never the currency glyph; no em-dashes; the banned-word scan passes.
 8. Distractor audit on every quiz: no key is the longest option, key positions spread.
-9. Audience tag present in every file name.
+9. Audience tag present in every file name, and every file inside the subfolder its type belongs in.
 10. The study notes and cheat sheet carry the same crux lines the deck closes on.
 
 ## File naming
 
 ```
-C2_W{week}_D{day}_{artifact}_{AUDIENCE}.{ext}
+content/W{ww}/D{d}/{folder}/C2_W{ww}_D{dd}_{topic}_{AUDIENCE}.{ext}
+content/W{ww}/SAT/{folder}/C2_W{ww}_SAT_{topic}_{AUDIENCE}.{ext}
 ```
 
-Examples: `C2_W04_D03_deck_half1_STUDENT.pptx`, `C2_W04_D03_demo_02_STUDENT.ipynb`, `C2_W04_D03_takehome_STUDENT.md`, `C2_W04_D03_day_sheet_TRAINER.md`.
+Read `content/README.md` before pass 1: it names the subfolder each artifact belongs in, the different shapes a build day and a Saturday take, and the rule that no file sits loose at a day folder's root. The topic half of the name carries only what the folder and the extension do not already say.
+
+Examples: `slides/C2_W04_D03_half1_STUDENT.pptx`, `notebooks/C2_W04_D03_02_baskets_STUDENT.ipynb`, `takehome/C2_W04_D03_brief_STUDENT.md`, `trainer/C2_W04_D03_day_sheet_TRAINER.md`.
 
 ## The generation prompt
 

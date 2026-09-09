@@ -34,7 +34,7 @@ Week 1 needs five packs. Friday 2 October is Gandhi Jayanti and has no session.
 | D2 | Tue 29 Sep | Functions, errors and files, including the AI-free lab |
 | D3 | Wed 30 Sep | Load, clean, profile: the profiled dataset |
 | D4 | Thu 01 Oct | Descriptive statistics: the segment summary |
-| D6 | Sat 03 Oct | The recap paper and the discussion guide |
+| SAT | Sat 03 Oct | The recap paper, the answer key and the discussion guide |
 
 For each one: start a new task, paste the matching prompt from `prompts/web_prompts.md`, wait for the spine, approve or correct it in the same session, let the passes run, then read the verification report, open the diff, create the pull request, and merge.
 

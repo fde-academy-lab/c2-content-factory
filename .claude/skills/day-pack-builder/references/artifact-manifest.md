@@ -70,6 +70,6 @@ Whenever a live claim proves wrong, the next session opens on a corrections card
 
 ## Weekly and build-week variations
 
-**Saturday recap paper (regular weeks).** Built from the week's question-set row: pen and paper, AI-free, about two hours, short-answer format so peers can cross-evaluate, with the Academic TA's discussion guide and the call-out list. Ungraded.
+**Saturday recap paper (regular weeks).** Built from the week's question-set row: pen and paper, AI-free, about two hours, short-answer format so peers can cross-evaluate, with the Academic TA's discussion guide and the call-out list. Ungraded. It ships in `content/W{ww}/SAT/`, whose folders are `paper/`, `answer-key/` and `discussion/`.
 
-**Build weeks** swap this manifest for the build-week pack: the five sub-problem briefs (three groups per problem, groups of four), assessor rubric, GD prompts with facilitation notes for the expert days (Friday and Saturday, about 30 minutes per group), the trainer's parallel build, daily checkpoint questions, the presentation scoring sheet, and the catch-up plan. No tests, no Kahoot.
+**Build weeks** use the folders `briefs/`, `rubrics/`, `gd/`, `parallel-build/`, `checkpoints/`, `mocks/`, `trainer/` and `internal/`, on their Saturday as well, and swap this manifest for the build-week pack: the five sub-problem briefs (three groups per problem, groups of four), assessor rubric, GD prompts with facilitation notes for the expert days (Friday and Saturday, about 30 minutes per group), the trainer's parallel build, daily checkpoint questions, the presentation scoring sheet, and the catch-up plan. No tests, no Kahoot.
