@@ -30,9 +30,9 @@ Your 30 records are gone. Yesterday you learned that. Today you do something abo
 
 ---
 
-## S4. Where the records actually come from
+## S4. Where the orders actually come from
 
-Nobody hands you a Python list. Someone sends you a file.
+Nobody hands you a Python list. Kalpa Retail's order system sends you a file.
 
 The file was written by a system you do not control, exported by a person you have not met, at a time you did not choose.
 
@@ -213,13 +213,13 @@ JSON agrees about types and about nesting. CSV agrees about neither.
 
 ```
 {
-  "id": "1015",
+  "id": "KR4214",
   "amount": null,
-  "source": {"system": "feed_01", "amount_raw": "8400"}
+  "source": {"system": "kalpa_retail_orders", "amount_raw": "8400"}
 }
 ```
 
-Record 1015 had an empty amount in the CSV. The JSON still carries the original value, one level down.
+Record KR4214 had an empty amount in the CSV. The JSON still carries the original value, one level down.
 
 ---
 
@@ -268,7 +268,7 @@ Shipping only the first one is shipping half the job.
 ## S25. Writing with names
 
 ```
-writer = csv.DictWriter(f, fieldnames=["id","segment","amount","outcome","date"])
+writer = csv.DictWriter(f, fieldnames=["order_id","customer_id","segment","amount","status","order_date","discount"])
 writer.writeheader()
 writer.writerows(clean)
 ```

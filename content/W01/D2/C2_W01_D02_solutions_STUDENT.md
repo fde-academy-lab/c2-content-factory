@@ -50,7 +50,7 @@ def clean_records(rows):
         try:
             clean.append(clean_record(r))
         except ValueError as e:
-            rejects.append({"id": r["id"], "reason": str(e)})
+            rejects.append({"order_id": r["order_id"], "reason": str(e)})
     return clean, rejects
 ```
 
@@ -70,8 +70,8 @@ The append only happens when `clean_record` returned, so a failure adds to `reje
 
 ```
 input 30, clean 28, rejected 2
-{'id': '1011', 'reason': "invalid literal for int() with base 10: 'twelve'"}
-{'id': '1015', 'reason': "invalid literal for int() with base 10: ''"}
+{'order_id': 'KR4210', 'reason': "invalid literal for int() with base 10: 'twelve'"}
+{'order_id': 'KR4214', 'reason': "invalid literal for int() with base 10: ''"}
 ```
 
 ### Where this pattern lives in production
@@ -120,8 +120,8 @@ Function returns `None` on a path nobody tested, the `None` is stored, and it su
 
 1. Line 48 does not exist. The file ends at line 47.
 2. The file has 47 lines. `len(open(path).read().splitlines())` gives it in one line.
-3. The transfer was cut off part way through a record. Line 47 reads `    "id": "1005",` and the record it belongs to was never finished, and the array was never closed.
-4. The parser stops where it runs out of input. That is position 48 column 1, one step past the last thing it could read. The file went wrong wherever the transfer was interrupted, which is the end of line 47. A parser reports where it gave up, never where the mistake was made. Those two positions are the same only in simple cases.
+3. The transfer was cut off part way through a record. Line 47 is the last line in the file and reads `      "signup_date": "2026-08-10"`, sitting inside the nested customer block of an order whose braces were never closed, and the array itself was never closed either.
+4. The parser stops where it runs out of input. That is line 48 column 1, one step past the last thing it could read, and line 48 does not exist. The file went wrong wherever the transfer was interrupted, which is the end of line 47. A parser reports where it gave up, never where the mistake was made. Those two positions are the same only in simple cases.
 5. Something close to: "The feed we received is truncated at record 5 of what looks like a longer file, so we have 4 complete records out of the batch. Please resend." What you refuse to do is hand-edit the closing brackets to make it parse. That produces a file that loads and quietly holds a fraction of the data, which is the exact failure mode from this morning.
 
 ### Where this pattern lives in production
@@ -136,33 +136,33 @@ Truncated payloads are ordinary: a connection drops, a disk fills, a job is kill
 
 ```
 input 24, clean 21, rejected 3
-{'id': '2004', 'reason': "invalid literal for int() with base 10: 'nine hundred'"}
-{'id': '2008', 'reason': "invalid literal for int() with base 10: ''"}
-{'id': '2013', 'reason': "invalid literal for int() with base 10: '12,400'"}
+{'order_id': 'KR5303', 'reason': "invalid literal for int() with base 10: 'nine hundred'"}
+{'order_id': 'KR5307', 'reason': "invalid literal for int() with base 10: ''"}
+{'order_id': 'KR5312', 'reason': "invalid literal for int() with base 10: '1,240'"}
 ```
 
-Total of the 21 clean amounts: `181950`.
+Total of the 21 clean amounts: `34515`.
 
 Reconciliation: 24 in, 21 plus 3 out. If your two output files hold fewer than 24 rows between them, records vanished inside your loop, and finding where is more valuable than the totals.
 
 ### The defect that behaves differently
 
-`12,400` is the one. The other two are unusable: `nine hundred` is a word and the empty string holds nothing at all. `12,400` is a real number wearing a thousands separator, so it is recoverable, and that makes it a decision rather than a rejection.
+`1,240` is the one. The other two are unusable: `nine hundred` is a word and the empty string holds nothing at all. `1,240` is a real number wearing a thousands separator, so it is recoverable, and that makes it a decision rather than a rejection.
 
 You have three defensible answers and one indefensible one.
 
 | Choice | Defence |
 |---|---|
-| Reject it, note the format in the reason | Safe. The supplier learns their export is wrong. You lose 12,400 from today's total. |
+| Reject it, note the format in the reason | Safe. The supplier learns their export is wrong. You lose 1,240 from today's total. |
 | Strip the comma and convert | Recovers the value. You have now decided that commas are decoration, which is wrong in locales where the comma is the decimal point. |
 | Reject it today, ask the supplier, repair tomorrow with a written rule | The one a reviewer will not argue with. |
-| Strip every non-digit character from every amount | The indefensible one. It converts `12,400` and also converts `4500 refund` into `4500`. |
+| Strip every non-digit character from every amount | The indefensible one. It converts `1,240` and also converts `4500 refund` into `4500`. |
 
 If you stripped the comma, you were right that the value is recoverable and you skipped the step where you write down the rule. Write it down now.
 
 ### Why your first attempt may have missed it
 
-If you tested only for an empty string, `12,400` sailed past the check and failed later at `int()`. That is the argument for attempting the conversion and catching the failure rather than trying to predict every wrong shape in advance. You cannot list all the ways a value can be wrong. You can catch the one thing that goes wrong when you use it.
+If you tested only for an empty string, `1,240` sailed past the check and failed later at `int()`. That is the argument for attempting the conversion and catching the failure rather than trying to predict every wrong shape in advance. You cannot list all the ways a value can be wrong. You can catch the one thing that goes wrong when you use it.
 
 ### Where this pattern lives in production
 

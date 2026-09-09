@@ -1,47 +1,47 @@
 [
   {
-    "id": "1001",
-    "segment": "segment_a",
-    "outcome": "accepted",
-    "date": "2026-08-03",
+    "order_id": "KR4200",
+    "segment": "Retail-Core",
+    "status": "returned",
+    "order_date": "2026-08-03",
     "amount": 4500,
     "source": {
-      "system": "feed_01",
+      "system": "kalpa_retail_orders",
       "amount_raw": "4500"
+    },
+    "customer": {
+      "customer_id": "C1645",
+      "city": "Pune",
+      "signup_date": "2026-08-04"
     }
   },
   {
-    "id": "1002",
-    "segment": "segment_b",
-    "outcome": "declined",
-    "date": "2026-08-03",
-    "amount": 12800,
+    "order_id": "KR4201",
+    "segment": "Retail-Plus",
+    "status": "delivered",
+    "order_date": "2026-08-03",
+    "amount": 2395,
     "source": {
-      "system": "feed_01",
-      "amount_raw": "12800"
+      "system": "kalpa_retail_orders",
+      "amount_raw": "2395"
+    },
+    "customer": {
+      "customer_id": "C1178",
+      "city": "Chennai",
+      "signup_date": "2026-08-12"
     }
   },
   {
-    "id": "1003",
-    "segment": "segment_a",
-    "outcome": "accepted",
-    "date": "2026-08-04",
-    "amount": 7350,
+    "order_id": "KR4202",
+    "segment": "Retail-Plus",
+    "status": "delivered",
+    "order_date": "2026-08-04",
+    "amount": 1360,
     "source": {
-      "system": "feed_01",
-      "amount_raw": "7350"
-    }
-  },
-  {
-    "id": "1004",
-    "segment": "segment_c",
-    "outcome": "pending",
-    "date": "2026-08-04",
-    "amount": 2100,
-    "source": {
-      "system": "feed_01",
-      "amount_raw": "2100"
-    }
-  },
-  {
-    "id": "1005",
+      "system": "kalpa_retail_orders",
+      "amount_raw": "1360"
+    },
+    "customer": {
+      "customer_id": "C1184",
+      "city": "Singapore",
+      "signup_date": "2026-08-10"

@@ -35,8 +35,8 @@ Step 4. Run it on the 30 records. You are looking for exactly these three lines:
 
 ```
 input 30, clean 28, rejected 2
-{'id': '1011', 'reason': "invalid literal for int() with base 10: 'twelve'"}
-{'id': '1015', 'reason': "invalid literal for int() with base 10: ''"}
+{'order_id': 'KR4210', 'reason': "invalid literal for int() with base 10: 'twelve'"}
+{'order_id': 'KR4214', 'reason': "invalid literal for int() with base 10: ''"}
 ```
 
 If your numbers differ, the difference is the exercise.
@@ -86,7 +86,7 @@ with open("C2_W01_D02_data_vendor_truncated_STUDENT.json") as f:
 You get:
 
 ```
-json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 48 column 1 (char 841)
+json.decoder.JSONDecodeError: Expecting ',' delimiter: line 48 column 1 (char 1027)
 ```
 
 1. Open the file and go to line 48. Write down what you find there.
