@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Identity Rule Bench</title>
+<style>
+  :root{
+    --bg:#f7f7f5; --panel:#fff; --ink:#1c1c1a; --muted:#5f6360; --line:#dcdcd6;
+    --on:#1f6f4a; --onbg:#e6f2ea; --off:#8a3d3d; --offbg:#f6e8e8; --accent:#2b4a7d;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#16181a; --panel:#1e2124; --ink:#eceae4; --muted:#a2a6a3; --line:#33383c;
+           --on:#7fd3a6; --onbg:#1c2f26; --off:#e59a9a; --offbg:#3a2626; --accent:#9dbbe8; }
+  }
+  body{background:var(--bg); color:var(--ink); font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; margin:0; padding:24px;}
+  .wrap{max-width:1100px; margin:0 auto;}
+  h1{font-size:23px; margin:0 0 4px;}
+  .sub{color:var(--muted); margin:0 0 22px; max-width:74ch;}
+  .grid{display:grid; grid-template-columns:minmax(290px,1fr) minmax(360px,1.2fr); gap:20px; align-items:start;}
+  .panel{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:18px;}
+  .panel h2{font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); margin:0 0 14px;}
+  .fields{display:flex; flex-direction:column; gap:8px;}
+  .fld{display:flex; align-items:center; justify-content:space-between; border:1px solid var(--line);
+       border-radius:7px; padding:9px 12px; cursor:pointer; background:transparent; font:inherit; color:var(--ink); text-align:left;}
+  .fld[aria-pressed="true"]{background:var(--accent); color:#fff; border-color:var(--accent); font-weight:600;}
+  .fld code{font-size:13px;}
+  .fld .role{font-size:12px; opacity:.75;}
+  .presets{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;}
+  .presets button{flex:1 1 auto; padding:7px 10px; font:inherit; font-size:12.5px; background:transparent;
+                  color:var(--ink); border:1px solid var(--line); border-radius:6px; cursor:pointer;}
+  pre.out{background:var(--bg); border:1px solid var(--line); border-radius:7px; padding:13px;
+          font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace; white-space:pre-wrap; margin:0 0 14px;}
+  .stats{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:14px;}
+  .stat{background:var(--bg); border:1px solid var(--line); border-radius:7px; padding:10px 12px;}
+  .stat b{display:block; font-size:21px; line-height:1.2;}
+  .stat span{font-size:11.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em;}
+  .verdict{border-radius:7px; padding:13px 15px; font-weight:600; margin-bottom:14px; border:1px solid transparent;}
+  .verdict.good{background:var(--onbg); color:var(--on); border-color:var(--on);}
+  .verdict.bad{background:var(--offbg); color:var(--off); border-color:var(--off);}
+  table{width:100%; border-collapse:collapse; font-size:13px;}
+  th,td{text-align:left; padding:6px 8px; border-bottom:1px solid var(--line);}
+  th{font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted);}
+  td.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12.5px;}
+  td.diff{background:var(--offbg); color:var(--off); font-weight:600;}
+  .empty{color:var(--muted); font-style:italic; padding:10px 0;}
+  .scroll{overflow-x:auto;}
+  footer{margin-top:22px; color:var(--muted); font-size:13px; max-width:78ch;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>The identity rule bench</h1>
+  <p class="sub">Fifty Kalpa Retail orders. Switch on the fields that decide when two rows are the same order, and watch how many duplicates exist. There is no correct setting waiting to be found. There is a setting you can defend, and you will be asked to defend the one you chose, so screenshot it.</p>
+
+  <div class="grid">
+    <div class="panel">
+      <h2>Two rows are the same order when they share</h2>
+      <div class="fields" id="fields"></div>
+      <div class="presets">
+        <button data-preset="id">order_id alone</button>
+        <button data-preset="id_date">order_id and date</button>
+        <button data-preset="all">the whole row</button>
+        <button data-preset="none">nothing</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>What your rule finds</h2>
+      <pre class="out" id="rule"></pre>
+      <div class="stats">
+        <div class="stat"><b id="s-groups">0</b><span>duplicate groups</span></div>
+        <div class="stat"><b id="s-removed">0</b><span>rows it removes</span></div>
+        <div class="stat"><b id="s-left">50</b><span>orders left</span></div>
+      </div>
+      <div class="verdict" id="verdict"></div>
+      <h2>The rows it groups together</h2>
+      <div class="scroll" id="pairs"></div>
+    </div>
+  </div>
+
+  <footer>One order id appears on two rows in this file. Whether that is one order exported twice or two orders sharing an id is not something the data can answer, which is why the rule is yours to state and the order book owner's to approve.</footer>
+</div>
+
+<script>
+const ORDERS = [{"order_id":"KR4200","customer_id":"C1451","segment":"Student","amount":"1280","status":"cancelled","order_date":"2026-08-03","discount":"150"},{"order_id":"KR4201","customer_id":"C1022","segment":"Retail-Core","amount":"1865","status":"returned","order_date":"2026-08-03","discount":""},{"order_id":"KR4202","customer_id":"C1813","segment":"Retail-Core","amount":"2270","status":"delivered","order_date":"2026-08-04","discount":""},{"order_id":"KR4203","customer_id":"C1758","segment":"Retail-Plus","amount":"2835","status":"cancelled","order_date":"2026-08-04","discount":""},{"order_id":"KR4204","customer_id":"C1498","segment":"Student","amount":"1310","status":"delivered","order_date":"2026-08-05","discount":""},{"order_id":"KR4205","customer_id":"C1167","segment":"Student","amount":"1145","status":"cancelled","order_date":"2026-08-05","discount":""},{"order_id":"KR4206","customer_id":"C1186","segment":"Retail-Plus","amount":"1030","status":"delivered","order_date":"2026-08-06","discount":""},{"order_id":"KR4207","customer_id":"C1453","segment":"Retail-Plus","amount":"985","status":"delivered","order_date":"2026-08-06","discount":"150"},{"order_id":"KR4208","customer_id":"C1234","segment":"Student","amount":"2430","status":"delivered","order_date":"2026-08-07","discount":"125"},{"order_id":"KR4209","customer_id":"C1648","segment":"Retail-Plus","amount":"2895","status":"returned","order_date":"2026-08-07","discount":""},{"order_id":"KR4210","customer_id":"C1312","segment":"Business","amount":"twelve","status":"cancelled","order_date":"2026-08-10","discount":""},{"order_id":"KR4211","customer_id":"C1155","segment":"Business","amount":"2360","status":"delivered","order_date":"2026-08-10","discount":"300"},{"order_id":"KR4212","customer_id":"C1577","segment":"Business","amount":"2855","status":"returned","order_date":"2026-08-10","discount":""},{"order_id":"KR4213","customer_id":"C1649","segment":"Student","amount":"2745","status":"returned","order_date":"2026-08-10","discount":""},{"order_id":"KR4214","customer_id":"C1500","segment":"Retail-Plus","amount":"","status":"cancelled","order_date":"2026-08-10","discount":""},{"order_id":"KR4215","customer_id":"C1606","segment":"Business","amount":"950","status":"delivered","order_date":"2026-08-10","discount":""},{"order_id":"KR4216","customer_id":"C1273","segment":"Student","amount":"2140","status":"delivered","order_date":"2026-08-11","discount":"300"},{"order_id":"KR4217","customer_id":"C1492","segment":"Student","amount":"1475","status":"returned","order_date":"2026-08-11","discount":""},{"order_id":"KR4218","customer_id":"C1893","segment":"Retail-Core","amount":"1445","status":"delivered","order_date":"2026-08-12","discount":""},{"order_id":"KR4219","customer_id":"C1137","segment":"Business","amount":"2050","status":"delivered","order_date":"2026-08-12","discount":""},{"order_id":"KR4220","customer_id":"C1431","segment":"Retail-Plus","amount":"2795","status":"delivered","order_date":"2026-08-13","discount":"25"},{"order_id":"KR4221","customer_id":"C1799","segment":"Business","amount":"1425","status":"cancelled","order_date":"2026-08-13","discount":""},{"order_id":"KR4222","customer_id":"C1852","segment":"Student","amount":"2990","status":"cancelled","order_date":"2026-08-14","discount":""},{"order_id":"KR4223","customer_id":"C1435","segment":"Student","amount":"965","status":"cancelled","order_date":"2026-08-14","discount":""},{"order_id":"KR4224","customer_id":"C1490","segment":"Retail-Plus","amount":"1170","status":"returned","order_date":"2026-08-17","discount":""},{"order_id":"KR4225","customer_id":"C1440","segment":"Retail-Plus","amount":"1435","status":"delivered","order_date":"2026-08-17","discount":""},{"order_id":"KR4226","customer_id":"C1307","segment":"Retail-Plus","amount":"1190","status":"returned","order_date":"2026-08-17","discount":"250"},{"order_id":"KR4227","customer_id":"C1020","segment":"Retail-Core","amount":"800","status":"returned","order_date":"2026-08-17","discount":""},{"order_id":"KR4228","customer_id":"C1169","segment":"Retail-Plus","amount":"1355","status":"cancelled","order_date":"2026-08-17","discount":""},{"order_id":"KR4229","customer_id":"C1181","segment":"Retail-Plus","amount":"1555","status":"delivered","order_date":"2026-08-17","discount":""},{"order_id":"KR4230","customer_id":"C1371","segment":"Business","amount":"2930","status":"cancelled","order_date":"2026-08-18","discount":""},{"order_id":"KR4231","customer_id":"C1596","segment":"Business","amount":"12,400","status":"cancelled","order_date":"2026-08-18","discount":"100"},{"order_id":"KR4232","customer_id":"C1749","segment":"Retail-Core","amount":"480000","status":"delivered","order_date":"2026-08-19","discount":""},{"order_id":"KR4233","customer_id":"C1775","segment":"Retail-Core","amount":"970","status":"delivered","order_date":"2026-08-19","discount":""},{"order_id":"KR4234","customer_id":"C1050","segment":"Retail-Plus","amount":"2995","status":"returned","order_date":"2026-08-20","discount":"275"},{"order_id":"KR4235","customer_id":"C1490","segment":"Student","amount":"24 500","status":"delivered","order_date":"2026-08-20","discount":""},{"order_id":"KR4236","customer_id":"C1116","segment":"Business","amount":"2035","status":"cancelled","order_date":"2026-08-21","discount":"75"},{"order_id":"KR4237","customer_id":"C1105","segment":"Student","amount":"","status":"cancelled","order_date":"2026-08-21","discount":""},{"order_id":"KR4238","customer_id":"C1693","segment":"Retail-Core","amount":"2895","status":"returned","order_date":"2026-08-24","discount":""},{"order_id":"KR4239","customer_id":"C1374","segment":"Business","amount":"2050","status":"delivered","order_date":"2026-08-24","discount":"300"},{"order_id":"KR4240","customer_id":"C1434","segment":"Business","amount":"Rs 8000","status":"delivered","order_date":"2026-08-24","discount":""},{"order_id":"KR4241","customer_id":"C1190","segment":"Retail-Core","amount":"2845","status":"delivered","order_date":"2026-08-24","discount":""},{"order_id":"KR4242","customer_id":"C1043","segment":"Retail-Core","amount":"2640","status":"cancelled","order_date":"2026-08-24","discount":""},{"order_id":"KR4243","customer_id":"C1772","segment":"Student","amount":"1385","status":"delivered","order_date":"2026-08-24","discount":""},{"order_id":"KR4244","customer_id":"C1252","segment":"Business","amount":"2005","status":"cancelled","order_date":"2026-08-25","discount":""},{"order_id":"KR4245","customer_id":"C1625","segment":"Retail-Core","amount":"1955","status":"returned","order_date":"2026-08-25","discount":""},{"order_id":"KR4246","customer_id":"C1565","segment":"Retail-Core","amount":"1980","status":"delivered","order_date":"2026-08-26","discount":""},{"order_id":"KR4247","customer_id":"C1494","segment":"Retail-Core","amount":"1640","status":"delivered","order_date":"2026-08-26","discount":""},{"order_id":"KR4248","customer_id":"C1440","segment":"Retail-Core","amount":"1210","status":"cancelled","order_date":"2026-08-27","discount":""},{"order_id":"KR4201","customer_id":"C1022","segment":"Retail-Core","amount":"1865","status":"returned","order_date":"2026-09-14","discount":""}];
+const FIELDS = [
+  ["order_id","the order's own id"],
+  ["order_date","the day it was placed"],
+  ["amount","what it was worth"],
+  ["status","delivered, returned or cancelled"],
+  ["customer_id","who placed it"],
+  ["segment","which segment they sit in"],
+  ["discount","any discount applied"]
+];
+const state = new Set(["order_id"]);
+
+const holder = document.getElementById("fields");
+holder.innerHTML = FIELDS.map(([f, role]) =>
+  `<button class="fld" data-f="${f}"><code>${f}</code><span class="role">${role}</span></button>`).join("");
+
+function run(){
+  const keys = FIELDS.map(f => f[0]).filter(f => state.has(f));
+  const groups = {};
+  for (const r of ORDERS){
+    const k = keys.length ? keys.map(f => r[f]).join("\u0001") : "__ALL__";
+    (groups[k] = groups[k] || []).push(r);
+  }
+  const dupes = Object.values(groups).filter(g => g.length > 1);
+  const removed = dupes.reduce((n, g) => n + g.length - 1, 0);
+
+  document.getElementById("rule").textContent = keys.length
+    ? "they share " + keys.join(" and ")
+    : "no fields selected, so every row is the same order";
+  document.getElementById("s-groups").textContent = dupes.length;
+  document.getElementById("s-removed").textContent = removed;
+  document.getElementById("s-left").textContent = ORDERS.length - removed;
+
+  const v = document.getElementById("verdict");
+  let text, ok = false;
+  if (!keys.length){
+    text = "You have said every row is the same order, so 49 of the 50 would be removed. A rule with no fields is not a rule.";
+  } else if (keys.length === FIELDS.length){
+    text = "The whole row finds only exact copies. This file has none, and it still contains an order id on two rows, which is where the day started.";
+  } else if (removed === 0){
+    text = "Nothing is removed. You have asserted that the two rows sharing an order id are genuinely different orders, which is defensible as long as you say so out loud.";
+  } else if (keys.length === 1 && state.has("order_id")){
+    text = "One group, one row removed. You are asserting that an order id is never reused, which is a claim about how the upstream system behaves rather than about this file.";
+  } else {
+    text = "One group, one row removed, on a rule narrower than order_id alone. Say which field carried the decision and why it belongs in the rule.";
+    ok = true;
+  }
+  if (removed === 1 && keys.length === 1 && state.has("order_id")) ok = true;
+  v.textContent = text;
+  v.className = "verdict " + (ok ? "good" : "bad");
+
+  const box = document.getElementById("pairs");
+  if (!dupes.length){
+    box.innerHTML = '<p class="empty">No two rows match this rule. That is an answer, and it needs defending like any other.</p>';
+  } else if (dupes.length > 5){
+    box.innerHTML = `<p class="empty">${dupes.length} groups, which is too many to read. Narrow the rule.</p>`;
+  } else {
+    const cols = ["order_id","order_date","amount","status","customer_id","segment","discount"];
+    box.innerHTML = dupes.map(g => {
+      const differing = cols.filter(c => new Set(g.map(r => r[c])).size > 1);
+      return '<table><thead><tr>' + cols.map(c =>
+        `<th>${c}${differing.includes(c) ? " (differs)" : ""}</th>`).join("") + '</tr></thead><tbody>' +
+        g.map(r => '<tr>' + cols.map(c =>
+          `<td class="mono${differing.includes(c) ? " diff" : ""}">${r[c] === "" ? "(none)" : r[c]}</td>`).join("") + '</tr>').join("") +
+        '</tbody></table>';
+    }).join("");
+  }
+
+  for (const b of document.querySelectorAll(".fld")){
+    b.setAttribute("aria-pressed", String(state.has(b.dataset.f)));
+  }
+}
+
+document.addEventListener("click", e => {
+  const f = e.target.closest(".fld");
+  if (f){ state.has(f.dataset.f) ? state.delete(f.dataset.f) : state.add(f.dataset.f); return run(); }
+  const p = e.target.closest("[data-preset]");
+  if (!p) return;
+  state.clear();
+  if (p.dataset.preset === "id") state.add("order_id");
+  if (p.dataset.preset === "id_date"){ state.add("order_id"); state.add("order_date"); }
+  if (p.dataset.preset === "all") FIELDS.forEach(f => state.add(f[0]));
+  run();
+});
+run();
+</script>
+</body>
+</html>
