@@ -60,6 +60,30 @@ Between three and six entries is the normal shape of an evening like this. An en
 
 ---
 
+## 6. Go and read the source that wrote your error
+
+Two errors landed on your screen today and somebody wrote the words you read. Both of them live in
+the source of Python itself, and tonight you go and find them. Read these two files at the v3.12.0
+tag, which pins the line numbers so they stay where this brief says they are:
+
+- `raw.githubusercontent.com/python/cpython/v3.12.0/Objects/object.c` (verified 09 September 2026)
+- `raw.githubusercontent.com/python/cpython/v3.12.0/Objects/dictobject.c` (verified 09 September 2026)
+
+Answer both in one markdown cell, and give the line number you found each answer on.
+
+1. In `Objects/object.c`, find the line that builds the message you saw when you compared KR4200's
+   amount against your boundary. Give its line number, then say what each of its three placeholders
+   held at the moment your own cell failed. Read your own error text to answer that second part,
+   because the file cannot tell you.
+2. In `Objects/dictobject.c`, find the function behind `.get()`. Give its line number, and copy out
+   the one-sentence description of what `.get()` returns that sits a few lines above it. Then say in
+   one sentence what that description means for the default you chose in part 4.
+
+A line number you did not open the file to find is usually wrong, and it is the one part of tonight
+that somebody marking your work can check in ten seconds.
+
+---
+
 ## The watch task
 
 Corey Schafer, Dictionaries, video: link to be found.
@@ -78,7 +102,8 @@ There is nothing to install tonight. The Codespace you opened today is the envir
 2. Your boundary, ready to say in one sentence, with the count and the total on both sides of it.
 3. The two defence sentences, in the notebook rather than in your head.
 4. The challenges log with real error text in it.
-5. One question you could not answer alone last night, written down. The ones people carry in their heads are the ones that go unasked.
+5. The two line numbers from the CPython source, with what you found on each.
+6. One question you could not answer alone last night, written down. The ones people carry in their heads are the ones that go unasked.
 
 The solution opens at the start of tomorrow's session, and tomorrow's first cell is the one this day ended on, so the notebook you bring is the notebook tomorrow starts in.
 
