@@ -1,9 +1,11 @@
 # CLIENT ZERO
 ## The one company every example in the programme lives inside
 
-**Status: PROPOSED.** Change to LOCKED with a name and date on sign-off, after which every day pack builds against this file and nothing in it changes without a versioned edit.
+**Status: LOCKED, v1.0.** Every day pack builds against this file and nothing in it changes without a versioned edit recorded in section 9.
 
-Locked by: ______  Date: ______
+Locked by: Programme Head  Date: 09 September 2026
+
+A role label stands in for a personal name. Replace it with a name if the record needs one.
 
 Client zero is fictional. Any resemblance to a real company is coincidental, and the disclaimer travels with the name wherever it is printed.
 
@@ -141,3 +143,24 @@ Day 1 opens on Kalpa as a story before any code runs: who the company is, what t
 1. `data/generate_client_zero.py` in the repository: one seeded generator that writes every version in section 4 with its witnesses, so the day packs read data rather than invent it.
 2. The Day 1 introduction pack.
 3. The Build 1 sub-problem set: five briefs, one per unit, each morphed from an interview-classic case into the Kalpa persona.
+
+---
+
+## 9. Version history and open conflicts
+
+| Version | Date | Change |
+|---|---|---|
+| v1.0 | 09 September 2026 | Locked. Sections 1 to 8 frozen as written. |
+
+### Conflicts with docs/curriculum/, raised at lock and not yet ruled on
+
+These were found while building against the file. The curriculum export outranks this file, so each is
+resolved in the curriculum's favour until the owner rules otherwise, and each needs a versioned edit
+here or a workbook edit there.
+
+| # | This file says | The curriculum row says | Resolved as, for now |
+|---|---|---|---|
+| 1 | Section 4, v1 is first used "Week 1, Tuesday to Thursday" with 50 records | Tuesday's row says the data is "the same records" as Monday's, and Monday's row says about 30 | v0 at 30 records carries Monday and Tuesday. v1 at 50 records starts Wednesday, whose row calls for "the full client-zero dataset at its dirtiest" |
+| 2 | Section 4, v1 plants a near-duplicate pair "with one differing timestamp" | The Wednesday row says "the near-duplicate pair (same id, one differing field)" | The pair differs on order_date, since the section 3 entity model gives ORDERS a date and no timestamp |
+| 3 | Section 4, v0 names the optional field `discount` | The section 3 entity model gives CUSTOMERS an optional `loyalty_tier` and no `discount` anywhere | Both exist. `discount` sits on the order and is the Week 1 optional field the Monday row uses through `.get()`; `loyalty_tier` sits on the customer and is untouched until it is needed |
+| 4 | Section 3 says a typical order sits between Rs 800 and Rs 3,000 | No row states an amount range | The generator draws typical orders inside that band. The Week 1 Day 2 pack, built before this lock, used a wider band and has been regenerated to match |
