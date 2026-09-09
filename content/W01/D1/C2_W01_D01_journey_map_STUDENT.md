@@ -73,7 +73,7 @@ Each phase is a promise about what you can do when it closes, and none of them i
 | 19 | Launch | This is a capstone week and the capstone build continues. |
 | 20 | Launch | This is a capstone week, and the capstone closes with the panel defence. |
 
-A teaching week runs the daily teaching shape from Monday to Friday and closes with the Saturday recap paper and its discussion. A build week runs the mini project in groups of four, brings the industry expert in on Friday and Saturday, and runs no tests. A capstone week carries the capstone project rather than the daily teaching shape.
+A teaching week runs the daily teaching shape from Monday to Friday and closes with the Saturday recap paper and its discussion. A build week runs the mini project in groups of four, brings the industry expert in on Friday and Saturday, and runs no weekly recap paper. A major exam can still fall inside a build week, as the third one does in Week 15. A capstone week carries the capstone project rather than the daily teaching shape.
 
 ---
 

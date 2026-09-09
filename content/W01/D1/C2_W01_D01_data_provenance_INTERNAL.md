@@ -125,3 +125,16 @@ that this pack can be read on its own.
 | 2 | Section 4 plants the near-duplicate pair with one differing timestamp, while the Wednesday row says the pair shares an id and differs on one field. | The pair differs on `order_date`, since the section 3 entity model gives ORDERS a date and no timestamp. |
 | 3 | Section 4 names `discount` as v0's optional field, while the section 3 entity model gives CUSTOMERS an optional `loyalty_tier` and no `discount` anywhere. | Both fields exist. `discount` sits on the order and is the optional field Monday reads through `.get()`, and `loyalty_tier` sits on the customer and stays untouched until it is needed. |
 | 4 | Section 3 says a typical order sits between Rs 800 and Rs 3,000, while no curriculum row states an amount range. | The generator draws typical orders inside that band, and KR4200 at Rs 4,500 sits outside it on purpose as the planted largest amount. |
+
+## Rulings from the Programme Head, made during this build
+
+These were open when the pack was built and are settled now. They are recorded here because this
+file is the pack's working record. Each one needs to reach the Structure tab in the source workbook
+to become durable, since `docs/curriculum/Structure.md` is an export and an edit made here would be
+overwritten on the next export.
+
+| # | The question | The ruling | What changed in this pack |
+|---|---|---|---|
+| 1 | Structure locks build weeks as carrying no tests and also locks the third major exam into Week 15, which is Build 5's week. The two read as a contradiction. | A major exam falling inside a build week is expected rather than a clash. The offline major exams usually run at the start of the week, unless that day is a holiday. | The journey map and the introduction deck now say a build week runs no weekly recap paper and that a major exam can still fall inside a build week. Neither states a day or a slot, because Structure still says no artifact states one and the ruling says "usually" rather than fixing it. |
+
+The day or slot of a major exam stays unstated in every artifact until the Structure tab locks it.

@@ -284,7 +284,7 @@ The Programme Head opens a build week by introducing the mini projects.
 
 You work in groups of four. Each build week carries five sub-problems, one drawn from each Kalpa unit, and three groups take each sub-problem, so the panel hears three views of the same business problem back to back.
 
-The industry expert attends on Friday and Saturday. No tests run in a build week.
+The industry expert attends on Friday and Saturday. A build week runs no weekly recap paper, and a major exam can still fall inside a build week.
 
 ---
 
