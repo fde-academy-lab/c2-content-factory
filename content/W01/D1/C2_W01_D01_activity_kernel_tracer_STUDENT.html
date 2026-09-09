@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Kernel Tracer</title>
+<style>
+  :root{
+    --bg:#f7f7f5; --panel:#ffffff; --ink:#1c1c1a; --muted:#5f6360; --line:#dcdcd6;
+    --on:#1f6f4a; --onbg:#e6f2ea; --off:#8a3d3d; --offbg:#f6e8e8; --accent:#2b4a7d; --onaccent:#ffffff;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#16181a; --panel:#1e2124; --ink:#eceae4; --muted:#a2a6a3; --line:#33383c;
+      --on:#7fd3a6; --onbg:#1c2f26; --off:#e59a9a; --offbg:#3a2626; --accent:#9dbbe8; --onaccent:#16181a;
+    }
+  }
+  body{background:var(--bg); color:var(--ink); font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; margin:0; padding:24px;}
+  .wrap{max-width:1080px; margin:0 auto;}
+  h1{font-size:23px; margin:0 0 4px;}
+  .sub{color:var(--muted); margin:0 0 22px; max-width:70ch;}
+  .grid{display:grid; grid-template-columns:minmax(300px,1fr) minmax(340px,1.15fr); gap:20px; align-items:start;}
+  .grid.even{grid-template-columns:1fr 1fr; margin-top:20px;}
+  @media (max-width:1000px){ .grid, .grid.even{grid-template-columns:1fr;} }
+  .panel{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:18px;}
+  .panel h2{font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); margin:0 0 14px;}
+  .panel h3{font-size:13.5px; margin:16px 0 6px;}
+  .panel h3:first-of-type{margin-top:4px;}
+  button.cell{display:block; width:100%; text-align:left; font:inherit; color:var(--ink);
+              background:var(--bg); border:1px solid var(--line); border-radius:8px;
+              padding:10px 12px 12px; margin-bottom:12px; cursor:pointer;}
+  button.cell:hover{border-color:var(--accent);}
+  button.cell.last{border-color:var(--accent); box-shadow:0 0 0 1px var(--accent);}
+  .chead{display:flex; align-items:baseline; gap:9px; margin-bottom:6px;}
+  .badge{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:13px; color:var(--accent); font-weight:700;}
+  .clabel{font-weight:600; font-size:13.5px;}
+  .cnote{color:var(--muted); font-size:12px; margin-left:auto;}
+  button.cell pre{margin:0; font:12.5px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;
+                  white-space:pre; overflow-x:auto; color:var(--ink);}
+  .controls{display:flex; gap:10px; margin-top:4px;}
+  .btn{flex:1; padding:10px 12px; font:inherit; font-size:13.5px; font-weight:600; cursor:pointer;
+       border:1px solid var(--accent); border-radius:7px; background:transparent; color:var(--accent);}
+  .btn.solid{background:var(--accent); color:var(--onaccent);}
+  pre.out{background:var(--bg); border:1px solid var(--line); border-radius:7px; padding:13px;
+          font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace; white-space:pre-wrap; margin:0 0 14px;}
+  .verdict{border-radius:7px; padding:13px 15px; margin-bottom:14px; border:1px solid transparent; font-size:14px;}
+  .verdict.good{background:var(--onbg); color:var(--on); border-color:var(--on); font-weight:600;}
+  .verdict.bad{background:var(--offbg); color:var(--off); border-color:var(--off); font-weight:600;}
+  .verdict.note{background:var(--bg); color:var(--muted); border-color:var(--line);}
+  table{width:100%; border-collapse:collapse; font-size:13.5px;}
+  th,td{text-align:left; padding:7px 9px; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted);}
+  td.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12.5px; white-space:nowrap;}
+  .empty{color:var(--muted); font-style:italic; padding:10px 0; margin:0;}
+  .rule{margin-top:16px; border-top:1px solid var(--line); padding-top:13px;}
+  .rule p{margin:0; font-size:13.5px; color:var(--muted);}
+  ol,ul{margin:0 0 4px; padding-left:20px;}
+  li{margin-bottom:8px;}
+  .scroll{overflow-x:auto;}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12.5px;}
+  footer{margin-top:22px; color:var(--muted); font-size:13px; max-width:75ch;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>The kernel tracer</h1>
+  <p class="sub">Four cells, one kernel, and the click order you choose. The cells never move on the screen, and the kernel has no opinion about where they sit. What changes is what the kernel is already holding when each cell runs, so click them out of order on purpose and read the workbench when an output surprises you.</p>
+
+  <div class="grid">
+    <div class="panel">
+      <h2>The notebook, four cells</h2>
+
+      <button class="cell" data-n="1">
+        <div class="chead"><span class="badge" id="b1">[ ]</span><span class="clabel">Cell 1</span><span class="cnote">the setup</span></div>
+<pre>records = [
+    {"order_id": "KR4200", "segment": "Retail-Core",
+     "amount": "4500", "status": "returned",
+     "order_date": "2026-08-03"},
+    {"order_id": "KR4201", "segment": "Retail-Plus",
+     "amount": 2395, "status": "delivered",
+     "order_date": "2026-08-03"},
+    # the other 28 records sit here, 30 in all
+]</pre>
+      </button>
+
+      <button class="cell" data-n="2">
+        <div class="chead"><span class="badge" id="b2">[ ]</span><span class="clabel">Cell 2</span><span class="cnote">the count</span></div>
+<pre>count = 0
+for r in records:
+    if r["status"] == "delivered":
+        count = count + 1</pre>
+      </button>
+
+      <button class="cell" data-n="3">
+        <div class="chead"><span class="badge" id="b3">[ ]</span><span class="clabel">Cell 3</span><span class="cnote">the total</span></div>
+<pre>total = 0
+for r in records:
+    if r["status"] == "delivered":
+        total = total + r["amount"]</pre>
+      </button>
+
+      <button class="cell" data-n="4">
+        <div class="chead"><span class="badge" id="b4">[ ]</span><span class="clabel">Cell 4</span><span class="cnote">the answer</span></div>
+<pre>print("Delivered orders:", count)
+print("Amount collected:", total)</pre>
+      </button>
+
+      <div class="controls">
+        <button class="btn" id="restart">Restart the kernel</button>
+        <button class="btn solid" id="runall">Run all in order</button>
+      </div>
+
+      <div class="rule">
+        <p id="orderline"></p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>The workbench right now</h2>
+      <div class="scroll" id="workbench"></div>
+
+      <div class="rule" style="border:0; padding-top:16px; margin-top:4px;">
+        <h2>What the click you just made produced</h2>
+        <div id="outcome"></div>
+        <div class="verdict" id="verdict"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid even">
+    <div class="panel">
+      <h2>Your task</h2>
+      <ol>
+        <li>Restart the kernel, then find a click order that ends with the line <code>NameError: name 'records' is not defined</code>. Screenshot the workbench and the outcome together at that moment, and be ready to say which names existed at that point and which did not.</li>
+        <li>Restart the kernel again, then find the shortest click order that prints the correct answer, which is 13 delivered orders coming to Rs 25,720. Count your clicks, and be ready to say why no shorter order reaches that pair of numbers.</li>
+      </ol>
+      <div class="rule">
+        <p>Running all four cells in order is the recovery drill you will use for the rest of the programme, and it is here for the moment your workbench stops making sense.</p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>What a restart erased, and what it did not</h2>
+      <h3>Gone the moment you restart</h3>
+      <ul>
+        <li>Every name the kernel was holding goes at once, so <code>records</code>, <code>count</code> and <code>total</code> leave the workbench together.</li>
+        <li>The values inside those names go with them, including a value that was correct and one that was left half finished by a run that stopped on an error.</li>
+        <li>The kernel's own run count starts over, so the next cell you run is run one whichever cell it is, and the kernel keeps no memory of the order you ran things in.</li>
+      </ul>
+      <h3>Still there after you restart</h3>
+      <ul>
+        <li>The code in all four cells is untouched, because it lives in a file on disk and a restart never reaches the file.</li>
+        <li>The outputs already printed under the cells stay on the screen, and they go stale the second the kernel forgets the values that produced them.</li>
+        <li>Your ability to get the answer back, which costs you four clicks or one click on the button that runs them in order.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>The four cells hold the same shape the opening demo ran, against the same 30 Kalpa Retail orders. Kalpa Group is fictional. Any resemblance to a real company is coincidental.</footer>
+</div>
+
+<script>
+var ANSWER_COUNT = 13, ANSWER_TOTAL = 25720;
+
+var runNo = 0;
+var counter = {1:null, 2:null, 3:null, 4:null};
+var order = [];
+var env = {};
+var lastCell = null;
+var outLines = [];
+var verdictText = "";
+var verdictKind = "note";
+var emptyOutput = "";
+
+function traceback(runNumber, line, name){
+  return "Traceback (most recent call last):\n  Cell In[" + runNumber + "], line " + line +
+         "\nNameError: name '" + name + "' is not defined";
+}
+
+function runCell(n){
+  runNo = runNo + 1;
+  counter[n] = runNo;
+  order.push(n);
+  lastCell = n;
+  outLines = [];
+  emptyOutput = "";
+
+  if (n === 1){
+    env.records = {holds:"A list of 30 Kalpa Retail order records, and each record is a dictionary of named fields.",
+                   by:"Cell 1 put it there on run " + runNo + "."};
+    emptyOutput = "Nothing appeared under the cell. An assignment prints no output at all, so the workbench above is the only place you can check that it worked.";
+    verdictText = "The name records is on the workbench now, which is what every other cell here needs before it can do anything.";
+    verdictKind = "note";
+    return;
+  }
+
+  if (n === 2 || n === 3){
+    var nm = (n === 2) ? "count" : "total";
+    var full = (n === 2) ? ANSWER_COUNT : ANSWER_TOTAL;
+    env[nm] = {value:0, done:false,
+               holds:"The number 0, which is where the cell set it on the first line before the run stopped.",
+               by:"Cell " + n + " put it there on run " + runNo + "."};
+    if (!env.records){
+      outLines.push(traceback(runNo, 2, "records"));
+      verdictText = "Cell " + n + " set " + nm + " to 0 on its first line and then went looking for records, which no cell had put on the workbench yet. " +
+                    "The error names the exact word the kernel could not find, and the leftover " + nm + " holding 0 is the part to watch.";
+      verdictKind = "bad";
+      return;
+    }
+    env[nm] = {value:full, done:true,
+               holds:(n === 2)
+                 ? "The number 13, which is how many of the 30 orders reached the customer and were paid for."
+                 : "The number 25720, which reads as Rs 25,720 in a sentence and is what those orders come to.",
+               by:"Cell " + n + " put it there on run " + runNo + "."};
+    emptyOutput = "Nothing appeared under the cell. The loop finished quietly and left its answer in a name, so read the workbench above to see it.";
+    verdictText = "Cell " + n + " walked all 30 records and left " + nm + " on the workbench holding " + full + ".";
+    verdictKind = "note";
+    return;
+  }
+
+  if (!env.count){
+    outLines.push(traceback(runNo, 1, "count"));
+    verdictText = "The printing cell asked for count on its very first line and the kernel had never been given that name, so nothing printed at all.";
+    verdictKind = "bad";
+    return;
+  }
+  outLines.push("Delivered orders: " + env.count.value);
+  if (!env.total){
+    outLines.push(traceback(runNo, 2, "total"));
+    verdictText = "The first line printed and the second one stopped, because count was on the workbench and total was not. " +
+                  "A cell runs line by line, so you can get half an output and an error underneath it.";
+    verdictKind = "bad";
+    return;
+  }
+  outLines.push("Amount collected: " + env.total.value);
+
+  var staleNames = [], staleCells = [];
+  if (!env.count.done){ staleNames.push("count"); staleCells.push("Cell 2"); }
+  if (!env.total.done){ staleNames.push("total"); staleCells.push("Cell 3"); }
+  if (staleNames.length === 0){
+    verdictText = "That is the day's answer, and the run order on the left is how you got there. " +
+                  "Thirteen orders were delivered and they come to Rs 25,720.";
+    verdictKind = "good";
+    return;
+  }
+  verdictText = "The cell printed without any error and the answer is wrong. " +
+                (staleNames.length === 1
+                  ? "The name " + staleNames[0] + " still holds 0 from a run that stopped early, "
+                  : "The names " + staleNames.join(" and ") + " still hold 0 from runs that stopped early, ") +
+                "and the kernel handed that leftover straight to print without a word of complaint. " +
+                "Run " + staleCells.join(" and ") + " again now that records exists, then print again.";
+  verdictKind = "bad";
+}
+
+function restart(){
+  runNo = 0;
+  counter = {1:null, 2:null, 3:null, 4:null};
+  order = [];
+  env = {};
+  lastCell = null;
+  outLines = [];
+  emptyOutput = "You restarted the kernel. This page keeps one kernel session, so it clears its own counters to show you a fresh bench. What a restart is guaranteed to take from you is every name and every value, which is what the workbench above now shows, and the four cells still hold exactly the code you can read on the left.";
+  verdictText = "A restart sweeps the bench and leaves the file alone, which is why it costs you seconds rather than your work.";
+  verdictKind = "note";
+}
+
+function draw(){
+  for (var i = 1; i <= 4; i++){
+    document.getElementById("b" + i).textContent = counter[i] === null ? "[ ]" : "[" + counter[i] + "]";
+  }
+  var cells = document.querySelectorAll("button.cell");
+  for (var c = 0; c < cells.length; c++){
+    cells[c].classList.toggle("last", Number(cells[c].dataset.n) === lastCell);
+  }
+
+  var names = ["records", "count", "total"];
+  var rows = "";
+  for (var k = 0; k < names.length; k++){
+    var v = env[names[k]];
+    if (!v) continue;
+    rows += '<tr><td class="mono">' + names[k] + '</td><td>' + v.holds + '</td><td>' + v.by + '</td></tr>';
+  }
+  var wb = document.getElementById("workbench");
+  if (rows === ""){
+    wb.innerHTML = '<p class="empty">The workbench is empty. A fresh kernel knows no names at all, which is why the first cell you click decides what the next one is allowed to see.</p>';
+  } else {
+    wb.innerHTML = '<table><thead><tr><th>name</th><th>what it holds right now</th><th>put there by</th></tr></thead><tbody>' +
+                   rows + '</tbody></table>';
+  }
+
+  var out = document.getElementById("outcome");
+  if (outLines.length > 0){
+    var pre = document.createElement("pre");
+    pre.className = "out";
+    pre.textContent = outLines.join("\n");
+    out.innerHTML = "";
+    out.appendChild(pre);
+  } else {
+    out.innerHTML = '<p class="empty"></p>';
+    out.firstChild.textContent = emptyOutput === "" ? "Nothing has run yet. Click a cell on the left and the kernel will do exactly what you asked, in the order you asked it." : emptyOutput;
+  }
+
+  var v = document.getElementById("verdict");
+  v.textContent = verdictText === "" ? "Click any of the four cells to start, and the kernel will tell you what it was holding when that cell ran." : verdictText;
+  v.className = "verdict " + verdictKind;
+
+  var label = [];
+  for (var o = 0; o < order.length; o++){ label.push("Cell " + order[o]); }
+  document.getElementById("orderline").textContent = order.length === 0
+    ? "Nothing has run since the last restart, so every counter on this page is blank."
+    : "The kernel saw this order: " + label.join(", ") + ".";
+}
+
+document.addEventListener("click", function(e){
+  var cell = e.target.closest("button.cell");
+  if (cell){ runCell(Number(cell.dataset.n)); draw(); return; }
+  if (e.target.id === "restart"){ restart(); draw(); return; }
+  if (e.target.id === "runall"){
+    for (var n = 1; n <= 4; n++){ runCell(n); }
+    draw();
+  }
+});
+
+draw();
+</script>
+</body>
+</html>

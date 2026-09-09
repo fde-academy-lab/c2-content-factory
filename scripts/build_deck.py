@@ -17,6 +17,7 @@ import re
 
 from pptx import Presentation
 from pptx.dml.color import RGBColor
+from pptx.enum.shapes import MSO_SHAPE
 from pptx.enum.text import PP_ALIGN
 from pptx.util import Inches, Pt
 
@@ -28,6 +29,92 @@ SECBG = RGBColor(0x2B, 0x4A, 0x7D)
 WHITE = RGBColor(0xFF, 0xFF, 0xFF)
 
 BOLD = re.compile(r"\*\*(.+?)\*\*")
+TINT = RGBColor(0xE4, 0xEC, 0xF7)
+
+UNITS = ["Kalpa Retail", "Kalpa Financial Services", "Kalpa Logistics",
+         "Kalpa Health", "Kalpa Connect"]
+
+
+def _node(s, left, top, w, h, text, fill, ink, size=13, bold=False):
+    shape = s.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, left, top, w, h)
+    shape.fill.solid(); shape.fill.fore_color.rgb = fill
+    shape.line.color.rgb = ACC; shape.line.width = Pt(1.0)
+    shape.shadow.inherit = False
+    shape.text_frame.word_wrap = True
+    para = shape.text_frame.paragraphs[0]
+    para.alignment = PP_ALIGN.CENTER
+    run = para.add_run()
+    run.text = text; run.font.size = Pt(size); run.font.bold = bold
+    run.font.name = "Calibri"; run.font.color.rgb = ink
+    return shape
+
+
+def _link(s, x1, y1, x2, y2):
+    conn = s.shapes.add_connector(1, x1, y1, x2, y2)
+    conn.line.color.rgb = ACC; conn.line.width = Pt(1.25)
+
+
+def draw_units(s, after):
+    """Kalpa Group and its five units, from section 2 of the locked client-zero file.
+
+    A line after the fence that opens with a unit's name becomes that box's second line, so the
+    slide's own sentences ride inside the diagram instead of being cut off under it.
+    """
+    said = {}
+    for line in after:
+        for unit in UNITS:
+            if line.strip().startswith(unit):
+                said[unit] = line.strip()[len(unit):].strip().rstrip(".")
+    group = _node(s, Inches(0.9), Inches(3.15), Inches(3.1), Inches(1.3),
+                  "Kalpa Group\nBengaluru Data and AI team", ACC, WHITE, 14, True)
+    for i, unit in enumerate(UNITS):
+        spine = unit == "Kalpa Retail"
+        label = unit + (", the teaching spine" if spine else "")
+        if unit in said:
+            label += "\n" + said[unit]
+        node = _node(s, Inches(5.3), Inches(1.55) + Inches(1.02) * i, Inches(5.9), Inches(0.86),
+                     label, TINT if spine else WHITE, INK, 12)
+        node.text_frame.paragraphs[0].runs[0].font.bold = True
+        _link(s, group.left + group.width, group.top + group.height // 2,
+              node.left, node.top + node.height // 2)
+
+
+def draw_entities(s, after):
+    """The six Kalpa Retail entities, from section 3 of the locked client-zero file."""
+    boxes = {"CUSTOMERS": (0.9, 2.55), "EVENTS": (0.9, 4.3), "ORDERS": (4.4, 2.55),
+             "PAYMENTS": (4.4, 4.3), "ORDER_ITEMS": (7.9, 2.55), "PRODUCTS": (7.9, 4.3)}
+    drawn = {n: _node(s, Inches(x), Inches(y), Inches(2.6), Inches(0.85), n, WHITE, INK, 13, True)
+             for n, (x, y) in boxes.items()}
+    for a, b, label in [("CUSTOMERS", "ORDERS", "places"), ("CUSTOMERS", "EVENTS", "generates"),
+                        ("ORDERS", "ORDER_ITEMS", "contains"), ("ORDERS", "PAYMENTS", "settled by"),
+                        ("PRODUCTS", "ORDER_ITEMS", "appears in")]:
+        one, two = drawn[a], drawn[b]
+        if one.top == two.top:
+            x1, y1 = one.left + one.width, one.top + one.height // 2
+            x2, y2 = two.left, two.top + two.height // 2
+        else:
+            x1, y1 = one.left + one.width // 2, one.top + one.height
+            x2, y2 = two.left + two.width // 2, two.top
+        _link(s, x1, y1, x2, y2)
+        cap = s.shapes.add_textbox(min(x1, x2) - Inches(0.35), (y1 + y2) // 2 - Inches(0.16),
+                                   Inches(1.6), Inches(0.32))
+        cap.text_frame.paragraphs[0].alignment = PP_ALIGN.CENTER
+        run = cap.text_frame.paragraphs[0].add_run()
+        run.text = label; run.font.size = Pt(10)
+        run.font.name = "Calibri"; run.font.color.rgb = MUTED
+
+
+DIAGRAMS = [(("Kalpa Retail", "Kalpa Connect"), draw_units),
+            (("erDiagram", "ORDER_ITEMS"), draw_entities)]
+
+
+def diagram_for(lines):
+    """A mermaid fence renders as nothing in PowerPoint, so the known diagrams are drawn instead."""
+    joined = "\n".join(lines)
+    for markers, drawer in DIAGRAMS:
+        if all(marker in joined for marker in markers):
+            return drawer
+    return None
 
 
 def parse(md):
@@ -64,6 +151,22 @@ def split_blocks(body):
     if buf:
         blocks.append((mode, buf))
     return [(m, [l for l in b if l.strip() or m == "code"]) for m, b in blocks if any(l.strip() for l in b)]
+
+
+def box_height(lines, mono=False):
+    """Estimate the height a text box needs, in inches, counting wrapped lines.
+
+    Sizing by source-line count alone under-measures every paragraph that wraps, which is most of
+    them at 21pt across an 11.6in box, so slides overflowed silently until deck_check.py could
+    measure them. Characters per line and line height are read off that measurement: 21pt Calibri
+    wraps at about 95 characters and sets on a 26px line, 17pt Consolas at about 105 on 21px.
+    """
+    per_line, line_px, gap_px = (105, 21, 5) if mono else (95, 26, 13)
+    total = 0
+    for line in lines:
+        text = clean(line).rstrip()
+        total += max(1, -(-len(text) // per_line)) * line_px + gap_px
+    return (total + 18) / 96
 
 
 def clean(text):
@@ -134,12 +237,38 @@ def build(src, out, footer):
         if section:
             p0.alignment = PP_ALIGN.CENTER
 
+        blocks = split_blocks(body)
+        drawer = None
+        for mode, lines in blocks:
+            if mode == "code":
+                drawer = drawer or diagram_for(lines)
+        if drawer and not section:
+            lead = [l for (m, b) in blocks if m == "text" for l in b if l.strip()]
+            after = []
+            seen_code = False
+            for mode, lines in blocks:
+                if mode == "code":
+                    seen_code = True
+                elif seen_code:
+                    after.extend(lines)
+            head = [l for l in lead if l not in after]
+            if head:
+                cb = s.shapes.add_textbox(Inches(0.85), Inches(1.85), width, Inches(0.55))
+                cb.text_frame.word_wrap = True
+                add_runs(cb.text_frame.paragraphs[0], " ".join(head), 17, INK)
+            drawer(s, after)
+            fb = s.shapes.add_textbox(Inches(0.85), Inches(6.9), width, Inches(0.4))
+            fr = fb.text_frame.paragraphs[0].add_run()
+            fr.text = footer
+            fr.font.size = Pt(10); fr.font.color.rgb = MUTED; fr.font.name = "Calibri"
+            continue
+
         top = 2.15
-        for mode, lines in split_blocks(body):
+        for mode, lines in blocks:
             if mode == "table" and not section:
                 top = add_table(s, lines, top, width)
                 continue
-            h = max(0.55, min(4.6, 0.42 * len(lines) + 0.35))
+            h = max(0.55, min(4.6, box_height(lines, mono=mode == "code")))
             bb = s.shapes.add_textbox(Inches(0.85), Inches(top), width, Inches(h))
             bb.text_frame.word_wrap = True
             first = True
@@ -188,3 +317,5 @@ if __name__ == "__main__":
 #     Becomes a real table with a bold header row, never lines beginning with "|".
 # A slide whose title starts with SECTION
 #     Gets the dark background, centred text and white type.
+# A slide holding the client-zero unit map or entity mermaid fence
+#     Gets boxes and connectors drawn as PowerPoint shapes, never the mermaid source as text.
