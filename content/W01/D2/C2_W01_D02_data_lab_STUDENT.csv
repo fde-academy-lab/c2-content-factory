@@ -1,0 +1,25 @@
+id,segment,amount,outcome,date
+2001,segment_a,6200,accepted,2026-09-01
+2002,segment_b,14750,declined,2026-09-01
+2003,segment_c,3400,accepted,2026-09-02
+2004,segment_a,nine hundred,pending,2026-09-02
+2005,segment_b,21300,accepted,2026-09-03
+2006,segment_d,1750,declined,2026-09-03
+2007,segment_a,8600,accepted,2026-09-04
+2008,segment_c,,accepted,2026-09-04
+2009,segment_b,10450,pending,2026-09-07
+2010,segment_a,5300,accepted,2026-09-07
+2011,segment_c,17800,declined,2026-09-08
+2012,segment_d,2650,accepted,2026-09-08
+2013,segment_b,"12,400",accepted,2026-09-09
+2014,segment_a,7100,pending,2026-09-09
+2015,segment_c,4900,accepted,2026-09-10
+2016,segment_b,19600,declined,2026-09-10
+2017,segment_a,3150,accepted,2026-09-11
+2018,segment_d,1200,accepted,2026-09-11
+2019,segment_c,9300,pending,2026-09-14
+2020,segment_b,15900,accepted,2026-09-14
+2021,segment_a,6750,declined,2026-09-15
+2022,segment_c,11500,accepted,2026-09-15
+2023,segment_b,8050,accepted,2026-09-16
+2024,segment_a,2300,pending,2026-09-16

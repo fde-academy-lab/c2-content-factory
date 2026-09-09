@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1001",
+    "segment": "segment_a",
+    "outcome": "accepted",
+    "date": "2026-08-03",
+    "amount": 4500,
+    "source": {
+      "system": "feed_01",
+      "amount_raw": "4500"
+    }
+  },
+  {
+    "id": "1002",
+    "segment": "segment_b",
+    "outcome": "declined",
+    "date": "2026-08-03",
+    "amount": 12800,
+    "source": {
+      "system": "feed_01",
+      "amount_raw": "12800"
+    }
+  },
+  {
+    "id": "1003",
+    "segment": "segment_a",
+    "outcome": "accepted",
+    "date": "2026-08-04",
+    "amount": 7350,
+    "source": {
+      "system": "feed_01",
+      "amount_raw": "7350"
+    }
+  },
+  {
+    "id": "1004",
+    "segment": "segment_c",
+    "outcome": "pending",
+    "date": "2026-08-04",
+    "amount": 2100,
+    "source": {
+      "system": "feed_01",
+      "amount_raw": "2100"
+    }
+  },
+  {
+    "id": "1005",
