@@ -93,7 +93,7 @@ Three checks tonight, so that tomorrow does not begin with a broken environment.
 
 ## The watch task
 
-Corey Schafer, Dictionaries, video: link to be found.
+Corey Schafer, Dictionaries: https://www.youtube.com/watch?v=daefaLgNkw0 (verified 09 September 2026)
 
 Watch it before tomorrow. Then write one line naming something the video does with a dictionary that
 today's session did not, and say whether you would use it on these thirty orders.

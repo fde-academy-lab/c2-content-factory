@@ -22,12 +22,12 @@ Trainer file. Never given to learners, never pasted into a student artifact.
 
 | Block | Agenda items | Duration | Where |
 |---|---|---|---|
-| One, columns | Two profiles, the profiler, missingness, coercion at scale | 125 minutes | Deck S1 to S18, notebook 1 |
-| Two, rows | Duplicates, outliers, the full pass, Kahoot and close | 115 minutes | Deck S19 to S35, notebook 2 |
+| One, columns | Two profiles, the profiler, missingness, coercion at scale | 125 minutes | Deck S1 to S21, notebook 1 |
+| Two, rows | Duplicates, outliers, the full pass, Kahoot and close | 115 minutes | Deck S22 to S52, notebook 2 |
 
 Fixed content totals 240 minutes.
 
-One deck, not two halves. The mental model does not reset today: it is profile, decide, record, applied to columns and then to rows, which is the spiral rather than a second arc. The column-to-row shift is marked at deck S19 and is worth naming as you cross it.
+One deck, not two halves. The mental model does not reset today: it is profile, decide, record, applied to columns and then to rows, which is the spiral rather than a second arc. The column-to-row shift is marked at deck S22 and is worth naming as you cross it.
 
 ---
 
@@ -130,6 +130,49 @@ The pre-read for tomorrow, without exception. Tomorrow opens on the average orde
 
 ## Known gaps in this pack
 
-Every reference link is a "to be found" slot. The build session had no network access and an unverified link never ships. See the internal link register in this folder.
+Every reference in this pack now carries a verified link with the date it was checked. The links were verified on 09 September 2026 against the live sites. The standing rule is unchanged: a link enters an artifact only on the day it was checked, so re-check them before the pack is delivered and update the date beside any that moved.
 
 The data is generated rather than hand-written. See the provenance file for the one command that rebuilds it.
+
+---
+
+## The two tracks in the deck
+
+The deck carries two kinds of slide and it tells you which is which.
+
+Slides numbered `S` are the spine. They are the delivered path, in delivery order, and the block
+timings above are built from them alone. Walk them.
+
+Slides numbered `D` carry a DEPTH mark in the top right corner and sit immediately after the slide
+they deepen. Skip them live. They exist so the deck is worth reading alone afterwards, so a learner
+who asks a harder question has somewhere to be sent, and so you have somewhere to go when the room
+is ahead of you.
+
+If the room is running fast, add the depth slides that carry a diagram of a mechanism first, because
+they save you drawing it on the board. If the room is running slow, every depth slide goes and
+nothing in the spine changes.
+
+| Depth slide | What it adds |
+|---|---|
+| `D1` | Why distinct is the count that catches a silent fix |
+| `D2` | The three counts as rates, so columns can be compared |
+| `D3` | The whole file, profiled |
+| `D4` | The six failures, named, and who fixes each |
+| `D5` | What distinct tells you about a field's job |
+| `D6` | The same two columns, and what each choice would cost in numbers |
+| `D7` | The coerce-everything pass, and what it hides |
+| `D8` | The gene name case, the mechanism |
+| `D9` | The gene name case, what it cost and how it was fixed |
+| `D10` | Why that case belongs in a Python session |
+| `D11` | The two readings, and what each one costs if you are wrong |
+| `D12` | Writing the two checks so they disagree in public |
+| `D13` | What you actually send, and why it fits in six lines |
+| `D14` | What it does to every number you might report |
+| `D15` | Where the 1.5 comes from, and why you should say so out loud |
+| `D16` | Three ways to flag an extreme, and when each is honest |
+| `D17` | What investigating it actually means |
+| `D18` | The fields a decisions log line needs |
+| `D19` | The reconciliation as an identity, with today's numbers |
+| `D20` | The whole day, as one runnable check |
+| `D21` | Question 1, the version that separates you from the room |
+| `D22` | Question 2, the numbers that make it land |

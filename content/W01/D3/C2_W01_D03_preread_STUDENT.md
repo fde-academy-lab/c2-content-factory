@@ -62,4 +62,4 @@ The second one has no clean answer. That is why it is worth arriving with a view
 
 Khan Academy on mean, median and mode.
 
-Link status: to be found. The reference is on the curriculum row for today and the verified link goes on this line before this pack is released.
+`Automate the Boring Stuff with Python`, 3rd edition, chapter 18, on CSV, JSON and XML: https://automatetheboringstuff.com/3e/chapter18.html (verified 09 September 2026)

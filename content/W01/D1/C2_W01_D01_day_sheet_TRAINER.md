@@ -213,11 +213,11 @@ The take-home and its self-check spine go out at the close. The take-home extend
 
 The pre-read for tomorrow goes out at the close, without exception. Tomorrow opens by running today's final cell unchanged against a file, so the learner who has not opened the pre-read still lands on their feet, and the learner who has opened it lands ahead.
 
-Say the watch item by name at the close: Corey Schafer, Dictionaries, video: link to be found.
+Say the watch item by name at the close: Corey Schafer, Dictionaries: https://www.youtube.com/watch?v=daefaLgNkw0 (verified 09 September 2026)
 
 ## Known gaps in this pack
 
-Every reference link in this pack is a "to be found" slot. The build session had no network access to verify a single URL and an unverified link never ships. See the internal link register in this folder and paste the verified links in before release.
+Every reference in this pack now carries a verified link with the date it was checked. The links were verified on 09 September 2026 against the live sites. The standing rule is unchanged: a link enters an artifact only on the day it was checked, so re-check them before the pack is delivered and update the date beside any that moved.
 
 The row's STOP BEFORE bars every import statement, so Monday's notebooks import nothing at all. A deliberate failure has to print itself without halting the run, and with no `traceback` helper available the notebooks use a small `try` and `except` wrapper around each break, labelled in the markdown above it as plumbing that keeps the notebook running. Beside each wrapped cell there is a markdown block carrying the full traceback exactly as the learner sees it when they run the bare line themselves. Say once, when the first wrapper appears, that the learner meets `try` and `except` properly tomorrow and that today they only need to read the message.
 
