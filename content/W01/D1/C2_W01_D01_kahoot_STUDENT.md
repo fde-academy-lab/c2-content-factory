@@ -14,8 +14,8 @@ You run `'10' > 9` in a cell. Is the result True, an error, or does it depend?
 
 1. True, because Python reads the digits inside the quotes and compares ten with nine
 2. False, because a piece of text always sorts below a number
-3. It raises a TypeError, since one side is text  <- correct
-4. It depends on how many digits the text side happens to hold
+3. It raises a TypeError, since one side of the comparison is text  <- correct
+4. It depends on how many digits the text side holds
 
 **Why:** Python refuses the comparison rather than guessing what you meant by it. Text and a number have no shared order, and the interpreter says so instead of inventing one.
 
@@ -55,9 +55,9 @@ You wrote three cells and ran them in the order 3, 1, 2. Which error appears, an
 Your accumulator adds the amount whenever the status is delivered. Three records go past it: KR4201 delivered at Rs 2,395, then KR4202 delivered at Rs 1,360, then KR4203 returned at Rs 1,440. What does `total` hold at the end?
 
 1. Rs 5,195, because every amount that went past was added
-2. Rs 3,755, because the returned order was skipped  <- correct
-3. Rs 1,360, because the total starts again on every pass
-4. Rs 2,395, because the total stops after the first match
+2. Rs 3,755, because the returned order never reached the addition  <- correct
+3. Rs 1,360, because the total starts again each pass
+4. Rs 2,395, because the total stops updating after the first match
 
 **Why:** Rs 2,395 plus Rs 1,360 is Rs 3,755, and KR4203 never reaches the addition because its status is returned. The condition decides what enters, and the accumulator decides what survives across passes.
 
@@ -75,10 +75,10 @@ Your accumulator adds the amount whenever the status is delivered. Three records
 
 What do `type('4500')` and `type(4500)` report?
 
-1. Both report int, because the digits inside the quotes are what count
-2. Both report str, because everything typed into a cell arrives as text
+1. Both report int, because the digits in the quotes are what count
+2. Both report str, because everything in a cell arrives as text
 3. The first reports str and the second reports float, since a bare number is a float
-4. The first reports str and the second reports int  <- correct
+4. The first reports str, because of the quotes, and the second reports int  <- correct
 
 **Why:** The quotes are the whole difference. `'4500'` is four characters that happen to be digits, and `4500` is a number, and `type()` is how you settle the question in one second instead of arguing about it.
 
@@ -97,8 +97,8 @@ What do `type('4500')` and `type(4500)` report?
 A record has no `discount` key at all. What does `rec.get('discount', 0)` give you?
 
 1. It raises a KeyError, the same way a square bracket lookup would
-2. It returns 0, which is the default you stated  <- correct
-3. It returns None, because the record has no such field
+2. It returns 0, which is the default you stated in the call  <- correct
+3. It returns None, because the field is absent
 4. It quietly adds a discount field set to 0 and then returns it
 
 **Why:** You stated the default yourself, so the absent field comes back as the value you chose. That choice is yours to defend, and choosing 100 instead of 0 would give you a number that is just as confident and completely wrong.
@@ -138,9 +138,9 @@ You restart the kernel. What is gone, and what is still there?
 
 You run `a = [1, 2, 3]`, then `b = a`, then `b.append(9)`. What is `len(a)` now?
 
-1. It is 3, because only b was appended to
+1. It is 3, since only b was appended
 2. It is 0, because the assignment handed the items over to b
-3. It is 4, because a and b name the same list  <- correct
+3. It is 4, because a and b are two names for one list  <- correct
 4. It is 3 until you print b, and then both catch up to 4
 
 **Why:** `b = a` hands the same list a second name. There is one list on the workbench with two labels on it, so appending through either label changes what both labels show you.
@@ -159,18 +159,18 @@ You run `a = [1, 2, 3]`, then `b = a`, then `b.append(9)`. What is `len(a)` now?
 
 Run before release. Three rules: the correct answer is never the longest option, correct positions are spread across the four slots, and no option can be dropped on grammar or length alone.
 
-| Item | Key position | Key length | Longest option | Key is longest | Eliminable on grammar or length |
-|---|---|---|---|---|---|
-| Q1 | 3 | 46 | 83 | no | no |
-| Q2 | 1 | 64 | 70 | no | no |
-| Q3 | 2 | 50 | 56 | no | no |
-| Q4 | 4 | 50 | 83 | no | no |
-| Q5 | 2 | 42 | 61 | no | no |
-| Q6 | 4 | 69 | 86 | no | no |
-| Q7 | 3 | 45 | 59 | no | no |
+| Item | Key position | Key length | Longest option | Shortest option | Key is longest | Key is shortest |
+|---|---|---|---|---|---|---|
+| Q1 | 3 | 63 | 82 | 49 | no | no |
+| Q2 | 1 | 63 | 69 | 62 | no | no |
+| Q3 | 2 | 63 | 64 | 50 | no | no |
+| Q4 | 4 | 72 | 82 | 61 | no | no |
+| Q5 | 2 | 57 | 64 | 44 | no | no |
+| Q6 | 4 | 68 | 86 | 65 | no | no |
+| Q7 | 3 | 51 | 58 | 34 | no | no |
 
 Key positions used: slot 1 appears 1 time, slot 2 appears 2 times, slot 3 appears 2 times, slot 4 appears 2 times. No slot carries more than two keys and no slot is skipped.
 
-Every option in every item is a clause that answers the question and states a reason, so no option gives itself away by being the only one shaped like an answer. Within each item the four options sit close enough in length that the longest is under twice the shortest in five items, and the two wider spreads sit in Q1 and Q4, where the long options are the tempting wrong ones rather than the key.
+In every item the key sits second or third longest of the four, so a learner who always picks the longest option and a learner who always picks the shortest one both finish with nothing. Every option in every item is a clause that answers the question and then states a reason for it, so no option gives itself away by being the only one shaped like a real answer, and every one of them is grammatical against its own stem.
 
-Longest question text: 231 characters in Q3, which is over the Kahoot question field limit, so Q3 goes in with the three records on a slide behind it and a shortened stem. Longest answer text: 86 characters. Check both against the field limits in Kahoot before pasting.
+Longest question text: 226 characters in Q3, which will not fit the Kahoot question field, so Q3 goes in with a shortened stem and the three records shown on the slide behind it. Longest answer text: 86 characters. Check both against the field limits in Kahoot before pasting.
