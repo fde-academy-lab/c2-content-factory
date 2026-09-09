@@ -64,4 +64,4 @@ The second one has no correct answer from your side of the table. That is what m
 
 The chapter on reading and writing files from the book on today's reference list, if you did not get to it for the take-home.
 
-Link status: to be found. The reference is `Automate the Boring Stuff with Python`, 3rd edition, chapter 10. The verified link goes on this line before this pack is released.
+`Automate the Boring Stuff with Python`, 3rd edition, chapter 10: https://automatetheboringstuff.com/3e/chapter10.html (verified 09 September 2026)

@@ -2,6 +2,10 @@
 
 Week 1, Day 3. Slide source. One idea per slide.
 
+Slides numbered S are the spine and are delivered in order. Slides numbered D go deeper and carry a DEPTH mark. A trainer skips them live when time is short, and you read them afterwards.
+
+The day is one arc applied twice, first to the columns and then to the rows. It does not split into halves, and the crossing point is marked where the columns finish.
+
 Position bar, repeated at every section boundary:
 `[profile the columns] > [decide per field] > [find the hidden rows] > [investigate the extremes] > [ship with the log]`
 
@@ -56,11 +60,40 @@ Five different broken values collapsed into one. Counts that only ever rise are 
 
 ---
 
+## D1. Why distinct is the count that catches a silent fix
+
+Every other count moves the wrong way when somebody quietly fills a gap.
+
+| Count | After a silent fill | What that looks like to a reader |
+|---|---|---|
+| present | Rises to 50 of 50 | The field looks complete |
+| converts | Rises to 50 of 50 | The field looks clean |
+| distinct | Falls, because many different broken values became one value | The only signal in the room, and it is easy to miss |
+
+The direction is the whole point. A metric that only improves when somebody damages the data is a metric that cannot protect you, so the one that falls is the one to read first.
+
+---
+
 ## S6. Where we are
 
 `**[profile the columns]** > [decide per field] > [find the hidden rows] > [investigate the extremes] > [ship with the log]`
 
 Profiling is what you do before you have permission to change anything.
+
+---
+
+## S7. The whole day in one picture
+
+```mermaid
+flowchart LR
+    A["50 rows nobody<br/>has described to you"] --> B["profile<br/>three counts per field"]
+    B --> C["decide per field<br/>drop, default, or keep and flag"]
+    C --> D["find the rows that hide<br/>the identity rule"]
+    D --> E["investigate the extremes<br/>a finding, not a deletion"]
+    E --> F["the profiled dataset<br/>plus the decisions log"]
+```
+
+Half one is the first two stops. Half two is the rest.
 
 ---
 
@@ -70,13 +103,13 @@ Profiling is what you do before you have permission to change anything.
 
 ---
 
-## S7. Monday's counter, grown up
+## S8. Monday's counter, grown up
 
 Monday you counted how many orders had a value. That counter is today's profiler with two more questions attached.
 
 ---
 
-## S8. Three counts, per field
+## S9. Three counts, per field
 
 ```
 present     how many have anything at all
@@ -88,7 +121,26 @@ Three numbers per column. That is the whole tool.
 
 ---
 
-## S9. What each one catches
+## S10. What the profiler is actually doing
+
+```mermaid
+flowchart TB
+    A["for every field in the header"] --> B["for every row"]
+    B --> C{"is the value<br/>anything at all?"}
+    C -->|"yes"| D["present + 1"]
+    C -->|"no"| E["absent"]
+    D --> F{"does it convert<br/>to the type you need?"}
+    F -->|"yes"| G["converts + 1"]
+    F -->|"no"| H["present and unusable,<br/>which is the interesting one"]
+    D --> I["add the value to a set"]
+    I --> J["distinct is the size of that set"]
+```
+
+Two nested loops and a set. You wrote the outer one on Monday.
+
+---
+
+## S11. What each one catches
 
 | Count | The question it answers |
 |---|---|
@@ -100,7 +152,41 @@ Three numbers per column. That is the whole tool.
 
 ---
 
-## S10. Read a real column
+## D2. The three counts as rates, so columns can be compared
+
+Counts tell you about one column. Rates let you rank every column in the file by where the work is.
+
+$$\text{presence rate} = \frac{\text{present}}{n} \qquad \text{convertibility rate} = \frac{\text{converts}}{n}$$
+
+$$\text{the trap rate} = \frac{\text{present} - \text{converts}}{n}$$
+
+For `amount` in today's file, with $n = 50$:
+
+$$\frac{48}{50} = 96\% \text{ present} \qquad \frac{44}{50} = 88\% \text{ converts} \qquad \frac{48 - 44}{50} = 8\% \text{ present and unusable}$$
+
+That last 8 percent is the dangerous group. Those rows are not empty, so a presence check passes them, and they are not numbers, so anything downstream that adds them up fails or lies.
+
+---
+
+## D3. The whole file, profiled
+
+This is the printout the profiler gives you on today's fifty orders.
+
+| Field | present | converts to int | distinct | What it tells you |
+|---|---|---|---|---|
+| order_id | 50 of 50 | 0 | 49 | An identifier, and 49 distinct across 50 rows is a problem you meet in half two. |
+| customer_id | 50 of 50 | 0 | 47 | An identifier. Some customers ordered more than once, which is expected. |
+| segment | 50 of 50 | 0 | 4 | A category with four values, so it can be grouped and counted safely. |
+| amount | 48 of 50 | 44 | 46 | A measure. Two absent and four present but unusable. |
+| status | 50 of 50 | 0 | 3 | A category with three values. |
+| order_date | 50 of 50 | 0 | 20 | Twenty different dates across fifty orders. |
+| discount | 11 of 50 | 11 | 9 | Optional. Everything present converts, so the gap here is absence rather than mess. |
+
+The two fields that need a decision are `amount` and `discount`, and the profile named them before you touched anything.
+
+---
+
+## S12. Read a real column
 
 ```
 amount    present 48/50   converts 44/50   distinct 46
@@ -112,7 +198,42 @@ You have not touched the data and you already know where the work is.
 
 ---
 
-## S11. Step card, section 1
+## D4. The six failures, named, and who fixes each
+
+A count tells you how many. A list tells you what to do about them.
+
+| Order | The value that arrived | What it actually is | Who fixes it |
+|---|---|---|---|
+| KR4210 | `twelve` | A word where a number belongs, probably typed by a person | Whoever owns data entry upstream |
+| KR4214 | empty | The value is absent in the CSV, and the JSON still carries 2840 one level down | Recoverable by you, from the other file |
+| KR4237 | empty | Absent in both files, so genuinely lost | Nobody. It is rejected and reported. |
+| KR4231 | `12,400` | A number with a thousands separator, so a formatting convention leaked into the data | A parsing rule you can write |
+| KR4235 | `24 500` | A number with a space inside it, from a locale that groups that way | The same parsing rule |
+| KR4240 | `Rs 8000` | A number with its unit attached | The same parsing rule |
+
+Three different problems hide inside one count of six. Three go to a person, one is recoverable, and three are a parsing decision you own. That distinction never appears in the number 6.
+
+---
+
+## D5. What distinct tells you about a field's job
+
+The count of distinct values against the row count tells you what kind of field you are holding, before anybody explains the schema.
+
+```mermaid
+flowchart TB
+    A["distinct compared with n"] --> B["distinct is about equal to n<br/>order_id: 49 of 50"]
+    A --> C["distinct is small and fixed<br/>segment: 4, status: 3"]
+    A --> D["distinct is large but well under n<br/>amount: 46, order_date: 20"]
+    B --> B2["an identifier<br/>group by it and you get n groups"]
+    C --> C2["a category<br/>safe to group, count and compare"]
+    D --> D2["a measure or a repeated value<br/>summarise it, do not group by it"]
+```
+
+A field with four distinct values across fifty rows is something you can put on an axis. A field with forty six is not.
+
+---
+
+## S13. Step card, section 1
 
 1. Profile every field before changing any of them.
 2. Three counts: present, converts, distinct.
@@ -127,13 +248,29 @@ You have not touched the data and you already know where the work is.
 
 ---
 
-## S12. A missing value is a decision
+## S14. A missing value is a decision
 
 Not a defect to be removed. A decision, with three defensible answers and one written reason.
 
 ---
 
-## S13. The three
+## S15. The decision, drawn
+
+```mermaid
+flowchart TB
+    A["a field is missing on some rows"] --> B{"is the field required<br/>for the question you are answering?"}
+    B -->|"yes"| C["drop the record<br/>and put it in rejects with a reason"]
+    B -->|"no"| D{"does absence mean<br/>something you can state?"}
+    D -->|"yes"| E["use a stated default<br/>and write the sentence down"]
+    D -->|"no"| F["keep it absent and flag it<br/>so the gap travels with the row"]
+    E --> G["you can no longer tell absent<br/>from present and equal to the default"]
+```
+
+Three branches, and the box at the bottom is the price of the middle one. It is a price worth paying sometimes, and never worth paying by accident.
+
+---
+
+## S16. The three
 
 | Choice | Use it when | It costs you |
 |---|---|---|
@@ -143,7 +280,7 @@ Not a defect to be removed. A decision, with three defensible answers and one wr
 
 ---
 
-## S14. Applied to two real columns
+## S17. Applied to two real columns
 
 `amount` is required. Two orders have none, so they are set aside with a reason.
 
@@ -153,7 +290,20 @@ Same dataset, same day, opposite decisions, and both are written down.
 
 ---
 
-## S15. The one that looks harmless
+## D6. The same two columns, and what each choice would cost in numbers
+
+Suppose you took the easy option on both and filled every gap with zero.
+
+| Column | Rows affected | What the number becomes | What you can no longer answer |
+|---|---|---|---|
+| amount | 6 of 50 | Six orders worth Rs 0, so the order count rises to 50 and the total does not move | How many orders you actually have a value for, which is the denominator of every average you will compute tomorrow |
+| discount | 39 of 50 | Thirty nine orders carrying a discount that was never recorded | Whether a discount of zero was a decision or an absence, which is the question a pricing analyst will ask first |
+
+Neither fill corrupts a single existing value. Both destroy a question you will be asked.
+
+---
+
+## S18. The one that looks harmless
 
 Filling `discount` with zero is defensible.
 
@@ -161,7 +311,7 @@ It also means you can never again tell an order that had no discount from an ord
 
 ---
 
-## S16. Coercion at dataset scale
+## S19. Coercion at dataset scale
 
 Yesterday's `clean_record` already handles one bad value correctly. Point it at fifty and it keeps working, because you wrote it to reject rather than to guess.
 
@@ -169,7 +319,38 @@ Nothing in it changes today. That was the promise.
 
 ---
 
-## S17. From the field
+## D7. The coerce-everything pass, and what it hides
+
+A single line turns every failure into a number and nothing on screen changes colour.
+
+```
+amounts = []
+for r in rows:
+    try:
+        amounts.append(int(r["amount"]))
+    except ValueError:
+        amounts.append(0)
+
+print(len(amounts), sum(amounts))
+```
+
+```
+50 561145
+```
+
+Fifty amounts, and the total is exactly the same as the honest one, because the six failures each became zero. The count is now a lie and the total is now unauditable, since nothing records which six moved.
+
+The honest version differs by one list:
+
+```
+50 rows, 44 usable, 6 rejected, total 561145
+```
+
+Same total. One of them can be checked and the other cannot.
+
+---
+
+## S20. From the field
 
 HGNC, 2020. About 27 human genes were formally renamed because spreadsheets silently coerced names like SEPT1 into dates.
 
@@ -179,7 +360,46 @@ Nobody chose to corrupt anything. A default was applied quietly, at scale, for y
 
 ---
 
-## S18. Step card, section 2
+## D8. The gene name case, the mechanism
+
+```mermaid
+flowchart TB
+    A["A gene is named SEPT1 or MARCH1"] --> B["It is pasted into a spreadsheet"]
+    B --> C["The spreadsheet recognises a date pattern<br/>and helpfully converts it"]
+    C --> D["The cell now reads 1-Sep or 1-Mar<br/>and the gene name is gone"]
+    D --> E["The file is published as a supplement"]
+    E --> F["Every later reader inherits the corruption,<br/>and the original value cannot be recovered<br/>from the file"]
+```
+
+Not one person made a decision here. A default did, silently, at the moment of paste.
+
+---
+
+## D9. The gene name case, what it cost and how it was fixed
+
+| Fact | Figure |
+|---|---|
+| Genes formally renamed | About 27 |
+| Examples | SEPT1 became SEPTIN1, and MARCH1 became MARCHF1 |
+| The 2016 audit | Roughly a fifth of papers with spreadsheet gene lists carried the corruption |
+| The follow-up, 2021 | The rate had not improved |
+| Who moved in the end | The naming committee changed the names of the genes, because the spreadsheet would not change its behaviour |
+
+Sources, verified 09 September 2026: the naming guidelines in Nature Genetics volume 52, pages 754 to 758, published 03 August 2020, https://www.nature.com/articles/s41588-020-0669-3 and the 2021 follow-up in PLOS Computational Biology, https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008984
+
+---
+
+## D10. Why that case belongs in a Python session
+
+The lesson is not about spreadsheets. It is about defaults applied by software at the moment data crosses a boundary, with no record that anything happened.
+
+Your `except ValueError: amounts.append(0)` is the same event. It is quiet, it is well meant, it is applied uniformly, and afterwards nothing in the file says which values it touched.
+
+The committee's response is the one worth copying. When the silent conversion could not be stopped, they changed the data so the conversion had nothing to catch. Your version of that is to reject rather than to coerce, and to carry the rejects file alongside the clean one.
+
+---
+
+## S21. Step card, section 2
 
 1. Missing is a decision, never a reflex.
 2. Drop, default, or keep and flag, each with a written reason.
@@ -192,11 +412,9 @@ Nobody chose to corrupt anything. A default was applied quietly, at scale, for y
 
 `[profile the columns] > [decide per field] > **[find the hidden rows]** > [investigate the extremes] > [ship with the log]`
 
-Columns are done. Now the records themselves.
-
 ---
 
-## S19. The check that finds nothing
+## S22. The check that finds nothing
 
 ```
 duplicate rows by whole-record comparison: 0
@@ -206,7 +424,7 @@ Clean dataset. Move on.
 
 ---
 
-## S20. Except
+## S23. Except
 
 ```
 distinct order_ids: 49 across 50 rows
@@ -216,18 +434,33 @@ Nothing raised. Nothing was highlighted. Two numbers on two different lines disa
 
 ---
 
-## S21. The pair
+## S24. Why the first check missed it
 
-```
-KR4201  Retail-Core  1865  returned  2026-08-03
-KR4201  Retail-Core  1865  returned  2026-09-14
+```mermaid
+flowchart TB
+    A["two rows in the file"] --> B{"are all seven fields<br/>character for character equal?"}
+    B -->|"yes"| C["a whole-record duplicate<br/>count of these: 0"]
+    B -->|"no"| D["treated as two different records"]
+    D --> E["but they share an order_id,<br/>and one field differs"]
+    E --> F["invisible to the check you ran,<br/>and visible in the id count"]
 ```
 
-Same order id. Same amount. Same status. Six weeks apart.
+A whole-record check answers "are these the same bytes". The question you actually had was "are these the same order", and nothing in the file knows which fields decide that.
 
 ---
 
-## S22. So what is it
+## S25. The pair
+
+```
+KR4201  C1022  Retail-Core  1865  returned  2026-08-03
+KR4201  C1022  Retail-Core  1865  returned  2026-09-14
+```
+
+Same order id. Same customer. Same amount. Same status. Six weeks apart.
+
+---
+
+## S26. So what is it
 
 The same order, exported twice, with the second export stamping the wrong date?
 
@@ -237,7 +470,18 @@ The data cannot tell you. It never could.
 
 ---
 
-## S23. An identity rule is something you state
+## D11. The two readings, and what each one costs if you are wrong
+
+| If you decide | And you are right | And you are wrong |
+|---|---|---|
+| They are one order, so drop one | Your count of 50 becomes 49 and the total loses Rs 1,865, both correctly | You have deleted a real order and no downstream reader will ever know a row is missing |
+| They are two orders, so keep both | Your figures include a genuine repeat purchase | You are double counting one order, and every total, average and customer-level figure carries it |
+
+Neither error announces itself. That asymmetry is the reason this decision leaves your desk and goes to whoever owns the order book.
+
+---
+
+## S27. An identity rule is something you state
 
 "Two rows are the same order when they share an order_id and an order_date."
 
@@ -247,7 +491,42 @@ That is a rule. It can be applied by someone else, argued with, and written into
 
 ---
 
-## S24. And who decides
+## S28. The duplicate ladder, from cheapest to most useful
+
+```mermaid
+flowchart TB
+    A["compare whole records<br/>finds only exact copies"] --> B["compare the identifier<br/>finds rows claiming to be<br/>the same thing"]
+    B --> C["compare a stated key<br/>the fields you have declared<br/>decide identity"]
+    C --> D["compare fuzzily<br/>names, addresses, near matches"]
+    A --> A2["cost: one line<br/>catches: almost nothing"]
+    B --> B2["cost: one line<br/>catches: today's pair"]
+    C --> C2["cost: a written rule<br/>catches: what the business means"]
+    D --> D2["cost: a project<br/>catches: the rest, imperfectly"]
+```
+
+Today you climb to the third rung and stop. The fourth is a whole discipline and it is not Week 1.
+
+---
+
+## D12. Writing the two checks so they disagree in public
+
+```
+whole = len(rows) - len({tuple(sorted(r.items())) for r in rows})
+by_id = len(rows) - len({r["order_id"] for r in rows})
+print("whole-record duplicates:", whole)
+print("rows sharing an order_id:", by_id)
+```
+
+```
+whole-record duplicates: 0
+rows sharing an order_id: 1
+```
+
+Two lines, printed together, on purpose. A single check that returns zero reads as an all clear. Two checks that disagree read as a question, and the question is the finding.
+
+---
+
+## S29. And who decides
 
 Not you, on your own, on a Wednesday.
 
@@ -255,7 +534,26 @@ You take the pair to whoever owns the order book, with both rows on screen and y
 
 ---
 
-## S25. Step card, section 3
+## D13. What you actually send, and why it fits in six lines
+
+The message that gets an answer is short, carries the evidence, and proposes a rule so the reply can be a yes.
+
+```
+Two rows in the 50 order extract share order_id KR4201.
+They match on customer, amount and status, and differ only on order_date
+(2026-08-03 and 2026-09-14).
+
+Proposed rule: two rows are the same order when order_id and order_date match,
+so these are two orders and both are kept.
+
+If that is wrong, which field decides?
+```
+
+The last line is the one that works. It asks for a rule rather than a verdict, so the answer covers every future pair as well as this one.
+
+---
+
+## S30. Step card, section 3
 
 1. A whole-record check finds only exact copies.
 2. Compare the id count against the row count, every time.
@@ -270,27 +568,40 @@ You take the pair to whoever owns the order book, with both rows on screen and y
 
 ---
 
-## S26. Sort the column and look at the end
+## S31. Sort the column and look at the end
 
 ```
-... 2895, 2930, 2990, 2995, 480000
+... 2895, 2895, 2930, 2990, 2995, 480000
 ```
 
-Four ordinary orders and then one that is 160 times the one before it.
+Five ordinary orders and then one that is 160 times the one before it.
 
 ---
 
-## S27. What it does to the total
+## S32. What it does to the total
 
 The order book totals Rs 561,145 across 44 usable orders.
 
-That one order is Rs 480,000 of it. Eighty six percent.
+That one order is Rs 480,000 of it, which is 85.5 percent.
 
 Remove it and the total is Rs 81,145.
 
 ---
 
-## S28. The instinct, and why it is wrong
+## D14. What it does to every number you might report
+
+| Figure | With the order | Without it | What moved |
+|---|---|---|---|
+| Total | Rs 561,145 | Rs 81,145 | The total is almost entirely one order |
+| Mean order value | Rs 12,753.30 | Rs 1,887.09 | The mean is nearly seven times too high |
+| Median order value | Rs 1,910 | Rs 1,865 | The median barely notices |
+| Usable orders | 44 | 43 | One row |
+
+One row moved the mean by a factor of seven and the median by Rs 45. That contrast is tomorrow's entire lesson and you have already met it.
+
+---
+
+## S33. The instinct, and why it is wrong
 
 The instinct is to delete it. It is ruining every number.
 
@@ -298,15 +609,94 @@ An outlier is a finding before it is a row. Rs 480,000 in a business where a typ
 
 ---
 
-## S29. So you investigate
+## S34. The outlier decision, drawn
 
-It converts cleanly. It has a customer, a date, a status and a segment like every other order.
+```mermaid
+flowchart TB
+    A["a value sits far from the rest"] --> B{"does it convert cleanly?"}
+    B -->|"no"| C["it is a parsing problem,<br/>not an outlier"]
+    B -->|"yes"| D{"is the rest of the record<br/>complete and consistent?"}
+    D -->|"no"| E["treat the record as suspect<br/>and raise it"]
+    D -->|"yes"| F["it is real until somebody<br/>who owns the data says otherwise"]
+    F --> G["keep it, flag it, and carry<br/>the flag into tomorrow"]
+```
+
+At no point does the tree reach a box that says delete. That is deliberate.
+
+---
+
+## S35. A simple fence
+
+A fence is arithmetic that flags a value for a human to look at. It is not a filter.
+
+Today's version is deliberately crude. Take the middle order and multiply it by ten.
+
+$$\text{fence} = 10 \times \text{median} = 10 \times 1910 = 19{,}100$$
+
+Somebody chose the ten, and that somebody is you. Tomorrow you replace it with a threshold built from the spread of the data itself, so that nobody has to choose a number.
+
+---
+
+## S36. What the fence catches here
+
+Exactly one value sits above Rs 19,100, and it is the Rs 480,000 order.
+
+The largest ordinary order is Rs 2,995, which is not close to the fence, so nothing borderline is being swept up with it.
+
+The fence found the row you had already spotted by sorting. That agreement is what tells you the number you picked is doing its job on this column.
+
+---
+
+## D15. What is wrong with choosing the ten, and what replaces it
+
+The fence works and it is still crude, because the ten came from your judgement rather than from the data.
+
+Two consequences you should be able to state.
+
+The first is that the number does not travel. Ten times the median is a sensible fence on order amounts in this business and a useless one on delivery times, on ages, or on a column where the median is near zero. Every new column needs you to choose again, and there is nothing to argue with when somebody disagrees with your choice.
+
+The second is that it moves when the data moves. The median here is Rs 1,910 and the whale is inside the same file, so a fence built from the median is already being pulled by the record it is meant to catch.
+
+Tomorrow's version fixes both. It builds the threshold out of the spread of the middle half of the data, which ignores the tail by construction, and it is the same arithmetic on every column so nobody has to pick a number. Today's fence is the version you can compute in your head, and the point of computing it today is that tomorrow you will know what the better one is better than.
+
+---
+
+## D16. Three ways to flag an extreme, and when each is honest
+
+| Method | How it works | When it is the right tool |
+|---|---|---|
+| Sort and read the tail | You look at the largest and smallest values yourself | Always do this first. It costs nothing and it is the only method that shows you the actual values |
+| The IQR fence | Flag anything beyond 1.5 times the interquartile range from the quartiles | When you need a rule somebody else can reproduce, and the column is not wildly skewed |
+| A business rule | Flag anything above an amount the business says is implausible | When somebody who owns the domain will give you the number, which is better than any statistic |
+
+The third one beats the other two whenever you can get it. Ask for it before you reach for arithmetic.
+
+---
+
+## S37. So you investigate
+
+Order KR4232 converts cleanly. It has a customer, a date, a status and a segment like every other order.
 
 Nothing about it is malformed. It is simply large, so it survives cleaning and goes to Thursday as a question rather than a deletion.
 
 ---
 
-## S30. Step card, section 4
+## D17. What investigating it actually means
+
+You have four questions and the file answers two of them.
+
+| Question | Where the answer is |
+|---|---|
+| Is the value well formed? | In the file. It converts, so yes. |
+| Is the rest of the record consistent? | In the file. Customer C1749, Retail-Core, delivered, 19 August 2026, and nothing is missing. |
+| Has this customer ordered like this before? | Not in this extract. It needs the wider order book. |
+| Is an order of this size possible in this business? | Not in any file. It needs a person who knows the business. |
+
+Two of four leave your desk. That is normal, and saying so is the difference between an analyst and someone who guesses confidently.
+
+---
+
+## S38. Step card, section 4
 
 1. Sort the column and read the tail.
 2. An outlier is a finding to investigate.
@@ -321,7 +711,7 @@ Nothing about it is malformed. It is simply large, so it survives cleaning and g
 
 ---
 
-## S31. Two artifacts, not one
+## S39. Two artifacts, not one
 
 ```
 the profiled dataset     the orders you would compute on
@@ -332,20 +722,35 @@ The first without the second is an opinion.
 
 ---
 
-## S32. What a log line looks like
+## S40. What a log line looks like
 
 ```
 amount, 2 orders absent      -> rejected, amount is required, ids in rejects file
+amount, 4 orders unusable    -> rejected, value present but not a number, ids listed
 discount, 39 orders absent   -> kept absent, absence means no discount applied
 KR4201, duplicate order_id   -> both kept and flagged, identity rule pending owner
-480000, extreme amount       -> kept, converts cleanly, raised with the owner
+KR4232, 480000               -> kept, converts cleanly, raised with the owner
 ```
 
-Four lines. A reviewer who was not in the room can follow every one.
+Five lines. A reviewer who was not in the room can follow every one.
 
 ---
 
-## S33. The reconciliation, one level up
+## D18. The fields a decisions log line needs
+
+| Field | Why it is there |
+|---|---|
+| What was affected | The field name, or the record id when the decision is about one row. |
+| How many | The count, so a reader can judge whether the decision was large or small without opening the data. |
+| What you did | Dropped, defaulted, kept and flagged, or raised. One of a small set of words, so the log can be scanned. |
+| Why | The sentence that makes it defensible. This is the only field that cannot be generated. |
+| Where the evidence went | The rejects file, the flag column, or the name of the person it was raised with. |
+
+A log whose entries all read "cleaned" is a log nobody can use. The value is in the fourth column.
+
+---
+
+## S41. The reconciliation, one level up
 
 Yesterday it was input equals clean plus rejected.
 
@@ -357,18 +762,162 @@ Today it also has to survive drops, defaults and any dedupe you applied. Same ch
 
 ---
 
-## S34. Crux
+## D19. The reconciliation as an identity, with today's numbers
+
+$$n_{\text{in}} = n_{\text{clean}} + n_{\text{rejected}} + n_{\text{removed on purpose}}$$
+
+Today, with both duplicate rows kept pending the owner's rule:
+
+$$50 = 44 + 6 + 0$$
+
+The third term is the one that grows as a project matures, and it is the one people forget to print. Every row you remove for a reason belongs in it, and a row removed for no stated reason belongs nowhere, which is the point.
+
+---
+
+## D20. The whole day, as one runnable check
+
+```
+print("rows in        ", len(rows))
+print("clean          ", len(clean))
+print("rejected       ", len(rejects))
+print("removed        ", len(removed))
+assert len(rows) == len(clean) + len(rejects) + len(removed)
+print("distinct ids   ", len({r["order_id"] for r in rows}))
+print("flagged extremes", len(flagged))
+```
+
+```
+rows in         50
+clean           44
+rejected        6
+removed         0
+distinct ids    49
+flagged extremes 1
+```
+
+Seven lines. The assertion catches the arithmetic, and the last two lines carry the two findings that no arithmetic would have caught.
+
+---
+
+## SECTION 6: THE INTERVIEW BLOCK
+
+`[profile the columns] > [decide per field] > [find the hidden rows] > [investigate the extremes] > **[ship with the log]**`
+
+---
+
+## S42. What this section is
+
+The first two questions below are on this week's own question set and will be on Saturday's paper. The rest are asked often enough at this level that this programme puts them in front of you now.
+
+---
+
+## S43. What this section is
+
+The first question below is on this week's own question set and will be on Saturday's paper. The rest are asked often enough at this level that this programme puts them in front of you now.
+
+---
+
+## S44. Question 1: your cleaning run reported zero rejects on a file you know is dirty
+
+This is on the week's question set, and it is tagged as a differentiator, which means most candidates give a vague answer.
+
+**What it is really testing.** Whether you can debug a result that looks good, which is much harder than debugging a crash.
+
+**The answer, in three beats.** First I check whether anything could have been rejected at all: a bare `except` with a `pass`, or a coerce-everything branch that turns failures into zero, reports zero rejects by construction. Second I check the counts reconcile, because input equals clean plus rejected only tells me something when I compute all three and compare. Third I check that the dirt I am looking for is the dirt the code tests for, since a value can be present, convertible and still wrong.
+
+**The follow-up.** "Give me an example of the third one." A negative order amount. It converts perfectly and it is not a valid order, so a presence check and a type check both pass it.
+
+---
+
+## D21. Question 1, the version that separates you from the room
+
+Add the direction-of-movement argument, because almost nobody does.
+
+Say that you look at which counts moved and in which direction. A fix that improves every count at once is suspicious, because real cleaning trades one count against another: rejecting bad rows lowers your usable count, and recovering values raises it while lowering your reject count. A run where present, converts and the reject count all improved together did not clean the data, it filled it.
+
+Then name `distinct`, and say it is the only count that falls when values are silently collapsed.
+
+---
+
+## S45. Question 2: what is data profiling and why do it before cleaning
+
+**The answer.** Profiling is measuring a dataset before changing it, so that every later change can be justified against a number. At minimum I compute, per field, how many values are present, how many convert to the type I need, and how many distinct values there are. Doing it first matters because after you clean, you have no baseline left, so you cannot say what you changed or prove you did not lose anything.
+
+**The follow-up.** "What would you add for a bigger dataset?" The minimum and maximum for numeric fields, the most frequent values for categorical ones, and a sample of the values that failed conversion, since the count alone does not tell me whether six failures are one problem or three.
+
+---
+
+## S46. Question 3: a column is 40 percent empty, what do you do
+
+**The answer.** I do not do anything to the column until I know what absence means there, because the same 40 percent can be three different situations. If the field is required for the question, those rows are unusable and go to rejects with a reason. If absence carries meaning, such as no discount having been applied, then absence is the fact and filling it destroys it. If I genuinely need a value and absence is meaningless, I use a stated default and I write down what I stated, knowing I have given up the ability to tell absent from default.
+
+**The follow-up.** "Which of those is today's `discount` column?" The second one. It is absent on 39 of 50 orders and that absence means no discount was applied, so it stays absent.
+
+---
+
+## S47. Question 1: how do you find duplicates in a dataset
+
+**What it is really testing.** Whether you know that duplicate is a business definition rather than a technical one.
+
+**The answer, in three beats.** I start with the cheap checks and print them together: the whole-record comparison, and the count of distinct identifiers against the row count. When those two disagree, I have rows claiming to be the same thing while differing somewhere. Then I stop coding and write the identity rule, which names the fields that decide whether two rows are the same real thing. In today's file the whole-record check found nothing and the identifier count found one pair, so the finding was in the disagreement rather than in either number.
+
+**The follow-up.** "Which one do you delete?" Neither, until the person who owns the data has agreed the rule, because deleting a real order and double counting one are both silent errors and they cost opposite things.
+
+---
+
+## S48. Question 2: how do you handle outliers
+
+**What it is really testing.** Whether you reach for a deletion or a question.
+
+**The answer, in three beats.** First I check whether it is even an outlier: a value that fails to convert is a parsing problem wearing an outlier costume. Then I check whether the rest of the record is consistent, because a malformed record and a large one need different responses. If it converts cleanly and the record is complete, it is real until somebody who owns the data says otherwise, so I keep it, flag it, and carry the flag downstream.
+
+**The follow-up.** "How do you decide what counts as extreme?" I sort and read the tail first, because that is the only method that shows me actual values. Then a fence if I need a rule somebody can reproduce, and I say the multiplier out loud because it is a convention rather than a law. Best of all is a threshold from somebody who knows the business.
+
+---
+
+## D22. Question 2, the numbers that make it land
+
+Bring the contrast, not the principle.
+
+```
+with the Rs 480,000 order:     mean Rs 12,753.30    median Rs 1,910
+without it:                    mean Rs  1,887.09    median Rs 1,865
+```
+
+One row moved the mean by nearly seven times and the median by Rs 45. Say those four numbers and you have made the case for investigating rather than deleting, and for reporting a median on a money column, in one breath.
+
+---
+
+## S49. Question 3: what is a decisions log and why does it matter
+
+This programme's own calibration, and it is the question that separates a person who cleaned data from a person who can hand the work over.
+
+**The answer.** It is a record of every change made to a dataset, with the count affected and the reason. It matters because cleaning destroys the evidence of what the data used to be, so the log is the only thing that lets a reviewer reproduce or challenge my judgement. Without it, the cleaned file is my opinion of the data rather than a defensible version of it.
+
+**The follow-up.** "What goes in a line?" What was affected, how many rows, what I did, why, and where the evidence went. The why is the only column that cannot be generated automatically, and it is the whole value.
+
+---
+
+## S50. Question 4: what does it mean to reconcile a load
+
+**The answer.** It means proving that every row that arrived is accounted for. Input equals clean plus rejected plus anything removed on purpose, computed rather than assumed, and written as an assertion so it fails loudly. Today that reads fifty equals forty four plus six plus zero.
+
+**The follow-up.** "What if it does not balance?" Then I stop and do not publish the number, because something was dropped and I do not yet know what. A total that does not reconcile is not a number, it is a guess with decimal places.
+
+---
+
+## S51. Crux
 
 Profiling is what you do before you have permission to change anything.
 
 Every cleaning act is a decision, and a decision nobody wrote down did not happen.
 
-An outlier is a finding to investigate before it is a row to delete.
+An outlier is a finding to investigate before it is a row to delete, and two checks that disagree are worth more than one check that says zero.
 
 ---
 
-## S35. Tomorrow
+## S52. Tomorrow
 
 You have a dataset you can defend and a whale you decided to keep.
 
-Tomorrow you compute the average order value and find out what that whale does to it.
+Tomorrow you compute the average order value and find out what that whale does to it. You have already seen the answer on slide D14, and tomorrow you learn what to say to the person who asked for an average.

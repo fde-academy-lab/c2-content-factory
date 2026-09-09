@@ -152,3 +152,49 @@ Do not name a slot, a duration for the shifted version, or any marks. The Struct
 - The open question about Business against Retail-Plus written in their own notebook, in their own words.
 
 The third one is Monday's opening. If a learner has not written it, they will not have it on Monday, so walk the room during the close and check.
+
+---
+
+## The two tracks in each deck
+
+Each deck carries two kinds of slide and it tells you which is which.
+
+Slides numbered `S` are the spine. They are the delivered path, in delivery order, and the block
+timings above are built from them alone. Walk them.
+
+Slides numbered `D` carry a DEPTH mark in the top right corner and sit immediately after the slide
+they deepen. Skip them live. They exist so the deck is worth reading alone afterwards, so a learner
+who asks a harder question has somewhere to be sent, and so you have somewhere to go when the room
+is ahead of you.
+
+One warning specific to today. The depth slides say out loud what today deliberately does not
+compute, which is the standard deviation and anything resting on it, because the row stops before it
+and because a spread measured from this mean would inherit the whale. If a learner asks for the
+formula, that slide is the answer and the honest close is that it arrives with the distribution
+behind it.
+
+**Half one.** 9 depth slides.
+
+| Depth slide | What it adds |
+|---|---|
+| `D1` | The three, written as arithmetic |
+| `D2` | Mean and median as two different machines |
+| `D3` | How wrong can the data be before the statistic is wrong |
+| `D4` | Which statistic survives a wrong record, on this file |
+| `D5` | How the fence is built, step by step |
+| `D6` | What today deliberately does not compute, and why |
+| `D7` | Anscombe's quartet, what he actually built |
+| `D8` | The tell, applied to columns you have not met yet |
+| `D9` | Question 1, the version that separates you from the room |
+
+**Half two.** 7 depth slides.
+
+| Depth slide | What it adds |
+|---|---|
+| `D1` | A rate written properly, and the number nobody prints |
+| `D2` | Why a ranking of small groups reads size as much as performance |
+| `D3` | The failure that is worse than the KeyError |
+| `D4` | Why the median cannot be accumulated and the count can |
+| `D5` | The same argument, run on every segment |
+| `D6` | Where the number thirty comes from, and why you should not lean on it |
+| `D7` | The convention behind reporting a median, and where it comes from |

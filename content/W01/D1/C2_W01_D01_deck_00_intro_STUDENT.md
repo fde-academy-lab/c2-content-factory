@@ -327,6 +327,6 @@ Finish the take-home, `C2_W01_D01_takehome_STUDENT.md`. It extends today's count
 
 Read the pre-read, `C2_W01_D01_preread_STUDENT.md`, and fill its gap sheet tonight. Tomorrow's first hour will feel like revision.
 
-Watch the dictionaries video on the student reference list: Corey Schafer, Dictionaries, video: link to be found.
+Watch the dictionaries video on the student reference list: Corey Schafer, Dictionaries: https://www.youtube.com/watch?v=daefaLgNkw0 (verified 09 September 2026)
 
 Nothing to install tonight. The Codespace is already the environment.

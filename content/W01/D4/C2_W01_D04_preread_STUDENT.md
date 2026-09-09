@@ -104,7 +104,7 @@ Sit with that for a minute over the weekend. It is the whole session.
 
 Your take-home already sends you to CPython's own `statistics` module source, which is worth reading twice (verified 09 Sep 2026): https://raw.githubusercontent.com/python/cpython/v3.12.0/Lib/statistics.py
 
-The Week 1 row also names an interactive chapter on frequentist inference that makes the shuffle idea visual before any formula arrives. **That link is to be found** and will be posted with its verification date in the student references once it can be checked.
+The Week 1 row also names an interactive chapter on frequentist inference that makes the shuffle idea visual before any formula arrives: Seeing Theory, frequentist inference: https://seeing-theory.brown.edu/frequentist-inference/index.html (verified 09 September 2026)
 
 If it has not appeared by the time you sit down, skip it. An unverified link is worth less than an honest blank, and Monday does not depend on it.
 

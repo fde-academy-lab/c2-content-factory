@@ -86,7 +86,7 @@ that somebody marking your work can check in ten seconds.
 
 ## The watch task
 
-Corey Schafer, Dictionaries, video: link to be found.
+Corey Schafer, Dictionaries: https://www.youtube.com/watch?v=daefaLgNkw0 (verified 09 September 2026)
 
 Watch it before tomorrow. Then add one line to your notebook naming one thing the video does with a dictionary that today's session did not, and say whether you would use it on these records.
 
