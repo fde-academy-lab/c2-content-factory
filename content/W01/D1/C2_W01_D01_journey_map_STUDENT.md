@@ -68,14 +68,14 @@ Each phase is a promise about what you can do when it closes, and none of them i
 | 12 | Ascent | This is a build week, and it carries Build 4, the retrieval assistant. |
 | 13 | Build | This is a teaching week. |
 | 14 | Build | This is a teaching week. |
-| 15 | Build | This is a build week, it carries Build 5, the agentic system, and the third major exam falls in the same week. |
+| 15 | Build | This is a build week and it carries Build 5, the agentic system. The third major exam falls in the same week, which makes Week 15 the one week that carries both, and how the two sit alongside each other is set when the week is planned. |
 | 16 | Build | This is a teaching week, and it produces the solution proposal. |
-| 17 | Launch | This is a teaching week, and the capstone project runs from here to Week 20. |
-| 18 | Launch | This is a teaching week, and the capstone build continues. |
-| 19 | Launch | This is a teaching week, and the capstone build continues. |
-| 20 | Launch | This is a teaching week, and the capstone closes with the panel defence. |
+| 17 | Launch | This is a capstone week, and the capstone project runs from here to Week 20. |
+| 18 | Launch | This is a capstone week and the capstone build continues. |
+| 19 | Launch | This is a capstone week and the capstone build continues. |
+| 20 | Launch | This is a capstone week, and the capstone closes with the panel defence. |
 
-A teaching week runs the daily teaching shape from Monday to Friday and closes with the Saturday recap paper and its discussion. A build week runs the mini project in groups of four, brings the industry expert in on Friday and Saturday, and runs no tests.
+A teaching week runs the daily teaching shape from Monday to Friday and closes with the Saturday recap paper and its discussion. A build week runs the mini project in groups of four, brings the industry expert in on Friday and Saturday, and runs no tests. A capstone week carries the capstone project rather than the daily teaching shape.
 
 ---
 
