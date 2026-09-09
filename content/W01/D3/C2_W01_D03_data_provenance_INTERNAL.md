@@ -47,6 +47,8 @@ The near-duplicate twin is drawn from a non-Student order on purpose. If it land
 
 The whale must stay convertible. If it ever became text it would land in the rejects file, the outlier section would have nothing to investigate, and the day's fourth idea would have no example.
 
-## Open conflicts
+## Conflicts, now closed
 
-Section 9 of `docs/07_Client_Zero.md` records four conflicts between the locked file and the curriculum export. Two touch this pack: the locked file places its 50-record v1 dataset at "Tuesday to Thursday" while the curriculum rows put 50 at Wednesday and 30 at Tuesday, and the locked file describes the near-duplicate pair as differing on a timestamp the entity model does not give ORDERS. Both are resolved in the curriculum's favour here, since the curriculum outranks the client-zero file.
+Section 9 of `docs/07_Client_Zero.md` recorded four conflicts between that file and the curriculum export. All four were ruled on at v1.1 on 09 September 2026, in the curriculum's favour, and the client-zero file was edited to match rather than the other way round.
+
+Two touched this pack and both settled in its favour, so nothing here changes: v1 at 50 orders is the Wednesday and Thursday dataset, and the near-duplicate pair officially differs on `order_date`, which is what the entity model supports and what this file has always contained.

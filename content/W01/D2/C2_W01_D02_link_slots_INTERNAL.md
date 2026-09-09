@@ -1,35 +1,48 @@
 # Link register: Week 1, Day 2
 
-Internal working file. Never given to a learner and never merged into a student artifact.
+Internal working file. Never given to a learner.
 
-## What is settled, and what is not
+## What is verified, and what is not
 
-The data in this pack is settled. Client zero locked at v1.0 on 09 September 2026 and every data
-file here is regenerated from `data/generate_client_zero.py`, so nothing about the dataset is
-pending any more. See the provenance file in this folder.
-
-The links are still open, for the reason below.
-
-## Why every link in this pack says "to be found"
-
-The build session had no outbound network access. The egress proxy refused every reference domain on the curriculum row, tested and confirmed:
+Tested on 09 September 2026. The egress proxy is selective rather than closed, which was not known
+when this pack was first built.
 
 | Domain | Result |
 |---|---|
-| `realpython.com` | blocked by the egress proxy |
-| `docs.python.org` | blocked by the egress proxy |
-| `automatetheboringstuff.com` | blocked by the egress proxy |
-| `www.youtube.com` | blocked by the egress proxy |
+| `raw.githubusercontent.com` | Reachable. Source files can be fetched and pinned to a tag |
+| `api.github.com` | Reachable |
+| `pypi.org` | Reachable |
+| `docs.python.org` | Blocked |
+| `realpython.com` | Blocked |
+| `automatetheboringstuff.com` | Blocked |
+| `learnpython.com` | Blocked |
+| `geeksforgeeks.org` | Blocked |
+| `www.youtube.com` | Blocked |
+| `www.khanacademy.org` | Blocked |
+| `seeing-theory.brown.edu` | Blocked |
 
-The standing rule is that a URL enters an artifact only if it was verified on the day it entered, and a link from memory never ships. No link could be verified, so no link was written. Every reference in this pack is a named slot instead.
+So a reference can ship verified today if it lives in a public git repository, and cannot otherwise.
 
-## What to do
+## What that changed in this pack
 
-Open a session on an environment with the trusted network access level, check each URL below, and paste it into the named slot with the date it was checked, on the same line as the URL. The verification script warns about any URL on a line without a date, so keep them together.
+The take-home's reading section no longer waits on anything. It now sends learners to two files in
+the CPython source, pinned to the v3.12.0 tag so the line numbers stay put, and asks for an answer
+that quotes a line number:
 
-Sources below are copied from the Week 1 Day 2 curriculum row, which carries its own verification dates from early September 2026. Those dates belong to the row, never to this pack.
+- `Lib/csv.py` lines 118 to 132, which is what `DictReader` does with a row that has too many or too
+  few fields. Neither case raises, which is the point.
+- `Lib/json/decoder.py` line 34, which is where the `line 48 column 1 (char 1027)` message this pack
+  quotes is actually built.
 
-## Trainer resources to verify
+That restores the fifth shortcut-resistance pattern, so the take-home now rests on five of five:
+process evidence, the learner's own artifact, a named verified source with a specific thing cited
+from it, a defended threshold, and the self-check spine.
+
+## Still to be found
+
+Every reference below comes from the curriculum row and sits on a blocked domain, so none of them
+could be verified and none of them was written into an artifact. The row carries its own check dates
+from early September 2026; those dates belong to the row and never to this pack.
 
 | Reference | Row's URL | Row's stated check date |
 |---|---|---|
@@ -39,20 +52,15 @@ Sources below are copied from the Week 1 Day 2 curriculum row, which carries its
 | Corey Schafer, CSV module | youtube.com watch q5uM4VKywbA | 03 Sep 2026 |
 | Real Python, Reading and Writing CSV Files | realpython.com/python-csv/ | 03 Sep 2026 |
 | Official json docs | docs.python.org/3/library/json.html | 03 Sep 2026 |
-
-## Student references to verify
-
-| Reference | Row's URL | Row's stated check date |
-|---|---|---|
 | Corey Schafer, Working with JSON data | youtube.com watch 9N6a-VLBa2I | 05 Sep 2026 |
 | Automate the Boring Stuff 3e, Ch 4 and Ch 10 | automatetheboringstuff.com/3e/ | 03 Sep 2026 |
 | Official Python tutorial, Errors and Exceptions | docs.python.org/3/tutorial/errors.html | 03 Sep 2026 |
 
-## The slots waiting for them
+## What to do with them
 
-| File | Where |
-|---|---|
-| `C2_W01_D02_takehome_STUDENT.md` | The reading section, Automate the Boring Stuff chapter 10 |
-| `C2_W01_D02_preread_STUDENT.md` | Optional reading, same chapter |
+Open a session on an environment with the trusted network access level, check each URL, and paste it
+into its slot with the date it was checked, **on the same line as the URL**. The verification script
+warns about any URL on a line without a date, so keep them together.
 
-The take-home currently rests on four shortcut-resistance patterns out of five. The fifth pattern, requiring a learner to read a named verified source and cite one specific thing found there, is the one waiting on these links. Adding it is a two-line edit to the take-home once the URLs are verified.
+These are the trainer's own background reading and the optional extras. No student artifact in this
+pack is now blocked on any of them, so this is a nice-to-have rather than a release blocker.
