@@ -20,7 +20,7 @@ Anything absent from these files is unknown. Never invent: week or day content b
 3. Build in passes, one artifact family per pass: deck(s), notebooks, activity, exercises with solutions, take-home with self-check spine, Kahoot pack, study notes plus cheat sheet plus pre-read.
 4. Write outputs only under content/W{ww}/D{d}/ for a teaching or build day and content/W{ww}/SAT/ for a Saturday, always inside the subfolder that fits the artifact (slides, notebooks, demos, whiteboards, cheatsheets, study-notes, exercises with its guided, unguided and solutions folders, takehome, kahoot, preread, extras, data, trainer, internal). Never leave a file loose at the day folder root. content/README.md carries the full layout, including the different shapes a build day and a Saturday take. Name files C2_W{ww}_D{dd}_{topic}_{AUDIENCE}.{ext}, or C2_W{ww}_SAT_{topic}_{AUDIENCE}.{ext} on a Saturday; the topic half carries only what the folder and the extension do not already say, and AUDIENCE is STUDENT, TRAINER or INTERNAL and is never omitted.
 5. Run: python3 scripts/verify.py content/W{ww}/D{d} (or content/W{ww}/SAT) and fix every failure. A pack that has not passed verify is not done.
-6. Commit on a branch named w{ww}-d{d}, or w{ww}-sat for a Saturday; never commit directly to main. In a cloud session, stop after committing and let the reviewer open the pull request.
+6. Commit on a branch named w{ww}-d{d}, or w{ww}-sat for a Saturday; never commit directly to main. In a cloud session, stop after committing and let the reviewer open the pull request. Once it merges, move the day's board card on with `python3 scripts/board_sync.py --status W{ww}/D{d} review-1`.
 
 ## Hard rules
 
@@ -79,7 +79,7 @@ One-time: run `/setup-matt-pocock-skills` in a session once, choosing local file
 
 ### Issue tracker
 
-Issues and specs live as committed markdown files under `.scratch/<feature-slug>/`, not in GitHub Issues. See `docs/agents/issue-tracker.md`.
+Two trackers, and they do not overlap. Content work is tracked on the GitHub board: one card per day pack, on this repository's issues, driven by `scripts/board_sync.py`. See `docs/agents/content-board.md` for the statuses, the people and the commands. Engineering issues and specs, which are the scripts and the skills rather than the teaching material, stay as committed markdown under `.scratch/<feature-slug>/`. See `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 

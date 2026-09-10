@@ -1,0 +1,28 @@
+{
+  "name": "C2 Content Factory",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "22" },
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "onCreateCommand": "bash setup.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "bierner.markdown-mermaid",
+        "yzhang.markdown-all-in-one"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "files.trimTrailingWhitespace": true
+      }
+    }
+  },
+  "remoteEnv": {
+    "PLAYWRIGHT_BROWSERS_PATH": "${containerEnv:HOME}/.cache/ms-playwright",
+    "PIP_BREAK_SYSTEM_PACKAGES": "1"
+  },
+  "postAttachCommand": "echo 'Ready. Prove a day pack with: python3 scripts/verify.py content/W01/D3 --execute'"
+}

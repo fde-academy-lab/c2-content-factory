@@ -93,6 +93,24 @@ def check_layout(target, files):
     return fails
 
 
+def committed_together(source, built):
+    """Whether git holds both files exactly as they are on disk.
+
+    Staleness is a question about content, and a modification time only answers it while nobody has
+    touched the working tree. `git checkout` rewrites every timestamp it restores, so a fresh clone
+    or a branch switch makes a perfectly good PDF look older than the markdown it was built from,
+    and the gate then reports four failures nobody can act on except by rebuilding files that were
+    already correct. When git says both files match the commit, they went in together and the
+    timestamps say nothing.
+    """
+    try:
+        r = subprocess.run(["git", "status", "--porcelain", "--", str(source), str(built)],
+                           capture_output=True, text=True, timeout=30)
+    except Exception:
+        return False
+    return r.returncode == 0 and not r.stdout.strip()
+
+
 def git_ignored(paths):
     """Paths git is told to ignore, so a notebook's generated output/ is not audited as a pack file.
 
@@ -171,7 +189,8 @@ def run_proofs(target):
     sheets = [p for p in files if p.parent.name == "cheatsheets" and p.suffix == ".md"]
     stale_pdf = [p.with_suffix(".pdf") for p in sheets
                  if p.with_suffix(".pdf").exists()
-                 and p.with_suffix(".pdf").stat().st_mtime <= p.stat().st_mtime + 1]
+                 and p.with_suffix(".pdf").stat().st_mtime <= p.stat().st_mtime + 1
+                 and not committed_together(p, p.with_suffix(".pdf"))]
     missing_pdf = [p for p in sheets if not p.with_suffix(".pdf").exists()]
     if stale_pdf or missing_pdf:
         for pdf in stale_pdf:
@@ -188,9 +207,12 @@ def run_proofs(target):
         source = pptx.with_suffix(".md")
         if not source.exists():
             print(f"\nINFO  {pptx.name} has no markdown source beside it, so it was not measured")
-        elif pptx.stat().st_mtime <= source.stat().st_mtime + 1:
-            # Equal timestamps mean a fresh clone, where nothing proves the pptx came from this
-            # markdown, so it is treated as stale rather than measured on trust.
+        elif (pptx.stat().st_mtime <= source.stat().st_mtime + 1
+              and not committed_together(source, pptx)):
+            # A pptx no newer than its markdown was either never rebuilt or restored by a
+            # checkout. Git tells the two apart: when it holds both files as they are on disk they
+            # were committed together, and only an uncommitted edit means the build really is
+            # behind its source.
             print(f"\nINFO  {pptx.name} is not newer than {source.name}, so it is stale and was "
                   f"not measured. Rebuild it from the markdown before it ships.")
         else:
