@@ -1,0 +1,30 @@
+# Put every new day card on the content board without anyone remembering to.
+#
+# The board is a GitHub Project, which only the GraphQL API can reach, so this workflow needs a
+# personal access token with the `project` scope stored as the repository secret BOARD_TOKEN.
+# Until that secret exists the workflow skips quietly rather than failing every issue that opens.
+# docs/agents/content-board.md says how to create the board and the token.
+name: Add issues to the content board
+
+on:
+  issues:
+    types: [opened, reopened, transferred]
+
+jobs:
+  add:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the board token exists
+        id: gate
+        run: echo "ready=${{ secrets.BOARD_TOKEN != '' }}" >> "$GITHUB_OUTPUT"
+      - name: Add the issue to the board
+        if: steps.gate.outputs.ready == 'true'
+        uses: actions/add-to-project@v1.0.2
+        with:
+          project-url: https://github.com/users/fde-academy-lab/projects/1
+          github-token: ${{ secrets.BOARD_TOKEN }}
+      - name: Say why nothing happened
+        if: steps.gate.outputs.ready != 'true'
+        run: |
+          echo "BOARD_TOKEN is not set, so this issue was not added to the board."
+          echo "See docs/agents/content-board.md for the one-time setup."
