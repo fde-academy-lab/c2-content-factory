@@ -14,8 +14,8 @@ Run it at the close of half two. Each item is twenty seconds except Q3 and Q8, w
 1,030   1,145   1,280   1,310   1,865   2,270   2,835
 ```
 
-- **1,310** ← correct
 - 1,676
+- 1,310 ← correct
 - 1,865
 - 2,835
 
@@ -26,8 +26,8 @@ Run it at the close of half two. Each item is twenty seconds except Q3 and Q8, w
 
 ## Q2. One order in a column becomes 170 times larger. What moves?
 
-- **The mean moves a lot and the median barely moves** ← correct
-- Both move by roughly the same amount
+- The mean moves a lot, the median barely ← correct
+- Both of them move by roughly the same amount
 - The median moves and the mean stays put
 - Neither moves, since it is only one order
 
@@ -42,9 +42,9 @@ segment A:  returned 5 of 12          41.7%
 segment B:  returned 500 of 1,200     41.7%
 ```
 
-- **B, because one order moves A by more than eight points** ← correct
 - A, because a smaller sample is easier to verify
 - Neither, since the two cannot be compared at all
+- B, because one order moves A by more than eight points ← correct
 - A, because 41.7 is the same in both so it makes no difference
 
 *Why:* one order flips A's rate by 8.3 points and moves B's by less than 0.1. A is not bad, it is unmeasured.
@@ -58,10 +58,10 @@ segment B:  returned 500 of 1,200     41.7%
 ... 2,855   2,895   2,930   2,990   2,995   480,000
 ```
 
-- **A long right tail, so the mean sits above almost every order** ← correct
-- A long left tail
+- A long left tail, with the mean sitting low
 - Roughly even, since only one value is unusual
 - You cannot tell without the full column
+- A long right tail, so the mean sits high ← correct
 
 *Why:* one value a hundred and sixty times the one below it is a right tail by definition, and the mean is pulled towards it.
 
@@ -69,8 +69,8 @@ segment B:  returned 500 of 1,200     41.7%
 
 ## Q5. A money column with one enormous order. Which statistic goes to the stakeholder?
 
-- **The median, named as the median** ← correct
 - The mean, since it uses all the data
+- The median, named as the median ← correct
 - The mode, since it is the most typical value
 - The range, since it shows the full picture
 
@@ -81,7 +81,7 @@ segment B:  returned 500 of 1,200     41.7%
 
 ## Q6. Business returns at 11.1 percent, the best in the file. What must travel with that number?
 
-- **The nine orders it was computed on** ← correct
+- The nine orders it was computed on ← correct
 - The date it was computed
 - The segment's median order value
 - The percentage change since last month
@@ -98,10 +98,10 @@ for r in orders:
     counts[r["segment"]] += 1
 ```
 
-- **KeyError** ← correct
 - It runs and silently skips the fourth segment
 - ValueError
 - TypeError
+- KeyError ← correct
 
 *Why:* a dictionary asked for a key it does not hold raises `KeyError`, and prints the missing key for you. Here that is `'Student'`, and it fires on the first order in the file.
 *Trap:* option two is what people expect and hope for. Python does not skip quietly, which is the good news.
@@ -114,10 +114,10 @@ Wednesday you found that fifty orders held only forty-nine distinct order ids, a
 
 Today: your segment counts print as 9, 14, 11 and 10. Somebody asks whether your summary is trustworthy. What is your **first** check?
 
-- **Add the four counts and confirm they total 44** ← correct
-- Recompute the medians by hand
+- Recompute the four medians by hand
 - Re-run yesterday's cleaning pass
-- Ask which segment they care about
+- Add the four counts, expecting 44 ← correct
+- Ask which of the segments they care about
 
 *Why:* the reconciliation habit from Wednesday, applied to a grouping instead of a cleaning pass. Input must equal the sum of the parts. Nine plus fourteen plus eleven plus ten is forty-four, so no order was lost or double-counted, and that is one addition rather than an afternoon.
 

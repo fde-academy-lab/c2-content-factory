@@ -10,15 +10,15 @@ Position bar, repeated at every section boundary:
 ---
 
 ## S1. Describe without misleading
-
 Yesterday you decided which of Kalpa's fifty orders were usable. Today somebody asks what they say.
 
 The three questions this half answers: what is a typical order, what does one strange order do to that answer, and what shape is hiding behind the number you are about to send.
 
 ---
 
-## S2. Where we are
+---
 
+## S2. Where we are
 `[one column] > [what is typical] > [what one order does] > [what the shape says] > [per segment, with denominators]`
 
 You own a profiled file and a decisions log. Every number today comes off that file and nothing else. Describing data you have not cleaned is yesterday's mistake, and this room already made it once on purpose.
@@ -27,8 +27,9 @@ Two things you inherited and should keep in view: `KR4201` still appears twice, 
 
 ---
 
-## S2b. Where this is going
+---
 
+## S2b. Where this is going
 Two true statements about the same 44 orders:
 
 ```
@@ -42,8 +43,9 @@ By the end of this half you will know which number to send and what sentence has
 
 ---
 
-## S3. The anchor
+---
 
+## S3. The anchor
 Somebody outside your team asks a question you have heard a hundred times:
 
 > What is our average order value?
@@ -52,8 +54,9 @@ It sounds like a request for one number. It is a request for a description of a 
 
 ---
 
-## S3b. The whole day in one picture
+---
 
+## S3b. The whole day in one picture
 ```mermaid
 flowchart LR
     A["one cleaned column<br/>44 amounts"] --> B["what is typical<br/>mean, median, mode"]
@@ -67,14 +70,16 @@ Half one is the first four stops. Half two is the last one, and it is the one th
 
 ---
 
-## SECTION 1: WHAT IS TYPICAL
+---
 
+## SECTION 1: WHAT IS TYPICAL
 `[one column] > **[what is typical]** > [what one order does] > [what the shape says] > [per segment, with denominators]`
 
 ---
 
-## S4. Seven orders, on paper
+---
 
+## S4. Seven orders, on paper
 The first seven orders in your profiled file, amount column only:
 
 ```
@@ -85,8 +90,9 @@ Pens down on the keyboard. This one is done by hand.
 
 ---
 
-## S5. Mean: add them up, share them out
+---
 
+## S5. Mean: add them up, share them out
 ```
 1280 + 1865 + 2270 + 2835 + 1310 + 1145 + 1030 = 11735
 11735 / 7 = 1676.43
@@ -98,8 +104,9 @@ It uses every order, which is its strength and the whole of its weakness.
 
 ---
 
-## S6. Median: stand them in a line, take the middle one
+---
 
+## S6. Median: stand them in a line, take the middle one
 ```
 1030   1145   1280   [1310]   1865   2270   2835
                        ^
@@ -112,8 +119,16 @@ It uses the order of the records and almost nothing about their size.
 
 ---
 
-## S7. Now swap one order
+```mermaid
+flowchart LR
+    A["what is typical?"] --> B["mean: share the total out equally"]
+    A --> C["median: the one standing in the middle"]
+    A --> D["mode: the exact value that repeats most"]
+```
 
+---
+
+## S7. Now swap one order
 Keep the same seven. Replace the largest, Rs 2,835, with the largest order in the real file: Rs 480,000.
 
 | Statistic | Before | After |
@@ -127,8 +142,9 @@ That is the entire day in one table.
 
 ---
 
-## D1. The three, written as arithmetic
+---
 
+## D1. The three, written as arithmetic
 Sorted values are written $x_1 \le x_2 \le \dots \le x_n$.
 
 $$\text{mean} = \bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$$
@@ -141,8 +157,9 @@ Read the mean formula and notice that every $x_i$ appears in it exactly once, wi
 
 ---
 
-## D2. Mean and median as two different machines
+---
 
+## D2. Mean and median as two different machines
 ```mermaid
 flowchart TB
     subgraph M["the mean is a balance point"]
@@ -163,8 +180,9 @@ The mean asks how much. The median asks how many are on each side. That is why o
 
 ---
 
-## S8. Mode: the value that shows up most
+---
 
+## S8. Mode: the value that shows up most
 In your 44 orders, the most repeated amount appears **twice**.
 
 Twice out of forty-four. It describes four percent of the file and nothing else.
@@ -173,8 +191,9 @@ Mode earns its keep on categories, where "the most common segment" or "the most 
 
 ---
 
-## D3. How wrong can the data be before the statistic is wrong
+---
 
+## D3. How wrong can the data be before the answer is
 Ask of any summary: how many records would have to be corrupted before the number stops describing the file.
 
 | Statistic | Records that must be wrong | As a share of today's 44 |
@@ -187,8 +206,9 @@ This is the reason a median is the safer default on a column you have not fully 
 
 ---
 
-## S9. Three answers, three questions
+---
 
+## S9. Three answers, three questions
 | Statistic | The question it actually answers |
 |---|---|
 | Mean | If the total were shared equally, what would each order carry |
@@ -199,14 +219,26 @@ Nobody is right. They answer different questions, and the asker rarely says whic
 
 ---
 
-## SECTION 2: WHAT ONE ORDER DOES
+```mermaid
+flowchart TB
+    A["43 ordinary orders, Rs 800 to Rs 2,995"] --> C["mean Rs 12,753"]
+    B["KR4232 at Rs 480,000"] --> C
+    C --> D["1 of the 44 reaches it"]
+    A --> E["median Rs 1,910"]
+    B --> E
+    E --> F["and the median barely moved"]
+```
 
+---
+
+## SECTION 2: WHAT ONE ORDER DOES
 `[one column] > [what is typical] > **[what one order does]** > [what the shape says] > [per segment, with denominators]`
 
 ---
 
-## S10. The same code, on the real column
+---
 
+## S10. The same code, on the real column
 You just did this by hand on seven orders. Here it is on all 44.
 
 ```
@@ -217,8 +249,9 @@ The code is correct. Check it if you like. Add them, divide by 44, you get Rs 12
 
 ---
 
-## S11. Two more lines, and the number falls apart
+---
 
+## S11. Two more lines, and the number falls apart
 ```
 mean amount over 44 orders: Rs 12,753.30
 orders at or above Rs 12,753.30: 1
@@ -231,8 +264,9 @@ Forty-three of Kalpa's customers are below the number you were about to call typ
 
 ---
 
-## S12. Sort the column and look at the tail
+---
 
+## S12. Sort the column and look at the tail
 ```
 ... 2,855   2,895   2,895   2,930   2,990   2,995   480,000
 ```
@@ -243,8 +277,9 @@ The second largest order in the entire file is Rs 2,995. The largest is Rs 480,0
 
 ---
 
-## S13. The whale
+---
 
+## S13. The whale
 ```
 KR4232   C1749   Retail-Core   480000   delivered   2026-08-19
 ```
@@ -257,8 +292,17 @@ An order can be correct and still wreck every summary it touches.
 
 ---
 
-## S14. What it costs, in two rows
+```mermaid
+flowchart TB
+    A["min and max"] --> B["range, from the two least typical values"]
+    C["the middle half"] --> D["interquartile range"]
+    D --> E["the fence: q3 plus 1.5 times the IQR"]
+    E --> F["catches one order, and proves nothing about it"]
+```
 
+---
+
+## S14. What it costs, in two rows
 | Column | With the whale | Without it |
 |---|---|---|
 | All orders, mean | Rs 12,753.30 | Rs 1,887.09 |
@@ -270,18 +314,42 @@ Take one order out of forty-four and the mean falls by a factor of nearly seven,
 
 ---
 
-## S15. So delete it?
+---
 
-No.
+## S15. S15. Question: the whale is real, so delete it?
+One order is Rs 480,000 and it makes every summary look strange. What do you do?
 
-Deleting a real order to make a number look nicer is how a report becomes fiction. Yesterday you wrote a decisions log precisely so that nobody could do this quietly.
+a) Delete it, since it is plainly not a typical order
+b) Cap it at the fence, so the shape looks reasonable
+c) Keep it, flag it, and say what it does to the mean
+d) Split it into smaller orders that look ordinary
 
-The order stays. The statistic changes.
+---
+
+## S15a. Answer: keep it, because it is real
+**The claim.** It converts cleanly, and it has a customer, a date, a segment and a status like every other order. Nothing about the record is wrong.
+
+| Option | Why it does not hold |
+|---|---|
+| a) Delete | Deleting a real order to make a number look nicer is how a report becomes fiction, and somebody reconciling revenue will find Rs 480,000 missing. |
+| b) Cap | A cap puts a value nobody wrote into the file, which is Wednesday's coercion trap in another costume. |
+| d) Split | Invents orders that never happened. |
+
+**The mental model.** An outlier is a finding to investigate before it is a row to delete.
+
+```mermaid
+flowchart TB
+    A["43 ordinary orders, Rs 800 to Rs 2,995"] --> C["mean Rs 12,753"]
+    B["KR4232 at Rs 480,000"] --> C
+    C --> D["1 of the 44 reaches it"]
+    A --> E["median Rs 1,910"]
+    B --> E
+    E --> F["and the median barely moved"]
+```
 
 ---
 
 ## D4. Which statistic survives a wrong record, on this file
-
 Suppose exactly one amount in the file is wrong, and you do not know which.
 
 | What is wrong | What happens to the mean | What happens to the median |
@@ -296,8 +364,9 @@ Read the third line twice. Removing an ordinary order made the mean go up by Rs 
 
 ---
 
-## S16. The rule for money columns
+---
 
+## S16. The rule for money columns
 > On any money column, report the median and say so.
 
 This is not this programme's opinion. Statistical agencies report median household income rather than mean household income, because a small number of very large incomes drag the mean away from anything a household would recognise.
@@ -306,14 +375,26 @@ Order values behave the same way. So do salaries, claim sizes, invoice amounts a
 
 ---
 
-## SECTION 3: WHAT THE SPREAD SAYS
+```mermaid
+flowchart TB
+    A["43 ordinary orders, Rs 800 to Rs 2,995"] --> C["mean Rs 12,753"]
+    B["KR4232 at Rs 480,000"] --> C
+    C --> D["1 of the 44 reaches it"]
+    A --> E["median Rs 1,910"]
+    B --> E
+    E --> F["and the median barely moved"]
+```
 
+---
+
+## SECTION 3: WHAT THE SPREAD SAYS
 `[one column] > [what is typical] > [what one order does] > **[what the shape says]** > [per segment, with denominators]`
 
 ---
 
-## S17. Three numbers you get for free
+---
 
+## S17. Three numbers you get for free
 ```
 min:    Rs      800
 max:    Rs  480,000
@@ -326,8 +407,9 @@ A statistic computed from two orders out of forty-four tells you about those two
 
 ---
 
-## S18. The fence, done properly
+---
 
+## S18. The fence, done properly
 Yesterday you flagged the whale with a fence at ten times the middle order. That worked and it was deliberately crude, because somebody chose the ten.
 
 Here is the standard version, built from the spread of the middle half rather than from a number anybody picked.
@@ -341,8 +423,9 @@ upper fence = Q3 + 1.5 x IQR =       Rs  4,865.62
 
 ---
 
-## D5. How the fence is built, step by step
+---
 
+## D5. How the fence is built, step by step
 ```mermaid
 flowchart TB
     A["sort the 44 amounts"] --> B["find the value a quarter<br/>of the way up: Q1 = 1287.50"]
@@ -357,8 +440,9 @@ The middle half is what makes this better than yesterday's fence. Q1 and Q3 are 
 
 ---
 
-## S19. What the fence catches here
+---
 
+## S19. What the fence catches here
 ```
 orders above Rs 4,865.62: 1
 ```
@@ -369,22 +453,34 @@ Two rules, built differently, agreeing on the same single record. That agreement
 
 ---
 
-## S20. A fence is a flag, never a delete key
+---
 
+## S20. A fence is a flag, never a delete key
 The fence says "look at this order". It does not say "remove this order".
 
 Yesterday's language holds: an outlier is a finding to investigate before it is a row to delete. The fence just finds it faster, on a file too large to eyeball.
 
 ---
 
-## SECTION 4: THE SHAPE BEHIND THE NUMBER
+```mermaid
+flowchart LR
+    A["min"] --> B["median"]
+    B --> C["max"]
+    A -.->|"short distance"| B
+    B -.->|"long distance"| C
+    C --> D["a long right tail"]
+```
 
+---
+
+## SECTION 4: THE SHAPE BEHIND THE NUMBER
 `[one column] > [what is typical] > [what one order does] > **[what the shape says]** > [per segment, with denominators]`
 
 ---
 
-## D6. What today deliberately does not compute, and why
+---
 
+## D6. What today deliberately does not compute, and why
 You could put a number on the lopsidedness. There is a standard one, and it needs the standard deviation, which needs the squared distance of every value from the mean.
 
 That is not on today's list, and the reason is worth saying out loud rather than hiding.
@@ -395,8 +491,9 @@ So today you read the shape off sorted values, which needs no assumption at all.
 
 ---
 
-## S21. Skew, without a formula
+---
 
+## S21. Skew, without a formula
 Sort the column. Stand on the median. Look both ways.
 
 ```
@@ -410,8 +507,18 @@ The distance up is 431 times the distance down. That lopsidedness is the skew, a
 
 ---
 
-## S22. The tell you can use in any interview
+```mermaid
+flowchart LR
+    A["min"] --> B["median"]
+    B --> C["max"]
+    A -.->|"short distance"| B
+    B -.->|"long distance"| C
+    C --> D["a long right tail"]
+```
 
+---
+
+## S22. The tell you can use in any interview
 > If the mean is much larger than the median, something large is pulling on the right.
 > If the mean is much smaller, something small is pulling on the left.
 > If they sit close together, the shape is roughly even and either one describes it.
@@ -420,8 +527,9 @@ On this file: mean Rs 12,753.30, median Rs 1,910.00. The mean is 6.68 times the 
 
 ---
 
-## S23. Anscombe's quartet, 1973
+---
 
+## S23. Anscombe's quartet, 1973
 Frank Anscombe built four datasets that share almost identical means, variances and correlations, and look nothing alike when drawn.
 
 The lesson he was making has not aged: a summary statistic is a compression, and compression discards. Two datasets can hand you the same numbers and describe two different worlds.
@@ -430,8 +538,9 @@ You have no charting library until Week 2, so today the sorted list is your pict
 
 ---
 
-## D7. Anscombe's quartet, what he actually built
+---
 
+## D7. Anscombe's quartet, what he actually built
 Four datasets of eleven points each, constructed so that the summaries agree and the pictures do not.
 
 | What is shared across all four | What differs |
@@ -446,8 +555,9 @@ Reference, verified 09 September 2026: https://en.wikipedia.org/wiki/Anscombe%27
 
 ---
 
-## D8. The tell, applied to columns you have not met yet
+---
 
+## D8. The tell, applied to columns you have not met yet
 The mean against median comparison is a two second test and it works on any numeric column.
 
 | Column | What you would expect | What it would mean if the mean sat far above the median |
@@ -461,8 +571,9 @@ The test never tells you the answer. It tells you whether to go and look, which 
 
 ---
 
-## S24. The decision card
+---
 
+## S24. The decision card
 | The column looks like | Send | Say alongside |
 |---|---|---|
 | Money, or anything with a long tail | Median | The count it rests on |
@@ -474,40 +585,71 @@ The right-hand column is the same in every row. That is half two's subject.
 
 ---
 
-## S25. The failure you will meet again
+```mermaid
+flowchart TB
+    A["you have been asked for a number"] --> B{"does one value dominate?"}
+    B -->|"yes"| C["median, plus the mean and who owns it"]
+    B -->|"no"| D["either, and say which you used"]
+```
 
+---
+
+## S25. The failure you will meet again
 Not a crash. Correct code, correct arithmetic, and a description that misleads a person who trusted you.
 
 Nothing in a traceback catches this. The only thing that catches it is looking at the shape before you send the number.
 
 ---
 
-## SECTION 5: THE INTERVIEW BLOCK
+---
 
+## SECTION 5: THE INTERVIEW BLOCK
 `[one column] > [what is typical] > [what one order does] > [what the shape says] > [per segment, with denominators]`
 
 ---
 
-## S25b. What this section is
+---
 
+## S25b. What this section is
 The first question below is on this week's own question set and will be on Saturday's paper. It is tagged as a service-major screen opener, which means it is often the first technical thing you are asked. The rest are asked often enough at this level that this programme puts them in front of you now.
 
 ---
 
-## S25c. Question 1: mean or median for a money field, and why
+---
 
-This is on the week's question set.
+## S25c. Question: mean or median for a money field?
+You are asked for the average order value at Kalpa Retail. What do you give?
 
-**What it is really testing.** Whether you know that the two answer different questions, and whether you will name evidence rather than a rule.
-
-**The answer, in three beats.** The median, on any money column, and I would say that is what I sent. Money has a floor at zero and no ceiling, so a few very large values sit in a long tail and drag the mean away from anything a typical record looks like. On today's file the mean order value is Rs 12,753.30 and the median is Rs 1,910, and exactly one order out of forty four sits at or above the mean. The mean is arithmetically correct and it describes one customer.
-
-**The follow-up.** "When would you send the mean?" When the column has no long tail, or when the total genuinely matters, because the mean is the total divided by the count and sometimes the total is the question. If somebody asks what an order is worth, that is the median. If somebody asks what the orders came to, that is the total.
+a) The mean, since it uses every order
+b) The median, and say what the mean is and why
+c) Whichever is larger
+d) Both, and let the reader choose
 
 ---
 
-## D9. Question 1, the version that separates you from the room
+## S25a. Answer: the median, and name what owns the mean
+**The claim.** The median describes the order standing in the middle, and the mean here describes one order out of forty-four.
 
+| Option | Why it does not hold |
+|---|---|
+| a) The mean | Using every order is what makes it fail on this column rather than what saves it. |
+| c) Whichever is larger | Picking by size is picking by convenience. |
+| d) Both, reader chooses | Two numbers seven times apart with no shape hands the reader the problem. |
+
+Say Rs 1,910, then say the mean is Rs 12,753 because KR4232 is 86 percent of the money in the file.
+
+**The mental model.** Statistical agencies report median household income for exactly this reason.
+
+```mermaid
+flowchart TB
+    A["you have been asked for a number"] --> B{"does one value dominate?"}
+    B -->|"yes"| C["median, plus the mean and who owns it"]
+    B -->|"no"| D["either, and say which you used"]
+```
+
+---
+
+## D9. Mean or median, one level deeper
 Add the breakdown argument, because it turns a preference into a property.
 
 Say that the mean can be moved arbitrarily far by one record, so its breakdown point is one record out of $n$, while the median cannot be moved at all until half the data changes side. Then say you check the two against each other as a habit: when the mean sits far above the median, something large is pulling on the right and you go and look at the sorted tail before you send anything.
@@ -516,37 +658,109 @@ Finish with the number, not the principle: remove one order from this file and t
 
 ---
 
-## S25d. Question 2: what is an outlier and what do you do with one
+---
 
-**The answer.** A value far enough from the rest that it changes the summaries, and the first thing I do is check whether it is even an outlier rather than a parsing failure wearing one. If it converts cleanly and the rest of the record is complete, it is real until somebody who owns the data says otherwise, so it is kept, flagged and raised. I change the statistic rather than the data.
+## S25d. Question: what is an outlier, and what do you do?
+What is the first move on a value far from the rest?
 
-**The follow-up.** "How do you find them?" Sort and read the tail first, because that is the only method that shows me actual values. Then a fence built from the interquartile range when I need a rule somebody else can reproduce, and I say the multiplier out loud because it is a convention.
+a) Remove it
+b) Cap it
+c) Investigate it
+d) Ignore it until somebody asks
 
 ---
 
-## S25e. Question 3: why not just remove the outlier so the average looks sensible
+## S25g. Answer: investigate, it is a finding first
+**The claim.** An outlier is a finding to investigate before it is a row to delete. What you do next depends on whether the record itself is wrong.
 
-This programme's own calibration, and it is asked to see whether you will defend the data or the number.
+| Option | Why it does not hold |
+|---|---|
+| a) Remove | Changes the business the file describes. |
+| b) Cap | Puts an invented value where a real one was. |
+| d) Ignore | Leaves the mean unexplained, which is how it reaches a slide. |
 
-**The answer.** Because the order is real, and deleting a real record to improve a number is how a report becomes fiction. The problem is not the record, it is that the mean was the wrong summary for a column with a tail. So the record stays and the statistic changes, and both facts go in the decisions log where a reviewer can see them.
+**The mental model.** The fence spots the tail. It never proves anything about the row it caught.
 
-**The follow-up.** "What if your manager asks you to remove it?" Then I show them the median next to the mean and the count each rests on, and ask which question they are answering. Usually they wanted a typical order value, which is the median, and the disagreement disappears.
+```mermaid
+flowchart TB
+    A["min and max"] --> B["range, from the two least typical values"]
+    C["the middle half"] --> D["interquartile range"]
+    D --> E["the fence: q3 plus 1.5 times the IQR"]
+    E --> F["catches one order, and proves nothing about it"]
+```
 
 ---
 
-## S25f. Question 4: what does the range tell you
+## S25e. Question: why not just remove it?
+What is wrong with removing it purely to make the summary readable?
 
-**The answer.** Very little on its own, because it is built from exactly two records out of the whole file. On today's column the range is Rs 479,200 and it describes the smallest order and the whale, and nothing about the forty two orders in between. I use the interquartile range instead when I want a spread that survives a tail, because it is built from positions rather than from the extremes.
+a) Nothing, as long as you say so
+b) It is slower than capping
+c) The number becomes readable and stops being true
+d) It breaks the sort order
 
-**The follow-up.** "So when is the range useful?" When the extremes are the point, such as a service level where the worst case is what somebody is accountable for.
+---
+
+## S25h. Answer: it stops describing the business
+**The claim.** The summary becomes easy to read and stops describing Kalpa. The order happened, the money moved, and the file is meant to describe what happened.
+
+| Option | Why it does not hold |
+|---|---|
+| a) As long as you say so | Saying so is necessary and not sufficient; the number is still wrong. |
+| b) Slower | Both take one line. |
+| d) The sort order | A cosmetic concern beside a factual one. |
+
+**The mental model.** A readable number that is not true is worse than an awkward number that is.
+
+```mermaid
+flowchart TB
+    A["43 ordinary orders, Rs 800 to Rs 2,995"] --> C["mean Rs 12,753"]
+    B["KR4232 at Rs 480,000"] --> C
+    C --> D["1 of the 44 reaches it"]
+    A --> E["median Rs 1,910"]
+    B --> E
+    E --> F["and the median barely moved"]
+```
+
+---
+
+## S25f. Question: what does the range actually tell you?
+Range is maximum minus minimum. What is it made of?
+
+a) The whole distribution
+b) The middle half of the column
+c) The two least typical values in the file
+d) The mean and the median
+
+---
+
+## S25i. Answer: the two least typical values
+**The claim.** Range is one subtraction built entirely from the two values least like the rest, which makes it the least stable number you produce.
+
+| Option | Why it does not hold |
+|---|---|
+| a) The whole distribution | It touches exactly two values out of forty-four. |
+| b) The middle half | That is the interquartile range, which is the stable one. |
+| d) Mean and median | Neither appears in the calculation. |
+
+**The mental model.** Range moves when one record changes. The interquartile range does not.
+
+```mermaid
+flowchart TB
+    A["min and max"] --> B["range, from the two least typical values"]
+    C["the middle half"] --> D["interquartile range"]
+    D --> E["the fence: q3 plus 1.5 times the IQR"]
+    E --> F["catches one order, and proves nothing about it"]
+```
 
 ---
 
 ## S26. Crux
-
 > The mean was right and the description was wrong.
 > On a money column, send the median, and say that is what you sent.
 
 And never send a number without the count it rests on.
 
 Half two: the count it rests on.
+
+---

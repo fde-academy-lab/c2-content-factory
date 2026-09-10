@@ -14,22 +14,41 @@ Every summary number is a claim about a shape nobody can see, so you look at the
 
 ## Where today sat in the week
 
-```
-Mon   read the orders                 loops, conditions, accumulators
-Tue   package and survive bad data    functions, tracebacks, files
-Wed   profile before you touch        50 in, 44 profiled, 6 rejected, decisions log
-Thu   describe without misleading     <- you are here
-Mon   is the difference real          the method this session refused to use
+The week's terrain, filling up one column per teaching day.
+
+```mermaid
+flowchart LR
+    M["Monday<br/>read the orders"] --> T["Tuesday<br/>package and survive bad data"]
+    T --> W["Wednesday<br/>profile before you touch"]
+    W --> Th["Thursday<br/>describe without misleading<br/>YOU ARE HERE"]
+    Th --> S["Saturday<br/>the recap paper"]
 ```
 
-Thursday consumes Wednesday's output and produces the first thing anybody outside the team would read.
+Today's own four stops:
+
+```mermaid
+flowchart LR
+    A["three answers to typical"] --> B["the whale"]
+    B --> C["spread and shape"]
+    C --> D["the segment summary"]
+```
+
+| Where it sits | What Thursday covered | Status |
+|---|---|---|
+| Phase 1, read and clean data | Mean, median and mode, the outlier's pull, spread, skew from sorted values, sample size, the segment summary, denominators | Worked, with your own hands on the keys |
+| Phase 2 | Whether a segment gap is real, which is Monday of Week 2 | Named and parked on purpose |
+| Phase 2 | The same accumulator as one `groupby` call in pandas | Mentioned once, so you know why it was built by hand |
+
+The coverage line: Thursday worked all eight subtopics on its row, and the fence arithmetic was given as a convenience for spotting the tail rather than as a test.
+
+**The outcome tie.** Today produces the first thing anybody outside the team would read: a number, a sentence and the count it rests on. That sentence is the moment the terminal outcome is actually judged.
+
+**What was left out.** Standard deviation arithmetic, distribution theory, chart libraries and hypothesis language. The nearest thing today did not cover is whether the gap between two segments is real, and that is Monday.
 
 **Two things you carried in from Wednesday** and that changed today's numbers:
 
 - `KR4201` appears twice. You chose to keep both rows and flag the pair, because they differ on `order_date` by six weeks and the order book owner decides. So you described 44 rows containing one unresolved pair.
 - Student held twelve orders in the raw file and ten in the profiled one, because two Student orders failed conversion. Your cleaning changed the denominator of your smallest segment, and only the rejects log records it.
-
----
 
 ## 1. Three answers to "what is typical"
 
@@ -278,3 +297,40 @@ Check that the loop is running at all by printing the order count. Check that th
 > Every rate carries its denominator, or it lies for you while you are not in the room.
 
 Week 2 re-expresses this entire pass as one line of pandas and one SQL `GROUP BY` on the same orders. You built it by hand once so that when the one-liner arrives you already know what the answer should be, and you will notice if it disagrees.
+
+## Check yourself, with nothing to write
+
+Eight questions. No notebook, no notes. Anything you cannot say in ten seconds names the section to re-read.
+
+1. The mean is Rs 12,753 and the median is Rs 1,910 on the same 44 orders. Which describes the file? (Section 1)
+2. How many of those 44 orders sit at or above the mean, and what does that tell you? (Section 2)
+3. Take KR4232 out. Roughly where does the mean land? (Section 2)
+4. Range is min to max. Why is it the least stable number you produced today? (Section 3)
+5. Sorted values, and the distance up from the median dwarfs the distance down. What is that called? (Section 4)
+6. Your segment dictionary raises `KeyError: 'Student'`. What did the code do wrong? (Section 5)
+7. Business returns at 11.1 percent on nine orders. What does one more return do to that? (Section 6)
+8. What are the three parts of the sentence you send, and what is the fourth if something owns the number? (Section 7)
+
+## Read next, in this order
+
+| What | Why it is next | Time |
+|---|---|---|
+| Khan Academy, mean, median and mode review (verified 03 Sep 2026): https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/mean-median-basics/a/mean-median-and-mode-review | The worked values, at your own pace, on numbers you can check | About 15 minutes |
+| Khan Academy, summarizing quantitative data (verified 03 Sep 2026): https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data | Spread and outliers, with practice items | About 40 minutes |
+| Seeing Theory, frequentist inference (verified 05 Sep 2026): https://seeing-theory.brown.edu/frequentist-inference/index.html | Monday opens on the question this session refused to answer, and this is the interactive preview | About 20 minutes |
+
+Do the Seeing Theory chapter before Monday. The other two are for the weekend.
+
+## The words, and where each one starts mattering
+
+| Term | What it means | Where it first bit |
+|---|---|---|
+| Mean | The total shared out equally, which every value takes part in | The moment one order owned it |
+| Median | The value standing in the middle of the sorted column | The same moment, from the other side |
+| Mode | The exact value that repeats most, which on money repeats twice in 44 | The amount column |
+| Range | Maximum minus minimum, built from the two least typical values | Rs 800 to Rs 480,000 |
+| Interquartile range | The spread of the middle half, and the basis of the fence | The fence that caught exactly one order |
+| Skew | Which side of the median the tail is on | The distance up dwarfing the distance down |
+| Denominator | The count a rate rests on, which travels with it | Business at 11.1 percent on nine orders |
+| Trust floor | A record count below which you decline to rank, chosen and defended | Every segment in a 44 order file |
+| The honest sentence | The number, what it describes, the count it rests on, and a flag on anything that owns it | The deliverable of the day |

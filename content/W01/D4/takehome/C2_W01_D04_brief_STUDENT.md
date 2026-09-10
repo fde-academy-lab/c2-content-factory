@@ -108,3 +108,17 @@ It opens the next session, and the session begins by walking one submission on t
 ## Self-check
 
 Ship with `C2_W01_D04_selfcheck_STUDENT.md`. Run it before you submit. It plants specific values you can confirm alone, so you know whether you are right before class tells you.
+
+## The two tools that ship with tonight's work
+
+Both sit in `demos/` beside the companion page.
+
+`C2_W01_D04_decision_tool_STUDENT.xlsx` has one tab per decision you took today: which number you hand over as typical, whether a rate is worth quoting at all, and what the sentence around it has to carry. Yellow cells are yours and everything else computes. Each tab ships with one planted defect, so all three verdicts read "stop" when you open it.
+
+`C2_W01_D04_describe_pass_STUDENT.xlsx` is the seven-move run sheet you use before any summary number leaves your desk, with a symptom lookup beside it.
+
+The export tab assembles the stakeholder note by formula. Bring that paragraph on Monday; Week 2 opens on whether the gap it describes is real.
+
+## Where the running half lives
+
+`notebooks/C2_W01_D04_ex1_hands_on_STUDENT.ipynb` builds the segment summary and makes you choose the typical statistic yourself. `C2_W01_D04_ex2_hands_on_STUDENT.ipynb` hands you a summary that runs, prints and misleads. Post the letters from both.
