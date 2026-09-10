@@ -23,6 +23,31 @@ Verified against the Week 1 v1 file produced by `data/generate_client_zero.py`: 
 
 ---
 
+## Q0. Read the diagram
+
+**The idea being tested.** Whether a learner can read a pipeline drawing the way they read code, and spot the branch that is in the wrong place.
+
+**(a)** The arrow from `convert the amount` to `reconcile` is the wrong one. The reconciliation runs after both writes, not off the conversion, because it needs the count of both output files. Full credit names the arrow and says it belongs after `write to clean.csv` and `log the rejection`.
+
+**(b)** As drawn, every row that converts is written to the clean file and every row is also logged as a rejection, since nothing branches on whether the conversion succeeded. Full credit says the drawing has no decision in it at all.
+
+**(c)** `assert len(clean) + len(rejects) == len(orders)`, or any equivalent that compares all three counts.
+
+**What a weak answer looks like.** Naming an arrow without saying where it should go instead, or writing a check that compares only two of the three counts.
+
+**The corrected drawing, for the discussion:**
+
+```mermaid
+flowchart TB
+    A["read the row"] --> B{"does the amount convert?"}
+    B -->|"yes"| C["write to clean.csv"]
+    B -->|"no"| D["log the rejection with its reason"]
+    C --> E["reconcile: input equals clean plus rejected"]
+    D --> E
+```
+
+---
+
 ## Q1. A list against a dictionary
 
 ### Full credit contains
