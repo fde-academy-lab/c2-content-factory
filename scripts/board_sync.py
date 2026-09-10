@@ -87,7 +87,23 @@ FLAGS = [
     ("curriculum-rework", "C2410C", "The curriculum row itself is being changed"),
 ]
 
-ALL_LABELS = STATUS + PEOPLE + DAY_TYPE + ARTIFACT + FLAGS
+# Where the work lives, for issues that are not day packs: a wiki page, a situation card, a
+# builder script, a ground truth doc, the curriculum export, or the board itself.
+AREA = [
+    ("area:wiki", "5F6360", "A page under wiki/, published to the repository wiki"),
+    ("area:situations", "5F6360", "A Situation Bank card or the bank's structure"),
+    ("area:scripts", "5F6360", "A builder or one of the six proofs"),
+    ("area:docs", "5F6360", "Ground truth, method or doctrine under docs/"),
+    ("area:curriculum", "5F6360", "The workbook and its markdown exports"),
+    ("area:board", "5F6360", "The tracker itself, and scripts/board_sync.py"),
+]
+
+HELP = [
+    ("good-first-card", "1F6F4A", "A seeded situation somebody can expand into a full card"),
+    ("source-check", "8A6D3B", "A link or a movable fact that needs re-verifying with today's date"),
+]
+
+ALL_LABELS = STATUS + PEOPLE + DAY_TYPE + ARTIFACT + FLAGS + AREA + HELP
 
 WEEKS = {
     "W01": ("28 Sep to 03 Oct 2026", "2026-10-03", "Teaching week"),
@@ -233,6 +249,31 @@ def sync_labels(dry):
         if not dry:
             call("POST", "/labels", {"name": name, "color": colour, "description": desc})
     print(f"      {len(ALL_LABELS)} labels in the vocabulary")
+
+
+def prune_labels(dry):
+    """Delete labels outside the vocabulary that no issue uses.
+
+    GitHub seeds every new repository with nine generic labels. They colour the label picker,
+    they overlap with the vocabulary above, and nobody here uses them. A label that is actually
+    on an issue is never touched, so this is safe to run again.
+    """
+    known = {name for name, _, _ in ALL_LABELS}
+    removed = kept = 0
+    for label in paged("/labels"):
+        name = label["name"]
+        if name in known:
+            continue
+        used = call("GET", f"/issues?state=all&per_page=1&labels={urllib.parse.quote(name)}") or []
+        if used:
+            print(f"      keep {name}, it is on at least one issue")
+            kept += 1
+            continue
+        print(f"      delete unused label {name}")
+        removed += 1
+        if not dry:
+            call("DELETE", f"/labels/{urllib.parse.quote(name)}")
+    print(f"      {removed} removed, {kept} left alone because they are in use")
 
 
 def sync_milestones(dry):
@@ -387,6 +428,8 @@ def main():
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dry-run", action="store_true", help="print the changes and make none")
     ap.add_argument("--labels", action="store_true", help="create or correct the label vocabulary")
+    ap.add_argument("--prune-labels", action="store_true",
+                    help="delete labels outside the vocabulary that no issue uses")
     ap.add_argument("--milestones", action="store_true", help="create a milestone per week")
     ap.add_argument("--week", help="create or update one week's cards, as W01")
     ap.add_argument("--all", action="store_true", help="every week in the plan")
@@ -401,6 +444,8 @@ def main():
 
     if a.labels:
         sync_labels(dry)
+    if a.prune_labels:
+        prune_labels(dry)
     if a.milestones:
         sync_milestones(dry)
     if not (a.week or a.all or a.status):
