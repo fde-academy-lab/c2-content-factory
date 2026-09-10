@@ -118,7 +118,7 @@ Monday you counted how many orders had a value. That counter is today's profiler
 ---
 
 ```mermaid
-flowchart TB
+flowchart LR
     A["for every field in the header"] --> B["for every row"]
     B --> C{"is the value anything at all?"}
     C -->|"yes"| D["present + 1"]
@@ -154,7 +154,7 @@ flowchart LR
 
 ## S10. What the profiler is actually doing
 ```mermaid
-flowchart TB
+flowchart LR
     A["for every field in the header"] --> B["for every row"]
     B --> C{"is the value<br/>anything at all?"}
     C -->|"yes"| D["present + 1"]
@@ -312,7 +312,7 @@ flowchart TB
 
 ## S15. The decision, drawn
 ```mermaid
-flowchart TB
+flowchart LR
     A["a field is missing on some rows"] --> B{"is the field required<br/>for the question you are answering?"}
     B -->|"yes"| C["drop the record<br/>and put it in rejects with a reason"]
     B -->|"no"| D{"does absence mean<br/>something you can state?"}
@@ -594,7 +594,7 @@ flowchart TB
 
 ## S28. The duplicate ladder, from cheapest to most useful
 ```mermaid
-flowchart TB
+flowchart LR
     A["compare whole records<br/>finds only exact copies"] --> B["compare the identifier<br/>finds rows claiming to be<br/>the same thing"]
     B --> C["compare a stated key<br/>the fields you have declared<br/>decide identity"]
     C --> D["compare fuzzily<br/>names, addresses, near matches"]
@@ -637,7 +637,7 @@ You take the pair to whoever owns the order book, with both rows on screen and y
 ---
 
 ```mermaid
-flowchart TB
+flowchart LR
     A["two rows share an id"] --> B{"can you tell which it is?"}
     B -->|"one order entered twice"| C["keep one, and say which"]
     B -->|"two orders, one id reused"| D["keep both, fix the id upstream"]
@@ -746,7 +746,7 @@ flowchart LR
 
 ## S34. The outlier decision, drawn
 ```mermaid
-flowchart TB
+flowchart LR
     A["a value sits far from the rest"] --> B{"does it convert cleanly?"}
     B -->|"no"| C["it is a parsing problem,<br/>not an outlier"]
     B -->|"yes"| D{"is the rest of the record<br/>complete and consistent?"}
@@ -1057,7 +1057,7 @@ d) It produces the chart the stakeholder wants
 **The mental model.** Profiling is what you do before you have permission to change anything.
 
 ```mermaid
-flowchart TB
+flowchart LR
     A["for every field in the header"] --> B["for every row"]
     B --> C{"is the value anything at all?"}
     C -->|"yes"| D["present + 1"]

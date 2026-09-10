@@ -506,7 +506,7 @@ Either way the shape changes, and the person downstream has to be told.
 
 ## D8. The flattening decision, drawn
 ```mermaid
-flowchart TB
+flowchart LR
     A["a nested value has to go into a flat file"] --> B{"does anything downstream need it?"}
     B -->|"no"| C["drop it, and write down that you did"]
     B -->|"yes, one field"| D["promote it to its own column<br/>with a name that says where it came from"]

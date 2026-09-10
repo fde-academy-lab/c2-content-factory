@@ -191,17 +191,6 @@ erDiagram
 
 ---
 
-```mermaid
-erDiagram
-    CUSTOMERS ||--o{ ORDERS : places
-    CUSTOMERS ||--o{ EVENTS : generates
-    ORDERS ||--o{ ORDER_ITEMS : contains
-    ORDERS ||--o{ PAYMENTS : settled_by
-    PRODUCTS ||--o{ ORDER_ITEMS : appears_in
-```
-
----
-
 ---
 
 ## S8. What each table holds

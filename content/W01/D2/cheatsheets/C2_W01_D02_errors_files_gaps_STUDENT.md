@@ -6,6 +6,14 @@ Same eight panels with a quarter of the cells blanked. Fill it from memory first
 
 ## Panel 1: read a traceback
 
+```mermaid
+flowchart TB
+    A["the last line"] --> B["the exception type and the message"]
+    B --> C["which line is mine?"]
+    C --> D["what was it holding?"]
+    D --> E["the record that broke it"]
+```
+
 Read from the __________ up.
 
 | Line | Question it answers |

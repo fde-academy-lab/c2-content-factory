@@ -8,6 +8,16 @@ Every number here comes off Kalpa's 44 profiled orders: total Rs 561,145, mean R
 
 ## Panel 1: the three "typical" numbers
 
+```mermaid
+flowchart LR
+    A["what is typical?"] --> B["mean: share the total out equally"]
+    A --> C["median: the one standing in the middle"]
+    A --> D["mode: the exact value that repeats most"]
+    B --> E["every value takes part, so one huge value drags it"]
+    C --> F["only the middle position matters"]
+    D --> G["on money, almost nothing repeats"]
+```
+
 | | Answers | Reach for it when |
 |---|---|---|
 | **Mean** | Total shared out equally | The shape is roughly even |

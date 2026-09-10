@@ -9,6 +9,15 @@ reading the full sheet ten times.
 
 ## Panel 1: the workbench
 
+```mermaid
+flowchart LR
+    A["you click a cell"] --> B["the kernel runs it"]
+    B --> C["names go on the bench"]
+    C --> D["the next cell reads them"]
+    D -->|"restart"| E["the bench is empty again"]
+    E --> A
+```
+
 The kernel is a workbench that holds whatever you put on it for as long as it is running.
 
 | The move | What it does to the bench | What it does to the file |

@@ -38,7 +38,7 @@ flowchart TB
 ## Panel 3: reading the shape with no chart
 
 ```mermaid
-flowchart LR
+flowchart TB
     A["sort the column"] --> B["distance from median down to min"]
     A --> C["distance from median up to max"]
     B --> D{"which is larger?"}
@@ -95,4 +95,3 @@ flowchart LR
 
 ---
 
-The landscape PDF of this sheet is deferred. The rendering toolchain the `fde-cheat-sheets` method uses was not installed in the session that built this file, and the markdown with its six panels is the shipped artifact until it is.
