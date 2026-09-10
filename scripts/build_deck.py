@@ -1,3 +1,7 @@
+import sys
+import pathlib as _pl
+sys.path.insert(0, str(_pl.Path(__file__).parent))
+
 """Build a .pptx from a markdown slide source.
 
 The markdown is the authoritative deck, because the verification gate can read it and cannot read a
@@ -24,17 +28,16 @@ from pptx import Presentation
 from pptx.dml.color import RGBColor
 from pptx.enum.shapes import MSO_SHAPE
 from pptx.enum.text import PP_ALIGN
-from pptx.util import Inches, Pt
+from pptx.util import Emu, Inches, Pt
 
-INK = RGBColor(0x1C, 0x1C, 0x1A)
-MUTED = RGBColor(0x5F, 0x63, 0x60)
-ACC = RGBColor(0x2B, 0x4A, 0x7D)
-BG = RGBColor(0xF7, 0xF7, 0xF5)
-SECBG = RGBColor(0x2B, 0x4A, 0x7D)
-WHITE = RGBColor(0xFF, 0xFF, 0xFF)
+from build_cheatsheet import MERMAID_CONFIG
+from deck_layout import (ACC, BG, BOLD, INK, LINE, MUTED, TINT, WHITE, MARGIN, WIDTH,
+                         BODY_TOP, BODY_BOTTOM, SLIDE_W, SLIDE_H, CALLOUT, CRUMB, NUMBERED,
+                         QUOTE, SLIDE_ID, add_runs, background, breadcrumb, callout, clean,
+                         code_card, footer_band, numbered, pill, quote_block, rect, table,
+                         text_height, textbox, title_band, wrapped_rows)
 
-BOLD = re.compile(r"\*\*(.+?)\*\*")
-TINT = RGBColor(0xE4, 0xEC, 0xF7)
+SECBG = ACC
 
 UNITS = ["Kalpa Retail", "Kalpa Financial Services", "Kalpa Logistics",
          "Kalpa Health", "Kalpa Connect"]
@@ -182,10 +185,13 @@ def render_mermaid(lines):
     mermaid needs the picture baked in. The markdown stays the authoritative source, which is what
     the verification gate reads and what renders on GitHub. Install the renderer with
     `npm install -g @mermaid-js/mermaid-cli`; without it the fence falls back to monospace text.
-    Renders are cached by content hash, so rebuilding a deck re-renders only what changed.
+
+    The theme is the one scripts/build_cheatsheet.py uses, so the drawing a room sees on the slide
+    is the drawing they find again on the cheat sheet and in the notebook. Without it mermaid
+    paints its own lavender onto a slide that is not lavender.
     """
     code = "\n".join(lines).strip() + "\n"
-    key = hashlib.sha256(code.encode()).hexdigest()[:16]
+    key = hashlib.sha256((code + MERMAID_CONFIG).encode()).hexdigest()[:16]
     CACHE.mkdir(parents=True, exist_ok=True)
     png = CACHE / f"{key}.png"
     if png.exists():
@@ -193,6 +199,8 @@ def render_mermaid(lines):
     if not shutil.which("mmdc"):
         return None
     (CACHE / f"{key}.mmd").write_text(code)
+    theme = CACHE / f"theme_{hashlib.sha256(MERMAID_CONFIG.encode()).hexdigest()[:8]}.json"
+    theme.write_text(MERMAID_CONFIG)
     config = CACHE / "puppeteer.json"
     if not config.exists():
         config.write_text('{"args":["--no-sandbox","--disable-setuid-sandbox"]}\n')
@@ -202,24 +210,30 @@ def render_mermaid(lines):
         env["PUPPETEER_EXECUTABLE_PATH"] = chrome
     try:
         subprocess.run(["mmdc", "-i", str(CACHE / f"{key}.mmd"), "-o", str(png),
-                        "-b", "transparent", "-w", "2400", "-p", str(config)],
+                        "-b", "transparent", "-w", "2600", "-c", str(theme), "-p", str(config)],
                        capture_output=True, text=True, env=env, timeout=240)
     except Exception:
         return None
     return png if png.exists() else None
 
 
-def place_picture(s, png, top, width_in=11.6):
-    """Drop a rendered diagram into the body area, scaled to fit and centred."""
+def place_picture(s, png, top, bottom=BODY_BOTTOM, width_in=WIDTH, centre=False):
+    """Drop a rendered diagram into the body area, scaled to fill it and centred.
+
+    The old rule scaled a diagram down to fit and never up, so a six-box chain drawn at its natural
+    size sat two inches tall in the middle of a thirteen inch slide and nobody past the third row
+    could read it. A diagram is the argument on these slides, so it takes the room it is given.
+    """
     from PIL import Image
     with Image.open(png) as img:
         w, h = img.size
-    max_w, max_h = width_in, max(1.2, 6.55 - top)
+    max_w, max_h = width_in, max(1.2, bottom - top)
     scale = min(max_w / (w / 96), max_h / (h / 96))
     draw_w, draw_h = (w / 96) * scale, (h / 96) * scale
-    s.shapes.add_picture(str(png), Inches(0.85 + (width_in - draw_w) / 2), Inches(top),
+    y = top + max(0.0, (max_h - draw_h) / 2) if centre else top
+    s.shapes.add_picture(str(png), Inches(MARGIN + (width_in - draw_w) / 2), Inches(y),
                          Inches(draw_w), Inches(draw_h))
-    return top + draw_h + 0.15
+    return y + draw_h + 0.16
 
 
 def box_height(lines, mono=False):
@@ -238,144 +252,273 @@ def box_height(lines, mono=False):
     return (total + 18) / 96
 
 
-def clean(text):
-    """Strip the markdown that must never reach a slide."""
-    return BOLD.sub(r"\1", text).replace("`", "")
 
 
-def add_runs(para, text, size, colour, mono=False):
-    """Write text, turning **bold** into real bold runs rather than printing the asterisks."""
-    for i, piece in enumerate(BOLD.split(text.replace("`", ""))):
-        if not piece:
+def classify(lines):
+    """Split a run of text lines into the shapes this deck knows how to set."""
+    out, buf = [], []
+
+    def flush():
+        if buf:
+            out.append(("para", list(buf)))
+            buf.clear()
+
+    nums = []
+    for line in lines:
+        stripped = line.strip()
+        if not stripped:
             continue
-        r = para.add_run()
-        r.text = piece
-        r.font.size = Pt(size)
-        r.font.bold = bool(i % 2)
-        r.font.color.rgb = colour
-        r.font.name = "Consolas" if mono else "Calibri"
+        crumb = CRUMB.match(stripped)
+        call = CALLOUT.match(stripped)
+        num = NUMBERED.match(stripped)
+        quote = QUOTE.match(stripped)
+        if num:
+            flush()
+            nums.append((num.group(1), num.group(2)))
+            continue
+        if nums:
+            out.append(("numbered", nums))
+            nums = []
+        if crumb:
+            flush()
+            out.append(("crumb", stripped))
+        elif call:
+            flush()
+            out.append(("callout", (call.group(1), call.group(2))))
+        elif quote:
+            flush()
+            out.append(("quote", [stripped]))
+        else:
+            buf.append(line)
+    flush()
+    if nums:
+        out.append(("numbered", nums))
+    return out
 
 
-def add_bg(slide, prs, colour):
-    s = slide.shapes.add_shape(1, 0, 0, prs.slide_width, prs.slide_height)
-    s.fill.solid(); s.fill.fore_color.rgb = colour
-    s.line.fill.background(); s.shadow.inherit = False
-    slide.shapes._spTree.remove(s._element)
-    slide.shapes._spTree.insert(2, s._element)
+def paragraph_block(slide, top, lines, section=False, scale=1.0, width=WIDTH, x=MARGIN):
+    size = round((20 if not section else 24) * scale)
+    h = text_height([l.strip() for l in lines], width, size, gap=0.12)
+    tb = textbox(slide, x, top, width, h)
+    first = True
+    for line in lines:
+        p = tb.text_frame.paragraphs[0] if first else tb.text_frame.add_paragraph()
+        first = False
+        add_runs(p, line.strip(), size, WHITE if section else INK)
+        if section:
+            from pptx.enum.text import PP_ALIGN
+            p.alignment = PP_ALIGN.CENTER
+        p.space_after = Pt(round(9 * scale))
+    return top + h + 0.14
 
 
-def add_table(slide, rows, top, width):
-    """A markdown table becomes a PowerPoint table, never a wall of pipe characters."""
-    grid = [[c.strip() for c in r.strip().strip("|").split("|")] for r in rows
-            if not re.fullmatch(r"\s*\|[\s:\-|]+\|\s*", r)]
-    if not grid:
-        return top
-    cols = max(len(r) for r in grid)
-    grid = [r + [""] * (cols - len(r)) for r in grid]
-    height = Inches(min(0.42 * len(grid), 4.2))
-    shape = slide.shapes.add_table(len(grid), cols, Inches(0.85), Inches(top), width, height)
-    for ri, row in enumerate(grid):
-        for ci, cell in enumerate(row):
-            tc = shape.table.cell(ri, ci)
-            tc.text = ""
-            para = tc.text_frame.paragraphs[0]
-            add_runs(para, cell, 14 if ri else 13, INK if ri else ACC)
-            if ri == 0:
-                for r in para.runs:
-                    r.font.bold = True
-            tc.margin_top = tc.margin_bottom = Pt(2)
-    return top + height.inches + 0.2
+def render_slide(slide, prs, title, body, footer, number, total, scale=1.0):
+    section = title.upper().startswith("SECTION")
+    depth = bool(SLIDE_ID.match(title)) and SLIDE_ID.match(title).group(1) == "D"
+    background(slide, prs, ACC if section else BG)
+    title_band(slide, title, section, depth)
+
+    mark = len(slide.shapes)
+    blocks = split_blocks(body)
+    drawer = None
+    for mode, lines in blocks:
+        if mode == "code":
+            drawer = drawer or diagram_for(lines)
+    if drawer and not section:
+        lead = [l for (m, b) in blocks if m == "text" for l in b if l.strip()]
+        after, seen = [], False
+        for mode, lines in blocks:
+            if mode == "code":
+                seen = True
+            elif seen:
+                after.extend(lines)
+        head = [l for l in lead if l not in after]
+        if head:
+            tb = textbox(slide, MARGIN, BODY_TOP, WIDTH, 0.5)
+            add_runs(tb.text_frame.paragraphs[0], " ".join(head), 17, INK)
+        drawer(slide, after)
+        footer_band(slide, footer, number, total, section)
+        return
+
+    # An exhibit slide is one whose argument is a single picture, so the picture gets the body.
+    pictures = [(m, b) for m, b in blocks if m == "mermaid"]
+    words = [(m, b) for m, b in blocks if m != "mermaid"]
+    # A picture taller than it is wide is height-limited by the slide, so giving it the whole
+    # width buys nothing: it sits narrow in the middle with its labels shrunk to match. Those go
+    # beside their words instead, where they get the body's full height.
+    portrait = False
+    if len(pictures) == 1 and not section:
+        probe = render_mermaid(pictures[0][1])
+        if probe:
+            from PIL import Image
+            with Image.open(probe) as im:
+                portrait = im.size[1] / im.size[0] > 0.55
+
+    single_exhibit = (len(pictures) == 1 and not section and not portrait
+                      and sum(len(b) for m, b in words if m == "text") <= 3
+                      and all(m == "text" for m, _ in words))
+
+    top = BODY_TOP if not section else 4.3
+    if single_exhibit:
+        lead = [l for m, b in words if m == "text" for l in b if l.strip()]
+        tail_top = BODY_BOTTOM
+        if lead:
+            joined = " ".join(l.strip() for l in lead)
+            tail_top = BODY_BOTTOM - min(2.4, text_height([joined], WIDTH, 20, gap=0.06))
+        png = render_mermaid(pictures[0][1])
+        if png:
+            place_picture(slide, png, top, tail_top - 0.12, centre=True)
+            if lead:
+                tb = textbox(slide, MARGIN, tail_top, WIDTH, BODY_BOTTOM - tail_top)
+                add_runs(tb.text_frame.paragraphs[0], " ".join(l.strip() for l in lead), 20, INK)
+            footer_band(slide, footer, number, total, section)
+            return
+
+    # A portrait diagram beside its words beats the same diagram squeezed under them: stacked, it
+    # only gets the height nothing else wanted, which is where a six-rank flowchart ends up
+    # printing its labels at five points.
+    column = None
+    if portrait and not single_exhibit:
+        png_probe = render_mermaid(pictures[0][1])
+        column = (MARGIN + 0.47 * WIDTH, 0.53 * WIDTH)
+        place_picture(slide, png_probe, BODY_TOP, BODY_BOTTOM, 0.43 * WIDTH, centre=True)
+
+    x, w = column if column else (MARGIN, WIDTH)
+    for mode, lines in blocks:
+        if top > BODY_BOTTOM - 0.3:
+            break
+        if mode == "table" and not section:
+            top = table(slide, lines, top, w, BODY_BOTTOM - top, scale, x)
+        elif mode == "code":
+            top = code_card(slide, top, lines, w, scale, x)
+        elif mode == "mermaid" and not section:
+            if column:
+                continue
+            png = render_mermaid(lines)
+            if png:
+                top = place_picture(slide, png, top, BODY_BOTTOM)
+            else:
+                top = code_card(slide, top, lines, w, scale, x)
+        else:
+            for kind, payload in classify(lines):
+                if top > BODY_BOTTOM - 0.3:
+                    break
+                if kind == "crumb":
+                    top = breadcrumb(slide, top, payload, section)
+                elif kind == "callout":
+                    top = callout(slide, top, payload[0], payload[1], w, section, scale, x)
+                elif kind == "numbered":
+                    top = numbered(slide, top, payload, w, scale, x)
+                elif kind == "quote":
+                    top = quote_block(slide, top, payload, w, scale, x)
+                else:
+                    top = paragraph_block(slide, top, payload, section, scale, w, x)
+    centre_body(slide, mark, section, skip_pictures=bool(column))
+    footer_band(slide, footer, number, total, section)
+
+
+def centre_body(slide, mark, section=False, skip_pictures=False):
+    """Slide everything placed after `mark` down, so a short body sits in the middle of its room.
+
+    A picture already centred in its own column stays where it is, and only the words beside it
+    move, otherwise the two halves drift apart.
+    """
+    added = [sh for sh in list(slide.shapes)[mark:]
+             if not (skip_pictures and sh.shape_type is not None
+                     and "PICTURE" in str(sh.shape_type))]
+    if not added:
+        return
+    top = min(sh.top for sh in added)
+    bottom = max(sh.top + sh.height for sh in added)
+    slack = Inches(BODY_BOTTOM).emu - bottom
+    if slack <= 0:
+        return
+    shift = int(slack / 2)
+    if shift < Inches(0.3).emu:
+        return
+    for sh in added:
+        sh.top = sh.top + shift
+
+
+def footer_for(md, stem):
+    """The running footer, read off the source rather than typed in again at every build.
+
+    A slide source opens with its own title and the week and day it belongs to, so the footer is
+    already written and a build that asks for it again is a build that can disagree with the file.
+    """
+    title = re.search(r"^#\s+(.+?)\s*$", md, re.M)
+    where = re.search(r"^(Week\s+\d+,\s*Day\s+\d+)\b", md, re.M)
+    if title and where:
+        return f"{where.group(1)}. {title.group(1).strip()}"
+    return title.group(1).strip() if title else stem
+
+
+# Mermaid draws its labels at 16 CSS pixels. A diagram whose own width is css_w pixels, placed
+# drawn_in inches wide, prints those labels at 1152 * drawn_in / css_w points, whatever
+# resolution the PNG was rendered at. Below about nine points nobody past the third row reads a
+# box, so a slide whose picture lands under that sets its words one step smaller and gives the
+# room back to the picture.
+MIN_LABEL_PT = 9.0
+SCALES = (1.0, 0.86, 0.76)
+CSS_WIDTHS = {}
+
+
+def css_width(lines):
+    """The diagram's own width in CSS pixels, which the PNG cannot tell us on its own.
+
+    mmdc renders the deck's PNG at a fixed 2600 pixels so it stays sharp on a projector, so the
+    file says nothing about how wide the drawing wanted to be. The SVG render of the same fence
+    carries that in its viewBox, both renders are cached, and it is what decides whether a label
+    lands readable on the slide.
+    """
+    key = "\n".join(lines).strip()
+    if key not in CSS_WIDTHS:
+        from build_cheatsheet import render_mermaid as svg_render, svg_width
+        svg = svg_render(key, "svg")
+        CSS_WIDTHS[key] = svg_width(svg) if svg else 0.0
+    return CSS_WIDTHS[key]
+
+
+def picture_label_pt(slide, mark, widths):
+    """The smallest label size any picture on this slide will print at, in points."""
+    worst = 99.0
+    pics = [sh for sh in list(slide.shapes)[mark:]
+            if sh.shape_type is not None and "PICTURE" in str(sh.shape_type)]
+    for sh, css_w in zip(pics, widths):
+        if css_w:
+            worst = min(worst, 1152.0 * Emu(sh.width).inches / css_w)
+    return worst
+
+
+def clear_after(slide, mark):
+    for sh in list(slide.shapes)[mark:]:
+        sh._element.getparent().remove(sh._element)
 
 
 def build(src, out, footer):
     prs = Presentation()
-    prs.slide_width, prs.slide_height = Inches(13.333), Inches(7.5)
-    width = Inches(11.6)
-    for title, body in parse(pathlib.Path(src).read_text()):
-        section = title.upper().startswith("SECTION")
+    prs.slide_width, prs.slide_height = Inches(SLIDE_W), Inches(SLIDE_H)
+    slides = parse(pathlib.Path(src).read_text())
+    total = len(slides)
+    shrunk, cramped = 0, []
+    for n, (title, body) in enumerate(slides, start=1):
         s = prs.slides.add_slide(prs.slide_layouts[6])
-        add_bg(s, prs, SECBG if section else BG)
-
-        depth = bool(re.match(r"^D\d+[a-z]?\.", title))
-        if depth:
-            chip = s.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(11.15), Inches(0.42),
-                                      Inches(1.3), Inches(0.34))
-            chip.fill.solid(); chip.fill.fore_color.rgb = ACC
-            chip.line.fill.background(); chip.shadow.inherit = False
-            cp = chip.text_frame.paragraphs[0]; cp.alignment = PP_ALIGN.CENTER
-            cr = cp.add_run(); cr.text = "DEPTH"
-            cr.font.size = Pt(11); cr.font.bold = True
-            cr.font.name = "Calibri"; cr.font.color.rgb = WHITE
-
-        tb = s.shapes.add_textbox(Inches(0.85), Inches(0.7), width, Inches(1.3))
-        tb.text_frame.word_wrap = True
-        p0 = tb.text_frame.paragraphs[0]
-        add_runs(p0, clean(re.sub(r"^[SD]\d+[a-z]?\.\s*", "", title)), 36 if section else 32,
-                 WHITE if section else INK)
-        for r in p0.runs:
-            r.font.bold = True
-        if section:
-            p0.alignment = PP_ALIGN.CENTER
-
-        blocks = split_blocks(body)
-        drawer = None
-        for mode, lines in blocks:
-            if mode == "code":
-                drawer = drawer or diagram_for(lines)
-        if drawer and not section:
-            lead = [l for (m, b) in blocks if m == "text" for l in b if l.strip()]
-            after = []
-            seen_code = False
-            for mode, lines in blocks:
-                if mode == "code":
-                    seen_code = True
-                elif seen_code:
-                    after.extend(lines)
-            head = [l for l in lead if l not in after]
-            if head:
-                cb = s.shapes.add_textbox(Inches(0.85), Inches(1.85), width, Inches(0.55))
-                cb.text_frame.word_wrap = True
-                add_runs(cb.text_frame.paragraphs[0], " ".join(head), 17, INK)
-            drawer(s, after)
-            fb = s.shapes.add_textbox(Inches(0.85), Inches(6.9), width, Inches(0.4))
-            fr = fb.text_frame.paragraphs[0].add_run()
-            fr.text = footer
-            fr.font.size = Pt(10); fr.font.color.rgb = MUTED; fr.font.name = "Calibri"
-            continue
-
-        top = 2.15
-        for mode, lines in blocks:
-            if mode == "table" and not section:
-                top = add_table(s, lines, top, width)
-                continue
-            if mode == "mermaid" and not section:
-                png = render_mermaid(lines)
-                if png:
-                    top = place_picture(s, png, top)
-                    continue
-            h = max(0.55, min(4.6, box_height(lines, mono=mode == "code")))
-            bb = s.shapes.add_textbox(Inches(0.85), Inches(top), width, Inches(h))
-            bb.text_frame.word_wrap = True
-            first = True
-            for line in lines:
-                para = bb.text_frame.paragraphs[0] if first else bb.text_frame.add_paragraph()
-                first = False
-                mono = mode == "code"
-                add_runs(para, line.rstrip(), 17 if mono else 21,
-                         WHITE if section else (ACC if mono else INK), mono=mono)
-                if section:
-                    para.alignment = PP_ALIGN.CENTER
-                para.space_after = Pt(4 if mono else 10)
-            top += h + 0.15
-            if top > 6.6:
+        mark = len(s.shapes)
+        widths = [css_width(b) for m, b in split_blocks(body) if m == "mermaid"]
+        for i, scale in enumerate(SCALES):
+            if i:
+                clear_after(s, mark)
+            render_slide(s, prs, title, body, footer, n, total, scale)
+            pt = picture_label_pt(s, mark, widths)
+            if pt >= MIN_LABEL_PT:
+                shrunk += bool(i)
                 break
-
-        fb = s.shapes.add_textbox(Inches(0.85), Inches(6.9), width, Inches(0.4))
-        fr = fb.text_frame.paragraphs[0].add_run()
-        fr.text = footer
-        fr.font.size = Pt(10); fr.font.color.rgb = MUTED; fr.font.name = "Calibri"
+        else:
+            # Nothing the layout can do reaches a readable label, because the diagram is deeper
+            # than a 16:9 slide can show. Name it, so the author can decide to draw it shallower.
+            cramped.append((n, round(pt, 1), title[:44]))
     prs.save(out)
-    return len(prs.slides.__iter__.__self__._sldIdLst)
+    return total, shrunk, cramped
 
 
 def main():
@@ -386,8 +529,12 @@ def main():
     a = ap.parse_args()
     src = pathlib.Path(a.source)
     out = pathlib.Path(a.out) if a.out else src.with_suffix(".pptx")
-    n = build(src, out, a.footer or src.stem)
-    print(f"{out.name}: {n} slides")
+    n, shrunk, cramped = build(src, out, a.footer or footer_for(src.read_text(), src.stem))
+    note = f", {shrunk} set smaller so their diagram stays readable" if shrunk else ""
+    print(f"      {out.name}: {n} slides{note}")
+    for slide, pt, title in cramped:
+        print(f"      slide {slide} prints its diagram labels at {pt}pt, under the "
+              f"{MIN_LABEL_PT}pt a room reads: {title}")
 
 
 if __name__ == "__main__":
@@ -396,17 +543,17 @@ if __name__ == "__main__":
 # Test inputs and expected outcomes
 # --------------------------------
 # scripts/build_deck.py content/W01/D3/slides/C2_W01_D03_deck_STUDENT.md --footer "Week 1 Day 3"
-#     Writes C2_W01_D03_deck_STUDENT.pptx with 40 slides, no pipe characters and no asterisks
-#     anywhere in the slide text, and markdown tables rendered as PowerPoint tables.
+#     Writes C2_W01_D03_deck_STUDENT.pptx with 87 slides, no pipe characters and no asterisks
+#     anywhere in the slide text, every slide numbered in its footer.
 # A slide whose body holds a markdown table
-#     Becomes a real table with a bold header row, never lines beginning with "|".
-# A slide whose title starts with SECTION
-#     Gets the dark background, centred text and white type.
+#     Becomes a table in the programme's colours, an accent header band over alternating rows.
+# A slide whose only body block is one mermaid fence and a line under it
+#     Becomes an exhibit: the diagram fills the body and the line sits beneath it.
+# A line reading "**The claim.** ..."
+#     Becomes a tinted bar with an accent edge, so the point does not look like the setup.
+# A line reading "[profile] > [decide] > [find]" with one step in bold
+#     Becomes a row of steps with the bold one filled, which is where the room is in the day.
+# A slide titled "SECTION 2: DECIDING PER FIELD"
+#     Gets the accent background, the title centred large, and its breadcrumb drawn in white.
 # A slide holding the client-zero unit map or entity mermaid fence
 #     Gets boxes and connectors drawn as PowerPoint shapes, never the mermaid source as text.
-# Any other mermaid fence, with mmdc installed
-#     Renders to a PNG and is placed scaled and centred in the body area. Without mmdc it falls
-#     back to monospace text and the build still succeeds.
-# A slide titled "D12. Going deeper: ..."
-#     Gets a DEPTH chip at the top right and its number stripped from the heading, which is how a
-#     trainer knows at a glance to skip it live.

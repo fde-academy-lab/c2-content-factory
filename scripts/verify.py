@@ -168,6 +168,20 @@ def run_proofs(target):
         fails += run_proof("deck_md_check.py", [str(target)],
                            "the slide source numbers, pairs and draws what it should")
 
+    sheets = [p for p in files if p.parent.name == "cheatsheets" and p.suffix == ".md"]
+    stale_pdf = [p.with_suffix(".pdf") for p in sheets
+                 if p.with_suffix(".pdf").exists()
+                 and p.with_suffix(".pdf").stat().st_mtime <= p.stat().st_mtime + 1]
+    missing_pdf = [p for p in sheets if not p.with_suffix(".pdf").exists()]
+    if stale_pdf or missing_pdf:
+        for pdf in stale_pdf:
+            print(f"\nFAIL  {pdf.name} is not newer than its markdown, so the printed sheet and "
+                  f"the source disagree. Rebuild it with scripts/build_cheatsheet.py.")
+        for md in missing_pdf:
+            print(f"\nFAIL  {md.name} has no PDF beside it, and the sheet a learner pins above a "
+                  f"desk is the PDF. Build it with scripts/build_cheatsheet.py.")
+        fails += len(stale_pdf) + len(missing_pdf)
+
     built = [p for p in files if p.parent.name == "slides" and p.suffix == ".pptx"]
     fresh = []
     for pptx in built:
