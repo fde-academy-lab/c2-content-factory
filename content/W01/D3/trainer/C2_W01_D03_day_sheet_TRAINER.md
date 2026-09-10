@@ -41,6 +41,32 @@ Tuesday's reconciliation returns one level up, now holding across drops, default
 
 ---
 
+## The run sheet across surfaces
+
+Which surface is live at each point, and for how long. Durations only.
+
+| Order | Surface | What is on it | Duration |
+|---|---|---|---|
+| 1 | Deck S1 to S5 | Two profile printouts, and which file you would trust | 10 min |
+| 2 | Notebook 1, on the projector | Monday's presence counter, still working | 10 min |
+| 3 | Deck, section 1 | The three counts and what each catches | 35 min |
+| 4 | Notebook 1, learners building | The profiler, field by field, on all seven columns | 30 min |
+| 5 | Companion on the projector | The coercion experiment, run raw then coerced | 10 min |
+| 6 | Exercise E2, which dataset | Fifteen items, silent, then the hands-on notebook | 15 min |
+| 7 | Deck, section 2 | Missingness as a three-way decision, then coercion at scale | 40 min |
+| 8 | Notebook 1, learners building | The decisions log, two entries with their reasons | 20 min |
+| 9 | Deck, section 3 | The dedupe that finds nothing, and the identity rule | 45 min |
+| 10 | Companion on the projector | The pair walked field by field, then four rules applied | 10 min |
+| 11 | Notebook 2, learners building | Duplicates, the extremes and the tail | 35 min |
+| 12 | Exercise E3, classify the gaps | Fifteen items plus the hands-on notebook | 15 min |
+| 13 | Deck, sections 4 and 5 | The outlier decision, then what ships | 35 min |
+| 14 | Notebook 2, learners building | The full pass, the two files, the reconciliation | 25 min |
+| 15 | Workbook handed out | The decision tool, walked once on the Missingness tab | 10 min |
+| 16 | Kahoot | Seven items including Tuesday's return question | 15 min |
+| 17 | Cheat sheets at the close | The text sheet and the visual sheet, both printed | 5 min |
+
+Fixed content totals about 365 minutes. The decisions log and the count reconciliation are on the row's never-cut list.
+
 ## The breaks to run, and why today is harder than yesterday
 
 Neither of today's failures raises. There is no error text to read out, and no traceback to point at. Both print a number that looks fine. Say that to the room before the first one, because a room trained on yesterday is waiting for red text that never comes.

@@ -98,3 +98,17 @@ The totals matter least. Two learners can hand in different totals and both be r
 ## Before you hand it in
 
 Open `C2_W01_D03_selfcheck_STUDENT.md`, after you have finished rather than before. It carries checkpoints you can verify alone, so you know where you stand before anybody else looks.
+
+## The two tools that ship with tonight's work
+
+Both sit in `demos/` beside the companion page.
+
+`C2_W01_D03_decision_tool_STUDENT.xlsx` has one tab per decision you took today: what an incomplete field earns, which identity rule you state, and what happens to the order at the end of the column. Yellow cells are yours and everything else computes. Each tab ships with one planted defect, so all three verdicts read "stop" when you open it, and clearing one tab does not clear the export tab's release.
+
+`C2_W01_D03_profile_pass_STUDENT.xlsx` is the eight-move run sheet for a profile-then-clean pass, with a symptom lookup beside it. Run it on tonight's second file before you write a single line of the log by hand.
+
+The export tab assembles the decisions log by formula. Bring that paragraph tomorrow; Thursday's numbers are computed on exactly the dataset it describes.
+
+## Where the running half lives
+
+`notebooks/C2_W01_D03_ex1_hands_on_STUDENT.ipynb` walks the whole pass with pick-from-options markers and a check after every step. Post its five letters with your exercise letters.

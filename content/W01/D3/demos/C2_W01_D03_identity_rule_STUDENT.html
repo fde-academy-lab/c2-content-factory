@@ -3,171 +3,758 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Identity Rule Bench</title>
+<title>Kalpa identity rule</title>
 <style>
+:root{
+  --ink:#1C1C1A; --muted:#5F6360; --accent:#2B4A7D; --tint:#E4ECF7; --bg:#F7F7F5;
+  --line:#C9C9C2; --panel:#FFFFFF; --pass:#1F6F4A; --fail:#8A3D3D; --onaccent:#FFFFFF;
+}
+@media (prefers-color-scheme: dark){
   :root{
-    --bg:#f7f7f5; --panel:#fff; --ink:#1c1c1a; --muted:#5f6360; --line:#dcdcd6;
-    --on:#1f6f4a; --onbg:#e6f2ea; --off:#8a3d3d; --offbg:#f6e8e8; --accent:#2b4a7d;
+    --ink:#ECEAE4; --muted:#A2A6A3; --accent:#9DBBE8; --tint:#1C2F3F; --bg:#16181A;
+    --line:#33383C; --panel:#1E2124; --pass:#7FD3A6; --fail:#E59A9A; --onaccent:#16181A;
   }
-  @media (prefers-color-scheme: dark){
-    :root{ --bg:#16181a; --panel:#1e2124; --ink:#eceae4; --muted:#a2a6a3; --line:#33383c;
-           --on:#7fd3a6; --onbg:#1c2f26; --off:#e59a9a; --offbg:#3a2626; --accent:#9dbbe8; }
-  }
-  body{background:var(--bg); color:var(--ink); font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; margin:0; padding:24px;}
-  .wrap{max-width:1100px; margin:0 auto;}
-  h1{font-size:23px; margin:0 0 4px;}
-  .sub{color:var(--muted); margin:0 0 22px; max-width:74ch;}
-  .grid{display:grid; grid-template-columns:minmax(290px,1fr) minmax(360px,1.2fr); gap:20px; align-items:start;}
-  .panel{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:18px;}
-  .panel h2{font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); margin:0 0 14px;}
-  .fields{display:flex; flex-direction:column; gap:8px;}
-  .fld{display:flex; align-items:center; justify-content:space-between; border:1px solid var(--line);
-       border-radius:7px; padding:9px 12px; cursor:pointer; background:transparent; font:inherit; color:var(--ink); text-align:left;}
-  .fld[aria-pressed="true"]{background:var(--accent); color:#fff; border-color:var(--accent); font-weight:600;}
-  .fld code{font-size:13px;}
-  .fld .role{font-size:12px; opacity:.75;}
-  .presets{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;}
-  .presets button{flex:1 1 auto; padding:7px 10px; font:inherit; font-size:12.5px; background:transparent;
-                  color:var(--ink); border:1px solid var(--line); border-radius:6px; cursor:pointer;}
-  pre.out{background:var(--bg); border:1px solid var(--line); border-radius:7px; padding:13px;
-          font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace; white-space:pre-wrap; margin:0 0 14px;}
-  .stats{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:14px;}
-  .stat{background:var(--bg); border:1px solid var(--line); border-radius:7px; padding:10px 12px;}
-  .stat b{display:block; font-size:21px; line-height:1.2;}
-  .stat span{font-size:11.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em;}
-  .verdict{border-radius:7px; padding:13px 15px; font-weight:600; margin-bottom:14px; border:1px solid transparent;}
-  .verdict.good{background:var(--onbg); color:var(--on); border-color:var(--on);}
-  .verdict.bad{background:var(--offbg); color:var(--off); border-color:var(--off);}
-  table{width:100%; border-collapse:collapse; font-size:13px;}
-  th,td{text-align:left; padding:6px 8px; border-bottom:1px solid var(--line);}
-  th{font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted);}
-  td.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12.5px;}
-  td.diff{background:var(--offbg); color:var(--off); font-weight:600;}
-  .empty{color:var(--muted); font-style:italic; padding:10px 0;}
-  .scroll{overflow-x:auto;}
-  footer{margin-top:22px; color:var(--muted); font-size:13px; max-width:78ch;}
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+     font:15.5px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{padding:20px 26px 14px;border-bottom:1px solid var(--line);background:var(--panel)}
+h1{font-size:22px;margin:0 0 4px}
+header p{margin:0;color:var(--muted);max-width:80ch}
+.shell{display:grid;grid-template-columns:224px minmax(0,1fr);gap:26px;
+       max-width:1240px;margin:0 auto;padding:20px 26px 60px}
+@media (max-width:900px){.shell{grid-template-columns:1fr}}
+nav{position:sticky;top:14px;align-self:start}
+nav a{display:block;padding:7px 10px;color:var(--ink);text-decoration:none;border-radius:6px;
+      border-left:3px solid transparent;font-size:14px}
+nav a:hover{background:var(--tint)}
+nav a.on{border-left-color:var(--accent);background:var(--tint);font-weight:600}
+section{margin:0 0 34px;scroll-margin-top:16px}
+h2{font-size:18px;margin:0 0 6px;color:var(--ink)}
+h3{font-size:15px;margin:18px 0 6px}
+.lede{color:var(--ink);max-width:80ch;margin:0 0 14px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;
+       margin:12px 0}
+.row{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
+.col{flex:1 1 320px;min-width:0}
+button{font:inherit;cursor:pointer;border-radius:7px;border:1px solid var(--accent);
+       background:transparent;color:var(--accent);padding:8px 13px;font-weight:600}
+button:hover{background:var(--tint)}
+button.solid{background:var(--accent);color:var(--onaccent)}
+button.opt{font-weight:500;color:var(--ink);border-color:var(--line);text-align:left}
+button.opt.on{border-color:var(--accent);background:var(--tint);font-weight:700}
+select{font:inherit;padding:7px 9px;border:1px solid var(--line);border-radius:7px;
+       background:var(--panel);color:var(--ink);position:relative;z-index:2}
+label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px}
+input[type=range]{width:100%;position:relative;z-index:2}
+input[type=number],input[type=text]{font:inherit;padding:7px 9px;border:1px solid var(--line);
+       border-radius:7px;background:var(--panel);color:var(--ink);width:130px}
+pre{margin:0;font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    white-space:pre-wrap;color:var(--ink)}
+code{font:13px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{text-align:left;color:var(--accent);border-bottom:1px solid var(--accent);padding:6px 10px 6px 0}
+td{border-bottom:1px solid var(--line);padding:5px 10px 5px 0;vertical-align:top}
+.kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+        margin:0 0 4px}
+.card{border:1px solid var(--line);border-radius:9px;padding:14px 16px;margin:12px 0;
+      background:var(--panel)}
+.card h4{margin:0 0 8px;font-size:15px}
+.field{margin:8px 0}
+.field b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+         color:var(--accent)}
+.result{border-left:3px solid var(--accent);padding-left:12px;margin-top:10px}
+.rule{background:var(--tint);border-radius:7px;padding:9px 12px;margin-top:10px;color:var(--ink)}
+.meter{display:flex;gap:3px;margin:8px 0;flex-wrap:wrap}
+.tick{width:15px;height:22px;border-radius:3px;border:1px solid var(--line);background:var(--panel)}
+.tick.hit{background:var(--accent);border-color:var(--accent)}
+.tick.miss{background:var(--fail);border-color:var(--fail)}
+.status{margin-top:10px;padding:8px 12px;border-radius:7px;background:var(--tint);
+        font-size:14px;color:var(--ink)}
+.verdict{font-weight:700}
+.ok{color:var(--pass)} .bad{color:var(--fail)}
+dialog{border:1px solid var(--line);border-radius:11px;background:var(--panel);color:var(--ink);
+       max-width:min(680px,92vw);padding:18px 20px}
+dialog::backdrop{background:rgba(0,0,0,.42)}
+.glossary dt{font-weight:700;margin-top:10px}
+.glossary dd{margin:2px 0 0;color:var(--ink)}
+footer{max-width:1240px;margin:0 auto;padding:0 26px 40px;color:var(--muted);font-size:13px}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>The identity rule bench</h1>
-  <p class="sub">Fifty Kalpa Retail orders. Switch on the fields that decide when two rows are the same order, and watch how many duplicates exist. There is no correct setting waiting to be found. There is a setting you can defend, and you will be asked to defend the one you chose, so screenshot it.</p>
-
-  <div class="grid">
-    <div class="panel">
-      <h2>Two rows are the same order when they share</h2>
-      <div class="fields" id="fields"></div>
-      <div class="presets">
-        <button data-preset="id">order_id alone</button>
-        <button data-preset="id_date">order_id and date</button>
-        <button data-preset="all">the whole row</button>
-        <button data-preset="none">nothing</button>
+<header>
+  <h1>Kalpa identity rule</h1>
+  <p>Week 1, Day 3. Two of the fifty Kalpa Retail orders share an id and differ on one field. This page walks that pair field by field, applies four defensible identity rules to it, and shows what a coerce-everything pass does to a profile that then looks complete.</p>
+</header>
+<div class="shell">
+  <nav><a href="#walk">Guided walk</a>
+<a href="#experiments">Experiments</a>
+<a href="#decision-section">The decision</a>
+<a href="#calculators">The numbers</a>
+<a href="#glossary-section">Vocabulary</a></nav>
+  <main>
+    <section id="walk">
+      <p class="kicker">Guided walk</p>
+      <h2>One pair, seven fields, and the field that decides everything</h2>
+      <p class="lede">Press Next once per field. The drawing lights the field being compared, the artifact builds the two rows side by side, and the meter fills green where they match and red where they differ. Click the meter for the breakdown.</p>
+      <div class="panel">
+        <div class="row">
+          <div class="col">
+            <div id="walkDiagram"></div>
+            <div class="meter" id="walkMeter"></div>
+            <p style="font-size:13px;color:var(--muted);margin:0" id="walkMeterLegend"></p>
+          </div>
+          <div class="col">
+            <div id="walkNarration"></div>
+            <h3>The artifact, as it stands</h3>
+            <pre id="walkArtifact"></pre>
+            <p><button class="solid" id="walkNext">Next</button></p>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="panel">
-      <h2>What your rule finds</h2>
-      <pre class="out" id="rule"></pre>
-      <div class="stats">
-        <div class="stat"><b id="s-groups">0</b><span>duplicate groups</span></div>
-        <div class="stat"><b id="s-removed">0</b><span>rows it removes</span></div>
-        <div class="stat"><b id="s-left">50</b><span>orders left</span></div>
+    <section id="experiments">
+      <p class="kicker">Experiments</p>
+      <h2>Change one thing and watch what moves</h2>
+      <p class="lede">Each card changes one thing: the identity rule, whether the pass coerces, how the outlier is treated, or which check you run. Press the run button and the card fills in what happened, why it matters and the rule.</p>
+      <div id="cards"></div>
+    </section>
+
+    <section id="decision-section">
+      <p class="kicker">The decision</p>
+      <h2>The profile found something. What does it mean, and who decides?</h2>
+      <p class="lede">Pick a branch and the drawing shows the path it takes, with the outcome at the bottom.</p>
+      <div class="panel">
+        <div class="row" id="decisionControls"></div>
+        <div id="decision"></div>
+        <p class="status" id="decisionSays">Pick a branch above and the drawing shows the path it
+        takes, with the outcome at the bottom.</p>
       </div>
-      <div class="verdict" id="verdict"></div>
-      <h2>The rows it groups together</h2>
-      <div class="scroll" id="pairs"></div>
-    </div>
-  </div>
+    </section>
 
-  <footer>One order id appears on two rows in this file. Whether that is one order exported twice or two orders sharing an id is not something the data can answer, which is why the rule is yours to state and the order book owner's to approve.</footer>
+    <section id="calculators">
+      <p class="kicker">The numbers</p>
+      <h2>Every rule that carries a number, as a calculator</h2>
+      <p class="lede">Two of today's rules carry numbers, so both ship as calculators rather than as a line on a slide.</p>
+      <div id="calcs"></div>
+    </section>
+
+    <section id="glossary-section">
+      <p class="kicker">Vocabulary</p>
+      <h2>The day's terms, and where each one first matters</h2>
+      <p class="lede">Nine terms, each with the moment it starts mattering.</p>
+      <dl class="glossary" id="glossary"></dl>
+    </section>
+
+    <div class="status" id="activity">Nothing has happened yet. Every control on this page reports
+    here when you use it, so you can always tell whether a click did something.</div>
+  </main>
 </div>
-
+<dialog id="popup">
+  <h3 id="popupTitle">Detail</h3>
+  <div id="popupBody"></div>
+  <p><button id="popupClose" class="solid">Close</button></p>
+</dialog>
+<footer>Kalpa Group is fictional and any resemblance to a real company is coincidental. This page
+holds no data of its own, stores nothing in your browser and needs no key. Every number on it is
+computed from the same thirty to fifty Kalpa Retail orders the notebooks read.</footer>
 <script>
-const ORDERS = [{"order_id":"KR4200","customer_id":"C1451","segment":"Student","amount":"1280","status":"cancelled","order_date":"2026-08-03","discount":"150"},{"order_id":"KR4201","customer_id":"C1022","segment":"Retail-Core","amount":"1865","status":"returned","order_date":"2026-08-03","discount":""},{"order_id":"KR4202","customer_id":"C1813","segment":"Retail-Core","amount":"2270","status":"delivered","order_date":"2026-08-04","discount":""},{"order_id":"KR4203","customer_id":"C1758","segment":"Retail-Plus","amount":"2835","status":"cancelled","order_date":"2026-08-04","discount":""},{"order_id":"KR4204","customer_id":"C1498","segment":"Student","amount":"1310","status":"delivered","order_date":"2026-08-05","discount":""},{"order_id":"KR4205","customer_id":"C1167","segment":"Student","amount":"1145","status":"cancelled","order_date":"2026-08-05","discount":""},{"order_id":"KR4206","customer_id":"C1186","segment":"Retail-Plus","amount":"1030","status":"delivered","order_date":"2026-08-06","discount":""},{"order_id":"KR4207","customer_id":"C1453","segment":"Retail-Plus","amount":"985","status":"delivered","order_date":"2026-08-06","discount":"150"},{"order_id":"KR4208","customer_id":"C1234","segment":"Student","amount":"2430","status":"delivered","order_date":"2026-08-07","discount":"125"},{"order_id":"KR4209","customer_id":"C1648","segment":"Retail-Plus","amount":"2895","status":"returned","order_date":"2026-08-07","discount":""},{"order_id":"KR4210","customer_id":"C1312","segment":"Business","amount":"twelve","status":"cancelled","order_date":"2026-08-10","discount":""},{"order_id":"KR4211","customer_id":"C1155","segment":"Business","amount":"2360","status":"delivered","order_date":"2026-08-10","discount":"300"},{"order_id":"KR4212","customer_id":"C1577","segment":"Business","amount":"2855","status":"returned","order_date":"2026-08-10","discount":""},{"order_id":"KR4213","customer_id":"C1649","segment":"Student","amount":"2745","status":"returned","order_date":"2026-08-10","discount":""},{"order_id":"KR4214","customer_id":"C1500","segment":"Retail-Plus","amount":"","status":"cancelled","order_date":"2026-08-10","discount":""},{"order_id":"KR4215","customer_id":"C1606","segment":"Business","amount":"950","status":"delivered","order_date":"2026-08-10","discount":""},{"order_id":"KR4216","customer_id":"C1273","segment":"Student","amount":"2140","status":"delivered","order_date":"2026-08-11","discount":"300"},{"order_id":"KR4217","customer_id":"C1492","segment":"Student","amount":"1475","status":"returned","order_date":"2026-08-11","discount":""},{"order_id":"KR4218","customer_id":"C1893","segment":"Retail-Core","amount":"1445","status":"delivered","order_date":"2026-08-12","discount":""},{"order_id":"KR4219","customer_id":"C1137","segment":"Business","amount":"2050","status":"delivered","order_date":"2026-08-12","discount":""},{"order_id":"KR4220","customer_id":"C1431","segment":"Retail-Plus","amount":"2795","status":"delivered","order_date":"2026-08-13","discount":"25"},{"order_id":"KR4221","customer_id":"C1799","segment":"Business","amount":"1425","status":"cancelled","order_date":"2026-08-13","discount":""},{"order_id":"KR4222","customer_id":"C1852","segment":"Student","amount":"2990","status":"cancelled","order_date":"2026-08-14","discount":""},{"order_id":"KR4223","customer_id":"C1435","segment":"Student","amount":"965","status":"cancelled","order_date":"2026-08-14","discount":""},{"order_id":"KR4224","customer_id":"C1490","segment":"Retail-Plus","amount":"1170","status":"returned","order_date":"2026-08-17","discount":""},{"order_id":"KR4225","customer_id":"C1440","segment":"Retail-Plus","amount":"1435","status":"delivered","order_date":"2026-08-17","discount":""},{"order_id":"KR4226","customer_id":"C1307","segment":"Retail-Plus","amount":"1190","status":"returned","order_date":"2026-08-17","discount":"250"},{"order_id":"KR4227","customer_id":"C1020","segment":"Retail-Core","amount":"800","status":"returned","order_date":"2026-08-17","discount":""},{"order_id":"KR4228","customer_id":"C1169","segment":"Retail-Plus","amount":"1355","status":"cancelled","order_date":"2026-08-17","discount":""},{"order_id":"KR4229","customer_id":"C1181","segment":"Retail-Plus","amount":"1555","status":"delivered","order_date":"2026-08-17","discount":""},{"order_id":"KR4230","customer_id":"C1371","segment":"Business","amount":"2930","status":"cancelled","order_date":"2026-08-18","discount":""},{"order_id":"KR4231","customer_id":"C1596","segment":"Business","amount":"12,400","status":"cancelled","order_date":"2026-08-18","discount":"100"},{"order_id":"KR4232","customer_id":"C1749","segment":"Retail-Core","amount":"480000","status":"delivered","order_date":"2026-08-19","discount":""},{"order_id":"KR4233","customer_id":"C1775","segment":"Retail-Core","amount":"970","status":"delivered","order_date":"2026-08-19","discount":""},{"order_id":"KR4234","customer_id":"C1050","segment":"Retail-Plus","amount":"2995","status":"returned","order_date":"2026-08-20","discount":"275"},{"order_id":"KR4235","customer_id":"C1490","segment":"Student","amount":"24 500","status":"delivered","order_date":"2026-08-20","discount":""},{"order_id":"KR4236","customer_id":"C1116","segment":"Business","amount":"2035","status":"cancelled","order_date":"2026-08-21","discount":"75"},{"order_id":"KR4237","customer_id":"C1105","segment":"Student","amount":"","status":"cancelled","order_date":"2026-08-21","discount":""},{"order_id":"KR4238","customer_id":"C1693","segment":"Retail-Core","amount":"2895","status":"returned","order_date":"2026-08-24","discount":""},{"order_id":"KR4239","customer_id":"C1374","segment":"Business","amount":"2050","status":"delivered","order_date":"2026-08-24","discount":"300"},{"order_id":"KR4240","customer_id":"C1434","segment":"Business","amount":"Rs 8000","status":"delivered","order_date":"2026-08-24","discount":""},{"order_id":"KR4241","customer_id":"C1190","segment":"Retail-Core","amount":"2845","status":"delivered","order_date":"2026-08-24","discount":""},{"order_id":"KR4242","customer_id":"C1043","segment":"Retail-Core","amount":"2640","status":"cancelled","order_date":"2026-08-24","discount":""},{"order_id":"KR4243","customer_id":"C1772","segment":"Student","amount":"1385","status":"delivered","order_date":"2026-08-24","discount":""},{"order_id":"KR4244","customer_id":"C1252","segment":"Business","amount":"2005","status":"cancelled","order_date":"2026-08-25","discount":""},{"order_id":"KR4245","customer_id":"C1625","segment":"Retail-Core","amount":"1955","status":"returned","order_date":"2026-08-25","discount":""},{"order_id":"KR4246","customer_id":"C1565","segment":"Retail-Core","amount":"1980","status":"delivered","order_date":"2026-08-26","discount":""},{"order_id":"KR4247","customer_id":"C1494","segment":"Retail-Core","amount":"1640","status":"delivered","order_date":"2026-08-26","discount":""},{"order_id":"KR4248","customer_id":"C1440","segment":"Retail-Core","amount":"1210","status":"cancelled","order_date":"2026-08-27","discount":""},{"order_id":"KR4201","customer_id":"C1022","segment":"Retail-Core","amount":"1865","status":"returned","order_date":"2026-09-14","discount":""}];
-const FIELDS = [
-  ["order_id","the order's own id"],
-  ["order_date","the day it was placed"],
-  ["amount","what it was worth"],
-  ["status","delivered, returned or cancelled"],
-  ["customer_id","who placed it"],
-  ["segment","which segment they sit in"],
-  ["discount","any discount applied"]
-];
-const state = new Set(["order_id"]);
 
-const holder = document.getElementById("fields");
-holder.innerHTML = FIELDS.map(([f, role]) =>
-  `<button class="fld" data-f="${f}"><code>${f}</code><span class="role">${role}</span></button>`).join("");
+// ---------------------------------------------------------------- palette
+const P = {ink:"#1C1C1A", muted:"#5F6360", accent:"#2B4A7D", tint:"#E4ECF7", bg:"#F7F7F5",
+           line:"#C9C9C2", pass:"#1F6F4A", fail:"#8A3D3D"};
+const FONT = 'system-ui,-apple-system,"Segoe UI",Roboto,sans-serif';
 
-function run(){
-  const keys = FIELDS.map(f => f[0]).filter(f => state.has(f));
-  const groups = {};
-  for (const r of ORDERS){
-    const k = keys.length ? keys.map(f => r[f]).join("\u0001") : "__ALL__";
-    (groups[k] = groups[k] || []).push(r);
+// ---------------------------------------------------------------- diagram builders
+// The same nine the notebook helper draws, so a picture on a slide, in a notebook and on this
+// page is recognisably one drawing. Every builder takes data and returns an SVG string.
+function esc(t){return String(t).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));}
+function wrap(text, per){
+  const words = String(text).split(/\s+/), out = []; let line = "";
+  for (const w of words){
+    if ((line + " " + w).trim().length > per && line){ out.push(line); line = w; }
+    else line = (line + " " + w).trim();
   }
-  const dupes = Object.values(groups).filter(g => g.length > 1);
-  const removed = dupes.reduce((n, g) => n + g.length - 1, 0);
-
-  document.getElementById("rule").textContent = keys.length
-    ? "they share " + keys.join(" and ")
-    : "no fields selected, so every row is the same order";
-  document.getElementById("s-groups").textContent = dupes.length;
-  document.getElementById("s-removed").textContent = removed;
-  document.getElementById("s-left").textContent = ORDERS.length - removed;
-
-  const v = document.getElementById("verdict");
-  let text, ok = false;
-  if (!keys.length){
-    text = "You have said every row is the same order, so 49 of the 50 would be removed. A rule with no fields is not a rule.";
-  } else if (keys.length === FIELDS.length){
-    text = "The whole row finds only exact copies. This file has none, and it still contains an order id on two rows, which is where the day started.";
-  } else if (removed === 0){
-    text = "Nothing is removed. You have asserted that the two rows sharing an order id are genuinely different orders, which is defensible as long as you say so out loud.";
-  } else if (keys.length === 1 && state.has("order_id")){
-    text = "One group, one row removed. You are asserting that an order id is never reused, which is a claim about how the upstream system behaves rather than about this file.";
-  } else {
-    text = "One group, one row removed, on a rule narrower than order_id alone. Say which field carried the decision and why it belongs in the rule.";
-    ok = true;
-  }
-  if (removed === 1 && keys.length === 1 && state.has("order_id")) ok = true;
-  v.textContent = text;
-  v.className = "verdict " + (ok ? "good" : "bad");
-
-  const box = document.getElementById("pairs");
-  if (!dupes.length){
-    box.innerHTML = '<p class="empty">No two rows match this rule. That is an answer, and it needs defending like any other.</p>';
-  } else if (dupes.length > 5){
-    box.innerHTML = `<p class="empty">${dupes.length} groups, which is too many to read. Narrow the rule.</p>`;
-  } else {
-    const cols = ["order_id","order_date","amount","status","customer_id","segment","discount"];
-    box.innerHTML = dupes.map(g => {
-      const differing = cols.filter(c => new Set(g.map(r => r[c])).size > 1);
-      return '<table><thead><tr>' + cols.map(c =>
-        `<th>${c}${differing.includes(c) ? " (differs)" : ""}</th>`).join("") + '</tr></thead><tbody>' +
-        g.map(r => '<tr>' + cols.map(c =>
-          `<td class="mono${differing.includes(c) ? " diff" : ""}">${r[c] === "" ? "(none)" : r[c]}</td>`).join("") + '</tr>').join("") +
-        '</tbody></table>';
-    }).join("");
-  }
-
-  for (const b of document.querySelectorAll(".fld")){
-    b.setAttribute("aria-pressed", String(state.has(b.dataset.f)));
-  }
+  if (line) out.push(line);
+  return out.length ? out : [""];
+}
+function box(x, y, w, h, text, lit, size){
+  size = size || 12;
+  const lines = wrap(text, Math.max(8, Math.floor(w / (size * 0.55))));
+  const top = y + h/2 - (lines.length - 1) * (size + 3)/2 + size * 0.35;
+  const labels = lines.map((l, i) =>
+    `<text x="${x + w/2}" y="${top + i*(size+3)}" text-anchor="middle" fill="${P.ink}"
+       font-family="${FONT}" font-size="${size}" font-weight="${lit ? 700 : 400}">${esc(l)}</text>`).join("");
+  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="7" fill="${lit ? P.tint : "#FFFFFF"}"
+    stroke="${P.accent}" stroke-width="${lit ? 2 : 1}"/>${labels}`;
+}
+function arrow(x1, y1, x2, y2, label){
+  const cap = label ? `<text x="${(x1+x2)/2}" y="${(y1+y2)/2 - 6}" text-anchor="middle"
+    fill="${P.muted}" font-family="${FONT}" font-size="11">${esc(label)}</text>` : "";
+  return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${P.accent}" stroke-width="1.4"
+    marker-end="url(#ar)"/>${cap}`;
+}
+const DEFS = `<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6"
+  markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z"
+  fill="${P.accent}"/></marker></defs>`;
+function svg(w, h, body, title){
+  const cap = title ? `<text x="${w/2}" y="${h-5}" text-anchor="middle" fill="${P.muted}"
+    font-family="${FONT}" font-size="12">${esc(title)}</text>` : "";
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"
+    style="max-width:100%;height:auto" role="img">${DEFS}${body}${cap}</svg>`;
+}
+function flow(steps, lit, title){
+  const w = 156, h = 56, gap = 28;
+  let b = "";
+  steps.forEach((s, i) => {
+    const x = 12 + i*(w+gap);
+    b += box(x, 12, w, h, s, i === lit);
+    if (i) b += arrow(x - gap, 12 + h/2, x, 12 + h/2);
+  });
+  return svg(steps.length*w + (steps.length-1)*gap + 24, h + 46, b, title);
+}
+function vflow(steps, lit, title){
+  const w = 290, h = 44, gap = 22;
+  let b = "";
+  steps.forEach((s, i) => {
+    const y = 12 + i*(h+gap);
+    b += box(12, y, w, h, s, i === lit);
+    if (i) b += arrow(12 + w/2, y - gap, 12 + w/2, y);
+  });
+  return svg(w + 24, steps.length*(h+gap) + 30, b, title);
+}
+function ladder(items, lit, title){
+  const w = 200, h = 42, gap = 12;
+  let b = "";
+  items.forEach((s, i) => {
+    const y = 10 + i*(h+gap);
+    b += box(12, y, w, h, (i+1) + ". " + s, i === lit);
+    if (i) b += arrow(12 + w/2, y - gap, 12 + w/2, y);
+  });
+  return svg(w + 24, items.length*(h+gap) + 32, b, title);
+}
+function stack(layers, lit, title){
+  const w = 300, h = 42, gap = 8;
+  let b = "";
+  layers.forEach((s, i) => {
+    b += box(12, 12 + (layers.length-1-i)*(h+gap), w, h, s, i === lit);
+  });
+  return svg(w + 24, layers.length*(h+gap) + 30, b, title);
+}
+function sequence(lanes, messages, title){
+  const lw = 176, top = 46, step = 42;
+  const w = lanes.length*lw + 24, h = top + Math.max(1, messages.length)*step + 34;
+  let b = "";
+  lanes.forEach((l, i) => {
+    const x = 12 + i*lw;
+    b += box(x + 8, 10, lw - 16, 28, l, true, 12);
+    b += `<line x1="${x + lw/2}" y1="40" x2="${x + lw/2}" y2="${h - 28}" stroke="${P.line}"/>`;
+  });
+  messages.forEach((m, n) => {
+    const y = top + n*step + 18;
+    b += arrow(12 + lanes.indexOf(m[0])*lw + lw/2, y, 12 + lanes.indexOf(m[1])*lw + lw/2, y, m[2]);
+  });
+  return svg(w, h, b, title);
+}
+function tree(node, taken, title){
+  const levels = [];
+  (function walk(n, d, path){
+    while (levels.length <= d) levels.push([]);
+    const e = {label:n.label, path:path, kids:[]};
+    levels[d].push(e);
+    (n.branches || []).forEach(([edge, child]) => e.kids.push([edge, walk(child, d+1, path.concat([edge]))]));
+    return e;
+  })(node, 0, []);
+  const w = 176, h = 48, gx = 20, gy = 38;
+  const width = Math.max(...levels.map(l => l.length))*(w+gx) + 24;
+  const height = levels.length*(h+gy) + 30;
+  let b = ""; const at = new Map();
+  levels.forEach((lv, d) => {
+    const x0 = (width - (lv.length*(w+gx) - gx))/2;
+    lv.forEach((e, i) => {
+      const x = x0 + i*(w+gx), y = 12 + d*(h+gy);
+      const on = (taken || []).slice(0, e.path.length).join("|") === e.path.join("|");
+      at.set(e, [x + w/2, y, x + w/2, y + h]);
+      b += box(x, y, w, h, e.label, on);
+    });
+  });
+  levels.forEach(lv => lv.forEach(e => {
+    const [,, bx, by] = at.get(e);
+    e.kids.forEach(([edge, kid]) => { const [cx, cy] = at.get(kid); b += arrow(bx, by, cx, cy, edge); });
+  }));
+  return svg(width, height, b, title);
+}
+function matrix(rows, cols, cells, title){
+  const cw = 168, ch = 54, lw = 140;
+  const w = lw + cols.length*cw + 24, h = 40 + rows.length*ch + 30;
+  let b = "";
+  cols.forEach((c, j) => { b += `<text x="${12 + lw + j*cw + cw/2}" y="28" text-anchor="middle"
+    fill="${P.accent}" font-family="${FONT}" font-size="12" font-weight="700">${esc(c)}</text>`; });
+  rows.forEach((r, i) => {
+    const y = 40 + i*ch;
+    b += `<text x="12" y="${y + ch/2 + 4}" fill="${P.accent}" font-family="${FONT}" font-size="12"
+      font-weight="700">${esc(r)}</text>`;
+    cols.forEach((_, j) => { b += box(12 + lw + j*cw + 4, y + 4, cw - 8, ch - 8, (cells[i]||[])[j] || "", false); });
+  });
+  return svg(w, h, b, title);
+}
+function decisionLadder(options, cutAt, title){
+  const w = 320, h = 42, gap = 10;
+  let b = "";
+  options.forEach((o, i) => {
+    const y = 12 + (options.length-1-i)*(h+gap);
+    b += box(12, y, w, h, o, i === cutAt);
+    if (i === cutAt) b += `<line x1="8" y1="${y-gap/2}" x2="${w+18}" y2="${y-gap/2}"
+      stroke="${P.fail}" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <text x="${w+22}" y="${y-gap/2+4}" fill="${P.fail}" font-family="${FONT}"
+      font-size="11">stop here</text>`;
+  });
+  return svg(w + 110, options.length*(h+gap) + 30, b, title);
 }
 
-document.addEventListener("click", e => {
-  const f = e.target.closest(".fld");
-  if (f){ state.has(f.dataset.f) ? state.delete(f.dataset.f) : state.add(f.dataset.f); return run(); }
-  const p = e.target.closest("[data-preset]");
-  if (!p) return;
-  state.clear();
-  if (p.dataset.preset === "id") state.add("order_id");
-  if (p.dataset.preset === "id_date"){ state.add("order_id"); state.add("order_date"); }
-  if (p.dataset.preset === "all") FIELDS.forEach(f => state.add(f[0]));
-  run();
+// ---------------------------------------------------------------- page plumbing
+let ACTIONS = 0;
+function say(text){
+  ACTIONS += 1;
+  const el = document.getElementById("activity");
+  if (el) el.textContent = text + "  ·  " + ACTIONS + " actions on this page so far.";
+}
+function $(id){ return document.getElementById(id); }
+function railSetup(){
+  const links = [...document.querySelectorAll("nav a")];
+  const mark = () => {
+    let best = links[0];
+    for (const a of links){
+      const t = document.querySelector(a.getAttribute("href"));
+      if (t && t.getBoundingClientRect().top <= 90) best = a;
+    }
+    links.forEach(a => a.classList.toggle("on", a === best));
+  };
+  document.addEventListener("scroll", mark, {passive:true});
+  links.forEach(a => a.addEventListener("click", () => {
+    say("You jumped to " + a.textContent.trim() + ".");
+    setTimeout(mark, 60);
+  }));
+  mark();
+}
+
+// ---------------------------------------------------------------- the guided walk
+function walkSetup(walk){
+  let at = -1;
+  const draw = () => {
+    const ev = walk.events[at];
+    $("walkDiagram").innerHTML = walk.diagram(at);
+    $("walkNarration").innerHTML = at < 0
+      ? "<p>" + walk.opening + "</p>"
+      : "<p class='kicker'>Step " + (at+1) + " of " + walk.events.length + "</p><p>" + ev.say + "</p>";
+    $("walkArtifact").textContent = walk.artifact(at);
+    const hits = walk.meter(at);
+    $("walkMeter").innerHTML = hits.map(h =>
+      '<span class="tick ' + h.kind + '" title="' + esc(h.why) + '"></span>').join("");
+    $("walkMeterLegend").textContent = walk.meterLegend(at);
+    $("walkNext").textContent = at + 1 >= walk.events.length ? "Start again" : "Next";
+  };
+  $("walkNext").addEventListener("click", () => {
+    at = at + 1 >= walk.events.length ? -1 : at + 1;
+    draw();
+    say(at < 0 ? "You restarted the walk." : "You advanced the walk to step " + (at+1) + ".");
+  });
+  $("walkMeter").addEventListener("click", () => {
+    const rows = walk.meter(at).map(h => "<tr><td>" + esc(h.label) + "</td><td>" + esc(h.why) + "</td></tr>").join("");
+    openDialog("What the meter is counting",
+      "<table><tr><th>Item</th><th>Why it is marked that way</th></tr>" + rows + "</table>");
+    say("You opened the meter's breakdown.");
+  });
+  draw();
+}
+
+// ---------------------------------------------------------------- experiment cards
+function cardsSetup(cards){
+  const host = $("cards");
+  cards.forEach((c, i) => {
+    const el = document.createElement("div");
+    el.className = "card";
+    el.innerHTML =
+      "<h4>Experiment " + (i+1) + ". " + esc(c.title) + "</h4>" +
+      "<div class='field'><b>Situation</b>" + c.situation + "</div>" +
+      "<div class='field'><b>Hypothesis</b>" + c.hypothesis + "</div>" +
+      "<div class='field'><b>Watch for</b>" + c.watch + "</div>" +
+      "<div class='field'><b>Change one thing</b><div id='opts" + i + "' class='row'></div></div>" +
+      "<div class='row'><button class='solid' id='run" + i + "'>" + esc(c.runLabel || "Run it") +
+      "</button><button id='seq" + i + "'>Show the sequence</button></div>" +
+      "<div class='result' id='res" + i + "'><p class='kicker'>What happened</p><p>Nothing yet. " +
+      "Pick an option and press " + esc(c.runLabel || "Run it") + ".</p></div>";
+    host.appendChild(el);
+    let chosen = 0;
+    const opts = el.querySelector("#opts" + i);
+    c.options.forEach((o, j) => {
+      const b = document.createElement("button");
+      b.className = "opt" + (j === 0 ? " on" : "");
+      b.textContent = o.label;
+      b.addEventListener("click", () => {
+        chosen = j;
+        [...opts.children].forEach((x, k) => x.classList.toggle("on", k === j));
+        say("Experiment " + (i+1) + ": you selected " + o.label + ".");
+      });
+      opts.appendChild(b);
+    });
+    el.querySelector("#run" + i).addEventListener("click", () => {
+      const out = c.run(c.options[chosen]);
+      el.querySelector("#res" + i).innerHTML =
+        "<p class='kicker'>What happened</p><pre>" + esc(out.happened) + "</pre>" +
+        "<div class='field'><b>Why it matters</b>" + out.why + "</div>" +
+        "<div class='rule'><b>The rule.</b> " + out.rule + "</div>";
+      say("Experiment " + (i+1) + " ran with " + c.options[chosen].label + ".");
+    });
+    el.querySelector("#seq" + i).addEventListener("click", () => {
+      openDialog("Experiment " + (i+1) + ", as a sequence",
+        sequence(c.lanes, c.sequence(c.options[chosen]), c.title));
+      say("You opened the sequence for experiment " + (i+1) + ".");
+    });
+  });
+}
+
+// ---------------------------------------------------------------- popups
+function openDialog(title, html){
+  const d = $("popup");
+  $("popupTitle").textContent = title;
+  $("popupBody").innerHTML = html;
+  if (typeof d.showModal === "function") d.showModal(); else d.setAttribute("open", "");
+}
+
+// ---------------------------------------------------------------- calculators
+function calcSetup(calcs){
+  const host = $("calcs");
+  calcs.forEach((c, i) => {
+    const el = document.createElement("div");
+    el.className = "card";
+    el.innerHTML = "<h4>" + esc(c.title) + "</h4><p>" + c.blurb + "</p>" +
+      "<pre>" + esc(c.formula) + "</pre><div class='row' id='ins" + i + "'></div>" +
+      "<div class='status' id='out" + i + "'>Move an input to see the number.</div>";
+    host.appendChild(el);
+    const ins = el.querySelector("#ins" + i);
+    const vals = {};
+    c.inputs.forEach(inp => {
+      const holder = document.createElement("div");
+      holder.className = "col";
+      holder.innerHTML = "<label for='" + inp.id + "'>" + esc(inp.label) + "</label>";
+      let node;
+      if (inp.kind === "select"){
+        node = document.createElement("select");
+        inp.options.forEach(o => { const op = document.createElement("option");
+          op.value = o.value; op.textContent = o.label; node.appendChild(op); });
+      } else {
+        node = document.createElement("input");
+        node.type = inp.kind || "number";
+        node.min = inp.min; node.max = inp.max; node.step = inp.step || 1;
+      }
+      node.id = inp.id;
+      node.value = inp.value;
+      vals[inp.id] = inp.value;
+      const update = () => {
+        vals[inp.id] = node.value;
+        const out = c.compute(vals);
+        el.querySelector("#out" + i).innerHTML =
+          "<span class='verdict'>" + esc(out.value) + "</span> &middot; " + out.means;
+        say(c.title + ": you set " + inp.label + " to " + node.value + ".");
+      };
+      node.addEventListener("input", update);
+      node.addEventListener("change", update);
+      holder.appendChild(node);
+      ins.appendChild(holder);
+    });
+  });
+}
+
+// ---------------------------------------------------------------- glossary
+function glossarySetup(terms){
+  const host = $("glossary");
+  host.innerHTML = terms.map(t =>
+    "<dt>" + esc(t.term) + "</dt><dd>" + t.meaning + " <span style='color:var(--muted)'>First matters "
+    + esc(t.where) + ".</span></dd>").join("");
+}
+
+// ---------------------------------------------------------------- decision visual
+function decisionSetup(spec){
+  const host = $("decision");
+  const draw = path => { host.innerHTML = spec.render(path); };
+  draw(spec.initial);
+  const bar = $("decisionControls");
+  spec.paths.forEach((p, i) => {
+    const b = document.createElement("button");
+    b.className = "opt" + (i === 0 ? " on" : "");
+    b.textContent = p.label;
+    b.addEventListener("click", () => {
+      [...bar.children].forEach((x, k) => x.classList.toggle("on", k === i));
+      draw(p.path);
+      $("decisionSays").textContent = p.says;
+      say("Decision walk: you followed " + p.label + ".");
+    });
+    bar.appendChild(b);
+  });
+}
+
+
+const PAIR = [
+  {field:"order_id",   a:"KR4201", b:"KR4201"},
+  {field:"customer_id",a:"C1022",  b:"C1022"},
+  {field:"segment",    a:"Retail-Core", b:"Retail-Core"},
+  {field:"amount",     a:"1865",   b:"1865"},
+  {field:"status",     a:"returned", b:"returned"},
+  {field:"order_date", a:"2026-08-03", b:"2026-09-14"},
+  {field:"discount",   a:"",       b:""}
+];
+const RULES = [
+  {label:"every field", keys:PAIR.map(f => f.field)},
+  {label:"order_id alone", keys:["order_id"]},
+  {label:"order_id plus order_date", keys:["order_id","order_date"]},
+  {label:"order_id plus amount", keys:["order_id","amount"]}
+];
+function groupsFound(keys){
+  const ka = keys.map(k => PAIR.find(f => f.field === k).a).join("|");
+  const kb = keys.map(k => PAIR.find(f => f.field === k).b).join("|");
+  return ka === kb ? 1 : 0;
+}
+
+const WALK = {
+  opening: "Two rows out of fifty share an order id. Press Next to compare them field by field and " +
+    "watch where the first difference appears, which is the field every identity rule turns on.",
+  events: PAIR.map((f, i) => ({say: "<code>" + f.field + "</code>: " +
+    (f.a === f.b ? "the same on both rows, <code>" + (f.a || "(empty)") + "</code>."
+                 : "<b>different</b>. Row one holds <code>" + f.a + "</code> and row two holds <code>" +
+                   f.b + "</code>, six weeks apart.")})),
+  diagram: at => vflow(PAIR.map(f => f.field + (f.a === f.b ? "  same" : "  DIFFERS")),
+                       at < 0 ? null : at, "the pair, field by field"),
+  artifact: at => {
+    if (at < 0) return "row one: not compared yet\nrow two: not compared yet";
+    const shown = PAIR.slice(0, at + 1);
+    return "row one   " + shown.map(f => (f.a || "(empty)")).join("  ") +
+      "\nrow two   " + shown.map(f => (f.b || "(empty)")).join("  ") +
+      "\n\nfields differing so far: " + shown.filter(f => f.a !== f.b).length;
+  },
+  meter: at => PAIR.map((f, i) => ({
+    kind: at >= 0 && i <= at ? (f.a === f.b ? "hit" : "miss") : "",
+    label: f.field,
+    why: at >= 0 && i <= at ? (f.a === f.b ? "identical on both rows" : "the one field that differs")
+                            : "not compared yet"})),
+  meterLegend: at => "One tick per field. Green matches, red differs. Click for the breakdown."
+};
+
+const CARDS = [
+  {
+    title: "Four identity rules, three different answers",
+    situation: "Two rows share an order id and differ on the order date. Nothing in the file says " +
+      "whether that is one order entered twice or two orders that reused an id.",
+    hypothesis: "Predict how many of the four rules find a duplicate at all.",
+    watch: "The count of duplicate groups, and which fields the rule is looking at.",
+    runLabel: "Apply the rule",
+    options: RULES.map(r => ({label:r.label, keys:r.keys})),
+    lanes: ["your rule", "row one", "row two"],
+    run: o => {
+      const n = groupsFound(o.keys);
+      return {happened: "rule: " + o.keys.join(" + ") + "\nduplicate groups found: " + n,
+        why: n ? "The rule looks only at fields the two rows agree on, so it groups them together."
+               : "The rule includes a field the two rows differ on, so it treats them as two orders.",
+        rule: "The rule is the decision and the number follows from it. Write the rule down before " +
+          "you write the number."};
+    },
+    sequence: o => [["your rule", "row one", o.keys.join(" + ")],
+      ["your rule", "row two", o.keys.join(" + ")],
+      ["row two", "your rule", groupsFound(o.keys) ? "same key, so one group" : "different key, so two"]]
+  },
+  {
+    title: "The coerce-everything pass, count by count",
+    situation: "Somebody replaces every unusable amount with a stated default of zero. Nothing " +
+      "raises and nothing is rejected.",
+    hypothesis: "Predict which of the three counts moves in a direction that should worry you.",
+    watch: "distinct, which is the only count that can fall.",
+    runLabel: "Re-profile",
+    options: [{label:"the raw file", coerce:false}, {label:"after coercing everything", coerce:true}],
+    lanes: ["the pass", "the amount column", "the profile"],
+    run: o => o.coerce
+      ? {happened: "amount   present 50/50   converts 50/50   distinct 41\n" +
+           "discount present 50/50   converts 50/50   distinct 10",
+         why: "Present and converts both rose to complete, which reads as progress. distinct fell " +
+           "from 46 to 41, because six rows now share a value that no source row ever held.",
+         rule: "distinct is the only count that can fall, so it is the only count that can warn you."}
+      : {happened: "amount   present 48/50   converts 44/50   distinct 46\n" +
+           "discount present 11/50   converts 11/50   distinct 9",
+         why: "Four values are present and unusable, and two are absent. That difference is the " +
+           "whole work list for the day.",
+         rule: "present minus converts is the dangerous group: rows that look filled in and are not."},
+    sequence: o => [["the pass", "the amount column", o.coerce ? "replace what will not convert" : "read only"],
+      ["the amount column", "the profile", o.coerce ? "50, 50, 41" : "48, 44, 46"],
+      ["the profile", "the pass", o.coerce ? "distinct fell" : "four values need work"]]
+  },
+  {
+    title: "The order at the end of the column",
+    situation: "One Kalpa Retail order is Rs 480,000 against a next-largest of about Rs 2,900. It " +
+      "converts, and it has a customer, a date, a segment and a status like every other order.",
+    hypothesis: "Predict what each of the three treatments does to the reported average.",
+    watch: "The mean, the median, and how many orders the mean now describes.",
+    runLabel: "Apply the treatment",
+    options: [
+      {label:"delete it", kind:"delete"},
+      {label:"cap it at the fence", kind:"cap"},
+      {label:"keep it and flag it", kind:"keep"}
+    ],
+    lanes: ["the file", "the summary", "the reader"],
+    run: o => {
+      const ordinary = 43, ordinaryTotal = 74000, whale = 480000;
+      if (o.kind === "delete")
+        return {happened: "orders: 43\nmean: Rs " + Math.round(ordinaryTotal / ordinary) +
+            "\nthe business the file describes: no longer the real one",
+          why: "The mean is now honest about 43 orders and the file has stopped describing Kalpa. " +
+            "Somebody downstream will reconcile revenue and find Rs 480,000 missing.",
+          rule: "Deleting an outlier changes the business the file describes."};
+      if (o.kind === "cap")
+        return {happened: "orders: 44\nmean: Rs " + Math.round((ordinaryTotal + 5000) / 44) +
+            "\nthe capped value: Rs 5,000, which no order ever held",
+          why: "The distribution now looks reasonable and one row holds a number nobody wrote. " +
+            "That is the coercion trap in a different costume.",
+          rule: "A cap is an invented value, and an invented value needs the same log line as any other."};
+      return {happened: "orders: 44\nmean: Rs " + Math.round((ordinaryTotal + whale) / 44) +
+          "\nmedian: Rs 1,610\nflagged: KR4243 at Rs 480,000, 86 percent of the total",
+        why: "The mean is far above every ordinary order, which is a true fact about this file. " +
+          "The flag is what stops somebody quoting the mean without knowing why it is that size.",
+        rule: "An outlier is a finding to investigate before it is a row to delete."};
+    },
+    sequence: o => [["the file", "the summary", o.kind === "delete" ? "43 orders" : "44 orders"],
+      ["the summary", "the reader", o.kind === "keep" ? "mean, median and a flag" : "a mean that looks tidy"],
+      ["the reader", "the file", o.kind === "keep" ? "asks about the flag" : "asks nothing"]]
+  },
+  {
+    title: "The row that is a header",
+    situation: "A companion file reads 21 rows. Its first row holds the word order_id in the " +
+      "order_id column, because the header was written twice.",
+    hypothesis: "Predict which of these checks catches it.",
+    watch: "Whether the check fires at all on a file that parses perfectly.",
+    runLabel: "Run the check",
+    options: [
+      {label:"the file parses", kind:"parse"},
+      {label:"the row count is above zero", kind:"count"},
+      {label:"no value equals its own field name", kind:"name"}
+    ],
+    lanes: ["the file", "the check", "you"],
+    run: o => o.kind === "name"
+      ? {happened: "rows that are actually a repeated header: 1\n  {'order_id': 'order_id', " +
+           "'segment': 'segment', 'amount': 'amount', ...}",
+         why: "One line, and it fires on the only file in the pack that has this defect.",
+         rule: "The check that would have caught it is a comparison nobody thought to write."}
+      : {happened: "check passed\n\n21 rows, every one a dictionary, no error anywhere",
+         why: "The file parses and it is not empty, so both of these checks are satisfied by a " +
+           "file with a header row sitting in it as data.",
+         rule: "A check that passes on the broken file is not a check."},
+    sequence: o => [["the file", "the check", "21 rows"],
+      ["the check", "you", o.kind === "name" ? "one row is a header" : "looks fine"]]
+  }
+];
+
+const DECISION = {
+  initial: ["a field is incomplete"],
+  paths: [
+    {label:"Absence means something", path:["a field is incomplete", "absence means something"],
+     says:"Keep absent as absent and flag it, so nobody downstream confuses your zero with a real " +
+       "one. Write what the absence means in the log, because that is the part nobody can rederive."},
+    {label:"The field is required", path:["a field is incomplete", "the field is required"],
+     says:"Reject the row with the reason in the interpreter's own wording. The rejects file is " +
+       "what makes the clean file's count defensible."},
+    {label:"Two rows share an id", path:["two rows share an id"],
+     says:"State the identity rule before you count anything. Then take the pair to whoever owns " +
+       "the order book, because the rule is a business decision rather than a code decision."}
+  ],
+  render: path => tree({
+    label: "the profile found something",
+    branches: [
+      ["a field is incomplete", {label: "what does the absence mean?",
+        branches: [["absence means something", {label: "keep it absent, flag it, log the meaning"}],
+                   ["the field is required", {label: "reject the row with its reason"}]]}],
+      ["two rows share an id", {label: "state the identity rule",
+        branches: [["you can tell", {label: "apply the rule and log it"}],
+                   ["you cannot tell", {label: "keep both, flag the pair, escalate"}]]}]
+    ]
+  }, path, "what the profile found, and what to do about it")
+};
+
+const CALCS = [
+  {
+    title: "The three counts, as rates",
+    blurb: "Counts describe one column. Rates let you rank every column in a file by where the work " +
+      "is, which is what makes a profile a work list rather than a table.",
+    formula: "presence rate = present / n\nconvertibility = converts / n\nthe trap rate = (present - converts) / n",
+    inputs: [
+      {id:"p_n", label:"Rows in the file", kind:"number", value:50, min:1, max:100000, step:1},
+      {id:"p_present", label:"Present", kind:"number", value:48, min:0, max:100000, step:1},
+      {id:"p_converts", label:"Converts", kind:"number", value:44, min:0, max:100000, step:1}
+    ],
+    compute: v => {
+      const n = Number(v.p_n) || 1, p = Number(v.p_present), c = Number(v.p_converts);
+      const trap = (p - c) / n;
+      return {value: (p / n * 100).toFixed(0) + " percent present, " + (c / n * 100).toFixed(0) +
+          " percent usable, " + (trap * 100).toFixed(0) + " percent present and unusable",
+        means: trap > 0
+          ? "That last group is the dangerous one. A presence check passes those rows and anything " +
+            "that adds them up fails or lies."
+          : "Nothing in this column looks filled in while being unusable."};
+    }
+  },
+  {
+    title: "What one enormous order does to a mean",
+    blurb: "The mean divides a total. When one record dominates the total, the mean stops describing " +
+      "any ordinary record, and the median does not move.",
+    formula: "mean = (ordinary total + the outlier) / count",
+    inputs: [
+      {id:"w_count", label:"Ordinary orders", kind:"number", value:43, min:1, max:10000, step:1},
+      {id:"w_total", label:"Their total, in Rs", kind:"number", value:74000, min:0, max:10000000, step:1000},
+      {id:"w_whale", label:"The one outlier, in Rs", kind:"number", value:480000, min:0, max:10000000, step:1000}
+    ],
+    compute: v => {
+      const n = Number(v.w_count), t = Number(v.w_total), w = Number(v.w_whale);
+      const withOut = t / n, withIt = (t + w) / (n + 1);
+      const share = w / (t + w);
+      return {value: "mean Rs " + Math.round(withOut).toLocaleString("en-IN") + " without it, Rs " +
+          Math.round(withIt).toLocaleString("en-IN") + " with it",
+        means: "The one order is " + (share * 100).toFixed(0) + " percent of the money, and it " +
+          "moves the mean by " + Math.round(withIt - withOut).toLocaleString("en-IN") +
+          " rupees. The median barely moves, which is why tomorrow reaches for it."};
+    }
+  }
+];
+
+const TERMS = [
+  {term:"Profile", meaning:"Three counts per field, taken before you have permission to change " +
+    "anything: present, converts and distinct.", where:"the first file nobody prepared for you"},
+  {term:"present", meaning:"How many rows have anything at all in this field.",
+   where:"the amount column, at 48 of 50"},
+  {term:"converts", meaning:"How many of those values become the type you need.",
+   where:"the same column, at 44"},
+  {term:"distinct", meaning:"How many different values the field holds, and the only count that " +
+    "can fall when somebody cleans.", where:"46 falling to 41 after the coercion"},
+  {term:"Present and unusable", meaning:"present minus converts. Rows a presence check passes and " +
+    "anything numeric fails on.", where:"the four amounts with a separator, a space or a prefix"},
+  {term:"Identity rule", meaning:"The fields you have decided make two rows the same record. It is " +
+    "a business decision written down, not a property of the data.", where:"the pair sharing KR4201"},
+  {term:"Decisions log", meaning:"One line per cleaning act: the field, the finding, the choice and " +
+    "the reason.", where:"the moment a reviewer asks why 44 and not 50"},
+  {term:"Outlier", meaning:"A value far from the rest, which is a finding to investigate before it " +
+    "is a row to delete.", where:"the Rs 480,000 order"},
+  {term:"Reconciliation", meaning:"Input equals clean plus rejected, asserted, and today also " +
+    "checked against the files reopened from disk.", where:"the end of the pass"}
+];
+
+walkSetup(WALK);
+cardsSetup(CARDS);
+decisionSetup(DECISION);
+calcSetup(CALCS);
+glossarySetup(TERMS);
+
+document.getElementById("popupClose").addEventListener("click", () => {
+  const d = document.getElementById("popup");
+  if (typeof d.close === "function") d.close(); else d.removeAttribute("open");
+  say("You closed the detail popup.");
 });
-run();
+railSetup();
 </script>
 </body>
 </html>
