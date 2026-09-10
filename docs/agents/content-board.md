@@ -122,6 +122,10 @@ assignee on the card. The labels stay; they are what the board filters on.
 # The one-time furniture. Safe to run again; it corrects drift and leaves the rest alone.
 python3 scripts/board_sync.py --labels --milestones
 
+# Remove GitHub's generic starter labels once they are unused. Never touches a label
+# that is on an issue, so it is safe to run again.
+python3 scripts/board_sync.py --prune-labels
+
 # Open the cards for a week that is about to be built.
 python3 scripts/board_sync.py --week W02 --set-status backlog
 
