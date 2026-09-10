@@ -1058,14 +1058,9 @@ d) It produces the chart the stakeholder wants
 
 ```mermaid
 flowchart LR
-    A["for every field in the header"] --> B["for every row"]
-    B --> C{"is the value anything at all?"}
-    C -->|"yes"| D["present + 1"]
-    C -->|"no"| E["absent"]
-    D --> F{"does it convert?"}
-    F -->|"yes"| G["converts + 1"]
-    F -->|"no"| H["present and unusable"]
-    D --> I["add it to a set, and distinct is its size"]
+    A["the file as it arrived"] --> B["three counts per field"]
+    B --> C["now you may clean it"]
+    C --> D["the counts are the only record of what it was"]
 ```
 
 ---

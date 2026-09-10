@@ -32,10 +32,10 @@ from pptx.util import Emu, Inches, Pt
 
 from build_cheatsheet import MERMAID_CONFIG
 from deck_layout import (ACC, BG, BOLD, INK, LINE, MUTED, TINT, WHITE, MARGIN, WIDTH,
-                         BODY_TOP, BODY_BOTTOM, SLIDE_W, SLIDE_H, CALLOUT, CRUMB, NUMBERED,
+                         BODY_TOP, BODY_BOTTOM, RULE_Y, SLIDE_W, SLIDE_H, CALLOUT, CRUMB, NUMBERED,
                          QUOTE, SLIDE_ID, add_runs, background, breadcrumb, callout, clean,
                          code_card, footer_band, numbered, pill, quote_block, rect, table,
-                         text_height, textbox, title_band, wrapped_rows)
+                         table_geometry, text_height, textbox, title_band, wrapped_rows)
 
 SECBG = ACC
 
@@ -322,8 +322,8 @@ def block_height(mode, lines, width, scale, section=False):
     a block never wins the search.
     """
     if mode == "table":
-        rows = [l for l in lines if not re.fullmatch(r"\s*\|[\s:\-|]+\|\s*", l)]
-        return min(4.4, 0.42 * len(rows) + 0.28)
+        geo = table_geometry(lines, width, scale, BODY_BOTTOM - BODY_TOP)
+        return sum(geo[4]) + 0.28 if geo else 0.0
     if mode == "code":
         return 0.3 + (max(12, round(16 * scale)) / 72 * 1.32) * len(lines) + 0.18
     if mode == "mermaid":
@@ -393,15 +393,21 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layo
     if single_exhibit:
         lead = [l for m, b in words if m == "text" for l in b if l.strip()]
         tail_top = BODY_BOTTOM
+        cap_size = round(20 * scale)
         if lead:
             joined = " ".join(l.strip() for l in lead)
-            tail_top = BODY_BOTTOM - min(2.4, text_height([joined], WIDTH, 20, gap=0.06))
+            tail_top = BODY_BOTTOM - min(2.4, text_height([joined], WIDTH, cap_size, gap=0.02))
+        # On an exhibit the picture is the whole argument, so it starts just under the rule and
+        # sits close to its caption. A quarter of an inch of politeness elsewhere is a quarter of
+        # an inch off a diagram that is already as wide as the slide.
+        top = RULE_Y + 0.2
         png = render_mermaid(pictures[0][1])
         if png:
-            place_picture(slide, png, top, tail_top - 0.12, centre=True)
+            place_picture(slide, png, top, tail_top - 0.05, centre=True)
             if lead:
                 tb = textbox(slide, MARGIN, tail_top, WIDTH, BODY_BOTTOM - tail_top)
-                add_runs(tb.text_frame.paragraphs[0], " ".join(l.strip() for l in lead), 20, INK)
+                add_runs(tb.text_frame.paragraphs[0], " ".join(l.strip() for l in lead),
+                         cap_size, INK)
             footer_band(slide, footer, number, total, section)
             return 0
 
@@ -418,11 +424,6 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layo
     # A picture that comes last on a crowded slide used to get whatever height the words left,
     # which on a slide carrying a claim, a table and a second claim is almost nothing. It gets a
     # band at the foot instead, sized to what its own labels need.
-    floor = BODY_BOTTOM
-    trailing = (reserve and one_picture and not column
-                and blocks and blocks[-1][0] == "mermaid")
-    if trailing:
-        floor = max(BODY_TOP + 1.2, BODY_BOTTOM - reserve)
 
     x, w = column if column else (MARGIN, WIDTH)
 
@@ -430,17 +431,26 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layo
     # two slides' worth of height and half a slide's worth of width. Running it as two columns
     # uses the width a 13.3in slide actually has, instead of dropping the last two blocks off
     # the bottom. The split falls where the two sides come out closest to even.
+    # A trailing picture is not part of the two-column split. It takes a band across the foot,
+    # so a slide carrying a claim, a table, a mental model and a recap picture can set its words
+    # in two columns above and still give the picture the width its labels need.
+    trailing = (reserve and one_picture and not column
+                and blocks and blocks[-1][0] == "mermaid")
+    floor = max(BODY_TOP + 1.2, BODY_BOTTOM - reserve) if trailing else BODY_BOTTOM
+
     split_at = None
-    if layout == "twocol" and not column and not section and len(blocks) >= 4:
-        heights = [block_height(m, l, WIDTH / 2 - 0.3, scale, section) for m, l in blocks]
-        running, total_h, best_gap = 0.0, sum(heights), None
-        for i in range(1, len(blocks)):
-            running += heights[i - 1]
-            gap = abs(running - (total_h - running))
-            if best_gap is None or gap < best_gap:
-                best_gap, split_at = gap, i
-        w = WIDTH / 2 - 0.3
-        x = MARGIN
+    if layout == "twocol" and not column and not section:
+        splittable = blocks[:-1] if trailing else blocks
+        if len(splittable) >= 3:
+            heights = [block_height(m, l, WIDTH / 2 - 0.3, scale, section) for m, l in splittable]
+            running, total_h, best_gap = 0.0, sum(heights), None
+            for i in range(1, len(splittable)):
+                running += heights[i - 1]
+                gap = abs(running - (total_h - running))
+                if best_gap is None or gap < best_gap:
+                    best_gap, split_at = gap, i
+            w = WIDTH / 2 - 0.3
+            x = MARGIN
 
     dropped = 0
     for bi, (mode, lines) in enumerate(blocks):
@@ -466,8 +476,9 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layo
         elif mode == "mermaid" and not section:
             png = render_mermaid(lines)
             if png:
+                pic_x, pic_w = (MARGIN, WIDTH) if trailing else (x, w)
                 top = place_picture(slide, png, max(top, floor if trailing else top),
-                                    BODY_BOTTOM, w, centre=trailing, left=x)
+                                    BODY_BOTTOM, pic_w, centre=trailing, left=pic_x)
             else:
                 top = code_card(slide, top, lines, w, scale, x)
         else:
@@ -599,7 +610,8 @@ def build(src, out, footer):
         # never wins, whatever it does for the picture, since a dropped block is a fact the room
         # never sees.
         plans = ([("reserve", r) for r in (2.6, 2.1, 1.7, 1.3)]
-                 + [(None, 0.0), ("column", 0.0), ("twocol", 0.0)])
+                 + [(None, 0.0), ("column", 0.0), ("twocol", 0.0)]
+                 + [("twocol", r) for r in (2.6, 2.1, 1.7)])
         best = None
         for layout, reserve in plans:
             for i, scale in enumerate(SCALES):
