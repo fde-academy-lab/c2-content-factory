@@ -3,235 +3,794 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Defensive Stance Bench</title>
+<title>Kalpa defensive stance</title>
 <style>
+:root{
+  --ink:#1C1C1A; --muted:#5F6360; --accent:#2B4A7D; --tint:#E4ECF7; --bg:#F7F7F5;
+  --line:#C9C9C2; --panel:#FFFFFF; --pass:#1F6F4A; --fail:#8A3D3D; --onaccent:#FFFFFF;
+}
+@media (prefers-color-scheme: dark){
   :root{
-    --bg:#f7f7f5; --panel:#ffffff; --ink:#1c1c1a; --muted:#5f6360; --line:#dcdcd6;
-    --on:#1f6f4a; --onbg:#e6f2ea; --off:#8a3d3d; --offbg:#f6e8e8; --accent:#2b4a7d;
+    --ink:#ECEAE4; --muted:#A2A6A3; --accent:#9DBBE8; --tint:#1C2F3F; --bg:#16181A;
+    --line:#33383C; --panel:#1E2124; --pass:#7FD3A6; --fail:#E59A9A; --onaccent:#16181A;
   }
-  @media (prefers-color-scheme: dark){
-    :root{
-      --bg:#16181a; --panel:#1e2124; --ink:#eceae4; --muted:#a2a6a3; --line:#33383c;
-      --on:#7fd3a6; --onbg:#1c2f26; --off:#e59a9a; --offbg:#3a2626; --accent:#9dbbe8;
-    }
-  }
-  body{background:var(--bg); color:var(--ink); font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; margin:0; padding:24px;}
-  .wrap{max-width:1080px; margin:0 auto;}
-  h1{font-size:23px; margin:0 0 4px;}
-  .sub{color:var(--muted); margin:0 0 22px; max-width:70ch;}
-  .grid{display:grid; grid-template-columns:minmax(300px,1fr) minmax(340px,1.15fr); gap:20px; align-items:start;}
-  .panel{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:18px;}
-  .panel h2{font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); margin:0 0 14px;}
-  .toggle{margin-bottom:18px;}
-  .toggle .q{font-weight:600; margin-bottom:2px;}
-  .toggle .why{color:var(--muted); font-size:13px; margin-bottom:8px;}
-  .seg{display:flex; border:1px solid var(--line); border-radius:7px; overflow:hidden;}
-  .seg button{flex:1; padding:9px 10px; font:inherit; font-size:13.5px; background:transparent; color:var(--ink);
-              border:0; border-right:1px solid var(--line); cursor:pointer;}
-  .seg button:last-child{border-right:0;}
-  .seg button[aria-pressed="true"]{background:var(--accent); color:#fff; font-weight:600;}
-  .toggle.disabled{opacity:.42; pointer-events:none;}
-  pre.out{background:var(--bg); border:1px solid var(--line); border-radius:7px; padding:13px;
-          font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace; white-space:pre-wrap; margin:0 0 14px;}
-  .stats{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:14px;}
-  .stat{background:var(--bg); border:1px solid var(--line); border-radius:7px; padding:10px 12px;}
-  .stat b{display:block; font-size:21px; line-height:1.2;}
-  .stat span{font-size:11.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em;}
-  .verdict{border-radius:7px; padding:13px 15px; font-weight:600; margin-bottom:14px; border:1px solid transparent;}
-  .verdict.good{background:var(--onbg); color:var(--on); border-color:var(--on);}
-  .verdict.bad{background:var(--offbg); color:var(--off); border-color:var(--off);}
-  table{width:100%; border-collapse:collapse; font-size:13.5px;}
-  th,td{text-align:left; padding:7px 9px; border-bottom:1px solid var(--line);}
-  th{font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted);}
-  td.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12.5px;}
-  .empty{color:var(--muted); font-style:italic; padding:10px 0;}
-  .rule{margin-top:20px; border-top:1px solid var(--line); padding-top:14px;}
-  .rule p{margin:0; font-size:14px;}
-  .scroll{overflow-x:auto;}
-  footer{margin-top:22px; color:var(--muted); font-size:13px; max-width:75ch;}
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+     font:15.5px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{padding:20px 26px 14px;border-bottom:1px solid var(--line);background:var(--panel)}
+h1{font-size:22px;margin:0 0 4px}
+header p{margin:0;color:var(--muted);max-width:80ch}
+.shell{display:grid;grid-template-columns:224px minmax(0,1fr);gap:26px;
+       max-width:1240px;margin:0 auto;padding:20px 26px 60px}
+@media (max-width:900px){.shell{grid-template-columns:1fr}}
+nav{position:sticky;top:14px;align-self:start}
+nav a{display:block;padding:7px 10px;color:var(--ink);text-decoration:none;border-radius:6px;
+      border-left:3px solid transparent;font-size:14px}
+nav a:hover{background:var(--tint)}
+nav a.on{border-left-color:var(--accent);background:var(--tint);font-weight:600}
+section{margin:0 0 34px;scroll-margin-top:16px}
+h2{font-size:18px;margin:0 0 6px;color:var(--ink)}
+h3{font-size:15px;margin:18px 0 6px}
+.lede{color:var(--ink);max-width:80ch;margin:0 0 14px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;
+       margin:12px 0}
+.row{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
+.col{flex:1 1 320px;min-width:0}
+button{font:inherit;cursor:pointer;border-radius:7px;border:1px solid var(--accent);
+       background:transparent;color:var(--accent);padding:8px 13px;font-weight:600}
+button:hover{background:var(--tint)}
+button.solid{background:var(--accent);color:var(--onaccent)}
+button.opt{font-weight:500;color:var(--ink);border-color:var(--line);text-align:left}
+button.opt.on{border-color:var(--accent);background:var(--tint);font-weight:700}
+select{font:inherit;padding:7px 9px;border:1px solid var(--line);border-radius:7px;
+       background:var(--panel);color:var(--ink);position:relative;z-index:2}
+label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px}
+input[type=range]{width:100%;position:relative;z-index:2}
+input[type=number],input[type=text]{font:inherit;padding:7px 9px;border:1px solid var(--line);
+       border-radius:7px;background:var(--panel);color:var(--ink);width:130px}
+pre{margin:0;font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    white-space:pre-wrap;color:var(--ink)}
+code{font:13px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{text-align:left;color:var(--accent);border-bottom:1px solid var(--accent);padding:6px 10px 6px 0}
+td{border-bottom:1px solid var(--line);padding:5px 10px 5px 0;vertical-align:top}
+.kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+        margin:0 0 4px}
+.card{border:1px solid var(--line);border-radius:9px;padding:14px 16px;margin:12px 0;
+      background:var(--panel)}
+.card h4{margin:0 0 8px;font-size:15px}
+.field{margin:8px 0}
+.field b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+         color:var(--accent)}
+.result{border-left:3px solid var(--accent);padding-left:12px;margin-top:10px}
+.rule{background:var(--tint);border-radius:7px;padding:9px 12px;margin-top:10px;color:var(--ink)}
+.meter{display:flex;gap:3px;margin:8px 0;flex-wrap:wrap}
+.tick{width:15px;height:22px;border-radius:3px;border:1px solid var(--line);background:var(--panel)}
+.tick.hit{background:var(--accent);border-color:var(--accent)}
+.tick.miss{background:var(--fail);border-color:var(--fail)}
+.status{margin-top:10px;padding:8px 12px;border-radius:7px;background:var(--tint);
+        font-size:14px;color:var(--ink)}
+.verdict{font-weight:700}
+.ok{color:var(--pass)} .bad{color:var(--fail)}
+dialog{border:1px solid var(--line);border-radius:11px;background:var(--panel);color:var(--ink);
+       max-width:min(680px,92vw);padding:18px 20px}
+dialog::backdrop{background:rgba(0,0,0,.42)}
+.glossary dt{font-weight:700;margin-top:10px}
+.glossary dd{margin:2px 0 0;color:var(--ink)}
+footer{max-width:1240px;margin:0 auto;padding:0 26px 40px;color:var(--muted);font-size:13px}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>The defensive stance bench</h1>
-  <p class="sub">Four switches, one fixed set of 30 Kalpa Retail orders, and the line your code would print. Flip the switches until you find a setting you would put your name on, then screenshot it. You will be asked to defend the setting you chose.</p>
-
-  <div class="grid">
-    <div class="panel">
-      <h2>Your stance</h2>
-
-      <div class="toggle" id="t-stance">
-        <div class="q">How do you decide a value is usable?</div>
-        <div class="why">Check it first, or attempt it and handle the failure.</div>
-        <div class="seg">
-          <button data-k="stance" data-v="lbyl">Validate first</button>
-          <button data-k="stance" data-v="eafp">Try and catch</button>
+<header>
+  <h1>Kalpa defensive stance</h1>
+  <p>Week 1, Day 2. Two of thirty Kalpa Retail amounts will not become numbers. This page runs the same cleaning pass under three stances so you can watch the total stay the same while the claim around it changes from true to false.</p>
+</header>
+<div class="shell">
+  <nav><a href="#walk">Guided walk</a>
+<a href="#experiments">Experiments</a>
+<a href="#decision-section">The decision</a>
+<a href="#calculators">The numbers</a>
+<a href="#glossary-section">Vocabulary</a></nav>
+  <main>
+    <section id="walk">
+      <p class="kicker">Guided walk</p>
+      <h2>One pass, five rows, no handler in place</h2>
+      <p class="lede">Press Next once per row. The drawing lights the row being read, the artifact shows the running total, and the meter fills green for a row that converted and red for one that refused. Click the meter for the breakdown.</p>
+      <div class="panel">
+        <div class="row">
+          <div class="col">
+            <div id="walkDiagram"></div>
+            <div class="meter" id="walkMeter"></div>
+            <p style="font-size:13px;color:var(--muted);margin:0" id="walkMeterLegend"></p>
+          </div>
+          <div class="col">
+            <div id="walkNarration"></div>
+            <h3>The artifact, as it stands</h3>
+            <pre id="walkArtifact"></pre>
+            <p><button class="solid" id="walkNext">Next</button></p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="toggle" id="t-width">
-        <div class="q">How wide is the catch?</div>
-        <div class="why">Only applies when you attempt the conversion.</div>
-        <div class="seg">
-          <button data-k="width" data-v="bare">Catch everything</button>
-          <button data-k="width" data-v="named">Catch ValueError only</button>
-        </div>
+    <section id="experiments">
+      <p class="kicker">Experiments</p>
+      <h2>Change one thing and watch what moves</h2>
+      <p class="lede">Each card changes one thing: the stance, the caller, the file format, or where the rows go. Pick an option, press the run button, and the card fills in what happened, why it matters and the rule. The sequence button draws the same run across its lanes.</p>
+      <div id="cards"></div>
+    </section>
+
+    <section id="decision-section">
+      <p class="kicker">The decision</p>
+      <h2>Your pass just finished. What does the failure mean, and who decides?</h2>
+      <p class="lede">Pick a branch and the drawing shows the path it takes, with the outcome at the bottom.</p>
+      <div class="panel">
+        <div class="row" id="decisionControls"></div>
+        <div id="decision"></div>
+        <p class="status" id="decisionSays">Pick a branch above and the drawing shows the path it
+        takes, with the outcome at the bottom.</p>
       </div>
+    </section>
 
-      <div class="toggle" id="t-log">
-        <div class="q">What happens to a record you cannot use?</div>
-        <div class="why">This is the switch nobody notices until someone asks.</div>
-        <div class="seg">
-          <button data-k="log" data-v="drop">Drop it silently</button>
-          <button data-k="log" data-v="keep">Log it with a reason</button>
-        </div>
-      </div>
+    <section id="calculators">
+      <p class="kicker">The numbers</p>
+      <h2>Every rule that carries a number, as a calculator</h2>
+      <p class="lede">Both of today's rules carry numbers, so both ship as calculators. Move an input and the number moves with a sentence saying what it means.</p>
+      <div id="calcs"></div>
+    </section>
 
-      <div class="toggle" id="t-edge">
-        <div class="q">Add the awkward record?</div>
-        <div class="why">One record arrives as <code>" 1360 "</code>, with spaces around it.</div>
-        <div class="seg">
-          <button data-k="edge" data-v="off">Leave it out</button>
-          <button data-k="edge" data-v="on">Put it in</button>
-        </div>
-      </div>
+    <section id="glossary-section">
+      <p class="kicker">Vocabulary</p>
+      <h2>The day's terms, and where each one first matters</h2>
+      <p class="lede">Nine terms, each with the moment it starts mattering.</p>
+      <dl class="glossary" id="glossary"></dl>
+    </section>
 
-      <div class="rule">
-        <p id="rule-line"></p>
-      </div>
-    </div>
-
-    <div class="panel">
-      <h2>What your code prints</h2>
-      <pre class="out" id="printed"></pre>
-      <div class="stats">
-        <div class="stat"><b id="s-in">0</b><span>records in</span></div>
-        <div class="stat"><b id="s-clean">0</b><span>counted</span></div>
-        <div class="stat"><b id="s-rej">0</b><span>set aside</span></div>
-      </div>
-      <div class="verdict" id="verdict"></div>
-      <h2>The rejections you could hand to someone else</h2>
-      <div class="scroll" id="rejects"></div>
-    </div>
-  </div>
-
-  <footer>The 30 orders are the same ones in your notebook. Two of them carry a defect: one amount reads <code>twelve</code> and one is empty. The awkward record is a good value wearing spaces, which is why the two stances disagree about it.</footer>
+    <div class="status" id="activity">Nothing has happened yet. Every control on this page reports
+    here when you use it, so you can always tell whether a click did something.</div>
+  </main>
 </div>
-
+<dialog id="popup">
+  <h3 id="popupTitle">Detail</h3>
+  <div id="popupBody"></div>
+  <p><button id="popupClose" class="solid">Close</button></p>
+</dialog>
+<footer>Kalpa Group is fictional and any resemblance to a real company is coincidental. This page
+holds no data of its own, stores nothing in your browser and needs no key. Every number on it is
+computed from the same thirty to fifty Kalpa Retail orders the notebooks read.</footer>
 <script>
-const ORDERS = [
-  {id:"KR4200",amount:"4500"},{id:"KR4201",amount:"2395"},{id:"KR4202",amount:"1360"},
-  {id:"KR4203",amount:"1440"},{id:"KR4204",amount:"2905"},{id:"KR4205",amount:"2095"},
-  {id:"KR4206",amount:"920"},{id:"KR4207",amount:"1420"},{id:"KR4208",amount:"2605"},
-  {id:"KR4209",amount:"840"},{id:"KR4210",amount:"twelve"},{id:"KR4211",amount:"2880"},
-  {id:"KR4212",amount:"2900"},{id:"KR4213",amount:"2515"},{id:"KR4214",amount:""},
-  {id:"KR4215",amount:"2170"},{id:"KR4216",amount:"1050"},{id:"KR4217",amount:"1965"},
-  {id:"KR4218",amount:"1205"},{id:"KR4219",amount:"1200"},{id:"KR4220",amount:"1205"},
-  {id:"KR4221",amount:"1270"},{id:"KR4222",amount:"1450"},{id:"KR4223",amount:"2720"},
-  {id:"KR4224",amount:"1460"},{id:"KR4225",amount:"1320"},{id:"KR4226",amount:"1905"},
-  {id:"KR4227",amount:"1555"},{id:"KR4228",amount:"2030"},{id:"KR4229",amount:"2465"}
-];
-const EDGE = {id:"KR4250", amount:" 1360 "};
 
-const state = {stance:"eafp", width:"bare", log:"drop", edge:"off"};
+// ---------------------------------------------------------------- palette
+const P = {ink:"#1C1C1A", muted:"#5F6360", accent:"#2B4A7D", tint:"#E4ECF7", bg:"#F7F7F5",
+           line:"#C9C9C2", pass:"#1F6F4A", fail:"#8A3D3D"};
+const FONT = 'system-ui,-apple-system,"Segoe UI",Roboto,sans-serif';
 
-function isAllDigits(s){ return s.length > 0 && /^[0-9]+$/.test(s); }
-function pythonInt(s){
-  const t = s.trim();
-  if (t.length === 0 || !/^-?[0-9]+$/.test(t)) return null;
-  return parseInt(t, 10);
+// ---------------------------------------------------------------- diagram builders
+// The same nine the notebook helper draws, so a picture on a slide, in a notebook and on this
+// page is recognisably one drawing. Every builder takes data and returns an SVG string.
+function esc(t){return String(t).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));}
+function wrap(text, per){
+  const words = String(text).split(/\s+/), out = []; let line = "";
+  for (const w of words){
+    if ((line + " " + w).trim().length > per && line){ out.push(line); line = w; }
+    else line = (line + " " + w).trim();
+  }
+  if (line) out.push(line);
+  return out.length ? out : [""];
+}
+function box(x, y, w, h, text, lit, size){
+  size = size || 12;
+  const lines = wrap(text, Math.max(8, Math.floor(w / (size * 0.55))));
+  const top = y + h/2 - (lines.length - 1) * (size + 3)/2 + size * 0.35;
+  const labels = lines.map((l, i) =>
+    `<text x="${x + w/2}" y="${top + i*(size+3)}" text-anchor="middle" fill="${P.ink}"
+       font-family="${FONT}" font-size="${size}" font-weight="${lit ? 700 : 400}">${esc(l)}</text>`).join("");
+  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="7" fill="${lit ? P.tint : "#FFFFFF"}"
+    stroke="${P.accent}" stroke-width="${lit ? 2 : 1}"/>${labels}`;
+}
+function arrow(x1, y1, x2, y2, label){
+  const cap = label ? `<text x="${(x1+x2)/2}" y="${(y1+y2)/2 - 6}" text-anchor="middle"
+    fill="${P.muted}" font-family="${FONT}" font-size="11">${esc(label)}</text>` : "";
+  return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${P.accent}" stroke-width="1.4"
+    marker-end="url(#ar)"/>${cap}`;
+}
+const DEFS = `<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6"
+  markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z"
+  fill="${P.accent}"/></marker></defs>`;
+function svg(w, h, body, title){
+  const cap = title ? `<text x="${w/2}" y="${h-5}" text-anchor="middle" fill="${P.muted}"
+    font-family="${FONT}" font-size="12">${esc(title)}</text>` : "";
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"
+    style="max-width:100%;height:auto" role="img">${DEFS}${body}${cap}</svg>`;
+}
+function flow(steps, lit, title){
+  const w = 156, h = 56, gap = 28;
+  let b = "";
+  steps.forEach((s, i) => {
+    const x = 12 + i*(w+gap);
+    b += box(x, 12, w, h, s, i === lit);
+    if (i) b += arrow(x - gap, 12 + h/2, x, 12 + h/2);
+  });
+  return svg(steps.length*w + (steps.length-1)*gap + 24, h + 46, b, title);
+}
+function vflow(steps, lit, title){
+  const w = 290, h = 44, gap = 22;
+  let b = "";
+  steps.forEach((s, i) => {
+    const y = 12 + i*(h+gap);
+    b += box(12, y, w, h, s, i === lit);
+    if (i) b += arrow(12 + w/2, y - gap, 12 + w/2, y);
+  });
+  return svg(w + 24, steps.length*(h+gap) + 30, b, title);
+}
+function ladder(items, lit, title){
+  const w = 200, h = 42, gap = 12;
+  let b = "";
+  items.forEach((s, i) => {
+    const y = 10 + i*(h+gap);
+    b += box(12, y, w, h, (i+1) + ". " + s, i === lit);
+    if (i) b += arrow(12 + w/2, y - gap, 12 + w/2, y);
+  });
+  return svg(w + 24, items.length*(h+gap) + 32, b, title);
+}
+function stack(layers, lit, title){
+  const w = 300, h = 42, gap = 8;
+  let b = "";
+  layers.forEach((s, i) => {
+    b += box(12, 12 + (layers.length-1-i)*(h+gap), w, h, s, i === lit);
+  });
+  return svg(w + 24, layers.length*(h+gap) + 30, b, title);
+}
+function sequence(lanes, messages, title){
+  const lw = 176, top = 46, step = 42;
+  const w = lanes.length*lw + 24, h = top + Math.max(1, messages.length)*step + 34;
+  let b = "";
+  lanes.forEach((l, i) => {
+    const x = 12 + i*lw;
+    b += box(x + 8, 10, lw - 16, 28, l, true, 12);
+    b += `<line x1="${x + lw/2}" y1="40" x2="${x + lw/2}" y2="${h - 28}" stroke="${P.line}"/>`;
+  });
+  messages.forEach((m, n) => {
+    const y = top + n*step + 18;
+    b += arrow(12 + lanes.indexOf(m[0])*lw + lw/2, y, 12 + lanes.indexOf(m[1])*lw + lw/2, y, m[2]);
+  });
+  return svg(w, h, b, title);
+}
+function tree(node, taken, title){
+  const levels = [];
+  (function walk(n, d, path){
+    while (levels.length <= d) levels.push([]);
+    const e = {label:n.label, path:path, kids:[]};
+    levels[d].push(e);
+    (n.branches || []).forEach(([edge, child]) => e.kids.push([edge, walk(child, d+1, path.concat([edge]))]));
+    return e;
+  })(node, 0, []);
+  const w = 176, h = 48, gx = 20, gy = 38;
+  const width = Math.max(...levels.map(l => l.length))*(w+gx) + 24;
+  const height = levels.length*(h+gy) + 30;
+  let b = ""; const at = new Map();
+  levels.forEach((lv, d) => {
+    const x0 = (width - (lv.length*(w+gx) - gx))/2;
+    lv.forEach((e, i) => {
+      const x = x0 + i*(w+gx), y = 12 + d*(h+gy);
+      const on = (taken || []).slice(0, e.path.length).join("|") === e.path.join("|");
+      at.set(e, [x + w/2, y, x + w/2, y + h]);
+      b += box(x, y, w, h, e.label, on);
+    });
+  });
+  levels.forEach(lv => lv.forEach(e => {
+    const [,, bx, by] = at.get(e);
+    e.kids.forEach(([edge, kid]) => { const [cx, cy] = at.get(kid); b += arrow(bx, by, cx, cy, edge); });
+  }));
+  return svg(width, height, b, title);
+}
+function matrix(rows, cols, cells, title){
+  const cw = 168, ch = 54, lw = 140;
+  const w = lw + cols.length*cw + 24, h = 40 + rows.length*ch + 30;
+  let b = "";
+  cols.forEach((c, j) => { b += `<text x="${12 + lw + j*cw + cw/2}" y="28" text-anchor="middle"
+    fill="${P.accent}" font-family="${FONT}" font-size="12" font-weight="700">${esc(c)}</text>`; });
+  rows.forEach((r, i) => {
+    const y = 40 + i*ch;
+    b += `<text x="12" y="${y + ch/2 + 4}" fill="${P.accent}" font-family="${FONT}" font-size="12"
+      font-weight="700">${esc(r)}</text>`;
+    cols.forEach((_, j) => { b += box(12 + lw + j*cw + 4, y + 4, cw - 8, ch - 8, (cells[i]||[])[j] || "", false); });
+  });
+  return svg(w, h, b, title);
+}
+function decisionLadder(options, cutAt, title){
+  const w = 320, h = 42, gap = 10;
+  let b = "";
+  options.forEach((o, i) => {
+    const y = 12 + (options.length-1-i)*(h+gap);
+    b += box(12, y, w, h, o, i === cutAt);
+    if (i === cutAt) b += `<line x1="8" y1="${y-gap/2}" x2="${w+18}" y2="${y-gap/2}"
+      stroke="${P.fail}" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <text x="${w+22}" y="${y-gap/2+4}" fill="${P.fail}" font-family="${FONT}"
+      font-size="11">stop here</text>`;
+  });
+  return svg(w + 110, options.length*(h+gap) + 30, b, title);
 }
 
-function run(){
-  const rows = state.edge === "on" ? ORDERS.concat([EDGE]) : ORDERS;
-  let total = 0, counted = 0;
-  const rejects = [];
+// ---------------------------------------------------------------- page plumbing
+let ACTIONS = 0;
+function say(text){
+  ACTIONS += 1;
+  const el = document.getElementById("activity");
+  if (el) el.textContent = text + "  ·  " + ACTIONS + " actions on this page so far.";
+}
+function $(id){ return document.getElementById(id); }
+function railSetup(){
+  const links = [...document.querySelectorAll("nav a")];
+  const mark = () => {
+    let best = links[0];
+    for (const a of links){
+      const t = document.querySelector(a.getAttribute("href"));
+      if (t && t.getBoundingClientRect().top <= 90) best = a;
+    }
+    links.forEach(a => a.classList.toggle("on", a === best));
+  };
+  document.addEventListener("scroll", mark, {passive:true});
+  links.forEach(a => a.addEventListener("click", () => {
+    say("You jumped to " + a.textContent.trim() + ".");
+    setTimeout(mark, 60);
+  }));
+  mark();
+}
 
-  for (const r of rows){
-    if (state.stance === "lbyl"){
-      if (isAllDigits(r.amount)){
-        total += parseInt(r.amount, 10); counted++;
+// ---------------------------------------------------------------- the guided walk
+function walkSetup(walk){
+  let at = -1;
+  const draw = () => {
+    const ev = walk.events[at];
+    $("walkDiagram").innerHTML = walk.diagram(at);
+    $("walkNarration").innerHTML = at < 0
+      ? "<p>" + walk.opening + "</p>"
+      : "<p class='kicker'>Step " + (at+1) + " of " + walk.events.length + "</p><p>" + ev.say + "</p>";
+    $("walkArtifact").textContent = walk.artifact(at);
+    const hits = walk.meter(at);
+    $("walkMeter").innerHTML = hits.map(h =>
+      '<span class="tick ' + h.kind + '" title="' + esc(h.why) + '"></span>').join("");
+    $("walkMeterLegend").textContent = walk.meterLegend(at);
+    $("walkNext").textContent = at + 1 >= walk.events.length ? "Start again" : "Next";
+  };
+  $("walkNext").addEventListener("click", () => {
+    at = at + 1 >= walk.events.length ? -1 : at + 1;
+    draw();
+    say(at < 0 ? "You restarted the walk." : "You advanced the walk to step " + (at+1) + ".");
+  });
+  $("walkMeter").addEventListener("click", () => {
+    const rows = walk.meter(at).map(h => "<tr><td>" + esc(h.label) + "</td><td>" + esc(h.why) + "</td></tr>").join("");
+    openDialog("What the meter is counting",
+      "<table><tr><th>Item</th><th>Why it is marked that way</th></tr>" + rows + "</table>");
+    say("You opened the meter's breakdown.");
+  });
+  draw();
+}
+
+// ---------------------------------------------------------------- experiment cards
+function cardsSetup(cards){
+  const host = $("cards");
+  cards.forEach((c, i) => {
+    const el = document.createElement("div");
+    el.className = "card";
+    el.innerHTML =
+      "<h4>Experiment " + (i+1) + ". " + esc(c.title) + "</h4>" +
+      "<div class='field'><b>Situation</b>" + c.situation + "</div>" +
+      "<div class='field'><b>Hypothesis</b>" + c.hypothesis + "</div>" +
+      "<div class='field'><b>Watch for</b>" + c.watch + "</div>" +
+      "<div class='field'><b>Change one thing</b><div id='opts" + i + "' class='row'></div></div>" +
+      "<div class='row'><button class='solid' id='run" + i + "'>" + esc(c.runLabel || "Run it") +
+      "</button><button id='seq" + i + "'>Show the sequence</button></div>" +
+      "<div class='result' id='res" + i + "'><p class='kicker'>What happened</p><p>Nothing yet. " +
+      "Pick an option and press " + esc(c.runLabel || "Run it") + ".</p></div>";
+    host.appendChild(el);
+    let chosen = 0;
+    const opts = el.querySelector("#opts" + i);
+    c.options.forEach((o, j) => {
+      const b = document.createElement("button");
+      b.className = "opt" + (j === 0 ? " on" : "");
+      b.textContent = o.label;
+      b.addEventListener("click", () => {
+        chosen = j;
+        [...opts.children].forEach((x, k) => x.classList.toggle("on", k === j));
+        say("Experiment " + (i+1) + ": you selected " + o.label + ".");
+      });
+      opts.appendChild(b);
+    });
+    el.querySelector("#run" + i).addEventListener("click", () => {
+      const out = c.run(c.options[chosen]);
+      el.querySelector("#res" + i).innerHTML =
+        "<p class='kicker'>What happened</p><pre>" + esc(out.happened) + "</pre>" +
+        "<div class='field'><b>Why it matters</b>" + out.why + "</div>" +
+        "<div class='rule'><b>The rule.</b> " + out.rule + "</div>";
+      say("Experiment " + (i+1) + " ran with " + c.options[chosen].label + ".");
+    });
+    el.querySelector("#seq" + i).addEventListener("click", () => {
+      openDialog("Experiment " + (i+1) + ", as a sequence",
+        sequence(c.lanes, c.sequence(c.options[chosen]), c.title));
+      say("You opened the sequence for experiment " + (i+1) + ".");
+    });
+  });
+}
+
+// ---------------------------------------------------------------- popups
+function openDialog(title, html){
+  const d = $("popup");
+  $("popupTitle").textContent = title;
+  $("popupBody").innerHTML = html;
+  if (typeof d.showModal === "function") d.showModal(); else d.setAttribute("open", "");
+}
+
+// ---------------------------------------------------------------- calculators
+function calcSetup(calcs){
+  const host = $("calcs");
+  calcs.forEach((c, i) => {
+    const el = document.createElement("div");
+    el.className = "card";
+    el.innerHTML = "<h4>" + esc(c.title) + "</h4><p>" + c.blurb + "</p>" +
+      "<pre>" + esc(c.formula) + "</pre><div class='row' id='ins" + i + "'></div>" +
+      "<div class='status' id='out" + i + "'>Move an input to see the number.</div>";
+    host.appendChild(el);
+    const ins = el.querySelector("#ins" + i);
+    const vals = {};
+    c.inputs.forEach(inp => {
+      const holder = document.createElement("div");
+      holder.className = "col";
+      holder.innerHTML = "<label for='" + inp.id + "'>" + esc(inp.label) + "</label>";
+      let node;
+      if (inp.kind === "select"){
+        node = document.createElement("select");
+        inp.options.forEach(o => { const op = document.createElement("option");
+          op.value = o.value; op.textContent = o.label; node.appendChild(op); });
       } else {
-        rejects.push({id:r.id, raw:r.amount,
-          reason:"isdigit() said no, so it was never attempted"});
+        node = document.createElement("input");
+        node.type = inp.kind || "number";
+        node.min = inp.min; node.max = inp.max; node.step = inp.step || 1;
       }
-    } else {
-      const v = pythonInt(r.amount);
-      if (v !== null){ total += v; counted++; }
-      else {
-        rejects.push({id:r.id, raw:r.amount,
-          reason:"invalid literal for int() with base 10: '" + r.amount + "'"});
-      }
+      node.id = inp.id;
+      node.value = inp.value;
+      vals[inp.id] = inp.value;
+      const update = () => {
+        vals[inp.id] = node.value;
+        const out = c.compute(vals);
+        el.querySelector("#out" + i).innerHTML =
+          "<span class='verdict'>" + esc(out.value) + "</span> &middot; " + out.means;
+        say(c.title + ": you set " + inp.label + " to " + node.value + ".");
+      };
+      node.addEventListener("input", update);
+      node.addEventListener("change", update);
+      holder.appendChild(node);
+      ins.appendChild(holder);
+    });
+  });
+}
+
+// ---------------------------------------------------------------- glossary
+function glossarySetup(terms){
+  const host = $("glossary");
+  host.innerHTML = terms.map(t =>
+    "<dt>" + esc(t.term) + "</dt><dd>" + t.meaning + " <span style='color:var(--muted)'>First matters "
+    + esc(t.where) + ".</span></dd>").join("");
+}
+
+// ---------------------------------------------------------------- decision visual
+function decisionSetup(spec){
+  const host = $("decision");
+  const draw = path => { host.innerHTML = spec.render(path); };
+  draw(spec.initial);
+  const bar = $("decisionControls");
+  spec.paths.forEach((p, i) => {
+    const b = document.createElement("button");
+    b.className = "opt" + (i === 0 ? " on" : "");
+    b.textContent = p.label;
+    b.addEventListener("click", () => {
+      [...bar.children].forEach((x, k) => x.classList.toggle("on", k === i));
+      draw(p.path);
+      $("decisionSays").textContent = p.says;
+      say("Decision walk: you followed " + p.label + ".");
+    });
+    bar.appendChild(b);
+  });
+}
+
+
+const ROWS = [
+  {id:"KR4200", amount:"4500",   status:"returned"},
+  {id:"KR4210", amount:"twelve", status:"delivered"},
+  {id:"KR4214", amount:"",       status:"delivered"},
+  {id:"KR4218", amount:"2180",   status:"delivered"},
+  {id:"KR4223", amount:"1755",   status:"delivered"}
+];
+const STANCES = ["no handler at all", "except: pass", "except ValueError, counted"];
+
+function runPass(stance){
+  let total = 0, kept = 0, rejects = [], stopped = null;
+  for (const r of ROWS){
+    const n = Number(r.amount);
+    const bad = r.amount.trim() === "" || Number.isNaN(n);
+    if (!bad){ total += n; kept += 1; continue; }
+    if (stance === "no handler at all"){
+      stopped = r.id;
+      break;
+    }
+    if (stance === "except ValueError, counted")
+      rejects.push({id:r.id, reason:"invalid literal for int() with base 10: '" + r.amount + "'"});
+  }
+  return {total, kept, rejects, stopped};
+}
+
+const WALK = {
+  opening: "Five rows from Tuesday's CSV, two of which will not convert. Press Next to walk the " +
+    "pass one row at a time with no handler in place, and watch where it stops.",
+  events: ROWS.map((r, i) => {
+    const n = Number(r.amount);
+    const bad = r.amount.trim() === "" || Number.isNaN(n);
+    return {say: "Row " + (i+1) + ", " + r.id + ", amount <code>" + (r.amount || "(empty)") +
+      "</code>. " + (bad
+        ? "int() refuses this one. With no handler around it the loop ends here and everything " +
+          "below is never read."
+        : "It converts, so it joins the running total.")};
+  }),
+  diagram: at => vflow(ROWS.map(r => r.id + "  " + (r.amount || "(empty)")),
+                       at < 0 ? null : at, "the five rows, in file order"),
+  artifact: at => {
+    if (at < 0) return "total: 0\nkept: 0\nrejected: 0\n\nnothing has run yet";
+    let total = 0, kept = 0, stopped = null;
+    for (let i = 0; i <= at; i++){
+      const n = Number(ROWS[i].amount);
+      const bad = ROWS[i].amount.trim() === "" || Number.isNaN(n);
+      if (bad){ stopped = ROWS[i].id; break; }
+      total += n; kept += 1;
+    }
+    return "total: " + total + "\nkept: " + kept +
+      (stopped ? "\n\nValueError: invalid literal for int() with base 10: '" +
+        ROWS.find(r => r.id === stopped).amount + "'\nthe loop ended on " + stopped : "");
+  },
+  meter: at => ROWS.map((r, i) => {
+    const n = Number(r.amount);
+    const bad = r.amount.trim() === "" || Number.isNaN(n);
+    const seen = at >= 0 && i <= at;
+    return {kind: !seen ? "" : (bad ? "miss" : "hit"), label: r.id,
+            why: !seen ? "not reached yet" : (bad ? "will not convert" : "converted and counted")};
+  }),
+  meterLegend: at => "One tick per row. A filled tick converted, a red tick refused."
+};
+
+const CARDS = [
+  {
+    title: "Three stances on the same bad row",
+    situation: "The pass reaches KR4210, whose amount is the word twelve. Nothing about the row " +
+      "is unusual except that it cannot become a number.",
+    hypothesis: "Predict which stance produces the largest reported total, and which produces a " +
+      "total nobody can defend.",
+    watch: "The total, and the sentence printed beside it.",
+    runLabel: "Run the pass",
+    options: STANCES.map(s => ({label:s, stance:s})),
+    lanes: ["the loop", "int()", "your report"],
+    run: o => {
+      const r = runPass(o.stance);
+      if (o.stance === "no handler at all")
+        return {happened: "ValueError: invalid literal for int() with base 10: 'twelve'\n\n" +
+            "total so far: " + r.total + " from " + r.kept + " rows\nthe loop stopped on " + r.stopped,
+          why: "The run ended the moment it met a value it could not use, so nothing downstream " +
+            "ever produced a number. That is expensive and it is honest.",
+          rule: "A crash costs you a run. A wrong number costs you a decision."};
+      if (o.stance === "except: pass")
+        return {happened: "Processed " + ROWS.length + " records. Total: " + r.total,
+          why: "The total is right for what went into it and the sentence around it is false. " +
+            "Two rows never reached the accumulator and nothing on the page says so.",
+          rule: "A bare except turns a failure into a claim you cannot support."};
+      return {happened: "Clean " + r.kept + ", rejected " + r.rejects.length + ", total " + r.total +
+          "\n\nrejects:\n" + r.rejects.map(x => "  " + x.id + "  " + x.reason).join("\n"),
+        why: "The same total, and now the claim beside it is true. The two rejected rows carry " +
+          "the interpreter's own wording, so somebody can go and fix the source.",
+        rule: "Catch narrowly, count what you caught, and write down why."};
+    },
+    sequence: o => {
+      const r = runPass(o.stance);
+      const base = [["the loop", "int()", "'twelve'"], ["int()", "the loop", "ValueError"]];
+      if (o.stance === "no handler at all") return base.concat([["the loop", "your report", "nothing"]]);
+      if (o.stance === "except: pass") return base.concat([["the loop", "your report", "total " + r.total + " from 5 records"]]);
+      return base.concat([["the loop", "your report", "total " + r.total + " from " + r.kept + " of 5"]]);
+    }
+  },
+  {
+    title: "What the function knows, and what the caller knows",
+    situation: "normalise_amount converts an amount or raises. It has no idea whether this run is " +
+      "a nightly batch that should skip a bad row or a form submission that should refuse it.",
+    hypothesis: "Predict whether the decision about a failure belongs inside the function or outside it.",
+    watch: "Which of the two callers gets what it needs from the same function.",
+    runLabel: "Call it from both places",
+    options: [
+      {label:"the function decides", where:"inside"},
+      {label:"the caller decides", where:"outside"}
+    ],
+    lanes: ["nightly batch", "normalise_amount", "form submission"],
+    run: o => {
+      if (o.where === "inside")
+        return {happened: "nightly batch: skipped 2 rows silently\nform submission: skipped the " +
+            "amount silently and accepted the order",
+          why: "One function cannot be right for both callers. Whichever behaviour it picks is " +
+            "wrong for the other one, and the wrongness is invisible.",
+          rule: "A function that decides what a failure means has taken a decision it cannot make."};
+      return {happened: "nightly batch: 3 clean, 2 rejected, both reasons logged\n" +
+          "form submission: refused, and told the customer which field",
+        why: "The same function raised in both cases. Each caller did what its own job required.",
+        rule: "Convert or refuse in the function. Decide what that means in the caller."};
+    },
+    sequence: o => o.where === "inside"
+      ? [["nightly batch", "normalise_amount", "'twelve'"],
+         ["normalise_amount", "nightly batch", "None, silently"],
+         ["form submission", "normalise_amount", "'twelve'"],
+         ["normalise_amount", "form submission", "None, silently"]]
+      : [["nightly batch", "normalise_amount", "'twelve'"],
+         ["normalise_amount", "nightly batch", "ValueError"],
+         ["form submission", "normalise_amount", "'twelve'"],
+         ["normalise_amount", "form submission", "ValueError"]]
+  },
+  {
+    title: "The file format decides what survives the trip",
+    situation: "The same five rows leave your notebook twice, once as CSV and once as JSON, and " +
+      "come back in.",
+    hypothesis: "Predict which fields change type on the way back.",
+    watch: "The type of the amount after the round trip.",
+    runLabel: "Round trip the rows",
+    options: [{label:"as CSV", fmt:"csv"}, {label:"as JSON", fmt:"json"}],
+    lanes: ["your notebook", "the file", "whoever reads it next"],
+    run: o => o.fmt === "csv"
+      ? {happened: "amount type on the way out: int\namount type on the way back: str\n\n" +
+          "an empty amount comes back as '' rather than as nothing",
+         why: "A CSV agrees about columns and nothing else. Every value in it is text, so a number " +
+           "you wrote becomes text somebody else has to convert.",
+         rule: "Everything a CSV agrees to is text. Convert at the boundary, on purpose."}
+      : {happened: "amount type on the way out: int\namount type on the way back: int\n\n" +
+          "an empty amount comes back as null, which is different from zero",
+         why: "JSON agrees about types and about nesting, so the shape survives. It also fails " +
+           "wholly rather than row by row, which is the price.",
+         rule: "JSON keeps types and nesting. It breaks all at once."},
+    sequence: o => [["your notebook", "the file", "write 5 rows as " + o.fmt],
+      ["the file", "whoever reads it next", o.fmt === "csv" ? "5 rows of text" : "5 typed objects"],
+      ["whoever reads it next", "your notebook", o.fmt === "csv" ? "convert again" : "use directly"]]
+  },
+  {
+    title: "The reconciliation, and the row that vanishes",
+    situation: "Your pass reports a clean file and a rejects file. Somebody asks whether anything " +
+      "went missing between them.",
+    hypothesis: "Predict which of these three passes loses a row without saying so.",
+    watch: "Whether clean plus rejected equals the input count.",
+    runLabel: "Reconcile",
+    options: [
+      {label:"both lists appended", kind:"good"},
+      {label:"rejects appended, clean skipped on error", kind:"lossy"},
+      {label:"clean appended, rejects dropped", kind:"silent"}
+    ],
+    lanes: ["input", "clean", "rejects"],
+    run: o => {
+      const r = runPass("except ValueError, counted");
+      if (o.kind === "good")
+        return {happened: ROWS.length + " in = " + r.kept + " clean + " + r.rejects.length +
+            " rejected\nassert holds",
+          why: "The identity holds, so nothing vanished. This is the cheapest check in the whole day.",
+          rule: "Input equals clean plus rejected, asserted, every run."};
+      if (o.kind === "lossy")
+        return {happened: ROWS.length + " in = " + (r.kept - 1) + " clean + " + r.rejects.length +
+            " rejected\nAssertionError: records went missing",
+          why: "One row fell through both branches. Without the assertion nobody would ever look " +
+            "for it, because neither file is obviously short.",
+          rule: "A record in neither file is a record nobody will ever look for again."};
+      return {happened: ROWS.length + " in = " + r.kept + " clean + 0 rejected\n" +
+          "AssertionError: records went missing",
+        why: "The clean file is correct and the run has no memory of what it threw away.",
+        rule: "The rejects file is what makes the clean file's count defensible."};
+    },
+    sequence: o => [["input", "clean", "rows that converted"],
+      ["input", "rejects", o.kind === "silent" ? "nothing" : "rows that refused"],
+      ["clean", "rejects", o.kind === "good" ? "5 = 3 + 2, holds" : "the identity breaks"]]
+  }
+];
+
+const DECISION = {
+  initial: ["it raised"],
+  paths: [
+    {label:"The value refused to convert", path:["it raised", "you expected this value"],
+     says:"You expected it, so catch it by name, log the record and the reason, and carry on. " +
+       "The rejects file is the deliverable that makes the clean count mean something."},
+    {label:"Something you did not expect raised", path:["it raised", "you did not expect this"],
+     says:"Let it stop the run. A failure nobody predicted is a failure nobody has decided about, " +
+       "and a bare except turns it into a number instead of a question."},
+    {label:"Nothing raised and the number looks wrong", path:["nothing raised"],
+     says:"Reconcile. Input equals clean plus rejected. If that identity does not hold, a record " +
+       "went somewhere neither file knows about."}
+  ],
+  render: path => tree({
+    label: "your cleaning pass just finished",
+    branches: [
+      ["it raised", {label: "did you expect this value?",
+        branches: [["you expected this value", {label: "catch by name, log the reason, continue"}],
+                   ["you did not expect this", {label: "let it stop the run"}]]}],
+      ["nothing raised", {label: "does input equal clean plus rejected?",
+        branches: [["yes", {label: "the count is defensible"}],
+                   ["no", {label: "a record went missing, stop"}]]}]
+    ]
+  }, path, "what a failure means, and who decides")
+};
+
+const CALCS = [
+  {
+    title: "What the bare except costs, in records",
+    blurb: "The total is right for what went into it. The claim around it is what breaks. This " +
+      "prices the gap between the two.",
+    formula: "invisible rows = rows claimed  -  rows that actually converted",
+    inputs: [
+      {id:"b_claimed", label:"Rows your message claims", kind:"number", value:30, min:1, max:5000, step:1},
+      {id:"b_converted", label:"Rows that actually converted", kind:"number", value:28, min:0, max:5000, step:1}
+    ],
+    compute: v => {
+      const c = Number(v.b_claimed), k = Number(v.b_converted);
+      const gap = c - k;
+      return {value: gap + " rows invisible, " + (c ? ((gap / c) * 100).toFixed(1) : "0") + " percent of the claim",
+        means: gap === 0 ? "The claim matches the work, so the sentence beside the total is true."
+          : "The total is correct for " + k + " rows and the sentence says " + c +
+            ". Nothing on the page reconciles the two."};
+    }
+  },
+  {
+    title: "The reconciliation identity",
+    blurb: "One line, run every time. When it does not hold, a record went somewhere neither file " +
+      "knows about, and nobody will ever go looking for it.",
+    formula: "input  =  clean  +  rejected",
+    inputs: [
+      {id:"r_in", label:"Rows read from the input", kind:"number", value:30, min:0, max:5000, step:1},
+      {id:"r_clean", label:"Rows written to clean", kind:"number", value:28, min:0, max:5000, step:1},
+      {id:"r_rej", label:"Rows written to rejects", kind:"number", value:2, min:0, max:5000, step:1}
+    ],
+    compute: v => {
+      const i = Number(v.r_in), c = Number(v.r_clean), r = Number(v.r_rej);
+      const d = i - c - r;
+      return {value: d === 0 ? "holds" : Math.abs(d) + (d > 0 ? " rows vanished" : " rows appeared"),
+        means: d === 0 ? "Every input row is accounted for in exactly one of the two output files."
+          : "Stop the run. " + (d > 0 ? "Rows fell through both branches."
+            : "A row was written to both files, or the input count is wrong.")};
     }
   }
+];
 
-  const claimsAll = state.log === "drop";
-  const printed = claimsAll
-    ? `Processed ${rows.length} records. Total: ${total}`
-    : `Clean ${counted}, rejected ${rejects.length}, total ${total}`;
+const TERMS = [
+  {term:"Function", meaning:"One decision, named, with one home, that you can call again on " +
+    "different records.", where:"the third time you copied the same four lines"},
+  {term:"return against print", meaning:"print shows a person. return hands a value to the next " +
+    "line of code. A function with no return hands back None.", where:"the first call whose result you tried to use"},
+  {term:"Traceback", meaning:"The stack of calls that led to a failure, read from the bottom, " +
+    "because the last line names the exception and the message.", where:"the first ValueError"},
+  {term:"Named exception", meaning:"Catching the failure you expected and nothing else, so an " +
+    "unexpected one still stops the run.", where:"the difference between except: and except ValueError:"},
+  {term:"Bare except", meaning:"A handler that catches everything, including failures nobody has " +
+    "decided about, and turns them into a plausible wrong number.", where:"the total that claimed thirty records"},
+  {term:"Rejects log", meaning:"A file with one row per record you could not use, each carrying " +
+    "the reason in the interpreter's own wording.", where:"the moment somebody asks how you know the clean count"},
+  {term:"Reconciliation", meaning:"Input equals clean plus rejected, asserted every run.",
+   where:"the assertion at the end of the pass"},
+  {term:"File format", meaning:"An agreement about structure. A CSV agrees about columns and " +
+    "everything in it is text. JSON agrees about types and nesting and fails wholly.",
+   where:"the round trip that changed the amount's type"},
+  {term:"Relative path", meaning:"A path counted from the folder the code is running in, which " +
+    "for a notebook is its own folder.", where:"the FileNotFoundError naming data/orderz.csv"}
+];
 
-  document.getElementById("printed").textContent = printed;
-  document.getElementById("s-in").textContent = rows.length;
-  document.getElementById("s-clean").textContent = counted;
-  document.getElementById("s-rej").textContent = state.log === "drop" ? 0 : rejects.length;
+walkSetup(WALK);
+cardsSetup(CARDS);
+decisionSetup(DECISION);
+calcSetup(CALCS);
+glossarySetup(TERMS);
 
-  const bare = state.stance === "eafp" && state.width === "bare";
-  const silent = state.log === "drop";
-  const lostGood = state.stance === "lbyl" && state.edge === "on";
-
-  const v = document.getElementById("verdict");
-  let text, ok = false;
-  if (bare && silent){
-    text = "You cannot defend this number. The line claims " + rows.length +
-           " records and " + counted + " went in, and there is no record of the difference.";
-  } else if (lostGood && silent){
-    text = "The worst of both. A good record was thrown away for wearing spaces, and nothing was recorded, " +
-           "so the total is short by 1360 and no trace of the loss exists.";
-  } else if (silent){
-    text = "The total is right and you cannot show it. Every rejected record left without a trace.";
-  } else if (bare){
-    text = "You logged the rejections, and the catch still swallows failures you never considered, such as a typo in a key name.";
-  } else if (lostGood){
-    text = "Honest, and you threw away a good record. Checking the shape first rejected a real value that " +
-           "int() would have converted, because it arrived wearing spaces.";
-  } else {
-    text = "You can defend this number. " + counted + " counted, " + rejects.length +
-           " set aside with reasons, and the two add up to " + rows.length + ".";
-    ok = true;
-  }
-  v.textContent = text;
-  v.className = "verdict " + (ok ? "good" : "bad");
-
-  const box = document.getElementById("rejects");
-  if (state.log === "drop"){
-    box.innerHTML = '<p class="empty">Nothing was recorded. The records that failed are gone and their ids went with them.</p>';
-  } else if (rejects.length === 0){
-    box.innerHTML = '<p class="empty">Nothing was rejected on this setting.</p>';
-  } else {
-    box.innerHTML = '<table><thead><tr><th>id</th><th>value seen</th><th>reason</th></tr></thead><tbody>' +
-      rejects.map(r => `<tr><td class="mono">${r.id}</td><td class="mono">${JSON.stringify(r.raw)}</td><td>${r.reason}</td></tr>`).join("") +
-      '</tbody></table>';
-  }
-
-  const stanceWord = state.stance === "lbyl" ? "check the shape first" : "attempt the conversion";
-  const widthWord = state.stance === "lbyl" ? "" : (state.width === "bare" ? " and catch everything" : " and catch only ValueError");
-  const logWord = state.log === "drop" ? "drop what fails" : "log what fails with its reason";
-  document.getElementById("rule-line").textContent =
-    "The rule you are running: " + stanceWord + widthWord + ", then " + logWord + ".";
-
-  document.getElementById("t-width").classList.toggle("disabled", state.stance === "lbyl");
-  for (const b of document.querySelectorAll(".seg button")){
-    b.setAttribute("aria-pressed", String(state[b.dataset.k] === b.dataset.v));
-  }
-}
-
-document.addEventListener("click", e => {
-  const b = e.target.closest(".seg button");
-  if (!b) return;
-  state[b.dataset.k] = b.dataset.v;
-  run();
+document.getElementById("popupClose").addEventListener("click", () => {
+  const d = document.getElementById("popup");
+  if (typeof d.close === "function") d.close(); else d.removeAttribute("open");
+  say("You closed the detail popup.");
 });
-run();
+railSetup();
 </script>
 </body>
 </html>

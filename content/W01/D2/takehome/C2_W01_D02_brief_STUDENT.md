@@ -115,3 +115,17 @@ The totals matter least. Two learners can hand in different totals and both be r
 Open `C2_W01_D02_selfcheck_STUDENT.md`. It contains checkpoints you can verify alone, so you know where you stand before anybody else looks.
 
 Open it after you have finished, not before. Reading it first turns this into a copying exercise and you will feel the difference tomorrow.
+
+## The two tools that ship with tonight's work
+
+Both sit in `demos/` beside the companion page.
+
+`C2_W01_D02_decision_tool_STUDENT.xlsx` has one tab per decision you took today: which stance you take on a value that will not convert, who decides what a failure means, and which format you write the file under. Yellow cells are yours and everything else computes. Each tab ships with one planted defect, so all three verdicts read "stop" when you open it, and clearing one tab does not clear the export tab's release.
+
+`C2_W01_D02_clean_pass_STUDENT.xlsx` is the eight-move run sheet for a read, clean and write pass, with a symptom lookup beside it. Use it on tonight's third file.
+
+Bring the export tab's paragraph tomorrow. Wednesday opens on somebody reading one aloud.
+
+## Where the running half lives
+
+`notebooks/C2_W01_D02_ex1_hands_on_STUDENT.ipynb` and `C2_W01_D02_ex2_hands_on_STUDENT.ipynb` carry the pick-from-options markers and the checks. Post the letters from both with your exercise letters.

@@ -116,3 +116,17 @@ Then the bridge, about ten minutes, and it is worth protecting the time for it b
 Per question, the count of papers that lost each part point. Nothing else, and no per-learner totals anywhere, since the Structure tab locks this paper as a performance indicator rather than an assessment component. That table goes to the Programme Head and to Monday's trainer, who uses the two worst rows to decide what gets re-anchored in the first fifteen minutes of Week 2.
 
 Collect the margin disputes at the end, settle them yourself against the answer key, and note any question where more than a handful of markers disagreed with each other. A part point that markers cannot apply consistently is a defect in the key, and it gets fixed before the Week 2 paper reuses the format.
+
+## Q0, and why it opens the discussion
+
+Walk Q0 first, before any of the eight. It takes four minutes, everybody has an opinion about a drawing, and it puts the whole week's pipeline on the board in one shape that the other eight questions then hang off.
+
+Draw the wrong version first, exactly as the paper has it, and ask the room what would happen if it ran. Wait. Somebody will say every row goes to both files, and that is the moment to put the decision diamond in.
+
+**The two follow-ups.**
+
+1. "Where would you put the reconciliation if the pass wrote three files rather than two?" The answer is still after all the writes, and the identity grows a term. This tests whether they learned the shape or the line.
+2. "The drawing has no arrow for a row that raises something you did not expect. Where does it go?" It stops the run, which is Tuesday's argument, and a learner who says it joins the rejects has not separated the failure they planned for from the one they did not.
+
+**The call-out list for Q0.** Take the first answer from somebody who has not spoken yet this week, since a diagram question is the cheapest possible entry point for a quiet learner.
+

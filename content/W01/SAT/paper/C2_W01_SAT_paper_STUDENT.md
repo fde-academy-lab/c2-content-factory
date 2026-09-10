@@ -8,8 +8,8 @@ This paper is ungraded. The programme reads it as a performance indicator, and i
 
 | Instruction | Why it is there |
 |---|---|
-| Answer all eight questions. | Every one is on the week's question set, and the discussion after the break walks all eight in order. |
-| Pace at roughly one eighth of your time per question. | The questions are the same size, so falling behind on one costs you a later one. |
+| Answer all nine questions. | Eight are on the week's question set and Q0 reads a diagram, and the discussion after the break walks all nine in order. |
+| Pace at roughly one ninth of your time per question. | The questions are much the same size, so falling behind on one costs you a later one. |
 | Write on alternate lines and start each question on a fresh side. | Another learner reads and checks your paper after the break and has to read your handwriting at speed. |
 | Put the identifier you are registered with at the top of every sheet. | Papers are swapped for marking and have to come back to you. |
 | Answer in short form: a selection, a value, one or two lines of reasoning. | Nothing here rewards length. An answer that fills a page and never names the mechanism does no work. |
@@ -31,6 +31,39 @@ You spent the week on Kalpa Retail's Week 1 orders file. These are its real numb
 | Median of those 44 | Rs 1,910 |
 | The largest order | `KR4232` at Rs 480,000, delivered, Retail-Core, and real |
 | Fields on a row | `order_id`, `customer_id`, `segment`, `amount`, `status`, `order_date`, `discount` |
+
+---
+
+## The week, as one picture
+
+Every question below sits somewhere on this line. Read it once before you start.
+
+```mermaid
+flowchart LR
+    A["Monday<br/>read the orders"] --> B["Tuesday<br/>package and survive bad data"]
+    B --> C["Wednesday<br/>profile before you touch"]
+    C --> D["Thursday<br/>describe without misleading"]
+```
+
+---
+
+## Q0. Read the diagram
+
+Here is a cleaning pass, drawn. One arrow is wrong.
+
+```mermaid
+flowchart TB
+    A["read the row"] --> B["convert the amount"]
+    B --> C["write to clean.csv"]
+    C --> D["log the rejection with its reason"]
+    B --> E["reconcile: input equals clean plus rejected"]
+```
+
+**(a)** Name the arrow that is wrong, and say in one line where it should go instead.
+
+**(b)** In one line, say what the drawing would produce if it ran as it stands.
+
+**(c)** Give the one line of code that checks the reconciliation, using `orders`, `clean` and `rejects`.
 
 ---
 

@@ -41,6 +41,31 @@ The deck's half-two JSON section is not a fifth idea either. It is the first ide
 
 ---
 
+## The run sheet across surfaces
+
+Which surface is live at each point, and for how long. Durations only.
+
+| Order | Surface | What is on it | Duration |
+|---|---|---|---|
+| 1 | Notebook 1 on the projector | `clean_record` working on three records, before anything is explained | 10 min |
+| 2 | Deck, half one, sections 1 and 2 | The cell written three times, then the rule with a name | 30 min |
+| 3 | Notebook 1, learners mirroring | Carving `delivered_total`, then the comprehension in one beat | 25 min |
+| 4 | Deck, half one, section 3 | Return against print, and the None that follows | 20 min |
+| 5 | Companion on the projector | The guided walk with no handler, then experiment 1 run three times | 15 min |
+| 6 | Exercise E2, trace the calls | Fifteen items, silent, then the hands-on notebook | 15 min |
+| 7 | Deck, half one, sections 4 and 5 | Named exceptions, the bare-except demonstration, the rejects log | 35 min |
+| 8 | Notebook 1, learners building | `clean_record`, `clean_records` and the reconciliation assertion | 25 min |
+| 9 | Deck, half two, sections 1 to 3 | The wrong path, DictReader, convert or reject | 35 min |
+| 10 | Notebook 2, learners building | One pass, two files out, both reopened | 30 min |
+| 11 | Deck, half two, sections 4 to 6 | JSON, the round trip, the truncated feed | 30 min |
+| 12 | Exercise E3, the truncated feed | Fifteen items plus the hands-on notebook | 15 min |
+| 13 | Exercise, the AI-free lab | A fresh defective CSV, cold, no assistant | 40 min |
+| 14 | Workbook handed out | The decision tool, walked once on the Stance tab | 10 min |
+| 15 | Kahoot | Eight items including Monday's return question | 15 min |
+| 16 | Cheat sheets at the close | The text sheet and the visual sheet, both printed | 5 min |
+
+Fixed content totals about 355 minutes. The AI-free lab is the one block that cannot be shortened, because its whole value is that nobody helps.
+
 ## The breaks to run, with exact text
 
 Verified against Python 3.11.15 in the build session. Re-run each one in the Codespace image before delivery, because the caret annotation lines under the failing expression differ between versions even where the message does not.

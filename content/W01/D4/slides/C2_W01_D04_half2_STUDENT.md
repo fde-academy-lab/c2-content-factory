@@ -10,23 +10,24 @@ Position bar, repeated at every section boundary:
 ---
 
 ## S1. Per segment, with denominators
-
 Half one gave you one number for the whole file. Nobody runs a business unit on one number.
 
 The question is always the same one level down: which part of Kalpa Retail is working, and how sure can you be.
 
 ---
 
-## S2. Where we are
+---
 
+## S2. Where we are
 `[one column] > [what is typical] > [what one order does] > [what the shape says] > **[per segment, with denominators]**`
 
 You can now pick an honest statistic for a column. Half two splits the file by segment, computes that statistic per group, and attaches the one thing that decides whether the answer means anything.
 
 ---
 
-## S2b. The metric, named before it is computed
+---
 
+## S2b. The metric, named before it is computed
 Kalpa Retail cares about returns. A returned order costs the delivery, the reverse logistics and usually the margin.
 
 ```
@@ -37,8 +38,9 @@ This is the first metric in the programme where **lower is better**. A ranking o
 
 ---
 
-## S2c. Where this is going
+---
 
+## S2c. Where this is going
 ```
 segment        orders   median amount   return rate
 Business            9        Rs 2,050          11.1%
@@ -51,8 +53,9 @@ You will have built this inside the hour. Then you will spend the rest of the se
 
 ---
 
-## S2d. Half two in one picture
+---
 
+## S2d. Half two in one picture
 ```mermaid
 flowchart LR
     A["44 cleaned orders"] --> B["count into named piles<br/>one pile per segment"]
@@ -64,14 +67,16 @@ flowchart LR
 
 ---
 
-## SECTION 1: THE DENOMINATOR
+---
 
+## SECTION 1: THE DENOMINATOR
 `[one column] > [what is typical] > [what one order does] > [what the shape says] > **[per segment, with denominators]**`
 
 ---
 
-## S3. One rate, two files
+---
 
+## S3. One rate, two files
 Two segments in two different companies, same reported number:
 
 ```
@@ -83,8 +88,17 @@ Identical rates. Which one would you build a quarter's plan on?
 
 ---
 
-## S4. Why the small one moves
+```mermaid
+flowchart TB
+    A["a dictionary you typed out"] --> B["a segment you did not expect"]
+    B --> C["KeyError: 'Student'"]
+    D["an empty dictionary"] --> E["the same segment"]
+    E --> F["build the key, then count"]
+```
 
+---
+
+## S4. Why the small one moves
 In the 12-order segment, one order changing its status moves the rate by 8.3 points.
 
 In the 1,200-order segment, one order moves it by 0.08 points.
@@ -93,8 +107,9 @@ The small segment is not wrong. It is loud. Its number swings on evidence too th
 
 ---
 
-## S5. What a rate actually is
+---
 
+## S5. What a rate actually is
 ```
 rate = how many did the thing  /  how many could have
 ```
@@ -105,8 +120,9 @@ Every argument in this section comes from the thrown-away number.
 
 ---
 
-## D1. A rate written properly, and the number nobody prints
+---
 
+## D1. A rate written properly, and the number nobody prints
 $$\text{rate} = \frac{k}{n} \qquad \text{where } k \text{ did the thing and } n \text{ could have}$$
 
 The reporting convention prints the quotient and discards $n$, and $n$ is the number that decides whether the quotient means anything.
@@ -126,8 +142,9 @@ Business's entire lead over Student is 8.9 points. One order in Business is wort
 
 ---
 
-## D2. Why a ranking of small groups reads size as much as performance
+---
 
+## D2. A ranking of small groups reads size
 ```mermaid
 flowchart TB
     A["a rate is a quotient over n"] --> B["small n means the rate can<br/>only take a few values"]
@@ -141,22 +158,25 @@ Nothing is causing this and nothing is wrong with the data. It is what quotients
 
 ---
 
-## S6. The rule
+---
 
+## S6. The rule
 > A rate travels with its denominator or it does not travel.
 
 Write it as `11.1 percent of 9` and nobody can misread it. Write it as `11.1 percent` and everybody will.
 
 ---
 
-## SECTION 2: THE ACCUMULATOR
+---
 
+## SECTION 2: THE ACCUMULATOR
 `[one column] > [what is typical] > [what one order does] > [what the shape says] > **[per segment, with denominators]**`
 
 ---
 
-## S7. Counting into buckets
+---
 
+## S7. Counting into buckets
 Monday you counted orders that passed a test. Today you count them into named piles, one pile per segment.
 
 ```
@@ -170,8 +190,20 @@ Reasonable code. The analyst listed the segments they remembered.
 
 ---
 
-## S8. Run it
+```mermaid
+flowchart LR
+    A["44 orders"] --> B["group by segment"]
+    B --> C["count"]
+    B --> D["median amount"]
+    B --> E["return rate"]
+    C --> F["the honest sentence"]
+    D --> F
+    E --> F
+```
 
+---
+
+## S8. Run it
 ```
 KeyError: 'Student'
 ```
@@ -180,8 +212,9 @@ It failed on the very first order in the file.
 
 ---
 
-## S9. Reading it
+---
 
+## S9. Reading it
 `KeyError` means a dictionary was asked for a key it does not hold. The key it did not hold is printed for you: `Student`.
 
 The dictionary held three segments because a person typed three segments. Kalpa Retail has four.
@@ -192,8 +225,20 @@ This one is loud, because the first order in the file is a Student order. The da
 
 ---
 
-## D3. The failure that is worse than the KeyError
+```mermaid
+flowchart LR
+    A["44 orders"] --> B["group by segment"]
+    B --> C["count"]
+    B --> D["median amount"]
+    B --> E["return rate"]
+    C --> F["the honest sentence"]
+    D --> F
+    E --> F
+```
 
+---
+
+## D3. The failure that is worse than the KeyError
 The `KeyError` was the good case, because it stopped.
 
 ```
@@ -210,8 +255,9 @@ The check that catches it is the one you already write: the segment counts have 
 
 ---
 
-## S10. Build the key when you first see it
+---
 
+## S10. Build the key when you first see it
 ```
 counts = {}
 
@@ -234,8 +280,9 @@ That is Monday's `.get()` with a default, doing exactly what it did on Monday.
 
 ---
 
-## S11. The fixed count
+---
 
+## S11. The fixed count
 ```
 Business       9
 Retail-Core   14
@@ -250,14 +297,16 @@ One number here deserves a second look. Student holds ten. The raw file held twe
 
 ---
 
-## SECTION 3: THE SEGMENT SUMMARY
+---
 
+## SECTION 3: THE SEGMENT SUMMARY
 `[one column] > [what is typical] > [what one order does] > [what the shape says] > **[per segment, with denominators]**`
 
 ---
 
-## D4. Why the median cannot be accumulated and the count can
+---
 
+## D4. Why the median cannot be accumulated and the count can
 ```mermaid
 flowchart TB
     A["walk the orders once"] --> B["count: add one<br/>needs only the running total"]
@@ -273,8 +322,9 @@ A count is a running total, so it is finished the moment the pass is. A median i
 
 ---
 
-## S12. Three accumulators, one pass
+---
 
+## S12. Three accumulators, one pass
 Per segment you need three things: how many orders, what a typical amount looks like, and what share came back.
 
 ```
@@ -289,8 +339,16 @@ The median cannot be accumulated one order at a time. It needs the whole list so
 
 ---
 
-## S13. The table
+```mermaid
+flowchart LR
+    A["one more return"] --> B["12 records: 8.3 points"]
+    A --> C["120 records: 0.8 points"]
+    A --> D["1,200 records: 0.1 points"]
+```
 
+---
+
+## S13. The table
 ```
 segment        orders   median amount   returned   rate
 Business            9        Rs 2,050          1   11.1%
@@ -303,8 +361,9 @@ Note what is absent from every row: the mean. Half one settled that.
 
 ---
 
-## S14. Sort by rate, the way anyone would
+---
 
+## S14. Sort by rate, the way anyone would
 ```
 Business      11.1%
 Student       20.0%
@@ -318,8 +377,19 @@ Somebody in a meeting is about to move budget towards Business.
 
 ---
 
-## S15. Put the count back
+```mermaid
+flowchart TB
+    A["ranked by return rate"] --> B["Business 11.1% on 9"]
+    A --> C["Student 20.0% on 10"]
+    A --> D["Retail-Core 35.7% on 14"]
+    A --> E["Retail-Plus 36.4% on 11"]
+    B --> F["the two best are the two smallest"]
+    C --> F
+```
 
+---
+
+## S15. Put the count back
 ```
 Business      11.1%   on  9 orders
 Student       20.0%   on 10 orders
@@ -333,8 +403,9 @@ Business wins on nine orders.
 
 ---
 
-## D5. The same argument, run on every segment
+---
 
+## D5. The same argument, run on every segment
 Take each segment in turn and ask what one more return would do.
 
 | Segment | Now | With one more return | Does the ranking change |
@@ -348,8 +419,9 @@ Two of the four positions change on one order, and one of those two is the top o
 
 ---
 
-## S16. One order
+---
 
+## S16. One order
 ```
 if 0 more Business orders had been returned:  11.1%   still best
 if 1 more Business order  had been returned:  22.2%   no longer best
@@ -363,14 +435,16 @@ The fix is not a cleverer statistic. It is the column you already have.
 
 ---
 
-## SECTION 4: THE HONEST SENTENCE
+---
 
+## SECTION 4: THE HONEST SENTENCE
 `[one column] > [what is typical] > [what one order does] > [what the shape says] > **[per segment, with denominators]**`
 
 ---
 
-## S17. The shape of the sentence
+---
 
+## S17. The shape of the sentence
 Three parts, in this order, every time:
 
 ```
@@ -381,8 +455,17 @@ Leaving out the third part is how a caveat gets lost between your notebook and a
 
 ---
 
-## S18. Four sentences, one per segment
+```mermaid
+flowchart LR
+    A["the number"] --> E["one sentence somebody repeats"]
+    B["what it describes"] --> E
+    C["the count it rests on"] --> E
+    D["a flag on whatever owns it"] --> E
+```
 
+---
+
+## S18. Four sentences, one per segment
 ```
 Business:    returned on 1 of 9 orders, 11.1 percent. Lowest in the file and the
              smallest segment in it. One more return takes it to 22.2 percent and
@@ -403,16 +486,18 @@ Two decline to make a claim and a third says two segments cannot be told apart. 
 
 ---
 
-## S19. The convention this follows
+---
 
+## S19. The convention this follows
 Retail-Core's mean order value is Rs 36,027.14. Its median is Rs 1,910. One order separates those.
 
 Reporting the median for money is the standing convention wherever a few very large values sit in a long tail, which is why national statistics report median household income. You applied it in half one to a column. Here it applies to a cell in a table somebody will screenshot.
 
 ---
 
-## S20. The question you are not answering today
+---
 
+## S20. The question you are not answering today
 Is Business genuinely better than Retail-Plus, or is 11.1 against 36.4 what four groups of these sizes do on their own?
 
 That question has a real answer and a method behind it, and it is Monday's session.
@@ -421,20 +506,22 @@ Today you name the question, write it in the notebook, and stop. Saying "we do n
 
 ---
 
-## D6. Where the number thirty comes from, and why you should not lean on it
+---
 
+## D6. Where the number thirty comes from
 You will hear that a group under about thirty is too small to trust. It is a useful habit and a bad rule, and knowing why is worth more than obeying it.
 
 The thirty is a rule of thumb from a result about how averages of samples behave as samples get larger. It is a threshold about a particular kind of approximation becoming reasonable, not a line where a number becomes true.
 
 Two things follow. A group of forty can still be far too small when the thing you are counting is rare, because what matters is how many events you saw rather than how many rows. And a group of twenty can be perfectly informative when you are describing it rather than generalising from it.
 
-So the honest habit is not a threshold. It is to say the count out loud and let the reader judge, which is what the sentence on the previous slide does, and to name what would settle the question, which is Monday.
+So the honest habit is not a threshold. It is to say the count out loud and let the reader judge, which is what the sentence on the table above does, and to name what would settle the question, which is Monday.
 
 ---
 
-## D7. The convention behind reporting a median, and where it comes from
+---
 
+## D7. Where the median convention comes from
 Reporting the median rather than the mean on money is not this programme's preference. It is what statistical agencies do with household income, because a small number of very large incomes drag the mean away from anything a household would recognise.
 
 The same shape appears wherever money is measured: salaries, claim sizes, invoice amounts, basket totals and order values. All of them have a floor at zero and no ceiling, so all of them have a right tail.
@@ -443,8 +530,9 @@ Retail-Core in your own table is the case in miniature. Its mean order value is 
 
 ---
 
-## S21. The decision card
+---
 
+## S21. The decision card
 | Before you send a rate | Check |
 |---|---|
 | Is the denominator on the same line as the number | If not, it is not ready |
@@ -455,53 +543,151 @@ Retail-Core in your own table is the case in miniature. Its mean order value is 
 
 ---
 
-## SECTION 5: THE INTERVIEW BLOCK
+```mermaid
+flowchart LR
+    A["the number"] --> E["one sentence somebody repeats"]
+    B["what it describes"] --> E
+    C["the count it rests on"] --> E
+    D["a flag on whatever owns it"] --> E
+```
 
+---
+
+## SECTION 5: THE INTERVIEW BLOCK
 `[one column] > [what is typical] > [what one order does] > [what the shape says] > **[per segment, with denominators]**`
 
 ---
 
-## S21b. Question 1: why does every rate need its denominator
+---
 
-**What it is really testing.** Whether you have ever been burned by a percentage, or only computed them.
+## S21b. Question: why does every rate need its denominator?
+What does the count underneath a rate tell you?
 
-**The answer, in three beats.** A rate is two numbers and the convention prints one of them, so the reader cannot tell 1 of 9 from 100 of 900 and those are different claims. The denominator decides how much the number can move: one record changes a rate over nine by 11.1 points and a rate over 1,200 by 0.08. In today's table the best segment returns on 1 of 9 orders, and one more return takes it from best to fourth, so the ranking is one order deep.
-
-**The follow-up.** "How do you present it then?" The count on the same line as the number, and a sentence saying what the number does not yet support. A caveat that lives in my head gets lost between my notebook and somebody else's slide.
+a) When the rate was computed
+b) How far one event moves the rate
+c) Which tool produced it
+d) Whether the rate is above average
 
 ---
 
-## S21c. Question 2: your smallest segment has the best conversion rate, what do you say
+## S21a. Answer: how far one event can move it
+**The claim.** One event is worth 100 divided by the count, in percentage points. On nine records that is 11 points; on 1,200 it is 0.1.
 
-This programme's own calibration, and it is close to a real first task.
+| Option | Why it does not hold |
+|---|---|
+| a) When | Provenance, useful and separate. |
+| c) Which tool | The same. |
+| d) Above average | A comparison, which needs every rate's count before it means anything. |
 
-**The answer.** I say it is the smallest segment and the best rate, in that order, and that I cannot yet separate those two facts. Small groups produce extreme rates in both directions with nothing causing it, so a ranking of groups of very different sizes is partly a ranking by size. I would give the count beside every rate, say how many events the leader rests on, and name what would settle it rather than pretending the data already has.
+**The mental model.** A rate with no count beside it is a claim nobody can argue with.
 
-**The follow-up.** "What would settle it?" A formal comparison of the two proportions, which is the method arriving on Monday, or more data on the small group, which is usually cheaper than it sounds.
+```mermaid
+flowchart LR
+    A["one more return"] --> B["12 records: 8.3 points"]
+    A --> C["120 records: 0.8 points"]
+    A --> D["1,200 records: 0.1 points"]
+```
 
 ---
 
-## S21d. Question 3: what is the difference between a count and a rate
+## S21c. Question: your smallest segment has the best rate?
+Business returns at 11.1 percent, the best of the four. What do you say?
 
-**The answer.** A count answers how many and a rate answers how often, and they fail in opposite ways. A count is unarguable and useless for comparing groups of different sizes. A rate compares cleanly and hides how much evidence it rests on. So they travel together, which is why the table has an orders column beside the rate column.
-
-**The follow-up.** "Which do you lead with?" The rate, because it is the comparable one, with the count immediately beside it so nobody has to ask.
+a) Business is our best segment
+b) Business returned 1 of 9 orders, a base too small to rank on
+c) Business beat Retail-Plus by 25 points
+d) Business is best, subject to confirmation
 
 ---
 
-## S21e. Question 4: you are asked for the average order value and one order is enormous
+## S21f. Answer: name the count, and decline to rank
+**The claim.** One of nine is 11.1 percent, and one more return would read 22.2 percent, which would put Business behind Student. The ranking is measuring the denominator.
 
-This is half one's question arriving in the shape it actually arrives in.
+| Option | Why it does not hold |
+|---|---|
+| a) Best segment | Travels into a slide with nothing attached to it. |
+| c) Beat by 25 points | Precise about a gap that one order erases. |
+| d) Subject to confirmation | A hedge with no number in it, which nobody acts on. |
 
-**The answer.** I would send the median and say that is what I sent, and I would give the count it rests on. On this file the mean is Rs 12,753.30 and one order out of forty four sits at or above it, while the median is Rs 1,910. I would also name the large order separately rather than hiding it, because it is real and it is interesting on its own.
+**The mental model.** The finding is that a 44 order file cannot rank segments. The table is the working.
 
-**The follow-up.** "What if they insist on the mean?" Then I give both with the counts, and I say which question each one answers. Usually the disagreement is about the question rather than the statistic.
+```mermaid
+flowchart TB
+    A["ranked by return rate"] --> B["Business 11.1% on 9"]
+    A --> C["Student 20.0% on 10"]
+    A --> D["Retail-Core 35.7% on 14"]
+    A --> E["Retail-Plus 36.4% on 11"]
+    B --> F["the two best are the two smallest"]
+    C --> F
+```
+
+---
+
+## S21d. Question: a count and a rate, what is the difference?
+Which statement is true of a rate and false of a count?
+
+a) It can be computed from the file
+b) It hides how many records it rests on
+c) It is always between zero and one
+d) It is easier to compare across groups
+
+---
+
+## S21g. Answer: a rate hides its own base
+**The claim.** A count carries its own size. A rate divides that size away, which is exactly what makes it comparable and exactly what makes it dangerous.
+
+| Option | Why it does not hold |
+|---|---|
+| a) Computed from the file | True of both. |
+| c) Between zero and one | True of a proportion and beside the point here. |
+| d) Easier to compare | True, and it is the benefit rather than the difference being asked about. |
+
+**The mental model.** Comparability is bought by throwing away the base, so you carry the base back yourself.
+
+```mermaid
+flowchart LR
+    A["one more return"] --> B["12 records: 8.3 points"]
+    A --> C["120 records: 0.8 points"]
+    A --> D["1,200 records: 0.1 points"]
+```
+
+---
+
+## S21e. Question: average order value, one whale?
+What do you hand over?
+
+a) The mean, since that is what average means
+b) The median, with the mean and its owner named
+c) The mean with the large order removed
+d) The mean, rounded down
+
+---
+
+## S21h. Answer: the median, and say what the mean is
+**The claim.** Give the median, then say the mean and name the record that owns it. That is one sentence and it closes every follow-up.
+
+| Option | Why it does not hold |
+|---|---|
+| a) The mean | Describes one order out of forty-four. |
+| c) Mean without it | Silently deletes a real order to produce a nicer number. |
+| d) Rounded down | Rounding a wrong number does not make it right. |
+
+**The mental model.** Choose the number, then say what you chose and why.
+
+```mermaid
+flowchart LR
+    A["the number"] --> E["one sentence somebody repeats"]
+    B["what it describes"] --> E
+    C["the count it rests on"] --> E
+    D["a flag on whatever owns it"] --> E
+```
 
 ---
 
 ## S22. Crux
-
 > Every rate carries its denominator, or it lies for you while you are not in the room.
 > The best-performing segment in this file is also the smallest, and one order takes the lead away.
 
 Tomorrow is Gandhi Jayanti and the institute is closed. These same orders, cleaned by you, come back as SQL tables and pandas frames in Week 2, and the summary you built by hand today becomes one line of code you will already know the answer to.
+
+---

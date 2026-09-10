@@ -10,13 +10,39 @@ Written from the planned session and revised against the recording when it arriv
 
 Tuesday you cleaned orders someone had told you were dirty. Today nobody told you, so you profiled before touching anything, and every change you made became a line a reviewer can follow.
 
-## 2. The map
+## 2. The map, and where today sat on it
 
-```
-[profile the columns] > [decide per field] > [find the hidden rows] > [investigate the extremes] > [ship with the log]
+The week's terrain, filling up one column per teaching day.
+
+```mermaid
+flowchart LR
+    M["Monday<br/>read the orders"] --> T["Tuesday<br/>package and survive bad data"]
+    T --> W["Wednesday<br/>profile before you touch<br/>YOU ARE HERE"]
+    W --> Th["Thursday<br/>describe without misleading"]
+    Th --> S["Saturday<br/>the recap paper"]
 ```
 
-The first two are column work. The next two are row work. The last one is what you hand over.
+Today's own five stops:
+
+```mermaid
+flowchart LR
+    A["profile the columns"] --> B["decide per field"]
+    B --> C["the rows a profile cannot see"]
+    C --> D["the extremes"]
+    D --> E["what ships"]
+```
+
+| Where it sits | What Wednesday covered | Status |
+|---|---|---|
+| Phase 1, read and clean data | Profiling, missingness, coercion at scale, duplicates, identity rules, outliers, the decisions log, reconciliation | Worked, with your own hands on the keys |
+| Phase 1, read and clean data | Descriptive statistics on the cleaned output | Named as coming tomorrow, not touched |
+| Phase 2 onwards | The same pass in pandas: `isna`, `duplicated`, `to_numeric` | Mentioned once, so you know the pass returns |
+
+The coverage line: Wednesday worked all seven subtopics on its row, and the outlier fence was given as a convenience for spotting the tail rather than as a test.
+
+**The outcome tie.** Today is the first portfolio-grade act in the programme. Handed a file nobody prepared, you produced a cleaned dataset, a rejects file and a log a reviewer could follow, which is the moment the terminal outcome actually turns on.
+
+**What was left out.** Imputation beyond a stated default, statistical outlier theory and standard deviation arithmetic. The nearest thing today did not cover is how to describe the cleaned data honestly, and that is tomorrow.
 
 ## 3. The profiler
 
@@ -186,3 +212,38 @@ An identity rule is something you state, and whoever owns the data decides it.
 An outlier is a finding to investigate before it is a row to delete.
 
 The profiled dataset without its decisions log is an opinion.
+
+## 12. Check yourself, with nothing to write
+
+Eight questions. No notebook, no notes. Anything you cannot say in ten seconds names the section to re-read.
+
+1. Name the three counts the profiler reports per field, and say which one can fall. (Section 3)
+2. `amount` reads present 48, converts 44 on 50 rows. How many rows will the pass reject, and why is it not four? (Section 3)
+3. Somebody coerces every failure to zero. Which two counts rise and which one falls? (Section 4)
+4. `discount` is absent on 39 of 50 and `amount` on 2 of 50. Why do they get opposite treatment? (Section 5)
+5. The dedupe says zero and the distinct id count says 49 of 50. What happened? (Section 6)
+6. Four identity rules give three answers. What does that tell you about the rule? (Section 6)
+7. One order is 86 percent of the money in the file. What do you do with it, and what goes in the log? (Section 7)
+8. What ships at the close of today, and what could a reviewer do with it? (Section 8)
+
+## 13. Read next, in this order
+
+| What | Why it is next | Time |
+|---|---|---|
+| Khan Academy, mean, median and mode (verified 03 Sep 2026): https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/mean-median-basics/v/mean-median-and-mode | Tomorrow opens on it, and the whale you kept today is what makes it matter | About 10 minutes |
+| Real Python, the csv module reference (verified 03 Sep 2026): https://realpython.com/ref/stdlib/csv | `DictWriter` and the field-name contract, which is what the companion file broke | About 15 minutes |
+| LearnPython, 15 Python questions for data analysts (verified 03 Sep 2026): https://learnpython.com/blog/python-interview-questions-for-data-analyst/ | The cleaning and missing-value items, attempted before you look at the answers | About 30 minutes |
+
+## 14. The words, and where each one starts mattering
+
+| Term | What it means | Where it first bit |
+|---|---|---|
+| Profile | Three counts per field, taken before you change anything | The first file nobody prepared for you |
+| present | How many rows hold anything at all in this field | `amount` at 48 of 50 |
+| converts | How many of those become the type you need | The same column at 44 |
+| distinct | How many different values the field holds, and the only count that can fall | 46 falling to 41 after the coercion |
+| Present and unusable | present minus converts, the rows a presence check passes and arithmetic fails on | The separator, the space and the currency prefix |
+| Identity rule | The fields you decided make two rows the same record | The pair sharing KR4201 |
+| Decisions log | Field, finding, choice and reason, one line per cleaning act | The moment somebody asked why 44 and not 50 |
+| Outlier | A value far from the rest, and a finding before it is a row to delete | The Rs 480,000 order |
+| Reconciliation | Input equals clean plus rejected, asserted, and today also against the files on disk | The end of the pass |

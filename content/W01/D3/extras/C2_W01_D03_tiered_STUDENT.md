@@ -59,3 +59,15 @@ Write four lines on where you would draw the line between a check that fires on 
 You kept the Rs 480,000 order because it is real. Compute two averages of the amount column, one with it and one without, and write both down with one sentence saying which you would give a manager who asked for the average order value.
 
 Bring that sentence tomorrow. It is the first thing tomorrow argues about.
+
+## If you finished everything and want more
+
+Open `demos/C2_W01_D03_decision_tool_STUDENT.xlsx` on the Duplicates tab and find the one identity rule under which the file has no duplicates at all and the distinct id count still disagrees with the row count. Say in two sentences why that combination is the most dangerous state the tab can be in.
+
+Then open the companion page's second experiment and re-profile both ways. Write down the three counts for `discount` in each, and say which of the two files you could still reconstruct the other from.
+
+## If you are stuck and want a smaller step
+
+Run `notebooks/C2_W01_D03_ex2_hands_on_STUDENT.ipynb` and stop after step 2. One letter: which count fell between the two profiles? Get that right and the rest of the day's argument follows from it.
+
+If step 2 is still hard, open `whiteboards/C2_W01_D03_board_diagrams_STUDENT.md` and look at diagram 4. The three arrows out of the coerced profile are the whole answer.

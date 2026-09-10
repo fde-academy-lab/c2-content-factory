@@ -3,345 +3,760 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Typical-Number Bench</title>
+<title>Kalpa typical number bench</title>
 <style>
+:root{
+  --ink:#1C1C1A; --muted:#5F6360; --accent:#2B4A7D; --tint:#E4ECF7; --bg:#F7F7F5;
+  --line:#C9C9C2; --panel:#FFFFFF; --pass:#1F6F4A; --fail:#8A3D3D; --onaccent:#FFFFFF;
+}
+@media (prefers-color-scheme: dark){
   :root{
-    --bg:#f7f7f5; --panel:#ffffff; --ink:#1c1c1a; --muted:#5f6360; --line:#dcdcd6;
-    --ok:#1f6f4a; --okbg:#e6f2ea; --bad:#8a3d3d; --badbg:#f6e8e8; --accent:#2b4a7d;
-    --warn:#8a6d1f; --warnbg:#f6f0dc;
+    --ink:#ECEAE4; --muted:#A2A6A3; --accent:#9DBBE8; --tint:#1C2F3F; --bg:#16181A;
+    --line:#33383C; --panel:#1E2124; --pass:#7FD3A6; --fail:#E59A9A; --onaccent:#16181A;
   }
-  @media (prefers-color-scheme: dark){
-    :root{
-      --bg:#16181a; --panel:#1e2124; --ink:#eceae4; --muted:#a2a6a3; --line:#33383c;
-      --ok:#7fd3a6; --okbg:#1c2f26; --bad:#e59a9a; --badbg:#3a2626; --accent:#9dbbe8;
-      --warn:#e0c878; --warnbg:#332c18;
-    }
-  }
-  body{background:var(--bg); color:var(--ink); font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; margin:0; padding:24px;}
-  .wrap{max-width:1120px; margin:0 auto;}
-  h1{font-size:23px; margin:0 0 4px;}
-  .sub{color:var(--muted); margin:0 0 22px; max-width:74ch;}
-  .grid{display:grid; grid-template-columns:minmax(300px,1fr) minmax(360px,1.2fr); gap:20px; align-items:start;}
-  .panel{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:18px;}
-  .panel h2{font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); margin:0 0 14px;}
-  .toggle{margin-bottom:18px;}
-  .toggle .q{font-weight:600; margin-bottom:2px;}
-  .toggle .why{color:var(--muted); font-size:13px; margin-bottom:8px;}
-  .seg{display:flex; border:1px solid var(--line); border-radius:7px; overflow:hidden;}
-  .seg button{flex:1; padding:9px 8px; font:inherit; font-size:13.5px; background:transparent; color:var(--ink);
-              border:0; border-right:1px solid var(--line); cursor:pointer;}
-  .seg button:last-child{border-right:0;}
-  .seg button[aria-pressed="true"]{background:var(--accent); color:#fff; font-weight:600;}
-  .stats{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:14px;}
-  .stat{background:var(--bg); border:1px solid var(--line); border-radius:7px; padding:10px 12px;}
-  .stat b{display:block; font-size:20px; line-height:1.25;}
-  .stat span{font-size:11.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em;}
-  .verdict{border-radius:7px; padding:13px 15px; font-weight:600; margin-bottom:14px; border:1px solid transparent;}
-  .verdict.good{background:var(--okbg); color:var(--ok); border-color:var(--ok);}
-  .verdict.bad{background:var(--badbg); color:var(--bad); border-color:var(--bad);}
-  .verdict.warn{background:var(--warnbg); color:var(--warn); border-color:var(--warn);}
-  .verdict small{display:block; font-weight:400; margin-top:5px; font-size:13px; color:var(--ink); opacity:.85;}
-  .strip{margin:4px 0 16px;}
-  .striplabel{font-size:11.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-bottom:7px;}
-  svg{display:block; width:100%; height:88px;}
-  .sentence{background:var(--bg); border:1px solid var(--line); border-left:3px solid var(--accent);
-            border-radius:6px; padding:12px 14px; font:13.5px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;
-            white-space:pre-wrap; margin-bottom:14px;}
-  table{border-collapse:collapse; width:100%; font-size:13.5px;}
-  th,td{text-align:left; padding:7px 9px; border-bottom:1px solid var(--line);}
-  th{font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); font-weight:600;}
-  td.num{text-align:right; font-variant-numeric:tabular-nums;}
-  tr.dim td{opacity:.4;}
-  tr.lit td{background:var(--okbg);}
-  .foot{color:var(--muted); font-size:13px; margin-top:20px; max-width:78ch;}
-  .foot b{color:var(--ink);}
-  @media (max-width:820px){ .grid{grid-template-columns:1fr;} }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+     font:15.5px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{padding:20px 26px 14px;border-bottom:1px solid var(--line);background:var(--panel)}
+h1{font-size:22px;margin:0 0 4px}
+header p{margin:0;color:var(--muted);max-width:80ch}
+.shell{display:grid;grid-template-columns:224px minmax(0,1fr);gap:26px;
+       max-width:1240px;margin:0 auto;padding:20px 26px 60px}
+@media (max-width:900px){.shell{grid-template-columns:1fr}}
+nav{position:sticky;top:14px;align-self:start}
+nav a{display:block;padding:7px 10px;color:var(--ink);text-decoration:none;border-radius:6px;
+      border-left:3px solid transparent;font-size:14px}
+nav a:hover{background:var(--tint)}
+nav a.on{border-left-color:var(--accent);background:var(--tint);font-weight:600}
+section{margin:0 0 34px;scroll-margin-top:16px}
+h2{font-size:18px;margin:0 0 6px;color:var(--ink)}
+h3{font-size:15px;margin:18px 0 6px}
+.lede{color:var(--ink);max-width:80ch;margin:0 0 14px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;
+       margin:12px 0}
+.row{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
+.col{flex:1 1 320px;min-width:0}
+button{font:inherit;cursor:pointer;border-radius:7px;border:1px solid var(--accent);
+       background:transparent;color:var(--accent);padding:8px 13px;font-weight:600}
+button:hover{background:var(--tint)}
+button.solid{background:var(--accent);color:var(--onaccent)}
+button.opt{font-weight:500;color:var(--ink);border-color:var(--line);text-align:left}
+button.opt.on{border-color:var(--accent);background:var(--tint);font-weight:700}
+select{font:inherit;padding:7px 9px;border:1px solid var(--line);border-radius:7px;
+       background:var(--panel);color:var(--ink);position:relative;z-index:2}
+label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px}
+input[type=range]{width:100%;position:relative;z-index:2}
+input[type=number],input[type=text]{font:inherit;padding:7px 9px;border:1px solid var(--line);
+       border-radius:7px;background:var(--panel);color:var(--ink);width:130px}
+pre{margin:0;font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    white-space:pre-wrap;color:var(--ink)}
+code{font:13px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{text-align:left;color:var(--accent);border-bottom:1px solid var(--accent);padding:6px 10px 6px 0}
+td{border-bottom:1px solid var(--line);padding:5px 10px 5px 0;vertical-align:top}
+.kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+        margin:0 0 4px}
+.card{border:1px solid var(--line);border-radius:9px;padding:14px 16px;margin:12px 0;
+      background:var(--panel)}
+.card h4{margin:0 0 8px;font-size:15px}
+.field{margin:8px 0}
+.field b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+         color:var(--accent)}
+.result{border-left:3px solid var(--accent);padding-left:12px;margin-top:10px}
+.rule{background:var(--tint);border-radius:7px;padding:9px 12px;margin-top:10px;color:var(--ink)}
+.meter{display:flex;gap:3px;margin:8px 0;flex-wrap:wrap}
+.tick{width:15px;height:22px;border-radius:3px;border:1px solid var(--line);background:var(--panel)}
+.tick.hit{background:var(--accent);border-color:var(--accent)}
+.tick.miss{background:var(--fail);border-color:var(--fail)}
+.status{margin-top:10px;padding:8px 12px;border-radius:7px;background:var(--tint);
+        font-size:14px;color:var(--ink)}
+.verdict{font-weight:700}
+.ok{color:var(--pass)} .bad{color:var(--fail)}
+dialog{border:1px solid var(--line);border-radius:11px;background:var(--panel);color:var(--ink);
+       max-width:min(680px,92vw);padding:18px 20px}
+dialog::backdrop{background:rgba(0,0,0,.42)}
+.glossary dt{font-weight:700;margin-top:10px}
+.glossary dd{margin:2px 0 0;color:var(--ink)}
+footer{max-width:1240px;margin:0 auto;padding:0 26px 40px;color:var(--muted);font-size:13px}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>The Typical-Number Bench</h1>
-  <p class="sub">Four switches, one file, forty-four profiled Kalpa orders. Flip them and watch what happens to the number
-     you were about to send. Nothing is typed and nothing is saved; close the tab and it resets. Keep this file, since
-     it is the decision tool from today that you can reopen on any dataset argument later.</p>
-
-  <div class="grid">
-    <div class="panel">
-      <h2>The switches</h2>
-
-      <div class="toggle">
-        <div class="q">Which statistic do you send?</div>
-        <div class="why">Three answers to "what is typical". They disagree once there is a tail.</div>
-        <div class="seg" id="statSeg">
-          <button data-v="mean" aria-pressed="true">Mean</button>
-          <button data-v="median" aria-pressed="false">Median</button>
-          <button data-v="mode" aria-pressed="false">Mode</button>
+<header>
+  <h1>Kalpa typical number bench</h1>
+  <p>Week 1, Day 4. One Kalpa Retail order is Rs 480,000 and the next largest is under Rs 3,000. This page adds seven ordinary orders one at a time, swaps the largest for that one, and shows what it does to every number you might report.</p>
+</header>
+<div class="shell">
+  <nav><a href="#walk">Guided walk</a>
+<a href="#experiments">Experiments</a>
+<a href="#decision-section">The decision</a>
+<a href="#calculators">The numbers</a>
+<a href="#glossary-section">Vocabulary</a></nav>
+  <main>
+    <section id="walk">
+      <p class="kicker">Guided walk</p>
+      <h2>Seven orders, added one at a time, then one swapped</h2>
+      <p class="lede">Press Next once per order. The drawing lights the order just added, the artifact keeps the mean and the median beside each other, and the meter fills one tick per order with the whale in red. Click the meter for the breakdown.</p>
+      <div class="panel">
+        <div class="row">
+          <div class="col">
+            <div id="walkDiagram"></div>
+            <div class="meter" id="walkMeter"></div>
+            <p style="font-size:13px;color:var(--muted);margin:0" id="walkMeterLegend"></p>
+          </div>
+          <div class="col">
+            <div id="walkNarration"></div>
+            <h3>The artifact, as it stands</h3>
+            <pre id="walkArtifact"></pre>
+            <p><button class="solid" id="walkNext">Next</button></p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="toggle">
-        <div class="q">Is the Rs 480,000 order in the file?</div>
-        <div class="why">Order KR4232, real and retained. Taking it out is a decision somebody has to defend.</div>
-        <div class="seg" id="whaleSeg">
-          <button data-v="in" aria-pressed="true">Kept in</button>
-          <button data-v="out" aria-pressed="false">Removed</button>
-        </div>
+    <section id="experiments">
+      <p class="kicker">Experiments</p>
+      <h2>Change one thing and watch what moves</h2>
+      <p class="lede">Each card changes one thing: whether the whale is in, how many records the rate rests on, which column you are describing, or whether the counts are shown. Press the run button and the card fills in what happened, why it matters and the rule.</p>
+      <div id="cards"></div>
+    </section>
+
+    <section id="decision-section">
+      <p class="kicker">The decision</p>
+      <h2>You have been asked for a number. Which one, and what goes with it?</h2>
+      <p class="lede">Pick a branch and the drawing shows the path it takes, with the outcome at the bottom.</p>
+      <div class="panel">
+        <div class="row" id="decisionControls"></div>
+        <div id="decision"></div>
+        <p class="status" id="decisionSays">Pick a branch above and the drawing shows the path it
+        takes, with the outcome at the bottom.</p>
       </div>
+    </section>
 
-      <div class="toggle">
-        <div class="q">Which orders are you describing?</div>
-        <div class="why">The whole file, or one segment at a time.</div>
-        <div class="seg" id="scopeSeg">
-          <button data-v="all" aria-pressed="true">All</button>
-          <button data-v="Business" aria-pressed="false">Business</button>
-          <button data-v="Retail-Core" aria-pressed="false">Retail-Core</button>
-          <button data-v="Retail-Plus" aria-pressed="false">Retail-Plus</button>
-          <button data-v="Student" aria-pressed="false">Student</button>
-        </div>
-      </div>
+    <section id="calculators">
+      <p class="kicker">The numbers</p>
+      <h2>Every rule that carries a number, as a calculator</h2>
+      <p class="lede">Both of today's rules are arithmetic, so both ship as calculators. Move an input and the number moves with a sentence saying what it means.</p>
+      <div id="calcs"></div>
+    </section>
 
-      <div class="toggle">
-        <div class="q">Below how many orders do you refuse to make a claim?</div>
-        <div class="why">There is no correct answer here. Pick one you would defend out loud, then look at the table.</div>
-        <div class="seg" id="floorSeg">
-          <button data-v="0" aria-pressed="true">No floor</button>
-          <button data-v="10" aria-pressed="false">10</button>
-          <button data-v="30" aria-pressed="false">30</button>
-          <button data-v="100" aria-pressed="false">100</button>
-        </div>
-      </div>
-    </div>
+    <section id="glossary-section">
+      <p class="kicker">Vocabulary</p>
+      <h2>The day's terms, and where each one first matters</h2>
+      <p class="lede">Nine terms, each with the moment it starts mattering.</p>
+      <dl class="glossary" id="glossary"></dl>
+    </section>
 
-    <div class="panel">
-      <h2>What you would be sending</h2>
-
-      <div class="stats">
-        <div class="stat"><b id="sNum">Rs 12,753</b><span id="sNumLabel">Mean amount</span></div>
-        <div class="stat"><b id="sCount">47</b><span>Orders behind it</span></div>
-        <div class="stat"><b id="sCovered">1</b><span id="sCoveredLabel">Orders at or above</span></div>
-      </div>
-
-      <div class="verdict" id="verdict"></div>
-
-      <div class="strip">
-        <div class="striplabel">Every record, sorted, with your number marked</div>
-        <svg id="strip" viewBox="0 0 600 88" preserveAspectRatio="none" aria-label="sorted amounts"></svg>
-      </div>
-
-      <div class="striplabel">The sentence this produces</div>
-      <div class="sentence" id="sentence"></div>
-
-      <div class="striplabel">Every segment against your floor (return rate: lower is better)</div>
-      <table id="segTable">
-        <thead><tr><th>Segment</th><th class="num">Orders</th><th class="num">Median</th><th class="num">Return rate</th></tr></thead>
-        <tbody></tbody>
-      </table>
-    </div>
-  </div>
-
-  <p class="foot">
-    <b>Before you leave this page, find the settings you would sign your name to.</b>
-    Then find one setting that is defensible and still throws away something true, and be ready to say what it throws away.
-    The screenshot worth keeping is the one where the number on the left is large, the count is small, and the verdict
-    tells you why nobody should act on it.
-  </p>
+    <div class="status" id="activity">Nothing has happened yet. Every control on this page reports
+    here when you use it, so you can always tell whether a click did something.</div>
+  </main>
 </div>
-
+<dialog id="popup">
+  <h3 id="popupTitle">Detail</h3>
+  <div id="popupBody"></div>
+  <p><button id="popupClose" class="solid">Close</button></p>
+</dialog>
+<footer>Kalpa Group is fictional and any resemblance to a real company is coincidental. This page
+holds no data of its own, stores nothing in your browser and needs no key. Every number on it is
+computed from the same thirty to fifty Kalpa Retail orders the notebooks read.</footer>
 <script>
-const DATA = [
- ["Student",1280,"cancelled"],
- ["Retail-Core",1865,"returned"],
- ["Retail-Core",2270,"delivered"],
- ["Retail-Plus",2835,"cancelled"],
- ["Student",1310,"delivered"],
- ["Student",1145,"cancelled"],
- ["Retail-Plus",1030,"delivered"],
- ["Retail-Plus",985,"delivered"],
- ["Student",2430,"delivered"],
- ["Retail-Plus",2895,"returned"],
- ["Business",2360,"delivered"],
- ["Business",2855,"returned"],
- ["Student",2745,"returned"],
- ["Business",950,"delivered"],
- ["Student",2140,"delivered"],
- ["Student",1475,"returned"],
- ["Retail-Core",1445,"delivered"],
- ["Business",2050,"delivered"],
- ["Retail-Plus",2795,"delivered"],
- ["Business",1425,"cancelled"],
- ["Student",2990,"cancelled"],
- ["Student",965,"cancelled"],
- ["Retail-Plus",1170,"returned"],
- ["Retail-Plus",1435,"delivered"],
- ["Retail-Plus",1190,"returned"],
- ["Retail-Core",800,"returned"],
- ["Retail-Plus",1355,"cancelled"],
- ["Retail-Plus",1555,"delivered"],
- ["Business",2930,"cancelled"],
- ["Retail-Core",480000,"delivered"],
- ["Retail-Core",970,"delivered"],
- ["Retail-Plus",2995,"returned"],
- ["Business",2035,"cancelled"],
- ["Retail-Core",2895,"returned"],
- ["Business",2050,"delivered"],
- ["Retail-Core",2845,"delivered"],
- ["Retail-Core",2640,"cancelled"],
- ["Student",1385,"delivered"],
- ["Business",2005,"cancelled"],
- ["Retail-Core",1955,"returned"],
- ["Retail-Core",1980,"delivered"],
- ["Retail-Core",1640,"delivered"],
- ["Retail-Core",1210,"cancelled"],
- ["Retail-Core",1865,"returned"]
-].map(function(r){ return {segment:r[0], amount:r[1], status:r[2]}; });
 
+// ---------------------------------------------------------------- palette
+const P = {ink:"#1C1C1A", muted:"#5F6360", accent:"#2B4A7D", tint:"#E4ECF7", bg:"#F7F7F5",
+           line:"#C9C9C2", pass:"#1F6F4A", fail:"#8A3D3D"};
+const FONT = 'system-ui,-apple-system,"Segoe UI",Roboto,sans-serif';
+
+// ---------------------------------------------------------------- diagram builders
+// The same nine the notebook helper draws, so a picture on a slide, in a notebook and on this
+// page is recognisably one drawing. Every builder takes data and returns an SVG string.
+function esc(t){return String(t).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));}
+function wrap(text, per){
+  const words = String(text).split(/\s+/), out = []; let line = "";
+  for (const w of words){
+    if ((line + " " + w).trim().length > per && line){ out.push(line); line = w; }
+    else line = (line + " " + w).trim();
+  }
+  if (line) out.push(line);
+  return out.length ? out : [""];
+}
+function box(x, y, w, h, text, lit, size){
+  size = size || 12;
+  const lines = wrap(text, Math.max(8, Math.floor(w / (size * 0.55))));
+  const top = y + h/2 - (lines.length - 1) * (size + 3)/2 + size * 0.35;
+  const labels = lines.map((l, i) =>
+    `<text x="${x + w/2}" y="${top + i*(size+3)}" text-anchor="middle" fill="${P.ink}"
+       font-family="${FONT}" font-size="${size}" font-weight="${lit ? 700 : 400}">${esc(l)}</text>`).join("");
+  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="7" fill="${lit ? P.tint : "#FFFFFF"}"
+    stroke="${P.accent}" stroke-width="${lit ? 2 : 1}"/>${labels}`;
+}
+function arrow(x1, y1, x2, y2, label){
+  const cap = label ? `<text x="${(x1+x2)/2}" y="${(y1+y2)/2 - 6}" text-anchor="middle"
+    fill="${P.muted}" font-family="${FONT}" font-size="11">${esc(label)}</text>` : "";
+  return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${P.accent}" stroke-width="1.4"
+    marker-end="url(#ar)"/>${cap}`;
+}
+const DEFS = `<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6"
+  markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z"
+  fill="${P.accent}"/></marker></defs>`;
+function svg(w, h, body, title){
+  const cap = title ? `<text x="${w/2}" y="${h-5}" text-anchor="middle" fill="${P.muted}"
+    font-family="${FONT}" font-size="12">${esc(title)}</text>` : "";
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"
+    style="max-width:100%;height:auto" role="img">${DEFS}${body}${cap}</svg>`;
+}
+function flow(steps, lit, title){
+  const w = 156, h = 56, gap = 28;
+  let b = "";
+  steps.forEach((s, i) => {
+    const x = 12 + i*(w+gap);
+    b += box(x, 12, w, h, s, i === lit);
+    if (i) b += arrow(x - gap, 12 + h/2, x, 12 + h/2);
+  });
+  return svg(steps.length*w + (steps.length-1)*gap + 24, h + 46, b, title);
+}
+function vflow(steps, lit, title){
+  const w = 290, h = 44, gap = 22;
+  let b = "";
+  steps.forEach((s, i) => {
+    const y = 12 + i*(h+gap);
+    b += box(12, y, w, h, s, i === lit);
+    if (i) b += arrow(12 + w/2, y - gap, 12 + w/2, y);
+  });
+  return svg(w + 24, steps.length*(h+gap) + 30, b, title);
+}
+function ladder(items, lit, title){
+  const w = 200, h = 42, gap = 12;
+  let b = "";
+  items.forEach((s, i) => {
+    const y = 10 + i*(h+gap);
+    b += box(12, y, w, h, (i+1) + ". " + s, i === lit);
+    if (i) b += arrow(12 + w/2, y - gap, 12 + w/2, y);
+  });
+  return svg(w + 24, items.length*(h+gap) + 32, b, title);
+}
+function stack(layers, lit, title){
+  const w = 300, h = 42, gap = 8;
+  let b = "";
+  layers.forEach((s, i) => {
+    b += box(12, 12 + (layers.length-1-i)*(h+gap), w, h, s, i === lit);
+  });
+  return svg(w + 24, layers.length*(h+gap) + 30, b, title);
+}
+function sequence(lanes, messages, title){
+  const lw = 176, top = 46, step = 42;
+  const w = lanes.length*lw + 24, h = top + Math.max(1, messages.length)*step + 34;
+  let b = "";
+  lanes.forEach((l, i) => {
+    const x = 12 + i*lw;
+    b += box(x + 8, 10, lw - 16, 28, l, true, 12);
+    b += `<line x1="${x + lw/2}" y1="40" x2="${x + lw/2}" y2="${h - 28}" stroke="${P.line}"/>`;
+  });
+  messages.forEach((m, n) => {
+    const y = top + n*step + 18;
+    b += arrow(12 + lanes.indexOf(m[0])*lw + lw/2, y, 12 + lanes.indexOf(m[1])*lw + lw/2, y, m[2]);
+  });
+  return svg(w, h, b, title);
+}
+function tree(node, taken, title){
+  const levels = [];
+  (function walk(n, d, path){
+    while (levels.length <= d) levels.push([]);
+    const e = {label:n.label, path:path, kids:[]};
+    levels[d].push(e);
+    (n.branches || []).forEach(([edge, child]) => e.kids.push([edge, walk(child, d+1, path.concat([edge]))]));
+    return e;
+  })(node, 0, []);
+  const w = 176, h = 48, gx = 20, gy = 38;
+  const width = Math.max(...levels.map(l => l.length))*(w+gx) + 24;
+  const height = levels.length*(h+gy) + 30;
+  let b = ""; const at = new Map();
+  levels.forEach((lv, d) => {
+    const x0 = (width - (lv.length*(w+gx) - gx))/2;
+    lv.forEach((e, i) => {
+      const x = x0 + i*(w+gx), y = 12 + d*(h+gy);
+      const on = (taken || []).slice(0, e.path.length).join("|") === e.path.join("|");
+      at.set(e, [x + w/2, y, x + w/2, y + h]);
+      b += box(x, y, w, h, e.label, on);
+    });
+  });
+  levels.forEach(lv => lv.forEach(e => {
+    const [,, bx, by] = at.get(e);
+    e.kids.forEach(([edge, kid]) => { const [cx, cy] = at.get(kid); b += arrow(bx, by, cx, cy, edge); });
+  }));
+  return svg(width, height, b, title);
+}
+function matrix(rows, cols, cells, title){
+  const cw = 168, ch = 54, lw = 140;
+  const w = lw + cols.length*cw + 24, h = 40 + rows.length*ch + 30;
+  let b = "";
+  cols.forEach((c, j) => { b += `<text x="${12 + lw + j*cw + cw/2}" y="28" text-anchor="middle"
+    fill="${P.accent}" font-family="${FONT}" font-size="12" font-weight="700">${esc(c)}</text>`; });
+  rows.forEach((r, i) => {
+    const y = 40 + i*ch;
+    b += `<text x="12" y="${y + ch/2 + 4}" fill="${P.accent}" font-family="${FONT}" font-size="12"
+      font-weight="700">${esc(r)}</text>`;
+    cols.forEach((_, j) => { b += box(12 + lw + j*cw + 4, y + 4, cw - 8, ch - 8, (cells[i]||[])[j] || "", false); });
+  });
+  return svg(w, h, b, title);
+}
+function decisionLadder(options, cutAt, title){
+  const w = 320, h = 42, gap = 10;
+  let b = "";
+  options.forEach((o, i) => {
+    const y = 12 + (options.length-1-i)*(h+gap);
+    b += box(12, y, w, h, o, i === cutAt);
+    if (i === cutAt) b += `<line x1="8" y1="${y-gap/2}" x2="${w+18}" y2="${y-gap/2}"
+      stroke="${P.fail}" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <text x="${w+22}" y="${y-gap/2+4}" fill="${P.fail}" font-family="${FONT}"
+      font-size="11">stop here</text>`;
+  });
+  return svg(w + 110, options.length*(h+gap) + 30, b, title);
+}
+
+// ---------------------------------------------------------------- page plumbing
+let ACTIONS = 0;
+function say(text){
+  ACTIONS += 1;
+  const el = document.getElementById("activity");
+  if (el) el.textContent = text + "  ·  " + ACTIONS + " actions on this page so far.";
+}
+function $(id){ return document.getElementById(id); }
+function railSetup(){
+  const links = [...document.querySelectorAll("nav a")];
+  const mark = () => {
+    let best = links[0];
+    for (const a of links){
+      const t = document.querySelector(a.getAttribute("href"));
+      if (t && t.getBoundingClientRect().top <= 90) best = a;
+    }
+    links.forEach(a => a.classList.toggle("on", a === best));
+  };
+  document.addEventListener("scroll", mark, {passive:true});
+  links.forEach(a => a.addEventListener("click", () => {
+    say("You jumped to " + a.textContent.trim() + ".");
+    setTimeout(mark, 60);
+  }));
+  mark();
+}
+
+// ---------------------------------------------------------------- the guided walk
+function walkSetup(walk){
+  let at = -1;
+  const draw = () => {
+    const ev = walk.events[at];
+    $("walkDiagram").innerHTML = walk.diagram(at);
+    $("walkNarration").innerHTML = at < 0
+      ? "<p>" + walk.opening + "</p>"
+      : "<p class='kicker'>Step " + (at+1) + " of " + walk.events.length + "</p><p>" + ev.say + "</p>";
+    $("walkArtifact").textContent = walk.artifact(at);
+    const hits = walk.meter(at);
+    $("walkMeter").innerHTML = hits.map(h =>
+      '<span class="tick ' + h.kind + '" title="' + esc(h.why) + '"></span>').join("");
+    $("walkMeterLegend").textContent = walk.meterLegend(at);
+    $("walkNext").textContent = at + 1 >= walk.events.length ? "Start again" : "Next";
+  };
+  $("walkNext").addEventListener("click", () => {
+    at = at + 1 >= walk.events.length ? -1 : at + 1;
+    draw();
+    say(at < 0 ? "You restarted the walk." : "You advanced the walk to step " + (at+1) + ".");
+  });
+  $("walkMeter").addEventListener("click", () => {
+    const rows = walk.meter(at).map(h => "<tr><td>" + esc(h.label) + "</td><td>" + esc(h.why) + "</td></tr>").join("");
+    openDialog("What the meter is counting",
+      "<table><tr><th>Item</th><th>Why it is marked that way</th></tr>" + rows + "</table>");
+    say("You opened the meter's breakdown.");
+  });
+  draw();
+}
+
+// ---------------------------------------------------------------- experiment cards
+function cardsSetup(cards){
+  const host = $("cards");
+  cards.forEach((c, i) => {
+    const el = document.createElement("div");
+    el.className = "card";
+    el.innerHTML =
+      "<h4>Experiment " + (i+1) + ". " + esc(c.title) + "</h4>" +
+      "<div class='field'><b>Situation</b>" + c.situation + "</div>" +
+      "<div class='field'><b>Hypothesis</b>" + c.hypothesis + "</div>" +
+      "<div class='field'><b>Watch for</b>" + c.watch + "</div>" +
+      "<div class='field'><b>Change one thing</b><div id='opts" + i + "' class='row'></div></div>" +
+      "<div class='row'><button class='solid' id='run" + i + "'>" + esc(c.runLabel || "Run it") +
+      "</button><button id='seq" + i + "'>Show the sequence</button></div>" +
+      "<div class='result' id='res" + i + "'><p class='kicker'>What happened</p><p>Nothing yet. " +
+      "Pick an option and press " + esc(c.runLabel || "Run it") + ".</p></div>";
+    host.appendChild(el);
+    let chosen = 0;
+    const opts = el.querySelector("#opts" + i);
+    c.options.forEach((o, j) => {
+      const b = document.createElement("button");
+      b.className = "opt" + (j === 0 ? " on" : "");
+      b.textContent = o.label;
+      b.addEventListener("click", () => {
+        chosen = j;
+        [...opts.children].forEach((x, k) => x.classList.toggle("on", k === j));
+        say("Experiment " + (i+1) + ": you selected " + o.label + ".");
+      });
+      opts.appendChild(b);
+    });
+    el.querySelector("#run" + i).addEventListener("click", () => {
+      const out = c.run(c.options[chosen]);
+      el.querySelector("#res" + i).innerHTML =
+        "<p class='kicker'>What happened</p><pre>" + esc(out.happened) + "</pre>" +
+        "<div class='field'><b>Why it matters</b>" + out.why + "</div>" +
+        "<div class='rule'><b>The rule.</b> " + out.rule + "</div>";
+      say("Experiment " + (i+1) + " ran with " + c.options[chosen].label + ".");
+    });
+    el.querySelector("#seq" + i).addEventListener("click", () => {
+      openDialog("Experiment " + (i+1) + ", as a sequence",
+        sequence(c.lanes, c.sequence(c.options[chosen]), c.title));
+      say("You opened the sequence for experiment " + (i+1) + ".");
+    });
+  });
+}
+
+// ---------------------------------------------------------------- popups
+function openDialog(title, html){
+  const d = $("popup");
+  $("popupTitle").textContent = title;
+  $("popupBody").innerHTML = html;
+  if (typeof d.showModal === "function") d.showModal(); else d.setAttribute("open", "");
+}
+
+// ---------------------------------------------------------------- calculators
+function calcSetup(calcs){
+  const host = $("calcs");
+  calcs.forEach((c, i) => {
+    const el = document.createElement("div");
+    el.className = "card";
+    el.innerHTML = "<h4>" + esc(c.title) + "</h4><p>" + c.blurb + "</p>" +
+      "<pre>" + esc(c.formula) + "</pre><div class='row' id='ins" + i + "'></div>" +
+      "<div class='status' id='out" + i + "'>Move an input to see the number.</div>";
+    host.appendChild(el);
+    const ins = el.querySelector("#ins" + i);
+    const vals = {};
+    c.inputs.forEach(inp => {
+      const holder = document.createElement("div");
+      holder.className = "col";
+      holder.innerHTML = "<label for='" + inp.id + "'>" + esc(inp.label) + "</label>";
+      let node;
+      if (inp.kind === "select"){
+        node = document.createElement("select");
+        inp.options.forEach(o => { const op = document.createElement("option");
+          op.value = o.value; op.textContent = o.label; node.appendChild(op); });
+      } else {
+        node = document.createElement("input");
+        node.type = inp.kind || "number";
+        node.min = inp.min; node.max = inp.max; node.step = inp.step || 1;
+      }
+      node.id = inp.id;
+      node.value = inp.value;
+      vals[inp.id] = inp.value;
+      const update = () => {
+        vals[inp.id] = node.value;
+        const out = c.compute(vals);
+        el.querySelector("#out" + i).innerHTML =
+          "<span class='verdict'>" + esc(out.value) + "</span> &middot; " + out.means;
+        say(c.title + ": you set " + inp.label + " to " + node.value + ".");
+      };
+      node.addEventListener("input", update);
+      node.addEventListener("change", update);
+      holder.appendChild(node);
+      ins.appendChild(holder);
+    });
+  });
+}
+
+// ---------------------------------------------------------------- glossary
+function glossarySetup(terms){
+  const host = $("glossary");
+  host.innerHTML = terms.map(t =>
+    "<dt>" + esc(t.term) + "</dt><dd>" + t.meaning + " <span style='color:var(--muted)'>First matters "
+    + esc(t.where) + ".</span></dd>").join("");
+}
+
+// ---------------------------------------------------------------- decision visual
+function decisionSetup(spec){
+  const host = $("decision");
+  const draw = path => { host.innerHTML = spec.render(path); };
+  draw(spec.initial);
+  const bar = $("decisionControls");
+  spec.paths.forEach((p, i) => {
+    const b = document.createElement("button");
+    b.className = "opt" + (i === 0 ? " on" : "");
+    b.textContent = p.label;
+    b.addEventListener("click", () => {
+      [...bar.children].forEach((x, k) => x.classList.toggle("on", k === i));
+      draw(p.path);
+      $("decisionSays").textContent = p.says;
+      say("Decision walk: you followed " + p.label + ".");
+    });
+    bar.appendChild(b);
+  });
+}
+
+
+const SEVEN = [1030, 1145, 1280, 1310, 1865, 2270, 2835];
 const WHALE = 480000;
-const state = {stat:"mean", whale:"in", scope:"all", floor:0};
+const SEGMENTS = [
+  {name:"Retail-Core", n:14, median:1910, returned:5},
+  {name:"Retail-Plus", n:11, median:1435, returned:4},
+  {name:"Student",     n:10, median:1430, returned:2},
+  {name:"Business",    n:9,  median:2050, returned:1}
+];
+function mean(a){ return a.reduce((s, x) => s + x, 0) / a.length; }
+function median(a){
+  const s = a.slice().sort((x, y) => x - y), m = s.length >> 1;
+  return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
+}
+function rs(n){ return "Rs " + Math.round(n).toLocaleString("en-IN"); }
 
-function rupees(n){
-  return "Rs " + Math.round(n).toLocaleString("en-IN");
-}
-function median(xs){
-  const s = xs.slice().sort(function(a,b){return a-b;});
-  const m = Math.floor(s.length/2);
-  return s.length % 2 ? s[m] : (s[m-1]+s[m])/2;
-}
-function mode(xs){
-  const c = {};
-  xs.forEach(function(x){ c[x] = (c[x]||0)+1; });
-  let best = null, bestN = 0;
-  Object.keys(c).forEach(function(k){ if(c[k] > bestN){ bestN = c[k]; best = Number(k); } });
-  return {value:best, n:bestN};
-}
-function rows(){
-  let rs = DATA;
-  if(state.whale === "out") rs = rs.filter(function(r){ return r.amount !== WHALE; });
-  if(state.scope !== "all") rs = rs.filter(function(r){ return r.segment === state.scope; });
-  return rs;
-}
+const WALK = {
+  opening: "Seven Kalpa orders, sorted, all of them ordinary. Press Next to add them one at a time " +
+    "and watch the mean and the median stay within a few hundred rupees of each other. The last " +
+    "press swaps the largest for the whale.",
+  events: SEVEN.map((v, i) => ({say: "Order " + (i + 1) + " at " + rs(v) +
+    " joins. The mean and the median are now within " +
+    rs(Math.abs(mean(SEVEN.slice(0, i + 1)) - median(SEVEN.slice(0, i + 1)))) + " of each other."}))
+    .concat([{say: "Now replace the largest of the seven with KR4232 at " + rs(WHALE) +
+      ". Nothing else changes. The median moves by a few hundred rupees and the mean moves by " +
+      "more than sixty thousand."}]),
+  diagram: at => {
+    const shown = at < 0 ? [] : (at < SEVEN.length ? SEVEN.slice(0, at + 1)
+                                : SEVEN.slice(0, 6).concat([WHALE]));
+    return flow(shown.length ? shown.map(v => rs(v)) : ["nothing yet"],
+                shown.length ? shown.length - 1 : null, "the orders, in order");
+  },
+  artifact: at => {
+    if (at < 0) return "mean:   not yet\nmedian: not yet";
+    const shown = at < SEVEN.length ? SEVEN.slice(0, at + 1)
+                                    : SEVEN.slice(0, 6).concat([WHALE]);
+    return "n:      " + shown.length +
+      "\nmean:   " + rs(mean(shown)) +
+      "\nmedian: " + rs(median(shown)) +
+      "\ngap:    " + rs(Math.abs(mean(shown) - median(shown)));
+  },
+  meter: at => SEVEN.concat([WHALE]).map((v, i) => ({
+    kind: at >= 0 && i <= at ? (i === SEVEN.length ? "miss" : "hit") : "",
+    label: rs(v),
+    why: i === SEVEN.length ? "the whale, which replaces the largest of the seven"
+                            : "an ordinary Kalpa order"})),
+  meterLegend: at => "One tick per order added. The red tick is the whale. Click for the breakdown."
+};
 
-function render(){
-  const rs = rows();
-  const amts = rs.map(function(r){ return r.amount; });
-  const n = amts.length;
-  const mean = amts.reduce(function(a,b){return a+b;},0) / n;
-  const med = median(amts);
-  const mo = mode(amts);
-
-  let value, label, covered, coveredLabel;
-  if(state.stat === "mean"){
-    value = mean; label = "Mean amount";
-    covered = amts.filter(function(a){ return a >= mean; }).length;
-    coveredLabel = "Orders at or above";
-  } else if(state.stat === "median"){
-    value = med; label = "Median amount";
-    covered = amts.filter(function(a){ return a >= med; }).length;
-    coveredLabel = "Orders at or above";
-  } else {
-    value = mo.value; label = "Most common amount";
-    covered = mo.n;
-    coveredLabel = "Orders holding it";
+const CARDS = [
+  {
+    title: "One order, and what it owns",
+    situation: "KR4232 is a delivered Retail-Core order at Rs 480,000. The next largest order in " +
+      "the whole file is Rs 2,995.",
+    hypothesis: "Predict what happens to the mean, the median and the count of orders above the " +
+      "mean when it is taken out.",
+    watch: "How many of the 44 orders sit at or above the mean.",
+    runLabel: "Compute the summary",
+    options: [{label:"with the whale", keep:true}, {label:"without it", keep:false}],
+    lanes: ["the column", "the mean", "the reader"],
+    run: o => {
+      const ordinary = 74000, n = 43;
+      if (o.keep)
+        return {happened: "n: 44\nmean:   " + rs((ordinary + WHALE) / 44) + "\nmedian: Rs 1,910\n" +
+            "orders at or above the mean: 1",
+          why: "The mean is arithmetically correct and it describes one order out of forty-four. " +
+            "The median describes the order standing in the middle, which is what anybody asking " +
+            "for typical actually wants.",
+          rule: "A mean that only one record reaches is a number about that record."};
+      return {happened: "n: 43\nmean:   " + rs(ordinary / n) + "\nmedian: Rs 1,905\n" +
+          "orders at or above the mean: 20",
+        why: "Take one order out of forty-four and the mean falls by more than ten thousand rupees. " +
+          "Nothing else about the file changed.",
+        rule: "When one record owns the mean, the mean is not a summary of the column."};
+    },
+    sequence: o => [["the column", "the mean", o.keep ? "44 values including Rs 480,000" : "43 values"],
+      ["the mean", "the reader", o.keep ? rs((74000 + WHALE) / 44) : rs(74000 / 43)],
+      ["the reader", "the column", o.keep ? "asks which order that describes" : "asks nothing"]]
+  },
+  {
+    title: "The same rate, three denominators",
+    situation: "A segment returns at 41.7 percent. That is five returns of twelve orders, or five " +
+      "hundred of twelve hundred, depending on which segment you are looking at.",
+    hypothesis: "Predict how far one more return moves the rate at each size.",
+    watch: "The number of percentage points, not the number of returns.",
+    runLabel: "Add one return",
+    options: [{label:"12 orders", n:12}, {label:"120 orders", n:120}, {label:"1,200 orders", n:1200}],
+    lanes: ["one more return", "the rate", "your slide"],
+    run: o => {
+      const base = 0.417, ret = Math.round(base * o.n);
+      const after = (ret + 1) / o.n;
+      const move = (after - base) * 100;
+      return {happened: "before: " + (base * 100).toFixed(1) + " percent on " + o.n + " orders\n" +
+          "after:  " + (after * 100).toFixed(1) + " percent\nmoved:  " + move.toFixed(1) + " points",
+        why: move > 5
+          ? "One order moves this rate further than most real changes in the business ever would, " +
+            "so the rate is measuring the denominator rather than the segment."
+          : "One order barely registers, which is what makes this rate worth putting in a sentence.",
+        rule: "Every rate travels with the count it rests on."};
+    },
+    sequence: o => [["one more return", "the rate", "n = " + o.n],
+      ["the rate", "your slide", ((Math.round(0.417 * o.n) + 1) / o.n * 100).toFixed(1) + " percent"]]
+  },
+  {
+    title: "Which statistic survives the shape",
+    situation: "Four columns with four shapes: money with one whale, delivery times tightly " +
+      "clustered, basket sizes with a long tail, and customer city.",
+    hypothesis: "Predict which statistic you would hand over for each, before you see the answer.",
+    watch: "Whether the shape or the habit is deciding.",
+    runLabel: "Choose for this column",
+    options: [
+      {label:"money with one whale", kind:"money"},
+      {label:"delivery times, clustered", kind:"times"},
+      {label:"basket size, long tail", kind:"basket"},
+      {label:"customer city", kind:"city"}
+    ],
+    lanes: ["the column", "the statistic", "the sentence"],
+    run: o => ({
+      money: {happened: "median\n\nmean Rs 12,753 against median Rs 1,910",
+        why: "One order owns the mean, so the median is the only one of the two that describes the file.",
+        rule: "On money with a tail, reach for the median and say why."},
+      times: {happened: "either\n\nmean 31.0 against median 30.8",
+        why: "With no extremes the two agree, so the choice costs nothing and gains nothing.",
+        rule: "When the shape is symmetric, say so and pick the conventional one."},
+      basket: {happened: "median\n\nmost baskets hold one or two, a few hold thirty",
+        why: "A long right tail again, in counts rather than in money.",
+        rule: "A long tail is a property of the shape, not of the units."},
+      city: {happened: "mode\n\nPune, Bengaluru, Singapore and eleven others",
+        why: "City has no ordering, so mean and median have nothing to work with.",
+        rule: "A category has one statistic available, and it is the commonest value."}
+    })[o.kind],
+    sequence: o => [["the column", "the statistic", o.kind],
+      ["the statistic", "the sentence", "the number plus what it describes"]]
+  },
+  {
+    title: "The segment table, and what its ranking measures",
+    situation: "Four segments in a 44-order file, ranked by return rate, best first.",
+    hypothesis: "Predict whether the ranking tells you about the segments or about their sizes.",
+    watch: "The count column beside the rate column.",
+    runLabel: "Show the table",
+    options: [{label:"rates alone", counts:false}, {label:"rates with their counts", counts:true}],
+    lanes: ["the file", "the table", "the stakeholder"],
+    run: o => {
+      const ranked = SEGMENTS.slice().sort((a, b) => a.returned / a.n - b.returned / b.n);
+      const rows = ranked.map(s => s.name.padEnd(12) + " " +
+        (100 * s.returned / s.n).toFixed(1).padStart(5) + "%" +
+        (o.counts ? "   on " + s.n + " orders" : ""));
+      return {happened: rows.join("\n"),
+        why: o.counts
+          ? "With the counts beside them the ranking reads differently: the two best segments are " +
+            "the two smallest, and no segment in the file reaches thirty orders."
+          : "A clean ranking with a clear winner, and nothing on the page says that the winner " +
+            "rests on nine orders.",
+        rule: o.counts
+          ? "The finding is that a 44 order file cannot rank segments, and the table is the working."
+          : "A rate with no count beside it is a claim nobody can argue with."};
+    },
+    sequence: o => [["the file", "the table", "four segments"],
+      ["the table", "the stakeholder", o.counts ? "rates and counts" : "rates only"],
+      ["the stakeholder", "the file", o.counts ? "asks about the base" : "quotes the winner"]]
   }
+];
 
-  document.getElementById("sNum").textContent = rupees(value);
-  document.getElementById("sNumLabel").textContent = label;
-  document.getElementById("sCount").textContent = String(n);
-  document.getElementById("sCovered").textContent = String(covered);
-  document.getElementById("sCoveredLabel").textContent = coveredLabel;
+const DECISION = {
+  initial: ["a money or count column"],
+  paths: [
+    {label:"A column with a long tail", path:["a money or count column", "one value dominates"],
+     says:"Reach for the median, and say beside it what the mean is and which record owns it. The " +
+       "flag is what stops somebody quoting the mean later."},
+    {label:"A column with no extremes", path:["a money or count column", "no value dominates"],
+     says:"Mean and median agree, so say which you used and move on. This is the only branch where " +
+       "the choice genuinely costs nothing."},
+    {label:"A rate on a small base", path:["a rate"],
+     says:"Report the count first and the rate second, and say plainly when the base is too small " +
+       "to rank on. That refusal is the finding rather than a failure to produce one."}
+  ],
+  render: path => tree({
+    label: "you have been asked for a number",
+    branches: [
+      ["a money or count column", {label: "does one value dominate?",
+        branches: [["one value dominates", {label: "median, plus the mean and who owns it"}],
+                   ["no value dominates", {label: "either, and say which you used"}]]}],
+      ["a rate", {label: "how many records is it computed on?",
+        branches: [["under thirty", {label: "state the count and refuse to rank"}],
+                   ["enough", {label: "the rate, with its count beside it"}]]}]
+    ]
+  }, path, "which number to hand over, and what goes with it")
+};
 
-  // verdict
-  const v = document.getElementById("verdict");
-  const ratio = mean / med;
-  let cls = "good", head = "", note = "";
-  if(state.floor > 0 && n < state.floor){
-    cls = "bad";
-    head = "You set your own floor at " + state.floor + " orders and this rests on " + n + ".";
-    note = "By your own stated rule you do not have a claim here. Report it as unmeasured and say what volume would change that.";
-  } else if(state.stat === "mean" && ratio >= 1.5){
-    cls = "bad";
-    head = "This mean describes " + covered + " of " + n + " orders.";
-    note = "The mean is " + ratio.toFixed(1) + " times the median, so a long right tail is pulling it. Send the median instead.";
-  } else if(state.stat === "mode"){
-    cls = "warn";
-    head = "The most common amount repeats " + mo.n + " times out of " + n + ".";
-    note = "Mode answers a question about categories. On a money column almost nothing repeats, so this describes very little.";
-  } else if(state.whale === "out"){
-    cls = "warn";
-    head = "Honest number, and you removed a real record to get it.";
-    note = "The Rs 480,000 order survived cleaning because it is genuine. Removing it from the description is a decision that belongs in the decisions log, in writing, with your name on it.";
-  } else if(state.stat === "median"){
-    cls = "good";
-    head = "The median sits with " + covered + " of " + n + " orders at or above it.";
-    note = "This is the number to send on a money column. Put the count of " + n + " on the same line as the number.";
-  } else {
-    cls = "good";
-    head = "Mean and median are close here, so either describes the shape.";
-    note = "Still send the count of " + n + " with it.";
+const CALCS = [
+  {
+    title: "What one order does to a mean",
+    blurb: "The mean divides a total, so one enormous value moves it in proportion to how enormous " +
+      "it is. The median only cares which record is standing in the middle.",
+    formula: "mean = (ordinary total + the outlier) / (count + 1)",
+    inputs: [
+      {id:"m_n", label:"Ordinary orders", kind:"number", value:43, min:1, max:10000, step:1},
+      {id:"m_total", label:"Their total, in Rs", kind:"number", value:74000, min:0, max:10000000, step:1000},
+      {id:"m_out", label:"The one outlier, in Rs", kind:"number", value:480000, min:0, max:10000000, step:1000}
+    ],
+    compute: v => {
+      const n = Number(v.m_n), t = Number(v.m_total), w = Number(v.m_out);
+      const a = t / n, b = (t + w) / (n + 1);
+      return {value: rs(a) + " without it, " + rs(b) + " with it",
+        means: "The outlier is " + (100 * w / (t + w)).toFixed(0) + " percent of the money and " +
+          "moves the mean by " + rs(b - a) + ". Only " +
+          (w >= b ? "1" : "several") + " of the " + (n + 1) + " orders sits at or above it."};
+    }
+  },
+  {
+    title: "How far one event moves a rate",
+    blurb: "The same one order moves a rate by wildly different amounts depending on how many " +
+      "records sit underneath it. This is the arithmetic behind the trust floor.",
+    formula: "movement in points = 100 / n",
+    inputs: [
+      {id:"r_n", label:"Records the rate rests on", kind:"number", value:12, min:1, max:100000, step:1},
+      {id:"r_hits", label:"Events counted so far", kind:"number", value:5, min:0, max:100000, step:1}
+    ],
+    compute: v => {
+      const n = Number(v.r_n) || 1, h = Number(v.r_hits);
+      const before = 100 * h / n, after = 100 * (h + 1) / n;
+      return {value: before.toFixed(1) + " percent, moving to " + after.toFixed(1) +
+          " on one more event",
+        means: "One event is worth " + (100 / n).toFixed(1) + " points here. A rate you would rank " +
+          "on needs that number small enough that ordinary variation cannot reorder the table."};
+    }
   }
-  v.className = "verdict " + cls;
-  v.innerHTML = head + "<small>" + note + "</small>";
+];
 
-  // strip
-  const svg = document.getElementById("strip");
-  const sorted = amts.slice().sort(function(a,b){return a-b;});
-  const hi = Math.max.apply(null, sorted), lo = Math.min.apply(null, sorted);
-  const span = (hi - lo) || 1;
-  const x = function(a){ return 8 + (a - lo) / span * 584; };
-  let out = "";
-  out += '<line x1="8" y1="52" x2="592" y2="52" stroke="currentColor" stroke-opacity="0.25" stroke-width="1"/>';
-  sorted.forEach(function(a){
-    out += '<line x1="' + x(a).toFixed(1) + '" y1="40" x2="' + x(a).toFixed(1) + '" y2="64" stroke="currentColor" stroke-opacity="0.55" stroke-width="2"/>';
-  });
-  const px = x(value);
-  out += '<line x1="' + px.toFixed(1) + '" y1="22" x2="' + px.toFixed(1) + '" y2="74" stroke="#c2410c" stroke-width="2.5"/>';
-  out += '<text x="' + Math.min(px + 6, 470).toFixed(1) + '" y="18" font-size="12" fill="#c2410c">' + rupees(value) + '</text>';
-  out += '<text x="8" y="84" font-size="11" fill="currentColor" opacity="0.6">' + rupees(lo) + '</text>';
-  out += '<text x="592" y="84" font-size="11" fill="currentColor" opacity="0.6" text-anchor="end">' + rupees(hi) + '</text>';
-  svg.innerHTML = out;
+const TERMS = [
+  {term:"Mean", meaning:"The total shared out equally, which every value in the column takes part in.",
+   where:"the moment one order owned it"},
+  {term:"Median", meaning:"The value standing in the middle of the sorted column, which ignores " +
+    "size entirely.", where:"the same moment, from the other side"},
+  {term:"Mode", meaning:"The exact value that repeats most often, which on money repeats almost " +
+    "nothing.", where:"the amount column, where the commonest value appears twice in 44"},
+  {term:"Range", meaning:"Maximum minus minimum, built entirely from the two least typical values " +
+    "in the file.", where:"Rs 800 to Rs 480,000"},
+  {term:"Interquartile range", meaning:"The spread of the middle half, and the basis of the fence " +
+    "that spots a tail quickly.", where:"the fence that caught exactly one order"},
+  {term:"Skew", meaning:"Which side of the median the tail is on, readable straight off sorted " +
+    "values with no chart.", where:"the distance up dwarfing the distance down"},
+  {term:"Denominator", meaning:"The count a rate rests on, which travels with it or the rate means " +
+    "nothing.", where:"Business at 11.1 percent on nine orders"},
+  {term:"Trust floor", meaning:"A record count below which you decline to rank, chosen and " +
+    "defended rather than looked up.", where:"every segment in a 44 order file"},
+  {term:"The honest sentence", meaning:"The number, what it describes, and the count it rests on, " +
+    "in one line somebody can repeat.", where:"the deliverable of the whole day"}
+];
 
-  // sentence
-  const scopeName = state.scope === "all" ? "the file" : state.scope;
-  let sent = "Typical amount in " + scopeName + ": " + rupees(value) + " (" + label.toLowerCase() + "), on " + n + " orders.";
-  if(state.floor > 0 && n < state.floor){
-    sent += "\nFewer than " + state.floor + " orders, so this is an indication rather than a measurement.";
-  }
-  if(state.whale === "out"){
-    sent += "\nOne real order of Rs 480,000 was excluded from this figure.";
-  }
-  if(state.stat === "mean" && ratio >= 1.5){
-    sent += "\nWARNING: this mean sits above " + (n - covered) + " of " + n + " orders.";
-  }
-  document.getElementById("sentence").textContent = sent;
+walkSetup(WALK);
+cardsSetup(CARDS);
+decisionSetup(DECISION);
+calcSetup(CALCS);
+glossarySetup(TERMS);
 
-  // segment table
-  const tb = document.querySelector("#segTable tbody");
-  const segs = ["Business","Retail-Core","Retail-Plus","Student"];
-  tb.innerHTML = segs.map(function(sg){
-    let srs = DATA.filter(function(r){ return r.segment === sg; });
-    if(state.whale === "out") srs = srs.filter(function(r){ return r.amount !== WHALE; });
-    const sa = srs.map(function(r){ return r.amount; });
-    const acc = srs.filter(function(r){ return r.status === "returned"; }).length;
-    const rate = (acc / srs.length * 100).toFixed(1);
-    let cls = "";
-    if(state.floor > 0 && srs.length < state.floor) cls = "dim";
-    if(state.scope === sg) cls = "lit";
-    return '<tr class="' + cls + '"><td>' + sg + '</td><td class="num">' + srs.length +
-           '</td><td class="num">' + rupees(median(sa)) + '</td><td class="num">' + rate + '%</td></tr>';
-  }).join("");
-}
-
-function wire(id, key){
-  const box = document.getElementById(id);
-  box.addEventListener("click", function(e){
-    const b = e.target.closest("button");
-    if(!b) return;
-    box.querySelectorAll("button").forEach(function(x){ x.setAttribute("aria-pressed", String(x === b)); });
-    state[key] = key === "floor" ? Number(b.dataset.v) : b.dataset.v;
-    render();
-  });
-}
-wire("statSeg","stat"); wire("whaleSeg","whale"); wire("scopeSeg","scope"); wire("floorSeg","floor");
-render();
+document.getElementById("popupClose").addEventListener("click", () => {
+  const d = document.getElementById("popup");
+  if (typeof d.close === "function") d.close(); else d.removeAttribute("open");
+  say("You closed the detail popup.");
+});
+railSetup();
 </script>
 </body>
 </html>

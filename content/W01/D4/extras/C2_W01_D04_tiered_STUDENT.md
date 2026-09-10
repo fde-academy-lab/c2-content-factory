@@ -114,3 +114,15 @@ for key in sorted(buckets):
 You now have two thirds of the session's deliverable. The return rate is the same loop with one more counter, testing `r["status"] == "returned"`, and you should try it before looking at the solution.
 
 **If you got here, you are not behind.** Steps 1 and 2 are where most people are actually stuck, and both are Tuesday's material rather than today's.
+
+## If you finished everything and want more
+
+Open `demos/C2_W01_D04_decision_tool_STUDENT.xlsx` on the Denominator tab and find the smallest record count at which you would be willing to rank two segments against each other. Defend it in two sentences, and say what would change your mind.
+
+Then open the companion page's second experiment and run all three denominators. Write down the points one event is worth at each, and say which of the three you would be comfortable putting on a slide without a caveat.
+
+## If you are stuck and want a smaller step
+
+Run `notebooks/C2_W01_D04_ex2_hands_on_STUDENT.ipynb` and stop after step 1. One letter: what is wrong with the typical column? Get that right and the other two repairs follow from it.
+
+If step 1 is still hard, open `whiteboards/C2_W01_D04_board_diagrams_STUDENT.md` and look at diagram 2. The two arrows into the mean are the whole answer.

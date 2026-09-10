@@ -43,6 +43,32 @@ Anscombe's quartet is not a fifth idea in half one either. It is the argument fo
 
 ---
 
+## The run sheet across surfaces
+
+Which surface is live at each point, and for how long. Durations only.
+
+| Order | Surface | What is on it | Duration |
+|---|---|---|---|
+| 1 | Deck, half one, opening | Two true claims from the same data, and which is honest | 10 min |
+| 2 | Notebook 1, on the projector | The mean, and the one order that reaches it | 10 min |
+| 3 | Whiteboard | Seven values by hand, mean and median, before any code | 20 min |
+| 4 | Notebook 1, learners mirroring | The same seven in code, then the whole column | 25 min |
+| 5 | Companion on the projector | The seven added one at a time, then the swap | 10 min |
+| 6 | Deck, half one, sections 2 and 3 | The whale, then spread and the fence | 40 min |
+| 7 | Exercise E3, four files | Fifteen items, silent, letters posted | 15 min |
+| 8 | Deck, half one, section 4 | Reading the shape off sorted values | 20 min |
+| 9 | Exercise E4, pick the honest statistic | Fifteen items plus the hands-on notebook | 15 min |
+| 10 | Deck, half two, sections 1 and 2 | Counting into named piles, then three things per segment | 35 min |
+| 11 | Notebook 2, learners building | The segment summary, all four segments | 35 min |
+| 12 | Companion on the projector | One event at three denominators, run three times | 10 min |
+| 13 | Deck, half two, sections 3 and 4 | The ranking, the trap, the honest sentence | 35 min |
+| 14 | Exercise, the segment summary and the repair | Both unguided sets plus the second hands-on notebook | 40 min |
+| 15 | Workbook handed out | The decision tool, walked once on the Denominator tab | 10 min |
+| 16 | Kahoot | Eight items including Wednesday's return question | 15 min |
+| 17 | Cheat sheets at the close | The text sheet and the visual sheet, both printed | 5 min |
+
+Fixed content totals about 350 minutes. The hand computation on seven values and the sample-size contrast are on the row's never-cut list.
+
 ## The breaks to run, with exact text
 
 Verified against Python 3.11.15 in the build session, both notebooks executed cold top to bottom. Re-run them in the Codespace image before delivery.

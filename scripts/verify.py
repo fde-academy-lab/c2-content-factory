@@ -6,6 +6,21 @@ C2_W{ww}_D{dd} or C2_W{ww}_SAT stem matching the folder it sits in, so a build p
 wrong day fails here rather than overwriting another day's pack. Every file must sit in one of
 the subfolders its folder type allows, so a pack cannot quietly invent its own layout. And no
 file may sit loose at the day folder's root.
+
+This one command then calls the five proof scripts, so a pack is proved by running one thing:
+
+  nb_check.py          every code cell carries an output, three diagrams and five checks render
+  distractor_audit.py  no key is the longest option, keys spread, no format line gives them away
+  xlsx_recalc.py       LibreOffice recalculates the workbook and the verdicts move when flipped
+  html_sweep.py        a browser clicks every control on every companion page
+  deck_md_check.py     the slide markdown's numbering, titles, question pairing and diagram share
+
+Decks route by extension. The markdown source always goes to deck_md_check.py. A built .pptx goes
+to deck_check.py only when it is newer than the markdown it came from, since a stale pptx measures
+a deck nobody is shipping; a stale one is named and skipped instead.
+
+A proof script that cannot run in this session (no browser, no LibreOffice) reports what it could
+not do and does not fail the gate. A proof script that finds a real defect does fail it.
 """
 import sys, re, json, pathlib, subprocess
 
@@ -78,6 +93,23 @@ def check_layout(target, files):
     return fails
 
 
+def git_ignored(paths):
+    """Paths git is told to ignore, so a notebook's generated output/ is not audited as a pack file.
+
+    A day pack is what it ships, and a file the notebook writes when a learner runs it is
+    reproducible from the data and the notebook. Without this, verify.py --execute fails on its own
+    side effects the second time anybody runs it.
+    """
+    if not paths:
+        return set()
+    try:
+        r = subprocess.run(["git", "check-ignore", "--stdin"], input="\n".join(str(p) for p in paths),
+                           capture_output=True, text=True)
+    except Exception:
+        return set()
+    return {pathlib.Path(line) for line in r.stdout.splitlines() if line.strip()}
+
+
 def texts_from(path):
     if path.suffix == ".ipynb":
         try:
@@ -90,11 +122,77 @@ def texts_from(path):
     elif path.suffix in (".md", ".txt", ".py", ".sql", ".csv", ".html"):
         yield path.read_text(encoding="utf-8", errors="replace")
 
+HERE = pathlib.Path(__file__).resolve().parent
+
+
+def run_proof(script, args, why):
+    """Call one proof script, echo it under its own banner, and return its failure count."""
+    path = HERE / script
+    if not path.exists():
+        print(f"INFO  {script} is not in scripts/, so {why} was not proved")
+        return 0
+    print(f"\n--- {script}: {why}")
+    r = subprocess.run([sys.executable, str(path), *args], capture_output=True, text=True)
+    body = (r.stdout or "") + (r.stderr or "")
+    for line in body.rstrip().splitlines():
+        print(line)
+    if r.returncode == 0:
+        return 0
+    m = re.search(r"RESULT:\s*FAIL\s*\((\d+) failures\)", body)
+    return int(m.group(1)) if m else 1
+
+
+def run_proofs(target):
+    """Every proof the pack's own contents ask for, one command, in a fixed order."""
+    files = [p for p in target.rglob("*") if p.is_file()]
+    fails = 0
+
+    if any(p.suffix == ".ipynb" for p in files):
+        fails += run_proof("nb_check.py", [str(target)],
+                           "notebooks carry outputs, diagrams and passing checks")
+
+    if any(p.parent.name in ("unguided", "guided", "kahoot", "paper", "exercises") for p in files):
+        fails += run_proof("distractor_audit.py", [str(target)],
+                           "no option set gives its key away")
+
+    if any(p.suffix == ".xlsx" for p in files) or any("recalc" in p.name for p in files):
+        fails += run_proof("xlsx_recalc.py", [str(target)],
+                           "the workbook computes and its verdicts move when a decision flips")
+
+    if any(p.suffix == ".html" for p in files):
+        fails += run_proof("html_sweep.py", [str(target)],
+                           "every control on every companion page does something")
+
+    decks = [p for p in files if p.parent.name == "slides" and p.suffix == ".md"]
+    if decks:
+        fails += run_proof("deck_md_check.py", [str(target)],
+                           "the slide source numbers, pairs and draws what it should")
+
+    built = [p for p in files if p.parent.name == "slides" and p.suffix == ".pptx"]
+    fresh = []
+    for pptx in built:
+        source = pptx.with_suffix(".md")
+        if not source.exists():
+            print(f"\nINFO  {pptx.name} has no markdown source beside it, so it was not measured")
+        elif pptx.stat().st_mtime <= source.stat().st_mtime + 1:
+            # Equal timestamps mean a fresh clone, where nothing proves the pptx came from this
+            # markdown, so it is treated as stale rather than measured on trust.
+            print(f"\nINFO  {pptx.name} is not newer than {source.name}, so it is stale and was "
+                  f"not measured. Rebuild it from the markdown before it ships.")
+        else:
+            fresh.append(str(pptx))
+    if fresh:
+        fails += run_proof("deck_check.py", fresh, "every text box on the built deck fits")
+
+    return fails
+
+
 def main():
     target = pathlib.Path(sys.argv[1])
     execute = "--execute" in sys.argv
     fails = 0
     files = [p for p in target.rglob("*") if p.is_file() and p.name != ".gitkeep"]
+    files = [p for p in files if p not in git_ignored(files)]
     if not files:
         print("FAIL  no files found under", target); sys.exit(1)
     fails += check_layout(target, files)
@@ -125,6 +223,11 @@ def main():
                 if URL.search(line) and not DATED.search(line) and "to be found" not in line.lower():
                     print(f"WARN  {name}: undated link: {line.strip()[:90]}")
         if execute and p.suffix == ".ipynb":
+            # A TODO twin stops at its first placeholder on purpose, so cold-running it is not a
+            # test of anything. Its executed solution twin is the one that has to run clean.
+            if "__TODO" in p.read_text(encoding="utf-8", errors="replace"):
+                print(f"INFO  {name}: TODO twin, so it is not cold-run; its solution twin is")
+                continue
             # nbconvert runs the notebook with its own folder as the working directory, which is
             # what makes the ../data paths in a notebook resolve the way they do for a learner.
             r = subprocess.run(["jupyter", "nbconvert", "--to", "notebook", "--execute",
@@ -134,7 +237,8 @@ def main():
                 print(f"FAIL  {name}: cold run failed\n{r.stderr[-400:]}"); fails += 1
             else:
                 print(f"PASS  {name}: cold run clean")
-    print("RESULT:", "FAIL" if fails else "PASS", f"({fails} failures)")
+    fails += run_proofs(target)
+    print("\nRESULT:", "FAIL" if fails else "PASS", f"({fails} failures)")
     sys.exit(1 if fails else 0)
 
 if __name__ == "__main__":

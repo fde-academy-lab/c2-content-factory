@@ -19,12 +19,37 @@ Yesterday's code ran once, on records that were already clean and already in mem
 
 ## 2. The map, and where today sat on it
 
-```
-[inline cell] > [packaged decision] > [read the failure] > [log the rejection] > [cross the boundary]
-     Monday              today             today               today                  today
+The week's terrain, filling up one column per teaching day.
+
+```mermaid
+flowchart LR
+    M["Monday<br/>read the orders"] --> T["Tuesday<br/>package and survive bad data<br/>YOU ARE HERE"]
+    T --> W["Wednesday<br/>profile before you touch"]
+    W --> Th["Thursday<br/>describe without misleading"]
+    Th --> S["Saturday<br/>the recap paper"]
 ```
 
-Every remaining day of Week 1 walks further right on that line. Tomorrow you point today's functions at the whole dataset.
+Today's own five stops:
+
+```mermaid
+flowchart LR
+    A["the rule you wrote three times"] --> B["the rule gets a name"]
+    B --> C["it returns rather than prints"]
+    C --> D["it survives the failure you expected"]
+    D --> E["the rejection is a deliverable"]
+```
+
+| Where it sits | What Tuesday covered | Status |
+|---|---|---|
+| Phase 1, read and clean data | Functions, return against print, tracebacks, named exceptions, the rejects log, CSV and JSON | Worked, with your own hands on the keys |
+| Phase 1, read and clean data | Profiling, duplicates, outliers | Named as coming tomorrow, not touched |
+| Phase 2 onwards | pandas, SQL | Mentioned once, so you know the same functions get replaced by one call |
+
+The coverage line: Tuesday worked ten of the eleven subtopics on its row and gave the comprehension a single beat as a compact variant of the loop, with no exercise behind it.
+
+**The outcome tie.** Today is the half of the terminal outcome where the file you were handed stops being trustworthy. Everything here is about producing a number somebody else can check.
+
+**What was left out.** Custom exception classes, `*args`, lambdas and encodings beyond one mention. The nearest thing today did not cover is what to do when the whole dataset is dirty rather than two records of it, and that is Wednesday.
 
 ## 3. Functions
 
@@ -158,3 +183,39 @@ A named exception is a failure you chose to survive.
 A rejects log is the difference between a number and a number you can defend.
 
 A file format is an agreement about structure, and everything a CSV agrees to is text.
+
+## 11. Check yourself, with nothing to write
+
+Eight questions. No notebook, no notes. Say each answer out loud; anything you cannot say in ten seconds names the section to re-read.
+
+1. A function calls `print` and nothing else. What does its caller receive? (Section 3)
+2. Which line of a traceback do you read first, and what two things does it give you? (Section 4)
+3. Both cells printed Rs 53,745. Which one is lying, and about what? (Section 5)
+4. Where is a failure decided about, and why not inside the function? (Section 5)
+5. What does the rejects file make possible that the clean file cannot? (Section 6)
+6. Everything from a CSV is text. Name the two places that bites. (Section 7)
+7. A JSON feed stops at line 48 of a 47-line file. How many records can you use? (Section 7)
+8. Your run reports zero rejects on a file you know is dirty. What do you check first? (Section 9)
+
+## 12. Read next, in this order
+
+| What | Why it is next | Time |
+|---|---|---|
+| Corey Schafer, try and except blocks (verified 03 Sep 2026): https://www.youtube.com/watch?v=NIWwJbo-9_8 | The narrow-catch argument at a slower pace than the room allowed | About 10 minutes |
+| Real Python, LBYL against EAFP (verified 03 Sep 2026): https://realpython.com/python-lbyl-vs-eafp/ | Names the two defensive stances so you can say which one you took and why | About 15 minutes |
+| Official Python tutorial, Errors and Exceptions (verified 03 Sep 2026): https://docs.python.org/3/tutorial/errors.html | The reference for everything today touched, including raising with your own message | About 25 minutes |
+| Automate the Boring Stuff, 3rd edition, Ch 10 (verified 03 Sep 2026): https://automatetheboringstuff.com/3e/ | Reading and writing files, at a from-scratch pace, for the weekend | About 40 minutes |
+
+## 13. The words, and where each one starts mattering
+
+| Term | What it means | Where it first bit |
+|---|---|---|
+| Function | One decision, named, with one home, callable again | The third time you copied the same four lines |
+| `return` against `print` | `print` shows a person, `return` hands a value to the next line | The first call whose result you tried to use |
+| Traceback | The stack of calls that led to a failure, read from the bottom | The first `ValueError` |
+| Named exception | Catching the failure you expected and nothing else | `except:` against `except ValueError:` |
+| `raise` | Refusing on purpose, with your own wording and the offending value | `amount below zero: -4500` |
+| Rejects log | One row per record you could not use, each with its reason | The moment somebody asked how you know the clean count |
+| Reconciliation | Input equals clean plus rejected, asserted every run | The assertion at the end of the pass |
+| File format | An agreement about structure, and nothing more than it states | The round trip that changed the amount's type |
+| `with` | A promise that the file closes when the block ends, raise or no raise | Reading the first file |
