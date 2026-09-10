@@ -121,9 +121,14 @@ def parse_items(text):
             stemmed = any(STEM.search(l) for l in lines[max(0, start - 6):start])
             qualifies = stemmed or any(o[2] for o in run)
         if 3 <= len(run) <= 6 and ordered and qualifies:
-            seen += 1
-            items.append((heading_label or str(seen), run))
-            heading_label = None
+            # An item may show a lettered bank and then the choice set that reads from it. The
+            # choice set is the one carrying the key, so the last run under a heading wins and the
+            # bank above it is not counted as a second item.
+            if heading_label is not None and items and items[-1][0] == heading_label:
+                items[-1] = (heading_label, run)
+            else:
+                seen += 1
+                items.append((heading_label if heading_label is not None else str(seen), run))
     return items
 
 

@@ -70,6 +70,36 @@ KR4221 is a Student order that was returned, so it lands in question 1 and in qu
 
 Notice what question 3 also tells you. There are 13 delivered orders and 13 orders above Rs 2,000, and only 6 orders sit in both groups at once. Those two thirteens were never the same thirteen orders.
 
+### The answers to the fifteen items
+
+**Answers: 1d 2b 3a 4c 5b 6d 7a 8c 9d 10b 11a 12c 13b 14d 15a**
+
+| Item | Key | Why it holds | Why the others fail |
+|---|---|---|---|
+| 1 | d | KR4200 is a returned order and its amount is the text `"4500"`, so question 2 meets it. | a and b name the two questions whose conditions happen to exclude it today; c is true of the walk and false of the conversion, since only the qualifying records reach the addition. |
+| 2 | b | The Student condition and the delivered condition both skip KR4200, so no comparison ever sees its text. | a invents a conversion the conditions do not do; c invents a rule Python does not have; d assumes two files where there is one. |
+| 3 | a | The three questions ask three different things of the same thirty records, so an order can appear in two of them and plenty appear in none. | b assumes the three are a partition; c invents ten dropped records; d invents arithmetic that no rule produces. |
+| 4 | c | KR4221 is Student and returned, so questions 1 and 2. KR4214 is Student and delivered above Rs 2,000, so questions 1 and 3. KR4200 is returned and not Student, so question 2 only. | a and b scramble the pairs; d puts KR4200 in question 3, which needs a delivered status it does not have. |
+| 5 | b | Question 2 wants a returned order and question 3 wants a delivered one, and no order is both. | a and c describe orders that land in two answers rather than three; d is false, since KR4214 is a large Student order. |
+| 6 | d | Two groups of the same size can share as few or as many members as the data happens to give. | a assumes double counting where there is overlap; b adds the two counts as though they were separate files; c reads a correlation out of six shared orders. |
+| 7 | a | A count and a total with no group named will be read against whatever group the reader had in mind, which is usually the whole file. | b and c are two specific wrong readings the reader might land on, and neither is more likely than any other; d describes what a careful reader would ask for rather than what most readers assume. |
+| 8 | c | It names the group, the denominator and the total, so nothing is left for the reader to supply. | a calls a size band revenue; b calls it collected money, which is delivered orders and a different thirteen; d calls it the order book, which is all thirty. |
+| 9 | d | The quotes make the amount text, and Rs 4,500 is the largest amount in the file. | a and c misread the segment and the status, both of which are visible in the row; b misses the quotes, which is the whole point of putting the raw row on the page. |
+| 10 | b | Seven of thirty is 23.3 percent. | a reads the count as a percentage; c is the delivered share of the file rounded; d is the share of the twenty orders your three answers happen to cover. |
+| 11 | a | Rs 12,945 across seven orders is Rs 1,849.29. | b hands back the total; c divides by thirty rather than by seven; d is a plausible round number with nothing behind it. |
+| 12 | c | The count, the total and the group name are what make a number readable by somebody who was not there. | a and d swap the total or the count for the order ids, which are evidence rather than an answer; b drops the count, which is the denominator every rate rests on. |
+| 13 | b | Six accumulators in one loop is correct and cheap, and it couples the three answers, so a change to one means rerunning all three. | a is false, since a loop holds as many accumulators as you write; c misreads one walk as three; d ignores the coupling, which is a real cost when you are still deciding what each condition should say. |
+| 14 | d | Two identical totals from two different conditions almost always means the second condition never made it into the code. | a is possible in principle and false here, since the delivered thirteen include orders below Rs 2,000; b would double both numbers rather than equalise them; c would leave the totals unchanged. |
+| 15 | a | Every group total has to be at least its count times the smallest amount in that group, and that check catches a reset, a dropped condition and a missing record in one line. | b assumes the three answers partition the file, which item 3 has already settled; c is a coincidence; d assumes the three answers cover every order exactly once. |
+
+### The hands-on picks
+
+The running half is `notebooks/C2_W01_D01_ex1_hands_on_STUDENT.ipynb`, and its five markers are:
+
+**Answers: 1b 2a 3a 4c 5b**
+
+The executed twin is `C2_W01_D01_ex1_hands_on_solution_STUDENT.ipynb` in this folder.
+
 ### Where this pattern lives in production
 
 Filter, count, total, then a sentence naming the group is the shape of most of the reporting work you will be asked for in your first year. The expensive mistake is not the arithmetic. It is a count that travels without the group it came from, which is how a returned-orders total ends up on a slide with the word revenue above it.

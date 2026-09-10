@@ -112,3 +112,29 @@ The solution opens at the start of tomorrow's session, and tomorrow's first cell
 Open `C2_W01_D01_selfcheck_STUDENT.md`. It holds checkpoints you can verify on your own screen, so that you know where you stand before the room does.
 
 Open it after your run and before tomorrow's session, rather than while you are still building. Reading it first turns tonight into a copying exercise, and you will feel that difference tomorrow when the solution opens.
+
+## The two tools that ship with tonight's work
+
+Both sit in `demos/` beside the companion page, and both are yours to keep and to point at your own
+work later in the programme.
+
+`C2_W01_D01_decision_tool_STUDENT.xlsx` has one tab per decision you made today: where the
+conversion goes, where the running total starts, and what default an absent field gets. Yellow cells
+are yours and everything else computes. Each tab ships with one planted defect, so all three
+verdicts read "stop" when you open it. Fixing one tab does not clear the export tab's release, which
+is deliberate: the release only turns green when all three decisions are defensible at once.
+
+`C2_W01_D01_run_cold_STUDENT.xlsx` is the seven-move run sheet you use before you hand a notebook to
+anybody. Fill the observed column and the status computes itself.
+
+Run the decision tool tonight on the numbers your own notebook produced, and bring the export tab's
+paragraph tomorrow. It is three sentences and it is the shape of every handover you will write for
+the rest of the programme.
+
+## Where the running half lives
+
+The two hands-on notebooks in `notebooks/` carry the pick-from-options markers and the checks:
+`C2_W01_D01_ex1_hands_on_STUDENT.ipynb` for the three questions and
+`C2_W01_D01_ex2_hands_on_STUDENT.ipynb` for the broken loop. Post the letters from both with your
+exercise letters.
+

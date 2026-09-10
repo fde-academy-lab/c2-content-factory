@@ -12,8 +12,9 @@ What it checks, per notebook:
   2. At least three outputs are rendered diagrams (SVG, PNG, or HTML holding an <svg>).
   3. At least five check results are present, and none of them failed.
 
-A TODO exercise notebook is the one exception to rule 1, because its placeholders are meant to
-stop it. Its solution twin carries the rule in full.
+A TODO exercise notebook stops at its first placeholder on purpose, so it can carry no outputs at
+all. It is measured instead on what it asks a learner to run: three or more diagram calls and five
+or more check calls in its source. Its executed solution twin carries all three rules in full.
 
 Exit code 0 means every notebook passed. Any FAIL line means a notebook needs re-running.
 """
@@ -85,7 +86,22 @@ def check_notebook(path):
             failed += len(FAIL_MARK.findall(text))
 
     calls = len(re.findall(r"\bcheck\s*\(", source_all))
+    drawn = len(re.findall(r"kit\.(ladder|flow|vflow|stack|sequence|tree|matrix|decision_ladder)\s*\(",
+                           source_all))
     fails = 0
+
+    if is_todo:
+        # A TODO twin stops at its first placeholder on purpose, so it can carry no outputs. It is
+        # measured on what it asks the learner to run, and its solution twin carries the rule in full.
+        if drawn < MIN_DIAGRAMS:
+            print(f"FAIL  {path.name}: {drawn} diagram calls, and {MIN_DIAGRAMS} are required.")
+            fails += 1
+        if calls < MIN_CHECKS:
+            print(f"FAIL  {path.name}: {calls} check calls, and {MIN_CHECKS} are required, so a "
+                  f"learner cannot tell whether a step worked without opening the solution.")
+            fails += 1
+        return fails, (f"      {path.name}: TODO twin, {len(cells)} cells, {drawn} diagram calls, "
+                       f"{calls} check calls, 0 pass and 0 fail from {calls} check calls")
 
     if empty and not is_todo:
         shown = ", ".join(str(n) for n in empty[:8]) + (" and more" if len(empty) > 8 else "")
@@ -156,7 +172,7 @@ if __name__ == "__main__":
 # scripts/nb_check.py on a notebook saved without running it
 #     One FAIL line naming how many code cells hold no output, and exit 1.
 # scripts/nb_check.py on a hands-on notebook containing __TODO1__
-#     The empty-output rule is skipped, since the placeholders are meant to stop it, and the
-#     diagram and check rules still apply.
+#     Reported as a TODO twin and measured on its source, so it passes with three diagram calls and
+#     five check calls and no outputs at all. Its solution twin is measured on its outputs.
 # scripts/nb_check.py content/W02
 #     INFO and exit 0 while that week holds no notebooks, so the gate never fails on absence.

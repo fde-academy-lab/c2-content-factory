@@ -95,3 +95,23 @@ Then answer these three in a markdown cell.
 3. Here is the hard one. Somebody asks you for "our biggest order across these thirty". You hand them Rs 4,500. What do you have to say alongside that number so that they are not misled by it, and what would you have had to check before you said anything at all?
 
 Question 3 is the one worth sitting with. The number is correct, the code is correct, and the answer is still capable of misleading the person who asked, which is the difference between running a loop and doing the job.
+
+## If you finished everything and want more
+
+Open `demos/C2_W01_D01_decision_tool_STUDENT.xlsx` and work out, without changing any yellow cell,
+which single change to the MissingKey tab moves the reported figure furthest with the smallest edit.
+Then say in one sentence why that is the tab a reviewer should read first.
+
+Then open the companion page's fourth experiment and run all three positions of `total = 0` in turn.
+Write down the printed number for each, and say which of the three you would find hardest to catch
+if somebody handed you only the number.
+
+## If you are stuck and want a smaller step
+
+Run `notebooks/C2_W01_D01_ex2_hands_on_STUDENT.ipynb` and stop after step 1. That step asks you for
+one letter: what the broken loop prints. Get that letter right and the rest of the notebook is the
+same loop with one line moved.
+
+If step 1 is still hard, open `whiteboards/C2_W01_D01_board_diagrams_STUDENT.md` and look at diagram
+4. The dotted arrow is the bug, drawn.
+

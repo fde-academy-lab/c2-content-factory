@@ -19,9 +19,43 @@ Kalpa Group is fictional. Any resemblance to a real company is coincidental.
 
 ## 1. The map, and where today sat on it
 
+The week's terrain, with today marked. It fills up one column per teaching day, so by Saturday you
+are looking at the whole pipeline rather than at five separate lessons.
+
+```mermaid
+flowchart LR
+    M["Monday<br/>read the orders<br/>YOU ARE HERE"] --> T["Tuesday<br/>package and survive bad data"]
+    T --> W["Wednesday<br/>profile before you touch"]
+    W --> Th["Thursday<br/>describe without misleading"]
+    Th --> S["Saturday<br/>the recap paper"]
 ```
-[open the workbench] > [the kernel remembers] > [type decides] > [walk the records] > [the business answer]
+
+Today's own five stops, which the deck repeated at every section boundary:
+
+```mermaid
+flowchart LR
+    A["open the workbench"] --> B["the kernel remembers"]
+    B --> C["type decides"]
+    C --> D["walk the records"]
+    D --> E["the business answer"]
 ```
+
+| Where it sits | What Monday covered | Status |
+|---|---|---|
+| Phase 1, read and clean data | The environment, kernel state, types, loops, conditions, accumulators, lists and dictionaries | Worked, with your own hands on the keys |
+| Phase 1, read and clean data | Functions, files, profiling, statistics | Named as coming, not touched |
+| Phase 2 onwards | SQL, pandas, models, retrieval | Mentioned once, so you know the same records return |
+
+The coverage line: Monday worked eight of the nine subtopics on its row and mentioned the ninth,
+negative indexing, in one beat without an exercise behind it.
+
+**The outcome tie.** The moment inside the programme's terminal outcome this feeds is the one where
+you are handed a file nobody prepared and asked what it says. Everything today was the first half of
+that moment: getting the records into a shape you can walk, and getting a number back out.
+
+**What was left out.** Functions and files, which are Tuesday, and everything that needs an `import`.
+The nearest thing today did not cover is what happens when the conversion fails rather than
+succeeding, and that arrives tomorrow morning as `ValueError`.
 
 You walked that line from left to right in one day. The first three stops were the first half and
 they were about the machine, and the last two stops were the second half and they were about the
@@ -427,6 +461,46 @@ into one number you can defend.
 
 You can take thirty records nobody explained to you and come back with a number, and you can say what
 would break it.
+
+## 17. Check yourself, with nothing to write
+
+Eight questions. No notebook, no notes, no writing. Say each answer out loud and move on; anything
+you cannot say in ten seconds names the section to re-read.
+
+1. You run a counting cell first and the setup cell second. What appears, and what is the last line
+   of it? (Section 5)
+2. What does a kernel restart erase, and what survives it? (Section 4)
+3. `'10' > 9`. True, False, or something else? (Section 7)
+4. Where does the `int()` go, and why not in the record? (Section 7)
+5. A delivered total comes back as Rs 1,460 and Rs 1,460 is a real order's amount. What is wrong?
+   (Section 8)
+6. `b = a`, then `b.append(9)`. What is `len(a)`? (Section 10)
+7. Twenty-eight of thirty orders carry no discount. What does `r.get("discount", 100)` report across
+   the file, and how much of it did you invent? (Section 11)
+8. Your three counting answers come to twenty across thirty orders. Is that a problem? (Section 12)
+
+## 18. Read next, in this order
+
+| What | Why it is next | Time |
+|---|---|---|
+| Corey Schafer, Lists, Tuples and Sets (verified 03 Sep 2026): https://www.youtube.com/watch?v=W8KRzm-HUcc | Fills in the list operations today only touched, and the copy question in section 10 is worked through properly | About 20 minutes |
+| Corey Schafer, Dictionaries (verified 03 Sep 2026): https://www.youtube.com/watch?v=daefaLgNkw0 | The `.get()` default and what a `KeyError` really means, at a slower pace than the room allowed | About 10 minutes |
+| Automate the Boring Stuff, 3rd edition, Ch 2 and Ch 3 (verified 03 Sep 2026): https://automatetheboringstuff.com/3e/ | The from-scratch pacing on conditions and loops, worth skimming if the accumulator felt fast | About 40 minutes |
+
+Do the two videos before tomorrow. The chapters are for the weekend.
+
+## 19. The words, and where each one starts mattering
+
+| Term | What it means | Where it first bit |
+|---|---|---|
+| Kernel | The Python that runs your cells and holds every name you gave it, until it is restarted | The first time a second cell read a name the first cell made |
+| Execution counter | The number in square brackets, counting runs rather than positions on the page | Reading an output that surprised you |
+| Type | What a value is, which decides what every operator means for it | The comparison against KR4200 |
+| Accumulator | A name set once above a loop and changed on every qualifying turn | The guided threshold build |
+| `NameError` | The kernel was asked for a name nothing had put on the bench | Running a counting cell before the setup cell |
+| `TypeError` | An operator was handed two values it has no honest meaning for | `'4500' > 2000` |
+| `KeyError` | A dictionary was asked for a name that record does not carry | `records[0]["discount"]` |
+| Default | The value you supply when a field is absent, which is a claim about the business | `.get("discount", 0)` against `.get("discount", 100)` |
 
 ---
 

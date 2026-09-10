@@ -38,6 +38,36 @@ The introduction is deliberately broken into three pieces rather than delivered 
 
 ---
 
+## The run sheet across surfaces
+
+Which surface is live at each point, and for how long. Durations only; the room's clock is the Programme Head's business rather than this sheet's.
+
+| Order | Surface | What is on it | Duration |
+|---|---|---|---|
+| 1 | Deck, introduction | Kalpa, the journey map, how the room runs | 45 min |
+| 2 | Notebook 1 on the projector | The answer before any explanation, then the setup cell | 10 min |
+| 3 | Deck, half one, sections 1 and 2 | The Codespace, the bench, the two orders | 30 min |
+| 4 | Companion on the projector | The kernel tracer's guided walk, then experiment 1 run twice | 15 min |
+| 5 | Notebook 1, learners on their own machines | The recovery drill and the type break, mirrored | 25 min |
+| 6 | Exercise E2, predict the output | Fifteen items, silent, letters posted at the end | 15 min |
+| 7 | Deck, half one, section 3 | Types, comparisons, the two accumulators | 35 min |
+| 8 | Exercise E3, find the mistake | Fifteen items plus the hands-on notebook | 15 min |
+| 9 | Deck, half two, sections 1 and 2 | The guided build, lists, the identity trap | 40 min |
+| 10 | Notebook 2, learners building | The guided threshold count, room mirroring | 25 min |
+| 11 | Deck, half two, sections 3 and 4 | Dictionaries, the absent key, the recipe | 35 min |
+| 12 | Exercise E4, the three questions | Fifteen items plus the hands-on notebook, no hints | 30 min |
+| 13 | Workbook handed out | The decision tool, walked once on the Conversion tab | 10 min |
+| 14 | Kahoot | Seven items, read every reason line aloud | 15 min |
+| 15 | Cheat sheets at the close | The text sheet and the visual sheet, both printed | 5 min |
+
+Fixed content totals about 350 minutes across the two blocks, which leaves the discretionary
+third of the day for the war stories, the extra examples and the sticking point that always
+appears somewhere between the accumulator and the dictionary.
+
+The companion page and the two workbooks are yours to run on the projector and to hand out. The
+decision tool ships with one planted defect per tab, so a learner who opens it finds all three
+decisions blocking. Do not fix them in front of the room; that is tonight's work.
+
 ## The four ideas per block, counted as decision sentences
 
 Block one. The kernel holds what you gave it until you restart it. Cells run in the order you run them, not the order they sit on screen. A value's type decides what an operator means, and Python refuses a comparison it cannot make honestly. A loop, a condition and an accumulator answer any counting or totalling question.

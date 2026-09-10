@@ -20,13 +20,58 @@ import sys
 
 CONTROLS = "button, [role=button], input, select, textarea, summary, [onclick], a[href^='#']"
 
+# A content signature rather than a length, because two different states can be the same length.
+SIGNATURE = """() => {
+  const s = document.body.innerHTML + '\\u0000' + document.body.innerText;
+  let h = 5381;
+  for (let i = 0; i < s.length; i++) h = ((h * 33) ^ s.charCodeAt(i)) >>> 0;
+  return h + ':' + s.length;
+}"""
+
+NUDGE = """e => {
+  const tag = e.tagName.toLowerCase();
+  const fire = () => { e.dispatchEvent(new Event('input', {bubbles:true}));
+                       e.dispatchEvent(new Event('change', {bubbles:true})); };
+  if (tag === 'select'){
+    if (e.options.length < 2) return false;
+    e.selectedIndex = (e.selectedIndex + 1) % e.options.length; fire(); return true;
+  }
+  if (tag === 'textarea'){ e.value = (e.value || '') + 'x'; fire(); return true; }
+  if (tag !== 'input') return false;
+  const t = (e.type || 'text').toLowerCase();
+  if (t === 'checkbox' || t === 'radio' || t === 'button' || t === 'submit') return false;
+  if (t === 'number' || t === 'range'){
+    const step = Number(e.step) || 1;
+    const max = e.max === '' ? Infinity : Number(e.max);
+    const min = e.min === '' ? -Infinity : Number(e.min);
+    let v = Number(e.value) + step;
+    if (v > max) v = Math.max(min, Number(e.value) - step);
+    e.value = String(v); fire(); return true;
+  }
+  e.value = (e.value || '') + 'x'; fire(); return true;
+}"""
+
+SHUT_MODALS = """() => {
+  for (const d of document.querySelectorAll('dialog[open]'))
+    { if (typeof d.close === 'function') d.close(); else d.removeAttribute('open'); }
+}"""
+
 
 def find_chromium():
-    for pattern in ("chromium-*/chrome-linux/chrome", "chromium/chrome-linux/chrome",
-                    "chromium_headless_shell-*/chrome-linux/headless_shell"):
-        for path in sorted(pathlib.Path("/opt/pw-browsers").glob(pattern)):
-            if path.is_file():
-                return str(path)
+    """Where this session keeps chromium, which differs between the container and setup.sh.
+
+    Returning None is not a failure: playwright resolves its own download on its own, so the
+    caller launches without an executable path and only falls back when that launch fails too.
+    """
+    import os
+    roots = [os.environ.get("PLAYWRIGHT_BROWSERS_PATH"), "/opt/pw-browsers",
+             str(pathlib.Path.home() / ".cache" / "ms-playwright")]
+    for root in [r for r in roots if r]:
+        for pattern in ("chromium-*/chrome-linux/chrome", "chromium/chrome-linux/chrome",
+                        "chromium_headless_shell-*/chrome-linux/headless_shell"):
+            for path in sorted(pathlib.Path(root).glob(pattern)):
+                if path.is_file():
+                    return str(path)
     return None
 
 
@@ -99,30 +144,53 @@ def sweep(paths, sync_playwright, exe):
             page.goto(path.resolve().as_uri(), wait_until="load")
 
             controls = page.locator(CONTROLS)
-            total, dead, unreachable = controls.count(), [], []
+            total, dead, unreachable, hidden = controls.count(), [], [], 0
             for i in range(total):
                 el = controls.nth(i)
+                # A control inside a closed popup is not reachable in the page's opening state and
+                # is not a defect; the popup's own controls are exercised when the popup is opened.
+                try:
+                    if not el.is_visible():
+                        hidden += 1
+                        continue
+                except Exception:
+                    hidden += 1
+                    continue
                 try:
                     label = (el.inner_text(timeout=800) or el.get_attribute("id")
                              or el.get_attribute("aria-label") or f"control {i + 1}")[:34]
                 except Exception:
                     label = f"control {i + 1}"
-                before = page.evaluate(
-                    "() => document.body.innerHTML.length + '|' + document.body.innerText.length")
+                # A modal left open by the previous click would make everything behind it
+                # unclickable, so the sweep dismisses one before judging the next control, unless
+                # the next control is the modal's own close button.
                 try:
-                    el.click(timeout=1500)
+                    inside_modal = el.evaluate("e => !!e.closest('dialog[open]')")
+                except Exception:
+                    inside_modal = False
+                if not inside_modal:
+                    page.evaluate(SHUT_MODALS)
+                before = page.evaluate(SIGNATURE)
+                try:
+                    # Clicking a number, range or text field changes nothing on any page, so a
+                    # field is exercised by moving it rather than by clicking it.
+                    moved = el.evaluate(NUDGE)
+                    if not moved:
+                        el.click(timeout=1500)
                 except Exception:
                     unreachable.append(label)
                     continue
-                after = page.evaluate(
-                    "() => document.body.innerHTML.length + '|' + document.body.innerText.length")
+                after = page.evaluate(SIGNATURE)
                 if before == after:
                     dead.append(label)
 
             # A dropdown can be present, enabled and still unusable because something sits over it.
+            # Each dropdown is scrolled into view first, because elementFromPoint reads viewport
+            # coordinates and would call every control below the fold covered.
             covered = page.evaluate("""() => {
                 const out = [];
                 for (const s of document.querySelectorAll('select')) {
+                  s.scrollIntoView({block: 'center'});
                   const r = s.getBoundingClientRect();
                   if (!r.width || !r.height) { out.push(s.id || s.name || 'a select'); continue; }
                   const hit = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
@@ -148,8 +216,8 @@ def sweep(paths, sync_playwright, exe):
                 print(f"FAIL  {path.name}: {len(covered)} dropdowns are covered at their own "
                       f"centre point ({', '.join(covered[:4])})")
                 fails += 1
-            print(f"      {path.name}: {total} controls clicked, {len(dead)} inert, "
-                  f"{len(errors)} console errors")
+            print(f"      {path.name}: {total - hidden} controls clicked, {len(dead)} inert, "
+                  f"{hidden} not visible in the opening state, {len(errors)} console errors")
             page.close()
         browser.close()
     return fails
@@ -172,9 +240,13 @@ def main():
 
     sync_playwright = get_playwright(allow_install)
     exe = ensure_browser(allow_install) if sync_playwright else None
-    if sync_playwright and exe:
-        fails = sweep(paths, sync_playwright, exe)
-    else:
+    fails = None
+    if sync_playwright:
+        try:
+            fails = sweep(paths, sync_playwright, exe)
+        except Exception as e:
+            print(f"INFO  the browser would not start ({str(e).splitlines()[0][:120]})")
+    if fails is None:
         print("INFO  no usable browser, so falling back to a static scan")
         fails = static_scan(paths)
 
