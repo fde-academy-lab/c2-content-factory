@@ -93,6 +93,23 @@ def check_layout(target, files):
     return fails
 
 
+def git_ignored(paths):
+    """Paths git is told to ignore, so a notebook's generated output/ is not audited as a pack file.
+
+    A day pack is what it ships, and a file the notebook writes when a learner runs it is
+    reproducible from the data and the notebook. Without this, verify.py --execute fails on its own
+    side effects the second time anybody runs it.
+    """
+    if not paths:
+        return set()
+    try:
+        r = subprocess.run(["git", "check-ignore", "--stdin"], input="\n".join(str(p) for p in paths),
+                           capture_output=True, text=True)
+    except Exception:
+        return set()
+    return {pathlib.Path(line) for line in r.stdout.splitlines() if line.strip()}
+
+
 def texts_from(path):
     if path.suffix == ".ipynb":
         try:
@@ -175,6 +192,7 @@ def main():
     execute = "--execute" in sys.argv
     fails = 0
     files = [p for p in target.rglob("*") if p.is_file() and p.name != ".gitkeep"]
+    files = [p for p in files if p not in git_ignored(files)]
     if not files:
         print("FAIL  no files found under", target); sys.exit(1)
     fails += check_layout(target, files)
@@ -205,6 +223,11 @@ def main():
                 if URL.search(line) and not DATED.search(line) and "to be found" not in line.lower():
                     print(f"WARN  {name}: undated link: {line.strip()[:90]}")
         if execute and p.suffix == ".ipynb":
+            # A TODO twin stops at its first placeholder on purpose, so cold-running it is not a
+            # test of anything. Its executed solution twin is the one that has to run clean.
+            if "__TODO" in p.read_text(encoding="utf-8", errors="replace"):
+                print(f"INFO  {name}: TODO twin, so it is not cold-run; its solution twin is")
+                continue
             # nbconvert runs the notebook with its own folder as the working directory, which is
             # what makes the ../data paths in a notebook resolve the way they do for a learner.
             r = subprocess.run(["jupyter", "nbconvert", "--to", "notebook", "--execute",

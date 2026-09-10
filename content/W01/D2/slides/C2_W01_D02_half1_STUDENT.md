@@ -10,13 +10,13 @@ Position bar, repeated at every section boundary:
 ---
 
 ## S1. Package the logic, survive bad data
-
 The three questions this half answers: what do I call again tomorrow, what do I do when a value is wrong, and who finds out.
 
 ---
 
-## S2. Where we are
+---
 
+## S2. Where we are
 `[inline cell] > [packaged decision] > [read the failure] > [log the rejection] > [cross the boundary]`
 
 Every order in this file is a Kalpa Retail order, and it will still be Kalpa Retail in Week 15.
@@ -25,8 +25,9 @@ Yesterday you answered a question about the orders. Today that answer becomes so
 
 ---
 
-## S2b. Where this is going
+---
 
+## S2b. Where this is going
 `clean_record`, on three records from today's file:
 
 ```
@@ -41,8 +42,9 @@ You will have written this within the hour.
 
 ---
 
-## S2c. The whole day in one picture
+---
 
+## S2c. The whole day in one picture
 Today has five stops and you will pass through all of them before the close.
 
 ```mermaid
@@ -58,8 +60,9 @@ Half one is the first four boxes. Half two is the last two.
 
 ---
 
-## S3. The anchor
+---
 
+## S3. The anchor
 You have written this cell three times already.
 
 ```
@@ -73,16 +76,26 @@ Three copies. One of them has a typo. Which one?
 
 ---
 
-## S4. The problem with three copies
+```mermaid
+flowchart TB
+    A["the same four lines, written three times"] --> B["one name, one home"]
+    B --> C["called on thirty records"]
+    B --> D["called on eight records"]
+    B --> E["called on tomorrow's fifty"]
+```
 
+---
+
+## S4. The problem with three copies
 A rule that lives in three cells is three rules.
 
 When the rule changes, you have to remember where all three are. The one you forget is the one that ships.
 
 ---
 
-## D2. What three copies costs, counted
+---
 
+## D2. What three copies costs, counted
 Suppose the rule changes four times over a project, and each change has to be applied by hand in three places.
 
 $$\text{edits} = \text{changes} \times \text{copies} = 4 \times 3 = 12$$
@@ -93,14 +106,16 @@ With the rule in one function, the same four changes are four edits and there is
 
 ---
 
-## SECTION 1: THE PACKAGED DECISION
+---
 
+## SECTION 1: THE PACKAGED DECISION
 `[inline cell] > **[packaged decision]** > [read the failure] > [log the rejection] > [cross the boundary]`
 
 ---
 
-## S5. Same rule, one place
+---
 
+## S5. Same rule, one place
 ```
 def delivered_total(records):
     total = 0
@@ -114,8 +129,9 @@ The rule now has a name and one home.
 
 ---
 
-## S5b. The anatomy of a function
+---
 
+## S5b. The anatomy of a function
 Four parts, and each one has a job you can name.
 
 ```mermaid
@@ -134,8 +150,9 @@ The parameter is the only door in. The return is the only door out. Everything e
 
 ---
 
-## S6. What the name buys you
+---
 
+## S6. What the name buys you
 You can say the name out loud to a colleague.
 
 You can change the rule in one place.
@@ -144,16 +161,18 @@ You can run it on a file that arrives next week.
 
 ---
 
-## S7. The parameter is the promise
+---
 
+## S7. The parameter is the promise
 `def delivered_total(records)` says: give me records, I give you a number.
 
 The function cannot see anything you did not hand it. That is the whole of scope for today.
 
 ---
 
-## D4. Scope, drawn once
+---
 
+## D4. Scope, drawn once
 The bench you worked on yesterday is the global bench. A call builds a small second bench, uses it, and throws it away.
 
 ```mermaid
@@ -174,8 +193,9 @@ Two names spelled `total` can hold two different numbers at the same time. The o
 
 ---
 
-## D5. Prove it to yourself in four lines
+---
 
+## D5. Prove it to yourself in four lines
 ```
 total = 99
 
@@ -194,16 +214,18 @@ The function set `total` to zero and the outer `total` is still 99. If you expec
 
 ---
 
-## S8. Live demo
+---
 
+## S8. Live demo
 Carve `delivered_total` out of the inline cell together.
 
 Then break it: rename the variable outside the function and watch the function keep working.
 
 ---
 
-## S9. return against print
+---
 
+## S9. return against print
 ```
 def fix(record):
     print(record["order_id"])
@@ -215,8 +237,9 @@ What is inside `result` now?
 
 ---
 
-## S10. The break
+---
 
+## S10. The break
 ```
 TypeError: 'NoneType' object is not subscriptable
 ```
@@ -225,8 +248,9 @@ TypeError: 'NoneType' object is not subscriptable
 
 ---
 
-## D6. The same function, both ways, side by side
+---
 
+## D6. The same function, both ways, side by side
 ```
 def with_print(record):
     print(int(record["amount"]))
@@ -248,16 +272,18 @@ Both put `4500` in front of you. Only one of them put it anywhere your next line
 
 ---
 
-## S11. The rule
+---
 
+## S11. The rule
 Print is for you. Return is for the next line of code.
 
 If the caller needs the answer, the function returns it.
 
 ---
 
-## D7. The compact loop, once, as notation
+---
 
+## D7. The compact loop, once, as notation
 A list comprehension is the same loop written on one line. It is notation, not a new idea.
 
 ```
@@ -274,8 +300,9 @@ You will meet it in other people's code today. You are not required to write one
 
 ---
 
-## S12. Step card, section 1
+---
 
+## S12. Step card, section 1
 1. Name the rule with `def`.
 2. Take what you need as parameters.
 3. Hand the answer back with `return`.
@@ -283,20 +310,23 @@ You will meet it in other people's code today. You are not required to write one
 
 ---
 
-## SECTION 2: READ THE FAILURE
+---
 
+## SECTION 2: READ THE FAILURE
 `[inline cell] > [packaged decision] > **[read the failure]** > [log the rejection] > [cross the boundary]`
 
 ---
 
-## S13. Yesterday you saw three of these
+---
 
+## S13. Yesterday you saw three of these
 A traceback is not the computer being angry. It is the computer telling you where it stopped and what it was holding.
 
 ---
 
-## S14. Read it bottom-up
+---
 
+## S14. Read it bottom-up
 ```
 Traceback (most recent call last):
   File "clean.py", line 12, in <module>
@@ -309,8 +339,9 @@ Last line: what went wrong. Line above it: where. Everything else: how you got t
 
 ---
 
-## D8. Every part of a traceback, labelled
+---
 
+## D8. Every part of a traceback, labelled
 ```mermaid
 flowchart TB
     A["Traceback (most recent call last):<br/>the header, always the same"]
@@ -325,8 +356,9 @@ Read it from the bottom. The value at the end is the part people skip, and it is
 
 ---
 
-## S15. The three questions
+---
 
+## S15. The three questions
 1. What is the exception type?
 2. Which line is mine?
 3. What value was it holding?
@@ -335,8 +367,16 @@ The third question is the one people skip.
 
 ---
 
-## D9. Why the stack reads bottom-up
+```mermaid
+flowchart TB
+    A["the last line: the exception and the message"] --> B["the frame above: which line is mine"]
+    B --> C["the value quoted: what it was holding"]
+    C --> D["the record that broke it"]
+```
 
+---
+
+## D9. Why the stack reads bottom-up
 When one function calls another, each call is pushed onto a stack. The traceback prints the stack from the outside in, so the last frame printed is the innermost call, which is where the failure actually happened.
 
 ```mermaid
@@ -350,8 +390,9 @@ In a long traceback, the deepest frame is almost always library code you did not
 
 ---
 
-## S16. Catching it
+---
 
+## S16. Catching it
 ```
 try:
     value = int(record["amount"])
@@ -363,8 +404,9 @@ You name the exception you expected. Anything else still stops the program, whic
 
 ---
 
-## S16b. What try and except actually do to the flow
+---
 
+## S16b. What try and except actually do to the flow
 ```mermaid
 flowchart TB
     A["try:"] --> B["int(record amount)"]
@@ -378,8 +420,9 @@ An exception you did not name is not ignored. It carries on upward, which is exa
 
 ---
 
-## D11. The exception family, and why the name you choose matters
+---
 
+## D11. The exception family, and why the name matters
 ```mermaid
 flowchart TB
     E["Exception"] --> V["ValueError<br/>right type, impossible value"]
@@ -395,8 +438,9 @@ Catching `Exception` catches every branch of this tree, including the ones you n
 
 ---
 
-## D12. Two defensive stances, and when each wins
+---
 
+## D12. Two defensive stances, and when each wins
 | Stance | What it looks like | When it wins |
 |---|---|---|
 | Look before you leap | You test the value first with something like a digit check before converting it. | The check is cheap and total, and there is one clear condition to test. |
@@ -406,8 +450,9 @@ Python leans on the second stance, and `int()` is the reason why. Writing a test
 
 ---
 
-## S17. The trap
+---
 
+## S17. The trap
 ```
 try:
     value = int(record["amount"])
@@ -419,8 +464,9 @@ This runs. It produces a number. The number is wrong and nothing on screen says 
 
 ---
 
-## S18. Watch it happen
+---
 
+## S18. Watch it happen
 Bare except, on today's 30 records:
 
 ```
@@ -437,16 +483,18 @@ Same number. One of these two lines is a lie.
 
 ---
 
-## S19. Which one lied
+---
 
+## S19. Which one lied
 The first line claims 30 records went into that total. Two of them did not.
 
 A crash costs you an hour. A plausible wrong number costs you the quarter, because nobody goes looking for it.
 
 ---
 
-## D13. The size of the lie, as a formula
+---
 
+## D13. The size of the lie, as a formula
 Write $n$ for the records that arrived, $r$ for the records that failed to convert, and $\bar{x}$ for the average of the ones that did.
 
 The honest total comes from the ones that converted. The gap between that and the total somebody assumes covers all $n$ records is
@@ -459,8 +507,9 @@ Nothing on the screen carries that 7 percent. The only way it reaches anybody is
 
 ---
 
-## S20. Step card, section 2
+---
 
+## S20. Step card, section 2
 1. Read the traceback from the bottom.
 2. Name the exception you expected.
 3. Never catch everything.
@@ -468,14 +517,16 @@ Nothing on the screen carries that 7 percent. The only way it reaches anybody is
 
 ---
 
-## SECTION 3: LOG THE REJECTION
+---
 
+## SECTION 3: LOG THE REJECTION
 `[inline cell] > [packaged decision] > [read the failure] > **[log the rejection]** > [cross the boundary]`
 
 ---
 
-## S21. Where does the bad record go
+---
 
+## S21. Where does the bad record go
 You have three choices when a record will not convert.
 
 Fix it silently. Drop it silently. Set it aside with a reason.
@@ -484,8 +535,9 @@ Only the third one survives a question from your manager.
 
 ---
 
-## S21b. The three choices, and what each one costs later
+---
 
+## S21b. The three choices, and what each one costs later
 ```mermaid
 flowchart TB
     A["a record will not convert"] --> B["fix it silently<br/>guess a value"]
@@ -500,8 +552,9 @@ The first two are faster today and cost you the conversation you cannot win in t
 
 ---
 
-## S22. The rejects list
+---
 
+## S22. The rejects list
 ```
 def clean_record(record):
     keeper = dict(record)
@@ -520,8 +573,9 @@ except ValueError as e:
 
 ---
 
-## D15. Who decides what, and why the split matters
+---
 
+## D15. Who decides what, and why the split matters
 ```mermaid
 flowchart LR
     A["clean_record(record)<br/>converts one record<br/>raises when it cannot"] --> B["clean_records(rows)<br/>walks the list<br/>decides what a failure means"]
@@ -533,8 +587,9 @@ One function knows how to convert and nothing about policy. The other knows the 
 
 ---
 
-## S23. What a good reason looks like
+---
 
+## S23. What a good reason looks like
 ```
 {"id": "KR4210", "reason": "invalid literal for int() with base 10: 'twelve'"}
 {"id": "KR4214", "reason": "invalid literal for int() with base 10: ''"}
@@ -544,8 +599,9 @@ Someone who was not in the room can act on both of these.
 
 ---
 
-## D16. The fields a reject row needs, and why
+---
 
+## D16. The fields a reject row needs, and why
 | Field | Why it is there |
 |---|---|
 | The identifier | Without it nobody can find the record in the source system, so the row is a complaint rather than a task. |
@@ -557,16 +613,18 @@ Today you ship the first two, which is the minimum that works. Tomorrow's profil
 
 ---
 
-## S24. The reconciliation
+---
 
+## S24. The reconciliation
 30 records in. 28 clean. 2 rejected.
 
 Input equals clean plus rejected. When that sum does not hold, something disappeared and you do not yet know what.
 
 ---
 
-## D17. The reconciliation, as an identity you check every time
+---
 
+## D17. The reconciliation, as an identity
 $$n_{\text{in}} = n_{\text{clean}} + n_{\text{rejected}}$$
 
 Today that reads $30 = 28 + 2$, and it holds.
@@ -581,8 +639,9 @@ A total with no reconciliation beside it is a number somebody has to take on tru
 
 ---
 
-## S25. From the field
+---
 
+## S25. From the field
 Knight Capital, 1 August 2012. About USD 440 million lost in 45 minutes.
 
 A deployment reused an old flag. The system did not fail loudly. It kept trading, at speed, on the wrong rule.
@@ -591,8 +650,9 @@ The argument for validating early and failing loudly is not a style preference. 
 
 ---
 
-## D18. Knight Capital, the mechanism
+---
 
+## D18. Knight Capital, the mechanism
 ```mermaid
 flowchart TB
     A["A flag field had run out of spare bits"] --> B["An engineer reused a bit belonging to<br/>Power Peg, a feature retired years earlier"]
@@ -606,8 +666,9 @@ The dead code was never deleted, only stopped being called. Reusing its flag cal
 
 ---
 
-## D19. Knight Capital, what it cost
+---
 
+## D19. Knight Capital, what it cost
 | Fact | Figure |
 |---|---|
 | Date | 1 August 2012 |
@@ -621,8 +682,9 @@ Source: Knight Capital Group, Wikipedia: https://en.wikipedia.org/wiki/Knight_Ca
 
 ---
 
-## D20. The line from that to your cell today
+---
 
+## D20. The line from that to your cell today
 Knight had no shortage of engineers. It had a deployment that half succeeded and nothing that said so.
 
 Your `clean_records` half succeeds every time you run it, because two records will not convert. The difference between you and that morning is one list and one printed count.
@@ -631,8 +693,9 @@ The habit is small and it is the same habit at every scale. When part of the wor
 
 ---
 
-## D21. Where a rejects log lives in production
+---
 
+## D21. Where a rejects log lives in production
 A data pipeline at any size writes the same two outputs you are about to write. The rejects side gets a name and a rule attached to it.
 
 | In production it is called | What it holds | The rule attached |
@@ -645,16 +708,27 @@ The names change with the tool. The identity in D17 does not.
 
 ---
 
-## S26. Interview question
+---
 
+## S26. Interview question
 "Why is a bare `except` worse than letting the code crash?"
 
 You can answer this now, with today's two output lines as your evidence.
 
 ---
 
-## S27. Step card, section 3
+```mermaid
+flowchart LR
+    A["30 in"] --> B["28 clean"]
+    A --> C["2 rejected"]
+    B --> D{"28 + 2 = 30?"}
+    C --> D
+    D -->|"no"| E["stop, a record went missing"]
+```
 
+---
+
+## S27. Step card, section 3
 1. Set the bad record aside, never drop it.
 2. Carry the interpreter's own reason.
 3. Reconcile: input equals clean plus rejected.
@@ -662,54 +736,101 @@ You can answer this now, with today's two output lines as your evidence.
 
 ---
 
-## SECTION 4: THE INTERVIEW BLOCK
+---
 
+## SECTION 4: THE INTERVIEW BLOCK
 `[inline cell] > [packaged decision] > [read the failure] > [log the rejection] > [cross the boundary]`
 
 ---
 
-## S28. What this section is
+---
 
+## S28. What this section is
 Two of the questions below are on this week's own question set and will be on Saturday's paper. The rest are asked often enough at this level that this programme puts them in front of you now.
 
 Each one gets the same treatment: what the question is really testing, the answer, and the follow-up you should expect.
 
 ---
 
-## S29. Question 1: how do you read a Python traceback
+---
 
-This is on the week's question set.
+## S29. Question: what do you read first in a traceback?
+A four-line traceback is on the screen and you have ten seconds.
 
-**What it is really testing.** Whether you have debugged anything yourself, or only watched someone else do it.
-
-**The answer, in three beats.** I read it bottom-up. The last line gives me the exception type and the offending value. The line above tells me the file and the line number, and I scan up to the first frame in my own code, because the deepest frame is usually library code. Then I ask what value it was holding, because that names the record.
-
-**The follow-up.** "What if the traceback is fifty lines?" Then the top and the bottom are the only parts that matter at first. The bottom says what broke, and I scan down from the top for the first file path that is mine.
+a) The first line, since it says where the run began
+b) The frame naming your own file
+c) The last line
+d) Whichever line names a library you recognise
 
 ---
 
-## D22. Question 1, the deeper version
+## S29a. Answer: the last line, and then two more questions
+**The claim.** The last line carries the exception type and the offending value, which is where the diagnosis starts. Then you scan up to the first frame in your own code.
 
+| Option | Why it does not hold |
+|---|---|
+| a) The first line | It names where the run began, which is almost never where it broke. |
+| b) Your own frame | That is the second thing you look at, and it tells you where rather than what. |
+| d) A library name | The deepest frame is usually library code that did what you asked it to do. |
+
+Three questions, every time: what is the exception type, which line is mine, and what value was it holding? The third is the one people skip and it is the one that names the record.
+
+**The mental model.** A traceback is a receipt printed from the bottom up. The last line is the total.
+
+```mermaid
+flowchart TB
+    A["the last line: the exception and the message"] --> B["the frame above: which line is mine"]
+    B --> C["the value quoted: what it was holding"]
+    C --> D["the record that broke it"]
+```
+
+---
+
+## D22. The traceback, one level deeper
 An interviewer who wants to separate you from the room asks what a re-raised exception means, or why a traceback sometimes shows two failures joined by the line "During handling of the above exception, another exception occurred".
 
 The honest answer at your stage: that second form means an error happened inside an except block, and Python shows both so the original cause is not lost. Say that, and say you have not used chained exceptions in anger yet. Naming the edge of what you know is worth more than guessing at it.
 
 ---
 
-## S30. Question 2: why is a bare except worse than letting the code crash
+---
 
-This is on the week's question set.
+## S30. Question: why is a bare except worse than a crash?
+Both cells below ran to the end. Which of these is the strongest reason to prefer the crash?
 
-**What it is really testing.** Whether you can argue about failure modes rather than recite a style rule.
-
-**The answer, in three beats.** A crash is loud and it stops the wrong number from travelling. A bare `except` catches everything, including errors I never reasoned about, and it usually leaves the program producing a plausible number nobody questions. In today's file a bare except reports thirty records processed when only twenty-eight converted, and the total is understated by roughly seven percent with nothing on screen to say so.
-
-**The follow-up.** "So never catch anything?" No. Catch the exception you expected, by name, and write down what you set aside. That is the difference between surviving a bad record and hiding it.
+a) The crash is faster to write
+b) The crash stops a wrong number from travelling
+c) A bare except is against the style guide
+d) A bare except is slower on large files
 
 ---
 
-## D23. Question 2, the numbers that make it land
+## S30a. Answer: the crash stops a wrong number
+**The claim.** A crash is loud and it stops the wrong number from travelling. A bare except catches errors nobody reasoned about and leaves the program producing a plausible number nobody questions.
 
+```
+bare except:    Processed 30 records. Total: 53745
+named except:   Clean 28, rejected 2, total 53745
+```
+
+| Option | Why it does not hold |
+|---|---|
+| a) Faster to write | True and irrelevant. Both are one line. |
+| c) The style guide | An appeal to authority, which loses the argument in a review. |
+| d) Slower on large files | Invented, and it would not matter if it were true. |
+
+**The mental model.** Same total, and one of them is a lie about its own denominator. Say the two numbers, then say the identity: input equals clean plus rejected.
+
+```mermaid
+flowchart TB
+    A["int(r['amount']) raises"] --> B["no handler: the run stops here"]
+    A --> C["except: pass: 30 records claimed, 28 counted"]
+    A --> D["except ValueError: 28 of 30, stated"]
+```
+
+---
+
+## D23. The numbers that make the bare except land
 Bring the arithmetic, not the adjective. The claim "it hides errors" is a slogan. The claim below is evidence.
 
 ```
@@ -721,38 +842,110 @@ Same total, and one of them is a lie about its own denominator. Say the two numb
 
 ---
 
-## S31. Question 3: what is the difference between return and print
+---
 
-Asked constantly at entry level. This programme puts it here because it is the fastest way to tell whether somebody has written a function or only read about one.
+## S31. Question: return against print, what differs?
+A function calls `print` and nothing else. What does its caller receive?
 
-**The answer.** `print` writes to the screen for a human and hands nothing back. `return` gives a value to the line that called the function. A function that only prints hands back `None`, and the caller gets `None`, which is why `result["order_id"]` then raises `TypeError: 'NoneType' object is not subscriptable`.
-
-**The follow-up.** "When would you print inside a function?" When it is genuinely a message for a person, such as a progress line in a long job. Never as the way the answer gets out.
+a) The value that was printed
+b) The record it passed in
+c) `None`
+d) Nothing at all, and the next line is skipped
 
 ---
 
-## S32. Question 4: what does a function's parameter list guarantee
+## S31a. Answer: None, which is why the next line raises
+**The claim.** `print` writes to the screen for a person and hands nothing back. `return` gives a value to the line that called the function. A function that only prints hands back `None`.
 
-This programme's own calibration, because it is the shortest way to explain scope without using the word scope.
+| Option | Why it does not hold |
+|---|---|
+| a) The printed value | It went to the screen, which the caller cannot read. |
+| b) The record | Confuses the argument with the return. |
+| d) The line is skipped | Python runs the next line, which is why `result["order_id"]` raises `TypeError: 'NoneType' object is not subscriptable`. |
 
-**The answer.** It is the only door in. The function cannot see a variable I did not hand it, and a name it assigns inside the body does not touch the name outside. That is why the same function runs unchanged on today's thirty records and tomorrow's fifty.
+**The mental model.** Print shows you. Return hands over.
 
-**The follow-up.** "What if I do want to change something outside?" Return the new value and let the caller assign it. Reaching outside a function is possible in Python and it is a decision I would want a reason for.
+```mermaid
+flowchart LR
+    A["the caller"] --> B["your function"]
+    B -->|"print"| C["your screen"]
+    B -->|"no return"| D["None goes back"]
+    B -->|"return"| E["the value goes back"]
+    E --> F["the next line can use it"]
+```
 
 ---
 
-## S33. Question 5: your cleaning run reported zero rejects on a file you know is dirty
+## S32. Question: what does a parameter list guarantee?
+You hand a function one record. What can it see?
 
-This one is on the week's question set for Saturday and it belongs to tomorrow's material, so treat it as a preview.
+a) Every name in the notebook, since it is all one kernel
+b) Only what it was handed, plus what it makes itself
+c) Whatever the cell above it defined
+d) Nothing, until it returns
 
-**The answer, in three beats.** First I check whether anything was actually caught, since a bare `except` with a `pass` reports zero rejects by construction. Second I check that the counts reconcile, because input equals clean plus rejected only tells me something when I compute all three. Third I check that the dirt I expect is the dirt the code tests for, since a row can be present, convertible and still wrong.
+---
 
-You will build the evidence for this answer tomorrow.
+## S32a. Answer: only what it was handed
+**The claim.** The parameter list is the only door in. A function cannot see a name you did not hand it, and a name it assigns inside its body does not touch the name outside.
+
+| Option | Why it does not hold |
+|---|---|
+| a) Every name | That is what the kernel holds, not what the function sees. It is also what makes untested code work by accident. |
+| c) The cell above | The same mistake, dressed as proximity. |
+| d) Nothing until it returns | Confuses what goes in with what comes out. |
+
+That is why the same function runs unchanged on today's thirty records and tomorrow's fifty.
+
+**The mental model.** A function is a room with one door and one window. The parameters are the door and the return is the window.
+
+```mermaid
+flowchart LR
+    A["names outside the function"] -.->|"invisible"| B["the function body"]
+    C["the parameter list"] --> B
+    B --> D["what it returns"]
+    D --> A
+```
+
+---
+
+## S33. Question: zero rejects on a file you know is dirty?
+Your run reports zero rejections. What do you check first?
+
+a) Whether the file was the one you meant to open
+b) Whether anything was actually caught
+c) Whether the output folder exists
+d) Whether the input had any rows at all
+
+---
+
+## S33a. Answer: whether anything was caught, then reconcile
+**The claim.** A bare `except` with a `pass` reports zero rejects by construction, so the first check is whether the handler ever appended anything.
+
+| Option | Why it does not hold |
+|---|---|
+| a) The wrong file | Worth checking, and it produces a low row count rather than zero rejects. |
+| c) The output folder | Missing folders raise on write rather than reporting zero. |
+| d) An empty input | Also produces zero clean rows, which you would have noticed. |
+
+Then reconcile: input equals clean plus rejected only tells you something when you compute all three. Then check the condition itself, because a condition nothing matches rejects nothing.
+
+**The mental model.** Zero is a number somebody has to earn.
+
+```mermaid
+flowchart LR
+    A["30 in"] --> B["28 clean"]
+    A --> C["2 rejected"]
+    B --> D{"28 + 2 = 30?"}
+    C --> D
+    D -->|"no"| E["stop, a record went missing"]
+```
 
 ---
 
 ## S34. Crux, half one
-
 You have `clean_record`. That was the promise on the third slide.
 
 A function is a decision you can call again. A named exception is a failure you chose to survive. A rejects log is the difference between a number and a number you can defend.
+
+---

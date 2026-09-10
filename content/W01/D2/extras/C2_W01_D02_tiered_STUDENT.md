@@ -55,3 +55,15 @@ Question 3 is the entire reason tomorrow exists.
 `int(" 1360 ")` succeeds. `int("2 450")` raises. `int("1,240")` raises.
 
 Write down the rule Python is actually applying, in one sentence, then test your rule on three inputs you invent yourself. If any of the three surprises you, your rule is wrong and the surprise is the interesting part.
+
+## If you finished everything and want more
+
+Open `demos/C2_W01_D02_decision_tool_STUDENT.xlsx` on the Format tab and find the one combination of the four yellow cells where both CSV and JSON are ruled out. Say in two sentences what you would actually do in that situation, and what you would tell the reader of the file.
+
+Then open the companion page's fourth experiment and run all three reconciliation shapes. Write down which one loses a row without saying so, and say how you would notice it on a file of a million rows rather than five.
+
+## If you are stuck and want a smaller step
+
+Run `notebooks/C2_W01_D02_ex1_hands_on_STUDENT.ipynb` and stop after step 1. One letter: what is the caller holding after a function that only prints? Get that right and the rest of the notebook is the same question asked three more ways.
+
+If step 1 is still hard, open `whiteboards/C2_W01_D02_board_diagrams_STUDENT.md` and look at diagram 1. The two arrows out of the function are the whole answer.

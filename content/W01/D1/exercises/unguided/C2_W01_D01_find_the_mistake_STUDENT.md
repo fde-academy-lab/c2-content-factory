@@ -113,7 +113,7 @@ Why is a wrong number that runs cleanly harder to catch than the `TypeError` you
 a) It takes longer to run, so the room loses patience
 b) The interpreter hides the line number when nothing raises
 c) It only appears on large files, and this file is small
-d) Nothing on screen marks it as wrong
+d) Nothing on screen flags it as wrong
 
 ## Item 9
 
