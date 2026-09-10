@@ -59,12 +59,15 @@ def clean(text):
     return BOLD.sub(r"\1", text).replace("`", "")
 
 
-# Characters per point of type per inch of box, measured against what scripts/deck_check.py
-# reports rather than guessed: a 20pt line of Calibri wraps at about 88 characters across an
-# 11.3in box, and 16pt Consolas at about 104. Both sit under the real wrap point on purpose,
-# because a box an eighth of an inch too tall costs nothing and a box too short fails the gate.
-CHAR_W = 0.62
-MONO_CHAR_W = 0.65
+# Pixels of advance per character per point of type, taken from the widest font the slide is
+# likely to be drawn with rather than the narrowest. A deck is authored where Consolas does not
+# exist and is opened where it does, so the renderer substitutes something wider, and an estimate
+# built on the narrow font puts the last line of a code card outside the card. DejaVu Sans Mono
+# advances 0.602em and DejaVu Sans about 0.52em, which at 96 pixels to the inch is 0.80 and 0.69
+# pixels per character per point. Erring wide costs an eighth of an inch of height; erring narrow
+# spills the text.
+CHAR_W = 0.69
+MONO_CHAR_W = 0.80
 
 
 def wrapped_rows(text, width_in, size, mono=False):
@@ -118,8 +121,12 @@ def rect(slide, x, y, w, h, fill=None, line=None, line_w=1.0, shape=MSO_SHAPE.RE
 
 def textbox(slide, x, y, w, h, anchor=MSO_ANCHOR.TOP):
     tb = slide.shapes.add_textbox(Inches(x), Inches(y), Inches(w), Inches(h))
-    tb.text_frame.word_wrap = True
-    tb.text_frame.vertical_anchor = anchor
+    tf = tb.text_frame
+    tf.word_wrap = True
+    tf.vertical_anchor = anchor
+    # A text frame carries a tenth of an inch of inset on every side by default, which is height
+    # the box was never measured for and is why a last line lands outside the card behind it.
+    tf.margin_left = tf.margin_right = tf.margin_top = tf.margin_bottom = Pt(0)
     return tb
 
 
@@ -198,8 +205,8 @@ def footer_band(slide, footer, number, total, section=False):
 def callout(slide, top, label, body, width=WIDTH, dark=False, scale=1.0, x=MARGIN):
     """The line that carries the point, set apart from the line before it."""
     size = round(20 * scale)
-    lines = wrapped_rows(label + " " + body, width - 0.5, size)
-    h = 0.3 + (size / 72 * 1.36) * lines
+    lines = wrapped_rows(label + " " + body, width - 0.6, size)
+    h = 0.26 + (size / 72 * 1.42) * lines
     rect(slide, x, top, width, h, INK if dark else TINT)
     rect(slide, x, top, 0.055, h, ACC if not dark else TINT)
     tb = textbox(slide, x + 0.28, top + 0.1, width - 0.5, h - 0.16, MSO_ANCHOR.MIDDLE)
@@ -246,9 +253,9 @@ def breadcrumb(slide, top, line, section=False):
 
 def code_card(slide, top, lines, width=WIDTH, scale=1.0, x=MARGIN):
     """Typed things sit on a dark card, so a room never confuses them with said things."""
-    size = max(12, round(16 * scale))
-    rows = sum(wrapped_rows(l, width - 0.44, size, mono=True) for l in lines)
-    h = 0.3 + (size / 72 * 1.32) * rows
+    size = max(11, round(16 * scale))
+    rows = sum(wrapped_rows(l, width - 0.6, size, mono=True) for l in lines)
+    h = 0.28 + (size / 72 * 1.42) * rows
     rect(slide, x, top, width, h, INK)
     rect(slide, x, top, 0.055, h, ACC)
     tb = textbox(slide, x + 0.26, top + 0.11, width - 0.44, h - 0.2)
@@ -305,15 +312,49 @@ def table(slide, rows, top, width=WIDTH, max_h=None, scale=1.0, x=MARGIN):
     cols = max(len(r) for r in grid)
     grid = [r + [""] * (cols - len(r)) for r in grid]
     room = (max_h if max_h is not None else BODY_BOTTOM - top) - 0.1
-    size = max(11, round((15 if cols <= 3 else 13) * scale))
-    # A cell that wraps needs the row to be two lines tall. Sizing every row the same made the
-    # long cell spill over the row below it and touch whatever came after the table.
-    col_w = width / cols - 0.24
-    wrapped = [max(wrapped_rows(c, col_w, size) for c in row) for row in grid]
-    row_hs = [max(0.36, (size / 72 * 1.36) * n + 0.14) for n in wrapped]
-    over = sum(row_hs) - room
-    if over > 0:
-        row_hs = [h * room / sum(row_hs) for h in row_hs]
+
+    # Columns are sized by what they hold. Splitting the width evenly gives a column of counts
+    # the same room as a column of sentences, so the sentences wrap four deep and the table grows
+    # to twice the height it needs. Each column asks for its longest cell, no column may take
+    # more than half the table, and none drops below three quarters of an inch.
+    pad = 0.24
+    base = max(9, round((15 if cols <= 3 else 13) * scale))
+    per_char = base * CHAR_W / 96.0
+    want = [max(len(clean(row[ci])) for row in grid) for ci in range(cols)]
+    floor_w, ceil_w = 0.85, width * 0.5
+    raw = [min(ceil_w, wcell * per_char + pad) for wcell in want]
+
+    # Fit the wants into the width without letting any column fall under its floor. Scaling every
+    # column by the same factor and then lifting the short ones back up overshoots the width, and
+    # a second scaling pushes them under the floor again, which is how an order id ends up split
+    # across two lines. The short columns are pinned and only the rest are scaled.
+    col_ws = list(raw)
+    for _ in range(cols + 1):
+        pinned = [i for i, w in enumerate(col_ws) if w <= floor_w + 1e-9]
+        spare = width - floor_w * len(pinned)
+        rest = sum(col_ws[i] for i in range(cols) if i not in pinned)
+        if rest <= 0 or spare <= 0:
+            col_ws = [width / cols] * cols
+            break
+        col_ws = [floor_w if i in pinned else max(floor_w, col_ws[i] * spare / rest)
+                  for i in range(cols)]
+        if all(w >= floor_w - 1e-9 for w in col_ws) and abs(sum(col_ws) - width) < 0.01:
+            break
+
+    def measure(size):
+        """A cell that wraps needs a row two lines tall, so the widest cell sets each row."""
+        wrapped = [max(wrapped_rows(c, col_ws[ci] - pad, size) for ci, c in enumerate(row))
+                   for row in grid]
+        return [max(0.34, (size / 72 * 1.36) * n + 0.14) for n in wrapped]
+
+    # A table is fitted by stepping its type down until the rows it really needs fit the room,
+    # never by scaling the row heights. PowerPoint treats a row height as a minimum and grows the
+    # row back to hold its text, so a scaled table renders taller than it was told to be and lands
+    # on whatever comes after it.
+    size, row_hs = base, measure(base)
+    while sum(row_hs) > room and size > 9:
+        size -= 1
+        row_hs = measure(size)
     height = Inches(sum(row_hs))
     shape = slide.shapes.add_table(len(grid), cols, Inches(x), Inches(top), Inches(width),
                                    height)
@@ -327,6 +368,8 @@ def table(slide, rows, top, width=WIDTH, max_h=None, scale=1.0, x=MARGIN):
             node = tblPr.makeelement(qn(tag), {})
             tblPr.append(node)
         node.text = TABLE_STYLE_NONE
+    for ci, cw in enumerate(col_ws):
+        tbl.columns[ci].width = Inches(cw)
     for ri, row in enumerate(grid):
         tbl.rows[ri].height = Inches(row_hs[ri])
         for ci, cell in enumerate(row):

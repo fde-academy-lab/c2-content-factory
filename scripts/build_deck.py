@@ -217,7 +217,8 @@ def render_mermaid(lines):
     return png if png.exists() else None
 
 
-def place_picture(s, png, top, bottom=BODY_BOTTOM, width_in=WIDTH, centre=False):
+def place_picture(s, png, top, bottom=BODY_BOTTOM, width_in=WIDTH, centre=False,
+                  left=MARGIN):
     """Drop a rendered diagram into the body area, scaled to fill it and centred.
 
     The old rule scaled a diagram down to fit and never up, so a six-box chain drawn at its natural
@@ -231,7 +232,7 @@ def place_picture(s, png, top, bottom=BODY_BOTTOM, width_in=WIDTH, centre=False)
     scale = min(max_w / (w / 96), max_h / (h / 96))
     draw_w, draw_h = (w / 96) * scale, (h / 96) * scale
     y = top + max(0.0, (max_h - draw_h) / 2) if centre else top
-    s.shapes.add_picture(str(png), Inches(MARGIN + (width_in - draw_w) / 2), Inches(y),
+    s.shapes.add_picture(str(png), Inches(left + (width_in - draw_w) / 2), Inches(y),
                          Inches(draw_w), Inches(draw_h))
     return y + draw_h + 0.16
 
@@ -312,7 +313,43 @@ def paragraph_block(slide, top, lines, section=False, scale=1.0, width=WIDTH, x=
     return top + h + 0.14
 
 
-def render_slide(slide, prs, title, body, footer, number, total, scale=1.0):
+def block_height(mode, lines, width, scale, section=False):
+    """Roughly how much height a block will want, used only to look ahead.
+
+    A table is told how much room it may take and fills whatever it is given, so without this a
+    nine row table swallows the body and the sentence under it never reaches the slide. The
+    estimate only has to be close: when it is wrong the block is dropped, and a layout that drops
+    a block never wins the search.
+    """
+    if mode == "table":
+        rows = [l for l in lines if not re.fullmatch(r"\s*\|[\s:\-|]+\|\s*", l)]
+        return min(4.4, 0.42 * len(rows) + 0.28)
+    if mode == "code":
+        return 0.3 + (max(12, round(16 * scale)) / 72 * 1.32) * len(lines) + 0.18
+    if mode == "mermaid":
+        return 1.1
+    total = 0.0
+    for kind, payload in classify(lines):
+        if kind == "crumb":
+            total += 0.74
+        elif kind == "callout":
+            total += 0.3 + (round(20 * scale) / 72 * 1.36) * wrapped_rows(
+                payload[0] + " " + payload[1], width - 0.5, round(20 * scale)) + 0.18
+        elif kind == "numbered":
+            total += sum((round(19 * scale) / 72 * 1.36)
+                         * wrapped_rows(t, width - 0.6, round(19 * scale)) + 0.18
+                         for _, t in payload) + 0.12
+        elif kind == "quote":
+            total += 0.36 + (round(19 * scale) / 72 * 1.36) * wrapped_rows(
+                " ".join(payload), width - 0.3, round(19 * scale))
+        else:
+            size = round((20 if not section else 24) * scale)
+            total += text_height([l.strip() for l in payload], width, size, gap=0.12) + 0.14
+    return total
+
+
+def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layout=None,
+                 reserve=0.0):
     section = title.upper().startswith("SECTION")
     depth = bool(SLIDE_ID.match(title)) and SLIDE_ID.match(title).group(1) == "D"
     background(slide, prs, ACC if section else BG)
@@ -338,23 +375,17 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0):
             add_runs(tb.text_frame.paragraphs[0], " ".join(head), 17, INK)
         drawer(slide, after)
         footer_band(slide, footer, number, total, section)
-        return
+        return 0
 
     # An exhibit slide is one whose argument is a single picture, so the picture gets the body.
     pictures = [(m, b) for m, b in blocks if m == "mermaid"]
     words = [(m, b) for m, b in blocks if m != "mermaid"]
-    # A picture taller than it is wide is height-limited by the slide, so giving it the whole
-    # width buys nothing: it sits narrow in the middle with its labels shrunk to match. Those go
-    # beside their words instead, where they get the body's full height.
-    portrait = False
-    if len(pictures) == 1 and not section:
-        probe = render_mermaid(pictures[0][1])
-        if probe:
-            from PIL import Image
-            with Image.open(probe) as im:
-                portrait = im.size[1] / im.size[0] > 0.55
-
-    single_exhibit = (len(pictures) == 1 and not section and not portrait
+    # Whether a picture reads better across the slide or beside its words is arithmetic, not a
+    # rule of thumb: down the page it only gets the height the words leave, and beside them it
+    # gets the body's full height but under half the width. The build tries both and keeps the
+    # one that prints the labels larger, so nothing here has to guess.
+    one_picture = len(pictures) == 1 and not section
+    single_exhibit = (one_picture and layout not in ("column",) and not reserve
                       and sum(len(b) for m, b in words if m == "text") <= 3
                       and all(m == "text" for m, _ in words))
 
@@ -372,37 +403,78 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0):
                 tb = textbox(slide, MARGIN, tail_top, WIDTH, BODY_BOTTOM - tail_top)
                 add_runs(tb.text_frame.paragraphs[0], " ".join(l.strip() for l in lead), 20, INK)
             footer_band(slide, footer, number, total, section)
-            return
+            return 0
 
     # A portrait diagram beside its words beats the same diagram squeezed under them: stacked, it
     # only gets the height nothing else wanted, which is where a six-rank flowchart ends up
     # printing its labels at five points.
     column = None
-    if portrait and not single_exhibit:
+    if one_picture and layout == "column" and not single_exhibit:
         png_probe = render_mermaid(pictures[0][1])
-        column = (MARGIN + 0.47 * WIDTH, 0.53 * WIDTH)
-        place_picture(slide, png_probe, BODY_TOP, BODY_BOTTOM, 0.43 * WIDTH, centre=True)
+        if png_probe:
+            column = (MARGIN + 0.47 * WIDTH, 0.53 * WIDTH)
+            place_picture(slide, png_probe, BODY_TOP, BODY_BOTTOM, 0.43 * WIDTH, centre=True)
+
+    # A picture that comes last on a crowded slide used to get whatever height the words left,
+    # which on a slide carrying a claim, a table and a second claim is almost nothing. It gets a
+    # band at the foot instead, sized to what its own labels need.
+    floor = BODY_BOTTOM
+    trailing = (reserve and one_picture and not column
+                and blocks and blocks[-1][0] == "mermaid")
+    if trailing:
+        floor = max(BODY_TOP + 1.2, BODY_BOTTOM - reserve)
 
     x, w = column if column else (MARGIN, WIDTH)
-    for mode, lines in blocks:
-        if top > BODY_BOTTOM - 0.3:
-            break
+
+    # A walkthrough slide that runs code, output, a sentence, more output and a closing line is
+    # two slides' worth of height and half a slide's worth of width. Running it as two columns
+    # uses the width a 13.3in slide actually has, instead of dropping the last two blocks off
+    # the bottom. The split falls where the two sides come out closest to even.
+    split_at = None
+    if layout == "twocol" and not column and not section and len(blocks) >= 4:
+        heights = [block_height(m, l, WIDTH / 2 - 0.3, scale, section) for m, l in blocks]
+        running, total_h, best_gap = 0.0, sum(heights), None
+        for i in range(1, len(blocks)):
+            running += heights[i - 1]
+            gap = abs(running - (total_h - running))
+            if best_gap is None or gap < best_gap:
+                best_gap, split_at = gap, i
+        w = WIDTH / 2 - 0.3
+        x = MARGIN
+
+    dropped = 0
+    for bi, (mode, lines) in enumerate(blocks):
+        if split_at is not None and bi == split_at:
+            x, top = MARGIN + WIDTH / 2 + 0.3, BODY_TOP
+        if mode == "mermaid" and column:
+            # Already drawn in its own column, so it is neither placed here nor dropped.
+            continue
+        limit = BODY_BOTTOM if mode == "mermaid" else floor
+        # A block is dropped when it does not fit, not when it merely starts late. Testing the
+        # start alone let a two line claim begin above the line and finish under the footer.
+        needs = 0.3 if mode == "mermaid" else block_height(mode, lines, w, scale, section)
+        if top + needs > limit + 0.05:
+            dropped += 1
+            continue
         if mode == "table" and not section:
-            top = table(slide, lines, top, w, BODY_BOTTOM - top, scale, x)
+            after = sum(block_height(m2, l2, w, scale, section)
+                        for m2, l2 in blocks[bi + 1:]
+                        if not (m2 == "mermaid" and column))
+            top = table(slide, lines, top, w, max(1.0, floor - top - after), scale, x)
         elif mode == "code":
             top = code_card(slide, top, lines, w, scale, x)
         elif mode == "mermaid" and not section:
-            if column:
-                continue
             png = render_mermaid(lines)
             if png:
-                top = place_picture(slide, png, top, BODY_BOTTOM)
+                top = place_picture(slide, png, max(top, floor if trailing else top),
+                                    BODY_BOTTOM, w, centre=trailing, left=x)
             else:
                 top = code_card(slide, top, lines, w, scale, x)
         else:
             for kind, payload in classify(lines):
-                if top > BODY_BOTTOM - 0.3:
-                    break
+                if top > floor - 0.3:
+                    dropped += 1
+                    continue
                 if kind == "crumb":
                     top = breadcrumb(slide, top, payload, section)
                 elif kind == "callout":
@@ -413,15 +485,19 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0):
                     top = quote_block(slide, top, payload, w, scale, x)
                 else:
                     top = paragraph_block(slide, top, payload, section, scale, w, x)
-    centre_body(slide, mark, section, skip_pictures=bool(column))
+    if split_at is None:
+        centre_body(slide, mark, section, skip_pictures=bool(column) or trailing,
+                    bottom=floor if trailing else BODY_BOTTOM)
     footer_band(slide, footer, number, total, section)
+    return dropped
 
 
-def centre_body(slide, mark, section=False, skip_pictures=False):
+def centre_body(slide, mark, section=False, skip_pictures=False, bottom=BODY_BOTTOM):
     """Slide everything placed after `mark` down, so a short body sits in the middle of its room.
 
-    A picture already centred in its own column stays where it is, and only the words beside it
-    move, otherwise the two halves drift apart.
+    A picture that holds its own place, in a column or in a band at the foot, stays where it is
+    and only the words move. Those words are then centred against the picture's own edge rather
+    than the bottom of the slide, because centring them against the slide walks them onto it.
     """
     added = [sh for sh in list(slide.shapes)[mark:]
              if not (skip_pictures and sh.shape_type is not None
@@ -429,8 +505,8 @@ def centre_body(slide, mark, section=False, skip_pictures=False):
     if not added:
         return
     top = min(sh.top for sh in added)
-    bottom = max(sh.top + sh.height for sh in added)
-    slack = Inches(BODY_BOTTOM).emu - bottom
+    box_bottom = max(sh.top + sh.height for sh in added)
+    slack = Inches(bottom).emu - box_bottom
     if slack <= 0:
         return
     shift = int(slack / 2)
@@ -459,8 +535,19 @@ def footer_for(md, stem):
 # box, so a slide whose picture lands under that sets its words one step smaller and gives the
 # room back to the picture.
 MIN_LABEL_PT = 9.0
-SCALES = (1.0, 0.86, 0.76)
+SCALES = (1.0, 0.86, 0.76, 0.66)
 CSS_WIDTHS = {}
+CSS_HEIGHTS = {}
+
+
+def css_height(lines):
+    """The diagram's own height in CSS pixels, which is what decides the band it needs."""
+    key = "\n".join(lines).strip()
+    if key not in CSS_HEIGHTS:
+        from build_cheatsheet import render_mermaid as svg_render, svg_size
+        svg = svg_render(key, "svg")
+        CSS_HEIGHTS[key] = svg_size(svg)[1] if svg else 0.0
+    return CSS_HEIGHTS[key]
 
 
 def css_width(lines):
@@ -505,18 +592,37 @@ def build(src, out, footer):
         s = prs.slides.add_slide(prs.slide_layouts[6])
         mark = len(s.shapes)
         widths = [css_width(b) for m, b in split_blocks(body) if m == "mermaid"]
-        for i, scale in enumerate(SCALES):
-            if i:
+        # Three ways to give a slide's picture room: a band reserved at the foot, the words
+        # running the whole width with the picture in what is left, or the picture beside the
+        # words. The band is tried at four depths, because reserving what the picture wants can
+        # leave the words nowhere to go. A layout that cannot place one of the slide's blocks
+        # never wins, whatever it does for the picture, since a dropped block is a fact the room
+        # never sees.
+        plans = ([("reserve", r) for r in (2.6, 2.1, 1.7, 1.3)]
+                 + [(None, 0.0), ("column", 0.0), ("twocol", 0.0)])
+        best = None
+        for layout, reserve in plans:
+            for i, scale in enumerate(SCALES):
                 clear_after(s, mark)
-            render_slide(s, prs, title, body, footer, n, total, scale)
-            pt = picture_label_pt(s, mark, widths)
-            if pt >= MIN_LABEL_PT:
-                shrunk += bool(i)
+                dropped = render_slide(s, prs, title, body, footer, n, total, scale, layout,
+                                       reserve)
+                pt = picture_label_pt(s, mark, widths)
+                cand = (dropped == 0, round(pt, 2), -i, layout, scale, reserve)
+                if best is None or cand[:3] > best[:3]:
+                    best = cand
+                if dropped == 0 and pt >= MIN_LABEL_PT:
+                    break
+            if best and best[0] and best[1] >= MIN_LABEL_PT:
                 break
-        else:
-            # Nothing the layout can do reaches a readable label, because the diagram is deeper
-            # than a 16:9 slide can show. Name it, so the author can decide to draw it shallower.
-            cramped.append((n, round(pt, 1), title[:44]))
+        clear_after(s, mark)
+        render_slide(s, prs, title, body, footer, n, total, best[4], best[3], best[5])
+        shrunk += best[4] != 1.0
+        if best[1] < MIN_LABEL_PT:
+            # Nothing either layout can do reaches a readable label, because the diagram is
+            # deeper than a 16:9 slide shows. Name it, so its author can draw it shallower.
+            cramped.append((n, round(best[1], 1), title[:44]))
+        if not best[0]:
+            print(f"      slide {n} could not place every block: {title[:44]}")
     prs.save(out)
     return total, shrunk, cramped
 

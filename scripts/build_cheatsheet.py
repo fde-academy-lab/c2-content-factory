@@ -80,7 +80,7 @@ MERMAID_CONFIG = """{
   "flowchart": {"htmlLabels": false, "curve": "linear", "padding": 4,
                 "nodeSpacing": 20, "rankSpacing": 18, "useMaxWidth": true},
   "sequence": {"useMaxWidth": true},
-  "er": {"useMaxWidth": true}
+  "er": {"useMaxWidth": true, "entityPadding": 4, "minEntityHeight": 10, "minEntityWidth": 70}
 }"""
 
 PUPPETEER_CONFIG = '{"args":["--no-sandbox","--disable-setuid-sandbox"]}\n'
