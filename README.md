@@ -149,9 +149,14 @@ Two rules that are not negotiable, and the reason for each:
 - **A missing fact stops the build.** No inventing a prerequisite, a date, a marks weight or a
   client detail. The build stops and names what it needs.
 
-The how-to, per tool and per working style, is in the
-**[wiki](https://github.com/fde-academy-lab/c2-content-factory/wiki)**: Claude Code on the web, on
-the desktop, Claude Project alone, and the blended way most of the work actually happens.
+The how-to lives in the **[wiki](https://github.com/fde-academy-lab/c2-content-factory/wiki)**, whose
+source is [`wiki/`](wiki/) and which is published by a workflow on merge. Three sections:
+
+| Section | What is in it |
+|---|---|
+| [Building content with Claude](https://github.com/fde-academy-lab/c2-content-factory/wiki/Building-content-with-Claude) | Five ways to work: the web, the desktop, a Claude Project alone, the blended way most of the work happens, and the manual pass no script does |
+| [The Kalpa world](https://github.com/fde-academy-lab/c2-content-factory/wiki/The-Kalpa-world) | The one company every example lives inside, unit by unit, with the KPIs each one teaches and how each is gamed |
+| [The Situation Bank](https://github.com/fde-academy-lab/c2-content-factory/wiki/The-Situation-Bank) | Graded business situations with the twist named and the solution deliberately absent, which is where cases, group discussions and mocks come from |
 
 ---
 

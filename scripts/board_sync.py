@@ -87,7 +87,23 @@ FLAGS = [
     ("curriculum-rework", "C2410C", "The curriculum row itself is being changed"),
 ]
 
-ALL_LABELS = STATUS + PEOPLE + DAY_TYPE + ARTIFACT + FLAGS
+# Where the work lives, for issues that are not day packs: a wiki page, a situation card, a
+# builder script, a ground truth doc, the curriculum export, or the board itself.
+AREA = [
+    ("area:wiki", "5F6360", "A page under wiki/, published to the repository wiki"),
+    ("area:situations", "5F6360", "A Situation Bank card or the bank's structure"),
+    ("area:scripts", "5F6360", "A builder or one of the six proofs"),
+    ("area:docs", "5F6360", "Ground truth, method or doctrine under docs/"),
+    ("area:curriculum", "5F6360", "The workbook and its markdown exports"),
+    ("area:board", "5F6360", "The tracker itself, and scripts/board_sync.py"),
+]
+
+HELP = [
+    ("good-first-card", "1F6F4A", "A seeded situation somebody can expand into a full card"),
+    ("source-check", "8A6D3B", "A link or a movable fact that needs re-verifying with today's date"),
+]
+
+ALL_LABELS = STATUS + PEOPLE + DAY_TYPE + ARTIFACT + FLAGS + AREA + HELP
 
 WEEKS = {
     "W01": ("28 Sep to 03 Oct 2026", "2026-10-03", "Teaching week"),
