@@ -6,6 +6,15 @@ Week 1, Day 3. Print landscape. Seven panels, one crux line each.
 
 ## Panel 1: the three counts
 
+```mermaid
+flowchart LR
+    A["one column"] --> B["present: the box has something"]
+    A --> C["converts: what is in it is usable"]
+    A --> D["distinct: what kind of field this is"]
+    B --> E["present minus converts is your work list"]
+    C --> E
+```
+
 ```
 present     the box has something in it
 converts    what is in it is usable

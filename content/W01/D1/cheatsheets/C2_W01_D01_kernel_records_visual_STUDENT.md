@@ -23,13 +23,13 @@ flowchart LR
 
 ```mermaid
 flowchart TB
-    subgraph screen["the order on your screen"]
+    subgraph screen["on your screen"]
       S1["cell 1 setup"] --> S2["cell 2 count"] --> S3["cell 3 total"]
     end
-    subgraph kernel["the order the kernel saw"]
+    subgraph kernel["what the kernel ran"]
       K1["[1] cell 3"] --> K2["[2] cell 1"] --> K3["[3] cell 2"]
     end
-    K1 -->|"records is not on the bench"| X["NameError"]
+    K1 --> X["NameError: records not set"]
 ```
 
 **Crux:** the number in square brackets counts runs, and it is the only order the kernel knows about.
@@ -41,11 +41,9 @@ flowchart TB
 ```mermaid
 flowchart TB
     A["'4500' > 2000"] --> B{"same type?"}
-    B -->|"no"| C["TypeError, both types named"]
     B -->|"yes"| D["a bool comes back"]
-    C --> E["int() at the point of use"]
-    E --> D
-    F["the record keeps '4500'"] -.-> E
+    B -->|"no"| C["TypeError, both types named<br/>int() at the point of use"]
+    C --> D
 ```
 
 **Crux:** convert at the point of use, so the record still shows what the source sent.
@@ -73,13 +71,11 @@ flowchart TB
 
 ```mermaid
 flowchart TB
-    A["your cell has run"] --> B{"did anything print?"}
-    B -->|"no"| C["read the last line of the traceback"]
-    C --> D["NameError: run the cell that defines the name"]
-    C --> E["TypeError: check the type of both operands"]
-    B -->|"yes"| F{"does the number beat its largest member?"}
-    F -->|"no"| G["a reset sits inside the loop"]
-    F -->|"yes"| H["run the invariant before you send it"]
+    B{"did anything print?"} -->|"no"| C["read the last traceback line"]
+    C --> D["NameError: run that cell<br/>TypeError: fix the type"]
+    B -->|"yes"| F{"beats its largest member?"}
+    F -->|"no"| G["a reset in the loop"]
+    F -->|"yes"| H["check before sending"]
 ```
 
 **Crux:** nothing on screen flags a wrong number, so the check has to come from you.
@@ -89,7 +85,7 @@ flowchart TB
 ## Panel 6: the shape every answer takes
 
 ```mermaid
-flowchart LR
+flowchart TB
     A["a list of records"] --> B["one walk"]
     B --> C["one condition"]
     C --> D["two accumulators"]
@@ -101,4 +97,3 @@ flowchart LR
 
 ---
 
-The landscape PDF of this sheet is deferred. The rendering toolchain the `fde-cheat-sheets` method uses was not installed in the session that built this file, and the markdown with its six panels is the shipped artifact until it is.

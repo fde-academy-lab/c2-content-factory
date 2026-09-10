@@ -22,11 +22,11 @@ flowchart LR
 ## Panel 2: reading a profile as a shape
 
 ```mermaid
-flowchart TB
+flowchart LR
     A["distinct 3 or 4 on 50 rows"] --> B["a category"]
     C["distinct near the row count"] --> D["an id or a free value"]
-    E["distinct below the row count on an id"] --> F["something repeats that should not"]
-    G["converts 0 on a text field"] --> H["correct, and not a failure"]
+    E["distinct below the count on an id"] --> F["something repeats"]
+    G["converts 0 on a text field"] --> H["correct, not a failure"]
 ```
 
 **Crux:** you know where the work is before you have touched anything.
@@ -50,7 +50,7 @@ flowchart TB
 ## Panel 4: the coercion trap
 
 ```mermaid
-flowchart LR
+flowchart TB
     A["48 present, 44 converts, 46 distinct"] --> B["coerce everything to 0"]
     B --> C["50 present, 50 converts, 41 distinct"]
     C --> D["two counts rose and looked like progress"]
@@ -80,7 +80,7 @@ flowchart TB
 ## Panel 6: what ships
 
 ```mermaid
-flowchart LR
+flowchart TB
     A["50 orders in"] --> B["44 clean"]
     A --> C["6 rejected, each with its reason"]
     B --> D["the decisions log"]
@@ -92,4 +92,3 @@ flowchart LR
 
 ---
 
-The landscape PDF of this sheet is deferred. The rendering toolchain the `fde-cheat-sheets` method uses was not installed in the session that built this file, and the markdown with its six panels is the shipped artifact until it is.

@@ -84,7 +84,7 @@ flowchart LR
 ## Panel 6: the reconciliation
 
 ```mermaid
-flowchart LR
+flowchart TB
     A["30 rows in"] --> B["28 clean"]
     A --> C["2 rejected, each with a reason"]
     B --> D{"28 + 2 = 30?"}
@@ -97,4 +97,3 @@ flowchart LR
 
 ---
 
-The landscape PDF of this sheet is deferred. The rendering toolchain the `fde-cheat-sheets` method uses was not installed in the session that built this file, and the markdown with its six panels is the shipped artifact until it is.
