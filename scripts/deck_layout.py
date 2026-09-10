@@ -303,15 +303,18 @@ def numbered(slide, top, items, width=WIDTH, scale=1.0, x=MARGIN):
 TABLE_STYLE_NONE = "{2D5ABB26-0587-4C30-8999-92F81FD0307C}"
 
 
-def table(slide, rows, top, width=WIDTH, max_h=None, scale=1.0, x=MARGIN):
-    """A markdown table in the programme's own colours, never PowerPoint's blue banding."""
+def table_geometry(rows, width, scale, room):
+    """The grid, its column widths, its type size and its row heights, or None when empty.
+
+    table() and the lookahead that decides whether the block after a table will fit both read
+    this, so the height a slide plans for is the height the table actually takes.
+    """
     grid = [[c.strip() for c in r.strip().strip("|").split("|")] for r in rows
             if not re.fullmatch(r"\s*\|[\s:\-|]+\|\s*", r)]
     if not grid:
-        return top
+        return None
     cols = max(len(r) for r in grid)
     grid = [r + [""] * (cols - len(r)) for r in grid]
-    room = (max_h if max_h is not None else BODY_BOTTOM - top) - 0.1
 
     # Columns are sized by what they hold. Splitting the width evenly gives a column of counts
     # the same room as a column of sentences, so the sentences wrap four deep and the table grows
@@ -355,6 +358,16 @@ def table(slide, rows, top, width=WIDTH, max_h=None, scale=1.0, x=MARGIN):
     while sum(row_hs) > room and size > 9:
         size -= 1
         row_hs = measure(size)
+    return grid, cols, col_ws, size, row_hs
+
+
+def table(slide, rows, top, width=WIDTH, max_h=None, scale=1.0, x=MARGIN):
+    """A markdown table in the programme's own colours, never PowerPoint's blue banding."""
+    room = (max_h if max_h is not None else BODY_BOTTOM - top) - 0.1
+    geo = table_geometry(rows, width, scale, room)
+    if geo is None:
+        return top
+    grid, cols, col_ws, size, row_hs = geo
     height = Inches(sum(row_hs))
     shape = slide.shapes.add_table(len(grid), cols, Inches(x), Inches(top), Inches(width),
                                    height)
