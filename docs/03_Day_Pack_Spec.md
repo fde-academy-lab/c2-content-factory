@@ -1,6 +1,12 @@
 # DAY PACK SPECIFICATION
 ## What ships for one teaching day
 
+> **Superseded where it disagrees.** `06_Day_Pack_Method.md` is the current method and
+> `.claude/skills/day-pack-builder/references/artifact-manifest.md` is the current per-artifact spec.
+> Both win over this file. It is kept because its day sheet, its build-week shape and its definition of
+> done are still the clearest statements of those three things. Two items below are dead: the daily Neo
+> MCQ pool was removed in favour of Kahoot alone, and GitHub Discussions is not used by this programme.
+
 A day is not delivered until every artifact below exists. A trainer who has these files needs 90 minutes of preparation and no other input.
 
 ---
@@ -13,7 +19,9 @@ WEEK          = {1-20}
 DAY           = {1-6}
 MODULE        = {module name}
 WEEK_TYPE     = {Teaching | Build}
-CLIENT_ZERO   = {locked scenario name}
+CLIENT_ZERO   = Kalpa Group, locked at v2.2 (docs/07_Client_Zero.md)
+SCENARIO      = {the day's business scenario, column 2 of the row}
+DATASET       = {the client-zero version the row names, v0 to v6, text or corpus}
 ENV           = VS Code + GitHub Codespaces
 ```
 
@@ -28,15 +36,15 @@ ENV           = VS Code + GitHub Codespaces
 | 3 | Trainer notes | TRAINER | md | Per slide: what to say, which example, what to show, likely questions, what to do if the room is behind. Never given to students. |
 | 4 | Demo code | STUDENT | ipynb or sql | Progressively built, mirrors the deck order, setup steps first, runs cold |
 | 5 | Starter quiz | STUDENT | Kahoot export | 5 to 8 questions, traps included, scored on correctness and speed |
-| 6 | Mid-session exercises | STUDENT | md + starter file | One per 45 minutes. 15 minutes each. Types from doctrine section 8. Posted to GitHub Discussions. |
+| 6 | Mid-session exercises | STUDENT | md + starter file | One per 45 minutes. 15 minutes each. Types from doctrine section 8. Worked in the room. |
 | 7 | Guided exercise | STUDENT | md + starter file | Trainer solves step by step, students mirror |
 | 8 | Unguided exercise | STUDENT | md | No hints, attempted in session. The solution is released at close and the exercise continues as the assignment. |
-| 9 | Take-home assignment | STUDENT | md | One or more. Submission via GitHub Discussions thread. |
+| 9 | Take-home assignment | STUDENT | md | One or more. Submission per the cohort's channel; Discussions is not used here. |
 | 10 | Interactive artifact | STUDENT | html or xlsx | Only when the topic has a decision, a comparison, or a hidden intermediate state |
 | 11 | Post-session study notes | STUDENT | md or pdf | Written after the session shape is fixed. What was covered, worked examples, the failure and its fix. |
 | 12 | Pre-read | STUDENT | md | For the next session. Short. Includes any setup the learner must do tonight. |
 | 13 | Tiered extras | STUDENT | md | One stretch task, one prerequisite recovery task |
-| 14 | Neo MCQ pool | INTERNAL | csv | Tagged to the day's concepts, feeds the 10-minute platform check |
+| ~~14~~ | ~~Neo MCQ pool~~ | | | **Removed.** Kahoot is the sole daily check and it is ungraded. |
 
 Module close adds one artifact: a cheat sheet covering the module, one page, no prose.
 
@@ -70,7 +78,7 @@ One day of content is generated in four passes, each anchored to the locked refe
 
 **Pass 3: Activities.** Mid-session exercises, Kahoot questions, the interactive artifact if the topic warrants one, tiered extras.
 
-**Pass 4: Markdown.** Trainer notes, pre-read, post-session study notes, Neo MCQ pool.
+**Pass 4: Markdown.** Trainer notes, pre-read, post-session study notes.
 
 Each pass is a separate generation because mixing them produces shallower output on all four.
 

@@ -2,6 +2,12 @@
 
 Read the section for an artifact before building it. Each section says what the artifact is for, its internal rhythm, its rules, and what proves it is done.
 
+**Two rules sit above every section here, from curriculum schema v2.** First, the day's business
+scenario opens the deck and the notebook, in the stakeholder's words, and the thinking it demands is
+drawn before any tool appears; a deck whose first slide is a topic title has not been built from the
+row. Second, nothing planted in the dataset is named in a student artifact, because the room is meant
+to find it; the plant list belongs in the trainer playbook and nowhere else.
+
 ## Decks
 
 **For.** Establishing a concept on the projector, and recovering it a month later. One deck per block; each answers one question and ends in a named artifact the next block opens with.
