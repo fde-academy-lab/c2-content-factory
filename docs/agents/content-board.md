@@ -14,32 +14,116 @@ reviewer signs off. It lives on this repository, its cards are GitHub issues, an
 | Which week a card belongs to | The milestone, one per week | `scripts/board_sync.py` |
 | The board itself, its columns and its views | A GitHub Project on the `fde-academy-lab` account, linked to this repository | Set up once, by hand |
 
-## The one manual step
+## Setting the board up, once
 
-A GitHub Project and its Status column are only reachable through the GraphQL API, and a Claude
-Code session cannot open that. Everything else on this page is automated. The board is created
-once, in about a minute, and then never again.
+The board is created by hand because no API creates a Project's Status options for you. It is
+about five minutes of clicking and it is never done again. Everything after it runs from the
+script or from a workflow.
 
-1. Open <https://github.com/orgs/fde-academy-lab/projects> (or the Projects tab on this
-   repository) and choose **New project**, then the **Board** template.
-2. Name it `C2 Content Build` and create it.
-3. Open the project's **⋯ → Settings → Manage access**, and link this repository.
-4. In the board's **Status** field, replace the three default options with these seven, in this
-   order. The names must match the labels exactly, without the `status:` prefix.
+### 1. Create the board
 
-   | Option | What it means | Who holds it |
-   |---|---|---|
-   | Backlog | Planned, nobody has started it | Nobody |
-   | Building | The day pack is being built | Rushikesh, or Anmol |
-   | Review 1 | First-level review: is it correct and complete | Navaid |
-   | Review 2 | Second-level review: is it the right call for the programme | Akash |
-   | Spot check | An ad hoc review raised outside the two levels | Ishu |
-   | Rework | Sent back with the change named in a comment | Back to the builder |
-   | Done | Signed off, gate green, shipped | Nobody |
+Open <https://github.com/fde-academy-lab?tab=projects>, choose **New project**, pick the **Board**
+template, name it `C2 Content Build` and create it.
 
-5. Choose **Add item → Add items from repository**, pick `c2-content-factory`, and add every
-   issue. New cards after this are added by the workflow in `.github/workflows/board-add.yml`
-   once its secret is set, or by hand from the same menu.
+This account is a personal one rather than an organisation, so the board's address is
+<https://github.com/users/fde-academy-lab/projects/7>, which is the address
+`.github/workflows/board-add.yml` and `scripts/board_sync.py` both carry. A second board would
+take a different number, and `--project N` is how the script is pointed at one.
+
+### 2. Link it to this repository
+
+Open <https://github.com/fde-academy-lab/c2-content-factory/projects>, choose **Link a project**,
+and pick `C2 Content Build`. The board then shows on this repository's own Projects tab, which is
+where a reviewer looks for it.
+
+### 3. Decide who can see it
+
+A new project is private to whoever made it, which is not what this board is for. Two settings
+open it up and they do different jobs.
+
+Visibility is at **⋯ → Settings**, and in the danger zone next to **Visibility** there is
+**Public**. This repository is public already, so a public board carries nothing that was not
+public anyway, and anybody can then read the plan without being invited.
+
+Editing is separate. A reviewer who has to drag a card needs **⋯ → Settings → Manage access**,
+then their handle under **Invite collaborators** with the **Write** role. Read lets somebody look
+and Admin lets them invite other people, so Write is the one a reviewer wants. Repository
+permissions still apply on top: a person who cannot see an issue cannot see its card either, which
+this repository being public takes care of.
+
+### 4. Name the Status options
+
+In the board's **Status** field, replace the three default options with these seven, in this
+order. The names must match the labels exactly, without the `status:` prefix.
+
+| Option | What it means | Who holds it |
+|---|---|---|
+| Backlog | Planned, nobody has started it | Nobody |
+| Building | The day pack is being built | Rushikesh, or Anmol |
+| Review 1 | First-level review: is it correct and complete | Navaid |
+| Review 2 | Second-level review: is it the right call for the programme | Akash |
+| Spot check | An ad hoc review raised outside the two levels | Ishu |
+| Rework | Sent back with the change named in a comment | Back to the builder |
+| Done | Signed off, gate green, shipped | Nobody |
+
+### 5. Put the cards that already exist on it
+
+A personal project has no import step. An organisation project offers one while it is being
+created and a personal one does not, so every card that already exists goes on through the API.
+That is the backfill, and it needs the token in the next section.
+
+Run it from the Actions tab at
+<https://github.com/fde-academy-lab/c2-content-factory/actions/workflows/board-add.yml>, choosing
+**Run workflow** on the `main` branch. The same command runs from a Codespace or a laptop:
+
+```bash
+export GH_TOKEN=ghp_...                                   # a classic token, project scope
+python3 scripts/board_sync.py --project-add --dry-run      # names every issue, adds none
+python3 scripts/board_sync.py --project-add
+```
+
+Adding a card that is already on the board returns that same card, so the command is safe to run
+again and is how the board catches up after a batch of new issues. A Claude Code session cannot
+run it, because GraphQL is blocked from those sessions.
+
+### 6. Keep new cards arriving
+
+Two mechanisms do this and either one is enough.
+
+The board's own automation is the simpler of the two and needs no token at all. Open the board,
+click the **⋯** menu, choose **Workflows**, choose **Auto-add to project**, click **Edit**, select
+`c2-content-factory` with a filter of `is:issue`, and click **Save and turn on workflow**. A
+personal account on the free plan is allowed one auto-add workflow, which is exactly one more than
+this board needs.
+
+The workflow in `.github/workflows/board-add.yml` does the same job from this repository and
+carries the backfill in step 4 as its second half. It runs on `issues: opened, reopened,
+transferred` and skips quietly while `BOARD_TOKEN` is unset.
+
+## The board token
+
+A Project lives behind the GraphQL API and nothing else reaches it. Three kinds of token are ruled
+out and one works.
+
+| Token | Reaches this board | Why |
+|---|---|---|
+| The `GITHUB_TOKEN` an Actions run is handed | No | It carries repository permissions and no Projects permission of any kind. |
+| A fine-grained personal access token | No | GitHub lists Projects under organisation permissions only, and the account permissions it offers have no Projects entry, checked against the permissions reference on 13 September 2026. |
+| A classic token with `read:project` | It can look and not write | It sees the board and cannot add a card to it. |
+| A classic token with `project` | Yes | This is the one to create. |
+
+Create it at <https://github.com/settings/tokens/new>, which is the classic token form, reached by
+hand through **Settings**, then **Developer settings**, then **Tokens (classic)**, then **Generate
+new token (classic)**. Tick `project`, which is the whole of what this needs. This repository is
+public, so the `repo` scope is not required. Set an expiry you will notice rather than no expiry,
+and copy the value on the one screen that shows it.
+
+Store it at
+<https://github.com/fde-academy-lab/c2-content-factory/settings/secrets/actions/new> under the
+name `BOARD_TOKEN`, spelled exactly that way, because both halves of the workflow read that name.
+
+When the token expires the workflow starts failing on every new issue, which is the signal to
+create another one and paste it into the same secret. Nothing else changes.
 
 Three views are worth saving on top of the default board, each one a **Save changes** away:
 
@@ -141,6 +225,11 @@ python3 scripts/board_sync.py --status W02/D3 done
 # See what a command would do and change nothing.
 python3 scripts/board_sync.py --dry-run --all
 ```
+
+One command is not on that list because a Claude Code session cannot run it. `--project-add` puts
+the cards on the Project itself, which is GraphQL, and GraphQL is blocked from those sessions. It
+runs from a Codespace, from a laptop, or from the Actions tab, and the board token section says
+what it needs.
 
 Every run is safe to repeat. A card is matched on the marker `<!-- board:W02/D3 -->` in its body,
 so a second run updates the card the first run made rather than opening a duplicate. Moving a card

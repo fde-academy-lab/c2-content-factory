@@ -1,17 +1,25 @@
-# Put every new day card on the content board without anyone remembering to.
+# Put every day card on the content board without anyone remembering to.
 #
-# The board is a GitHub Project, which only the GraphQL API can reach, so this workflow needs a
-# personal access token with the `project` scope stored as the repository secret BOARD_TOKEN.
-# Until that secret exists the workflow skips quietly rather than failing every issue that opens.
+# A GitHub Project is reachable only through the GraphQL API, which needs a classic personal
+# access token carrying the `project` scope, stored as the repository secret BOARD_TOKEN. A
+# fine-grained token cannot do this job: GitHub lists Projects under organization permissions
+# only, and this repository sits on a personal account. Until the secret exists the workflow
+# skips quietly rather than failing every issue that opens.
+#
+# There are two ways in. A new issue is added by itself. Every issue that already exists is added
+# by running this workflow by hand from the Actions tab, which is the backfill.
 # docs/agents/content-board.md says how to create the board and the token.
 name: Add issues to the content board
 
 on:
   issues:
     types: [opened, reopened, transferred]
+  workflow_dispatch:
 
 jobs:
   add:
+    name: Add the new issue
+    if: github.event_name == 'issues'
     runs-on: ubuntu-latest
     steps:
       - name: Check the board token exists
@@ -19,12 +27,30 @@ jobs:
         run: echo "ready=${{ secrets.BOARD_TOKEN != '' }}" >> "$GITHUB_OUTPUT"
       - name: Add the issue to the board
         if: steps.gate.outputs.ready == 'true'
-        uses: actions/add-to-project@v1.0.2
+        uses: actions/add-to-project@v2.0.0
         with:
-          project-url: https://github.com/users/fde-academy-lab/projects/1
+          project-url: https://github.com/users/fde-academy-lab/projects/7
           github-token: ${{ secrets.BOARD_TOKEN }}
       - name: Say why nothing happened
         if: steps.gate.outputs.ready != 'true'
         run: |
           echo "BOARD_TOKEN is not set, so this issue was not added to the board."
           echo "See docs/agents/content-board.md for the one-time setup."
+
+  backfill:
+    name: Put every existing issue on the board
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v7
+      - name: Add every issue, which is safe to run again
+        env:
+          GH_TOKEN: ${{ secrets.BOARD_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::BOARD_TOKEN is not set, so there is no token that can reach the board."
+            echo "Create it as described in docs/agents/content-board.md, then run this again."
+            exit 1
+          fi
+          python3 scripts/board_sync.py --project-add
