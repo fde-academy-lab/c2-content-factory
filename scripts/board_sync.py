@@ -11,6 +11,7 @@ Usage:
     python3 scripts/board_sync.py --all                  # every week in the plan
     python3 scripts/board_sync.py --status W01 rework    # move a week to a status
     python3 scripts/board_sync.py --status W01/D3 review-1
+    python3 scripts/board_sync.py --project-add          # put every issue on the board, safe to repeat
 
 Every run is safe to repeat. An issue is matched by the marker `<!-- board:W01/D3 -->` in its body,
 so a second run updates the card it made the first time rather than opening a duplicate.
@@ -18,10 +19,12 @@ so a second run updates the card it made the first time rather than opening a du
 Authentication reads GH_TOKEN or GITHUB_TOKEN. The token needs write access to issues on the
 repository, which is what a Codespace and a Claude Code session already carry.
 
-What this script cannot do. A GitHub Project board and its Status column live behind the GraphQL
-API, and creating one is a one-time click documented in docs/agents/content-board.md. Everything
-that hangs off the board, which is the cards, their labels, their milestones and their state, is
-here and is repeatable.
+What this script cannot do. Creating the board and naming its Status options is a one-time click
+documented in docs/agents/content-board.md, because no API creates a Project's field options for
+you. Putting issues on a board that already exists is `--project-add`, and it needs a classic
+token with the `project` scope, since a fine-grained token has no Projects permission for a
+personal account. Everything else, which is the cards, their labels, their milestones and their
+state, runs on the ordinary issues token.
 """
 import argparse
 import json
@@ -35,6 +38,11 @@ import urllib.request
 OWNER = "fde-academy-lab"
 REPO = "c2-content-factory"
 API = f"https://api.github.com/repos/{OWNER}/{REPO}"
+GRAPHQL = "https://api.github.com/graphql"
+# fde-academy-lab is a personal account, so the board hangs off user() rather than
+# organization(). Change this pair together if the repository ever moves to an org.
+OWNER_FIELD = "user"
+PROJECT_NUMBER = 1
 
 # --------------------------------------------------------------------------- the vocabulary
 # Status is the one label a card carries from the STATUS group at a time. The board's Status column
@@ -233,6 +241,61 @@ def paged(path):
         if len(chunk) < 100:
             return out
         page += 1
+
+
+# --------------------------------------------------------------------------- the board itself
+def graphql(query, variables):
+    """Call the Projects API, which is GraphQL only and is the one thing REST cannot reach."""
+    req = urllib.request.Request(
+        GRAPHQL,
+        data=json.dumps({"query": query, "variables": variables}).encode(),
+        method="POST",
+        headers={"Authorization": f"Bearer {token()}",
+                 "Content-Type": "application/json",
+                 "User-Agent": "c2-content-factory-board-sync"})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            out = json.loads(r.read())
+    except urllib.error.HTTPError as e:
+        raise SystemExit(f"FAIL  the Projects API answered {e.code}. "
+                         f"{e.read().decode(errors='replace')[:160]}\n"
+                         f"      A 403 here almost always means the token has no `project` scope. "
+                         f"A Claude Code session is blocked from GraphQL outright, so run this "
+                         f"from a Codespace, a laptop, or the board-add workflow.")
+    if out.get("errors"):
+        why = "; ".join(e.get("message", "") for e in out["errors"])
+        raise SystemExit(
+            f"FAIL  the Projects API refused the call: {why}\n"
+            f"      A Project is reachable only by a classic token carrying the `project` scope. "
+            f"A fine-grained token carries no Projects permission for a personal account, and the "
+            f"GITHUB_TOKEN an Actions run is given carries none either.")
+    return out["data"]
+
+
+def project_add(number, dry):
+    """Put every card on the board. Adding a card that is already there returns that same card, so
+    this is a backfill that is safe to run again rather than a one-shot that duplicates."""
+    found = graphql(
+        f"query($login:String!,$number:Int!){{{OWNER_FIELD}(login:$login)"
+        f"{{projectV2(number:$number){{id title}}}}}}",
+        {"login": OWNER, "number": number})
+    project = (found.get(OWNER_FIELD) or {}).get("projectV2")
+    if not project:
+        raise SystemExit(f"FAIL  the {OWNER} account has no project number {number}. Create the "
+                         f"board first; docs/agents/content-board.md says how in five clicks.")
+
+    issues = [i for i in paged("/issues?state=all") if "pull_request" not in i]
+    print(f"      {project['title']} takes {len(issues)} issues")
+    added = 0
+    for issue in issues:
+        if dry:
+            print(f"      #{issue['number']} {issue['title'][:64]}")
+            continue
+        graphql("mutation($p:ID!,$c:ID!){addProjectV2ItemById(input:{projectId:$p contentId:$c})"
+                "{item{id}}}", {"p": project["id"], "c": issue["node_id"]})
+        added += 1
+    print(f"      {added} issues put on the board")
+    return added
 
 
 # --------------------------------------------------------------------------- the furniture
@@ -440,6 +503,10 @@ def main():
                     help="the status new cards are created with")
     ap.add_argument("--label", action="append", default=[],
                     help="an extra label for every card this run touches")
+    ap.add_argument("--project-add", action="store_true",
+                    help="put every issue on the Project board, which no other command can do")
+    ap.add_argument("--project", type=int, default=PROJECT_NUMBER,
+                    help="the board's project number, which is 1 unless a second board exists")
     a = ap.parse_args()
     dry = a.dry_run
 
@@ -449,6 +516,8 @@ def main():
         prune_labels(dry)
     if a.milestones:
         sync_milestones(dry)
+    if a.project_add:
+        project_add(a.project, dry)
     if not (a.week or a.all or a.status):
         return
 
@@ -485,3 +554,13 @@ if __name__ == "__main__":
 #     Moves every Week 1 card to done and closes it as completed.
 # The same command with no GH_TOKEN in the environment
 #     One FAIL line naming the variable, and exit 1, before any request is made.
+# scripts/board_sync.py --project-add --dry-run
+#     Names every issue the board would take and adds none. Needs a classic token carrying the
+#     `project` scope, so it fails on the first call with a fine-grained token or with the
+#     GITHUB_TOKEN an Actions run is handed.
+# scripts/board_sync.py --project-add
+#     Puts every issue on the board. Adding a card that is already there returns that same card,
+#     so a second run reports the same total and changes nothing.
+# The same command inside a Claude Code session
+#     One FAIL line reporting a 403 from the Projects API, because GraphQL is blocked from those
+#     sessions whatever the token carries.
