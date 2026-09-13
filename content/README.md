@@ -34,6 +34,7 @@ runs the recap paper and the discussion, and on a build week it is the expert's 
 |---|---|
 | `slides/` | The deck, as the markdown source and the built pptx, one file per half when the day splits. |
 | `notebooks/` | The teaching notebooks, as `.ipynb`, which must run cold top to bottom. |
+| `sql/` | The `.sql` files a day runs against the warehouse, one per exercise or demonstration, which must run unchanged in a fresh Codespace. |
 | `demos/` | Anything the trainer runs live that is not a notebook: the toggle-driven HTML activity, a script, a prepared terminal session. |
 | `whiteboards/` | The board work: markdown walkthroughs, and images of the diagrams and sketches a topic needs, including anything drawn from deeper research than the row carries. |
 | `cheatsheets/` | One per major topic the day earns, plus its gap variant. |
@@ -44,6 +45,12 @@ runs the recap paper and the discussion, and on a build week it is the expert's 
 | `preread/` | Tomorrow's vocabulary and tonight's setup, which ships the evening before. |
 | `extras/` | The tiered stretch and recovery pair. |
 | `data/` | Every dataset the day reads, written by `data/generate_client_zero.py` rather than by hand. |
+
+A warehouse is the exception to one day, one dataset. Week 2's four SQL and pandas days query one
+Postgres database, so the loadable file lives once in the first day that uses it,
+`content/W02/D1/data/`, and `.devcontainer/load_warehouse.sh` builds the database from it when the
+container is created. The later days carry only what they add: the exposure feed on Thursday, the
+two exports on Friday.
 | `trainer/` | The day sheet and the trainer notes. These never reach a learner. |
 | `internal/` | Working records: link slots, data provenance, anything that is neither a learner nor a trainer artifact. |
 | `corrections/` | Created only when a live claim proved wrong and needs a correction card. |
