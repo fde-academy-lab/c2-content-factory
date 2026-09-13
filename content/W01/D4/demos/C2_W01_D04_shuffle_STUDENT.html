@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The shuffle, and the average that flips</title>
+<style>
+  :root{--ink:#1C1C1A;--muted:#5F6360;--accent:#2B4A7D;--tint:#E4ECF7;--bg:#F7F7F5;
+        --line:#C9C9C2;--pass:#1F6F4A;--fail:#8A3D3D;
+        --font:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+        --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
+  *{box-sizing:border-box}
+  body{margin:0;padding:20px;background:var(--bg);color:var(--ink);font:15px/1.5 var(--font)}
+  .wrap{max-width:1060px;margin:0 auto}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 18px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 16px;
+        margin-bottom:18px}
+  .card h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:0 0 10px}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  button.act{font:inherit;padding:7px 12px;border:1px solid var(--accent);background:#fff;
+             color:var(--accent);border-radius:6px;cursor:pointer}
+  button.act[aria-pressed="true"]{background:var(--accent);color:#fff}
+  label{display:block;font-size:13px;color:var(--muted);margin:10px 0 2px}
+  input[type=range]{width:100%}
+  .hist{display:flex;align-items:flex-end;gap:2px;height:110px;margin-top:10px;
+        border-bottom:1px solid var(--line)}
+  .bar{flex:1;background:var(--tint);border:1px solid var(--line);border-bottom:0}
+  .bar.hot{background:var(--fail);border-color:var(--fail)}
+  .out{font:14px var(--mono);background:var(--bg);border:1px solid var(--line);border-radius:6px;
+       padding:10px;margin-top:10px}
+  .big{font-size:22px;font-weight:700}
+  table{border-collapse:collapse;width:100%;font-size:13px;margin-top:6px}
+  th,td{text-align:left;padding:5px 8px 5px 0;border-bottom:1px solid var(--line)}
+  th{color:var(--accent)}
+  td.num{font-family:var(--mono)}
+  tr.total td{font-weight:700;background:var(--tint)}
+  .good{color:var(--pass);font-weight:700}
+  .bad{color:var(--fail);font-weight:700}
+  .log{margin-top:14px;font:13px var(--mono);color:var(--muted);border-top:1px solid var(--line);
+       padding-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>The shuffle, and the average that flips</h1>
+  <p class="sub">Two habits on one page. Could chance have done it, and did the thing we did cause it.</p>
+
+  <div class="card">
+    <h2>Could chance have done it?</h2>
+    <div class="row">
+      <button class="act" id="plus" type="button" aria-pressed="true">Retail-Plus, gap 32.3 points</button>
+      <button class="act" id="student" type="button">Student, a 40 percent rise</button>
+    </div>
+    <label for="n">Shuffles to run <span id="ln"></span></label>
+    <input type="range" id="n" min="10" max="5000" step="10" value="5000">
+    <div class="hist" id="hist"></div>
+    <div class="out">
+      <div id="counted"></div>
+      <div class="big" id="pv"></div>
+      <div id="verdict"></div>
+    </div>
+    <div class="row">
+      <button class="act" id="ten" type="button">Just ten, like the cards</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Did the discount cause it?</h2>
+    <label for="mix">Retail-Plus share of the exposed group <span id="lmix"></span></label>
+    <input type="range" id="mix" min="20" max="80" value="50">
+    <table id="camp"></table>
+    <div class="out" id="campnote"></div>
+    <div class="row">
+      <button class="act" id="asrun" type="button">As the campaign ran</button>
+      <button class="act" id="matched" type="button">Match the mix to the control</button>
+    </div>
+  </div>
+
+  <div class="log" id="log">Nothing changed yet.</div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var CASE = "plus", count = 0;
+  // Pre-computed gap distributions, standing in for the 5,000 shuffles the notebook runs.
+  var SPEC = {
+    plus:    {observed:32.3, sd:7.4, label:"points of gap", extremeShare:0},
+    student: {observed:40.0, sd:38.0, label:"percent rise", extremeShare:0.383}
+  };
+
+  function note(m){ count += 1;
+    document.getElementById("log").textContent = "change " + count + ": " + m; }
+
+  function normal(rng){
+    var u = 0, v = 0;
+    while (!u) u = rng();
+    while (!v) v = rng();
+    return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+  }
+  function seeded(seed){
+    var s = seed >>> 0;
+    return function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+  }
+
+  function run(){
+    var spec = SPEC[CASE];
+    var n = Number(document.getElementById("n").value);
+    document.getElementById("ln").textContent = n.toLocaleString("en-IN");
+    var rng = seeded(20260101), gaps = [], extreme = 0;
+    // Draw from a null centred on zero whose spread reproduces the notebook's share of extremes.
+    var scale = spec.extremeShare > 0
+      ? spec.observed / 0.88   // tuned so about 38 percent of draws clear the observed value
+      : spec.sd;
+    for (var i = 0; i < n; i++){
+      var g = normal(rng) * scale;
+      gaps.push(g);
+      if (Math.abs(g) >= spec.observed) extreme += 1;
+    }
+    var bins = new Array(19).fill(0), lo = -spec.observed * 1.6, hi = spec.observed * 1.6;
+    gaps.forEach(function(g){
+      var k = Math.floor((g - lo) / (hi - lo) * bins.length);
+      if (k >= 0 && k < bins.length) bins[k] += 1;
+    });
+    var peak = Math.max.apply(null, bins) || 1;
+    var h = document.getElementById("hist");
+    h.textContent = "";
+    bins.forEach(function(c, k){
+      var centre = lo + (k + 0.5) / bins.length * (hi - lo);
+      var d = document.createElement("div");
+      d.className = "bar" + (Math.abs(centre) >= spec.observed ? " hot" : "");
+      d.style.height = Math.max(2, Math.round(100 * c / peak)) + "%";
+      d.title = Math.round(centre) + " " + spec.label + ": " + c;
+      h.appendChild(d);
+    });
+    document.getElementById("counted").textContent =
+      extreme.toLocaleString("en-IN") + " of " + n.toLocaleString("en-IN") +
+      " reached " + spec.observed + " " + spec.label + " or more";
+    var pv = document.getElementById("pv");
+    if (extreme === 0){
+      pv.textContent = "p < " + (1 / n).toFixed(4);
+      pv.className = "big good";
+    } else {
+      pv.textContent = "p = " + (extreme / n).toFixed(3);
+      pv.className = "big " + (extreme / n < 0.05 ? "good" : "bad");
+    }
+    var v = document.getElementById("verdict");
+    v.textContent = extreme === 0
+      ? "Never write p = 0. The smallest number this run can see is one in " + n.toLocaleString("en-IN") + "."
+      : (extreme / n > 0.05
+         ? "Chance produces this routinely, so there is no finding here yet."
+         : "Chance rarely produces this, so the difference is real.");
+    ["plus","student"].forEach(function(id){
+      document.getElementById(id).setAttribute("aria-pressed", String(CASE === id)); });
+  }
+
+  function campaign(){
+    var share = Number(document.getElementById("mix").value) / 100;
+    document.getElementById("lmix").textContent = Math.round(share * 100) + " percent";
+    var plusT = 4850, coreT = 1940, plusC = 5000, coreC = 2000, ctrlShare = 0.40;
+    var blendT = share * plusT + (1 - share) * coreT;
+    var blendC = ctrlShare * plusC + (1 - ctrlShare) * coreC;
+    var t = document.getElementById("camp");
+    t.textContent = "";
+    var head = document.createElement("tr");
+    ["group","exposed","not exposed","change"].forEach(function(x){
+      var th = document.createElement("th"); th.textContent = x; head.appendChild(th); });
+    t.appendChild(head);
+    [["Retail-Plus", plusT, plusC, false],
+     ["Retail-Core", coreT, coreC, false],
+     ["Everyone", blendT, blendC, true]].forEach(function(r){
+      var tr = document.createElement("tr");
+      if (r[3]) tr.className = "total";
+      var ch = 100 * (r[1] / r[2] - 1);
+      [r[0], "Rs " + Math.round(r[1]).toLocaleString("en-IN"),
+       "Rs " + Math.round(r[2]).toLocaleString("en-IN"),
+       (ch >= 0 ? "+" : "") + ch.toFixed(1) + "%"].forEach(function(v, i){
+        var td = document.createElement("td");
+        td.textContent = v;
+        if (i) td.className = "num";
+        tr.appendChild(td);
+      });
+      t.appendChild(tr);
+    });
+    var n = document.getElementById("campnote");
+    n.textContent = "";
+    var span = document.createElement("span");
+    var blended = 100 * (blendT / blendC - 1);
+    if (blended > 0){
+      span.className = "bad";
+      span.textContent = "Both segments fell 3 percent and the blend rose " + blended.toFixed(1) +
+        " percent, because the exposed group holds more Retail-Plus than the control does.";
+    } else {
+      span.className = "good";
+      span.textContent = "With the mix matched, the blend falls " + Math.abs(blended).toFixed(1) +
+        " percent, which is what both segments actually did.";
+    }
+    n.appendChild(span);
+  }
+
+  document.getElementById("plus").addEventListener("click", function(){
+    CASE = "plus"; run(); note("switched to the Retail-Plus gap"); });
+  document.getElementById("student").addEventListener("click", function(){
+    CASE = "student"; run(); note("switched to the Student rise"); });
+  document.getElementById("n").addEventListener("input", function(){
+    run(); note("ran " + document.getElementById("n").value + " shuffles"); });
+  document.getElementById("ten").addEventListener("click", function(){
+    document.getElementById("n").value = 10; run(); note("dropped to ten, like the cards"); });
+  document.getElementById("mix").addEventListener("input", function(){
+    campaign(); note("set the exposed mix to " + document.getElementById("mix").value + " percent"); });
+  document.getElementById("asrun").addEventListener("click", function(){
+    document.getElementById("mix").value = 50; campaign(); note("restored the campaign as it ran"); });
+  document.getElementById("matched").addEventListener("click", function(){
+    document.getElementById("mix").value = 40; campaign(); note("matched the mix to the control group"); });
+
+  run(); campaign();
+})();
+</script>
+</body>
+</html>
