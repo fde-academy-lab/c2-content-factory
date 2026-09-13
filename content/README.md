@@ -65,7 +65,8 @@ material in the mock day's `mocks/`, and the GD prompts in the expert days.
 
 ### A Saturday
 
-A regular week's Saturday holds `paper/`, `answer-key/` and `discussion/`. A build week's Saturday
+A regular week's Saturday holds `paper/`, `answer-key/`, `discussion/` and, where the paper's
+sources are worth recording, `internal/`. A build week's Saturday
 uses the build-day folders, since it runs presentations and grade closure rather than a recap.
 
 ## File names

@@ -48,7 +48,7 @@ TEACHING_DIRS = {
 BUILD_DIRS = {
     "briefs", "rubrics", "gd", "parallel-build", "checkpoints", "mocks", "trainer", "internal",
 }
-SAT_RECAP_DIRS = {"paper", "answer-key", "discussion"}
+SAT_RECAP_DIRS = {"paper", "answer-key", "discussion", "internal"}
 
 
 def folder_shape(week, day_label):

@@ -43,4 +43,5 @@ psql -c "SELECT customer_id, count(*) FROM campaign_exposure
          GROUP BY customer_id HAVING count(*) > 1;"
 ```
 
-Six rows. Do not fix anything. Just notice, and think about what a merge would do with them.
+Do not fix anything. Just read what comes back, and think about what a merge on `customer_id`
+would do with it.

@@ -41,5 +41,6 @@ SELECT customer_id, sum(amount) AS q2
 FROM orders WHERE quarter = 'Q2' GROUP BY customer_id ORDER BY q2 DESC LIMIT 60;
 ```
 
-Somewhere in that list two customers have exactly the same total. Find them. Tomorrow the head of
-Retail-Plus has an opinion about what should happen to them.
+Read the totals near the bottom of that list rather than the top, and write down anything that
+looks awkward if somebody asked you for exactly the top fifty. Tomorrow the head of Retail-Plus
+has an opinion about it.
