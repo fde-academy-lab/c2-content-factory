@@ -1,7 +1,7 @@
 """Create and update the GitHub content board from this repository's own day plan.
 
 The board tracks one card per day pack, which is the unit this repository builds in and the unit a
-reviewer signs off. The day plan below is the Content Build Tracker tab of the programme workbook,
+reviewer signs off. The day plan below is the day list of the curriculum workbook,
 transcribed once so the board and the repository cannot drift apart.
 
 Usage:
@@ -87,7 +87,23 @@ FLAGS = [
     ("curriculum-rework", "C2410C", "The curriculum row itself is being changed"),
 ]
 
-ALL_LABELS = STATUS + PEOPLE + DAY_TYPE + ARTIFACT + FLAGS
+# Where the work lives, for issues that are not day packs: a wiki page, a situation card, a
+# builder script, a ground truth doc, the curriculum export, or the board itself.
+AREA = [
+    ("area:wiki", "5F6360", "A page under wiki/, published to the repository wiki"),
+    ("area:situations", "5F6360", "A Situation Bank card or the bank's structure"),
+    ("area:scripts", "5F6360", "A builder or one of the six proofs"),
+    ("area:docs", "5F6360", "Ground truth, method or doctrine under docs/"),
+    ("area:curriculum", "5F6360", "The workbook and its markdown exports"),
+    ("area:board", "5F6360", "The tracker itself, and scripts/board_sync.py"),
+]
+
+HELP = [
+    ("good-first-card", "1F6F4A", "A seeded situation somebody can expand into a full card"),
+    ("source-check", "8A6D3B", "A link or a movable fact that needs re-verifying with today's date"),
+]
+
+ALL_LABELS = STATUS + PEOPLE + DAY_TYPE + ARTIFACT + FLAGS + AREA + HELP
 
 WEEKS = {
     "W01": ("28 Sep to 03 Oct 2026", "2026-10-03", "Teaching week"),
@@ -101,63 +117,64 @@ WEEKS = {
     "W09": ("23 Nov to 28 Nov 2026", "2026-11-28", "Build week 3"),
 }
 
-# The Content Build Tracker, one tuple per row: week, day slot, date, focus, day type.
+# The day plan, one tuple per row: week, day slot, date, focus, day type. The focus strings are the
+# 'Day focus' column of each week tab, so a card title says the same thing the curriculum says.
 # The day slot is the folder this day writes into, so a card links straight at its content.
 DAYS = [
-    ("W01", "D1", "Mon 28 Sep", "Python on records: the first business answer", "teaching"),
-    ("W01", "D2", "Tue 29 Sep", "Functions, errors and files: the AI-free lab", "teaching"),
-    ("W01", "D3", "Wed 30 Sep", "Load, clean and profile: a profiled dataset", "teaching"),
-    ("W01", "D4", "Thu 01 Oct", "Descriptive statistics: the segment summary", "teaching"),
-    ("W01", "FRI", "Fri 02 Oct", "Gandhi Jayanti: holiday", "holiday"),
-    ("W01", "SAT", "Sat 03 Oct", "Recap test 1 and the solution discussion", "saturday"),
-    ("W02", "D1", "Mon 05 Oct", "Inference, causation and the insight writeup", "teaching"),
-    ("W02", "D2", "Tue 06 Oct", "SQL core: extraction queries", "teaching"),
-    ("W02", "D3", "Wed 07 Oct", "Joins, fan-out and validation", "teaching"),
-    ("W02", "D4", "Thu 08 Oct", "Window functions and the timed drill", "teaching"),
-    ("W02", "D5", "Fri 09 Oct", "Pandas at depth and tool judgment", "teaching"),
-    ("W02", "SAT", "Sat 10 Oct", "Recap test 2 and the solution discussion", "saturday"),
-    ("W03", "D1", "Mon 12 Oct", "Build 1: online intro and team scoping", "build-week"),
-    ("W03", "D2", "Tue 13 Oct", "Build day 2: the parallel build", "build-week"),
-    ("W03", "D3", "Wed 14 Oct", "Build day 3 and the catch-up reserve", "build-week"),
-    ("W03", "D4", "Thu 15 Oct", "Mock R1 and build completion", "build-week"),
-    ("W03", "D5", "Fri 16 Oct", "Expert day 1: group discussions", "build-week"),
-    ("W03", "SAT", "Sat 17 Oct", "Expert day 2: demos and closure", "build-week"),
-    ("W04", "D1", "Mon 19 Oct", "Metric design: north-star and guardrail", "teaching"),
-    ("W04", "TUE", "Tue 20 Oct", "Dussehra: holiday", "holiday"),
-    ("W04", "D3", "Wed 21 Oct", "Basket analysis: support, confidence, lift", "teaching"),
-    ("W04", "D4", "Thu 22 Oct", "Cohorts, funnels and retention", "teaching"),
-    ("W04", "D5", "Fri 23 Oct", "Thresholds and forecasting basics", "teaching"),
-    ("W04", "SAT", "Sat 24 Oct", "Recap test 3 and the solution discussion", "saturday"),
-    ("W05", "D1", "Mon 26 Oct", "The modelling loop, and ME1 week opens", "teaching"),
-    ("W05", "D2", "Tue 27 Oct", "Regression and classification, read honestly", "teaching"),
-    ("W05", "D3", "Wed 28 Oct", "The metric trap on imbalance", "teaching"),
-    ("W05", "D4", "Thu 29 Oct", "Features and the leak hunt", "teaching"),
-    ("W05", "D5", "Fri 30 Oct", "Generalisation and the comparison memo", "teaching"),
-    ("W05", "SAT", "Sat 31 Oct", "Recap test 4 and the discussion", "saturday"),
-    ("W06", "D1", "Mon 02 Nov", "Build 2: online intro and constraint briefs", "build-week"),
-    ("W06", "D2", "Tue 03 Nov", "Build day 2: the parallel build", "build-week"),
-    ("W06", "D3", "Wed 04 Nov", "Build day 3 and the catch-up reserve", "build-week"),
-    ("W06", "D4", "Thu 05 Nov", "Mock R2 and build completion", "build-week"),
-    ("W06", "D5", "Fri 06 Nov", "Expert day 1: group discussions", "build-week"),
-    ("W06", "SAT", "Sat 07 Nov", "Expert day 2: demos and closure", "build-week"),
-    ("W07", "MON", "Mon 09 Nov", "Diwali: holiday", "holiday"),
-    ("W07", "D2", "Tue 10 Nov", "The network: neurons and the forward pass", "teaching"),
-    ("W07", "D3", "Wed 11 Nov", "Learning: backprop, loss and learning rate", "teaching"),
-    ("W07", "D4", "Thu 12 Nov", "Sick runs and the brakes", "teaching"),
-    ("W07", "D5", "Fri 13 Nov", "The bridge to LLMs", "teaching"),
-    ("W07", "SAT", "Sat 14 Nov", "Recap test 5 and the solution discussion", "saturday"),
-    ("W08", "D1", "Mon 16 Nov", "Tokenization and token economics", "teaching"),
-    ("W08", "D2", "Tue 17 Nov", "Attention: Q, K, V and multi-head", "teaching"),
-    ("W08", "D3", "Wed 18 Nov", "Embeddings and the classical NLP arc", "teaching"),
-    ("W08", "D4", "Thu 19 Nov", "Decoding dials and determinism", "teaching"),
-    ("W08", "D5", "Fri 20 Nov", "Context windows, cost and latency", "teaching"),
-    ("W08", "SAT", "Sat 21 Nov", "Recap test 6 and the solution discussion", "saturday"),
-    ("W09", "D1", "Mon 23 Nov", "Build 3: online intro and contract briefs", "build-week"),
-    ("W09", "TUE", "Tue 24 Nov", "Guru Nanak Jayanti: holiday", "holiday"),
-    ("W09", "D3", "Wed 25 Nov", "AI-free debug drill and build", "build-week"),
-    ("W09", "D4", "Thu 26 Nov", "Mock R3 and build", "build-week"),
-    ("W09", "D5", "Fri 27 Nov", "Expert day 1: group discussions", "build-week"),
-    ("W09", "SAT", "Sat 28 Nov", "Expert day 2: demos and the two-month close", "build-week"),
+    ("W01", "D1", "Mon 28 Sep", "The revenue tree and the first honest numbers", "teaching"),
+    ("W01", "D2", "Tue 29 Sep", "Which lever moved? The sales-drop investigation", "teaching"),
+    ("W01", "D3", "Wed 30 Sep", "Can we trust the numbers? Profile, clean, reconcile, recompute", "teaching"),
+    ("W01", "D4", "Thu 01 Oct", "Real or noise, cause or coincidence, and the one-page note", "teaching"),
+    ("W01", "FRI", "Fri 02 Oct", "Gandhi Jayanti: institute holiday, no session", "holiday"),
+    ("W01", "SAT", "Sat 03 Oct", "The pen-and-paper test, then the interview-answer discussion", "saturday"),
+    ("W02", "D1", "Mon 05 Oct", "The revenue tree as queries the warehouse runs every Monday", "teaching"),
+    ("W02", "D2", "Tue 06 Oct", "Booked against collected: joining payments without lying", "teaching"),
+    ("W02", "D3", "Wed 07 Oct", "Top members, falling spend, and the running total against plan", "teaching"),
+    ("W02", "D4", "Thu 08 Oct", "The customer table Marketing refreshes every Monday", "teaching"),
+    ("W02", "D5", "Fri 09 Oct", "The number reaches the leadership deck, and the tool judgment behind it", "teaching"),
+    ("W02", "SAT", "Sat 10 Oct", "The pen-and-paper test, then the interview-answer discussion", "saturday"),
+    ("W03", "D1", "Mon 12 Oct", "Online project introduction; groups scope their Kalpa Health sub-problem", "build-week"),
+    ("W03", "D2", "Tue 13 Oct", "Build day two: profile, clean, reconcile on unfamiliar data", "build-week"),
+    ("W03", "D3", "Wed 14 Oct", "Build day three: the headline claim, plus the catch-up reserve", "build-week"),
+    ("W03", "D4", "Thu 15 Oct", "Mock R1 opens; build completion", "build-week"),
+    ("W03", "D5", "Fri 16 Oct", "Expert day one: GDs at thirty minutes per group, first presentations", "build-week"),
+    ("W03", "SAT", "Sat 17 Oct", "Expert day two plus the flown-in leader: presentations, defence, grade closure", "build-week"),
+    ("W04", "D1", "Mon 19 Oct", "The number the growth plan chases, and what stops it being gamed", "teaching"),
+    ("W04", "TUE", "Tue 20 Oct", "Dussehra (Vijaya Dashami): gazetted holiday, no session", "holiday"),
+    ("W04", "D3", "Wed 21 Oct", "Which pairs lift frequency, and what each is worth", "teaching"),
+    ("W04", "D4", "Thu 22 Oct", "Why Retail-Plus frequency fell, and where the loss actually happens", "teaching"),
+    ("W04", "D5", "Fri 23 Oct", "How much the plan delivers, against a baseline that is hard to beat", "teaching"),
+    ("W04", "SAT", "Sat 24 Oct", "Cross-domain transfer drill, then the recap test and discussion", "saturday"),
+    ("W05", "D1", "Mon 26 Oct", "Framing the propensity model, and the baseline it has to beat", "teaching"),
+    ("W05", "D2", "Tue 27 Oct", "Scoring the model the way the business will judge it, in two businesses", "teaching"),
+    ("W05", "D3", "Wed 28 Oct", "What the model is allowed to know", "teaching"),
+    ("W05", "D4", "Thu 29 Oct", "Generalise or memorise, and the honest tuned model", "teaching"),
+    ("W05", "D5", "Fri 30 Oct", "The committee memo, and what transfers to Kalpa Financial", "teaching"),
+    ("W05", "SAT", "Sat 31 Oct", "Revision, the recap test, and the ME1 window", "saturday"),
+    ("W06", "D1", "Mon 02 Nov", "Online project introduction; groups frame their Kalpa Financial sub-problem", "build-week"),
+    ("W06", "D2", "Tue 03 Nov", "Build day two: baselines beaten honestly, the metric chosen and written down", "build-week"),
+    ("W06", "D3", "Wed 04 Nov", "Build day three: honest evaluation and the recommendation, plus the catch-up reserve", "build-week"),
+    ("W06", "D4", "Thu 05 Nov", "Mock R2 opens; build completion", "build-week"),
+    ("W06", "D5", "Fri 06 Nov", "Expert day one: GDs at thirty minutes per group, first presentations", "build-week"),
+    ("W06", "SAT", "Sat 07 Nov", "Expert day two plus the flown-in leader: presentations, defence, grade closure", "build-week"),
+    ("W07", "MON", "Mon 09 Nov", "Diwali: Monday off, no session", "holiday"),
+    ("W07", "D2", "Tue 10 Nov", "The first network, and whether it earns the text", "teaching"),
+    ("W07", "D3", "Wed 11 Nov", "Making the abandoned loop learn", "teaching"),
+    ("W07", "D4", "Thu 12 Nov", "Diagnose, then stabilise, then reproduce", "teaching"),
+    ("W07", "D5", "Fri 13 Nov", "Reviews as sequences, and why attention won", "teaching"),
+    ("W07", "SAT", "Sat 14 Nov", "The pen-and-paper test, then the interview-answer discussion", "saturday"),
+    ("W08", "D1", "Mon 16 Nov", "What a ticket costs, and why the vendor bills by the token", "teaching"),
+    ("W08", "D2", "Tue 17 Nov", "How the model knows which 'it' the customer means", "teaching"),
+    ("W08", "D3", "Wed 18 Nov", "Finding the five tickets most like this one", "teaching"),
+    ("W08", "D4", "Thu 19 Nov", "Making the draft reply repeatable, and stopping it inventing", "teaching"),
+    ("W08", "D5", "Fri 20 Nov", "The cost model for the auto-reply at scale", "teaching"),
+    ("W08", "SAT", "Sat 21 Nov", "The pen-and-paper test, then the interview-answer discussion", "saturday"),
+    ("W09", "D1", "Mon 23 Nov", "Online project introduction; groups scope their Kalpa Connect sub-problem", "build-week"),
+    ("W09", "TUE", "Tue 24 Nov", "Guru Nanak Jayanti: gazetted holiday, no session", "holiday"),
+    ("W09", "D3", "Wed 25 Nov", "The AI-free debug drill, then the build at pace", "build-week"),
+    ("W09", "D4", "Thu 26 Nov", "Mock R3 opens, with behavioural questioning; build completion", "build-week"),
+    ("W09", "D5", "Fri 27 Nov", "Expert day one: GDs at thirty minutes per group, first presentations", "build-week"),
+    ("W09", "SAT", "Sat 28 Nov", "Expert day two plus the flown-in leader: presentations, defence, grade closure, the two-month close", "build-week"),
 ]
 
 # Which artifact families a day of each shape owes. A Saturday is not a teaching day, so it owes
@@ -235,6 +252,31 @@ def sync_labels(dry):
     print(f"      {len(ALL_LABELS)} labels in the vocabulary")
 
 
+def prune_labels(dry):
+    """Delete labels outside the vocabulary that no issue uses.
+
+    GitHub seeds every new repository with nine generic labels. They colour the label picker,
+    they overlap with the vocabulary above, and nobody here uses them. A label that is actually
+    on an issue is never touched, so this is safe to run again.
+    """
+    known = {name for name, _, _ in ALL_LABELS}
+    removed = kept = 0
+    for label in paged("/labels"):
+        name = label["name"]
+        if name in known:
+            continue
+        used = call("GET", f"/issues?state=all&per_page=1&labels={urllib.parse.quote(name)}") or []
+        if used:
+            print(f"      keep {name}, it is on at least one issue")
+            kept += 1
+            continue
+        print(f"      delete unused label {name}")
+        removed += 1
+        if not dry:
+            call("DELETE", f"/labels/{urllib.parse.quote(name)}")
+    print(f"      {removed} removed, {kept} left alone because they are in use")
+
+
 def sync_milestones(dry):
     have = {m["title"]: m for m in paged("/milestones?state=all")}
     numbers = {}
@@ -281,7 +323,7 @@ def body_for(week, slot, date, focus, kind, note):
              f"**{date}** · {focus}", ""]
     if kind == "holiday":
         lines += ["No session on this day, so nothing is built for it. The card exists so the "
-                  "board and the Content Build Tracker have the same rows.", ""]
+                  "board and the curriculum workbook have the same rows.", ""]
         return "\n".join(lines)
 
     url = f"https://github.com/{OWNER}/{REPO}/tree/main/{folder(week, slot)}"
@@ -387,6 +429,8 @@ def main():
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dry-run", action="store_true", help="print the changes and make none")
     ap.add_argument("--labels", action="store_true", help="create or correct the label vocabulary")
+    ap.add_argument("--prune-labels", action="store_true",
+                    help="delete labels outside the vocabulary that no issue uses")
     ap.add_argument("--milestones", action="store_true", help="create a milestone per week")
     ap.add_argument("--week", help="create or update one week's cards, as W01")
     ap.add_argument("--all", action="store_true", help="every week in the plan")
@@ -401,6 +445,8 @@ def main():
 
     if a.labels:
         sync_labels(dry)
+    if a.prune_labels:
+        prune_labels(dry)
     if a.milestones:
         sync_milestones(dry)
     if not (a.week or a.all or a.status):

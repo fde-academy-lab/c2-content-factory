@@ -5,17 +5,17 @@ You produce the teaching material for the PG Diploma in AI-ML and Agentic AI Eng
 ## Ground truth order (higher wins on conflict)
 
 1. What the requester says in the current session
-2. docs/curriculum/ (the exported week tabs, Structure and Build_Tracker)
-3. docs/01_Programme_Facts_C2.md, docs/07_Client_Zero.md (once LOCKED) and docs/08_Modules_and_Credits.md
+2. docs/curriculum/ (the exported week tabs and Structure; the GitHub board replaced the old Build Tracker)
+3. docs/01_Programme_Facts_C2.md, docs/07_Client_Zero.md (LOCKED at v2.2, 13 September 2026) and docs/08_Modules_and_Credits.md
 4. docs/06_Day_Pack_Method.md and docs/02_Content_Doctrine.md
 5. docs/curriculum-detailing.md and docs/training-content-build-manual.md
 6. docs/04_Cohort1_Learnings.md (history, never specification)
 
-Anything absent from these files is unknown. Never invent: week or day content beyond the row, prerequisites, dates, clock times, trainer assignments, marks or weights beyond the Structure tab, client-zero details before the lock, or platform capabilities. When a needed fact is missing, stop and name it.
+Anything absent from these files is unknown. Never invent: week or day content beyond the row, prerequisites, dates, clock times, trainer assignments, marks or weights beyond the Structure tab, client-zero details beyond the lock, or platform capabilities. When a needed fact is missing, stop and name it.
 
 ## The build workflow (every day pack)
 
-1. Read the day's row in docs/curriculum/W{n}_*.md plus Structure.md, then read .claude/skills/day-pack-builder/SKILL.md and its references, then content/README.md for the folder layout.
+1. Read the day's row in docs/curriculum/W{n}_*.md in the order the row is written, which is the business scenario first, the thinking it trains second and the technique third, across all fifteen columns. Then Structure.md, then docs/07_Client_Zero.md for the dataset version the row names, then .claude/skills/day-pack-builder/SKILL.md and its references, then content/README.md for the folder layout. docs/05_Curriculum_Map_Schema.md says what each column carries.
 2. Lock the sources before anything else: one written reference and one video per new topic, the product's own documentation for any tool used for the first time, and every movable fact verified with the date it was checked. Links the requester supplies are the lock rather than a starting point. Where a fact cannot be verified in the session, the artifact says "not verified" rather than carrying a guess. Then state envelope and continuity, then the one-screen spine. STOP for approval. Build nothing past the spine without an explicit yes.
 3. Build in passes, one artifact family per pass: deck(s), notebooks, activity, exercises with solutions, take-home with self-check spine, Kahoot pack, study notes plus cheat sheet plus pre-read.
 4. Write outputs only under content/W{ww}/D{d}/ for a teaching or build day and content/W{ww}/SAT/ for a Saturday, always inside the subfolder that fits the artifact (slides, notebooks, demos, whiteboards, cheatsheets, study-notes, exercises with its guided, unguided and solutions folders, takehome, kahoot, preread, extras, data, trainer, internal). Never leave a file loose at the day folder root. content/README.md carries the full layout, including the different shapes a build day and a Saturday take. Name files C2_W{ww}_D{dd}_{topic}_{AUDIENCE}.{ext}, or C2_W{ww}_SAT_{topic}_{AUDIENCE}.{ext} on a Saturday; the topic half carries only what the folder and the extension do not already say, and AUDIENCE is STUDENT, TRAINER or INTERNAL and is never omitted.
@@ -24,8 +24,11 @@ Anything absent from these files is unknown. Never invent: week or day content b
 
 ## Hard rules
 
+- The business scenario leads. Every day opens on a situation in a stakeholder's words and the questions they are asking, the thinking that breaks it down is drawn before any tool opens, and the technique comes third because it exists to answer the question. A pack whose deck opens on a topic title was not built from the row.
+- What is planted in a dataset is never named to a learner. The row's client-zero column is TRAINER ONLY, and the room is meant to find the bulk order by sorting and the duplicates by reconciling. A student file that names a plant has spent the lesson.
 - Mental model first, spiral always; at most four new ideas per two-hour block; application before theory; one deliberate failure per block with exact error text.
-- Durations only, never clock times, in any lesson material. Role labels only, never trainer names, in STUDENT files. No marks or weights anywhere until the Structure tab locks them.
+- Durations only, never clock times, in any lesson material. Role labels only, never trainer names, in STUDENT files; Kalpa's fictional stakeholders are named on purpose and are the one exception. No marks or weights anywhere until the Structure tab locks them.
+- Every day carries its interview angle from the row, as questions with their tags, never as answers. The answers are written in the day pack at detailing and never copied back into the curriculum row.
 - Every URL in an artifact was verified the day it entered and carries that date; unverified slots say "to be found". Never a URL from memory.
 - VS Code plus GitHub Codespaces is the single environment; notebooks are .ipynb and must run cold top to bottom; SQL is .sql against Postgres.
 - Notebooks ship executed: every code cell carries its saved output, at least three diagrams are rendered from code cells, and at least five checks report and pass. An unexecuted notebook teaches nobody reading it on GitHub.

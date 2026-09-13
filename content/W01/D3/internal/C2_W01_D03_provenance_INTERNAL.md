@@ -1,54 +1,80 @@
-# Data provenance: Week 1, Day 3
+# Provenance: Week 1 Day 3
 
-Internal working file. Never given to a learner.
+**INTERNAL.**
 
-## Where this pack's data comes from
+---
 
-Every data file in this folder is generated. Two commands rebuild all of them:
+## The curriculum row
+
+`docs/curriculum/W1_Data_analysis_found.md`, the Wednesday 30 September 2026 row. Client zero is
+`docs/07_Client_Zero.md` at v2.2.
+
+---
+
+## The data
+
+`data/generate_client_zero.py`, version `v2`, seed `20260928`.
 
 ```
-python3 data/generate_client_zero.py --version v1            --out content/W01/D3 --stem C2_W01_D03
-python3 data/generate_client_zero.py --version w1d3-takehome --out content/W01/D3 --stem C2_W01_D03
+python3 data/generate_client_zero.py --version v2 --out content/W01/D3/data --stem C2_W01_D03
 ```
 
-The generator is seeded, so those commands produce byte-identical files on every machine. Editing a data file by hand breaks that guarantee. Change the generator, rerun the commands, then rerun the verification gate and both notebooks.
-
-## The witnesses this day turns on
-
-`python3 data/generate_client_zero.py --list` prints the full table. The ones Wednesday uses, each verified by running it rather than asserted:
-
-| Witness | Value | What breaks without it |
-|---|---|---|
-| 50 orders across 49 distinct `order_id` | `KR4201` appears twice | The whole of block two |
-| Whole-record duplicates | 0 | The first deliberate failure, which reports nothing |
-| The pair's differing field | `order_date`, six weeks apart | The identity-rule discussion, and the ambiguity that makes it real |
-| Amounts that fail `int()` | 6: `twelve`, two empty, `12,400`, `24 500`, `Rs 8000` | The gap between present and converts, so the profiler has nothing to find |
-| The whale | Rs 480,000, 86 percent of the Rs 561,145 total, next largest Rs 2,995 | The outlier section, and Thursday's mean |
-| Student segment | Exactly 12 orders | Thursday's sample-size lesson |
-| The truncated feed | Stops at line 47 | Nothing today; it is carried for continuity with Tuesday |
-| The companion file | Header row appears twice | Notebook 2 section 6, which is on the cut list |
-
-## The figures this pack quotes
-
-Each is computed from the generated files rather than typed.
-
-| Figure | Value |
+| File | What it is |
 |---|---|
-| Main file | 50 orders in, 44 profiled, 6 rejected, total Rs 561,145 |
-| Raw profile, `amount` | present 48, converts 44, distinct 46 |
-| Coerced profile, `amount` | present 50, converts 50, distinct 42 |
-| Raw and coerced, `discount` | present 11 becomes present 50 |
-| The whale | Rs 480,000, 86 percent of the total, next largest Rs 2,995, middle order Rs 1,955 |
-| Take-home file | 41 rows, 40 distinct ids, 38 convert, 3 rejected, total Rs 164,110, largest Rs 96,000 at 58 percent |
+| `..._orders_STUDENT.csv` | The ERP export, 201 rows |
+| `..._orders_STUDENT.json` | The app feed, truncated mid-record |
+| `..._vendor_STUDENT.csv` | The companion export with its header row repeated |
+| `..._takehome_STUDENT.csv` | A 97-row second export with **different** defects |
 
-## Two things that would quietly break this pack
+| Planted in the class file | Used by |
+|---|---|
+| 14 duplicated Q1 rows carrying exactly Rs 20,00,000 | The reconciliation, and the gap Anand names |
+| One amount spelled `twelve` | The `ValueError` in block 2 |
+| One record with no `status` | The presence count in block 3 |
+| `KR-02151` twice, dates differing | The identity rule in block 4, which is the day's judgment |
+| The JSON cut mid-string | The `JSONDecodeError` in block 2 |
+| The vendor file's repeated header | The profiling discussion, lowest priority |
 
-The near-duplicate twin is drawn from a non-Student order on purpose. If it lands on a Student order the Student count becomes 13 and Thursday's sample-size witness is gone, with nothing raising anywhere.
+| Planted in the take-home file | Why it is different |
+|---|---|
+| A header row pasted into the **middle** of the body | The class file has it in a companion file, so the shape is familiar and the location is not |
+| An amount of `-2400` | **It converts without error**, so a pass built on `isdigit` misses it entirely |
+| A date written `12/05/2026` | Not a defect at all, and deciding that is the item worth most |
+| Six duplicated ids in a different segment | The counts cannot be reused |
 
-The whale must stay convertible. If it ever became text it would land in the rejects file, the outlier section would have nothing to investigate, and the day's fourth idea would have no example.
+---
 
-## Conflicts, now closed
+## The arithmetic, checked
 
-Section 9 of `docs/07_Client_Zero.md` recorded four conflicts between that file and the curriculum export. All four were ruled on at v1.1 on 09 September 2026, in the curriculum's favour, and the client-zero file was edited to match rather than the other way round.
+| Claim | Value |
+|---|---|
+| Input | 201 |
+| Clean | 184 |
+| Rejected | 17 |
+| Reconciles | 184 + 17 = 201 |
+| Q1 as exported | Rs 2,09,98,210 |
+| Q1 reconciled | Rs 1,89,98,210 |
+| Gap | Rs 20,00,000 |
 
-Two touched this pack and both settled in its favour, so nothing here changes: v1 at 50 orders is the Wednesday and Thursday dataset, and the near-duplicate pair officially differs on `order_date`, which is what the entity model supports and what this file has always contained.
+Q1 is Rs 2,09,98,210 rather than exactly Rs 2.10 crore because the `twelve` row's original amount is
+lost when the string replaces it. The difference is Rs 1,790, or 0.0085 percent, so both figures
+round to the ones the stakeholders quote. That is deliberate: the conversion defect teaches the
+discipline without moving the headline, which is the right weight for it.
+
+Every figure is re-asserted by a `kit.check` in the notebook.
+
+---
+
+## Sources, with the date each was checked
+
+| Link | Role | Checked |
+|---|---|---|
+| https://realpython.com/python-csv/ | Reading and writing CSV, both audiences | 03 Sep 2026, row-supplied |
+| https://docs.python.org/3/library/json.html | `JSONDecodeError`, trainer preparation | 03 Sep 2026, row-supplied |
+| https://www.youtube.com/watch?v=9N6a-VLBa2I | Corey Schafer, JSON, student reference | 05 Sep 2026, row-supplied |
+| https://realpython.com/python-lbyl-vs-eafp/ | LBYL against EAFP, trainer preparation | 03 Sep 2026, row-supplied |
+| https://www.youtube.com/watch?v=q5uM4VKywbA | Corey Schafer, the CSV module | 03 Sep 2026, row-supplied |
+| https://www.geeksforgeeks.org/data-analysis/data-analyst-interview-questions-and-answers/ | Cleaning items, trainer preparation | 03 Sep 2026, row-supplied |
+
+**Reachability, checked 13 Sep 2026:** `realpython.com` returned 403 to an automated request, which
+is bot filtering rather than a dead page. Flagged for a human to open once. The rest returned 200.

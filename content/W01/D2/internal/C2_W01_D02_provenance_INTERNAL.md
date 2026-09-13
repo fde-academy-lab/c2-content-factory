@@ -1,66 +1,73 @@
-# Data provenance: Week 1, Day 2
+# Provenance: Week 1 Day 2
 
-Internal working file. Never given to a learner.
+**INTERNAL.**
 
-## Where this pack's data comes from
+---
 
-Every data file in this folder is generated, not hand-written. One command rebuilds all of them:
+## The curriculum row
+
+`docs/curriculum/W1_Data_analysis_found.md`, the Tuesday 29 September 2026 row, read in column
+order. Client zero is `docs/07_Client_Zero.md` at v2.2.
+
+---
+
+## The data
+
+`data/generate_client_zero.py`, version `v1`, seed `20260928`. Regenerate with:
 
 ```
-python3 data/generate_client_zero.py --version v0            --out content/W01/D2 --stem C2_W01_D02
-python3 data/generate_client_zero.py --version w1d2-lab      --out content/W01/D2 --stem C2_W01_D02
-python3 data/generate_client_zero.py --version w1d2-takehome --out content/W01/D2 --stem C2_W01_D02
+python3 data/generate_client_zero.py --version v1 --out content/W01/D2/data --stem C2_W01_D02
 ```
 
-The generator is seeded, so those commands produce byte-identical files on every machine and all
-sixty learners hold the same data. Editing a data file by hand breaks that guarantee. Change the
-generator instead, rerun the commands, then rerun the verification gate and both notebooks.
+Asserted by `python3 data/generate_client_zero.py --contract`.
 
-## What this pack was rebuilt from, and when
+| Planted | Used by |
+|---|---|
+| Customer count flat at 69 across both quarters | Rung two, which disproves marketing's claim |
+| Orders per customer falling 49 percent in Retail-Plus against 5 in Retail-Core | Rung four, the finding of the day |
+| The `discount` field absent on 58 of 200 records | The block-5 `KeyError` and the defaults discussion |
+| 14 duplicated Q1 rows | **Not today's lesson.** They are here from `v1` and are found on Wednesday. |
 
-This pack was first built against placeholder field names, because client zero was frame locked and
-no schema existed. `docs/07_Client_Zero.md` was locked at v1.0 on 09 September 2026, and the pack was
-regenerated against the real schema the same day.
+The duplicates sit almost entirely in Retail-Plus by design, because a migration re-runs a batch
+rather than a random sample. That is what makes Tuesday's 49 percent an overstatement rather than an
+error, and it is why Wednesday's clean pass leaves Retail-Plus standing at 35 percent rather than
+removing it.
 
-| Was | Is now | Source |
+---
+
+## The arithmetic, checked
+
+| Claim in the pack | Source |
+|---|---|
+| Revenue down 11.0 percent | Rs 2,10,00,000 to Rs 1,87,00,000 |
+| Orders per customer down 24.6 percent | 114/69 to 86/69 |
+| Revenue per order up 18.0 percent | Rs 1,84,211 to Rs 2,17,442 |
+| The decomposition closes | 1.000 x 0.754 x 1.180 = 0.890, against 0.890 |
+| Retail-Plus down 49.0 percent | 2.32 to 1.18 orders per member |
+| Web down 22.4 percent, store 8.1, app flat | Computed from the same file for the take-home |
+
+Every one of these is re-asserted by a `kit.check` inside the notebook, so a change to the generator
+breaks the notebook rather than the lesson.
+
+---
+
+## Sources, with the date each was checked
+
+| Link | Role | Checked |
 |---|---|---|
-| `id` | `order_id` | Section 3 entity model, ORDERS |
-| `date` | `order_date` | Section 3 entity model, ORDERS |
-| `outcome` with values accepted, declined, pending | `status` with values delivered, returned, cancelled | Section 3 entity model, ORDERS |
-| `segment_a` to `segment_d` | Retail-Core, Retail-Plus, Business, Student | Section 3, "Segments are four" |
-| `feed_01` | `kalpa_retail_orders` | Section 2, Kalpa Retail is the spine vertical |
-| Amounts from Rs 880 to Rs 23,600 | Amounts inside Rs 800 to Rs 3,000 | Section 3, "a typical order sits between Rs 800 and Rs 3,000" |
-| No customer id, no discount column | `customer_id` and the optional `discount` | Section 3 entity model, and section 4 v0 |
+| https://www.tryexponent.com/blog/top-data-analyst-interview-questions | The sales-drop investigation, trainer preparation | 13 Sep 2026, row-supplied |
+| https://britinstitute.uk/blog/data-analyst-case-study-interview-questions | The case walkthrough, student reference | 13 Sep 2026, row-supplied |
+| https://www.youtube.com/watch?v=9Os0o3wzS_I | Corey Schafer, Functions | 03 Sep 2026, row-supplied |
+| https://www.youtube.com/watch?v=NIWwJbo-9_8 | Corey Schafer, try/except | 03 Sep 2026, row-supplied |
+| https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data | Summarising quantitative data | 03 Sep 2026, row-supplied |
 
-The amount band moved, so every total in this pack moved with it. These are the current figures and
-each one is computed from the generated files rather than typed.
+**Reachability, checked 13 Sep 2026:** all returned 200 to an automated request.
 
-| Figure | Value | Where it appears |
-|---|---|---|
-| Main file | 30 orders in, 28 clean, 2 rejected, total 53745 | deck half one, deck half two, both notebooks, activity, solutions, study notes, day sheet, tiered extras |
-| Rejected orders, main file | KR4210 with `twelve`, KR4214 with an empty amount | the same files |
-| Lab file | 24 in, 21 clean, 3 rejected, total 34515 | solutions holds all four; tiered extras holds the three counts |
-| Take-home file | 30 in, and either 27 clean at 47645 or 26 clean at 49495 | take-home self-check |
-| Truncated feed | `Expecting ',' delimiter: line 48 column 1 (char 1027)` | notebook 2 at runtime, exercises, day sheet |
+---
 
-## The witnesses this pack depends on
+## Built beyond the row, and why
 
-Each planted defect serves exactly one teaching point. `python3 data/generate_client_zero.py --list`
-prints the full table. The ones Tuesday turns on:
-
-- `KR4200` carries its amount as the text `4500`, which is Monday's type break arriving in a file.
-- `KR4210` carries the word `twelve`, which is the `ValueError` the day is built around.
-- `KR4214` has no amount in the CSV, and the JSON's nested `source.amount_raw` still holds `2840`.
-  That contrast is the flattening-cost lesson, and removing it removes section 5 of notebook 2.
-- The first six orders carry no discount, which is Monday's `.get()` with a default.
-- The vendor feed stops mid-record at line 47, so the parser names a position that does not exist.
-
-## Conflicts, now closed
-
-Section 9 of `docs/07_Client_Zero.md` recorded four conflicts between that file and the curriculum
-export. All four were ruled on at v1.1 on 09 September 2026, in the curriculum's favour, and the
-client-zero file was edited to match rather than the other way round.
-
-Two of them touched this pack and both are now settled in this pack's favour, so nothing here
-changes: v0 at 30 orders is the Monday and Tuesday dataset, and `discount` is an optional field on
-the order rather than on the customer.
+The row's technique column does not name a channel cut. The take-home adds one because the row's
+own interview angle asks how to make the case to marketing when the data says frequency, and
+marketing buys media by channel rather than by segment. The cut is computed from the same file and
+invents nothing.

@@ -1,132 +1,85 @@
-# Day 2 Kahoot pack
+# Kahoot, Week 1 Day 2
 
-Ungraded. The score is read as a performance indicator for attention and retention, never as a marks component.
-
-Eight items. Item 3 is the trap of the day and item 8 is Monday's return question one level up.
-
-Run it at the close of the session. Read out the reason line after each item, since the reason is the teaching and the score is not.
+Six items plus one return question from Monday, one level up. Ungraded, scored on correctness and
+speed together.
 
 ---
 
-## Q1. Functions
+## Q1. What is rung one of the investigation ladder?
+*Tests: the order of the rungs, which is the whole case.*
 
-A function prints the id and has no return. What is in `result` after `result = fix(record)`?
-
-1. None  <- correct
-2. The record that was passed in
-3. The text that appeared on the screen
-4. An empty dictionary ready to be filled
-
-**Why:** No `return` means the call hands back `None`. The printing happened for you, and the caller got nothing.
+a) Decompose revenue into its factors and see which moved most
+b) Confirm the drop is real  <- correct
+c) Ask the business what they think caused it before touching data
+d) Split the numbers by segment to find where the fall sits
 
 ---
 
-## Q2. Errors
+## Q2. Revenue per customer fell 8 percent. Which two numbers next?
+*Tests: a rate is a ratio, so both halves of it have to be looked at.*
 
-In a four line traceback ending in ValueError, which line is the one you go and edit?
-
-1. The first line, because it sits at the top
-2. Line 12, the one naming your own file  <- correct
-3. The last line, because it names the exception
-4. Whichever line contains the word error
-
-**Why:** The last line says what went wrong. The line naming your file says where. You edit where.
+a) Last year's figure and the industry benchmark for the same quarter
+b) The forecast and the actual, so the size of the miss is known first
+c) Orders per customer and revenue per order  <- correct
+d) The largest customer and the smallest, to see the range involved
 
 ---
 
-## Q3. Errors (trap)
+## Q3. Q1 ran 13 weeks and Q2 ran 11. Is the comparison fair?
+*Tests: like with like, which is the rung most often skipped.*
 
-You wrap `int(value)` in try with a bare except and pass. What does the printed total look like?
-
-1. It raises and the loop stops on the first bad record
-2. It prints zero because nothing was added
-3. It prints a number that looks fine  <- correct
-4. It prints a warning and then the number
-
-**Why:** This is the trap of the day. The total is plausible, the label claims every record, and nothing on screen disagrees.
+a) Yes, because both are complete quarters as the business defines them
+b) Yes, if you compare rates rather than the totals themselves
+c) Only for revenue, since a rate already divides out the difference
+d) No, and per-week figures or matched windows are what fix it  <- correct
 
 ---
 
-## Q4. Errors
+## Q4. `result = revenue_for(seg)` holds `None`. What went wrong?
+*Tests: return against print, and why a function that prints cannot be built on.*
 
-Which exception does `int('twelve')` raise?
-
-1. TypeError
-2. SyntaxError
-3. KeyError
-4. ValueError  <- correct
-
-**Why:** The type is right and the value is wrong, which is what ValueError means. TypeError would mean the wrong type entirely.
+a) The function ends in `print` rather than `return`  <- correct
+b) The segment name was misspelled, so no rows matched the filter
+c) The function raised an exception that was caught and swallowed
+d) `revenue_for` was defined after the line that calls it in the file
 
 ---
 
-## Q5. Files
+## Q5. A segment has median Rs 1,200 and a range of Rs 80,000. Say what?
+*Tests: a typical value and a spread describe different things.*
 
-What does `with open(...)` guarantee that opening and closing by hand does not?
-
-1. The file closes even if the code raises  <- correct
-2. The file is read entirely into memory first
-3. The file cannot be changed by another program while open
-4. The file is checked for formatting errors as it opens
-
-**Why:** The guarantee is the close, including on the failure path. Nothing about speed, locking or validation.
+a) The median must have been computed on the wrong column entirely
+b) Most orders are small and at least one is very much larger  <- correct
+c) The segment has too few orders in it to describe at all
+d) The mean will be close to Rs 1,200 because the median is close
 
 ---
 
-## Q6. Files
+## Q6. Customers flat, orders per customer down in one segment. Say it.
+*Tests: a hypothesis is stated as a hypothesis, with its test beside it.*
 
-Where does `csv.DictReader` get the keys for each record?
-
-1. From a list you pass in on every read
-2. From whatever names your dictionary already uses
-3. From the first row of the file  <- correct
-4. From the column order in which the file was written
-
-**Why:** The header row is the contract. Change a header spelling and every lookup in your code raises KeyError.
+a) That segment's customers have left and been replaced by new ones
+b) Something changed for that segment, and this would settle it  <- correct
+c) Acquisition is working and retention is not, across the business
+d) The segment definition changed between the quarters being compared
 
 ---
 
-## Q7. Files
+## Return question from Monday, one level up
 
-A vendor's JSON fails at line 47 column 5. What is your first move?
+## Q7. The mean doubled and the median did not move. First check?
+*Tests: Monday's reveal, now as a diagnostic move rather than a demonstration.*
 
-1. Wrap json.load in try and except and carry on
-2. Rewrite the closing brackets so the file parses
-3. Ask the vendor to resend before looking at the file
-4. Open the file at that line and look  <- correct
-
-**Why:** Look first. Repairing someone else's feed by hand produces a file that loads and quietly holds a fraction of the data.
-
----
-
-## Q8. Return question, Monday one level up
-
-A comparison fails mid loop on record 17 of 30. What are your first two checks?
-
-1. Restart the kernel and run every cell again
-2. The type of the value and the record it came from  <- correct
-3. Whether the loop variable was renamed further up
-4. The record count and whether the file was complete
-
-**Why:** Monday you learned type before size. Today you learned the traceback names the value. Together they point at record 17 and at what it holds.
+a) Recompute the mean, because a doubling usually means a code error
+b) Compare against the same period last year to see if it is seasonal
+c) Sort the amounts and read the top of the list  <- correct
+d) Report both numbers and let the stakeholder decide which to use
 
 ---
 
-## Distractor audit
+## Trainer note on the set
 
-Run before release. Two rules: the correct answer is never the longest option, and correct positions are spread across the four slots.
-
-| Item | Key position | Key length | Longest option | Key is longest |
-|---|---|---|---|---|
-| Q1 | 1 | 4 | 38 | no |
-| Q2 | 2 | 37 | 45 | no |
-| Q3 | 3 | 34 | 52 | no |
-| Q4 | 4 | 10 | 11 | no |
-| Q5 | 1 | 39 | 56 | no |
-| Q6 | 3 | 30 | 51 | no |
-| Q7 | 4 | 35 | 51 | no |
-| Q8 | 2 | 49 | 50 | no |
-
-Key positions used: slot 1 appears 2 times, slot 2 appears 2 times, slot 3 appears 2 times, slot 4 appears 2 times.
-
-Longest question text: 96 characters. Longest answer text: 56 characters. Check both against the field limits in Kahoot before pasting.
+Q3 is the item the room most often gets wrong at speed, because "compare rates" sounds like the
+careful answer and is not: a rate over an 11-week window and a rate over a 13-week window are
+still two different things. Q7 is the return question and it is worth ten seconds afterwards,
+because the move it asks for is the one Wednesday opens on.

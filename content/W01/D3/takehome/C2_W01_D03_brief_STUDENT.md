@@ -1,114 +1,98 @@
-# Day 3 take-home: make the profiler reusable
+# Take-home: a second export, and the note that goes with it
 
-Due at the start of tomorrow's session, where the solution is released and discussed.
-
-Today you profiled one file by hand. Tonight you turn that into something you can point at a file you have never opened, and then you point it at one.
-
----
-
-## What you are given
-
-`../data/C2_W01_D03_takehome_STUDENT.csv`. Same seven fields as today. A different extract, with defects today's file did not have.
-
-## What you hand in
-
-Four things, in one notebook named `takehome_d3.ipynb` in your own repository.
-
-### 1. `profile_dataset()`
-
-One function. It takes a list of rows and returns the three counts for every field, without being told which fields exist.
-
-```
-def profile_dataset(rows):
-    ...
-```
-
-It must work on a file whose columns you have not seen, which means no field names written into the body. If your function mentions `amount` anywhere inside it, it is not reusable and tomorrow's file will prove it.
-
-Run it on today's file first and check it reproduces the profile you built in class. A function that gives a new answer on old data is broken.
-
-### 2. The profile and the clean, on the new file
-
-Point `profile_dataset()` at the new extract, read the profile before touching anything, then run the clean using `clean_record` and `clean_records` from Tuesday, unedited.
-
-Ship `output/profiled_orders.csv` and `output/rejects.csv`, and print the reconciliation.
-
-### 3. The decisions log
-
-One line per decision, in the four columns from class: field, finding, choice, reason.
-
-This file needs at least four lines. Three of them are about values. One is about a row, and finding it is the point of the exercise.
-
-Write the log as you go rather than at the end. A log reconstructed afterwards is a story, and it reads like one.
-
-### 4. Two lines defending your identity rule
-
-The new file, like today's, contains one order id on two rows. The rows differ on a different field this time.
-
-Write exactly two lines:
-
-- The rule, stated so somebody else could apply it without asking you.
-- What your rule costs, meaning what it would wrongly merge or wrongly separate on a different file.
-
-Two lines. Not two paragraphs. If you cannot say it in two lines you have not decided yet.
+Anand's analyst sends a 97-row slice with a one-line note: "this one came through a different
+route." It has defects. **They are not the same defects as the class file**, so nothing from the
+session can be pasted across.
 
 ---
 
-## The reading, and the one thing you must bring back from it
+## Part 1. The full pass
 
-The Python standard library will happily guess whether the first row of a file is a header. Today
-you met a file where that guess would have been wrong, so go and read how the guess is made.
+Open `notebooks/C2_W01_D03_hands_on_STUDENT.ipynb`. Profile, name every defect, decide, record,
+reconcile. Fill every `__TODO__` and post the five letters.
 
-The CSV module, Python 3.12.0 (verified 09 Sep 2026): https://raw.githubusercontent.com/python/cpython/v3.12.0/Lib/csv.py
+**Four kinds of defect are in that file and one of them does not appear in the class file at all.**
+One of the four converts cleanly and raises no error, which is why profiling comes before deciding.
 
-Find `Sniffer.has_header`, which begins at line 390. Read its opening comment, then read the vote at
-lines 434 to 451.
-
-Answer in four lines:
-
-- In one sentence, how does `has_header` decide? Quote the line number where the decision is finally
-  returned.
-- The comment at the top of the method describes two different tests. Name both.
-- Today's companion file had its header row repeated as the first data row. Would `has_header` have
-  noticed? Say why, using the vote rather than your intuition.
-- You wrote an identity rule today because the data could not tell you what counted as the same
-  order. `has_header` is the standard library choosing to guess instead. In one line, say when
-  guessing is the right call and when stating a rule is.
-
-Quote a line number for the first answer. An answer without one does not count, because the point is
-that you opened the file.
-
-That last question is the one tomorrow opens on, so it is worth more than the other three together.
-
-## How this is checked
-
-Tomorrow's discussion looks at these, in this order:
-
-1. Does `profile_dataset()` run on a file whose columns it was never told about.
-2. Does the decisions log include the row-level finding, not only the value-level ones.
-3. Is the identity rule stated well enough for somebody else to apply.
-4. Does the reconciliation print, and does it hold.
-5. Does the clean go through Tuesday's functions rather than a fresh loop.
-6. Does your reading answer carry a line number from the actual source file.
-
-The totals matter least. Two learners can hand in different totals and both be right, if both wrote down the rule that produced them.
+**One row is not a defect.** It will look like one. Deciding correctly about it, and writing down
+why, is worth more than the other four put together.
 
 ---
 
-## Before you hand it in
+## Part 2. The note to Finance, four sentences
 
-Open `C2_W01_D03_selfcheck_STUDENT.md`, after you have finished rather than before. It carries checkpoints you can verify alone, so you know where you stand before anybody else looks.
+Write it as if Anand's analyst will read it before they read your code, because they will.
 
-## The two tools that ship with tonight's work
+| Sentence | What it carries |
+|---|---|
+| 1 | What arrived: rows, distinct orders, and the one-line summary of what is wrong |
+| 2 | What you rejected and why, with counts |
+| 3 | The number you would sign |
+| 4 | The one thing you had to use judgment on, stated as a judgment |
 
-Both sit in `demos/` beside the companion page.
+Under 120 words. Numbers first.
 
-`C2_W01_D03_decision_tool_STUDENT.xlsx` has one tab per decision you took today: what an incomplete field earns, which identity rule you state, and what happens to the order at the end of the column. Yellow cells are yours and everything else computes. Each tab ships with one planted defect, so all three verdicts read "stop" when you open it, and clearing one tab does not clear the export tab's release.
+**Sentence four is the one being marked.** A note with no judgment in it is a note from somebody who
+has not looked hard enough, and a note whose judgment is hidden inside sentence two is a note that
+will be found out later.
 
-`C2_W01_D03_profile_pass_STUDENT.xlsx` is the eight-move run sheet for a profile-then-clean pass, with a symptom lookup beside it. Run it on tonight's second file before you write a single line of the log by hand.
+---
 
-The export tab assembles the decisions log by formula. Bring that paragraph tomorrow; Thursday's numbers are computed on exactly the dataset it describes.
+## Part 3. The decisions log
 
-## Where the running half lives
+A table, one row per decision, with these columns:
 
-`notebooks/C2_W01_D03_ex1_hands_on_STUDENT.ipynb` walks the whole pass with pick-from-options markers and a check after every step. Post its five letters with your exercise letters.
+| Field | Issue | Rows | Decision | Reason |
+|---|---|---|---|---|
+
+Five rows at most. Two rules:
+
+1. **A reason that restates the issue is not a reason.** "It was a duplicate so I removed it" says
+   nothing. "Every field on the pair is identical and the export note says the migration re-ran"
+   says something.
+2. **The log must include a row you kept.** Anything you looked at and decided to leave in belongs
+   here too, because that is the row an auditor asks about.
+
+---
+
+## Part 4. One paragraph, and this is the interview question
+
+> Your dashboard and Finance disagree by Rs 20 lakh. Walk me through what you do, in order, and tell
+> me what you would refuse to do.
+
+Under 150 words. The second half is the part people fail.
+
+---
+
+## What makes this hard to shortcut
+
+The four defects in the second export are not the four in the class file, and one of them produces
+no error at all. An assistant handed the brief alone will write a pass for the defects it was told
+about in the session.
+
+The second tell is Part 3's kept row. A log with only rejections is a log from a pass that never
+made a judgment, and a pass that never made a judgment did not look at the data.
+
+---
+
+## Reading, tonight
+
+- Real Python, Reading and Writing CSV Files, the `DictReader` section (verified 03 Sep 2026):
+  https://realpython.com/python-csv/
+- Python's `json` docs, on `JSONDecodeError` (verified 03 Sep 2026):
+  https://docs.python.org/3/library/json.html
+
+---
+
+## What to bring tomorrow
+
+| | |
+|---|---|
+| The notebook | Filled, checks passing, five letters posted |
+| The note | Four sentences, under 120 words |
+| The decisions log | Five rows at most, including one you kept |
+| The paragraph | Under 150 words, with the refusal in it |
+
+Tomorrow Meera asks whether the gap you have left is real at all, or whether it is the kind of
+difference that shows up between any two quarters. Arriving with clean numbers is what makes that
+question answerable.

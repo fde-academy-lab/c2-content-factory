@@ -1,78 +1,60 @@
-# Take-home self-check
-
-Open this after your run, before you hand anything in.
-
-These are checkpoints, not answers. Each is something you can verify on your own screen in under a minute. When one fails, the fix is yours to find.
+# Self-check: the pass, before anybody audits it
 
 ---
 
-## Checkpoint 1: the shape of the file
+## Part 1, the notebook
 
-**41 rows**, not counting the header. **Seven fields**, the same seven as today.
+| # | Checkpoint | What you should see | If it fails |
+|---|---|---|---|
+| 1 | The row count is not the id count | PASS | You counted rows twice rather than distinct ids |
+| 2 | You found the repeated ids | PASS | You compared whole records rather than ids |
+| 3 | You found the row that is not an order | PASS | You are testing for empty rather than for non-numeric |
+| 4 | You found the negative amount | PASS | You checked `isdigit()`, which is `False` for `-2400`, so it landed in the wrong bucket |
+| 5 | Input equals clean plus rejected | PASS | A branch is falling through without appending anywhere |
+| 6 | Every rejection carries a reason | PASS | An empty string is not a reason |
+| 7 | Summary | `7 checks passed and 0 failed` | Any FAIL names its own checkpoint |
 
-If you read 42, you are counting the header row. If your profiler reports fields you did not expect, read the header again.
-
-## Checkpoint 2: the profile before you touch anything
-
-```
-amount    present 40/41   converts 38/41   distinct 39
-discount  present  5/41
-```
-
-If your `converts` for `amount` is 41, you have already coerced something. Go back and profile the raw file.
-
-## Checkpoint 3: the three that will not convert
-
-Exactly **three** amounts fail. Their ids are `KR7506`, `KR7519` and `KR7527`, and their reasons in the interpreter's own wording are:
-
-```
-invalid literal for int() with base 10: 'eleven hundred'
-invalid literal for int() with base 10: ''
-invalid literal for int() with base 10: '3,150'
-```
-
-If your reasons read differently, you invented wording instead of carrying `str(e)`.
-
-## Checkpoint 4: the row-level finding
-
-`order_id` holds **40 distinct values across 41 rows**.
-
-A whole-record comparison will report **0 duplicates**, exactly as it did in class.
-
-The repeated id is `KR7511`, and the two rows differ on **`status`**, not on the date. That is a harder call than today's pair: one row says the order was delivered and the other says it was returned, and only one of those can be true of a single order.
-
-If your log has no line about this, you cleaned the columns and missed the record.
-
-## Checkpoint 5: the reconciliation
-
-```
-41 in = 38 profiled + 3 rejected
-```
-
-Both rows of the repeated pair stay in the profiled file unless your written rule says otherwise, in which case your rule has to be in the log and the counts move to 37 and 3, with one row removed on purpose and recorded.
-
-Either is defensible. Neither is defensible unsaid.
-
-## Checkpoint 6: the extreme
-
-Sort the amounts and read the tail. The largest is **Rs 96,000**, against a next largest of **Rs 3,000** and a middle order of **Rs 1,965**.
-
-It is **58 percent** of the Rs 164,110 total.
-
-It converts cleanly, so it is not a cleaning problem. It is smaller and more arguable than today's Rs 480,000, which is deliberate: today's was obviously worth raising and this one is the size where people quietly decide on their own.
-
-## Checkpoint 7: the reusability test
-
-The real test of `profile_dataset()` takes ten seconds. Delete a column from a copy of the file and run your function on it again.
-
-If it raises a `KeyError`, a field name is written inside the function and it is not reusable. If it returns a profile with one fewer field, it is.
+**Checkpoint 4 is the one that catches people**, and it is worth understanding rather than fixing.
+`"-2400".isdigit()` is `False`, so a test built on `isdigit` throws a perfectly good refund into the
+same bucket as a header row. `int()` inside a `try` is the test that separates them.
 
 ---
 
-## What no checkpoint can tell you
+## Part 2, the note
 
-Whether your identity rule is any good.
+Read it back and answer yes or no. **Two noes means rewrite it.**
 
-Read your two lines back and ask: could a colleague apply this tomorrow, on a file I have never seen, without asking me a single question? If they would have to guess at anything, the rule is not finished.
+1. Does sentence one carry both a row count and a distinct-order count?
+2. Does sentence two carry counts rather than adjectives?
+3. Is there a single number in sentence three that you would put your name to?
+4. Is sentence four a judgment, described as a judgment, that somebody could disagree with?
+5. Is it under 120 words?
 
-Bring the rule tomorrow. That is the part that gets discussed.
+---
+
+## Part 3, the log
+
+| Test | How to check |
+|---|---|
+| Every reason says something the issue column does not | Cover the issue column and read the reasons alone. If a reason is now meaningless, rewrite it. |
+| Every row has a count | A decision with no count is a decision about an unknown number of rows |
+| At least one row is something you kept | A log of only rejections is a log from a pass that made no judgment |
+
+---
+
+## Part 4, the paragraph
+
+One test, and it is the one that matters.
+
+> Cover the first half. **Does the second half name something you would refuse to do?**
+
+Full credit needs a refusal with a reason. "I would not adjust my figure to match theirs, because
+reconciling and fabricating differ only in whether the steps are written down" is a refusal. "I
+would be careful" is not.
+
+---
+
+## The honest signal
+
+If you found three defects and stopped, go back. There are four, and the fourth raises no error at
+all, which is exactly why the profile comes before the pass.

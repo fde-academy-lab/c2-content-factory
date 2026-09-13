@@ -6,11 +6,19 @@ Every specification below binds the build. Where this file and an older day-pack
 
 One deck carries a single-arc day. A day with two distinct arcs (for example a morning concept arc and an afternoon applied arc) splits into half one and half two, each with its own opening promise and its own close. Split when the second arc would force a mid-deck reset of the mental model; never split to hide an over-full day.
 
+**The deck opens on the day's business scenario**, taken from column 2 of the row and said in the
+stakeholder's words, with the questions they are asking. Slide two is the thinking that scenario demands,
+drawn as one picture, before any tool appears. Those two slides are never cut and never reordered, because
+the review that produced this schema found that a day opening on a technique teaches code rather than
+analysis. The deck closes on the sentence the learner would actually send the stakeholder, with its caveat.
+
 Deck behaviour: visual and thin, narration in the trainer notes, one idea per slide, the day's mental-model diagram repeated at each section boundary with the current part lit, a numbered step card closing every section, and the crux line on the final card. The deck teaches in the spiral order: everyday anchor, whole pipeline shallow, then the day's designated deep stops.
 
 ## 2. Demo notebooks, rich and progressive
 
-A notebook is a teaching document that happens to run. Cell order per concept: the idea in one markdown beat; a diagram or mental-model cell; the working demo; its visible output; the deliberate failure with its exact trace; the fix; and, at each milestone, one industry example of the technique in production and one interview question the milestone just made answerable.
+A notebook is a teaching document that happens to run. **Its first markdown cell is the same business
+scenario the deck opened on**, so a learner who reopens the notebook a month later meets the question before
+the code. Cell order per concept: the idea in one markdown beat; a diagram or mental-model cell; the working demo; its visible output; the deliberate failure with its exact trace; the fix; and, at each milestone, one industry example of the technique in production and one interview question the milestone just made answerable.
 
 Progression is the notebook's spine: build the thing in variations, smallest first, exactly one new element per step. The canonical shape, kept from delivered work: a simple agent loop by hand, then the loop with one tool, then many tools, then one turn, then multiple turns. Apply the same ladder logic to any topic: each notebook section is the previous section plus one decision.
 
@@ -64,7 +72,16 @@ Six to eight items per the row's quiz plan, traps included, plus the return ques
 
 ## 8. Trainer notes and the day sheet
 
-One TRAINER file: the two-minute continuity block from the row (start from, do not repeat, go as far as, stop before, comes later), per-slide Say, Then, Draw, Ask, Trap and Bridge labels, the breaks to run with exact error text, the ranked cut list, and the checkpoint questions. Never merged into any student artifact.
+One TRAINER file: the two-minute continuity block from the row (start from, do not repeat, go as far as,
+stop before, comes later), per-slide Say, Then, Draw, Ask, Trap and Bridge labels, the breaks to run with
+exact error text, the ranked cut list, and the checkpoint questions.
+
+It also carries **the plant list**, copied from the row's client-zero column, which is labelled TRAINER ONLY:
+the dataset version, exactly what is seeded in it, what the room is supposed to find, and what to do if
+nobody finds it inside the time the agenda allows. Nothing in that list appears in a student file, because
+the discovery is the lesson and naming the plant spends it.
+
+Never merged into any student artifact.
 
 ## 9. Study notes, after delivery
 

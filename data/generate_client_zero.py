@@ -1,141 +1,373 @@
-"""Generate the client-zero spine datasets, deterministically, from one seed.
+"""Write every Week 1 dataset for Kalpa Retail, deterministically, from one seed.
 
-Every version in section 4 of docs/07_Client_Zero.md is produced here, so day packs read
-data rather than invent it and all sixty learners hold byte-identical files.
+Section 7 of docs/07_Client_Zero.md fixes the versions and their planted witnesses. This script is
+the only place those numbers exist, so a day pack reads data rather than inventing it, and all sixty
+learners hold byte-identical files.
 
-Usage:
-    python3 data/generate_client_zero.py --version w1d1 --out content/W01/D1/data --stem C2_W01_D01
-    python3 data/generate_client_zero.py --version v0 --out content/W01/D2/data --stem C2_W01_D02
-    python3 data/generate_client_zero.py --version v1 --out content/W01/D3/data --stem C2_W01_D03
     python3 data/generate_client_zero.py --list
+    python3 data/generate_client_zero.py --version v0 --out content/W01/D1/data --stem C2_W01_D01
+    python3 data/generate_client_zero.py --all
+    python3 data/generate_client_zero.py --contract
 
-Every planted defect is a witness for exactly one teaching point, and each one is named in
-WITNESSES below with the day it serves. Changing a witness changes a lesson, so change the
-curriculum row first.
+The world, so the numbers are readable
+--------------------------------------
+The extract is Kalpa Retail India for Q1 and Q2 of the current financial year. Kalpa Retail sells to
+consumers through its app, website and stores, and it also sells in bulk to corporate buyers,
+resellers and institutional accounts through the Business segment. A consumer order sits inside the
+Rs 800 to Rs 3,000 band the locked file describes as the ordinary population. A Business order runs
+from Rs 2 lakh to Rs 30 lakh, which is why one corporate customer can move an average and why the
+finance controller says so on the first morning.
 
-Schema is section 3 of the locked file. Segments are Retail-Core, Retail-Plus, Business and
-Student. Order status is delivered, returned or cancelled. Channel is app, web or store.
-Amounts are in Rs and a typical order sits between Rs 800 and Rs 3,000.
+Every figure below is asserted at the end of generation. A change that misses a target fails loudly
+rather than shipping a dataset whose story no longer matches the curriculum row.
 """
 import argparse
 import csv
 import json
 import pathlib
 import random
+import sys
 
-SEED = 20260928  # Cohort 2, Week 1 Monday. Fixed forever; changing it changes every learner's data.
+SEED = 20260928
 
-SEGMENTS = ["Retail-Core", "Retail-Plus", "Business", "Student"]
-STATUSES = ["delivered", "returned", "cancelled"]
-CHANNELS = ["app", "web", "store"]
-CITIES = ["Bengaluru", "Chennai", "Hyderabad", "Pune", "Singapore"]
-FIELDS = ["order_id", "customer_id", "segment", "amount", "status", "order_date", "discount"]
+SEGMENTS = ("Retail-Core", "Retail-Plus", "Business", "Student")
+CHANNELS = ("app", "web", "store")
+CITIES = ("Bengaluru", "Mumbai", "Delhi", "Chennai", "Hyderabad", "Pune")
+STATUSES = ("delivered", "delivered", "delivered", "delivered", "returned", "cancelled")
+
+# Consumer bands, in Rs. Retail-Plus members buy bigger baskets than Retail-Core, and Student is the
+# thinnest. Business is the tail that carries the revenue.
+BANDS = {
+    "Retail-Core": (800, 3000),
+    "Retail-Plus": (1200, 4500),
+    "Student": (400, 1500),
+    "Business": (200000, 1800000),
+}
+
+# The contract. Every one of these is asserted after generation.
+Q1_RAW = 21000000        # Rs 2.10 crore, what the dashboard reports from the ERP export
+Q1_CLEAN = 19000000      # Rs 1.90 crore, what Finance's books say once the duplicates go
+Q2_TOTAL = 18700000      # Rs 1.87 crore, so the real drop is 1.6 percent rather than 9.5
+DUPLICATE_ROWS = 14      # rows the Q1 migration duplicated
+DISTINCT_ORDERS = 186
+RAW_ROWS = 200
+STUDENT_ORDERS = 12      # so an impressive Student rate rests on twelve observations
+V0_ORDERS = 30
+V0_BULK = 480000         # the corporate order that splits mean from median on the first morning
+
+# Q1 and Q2 order counts per segment. Customers stay flat quarter on quarter; what moves is how
+# often Retail-Plus members order.
+PLAN = {
+    "Q1": {"Student": 5, "Business": 18, "Retail-Plus": 40, "Retail-Core": 37},
+    "Q2": {"Student": 7, "Business": 17, "Retail-Plus": 26, "Retail-Core": 36},
+}
 
 WITNESSES = {
-    "w1d1": [
-        ("amount stored as the text 4500 on KR4200", "W1 Mon, the type break"),
-        ("the discount key absent on 28 of 30 records", "W1 Mon, KeyError and .get() with a default"),
-        ("every other amount typed as int, so exactly one comparison fails",
-         "W1 Mon, the break is one record and not the whole column"),
-    ],
     "v0": [
-        ("amount stored as the text 4500", "W1 Mon, the type break"),
-        ("discount absent on a known subset", "W1 Mon, KeyError and .get() with a default"),
-        ("amount spelled twelve", "W1 Tue, ValueError on int()"),
-        ("one record missing a required amount", "W1 Tue, the rejects log"),
-        ("a nested customer sub-record in the JSON", "W1 Tue, nesting and the flattening cost"),
-        ("a truncated line in the vendor JSON", "W1 Tue, JSONDecodeError in the exercise"),
+        ("one corporate bulk order of Rs 4,80,000", "W1 Mon, the mean sits far above the median"),
+        ('one amount stored as the text "4500"', "W1 Mon, the type break in the accumulator"),
     ],
     "v1": [
-        ("amount spelled twelve", "W1 Wed, conversion failures counted separately"),
-        ("one record missing a required amount", "W1 Wed, presence against convertibility"),
-        ("near-duplicate pair sharing an order_id, differing on order_date",
-         "W1 Wed, the whole-record dedupe that reports zero"),
-        ("one whale order of Rs 480,000", "W1 Wed keep-or-investigate, W1 Thu the mean that misleads"),
-        ("a Student segment of exactly 12 records", "W1 Thu, sample size bites"),
-        ("a truncated line in the JSON", "W1 Wed, the parser names a position past the end"),
-        ("a companion file with the header row duplicated", "W1 Wed, the header is part of the contract"),
-        ("text-typed amounts beyond twelve: a thousands separator, an internal space, a currency prefix",
-         "W1 Wed, several values fail conversion in one column"),
+        ("customer count flat quarter on quarter", "W1 Tue, acquisition is not the branch that moved"),
+        ("orders per customer falls in Retail-Plus only", "W1 Tue, the frequency lever"),
+        ("the discount field absent on a known subset", "W1 Tue, KeyError and .get() with a stated default"),
+    ],
+    "v2": [
+        ("14 duplicated Q1 rows carrying Rs 20,00,000", "W1 Wed, the dashboard's 2.1 crore against Finance's 1.9"),
+        ('one amount spelled "twelve"', "W1 Wed, a conversion that must not crash the pass"),
+        ("one record missing a required field", "W1 Wed, the three-way missingness decision"),
+        ("a near-duplicate pair sharing an order_id, differing on order_date", "W1 Wed, the identity rule"),
+        ("a truncated line in the JSON feed", "W1 Wed, JSONDecodeError read aloud"),
+        ("a companion export with the header row repeated", "W1 Wed, profiling before analysing"),
+    ],
+    "v3": [
+        ("the Student segment holds exactly 12 orders", "W1 Thu, the sample-size rule of thumb"),
+        ("the Retail-Plus gap is real but modest", "W1 Thu, statistically real against worth acting on"),
+        ("the monsoon sale lifts the aggregate 6 percent while every segment falls",
+         "W1 Thu, the confounder and Simpson's reversal in one table"),
     ],
 }
 
 
-def _date(rng, day_offset):
-    """Order dates across August and early September 2026, weekdays only."""
-    from datetime import date, timedelta
-    d = date(2026, 8, 3) + timedelta(days=day_offset)
-    while d.weekday() > 4:
-        d += timedelta(days=1)
-    return d.isoformat()
+# --------------------------------------------------------------------------- small helpers
+def _rng():
+    return random.Random(SEED)
 
 
-def _typical_amount(rng):
-    """A typical order, Rs 800 to Rs 3,000 per section 3 of the locked file."""
-    return rng.randrange(800, 3001, 5)
+def _date(rng, quarter, i):
+    """A date inside the quarter. Q1 is April to June, Q2 is July to September."""
+    month = {"Q1": (4, 5, 6), "Q2": (7, 8, 9)}[quarter][i % 3]
+    day = 1 + (rng.randrange(28))
+    return f"2026-{month:02d}-{day:02d}"
 
 
-def _base_rows(rng, n, segments):
+def _amount(rng, segment):
+    low, high = BANDS[segment]
+    if segment == "Business":
+        return rng.randrange(low // 1000, high // 1000) * 1000
+    return rng.randrange(low, high + 1, 10)
+
+
+def _order_id(n):
+    return f"KR-{n:05d}"
+
+
+def _customer_id(n):
+    return f"C-{n:04d}"
+
+
+# --------------------------------------------------------------------------- v0, Monday
+def build_v0():
+    """Thirty orders pulled to get moving on the first morning.
+
+    Twenty-nine ordinary consumer orders and one corporate order of Rs 4,80,000, so the mean lands
+    an order of magnitude above the median. One amount is stored as text, which breaks the running
+    total the first time the room writes one.
+    """
+    rng = _rng()
     rows = []
-    for i in range(n):
-        seg = segments[i]
+    mix = (["Retail-Core"] * 14) + (["Retail-Plus"] * 10) + (["Student"] * 5)
+    rng.shuffle(mix)
+    for i, seg in enumerate(mix):
         rows.append({
-            "order_id": f"KR{4200 + i}",
-            "customer_id": f"C{1000 + rng.randrange(1, 900)}",
+            "order_id": _order_id(1001 + i),
+            "customer_id": _customer_id(101 + (i % 22)),
             "segment": seg,
-            "amount": str(_typical_amount(rng)),
-            "status": rng.choice(STATUSES),
-            "order_date": _date(rng, i // 2),
-            "discount": str(rng.randrange(25, 301, 25)) if rng.random() < 0.30 else "",
+            "channel": CHANNELS[i % 3],
+            "order_date": _date(rng, "Q2", i),
+            "amount": _amount(rng, seg),
+            "status": STATUSES[i % len(STATUSES)],
+        })
+    rows.append({
+        "order_id": _order_id(1031),
+        "customer_id": _customer_id(140),
+        "segment": "Business",
+        "channel": "store",
+        "order_date": "2026-08-14",
+        "amount": V0_BULK,
+        "status": "delivered",
+    })
+    # The type break. One amount arrives as text from the store terminal.
+    rows[7]["amount"] = "4500"
+    return rows
+
+
+def build_v0b():
+    """A second sample of the same shape for the take-home, with a different tail.
+
+    Twenty-four orders, two corporate orders rather than one, so the mean-against-median gap is
+    still there and the learner cannot reuse Monday's numbers.
+    """
+    rng = random.Random(SEED + 7)
+    rows = []
+    mix = (["Retail-Core"] * 11) + (["Retail-Plus"] * 8) + (["Student"] * 3)
+    rng.shuffle(mix)
+    for i, seg in enumerate(mix):
+        rows.append({
+            "order_id": _order_id(1501 + i),
+            "customer_id": _customer_id(201 + (i % 17)),
+            "segment": seg,
+            "channel": CHANNELS[(i + 1) % 3],
+            "order_date": _date(rng, "Q2", i),
+            "amount": _amount(rng, seg),
+            "status": STATUSES[(i + 2) % len(STATUSES)],
+        })
+    # The same type break as the class file, in a different row, so the defensive habit is rewarded.
+    rows[12]["amount"] = str(rows[12]["amount"])
+    for j, amt in enumerate((312000, 205000)):
+        rows.append({
+            "order_id": _order_id(1525 + j),
+            "customer_id": _customer_id(240 + j),
+            "segment": "Business",
+            "channel": "store",
+            "order_date": "2026-09-0%d" % (3 + j),
+            "amount": amt,
+            "status": "delivered",
         })
     return rows
 
 
-def _segment_plan(rng, n, student_count=None):
-    """Assign segments. When student_count is given, exactly that many are Student."""
-    if student_count is None:
-        plan = [SEGMENTS[i % 4] for i in range(n)]
-    else:
-        plan = ["Student"] * student_count
-        rest = [s for s in SEGMENTS if s != "Student"]
-        plan += [rest[i % 3] for i in range(n - student_count)]
-    rng.shuffle(plan)
-    return plan
+# --------------------------------------------------------------------------- v1 and v2, the two quarters
+def _customer_pool():
+    """Customers per segment, fixed across both quarters so the count is flat.
 
-
-def build_w1d1():
-    """The same 30 orders as v0, as Monday meets them: flat, typed, one amount as text.
-
-    Monday has no imports and no files, so these records live as a Python list inside the
-    notebook's setup cell. Tuesday's CSV and JSON are the vendor export of these same orders,
-    which is where the two further defects enter. Field set is the Monday curriculum row's
-    (an id, a segment, an amount, an outcome, a date) plus the optional discount, so the
-    nested customer sub-record that section 4 of the locked file mentions for v0 stays out
-    of Monday and appears first in Tuesday's JSON.
+    The Retail-Plus pool is the one the room is meant to find: the same members, ordering less often
+    in Q2 than in Q1.
     """
-    rng = random.Random(SEED)
-    rows = _base_rows(rng, 30, _segment_plan(rng, 30))
-    recs = []
-    for i, r in enumerate(rows):
-        rec = {"order_id": r["order_id"], "segment": r["segment"],
-               "amount": int(r["amount"]), "status": r["status"],
-               "order_date": r["order_date"]}
-        if i >= 6 and r["discount"]:
-            rec["discount"] = int(r["discount"])   # witness: present on two orders only
-        recs.append(rec)
-    recs[0]["amount"] = "4500"    # witness: the type break, an amount kept as text
-    recs[14]["amount"] = 2840     # matches the v0 JSON source.amount_raw for KR4214
-    return recs
+    return {
+        "Retail-Core": [_customer_id(2000 + i) for i in range(34)],
+        "Retail-Plus": [_customer_id(3000 + i) for i in range(22)],
+        "Business": [_customer_id(4000 + i) for i in range(11)],
+        "Student": [_customer_id(5000 + i) for i in range(6)],
+    }
 
 
-def records_literal(recs):
-    """The records as Python source, one record per line, for the notebook's setup cell.
+def build_quarters():
+    """186 distinct orders across Q1 and Q2, hitting the clean revenue targets exactly.
 
-    The notebook and the handout copy are written from this one string, so the list a learner
-    reads in the notebook and the list they re-paste after breaking it cannot drift apart.
+    Consumer amounts are drawn inside their bands. The Business amounts are drawn first and then one
+    designated Business order per quarter absorbs the residual, so the quarter total lands on the
+    figure the stakeholders quote rather than near it.
     """
-    lines = ["records = ["]
-    for r in recs:
+    rng = _rng()
+    pool = _customer_pool()
+    rows, n = [], 0
+    targets = {"Q1": Q1_CLEAN, "Q2": Q2_TOTAL}
+
+    for quarter in ("Q1", "Q2"):
+        plan = PLAN[quarter]
+        quarter_rows, business_rows = [], []
+        for seg in ("Retail-Core", "Retail-Plus", "Student", "Business"):
+            for i in range(plan[seg]):
+                n += 1
+                customers = pool[seg]
+                # Retail-Plus members order less often in Q2, so the same members spread thinner.
+                idx = (i * 3) % len(customers) if seg != "Retail-Plus" else i % len(customers)
+                row = {
+                    "order_id": _order_id(2000 + n),
+                    "customer_id": customers[idx],
+                    "segment": seg,
+                    "channel": CHANNELS[(n + i) % 3],
+                    "city": CITIES[(n + i) % len(CITIES)],
+                    "order_date": _date(rng, quarter, i),
+                    "amount": _amount(rng, seg),
+                    "status": STATUSES[n % len(STATUSES)],
+                    "quarter": quarter,
+                }
+                if seg != "Student" and n % 4 != 0:
+                    row["discount"] = rng.choice((0, 0, 50, 100, 150))
+                quarter_rows.append(row)
+                if seg == "Business":
+                    business_rows.append(row)
+
+        # Land the quarter exactly on its target by moving the residual into the last Business order.
+        current = sum(r["amount"] for r in quarter_rows)
+        residual = targets[quarter] - current
+        anchor = business_rows[-1]
+        anchor["amount"] += residual
+        if not (BANDS["Business"][0] <= anchor["amount"] <= BANDS["Business"][1] * 3):
+            sys.exit(f"FAIL  {quarter} residual put the anchor order at Rs {anchor['amount']:,}, "
+                     f"which is outside a believable corporate order. Adjust PLAN or the bands.")
+        rows.extend(quarter_rows)
+    return rows
+
+
+def build_v1():
+    """The 200 rows as the ERP exported them: 186 distinct orders plus 14 duplicated Q1 rows.
+
+    Tuesday reads this as a list of dictionaries because files arrive on Wednesday. The duplicates
+    are already here and are not found until Wednesday, which is the point: Tuesday's conclusion is
+    drawn on dirty data and Wednesday moves it.
+    """
+    rows = build_quarters()
+    q1 = [r for r in rows if r["quarter"] == "Q1"]
+
+    # Twelve ordinary duplicates and two large ones, summing to exactly the Rs 20 lakh gap.
+    consumer_q1 = [r for r in q1 if r["segment"] != "Business"]
+    business_q1 = [r for r in q1 if r["segment"] == "Business"]
+    # A migration re-runs a batch, and a batch is not a random sample of the quarter. This one
+    # re-ran the membership tier, so the duplicates sit almost entirely in Retail-Plus. That is what
+    # makes Tuesday's finding overstated rather than wrong, and it is why Wednesday's clean pass
+    # leaves Retail-Plus standing but smaller. Indices 0 to 36 are Retail-Core, 37 to 76 are
+    # Retail-Plus, 77 onward are Student.
+    picks = [consumer_q1[i] for i in (5, 38, 41, 44, 47, 50, 53, 56, 59, 62, 65, 68)]
+    small = sum(r["amount"] for r in picks)
+    gap = Q1_RAW - Q1_CLEAN
+    big = [business_q1[3], business_q1[9]]
+    # Give the two duplicated corporate orders the amounts that make the gap exact.
+    half = (gap - small) // 2
+    big[0]["amount"] = half
+    big[1]["amount"] = (gap - small) - half
+    # Those two orders are part of the clean quarter too, so the clean total has to be restored.
+    anchor = [r for r in business_q1 if r is not big[0] and r is not big[1]][-1]
+    anchor["amount"] = Q1_CLEAN - sum(r["amount"] for r in q1 if r is not anchor)
+
+    duplicated = picks + big
+    out = rows + [dict(r) for r in duplicated]
+    return out
+
+
+def build_v2():
+    """Wednesday's raw exports: the same rows, plus the defects an ERP migration leaves behind."""
+    rows = [dict(r) for r in build_v1()]
+    rows[62]["amount"] = "twelve"                 # a word where a number belongs
+    rows[118].pop("status", None)                  # a required field missing on one record
+    near = dict(rows[150])                         # same order_id, different date
+    near["order_date"] = "2026-08-02"
+    rows.append(near)
+    return rows
+
+
+def build_v2b():
+    """A second export for the take-home, with different defects from the class file.
+
+    The learner cannot reuse Wednesday's reject counts, because the defects are not the same ones:
+    a header row pasted into the middle of the body, a negative amount, a date in a second format,
+    and duplicates that sit in a different segment.
+    """
+    rows = [dict(r) for r in build_quarters()][:90]
+    for r in rows:
+        r["amount"] = r["amount"]
+    header = {k: k for k in rows[0]}          # the header line, read as a record
+    rows.insert(44, header)
+    rows[17]["amount"] = -2400                # a refund posted as a negative order
+    rows[29]["order_date"] = "12/05/2026"     # the other date format, silently
+    rows[52]["status"] = ""                   # nothing to classify it by
+    dupes = [dict(rows[i]) for i in (3, 8, 21, 36, 61, 70)]
+    return rows + dupes
+
+
+# --------------------------------------------------------------------------- v3, Thursday
+def build_v3():
+    """The cleaned two quarters, and the campaigns table the discount question needs."""
+    rows = [r for r in build_quarters()]
+    return rows
+
+
+def build_campaigns():
+    """August's monsoon sale, and the exposure that makes the aggregate disagree with every segment.
+
+    Revenue per exposed customer is 3 percent lower than per unexposed customer inside Retail-Plus,
+    and 3 percent lower inside Retail-Core. The exposed group is half Retail-Plus against the
+    control's 40 percent, and Retail-Plus spends more, so the blended figure comes out 6 percent
+    higher. The campaign looks like it worked and every segment says it did not.
+    """
+    plus_ctrl, plus_treat = 5000, 4850
+    core_ctrl, core_treat = 2000, 1940
+    treated = [("Retail-Plus", 30, plus_treat), ("Retail-Core", 30, core_treat)]
+    control = [("Retail-Plus", 40, plus_ctrl), ("Retail-Core", 60, core_ctrl)]
+
+    rows = []
+    cid = 6000
+    for group, spec in (("treated", treated), ("control", control)):
+        for seg, count, per in spec:
+            for i in range(count):
+                rows.append({
+                    "customer_id": _customer_id(cid),
+                    "segment": seg,
+                    "exposed": "yes" if group == "treated" else "no",
+                    "august_revenue": per,
+                    "campaign_id": "CMP-MONSOON-26" if group == "treated" else "",
+                })
+                cid += 1
+    return rows
+
+
+CAMPAIGN_MASTER = [{
+    "campaign_id": "CMP-MONSOON-26",
+    "name": "Monsoon Sale",
+    "target_segment": "Retail-Plus",
+    "discount_pct": 15,
+    "starts": "2026-08-05",
+    "ends": "2026-08-19",
+}]
+
+
+# --------------------------------------------------------------------------- writing
+def _py_literal(name, rows):
+    lines = [f"# Kalpa Retail, generated by data/generate_client_zero.py. Do not edit by hand.",
+             f"{name} = ["]
+    for r in rows:
         parts = []
         for k, v in r.items():
             parts.append(f'"{k}": ' + (f'"{v}"' if isinstance(v, str) else str(v)))
@@ -144,199 +376,261 @@ def records_literal(recs):
     return "\n".join(lines) + "\n"
 
 
-def build_v0():
-    """About 30 flat order records. Monday's setup cell, and Tuesday's two files."""
-    rng = random.Random(SEED)
-    rows = _base_rows(rng, 30, _segment_plan(rng, 30))
-    rows[0]["amount"] = "4500"          # witness: the type break, an amount stored as text
-    rows[10]["amount"] = "twelve"       # witness: ValueError on int()
-    rows[14]["amount"] = ""             # witness: a missing required field
-    rows[14]["_true_amount"] = "2840"   # witness: the CSV threw it away, the JSON still carries it
-    for r in rows[:6]:
-        r["discount"] = ""              # witness: absent on a known subset
-    return rows
+def _fieldnames(rows):
+    seen = []
+    for r in rows:
+        for k in r:
+            if k not in seen:
+                seen.append(k)
+    return seen
 
 
-def build_v1():
-    """50 records at their dirtiest. Wednesday's profiling pass and Thursday's statistics."""
-    rng = random.Random(SEED + 1)
-    rows = _base_rows(rng, 49, _segment_plan(rng, 49, student_count=12))
-    rows[10]["amount"] = "twelve"       # witness: a word where a number belongs
-    rows[14]["amount"] = ""             # witness: a missing required field
-    rows[31]["amount"] = "12,400"       # witness: a thousands separator
-    rows[35]["amount"] = "24 500"       # witness: an internal space
-    rows[40]["amount"] = "Rs 8000"      # witness: a currency prefix
-    rows[37]["amount"] = ""             # witness: a second missing amount, so presence bites
-    rows[14]["_true_amount"] = "1975"   # witness: recoverable from the nested block
-    rows[37]["_true_amount"] = ""       # witness: genuinely lost, so recovery is not automatic
-    rows[32]["amount"] = "480000"       # witness: the whale, real and convertible
-
-    # witness: the near-duplicate pair. The twin is copied from a non-Student order on purpose,
-    # so the shipped file still holds exactly 12 Student records once the pair is added.
-    source = next(i for i, r in enumerate(rows) if r["segment"] != "Student" and r["amount"].isdigit())
-    twin = dict(rows[source])
-    twin["order_date"] = _date(rng, 40)
-    rows.append(twin)
-    return rows
-
-
-# The two files below are not section 4 versions. They are Week 1 Day 2 exercise variants of v0,
-# kept here so the day pack never invents client-zero data of its own.
-
-def build_w1d2_lab():
-    """A fresh file for Tuesday's AI-free lab. Defects the room has not met."""
-    rng = random.Random(SEED + 2)
-    rows = _base_rows(rng, 24, _segment_plan(rng, 24))
-    for i, r in enumerate(rows):
-        r["order_id"] = f"KR5{300 + i}"
-    rows[3]["amount"] = "nine hundred"   # a word, as on Tuesday
-    rows[7]["amount"] = ""               # a missing required field
-    rows[12]["amount"] = "1,240"         # the new one: a thousands separator
-    return rows
-
-
-def build_w1d2_takehome():
-    """A third file for Tuesday's take-home. Carries one order that converts and is still wrong."""
-    rng = random.Random(SEED + 3)
-    rows = _base_rows(rng, 30, _segment_plan(rng, 30))
-    for i, r in enumerate(rows):
-        r["order_id"] = f"KR6{400 + i}"
-    rows[7]["amount"] = "forty two"      # a word
-    rows[10]["amount"] = ""              # a missing required field
-    rows[18]["amount"] = "2 450"         # an internal space
-    rows[3]["amount"] = "-1850"          # converts cleanly and is still wrong: the threshold decision
-    return rows
-
-
-def build_w1d3_takehome():
-    """A second file for Wednesday's take-home, so profile_dataset() runs on data it has not seen."""
-    rng = random.Random(SEED + 4)
-    rows = _base_rows(rng, 40, _segment_plan(rng, 40, student_count=7))
-    for i, r in enumerate(rows):
-        r["order_id"] = f"KR7{500 + i}"
-    rows[6]["amount"] = "eleven hundred"    # will not convert
-    rows[19]["amount"] = ""                 # missing required field
-    rows[27]["amount"] = "3,150"            # thousands separator
-    rows[33]["amount"] = "96000"            # a second whale, smaller and more arguable
-    twin = dict(rows[11])                   # a near-duplicate, this time differing on status
-    twin["status"] = "returned" if rows[11]["status"] != "returned" else "delivered"
-    rows.append(twin)
-    for r in rows[:22]:
-        r["discount"] = ""
-    return rows
-
-
-def _customer_block(rng, row):
-    return {
-        "customer_id": row["customer_id"],
-        "city": rng.choice(CITIES),
-        "signup_date": _date(rng, rng.randrange(0, 20)),
-    }
-
-
-# Exercise variants ship as a single CSV. Only the spine versions get the JSON pair.
-# The day folder now has a data/ subfolder, so the names drop the data_ infix they carried.
-CSV_ONLY = {"w1d2-lab": "lab", "w1d2-takehome": "takehome", "w1d3-takehome": "takehome"}
+def _write_csv(path, rows):
+    with path.open("w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=_fieldnames(rows), extrasaction="ignore")
+        w.writeheader()
+        for r in rows:
+            w.writerow(r)
 
 
 def write(version, out_dir, stem):
-    rows = {"w1d1": build_w1d1, "v0": build_v0, "v1": build_v1,
-            "w1d2-lab": build_w1d2_lab, "w1d2-takehome": build_w1d2_takehome,
-            "w1d3-takehome": build_w1d3_takehome}[version]()
-    out = pathlib.Path(out_dir); out.mkdir(parents=True, exist_ok=True)
-    rng = random.Random(SEED + 7)
+    out = pathlib.Path(out_dir)
+    out.mkdir(parents=True, exist_ok=True)
+    written = []
 
-    if version == "w1d1":
-        only = out / f"{stem}_orders_STUDENT.py"
-        only.write_text(
-            "# Kalpa Retail orders, the 30 records Week 1 Day 1 works on.\n"
-            "# This is the same list that sits in the notebook setup cell. Paste it back in\n"
-            "# if your own copy stops working. Generated by data/generate_client_zero.py.\n\n"
-            + records_literal(rows))
-        return rows, [only]
+    if version == "v0":
+        p = out / f"{stem}_orders_STUDENT.py"
+        p.write_text(_py_literal("ORDERS", build_v0()), encoding="utf-8")
+        written.append(p)
+        q = out / f"{stem}_takehome_STUDENT.py"
+        q.write_text(_py_literal("ORDERS", build_v0b()), encoding="utf-8")
+        written.append(q)
 
-    if version in CSV_ONLY:
-        only = out / f"{stem}_{CSV_ONLY[version]}_STUDENT.csv"
-        with only.open("w", newline="") as f:
-            w = csv.DictWriter(f, fieldnames=FIELDS, extrasaction="ignore")
-            w.writeheader(); w.writerows(rows)
-        return rows, [only]
+    elif version == "v1":
+        p = out / f"{stem}_orders_STUDENT.py"
+        p.write_text(_py_literal("ORDERS", build_v1()), encoding="utf-8")
+        written.append(p)
 
-    csv_path = out / f"{stem}_orders_STUDENT.csv"
-    with csv_path.open("w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=FIELDS, extrasaction="ignore")
-        w.writeheader(); w.writerows(rows)
+    elif version == "v2":
+        rows = build_v2()
+        p = out / f"{stem}_orders_STUDENT.csv"
+        _write_csv(p, rows)
+        written.append(p)
 
-    nested = []
-    for r in rows:
-        rec = {k: r[k] for k in ("order_id", "segment", "status", "order_date")}
-        rec["amount"] = int(r["amount"]) if r["amount"].isdigit() else None
-        rec["source"] = {"system": "kalpa_retail_orders",
-                         "amount_raw": r.get("_true_amount", r["amount"]) or r["amount"]}
-        rec["customer"] = _customer_block(rng, r)
-        nested.append(rec)
-    json_path = out / f"{stem}_orders_STUDENT.json"
-    json_path.write_text(json.dumps(nested, indent=2) + "\n")
+        # The app's JSON feed, truncated mid-string on one line the way a cut transfer leaves it.
+        j = out / f"{stem}_orders_STUDENT.json"
+        body = json.dumps(rows[:120], indent=1)
+        cut = body.rfind('"order_id"')
+        j.write_text(body[:cut + 18], encoding="utf-8")
+        written.append(j)
 
-    lines = json.dumps(nested[:8], indent=2).splitlines()
-    trunc = out / f"{stem}_vendor_truncated_STUDENT.json"
-    trunc.write_text("\n".join(lines[:47]) + "\n")
+        # The companion export whose header row was pasted in twice.
+        tk = out / f"{stem}_takehome_STUDENT.csv"
+        _write_csv(tk, build_v2b())
+        written.append(tk)
 
-    written = [csv_path, json_path, trunc]
-    if version in ("v1",):
-        dup = out / f"{stem}_companion_STUDENT.csv"
-        with dup.open("w", newline="") as f:
-            w = csv.DictWriter(f, fieldnames=FIELDS, extrasaction="ignore")
-            w.writeheader(); w.writeheader()   # witness: the header row duplicated
-            w.writerows(rows[:20])
-        written.append(dup)
-    return rows, written
+        c = out / f"{stem}_vendor_STUDENT.csv"
+        text = (out / f"{stem}_orders_STUDENT.csv").read_text(encoding="utf-8").splitlines()
+        c.write_text("\n".join([text[0], text[0]] + text[1:40]) + "\n", encoding="utf-8")
+        written.append(c)
+
+    elif version == "v3":
+        p = out / f"{stem}_orders_STUDENT.csv"
+        _write_csv(p, build_v3())
+        written.append(p)
+        e = out / f"{stem}_exposure_STUDENT.csv"
+        _write_csv(e, build_campaigns())
+        written.append(e)
+        m = out / f"{stem}_campaigns_STUDENT.csv"
+        _write_csv(m, CAMPAIGN_MASTER)
+        written.append(m)
+
+    else:
+        sys.exit(f"FAIL  unknown version {version}")
+
+    for p in written:
+        print("wrote", p)
+    return written
+
+
+# --------------------------------------------------------------------------- the contract
+def contract():
+    """Assert every figure the Week 1 rows quote. Any miss is a FAIL with the two numbers."""
+    fails = 0
+
+    def want(label, got, expected):
+        nonlocal fails
+        ok = got == expected
+        print(f"  {'PASS' if ok else 'FAIL'}  {label}: {got:,} against {expected:,}")
+        if not ok:
+            fails += 1
+
+    v0 = build_v0()
+    nums = sorted(int(r["amount"]) for r in v0)
+    mid = (nums[len(nums) // 2 - 1] + nums[len(nums) // 2]) / 2
+    mean = sum(nums) / len(nums)
+    print("v0, Monday")
+    want("orders", len(v0), V0_ORDERS)
+    want("the corporate order", max(nums), V0_BULK)
+    print(f"  INFO  mean Rs {mean:,.0f} against median Rs {mid:,.0f}, "
+          f"a factor of {mean / mid:.0f}")
+    if mean / mid < 5:
+        print("  FAIL  the mean does not sit far enough above the median to carry the lesson")
+        fails += 1
+    if sum(1 for r in v0 if isinstance(r["amount"], str)) != 1:
+        print("  FAIL  exactly one amount must be stored as text")
+        fails += 1
+
+    v1 = build_v1()
+    q1 = [r for r in v1 if r["quarter"] == "Q1"]
+    q2 = [r for r in v1 if r["quarter"] == "Q2"]
+    ids = [r["order_id"] for r in v1]
+    print("v1 and v2, the two quarters")
+    want("rows in the export", len(v1), RAW_ROWS)
+    want("distinct order ids", len(set(ids)), DISTINCT_ORDERS)
+    want("duplicated rows", len(ids) - len(set(ids)), DUPLICATE_ROWS)
+    want("Q1 as exported", sum(r["amount"] for r in q1), Q1_RAW)
+    want("Q2 total", sum(r["amount"] for r in q2), Q2_TOTAL)
+
+    seen, clean = set(), []
+    for r in v1:
+        if r["order_id"] not in seen:
+            seen.add(r["order_id"])
+            clean.append(r)
+    want("Q1 once deduplicated", sum(r["amount"] for r in clean if r["quarter"] == "Q1"), Q1_CLEAN)
+
+    def per_customer(rows, seg):
+        rs = [r for r in rows if r["segment"] == seg]
+        return len(rs) / len(set(r["customer_id"] for r in rs))
+
+    c1 = len(set(r["customer_id"] for r in clean if r["quarter"] == "Q1"))
+    c2 = len(set(r["customer_id"] for r in clean if r["quarter"] == "Q2"))
+    print(f"  INFO  customers Q1 {c1} against Q2 {c2}")
+    if abs(c1 - c2) > 2:
+        print("  FAIL  the customer count has to read as flat quarter on quarter")
+        fails += 1
+    q1c = [r for r in clean if r["quarter"] == "Q1"]
+    q2c = [r for r in clean if r["quarter"] == "Q2"]
+    for seg in ("Retail-Core", "Retail-Plus"):
+        a, b = per_customer(q1c, seg), per_customer(q2c, seg)
+        print(f"  INFO  orders per customer, {seg}: {a:.2f} then {b:.2f}, {100 * (b - a) / a:+.1f}%")
+    overall_1 = len(q1c) / len(set(r["customer_id"] for r in q1c))
+    overall_2 = len(q2c) / len(set(r["customer_id"] for r in q2c))
+    print(f"  INFO  orders per customer overall: {overall_1:.2f} then {overall_2:.2f}, "
+          f"{100 * (overall_2 - overall_1) / overall_1:+.1f}%")
+    plus = per_customer(q2c, "Retail-Plus") / per_customer(q1c, "Retail-Plus")
+    core = per_customer(q2c, "Retail-Core") / per_customer(q1c, "Retail-Core")
+    if overall_2 >= overall_1:
+        print("  FAIL  orders per customer has to fall overall, or there is no drop to investigate")
+        fails += 1
+    if not (plus < 0.80 and core > 0.90):
+        print("  FAIL  the frequency fall has to sit in Retail-Plus and not in Retail-Core")
+        fails += 1
+    def opc(rows, seg=None):
+        rs = [r for r in rows if seg is None or r["segment"] == seg]
+        return len(rs) / len(set(r["customer_id"] for r in rs))
+
+    raw_q1 = [r for r in v1 if r["quarter"] == "Q1"]
+    raw_q2 = [r for r in v1 if r["quarter"] == "Q2"]
+    print("  INFO  as exported, before anybody cleans it:")
+    for seg in ("Retail-Core", "Retail-Plus", "Business", "Student"):
+        a, b = opc(raw_q1, seg), opc(raw_q2, seg)
+        print(f"          {seg:14s} {a:.2f} then {b:.2f}, {100 * (b - a) / a:+.1f}%")
+    dirty_plus = 100 * (opc(raw_q2, "Retail-Plus") / opc(raw_q1, "Retail-Plus") - 1)
+    dirty_core = 100 * (opc(raw_q2, "Retail-Core") / opc(raw_q1, "Retail-Core") - 1)
+    if not (dirty_plus < -35 and dirty_core > -10):
+        print("  FAIL  on the exported file the fall has to read as Retail-Plus, with Core near flat")
+        fails += 1
+    clean_plus = 100 * (per_customer(q2c, "Retail-Plus") / per_customer(q1c, "Retail-Plus") - 1)
+    print(f"  INFO  Retail-Plus falls {dirty_plus:.0f}% as exported and {clean_plus:.0f}% once "
+          f"deduplicated, so Wednesday leaves it standing but smaller")
+    if not clean_plus > dirty_plus:
+        print("  FAIL  cleaning has to shrink the Retail-Plus fall rather than deepen it")
+        fails += 1
+
+    missing_discount = sum(1 for r in clean if "discount" not in r)
+    print(f"  INFO  records with no discount field: {missing_discount}")
+    if missing_discount < 20:
+        print("  FAIL  the absent discount field needs a large enough subset to be met by accident")
+        fails += 1
+
+    v2 = build_v2()
+    print("v2 defects")
+    for label, ok in (
+        ('one amount spelled "twelve"', sum(1 for r in v2 if r.get("amount") == "twelve") == 1),
+        ("one record missing a required field", sum(1 for r in v2 if "status" not in r) == 1),
+        ("a near-duplicate pair on one id", len(v2) == RAW_ROWS + 1),
+    ):
+        print(f"  {'PASS' if ok else 'FAIL'}  {label}")
+        fails += 0 if ok else 1
+
+    print("v3, Thursday")
+    v3 = build_v3()
+    want("Student orders", sum(1 for r in v3 if r["segment"] == "Student"), STUDENT_ORDERS)
+    camp = build_campaigns()
+
+    def blended(flag):
+        rs = [r for r in camp if r["exposed"] == flag]
+        return sum(r["august_revenue"] for r in rs) / len(rs)
+
+    def within(flag, seg):
+        rs = [r for r in camp if r["exposed"] == flag and r["segment"] == seg]
+        return sum(r["august_revenue"] for r in rs) / len(rs)
+
+    lift = 100 * (blended("yes") / blended("no") - 1)
+    print(f"  INFO  blended revenue per customer: exposed Rs {blended('yes'):,.0f} against "
+          f"Rs {blended('no'):,.0f}, {lift:+.1f}%")
+    if not 5.0 <= lift <= 7.0:
+        print("  FAIL  the aggregate lift has to read as about 6 percent")
+        fails += 1
+    for seg in ("Retail-Plus", "Retail-Core"):
+        d = 100 * (within("yes", seg) / within("no", seg) - 1)
+        print(f"  INFO  within {seg}: {d:+.1f}%")
+        if d >= 0:
+            print(f"  FAIL  {seg} has to fall when the aggregate rises")
+            fails += 1
+
+    print()
+    print("RESULT:", "FAIL" if fails else "PASS", f"({fails} failures)")
+    return fails
+
+
+TARGETS = {
+    "v0": ("content/W01/D1/data", "C2_W01_D01"),
+    "v1": ("content/W01/D2/data", "C2_W01_D02"),
+    "v2": ("content/W01/D3/data", "C2_W01_D03"),
+    "v3": ("content/W01/D4/data", "C2_W01_D04"),
+}
 
 
 def main():
-    ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--version",
-                    choices=["w1d1", "v0", "v1", "w1d2-lab", "w1d2-takehome", "w1d3-takehome"])
-    ap.add_argument("--out", help="the day pack's data folder, for example content/W01/D3/data")
-    ap.add_argument("--stem", help="filename stem, for example C2_W01_D03")
-    ap.add_argument("--list", action="store_true", help="list every version and its witnesses")
+    ap = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--version", choices=sorted(TARGETS))
+    ap.add_argument("--out")
+    ap.add_argument("--stem")
+    ap.add_argument("--all", action="store_true", help="write every version to its day folder")
+    ap.add_argument("--list", action="store_true", help="print every version and what is planted")
+    ap.add_argument("--contract", action="store_true",
+                    help="assert every figure the Week 1 curriculum rows quote")
     a = ap.parse_args()
 
     if a.list:
-        for v, ws in WITNESSES.items():
-            print(f"\n{v}")
-            for what, serves in ws:
-                print(f"  {what:70} -> {serves}")
-        print("\nv2, v3, v4 and the document corpus are specified in section 4 of")
-        print("docs/07_Client_Zero.md and are not generated yet. They are first needed in")
-        print("Week 2, Week 4, Week 5 and Week 11, and each needs its own build.")
+        for v, items in WITNESSES.items():
+            print(v)
+            for what, why in items:
+                print(f"    {what:62s} {why}")
         return
-
+    if a.contract:
+        sys.exit(1 if contract() else 0)
+    if a.all:
+        for v, (out, stem) in TARGETS.items():
+            write(v, out, stem)
+        return
     if not (a.version and a.out and a.stem):
-        ap.error("--version, --out and --stem are all required unless --list is given")
-    rows, written = write(a.version, a.out, a.stem)
-    print(f"{a.version}: {len(rows)} rows")
-    for p in written:
-        print("  wrote", p)
+        sys.exit("FAIL  give --version with --out and --stem, or --all, or --contract")
+    write(a.version, a.out, a.stem)
 
 
 if __name__ == "__main__":
     main()
-
-# Test inputs and expected outcomes
-# --------------------------------
-# --list
-#     Prints six v0 witnesses and eight v1 witnesses, then the note about v2 onward.
-# --version w1d1 --out content/W01/D1/data --stem C2_W01_D01
-#     30 records written as one Python file holding records = [...]. Exactly one amount is the
-#     text "4500", every other amount is an int, and the discount key is present on two records.
-#     Totals: 58210 over 30, 35020 over the 13 above 2000, 23190 over the 17 at or below.
-# --version v0 --out content/W01/D2/data --stem C2_W01_D02
-#     30 rows. Exactly one amount reads "4500" as text, one reads "twelve", one is empty.
-#     The first six rows carry no discount. Writes three files.
-# --version v1 --out content/W01/D3/data --stem C2_W01_D03
-#     50 rows, 49 distinct order_ids. Whole-record duplicate count is 0 and the near-duplicate
-#     pair differs only on order_date. Exactly 12 rows are Student. One amount is 480000.
-#     Six amounts fail int(). Writes four files, the fourth having its header row twice.
-# Running the same command twice
-#     Produces byte-identical files, because every draw comes from a seeded Random.

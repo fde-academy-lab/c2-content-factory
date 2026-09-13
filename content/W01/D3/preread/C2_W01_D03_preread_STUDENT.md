@@ -1,65 +1,68 @@
-# Pre-read for tomorrow, and tonight's setup
+# Before tomorrow: real or noise, cause or coincidence
 
-Ships tonight. Fifteen minutes. Do the gap sheet before you sleep and tomorrow's first hour reads like revision.
-
----
-
-## Tonight's setup
-
-Nothing to install.
-
-Three things ready before tomorrow starts:
-
-1. Your three output files from today: the profiled orders, the rejects, and the decisions log. Tomorrow computes on the profiled file, so the numbers you produce tomorrow depend on the decisions you made today.
-2. Your `profile_dataset()` from the take-home, working on a file whose columns it was not told about.
-3. Your two lines defending the identity rule. You will be asked to read them out.
-
-If your notebook does not run cold from top to bottom, fix it tonight. Restart the kernel and run all.
+Ships tonight. Fifteen minutes, and tomorrow is the day the week has been building to.
 
 ---
 
-## Tomorrow in one sentence
+## What tomorrow is about
 
-Today you decided to keep an order of Rs 480,000 because it is real. Tomorrow you compute the average order value and find out what one real order does to a number a manager will quote.
+With Finance reconciled, Meera sets the growth review for Monday and sends three questions.
 
----
+> "One: Retail-Plus is down, smaller than first reported. Real, or the wobble we see every quarter?
+> Two: Student is up 40 percent; should I move budget there? Three: marketing ran a monsoon-sale
+> discount for Retail-Plus in August, says it lifted revenue 6 percent, and wants to repeat it for
+> Diwali. Did the discount work, or did those customers buy anyway?"
 
-## The vocabulary, as a gap sheet
-
-Fill these in from the words below. Guessing is the exercise.
-
-**Word bank:** median, mean, mode, skew, range, denominator, sample size, outlier
-
-1. Add every value and divide by how many there are, and you have the ______.
-
-2. Sort every value and take the middle one, and you have the ______.
-
-3. The value that appears most often is the ______, and it is the only one of the three that works on words as well as numbers.
-
-4. One extreme value drags the ______ a long way and barely moves the ______. Today's Rs 480,000 order is why that matters.
-
-5. Largest minus smallest is the ______, and it is the crudest measure of spread there is.
-
-6. When the values pile up at one end and trail off at the other, the distribution has ______, and you can read it straight off a sorted column.
-
-7. A rate of 42 percent means nothing until you say 42 percent of what. That second number is the ______.
-
-8. A segment with twelve orders and a segment with twelve hundred can show the same rate and deserve very different confidence. The difference is ____________.
+Her constraint: **"One page, two minutes. If the honest answer is 'we do not know yet', say so and
+tell me what would tell us."**
 
 ---
 
-## Two questions to arrive with
+## The words you will hear tomorrow
 
-1. A manager asks for the average order value of the file you cleaned today. You have one order at Rs 480,000 out of a Rs 561,145 total. What number do you give, and what sentence goes with it?
+Fill these in from memory tonight.
 
-2. Today you kept that order. Tomorrow you have to describe the file to somebody. Does keeping it and excluding it from a summary contradict each other, or not?
+| Word | What you think it means, in your own words |
+|---|---|
+| Chance | |
+| Significant | |
+| Sample size | |
+| Confounder | |
+| Fair comparison | |
 
-The second one has no clean answer. That is why it is worth arriving with a view.
+The gap between what you write tonight and what the words turn out to mean is exactly the size of
+tomorrow.
 
 ---
 
-## Optional reading
+## Two things to think about before you arrive
 
-Khan Academy on mean, median and mode.
+**One.** You have a 33 percent gap between two segments. Suppose the two segments were actually
+identical and every customer's behaviour were shuffled at random between them. Would a gap that
+large ever turn up anyway? Write down how you would find out **without any statistics you have
+been taught**. There is a way, and it takes ten playing cards.
 
-`Automate the Boring Stuff with Python`, 3rd edition, chapter 18, on CSV, JSON and XML: https://automatetheboringstuff.com/3e/chapter18.html (verified 09 September 2026)
+**Two.** Student is up 40 percent. Write down the single question you would ask before putting that
+in front of a CEO. One question, one line.
+
+Bring both. You will be asked for them in the first ten minutes.
+
+---
+
+## Setup for tonight
+
+Nothing to install. Two checks.
+
+1. Your Day 3 notebook runs cold with `7 checks passed and 0 failed`.
+2. Bring your decisions log. Tomorrow's data is the cleaned file, and the numbers in it are the ones
+   your own pass produced.
+
+---
+
+## The one line worth carrying in
+
+> Statistically real and worth acting on are two different calls, and a CEO is asking for the second
+> one.
+
+Tomorrow is that sentence, four hours long, and it ends with a one-page note that has to survive
+marketing defending its own campaign.

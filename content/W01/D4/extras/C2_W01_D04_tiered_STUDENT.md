@@ -1,128 +1,65 @@
-# Tiered extras: Week 1, Day 4
-
-Two tasks, prepared in advance. Take the one that matches where you are, not the one that sounds more impressive.
+# Extras: one to stretch, one to recover
 
 ---
 
-## STRETCH: for anyone who finished the segment summary early
+## Stretch: how small a difference could you have caught?
 
-### The trimmed mean, and why nobody trusts it by default
+You finished early and the shuffle felt straightforward. Then this, and it is the question a good
+interviewer asks next.
 
-You now know that the mean breaks on a tail and the median does not. There is a third option people reach for, and it is worth understanding well enough to argue against.
+**The situation.** You told Meera that Retail-Plus is real and Student is not. She asks the obvious
+follow-up:
 
-A **trimmed mean** throws away the largest and smallest few values and averages what is left. On Kalpa's 44 orders, dropping the single highest and single lowest and averaging the middle 42 gives you something between the mean and the median.
+> "Fine. If Student had actually moved, how big would the move have had to be before your method
+> would have noticed?"
 
-Do this:
+**What to build.** Take the Student data, twelve orders. For each possible split from 6 and 6 up to
+0 and 12, compute the rise and run the same chance test. Build one table:
 
-1. Compute the mean, the median, and the mean of the 42 orders left after dropping the single highest and single lowest amount. Print all three.
-2. Now drop the highest and lowest **three** instead of one. Print it again.
-3. Answer in a markdown cell: which of the two trims would you report, and what rule did you use to choose? If your rule is "whichever looks more reasonable", say so honestly, and then say why that is a problem.
-4. Answer this too: the trimmed mean removed a real order from a calculation. Yesterday you were told not to delete real orders. Are these in conflict? Take a position in three sentences.
+| Q1 orders | Q2 orders | The rise | p-value | Would you report it? |
+|---|---|---|---|---|
 
-The fourth question is the actual exercise. There is a defensible answer in both directions and the defence is what is being asked for.
+Then answer three questions in writing.
 
-### A second run, if you want it
+1. At what split does the p-value first drop below 0.05, and what rise does that correspond to?
+2. What does that tell you about what twelve observations can and cannot detect?
+3. If Meera insists on a Student answer this quarter, what is the smallest honest thing you can tell
+   her?
 
-Compute the median amount per segment **among returned orders only**, and compare it to the median across all orders in that segment.
-
-One segment moves more than the others. Say which, say by how much, and give one plausible business reason. You will not be able to confirm the reason from this file, and saying that you cannot is part of the answer.
-
-Watch your denominators here. Business has one returned order, so its "median among returned orders" is that single order's amount. Say what that number is worth.
+**The hard part, and the point.** The answer to question one is a surprisingly large rise. That
+number is the **smallest effect your method could have caught**, and knowing it turns "not
+significant" from an excuse into a measurement. Any interviewer who asks "how would you know if you
+were wrong" is asking for this.
 
 ---
 
-## RECOVERY: for anyone whose segment summary is not running
+## Recovery: ten cards, on your own table
 
-The summary has four moving parts and it is worth finding which one is stuck. Do these in order and stop at the first one that fails.
+The shuffle went past you and the code made it worse. Then do it with cards tonight, alone, and skip
+the code entirely.
 
-### Step 1: does the file load?
+**You need ten playing cards and ten minutes.**
 
-```python
-import csv
-with open("../data/C2_W01_D04_profiled_STUDENT.csv") as f:
-    orders = list(csv.DictReader(f))
-print(len(orders))
+1. Write `A` on six cards and `B` on four. These are two groups.
+2. Write a number on the back of each card: any ten numbers between 1 and 20. Do not think about it.
+3. Deal by the letters. Compute the average of the `A` backs and the average of the `B` backs.
+   Write the difference down and circle it. **That is your real gap.**
+4. Now turn every card face down, shuffle the whole pack, and deal six and four **ignoring the
+   letters**. Compute the two averages and the difference. Write it in a list.
+5. Do step 4 nine more times, so you have ten differences.
+6. Count how many of your ten are at least as big as the circled one, ignoring the sign.
+
+```
+that count, over ten
 ```
 
-You should see `44`.
+That is a p-value. You have now computed one by hand.
 
-If you see `FileNotFoundError`, the notebook is not in the same folder as the CSV. Check the file name character by character, since the name is long and one wrong character reads the same to a human.
+**What you should end up believing.** The shuffle does not know anything about your data. It builds
+worlds where the labels mean nothing and asks how often those worlds look like yours. If they often
+do, your labels might mean nothing either.
 
-If you see `50`, you opened yesterday's raw orders file rather than today's profiled one.
-
-### Step 2: are the amounts numbers yet?
-
-```python
-print(orders[0]["amount"], type(orders[0]["amount"]))
-```
-
-If it says `<class 'str'>`, you skipped Tuesday's conversion. Everything read from a CSV is text, and every comparison and every sum below this line will misbehave until you fix it.
-
-```python
-for r in orders:
-    r["amount"] = int(r["amount"])
-```
-
-Run that once. Running it twice is harmless. Running it never is why your medians look strange.
-
-### Step 3: does one bucket build?
-
-Forget all four segments. Build one.
-
-```python
-business_amounts = []
-for r in orders:
-    if r["segment"] == "Business":
-        business_amounts.append(r["amount"])
-print(len(business_amounts))
-```
-
-You should see `9`.
-
-If you see `0`, your comparison is not matching. Print `orders[0]["segment"]` and look at it closely, since a stray space or a lowercase letter reads the same to you and differently to Python. The segment names carry a hyphen in two cases: `Retail-Core` and `Retail-Plus`.
-
-### Step 4: now do it for every segment
-
-The only change from step 3 is that the destination is chosen by the order instead of being fixed:
-
-```python
-buckets = {}
-for r in orders:
-    key = r["segment"]
-    if key not in buckets:
-        buckets[key] = []
-    buckets[key].append(r["amount"])
-
-for key in sorted(buckets):
-    print(key, len(buckets[key]))
-```
-
-You should see Business 9, Retail-Core 14, Retail-Plus 11 and Student 10, which sum to 44.
-
-If the total is not 44, you are dropping orders, and the cause is almost always an `if` that should not be there.
-
-### Step 5: add the statistic
-
-Once the counts are right, the median is one line per bucket:
-
-```python
-import statistics
-for key in sorted(buckets):
-    print(key, len(buckets[key]), statistics.median(buckets[key]))
-```
-
-You now have two thirds of the session's deliverable. The return rate is the same loop with one more counter, testing `r["status"] == "returned"`, and you should try it before looking at the solution.
-
-**If you got here, you are not behind.** Steps 1 and 2 are where most people are actually stuck, and both are Tuesday's material rather than today's.
-
-## If you finished everything and want more
-
-Open `demos/C2_W01_D04_decision_tool_STUDENT.xlsx` on the Denominator tab and find the smallest record count at which you would be willing to rank two segments against each other. Defend it in two sentences, and say what would change your mind.
-
-Then open the companion page's second experiment and run all three denominators. Write down the points one event is worth at each, and say which of the three you would be comfortable putting on a slide without a caveat.
-
-## If you are stuck and want a smaller step
-
-Run `notebooks/C2_W01_D04_ex2_hands_on_STUDENT.ipynb` and stop after step 1. One letter: what is wrong with the typical column? Get that right and the other two repairs follow from it.
-
-If step 1 is still hard, open `whiteboards/C2_W01_D04_board_diagrams_STUDENT.md` and look at diagram 2. The two arrows into the mean are the whole answer.
+**Then do one thing more.** Go back to step 2 and, instead of any ten numbers, write 15 to 20 on the
+`A` cards and 1 to 6 on the `B` cards. Repeat the whole exercise. Your count out of ten will be zero
+or one, and you will have felt the difference between a real effect and noise without a formula
+anywhere near it.

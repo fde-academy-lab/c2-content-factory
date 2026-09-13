@@ -1,68 +1,60 @@
-# Take-home self-check
+# Self-check: know you are right before anybody marks it
 
-Open this after your run, before tomorrow's session.
-
-These are checkpoints, not answers. Each one is something you can confirm on your own screen in under a minute, and each one holds whichever boundary you chose. If a checkpoint fails, the repair is yours to find, and finding it is the evening's real work.
-
----
-
-## Checkpoint 1: the stack you are standing on
-
-Your setup cell should be holding **30 records**. Ask it directly with `len(records)` before you trust anything below.
-
-If you see fewer, a cell above it was edited after it ran, and the bench is holding an older list than the one you are reading on screen. Restart the kernel and run every cell from the top.
-
-## Checkpoint 2: the whole file
-
-Every amount in the file, added together with each one converted at the point of use, comes to **Rs 58,210** across all thirty orders.
-
-If the cell stops with a `TypeError` instead of printing, the conversion is missing somewhere. If it prints **Rs 53,710** across twenty-nine orders, the record with the text amount fell out of your loop rather than being converted inside it, and that record is KR4200, which happens to be the largest amount in the file.
-
-## Checkpoint 3: the delivered orders
-
-Today's opening question was answered by **13 delivered orders totalling Rs 25,720**. Your notebook should still be able to reproduce that number tonight, unchanged.
-
-One warning, because this is the mistake that gets made in front of a stakeholder. If your boundary is Rs 2,000, your upper bucket also holds thirteen orders. Those two thirteens are different groups of orders that happen to have the same count, and their totals are different, so name the group every time you report either one.
-
-## Checkpoint 4: your boundary
-
-Find the row for the boundary you chose. Both sides of it should match what your cell printed.
-
-| Your boundary | Above it | At or below it |
-|---|---|---|
-| Rs 1,000 | 28 orders totalling Rs 56,450 | 2 orders totalling Rs 1,760 |
-| Rs 1,500 | 17 orders totalling Rs 42,070 | 13 orders totalling Rs 16,140 |
-| Rs 2,000 | 13 orders totalling Rs 35,020 | 17 orders totalling Rs 23,190 |
-| Rs 2,500 | 8 orders totalling Rs 23,865 | 22 orders totalling Rs 34,345 |
-
-These figures assume the convention the take-home asked for, where an order sitting exactly on the boundary goes into the lower bucket.
-
-If your counts are right and one of your totals is not, the condition is doing its job and the accumulator underneath it is adding the wrong thing, so read the two lines separately.
-
-## Checkpoint 5: the buckets behave
-
-This one holds for every boundary in the table, so it is the checkpoint to run first when something feels wrong.
-
-Your two bucket counts add to **30**, and your two bucket totals add to **Rs 58,210**.
-
-If either sum comes up short, a record is in neither bucket. The record that goes missing here is almost always KR4200, because its amount is text and an untouched comparison against text stops the loop rather than sorting the order into a bucket. Write that in your challenges log with the error text your kernel printed, and bring it tomorrow, rather than quietly dropping the record so the cell runs clean.
-
-## Checkpoint 6: the default you chose
-
-Totalling the discount field across all thirty records with a default of 0 gives **Rs 250**, which comes from the two records that carry the field at all.
-
-Any other default gives you a number that is not a fact about this file. A default of 100 across the same thirty records gives Rs 3,050, and that number describes your default rather than Kalpa Retail's discounts. If your total reads anything other than Rs 250, read the default you typed before you read your loop.
+Six checkpoints. Every one is something you can verify alone. If a checkpoint fails, the fix is
+named beside it.
 
 ---
 
-## When a checkpoint fails
+## Part 1, the notebook
 
-Write it in the challenges log, with the checkpoint number, what your screen showed instead, and the exact error text if there was one. Then bring it tomorrow and say it out loud.
+| # | Checkpoint | What you should see | If it fails |
+|---|---|---|---|
+| 1 | The file loaded | `24 orders loaded` | The data folder is not beside your notebook. Run the generator command named in the error. |
+| 2 | Revenue is a whole number | The check prints PASS | You added `order["amount"]` without `int()`, so one text amount is either crashing you or being skipped |
+| 3 | Revenue is above Rs 5 lakh | The check prints PASS | You are summing only delivered orders, or you dropped the corporate orders |
+| 4 | Customers fewer than orders | The check prints PASS | You counted rows rather than distinct ids. A `set` is what refuses duplicates. |
+| 5 | The median sits between Rs 500 and Rs 6,000 | The check prints PASS | You took `amounts[len(amounts) // 2]` on an even-length list without averaging the middle pair |
+| 6 | The summary line | `8 checks passed and 0 failed` | Any FAIL line names the checkpoint above |
 
-A failed checkpoint that you found on your own, at night, with nobody watching, is worth more to you than a clean run, because tomorrow opens on the cell this day ended on and the room moves at the speed of what people are willing to name.
+---
 
-## What no checkpoint can tell you
+## Part 1, the two numbers worth staring at
 
-Whether your two sentences of defence are any good. Every boundary in that table produces correct counts, and correct counts are the easy half.
+Once every check passes, look at these two side by side.
 
-Read your own two sentences back and ask whether the person who wants a different line would be answered by them, or only told what you chose. If they would only be told, the defence is not finished, and that is the part we discuss tomorrow.
+- The **mean** on this sample is far above the **median**.
+- Take the single largest order out, and the mean drops by more than half.
+
+If those two things are not true in your run, you have a different file. Say so tomorrow.
+
+---
+
+## Part 2, the tree you built
+
+Read your own page back and answer each of these with yes or no. Three noes means rewrite it.
+
+1. Does every branch carry a **denominator**, in words, not in symbols?
+2. Could somebody who has never seen that business tell what it sells from your five rows?
+3. Is the cost of moving each branch written in the **owner's** terms rather than in business-school
+   terms?
+4. Is the branch you picked the one your own numbers point at, rather than the one that is easiest
+   to write about?
+5. Is the number you asked for something the owner would actually know?
+
+---
+
+## Part 3, the paragraph
+
+One test, and it is brutal.
+
+> Cover the second half of your paragraph. Does the first half name a **check that a person could
+> perform on Tuesday morning**, with something they already have?
+
+If the check needs data nobody collects, it is not a check, it is a wish. Rewrite it.
+
+---
+
+## The honest signal
+
+If you finished Part 1 in twenty minutes and Part 2 took you an hour, that is the right ratio. Part
+1 is arithmetic you already saw. Part 2 is the skill.

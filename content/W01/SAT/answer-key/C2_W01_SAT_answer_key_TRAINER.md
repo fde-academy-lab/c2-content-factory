@@ -1,251 +1,161 @@
-# Week 1 recap paper: answer key and peer marking guide
+# Week 1 recap paper: the answer key
 
-Trainer file. It reaches learners only through the discussion walk, never as a handout, because a circulated key turns Monday's rewrite task into a copying task.
+**TRAINER ONLY** until the discussion block, when it is walked question by question.
 
-## What the points here are and are not
+Every answer below is what a full-credit response contains, and beside it the most common partial
+answer and why it is partial. The discussion is worth more than the marking, so the second column is
+the one to spend time on.
 
-The paper is ungraded. The Structure tab locks the Saturday recap as a performance indicator that carries no weight in the assessment pool, and nothing on this sheet changes that. The points below exist for one purpose: a peer marking a stranger's handwriting under time pressure needs a scheme with no judgement calls in it. Read the split out loud, let the room apply it, and record only the room-level miss rate per question. No learner's total is reported anywhere as a score.
+---
 
-Five points per question, forty across the paper, and every question splits 2 + 2 + 1. Uniform weights on purpose, since a peer marking a stranger's paper against a walk that keeps moving cannot also be asked to decide that Q8 is worth more than Q1. The harder questions earn their weight in the discussion time, not in the arithmetic.
+## Section A. The tree and the ladder
 
-## Rules the markers follow
+**A1.** Revenue equals customers, times orders per customer, times items per order, times price per
+item, less discounts. A full answer picks one branch and gives a reason of the right kind: either
+the data can settle it fastest, or the answer would change the decision.
 
-| Rule | Reason |
+| Common partial answer | Why it is partial |
 |---|---|
-| Whole points only. No halves. | Half points are where peer marking stops being reproducible. |
-| Award on content named, not on wording. | The paper tests whether the mechanism is known, and an interviewer would accept either phrasing. |
-| A part with the right value and no reason gets the value point only, never the reason point. | The reason is the interview answer. |
-| A part that is right for the wrong reason gets nothing on the reason point. | Stated so markers stop arguing about it. |
-| Marker writes their own identifier on the sheet and marks in a different colour. | Disputes need an owner, and the writer needs to see what was added. |
-| Disputes go to the Academic TA at the end of the block, never during the walk. | One dispute mid-walk costs the room three questions. |
+| The tree drawn correctly with no branch picked | The question asked for a choice and a reason |
+| "Customers, because marketing asked for the money" | That is what makes it the branch under dispute, not the branch to check first |
 
-Verified against the Week 1 v1 file produced by `data/generate_client_zero.py`: 50 rows, 49 distinct order ids, 44 convertible amounts summing to Rs 561,145, mean Rs 12,753.30, median Rs 1,910, the whale `KR4232` at Rs 480,000, and a Student segment of exactly 12 rows.
+**A2.** Confirm the drop is real. Compare like with like. Decompose along the tree. Isolate the
+branch and the segment. Hypothesise, and say what evidence would settle it.
 
----
+Each rung needs: both totals on one definition; equal windows and the same segment definitions;
+customers, orders and revenue by period; the same split per segment; something from outside the data.
 
-## Q0. Read the diagram
+| Common partial answer | Why it is partial |
+|---|---|
+| The five rungs in the wrong order | The order is the whole answer; decomposing before comparing gives a confident wrong result |
+| Rungs listed with no "what it needs" | A rung without its input is a label |
 
-**The idea being tested.** Whether a learner can read a pipeline drawing the way they read code, and spot the branch that is in the wrong place.
+**A3.** Something of this shape: the customer count is flat in both quarters, so the base is not
+shrinking. Orders per customer fell and almost all of it is in one segment. Here is what would
+settle why, and I have not tested it yet.
 
-**(a)** The arrow from `convert the amount` to `reconcile` is the wrong one. The reconciliation runs after both writes, not off the conversion, because it needs the count of both output files. Full credit names the arrow and says it belongs after `write to clean.csv` and `log the rejection`.
-
-**(b)** As drawn, every row that converts is written to the clean file and every row is also logged as a rejection, since nothing branches on whether the conversion succeeded. Full credit says the drawing has no decision in it at all.
-
-**(c)** `assert len(clean) + len(rejects) == len(orders)`, or any equivalent that compares all three counts.
-
-**What a weak answer looks like.** Naming an arrow without saying where it should go instead, or writing a check that compares only two of the three counts.
-
-**The corrected drawing, for the discussion:**
-
-```mermaid
-flowchart TB
-    A["read the row"] --> B{"does the amount convert?"}
-    B -->|"yes"| C["write to clean.csv"]
-    B -->|"no"| D["log the rejection with its reason"]
-    C --> E["reconcile: input equals clean plus rejected"]
-    D --> E
-```
+The mark is for saying the disproof **before** the finding, and for leaving the cause as a
+hypothesis.
 
 ---
 
-## Q1. A list against a dictionary
+## Section B. Numbers that describe
 
-### Full credit contains
+**B1.** The median, because it describes a typical order. Say the mean beside it and explain the
+gap: one corporate order carries most of the revenue, so the mean describes nothing in the file.
 
-**(a)** A list for the twelfth order, because position carries meaning there and index access is direct. A dictionary keyed on `order_id` for `KR4210`, because the id is the record's identity and the key is the lookup. The cost of the wrong choice must appear: finding `KR4210` in a list means scanning up to all 50 records, and asking a dictionary for "the twelfth" means inventing an ordering it does not promise.
+| Common partial answer | Why it is partial |
+|---|---|
+| "The median" with no mention of the mean | The gap between them is the finding, and hiding the mean hides it |
 
-**(b)** `orders[11]` and `by_id["KR4210"]`.
+**B2.** Two sentences of this shape: most orders are small and sit near Rs 1,200, and at least one is
+tens of thousands larger, so the spread is dominated by a few values rather than by the typical
+order.
 
-**(c)** Any one-line rule that names both sides. The model form is a list when position or order carries meaning, and a dictionary when a value has a name you will look it up by.
-
-### Point split
-
-| Part | Points | Award when |
-|---|---|---|
-| (a) | 1 | The list is named for the positional lookup with a reason that mentions order or index. |
-| (a) | 1 | The dictionary is named for the id lookup with a reason that mentions the key or the identity. |
-| (b) | 1 | `orders[11]` exactly. `orders[12]` scores zero on this point. |
-| (b) | 1 | `by_id["KR4210"]`, or `by_id.get("KR4210")`. |
-| (c) | 1 | The rule names both structures and what decides between them. |
-
-The expected loss is `orders[12]`. It costs one point and it is the single most common slip on the paper, so it is worth naming in the walk.
+**B3.** Orders divided by distinct customers, in the same window. Things that break comparability:
+different window lengths, a changed segment definition, one period still open, a different
+definition of customer.
 
 ---
 
-## Q2. Two names, one object
+## Section C. Trust
 
-### Full credit contains
+**C1.** First: profile the export and reconcile, because both figures are computable and one of them
+is right. Refuse: adjusting your figure so the two agree. That is the difference between reconciling
+and fabricating.
 
-**(a)** `a` is `[1, 2, 3, 9]` and `b` is `[1, 2, 3, 9]`. The reason has to say that `b = a` copied the reference rather than the list, so both names label one object in memory.
+**The refusal is the mark.** An answer with no refusal in it is half an answer.
 
-**(b)** Any two of `list(a)`, `a[:]`, `a.copy()`, `copy.copy(a)` or `copy.deepcopy(a)`.
+**C2.** No. 183 plus 14 is 197, so three rows are unaccounted for. Find them, because a pass that
+loses rows silently will lose more on a bigger file.
 
-**(c)** `record` also ends up with `amount` set to `0`, because both names hold the same dictionary. The fix is `keeper = dict(record)`, or `record.copy()`. This is exactly what `clean_record` does, and a learner who says so has connected the trap to their own Tuesday code.
+**C3.** Three checks, in an order like: is the file the one I think it is; does the row count match
+the source; and is my rule actually firing, tested on a row I know is bad.
 
-### Point split
+| Common partial answer | Why it is partial |
+|---|---|
+| "Check the data" | Not a check |
+| Three checks with no order | The order is the answer: the file, then the counts, then the rule |
 
-| Part | Points | Award when |
-|---|---|---|
-| (a) | 1 | Both values are `[1, 2, 3, 9]`. One value right and the other wrong scores zero here. |
-| (a) | 1 | The reason names one object with two names, or the reference against the copy. |
-| (b) | 1 | First working copy form. |
-| (b) | 1 | Second working copy form that differs from the first. |
-| (c) | 1 | `record` is stated as mutated and a working fix is named. |
-
-A learner who answers `a` is `[1, 2, 3]` has the mental model that assignment copies, which is the whole point of the question. Mark it zero on both (a) points and flag the paper to the Academic TA, because that learner needs the deep pass.
-
----
-
-## Q3. Reading a traceback
-
-### Full credit contains
-
-**(a)** The failure happened in `normalise_amount`, at line 5, in `return int(raw)`. The exception is `ValueError` and the value that caused it is the string `'twelve'`. A learner who names `clean_orders.py` as well loses nothing and gains nothing.
-
-**(b)** Read the last line first, since it names the exception type and the offending value, which is often the whole answer. Then read the bottom-most frame, since that is where execution actually stopped. The frames above it are the call path that led there, useful for working out which record was in hand. Reading top-down starts at `<module>`, which is never the bug.
-
-**(c)** Do not edit line 5. `int` is behaving correctly and the input is wrong. The first move is to find the record carrying `'twelve'`, decide reject or repair, and wrap the call in `except ValueError` so the record id and `str(e)` land in the rejects log.
-
-### Point split
-
-| Part | Points | Award when |
-|---|---|---|
-| (a) | 1 | `normalise_amount` and line 5 both appear. |
-| (a) | 1 | `ValueError` and `'twelve'` both appear. |
-| (b) | 1 | The last line or the bottom frame is named as the starting point. |
-| (b) | 1 | The reason is given, in any wording that says the bottom is where it stopped and the top is the call path. |
-| (c) | 1 | The move goes to the data or to the reject path. Editing `int` or wrapping in a bare `except` scores zero. |
-
-Worth saying in the walk: the caret markers under the failing expression are printed by Python 3.11 and later, which is what a Codespace runs. On an older interpreter the frames are the same and the carets are absent, so the reading order does not change.
+**C4.** A whole-record check leaves the pair in, because the dates differ. A check on the id removes
+one and forces a choice of date. Use the id check, and record which date was kept and why.
 
 ---
 
-## Q4. The bare except
+## Section D. Real, and caused
 
-### Full credit contains
+**D1.** It is the share of chance-only worlds that produce a result at least this extreme.
 
-**(a)** Six rows contributed nothing. The reader of `561145` is never told that six rows exist, that they were skipped, or why, so the number looks like a total over 50 records when it is a total over 44.
+It is **not** a 3 percent chance the finding is wrong, not a 3 percent chance that chance caused it,
+and not a statement about the size of the effect.
 
-**(b)** Dividing by 50 gives Rs 11,222.90. It is wrong because six of those 50 contributed no value to the numerator, so the denominator counts records the sum never saw. The honest divisor is 44, which gives Rs 12,753.30.
+**The second half is where the marks are.** An answer with a correct definition and no negation is
+an answer that will be misused under pressure.
 
-**(c)** Any narrow catch that records the failure. The model form is `except ValueError as e:` followed by an append of the order id and `str(e)` to a rejects list. Catching narrowly without logging earns the point only if the answer says the failure is recorded somewhere.
+**D2.** `p < 0.0002`. Because five thousand shuffles can only resolve down to one in five thousand,
+and writing `p = 0` claims a certainty the method cannot produce.
 
-### Point split
+**D3.** The 31 percent on 400. The rule of thumb is to distrust a rate computed on fewer than about
+thirty observations, and it is **a rule of thumb rather than a law**, which the answer has to say.
 
-| Part | Points | Award when |
-|---|---|---|
-| (a) | 1 | The number six appears. |
-| (a) | 1 | The silence is named: the reader cannot tell the rows were dropped. |
-| (b) | 1 | Rs 11,222.90, or 11222.9, appears. Arithmetic to two decimal places is not required, and 11,222 scores. |
-| (b) | 1 | The reason names the denominator mismatch and 44 is given as the divisor. |
-| (c) | 1 | The `except` is narrowed to a named exception and the failure is kept. |
+**D4.** Three of: the customers who took it may have been about to buy anyway; the group that took
+it differs from the group that did not; something else changed in the same weeks; the comparison has
+no control group; the aggregate may be a mix effect.
 
-The trap inside this question is that `561145` is a correct sum. A learner who writes that the number is wrong has missed the lesson, since the number is right and the description around it is what fails. Award (a) only if the answer is about what is not said.
+**D5.** Both groups fell. The exposed group holds a larger share of the higher-spending segment than
+the control group does. So the blend is pulled upward by who is in it rather than by what anybody
+spent.
 
----
-
-## Q5. Everything out of a CSV is text
-
-### Full credit contains
-
-**(a)** It raises `TypeError`, with the message `'>' not supported between instances of 'str' and 'int'`. The wording has to carry `str` and `int` in some form; the exact punctuation does not matter.
-
-**(b)** Conversion belongs at read time, in one function per field, before the record joins the clean list, so every downstream comparison can assume a number. Doing it at the comparison spreads one decision across every call site and leaves the clean list half typed, which is where the next person's bug comes from.
-
-**(c)** Either decision scores as long as the rule is stated and applied consistently. The defensible split is repair `'12,400'`, `'24 500'` and `'Rs 8000'`, because the intent is unambiguous from formatting alone, and reject `'twelve'` and both empty strings, because word parsing does not generalise and an empty string carries no value at all. The rule underneath is that you strip formatting and never guess a value.
-
-### Point split
-
-| Part | Points | Award when |
-|---|---|---|
-| (a) | 1 | `TypeError` is named. |
-| (a) | 1 | The message carries `str` and `int` as the two sides. |
-| (b) | 1 | Conversion is placed at read time or at the cleaning function, before the clean list. |
-| (b) | 1 | A reason is given that names either the repetition across call sites or the half typed record. |
-| (c) | 1 | A rule is stated and the six values are split consistently with it. |
-
-An answer that repairs `'twelve'` to `12` scores zero on (c) whatever rule it states, since no rule that survives contact with a second file turns a word into a number.
+Full credit needs all three sentences. Two of them is the most common submission.
 
 ---
 
-## Q6. CSV or JSON, and what flattening costs
+## Section E. The note
 
-### Full credit contains
+**E1.** Four sentences, in order, each doing its own job.
 
-**(a)** JSON, because the feed's structure is part of its meaning and the format holds the nesting without an agreement outside the file. CSV scores equally if the defence names the cost being accepted, for example that the consumer is fixed and flat is what it reads.
+> **Claim.** Orders per Retail-Plus member fell about a third between the quarters, against
+> Retail-Core's 2.7 percent.
+> **Evidence.** Sixty-six orders across 22 members, and chance produced a gap this large in none of
+> 5,000 shuffles.
+> **Caveat.** The cause is untested; the reorder-feature complaint is a hypothesis and nothing here
+> measures the feature.
+> **Action.** Pull reorder events per member either side of the six weeks, against Retail-Core,
+> which is a day's work.
 
-**(b)** Two costs, each tied to a named field. The strongest are that `source.amount_raw` stops announcing itself as the untouched original once it becomes a bare column beside `amount`, and that a flat row cannot say which fields describe the customer and which describe the order once `customer_id`, `city` and `signup_date` sit alongside `status` and `order_date`. Also accept the shape argument: if a second source or a second customer ever attaches to one order, a flat file needs a second row or a numbered column set, and both break the one row per order rule.
+The added sentence for marketing's pushback should concede what is true and hold the line: the six
+percent is real and it measures the mix rather than the discount.
 
-**(c)** Five columns: `customer_id`, `city`, `signup_date`, `source_system` and `source_amount_raw`. Any consistent naming scheme is fine and only the count and the five fields matter.
+**E2.** Something of this shape: "Not yet. On twelve orders a rise that size turns up by chance two
+times in five. Give it a full quarter and I will have an answer at around fifty orders."
 
-### Point split
-
-| Part | Points | Award when |
-|---|---|---|
-| (a) | 1 | A format is chosen without hedging. |
-| (a) | 1 | The defence names structure, the consumer, or the cost being accepted. |
-| (b) | 1 | First cost, tied to a field named in the feed. |
-| (b) | 1 | Second cost, different from the first, tied to a field named in the feed. |
-| (c) | 1 | Five, with the five fields listed. |
-
-A cost stated in the abstract, for example that CSV is less flexible, earns nothing. The field name is what makes the answer an engineer's answer.
-
----
-
-## Q7. The number you hand a stakeholder
-
-### Full credit contains
-
-**(a)** Rs 1,910, the median, because one real order at Rs 480,000 pulls the mean above every ordinary record in the file. The supporting evidence is that dropping that single order moves the mean from Rs 12,753.30 to Rs 1,887.09 while the median only moves from Rs 1,910 to Rs 1,865, so the median is describing the typical order and the mean is describing the total.
-
-**(b)** `KR4232` is real and it stays. Name it, report it separately, and do not delete it, since it is a finding about a customer rather than an error in the data. If the stakeholder wants total revenue, the sum is the right instrument and the whale belongs inside it.
-
-**(c)** One sentence that carries the number, the whale and the denominator. The model form runs: across the 44 orders with a usable amount, the typical order is Rs 1,910, and one order at Rs 480,000 sits far above the rest, held out of that figure and counted in revenue.
-
-### Point split
-
-| Part | Points | Award when |
-|---|---|---|
-| (a) | 1 | Rs 1,910 or the median is chosen. |
-| (a) | 1 | The reason names the pull of the extreme value on the mean. |
-| (b) | 1 | The order is kept rather than deleted. |
-| (b) | 1 | It is reported separately or named to the stakeholder. |
-| (c) | 1 | The denominator 44 appears in the sentence. |
-
-The denominator point is the one the room will lose. It is also the habit the whole programme is trying to build, so it is worth thirty seconds of the walk even though it is one point.
+The mark is for naming **what would end the not-yet**. A refusal without that is evasion.
 
 ---
 
-## Q8. Zero rejects on a file you know is dirty
+## Section F. The transfer
 
-### Full credit contains
+**F1.** Stays the same: the tree, the ladder, the reconciliation habit, the four-part note, and
+asking for the denominator.
 
-**(a)** Three checks, and the order matters because each one rules out a whole class of cause before the next:
+Changes, and two specifics are needed. Acceptable pairs include: the vocabulary, where a booking is
+an order and a test is an item; the cost of an error, where a missed diagnosis is not a missed sale;
+the seasonality, since diagnostics have referral patterns retail does not; the regulatory constraint
+on what can be reported.
 
-1. Did the loop run at all. Print the input count. A zero there means the path or the reader is wrong and nothing was ever tested.
-2. Is the failure being swallowed. Look for a bare `except`, an `except` with `pass`, or a coercion with a default such as `int(x) if x.isdigit() else 0`, which turns a failure into a plausible number.
-3. Is the check ever reached. Confirm the conversion happens inside the loop and that the reject append is not sitting after a `continue` or inside a branch that never fires.
+First three asks: the equivalent of the orders table with its date and unit; the definitions their
+Finance uses for a completed test; and whichever branch the COO believes is short, so the first cut
+tests her belief rather than yours.
 
-A fourth acceptable answer in any position is to push one known-bad record through the function by hand and watch what comes back.
-
-**(b)** The log should carry 6. A zero means the run never tested the thing it claims to have tested, so the honest reading is that the pipeline is broken rather than the file is clean.
-
-**(c)** Input 50, clean 44, rejected 6, and 44 plus 6 equals 50.
-
-### Point split
-
-| Part | Points | Award when |
-|---|---|---|
-| (a) | 1 | Two of the three named checks appear in any order. |
-| (a) | 1 | All three appear and the ordering is defensible. |
-| (b) | 1 | The number 6 appears. |
-| (b) | 1 | Zero is read as evidence about the code rather than about the file. |
-| (c) | 1 | The reconciliation shows input equalling clean plus rejected with the three numbers. |
-
-This is the differentiator question on the row, and it is the one to spend the most discussion time on if the hands go up for it. A candidate who checks the pipeline before trusting its output is the one who gets hired.
+| Common partial answer | Why it is partial |
+|---|---|
+| A method list with no "what changes" | The transfer is the question; restating Week 1 is not the answer |
+| "The domain changes" | Name two things, as asked |
 
 ---
 
-## What the Academic TA records
+## What to do with the marking
 
-Per question, the count of papers that lost each part point, and nothing else. That table is the performance indicator the programme reads, it tells Monday's trainer which two ideas to re-anchor in the first fifteen minutes, and it never becomes a per-learner score.
+Papers swap for peer cross-evaluation. The peer marks against this key and writes **one line per
+answer** saying what was missing rather than a number. The discussion then walks D1, C1 and E1,
+because those three carry the week.

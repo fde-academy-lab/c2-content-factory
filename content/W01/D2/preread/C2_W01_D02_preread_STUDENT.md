@@ -1,67 +1,66 @@
-# Pre-read for tomorrow, and tonight's setup
+# Before tomorrow: can we trust the numbers?
 
-Ships tonight. Fifteen minutes of reading. Do the gap sheet before you sleep and tomorrow's first hour will feel like revision.
-
----
-
-## Tonight's setup
-
-Nothing to install. The Codespace you opened on Monday stays the environment for the whole programme.
-
-Three things to have ready before tomorrow starts:
-
-1. Your three functions, `normalise_amount`, `clean_record` and `clean_records`, in a cell you can find quickly. You will be asked for them by name and you will call them without editing them. Tomorrow supplies its own data and calls your code.
-2. Your `output` folder from today, so you can point at what you produced when a decision is questioned.
-3. Your take-home notebook, finished. The solution is released tomorrow and one notebook is discussed.
-
-If your notebook does not run cold from top to bottom, fix that tonight rather than tomorrow. Restart the kernel and run all. Anything that fails now will fail in front of the room later.
+Ships tonight. Fifteen minutes.
 
 ---
 
-## Tomorrow in one sentence
+## What tomorrow is about
 
-Today you cleaned one record at a time and you knew which records were bad because somebody planted them. Tomorrow you get a dataset nobody prepared, and the first question is how many usable records it actually has.
+Tuesday's finding reached the leadership group, and Anand Iyer replied to all:
 
----
+> "Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9. Until your numbers match ours,
+> Finance will not act on a drop measured from an ERP export. Send me a reconciliation."
 
-## The vocabulary, as a gap sheet
+The ERP team sends the raw exports, an orders CSV and the app's JSON feed, with a note that the CSV
+was "stitched from two extracts during the Q1 migration". Marketing is impatient: if the drop is a
+data problem, a month is lost arguing.
 
-Fill these in from the words below. Guessing is the exercise. Being wrong tonight is free.
-
-**Word bank:** profiling, identity rule, decisions log, keep and flag, convertibility, outlier, reconcile, distinct count
-
-1. Looking at a dataset field by field before changing anything, counting what is present, what converts and how many different values there are, is called ______________.
-
-2. The count of how many values in a field can actually become the type you need is that field's ______________.
-
-3. The number of different values a field holds, which tells you whether a field is a category or a free text box, is its ______________.
-
-4. When a value is missing you have three choices: drop the record, use a stated default, or ____________________ so the gap travels with the data.
-
-5. Two records share an id and disagree on one field. Deciding which of them counts as the same record is an ____________________, and it has to be written down.
-
-6. A value far outside the range of everything else is an ______________, and it is a finding to investigate before it is a row to delete.
-
-7. The written record of every cleaning decision and its reason, so a reviewer can follow what you did, is the ____________________.
-
-8. Checking that input equals clean plus rejected is how you ______________ your counts, and you did the first version of this today.
+**You own the reconciliation.** Anand will ask which figure is right and how you know. An auditor
+could ask why you dropped any row.
 
 ---
 
-## Two questions to arrive with
+## The words you will hear tomorrow
 
-Bring an answer to each. They are the first two things tomorrow asks.
+Fill these from memory tonight.
 
-1. Your run today reported zero rejects on a file you know is dirty. Name the two most likely causes.
-
-2. Two records share an id and disagree on one field. What do you do, and who decides?
-
-The second one has no correct answer from your side of the table. That is what makes it worth asking.
+| Word | What you think it means, in your own words |
+|---|---|
+| Profiling | |
+| Reconciliation | |
+| Duplicate | |
+| Identity rule | |
+| Rejects log | |
 
 ---
 
-## Optional reading
+## One thing to think about before you arrive
 
-The chapter on reading and writing files from the book on today's reference list, if you did not get to it for the take-home.
+Two figures for the same quarter, Rs 2.1 crore and Rs 1.9 crore. **Both are computable from data
+somebody has.** Only one of them is right.
 
-`Automate the Boring Stuff with Python`, 3rd edition, chapter 10: https://automatetheboringstuff.com/3e/chapter10.html (verified 09 September 2026)
+Write down, tonight, three things that could make an export report more revenue than the books.
+Then write the check you would run for each. Bring the list; you will be asked for it in the first
+ten minutes.
+
+A hint that costs you nothing: none of the three has anything to do with the amounts being wrong.
+
+---
+
+## Setup for tonight
+
+Nothing to install. Two checks.
+
+1. Your Day 2 notebook runs cold with `8 checks passed and 0 failed`.
+2. You have your memo. Tomorrow re-runs Tuesday's numbers on clean data, and the interesting part
+   is which of your sentences survives.
+
+---
+
+## The one line worth carrying in
+
+> Tuesday's conclusion was drawn on data nobody had profiled, and the honest analyst recomputes and
+> reports what changed.
+
+Tomorrow is that sentence, four hours long. It is also the single most-asked question in an analyst
+interview: the dashboard and Finance disagree, what do you do?

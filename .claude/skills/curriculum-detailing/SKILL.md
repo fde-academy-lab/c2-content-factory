@@ -14,6 +14,32 @@ the material ninety minutes before a session and does not know where to start.
 This skill builds that layer. The topic list and the timeline are sacrosanct.
 Everything under them is decided here.
 
+## In this repository, the row shape is fixed
+
+This is a generic skill and its `references/session-row.md` grammar is the generic form. **In the
+IITGN Cohort 2 content factory the row shape is already decided**, and it is the fifteen columns of a
+week tab in `docs/curriculum/source.xlsx`, described in `docs/05_Curriculum_Map_Schema.md`. Use this
+skill for the thinking it carries, and write the result into those columns rather than into the
+generic grammar.
+
+The mapping, so nothing is lost in translation:
+
+| This skill's block | The C2 column |
+|---|---|
+| Narrative and its provenance | **Business scenario of the day**, column 2, written in the stakeholders' words with the questions they are asking |
+| The reasoning the session trains | **Thinking we train, before any tool**, column 4. This is the part the learner keeps. |
+| Ideas, counted against the cap, with depth | **Subtopics**, column 7, in teaching order, plus the block durations in column 5 |
+| Continuity: covered before, do not re-teach, comes later | **Trainer notes**, column 8, as start from, go as far as, stop before, comes later |
+| Spine case and its state | **Client zero data (TRAINER ONLY)**, column 9. Kalpa is the world, the version is named, and what is planted is never told to a learner. |
+| Transfer question, follow-ups, return question | **Interview angle**, column 12, as questions with their tags, and the Kahoot return question in column 15 |
+| Reference pack | **Trainer resources** and **Student references**, columns 13 and 14, every link carrying the date it was checked |
+| Hands-on: mid-session and take-home | **In-session exercises** and **After-class tasks**, columns 10 and 11 |
+
+Two C2 rules override anything the generic grammar implies. The business scenario leads, so a row that
+opens on a topic label is wrong however well detailed it is. And the interview column carries questions
+only: an answer written into the row becomes the answer everybody gives, so answers are written later,
+inside the day pack.
+
 ## Where it sits
 
 ```

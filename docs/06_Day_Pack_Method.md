@@ -7,6 +7,16 @@ This file is project knowledge. It supersedes `03_Day_Pack_Spec.md` where the tw
 
 ## 1. The teaching method the pack serves
 
+**The business scenario first, then the thinking, then the technique.** Since the 10 September 2026
+curriculum review, every day's row opens on a situation in a stakeholder's words and the questions
+they are asking, and the second column is the thinking an analyst uses to break that question down.
+The technique is third because it exists to answer the question. A pack whose deck opens on a topic
+title has not been built from the row.
+
+Concretely, in every pack: slide one is the scenario, the first drawing is the thinking, the notebook's
+first markdown cell is the same scenario, the exercises ask the stakeholder's question back, and the
+close is the sentence the learner would actually send. See `02_Content_Doctrine.md` section 1.
+
 **Mental model first, spiral always.** Every topic opens by forming the mental model in the learner's mind, walks the whole pipeline shallow in one connected story, and deepens only on revisit. The canonical example, kept because the team teaches from it:
 
 Explaining an LLM starts from an experience everyone has had (type a prompt, get a response, the same felt shape as hitting a URL and getting a page). The pipeline is then walked end to end at one shallow level: the model cannot read the sentence whole, so it breaks it into tokens, with one intuitive beat on what a token is and that tokenization varies by language; each token becomes an embedding, with one beat on why numbers at all; position gets injected, with the same-word-different-sentence example; meaning lives as nearness in vector space, pictured first as 2D coordinates and then grown to thousands of dimensions (GPT-3's embedding width was 12,288; the number often misquoted as "12,000 parameters" is the embedding dimension, since parameters run to billions); then inference emits the next token one at a time, shaped by temperature, top-k and top-p. No stop goes too deep, every stop gets its own deeper day later, and the connections are said aloud.
@@ -24,7 +34,7 @@ Cognitive load is the design constraint throughout: at most four new ideas per t
 | 5 | Solutions | STUDENT | 1 per exercise | Unguided solutions at close; take-home solutions open the next session, which begins by walking one. |
 | 6 | Take-home | STUDENT | 1 | Substantial and shortcut-resistant (section 3). Ships with a self-check spine of planted checkpoints so the learner verifies themselves before class does. |
 | 7 | Kahoot pack | STUDENT | 1 | Six to eight items per the row's quiz plan plus the return question one level up. Ungraded, an indicator. Distractor audit mandatory. |
-| 8 | Trainer notes + day sheet | TRAINER | 1 | The two-minute continuity block, per-slide labels, the breaks with exact error text, the ranked cut list, the checkpoints. Never reaches students. |
+| 8 | Trainer notes + day sheet | TRAINER | 1 | The two-minute continuity block, per-slide labels, the breaks with exact error text, the ranked cut list, the checkpoints, and the plant list from the row's client-zero column with what the room should find and what to do if nobody finds it. Never reaches students. |
 | 9 | Study notes | STUDENT | 1 | Written once the session's shape is fixed and revised against the day's transcript when it arrives. The transcript revision is a standing step. |
 | 10 | Cheat sheets | STUDENT | 0 to n | One per major topic when the day earns it; landscape concept format plus a gap variant. |
 | 11 | Pre-read + setup | STUDENT | 1, ships tonight | Tomorrow's vocabulary as a gap sheet plus tonight's setup. Hard rule, no exceptions. |
@@ -47,16 +57,16 @@ Exploration links follow the standing verification rule: fetched on the day they
 
 ## 4. The build gates
 
-1. **Read the row.** The day's curriculum row, the Structure tab, the client-zero state. Missing row, unlocked scenario where entities are needed, or unverified links mean the build stops and names the gap.
+1. **Read the row.** All fifteen columns of the day's curriculum row, starting with the business scenario and the thinking it trains, then the Structure tab and the client-zero dataset version the row names. A missing row, an empty scenario column, or an undated link means the build stops and names the gap.
 2. **Envelope and continuity**, stated in chat.
-3. **The spine, one screen, for approval**: deck decision, section lists, the mental-model arc in one sentence, the failures, the activity toggle, the take-home shape. Nothing downstream is built before approval.
+3. **The spine, one screen, for approval**: the scenario in one line and the thinking it trains, the deck decision, section lists, the mental-model arc in one sentence, the failures with their exact error text, the activity toggle, the take-home shape, and the interview questions the day equips. Nothing downstream is built before approval.
 4. **Build passes**, one artifact family per pass: decks; notebooks; activity; exercises with solutions; take-home with spine; quiz; study notes, cheat sheet and pre-read.
-5. **Verification**: idea caps, cold runs, segment-order parity, link dates, the shortcut test, the distractor audit, audience tags, the banned-word and em-dash scans.
+5. **Verification**: idea caps, cold runs, segment-order parity, link dates, the shortcut test, the distractor audit, audience tags, the banned-word and em-dash scans, and the plants check, which is that no student-facing file names anything planted in the data.
 6. **Ship** into the day folder's subfolders, named `C2_W{ww}_D{dd}_{topic}_{AUDIENCE}.{ext}`, or `C2_W{ww}_SAT_{topic}_{AUDIENCE}.{ext}` on a Saturday. The layout is in `content/README.md` and the verifier fails a file that sits in the wrong folder.
 
 ## 5. The Day 1 exception
 
-The opening day ships the introduction pack: the client-zero narrative deck (the company as a story, the mental-map diagrams, the entity picture, the spine vertical against the build-week verticals), the journey map (programme, week and day as capability promises), and the session-mechanics section (the teaching-day shape, the Saturday recap, build weeks, platforms, groups of four, the early-weeks AI policy). The teaching half of Day 1 ships the standard pack as usual. The introduction pack is blocked until the client-zero name and entity model lock.
+The opening day ships the introduction pack: the client-zero narrative deck (the company as a story, the mental-map diagrams, the entity picture, the spine vertical against the build-week verticals), the journey map (programme, week and day as capability promises), and the session-mechanics section (the teaching-day shape, the Saturday recap, build weeks, platforms, groups of four, the early-weeks AI policy). The teaching half of Day 1 ships the standard pack as usual. Client zero locked at v2.2 on 13 September 2026, so this pack is no longer blocked. It opens on Meera Raghavan's question, which is the question the whole programme answers at rising depth: where does our growth come from, and where is it leaking?
 
 ## 6. What changed against the old spec
 
@@ -71,6 +81,19 @@ The opening day ships the introduction pack: the client-zero narrative deck (the
 9. Exercise volume is capped by session minutes rather than by the manifest, with think-heavy, type-light answers.
 10. A day folder is a set of subfolders by artifact type rather than a flat list of files, Saturday moves out of the numbered days into `SAT/`, and a day with no session gets no folder at all. `content/README.md` is the layout's home and `scripts/verify.py` enforces it.
 
-## 7. Blind spots this method now covers
+## 7. What changed at curriculum schema v2, 13 September 2026
+
+1. The week tab gained three columns: the business scenario of the day, the thinking trained before any
+   tool, and the interview angle. The row now reads business problem first and technique third.
+2. The client-zero column is labelled TRAINER ONLY, and what is planted in a dataset is never named to a
+   learner. See `02_Content_Doctrine.md` section 12.
+3. Kalpa's stakeholders are named and fixed, so a trainer says them from memory and every artifact uses
+   the same names.
+4. Domain rotation is scheduled rather than discretionary: Retail only for Weeks 1 to 4, then build weeks
+   in Health, Financial Services and Connect, with the second worked example rotating from Week 5.
+5. The dataset ladder runs v0 to v6 plus the text and corpus sets, each version entering on a named day.
+6. The Build Tracker tab is gone. The GitHub Project board is the tracker, one card per day pack.
+
+## 8. Blind spots this method now covers
 
 Version stamping (every pack carries a lock date and freezes 48 hours before delivery), the corrections card as a standing conditional artifact, the distractor audit on every quiz, the parity check across deck, notebook and exercises, and the rule that a pack is INTERNAL work product until its per-audience files are split out.

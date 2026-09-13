@@ -1,240 +1,134 @@
-# Day sheet: Week 1, Day 2
+# Day sheet: Week 1 Day 2, Tuesday
 
-Trainer file. Never given to learners, never pasted into a student artifact.
-
----
-
-## The two minute continuity block, read before you open the deck
-
-**Start from.** They loop, branch and read records by name from yesterday. They have already watched three tracebacks land, so errors are familiar sights rather than a new frightening topic. Say that out loud in the first two minutes.
-
-**Do not repeat.** Types, comparisons, loops, accumulators, lists, dictionaries. Yesterday's inline code is raw material to refactor today. If you find yourself explaining what a dictionary is, you have lost fifteen minutes.
-
-**Go as far as.** Every learner ships `clean_record` and completes the AI-free lab with both output files reopening correctly.
-
-**Stop before.** Custom exception classes, `*args` and `**kwargs`, lambdas, imports beyond `csv` and `json`, encodings beyond a single mention, anything pandas.
-
-**Comes later.** Tomorrow's full dataset pass calls today's functions without one edit. Promise that aloud at the close, because it is the payoff that makes today feel worth it. Week 2 re-expresses all of today in pandas.
+**TRAINER ONLY.** Nothing on this page reaches a learner.
 
 ---
 
-## Shape of the day
+## The two-minute orientation
 
-| Block | Agenda items | Duration | Deck |
-|---|---|---|---|
-| Half one | Opening demo, functions, errors, guided carve | 150 minutes | `deck_half1` |
-| Half two | Files, the AI-free lab, Kahoot and close | 120 minutes | `deck_half2` |
-
-Fixed content totals 270 minutes. Trainer discretion fills whatever remains.
-
----
-
-## The four ideas per half, counted as decision sentences
-
-Half one: a function packages one reusable decision and returns a value rather than printing it; a traceback is read bottom-up and names the failing line; catch narrowly on a named exception and never bare; every rejection is logged with its reason.
-
-Half two: a file format is an agreement about structure and everything a CSV agrees to is text; `with open` guarantees the close even when the code fails; `DictReader` takes its keys from the header row; one pass ships two deliverables.
-
-Scope and the list comprehension ride as single beats inside the first idea of each half. They are notation, and they are not counted. If you find yourself teaching either as its own topic, you have added a fifth idea and something else will have to go.
-
-The deck's half-two JSON section is not a fifth idea either. It is the first idea met a second time, on a format that agrees about more, which is the spiral doing its job. Say that connection out loud at slide 19 or the room will count it as new.
-
----
-
-## The run sheet across surfaces
-
-Which surface is live at each point, and for how long. Durations only.
-
-| Order | Surface | What is on it | Duration |
-|---|---|---|---|
-| 1 | Notebook 1 on the projector | `clean_record` working on three records, before anything is explained | 10 min |
-| 2 | Deck, half one, sections 1 and 2 | The cell written three times, then the rule with a name | 30 min |
-| 3 | Notebook 1, learners mirroring | Carving `delivered_total`, then the comprehension in one beat | 25 min |
-| 4 | Deck, half one, section 3 | Return against print, and the None that follows | 20 min |
-| 5 | Companion on the projector | The guided walk with no handler, then experiment 1 run three times | 15 min |
-| 6 | Exercise E2, trace the calls | Fifteen items, silent, then the hands-on notebook | 15 min |
-| 7 | Deck, half one, sections 4 and 5 | Named exceptions, the bare-except demonstration, the rejects log | 35 min |
-| 8 | Notebook 1, learners building | `clean_record`, `clean_records` and the reconciliation assertion | 25 min |
-| 9 | Deck, half two, sections 1 to 3 | The wrong path, DictReader, convert or reject | 35 min |
-| 10 | Notebook 2, learners building | One pass, two files out, both reopened | 30 min |
-| 11 | Deck, half two, sections 4 to 6 | JSON, the round trip, the truncated feed | 30 min |
-| 12 | Exercise E3, the truncated feed | Fifteen items plus the hands-on notebook | 15 min |
-| 13 | Exercise, the AI-free lab | A fresh defective CSV, cold, no assistant | 40 min |
-| 14 | Workbook handed out | The decision tool, walked once on the Stance tab | 10 min |
-| 15 | Kahoot | Eight items including Monday's return question | 15 min |
-| 16 | Cheat sheets at the close | The text sheet and the visual sheet, both printed | 5 min |
-
-Fixed content totals about 355 minutes. The AI-free lab is the one block that cannot be shortened, because its whole value is that nobody helps.
-
-## The breaks to run, with exact text
-
-Verified against Python 3.11.15 in the build session. Re-run each one in the Codespace image before delivery, because the caret annotation lines under the failing expression differ between versions even where the message does not.
-
-| Where | What you do | Exact text |
-|---|---|---|
-| Opening, half one | Run yesterday's cell, unchanged, against today's file | `ValueError: invalid literal for int() with base 10: 'twelve'` |
-| Functions, half one | Call a print-only function and subscript the result | `TypeError: 'NoneType' object is not subscriptable` |
-| Errors, half one, never cut | Bare except around the conversion, then the honest version | Both print `53745`. First claims `Processed 30 records`. Second says `Clean 28, rejected 2` |
-| Files, half two | Open a mistyped path | `FileNotFoundError: [Errno 2] No such file or directory: 'data/orderz.csv'` |
-| Exercise, half two | Learners load the truncated feed themselves | `json.decoder.JSONDecodeError: Expecting ',' delimiter: line 48 column 1 (char 1027)` |
-
-The bare except demonstration is the one that must not be cut under any time pressure. It is the argument the whole day rests on.
-
----
-
-## Per slide labels, half one
-
-| Slide | Label | Note |
-|---|---|---|
-| Opening | THEN | Before any slide, run the opening demo cell of notebook 1, headed "Where this is going": `clean_record` working on three records, rejected, rejected, kept, with each rejection saying why. Say "you will have written this within the hour" and move on. Application before theory, and it is the row's own opening. |
-| S3 | ASK | "Three copies of this cell. One has a typo. Which one?" Wait. Do not answer it. |
-| S5 | DRAW | Box the function on the board with an arrow in and an arrow out. Leave it up all half. |
-| S5 | SAY | The comprehension lands in notebook 1 section 2 as one line beside the loop it replaces. One beat, then move. Teaching it as a topic adds a fifth idea. |
-| S7 | SAY | "The function cannot see anything you did not hand it." That sentence is all of scope for today. |
-| S9 | ASK | "What is inside result now?" Take three answers before you run it. |
-| S10 | TRAP | Let the silence sit after the TypeError. Someone will say `None`. Let them say it. |
-| S14 | DRAW | Point at the traceback bottom-up with your hand. Physically move upward. |
-| S15 | SAY | "The third question is the one people skip." Then ask who checked the value. |
-| S17 | TRAP | Read the bare except code aloud and ask whether it looks wrong. It does not. That is the point. |
-| S18 | THEN | Run both. Say nothing for ten seconds. Let them notice the numbers match. |
-| S19 | SAY | "A crash costs you an hour. A plausible wrong number costs you the quarter." |
-| S25 | THEN | Knight Capital. Give the number before the story. |
-| S28 | BRIDGE | "Everything so far lives in memory. Close the notebook and it is gone." |
-
-## Per slide labels, half two
-
-| Slide | Label | Note |
-|---|---|---|
-| S3 | THEN | Actually restart the kernel on the projected screen. Do not describe it. |
-| S6 | DRAW | Three columns on the board: what the file holds, what Python receives, what you meant. |
-| S7 | SAY | "The defect was not fixed. It was hidden by the format." |
-| S10 | TRAP | Run the wrong path first, before any correct open. The error is the teacher. |
-| S13 | ASK | "Who has run out of file handles on a laptop?" Nobody. That is why it needs saying. |
-| S17 | TRAP | Change a header spelling live and watch every lookup raise KeyError. |
-| S20 | DRAW | Draw the nested record. Point at the amount sitting one level down. |
-| S21 | ASK | "Drop it or invent a column. Which, and who do you tell?" |
-| S26 | SAY | "Writing a file is not finishing. Reopening it is finishing." |
-| S27 | THEN | Public Health England. Say the 15,841 slowly. |
-| S31 | BRIDGE | "The functions you carved today get called tomorrow without one edit." |
-
----
-
-## The activity, and where it drops
-
-`activity_defensive_stance_STUDENT.html` runs inside the errors section of half one, at slides S17 to S19, in place of talking through the bare except a second time. Budget about 15 minutes from that section.
-
-Open it on the projector first and flip one switch. Then let them open it themselves and find a setting they would sign. Ask three learners to say which setting they chose and why, and press the one who chose validate-first with the awkward record included, because that setting is honest and still throws away a good record.
-
-It doubles as a takeaway. Tell them to keep the file.
-
-If half one has overrun, this is the first thing to shorten, since the notebook already carries the same demonstration. It is not on the row's cut list, so shorten it rather than dropping it.
-
-## Checkpoint questions, ask by name
-
-1. After the functions section: "Give me one reason a function beats a copied cell that is not about typing less."
-2. After the errors section: "Both cells printed the same number. Which one lied, and about what?"
-3. After the guided carve: "Your rejects list is empty on a file you know is dirty. First two checks?"
-4. After files: "Where do DictReader's keys come from, and what breaks if the header changes?"
-5. At the close: "What does tomorrow do with the function you wrote today?"
-
----
-
-## Ranked cut list
-
-The row fixes the first two ranks. The third is this pack's own addition and is marked as such.
-
-1. The list comprehension variant, in notebook 1 section 2. It is one line of notation and nothing downstream depends on it. From the row.
-2. `json.dump`, in notebook 2 section 5, so the day writes CSV only. Reading JSON stays. From the row.
-3. The second mid-session exercise, if the first half has overrun badly. This pack's addition, not the row's, so drop it only after the two above.
-
-Both of the row's cuts are built rather than pre-applied, so cutting them is a live decision on the day rather than a note about something that was never there.
-
-Never cut: the bare except demonstration, the rejects log, the reconciliation, or the AI-free lab. If all four will not fit, the guided carve shortens and the lab still runs.
-
----
-
-## The AI-free lab, how to run it
-
-State the rule before you hand out the file, in these terms: no assistant, no accepted autocomplete, no searching for a finished answer, and the Python documentation is allowed. Then say why, in one sentence: today is the day they find out what they can do without help, and knowing that is worth more than a working file.
-
-Walk the room. Learners who freeze in the first five minutes usually have a `FileNotFoundError` and have not read it. Point at the path in the message and walk away.
-
-The defect that catches people is `1,240`, which is a real number wearing a thousands separator. Do not name it. When someone finds it, ask them what they are going to do about it and let the room hear the answer.
-
----
-
-## What ships tonight
-
-The pre-read for tomorrow goes out at the close, without exception. Tomorrow's session opens on one take-home notebook, so pick one during the lab while you are walking the room.
-
-## Known gaps in this pack
-
-Every reference in this pack now carries a verified link with the date it was checked. The links were verified on 09 September 2026 against the live sites. The standing rule is unchanged: a link enters an artifact only on the day it was checked, so re-check them before the pack is delivered and update the date beside any that moved.
-
-Segment values in the data files are placeholders that survive until the client-zero scenario locks. See the internal rename map in this folder.
-
-The row's STOP BEFORE bars imports beyond `csv` and `json`. The notebooks import `traceback` and `os` as plumbing, so a failure can print itself without halting the run and so the output folder exists. Both are labelled in the setup cell as not being today's topic, and neither is taught. If you would rather hold the line exactly, the alternative is a notebook that stops at its first deliberate failure, which costs more than it saves.
-
----
-
-## The two tracks in each deck
-
-Each deck now carries two kinds of slide and the deck tells you which is which.
-
-Slides numbered `S` are the spine. They are the delivered path, they are in delivery order, and their
-count and pacing are unchanged from the version this pack shipped with. Walk them.
-
-Slides numbered `D` carry a DEPTH mark in the top right corner. They sit immediately after the slide
-they deepen. Skip them live. They exist so the deck is worth reading alone afterwards, so a learner
-who asks a harder question has somewhere to be sent, and so you have somewhere to go when the room
-is ahead of you.
-
-If the room is running fast, the depth slides worth adding first are the ones carrying a diagram of
-a mechanism, because they save you drawing it on the board. If the room is running slow, every
-depth slide goes and nothing in the spine changes.
-
-**Half one.** 39 spine slides and 19 depth slides.
-
-| Depth slide | What it adds |
+| | |
 |---|---|
-| `D2` | What three copies costs, counted |
-| `D4` | Scope, drawn once |
-| `D5` | Prove it to yourself in four lines |
-| `D6` | The same function, both ways, side by side |
-| `D7` | The compact loop, once, as notation |
-| `D8` | Every part of a traceback, labelled |
-| `D9` | Why the stack reads bottom-up |
-| `D11` | The exception family, and why the name you choose matters |
-| `D12` | Two defensive stances, and when each wins |
-| `D13` | The size of the lie, as a formula |
-| `D15` | Who decides what, and why the split matters |
-| `D16` | The fields a reject row needs, and why |
-| `D17` | The reconciliation, as an identity you check every time |
-| `D18` | Knight Capital, the mechanism |
-| `D19` | Knight Capital, what it cost |
-| `D20` | The line from that to your cell today |
-| `D21` | Where a rejects log lives in production |
-| `D22` | Question 1, the deeper version |
-| `D23` | Question 2, the numbers that make it land |
+| **Start from** | Monday's tree and leaf counts. The ladder is new; the arithmetic is not. |
+| **Go as far as** | Everyone names the branch and the segment with numbers, and states the reorder-feature cause as a hypothesis with its test. |
+| **Stop before** | Files, which are Wednesday. Any test of whether the difference is real, which is Thursday. Comprehensions and modules. |
+| **Comes later** | Tomorrow's cleaning changes tonight's answer. Promise that out loud at the close; it is what makes Wednesday land as a discovery rather than as a correction. |
+| **Cut first** | Percentage-change formalities. **Never cut the ladder or the segment decomposition.** |
 
-**Half two.** 43 spine slides and 17 depth slides.
+---
 
-| Depth slide | What it adds |
-|---|---|
-| `D1` | The round trip that loses types, watched |
-| `D2` | Where to convert, and why the answer is once |
-| `D3` | What the with block is doing for you |
-| `D4` | Running out of handles, as arithmetic |
-| `D5` | The modes you will actually use |
-| `D6` | What happens when a row is the wrong length |
-| `D7` | So the row count is not enough |
-| `D8` | The flattening decision, drawn |
-| `D9` | Reading a JSONDecodeError, position by position |
-| `D10` | CSV or JSON, decided rather than defaulted |
-| `D11` | What DictWriter does with a field you did not name |
-| `D12` | The four line ritual that ends every load |
-| `D13` | Public Health England, the mechanism |
-| `D14` | Public Health England, the arithmetic |
-| `D15` | The line from that to your cell today |
-| `D16` | Question 1, the deeper version |
-| `D17` | Question 2, with the evidence in front of you |
+## The running order
+
+| Block | Duration | What happens |
+|---|---|---|
+| 1 | 10 min | Meera's reply and the Retail-Plus complaint. The room lists what could make a drop look real when it is not. |
+| 2 | 30 min | The investigation ladder, five rungs, and what each needs from the data |
+| 3 | 45 min | Grouping by key: orders and customers by quarter, then by segment. The dictionary accumulator. |
+| 4 | 35 min | Describing a segment: typical value, spread, shape from sorted values |
+| 5 | 45 min | Functions: the same numbers for every segment written once. Return against print. The conversion that must not crash the loop. |
+| 6 | 55 min | Guided then unguided: Q1 against Q2 along the tree, segment by segment |
+| 7 | 20 min | Kahoot and close |
+
+---
+
+## What is planted, and what the room should find
+
+**This section never reaches a learner.**
+
+| Planted | What the room should do | If nobody finds it |
+|---|---|---|
+| Customers flat at 69 across both quarters while orders per customer falls | Compute distinct customers per quarter and disprove marketing's claim themselves | Ask "what would have to be true for marketing to be right, and can you check it?" |
+| The fall concentrated in Retail-Plus, down 49 percent against Retail-Core's 5 | Reach it by calling `describe` once per segment | Ask for the same table one level down. Do not name the segment. |
+| The `discount` field absent on 58 of 200 records | Meet `KeyError` when they total discounts, then count the absent records before choosing a default | It fires whether they look for it or not. It is the block-5 failure. |
+
+**The 14 duplicated rows are also in this file and are not today's lesson.** If a sharp learner
+spots that `KR-` ids repeat, that is excellent: tell them to write it in their notes and that
+Wednesday is about exactly that. Do not explore it today; it is Wednesday's whole arc.
+
+---
+
+## The deliberate failures, with their exact text
+
+**Block 5, the absent key.** Have the room total the discounts without `.get()`:
+
+```
+KeyError: 'discount'
+```
+
+The move to teach is **not** reaching for `.get()`. It is asking how many records and whether the
+absence is concentrated. Only then choose a default, and make somebody write the reason in a
+comment. Wednesday will ask for that reason by name.
+
+**Block 5, the function that prints.** Change `return` to `print` in `describe` and call
+`describe(q1)["orders"]`:
+
+```
+TypeError: 'NoneType' object is not subscriptable
+```
+
+One demonstration is enough. The sentence to leave them with: a function that prints cannot be
+built on.
+
+---
+
+## The numbers, so you are never caught out
+
+| | Q1 | Q2 |
+|---|---|---|
+| Rows | 114 | 86 |
+| Revenue | Rs 2,10,00,000 | Rs 1,87,00,000 |
+| Distinct customers | 69 | 69 |
+| Orders per customer | 1.65 | 1.25 |
+| Revenue per order | Rs 1,84,211 | Rs 2,17,442 |
+
+Decomposition: `1.000 × 0.754 × 1.180 = 0.890`, against an actual revenue change of 0.890.
+
+| Segment | Q1 per customer | Q2 per customer | Change |
+|---|---|---|---|
+| Retail-Core | 1.12 | 1.06 | down 5.3 percent |
+| Retail-Plus | 2.32 | 1.18 | down 49.0 percent |
+| Business | 1.82 | 1.55 | down 15.0 percent |
+| Student | 2.50 | 3.50 | up 40.0 percent |
+
+By channel, for the take-home: web down 22.4 percent, store down 8.1, app flat.
+
+Records with no `discount` field: 58 of 200.
+
+---
+
+## Per-block facilitation
+
+**Block 1.** Get five ways a drop can look real when it is not, out of the room, before the ladder
+goes up. The ladder lands much harder as the answer to a confusion they just felt.
+
+**Block 2.** Draw the rungs bottom to top. When somebody offers the reorder button as the answer,
+write it on the board at rung five and leave it there, visibly four rungs above where the room is.
+That single move teaches the day.
+
+**Block 3.** Type the `.get()` line slowly and say the shape aloud: look up what is there or
+nothing, then add and put it back.
+
+**Block 4.** Put the four segment description rows on screen together. Business is the row that is
+unlike the others, and somebody will say so. That is Monday's lesson returning one level up.
+
+**Block 5.** The two failures both live here. Run them in the order given; the `KeyError` first,
+because the discussion about defaults is what Wednesday needs.
+
+**Block 6.** This is the longest block and the one where circulating matters. The most common stall
+is a learner computing orders per segment rather than orders per customer per segment.
+
+---
+
+## Checkpoint questions
+
+1. After block 2: which rung is "the reorder button broke", and what is below it?
+2. After block 3: what does `.get(key, 0)` do that `[key]` does not, and what does that cost?
+3. After block 5: your function prints the right numbers and the next line fails. Why?
+4. After block 6: revenue per order went up. Does that help or hide?
+
+---
+
+## What the room leaves with
+
+The ladder in order, the decomposition closing to the revenue change, Retail-Plus named with its
+number, and the reorder button written down with the word "hypothesis" in front of it and a test
+beside it. The last one is what rooms skip, so make somebody read theirs aloud.

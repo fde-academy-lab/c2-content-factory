@@ -1,117 +1,73 @@
-# Pre-read and setup: after Day 4
+# Before Saturday: the week, under questioning
 
-Ships tonight. Read it tonight, do the setup line tonight, leave the rest for the weekend.
-
----
-
-## What happens next, in order
-
-```
-Fri 02 Oct   Gandhi Jayanti. Institute closed. No session.
-Sat 03 Oct   Recap block. Pen and paper, then the solution discussion.
-Mon 05 Oct   Week 2 opens on the question today refused to answer.
-```
-
-Four teaching days done. The week ends Thursday because Friday is a gazetted national holiday.
+Ships tonight. Friday is Gandhi Jayanti and there is no session, so this covers two days.
 
 ---
 
-## Setup you must do tonight
+## What Saturday is
 
-Nothing to install. One thing to run.
+Four hours, no new content.
 
-**Restart your kernel and run both of today's notebooks top to bottom, in a fresh Codespace if you can.**
+| Block | Duration | What happens |
+|---|---|---|
+| 1 | 120 min | The recap paper. Pen and paper, AI-free, short answers. |
+| 2 | 20 min | Break |
+| 3 | 75 min | The solution discussion. Papers swap for peer marking, every answer treated as an interview answer, random call-outs. |
+| 4 | 25 min | Doubts, and the bridge into Week 2 |
 
-```
-Kernel > Restart Kernel and Run All Cells
-```
-
-Notebook 2 stops on a `KeyError` on purpose and keeps going, so a red block in that cell is the notebook working correctly. Anything else that stops is real, and finding it tonight beats finding it on Monday.
-
-While you are there, confirm three numbers on screen:
-
-```
-orders loaded: 44
-mean amount over 44 orders: Rs 12,753.30
-Business 9, Retail-Core 14, Retail-Plus 11, Student 10   ->   total 44
-```
-
-If those three agree, your environment is fine for the weekend.
+**It is ungraded.** It is a performance indicator and it is the closest thing to an interview you
+will sit this month.
 
 ---
 
-## Saturday, the recap block
+## What is on the paper
 
-Four hours, no new content. A pen-and-paper recap in short-answer form, a break, then the solution discussion led by the Academic TA with papers swapped for peer cross-evaluation and random call-outs throughout.
+Every question is a Kalpa business question first and a technique question second, which is the
+order interviewers use. The set is the week's interview column, so you have already seen all ten.
 
-**Ungraded.** It carries no weight of any kind and the programme reads it as a performance indicator.
+The five that most people lose marks on:
 
-**AI-free by format**, since it is on paper.
-
-The paper is built from the week's interview question set. The questions are already published on the Saturday row and none of them is a surprise:
-
-- A list against a dictionary: when do you reach for each?
-- `b = a`, then `b.append(9)`: what happens to `a`, and how do you copy on purpose?
-- How do you read a Python traceback, and what do you look at first?
-- Why is a bare `except` worse than letting the code crash?
-- Everything read from a CSV is a string: what breaks, and where do you convert?
-- CSV or JSON for nested records, and what does flattening cost?
-- Mean or median for a money field, and why?
-- Your cleaning run reported zero rejects on a file you know is dirty: what do you check?
-
-**How to prepare.** Answer all eight out loud, to nobody, in under a minute each. Two of the eight came from today, and you should be able to answer those with the file's own numbers rather than in the abstract.
-
-Answers that cite your own week beat answers that recite a definition. "The median, because our own file's mean was Rs 12,753 and only one order out of forty-four reached it" is a better answer than "the median, because outliers do not pull it", and it takes the same breath to say.
+1. Draw the revenue tree and name the branch you would investigate first.
+2. Walk the sales-drop investigation ladder, in order.
+3. What does `p = 0.03` mean, and what does it not mean?
+4. Input 200, clean 183, rejected 14. Does it reconcile?
+5. Write the four-part note for the Retail-Plus finding, then defend the caveat.
 
 ---
 
-## Monday's vocabulary, as a gap sheet
+## What to do with Friday
 
-Monday takes today's segment gap and asks whether it is real. Fill these in from what you can infer; you are not expected to know them yet, and having guessed wrong is the fastest way to learn the right one.
+The institute is closed. Two things, and neither takes long.
 
-| Term | What you think it means, in your own words |
+1. **Rerun the whole week's pipeline in a fresh Codespace**, top to bottom, from Monday's notebook
+   to Thursday's. Note anything that fails cold. A notebook that only runs warm is a notebook that
+   will fail in front of somebody.
+2. **Finish the note.** Under 200 words, read aloud to somebody outside the programme.
+
+Nothing else. The week was dense and Saturday is a long morning.
+
+---
+
+## The five things worth knowing from memory
+
+No notes on Saturday, so these are the ones to close your eyes and say.
+
+| | |
 |---|---|
-| Sampling variation | ____________________________________________ |
-| Chance reference | ____________________________________________ |
-| The null model | ____________________________________________ |
-| Label shuffling | ____________________________________________ |
-| The p-value | ____________________________________________ |
-| Statistical against practical significance | ____________________________________________ |
-| Confidence interval | ____________________________________________ |
-| Confounder | ____________________________________________ |
-| Correlation against causation | ____________________________________________ |
-| Simpson's paradox | ____________________________________________ |
+| The revenue tree | Five branches, each with its denominator |
+| The ladder | Five rungs, in order, and what each needs |
+| `INPUT = CLEAN + REJECTED` | And why a pass that cannot produce it is unauditable |
+| The p-value sentence | The share of chance-only worlds at least this extreme |
+| The note | Claim, evidence, caveat, action |
 
-Bring the sheet on Monday with something written in every row. The session opens by correcting them, and a wrong guess you wrote down sticks better than a right answer you were handed.
+If you can say those five cold, you can rebuild every answer on the paper from them.
 
 ---
 
-## The one idea to arrive with
+## The one line worth carrying in
 
-You ended today with this written in your own notebook:
+> Every question on the paper is a business question first and a technique question second, because
+> that is the order an interviewer asks them in.
 
-> Open question: Business 11.1 percent on 9 orders against Retail-Plus 36.4 percent on 11 orders. Is that gap real?
-
-Monday's whole session is the method for answering it, and it starts with an idea you can hold before any of the vocabulary above lands:
-
-**If you took the same 44 orders and shuffled which segment each one belonged to, at random, you would still see gaps between the groups.** Some of those gaps would be large. So the real question is not "is there a gap", since there is always a gap. It is "is this gap bigger than the ones chance produces on its own".
-
-Sit with that for a minute over the weekend. It is the whole session.
-
----
-
-## Optional exploration
-
-Your take-home already sends you to CPython's own `statistics` module source, which is worth reading twice (verified 09 Sep 2026): https://raw.githubusercontent.com/python/cpython/v3.12.0/Lib/statistics.py
-
-The Week 1 row also names an interactive chapter on frequentist inference that makes the shuffle idea visual before any formula arrives: Seeing Theory, frequentist inference: https://seeing-theory.brown.edu/frequentist-inference/index.html (verified 09 September 2026)
-
-If it has not appeared by the time you sit down, skip it. An unverified link is worth less than an honest blank, and Monday does not depend on it.
-
----
-
-## Optional, for the restless
-
-Rerun the whole week's pipeline in a fresh Codespace, Monday's orders through to today's segment summary, top to bottom, cold. Note anything that fails when nothing is in memory.
-
-It is the single best use of the holiday, it takes about half an hour, and every learner who does it starts Week 2 without an environment problem.
+Week 2 opens on Monday with Anand wanting the same numbers from the warehouse itself, every week,
+computed by something nobody can mistype. The tree does not change; the tool does.

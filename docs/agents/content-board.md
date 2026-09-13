@@ -80,11 +80,24 @@ reworked on a feeling that something is off.
 | Day shape | `type:teaching`, `type:saturday`, `type:build-week`, `type:holiday` | Exactly one, set by the day plan |
 | Artifact | `artifact:deck`, `artifact:notebook`, `artifact:exercises`, `artifact:takehome`, `artifact:kahoot`, `artifact:preread`, `artifact:study-notes`, `artifact:cheatsheet`, `artifact:trainer`, `artifact:demos` | On follow-up issues a review raises, never on a day card |
 | Gate and blocks | `gate:verify-pass`, `gate:verify-fail`, `blocked`, `curriculum-rework` | As they apply |
+| Area | `area:wiki`, `area:situations`, `area:scripts`, `area:docs`, `area:curriculum`, `area:board` | On issues that are **not** day packs, so the board's own work stays filterable apart from the content |
+| Open to anyone | `good-first-card`, `source-check` | On work somebody outside the build rota can pick up without context |
 
 Artifact labels are not put on day cards on purpose. Every teaching day owes the same ten
 families, so ten identical labels on every card colour the board and say nothing. They earn their
 place on the follow-up issue a review raises, where "the deck needs another pass" is worth
 filtering on.
+
+The area labels exist for the other half of the repository. A wiki page, a builder script, a
+correction to a locked doc and a curriculum row are all real work and none of them is a day pack,
+so they carry an `area:` label and no `status:` or `type:` label. Filtering the board on
+`-label:area:wiki -label:area:scripts` and so on leaves the content plan alone.
+
+`good-first-card` is worth using deliberately. Every Situations page ends in a table of seeded
+cards, each with a named twist and no full write-up, and expanding one is a self-contained
+afternoon that needs the Situation Bank's card format and nothing else. `source-check` marks a link
+or a movable fact that needs re-verifying with today's date, which is the cheapest useful
+contribution anybody can make.
 
 ## People
 
@@ -108,6 +121,10 @@ assignee on the card. The labels stay; they are what the board filters on.
 ```bash
 # The one-time furniture. Safe to run again; it corrects drift and leaves the rest alone.
 python3 scripts/board_sync.py --labels --milestones
+
+# Remove GitHub's generic starter labels once they are unused. Never touches a label
+# that is on an issue, so it is safe to run again.
+python3 scripts/board_sync.py --prune-labels
 
 # Open the cards for a week that is about to be built.
 python3 scripts/board_sync.py --week W02 --set-status backlog

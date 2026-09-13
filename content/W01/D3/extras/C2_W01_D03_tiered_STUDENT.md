@@ -1,73 +1,58 @@
-# Tiered extras: Day 3
-
-Two optional tasks. Take the one that matches where you are.
+# Extras: one to stretch, one to recover
 
 ---
 
-## Recovery: if the full pass did not come together
+## Stretch: the pass that runs itself
 
-Work through these in order and stop when you are moving again.
+You finished early and the cleaning felt mechanical. Then this.
 
-**Step 1. Prove you can profile one field.**
+**The situation.** Anand's analyst likes your reconciliation and asks the obvious follow-up:
 
-Print `present` for `amount` only. You should see 48 out of 50. If this fails, the problem is the path or the field name, and the error message names which.
+> "Fine. Now do it every Monday, on whatever they send us, and tell me when it looks wrong."
 
-**Step 2. Prove you can profile every field.**
+**What to build.** One function, `audit(rows)`, that takes any export of this shape and returns a
+dictionary with:
 
-Wrap step 1 in a loop over `orders[0].keys()`. You should get seven lines. Do not add the other two counts yet.
+| Key | What it holds |
+|---|---|
+| `input`, `clean`, `rejected` | The three counts, and they must reconcile |
+| `reasons` | A count per rejection reason |
+| `bridge` | A list of `(step, amount)` pairs from the raw total to the clean one |
+| `flags` | Anything kept but worth a human look, each with a sentence |
 
-**Step 3. Add convertibility.**
+Then run it on **both** exports, the class file and the take-home file, and print the two side by
+side.
 
-For `amount` only, count how many values survive `normalise_amount`. You should see 44. The gap of four against step 1 is the whole point of the day, so stop and look at it before moving on.
+**The hard part, and the point.** The two files have different defects. A function that only handles
+the ones it has seen will report a clean file when it meets the negative amount, because that one
+converts without error. Write one test per defect kind first, then write the function.
 
-**Step 4. Add distinct.**
-
-`len({r[field] for r in orders})`. One line. For `amount` you should see 46.
-
-**Step 5. Now clean.**
-
-Call `clean_records(orders)` from Tuesday, unchanged. You should see 44 clean and 6 rejected, and those two should sum to 50.
-
-If step 5 gives a different number from step 3, one of them is counting something you did not intend, and finding which is worth more than finishing.
+**The question to answer in writing:** what would `audit` have to return for you to say "this export
+is too broken to use", and where is that line? Name a number.
 
 ---
 
-## Stretch: if you finished with time to spare
+## Recovery: one row, one decision, at a time
 
-Do not reach for pandas. Go further into what you already have.
+The cleaning pass ran past you and you would rather rebuild it slowly. Tonight, alone.
 
-**Make the profiler tell you what it found.**
+**Work in a fresh cell. One step at a time, printing after each.**
 
-Right now your profiler prints numbers and leaves the reading to you. Write `describe_field(rows, field)` that returns one sentence per field, choosing from these shapes:
+1. Load the CSV and print `len(rows)`. That is your `input`. Write it on paper.
+2. Print `rows[0]`. Look at the seven fields until they are familiar.
+3. Print `rows[0]["amount"]` and then `type(rows[0]["amount"])`. It is text. Sit with that.
+4. Make two empty lists, `clean` and `rejected`. Loop over the rows and append every row to `clean`.
+   Print both lengths. `input = clean + rejected` already holds, trivially.
+5. Now add one rule: if the row's `status` is empty, append to `rejected` instead. Print the two
+   lengths again. The equation still holds, and one row moved.
+6. Add the second rule for an amount that will not convert. Print again.
+7. Add the third rule for a repeated `order_id`. Print again.
 
-- present equals converts equals the row count, and distinct is small: a complete category
-- present equals the row count and converts is zero: a complete text field
-- present is below the row count: a field with gaps, and say how many
-- converts is below present: a field with unusable values, and say how many
-- distinct is below the row count on a field whose name ends in `_id`: an id that repeats, and say how many times
+**What you should end up believing.** The pass is one loop with one branch per rule, and every
+branch moves a row from one list to the other and never loses it. If the two numbers ever stop
+adding up to the input, a branch is falling through without appending anywhere, and that is the only
+bug this shape of code has.
 
-Run it on today's file. It should surface the `order_id` finding on its own, without anybody knowing to look for it. That is the difference between a profiler and a profile.
-
-**The harder question.**
-
-Your `describe_field` now flags a repeating id automatically. Would it have flagged the Rs 480,000 order? Should it?
-
-Write four lines on where you would draw the line between a check that fires on its own and a judgement that needs a person. There is no correct answer and the reasoning is the whole exercise.
-
-**The one that changes tomorrow.**
-
-You kept the Rs 480,000 order because it is real. Compute two averages of the amount column, one with it and one without, and write both down with one sentence saying which you would give a manager who asked for the average order value.
-
-Bring that sentence tomorrow. It is the first thing tomorrow argues about.
-
-## If you finished everything and want more
-
-Open `demos/C2_W01_D03_decision_tool_STUDENT.xlsx` on the Duplicates tab and find the one identity rule under which the file has no duplicates at all and the distinct id count still disagrees with the row count. Say in two sentences why that combination is the most dangerous state the tab can be in.
-
-Then open the companion page's second experiment and re-profile both ways. Write down the three counts for `discount` in each, and say which of the two files you could still reconstruct the other from.
-
-## If you are stuck and want a smaller step
-
-Run `notebooks/C2_W01_D03_ex2_hands_on_STUDENT.ipynb` and stop after step 2. One letter: which count fell between the two profiles? Get that right and the rest of the day's argument follows from it.
-
-If step 2 is still hard, open `whiteboards/C2_W01_D03_board_diagrams_STUDENT.md` and look at diagram 4. The three arrows out of the coerced profile are the whole answer.
+**Then do one more thing.** Go back to step 5 and, instead of rejecting the row, append a reason
+beside it: `rejected.append((row, "no status"))`. Run it. That two-line change is the difference
+between a pass and an auditable pass, and it is the whole of today.

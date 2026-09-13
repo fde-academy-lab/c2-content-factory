@@ -1,74 +1,55 @@
-# Take-home self-check
-
-Open this after your run, before you hand anything in.
-
-These are checkpoints, not answers. Each one is something you can verify on your own screen in under a minute. If a checkpoint fails, the fix is yours to find, and finding it is the exercise.
+# Self-check: know the memo holds before anybody reads it
 
 ---
 
-## Checkpoint 1: the input
+## Part 1, the notebook
 
-Your reader should see **30 records** in the file, not counting the header row.
-
-If you got 31, you are counting the header. If you got 29, your reader is skipping the first record.
-
-## Checkpoint 2: the conversion failures
-
-Exactly **3 records** will not convert with `int()`.
-
-Their ids are `KR6407`, `KR6410` and `KR6418`. If you found fewer than three, one of them slipped past you, and the one people miss is not the one they expect.
-
-Their reasons, in the interpreter's own wording:
-
-```
-invalid literal for int() with base 10: 'forty two'
-invalid literal for int() with base 10: ''
-invalid literal for int() with base 10: '2 450'
-```
-
-If your reasons read differently from these, you invented wording instead of carrying `str(e)`.
-
-## Checkpoint 3: the one that converts and is still wrong
-
-There is exactly **one** such record. It is not in the list above, because `int()` accepts it without complaint.
-
-Sort your clean amounts and look at the smallest one. If nothing looks wrong, you have not sorted them.
-
-## Checkpoint 4: your total, whichever rule you chose
-
-Two totals are defensible, and which one you land on depends entirely on the rule you wrote.
-
-| If your rule is | Clean records | Total |
-|---|---|---|
-| Reject only what `int()` refuses | 27 | 47645 |
-| Also reject the record from checkpoint 3 | 26 | 49495 |
-
-If your total is neither of these, work backwards: check your reconciliation before you check your arithmetic.
-
-Notice the second total is **larger** while holding **fewer** records. If that surprises you, you have found the reason checkpoint 3 matters.
-
-## Checkpoint 5: the reconciliation
-
-Whichever rule you chose:
-
-```
-30 in = clean + rejected
-```
-
-If this does not hold, a record went somewhere you did not intend. The usual cause is a `continue` in the wrong place, or an append inside a branch that does not always run.
-
-## Checkpoint 6: reopened, not just written
-
-Your reconciliation must count rows read back **from the files on disk**, never the lists still sitting in memory.
-
-Quick test: restart your kernel, run your setup cell, then skip straight to the reconciliation cell. If it still reports the right counts, it is reading the files. If it raises `NameError` on a list you built earlier, it was counting memory.
+| # | Checkpoint | What you should see | If it fails |
+|---|---|---|---|
+| 1 | `describe` returns | The check prints PASS | The last line says `print`. A function that prints cannot be built on. |
+| 2 | Q1 has 114 rows | The check prints PASS | You filtered on segment rather than quarter, or dropped the duplicates by accident |
+| 3 | Q1 has 69 customers | The check prints PASS | You counted rows rather than distinct ids |
+| 4 | Three channels found | The check prints PASS | A typo in the key name, which returns an empty set rather than an error |
+| 5 | One channel clearly worst | The check prints PASS | You compared order counts rather than orders per customer |
+| 6 | The base behind the biggest city move | The check prints PASS | You have not looked at the customer counts yet, which is the point of the item |
+| 7 | Summary | `8 checks passed and 0 failed` | Any FAIL names its own checkpoint |
 
 ---
 
-## What no checkpoint can tell you
+## Part 2, the memo
 
-Whether your threshold rule is any good. A rule that passes every number here can still be one a reviewer would reject.
+Read your own memo back and answer yes or no. **Three noes means rewrite it.**
 
-Read your own rule back and ask: could a colleague apply this tomorrow, on a file I have never seen, without asking me a single question? If they would have to guess at anything, the rule is not finished.
+1. Does the claim sentence carry a number **and** its denominator?
+2. Does the memo say what you **disproved**, with the number that did it?
+3. Does the 18 percent rise in revenue per order appear, and is it described as something that
+   **hides** part of the fall rather than as good news?
+4. Are both hypotheses genuinely different ideas, rather than one idea worded twice?
+5. Could somebody pull the evidence for each hypothesis **this week**, with data the business
+   already collects?
+6. Is the word "hypothesis" actually in the memo, attached to the reorder button?
+7. Is it under 300 words?
 
-Bring the rule tomorrow. That is the part we discuss.
+---
+
+## Part 3, the three sentences
+
+One test each.
+
+| Audience | The test |
+|---|---|
+| Marketing | Would somebody reading it feel briefed rather than blamed? Read it aloud. If it sounds like a win, rewrite it. |
+| Retail-Plus | Does the hypothesis still read as unproven, even though it is the one they want? |
+| Meera | Could she act on it in two minutes without asking a follow-up question? |
+
+**The hardest test, and the one worth doing:** put the three sentences side by side and look for any
+fact present in one and contradicted in another. Three audiences, three framings, one set of
+numbers.
+
+---
+
+## The honest signal
+
+If Part 2 took you longer than Part 1, that is the right ratio. Part 1 is code you have already
+written once. Part 2 is the thing you will be doing in a job, and the thing an interview asks you
+to do out loud in fifteen minutes.

@@ -1,5 +1,10 @@
 # The session row
 
+> **In the IITGN Cohort 2 content factory this grammar is not the output format.** The row shape here
+> is the fifteen columns of a week tab in `docs/curriculum/source.xlsx`, described in
+> `docs/05_Curriculum_Map_Schema.md`, and `SKILL.md` carries the mapping from the blocks below onto
+> those columns. Read this file for what a complete row has to decide, then write it into the workbook.
+
 One block per session in the detailed curriculum file. The topic and the
 timeline come from the TOC and are not changed here. Everything else is
 decided here. `scripts/check_detailing.py` parses this exact shape.

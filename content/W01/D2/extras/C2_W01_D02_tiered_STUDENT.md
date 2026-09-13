@@ -1,69 +1,53 @@
-# Tiered extras: Day 2
-
-Two optional tasks. Take the one that matches where you actually are, not the one that sounds better.
+# Extras: one to stretch, one to recover
 
 ---
 
-## Recovery: if the lab did not come together
+## Stretch: the cut that changes the answer
 
-No shame in this. Work through these in order and stop when you are moving again.
+You finished early and the decomposition felt straightforward. Then this.
 
-**Step 1. Prove you can read the file.**
+**The situation.** You cut the fall by segment and found Retail-Plus. You cut it by channel and
+found web. Both are true and the same members sit inside both. Marketing now asks the obvious
+follow-up:
 
-Open `../data/C2_W01_D02_lab_STUDENT.csv` with `csv.DictReader` and print the first record and the record count. Nothing else. If this fails, the problem is the path, and the error message contains the path it tried.
+> "If I fix web, how much of the fall do I get back?"
 
-You should see 24 records.
+**What to build.** A two-way table: segment down the side, channel across the top, orders per
+customer in each cell, for both quarters, with the change. Twelve cells.
 
-**Step 2. Prove you can spot the bad ones.**
+Then answer three questions in writing.
 
-Loop over the records. For each one, try `int(record["amount"])` inside a `try`, and when it fails print the id and the reason. Do not build any lists yet. Just print.
+1. Which single cell carries the largest absolute loss of orders? Not the largest percentage, the
+   largest count.
+2. If web were restored to its Q1 rate **for Retail-Plus only**, how many orders come back, and what
+   share of the total fall is that?
+3. What does the table say that neither one-way cut said on its own?
 
-You should see three ids: KR5303, KR5307 and KR5312.
-
-**Step 3. Now build the two lists.**
-
-Same loop. Instead of printing, append to `clean` or to `rejects`. Print the lengths at the end.
-
-You should see 21 and 3, which add up to 24.
-
-**Step 4. Now write them out.**
-
-Two `with open` blocks and two `DictWriter` calls. Then reopen both and count.
-
-If step 2 worked and step 3 did not, the difference is almost always a `continue` in the wrong place, or an append sitting inside an `if` that does not always run.
+**The hard part, and the point.** A two-way cut has twelve cells and roughly sixty-nine customers,
+so some cells hold two or three people. Say which cells you refuse to read, and why, before you
+answer any of the three questions. A learner who fills in all twelve confidently has missed the
+exercise.
 
 ---
 
-## Stretch: if you finished the lab with time to spare
+## Recovery: one accumulator, then two
 
-Do not go looking for pandas. Go deeper into what you already have.
+The grouping did not land and you would rather rebuild it than nod along. Tonight, alone, costs you
+nothing tomorrow.
 
-**The recovery question.**
+**Work in a fresh cell. One step at a time, running after each.**
 
-In `../data/C2_W01_D02_orders_STUDENT.json`, record KR4214 has `"amount": null` and its original value sits inside the nested `source` block. Your morning run rejected that record on the CSV, and the value was available the whole time.
+1. Count all the orders with yesterday's three lines. No grouping at all.
+2. Now count only Q1 orders, with an `if` inside the loop. Then only Q2, by changing one word.
+3. You now have the same code twice. That is the problem grouping solves.
+4. Make an empty dictionary called `counts`. Inside the loop, print `order["quarter"]` and nothing
+   else. Watch the keys go past.
+5. Add one line: `counts[order["quarter"]] = 0`. Run it and print `counts`. Every quarter is zero,
+   because you overwrite it every time.
+6. Change that line to use `.get()` and add one. Run it. It works, and you can now say exactly why
+   step 5 did not.
+7. Change `+ 1` to `+ order["amount"]`. Same shape, different question answered.
 
-Write a function `recover_amount(record)` that takes a JSON record and returns the amount, preferring the top-level value and falling back to the nested one. Then answer these in a markdown cell:
-
-1. How many of the 30 records could be recovered this way?
-2. Your total was 53745 without recovery. What is it with recovery?
-3. Here is the hard one. You now have two defensible totals for the same dataset, produced by the same person on the same afternoon. What has to be written down so that a reader knows which one they are looking at?
-
-Question 3 is the entire reason tomorrow exists.
-
-**The awkward record.**
-
-`int(" 1360 ")` succeeds. `int("2 450")` raises. `int("1,240")` raises.
-
-Write down the rule Python is actually applying, in one sentence, then test your rule on three inputs you invent yourself. If any of the three surprises you, your rule is wrong and the surprise is the interesting part.
-
-## If you finished everything and want more
-
-Open `demos/C2_W01_D02_decision_tool_STUDENT.xlsx` on the Format tab and find the one combination of the four yellow cells where both CSV and JSON are ruled out. Say in two sentences what you would actually do in that situation, and what you would tell the reader of the file.
-
-Then open the companion page's fourth experiment and run all three reconciliation shapes. Write down which one loses a row without saying so, and say how you would notice it on a file of a million rows rather than five.
-
-## If you are stuck and want a smaller step
-
-Run `notebooks/C2_W01_D02_ex1_hands_on_STUDENT.ipynb` and stop after step 1. One letter: what is the caller holding after a function that only prints? Get that right and the rest of the notebook is the same question asked three more ways.
-
-If step 1 is still hard, open `whiteboards/C2_W01_D02_board_diagrams_STUDENT.md` and look at diagram 1. The two arrows out of the function are the whole answer.
+**What you should end up believing.** A grouped accumulator is the ungrouped one with the variable
+replaced by a slot in a dictionary. Nothing else changed. If step 5 did not surprise you, run it
+again and read the output properly, because the surprise is the lesson.

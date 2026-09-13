@@ -1,336 +1,215 @@
-# Study notes: Week 1, Day 4
+# Day 4: real or noise, cause or coincidence
 
-Describe without misleading: typical, spread, skew and the segment summary.
-
-Read these after the session. They are written against the session as planned and get revised against the recording once it arrives, so if a number here disagrees with what happened in the room, the room wins and the note gets fixed.
-
----
-
-## The one sentence
-
-Every summary number is a claim about a shape nobody can see, so you look at the shape first, choose the number that does not lie about it, and never hand over a rate without the count it rests on.
+Kalpa Retail, Week 1 Thursday. Read this after the session. It is the longest set of notes in the
+week because it carries three habits rather than one.
 
 ---
 
-## Where today sat in the week
+## The situation
 
-The week's terrain, filling up one column per teaching day.
+With Finance reconciled, Meera set the growth review for Monday and sent three questions.
 
-```mermaid
-flowchart LR
-    M["Monday<br/>read the orders"] --> T["Tuesday<br/>package and survive bad data"]
-    T --> W["Wednesday<br/>profile before you touch"]
-    W --> Th["Thursday<br/>describe without misleading<br/>YOU ARE HERE"]
-    Th --> S["Saturday<br/>the recap paper"]
-```
+> "One: Retail-Plus is down, smaller than first reported. Real, or the wobble we see every quarter?
+> Two: Student is up 40 percent; should I move budget there? Three: marketing ran a monsoon-sale
+> discount for Retail-Plus in August, says it lifted revenue 6 percent, and wants to repeat it for
+> Diwali. Did the discount work, or did those customers buy anyway?"
+>
+> "One page, two minutes. If the honest answer is 'we do not know yet', say so and tell me what
+> would tell us."
 
-Today's own four stops:
+Three questions that look alike and need three different habits. Answering one with another's method
+is how this day goes wrong.
 
-```mermaid
-flowchart LR
-    A["three answers to typical"] --> B["the whale"]
-    B --> C["spread and shape"]
-    C --> D["the segment summary"]
-```
-
-| Where it sits | What Thursday covered | Status |
-|---|---|---|
-| Phase 1, read and clean data | Mean, median and mode, the outlier's pull, spread, skew from sorted values, sample size, the segment summary, denominators | Worked, with your own hands on the keys |
-| Phase 2 | Whether a segment gap is real, which is Monday of Week 2 | Named and parked on purpose |
-| Phase 2 | The same accumulator as one `groupby` call in pandas | Mentioned once, so you know why it was built by hand |
-
-The coverage line: Thursday worked all eight subtopics on its row, and the fence arithmetic was given as a convenience for spotting the tail rather than as a test.
-
-**The outcome tie.** Today produces the first thing anybody outside the team would read: a number, a sentence and the count it rests on. That sentence is the moment the terminal outcome is actually judged.
-
-**What was left out.** Standard deviation arithmetic, distribution theory, chart libraries and hypothesis language. The nearest thing today did not cover is whether the gap between two segments is real, and that is Monday.
-
-**Two things you carried in from Wednesday** and that changed today's numbers:
-
-- `KR4201` appears twice. You chose to keep both rows and flag the pair, because they differ on `order_date` by six weeks and the order book owner decides. So you described 44 rows containing one unresolved pair.
-- Student held twelve orders in the raw file and ten in the profiled one, because two Student orders failed conversion. Your cleaning changed the denominator of your smallest segment, and only the rejects log records it.
-
-## 1. Three answers to "what is typical"
-
-| Statistic | The question it answers | Where it breaks |
-|---|---|---|
-| Mean | If the total were shared out equally, what would each order carry | One large order drags it away from everybody |
-| Median | What does the order standing in the middle look like | Ignores size entirely, which is usually what you want |
-| Mode | Which exact value repeats most often | On money almost nothing repeats, so it describes almost nothing |
-
-The hand-worked seven from the session, the first seven orders in the file:
-
-```
-1030  1145  1280  1310  1865  2270  2835
-mean   = 11735 / 7 = 1676.43
-median = 1310  (4th of 7)
-
-replace 2835 with the file's own whale, 480000:
-mean   = 488900 / 7 = 69842.86      nearly 42 times larger
-median = 1310                       did not move at all
-```
-
-The median moving by exactly zero is the thing to remember. It is not "moves a little". Changing the size of the largest order does not change which order stands in the middle.
-
----
-
-## 2. The whale, and the failure of the day
-
-The session's deliberate failure raised no exception at all:
-
-```
-mean amount over 44 orders: Rs 12,753.30
-orders at or above Rs 12,753.30: 1
-orders below Rs 12,753.30: 43
-```
-
-The arithmetic is right. The description is wrong. Forty-three of forty-four orders sit below the number somebody was about to call typical.
-
-The cause is one order:
-
-```
-KR4232   C1749   Retail-Core   480000   delivered   2026-08-19
-```
-
-It carries **85.5 percent of every rupee in the file**. The second largest order is Rs 2,995, so the whale is a hundred and sixty times the one below it.
-
-| Column | With the whale | Without it |
-|---|---|---|
-| All orders, mean | Rs 12,753.30 | Rs 1,887.09 |
-| All orders, median | Rs 1,910.00 | Rs 1,865.00 |
-
-**The tell.** Removing one order out of forty-four drops the mean by a factor of nearly seven and lands it within Rs 22 of the median. When taking out a single record makes the mean and the median agree, the mean was describing that record rather than the business.
-
-**The whale stays in the file.** It converts cleanly, it is well formed, and Wednesday's decisions log records the choice to keep it and raise it with the order book owner. The data does not change. The statistic changes.
-
-Nothing in `try` and `except` catches this class of failure. The only thing that catches it is looking at the shape before you speak.
-
----
-
-## 3. Spread, and a rule that runs without you
-
-```
-min:   Rs       800
-max:   Rs   480,000
-range: Rs   479,200
-```
-
-Range is built from two orders out of forty-four and one of them is the whale, so it tells you about those two orders.
-
-Wednesday's fence was ten times the middle order, which worked and was deliberately crude because somebody chose the ten. The standard version uses the spread of the middle half instead:
-
-```
-Q1          = Rs  1,287.50
-Q3          = Rs  2,718.75
-IQR         = Q3 - Q1        = Rs 1,431.25
-upper fence = Q3 + 1.5 x IQR = Rs 4,865.62
-
-orders above the fence: 1
-```
-
-It caught the whale and nothing else. The largest ordinary order at Rs 2,995 sits well inside.
-
-Two rules, built differently, agreeing on the same single record. That agreement is worth more than either rule alone.
-
-**A fence is a flag, never a delete key.** Wednesday's language is unchanged: an outlier is a finding to investigate before it is a row to delete.
-
----
-
-## 4. Reading the shape with no chart
-
-```
- min      median                                            max
-  800      1,910                                        480,000
-   |---------|-----------------------------------------------|
-    1,110 down              478,090 up
-```
-
-The up side is 431 times the down side, which is the skew, read off sorted values with one subtraction each way.
-
-The cheaper version, one line on any column in any language:
-
-| What you see | What it means |
+| Her question | The habit |
 |---|---|
-| Mean well above median | Something large pulls on the right |
-| Mean well below median | Something small pulls on the left |
-| Mean and median close | Roughly even shape, either statistic describes it |
-
-This file: mean Rs 12,753.30, median Rs 1,910.00, a ratio of 6.68. You knew there was a tail before looking at a single order.
-
-**Anscombe's quartet, 1973.** Frank Anscombe built four datasets sharing nearly identical means, variances and correlations that look nothing alike when drawn. A summary statistic is a compression and every compression discards. Until Week 2, the sorted list and the mean-to-median ratio are your picture.
+| Real, or the wobble? | A chance reference |
+| Should I fund Student? | Sample size |
+| Did the discount work? | A fair comparison |
 
 ---
 
-## 5. The accumulator, and the KeyError
+## Habit one: the chance reference
 
-```python
-counts = {"Retail-Core": 0, "Retail-Plus": 0, "Business": 0}
-for r in orders:
-    counts[r["segment"]] += 1
+```mermaid
+flowchart LR
+    A["measure the<br/>real gap"] --> B["assume the labels<br/>mean nothing"]
+    B --> C["shuffle, recompute,<br/>five thousand times"]
+    C --> D["count the ones that<br/>beat the real gap"]
 ```
 
-```
-KeyError: 'Student'
-```
+Retail-Plus fell 35 percent and Retail-Core fell 2.7, a gap of **32.3 points**. Suppose the two
+labels meant nothing and the same members had been split between them at random. Would a gap that
+large turn up anyway?
 
-A dictionary was asked for a key it does not hold, and Python printed the key. Three segments were typed from memory; Kalpa Retail has four. It failed on the first order in the file, `KR4200`, which is a Student order.
+Shuffle the labels, keeping the group sizes, and recompute. **The unit you shuffle is the customer,
+not the order**, because a customer's orders belong together and splitting them across both labels
+builds a world that could not exist.
 
-**Every hard-coded list of categories is a promise about data you have not read yet.**
+| | |
+|---|---|
+| Shuffles at least as extreme | **0 of 5,000** |
+| Reported as | **p < 0.0002** |
 
-The fix builds the key the first time it appears:
+### Never write `p = 0`
 
-```python
-counts = {}
-for r in orders:
-    key = r["segment"]
-    if key not in counts:
-        counts[key] = 0
-    counts[key] += 1
-```
+Five thousand shuffles can only resolve down to one in five thousand. Writing `p = 0` claims a
+certainty the method cannot produce. The number you report is the resolution of your own simulation.
 
-Or the short form, which is Monday's `.get()` doing exactly what it did on Monday:
+### What a p-value is, and is not
 
-```python
-counts[key] = counts.get(key, 0) + 1
-```
+It is **the share of chance-only worlds that produce a result at least this extreme**.
 
-The median cannot be accumulated one order at a time, since it needs the whole group sorted. So the pass collects amounts into a list and the median is taken after the loop ends.
+| It is not | Why that matters |
+|---|---|
+| The probability the finding is wrong | It reverses what the number measures, and it is the version said aloud in meetings |
+| The probability chance caused it | Same reversal, worded differently |
+| A statement about size | On a large enough sample, almost any difference reaches significance |
 
----
+### Three separate calls
 
-## 6. The segment summary, and what the ranking measures
-
-Return rate is `returned / all orders in the group`. It is the first metric in the programme where **lower is better**.
-
-```
-segment        orders   median amount   returned   rate
-Business            9        Rs 2,050          1   11.1%
-Retail-Core        14        Rs 1,910          5   35.7%
-Retail-Plus        11        Rs 1,435          4   36.4%
-Student            10        Rs 1,430          2   20.0%
-```
-
-Ranked best first, with the denominator restored:
-
-```
-Business      11.1%   on  9 orders
-Student       20.0%   on 10 orders
-Retail-Core   35.7%   on 14 orders
-Retail-Plus   36.4%   on 11 orders
-```
-
-The two best-performing segments are the two smallest segments. That is not a coincidence about this file.
-
-```
-if 0 more Business orders had been returned:  11.1%   still best
-if 1 more Business order  had been returned:  22.2%   no longer best
-```
-
-**One order.** Small groups produce extreme rates in both directions with nothing causing it. Rank groups of very different sizes by a rate and the ranking reads group size at least as much as performance. The fix is not a cleverer statistic. It is the count column you already have.
-
----
-
-## 7. The honest sentence
-
-Three parts, in this order, every time:
-
-```
-[the number]   [the denominator]   [what it does not yet support]
-```
-
-```
-Business:    returned on 1 of 9 orders, 11.1 percent. Lowest in the file and the smallest
-             segment in it. One more return takes it to 22.2 percent and behind Student,
-             so this is not yet a finding.
-
-Student:     returned on 2 of 10 orders, 20.0 percent. Ten orders, and the raw file held
-             twelve before two failed conversion. Treat as unmeasured.
-
-Retail-Core: returned on 5 of 14 orders, 35.7 percent. Largest segment and the steadiest
-             number here. Median order Rs 1,910; the mean of Rs 36,027.14 is the
-             Rs 480,000 order and should not be quoted.
-
-Retail-Plus: returned on 4 of 11 orders, 36.4 percent. Highest in the file and within one
-             order of Retail-Core. The two are not separated by this data.
-```
-
-Two decline to make a claim and a third says two segments cannot be told apart. That is the sentence doing its job, and it is the deliverable, since a table gets cropped and pasted by somebody who never saw your notebook.
-
----
-
-## 8. The question left open on purpose
-
-> Is Business at 11.1 percent on 9 orders genuinely better than Retail-Plus at 36.4 percent on 11 orders, or is that gap what four groups of these sizes do on their own?
-
-Not answered today. There is a method and it is Monday's session.
-
-Writing the question down with both numbers and both denominators is the complete professional answer today. "We do not know yet, and here is exactly what would tell us" is a full answer in a room that wanted a different one.
-
----
-
-## Model answers to the day's interview questions
-
-**A stakeholder asks for the average order value and one enormous order sits in the data. What do you give them?**
-
-Give the median and name it as the median. State the count it rests on. Then say the large order exists, that it is real and retained, and that quoting the mean would describe one order out of forty-four. The third part is what separates a good answer from a correct one, because you want to be the person who mentioned it rather than the person it was found on.
-
-**How would you check for skew without plotting anything?**
-
-Sort the values and compare the distance from the median to the maximum against the distance from the median to the minimum. Then compare the mean against the median: a mean well above the median means a right tail. Offer the second part even if only one was asked for, since it is one line on any column.
-
-**Segment A converts at 42 percent on 12 records and segment B at 31 percent on 1,200. Which do you trust?**
-
-Trust B, and justify it by movement: one record swings A by more than eight points and B by less than a tenth of one. Then add the part most candidates leave out, which is that A is reported as unmeasured rather than as bad, along with what volume would make it meaningful. You have a stronger version of this answer than most candidates because you can say it about your own file: Business leads on nine orders and one order takes the lead away.
-
-**Your cleaning run reported zero rejects on a file you know is dirty. What do you check?** (Wednesday's, returning)
-
-Check that the loop is running at all by printing the order count. Check that the rejection branch can be reached, since a condition that is never true and a condition that never runs look identical in the output. Then check that the failures are not being swallowed by a broad `except`, which is Tuesday's argument in a new costume.
-
----
-
-## Crux lines to carry into Week 2
-
-> The mean was right and the description was wrong.
-
-> On a money column, send the median, and say that is what you sent.
-
-> Every rate carries its denominator, or it lies for you while you are not in the room.
-
-Week 2 re-expresses this entire pass as one line of pandas and one SQL `GROUP BY` on the same orders. You built it by hand once so that when the one-liner arrives you already know what the answer should be, and you will notice if it disagrees.
-
-## Check yourself, with nothing to write
-
-Eight questions. No notebook, no notes. Anything you cannot say in ten seconds names the section to re-read.
-
-1. The mean is Rs 12,753 and the median is Rs 1,910 on the same 44 orders. Which describes the file? (Section 1)
-2. How many of those 44 orders sit at or above the mean, and what does that tell you? (Section 2)
-3. Take KR4232 out. Roughly where does the mean land? (Section 2)
-4. Range is min to max. Why is it the least stable number you produced today? (Section 3)
-5. Sorted values, and the distance up from the median dwarfs the distance down. What is that called? (Section 4)
-6. Your segment dictionary raises `KeyError: 'Student'`. What did the code do wrong? (Section 5)
-7. Business returns at 11.1 percent on nine orders. What does one more return do to that? (Section 6)
-8. What are the three parts of the sentence you send, and what is the fourth if something owns the number? (Section 7)
-
-## Read next, in this order
-
-| What | Why it is next | Time |
+| Call | Answered by | For Retail-Plus |
 |---|---|---|
-| Khan Academy, mean, median and mode review (verified 03 Sep 2026): https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/mean-median-basics/a/mean-median-and-mode-review | The worked values, at your own pace, on numbers you can check | About 15 minutes |
-| Khan Academy, summarizing quantitative data (verified 03 Sep 2026): https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data | Spread and outliers, with practice items | About 40 minutes |
-| Seeing Theory, frequentist inference (verified 05 Sep 2026): https://seeing-theory.brown.edu/frequentist-inference/index.html | Monday opens on the question this session refused to answer, and this is the interactive preview | About 20 minutes |
+| Could chance have done this? | The p-value | No |
+| Is it big? | The size of the effect | Yes, about a third |
+| Is it worth acting on? | The cost against the gain | Yes, 22 paid-tier members |
 
-Do the Seeing Theory chapter before Monday. The other two are for the weekend.
+**Only the first came from the shuffle.** The other two came from knowing the business, and saying
+so out loud is what stops a p-value being used as a decision.
 
-## The words, and where each one starts mattering
+---
 
-| Term | What it means | Where it first bit |
-|---|---|---|
-| Mean | The total shared out equally, which every value takes part in | The moment one order owned it |
-| Median | The value standing in the middle of the sorted column | The same moment, from the other side |
-| Mode | The exact value that repeats most, which on money repeats twice in 44 | The amount column |
-| Range | Maximum minus minimum, built from the two least typical values | Rs 800 to Rs 480,000 |
-| Interquartile range | The spread of the middle half, and the basis of the fence | The fence that caught exactly one order |
-| Skew | Which side of the median the tail is on | The distance up dwarfing the distance down |
-| Denominator | The count a rate rests on, which travels with it | Business at 11.1 percent on nine orders |
-| Trust floor | A record count below which you decline to rank, chosen and defended | Every segment in a 44 order file |
-| The honest sentence | The number, what it describes, the count it rests on, and a flag on anything that owns it | The deliverable of the day |
+## Habit two: sample size
+
+Student went from 2.50 to 3.50 orders per member. Forty percent. **On twelve orders**, five in the
+first quarter and seven in the second.
+
+Suppose each of those twelve orders landed in either quarter by chance. How often does that alone
+give seven or more in the second?
+
+| | |
+|---|---|
+| Chance-only worlds at least this extreme | **1,914 of 5,000** |
+| Reported as | **p = 0.383** |
+| Reads as | Chance does this about two times in five |
+
+The rise is real in the file and it is worthless as evidence.
+
+**The rule of thumb:** distrust any rate computed on fewer than about thirty observations. It is a
+rule of thumb rather than a law, and saying which it is out loud is part of using it honestly.
+
+---
+
+## Habit three: the fair comparison
+
+Marketing's claim is arithmetically correct:
+
+> "Revenue from exposed customers was six percent higher than from unexposed ones."
+
+**A fair comparison needs a group that did not get the thing, that is like the group that did, in
+the ways that matter.** Both halves are load-bearing, and targeting breaks the second half on
+purpose: the sale went to Retail-Plus members, who already spend two and a half times what
+Retail-Core members spend.
+
+### The table, one row at a time
+
+| Group | Exposed | Not exposed | Change |
+|---|---|---|---|
+| Retail-Plus | Rs 4,850 (30) | Rs 5,000 (40) | **down 3 percent** |
+| Retail-Core | Rs 1,940 (30) | Rs 2,000 (60) | **down 3 percent** |
+| **Everyone** | **Rs 3,395 (60)** | **Rs 3,200 (100)** | **up 6 percent** |
+
+Both parts fell. The whole rose. Nobody made an arithmetic error.
+
+```mermaid
+flowchart LR
+    A["exposed group<br/>is 50% Retail-Plus"] --> C["the blend is pulled<br/>toward the richer segment"]
+    B["control group<br/>is 40% Retail-Plus"] --> C
+    C --> D["<b>+6 percent</b><br/>from the mix,<br/>not the discount"]
+```
+
+**The campaign changed who is in the average, not what they spent.** When a comparison reverses once
+a group is split, the aggregate was being driven by the mix. You meet this again in Week 2 in SQL,
+in Week 5 on a model's segments, and in every interview that asks why a metric moved.
+
+### What you cannot say either
+
+The campaign did not "reduce spending by 3 percent". Nobody randomised it, so the exposed and
+unexposed groups may differ in ways the segment split does not capture. **Over-correcting is as
+wrong as the claim it replaces.**
+
+What would settle it: assign the next discount at random within a segment, so the two groups differ
+only in the discount. An experiment nobody ran cannot be recovered from the data afterwards.
+
+---
+
+## The note, four parts
+
+```
+CLAIM      one sentence, with the number and its denominator
+EVIDENCE   what you computed, and on how many observations
+CAVEAT     the thing that would change the claim
+ACTION     what to do, and what it costs
+```
+
+Claim first, because a CEO reads two minutes and stops.
+
+> **Retail-Plus.** Orders per member fell about a third, against Retail-Core's 2.7 percent. Chance
+> alone produced a gap this large in none of 5,000 shuffles, so the fall is real. These are 22
+> paid-tier members and I would act on it.
+>
+> **Student.** Up 40 percent on twelve orders. Chance produces a rise that large about two times in
+> five, so I would not move budget yet. A full quarter at around fifty orders would tell us.
+>
+> **The monsoon sale.** The six percent is a mix effect: half the exposed group is Retail-Plus
+> against forty percent of the control, and Retail-Plus spends two and a half times more. Within
+> both segments, exposed customers spent three percent **less**. I cannot say the campaign failed
+> either, because nobody randomised it. Randomising the next one inside a segment would settle it.
+
+**Three answers, three different shapes, and only one is a yes.** A page where all three are yes is a
+page that was written to please.
+
+---
+
+## Glossary
+
+| Term | What it means here |
+|---|---|
+| Chance reference | A set of worlds built by shuffling, against which the real result is compared |
+| Permutation test | Shuffling the labels many times and counting the extremes |
+| p-value | The share of those worlds at least as extreme as what you saw |
+| Resolution | The smallest p-value a simulation of that size can report |
+| Effect size | How big the difference is, which the p-value says nothing about |
+| Sample size | How many observations sit behind a rate |
+| Control group | Those who did not get the thing, used as the comparison |
+| Confounder | Something that differs between the groups and also affects the outcome |
+| Mix effect | An aggregate moving because the composition changed rather than the parts |
+| Randomisation | Assigning the treatment by chance, which is what makes a comparison fair |
+
+---
+
+## The questions this day now makes answerable
+
+- How do you know whether a change in a metric is significant?
+- Explain a finding to a non-technical stakeholder.
+- What does `p = 0.03` mean, and not mean?
+- 42 percent on 12 users against 31 percent on 1,200: which do you trust?
+- Revenue rose after a discount. Did the campaign work, and what would you need to know?
+- The CEO wants a yes or no and the honest answer is "not yet". What do you say?
+
+---
+
+## What Saturday does with this
+
+Saturday is the pen-and-paper recap and the interview-answer discussion. The note is the thing you
+will be asked to defend, and the p-value sentence is the one most often lost under pressure.
+
+---
+
+## Reading, if you want it
+
+- Seeing Theory, frequentist inference, interactive (verified 05 Sep 2026):
+  https://seeing-theory.brown.edu/frequentist-inference/index.html
+- StatQuest video index, the two hypothesis-testing videos (verified 05 Sep 2026):
+  https://statquest.org/video_index.html
+- Exponent, analyst questions including conveying insights to a non-technical audience
+  (verified 13 Sep 2026): https://www.tryexponent.com/blog/top-data-analyst-interview-questions
