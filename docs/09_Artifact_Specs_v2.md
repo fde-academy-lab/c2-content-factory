@@ -59,7 +59,7 @@ to find it; the plant list belongs in the trainer playbook and nowhere else.
 
 ## Exercises
 
-**For.** Making the learner think, on GitHub Discussions, with nothing in the file that is not for them.
+**For.** Making the learner think, with nothing in the file that is not for them.
 
 **Shape.** Three per session, one per block, about thirty items across six or seven parts, plus one open take-home. Answers as letter strings pasted into chat, with the format shown in neutral letters. A separate answer key holds item-by-item reasoning and a why-the-others-fail column.
 

@@ -86,7 +86,7 @@ Standard shape for a teaching-week day:
 
 Content covers approximately four hours of the teaching day. The remaining time is trainer discretion. Coverage of the four hours is not discretionary.
 
-Daily competitive coding runs 6:00 to 7:30 PM on CodeChef as practice. It carries no assessment weight.
+Daily competitive coding runs on CodeChef in an evening slot as practice. It carries no assessment weight, and no artifact states its clock time.
 
 The daily written test used in Cohort 1 is gone. The daily check is Kahoot, scored on correctness and
 speed together, at low weight, kept as an attention and retention signal rather than as a marks
@@ -174,9 +174,9 @@ Any document showing a 6.0 threshold is Cohort 1 material and is stale.
 
 | Platform | Use | Not used for |
 |---|---|---|
-| Neo | All tests and exams: MCQ, coding, file upload. Daily platform check. | Practice |
-| CodeChef | Daily competitive coding practice, 6:00 to 7:30 PM | Any assessment |
-| GitHub | Exercises, discussions, projects, student portfolios | Formal marks entry |
+| Neo | The three major exams: MCQ, coding, file upload | Practice, and the daily check, which is Kahoot |
+| CodeChef | Daily competitive coding practice, in an evening slot | Any assessment; it carries no marks |
+| GitHub | Exercises, projects, student portfolios | Formal marks entry; Discussions is not used by this programme |
 | LMS | Content delivery and submissions | Assessment |
 
 This cohort does not use Slack.
