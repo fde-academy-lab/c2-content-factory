@@ -127,6 +127,21 @@ def connect():
             f"Run bash .devcontainer/load_warehouse.sh to build it.\n  {e}")
 
 
+def engine():
+    """A SQLAlchemy engine for the warehouse, which is what pandas.read_sql wants.
+
+    A raw driver connection works and makes pandas warn on every call, and a warning printed
+    beside every table in a teaching notebook trains people to ignore warnings.
+    """
+    try:
+        from sqlalchemy import create_engine
+    except ImportError:
+        raise SystemExit("SQLAlchemy is missing. Run: pip install 'sqlalchemy>=2'")
+    w = WAREHOUSE
+    return create_engine(
+        f"postgresql+psycopg2://{w['user']}:{w['password']}@{w['host']}:{w['port']}/{w['dbname']}")
+
+
 def sql(query, params=None, conn=None):
     """Run a query and return its rows as a list of dicts, which prints and indexes readably."""
     own = conn is None
