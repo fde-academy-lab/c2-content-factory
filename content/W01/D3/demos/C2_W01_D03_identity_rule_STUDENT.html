@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The identity rule, and the bridge</title>
+<style>
+  :root{--ink:#1C1C1A;--muted:#5F6360;--accent:#2B4A7D;--tint:#E4ECF7;--bg:#F7F7F5;
+        --line:#C9C9C2;--pass:#1F6F4A;--fail:#8A3D3D;
+        --font:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+        --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
+  *{box-sizing:border-box}
+  body{margin:0;padding:20px;background:var(--bg);color:var(--ink);font:15px/1.5 var(--font)}
+  .wrap{max-width:1060px;margin:0 auto}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 18px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 16px;
+        margin-bottom:18px}
+  .card h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:0 0 10px}
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th,td{text-align:left;padding:5px 8px 5px 0;border-bottom:1px solid var(--line)}
+  th{color:var(--accent)}
+  td.num,.mono{font-family:var(--mono)}
+  tr.dropped td{color:var(--fail);text-decoration:line-through}
+  tr.kept td{background:var(--tint)}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  button.act{font:inherit;padding:7px 12px;border:1px solid var(--accent);background:#fff;
+             color:var(--accent);border-radius:6px;cursor:pointer}
+  button.act[aria-pressed="true"]{background:var(--accent);color:#fff}
+  label{display:block;font-size:13px;color:var(--muted);margin:10px 0 2px}
+  .out{font:14px var(--mono);background:var(--bg);border:1px solid var(--line);border-radius:6px;
+       padding:10px;margin-top:10px}
+  .good{color:var(--pass);font-weight:700}
+  .bad{color:var(--fail);font-weight:700}
+  .log{margin-top:14px;font:13px var(--mono);color:var(--muted);border-top:1px solid var(--line);
+       padding-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>The identity rule, and the bridge</h1>
+  <p class="sub">Six rows from the export. Choose what makes two rows the same order, and watch the total move.</p>
+
+  <div class="card">
+    <h2>What decides that two rows are the same order?</h2>
+    <div class="row">
+      <button class="act" id="mWhole" type="button" aria-pressed="true">Every field matches</button>
+      <button class="act" id="mId" type="button">The order id matches</button>
+      <button class="act" id="mIdDate" type="button">The id and the date match</button>
+    </div>
+    <table id="rows"></table>
+    <div class="out" id="verdict"></div>
+  </div>
+
+  <div class="card">
+    <h2>The bridge</h2>
+    <label for="dupes">Duplicate ids removed <span id="ldupes"></span></label>
+    <input type="range" id="dupes" min="0" max="15" value="15" style="width:100%">
+    <label for="bad">Unconvertible amounts and blank statuses removed <span id="lbad"></span></label>
+    <input type="range" id="bad" min="0" max="2" value="2" style="width:100%">
+    <div class="out">
+      <div>reconciled Q1</div>
+      <div style="font-size:24px;font-weight:700" id="total"></div>
+      <div id="against"></div>
+    </div>
+    <div class="row">
+      <button class="act" id="reset" type="button">Back to the full pass</button>
+      <button class="act" id="none" type="button">Clean nothing at all</button>
+    </div>
+  </div>
+
+  <div class="log" id="log">Nothing changed yet.</div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var ROWS = [
+    {id:"KR-02007", date:"2026-04-18", amt:2200, note:"ordinary order"},
+    {id:"KR-02007", date:"2026-04-18", amt:2200, note:"every field identical"},
+    {id:"KR-02151", date:"2026-09-25", amt:1850, note:"same id"},
+    {id:"KR-02151", date:"2026-08-02", amt:1850, note:"same id, different date"},
+    {id:"KR-02063", date:"2026-05-11", amt:"twelve", note:"amount will not convert"},
+    {id:"KR-01031", date:"2026-08-14", amt:480000, note:"real corporate order"}
+  ];
+  var mode = "whole", count = 0;
+  var Q1_RAW = 20998210, FINANCE = 18998210, PER_DUP = 133321;
+
+  function note(m){ count += 1;
+    document.getElementById("log").textContent = "change " + count + ": " + m; }
+  function fmt(n){ return "Rs " + Math.round(n).toLocaleString("en-IN"); }
+
+  function keyOf(r){
+    if (mode === "whole") return r.id + "|" + r.date + "|" + r.amt;
+    if (mode === "id") return r.id;
+    return r.id + "|" + r.date;
+  }
+
+  function table(){
+    var t = document.getElementById("rows");
+    t.textContent = "";
+    var head = document.createElement("tr");
+    ["order_id","order_date","amount","what it is","verdict"].forEach(function(h){
+      var th = document.createElement("th"); th.textContent = h; head.appendChild(th); });
+    t.appendChild(head);
+    var seen = {}, dropped = 0;
+    ROWS.forEach(function(r){
+      var k = keyOf(r), gone = Object.prototype.hasOwnProperty.call(seen, k);
+      seen[k] = true;
+      if (gone) dropped += 1;
+      var tr = document.createElement("tr");
+      tr.className = gone ? "dropped" : (r.amt === 480000 ? "kept" : "");
+      [r.id, r.date, String(r.amt), r.note, gone ? "removed as a repeat" : "kept"]
+        .forEach(function(v, i){
+          var td = document.createElement("td");
+          td.textContent = v;
+          if (i < 3) td.className = "num";
+          tr.appendChild(td);
+        });
+      t.appendChild(tr);
+    });
+    var v = document.getElementById("verdict");
+    v.textContent = "";
+    var line = document.createElement("div");
+    if (mode === "whole"){
+      line.textContent = dropped + " of 6 removed. The pair sharing KR-02151 survives, because " +
+        "their dates differ, so a whole-record check cannot see that they are one order.";
+    } else if (mode === "id"){
+      line.textContent = dropped + " of 6 removed. KR-02151 is now one row, and somebody has to " +
+        "say which of the two dates is the order's real date. That is a judgment for the log.";
+    } else {
+      line.textContent = dropped + " of 6 removed. Adding the date to the key is the same as the " +
+        "whole-record check for this file, so it buys nothing and reads as if it did.";
+    }
+    v.appendChild(line);
+    ["mWhole","mId","mIdDate"].forEach(function(id, i){
+      document.getElementById(id).setAttribute("aria-pressed",
+        String(mode === ["whole","id","idDate"][i]));
+    });
+  }
+
+  function bridge(){
+    var d = Number(document.getElementById("dupes").value);
+    var b = Number(document.getElementById("bad").value);
+    document.getElementById("ldupes").textContent = d + " of 15";
+    document.getElementById("lbad").textContent = b + " of 2";
+    var total = Q1_RAW - d * PER_DUP - (b === 2 ? 1790 : (b === 1 ? 1790 : 0));
+    document.getElementById("total").textContent = fmt(total);
+    var a = document.getElementById("against");
+    a.textContent = "";
+    var span = document.createElement("span");
+    var diff = total - FINANCE;
+    if (Math.abs(diff) < 1000){
+      span.className = "good";
+      span.textContent = "lands on Finance's Rs 1.90 crore, so the bridge is complete";
+    } else {
+      span.className = "bad";
+      span.textContent = "off Finance's figure by " + fmt(Math.abs(diff)) +
+        ", so a step is missing rather than rounding";
+    }
+    a.appendChild(span);
+  }
+
+  ["mWhole","mId","mIdDate"].forEach(function(id, i){
+    document.getElementById(id).addEventListener("click", function(){
+      mode = ["whole","id","idDate"][i]; table();
+      note("matched on " + ({whole:"every field", id:"the order id",
+                             idDate:"the id and the date"})[mode]);
+    });
+  });
+  ["dupes","bad"].forEach(function(id){
+    document.getElementById(id).addEventListener("input", function(){
+      bridge(); note("moved the " + id + " step of the bridge");
+    });
+  });
+  document.getElementById("reset").addEventListener("click", function(){
+    document.getElementById("dupes").value = 15;
+    document.getElementById("bad").value = 2;
+    bridge(); note("restored the full pass");
+  });
+  document.getElementById("none").addEventListener("click", function(){
+    document.getElementById("dupes").value = 0;
+    document.getElementById("bad").value = 0;
+    bridge(); note("cleaned nothing, which is the dashboard's figure");
+  });
+
+  table(); bridge();
+})();
+</script>
+</body>
+</html>

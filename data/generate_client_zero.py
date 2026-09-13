@@ -298,6 +298,25 @@ def build_v2():
     return rows
 
 
+def build_v2b():
+    """A second export for the take-home, with different defects from the class file.
+
+    The learner cannot reuse Wednesday's reject counts, because the defects are not the same ones:
+    a header row pasted into the middle of the body, a negative amount, a date in a second format,
+    and duplicates that sit in a different segment.
+    """
+    rows = [dict(r) for r in build_quarters()][:90]
+    for r in rows:
+        r["amount"] = r["amount"]
+    header = {k: k for k in rows[0]}          # the header line, read as a record
+    rows.insert(44, header)
+    rows[17]["amount"] = -2400                # a refund posted as a negative order
+    rows[29]["order_date"] = "12/05/2026"     # the other date format, silently
+    rows[52]["status"] = ""                   # nothing to classify it by
+    dupes = [dict(rows[i]) for i in (3, 8, 21, 36, 61, 70)]
+    return rows + dupes
+
+
 # --------------------------------------------------------------------------- v3, Thursday
 def build_v3():
     """The cleaned two quarters, and the campaigns table the discount question needs."""
@@ -406,6 +425,10 @@ def write(version, out_dir, stem):
         written.append(j)
 
         # The companion export whose header row was pasted in twice.
+        tk = out / f"{stem}_takehome_STUDENT.csv"
+        _write_csv(tk, build_v2b())
+        written.append(tk)
+
         c = out / f"{stem}_vendor_STUDENT.csv"
         text = (out / f"{stem}_orders_STUDENT.csv").read_text(encoding="utf-8").splitlines()
         c.write_text("\n".join([text[0], text[0]] + text[1:40]) + "\n", encoding="utf-8")
