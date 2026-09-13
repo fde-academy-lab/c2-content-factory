@@ -26,9 +26,9 @@ Open <https://github.com/fde-academy-lab?tab=projects>, choose **New project**, 
 template, name it `C2 Content Build` and create it.
 
 This account is a personal one rather than an organisation, so the board's address is
-`https://github.com/users/fde-academy-lab/projects/1`, which is the address
-`.github/workflows/board-add.yml` already carries. If the number comes out as anything other than
-1, correct it in that file and pass `--project N` to the script.
+<https://github.com/users/fde-academy-lab/projects/7>, which is the address
+`.github/workflows/board-add.yml` and `scripts/board_sync.py` both carry. A second board would
+take a different number, and `--project N` is how the script is pointed at one.
 
 ### 2. Link it to this repository
 
@@ -36,7 +36,22 @@ Open <https://github.com/fde-academy-lab/c2-content-factory/projects>, choose **
 and pick `C2 Content Build`. The board then shows on this repository's own Projects tab, which is
 where a reviewer looks for it.
 
-### 3. Name the Status options
+### 3. Decide who can see it
+
+A new project is private to whoever made it, which is not what this board is for. Two settings
+open it up and they do different jobs.
+
+Visibility is at **⋯ → Settings**, and in the danger zone next to **Visibility** there is
+**Public**. This repository is public already, so a public board carries nothing that was not
+public anyway, and anybody can then read the plan without being invited.
+
+Editing is separate. A reviewer who has to drag a card needs **⋯ → Settings → Manage access**,
+then their handle under **Invite collaborators** with the **Write** role. Read lets somebody look
+and Admin lets them invite other people, so Write is the one a reviewer wants. Repository
+permissions still apply on top: a person who cannot see an issue cannot see its card either, which
+this repository being public takes care of.
+
+### 4. Name the Status options
 
 In the board's **Status** field, replace the three default options with these seven, in this
 order. The names must match the labels exactly, without the `status:` prefix.
@@ -51,7 +66,7 @@ order. The names must match the labels exactly, without the `status:` prefix.
 | Rework | Sent back with the change named in a comment | Back to the builder |
 | Done | Signed off, gate green, shipped | Nobody |
 
-### 4. Put the cards that already exist on it
+### 5. Put the cards that already exist on it
 
 A personal project has no import step. An organisation project offers one while it is being
 created and a personal one does not, so every card that already exists goes on through the API.
@@ -71,7 +86,7 @@ Adding a card that is already on the board returns that same card, so the comman
 again and is how the board catches up after a batch of new issues. A Claude Code session cannot
 run it, because GraphQL is blocked from those sessions.
 
-### 5. Keep new cards arriving
+### 6. Keep new cards arriving
 
 Two mechanisms do this and either one is enough.
 

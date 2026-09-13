@@ -42,7 +42,7 @@ GRAPHQL = "https://api.github.com/graphql"
 # fde-academy-lab is a personal account, so the board hangs off user() rather than
 # organization(). Change this pair together if the repository ever moves to an org.
 OWNER_FIELD = "user"
-PROJECT_NUMBER = 1
+PROJECT_NUMBER = 7
 
 # --------------------------------------------------------------------------- the vocabulary
 # Status is the one label a card carries from the STATUS group at a time. The board's Status column
@@ -506,7 +506,7 @@ def main():
     ap.add_argument("--project-add", action="store_true",
                     help="put every issue on the Project board, which no other command can do")
     ap.add_argument("--project", type=int, default=PROJECT_NUMBER,
-                    help="the board's project number, which is 1 unless a second board exists")
+                    help="the board's project number, which is 7 unless a second board exists")
     a = ap.parse_args()
     dry = a.dry_run
 
