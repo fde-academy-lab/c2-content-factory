@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The revenue tree, Kalpa Retail</title>
+<style>
+  :root{--ink:#1C1C1A;--muted:#5F6360;--accent:#2B4A7D;--tint:#E4ECF7;--bg:#F7F7F5;
+        --line:#C9C9C2;--pass:#1F6F4A;--fail:#8A3D3D;
+        --font:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+        --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
+  *{box-sizing:border-box}
+  body{margin:0;padding:20px;background:var(--bg);color:var(--ink);font:15px/1.5 var(--font)}
+  .wrap{max-width:1080px;margin:0 auto}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 18px}
+  .grid{display:grid;grid-template-columns:1.25fr 1fr;gap:18px}
+  @media (max-width:820px){.grid{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+  .card h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);
+           margin:0 0 10px}
+  .tree{display:flex;flex-direction:column;gap:8px}
+  .node{display:flex;justify-content:space-between;align-items:center;gap:10px;
+        border:1px solid var(--line);border-radius:6px;padding:8px 10px;background:var(--bg);
+        cursor:pointer;font:inherit;text-align:left;width:100%}
+  .node[aria-pressed="true"]{background:var(--tint);border-color:var(--accent);font-weight:700}
+  .node .val{font:13px var(--mono);color:var(--accent)}
+  label{display:block;font-size:13px;color:var(--muted);margin:10px 0 2px}
+  input[type=range]{width:100%}
+  .out{font:14px var(--mono);background:var(--bg);border:1px solid var(--line);
+       border-radius:6px;padding:10px;margin-top:10px}
+  .big{font-size:26px;font-weight:700;color:var(--accent)}
+  table{border-collapse:collapse;width:100%;font-size:13px;margin-top:6px}
+  th,td{text-align:left;padding:5px 8px 5px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--accent)}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  button.act{font:inherit;padding:7px 12px;border:1px solid var(--accent);background:#fff;
+             color:var(--accent);border-radius:6px;cursor:pointer}
+  button.act[aria-pressed="true"]{background:var(--accent);color:#fff}
+  .log{margin-top:14px;font:13px var(--mono);color:var(--muted);border-top:1px solid var(--line);
+       padding-top:8px}
+  .warn{color:var(--fail);font-weight:700}
+  .ok{color:var(--pass);font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>The revenue tree, Kalpa Retail</h1>
+  <p class="sub">Revenue is a product of five branches. Move one and watch what the others do not do.</p>
+
+  <div class="grid">
+    <div class="card">
+      <h2>The tree</h2>
+      <div class="tree" id="tree"></div>
+      <div class="out">
+        <div>revenue</div>
+        <div class="big" id="revenue">Rs 0</div>
+        <div id="delta">at plan</div>
+      </div>
+      <div class="row">
+        <button class="act" id="reset" type="button">Reset to today</button>
+        <button class="act" id="plan" type="button">Show the 15 percent plan</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Move one branch</h2>
+      <label for="s0">Customers <span id="l0"></span></label>
+      <input type="range" id="s0" min="-30" max="60" value="0">
+      <label for="s1">Orders per customer <span id="l1"></span></label>
+      <input type="range" id="s1" min="-30" max="60" value="0">
+      <label for="s2">Items per order <span id="l2"></span></label>
+      <input type="range" id="s2" min="-30" max="60" value="0">
+      <label for="s3">Price per item <span id="l3"></span></label>
+      <input type="range" id="s3" min="-30" max="60" value="0">
+      <label for="s4">Discount rate <span id="l4"></span></label>
+      <input type="range" id="s4" min="0" max="40" value="6">
+      <div class="out" id="branchnote">Pick a branch on the left to see what it costs to move.</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <h2>The average that lies</h2>
+    <p style="margin:0 0 8px">Thirty Kalpa orders. One of them is a corporate order.</p>
+    <div class="row">
+      <button class="act" id="withCorp" type="button" aria-pressed="true">With the corporate order</button>
+      <button class="act" id="noCorp" type="button">Without it</button>
+    </div>
+    <table>
+      <tr><th>Orders</th><td id="n">30</td></tr>
+      <tr><th>Revenue</th><td id="rev">Rs 5,44,810</td></tr>
+      <tr><th>Mean order</th><td id="mean">Rs 18,160</td></tr>
+      <tr><th>Median order</th><td id="median">Rs 2,205</td></tr>
+      <tr><th>Mean over median</th><td id="ratio">8.2 times</td></tr>
+    </table>
+    <p id="verdict" style="margin:10px 0 0"></p>
+  </div>
+
+  <div class="log" id="log">Nothing changed yet.</div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var BRANCHES = [
+    {key:"customers", name:"customers", base:23,
+     metric:"distinct buyers / the window", cost:"marketing spend, and it is the slowest branch"},
+    {key:"frequency", name:"orders per customer", base:1.30,
+     metric:"orders / distinct customers, same window", cost:"retention work, a reorder feature, a tier"},
+    {key:"items", name:"items per order", base:2.4,
+     metric:"items / orders", cost:"merchandising, bundles, recommendations"},
+    {key:"price", name:"price per item", base:1180,
+     metric:"revenue / items", cost:"pricing, and it risks volume"},
+    {key:"discount", name:"discounts", base:6,
+     metric:"discount given / gross revenue before discount", cost:"margin, directly"}
+  ];
+  var BASE = 23 * 1.30 * 2.4 * 1180;
+  var sel = -1, corp = true, count = 0;
+
+  function fmt(n){ return "Rs " + Math.round(n).toLocaleString("en-IN"); }
+  function note(msg){ count += 1; document.getElementById("log").textContent =
+      "change " + count + ": " + msg; }
+
+  function tree(){
+    var box = document.getElementById("tree");
+    box.textContent = "";
+    BRANCHES.forEach(function(b, i){
+      var btn = document.createElement("button");
+      btn.type = "button"; btn.className = "node";
+      btn.setAttribute("aria-pressed", String(i === sel));
+      btn.id = "node" + i;
+      var name = document.createElement("span"); name.textContent = b.name;
+      var val = document.createElement("span"); val.className = "val";
+      val.textContent = current(i);
+      btn.appendChild(name); btn.appendChild(val);
+      btn.addEventListener("click", function(){ pick(i); });
+      box.appendChild(btn);
+    });
+  }
+
+  function pct(i){ return Number(document.getElementById("s" + i).value); }
+
+  function current(i){
+    var b = BRANCHES[i];
+    if (i === 4) return pct(4) + " percent";
+    var v = b.base * (1 + pct(i) / 100);
+    return i === 3 ? fmt(v) : (Math.round(v * 100) / 100).toString();
+  }
+
+  function revenue(){
+    var gross = BASE;
+    for (var i = 0; i < 4; i++) gross *= (1 + pct(i) / 100);
+    return gross * (1 - pct(4) / 100);
+  }
+
+  function draw(){
+    for (var i = 0; i < 5; i++){
+      document.getElementById("l" + i).textContent =
+        (i === 4 ? pct(4) + " percent" : (pct(i) >= 0 ? "+" : "") + pct(i) + " percent");
+      var node = document.getElementById("node" + i);
+      if (node) node.lastChild.textContent = current(i);
+    }
+    var r = revenue(), planned = BASE * 0.94 * 1.15;
+    document.getElementById("revenue").textContent = fmt(r);
+    var gap = 100 * (r / (BASE * 0.94) - 1);
+    document.getElementById("delta").textContent =
+      (gap >= 0 ? "up " : "down ") + Math.abs(gap).toFixed(1) +
+      " percent against today, and the plan needs " + fmt(planned);
+  }
+
+  function pick(i){
+    sel = i; tree(); draw();
+    var b = BRANCHES[i];
+    var box = document.getElementById("branchnote");
+    box.textContent = "";
+    var h = document.createElement("div");
+    h.innerHTML = "<b>" + b.name + "</b>";
+    var m = document.createElement("div"); m.textContent = "metric: " + b.metric;
+    var c = document.createElement("div"); c.textContent = "moving it costs: " + b.cost;
+    box.appendChild(h); box.appendChild(m); box.appendChild(c);
+    note("selected the " + b.name + " branch");
+  }
+
+  function averages(){
+    var withC = {n:30, rev:544810, mean:18160, med:2205};
+    var noC  = {n:29, rev:64810, mean:2235, med:2100};
+    var d = corp ? withC : noC;
+    document.getElementById("n").textContent = d.n;
+    document.getElementById("rev").textContent = fmt(d.rev);
+    document.getElementById("mean").textContent = fmt(d.mean);
+    document.getElementById("median").textContent = fmt(d.med);
+    document.getElementById("ratio").textContent = (d.mean / d.med).toFixed(1) + " times";
+    document.getElementById("withCorp").setAttribute("aria-pressed", String(corp));
+    document.getElementById("noCorp").setAttribute("aria-pressed", String(!corp));
+    var v = document.getElementById("verdict");
+    v.textContent = "";
+    var span = document.createElement("span");
+    span.className = corp ? "warn" : "ok";
+    span.textContent = corp
+      ? "The mean describes no order in this file."
+      : "The mean and the median now agree, because the file is one population.";
+    v.appendChild(span);
+  }
+
+  for (var i = 0; i < 5; i++){
+    (function(j){
+      document.getElementById("s" + j).addEventListener("input", function(){
+        draw();
+        note("moved " + BRANCHES[j].name + " to " + current(j));
+      });
+    })(i);
+  }
+
+  document.getElementById("reset").addEventListener("click", function(){
+    for (var i = 0; i < 4; i++) document.getElementById("s" + i).value = 0;
+    document.getElementById("s4").value = 6;
+    sel = -1; tree(); draw();
+    document.getElementById("branchnote").textContent =
+      "Back to today's numbers. Pick a branch to see what it costs to move.";
+    note("reset every branch to today");
+  });
+
+  document.getElementById("plan").addEventListener("click", function(){
+    document.getElementById("s0").value = 15;
+    document.getElementById("s1").value = 0;
+    draw();
+    document.getElementById("branchnote").textContent =
+      "Fifteen percent more customers and nothing else moved. That is what the Rs 12 crore buys, " +
+      "and it is one branch of five.";
+    note("applied the acquisition-only plan");
+  });
+
+  document.getElementById("withCorp").addEventListener("click", function(){
+    corp = true; averages(); note("included the corporate order");
+  });
+  document.getElementById("noCorp").addEventListener("click", function(){
+    corp = false; averages(); note("removed the corporate order");
+  });
+
+  tree(); draw(); averages();
+})();
+</script>
+</body>
+</html>

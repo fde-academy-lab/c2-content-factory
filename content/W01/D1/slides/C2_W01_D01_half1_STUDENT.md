@@ -1,590 +1,187 @@
-# Half one: the machine that remembers
+# Half one: the question before the budget
 
 Week 1, Day 1. Slide source. One idea per slide.
 
 Position bar, repeated at every section boundary:
-`[open the workbench] > [the kernel remembers] > [type decides] > [walk the records] > [the business answer]`
+`[the ask] > [the tree] > [the branches] > [the workbench]`
 
 ---
 
-## S1. The machine that remembers
-The notebook that opened the day is a machine that holds on to whatever you hand it.
+## SECTION A. The ask
 
-For the next stretch you learn what it is holding, why it sometimes refuses you, and how to get it back when it forgets.
-
----
-
----
-
----
-
-## S2. Where we are
-`[open the workbench] > [the kernel remembers] > [type decides] > [walk the records] > [the business answer]`
-
-Every order in this file is a Kalpa Retail order. The same thirty orders come back tomorrow as a file, and they come back again in Week 2 in pandas and in SQL.
-
----
-
-```mermaid
-flowchart LR
-    A["open the workbench"] --> B["the kernel remembers"]
-    B --> C["type decides"]
-    C --> D["walk the records"]
-    D --> E["the business answer"]
-```
-
----
-
----
-
-## S3. The answer you just watched
-The question was "Of these thirty Kalpa Retail orders, how much did we actually collect?"
-
-The answer was 13 delivered orders, totalling Rs 25,720.
-
-Nobody explained those records to you before the notebook ran, and that is the situation you will be hired into.
-
----
-
----
-
----
-
-## S4. Where this is going
-```
-total = 0
-for r in records:
-    if r["status"] == "delivered":
-        total = total + int(r["amount"])
-```
-
-Four lines produced that answer. You will have written this before the day ends.
-
----
-
----
-
----
-
-## SECTION 1: OPEN THE WORKBENCH
-`**[open the workbench]** > [the kernel remembers] > [type decides] > [walk the records] > [the business answer]`
-
----
-
----
-
----
-
-## S5. What a Codespace is
-A Codespace is a computer that GitHub runs for you and shows you inside a browser tab, with VS Code, Python and this repository already on it.
-
-Nothing is installed on your laptop and nothing needs to be. The Codespace you open today is the environment for the whole programme.
-
----
-
----
-
-```mermaid
-flowchart TB
-    A["your browser tab"] --> B["VS Code, running on GitHub's machine"]
-    B --> C["the repository, already checked out"]
-    B --> D["Python, already installed"]
-    C --> E["the notebook you open"]
-    D --> E
-```
-
----
-
-## S6. The layout, part by part
-The explorer down the left lists the files in the repository, and today's notebook is one of them.
-
-The editor in the middle is where the notebook opens, one cell under another.
-
-Each cell has a run button on its left, and the output of that cell appears directly under it.
-
-The kernel indicator at the top right names the Python that is running your cells.
-
-The terminal panel at the bottom is a shell on the same machine, and you have no reason to open it today.
-
----
-
----
-
----
-
-## S7. Running a cell
-A cell is a box you type Python into, and Shift and Enter runs it.
-
-The output appears under the cell you ran, and it stays on screen until you run that cell again.
-
----
-
----
-
----
-
-## S8. Step card, section 1
-1. Open the Codespace from the repository and wait for the editor to finish loading.
-2. Open the notebook from the explorer on the left.
-3. Run a cell with Shift and Enter.
-4. Read the output under the cell before you move on.
-
----
-
----
-
----
-
-## SECTION 2: THE KERNEL REMEMBERS
-`[open the workbench] > **[the kernel remembers]** > [type decides] > [walk the records] > [the business answer]`
-
----
-
----
-
----
-
-## S9. The bench
-The kernel is a workbench that keeps whatever you put on it for as long as it is running.
-
-Running a cell is you putting something on the bench. Restarting the kernel sweeps the bench clean, and the file on disk is untouched by that.
-
-This picture is the one we use for the rest of the day.
-
----
-
-```mermaid
-flowchart LR
-    A["you click a cell"] --> B["the kernel runs it"]
-    B --> C["the name goes on the bench"]
-    C --> D["the next cell reads it"]
-    D -->|"restart"| E["the bench is empty"]
-    E --> A
-```
-
----
-
----
-
-## S10. Cells run in the order you run them
-The notebook is a stack of cells on a screen, and the kernel has no opinion at all about that stack.
-
-The kernel sees the order you clicked run in. If you ran the third cell first, then the third cell ran first.
-
----
-
-```mermaid
-flowchart TB
-    subgraph screen["what the screen shows"]
-      S1["cell 1: setup"] --> S2["cell 2: count"] --> S3["cell 3: total"]
-    end
-    subgraph kernel["what the kernel did"]
-      K1["run [1]: cell 3"] --> K2["run [2]: cell 1"] --> K3["run [3]: cell 2"]
-    end
-    K1 --> X["NameError: name 'records' is not defined"]
-```
-
----
-
----
-
-## S11. The execution counter is the truth
-The number in square brackets to the left of a cell counts the runs the kernel has done.
-
-```
-[2]  records = [ ... ]
-[3]  count = 0
-[1]  for r in records:
-```
-
-The cell at the bottom of the screen ran first. Read the counters, never the positions.
-
----
-
----
-
----
-
-## S11a. Applied to Kalpa: the counters on today's notebook
-The setup cell that loads the thirty Kalpa Retail orders carries counter `[1]` on a clean kernel, and every later counter climbs from there without a gap.
-
-A gap in that sequence means somebody ran a cell, edited it and ran something else, so the output you are reading came from code that no longer exists on the page.
-
-Read the counters before you read the outputs, every time you open a notebook somebody else ran.
-
----
-
----
-
-## S12. The break
-```
-NameError: name 'records' is not defined
-```
-
-You ran the counting cell before the setup cell, so the name `records` was never put on the bench and the kernel had nothing to hand your loop.
-
-The error names the exact word it went looking for.
-
----
-
----
-
----
-
-## S13. The recovery drill
-Restart the kernel, then run all cells from the top. You are back where you were, in a few seconds.
-
-The file on disk never changed. What you lost was the state on the bench, and the cells put that state straight back.
-
-Do the drill now on purpose, because you will do it many times this week.
-
----
-
----
-
-```mermaid
-flowchart TB
-    A["something is wrong and you do not know what"] --> B["restart the kernel"]
-    B --> C["run all, top to bottom"]
-    C --> D{"did it finish?"}
-    D -->|"yes"| E["the notebook was fine and the bench was not"]
-    D -->|"no"| F["read the last line of the first traceback"]
-```
-
----
-
-## S14. Step card, section 2
-1. The kernel holds what you gave it until you restart it.
-2. Run order is what the kernel sees, and screen order is what you see.
-3. Read the execution counter first when an output surprises you.
-4. Restart and run all is the recovery, and it costs you seconds.
-
----
-
----
-
----
-
-## SECTION 3: TYPE DECIDES
-`[open the workbench] > [the kernel remembers] > **[type decides]** > [walk the records] > [the business answer]`
-
----
-
----
-
----
-
-## S15. Four types you meet today
-`str` holds text, like the order id "KR4224" and the status "delivered".
-
-`int` holds a whole number, like the amount 1460.
-
-`float` holds a number with a decimal part, like 1460.5.
-
-`bool` holds `True` or `False`, which is what every comparison hands back.
-
----
-
----
-
-```mermaid
-flowchart LR
-    A["str: text, so an id and a status"] --> E["what the operator means"]
-    B["int: a whole number, so an amount"] --> E
-    C["float: a number with a decimal part"] --> E
-    D["bool: True or False, from every comparison"] --> E
-```
-
----
-
-## S16. type() is the question you ask
-```
-type("4500")        <class 'str'>
-type(4500)          <class 'int'>
-type(4500.0)        <class 'float'>
-type(4500 > 2000)   <class 'bool'>
-```
-
-When an operator behaves in a way you did not expect, ask the value what it is before you change any code.
-
----
-
----
-
----
-
-## S17. Look at the record
-```
-{"order_id": "KR4200", "segment": "Retail-Core", "amount": "4500", "status": "returned", "order_date": "2026-08-03"}
-{"order_id": "KR4201", "segment": "Retail-Plus", "amount": 2395, "status": "delivered", "order_date": "2026-08-03"}
-```
-
-One of those two amounts is wearing quotes. Read the two lines again and find it.
-
-KR4200 stores its amount as the text "4500", and it is the largest amount in the file.
-
----
-
----
-
----
-
-## S18. The break
-```
-amount = "4500"
-amount > 2000
-```
-
-```
-TypeError: '>' not supported between instances of 'str' and 'int'
-```
-
-Python was asked whether a piece of text is greater than a number. It stopped and named both types it was holding.
-
----
-
-```mermaid
-flowchart TB
-    A["'4500' > 2000"] --> B{"are both sides the same kind of thing?"}
-    B -->|"no"| C["TypeError, and both types are named"]
-    B -->|"yes"| D["True or False comes back"]
-    C --> E["int() where the comparison happens"]
-    E --> D
-    F["the record still holds '4500'"] -.-> E
-```
-
----
-
 ---
 
-## S19. From the field
-Mars Climate Orbiter, 1999. A value crossed a system boundary in the wrong unit, nothing validated it, and the mission, about USD 327 million, was lost.
+## S1. Rs 12 crore, and one question first
+Kalpa Retail sells consumer goods through its app, website and stores across India and South-East Asia. Revenue grew 4 percent last year against a plan of 15.
 
-Today's type discipline is the small version of that lesson.
+The board wants a growth plan within a month. Marketing has asked for Rs 12 crore to acquire new customers.
 
----
-
----
+Meera Raghavan, the CEO, has not signed it.
 
 ---
 
-## S20. Refusing beats guessing
-A spreadsheet would place that text amount somewhere in the sort order and show you a number with no warning attached to it.
+## S2. What she said, in her words
+> "Before I sign anything, I want to understand our own sales. What is 'sales' made of? Where does revenue come from, by customer type and channel? Is acquisition even the branch that is short?"
 
-Python refuses the comparison and tells you which two types it was holding. You lose ten seconds and you keep the truth.
+Three questions. The third one is the one that decides whether the Rs 12 crore moves.
 
-That is your answer when someone asks why the error was the good outcome.
-
----
-
 ---
 
----
-
-## S20a. Question: is '10' > 9 True, or an error?
-Take thirty seconds and commit to one of these four before the next slide.
+## S3. And what the finance controller added
+Anand Iyer, who owns the books:
 
-a) `True`, since ten is larger than nine
-b) `False`, since the quotes make it text and text sorts differently
-c) A `TypeError`, because the two sides are different kinds of thing
-d) It depends on the version of Python
+> "No averages. One business customer can move an average."
 
----
+Write that down. It comes back before the day ends, with a number attached.
 
 ---
-
-## S20b. Answer: it raises, and refusing is safer
-**The claim.** `'10' > 9` raises `TypeError: '>' not supported between instances of 'str' and 'int'`, and Python names both types while it refuses.
 
-| Option | Why it does not hold |
+## S4. Sales is not one number
+| If "sales" means | Then the number is |
 |---|---|
-| a) `True` | Reads the digits and ignores the quotes. Python has no rule that converts one side to match the other. |
-| b) `False` | Would be the answer if both sides were text, since `'10' > '9'` really is `False`. One side is a number here. |
-| d) It depends on the version | Python 2 compared across types and produced an order nobody could defend. Python 3 removed it on purpose. |
+| Everything ordered | Gross bookings, including what was cancelled |
+| Everything delivered | Delivered revenue, which Finance recognises |
+| Everything collected | Cash in, which lags delivery |
+| Everything after returns | Net revenue, which is lower again |
 
-**The mental model.** A spreadsheet guesses and shows you a total. Python refuses and shows you both types. You lose ten seconds and keep the truth.
+Four honest answers to one word. Pick one and say which, or the rest of the day argues about the wrong thing.
 
 ---
 
+## SECTION B. The tree
+
 ---
 
-## S21. Comparison operators
+## S5. Break it once
+Revenue is what customers pay. So the first split is how many of them, and how much each.
+
 ```
-2395 > 2000                   True
-2395 >= 2395                  True
-"delivered" == "delivered"    True
-"delivered" != "returned"     True
-```
-
-Each of these hands back a `bool`, and the `if` statement reads that `bool` and nothing else.
-
----
-
----
-
----
-
-## S22. if, elif and else
-```
-amount = 1460
-if amount > 2000:
-    band = "large"
-elif amount > 1500:
-    band = "medium"
-else:
-    band = "small"
+REVENUE = CUSTOMERS × REVENUE PER CUSTOMER
 ```
 
-Python tries the conditions from the top and stops at the first one that is `True`, so `band` holds "small" here.
+Keep breaking the right-hand side until every piece is something a team owns.
 
 ---
 
----
-
+## S6. Revenue, all the way down
 ```mermaid
 flowchart TB
-    A["amount"] --> B{"above 2000?"}
-    B -->|"yes"| C["large"]
-    B -->|"no"| D{"above 1500?"}
-    D -->|"yes"| E["medium"]
-    D -->|"no"| F["small"]
+    R["<b>REVENUE</b>"]
+    R --> C["<b>customers</b><br/>how many people<br/>bought at all"]
+    R --> F["<b>orders per customer</b><br/>how often each<br/>one came back"]
+    R --> I["<b>items per order</b><br/>how full<br/>the basket was"]
+    R --> P["<b>price per item</b><br/>what each<br/>line cost"]
+    R --> D["<b>discounts</b><br/>what we gave back"]
 ```
+
+Five branches. Growth comes from one of them at a time.
 
 ---
 
-## S23. The loop walks the stack
-A dataset is a stack of cards, and the loop deals you one card at a time and calls it `r`.
-
-```
-for r in records:
-    print(r["order_id"])
-```
-
-Thirty records means thirty turns through the indented lines. The way a field is fetched by its name gets its proper treatment in half two.
-
----
+## S7. Five branches, five different bills
+| Branch | Moves when | Costs |
+|---|---|---|
+| Customers | More people buy at all | Marketing spend, and it is the slowest |
+| Orders per customer | The same people come back more | Retention work, a reorder feature, a tier |
+| Items per order | Baskets get fuller | Merchandising, bundles |
+| Price per item | Realised price rises | Pricing, and it risks volume |
+| Discounts | Less is given back | Margin, directly |
 
 ---
 
----
+## S8. Every branch is a metric with a denominator
+| Branch | Numerator | Denominator |
+|---|---|---|
+| Customers | Distinct buyers | The window, which has to match on both sides |
+| Orders per customer | Orders | Distinct customers, same window |
+| Items per order | Items | Orders |
+| Price per item | Revenue | Items |
+| Discounts | Discount given | Gross revenue before discount |
 
-## S24. The count accumulator
-```
-count = 0
-for r in records:
-    if r["status"] == "delivered":
-        count = count + 1
-
-print(count)
-```
-
-```
-13
-```
-
-The counter is set to zero once, above the loop, and each card that passes the condition adds one to it.
+A rate with no denominator is a rumour.
 
 ---
 
+## SECTION C. The branches
+
+---
+
+## S9. Where the Rs 12 crore lands
 ```mermaid
-flowchart TB
-    A["total = 0"] --> B["take the next order"]
-    B --> C{"does it qualify?"}
-    C -->|"yes"| D["total = total + the amount"]
-    C -->|"no"| B
-    D --> B
-    B --> E["print total"]
+flowchart LR
+    M["<b>Rs 12 crore</b><br/>marketing's ask"] --> C["<b>customers</b>"]
+    C -.->|"the other four branches<br/>are untouched by it"| X["orders per customer<br/>items per order<br/>price per item<br/>discounts"]
 ```
+
+Marketing has picked a branch. Nothing here says it is the wrong one.
 
 ---
 
----
+## D10. Which branch would you open first?
+Five branches, one week, and a CEO who wants a recommendation by Thursday.
 
-## S25. The sum accumulator
-```
-total = 0
-for r in records:
-    if r["status"] == "delivered":
-        total = total + int(r["amount"])
-
-print(total)
-```
-
-```
-25720
-```
-
-The shape is the same and the amount goes in where the one was. That is 13 delivered orders totalling Rs 25,720, which is the number the notebook handed you at the start of the day.
+**Question.** Which one do you check before the rest, and what makes it first rather than second?
 
 ---
 
----
+## D11. Answer: the one the data can settle fastest
+Two tests, in this order.
+
+1. **Can this week's data answer it at all?** Customers and orders per customer need only orders and customer ids. Items per order needs a table nobody has given you yet.
+2. **Would the answer change the decision?** If frequency moved and acquisition did not, Rs 12 crore is aimed at the wrong branch, and that is worth knowing before Thursday.
 
 ---
 
-## S25a. Applied to Kalpa: the delivered answer, in full
-Thirteen of the thirty Kalpa Retail orders were delivered, and those thirteen come to Rs 25,720.
-
-The thirty amounts together come to Rs 58,210, so more than half the money in the file sits in orders that were returned or cancelled.
-
-That gap is the first thing a business person asks about, and your loop is what puts a number on it.
-
----
-
----
-
-## S26. Find the mistake in this loop
-```
-for r in records:
-    if r["status"] == "delivered":
-        total = 0
-        total = total + int(r["amount"])
-
-print(total)
-```
-
-```
-1460
-```
-
-This runs and it prints a number. Rs 1,460 is the amount of KR4224, the last delivered order in the file, and it is a total of nothing at all.
-
-Which line is in the wrong place?
-
----
-
+## S12. What a business ask becomes
 ```mermaid
-flowchart TB
-    A["for every order"] --> B{"delivered?"}
-    B -->|"yes"| C["total = 0"]
-    C --> D["total = total + the amount"]
-    D --> A
-    B -->|"no"| A
-    A --> E["print total, which is Rs 1,460"]
-    F["KR4224, the last delivered order"] -.-> E
+flowchart LR
+    A["a business ask<br/>'grow revenue 15 percent'"] --> B["a tree of<br/>measurable branches"]
+    B --> C["one branch,<br/>chosen and defended"]
+    C --> D["a number<br/>with its denominator"]
 ```
 
----
+This is the move interviews test. The tree is the answer to "how would you approach this".
 
 ---
 
-## S27. Step card, section 3
-1. Ask `type()` when an operator surprises you.
-2. Read both type names in a `TypeError` before you touch the code.
-3. Set the accumulator to zero once, above the loop.
-4. When a number looks wrong, go and find the record that explains it.
+## SECTION D. The workbench
 
 ---
 
----
+## S13. Where the work happens
+```mermaid
+flowchart LR
+    G["GitHub Codespace<br/>in the browser"] --> V["VS Code,<br/>already configured"]
+    V --> N["a notebook,<br/>cells you run in order"]
+    N --> K["the kernel,<br/>which remembers"]
+```
+
+Nothing is installed on your machine. The environment is the same one for every learner for twenty weeks.
 
 ---
 
-## S28. Crux, half one
-Two errors landed on your screen this half, and each one told you exactly what it was holding.
+## S14. The kernel remembers, and that is the trap
+A cell you ran ten minutes ago is still holding its result. A cell you edited but did not re-run is not.
 
-The kernel remembers exactly what you gave it and nothing else, and the type of a value decides what every operator means.
+So the notebook on your screen and the state in the kernel can disagree, and the screen is the one that lies.
+
+---
+
+## S15. Restart and run all
+The recovery move, and the only one you need today.
+
+```
+Kernel > Restart Kernel and Run All Cells
+```
+
+If the notebook fails after that, the notebook is wrong. If it passes, the notebook is right and your screen was stale.
 
 ---
 
----
+## S16. What you leave with today
+| You will be able to | And say why |
+|---|---|
+| Draw the revenue tree for any retailer | Every branch is a metric with a denominator |
+| Compute four of its leaves in Python | Records are dictionaries, datasets are lists of them |
+| Choose median over mean on purpose | Because one order can carry most of the revenue |
+| Name the branch Kalpa should open first | And say what it would cost to move |
