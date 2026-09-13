@@ -127,7 +127,7 @@ That is the entire reason a variant is built rather than one sheet shipped three
 
 ```mermaid
 flowchart TB
-    R["the curriculum row<br/>docs/curriculum/W1_Curriculum.md"] --> L["<b>SOURCE LOCK</b><br/>one reference and one video per new topic,<br/>every movable fact carrying the date it was checked"]
+    R["the curriculum row<br/>docs/curriculum/W1_Data_analysis_found.md"] --> L["<b>SOURCE LOCK</b><br/>one reference and one video per new topic,<br/>every movable fact carrying the date it was checked"]
     L --> E["<b>ENVELOPE</b><br/>what the room already knows,<br/>what today must not repeat"]
     E --> SP["<b>THE SPINE</b><br/>one screen"]
     SP --> STOP{"reviewer<br/>says yes?"}
@@ -229,7 +229,7 @@ python3 scripts/export_curriculum.py                 # re-export after the workb
 ### Tracking and review
 
 Work is tracked as **one card per day pack** on this repository's issues, fifty-four of them, one
-per row of the Content Build Tracker.
+per day of the curriculum plan.
 
 ```mermaid
 flowchart LR
@@ -268,7 +268,7 @@ Statuses, labels, people and the commands are in
 ### Ground truth order, when two things disagree
 
 1. What the requester says in the session
-2. `docs/curriculum/` (the week tabs, Structure, Build Tracker)
+2. `docs/curriculum/` (the week tabs and Structure)
 3. Programme facts, the Client Zero lock, modules and credits
 4. The day-pack method and the content doctrine
 5. The detailing manuals

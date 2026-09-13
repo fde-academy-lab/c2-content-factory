@@ -11,13 +11,46 @@ One training day ships as one pack: everything a rotating trainer needs to deliv
 
 Read these before generating anything:
 
-1. The day's row in the curriculum workbook (the week tab): focus, agenda, learner outcome, subtopics, trainer notes, client-zero cell, exercises, after-class tasks, resources, quiz plan.
-2. The Structure tab: week types, the Saturday recap shape, assessment status, the client-zero narrative frame.
-3. The project method file (06_Day_Pack_Method.md) and the content doctrine, when present in project knowledge.
+1. The day's row in `docs/curriculum/W{n}_*.md`, **all fifteen columns, in the order the row puts them**.
+   The row reads business problem first and technique third, and the pack is built in that same order:
+   the business scenario of the day, the thinking trained before any tool, the day focus, the trainer
+   agenda, the learner outcome, the subtopics, the trainer notes, the client-zero data (TRAINER ONLY),
+   the in-session exercises, the after-class tasks, the interview angle, the trainer resources, the
+   student references, the Kahoot quiz plan.
+2. `docs/curriculum/Structure.md`: week types, the Saturday recap shape, assessment status, the
+   confirmed calendar.
+3. `docs/07_Client_Zero.md`, which is LOCKED at v2.2: the company, the named stakeholders, the three
+   threads, the business-question ladder, the entity model, and the dataset version the row names in its
+   client-zero column together with what is planted in it.
+4. `docs/06_Day_Pack_Method.md` and `docs/02_Content_Doctrine.md` for the reasons behind the procedure.
 
-Refuse, naming the gap, when any of these hold: the day's row does not exist; the client-zero scenario is unlocked and the day's examples need its entities; a reference link on the row is unverified. A plausible day generated around a gap is the failure this gate exists to stop. Say what is missing and stop.
+Refuse, naming the gap, when any of these hold: the day's row does not exist; the business scenario
+column is empty, because a day built without it opens on a technique and that is the failure the
+September 2026 review named; the dataset version the row names is not described in the locked client
+zero file; a reference link on the row carries no verified date. A plausible day generated around a gap
+is the failure this gate exists to stop. Say what is missing and stop.
 
-## The method: mental model first, spiral always
+## The method: the business problem first, then the thinking, then the technique
+
+The day opens on a situation in a stakeholder's words and the questions they are asking. The second
+move is the thinking an analyst uses to break that question down, drawn before any tool is opened. The
+technique arrives third, because it exists to answer the question.
+
+In the pack that means: slide one is the scenario, the first drawing is the thinking, the notebook's
+first markdown cell is the same scenario, the exercises ask the stakeholder's question back, and the
+close is the sentence the learner would actually send. The canonical Week 1 case: Meera Raghavan asks
+what "sales" is made of before she signs a marketing budget, the room draws the revenue tree, and only
+then does Python arrive as the calculator.
+
+**What is planted in the data is never named to a learner.** The client-zero column is TRAINER ONLY.
+The room finds the bulk order by sorting and the duplicates by reconciling. A slide that announces the
+plant has spent the lesson.
+
+**The interview angle is an output.** The row carries the questions this day equips a learner to
+answer, tagged `[S]`, `[F]`, `[SV]` or `[D]`. Questions go into the pack; answers are written here at
+the detailing phase and never copied into the curriculum row.
+
+## Mental model first, spiral always
 
 Every topic opens by forming the mental model, then walks the whole pipeline shallow, then deepens on revisit. The canonical worked example, kept because the team teaches from it:
 
@@ -33,8 +66,8 @@ Binding rules while building:
 
 ## The gates
 
-1. **Envelope and continuity.** From the row: what the room already knows, what today must not repeat, what comes later. One short block, stated to the requester.
-2. **The spine, for approval.** One screen: the deck decision (one deck, or half one and half two when the day carries two arcs), section list per artifact, the day's mental-model arc in one sentence, the deliberate failures, the activity choice with its toggle, the take-home shape. Stop and wait. Nothing downstream is built before the spine is approved.
+1. **Envelope and continuity.** From the row: the business scenario in one line, what the room already knows, what today must not repeat, what comes later, and which thread of the three (Growth, Trust, Cost and risk) this day advances. One short block, stated to the requester.
+2. **The spine, for approval.** One screen: the scenario and the thinking it trains, the deck decision (one deck, or half one and half two when the day carries two arcs), section list per artifact, the day's mental-model arc in one sentence, the deliberate failures with their exact error text, the activity choice with its toggle, the take-home shape, and the interview questions the day equips. Stop and wait. Nothing downstream is built before the spine is approved.
 3. **Build passes**, one artifact family per pass, in this order: deck(s); notebooks; activity; exercises plus solutions; take-home plus self-check spine; Kahoot pack; study notes, cheat sheet and pre-read. Each pass is a separate generation because mixing them flattens all of them.
 4. **Verification.** Run the checklist at the end of this file and report results, including what failed and was fixed.
 5. **Ship.** Folders and file names per the naming rule below, audience tags mandatory, files presented together.
@@ -62,20 +95,27 @@ Saturday recap papers are weekly artifacts built from the week's question set, a
 
 ## Day 1 exception
 
-The opening day ships the introduction pack instead of a standard pack: the client-zero narrative deck with the mental-map diagrams, the programme and week story, the day-by-day promise, and the session mechanics. Read `references/day1-intro-pack.md` before building it. It is blocked until the client-zero name and entity model lock.
+The opening day ships the introduction pack instead of a standard pack: the client-zero narrative deck with the mental-map diagrams, the programme and week story, the day-by-day promise, and the session mechanics. Read `references/day1-intro-pack.md` before building it. Client zero locked at v2.2 on 13 September 2026, so the pack is no longer blocked, and it opens on Meera Raghavan's question rather than on a company profile.
 
 ## Verification checklist
 
-1. Idea count per block within the cap, counted as decision sentences.
-2. Every deliberate failure carries its exact error text or exact wrong output, and the demo reproduces it.
-3. Demo notebooks run cold in a fresh Codespace, top to bottom.
-4. Deck, notebooks and exercises follow the same segment order.
-5. Every link was verified on the day it entered an artifact and carries that date; unverified slots say "to be found".
-6. The take-home fails the shortcut test: pasting it into a chat assistant does not produce the deliverable (see the manifest for the resistance patterns).
-7. No trainer names, marks, weights or clock times in any STUDENT artifact; Rs, never the currency glyph; no em-dashes; the banned-word scan passes.
-8. Distractor audit on every quiz: no key is the longest option, key positions spread.
-9. Audience tag present in every file name, and every file inside the subfolder its type belongs in.
-10. The study notes and cheat sheet carry the same crux lines the deck closes on.
+1. Slide one, and the notebook's first markdown cell, carry the day's business scenario in the
+   stakeholder's words. A pack that opens on a topic title fails here.
+2. The thinking from column 4 appears as a drawing the room makes before any tool is opened.
+3. No student-facing file names anything planted in the dataset. Grep the pack for the plant words from
+   the row's client-zero column; every hit must be in a TRAINER or INTERNAL file.
+4. The interview questions from column 12 appear in the pack as questions, with their tags, and the
+   answers written here are not copied back into the curriculum row.
+5. Idea count per block within the cap, counted as decision sentences.
+6. Every deliberate failure carries its exact error text or exact wrong output, and the demo reproduces it.
+7. Demo notebooks run cold in a fresh Codespace, top to bottom.
+8. Deck, notebooks and exercises follow the same segment order.
+9. Every link was verified on the day it entered an artifact and carries that date; unverified slots say "to be found".
+10. The take-home fails the shortcut test: pasting it into a chat assistant does not produce the deliverable (see the manifest for the resistance patterns).
+11. No trainer names, marks, weights or clock times in any STUDENT artifact; Kalpa's fictional stakeholders are named on purpose and are not covered by that rule. Rs, never the currency glyph; no em-dashes; the banned-word scan passes.
+12. Distractor audit on every quiz: no key is the longest option, key positions spread.
+13. Audience tag present in every file name, and every file inside the subfolder its type belongs in.
+14. The study notes and cheat sheet carry the same crux lines the deck closes on.
 
 ## File naming
 
