@@ -1,0 +1,135 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>What runs first</title>
+<style>
+  :root { --ink:#1b1b1a; --paper:#faf8f4; --line:#d9d4c8; --lit:#2b4a7d; --dim:#8a8580;
+          --warn:#8a3d3d; --ok:#1f6f4a; }
+  body { margin:0; padding:22px; background:var(--paper); color:var(--ink);
+         font:15px/1.55 -apple-system, "Segoe UI", system-ui, sans-serif; }
+  h1 { font-size:20px; margin:0 0 4px; }
+  p.lede { margin:0 0 18px; color:#5c5850; max-width:62ch; }
+  .wrap { display:grid; grid-template-columns:minmax(260px,1fr) minmax(280px,1.2fr); gap:22px; }
+  @media (max-width:760px){ .wrap { grid-template-columns:1fr; } }
+  .panel { border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:#fff; }
+  .step { display:flex; gap:10px; align-items:baseline; padding:7px 10px; border-radius:7px;
+          border:1px solid transparent; }
+  .step.on { background:#eef2f9; border-color:var(--lit); }
+  .step.off { color:var(--dim); }
+  .step b { font-family:ui-monospace, Menlo, Consolas, monospace; min-width:88px; }
+  .step span { font-size:13.5px; }
+  pre { background:#f4f1ea; border:1px solid var(--line); border-radius:8px; padding:11px 13px;
+        overflow-x:auto; font:13px/1.5 ui-monospace, Menlo, Consolas, monospace; margin:0 0 12px; }
+  .verdict { border-left:4px solid var(--lit); padding:9px 12px; background:#f4f1ea;
+             border-radius:0 8px 8px 0; font-size:14px; min-height:3.2em; }
+  .verdict.bad { border-left-color:var(--warn); }
+  .verdict.good { border-left-color:var(--ok); }
+  label { display:block; font-size:13px; color:#5c5850; margin:0 0 5px; }
+  select, button { font:14px inherit; padding:7px 10px; border-radius:7px;
+                   border:1px solid var(--line); background:#fff; color:var(--ink); }
+  button { cursor:pointer; }
+  button:hover { border-color:var(--lit); }
+  .row { display:flex; gap:9px; flex-wrap:wrap; margin:0 0 12px; }
+  .count { font-size:13px; color:var(--dim); margin-top:10px; }
+</style>
+
+<h1>What runs first</h1>
+<p class="lede">Pick a query. The stage that decides its fate lights up, and the panel says what
+comes back. The clause you wrote first is almost never the clause that runs first.</p>
+
+<div class="wrap">
+  <div class="panel">
+    <label for="q">The query</label>
+    <select id="q"></select>
+    <div class="row" style="margin-top:12px">
+      <button id="run">Run it</button>
+      <button id="next">Next query</button>
+    </div>
+    <pre id="sql">-- pick a query</pre>
+    <div class="verdict" id="verdict">Nothing has run yet.</div>
+    <div class="count" id="count">Queries run: 0</div>
+  </div>
+  <div class="panel">
+    <div id="stages"></div>
+  </div>
+</div>
+
+<script>
+const STAGES = [
+  ["FROM",     "get the rows from the tables"],
+  ["WHERE",    "drop rows, one at a time"],
+  ["GROUP BY", "form the groups"],
+  ["HAVING",   "drop whole groups"],
+  ["SELECT",   "compute the output columns and their aliases"],
+  ["ORDER BY", "sort what survived"],
+  ["LIMIT",    "cut the sorted list"]
+];
+
+const QUERIES = [
+  { name: "A count with a filter",
+    sql: "SELECT count(*)\nFROM orders\nWHERE quarter = 'Q1';",
+    at: 1, ok: true,
+    says: "538 rows survive WHERE, then SELECT counts them. Filtering before counting is why this is cheap." },
+  { name: "An aggregate inside WHERE",
+    sql: "SELECT quarter, count(*)\nFROM orders\nWHERE count(*) > 100\nGROUP BY quarter;",
+    at: 1, ok: false,
+    says: "ERROR: aggregate functions are not allowed in WHERE. WHERE ran before any group existed, so there was nothing to count. HAVING is the clause that runs after." },
+  { name: "The same condition in HAVING",
+    sql: "SELECT quarter, count(*)\nFROM orders\nGROUP BY quarter\nHAVING count(*) > 100;",
+    at: 3, ok: true,
+    says: "Two rows. The groups exist by the time HAVING runs, so counting them is a fair question." },
+  { name: "A column that is neither grouped nor aggregated",
+    sql: "SELECT segment, channel, sum(amount)\nFROM orders o JOIN customers c USING (customer_id)\nGROUP BY segment;",
+    at: 4, ok: false,
+    says: "ERROR: column \"o.channel\" must appear in the GROUP BY clause or be used in an aggregate function. SELECT has one row per segment to fill and three channels to choose from." },
+  { name: "An alias used in ORDER BY",
+    sql: "SELECT quarter, sum(amount) AS revenue\nFROM orders\nGROUP BY quarter\nORDER BY revenue DESC;",
+    at: 5, ok: true,
+    says: "Fine. ORDER BY runs after SELECT, so the alias already exists by then." },
+  { name: "The same alias used in WHERE",
+    sql: "SELECT quarter, sum(amount) AS revenue\nFROM orders\nWHERE revenue > 100\nGROUP BY quarter;",
+    at: 1, ok: false,
+    says: "ERROR: column \"revenue\" does not exist. WHERE ran before SELECT made the alias. Same word, two different moments." },
+  { name: "LIMIT with no ORDER BY",
+    sql: "SELECT order_id, amount\nFROM orders\nLIMIT 5;",
+    at: 6, ok: false,
+    says: "Five rows come back and which five is the server's business. Two machines can answer differently. A row has no position until ORDER BY gives it one." }
+];
+
+let idx = 0, runs = 0;
+
+const sel = document.getElementById("q");
+QUERIES.forEach((q, i) => {
+  const o = document.createElement("option");
+  o.value = i; o.textContent = q.name; sel.appendChild(o);
+});
+
+const stagesEl = document.getElementById("stages");
+function paint(at) {
+  stagesEl.innerHTML = "";
+  STAGES.forEach(([name, what], i) => {
+    const d = document.createElement("div");
+    d.className = "step " + (at === null ? "" : (i === at ? "on" : "off"));
+    d.innerHTML = "<b>" + name + "</b><span>" + what + "</span>";
+    stagesEl.appendChild(d);
+  });
+}
+
+function show(run) {
+  const q = QUERIES[idx];
+  document.getElementById("sql").textContent = q.sql;
+  paint(run ? q.at : null);
+  const v = document.getElementById("verdict");
+  v.className = "verdict" + (run ? (q.ok ? " good" : " bad") : "");
+  v.textContent = run ? q.says : "Query loaded. Run it to see which stage decides.";
+  if (run) { runs += 1; document.getElementById("count").textContent = "Queries run: " + runs; }
+}
+
+sel.addEventListener("change", () => { idx = Number(sel.value); show(false); });
+document.getElementById("run").addEventListener("click", () => show(true));
+document.getElementById("next").addEventListener("click", () => {
+  idx = (idx + 1) % QUERIES.length; sel.value = idx; show(false);
+});
+
+paint(null);
+show(false);
+</script>

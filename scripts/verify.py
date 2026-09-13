@@ -41,7 +41,7 @@ DATED = re.compile(r"(verified|checked)\s+\d{1,2}\s+\w+\s+\d{4}", re.IGNORECASE)
 BUILD_WEEKS = {3, 6, 9, 12, 15}
 
 TEACHING_DIRS = {
-    "slides", "notebooks", "demos", "whiteboards", "cheatsheets", "study-notes",
+    "slides", "notebooks", "sql", "demos", "whiteboards", "cheatsheets", "study-notes",
     "exercises", "exercises/guided", "exercises/unguided", "exercises/solutions",
     "takehome", "kahoot", "preread", "extras", "data", "trainer", "internal", "corrections",
 }
