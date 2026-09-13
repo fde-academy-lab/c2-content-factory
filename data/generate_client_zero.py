@@ -390,6 +390,7 @@ V4_ORDERS = 1000
 V4_Q1_TOTAL = 100000000      # Rs 10.00 crore for Q1
 V4_Q2_TOTAL = 98400000       # Rs 9.84 crore, the same 1.6 percent fall the sample showed
 V4_UNPAID = 30               # delivered and never paid
+V4_UNPAID_BIG = 2            # of those, large invoices, so the gap is visible in money
 V4_INSTALMENT = 400          # large invoices settled in two instalments
 V4_RETRY = 50                # gateway retries that posted the same instalment a second time
 V4_SINGLE = 520              # paid once, in full
@@ -531,7 +532,21 @@ def build_v4():
     # nudging it. The retries land on small orders so the doubling stays the fan-out's doing.
     delivered = [o for o in orders if o["status"] == "delivered"]
     by_value = sorted(orders, key=lambda o: -o["amount"])
-    unpaid = {o["order_id"] for o in delivered[-V4_UNPAID:]}
+    # Two of the never-paid orders are large corporate invoices. Without them the gap Anand asks
+    # about is a rounding error, and a gap nobody can see is a lesson nobody learns.
+    # Anand asks about Q2, so the large unpaid invoices sit in Q2 and on different channels. A gap
+    # that lands entirely in one quarter and one channel teaches a narrower lesson than it should.
+    q2_business = [o for o in delivered if o["_segment"] == "Business" and o["quarter"] == "Q2"]
+    big_unpaid, used = [], set()
+    for o in q2_business:
+        if o["channel"] not in used:
+            big_unpaid.append(o)
+            used.add(o["channel"])
+        if len(big_unpaid) == V4_UNPAID_BIG:
+            break
+    small_unpaid = [o for o in delivered
+                    if o["_segment"] != "Business"][-(V4_UNPAID - V4_UNPAID_BIG):]
+    unpaid = {o["order_id"] for o in big_unpaid + small_unpaid}
     paid = [o for o in by_value if o["order_id"] not in unpaid]
     instalment = {o["order_id"] for o in paid[:V4_INSTALMENT]}
     rest = [o for o in paid[V4_INSTALMENT:]]
