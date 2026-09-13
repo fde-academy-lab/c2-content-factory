@@ -6,6 +6,26 @@ almost every label arrives late or never arrives at all.
 > Code `FIN`. Introduced as a transfer domain once a concept has landed on the Retail spine, and as
 > one of the five build-week sub-problems.
 
+## Where it sits in the locked ladder
+
+**It enters on Week 5** as the first domain transfer, once the propensity model has landed on Retail.
+The stakeholder is **Rohan Desai, head of risk**, and his question is the same model in a business
+where a wrong call costs twenty times more one way than the other. That asymmetry is the whole reason
+this unit goes first in the rotation.
+
+**Build 2, Week 6.** Five sub-problems, each with a constraint written into the brief:
+
+| # | The sub-problem | The constraint that makes it hard |
+|---|---|---|
+| 1 | Credit approval | A default costs twenty times a wrongful rejection |
+| 2 | Fraud detection | Half a percent positives |
+| 3 | Collections prioritisation | A fixed team, so capacity sets the threshold |
+| 4 | Churn on the payments app | The target has to be defined before anything is modelled |
+| 5 | A lending campaign that lifted approvals 9 percent | Cause or mix |
+
+The constraint is the teaching. Every one of these is answerable with a model the room already knows,
+and every one of them is answered wrongly by a leaderboard metric.
+
 ---
 
 ## 1. Who runs it, and what each of them wants

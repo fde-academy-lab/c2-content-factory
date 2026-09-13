@@ -40,7 +40,7 @@ flowchart LR
 |---|---|---|---|
 | **L1 Clean** | One number, one denominator, no trap | Passes a screening round | Week 1 to 4 teaching, warm-ups |
 | **L2 Confounded** | The headline moves for a reason nobody named | Fails a good interview, confidently | The bread and butter of the bank |
-| **L3 Contested** | Two people can both be right; the cost of being wrong differs | Fails when asked "and what would you tell the CFO?" | Build-week GDs, mocks |
+| **L3 Contested** | Two people can both be right; the cost of being wrong differs | Fails when asked "and what would you tell the CFO?" | Build-week group discussions, mocks |
 | **L4 Niche** | Almost nobody has met it; recognising it is the signal | This is what separates the top of a shortlist | Expert days, hard mocks, ME rounds |
 
 **Build for L2 and L3.** L1 fills a teaching slot, L4 is a garnish. The programme's centre of
@@ -134,15 +134,15 @@ moved.
 flowchart TB
     SB["The Situation Bank"]
     SB --> A["<b>Teaching days</b><br/>the day's business question,<br/>usually L1 or L2"]
-    SB --> B["<b>Build-week GD</b><br/>the business use case discussion,<br/>L3, offline, phones collected"]
+    SB --> B["<b>Build-week GD</b><br/>expert-led, 30 minutes a group,<br/>L3, unprepared by design"]
     SB --> C["<b>Mock interviews</b><br/>L3 and L4, individual,<br/>about 20 minutes"]
     SB --> D["<b>Take-homes and Saturdays</b><br/>L2, where the twist is the whole task"]
 ```
 
-The build-week **business use case discussion** already exists in the locked programme facts: a
-group discussion on the build-week Monday, offline with phones collected, roughly 30 to 45 minutes
-of preparation then an hour of discussion, output written on a board, no presentation. It runs at
-progressive complexity and is deliberately **not** tied to the module's technical content.
+The build-week **group discussion** already exists in the locked structure: the industry expert runs it
+on the build week's Friday and Saturday at about 30 minutes per group, on that week's problem space,
+unprepared by design and scored on a fixed rubric. It runs at progressive complexity across the
+programme and is deliberately **not** tied to the module's technical content.
 
 That is the bank's most important customer. See [Running a Situation Room](Running-a-Situation-Room).
 

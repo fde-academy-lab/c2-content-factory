@@ -1,27 +1,38 @@
 # Kalpa Retail
 
 **The teaching spine.** Online and in-store consumer commerce across India and South-East Asia.
-Every teaching day from Week 1 to Week 15 computes on this unit, so a learner meets exactly one new
-idea at a time and never spends the first ten minutes re-learning a domain.
+Weeks 1 to 4 teach in this unit and nowhere else, and it stays the spine afterwards while the second
+worked example of each day rotates to another unit. A learner meets exactly one new idea at a time and
+never spends the first ten minutes re-learning a domain.
 
-> Code `RET`. Ground truth is section 3 of
-> [`docs/07_Client_Zero.md`](https://github.com/fde-academy-lab/c2-content-factory/blob/main/docs/07_Client_Zero.md).
+The unit is under real pressure in the story: revenue grew 4 percent last year against a plan of 15,
+and the CEO will not sign a marketing budget until the team can say where growth comes from and where
+it is leaking. That is the question the whole programme answers at rising depth.
+
+> Code `RET`. Ground truth is sections 1a, 4 and 6 of
+> [`docs/07_Client_Zero.md`](https://github.com/fde-academy-lab/c2-content-factory/blob/main/docs/07_Client_Zero.md),
+> LOCKED at v2.2.
 
 ---
 
 ## 1. Who runs it, and what each of them wants
 
-| Role | Measured on | What they want to hear | What they will resist |
-|---|---|---|---|
-| Head of Retail Stores | Footfall and store revenue | That stores are healthy and the expansion plan should be approved | Any number that treats a closed store as a lost store |
-| Head of Digital | App orders and conversion | That the channel shift is a win | Being asked to share credit for a customer who browsed in store |
-| Category Managers | Margin and stock turn by category | That their category is performing | A margin number computed after returns and delivery |
-| Head of Customer Experience | Contacts, satisfaction, deflection | That support is getting cheaper | A resolution metric that replaces deflection |
-| Group CFO | Contribution per order across channels | The truth, and quickly | Nothing, which is what makes this the safest room and the least interesting one |
+These are the locked, named stakeholders. A trainer says them from memory and every artifact uses the
+same names.
 
-**The tension that generates most cards here:** stores and the app report to different people and
-share one customer. Every metric that has to count that customer exactly once is contested by
-somebody whose bonus depends on counting them twice.
+| Who | Measured on | What they want to hear | What they will resist |
+|---|---|---|---|
+| **Meera Raghavan**, CEO | The growth plan, and whether the board buys it | Where growth comes from and what to do about it, on one page in two minutes | A page that hedges. She would rather hear "not yet, and here is what would tell us". |
+| **Anand Iyer**, finance controller | Whether the books and the dashboard agree | That your numbers reconcile to his and his analyst can audit how you got them | A figure computed from an ERP export that nobody reconciled |
+| **The head of Retail-Plus** | The paid tier's revenue and frequency | That his tier is not the one slipping | A decomposition that lands the problem squarely in his tier |
+| **The marketing lead** | Acquisition, and whether campaigns worked | That the Rs 12 crore acquisition budget is the right branch | Being told frequency moved and acquisition did not, or that a campaign's lift was a mix effect |
+| **The data platform lead** | The warehouse | That you queried it rather than exported it | Anything that leaves the warehouse and becomes a second source of truth |
+| **Kavya Nair**, senior analyst | The team's rigour | The baseline first, then the evidence, then the third way and a choice | A result with no baseline to beat |
+| **Farhan Sheikh**, head of support, from Week 8 | Tickets handled and what each costs | That the model can read two thousand tickets a day and draft the reply | A cost per resolved case rather than a cost per call |
+
+**The tension that generates most cards here:** marketing is measured on acquisition and the honest
+answer is usually frequency. Every Week 1 and Week 2 card is somebody being told the branch they own
+is not the branch that moved.
 
 ---
 
@@ -35,13 +46,20 @@ document corpus.
 erDiagram
     CUSTOMERS ||--o{ ORDERS : places
     CUSTOMERS ||--o{ EVENTS : generates
+    CUSTOMERS ||--o{ SUPPORT_TICKETS : raises
     ORDERS ||--o{ ORDER_ITEMS : contains
     ORDERS ||--o{ PAYMENTS : settled_by
+    ORDERS ||--o| REVIEWS : receives
     PRODUCTS ||--o{ ORDER_ITEMS : appears_in
+    CAMPAIGNS ||--o{ ORDERS : influences
 ```
 
 Segments are four: Retail-Core, Retail-Plus, Business and Student. Amounts are in Rs, with a typical
 order between Rs 800 and Rs 3,000.
+
+Three tables arrive later and on named days, so a day pack never reaches for one before it exists:
+**campaigns** on Week 1 Thursday for the discount question, **reviews** on Week 7 Friday, and
+**support tickets** on Week 8 Monday, when the Growth thread turns to text.
 
 **What is deliberately absent, and why that matters more than what is present:**
 
@@ -77,15 +95,16 @@ given has already failed the interview version of the question.
 
 ## 4. Case families, mapped to modules
 
-| Module | Case family here | The teaching version |
+| Week | The business question | What the room learns |
 |---|---|---|
-| 1 Foundations of AI and Data | Revenue by segment, average order value, return rate, funnel conversion, cohort retention | The spine for Weeks 1 to 3, computed by hand then by every new tool |
-| 2 Applied Machine Learning | Return prediction, customer lifetime value, demand forecasting per store and SKU | The `v4` feature table, with its 96 to 4 imbalance and its planted leaking field |
-| 3 Deep Learning and Neural Networks | Product similarity and sequence models over browsing events | The `EVENTS` table becomes a sequence rather than a count |
-| 4 Natural Language Processing | Support ticket classification, review mining, search query understanding | The anonymised ticket bank |
-| 5 and 6 Generative AI | Product search, the support assistant on the policy corpus | The Weeks 11 and 12 corpus, with its two contradicting policies and its unanswerable question |
-| 7 Production AI | Cost per resolved contact, seasonal drift, the evaluation that can be re-run | The assistant built in Week 12, now measured |
-| 8 and 9 Agentic AI | A returns-handling agent with a refund limit and an escalation path | Where authority stops being a prompt and becomes a tool boundary |
+| 1 | What is "sales" made of, which lever moved, can we trust the numbers, is the gap real, did the discount cause the lift | The revenue tree, the sales-drop ladder, profiling and reconciliation, the permutation test, correlation against causation, the four-part note |
+| 2 | The same numbers every Monday from the warehouse, booked against collected, the top members, one row per customer, the deck in Excel | SQL to CTEs, join semantics and fan-out, window functions, pandas groupby and merge, and the tool operating rule |
+| 4 | Which metric should the plan chase, which pairs lift frequency, why did Retail-Plus frequency fall, how wrong could the forecast be | Metric design, basket lift against the confidence trap, cohorts and funnels, forecasting baselines |
+| 5 | Who will buy again if nudged, and how good is that prediction honestly | The modelling loop on the `v6` feature table, imbalance at roughly 96 to 4, the `settlement_status` field that leaks |
+| 7 | The tabular model has plateaued and customers also leave reviews and photos | Networks and training, and whether a network earns its place against logistic regression |
+| 8 | Two thousand tickets a day, and what each answer costs | Tokens and cost, attention, embeddings and semantic search, decoding controls, the context budget |
+| 10 to 12 | Answer customers from Kalpa's own policies, with citations | Prompting, structured output, retrieval, grounding, evaluation |
+| 13 to 15 | Let the assistant act: resolve, refund within limits, escalate | Agents, tools, state, guardrails, cost per task |
 
 ---
 
@@ -101,8 +120,9 @@ given has already failed the interview version of the question.
 
 ## 6. What Retail must never be used for
 
-1. **A first teaching of an idea that belongs to another unit.** Imbalance is introduced in Financial
-   Services, censoring in Logistics, refusal in Health. Retail can host the second example.
+1. **A second domain inside Weeks 1 to 4.** Module 1 teaches in Retail and nowhere else, because a room
+   still learning the tools cannot absorb a new concept and a new domain at once. From Week 5 the
+   second worked example rotates out: Financial Services, then Health, then Connect.
 2. **Real data.** The spine is generated, seeded and identical for every learner. Real messy data
    appears only in build weeks.
 3. **A case whose twist needs knowledge nobody in the room has.** If the answer turns on retail

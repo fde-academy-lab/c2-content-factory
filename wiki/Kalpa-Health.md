@@ -7,6 +7,32 @@ refuse.
 > Code `HLT`. The home of refusal rules, late labels, and the difference between an output that is
 > faithful and an output that is right.
 
+## Where it sits in the locked ladder
+
+**Build 1, Week 3.** The stakeholder is **Dr Priya Menon, COO**, and she has Meera's problem in a
+different business: test volumes grew 5 percent against a plan of 18, and she does not know which
+branch of her business is short. Her data is real, messy and unfamiliar: lab bookings, sample
+collections, results, invoices and appointment no-shows across six Indian cities.
+
+Five sub-problems, three groups each, and every one of them is the Week 1 and Week 2 method in a
+domain the room has never seen:
+
+| # | The sub-problem | The Week 1 or 2 move it transfers |
+|---|---|---|
+| 1 | Where does lab revenue come from and which branch is short | The revenue tree, for a diagnostics business |
+| 2 | Bookings fell in two cities in Q2 | The investigation ladder on booking data |
+| 3 | Invoices and collections disagree | Reconciliation between the billing export and the payment feed |
+| 4 | The no-show rate looks worse in one clinic | Real or noise, and what a fair comparison needs |
+| 5 | A free-home-collection campaign "lifted bookings 9 percent" | Cause or coincidence |
+
+What changes in the transfer is the vocabulary (a booking is an order, a test is an item, a no-show is
+a cancellation) and the cost of an error, since a missed diagnosis is not a missed sale. A group that
+maps Health onto the Week 1 method in its own words has done the transfer; a group that waits to be
+told the mapping has not.
+
+From Week 5 onward Health is also the second worked example on teaching days once Financial Services
+has had its turn, usually on no-shows and claims.
+
 ---
 
 ## 1. Who runs it, and what each of them wants

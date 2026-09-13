@@ -7,6 +7,25 @@ been averaged.
 > Code `CON`. The home of survivorship, cohort mixing, and the gap between predicting something and
 > being able to do anything about it.
 
+## Where it sits in the locked ladder
+
+**Build 3, Week 9.** The stakeholder is **Ananya Bose, COO**, and her problems are the Week 7 and 8
+text problems at telecom scale. Every sub-problem carries an output contract and a cost ceiling, which
+is what makes them different from the Week 8 exercises:
+
+| # | The sub-problem | The contract on it |
+|---|---|---|
+| 1 | Churn early warning from support text | An action window that a retention team can actually use |
+| 2 | Ticket triage | A fixed schema the output has to match every time |
+| 3 | Incident summarisation | A citation contract |
+| 4 | Plan recommendation | A refusal rule |
+| 5 | Reply drafting | A cost ceiling, and repeatability |
+
+The AI-free observed debug drill runs on the Wednesday morning of that week: each learner debugs a
+deliberately broken training loop from evidence alone.
+
+Connect is also the last of the three transfer domains from Week 5, usually on churn and support.
+
 ---
 
 ## 1. Who runs it, and what each of them wants

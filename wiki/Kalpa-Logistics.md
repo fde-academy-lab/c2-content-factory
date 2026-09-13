@@ -6,6 +6,13 @@ measured on a promise it does not fully control.
 > Code `LOG`. The home of **time, capacity and the tail**: censored outcomes, quantiles rather than
 > means, and the long right-hand end of a distribution that nobody looks at.
 
+> ### This page is ahead of the lock
+> Client zero v2.2 schedules Build 1 in Health, Build 2 in Financial Services and Build 3 in Connect,
+> and names Logistics only as a unit a **later** build visits. Weeks 10 to 20 are outline until they
+> are detailed on go-ahead, so nothing below is scheduled to a week yet. The unit line, the KPIs and
+> the situations here are usable as transfer examples and as Situation Bank material; they are not a
+> build-week brief, and no day pack should treat them as one.
+
 ---
 
 ## 1. Who runs it, and what each of them wants

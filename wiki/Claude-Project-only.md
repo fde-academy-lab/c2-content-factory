@@ -44,10 +44,10 @@ the banned word list. It is the difference between advice and advice that fits t
 | File | Why it is in the Project |
 |---|---|
 | `docs/01_Programme_Facts_C2.md` | The locked facts about the cohort and the week shape |
-| `docs/07_Client_Zero.md` | Kalpa, locked at v1.1 |
+| `docs/07_Client_Zero.md` | Kalpa, locked at v2.2: the named stakeholders, the three threads, the week ladder, the entity model and the dataset versions |
 | `docs/08_Modules_and_Credits.md` | The ten modules, their weeks and their assessments |
 | `docs/02_Content_Doctrine.md` and `docs/06_Day_Pack_Method.md` | How a day is supposed to be built |
-| The week tab from `docs/curriculum/` you are working on | The day's row is the contract |
+| The week tab from `docs/curriculum/` you are working on | The day's row is the contract, and it reads business scenario first |
 
 Free accounts get five Projects. Paid plans get a larger knowledge capacity through retrieval, which
 is what makes uploading the curriculum exports practical.
