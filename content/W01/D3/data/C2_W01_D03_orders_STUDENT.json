@@ -1001,7 +1001,7 @@
   "channel": "store",
   "city": "Pune",
   "order_date": "2026-04-05",
-  "amount": 985620,
+  "amount": 983780,
   "status": "delivered",
   "quarter": "Q1",
   "discount": 0
@@ -1072,7 +1072,7 @@
   "channel": "store",
   "city": "Pune",
   "order_date": "2026-04-22",
-  "amount": 985620,
+  "amount": 983780,
   "status": "delivered",
   "quarter": "Q1"
  },
@@ -1166,7 +1166,7 @@
   "channel": "app",
   "city": "Chennai",
   "order_date": "2026-06-20",
-  "amount": 199380,
+  "amount": 203060,
   "status": "returned",
   "quarter": "Q1"
  },

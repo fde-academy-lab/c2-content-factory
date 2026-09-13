@@ -265,7 +265,12 @@ def build_v1():
     # Twelve ordinary duplicates and two large ones, summing to exactly the Rs 20 lakh gap.
     consumer_q1 = [r for r in q1 if r["segment"] != "Business"]
     business_q1 = [r for r in q1 if r["segment"] == "Business"]
-    picks = [consumer_q1[i] for i in (2, 5, 9, 13, 18, 21, 24, 27, 30, 33, 40, 47)]
+    # A migration re-runs a batch, and a batch is not a random sample of the quarter. This one
+    # re-ran the membership tier, so the duplicates sit almost entirely in Retail-Plus. That is what
+    # makes Tuesday's finding overstated rather than wrong, and it is why Wednesday's clean pass
+    # leaves Retail-Plus standing but smaller. Indices 0 to 36 are Retail-Core, 37 to 76 are
+    # Retail-Plus, 77 onward are Student.
+    picks = [consumer_q1[i] for i in (5, 38, 41, 44, 47, 50, 53, 56, 59, 62, 65, 68)]
     small = sum(r["amount"] for r in picks)
     gap = Q1_RAW - Q1_CLEAN
     big = [business_q1[3], business_q1[9]]
@@ -498,6 +503,28 @@ def contract():
     if not (plus < 0.80 and core > 0.90):
         print("  FAIL  the frequency fall has to sit in Retail-Plus and not in Retail-Core")
         fails += 1
+    def opc(rows, seg=None):
+        rs = [r for r in rows if seg is None or r["segment"] == seg]
+        return len(rs) / len(set(r["customer_id"] for r in rs))
+
+    raw_q1 = [r for r in v1 if r["quarter"] == "Q1"]
+    raw_q2 = [r for r in v1 if r["quarter"] == "Q2"]
+    print("  INFO  as exported, before anybody cleans it:")
+    for seg in ("Retail-Core", "Retail-Plus", "Business", "Student"):
+        a, b = opc(raw_q1, seg), opc(raw_q2, seg)
+        print(f"          {seg:14s} {a:.2f} then {b:.2f}, {100 * (b - a) / a:+.1f}%")
+    dirty_plus = 100 * (opc(raw_q2, "Retail-Plus") / opc(raw_q1, "Retail-Plus") - 1)
+    dirty_core = 100 * (opc(raw_q2, "Retail-Core") / opc(raw_q1, "Retail-Core") - 1)
+    if not (dirty_plus < -35 and dirty_core > -10):
+        print("  FAIL  on the exported file the fall has to read as Retail-Plus, with Core near flat")
+        fails += 1
+    clean_plus = 100 * (per_customer(q2c, "Retail-Plus") / per_customer(q1c, "Retail-Plus") - 1)
+    print(f"  INFO  Retail-Plus falls {dirty_plus:.0f}% as exported and {clean_plus:.0f}% once "
+          f"deduplicated, so Wednesday leaves it standing but smaller")
+    if not clean_plus > dirty_plus:
+        print("  FAIL  cleaning has to shrink the Retail-Plus fall rather than deepen it")
+        fails += 1
+
     missing_discount = sum(1 for r in clean if "discount" not in r)
     print(f"  INFO  records with no discount field: {missing_discount}")
     if missing_discount < 20:
