@@ -1,0 +1,164 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>What validate= is asking you</title>
+<style>
+  :root{--ink:#1b1b1a;--paper:#faf8f4;--line:#d9d4c8;--lit:#2b4a7d;--dim:#8a8580;
+        --warn:#8a3d3d;--ok:#1f6f4a;}
+  body{margin:0;padding:22px;background:var(--paper);color:var(--ink);
+       font:15px/1.55 -apple-system,"Segoe UI",system-ui,sans-serif;}
+  h1{font-size:20px;margin:0 0 4px;}
+  p.lede{margin:0 0 18px;color:#5c5850;max-width:64ch;}
+  .wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media(max-width:780px){.wrap{grid-template-columns:1fr;}}
+  .panel{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#fff;}
+  h2{font-size:14px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.05em;color:var(--dim);}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;}
+  th,td{text-align:left;padding:5px 8px;border-bottom:1px solid #eee9df;}
+  th{color:var(--dim);font-weight:600;}
+  tr.dup td{background:#fdf3f3;}
+  .row{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 14px;align-items:center;}
+  button,select{font:14px inherit;padding:7px 10px;border-radius:7px;border:1px solid var(--line);
+                background:#fff;cursor:pointer;}
+  button:hover,select:hover{border-color:var(--lit);}
+  label{font-size:13px;color:#5c5850;}
+  pre{background:#f4f1ea;border:1px solid var(--line);border-radius:8px;padding:10px 12px;
+      font:12.5px/1.5 ui-monospace,Menlo,Consolas,monospace;overflow-x:auto;margin:0 0 12px;
+      white-space:pre-wrap;}
+  .verdict{border-left:4px solid var(--lit);padding:9px 12px;background:#f4f1ea;
+           border-radius:0 8px 8px 0;font-size:14px;min-height:3.4em;}
+  .verdict.bad{border-left-color:var(--warn);}
+  .verdict.good{border-left-color:var(--ok);}
+  .tally{display:flex;gap:18px;margin-top:12px;font-size:14px;}
+  .tally b{display:block;font-size:22px;}
+</style>
+
+<h1>What validate= is asking you</h1>
+<p class="lede">Five customers on the left, an exposure feed on the right where one customer was
+sent twice. Choose a validate value and run the merge. Each value is a claim about the data, and
+pandas either agrees with you or refuses.</p>
+
+<div class="row">
+  <label for="v">validate=</label>
+  <select id="v">
+    <option value="none">not set</option>
+    <option value="one_to_one">one_to_one</option>
+    <option value="many_to_one">many_to_one</option>
+    <option value="one_to_many">one_to_many</option>
+  </select>
+  <label for="fix">Feed</label>
+  <select id="fix">
+    <option value="raw">as delivered</option>
+    <option value="agg">aggregated to one row per customer</option>
+  </select>
+  <button id="run">Run the merge</button>
+</div>
+
+<div class="wrap">
+  <div class="panel">
+    <h2>The two frames</h2>
+    <table id="src"></table>
+    <div class="tally" id="tally"></div>
+  </div>
+  <div class="panel">
+    <h2>What pandas does</h2>
+    <pre id="out">Nothing has run yet.</pre>
+    <div class="verdict" id="verdict">Pick a validate value and run it.</div>
+  </div>
+</div>
+
+<script>
+const LEFT = ["C-0001","C-0002","C-0003","C-0004","C-0005"];
+const RAW = [
+  {cid:"C-0001", day:"2026-08-03"},
+  {cid:"C-0002", day:"2026-08-03"},
+  {cid:"C-0002", day:"2026-08-11"},
+  {cid:"C-0004", day:"2026-08-03"}
+];
+const AGG = [
+  {cid:"C-0001", day:"2026-08-03", n:1},
+  {cid:"C-0002", day:"2026-08-03", n:2},
+  {cid:"C-0004", day:"2026-08-03", n:1}
+];
+let runs = 0;
+
+function feed(){ return document.getElementById("fix").value === "raw" ? RAW : AGG; }
+
+function drawSrc(){
+  const f = feed();
+  const counts = {};
+  f.forEach(r => counts[r.cid] = (counts[r.cid]||0)+1);
+  let h = "<tr><th>customer (left)</th><th>rows in the feed (right)</th></tr>";
+  LEFT.forEach(c => {
+    const n = counts[c] || 0;
+    h += `<tr class="${n>1?"dup":""}"><td>${c}</td><td>${n}</td></tr>`;
+  });
+  document.getElementById("src").innerHTML = h;
+  document.getElementById("tally").innerHTML =
+    `<div>left rows<b>${LEFT.length}</b></div><div>right rows<b>${f.length}</b></div>` +
+    `<div>merges run<b>${runs}</b></div>`;
+}
+
+function run(){
+  runs++;
+  const v = document.getElementById("v").value;
+  const f = feed();
+  const counts = {};
+  f.forEach(r => counts[r.cid] = (counts[r.cid]||0)+1);
+  const rightUnique = Object.values(counts).every(n => n <= 1);
+  const leftUnique = true;
+  let out, verdict, cls;
+
+  const rowsOut = LEFT.reduce((a,c) => a + Math.max(1, counts[c]||0), 0);
+
+  if (v === "none"){
+    out = `rows in : ${LEFT.length}\nrows out: ${rowsOut}\ngained  : ${rowsOut - LEFT.length}`;
+    cls = rowsOut === LEFT.length ? "good" : "bad";
+    verdict = rowsOut === LEFT.length
+      ? "No validation asked for and none needed: the feed has one row per customer, so the merge is safe by accident rather than by design."
+      : `No validation asked for, so pandas did as it was told. The table gained ${rowsOut - LEFT.length} rows and nothing said so. This is Tuesday's fan-out with a different library.`;
+  } else if (v === "one_to_one" && !rightUnique){
+    out = "pandas.errors.MergeError: Merge keys are not unique in right\n" +
+          "dataset; not a one-to-one merge\nDuplicates in right:\n customer_id\n     C-0002";
+    cls = "bad";
+    verdict = "You claimed every customer appears at most once on both sides. The feed disagrees, and pandas refused rather than quietly doubling a row. This is the whole point of the argument.";
+  } else if (v === "many_to_one" && !rightUnique){
+    out = "pandas.errors.MergeError: Merge keys are not unique in right\n" +
+          "dataset; not a many-to-one merge";
+    cls = "bad";
+    verdict = "many_to_one still promises the right side is unique, so the same duplicate breaks it. The only difference from one_to_one is what it promises about the left.";
+  } else if (v === "one_to_many"){
+    out = `rows in : ${LEFT.length}\nrows out: ${rowsOut}\ngained  : ${rowsOut - LEFT.length}`;
+    cls = rowsOut === LEFT.length ? "good" : "bad";
+    verdict = rowsOut === LEFT.length
+      ? "one_to_many allows the right side to repeat, and here it does not, so nothing grew. The claim was true and unnecessary."
+      : `one_to_many says the right side may repeat, so pandas allowed it and the table gained ${rowsOut - LEFT.length} rows. Valid, and you have to decide whether a customer row repeating is what you wanted.`;
+  } else {
+    out = `rows in : ${LEFT.length}\nrows out: ${rowsOut}\ngained  : ${rowsOut - LEFT.length}`;
+    cls = "good";
+    verdict = "The claim held. Aggregating the feed to one row per customer first is what made it true, which is a decision about the data rather than a keyword.";
+  }
+  document.getElementById("out").textContent = out;
+  const el = document.getElementById("verdict");
+  el.className = "verdict " + cls;
+  el.textContent = verdict;
+  drawSrc();
+}
+
+document.getElementById("run").addEventListener("click", run);
+document.getElementById("v").addEventListener("change", () => {
+  drawSrc();
+  const v = document.getElementById("v").value;
+  const CLAIM = {
+    none: "No claim at all. pandas will do whatever the keys allow and say nothing.",
+    one_to_one: "Claim: every key appears at most once on both sides.",
+    many_to_one: "Claim: the right side is unique, and the left may repeat.",
+    one_to_many: "Claim: the left side is unique, and the right may repeat."
+  };
+  document.getElementById("out").textContent = CLAIM[v] + "\nRun the merge to test it.";
+});
+document.getElementById("fix").addEventListener("change", () => {
+  drawSrc();
+  document.getElementById("out").textContent = "Feed changed. Run the merge again.";
+});
+drawSrc();
+</script>

@@ -21,6 +21,8 @@ No network, no browser storage, no keys, and no side effects on import.
 """
 import csv
 import html as _html
+import decimal
+import os
 import json
 import pathlib
 import re
@@ -98,6 +100,101 @@ def read_text(name, start=None):
 
 
 # --------------------------------------------------------------------------- checks
+# --------------------------------------------------------------------------- the warehouse
+# Week 2 onwards, the day queries a Postgres database rather than reading a file. The connection
+# settings come from the environment, so the same notebook runs in a Codespace, on a laptop and in
+# a build session without a line changing.
+WAREHOUSE = {
+    "host": os.environ.get("PGHOST", "localhost"),
+    "port": os.environ.get("PGPORT", "5432"),
+    "user": os.environ.get("PGUSER", "postgres"),
+    "password": os.environ.get("PGPASSWORD", "postgres"),
+    "dbname": os.environ.get("PGDATABASE", "kalpa"),
+}
+
+
+def connect():
+    """Open a connection to the Kalpa warehouse, and say plainly what to do when there is none."""
+    try:
+        import psycopg2
+    except ImportError:
+        raise SystemExit("The psycopg2 driver is missing. Run: pip install psycopg2-binary")
+    try:
+        return psycopg2.connect(**WAREHOUSE)
+    except Exception as e:
+        raise SystemExit(
+            f"No warehouse answered at {WAREHOUSE['host']}:{WAREHOUSE['port']}. "
+            f"Run bash .devcontainer/load_warehouse.sh to build it.\n  {e}")
+
+
+def engine():
+    """A SQLAlchemy engine for the warehouse, which is what pandas.read_sql wants.
+
+    A raw driver connection works and makes pandas warn on every call, and a warning printed
+    beside every table in a teaching notebook trains people to ignore warnings.
+    """
+    try:
+        from sqlalchemy import create_engine
+    except ImportError:
+        raise SystemExit("SQLAlchemy is missing. Run: pip install 'sqlalchemy>=2'")
+    w = WAREHOUSE
+    return create_engine(
+        f"postgresql+psycopg2://{w['user']}:{w['password']}@{w['host']}:{w['port']}/{w['dbname']}")
+
+
+def sql(query, params=None, conn=None):
+    """Run a query and return its rows as a list of dicts, which prints and indexes readably."""
+    own = conn is None
+    conn = conn or connect()
+    try:
+        with conn.cursor() as cur:
+            cur.execute(query, params)
+            if cur.description is None:
+                return []
+            cols = [d[0] for d in cur.description]
+            return [dict(zip(cols, row)) for row in cur.fetchall()]
+    finally:
+        if own:
+            conn.close()
+
+
+def sql_table(query, caption="", params=None, conn=None, limit=12):
+    """Run a query and render its first rows as the kit's table, so a notebook reads as a document."""
+    rows = sql(query, params, conn)
+    if not rows:
+        return table(["result"], [["no rows"]], caption)
+    headers = list(rows[0])
+    body = [[_cell(r[h]) for h in headers] for r in rows[:limit]]
+    if len(rows) > limit:
+        body.append(["..." for _ in headers])
+    return table(headers, body, caption or f"{len(rows)} rows")
+
+
+def _cell(v):
+    if isinstance(v, decimal.Decimal):
+        v = int(v) if v == v.to_integral_value() else float(v)
+    if isinstance(v, int) and abs(v) >= 10000:
+        return f"{v:,}"
+    return "" if v is None else str(v)
+
+
+def rupees(n):
+    """Rs with Indian digit grouping, which is how every Kalpa number is read aloud."""
+    n = int(n)
+    sign, n = ("-", -n) if n < 0 else ("", n)
+    s = str(n)
+    if len(s) <= 3:
+        return f"{sign}Rs {s}"
+    head, tail = s[:-3], s[-3:]
+    parts = []
+    while len(head) > 2:
+        parts.insert(0, head[-2:])
+        head = head[:-2]
+    if head:
+        parts.insert(0, head)
+    return f"{sign}Rs {','.join(parts)},{tail}"
+
+
 def check(label, condition, detail=""):
     """Print PASS or FAIL without raising, so one failing check never stops a class.
 

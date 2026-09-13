@@ -22,6 +22,7 @@ Every figure below is asserted at the end of generation. A change that misses a 
 rather than shipping a dataset whose story no longer matches the curriculum row.
 """
 import argparse
+import datetime
 import csv
 import json
 import pathlib
@@ -85,6 +86,22 @@ WITNESSES = {
         ("the Retail-Plus gap is real but modest", "W1 Thu, statistically real against worth acting on"),
         ("the monsoon sale lifts the aggregate 6 percent while every segment falls",
          "W1 Thu, the confounder and Simpson's reversal in one table"),
+    ],
+    "v4": [
+        ("the warehouse holds 1,000 orders where last week's extract held 186",
+         "W2 Mon, the sample is not the book and the first query says so"),
+        ("400 large invoices settled in two instalments, 50 more posted twice by the gateway",
+         "W2 Tue, a LEFT JOIN grows 1,000 rows to 1,450 and the naive total doubles"),
+        ("30 delivered orders never paid, and 8 payments whose order is not in the table",
+         "W2 Tue, the anti-join both ways"),
+        ("an exact Q2 revenue tie at the fiftieth Retail-Plus position",
+         "W2 Wed, RANK ships 51 rows where ROW_NUMBER ships 50"),
+        ("three Retail-Plus members whose monthly spend falls in each of the three Q2 months",
+         "W2 Wed, two LAGs and a comparison"),
+        ("6 duplicated customer keys in the exposure feed",
+         "W2 Thu, validate='one_to_one' raises where the count check only reported"),
+        ("one member id absent from the clean customer table",
+         "W2 Fri, an approximate lookup returns the neighbour"),
     ],
 }
 
@@ -364,6 +381,361 @@ CAMPAIGN_MASTER = [{
 
 
 # --------------------------------------------------------------------------- writing
+# --------------------------------------------------------------------------- v4, Week 2
+# The warehouse. Week 1 worked from a 200-row extract the data team sent before the room had
+# database access, and the warehouse holds the whole two-quarter book those rows were sampled
+# from. That is why Monday's first query does not match last week's note, and reconciling the two
+# is Monday's opening move.
+V4_ORDERS = 1000
+V4_Q1_TOTAL = 100000000      # Rs 10.00 crore for Q1
+V4_Q2_TOTAL = 98400000       # Rs 9.84 crore, the same 1.6 percent fall the sample showed
+V4_UNPAID = 30               # delivered and never paid
+V4_UNPAID_BIG = 2            # of those, large invoices, so the gap is visible in money
+V4_INSTALMENT = 400          # large invoices settled in two instalments
+V4_RETRY = 50                # gateway retries that posted the same instalment a second time
+V4_SINGLE = 520              # paid once, in full
+V4_JOIN_ROWS = 1450          # 520 + 400x2 + 50x2 rows, plus the 30 unpaid on the NULL side
+V4_ORPHANS = 8               # payments whose order_id is not in the orders table
+V4_REFUNDS = 12              # refunds, kept in their own table so the join count stays exact
+V4_TIE_RANK = 50             # an exact Q2 revenue tie at the fiftieth Retail-Plus position
+V4_FALLING = 3               # members whose monthly spend fell two months running
+V4_EXPOSURE_DUPES = 6        # duplicate customer keys so validate='one_to_one' raises
+
+# Order counts per segment per quarter, the Week 1 plan at warehouse scale. Customers stay flat;
+# what moves is how often Retail-Plus members order, which falls 34.9 percent.
+V4_PLAN = {
+    "Q1": {"Student": 27, "Business": 97, "Retail-Plus": 215, "Retail-Core": 199},
+    "Q2": {"Student": 38, "Business": 91, "Retail-Plus": 140, "Retail-Core": 193},
+}
+V4_CUSTOMERS = {"Retail-Core": 150, "Retail-Plus": 120, "Business": 40, "Student": 30}
+V4_METHODS = ("card", "upi", "netbanking", "wallet")
+
+
+def _v4_month(quarter, i):
+    return {"Q1": (4, 5, 6), "Q2": (7, 8, 9)}[quarter][i % 3]
+
+
+def _v4_customers():
+    """One stable pool used by both quarters, so customer count is flat and frequency is the mover."""
+    rng = random.Random(SEED + 4)
+    rows, n = [], 1
+    for segment, count in V4_CUSTOMERS.items():
+        for _ in range(count):
+            rows.append({
+                "customer_id": _customer_id(n),
+                "segment": segment,
+                "city": rng.choice(CITIES),
+                "country": "IN",
+                "joined_date": f"202{rng.randrange(3, 6)}-{rng.randrange(1, 13):02d}-"
+                               f"{rng.randrange(1, 29):02d}",
+            })
+            n += 1
+    return rows
+
+
+def _v4_orders(customers):
+    """1,000 orders whose quarter totals land exactly on the contract."""
+    rng = random.Random(SEED + 5)
+    by_segment = {}
+    for c in customers:
+        by_segment.setdefault(c["segment"], []).append(c)
+
+    orders, n = [], 1
+    for quarter in ("Q1", "Q2"):
+        for segment, count in V4_PLAN[quarter].items():
+            pool = by_segment[segment]
+            for i in range(count):
+                # A skewed draw: most orders spread across the pool, a third concentrated on
+                # the heavy buyers, so a top-fifty list has a real shape to rank.
+                cust = pool[rng.randrange(len(pool) // 3)] if rng.random() < 0.33 \
+                    else pool[rng.randrange(len(pool))]
+                orders.append({
+                    "order_id": _order_id(n),
+                    "customer_id": cust["customer_id"],
+                    "order_date": f"2026-{_v4_month(quarter, i):02d}-{1 + rng.randrange(28):02d}",
+                    "quarter": quarter,
+                    "channel": rng.choice(CHANNELS),
+                    "amount": _amount(rng, segment),
+                    "status": rng.choice(STATUSES),
+                    "_segment": segment,
+                })
+                n += 1
+    return orders
+
+
+def _v4_plant_falling(orders, customers):
+    """Three Retail-Plus members whose monthly spend falls in each of the three Q2 months.
+
+    Three Q2 orders are reassigned to each of them, one per month, on a descending ladder, so the
+    order count does not move. Wednesday's LAG finds them. Nothing says so in a learner file.
+    """
+    # Members who have no Q2 order of their own, so the ladder is their whole quarter and the
+    # month totals are not polluted by an order the draw happened to give them.
+    busy = {o["customer_id"] for o in orders if o["quarter"] == "Q2"}
+    plus = [c["customer_id"] for c in customers
+            if c["segment"] == "Retail-Plus" and c["customer_id"] not in busy]
+    chosen = plus[:V4_FALLING]
+    ladders = [(4200, 3100, 1900), (3800, 2600, 1400), (4400, 2900, 1600)]
+    pool = [o for o in orders
+            if o["quarter"] == "Q2" and o["_segment"] == "Retail-Plus"
+            and o["customer_id"] not in chosen]
+    for k, (cid, ladder) in enumerate(zip(chosen, ladders)):
+        for slot in range(3):
+            o = pool[k * 3 + slot]
+            o["customer_id"] = cid
+            o["order_date"] = f"2026-{(7 + slot):02d}-{12 + slot:02d}"
+            o["amount"] = ladder[slot]
+    return orders, chosen
+
+
+def _v4_plant_tie(orders, customers):
+    """An exact Q2 revenue tie at the fiftieth Retail-Plus position.
+
+    The head of Retail-Plus asks for the top fifty and for ties to rank the same, so the tie has to
+    sit exactly on the boundary: RANK ships fifty-one rows and ROW_NUMBER ships fifty.
+    """
+    plus = {c["customer_id"] for c in customers if c["segment"] == "Retail-Plus"}
+    spend = {}
+    for o in orders:
+        if o["quarter"] == "Q2" and o["customer_id"] in plus:
+            spend[o["customer_id"]] = spend.get(o["customer_id"], 0) + o["amount"]
+    ranked = sorted(spend.items(), key=lambda kv: (-kv[1], kv[0]))
+    if len(ranked) <= V4_TIE_RANK:
+        return None
+    fiftieth, next_one = ranked[V4_TIE_RANK - 1], ranked[V4_TIE_RANK]
+    gap = fiftieth[1] - next_one[1]
+    theirs = [o for o in orders if o["customer_id"] == next_one[0] and o["quarter"] == "Q2"]
+    theirs[0]["amount"] += gap
+    return fiftieth[0], next_one[0], fiftieth[1]
+
+
+def _v4_settle(orders):
+    """Push each quarter's last Business order so the quarter total lands exactly on target."""
+    for quarter, target in (("Q1", V4_Q1_TOTAL), ("Q2", V4_Q2_TOTAL)):
+        here = [o for o in orders if o["quarter"] == quarter]
+        anchor = [o for o in here if o["_segment"] == "Business"][-1]
+        anchor["amount"] += target - sum(o["amount"] for o in here)
+    return orders
+
+
+def build_v4():
+    """The warehouse: customers, orders, payments, refunds, campaign exposure and the plan line."""
+    rng = random.Random(SEED + 6)
+    customers = _v4_customers()
+    orders = _v4_orders(customers)
+    orders, falling = _v4_plant_falling(orders, customers)
+    tie = _v4_plant_tie(orders, customers)
+    orders = _v4_settle(orders)
+
+    # Who pays how. The instalment set is the large invoices, because a corporate buyer settles a
+    # big order in two parts, which is exactly why the fan-out doubles the number rather than
+    # nudging it. The retries land on small orders so the doubling stays the fan-out's doing.
+    delivered = [o for o in orders if o["status"] == "delivered"]
+    by_value = sorted(orders, key=lambda o: -o["amount"])
+    # Two of the never-paid orders are large corporate invoices. Without them the gap Anand asks
+    # about is a rounding error, and a gap nobody can see is a lesson nobody learns.
+    # Anand asks about Q2, so the large unpaid invoices sit in Q2 and on different channels. A gap
+    # that lands entirely in one quarter and one channel teaches a narrower lesson than it should.
+    q2_business = [o for o in delivered if o["_segment"] == "Business" and o["quarter"] == "Q2"]
+    big_unpaid, used = [], set()
+    for o in q2_business:
+        if o["channel"] not in used:
+            big_unpaid.append(o)
+            used.add(o["channel"])
+        if len(big_unpaid) == V4_UNPAID_BIG:
+            break
+    small_unpaid = [o for o in delivered
+                    if o["_segment"] != "Business"][-(V4_UNPAID - V4_UNPAID_BIG):]
+    unpaid = {o["order_id"] for o in big_unpaid + small_unpaid}
+    paid = [o for o in by_value if o["order_id"] not in unpaid]
+    instalment = {o["order_id"] for o in paid[:V4_INSTALMENT]}
+    rest = [o for o in paid[V4_INSTALMENT:]]
+    retry = {o["order_id"] for o in rest[-V4_RETRY:]}
+
+    payments, n = [], 1
+    for o in orders:
+        oid = o["order_id"]
+        if oid in unpaid:
+            continue
+        base = f"2026-{int(o['order_date'][5:7]):02d}-{min(28, int(o['order_date'][8:10]) + 2):02d}"
+        if oid in instalment:
+            first = (o["amount"] * 6) // 10
+            for k, amt in enumerate((first, o["amount"] - first)):
+                payments.append({"payment_id": f"P-{n:05d}", "order_id": oid, "paid_date": base,
+                                 "amount": amt, "method": rng.choice(V4_METHODS),
+                                 "instalment_no": k + 1})
+                n += 1
+        elif oid in retry:
+            for k in range(2):                     # the gateway posted the same amount twice
+                payments.append({"payment_id": f"P-{n:05d}", "order_id": oid, "paid_date": base,
+                                 "amount": o["amount"], "method": "card", "instalment_no": 1})
+                n += 1
+        else:
+            payments.append({"payment_id": f"P-{n:05d}", "order_id": oid, "paid_date": base,
+                             "amount": o["amount"], "method": rng.choice(V4_METHODS),
+                             "instalment_no": 1})
+            n += 1
+
+    for k in range(V4_ORPHANS):                    # a payment whose order never reached this table
+        payments.append({"payment_id": f"P-{n:05d}", "order_id": _order_id(90000 + k),
+                         "paid_date": "2026-08-14", "amount": 2000 + 310 * k,
+                         "method": "wallet", "instalment_no": 1})
+        n += 1
+
+    returned = [o for o in orders if o["status"] == "returned"][:V4_REFUNDS]
+    refunds = [{"refund_id": f"R-{i + 1:04d}", "order_id": o["order_id"],
+                "refund_date": o["order_date"], "amount": -o["amount"],
+                "reason": rng.choice(("damaged", "wrong item", "late delivery"))}
+               for i, o in enumerate(returned)]
+
+    exposure, seen = [], []
+    for c in customers:
+        if c["segment"] in ("Retail-Plus", "Retail-Core") and rng.random() < 0.55:
+            exposure.append({"customer_id": c["customer_id"], "campaign_id": "CMP-MONSOON-26",
+                             "exposed_date": "2026-08-03"})
+            seen.append(c["customer_id"])
+    for cid in seen[:V4_EXPOSURE_DUPES]:           # the second feed re-sent the same customers
+        exposure.append({"customer_id": cid, "campaign_id": "CMP-MONSOON-26",
+                         "exposed_date": "2026-08-11"})
+
+    plan = []
+    week = datetime.date(2026, 7, 6)
+    weekly = V4_Q2_TOTAL // 13
+    for w in range(13):
+        plan.append({"week_start": week.isoformat(), "plan_revenue": weekly})
+        week += datetime.timedelta(days=7)
+
+    for o in orders:
+        o.pop("_segment", None)
+    return {"customers": customers, "orders": orders, "payments": payments, "refunds": refunds,
+            "campaign_exposure": exposure, "plan_line": plan,
+            "_meta": {"unpaid": sorted(unpaid), "instalment": sorted(instalment),
+                      "retry": sorted(retry), "tie": tie, "falling": falling}}
+
+
+
+# --------------------------------------------------------------------------- the warehouse file
+V4_SCHEMA = """-- Kalpa Retail warehouse, the two-quarter book Anand asks for every Monday.
+-- Built by data/generate_client_zero.py. Load with: psql -f data/warehouse_v4.sql
+-- payments carries no foreign key on purpose: the feed holds payments whose order never arrived.
+-- campaign_exposure carries no primary key on purpose: the second feed re-sent some customers.
+DROP TABLE IF EXISTS campaign_exposure, plan_line, refunds, payments, orders, campaigns, customers;
+
+CREATE TABLE customers (
+    customer_id  text PRIMARY KEY,
+    segment      text NOT NULL,
+    city         text NOT NULL,
+    country      text NOT NULL,
+    joined_date  date NOT NULL
+);
+
+CREATE TABLE orders (
+    order_id     text PRIMARY KEY,
+    customer_id  text NOT NULL REFERENCES customers (customer_id),
+    order_date   date NOT NULL,
+    quarter      text NOT NULL,
+    channel      text NOT NULL,
+    amount       numeric(12, 2) NOT NULL,
+    status       text NOT NULL
+);
+
+CREATE TABLE payments (
+    payment_id    text PRIMARY KEY,
+    order_id      text NOT NULL,
+    paid_date     date NOT NULL,
+    amount        numeric(12, 2) NOT NULL,
+    method        text NOT NULL,
+    instalment_no integer NOT NULL
+);
+
+CREATE TABLE refunds (
+    refund_id    text PRIMARY KEY,
+    order_id     text NOT NULL,
+    refund_date  date NOT NULL,
+    amount       numeric(12, 2) NOT NULL,
+    reason       text NOT NULL
+);
+
+CREATE TABLE campaigns (
+    campaign_id  text PRIMARY KEY,
+    name         text NOT NULL,
+    start_date   date NOT NULL,
+    end_date     date NOT NULL,
+    segment      text NOT NULL
+);
+
+CREATE TABLE campaign_exposure (
+    customer_id  text NOT NULL,
+    campaign_id  text NOT NULL,
+    exposed_date date NOT NULL
+);
+
+CREATE TABLE plan_line (
+    week_start    date PRIMARY KEY,
+    plan_revenue  numeric(14, 2) NOT NULL
+);
+"""
+
+V4_TABLES = [
+    ("customers", ("customer_id", "segment", "city", "country", "joined_date")),
+    ("orders", ("order_id", "customer_id", "order_date", "quarter", "channel", "amount", "status")),
+    ("campaigns", ("campaign_id", "name", "start_date", "end_date", "segment")),
+    ("payments", ("payment_id", "order_id", "paid_date", "amount", "method", "instalment_no")),
+    ("refunds", ("refund_id", "order_id", "refund_date", "amount", "reason")),
+    ("campaign_exposure", ("customer_id", "campaign_id", "exposed_date")),
+    ("plan_line", ("week_start", "plan_revenue")),
+]
+
+V4_CAMPAIGNS = [{"campaign_id": "CMP-MONSOON-26", "name": "Monsoon Sale",
+                 "start_date": "2026-08-05", "end_date": "2026-08-19", "segment": "Retail-Plus"}]
+
+
+def _v4_sql(tables):
+    """The whole warehouse as one loadable file: schema, then a COPY block per table."""
+    out = [V4_SCHEMA]
+    for name, cols in V4_TABLES:
+        rows = tables[name]
+        out.append(f"COPY {name} ({', '.join(cols)}) FROM stdin;")
+        for r in rows:
+            out.append("\t".join(str(r[c]) for c in cols))
+        out.append("\\.")
+        out.append("")
+    out.append("-- Row counts this file must load, which Monday's first query checks.")
+    for name, _ in V4_TABLES:
+        out.append(f"--   {name}: {len(tables[name])}")
+    return "\n".join(out) + "\n"
+
+
+def _v4_exports(tables):
+    """Friday's two CSVs: the clean customer table, and the raw export that still double-counts."""
+    seg = {c["customer_id"]: c for c in tables["customers"]}
+    per_order = {}
+    for p in tables["payments"]:
+        per_order.setdefault(p["order_id"], []).append(p)
+
+    clean, raw = {}, []
+    for o in tables["orders"]:
+        c = seg[o["customer_id"]]
+        rec = clean.setdefault(o["customer_id"], {
+            "customer_id": o["customer_id"], "segment": c["segment"], "city": c["city"],
+            "orders": 0, "revenue": 0, "last_order_date": "2026-01-01"})
+        rec["orders"] += 1
+        rec["revenue"] += o["amount"]
+        rec["last_order_date"] = max(rec["last_order_date"], o["order_date"])
+        for p in per_order.get(o["order_id"], [{"amount": 0, "paid_date": ""}]):
+            raw.append({"order_id": o["order_id"], "customer_id": o["customer_id"],
+                        "segment": c["segment"], "channel": o["channel"],
+                        "order_date": o["order_date"], "order_amount": o["amount"],
+                        "paid_amount": p["amount"], "paid_date": p["paid_date"]})
+
+    rows = sorted(clean.values(), key=lambda r: r["customer_id"])
+    # One member id is absent from the clean table on purpose, so Friday's lookup has something
+    # to fail on and the room sees an approximate match return the neighbour.
+    missing = rows[len(rows) // 2]["customer_id"]
+    rows = [r for r in rows if r["customer_id"] != missing]
+    return rows, raw, missing
+
+
 def _py_literal(name, rows):
     lines = [f"# Kalpa Retail, generated by data/generate_client_zero.py. Do not edit by hand.",
              f"{name} = ["]
@@ -444,6 +816,31 @@ def write(version, out_dir, stem):
         m = out / f"{stem}_campaigns_STUDENT.csv"
         _write_csv(m, CAMPAIGN_MASTER)
         written.append(m)
+
+    elif version == "v4":
+        tables = build_v4()
+        tables["campaigns"] = V4_CAMPAIGNS
+        p = out / f"{stem}_warehouse_v4_STUDENT.sql"
+        p.write_text(_v4_sql(tables), encoding="utf-8")
+        written.append(p)
+
+        # Thursday reads the exposure feed as a file, because the fan-out has to be met in pandas
+        # as well as in SQL, and Friday reads the two exports.
+        thu = pathlib.Path("content/W02/D4/data")
+        thu.mkdir(parents=True, exist_ok=True)
+        e = thu / "C2_W02_D04_exposure_STUDENT.csv"
+        _write_csv(e, tables["campaign_exposure"])
+        written.append(e)
+
+        clean, raw, missing = _v4_exports(tables)
+        fri = pathlib.Path("content/W02/D5/data")
+        fri.mkdir(parents=True, exist_ok=True)
+        c = fri / "C2_W02_D05_customer_table_STUDENT.csv"
+        _write_csv(c, clean)
+        written.append(c)
+        r = fri / "C2_W02_D05_raw_export_STUDENT.csv"
+        _write_csv(r, raw)
+        written.append(r)
 
     else:
         sys.exit(f"FAIL  unknown version {version}")
@@ -591,6 +988,72 @@ def contract():
             fails += 1
 
     print()
+    # ---------------------------------------------------------------- v4, the Week 2 warehouse
+    from collections import Counter
+    w = build_v4()
+    orders, payments, customers = w["orders"], w["payments"], w["customers"]
+    seg = {c["customer_id"]: c["segment"] for c in customers}
+    ids = {o["order_id"] for o in orders}
+    amount = {o["order_id"]: o["amount"] for o in orders}
+    per = Counter(p["order_id"] for p in payments)
+
+    want("v4 orders in the warehouse", len(orders), V4_ORDERS)
+    want("v4 Q1 revenue", sum(o["amount"] for o in orders if o["quarter"] == "Q1"), V4_Q1_TOTAL)
+    want("v4 Q2 revenue", sum(o["amount"] for o in orders if o["quarter"] == "Q2"), V4_Q2_TOTAL)
+    want("v4 rows a LEFT JOIN to payments returns",
+         sum(max(1, per.get(i, 0)) for i in ids), V4_JOIN_ROWS)
+    want("v4 orders with no payment at all", sum(1 for i in ids if per.get(i, 0) == 0), V4_UNPAID)
+    want("v4 payments whose order is not in the table",
+         sum(1 for p in payments if p["order_id"] not in ids), V4_ORPHANS)
+    want("v4 orders carrying more than one payment row",
+         sum(1 for i in ids if per.get(i, 0) > 1), V4_INSTALMENT + V4_RETRY)
+
+    paid_book = sum(amount[i] for i in ids if per.get(i, 0) > 0)
+    naive = sum(amount[i] * per[i] for i in ids if per.get(i, 0) > 0)
+    ratio = naive / paid_book
+    ok = 1.95 <= ratio <= 2.05
+    print(f"  {'PASS' if ok else 'FAIL'}  v4 the naive total over the join against the true book: "
+          f"{ratio:.4f} times, and the day needs it to read as double")
+    if not ok:
+        fails += 1
+
+    plus_q2 = {}
+    for o in orders:
+        if o["quarter"] == "Q2" and seg[o["customer_id"]] == "Retail-Plus":
+            plus_q2[o["customer_id"]] = plus_q2.get(o["customer_id"], 0) + o["amount"]
+    ranked = sorted(plus_q2.values(), reverse=True)
+    want("v4 Retail-Plus members with a Q2 spend to rank", len(ranked) > V4_TIE_RANK, True)
+    tie = ranked[V4_TIE_RANK - 1] == ranked[V4_TIE_RANK]
+    print(f"  {'PASS' if tie else 'FAIL'}  v4 an exact tie at the fiftieth Retail-Plus position: "
+          f"{ranked[V4_TIE_RANK - 1]:,} against {ranked[V4_TIE_RANK]:,}")
+    if not tie:
+        fails += 1
+
+    falling = 0
+    for cid in {o["customer_id"] for o in orders if seg[o["customer_id"]] == "Retail-Plus"}:
+        months = {}
+        for o in orders:
+            if o["customer_id"] == cid and o["quarter"] == "Q2":
+                months[o["order_date"][5:7]] = months.get(o["order_date"][5:7], 0) + o["amount"]
+        v = [months.get(mm) for mm in ("07", "08", "09")]
+        if all(v) and v[0] > v[1] > v[2]:
+            falling += 1
+    want("v4 Retail-Plus members whose spend fell in each of the three Q2 months",
+         falling, V4_FALLING)
+
+    ec = Counter(e["customer_id"] for e in w["campaign_exposure"])
+    want("v4 duplicated customer keys in the exposure feed",
+         sum(1 for n in ec.values() if n > 1), V4_EXPOSURE_DUPES)
+
+    w["campaigns"] = V4_CAMPAIGNS
+    clean, raw, missing = _v4_exports(w)
+    want("v4 rows in Friday's raw export", len(raw), V4_JOIN_ROWS)
+    gone = missing not in {r["customer_id"] for r in clean}
+    print(f"  {'PASS' if gone else 'FAIL'}  v4 one member id absent from the clean table "
+          f"so Friday's lookup has something to fail on: {missing}")
+    if not gone:
+        fails += 1
+
     print("RESULT:", "FAIL" if fails else "PASS", f"({fails} failures)")
     return fails
 
@@ -600,6 +1063,7 @@ TARGETS = {
     "v1": ("content/W01/D2/data", "C2_W01_D02"),
     "v2": ("content/W01/D3/data", "C2_W01_D03"),
     "v3": ("content/W01/D4/data", "C2_W01_D04"),
+    "v4": ("content/W02/D1/data", "C2_W02_D01"),
 }
 
 

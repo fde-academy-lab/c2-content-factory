@@ -1,0 +1,169 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Watch a join multiply</title>
+<style>
+  :root { --ink:#1b1b1a; --paper:#faf8f4; --line:#d9d4c8; --lit:#2b4a7d; --dim:#8a8580;
+          --warn:#8a3d3d; --ok:#1f6f4a; }
+  body { margin:0; padding:22px; background:var(--paper); color:var(--ink);
+         font:15px/1.55 -apple-system,"Segoe UI",system-ui,sans-serif; }
+  h1 { font-size:20px; margin:0 0 4px; }
+  p.lede { margin:0 0 18px; color:#5c5850; max-width:64ch; }
+  .wrap { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  @media (max-width:780px){ .wrap{ grid-template-columns:1fr; } }
+  .panel { border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:#fff; }
+  h2 { font-size:14px; margin:0 0 10px; text-transform:uppercase; letter-spacing:.05em;
+       color:var(--dim); }
+  table { border-collapse:collapse; width:100%; font-size:13.5px; }
+  th,td { text-align:left; padding:5px 8px; border-bottom:1px solid #eee9df; }
+  th { color:var(--dim); font-weight:600; }
+  tr.dup td { background:#fdf3f3; }
+  tr.nullrow td { background:#f3f6fc; color:var(--dim); font-style:italic; }
+  .row { display:flex; gap:9px; flex-wrap:wrap; margin:0 0 14px; }
+  button,select { font:14px inherit; padding:7px 10px; border-radius:7px;
+                  border:1px solid var(--line); background:#fff; cursor:pointer; }
+  button:hover,select:hover { border-color:var(--lit); }
+  .tally { display:flex; gap:16px; flex-wrap:wrap; margin:12px 0 0; font-size:14px; }
+  .tally b { display:block; font-size:20px; }
+  .verdict { margin-top:13px; border-left:4px solid var(--lit); padding:9px 12px;
+             background:#f4f1ea; border-radius:0 8px 8px 0; font-size:14px; min-height:3em; }
+  .verdict.bad { border-left-color:var(--warn); }
+  .verdict.good { border-left-color:var(--ok); }
+</style>
+
+<h1>Watch a join multiply</h1>
+<p class="lede">Six orders and their payments. Pick a join, and the result table below shows every
+row it produces. The totals underneath are what a report would print. One of these joins answers
+Anand's question and three of them answer something else.</p>
+
+<div class="row">
+  <select id="join">
+    <option value="left">LEFT JOIN: every order, paid or not</option>
+    <option value="inner">INNER JOIN: only orders that have a payment</option>
+    <option value="right">RIGHT JOIN: every payment, even an orphan</option>
+    <option value="agg">Collapse payments first, then LEFT JOIN</option>
+  </select>
+  <button id="go">Run it</button>
+  <button id="reset">Start over</button>
+</div>
+
+<div class="wrap">
+  <div class="panel">
+    <h2>The two tables</h2>
+    <table id="src"></table>
+  </div>
+  <div class="panel">
+    <h2>What the join returns</h2>
+    <table id="out"></table>
+    <div class="tally" id="tally"></div>
+    <div class="verdict" id="verdict">Nothing has run yet.</div>
+  </div>
+</div>
+
+<script>
+const ORDERS = [
+  {id:"KR-00001", amt:900000, why:"corporate, two instalments"},
+  {id:"KR-00002", amt:2400,   why:"paid once"},
+  {id:"KR-00003", amt:640000, why:"corporate, two instalments"},
+  {id:"KR-00004", amt:1800,   why:"gateway retry, charged twice"},
+  {id:"KR-00005", amt:3100,   why:"delivered, never paid"},
+  {id:"KR-00006", amt:2100,   why:"paid once"}
+];
+const PAYMENTS = [
+  {pid:"P-01", oid:"KR-00001", amt:540000},
+  {pid:"P-02", oid:"KR-00001", amt:360000},
+  {pid:"P-03", oid:"KR-00002", amt:2400},
+  {pid:"P-04", oid:"KR-00003", amt:384000},
+  {pid:"P-05", oid:"KR-00003", amt:256000},
+  {pid:"P-06", oid:"KR-00004", amt:1800},
+  {pid:"P-07", oid:"KR-00004", amt:1800},
+  {pid:"P-08", oid:"KR-00006", amt:2100},
+  {pid:"P-09", oid:"KR-90001", amt:2000}
+];
+const TRUE_BOOKED = ORDERS.reduce((a,o)=>a+o.amt,0);
+
+function rs(n){
+  const s = String(Math.round(n)); if (s.length<=3) return "Rs "+s;
+  let head=s.slice(0,-3), tail=s.slice(-3), parts=[];
+  while(head.length>2){ parts.unshift(head.slice(-2)); head=head.slice(0,-2); }
+  if(head) parts.unshift(head);
+  return "Rs "+parts.join(",")+","+tail;
+}
+
+function drawSource(){
+  const t = document.getElementById("src");
+  let h = "<tr><th>order</th><th>amount</th><th>payment rows</th></tr>";
+  ORDERS.forEach(o=>{
+    const ps = PAYMENTS.filter(p=>p.oid===o.id);
+    h += `<tr class="${ps.length>1?"dup":""}"><td>${o.id}</td><td>${rs(o.amt)}</td>` +
+         `<td>${ps.length===0?"none":ps.map(p=>p.pid).join(", ")}</td></tr>`;
+  });
+  h += `<tr class="nullrow"><td>KR-90001</td><td>not in orders</td><td>P-09</td></tr>`;
+  t.innerHTML = h;
+}
+
+function build(kind){
+  let rows = [];
+  if (kind === "left" || kind === "inner"){
+    ORDERS.forEach(o=>{
+      const ps = PAYMENTS.filter(p=>p.oid===o.id);
+      if (ps.length) ps.forEach(p=>rows.push({oid:o.id, oamt:o.amt, pid:p.pid, pamt:p.amt}));
+      else if (kind === "left") rows.push({oid:o.id, oamt:o.amt, pid:null, pamt:null});
+    });
+  } else if (kind === "right"){
+    PAYMENTS.forEach(p=>{
+      const o = ORDERS.find(x=>x.id===p.oid);
+      rows.push({oid:o?o.id:null, oamt:o?o.amt:null, pid:p.pid, pamt:p.amt});
+    });
+  } else {
+    ORDERS.forEach(o=>{
+      const ps = PAYMENTS.filter(p=>p.oid===o.id);
+      rows.push({oid:o.id, oamt:o.amt, pid:ps.length?ps.length+" rolled up":null,
+                 pamt:ps.reduce((a,p)=>a+p.amt,0) || null});
+    });
+  }
+  return rows;
+}
+
+const SAYS = {
+  left: r => `${r.length} rows from 6 orders. Summing the order amount here gives ${rs(r.reduce((a,x)=>a+(x.oamt||0),0))} against a true booked figure of ${rs(TRUE_BOOKED)}. Every row is real and the total is not.`,
+  inner: r => `${r.length} rows. KR-00005 is gone, silently, and that is the order Anand asked about. Nothing in the output says a row was dropped.`,
+  right: r => `${r.length} rows. P-09 arrives carrying no order at all, which is money in for something the book does not know about. That is a question for the platform team.`,
+  agg: r => `${r.length} rows from 6 orders. One row in, one row out, so the count check passes by construction. Booked reads ${rs(r.reduce((a,x)=>a+(x.oamt||0),0))}, which is the truth.`
+};
+
+let ran = 0;
+
+function run(){
+  const kind = document.getElementById("join").value;
+  const rows = build(kind);
+  let h = "<tr><th>order</th><th>order amt</th><th>payment</th><th>paid</th></tr>";
+  const seen = {};
+  rows.forEach(r=>{
+    seen[r.oid] = (seen[r.oid]||0)+1;
+    const cls = r.oid===null ? "nullrow" : (seen[r.oid]>1 ? "dup" : (r.pid===null ? "nullrow" : ""));
+    h += `<tr class="${cls}"><td>${r.oid||"(none)"}</td><td>${r.oamt!==null?rs(r.oamt):"-"}</td>` +
+         `<td>${r.pid||"(none)"}</td><td>${r.pamt!==null?rs(r.pamt):"-"}</td></tr>`;
+  });
+  document.getElementById("out").innerHTML = h;
+  const booked = rows.reduce((a,x)=>a+(x.oamt||0),0);
+  document.getElementById("tally").innerHTML =
+    `<div>rows<b>${rows.length}</b></div><div>sum of order amount<b>${rs(booked)}</b></div>` +
+    `<div>true booked<b>${rs(TRUE_BOOKED)}</b></div>` +
+    `<div>joins run<b>${ran + 1}</b></div>`;
+  const v = document.getElementById("verdict");
+  v.className = "verdict " + (kind === "agg" ? "good" : (booked === TRUE_BOOKED ? "" : "bad"));
+  v.textContent = SAYS[kind](rows);
+  ran++;
+}
+
+document.getElementById("go").addEventListener("click", run);
+document.getElementById("join").addEventListener("change", run);
+document.getElementById("reset").addEventListener("click", ()=>{
+  document.getElementById("out").innerHTML = "";
+  document.getElementById("tally").innerHTML = "";
+  const v = document.getElementById("verdict");
+  v.className = "verdict"; v.textContent = "Nothing has run yet.";
+});
+
+drawSource();
+</script>

@@ -41,14 +41,14 @@ DATED = re.compile(r"(verified|checked)\s+\d{1,2}\s+\w+\s+\d{4}", re.IGNORECASE)
 BUILD_WEEKS = {3, 6, 9, 12, 15}
 
 TEACHING_DIRS = {
-    "slides", "notebooks", "demos", "whiteboards", "cheatsheets", "study-notes",
+    "slides", "notebooks", "sql", "demos", "whiteboards", "cheatsheets", "study-notes",
     "exercises", "exercises/guided", "exercises/unguided", "exercises/solutions",
     "takehome", "kahoot", "preread", "extras", "data", "trainer", "internal", "corrections",
 }
 BUILD_DIRS = {
     "briefs", "rubrics", "gd", "parallel-build", "checkpoints", "mocks", "trainer", "internal",
 }
-SAT_RECAP_DIRS = {"paper", "answer-key", "discussion"}
+SAT_RECAP_DIRS = {"paper", "answer-key", "discussion", "internal"}
 
 
 def folder_shape(week, day_label):

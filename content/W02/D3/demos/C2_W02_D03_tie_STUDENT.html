@@ -1,0 +1,127 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Who makes the top five</title>
+<style>
+  :root{--ink:#1b1b1a;--paper:#faf8f4;--line:#d9d4c8;--lit:#2b4a7d;--dim:#8a8580;
+        --warn:#8a3d3d;--ok:#1f6f4a;--cut:#8a6d3b;}
+  body{margin:0;padding:22px;background:var(--paper);color:var(--ink);
+       font:15px/1.55 -apple-system,"Segoe UI",system-ui,sans-serif;}
+  h1{font-size:20px;margin:0 0 4px;}
+  p.lede{margin:0 0 18px;color:#5c5850;max-width:64ch;}
+  .wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media(max-width:780px){.wrap{grid-template-columns:1fr;}}
+  .panel{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#fff;}
+  h2{font-size:14px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.05em;color:var(--dim);}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;}
+  th,td{text-align:left;padding:5px 8px;border-bottom:1px solid #eee9df;}
+  th{color:var(--dim);font-weight:600;}
+  tr.in td{background:#eef6f1;}
+  tr.out td{color:var(--dim);}
+  tr.tie td{font-weight:600;}
+  tr.cut td{border-bottom:2px solid var(--cut);}
+  .row{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 14px;align-items:center;}
+  button,select,input{font:14px inherit;padding:7px 10px;border-radius:7px;
+                      border:1px solid var(--line);background:#fff;cursor:pointer;}
+  button:hover,select:hover{border-color:var(--lit);}
+  label{font-size:13px;color:#5c5850;}
+  .verdict{margin-top:13px;border-left:4px solid var(--lit);padding:9px 12px;background:#f4f1ea;
+           border-radius:0 8px 8px 0;font-size:14px;min-height:3.4em;}
+  .verdict.good{border-left-color:var(--ok);}
+  .verdict.bad{border-left-color:var(--warn);}
+  .tally{display:flex;gap:18px;margin-top:12px;font-size:14px;}
+  .tally b{display:block;font-size:22px;}
+</style>
+
+<h1>Who makes the top five</h1>
+<p class="lede">Eight members, and two of them spent exactly the same. Choose a ranking function
+and a cut-off, and watch how many names the list ships. The head of Retail-Plus asked for one of
+these behaviours in a single sentence.</p>
+
+<div class="row">
+  <label for="fn">Ranking function</label>
+  <select id="fn">
+    <option value="rank">RANK: ties share a position, then it skips</option>
+    <option value="dense">DENSE_RANK: ties share a position, no skip</option>
+    <option value="row">ROW_NUMBER: ties broken arbitrarily</option>
+  </select>
+  <label for="cut">Cut at</label>
+  <select id="cut">
+    <option>3</option><option selected>5</option><option>6</option>
+  </select>
+  <button id="apply">Apply the cut</button>
+</div>
+
+<div class="wrap">
+  <div class="panel">
+    <h2>The members, by Q2 revenue</h2>
+    <table id="tbl"></table>
+    <div class="tally" id="tally"></div>
+  </div>
+  <div class="panel">
+    <h2>What that means</h2>
+    <div class="verdict" id="verdict">Pick a function and apply the cut.</div>
+    <h2 style="margin-top:18px">The sentence he actually said</h2>
+    <p style="font-size:14px;margin:0;color:#5c5850">"If two members spent the same, I want them
+    ranked the same, and I want to know how many made the top five, not four because of a tie."</p>
+  </div>
+</div>
+
+<script>
+const MEMBERS = [
+  {id:"C-0102", rev:9400},
+  {id:"C-0118", rev:8100},
+  {id:"C-0140", rev:7250},
+  {id:"C-0165", rev:6600},
+  {id:"C-0172", rev:6600},
+  {id:"C-0181", rev:5900},
+  {id:"C-0193", rev:5300},
+  {id:"C-0204", rev:4800}
+];
+
+function ranked(fn){
+  const out = [];
+  let rank = 0, dense = 0, prev = null;
+  MEMBERS.forEach((m, i) => {
+    if (m.rev !== prev){ rank = i + 1; dense += 1; prev = m.rev; }
+    out.push({...m, row: i + 1, rank: rank, dense: dense});
+  });
+  return out.map(r => ({...r, pos: fn === "rank" ? r.rank : (fn === "dense" ? r.dense : r.row)}));
+}
+
+const SAYS = {
+  rank: (n,c) => `RANK ships ${n} names for a top ${c}. Both tied members share position 4, and the next member jumps to 6, so the tie costs nothing at the boundary and the list is one longer than the round number. This is what "ranked the same, and not four because of a tie" asks for.`,
+  dense: (n,c) => `DENSE_RANK ships ${n} names for a top ${c}. Ties share a position and nothing is skipped, so the cut reaches further down the list than anybody intended. Defensible, and not what was asked for.`,
+  row: (n,c) => `ROW_NUMBER ships exactly ${n} names, and one of the two tied members was dropped on no grounds at all. Run it again and the pair can swap, so the list is not even reproducible.`
+};
+
+let applied = 0;
+
+function draw(showCut){
+  const fn = document.getElementById("fn").value;
+  const cut = Number(document.getElementById("cut").value);
+  const rows = ranked(fn);
+  const kept = rows.filter(r => r.pos <= cut);
+  let h = "<tr><th>member</th><th>Q2 revenue</th><th>position</th></tr>";
+  rows.forEach((r, i) => {
+    const isTie = MEMBERS.filter(m => m.rev === r.rev).length > 1;
+    const inList = showCut && r.pos <= cut;
+    const last = showCut && inList && (i + 1 === kept.length);
+    h += `<tr class="${showCut ? (inList ? "in" : "out") : ""} ${isTie ? "tie" : ""} ${last ? "cut" : ""}">` +
+         `<td>${r.id}</td><td>Rs ${r.rev.toLocaleString("en-IN")}</td>` +
+         `<td>${r.pos}</td></tr>`;
+  });
+  document.getElementById("tbl").innerHTML = h;
+  document.getElementById("tally").innerHTML =
+    `<div>would ship<b>${kept.length}</b></div><div>asked for<b>${cut}</b></div>` +
+    `<div>cuts applied<b>${applied}</b></div>`;
+  const v = document.getElementById("verdict");
+  if (!showCut){ v.className = "verdict"; v.textContent = "Pick a function and apply the cut."; return; }
+  v.className = "verdict " + (fn === "rank" ? "good" : "bad");
+  v.textContent = SAYS[fn](kept.length, cut);
+}
+
+document.getElementById("apply").addEventListener("click", () => { applied++; draw(true); });
+document.getElementById("fn").addEventListener("change", () => draw(applied > 0));
+document.getElementById("cut").addEventListener("change", () => draw(applied > 0));
+draw(false);
+</script>
