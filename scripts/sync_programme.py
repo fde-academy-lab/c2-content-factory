@@ -400,7 +400,7 @@ class Context:
 
     def module_name(self, code):
         if not code:
-            return "No module: the baseline week sits outside the 510 hours"
+            return "no module, since Week 0 sits outside the 510 hours"
         n = code[1:]
         return f"Module {n}: {self.facts['modules']['names'][code]}"
 
