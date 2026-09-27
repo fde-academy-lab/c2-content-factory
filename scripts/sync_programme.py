@@ -575,6 +575,7 @@ RENDERERS = {
 }
 
 OPEN = re.compile(r"<!-- sync:([a-z-]+)(?::([A-Za-z0-9/_-]+))? -->")
+FENCE = re.compile(r"^(```|~~~).*?^\1[ \t]*$", re.M | re.S)
 
 
 def audience_of(path):
@@ -586,9 +587,14 @@ def render_blocks(text, ctx, path, report):
     """Rewrite every sync block in one file. Inline blocks stay inline; block ones keep their lines."""
     out, pos = [], 0
     audience = audience_of(path)
+    # A block inside a fenced code example is documentation of the syntax, never a live block.
+    fences = [(f.start(), f.end()) for f in FENCE.finditer(text)]
     for m in OPEN.finditer(text):
-        if m.start() < pos:
+        if m.start() < pos or any(a <= m.start() < b for a, b in fences):
             continue
+        line_start = text.rfind("\n", 0, m.start()) + 1
+        if text.count("`", line_start, m.start()) % 2:
+            continue  # inside an inline code span, so it is an example
         name, arg = m.group(1), m.group(2) or ""
         tag = name + (":" + arg if arg else "")
         close = f"<!-- /sync:{tag} -->"

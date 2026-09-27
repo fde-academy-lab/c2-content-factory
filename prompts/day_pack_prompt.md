@@ -7,15 +7,21 @@ decisions and will drift into today's without anybody choosing that.
 
 Build the full day pack for Cohort 2, Week {W}, Day {D}, {date}.
 
-Source of truth, in order: this prompt, the day's row in `docs/curriculum/W{W}_*.md`,
-`docs/curriculum/Structure.md`, `docs/07_Client_Zero.md` (LOCKED v2.2) and `docs/06_Day_Pack_Method.md`.
+Source of truth, in order: this prompt, `data/programme/facts.yaml` for any movable fact, the day's row
+in `docs/curriculum/W{W}_*.md`, the day's line in `docs/programme/calendar.md` (its date, slot, module
+and any IITGN faculty block), `docs/curriculum/Structure.md`, `docs/07_Client_Zero.md` (LOCKED v2.2,
+v2.3 proposed) and `docs/06_Day_Pack_Method.md`. Take `{date}` from the calendar page, never from memory.
 Stop and name the gap rather than building around it if the row is missing, if the business scenario
 column is empty, if the dataset version the row names is not described in the locked client zero file, or
 if a link on the row carries no verified date.
 
 **Read the row in the order it is written.** Fifteen columns, opening on the business scenario in the
-stakeholders' words, then the thinking trained before any tool, and only then the technique. Build the
-pack in that same order. `docs/05_Curriculum_Map_Schema.md` says what each column carries.
+stakeholders' words, then the thinking trained before any tool, and only then the technique, plus the
+violet IITGN faculty column in the weeks that have one. Build the pack in that same order.
+`docs/05_Curriculum_Map_Schema.md` says what each column carries. On a day with a faculty block, the
+row's stop-before line is where the faculty member starts, so the pack stops there too, and the trainer
+day sheet carries the block and the module line as sync blocks (`sync:faculty-day:W{ww}/D{d}`,
+`sync:module:W{ww}/D{d}`).
 
 Run the gates in order and stop after gate 2 for my approval.
 
@@ -35,7 +41,8 @@ Run the gates in order and stop after gate 2 for my approval.
    (d) exercises with solutions, (e) take-home with its self-check spine, (f) Kahoot pack, (g) study notes,
    cheat sheet and pre-read.
 4. **Verification.** The skill checklist, then `python3 scripts/verify.py content/W{W}/D{D}`, then the file
-   list with audience tags. Report what failed and what you fixed.
+   list with audience tags, then `python3 scripts/sync_programme.py --check`. Report what failed and what
+   you fixed, and show the verify output before calling the pack done.
 5. **Commit** on branch `w{ww}-d{d}`. In a cloud session, stop after committing and let the reviewer open
    the pull request.
 
@@ -49,4 +56,6 @@ verified exploration links and a self-check spine.
 Two rules about what never reaches a learner. **Nothing planted in the dataset is named in a student
 file**, because the room is meant to find it. And no trainer name, mark, weight or clock time appears
 anywhere in a student file; Kalpa's fictional stakeholders are named on purpose and are the one exception
-to the names rule. Durations only, Rs never the glyph, no em-dashes, banned-word scan before shipping.
+to the names rule. A tentative fact, such as an IITGN faculty session, reaches a student file only with the
+word tentative beside it; a proposed or open fact never does. Durations only, Rs never the glyph, no
+em-dashes, banned-word scan before shipping.

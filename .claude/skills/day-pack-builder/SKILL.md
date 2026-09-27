@@ -16,18 +16,25 @@ Read these before generating anything:
    the business scenario of the day, the thinking trained before any tool, the day focus, the trainer
    agenda, the learner outcome, the subtopics, the trainer notes, the client-zero data (TRAINER ONLY),
    the in-session exercises, the after-class tasks, the interview angle, the trainer resources, the
-   student references, the Kahoot quiz plan.
-2. `docs/curriculum/Structure.md`: week types, the Saturday recap shape, assessment status, the
-   confirmed calendar.
-3. `docs/07_Client_Zero.md`, which is LOCKED at v2.2: the company, the named stakeholders, the three
-   threads, the business-question ladder, the entity model, and the dataset version the row names in its
-   client-zero column together with what is planted in it.
-4. `docs/06_Day_Pack_Method.md` and `docs/02_Content_Doctrine.md` for the reasons behind the procedure.
+   student references, the Kahoot quiz plan. Weeks 2, 4, 5, 7, 8, 10 and 11 add a sixteenth, violet
+   column: the IITGN faculty session, tentative.
+2. The day's line in `docs/programme/calendar.md`: its date, its folder slot, the module it posts to and
+   any faculty block. Dates come from here and never from memory; the calendar moved by a week on
+   21 September 2026 and can move again.
+3. `docs/curriculum/Structure.md`: week types, the Saturday recap shape, assessment status, the
+   faculty plan's rules, the open decisions.
+4. `docs/07_Client_Zero.md`, which is LOCKED at v2.2, with its v2.3 note: the company, the named
+   stakeholders, the three threads, the business-question ladder, the entity model, and the dataset
+   version the row names in its client-zero column together with what is planted in it.
+5. `data/programme/facts.yaml` for the status of any movable fact the pack touches, and
+   `docs/06_Day_Pack_Method.md` and `docs/02_Content_Doctrine.md` for the reasons behind the procedure.
 
 Refuse, naming the gap, when any of these hold: the day's row does not exist; the business scenario
 column is empty, because a day built without it opens on a technique and that is the failure the
-September 2026 review named; the dataset version the row names is not described in the locked client
-zero file; a reference link on the row carries no verified date. A plausible day generated around a gap
+September 2026 review named; the dataset version the row names is described neither in the locked
+client zero file nor, marked proposed for v2.3, in the row itself; a reference link on the row carries
+no verified date. A pack built on a v2.3 dataset says "proposed for client zero v2.3" in its TRAINER
+and INTERNAL files, because the lock may still change it. A plausible day generated around a gap
 is the failure this gate exists to stop. Say what is missing and stop.
 
 ## The method: the business problem first, then the thinking, then the technique
@@ -49,6 +56,26 @@ plant has spent the lesson.
 **The interview angle is an output.** The row carries the questions this day equips a learner to
 answer, tagged `[S]`, `[F]`, `[SV]` or `[D]`. Questions go into the pack; answers are written here at
 the detailing phase and never copied into the curriculum row.
+
+## Movable facts: the module line and the faculty block
+
+Some facts in a pack are not the pack's to fix: the module the day posts to, and on a faculty day the
+IITGN block that follows the applied core. The trainer day sheet carries both as sync blocks, so a
+confirmation, a moved session or a re-dated calendar reaches the pack with one
+`python3 scripts/sync_programme.py` and no hand edit:
+
+```
+Module: <!-- sync:module:W02/D1 --><!-- /sync:module:W02/D1 -->
+
+<!-- sync:faculty-day:W02/D1 -->
+<!-- /sync:faculty-day:W02/D1 -->
+```
+
+Write the empty blocks and run the sync; it fills them. The row's stop-before line is where the
+faculty member starts, so the deck, the notebook and the exercises stop there too, and the trainer
+sheet says what the block will pick up. A STUDENT file mentions the block only with its status beside
+it (tentative, until IIT Gandhinagar confirms), and never names a faculty member. The status words and
+what each allows are in `data/programme/facts.yaml`.
 
 ## Mental model first, spiral always
 
@@ -91,11 +118,11 @@ The full manifest with per-artifact specifications lives in `references/artifact
 | Pre-read + setup for tomorrow | STUDENT, ships tonight | 1 |
 | Tiered extras (stretch, recovery) | STUDENT | 1 pair, weekly build allowed |
 
-Saturday recap papers are weekly artifacts built from the week's question set, and build weeks swap this manifest for the build-week pack; both variations are specified in the manifest reference.
+Saturday recap papers are weekly artifacts taken from the week's paper in the tracker's item bank (`docs/curriculum/Saturday_papers.md`): the STUDENT paper prints the items only, and the key, levels, tags and anchors go to TRAINER files. Build weeks swap this manifest for the build-week pack, and Week 0 days add the diagnostic papers and keys; all three variations are specified in the manifest reference.
 
-## Day 1 exception
+## The introduction pack, now in Week 0
 
-The opening day ships the introduction pack instead of a standard pack: the client-zero narrative deck with the mental-map diagrams, the programme and week story, the day-by-day promise, and the session mechanics. Read `references/day1-intro-pack.md` before building it. Client zero locked at v2.2 on 13 September 2026, so the pack is no longer blocked, and it opens on Meera Raghavan's question rather than on a company profile.
+Orientation moved to Week 0 Monday on the 21 September calendar: the Programme Head's welcome carries the journey across twenty weeks, the kinds of week, how a teaching day, a Saturday and a build week run, and the client. That day ships the introduction pack instead of a standard pack: the client-zero narrative deck with the mental-map diagrams, the programme and week story, the day-by-day promise, and the session mechanics. Read `references/day1-intro-pack.md` before building it; its running order follows the student Week 0 sheet (`docs/journey/Week_0.md`). Week 1 Monday is a standard teaching day that opens straight on Meera Raghavan's question.
 
 ## Verification checklist
 
@@ -116,6 +143,10 @@ The opening day ships the introduction pack instead of a standard pack: the clie
 12. Distractor audit on every quiz: no key is the longest option, key positions spread.
 13. Audience tag present in every file name, and every file inside the subfolder its type belongs in.
 14. The study notes and cheat sheet carry the same crux lines the deck closes on.
+15. The trainer day sheet names its module and, on a faculty day, carries the IITGN block, both as sync
+    blocks, and `python3 scripts/sync_programme.py --check` passes.
+16. No STUDENT file states a proposed or open fact, and a tentative one carries the word tentative.
+17. The verify run's output is in the reply before the pack is called done.
 
 ## File naming
 
