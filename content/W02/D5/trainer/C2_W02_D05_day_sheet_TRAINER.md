@@ -2,6 +2,14 @@
 
 TRAINER ONLY.
 
+Posts to <!-- sync:module:W02/D5 -->Module 1: Foundations of AI and Data<!-- /sync:module:W02/D5 -->, on <!-- sync:day-date:W02/D5 -->Fri 16 Oct 2026<!-- /sync:day-date:W02/D5 -->.
+
+## The IITGN faculty block (tentative)
+
+<!-- sync:faculty-day:W02/D5 -->
+No IITGN faculty block on this day.
+<!-- /sync:faculty-day:W02/D5 -->
+
 ## The shape of the day
 
 | Block | Minutes | What has to happen |

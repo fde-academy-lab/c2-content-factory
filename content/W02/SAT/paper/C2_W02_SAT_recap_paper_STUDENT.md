@@ -1,124 +1,511 @@
-# Week 2 recap: the fortnight under questioning
+# Week 2 recap paper
 
-Pen and paper. No assistant, no laptop, no notes. About two hours.
+Saturday 17 October 2026 · 120 minutes · 58 items · pen and paper, no assistant, no notes
 
-Short answers throughout. One or two sentences is the target for most items, and a long answer to
-a short question usually means the short answer has not been found yet. Where an item asks for a
-number, show the arithmetic beside it.
+Name: ____________________    Marked by: ____________________    Items right: ____ of 58
 
-This is ungraded and it is read carefully. Answer as you would in an interview, in your own words.
+Answer every item in the space it gives you. Each section says how. After the break the papers are swapped and marked against the key, and the discussion starts with the items the room missed most.
 
 ---
 
-## Section A. The language
+## A. Fill in the blank (items 1 to 9)
 
-**A1.** `WHERE` and `HAVING` both filter. One sentence each, saying what each one judges and when
-it runs.
+Write the missing word or number on the line.
 
-**A2.** A query has `SELECT sum(amount) AS revenue ... ORDER BY revenue DESC` and it works. The
-same alias in `WHERE` fails. Give the single fact that explains both.
+#### 1
 
-**A3.** `SELECT order_id FROM orders LIMIT 5` runs on two machines and returns different rows from
-the same unchanged table. Who is wrong, and why?
+WHERE filters rows before they are grouped, and ____ filters the groups after they are formed.
 
-**A4.** What does `WITH name AS (...)` promise, and what does it not promise?
+Answer: ____________________
 
----
+#### 2
 
-## Section B. Joins
+Without ORDER BY, LIMIT 5 returns five rows in an order the database does not ____.
 
-**B1.** `INNER` against `LEFT`: what does each drop and what does each keep? Answer in terms of a
-business question rather than in terms of rows.
+Answer: ____________________
 
-**B2.** A `LEFT JOIN` from 1,000 orders to payments returned 1,450 rows. Write the four-line
-reconciliation: rows before, rows after, the difference, and the therefore.
+#### 3
 
-**B3.** Collected revenue came back at roughly twice the true figure and every individual row in
-the result was correct. Explain how both of those can be true at once.
+A named query step introduced by the keyword WITH is called a ____.
 
-**B4.** 450 orders carried two payment rows each, out of a book of 1,000. Why did that roughly
-double the total rather than inflate it by about 45 percent?
+Answer: ____________________
 
-**B5.** Write, in words rather than in SQL, how you would find orders that have no payment at all.
-Then say what an `INNER` join would have done to that question.
+#### 4
 
-**B6.** Two payment rows sit on the same order. When is that correct and when is it a defect?
-What separates the two, and why can a rule not decide it for you?
+A LEFT JOIN keeps every row from the ____ table, whether it finds a match or not.
 
----
+Answer: ____________________
 
-## Section C. Windows
+#### 5
 
-**C1.** Four members with Q2 totals of Rs 9,000, Rs 7,500, Rs 7,500 and Rs 6,200. Give the
-sequence returned by `ROW_NUMBER`, by `RANK` and by `DENSE_RANK`.
+Orders with no payment are found with a LEFT JOIN to payments and a filter where the payment key IS ____.
 
-**C2.** A business owner says: ties must rank the same, and the top fifty must not lose a name to
-a tie. Name the function, and say how many rows the report might ship.
+Answer: ____________________
 
-**C3.** Give the argument against `ROW_NUMBER` that has nothing to do with fairness.
+#### 6
 
-**C4.** `lag(spend)` on a customer's first month returns nothing. Why is that the correct
-behaviour, and what does it do to a flag built on two LAGs?
+On the first month of each customer, LAG(spend) returns ____.
 
-**C5.** A running total changed between two runs against unchanged data. What was wrong with the
-query, and why is that worse than a number that is simply incorrect?
+Answer: ____________________
 
----
+#### 7
 
-## Section D. pandas
+The clause that restarts a window calculation for each segment is ____ BY.
 
-**D1.** Split, apply, combine. Which two of the three does `groupby` do for you?
+Answer: ____________________
 
-**D2.** A merge returned 346 rows from a 340-row table. Name the argument that would have stopped
-it and the error it raises.
+#### 8
 
-**D3.** `validate="many_to_one"` fails on your data. What have you just learned, and about which
-of the two tables?
+In pandas, merge(..., validate='one_to_one') raises a ____ when a key repeats.
 
-**D4.** You pivot a long frame wide and then melt it back. The result has more rows than you
-started with. Why?
+Answer: ____________________
+
+#### 9
+
+pivot_table makes a table wider, and ____ makes it longer.
+
+Answer: ____________________
 
 ---
 
-## Section E. The last mile
+## B. True or false (items 10 to 17)
 
-**E1.** Two CSVs arrive in the same folder. What do you run before pivoting either, and what
-number are you looking for?
+Write T or F on the line.
 
-**E2.** A pivot total is double what the warehouse says. What did the pivot do wrong?
+#### 10
 
-**E3.** A lookup returns a member for an id that is not in the table. Which part of the formula
-caused it, and why is that outcome worse than an error message?
+In the logical order of a query, SELECT is evaluated before WHERE.
 
-**E4.** Name the three things a front-page number needs beside it, and say what happens when one
-is missing.
+Answer: ____________________
 
-**E5.** A director changes an input cell and nothing downstream moves. What does that tell you
-about the sheet?
+#### 11
+
+WHERE COUNT(*) > 5 is valid SQL for filtering groups.
+
+Answer: ____________________
+
+#### 12
+
+An INNER JOIN between orders and payments silently drops the orders that were never paid.
+
+Answer: ____________________
+
+#### 13
+
+A join can inflate a SUM while every individual row still looks plausible.
+
+Answer: ____________________
+
+#### 14
+
+RANK and DENSE_RANK give different results only when there are ties.
+
+Answer: ____________________
+
+#### 15
+
+A window function can be used directly inside a WHERE clause.
+
+Answer: ____________________
+
+#### 16
+
+groupby followed by agg returns one row for each group.
+
+Answer: ____________________
+
+#### 17
+
+A pivot table built on an export that still contains duplicate rows reports the correct total.
+
+Answer: ____________________
 
 ---
 
-## Section F. The judgment
+## C. One correct option (items 18 to 32)
 
-**F1.** Same question, three tools. Give the three questions you would ask to decide, and say why
-none of them is about syntax.
+Circle the one correct letter.
 
-**F2.** Somebody proposes that Finance's quarter-end number come from a notebook an analyst runs.
-Write the refusal in one sentence that does not mention pandas.
+#### 18
 
-**F3.** State the condition that has to hold for anything living in Excel, and say what breaks it
-first in a real team under a deadline.
+Which clause runs first in the logical order of a query?
 
-**F4.** Last week you told Meera that Q1 was Rs 2.10 crore. This week the warehouse said
-Rs 10.00 crore. Write the sentence you send her.
+a) SELECT
+b) FROM
+c) WHERE
+d) ORDER BY
+
+#### 19
+
+A query fails with: column "segment" must appear in the GROUP BY clause or be used in an aggregate function. What fixes it?
+
+a) Add segment to GROUP BY, or wrap it in an aggregate.
+b) Move the WHERE filter into a HAVING clause after GROUP BY.
+c) Add LIMIT 1 so that only one segment returns.
+d) Add ORDER BY segment at the end of the query.
+
+#### 20
+
+Why should Finance's Monday number be computed in the warehouse and not in a notebook?
+
+a) The warehouse hides the raw data from Finance, which keeps the number from being disputed.
+b) A notebook cannot hold a full quarter of orders, so its totals are always approximate.
+c) SQL is faster than Python on every task, so the number arrives sooner each Monday.
+d) The query runs unchanged each week against the source, and every line can be audited.
+
+#### 21
+
+Which join returns only the orders that have at least one payment?
+
+a) LEFT JOIN
+b) FULL OUTER JOIN
+c) INNER JOIN
+d) CROSS JOIN
+
+#### 22
+
+After a LEFT JOIN from orders to payments, the row count rose from 1,000 to 1,050. What is the likeliest cause?
+
+a) The payments table is empty.
+b) Some orders have no payment.
+c) The join kept the unpaid orders as extra rows.
+d) Some orders have more than one payment row.
+
+#### 23
+
+Which query lists the orders that were paid twice?
+
+a) SELECT order_id FROM payments GROUP BY order_id HAVING COUNT(*) > 1
+b) SELECT DISTINCT order_id FROM payments
+c) SELECT order_id FROM payments ORDER BY order_id
+d) SELECT order_id FROM payments WHERE COUNT(order_id) > 1 GROUP BY order_id
+
+#### 24
+
+Collected revenue doubled after a join and every row looks fine. What is the first check?
+
+a) Rerun the query at a quieter hour, in case the warehouse returned a partial result.
+b) Round the amounts to whole rupees, because decimals accumulate across many rows.
+c) Switch to an INNER JOIN, because a LEFT JOIN is what creates the extra rows.
+d) Compare the row count before and after the join, and count payments per order.
+
+#### 25
+
+Revenue values are 900, 850, 850 and 700. What does RANK() return in descending order?
+
+a) 1, 2, 3, 4
+b) 1, 2, 2, 3
+c) 1, 2, 2, 4
+d) 1, 1, 2, 3
+
+#### 26
+
+For the same four values, what does DENSE_RANK() return?
+
+a) 1, 2, 3, 4
+b) 1, 2, 2, 3
+c) 1, 2, 2, 4
+d) 1, 1, 2, 3
+
+#### 27
+
+Marketing wants the top three customers in each segment. Which approach answers it?
+
+a) GROUP BY segment with LIMIT 3, because the limit is applied to each group in turn.
+b) A window function ranked within PARTITION BY segment, filtered in an outer query.
+c) ORDER BY revenue DESC with LIMIT 3, run once, since it returns the top of each segment.
+d) HAVING COUNT(*) <= 3, because HAVING keeps only the three largest rows in a group.
+
+#### 28
+
+A running total changes between two runs of the same query. What is the likeliest cause?
+
+a) The ORDER BY inside the window has ties, so the row order is ambiguous.
+b) The partition is too large, so the database samples the rows it adds.
+c) The database cached an old result and served it for one of the runs.
+d) SUM is approximate for large partitions, so its result drifts slightly.
+
+#### 29
+
+Which sentence describes groupby correctly?
+
+a) It sorts the rows by key, and then returns the first row of every key as the group's result.
+b) It joins two tables on a key, and then keeps one row for every match.
+c) It splits rows by key, applies a computation to each group and combines the results.
+d) It removes duplicate keys, and then counts how many rows were removed.
+
+#### 30
+
+A merge of 1,000 customers with the campaign exposure table returns 1,120 rows. What happened?
+
+a) 120 customers had no exposure record, so pandas added an empty row for each of them.
+b) Some customer keys repeat in the exposure table, so those customers were multiplied.
+c) pandas appended its index as extra rows, which happens whenever how='left' is used.
+d) The key columns had different names, so pandas fell back to matching on row position.
+
+#### 31
+
+XLOOKUP returned a member's details for an id that does not exist. Which setting was wrong?
+
+a) The return array was one row shorter than the lookup array it pairs with.
+b) The lookup array was sorted in ascending order before the formula ran.
+c) The sheet was protected, so the formula returned the last cached result.
+d) The match mode asked for a nearest match when it should have been exact.
+
+#### 32
+
+Which of these jobs belongs in Excel?
+
+a) Letting a director slice a clean customer table and watch one number recalculate.
+b) Joining payments to orders to find the orders that were never paid.
+c) Computing the source-of-truth revenue figure that Finance will check its own books against.
+d) De-duplicating the orders export before anyone computes revenue from it.
 
 ---
 
-## Section G. The transfer
+## D. More than one correct (items 33 to 39)
 
-**G1.** Build 1 opens on Monday in Kalpa Health, a unit you have not seen, with its own
-stakeholders and its own data. A director there asks where their growth comes from.
+Circle every correct letter.
 
-Say in four or five sentences what stays the same in your method and what changes. Be specific
-about at least two habits from this fortnight that you would carry across on day one, and name one
-thing you would refuse to assume.
+#### 33
+
+Which statements about WHERE and HAVING are correct? Mark every correct option.
+
+a) WHERE filters rows before grouping.
+b) HAVING filters groups after aggregation.
+c) HAVING can use COUNT(*).
+d) WHERE can use COUNT(*).
+
+#### 34
+
+A LEFT JOIN from 1,000 orders to payments returns 1,050 rows. Which checks belong in the validation? Mark every correct option.
+
+a) the row count before and after the join
+b) payments per order, with GROUP BY and HAVING COUNT(*) > 1
+c) booked revenue before and after the join
+d) the font of the report
+
+#### 35
+
+Which rows can appear in a FULL OUTER JOIN of orders and payments and never in an INNER JOIN? Mark every correct option.
+
+a) orders with no payment
+b) payments with no order
+c) orders with exactly one payment
+d) orders with two payments
+
+#### 36
+
+Which questions need a window function, because GROUP BY alone cannot answer them? Mark every correct option.
+
+a) each customer's rank within a segment
+b) total revenue per segment
+c) each month's spend beside the same customer's previous month
+d) a running total by date with every row kept
+
+#### 37
+
+The head of Retail-Plus wants ties ranked the same and wants to know how many members made the top fifty. Which statements are true? Mark every correct option.
+
+a) ROW_NUMBER breaks ties arbitrarily, so it does not meet the ask.
+b) RANK gives tied members the same rank.
+c) With RANK, a tie at position fifty can ship fifty-one rows.
+d) ROW_NUMBER always ships more than fifty rows.
+
+#### 38
+
+Which statements about pandas merge are true? Mark every correct option.
+
+a) It is the pandas form of a SQL join.
+b) validate= can make a fan-out fail loudly.
+c) It always keeps the row count of the left table.
+d) Checking the row count before and after is still worth doing.
+
+#### 39
+
+A front-page number is misread unless it carries which of these? Mark every correct option.
+
+a) its denominator
+b) its period
+c) its comparison
+d) its cell colour
+
+---
+
+## E. Scenario set (items 40 to 51)
+
+Each set opens on one Kalpa situation. Answer each item the way it asks: circle a letter, write T or F, or write the number or the word.
+
+### Set 1
+
+**Situation.** The warehouse holds 1,000 Q2 orders. 920 orders have one payment row. 50 orders have two payment rows, because the gateway retried and recorded the same payment a second time. 30 delivered orders have no payment row.
+
+#### 40
+
+A LEFT JOIN from orders to payments returns ____ rows.
+
+Answer: ____________________
+
+#### 41
+
+An INNER JOIN returns ____ rows.
+
+Answer: ____________________
+
+#### 42
+
+Anand asks for the unpaid orders. Which pattern finds them?
+
+a) LEFT JOIN, then WHERE payments.order_id IS NULL
+b) INNER JOIN, then WHERE payments.amount_paid IS NULL
+c) GROUP BY order_id HAVING COUNT(*) > 1
+d) ORDER BY paid_at
+
+#### 43
+
+True or false: SUM(amount_paid) over the payments table overstates what was collected, because each retried payment is counted twice.
+
+Answer: ____________________
+
+### Set 2
+
+**Situation.** Q2 revenue in Rs thousand for six Retail-Plus members: A 900, B 850, C 850, D 700, E 700, F 650. Ranks run from the highest revenue down.
+
+#### 44
+
+Under RANK(), member D gets rank ____.
+
+Answer: ____________________
+
+#### 45
+
+Under DENSE_RANK(), member F gets rank ____.
+
+Answer: ____________________
+
+#### 46
+
+With DENSE_RANK(), how many members does WHERE dense_rnk <= 3 return?
+
+a) 3
+b) 4
+c) 5
+d) 6
+
+#### 47
+
+Marketing wants exactly four members. Which function returns exactly four rows, and at what cost?
+
+a) RANK, at no cost, because every rank above four is simply filtered out by the WHERE.
+b) DENSE_RANK, at no cost, because it never leaves a gap in the ranks.
+c) ROW_NUMBER, and the D-E tie is broken arbitrarily unless a tiebreaker is named.
+d) LAG, at the cost of losing the first row of every partition.
+
+### Set 3
+
+**Situation.** Marketing's customer table has 1,000 rows. The campaign exposure table lists the same 1,000 customers, and 60 of them appear twice. An analyst merges the two on customer_id with how='left' and sends the result to Excel, where a pivot sums revenue.
+
+#### 48
+
+The merged table holds ____ rows.
+
+Answer: ____________________
+
+#### 49
+
+What would validate='one_to_one' have done?
+
+a) Removed the repeated keys silently and kept the first of each.
+b) Nothing, because validate applies only to inner merges.
+c) Sorted both tables by key so that the rows lined up.
+d) Raised a MergeError before any number was produced.
+
+#### 50
+
+True or false: The pivot's revenue total will be higher than the warehouse figure.
+
+Answer: ____________________
+
+#### 51
+
+Where does the fix belong?
+
+a) In the pivot: type the warehouse total over the pivot's own total before the file is shared.
+b) In the merge: de-duplicate the exposure table on a stated rule and validate the keys.
+c) In the chart: plot revenue per customer, which is unaffected by the repeated rows.
+d) Nowhere: a gap of this size is rounding, and the pivot can be shared as it stands.
+
+---
+
+## F. Applied maths (items 52 to 56)
+
+Show the working, then the answer.
+
+#### 52
+
+A table has 4 segments and 2 quarters, and every combination has orders. How many rows does GROUP BY segment, quarter return?
+
+Working:
+
+Answer: ____________________
+
+#### 53
+
+Every Q2 order was paid in full once, which makes Rs 20 lakh collected. Fifty payments of Rs 2,000 each were then recorded a second time by the gateway. What does a plain SUM of the payments table report?
+
+Working:
+
+Answer: ____________________
+
+#### 54
+
+Two members tie exactly at position fifty and nobody else ties. How many rows does WHERE rnk <= 50 return under RANK(), and how many under ROW_NUMBER()?
+
+Working:
+
+Answer: ____________________
+
+#### 55
+
+A member's monthly spend is Rs 5,000, then Rs 4,200, then Rs 3,900. Using LAG, give the two month-on-month changes and say whether the 'fell two months running' flag fires.
+
+Working:
+
+Answer: ____________________
+
+#### 56
+
+1,000 orders belong to 400 customers. How many rows does the one-row-per-customer table hold, and what is the mean frequency?
+
+Working:
+
+Answer: ____________________
+
+---
+
+## G. Order the steps (items 57 and 58)
+
+Write the letters in the right order.
+
+#### 57
+
+Put the clauses in their logical execution order.
+
+a) SELECT
+b) WHERE
+c) FROM
+d) ORDER BY
+e) GROUP BY
+f) HAVING
+
+Order: ____________________
+
+#### 58
+
+Put the week's tools in the order a number travels to the leadership deck.
+
+a) Excel presents it and lets a director explore.
+b) The warehouse computes the source of truth.
+c) pandas carries the analyst's iteration.
+
+Order: ____________________

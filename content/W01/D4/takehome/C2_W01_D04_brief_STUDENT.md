@@ -85,7 +85,7 @@ one sentence that was obviously repaired. A note that has not been read aloud do
 
 ---
 
-## What to bring on Saturday
+## What to bring on Friday
 
 | | |
 |---|---|
@@ -94,5 +94,6 @@ one sentence that was obviously repaired. A note that has not been read aloud do
 | The repaired sentence | The one you changed after reading it aloud, and why |
 | The two from memory | The p-value sentence and the note's four parts |
 
-Saturday is the pen-and-paper recap and the interview-answer discussion. The note is the thing you
-will be asked to defend.
+Friday is the AI-free lab and the growth-review rehearsal, where the note is the thing you will be
+asked to defend aloud, against a partner playing Marketing. Saturday's paper then examines the
+week.

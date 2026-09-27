@@ -12,23 +12,33 @@ content/W01/
   D2/    Tuesday
   D3/    Wednesday
   D4/    Thursday
+  D5/    Friday
   SAT/   Saturday
 ```
 
-Two rules decide which folders exist:
+Three rules decide which folders exist:
 
 1. **The numbers are anchored to weekdays.** `D1` is always Monday and `D5` is always Friday, in
    every week of the programme, so a reference to D3 means the same weekday wherever you read it.
-2. **A day with no session gets no folder.** Week 1 has no `D5` because Friday 02 October is
-   Gandhi Jayanti. Week 4 has no `D2` (Dussehra), Week 7 no `D1` (Diwali) and Week 9 no `D2`
-   (Guru Nanak Jayanti). The gap in the numbering is the holiday, and it is deliberate.
+2. **A day with no session gets no folder.** Week 0 has no `D5` because Friday 2 October is
+   Gandhi Jayanti; Week 3 has no `D2` (Dussehra), Week 6 no `D1` (the Monday after Diwali),
+   Week 8 no `D2` (Guru Nanak Jayanti) and Week 12 no `D5` (Christmas Day). The gap in the
+   numbering is the holiday, and it is deliberate. The board names a holiday's card by its weekday
+   (`W03/TUE`), so the same weekday keeps one card whether the calendar makes it a holiday or not.
+3. **A capstone week is one folder.** Weeks 17 to 20 are planned at the week level, so each has
+   `content/W{ww}/WEEK/` and one board card. Its layout is set when the capstone packs are
+   designed, so the verifier checks names and style there and skips the folder shape.
 
-Saturday sits in `SAT/` rather than `D6/` because it is not a teaching day. On a regular week it
-runs the recap paper and the discussion, and on a build week it is the expert's second day.
+Saturday sits in `SAT/` rather than `D6/`. On a regular week it runs the recap paper and the
+discussion, on a build week it is the expert's second day, in Week 0 it closes the baseline week,
+and in Week 16 it teaches (security, responsible AI and testing, then the capstone announcement).
+
+`docs/programme/calendar.md` lists every day with its date, slot, kind and module; it is generated
+from the tracker, so it is always the calendar the board and the verifier read.
 
 ## The three day-folder shapes
 
-### A teaching day, on weeks 1, 2, 4, 5, 7 and 8
+### A teaching day, on weeks 1, 2, 4, 5, 7, 8, 10, 11, 13, 14 and 16
 
 | Folder | What belongs in it |
 |---|---|
@@ -45,17 +55,24 @@ runs the recap paper and the discussion, and on a build week it is the expert's 
 | `preread/` | Tomorrow's vocabulary and tonight's setup, which ships the evening before. |
 | `extras/` | The tiered stretch and recovery pair. |
 | `data/` | Every dataset the day reads, written by `data/generate_client_zero.py` rather than by hand. |
+| `trainer/` | The day sheet and the trainer notes. These never reach a learner. |
+| `internal/` | Working records: link slots, data provenance, anything that is neither a learner nor a trainer artifact. |
+| `corrections/` | Created only when a live claim proved wrong and needs a correction card. |
 
 A warehouse is the exception to one day, one dataset. Week 2's four SQL and pandas days query one
 Postgres database, so the loadable file lives once in the first day that uses it,
 `content/W02/D1/data/`, and `.devcontainer/load_warehouse.sh` builds the database from it when the
 container is created. The later days carry only what they add: the exposure feed on Thursday, the
 two exports on Friday.
-| `trainer/` | The day sheet and the trainer notes. These never reach a learner. |
-| `internal/` | Working records: link slots, data provenance, anything that is neither a learner nor a trainer artifact. |
-| `corrections/` | Created only when a live claim proved wrong and needs a correction card. |
 
-### A build day, on weeks 3, 6 and 9
+### A Week 0 day
+
+The baseline week uses the teaching-day folders plus `paper/` and `answer-key/`, which hold
+Tuesday's diagnostic, by topic, and its keys. Its running order follows the student Week 0
+sheet (`docs/journey/Week_0.md`), which is later than the tracker's Week 0 tab, and its content
+follows the tab.
+
+### A build day, on weeks 3, 6, 9, 12 and 15
 
 Build weeks ship the build-week pack rather than the teaching manifest, so their folders are
 different: `briefs/`, `rubrics/`, `gd/`, `parallel-build/`, `checkpoints/`, `mocks/`, `trainer/`

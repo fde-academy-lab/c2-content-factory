@@ -7,13 +7,18 @@ built yesterday's pack carries yesterday's decisions and will drift.
 
 Build the full day pack for Cohort 2, Week {W}, Day {D}, {date}.
 
-Source of truth, in order: this prompt, the day's row in `docs/curriculum/W{W}_*.md`, `docs/curriculum/Structure.md`,
-`docs/07_Client_Zero.md` (LOCKED v2.2), and `docs/06_Day_Pack_Method.md`. Stop and name the gap rather
-than building around it if the row is missing, if the business scenario column is empty, if the dataset
-version the row names is not in the locked client zero file, or if a link on the row carries no verified date.
+Source of truth, in order: this prompt, `data/programme/facts.yaml` for any movable fact, the day's row in
+`docs/curriculum/W{W}_*.md`, the day's line in `docs/programme/calendar.md` (date, slot, module, any IITGN
+faculty block), `docs/curriculum/Structure.md`, `docs/07_Client_Zero.md` (LOCKED v2.2, v2.3 proposed), and
+`docs/06_Day_Pack_Method.md`. Take `{date}` from the calendar page. Stop and name the gap rather than
+building around it if the row is missing, if the business scenario column is empty, if the dataset version
+the row names is neither in the locked client zero file nor marked proposed for v2.3 in the row, or if a
+link on the row carries no verified date.
 
 **Read the row in the order it is written.** It opens on the business scenario in the stakeholders' words,
 then the thinking trained before any tool, and only then the technique. Build the pack in that same order.
+On a day with an IITGN faculty block (the violet column), the row's stop-before line is where the faculty
+member starts, and the trainer day sheet carries the block and the module line as sync blocks.
 
 Run the gates in order and stop after gate 2 for my approval:
 
@@ -28,7 +33,7 @@ Run the gates in order and stop after gate 2 for my approval:
    (c) activity, (d) exercises with solutions, (e) take-home with its self-check spine, (f) Kahoot pack,
    (g) study notes, cheat sheet and pre-read.
 4. Verification report against the skill checklist, then `python3 scripts/verify.py content/W{W}/D{D}`, then
-   the file list with audience tags.
+   `python3 scripts/sync_programme.py --check`, then the file list with audience tags.
 
 Binding rules: the business scenario is slide one and the notebook's first markdown cell, and it is never
 cut; the thinking is drawn before any tool opens; mental model first and spiral always; at most four new

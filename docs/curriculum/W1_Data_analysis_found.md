@@ -1,6 +1,6 @@
 # W1 Data analysis found.
 
-## Mon 28 Sep 2026 · Python through data · The revenue tree and the first honest numbers
+## Mon 05 Oct 2026 · Python through data · The revenue tree and the first honest numbers
 
 ### Business scenario of the day
 
@@ -113,7 +113,7 @@ https://automatetheboringstuff.com/3e/
 • Q6: a discount lifts quantity 10 percent at 15 percent off; did revenue rise or fall
 • Ungraded. No return question on Day 1.
 
-## Tue 29 Sep 2026 · Python through data + descriptive statistics · Which lever moved? The sales-drop investigation
+## Tue 06 Oct 2026 · Python through data + descriptive statistics · Which lever moved? The sales-drop investigation
 
 ### Business scenario of the day
 
@@ -223,7 +223,7 @@ https://www.youtube.com/watch?v=9Os0o3wzS_I
 • Q6: customers flat, orders per customer down in one segment; the hypothesis in one line
 • Return question from Monday: the mean doubled and the median did not; first check.
 
-## Wed 30 Sep 2026 · Python through data · Can we trust the numbers? Profile, clean, reconcile, recompute
+## Wed 07 Oct 2026 · Python through data · Can we trust the numbers? Profile, clean, reconcile, recompute
 
 ### Business scenario of the day
 
@@ -333,7 +333,7 @@ https://automatetheboringstuff.com/3e/
 • Q6: dashboard 2.1, Finance 1.9; which is right and how do you prove it
 • Return question from Tuesday: name one data reason that could fake the Retail-Plus finding.
 
-## Thu 01 Oct 2026 · Hypothesis testing and inference + correlation vs causation + insight communication · Real or noise, cause or coincidence, and the one-page note
+## Thu 08 Oct 2026 · Hypothesis testing and inference + correlation vs causation + insight communication · Real or noise, cause or coincidence, and the one-page note
 
 ### Business scenario of the day
 
@@ -357,7 +357,7 @@ Then the note: claim, evidence with denominators, the caveat that would change t
 4. Sample size: Student's 40 percent on twelve against Retail-Plus on four hundred; the rule of thumb (25 min).
 5. Correlation against causation on the monsoon sale: who took it, what a fair comparison needs, the aggregate that flips by segment (45 min).
 6. The note: guided on Retail-Plus, unguided on Student and the discount (55 min).
-7. Kahoot, close, Saturday preview (20 min).
+7. Kahoot, close, and Friday's lab previewed (20 min).
 
 ### Learner outcome
 
@@ -444,63 +444,94 @@ https://statquest.org/video_index.html
 • Q6: the four parts of the note, in order
 • Return question from Wednesday: the duplicates shrank the drop; does Retail-Plus survive, and how do you know.
 
-## Fri 02 Oct 2026 · Gandhi Jayanti: institute holiday, no session
+## Fri 09 Oct 2026 · AI-free lab and the growth-review rehearsal · The week rebuilt alone, and the note defended aloud
 
 ### Business scenario of the day
 
-No session. Gandhi Jayanti.
+FRIDAY. The growth review is on Monday, and Marketing will be in the room. Kavya Nair, the team's senior analyst, takes the day: "Before anything goes to Meera, rebuild the week from a raw export with no assistant and no notes. Then say it to me the way you will say it to her, because I will push the way Marketing will."
+Your role: you run the whole of the week's method alone on data you have not seen, and you defend your one-page note aloud against a colleague who is paid to disagree.
+On the table: whether the week's pipeline is yours or the notebook's; which step you reach for first on a fresh export; whether your note survives a hostile question; what you still cannot do without help.
 
 ### Thinking we train, before any tool
 
-None scheduled.
+A method is learned when it can be run cold: a fresh export, no notes, no assistant, and the same order every time. Profile, clean with reasons, reconcile, decompose along the tree, test the gap, write the note. The lab adds no idea. It finds out which of the week's ideas each learner owns, and it is the first of the programme's observed, assistant-free drills.
+The rehearsal is the other half of the skill. A finding that cannot be said in two minutes to someone who disagrees has not been communicated, and the questions Marketing will ask on Monday are the questions an interviewer asks about any project: how do you know, what did you leave out, what would change your mind.
 
 ### Trainer agenda
 
-No session; the institute is closed. Week 1 teaching ends Thursday; the recap paper moves to Saturday.
+1. Kavya's terms for the day, and the lab's rules: a fresh export, no assistant, notes closed, observed (10 min).
+2. The AI-free lab: the week's method end to end on the fresh export: profile, clean with a decisions log, reconcile, decompose, one shuffle test, a four-part note (120 min).
+3. Lab debrief: the three places where most of the room broke, each rerun once on the projector (30 min).
+4. The growth-review rehearsal: notes read aloud in pairs with one partner playing Marketing, then random call-outs to the room at two minutes each (60 min).
+5. Kahoot and close; Saturday's paper previewed (20 min).
 
 ### Learner outcome
 
-No new outcomes.
+CAN DO: run the week's pipeline end to end on unseen data without an assistant, inside two hours.
+CAN HANDLE: a defect in a place the week never showed, and a hostile question about a caveat.
+CAN DEFEND: the one-page note aloud in two minutes, against a colleague playing Marketing.
+STATUS: ungraded; the lab is a performance indicator, and its result sets the first remedial and stretch tasks.
 
 ### Subtopics (technique in service of the scenario)
 
-None scheduled.
+• The AI-free lab: profile, clean, reconcile, decompose, test, note, on a fresh export
+• The decisions log under time pressure
+• The lab debrief: the most common breaks, rerun
+• The growth-review rehearsal: the note read aloud and challenged
+• No new content
 
 ### Trainer notes
 
-Nothing to deliver.
+START FROM: Monday to Thursday, all of it; today teaches nothing new.
+GO AS FAR AS: every learner submits a lab notebook and a note, and defends the note once.
+STOP BEFORE: any new technique and any SQL; Week 2 opens that on Monday.
+WHY THIS DAY EXISTS: with teaching starting on 5 October, Gandhi Jayanti falls in Week 0, so Week 1 has five teaching days. The plan's Week 1 drill is the AI-free lab, and Thursday's three clusters needed room, so Friday carries the lab and the rehearsal and adds no idea.
+OBSERVATION: the TAs note where each learner stalls, step by step and with no scores on a wall; the fast group and the stuck group get their first stretch and remedial tasks from it.
+WHAT THE DATA REVEALS: the fresh export carries the week's defect families in new places, and most of the room skips the reconciliation when the clock runs, which is the debrief's first item.
+CUT FIRST: the second round of call-outs. Never cut the observed lab.
 
 ### Client zero data (TRAINER ONLY)
 
-The scenario rests.
+PROPOSED FOR CLIENT ZERO v2.3 (21 Sep 2026, not yet locked). VERSION v3-lab: a fresh two-quarter export from the same seed family, carrying the week's defect families in new places: duplicated rows, an amount stored as text, a missing required field, a segment with too few orders to trust.
+No new kind of defect is planted. Students are never told what is planted.
 
 ### In-session exercises
 
-None scheduled.
+THE LAB: the week's method end to end, observed and assistant-free, on the fresh export (120 min).
+THE REHEARSAL: the note read aloud in pairs with one partner as Marketing, then two-minute call-outs.
+MID-SESSION: none today; the lab is the exercise.
 
 ### After-class tasks
 
-• OPTIONAL: rerun the week's pipeline top to bottom in a fresh Codespace; note anything that fails cold.
-• OPTIONAL: finish the note.
+• FIX: rerun the one step where you stalled, on your own, and write one line on what you will do differently.
+• RECAP: the note's four parts and the p-value sentence from memory; both are on Saturday's paper.
+• SETUP: Week 2 uses a live Postgres connection from VS Code; Monday's setup instructions ship on Sunday evening.
 
 ### Interview angle
 
-None.
+• [S] Walk me through how you clean and check a dataset you have never seen.
+• [S] Tell me about an analysis you did: what did you find, and how sure are you?
+• [F] You have two hours and a raw export; what do you do first, and what do you skip?
+• [D] A stakeholder attacks your caveat in front of the room; how do you hold it without overclaiming?
+Tags: [S] staple asked everywhere · [F] frequent in GCC and product screens · [SV] service-major screen opener · [D] differentiator. This programme's own calibration for 0-3 year Indian-market candidates.
 
 ### Trainer resources
 
-None needed.
+• The lab export, its key and the observation sheet (to be built with the Week 1 packs).
+• Aced (formerly Exponent), top data analyst interview questions, for the rehearsal's challenge questions (verified 21 Sep 2026):
+https://www.tryexponent.com/blog/top-data-analyst-interview-questions
 
 ### Student references
 
-• Seeing Theory, frequentist inference (verified 05 Sep 2026):
+• Seeing Theory, frequentist inference (verified 21 Sep 2026):
 https://seeing-theory.brown.edu/frequentist-inference/index.html
 
 ### Kahoot quiz plan
 
-None.
+• Five items on the week's method, ungraded: the order of the pipeline; which check catches a duplicate; what has to reconcile; when the median; what a p-value is a share of
+• Return question from Thursday: revenue rose after the discount; name the question you ask before calling it a success.
 
-## Sat 03 Oct 2026 · Saturday recap · The pen-and-paper test, then the interview-answer discussion
+## Sat 10 Oct 2026 · Saturday recap · The pen-and-paper test, then the interview-answer discussion
 
 ### Business scenario of the day
 
@@ -513,10 +544,11 @@ Saying the week out loud is the interview skill itself.
 ### Trainer agenda
 
 Four hours, no new content.
-1. Recap test: pen and paper, AI-free, from the week's question set, short answers (120 min).
+1. Recap paper: pen and paper, AI-free, objective, from the 'Saturday papers' tab (110 min).
 2. Break (20 min).
-3. Solution discussion led by the Academic TA: papers swapped for peer cross-evaluation, each answer treated as an interview answer, random call-outs (75 min).
-4. Doubts and the bridge: the CFO wants the same numbers from the warehouse every week, which is Monday (25 min).
+3. Marking: papers swapped and marked against the key, read out by the Academic TA (15 min).
+4. Solution discussion led by the Academic TA: the most-missed items first, then the interview anchors answered aloud as interview answers, with random call-outs (70 min).
+5. Doubts and the bridge: the CFO wants the same numbers from the warehouse every week, which is Monday (25 min).
 
 ### Learner outcome
 
@@ -526,7 +558,7 @@ STATUS: ungraded; a performance indicator.
 
 ### Subtopics (technique in service of the scenario)
 
-THE QUESTION SET (questions only; answers built at detailing):
+THE INTERVIEW ANCHORS (questions only):
 • [S] Kalpa wants 15 percent growth; draw the revenue tree and name the branch you would investigate first.
 • [S] Sales fell from Q1 to Q2; walk the investigation ladder.
 • [S] Mean or median for order value, and why?
@@ -541,9 +573,10 @@ Tags: [S] staple asked everywhere · [F] frequent in GCC and product screens · 
 
 ### Trainer notes
 
-FORMAT: the paper comes from this row's question set, short answers so peers can cross-check; answers are written at detailing.
-DISCUSSION: papers swap; the Academic TA walks the solutions as interview answers, random call-outs throughout.
-STATUS: ungraded, AI-free by format.
+FORMAT: an objective paper from the 'Saturday papers' tab: fill in the blank, true or false, one correct option, more than one correct option, scenario sets, applied maths and ordering, graded easy, medium and hard. Print the Item column only; the key, tag, role and anchor columns stay with the team.
+MARKING: papers swap and are marked against the key, so a score is comparable across the room and from week to week.
+DISCUSSION: the Academic TA opens with the most-missed items, then asks the interview anchors aloud as interview answers, with random call-outs.
+STATUS: ungraded, AI-free by format; a performance indicator.
 
 ### Client zero data (TRAINER ONLY)
 
@@ -551,9 +584,17 @@ Answers cite Kalpa's own numbers. Findings are discussed; plants are never revea
 
 ### In-session exercises
 
-• The two-hour recap test.
-• Peer cross-evaluation.
-• Random call-outs: sixty seconds each.
+THE PAPER: objective, pen and paper, AI-free: 52 items for a 110-minute slot (107 minutes at the assumed pace); items and key in the 'Saturday papers' tab.
+• Fill in the blank: 8 items
+• True or false: 8 items
+• One correct option: 13 items
+• More than one correct option: 6 items
+• Scenario sets, each on one Kalpa situation: 10 items in 3 sets
+• Applied maths, with the working shown: 5 items
+• Order the steps: 2 items
+• Difficulty: 24 easy, 19 medium, 9 hard. Roles served: BA, DS, FDE.
+• Marking a peer's paper against the key.
+• Random call-outs on the interview anchors: sixty seconds each.
 
 ### After-class tasks
 
@@ -565,9 +606,11 @@ The question set in Subtopics is the interview set for the week.
 
 ### Trainer resources
 
-• This row's question set is the paper's source.
+• The 'Saturday papers' tab holds the items and the key; this row's anchors are the source for the discussion.
 • GeeksforGeeks, Data Analyst interview questions (verified 03 Sep 2026):
 https://www.geeksforgeeks.org/data-analysis/data-analyst-interview-questions-and-answers/
+• Aced (formerly Exponent), top data analyst interview questions, for the anchors' calibration (verified 19 Sep 2026):
+https://www.tryexponent.com/blog/top-data-analyst-interview-questions
 
 ### Student references
 

@@ -2,6 +2,22 @@
 
 TRAINER ONLY.
 
+Posts to <!-- sync:module:W02/D3 -->Module 1: Foundations of AI and Data<!-- /sync:module:W02/D3 -->, on <!-- sync:day-date:W02/D3 -->Wed 14 Oct 2026<!-- /sync:day-date:W02/D3 -->.
+
+## The IITGN faculty block (tentative)
+
+<!-- sync:faculty-day:W02/D3 -->
+**IITGN faculty block W2-3 (tentative), 120 minutes, after this row's applied core.** Faculty: to be confirmed by IIT Gandhinagar.
+
+TOPIC: Errors, power and sample size: Type I and Type II errors, power, the sample size a comparison needs, multiple comparisons, and statistical against practical significance.
+PICKS UP WHERE THE ROW STOPS: Week 1 Thursday gave a rule of thumb of thirty observations and stopped before power.
+CONNECTS TO KALPA: how many Student orders Meera would need before she could trust 40 percent; marketing testing ten segments and finding one that looks significant.
+BY THE END: a learner can size a comparison roughly, and can explain why testing many segments manufactures findings. The block closes the statistics that ME1 draws on.
+DOES NOT REPEAT: correlation against causation, which the campaigns table already taught.
+
+Open ruling: A day that carries a block runs to about 360 taught minutes against the 300-minute ceiling, so either the campus day runs full on those days or the trainer's agenda gives up 60 minutes, starting from its cut-first line.
+<!-- /sync:faculty-day:W02/D3 -->
+
 ## The shape of the day
 
 | Block | Minutes | What has to happen |

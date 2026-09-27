@@ -1,8 +1,9 @@
 """Create and update the GitHub content board from this repository's own day plan.
 
 The board tracks one card per day pack, which is the unit this repository builds in and the unit a
-reviewer signs off. The day plan below is the day list of the curriculum workbook,
-transcribed once so the board and the repository cannot drift apart.
+reviewer signs off. The day plan is data/programme/days.json, which scripts/sync_programme.py
+writes from the curriculum workbook, so a re-dated calendar reaches the board with one sync and one
+`--all` run rather than a hand edit here.
 
 Usage:
     python3 scripts/board_sync.py --dry-run              # print what would change, touch nothing
@@ -14,7 +15,11 @@ Usage:
     python3 scripts/board_sync.py --project-add          # put every issue on the board, safe to repeat
 
 Every run is safe to repeat. An issue is matched by the marker `<!-- board:W01/D3 -->` in its body,
-so a second run updates the card it made the first time rather than opening a duplicate.
+so a second run updates the card it made the first time rather than opening a duplicate. A day whose
+slot name changed because the calendar moved (a holiday that became a teaching day, as W01/FRI
+became W01/D5) is matched on its weekday, so its card is rewritten in place rather than orphaned.
+An update keeps the card's status and its people labels; only a change between a holiday and a
+working day resets the status, and `--set-status` sets one on purpose.
 
 Authentication reads GH_TOKEN or GITHUB_TOKEN. The token needs write access to issues on the
 repository, which is what a Codespace and a Claude Code session already carry.
@@ -29,8 +34,10 @@ state, runs on the ordinary issues token.
 import argparse
 import json
 import os
+import pathlib
 import re
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -73,6 +80,8 @@ DAY_TYPE = [
     ("type:saturday", "E4ECF7", "The Saturday recap block"),
     ("type:build-week", "E4ECF7", "A build-week day: mini project, no test"),
     ("type:holiday", "F7F7F5", "No session"),
+    ("type:baseline", "E4ECF7", "Week 0: the baseline week before teaching starts"),
+    ("type:capstone", "E4ECF7", "A capstone week, planned at the week level"),
 ]
 
 ARTIFACT = [
@@ -113,77 +122,31 @@ HELP = [
 
 ALL_LABELS = STATUS + PEOPLE + DAY_TYPE + ARTIFACT + FLAGS + AREA + HELP
 
-WEEKS = {
-    "W01": ("28 Sep to 03 Oct 2026", "2026-10-03", "Teaching week"),
-    "W02": ("05 Oct to 10 Oct 2026", "2026-10-10", "Teaching week"),
-    "W03": ("12 Oct to 17 Oct 2026", "2026-10-17", "Build week 1"),
-    "W04": ("19 Oct to 24 Oct 2026", "2026-10-24", "Teaching week"),
-    "W05": ("26 Oct to 31 Oct 2026", "2026-10-31", "Teaching week, ME1"),
-    "W06": ("02 Nov to 07 Nov 2026", "2026-11-07", "Build week 2"),
-    "W07": ("09 Nov to 14 Nov 2026", "2026-11-14", "Teaching week"),
-    "W08": ("16 Nov to 21 Nov 2026", "2026-11-21", "Teaching week"),
-    "W09": ("23 Nov to 28 Nov 2026", "2026-11-28", "Build week 3"),
-}
+DAYS_JSON = pathlib.Path(__file__).resolve().parent.parent / "data" / "programme" / "days.json"
 
-# The day plan, one tuple per row: week, day slot, date, focus, day type. The focus strings are the
-# 'Day focus' column of each week tab, so a card title says the same thing the curriculum says.
-# The day slot is the folder this day writes into, so a card links straight at its content.
-DAYS = [
-    ("W01", "D1", "Mon 28 Sep", "The revenue tree and the first honest numbers", "teaching"),
-    ("W01", "D2", "Tue 29 Sep", "Which lever moved? The sales-drop investigation", "teaching"),
-    ("W01", "D3", "Wed 30 Sep", "Can we trust the numbers? Profile, clean, reconcile, recompute", "teaching"),
-    ("W01", "D4", "Thu 01 Oct", "Real or noise, cause or coincidence, and the one-page note", "teaching"),
-    ("W01", "FRI", "Fri 02 Oct", "Gandhi Jayanti: institute holiday, no session", "holiday"),
-    ("W01", "SAT", "Sat 03 Oct", "The pen-and-paper test, then the interview-answer discussion", "saturday"),
-    ("W02", "D1", "Mon 05 Oct", "The revenue tree as queries the warehouse runs every Monday", "teaching"),
-    ("W02", "D2", "Tue 06 Oct", "Booked against collected: joining payments without lying", "teaching"),
-    ("W02", "D3", "Wed 07 Oct", "Top members, falling spend, and the running total against plan", "teaching"),
-    ("W02", "D4", "Thu 08 Oct", "The customer table Marketing refreshes every Monday", "teaching"),
-    ("W02", "D5", "Fri 09 Oct", "The number reaches the leadership deck, and the tool judgment behind it", "teaching"),
-    ("W02", "SAT", "Sat 10 Oct", "The pen-and-paper test, then the interview-answer discussion", "saturday"),
-    ("W03", "D1", "Mon 12 Oct", "Online project introduction; groups scope their Kalpa Health sub-problem", "build-week"),
-    ("W03", "D2", "Tue 13 Oct", "Build day two: profile, clean, reconcile on unfamiliar data", "build-week"),
-    ("W03", "D3", "Wed 14 Oct", "Build day three: the headline claim, plus the catch-up reserve", "build-week"),
-    ("W03", "D4", "Thu 15 Oct", "Mock R1 opens; build completion", "build-week"),
-    ("W03", "D5", "Fri 16 Oct", "Expert day one: GDs at thirty minutes per group, first presentations", "build-week"),
-    ("W03", "SAT", "Sat 17 Oct", "Expert day two plus the flown-in leader: presentations, defence, grade closure", "build-week"),
-    ("W04", "D1", "Mon 19 Oct", "The number the growth plan chases, and what stops it being gamed", "teaching"),
-    ("W04", "TUE", "Tue 20 Oct", "Dussehra (Vijaya Dashami): gazetted holiday, no session", "holiday"),
-    ("W04", "D3", "Wed 21 Oct", "Which pairs lift frequency, and what each is worth", "teaching"),
-    ("W04", "D4", "Thu 22 Oct", "Why Retail-Plus frequency fell, and where the loss actually happens", "teaching"),
-    ("W04", "D5", "Fri 23 Oct", "How much the plan delivers, against a baseline that is hard to beat", "teaching"),
-    ("W04", "SAT", "Sat 24 Oct", "Cross-domain transfer drill, then the recap test and discussion", "saturday"),
-    ("W05", "D1", "Mon 26 Oct", "Framing the propensity model, and the baseline it has to beat", "teaching"),
-    ("W05", "D2", "Tue 27 Oct", "Scoring the model the way the business will judge it, in two businesses", "teaching"),
-    ("W05", "D3", "Wed 28 Oct", "What the model is allowed to know", "teaching"),
-    ("W05", "D4", "Thu 29 Oct", "Generalise or memorise, and the honest tuned model", "teaching"),
-    ("W05", "D5", "Fri 30 Oct", "The committee memo, and what transfers to Kalpa Financial", "teaching"),
-    ("W05", "SAT", "Sat 31 Oct", "Revision, the recap test, and the ME1 window", "saturday"),
-    ("W06", "D1", "Mon 02 Nov", "Online project introduction; groups frame their Kalpa Financial sub-problem", "build-week"),
-    ("W06", "D2", "Tue 03 Nov", "Build day two: baselines beaten honestly, the metric chosen and written down", "build-week"),
-    ("W06", "D3", "Wed 04 Nov", "Build day three: honest evaluation and the recommendation, plus the catch-up reserve", "build-week"),
-    ("W06", "D4", "Thu 05 Nov", "Mock R2 opens; build completion", "build-week"),
-    ("W06", "D5", "Fri 06 Nov", "Expert day one: GDs at thirty minutes per group, first presentations", "build-week"),
-    ("W06", "SAT", "Sat 07 Nov", "Expert day two plus the flown-in leader: presentations, defence, grade closure", "build-week"),
-    ("W07", "MON", "Mon 09 Nov", "Diwali: Monday off, no session", "holiday"),
-    ("W07", "D2", "Tue 10 Nov", "The first network, and whether it earns the text", "teaching"),
-    ("W07", "D3", "Wed 11 Nov", "Making the abandoned loop learn", "teaching"),
-    ("W07", "D4", "Thu 12 Nov", "Diagnose, then stabilise, then reproduce", "teaching"),
-    ("W07", "D5", "Fri 13 Nov", "Reviews as sequences, and why attention won", "teaching"),
-    ("W07", "SAT", "Sat 14 Nov", "The pen-and-paper test, then the interview-answer discussion", "saturday"),
-    ("W08", "D1", "Mon 16 Nov", "What a ticket costs, and why the vendor bills by the token", "teaching"),
-    ("W08", "D2", "Tue 17 Nov", "How the model knows which 'it' the customer means", "teaching"),
-    ("W08", "D3", "Wed 18 Nov", "Finding the five tickets most like this one", "teaching"),
-    ("W08", "D4", "Thu 19 Nov", "Making the draft reply repeatable, and stopping it inventing", "teaching"),
-    ("W08", "D5", "Fri 20 Nov", "The cost model for the auto-reply at scale", "teaching"),
-    ("W08", "SAT", "Sat 21 Nov", "The pen-and-paper test, then the interview-answer discussion", "saturday"),
-    ("W09", "D1", "Mon 23 Nov", "Online project introduction; groups scope their Kalpa Connect sub-problem", "build-week"),
-    ("W09", "TUE", "Tue 24 Nov", "Guru Nanak Jayanti: gazetted holiday, no session", "holiday"),
-    ("W09", "D3", "Wed 25 Nov", "The AI-free debug drill, then the build at pace", "build-week"),
-    ("W09", "D4", "Thu 26 Nov", "Mock R3 opens, with behavioural questioning; build completion", "build-week"),
-    ("W09", "D5", "Fri 27 Nov", "Expert day one: GDs at thirty minutes per group, first presentations", "build-week"),
-    ("W09", "SAT", "Sat 28 Nov", "Expert day two plus the flown-in leader: presentations, defence, grade closure, the two-month close", "build-week"),
-]
+
+def load_plan(path=DAYS_JSON):
+    """The weeks and days scripts/sync_programme.py wrote from the curriculum workbook.
+
+    WEEKS maps W01 to (span, Saturday's date, label) for the milestones. DAYS holds one tuple per
+    card: week, slot, date, focus, kind. The slot is the day's folder, so a card links straight at
+    its content.
+    """
+    if not path.exists():
+        sys.exit(f"FAIL  {path} not found. Run python3 scripts/sync_programme.py first.")
+    plan = json.loads(path.read_text(encoding="utf-8"))
+    weeks = {w["week"]: (w["span"], w["saturday"], w["label"]) for w in plan["weeks"]}
+    days = [(d["week"], d["slot"], d["label"], d["focus"] or d["topic"], d["kind"])
+            for d in plan["days"]]
+    return weeks, days
+
+
+WEEKS, DAYS = load_plan()
+
+# A working day is D1 to D5 by weekday and a holiday keeps the weekday's name, so the same weekday
+# can carry either slot as the calendar moves. The card follows the weekday.
+SLOT_ALIAS = {"D1": "MON", "D2": "TUE", "D3": "WED", "D4": "THU", "D5": "FRI"}
+SLOT_ALIAS.update({v: k for k, v in list(SLOT_ALIAS.items())})
 
 # Which artifact families a day of each shape owes. A Saturday is not a teaching day, so it owes
 # the paper, its key and the discussion guide and nothing else.
@@ -193,6 +156,8 @@ OWES = {
     "build-week": ["trainer", "notebook", "exercises", "study-notes"],
     "saturday": ["paper", "answer-key", "discussion"],
     "holiday": [],
+    "baseline": ["trainer"],
+    "capstone": ["trainer"],
 }
 
 ARTIFACT_FOLDER = {
@@ -223,6 +188,10 @@ def call(method, path, body=None):
     try:
         with urllib.request.urlopen(req, timeout=60) as r:
             raw = r.read()
+            if method != "GET":
+                # GitHub's secondary limit allows about 80 content-creating requests a minute, and
+                # a whole-calendar run makes over a hundred, so writes are paced under it.
+                time.sleep(0.8)
             return json.loads(raw) if raw else {}
     except urllib.error.HTTPError as e:
         detail = e.read().decode(errors="replace")[:200]
@@ -241,6 +210,15 @@ def paged(path):
         if len(chunk) < 100:
             return out
         page += 1
+
+
+FOOTER = re.compile(r"\s*---\s*_Generated by \[Claude Code\]\([^)]*\)_\s*$")
+
+
+def same_body(have, want):
+    """Whether a card's body already says what this run would write. A body posted from a Claude
+    Code session comes back with an attribution footer appended, so the footer is set aside."""
+    return FOOTER.sub("", have or "").rstrip() == want.rstrip()
 
 
 # --------------------------------------------------------------------------- the board itself
@@ -340,26 +318,42 @@ def prune_labels(dry):
     print(f"      {removed} removed, {kept} left alone because they are in use")
 
 
+def milestone_for(have, week):
+    """The milestone of a week, found on its 'W01 · ' prefix so a re-dated title still matches."""
+    return next((m for t, m in have.items() if t.startswith(f"{week} · ")), None)
+
+
 def sync_milestones(dry):
     have = {m["title"]: m for m in paged("/milestones?state=all")}
     numbers = {}
     for week, (span, due, kind) in WEEKS.items():
         title = f"{week} · {span}"
-        if title in have:
-            numbers[week] = have[title]["number"]
+        want = {"title": title, "description": kind, "due_on": f"{due}T18:00:00Z"}
+        m = milestone_for(have, week)
+        if m:
+            numbers[week] = m["number"]
+            if m["title"] != title or not same_body(m.get("description"), kind) or \
+                    (m.get("due_on") or "")[:10] != due:
+                print(f"      update milestone {m['title']} -> {title}")
+                if not dry:
+                    call("PATCH", f"/milestones/{m['number']}", want)
             continue
         print(f"      create milestone {title}")
         if dry:
             continue
-        m = call("POST", "/milestones",
-                 {"title": title, "description": kind, "due_on": f"{due}T18:00:00Z"})
+        m = call("POST", "/milestones", want)
         numbers[week] = m["number"]
     return numbers
 
 
 def milestone_numbers():
-    have = {m["title"]: m["number"] for m in paged("/milestones?state=all")}
-    return {w: have[f"{w} · {s}"] for w, (s, _, _) in WEEKS.items() if f"{w} · {s}" in have}
+    have = {m["title"]: m for m in paged("/milestones?state=all")}
+    out = {}
+    for week in WEEKS:
+        m = milestone_for(have, week)
+        if m:
+            out[week] = m["number"]
+    return out
 
 
 # --------------------------------------------------------------------------- the cards
@@ -389,6 +383,12 @@ def body_for(week, slot, date, focus, kind, note):
                   "board and the curriculum workbook have the same rows.", ""]
         return "\n".join(lines)
 
+    if kind in ("baseline", "capstone"):
+        lines += [("Week 0 packs follow the student Week 0 sheet for the running order and the "
+                   "tracker's Week 0 row for the content; the row names what each day needs beyond "
+                   "its trainer sheet." if kind == "baseline" else
+                   "A capstone week is planned at the week level from the W17-20 Capstone tab: the "
+                   "gate, what exists at it, and how the evidence reads by kind of system."), ""]
     url = f"https://github.com/{OWNER}/{REPO}/tree/main/{folder(week, slot)}"
     lines += [f"Day folder: [`{folder(week, slot)}/`]({url})", "",
               "## What this day owes", "",
@@ -424,10 +424,10 @@ def labels_for(week, slot, kind, status, extra):
 def find_cards():
     """Every card this script has made, keyed week/slot, read off the marker in the body."""
     out = {}
-    for issue in paged("/issues?state=all&labels=" + urllib.parse.quote("type:teaching")) + \
-            paged("/issues?state=all&labels=" + urllib.parse.quote("type:saturday")) + \
-            paged("/issues?state=all&labels=" + urllib.parse.quote("type:build-week")) + \
-            paged("/issues?state=all&labels=" + urllib.parse.quote("type:holiday")):
+    issues = []
+    for name, _, _ in DAY_TYPE:
+        issues += paged("/issues?state=all&labels=" + urllib.parse.quote(name))
+    for issue in issues:
         m = re.search(r"<!-- board:(W\d\d)/([A-Z0-9]+) -->", issue.get("body") or "")
         if m:
             out[f"{m.group(1)}/{m.group(2)}"] = issue
@@ -435,6 +435,7 @@ def find_cards():
 
 
 def sync_week(week, status, extra, note_for, dry, cards, miles):
+    """Create or update one week's cards. `status` is None unless --set-status was given."""
     made = 0
     for w, slot, date, focus, kind in DAYS:
         if w != week:
@@ -442,19 +443,46 @@ def sync_week(week, status, extra, note_for, dry, cards, miles):
         key = f"{w}/{slot}"
         title = f"{w} {slot} · {date} · {focus}"
         body = body_for(w, slot, date, focus, kind, note_for.get(key, note_for.get(w, "")))
-        want_status = "backlog" if kind == "holiday" else status
-        labels = labels_for(w, slot, kind, want_status, extra if kind != "holiday" else [])
+        found = cards.get(key)
+        if not found and SLOT_ALIAS.get(slot):
+            found = cards.get(f"{w}/{SLOT_ALIAS[slot]}")
+            if found:
+                print(f"      migrate #{found['number']}  {w}/{SLOT_ALIAS[slot]} -> {key}")
+        have = [l["name"] for l in found["labels"]] if found else []
+        was_holiday = "type:holiday" in have
+        now_status = next((l.split(":", 1)[1] for l in have if l.startswith("status:")), None)
+        if kind == "holiday":
+            want_status = "backlog"
+        elif status:
+            want_status = status
+        elif found and now_status and not was_holiday:
+            want_status = now_status
+        else:
+            want_status = "backlog"
+        keep = [l for l in have if not l.startswith(("status:", "type:"))]
+        if kind == "holiday":
+            keep = [l for l in keep if not l.startswith(("owner:", "review-", "spot:"))]
+        labels = labels_for(w, slot, kind, want_status,
+                            list(dict.fromkeys(keep + (list(extra) if kind != "holiday" else []))))
         payload = {"title": title, "body": body, "labels": labels}
         if week in miles:
             payload["milestone"] = miles[week]
-        if key in cards:
-            n = cards[key]["number"]
+        if found:
+            n = found["number"]
+            changed = (found["title"] != title or not same_body(found.get("body"), body)
+                       or sorted(have) != sorted(labels)
+                       or (found.get("milestone") or {}).get("number") != payload.get("milestone"))
+            state = found["state"]
+            want_state = "closed" if kind == "holiday" else ("closed" if want_status == "done" else "open")
+            if not changed and state == want_state:
+                continue
             print(f"      update #{n}  {title[:64]}")
             if not dry:
                 call("PATCH", f"/issues/{n}", payload)
-                if kind == "holiday" and cards[key]["state"] == "open":
+                if state != want_state:
                     call("PATCH", f"/issues/{n}",
-                         {"state": "closed", "state_reason": "not_planned"})
+                         {"state": want_state, "state_reason": "not_planned"} if kind == "holiday"
+                         else {"state": want_state})
         else:
             print(f"      create      {title[:64]}")
             if not dry:
@@ -499,8 +527,9 @@ def main():
     ap.add_argument("--all", action="store_true", help="every week in the plan")
     ap.add_argument("--status", nargs=2, metavar=("TARGET", "STATUS"),
                     help="move a week or a day to a status, as --status W01 rework")
-    ap.add_argument("--set-status", default="backlog",
-                    help="the status new cards are created with")
+    ap.add_argument("--set-status", default=None,
+                    help="set this status on every card the run touches; without it, new cards "
+                         "start at backlog and existing cards keep theirs")
     ap.add_argument("--label", action="append", default=[],
                     help="an extra label for every card this run touches")
     ap.add_argument("--project-add", action="store_true",
@@ -542,12 +571,18 @@ if __name__ == "__main__":
 # scripts/board_sync.py --dry-run --labels --milestones --all
 #     Prints every label, milestone and card it would create and writes nothing.
 # scripts/board_sync.py --labels --milestones
-#     Creates the 27 labels and the 9 week milestones. Safe to run again; it corrects a label
-#     whose colour or description has drifted and leaves the rest alone.
+#     Creates the 41 labels and the 21 week milestones, W00 to W20. Safe to run again; it corrects
+#     a label whose colour or description has drifted, and retitles a week's milestone when the
+#     calendar moves its dates.
 # scripts/board_sync.py --week W02 --set-status backlog
 #     Opens one card per day of Week 2, each carrying its artifact table and its milestone.
 # scripts/board_sync.py --week W01 --set-status building --label owner:rushikesh
 #     Updates the six Week 1 cards in place, because they are matched on their board marker.
+# scripts/board_sync.py --all                (after the calendar moved Week 1's holiday Friday)
+#     "migrate #18 W01/FRI -> W01/D5": the Friday card becomes a teaching card at backlog and
+#     reopens, while every other card keeps its status and its people labels.
+# data/programme/days.json missing
+#     One FAIL line telling you to run scripts/sync_programme.py first, exit 1.
 # scripts/board_sync.py --status W01/D3 review-1
 #     Moves one day to the first-level review and reopens it if it had been closed.
 # scripts/board_sync.py --status W01 done

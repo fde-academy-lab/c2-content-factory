@@ -1,56 +1,50 @@
-# Before Saturday: the week, under questioning
+# Before Friday: the week, run alone
 
-Ships tonight. Friday is Gandhi Jayanti and there is no session, so this covers two days.
+Ships tonight. Tomorrow is the AI-free lab and the growth-review rehearsal, and Saturday is the
+recap paper, so this covers both.
 
 ---
 
-## What Saturday is
+## What Friday is
 
-Four hours, no new content.
+Kavya Nair takes the day. The growth review is on Monday and Marketing will be in the room, so
+before anything goes to Meera, you rebuild the week from a raw export and then say it aloud to
+somebody paid to disagree.
 
 | Block | Duration | What happens |
 |---|---|---|
-| 1 | 120 min | The recap paper. Pen and paper, AI-free, short answers. |
-| 2 | 20 min | Break |
-| 3 | 75 min | The solution discussion. Papers swap for peer marking, every answer treated as an interview answer, random call-outs. |
-| 4 | 25 min | Doubts, and the bridge into Week 2 |
+| 1 | 10 min | Kavya's terms, and the lab's rules |
+| 2 | 120 min | The AI-free lab: the week's method end to end on an export you have not seen |
+| 3 | 30 min | The debrief: the places most of the room broke, each rerun once on the projector |
+| 4 | 60 min | The rehearsal: your note read aloud in pairs, one partner playing Marketing, then two-minute call-outs |
+| 5 | 20 min | Kahoot, close, and Saturday's paper previewed |
 
-**It is ungraded.** It is a performance indicator and it is the closest thing to an interview you
-will sit this month.
-
----
-
-## What is on the paper
-
-Every question is a Kalpa business question first and a technique question second, which is the
-order interviewers use. The set is the week's interview column, so you have already seen all ten.
-
-The five that most people lose marks on:
-
-1. Draw the revenue tree and name the branch you would investigate first.
-2. Walk the sales-drop investigation ladder, in order.
-3. What does `p = 0.03` mean, and what does it not mean?
-4. Input 200, clean 183, rejected 14. Does it reconcile?
-5. Write the four-part note for the Retail-Plus finding, then defend the caveat.
+**The lab's rules.** A fresh export, no assistant, notes closed, and a TA watching where you stall.
+The lab adds no new idea: it finds out which of the week's ideas are yours. It is ungraded, and what
+it shows sets your first stretch or recovery task.
 
 ---
 
-## What to do with Friday
+## The order you will run tomorrow
 
-The institute is closed. Two things, and neither takes long.
+The same order every time, which is the point of the lab:
 
-1. **Rerun the whole week's pipeline in a fresh Codespace**, top to bottom, from Monday's notebook
-   to Thursday's. Note anything that fails cold. A notebook that only runs warm is a notebook that
-   will fail in front of somebody.
-2. **Finish the note.** Under 200 words, read aloud to somebody outside the programme.
+1. Profile: how many records, which fields convert, what repeats.
+2. Clean, with a written reason for every decision.
+3. Reconcile: input equals clean plus rejected, and revenue checks against Finance.
+4. Decompose along the revenue tree.
+5. Test the gap with one shuffle test.
+6. Write the four-part note.
 
-Nothing else. The week was dense and Saturday is a long morning.
+Tonight, rerun the week once in a fresh Codespace, top to bottom, from Monday's notebook to
+Thursday's, and note anything that fails cold. Tomorrow nobody will be there to rescue a notebook
+that only runs warm.
 
 ---
 
 ## The five things worth knowing from memory
 
-No notes on Saturday, so these are the ones to close your eyes and say.
+No notes tomorrow or on Saturday, so these are the ones to close your eyes and say.
 
 | | |
 |---|---|
@@ -60,14 +54,23 @@ No notes on Saturday, so these are the ones to close your eyes and say.
 | The p-value sentence | The share of chance-only worlds at least this extreme |
 | The note | Claim, evidence, caveat, action |
 
-If you can say those five cold, you can rebuild every answer on the paper from them.
+If you can say those five cold, you can rebuild the lab and every answer on Saturday's paper from
+them.
+
+---
+
+## What Saturday is
+
+Four hours, no new content. A recap paper of objective items (fill in the blank, true or false,
+one or more correct options, scenario sets, applied maths and ordering), pen and paper, AI-free,
+then a break. The papers are swapped and marked against a key, and the discussion starts with the
+items the room missed most, then asks the week's interview questions aloud, with random call-outs.
+It is ungraded: a performance indicator, and the closest thing to an interview you will sit this
+month.
 
 ---
 
 ## The one line worth carrying in
 
-> Every question on the paper is a business question first and a technique question second, because
-> that is the order an interviewer asks them in.
-
-Week 2 opens on Monday with Anand wanting the same numbers from the warehouse itself, every week,
-computed by something nobody can mistype. The tree does not change; the tool does.
+> Every question, tomorrow and on Saturday, is a business question first and a technique question
+> second, because that is the order an interviewer asks them in.

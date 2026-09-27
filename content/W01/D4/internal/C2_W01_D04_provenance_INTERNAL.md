@@ -75,3 +75,7 @@ The row's trainer note says to name a confidence interval and park it. The pack 
 and does not compute one, which matches. The stretch extra asks for the smallest detectable effect
 on twelve observations; that is not in the row and it is the natural follow-up an interviewer asks
 after "not significant", so it earns its place as an optional extra rather than as content.
+
+## Re-dated on 27 September 2026
+
+Tracker v7 of 21 September 2026 moved this row one week later, to Thursday 8 October 2026, with one change: the close now previews Friday's AI-free lab, because the Friday is a teaching day on the new calendar. The day sheet's close, the pre-read (rewritten as Before Friday) and the take-home's closing section follow it, and the day sheet's module and date lines now render from the calendar.

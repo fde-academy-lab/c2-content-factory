@@ -1,105 +1,469 @@
 # Week 1 recap paper
 
-**Pen and paper. No assistant, no notes, no notebook.** About two hours, then a break, then the
-solution discussion.
+Saturday 10 October 2026 · 110 minutes · 52 items · pen and paper, no assistant, no notes
 
-This is ungraded. It is a performance indicator and it is the closest thing to an interview you will
-sit this month. Every question is a Kalpa business question first and a technique question second,
-because that is the order an interviewer asks them in.
+Name: ____________________    Marked by: ____________________    Items right: ____ of 52
 
-Write in full sentences. Where a question asks for a number, show the two numbers it came from.
+Answer every item in the space it gives you. Each section says how. After the break the papers are swapped and marked against the key, and the discussion starts with the items the room missed most.
 
 ---
 
-## Section A. The tree and the ladder
+## A. Fill in the blank (items 1 to 8)
 
-**A1.** Kalpa wants 15 percent growth. Draw the revenue tree and name the branch you would
-investigate first. Give one reason the branch you picked comes before the others.
-*(about 8 minutes)*
+Write the missing word or number on the line.
 
-**A2.** Sales fell from Q1 to Q2. Walk the investigation ladder. Name each rung and say in one line
-what it needs from the data. *(8 minutes)*
+#### 1
 
-**A3.** Marketing says the answer is acquisition and your decomposition says frequency. Write the
-three sentences you would say in the room, in order. *(6 minutes)*
+Revenue equals customers times orders per customer times items per order times ____ per item, less discounts.
 
----
+Answer: ____________________
 
-## Section B. Numbers that describe
+#### 2
 
-**B1.** Mean order value is Rs 18,160 and median order value is Rs 2,205. Which do you put in front
-of the CEO, and what do you say about the other one? *(4 minutes)*
+Orders per customer is total orders divided by the number of distinct ____.
 
-**B2.** A segment has a median of Rs 1,200 and a range of Rs 80,000. Describe that segment in two
-sentences without using the word average. *(4 minutes)*
+Answer: ____________________
 
-**B3.** Write the definition of orders per customer as a numerator over a denominator, then name one
-thing that would make two quarters' figures not comparable. *(4 minutes)*
+#### 3
 
----
+A function that prints its result and has no return statement hands the value ____ back to the caller.
 
-## Section C. Trust
+Answer: ____________________
 
-**C1.** Finance and your dashboard disagree by Rs 20 lakh on the same quarter. What do you do first,
-and what do you refuse to do? *(6 minutes)*
+#### 4
 
-**C2.** Input 200, clean 183, rejected 14. Does it reconcile? If not, what is the missing number and
-what would you do about it? *(4 minutes)*
+Every field that csv.DictReader reads arrives as the type ____ until you convert it.
 
-**C3.** Your cleaning run reported zero rejects on a file you know is dirty. Name three things you
-would check, in order. *(6 minutes)*
+Answer: ____________________
 
-**C4.** Two rows share an order id and differ on the order date. Say what each of these does: a
-whole-record duplicate check, and a check on the id. Then say which you would use and what goes in
-the log. *(6 minutes)*
+#### 5
 
----
+A cleaning run reconciles when input rows equal clean rows plus ____ rows.
 
-## Section D. Real, and caused
+Answer: ____________________
 
-**D1.** What does `p = 0.03` mean? Then write one sentence saying what it does not mean. *(5 minutes)*
+#### 6
 
-**D2.** You ran 5,000 shuffles and none was as extreme as the real result. Write the p-value as you
-would report it, and say why you wrote it that way. *(4 minutes)*
+The p-value is the share of chance-only worlds that show a gap at least as ____ as the one observed.
 
-**D3.** 42 percent on 12 orders against 31 percent on 400. Which do you trust, and what is the rule
-of thumb you are applying? Say whether it is a rule or a law. *(5 minutes)*
+Answer: ____________________
 
-**D4.** Revenue rose 6 percent after a discount. Give three reasons that is not proof the discount
-worked. *(6 minutes)*
+#### 7
 
-**D5.** Every segment fell three percent and the blend rose six. Explain how, in three sentences,
-without using the word paradox. *(6 minutes)*
+The stakeholder note has four parts in order: claim, evidence, ____ and action.
+
+Answer: ____________________
+
+#### 8
+
+Customers who would have bought anyway were more likely to receive the discount. A factor that drives both receiving it and buying is called a ____.
+
+Answer: ____________________
 
 ---
 
-## Section E. The note
+## B. True or false (items 9 to 16)
 
-**E1.** Write the four-part note for the Retail-Plus finding. Four sentences, one per part, in the
-right order. Then, underneath, write the one sentence you would add if marketing pushed back on the
-caveat. *(12 minutes)*
+Write T or F on the line.
 
-**E2.** Meera wants a yes or no and the honest answer is "not yet". Write what you say, in under
-forty words, so that it is useful rather than evasive. *(6 minutes)*
+#### 9
+
+A p-value of 0.03 means there is a 3 percent chance that the finding is wrong.
+
+Answer: ____________________
+
+#### 10
+
+If one corporate order is fifty times the size of a normal order, the median order value barely moves while the mean jumps.
+
+Answer: ____________________
+
+#### 11
+
+In Python 3, the comparison '4500' > 3000 evaluates to True.
+
+Answer: ____________________
+
+#### 12
+
+A difference can be statistically real and still not be worth acting on.
+
+Answer: ____________________
+
+#### 13
+
+Removing exact duplicate rows can change a quarter's revenue.
+
+Answer: ____________________
+
+#### 14
+
+A rate computed on 12 orders deserves the same trust as the same rate computed on 400 orders.
+
+Answer: ____________________
+
+#### 15
+
+If revenue rose after a discount, the discount caused the rise.
+
+Answer: ____________________
+
+#### 16
+
+A total can rise while every segment inside it falls, if the mix of segments shifts.
+
+Answer: ____________________
 
 ---
 
-## Section F. One long one
+## C. One correct option (items 17 to 29)
 
-**F1.** You join Kalpa Health next month. Their COO says test volumes grew 5 percent against a plan
-of 18 and she does not know which part of her business is short.
+Circle the one correct letter.
 
-Write, in under 200 words:
+#### 17
 
-1. What stays the same from the method you used this week.
-2. What changes, and name two things specifically.
-3. The first three things you would ask for.
+Revenue fell from Q1 to Q2 while the customer count stayed flat. Which branch of the revenue tree can you rule out first?
 
-*(15 minutes)*
+a) the number of orders per customer
+b) the number of items per order
+c) the number of customers
+d) discounts
+
+#### 18
+
+Marketing asks for Rs 12 crore to acquire new customers. On the revenue tree, which branch is that money a bet on?
+
+a) customers
+b) orders per customer
+c) items per order
+d) price per item
+
+#### 19
+
+Order values show a mean of Rs 9,800 and a median of Rs 1,400. What is the likeliest explanation?
+
+a) Most orders sit near Rs 9,800.
+b) The median has been miscalculated from an incomplete export.
+c) Half the orders are above Rs 9,800.
+d) A few very large orders pull the mean up.
+
+#### 20
+
+What is the first rung of the sales-drop investigation ladder?
+
+a) Confirm that the drop is real.
+b) Decompose the change along the revenue tree.
+c) State a hypothesis for the cause.
+d) Isolate the segment that moved.
+
+#### 21
+
+Q1 holds 13 weeks of orders and Q2 holds 11. What makes the revenue comparison fair?
+
+a) Compare the two totals as they stand.
+b) Add two weeks at the Q2 weekly average and report that total as actual.
+c) Drop Q2 from the analysis.
+d) Compare revenue per week, or cut both quarters to the same weeks.
+
+#### 22
+
+A function ends with print(total) and has no return statement. After result = revenue_for(seg), what does result hold?
+
+a) 0, because a missing return defaults to zero for numbers.
+b) The total, because print both displays the value and sends it back to the caller.
+c) None, because a function without a return statement hands back None.
+d) An error, because Python refuses to assign from such a function.
+
+#### 23
+
+A loop crashes on int('twelve'). Which repair is honest?
+
+a) Replace every failed conversion with 0, so that the totals can still be computed.
+b) Delete the offending row from the source file, so that the crash cannot recur.
+c) Convert the whole column to float, because float accepts more kinds of text.
+d) Catch the error, write the row to the rejects log with its reason, and continue.
+
+#### 24
+
+Two rows share an order_id and differ only in one timestamp. What decides whether they are duplicates?
+
+a) the number of rows that the file holds in total
+b) the identity rule you wrote down for an order
+c) whether the file arrived as CSV or as JSON
+d) whether the two amounts are large or small
+
+#### 25
+
+A cleaning run reports input 200, clean 183 and rejected 14. What does that tell you?
+
+a) Three rows are unaccounted for, so the pipeline cannot be trusted yet.
+b) Fourteen rows were duplicates, and the remaining rows are all safe to use.
+c) The run reconciles, because clean rows outnumber rejected rows.
+d) Seventeen rows were rejected, and the log has simply under-counted them.
+
+#### 26
+
+Ten label shuffles produced gaps between 2 and 6 points, and the real gap is 5 points. What is the honest reading?
+
+a) The real gap must be an error, because shuffled labels should always give zero.
+b) The real gap is significant, because it is larger than most of the shuffled gaps.
+c) Chance alone often produces a gap this large, so the real gap is not surprising.
+d) The shuffle should be repeated until the real gap looks rare enough to report.
+
+#### 27
+
+The Student segment grew 40 percent on 12 orders. What do you tell Meera?
+
+a) Move budget to Student now.
+b) The rate rests on too few orders to trust yet.
+c) Drop the Student segment.
+d) The growth is proven because 40 percent is large.
+
+#### 28
+
+The dashboard shows Rs 2.1 crore for Q1 and Finance shows Rs 1.9 crore. What is your first move?
+
+a) Average the two figures and report Rs 2.0 crore with a note on the range.
+b) Ask Finance to restate its books, because the dashboard reads the live system.
+c) Report the dashboard figure, because it refreshes daily while Finance's books lag a month.
+d) Profile the export for duplicates and reconcile counts and revenue against Finance.
+
+#### 29
+
+With every other branch of the tree held as it is, a 10 percent lift in which branch adds the most revenue?
+
+a) Customers, because new buyers bring in revenue that did not exist in the business before.
+b) Orders per customer, because existing buyers cost nothing to reach.
+c) All three add the same revenue, so the choice turns on what each costs to move.
+d) Price per item, because a price rise flows straight into revenue.
 
 ---
 
-## Before you hand it in
+## D. More than one correct (items 30 to 35)
 
-Read your own D1 and E1 back. Those two are where answers most often fall short, and both fall
-short for the same reason: a missing second half rather than a wrong first half.
+Circle every correct letter.
+
+#### 30
+
+Which of these belong in a complete definition of a rate? Mark every correct option.
+
+a) its numerator
+b) its denominator
+c) the colour of its chart
+d) the time window it covers
+
+#### 31
+
+Which of these can make a quarter-on-quarter drop look real when it is not? Mark every correct option.
+
+a) quarters of unequal length
+b) duplicated rows in the earlier quarter
+c) a segment definition that changed between the quarters
+d) reporting the median beside the mean
+
+#### 32
+
+Which are valid treatments for a missing value, each with a written reason? Mark every correct option.
+
+a) Drop the row.
+b) Fill a stated default.
+c) Keep the row and flag it.
+d) Type a value into the source file.
+
+#### 33
+
+What does a field profile report for each field? Mark every correct option.
+
+a) how many values are present
+b) how many values convert to the expected type
+c) how many distinct values there are
+d) the p-value of the field
+
+#### 34
+
+What does a fair test of 'did the discount work' need? Mark every correct option.
+
+a) a like-for-like group that did not get the discount
+b) the same time window for both groups
+c) a comparable mix of segments in both groups
+d) a deeper discount
+
+#### 35
+
+Which statements about the p-value are correct? Mark every correct option.
+
+a) It is computed on the assumption that chance alone is at work.
+b) A small value means the observed gap would be rare under chance alone.
+c) It is the probability that the hypothesis is true.
+d) It says nothing about whether the gap is large enough to matter.
+
+---
+
+## E. Scenario set (items 36 to 45)
+
+Each set opens on one Kalpa situation. Answer each item the way it asks: circle a letter, write T or F, or write the number or the word.
+
+### Set 1
+
+**Situation.** Kalpa Retail, two quarters. Q1: 1,000 customers, 2,400 orders, revenue Rs 48.0 lakh. Q2: 1,000 customers, 2,160 orders, revenue Rs 43.2 lakh.
+
+#### 36
+
+What is orders per customer in Q2?
+
+a) 2.00
+b) 2.16
+c) 2.40
+d) 0.46
+
+#### 37
+
+Which branch moved between the quarters?
+
+a) the number of customers
+b) orders per customer
+c) revenue per order
+d) all three
+
+#### 38
+
+True or false: The whole drop can be explained without any change in revenue per order.
+
+Answer: ____________________
+
+#### 39
+
+Marketing says the fix is acquisition. What does the decomposition say?
+
+a) It is not supported: customers are flat and frequency fell 10 percent.
+b) It is supported, because the customer count fell between the quarters.
+c) Nothing can be said, because two quarters are too few to decompose.
+d) It is supported, because revenue per order fell by about 10 percent.
+
+### Set 2
+
+**Situation.** The ERP export holds 214 rows. Your cleaning run removes 14 exact duplicates and rejects 3 more rows: one amount spelt as a word, one row missing a required field and one truncated line. Every removed row goes to the rejects log with its reason.
+
+#### 40
+
+The clean file holds ____ rows.
+
+Answer: ____________________
+
+#### 41
+
+For the run to reconcile, the rejects log must hold ____ rows.
+
+Answer: ____________________
+
+#### 42
+
+All 14 duplicates sat in Q1. What happens to the Q1 to Q2 drop once they are removed?
+
+a) It grows.
+b) It stays the same, because duplicates cancel out.
+c) It shrinks, because Q1 was inflated.
+d) It turns into a rise in every case.
+
+### Set 3
+
+**Situation.** After the monsoon discount, total revenue rose 6 percent. Split by segment, revenue per customer fell in every segment. The customers who received the discount were, on average, more frequent buyers than those who did not.
+
+#### 43
+
+What is this pattern an example of?
+
+a) a reversal driven by a shift in the mix of customers
+b) a calculation error in the segment-level revenue totals
+c) a seasonal effect that the monsoon produces every year
+d) a sample that is too small to show any pattern at all
+
+#### 44
+
+True or false: Buying frequency is a confounder for the campaign's effect.
+
+Answer: ____________________
+
+#### 45
+
+Meera asks whether to repeat the discount at Diwali. Which answer is honest?
+
+a) Repeat it exactly as it ran, because total revenue rose 6 percent after the campaign.
+b) Double the discount, because a larger offer will lift every segment in turn.
+c) Say nothing yet, because a single campaign can never be evaluated at all.
+d) Do not repeat it as designed: no segment improved, and the lift is a mix effect.
+
+---
+
+## F. Applied maths (items 46 to 50)
+
+Show the working, then the answer.
+
+#### 46
+
+A 15 percent discount lifts the quantity sold by 10 percent. By what percent does revenue change?
+
+Working:
+
+Answer: ____________________
+
+#### 47
+
+Five order values in rupees: 800, 1,200, 1,400, 2,000 and 480,000. Give the median and the mean.
+
+Working:
+
+Answer: ____________________
+
+#### 48
+
+Revenue was Rs 2.1 crore in Q1 and Rs 1.9 crore in Q2. Give the percentage change to one decimal place.
+
+Working:
+
+Answer: ____________________
+
+#### 49
+
+In 5,000 label shuffles, 140 produced a gap at least as large as the real one. What is the p-value?
+
+Working:
+
+Answer: ____________________
+
+#### 50
+
+A retailer has 50,000 customers, 2 orders per customer, 3 items per order, Rs 400 per item and Rs 1 crore of discounts. What is its revenue?
+
+Working:
+
+Answer: ____________________
+
+---
+
+## G. Order the steps (items 51 and 52)
+
+Write the letters in the right order.
+
+#### 51
+
+Put the five rungs of the sales-drop investigation ladder in order.
+
+a) Isolate the branch and the segment.
+b) Confirm that the drop is real.
+c) Hypothesise, and name the evidence that would settle it.
+d) Compare like with like.
+e) Decompose along the revenue tree.
+
+Order: ____________________
+
+#### 52
+
+Put the cleaning pass in order.
+
+a) Reconcile counts and revenue.
+b) Profile each field.
+c) Recompute the revenue tree on the clean data.
+d) Decide drop, default or flag for each defect, with a written reason.
+
+Order: ____________________

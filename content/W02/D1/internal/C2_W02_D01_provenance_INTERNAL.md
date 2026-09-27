@@ -74,3 +74,7 @@ Every query in this pack was executed against Postgres 16.13 during the build.
 Nothing is blocked. One judgment worth a second opinion: the take-home asks for two questions
 "answerable from orders and customers alone", which rules out the payments table deliberately so
 Tuesday opens clean. A reviewer who thinks the constraint is artificial should say so.
+
+## Re-dated on 27 September 2026
+
+Tracker v7 of 21 September 2026 moved this row one week later, to Monday 12 October 2026, and gave it the violet IITGN faculty column: session W2-1, tentative, after the applied core, picking up where the row stops. The day sheet carries the block as a sync block, and the pack does not teach into it.

@@ -1,0 +1,18 @@
+# Descriptions for the claude.ai upload copies of skills whose own description runs past 200
+# characters. The claude.ai help article on custom skills caps a description at 200 characters,
+# while the platform docs and the open specification allow 1024 (both read 27 September 2026), so
+# the upload copy takes the safe limit and the repository copy keeps its full text.
+# scripts/package_skills.py swaps these in and fails on any upload copy still over the limit.
+
+verification-before-completion: Use before claiming work is complete, fixed or passing, and before committing or opening a pull request. Run the verification command and show its output first.
+design-taste-frontend: Frontend design for pages that must not look templated. It reads the brief, infers a design direction, audits first on a redesign, and runs a strict pre-flight check.
+redesign-existing-projects: Upgrades an existing site, page or deck. It audits the current design, finds generic AI patterns and applies high-end standards without breaking what works.
+karpathy-article-writing: Writes technical explainers in Karpathy's voice, built from scratch in the first person, with deep substance, vivid analogies and honest hedging. Use for posts and study notes.
+seo-content-brief: Writes SEO content briefs for public pages, with word counts per section, competitor scoring, keyword guidance and page-type templates. Use on a content brief or an outline.
+seo-content: Evaluates page content for usefulness, E-E-A-T, readability and AI citation readiness, and cleans drafts of AI-typical phrasing and invisible Unicode characters.
+content-repurposer: Turns one long-form piece into LinkedIn posts, threads, email snippets, ad hooks and video scripts in one voice. Use when a post or an article has to travel across channels.
+day-pack-builder: Builds the full pack for one IITGN Cohort 2 training day from its curriculum row, from the deck and notebooks to the exercises, Kahoot, study notes and pre-read. Use for any day build.
+exercise-builder: Turns exercises, quizzes, Kahoot packs and recap papers into selection items answered as a letter string, with keys that pass the distractor audit. Use for any exercise or key.
+curriculum-detailing: Expands a table of contents into session detail, with ideas under a load cap, depth targets, prerequisites, a verified reference pack and continuity. Use for any week or session plan.
+cohort-handoff: Compacts a long chat into a handoff note so a fresh chat, platform or owner continues without rereading it. Use at about ten exchanges, on handoff or park this, or on a handoff note.
+study-notes-builder: Writes the notes a learner reads after a session, with a terrain map, one running thread, verified field cases, a self-check and a reading path, as markdown and a print-ready PDF.

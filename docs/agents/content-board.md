@@ -2,7 +2,9 @@
 
 The board tracks one card per day pack, because a day pack is what a session builds and what a
 reviewer signs off. It lives on this repository, its cards are GitHub issues, and
-`scripts/board_sync.py` keeps it in step with the day plan without anyone retyping a row.
+`scripts/board_sync.py` keeps it in step with the day plan without anyone retyping a row. The day
+plan is `data/programme/days.json`, which `scripts/sync_programme.py` writes from the curriculum
+workbook: 102 days from Week 0 to Week 16 and one card for each capstone week, 106 cards in all.
 
 ## Where each thing lives
 
@@ -161,7 +163,7 @@ reworked on a feeling that something is off.
 |---|---|---|
 | Status | `status:backlog`, `status:building`, `status:review-1`, `status:review-2`, `status:spot-check`, `status:rework`, `status:done` | Exactly one per card |
 | Who holds it | `owner:rushikesh`, `owner:anmol`, `owner:claude`, `review-1:navaid`, `review-2:akash`, `spot:ishu` | One owner, plus whoever currently holds it |
-| Day shape | `type:teaching`, `type:saturday`, `type:build-week`, `type:holiday` | Exactly one, set by the day plan |
+| Day shape | `type:teaching`, `type:saturday`, `type:build-week`, `type:holiday`, `type:baseline`, `type:capstone` | Exactly one, set by the day plan |
 | Artifact | `artifact:deck`, `artifact:notebook`, `artifact:exercises`, `artifact:takehome`, `artifact:kahoot`, `artifact:preread`, `artifact:study-notes`, `artifact:cheatsheet`, `artifact:trainer`, `artifact:demos` | On follow-up issues a review raises, never on a day card |
 | Gate and blocks | `gate:verify-pass`, `gate:verify-fail`, `blocked`, `curriculum-rework` | As they apply |
 | Area | `area:wiki`, `area:situations`, `area:scripts`, `area:docs`, `area:curriculum`, `area:board` | On issues that are **not** day packs, so the board's own work stays filterable apart from the content |
@@ -210,8 +212,9 @@ python3 scripts/board_sync.py --labels --milestones
 # that is on an issue, so it is safe to run again.
 python3 scripts/board_sync.py --prune-labels
 
-# Open the cards for a week that is about to be built.
-python3 scripts/board_sync.py --week W02 --set-status backlog
+# Open the cards for a week that is about to be built. Existing cards keep their status and
+# their people labels unless --set-status is given.
+python3 scripts/board_sync.py --week W02
 
 # Hand a week to its builder.
 python3 scripts/board_sync.py --status W02 building
@@ -234,6 +237,24 @@ what it needs.
 Every run is safe to repeat. A card is matched on the marker `<!-- board:W02/D3 -->` in its body,
 so a second run updates the card the first run made rather than opening a duplicate. Moving a card
 to `done` closes it as completed; moving it to anything else reopens it.
+
+## When the calendar moves
+
+A re-dated calendar reaches the board in two commands, with nothing retyped:
+
+```bash
+python3 scripts/sync_programme.py            # the workbook's new dates into days.json
+python3 scripts/board_sync.py --dry-run --milestones --all
+python3 scripts/board_sync.py --milestones --all
+```
+
+Milestones are matched on their week and retitled with the new dates. A card is matched on its
+marker, and when a day's slot name changes because a holiday moved, it is matched on its weekday:
+on 27 September 2026 the Week 1 Friday card, `W01/FRI` until then, became `W01/D5` in place, and
+six more weeks swapped a holiday and a working day the same way. A card that turns from a holiday
+into a working day reopens at backlog, a card that turns into a holiday closes, and every other
+card keeps its status and its people labels. The run is paced under GitHub's limit on
+content-creating requests, so a whole calendar takes a few minutes.
 
 ## What the board does not do
 

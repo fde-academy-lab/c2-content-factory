@@ -2,6 +2,8 @@
 
 **TRAINER ONLY.** Nothing on this page reaches a learner.
 
+Posts to <!-- sync:module:W01/D1 -->Module 1: Foundations of AI and Data<!-- /sync:module:W01/D1 -->, on <!-- sync:day-date:W01/D1 -->Mon 05 Oct 2026<!-- /sync:day-date:W01/D1 -->.
+
 ---
 
 ## The two-minute orientation

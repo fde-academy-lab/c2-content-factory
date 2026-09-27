@@ -43,7 +43,7 @@ Cohort 1 ran February to August 2026 with 30 students. Every entry below pairs a
 
 **Observed.** The weekly written test plus the weekly assessment cycle consumed disproportionate time relative to what it revealed.
 
-**Fix.** Daily platform MCQ on Neo, one pen-and-paper test on Fridays, three major exams at Weeks 9, 15 and 20. Assessment runs entirely on Neo. CodeChef is daily practice and carries no marks.
+**Fix.** A daily Kahoot, ungraded; a Saturday recap paper on regular weeks, objective, AI-free and ungraded, built from interview questions; three major exams in Weeks 5, 10 and 16; and mini projects, mock interviews and business GDs in the five build weeks. Daily coding practice carries no marks, and whether it runs on CodeChef is still open.
 
 ---
 
@@ -67,7 +67,7 @@ Cohort 1 ran February to August 2026 with 30 students. Every entry below pairs a
 
 **Observed.** The capstone began before the cohort had the specialisation depth to attempt it seriously.
 
-**Fix.** Capstone begins Week 15 at the earliest. Build weeks at Weeks 3, 6, 9, 12 and 15 carry the project practice that used to sit inside an over-long capstone.
+**Fix.** The capstone runs Weeks 17 to 20, announced at the end of Week 16 and built through three gates. Build weeks at Weeks 3, 6, 9, 12 and 15 carry the project practice that used to sit inside an over-long capstone.
 
 ---
 
@@ -75,14 +75,34 @@ Cohort 1 ran February to August 2026 with 30 students. Every entry below pairs a
 
 Confirmed Cohort 1 outcomes, from a cohort of 30 with 11 placement-waiver students:
 
-- Abe Kuriachan placed at Ashok Leyland
-- Harsh Gupta secured a forward deployed engineer role independently
-- Zenil Roy secured an external internship carrying a pre-placement offer
+- One learner placed at Ashok Leyland
+- One learner secured a forward deployed engineer role independently
+- One learner secured an external internship carrying a pre-placement offer
 
 Cohort highlights outside placement:
 
-- Aditya Arora won the IIT Gandhinagar and UCL hackathon in March 2026, with Dirgh Mehta and Dhairya Sanathara
-- Ayush Tiwari's startup was selected for IIEC incubation at IIT Gandhinagar
+- A team of three Cohort 1 learners won the IIT Gandhinagar and UCL hackathon in March 2026
+- One learner's startup was selected for IIEC incubation at IIT Gandhinagar
+
+---
+
+## WHAT THE PROGRAMME HEAD'S HANDOVER ADDS, 27 SEPTEMBER 2026
+
+The handover to the on-ground manager pairs seven Cohort 1 failures with their Cohort 2 answer.
+
+| Cohort 1 | Cohort 2 |
+|---|---|
+| There was no structure, and the programme felt like a series of trainers. | Every day has a fixed shape, a written row and a day pack. |
+| Trainer pedigree did not predict teaching quality. | A fixed core that the row measures, prepared in ninety minutes. |
+| A slow first month never recovered. | A Week 0 baseline, and a Week 1 that opens on a question the room argues about. |
+| Mock scores never crossed 50 percent. | Five vivas on the learners' own projects, challenges logs, and coaching from mid-programme. |
+| Live demos failed, and on-the-spot questions went badly. | A live demo and a defence every build, and AI-free segments that are observed. |
+| Overselling caused avoidable rejections. | Learners are positioned at strong entry level with applied depth, and never as experienced. |
+| Too many evaluations did not align, and the weekly checks drifted to code. | Five graded components with the same number of events per week, and the Saturday paper built from interview questions. |
+
+What the ground team protects: the Saturday paper every regular week, AI-free segments that are
+visibly AI-free, challenges logs kept live, and any trainer deviation from the row reported the
+same day.
 
 ---
 

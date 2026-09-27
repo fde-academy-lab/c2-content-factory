@@ -75,3 +75,7 @@ The take-home asks for a window query and a `GROUP BY` impostor that must return
 on the real warehouse. That is a harder constraint than it looks, and it is deliberate. A reviewer
 who finds it too hard for one evening should say so; the fallback is to allow the honest
 hand-in the brief already permits, which is one sentence saying the window was decorative.
+
+## Re-dated on 27 September 2026
+
+Tracker v7 of 21 September 2026 moved this row one week later, to Wednesday 14 October 2026, and gave it the violet IITGN faculty column: session W2-3, tentative, after the applied core, picking up where the row stops. The day sheet carries the block as a sync block, and the pack does not teach into it.

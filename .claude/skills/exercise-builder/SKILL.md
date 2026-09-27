@@ -49,6 +49,37 @@ Those letters are an illustration of the shape. Check that the illustration is n
 - A near-miss that is precise about the wrong grain is the best distractor. A nonsense option gives the answer away by elimination.
 - No format line, worked example or preamble contains the true answers.
 
+## The Saturday recap paper
+
+The paper is a different drop point: a pen-and-paper sitting of 60 to 120 minutes, swapped between
+learners and marked against a key, so every item must be markable by a peer in seconds and scores must
+compare across the room and from week to week. Its items already exist: take them from the week's
+paper in the tracker's item bank, `docs/curriculum/Saturday_papers.md`, in the bank's order. Author new
+items only for the papers still to be built (Weeks 10, 11, 13 and 14, and the Week 4 Tuesday items),
+and then to the same blueprint:
+
+| Type | Minutes per item | What the key holds |
+|---|---|---|
+| Fill in the blank | 1 | The word, with any accepted variant in brackets |
+| True or false | 1 | True or False |
+| One correct option | 2 | One letter |
+| More than one correct | 2.5 | Every correct letter; partial selection scores nothing |
+| Scenario set | 2.5 | One letter per question in the set |
+| Applied maths | 4 | The number with its unit, and the working a marker checks |
+| Order the steps | 2.5 | The letter sequence |
+
+Size the paper from its slot with those minutes, not one a minute: the blueprint gives the ME1 and ME2
+weeks 60 minutes, a typical week 90 to 110 and the heaviest interview weeks 120, and the item counts
+follow from the mix. Grade each item easy, medium or hard (roughly a third easy and a fifth hard across
+the programme) and tag it `[S]`, `[F]`, `[SV]` or `[D]` with the roles it serves. Every item descends
+from an interview question the week's rows carry, named in the bank's anchor column.
+
+Three files, and only the first reaches a learner: the STUDENT paper, which prints the items and nothing
+else; the TRAINER key, which carries each item's key, level, tag, roles, day and anchor; and the TRAINER
+discussion guide, which runs the marking, takes the most-missed items first as an interview-answer
+discussion with random call-outs, and closes on the scores by tag for Monday's remediation read. The
+distractor rules above apply to every option set on the paper.
+
 ## The solutions file
 
 Keep the sections the existing solutions already have: the idea being tested, the answers, the part worth arguing about, and where the pattern lives in production. Add two things inside that shape:
@@ -68,3 +99,4 @@ The solutions file is the only place the rationale lives. A solutions file is al
 - [ ] The hands-on part points at a TODO notebook that exists.
 - [ ] The solutions file keeps its four sections and gains the item table and the hands-on picks.
 - [ ] `python3 scripts/distractor_audit.py <exercise file>` reports no failures.
+- [ ] A Saturday paper matches its bank paper item for item, prints the items only, and fits its slot by the blueprint's minutes.

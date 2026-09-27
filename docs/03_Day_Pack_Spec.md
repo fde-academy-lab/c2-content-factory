@@ -4,8 +4,9 @@
 > **Superseded where it disagrees.** `06_Day_Pack_Method.md` is the current method and
 > `.claude/skills/day-pack-builder/references/artifact-manifest.md` is the current per-artifact spec.
 > Both win over this file. It is kept because its day sheet, its build-week shape and its definition of
-> done are still the clearest statements of those three things. Two items below are dead: the daily Neo
-> MCQ pool was removed in favour of Kahoot alone, and GitHub Discussions is not used by this programme.
+> done are still the clearest statements of those three things. The daily Neo MCQ pool below is dead,
+> removed in favour of Kahoot alone. Exercises are posted on GitHub Discussions (handover of 27
+> September 2026), so an exercise file carries no trainer text.
 
 A day is not delivered until every artifact below exists. A trainer who has these files needs 90 minutes of preparation and no other input.
 
@@ -39,7 +40,7 @@ ENV           = VS Code + GitHub Codespaces
 | 6 | Mid-session exercises | STUDENT | md + starter file | One per 45 minutes. 15 minutes each. Types from doctrine section 8. Worked in the room. |
 | 7 | Guided exercise | STUDENT | md + starter file | Trainer solves step by step, students mirror |
 | 8 | Unguided exercise | STUDENT | md | No hints, attempted in session. The solution is released at close and the exercise continues as the assignment. |
-| 9 | Take-home assignment | STUDENT | md | One or more. Submission per the cohort's channel; Discussions is not used here. |
+| 9 | Take-home assignment | STUDENT | md | One or more. Submission per the cohort's channel. |
 | 10 | Interactive artifact | STUDENT | html or xlsx | Only when the topic has a decision, a comparison, or a hidden intermediate state |
 | 11 | Post-session study notes | STUDENT | md or pdf | Written after the session shape is fixed. What was covered, worked examples, the failure and its fix. |
 | 12 | Pre-read | STUDENT | md | For the next session. Short. Includes any setup the learner must do tonight. |

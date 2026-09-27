@@ -34,6 +34,7 @@ The mapping, so nothing is lost in translation:
 | Transfer question, follow-ups, return question | **Interview angle**, column 12, as questions with their tags, and the Kahoot return question in column 15 |
 | Reference pack | **Trainer resources** and **Student references**, columns 13 and 14, every link carrying the date it was checked |
 | Hands-on: mid-session and take-home | **In-session exercises** and **After-class tasks**, columns 10 and 11 |
+| Where the session hands over to theory taught by someone else | **IITGN faculty session (TENTATIVE)**, the violet sixteenth column of Weeks 2, 4, 5, 7, 8, 10 and 11: TOPIC, PICKS UP WHERE THE ROW STOPS, CONNECTS TO KALPA, BY THE END and DOES NOT REPEAT. Column 8's stop-before line is where the block starts, so detailing the row and detailing the block are one decision about where the seam sits. |
 
 Two C2 rules override anything the generic grammar implies. The business scenario leads, so a row that
 opens on a topic label is wrong however well detailed it is. And the interview column carries questions

@@ -45,6 +45,13 @@ script or a gate. `content` changes what is taught.
 | 13 Sep 2026 | The build-week group discussion runs on the expert's Friday and Saturday at about 30 minutes per group, unprepared and expert-led. It previously read as a Monday hour with 30 to 45 minutes of preparation, which the Structure tab and the Week 3, 6 and 9 tabs both contradict. | [Running a Situation Room](Running-a-Situation-Room) | `ruling` |
 | 13 Sep 2026 | The exam anchors were corrected to ME1 in Week 5, ME2 in Week 10 and ME3 in Week 15. The programme facts file had Weeks 9, 15 and 20, which contradicted the Structure tab, the modules file and the Week 5 tab. | `01_Programme_Facts_C2.md` | `ruling` |
 | 13 Sep 2026 | The daily check is Kahoot alone. The Neo daily MCQ pool is gone and the pen-and-paper test sits on Saturday, not Friday. | `01_Programme_Facts_C2.md` | `ruling` |
+| 19 Sep 2026 | The Saturday recap paper became objective: fill in the blank, true or false, one or more correct options, scenario sets, applied maths and ordering, graded easy to hard, tagged by role, swapped and marked against a key. | [`docs/curriculum/Saturday_papers.md`](https://github.com/fde-academy-lab/c2-content-factory/blob/main/docs/curriculum/Saturday_papers.md) | `method` |
+| 21 Sep 2026 | The calendar moved a week: Week 0 runs 28 September to 3 October, teaching starts on Monday 5 October and Week 20 closes on 20 February 2027. The re-cut gave Week 1 a Friday lab, Week 4 a communication Tuesday and Week 7 the tokenization Friday. | [`docs/programme/calendar.md`](https://github.com/fde-academy-lab/c2-content-factory/blob/main/docs/programme/calendar.md) | `locked` |
+| 21 Sep 2026 | ME1, ME2 and ME3 carry 70, 100 and 130 proposed marks, and ME3 moved to the first half of Week 16 Monday. | `01_Programme_Facts_C2.md` | `ruling` |
+| 21 Sep 2026 | About 60 hours of IITGN faculty sessions were planned as 30 tentative blocks in Weeks 2, 4, 5, 7, 8, 10 and 11, each after the day's applied core. | [`docs/programme/faculty-plan.md`](https://github.com/fde-academy-lab/c2-content-factory/blob/main/docs/programme/faculty-plan.md) | `content` |
+| 27 Sep 2026 | Every movable fact now lives in `data/programme/facts.yaml` with a status, and `python3 scripts/sync_programme.py` regenerates everything that follows from it, from the exports to the board's calendar; a workflow runs it on every branch and checks it on every pull request. | `CLAUDE.md`, `scripts/sync_programme.py` | `tooling` |
+| 27 Sep 2026 | The board follows the new calendar: Week 0 and Weeks 10 to 20 joined it, and seven cards moved in place where a holiday and a working day swapped weekdays. | [The content board](https://github.com/fde-academy-lab/c2-content-factory/blob/main/docs/agents/content-board.md) | `tooling` |
+| 27 Sep 2026 | Nine skills were imported from five upstream repositories for visual direction, the analytical lens of study notes, brainstorming before the spine, verification before done, and public pages. | [`docs/skills-imported.md`](https://github.com/fde-academy-lab/c2-content-factory/blob/main/docs/skills-imported.md) | `method` |
 
 ---
 
@@ -56,9 +63,11 @@ nothing should be built on a guess about them.
 | Question | Why it is blocked | What is blocked by it |
 |---|---|---|
 | Should Kalpa cover United States healthcare, travel and airlines, or professional services? | All three are outside the locked file. Adding a sixth unit changes the shape of every build week, since each draws one sub-problem per unit. | Situation cards in those domains, and any build-week brief that would use them |
-| All marks and weights | Two weighting models are in circulation and neither is signed off | Any artifact that states a weight, a mark total or a percentage. Nothing may reconstruct a total from partial figures. |
-| The Saturday engagement shape | Up to four hours was agreed in principle and the activity needs confirmation before it can be designed | Saturday packs beyond the recap paper |
-| Whether two industry leaders can be secured for a full build week | If they cannot, the build-week plan changes | Build-week design past the group discussion |
+| All marks and weights | The scheme proposed to the AOC on 25 September awaits its lock | Any artifact that states a weight, a mark total or a percentage. Nothing may reconstruct a total from partial figures. |
+| The IITGN faculty members and dates | Every session is tentative until IIT Gandhinagar confirms it | The timing lines of the 30 days that carry a block |
+
+The full register, with who closes each decision and the working rule for every conflict between
+sources, is [`docs/programme/decisions.md`](https://github.com/fde-academy-lab/c2-content-factory/blob/main/docs/programme/decisions.md).
 
 The first one is the one this wiki most wants an answer to. See
 [The Kalpa world](The-Kalpa-world#what-is-not-in-kalpa-and-is-an-open-decision) for what each option

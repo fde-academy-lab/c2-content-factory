@@ -35,6 +35,16 @@ URL = re.compile(r"https?://\S+")
 DAY_FOLDER = re.compile(r"W(\d{1,2})[/\\](D(\d{1,2})|SAT)$")
 DAY_STEM = re.compile(r"^C2_W(\d{2})_(D\d{2}|SAT)_")
 DATED = re.compile(r"(verified|checked)\s+\d{1,2}\s+\w+\s+\d{4}", re.IGNORECASE)
+# Characters a reader cannot see and a diff barely shows: zero-width marks, direction overrides,
+# Unicode tag characters (hidden text), the soft hyphen and the exotic spaces. The list follows the
+# invisible-character pass of the seo-content skill (AgriciDaniel/claude-seo, MIT).
+INVISIBLE = re.compile("[\u200b\u200c\u200d\u2060\ufeff\u200e\u200f\u202a-\u202e\u2066-\u2069"
+                       "\u00ad\u00a0\u2000-\u200a\u202f\u205f\u3000\U000e0000-\U000e007f]")
+# A STUDENT file may mention an IITGN faculty session only with its status beside it, because every
+# session is tentative until IIT Gandhinagar confirms it (data/programme/facts.yaml).
+FACULTY_MENTION = re.compile(r"[^.\n]*\b(IITGN faculty|faculty session|faculty block)\b[^.\n]*",
+                             re.IGNORECASE)
+DAYS_JSON = pathlib.Path(__file__).resolve().parent.parent / "data" / "programme" / "days.json"
 
 # Build weeks per the Structure tab: 3, 6 and 9 in this workbook, then 12 and 15 later in the
 # programme. They ship the build-week pack instead of the teaching manifest, so their folders differ.
@@ -51,8 +61,31 @@ BUILD_DIRS = {
 SAT_RECAP_DIRS = {"paper", "answer-key", "discussion", "internal"}
 
 
+# Week 0 is the baseline week: teaching-day folders plus the diagnostic papers and their keys.
+BASELINE_DIRS = TEACHING_DIRS | {"paper", "answer-key"}
+
+
+def day_kind(week, day_label):
+    """The day's kind from the synced calendar (teaching, saturday, build-week, baseline), or None."""
+    try:
+        plan = json.loads(DAYS_JSON.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    slot = "SAT" if day_label == "SAT" else f"D{int(day_label[1:])}"
+    for d in plan.get("days", []):
+        if d["week"] == f"W{week:02d}" and d["slot"] == slot:
+            return d["kind"]
+    return None
+
+
 def folder_shape(week, day_label):
     """Which subfolders this day folder is allowed to hold, and what to call the shape."""
+    kind = day_kind(week, day_label)
+    if kind == "baseline" or (kind is None and week == 0):
+        return "baseline day", BASELINE_DIRS
+    if kind == "teaching" and day_label == "SAT":
+        # A Saturday that teaches, which only Week 16 has, takes the teaching-day shape.
+        return "teaching day", TEACHING_DIRS
     if week in BUILD_WEEKS:
         return ("build day" if day_label != "SAT" else "build week Saturday"), BUILD_DIRS
     if day_label == "SAT":
@@ -249,10 +282,18 @@ def main():
                 print(f"FAIL  {name}: clock time found (durations only)"); fails += 1
             if "₹" in txt:
                 print(f"FAIL  {name}: rupee glyph (use Rs)"); fails += 1
+            hidden = INVISIBLE.findall(txt)
+            if hidden:
+                codes = ", ".join(sorted({f"U+{ord(c):04X}" for c in hidden}))
+                print(f"FAIL  {name}: invisible or exotic Unicode characters ({codes})"); fails += 1
             if student:
                 for nm in TRAINER_NAMES:
                     if re.search(r"\b" + nm + r"\b", txt):
                         print(f"FAIL  {name}: person name '{nm}' in a STUDENT file"); fails += 1
+                for m in FACULTY_MENTION.finditer(txt):
+                    if not re.search(r"\b(tentative|confirmed)\b", m.group(0), re.IGNORECASE):
+                        print(f"FAIL  {name}: an IITGN faculty session is mentioned without its "
+                              f"status: '{m.group(0).strip()[:80]}'"); fails += 1
                 if re.search(r"\b(marks|weightage|graded out of)\b", txt, re.IGNORECASE):
                     print(f"WARN  {name}: marks language in a STUDENT file; confirm the Structure tab allows it")
             for line in txt.splitlines():

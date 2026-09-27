@@ -1,6 +1,6 @@
 # W2 Data manipulation
 
-## Mon 05 Oct 2026 · SQL foundations · The revenue tree as queries the warehouse runs every Monday
+## Mon 12 Oct 2026 · SQL foundations · The revenue tree as queries the warehouse runs every Monday
 
 ### Business scenario of the day
 
@@ -104,7 +104,16 @@ https://www.pgtutorial.com/
 • Q6: last week's presence counter in one SQL line
 • Return question from Week 1 Thursday, one level up: the discount's 6 percent lift was a mix effect; say in one line what a fair comparison would need.
 
-## Tue 06 Oct 2026 · SQL joins and join semantics · Booked against collected: joining payments without lying
+### IITGN faculty session (TENTATIVE)
+
+TENTATIVE · IITGN faculty session W2-1 · 120 min · faculty to be confirmed by IITGN.
+TOPIC: From the shuffle to the sampling distribution: random variables, the sampling distribution of a mean, the standard error, and the central limit theorem.
+PICKS UP WHERE THE ROW STOPS: Week 1 Thursday ran the permutation test concept-first and stopped before the t-test family, the construction of a confidence interval and power, naming each as later. This three-session block is that later, and it runs beside the SQL days without sharing their tooling.
+CONNECTS TO KALPA: the 5,000 shuffles on the Retail-Plus gap are a sampling distribution the room has already drawn.
+BY THE END: a learner can say what a standard error is, why sample means pile up in a bell shape, and why twelve Student orders give a wide one.
+DOES NOT REPEAT: the meaning of a p-value, which the room has stated correctly since Week 1.
+
+## Tue 13 Oct 2026 · SQL joins and join semantics · Booked against collected: joining payments without lying
 
 ### Business scenario of the day
 
@@ -206,7 +215,16 @@ https://pgexercises.com/
 • Q6: HAVING COUNT(*) > 1 on payments grouped by order finds what
 • Return question from Monday, one level up: WHERE against HAVING, one sentence each.
 
-## Wed 07 Oct 2026 · SQL window functions · Top members, falling spend, and the running total against plan
+### IITGN faculty session (TENTATIVE)
+
+TENTATIVE · IITGN faculty session W2-2 · 120 min · faculty to be confirmed by IITGN.
+TOPIC: Confidence intervals and the t-test family: an interval for a mean and for a proportion; one-sample, two-sample and paired t-tests; the chi-square test at recognition depth; choosing the right test.
+PICKS UP WHERE THE ROW STOPS: Week 1 Thursday named the confidence interval and the t-test and built neither.
+CONNECTS TO KALPA: the Retail-Plus gap and the Student segment's 40 percent on twelve orders each get an interval.
+BY THE END: a learner can build and read a 95 percent interval, pick a test from the shape of the data, and say what the interval adds to the p-value.
+DOES NOT REPEAT: the shuffle test itself.
+
+## Wed 14 Oct 2026 · SQL window functions · Top members, falling spend, and the running total against plan
 
 ### Business scenario of the day
 
@@ -307,7 +325,16 @@ https://sqlbolt.com/
 • Q6: the business wants ties ranked the same; which function and why
 • Return question from Tuesday, one level up: your LEFT join grew rows; name the cause and the check.
 
-## Thu 08 Oct 2026 · pandas groupby, merge and reshape · The customer table Marketing refreshes every Monday
+### IITGN faculty session (TENTATIVE)
+
+TENTATIVE · IITGN faculty session W2-3 · 120 min · faculty to be confirmed by IITGN.
+TOPIC: Errors, power and sample size: Type I and Type II errors, power, the sample size a comparison needs, multiple comparisons, and statistical against practical significance.
+PICKS UP WHERE THE ROW STOPS: Week 1 Thursday gave a rule of thumb of thirty observations and stopped before power.
+CONNECTS TO KALPA: how many Student orders Meera would need before she could trust 40 percent; marketing testing ten segments and finding one that looks significant.
+BY THE END: a learner can size a comparison roughly, and can explain why testing many segments manufactures findings. The block closes the statistics that ME1 draws on.
+DOES NOT REPEAT: correlation against causation, which the campaigns table already taught.
+
+## Thu 15 Oct 2026 · pandas groupby, merge and reshape · The customer table Marketing refreshes every Monday
 
 ### Business scenario of the day
 
@@ -410,7 +437,11 @@ https://pandas.pydata.org/docs/user_guide/index.html
 • Q6: the customer table has 1,000 rows and the merge returned 1,120; what happened
 • Return question from Wednesday, one level up: the business wants ties ranked the same; which function, and how many rows might the top fifty ship.
 
-## Fri 09 Oct 2026 · Excel for analysts · The number reaches the leadership deck, and the tool judgment behind it
+### IITGN faculty session (TENTATIVE)
+
+None today.
+
+## Fri 16 Oct 2026 · Excel for analysts · The number reaches the leadership deck, and the tool judgment behind it
 
 ### Business scenario of the day
 
@@ -512,7 +543,11 @@ https://support.microsoft.com/en-au/office/xlookup-function-b7fd680e-6d10-43e6-8
 • Q6: which of the week's steps must never be done in Excel, and why
 • Return question from Thursday, one level up: the merge returned 1,120 rows from 1,000 customers; what happened and which argument would have caught it.
 
-## Sat 10 Oct 2026 · Saturday recap · The pen-and-paper test, then the interview-answer discussion
+### IITGN faculty session (TENTATIVE)
+
+None today.
+
+## Sat 17 Oct 2026 · Saturday recap · The pen-and-paper test, then the interview-answer discussion
 
 ### Business scenario of the day
 
@@ -525,10 +560,11 @@ Saying the fortnight out loud is the interview skill itself.
 ### Trainer agenda
 
 Four hours, no new content.
-1. Weekly recap test: pen and paper, AI-free, built from the week's question set, short-answer format (120 min).
+1. Recap paper: pen and paper, AI-free, objective, from the 'Saturday papers' tab (120 min).
 2. Break (20 min).
-3. Solution discussion led by the Academic TA: papers swapped for peer cross-evaluation, every answer discussed as an interview answer, random call-outs throughout (75 min).
-4. Doubt clearing and the bridge: Build 1 opens Monday in Kalpa Health; the method transfers, the domain does not (25 min).
+3. Marking: papers swapped and marked against the key, read out by the Academic TA (15 min).
+4. Solution discussion led by the Academic TA: the most-missed items first, then the interview anchors answered aloud as interview answers, with random call-outs (60 min).
+5. Doubt clearing and the bridge: Build 1 opens Monday in Kalpa Health; the method transfers, the domain does not (25 min).
 
 ### Learner outcome
 
@@ -538,7 +574,7 @@ STATUS: ungraded; a performance indicator, never a marks component.
 
 ### Subtopics (technique in service of the scenario)
 
-THE QUESTION SET (questions only; answers are built at the detailing phase):
+THE INTERVIEW ANCHORS (questions only):
 • [S] WHERE against HAVING, one sentence each.
 • [S] INNER against LEFT join: what does each drop or keep?
 • [S] RANK, DENSE_RANK and ROW_NUMBER on a tie.
@@ -553,9 +589,10 @@ Tags: [S] staple asked everywhere · [F] frequent in GCC and product screens · 
 
 ### Trainer notes
 
-FORMAT: the paper is built from this row's question set, framed for short answers so peer cross-checking works; answers themselves are written at the detailing phase.
-DISCUSSION: papers swap for peer cross-evaluation; the Academic TA leads the solution walk-through as an interview-answer discussion, with random call-outs throughout.
-STATUS: ungraded, a performance indicator rather than a marks component, and AI-free by format.
+FORMAT: an objective paper from the 'Saturday papers' tab: fill in the blank, true or false, one correct option, more than one correct option, scenario sets, applied maths and ordering, graded easy, medium and hard. Print the Item column only; the key, tag, role and anchor columns stay with the team.
+MARKING: papers swap and are marked against the key, so a score is comparable across the room and from week to week.
+DISCUSSION: the Academic TA opens with the most-missed items, then asks the interview anchors aloud as interview answers, with random call-outs.
+STATUS: ungraded, AI-free by format; a performance indicator.
 
 ### Client zero data (TRAINER ONLY)
 
@@ -563,9 +600,17 @@ Answers cite Kalpa's own numbers from the fortnight. The findings are discussed;
 
 ### In-session exercises
 
-• The two-hour recap test on paper.
-• Peer cross-evaluation against the discussed solution.
-• Random call-outs: the called learner answers aloud in sixty seconds.
+THE PAPER: objective, pen and paper, AI-free: 58 items for a 120-minute slot (119.5 minutes at the assumed pace); items and key in the 'Saturday papers' tab.
+• Fill in the blank: 9 items
+• True or false: 8 items
+• One correct option: 15 items
+• More than one correct option: 7 items
+• Scenario sets, each on one Kalpa situation: 12 items in 3 sets
+• Applied maths, with the working shown: 5 items
+• Order the steps: 2 items
+• Difficulty: 14 easy, 34 medium, 10 hard. Roles served: BA, DS, FDE.
+• Marking a peer's paper against the key.
+• Random call-outs on the interview anchors: sixty seconds each.
 
 ### After-class tasks
 
@@ -577,9 +622,11 @@ The question set in the Subtopics column is the interview set for the week.
 
 ### Trainer resources
 
-• This row's question set is the paper's source; the weekday interview columns calibrate difficulty.
+• The 'Saturday papers' tab holds the items and the key; this row's anchors are the source for the discussion.
 • GeeksforGeeks, Data Analyst interview questions (verified 03 Sep 2026):
 https://www.geeksforgeeks.org/data-analysis/data-analyst-interview-questions-and-answers/
+• GeeksforGeeks, SQL interview questions, for the anchors' calibration (verified 19 Sep 2026):
+https://www.geeksforgeeks.org/sql/sql-interview-questions/
 
 ### Student references
 
@@ -589,3 +636,7 @@ https://sqlbolt.com/
 ### Kahoot quiz plan
 
 None. The recap test and the discussion replace the quiz today.
+
+### IITGN faculty session (TENTATIVE)
+
+None. The Saturday block is the recap paper.

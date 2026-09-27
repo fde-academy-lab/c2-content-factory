@@ -1,0 +1,1767 @@
+{
+ "generated_by": "scripts/sync_programme.py",
+ "as_of": "2026-09-27",
+ "weeks": [
+  {
+   "week": "W00",
+   "number": 0,
+   "monday": "2026-09-28",
+   "saturday": "2026-10-03",
+   "span": "28 Sep to 03 Oct 2026",
+   "kind": "baseline",
+   "label": "Week 0: baseline and the engineer's way of working",
+   "module": null,
+   "faculty_sessions": 0
+  },
+  {
+   "week": "W01",
+   "number": 1,
+   "monday": "2026-10-05",
+   "saturday": "2026-10-10",
+   "span": "05 Oct to 10 Oct 2026",
+   "kind": "teaching",
+   "label": "Data analysis foundations",
+   "module": "M1",
+   "faculty_sessions": 0
+  },
+  {
+   "week": "W02",
+   "number": 2,
+   "monday": "2026-10-12",
+   "saturday": "2026-10-17",
+   "span": "12 Oct to 17 Oct 2026",
+   "kind": "teaching",
+   "label": "Data manipulation at depth",
+   "module": "M1",
+   "faculty_sessions": 3
+  },
+  {
+   "week": "W03",
+   "number": 3,
+   "monday": "2026-10-19",
+   "saturday": "2026-10-24",
+   "span": "19 Oct to 24 Oct 2026",
+   "kind": "build-week",
+   "label": "BUILD 1: Data-to-Insight",
+   "module": "M1",
+   "faculty_sessions": 0
+  },
+  {
+   "week": "W04",
+   "number": 4,
+   "monday": "2026-10-26",
+   "saturday": "2026-10-31",
+   "span": "26 Oct to 31 Oct 2026",
+   "kind": "teaching",
+   "label": "Business and data analyst craft",
+   "module": "M2",
+   "faculty_sessions": 4
+  },
+  {
+   "week": "W05",
+   "number": 5,
+   "monday": "2026-11-02",
+   "saturday": "2026-11-07",
+   "span": "02 Nov to 07 Nov 2026",
+   "kind": "teaching",
+   "label": "Machine learning core + ME1",
+   "module": "M2",
+   "faculty_sessions": 5
+  },
+  {
+   "week": "W06",
+   "number": 6,
+   "monday": "2026-11-09",
+   "saturday": "2026-11-14",
+   "span": "09 Nov to 14 Nov 2026",
+   "kind": "build-week",
+   "label": "BUILD 2: ML mini",
+   "module": "M2",
+   "faculty_sessions": 0
+  },
+  {
+   "week": "W07",
+   "number": 7,
+   "monday": "2026-11-16",
+   "saturday": "2026-11-21",
+   "span": "16 Nov to 21 Nov 2026",
+   "kind": "teaching",
+   "label": "Deep learning essentials",
+   "module": "M3",
+   "faculty_sessions": 5
+  },
+  {
+   "week": "W08",
+   "number": 8,
+   "monday": "2026-11-23",
+   "saturday": "2026-11-28",
+   "span": "23 Nov to 28 Nov 2026",
+   "kind": "teaching",
+   "label": "Transformers and LLM internals",
+   "module": "M4",
+   "faculty_sessions": 4
+  },
+  {
+   "week": "W09",
+   "number": 9,
+   "monday": "2026-11-30",
+   "saturday": "2026-12-05",
+   "span": "30 Nov to 05 Dec 2026",
+   "kind": "build-week",
+   "label": "BUILD 3: DL / LLM mini",
+   "module": "M3",
+   "faculty_sessions": 0
+  },
+  {
+   "week": "W10",
+   "number": 10,
+   "monday": "2026-12-07",
+   "saturday": "2026-12-12",
+   "span": "07 Dec to 12 Dec 2026",
+   "kind": "teaching",
+   "label": "Generative AI applied + ME2",
+   "module": "M5",
+   "faculty_sessions": 4
+  },
+  {
+   "week": "W11",
+   "number": 11,
+   "monday": "2026-12-14",
+   "saturday": "2026-12-19",
+   "span": "14 Dec to 19 Dec 2026",
+   "kind": "teaching",
+   "label": "Retrieval-augmented generation",
+   "module": "M6",
+   "faculty_sessions": 5
+  },
+  {
+   "week": "W12",
+   "number": 12,
+   "monday": "2026-12-21",
+   "saturday": "2026-12-26",
+   "span": "21 Dec to 26 Dec 2026",
+   "kind": "build-week",
+   "label": "BUILD 4: RAG mini",
+   "module": "M6",
+   "faculty_sessions": 0
+  },
+  {
+   "week": "W13",
+   "number": 13,
+   "monday": "2026-12-28",
+   "saturday": "2027-01-02",
+   "span": "28 Dec to 02 Jan 2027",
+   "kind": "teaching",
+   "label": "AI agents",
+   "module": "M8",
+   "faculty_sessions": 0
+  },
+  {
+   "week": "W14",
+   "number": 14,
+   "monday": "2027-01-04",
+   "saturday": "2027-01-09",
+   "span": "04 Jan to 09 Jan 2027",
+   "kind": "teaching",
+   "label": "Agents in production",
+   "module": "M7",
+   "faculty_sessions": 0
+  },
+  {
+   "week": "W15",
+   "number": 15,
+   "monday": "2027-01-11",
+   "saturday": "2027-01-16",
+   "span": "11 Jan to 16 Jan 2027",
+   "kind": "build-week",
+   "label": "BUILD 5: Agentic mini",
+   "module": "M9",
+   "faculty_sessions": 0
+  },
+  {
+   "week": "W16",
+   "number": 16,
+   "monday": "2027-01-18",
+   "saturday": "2027-01-23",
+   "span": "18 Jan to 23 Jan 2027",
+   "kind": "teaching",
+   "label": "Major Exam 3, then forward deployed engineering: design to deployment + capstone announced",
+   "module": "M7",
+   "faculty_sessions": 0
+  },
+  {
+   "week": "W17",
+   "number": 17,
+   "monday": "2027-01-25",
+   "saturday": "2027-01-30",
+   "span": "25 Jan to 30 Jan 2027",
+   "kind": "capstone",
+   "label": "Capstone sprint 1: frame, propose, walking skeleton",
+   "module": "M10",
+   "faculty_sessions": 0
+  },
+  {
+   "week": "W18",
+   "number": 18,
+   "monday": "2027-02-01",
+   "saturday": "2027-02-06",
+   "span": "01 Feb to 06 Feb 2027",
+   "kind": "capstone",
+   "label": "Capstone sprint 2: the core, built and measured",
+   "module": "M10",
+   "faculty_sessions": 0
+  },
+  {
+   "week": "W19",
+   "number": 19,
+   "monday": "2027-02-08",
+   "saturday": "2027-02-13",
+   "span": "08 Feb to 13 Feb 2027",
+   "kind": "capstone",
+   "label": "Capstone sprint 3: harden, deploy, document, rehearse",
+   "module": "M10",
+   "faculty_sessions": 0
+  },
+  {
+   "week": "W20",
+   "number": 20,
+   "monday": "2027-02-15",
+   "saturday": "2027-02-20",
+   "span": "15 Feb to 20 Feb 2027",
+   "kind": "capstone",
+   "label": "Capstone demo and panel defence + closure",
+   "module": "M10",
+   "faculty_sessions": 0
+  }
+ ],
+ "days": [
+  {
+   "week": "W00",
+   "slot": "D1",
+   "date": "2026-09-28",
+   "label": "Mon 28 Sep",
+   "weekday": "Mon",
+   "kind": "baseline",
+   "topic": "Arrive and set up",
+   "focus": "Check-in, the welcome, the environment and the self-rating",
+   "module": null,
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W00",
+   "slot": "D2",
+   "date": "2026-09-29",
+   "label": "Tue 29 Sep",
+   "weekday": "Tue",
+   "kind": "baseline",
+   "topic": "The diagnostic",
+   "focus": "Four papers by topic, marked against keys the same day",
+   "module": null,
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W00",
+   "slot": "D3",
+   "date": "2026-09-30",
+   "label": "Wed 30 Sep",
+   "weekday": "Wed",
+   "kind": "baseline",
+   "topic": "Python brush-up + business problem framing",
+   "focus": "What the warden actually wants",
+   "module": null,
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W00",
+   "slot": "D4",
+   "date": "2026-10-01",
+   "label": "Thu 01 Oct",
+   "weekday": "Thu",
+   "kind": "baseline",
+   "topic": "SQL brush-up + solution thinking",
+   "focus": "Three options, two ruled out, one thin first version",
+   "module": null,
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W00",
+   "slot": "FRI",
+   "date": "2026-10-02",
+   "label": "Fri 02 Oct",
+   "weekday": "Fri",
+   "kind": "holiday",
+   "topic": "",
+   "focus": "Gandhi Jayanti: institute holiday, no session",
+   "module": null,
+   "holiday": "Gandhi Jayanti",
+   "faculty": []
+  },
+  {
+   "week": "W00",
+   "slot": "SAT",
+   "date": "2026-10-03",
+   "label": "Sat 03 Oct",
+   "weekday": "Sat",
+   "kind": "baseline",
+   "topic": "Sign-off",
+   "focus": "Project talks, the last one-to-ones, the industry leader session, Week 1 readiness",
+   "module": null,
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W01",
+   "slot": "D1",
+   "date": "2026-10-05",
+   "label": "Mon 05 Oct",
+   "weekday": "Mon",
+   "kind": "teaching",
+   "topic": "Python through data",
+   "focus": "The revenue tree and the first honest numbers",
+   "module": "M1",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W01",
+   "slot": "D2",
+   "date": "2026-10-06",
+   "label": "Tue 06 Oct",
+   "weekday": "Tue",
+   "kind": "teaching",
+   "topic": "Python through data + descriptive statistics",
+   "focus": "Which lever moved? The sales-drop investigation",
+   "module": "M1",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W01",
+   "slot": "D3",
+   "date": "2026-10-07",
+   "label": "Wed 07 Oct",
+   "weekday": "Wed",
+   "kind": "teaching",
+   "topic": "Python through data",
+   "focus": "Can we trust the numbers? Profile, clean, reconcile, recompute",
+   "module": "M1",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W01",
+   "slot": "D4",
+   "date": "2026-10-08",
+   "label": "Thu 08 Oct",
+   "weekday": "Thu",
+   "kind": "teaching",
+   "topic": "Hypothesis testing and inference + correlation vs causation + insight communication",
+   "focus": "Real or noise, cause or coincidence, and the one-page note",
+   "module": "M1",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W01",
+   "slot": "D5",
+   "date": "2026-10-09",
+   "label": "Fri 09 Oct",
+   "weekday": "Fri",
+   "kind": "teaching",
+   "topic": "AI-free lab and the growth-review rehearsal",
+   "focus": "The week rebuilt alone, and the note defended aloud",
+   "module": "M1",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W01",
+   "slot": "SAT",
+   "date": "2026-10-10",
+   "label": "Sat 10 Oct",
+   "weekday": "Sat",
+   "kind": "saturday",
+   "topic": "Saturday recap",
+   "focus": "The pen-and-paper test, then the interview-answer discussion",
+   "module": "M1",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W02",
+   "slot": "D1",
+   "date": "2026-10-12",
+   "label": "Mon 12 Oct",
+   "weekday": "Mon",
+   "kind": "teaching",
+   "topic": "SQL foundations",
+   "focus": "The revenue tree as queries the warehouse runs every Monday",
+   "module": "M1",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W2-1",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W02",
+   "slot": "D2",
+   "date": "2026-10-13",
+   "label": "Tue 13 Oct",
+   "weekday": "Tue",
+   "kind": "teaching",
+   "topic": "SQL joins and join semantics",
+   "focus": "Booked against collected: joining payments without lying",
+   "module": "M1",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W2-2",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W02",
+   "slot": "D3",
+   "date": "2026-10-14",
+   "label": "Wed 14 Oct",
+   "weekday": "Wed",
+   "kind": "teaching",
+   "topic": "SQL window functions",
+   "focus": "Top members, falling spend, and the running total against plan",
+   "module": "M1",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W2-3",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W02",
+   "slot": "D4",
+   "date": "2026-10-15",
+   "label": "Thu 15 Oct",
+   "weekday": "Thu",
+   "kind": "teaching",
+   "topic": "pandas groupby, merge and reshape",
+   "focus": "The customer table Marketing refreshes every Monday",
+   "module": "M1",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W02",
+   "slot": "D5",
+   "date": "2026-10-16",
+   "label": "Fri 16 Oct",
+   "weekday": "Fri",
+   "kind": "teaching",
+   "topic": "Excel for analysts",
+   "focus": "The number reaches the leadership deck, and the tool judgment behind it",
+   "module": "M1",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W02",
+   "slot": "SAT",
+   "date": "2026-10-17",
+   "label": "Sat 17 Oct",
+   "weekday": "Sat",
+   "kind": "saturday",
+   "topic": "Saturday recap",
+   "focus": "The pen-and-paper test, then the interview-answer discussion",
+   "module": "M1",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W03",
+   "slot": "D1",
+   "date": "2026-10-19",
+   "label": "Mon 19 Oct",
+   "weekday": "Mon",
+   "kind": "build-week",
+   "topic": "Build 1",
+   "focus": "Online project introduction; groups scope their Kalpa Health sub-problem",
+   "module": "M1",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W03",
+   "slot": "TUE",
+   "date": "2026-10-20",
+   "label": "Tue 20 Oct",
+   "weekday": "Tue",
+   "kind": "holiday",
+   "topic": "",
+   "focus": "Dussehra (Vijaya Dashami): gazetted holiday, no session",
+   "module": "M1",
+   "holiday": "Dussehra (Vijaya Dashami)",
+   "faculty": []
+  },
+  {
+   "week": "W03",
+   "slot": "D3",
+   "date": "2026-10-21",
+   "label": "Wed 21 Oct",
+   "weekday": "Wed",
+   "kind": "build-week",
+   "topic": "Build 1",
+   "focus": "Build days two and three in one: profile, clean, reconcile, and the headline claim",
+   "module": "M1",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W03",
+   "slot": "D4",
+   "date": "2026-10-22",
+   "label": "Thu 22 Oct",
+   "weekday": "Thu",
+   "kind": "build-week",
+   "topic": "Build 1",
+   "focus": "Mock R1 opens; build completion",
+   "module": "M1",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W03",
+   "slot": "D5",
+   "date": "2026-10-23",
+   "label": "Fri 23 Oct",
+   "weekday": "Fri",
+   "kind": "build-week",
+   "topic": "Build 1",
+   "focus": "Expert day one: GDs at thirty minutes per group, first presentations",
+   "module": "M1",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W03",
+   "slot": "SAT",
+   "date": "2026-10-24",
+   "label": "Sat 24 Oct",
+   "weekday": "Sat",
+   "kind": "build-week",
+   "topic": "Build 1",
+   "focus": "Expert day two plus the flown-in leader: presentations, defence, grade closure",
+   "module": "M1",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W04",
+   "slot": "D1",
+   "date": "2026-10-26",
+   "label": "Mon 26 Oct",
+   "weekday": "Mon",
+   "kind": "teaching",
+   "topic": "Business metric design",
+   "focus": "The number the growth plan chases, and what stops it being gamed",
+   "module": "M2",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W4-1",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W04",
+   "slot": "D2",
+   "date": "2026-10-27",
+   "label": "Tue 27 Oct",
+   "weekday": "Tue",
+   "kind": "teaching",
+   "topic": "Stakeholder communication",
+   "focus": "One slide, five minutes, three people paid to disagree; then the first guesstimate",
+   "module": "M2",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W04",
+   "slot": "D3",
+   "date": "2026-10-28",
+   "label": "Wed 28 Oct",
+   "weekday": "Wed",
+   "kind": "teaching",
+   "topic": "Market basket, lift and cross-sell",
+   "focus": "Which pairs lift frequency, and what each is worth",
+   "module": "M2",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W4-2",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W04",
+   "slot": "D4",
+   "date": "2026-10-29",
+   "label": "Thu 29 Oct",
+   "weekday": "Thu",
+   "kind": "teaching",
+   "topic": "Cohort and funnel",
+   "focus": "Why Retail-Plus frequency fell, and where the loss actually happens",
+   "module": "M2",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W4-3",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W04",
+   "slot": "D5",
+   "date": "2026-10-30",
+   "label": "Fri 30 Oct",
+   "weekday": "Fri",
+   "kind": "teaching",
+   "topic": "Forecasting basics",
+   "focus": "How much the plan delivers, against a baseline that is hard to beat",
+   "module": "M2",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W4-4",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W04",
+   "slot": "SAT",
+   "date": "2026-10-31",
+   "label": "Sat 31 Oct",
+   "weekday": "Sat",
+   "kind": "saturday",
+   "topic": "Saturday",
+   "focus": "Cross-domain transfer drill, then the recap test and discussion",
+   "module": "M2",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W05",
+   "slot": "D1",
+   "date": "2026-11-02",
+   "label": "Mon 02 Nov",
+   "weekday": "Mon",
+   "kind": "teaching",
+   "topic": "Regression and classification",
+   "focus": "Framing the propensity model, and the baseline it has to beat",
+   "module": "M2",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W5-1",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W05",
+   "slot": "D2",
+   "date": "2026-11-03",
+   "label": "Tue 03 Nov",
+   "weekday": "Tue",
+   "kind": "teaching",
+   "topic": "The metric trap",
+   "focus": "Scoring the model the way the business will judge it, in two businesses",
+   "module": "M2",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W5-2",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W05",
+   "slot": "D3",
+   "date": "2026-11-04",
+   "label": "Wed 04 Nov",
+   "weekday": "Wed",
+   "kind": "teaching",
+   "topic": "Feature engineering and leakage",
+   "focus": "What the model is allowed to know",
+   "module": "M2",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W5-3",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W05",
+   "slot": "D4",
+   "date": "2026-11-05",
+   "label": "Thu 05 Nov",
+   "weekday": "Thu",
+   "kind": "teaching",
+   "topic": "Overfitting and regularisation",
+   "focus": "Generalise or memorise, and the honest tuned model",
+   "module": "M2",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W5-4",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W05",
+   "slot": "D5",
+   "date": "2026-11-06",
+   "label": "Fri 06 Nov",
+   "weekday": "Fri",
+   "kind": "teaching",
+   "topic": "Model justification",
+   "focus": "The committee memo, and what transfers to Kalpa Financial",
+   "module": "M2",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W5-5",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W05",
+   "slot": "SAT",
+   "date": "2026-11-07",
+   "label": "Sat 07 Nov",
+   "weekday": "Sat",
+   "kind": "saturday",
+   "topic": "Saturday",
+   "focus": "Revision, the recap test, and the ME1 window",
+   "module": "M2",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W06",
+   "slot": "MON",
+   "date": "2026-11-09",
+   "label": "Mon 09 Nov",
+   "weekday": "Mon",
+   "kind": "holiday",
+   "topic": "",
+   "focus": "Diwali: Monday off, no session",
+   "module": "M2",
+   "holiday": "the Monday after Diwali",
+   "faculty": []
+  },
+  {
+   "week": "W06",
+   "slot": "D2",
+   "date": "2026-11-10",
+   "label": "Tue 10 Nov",
+   "weekday": "Tue",
+   "kind": "build-week",
+   "topic": "Build 2",
+   "focus": "Online project introduction; groups frame their Kalpa Financial sub-problem",
+   "module": "M2",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W06",
+   "slot": "D3",
+   "date": "2026-11-11",
+   "label": "Wed 11 Nov",
+   "weekday": "Wed",
+   "kind": "build-week",
+   "topic": "Build 2",
+   "focus": "Build days two and three in one: the metric chosen, baselines beaten honestly, and the recommendation",
+   "module": "M2",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W06",
+   "slot": "D4",
+   "date": "2026-11-12",
+   "label": "Thu 12 Nov",
+   "weekday": "Thu",
+   "kind": "build-week",
+   "topic": "Build 2",
+   "focus": "Mock R2 opens; build completion",
+   "module": "M2",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W06",
+   "slot": "D5",
+   "date": "2026-11-13",
+   "label": "Fri 13 Nov",
+   "weekday": "Fri",
+   "kind": "build-week",
+   "topic": "Build 2",
+   "focus": "Expert day one: GDs at thirty minutes per group, first presentations",
+   "module": "M2",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W06",
+   "slot": "SAT",
+   "date": "2026-11-14",
+   "label": "Sat 14 Nov",
+   "weekday": "Sat",
+   "kind": "build-week",
+   "topic": "Build 2",
+   "focus": "Expert day two plus the flown-in leader: presentations, defence, grade closure",
+   "module": "M2",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W07",
+   "slot": "D1",
+   "date": "2026-11-16",
+   "label": "Mon 16 Nov",
+   "weekday": "Mon",
+   "kind": "teaching",
+   "topic": "Neuron, network and activation functions",
+   "focus": "The first network, and whether it earns the text",
+   "module": "M3",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W7-1",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W07",
+   "slot": "D2",
+   "date": "2026-11-17",
+   "label": "Tue 17 Nov",
+   "weekday": "Tue",
+   "kind": "teaching",
+   "topic": "Backprop intuition, optimisers and training",
+   "focus": "Making the abandoned loop learn",
+   "module": "M3",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W7-2",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W07",
+   "slot": "D3",
+   "date": "2026-11-18",
+   "label": "Wed 18 Nov",
+   "weekday": "Wed",
+   "kind": "teaching",
+   "topic": "Training dynamics and debugging a run",
+   "focus": "Diagnose, then stabilise, then reproduce",
+   "module": "M3",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W7-3",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W07",
+   "slot": "D4",
+   "date": "2026-11-19",
+   "label": "Thu 19 Nov",
+   "weekday": "Thu",
+   "kind": "teaching",
+   "topic": "Sequence models and the bridge to next-token prediction",
+   "focus": "Reviews as sequences, and why attention won",
+   "module": "M3",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W7-4",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W07",
+   "slot": "D5",
+   "date": "2026-11-20",
+   "label": "Fri 20 Nov",
+   "weekday": "Fri",
+   "kind": "teaching",
+   "topic": "Tokenization",
+   "focus": "What a ticket costs, and why the vendor bills by the token",
+   "module": "M4",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W7-5",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W07",
+   "slot": "SAT",
+   "date": "2026-11-21",
+   "label": "Sat 21 Nov",
+   "weekday": "Sat",
+   "kind": "saturday",
+   "topic": "Saturday recap",
+   "focus": "The pen-and-paper test, then the interview-answer discussion",
+   "module": "M3",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W08",
+   "slot": "D1",
+   "date": "2026-11-23",
+   "label": "Mon 23 Nov",
+   "weekday": "Mon",
+   "kind": "teaching",
+   "topic": "Attention, self-attention and the transformer block",
+   "focus": "How the model knows which 'it' the customer means",
+   "module": "M4",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W8-1",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W08",
+   "slot": "TUE",
+   "date": "2026-11-24",
+   "label": "Tue 24 Nov",
+   "weekday": "Tue",
+   "kind": "holiday",
+   "topic": "",
+   "focus": "Guru Nanak Jayanti: gazetted holiday, no session",
+   "module": "M4",
+   "holiday": "Guru Nanak Jayanti",
+   "faculty": []
+  },
+  {
+   "week": "W08",
+   "slot": "D3",
+   "date": "2026-11-25",
+   "label": "Wed 25 Nov",
+   "weekday": "Wed",
+   "kind": "teaching",
+   "topic": "Embeddings, with BERT against GPT",
+   "focus": "Finding the five tickets most like this one, and which model family does the finding",
+   "module": "M4",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W8-2",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W08",
+   "slot": "D4",
+   "date": "2026-11-26",
+   "label": "Thu 26 Nov",
+   "weekday": "Thu",
+   "kind": "teaching",
+   "topic": "Decoding controls",
+   "focus": "Making the draft reply repeatable, and stopping it inventing",
+   "module": "M4",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W8-3",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W08",
+   "slot": "D5",
+   "date": "2026-11-27",
+   "label": "Fri 27 Nov",
+   "weekday": "Fri",
+   "kind": "teaching",
+   "topic": "Context windows and the token economy",
+   "focus": "The cost model for the auto-reply at scale",
+   "module": "M4",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W8-4",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W08",
+   "slot": "SAT",
+   "date": "2026-11-28",
+   "label": "Sat 28 Nov",
+   "weekday": "Sat",
+   "kind": "saturday",
+   "topic": "Saturday recap",
+   "focus": "The pen-and-paper test, then the interview-answer discussion",
+   "module": "M4",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W09",
+   "slot": "D1",
+   "date": "2026-11-30",
+   "label": "Mon 30 Nov",
+   "weekday": "Mon",
+   "kind": "build-week",
+   "topic": "Build 3",
+   "focus": "Online project introduction; the guided NLP track opens; groups scope their Kalpa Connect sub-problem",
+   "module": "M3",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W09",
+   "slot": "D2",
+   "date": "2026-12-01",
+   "label": "Tue 01 Dec",
+   "weekday": "Tue",
+   "kind": "build-week",
+   "topic": "Build 3",
+   "focus": "Build day two: the no-LLM baseline on the board, then the first prompt under the contract",
+   "module": "M3",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W09",
+   "slot": "D3",
+   "date": "2026-12-02",
+   "label": "Wed 02 Dec",
+   "weekday": "Wed",
+   "kind": "build-week",
+   "topic": "Build 3",
+   "focus": "The AI-free debug drill, the catch-up reserve, then the build at pace",
+   "module": "M3",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W09",
+   "slot": "D4",
+   "date": "2026-12-03",
+   "label": "Thu 03 Dec",
+   "weekday": "Thu",
+   "kind": "build-week",
+   "topic": "Build 3",
+   "focus": "Mock R3 opens, with behavioural questioning; build completion",
+   "module": "M3",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W09",
+   "slot": "D5",
+   "date": "2026-12-04",
+   "label": "Fri 04 Dec",
+   "weekday": "Fri",
+   "kind": "build-week",
+   "topic": "Build 3",
+   "focus": "Expert day one: GDs at thirty minutes per group, first presentations",
+   "module": "M3",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W09",
+   "slot": "SAT",
+   "date": "2026-12-05",
+   "label": "Sat 05 Dec",
+   "weekday": "Sat",
+   "kind": "build-week",
+   "topic": "Build 3",
+   "focus": "Expert day two plus the flown-in leader: presentations, defence, grade closure, the two-month close",
+   "module": "M3",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W10",
+   "slot": "D1",
+   "date": "2026-12-07",
+   "label": "Mon 07 Dec",
+   "weekday": "Mon",
+   "kind": "teaching",
+   "topic": "Prompt techniques compared, and system prompts",
+   "focus": "Which prompt ships, proved on forty tickets",
+   "module": "M5",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W10-1",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W10",
+   "slot": "D2",
+   "date": "2026-12-08",
+   "label": "Tue 08 Dec",
+   "weekday": "Tue",
+   "kind": "teaching",
+   "topic": "Structured and constrained outputs",
+   "focus": "A contract the ticketing system can trust",
+   "module": "M5",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W10-2",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W10",
+   "slot": "D3",
+   "date": "2026-12-09",
+   "label": "Wed 09 Dec",
+   "weekday": "Wed",
+   "kind": "teaching",
+   "topic": "Function calling",
+   "focus": "The assistant looks the order up and stops guessing",
+   "module": "M5",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W10",
+   "slot": "D4",
+   "date": "2026-12-10",
+   "label": "Thu 10 Dec",
+   "weekday": "Thu",
+   "kind": "teaching",
+   "topic": "Prompt evaluation",
+   "focus": "A number every time the prompt changes",
+   "module": "M5",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W10-3",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W10",
+   "slot": "D5",
+   "date": "2026-12-11",
+   "label": "Fri 11 Dec",
+   "weekday": "Fri",
+   "kind": "teaching",
+   "topic": "Production cost and latency",
+   "focus": "Cheaper and faster, with the evaluation score beside every saving",
+   "module": "M5",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W10-4",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W10",
+   "slot": "SAT",
+   "date": "2026-12-12",
+   "label": "Sat 12 Dec",
+   "weekday": "Sat",
+   "kind": "saturday",
+   "topic": "Saturday",
+   "focus": "Revision, the recap test, and the ME2 window",
+   "module": "M5",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W11",
+   "slot": "D1",
+   "date": "2026-12-14",
+   "label": "Mon 14 Dec",
+   "weekday": "Mon",
+   "kind": "teaching",
+   "topic": "Chunking trade-offs",
+   "focus": "The first retrieval pipeline, and how the documents are cut",
+   "module": "M6",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W11-1",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W11",
+   "slot": "D2",
+   "date": "2026-12-15",
+   "label": "Tue 15 Dec",
+   "weekday": "Tue",
+   "kind": "teaching",
+   "topic": "Embedding and vector store choice",
+   "focus": "Where the vectors live, and who refreshes them",
+   "module": "M6",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W11-2",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W11",
+   "slot": "D3",
+   "date": "2026-12-16",
+   "label": "Wed 16 Dec",
+   "weekday": "Wed",
+   "kind": "teaching",
+   "topic": "Hybrid search and reranking",
+   "focus": "Exact codes, loose questions, and the right five pieces",
+   "module": "M6",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W11-3",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W11",
+   "slot": "D4",
+   "date": "2026-12-17",
+   "label": "Thu 17 Dec",
+   "weekday": "Thu",
+   "kind": "teaching",
+   "topic": "RAG evaluation",
+   "focus": "Was it the search or the model?",
+   "module": "M6",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W11-4",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W11",
+   "slot": "D5",
+   "date": "2026-12-18",
+   "label": "Fri 18 Dec",
+   "weekday": "Fri",
+   "kind": "teaching",
+   "topic": "Citations and grounding",
+   "focus": "Show the clause, say when the documents are silent, and catalogue the failures",
+   "module": "M6",
+   "holiday": null,
+   "faculty": [
+    {
+     "id": "W11-5",
+     "status": "tentative"
+    }
+   ]
+  },
+  {
+   "week": "W11",
+   "slot": "SAT",
+   "date": "2026-12-19",
+   "label": "Sat 19 Dec",
+   "weekday": "Sat",
+   "kind": "saturday",
+   "topic": "Saturday recap",
+   "focus": "The pen-and-paper test, then the interview-answer discussion",
+   "module": "M6",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W12",
+   "slot": "D1",
+   "date": "2026-12-21",
+   "label": "Mon 21 Dec",
+   "weekday": "Mon",
+   "kind": "build-week",
+   "topic": "Build 4",
+   "focus": "Online project introduction; groups scope their Kalpa Logistics desk and price their options",
+   "module": "M6",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W12",
+   "slot": "D2",
+   "date": "2026-12-22",
+   "label": "Tue 22 Dec",
+   "weekday": "Tue",
+   "kind": "build-week",
+   "topic": "Build 4",
+   "focus": "Build day two: the thin pipeline, the golden set and the first numbers",
+   "module": "M6",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W12",
+   "slot": "D3",
+   "date": "2026-12-23",
+   "label": "Wed 23 Dec",
+   "weekday": "Wed",
+   "kind": "build-week",
+   "topic": "Build 4",
+   "focus": "Build day three: measured improvement, the catch-up reserve, and Mock R4 opens",
+   "module": "M6",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W12",
+   "slot": "D4",
+   "date": "2026-12-24",
+   "label": "Thu 24 Dec",
+   "weekday": "Thu",
+   "kind": "build-week",
+   "topic": "Build 4",
+   "focus": "Expert day one, moved to Thursday: GDs at thirty minutes per group, Mock R4 continues, builds freeze",
+   "module": "M6",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W12",
+   "slot": "FRI",
+   "date": "2026-12-25",
+   "label": "Fri 25 Dec",
+   "weekday": "Fri",
+   "kind": "holiday",
+   "topic": "",
+   "focus": "Christmas Day: gazetted holiday, no session",
+   "module": "M6",
+   "holiday": "Christmas Day",
+   "faculty": []
+  },
+  {
+   "week": "W12",
+   "slot": "SAT",
+   "date": "2026-12-26",
+   "label": "Sat 26 Dec",
+   "weekday": "Sat",
+   "kind": "build-week",
+   "topic": "Build 4",
+   "focus": "Expert day two plus the flown-in leader: presentations, defence, grade closure",
+   "module": "M6",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W13",
+   "slot": "D1",
+   "date": "2026-12-28",
+   "label": "Mon 28 Dec",
+   "weekday": "Mon",
+   "kind": "teaching",
+   "topic": "Tool use and tool schema design",
+   "focus": "A tool set designed for a reader that sees only names and descriptions",
+   "module": "M8",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W13",
+   "slot": "D2",
+   "date": "2026-12-29",
+   "label": "Tue 29 Dec",
+   "weekday": "Tue",
+   "kind": "teaching",
+   "topic": "Agent patterns",
+   "focus": "The least autonomy that solves each pile of tickets",
+   "module": "M8",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W13",
+   "slot": "D3",
+   "date": "2026-12-30",
+   "label": "Wed 30 Dec",
+   "weekday": "Wed",
+   "kind": "teaching",
+   "topic": "Memory and state",
+   "focus": "The case that resumes tomorrow, and the limit that must not be forgotten",
+   "module": "M8",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W13",
+   "slot": "D4",
+   "date": "2026-12-31",
+   "label": "Thu 31 Dec",
+   "weekday": "Thu",
+   "kind": "teaching",
+   "topic": "Controlled flows",
+   "focus": "The refund limit becomes an edge that no sentence can move",
+   "module": "M8",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W13",
+   "slot": "D5",
+   "date": "2027-01-01",
+   "label": "Fri 01 Jan",
+   "weekday": "Fri",
+   "kind": "teaching",
+   "topic": "Agent failure modes",
+   "focus": "Three incidents, read from their traces",
+   "module": "M8",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W13",
+   "slot": "SAT",
+   "date": "2027-01-02",
+   "label": "Sat 02 Jan",
+   "weekday": "Sat",
+   "kind": "saturday",
+   "topic": "Saturday recap",
+   "focus": "The pen-and-paper test, then the interview-answer discussion",
+   "module": "M8",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W14",
+   "slot": "D1",
+   "date": "2027-01-04",
+   "label": "Mon 04 Jan",
+   "weekday": "Mon",
+   "kind": "teaching",
+   "topic": "Trajectory evaluation",
+   "focus": "Right answer, wrong route",
+   "module": "M7",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W14",
+   "slot": "D2",
+   "date": "2027-01-05",
+   "label": "Tue 05 Jan",
+   "weekday": "Tue",
+   "kind": "teaching",
+   "topic": "Guardrails",
+   "focus": "Four findings, four controls that hold when the model is wrong",
+   "module": "M7",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W14",
+   "slot": "D3",
+   "date": "2027-01-06",
+   "label": "Wed 06 Jan",
+   "weekday": "Wed",
+   "kind": "teaching",
+   "topic": "Reliability",
+   "focus": "An ordinary bad night costs nothing twice and loses nothing",
+   "module": "M7",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W14",
+   "slot": "D4",
+   "date": "2027-01-07",
+   "label": "Thu 07 Jan",
+   "weekday": "Thu",
+   "kind": "teaching",
+   "topic": "Cost, latency and quality",
+   "focus": "What a resolved ticket costs, step by step",
+   "module": "M7",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W14",
+   "slot": "D5",
+   "date": "2027-01-08",
+   "label": "Fri 08 Jan",
+   "weekday": "Fri",
+   "kind": "teaching",
+   "topic": "Deployment and observability",
+   "focus": "Beyond localhost, and the alert that fires when quality falls",
+   "module": "M7",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W14",
+   "slot": "SAT",
+   "date": "2027-01-09",
+   "label": "Sat 09 Jan",
+   "weekday": "Sat",
+   "kind": "saturday",
+   "topic": "Saturday recap",
+   "focus": "The pen-and-paper test, then the interview-answer discussion",
+   "module": "M7",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W15",
+   "slot": "D1",
+   "date": "2027-01-11",
+   "label": "Mon 11 Jan",
+   "weekday": "Mon",
+   "kind": "build-week",
+   "topic": "Build 5",
+   "focus": "Online project introduction; groups scope their Kalpa Retail agent and write its golden trajectories first",
+   "module": "M9",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W15",
+   "slot": "D2",
+   "date": "2027-01-12",
+   "label": "Tue 12 Jan",
+   "weekday": "Tue",
+   "kind": "build-week",
+   "topic": "Build 5",
+   "focus": "Build day two: the tool set and the controlled flow, one golden task end to end",
+   "module": "M9",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W15",
+   "slot": "D3",
+   "date": "2027-01-13",
+   "label": "Wed 13 Jan",
+   "weekday": "Wed",
+   "kind": "build-week",
+   "topic": "Build 5",
+   "focus": "Build day three: evaluated, guarded and deployed, plus the catch-up reserve",
+   "module": "M9",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W15",
+   "slot": "D4",
+   "date": "2027-01-14",
+   "label": "Thu 14 Jan",
+   "weekday": "Thu",
+   "kind": "build-week",
+   "topic": "Build 5",
+   "focus": "Mock R5 as a two-round simulation; build completion",
+   "module": "M9",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W15",
+   "slot": "D5",
+   "date": "2027-01-15",
+   "label": "Fri 15 Jan",
+   "weekday": "Fri",
+   "kind": "build-week",
+   "topic": "Build 5",
+   "focus": "Expert day one: GDs at thirty minutes per group, first presentations",
+   "module": "M9",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W15",
+   "slot": "SAT",
+   "date": "2027-01-16",
+   "label": "Sat 16 Jan",
+   "weekday": "Sat",
+   "kind": "build-week",
+   "topic": "Build 5",
+   "focus": "Expert day two plus the flown-in leader: presentations, defence, grade closure",
+   "module": "M9",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W16",
+   "slot": "D1",
+   "date": "2027-01-18",
+   "label": "Mon 18 Jan",
+   "weekday": "Mon",
+   "kind": "teaching",
+   "topic": "Major Exam 3, then client discovery",
+   "focus": "What Dr Menon needs, which is more than what she asked for",
+   "module": "M7",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W16",
+   "slot": "D2",
+   "date": "2027-01-19",
+   "label": "Tue 19 Jan",
+   "weekday": "Tue",
+   "kind": "teaching",
+   "topic": "Discovery closed, then options, trade-offs and a quantified recommendation",
+   "focus": "One signed page, three choices, two ruled out, one with numbers",
+   "module": "M7",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W16",
+   "slot": "D3",
+   "date": "2027-01-20",
+   "label": "Wed 20 Jan",
+   "weekday": "Wed",
+   "kind": "teaching",
+   "topic": "Solution architecture",
+   "focus": "Components, their wiring, and the assessed solution proposal",
+   "module": "M7",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W16",
+   "slot": "D4",
+   "date": "2027-01-21",
+   "label": "Thu 21 Jan",
+   "weekday": "Thu",
+   "kind": "teaching",
+   "topic": "Deployment, part one",
+   "focus": "From a laptop to a container anyone can run",
+   "module": "M7",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W16",
+   "slot": "D5",
+   "date": "2027-01-22",
+   "label": "Fri 22 Jan",
+   "weekday": "Fri",
+   "kind": "teaching",
+   "topic": "Deployment, part two",
+   "focus": "The pipeline, the release, the rollback and the upgrade",
+   "module": "M7",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W16",
+   "slot": "SAT",
+   "date": "2027-01-23",
+   "label": "Sat 23 Jan",
+   "weekday": "Sat",
+   "kind": "teaching",
+   "topic": "Security, responsible AI and testing",
+   "focus": "Then the capstone is announced",
+   "module": "M7",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W17",
+   "slot": "WEEK",
+   "date": "2027-01-25",
+   "label": "Mon 25 Jan to Sat 30 Jan",
+   "weekday": "Mon",
+   "kind": "capstone",
+   "topic": "Capstone",
+   "focus": "Frame, propose, walking skeleton",
+   "module": "M10",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W18",
+   "slot": "WEEK",
+   "date": "2027-02-01",
+   "label": "Mon 01 Feb to Sat 06 Feb",
+   "weekday": "Mon",
+   "kind": "capstone",
+   "topic": "Capstone",
+   "focus": "Build the core, measured",
+   "module": "M10",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W19",
+   "slot": "WEEK",
+   "date": "2027-02-08",
+   "label": "Mon 08 Feb to Sat 13 Feb",
+   "weekday": "Mon",
+   "kind": "capstone",
+   "topic": "Capstone",
+   "focus": "Harden, deploy, document, rehearse",
+   "module": "M10",
+   "holiday": null,
+   "faculty": []
+  },
+  {
+   "week": "W20",
+   "slot": "WEEK",
+   "date": "2027-02-15",
+   "label": "Mon 15 Feb to Sat 20 Feb",
+   "weekday": "Mon",
+   "kind": "capstone",
+   "topic": "Capstone",
+   "focus": "Demo, defence, closure",
+   "module": "M10",
+   "holiday": null,
+   "faculty": []
+  }
+ ]
+}

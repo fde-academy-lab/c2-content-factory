@@ -60,3 +60,7 @@ The take-home asks learners to regenerate the data and rebuild. That changes the
 and therefore every number in their own earlier work for the week. It is deliberate, since a
 deliverable that cannot survive a refresh is the thing the day is about, and it will surprise
 somebody. A reviewer who wants the rebuild done against a copy instead should say so.
+
+## Re-dated on 27 September 2026
+
+Tracker v7 of 21 September 2026 moved this row one week later, to Friday 16 October 2026, and gave it the violet IITGN faculty column, which says there is no block on this day. The day sheet's module and date lines now render from the calendar.
