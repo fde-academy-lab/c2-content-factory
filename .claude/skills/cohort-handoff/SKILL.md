@@ -1,6 +1,6 @@
 ---
 name: cohort-handoff
-description: Compact the current chat into a handoff note so a fresh chat in this project, or the ChatGPT or Gemini copy of it, continues the work without re-reading the thread. Use when a chat passes about ten exchanges, when the work moves to another platform, model or owner, when a long build is parked mid-way, or when the user says handoff, hand over, park this, or continue in a new chat. Also use in reverse: when a chat opens with a handoff note, follow the receiving steps at the end.
+description: "Compact the current chat into a handoff note so a fresh chat in this project, or the ChatGPT or Gemini copy of it, continues the work without re-reading the thread. Use when a chat passes about ten exchanges, when the work moves to another platform, model or owner, when a long build is parked mid-way, or when the user says handoff, hand over, park this, or continue in a new chat. Also use in reverse: when a chat opens with a handoff note, follow the receiving steps at the end."
 ---
 
 # Cohort handoff
