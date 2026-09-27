@@ -1,10 +1,11 @@
 # CURRICULUM MAP SCHEMA
 ## How a curriculum row is laid out, and how a build session reads it
 
-The curriculum lives in one workbook, `docs/curriculum/source.xlsx`, and is exported to markdown by
-`python3 scripts/export_curriculum.py` so a build session reads rows as text rather than opening a
+The curriculum lives in one workbook, `docs/curriculum/source.xlsx` (tracker v7 of 21 September
+2026), and is exported to markdown so a build session reads rows as text rather than opening a
 spreadsheet. **The workbook is the source and the markdown is a copy**, so a change made in the
-markdown is lost at the next export.
+markdown is lost at the next export. `python3 scripts/sync_programme.py` runs the export together
+with everything that follows from it; `scripts/export_curriculum.py` is its first step.
 
 This schema locked at v2 on 13 September 2026, following the 10 September curriculum review. The
 change is not cosmetic: the day's business scenario and the thinking it trains now come **before**
@@ -17,8 +18,16 @@ teaches code rather than analysis.
 
 | Tab | Shape | What it carries |
 |---|---|---|
-| `W1` to `W9`, one per week | A week title, a header row, a description row, then one row per day | Everything a day pack is built from |
-| `Structure` | Component, status, detail | Week types, the Saturday shape, assessment status, the confirmed calendar |
+| `W0` to `W16`, one per week | A week title, a header row, a description row, then one row per day, Monday to Saturday | Everything a day pack is built from |
+| `W17-20 Capstone` | The same three header rows with `Week` as the first column, then one row per week from the Week 16 announcement to Week 20 | The capstone plan that fits every brief: the question, the work, the gate, the evidence by kind of system, mentor notes, the placement beat and the interview angle |
+| `20-Week Plan` | A grid, one row per week from 0 to 20, with notes below it | Dates, focus, main content, role emphasis, the placement beat and the IITGN session count per week |
+| `Saturday papers` | A blueprint table, minutes per item type, then the item bank | Every objective item with its key, level, tag, roles, day and interview anchor. INTERNAL. |
+| `Structure` | Component, status, detail, then the role tracks, the hours and the evaluation schema | Week types, the Saturday shape, assessment status, the confirmed calendar, the faculty plan's rules and the open decisions |
+
+Two more workbooks sit beside it and are synced with it: `docs/faculty/source.xlsx`, the IITGN
+faculty session plan that goes to IIT Gandhinagar for confirmation, and `docs/journey/source.xlsx`,
+the student-facing journey and Week 0 sheet. `data/programme/facts.yaml` carries every movable
+fact the workbooks do not, each with its status.
 
 Per-day build status used to live in a `Build Tracker` tab. It does not any more: the GitHub Project
 board replaced it, one card per day pack, driven by `scripts/board_sync.py`. See
@@ -30,7 +39,7 @@ board replaced it, one card per day pack, driven by `scripts/board_sync.py`. See
 
 ```
 row 1   IITGN COHORT 2 · WEEK 1 · DATA ANALYSIS FOUNDATIONS ·
-        KALPA RETAIL: WHERE DOES OUR GROWTH COME FROM? · 28 SEP TO 03 OCT 2026
+        KALPA RETAIL: WHERE DOES OUR GROWTH COME FROM? · 05 TO 10 OCT 2026
 row 2   the column names, which the exporter reads by name and not by position
 row 3   one line describing what each column must carry
 row 4+  one row per day, including holidays and Saturdays
@@ -63,6 +72,33 @@ problem, then the thinking, then the technique, which is the order the day itsel
 | 13 | **Trainer resources** | Verified links the builder and the trainer prepare from | The trainer pack. Every link carries the date it was verified. |
 | 14 | **Student references** | Verified links learners watch or read after the session | The pre-read and the study notes |
 | 15 | **Kahoot quiz plan** | What each item tests, plus the return question | The Kahoot pack, which is daily and ungraded |
+
+### The sixteenth column, in seven teaching weeks
+
+Weeks 2, 4, 5, 7, 8, 10 and 11 carry a violet sixteenth column, **IITGN faculty session
+(TENTATIVE)**. On a day with a block it names the session (`W2-1` and so on), its 120 minutes and
+its status, then five lines: TOPIC, PICKS UP WHERE THE ROW STOPS, CONNECTS TO KALPA, BY THE END and
+DOES NOT REPEAT. On a day without one it says so. A build session reads it as a scope fence for the
+trainer's row: the row's stop-before line is where the faculty member starts, so the day pack does
+not teach into the block. The trainer sheet carries the block through a `sync:faculty-day` block,
+which the sync re-renders when IIT Gandhinagar confirms or moves a session; the faculty workbook is
+the master for the date and the status, and the sync warns when the violet column disagrees.
+
+### The capstone tab
+
+One row per week, with nine columns: the week (dates and the sprint's name), the question the week
+answers, what every group does whatever its brief, the gate and who reviews it, what exists at the
+gate, how the evidence reads by kind of system, mentor and TA notes, the placement beat, and the
+interview angle. A capstone week is planned at the week level, so its folder and board card are
+`W{ww}/WEEK`.
+
+### The Saturday item bank
+
+The bank's columns are Paper, No., Type, Level, Tag, Roles, Day, Min, Key, Item and the interview
+anchor the item descends from. The blueprint above it gives each paper's slot, item count, minutes
+and mix, and the minutes per item type are inputs (fill in the blank 1, true or false 1, one correct
+option 2, more than one correct 2.5, scenario set 2.5, applied maths 4, order the steps 2.5). The
+student paper prints the Item column only; everything else stays with the team.
 
 ---
 
@@ -102,7 +138,7 @@ labelled as such wherever it is printed.
 |---|---|---|
 | Clock times | A pack with clock times goes stale the first time a schedule shifts, and it goes stale silently | Durations, in column 5 |
 | Trainer names | Trainers change between cohorts. Fictional Kalpa stakeholders are a different thing and are named on purpose. | Role labels, and `docs/01_Programme_Facts_C2.md` for staffing |
-| Marks, weights, percentages | Two weighting models are in circulation and neither is signed off | The `Structure` tab, which records that the split is pending |
+| Marks, weights, percentages | The evaluation scheme is a proposal until the AOC locks it | The `Structure` tab and `data/programme/facts.yaml`, which record each proposal and its status |
 | Answers to the interview questions | An answer in the row becomes the answer everybody gives | Written at detailing, in the day pack |
 | Anything about a named real company as the thing the room computes on | Kalpa is the world; real cases are dated references in trainer notes | Column 13 |
 
@@ -114,9 +150,10 @@ Run these after any workbook change, before the export is committed.
 
 | Check | How |
 |---|---|
-| Every week tab still carries all fifteen columns | `python3 scripts/export_curriculum.py` exits with a FAIL naming the missing column |
-| No export is left behind after a tab is renamed | The exporter lists stale files at the end; delete them in the same commit |
-| The exported markdown matches the workbook | Re-run the exporter and check `git diff` is empty |
+| Every day tab still carries all fifteen columns | `python3 scripts/sync_programme.py` exits with a FAIL naming the missing column |
+| The calendar, the holidays, the plan's dates and the faculty sessions agree | The same command checks them against each other and writes nothing until they do |
+| No export is left behind after a tab is renamed | The sync lists orphaned exports; delete them in the same commit |
+| The exported markdown matches the workbook | `python3 scripts/sync_programme.py --check` exits 0, and the programme-sync workflow runs it on every pull request |
 | Every URL carries a verified date | Read columns 13 and 14; an undated link is a build failure |
 | No clock time, no trainer name, no weight | Scan columns 5, 8 and 9 |
 

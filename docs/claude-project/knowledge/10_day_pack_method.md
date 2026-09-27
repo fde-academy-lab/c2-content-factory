@@ -41,7 +41,7 @@ Cognitive load is the design constraint throughout: at most four new ideas per t
 | 12 | Tiered extras | STUDENT | 1 pair | Stretch and recovery, built in advance, weekly build allowed. |
 | 13 | Corrections card | STUDENT | Conditional | Whenever a live claim proved wrong: claim, correction, source, as a slide. |
 
-Weekly addition on regular weeks: the Saturday recap paper, built from the week's question-set row, pen and paper, AI-free, about two hours, short-answer so peers cross-evaluate, with the Academic TA's discussion guide. It ships in `content/W{ww}/SAT/` rather than a numbered day folder, since Saturday is not a teaching day. Build weeks swap the manifest for the build-week pack (five sub-problem briefs at three groups each, assessor rubric, GD prompts for the expert's Friday and Saturday, the parallel build, checkpoints, scoring sheet, catch-up plan).
+Weekly addition on regular weeks: the Saturday recap paper, taken from the week's paper in the tracker's item bank (`docs/curriculum/Saturday_papers.md`), pen and paper, AI-free and objective, 60 to 120 minutes by the blueprint, swapped and marked against the key so scores compare across the room and from week to week, with the Academic TA's discussion guide and the scores by tag feeding Monday's remediation read. It ships in `content/W{ww}/SAT/` rather than a numbered day folder, since Saturday is not a teaching day. Build weeks swap the manifest for the build-week pack (five sub-problem briefs at three groups each, assessor rubric, GD prompts for the expert's Friday and Saturday, the parallel build, checkpoints, scoring sheet, catch-up plan).
 
 ## 3. Shortcut resistance for take-homes
 

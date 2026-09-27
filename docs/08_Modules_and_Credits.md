@@ -33,13 +33,13 @@ Exams and build-week projects are placed with the module whose weeks they fall i
 |---|---|---|---|
 | 1 Foundations of AI and Data | 1, 2, 3 | | Build 1, data-to-insight (Week 3) |
 | 2 Applied Machine Learning | 4, 5, 6 | ME1 (Week 5) | Build 2, machine learning (Week 6) |
-| 3 Deep Learning and Neural Networks | 7, 9 | | Build 3, deep learning and LLM (Week 9) |
-| 4 Natural Language Processing | 8 | | Weekly assignments |
+| 3 Deep Learning and Neural Networks | 7 (Monday to Thursday), 9 | | Build 3, deep learning and LLM (Week 9) |
+| 4 Natural Language Processing | 7 (Friday, tokenization), 8 | | Weekly assignments |
 | 5 Generative AI Foundations | 10 | ME2 (Week 10) | |
 | 6 Applied Generative AI | 11, 12 | | Build 4, retrieval assistant (Week 12) |
-| 7 Production AI for Real-World Applications | 14, 16 | | Weekly assignments; Week 16 solution proposal |
+| 7 Production AI for Real-World Applications | 14, 16 | | Weekly assignments; the Week 16 solution proposal, whose marks are an open decision |
 | 8 Foundations of Agentic AI | 13 | | Build 5, agentic system (Week 15) |
-| 9 Advanced Agentic AI and Multi-Agent Systems | 15 | ME3 (Week 15) | |
+| 9 Advanced Agentic AI and Multi-Agent Systems | 15 | ME3 (first half of Week 16 Monday, posting wholly to Module 9) | |
 | 10 Capstone Project | 17 to 20 | | Capstone and panel defence |
 
 Mock interviews and business case discussions run in every build week and feed the Placement Index, which the proposal treats as a separate passing requirement rather than a module grade.
@@ -52,7 +52,7 @@ Grading buckets in the proposal: weekly quizzes and assignments 20 percent; mid-
 
 Passing requirements in the proposal: CGPA of 7 or above throughout; Placement Index of 7 or above (presentations, mock interviews and completed projects); a minimum of twelve completed projects; 90 percent attendance.
 
-Open reconciliation: the meeting settled a 1000-mark pool with ME1, ME2 and ME3 at 50, 100 and 150, graded mini projects, mock interviews, discussions and the capstone, with daily Kahoot and the Saturday recap test ungraded. The proposal's 20 percent weekly quizzes and assignments bucket and its twelve-project minimum do not yet map onto that. Until they do, no artifact states a percentage, a mark weight or a threshold; the brochure says thresholds live in the programme handbook.
+Open reconciliation: the 1000-mark pool, revised on 21 September to ME1, ME2 and ME3 at 70, 100 and 130 and re-proposed to the AOC on 25 September with the split in `data/programme/facts.yaml`, grades mini projects, mock interviews, business GDs and the capstone, with daily Kahoot and the Saturday recap test ungraded. The proposal's 20 percent weekly quizzes and assignments bucket and its twelve-project minimum do not yet map onto that. Until they do, no artifact states a percentage, a mark weight or a threshold; the brochure says thresholds live in the programme handbook.
 
 ## 4. Grade reporting
 

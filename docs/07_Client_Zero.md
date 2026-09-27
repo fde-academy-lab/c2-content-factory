@@ -5,6 +5,20 @@
 
 Version history: v1.0 proposed 9 September (company, units, entity model, spine dataset). v2.2 locked 13 September, superseding v2.1 the same day: the full nine-week ladder is fixed to the day, the stakeholder table adds Kavya Nair, Rohan Desai, Farhan Sheikh and Ananya Bose, the Build 2 and Build 3 sub-problems are seeded, and the reviews and tickets datasets have their entry days. v2.1: the week ladder is realigned to the 20-week plan's week focus (inference and causal reasoning sit in Week 1, Week 2 is data manipulation through a full Excel day), the named stakeholders are fixed, the campaigns table enters in Week 1, and the Kalpa Health sub-problems for Build 1 are seeded. v2.0: the storyline is now business-problem-first per the 10 September curriculum review, each day opens on a business question rather than a technique, three threads run across the modules, domain rotation is scheduled, three datasets are added, and planted defects are never shown to students.
 
+**Version 2.3 is proposed, not locked** (tracker v7, 19 and 21 September 2026). Until it locks, v2.2 below stays the reference for every fact it carries, and a pack that needs a v2.3 fact marks it proposed in its TRAINER files. v2.3 carries the Week 1 Friday lab dataset (version `v3-lab`, a fresh two-quarter export with the week's defect families in new places), the Week 16 client card, and the scenario facts, dataset versions and sub-problem seeds of Weeks 10 to 15, each marked proposed in its own tracker row. Still open inside it: a name for the Kalpa Logistics stakeholder, the finance controller's limits and ceilings, and the Week 16 call volumes.
+
+**The re-date of 21 September.** Every date in the ladder below is the v2.2 date, one week earlier than the delivered calendar, because Week 0 now runs 28 September to 3 October and teaching Week 1 starts on Monday 5 October. The day's scenario and technique are unchanged, so read each row one week later, with these exceptions from the re-cut:
+
+- Week 1 gains Friday 9 October, the AI-free lab and the growth-review rehearsal on `v3-lab`, which has no v2.2 row.
+- Build 1 runs Monday 19, Wednesday 21 and Thursday 22 October around Dussehra, so the v2.2 build days two and three become one day on Wednesday 21 October.
+- Week 4 gains Tuesday 27 October, stakeholder communication with the first guesstimate and an AI-free business case, which has no v2.2 row.
+- Build 2 opens on Tuesday 10 November, after the Monday holiday, with days two and three merged on Wednesday 11 November.
+- Week 7 moves a day earlier: the v2.2 rows of Tuesday 10 to Friday 13 November run Monday 16 to Thursday 19 November, and tokenization, the v2.2 row of Monday 16 November, runs on Friday 20 November and opens Module 4.
+- Week 8 teaches its four remaining rows on Monday 23, Wednesday 25, Thursday 26 and Friday 27 November, around Guru Nanak Jayanti on Tuesday 24 November.
+- Build 3 runs Monday 30 November to Saturday 5 December and regains its Tuesday and its catch-up reserve.
+
+`docs/programme/calendar.md` is the day-by-day calendar, generated from the tracker.
+
 Client zero is fictional. Any resemblance to a real company is coincidental, and the disclaimer travels with the name wherever it is printed.
 
 ---
