@@ -1,0 +1,292 @@
+# Programme facts that can still move, each with its status and where it came from.
+#
+# Edit this file, or one of the three workbooks, and then run one command:
+#
+#     python3 scripts/sync_programme.py
+#
+# The sync re-exports the workbooks, checks them against each other and against this file,
+# rewrites every generated page and every <!-- sync:NAME --> block, and rebuilds the calendar the
+# board reads. On GitHub the programme-sync workflow runs the same command for you.
+#
+# Status words, and what an artifact may do with a fact that carries them:
+#   locked     decided and recorded; any artifact may state it.
+#   stated     the Programme Head's stated plan; any artifact may state it as the plan.
+#   tentative  assumed for planning until a named party confirms; a STUDENT file states it only
+#              with the word "tentative" beside it, or leaves it out.
+#   confirmed  the named party has confirmed it (faculty sessions); state it plainly.
+#   proposed   put to a decision-maker and awaiting a lock; TRAINER and INTERNAL files may state
+#              it marked "proposed"; a STUDENT file never states it.
+#   open       undecided; no artifact states a value.
+#   superseded replaced by a later version; kept so the history reads.
+#
+# Roles only in this file. Never a person's name, because the repository is public.
+
+as_of: 2026-09-27
+
+sources:
+  tracker:
+    path: docs/curriculum/source.xlsx
+    title: C2 IITGN Curriculum Tracker v7
+    dated: 2026-09-21
+    class: INTERNAL
+  faculty:
+    path: docs/faculty/source.xlsx
+    title: C2 IITGN Faculty Sessions, version 2
+    dated: 2026-09-21
+    class: TRAINER
+  journey:
+    path: docs/journey/source.xlsx
+    title: C2 STUDENT 20-Week Journey and Week 0, version 2
+    dated: 2026-09-27
+    class: STUDENT
+  handover:
+    path: null
+    title: C2 ground manager handover
+    dated: 2026-09-27
+    class: INTERNAL
+    note: Never committed, because it names people. Only role-labelled facts from it enter this file.
+
+calendar:
+  status: locked
+  locked_on: 2026-09-21
+  source: tracker, Structure tab (Confirmed calendar)
+  week0_monday: 2026-09-28
+  week1_monday: 2026-10-05
+  last_day: 2027-02-20
+  holidays:
+    - {date: 2026-10-02, name: Gandhi Jayanti, status: locked}
+    - {date: 2026-10-20, name: Dussehra (Vijaya Dashami), status: locked}
+    - {date: 2026-11-09, name: the Monday after Diwali, status: locked}
+    - {date: 2026-11-24, name: Guru Nanak Jayanti, status: locked}
+    - {date: 2026-12-25, name: Christmas Day, status: locked}
+    - {date: 2027-01-26, name: Republic Day, status: locked}
+  restricted:
+    # Working days on the central list, so the institute calendar decides whether campus closes.
+    # If it does, move the date into holidays, reshape the week in the tracker, and sync.
+    - {date: 2027-01-01, name: "New Year's Day", status: open, decides: the institute calendar}
+    - {date: 2027-01-14, name: Makar Sankranti (Uttarayan), status: open, decides: the institute calendar, note: the handover asks for an early check with CDF}
+
+cohort:
+  students: {value: 35, status: stated, source: handover}
+  build_groups: {value: 9, status: stated, source: handover}
+  group_size: {value: 4, status: locked, source: tracker, Structure tab (Build-week anatomy)}
+  subproblems_per_build: {value: 5, status: locked, source: tracker, Structure tab (Build-week anatomy)}
+  groups_per_subproblem: {value: 3, status: locked, source: tracker, Structure tab (Build-week anatomy)}
+
+campus_day:
+  status: locked
+  source: handover, page 4; tracker, Structure tab
+  shape: Two sessions a day with lunch between them, up to five teaching hours, six days a week.
+  saturday: A pen-and-paper recap paper of about two hours, AI-free, then a break, then the solution discussion led by the Academic TA.
+  teaching_ceiling_minutes: 300
+  ceiling_agreed_on: 2026-09-15
+
+faculty:
+  status: tentative
+  confirms: IIT Gandhinagar, which names the faculty member and confirms each date
+  source: faculty workbook, Overview and Sessions tabs; tracker, the violet column of the weekly tabs
+  session_minutes: 120
+  hours_committed: 60
+  # A name the workbook carries never reaches a generated page unless this is true. Leave it false
+  # while the repository is public.
+  publish_names: false
+  placement: Within its week the block runs after the day's applied core and picks up where the trainer's row stops.
+  ruling:
+    status: open
+    text: A day that carries a block runs to about 360 taught minutes against the 300-minute ceiling, so either the campus day runs full on those days or the trainer's agenda gives up 60 minutes, starting from its cut-first line.
+  # Changes that arrive before IIT Gandhinagar returns a new workbook. Each entry sits on top of
+  # the workbook's row for that session. Fold them into the workbook when the next version comes.
+  #   W4-3: {date: 2026-10-29, status: Confirmed, remarks: moved at the faculty's request}
+  overrides: {}
+
+evaluation:
+  status: proposed
+  learner_facing: never
+  rule: No STUDENT file states a mark, a weight, a percentage or a threshold until the AOC locks the scheme.
+  current: proposal-2026-09-25
+  versions:
+    - id: proposal-2026-09-21
+      status: superseded
+      source: tracker, Structure tab (Evaluation schema, revised 21 September)
+      components: {major_exams: 300, mini_projects: 150, mock_interviews: 200, business_gds: 200, capstone: 150}
+      per_event: {mini_project: 30, mock_interview: 40, business_gd: 40}
+    - id: proposal-2026-09-25
+      status: proposed
+      source: handover, pages 8, 9 and 13 (proposed to the AOC on 25 September 2026)
+      components: {major_exams: 300, mini_projects: 200, mock_interviews: 150, business_gds: 150, capstone: 200}
+      per_event: {mini_project: 40, mock_interview: 30, business_gd: 30}
+  exams:
+    ME1: {week: 5, marks: 70, status: proposed, posts_to: M2}
+    ME2: {week: 10, marks: 100, status: proposed, posts_to: M5}
+    ME3: {week: 16, marks: 130, status: proposed, posts_to: M9, when: the first half of Monday}
+  exam_day_and_slot: {status: open, rule: ME1 and ME2 run during their week as a continuous activity; no artifact states a day or a slot until it is fixed.}
+  ungraded: [daily Kahoot, the Saturday recap paper, the Week 0 diagnostic, attendance, practice exercises, engagement]
+  placement_index: {status: stated, source: handover, page 13, text: Mock interviews and business GDs also feed a separate Placement Index.}
+  senate_reconciliation: {status: open, text: The senate proposal grades in percentage buckets and passes on CGPA 7, a Placement Index of 7, twelve projects and 90 percent attendance; none of that is mapped to the 1000 marks yet, so no artifact quotes a threshold.}
+
+modules:
+  source: faculty workbook, Overview tab (the programme at a glance); journey workbook, Journey tab
+  weeks:
+    W00: null
+    W01: M1
+    W02: M1
+    W03: M1
+    W04: M2
+    W05: M2
+    W06: M2
+    W07: M3
+    W08: M4
+    W09: M3
+    W10: M5
+    W11: M6
+    W12: M6
+    W13: M8
+    W14: M7
+    W15: M9
+    W16: M7
+    W17: M10
+    W18: M10
+    W19: M10
+    W20: M10
+  day_exceptions:
+    # Tokenization opens Module 4 on the Week 7 Friday, so that day posts to M4.
+    W07/D5: M4
+  names:
+    M1: Foundations of AI and Data
+    M2: Applied Machine Learning
+    M3: Deep Learning and Neural Networks
+    M4: Natural Language Processing
+    M5: Generative AI Foundations
+    M6: Applied Generative AI
+    M7: Production AI for Real-World Applications
+    M8: Foundations of Agentic AI
+    M9: Advanced Agentic AI and Multi-Agent Systems
+    M10: Capstone Project
+
+client_zero:
+  locked: {version: v2.2, locked_on: 2026-09-13, path: docs/07_Client_Zero.md}
+  proposed:
+    version: v2.3
+    status: proposed
+    items:
+      - The Week 1 Friday lab dataset, version v3-lab (tracker, Week 1 Friday row, 21 September).
+      - The Week 16 client card (19 September).
+      - The scenario facts, dataset versions and sub-problem seeds of Weeks 10 to 15 (21 September).
+      - The re-date of 21 September, which moves every date in the v2.2 ladder by one week and moves tokenization to the Week 7 Friday.
+    open: [a name for the Kalpa Logistics stakeholder, the finance controller's limits and ceilings, the Week 16 call volumes]
+
+recut:
+  status: open
+  made_on: 2026-09-21
+  note: Open to reversal until the Programme Head closes it; the tracker already carries it.
+  items:
+    - Week 1 gains its Friday, which carries the AI-free lab and the growth-review rehearsal.
+    - Build 1 runs Monday, Wednesday and Thursday, with Wednesday carrying build days two and three.
+    - Week 4 gains its Tuesday, which carries stakeholder communication, the first guesstimate and an AI-free business case.
+    - Build 2 opens on Tuesday, with the same compression.
+    - Week 7 gains its Monday, so its four days move a day earlier and Friday takes tokenization from Week 8.
+    - Week 8 teaches its four remaining topics around the Tuesday holiday.
+    - Build 3 regains its Tuesday and its catch-up reserve.
+    - Build 4 moves expert day one to Thursday, because Christmas Day falls on its Friday.
+
+saturday_papers:
+  source: tracker, Saturday papers tab
+  status: locked
+  format_revised_on: 2026-09-19
+  built: [W01, W02, W04, W05, W07, W08]
+  to_build: [W10, W11, W13, W14]
+  rule: The student paper prints the Item column only; the key, level, tag, roles and anchor stay with the team.
+
+decisions:
+  # What is still open, what it blocks, and who closes it. Roles only.
+  - id: evaluation-lock
+    status: open
+    closes: the AOC
+    text: The lock on the evaluation scheme, including the parked gateway of 80 percent attendance and quiz completion before mocks and the capstone.
+    blocks: every rubric, the assessment calendar, and any artifact that would state a mark or a weight
+  - id: w16-proposal-marks
+    status: open
+    closes: the Programme Head and the AOC
+    text: Whether the Week 16 solution proposal carries marks, since the scheme has no line for it; the tabs call it assessed.
+    blocks: the Week 16 Wednesday pack's assessment wording
+  - id: recut-2026-09-21
+    status: open
+    closes: the Programme Head
+    text: The re-cut that followed the re-date, which stays open to reversal.
+    blocks: nothing yet, since the tracker already carries it; a reversal would reshape Weeks 1, 3, 4, 6, 7 and 8
+  - id: exam-days
+    status: open
+    closes: the Programme Head
+    text: The length and the paper of each major exam, and the day of ME1 and ME2.
+    blocks: any artifact that would name an exam day or slot
+  - id: faculty-blocks
+    status: open
+    closes: IIT Gandhinagar and the Programme Head
+    text: How a day absorbs an IITGN block, and the faculty names and dates from IIT Gandhinagar.
+    blocks: the timing lines of 30 day packs in Weeks 2, 4, 5, 7, 8, 10 and 11
+  - id: client-zero-v2-3
+    status: open
+    closes: the Programme Head
+    text: The lock on client zero v2.3.
+    blocks: the Week 1 Friday lab dataset and every pack from Week 10 on
+  - id: build-owners
+    status: open
+    closes: the Programme Head
+    text: Mock and GD owners for Builds 2 to 5, and the expert's dates for Build 4 around Christmas.
+    blocks: the build-week trainer sheets from Week 6 on
+  - id: build-sequencing
+    status: open
+    closes: the Programme Head
+    text: Whether all five builds move to the sequencing discussed on 15 September, with GDs from day two, mocks in the same window and presentations by one assessor.
+    blocks: the build-week trainer sheets
+  - id: papers-to-build
+    status: open
+    closes: the content team
+    text: The Saturday papers for Weeks 10, 11, 13 and 14, the items for the Week 4 Tuesday, the Week 0 papers and the baseline card.
+    blocks: the Week 0 packs, which run from 28 September
+  - id: senate-reconciliation
+    status: open
+    closes: the Programme Head and the academic office
+    text: Reconciling the senate grading buckets and passing rules, including 90 percent attendance, with the 1000-mark pool.
+    blocks: any threshold in any artifact
+  - id: codechef
+    status: open
+    closes: the Programme Head
+    text: Whether daily coding practice on CodeChef is adopted; the 20-Week Plan names it and the handover calls it undecided.
+    blocks: any artifact that would name the practice platform
+  - id: restricted-holidays
+    status: open
+    closes: the institute calendar
+    text: Whether campus closes on New Year's Day (Week 13 Friday) and on Makar Sankranti (Week 15 Thursday).
+    blocks: the Week 13 Friday and Build 5 Thursday plans
+
+conflicts:
+  # Places where two sources disagree, and the working rule this repository follows until one is fixed.
+  - id: evaluation-versions
+    sources: [tracker, handover]
+    text: The tracker's Structure tab (21 September) prints mini projects 150, mocks 200, GDs 200 and capstone 150; the handover says the scheme proposed to the AOC on 25 September is mini projects 200, mocks 150, GDs 150 and capstone 200.
+    working_rule: The 25 September proposal is current, marked proposed; no STUDENT file states either version.
+  - id: groups
+    sources: [tracker, handover]
+    text: The handover plans 35 students in nine build-week groups, while the tracker's build-week anatomy asks for five sub-problems with three groups each, which is fifteen groups.
+    working_rule: Build-week packs seed five sub-problems and leave the group-to-problem allocation to the trainer sheet until the Programme Head settles the count.
+  - id: week0-schedule
+    sources: [tracker, journey]
+    text: The Week 0 tab (21 September) and the student Week 0 sheet (27 September) give different running orders. The tab runs four diagnostic papers of 60, 45, 30 and 30 minutes on Tuesday and puts the project talks on Saturday beside an industry leader session; the student sheet runs one paper of about two hours on Tuesday, moves the introductions to Wednesday afternoon, and gives Saturday to a session with a working forward deployed engineer.
+    working_rule: The student sheet is later and is what learners have been told, so Week 0 packs follow it and cite the tracker row for content only.
+  - id: journey-tokenization
+    sources: [tracker, journey]
+    text: The student journey lists tokenization under Week 8, while the re-cut moved it to the Week 7 Friday.
+    working_rule: Packs follow the tracker; the journey needs its Week 7 and Week 8 rows corrected before it is republished.
+  - id: journey-holidays
+    sources: [tracker, journey]
+    text: The student journey lists holidays up to Week 9 only, so Christmas Day in Week 12 and Republic Day in Week 17 do not appear on it.
+    working_rule: Packs follow the tracker; the journey adds them when it is next published.
+  - id: journey-capstone
+    sources: [tracker, journey]
+    text: The journey's capstone rows describe an older sprint plan, with deployment in Week 18, while the tracker's capstone tab puts the proposal and walking skeleton at gate 1, the measured core at gate 2 and deployment at gate 3.
+    working_rule: Packs follow the tracker's capstone tab.
+  - id: fde-block-hours
+    sources: [tracker, handover]
+    text: The 20-Week Plan sizes the Week 16 forward deployed block at roughly 27 hours; the handover says about 30.
+    working_rule: Packs size Week 16 from the tracker rows, which are day by day.
