@@ -1,6 +1,60 @@
 # W6 Build 2
 
-## Mon 02 Nov 2026 · Build 2 · Online project introduction; groups frame their Kalpa Financial sub-problem
+## Mon 09 Nov 2026 · Diwali: Monday off, no session
+
+### Business scenario of the day
+
+No session. The Monday after Diwali.
+
+### Thinking we train, before any tool
+
+None scheduled.
+
+### Trainer agenda
+
+No session. Diwali fell on Sunday 8 November and Monday 9 November is confirmed off; Build 2 opens on Tuesday.
+
+### Learner outcome
+
+No new outcomes.
+
+### Subtopics (technique in service of the scenario)
+
+None scheduled.
+
+### Trainer notes
+
+Nothing to deliver. Build 2 runs Tuesday to Saturday, and Wednesday carries build days two and three.
+
+### Client zero data (TRAINER ONLY)
+
+The scenario rests.
+
+### In-session exercises
+
+None scheduled.
+
+### After-class tasks
+
+• OPTIONAL: reread the Week 5 Friday committee memo; Build 2 starts from it.
+
+### Interview angle
+
+None.
+
+### Trainer resources
+
+None needed.
+
+### Student references
+
+None assigned.
+
+### Kahoot quiz plan
+
+None.
+
+## Tue 10 Nov 2026 · Build 2 · Online project introduction; groups frame their Kalpa Financial sub-problem
 
 ### Business scenario of the day
 
@@ -8,7 +62,7 @@ KALPA FINANCIAL SERVICES, THE BUILD 2 UNIT. Kalpa Financial runs a payments app 
 THE FIVE SUB-PROBLEMS, each with a constraint written into the brief: (1) Credit approval, where a default costs twenty times a wrongful rejection. (2) Fraud detection at half a percent positives, where recall is the business and precision is the cost. (3) Collections prioritisation: whom to call first with a fixed team, so the ranking is the product. (4) Churn on the payments app, where the target must be defined before it can be predicted and leakage is everywhere in the activity log. (5) The lending campaign that 'lifted approvals 9 percent': cause or mix, and what a fair comparison needs.
 Every sub-problem is the Week 5 method in a domain where the threshold sits at the opposite end from retail. Your role all week: you are the analyst Rohan will question, and the mock and GD panels will ask for your metric, your threshold, your error bill, and what you would have done differently.
 
-MONDAY. The Programme Head introduces the build week online: the five sub-problems, the group-of-four structure, the week's shape, and the rule that no new material is taught. Rohan's briefing note is in the pack. Groups frame their problem, name the constraint's bite in rupees, and open the challenges log.
+TUESDAY. The Programme Head introduces the build week online: the five sub-problems, the group-of-four structure, the week's shape, and the rule that no new material is taught. Rohan's briefing note is in the pack. Groups frame their problem, name the constraint's bite in rupees, and open the challenges log.
 
 ### Thinking we train, before any tool
 
@@ -36,9 +90,9 @@ TODAY: a framed problem with the constraint stated in cost terms, and a live cha
 
 ### Trainer notes
 
-STRUCTURE: groups of four; build Monday to Thursday with the parallel build and daily checkpoints; the industry expert attends Friday and Saturday only for GDs and presentations; a senior industry leader flies in Saturday. Grades close in-week.
+STRUCTURE: groups of four; build Tuesday to Thursday with the parallel build and daily checkpoints; the industry expert attends Friday and Saturday only for GDs and presentations; a senior industry leader flies in Saturday. Grades close in-week.
 STAFFING: Build 1's mock and GD split is the working shape; Build 2 owners are to be confirmed before this week locks.
-CALENDAR: Diwali is Sunday 8 November and Monday 9 November is confirmed off; nothing carries into the break.
+CALENDAR: Monday 9 November was off after Diwali, so the online introduction runs today and Wednesday carries build days two and three.
 
 ### Client zero data (TRAINER ONLY)
 
@@ -71,107 +125,49 @@ Tags: [S] staple asked everywhere · [F] frequent in GCC and product screens · 
 
 No tests run during build weeks, so no Kahoot today.
 
-## Tue 03 Nov 2026 · Build 2 · Build day two: baselines beaten honestly, the metric chosen and written down
+## Wed 11 Nov 2026 · Build 2 · Build days two and three in one: the metric chosen, baselines beaten honestly, and the recommendation
 
 ### Business scenario of the day
 
-KALPA FINANCIAL, BUILD 2 (context in Monday's row). TUESDAY. Rohan's data lands. The fraud table is a million rows with five thousand positives; the application data has a field written after the decision. The trainer's parallel build on a smaller slice sets the pace.
+KALPA FINANCIAL, BUILD 2 (context in Tuesday's row). WEDNESDAY. Rohan's data lands. The fraud table is a million rows with five thousand positives, and the application data has a field written after the decision. The trainer's parallel build on a smaller slice sets the pace. Rohan still wants a recommendation sentence per sub-problem by end of day, with the error bill attached.
 
 ### Thinking we train, before any tool
 
-Week 5 Tuesday and Wednesday at scale: the baseline scored, the metric chosen from the costs, and every column audited with the prediction-time question before anything is fitted.
+Week 5 Tuesday and Wednesday at scale: the baseline scored, the metric chosen from the costs, and every column audited with the prediction-time question before anything is fitted. The recommendation may be the simpler model, and the rubric rewards the honest call; the error bill in rupees under the chosen threshold is the sentence Rohan reads first.
 
 ### Trainer agenda
 
 1. Daily checkpoint: three questions per group, two minutes each (30 min).
 2. The trainer's parallel build on a smaller slice, shared in the open (60 min).
-3. Groups build: features, leak audit, first model, the metric chosen and defended (rest of day).
-4. Close-out: one blocker per group aloud (15 min).
+3. Groups build: features, leak audit, first model, the metric chosen and defended; then tuning, cross-validation and the error bill (through the day).
+4. Close-out: each group states its recommendation sentence, or names its blocker (20 min).
 
 ### Learner outcome
 
-TODAY: every group past baseline with the constraint-appropriate metric on paper and the leak audit done.
+TODAY: every group past baseline with the constraint-appropriate metric on paper, the leak audit done, the error bill computed and a recommendation sentence drafted.
 
 ### Subtopics (technique in service of the scenario)
 
 • Daily checkpoint
 • The parallel build
 • Features, leak audit, first model under the constraint
+• Tuning, cross-validation, the error bill
+• The recommendation sentence
 • Challenges log discipline
 
 ### Trainer notes
 
-PUSH: the metric choice must be written today with its cost reasoning; Thursday's viva opens there. A group scoring fraud on accuracy is stuck and should say so today.
+COMPRESSION: Monday was off after Diwali, so today carries build days two and three, and the catch-up reserve is spent as schedule slack; any Week 4 or 5 backlog is handled inside the checkpoint groups.
+PUSH: the metric choice must be written today with its cost reasoning, since Thursday's viva opens there. A group scoring fraud on accuracy is stuck and should say so today. The evaluation must quote the constraint's costs, never a bare score.
 
 ### Client zero data (TRAINER ONLY)
 
-Groups work their own scoped cut; the trainer's slice stays deliberately smaller.
+Groups work their own scoped cut; the trainer's slice stays deliberately smaller. The recommendation must cite Kalpa Financial's own numbers.
 
 ### In-session exercises
 
 • Checkpoint questions.
 • Build time.
-
-### After-class tasks
-
-• Build continues; challenges log entries as they happen.
-
-### Interview angle
-
-• [F] A field in the application data is written after the decision; what do you do with it?
-Tags: [S] staple asked everywhere · [F] frequent in GCC and product screens · [SV] service-major screen opener · [D] differentiator. This programme's own calibration for 0-3 year Indian-market candidates.
-
-### Trainer resources
-
-• Parallel build and checkpoint questions from the pack.
-
-### Student references
-
-• The Week 5 metric memo is the model for this week's metric note.
-
-### Kahoot quiz plan
-
-No tests run during build weeks, so no Kahoot today.
-
-## Wed 04 Nov 2026 · Build 2 · Build day three: honest evaluation and the recommendation, plus the catch-up reserve
-
-### Business scenario of the day
-
-KALPA FINANCIAL, BUILD 2 (context in Monday's row). WEDNESDAY. Rohan wants a recommendation sentence per sub-problem by end of day, with the error bill attached. The catch-up reserve sits in the morning for any Week 4 or 5 backlog.
-
-### Thinking we train, before any tool
-
-The recommendation may be the simpler model, and the rubric rewards the honest call. The error bill in rupees under the chosen threshold is the sentence Rohan reads first.
-
-### Trainer agenda
-
-1. Daily checkpoint (30 min).
-2. Catch-up block from the catch-up plan, released to build time otherwise (up to 120 min).
-3. Groups tune, cross-validate, compute the error bill, and write the recommendation (rest of day).
-4. Close-out: each group states its recommendation sentence (15 min).
-
-### Learner outcome
-
-TODAY: an honest evaluation done, the error bill computed, a recommendation sentence drafted.
-
-### Subtopics (technique in service of the scenario)
-
-• Daily checkpoint
-• Catch-up reserve
-• Tuning, cross-validation, the error bill
-• The recommendation sentence
-
-### Trainer notes
-
-PUSH: the evaluation must quote the constraint's costs, never a bare score.
-
-### Client zero data (TRAINER ONLY)
-
-Groups remain on their sub-problem; the recommendation must cite Kalpa Financial's own numbers.
-
-### In-session exercises
-
-• Checkpoint questions.
 • The recommendation sentence, pinned.
 
 ### After-class tasks
@@ -180,26 +176,27 @@ Groups remain on their sub-problem; the recommendation must cite Kalpa Financial
 
 ### Interview angle
 
+• [F] A field in the application data is written after the decision; what do you do with it?
 • [D] State your recommendation and its error bill in one sentence a risk head can act on.
 Tags: [S] staple asked everywhere · [F] frequent in GCC and product screens · [SV] service-major screen opener · [D] differentiator. This programme's own calibration for 0-3 year Indian-market candidates.
 
 ### Trainer resources
 
-• The catch-up teaching plan from the pack.
+• The parallel build, the checkpoint questions and the catch-up plan from the pack.
 
 ### Student references
 
-• The Week 5 Friday committee memo is the presentation skeleton.
+• The Week 5 metric memo is the model for this week's metric note, and the Week 5 Friday committee memo is the presentation skeleton.
 
 ### Kahoot quiz plan
 
 No tests run during build weeks, so no Kahoot today.
 
-## Thu 05 Nov 2026 · Build 2 · Mock R2 opens; build completion
+## Thu 12 Nov 2026 · Build 2 · Mock R2 opens; build completion
 
 ### Business scenario of the day
 
-KALPA FINANCIAL, BUILD 2 (context in Monday's row). THURSDAY. Mock R2 opens: individual, asynchronous, half ML fundamentals and half a viva on the group's work. The viva probes the constraint: why this metric, why this threshold, what the errors cost.
+KALPA FINANCIAL, BUILD 2 (context in Tuesday's row). THURSDAY. Mock R2 opens: individual, asynchronous, half ML fundamentals and half a viva on the group's work. The viva probes the constraint: why this metric, why this threshold, what the errors cost.
 
 ### Thinking we train, before any tool
 
@@ -257,11 +254,11 @@ https://www.interviewquery.com/p/python-data-science-interview-questions
 
 No tests run during build weeks, so no Kahoot today.
 
-## Fri 06 Nov 2026 · Build 2 · Expert day one: GDs at thirty minutes per group, first presentations
+## Fri 13 Nov 2026 · Build 2 · Expert day one: GDs at thirty minutes per group, first presentations
 
 ### Business scenario of the day
 
-KALPA FINANCIAL, BUILD 2 (context in Monday's row). FRIDAY. The industry expert arrives for two days. GD rounds run at about 30 minutes per group on risk and lending's problem space; first presentations run where the roster allows. Builds freeze tonight.
+KALPA FINANCIAL, BUILD 2 (context in Tuesday's row). FRIDAY. The industry expert arrives for two days. GD rounds run at about 30 minutes per group on risk and lending's problem space; first presentations run where the roster allows. Builds freeze tonight.
 
 ### Thinking we train, before any tool
 
@@ -318,11 +315,11 @@ Tags: [S] staple asked everywhere · [F] frequent in GCC and product screens · 
 
 No tests run during build weeks, so no Kahoot today.
 
-## Sat 07 Nov 2026 · Build 2 · Expert day two plus the flown-in leader: presentations, defence, grade closure
+## Sat 14 Nov 2026 · Build 2 · Expert day two plus the flown-in leader: presentations, defence, grade closure
 
 ### Business scenario of the day
 
-KALPA FINANCIAL, BUILD 2 (context in Monday's row). SATURDAY. Rohan's questions get their answers. Groups present with live demos before the industry expert and the senior industry leader who flies in for the day. Every Build 2 grade closes today, before the Diwali break.
+KALPA FINANCIAL, BUILD 2 (context in Tuesday's row). SATURDAY. Rohan's questions get their answers. Groups present with live demos before the industry expert and the senior industry leader who flies in for the day. Every Build 2 grade closes today, before the Diwali break.
 
 ### Thinking we train, before any tool
 
@@ -348,7 +345,7 @@ TODAY: every group presented, demoed live and defended, and every Build 2 grade 
 
 ### Trainer notes
 
-PANEL SPLIT: the expert and the leader divide the roster; silent teammates get questioned separately. CLOSURE: all grades close today. Week 7 opens Tuesday 10 November; Monday is off for Diwali.
+PANEL SPLIT: the expert and the leader divide the roster; silent teammates get questioned separately. CLOSURE: all grades close today. Week 7 opens on Monday 16 November.
 
 ### Client zero data (TRAINER ONLY)
 

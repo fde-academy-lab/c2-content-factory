@@ -1,6 +1,6 @@
 # W4 Analyst craft
 
-## Mon 19 Oct 2026 · Business metric design · The number the growth plan chases, and what stops it being gamed
+## Mon 26 Oct 2026 · Business metric design · The number the growth plan chases, and what stops it being gamed
 
 ### Business scenario of the day
 
@@ -21,7 +21,7 @@ The proxy test: if a department could hit the number while the business got wors
 3. North-star against guardrails; leading against lagging, on Kalpa's tree (50 min).
 4. Definitions: numerator, denominator, window, exclusions; computed on the customer table (45 min).
 5. Guided then unguided: the metric definition artifact for the growth plan, with guardrails and a gaming note (60 min).
-6. Kahoot and close; tomorrow is Dussehra, Wednesday's pre-read ships tonight (20 min).
+6. Kahoot and close (20 min).
 
 ### Learner outcome
 
@@ -44,7 +44,7 @@ CAN DEFEND: the definition line by line, including what it deliberately does not
 START FROM: they can compute any rate the definition needs (Weeks 1 and 2); today is judgment.
 GO AS FAR AS: everyone ships the growth-plan metric with two guardrails and a gaming note.
 STOP BEFORE: basket analysis (Wed), cohorts (Thu), forecasting (Fri).
-COMES LATER: Wednesday's lift, Thursday's cohorts and Friday's forecast all consume today's definition.
+COMES LATER: Tuesday puts today's metric on one slide and defends it; Wednesday's lift, Thursday's cohorts and Friday's forecast all consume today's definition.
 WHAT THE DATA REVEALS: 'reorders per member' rises for three weeks in the planted period while revenue per member falls, because auto-reorders of low-value items inflate it. The room finds the gap between the metric and the mission.
 CUT FIRST: the second unguided definition. Never cut the gaming demonstration.
 
@@ -63,7 +63,7 @@ MID-SESSION (15 min each): classify eight Kalpa metrics as leading or lagging an
 ### After-class tasks
 
 • BUILD: one metric definition with a gaming note for a business you know.
-• READ: Wednesday's pre-read on basket vocabulary (support, confidence, lift), terms only.
+• PREP: tomorrow you defend today's metric on one slide; decide tonight which single number carries it.
 • RECAP: the proxy test in one line.
 
 ### Interview angle
@@ -97,61 +97,117 @@ https://www.tryexponent.com/blog/top-data-analyst-interview-questions
 • Q5: the proxy test in one line
 • Return question from Week 2 Friday: a pivot's total disagrees with the warehouse; where do you look first.
 
-## Tue 20 Oct 2026 · Dussehra (Vijaya Dashami): gazetted holiday, no session
+### IITGN faculty session (TENTATIVE)
+
+TENTATIVE · IITGN faculty session W4-1 · 120 min · faculty to be confirmed by IITGN.
+TOPIC: Designing an experiment that moves a metric: randomisation, control groups, the A/B test, and the sample size behind it.
+PICKS UP WHERE THE ROW STOPS: the row designs the metric and its guardrails and never tests whether a change moved it.
+CONNECTS TO KALPA: one initiative on the growth plan's tree, tested properly; it builds on the Week 2 block on power, and it answers the interview anchor 'how would you measure the success of a new feature'.
+BY THE END: a learner can design an A/B test for one initiative: the unit that is randomised, the metric, the guardrail and the duration.
+DOES NOT REPEAT: the north-star and guardrail definitions.
+
+## Tue 27 Oct 2026 · Stakeholder communication · One slide, five minutes, three people paid to disagree; then the first guesstimate
 
 ### Business scenario of the day
 
-No session. Dussehra.
+TUESDAY. Meera has Monday's metric on her desk and wants it adopted, which means it has to survive the people it will be used to judge. "Thursday's leadership meeting gives you five minutes and one slide. Marketing, Operations and the head of Retail-Plus each lose something under your definition, and each will say so. If you cannot hold the room, the company keeps three numbers." In the afternoon Anand sends something smaller and odder. Before he funds a new store, he wants to know roughly how many customers it could sign up to Retail-Plus in its first year, and he wants the answer in fifteen minutes, without a dataset.
+Your role: you put the metric on one slide and defend it against three people paid to disagree, and then you size Anand's question aloud from nothing but assumptions.
+On the table: what goes on the one slide and what is left off; how an objection is answered without retreating from the evidence or overclaiming it; how a number is estimated when no data exists; how an estimate is checked for sanity.
 
 ### Thinking we train, before any tool
 
-None scheduled.
+A recommendation is communicated when the person who loses something under it can repeat it accurately. The one-slide answer is the Week 1 note made visible, and it leads with the answer (established: answer-first communication, from Barbara Minto's Pyramid Principle): the claim as the title, the evidence as one number with its denominator or one chart, the caveat in plain sight, the action with its cost. Everything else is left off on purpose, and choosing what to leave off is the skill.
+Defence has a shape as well: restate the objection so that its owner agrees with the restatement, answer from the evidence, concede what is true in it, and say what would change your mind. A guesstimate is the same discipline without data. A common four-step approach is to clarify the question, map the calculation into factors, calculate from stated assumptions, and validate the answer against something known. Interviewers score the structure and the sanity check, and hardly ever the final number.
 
 ### Trainer agenda
 
-No session; the institute is closed. Wednesday resumes on basket analysis; its pre-read shipped Monday night.
+1. Meera's terms for Thursday; the room lists what each of the three department heads loses under Monday's metric (15 min).
+2. The one-slide answer: the claim as the title, one piece of evidence, the caveat, the action with its cost; three cluttered slides rebuilt (45 min).
+3. Defending under challenge: restate, answer from the evidence, concede, say what would change your mind; two rounds in threes, with one learner presenting, one objecting from a role card and one scoring (60 min).
+4. What to leave out: the appendix, and the question it is kept for (20 min).
+5. The first guesstimate: Anand's sizing question worked aloud together, then a second one in pairs against the clock, with the sanity check required (45 min).
+6. The AI-free business case, individual and written: one page on a short Kalpa brief, handed in (35 min).
+7. Kahoot and close; Wednesday's pre-read ships tonight (20 min).
 
 ### Learner outcome
 
-No new outcomes.
+UNDERSTANDS: a recommendation is communicated when its loser can repeat it; one slide carries claim, evidence, caveat and action; a defence concedes what is true; a guesstimate is scored on its structure and its sanity check.
+CAN DO: build the one-slide answer, defend it for five minutes under role-played objection, size an unknown from stated assumptions, and sanity-check the result.
+CAN HANDLE: an objection that is partly right, a slide with nine numbers on it, and an estimate that comes out absurd.
+CAN DEFEND: Monday's metric in front of the three people who lose under it.
 
 ### Subtopics (technique in service of the scenario)
 
-None scheduled.
+• The one-slide answer: claim, evidence, caveat, action
+• What to leave out, and the appendix
+• Defending under challenge: restate, answer, concede, what would change your mind
+• The guesstimate: clarify, map, calculate, validate
+• The AI-free written business case
 
 ### Trainer notes
 
-Nothing to deliver.
+START FROM: Monday's metric definition and the Week 1 four-part note; today adds no technique.
+GO AS FAR AS: everyone presents the slide once and objects once, completes one guesstimate with its sanity check, and hands in the written case.
+STOP BEFORE: slide design as a craft, storytelling frameworks, market-sizing theory.
+COMES LATER: every build week ends on this slide and this defence, and the guesstimate returns about once a month.
+WHY THIS DAY EXISTS: with teaching starting on 5 October, Dussehra falls in Build 1, so Week 4 has five teaching days. The plan's Week 4 lists stakeholder communication, an AI-free business case and the first guesstimate, and the four-day version had room for none of them.
+WHAT THE ROOM REVEALS: expect first slides to carry every number from Monday, and expect first defences either to retreat at the first objection or to overclaim. The role cards are written so that each objection is partly right.
+CUT FIRST: the second guesstimate. Never cut the role-played defence.
 
 ### Client zero data (TRAINER ONLY)
 
-The scenario rests.
+VERSION v4 customer table, as on Monday; no new data and no planted witness today.
+PROPOSED FOR CLIENT ZERO v2.3 (21 Sep 2026, not yet locked): three role cards, for the marketing lead, Operations and the head of Retail-Plus, each holding an objection that is partly right; Anand's sizing question about a new store. Trainer only.
 
 ### In-session exercises
 
-None scheduled.
+GUIDED: one cluttered slide rebuilt together; one guesstimate worked aloud.
+UNGUIDED: the metric slide, two rounds of defence in threes, the paired guesstimate, the written case.
+MID-SESSION (15 min each): cut five slide elements down to the two that carry the claim; for four estimates, say which known number you would check each against.
 
 ### After-class tasks
 
-• OPTIONAL: finish Monday's personal-domain metric definition.
+• BUILD: the one-slide answer for your Build 1 finding, in the same shape.
+• PRACTISE: one guesstimate aloud, recorded, in under five minutes.
+• READ: Wednesday's pre-read on basket vocabulary (support, confidence, lift), terms only.
 
 ### Interview angle
 
-None.
+• [S] Present a recommendation to a non-technical stakeholder in two minutes.
+• [S] A guesstimate: how many customers could a new store sign up to a loyalty tier in its first year?
+• [F] A stakeholder's objection is partly right; how do you answer it?
+• [F] What do you leave off the slide, and where does it go?
+• [D] The person who loses under your metric controls the meeting; how do you get it adopted anyway?
+Tags: [S] staple asked everywhere · [F] frequent in GCC and product screens · [SV] service-major screen opener · [D] differentiator. This programme's own calibration for 0-3 year Indian-market candidates.
 
 ### Trainer resources
 
-None needed.
+• Management Consulted, The Pyramid Principle Applied, for answer-first communication (verified 21 Sep 2026):
+https://managementconsulted.com/pyramid-principle/
+• IGotAnOffer, Market Sizing: The Ultimate Guide, with a framework and a cheat sheet (verified 21 Sep 2026):
+https://igotanoffer.com/blogs/mckinsey-case-interview-blog/market-sizing
+• Think Insights, Guesstimates: clarify, map, calculate, validate (verified 21 Sep 2026):
+https://thinkinsights.net/strategy/guesstimates
 
 ### Student references
 
-None assigned.
+• Think Insights, Guesstimates (verified 21 Sep 2026):
+https://thinkinsights.net/strategy/guesstimates
 
 ### Kahoot quiz plan
 
-None.
+• Q1: the four parts of the one-slide answer, in order
+• Q2: keep or cut: six slide elements
+• Q3 trap: the best defence never concedes anything, true or false
+• Q4: the four steps of a guesstimate, in order
+• Q5: the estimate gives a city of two million people nine million households; what went wrong, and what would have caught it
+• Return question from Monday: name the guardrail you would attach to a cross-sell push.
 
-## Wed 21 Oct 2026 · Market basket, lift and cross-sell · Which pairs lift frequency, and what each is worth
+### IITGN faculty session (TENTATIVE)
+
+None today.
+
+## Wed 28 Oct 2026 · Market basket, lift and cross-sell · Which pairs lift frequency, and what each is worth
 
 ### Business scenario of the day
 
@@ -244,9 +300,18 @@ https://pbpython.com/market-basket-analysis.html
 • Q3 trap: confidence 0.82, lift 0.97; promote or drop
 • Q4: lift 4, support 0.3 percent; what stops you acting
 • Q5: expected value of a promotion is what times what, less what
-• Return question from Monday: name the guardrail you would attach to a cross-sell push.
+• Return question from Tuesday: an objection to your metric is partly right; name the four moves of the answer.
 
-## Thu 22 Oct 2026 · Cohort and funnel · Why Retail-Plus frequency fell, and where the loss actually happens
+### IITGN faculty session (TENTATIVE)
+
+TENTATIVE · IITGN faculty session W4-2 · 120 min · faculty to be confirmed by IITGN.
+TOPIC: Association rules as probability: support, confidence and lift as joint and conditional probabilities; independence; the Apriori principle, and why a support threshold prunes the search.
+PICKS UP WHERE THE ROW STOPS: the row counts twelve baskets by hand and stops before the Apriori algorithm's mechanics.
+CONNECTS TO KALPA: the very popular product with high confidence and a lift near one is statistical independence made visible.
+BY THE END: a learner can derive lift from a probability table, and can explain how frequent item sets are found without counting every combination.
+DOES NOT REPEAT: the costed recommendation.
+
+## Thu 29 Oct 2026 · Cohort and funnel · Why Retail-Plus frequency fell, and where the loss actually happens
 
 ### Business scenario of the day
 
@@ -342,7 +407,16 @@ https://pandas.pydata.org/docs/user_guide/10min.html
 • Q5: which stage's drop is a denominator artefact, and how you can tell
 • Return question from Wednesday: lift 0.97 at confidence 0.82; the verdict and the reason in one breath.
 
-## Fri 23 Oct 2026 · Forecasting basics · How much the plan delivers, against a baseline that is hard to beat
+### IITGN faculty session (TENTATIVE)
+
+TENTATIVE · IITGN faculty session W4-3 · 120 min · faculty to be confirmed by IITGN.
+TOPIC: Time-to-event thinking: the survival curve, censoring and the hazard, and a comparison of two retention curves.
+PICKS UP WHERE THE ROW STOPS: the row builds cohorts and retention curves and stops before survival analysis and tests on retention differences.
+CONNECTS TO KALPA: a Retail-Plus member who has not left yet is censored, and treating her as retained for ever flatters the curve.
+BY THE END: a learner can read a survival curve, say what censoring is, and say when two retention curves really differ.
+DOES NOT REPEAT: cohort construction and the funnel.
+
+## Fri 30 Oct 2026 · Forecasting basics · How much the plan delivers, against a baseline that is hard to beat
 
 ### Business scenario of the day
 
@@ -437,7 +511,16 @@ https://otexts.com/fpp3/simple-methods.html
 • Q5: which six months do you hold out, and why those
 • Return question from Thursday: blended retention flat while cohorts decline; the mechanism in one sentence.
 
-## Sat 24 Oct 2026 · Saturday · Cross-domain transfer drill, then the recap test and discussion
+### IITGN faculty session (TENTATIVE)
+
+TENTATIVE · IITGN faculty session W4-4 · 120 min · faculty to be confirmed by IITGN.
+TOPIC: Time series foundations: autocorrelation, stationarity, exponential smoothing, and ARIMA at recognition depth; why a seasonal-naive baseline is hard to beat.
+PICKS UP WHERE THE ROW STOPS: the row builds baselines by hand and stops before exponential smoothing, ARIMA and any fitted model.
+CONNECTS TO KALPA: the vendor's curve against the seasonal naive on Anand's six held-out months.
+BY THE END: a learner can read an autocorrelation plot, explain smoothing as a weighted memory, and say what a fitted model would have to beat.
+DOES NOT REPEAT: the hold-out and the error in rupees.
+
+## Sat 31 Oct 2026 · Saturday · Cross-domain transfer drill, then the recap test and discussion
 
 ### Business scenario of the day
 
@@ -451,9 +534,9 @@ Every drill answer names the metric, the constraint and the error cost that chan
 
 Four hours, no new content.
 1. Cross-domain transfer drill on four Kalpa briefs: the metric, the basket, the cohort, the forecast, replayed per domain (75 min).
-2. Recap test: pen and paper, AI-free, from the week's question set (90 min).
+2. Recap paper: pen and paper, AI-free, objective, from the 'Saturday papers' tab (90 min).
 3. Break (15 min).
-4. Solution discussion led by the Academic TA: papers swapped, answers treated as interview answers, random call-outs; the Week 5 bridge: the customer table becomes a model (60 min).
+4. Marking against the key with papers swapped (15 min), then the solution discussion led by the Academic TA: the most-missed items, the interview anchors answered aloud, random call-outs; the Week 5 bridge: the customer table becomes a model (45 min).
 
 ### Learner outcome
 
@@ -463,7 +546,7 @@ STATUS: ungraded; a performance indicator.
 
 ### Subtopics (technique in service of the scenario)
 
-THE QUESTION SET (questions only; answers built at detailing):
+THE INTERVIEW ANCHORS (questions only):
 • [S] How would you measure the success of a new feature? Walk your metric design.
 • [F] North-star against guardrail, with one example pair.
 • [S] Support, confidence, lift: which cannot be fooled by popularity, and why?
@@ -478,8 +561,10 @@ Tags: [S] staple asked everywhere · [F] frequent in GCC and product screens · 
 ### Trainer notes
 
 DRILL RULE: every answer names the metric, the constraint and the error cost that changed.
-FORMAT: drill then paper then discussion; the Academic TA leads; random call-outs.
-STATUS: ungraded, AI-free by format.
+FORMAT: an objective paper from the 'Saturday papers' tab: fill in the blank, true or false, one correct option, more than one correct option, scenario sets, applied maths and ordering, graded easy, medium and hard. Print the Item column only; the key, tag, role and anchor columns stay with the team.
+MARKING: papers swap and are marked against the key, so a score is comparable across the room and from week to week.
+DISCUSSION: the Academic TA opens with the most-missed items, then asks the interview anchors aloud as interview answers, with random call-outs.
+STATUS: ungraded, AI-free by format; a performance indicator.
 
 ### Client zero data (TRAINER ONLY)
 
@@ -488,8 +573,16 @@ The drill leaves the Retail spine for four Kalpa units by design; answers must s
 ### In-session exercises
 
 • The four-domain drill on prepared one-paragraph briefs.
-• The recap test.
-• Peer cross-evaluation and call-outs.
+THE PAPER: objective, pen and paper, AI-free: 43 items for a 90-minute slot (89 minutes at the assumed pace); items and key in the 'Saturday papers' tab.
+• Fill in the blank: 7 items
+• True or false: 7 items
+• One correct option: 10 items
+• More than one correct option: 5 items
+• Scenario sets, each on one Kalpa situation: 9 items in 3 sets
+• Applied maths, with the working shown: 5 items
+• Difficulty: 12 easy, 20 medium, 11 hard. Roles served: BA, DS, FDE.
+• Marking a peer's paper against the key.
+• Random call-outs on the interview anchors: sixty seconds each.
 
 ### After-class tasks
 
@@ -502,9 +595,11 @@ The question set in Subtopics is the interview set for the week.
 
 ### Trainer resources
 
-• This row's question set is the paper's source.
+• The 'Saturday papers' tab holds the items and the key; this row's anchors are the source for the discussion.
 • GeeksforGeeks, Data Analyst interview questions (verified 03 Sep 2026):
 https://www.geeksforgeeks.org/data-analysis/data-analyst-interview-questions-and-answers/
+• Aced (formerly Exponent), top data analyst interview questions, the metric and product-sense items (verified 19 Sep 2026):
+https://www.tryexponent.com/blog/top-data-analyst-interview-questions
 
 ### Student references
 
@@ -514,3 +609,7 @@ https://www.interviewquery.com/p/python-data-science-interview-questions
 ### Kahoot quiz plan
 
 None. The drill, the recap test and the discussion replace the quiz.
+
+### IITGN faculty session (TENTATIVE)
+
+None. The Saturday block is the transfer drill and the recap paper.

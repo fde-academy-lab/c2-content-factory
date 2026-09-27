@@ -1,6 +1,6 @@
 # W5 ML core + ME1
 
-## Mon 26 Oct 2026 · Regression and classification · Framing the propensity model, and the baseline it has to beat
+## Mon 02 Nov 2026 · Regression and classification · Framing the propensity model, and the baseline it has to beat
 
 ### Business scenario of the day
 
@@ -99,7 +99,16 @@ https://statquest.org/video_index.html
 • Q5: the coefficient says Rs 240 per unit of recency; finish the sentence for Marketing
 • Return question from Week 4 Friday: the vendor curve fit the last two years perfectly; is it a good forecast.
 
-## Tue 27 Oct 2026 · The metric trap · Scoring the model the way the business will judge it, in two businesses
+### IITGN faculty session (TENTATIVE)
+
+TENTATIVE · IITGN faculty session W5-1 · 120 min · faculty to be confirmed by IITGN.
+TOPIC: Where the line and the curve come from: least squares as geometry, maximum likelihood, the logistic function, and the standard error of a coefficient.
+PICKS UP WHERE THE ROW STOPS: the row reads coefficients and residuals and spends its minutes on framing, so the derivation is left open.
+CONNECTS TO KALPA: the coefficient the room explained to Marketing in rupees now carries its uncertainty.
+BY THE END: a learner can derive the least-squares solution for one feature, say what likelihood the logistic model maximises, and read a coefficient with its standard error.
+DOES NOT REPEAT: framing, the split and the baseline.
+
+## Tue 03 Nov 2026 · The metric trap · Scoring the model the way the business will judge it, in two businesses
 
 ### Business scenario of the day
 
@@ -198,7 +207,16 @@ https://statquest.org/video_index.html
 • Q5: a false approval costs Rs 60,000 and a wrongful rejection Rs 3,000; which way does the threshold move
 • Return question from Monday: your model only tied the baseline; what do you tell Marketing.
 
-## Wed 28 Oct 2026 · Feature engineering and leakage · What the model is allowed to know
+### IITGN faculty session (TENTATIVE)
+
+TENTATIVE · IITGN faculty session W5-2 · 120 min · faculty to be confirmed by IITGN.
+TOPIC: Curves and costs: ROC and AUC, the precision-recall curve, expected cost and the threshold that minimises it, and calibration.
+PICKS UP WHERE THE ROW STOPS: the row names ROC and AUC and stops before them, and before cost-sensitive learning.
+CONNECTS TO KALPA: Anand's two error costs and Rohan's flipped ratio; the course's 1-in-N test is the expected-cost threshold said in plain words.
+BY THE END: a learner can draw both curves from a score table, say when AUC misleads on an imbalanced outcome, and derive the threshold from two costs.
+DOES NOT REPEAT: the confusion matrix and the three metrics.
+
+## Wed 04 Nov 2026 · Feature engineering and leakage · What the model is allowed to know
 
 ### Business scenario of the day
 
@@ -292,7 +310,16 @@ https://scikit-learn.org/stable/user_guide.html
 • Q5: a coefficient's sign flipped when a feature was added; likeliest cause
 • Return question from Tuesday: the same model in retail and lending; why the thresholds are opposite.
 
-## Thu 29 Oct 2026 · Overfitting and regularisation · Generalise or memorise, and the honest tuned model
+### IITGN faculty session (TENTATIVE)
+
+TENTATIVE · IITGN faculty session W5-3 · 120 min · faculty to be confirmed by IITGN.
+TOPIC: When features fight: multicollinearity and the unstable coefficient, variance inflation, scaling and distance, and target encoding with the leak it can carry.
+PICKS UP WHERE THE ROW STOPS: the row stops before target encoding and automated selection.
+CONNECTS TO KALPA: the two correlated features that flipped a coefficient's sign in the room's own model.
+BY THE END: a learner can explain the sign flip with a picture, compute a variance inflation factor, and say which models care about scale and why.
+DOES NOT REPEAT: the prediction-time question and the leak audit.
+
+## Thu 05 Nov 2026 · Overfitting and regularisation · Generalise or memorise, and the honest tuned model
 
 ### Business scenario of the day
 
@@ -386,7 +413,16 @@ https://statquest.org/video_index.html
 • Q5: regularisation trades what for what
 • Return question from Wednesday: the leak is removed and the score fell; why is the model now better.
 
-## Fri 30 Oct 2026 · Model justification · The committee memo, and what transfers to Kalpa Financial
+### IITGN faculty session (TENTATIVE)
+
+TENTATIVE · IITGN faculty session W5-4 · 120 min · faculty to be confirmed by IITGN.
+TOPIC: The bias-variance decomposition; L2 and L1 regularisation as geometry, and why L1 sets coefficients to zero; what cross-validation estimates.
+PICKS UP WHERE THE ROW STOPS: the row teaches the curves, the brake and the honest average at the depth of use.
+CONNECTS TO KALPA: the tree at 100 on training and 61 on validation, and the near-tie between the regularised model and the tuned tree.
+BY THE END: a learner can write the decomposition, draw the two penalty shapes and explain the sparsity of L1, and say what a cross-validated score is an estimate of.
+DOES NOT REPEAT: reading learning curves.
+
+## Fri 06 Nov 2026 · Model justification · The committee memo, and what transfers to Kalpa Financial
 
 ### Business scenario of the day
 
@@ -430,7 +466,7 @@ GO AS FAR AS: everyone ships the committee memo and defends it in a pair challen
 STOP BEFORE: drift detection methods, retraining pipelines; name them as Weeks 14 and beyond.
 COMES LATER: Build 2 next week is Rohan's business with the constraint written into the brief.
 WHAT THE DATA REVEALS: the near-tie makes the simpler model the honest recommendation; the weakest segment is Student, for the sample-size reason from Week 1.
-NOTE: ME1 (50 marks; statistics, data manipulation, analyst technique, ML core) runs this week as a continuous activity; the day is not fixed; state scope aloud and no more.
+NOTE: ME1 (statistics, data manipulation, analyst technique, ML core; its marks live in Structure) runs this week as a continuous activity; the day is not fixed; state scope aloud and no more.
 CUT FIRST: the staleness rule's arithmetic. Never cut the read-aloud challenge.
 
 ### Client zero data (TRAINER ONLY)
@@ -480,7 +516,16 @@ https://statquest.org/video_index.html
 • Q5 trap: the committee wants the 0.4-point winner; your one-line answer
 • Return question from Thursday: train 100, validation 61; name it and prescribe.
 
-## Sat 31 Oct 2026 · Saturday · Revision, the recap test, and the ME1 window
+### IITGN faculty session (TENTATIVE)
+
+TENTATIVE · IITGN faculty session W5-5 · 120 min · faculty to be confirmed by IITGN.
+TOPIC: Trees and ensembles from the inside: impurity and the choice of a split, bagging and the random forest, boosting as stage-wise fitting.
+PICKS UP WHERE THE ROW STOPS: Thursday's row uses trees and ensembles at recognition depth and stops before their internals and before boosting mathematics.
+CONNECTS TO KALPA: the tuned tree in the three-way comparison behind the committee memo.
+BY THE END: a learner can compute one split by hand, explain why averaging many trees lowers variance, and describe what each boosting round fits. The block closes the machine learning that ME1 draws on.
+DOES NOT REPEAT: the justification memo.
+
+## Sat 07 Nov 2026 · Saturday · Revision, the recap test, and the ME1 window
 
 ### Business scenario of the day
 
@@ -494,8 +539,8 @@ Saying the module out loud is the interview skill itself.
 
 Four hours.
 1. ME1 window, reserved without stating marks or slot (up to half the block).
-2. Recap test from the week's question set, pen and paper, AI-free (60 min).
-3. Solution discussion led by the Academic TA: papers swapped, answers as interview answers, random call-outs (45 min).
+2. Recap paper: pen and paper, AI-free, objective, from the 'Saturday papers' tab (60 min).
+3. Marking against the key with papers swapped (10 min), then the solution discussion led by the Academic TA: the most-missed items, the interview anchors answered aloud, random call-outs (35 min).
 4. Build 2 preview: Rohan's business, the constraint written in (15 min).
 
 ### Learner outcome
@@ -505,7 +550,7 @@ STATUS: the recap is ungraded; ME1 is graded and its marks are stated nowhere he
 
 ### Subtopics (technique in service of the scenario)
 
-THE QUESTION SET (questions only; answers built at detailing):
+THE INTERVIEW ANCHORS (questions only):
 • [S] Overfitting: what it is, how you detect it, how you fix it.
 • [S] Precision, recall and F1 from a confusion matrix.
 • [S] What is data leakage, and how do you catch it?
@@ -520,7 +565,10 @@ Tags: [S] staple asked everywhere · [F] frequent in GCC and product screens · 
 ### Trainer notes
 
 SCOPE: say ME1's four theme areas aloud and nothing about marks or weights, which remain pending.
-FORMAT: the paper comes from this row's question set; the Academic TA leads; random call-outs.
+FORMAT: an objective paper from the 'Saturday papers' tab: fill in the blank, true or false, one correct option, more than one correct option, scenario sets, applied maths and ordering, graded easy, medium and hard. Print the Item column only; the key, tag, role and anchor columns stay with the team.
+MARKING: papers swap and are marked against the key, so a score is comparable across the room and from week to week.
+DISCUSSION: the Academic TA opens with the most-missed items, then asks the interview anchors aloud as interview answers, with random call-outs.
+STATUS: ungraded, AI-free by format; a performance indicator.
 
 ### Client zero data (TRAINER ONLY)
 
@@ -528,12 +576,20 @@ Revision answers cite the scenario's own artifacts; the exam themes match what t
 
 ### In-session exercises
 
-• The recap test.
-• Peer cross-evaluation and call-outs.
+THE PAPER: objective, pen and paper, AI-free: 29 items for a 60-minute slot (59.5 minutes at the assumed pace); items and key in the 'Saturday papers' tab.
+• Fill in the blank: 5 items
+• True or false: 4 items
+• One correct option: 8 items
+• More than one correct option: 4 items
+• Scenario sets, each on one Kalpa situation: 5 items in 1 sets
+• Applied maths, with the working shown: 3 items
+• Difficulty: 10 easy, 13 medium, 6 hard. Roles served: DS, FDE, BA.
+• Marking a peer's paper against the key.
+• Random call-outs on the interview anchors: sixty seconds each.
 
 ### After-class tasks
 
-• REST: Build 2 opens Monday; the briefs ship when they lock.
+• REST: Build 2 opens on Tuesday, since Monday 9 November is off after Diwali; the briefs ship when they lock.
 
 ### Interview angle
 
@@ -541,7 +597,7 @@ The question set in Subtopics is the interview set for the week.
 
 ### Trainer resources
 
-• The Week 4 and 5 Kahoot columns are the question bank.
+• The 'Saturday papers' tab holds the items and the key; this row's anchors are the source for the discussion.
 • Interview Query, ML questions for the technical half (verified 03 Sep 2026):
 https://www.interviewquery.com/p/python-data-science-interview-questions
 
@@ -553,3 +609,7 @@ https://statquest.org/video_index.html
 ### Kahoot quiz plan
 
 None. Revision and the recap replace the quiz.
+
+### IITGN faculty session (TENTATIVE)
+
+None. The Saturday block is revision, the recap paper and the ME1 window.

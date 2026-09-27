@@ -1,6 +1,6 @@
 # W3 Build 1
 
-## Mon 12 Oct 2026 · Build 1 · Online project introduction; groups scope their Kalpa Health sub-problem
+## Mon 19 Oct 2026 · Build 1 · Online project introduction; groups scope their Kalpa Health sub-problem
 
 ### Business scenario of the day
 
@@ -19,7 +19,7 @@ The first move in an unfamiliar domain is the same move as in a familiar one: tr
 1. The Programme Head introduces the build week online: sub-problems, groups of four, the week's shape (60 min).
 2. Sub-problem allocation: fifteen groups at target intake, three per sub-problem (30 min).
 3. Groups translate their sub-problem into the Week 1 method in their own words and open the challenges log with entry one (rest of day).
-4. Close-out: scopes pinned, tomorrow's checkpoint stated (15 min).
+4. Close-out: scopes pinned, Wednesday's checkpoint stated (15 min).
 
 ### Learner outcome
 
@@ -39,6 +39,7 @@ TODAY: a scoped sub-problem per group with the Kalpa Health vocabulary mapped on
 STRUCTURE: groups of four for the mini project, the GDs and the presentations. Build Monday to Thursday with the trainer's parallel build and daily checkpoints; the industry expert attends Friday and Saturday only, running GDs at about 30 minutes per group plus presentations; a senior industry leader flies in Saturday, same-day return. Grades close in-week.
 MOCKS (Build 1, confirmed): the Principal Advisor takes a share of mocks and GDs, online; the remaining mocks split between the Programme Head and the Academic TA; roughly 20 minutes each, opening Thursday.
 TODAY: hold groups to translating the sub-problem themselves; a group handed the mapping has skipped the move the week exists to train.
+CALENDAR: Dussehra, Tuesday 20 October, is a gazetted holiday, so the build runs Monday, Wednesday and Thursday, and Wednesday carries build days two and three with the catch-up reserve spent as slack.
 
 ### Client zero data (TRAINER ONLY)
 
@@ -72,106 +73,103 @@ Tags: [S] staple asked everywhere · [F] frequent in GCC and product screens · 
 
 No tests run during build weeks, so no Kahoot today.
 
-## Tue 13 Oct 2026 · Build 1 · Build day two: profile, clean, reconcile on unfamiliar data
+## Tue 20 Oct 2026 · Dussehra (Vijaya Dashami): gazetted holiday, no session
 
 ### Business scenario of the day
 
-KALPA HEALTH, BUILD 1 (context in Monday's row). TUESDAY. Dr Menon's data team drops the real exports. They are dirtier than anything the room has seen: two cities changed booking systems in Q2, and the payment feed has a different id format from the invoice export. The trainer's parallel build on a smaller slice sets the pace.
+No session. Dussehra.
 
 ### Thinking we train, before any tool
 
-Week 1 Wednesday, at scale and without the safety of a setup cell: profile before touching, decide with reasons, reconcile input against clean plus rejected, and record every decision so Dr Menon's finance team can follow it.
+None scheduled.
+
+### Trainer agenda
+
+No session; the institute is closed. The build resumes on Wednesday with the real exports.
+
+### Learner outcome
+
+No new outcomes.
+
+### Subtopics (technique in service of the scenario)
+
+None scheduled.
+
+### Trainer notes
+
+Nothing to deliver. The build runs Monday, Wednesday and Thursday, and Wednesday carries build days two and three.
+
+### Client zero data (TRAINER ONLY)
+
+The scenario rests.
+
+### In-session exercises
+
+None scheduled.
+
+### After-class tasks
+
+• OPTIONAL: reread the Week 1 Wednesday decisions log; tomorrow's data will need it.
+
+### Interview angle
+
+None.
+
+### Trainer resources
+
+None needed.
+
+### Student references
+
+None assigned.
+
+### Kahoot quiz plan
+
+None.
+
+## Wed 21 Oct 2026 · Build 1 · Build days two and three in one: profile, clean, reconcile, and the headline claim
+
+### Business scenario of the day
+
+KALPA HEALTH, BUILD 1 (context in Monday's row). WEDNESDAY. Dr Menon's data team drops the real exports. They are dirtier than anything the room has seen: two cities changed booking systems in Q2, and the payment feed has a different id format from the invoice export. The trainer's parallel build on a smaller slice sets the pace. Dr Menon still wants a headline by end of day: one sentence per sub-problem that she can carry into her own board meeting.
+
+### Thinking we train, before any tool
+
+Week 1 Wednesday, at scale and without the safety of a setup cell: profile before touching, decide with reasons, reconcile input against clean plus rejected, and record every decision so that Dr Menon's finance team can follow it. The claim is still stated today, before it is tested, so that Thursday tests it and does not merely finish it; it carries its denominators and its caveat.
 
 ### Trainer agenda
 
 1. Daily checkpoint: each group answers the day's three checkpoint questions in two minutes (30 min).
 2. The trainer solves a smaller slice of one sub-problem in the open and shares the day's progress (60 min).
-3. Groups build: profile, clean, reconcile, first cuts; trainer circulates (rest of day).
-4. Close-out: one blocker per group named aloud (15 min).
+3. Groups build: profile, clean, reconcile, first cuts; the trainer circulates (through the day).
+4. Close-out: each group states its headline claim in one sentence, or names its blocker (20 min).
 
 ### Learner outcome
 
-TODAY: every group past profiling and into first analysis, with the decisions log and challenges log both moving.
+TODAY: every group past profiling and into analysis, with the decisions log and the challenges log both moving, and a testable headline claim stated.
 
 ### Subtopics (technique in service of the scenario)
 
 • Daily checkpoint questions
 • The trainer's parallel build, shared in the open
-• Group build time with circulation
+• Profile, clean, reconcile on unfamiliar data
+• The headline claim with its denominators and caveat
 • Challenges log discipline
 
 ### Trainer notes
 
-THE PARALLEL BUILD sets pace and shows method without handing over answers. CHECKPOINTS: a group that cannot answer them is stuck and should say so today rather than Friday.
+COMPRESSION: Tuesday was Dussehra, so today carries build days two and three, and the catch-up reserve is spent as schedule slack; any Week 1 or 2 backlog is handled inside the checkpoint groups.
+THE PARALLEL BUILD sets pace and shows method without handing over answers. CHECKPOINTS: a group that cannot answer them is stuck and should say so today, since Thursday opens the mocks.
+PUSH: the claim is stated today, so that Thursday tests it.
 
 ### Client zero data (TRAINER ONLY)
 
-Groups work their own scoped cut of the Kalpa Health data; the trainer's slice stays deliberately smaller.
+Groups work their own scoped cut of the Kalpa Health data; the trainer's slice stays deliberately smaller. The claim must cite Kalpa Health's own numbers.
 
 ### In-session exercises
 
 • The day's three checkpoint questions per group.
 • Build time against the group's own plan.
-
-### After-class tasks
-
-• Build continues; challenges log entries as they happen.
-
-### Interview angle
-
-• [F] Two systems export the same entity with different id formats; how do you reconcile them?
-Tags: [S] staple asked everywhere · [F] frequent in GCC and product screens · [SV] service-major screen opener · [D] differentiator. This programme's own calibration for 0-3 year Indian-market candidates.
-
-### Trainer resources
-
-• Parallel build and checkpoint questions from the pack.
-
-### Student references
-
-• The Week 1 Wednesday decisions log is the model for this week's log.
-
-### Kahoot quiz plan
-
-No tests run during build weeks, so no Kahoot today.
-
-## Wed 14 Oct 2026 · Build 1 · Build day three: the headline claim, plus the catch-up reserve
-
-### Business scenario of the day
-
-KALPA HEALTH, BUILD 1 (context in Monday's row). WEDNESDAY. Dr Menon asks for a headline by end of day: one sentence per sub-problem she can carry into her own board meeting. The catch-up reserve sits in the morning for any Week 1 or 2 backlog.
-
-### Thinking we train, before any tool
-
-A claim must be stated before it is tested, so days four and five test it rather than finish it. The claim carries its denominators and its caveat; the challenges log carries what nearly went wrong.
-
-### Trainer agenda
-
-1. Daily checkpoint (30 min).
-2. Catch-up block from the catch-up plan, for any Week 1 or 2 backlog, released to build time otherwise (up to 120 min).
-3. Groups build toward a defensible headline: the tree branch, the ladder rung, the reconciliation, the fair comparison (rest of day).
-4. Close-out: each group states its headline claim in one sentence (15 min).
-
-### Learner outcome
-
-TODAY: each group holds a testable headline claim for Dr Menon and knows what evidence still misses.
-
-### Subtopics (technique in service of the scenario)
-
-• Daily checkpoint
-• The catch-up reserve, used or released
-• The headline claim with denominators and caveat
-
-### Trainer notes
-
-THE CATCH-UP RESERVE absorbs teaching backlog by design. PUSH: the claim is stated today so days four and five test it.
-
-### Client zero data (TRAINER ONLY)
-
-Groups remain on their sub-problem; the claim must cite Kalpa Health's own numbers.
-
-### In-session exercises
-
-• Checkpoint questions.
 • The headline sentence, written and pinned.
 
 ### After-class tasks
@@ -180,22 +178,23 @@ Groups remain on their sub-problem; the claim must cite Kalpa Health's own numbe
 
 ### Interview angle
 
+• [F] Two systems export the same entity with different id formats; how do you reconcile them?
 • [D] State your finding in one sentence a COO can carry into a board meeting.
 Tags: [S] staple asked everywhere · [F] frequent in GCC and product screens · [SV] service-major screen opener · [D] differentiator. This programme's own calibration for 0-3 year Indian-market candidates.
 
 ### Trainer resources
 
-• The catch-up teaching plan from the pack.
+• The parallel build, the checkpoint questions and the catch-up plan from the pack.
 
 ### Student references
 
-• The Week 1 Thursday note structure is the presentation skeleton.
+• The Week 1 Wednesday decisions log is the model for this week's log, and the Week 1 Thursday note structure is the presentation skeleton.
 
 ### Kahoot quiz plan
 
 No tests run during build weeks, so no Kahoot today.
 
-## Thu 15 Oct 2026 · Build 1 · Mock R1 opens; build completion
+## Thu 22 Oct 2026 · Build 1 · Mock R1 opens; build completion
 
 ### Business scenario of the day
 
@@ -257,7 +256,7 @@ https://www.geeksforgeeks.org/data-analysis/data-analyst-interview-questions-and
 
 No tests run during build weeks, so no Kahoot today.
 
-## Fri 16 Oct 2026 · Build 1 · Expert day one: GDs at thirty minutes per group, first presentations
+## Fri 23 Oct 2026 · Build 1 · Expert day one: GDs at thirty minutes per group, first presentations
 
 ### Business scenario of the day
 
@@ -318,7 +317,7 @@ Tags: [S] staple asked everywhere · [F] frequent in GCC and product screens · 
 
 No tests run during build weeks, so no Kahoot today.
 
-## Sat 17 Oct 2026 · Build 1 · Expert day two plus the flown-in leader: presentations, defence, grade closure
+## Sat 24 Oct 2026 · Build 1 · Expert day two plus the flown-in leader: presentations, defence, grade closure
 
 ### Business scenario of the day
 
