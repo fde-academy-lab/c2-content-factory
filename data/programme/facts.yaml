@@ -290,3 +290,15 @@ conflicts:
     sources: [tracker, handover]
     text: The 20-Week Plan sizes the Week 16 forward deployed block at roughly 27 hours; the handover says about 30.
     working_rule: Packs size Week 16 from the tracker rows, which are day by day.
+  - id: exercise-channel
+    sources: [docs/03_Day_Pack_Spec.md of 13 September, handover]
+    text: The day pack spec of 13 September says GitHub Discussions is not used; the handover of 27 September says exercises are posted on GitHub Discussions, which is also what the Cohort 1 learnings and the method retrospective describe.
+    working_rule: The handover is later, so exercises are written to be pasted into GitHub Discussions verbatim, with no trainer text inside them.
+  - id: weekly-metrics
+    sources: [docs/01_Programme_Facts_C2.md of 13 September, handover]
+    text: The facts file of 13 September named a Weekly Academic Score and a Weekly Performance Score over Weeks 2 to 21; the handover of 27 September describes six signals, one tracker and one score sheet, and neither metric.
+    working_rule: No artifact names either metric until the Programme Head confirms it survives the re-date.
+  - id: eligibility-thresholds
+    sources: [docs/01_Programme_Facts_C2.md of 13 September, handover]
+    text: The facts file of 13 September set placement gates of CGPA above 7.0 and attendance above 95 percent; the senate proposal, as the handover reports it, passes on CGPA 7, a Placement Index of 7, twelve projects and 90 percent attendance.
+    working_rule: No artifact quotes a threshold until the senate reconciliation closes; the ground team tracks attendance as if 90 percent counted.
