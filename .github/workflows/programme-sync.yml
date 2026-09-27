@@ -1,0 +1,93 @@
+# Keep every page that follows from the programme's movable facts in step with its sources.
+#
+# The sources are the three workbooks (docs/curriculum, docs/faculty and docs/journey, each as
+# source.xlsx) and data/programme/facts.yaml. scripts/sync_programme.py turns them into the
+# markdown exports, the calendar the board reads, the programme pages, every sync block inside a
+# day pack, and the claude.ai Project knowledge files.
+#
+# Two jobs, and neither ever pushes to main:
+#
+#   regenerate  runs on any other branch whose push touches a source, and on a manual run from
+#               the Actions tab on a branch. It runs the sync and commits what changed back to
+#               that branch. So a new faculty workbook uploaded through the GitHub web page, on a
+#               branch, comes back with every derived page already updated.
+#   check       runs on every pull request into main. It runs the sync in --check mode and fails
+#               when an output is stale or two sources disagree, which is what stops a hand edit
+#               inside a sync block, or a workbook change nobody synced, from reaching main.
+#
+# A push made with the workflow's own token starts no new workflow run (GitHub docs, "Triggering
+# a workflow from a workflow", read 27 Sep 2026), so the regenerate job cannot loop. The same rule
+# means the check on the commit it makes waits for a maintainer to approve it in the pull
+# request's merge box.
+name: Sync the programme facts
+
+on:
+  push:
+    branches-ignore: [main]
+    paths:
+      - 'docs/curriculum/source.xlsx'
+      - 'docs/faculty/source.xlsx'
+      - 'docs/journey/source.xlsx'
+      - 'data/programme/facts.yaml'
+      - 'scripts/sync_programme.py'
+      - 'scripts/export_curriculum.py'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: programme-sync-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  regenerate:
+    if: github.event_name != 'pull_request' && github.ref != 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the branch
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: Install the two packages the sync needs
+        run: pip install --quiet openpyxl pyyaml
+
+      - name: Sync
+        run: python3 scripts/sync_programme.py
+
+      - name: Commit what the sync wrote
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A docs data content prompts wiki .claude/skills CLAUDE.md
+          if git diff --cached --quiet; then
+            echo "Every output already matches its sources. Nothing to commit."
+            exit 0
+          fi
+          git commit -m "Sync the programme facts from ${GITHUB_SHA:0:7}"
+          git push
+
+  check:
+    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the pull request
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: Install the two packages the sync needs
+        run: pip install --quiet openpyxl pyyaml
+
+      - name: Check every output against its sources
+        run: python3 scripts/sync_programme.py --check
