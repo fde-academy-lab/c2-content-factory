@@ -71,3 +71,7 @@ The row's technique column does not name a channel cut. The take-home adds one b
 own interview angle asks how to make the case to marketing when the data says frequency, and
 marketing buys media by channel rather than by segment. The cut is computed from the same file and
 invents nothing.
+
+## Re-dated on 27 September 2026
+
+Tracker v7 of 21 September 2026 moved this row one week later, to Tuesday 6 October 2026, with no change to its fifteen columns, so the pack is unchanged apart from the day sheet's module and date lines, which now render from the calendar.

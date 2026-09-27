@@ -78,3 +78,7 @@ Every figure is re-asserted by a `kit.check` in the notebook.
 
 **Reachability, checked 13 Sep 2026:** `realpython.com` returned 403 to an automated request, which
 is bot filtering rather than a dead page. Flagged for a human to open once. The rest returned 200.
+
+## Re-dated on 27 September 2026
+
+Tracker v7 of 21 September 2026 moved this row one week later, to Wednesday 7 October 2026, with no change to its fifteen columns, so the pack is unchanged apart from the day sheet's module and date lines, which now render from the calendar.

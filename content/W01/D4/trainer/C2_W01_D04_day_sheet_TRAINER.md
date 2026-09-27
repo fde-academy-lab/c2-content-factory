@@ -2,6 +2,8 @@
 
 **TRAINER ONLY.**
 
+Posts to <!-- sync:module:W01/D4 -->Module 1: Foundations of AI and Data<!-- /sync:module:W01/D4 -->, on <!-- sync:day-date:W01/D4 -->Thu 08 Oct 2026<!-- /sync:day-date:W01/D4 -->.
+
 ---
 
 ## The two-minute orientation
@@ -26,7 +28,7 @@
 | 4 | 25 min | Sample size: Student's 40 percent on twelve against Retail-Plus on sixty-six. The rule of thumb. |
 | 5 | 45 min | Correlation against causation on the monsoon sale. Who took it, what a fair comparison needs, the aggregate that flips. |
 | 6 | 55 min | The note: guided on Retail-Plus, unguided on Student and the discount |
-| 7 | 20 min | Kahoot, close, Saturday preview |
+| 7 | 20 min | Kahoot, close, and Friday's lab previewed: the rules, the order, the rehearsal |
 
 ---
 
@@ -121,5 +123,5 @@ matters.
 ## What the room leaves with
 
 A correct p-value sentence, the sample-size instinct, the confounder named, and a one-page note
-holding three answers of three different shapes. The last one is the week's deliverable and the
-thing Saturday examines.
+holding three answers of three different shapes. The last one is the week's deliverable: Friday's
+rehearsal defends it aloud and Saturday's paper examines it.

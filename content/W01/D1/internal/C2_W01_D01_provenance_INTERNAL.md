@@ -83,3 +83,7 @@ once before it is read aloud in a room.
 | `distractor_audit` | PASS, 3 option sets, 18 items |
 | `build_cheatsheet` | PASS, 7 panels, 1 diagram, 1 page |
 | `verify.py` on the day folder | Recorded in the commit |
+
+## Re-dated on 27 September 2026
+
+Tracker v7 of 21 September 2026 moved this row one week later, to Monday 5 October 2026, with no change to its fifteen columns, so the pack is unchanged apart from the day sheet's module and date lines, which now render from the calendar.

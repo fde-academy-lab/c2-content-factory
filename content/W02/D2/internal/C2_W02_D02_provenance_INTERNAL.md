@@ -71,3 +71,7 @@ The take-home requires a join where a fan-out is possible, which rules out `orde
 and forces `payments` or `refunds`. A reviewer who thinks that over-constrains a first join
 exercise should say so; the alternative is a take-home that can be satisfied by a safe join, which
 does not test the habit the day exists to build.
+
+## Re-dated on 27 September 2026
+
+Tracker v7 of 21 September 2026 moved this row one week later, to Tuesday 13 October 2026, and gave it the violet IITGN faculty column: session W2-2, tentative, after the applied core, picking up where the row stops. The day sheet carries the block as a sync block, and the pack does not teach into it.

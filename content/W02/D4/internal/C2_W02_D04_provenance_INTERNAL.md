@@ -68,3 +68,7 @@ The pivot round-trip point, that melting a pivot returns more rows than you star
 every gap became a cell, is in the solutions and the study notes but not on a slide. It is a real
 gotcha and it is also the fifth idea in a block that already carries four, so it was cut from the
 deck deliberately. A reviewer who wants it on a slide should say which of the four it replaces.
+
+## Re-dated on 27 September 2026
+
+Tracker v7 of 21 September 2026 moved this row one week later, to Thursday 15 October 2026, and gave it the violet IITGN faculty column, which says there is no block on this day. The day sheet's module and date lines now render from the calendar.
