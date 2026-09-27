@@ -1,161 +1,97 @@
-# Week 1 recap paper: the answer key
+# Week 1 recap paper: key
 
-**TRAINER ONLY** until the discussion block, when it is walked question by question.
+TRAINER. Rendered from the tracker's item bank by `scripts/build_saturday_paper.py`. Change an item in the tracker, or an option in `data/programme/paper_edits.yaml`, and sync; never edit this file by hand.
 
-Every answer below is what a full-credit response contains, and beside it the most common partial
-answer and why it is partial. The discussion is worth more than the marking, so the second column is
-the one to spend time on.
+Saturday 10 October 2026. A 110-minute slot holding 52 items at 107 minutes by the blueprint's pace: 24 easy, 19 medium and 9 hard.
 
----
+## Marking
 
-## Section A. The tree and the ladder
+1. Papers are swapped, so nobody marks their own.
+2. The Academic TA reads the key out section by section, and the marker writes a tick or a cross beside each item.
+3. An item is right when its answer matches the key: every correct letter and no other on a more-than-one item, the number on an applied maths item (the working belongs to the discussion), and the whole sequence on an ordering item. The programme has set no partial-credit rule, so this key uses none.
+4. The marker writes the count of ticks as Items right on the front, out of 52, and hands the paper back.
+5. The TA collects the papers and tallies the misses by tag, using the table below; that tally is Monday's remediation read. It is never a ranking and never read out by name.
 
-**A1.** Revenue equals customers, times orders per customer, times items per order, times price per
-item, less discounts. A full answer picks one branch and gives a reason of the right kind: either
-the data can settle it fastest, or the answer would change the decision.
+## The key
 
-| Common partial answer | Why it is partial |
-|---|---|
-| The tree drawn correctly with no branch picked | The question asked for a choice and a reason |
-| "Customers, because marketing asked for the money" | That is what makes it the branch under dispute, not the branch to check first |
+| No. | Key | Type | Level | Tag | Roles | Day | Min | Interview anchor |
+|---|---|---|---|---|---|---|---|---|
+| 1 | price | Fill in the blank | Easy | [S] | BA, DS | Mon | 1 | How would you increase sales for an online retailer? |
+| 2 | customers | Fill in the blank | Easy | [S] | BA | Mon | 1 | A business says 'grow revenue 15 percent'; how do you turn that into questions data can answer? |
+| 3 | None | Fill in the blank | Easy | [F] | BA, DS | Tue | 1 | Why does a function that prints instead of returning break a pipeline? |
+| 4 | str (a string) | Fill in the blank | Easy | [F] | BA, DS | Wed | 1 | Everything read from a CSV is a string; what breaks and where do you convert? |
+| 5 | rejected | Fill in the blank | Easy | [F] | BA | Wed | 1 | Finance and your dashboard disagree; what do you do? |
+| 6 | large (or extreme) | Fill in the blank | Medium | [S] | BA, DS | Thu | 1 | What does p = 0.03 mean, and not mean? |
+| 7 | caveat | Fill in the blank | Easy | [S] | BA, FDE | Thu | 1 | Explain a finding to a non-technical stakeholder. |
+| 8 | confounder | Fill in the blank | Medium | [F] | BA, DS | Thu | 1 | Revenue rose after a discount; did the campaign work, and what would you need to know? |
+| 9 | False | True or false | Medium | [S] | BA, DS | Thu | 1 | What does p = 0.03 mean, and not mean? |
+| 10 | True | True or false | Easy | [S] | BA, DS | Mon | 1 | Mean or median for order value, and why? |
+| 11 | False | True or false | Medium | [SV] | BA, DS | Mon | 1 | Everything read from a CSV is a string; what breaks and where do you convert? |
+| 12 | True | True or false | Easy | [F] | BA, DS | Thu | 1 | What does p = 0.03 mean, and not mean? |
+| 13 | True | True or false | Easy | [F] | BA | Wed | 1 | How do you find duplicates, and what makes two records the same? |
+| 14 | False | True or false | Easy | [F] | BA, DS | Thu | 1 | 42 percent on 12 users against 31 percent on 1,200; which do you trust? |
+| 15 | False | True or false | Easy | [F] | BA, DS | Thu | 1 | Revenue rose after a discount; did the campaign work, and what would you need to know? |
+| 16 | True | True or false | Hard | [D] | BA, DS | Thu | 1 | Revenue rose after a discount; did the campaign work, and what would you need to know? |
+| 17 | c | One correct option | Easy | [S] | BA, DS | Tue | 2 | Sales dropped 15 percent last month; how would you investigate? |
+| 18 | a | One correct option | Easy | [S] | BA, FDE | Mon | 2 | Marketing wants budget for acquisition; what would you check before agreeing it is the right branch? |
+| 19 | d | One correct option | Easy | [S] | BA, DS | Mon | 2 | Mean or median for order value, and why? |
+| 20 | a | One correct option | Easy | [S] | BA | Tue | 2 | Sales dropped 15 percent last month; how would you investigate? |
+| 21 | d | One correct option | Medium | [F] | BA, DS | Tue | 2 | What has to match before a quarter-on-quarter comparison is fair? |
+| 22 | c | One correct option | Easy | [F] | BA, DS | Tue | 2 | Why does a function that prints instead of returning break a pipeline? |
+| 23 | d | One correct option | Medium | [F] | BA, DS | Wed | 2 | How do you handle missing data? |
+| 24 | b | One correct option | Medium | [F] | BA | Wed | 2 | How do you find duplicates, and what makes two records the same? |
+| 25 | a | One correct option | Medium | [F] | BA | Wed | 2 | Finance and your dashboard disagree; what do you do? |
+| 26 | c | One correct option | Hard | [S] | BA, DS | Thu | 2 | What does p = 0.03 mean, and not mean? |
+| 27 | b | One correct option | Easy | [F] | BA, DS | Thu | 2 | 42 percent on 12 users against 31 percent on 1,200; which do you trust? |
+| 28 | d | One correct option | Medium | [S] | BA, FDE | Wed | 2 | Finance and your dashboard disagree; what do you do? |
+| 29 | c | One correct option | Hard | [D] | BA, FDE | Mon | 2 | Marketing wants budget for acquisition; what would you check before agreeing it is the right branch? |
+| 30 | a, b, d | More than one correct | Easy | [S] | BA | Tue | 2.5 | A business says 'grow revenue 15 percent'; how do you turn that into questions data can answer? |
+| 31 | a, b, c | More than one correct | Medium | [S] | BA, DS | Tue | 2.5 | Sales dropped 15 percent last month; how would you investigate? |
+| 32 | a, b, c | More than one correct | Easy | [S] | BA, DS | Wed | 2.5 | How do you handle missing data? |
+| 33 | a, b, c | More than one correct | Easy | [F] | BA | Wed | 2.5 | How do you handle missing data? |
+| 34 | a, b, c | More than one correct | Medium | [F] | BA, DS | Thu | 2.5 | Revenue rose after a discount; did the campaign work, and what would you need to know? |
+| 35 | a, b, d | More than one correct | Hard | [S] | BA, DS | Thu | 2.5 | What does p = 0.03 mean, and not mean? |
+| 36 | b | Scenario set | Easy | [S] | BA, DS | Tue | 2.5 | Sales dropped 15 percent last month; how would you investigate? |
+| 37 | b | Scenario set | Medium | [S] | BA, DS | Tue | 2.5 | Sales dropped 15 percent last month; how would you investigate? |
+| 38 | True | Scenario set | Medium | [F] | BA, DS | Tue | 2.5 | Sales dropped 15 percent last month; how would you investigate? |
+| 39 | a | Scenario set | Hard | [D] | BA, DS | Tue | 2.5 | Sales dropped 15 percent last month; how would you investigate? |
+| 40 | 197 | Scenario set | Easy | [F] | BA | Wed | 2.5 | Finance and your dashboard disagree; what do you do? |
+| 41 | 17 | Scenario set | Medium | [F] | BA | Wed | 2.5 | Finance and your dashboard disagree; what do you do? |
+| 42 | c | Scenario set | Hard | [S] | BA | Wed | 2.5 | Finance and your dashboard disagree; what do you do? |
+| 43 | a | Scenario set | Hard | [D] | BA, DS, FDE | Thu | 2.5 | Revenue rose after a discount; did the campaign work, and what would you need to know? |
+| 44 | True | Scenario set | Medium | [F] | BA, DS, FDE | Thu | 2.5 | Revenue rose after a discount; did the campaign work, and what would you need to know? |
+| 45 | d | Scenario set | Hard | [D] | BA, DS, FDE | Thu | 2.5 | Revenue rose after a discount; did the campaign work, and what would you need to know? |
+| 46 | Revenue falls by 6.5 percent (1.10 x 0.85 = 0.935). | Applied maths | Hard | [F] | BA, FDE | Mon | 4 | Marketing wants budget for acquisition; what would you check before agreeing it is the right branch? |
+| 47 | Median Rs 1,400; mean Rs 97,080. | Applied maths | Easy | [S] | BA, DS | Mon | 4 | Mean or median for order value, and why? |
+| 48 | A fall of 9.5 percent ((1.9 - 2.1) / 2.1). | Applied maths | Easy | [S] | BA | Tue | 4 | Sales dropped 15 percent last month; how would you investigate? |
+| 49 | 0.028 (140 / 5,000). | Applied maths | Medium | [S] | BA, DS | Thu | 4 | What does p = 0.03 mean, and not mean? |
+| 50 | Rs 11 crore (Rs 12 crore before discounts). | Applied maths | Medium | [S] | BA, FDE | Mon | 4 | How would you increase sales for an online retailer? |
+| 51 | b, d, e, a, c | Order the steps | Medium | [S] | BA | Tue | 2.5 | Sales dropped 15 percent last month; how would you investigate? |
+| 52 | b, d, a, c | Order the steps | Medium | [F] | BA | Wed | 2.5 | Finance and your dashboard disagree; what do you do? |
 
-**A2.** Confirm the drop is real. Compare like with like. Decompose along the tree. Isolate the
-branch and the segment. Hypothesise, and say what evidence would settle it.
+## Items by tag, level and day, for the tally
 
-Each rung needs: both totals on one definition; equal windows and the same segment definitions;
-customers, orders and revenue by period; the same split per segment; something from outside the data.
+- [S] (24): 1, 2, 6, 7, 9, 10, 17, 18, 19, 20, 26, 28, 30, 31, 32, 35, 36, 37, 42, 47, 48, 49, 50, 51
+- [F] (22): 3, 4, 5, 8, 12, 13, 14, 15, 21, 22, 23, 24, 25, 27, 33, 34, 38, 40, 41, 44, 46, 52
+- [SV] (1): 11
+- [D] (5): 16, 29, 39, 43, 45
+- Easy (24): 1, 2, 3, 4, 5, 7, 10, 12, 13, 14, 15, 17, 18, 19, 20, 22, 27, 30, 32, 33, 36, 40, 47, 48
+- Medium (19): 6, 8, 9, 11, 21, 23, 24, 25, 28, 31, 34, 37, 38, 41, 44, 49, 50, 51, 52
+- Hard (9): 16, 26, 29, 35, 39, 42, 43, 45, 46
+- Mon (10): 1, 2, 10, 11, 18, 19, 29, 46, 47, 50
+- Tue (13): 3, 17, 20, 21, 22, 30, 31, 36, 37, 38, 39, 48, 51
+- Wed (13): 4, 5, 13, 23, 24, 25, 28, 32, 33, 40, 41, 42, 52
+- Thu (16): 6, 7, 8, 9, 12, 14, 15, 16, 26, 27, 34, 35, 43, 44, 45, 49
 
-| Common partial answer | Why it is partial |
-|---|---|
-| The five rungs in the wrong order | The order is the whole answer; decomposing before comparing gives a confident wrong result |
-| Rungs listed with no "what it needs" | A rung without its input is a label |
+## Option edits laid on the bank, waiting for the tracker
 
-**A3.** Something of this shape: the customer count is flat in both quarters, so the base is not
-shrinking. Orders per customer fell and almost all of it is in one segment. Here is what would
-settle why, and I have not tested it yet.
+These options differ from the tracker's wording, because the bank's key was the longest option. The stem and the key are the tracker's. Accept an edit by copying it into the tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.
 
-The mark is for saying the disproof **before** the finding, and for leaving the cause as a
-hypothesis.
-
----
-
-## Section B. Numbers that describe
-
-**B1.** The median, because it describes a typical order. Say the mean beside it and explain the
-gap: one corporate order carries most of the revenue, so the mean describes nothing in the file.
-
-| Common partial answer | Why it is partial |
-|---|---|
-| "The median" with no mention of the mean | The gap between them is the finding, and hiding the mean hides it |
-
-**B2.** Two sentences of this shape: most orders are small and sit near Rs 1,200, and at least one is
-tens of thousands larger, so the spread is dominated by a few values rather than by the typical
-order.
-
-**B3.** Orders divided by distinct customers, in the same window. Things that break comparability:
-different window lengths, a changed segment definition, one period still open, a different
-definition of customer.
-
----
-
-## Section C. Trust
-
-**C1.** First: profile the export and reconcile, because both figures are computable and one of them
-is right. Refuse: adjusting your figure so the two agree. That is the difference between reconciling
-and fabricating.
-
-**The refusal is the mark.** An answer with no refusal in it is half an answer.
-
-**C2.** No. 183 plus 14 is 197, so three rows are unaccounted for. Find them, because a pass that
-loses rows silently will lose more on a bigger file.
-
-**C3.** Three checks, in an order like: is the file the one I think it is; does the row count match
-the source; and is my rule actually firing, tested on a row I know is bad.
-
-| Common partial answer | Why it is partial |
-|---|---|
-| "Check the data" | Not a check |
-| Three checks with no order | The order is the answer: the file, then the counts, then the rule |
-
-**C4.** A whole-record check leaves the pair in, because the dates differ. A check on the id removes
-one and forces a choice of date. Use the id check, and record which date was kept and why.
-
----
-
-## Section D. Real, and caused
-
-**D1.** It is the share of chance-only worlds that produce a result at least this extreme.
-
-It is **not** a 3 percent chance the finding is wrong, not a 3 percent chance that chance caused it,
-and not a statement about the size of the effect.
-
-**The second half is where the marks are.** An answer with a correct definition and no negation is
-an answer that will be misused under pressure.
-
-**D2.** `p < 0.0002`. Because five thousand shuffles can only resolve down to one in five thousand,
-and writing `p = 0` claims a certainty the method cannot produce.
-
-**D3.** The 31 percent on 400. The rule of thumb is to distrust a rate computed on fewer than about
-thirty observations, and it is **a rule of thumb rather than a law**, which the answer has to say.
-
-**D4.** Three of: the customers who took it may have been about to buy anyway; the group that took
-it differs from the group that did not; something else changed in the same weeks; the comparison has
-no control group; the aggregate may be a mix effect.
-
-**D5.** Both groups fell. The exposed group holds a larger share of the higher-spending segment than
-the control group does. So the blend is pulled upward by who is in it rather than by what anybody
-spent.
-
-Full credit needs all three sentences. Two of them is the most common submission.
-
----
-
-## Section E. The note
-
-**E1.** Four sentences, in order, each doing its own job.
-
-> **Claim.** Orders per Retail-Plus member fell about a third between the quarters, against
-> Retail-Core's 2.7 percent.
-> **Evidence.** Sixty-six orders across 22 members, and chance produced a gap this large in none of
-> 5,000 shuffles.
-> **Caveat.** The cause is untested; the reorder-feature complaint is a hypothesis and nothing here
-> measures the feature.
-> **Action.** Pull reorder events per member either side of the six weeks, against Retail-Core,
-> which is a day's work.
-
-The added sentence for marketing's pushback should concede what is true and hold the line: the six
-percent is real and it measures the mix rather than the discount.
-
-**E2.** Something of this shape: "Not yet. On twelve orders a rise that size turns up by chance two
-times in five. Give it a full quarter and I will have an answer at around fifty orders."
-
-The mark is for naming **what would end the not-yet**. A refusal without that is evasion.
-
----
-
-## Section F. The transfer
-
-**F1.** Stays the same: the tree, the ladder, the reconciliation habit, the four-part note, and
-asking for the denominator.
-
-Changes, and two specifics are needed. Acceptable pairs include: the vocabulary, where a booking is
-an order and a test is an item; the cost of an error, where a missed diagnosis is not a missed sale;
-the seasonality, since diagnostics have referral patterns retail does not; the regulatory constraint
-on what can be reported.
-
-First three asks: the equivalent of the orders table with its date and unit; the definitions their
-Finance uses for a completed test; and whichever branch the COO believes is short, so the first cut
-tests her belief rather than yours.
-
-| Common partial answer | Why it is partial |
-|---|---|
-| A method list with no "what changes" | The transfer is the question; restating Week 1 is not the answer |
-| "The domain changes" | Name two things, as asked |
-
----
-
-## What to do with the marking
-
-Papers swap for peer cross-evaluation. The peer marks against this key and writes **one line per
-answer** saying what was missing rather than a number. The discussion then walks D1, C1 and E1,
-because those three carry the week.
+- Item 17, option a, b (proposed): The key (23 characters) was the only option phrased as a count; the two frequency branches now read the same way.
+- Item 19, option b (proposed): The key was the longest option; the miscalculation distractor now names a cause.
+- Item 21, option b (proposed): The key was one character longer than the next option.
+- Item 22, option b (proposed): The key was the longest option; the print distractor now states the misconception in full.
+- Item 28, option c (proposed): The key was the longest option.
+- Item 29, option a (proposed): The key was the longest option.
+- Item 42, option b (proposed): The key was one character longer than the next option.
+- Item 45, option a (proposed): The key was the longest option.

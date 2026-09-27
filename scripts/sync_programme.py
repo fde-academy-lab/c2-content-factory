@@ -21,6 +21,8 @@ writes:
     docs/curriculum/*.md, docs/faculty/*.md, docs/journey/*.md   the workbook exports
     data/programme/days.json      one record per day, which scripts/board_sync.py reads
     docs/programme/*.md           the calendar, the faculty plan and the decisions register
+    content/W{ww}/SAT/paper and answer-key, for every week whose paper is already built,
+                                  with data/programme/paper_edits.yaml laid on top
     every <!-- sync:NAME --> ... <!-- /sync:NAME --> block in the markdown under docs/, content/,
     prompts/, wiki/ and .claude/skills/, plus CLAUDE.md, re-rendered for its file's audience
     docs/claude-project/knowledge/  the files the claude.ai Project is loaded with
@@ -60,6 +62,7 @@ import yaml
 HERE = pathlib.Path(__file__).resolve().parent
 ROOT = HERE.parent
 sys.path.insert(0, str(HERE))
+import build_saturday_paper as bsp  # noqa: E402
 import export_curriculum as ec  # noqa: E402
 
 FACTS = pathlib.Path("data/programme/facts.yaml")
@@ -829,6 +832,19 @@ def build(report):
     jwb = openpyxl.load_workbook(JOURNEY, data_only=True)
     for ws in jwb.worksheets:
         generated[pathlib.Path("docs/journey") / ec.file_name(ws.title)] = "\n".join(ec.export_plain(ws)[0])
+
+    def sat_date(week):
+        d = ctx.day.get(f"{week}/SAT")
+        return d["date"] if d else None
+
+    papers, notes = bsp.render_all(TRACKER, date_of=sat_date, existing_only=True)
+    for path, text in papers.items():
+        generated[path.relative_to(ROOT)] = text
+    for paper, no, state, why in notes:
+        if state == "broken":
+            report.error(f"data/programme/paper_edits.yaml {paper} item {no}: {why}")
+        elif state == "folded":
+            report.warn(f"data/programme/paper_edits.yaml {paper} item {no}: {why}; delete the edit")
 
     generated[DAYS_JSON] = days_json(ctx)
     generated[PROGRAMME_DOCS / "calendar.md"] = calendar_page(ctx)

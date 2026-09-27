@@ -113,6 +113,8 @@ def parse_items(text):
                 break
 
         bullets = all(o[0] is None for o in run)
+        if bullets and len(run) > len(POSITIONS):
+            continue  # a long bulleted list, such as a tally, is never an option set
         if bullets:
             run = [(POSITIONS[n], text, marked) for n, (_, text, marked) in enumerate(run)]
             ordered, qualifies = True, any(o[2] for o in run)
@@ -132,8 +134,19 @@ def parse_items(text):
     return items
 
 
+# A Saturday key is a table of No. | Key | Type. A key of several letters is a more-than-one-correct
+# item, and an ordering item's key is a sequence rather than a choice, so it is not audited.
+SAT_ROW = re.compile(r"^\|\s*(\d{1,3})\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|", re.M)
+MULTI_KEY = re.compile(r"^[a-f](?:\s*,\s*[a-f])+$")
+SKIP = "sequence"
+
+
 def keys_from_solutions(path):
-    """Pull an item-to-letter map out of the matching solutions file, if one exists."""
+    """Pull an item-to-key map out of the matching solutions or answer-key file, if one exists.
+
+    A key is a letter, a frozenset of letters for an item with more than one correct option, or
+    SKIP for an ordering item.
+    """
     stem = path.stem.replace("_STUDENT", "")
     folder = path.parent
     candidates = []
@@ -141,6 +154,8 @@ def keys_from_solutions(path):
         if root.is_dir():
             candidates += [p for p in root.glob("*.md") if stem.split("_")[-1] in p.stem
                            or p.stem.startswith(stem)]
+    if (folder.parent / "answer-key").is_dir():
+        candidates += sorted((folder.parent / "answer-key").glob("*.md"))
     keys = {}
     for cand in candidates:
         text = cand.read_text(encoding="utf-8", errors="replace")
@@ -149,6 +164,12 @@ def keys_from_solutions(path):
                 keys[item] = letter.lower()
         for row in re.findall(r"^\|\s*(\d{1,2})\s*\|\s*([a-f])\s*\|", text, re.M):
             keys[row[0]] = row[1].lower()
+        if cand.parent.name == "answer-key":
+            for item, key, kind in SAT_ROW.findall(text):
+                if kind.strip().lower().startswith("order"):
+                    keys[item] = SKIP
+                elif MULTI_KEY.match(key.strip()):
+                    keys[item] = frozenset(k.strip() for k in key.split(","))
         if keys:
             return keys, cand
     return keys, None
@@ -163,7 +184,7 @@ def audit_file(path):
     inline = any(marked for _, opts in items for *_, marked in opts)
     solution_keys, solution_file = ({}, None) if inline else keys_from_solutions(path)
 
-    fails, key_positions, unaudited = 0, [], []
+    fails, key_positions, unaudited, multi_positions, keyed_labels = 0, [], [], [], []
     for label, opts in items:
         key = None
         if inline:
@@ -175,6 +196,20 @@ def audit_file(path):
                       f"and exactly one must be.")
                 fails += 1
                 continue
+        elif label in solution_keys and solution_keys[label] == SKIP:
+            continue
+        elif label in solution_keys and isinstance(solution_keys[label], frozenset):
+            # More than one correct: the positions still have to spread, but "the key is the
+            # longest option" has no single key to test, so only the positions are counted.
+            wanted = solution_keys[label]
+            missing = sorted(wanted - {o[0] for o in opts})
+            if missing:
+                print(f"FAIL  {path.name} item {label}: the key names option(s) {', '.join(missing)}, "
+                      f"which this item does not offer.")
+                fails += 1
+                continue
+            multi_positions += sorted(wanted)
+            continue
         elif label in solution_keys:
             wanted = solution_keys[label]
             key = next((o for o in opts if o[0] == wanted), None)
@@ -188,6 +223,7 @@ def audit_file(path):
             continue
 
         key_positions.append(key[0])
+        keyed_labels.append(label)
         longest = max(len(o[1]) for o in opts)
         if len(key[1]) == longest and sum(1 for o in opts if len(o[1]) == longest) == 1:
             print(f"FAIL  {path.name} item {label}: the key is the longest option at "
@@ -201,10 +237,11 @@ def audit_file(path):
               f"the solutions file as an Answers line or a Key column.")
         fails += 1
 
-    if key_positions:
+    if key_positions or multi_positions:
         used = sorted(set(p for _, opts in items for p, *_ in opts))
-        counts = {p: key_positions.count(p) for p in used}
-        n = len(key_positions)
+        every = key_positions + multi_positions
+        counts = {p: every.count(p) for p in used}
+        n = len(every)
         top = max(counts, key=counts.get)
         if n >= 4 and counts[top] / n > 0.5:
             print(f"FAIL  {path.name}: {counts[top]} of {n} keys sit on position '{top}'. "
@@ -216,8 +253,7 @@ def audit_file(path):
                   f"which a room notices by the third quiz.")
             fails += 1
 
-        keyed = {lab: k for (lab, opts), k in zip(
-            [(lab, opts) for lab, opts in items], key_positions)}
+        keyed = dict(zip(keyed_labels, key_positions))
         for line in text.splitlines():
             if not FORMAT_LINE.search(line):
                 continue

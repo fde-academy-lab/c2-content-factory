@@ -1,0 +1,98 @@
+# Edits laid on top of the Saturday item bank in the tracker, until the tracker carries them.
+#
+# The bank (docs/curriculum/source.xlsx, 'Saturday papers' tab) is the source of every item. An
+# edit here replaces one or more option texts of one item when the paper is rendered, and never
+# changes the stem or the key. Each edit exists because the item broke the house distractor rule
+# that the key is never the unique longest option, which a room learns to exploit by the third
+# paper; the replacement makes a distractor a sharper near-miss at the key's length.
+#
+# To accept an edit, copy its option text into the tracker's Item cell and sync: the sync then
+# reports the edit as folded and it can be deleted here. To reject one, delete it and sync, and the
+# paper goes back to the bank's wording (and fails the distractor audit on that item).
+#
+# status: proposed (awaiting the Programme Head) or accepted (agreed, not yet in the tracker).
+
+W1:
+  17:
+    status: proposed
+    why: The key (23 characters) was the only option phrased as a count; the two frequency branches now read the same way.
+    options:
+      a: the number of orders per customer
+      b: the number of items per order
+  19:
+    status: proposed
+    why: The key was the longest option; the miscalculation distractor now names a cause.
+    options:
+      b: The median has been miscalculated from an incomplete export.
+  21:
+    status: proposed
+    why: The key was one character longer than the next option.
+    options:
+      b: Add two weeks at the Q2 weekly average and report that total as actual.
+  22:
+    status: proposed
+    why: The key was the longest option; the print distractor now states the misconception in full.
+    options:
+      b: The total, because print both displays the value and sends it back to the caller.
+  28:
+    status: proposed
+    why: The key was the longest option.
+    options:
+      c: Report the dashboard figure, because it refreshes daily while Finance's books lag a month.
+  29:
+    status: proposed
+    why: The key was the longest option.
+    options:
+      a: Customers, because new buyers bring in revenue that did not exist in the business before.
+  42:
+    status: proposed
+    why: The key was one character longer than the next option.
+    options:
+      b: It stays the same, because duplicates cancel out.
+  45:
+    status: proposed
+    why: The key was the longest option.
+    options:
+      a: Repeat it exactly as it ran, because total revenue rose 6 percent after the campaign.
+
+W2:
+  19:
+    status: proposed
+    why: The key was the longest option.
+    options:
+      b: Move the WHERE filter into a HAVING clause after GROUP BY.
+  22:
+    status: proposed
+    why: The key was the longest option; the new distractor is the fan-out misread in reverse.
+    options:
+      c: The join kept the unpaid orders as extra rows.
+  23:
+    status: proposed
+    why: The key was the longest option; the distractor is now the full query with the aggregate in WHERE.
+    options:
+      d: SELECT order_id FROM payments WHERE COUNT(order_id) > 1 GROUP BY order_id
+  29:
+    status: proposed
+    why: The key was the longest option.
+    options:
+      a: It sorts the rows by key, and then returns the first row of every key as the group's result.
+  32:
+    status: proposed
+    why: The key was the longest option.
+    options:
+      c: Computing the source-of-truth revenue figure that Finance will check its own books against.
+  42:
+    status: proposed
+    why: The key was the longest option; the distractor keeps the table-qualified column the key uses.
+    options:
+      b: INNER JOIN, then WHERE payments.amount_paid IS NULL
+  47:
+    status: proposed
+    why: The key was the longest option.
+    options:
+      a: RANK, at no cost, because every rank above four is simply filtered out by the WHERE.
+  51:
+    status: proposed
+    why: The key was the longest option.
+    options:
+      a: "In the pivot: type the warehouse total over the pivot's own total before the file is shared."
