@@ -122,7 +122,7 @@ Saturday recap papers are weekly artifacts taken from the week's paper in the tr
 
 ## The introduction pack, now in Week 0
 
-Orientation moved to Week 0 Monday on the 21 September calendar: the Programme Head's welcome carries the journey across twenty weeks, the kinds of week, how a teaching day, a Saturday and a build week run, and the client. That day ships the introduction pack instead of a standard pack: the client-zero narrative deck with the mental-map diagrams, the programme and week story, the day-by-day promise, and the session mechanics. Read `references/day1-intro-pack.md` before building it; its running order follows the student Week 0 sheet (`docs/journey/Week_0.md`). Week 1 Monday is a standard teaching day that opens straight on Meera Raghavan's question.
+Orientation moved to Week 0 Monday on the 21 September calendar. The Programme Head's welcome carries the journey map across twenty weeks, the kinds of week, how a teaching day, a Saturday and a build week run, and the three seats; setup and the self-rating follow. That day ships the introduction pack instead of a standard pack, and it carries no Kalpa material: the tracker keeps client zero for Week 1 Monday, which opens straight on Meera Raghavan's question, so the Week 0 pack stops before it. Read `references/day1-intro-pack.md` before building it; its running order follows the student Week 0 sheet (`docs/journey/Week_0.md`) and its content follows the tracker's Week 0 row.
 
 ## Verification checklist
 

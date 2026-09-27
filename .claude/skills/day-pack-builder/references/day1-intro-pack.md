@@ -1,37 +1,43 @@
-# The Day 1 Introduction Pack
+# The Introduction Pack (Week 0 Monday)
 
-The opening day is the one exception to the standard manifest. Its job is orientation: the world, the journey, and the rules of the room. It ships these pieces:
+The opening day is the one exception to the standard manifest. On the 21 September calendar it is Week 0
+Monday, the first day on campus, and its job is orientation: the journey, the rules of the room, a working
+environment and an honest starting point. It carries no Kalpa material. Client zero opens on Week 1 Monday
+inside that day's business scenario, where Meera Raghavan's question and the stakeholders arrive as they
+speak, so nothing here spends that opening. The pack ships these pieces:
 
-## 1. The client-zero narrative deck
+## 1. The journey map
 
-The story of Kalpa Group told as a story, and it opens on a question rather than on a company profile:
-Meera Raghavan, CEO of Kalpa Retail, will not sign a marketing budget until the new data team can tell her
-where growth actually comes from and where it is leaking. That question opens Day 1 and is never fully
-closed, because every module answers a harder version of it with a stronger tool.
+What the programme builds week by week (the phases and the kinds of week in one picture), what this week
+builds day by day, and what today builds hour by hour, each as a promise stated in capability terms ("by
+Saturday you can take a file nobody prepared to a defensible answer"). Dates come from the calendar page,
+never from memory. The same map returns at every week boundary with the current position lit.
 
-Around the question: who Kalpa is (a Singapore-headquartered conglomerate with five business units and its
-largest engineering and data centre in Bengaluru), what each unit sells, where Retail hurts (revenue grew 4
-percent last year against a plan of 15), and why a data and AI team exists inside it. Diagrams carry it: the
-company mental map with the five units as territories, the entity picture of the tables the cohort will live
-in, and the storyline frame showing Retail as the teaching spine against the units the build weeks visit.
-The named stakeholders are introduced here and used from memory for the rest of the programme.
-
-The learner should leave able to draw the company from memory, because every example for twenty weeks lands
-inside it. Client zero locked at v2.2 on 13 September 2026, so this pack is no longer blocked.
-
-## 2. The journey map
-
-What the programme builds week by week (the phase map in one picture), what this week builds day by day, and what today builds hour by hour, each as a promise stated in capability terms ("by Saturday you can take a file nobody prepared to a defensible answer"). The same map returns at every week boundary with the current position lit.
-
-## 3. The session mechanics deck section
+## 2. The session mechanics
 
 How a teaching day runs (the business scenario, the thinking on the board, demo, guided, unguided, Kahoot,
-close), how Saturdays run (the recap paper and the interview-answer discussion, ungraded), how build weeks differ, the platforms in use and what each is for, the group-of-four structure, and the AI-use policy for the early weeks. Facts only, no marks or weights stated while they are pending.
+close), how Saturdays run (an objective paper, swapped and marked against a key, then the interview-answer
+discussion, ungraded and never a ranking), how build weeks differ, the platforms in use and what each is for,
+the group-of-four structure, and what an AI-free segment is and why it stays visibly AI-free. Facts only: no
+marks or weights while they are pending, and a tentative fact, such as an IITGN faculty session, only with
+the word tentative beside it.
 
-## 4. The standard Day 1 teaching artifacts
+## 3. The three seats
 
-Day 1 still teaches (the environment and the first working script), so the standard deck, notebook, exercises, take-home, quiz, study notes and pre-read ship as usual for the teaching portion, per the main manifest.
+The business owner who states a problem in business words, the AI engineer who builds the thing that
+answers it, and the forward deployed engineer who makes it work inside the client's own systems. The seats
+are this programme's own construction, labelled as such wherever they are printed, and they return in every
+build week and in Week 16.
+
+## 4. Setup and the self-rating
+
+A first-use walkthrough for everything a learner opens today (a GitHub account, the course Codespace with
+one cell run, the LMS login, the GitHub Education student application, whose verification can take several
+days), with the help desk's checklist beside it. Then the self-rating form, A to D by topic, taken before
+Tuesday's diagnostic so that the claim and the measurement can be laid side by side.
 
 ## 5. The baseline note
 
-Week 1 is the baseline week; the day sheet marks which signals are being read (quiz behaviour, unguided completion) without stating any scoring, because nothing in Week 1 carries marks.
+Week 0 is the baseline week and nothing in it carries marks. The self-rating, Tuesday's diagnostic and the
+one-to-one produce the signed baseline card, which every later remediation conversation refers to. The day
+sheet says which signals are read today (setup completed, self-rating on file) without stating any scoring.

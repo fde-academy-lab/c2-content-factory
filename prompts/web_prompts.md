@@ -128,9 +128,7 @@ Build the introduction pack for Cohort 2, Week 0, Day 1, Monday 28 September 202
 
 Orientation moved to Week 0 Monday on the 21 September calendar. Read .claude/skills/day-pack-builder/references/day1-intro-pack.md first, then docs/journey/Week_0.md (what learners have been told, which sets the running order), the Monday row in docs/curriculum/W0_Baseline_week.md (which sets the content), and docs/curriculum/Structure.md.
 
-Confirm before starting that docs/07_Client_Zero.md exists and is marked locked. If it does not, stop and say so rather than inventing a company.
-
-Stop after the spine for my approval. The spine covers the client-zero narrative deck with the mental-map and entity diagrams, the journey map across twenty weeks, the kinds of week, the session mechanics, the setup walkthrough and the self-rating form. Then build in passes, verify with python3 scripts/verify.py content/W00/D1, and commit on branch w00-d1.
+Stop after the spine for my approval. The spine covers the journey map across twenty weeks, the kinds of week, the session mechanics, the three seats, the setup walkthrough and the self-rating form. It carries no Kalpa material, because client zero opens on Week 1 Monday. Then build in passes, verify with python3 scripts/verify.py content/W00/D1, and commit on branch w00-d1.
 ```
 
 ---
