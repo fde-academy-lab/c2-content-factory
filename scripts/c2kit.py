@@ -651,6 +651,18 @@ def equation(parts, title="", show=True):
     return _emit(_svg(x + 2, h + 30 + (20 if title else 0), "".join(body), title), show)
 
 
+def _nice_ceil(x):
+    """The next round number at or above x, 1, 2, 2.5 or 5 times a power of ten, for clean ticks."""
+    if x <= 0:
+        return 1
+    import math
+    p = 10 ** math.floor(math.log10(x))
+    for step in (1, 2, 2.5, 5, 10):
+        if step * p >= x:
+            return step * p
+    return 10 * p
+
+
 def strip(values, markers=(), title="", show=True, lo=0, hi=None, fmt=None, width=820,
           lit=()):
     """Every value as a dot on one axis, with the mean, the median or any line you name.
@@ -660,7 +672,7 @@ def strip(values, markers=(), title="", show=True, lo=0, hi=None, fmt=None, widt
     a list of indexes whose dots are drawn dark.
     """
     fmt = fmt or rupees
-    hi = hi if hi is not None else max(values) * 1.04
+    hi = hi if hi is not None else _nice_ceil(max(values) * 1.04)
     left, right, axis_y = 40, width - 40, 150
     span = (hi - lo) or 1
 
@@ -678,12 +690,18 @@ def strip(values, markers=(), title="", show=True, lo=0, hi=None, fmt=None, widt
                     f'fill="{MUTED}" font-family="{FONT}" font-size="12">'
                     f'{_html.escape(fmt(v))}</text>')
     colours = {"bad": FAIL_COLOUR, "good": PASS_COLOUR, "plain": ACCENT}
+    markers = list(markers)
     for n, (label, v, kind) in enumerate(markers):
         x = px(v)
         c = colours.get(kind, ACCENT)
+        # Two lines close together would print their labels over each other, so the lower one of a
+        # close pair reads leftward from its line.
+        prev = px(markers[n - 1][1]) if n else None
+        left = n > 0 and abs(x - prev) < 150 and x <= prev
         body.append(f'<line x1="{x:.0f}" y1="{34 + 16 * (n % 2)}" x2="{x:.0f}" y2="{axis_y}" '
                     f'stroke="{c}" stroke-width="1.6" stroke-dasharray="5 4"/>'
-                    f'<text x="{x + 5:.0f}" y="{30 + 16 * (n % 2)}" fill="{c}" '
+                    f'<text x="{x - 5 if left else x + 5:.0f}" y="{30 + 16 * (n % 2)}" fill="{c}" '
+                    f'text-anchor="{"end" if left else "start"}" '
                     f'font-family="{FONT}" font-size="12.5" font-weight="700">'
                     f'{_html.escape(label)} {_html.escape(fmt(v))}</text>')
     for i, v in enumerate(values):
