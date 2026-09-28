@@ -3,241 +3,1080 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The revenue tree, Kalpa Retail</title>
+<title>The question before the budget: Week 1, Monday companion</title>
+<style data-c2kit>
+/* c2kit.css: the look every companion page inlines, taken from the orientation deck.
+ * Violet on lavender, Georgia for headings, Calibri for text, cards with a soft shadow.
+ * scripts/build_companion.py inlines this file into each page. */
+:root{
+  --ink:#1A0F5C;--night:#1A1440;--violet:#5B3FD6;--violet-mid:#2C1A86;--lav:#D9A7FF;
+  --muted:#6B6690;--soft:#A9A3D2;--lilac:#CFC9EE;--line:#E4E1F1;--tint:#EEEAFB;--surface:#F4F2FA;
+  --white:#FFFFFF;--rose:#D63A6A;--rose-tint:#FCEBF0;--green:#1F8A5B;--green-tint:#E8F5EE;
+  --serif:Georgia,"DejaVu Serif",serif;
+  --sans:Calibri,Carlito,"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+  --mono:Consolas,ui-monospace,SFMono-Regular,Menlo,monospace;
+  --shadow:0 2px 6px rgba(26,15,92,.10),0 1px 2px rgba(26,15,92,.06);
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#F7F5FD 0%,#F2EFFB 100%);color:var(--night);
+     font:16px/1.55 var(--sans)}
+a{color:var(--violet)}
+code,kbd{font:14px var(--mono);background:var(--tint);border-radius:4px;padding:1px 5px;color:var(--ink)}
+
+/* the dark header, like a deck cover */
+.hero{background:radial-gradient(120% 140% at 85% 10%,#5B3FD6 0%,#2C1A86 45%,#1A1440 100%);
+      color:var(--white);padding:34px 40px 30px}
+.hero .kicker{display:inline-block;border:1px solid var(--lilac);border-radius:999px;padding:4px 14px;
+      font:700 11px var(--sans);letter-spacing:.24em;text-transform:uppercase;margin-bottom:14px}
+.hero h1{font:400 38px/1.15 var(--serif);margin:0 0 10px}
+.hero .quote{font:italic 20px/1.4 var(--serif);color:var(--lav);max-width:860px;margin:0 0 6px}
+.hero .who{color:var(--lilac);font-size:13px;margin:0}
+.hero .promise{color:#E4E1F1;max-width:860px;margin:16px 0 0}
+
+/* the page: a left rail and the sections */
+.page{display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;max-width:1240px;margin:0 auto;
+      padding:26px 28px 60px}
+@media (max-width:900px){.page{grid-template-columns:1fr}.rail{position:static}}
+.rail{position:sticky;top:18px;align-self:start;background:var(--white);border:1px solid var(--line);
+      border-radius:12px;padding:14px 12px;box-shadow:var(--shadow)}
+.rail .label{font:700 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--violet);
+      margin:2px 8px 8px}
+.rail a{display:flex;gap:10px;align-items:baseline;padding:7px 8px;border-radius:8px;color:var(--night);
+      text-decoration:none;font-size:14.5px}
+.rail a .n{font:15px var(--serif);color:var(--violet);min-width:22px}
+.rail a.on{background:var(--tint);color:var(--ink);font-weight:700}
+section.part{margin:0 0 38px;scroll-margin-top:16px}
+.part > .eyebrow{font:700 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--violet);
+      margin:0 0 4px}
+.part > h2{font:400 28px/1.2 var(--serif);color:var(--ink);margin:0 0 6px}
+.part > .lede{color:var(--muted);margin:0 0 16px;max-width:860px}
+
+/* cards and strips */
+.card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+      box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.grid2,.grid3{grid-template-columns:1fr}}
+.strip{border-radius:10px;padding:12px 16px;margin:12px 0;background:#F7F5FD;border:1px solid var(--line)}
+.strip b.tag{display:block;font:700 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;
+      color:var(--violet);margin-bottom:3px}
+.strip.client{background:linear-gradient(135deg,#2C1A86,#1A1440);color:var(--white);border:none}
+.strip.client b.tag{color:var(--lav)}
+.strip.bad{background:var(--rose-tint);border-color:#F3C5D3}
+.strip.bad b.tag{color:var(--rose)}
+.strip.good{background:var(--green-tint);border-color:#BFE3CF}
+.strip.good b.tag{color:var(--green)}
+.c2k-row{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
+.c2k-svg{max-width:100%;height:auto}
+.holder{overflow-x:auto}
+
+/* the guided walk */
+.walk .narration{min-height:150px}
+.walk .step{font:700 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)}
+.walk .narration h3{font:400 21px/1.25 var(--serif);color:var(--ink);margin:4px 0 8px}
+.meter{margin-top:14px}
+.meter .bar{position:relative;height:16px;border-radius:999px;background:var(--surface);border:1px solid var(--line);
+      overflow:hidden}
+.meter .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#7B62E8,#5B3FD6);
+      border-radius:999px;transition:width .35s ease}
+.meter .plan{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--rose)}
+.meter .legend{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:4px}
+.big{font:34px/1.1 var(--serif);color:var(--violet)}
+.verdict{font-weight:700;color:var(--ink)}
+
+/* buttons, toggles and inputs */
+button{font:inherit;cursor:pointer}
+.btn{padding:8px 16px;border-radius:999px;border:1px solid var(--violet);background:var(--white);color:var(--violet);
+     font-weight:700}
+.btn.primary{background:var(--violet);color:var(--white)}
+.btn[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.btn:focus-visible,.rail a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--lav);
+     outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.slider{margin:10px 0}
+.slider label{display:flex;justify-content:space-between;font-size:14.5px;color:var(--night)}
+.slider label b{color:var(--violet);font-family:var(--mono);font-weight:400}
+input[type=range]{width:100%;accent-color:var(--violet)}
+input[type=number],textarea{font:15px var(--mono);border:1px solid var(--lilac);border-radius:8px;padding:6px 9px;
+     color:var(--night);background:var(--white);width:100%}
+textarea{min-height:92px;resize:vertical}
+
+/* experiment cards */
+.exp{display:grid;gap:10px;align-content:start}
+.exp p{margin:0}
+.exp .result p{margin:0 0 8px}
+.exp .part-label{font:700 10.5px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)}
+.exp .result{border-top:1px dashed var(--lilac);padding-top:10px}
+.exp .result[hidden]{display:none}
+.exp .waiting{color:var(--muted);font-style:italic}
+.rule{font:italic 17px/1.4 var(--serif);color:var(--ink)}
+
+/* tables */
+table.t{border-collapse:collapse;width:100%;font-size:14.5px;margin:8px 0}
+table.t th{background:var(--ink);color:var(--white);text-align:left;padding:7px 10px;font-weight:700}
+table.t td{padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.t tr:nth-child(even) td{background:var(--surface)}
+table.t td.num,table.t th.num{text-align:right;font-variant-numeric:tabular-nums}
+
+/* popups */
+dialog{border:none;border-radius:14px;padding:0;max-width:min(860px,94vw);box-shadow:0 18px 50px rgba(26,15,92,.35)}
+dialog::backdrop{background:rgba(26,20,64,.45)}
+dialog .head{background:var(--ink);color:var(--white);padding:12px 18px;font:400 19px var(--serif);
+      display:flex;justify-content:space-between;align-items:center;gap:16px}
+dialog .body{padding:16px 18px}
+dialog .close{background:transparent;border:1px solid var(--lilac);color:var(--white);border-radius:999px;
+      padding:4px 12px}
+
+/* glossary */
+dl.gloss{display:grid;grid-template-columns:200px minmax(0,1fr);gap:8px 18px;margin:0}
+dl.gloss dt{font-weight:700;color:var(--ink)}
+dl.gloss dd{margin:0}
+dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
+@media (max-width:700px){dl.gloss{grid-template-columns:1fr}}
+.foot{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:10px;margin-top:30px}
+</style>
 <style>
-  :root{--ink:#1C1C1A;--muted:#5F6360;--accent:#2B4A7D;--tint:#E4ECF7;--bg:#F7F7F5;
-        --line:#C9C9C2;--pass:#1F6F4A;--fail:#8A3D3D;
-        --font:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-        --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
-  *{box-sizing:border-box}
-  body{margin:0;padding:20px;background:var(--bg);color:var(--ink);font:15px/1.5 var(--font)}
-  .wrap{max-width:1080px;margin:0 auto}
-  h1{font-size:22px;margin:0 0 4px}
-  .sub{color:var(--muted);margin:0 0 18px}
-  .grid{display:grid;grid-template-columns:1.25fr 1fr;gap:18px}
-  @media (max-width:820px){.grid{grid-template-columns:1fr}}
-  .card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 16px}
-  .card h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);
-           margin:0 0 10px}
-  .tree{display:flex;flex-direction:column;gap:8px}
-  .node{display:flex;justify-content:space-between;align-items:center;gap:10px;
-        border:1px solid var(--line);border-radius:6px;padding:8px 10px;background:var(--bg);
-        cursor:pointer;font:inherit;text-align:left;width:100%}
-  .node[aria-pressed="true"]{background:var(--tint);border-color:var(--accent);font-weight:700}
-  .node .val{font:13px var(--mono);color:var(--accent)}
-  label{display:block;font-size:13px;color:var(--muted);margin:10px 0 2px}
-  input[type=range]{width:100%}
-  .out{font:14px var(--mono);background:var(--bg);border:1px solid var(--line);
-       border-radius:6px;padding:10px;margin-top:10px}
-  .big{font-size:26px;font-weight:700;color:var(--accent)}
-  table{border-collapse:collapse;width:100%;font-size:13px;margin-top:6px}
-  th,td{text-align:left;padding:5px 8px 5px 0;border-bottom:1px solid var(--line);vertical-align:top}
-  th{color:var(--accent)}
-  .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-  button.act{font:inherit;padding:7px 12px;border:1px solid var(--accent);background:#fff;
-             color:var(--accent);border-radius:6px;cursor:pointer}
-  button.act[aria-pressed="true"]{background:var(--accent);color:#fff}
-  .log{margin-top:14px;font:13px var(--mono);color:var(--muted);border-top:1px solid var(--line);
-       padding-top:8px}
-  .warn{color:var(--fail);font-weight:700}
-  .ok{color:var(--pass);font-weight:700}
+  .formula{font:15px var(--mono);background:var(--surface);border:1px solid var(--line);border-radius:8px;
+           padding:8px 12px;margin-top:10px;color:var(--ink);overflow-x:auto}
+  .bill{margin:8px 0 0;padding-left:18px}
+  .bill li{margin:4px 0}
+  .trace td{font-family:var(--mono);font-size:14px}
+  .err{font:14px var(--mono);color:var(--rose)}
+  .ok{color:var(--green);font-weight:700}
+  .warn{color:var(--rose);font-weight:700}
+  .refused{margin:6px 0 0;padding-left:18px;color:var(--rose)}
+  .jumped{font-size:13px;color:var(--muted);margin:10px 8px 2px}
+  .note{font-size:13.5px;color:var(--muted)}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>The revenue tree, Kalpa Retail</h1>
-  <p class="sub">Revenue is a product of five branches. Move one and watch what the others do not do.</p>
+<header class="hero">
+  <span class="kicker">Week 1 &middot; Monday &middot; Companion</span>
+  <h1>The question before the budget</h1>
+  <p class="quote">&ldquo;Where does our growth actually come from, and where is it leaking?&rdquo;</p>
+  <p class="who">Meera Raghavan, CEO, Kalpa Retail, to the data and AI team at Kalpa's Global Capability Centre</p>
+  <p class="promise">This page makes the day's tree move. Walk the paths to the 15 percent plan, move the branches
+    yourself, run four experiments that each change one thing, and put your own numbers through the mean and the
+    median. Every figure here is either computed on this page or invented for the experiment, and each one says which.</p>
+</header>
 
-  <div class="grid">
-    <div class="card">
-      <h2>The tree</h2>
-      <div class="tree" id="tree"></div>
-      <div class="out">
-        <div>revenue</div>
-        <div class="big" id="revenue">Rs 0</div>
-        <div id="delta">at plan</div>
+<div class="page">
+  <nav class="rail" aria-label="Sections">
+    <div class="label">On this page</div>
+    <a href="#walk" data-part="walk"><span class="n">01</span>The walk to 115</a>
+    <a href="#calc" data-part="calc"><span class="n">02</span>Move the branches</a>
+    <a href="#experiments" data-part="experiments"><span class="n">03</span>Four experiments</a>
+    <a href="#numbers" data-part="numbers"><span class="n">04</span>Your numbers</a>
+    <a href="#average" data-part="average"><span class="n">05</span>Which average</a>
+    <a href="#glossary" data-part="glossary"><span class="n">06</span>Glossary</a>
+    <p class="jumped" id="jumped">You are at the top of the page.</p>
+  </nav>
+
+  <main>
+    <section class="part" id="walk">
+      <p class="eyebrow">01 &middot; The guided walk</p>
+      <h2>Where could 15 percent come from?</h2>
+      <p class="lede">Revenue sits at an index of 100 today, and the plan asks for 115. Each step lights the branch
+        that moves and moves the meter with it. The walk is arithmetic on an index; it uses no Kalpa figure beyond the
+        4 percent delivered and the 15 percent planned.</p>
+      <div class="card"><div class="holder" id="walkTree"></div></div>
+      <div class="walk" style="margin-top:16px">
+        <div class="card narration" aria-live="polite">
+          <div class="step" id="walkStep">Step 0 of 6</div>
+          <h3 id="walkTitle">Today, on an index of 100</h3>
+          <p id="walkText">Revenue is customers, times orders per customer, times items per order, times price per item,
+            less discounts. With today's revenue set to 100, every move below reads as a percentage of today.</p>
+          <div class="meter">
+            <div class="bar"><div class="fill" id="walkFill"></div><div class="plan" id="walkPlan"></div></div>
+            <div class="legend"><span>0</span><span>the plan, 115, is the rose line</span><span>130</span></div>
+          </div>
+          <p><span class="big" id="walkIndex">100.0</span> <span class="note">revenue index, today at 100</span></p>
+          <div class="row">
+            <button class="btn primary" id="walkNext" type="button">Next</button>
+            <button class="btn" id="walkRestart" type="button">Restart the walk</button>
+          </div>
+        </div>
       </div>
-      <div class="row">
-        <button class="act" id="reset" type="button">Reset to today</button>
-        <button class="act" id="plan" type="button">Show the 15 percent plan</button>
+    </section>
+
+    <section class="part" id="calc">
+      <p class="eyebrow">02 &middot; The tree calculator</p>
+      <h2>Move the branches yourself</h2>
+      <p class="lede">Set each branch's change in percent. The branches multiply, and the extra discount comes off the
+        top. The verdict compares the result with the plan and lists what each move you made would cost.</p>
+      <div class="grid2">
+        <div class="card">
+          <div class="slider"><label for="c0">Customers <b id="v0">+0%</b></label>
+            <input type="range" id="c0" min="-20" max="40" step="1" value="0"></div>
+          <div class="slider"><label for="c1">Orders per customer <b id="v1">+0%</b></label>
+            <input type="range" id="c1" min="-20" max="40" step="1" value="0"></div>
+          <div class="slider"><label for="c2">Items per order <b id="v2">+0%</b></label>
+            <input type="range" id="c2" min="-20" max="40" step="1" value="0"></div>
+          <div class="slider"><label for="c3">Price per item <b id="v3">+0%</b></label>
+            <input type="range" id="c3" min="-20" max="40" step="1" value="0"></div>
+          <div class="slider"><label for="c4">Extra discount, as a percent of gross revenue <b id="v4">0%</b></label>
+            <input type="range" id="c4" min="0" max="30" step="1" value="0"></div>
+          <div class="row"><button class="btn" id="calcReset" type="button">Back to today</button></div>
+        </div>
+        <div class="card">
+          <div class="step" style="font:700 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)">The result</div>
+          <p><span class="big" id="calcIndex">100.0</span> <span class="note">revenue index against 100 today</span></p>
+          <div class="formula" id="calcFormula">100 &times; 1.00 &times; 1.00 &times; 1.00 &times; 1.00 &times; (1 &minus; 0.00) = 100.0</div>
+          <p class="verdict" id="calcVerdict">Nothing has moved yet, so revenue sits at today's 100, fifteen points short of the plan.</p>
+          <div id="calcBill"><p class="note">Move a slider and the bill for that branch appears here.</p></div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="card">
-      <h2>Move one branch</h2>
-      <label for="s0">Customers <span id="l0"></span></label>
-      <input type="range" id="s0" min="-30" max="60" value="0">
-      <label for="s1">Orders per customer <span id="l1"></span></label>
-      <input type="range" id="s1" min="-30" max="60" value="0">
-      <label for="s2">Items per order <span id="l2"></span></label>
-      <input type="range" id="s2" min="-30" max="60" value="0">
-      <label for="s3">Price per item <span id="l3"></span></label>
-      <input type="range" id="s3" min="-30" max="60" value="0">
-      <label for="s4">Discount rate <span id="l4"></span></label>
-      <input type="range" id="s4" min="0" max="40" value="6">
-      <div class="out" id="branchnote">Pick a branch on the left to see what it costs to move.</div>
-    </div>
-  </div>
+    <section class="part" id="experiments">
+      <p class="eyebrow">03 &middot; Experiment cards</p>
+      <h2>Four experiments, one change each</h2>
+      <p class="lede">Read the situation and the hypothesis, decide what you expect, then run. The numbers in these four
+        cards are invented to isolate one mechanism, and each card says so.</p>
+      <div class="grid2">
+        <article class="card exp" id="expA">
+          <div class="part-label">Experiment A &middot; invented orders</div>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">One bulk order joins five ordinary orders</h3>
+          <p><b>Situation.</b> Five ordinary orders sit between Rs 1,900 and Rs 2,600. A business customer then places one
+            order of Rs 90,000 in the same window, replacing the Rs 2,600 order in the list.</p>
+          <p><b>Hypothesis.</b> The mean will rise by about the bulk order's extra size divided by five, and the median will
+            not move.</p>
+          <p><b>Watch for.</b> The rose mean line leaving the pile of dots, and whether the green median line moves at all.</p>
+          <div class="holder" id="expAStrip"></div>
+          <div class="row">
+            <button class="btn" id="expARun" type="button" aria-pressed="false">Add the bulk order</button>
+            <button class="btn" id="expASeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expAResult" hidden>
+            <p><b>What happened.</b> <span id="expAWhat"></span></p>
+            <p><b>Why it matters.</b> A note that calls Rs 19,720 the typical order describes nobody on the list, and a
+              budget sized on it is sized for customers who do not exist.</p>
+            <p class="rule">Report the median as the typical value, and name the extreme record on its own line.</p>
+          </div>
+          <p class="waiting" id="expAWait">What happened appears here after the run.</p>
+        </article>
 
-  <div class="card" style="margin-top:18px">
-    <h2>The average that lies</h2>
-    <p style="margin:0 0 8px">Thirty Kalpa orders. One of them is a corporate order.</p>
-    <div class="row">
-      <button class="act" id="withCorp" type="button" aria-pressed="true">With the corporate order</button>
-      <button class="act" id="noCorp" type="button">Without it</button>
-    </div>
-    <table>
-      <tr><th>Orders</th><td id="n">30</td></tr>
-      <tr><th>Revenue</th><td id="rev">Rs 5,44,810</td></tr>
-      <tr><th>Mean order</th><td id="mean">Rs 18,160</td></tr>
-      <tr><th>Median order</th><td id="median">Rs 2,205</td></tr>
-      <tr><th>Mean over median</th><td id="ratio">8.2 times</td></tr>
-    </table>
-    <p id="verdict" style="margin:10px 0 0"></p>
-  </div>
+        <article class="card exp" id="expB">
+          <div class="part-label">Experiment B &middot; arithmetic</div>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">Two 10 percent lifts</h3>
+          <p><b>Situation.</b> Retention lifts orders per customer by 10 percent and bundles lift items per order by 10
+            percent, in the same quarter.</p>
+          <p><b>Hypothesis.</b> Revenue rises by 21 percent, where adding the two lifts would say 20.</p>
+          <p><b>Watch for.</b> The last line of the working, and the one point of difference.</p>
+          <div class="formula" id="expBWork">100 &times; 1.10 &times; 1.10 = ?</div>
+          <div class="row">
+            <button class="btn" id="expBRun" type="button" aria-pressed="false">Multiply the branches</button>
+            <button class="btn" id="expBSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expBResult" hidden>
+            <p><b>What happened.</b> <span id="expBWhat"></span></p>
+            <p><b>Why it matters.</b> Small lifts on two branches beat one large lift on a single branch when the single
+              lift is expensive, and a planner who adds percentages underestimates both the upside and the downside.</p>
+            <p class="rule">Branches of a tree multiply, so lifts compound and falls compound.</p>
+          </div>
+          <p class="waiting" id="expBWait">What happened appears here after the run.</p>
+        </article>
 
-  <div class="log" id="log">Nothing changed yet.</div>
+        <article class="card exp" id="expC">
+          <div class="part-label">Experiment C &middot; arithmetic, with a calculator</div>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">The discount that buys too little</h3>
+          <p><b>Situation.</b> Marketing proposes 15 percent off everything for a month and expects 10 percent more items
+            sold.</p>
+          <p><b>Hypothesis.</b> Revenue falls, because 10 percent more volume at 85 percent of the price is less than today.</p>
+          <p><b>Watch for.</b> The revenue multiple, and the volume lift the discount would need just to stand still.</p>
+          <div class="slider"><label for="expCOff">Discount <b id="expCOffV">15%</b></label>
+            <input type="range" id="expCOff" min="5" max="40" step="1" value="15"></div>
+          <div class="formula" id="expCWork">break-even volume lift = 1 / (1 &minus; 0.15) &minus; 1 = 17.6%</div>
+          <div class="row">
+            <button class="btn" id="expCRun" type="button" aria-pressed="false">Run the 10 percent volume case</button>
+            <button class="btn" id="expCSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expCResult" hidden>
+            <p><b>What happened.</b> <span id="expCWhat"></span></p>
+            <p><b>Why it matters.</b> A discount trades margin for quantity, and it pays only when quantity rises by more
+              than the price falls, which is a number to agree before the campaign rather than discover after it.</p>
+            <p class="rule">A discount of d needs a volume lift of 1 / (1 &minus; d) &minus; 1 just to stand still.</p>
+          </div>
+          <p class="waiting" id="expCWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp" id="expD">
+          <div class="part-label">Experiment D &middot; invented records</div>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">An amount typed as text</h3>
+          <p><b>Situation.</b> Four invented orders reach the accumulator, and one amount was typed by a person as
+            &ldquo;1,800&rdquo;, in quotes, with an Indian comma.</p>
+          <p><b>Hypothesis.</b> The sum stops on that record with a TypeError, and wrapping it in int() still fails, with a
+            ValueError, because of the comma.</p>
+          <p><b>Watch for.</b> The pass the loop stops on, and the exact last line of each error.</p>
+          <div class="holder" id="expDTrace"></div>
+          <div class="row">
+            <button class="btn" id="expDRun" type="button">Run the next attempt</button>
+            <button class="btn" id="expDSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expDResult" hidden>
+            <p><b>What happened.</b> <span id="expDWhat"></span></p>
+            <p><b>Why it matters.</b> A fix that works on one value is a patch; cleaning decides, per field, what counts as a
+              valid value and what happens to the rows that are not, which is Wednesday's work.</p>
+            <p class="rule">Read the record that failed before you fix anything, and say what you patched.</p>
+          </div>
+          <p class="waiting" id="expDWait">Each run makes one attempt; three attempts end in a clean total.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="part" id="numbers">
+      <p class="eyebrow">04 &middot; The workbench</p>
+      <h2>Put your own numbers through the mean and the median</h2>
+      <p class="lede">Paste amounts from your notebook, one list of whole numbers. The page refuses anything Python's
+        int() would refuse, says why, and draws every accepted amount on one axis with its mean and its median.</p>
+      <div class="grid2">
+        <div class="card">
+          <label for="nums" class="note">Amounts, separated by spaces, new lines, or a comma followed by a space, as
+            Python prints a list</label>
+          <textarea id="nums" spellcheck="false" placeholder="for example: [1900, 2100, 2200, 2400, 2600]"></textarea>
+          <div class="row">
+            <button class="btn" id="numsDemo" type="button">Use the five invented orders</button>
+            <button class="btn" id="numsClear" type="button">Clear</button>
+          </div>
+          <ul class="refused" id="numsRefused"></ul>
+        </div>
+        <div class="card">
+          <div id="numsStats"><p class="note">The count, the mean, the median and a verdict appear here once the box holds
+            two or more amounts.</p></div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px"><div class="holder" id="numsStrip"><p class="note">The strip plot appears
+        here.</p></div></div>
+    </section>
+
+    <section class="part" id="average">
+      <p class="eyebrow">05 &middot; The decision</p>
+      <h2>Which average does the job?</h2>
+      <p class="lede">The right average depends on what the number is for. Pick a job and the tree lights the path.</p>
+      <div class="card"><div class="holder" id="avgTree"></div></div>
+      <div style="margin-top:16px">
+        <div class="card">
+          <div class="row" style="margin-top:0">
+            <button class="btn" id="avgTypical" type="button" aria-pressed="false">A typical order for Meera's note</button>
+            <button class="btn" id="avgTotal" type="button" aria-pressed="false">Revenue per order on the tree</button>
+            <button class="btn" id="avgFirst" type="button" aria-pressed="false">A first look at a new file</button>
+          </div>
+          <div class="strip" id="avgWhy"><b class="tag">Kavya's review</b>Pick a job on the left of this card to see
+            which average it needs, and why.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="part" id="glossary">
+      <p class="eyebrow">06 &middot; Glossary</p>
+      <h2>The day's words, and where each first mattered</h2>
+      <div class="card">
+        <dl class="gloss">
+          <dt>Revenue tree</dt><dd>Revenue drawn as the product of the counts and prices that make it, less discounts, so
+            each leaf is something the business can move.<span class="where">Half one, S7; notebook 1, section 2.</span></dd>
+          <dt>Branch and leaf</dt><dd>A branch is any box on the tree; a leaf has nothing multiplying into it and is where an
+            initiative lands.<span class="where">Half one, S9 and S12; notebook 1, the placement drill.</span></dd>
+          <dt>Numerator and denominator</dt><dd>The top and the bottom of a rate, said out loud before it is computed.<span
+            class="where">Half one, S8; notebook 1, section 2.</span></dd>
+          <dt>Rate and window</dt><dd>A rate leaves the team with its numerator, its denominator and the dates it covers.<span
+            class="where">Half two, S6; notebook 3, section 2.</span></dd>
+          <dt>Booked, delivered</dt><dd>Two honest readings of sales: every order placed, or only the orders that reached a
+            customer and stayed there.<span class="where">Half one, S3 and S4; notebook 1, section 1.</span></dd>
+          <dt>Kernel</dt><dd>The Python process behind a notebook, which remembers the cells it ran, in the order it ran
+            them, since it last restarted.<span class="where">Half one, S16; notebook 2, section 1.</span></dd>
+          <dt>Restart and Run All</dt><dd>The one test of a notebook: every cell once, top to bottom, from an empty
+            kernel.<span class="where">Half one, S19; notebook 2, section 1.</span></dd>
+          <dt>Dictionary and key</dt><dd>One record as named values, reached by exact key name.<span class="where">Half one,
+            S20; notebook 2, section 2.</span></dd>
+          <dt>List and index</dt><dd>Records in order, reached by position counted from zero.<span class="where">Half one,
+            S21; notebook 2, section 3.</span></dd>
+          <dt>Accumulator</dt><dd>A total started before a loop, updated once per record inside it, and read after it.<span
+            class="where">Half one, S22; notebook 2, section 4.</span></dd>
+          <dt>TypeError</dt><dd>An operation met a type it cannot use, such as adding text to a number.<span
+            class="where">Half one, S24 and S25; notebook 2, section 4.</span></dd>
+          <dt>NameError, KeyError, ValueError</dt><dd>A name no cell made; a key typed differently from the record; text
+            int() cannot read as a number.<span class="where">Half one, S18 and D27; half two, S9.</span></dd>
+          <dt>Mean</dt><dd>The total spread evenly over the count; it multiplies back to the total.<span class="where">Half
+            two, S12; notebook 4, section 1.</span></dd>
+          <dt>Median</dt><dd>The middle of the sorted list, or the average of the two middles when the count is even.<span
+            class="where">Half two, S14 and S16; notebook 4, section 3.</span></dd>
+          <dt>Skew</dt><dd>A few values far above the rest, which pull a mean away from the median.<span class="where">Half
+            two, S19; notebook 4, section 5.</span></dd>
+        </dl>
+      </div>
+      <p class="foot">Week 1, Monday. The same four decisions live in the workbook beside this page,
+        C2_W01_D01_decision_tool_STUDENT.xlsx, which is the version to keep: each tab hides one formula defect to find
+        first, and its Export tab assembles the brief for Meera. Kalpa Retail and everyone in it are fictional. The
+        experiment numbers are invented to isolate one mechanism each; the page stores nothing and calls no network.</p>
+    </section>
+  </main>
 </div>
 
-<script>
-(function(){
+<dialog id="seqDialog" aria-labelledby="seqTitle">
+  <div class="head"><span id="seqTitle">The sequence</span><button class="close" id="seqClose" type="button">Close</button></div>
+  <div class="body"><div class="holder" id="seqBody"></div><p class="note" id="seqNote"></p></div>
+</dialog>
+
+<script data-c2kit>
+/* c2kit.js: the diagram builders and page helpers every companion page inlines.
+ *
+ * The JavaScript twin of scripts/c2kit.py, so a tree on the slide, in the notebook and on the
+ * companion page is one drawing in one violet. Every builder takes data and returns an SVG
+ * element; nothing is drawn until a page calls a builder. No storage, no network, no globals
+ * beyond window.C2K. scripts/build_companion.py inlines this file into each page.
+ */
+(function () {
   "use strict";
-  var BRANCHES = [
-    {key:"customers", name:"customers", base:23,
-     metric:"distinct buyers / the window", cost:"marketing spend, and it is the slowest branch"},
-    {key:"frequency", name:"orders per customer", base:1.30,
-     metric:"orders / distinct customers, same window", cost:"retention work, a reorder feature, a tier"},
-    {key:"items", name:"items per order", base:2.4,
-     metric:"items / orders", cost:"merchandising, bundles, recommendations"},
-    {key:"price", name:"price per item", base:1180,
-     metric:"revenue / items", cost:"pricing, and it risks volume"},
-    {key:"discount", name:"discounts", base:6,
-     metric:"discount given / gross revenue before discount", cost:"margin, directly"}
-  ];
-  var BASE = 23 * 1.30 * 2.4 * 1180;
-  var sel = -1, corp = true, count = 0;
+  var NS = "http://www.w3.org/2000/svg";
+  var C = {
+    ink: "#1A0F5C", night: "#1A1440", violet: "#5B3FD6", lav: "#D9A7FF", muted: "#6B6690",
+    lilac: "#CFC9EE", line: "#E4E1F1", tint: "#EEEAFB", surface: "#F4F2FA", white: "#FFFFFF",
+    rose: "#D63A6A", roseTint: "#FCEBF0", green: "#1F8A5B", greenTint: "#E8F5EE"
+  };
+  var FONT = "Calibri, Carlito, 'Segoe UI', system-ui, sans-serif";
+  var SERIF = "Georgia, 'DejaVu Serif', serif";
+  var KINDS = {
+    plain: [C.tint, C.violet, 1.2, C.ink, ""],
+    lit: [C.ink, C.ink, 1.2, C.white, ""],
+    known: [C.tint, C.violet, 2.6, C.ink, ""],
+    unknown: [C.white, "#B8B2D6", 1.3, C.muted, "5 4"],
+    bad: [C.roseTint, C.rose, 1.6, C.ink, ""],
+    good: [C.greenTint, C.green, 1.6, C.ink, ""]
+  };
 
-  function fmt(n){ return "Rs " + Math.round(n).toLocaleString("en-IN"); }
-  function note(msg){ count += 1; document.getElementById("log").textContent =
-      "change " + count + ": " + msg; }
+  function el(name, attrs, text) {
+    var node = document.createElementNS(NS, name);
+    Object.keys(attrs || {}).forEach(function (k) { node.setAttribute(k, attrs[k]); });
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
 
-  function tree(){
-    var box = document.getElementById("tree");
-    box.textContent = "";
-    BRANCHES.forEach(function(b, i){
-      var btn = document.createElement("button");
-      btn.type = "button"; btn.className = "node";
-      btn.setAttribute("aria-pressed", String(i === sel));
-      btn.id = "node" + i;
-      var name = document.createElement("span"); name.textContent = b.name;
-      var val = document.createElement("span"); val.className = "val";
-      val.textContent = current(i);
-      btn.appendChild(name); btn.appendChild(val);
-      btn.addEventListener("click", function(){ pick(i); });
-      box.appendChild(btn);
+  function wrap(text, perLine) {
+    var words = String(text).split(/\s+/), lines = [], line = "";
+    words.forEach(function (w) {
+      if (line && (line + " " + w).length > perLine) { lines.push(line); line = w; }
+      else { line = line ? line + " " + w : w; }
     });
+    if (line) lines.push(line);
+    return lines.length ? lines : [""];
   }
 
-  function pct(i){ return Number(document.getElementById("s" + i).value); }
-
-  function current(i){
-    var b = BRANCHES[i];
-    if (i === 4) return pct(4) + " percent";
-    var v = b.base * (1 + pct(i) / 100);
-    return i === 3 ? fmt(v) : (Math.round(v * 100) / 100).toString();
+  function labelLines(text, w, size) {
+    var per = Math.max(8, Math.floor(w / (size * 0.56)));
+    var parts = String(text).split("\n"), out = [];
+    wrap(parts[0], per).forEach(function (l) { out.push([l, parts.length > 1]); });
+    parts.slice(1).forEach(function (p) { wrap(p, per).forEach(function (l) { out.push([l, false]); }); });
+    return out;
   }
 
-  function revenue(){
-    var gross = BASE;
-    for (var i = 0; i < 4; i++) gross *= (1 + pct(i) / 100);
-    return gross * (1 - pct(4) / 100);
+  function boxHeight(text, w, size) {
+    size = size || 13;
+    return Math.max(40, labelLines(text, w - 16, size).length * (size + 4) + 16);
   }
 
-  function draw(){
-    for (var i = 0; i < 5; i++){
-      document.getElementById("l" + i).textContent =
-        (i === 4 ? pct(4) + " percent" : (pct(i) >= 0 ? "+" : "") + pct(i) + " percent");
-      var node = document.getElementById("node" + i);
-      if (node) node.lastChild.textContent = current(i);
+  function root(width, height, title) {
+    var svg = el("svg", { xmlns: NS, width: width, height: height, viewBox: "0 0 " + width + " " + height,
+                          role: "img", "class": "c2k-svg" });
+    var defs = el("defs");
+    var marker = el("marker", { id: "c2kArrow", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 6,
+                                markerHeight: 6, orient: "auto-start-reverse" });
+    marker.appendChild(el("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: C.violet }));
+    defs.appendChild(marker);
+    svg.appendChild(defs);
+    svg.appendChild(el("rect", { width: width, height: height, rx: 10, fill: C.surface }));
+    if (title) {
+      svg.appendChild(el("text", { x: width / 2, y: height - 8, "text-anchor": "middle", fill: C.muted,
+                                   "font-family": FONT, "font-size": 12.5 }, title));
     }
-    var r = revenue(), planned = BASE * 0.94 * 1.15;
-    document.getElementById("revenue").textContent = fmt(r);
-    var gap = 100 * (r / (BASE * 0.94) - 1);
-    document.getElementById("delta").textContent =
-      (gap >= 0 ? "up " : "down ") + Math.abs(gap).toFixed(1) +
-      " percent against today, and the plan needs " + fmt(planned);
+    return svg;
   }
 
-  function pick(i){
-    sel = i; tree(); draw();
-    var b = BRANCHES[i];
-    var box = document.getElementById("branchnote");
-    box.textContent = "";
-    var h = document.createElement("div");
-    h.innerHTML = "<b>" + b.name + "</b>";
-    var m = document.createElement("div"); m.textContent = "metric: " + b.metric;
-    var c = document.createElement("div"); c.textContent = "moving it costs: " + b.cost;
-    box.appendChild(h); box.appendChild(m); box.appendChild(c);
-    note("selected the " + b.name + " branch");
+  function box(svg, x, y, w, h, text, kind, size) {
+    size = size || 13;
+    var k = KINDS[kind] || KINDS.plain;
+    var g = el("g", { "class": "c2k-node c2k-" + (kind || "plain") });
+    var rect = el("rect", { x: x, y: y, width: w, height: h, rx: 8, fill: k[0], stroke: k[1],
+                            "stroke-width": k[2] });
+    if (k[4]) rect.setAttribute("stroke-dasharray", k[4]);
+    g.appendChild(rect);
+    var lines = labelLines(text, w - 16, size);
+    var top = y + h / 2 - (lines.length - 1) * (size + 4) / 2 + size * 0.36;
+    lines.forEach(function (pair, i) {
+      g.appendChild(el("text", { x: x + w / 2, y: top + i * (size + 4), "text-anchor": "middle", fill: k[3],
+                                 "font-family": FONT, "font-size": size,
+                                 "font-weight": (pair[1] || (kind === "lit" && lines.length === 1)) ? 700 : 400 },
+                       pair[0]));
+    });
+    svg.appendChild(g);
+    return g;
   }
 
-  function averages(){
-    var withC = {n:30, rev:544810, mean:18160, med:2205};
-    var noC  = {n:29, rev:64810, mean:2235, med:2100};
-    var d = corp ? withC : noC;
-    document.getElementById("n").textContent = d.n;
-    document.getElementById("rev").textContent = fmt(d.rev);
-    document.getElementById("mean").textContent = fmt(d.mean);
-    document.getElementById("median").textContent = fmt(d.med);
-    document.getElementById("ratio").textContent = (d.mean / d.med).toFixed(1) + " times";
-    document.getElementById("withCorp").setAttribute("aria-pressed", String(corp));
-    document.getElementById("noCorp").setAttribute("aria-pressed", String(!corp));
-    var v = document.getElementById("verdict");
-    v.textContent = "";
-    var span = document.createElement("span");
-    span.className = corp ? "warn" : "ok";
-    span.textContent = corp
-      ? "The mean describes no order in this file."
-      : "The mean and the median now agree, because the file is one population.";
-    v.appendChild(span);
+  function arrow(svg, x1, y1, x2, y2, label) {
+    svg.appendChild(el("line", { x1: x1, y1: y1, x2: x2, y2: y2, stroke: C.violet, "stroke-width": 1.5,
+                                 "marker-end": "url(#c2kArrow)" }));
+    if (label) {
+      svg.appendChild(el("text", { x: (x1 + x2) / 2, y: (y1 + y2) / 2 - 6, "text-anchor": "middle",
+                                   fill: C.muted, "font-family": FONT, "font-size": 11.5 }, label));
+    }
   }
 
-  for (var i = 0; i < 5; i++){
-    (function(j){
-      document.getElementById("s" + j).addEventListener("input", function(){
-        draw();
-        note("moved " + BRANCHES[j].name + " to " + current(j));
+  function curve(svg, x1, y1, x2, y2) {
+    var dx = Math.max(24, (x2 - x1) * 0.5);
+    svg.appendChild(el("path", { d: "M " + x1 + " " + y1 + " C " + (x1 + dx) + " " + y1 + ", " + (x2 - dx) + " " +
+                                 y2 + ", " + x2 + " " + y2, fill: "none", stroke: C.violet, "stroke-width": 1.5,
+                                 "marker-end": "url(#c2kArrow)" }));
+  }
+
+  /* Steps left to right, with one lit; kinds sets each step's look by name. */
+  function flow(steps, lit, opts) {
+    opts = opts || {};
+    var w = opts.width || 150, gap = 28;
+    var h = Math.max.apply(null, steps.map(function (s) { return boxHeight(s, w); }));
+    var svg = root(steps.length * w + (steps.length - 1) * gap + 28, h + 28 + (opts.title ? 22 : 0), opts.title);
+    steps.forEach(function (s, i) {
+      var x = 14 + i * (w + gap);
+      var kind = (opts.kinds && opts.kinds[i]) || (i === lit ? "lit" : "plain");
+      box(svg, x, 14, w, h, s, kind);
+      if (i) arrow(svg, x - gap, 14 + h / 2, x - 2, 14 + h / 2, opts.edges ? opts.edges[i - 1] : "");
+    });
+    return svg;
+  }
+
+  /* The same, top to bottom; edges labels the arrow into each step after the first. */
+  function vflow(steps, lit, opts) {
+    opts = opts || {};
+    var w = opts.width || 300, gap = opts.edges ? 30 : 22, y = 12, parts = [];
+    steps.forEach(function (s) { parts.push(boxHeight(s, w)); });
+    var total = parts.reduce(function (a, b) { return a + b; }, 0) + gap * (steps.length - 1) + 28;
+    var svg = root(w + 28 + (opts.edges ? 150 : 0), total + (opts.title ? 22 : 0), opts.title);
+    steps.forEach(function (s, i) {
+      if (i) {
+        arrow(svg, 14 + w / 2, y - gap, 14 + w / 2, y - 2);
+        if (opts.edges && opts.edges[i - 1]) {
+          svg.appendChild(el("text", { x: 14 + w / 2 + 10, y: y - gap / 2 + 4, fill: C.muted, "font-family": FONT,
+                                       "font-size": 12 }, opts.edges[i - 1]));
+        }
+      }
+      var kind = (opts.kinds && opts.kinds[i]) || (i === lit ? "lit" : "plain");
+      box(svg, 14, y, w, parts[i], s, kind);
+      y += parts[i] + gap;
+    });
+    return svg;
+  }
+
+  function ladder(items, lit, opts) {
+    return vflow(items.map(function (t, i) { return (i + 1) + ". " + t; }), lit, opts);
+  }
+
+  /* A decision tree, top down. node: {label, kind, branches: [[edgeLabel, child], ...]}. */
+  function tree(node, opts) {
+    opts = opts || {};
+    var levels = [];
+    (function walk(n, d) {
+      if (!levels[d]) levels[d] = [];
+      var entry = { n: n, kids: [] };
+      levels[d].push(entry);
+      (n.branches || []).forEach(function (b) { entry.kids.push([b[0], walk(b[1], d + 1)]); });
+      return entry;
+    })(node, 0);
+    var w = opts.width || 196, gx = 22, gy = 44;
+    var lh = levels.map(function (l) {
+      return Math.max.apply(null, l.map(function (e) { return boxHeight(e.n.label, w); }));
+    });
+    var width = Math.max.apply(null, levels.map(function (l) { return l.length; })) * (w + gx) + 28;
+    var height = lh.reduce(function (a, b) { return a + b; }, 0) + gy * (levels.length - 1) + 24 + (opts.title ? 22 : 0);
+    var svg = root(width, height, opts.title), y = 12;
+    levels.forEach(function (level, d) {
+      var span = level.length * (w + gx) - gx, x0 = (width - span) / 2;
+      level.forEach(function (e, i) {
+        e.x = x0 + i * (w + gx); e.y = y; e.h = lh[d];
+        box(svg, e.x, e.y, w, e.h, e.n.label, e.n.kind || "plain");
       });
-    })(i);
+      y += lh[d] + gy;
+    });
+    levels.forEach(function (level) {
+      level.forEach(function (e) {
+        e.kids.forEach(function (k) {
+          arrow(svg, e.x + w / 2, e.y + e.h, k[1].x + w / 2, k[1].y - 2, k[0]);
+        });
+      });
+    });
+    return svg;
   }
 
-  document.getElementById("reset").addEventListener("click", function(){
-    for (var i = 0; i < 4; i++) document.getElementById("s" + i).value = 0;
-    document.getElementById("s4").value = 6;
-    sel = -1; tree(); draw();
-    document.getElementById("branchnote").textContent =
-      "Back to today's numbers. Pick a branch to see what it costs to move.";
-    note("reset every branch to today");
+  /* A driver tree, left to right: a total on the left, what multiplies into it on the right.
+   * node: {label, note, kind, children: [...]}. */
+  function driverTree(node, opts) {
+    opts = opts || {};
+    var w = opts.width || 156, gx = 38, gy = 12, rows = 0, placed = [];
+    function text(n) { return n.note ? n.label + "\n" + n.note : n.label; }
+    var all = [];
+    (function walk(n) { all.push(n); (n.children || []).forEach(walk); })(node);
+    var h = Math.max.apply(null, all.map(function (n) { return boxHeight(text(n), w); }));
+    (function place(n, d) {
+      var y;
+      if (!n.children || !n.children.length) { y = rows * (h + gy); rows += 1; }
+      else {
+        var ys = n.children.map(function (k) { return place(k, d + 1); });
+        y = (ys[0] + ys[ys.length - 1]) / 2;
+      }
+      placed.push([n, d, y]);
+      return y;
+    })(node, 0);
+    var depth = Math.max.apply(null, placed.map(function (p) { return p[1]; }));
+    var svg = root((depth + 1) * w + depth * gx + 28, rows * (h + gy) - gy + 24 + (opts.title ? 24 : 0), opts.title);
+    var pos = new Map();
+    placed.forEach(function (p) { pos.set(p[0], [14 + p[1] * (w + gx), 12 + p[2]]); });
+    placed.forEach(function (p) {
+      var a = pos.get(p[0]);
+      (p[0].children || []).forEach(function (k) {
+        var b = pos.get(k);
+        curve(svg, a[0] + w, a[1] + h / 2, b[0] - 2, b[1] + h / 2);
+      });
+    });
+    placed.forEach(function (p) {
+      var a = pos.get(p[0]);
+      var g = box(svg, a[0], a[1], w, h, text(p[0]), p[0].kind || "plain");
+      if (p[0].id) g.setAttribute("data-node", p[0].id);
+    });
+    return svg;
+  }
+
+  /* Every value as a dot on one axis, with named marker lines. markers: [[label, value, kind]]. */
+  function strip(values, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || rupees, width = opts.width || 760;
+    var lo = opts.lo === undefined ? 0 : opts.lo;
+    var hi = opts.hi === undefined ? niceCeil(Math.max.apply(null, values) * 1.04) : opts.hi;
+    var left = 40, right = width - 40, axis = 150, span = (hi - lo) || 1;
+    function px(v) { return left + (right - left) * (v - lo) / span; }
+    var svg = root(width, axis + 34 + (opts.title ? 22 : 0), opts.title);
+    svg.appendChild(el("line", { x1: left, y1: axis, x2: right, y2: axis, stroke: C.muted }));
+    for (var i = 0; i < 5; i++) {
+      var v = lo + span * i / 4, x = px(v);
+      svg.appendChild(el("line", { x1: x, y1: axis, x2: x, y2: axis + 5, stroke: C.muted }));
+      svg.appendChild(el("text", { x: x, y: axis + 20, "text-anchor": "middle", fill: C.muted, "font-family": FONT,
+                                   "font-size": 12 }, fmt(v)));
+    }
+    var colour = { bad: C.rose, good: C.green, plain: C.violet };
+    var marks = opts.markers || [];
+    marks.forEach(function (m, n) {
+      var x = px(m[1]), c = colour[m[2]] || C.violet;
+      /* Two lines close together would print their labels over each other, so the lower one of a
+         close pair reads leftward from its line. */
+      var left = n > 0 && Math.abs(x - px(marks[n - 1][1])) < 150 && x <= px(marks[n - 1][1]);
+      svg.appendChild(el("line", { x1: x, y1: 34 + 16 * (n % 2), x2: x, y2: axis, stroke: c, "stroke-width": 1.6,
+                                   "stroke-dasharray": "5 4", "class": "c2k-marker" }));
+      svg.appendChild(el("text", { x: left ? x - 5 : x + 5, y: 30 + 16 * (n % 2), fill: c, "font-family": FONT,
+                                   "font-size": 12.5, "font-weight": 700, "text-anchor": left ? "end" : "start" },
+                         m[0] + " " + fmt(m[1])));
+    });
+    var bins = {};
+    values.forEach(function (v, i) {
+      var x = px(v), key = Math.round(x / 11), level = bins[key] || 0;
+      bins[key] = level + 1;
+      svg.appendChild(el("circle", { cx: x, cy: axis - 9 - level * 11, r: 5,
+                                     fill: (opts.lit || []).indexOf(i) >= 0 ? C.ink : C.violet,
+                                     "fill-opacity": 0.8, stroke: C.white, "stroke-width": 1 }));
+    });
+    return svg;
+  }
+
+  /* The next round number at or above x: 1, 2, 2.5 or 5 times a power of ten, so axis ticks read cleanly. */
+  function niceCeil(x) {
+    if (x <= 0) return 1;
+    var p = Math.pow(10, Math.floor(Math.log10(x))), steps = [1, 2, 2.5, 5, 10];
+    for (var i = 0; i < steps.length; i++) if (steps[i] * p >= x) return steps[i] * p;
+    return 10 * p;
+  }
+
+  /* Messages across named lanes, drawn from the run that happened. messages: [[from, to, text]]. */
+  function sequence(lanes, messages, opts) {
+    opts = opts || {};
+    var lw = opts.laneWidth || 180, top = 46, step = 44;
+    var width = lanes.length * lw + 28, height = top + Math.max(1, messages.length) * step + 34 + (opts.title ? 16 : 0);
+    var svg = root(width, height, opts.title);
+    lanes.forEach(function (lane, i) {
+      var x = 14 + i * lw;
+      box(svg, x + 10, 10, lw - 20, 30, lane, "lit", 12);
+      svg.appendChild(el("line", { x1: x + lw / 2, y1: 42, x2: x + lw / 2, y2: height - 28, stroke: C.line }));
+    });
+    messages.forEach(function (m, n) {
+      var y = top + n * step + 20;
+      var x1 = 14 + lanes.indexOf(m[0]) * lw + lw / 2, x2 = 14 + lanes.indexOf(m[1]) * lw + lw / 2;
+      if (x1 === x2) {
+        svg.appendChild(el("text", { x: x1 + 8, y: y + 4, fill: C.night, "font-family": FONT, "font-size": 12 }, m[2]));
+      } else {
+        arrow(svg, x1, y, x2 + (x2 > x1 ? -4 : 4), y, m[2]);
+      }
+    });
+    return svg;
+  }
+
+  function sideBySide() {
+    var div = document.createElement("div");
+    div.className = "c2k-row";
+    Array.prototype.forEach.call(arguments, function (svg) { div.appendChild(svg); });
+    return div;
+  }
+
+  /* Rs with Indian digit grouping, the way every Kalpa number is read aloud. */
+  function rupees(n) {
+    var sign = n < 0 ? "-" : "", s = String(Math.round(Math.abs(n)));
+    if (s.length <= 3) return sign + "Rs " + s;
+    var head = s.slice(0, -3), tail = s.slice(-3), parts = [];
+    while (head.length > 2) { parts.unshift(head.slice(-2)); head = head.slice(0, -2); }
+    if (head) parts.unshift(head);
+    return sign + "Rs " + parts.join(",") + "," + tail;
+  }
+
+  /* Put a diagram into a holder, replacing whatever was drawn there before. */
+  function draw(holder, svg) {
+    var target = typeof holder === "string" ? document.getElementById(holder) : holder;
+    target.textContent = "";
+    target.appendChild(svg);
+    return svg;
+  }
+
+  window.C2K = { colours: C, flow: flow, vflow: vflow, ladder: ladder, tree: tree, driverTree: driverTree,
+                 strip: strip, sequence: sequence, sideBySide: sideBySide, rupees: rupees, draw: draw };
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var K = window.C2K;
+  function $(id) { return document.getElementById(id); }
+  function fmt1(x) { return (Math.round(x * 10) / 10).toFixed(1); }
+  function sign(v) { return (v >= 0 ? "+" : "") + v + "%"; }
+
+  /* ---------------------------------------------------------------- the rail */
+  var rail = document.querySelectorAll(".rail a");
+  Array.prototype.forEach.call(rail, function (a) {
+    a.addEventListener("click", function () {
+      Array.prototype.forEach.call(rail, function (b) { b.classList.toggle("on", b === a); });
+      $("jumped").textContent = "You jumped to " + a.textContent.replace(/^\d+/, "").trim() + ".";
+    });
+  });
+  if ("IntersectionObserver" in window) {
+    var seen = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        Array.prototype.forEach.call(rail, function (b) { b.classList.toggle("on", b.dataset.part === e.target.id); });
+      });
+    }, { rootMargin: "-20% 0px -70% 0px" });
+    Array.prototype.forEach.call(document.querySelectorAll("section.part"), function (s) { seen.observe(s); });
+  }
+
+  /* ---------------------------------------------------------------- the walk */
+  function treeData(lit, kinds, notes) {
+    kinds = kinds || {}; notes = notes || {};
+    function node(id, label, note, children) {
+      var n = { id: id, label: label, note: notes[id] || note, kind: id === lit ? "lit" : (kinds[id] || "plain") };
+      if (children) n.children = children;
+      return n;
+    }
+    return node("rev", "revenue", "gross less discounts", [
+      node("gross", "gross revenue", "customers times spend", [
+        node("cust", "customers", "how many bought"),
+        node("rpc", "revenue per customer", "orders times order value", [
+          node("freq", "orders per customer", "how often each came back"),
+          node("rpo", "revenue per order", "items times price", [
+            node("items", "items per order", "how full the basket was"),
+            node("price", "price per item", "what each line cost")])])]),
+      node("disc", "discounts", "what was given back")]);
+  }
+  var WALK = [
+    { t: "Today, on an index of 100", lit: "rev", i: 100,
+      x: "Revenue is customers, times orders per customer, times items per order, times price per item, less discounts. With today's revenue set to 100, every move below reads as a percentage of today." },
+    { t: "The plan needs 115", lit: "rev", i: 100,
+      x: "The board planned 15 percent growth and Kalpa Retail delivered 4. To reach the plan from today, the product of the branches has to rise by 15 percent, which is the rose line on the meter." },
+    { t: "Marketing's bet: 15 percent more customers", lit: "cust", i: 115, notes: { cust: "up 15 percent" },
+      x: "Rs 12 crore buys new customers. If every new customer ordered as often, as much and at the same prices as today's customers, 15 percent more of them would carry revenue to 115 on their own." },
+    { t: "The if inside the bet", lit: "freq", i: 109.3, kinds: { cust: "known" }, notes: { cust: "up 15 percent", freq: "down 5 percent" },
+      x: "New customers who buy once and never return lift customers and pull orders per customer down. As an illustration, a 5 percent slip in frequency leaves 1.15 times 0.95, which is 109.3, and the plan is missed." },
+    { t: "Two smaller moves compound", lit: "rpc", i: 115.0, notes: { freq: "up 7 percent", items: "up 7.5 percent" },
+      x: "Orders per customer up 7 percent and items per order up 7.5 percent reach the plan too, because branches multiply: 1.07 times 1.075 is 1.150. Both moves sit inside revenue per customer." },
+    { t: "A discount that backfires", lit: "disc", i: 93.5, kinds: { items: "known" }, notes: { disc: "15 percent off", items: "up 10 percent" },
+      x: "Fifteen percent off that lifts the items sold by 10 percent leaves revenue at 1.10 times 0.85, which is 0.935: a fall of 6.5 percent, with more boxes shipped." },
+    { t: "Which branch is actually short?", lit: null, i: 100, kinds: { cust: "known", freq: "known" },
+      x: "Every path to 115 moves a different branch at a different cost, so the first decision is which branch fell short. That is a comparison of customers and orders per customer across two quarters, which is Tuesday's file." }
+  ];
+  var walkAt = 0;
+  function showWalk() {
+    var w = WALK[walkAt];
+    K.draw("walkTree", K.driverTree(treeData(w.lit, w.kinds, w.notes), { title: "The revenue tree; the lit box is this step's branch" }));
+    $("walkStep").textContent = "Step " + walkAt + " of " + (WALK.length - 1);
+    $("walkTitle").textContent = w.t;
+    $("walkText").textContent = w.x;
+    $("walkIndex").textContent = fmt1(w.i);
+    $("walkFill").style.width = (100 * w.i / 130) + "%";
+    $("walkPlan").style.left = (100 * 115 / 130) + "%";
+    $("walkNext").textContent = walkAt === WALK.length - 1 ? "Back to the start" : "Next";
+  }
+  $("walkNext").addEventListener("click", function () { walkAt = (walkAt + 1) % WALK.length; showWalk(); });
+  $("walkRestart").addEventListener("click", function () {
+    walkAt = 0; showWalk(); $("walkStep").textContent = "Step 0 of " + (WALK.length - 1) + ", restarted";
+  });
+  showWalk();
+
+  /* ---------------------------------------------------------------- the calculator */
+  var BILLS = [
+    ["customers", "Customers move by acquisition, paid in marketing spend; the risk is new customers who buy once and never return."],
+    ["orders per customer", "Orders per customer move by retention, paid in loyalty and service; the risk is rewarding people who would have come back anyway."],
+    ["items per order", "Items per order move by merchandising and bundles; the risk is baskets filled with low-margin lines."],
+    ["price per item", "Price per item moves by pricing, paid in volume at risk; the price-sensitive leave first."],
+    ["extra discount", "A discount trades margin for quantity; it pays only when volume rises by more than the price falls."]
+  ];
+  function calc() {
+    var v = [0, 1, 2, 3, 4].map(function (i) { return Number($("c" + i).value); });
+    for (var i = 0; i < 4; i++) $("v" + i).textContent = sign(v[i]);
+    $("v4").textContent = v[4] + "%";
+    var m = v.slice(0, 4).map(function (p) { return 1 + p / 100; });
+    var index = 100 * m[0] * m[1] * m[2] * m[3] * (1 - v[4] / 100);
+    $("calcIndex").textContent = fmt1(index);
+    $("calcFormula").textContent = "100 × " + m.map(function (x) { return x.toFixed(2); }).join(" × ") +
+      " × (1 − " + (v[4] / 100).toFixed(2) + ") = " + fmt1(index);
+    var gap = 115 - index, verdict;
+    if (index >= 115) verdict = "Revenue reaches the plan, at " + fmt1(index) + ", " + fmt1(-gap) + " points above 115.";
+    else if (index >= 100) verdict = "Revenue grows to " + fmt1(index) + " and stays " + fmt1(gap) + " points short of the plan.";
+    else verdict = "Revenue falls to " + fmt1(index) + ", which is " + fmt1(100 - index) + " points below today.";
+    $("calcVerdict").textContent = verdict;
+    var moved = [];
+    v.forEach(function (p, i) { if (p !== 0) moved.push(BILLS[i][1]); });
+    var box = $("calcBill");
+    box.textContent = "";
+    if (!moved.length) {
+      var p = document.createElement("p"); p.className = "note";
+      p.textContent = "Move a slider and the bill for that branch appears here."; box.appendChild(p); return;
+    }
+    var h = document.createElement("p"); h.innerHTML = "<b>The bill for the moves you made.</b>"; box.appendChild(h);
+    var ul = document.createElement("ul"); ul.className = "bill";
+    moved.forEach(function (t) { var li = document.createElement("li"); li.textContent = t; ul.appendChild(li); });
+    box.appendChild(ul);
+  }
+  for (var ci = 0; ci < 5; ci++) $("c" + ci).addEventListener("input", calc);
+  $("calcReset").addEventListener("click", function () {
+    for (var i = 0; i < 5; i++) $("c" + i).value = 0;
+    calc();
+    $("calcVerdict").textContent = "Back to today: revenue at 100, fifteen points short of the plan.";
+  });
+  calc();
+
+  /* ---------------------------------------------------------------- the sequence popup */
+  function openSeq(title, lanes, messages, note) {
+    $("seqTitle").textContent = title;
+    K.draw("seqBody", K.sequence(lanes, messages, { laneWidth: 200 }));
+    $("seqNote").textContent = note;
+    var d = $("seqDialog");
+    if (typeof d.showModal === "function") d.showModal(); else d.setAttribute("open", "");
+  }
+  $("seqClose").addEventListener("click", function () { $("seqDialog").close(); });
+
+  function reveal(key, text) {
+    $(key + "What").textContent = text;
+    $(key + "Result").hidden = false;
+    $(key + "Wait").hidden = true;
+  }
+
+  /* ---------------------------------------------------------------- experiment A */
+  var ORDINARY = [1900, 2100, 2200, 2400, 2600], BULK = [1900, 2100, 2200, 2400, 90000];
+  function mean(a) { return a.reduce(function (s, x) { return s + x; }, 0) / a.length; }
+  function median(a) {
+    var s = a.slice().sort(function (x, y) { return x - y; }), n = s.length;
+    return n % 2 ? s[(n - 1) / 2] : (s[n / 2 - 1] + s[n / 2]) / 2;
+  }
+  var bulkOn = false;
+  function drawA() {
+    var list = bulkOn ? BULK : ORDINARY;
+    K.draw("expAStrip", K.strip(list, { lo: 0, hi: 100000, width: 560, lit: bulkOn ? [4] : [],
+      markers: [["mean", mean(list), "bad"], ["median", median(list), "good"]],
+      title: bulkOn ? "With the bulk order in place of Rs 2,600" : "Five ordinary orders" }));
+  }
+  $("expARun").addEventListener("click", function () {
+    bulkOn = !bulkOn;
+    this.setAttribute("aria-pressed", String(bulkOn));
+    this.textContent = bulkOn ? "Remove the bulk order" : "Add the bulk order";
+    drawA();
+    reveal("expA", bulkOn
+      ? "The mean moved from Rs 2,240 to Rs 19,720, almost nine times, while the median stayed at Rs 2,200. One record changed out of five."
+      : "Without the bulk order the mean is Rs 2,240 and the median Rs 2,200: the two agree when nothing sits far out.");
+  });
+  $("expASeq").addEventListener("click", function () {
+    openSeq("Experiment A, as a sequence", ["the list", "the mean", "the median"], [
+      ["the list", "the mean", "total 11,200 over 5"], ["the mean", "the mean", "Rs 2,240"],
+      ["the list", "the median", "sorted, the third of five"], ["the median", "the median", "Rs 2,200"],
+      ["the list", "the mean", "total 98,600 over 5, after the bulk order"], ["the mean", "the mean", "Rs 19,720"],
+      ["the list", "the median", "sorted again, still the third"], ["the median", "the median", "Rs 2,200, unmoved"]],
+      "The mean reads every value's size; the median only asks which value stands in the middle.");
+  });
+  drawA();
+
+  /* ---------------------------------------------------------------- experiment B */
+  var multiplied = false;
+  $("expBRun").addEventListener("click", function () {
+    multiplied = !multiplied;
+    this.setAttribute("aria-pressed", String(multiplied));
+    this.textContent = multiplied ? "Add the lifts instead" : "Multiply the branches";
+    $("expBWork").textContent = multiplied ? "100 × 1.10 × 1.10 = 121.0" : "100 + 10 + 10 = 120.0, which is what adding says";
+    reveal("expB", multiplied
+      ? "Multiplying gives 121, one point more than adding, because the second lift applies to the first lift's result too."
+      : "Adding gives 120. The tree does not add, so this line is the one that is wrong.");
+  });
+  $("expBSeq").addEventListener("click", function () {
+    openSeq("Experiment B, as a sequence", ["today", "orders per customer", "items per order"], [
+      ["today", "orders per customer", "100 times 1.10"], ["orders per customer", "orders per customer", "110"],
+      ["orders per customer", "items per order", "110 times 1.10"], ["items per order", "items per order", "121, not 120"]],
+      "The second lift multiplies the result of the first, which is where the extra point comes from.");
   });
 
-  document.getElementById("plan").addEventListener("click", function(){
-    document.getElementById("s0").value = 15;
-    document.getElementById("s1").value = 0;
-    draw();
-    document.getElementById("branchnote").textContent =
-      "Fifteen percent more customers and nothing else moved. That is what the Rs 12 crore buys, " +
-      "and it is one branch of five.";
-    note("applied the acquisition-only plan");
+  /* ---------------------------------------------------------------- experiment C */
+  function offCase() {
+    var d = Number($("expCOff").value) / 100;
+    $("expCOffV").textContent = Math.round(d * 100) + "%";
+    var need = 1 / (1 - d) - 1;
+    $("expCWork").textContent = "break-even volume lift = 1 / (1 − " + d.toFixed(2) + ") − 1 = " + (100 * need).toFixed(1) + "%";
+    return { d: d, need: need, multiple: 1.10 * (1 - d) };
+  }
+  $("expCOff").addEventListener("input", function () {
+    var r = offCase();
+    if (!$("expCResult").hidden) {
+      $("expCWhat").textContent = "At " + Math.round(r.d * 100) + " percent off, 10 percent more volume gives a revenue multiple of " +
+        r.multiple.toFixed(3) + ", and standing still needs " + (100 * r.need).toFixed(1) + " percent more volume.";
+    }
+  });
+  $("expCRun").addEventListener("click", function () {
+    var r = offCase();
+    this.setAttribute("aria-pressed", "true");
+    reveal("expC", "At " + Math.round(r.d * 100) + " percent off, 10 percent more volume gives a revenue multiple of " +
+      r.multiple.toFixed(3) + ", " + (r.multiple < 1 ? "a fall of " + (100 * (1 - r.multiple)).toFixed(1) + " percent" :
+      "a rise of " + (100 * (r.multiple - 1)).toFixed(1) + " percent") + "; standing still needs " + (100 * r.need).toFixed(1) +
+      " percent more volume.");
+  });
+  $("expCSeq").addEventListener("click", function () {
+    var r = offCase();
+    openSeq("Experiment C, as a sequence", ["price", "volume", "revenue"], [
+      ["price", "revenue", "times " + (1 - r.d).toFixed(2)], ["volume", "revenue", "times 1.10"],
+      ["revenue", "revenue", "multiple " + r.multiple.toFixed(3)],
+      ["volume", "revenue", "break-even needs " + (100 * r.need).toFixed(1) + " percent"]],
+      "The discount and the volume lift multiply, so the lift has to beat the price cut, not merely match it.");
+  });
+  offCase();
+
+  /* ---------------------------------------------------------------- experiment D */
+  var RECORDS = [1200, 950, "\"1,800\"", 2100];
+  var attempt = 0;
+  var ATTEMPTS = [
+    { name: "revenue += amount", stop: 2, err: "TypeError: unsupported operand type(s) for +=: 'int' and 'str'",
+      what: "The loop added two amounts, reached 2,150, and stopped on the third record: a number on the left, text on the right." },
+    { name: "revenue += int(amount)", stop: 2, err: "ValueError: invalid literal for int() with base 10: '1,800'",
+      what: "int() turned the first two into numbers and refused the third, because an Indian comma is not part of a whole number." },
+    { name: "revenue += int(amount.replace(',', ''))", stop: null, err: "",
+      what: "Removing the comma first lets every record through: the total is 6,050. The patch is named in the note, and the field waits for Wednesday's rule." }
+  ];
+  function drawD() {
+    var a = ATTEMPTS[attempt - 1], holder = $("expDTrace");
+    holder.textContent = "";
+    var t = document.createElement("table"); t.className = "t trace";
+    t.innerHTML = "<tr><th>pass</th><th>amount as stored</th><th>revenue after the pass</th></tr>";
+    var total = 0;
+    RECORDS.forEach(function (r, i) {
+      var row = document.createElement("tr"), after;
+      if (a.stop !== null && i === a.stop) after = "stops here";
+      else if (a.stop !== null && i > a.stop) after = "never reached";
+      else { total += typeof r === "number" ? r : 1800; after = String(total); }
+      [String(i + 1), String(r), after].forEach(function (c) {
+        var td = document.createElement("td"); td.textContent = c; row.appendChild(td);
+      });
+      t.appendChild(row);
+    });
+    var cap = document.createElement("p");
+    cap.innerHTML = "<b>Attempt " + attempt + ".</b> <code></code>";
+    cap.querySelector("code").textContent = a.name;
+    holder.appendChild(cap);
+    holder.appendChild(t);
+    if (a.err) { var e = document.createElement("p"); e.className = "err"; e.textContent = a.err; holder.appendChild(e); }
+  }
+  $("expDRun").addEventListener("click", function () {
+    attempt = attempt % ATTEMPTS.length + 1;
+    drawD();
+    reveal("expD", ATTEMPTS[attempt - 1].what);
+    this.textContent = attempt === ATTEMPTS.length ? "Start the attempts again" : "Run the next attempt";
+  });
+  $("expDSeq").addEventListener("click", function () {
+    openSeq("Experiment D, as a sequence", ["the loop", "the record", "the error"], [
+      ["the loop", "the record", "pass 3 reads \"1,800\""], ["the record", "the error", "TypeError: int and str"],
+      ["the loop", "the record", "int(\"1,800\")"], ["the record", "the error", "ValueError: the comma"],
+      ["the loop", "the record", "remove the comma, then int()"], ["the loop", "the loop", "total 6,050"]],
+      "Each attempt changes one thing, and each error's last line names what the next attempt has to change.");
   });
 
-  document.getElementById("withCorp").addEventListener("click", function(){
-    corp = true; averages(); note("included the corporate order");
-  });
-  document.getElementById("noCorp").addEventListener("click", function(){
-    corp = false; averages(); note("removed the corporate order");
-  });
+  /* ---------------------------------------------------------------- the workbench */
+  function parse(text) {
+    var cleaned = text.replace(/[\[\]]/g, " ");
+    var tokens = cleaned.split(/\s+|,\s+|;/).map(function (t) { return t.trim(); }).filter(Boolean);
+    var ok = [], refused = [];
+    tokens.forEach(function (t) {
+      if (/^-?\d+$/.test(t)) ok.push(Number(t));
+      else if (/^-?\d{1,3}(,\d{2,3})+$/.test(t)) refused.push([t, "has commas inside the number, which int() refuses; remove them"]);
+      else if (/^["'].*["']$/.test(t)) refused.push([t, "is text in quotes, a str; convert it with int() first"]);
+      else if (/^-?\d+\.\d+$/.test(t)) refused.push([t, "has a decimal point; this box takes whole rupees, as the orders do"]);
+      else refused.push([t, "is not a whole number"]);
+    });
+    return { ok: ok, refused: refused };
+  }
+  function numbers() {
+    var r = parse($("nums").value), list = $("numsRefused");
+    list.textContent = "";
+    r.refused.slice(0, 6).forEach(function (x) {
+      var li = document.createElement("li"); li.textContent = x[0] + " " + x[1] + "."; list.appendChild(li);
+    });
+    if (r.refused.length > 6) { var more = document.createElement("li"); more.textContent = (r.refused.length - 6) + " more refused."; list.appendChild(more); }
+    var box = $("numsStats");
+    if (r.ok.length < 2) {
+      box.innerHTML = "<p class='note'>The count, the mean, the median and a verdict appear here once the box holds two or more amounts. It holds " + r.ok.length + " now.</p>";
+      $("numsStrip").innerHTML = "<p class='note'>The strip plot appears here.</p>";
+      return;
+    }
+    var m = mean(r.ok), md = median(r.ok), ratio = m / md;
+    box.innerHTML = "<table class='t'><tr><th>measure</th><th class='num'>value</th></tr>" +
+      "<tr><td>amounts accepted</td><td class='num'>" + r.ok.length + "</td></tr>" +
+      "<tr><td>the mean</td><td class='num'>" + K.rupees(m) + "</td></tr>" +
+      "<tr><td>the median</td><td class='num'>" + K.rupees(md) + "</td></tr>" +
+      "<tr><td>mean over median</td><td class='num'>" + ratio.toFixed(2) + "</td></tr></table>" +
+      "<p class='verdict'>" + (ratio > 2 || ratio < 0.5
+        ? "The mean and the median sit far apart, so the list is skewed: report the median as the typical value, and read the top of the list to see what pulls the mean."
+        : "The mean and the median agree closely, so either describes a typical value; say which one you used.") + "</p>";
+    K.draw("numsStrip", K.strip(r.ok, { lo: 0, width: 900,
+      markers: [["mean", m, "bad"], ["median", md, "good"]], title: r.ok.length + " amounts on one axis" }));
+  }
+  $("nums").addEventListener("input", numbers);
+  $("numsDemo").addEventListener("click", function () { $("nums").value = "[1900, 2100, 2200, 2400, 90000]"; numbers(); });
+  $("numsClear").addEventListener("click", function () { $("nums").value = ""; numbers(); $("numsRefused").innerHTML = "<li>The box is empty.</li>"; });
 
-  tree(); draw(); averages();
+  /* ---------------------------------------------------------------- which average */
+  var JOBS = {
+    avgTypical: ["typical", "The note needs an order somebody actually placed, so it takes the median, which one record cannot drag, and names the large order on its own line."],
+    avgTotal: ["total", "Revenue per order on the tree has to multiply back to the total, so it takes the mean; a median would not reconcile."],
+    avgFirst: ["first", "On a first look nobody knows yet what the number is for, so report both; a wide gap between them is itself the finding."]
+  };
+  function drawAvg(pick) {
+    function k(which) { return pick === which ? "lit" : "plain"; }
+    K.draw("avgTree", K.tree({ label: "what is the number for?", kind: pick ? "plain" : "lit", branches: [
+      ["", { label: "a typical order", kind: k("typical"), branches: [["", { label: "the median\none record cannot drag it", kind: pick === "typical" ? "good" : "plain" }]] }],
+      ["", { label: "a total that must add up", kind: k("total"), branches: [["", { label: "the mean\nit multiplies back to the total", kind: pick === "total" ? "good" : "plain" }]] }],
+      ["", { label: "a first look at a file", kind: k("first"), branches: [["", { label: "both\nthe gap is itself a finding", kind: pick === "first" ? "good" : "plain" }]] }]] },
+      { title: "The right average depends on the job it does" }));
+  }
+  Object.keys(JOBS).forEach(function (id) {
+    $(id).addEventListener("click", function () {
+      Object.keys(JOBS).forEach(function (other) { $(other).setAttribute("aria-pressed", String(other === id)); });
+      drawAvg(JOBS[id][0]);
+      $("avgWhy").innerHTML = "<b class='tag'>Kavya's review</b>";
+      $("avgWhy").appendChild(document.createTextNode(JOBS[id][1]));
+    });
+  });
+  drawAvg(null);
 })();
 </script>
 </body>
