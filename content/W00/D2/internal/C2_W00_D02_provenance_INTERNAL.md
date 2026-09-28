@@ -34,8 +34,8 @@ the college project one-pager while keeping the track rule.
   fall apart there. Both now sit in the briefing and the pre-read for Wednesday's introductions,
   which the student sheet gives the same shape.
 - **The make-up.** The tracker puts it in Wednesday's practice lab, and the student sheet names lab
-  time on Wednesday or Thursday for the one-to-ones. The pack runs the make-up in Wednesday's lab
-  time.
+  time on Wednesday or Thursday for the one-to-ones. The pack runs the make-up first thing on
+  Wednesday, before the brush-up, as the requester decided on 28 September 2026.
 
 ## Changed outside the pack
 

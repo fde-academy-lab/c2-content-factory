@@ -40,15 +40,19 @@ Stating a problem: ___________________________________________________
 
 ## Your two actions
 
-The two things you will fix first, and how you will know each one is fixed.
+The two things you will fix first, how you will know each one is fixed, and by when.
 
 1. ___________________________________________________________________
 
    I will know it is fixed when: ________________________________________
 
+   By when: ____________________
+
 2. ___________________________________________________________________
 
    I will know it is fixed when: ________________________________________
+
+   By when: ____________________
 
 ---
 

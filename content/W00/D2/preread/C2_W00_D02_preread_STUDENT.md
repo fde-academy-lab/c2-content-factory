@@ -17,7 +17,7 @@ During lab time on Wednesday or Thursday, a TA sits with you for ten minutes wit
 self-rating and today's papers side by side. Together you agree where you start and the two things
 you will fix first, and that goes on your baseline card, which only you and the TA see.
 
-If you missed today's papers, you sit them during Wednesday's lab time.
+If you missed today's papers, you sit them first thing on Wednesday, before the brush-up starts.
 
 ---
 
