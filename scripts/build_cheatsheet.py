@@ -39,14 +39,17 @@ import tempfile
 
 # The palette scripts/build_deck.py and scripts/c2kit.py use, so every artifact in the programme
 # is recognisably the same drawing.
-INK = "#1C1C1A"
-MUTED = "#5F6360"
-ACCENT = "#2B4A7D"
-TINT = "#E4ECF7"
-BG = "#F7F7F5"
-LINE = "#C9C9C2"
-PASS = "#1F6F4A"
-FAIL = "#8A3D3D"
+sys.path.insert(0, str(pathlib.Path(__file__).parent))
+import brand  # noqa: E402
+
+INK = brand.INK
+MUTED = brand.MUTED
+ACCENT = brand.VIOLET
+TINT = brand.TINT
+BG = brand.SURFACE
+LINE = brand.LILAC
+PASS = brand.GREEN
+FAIL = brand.ROSE
 
 CACHE = pathlib.Path(tempfile.gettempdir()) / "c2_sheet_diagrams"
 
@@ -58,21 +61,21 @@ MERMAID_CONFIG = """{
   "htmlLabels": false,
   "themeVariables": {
     "background": "#FFFFFF",
-    "primaryColor": "#E4ECF7",
-    "primaryTextColor": "#1C1C1A",
-    "primaryBorderColor": "#2B4A7D",
-    "secondaryColor": "#F7F7F5",
-    "secondaryTextColor": "#1C1C1A",
-    "secondaryBorderColor": "#2B4A7D",
+    "primaryColor": "#EEEAFB",
+    "primaryTextColor": "#1A0F5C",
+    "primaryBorderColor": "#5B3FD6",
+    "secondaryColor": "#F4F2FA",
+    "secondaryTextColor": "#1A0F5C",
+    "secondaryBorderColor": "#5B3FD6",
     "tertiaryColor": "#FFFFFF",
-    "tertiaryTextColor": "#1C1C1A",
-    "tertiaryBorderColor": "#C9C9C2",
-    "lineColor": "#2B4A7D",
-    "textColor": "#1C1C1A",
-    "mainBkg": "#E4ECF7",
-    "nodeBorder": "#2B4A7D",
-    "clusterBkg": "#F7F7F5",
-    "clusterBorder": "#C9C9C2",
+    "tertiaryTextColor": "#1A0F5C",
+    "tertiaryBorderColor": "#CFC9EE",
+    "lineColor": "#5B3FD6",
+    "textColor": "#1A0F5C",
+    "mainBkg": "#EEEAFB",
+    "nodeBorder": "#5B3FD6",
+    "clusterBkg": "#F4F2FA",
+    "clusterBorder": "#CFC9EE",
     "edgeLabelBackground": "#FFFFFF",
     "fontFamily": "DejaVu Sans, Verdana, sans-serif",
     "fontSize": "16px"
