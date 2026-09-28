@@ -76,5 +76,5 @@ to a Tuesday paper.
 `scripts/build_deck.py` rendered each diagram with `mmdc -w 2600` and no `-s`, so every slide picture
 in every deck was drawn at one pixel per CSS pixel and then stretched to fill the slide, at 27 to 127
 pixels to the inch and 56 at the median. The shared builder now renders each picture for the width
-it is drawn at, at 288 pixels to the inch, and the Wednesday decks were rebuilt with every other
+it is drawn at, at 192 pixels to the inch, and the Wednesday decks were rebuilt with every other
 deck on 28 September 2026.
