@@ -120,15 +120,15 @@ import pandas as pd
 
 folder = tempfile.mkdtemp()
 path = os.path.join(folder, "check.csv")
-pd.DataFrame({"block": ["welcome", "setup", "self-rating"], "minutes": [90, 60, 15]}).to_csv(path, index=False)
+pd.DataFrame({"block": ["orientation", "setup"], "minutes": [90, 60]}).to_csv(path, index=False)
 back = pd.read_csv(path)
 
 checks = [
     ("Python is 3.10 or later", sys.version_info >= (3, 10)),
     ("pandas imports, version " + pd.__version__, True),
     ("matplotlib imports, version " + matplotlib.__version__, True),
-    ("a file written and read back holds 3 rows", len(back) == 3),
-    ("the three blocks add to 165 minutes", int(back["minutes"].sum()) == 165),
+    ("a file written and read back holds 2 rows", len(back) == 2),
+    ("the two blocks add to 150 minutes", int(back["minutes"].sum()) == 150),
 ]
 for name, ok in checks:
     print(("PASS  " if ok else "FAIL  ") + name)
