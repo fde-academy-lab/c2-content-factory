@@ -36,7 +36,7 @@ Every learner artifact was rebuilt; the old pack is in the history. What changed
 
 | Artifact | Before | Now |
 |---|---|---|
-| Decks | Two decks of placeholder slides in the old palette | 27 and 26 body slides in the orientation deck's system, a cover and four chapters each, speaker notes on every slide |
+| Decks | Two decks of placeholder slides in the old palette | 28 and 27 numbered slides in the orientation deck's system, a cover and four chapters each, speaker notes on every slide |
 | Notebooks | One demo notebook of 34 cells and a hands-on on the second sample | Four teaching notebooks, one per chapter pair, 20 to 28 cells, 5 or 6 rendered diagrams and 5 to 11 checks each, and a hands-on twin on delivered orders with its executed solution |
 | Companion | A 10 KB toggle page | A guided walk, a branch calculator, four experiment cards with sequence popups, a paste-your-numbers workbench, a decision tree and a glossary |
 | Workbook | None | The day's decision tool, four tabs and an Export tab, proven by xlsx_recalc |

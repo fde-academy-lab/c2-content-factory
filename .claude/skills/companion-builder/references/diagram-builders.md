@@ -1,45 +1,58 @@
-# The diagram builders, ported to JavaScript
+# The diagram builders, in JavaScript
 
-The companion draws with the same nine builders the notebook helper uses, so a learner meets one visual language across the slide, the notebook and the page. The Python versions live in `scripts/c2kit.py`; these are their JavaScript twins, and they take the same arguments in the same order.
+A companion draws with the JavaScript twins of the notebook helper's builders, so a learner meets
+one visual language on the slide, in the notebook and on the page. The library is
+`scripts/companion/c2kit.js`, its look is `scripts/companion/c2kit.css`, and the model page that uses
+both is `content/W01/D1/demos/C2_W01_D01_revenue_tree_STUDENT.html`.
 
-## The nine
+## How a page gets them
 
-| Builder | Signature | Draws |
+A page opens from disk with no network, so it cannot load a shared script. It carries two empty
+marked blocks instead:
+
+```html
+<style data-c2kit></style>
+<script data-c2kit></script>
+```
+
+`python3 scripts/build_companion.py <page>` fills both from the library, and
+`python3 scripts/build_companion.py <day folder> --check` reports a page whose copy has fallen behind
+it. The page's own script comes after the marked block and draws through `window.C2K`.
+
+## The builders
+
+| Call | Draws | Node shape |
 |---|---|---|
-| `ladder` | `ladder(items, lit)` | The day's notebooks or stages in order, with one lit |
-| `flow` | `flow(steps, lit)` | Steps left to right, with one highlighted |
-| `vflow` | `vflow(steps, lit)` | The same, top to bottom |
-| `stack` | `stack(layers, lit)` | Layers bottom to top |
-| `sequence` | `sequence(lanes, messages)` | Messages across named lanes |
-| `tree` | `tree(node, takenPath)` | A decision tree with the taken branch marked |
-| `matrix` | `matrix(rowLabels, colLabels, cells)` | A two-axis grid with cells filled |
-| `decisionLadder` | `decisionLadder(options, cutAt)` | Options in escalating order with the cut line marked |
-| `sideBySide` | `sideBySide(a, b)` | Two diagrams composed horizontally |
+| `C2K.flow(steps, lit, opts)` | Steps left to right, one lit | A step is a string; `\n` starts the second line |
+| `C2K.vflow(steps, lit, opts)` | The same, top to bottom, with `opts.edges` labelling each arrow | As `flow` |
+| `C2K.ladder(items, lit, opts)` | The day's stages numbered, one lit | As `flow` |
+| `C2K.tree(node, opts)` | A decision tree, top down | `{label, kind, branches: [[edge label, child], ...]}` |
+| `C2K.driverTree(node, opts)` | A total on the left, its drivers on the right | `{label, note, kind, children: [...]}` |
+| `C2K.strip(values, opts)` | Every value as a dot on one axis, with `opts.markers` as named lines | `markers: [[label, value, kind], ...]` |
+| `C2K.sequence(lanes, messages, opts)` | Messages across named lanes, for a sequence popup | `messages: [[from, to, text], ...]` |
+| `C2K.sideBySide(a, b, ...)` | Two or more drawings in one row | Any builder's result |
 
-Every one returns an SVG element, takes data rather than markup, and reads its colours from the palette below. A companion that hand-writes SVG for one diagram has broken the consistency the builders exist to hold.
+`C2K.draw(holder, svg)` replaces whatever a holder showed with a new drawing, which is how a walk step
+or an experiment run redraws. `C2K.rupees(n)` writes Rs with Indian digit grouping. `opts.kinds`, or
+a node's `kind`, sets a box's look by meaning: `plain`, `lit`, `known`, `unknown`, `bad` or `good`,
+the same looks the notebook helper and the decks' Mermaid classes use.
+
+A page that needs a builder the library lacks, such as the helper's `stack` or `matrix`, adds it to
+`c2kit.js` beside the others and re-runs `build_companion.py`, so the next page has it too. A page
+that hand-writes SVG for one diagram breaks the consistency the builders exist to hold.
 
 ## The palette
 
-Identical to `scripts/build_deck.py` and the notebook helper.
-
-```
---ink      #1C1C1A     text and strokes
---muted    #5F6360     captions and units
---accent   #2B4A7D     the one accent, used to mean something
---tint     #E4ECF7     the lit node, the highlighted step
---bg       #F7F7F5     the drawing ground
---pass     #1F6F4A     a passing state
---fail     #8A3D3D     a failing state
-```
-
-A dark-scheme block may re-map these under `prefers-color-scheme: dark`, and the mapping keeps the same meanings: accent stays the one accent, tint stays the lit state.
-
-## Why the simulator needs them
-
-A simulator produces a run that nobody wrote in advance, so its diagram cannot be hand-authored. `sequence(lanes, messages)` takes the messages the run actually produced and draws them, which is the whole reason the builders take data. Any page that generates a run draws that run rather than showing a fixed picture of a typical one.
+`C2K.colours` holds the values of `scripts/brand.py`, the orientation deck's palette: indigo
+`#1A0F5C` for text and the lit node, violet `#5B3FD6` as the one accent, lavender tint `#EEEAFB` for a
+plain node, green `#1F8A5B` for what holds and rose `#D63A6A` for what breaks. Muted `#6B6690` is for
+captions only.
 
 ## Three rules for a builder call
 
-1. **Pass data the page already holds.** A builder call that re-types the steps as string literals will disagree with the logic the first time either changes.
-2. **Light exactly one thing.** Two lit nodes means the diagram is answering two questions and needs to be two diagrams.
-3. **Label the edges where the mechanism lives.** An arrow with no label says something happens. An arrow labelled `converts, or rejects with a reason` says what.
+1. **Pass data the page already holds.** A call that re-types the steps as string literals will
+   disagree with the logic the first time either changes, and a simulator draws the run it produced.
+2. **Light exactly one thing.** Two lit nodes means the diagram is answering two questions and needs
+   to be two diagrams.
+3. **Label the edges where the mechanism lives.** An arrow with no label says something happens; an
+   arrow labelled `times orders per customer` says what.

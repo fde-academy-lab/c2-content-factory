@@ -1,7 +1,3 @@
-import sys
-import pathlib as _pl
-sys.path.insert(0, str(_pl.Path(__file__).parent))
-
 """Build a .pptx from a markdown slide source.
 
 The markdown is the authoritative deck, because the verification gate can read it and cannot read a
@@ -46,6 +42,10 @@ as long as some layout places every block at that, and a picture beside its word
 same picture squeezed under them when it prints larger.
 Icons are Lucide names in lower case with hyphens (chart-line, shopping-cart, search-check).
 """
+import sys
+import pathlib as _pl
+sys.path.insert(0, str(_pl.Path(__file__).parent))
+
 import argparse
 import hashlib
 import math

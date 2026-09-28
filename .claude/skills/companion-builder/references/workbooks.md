@@ -10,9 +10,11 @@ Every teaching day gets one.
 
 **An export tab** that assembles a paste-ready brief by formula from the other tabs. A learner fills the yellow cells, opens the export tab, and copies a paragraph that already reads as something they wrote.
 
-**Yellow cells are inputs.** Everything else is computed and locked in appearance if not in fact. A learner should be able to tell input from output without reading a legend.
+**Yellow cells are inputs**, filled `FFF4C2`. Everything else is computed and locked in appearance if not in fact. A learner should be able to tell input from output without reading a legend.
 
-**One planted defect per tab**, which the learner finds first. The defect is a plausible wrong value, not a broken formula: a denominator that counts the wrong population, a threshold set where the day said not to set it, a rate quoted without its count.
+**A build script writes the workbook.** It sits in `demos/` with the TRAINER audience, as `content/W01/D1/demos/C2_W01_D01_build_decision_tool_TRAINER.py` does, so a fix is a re-run rather than a hand edit and the workbook can be rebuilt from the day's data.
+
+**One planted defect per tab**, which the learner finds first, exposed by a check line on its own tab. The defect is a plausible wrong formula or value: a total that leaves a row out, an index that adds what the tree multiplies, a median cell that computes the mean, a threshold set where the day said not to set it.
 
 **An interior optimum.** Fixing one thing must not clear the release. If correcting the denominator on tab one still leaves the verdict blocked because tab three's threshold is wrong, the learner has to work the whole tool rather than the first cell they notice.
 

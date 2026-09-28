@@ -39,7 +39,9 @@ Run the gates in order and stop after gate 2 for my approval.
    approval. Build nothing past this without an explicit yes.
 3. **Build passes**, one artifact family per message: (a) deck or deck halves, (b) notebooks, (c) activity,
    (d) exercises with solutions, (e) take-home with its self-check spine, (f) Kahoot pack, (g) study notes,
-   cheat sheet and pre-read.
+   cheat sheet and pre-read. Build each family to
+   `.claude/skills/day-pack-builder/references/the-standard.md`, opening its model file in
+   `content/W01/D1` before the pass.
 4. **Verification.** The skill checklist, then `python3 scripts/verify.py content/W{W}/D{D}`, then the file
    list with audience tags, then `python3 scripts/sync_programme.py --check`. Report what failed and what
    you fixed, and show the verify output before calling the pack done.

@@ -101,7 +101,7 @@ Binding rules while building:
 
 ## The artifact set
 
-The full manifest with per-artifact specifications lives in `references/artifact-manifest.md`. Read it before pass 1 on any new day. The short form:
+The full manifest with per-artifact specifications lives in `references/artifact-manifest.md`. Read it before pass 1 on any new day. `references/the-standard.md` shows what a finished pack looks like, family by family, and names the model pack, `content/W01/D1`; open the matching file there before each build pass. The short form:
 
 | Artifact | Audience | Count per day |
 |---|---|---|

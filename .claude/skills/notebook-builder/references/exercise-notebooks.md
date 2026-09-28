@@ -40,7 +40,7 @@ The placeholder is `__TODOn__` exactly, numbered across the whole notebook rathe
 **A check after every step.** The check is what tells a learner they picked right without opening the solution:
 
 ```python
-c2kit.check("usable holds 44 rows", len(usable) == 44, f"got {len(usable)}")
+kit.check("usable holds 44 rows", len(usable) == 44, f"got {len(usable)}")
 ```
 
 A step with no check gives a learner nothing, and a learner who has to open the solution to know whether they are right has not done an unguided exercise.
