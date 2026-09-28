@@ -104,9 +104,9 @@ taught track on Wednesday and moves once the make-up is marked, if the ticks say
 
 ## The make-up
 
-Anyone absent today sits the same four papers, in the same order and for the same minutes, during
-Wednesday's lab time, and is marked that evening against the same key. Nobody who sat today's
-papers talks the make-up group through them.
+Anyone absent today sits the same four papers, in the same order and for the same minutes, first
+thing on Wednesday in a separate room, before the brush-up teaches anything, and is marked that
+evening against the same key. Nobody who sat today's papers talks the make-up group through them.
 
 ## The interview angle, with the answers
 
@@ -148,7 +148,7 @@ nobody has stated yet.
 
 ## Tomorrow
 
-Wednesday runs the Python brush-up in two tracks, the introductions, the one-to-ones during lab
-time and the make-up for anyone absent today. Print one baseline card per learner from
+Wednesday runs the make-up first thing for anyone absent today, then the Python brush-up in two
+tracks, the one-to-ones beside the practice track, and the introductions. Print one baseline card per learner from
 `paper/C2_W00_D02_baseline_card_STUDENT.md`, and bring each learner's four papers and Monday's form
 to their one-to-one, where the workbook's last column gives the line for the card.
