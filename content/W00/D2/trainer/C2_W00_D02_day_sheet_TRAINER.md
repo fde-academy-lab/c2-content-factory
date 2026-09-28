@@ -53,10 +53,10 @@ as below, with each paper collected before the next is handed out.
 
 ## Running the papers
 
-Say the rules once, before paper 1: no assistant, no notes, no laptop and no phone for the whole
-two hours; the papers are not graded; an item left blank tells the TA more than one copied from a
-neighbour; and a question about what an item's words mean gets an answer, while a question about
-how to solve it does not.
+Say the rules once, before paper 1: no assistant, no notes, no laptop, no phone and no calculator
+for the whole two hours, since no item needs one; the papers are not graded; an item left blank
+tells the TA more than one copied from a neighbour; and a question about what an item's words mean
+gets an answer, while a question about how to solve it does not.
 
 Hand each paper out face down, start the room together and collect every copy at time before the
 next goes out. A learner who finishes early turns the paper over and waits. To any "how do I"
