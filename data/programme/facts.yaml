@@ -100,9 +100,11 @@ faculty:
   overrides: {}
 
 evaluation:
-  status: proposed
-  learner_facing: never
-  rule: No STUDENT file states a mark, a weight, a percentage or a threshold until the AOC locks the scheme.
+  status: locked
+  locked_on: 2026-09-28
+  locked_by: the requester, in session, as the orientation deck states the scheme
+  learner_facing: allowed
+  rule: Any file may state the five components, their marks, the marks per event and the week each is earned in. No file states a rubric, a pass requirement or the day of a graded event until the programme handbook publishes them before the first graded event, in Week 3.
   current: proposal-2026-09-25
   versions:
     - id: proposal-2026-09-21
@@ -111,18 +113,20 @@ evaluation:
       components: {major_exams: 300, mini_projects: 150, mock_interviews: 200, business_gds: 200, capstone: 150}
       per_event: {mini_project: 30, mock_interview: 40, business_gd: 40}
     - id: proposal-2026-09-25
-      status: proposed
-      source: handover, pages 8, 9 and 13 (proposed to the AOC on 25 September 2026)
+      status: locked
+      source: handover, pages 8, 9 and 13 (proposed to the AOC on 25 September 2026); locked by the requester on 28 September 2026, as the orientation deck (slides 19 to 21) states it
       components: {major_exams: 300, mini_projects: 200, mock_interviews: 150, business_gds: 150, capstone: 200}
       per_event: {mini_project: 40, mock_interview: 30, business_gd: 30}
+      earned_in: {mini_projects: "the build weeks 3, 6, 9, 12 and 15", mock_interviews: one per build week, business_gds: one per build week, capstone: Weeks 17 to 20}
   exams:
-    ME1: {week: 5, marks: 70, status: proposed, posts_to: M2}
-    ME2: {week: 10, marks: 100, status: proposed, posts_to: M5}
-    ME3: {week: 16, marks: 130, status: proposed, posts_to: M9, when: the first half of Monday}
+    ME1: {week: 5, marks: 70, status: locked, posts_to: M2}
+    ME2: {week: 10, marks: 100, status: locked, posts_to: M5}
+    ME3: {week: 16, marks: 130, status: locked, posts_to: M9, when: the first half of Monday}
   exam_day_and_slot: {status: open, rule: ME1 and ME2 run during their week as a continuous activity; no artifact states a day or a slot until it is fixed.}
-  ungraded: [daily Kahoot, the Saturday recap paper, the Week 0 diagnostic, attendance, practice exercises, engagement]
+  ungraded: [daily Kahoot, the Saturday recap paper, the Week 0 diagnostic, attendance, practice exercises, the weekly written assignment, engagement]
+  attendance: {status: locked, minimum: 90 percent, over: the programme as a whole, recorded: "in every session, teaching and build weeks alike", source: "orientation deck, slide 23, 28 September 2026"}
   placement_index: {status: stated, source: handover, page 13, text: Mock interviews and business GDs also feed a separate Placement Index.}
-  senate_reconciliation: {status: open, text: The senate proposal grades in percentage buckets and passes on CGPA 7, a Placement Index of 7, twelve projects and 90 percent attendance; none of that is mapped to the 1000 marks yet, so no artifact quotes a threshold.}
+  senate_reconciliation: {status: open, text: The senate proposal grades in percentage buckets and passes on CGPA 7, a Placement Index of 7 and twelve projects; none of that is mapped to the 1000 marks yet, and the programme handbook publishes the pass requirements before Week 3, so no artifact quotes a pass requirement. The 90 percent attendance minimum is locked.}
 
 modules:
   source: faculty workbook, Overview tab (the programme at a glance); journey workbook, Journey tab
@@ -200,10 +204,15 @@ saturday_papers:
 decisions:
   # What is still open, what it blocks, and who closes it. Roles only.
   - id: evaluation-lock
+    status: closed
+    closes: the requester, on 28 September 2026
+    text: The evaluation scheme is locked at the 25 September proposal. The parked gateway of 80 percent attendance and quiz completion before mocks and the capstone is not part of the lock, so no artifact states it.
+    blocks: nothing
+  - id: rubrics-and-calendar
     status: open
-    closes: the AOC
-    text: The lock on the evaluation scheme, including the parked gateway of 80 percent attendance and quiz completion before mocks and the capstone.
-    blocks: every rubric, the assessment calendar, and any artifact that would state a mark or a weight
+    closes: the Programme Head
+    text: The component rubrics and the assessment calendar with the day of each graded event, which the programme handbook publishes before the first graded event, in Week 3.
+    blocks: every rubric, and any artifact that would name the day of a graded event
   - id: w16-proposal-marks
     status: open
     closes: the Programme Head and the AOC
@@ -247,8 +256,8 @@ decisions:
   - id: senate-reconciliation
     status: open
     closes: the Programme Head and the academic office
-    text: Reconciling the senate grading buckets and passing rules, including 90 percent attendance, with the 1000-mark pool.
-    blocks: any threshold in any artifact
+    text: Reconciling the senate grading buckets and passing rules (CGPA 7, a Placement Index of 7 and twelve projects) with the 1000-mark pool; the 90 percent attendance minimum is locked.
+    blocks: any pass requirement in any artifact
   - id: codechef
     status: open
     closes: the Programme Head
@@ -265,15 +274,15 @@ conflicts:
   - id: evaluation-versions
     sources: [tracker, handover]
     text: The tracker's Structure tab (21 September) prints mini projects 150, mocks 200, GDs 200 and capstone 150; the handover says the scheme proposed to the AOC on 25 September is mini projects 200, mocks 150, GDs 150 and capstone 200.
-    working_rule: The 25 September proposal is current, marked proposed; no STUDENT file states either version.
+    working_rule: The 25 September version is locked as of 28 September 2026 and may be stated anywhere; the Structure tab's table is superseded until the tracker's next version carries the locked scheme.
   - id: groups
     sources: [tracker, handover]
     text: The handover plans 35 students in nine build-week groups, while the tracker's build-week anatomy asks for five sub-problems with three groups each, which is fifteen groups.
     working_rule: Build-week packs seed five sub-problems and leave the group-to-problem allocation to the trainer sheet until the Programme Head settles the count.
   - id: week0-schedule
     sources: [tracker, journey]
-    text: The Week 0 tab (21 September) and the student Week 0 sheet (27 September) give different running orders. The tab runs four diagnostic papers of 60, 45, 30 and 30 minutes on Tuesday and puts the project talks on Saturday beside an industry leader session; the student sheet runs one paper of about two hours on Tuesday, moves the introductions to Wednesday afternoon, and gives Saturday to a session with a working forward deployed engineer.
-    working_rule: The student sheet is later and is what learners have been told, so Week 0 packs follow it and cite the tracker row for content only.
+    text: The Week 0 tab (21 September) and the student Week 0 sheet (27 September) give different running orders. The tab runs four diagnostic papers of 60, 45, 30 and 30 minutes on Tuesday and puts the project talks on Saturday beside an industry leader session; the student sheet runs one paper of about two hours on Tuesday, moves the introductions to Wednesday afternoon, and gives Saturday to a session with a working forward deployed engineer. On 28 September 2026 the requester's own diagnostic replaced both papers, as one Google Form of forty questions in about 90 minutes.
+    working_rule: Week 0 packs follow the student sheet for the running order and the requester's diagnostic for Tuesday, and cite the tracker row for content only.
   - id: journey-tokenization
     sources: [tracker, journey]
     text: The student journey lists tokenization under Week 8, while the re-cut moved it to the Week 7 Friday.
@@ -301,4 +310,4 @@ conflicts:
   - id: eligibility-thresholds
     sources: [docs/01_Programme_Facts_C2.md of 13 September, handover]
     text: The facts file of 13 September set placement gates of CGPA above 7.0 and attendance above 95 percent; the senate proposal, as the handover reports it, passes on CGPA 7, a Placement Index of 7, twelve projects and 90 percent attendance.
-    working_rule: No artifact quotes a threshold until the senate reconciliation closes; the ground team tracks attendance as if 90 percent counted.
+    working_rule: The 90 percent attendance minimum over the programme is locked and may be stated anywhere; no artifact quotes a CGPA, Placement Index or project-count requirement until the senate reconciliation closes.

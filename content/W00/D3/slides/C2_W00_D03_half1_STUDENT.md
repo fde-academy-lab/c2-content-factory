@@ -16,7 +16,7 @@ The college librarian, before the term review:
 
 > "Every book that goes out is logged. Before the term review I need how many issues we had, which department borrows most, and how many days late books came back. And I need the same numbers every week."
 
-You are the one person in the building who can write Python. The log is the table from Tuesday's SQL paper.
+You are the one person in the building who can write Python. The log holds one row per book lent out.
 
 ---
 
@@ -89,7 +89,7 @@ issue = {"issue_id": 3, "student": "S01", "book": "Calculus", "dept": "Maths", "
 issue["days_kept"]    # 20
 ```
 
-A key names a field, and the value sits beside it. One row of Tuesday's table is one dictionary.
+A key names a field, and the value sits beside it. One row of the log is one dictionary.
 
 ---
 

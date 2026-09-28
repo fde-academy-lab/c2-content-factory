@@ -18,18 +18,19 @@ Teaching runs from Monday 5 October 2026 to Saturday 20 February 2027. Build wee
 
 **Crux:** Two teaching weeks, then a build week, five times; Week 0 comes before, and Week 16 and the capstone come after.
 
-## Panel 2: Six steps, six roles
+## Panel 2: Two roles to aim for, two on the way
 
-| Weeks | The role it opens |
-|---|---|
-| 1 to 4 | Data or Business Analyst |
-| 5 and 6 | Entry-level Data Scientist |
-| 7 to 9 | The foundation for AI Engineer |
-| 10 to 12 | GenAI or AI Engineer |
-| 13 to 15 | Agentic AI Engineer |
-| 16 to 20 | Forward Deployed Engineer |
+| Weeks | The role | How the programme treats it |
+|---|---|---|
+| 7 to 12, and 14 | GenAI or AI Engineer | The primary track |
+| 13 to 15 | Agentic AI Engineer | The primary track |
+| 1 to 4, and Build 1 | Data or Business Analyst | Supported |
+| 4 to 6 | Data Scientist, entry level | Supported |
+| Week 16 and every build week | Forward Deployed Engineer | The way of working |
 
-**Crux:** Every step ends with something you can say in an interview.
+Computer vision is not taught and is not claimed.
+
+**Crux:** The programme is built for two roles, covers two more on the way, and practises one way of working in every build week.
 
 ## Panel 3: The three shapes of a week
 
@@ -53,7 +54,7 @@ Teaching runs from Monday 5 October 2026 to Saturday 20 February 2027. Build wee
 
 ## Panel 5: This week, and your workspace
 
-Claimed on Monday, measured on Tuesday, agreed in a ten-minute one-to-one on Wednesday or Thursday, and written on your baseline card.
+Rated and measured on Tuesday in one sitting, agreed in a ten-minute one-to-one on Wednesday or Thursday, and written on your baseline card.
 
 Closing the tab does not stop a codespace. Stop it from github.com/codespaces, because the free plan's 120 core hours are about 30 hours on this starter's four cores.
 

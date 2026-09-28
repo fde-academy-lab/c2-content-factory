@@ -1,7 +1,7 @@
 # Exercise: the librarian's log
 
-Week 0, Wednesday. About twenty minutes, alone. Every item runs on the class log, the eight issues
-from Tuesday's SQL paper, loaded as a list called `log` in which `log[0]` is Algebra borrowed by S01.
+Week 0, Wednesday. About twenty minutes, alone. Every item runs on the class log, the college
+library's eight issues, loaded as a list called `log` in which `log[0]` is Algebra borrowed by S01.
 Answer each item with one letter, except item 11, which takes four letters in order.
 
 Post one line: 1c 2a 3d 4b 5d 6a 7b 8c 9d 10b 11 dcba 12c

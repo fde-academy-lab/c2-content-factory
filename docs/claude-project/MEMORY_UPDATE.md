@@ -1,4 +1,4 @@
-# Memory update for the claude.ai Project, 27 September 2026
+# Memory update for the claude.ai Project, 28 September 2026
 
 Open a new chat inside the Project and paste everything below the line. Each Project keeps its own
 memory, and a change asked for in a chat applies from the next conversation (Claude Help Center,
@@ -8,7 +8,7 @@ Check the result afterwards under Settings, then Memory.
 
 ---
 
-Update this project's memory with the programme changes of 21 to 27 September 2026. Replace what
+Update this project's memory with the programme changes of 21 to 28 September 2026. Replace what
 they supersede, and keep people's names out of memory: roles only.
 
 Remember:
@@ -29,9 +29,14 @@ Remember:
   day with a block runs to about 360 taught minutes against a 300-minute ceiling, which is an open
   ruling.
 - Exams: ME1 in Week 5, ME2 in Week 10, ME3 in the first half of Week 16 Monday, posting to Module 9,
-  at 70, 100 and 130 proposed marks. The evaluation scheme proposed to the AOC on 25 September is
-  major exams 300, mini projects 200, mock interviews 150, business GDs 150 and the capstone 200. It
-  is a proposal: nothing a learner sees states a mark, a weight, a percentage or a threshold.
+  at 70, 100 and 130 marks. The evaluation scheme was locked on 28 September 2026: major exams 300,
+  mini projects 200 (five of 40, one per build week), mock interviews 150 and business GDs 150 (five
+  of 30 each, one per build week) and the capstone 200 in Weeks 17 to 20. Learners may be told all of
+  it; the rubrics, the pass requirements and the day of each graded event wait for the programme
+  handbook before Week 3. Attendance is 90 percent minimum over the programme as a whole.
+- The Week 0 diagnostic is the programme's own Google Form: forty questions in five sections in
+  about 90 minutes on Tuesday, with the learner's rating of five areas on its first page. It is
+  ungraded, and its explanations reach learners by email on submission and on GitHub Discussions.
 - The Saturday recap paper is objective (fill in the blank, true or false, one or more correct
   options, scenario sets, applied maths, ordering), comes from the tracker's item bank, is swapped
   and marked against a key, and its scores by tag feed Monday's remediation read. It is ungraded and
@@ -51,5 +56,8 @@ Forget or correct:
 - ME3 in Week 15, and any exam marks of 50, 100 and 150.
 - The short-answer Saturday test, a Friday test, and a daily Neo question pool.
 - Any statement that GitHub Discussions is not used.
-- Any placement threshold, including an attendance figure: none is quoted until the senate rules are
-  reconciled with the 1000-mark pool.
+- The evaluation scheme as a proposal, and the 21 September split of mini projects 150, mocks 200,
+  GDs 200 and capstone 150.
+- A Week 0 diagnostic of four papers, and a paper self-rating on Monday.
+- Any pass requirement (a CGPA, a Placement Index or a project count): none is quoted until the
+  senate rules are reconciled with the 1000-mark pool.

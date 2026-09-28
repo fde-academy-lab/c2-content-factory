@@ -6,10 +6,26 @@ INTERNAL.
 
 The Monday row of `docs/curriculum/W0_Baseline_week.md` (tracker v7, 21 September 2026) for the
 content, and the student Week 0 sheet, `docs/journey/Week_0.md` (version 2, 27 September 2026), for
-the running order and for anything learners have already been told, following the working rule in
-`data/programme/facts.yaml` for the conflict between the two. The spine was approved in session on
-27 September 2026, with one decision from the Programme Head: the codespace today is GitHub's
-`codespaces-jupyter` template, and the course's own repository follows before teaching needs it.
+the running order, following the working rule in `data/programme/facts.yaml` for the conflict
+between the two. The spine was approved in session on 27 September 2026, with one decision from the
+Programme Head: the codespace today is GitHub's `codespaces-jupyter` template, and the course's own
+repository follows before teaching needs it.
+
+On 28 September 2026 the requester replaced two parts of the pack with their own material: the
+Programme Head's academic orientation deck replaced the pack's welcome deck, and the requester's
+diagnostic, whose first page carries the self-rating, replaced the paper self-rating form.
+
+## The orientation deck
+
+`slides/C2_W00_D01_orientation_STUDENT.pptx` is the requester's deck, 33 slides with speaker notes,
+committed with one change: slides 28 to 30 and their notes named three committee members, the CDF
+contact and five members of the programme team, and the repository copy replaces each name with its
+role, because the repository is public. No other slide named a person. Measured with
+`scripts/deck_check.py`, slide 13 overflows one text box by 4 pixels in the requester's original as
+well as in the copy, so it is reported and left as authored.
+
+The deck states the 1,000-mark evaluation scheme, which the requester confirmed as locked on
+28 September 2026, and the 90 percent attendance rule; `data/programme/facts.yaml` records both.
 
 ## Sources, each checked on 27 September 2026
 
@@ -25,19 +41,15 @@ the running order and for anything learners have already been told, following th
 
 ## Conflicts, and what the pack did
 
-- **The Monday running order.** The tracker's row and the student sheet agree on the blocks (the
-  welcome, setup, the self-rating) and the pack follows both. The week's other days follow the
-  student sheet: Tuesday's paper as about two hours, the introductions on Wednesday, and Saturday's
-  session with a working forward deployed engineer.
-- **The client.** The student sheet promises "your client" in Monday's orientation, while the
-  tracker keeps every Kalpa item for Week 1 Monday. The deck names the client in one line and says
-  nothing more, as agreed in session.
-- **Placement.** The deck uses the student sheet's own wording and states no numbers.
-- **The IITGN faculty sessions.** Left out of the welcome, as agreed in session, because every
-  session is tentative until IIT Gandhinagar confirms it.
-- **Holidays.** The deck lists the six gazetted holidays from the locked calendar, including
-  Christmas Day and Republic Day, which the student sheet does not list yet; the restricted holidays,
-  which are still open, are not mentioned.
+- **The Monday running order.** The tracker's row runs the welcome, setup and the self-rating. The
+  self-rating now sits on the first page of Tuesday's diagnostic, so Monday runs the orientation and
+  setup, and the rate-yourself moment from the row closes the orientation as its deliberate failure.
+- **The roles map.** The cheat sheet's second panel follows the orientation deck: two primary roles,
+  two supported roles, and forward deployed engineering as the way of working.
+- **The client.** The deck names Kalpa Group and its first question and goes no further, which keeps
+  every Kalpa item for Week 1 Monday.
+- **The IITGN faculty sessions.** Left out of the orientation's answers, because every session is
+  tentative until IIT Gandhinagar confirms it.
 
 ## Not verified, and left for the ground team
 
@@ -50,12 +62,5 @@ the running order and for anything learners have already been told, following th
 
 ## Own constructions, labelled in the artifacts
 
-The three seats (the row's own statement that they are the course's construction), the A to D
-self-rating scale and its topic descriptors, and each seat's first question.
-
-## Open for the next packs
-
-The template has no Postgres, and Thursday's SQL brush-up runs queries from VS Code against Postgres,
-so the course's own repository, or another workspace with a database, has to exist before Thursday
-1 October. Tuesday's pack also has to reconcile the student sheet's paper of about two hours with the
-tracker's four papers of 60, 45, 30 and 30 minutes plus a 40-minute one-pager.
+The three seats (the row's own statement that they are the course's construction), the rate-yourself
+moment staged after the orientation, and each seat's first question.

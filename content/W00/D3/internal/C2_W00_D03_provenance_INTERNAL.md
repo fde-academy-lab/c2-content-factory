@@ -5,7 +5,7 @@ INTERNAL.
 ## What the pack was built from
 
 The Wednesday row of `docs/curriculum/W0_Baseline_week.md` (tracker v7, 21 September 2026) for the
-brush-up's content: two tracks set from Tuesday's scores, the taught track's list (types, lists and
+brush-up's content: two tracks set from Tuesday's diagnostic, the taught track's list (types, lists and
 dictionaries, loops and accumulators, functions that return, reading a traceback), the practice
 track, and the one-to-ones on the baseline card. The student Week 0 sheet, `docs/journey/Week_0.md`
 (version 2, 27 September 2026), for the running order: the brush-up's part one in the first half
@@ -50,7 +50,8 @@ and a loop that reaches one position too far.
 
 ## Own constructions
 
-The librarian's scenario and both logs (the class log is Tuesday's SQL table); the section timings
+The librarian's scenario and both logs (the class log is the table the pack's retired SQL paper
+used); the section timings
 of the taught track; the exercise's twelve items and the hands-on notebook's twelve markers; the
 one-to-one guide's ten-minute split and its three rules; the introductions' opening, clock, break and
 capture sheet; the models of a weak and a strong project story; and the cheat sheet.
@@ -60,6 +61,15 @@ capture sheet; the models of a weak and a strong project story; and the cheat sh
 The baseline card gained a "by when" line under each action, since the tracker's Saturday row asks for
 actions with dates. The Tuesday day sheet, pre-read and provenance now say the make-up runs first
 thing on Wednesday.
+
+## Changed when the requester's diagnostic replaced the pack's
+
+On 28 September 2026 the requester's diagnostic replaced the pack's four papers. The tracks now come
+from the key workbook's Python brush-up call, with a full call joining the taught track and a light
+call the practice track. The make-up is the diagnostic itself, about 90 minutes. The one-to-one reads
+the learner's report email and Profile line, and the day sheet maps the diagnostic's Python items to
+the taught track's sections. The deck, the notebook, the exercise and the data file no longer point
+to a Tuesday paper.
 
 ## Found outside the pack
 

@@ -6,29 +6,26 @@ Module: <!-- sync:module:W00/D1 -->no module, since Week 0 sits outside the 510 
 
 ## What today is for
 
-Nothing is taught today. By the close, every learner has a working workspace, a self-rating on file
-and a picture of how the twenty weeks run. Tomorrow's diagnostic measures what today's self-rating
-claims, and the gap between the two is the most useful number of the week, which belongs to the
-learner.
+Nothing is taught today. By the close, every learner has a working workspace and a picture of how
+the twenty weeks run. The self-rating that used to close the afternoon now opens Tuesday's
+diagnostic: its first page asks each learner to rate five areas from 1 to 4 before any question is
+seen, so the claim and the measurement sit in one sitting.
 
-**Stop before** any Python, any SQL and any Kalpa story. Week 1 Monday opens on the client's first
-question, so today names the client in one line and says nothing more about it.
+**Stop before** any Python, any SQL and any Kalpa story beyond the orientation deck's own lines.
+Week 1 Monday opens on the client's first question, and the deck names the client and that question
+without going further.
 
 ## The shape of the afternoon
 
 The institute runs the first half of the day: arrival, document verification and its own welcome.
 The help desk opens at check-in and stays open all day. The programme's orientation takes the second
-half, which the student Week 0 sheet describes as about three hours.
+half.
 
 | Block | Duration | Who runs it | What has to happen |
 |---|---|---|---|
 | Check-in | First half of the day | Support TA, with the ground team | The help desk opens; every learner's name is on the list |
-| 1. The welcome | 90 min | Programme Head | The deck: the twenty weeks, the shape of a week, the three seats, this week |
+| 1. The orientation | 90 min | Programme Head | The academic orientation deck, then the rate-yourself moment below |
 | 2. Setup | 60 min | Academic TA, with the Support TA at the help desk | The walkthrough, end to end, with the checklist ticked at the desk |
-| 3. The self-rating | 15 min | Academic TA | The form, filled in alone and collected |
-
-That is 165 minutes, which leaves about fifteen minutes of the three-hour slot for the move between
-blocks and the help desk queue.
 
 ## Before the room opens
 
@@ -38,36 +35,27 @@ blocks and the help desk queue.
 2. Open `notebooks/population.ipynb` and run its first cell. A line chart titled "Population of
    Atlantis" confirms the whole path.
 3. In the same codespace's terminal, stage the deliberate failure below and leave the terminal open.
-4. Print one self-rating form and one help desk checklist per learner, plus ten spares.
+4. Print one help desk checklist per learner, plus ten spares.
 5. Get the LMS address and each learner's login from the ground team. No source in the repository
    carries them, so the walkthrough leaves that slot for the ground team to fill.
 
-## Block 1: the welcome, 90 minutes
+## Block 1: the orientation, 90 minutes
 
-The deck carries the facts. Four things decide whether the block lands.
+Present `slides/C2_W00_D01_orientation_STUDENT.pptx`, the Programme Head's academic orientation.
+Its speaker notes carry the talk track, slide by slide, with the number of clicks each slide needs.
+The repository copy replaces every staff and faculty name with a role, as a public repository must;
+the names are said aloud in the room and shared with learners separately, as slide 30 says.
 
-**The journey map before the rules.** The room should be able to say, by the end of the first ten
-minutes, that there are four kinds of week and that the rhythm is two teaching weeks, then a build
-week, five times. Everything else in the deck hangs on that picture.
+**The deliberate failure: rate yourself out of ten.** After the last slide and before setup, ask the
+room to rate its Python out of ten, take three numbers, and ask each of the three what their number
+lets them do. Most answer with another number or with "quite a lot", which is the failure: a rating
+with no task attached tells nobody anything. Tomorrow's diagnostic asks for the same rating on a
+scale where each point is a task, from "I have not used this" to "I can find and fix mistakes in
+someone else's version".
 
-**The three seats.** The business owner states a problem in business words; the AI engineer builds
-the thing that answers it; the forward deployed engineer makes it work inside the client's own
-systems. Say plainly that the seats are this programme's own construction, and that every build week
-asks each group to sit all three. A technique is worth learning when some business owner needs its
-answer, some engineer has to build it, and someone has to make it run where the client works.
-
-**The deliberate failure: rate yourself out of ten.** Slide D14 asks the room to rate its Python out
-of ten and then asks what a seven can do. Take three numbers from the room, then ask each of the three
-what their number lets them do. Most will answer with another number or with "quite a lot". That is
-the failure the slide exists for: a rating with no task attached tells nobody anything, in an
-interview or in a one-to-one. D15 answers it with descriptors, which are the ones on the self-rating
-form at the end of the afternoon.
-
-**What the welcome does not say.** No marks, weights, percentages or thresholds: the evaluation
-scheme is a proposal awaiting the AOC. No IITGN faculty sessions: they are tentative until IIT
-Gandhinagar confirms the faculty and the dates. No placement numbers beyond the student sheet's own
-wording. If a learner asks about any of these, the honest answer is that it is being finalised and
-will be published when it is fixed.
+**What the orientation settles.** The evaluation scheme is locked, so the deck's marks, weights and
+build-week split can be answered directly. The IITGN faculty sessions stay out of the answers: every
+one is tentative until IIT Gandhinagar confirms the faculty and the date.
 
 ## Block 2: setup, 60 minutes
 
@@ -114,15 +102,6 @@ Five ticks per learner, recorded on the desk's sheet: GitHub account created and
 codespace open; the population cell run with its chart showing; the LMS login working; the GitHub
 Education application submitted, or pending with its reason noted.
 
-## Block 3: the self-rating, 15 minutes
-
-Hand out `paper/C2_W00_D01_self_rating_STUDENT.md` printed. Each topic has four levels with
-descriptors, and the learner circles the one that describes what they can do today, alone. Two rules,
-said once: there is no right answer, only an honest one, because tomorrow measures it; and nobody
-sees another learner's form. Collect every form before anyone leaves: the self-rating goes onto the
-baseline card beside Tuesday's measured result, and the card is agreed in a one-to-one with a TA on
-Wednesday or Thursday.
-
 ## The interview angle, with the answers
 
 The two questions are staples. The room meets them today as questions; the answers below are for
@@ -145,11 +124,12 @@ four-minute version of the same answer.
 
 1. The help desk sheet: five ticks per learner, and the reason for every missing tick.
 2. Who is pending on GitHub Education, and what they are waiting for.
-3. Every self-rating form, collected, with the target role each learner wrote on it.
-4. The setup failures that recurred, so Tuesday morning starts with them fixed.
+3. The setup failures that recurred, so Tuesday starts with them fixed, since the diagnostic runs
+   in each learner's browser.
 
 ## Tomorrow
 
-The diagnostic runs on paper with no assistant, and it is taken cold by design, so nothing is
-assigned tonight. The only after-class task is setup: anything that failed today goes to the help
-desk before the papers begin.
+The diagnostic runs for about 90 minutes on the Google Form, with a paper copy for anyone whose
+laptop fails, and with no second tab, no notes and no AI assistant. It is taken cold by design, so
+nothing is assigned tonight. The only after-class task is setup: a laptop that cannot open a browser
+page tomorrow goes to the help desk before the diagnostic starts.
