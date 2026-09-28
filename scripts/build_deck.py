@@ -173,10 +173,12 @@ def split_blocks(body):
 
 CACHE = pathlib.Path(tempfile.gettempdir()) / "c2_mermaid_cache"
 
-# A 4K screen shows the slide 3840 pixels across its 13.333 inches, which is 288 pixels to the
-# inch. mmdc saves one pixel per CSS pixel unless it is given a scale, so a drawing 319 pixels
-# wide stretched across the slide showed at 27 pixels to the inch and every edge went soft.
-RENDER_PPI = 288
+# A laptop screen 2560 pixels wide shows the slide at 192 pixels to the inch, and a 1080p
+# projector at 144, so 192 is sharp everywhere these decks are shown, at 44 percent of the pixels
+# a 4K screen would need. mmdc saves one pixel per CSS pixel unless it is given a scale, so a
+# drawing 319 pixels wide stretched across the slide showed at 27 pixels to the inch and every
+# edge went soft.
+RENDER_PPI = 192
 
 
 def render_scale(lines, width_in=None):
@@ -738,10 +740,10 @@ if __name__ == "__main__":
 # A slide holding the client-zero unit map or entity mermaid fence
 #     Gets boxes and connectors drawn as PowerPoint shapes, never the mermaid source as text.
 # content/W02/D3/slides/C2_W02_D03_deck_STUDENT.md, slide 22, a small fence drawn across the slide
-#     Its picture is 3445 pixels across the 11.83 inches it is drawn at, 291 to the inch, where the
+#     Its picture is 2297 pixels across the 11.83 inches it is drawn at, 194 to the inch, where the
 #     render without a scale was 319 pixels, 27 to the inch.
 # The same deck, slide 19, a portrait fence drawn in a column 3.79 inches wide
-#     Its picture is rendered for that column, 1104 pixels across.
+#     Its picture is rendered for that column, 742 pixels across.
 # Any rebuilt deck, unzipped
 #     Holds one image in ppt/media for each distinct picture on its slides and nothing the layout
 #     search left behind.
