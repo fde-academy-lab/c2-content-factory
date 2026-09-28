@@ -1,22 +1,35 @@
 # Solution: predict before you run
 
-Answers: 1b 2a 3c 4c 5a 6b
+Answers: 1b 2c 3a 4d 5c 6a
 
----
+## The idea being tested
 
-| Item | Key | Why, and why the rest fail |
-|---|---|---|
-| **1** | `b` | `*` on text repeats it, so `"4500" * 2` is `"45004500"`. It is not arithmetic because the value is text, which is the same fact that broke the running total in the demo. |
-| **2** | `a` | `sum` gives 8490 and `len` gives 4, so the mean is 2122.5. Option b is the median of the sorted list, which is a different statistic and is the one you would report to a stakeholder. |
-| **3** | `c` | A notebook runs cells in the order you run them, not the order they appear. Cell 2 ran when `orders` did not exist yet, so the name lookup failed. Nothing about the file is wrong; the kernel simply had not been told. |
-| **4** | `c` | A dictionary raises rather than guessing. Python never invents a default, because a silent zero would make a missing discount look like a discount of nothing. Tomorrow you meet `.get()` and the reason it needs a stated default. |
-| **5** | `a` | A set holds each value once, so two distinct ids remain. That is exactly why counting distinct customers uses a set rather than a counter. |
-| **6** | `b` | The accumulator survives each pass because `total` is reassigned rather than recreated. Option a describes what would happen with `total = n`, which is the most common first bug. |
+Python decides what an operation means from the types of its values before it looks at their size,
+and a notebook decides what exists from the cells it ran. Every item is one of the day's traps, met
+once on the screen and once somewhere new, so a prediction that was right by luck on the first
+cell is tested again on the second.
 
----
+## Item by item
 
-## The one to carry forward
+| Item | Key | Why it holds | Why the others fail |
+|---|---|---|---|
+| 1 | b | A dictionary matches keys exactly, so `"Amount"` is not `"amount"`: `KeyError: 'Amount'`. | a: Python never folds the case of a key. c: a missing key raises; `.get()` is the form that returns None. d: nothing in the record is blank. |
+| 2 | c | Text and a number have no order between them: `TypeError: '>' not supported between instances of 'str' and 'int'`. | a and d: Python never converts text to a number on its own. b: text does not sort against numbers at all in Python 3. |
+| 3 | a | `round()` returns a number, and 1.30 is the number 1.3, so the zero is dropped. An f-string with `:.2f` is how two places are shown. | b confuses the value with its display. c: round goes to the nearest, and 1.3043 is nearer 1.30. d: rounding to two places keeps two places. |
+| 4 | d | `count = 0` inside the loop resets on every pass, so the last pass leaves 1. The start belongs before the loop. | a is what the code was meant to do. b: the update runs after the reset on every pass. c: a name can be assigned as often as the code likes. |
+| 5 | c | 1200 plus 950 is 2150, and the third value is text, so `+=` stops with a TypeError and `total` keeps 2150. | a: nothing converts the text. b: the loop cannot skip the text silently. d: the error is about the type, and a ValueError needs a call such as `int()`. |
+| 6 | a | Five values, so `len(amounts) // 2` is 2, and index 2 is the third value, 2060: the single middle of an odd count. | b and c are the values either side, the off-by-one in each direction. d averages two middles, which is the even-count rule. |
 
-Item 3 is the only one that is about the tool rather than the data, and it is the one that costs a
-learner the most time in week one. When a notebook disagrees with what you believe, restart the
-kernel and run all cells. If it passes, your screen was stale. If it fails, the notebook is wrong.
+## The part worth arguing about
+
+Item 3. Several pairs will say both a and b are fine, because 1.3 and 1.30 are the same number. They
+are, and that is the point of the item: `round()` changes the value and says nothing about how it is
+shown, so the zero a report needs comes from formatting, never from rounding.
+
+## Where the pattern lives in production
+
+Every one of these is a bug that ships. A key typed from memory raises in a nightly job; a text
+amount stops a revenue script on the one row a person typed by hand; a reset inside a loop reports
+one order when there were thousands; and an off-by-one median passes review because the number
+looks plausible. The habit that catches all four is the one this drill trains: say what a cell will
+print before it runs.

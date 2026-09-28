@@ -47,11 +47,12 @@ this one is for you, and doing it tonight costs you nothing tomorrow.
 5. Add a variable `total = 0` above the loop and `print(total)` below it. Run it. It prints zero,
    because nothing adds to it yet.
 6. Add the one line inside the loop that adds to `total`. Run it.
-7. When it breaks, read the message out loud before you change anything. The message names the row.
+7. When it breaks, read the message out loud before you change anything, from its last line up.
+   Then print `order`, the record the loop stopped on, and read its amount's type.
 
 **What you should end up believing.** A loop is three decisions: where it starts, what it does each
 time, and what survives after it finishes. Everything else this week is a variation on those three.
 
-**If step 7 did not break for you,** you skipped the file's one text amount, which means you already
-wrote `int()`. Go back and take it out on purpose so you see the error once. Meeting it tonight
-alone is cheaper than meeting it on Wednesday in front of Finance.
+**If step 7 ran clean,** you already wrote `int()`. Take it out once and run again, so the error you
+met in class is one you can now read alone, which is cheaper tonight than on Wednesday in front of
+Finance.
