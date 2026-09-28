@@ -31,9 +31,9 @@ wins, because these files are its copies.
 
 Every movable fact carries a status. A locked or stated fact may appear anywhere. A tentative fact,
 such as every IITGN faculty session until IIT Gandhinagar confirms it, reaches anything a learner
-sees only with the word tentative beside it. A proposed fact, such as the evaluation scheme before
-the AOC locks it, may appear in trainer and internal material marked proposed and never in anything
-a learner sees. An open fact appears nowhere. When two sources disagree, `01_programme_facts.md`
+sees only with the word tentative beside it. A proposed fact, such as client zero v2.3 before the
+Programme Head locks it, may appear in trainer and internal material marked proposed and never in
+anything a learner sees. An open fact appears nowhere. When two sources disagree, `01_programme_facts.md`
 lists the conflict and the working rule; follow the rule and name it.
 
 ## The programme in six lines

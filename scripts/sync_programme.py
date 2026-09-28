@@ -498,12 +498,15 @@ def render_evaluation(ctx, arg, audience):
         rows.append([v["id"], v["status"]] + [str(v["components"][c]) for c in comps] + [v["source"]])
     exams = "; ".join(f"{k} in Week {v['week']}, {v['marks']} marks, posting to {v['posts_to']}"
                       + (f", {v['when']}" if v.get("when") else "") for k, v in ev["exams"].items())
-    return "\n".join([f"Status: {ev['status']}. {ev['rule']} The current proposal is {ev['current']}.",
+    att = ev.get("attendance")
+    return "\n".join([f"Status: {ev['status']}. {ev['rule']} The version in force is {ev['current']}.",
                       ""] + ec.md_table(head, rows) +
                      ["", f"Exams, {ev['exams']['ME1']['status']}: {exams}.",
                       f"Exam day and slot: {ev['exam_day_and_slot']['status']}. "
                       f"{ev['exam_day_and_slot']['rule']}",
-                      f"Ungraded indicators: {', '.join(ev['ungraded'])}."])
+                      f"Ungraded indicators: {', '.join(ev['ungraded'])}."] +
+                     ([f"Attendance, {att['status']}: {att['minimum']} minimum over {att['over']}, "
+                       f"recorded {att['recorded']}."] if att else []))
 
 
 def render_decisions(ctx, arg, audience):

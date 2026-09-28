@@ -138,7 +138,7 @@ labelled as such wherever it is printed.
 |---|---|---|
 | Clock times | A pack with clock times goes stale the first time a schedule shifts, and it goes stale silently | Durations, in column 5 |
 | Trainer names | Trainers change between cohorts. Fictional Kalpa stakeholders are a different thing and are named on purpose. | Role labels, and `docs/01_Programme_Facts_C2.md` for staffing |
-| Marks, weights, percentages | The evaluation scheme is a proposal until the AOC locks it | The `Structure` tab and `data/programme/facts.yaml`, which record each proposal and its status |
+| Marks, weights, percentages | The locked scheme belongs to the whole programme, never to one day, and its rubrics and calendar are published separately | `data/programme/facts.yaml`, which records the locked scheme, each earlier proposal and its status |
 | Answers to the interview questions | An answer in the row becomes the answer everybody gives | Written at detailing, in the day pack |
 | Anything about a named real company as the thing the room computes on | Kalpa is the world; real cases are dated references in trainer notes | Column 13 |
 
