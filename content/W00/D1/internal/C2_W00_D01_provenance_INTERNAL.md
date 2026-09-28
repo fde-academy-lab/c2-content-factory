@@ -17,12 +17,12 @@ diagnostic, whose first page carries the self-rating, replaced the paper self-ra
 
 ## The orientation deck
 
-`slides/C2_W00_D01_orientation_STUDENT.pptx` is the requester's deck, 33 slides with speaker notes,
-committed with one change: slides 28 to 30 and their notes named three committee members, the CDF
-contact and five members of the programme team, and the repository copy replaces each name with its
-role, because the repository is public. No other slide named a person. Measured with
-`scripts/deck_check.py`, slide 13 overflows one text box by 4 pixels in the requester's original as
-well as in the copy, so it is reported and left as authored.
+`slides/C2_W00_D01_orientation_STUDENT.pptx` is the requester's third version, received on
+28 September 2026: 34 slides with speaker notes, committed with one change. Slides 29 to 31 and
+their notes named the institute's Director, three committee members, the CDF contact and five
+members of the programme team, and the repository copy replaces each name with its role, because the
+repository is public; on slide 30 each team card keeps its role label and drops the name line. No
+other slide names a person. Measured with `scripts/deck_check.py`, every text box fits.
 
 The deck states the 1,000-mark evaluation scheme, which the requester confirmed as locked on
 28 September 2026, and the 90 percent attendance rule; `data/programme/facts.yaml` records both.

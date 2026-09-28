@@ -44,7 +44,7 @@ half.
 Present `slides/C2_W00_D01_orientation_STUDENT.pptx`, the Programme Head's academic orientation.
 Its speaker notes carry the talk track, slide by slide, with the number of clicks each slide needs.
 The repository copy replaces every staff and faculty name with a role, as a public repository must;
-the names are said aloud in the room and shared with learners separately, as slide 30 says.
+the names are said aloud in the room and shared with learners separately, as slide 31 says.
 
 **The deliberate failure: rate yourself out of ten.** After the last slide and before setup, ask the
 room to rate its Python out of ten, take three numbers, and ask each of the three what their number
