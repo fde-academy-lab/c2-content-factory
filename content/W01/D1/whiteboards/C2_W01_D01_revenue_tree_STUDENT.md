@@ -1,111 +1,86 @@
-# The revenue tree
+# The revenue tree, as it goes up on the board
 
-The one drawing for Day 1. The deck uses it, the notebook renders it from code, the cheat sheet
-prints it, and every day this week comes back to it.
-
----
-
-## What goes on the board, in the order it goes up
-
-**Step 1. Write the word, then refuse it.**
-
-Write `SALES` in the middle of the board and put a box around it. Underneath, write the question
-that has to be answered before the word means anything: **divided how?**
-
-**Step 2. Break it once.**
-
-Revenue is what customers pay. So the first split is: how many of them, and how much each.
-
-```
-REVENUE  =  CUSTOMERS  ×  REVENUE PER CUSTOMER
-```
-
-**Step 3. Break the right-hand side until every piece is something a team owns.**
-
-```
-REVENUE = CUSTOMERS × ORDERS PER CUSTOMER × ITEMS PER ORDER × PRICE PER ITEM − DISCOUNTS
-```
-
-That is the tree. It fits on one line and it is the whole first hour.
+The board work for Week 1, Monday, in the order it is drawn. The deck, the notebooks, the companion
+page and the cheat sheet all carry the same tree, so the drawing a learner copies here is the one
+they meet everywhere else this week.
 
 ---
 
-## The tree as a picture
+## First drawing: the word, and the question under it
 
-```mermaid
-flowchart TB
-    R["<b>REVENUE</b>"]
-    R --> C["<b>customers</b><br/>how many people<br/>bought at all"]
-    R --> F["<b>orders per customer</b><br/>how often each<br/>one came back"]
-    R --> I["<b>items per order</b><br/>how full<br/>the basket was"]
-    R --> P["<b>price per item</b><br/>what each<br/>line cost"]
-    R --> D["<b>discounts</b><br/>what we gave<br/>back"]
-    C --> C2["marketing<br/>owns this"]
-    F --> F2["retention and the<br/>app team own this"]
-    I --> I2["merchandising<br/>owns this"]
-    P --> P2["pricing<br/>owns this"]
-    D --> D2["margin<br/>pays for this"]
-```
+`SALES` goes in the middle of the board with a box around it, and under it the question that has to
+be answered before the word means anything: **which orders, over which dates?**
 
-Draw the top row first and stop. Add the owners only once somebody in the room asks who would
-have to do something about a branch.
+Four readings go up beside it as the room names them: booked, not cancelled, delivered, and after
+discounts. Each is a correct total of the same orders; each answers a different question.
 
 ---
 
-## Every branch is a metric, and every metric has a denominator
+## Second drawing: revenue broken once, then all the way down
 
-Write this table on the right-hand third of the board and fill it as the room answers.
-
-| Branch | The metric | Numerator | Denominator | What it costs to move |
-|---|---|---|---|---|
-| Customers | Distinct buyers in the window | Customers who placed at least one order | The window itself, which is why the window has to match | Marketing spend, and it is the slowest branch |
-| Orders per customer | Purchase frequency | Orders | Distinct customers, in the same window | Retention work, a reorder feature, a membership tier |
-| Items per order | Basket size | Items | Orders | Merchandising, bundles, recommendations |
-| Price per item | Realised price | Revenue | Items | Pricing, and it risks volume |
-| Discounts | Discount rate | Discount given | Gross revenue before discount | Margin, directly |
-
-**The sentence to get out of the room:** a rate with no denominator is a rumour.
-
----
-
-## Where the Rs 12 crore goes
-
-Marketing's ask is a bet on exactly one branch.
+Broken once, revenue is how many customers bought, times what each one brought.
 
 ```mermaid
 flowchart LR
-    M["<b>Rs 12 crore</b><br/>marketing's ask"] --> C["<b>customers</b>"]
-    C -.->|"but the other four<br/>branches are untouched"| X["orders per customer<br/>items per order<br/>price per item<br/>discounts"]
+    R["<b>revenue</b>"] --> C["<b>customers</b><br/>who bought at least once"]
+    R --> V["<b>revenue per customer</b><br/>what each one brought"]
 ```
 
-Nothing on this board says marketing is wrong. It says marketing has picked a branch, and that
-somebody should check whether it is the branch that moved before Rs 12 crore follows it.
-
----
-
-## The second drawing: what an average hides
-
-Put this up only after the numbers are on the screen.
+Broken until every leaf is a count or a price that someone in the business can move:
 
 ```mermaid
 flowchart LR
-    A["30 orders"] --> B["29 ordinary orders<br/>Rs 400 to Rs 4,500"]
-    A --> C["1 corporate order"]
-    B --> D["<b>median Rs 2,205</b><br/>describes the 29"]
-    C --> E["<b>mean Rs 18,160</b><br/>describes nobody"]
+    R["<b>revenue</b><br/>gross less discounts"] --> G["<b>gross revenue</b><br/>customers times spend"]
+    R --> D["<b>discounts</b><br/>what we gave back"]
+    G --> C["<b>customers</b><br/>how many bought"]
+    G --> V["<b>revenue per customer</b><br/>orders times order value"]
+    V --> F["<b>orders per customer</b><br/>how often each came back"]
+    V --> O["<b>revenue per order</b><br/>items times price"]
+    O --> B["<b>items per order</b><br/>how full the basket was"]
+    O --> P["<b>price per item</b><br/>what each line cost"]
 ```
 
-The reveal is arithmetic, so let the room do it: take the biggest order out and recompute the mean.
-It lands at Rs 2,235, next door to the median. That is the whole lesson, and it is why the finance
-controller opened with "no averages".
+The units check goes beside it: customers times orders per customer gives orders; times items per
+order gives items; times price per item gives rupees.
 
 ---
 
-## What has to be on the board when the day ends
+## Third drawing: every leaf as a metric, with its bill
 
-1. The tree, five branches, each named as a metric with its denominator.
-2. Marketing's Rs 12 crore sitting on one branch, with the other four visibly untouched.
-3. The four leaves with today's numbers written beside them.
-4. The mean and the median, side by side, with the gap circled.
+| Leaf | Numerator over denominator | What moving it costs |
+|---|---|---|
+| Customers | Distinct customer ids, a count | Marketing spend; new buyers may never return |
+| Orders per customer | Orders over distinct customers | Loyalty and service; it may pay people who would return anyway |
+| Items per order | Items over orders | Merchandising; baskets fill with low-margin lines |
+| Price per item | Revenue before discounts over items | Volume, as the price-sensitive leave |
+| Discounts | Rupees given back over revenue before discounts | Margin, traded for quantity |
 
-A learner who can redraw those four things from memory has the day.
+Marketing's Rs 12 crore is then written against one leaf, customers, with the question beside it:
+of the gap between 4 and 15 percent, how much came from fewer customers and how much from each
+customer buying less?
+
+---
+
+## Fourth drawing: what a mean does with one bulk order
+
+Drawn after the day's mean and median are on the screen, on five invented orders, so the mechanism
+is visible on numbers nobody has to trust.
+
+```mermaid
+flowchart LR
+    A["<b>five ordinary orders</b><br/>1,900 to 2,600"] --> M1["<b>mean Rs 2,240</b><br/>median Rs 2,200"]
+    B["<b>one replaced by a bulk order</b><br/>Rs 90,000 for Rs 2,600"] --> M2["<b>mean Rs 19,720</b><br/>median Rs 2,200"]
+```
+
+One value moved by d moves the mean by d over n, here 87,400 over 5, and leaves the median where it
+was.
+
+---
+
+## What is on the board when the day ends
+
+1. The tree, five leaves, each written as a numerator over a denominator.
+2. Marketing's Rs 12 crore written against one leaf, with the other four visibly untouched.
+3. Today's numbers beside the leaves the file can answer: 23 customers and 1.30 orders each.
+4. The mean and the median side by side, with the gap circled and the sentence that goes to Meera
+   under it.

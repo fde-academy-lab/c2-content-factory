@@ -1,72 +1,84 @@
 # The revenue tree
 
-Kalpa Retail, Week 1 Day 1. Revenue is a product of five things, and growth comes from moving one of
-them at a time. Keep this beside you for the rest of the week, because every day returns to it.
+Kalpa Retail, Week 1 Monday. Revenue is a product of counts and prices, less what is given back, and
+every number leaves the team with its definition. Every day this week returns to this sheet.
 
-## Panel 1: The picture, and the one rule
+## Panel 1: The tree, and the one rule
 
 ```mermaid
-flowchart TB
-    R["<b>REVENUE</b>"]
-    R --> C["<b>customers</b>"]
-    R --> F["<b>orders per<br/>customer</b>"]
-    R --> I["<b>items per<br/>order</b>"]
-    R --> P["<b>price per<br/>item</b>"]
-    R --> D["<b>discounts</b>"]
+flowchart LR
+    R["<b>revenue</b><br/>gross less discounts"] --> G["<b>gross revenue</b><br/>customers times spend"]
+    R --> D["<b>discounts</b><br/>what we gave back"]
+    G --> C["<b>customers</b><br/>how many bought"]
+    G --> V["<b>revenue per customer</b><br/>orders times order value"]
+    V --> F["<b>orders per customer</b><br/>how often each came back"]
+    V --> O["<b>revenue per order</b><br/>items times price"]
+    O --> B["<b>items per order</b><br/>how full the basket was"]
+    O --> P["<b>price per item</b><br/>what each line cost"]
 ```
 
-**Crux:** A rate with no denominator is a rumour, so every branch is written as a numerator over a denominator before any number is computed.
+Five leaves, and each one is a lever with its own bill. Branches multiply, so two 10 percent lifts
+give 21 percent, and 15 percent off for 10 percent more volume leaves 0.935 of today.
 
-## Panel 2: Every branch is a metric
+**Crux:** Write every branch as a numerator over a denominator before any number is computed, and
+move a budget only after finding which branch is short.
 
-| Branch | Over what | Costs |
+## Panel 2: Every leaf is a metric with a bill
+
+| Leaf | Over what | What moving it costs |
 |---|---|---|
-| Customers | The window, matched both sides | Marketing, slowest |
-| Orders per customer | Distinct customers, same window | Retention, a tier |
-| Items per order | Orders | Merchandising |
-| Price per item | Items | Pricing, risks volume |
-| Discounts | Gross before discount | Margin, directly |
+| Customers | A count, in the window | Marketing; buyers who never return |
+| Orders per customer | Distinct customers, same window | Loyalty; paying those who would return |
+| Items per order | Orders | Merchandising; low-margin baskets |
+| Price per item | Items | Volume; the price-sensitive leave |
+| Discounts | Revenue before discounts | Margin, traded for quantity |
 
-## Panel 3: Mean or median
+## Panel 3: One word, four readings
 
-| Use | When |
-|---|---|
-| Median | Describing a typical order |
-| Mean | Dividing a total that must reconcile |
-| Both | The first pass on any file |
+Booked, not cancelled, delivered, and after discounts: four honest totals of the same orders, each
+answering a different question.
 
-Day 1: mean Rs 18,160, median Rs 2,205. One corporate order carries 88 percent of the revenue.
+**Crux:** Name the definition and the window before the number: "Revenue, all booked orders, 1 July
+to 26 September".
 
-**Crux:** When the mean sits far above the median, the gap is the finding and the mean describes nobody.
-
-## Panel 4: The three lines every leaf is made of
+## Panel 4: The accumulator, three ways
 
 ```python
-total = 0
+revenue = 0                          # start, before the loop
 for order in ORDERS:
-    total = total + int(order["amount"])
+    revenue += int(order["amount"])  # update, once per record
+print(revenue)                       # finish, after the loop
 ```
 
-Start at zero. Walk the list. Add. Count adds one, sum adds the value, distinct uses a `set`.
+Count adds 1. Sum adds the value. A distinct count appends an id only when it is `not in` the list.
+A filter puts an `if` before the update.
 
-## Panel 5: Errors you meet today
+## Panel 5: Mean or median
 
-| Message | First move |
+| The number is for | Report |
 |---|---|
-| `TypeError: ... 'int' and 'str'` | Find the row, then write a rule rather than a patch |
-| `KeyError: 'discount'` | Ask whether it is missing or absent by design |
-| `NameError: name ... not defined` | Restart the kernel and run all cells |
+| A typical order | The median |
+| A total that must add up | The mean |
+| A first look at a file | Both, and the gap |
 
-## Panel 6: Four readings of one word
+The median of an even count is the average of the two middles: indexes `n // 2 - 1` and `n // 2`.
+One value moved by d moves the mean by d over n and the median not at all.
 
-Gross bookings. Delivered revenue. Net of returns. Cash collected.
+**Crux:** When the mean sits far above the median, the gap is the finding: read the top of the
+sorted list and name what sits there.
 
-Four different numbers live inside the word sales.
+## Panel 6: Errors met today, read from the last line up
 
-**Crux:** Say which reading you used, every time, or the room spends an hour arguing about the wrong number.
+| Last line | First move |
+|---|---|
+| `NameError: name 'ORDERS' is not defined` | Restart and Run All |
+| `TypeError: ... 'int' and 'str'` | Print the record the loop stopped on |
+| `KeyError: 'Amount'` | Copy the key from the record |
+| `ValueError: invalid literal for int()` | Decide the rule for that field |
 
-## Panel 7: The sentence shape
+## Panel 7: The sentence to Meera
 
-Claim, with its number and its denominator. The caveat that would change it. What you would do next.
+Claim, the branch to examine first. Evidence, a number with its definition and window. Caveat,
+what one window cannot show. Next step, the comparison that settles it.
 
-That shape closes every day this week, and it opens every good interview answer.
+**Crux:** A sentence without its evidence is an opinion, and one without its caveat is a promise.
