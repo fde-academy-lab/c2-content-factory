@@ -17,6 +17,7 @@ section-boundary treatment. `---` rules are ignored.
 """
 import argparse
 import hashlib
+import math
 import os
 import pathlib
 import re
@@ -26,6 +27,7 @@ import tempfile
 
 from pptx import Presentation
 from pptx.dml.color import RGBColor
+from pptx.opc.constants import RELATIONSHIP_TYPE as RT
 from pptx.enum.shapes import MSO_SHAPE
 from pptx.enum.text import PP_ALIGN
 from pptx.util import Emu, Inches, Pt
@@ -171,6 +173,28 @@ def split_blocks(body):
 
 CACHE = pathlib.Path(tempfile.gettempdir()) / "c2_mermaid_cache"
 
+# A 4K screen shows the slide 3840 pixels across its 13.333 inches, which is 288 pixels to the
+# inch. mmdc saves one pixel per CSS pixel unless it is given a scale, so a drawing 319 pixels
+# wide stretched across the slide showed at 27 pixels to the inch and every edge went soft.
+RENDER_PPI = 288
+
+
+def render_scale(lines, width_in=None):
+    """The scale mmdc renders a fence at, so the picture holds RENDER_PPI where it is drawn.
+
+    A picture drawn width_in inches wide gets exactly that, so a small drawing the slide blows
+    up gets a large scale and a wide one a small scale. The layout search asks without a width
+    and gets scale one, because it only needs the drawing's shape, and a sharper render reports
+    that shape a fraction differently: 0.0007in of picture was enough to push one table into a
+    smaller type size. A fence whose width cannot be measured gets three.
+    """
+    if width_in is None:
+        return 1.0
+    css_w = css_width(lines)
+    if not css_w:
+        return 3.0
+    return max(1.0, math.ceil(RENDER_PPI * width_in / css_w * 10) / 10)
+
 
 def _chromium():
     for path in sorted(pathlib.Path("/opt/pw-browsers").glob("chromium-*/chrome-linux/chrome")):
@@ -178,7 +202,7 @@ def _chromium():
     return None
 
 
-def render_mermaid(lines):
+def render_mermaid(lines, width_in=None):
     """Render a mermaid fence to a PNG and return its path, or None when mmdc is not installed.
 
     A mermaid fence renders as nothing at all in PowerPoint, so a deck that draws its thinking in
@@ -189,9 +213,14 @@ def render_mermaid(lines):
     The theme is the one scripts/build_cheatsheet.py uses, so the drawing a room sees on the slide
     is the drawing they find again on the cheat sheet and in the notebook. Without it mermaid
     paints its own lavender onto a slide that is not lavender.
+
+    The scale from render_scale is part of the cache key, so a render made at another scale is
+    never picked up again. The scale alone sets the picture's pixels: at scale one a drawing 809
+    CSS pixels wide came out 810 pixels wide on a 2600 pixel page.
     """
     code = "\n".join(lines).strip() + "\n"
-    key = hashlib.sha256((code + MERMAID_CONFIG).encode()).hexdigest()[:16]
+    scale = render_scale(lines, width_in)
+    key = hashlib.sha256((code + MERMAID_CONFIG + f"scale={scale}").encode()).hexdigest()[:16]
     CACHE.mkdir(parents=True, exist_ok=True)
     png = CACHE / f"{key}.png"
     if png.exists():
@@ -210,7 +239,8 @@ def render_mermaid(lines):
         env["PUPPETEER_EXECUTABLE_PATH"] = chrome
     try:
         subprocess.run(["mmdc", "-i", str(CACHE / f"{key}.mmd"), "-o", str(png),
-                        "-b", "transparent", "-w", "2600", "-c", str(theme), "-p", str(config)],
+                        "-b", "transparent", "-w", "2600", "-s", str(scale), "-c", str(theme),
+                        "-p", str(config)],
                        capture_output=True, text=True, env=env, timeout=240)
     except Exception:
         return None
@@ -564,8 +594,8 @@ def css_height(lines):
 def css_width(lines):
     """The diagram's own width in CSS pixels, which the PNG cannot tell us on its own.
 
-    mmdc renders the deck's PNG at a fixed 2600 pixels so it stays sharp on a projector, so the
-    file says nothing about how wide the drawing wanted to be. The SVG render of the same fence
+    mmdc renders the deck's PNG at the scale render_scale picks for sharpness, so the file's
+    pixels say nothing about how wide the drawing wanted to be. The SVG render of the same fence
     carries that in its viewBox, both renders are cached, and it is what decides whether a label
     lands readable on the slide.
     """
@@ -591,6 +621,36 @@ def picture_label_pt(slide, mark, widths):
 def clear_after(slide, mark):
     for sh in list(slide.shapes)[mark:]:
         sh._element.getparent().remove(sh._element)
+
+
+def sharpen(slide, mark, body):
+    """Swap every picture on a settled slide for a render made for the width it was drawn at.
+
+    The layout search places each picture from its scale-one render. Once the layout is settled,
+    each picture is rendered again at RENDER_PPI for its own width and swapped into the same box,
+    so sharpening changes pixels and never a layout, and the deck carries the sharpness it shows
+    and no more. A picture is matched to its fence by its image, never by counting, since a block
+    the layout dropped would shift a count. Images nothing shows any more are dropped, so they do
+    not ride along in the file.
+    """
+    probes = {}
+    for mode, lines in split_blocks(body):
+        if mode == "mermaid":
+            png = render_mermaid(lines)
+            if png:
+                probes[hashlib.sha1(png.read_bytes()).hexdigest()] = lines
+    for sh in list(slide.shapes)[mark:]:
+        if sh.shape_type is None or "PICTURE" not in str(sh.shape_type):
+            continue
+        lines = probes.get(sh.image.sha1)
+        png = render_mermaid(lines, Emu(sh.width).inches) if lines else None
+        if png:
+            _, rId = slide.part.get_or_add_image_part(str(png))
+            sh._element.blipFill.blip.rEmbed = rId
+    live = set(slide._element.xpath(".//a:blip/@r:embed"))
+    for rId, rel in list(slide.part.rels.items()):
+        if rel.reltype == RT.IMAGE and rId not in live:
+            slide.part.drop_rel(rId)
 
 
 def build(src, out, footer):
@@ -628,6 +688,7 @@ def build(src, out, footer):
                 break
         clear_after(s, mark)
         render_slide(s, prs, title, body, footer, n, total, best[4], best[3], best[5])
+        sharpen(s, mark, body)
         shrunk += best[4] != 1.0
         if best[1] < MIN_LABEL_PT:
             # Nothing either layout can do reaches a readable label, because the diagram is
@@ -675,3 +736,11 @@ if __name__ == "__main__":
 #     Gets the accent background, the title centred large, and its breadcrumb drawn in white.
 # A slide holding the client-zero unit map or entity mermaid fence
 #     Gets boxes and connectors drawn as PowerPoint shapes, never the mermaid source as text.
+# content/W02/D3/slides/C2_W02_D03_deck_STUDENT.md, slide 22, a small fence drawn across the slide
+#     Its picture is 3445 pixels across the 11.83 inches it is drawn at, 291 to the inch, where the
+#     render without a scale was 319 pixels, 27 to the inch.
+# The same deck, slide 19, a portrait fence drawn in a column 3.79 inches wide
+#     Its picture is rendered for that column, 1104 pixels across.
+# Any rebuilt deck, unzipped
+#     Holds one image in ppt/media for each distinct picture on its slides and nothing the layout
+#     search left behind.
