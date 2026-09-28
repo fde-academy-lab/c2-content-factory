@@ -703,8 +703,11 @@ def decisions_page(ctx):
             f"{as_date(f['client_zero']['locked']['locked_on']).strftime('%d %b %Y')}. Proposed: "
             f"{f['client_zero']['proposed']['version']}, which carries:", ""]
     body += ["- " + i for i in f["client_zero"]["proposed"]["items"]]
-    body += ["", "Still open inside it: " + "; ".join(f["client_zero"]["proposed"]["open"]) + ".",
-             "", f"## The re-cut of {as_date(f['recut']['made_on']).strftime('%d %B %Y')} "
+    body += ["", "Still open inside it: " + "; ".join(f["client_zero"]["proposed"]["open"]) + "."]
+    for a in f["client_zero"].get("addenda", []):
+        body += ["", f"Addendum to {f['client_zero']['locked']['version']}, {a['status']} on "
+                 f"{as_date(a['decided_on']).strftime('%d %b %Y')} by {a['by']}: {a['text']}"]
+    body += ["", f"## The re-cut of {as_date(f['recut']['made_on']).strftime('%d %B %Y')} "
              f"({f['recut']['status']})", "", f["recut"]["note"], ""]
     body += ["- " + i for i in f["recut"]["items"]]
     return page("Decisions register", "What is still open, what disagrees, and what is proposed, "

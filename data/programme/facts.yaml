@@ -178,6 +178,12 @@ client_zero:
       - The scenario facts, dataset versions and sub-problem seeds of Weeks 10 to 15 (21 September).
       - The re-date of 21 September, which moves every date in the v2.2 ladder by one week and moves tokenization to the Week 7 Friday.
     open: [a name for the Kalpa Logistics stakeholder, the finance controller's limits and ceilings, the Week 16 call volumes]
+  addenda:
+    - id: gcc-frame
+      status: locked
+      decided_on: 2026-09-28
+      by: the requester
+      text: "Kalpa's Bengaluru engineering and data centre is Kalpa's Global Capability Centre, the cohort are trainee engineers in its data and AI team, and every pack carries three recurring beats: the client's ask, Kavya Nair's review and the interview question. It adds a name and a framing to v2.2 and invalidates nothing."
 
 recut:
   status: open
