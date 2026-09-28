@@ -11,6 +11,24 @@ and learn from it. Everything below serves that.
 Work in this order. Do not skip the first two steps even when the request
 looks small.
 
+## In this repository
+
+The Cohort 2 content factory fixes the build, and what follows overrides every
+pipeline, palette and reference deck named further down this file:
+
+- A deck is a markdown source that `scripts/build_deck.py` turns into the
+  .pptx. Its docstring is the syntax, and `references/design-system.md` is the
+  system it draws, which is the orientation deck's, read from `scripts/brand.py`.
+- Every diagram is a Mermaid fence rendered through the shared theme, and the
+  amber, sand and multi-colour palettes named below serve work outside this
+  repository.
+- The model decks are `content/W01/D1/slides/`, and
+  `.claude/skills/day-pack-builder/references/the-standard.md` says what a
+  day's deck carries.
+- The gate is `python3 scripts/verify.py <day folder>`, which runs
+  `deck_md_check.py` on the markdown and `deck_check.py` on a freshly built
+  .pptx.
+
 ---
 
 ## 1. Fit the room before writing a word
@@ -204,24 +222,15 @@ anything.
 
 ## 9. Build, then verify
 
-Build with `pptxgenjs`, diagrams as hand-written SVG rasterised through
-`sharp`. `references/design-system.md` carries the working builder patterns
-and the gotchas that cost real time.
+Build with `scripts/build_deck.py` from the markdown source.
+`references/design-system.md` carries the system, the commands and the
+gotchas that cost real time.
 
-Verification is not optional. Run all of it:
-
-```bash
-python3 scripts/qa_deck.py <deck.pptx>
-```
-
-It checks: schema validation, em-dashes in both literal and escaped form,
-banned words, meta-content patterns, slide and notes counts, and edge-bleed
-per slide. Then render to images and look at every slide:
-
-```bash
-python3 /mnt/skills/public/pptx/scripts/office/soffice.py --headless --convert-to pdf deck.pptx
-pdftoppm -jpeg -r 120 deck.pdf slide
-```
+Verification is not optional. `python3 scripts/verify.py <day folder>` runs
+`deck_md_check.py` on the markdown, `deck_check.py` on a freshly built .pptx
+and the style sweep, which covers em-dashes, banned words, invisible
+characters and meta-content. Then render to images through LibreOffice, as
+`references/design-system.md` shows, and look at every slide.
 
 Look for text overflow first, then overlaps, then uneven gaps. Fix in the
 generator, never by hand-editing the packed XML.
@@ -267,6 +276,8 @@ Splice by anchor title so the originals are provably unmodified.
 
 Read `references/reference-style.md` before laying out a single slide. It was
 extracted from the two decks Akash named as the bar, and it is not optional.
+In this repository the bar is the orientation deck, version 3, and where the
+two differ, such as its dark chapter openers, the orientation deck wins.
 
 The one rule that fixes most rejections: **accent is ink, not wallpaper.** In
 the reference decks amber appears as text roughly fourteen times more often
@@ -517,11 +528,16 @@ text removed.** If that number is low, the deck is text dressed as slides.
 
 The eight text layout patterns in `references/reference-style.md` are for the
 minority of slides that are genuinely a table or a list. They are not the
-workhorse. The workhorse is a hand-drawn SVG diagram that carries the idea.
+workhorse. The workhorse is a diagram that carries the idea, which this
+repository draws as a Mermaid fence.
 
 ## TWO ACCEPTED PALETTES, CHOSEN BY WHETHER COLOUR CARRIES MEANING (added 31 Aug 2026)
 
-The single-accent amber-on-slate palette in `references/design-system.md` was
+In this repository neither palette below applies: the palette is the
+orientation deck's, in `scripts/brand.py`, and meaning is carried by the
+diagram class styles in `references/design-system.md`.
+
+The single-accent amber-on-slate palette was
 rejected as a default everyone recognises. Plain white-with-navy was rejected on
 the same ground. Two palettes are now accepted, and the choice is made by one
 question: is colour doing teaching work?
