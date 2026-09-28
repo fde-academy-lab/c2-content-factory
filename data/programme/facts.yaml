@@ -242,8 +242,8 @@ decisions:
   - id: papers-to-build
     status: open
     closes: the content team
-    text: The Saturday papers for Weeks 10, 11, 13 and 14, the items for the Week 4 Tuesday, the Week 0 papers and the baseline card.
-    blocks: the Week 0 packs, which run from 28 September
+    text: The Saturday papers for Weeks 10, 11, 13 and 14, and the items for the Week 4 Tuesday.
+    blocks: the Week 4 Tuesday pack and the Saturday packs for Weeks 10, 11, 13 and 14
   - id: senate-reconciliation
     status: open
     closes: the Programme Head and the academic office

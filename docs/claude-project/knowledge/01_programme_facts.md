@@ -109,7 +109,7 @@ Open decisions:
 | client-zero-v2-3 | open | the Programme Head | The lock on client zero v2.3. | the Week 1 Friday lab dataset and every pack from Week 10 on |
 | build-owners | open | the Programme Head | Mock and GD owners for Builds 2 to 5, and the expert's dates for Build 4 around Christmas. | the build-week trainer sheets from Week 6 on |
 | build-sequencing | open | the Programme Head | Whether all five builds move to the sequencing discussed on 15 September, with GDs from day two, mocks in the same window and presentations by one assessor. | the build-week trainer sheets |
-| papers-to-build | open | the content team | The Saturday papers for Weeks 10, 11, 13 and 14, the items for the Week 4 Tuesday, the Week 0 papers and the baseline card. | the Week 0 packs, which run from 28 September |
+| papers-to-build | open | the content team | The Saturday papers for Weeks 10, 11, 13 and 14, and the items for the Week 4 Tuesday. | the Week 4 Tuesday pack and the Saturday packs for Weeks 10, 11, 13 and 14 |
 | senate-reconciliation | open | the Programme Head and the academic office | Reconciling the senate grading buckets and passing rules, including 90 percent attendance, with the 1000-mark pool. | any threshold in any artifact |
 | codechef | open | the Programme Head | Whether daily coding practice on CodeChef is adopted; the 20-Week Plan names it and the handover calls it undecided. | any artifact that would name the practice platform |
 | restricted-holidays | open | the institute calendar | Whether campus closes on New Year's Day (Week 13 Friday) and on Makar Sankranti (Week 15 Thursday). | the Week 13 Friday and Build 5 Thursday plans |
