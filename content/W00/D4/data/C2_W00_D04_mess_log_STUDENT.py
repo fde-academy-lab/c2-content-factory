@@ -1,0 +1,33 @@
+# The hostel mess register: four weeks of dinners, one dictionary per night. The mess cooks for
+# all 240 registered students every night, and the register records the plates eaten. Invented
+# practice data for the Week 0 weekend project, written by hand; it belongs to no client.
+RECORDS = [
+    {"day": 1, "week": 1, "weekday": "Mon", "cooked": 240, "eaten": 206},
+    {"day": 2, "week": 1, "weekday": "Tue", "cooked": 240, "eaten": 211},
+    {"day": 3, "week": 1, "weekday": "Wed", "cooked": 240, "eaten": 207},
+    {"day": 4, "week": 1, "weekday": "Thu", "cooked": 240, "eaten": 199},
+    {"day": 5, "week": 1, "weekday": "Fri", "cooked": 240, "eaten": 176},
+    {"day": 6, "week": 1, "weekday": "Sat", "cooked": 240, "eaten": 149},
+    {"day": 7, "week": 1, "weekday": "Sun", "cooked": 240, "eaten": 158},
+    {"day": 8, "week": 2, "weekday": "Mon", "cooked": 240, "eaten": 203},
+    {"day": 9, "week": 2, "weekday": "Tue", "cooked": 240, "eaten": 209},
+    {"day": 10, "week": 2, "weekday": "Wed", "cooked": 240, "eaten": 210},
+    {"day": 11, "week": 2, "weekday": "Thu", "cooked": 240, "eaten": 202},
+    {"day": 12, "week": 2, "weekday": "Fri", "cooked": 240, "eaten": 172},
+    {"day": 13, "week": 2, "weekday": "Sat", "cooked": 240, "eaten": 153},
+    {"day": 14, "week": 2, "weekday": "Sun", "cooked": 240, "eaten": 162},
+    {"day": 15, "week": 3, "weekday": "Mon", "cooked": 240, "eaten": 208},
+    {"day": 16, "week": 3, "weekday": "Tue", "cooked": 240, "eaten": 212},
+    {"day": 17, "week": 3, "weekday": "Wed", "cooked": 240, "eaten": 205},
+    {"day": 18, "week": 3, "weekday": "Thu", "cooked": 240, "eaten": 198},
+    {"day": 19, "week": 3, "weekday": "Fri", "cooked": 240, "eaten": 178},
+    {"day": 20, "week": 3, "weekday": "Sat", "cooked": 240, "eaten": 147},
+    {"day": 21, "week": 3, "weekday": "Sun", "cooked": 240, "eaten": 157},
+    {"day": 22, "week": 4, "weekday": "Mon", "cooked": 240, "eaten": 204},
+    {"day": 23, "week": 4, "weekday": "Tue", "cooked": 240, "eaten": 208},
+    {"day": 24, "week": 4, "weekday": "Wed", "cooked": 240, "eaten": 209},
+    {"day": 25, "week": 4, "weekday": "Thu", "cooked": 240, "eaten": 201},
+    {"day": 26, "week": 4, "weekday": "Fri", "cooked": 240, "eaten": 174},
+    {"day": 27, "week": 4, "weekday": "Sat", "cooked": 240, "eaten": 151},
+    {"day": 28, "week": 4, "weekday": "Sun", "cooked": 240, "eaten": 161},
+]
