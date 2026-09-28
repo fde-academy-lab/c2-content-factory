@@ -46,6 +46,42 @@ purpose and its interview angle, and the student Week 0 sheet (version 2) the ru
   the practice track.
 - **The make-up.** Absentees sit the same form first thing on Wednesday, as the requester decided.
 
+## The discussion threads
+
+The requester asked, on 28 September 2026, for the diagnostic's model solutions to live on GitHub
+Discussions only, with extended and simulated explanations, diagrams, history and context for every
+question, the questions learners ask with their answers, and videos and reading at the end. The
+seven posts in `study-notes/` are that deliverable, written to paste as they stand; the course
+repository they will be posted to does not exist yet.
+
+| Check | What it settled |
+|---|---|
+| Every Python item and every option, run in Python 3.11.15 | The outputs and error lines printed in the Section A threads |
+| Every SQL item and every option, run in PostgreSQL 16.13 in a fresh database | The output blocks printed in the Section B thread, including the error texts |
+| The arithmetic of Sections C and D, recomputed in Python | Every worked figure, the binomial table for Q25, the toy sampler for Q33, the Wilson interval for Q34 and the volume and price split for Q29 |
+| Four research passes, one per section, each quote machine-checked against the page saved that day | Every quotation and every dated link in the threads |
+| GitHub's documentation on creating diagrams, loaded in session | Diagram rendering is available in GitHub Discussions |
+| GitHub's GraphQL guide for Discussions, loaded in session | A `createDiscussion` mutation takes a repository id, a category id, a title and a body |
+
+Own constructions in the threads: the trace tables; the example rows in Q7 (three Plus orders of
+Rs 1,000, Rs 700 and Rs 800); the two-city example in Q27; the toy model's scores in Q33 (2.0, 1.6
+and 0.2); the 27-of-30 agreement example in Q34; the second look at Q29, which splits each tier's
+change into a volume part and a price part; the model messages in Section E; and every practice line.
+
+Not verified, and said so or left out of the threads: the running times and content of the videos
+outside Section A (YouTube returned HTTP 429, so titles and channels came from its oEmbed endpoint);
+the text of Codd's 1979 paper and of Bar-Hillel's 1980 paper, which the publishers refused; the DoPT
+holiday memoranda on the department's own site, which refused the connection, so the scans hosted by
+StaffNews were read; and who coined the terms fan trap and chasm trap.
+
+## Findings on the diagnostic itself, reported and left unchanged
+
+- In three items the key is the longest option on its own: Q9 (137 characters against 119 for the
+  next), Q22 (73 against 72) and Q33 (144 against 140). Key positions are well spread otherwise, with
+  A and B nine times each and C and D eight times each.
+- The diagnostic introduces Farhan Sheikh as Head of Support, while client zero v2.2 brings that role
+  in at Week 8.
+
 ## Retired from the pack
 
 The pack's own four papers, their key, the score workbook with its builder and manifest, and the

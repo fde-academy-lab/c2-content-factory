@@ -86,6 +86,9 @@ room to tonight's pre-read, which carries the same shape.
    one as they arrive, and never post a list.
 4. Anyone absent today sits the same form first thing on Wednesday in a separate room, before the
    brush-up teaches anything, and joins the taught track for its last hour.
+5. Once the make-up is in, post the seven discussion threads from `study-notes/`, index first.
+   `trainer/C2_W00_D02_discussion_posting_TRAINER.md` has the order, the checks before posting and
+   how to answer replies.
 
 ## The interview angle, with the answers
 
