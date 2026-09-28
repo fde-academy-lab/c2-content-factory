@@ -2,28 +2,34 @@
 
 The rhythm is MAP, DO, SEE, CHECK, SUM. It repeats per section and the notebook is nothing but that rhythm plus an opening and a close.
 
-## The opening, three cells
+## The opening, four cells
 
-**Cell 1, markdown: the title.** The topic named, then the one-line promise as a full sentence. No agenda, no list of what is coming, no "in this notebook we will".
+**Cell 1, markdown: the title.** The topic named, the notebook's place in the day, then the one-line promise as a full sentence, Kavya's review of what the notebook must prove, and one line on what the previous notebook established. No agenda, no list of what is coming, no "in this notebook we will".
 
 ```markdown
-# Day 3, Notebook 1: profiling before you touch anything
+# The first count
 
-By the end of this notebook you can look at a file you have never seen and say
-which columns are usable, which are lying to you, and which are fine.
+**Week 1, Monday. Notebook 2 of 4.** By the end of this notebook you can keep a notebook honest,
+read one Kalpa order as a dictionary and the file as a list of them, and count with an accumulator.
+
+> **Kavya's review.** A number is only as good as the run that made it.
+
+Notebook 1 drew the tree. This one counts its first leaf, revenue.
 ```
 
-**Cell 2, code: the MAP.** Two diagrams composed side by side. The day's notebook ladder with this one lit, and a flow of what this notebook adds. This is a code cell so the SVG renders and saves.
+**Cell 2, markdown: the setup note.** One or two sentences saying that the next cell finds the helper by walking up from this folder and loads the day's data from `../data/`.
+
+**Cell 3, code: setup.** The walk-up import from `helper-module.md` and every loader call, in one cell, so the notebook runs cold.
+
+**Cell 4, code: the MAP.** Two diagrams composed side by side: the day's notebook ladder with this one lit, and a flow of what this notebook adds. It is a code cell so the SVG renders and saves, and it comes after the setup because it calls the helper.
 
 ```python
-c2kit.side_by_side(
-    c2kit.ladder(["profiling", "rows and duplicates"], lit=0),
-    c2kit.flow(["read the raw file", "count three things per field",
-                "read the counts", "decide per field"], lit=None),
+kit.side_by_side(
+    kit.ladder(["The question before the budget", "The first count", "The leaves"], lit=1, show=False),
+    kit.vflow(["the kernel\nwhat it remembers", "one order\na dictionary of named fields",
+               "the accumulator\nstart, update, finish"], show=False),
 )
 ```
-
-**Cell 3, code: setup.** The documented import and every loader call, in one cell, at the top, so the notebook runs cold. The markdown cell above it explains the relative path in one sentence.
 
 ## Per section, five moves
 
@@ -33,21 +39,21 @@ A code cell rendering the section's own diagram: a flow of the section's steps w
 
 ### DO, in two cells
 
-A markdown cell of two to five full sentences saying what is about to happen and why it matters to a record in the running case. Naming the record is what makes the section concrete: "KR4200 carries its amount as text, so the comparison in the next cell has nothing to compare" beats "we will now look at type errors".
+A markdown cell of two to five full sentences saying what is about to happen and why it matters to a record in the running case. The running case is what makes the section concrete: "the loop is about to add thirty amounts, and when it stops, `order` still holds the record it stopped on" beats "we will now look at type errors". An ordinary record may be named; a planted one is left for the learner to print, so the sentence points at it without naming it.
 
 Then one code cell carrying one idea. Two ideas is two cells.
 
 ### SEE
 
-The printed output, or `c2kit.table(...)`, or a trace. Whatever the cell produced is visible on the page before anybody runs anything, because the notebook ships executed.
+The printed output, or `kit.table(...)`, or a trace. Whatever the cell produced is visible on the page before anybody runs anything, because the notebook ships executed.
 
 ### CHECK
 
 A code cell with two or more `check()` calls.
 
 ```python
-c2kit.check("every raw row was read", len(raw) == 50, f"read {len(raw)}")
-c2kit.check("amount is present on 48 and converts on 44",
+kit.check("every raw row was read", len(raw) == 50, f"read {len(raw)}")
+kit.check("amount is present on 48 and converts on 44",
             profile["amount"]["present"] == 48 and profile["amount"]["converts"] == 44,
             f'present {profile["amount"]["present"]}, converts {profile["amount"]["converts"]}')
 ```
@@ -74,7 +80,7 @@ A wrong-output failure is harder than a crash and needs more care: print the wro
 A code cell rendering a diagram from the helper and a table of what the group established. Two or three groups per notebook, not one per section.
 
 ```python
-c2kit.table(
+kit.table(
     ["What you can now say", "The evidence"],
     [["44 of 50 amounts are usable", "converts 44, present 48"],
      ["discount is absent by design", "present 11, and absence means no discount ran"]],
@@ -88,7 +94,7 @@ The final cell prints `check_summary()` and one sentence on what the next notebo
 
 ## Sizing
 
-Sixteen to twenty-five cells is the working range for a teaching notebook. Under sixteen and the concept has not been walked; over twenty-five and it is two notebooks. Markdown outnumbers code where the concept needs it, and a wall of text is as banned as a wall of code.
+Sixteen to twenty-eight cells is the working range for a teaching notebook in the predict rhythm. Under sixteen and the concept has not been walked; over twenty-eight and it is two notebooks, split by chapter so each sits beside one part of the deck. Markdown outnumbers code where the concept needs it, and a wall of text is as banned as a wall of code.
 
 ## The four things that make a notebook fail review
 
