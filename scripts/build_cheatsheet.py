@@ -99,13 +99,52 @@ def _chromium():
     return None
 
 
+LABEL = re.compile(r'"([^"\n]*)"')
+STYLE_TAG = re.compile(r"</?(b|strong|i|em)>", re.I)
+LINE_BREAK = re.compile(r"(<br\s*/?>)", re.I)
+
+
+def svg_labels(code):
+    """Rewrite a flowchart's labels so the SVG text renderer prints what the source says.
+
+    With htmlLabels off, mermaid 11.17.2 splits a plain label into words with the pattern
+    <[^>]+>|[^\\s<>]+, so a <b> tag prints as a literal word and a bare > or < matches nothing
+    and disappears: "if days_kept > 14" came out as "if days_kept 14". A label carrying bold or
+    italic tags becomes a markdown string, which the same renderer sets in real bold and italic
+    and which keeps its comparison signs, and any other bare < or > becomes mermaid's #lt; or
+    #gt;. The markdown source is left alone, since it is what GitHub renders and what the gate
+    reads. Punctuation straight after a closing tag moves inside it, since the renderer joins a
+    bold word and the comma after it with a space. A markdown string keeps only text, bold and
+    italic, so a backslash escape or a code span in one would vanish, and none is written.
+    """
+    first = code.lstrip().split("\n", 1)[0].strip().lower()
+    if not first.startswith(("flowchart", "graph")):
+        return code
+
+    def fix(m):
+        text = m.group(1)
+        if text.startswith("`"):
+            return m.group(0)
+        if STYLE_TAG.search(text):
+            md = re.sub(r"(</(?:b|strong|i|em)>)([,.;:!?)])", r"\2\1", text, flags=re.I)
+            md = re.sub(r"</?(b|strong)>", "**", md, flags=re.I)
+            md = re.sub(r"</?(i|em)>", "*", md, flags=re.I)
+            return '"`' + html.unescape(LINE_BREAK.sub("<br/>", md)) + '`"'
+        parts = LINE_BREAK.split(text)
+        return '"' + "".join(p if LINE_BREAK.fullmatch(p) else
+                             p.replace("<", "#lt;").replace(">", "#gt;") for p in parts) + '"'
+
+    return LABEL.sub(fix, code)
+
+
 def render_mermaid(code, fmt="svg"):
     """Render one fence to an image and return its path, or None when mmdc is unavailable.
 
     Renders are cached by content hash and by format, so rebuilding a sheet re-renders only what
-    changed and a week of sheets sharing a diagram renders it once.
+    changed and a week of sheets sharing a diagram renders it once. The labels go through
+    svg_labels first, so what the hash covers is what mmdc draws.
     """
-    body = code.strip() + "\n"
+    body = svg_labels(code.strip()) + "\n"
     key = hashlib.sha256((body + fmt + MERMAID_CONFIG).encode()).hexdigest()[:16]
     CACHE.mkdir(parents=True, exist_ok=True)
     out = CACHE / f"{key}.{fmt}"
@@ -777,3 +816,12 @@ if __name__ == "__main__":
 #     One INFO line, then a FAIL per sheet whose diagrams fell back to their source, and exit 1.
 # scripts/build_cheatsheet.py <a sheet with twelve panels>
 #     FAIL naming the page count, because a sheet is defined by what it leaves out.
+# svg_labels('flowchart LR\n    A["<b>REVENUE</b><br/>Rs 5,44,810"]')
+#     Returns the label as "`**REVENUE**<br/>Rs 5,44,810`", which prints REVENUE in bold where
+#     the plain label printed the tags as words.
+# svg_labels('flowchart LR\n    I["if days_kept > 14"]')
+#     Returns "if days_kept #gt; 14", which prints the sign the plain label dropped.
+# svg_labels('flowchart LR\n    E["without <b>with</b>,<br/>the handle leaks"]')
+#     Returns "`without **with,**<br/>the handle leaks`", so no space opens before the comma.
+# svg_labels('sequenceDiagram\n    A->>B: "x > 1"')
+#     Returns the fence unchanged, since only flowcharts read markdown strings.

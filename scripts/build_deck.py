@@ -32,7 +32,7 @@ from pptx.enum.shapes import MSO_SHAPE
 from pptx.enum.text import PP_ALIGN
 from pptx.util import Emu, Inches, Pt
 
-from build_cheatsheet import MERMAID_CONFIG
+from build_cheatsheet import MERMAID_CONFIG, svg_labels
 from deck_layout import (ACC, BG, BOLD, INK, LINE, MUTED, TINT, WHITE, MARGIN, WIDTH,
                          BODY_TOP, BODY_BOTTOM, RULE_Y, SLIDE_W, SLIDE_H, CALLOUT, CRUMB, NUMBERED,
                          QUOTE, SLIDE_ID, add_runs, background, breadcrumb, callout, clean,
@@ -216,9 +216,10 @@ def render_mermaid(lines, width_in=None):
 
     The scale from render_scale is part of the cache key, so a render made at another scale is
     never picked up again. The scale alone sets the picture's pixels: at scale one a drawing 809
-    CSS pixels wide came out 810 pixels wide on a 2600 pixel page.
+    CSS pixels wide came out 810 pixels wide on a 2600 pixel page. The labels go through the
+    cheat sheet's svg_labels, so bold prints as bold and a > survives, as they do on the sheet.
     """
-    code = "\n".join(lines).strip() + "\n"
+    code = svg_labels("\n".join(lines).strip()) + "\n"
     scale = render_scale(lines, width_in)
     key = hashlib.sha256((code + MERMAID_CONFIG + f"scale={scale}").encode()).hexdigest()[:16]
     CACHE.mkdir(parents=True, exist_ok=True)
