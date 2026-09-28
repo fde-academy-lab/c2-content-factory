@@ -14,6 +14,32 @@ Usage:
 
 Slide source format: every `## ` heading starts a slide. A heading beginning with SECTION gets the
 section-boundary treatment. `---` rules are ignored.
+
+The visual system is the one in the Programme Head's orientation deck (scripts/deck_layout.py and
+scripts/brand.py). What a source can ask for:
+
+    # Title                              the deck's title, above the first slide
+    Week 1, Day 1. Half one.             the day, which sets the header line and the cover pill
+    Quote: Where does our growth ...     a cover slide with the client's words under the title
+    Who: Meera Raghavan, CEO ...         who said them
+    Kicker: / Header:                    override the cover pill / the header line
+
+    ## SECTION 1: The ask                a chapter opener: numeral, name, the chapter pills
+    *A CEO asks what sales are made of.* its first italic line is the chapter's promise
+
+    ## S3. An action title               a content slide
+    *One sentence that frames it.*       the subtitle under the title
+    **The client asks.** ...             the three beats get their own strips: The client asks,
+    **Kavya's review.** ...              Kavya's review, In the interview (and What breaks,
+    **In the interview.** ...            The rule)
+
+    ```cards        icon: users | eyebrow: Branch 1 | title: Customers | body: ... | tone: dark
+    ```stats        value: 23 | label: customers | note: who bought at least once
+    ```timeline     label: Beat 1 | title: The client asks | body: ...
+    ```bar          label: You build | value: 30 | caption: 30 minutes
+    ```notes        speaker notes, never drawn: what to say, ask and watch for
+
+Icons are Lucide names in lower case with hyphens (chart-line, shopping-cart, search-check).
 """
 import argparse
 import hashlib
@@ -32,14 +58,16 @@ from pptx.enum.shapes import MSO_SHAPE
 from pptx.enum.text import PP_ALIGN
 from pptx.util import Emu, Inches, Pt
 
+import brand
 from build_cheatsheet import MERMAID_CONFIG, svg_labels
-from deck_layout import (ACC, BG, BOLD, INK, LINE, MUTED, TINT, WHITE, MARGIN, WIDTH,
+from deck_layout import (ACC, BG, BOLD, INK, LINE, MUTED, NIGHT, TINT, WHITE, MARGIN, WIDTH,
                          BODY_TOP, BODY_BOTTOM, RULE_Y, SLIDE_W, SLIDE_H, CALLOUT, CRUMB, NUMBERED,
-                         QUOTE, SLIDE_ID, add_runs, background, breadcrumb, callout, clean,
-                         code_card, footer_band, numbered, pill, quote_block, rect, table,
-                         table_geometry, text_height, textbox, title_band, wrapped_rows)
-
-SECBG = ACC
+                         QUOTE, SLIDE_ID, BEATS, add_runs, background, bar, bar_height, breadcrumb,
+                         callout, callout_height, cards, cards_height, clean, code_card,
+                         footer_band, header, icons_in, numbered, pill, quote_block, rect,
+                         section_slide, stats, stats_height, table, table_geometry, text_height,
+                         textbox, timeline, timeline_height, title_band, title_slide,
+                         wrapped_rows)
 
 UNITS = ["Kalpa Retail", "Kalpa Financial Services", "Kalpa Logistics",
          "Kalpa Health", "Kalpa Connect"]
@@ -76,7 +104,7 @@ def draw_units(s, after):
             if line.strip().startswith(unit):
                 said[unit] = line.strip()[len(unit):].strip().rstrip(".")
     group = _node(s, Inches(0.9), Inches(3.15), Inches(3.1), Inches(1.3),
-                  "Kalpa Group\nBengaluru Data and AI team", ACC, WHITE, 14, True)
+                  "Kalpa Group\nGlobal Capability Centre, Bengaluru", ACC, WHITE, 14, True)
     for i, unit in enumerate(UNITS):
         spine = unit == "Kalpa Retail"
         label = unit + (", the teaching spine" if spine else "")
@@ -142,11 +170,12 @@ def parse(md):
     return slides
 
 
-FENCED = ("code", "mermaid")
+COMPONENTS = ("cards", "stats", "timeline", "bar", "notes")
+FENCED = ("code", "mermaid") + COMPONENTS
 
 
 def split_blocks(body):
-    """Split a slide body into ('text'|'code'|'mermaid'|'table', lines) blocks."""
+    """Split a slide body into ('text'|'code'|'mermaid'|'table'|component, lines) blocks."""
     blocks, buf, mode = [], [], "text"
     for line in body:
         stripped = line.strip()
@@ -156,7 +185,8 @@ def split_blocks(body):
             if mode in FENCED:
                 mode = "text"
             else:
-                mode = "mermaid" if stripped[3:].strip().lower() == "mermaid" else "code"
+                lang = stripped[3:].strip().lower()
+                mode = lang if lang in COMPONENTS or lang == "mermaid" else "code"
             continue
         is_row = stripped.startswith("|") and stripped.endswith("|")
         want = mode if mode in FENCED else ("table" if is_row else "text")
@@ -171,7 +201,85 @@ def split_blocks(body):
             for m, b in blocks if any(l.strip() for l in b)]
 
 
+SUBTITLE = re.compile(r"^\*(?!\*)(.+?)(?<!\*)\*$")
+
+
+def slide_parts(body):
+    """A slide's subtitle, its speaker notes, and the body that is drawn.
+
+    The subtitle is the slide's first line when that line is set in italics, the one sentence
+    under the title that frames the slide, as the orientation deck puts one under every title.
+    Speaker notes live in a ```notes fence, which is never drawn: they carry what the trainer
+    says, asks and watches for, which a learner-facing slide must not.
+    """
+    notes, drawn, inside = [], [], False
+    for line in body:
+        stripped = line.strip()
+        if stripped.startswith("```notes"):
+            inside = True
+            continue
+        if inside and stripped.startswith("```"):
+            inside = False
+            continue
+        (notes if inside else drawn).append(line)
+    subtitle = None
+    for i, line in enumerate(drawn):
+        if not line.strip():
+            continue
+        m = SUBTITLE.match(line.strip())
+        if m:
+            subtitle = m.group(1).strip()
+            drawn = drawn[:i] + drawn[i + 1:]
+        break
+    return subtitle, "\n".join(l.rstrip() for l in notes).strip(), drawn
+
+
+def deck_meta(md, stem):
+    """The cover and chrome a deck asks for in the lines above its first slide.
+
+    `# Title` and a `Week N, Day D.` line are what every deck already opens with. A deck that also
+    carries `Quote:` gets a cover slide with that quote under its title, `Who:` names the speaker,
+    `Kicker:` sets the pill over the title, and `Header:` sets the line at the top right of every
+    content slide.
+    """
+    head = md.split("\n## ", 1)[0]
+    meta = {"footer": footer_for(md, stem)}
+    t = re.search(r"^#\s+(.+?)\s*$", head, re.M)
+    meta["title"] = t.group(1).strip() if t else stem
+    where = re.search(r"^Week\s+(\d+),\s*Day\s+(\d+)\b", head, re.M)
+    for key in ("quote", "who", "kicker", "header"):
+        m = re.search(rf"^{key}:\s*(.+?)\s*$", head, re.M | re.I)
+        if m:
+            meta[key] = m.group(1).strip().strip('"').strip("“”")
+    if where and "header" not in meta:
+        meta["header"] = f"WEEK {where.group(1)}  ·  DAY {where.group(2)}  ·  " \
+                         f"KALPA GLOBAL CAPABILITY CENTRE"
+    if where and "kicker" not in meta:
+        meta["kicker"] = f"WEEK {where.group(1)}  ·  DAY {where.group(2)}"
+    meta["cover"] = "quote" in meta
+    return meta
+
+
+SECTION_TITLE = re.compile(r"^SECTION\s*(\d+)?\s*[:.]?\s*(.*)$", re.I)
+
+
+def chapter_name(title):
+    """`SECTION 2: DECIDING PER FIELD` becomes `Deciding per field` for the pills and footer.
+
+    A letter or number the author put before the name (`SECTION A. THE NEW ASK`) is dropped,
+    because the chapter opener prints its own numeral beside it.
+    """
+    m = SECTION_TITLE.match(title)
+    name = (m.group(2) if m else title).strip()
+    name = re.sub(r"^[A-Z0-9]{1,2}[.:)]\s+", "", name)
+    return name[:1].upper() + name[1:].lower() if name.isupper() else name
+
+
 CACHE = pathlib.Path(tempfile.gettempdir()) / "c2_mermaid_cache"
+
+# The name every diagram picture carries, so the search, the centring and the sharpening pass
+# can tell a diagram from the background, the logo and the icons that are pictures too.
+MERMAID_PIC = "mermaid diagram"
 
 # A laptop screen 2560 pixels wide shows the slide at 192 pixels to the inch, and a 1080p
 # projector at 144, so 192 is sharp everywhere these decks are shown, at 44 percent of the pixels
@@ -265,8 +373,9 @@ def place_picture(s, png, top, bottom=BODY_BOTTOM, width_in=WIDTH, centre=False,
     scale = min(max_w / (w / 96), max_h / (h / 96))
     draw_w, draw_h = (w / 96) * scale, (h / 96) * scale
     y = top + max(0.0, (max_h - draw_h) / 2) if centre else top
-    s.shapes.add_picture(str(png), Inches(left + (width_in - draw_w) / 2), Inches(y),
+    pic = s.shapes.add_picture(str(png), Inches(left + (width_in - draw_w) / 2), Inches(y),
                          Inches(draw_w), Inches(draw_h))
+    pic.name = MERMAID_PIC
     return y + draw_h + 0.16
 
 
@@ -330,19 +439,19 @@ def classify(lines):
     return out
 
 
+BODY_PT = 16
+
+
 def paragraph_block(slide, top, lines, section=False, scale=1.0, width=WIDTH, x=MARGIN):
-    size = round((20 if not section else 24) * scale)
+    size = round(BODY_PT * scale)
     h = text_height([l.strip() for l in lines], width, size, gap=0.12)
     tb = textbox(slide, x, top, width, h)
     first = True
     for line in lines:
         p = tb.text_frame.paragraphs[0] if first else tb.text_frame.add_paragraph()
         first = False
-        add_runs(p, line.strip(), size, WHITE if section else INK)
-        if section:
-            from pptx.enum.text import PP_ALIGN
-            p.alignment = PP_ALIGN.CENTER
-        p.space_after = Pt(round(9 * scale))
+        add_runs(p, line.strip(), size, NIGHT)
+        p.space_after = Pt(round(8 * scale))
     return top + h + 0.14
 
 
@@ -358,35 +467,54 @@ def block_height(mode, lines, width, scale, section=False):
         geo = table_geometry(lines, width, scale, BODY_BOTTOM - BODY_TOP)
         return sum(geo[4]) + 0.28 if geo else 0.0
     if mode == "code":
-        return 0.3 + (max(12, round(16 * scale)) / 72 * 1.32) * len(lines) + 0.18
+        size = max(10, round(13.5 * scale))
+        rows = sum(wrapped_rows(l, width - 0.6, size, mono=True) for l in lines)
+        return 0.5 + (size / 72 * 1.42) * rows + 0.18
     if mode == "mermaid":
         return 1.1
+    if mode == "cards":
+        return cards_height(lines, width, scale)
+    if mode == "stats":
+        return stats_height(lines, width, scale)
+    if mode == "timeline":
+        return timeline_height(lines, width, scale)
+    if mode == "bar":
+        return bar_height(lines, width, scale)
+    if mode == "notes":
+        return 0.0
     total = 0.0
     for kind, payload in classify(lines):
         if kind == "crumb":
-            total += 0.74
+            total += 0.68
         elif kind == "callout":
-            total += 0.3 + (round(20 * scale) / 72 * 1.36) * wrapped_rows(
-                payload[0] + " " + payload[1], width - 0.5, round(20 * scale)) + 0.18
+            total += callout_height(payload[0], payload[1], width, scale)
         elif kind == "numbered":
-            total += sum((round(19 * scale) / 72 * 1.36)
-                         * wrapped_rows(t, width - 0.6, round(19 * scale)) + 0.18
+            size = round(15 * scale)
+            total += sum((size / 72 * 1.36) * wrapped_rows(t, width - 0.62, size) + 0.2
                          for _, t in payload) + 0.12
         elif kind == "quote":
-            total += 0.36 + (round(19 * scale) / 72 * 1.36) * wrapped_rows(
-                " ".join(payload), width - 0.3, round(19 * scale))
+            size = round(16 * scale)
+            total += 0.36 + (size / 72 * 1.4) * wrapped_rows(" ".join(payload), width - 0.4, size,
+                                                               serif=True)
         else:
-            size = round((20 if not section else 24) * scale)
+            size = round(BODY_PT * scale)
             total += text_height([l.strip() for l in payload], width, size, gap=0.12) + 0.14
     return total
 
 
 def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layout=None,
-                 reserve=0.0):
-    section = title.upper().startswith("SECTION")
+                 reserve=0.0, ctx=None):
+    """One content slide on the light surface. Chapter openers and the cover are drawn in build."""
+    ctx = ctx or {}
+    section = False
     depth = bool(SLIDE_ID.match(title)) and SLIDE_ID.match(title).group(1) == "D"
-    background(slide, prs, ACC if section else BG)
-    title_band(slide, title, section, depth)
+    background(slide, prs, "light")
+    header(slide, right=ctx.get("header"))
+    title_band(slide, title, depth=depth, subtitle=ctx.get("subtitle"))
+
+    def foot():
+        footer_band(slide, footer, number, total, chapters=ctx.get("chapters"),
+                    current=ctx.get("current"), slide_id=ctx.get("slide_id"))
 
     mark = len(slide.shapes)
     blocks = split_blocks(body)
@@ -407,7 +535,7 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layo
             tb = textbox(slide, MARGIN, BODY_TOP, WIDTH, 0.5)
             add_runs(tb.text_frame.paragraphs[0], " ".join(head), 17, INK)
         drawer(slide, after)
-        footer_band(slide, footer, number, total, section)
+        foot()
         return 0
 
     # An exhibit slide is one whose argument is a single picture, so the picture gets the body.
@@ -426,7 +554,7 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layo
     if single_exhibit:
         lead = [l for m, b in words if m == "text" for l in b if l.strip()]
         tail_top = BODY_BOTTOM
-        cap_size = round(20 * scale)
+        cap_size = round(BODY_PT * scale)
         if lead:
             joined = " ".join(l.strip() for l in lead)
             tail_top = BODY_BOTTOM - min(2.4, text_height([joined], WIDTH, cap_size, gap=0.02))
@@ -440,8 +568,8 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layo
             if lead:
                 tb = textbox(slide, MARGIN, tail_top, WIDTH, BODY_BOTTOM - tail_top)
                 add_runs(tb.text_frame.paragraphs[0], " ".join(l.strip() for l in lead),
-                         cap_size, INK)
-            footer_band(slide, footer, number, total, section)
+                         cap_size, NIGHT)
+            foot()
             return 0
 
     # A portrait diagram beside its words beats the same diagram squeezed under them: stacked, it
@@ -506,6 +634,16 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layo
             top = table(slide, lines, top, w, max(1.0, floor - top - after), scale, x)
         elif mode == "code":
             top = code_card(slide, top, lines, w, scale, x)
+        elif mode == "cards":
+            top = cards(slide, top, lines, w, scale, x, max_h=floor - top)
+        elif mode == "stats":
+            top = stats(slide, top, lines, w, scale, x)
+        elif mode == "timeline":
+            top = timeline(slide, top, lines, w, scale, x)
+        elif mode == "bar":
+            top = bar(slide, top, lines, w, scale, x)
+        elif mode == "notes":
+            continue
         elif mode == "mermaid" and not section:
             png = render_mermaid(lines)
             if png:
@@ -532,7 +670,7 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layo
     if split_at is None:
         centre_body(slide, mark, section, skip_pictures=bool(column) or trailing,
                     bottom=floor if trailing else BODY_BOTTOM)
-    footer_band(slide, footer, number, total, section)
+    foot()
     return dropped
 
 
@@ -544,8 +682,7 @@ def centre_body(slide, mark, section=False, skip_pictures=False, bottom=BODY_BOT
     than the bottom of the slide, because centring them against the slide walks them onto it.
     """
     added = [sh for sh in list(slide.shapes)[mark:]
-             if not (skip_pictures and sh.shape_type is not None
-                     and "PICTURE" in str(sh.shape_type))]
+             if not (skip_pictures and sh.name == MERMAID_PIC)]
     if not added:
         return
     top = min(sh.top for sh in added)
@@ -553,8 +690,11 @@ def centre_body(slide, mark, section=False, skip_pictures=False, bottom=BODY_BOT
     slack = Inches(bottom).emu - box_bottom
     if slack <= 0:
         return
-    shift = int(slack / 2)
-    if shift < Inches(0.3).emu:
+    # The orientation deck sets its body directly under the subtitle, so a short body gets a
+    # breath of space above it and no more; centring it in the whole room opened a gap under the
+    # title that read as a missing block.
+    shift = min(int(slack / 2), Inches(0.3).emu)
+    if shift < Inches(0.12).emu:
         return
     for sh in added:
         sh.top = sh.top + shift
@@ -614,7 +754,7 @@ def picture_label_pt(slide, mark, widths):
     """The smallest label size any picture on this slide will print at, in points."""
     worst = 99.0
     pics = [sh for sh in list(slide.shapes)[mark:]
-            if sh.shape_type is not None and "PICTURE" in str(sh.shape_type)]
+            if sh.name == MERMAID_PIC]
     for sh, css_w in zip(pics, widths):
         if css_w:
             worst = min(worst, 1152.0 * Emu(sh.width).inches / css_w)
@@ -643,7 +783,7 @@ def sharpen(slide, mark, body):
             if png:
                 probes[hashlib.sha1(png.read_bytes()).hexdigest()] = lines
     for sh in list(slide.shapes)[mark:]:
-        if sh.shape_type is None or "PICTURE" not in str(sh.shape_type):
+        if sh.name != MERMAID_PIC:
             continue
         lines = probes.get(sh.image.sha1)
         png = render_mermaid(lines, Emu(sh.width).inches) if lines else None
@@ -656,14 +796,56 @@ def sharpen(slide, mark, body):
             slide.part.drop_rel(rId)
 
 
+def prepare_icons(slides):
+    """Rasterise every icon the deck will draw, in one pass, and stop on a name Lucide lacks."""
+    names = {beat[0] for beat in BEATS.values()}
+    for _, body in slides:
+        for mode, lines in split_blocks(slide_parts(body)[2]):
+            if mode in ("cards", "timeline"):
+                names.update(icons_in(lines))
+    missing = brand.ensure_icons([(n, c) for n in names for c in (brand.VIOLET, brand.WHITE)])
+    if missing:
+        raise SystemExit(f"FAIL  unknown icon name(s): {', '.join(sorted(missing))}. Names are "
+                         f"Lucide's, in lower case with hyphens, such as chart-line.")
+
+
+def set_notes(slide, notes):
+    if notes:
+        slide.notes_slide.notes_text_frame.text = notes
+
+
 def build(src, out, footer):
     prs = Presentation()
     prs.slide_width, prs.slide_height = Inches(SLIDE_W), Inches(SLIDE_H)
-    slides = parse(pathlib.Path(src).read_text())
-    total = len(slides)
+    md = pathlib.Path(src).read_text()
+    slides = parse(md)
+    meta = deck_meta(md, pathlib.Path(src).stem)
+    prepare_icons(slides)
+    chapters = [chapter_name(t) for t, _ in slides if t.upper().startswith("SECTION")]
+    total = len(slides) + (1 if meta["cover"] else 0)
     shrunk, cramped = 0, []
-    for n, (title, body) in enumerate(slides, start=1):
+    offset = 0
+    if meta["cover"]:
+        cover = prs.slides.add_slide(prs.slide_layouts[6])
+        title_slide(cover, prs, meta, chapters, total)
+        set_notes(cover, meta.get("cover_notes", ""))
+        offset = 1
+    current = None
+    for n, (title, body) in enumerate(slides, start=1 + offset):
         s = prs.slides.add_slide(prs.slide_layouts[6])
+        subtitle, notes, drawn = slide_parts(body)
+        if title.upper().startswith("SECTION"):
+            current = 0 if current is None else current + 1
+            promise = subtitle or next((l.strip() for l in drawn if l.strip()), "")
+            section_slide(s, prs, current + 1, chapter_name(title), promise, chapters, current,
+                          footer, total, n)
+            set_notes(s, notes)
+            continue
+        m = SLIDE_ID.match(title)
+        ctx = {"subtitle": subtitle, "chapters": chapters or None, "current": current,
+               "header": meta.get("header"),
+               "slide_id": f"{m.group(1)}{m.group(2)}{m.group(3)}" if m else None}
+        body = drawn
         mark = len(s.shapes)
         widths = [css_width(b) for m, b in split_blocks(body) if m == "mermaid"]
         # Three ways to give a slide's picture room: a band reserved at the foot, the words
@@ -680,7 +862,7 @@ def build(src, out, footer):
             for i, scale in enumerate(SCALES):
                 clear_after(s, mark)
                 dropped = render_slide(s, prs, title, body, footer, n, total, scale, layout,
-                                       reserve)
+                                       reserve, ctx)
                 pt = picture_label_pt(s, mark, widths)
                 cand = (dropped == 0, round(pt, 2), -i, layout, scale, reserve)
                 if best is None or cand[:3] > best[:3]:
@@ -690,8 +872,9 @@ def build(src, out, footer):
             if best and best[0] and best[1] >= MIN_LABEL_PT:
                 break
         clear_after(s, mark)
-        render_slide(s, prs, title, body, footer, n, total, best[4], best[3], best[5])
+        render_slide(s, prs, title, body, footer, n, total, best[4], best[3], best[5], ctx)
         sharpen(s, mark, body)
+        set_notes(s, notes)
         shrunk += best[4] != 1.0
         if best[1] < MIN_LABEL_PT:
             # Nothing either layout can do reaches a readable label, because the diagram is

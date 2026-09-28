@@ -17,8 +17,15 @@ What fails a deck:
   4. Fewer than one Mermaid diagram per four body slides.
   5. Meta-content on a slide: facilitation, deck self-reference or programme framing.
 
-What is reported without failing: body slides carrying no diagram, no table and no code, and
-slides carrying more than one idea.
+  6. In a deck that carries speaker notes, a body slide with no ```notes fence. A deck opts in to
+     the notes rule by carrying one, so an older deck without any is reported, never failed.
+
+What is reported without failing: body slides carrying no diagram, no table, no code and no
+component fence (cards, stats, timeline, bar), slides carrying more than one idea, and, in a deck
+that carries notes, body slides with no italic subtitle line under the title.
+
+Speaker notes are never scanned for meta-content, because the notes are where facilitation
+belongs: what to ask the room, what to hold back, what to cut.
 
 A question slide is a heading ending in a question mark, a heading beginning `Question`, or a body
 holding a line that starts `**Question.**`. Its answer slide's heading, once the number is
@@ -70,6 +77,18 @@ def parse(text):
     return slides
 
 
+NOTES_FENCE = re.compile(r"^```notes\s*$.*?^```\s*$", re.M | re.S)
+SUBTITLE = re.compile(r"^\*(?!\*)(.+?)(?<!\*)\*$")
+COMPONENTS = ("```cards", "```stats", "```timeline", "```bar")
+
+
+def split_notes(body):
+    """The slide body without its notes fence, and whether it had one."""
+    joined = "\n".join(body)
+    has = bool(NOTES_FENCE.search(joined))
+    return NOTES_FENCE.sub("", joined).splitlines(), has
+
+
 def blocks(body):
     """Count the content blocks on a slide: prose runs, fences and tables each count once."""
     count, inside, prose = 0, False, False
@@ -106,9 +125,12 @@ def check_deck(path):
 
     fails, body_slides, diagrams, text_only, crowded = 0, 0, 0, [], []
     titles = [t for t, _ in slides]
+    opted_in = any(split_notes(b)[1] for _, b in slides)
+    no_notes, no_subtitle = [], []
 
     for n, (title, body) in enumerate(slides, start=1):
         section = title.upper().startswith("SECTION")
+        body, has_notes = split_notes(body)
         joined = "\n".join(body)
 
         if not section and not NUMBERED.match(title):
@@ -142,11 +164,17 @@ def check_deck(path):
         if section:
             continue
         body_slides += 1
+        if opted_in and not has_notes:
+            no_notes.append(n)
+        first = next((l.strip() for l in body if l.strip()), "")
+        if opted_in and not SUBTITLE.match(first):
+            no_subtitle.append(n)
         has_diagram = "```mermaid" in joined
         has_table = any(l.strip().startswith("|") for l in body)
-        has_code = "```" in joined and not has_diagram
+        has_component = any(c in joined for c in COMPONENTS)
+        has_code = "```" in joined and not has_diagram and not has_component
         diagrams += 1 if has_diagram else 0
-        if not (has_diagram or has_table or has_code):
+        if not (has_diagram or has_table or has_code or has_component):
             text_only.append(n)
         if blocks(body) > 3 or joined.count("\n### ") > 1:
             crowded.append(n)
@@ -157,6 +185,19 @@ def check_deck(path):
               f"and {wanted} are required at one per {MIN_DIAGRAM_SHARE}. A concept slide and its "
               f"applied slide each carry a diagram.")
         fails += 1
+
+    if no_notes:
+        print(f"FAIL  {path.name}: the deck carries speaker notes, and slides "
+              f"{', '.join(str(n) for n in no_notes[:14])}{' and more' if len(no_notes) > 14 else ''}"
+              f" have none. Every body slide gets a ```notes fence: what to say, what to ask, "
+              f"what the trap is.")
+        fails += 1
+    if no_subtitle:
+        print(f"      {path.name}: no italic subtitle under the title on slides "
+              f"{', '.join(str(n) for n in no_subtitle[:14])}"
+              f"{' and more' if len(no_subtitle) > 14 else ''}")
+    if not opted_in:
+        print(f"      {path.name}: no speaker notes in this deck")
 
     depth = sum(1 for t in titles if t.startswith("D") and NUMBERED.match(t))
     sections = sum(1 for t in titles if t.upper().startswith("SECTION"))
@@ -218,3 +259,7 @@ if __name__ == "__main__":
 #     One FAIL line saying 10 are required, and exit 1.
 # A slide reading "Ask the room which one they would keep"
 #     One FAIL line marking it as facilitation, and exit 1.
+# The same line inside a ```notes fence on that slide
+#     No FAIL: notes are where facilitation belongs.
+# A deck where slide S2 has a ```notes fence and slide S3 has none
+#     One FAIL line naming slide 3, and exit 1. A deck with no notes anywhere is reported only.
