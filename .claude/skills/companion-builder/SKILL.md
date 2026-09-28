@@ -7,7 +7,7 @@ description: Build the single-file HTML companion and the Excel decision tool th
 
 A companion exists where a topic has a decision or a hidden state. Its job on the projector is to make the thing move, and its job afterwards is to be the tool a learner still opens in month three. One file, no install, no storage, no key.
 
-Read `references/page-anatomy.md` for the page kinds and their parts, `references/diagram-builders.md` for the nine builders ported to JavaScript, and `references/workbooks.md` for the two Excel forms and their recalc manifest.
+Read `references/page-anatomy.md` for the page kinds and their parts, `references/diagram-builders.md` for the JavaScript builders and how a page inlines them, and `references/workbooks.md` for the two Excel forms and their recalc manifest. The model page and workbook are in `content/W01/D1/demos/`, and `.claude/skills/day-pack-builder/references/the-standard.md` says what they carry.
 
 ## What the day gets
 
@@ -26,7 +26,7 @@ Read `references/page-anatomy.md` for the page kinds and their parts, `reference
 
 **Experiment cards.** Each card carries eight parts in this order: the situation, the hypothesis, what to watch for, a run control, what happened, why it matters, the rule, and a sequence popup. One change per card. The card that opens the page is the day's existing toggle idea, kept, because it is what the trainer already knows how to run.
 
-**Diagrams.** Drawn by the same builder set the notebook helper uses, ported to JavaScript, so a diagram on a slide, in a notebook and in the companion are recognisably one drawing.
+**Diagrams.** Drawn by the same builder set the notebook helper uses, ported to JavaScript in `scripts/companion/c2kit.js` and inlined by `scripts/build_companion.py`, so a diagram on a slide, in a notebook and in the companion are recognisably one drawing.
 
 **A decision visual** wherever the topic has a choice: a tree for more than two outcomes, a matrix for two independent dimensions, a ladder for a threshold.
 
@@ -43,6 +43,9 @@ Read `references/page-anatomy.md` for the page kinds and their parts, `reference
 - Full connected sentences everywhere, including inside cards.
 - Simulation is labelled as simulation. Any price or rate carries its date. Nothing is invented.
 - No browser storage, no key, no network call. The file opens from disk and works.
+- An experiment that would touch a planted record runs on invented records, labelled invented.
+- Scrolling stays instant, because `html_sweep.py` clicks buttons that smooth scrolling is still moving and times out on them.
+- `verify.py` reads the whole file, script included, so a URL carries its checked date on the same line wherever it sits.
 
 ## The workbooks
 
@@ -60,7 +63,7 @@ Read `references/page-anatomy.md` for the page kinds and their parts, `reference
 - [ ] The guided walk runs on one Next button with a narration card per event.
 - [ ] Every experiment card carries all eight parts and changes one thing.
 - [ ] The day's existing toggle idea is the first experiment.
-- [ ] Diagrams come from the builder set, not from hand-written markup.
+- [ ] Diagrams come from the builder set, not from hand-written markup, and `python3 scripts/build_companion.py <day folder> --check` reports every page current.
 - [ ] A decision visual exists wherever the topic has a choice.
 - [ ] A calculator exists for every rule with a number.
 - [ ] The glossary covers the day's terms.
