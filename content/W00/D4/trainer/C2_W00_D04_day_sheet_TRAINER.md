@@ -51,7 +51,8 @@ flowchart LR
    the room fills.
 4. Open the demo notebook, `notebooks/C2_W00_D04_01_python_to_sql_STUDENT.ipynb`, on the projector
    account and run it top to bottom once, so the database answers before the room is watching.
-5. Load the Kahoot from `kahoot/C2_W00_D04_quiz_STUDENT.md`.
+5. Load the Kahoot from `kahoot/C2_W00_D04_quiz_STUDENT.md`, and print one problem card per learner
+   from `takehome/C2_W00_D04_problem_card_STUDENT.md` for the close of the warden's class.
 6. Bring the list of learners still without a one-to-one, their Profile lines and blank baseline cards.
 
 ## Postgres in every codespace, about 15 minutes

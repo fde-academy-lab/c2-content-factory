@@ -19,7 +19,7 @@ flowchart LR
 |---|---|---|---|
 | The practice set, four parts: Python, SQL, numbers and stating a problem | Two hours | The day's `exercises/unguided/` files named `practice` | A self-check key for each part |
 | The weekend project: the warden's mess, with numbers | Four hours | The day's `takehome/` brief | Every step names the number a right answer gives |
-| The problem card | One hour | One page, from Thursday's class | The four questions, all answered |
+| The problem card | One hour | The day's `takehome/` card, one page | The four questions, all answered |
 | The reading and watching path | As long as your actions need | Below | Each item names what to look for |
 
 ---
