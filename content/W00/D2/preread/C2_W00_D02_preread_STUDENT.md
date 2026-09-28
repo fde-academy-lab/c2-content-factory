@@ -1,7 +1,7 @@
 # Before Wednesday: four minutes about you
 
-Ships tonight. Nothing is assigned: the paper is done, and tomorrow's brush-up teaches from what it
-found.
+Ships tonight. Nothing is assigned: the diagnostic is done, and tomorrow's brush-up teaches from what
+it found.
 
 ---
 
@@ -13,11 +13,11 @@ A TA tells you your track as you arrive.
 
 The second half is the introductions: every learner speaks to the cohort for four minutes.
 
-During lab time on Wednesday or Thursday, a TA sits with you for ten minutes with Monday's
-self-rating and today's papers side by side. Together you agree where you start and the two things
+During lab time on Wednesday or Thursday, a TA sits with you for ten minutes with your ratings and
+your report from today's diagnostic side by side. Together you agree where you start and the two things
 you will fix first, and that goes on your baseline card, which only you and the TA see.
 
-If you missed today's papers, you sit them first thing on Wednesday, before the brush-up starts.
+If you missed today's diagnostic, you sit it first thing on Wednesday, before the brush-up starts.
 
 ---
 

@@ -2,58 +2,57 @@
 
 INTERNAL.
 
-## What the pack was built from
+## What the pack is built from
 
-The Tuesday row of `docs/curriculum/W0_Baseline_week.md` (tracker v7, 21 September 2026) for the
-content: four papers by topic and their subtopics, keys marked the same evening by the Academic TA
-and the Support TA, the scores setting Wednesday's two tracks and feeding the baseline card, the
-rule that nothing a learner sees carries a cut-off, a level label or another learner's score, and
-the four interview questions. The student Week 0 sheet, `docs/journey/Week_0.md` (version 2, 27
-September 2026), for the running order: one paper of about two hours on paper with no assistant,
-then a ten-minute briefing for Wednesday's introductions. The spine was approved in session on 28
-September 2026 with two decisions from the requester: follow the student sheet's two hours, and drop
-the college project one-pager while keeping the track rule.
+On 28 September 2026 the requester replaced the pack's own diagnostic with theirs and asked for
+every file to follow. The instrument is the requester's: forty questions in five sections, 46
+points, about 90 minutes, a first page that takes the learner's rating of five areas from 1 to 4
+before any question, and a closing grid of ten statements about how the learner works.
+
+| File | What it is |
+|---|---|
+| `paper/C2_W00_D02_diagnostic_STUDENT.docx` | The requester's paper version with its answer sheet, unchanged |
+| `paper/C2_W00_D02_diagnostic_form_STUDENT.md` | The learner page with the form link and the rules, taken from the form's own description |
+| `answer-key/C2_W00_D02_diagnostic_key_INTERNAL.xlsx` | The requester's key and profile workbook, unchanged: the key with a misconception for every option, the Entry, Scoring and Profile tabs, and the Dashboard with its band and brush-up inputs |
+| `answer-key/C2_W00_D02_diagnostic_key_recalc_INTERNAL.md` | The pack's recalculation manifest for that workbook |
+| `internal/C2_W00_D02_diagnostic_form_builder_INTERNAL.gs` | The requester's Apps Script that builds the form, scores each submission, writes the Profiles row and emails the report; it holds the key, so it is INTERNAL |
+| `paper/C2_W00_D02_baseline_card_STUDENT.md` | The card, cut to the diagnostic's five rated areas, its 1-to-4 scale and its section totals |
+
+The Tuesday row of `docs/curriculum/W0_Baseline_week.md` (tracker v7) still supplies the day's
+purpose and its interview angle, and the student Week 0 sheet (version 2) the running order.
 
 ## Checked on 28 September 2026
 
-| Source | What it settled |
+| Check | What it settled |
 |---|---|
-| Python 3.11.15, run in session | The output of items 1 to 8, the two error lines in items 9 and 10, which fixes print the asked value, and every wrong answer the key names for items 9 to 11 |
-| PostgreSQL 16.13, run in session on the eight-row `issues` table | The rows for items 12 to 15, the reference queries for items 16 to 18, the empty result for `'maths'` and the two error lines the key names |
-| GitHub Docs, creating diagrams, https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams (checked 28 September 2026) | Mermaid fences render in GitHub markdown; the page names no Mermaid version |
-| GitHub's Mermaid renderer, the bundle `mermaidMarkdown-035ded29910819bc6e5e.js` served by viewscreen.githubusercontent.com (checked 28 September 2026) | It registers the xychart diagram with a detector that accepts `xychart-beta`, so item 22's bar chart renders on GitHub |
-| mermaid-cli 11.17.0 through the shared theme | Item 22 draws a tick for every cup from 95 to 106, with the two bars at 100 and 105 |
-| `scripts/xlsx_recalc.py` through LibreOffice | The workbook computes, and the track follows the share, the attendance and the ticks |
+| The form's respond link, loaded in session | It is live, titled "Baseline Diagnostic \| Cohort 2 \| Week 0", and loads without a sign-in |
+| The Word paper against the builder script's item bank | Every one of the forty stems appears in both |
+| `scripts/xlsx_recalc.py` through LibreOffice | The workbook computes; one entered answer sheet moves the profile, the brush-up call and the dashboard, and moving the Python cut moves the call |
+| The builder script, read in full | Reports are emailed on submission with every explanation; a second submission is labelled as a repeat; the Profiles tab follows the Entry tab's column order from column C |
 
 ## Conflicts, and what the pack did
 
-- **The length of the paper.** The tracker runs four papers of 60, 45, 30 and 30 minutes and a
-  40-minute project one-pager; the student sheet promises about two hours. The pack runs the four
-  papers in 45, 30, 20 and 25 minutes and drops the one-pager, as agreed in session.
-- **The one-pager's thinking.** The row asks for "my part" and "what broke" because project answers
-  fall apart there. Both now sit in the briefing and the pre-read for Wednesday's introductions,
-  which the student sheet gives the same shape.
-- **The make-up.** The tracker puts it in Wednesday's practice lab, and the student sheet names lab
-  time on Wednesday or Thursday for the one-to-ones. The pack runs the make-up first thing on
-  Wednesday, before the brush-up, as the requester decided on 28 September 2026.
+- **Kalpa in Week 0.** The diagnostic sets questions inside Kalpa Retail and introduces its four
+  stakeholders, while the tracker keeps Kalpa for Week 1 Monday and client zero v2.2 brings the head
+  of support in at Week 8. The requester keeps the diagnostic as written.
+- **Week 1 and Week 2 moments.** Eleven items teach what the client zero ladder has the room find in
+  Week 1 and Week 2: Q1 and Q22 (Monday), Q4, Q7, Q29, Q30 and Q32 (Tuesday), Q9 (Wednesday), Q27
+  and Q31 (Thursday) and Q20 (Week 2 Tuesday). The report email explains all forty on submission.
+  The requester chose to keep the emails and to rework Weeks 1 and 2 next.
+- **The self-rating.** The row puts the self-rating on Monday; the diagnostic takes it on its first
+  page, so Monday's paper form is retired and the card reads the diagnostic's ratings.
+- **The brush-up tracks.** The workbook's Dashboard calls a Python score below 50 percent of the
+  section a full brush-up. The pack maps a full call to Wednesday's taught track and a light call to
+  the practice track.
+- **The make-up.** Absentees sit the same form first thing on Wednesday, as the requester decided.
 
-## Changed outside the pack
+## Retired from the pack
 
-`data/programme/facts.yaml` listed the Week 0 papers and the baseline card among the papers still to
-build. The entry now names only the papers that remain, and the sync re-rendered what reads it.
-
-## Own constructions
-
-Every item and its key, built from the row's subtopics; the tick counts per paper; the six question
-categories and the three-part hypothesis test, which the key labels as the programme's own; the
-track rule, approved in session; the marking split, the calibration on three papers, and the
-default track for a learner who missed the paper; and the baseline card's layout.
+The pack's own four papers, their key, the score workbook with its builder and manifest, and the
+earlier card. The papers use neutral data and spend nothing of Week 1, so they return in Thursday's
+self-prep pack as a practice set.
 
 ## Not verified, and left for the team
 
-- Who invigilates: the row names the markers and no one else, so the day sheet gives the
-  invigilation steps without naming a role.
-- How much of the second half the institute's first half leaves: the student sheet shows half-day
-  blocks and says the institute publishes the exact slots.
-- Printing: the chart renders on GitHub's page, and a print from that page was not tested in
-  session, so the day sheet asks for a check on the print preview.
+- Who invigilates: the row names no invigilator, so the day sheet gives the steps without a role.
+- Whether every learner's laptop reaches the form on the day; the paper copies cover a failure.
