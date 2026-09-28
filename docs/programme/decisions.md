@@ -62,6 +62,8 @@ Locked: v2.2 on 13 Sep 2026. Proposed: v2.3, which carries:
 
 Still open inside it: a name for the Kalpa Logistics stakeholder; the finance controller's limits and ceilings; the Week 16 call volumes.
 
+Addendum to v2.2, locked on 28 Sep 2026 by the requester: Kalpa's Bengaluru engineering and data centre is Kalpa's Global Capability Centre, the cohort are trainee engineers in its data and AI team, and every pack carries three recurring beats: the client's ask, Kavya Nair's review and the interview question. It adds a name and a framing to v2.2 and invalidates nothing.
+
 ## The re-cut of 21 September 2026 (open)
 
 Open to reversal until the Programme Head closes it; the tracker already carries it.

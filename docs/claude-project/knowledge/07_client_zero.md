@@ -3,6 +3,8 @@
 
 **Status: LOCKED.** Version 2.2, locked 13 September 2026. Every day pack builds against this file. Changes ship as a new version with a date and a note of what they invalidate.
 
+Addendum to v2.2, decided by the requester on 28 September 2026: the Global Capability Centre frame in section 1b. It adds a name and a framing and invalidates nothing below.
+
 Version history: v1.0 proposed 9 September (company, units, entity model, spine dataset). v2.2 locked 13 September, superseding v2.1 the same day: the full nine-week ladder is fixed to the day, the stakeholder table adds Kavya Nair, Rohan Desai, Farhan Sheikh and Ananya Bose, the Build 2 and Build 3 sub-problems are seeded, and the reviews and tickets datasets have their entry days. v2.1: the week ladder is realigned to the 20-week plan's week focus (inference and causal reasoning sit in Week 1, Week 2 is data manipulation through a full Excel day), the named stakeholders are fixed, the campaigns table enters in Week 1, and the Kalpa Health sub-problems for Build 1 are seeded. v2.0: the storyline is now business-problem-first per the 10 September curriculum review, each day opens on a business question rather than a technique, three threads run across the modules, domain rotation is scheduled, three datasets are added, and planted defects are never shown to students.
 
 **Version 2.3 is proposed, not locked** (tracker v7, 19 and 21 September 2026). Until it locks, v2.2 below stays the reference for every fact it carries, and a pack that needs a v2.3 fact marks it proposed in its TRAINER files. v2.3 carries the Week 1 Friday lab dataset (version `v3-lab`, a fresh two-quarter export with the week's defect families in new places), the Week 16 client card, and the scenario facts, dataset versions and sub-problem seeds of Weeks 10 to 15, each marked proposed in its own tracker row. Still open inside it: a name for the Kalpa Logistics stakeholder, the finance controller's limits and ceilings, and the Week 16 call volumes.
@@ -45,6 +47,24 @@ That question opens Day 1 and is never fully closed. Every module answers a hard
 | Ananya Bose | COO, Kalpa Connect | The Build 3 stakeholder: the same text problems at telecom scale, under output contracts and cost ceilings. |
 
 Names are fictional and stay consistent across every artifact; a trainer says them from memory.
+
+## 1b. The Global Capability Centre frame (addendum, 28 September 2026)
+
+Kalpa's Bengaluru engineering and data centre is Kalpa's Global Capability Centre, the GCC: the
+in-house centre that builds data and AI systems for all five business units. The cohort joins it as
+trainee engineers in its data and AI team, the people in section 1a are the team's internal clients,
+and Kavya Nair, the senior analyst, is the trainees' senior on the team.
+
+Every pack carries three recurring beats:
+
+| Beat | What it carries | Where it sits in a pack |
+|---|---|---|
+| The client's ask | The day's business question in a stakeholder's own words, and the follow-up questions that stakeholder will put to the team | The first slide, the notebook's first cell, the exercises |
+| Kavya's review | What a senior checks before work leaves the team: the baseline, the denominator, the evidence, and a second way to reach the same number | A slide closing each chapter, and a cell after the notebook's main result |
+| The interview question | The question the day equips a trainee to answer, tagged as the curriculum row tags it | The deck's close, the notebook's end, the Saturday paper |
+
+Every locked fact above and below is unchanged: the company, the five units, the people, the
+threads, the ladder, the entity model and the datasets. The GCC is as fictional as Kalpa.
 
 ## 2. The principle behind every day
 
