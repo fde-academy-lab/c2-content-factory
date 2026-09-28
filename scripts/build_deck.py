@@ -23,6 +23,7 @@ scripts/brand.py). What a source can ask for:
     Quote: Where does our growth ...     a cover slide with the client's words under the title
     Who: Meera Raghavan, CEO ...         who said them
     Kicker: / Header:                    override the cover pill / the header line
+    ```notes above the first slide       the cover's speaker notes
 
     ## SECTION 1: The ask                a chapter opener: numeral, name, the chapter pills
     *A CEO asks what sales are made of.* its first italic line is the chapter's promise
@@ -38,7 +39,11 @@ scripts/brand.py). What a source can ask for:
     ```timeline     label: Beat 1 | title: The client asks | body: ...
     ```bar          label: You build | value: 30 | caption: 30 minutes
     ```notes        speaker notes, never drawn: what to say, ask and watch for
+    > "No averages." Anand Iyer, ...     a quote, with the speaker set on a line of their own
 
+Every drawing in a deck prints its labels between 9 and 18 points. The body keeps its full size for
+as long as some layout places every block at that, and a picture beside its words wins over the
+same picture squeezed under them when it prints larger.
 Icons are Lucide names in lower case with hyphens (chart-line, shopping-cart, search-check).
 """
 import argparse
@@ -64,7 +69,8 @@ from deck_layout import (ACC, BG, BOLD, INK, LINE, MUTED, NIGHT, TINT, WHITE, MA
                          BODY_TOP, BODY_BOTTOM, RULE_Y, SLIDE_W, SLIDE_H, CALLOUT, CRUMB, NUMBERED,
                          QUOTE, SLIDE_ID, BEATS, add_runs, background, bar, bar_height, breadcrumb,
                          callout, callout_height, cards, cards_height, clean, code_card,
-                         footer_band, header, icons_in, numbered, pill, quote_block, rect,
+                         footer_band, header, icons_in, numbered, pill, quote_block, quote_height,
+                         rect,
                          section_slide, stats, stats_height, table, table_geometry, text_height,
                          textbox, timeline, timeline_height, title_band, title_slide,
                          wrapped_rows)
@@ -256,6 +262,9 @@ def deck_meta(md, stem):
                          f"KALPA GLOBAL CAPABILITY CENTRE"
     if where and "kicker" not in meta:
         meta["kicker"] = f"WEEK {where.group(1)}  ·  DAY {where.group(2)}"
+    notes = re.search(r"^```notes\s*$(.*?)^```\s*$", head, re.M | re.S)
+    if notes:
+        meta["cover_notes"] = notes.group(1).strip()
     meta["cover"] = "quote" in meta
     return meta
 
@@ -369,7 +378,13 @@ def place_picture(s, png, top, bottom=BODY_BOTTOM, width_in=WIDTH, centre=False,
     from PIL import Image
     with Image.open(png) as img:
         w, h = img.size
-    max_w, max_h = width_in, max(1.2, bottom - top)
+    # Filling the room is right for a deep drawing and wrong for a shallow one: a three-box chain
+    # stretched across the slide printed its labels at 34 points, twice the body text, while the
+    # tree two slides later printed at 14. Capping the label size keeps every drawing in the deck
+    # at one type scale. The PNG here is always the scale-one render, so its pixels are its CSS
+    # width, and a label prints at 1152 times the drawn inches over that width.
+    max_w = min(width_in, MAX_LABEL_PT * w / 1152)
+    max_h = max(1.2, bottom - top)
     scale = min(max_w / (w / 96), max_h / (h / 96))
     draw_w, draw_h = (w / 96) * scale, (h / 96) * scale
     y = top + max(0.0, (max_h - draw_h) / 2) if centre else top
@@ -493,9 +508,7 @@ def block_height(mode, lines, width, scale, section=False):
             total += sum((size / 72 * 1.36) * wrapped_rows(t, width - 0.62, size) + 0.2
                          for _, t in payload) + 0.12
         elif kind == "quote":
-            size = round(16 * scale)
-            total += 0.36 + (size / 72 * 1.4) * wrapped_rows(" ".join(payload), width - 0.4, size,
-                                                               serif=True)
+            total += quote_height(payload, width, scale) + 0.16
         else:
             size = round(BODY_PT * scale)
             total += text_height([l.strip() for l in payload], width, size, gap=0.12) + 0.14
@@ -555,7 +568,14 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layo
         lead = [l for m, b in words if m == "text" for l in b if l.strip()]
         tail_top = BODY_BOTTOM
         cap_size = round(BODY_PT * scale)
-        if lead:
+        # A caption is plain words, so it is joined and set as one line of text. Anything the
+        # words classify as more than that, such as Kavya's review or a breadcrumb, keeps its own
+        # shape under the picture: joined, the review printed as a sentence with a bold start and
+        # lost the strip that tells the room a senior is speaking.
+        shaped = [part for part in classify(lead) if part[0] != "para"]
+        if shaped:
+            tail_top = BODY_BOTTOM - min(2.4, block_height("text", lead, WIDTH, scale))
+        elif lead:
             joined = " ".join(l.strip() for l in lead)
             tail_top = BODY_BOTTOM - min(2.4, text_height([joined], WIDTH, cap_size, gap=0.02))
         # On an exhibit the picture is the whole argument, so it starts just under the rule and
@@ -565,7 +585,20 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layo
         png = render_mermaid(pictures[0][1])
         if png:
             place_picture(slide, png, top, tail_top - 0.05, centre=True)
-            if lead:
+            if shaped:
+                at = tail_top
+                for kind, payload in classify(lead):
+                    if kind == "crumb":
+                        at = breadcrumb(slide, at, payload, section)
+                    elif kind == "callout":
+                        at = callout(slide, at, payload[0], payload[1], WIDTH, section, scale)
+                    elif kind == "numbered":
+                        at = numbered(slide, at, payload, WIDTH, scale)
+                    elif kind == "quote":
+                        at = quote_block(slide, at, payload, WIDTH, scale)
+                    else:
+                        at = paragraph_block(slide, at, payload, section, scale)
+            elif lead:
                 tb = textbox(slide, MARGIN, tail_top, WIDTH, BODY_BOTTOM - tail_top)
                 add_runs(tb.text_frame.paragraphs[0], " ".join(l.strip() for l in lead),
                          cap_size, NIGHT)
@@ -648,8 +681,13 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layo
             png = render_mermaid(lines)
             if png:
                 pic_x, pic_w = (MARGIN, WIDTH) if trailing else (x, w)
-                top = place_picture(slide, png, max(top, floor if trailing else top),
-                                    BODY_BOTTOM, pic_w, centre=trailing, left=pic_x)
+                # Under two columns the picture waits for the band, since the column it would
+                # follow may be the shorter one. Under one column it follows the words: the band
+                # is the least room it is promised, and parking it at the band's top left a hole
+                # under a short client strip with the drawing stranded at the foot.
+                at = max(top, floor) if (trailing and split_at is not None) else top
+                top = place_picture(slide, png, at, BODY_BOTTOM, pic_w,
+                                    centre=trailing and split_at is not None, left=pic_x)
             else:
                 top = code_card(slide, top, lines, w, scale, x)
         else:
@@ -668,8 +706,7 @@ def render_slide(slide, prs, title, body, footer, number, total, scale=1.0, layo
                 else:
                     top = paragraph_block(slide, top, payload, section, scale, w, x)
     if split_at is None:
-        centre_body(slide, mark, section, skip_pictures=bool(column) or trailing,
-                    bottom=floor if trailing else BODY_BOTTOM)
+        centre_body(slide, mark, section, skip_pictures=bool(column))
     foot()
     return dropped
 
@@ -719,6 +756,8 @@ def footer_for(md, stem):
 # box, so a slide whose picture lands under that sets its words one step smaller and gives the
 # room back to the picture.
 MIN_LABEL_PT = 9.0
+COMFORT_LABEL_PT = 14.0
+MAX_LABEL_PT = 18.0
 SCALES = (1.0, 0.86, 0.76, 0.66)
 CSS_WIDTHS = {}
 CSS_HEIGHTS = {}
@@ -857,19 +896,27 @@ def build(src, out, footer):
         plans = ([("reserve", r) for r in (2.6, 2.1, 1.7, 1.3)]
                  + [(None, 0.0), ("column", 0.0), ("twocol", 0.0)]
                  + [("twocol", r) for r in (2.6, 2.1, 1.7)])
+        # The body keeps its full size for as long as any layout can place every block with a
+        # readable picture, and only then steps down. At each size the first layout whose labels
+        # print comfortably wins; when none does, the one printing them largest wins. Taking the
+        # first merely readable layout set a four-step funnel at nine points above its question
+        # when the same funnel beside the question printed at thirteen.
         best = None
-        for layout, reserve in plans:
-            for i, scale in enumerate(SCALES):
+        for i, scale in enumerate(SCALES):
+            settled = False
+            for layout, reserve in plans:
                 clear_after(s, mark)
                 dropped = render_slide(s, prs, title, body, footer, n, total, scale, layout,
                                        reserve, ctx)
                 pt = picture_label_pt(s, mark, widths)
-                cand = (dropped == 0, round(pt, 2), -i, layout, scale, reserve)
+                cand = (dropped == 0, round(min(pt, MAX_LABEL_PT), 2), -i, layout, scale,
+                        reserve)
                 if best is None or cand[:3] > best[:3]:
                     best = cand
-                if dropped == 0 and pt >= MIN_LABEL_PT:
+                if dropped == 0 and pt >= COMFORT_LABEL_PT:
+                    settled = True
                     break
-            if best and best[0] and best[1] >= MIN_LABEL_PT:
+            if settled or (best[0] and best[1] >= MIN_LABEL_PT):
                 break
         clear_after(s, mark)
         render_slide(s, prs, title, body, footer, n, total, best[4], best[3], best[5], ctx)
