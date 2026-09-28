@@ -1,79 +1,124 @@
-# Unguided: read the tree, choose the branch, defend it
+# Mid-session drill: place the initiative, price the move
 
-Alone, no hints, no help from the trainer. The solution is released at the close of the session.
+Fifteen minutes, in pairs, no notebook. Every item has one right answer. Decide first, then check
+your reasoning with your partner, then record the letter.
 
-Post one line with your six letters in item order, then the sentence in item 7.
+Post one line, twelve letters in item order, no spaces:
 
 ```
-Post exactly this shape: xxxxxx
+Post exactly this shape: xxxxxxxxxxxx
+```
+
+The tree every item refers to:
+
+```mermaid
+flowchart LR
+    R["<b>revenue</b><br/>gross less discounts"] --> G["<b>gross revenue</b><br/>customers times spend"]
+    R --> D["<b>discounts</b><br/>what we gave back"]
+    G --> C["<b>customers</b><br/>how many bought"]
+    G --> V["<b>revenue per customer</b><br/>orders times order value"]
+    V --> F["<b>orders per customer</b><br/>how often each came back"]
+    V --> O["<b>revenue per order</b><br/>items times price"]
+    O --> B["<b>items per order</b><br/>how full the basket was"]
+    O --> P["<b>price per item</b><br/>what each line cost"]
 ```
 
 ---
 
-## The situation
+## Part A. Which branch does the initiative move?
 
-Meera has the numbers from the demo. She replies:
+### Q1. A 15 percent discount on everything, for a month: which branch does it move?
 
-> "Fine. Thirty orders is not a growth plan. Assume the pattern holds. Which branch do I fund, and
-> what do I get for it?"
+a) Customers, because a sale is what brings new buyers through the door
+b) Discounts, traded away for the extra volume the sale is meant to bring
+c) Price per item, since every tagged price on the shelf comes down with it
+d) Items per order, because a sale is what always fills the basket up
 
----
+### Q2. A new store in a city where the app already sells: which branch, and what is the catch?
 
-## Q1. Marketing's Rs 12 crore is a bet on which branch?
+a) Customers, with the catch that app buyers may simply move to the store
+b) Orders per customer, since the store makes buying easier for people who already buy
+c) Price per item, because store prices usually sit above the prices in the app
+d) Items per order, since shoppers in a store tend to pick up more lines
 
-a) Orders per customer, since more spend usually means more repeat buying
-b) Items per order, because a campaign is what fills a basket up
-c) Customers
-d) Price per item, since a bigger brand can charge more for the same goods
+### Q3. A loyalty card with points on every order: which branch does it move?
 
----
+a) Customers, because the card is how new people first come to hear of the brand
+b) Discounts, since the points are money handed back at the checkout
+c) Price per item, because members accept the list price more willingly
+d) Orders per customer, and it may pay people who would return anyway
 
-## Q2. Which branch is cheapest to move for a business that already has the customers?
+### Q4. A five percent price rise on the top sellers: which branch, and what is the risk?
 
-a) Customers, because acquisition scales with money more predictably than anything else
-b) Orders per customer
-c) Price per item, because a price rise costs nothing at all to put into effect
-d) Discounts, because giving less back is free and instant for the business
+a) Price per item, with volume at risk as the price-sensitive leave first
+b) Items per order, since customers buy fewer extras when prices go up
+c) Customers, because a price rise mainly changes which people shop with us
+d) Discounts, since a price rise is usually offset by coupons at the till
 
----
+### Q5. An app redesign with a new checkout and a new home screen: which branch does it move?
 
-## Q3. The file has no items table. Which two branches become unanswerable?
-
-a) Customers and orders per customer, since neither can be counted without items
-b) Items per order and discounts, because both are recorded on the line
-c) Price per item and discounts, since a discount applies to a line
-d) Items per order and price per item
-
----
-
-## Q4. Which of these is a rate with a missing denominator?
-
-a) "Return rate is 17 percent"
-b) "Revenue per customer was Rs 23,687 in the quarter just closed"
-c) "Orders per customer rose to 1.30 from 1.24 in the quarter before"
-d) "Twenty-three distinct customers placed at least one order this month"
+a) Customers, because a redesign is really marketing by another name
+b) Items per order, since a better home screen shows more products per visit
+c) Depends on the behaviour it changes, so name that first
+d) Orders per customer, because every app update brings people back
 
 ---
 
-## Q5. One order carries 88 percent of the revenue. What does that change?
+## Part B. Numbers on the tree
 
-a) Nothing, because the total is the total whichever orders make it up
-b) The median should be dropped, because it ignores the biggest order
-c) Any per-order average has to be reported beside the median
-d) The file should be rejected as unreliable and a new export requested
+### Q6. Orders per customer rises 10 percent and items per order rises 10 percent. By how much does revenue rise?
+
+a) 20 percent, the two lifts added together
+b) 21 percent, because the two branches multiply
+c) 10 percent, since only one branch can move in a quarter
+d) 11 percent, the larger lift plus a tenth of the smaller one
+
+### Q7. Fifteen percent off, and the items sold rise 10 percent. Where does revenue end?
+
+a) 1.10 times 0.85, which is 0.935 of today
+b) 1.10 plus 0.85, less one, which is 0.95 of today
+c) 1.15 times 1.10, because a discount lifts the volume twice
+d) 0.85 of today, since the volume does not change the price
+
+### Q8. How much more volume does a 20 percent discount need just to stand still?
+
+a) 20 percent, the same as the cut in the price
+b) 16.7 percent, because 0.8 times 1.2 is close enough to one
+c) 25 percent, because 1 divided by 0.8 is 1.25
+d) 40 percent, twice the cut, to cover the lost margin as well
 
 ---
 
-## Q6. Meera wants one number for a typical order. Which do you give her?
+## Part C. Denominators and definitions
 
-a) The mean, because it uses every order in the file
-b) The median
-c) The mean with the largest order removed, because that is the honest average
-d) Both the mean and the median, and let her decide which one she prefers
+### Q9. Which of these is orders per customer, written correctly?
+
+a) Customers over orders, counted in the same window
+b) Orders over distinct customers, in the same window
+c) Orders over every customer on record, in any window
+d) Revenue over orders, which is the same rate by another name
+
+### Q10. "Revenue is Rs 5,20,790." What is missing before this line leaves the team?
+
+a) Nothing, because a total needs no qualifier at all
+b) The median, since a total on its own always misleads
+c) The number of customers who placed those orders
+d) Its definition and its window
 
 ---
 
-## Writing task, in your own words
+## Part D. The moves, in order
 
-Which branch should Kalpa examine first, and what would it cost to move it? Under forty words.
-Name one thing that would change your answer.
+### Q11. Five moves turn a business ask into an answer: p) the data, q) the ask, r) the answer, s) the question, t) the method. Which order is right?
+
+a) q, s, p, t, r
+b) q, p, s, t, r
+c) s, q, p, t, r
+d) q, s, t, p, r
+
+### Q12. Marketing's Rs 12 crore is a bet on which branch, and what is checked before it is spent?
+
+a) Orders per customer; check the loyalty programme's cost first
+b) Customers; compare customers and frequency across two quarters
+c) Price per item; check whether competitors have cut their prices
+d) Discounts; check how much was given back last year

@@ -1,111 +1,85 @@
-# Guided: the first four leaves
+# Guided: the tree on paper, then the first count
 
-Built with the trainer, one line at a time, in your own Codespace. Nothing here is graded and
-nothing here is difficult. The point is that every line appears on your screen because you typed
-it, not because you copied it.
+Built with the trainer, one line at a time, in your own Codespace. Nothing here is graded. The
+point is that every line on your screen is there because you typed it, which is what makes it
+yours tomorrow.
 
 ---
 
-## Before any code: the tree on paper
+## Part 1. The tree, before any code
 
-Draw it before you open the notebook.
+Draw it on paper before you open a notebook. Revenue on the left; what multiplies into it on the
+right.
 
+```mermaid
+flowchart LR
+    R["<b>revenue</b><br/>gross less discounts"] --> G["<b>gross revenue</b><br/>customers times spend"]
+    R --> D["<b>discounts</b><br/>what we gave back"]
+    G --> C["<b>customers</b><br/>how many bought"]
+    G --> V["<b>revenue per customer</b><br/>orders times order value"]
+    V --> F["<b>orders per customer</b><br/>how often each came back"]
+    V --> O["<b>revenue per order</b><br/>items times price"]
+    O --> B["<b>items per order</b><br/>how full the basket was"]
+    O --> P["<b>price per item</b><br/>what each line cost"]
 ```
-REVENUE = CUSTOMERS × ORDERS PER CUSTOMER × ITEMS PER ORDER × PRICE PER ITEM − DISCOUNTS
-```
 
-Write the five branches down the left of a page. Beside each, write the metric with its numerator
-and its denominator. Leave the right-hand column blank; today's numbers go there.
+Beside each of the five leaves, write the metric as a numerator over a denominator, and leave a
+column for today's number. Three of the five will stay empty today, and saying why is part of the
+answer.
 
----
-
-## Step 1. Open the workbench
-
-1. Open the Codespace from the repository. It builds itself once and is then yours.
-2. Open `notebooks/C2_W01_D01_01_revenue_tree_STUDENT.ipynb`.
-3. Run the first cell. It loads thirty Kalpa Retail orders and prints the first one.
-
-**If nothing prints:** the kernel has not started. Wait for the kernel indicator, then run again.
+| Leaf | Numerator | Denominator | Today's number |
+|---|---|---|---|
+| Customers | | | |
+| Orders per customer | | | |
+| Items per order | | | |
+| Price per item | | | |
+| Discounts | | | |
 
 ---
 
-## Step 2. Look at one record before you loop over thirty
+## Part 2. Open the workbench
+
+1. Open the Codespace from the repository; it builds itself once and is then yours.
+2. Open `notebooks/C2_W01_D01_02_first_count_STUDENT.ipynb` and run the setup cell. It prints
+   `30 orders loaded`.
+3. Restart the kernel and run the map cell, the one after setup, before anything else. Read the
+   NameError it prints, then restart and Run All, and read the brackets down the page: `In [1]`,
+   `In [2]`, `In [3]`.
+
+---
+
+## Part 3. One order, then the list
+
+Type this into a new cell, run it, and read every field aloud with its type:
 
 ```python
 first = ORDERS[0]
 for key, value in first.items():
-    print(f"{key:14s} {value!r}")
+    print(key, repr(value), type(value).__name__)
 ```
 
-Seven named boxes. `!r` shows you the value as Python holds it, which is how you find out that one
-amount is text without anybody telling you.
+Then `len(ORDERS)`, `ORDERS[0]["amount"]` and `ORDERS[0]["channel"]`, one at a time.
 
 ---
 
-## Step 3. Count, which is the shape of everything
+## Part 4. Count, then sum
+
+The three moves, typed with the room:
 
 ```python
 count = 0
 for order in ORDERS:
     count = count + 1
-print("orders:", count)
+print(count)
 ```
 
-Three lines: start at zero, walk the list, add one. Say the three parts aloud as you type them.
-Every leaf on the tree is a variation of this.
+Then change one line so it sums the amounts instead of counting the orders, run it, and stop at
+whatever it prints. The room reads the result together before anyone changes a line.
 
 ---
 
-## Step 4. Sum, which is the same shape with one thing changed
+## What you leave with
 
-```python
-total = 0
-for order in ORDERS:
-    total = total + order["amount"]
-print("revenue:", total)
-```
-
-Run it. It stops. Read the message out loud before you touch anything:
-
-```
-TypeError: unsupported operand type(s) for +=: 'int' and 'str'
-```
-
-Four facts in one line. The kind of problem, the operation that failed, what sat on each side, and
-where Python gave up. Find the row it means, then fix it with `int()`.
-
----
-
-## Step 5. Customers, and the first real rate
-
-```python
-customers = set()
-for order in ORDERS:
-    customers.add(order["customer_id"])
-
-orders_per_customer = len(ORDERS) / len(customers)
-```
-
-A `set` refuses duplicates, which is exactly what "distinct customers" means. Say the denominator
-out loud when you print it: **orders divided by distinct customers, in this window**.
-
----
-
-## Step 6. Write the four numbers on your paper tree
-
-| Leaf | Yours should read |
-|---|---|
-| Orders | 30 |
-| Revenue | Rs 5,44,810 |
-| Customers | 23 |
-| Orders per customer | 1.30 |
-
-If any of those disagree, you and the room have different data or different code. Say so now
-rather than at the end of the day.
-
----
-
-## Step 7. The three you cannot compute
-
-Write `unknown` beside items per order, price per item and discounts, and write beside them what
-you would have to ask for. That column is the first thing you send back to the business.
+The tree on paper with two leaves filled, a notebook that runs from a fresh kernel, a count of 30,
+and one error read from its last line up. Everything after this point, in the unguided work, is
+yours alone.

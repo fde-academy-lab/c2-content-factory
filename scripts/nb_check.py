@@ -86,7 +86,8 @@ def check_notebook(path):
             failed += len(FAIL_MARK.findall(text))
 
     calls = len(re.findall(r"\bcheck\s*\(", source_all))
-    drawn = len(re.findall(r"kit\.(ladder|flow|vflow|stack|sequence|tree|matrix|decision_ladder)\s*\(",
+    drawn = len(re.findall(r"kit\.(ladder|flow|vflow|stack|sequence|tree|driver_tree|matrix|decision_ladder|equation|"
+                           r"strip|bars)\s*\(",
                            source_all))
     fails = 0
 

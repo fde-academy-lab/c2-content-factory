@@ -271,6 +271,7 @@ def pill(slide, x, y, text, fill, ink, w=0.86, h=0.3, size=11, line=None, tracki
     s.text_frame.margin_top = s.text_frame.margin_bottom = Pt(0)
     p = s.text_frame.paragraphs[0]
     p.alignment = PP_ALIGN.CENTER
+    s.text_frame.word_wrap = False
     r = p.add_run()
     r.text = text
     r.font.size = Pt(size)
@@ -348,7 +349,9 @@ def section_slide(slide, prs, number, title, promise, chapters, current, footer,
     if chapters:
         x, y = MARGIN + 0.22, 5.55
         gap = 0.12
-        widths = [min(2.35, 0.36 + len(c) * 8.5 * CHAR_W / 96) for c in chapters]
+        # Measured bold, since the chapter the room is in is set bold and a pill sized for the
+        # regular weight wrapped "The workbench" onto two lines.
+        widths = [min(2.35, 0.4 + tracked_width(c, 8.5, bold=True)) for c in chapters]
         scale = min(1.0, (WIDTH - 0.3 - gap * (len(chapters) - 1)) / sum(widths))
         for i, (c, w) in enumerate(zip(chapters, widths)):
             w *= scale
@@ -502,13 +505,36 @@ def code_card(slide, top, lines, width=WIDTH, scale=1.0, x=MARGIN):
     return top + h + 0.18
 
 
-def quote_block(slide, top, lines, width=WIDTH, scale=1.0, x=MARGIN):
+# A quote followed by who said it: "No averages." Anand Iyer, finance controller.
+ATTRIBUTED = re.compile(r'^(["\u201c].+["\u201d])\s+(\S.*)$')
+
+
+def split_quote(lines):
+    """The quoted words and the speaker, or the words and None when nobody is named."""
     text = " ".join(QUOTE.sub(r"\1", l.strip()) for l in lines if l.strip())
+    m = ATTRIBUTED.match(text)
+    return (m.group(1), m.group(2)) if m else (text, None)
+
+
+def quote_height(lines, width=WIDTH, scale=1.0):
+    text, who = split_quote(lines)
     size = round(16 * scale)
     h = 0.2 + (size / 72 * 1.4) * wrapped_rows(text, width - 0.4, size, serif=True)
+    return h + (0.3 if who else 0.0)
+
+
+def quote_block(slide, top, lines, width=WIDTH, scale=1.0, x=MARGIN):
+    """A stakeholder's words in italic Georgia, with the speaker on their own line beneath."""
+    text, who = split_quote(lines)
+    size = round(16 * scale)
+    h = quote_height(lines, width, scale)
     rect(slide, x, top, 0.05, h, LAV, shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.5)
     tb = textbox(slide, x + 0.28, top, width - 0.34, h)
     add_runs(tb.text_frame.paragraphs[0], text, size, INK, font=brand.TITLE_FONT, italic=True)
+    if who:
+        p = tb.text_frame.add_paragraph()
+        p.space_before = Pt(4)
+        add_runs(p, who, round(10.5 * scale), MUTED)
     return top + h + 0.16
 
 
@@ -720,7 +746,9 @@ def stats(slide, top, lines, width=WIDTH, scale=1.0, x=MARGIN):
     w = (width - gap * (n - 1)) / n
     vsize = round((44 if n <= 4 else 36) * scale)
     longest = max(len(it.get("value", "")) for it in items)
-    while vsize > 20 and longest * vsize * SERIF_CHAR_W / 96 > w - 0.1:
+    # Measured with room to spare: "Rs 5,44,810" fitted its column by the estimate and ran into
+    # the next value when a wider serif stood in for Georgia.
+    while vsize > 20 and longest * vsize * SERIF_CHAR_W / 96 > w - 0.45:
         vsize -= 2
     for i, it in enumerate(items):
         cx = x + i * (w + gap)

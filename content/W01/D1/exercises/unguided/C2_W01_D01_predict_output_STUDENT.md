@@ -1,8 +1,10 @@
-# Mid-session: predict before you run
+# Mid-session drill: predict before you run
 
-Six cells. For each one, decide what appears **before** you run anything. Then run it and see.
+Fifteen minutes. Items 1 to 3 are the three cells on the screen: write your prediction, compare
+with your partner, then run them. Items 4 to 6 set the same traps in new places, for pairs who
+finish first.
 
-Post one line with your six letters in item order.
+Post one line, six letters in item order, no spaces:
 
 ```
 Post exactly this shape: xxxxxx
@@ -10,103 +12,87 @@ Post exactly this shape: xxxxxx
 
 ---
 
-## Q1. What appears?
+### Q1
 
 ```python
-amount = "4500"
-print(amount * 2)
+ORDERS[0]["Amount"]
 ```
 
-Which one appears?
+What does it print?
 
-a) `9000`
-b) `45004500`
-c) `TypeError`, because text cannot be multiplied
-d) `4500 4500` with a space between them
+a) 2300, because Python ignores the case of a key
+b) An error, because the key is amount in lower case
+c) None, because a missing key gives back nothing
+d) An empty string, since the field exists and is blank
 
----
-
-## Q2. What appears?
+### Q2
 
 ```python
-prices = [1200, 800, 4500, 1990]
-print(sum(prices) / len(prices))
+"3500" > 3000
 ```
 
-Which one appears?
+What does it print?
 
-a) `2122.5`
-b) `1595.0`, which is the middle of the sorted list
-c) `8490`, which is the total of the four values
-d) `TypeError`, because a list cannot be divided
+a) True, since 3500 is the bigger of the two
+b) False, because text always sorts after numbers
+c) An error, because text and a number cannot be ordered
+d) True, since Python converts the text to a number first
 
----
-
-## Q3. Cells were run in this order: cell 2, then cell 1. What appears?
+### Q3
 
 ```python
-# cell 1
-orders = [{"amount": 900}]
-
-# cell 2
-print(len(orders))
+round(30 / 23, 2)
 ```
 
-Which one appears?
+What does it print?
 
-a) `1`, because the notebook reads top to bottom whatever the run order
-b) `0`, because the list had not been filled when cell 2 ran
-c) `NameError`, because `orders` did not exist when cell 2 ran
-d) `None`, because `print` returns nothing at all
+a) 1.3, since the value 1.30 is the number 1.3
+b) 1.30, because round keeps two places
+c) 1.31, since round always rounds up
+d) 1.30434, since round keeps the digits it was given
 
----
-
-## Q4. What appears?
+### Q4
 
 ```python
-order = {"order_id": "KR-01001", "amount": 2300}
-print(order["discount"])
+count = 0
+for order in ORDERS[:5]:
+    count = 0
+    count = count + 1
+print(count)
 ```
 
-Which one appears?
+What does it print?
 
-a) `0`, because a missing key defaults to zero
-b) `None`, because the key has no value attached to it
-c) `KeyError`, because the key is not in the dictionary
-d) `""`, because Python returns an empty value for a missing key
+a) 5, one for each order
+b) 0, because the reset comes last
+c) An error, since count is assigned twice in one loop
+d) 1, because the start sits inside the loop
 
----
-
-## Q5. What appears?
-
-```python
-ids = set()
-for i in ["C-1", "C-2", "C-1"]:
-    ids.add(i)
-print(len(ids))
-```
-
-Which one appears?
-
-a) `2`
-b) `3`, because three values were added to it in the loop
-c) `1`, because a set keeps only the value added most recently
-d) `TypeError`, because a set cannot hold text values
-
----
-
-## Q6. What appears?
+### Q5
 
 ```python
 total = 0
-for n in [1000, 2000, 3000]:
-    total = total + n
-print(total)
+for amount in [1200, 950, "1800"]:
+    total += amount
 ```
 
-Which one appears?
+What happens when it runs?
 
-a) `3000`, because the loop overwrites the total on every pass
-b) `6000`
-c) `[1000, 2000, 3000]`, because the values are collected into a list
-d) `0`, because the assignment inside a loop does not persist
+a) total ends at 3950, since the text is converted
+b) total ends at 2150 and no error appears
+c) A TypeError on the third pass, with total left at 2150
+d) A ValueError on the third pass, because "1800" has no comma
+
+### Q6
+
+```python
+amounts = [940, 1190, 2060, 2110, 2300]
+print(amounts[len(amounts) // 2])
+```
+
+What does it print?
+
+a) 2060
+b) 1190
+c) 2110
+d) 2085.0
