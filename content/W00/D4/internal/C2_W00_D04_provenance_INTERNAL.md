@@ -74,3 +74,10 @@ margins; the Saturday question bank; the four exploration prompts; and the cheat
   them where learners can copy them.
 - Whether a database extension is present in the learner's codespace: the pack does not rely on one.
 - Who the Saturday guest is: no name or organisation is in any source, and no file names one.
+
+## Changed after review-1
+
+The first build of both deck halves printed "if days_kept 14", "WHERE days_kept 14" and "HAVING late
+days 10", because the shared diagram renderer dropped a bare > from a label. The renderer now prints
+the sign, both decks were rebuilt on 28 September 2026, and slide D10 of half one puts its diagram
+after the caption, so its SQL keeps a readable size.

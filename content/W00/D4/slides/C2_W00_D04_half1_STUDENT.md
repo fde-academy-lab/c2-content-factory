@@ -169,13 +169,13 @@ WHERE week = 1
   AND days_kept > 14;        -- 13
 ```
 
+Issue 3 adds 6 and issue 7 adds 7: 13, the same number the function returned.
+
 ```mermaid
 flowchart LR
     I["if days_kept > 14"] --> W["WHERE days_kept > 14"]
     T["late = late + ..."] --> S["SUM(days_kept - 14)"]
 ```
-
-Issue 3 adds 6 and issue 7 adds 7: 13, the same number the function returned.
 
 ---
 
