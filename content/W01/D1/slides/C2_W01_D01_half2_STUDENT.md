@@ -509,12 +509,12 @@ Tuesday's question.
 
 ---
 
-## S23. Kahoot: six questions, no marks
+## S23. Kahoot: six questions, ungraded
 *Ungraded, for you and for the trainer: it shows what the day left in the room.*
 
 ```stats
 value: 6 | label: questions | note: one per idea from today
-value: 0 | label: marks | note: ungraded, every day this week
+value: 0 | label: scores recorded | note: ungraded, every day this week
 value: 8 min | label: to play | note: then the answers, discussed
 ```
 
