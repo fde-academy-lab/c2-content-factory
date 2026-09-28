@@ -6,10 +6,10 @@ Module: <!-- sync:module:W00/D3 -->no module, since Week 0 sits outside the 510 
 
 ## What today is for
 
-The first half brings everyone to the Python Week 1 runs on, in two tracks set from Tuesday's
-ticks. The second half is the introductions: four minutes each, two on the speaker and two on one
-thing they built. Beside both, the ten-minute one-to-ones begin, and anyone absent on Tuesday sits
-the papers first thing, before any teaching reaches them.
+The first half brings everyone to the Python Week 1 runs on, in two tracks set from the diagnostic's
+Python brush-up calls. The second half is the introductions: four minutes each, two on the speaker
+and two on one thing they built. Beside both, the ten-minute one-to-ones begin, and anyone absent on
+Tuesday sits the diagnostic first thing, before any teaching reaches them.
 
 **Stop before** everything Week 1 has planted for the room to find. The brush-up's data carries no
 amount stored as text, no missing field, no file and no order large enough to split a mean from a
@@ -30,7 +30,7 @@ flowchart LR
 
 | Block | Duration | What has to happen |
 |---|---|---|
-| The make-up, in a separate room | 120 min, from the start of the first half | Tuesday's four papers, in the same order and minutes, for anyone absent on Tuesday |
+| The make-up, in a separate room | About 90 min, from the start of the first half | The diagnostic on the form, for anyone absent on Tuesday |
 | Python brush-up, taught track | About 3 h | The librarian's log, from the deck's half one and the demo notebook, coded along in a blank notebook |
 | Python brush-up, practice track | About 3 h, beside the taught track | The exercise, then the hands-on notebook, with the one-to-ones pulling learners out one at a time |
 | The introductions | About 3 h, the second half | Every learner speaks for four minutes, from the run sheet |
@@ -39,13 +39,14 @@ The three morning jobs run at the same time, so each needs its own person in the
 
 ## Before the room opens
 
-1. Take the track list from the score workbook's Room sheet, and tell each learner their track one
-   to one as they arrive. Never post the list.
-2. Print Tuesday's four papers for the make-up, one set per absentee, and seat them in a separate
-   room before the brush-up starts.
+1. Take the tracks from the key workbook's Profile tab: a full Python brush-up call joins the taught
+   track and a light call joins the practice track. Tell each learner their track one to one as they
+   arrive, and never post the list.
+2. Seat anyone absent on Tuesday in a separate room with a laptop open on the diagnostic form, and
+   a paper copy in reserve, before the brush-up starts.
 3. Print one baseline card per learner from `content/W00/D2/paper/C2_W00_D02_baseline_card_STUDENT.md`
-   and put each learner's four marked papers and Monday's self-rating form in one folder per learner
-   for the one-to-ones.
+   and print each learner's Profile line from the key workbook for the one-to-ones; the learner
+   brings the report email.
 4. Print the exercise, `exercises/unguided/C2_W00_D03_library_log_STUDENT.md`, one per learner, and
    the hands-on notebook's GitHub page, `notebooks/C2_W00_D03_ex1_hands_on_STUDENT.ipynb`, one per
    practice-track learner. Learners work in their own codespace from a blank notebook, since the
@@ -73,11 +74,10 @@ typo it produces is a traceback worth reading together.
 | The exercise | 20 min | Twelve items, posted as letters, then the most-missed two discussed |
 | Close | 10 min | S16, and tonight's hands-on notebook |
 
-**Start from Tuesday's ticks.** The Room sheet's most-missed ticks say where to slow down. Items 1
-and 2 of the Python paper belong to the types section, items 3, 5 and 7 to records and loops, item 6
-to the function section and item 11 to the dictionary as a running total. Items 8, 9 and 10 stay
-unanswered today: the mean and the median are Thursday's, and the two fixes, converting text and a
-default for a missing key, are Week 1's own moments.
+**Start from the diagnostic.** The key workbook's hardest-eight list says where to slow down. Q1, Q6
+and Q7 belong to the types section, Q2, Q5 and Q12 to records and lists, Q3 and Q4 to the running
+total, Q8 to functions, and Q9 and Q11 to reading an error. Q10, sorting with a key, sits outside
+today's five ideas and waits for the discussion posts.
 
 **The deliberate failure: a helper that prints.** On D13, the helper prints the days past the loan
 instead of returning them. The room sees the helper work, since it prints `6`, and then the total
@@ -105,10 +105,10 @@ taught track cannot lose ten minutes of its class, and carry the rest to Thursda
 
 ## The make-up
 
-Anyone absent on Tuesday sits the four papers first thing, in a separate room, for 45, 30, 20 and 25
-minutes, before the brush-up has taught anything. The Tuesday rules apply unchanged: no assistant,
-no notes, no laptop, no phone and no calculator. They then join the taught track for its last hour,
-and move once the make-up is marked that evening, if the ticks say so.
+Anyone absent on Tuesday sits the diagnostic first thing, in a separate room, for about 90 minutes
+on the form, before the brush-up has taught anything. The Tuesday rules apply unchanged: their own
+head only, with no second tab, no notes and no AI assistant. They then join the taught track for its
+last hour, and move to the practice track once their Profile line reads light, if it does.
 
 ## The introductions, about three hours
 
@@ -135,7 +135,7 @@ is general ("plan better", "test more") and could be said of any project.
 
 ## What to record today
 
-1. The make-up papers, marked tonight against the key and entered in the score workbook.
+1. The make-up submissions, pasted into the key workbook's Entry tab tonight.
 2. Each one-to-one that ran, with the card's two actions noted, and who is left for Thursday.
 3. The introductions capture from the run sheet, which feeds the one-to-ones still to come.
 4. The exercise's most-missed items, which Thursday's part two opens on.

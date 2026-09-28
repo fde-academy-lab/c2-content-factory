@@ -1,5 +1,5 @@
-# The college library's issue log: one dictionary per book lent out, the eight rows of Tuesday's
-# SQL paper. Practice data for the Week 0 Python brush-up, written by hand.
+# The college library's issue log: one dictionary per book lent out, eight rows. Practice data for
+# the Week 0 Python brush-up, written by hand.
 RECORDS = [
     {"issue_id": 1, "student": "S01", "book": "Algebra", "dept": "Maths", "days_kept": 12},
     {"issue_id": 2, "student": "S02", "book": "Poetry", "dept": "Arts", "days_kept": 5},
