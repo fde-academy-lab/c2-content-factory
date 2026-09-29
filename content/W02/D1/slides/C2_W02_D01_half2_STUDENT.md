@@ -28,7 +28,7 @@ answers (10). No hints during the build; the support TA answers environment prob
 *One file, six queries, one comment line above each.*
 
 ```stats
-value: 6 | label: queries | note: sql/C2_W02_D01_02_monday_suite_STUDENT.sql
+value: 6 | label: queries | note: sql/C2_W02_D01_04_monday_suite_STUDENT.sql
 value: 8 | label: rows | note: four segments, two quarters
 value: 30 | label: minutes | note: alone, no hints
 value: 10 | label: letters | note: posted from the hands-on notebook

@@ -2,7 +2,7 @@
 
 Round 2, with the trainer, about fifteen minutes. The trainer types each step on the projector and
 says the clause order aloud as the query runs; you type the same step in
-`sql/C2_W02_D01_03_segments_STUDENT.sql` below its last block and run it. Each step adds exactly one
+`sql/C2_W02_D01_02_segments_STUDENT.sql` below its last block and run it. Each step adds exactly one
 clause to the step before, so when a result surprises you, the new clause is where to look.
 
 > "Every segment. I do not want a total that hides which one moved." Anand Iyer, CFO, Kalpa Retail

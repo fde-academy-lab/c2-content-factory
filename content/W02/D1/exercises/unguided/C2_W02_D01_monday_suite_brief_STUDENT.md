@@ -5,7 +5,7 @@
 
 Anand's analyst will run six queries every Monday and audit each one line by line, without you
 beside him. You have thirty minutes, alone, no hints. Write the six queries under their comment
-lines in `sql/C2_W02_D01_02_monday_suite_STUDENT.sql`, or work through
+lines in `sql/C2_W02_D01_04_monday_suite_STUDENT.sql`, or work through
 `notebooks/C2_W02_D01_hands_on_STUDENT.ipynb`, which runs the same suite with ten lettered choices.
 Then answer the eight items below from your own results.
 

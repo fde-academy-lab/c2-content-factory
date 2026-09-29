@@ -465,7 +465,7 @@ the notebook's "In the interview" section and in the day sheet. Tick the first r
 ```notes
 LIVE. Fifty minutes: GROUP BY and the run order (15), the GROUP BY error (2), the integer-division
 trap (13), HAVING and the harder variant (15), Kavya's review (5).
-Notebook: notebooks/C2_W02_D01_02_segments_STUDENT.ipynb. SQL: sql/C2_W02_D01_03_segments_STUDENT.sql.
+Notebook: notebooks/C2_W02_D01_02_segments_STUDENT.ipynb. SQL: sql/C2_W02_D01_02_segments_STUDENT.sql.
 ```
 
 ---
@@ -681,7 +681,7 @@ of 10 minutes.
 ```notes
 LIVE. Fifty minutes: the subquery (5), two CTEs and the bridge (15), the AVG trap (15), the
 harder variant (10), Kavya's review (5). Cut first: the subquery slide, straight to CTEs.
-Notebook: notebooks/C2_W02_D01_03_quarters_STUDENT.ipynb. SQL: sql/C2_W02_D01_04_quarters_STUDENT.sql.
+Notebook: notebooks/C2_W02_D01_03_quarters_STUDENT.ipynb. SQL: sql/C2_W02_D01_03_quarters_STUDENT.sql.
 ```
 
 ---

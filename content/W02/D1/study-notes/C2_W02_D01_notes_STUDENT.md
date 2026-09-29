@@ -414,7 +414,7 @@ ORDER BY, as fill-in, true-or-false, choice and ordering items from the week's i
 | Subquery | A query inside a query | Round 3 | The total a share divides by |
 | CTE | A named step in a WITH block that later steps can read | Round 3 | `WITH q1 AS (...), q2 AS (...)` |
 | coalesce | The first value that is not NULL | Round 3 | `coalesce(q2_spend, 0)` |
-| Monday suite | The six queries the analyst reruns every Monday | Half two | `sql/C2_W02_D01_02_monday_suite_STUDENT.sql` |
+| Monday suite | The six queries the analyst reruns every Monday | Half two | `sql/C2_W02_D01_04_monday_suite_STUDENT.sql` |
 
 ---
 

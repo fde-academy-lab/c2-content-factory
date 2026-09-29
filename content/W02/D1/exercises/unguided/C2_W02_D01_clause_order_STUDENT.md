@@ -2,7 +2,7 @@
 
 Seven items, about seven minutes, at the close of round 2. Each is a question the analyst puts to
 the eight-row table. Check any answer you can against a block of
-`sql/C2_W02_D01_03_segments_STUDENT.sql`.
+`sql/C2_W02_D01_02_segments_STUDENT.sql`.
 
 Post one line, seven letters in item order, no spaces:
 

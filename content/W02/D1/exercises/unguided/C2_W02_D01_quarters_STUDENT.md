@@ -2,7 +2,7 @@
 
 Seven items, about seven minutes, at the close of round 3. Each is a question the head of
 Retail-Plus or the analyst asks about the two-quarter comparison. The blocks in
-`sql/C2_W02_D01_04_quarters_STUDENT.sql` check most of them.
+`sql/C2_W02_D01_03_quarters_STUDENT.sql` check most of them.
 
 Post one line, seven letters in item order, no spaces:
 
