@@ -13,7 +13,7 @@ additions:
     anchor: Marketing wants budget for acquisition; what would you check before agreeing it is the right branch?
     text: |
       SET 4. SITUATION: Kalpa's April export for two segments holds 500 order rows placed by 250 distinct customers. Retail: 400 orders, revenue Rs 8.0 lakh. Business: 100 orders, revenue Rs 12.0 lakh. A slide built from the export reads: orders per customer 1.00, average order value Rs 7,000.
-      Orders per customer, divided by the number of distinct customers, is ____.
+      Orders per customer in this export is ____.
     why: >-
       Orders per customer is 500 orders over 250 distinct customers, which is 2.00. The slide divided
       500 rows by 500, because it counted every row as a customer, and a row is an order.

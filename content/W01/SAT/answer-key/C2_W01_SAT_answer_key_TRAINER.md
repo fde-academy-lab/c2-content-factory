@@ -614,7 +614,7 @@ Saturday 10 October 2026. A 120-minute paper holding 57 items at 119.5 minutes b
 
 These items come from the week's source file, not the tracker. Accept one by adding it to the tracker's Saturday papers tab and deleting it from the source file.
 
-- Q46 (Scenario set, Easy, [S]): Orders per customer, divided by the number of distinct customers, is ____.
+- Q46 (Scenario set, Easy, [S]): Orders per customer in this export is ____.
 - Q47 (Scenario set, Medium, [S]): The average order value across both segments is Rs ____.
 - Q48 (Scenario set, Hard, [D]): Marketing reads the slide as "nobody comes back, so buy new customers". What do you say in the room?
 - Q49 (Scenario set, Medium, [F]): Which duplicate count should the run trust?

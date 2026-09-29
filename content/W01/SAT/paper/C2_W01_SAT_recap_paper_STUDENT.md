@@ -430,7 +430,7 @@ d) Do not repeat it as designed: no segment improved, and the lift is a mix effe
 
 #### Q46
 
-Orders per customer, divided by the number of distinct customers, is ____.
+Orders per customer in this export is ____.
 
 Answer: ____________________
 
