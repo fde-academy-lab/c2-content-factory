@@ -97,7 +97,10 @@ on Rs 8,580. That is why the Checks tab holds the list.
 **The take-home's own plants** (`data/C2_W02_D05_takehome_*`, seed 20261016): C-0172 is absent from the
 clean table (Retail-Plus, 6 orders, Rs 14,740, would rank 20th); the raw export has the same payment
 grain, with a different mix: Retail-Core reads up 3.6 percent in the hurried pivot and up 1.7 percent
-counted once. Only this sheet names them.
+counted once. Only this sheet names them. The fresh customer table also runs to 311 rows against
+Friday's 300, so a workbook whose ranges stop at Friday's last row leaves the last 11 customers
+(C-0327 to C-0340) out of every formula; the self-check's line of 311 customers catches it, and the
+brief's "say in the log what broke" is where it belongs.
 
 ---
 

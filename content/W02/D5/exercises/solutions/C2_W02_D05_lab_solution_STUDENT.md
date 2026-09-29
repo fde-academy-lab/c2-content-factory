@@ -6,7 +6,8 @@ Answers: 1a 2c 3a 4b 5c 6a 7b 8c 9b 10d 11c 12d 13a 14c 15b 16a 17d 18b
 
 Problem 1 is the operating rule applied to asks the team really receives: Finance's numbers and every
 cleaning step belong to the warehouse, exploration belongs to pandas, and the room belongs to Excel.
-Problem 2 is the card's three parts, each missing once. Problem 3 is round 1's trap on numbers small
+Problem 2 is three draft cards a director misreads: one with no period or comparison, one with no
+base, and one whose comparison points the wrong way. Problem 3 is round 1's trap on numbers small
 enough to hold in your head. Problem 4 is the day's four checks on a sheet somebody else built, which
 is how the traps arrive in real work.
 

@@ -655,7 +655,7 @@ value: Rs 9.84 cr | label: Q2, like with like | note: July to September
 value: Rs 10.00 cr | label: Q1, what they remember | note: April to June
 ```
 
-The answer is b. **The fix:** "Q2, July to September 2026: Rs 9.84 crore, down 1.6 percent on Q1, April to June 2026 (Rs 10.00 crore)."
+The answer is b. **The check:** read the card aloud and ask which months, and against what; a card that cannot answer is not ready. **The fix:** "Q2, July to September 2026: Rs 9.84 crore, down 1.6 percent on Q1, April to June 2026 (Rs 10.00 crore)."
 
 ```notes
 LIVE, 4 minutes. The check is to read the card aloud and ask which months and against what. A card

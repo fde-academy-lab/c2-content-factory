@@ -60,7 +60,8 @@ the total to the warehouse.
 
 XLOOKUP matches exactly by default and shows if_not_found for a missing id. VLOOKUP with
 range_lookup left out matches approximately, so C-0195 returned C-0194's Rs 16,740 at rank 15. Test
-every lookup with an id you know is missing.
+every lookup with an id you know is missing. LibreOffice 24.2 returns #NAME? for XLOOKUP, so a sheet
+that must open anywhere uses the INDEX and MATCH line.
 
 **Crux:** A lookup that cannot find an id says so; an approximate match answers with a neighbour.
 
