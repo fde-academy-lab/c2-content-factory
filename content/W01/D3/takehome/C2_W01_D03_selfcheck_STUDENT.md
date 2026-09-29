@@ -1,60 +1,33 @@
-# Self-check: the pass, before anybody audits it
+# Self-check: know you are right before anybody reads it
 
----
+Check your take-home against these before you post it. Every number was computed from
+`data/C2_W01_D03_takehome_STUDENT.csv` by the pass the brief describes.
 
-## Part 1, the notebook
+## Part 1, the numbers
 
-| # | Checkpoint | What you should see | If it fails |
+| # | Check | You should reach | If you did not |
 |---|---|---|---|
-| 1 | The row count is not the id count | PASS | You counted rows twice rather than distinct ids |
-| 2 | You found the repeated ids | PASS | You compared whole records rather than ids |
-| 3 | You found the row that is not an order | PASS | You are testing for empty rather than for non-numeric |
-| 4 | You found the negative amount | PASS | You checked `isdigit()`, which is `False` for `-2400`, so it landed in the wrong bucket |
-| 5 | Input equals clean plus rejected | PASS | A branch is falling through without appending anywhere |
-| 6 | Every rejection carries a reason | PASS | An empty string is not a reason |
-| 7 | Summary | `7 checks passed and 0 failed` | Any FAIL names its own checkpoint |
+| 1 | Rows read after the header | 97 | You counted the header, or your reader skipped a line; count again with `len(raw)`. |
+| 2 | Amounts that fail to convert | 1, and you read the logged row | You coerced failures or never printed the log. |
+| 3 | Distinct order ids among the rows that convert | 90 | Your key is not the order_id, or it carries a field that differs on every row. |
+| 4 | Rows set aside in all | 7, for two different reasons | You merged two reasons into one, or kept copies. |
+| 5 | Rupees carried by the copies set aside | Rs 14,210 | You kept the wrong copy or counted a copy twice. |
+| 6 | Rows reconcile | 97 = 90 + 7 | A row went missing between two steps. |
+| 7 | Clean Q1 total | Rs 80,53,330 or Rs 80,50,930, depending on one decision you name | You have not made the decision the brief warns about, or you made it silently. |
+| 8 | Rupees reconcile | Rupees as read less rupees set aside equals your clean total | A row left the file without its rupees leaving the bridge. |
 
-**Checkpoint 4 is the one that catches people**, and it is worth understanding rather than fixing.
-`"-2400".isdigit()` is `False`, so a test built on `isdigit` throws a perfectly good refund into the
-same bucket as a header row. `int()` inside a `try` is the test that separates them.
+## Part 2, the log
 
----
+| # | Check | Pass when |
+|---|---|---|
+| 9 | Every row set aside has a line, a field and a reason | An analyst could find each one in the file without asking you |
+| 10 | At least four decisions are logged | Each says drop, default, or keep and flag, and why |
+| 11 | One decision names both totals | The note says what the other answer would have given |
 
-## Part 2, the note
+## Part 3, the note
 
-Read it back and answer yes or no. **Two noes means rewrite it.**
-
-1. Does sentence one carry both a row count and a distinct-order count?
-2. Does sentence two carry counts rather than adjectives?
-3. Is there a single number in sentence three that you would put your name to?
-4. Is sentence four a judgment, described as a judgment, that somebody could disagree with?
-5. Is it under 120 words?
-
----
-
-## Part 3, the log
-
-| Test | How to check |
-|---|---|
-| Every reason says something the issue column does not | Cover the issue column and read the reasons alone. If a reason is now meaningless, rewrite it. |
-| Every row has a count | A decision with no count is a decision about an unknown number of rows |
-| At least one row is something you kept | A log of only rejections is a log from a pass that made no judgment |
-
----
-
-## Part 4, the paragraph
-
-One test, and it is the one that matters.
-
-> Cover the first half. **Does the second half name something you would refuse to do?**
-
-Full credit needs a refusal with a reason. "I would not adjust my figure to match theirs, because
-reconciling and fabricating differ only in whether the steps are written down" is a refusal. "I
-would be careful" is not.
-
----
-
-## The honest signal
-
-If you found three defects and stopped, go back. There are four, and the fourth raises no error at
-all, which is exactly why the profile comes before the pass.
+| # | Check | Pass when |
+|---|---|---|
+| 12 | Under 120 words, numbers first | The first sentence carries the clean total |
+| 13 | Both reconciliations stated | Rows and rupees, each as an equation |
+| 14 | Today's finding addressed | One sentence on whether this extract changes anything said today |

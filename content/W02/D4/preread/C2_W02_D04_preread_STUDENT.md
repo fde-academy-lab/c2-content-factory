@@ -1,46 +1,35 @@
-# Before Thursday: one question, and a look at a feed
+# Tomorrow: the number reaches the leadership deck
 
-Ten minutes.
+Ten minutes tonight, before Friday's Excel day.
 
-## The question to arrive with
+> "Monday's growth review deck needs three things I can open on my laptop without a login: the
+> revenue tree by segment for both quarters, the top-fifty protect list with a lookup so I can find
+> any member by id, and one number on the front page with its trend. Nothing that needs Python. If a
+> director changes an assumption in the room, the sheet must recalculate in front of them."
+> Meera Raghavan's chief of staff, Kalpa Retail
 
-You have answered "revenue per segment" twice: in plain Python in Week 1, in SQL on Monday.
+## The words you will meet
 
-Before tomorrow, write one sentence on when you would choose each. Not which is better. When you
-would choose each.
+| Word | What it means tomorrow | What you already know that it is like |
+|---|---|---|
+| PivotTable | Excel's grouped summary, which a director can slice live | `pivot_table` with `aggfunc="sum"`, dragged by hand |
+| Slicer | A button that filters a pivot on one field | a `groupby` key you switch on and off |
+| XLOOKUP | Finds a value by key in another range | a `merge` for one row at a time |
+| Not-found argument | What XLOOKUP returns when the key is absent | `validate=`: the difference between a loud miss and a quiet wrong answer |
+| Front-page number | One figure on a slide, with its denominator, period and comparison | Week 1's rule: every number leaves with its definition |
 
-Tomorrow a senior analyst asks exactly this in front of the room, and having thought about it for
-ninety seconds beforehand is the difference between an answer and a scramble.
+## One thing to think about
 
-## Look at this, and only look
+This week the number came from the warehouse, then pandas, and tomorrow it reaches Excel. Which of
+the week's steps must never happen in a sheet: joining payments, cleaning duplicates, measuring
+recency, choosing the tie rule, or presenting the number? Pick one and have a reason ready.
 
-```bash
-psql -c "SELECT customer_id, count(*) FROM campaign_exposure
-         GROUP BY customer_id HAVING count(*) > 1;"
-```
+## The check for tonight
 
-Six rows come back. Do not fix anything. Ask yourself what a merge on `customer_id` would do with
-them, and whether you would notice.
+Open the CSV your escalated case wrote to `output/` and confirm it has 340 rows and a spend column
+that adds to Rs 19,84,00,000. Bring it tomorrow; the Excel day is built on it.
 
-## Three words
+## The line worth carrying in
 
-| Word | What it means here |
-|---|---|
-| DataFrame | A table in memory, with named columns and an index |
-| groupby | Splitting rows by a key so a function can be applied to each group |
-| merge | A join, with pandas spelling, and the same fan-out risk |
-
-## One to read, one to watch
-
-- pandas, "10 minutes to pandas", run it cell by cell rather than reading it:
-  <https://pandas.pydata.org/docs/user_guide/10min.html> (verified 13 Sep 2026)
-- Corey Schafer, "Python Pandas Tutorial Part 8, Grouping and Aggregating":
-  <https://www.youtube.com/watch?v=txMdrV1Ut64> (verified 13 Sep 2026)
-
-The current pandas docs cover pandas 3.0, which is what the Codespace runs. Older tutorials show
-idioms that have since been removed, so prefer the official guide when they disagree.
-
-## One thing to bring
-
-Tomorrow is the Excel day and it needs the customer table as a CSV. You will export it at the end
-of tomorrow's session, so nothing to do tonight beyond knowing it is coming.
+The sheet presents the number and lets a director explore it; the warehouse is where the number is
+born.
