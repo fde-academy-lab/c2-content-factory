@@ -1,0 +1,1405 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which branch first: Week 1, Monday simulator</title>
+<style data-c2kit>
+/* c2kit.css: the look every companion page inlines, taken from the orientation deck.
+ * Violet on lavender, Georgia for headings, Calibri for text, cards with a soft shadow.
+ * scripts/build_companion.py inlines this file into each page. */
+:root{
+  --ink:#1A0F5C;--night:#1A1440;--violet:#5B3FD6;--violet-mid:#2C1A86;--lav:#D9A7FF;
+  --muted:#6B6690;--soft:#A9A3D2;--lilac:#CFC9EE;--line:#E4E1F1;--tint:#EEEAFB;--surface:#F4F2FA;
+  --white:#FFFFFF;--rose:#D63A6A;--rose-tint:#FCEBF0;--green:#1F8A5B;--green-tint:#E8F5EE;
+  --serif:Georgia,"DejaVu Serif",serif;
+  --sans:Calibri,Carlito,"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+  --mono:Consolas,ui-monospace,SFMono-Regular,Menlo,monospace;
+  --shadow:0 2px 6px rgba(26,15,92,.10),0 1px 2px rgba(26,15,92,.06);
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#F7F5FD 0%,#F2EFFB 100%);color:var(--night);
+     font:16px/1.55 var(--sans)}
+a{color:var(--violet)}
+code,kbd{font:14px var(--mono);background:var(--tint);border-radius:4px;padding:1px 5px;color:var(--ink)}
+
+/* the dark header, like a deck cover */
+.hero{background:radial-gradient(120% 140% at 85% 10%,#5B3FD6 0%,#2C1A86 45%,#1A1440 100%);
+      color:var(--white);padding:34px 40px 30px}
+.hero .kicker{display:inline-block;border:1px solid var(--lilac);border-radius:999px;padding:4px 14px;
+      font:700 11px var(--sans);letter-spacing:.24em;text-transform:uppercase;margin-bottom:14px}
+.hero h1{font:400 38px/1.15 var(--serif);margin:0 0 10px}
+.hero .quote{font:italic 20px/1.4 var(--serif);color:var(--lav);max-width:860px;margin:0 0 6px}
+.hero .who{color:var(--lilac);font-size:13px;margin:0}
+.hero .promise{color:#E4E1F1;max-width:860px;margin:16px 0 0}
+
+/* the page: a left rail and the sections */
+.page{display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;max-width:1240px;margin:0 auto;
+      padding:26px 28px 60px}
+@media (max-width:900px){.page{grid-template-columns:1fr}.rail{position:static}}
+.rail{position:sticky;top:18px;align-self:start;background:var(--white);border:1px solid var(--line);
+      border-radius:12px;padding:14px 12px;box-shadow:var(--shadow)}
+.rail .label{font:700 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--violet);
+      margin:2px 8px 8px}
+.rail a{display:flex;gap:10px;align-items:baseline;padding:7px 8px;border-radius:8px;color:var(--night);
+      text-decoration:none;font-size:14.5px}
+.rail a .n{font:15px var(--serif);color:var(--violet);min-width:22px}
+.rail a.on{background:var(--tint);color:var(--ink);font-weight:700}
+section.part{margin:0 0 38px;scroll-margin-top:16px}
+.part > .eyebrow{font:700 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--violet);
+      margin:0 0 4px}
+.part > h2{font:400 28px/1.2 var(--serif);color:var(--ink);margin:0 0 6px}
+.part > .lede{color:var(--muted);margin:0 0 16px;max-width:860px}
+
+/* cards and strips */
+.card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+      box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.grid2,.grid3{grid-template-columns:1fr}}
+.strip{border-radius:10px;padding:12px 16px;margin:12px 0;background:#F7F5FD;border:1px solid var(--line)}
+.strip b.tag{display:block;font:700 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;
+      color:var(--violet);margin-bottom:3px}
+.strip.client{background:linear-gradient(135deg,#2C1A86,#1A1440);color:var(--white);border:none}
+.strip.client b.tag{color:var(--lav)}
+.strip.bad{background:var(--rose-tint);border-color:#F3C5D3}
+.strip.bad b.tag{color:var(--rose)}
+.strip.good{background:var(--green-tint);border-color:#BFE3CF}
+.strip.good b.tag{color:var(--green)}
+.c2k-row{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
+.c2k-svg{max-width:100%;height:auto}
+.holder{overflow-x:auto}
+
+/* the guided walk */
+.walk .narration{min-height:150px}
+.walk .step{font:700 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)}
+.walk .narration h3{font:400 21px/1.25 var(--serif);color:var(--ink);margin:4px 0 8px}
+.meter{margin-top:14px}
+.meter .bar{position:relative;height:16px;border-radius:999px;background:var(--surface);border:1px solid var(--line);
+      overflow:hidden}
+.meter .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#7B62E8,#5B3FD6);
+      border-radius:999px;transition:width .35s ease}
+.meter .plan{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--rose)}
+.meter .legend{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:4px}
+.big{font:34px/1.1 var(--serif);color:var(--violet)}
+.verdict{font-weight:700;color:var(--ink)}
+
+/* buttons, toggles and inputs */
+button{font:inherit;cursor:pointer}
+.btn{padding:8px 16px;border-radius:999px;border:1px solid var(--violet);background:var(--white);color:var(--violet);
+     font-weight:700}
+.btn.primary{background:var(--violet);color:var(--white)}
+.btn[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.btn:focus-visible,.rail a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--lav);
+     outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.slider{margin:10px 0}
+.slider label{display:flex;justify-content:space-between;font-size:14.5px;color:var(--night)}
+.slider label b{color:var(--violet);font-family:var(--mono);font-weight:400}
+input[type=range]{width:100%;accent-color:var(--violet)}
+input[type=number],textarea{font:15px var(--mono);border:1px solid var(--lilac);border-radius:8px;padding:6px 9px;
+     color:var(--night);background:var(--white);width:100%}
+textarea{min-height:92px;resize:vertical}
+
+/* experiment cards */
+.exp{display:grid;gap:10px;align-content:start}
+.exp p{margin:0}
+.exp .result p{margin:0 0 8px}
+.exp .part-label{font:700 10.5px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)}
+.exp .result{border-top:1px dashed var(--lilac);padding-top:10px}
+.exp .result[hidden]{display:none}
+.exp .waiting{color:var(--muted);font-style:italic}
+.rule{font:italic 17px/1.4 var(--serif);color:var(--ink)}
+
+/* tables */
+table.t{border-collapse:collapse;width:100%;font-size:14.5px;margin:8px 0}
+table.t th{background:var(--ink);color:var(--white);text-align:left;padding:7px 10px;font-weight:700}
+table.t td{padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.t tr:nth-child(even) td{background:var(--surface)}
+table.t td.num,table.t th.num{text-align:right;font-variant-numeric:tabular-nums}
+
+/* popups */
+dialog{border:none;border-radius:14px;padding:0;max-width:min(860px,94vw);box-shadow:0 18px 50px rgba(26,15,92,.35)}
+dialog::backdrop{background:rgba(26,20,64,.45)}
+dialog .head{background:var(--ink);color:var(--white);padding:12px 18px;font:400 19px var(--serif);
+      display:flex;justify-content:space-between;align-items:center;gap:16px}
+dialog .body{padding:16px 18px}
+dialog .close{background:transparent;border:1px solid var(--lilac);color:var(--white);border-radius:999px;
+      padding:4px 12px}
+
+/* glossary */
+dl.gloss{display:grid;grid-template-columns:200px minmax(0,1fr);gap:8px 18px;margin:0}
+dl.gloss dt{font-weight:700;color:var(--ink)}
+dl.gloss dd{margin:0}
+dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
+@media (max-width:700px){dl.gloss{grid-template-columns:1fr}}
+.foot{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:10px;margin-top:30px}
+</style>
+<style>
+  .formula{font:15px var(--mono);background:var(--surface);border:1px solid var(--line);border-radius:8px;
+           padding:8px 12px;margin-top:10px;color:var(--ink);overflow-x:auto}
+  .note{font-size:13.5px;color:var(--muted)}
+  .jumped{font-size:13px;color:var(--muted);margin:10px 8px 2px}
+  .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:4px 0 8px}
+  @media (max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+  .stat .k{font:700 10.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--violet)}
+  .stat .v{font:24px/1.15 var(--serif);color:var(--ink);margin-top:2px;white-space:nowrap}
+  #sim .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat .d{font-size:13px;color:var(--night)}
+  .group{margin:10px 0 4px}
+  .group .q{font-weight:700;color:var(--ink);margin:0 0 2px}
+  .said{margin:12px 0 0;font-size:14.5px;color:var(--ink)}
+  .verdict.bad{color:var(--rose)}
+  .verdict.good{color:var(--green)}
+  h3.exp-title{font:400 20px var(--serif);color:var(--ink);margin:0}
+  .rungs{margin:8px 0 0;padding-left:20px;font-size:14px}
+  .rungs li.done{font-weight:700;color:var(--ink)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <span class="kicker">Week 1 &middot; Monday &middot; Companion</span>
+  <h1>Which branch does Meera open first?</h1>
+  <p class="quote">&ldquo;Before I sign anything, I want to understand our own sales. What is &lsquo;sales&rsquo; made of?
+    Where does revenue come from, by customer type and channel? Is acquisition even the branch that is short?&rdquo;</p>
+  <p class="who">Meera Raghavan, CEO, Kalpa Retail, to the data and AI team at Kalpa's Global Capability Centre.
+    Anand Iyer, finance controller, adds: &ldquo;No averages. One business customer can move an average.&rdquo;</p>
+  <p class="promise">Kalpa Retail grew revenue 4 percent last year against a plan of 15, and marketing asks for Rs 12 crore
+    to acquire new customers. This page is a simulator for the one decision the day builds towards: which branch of the
+    revenue tree Meera opens first, and whether the Rs 12 crore case holds. Change one assumption at a time and watch the
+    number and the decision move. The Kalpa figures here are totals from the day's 30 orders, 1 July to 26 September 2026;
+    anything else is invented to show a mechanism and says so.</p>
+</header>
+
+<div class="page">
+  <nav class="rail" aria-label="Sections">
+    <div class="label">On this page</div>
+    <a href="#walk" data-part="walk"><span class="n">01</span>The walk</a>
+    <a href="#sim" data-part="sim"><span class="n">02</span>The three assumptions</a>
+    <a href="#lifts" data-part="lifts"><span class="n">03</span>Lifts on the tree</a>
+    <a href="#channels" data-part="channels"><span class="n">04</span>Channels</a>
+    <a href="#experiments" data-part="experiments"><span class="n">05</span>Six experiments</a>
+    <a href="#decision" data-part="decision"><span class="n">06</span>The decision</a>
+    <a href="#glossary" data-part="glossary"><span class="n">07</span>Glossary</a>
+    <p class="jumped" id="jumped">You are at the top of the page.</p>
+  </nav>
+
+  <main>
+    <section class="part" id="walk">
+      <p class="eyebrow">01 &middot; The guided walk</p>
+      <h2>From Meera's ask to the sentence she gets</h2>
+      <p class="lede">The walk runs the day in order: the ask, the thinking, the three rounds, the escalated case and the
+        second case. Each step redraws the picture and moves the meter, which counts the rungs climbed.</p>
+      <div class="card"><div class="holder" id="walkDraw"></div></div>
+      <div class="walk" style="margin-top:16px">
+        <div class="card narration" aria-live="polite">
+          <div class="step" id="walkStep">Step 0 of 7</div>
+          <h3 id="walkTitle">The ask</h3>
+          <p id="walkText"></p>
+          <div class="meter">
+            <div class="bar"><div class="fill" id="walkFill"></div></div>
+            <div class="legend"><span>no rung yet</span><span id="walkRungs">0 of 5 rungs climbed</span><span>five rungs</span></div>
+          </div>
+          <div class="row">
+            <button class="btn primary" id="walkNext" type="button">Next</button>
+            <button class="btn" id="walkRestart" type="button">Restart the walk</button>
+            <button class="btn" id="walkMeter" type="button">What the meter counts</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="part" id="sim">
+      <p class="eyebrow">02 &middot; The simulator</p>
+      <h2>Three assumptions, one number, one decision</h2>
+      <p class="lede">Every number Meera sees rests on three choices an analyst makes before the arithmetic: which orders
+        count as sales, what counts as a customer, and which average stands for a typical order. Change one and watch the
+        leaves, the pictures and the decision at the bottom of this section redraw.</p>
+      <div class="grid2">
+        <div class="card">
+          <div class="group"><p class="q">1. Which orders count as sales?</p>
+            <div class="row" style="margin-top:4px">
+              <button class="btn" id="defBooked" type="button" aria-pressed="true">Booked</button>
+              <button class="btn" id="defNc" type="button" aria-pressed="false">Not cancelled</button>
+              <button class="btn" id="defDel" type="button" aria-pressed="false">Delivered</button>
+            </div></div>
+          <div class="group"><p class="q">2. How are customers counted?</p>
+            <div class="row" style="margin-top:4px">
+              <button class="btn" id="cntId" type="button" aria-pressed="true">By distinct id</button>
+              <button class="btn" id="cntRows" type="button" aria-pressed="false">By rows</button>
+            </div></div>
+          <div class="group"><p class="q">3. Which average is the typical order?</p>
+            <div class="row" style="margin-top:4px">
+              <button class="btn" id="typMedian" type="button" aria-pressed="true">Median</button>
+              <button class="btn" id="typMean" type="button" aria-pressed="false">Mean</button>
+            </div></div>
+          <p class="said" id="simSaid">The simulator opens on booked sales, customers by distinct id and the median.
+            Change one assumption to see what moves.</p>
+        </div>
+        <div class="card">
+          <div class="stats">
+            <div class="stat"><div class="k">Sales</div><div class="v" id="sSales"></div><div class="d" id="sSalesD"></div></div>
+            <div class="stat"><div class="k">Customers</div><div class="v" id="sCust"></div><div class="d" id="sCustD"></div></div>
+            <div class="stat"><div class="k">Orders each</div><div class="v" id="sOpc"></div><div class="d" id="sOpcD"></div></div>
+            <div class="stat"><div class="k">Typical order</div><div class="v" id="sTyp"></div><div class="d" id="sTypD"></div></div>
+          </div>
+          <div class="formula" id="sIdentity"></div>
+          <p class="note">The identity multiplies customers, orders per customer and revenue per order back to the sales
+            total. It holds under both customer counts, which is why it cannot catch rows counted as customers.</p>
+        </div>
+      </div>
+      <div class="grid2" style="margin-top:16px">
+        <div class="card"><div class="holder" id="simBridge"></div></div>
+        <div class="card"><div class="holder" id="simLeaves"></div></div>
+      </div>
+      <div class="card" style="margin-top:16px"><div class="holder" id="simTypical"></div></div>
+      <div class="strip" id="simDecision" style="margin-top:16px"><b class="tag">The decision, redrawn</b><span
+        id="simDecisionText"></span></div>
+    </section>
+
+    <section class="part" id="lifts">
+      <p class="eyebrow">03 &middot; The calculator, for the escalated case</p>
+      <h2>Lifts on the tree multiply</h2>
+      <p class="lede">Revenue is customers times orders per customer times average order value, so a lift on one branch
+        multiplies the lift on another. Move the three branches and compare what adding the lifts says with what the tree
+        says. The starting revenue follows the definition of sales you chose above.</p>
+      <div class="grid2">
+        <div class="card">
+          <div class="slider"><label for="lC">Customers <b id="lCv">+0%</b></label>
+            <input type="range" id="lC" min="-20" max="30" step="1" value="0"></div>
+          <div class="slider"><label for="lF">Orders per customer <b id="lFv">+0%</b></label>
+            <input type="range" id="lF" min="-20" max="30" step="1" value="0"></div>
+          <div class="slider"><label for="lA">Average order value <b id="lAv">+0%</b></label>
+            <input type="range" id="lA" min="-20" max="30" step="1" value="0"></div>
+          <div class="row">
+            <button class="btn" id="lTen" type="button">Marketing's claim: 10 and 10</button>
+            <button class="btn" id="lReset" type="button">Back to no lift</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="stats" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+            <div class="stat"><div class="k">Added</div><div class="v" id="lAdd"></div><div class="d" id="lAddD"></div></div>
+            <div class="stat"><div class="k">Through the tree</div><div class="v" id="lMul"></div><div class="d" id="lMulD"></div></div>
+          </div>
+          <div class="formula" id="lFormula"></div>
+          <p class="verdict" id="lVerdict"></p>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px"><div class="holder" id="lBridge"></div></div>
+    </section>
+
+    <section class="part" id="channels">
+      <p class="eyebrow">04 &middot; The channel view, for the second case</p>
+      <h2>Booked against delivered, on consumer orders</h2>
+      <p class="lede">Consumer orders are the 29 orders outside the Business segment, which leaves out the order your round 3
+        sort put at the top. Each channel is drawn twice: what was booked, and what was delivered.</p>
+      <div class="grid2">
+        <div class="card"><div class="holder" id="chDraw"></div></div>
+        <div class="card">
+          <div class="group"><p class="q">Measure</p>
+            <div class="row" style="margin-top:4px">
+              <button class="btn" id="chRs" type="button" aria-pressed="true">Rupees</button>
+              <button class="btn" id="chN" type="button" aria-pressed="false">Orders</button>
+            </div></div>
+          <div class="group"><p class="q">Read one channel</p>
+            <div class="row" style="margin-top:4px">
+              <button class="btn" id="chApp" type="button" aria-pressed="false">App</button>
+              <button class="btn" id="chWeb" type="button" aria-pressed="false">Web</button>
+              <button class="btn" id="chStore" type="button" aria-pressed="false">Store</button>
+            </div></div>
+          <p class="said" id="chSaid">Pick a channel to read what its booked and delivered bars say about the growth plan.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="part" id="experiments">
+      <p class="eyebrow">05 &middot; Experiment cards</p>
+      <h2>Six experiments, one change each</h2>
+      <p class="lede">Each card is one of the day's traps: a plausible wrong number and the decision it would mislead. Read
+        the situation and the hypothesis, decide what you expect, then run. Cards A, B, D, E and F use the day's totals;
+        card C uses invented orders and says so.</p>
+      <div class="grid2">
+        <article class="card exp">
+          <div class="part-label">Experiment A &middot; round 1 &middot; Kalpa totals</div>
+          <h3 class="exp-title">Cancelled orders counted as sales</h3>
+          <p><b>Situation.</b> The first total anyone computes on the 30 orders is Rs 5,44,810, and it is about to go into
+            Meera's note as sales. Four of the 30 orders were cancelled.</p>
+          <p><b>Hypothesis.</b> Taking the cancelled orders out lowers sales by their Rs 9,050 and removes four orders, all
+            from one channel.</p>
+          <p><b>Watch for.</b> The rose bar in the bridge and the order count under the new total.</p>
+          <div class="holder" id="expADraw"><p class="note">The bridge appears here after the run.</p></div>
+          <div class="row">
+            <button class="btn" id="expARun" type="button" aria-pressed="false">Take the cancelled orders out</button>
+            <button class="btn" id="expASeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expAResult" hidden>
+            <p><b>What happened.</b> <span id="expAWhat"></span></p>
+            <p><b>Why it matters.</b> A cancelled order never became a sale. All four are store orders, so store's order
+              count is overstated by 4 in 10, and the growth baseline includes demand that never arrived.</p>
+            <p class="rule">Name the definition before the number: booked, not cancelled, or delivered.</p>
+          </div>
+          <p class="waiting" id="expAWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp">
+          <div class="part-label">Experiment B &middot; round 2 &middot; Kalpa totals</div>
+          <h3 class="exp-title">Rows counted as customers</h3>
+          <p><b>Situation.</b> The extract has 30 rows, and a hurried count reports 30 customers, so orders per customer
+            reads 30 / 30 = 1.00 and marketing says nobody comes back.</p>
+          <p><b>Hypothesis.</b> Counting each customer id once gives fewer customers than rows, and some customers turn out
+            to have bought more than once.</p>
+          <p><b>Watch for.</b> The customers bar falling and a second bar, the customers who came back, rising from zero.</p>
+          <div class="holder" id="expBDraw"><p class="note">The count appears here after the run.</p></div>
+          <div class="row">
+            <button class="btn" id="expBRun" type="button" aria-pressed="false">Count distinct ids</button>
+            <button class="btn" id="expBSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expBResult" hidden>
+            <p><b>What happened.</b> <span id="expBWhat"></span></p>
+            <p><b>Why it matters.</b> At 1.00 orders per customer, acquisition looks like the only branch and the Rs 12
+              crore looks justified. At 1.30, with 7 customers back, frequency is a live branch that costs far less to test.</p>
+            <p class="rule">Count customers by their id, never by the rows.</p>
+          </div>
+          <p class="waiting" id="expBWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp">
+          <div class="part-label">Experiment C &middot; round 3 &middot; invented orders</div>
+          <h3 class="exp-title">One large order and the mean</h3>
+          <p><b>Situation.</b> Five invented orders sit between Rs 1,900 and Rs 2,600. An invented order of Rs 90,000 then
+            joins them as a sixth, which is the shape Anand warned about.</p>
+          <p><b>Hypothesis.</b> The mean jumps to several times its old value, and the median moves by only a few rupees.</p>
+          <p><b>Watch for.</b> The rose mean line leaving the pile of dots, and whether the green median line moves at all.</p>
+          <div class="holder" id="expCDraw"><p class="note">The strip appears here after the run.</p></div>
+          <div class="row">
+            <button class="btn" id="expCRun" type="button" aria-pressed="false">Add the invented large order</button>
+            <button class="btn" id="expCSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expCResult" hidden>
+            <p><b>What happened.</b> <span id="expCWhat"></span></p>
+            <p><b>Why it matters.</b> On Kalpa's 30 orders the mean is Rs 18,160 and the median Rs 2,205, and only 1 of 30
+              orders sits above the mean. Marketing valuing a first order at the mean would expect about eight times what
+              a typical order brings.</p>
+            <p class="rule">Report the median when one order can move the mean, and say why.</p>
+          </div>
+          <p class="waiting" id="expCWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp">
+          <div class="part-label">Experiment D &middot; escalated case &middot; Kalpa totals</div>
+          <h3 class="exp-title">Two 10 percent lifts called 20 percent</h3>
+          <p><b>Situation.</b> Marketing's plan lifts customers by 10 percent and a loyalty scheme lifts orders per
+            customer by 10 percent. The slide says revenue grows 20 percent, to Rs 6,53,772.</p>
+          <p><b>Hypothesis.</b> Through the tree the lifts multiply, so revenue grows 21 percent and lands higher than the
+            slide says.</p>
+          <p><b>Watch for.</b> The small green bar after the two lifts, which is the lift on the lift.</p>
+          <div class="holder" id="expDDraw"><p class="note">The bridge appears here after the run.</p></div>
+          <div class="row">
+            <button class="btn" id="expDRun" type="button" aria-pressed="false">Multiply the lifts</button>
+            <button class="btn" id="expDSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expDResult" hidden>
+            <p><b>What happened.</b> <span id="expDWhat"></span></p>
+            <p><b>Why it matters.</b> Rs 5,448 is small on one quarter, and the same habit of adding percentages hides a
+              fall where one branch rises and another drops, which is where a plan goes wrong.</p>
+            <p class="rule">Lifts multiply along the tree: two 10 percent lifts make 21 percent.</p>
+          </div>
+          <p class="waiting" id="expDWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp">
+          <div class="part-label">Experiment E &middot; escalated case &middot; Kalpa totals</div>
+          <h3 class="exp-title">A discount that sells more and earns less</h3>
+          <p><b>Situation.</b> A 15 percent discount is proposed, and marketing expects it to lift quantity by 10 percent.
+            The pitch says more orders means more revenue.</p>
+          <p><b>Hypothesis.</b> Price falls by 15 percent and quantity rises by 10, so revenue ends at 0.85 times 1.10 of
+            today, which is a fall.</p>
+          <p><b>Watch for.</b> Where the bridge lands against the starting bar.</p>
+          <div class="holder" id="expEDraw"><p class="note">The bridge appears here after the run.</p></div>
+          <div class="row">
+            <button class="btn" id="expERun" type="button" aria-pressed="false">Run the discount</button>
+            <button class="btn" id="expESeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expEResult" hidden>
+            <p><b>What happened.</b> <span id="expEWhat"></span></p>
+            <p><b>Why it matters.</b> A discount trades margin for quantity, and it pays only when quantity rises by more than
+              the price falls; at 15 percent off, quantity has to rise by about 17.6 percent just to stand still.</p>
+            <p class="rule">Recompute revenue through the tree, never by adding the percentages.</p>
+          </div>
+          <p class="waiting" id="expEWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp">
+          <div class="part-label">Experiment F &middot; second case &middot; Kalpa totals</div>
+          <h3 class="exp-title">Store brings 91.6 percent of revenue</h3>
+          <p><b>Situation.</b> By channel, store carries 91.6 percent of booked revenue on 10 of the 30 orders, and a draft
+            says the growth plan should be store-led.</p>
+          <p><b>Hypothesis.</b> One order carries store's share, so on consumer orders alone the three channels sit much
+            closer together.</p>
+          <p><b>Watch for.</b> Store's dark bar against its light one, and which channel leads once consumer orders stand
+            alone.</p>
+          <div class="holder" id="expFDraw"><p class="note">The shares appear here after the run.</p></div>
+          <div class="row">
+            <button class="btn" id="expFRun" type="button" aria-pressed="false">Look at consumer orders only</button>
+            <button class="btn" id="expFSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expFResult" hidden>
+            <p><b>What happened.</b> <span id="expFWhat"></span></p>
+            <p><b>Why it matters.</b> A store-led plan would invest behind one order. On consumer orders the leaks matter
+              more: half of web's orders came back and 4 of store's 9 were cancelled, while app delivered all 10.</p>
+            <p class="rule">Count the orders behind a share before the share decides anything.</p>
+          </div>
+          <p class="waiting" id="expFWait">What happened appears here after the run.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="part" id="decision">
+      <p class="eyebrow">06 &middot; The decision card</p>
+      <h2>Which branch does Meera open first?</h2>
+      <p class="lede">Three answers reach Meera's desk. Pick the one you would defend on Thursday and read Kavya's review of
+        it. The tree lights the branch you picked.</p>
+      <div class="card"><div class="holder" id="decTree"></div></div>
+      <div class="card" style="margin-top:16px">
+        <div class="row" style="margin-top:0">
+          <button class="btn" id="decAcq" type="button" aria-pressed="false">Sign the Rs 12 crore for acquisition</button>
+          <button class="btn" id="decFreq" type="button" aria-pressed="false">Open frequency first</button>
+          <button class="btn" id="decStore" type="button" aria-pressed="false">Build a store-led plan</button>
+        </div>
+        <div class="strip" id="decWhy"><b class="tag">Kavya's review</b><span id="decWhyText">Pick an answer above and
+          Kavya reviews it the way she would before it reaches Meera.</span></div>
+        <div class="strip good"><b class="tag">Kavya's review of the note that goes</b>&ldquo;On the 30 orders from 1 July
+          to 26 September, 23 customers placed 1.30 orders each at a typical order of Rs 2,205, and 16 of them bought only
+          once, so I would open frequency before acquisition; this one window cannot show which branch moved, so hold the
+          Rs 12 crore until Tuesday's two quarters.&rdquo; That is the sentence. It names the definition, counts customers
+          by id, uses the median, and says what one window cannot show.</div>
+      </div>
+    </section>
+
+    <section class="part" id="glossary">
+      <p class="eyebrow">07 &middot; Glossary</p>
+      <h2>The day's words, and where each first mattered</h2>
+      <div class="card">
+        <dl class="gloss">
+          <dt>Revenue tree</dt><dd>Revenue drawn as customers times orders per customer times average order value, with
+            average order value as items per order times price per item, less discounts.<span class="where">The thinking
+            drawn before round 1.</span></dd>
+          <dt>Branch</dt><dd>One box of the tree, a metric the business can move at its own cost: acquisition costs
+            marketing, frequency costs retention, basket costs merchandising.<span class="where">The thinking; round 1,
+            level 4.</span></dd>
+          <dt>Numerator and denominator</dt><dd>The top and the bottom of every rate, said out loud before it is
+            computed.<span class="where">Round 1, level 3.</span></dd>
+          <dt>Booked</dt><dd>Every order placed in the window, whatever happened to it afterwards.<span class="where">Round
+            1, level 1.</span></dd>
+          <dt>Not cancelled</dt><dd>Booked orders less the ones cancelled before they shipped.<span class="where">Round 1,
+            the trap.</span></dd>
+          <dt>Delivered</dt><dd>Orders that reached the customer and stayed there, so returns and cancellations are both
+            out.<span class="where">Round 1, the fix; round 2, level 4.</span></dd>
+          <dt>Distinct customer</dt><dd>A customer id counted once however many rows it appears on; in Python, the length
+            of a set of ids.<span class="where">Round 2, the trap and its fix.</span></dd>
+          <dt>Orders per customer</dt><dd>Orders divided by distinct customers, the frequency branch of the tree.<span
+            class="where">Round 2, level 3.</span></dd>
+          <dt>Repeat customer</dt><dd>A customer who placed more than one order in the window.<span class="where">Round 2,
+            level 3.</span></dd>
+          <dt>Mean</dt><dd>The total spread evenly over the count; it multiplies back to the total, and one large order can
+            drag it.<span class="where">Round 3, level 1.</span></dd>
+          <dt>Median</dt><dd>The middle of the sorted list, or the average of the two middles when the count is even, which
+            one large order cannot drag.<span class="where">Round 3, level 3.</span></dd>
+          <dt>Compounding</dt><dd>Lifts on branches that multiply, so each lift also applies to the other's gain.<span
+            class="where">The escalated case.</span></dd>
+          <dt>Window</dt><dd>The dates a number covers; one window shows the shape of revenue, and two windows show which
+            branch moved.<span class="where">The escalated case; Tuesday's question.</span></dd>
+          <dt>Channel share</dt><dd>One channel's revenue over all revenue, read only after counting the orders behind
+            it.<span class="where">The second case.</span></dd>
+          <dt>Consumer orders</dt><dd>The orders outside the Business segment, 29 of the 30 in the day's file.<span
+            class="where">The second case.</span></dd>
+        </dl>
+      </div>
+      <p class="foot">Week 1, Monday. The same five decisions live in the workbook beside this page,
+        C2_W01_D01_decision_tool_STUDENT.xlsx, which is the version to keep: each tab hides one formula defect to find
+        first, and its Export tab assembles the brief to Meera. Kalpa Retail and everyone in it are fictional. The Kalpa
+        figures are totals of the day's 30 orders; card C's orders are invented. The page stores nothing and calls no
+        network.</p>
+    </section>
+  </main>
+</div>
+
+<dialog id="seqDialog" aria-labelledby="seqTitle">
+  <div class="head"><span id="seqTitle">The sequence</span><button class="close" id="seqClose" type="button">Close</button></div>
+  <div class="body"><div class="holder" id="seqBody"></div><p class="note" id="seqNote"></p></div>
+</dialog>
+
+<script data-c2kit>
+/* c2kit.js: the diagram builders and page helpers every companion page inlines.
+ *
+ * The JavaScript twin of scripts/c2kit.py, so a tree on the slide, in the notebook and on the
+ * companion page is one drawing in one violet. Every builder takes data and returns an SVG
+ * element; nothing is drawn until a page calls a builder. No storage, no network, no globals
+ * beyond window.C2K. scripts/build_companion.py inlines this file into each page.
+ */
+(function () {
+  "use strict";
+  /* The SVG namespace, an identifier rather than a link, built in two parts so no checker reads it as one. */
+  var NS = "http:" + "//www.w3.org/2000/svg";
+  var C = {
+    ink: "#1A0F5C", night: "#1A1440", violet: "#5B3FD6", lav: "#D9A7FF", muted: "#6B6690",
+    lilac: "#CFC9EE", line: "#E4E1F1", tint: "#EEEAFB", surface: "#F4F2FA", white: "#FFFFFF",
+    rose: "#D63A6A", roseTint: "#FCEBF0", green: "#1F8A5B", greenTint: "#E8F5EE"
+  };
+  var FONT = "Calibri, Carlito, 'Segoe UI', system-ui, sans-serif";
+  var SERIF = "Georgia, 'DejaVu Serif', serif";
+  var KINDS = {
+    plain: [C.tint, C.violet, 1.2, C.ink, ""],
+    lit: [C.ink, C.ink, 1.2, C.white, ""],
+    known: [C.tint, C.violet, 2.6, C.ink, ""],
+    unknown: [C.white, "#B8B2D6", 1.3, C.muted, "5 4"],
+    bad: [C.roseTint, C.rose, 1.6, C.ink, ""],
+    good: [C.greenTint, C.green, 1.6, C.ink, ""]
+  };
+
+  function el(name, attrs, text) {
+    var node = document.createElementNS(NS, name);
+    Object.keys(attrs || {}).forEach(function (k) { node.setAttribute(k, attrs[k]); });
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function wrap(text, perLine) {
+    var words = String(text).split(/\s+/), lines = [], line = "";
+    words.forEach(function (w) {
+      if (line && (line + " " + w).length > perLine) { lines.push(line); line = w; }
+      else { line = line ? line + " " + w : w; }
+    });
+    if (line) lines.push(line);
+    return lines.length ? lines : [""];
+  }
+
+  function labelLines(text, w, size) {
+    var per = Math.max(8, Math.floor(w / (size * 0.56)));
+    var parts = String(text).split("\n"), out = [];
+    wrap(parts[0], per).forEach(function (l) { out.push([l, parts.length > 1]); });
+    parts.slice(1).forEach(function (p) { wrap(p, per).forEach(function (l) { out.push([l, false]); }); });
+    return out;
+  }
+
+  function boxHeight(text, w, size) {
+    size = size || 13;
+    return Math.max(40, labelLines(text, w - 16, size).length * (size + 4) + 16);
+  }
+
+  function root(width, height, title) {
+    var svg = el("svg", { xmlns: NS, width: width, height: height, viewBox: "0 0 " + width + " " + height,
+                          role: "img", "class": "c2k-svg" });
+    var defs = el("defs");
+    var marker = el("marker", { id: "c2kArrow", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 6,
+                                markerHeight: 6, orient: "auto-start-reverse" });
+    marker.appendChild(el("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: C.violet }));
+    defs.appendChild(marker);
+    svg.appendChild(defs);
+    svg.appendChild(el("rect", { width: width, height: height, rx: 10, fill: C.surface }));
+    if (title) {
+      svg.appendChild(el("text", { x: width / 2, y: height - 8, "text-anchor": "middle", fill: C.muted,
+                                   "font-family": FONT, "font-size": 12.5 }, title));
+    }
+    return svg;
+  }
+
+  function box(svg, x, y, w, h, text, kind, size) {
+    size = size || 13;
+    var k = KINDS[kind] || KINDS.plain;
+    var g = el("g", { "class": "c2k-node c2k-" + (kind || "plain") });
+    var rect = el("rect", { x: x, y: y, width: w, height: h, rx: 8, fill: k[0], stroke: k[1],
+                            "stroke-width": k[2] });
+    if (k[4]) rect.setAttribute("stroke-dasharray", k[4]);
+    g.appendChild(rect);
+    var lines = labelLines(text, w - 16, size);
+    var top = y + h / 2 - (lines.length - 1) * (size + 4) / 2 + size * 0.36;
+    lines.forEach(function (pair, i) {
+      g.appendChild(el("text", { x: x + w / 2, y: top + i * (size + 4), "text-anchor": "middle", fill: k[3],
+                                 "font-family": FONT, "font-size": size,
+                                 "font-weight": (pair[1] || (kind === "lit" && lines.length === 1)) ? 700 : 400 },
+                       pair[0]));
+    });
+    svg.appendChild(g);
+    return g;
+  }
+
+  function arrow(svg, x1, y1, x2, y2, label) {
+    svg.appendChild(el("line", { x1: x1, y1: y1, x2: x2, y2: y2, stroke: C.violet, "stroke-width": 1.5,
+                                 "marker-end": "url(#c2kArrow)" }));
+    if (label) {
+      svg.appendChild(el("text", { x: (x1 + x2) / 2, y: (y1 + y2) / 2 - 6, "text-anchor": "middle",
+                                   fill: C.muted, "font-family": FONT, "font-size": 11.5 }, label));
+    }
+  }
+
+  function curve(svg, x1, y1, x2, y2) {
+    var dx = Math.max(24, (x2 - x1) * 0.5);
+    svg.appendChild(el("path", { d: "M " + x1 + " " + y1 + " C " + (x1 + dx) + " " + y1 + ", " + (x2 - dx) + " " +
+                                 y2 + ", " + x2 + " " + y2, fill: "none", stroke: C.violet, "stroke-width": 1.5,
+                                 "marker-end": "url(#c2kArrow)" }));
+  }
+
+  /* Steps left to right, with one lit; kinds sets each step's look by name. */
+  function flow(steps, lit, opts) {
+    opts = opts || {};
+    var w = opts.width || 150, gap = 28;
+    var h = Math.max.apply(null, steps.map(function (s) { return boxHeight(s, w); }));
+    var svg = root(steps.length * w + (steps.length - 1) * gap + 28, h + 28 + (opts.title ? 22 : 0), opts.title);
+    steps.forEach(function (s, i) {
+      var x = 14 + i * (w + gap);
+      var kind = (opts.kinds && opts.kinds[i]) || (i === lit ? "lit" : "plain");
+      box(svg, x, 14, w, h, s, kind);
+      if (i) arrow(svg, x - gap, 14 + h / 2, x - 2, 14 + h / 2, opts.edges ? opts.edges[i - 1] : "");
+    });
+    return svg;
+  }
+
+  /* The same, top to bottom; edges labels the arrow into each step after the first. */
+  function vflow(steps, lit, opts) {
+    opts = opts || {};
+    var w = opts.width || 300, gap = opts.edges ? 30 : 22, y = 12, parts = [];
+    steps.forEach(function (s) { parts.push(boxHeight(s, w)); });
+    var total = parts.reduce(function (a, b) { return a + b; }, 0) + gap * (steps.length - 1) + 28;
+    var svg = root(w + 28 + (opts.edges ? 150 : 0), total + (opts.title ? 22 : 0), opts.title);
+    steps.forEach(function (s, i) {
+      if (i) {
+        arrow(svg, 14 + w / 2, y - gap, 14 + w / 2, y - 2);
+        if (opts.edges && opts.edges[i - 1]) {
+          svg.appendChild(el("text", { x: 14 + w / 2 + 10, y: y - gap / 2 + 4, fill: C.muted, "font-family": FONT,
+                                       "font-size": 12 }, opts.edges[i - 1]));
+        }
+      }
+      var kind = (opts.kinds && opts.kinds[i]) || (i === lit ? "lit" : "plain");
+      box(svg, 14, y, w, parts[i], s, kind);
+      y += parts[i] + gap;
+    });
+    return svg;
+  }
+
+  function ladder(items, lit, opts) {
+    return vflow(items.map(function (t, i) { return (i + 1) + ". " + t; }), lit, opts);
+  }
+
+  /* A decision tree, top down. node: {label, kind, branches: [[edgeLabel, child], ...]}. */
+  function tree(node, opts) {
+    opts = opts || {};
+    var levels = [];
+    (function walk(n, d) {
+      if (!levels[d]) levels[d] = [];
+      var entry = { n: n, kids: [] };
+      levels[d].push(entry);
+      (n.branches || []).forEach(function (b) { entry.kids.push([b[0], walk(b[1], d + 1)]); });
+      return entry;
+    })(node, 0);
+    var w = opts.width || 196, gx = 22, gy = 44;
+    var lh = levels.map(function (l) {
+      return Math.max.apply(null, l.map(function (e) { return boxHeight(e.n.label, w); }));
+    });
+    var width = Math.max.apply(null, levels.map(function (l) { return l.length; })) * (w + gx) + 28;
+    var height = lh.reduce(function (a, b) { return a + b; }, 0) + gy * (levels.length - 1) + 24 + (opts.title ? 22 : 0);
+    var svg = root(width, height, opts.title), y = 12;
+    levels.forEach(function (level, d) {
+      var span = level.length * (w + gx) - gx, x0 = (width - span) / 2;
+      level.forEach(function (e, i) {
+        e.x = x0 + i * (w + gx); e.y = y; e.h = lh[d];
+        box(svg, e.x, e.y, w, e.h, e.n.label, e.n.kind || "plain");
+      });
+      y += lh[d] + gy;
+    });
+    levels.forEach(function (level) {
+      level.forEach(function (e) {
+        e.kids.forEach(function (k) {
+          arrow(svg, e.x + w / 2, e.y + e.h, k[1].x + w / 2, k[1].y - 2, k[0]);
+        });
+      });
+    });
+    return svg;
+  }
+
+  /* A driver tree, left to right: a total on the left, what multiplies into it on the right.
+   * node: {label, note, kind, children: [...]}. */
+  function driverTree(node, opts) {
+    opts = opts || {};
+    var w = opts.width || 156, gx = 38, gy = 12, rows = 0, placed = [];
+    function text(n) { return n.note ? n.label + "\n" + n.note : n.label; }
+    var all = [];
+    (function walk(n) { all.push(n); (n.children || []).forEach(walk); })(node);
+    var h = Math.max.apply(null, all.map(function (n) { return boxHeight(text(n), w); }));
+    (function place(n, d) {
+      var y;
+      if (!n.children || !n.children.length) { y = rows * (h + gy); rows += 1; }
+      else {
+        var ys = n.children.map(function (k) { return place(k, d + 1); });
+        y = (ys[0] + ys[ys.length - 1]) / 2;
+      }
+      placed.push([n, d, y]);
+      return y;
+    })(node, 0);
+    var depth = Math.max.apply(null, placed.map(function (p) { return p[1]; }));
+    var svg = root((depth + 1) * w + depth * gx + 28, rows * (h + gy) - gy + 24 + (opts.title ? 24 : 0), opts.title);
+    var pos = new Map();
+    placed.forEach(function (p) { pos.set(p[0], [14 + p[1] * (w + gx), 12 + p[2]]); });
+    placed.forEach(function (p) {
+      var a = pos.get(p[0]);
+      (p[0].children || []).forEach(function (k) {
+        var b = pos.get(k);
+        curve(svg, a[0] + w, a[1] + h / 2, b[0] - 2, b[1] + h / 2);
+      });
+    });
+    placed.forEach(function (p) {
+      var a = pos.get(p[0]);
+      var g = box(svg, a[0], a[1], w, h, text(p[0]), p[0].kind || "plain");
+      if (p[0].id) g.setAttribute("data-node", p[0].id);
+    });
+    return svg;
+  }
+
+  /* Every value as a dot on one axis, with named marker lines. markers: [[label, value, kind]]. */
+  function strip(values, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || rupees, width = opts.width || 760;
+    var lo = opts.lo === undefined ? 0 : opts.lo;
+    var hi = opts.hi === undefined ? niceCeil(Math.max.apply(null, values) * 1.04) : opts.hi;
+    var left = 40, right = width - 40, axis = 150, span = (hi - lo) || 1;
+    function px(v) { return left + (right - left) * (v - lo) / span; }
+    var svg = root(width, axis + 34 + (opts.title ? 22 : 0), opts.title);
+    svg.appendChild(el("line", { x1: left, y1: axis, x2: right, y2: axis, stroke: C.muted }));
+    for (var i = 0; i < 5; i++) {
+      var v = lo + span * i / 4, x = px(v);
+      svg.appendChild(el("line", { x1: x, y1: axis, x2: x, y2: axis + 5, stroke: C.muted }));
+      svg.appendChild(el("text", { x: x, y: axis + 20, "text-anchor": "middle", fill: C.muted, "font-family": FONT,
+                                   "font-size": 12 }, fmt(v)));
+    }
+    var colour = { bad: C.rose, good: C.green, plain: C.violet };
+    var lines = opts.markers || [];
+    lines.forEach(function (m, n) {
+      var x = px(m[1]), c = colour[m[2]] || C.violet;
+      /* Two lines close together would print their labels over each other, so the lower one of a
+         close pair reads leftward from its line. */
+      var left = n > 0 && Math.abs(x - px(lines[n - 1][1])) < 150 && x <= px(lines[n - 1][1]);
+      svg.appendChild(el("line", { x1: x, y1: 34 + 16 * (n % 2), x2: x, y2: axis, stroke: c, "stroke-width": 1.6,
+                                   "stroke-dasharray": "5 4", "class": "c2k-marker" }));
+      svg.appendChild(el("text", { x: left ? x - 5 : x + 5, y: 30 + 16 * (n % 2), fill: c, "font-family": FONT,
+                                   "font-size": 12.5, "font-weight": 700, "text-anchor": left ? "end" : "start" },
+                         m[0] + " " + fmt(m[1])));
+    });
+    var bins = {};
+    values.forEach(function (v, i) {
+      var x = px(v), key = Math.round(x / 11), level = bins[key] || 0;
+      bins[key] = level + 1;
+      svg.appendChild(el("circle", { cx: x, cy: axis - 9 - level * 11, r: 5,
+                                     fill: (opts.lit || []).indexOf(i) >= 0 ? C.ink : C.violet,
+                                     "fill-opacity": 0.8, stroke: C.white, "stroke-width": 1 }));
+    });
+    return svg;
+  }
+
+  /* The next round number at or above x: 1, 2, 2.5 or 5 times a power of ten, so axis ticks read cleanly. */
+  function niceCeil(x) {
+    if (x <= 0) return 1;
+    var p = Math.pow(10, Math.floor(Math.log10(x))), steps = [1, 2, 2.5, 5, 10];
+    for (var i = 0; i < steps.length; i++) if (steps[i] * p >= x) return steps[i] * p;
+    return 10 * p;
+  }
+
+  /* The chart twins of c2kit.py's bridge, line and columns: round steps for the gridlines, a
+   * finer round top so the tallest value sits just under it, and one label style throughout. */
+  var ROUND = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8];
+  function chartCeil(x) {
+    if (x <= 0) return 1;
+    var p = Math.pow(10, Math.floor(Math.log10(x))), steps = ROUND.concat([10]);
+    for (var i = 0; i < steps.length; i++) if (steps[i] * p >= x * 0.999999) return steps[i] * p;
+    return 10 * p;
+  }
+  function tickCount(span) {
+    var tries = [5, 4, 6, 3];
+    for (var i = 0; i < tries.length; i++) {
+      var step = span / tries[i];
+      if (step <= 0) break;
+      var m = Math.round(step / Math.pow(10, Math.floor(Math.log10(step))) * 1e6) / 1e6;
+      if (ROUND.indexOf(m) >= 0) return tries[i];
+    }
+    return 4;
+  }
+  function gridlines(svg, lo, hi, fmt, left, right, py) {
+    var n = tickCount(hi - lo);
+    for (var k = 0; k <= n; k++) {
+      var v = lo + (hi - lo) * k / n, y = py(v);
+      svg.appendChild(el("line", { x1: left, y1: y, x2: right, y2: y, stroke: C.line }));
+      svg.appendChild(el("text", { x: left - 8, y: y + 4, "text-anchor": "end", fill: C.muted, "font-family": FONT,
+                                   "font-size": 11.5 }, fmt(v)));
+    }
+  }
+  function under(svg, x, y, text, per, bold) {
+    wrap(text, per || 13).slice(0, 3).forEach(function (line, i) {
+      svg.appendChild(el("text", { x: x, y: y + i * 15, "text-anchor": "middle", fill: C.ink, "font-family": FONT,
+                                   "font-size": 12, "font-weight": bold ? 700 : 400 }, line));
+    });
+  }
+  function legend(svg, items, x, y) {
+    items.forEach(function (it) {
+      if (it[2]) svg.appendChild(el("line", { x1: x, y1: y - 4, x2: x + 18, y2: y - 4, stroke: it[1], "stroke-width": 2,
+                                              "stroke-dasharray": "5 3" }));
+      else svg.appendChild(el("rect", { x: x, y: y - 10, width: 14, height: 12, rx: 3, fill: it[1] }));
+      svg.appendChild(el("text", { x: x + 22, y: y, fill: C.ink, "font-family": FONT, "font-size": 12.5 }, it[0]));
+      x += 34 + it[0].length * 7;
+    });
+  }
+
+  /* A bridge, or waterfall: start is [label, value], moves are [[label, change], ...]; each move
+   * floats from the running total, green when it adds and rose when it takes away. opts.lo raises
+   * the axis floor when the moves are small against the totals; opts.lit outlines moves by index. */
+  function bridge(start, moves, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || rupees, lit = opts.lit || [];
+    var run = start[1], levels = [0, start[1]], cols = [[start[0], start[1], null, 0, start[1]]];
+    moves.forEach(function (m, i) { cols.push([m[0], m[1], i, run, run + m[1]]); run += m[1]; levels.push(run); });
+    cols.push([opts.endLabel || "Where it lands", run, null, 0, run]);
+    var floor = opts.lo === undefined ? Math.min(0, Math.min.apply(null, levels)) : opts.lo;
+    var hi = floor + chartCeil((Math.max.apply(null, levels) - floor) * 1.06), lo = floor;
+    var colW = 92, gap = 22, left = 86, top = 30, plotH = 230;
+    var width = opts.width || left + cols.length * (colW + gap) + 6;
+    function py(v) { return top + plotH * (hi - v) / ((hi - lo) || 1); }
+    var svg = root(width, top + plotH + 20 + 45 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, lo, hi, fmt, left - 6, width - 8, py);
+    cols.forEach(function (c, k) {
+      var x = left + k * (colW + gap), y1 = py(Math.max(c[3], c[4])), y2 = py(Math.max(lo, Math.min(c[3], c[4])));
+      var isMove = c[2] !== null, fill = !isMove ? C.violet : (c[1] >= 0 ? C.green : C.rose);
+      var rect = { x: x, y: y1, width: colW, height: Math.max(2, y2 - y1), rx: 4, fill: fill, "fill-opacity": 0.88 };
+      if (isMove && lit.indexOf(c[2]) >= 0) { rect.stroke = C.ink; rect["stroke-width"] = 2.5; }
+      svg.appendChild(el("rect", rect));
+      svg.appendChild(el("text", { x: x + colW / 2, y: y1 - 7, "text-anchor": "middle", fill: C.ink, "font-family": FONT,
+                                   "font-size": 12.5, "font-weight": 700 }, (isMove && c[1] >= 0 ? "+" : "") + fmt(c[1])));
+      if (k < cols.length - 1) {
+        var level = py(c[4]);
+        svg.appendChild(el("line", { x1: x + colW, y1: level, x2: x + colW + gap, y2: level, stroke: C.muted,
+                                     "stroke-dasharray": "3 3" }));
+      }
+      under(svg, x + colW / 2, top + plotH + 20, c[0], 13, !isMove);
+    });
+    return svg;
+  }
+
+  /* Values over an ordered axis: series are [[name, values, kind], ...]; kind "plan" is a dashed
+   * reference line, "bad" and "good" colour a line by meaning. The last value prints at its end. */
+  function line(labels, series, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || function (v) { return Math.round(v).toLocaleString("en-IN"); };
+    var width = opts.width || 760, lo = opts.lo || 0, all = [];
+    series.forEach(function (s) { s[1].forEach(function (v) { if (v !== null && v !== undefined) all.push(v); }); });
+    var hi = lo + chartCeil((Math.max.apply(null, all) - lo) * 1.06);
+    var left = 86, right = width - 110, top = 44, plotH = 220, step = (right - left) / Math.max(1, labels.length - 1);
+    function py(v) { return top + plotH * (hi - v) / ((hi - lo) || 1); }
+    var svg = root(width, top + plotH + 20 + 30 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, lo, hi, fmt, left, right, py);
+    labels.forEach(function (l, i) { under(svg, left + i * step, top + plotH + 20, String(l), 10, false); });
+    var colours = { plan: C.muted, bad: C.rose, good: C.green, lit: C.ink }, keys = [];
+    series.forEach(function (s) {
+      var colour = colours[s[2]] || C.violet, dashed = s[2] === "plan", pts = [];
+      keys.push([s[0], colour, dashed]);
+      s[1].forEach(function (v, i) { if (v !== null && v !== undefined) pts.push([left + i * step, py(v), v]); });
+      var d = pts.map(function (p, j) { return (j ? "L " : "M ") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+      var path = { d: d, fill: "none", stroke: colour, "stroke-width": 2.4 };
+      if (dashed) path["stroke-dasharray"] = "6 4";
+      svg.appendChild(el("path", path));
+      if (!dashed) pts.forEach(function (p) { svg.appendChild(el("circle", { cx: p[0], cy: p[1], r: 3.6, fill: colour })); });
+      if (pts.length) {
+        var last = pts[pts.length - 1];
+        svg.appendChild(el("text", { x: last[0] + 8, y: last[1] + 4, fill: colour, "font-family": FONT, "font-size": 12.5,
+                                     "font-weight": 700 }, fmt(last[2])));
+      }
+    });
+    legend(svg, keys, left, 22);
+    return svg;
+  }
+
+  /* Vertical bars grouped by category: series are [[name, values], ...] aligned with categories,
+   * drawn light to dark in the order given, so Q1 against Q2 reads as before and after. */
+  function columns(categories, series, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || function (v) { return Math.round(v).toLocaleString("en-IN"); }, lit = opts.lit || [];
+    var shades = [C.lilac, C.violet, C.ink, C.green], all = [];
+    series.forEach(function (s) { all = all.concat(s[1]); });
+    var hi = chartCeil(Math.max.apply(null, all) * 1.1);
+    var barW = 40, inner = 6, groupGap = 34, left = 86, top = 44, plotH = 220;
+    var groupW = series.length * barW + (series.length - 1) * inner;
+    var width = opts.width || left + categories.length * (groupW + groupGap) + 10;
+    function py(v) { return top + plotH * (hi - v) / hi; }
+    var svg = root(width, top + plotH + 20 + 45 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, 0, hi, fmt, left - 6, width - 8, py);
+    categories.forEach(function (cat, c) {
+      var gx = left + c * (groupW + groupGap);
+      series.forEach(function (s, k) {
+        var v = s[1][c], x = gx + k * (barW + inner);
+        svg.appendChild(el("rect", { x: x, y: py(v), width: barW, height: Math.max(1, top + plotH - py(v)), rx: 3,
+                                     fill: shades[k % shades.length] }));
+        svg.appendChild(el("text", { x: x + barW / 2, y: py(v) - 6, "text-anchor": "middle", fill: C.ink,
+                                     "font-family": FONT, "font-size": 11, "font-weight": 700 }, fmt(v)));
+      });
+      under(svg, gx + groupW / 2, top + plotH + 20, String(cat), Math.max(10, Math.floor(groupW / 7)),
+            lit.indexOf(c) >= 0);
+    });
+    legend(svg, series.map(function (s, k) { return [s[0], shades[k % shades.length], false]; }), left, 22);
+    return svg;
+  }
+
+  /* Messages across named lanes, drawn from the run that happened. messages: [[from, to, text]]. */
+  function sequence(lanes, messages, opts) {
+    opts = opts || {};
+    var lw = opts.laneWidth || 180, top = 46, step = 44;
+    var width = lanes.length * lw + 28, height = top + Math.max(1, messages.length) * step + 34 + (opts.title ? 16 : 0);
+    var svg = root(width, height, opts.title);
+    lanes.forEach(function (lane, i) {
+      var x = 14 + i * lw;
+      box(svg, x + 10, 10, lw - 20, 30, lane, "lit", 12);
+      svg.appendChild(el("line", { x1: x + lw / 2, y1: 42, x2: x + lw / 2, y2: height - 28, stroke: C.line }));
+    });
+    messages.forEach(function (m, n) {
+      var y = top + n * step + 20;
+      var x1 = 14 + lanes.indexOf(m[0]) * lw + lw / 2, x2 = 14 + lanes.indexOf(m[1]) * lw + lw / 2;
+      if (x1 === x2) {
+        svg.appendChild(el("text", { x: x1 + 8, y: y + 4, fill: C.night, "font-family": FONT, "font-size": 12 }, m[2]));
+      } else {
+        arrow(svg, x1, y, x2 + (x2 > x1 ? -4 : 4), y, m[2]);
+      }
+    });
+    return svg;
+  }
+
+  function sideBySide() {
+    var div = document.createElement("div");
+    div.className = "c2k-row";
+    Array.prototype.forEach.call(arguments, function (svg) { div.appendChild(svg); });
+    return div;
+  }
+
+  /* Rs with Indian digit grouping, the way every Kalpa number is read aloud. */
+  function rupees(n) {
+    var sign = n < 0 ? "-" : "", s = String(Math.round(Math.abs(n)));
+    if (s.length <= 3) return sign + "Rs " + s;
+    var head = s.slice(0, -3), tail = s.slice(-3), parts = [];
+    while (head.length > 2) { parts.unshift(head.slice(-2)); head = head.slice(0, -2); }
+    if (head) parts.unshift(head);
+    return sign + "Rs " + parts.join(",") + "," + tail;
+  }
+
+  /* Put a diagram into a holder, replacing whatever was drawn there before. */
+  function draw(holder, svg) {
+    var target = typeof holder === "string" ? document.getElementById(holder) : holder;
+    target.textContent = "";
+    target.appendChild(svg);
+    return svg;
+  }
+
+  window.C2K = { colours: C, flow: flow, vflow: vflow, ladder: ladder, tree: tree, driverTree: driverTree,
+                 strip: strip, bridge: bridge, line: line, columns: columns, sequence: sequence,
+                 sideBySide: sideBySide, rupees: rupees, draw: draw };
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var K = window.C2K, R = K.rupees;
+  function $(id) { return document.getElementById(id); }
+  function pct(x, d) { return (Math.round(x * Math.pow(10, d || 1)) / Math.pow(10, d || 1)).toFixed(d || 1); }
+  function sign(v) { return (v >= 0 ? "+" : "") + v + "%"; }
+
+  /* ---------------------------------------------------------------- the day's totals */
+  var BOOKED = 544810;
+  var DEFS = {
+    booked: { name: "booked", orders: 30, rev: 544810, cust: 23, back: 7, once: 16, median: 2205 },
+    nc: { name: "not cancelled", orders: 26, rev: 535760, cust: 21, back: 5, once: 16, median: null },
+    del: { name: "delivered", orders: 21, rev: 520790, cust: 19, back: 2, once: 17, median: 2060 }
+  };
+  var CONSUMER = {
+    channels: ["app", "web", "store"],
+    bookedRs: [18600, 27290, 18920], deliveredRs: [18600, 12320, 9870],
+    bookedN: [10, 10, 9], deliveredN: [10, 5, 5]
+  };
+  var state = { def: "booked", count: "id", typ: "median" };
+
+  /* ---------------------------------------------------------------- the rail */
+  var rail = document.querySelectorAll(".rail a");
+  Array.prototype.forEach.call(rail, function (a) {
+    a.addEventListener("click", function () {
+      Array.prototype.forEach.call(rail, function (b) { b.classList.toggle("on", b === a); });
+      $("jumped").textContent = "You jumped to " + a.textContent.replace(/^\d+/, "").trim() + ".";
+    });
+  });
+  if ("IntersectionObserver" in window) {
+    var seen = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        Array.prototype.forEach.call(rail, function (b) { b.classList.toggle("on", b.dataset.part === e.target.id); });
+      });
+    }, { rootMargin: "-20% 0px -70% 0px" });
+    Array.prototype.forEach.call(document.querySelectorAll("section.part"), function (s) { seen.observe(s); });
+  }
+
+  /* ---------------------------------------------------------------- the popup */
+  function openPop(title, svg, note) {
+    $("seqTitle").textContent = title;
+    K.draw("seqBody", svg);
+    $("seqNote").textContent = note;
+    var d = $("seqDialog");
+    if (typeof d.showModal === "function") d.showModal(); else d.setAttribute("open", "");
+  }
+  function openSeq(title, lanes, messages, note) {
+    openPop(title, K.sequence(lanes, messages, { laneWidth: 200 }), note);
+  }
+  $("seqClose").addEventListener("click", function () { $("seqDialog").close(); });
+
+  /* ---------------------------------------------------------------- the tree */
+  function treeData(lit, notes, kinds) {
+    notes = notes || {}; kinds = kinds || {};
+    function node(id, label, note, children) {
+      var n = { id: id, label: label, note: notes[id] || note, kind: id === lit ? "lit" : (kinds[id] || "plain") };
+      if (children) n.children = children;
+      return n;
+    }
+    return node("rev", "revenue", "sales, by a named definition", [
+      node("cust", "customers", "distinct ids who bought"),
+      node("freq", "orders per customer", "orders over customers"),
+      node("aov", "average order value", "revenue over orders", [
+        node("items", "items per order", "how full the basket was"),
+        node("price", "price per item", "less discounts")])]);
+  }
+
+  /* ---------------------------------------------------------------- the walk */
+  var RUNGS = ["Which total is sales, and which branches make it?", "Each branch as a metric with its denominator",
+               "Count the leaves: customers and orders per customer", "Which typical order is honest?",
+               "Which branch does Meera open first?"];
+  var WALK = [
+    { t: "The ask", r: 0, x: "Revenue grew 4 percent against a plan of 15, and marketing wants Rs 12 crore for new customers. Meera wants to know what sales is made of and whether acquisition is even the branch that is short, and Anand wants no averages that one business customer can move.",
+      d: function () { return K.driverTree(treeData("rev"), { title: "Revenue is a tree; Meera asks which branch is short" }); } },
+    { t: "The thinking, before any tool", r: 0, x: "Revenue is customers times orders per customer times average order value, and each branch costs something different to move. Marketing's Rs 12 crore is a bet on the first branch, customers, so the question is whether that branch is the one that is short.",
+      d: function () { return K.driverTree(treeData("cust", { cust: "the Rs 12 crore bet" }), { title: "Marketing's budget sits on one branch" }); } },
+    { t: "Round 1: which total is sales?", r: 2, x: "All 30 orders add to Rs 5,44,810, and 4 of them were cancelled and 5 returned. Not cancelled is Rs 5,35,760 on 26 orders and delivered is Rs 5,20,790 on 21, so the definition travels beside the number.",
+      d: function () { return K.bridge(["booked", 544810], [["cancelled", -9050], ["returned", -14970]], { lo: 500000, endLabel: "delivered", title: "Booked to delivered, 1 July to 26 September" }); } },
+    { t: "Round 2: count the leaves", r: 3, x: "Counting rows gives 30 customers and 1.00 orders each, which reads as nobody comes back. Counting distinct ids gives 23 customers and 1.30 orders each, with 7 who came back, so frequency is a live branch.",
+      d: function () { return K.columns(["counted by rows", "counted by id"], [["customers", [30, 23]], ["came back", [0, 7]]], { title: "The same 30 orders, counted two ways" }); } },
+    { t: "Round 3: which typical is honest?", r: 4, x: "The mean order is Rs 18,160 and the median Rs 2,205, and only 1 of the 30 orders sits above the mean. One order at the top of the sort drags the mean, and notebook 3's empty cell is where you find it.",
+      d: function () { return K.columns(["booked", "delivered"], [["mean", [18160, Math.round(520790 / 21)]], ["median", [2205, 2060]]], { fmt: R, title: "Mean against median, per definition of sales" }); } },
+    { t: "The escalated case: which branch first?", r: 5, x: "Two 10 percent lifts on customers and frequency make 21 percent through the tree, Rs 6,59,220, where adding says Rs 6,53,772. Sixteen of the 23 customers bought once in the quarter, so frequency is the cheaper branch to open first.",
+      d: function () { return K.bridge(["today", 544810], [["customers +10%", 54481], ["frequency +10%", 54481], ["lift on the lift", 5448]], { lo: 500000, endLabel: "through the tree", title: "Two 10 percent lifts, multiplied" }); } },
+    { t: "The second case: does a channel change it?", r: 5, x: "On consumer orders web leads booked with Rs 27,290, and half its orders came back. App delivered all 10 of its orders, Rs 18,600, and store delivered Rs 9,870 after 4 cancellations. Frequency first stands, and the note names two leaks.",
+      d: function () { return K.columns(CONSUMER.channels, [["booked", CONSUMER.bookedRs], ["delivered", CONSUMER.deliveredRs]], { fmt: R, title: "Consumer orders by channel, booked against delivered" }); } },
+    { t: "The sentence to Meera", r: 5, x: "On the 30 orders from 1 July to 26 September, 23 customers placed 1.30 orders each at a typical order of Rs 2,205, and 16 of them bought only once, so open frequency before acquisition. One window cannot show which branch moved, so the Rs 12 crore waits for Tuesday's two quarters.",
+      d: function () { return K.driverTree(treeData("freq", { freq: "open first", cust: "hold until Tuesday" }, { cust: "unknown" }), { title: "Frequency first; acquisition waits for two windows" }); } }
+  ];
+  var walkAt = 0;
+  function showWalk(extra) {
+    var w = WALK[walkAt];
+    K.draw("walkDraw", w.d());
+    $("walkStep").textContent = "Step " + walkAt + " of " + (WALK.length - 1) + (extra || "");
+    $("walkTitle").textContent = w.t;
+    $("walkText").textContent = w.x;
+    $("walkFill").style.width = (100 * w.r / 5) + "%";
+    $("walkRungs").textContent = w.r + " of 5 rungs climbed";
+    $("walkNext").textContent = walkAt === WALK.length - 1 ? "Back to the start" : "Next";
+  }
+  $("walkNext").addEventListener("click", function () { walkAt = (walkAt + 1) % WALK.length; showWalk(); });
+  $("walkRestart").addEventListener("click", function () { walkAt = 0; showWalk(", restarted"); });
+  $("walkMeter").addEventListener("click", function () {
+    var r = WALK[walkAt].r;
+    openPop("What the meter counts", K.ladder(RUNGS, r ? r - 1 : -1, { width: 420 }),
+      "The meter counts the day's five rungs, each a harder business question on the same 30 orders. At this step " + r +
+      " of 5 are climbed, and the lit rung is the latest one.");
+  });
+  showWalk();
+
+  /* ---------------------------------------------------------------- the simulator */
+  function leaves() {
+    var d = DEFS[state.def];
+    var cust = state.count === "rows" ? d.orders : d.cust;
+    var back = state.count === "rows" ? 0 : d.back;
+    var mean = d.rev / d.orders;
+    return { d: d, cust: cust, back: back, once: cust - back, opc: d.orders / cust, mean: mean,
+             typ: state.typ === "mean" ? mean : d.median };
+  }
+  function decision(L) {
+    var d = L.d;
+    if (state.count === "rows") return ["bad", "On this count all " + L.cust + " customers bought once, so acquisition looks like the only branch left and the Rs 12 crore looks justified. That reading rests on rows counted as customers, which is round 2's trap; count distinct ids before anyone signs."];
+    if (state.typ === "mean") return ["bad", "Frequency is live, with " + L.back + " of " + L.cust + " customers back, and the decision still leans that way. The acquisition payback on this setting values a first order at the mean, " + R(L.mean) + ", which one order drags; switch to the median before the Rs 12 crore case is priced."];
+    if (L.typ === null) return ["", "Frequency is live, with " + L.back + " of " + L.cust + " customers back. The median on the not-cancelled definition is left for you: sort the 26 amounts in notebook 3's level 4 and read the middle two, then come back and choose booked or delivered to see the full sentence."];
+    return ["good", "On the " + d.orders + " orders, " + d.name + ", " + L.cust + " customers placed " + L.opc.toFixed(2) + " orders each at a typical order of " + R(L.typ) + ", and " + L.once + " of them bought only once, so open frequency before acquisition. One window cannot show which branch moved, so hold the Rs 12 crore until Tuesday's two quarters."];
+  }
+  function sim() {
+    var L = leaves(), d = L.d;
+    $("sSales").textContent = R(d.rev);
+    $("sSalesD").textContent = d.name + ", on " + d.orders + " orders";
+    $("sCust").textContent = String(L.cust);
+    $("sCustD").textContent = state.count === "rows" ? "one per row, which is one per order" : L.back + " came back, " + L.once + " bought once";
+    $("sOpc").textContent = L.opc.toFixed(2);
+    $("sOpcD").textContent = d.orders + " orders over " + L.cust + " customers";
+    $("sTyp").textContent = L.typ === null ? "yours to find" : R(L.typ);
+    $("sTypD").textContent = state.typ === "mean" ? "the mean, which one order can drag" :
+      (L.typ === null ? "sort the 26 amounts in notebook 3" : "the median, the middle order");
+    $("sIdentity").textContent = L.cust + " customers × " + L.opc.toFixed(4) + " orders each × " + R(L.mean) +
+      " per order = " + R(L.cust * L.opc * L.mean);
+    var moves = [];
+    if (state.def !== "booked") moves.push(["cancelled", -9050]);
+    if (state.def === "del") moves.push(["returned", -14970]);
+    K.draw("simBridge", K.bridge(["booked", BOOKED], moves, { lo: 500000, endLabel: d.name,
+      title: "From booked to " + d.name + ", 1 July to 26 September" }));
+    K.draw("simLeaves", K.columns(["customers", "came back", "bought once"], [[state.count === "rows" ? "by rows" : "by id", [L.cust, L.back, L.once]]],
+      { title: "The customer leaves, " + d.name + ", counted " + (state.count === "rows" ? "by rows" : "by id") }));
+    var keys = ["booked", "del"];
+    K.draw("simTypical", K.columns(["booked", "delivered"], [["mean", keys.map(function (k) { return DEFS[k].rev / DEFS[k].orders; })],
+      ["median", keys.map(function (k) { return DEFS[k].median; })]],
+      { fmt: R, lit: [keys.indexOf(state.def)], width: 520,
+        title: state.def === "nc" ? "Mean against median; the not-cancelled median is yours to compute in notebook 3"
+                                  : "Mean against median; the bold label is the definition you chose" }));
+    var v = decision(L);
+    $("simDecision").className = "strip" + (v[0] ? " " + v[0] : "");
+    $("simDecisionText").textContent = v[1];
+    lifts();
+  }
+  var SAID = {
+    defBooked: ["def", "booked", "Sales is now every booked order, cancellations and returns included, so the definition has to be named beside Rs 5,44,810."],
+    defNc: ["def", "nc", "Sales is now booked less the 4 cancelled orders: Rs 9,050 and 4 orders come out, all from store."],
+    defDel: ["def", "del", "Sales is now delivered only: the 5 returned web orders leave too, and 19 customers remain."],
+    cntId: ["count", "id", "Customers are now counted by distinct id, so each person appears once however many orders they placed."],
+    cntRows: ["count", "rows", "Customers are now counted by rows, so every order looks like a new person and nobody seems to come back."],
+    typMedian: ["typ", "median", "The typical order is now the median, the middle of the sorted orders."],
+    typMean: ["typ", "mean", "The typical order is now the mean, the total spread evenly over every order."]
+  };
+  Object.keys(SAID).forEach(function (id) {
+    $(id).addEventListener("click", function () {
+      var s = SAID[id];
+      state[s[0]] = s[1];
+      Object.keys(SAID).forEach(function (other) {
+        if (SAID[other][0] === s[0]) $(other).setAttribute("aria-pressed", String(other === id));
+      });
+      $("simSaid").textContent = s[2];
+      sim();
+    });
+  });
+
+  /* ---------------------------------------------------------------- the lifts */
+  function lifts() {
+    var c = Number($("lC").value), f = Number($("lF").value), a = Number($("lA").value);
+    $("lCv").textContent = sign(c); $("lFv").textContent = sign(f); $("lAv").textContent = sign(a);
+    var d = DEFS[state.def], base = d.rev;
+    var added = base * (1 + (c + f + a) / 100), mult = base * (1 + c / 100) * (1 + f / 100) * (1 + a / 100);
+    var growth = 100 * (mult / base - 1);
+    $("lAdd").textContent = R(added);
+    $("lAddD").textContent = sign(c + f + a) + ", the lifts added";
+    $("lMul").textContent = R(mult);
+    $("lMulD").textContent = (growth >= 0 ? "+" : "") + pct(growth) + "%, the lifts multiplied";
+    $("lFormula").textContent = R(base) + " × " + (1 + c / 100).toFixed(2) + " × " + (1 + f / 100).toFixed(2) + " × " +
+      (1 + a / 100).toFixed(2) + " = " + R(mult);
+    var gap = mult - added, verdict;
+    if (!c && !f && !a) verdict = "No branch has moved, so revenue stays at " + R(base) + ", " + d.name + ", and the 15 percent plan is still 15 percent away.";
+    else verdict = "Through the tree revenue moves " + (growth >= 0 ? "up " : "down ") + pct(Math.abs(growth)) + " percent to " + R(mult) +
+      ", which " + (growth >= 15 ? "reaches" : "misses") + " the 15 percent plan; adding the lifts would have said " + R(added) +
+      ", " + R(Math.abs(gap)) + (gap >= 0 ? " too low." : " too high.");
+    $("lVerdict").textContent = verdict;
+    var moves = [["customers " + sign(c), base * c / 100], ["frequency " + sign(f), base * f / 100],
+                 ["order value " + sign(a), base * a / 100], ["lift on the lift", gap]];
+    K.draw("lBridge", K.bridge(["today, " + d.name, base], moves, { lo: Math.min(400000, Math.floor(Math.min(base, mult, added) * 0.8 / 100000) * 100000),
+      endLabel: "through the tree", title: "Each branch's lift added, then the part only multiplying finds" }));
+  }
+  ["lC", "lF", "lA"].forEach(function (id) { $(id).addEventListener("input", lifts); });
+  $("lTen").addEventListener("click", function () { $("lC").value = 10; $("lF").value = 10; $("lA").value = 0; lifts(); });
+  $("lReset").addEventListener("click", function () { $("lC").value = 0; $("lF").value = 0; $("lA").value = 0; lifts(); });
+
+  /* ---------------------------------------------------------------- the channels */
+  var chMeasure = "rs", chLit = -1;
+  var CH_SAY = [
+    "App booked Rs 18,600 on 10 consumer orders and delivered all 10, so it is the one clean channel: nothing cancelled and nothing came back.",
+    "Web booked the most on consumer orders, Rs 27,290, and delivered Rs 12,320, because 5 of its 10 orders came back, Rs 14,970. Returns are the leak to name.",
+    "Store booked Rs 18,920 on 9 consumer orders and delivered Rs 9,870 on 5, because 4 were cancelled, Rs 9,050. Cancellations are the leak to name, and they say nothing yet about which branch is short."
+  ];
+  function channels() {
+    var rs = chMeasure === "rs";
+    K.draw("chDraw", K.columns(CONSUMER.channels,
+      [["booked", rs ? CONSUMER.bookedRs : CONSUMER.bookedN], ["delivered", rs ? CONSUMER.deliveredRs : CONSUMER.deliveredN]],
+      { fmt: rs ? R : undefined, lit: chLit >= 0 ? [chLit] : [], width: 460,
+        title: rs ? "Consumer orders, rupees booked and delivered" : "Consumer orders, orders booked and delivered" }));
+  }
+  function chSet(which, value, say) {
+    if (which === "m") {
+      chMeasure = value;
+      $("chRs").setAttribute("aria-pressed", String(value === "rs"));
+      $("chN").setAttribute("aria-pressed", String(value === "n"));
+    } else {
+      chLit = value;
+      ["chApp", "chWeb", "chStore"].forEach(function (id, i) { $(id).setAttribute("aria-pressed", String(i === value)); });
+    }
+    $("chSaid").textContent = say;
+    channels();
+  }
+  $("chRs").addEventListener("click", function () { chSet("m", "rs", "The bars show rupees: Rs 64,810 booked on consumer orders and Rs 40,790 delivered."); });
+  $("chN").addEventListener("click", function () { chSet("m", "n", "The bars show orders: 29 consumer orders booked and 20 delivered, so 9 never stayed with the customer."); });
+  $("chApp").addEventListener("click", function () { chSet("c", 0, CH_SAY[0]); });
+  $("chWeb").addEventListener("click", function () { chSet("c", 1, CH_SAY[1]); });
+  $("chStore").addEventListener("click", function () { chSet("c", 2, CH_SAY[2]); });
+  channels();
+
+  /* ---------------------------------------------------------------- the experiments */
+  function reveal(key, text) {
+    $(key + "What").textContent = text;
+    $(key + "Result").hidden = false;
+    $(key + "Wait").hidden = true;
+  }
+  function toggle(btn, on, onText, offText) {
+    btn.setAttribute("aria-pressed", String(on));
+    btn.textContent = on ? offText : onText;
+  }
+
+  var aOn = false;
+  $("expARun").addEventListener("click", function () {
+    aOn = !aOn;
+    toggle(this, aOn, "Take the cancelled orders out", "Put the cancelled orders back");
+    K.draw("expADraw", aOn
+      ? K.bridge(["booked", 544810], [["cancelled", -9050]], { lo: 500000, endLabel: "not cancelled", title: "Sales without the cancelled orders" })
+      : K.bridge(["booked", 544810], [], { lo: 500000, endLabel: "reported as sales", title: "Every booked order reported as sales" }));
+    reveal("expA", aOn
+      ? "Sales fell by Rs 9,050 to Rs 5,35,760, and the order count fell from 30 to 26. All four cancelled orders were store orders, so store now counts 6 orders where it counted 10."
+      : "With the cancelled orders back in, sales reads Rs 5,44,810 on 30 orders, and four of those orders never became a sale.");
+  });
+  $("expASeq").addEventListener("click", function () {
+    openSeq("Experiment A, as a sequence", ["the orders", "the status count", "the total"], [
+      ["the orders", "the total", "sum all 30: Rs 5,44,810"], ["the orders", "the status count", "count by status first"],
+      ["the status count", "the status count", "21 delivered, 5 returned, 4 cancelled"],
+      ["the status count", "the total", "leave the 4 cancelled out"], ["the total", "the total", "Rs 5,35,760 on 26 orders"]],
+      "Counting by status before summing is the check that shows what the first total carried.");
+  });
+
+  var bOn = false;
+  $("expBRun").addEventListener("click", function () {
+    bOn = !bOn;
+    toggle(this, bOn, "Count distinct ids", "Count rows again");
+    K.draw("expBDraw", K.columns(["customers", "came back"], bOn ? [["by rows", [30, 0]], ["by id", [23, 7]]] : [["by rows", [30, 0]]],
+      { width: 420, title: bOn ? "Rows against distinct ids" : "Customers counted by rows" }));
+    reveal("expB", bOn
+      ? "Distinct ids give 23 customers against 30 rows, so orders per customer is 30 / 23 = 1.30, and 7 customers bought twice: 30 percent of customers came back."
+      : "Counted by rows, customers equal orders, 30, and orders per customer is exactly 1.00, which no real retailer's file shows.");
+  });
+  $("expBSeq").addEventListener("click", function () {
+    openSeq("Experiment B, as a sequence", ["the rows", "the set of ids", "the tree"], [
+      ["the rows", "the tree", "len(rows): 30 customers?"], ["the tree", "the tree", "30 / 30 = 1.00"],
+      ["the rows", "the set of ids", "len(set(ids))"], ["the set of ids", "the set of ids", "23 distinct customers"],
+      ["the set of ids", "the tree", "30 / 23 = 1.30"], ["the tree", "the tree", "7 came back: frequency is live"]],
+      "A set keeps each id once, which is why its length counts people where the list's length counts orders.");
+  });
+
+  var ORDINARY = [1900, 2100, 2300, 2400, 2600], LARGE = [1900, 2100, 2300, 2400, 2600, 90000];
+  function mean(a) { return a.reduce(function (s, x) { return s + x; }, 0) / a.length; }
+  function median(a) {
+    var s = a.slice().sort(function (x, y) { return x - y; }), n = s.length;
+    return n % 2 ? s[(n - 1) / 2] : (s[n / 2 - 1] + s[n / 2]) / 2;
+  }
+  var cOn = false;
+  $("expCRun").addEventListener("click", function () {
+    cOn = !cOn;
+    toggle(this, cOn, "Add the invented large order", "Take the invented large order out");
+    var list = cOn ? LARGE : ORDINARY;
+    K.draw("expCDraw", K.strip(list, { lo: 0, hi: 100000, width: 560, lit: cOn ? [5] : [],
+      markers: [["median", median(list), "good"], ["mean", mean(list), "bad"]],
+      title: cOn ? "Invented orders, with the invented Rs 90,000 order" : "Five invented ordinary orders" }));
+    reveal("expC", cOn
+      ? "The mean moved from Rs 2,260 to Rs 16,883, more than seven times, while the median moved Rs 50, from Rs 2,300 to Rs 2,350. One order was added, and now 1 of 6 orders sits above the mean."
+      : "Without the large order the mean is Rs 2,260 and the median Rs 2,300: the two agree when nothing sits far out.");
+  });
+  $("expCSeq").addEventListener("click", function () {
+    openSeq("Experiment C, as a sequence", ["the invented list", "the mean", "the median"], [
+      ["the invented list", "the mean", "total 11,300 over 5"], ["the mean", "the mean", "Rs 2,260"],
+      ["the invented list", "the median", "sorted, the third of five"], ["the median", "the median", "Rs 2,300"],
+      ["the invented list", "the mean", "total 1,01,300 over 6"], ["the mean", "the mean", "Rs 16,883"],
+      ["the invented list", "the median", "sorted, the third and fourth of six"], ["the median", "the median", "Rs 2,350, moved Rs 50"]],
+      "The mean reads every value's size; the median only asks which value stands in the middle.");
+  });
+
+  var dOn = false;
+  $("expDRun").addEventListener("click", function () {
+    dOn = !dOn;
+    toggle(this, dOn, "Multiply the lifts", "Add the lifts instead");
+    K.draw("expDDraw", K.bridge(["today", 544810], dOn
+      ? [["customers +10%", 54481], ["frequency +10%", 54481], ["lift on the lift", 5448]]
+      : [["customers +10%", 54481], ["frequency +10%", 54481]],
+      { lo: 500000, endLabel: dOn ? "multiplied" : "added", title: dOn ? "The lifts through the tree" : "The lifts added, as the slide did" }));
+    reveal("expD", dOn
+      ? "Multiplied, 1.10 × 1.10 = 1.21, so revenue reaches Rs 6,59,220, 21 percent up and Rs 5,448 above the slide's Rs 6,53,772. The extra is the frequency lift applied to the new customers."
+      : "Added, the lifts give 20 percent and Rs 6,53,772, which leaves out the new customers' own extra orders.");
+  });
+  $("expDSeq").addEventListener("click", function () {
+    openSeq("Experiment D, as a sequence", ["customers", "orders per customer", "revenue"], [
+      ["customers", "revenue", "times 1.10"], ["revenue", "revenue", "Rs 5,99,291"],
+      ["orders per customer", "revenue", "times 1.10 again"], ["revenue", "revenue", "Rs 6,59,220, 21 percent"]],
+      "The second lift multiplies the result of the first, which is where the extra percent comes from.");
+  });
+
+  var eOn = false;
+  $("expERun").addEventListener("click", function () {
+    eOn = !eOn;
+    toggle(this, eOn, "Run the discount", "Take the discount off");
+    var price = -544810 * 0.15, qty = 544810 * 0.85 * 0.10, end = 544810 * 0.935;
+    K.draw("expEDraw", eOn
+      ? K.bridge(["today", 544810], [["price -15%", price], ["quantity +10%", qty]], { lo: 400000, endLabel: "after the discount", title: "15 percent off, 10 percent more quantity" })
+      : K.bridge(["today", 544810], [], { lo: 400000, endLabel: "no discount", title: "Revenue before the discount" }));
+    reveal("expE", eOn
+      ? "Revenue ends at 0.85 × 1.10 = 0.935 of today, " + R(end) + ", a fall of 6.5 percent or " + R(544810 - end) + ", with more orders shipped."
+      : "Without the discount revenue stays at Rs 5,44,810, and the question is whether any lift in quantity would pay for 15 percent off.");
+  });
+  $("expESeq").addEventListener("click", function () {
+    openSeq("Experiment E, as a sequence", ["price", "quantity", "revenue"], [
+      ["price", "revenue", "times 0.85"], ["quantity", "revenue", "times 1.10"],
+      ["revenue", "revenue", "0.935 of today: down 6.5 percent"],
+      ["quantity", "revenue", "standing still needs about 17.6 percent"]],
+      "The discount and the quantity lift multiply, so the lift has to beat the price cut rather than match it.");
+  });
+
+  var fOn = false;
+  var SHARE_ALL = [3.414, 5.009, 91.577];   // share of booked revenue, all 30 orders
+  var SHARE_CON = CONSUMER.bookedRs.map(function (v) { return 100 * v / 64810; });
+  $("expFRun").addEventListener("click", function () {
+    fOn = !fOn;
+    toggle(this, fOn, "Look at consumer orders only", "Look at all orders again");
+    var fmt = function (v) { return pct(v) + "%"; };
+    K.draw("expFDraw", K.columns(CONSUMER.channels, fOn ? [["all orders", SHARE_ALL], ["consumer orders", SHARE_CON]] : [["all orders", SHARE_ALL]],
+      { fmt: fmt, lit: [2], width: 460, title: fOn ? "Share of booked revenue, all orders against consumer orders" : "Share of booked revenue, all orders" }));
+    reveal("expF", fOn
+      ? "On consumer orders store's share falls from 91.6 to 29.2 percent, Rs 18,920 of Rs 64,810, and web leads with 42.1 percent, Rs 27,290. Store's headline share rested on one order."
+      : "On all orders store carries 91.6 percent of booked revenue, and app and web look like rounding errors beside it.");
+  });
+  $("expFSeq").addEventListener("click", function () {
+    openSeq("Experiment F, as a sequence", ["all orders", "consumer orders", "the plan"], [
+      ["all orders", "the plan", "store 91.6 percent: store-led?"], ["all orders", "consumer orders", "count the orders behind each share"],
+      ["consumer orders", "consumer orders", "store Rs 18,920 of Rs 64,810"], ["consumer orders", "consumer orders", "split each channel by status"],
+      ["consumer orders", "the plan", "web returns and store cancellations"], ["the plan", "the plan", "frequency first stands"]],
+      "The share was a fact about one order; the channel view adds two leaks to name and leaves the branch decision where it was.");
+  });
+
+  /* ---------------------------------------------------------------- the decision */
+  var DEC = {
+    decAcq: ["acq", "bad", "Signing now bets Rs 12 crore on a branch nobody has shown to be short. The 30 rows looked like 30 one-time customers, but 23 distinct customers placed 1.30 orders each and 7 came back, and a first order is worth about Rs 2,205, the median, rather than the mean's Rs 18,160. Hold it until Tuesday's two quarters show which branch moved."],
+    decFreq: ["freq", "good", "This is the one I would send. Sixteen of the 23 customers bought once in the quarter, so frequency is the cheaper branch to test, and the note says plainly that one window shows the shape of revenue while only two windows show which branch moved."],
+    decStore: ["store", "bad", "Store's 91.6 percent of booked revenue rests on one order. On consumer orders store has Rs 18,920 of Rs 64,810 and lost 4 of its 9 orders to cancellation. Name the two leaks, web returns and store cancellations, and keep the branch decision on frequency."]
+  };
+  function drawDec(pick) {
+    function k(which, good) { return pick === which ? (good ? "good" : "bad") : "plain"; }
+    K.draw("decTree", K.tree({ label: "Which branch does Meera open first?", kind: pick ? "plain" : "lit", branches: [
+      ["customers", { label: "Acquisition now\nsign the Rs 12 crore", kind: k("acq", false) }],
+      ["frequency", { label: "Frequency first\n16 of 23 bought once", kind: k("freq", true) }],
+      ["channel", { label: "Store-led plan\n91.6 percent of booked", kind: k("store", false) }]] },
+      { width: 220, title: "Three answers on Meera's desk" }));
+  }
+  Object.keys(DEC).forEach(function (id) {
+    $(id).addEventListener("click", function () {
+      Object.keys(DEC).forEach(function (other) { $(other).setAttribute("aria-pressed", String(other === id)); });
+      drawDec(DEC[id][0]);
+      $("decWhy").className = "strip " + DEC[id][1];
+      $("decWhyText").textContent = DEC[id][2];
+    });
+  });
+  drawDec(null);
+
+  sim();
+})();
+</script>
+</body>
+</html>
