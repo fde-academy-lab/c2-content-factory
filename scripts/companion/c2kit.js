@@ -271,6 +271,147 @@
     return 10 * p;
   }
 
+  /* The chart twins of c2kit.py's bridge, line and columns: round steps for the gridlines, a
+   * finer round top so the tallest value sits just under it, and one label style throughout. */
+  var ROUND = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8];
+  function chartCeil(x) {
+    if (x <= 0) return 1;
+    var p = Math.pow(10, Math.floor(Math.log10(x))), steps = ROUND.concat([10]);
+    for (var i = 0; i < steps.length; i++) if (steps[i] * p >= x * 0.999999) return steps[i] * p;
+    return 10 * p;
+  }
+  function tickCount(span) {
+    var tries = [5, 4, 6, 3];
+    for (var i = 0; i < tries.length; i++) {
+      var step = span / tries[i];
+      if (step <= 0) break;
+      var m = Math.round(step / Math.pow(10, Math.floor(Math.log10(step))) * 1e6) / 1e6;
+      if (ROUND.indexOf(m) >= 0) return tries[i];
+    }
+    return 4;
+  }
+  function gridlines(svg, lo, hi, fmt, left, right, py) {
+    var n = tickCount(hi - lo);
+    for (var k = 0; k <= n; k++) {
+      var v = lo + (hi - lo) * k / n, y = py(v);
+      svg.appendChild(el("line", { x1: left, y1: y, x2: right, y2: y, stroke: C.line }));
+      svg.appendChild(el("text", { x: left - 8, y: y + 4, "text-anchor": "end", fill: C.muted, "font-family": FONT,
+                                   "font-size": 11.5 }, fmt(v)));
+    }
+  }
+  function under(svg, x, y, text, per, bold) {
+    wrap(text, per || 13).slice(0, 3).forEach(function (line, i) {
+      svg.appendChild(el("text", { x: x, y: y + i * 15, "text-anchor": "middle", fill: C.ink, "font-family": FONT,
+                                   "font-size": 12, "font-weight": bold ? 700 : 400 }, line));
+    });
+  }
+  function legend(svg, items, x, y) {
+    items.forEach(function (it) {
+      if (it[2]) svg.appendChild(el("line", { x1: x, y1: y - 4, x2: x + 18, y2: y - 4, stroke: it[1], "stroke-width": 2,
+                                              "stroke-dasharray": "5 3" }));
+      else svg.appendChild(el("rect", { x: x, y: y - 10, width: 14, height: 12, rx: 3, fill: it[1] }));
+      svg.appendChild(el("text", { x: x + 22, y: y, fill: C.ink, "font-family": FONT, "font-size": 12.5 }, it[0]));
+      x += 34 + it[0].length * 7;
+    });
+  }
+
+  /* A bridge, or waterfall: start is [label, value], moves are [[label, change], ...]; each move
+   * floats from the running total, green when it adds and rose when it takes away. opts.lo raises
+   * the axis floor when the moves are small against the totals; opts.lit outlines moves by index. */
+  function bridge(start, moves, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || rupees, lit = opts.lit || [];
+    var run = start[1], levels = [0, start[1]], cols = [[start[0], start[1], null, 0, start[1]]];
+    moves.forEach(function (m, i) { cols.push([m[0], m[1], i, run, run + m[1]]); run += m[1]; levels.push(run); });
+    cols.push([opts.endLabel || "Where it lands", run, null, 0, run]);
+    var floor = opts.lo === undefined ? Math.min(0, Math.min.apply(null, levels)) : opts.lo;
+    var hi = floor + chartCeil((Math.max.apply(null, levels) - floor) * 1.06), lo = floor;
+    var colW = 92, gap = 22, left = 86, top = 30, plotH = 230;
+    var width = opts.width || left + cols.length * (colW + gap) + 6;
+    function py(v) { return top + plotH * (hi - v) / ((hi - lo) || 1); }
+    var svg = root(width, top + plotH + 20 + 45 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, lo, hi, fmt, left - 6, width - 8, py);
+    cols.forEach(function (c, k) {
+      var x = left + k * (colW + gap), y1 = py(Math.max(c[3], c[4])), y2 = py(Math.max(lo, Math.min(c[3], c[4])));
+      var isMove = c[2] !== null, fill = !isMove ? C.violet : (c[1] >= 0 ? C.green : C.rose);
+      var rect = { x: x, y: y1, width: colW, height: Math.max(2, y2 - y1), rx: 4, fill: fill, "fill-opacity": 0.88 };
+      if (isMove && lit.indexOf(c[2]) >= 0) { rect.stroke = C.ink; rect["stroke-width"] = 2.5; }
+      svg.appendChild(el("rect", rect));
+      svg.appendChild(el("text", { x: x + colW / 2, y: y1 - 7, "text-anchor": "middle", fill: C.ink, "font-family": FONT,
+                                   "font-size": 12.5, "font-weight": 700 }, (isMove && c[1] >= 0 ? "+" : "") + fmt(c[1])));
+      if (k < cols.length - 1) {
+        var level = py(c[4]);
+        svg.appendChild(el("line", { x1: x + colW, y1: level, x2: x + colW + gap, y2: level, stroke: C.muted,
+                                     "stroke-dasharray": "3 3" }));
+      }
+      under(svg, x + colW / 2, top + plotH + 20, c[0], 13, !isMove);
+    });
+    return svg;
+  }
+
+  /* Values over an ordered axis: series are [[name, values, kind], ...]; kind "plan" is a dashed
+   * reference line, "bad" and "good" colour a line by meaning. The last value prints at its end. */
+  function line(labels, series, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || function (v) { return Math.round(v).toLocaleString("en-IN"); };
+    var width = opts.width || 760, lo = opts.lo || 0, all = [];
+    series.forEach(function (s) { s[1].forEach(function (v) { if (v !== null && v !== undefined) all.push(v); }); });
+    var hi = lo + chartCeil((Math.max.apply(null, all) - lo) * 1.06);
+    var left = 86, right = width - 110, top = 44, plotH = 220, step = (right - left) / Math.max(1, labels.length - 1);
+    function py(v) { return top + plotH * (hi - v) / ((hi - lo) || 1); }
+    var svg = root(width, top + plotH + 20 + 30 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, lo, hi, fmt, left, right, py);
+    labels.forEach(function (l, i) { under(svg, left + i * step, top + plotH + 20, String(l), 10, false); });
+    var colours = { plan: C.muted, bad: C.rose, good: C.green, lit: C.ink }, keys = [];
+    series.forEach(function (s) {
+      var colour = colours[s[2]] || C.violet, dashed = s[2] === "plan", pts = [];
+      keys.push([s[0], colour, dashed]);
+      s[1].forEach(function (v, i) { if (v !== null && v !== undefined) pts.push([left + i * step, py(v), v]); });
+      var d = pts.map(function (p, j) { return (j ? "L " : "M ") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+      var path = { d: d, fill: "none", stroke: colour, "stroke-width": 2.4 };
+      if (dashed) path["stroke-dasharray"] = "6 4";
+      svg.appendChild(el("path", path));
+      if (!dashed) pts.forEach(function (p) { svg.appendChild(el("circle", { cx: p[0], cy: p[1], r: 3.6, fill: colour })); });
+      if (pts.length) {
+        var last = pts[pts.length - 1];
+        svg.appendChild(el("text", { x: last[0] + 8, y: last[1] + 4, fill: colour, "font-family": FONT, "font-size": 12.5,
+                                     "font-weight": 700 }, fmt(last[2])));
+      }
+    });
+    legend(svg, keys, left, 22);
+    return svg;
+  }
+
+  /* Vertical bars grouped by category: series are [[name, values], ...] aligned with categories,
+   * drawn light to dark in the order given, so Q1 against Q2 reads as before and after. */
+  function columns(categories, series, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || function (v) { return Math.round(v).toLocaleString("en-IN"); }, lit = opts.lit || [];
+    var shades = [C.lilac, C.violet, C.ink, C.green], all = [];
+    series.forEach(function (s) { all = all.concat(s[1]); });
+    var hi = chartCeil(Math.max.apply(null, all) * 1.1);
+    var barW = 40, inner = 6, groupGap = 34, left = 86, top = 44, plotH = 220;
+    var groupW = series.length * barW + (series.length - 1) * inner;
+    var width = opts.width || left + categories.length * (groupW + groupGap) + 10;
+    function py(v) { return top + plotH * (hi - v) / hi; }
+    var svg = root(width, top + plotH + 20 + 45 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, 0, hi, fmt, left - 6, width - 8, py);
+    categories.forEach(function (cat, c) {
+      var gx = left + c * (groupW + groupGap);
+      series.forEach(function (s, k) {
+        var v = s[1][c], x = gx + k * (barW + inner);
+        svg.appendChild(el("rect", { x: x, y: py(v), width: barW, height: Math.max(1, top + plotH - py(v)), rx: 3,
+                                     fill: shades[k % shades.length] }));
+        svg.appendChild(el("text", { x: x + barW / 2, y: py(v) - 6, "text-anchor": "middle", fill: C.ink,
+                                     "font-family": FONT, "font-size": 11, "font-weight": 700 }, fmt(v)));
+      });
+      under(svg, gx + groupW / 2, top + plotH + 20, String(cat), Math.max(10, Math.floor(groupW / 7)),
+            lit.indexOf(c) >= 0);
+    });
+    legend(svg, series.map(function (s, k) { return [s[0], shades[k % shades.length], false]; }), left, 22);
+    return svg;
+  }
+
   /* Messages across named lanes, drawn from the run that happened. messages: [[from, to, text]]. */
   function sequence(lanes, messages, opts) {
     opts = opts || {};
@@ -320,5 +461,6 @@
   }
 
   window.C2K = { colours: C, flow: flow, vflow: vflow, ladder: ladder, tree: tree, driverTree: driverTree,
-                 strip: strip, sequence: sequence, sideBySide: sideBySide, rupees: rupees, draw: draw };
+                 strip: strip, bridge: bridge, line: line, columns: columns, sequence: sequence,
+                 sideBySide: sideBySide, rupees: rupees, draw: draw };
 })();

@@ -78,8 +78,22 @@ MERMAID_CONFIG = """{
     "clusterBorder": "#CFC9EE",
     "edgeLabelBackground": "#FFFFFF",
     "fontFamily": "DejaVu Sans, Verdana, sans-serif",
-    "fontSize": "16px"
+    "fontSize": "16px",
+    "xyChart": {
+      "backgroundColor": "#FFFFFF",
+      "titleColor": "#1A0F5C",
+      "xAxisLabelColor": "#1A0F5C",
+      "xAxisTitleColor": "#6B6690",
+      "xAxisTickColor": "#CFC9EE",
+      "xAxisLineColor": "#CFC9EE",
+      "yAxisLabelColor": "#6B6690",
+      "yAxisTitleColor": "#6B6690",
+      "yAxisTickColor": "#CFC9EE",
+      "yAxisLineColor": "#CFC9EE",
+      "plotColorPalette": "#5B3FD6, #D63A6A, #1F8A5B, #1A0F5C"
+    }
   },
+  "xyChart": {"width": 760, "height": 380, "showDataLabel": false},
   "flowchart": {"htmlLabels": false, "curve": "linear", "padding": 4,
                 "nodeSpacing": 20, "rankSpacing": 18, "useMaxWidth": true},
   "sequence": {"useMaxWidth": true},
