@@ -1,88 +1,82 @@
-# Unguided: six calls, each one defended
+# Round 3 set: decide, reconcile, defend
 
-Alone, no hints. Every item is a real row from today's export and a decision an auditor could ask
-about.
+Seven items, about fifteen minutes, after round 3. Every number here is invented; the decisions are
+the ones you made on Kalpa's export.
 
-Post one line with your six letters, then write the decisions log at the end.
+Post one line, seven letters in item order, no spaces:
 
 ```
-Post exactly this shape: xxxxxx
+Post exactly this shape: xxxxxxx
 ```
 
 ---
 
-## Q1. `KR-02063`, amount `twelve`, everything else present and sensible
+### Q1
 
-Which one?
+An order in Q2 has no status and a valid amount. Revenue is booked value, and Marketing also wants
+the delivered count. Which decision keeps both numbers honest?
 
-a) Default the amount to zero and keep the row, so the order count holds
-b) Replace it with the median amount for that segment, which is the best estimate
-c) Reject the row, and record the reason
-d) Keep the row with the amount as text and exclude it from sums later on
+a) Drop the order, since its fate is unknown
+b) Default the status to delivered, the usual case
+c) Keep the order and flag the status as unknown
+d) Default the status to cancelled, the safe case
 
----
+### Q2
 
-## Q2. `KR-02119`, every field present except `status`, which is empty
+The largest Q2 order is 1.8 times the next, placed by a Business account that ordered in both
+quarters, with every field valid. What goes in the note to Anand?
 
-Which one?
+a) Keep it, flag it, and show Q2 with and without it
+b) Remove it, since an order that size distorts the quarter
+c) Cap it at the next largest order, to keep the shape
+d) Move it to Q1, since the account ordered there too
 
-a) Default it to delivered, since most orders are delivered in this file
-b) Reject it, because an order with no status cannot be counted
-c) Keep it and exclude it only from the status split, since the amount is fine
-d) Look up the customer's other orders and copy the status they usually have
+### Q3
 
----
+A pass reports 500 rows in, 470 kept and 30 set aside, and Q1 comes out Rs 2,100 below the books'
+Rs 3,20,00,000. What do you do next?
 
-## Q3. `KR-02151` appears twice, once dated 25 September and once 2 August
+a) Ship it, since the rows reconcile and the gap rounds away
+b) Add Rs 2,100 as an adjustment line so the rupees tie out
+c) Ask Finance whether their books are Rs 2,100 too high
+d) Find the set-aside row whose rupees a kept twin lacks
 
-Which one?
+### Q4
 
-a) Keep both, because the dates differ so they are two separate orders
-b) Reject both, because you cannot tell which of the two records is right
-c) Average the two dates, which puts the order in the middle of the range
-d) Keep one, and record which date you took and why
+Q1 as exported is Rs 3,40,00,000. The rows set aside by the identity rule carry Rs 30,00,000. The
+books say Rs 3,10,00,000. Which statement does the bridge support?
 
----
+a) The export is right, and the books missed Rs 30 lakh
+b) The books are right, and copies explain the whole gap
+c) Neither is right until every row is re-entered by hand
+d) The gap is too large for copies, so look for a date error
 
-## Q4. The vendor export's first two lines are identical header rows
+### Q5
 
-Which one?
+Tuesday's report said a segment's orders per customer fell 40 percent. On clean data the fall is 25
+percent. What leads the note?
 
-a) Reject the second one, because a header read as a record is not an order
-b) Keep it, since it has the same shape as every other row in that file
-c) Reject both header lines, because the file needs a header to be readable
-d) Default its amount to zero, which makes it harmless in every calculation
+a) The smaller number, and why it changed
+b) The 40 percent, since leadership has seen it
+c) Both, in a footnote, since the story is the same
+d) Nothing, until Thursday proves the fall is real
 
----
+### Q6
 
-## Q5. `KR-01031`, a corporate order of Rs 4,80,000, four times the next largest
+Q1 as exported is Rs 50,00,000, the rows set aside carry Rs 4,20,000, and the books say
+Rs 45,80,000. Does the rupee reconciliation hold, and what does it prove?
 
-Which one?
+a) No, since Rs 4,20,000 is more than 8 percent of Q1
+b) Yes, and it proves no row vanished from the file
+c) Yes, and the clean total equals the books
+d) No, since the rows have not been counted yet
 
-a) Reject it, because an outlier of that size distorts every average computed
-b) Keep it, because it is a real order
-c) Cap it at three times the next largest, which is standard outlier treatment
-d) Move it to a separate file so the main analysis is not affected by its size
+### Q7
 
----
+A fence at three times the median would remove one Q2 order, turning a 2 percent dip into a
+15 percent fall. Which reading goes to Marketing?
 
-## Q6. Your bridge lands on Rs 1.92 crore and Finance says Rs 1.90 crore
-
-Which one?
-
-a) Report 1.92 and note the difference as within tolerance for an export
-b) Adjust your figure to 1.90 so the two systems agree with one another
-c) Find the remaining Rs 2 lakh, because a step is missing
-d) Ask Finance to recheck their books, since your pass is fully documented
-
----
-
-## Writing task: the decisions log
-
-Write the log for today's pass. One row per decision, with these columns:
-
-| Field | Issue | Rows | Decision | Reason |
-|---|---|---|---|---|
-
-Five rows at most. A reason of "it was wrong" is not a reason. An auditor reads this table and not
-your code, so write it for them.
+a) The 15 percent fall, since the fence is a standard rule
+b) Both readings, with the 15 percent one first
+c) The 15 percent fall, with the order named in a footnote
+d) The 2 percent dip, with the order checked and flagged

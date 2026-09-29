@@ -7,16 +7,19 @@ departs from a source.
 
 ## The sources
 
-Built from `docs/curriculum/W1_Data_analysis_found.md`, the Monday 5 October 2026 row, read in
-column order, and from `docs/07_Client_Zero.md` at v2.2, locked 13 September 2026, with the Global
-Capability Centre addendum of 28 September 2026, which sets the frame: the cohort as trainee
-engineers in the GCC's data and AI team, and the three recurring beats of the client's ask, Kavya's
-review and the interview question.
+Built on 29 September 2026 from, in this order: `docs/detailing/W01_W02_spine.md`, approved by the
+requester on 29 September 2026, which sets the day's case, its five rungs, its traps, the campus day
+and the afternoon-and-lab table; `.claude/skills/day-pack-builder/references/the-standard.md`, which
+sets the form and the volume; the Monday 5 October 2026 row of
+`docs/curriculum/W1_Data_analysis_found.md`, read in column order, for everything the spine leaves
+unchanged (the scenario, the data version, the plants, the interview anchors, the references and the
+Kahoot plan); the day's line in `docs/programme/calendar.md`; and `docs/07_Client_Zero.md` at v2.2,
+locked 13 September 2026, with the Global Capability Centre addendum of 28 September 2026.
 
 ## The data
 
 Every file in `data/` is written by `data/generate_client_zero.py`, version `v0`; nothing is
-hand-edited.
+hand-edited, and a regeneration on 29 September 2026 produced byte-identical files.
 
 ```
 python3 data/generate_client_zero.py --version v0 --out content/W01/D1/data --stem C2_W01_D01
@@ -24,76 +27,101 @@ python3 data/generate_client_zero.py --version v0 --out content/W01/D1/data --st
 
 | Planted | Where it is used |
 |---|---|
-| One Business order of Rs 4,80,000, KR-01031 | The mean against the median in half two, chapter 2, and notebook 4 |
-| One amount stored as the text "4500", KR-01008 | The TypeError in half one, chapter 4, and notebook 2 |
+| One Business order of Rs 4,80,000, KR-01031 | Round 3's trap (the mean of Rs 18,160 against the median of Rs 2,205), found by the learner's own sort in an empty cell; the second case, where it carries store's 91.6 percent |
+| One amount stored as the text "4500", KR-01008 | Round 2, met as a TypeError in two minutes and fixed with `int()`; the record is found in an empty cell |
+| The take-home's second sample: two Business orders (Rs 3,12,000 and Rs 2,05,000) and the text "1990" | The take-home; named only in the day sheet |
 
-Both appear only in `trainer/` and here. The take-home's second sample carries its own two Business
-orders and one text amount, also named only in the day sheet.
+The plants appear by value only in `trainer/` and here.
 
-## Rebuilt on 28 September 2026 to the programme's new standard
+## Rebuilt on 29 September 2026 to the approved spine
 
-Every learner artifact was rebuilt; the old pack is in the history. What changed, and why:
+The pilot of 28 September was rejected for its content: staged Python errors, code-reading
+exercises and a 230-minute day. Its form was kept. Every family was rebuilt around one case climbed
+in five rungs, a trap per rung, and the 360-minute day.
 
-| Artifact | Before | Now |
+| Family | The pilot | Now |
 |---|---|---|
-| Decks | Two decks of placeholder slides in the old palette | 28 and 27 numbered slides in the orientation deck's system, a cover and four chapters each, speaker notes on every slide |
-| Notebooks | One demo notebook of 34 cells and a hands-on on the second sample | Four teaching notebooks, one per chapter pair, 20 to 28 cells, 5 or 6 rendered diagrams and 5 to 11 checks each, and a hands-on twin on delivered orders with its executed solution |
-| Companion | A 10 KB toggle page | A guided walk, a branch calculator, four experiment cards with sequence popups, a paste-your-numbers workbench, a decision tree and a glossary |
-| Workbook | None | The day's decision tool, four tabs and an Export tab, proven by xlsx_recalc |
-| Exercises | Two lettered sets and a guided file | Three sets layered by concept, code and operating layer, each with a full solution table |
-| Notes, sheet, board, pre-read | The old tree and the plants named | The new tree, the plants unnamed, links re-verified |
+| Decks | A half-one and a half-two deck built around a NameError, a TypeError and code-reading drills | A morning deck of the ask and three rounds, and an afternoon deck of the two cases, the debrief of wrong answers, the interview drill and the close |
+| Notebooks | Four chapter notebooks and a hands-on twin | One notebook per round climbing four levels with its trap, plus the escalated case and the second case, each a TODO twin with an executed solution |
+| Companion | A revenue-tree page | A branch simulator: every assumption the traps turn on is a control, and the number and the decision move with it |
+| Workbook | Four tabs on the tree | One tab per taught decision, one planted formula defect each |
+| Exercises | Three lettered sets on concept, code and operation | One scenario set per round, the two case briefs, and the practice lab set, every stem a Kalpa business question |
+| Reading | Notes and a sheet on the old chapters | Notes carrying the three rounds as worked cases, the sheet with the traps, the board work in order, Tuesday's pre-read |
 
 ## Decisions that depart from a source
 
-1. **No learner file names a plant, which changes four things the approved spine or the row
-   implied.** The planted records are found in empty your-turn cells, so the executed notebooks carry
-   no saved output naming them. The mean against the median is shown on five invented orders in the
-   decks, the notebooks, the companion and the board work; the approved spine had put a bulk-order
-   switch on the thirty real orders, which would have named the record on a page any learner can
-   open. The Kahoot's comparison trap uses "3500" where the row's plan wrote "4500", so the trap
-   survives without echoing the plant. The old pack named both plants in its study notes, cheat
-   sheet, board work, exercise set and demo; none of those lines survive.
-2. **The unguided exercise runs on delivered orders.** The row asks for customers, orders per
-   customer and the median unguided, on the same file the demo taught. On booked orders the demo's
-   code answers it, so the definition changes and the numbers become new: 19, 1.11 and Rs 2,060.
-3. **Anand Iyer is the finance controller.** The W01 D1 row calls him the CFO; `docs/07` and the
-   W01 D3 row say finance controller, and the pack follows `docs/07`. The row's word is a tracker
-   typo to correct.
-4. **The teaching notebooks are four, not one.** The notebook-builder sizing puts a notebook at 16
-   to 25 cells; the day's content at the depth asked for runs to about a hundred, so it is split by
-   chapter pair.
-5. **The decision workbook is new to this day.** The day-pack manifest asks for one on every
-   teaching day; the old pack had none.
+1. **The rungs map onto the rounds two to one at the start.** The spine names five rungs and the
+   day has three morning rounds and two afternoon cases. Round 1 carries rungs one and two (four
+   readings of sales, and the tree as metrics), rounds 2 and 3 carry the leaves and the typical
+   order, and the escalated case carries the fifth rung, which branch Meera opens first. The second
+   case is the spine's second case.
+2. **Each round's trap is assigned from the spine's Monday list.** The cancelled-orders trap sits in
+   round 1, the rows-as-customers trap in round 2, the mean in round 3 and the two 10 percent lifts in
+   the escalated case. The second case carries its own trap, store's 91.6 percent, which the spine
+   does not list; it follows from the spine's question ("whether one channel changes the
+   recommendation") on this file.
+3. **The row's environment block (25 minutes) becomes two minutes inside round 1.** Week 0 set up
+   the Codespace; the 360-minute day has no environment slot, and the standard says a runtime error
+   gets two minutes when it happens.
+4. **The Kahoot has eight items and no return question.** The standard asks for the return question
+   from the day before; the row says there is none on Day 1, and the spine keeps the Kahoot plans as
+   the rows have them. The row's six items are kept, and two are added for the rows-as-customers and
+   the two-lifts traps.
+5. **The plant rule, applied to the afternoon.** A learner file never prints the Business order's
+   amount, id, customer or position, the words "bulk order" or "corporate order", or the text amount's
+   record. Aggregates that include the order (the mean, the median, store's share, booked revenue)
+   are the trap numbers and are printed. Numbers computed without it appear only in afternoon files,
+   after round 3's sort has found it, and they are introduced as "the order your round 3 sort put at
+   the top". The Kahoot's comparison trap uses "3500" where the row wrote "4500". On 29 September 2026
+   the requester had the all-orders rupee figures dropped from the second case: its brief, solution,
+   notebooks, simulator card and workbook tab show channel shares on all 30 orders and rupees only on
+   consumer orders, so store's booked total no longer sits beside its consumer total for a subtraction.
+6. **Anand Iyer is the finance controller.** The row calls him the CFO; `docs/07` says finance
+   controller, and the pack follows `docs/07`.
+7. **The second case groups revenue by segment and channel.** The row's stop-before line names
+   grouping by segment, and the spine's afternoon table asks for revenue by customer type and
+   channel on the same file. The spine wins: the grouping is a dictionary accumulator counted by hand
+   in the second case only, with no helper function, and Tuesday still owns grouping as a technique.
+8. **Seven interview questions are added to the row's five.** They are this pack's case-style
+   follow-ups, as the spine asks, and their tags are this pack's calibration on the row's scale.
 
 ## Invented, and recorded as invented
 
 1. Kalpa Retail sells to consumers and to businesses: consumer orders sit in the locked Rs 800 to
-   Rs 3,000 band, and the Business segment buys in bulk from Rs 2 lakh upward. The row's "one
-   business customer can move an average" needs this, and the locked file says the band describes
-   the ordinary population rather than the whole file.
+   Rs 3,000 band and the Business segment buys in bulk, as the generator's docstring sets it.
 2. The Week 1 extract is Kalpa Retail India for one window, 1 July to 26 September 2026.
 3. Marketing's Rs 12 crore is the acquisition line of the growth plan, not one quarter's spend.
-4. The five orders of Rs 1,900 to Rs 2,600 and the Rs 90,000 bulk order, the four records in
-   experiment D, and the canteen sentence on half two S21 are invented to isolate one mechanism
-   each, and each place they appear says so.
+4. The payback consequence in round 3 ("about eight times as many orders") is arithmetic on the
+   mean against the median; no customer acquisition cost is stated anywhere, because none exists
+   in the sources.
+5. The invented sets, each labelled invented where it appears: five orders of Rs 1,900, 2,100,
+   2,300, 2,400 and 2,600 with a sixth of Rs 90,000 (the mean mechanism in the deck, notebook 3, the
+   companion, the board work, the notes and round 3's item 5); the lab's eight orders W-01 to W-08 and
+   twelve orders IV-01 to IV-12 (with a Rs 60,000 order and the text amount "2750", which carries no
+   item); 50,000 registered users in lab item 14; and a Rs 1,500 cost per customer in the stretch task.
+6. Every record labelled invented in the notebooks, the companion, the workbook, the exercises and
+   the practice set is invented to isolate one mechanism, and each place says so.
 
 ## Sources, with the date each was checked
 
+Each link was requested on 29 September 2026 and returned HTTP 200, except where noted.
+
 | Link | Role | Checked |
 |---|---|---|
-| https://www.hackingthecaseinterview.com/pages/profitability-case-interview | The profitability case, trainer preparation and the notes' reading path | checked 28 Sep 2026, returned 200 |
-| https://www.roadtooffer.com/blog/driver-tree | Driver trees, trainer preparation | checked 28 Sep 2026, returned 200 |
-| https://mconsultingprep.com/profitability-case-framework | The framework's revenue variants, the take-home reading | checked 28 Sep 2026, returned 200; variants 1 and 2 are the revenue side |
-| https://automatetheboringstuff.com/3e/ | Chapters 2 and 3, if-else and loops, the notes' reading path | checked 28 Sep 2026, returned 200; chapter titles read from the contents |
-| https://www.census.gov/library/publications/2025/demo/p60-286.html | Median household income, $83,730 in 2024, the notes' field case | checked 28 Sep 2026; published 9 September 2025 |
-| https://docs.github.com/en/codespaces/developing-in-a-codespace/getting-started-with-github-codespaces-for-machine-learning | Codespaces with Jupyter, trainer preparation | checked 28 Sep 2026, returned 200 |
-| https://www.youtube.com/watch?v=daefaLgNkw0 | Corey Schafer, Dictionaries, a row-supplied student reference | verified 03 Sep 2026 on the row; the re-check on 28 Sep 2026 returned 429, so it is kept out of the new notes |
-| https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/mean-median-basics/v/mean-median-and-mode | Mean, median and mode, a row-supplied student reference | verified 03 Sep 2026 on the row; the re-check on 28 Sep 2026 met a bot challenge, so it is kept out of the new notes |
+| https://www.hackingthecaseinterview.com/pages/profitability-case-interview | The profitability case and the revenue tree, trainer preparation and the notes | checked 29 Sep 2026, 200 behind a bot challenge page |
+| https://www.roadtooffer.com/blog/driver-tree | Driver trees, trainer preparation | checked 29 Sep 2026, 200 |
+| https://mconsultingprep.com/profitability-case-framework | The framework's revenue variants, the take-home reading | checked 29 Sep 2026, 200, title "6 Variants of Profitability Framework" |
+| https://automatetheboringstuff.com/3e/ | Loops and dictionaries, the notes' reading path | checked 29 Sep 2026, 200 |
+| https://docs.github.com/en/codespaces/developing-in-a-codespace/getting-started-with-github-codespaces-for-machine-learning | Codespaces with Jupyter, trainer preparation | checked 29 Sep 2026, 200 |
+| https://www.youtube.com/playlist?list=PL-osiE80TeTskrapNbzXhwoFUiLCjGgY7 | Corey Schafer, the beginner playlist | checked 29 Sep 2026, 200; the oEmbed title reads "Python Programming Beginner Tutorials" |
+| https://www.youtube.com/watch?v=daefaLgNkw0 | Corey Schafer, Dictionaries | checked 29 Sep 2026; the page returned 429, and the oEmbed endpoint returned "Python Tutorial for Beginners 5: Dictionaries - Working with Key-Value Pairs" |
+| https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/mean-median-basics/v/mean-median-and-mode | Mean, median and mode | checked 29 Sep 2026, 200 |
+| https://britinstitute.uk/blog/data-analyst-case-study-interview-questions | The sales-drop case, Tuesday's pre-read | checked 29 Sep 2026, 200 |
 
-Every error text in the pack was produced by running the code on the day's file under Python 3.11
-with IPython 9.17.1, including the full Jupyter traceback quoted on half one S25 and in notebook 2.
+## Tools the numbers and outputs came from
 
-## Re-dated on 27 September 2026
-
-Tracker v7 of 21 September 2026 moved this row one week later, to Monday 5 October 2026, with no
-change to its fifteen columns; the day sheet's module and date lines render from the calendar.
+Python 3.11.15, IPython 9.17.1 and nbclient 0.11.0 for every notebook output and error text;
+python-pptx for the decks; mermaid-cli 11.17.0 for every rendered diagram, run from a session-local
+install because the installed mermaid-cli 12.0.0 rejects the `-w` flag that `scripts/build_deck.py`
+and `scripts/build_cheatsheet.py` pass; LibreOffice for the workbook recalculation and the deck
+render check, with the Carlito font installed.

@@ -46,8 +46,9 @@ week's approved spine: then that spine is gate 2, and you state the envelope and
 4. **Verification.** The skill checklist, then `python3 scripts/verify.py content/W{W}/D{D}`, then the file
    list with audience tags, then `python3 scripts/sync_programme.py --check`. Report what failed and what
    you fixed, and show the verify output before calling the pack done.
-5. **Commit** on branch `w{ww}-d{d}`. In a cloud session, stop after committing and let the reviewer open
-   the pull request.
+5. **Commit** on branch `w{ww}-d{d}`. In a cloud session, push the branch, finish with your report and
+   stop: the orchestrating session reviews the pack, opens its pull request and merges it. A day session
+   never opens, merges or closes a pull request.
 
 Binding rules: the business scenario is slide one and the notebook's first markdown cell, and it is never
 cut; the thinking is drawn before any tool opens; mental model first and spiral always; at most four new
