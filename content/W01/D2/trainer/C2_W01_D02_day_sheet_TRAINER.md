@@ -1,136 +1,141 @@
-# Day sheet: Week 1 Day 2, Tuesday
+# Day sheet: Week 1, Tuesday. Which branch moved?
 
 **TRAINER ONLY.** Nothing on this page reaches a learner.
 
 Posts to <!-- sync:module:W01/D2 -->Module 1: Foundations of AI and Data<!-- /sync:module:W01/D2 -->, on <!-- sync:day-date:W01/D2 -->Tue 06 Oct 2026<!-- /sync:day-date:W01/D2 -->.
 
----
-
-## The two-minute orientation
-
 | | |
 |---|---|
-| **Start from** | Monday's tree and leaf counts. The ladder is new; the arithmetic is not. |
-| **Go as far as** | Everyone names the branch and the segment with numbers, and states the reorder-feature cause as a hypothesis with its test. |
-| **Stop before** | Files, which are Wednesday. Any test of whether the difference is real, which is Thursday. Comprehensions and modules. |
-| **Comes later** | Tomorrow's cleaning changes tonight's answer. Promise that out loud at the close; it is what makes Wednesday land as a discovery rather than as a correction. |
-| **Cut first** | Percentage-change formalities. **Never cut the ladder or the segment decomposition.** |
+| **Start from** | Monday's tree and leaf counts. The ladder is new; the arithmetic is not. Open on Meera's reply, the Retail-Plus head's forwarded complaint and Marketing's claim, before any code. |
+| **Go as far as** | Everyone names the branch and the segment with numbers, says what the rupee fall and the behaviour fall each are, and states the reorder cause as a hypothesis with the evidence that would settle it. |
+| **Stop before** | Files (Wednesday), any test of whether a difference is real (Thursday), comprehensions and modules. When a learner asks "is 49 percent significant?", write it on the parking board for Thursday. |
+| **Comes later** | Tomorrow's reconciliation changes tonight's numbers. Promise it once, at the close, and do not explain why. |
+| **Cut first** | Percentage-change formalities and the D slides. Never cut the ladder, the round 2 bridge or the segment decomposition. |
+
+The case in one line: Q2 fell from Rs 2.10 crore to Rs 1.87 crore; Meera wants the branch, the Retail-Plus
+head wants to know if his tier is slipping, and Marketing wants acquisition money.
 
 ---
 
-## The running order
+## Morning, 180 minutes
 
-| Block | Duration | What happens |
+```mermaid
+flowchart LR
+    A["<b>The ask</b><br/>20 min"] --> R1["<b>Round 1</b><br/>is it real<br/>50 min"] --> R2["<b>Round 2</b><br/>which branch<br/>50 min"] --> B["break<br/>10 min"] --> R3["<b>Round 3</b><br/>which segment<br/>50 min"]
+    classDef core fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class R2 core
+```
+
+| Part | Slides (half one) | Beside it | What must land | If short of time |
+|---|---|---|---|---|
+| The ask, the system and the ladder, 20 | S1 to S7 | The board: the pipeline map, the ladder, then Monday's tree with empty Q1 and Q2 columns | What each branch costs and who owns it; where in the pipeline a fake drop is made; the five rungs and what each needs; changes multiply | S3's outside view to one sentence |
+| Round 1, is the drop real, 50 | S8 to S16 | Notebook `C2_W01_D02_01_is_the_drop_real_STUDENT.ipynb`; exercise set round 1 | How retailers keep periods comparable (like-for-like, 4-5-4, year on year); 13 weeks against 11; the fair change is minus 11.0 percent; lumpy revenue makes partial windows jumpy | S14 and S15 to one sentence |
+| Round 2, which branch moved, 50 | S17 to S26 | Notebook `02_which_branch`; exercise set round 2 | 69 customers in both quarters; the bridge depends on the order of steps (minus Rs 51.6 lakh or 60.9 lakh, symmetric 55.9); missing is unknown and the discount branch is bounded at Rs 12,900 | S25 becomes the room's variant only if time allows |
+| Round 3, every kind of customer, 50 | S27 to S36 | Notebook `03_which_segment`; exercise set round 3 | `tree_for` and `describe` written once and reused; the median against the range and the middle half; the weighted roll-up; the room finds the segment on its own screens at S35 | Never cut S35 |
+
+Do not run Retail-Plus or Student on the projector in round 3. The room runs all four segments at S35
+and says the segment aloud; the afternoon deck is the first place it is on a slide.
+
+## Afternoon, 180 minutes
+
+```mermaid
+flowchart LR
+    E["<b>Escalated case</b><br/>unguided, 60"] --> D["<b>Debrief</b><br/>15"] --> B["break<br/>10"] --> S["<b>Second case</b><br/>pairs, 45"] --> I["<b>Interview drill</b><br/>30"] --> K["<b>Kahoot, close</b><br/>20"]
+    classDef core fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class E core
+```
+
+| Part | Slides (half two) | Beside it | What must land | If short of time |
+|---|---|---|---|---|
+| Escalated case, 60 | S1 to S3 | Brief `exercises/unguided/..._escalated_case`; notebook `04_escalated_case` (TODO twin) | Four segments, both bridges, mix against rate, the helper checked for groups in and out | Parts 4 and 5 become homework |
+| Debrief of wrong answers, 15 | S4 to S9 | Solution notebook 04; the companion's experiment cards | The four wrong answers named with the room's own numbers | S8 to one sentence |
+| Second case, pairs, 45 | S10 to S16 | Brief `..._second_case`; notebook `05_second_case`; the companion's hypothesis section | 69 of 69 ids in both quarters; the fall began in July; every channel fell; two hypotheses with their data | The channel test to one slide |
+| Interview drill, 30 | S17 to S19 | The answers below | Twelve questions answered aloud in under a minute each | Take 1, 5, 7, 10 and 12 |
+| Kahoot and tomorrow, 20 | S20 to S23 | `kahoot/C2_W01_D02_quiz_STUDENT.md` | The sentence to Meera; the seven crux lines; Anand's question left open | Never cut S21 |
+
+---
+
+## The traps, each with its exact wrong number
+
+| Where | The wrong number | The decision it misleads | The check that catches it | The fix |
+|---|---|---|---|---|
+| Round 1 | Q2 tile to 15 Sep, Rs 1,55,59,950, "revenue fell 25.9 percent" | A crisis read that rushes the Rs 12 crore acquisition budget | First and last order date per window: 13 weeks against 11 | Closed quarters: minus 11.0 percent, Rs 23,00,000; or per week, Rs 16,15,385 against Rs 14,14,541, minus 12.4 percent |
+| Round 2 | Absent discount read as zero: Rs 5,000 then Rs 4,600, "discounts fell 8.0 percent" | Restore discounts to win members back | Where a discount is recorded it averages Rs 60.98 then Rs 76.67, up 25.7 percent | Absent means not recorded, written down; bound: at most Rs 12,900 in Q2 against a Rs 23,00,000 fall |
+| Round 3 | Average of four segment averages: 1.94 then 1.82, "frequency fell only 6.0 percent" | Frequency dismissed, so Marketing's acquisition story stands | The roll-up must reproduce round 2's 1.65 and 1.25 | Weight by customers: 1.65 to 1.25, minus 24.6 percent |
+| Escalated case | `pct_change` prints moves above 30 percent and returns None: summary {Retail-Core -5.3, Business -15.0}, "Business fell most" | Business accounts opened first; the Retail-Plus head told his tier is not in the table | Segments in 4, rows out 2; `None in changes.values()` | Return every change and flag big moves in their own column |
+
+The KeyError on `order["discount"]` is a runtime error: two minutes at S21, its last line and the three ways past it, then S22. It is never the trap.
+
+**Checkpoints, one learner each, under thirty seconds.** After round 1: "what has to match before two
+quarters compare?" After round 2: "which branch moved, and by how much in rupees?" After round 3: "why can
+four averages not be averaged?" After the second case: "what data would prove the reorder cause?"
+
+---
+
+## The plants, and what to do if nobody finds each
+
+| Planted | Where the room meets it | If nobody finds it |
 |---|---|---|
-| 1 | 10 min | Meera's reply and the Retail-Plus complaint. The room lists what could make a drop look real when it is not. |
-| 2 | 30 min | The investigation ladder, five rungs, and what each needs from the data |
-| 3 | 45 min | Grouping by key: orders and customers by quarter, then by segment. The dictionary accumulator. |
-| 4 | 35 min | Describing a segment: typical value, spread, shape from sorted values |
-| 5 | 45 min | Functions: the same numbers for every segment written once. Return against print. The conversion that must not crash the loop. |
-| 6 | 55 min | Guided then unguided: Q1 against Q2 along the tree, segment by segment |
-| 7 | 20 min | Kahoot and close |
+| Customer count flat, 69 and 69 | Round 2, S18 to S19, after a Predict | It is your demonstration; ask who predicted "fewer customers" and why |
+| Orders per customer falling in Retail-Plus only (2.32 to 1.18 on the file as exported, minus 49.0 percent) | Round 3, S35, on the room's own screens | Ask for the four `orders_per_customer` values read aloud in order; the outlier names itself. Never say it first |
+| The discount field absent on a subset (32 of 114 Q1 records, 26 of 86 Q2) | The KeyError at S21; the count in notebook 02's empty cell | Ask how many orders `"discount" in order` is False for; let the room say the number |
 
----
+**Wednesday's plant sits in today's file.** The v1 export carries 14 duplicated Q1 rows: 11 Retail-Plus
+orders in May (why Retail-Plus May reads 24), 2 Business orders at Rs 9,83,780 in April, 1 Retail-Core in
+June. They inflate Q1 by Rs 20,00,000 (clean Q1 is Rs 1.90 crore, a real fall of 1.6 percent), shrink the
+Retail-Plus fall to 35 percent once removed, and account for most of the Business rupee fall. Say none of
+this. If a learner points at May, write "May, 24?" on the parking board for Wednesday.
 
-## What is planted, and what the room should find
+## The day's numbers
 
-**This section never reaches a learner.**
-
-| Planted | What the room should do | If nobody finds it |
-|---|---|---|
-| Customers flat at 69 across both quarters while orders per customer falls | Compute distinct customers per quarter and disprove marketing's claim themselves | Ask "what would have to be true for marketing to be right, and can you check it?" |
-| The fall concentrated in Retail-Plus, down 49 percent against Retail-Core's 5 | Reach it by calling `describe` once per segment | Ask for the same table one level down. Do not name the segment. |
-| The `discount` field absent on 58 of 200 records | Meet `KeyError` when they total discounts, then count the absent records before choosing a default | It fires whether they look for it or not. It is the block-5 failure. |
-
-**The 14 duplicated rows are also in this file and are not today's lesson.** If a sharp learner
-spots that `KR-` ids repeat, that is excellent: tell them to write it in their notes and that
-Wednesday is about exactly that. Do not explore it today; it is Wednesday's whole arc.
-
----
-
-## The deliberate failures, with their exact text
-
-**Block 5, the absent key.** Have the room total the discounts without `.get()`:
-
-```
-KeyError: 'discount'
-```
-
-The move to teach is **not** reaching for `.get()`. It is asking how many records and whether the
-absence is concentrated. Only then choose a default, and make somebody write the reason in a
-comment. Wednesday will ask for that reason by name.
-
-**Block 5, the function that prints.** Change `return` to `print` in `describe` and call
-`describe(q1)["orders"]`:
-
-```
-TypeError: 'NoneType' object is not subscriptable
-```
-
-One demonstration is enough. The sentence to leave them with: a function that prints cannot be
-built on.
-
----
-
-## The numbers, so you are never caught out
-
-| | Q1 | Q2 |
-|---|---|---|
-| Rows | 114 | 86 |
-| Revenue | Rs 2,10,00,000 | Rs 1,87,00,000 |
-| Distinct customers | 69 | 69 |
-| Orders per customer | 1.65 | 1.25 |
-| Revenue per order | Rs 1,84,211 | Rs 2,17,442 |
-
-Decomposition: `1.000 × 0.754 × 1.180 = 0.890`, against an actual revenue change of 0.890.
-
-| Segment | Q1 per customer | Q2 per customer | Change |
+| Measure | Q1 | Q2 | Change |
 |---|---|---|---|
-| Retail-Core | 1.12 | 1.06 | down 5.3 percent |
-| Retail-Plus | 2.32 | 1.18 | down 49.0 percent |
-| Business | 1.82 | 1.55 | down 15.0 percent |
-| Student | 2.50 | 3.50 | up 40.0 percent |
+| Revenue, booked | Rs 2,10,00,000 | Rs 1,87,00,000 | minus 11.0 percent |
+| Orders | 114 | 86 | minus 24.6 percent |
+| Customers | 69 | 69 | 0, the same 69 ids |
+| Orders per customer | 1.65 | 1.25 | minus 24.6 percent |
+| Revenue per order | Rs 1,84,211 | Rs 2,17,442 | plus 18.0 percent, about 69 percent of it mix |
+| Retail-Plus orders per member | 2.32 | 1.18 | minus 49.0 percent, 51 orders to 26 |
+| Business revenue | Rs 2,07,71,180 | Rs 1,85,41,460 | minus Rs 22,29,720, 97 percent of the fall, 3 orders |
 
-By channel, for the take-home: web down 22.4 percent, store down 8.1, app flat.
+The tree multiplies back: 1.000 x 0.754 x 1.180 = 0.890. The bridge: customers Rs 0, orders per customer
+minus Rs 51,57,895, revenue per order plus Rs 28,57,895. Retail-Plus monthly orders 14, 24, 13, 9, 9, 8.
 
-Records with no `discount` field: 58 of 200.
+## The interview answers in one breath
 
----
+1. **[S] Sales dropped 15 percent; investigate.** Confirm it on matched windows, compare like with like, decompose along the tree, isolate branch and segment, then hypothesise and name the evidence.
+2. **[S] A rate without a denominator.** "Down 20 percent" of what, over which window and which base is unknown, so nobody can check it or compare it.
+3. **[F] Print instead of return.** Print hands back None, so the next step silently drops or crashes on that value; our summary lost two of four segments.
+4. **[F] A fair quarter comparison.** Same length of window, same definition of revenue, same segments and the same denominators.
+5. **[D] Marketing says acquisition, data says frequency.** Lead with their number: the same 69 customers bought in both quarters, so the fall is how often they buy, and name the test that would change my mind.
+6. **[F] Splitting a revenue change.** Revenue is customers times orders per customer times revenue per order; move one factor at a time and read the rupees each cost.
+7. **[F] Revenue per order up 18 percent.** Mostly mix: small Retail-Plus orders vanished, so the blend shifted toward Business; within-segment rates explain about a third.
+8. **[S] Fill a missing field with zero?** Only when absence means zero and someone has said so; otherwise report it separately and bound its effect.
+9. **[F] Averaging segment rates.** Each segment counts once regardless of size, so a two-customer segment weighs as much as thirty-four; weight by the denominator.
+10. **[SV] Flat count means nobody left?** No; check the ids: here all 69 bought in both quarters, which a count alone cannot show.
+11. **[D] Rupees in one segment, behaviour in another.** Put both in front of the CEO with their sizes: three lumpy Business orders to verify, and a paid tier ordering half as often to act on.
+12. **[D] Testing a stakeholder's cause.** Check timing and the channel it predicts with the data you have, then name the data that would settle it, here the app's reorder logs.
 
-## Per-block facilitation
+## The practice lab
 
-**Block 1.** Get five ways a drop can look real when it is not, out of the room, before the ladder
-goes up. The ladder lands much harder as the answer to a confusion they just felt.
+`exercises/practice/C2_W01_D02_practice_lab_STUDENT.md` with its solution, about an hour, run by a TA
+from `trainer/C2_W01_D02_practice_lab_TA_TRAINER.md`, which says where learners stall and the one hint per problem.
 
-**Block 2.** Draw the rungs bottom to top. When somebody offers the reorder button as the answer,
-write it on the board at rung five and leave it there, visibly four rungs above where the room is.
-That single move teaches the day.
+## The take-home, trainer only
 
-**Block 3.** Type the `.get()` line slowly and say the shape aloud: look up what is there or
-nothing, then add and put it back.
+`takehome/C2_W01_D02_brief_STUDENT.md` runs on `data/C2_W01_D02_takehome_STUDENT.py`, whose findings differ
+from class on purpose: the export was cut on 15 September, so the headline minus 5.4 percent is a window
+artefact (per week, up 11.8 percent); Retail-Core loses customers, 34 to 26 with none new; frequency is
+flat. A memo that says "frequency in Retail-Plus" was copied from class.
 
-**Block 4.** Put the four segment description rows on screen together. Business is the row that is
-unlike the others, and somebody will say so. That is Monday's lesson returning one level up.
+## Which file serves which moment
 
-**Block 5.** The two failures both live here. Run them in the order given; the `KeyError` first,
-because the discussion about defaults is what Wednesday needs.
-
-**Block 6.** This is the longest block and the one where circulating matters. The most common stall
-is a learner computing orders per segment rather than orders per customer per segment.
-
----
-
-## Checkpoint questions
-
-1. After block 2: which rung is "the reorder button broke", and what is below it?
-2. After block 3: what does `.get(key, 0)` do that `[key]` does not, and what does that cost?
-3. After block 5: your function prints the right numbers and the next line fails. Why?
-4. After block 6: revenue per order went up. Does that help or hide?
-
----
-
-## What the room leaves with
-
-The ladder in order, the decomposition closing to the revenue change, Retail-Plus named with its
-number, and the reorder button written down with the word "hypothesis" in front of it and a test
-beside it. The last one is what rooms skip, so make somebody read theirs aloud.
+| Moment | File |
+|---|---|
+| The whole morning on the projector | `slides/C2_W01_D02_half1_STUDENT.pptx` |
+| The whole afternoon | `slides/C2_W01_D02_half2_STUDENT.pptx` |
+| Rounds 1 to 3, demonstrated then run | `notebooks/C2_W01_D02_01_is_the_drop_real_STUDENT.ipynb`, `02_which_branch`, `03_which_segment` |
+| The escalated case and the second case | `notebooks/..._04_escalated_case` and `..._05_second_case`, with executed solutions in `exercises/solutions/` released at the debrief |
+| The debrief and the second case, live | `demos/C2_W01_D02_drop_simulator_STUDENT.html`, from the afternoon only |
+| A learner revisiting a decision | `demos/C2_W01_D02_decision_tool_STUDENT.xlsx` |
+| Tonight | Study notes, cheat sheet, board work, take-home, and Wednesday's pre-read |
