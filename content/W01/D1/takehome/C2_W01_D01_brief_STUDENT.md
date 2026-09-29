@@ -1,72 +1,72 @@
-# Take-home: a file nobody explained, and a business you can watch
+# Take-home: a tree you can watch, and a file nobody explained
 
-Three parts, about two hours in all. Part 1 is the day's method on a file you have not seen. Part
-2 is the day's thinking on a business nobody has written about, and it is the part an interviewer
-will ask you to talk through. Part 3 is twenty minutes of reading with one question to answer.
+> "By Thursday I want a recommendation on which branch we examine first, and I will ask why you did
+> not pick the others."
+> Meera Raghavan, CEO, Kalpa Retail
 
-Tomorrow opens by walking one learner's Part 2 in front of the room.
-
----
-
-## Part 1. Two tree nodes on a second sample, about forty minutes
-
-A second sample of Kalpa Retail orders sits in `data/C2_W01_D01_takehome_STUDENT.py`. It has the
-same fields as today's file and none of the same numbers, so nothing from the demo can be pasted
-across.
-
-1. Start a new notebook beside the day's notebooks. Copy in the setup cell from notebook 2 and
-   change the file name in the loader to `C2_W01_D01_takehome_STUDENT.py`.
-2. On **all booked orders**, compute the two leaves the file can give: customers, and orders per
-   customer, each written as a numerator over a denominator before you compute it.
-3. Compute the typical order, and say in a markdown cell why you chose the average you chose.
-4. Write one sentence on what surprised you in this file, with the number that surprised you.
-
-Run it from a fresh kernel, top to bottom, before you call it done. The self-check file tells you
-whether each number is right.
+Three parts, about two hours in all. Part 1 is the day's thinking on a business nobody has written
+about, and it is the part an interviewer will ask you to talk through. Part 2 is the day's method on
+a second sample of Kalpa orders you have not seen. Part 3 is twenty minutes of reading with one
+specific thing to cite. Tuesday opens by walking one learner's Part 1 in front of the room.
 
 ---
 
-## Part 2. The revenue tree for a business you can watch, about an hour
+## Part 1. Build: the revenue tree for a business you know, about an hour
 
-Pick a business you can actually observe: the canteen, a kirana store near where you live, an app
-you use most days, an auto stand, a gym. Not a company you have read about; one you can stand in
-front of.
+Pick a business you can stand in front of this week: the canteen, a kirana store near where you
+live, or an app you use most days. A company you have only read about does not count.
 
-1. Draw its revenue tree, with its five leaves in that business's own words. A canteen does not
-   have "orders per customer"; it has "how many times a week the same person eats here".
-2. Beside each leaf, write the metric as a numerator over a denominator.
-3. Beside each leaf, write what moving it would cost the owner, in the owner's terms: "a board
-   outside the gate" or "staying open an hour later", never "marketing spend".
-4. Name the leaf you believe moves most for that business, and say why in one sentence.
-5. Name the one number you would have to ask the owner for, because you cannot see it from
-   outside.
+- Draw its revenue tree on paper, with every branch in that business's own words. A canteen does
+  not have "orders per customer"; it has how many times a week the same person eats there.
+- Beside each branch, write the metric as a numerator over a denominator, with the window.
+- Beside each branch, write what moving it would cost the owner in the owner's terms, such as "a
+  board outside the gate" or "staying open an hour later", and never "marketing spend".
+- Name the branch you believe moves most for that business, and defend it with a threshold: "I would
+  open this branch first if at least N of every 10 regulars come fewer than M times a week", with
+  your N and M, and say what you would open instead if the threshold failed.
+- Name the one number you would have to ask the owner for, because you cannot see it from outside.
 
-One page: the drawing, five rows, two sentences.
-
----
-
-## Part 3. Read, about twenty minutes
-
-MConsultingPrep, "6 Variants of Profitability Framework", https://mconsultingprep.com/profitability-case-framework (verified 28 Sep 2026)
-
-Read the first two variants, which are the revenue side. Then answer in one line: which variant is
-today's tree, and which variant fits your Part 2 business better?
+One page: the drawing, the table, and two sentences.
 
 ---
 
-## What makes this hard to shortcut
+## Part 2. Extend: two tree nodes on a second sample, about forty minutes
 
-Part 1 runs on a file no assistant has seen, and its numbers either match the self-check or they
-do not. Part 2 is about a place an assistant cannot look up; if your five rows read like a generic
-retail example rather than the place you walked past this morning, it shows, and it shows fastest
-in the owner's-terms column.
+A second sample of Kalpa Retail orders sits in `data/C2_W01_D01_takehome_STUDENT.py`. It has the same
+fields as today's file and none of the same numbers, so nothing from class can be pasted across.
+
+- Start a new notebook beside the day's notebooks, copy in the setup cell from round 1's notebook,
+  and point the loader at `C2_W01_D01_takehome_STUDENT.py`.
+- Compute two tree nodes, customers and orders per customer, on each of the three definitions of
+  sales: booked, not cancelled and delivered. Write each as a numerator over a denominator in a
+  markdown cell before the code cell that computes it.
+- Compute the typical order on booked and on delivered orders, and say in one markdown line which
+  average you chose and why.
+- Write one sentence on what surprised you in this file, with the number that surprised you.
+
+Two pieces of process evidence go in the same notebook. The first is the output of every check the
+self-check lists, printed by your own cells. The second is a markdown cell headed "What stopped me",
+with the last line of the first error you met, the cell that raised it, and the change you made.
+
+Run the notebook from a fresh kernel, top to bottom, before you call it done. The self-check file,
+`takehome/C2_W01_D01_selfcheck_STUDENT.md`, lists every number you should reach.
 
 ---
 
-## What to bring tomorrow
+## Part 3. Read: the profitability framework, about twenty minutes
+
+MConsultingPrep, the profitability framework: https://mconsultingprep.com/profitability-case-framework (verified 29 Sep 2026)
+
+Read the revenue side of the framework. Then write two lines. The first cites one specific thing
+from the page, with the heading it sits under, that today's tree also does or leaves out. The
+second says whether that thing would change the tree you drew in Part 1, and how.
+
+---
+
+## What to bring on Tuesday
 
 | Part | What to bring |
 |---|---|
-| 1 | The notebook, run from a fresh kernel, and your sentence on what surprised you |
-| 2 | The page: the tree, five rows, the leaf you picked and the number you would ask for |
-| 3 | Your one line on the variants |
+| 1 | The page: the tree in the business's words, the table, the branch with its threshold, and the number you would ask for |
+| 2 | The notebook, run from a fresh kernel, with its check outputs, the "What stopped me" cell and your sentence on what surprised you |
+| 3 | Your two lines, the first citing a heading from the page |
