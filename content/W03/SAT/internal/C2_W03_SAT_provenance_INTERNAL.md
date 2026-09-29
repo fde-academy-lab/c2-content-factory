@@ -10,13 +10,13 @@
 | The 300-minute Saturday | `data/programme/facts.yaml`, campus_day.saturday_minutes | Locked |
 | 35 learners in nine groups of four | `data/programme/facts.yaml`, cohort; the `groups` conflict with the tracker's fifteen is carried in the run sheet | Stated (handover) |
 | Marks per event: mini project 40, mock 30, GD 30 | `data/programme/facts.yaml`, evaluation, proposal-2026-09-25 | Locked |
-| The Build 1 rubrics, the mini project's 34 per group and 6 per learner | `data/programme/facts.yaml`, evaluation.rubrics.W03, approved 29 September 2026; read by `internal/C2_W03_SAT_build_mini_project_scoring_INTERNAL.py` and rendered by the sync into the run sheet | Locked |
+| The Build 1 rubrics, the mini project's 34 per group and 6 per learner | `data/programme/facts.yaml`, evaluation.rubrics.W03, approved 29 September 2026; read by `internal/C2_W03_SAT_build_mini_project_scoring_INTERNAL.py` and rendered by the sync into the run sheet and the presentation deck's S19 | Locked |
 | Saturday's two GD rounds, the first tranche and the drawn order | `content/W03/D5/trainer/C2_W03_D05_day_sheet_TRAINER.md` | Friday's pack |
 | Dr Priya Menon, Meera Raghavan, Kavya Nair | `docs/07_Client_Zero.md` sections 1a and 1b | Locked v2.2, with the GCC addendum |
 | Meera's Week 4 Monday words | `docs/curriculum/W4_Analyst_craft.md`, Monday 26 October, business scenario | Tracker v7 |
 | Build 2 in Week 6, Kalpa Financial Services | `docs/programme/calendar.md`, W06 lines | Locked calendar |
 | Every number in the TRAINER files | `internal/C2_W03_SAT_witness_INTERNAL.py`, reading `content/W03/D1/data/` and checking 30 figures against the spine: `RESULT: PASS (0 disagreements with the spine)` | Recomputed 29 September 2026 |
-| The Week 1 examples on the presentation deck (Retail-Plus, 22 members, 5,000 shuffles, Retail-Core 2.7 percent) | `content/W01/D4/slides/C2_W01_D04_half2_STUDENT.md`, S14 | Delivered Week 1 content |
+| The Week 1 example on the presentation deck (Retail-Plus revenue per member Rs 3,279 to Rs 2,169 on 22 members, Retail-Core's Rs 110 on Rs 1,509, 135 of 5,000 shuffles, 0.027) | `content/W01/D4/study-notes/C2_W01_D04_notes_STUDENT.md`, lines 100 to 108 on main | Delivered Week 1 content |
 | The decisions log shape (field, issue, rows, decision, reason) | `content/W01/D3/takehome/C2_W01_D03_brief_STUDENT.md`, Part 3 | Delivered Week 1 content |
 
 No URL enters this day's files.
@@ -33,11 +33,13 @@ No URL enters this day's files.
 
 | Decision | Who, and when | Where it landed |
 |---|---|---|
-| A live demo runs cold once, on Friday and Saturday alike: if it breaks, the group says in one sentence what broke and why and goes to questions, with no fix and no second run | The requester, 29 September 2026, choosing Saturday's rule over Friday's two minutes to recover | Friday's day sheet (`content/W03/D5/trainer/C2_W03_D05_day_sheet_TRAINER.md`, three lines) changed to match; Saturday's deck, run sheet and question bank already carried it |
+| The demo rule on both expert days: a group's demo runs once, cold, on its raw files. If it fails, the group has two minutes to recover it live, as it would in front of a client. If it still fails, the group presents from its executed notebook, and the panel scores the live demo in presentation and defence as not run cold. The other 34 marks of the mini project are scored from the executed run, so a failed demo costs its own marks and never the analysis. | The orchestrating session, 29 September 2026, on the requester's delegation; it lands in the Build 1 spine with pull request #169 | Saturday's deck (S11 to S13), run sheet, question bank and the mini project workbook's Read me; Friday's day sheet already carried the two-minute recovery and is unchanged |
 
 ## Build notes
 
 The decks were built with `scripts/build_deck.py` and mermaid-cli 11.17.0 on the path, installed in
 the session's scratch space, because the container's mermaid-cli 12.0.0 rejects the `-w` flag the
-builder passes and the builder then prints every diagram as code. The workbook and its recalc
-manifest are written by `internal/C2_W03_SAT_build_grade_closure_INTERNAL.py`.
+builder passes and the builder then prints every diagram as code. The two workbooks and their recalc
+manifests are written by `internal/C2_W03_SAT_build_grade_closure_INTERNAL.py` and
+`internal/C2_W03_SAT_build_mini_project_scoring_INTERNAL.py`, which read the marks per event and the
+cohort's 35 learners from `data/programme/facts.yaml`.
