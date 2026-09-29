@@ -557,8 +557,8 @@ MergeError: Merge keys are not unique in right dataset; not a one-to-one merge
 **The rule.** `validate=` is Tuesday's row-count check made loud: it raises `pandas.errors.MergeError` instead of reporting after the fact.
 
 ```notes
-LIVE, 4 minutes. This MergeError is not the two-minute kind of error: it is the check that
-catches the trap, so it gets the time. Read the last line aloud: which side, which promise.
+LIVE, 4 minutes. This MergeError is the check that catches the trap, so it gets the time, unlike the two-minute
+runtime errors. Read the last line aloud: which side, which promise.
 pandas 3 also lists the duplicated keys under it.
 ```
 

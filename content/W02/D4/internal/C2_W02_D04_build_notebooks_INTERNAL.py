@@ -1155,8 +1155,8 @@ def escalated(solution):
         1: "**Keys 1c, 2b.** 1a would give one row per order, and 1b and 1d hold only customers who "
            "ordered or who were reached. 2a and 2d move with the calendar, so two runs disagree and "
            "everyone looks 21 days staler on the first Monday; 2c measures from April.",
-        2: "**Keys 3c, 4d.** 3a keeps the re-sent date, which is a later exposure; 3b drops every "
-           "customer who was re-sent, so they read as unreached; 3d changes the index and removes "
+        2: "**Keys 3c, 4d.** 3a keeps a later exposure date wherever a feed repeats a customer; 3b would drop "
+           "every customer a feed names twice, so they would read as unreached; 3d changes the index and removes "
            "nothing. 4d is the only promise that the table stays one row per customer: 4c checks "
            "nothing, 4a allows the fan-out and 4b allows anything.",
         3: "**Keys 5a, 6b, 7a.** 5b is a typo that flags almost everyone; 5c flags the customers who "

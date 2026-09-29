@@ -293,8 +293,8 @@ LIVE, 3 minutes. Pairs argue for two minutes, then letters.
 The answer is b. Friday takes the refusal further: the sheet presents the number; it never computes the source of truth.
 
 ```notes
-LIVE, 3 minutes. Push on c: pandas is not wrong for Finance's analysis, it is wrong as the
-place the official number is born.
+LIVE, 3 minutes. Push on c: pandas serves Finance's analysis well; the official number is
+born in the warehouse, where Finance reruns it.
 ```
 
 ---
