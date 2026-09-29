@@ -1,40 +1,27 @@
-# Solutions: predict the shape
+# Solution: round 3 set
 
-Answers: 1b 2d 3a 4a
+Answers: 1d 2b 3a 4c 5c 6a 7b
 
-## Q1. A Series of 301 values
+## The idea being tested
 
-Selecting a single column with `["amount"]` before aggregating gives a Series, indexed by the
-grouping key. Using `[["amount"]]` with double brackets would give a DataFrame instead, which is
-the distinction that catches people.
+The index decides what one row is, the columns decide what is compared across it, and the
+aggregation decides what each cell means. Predicting the shape before running a call is the
+cheapest check an analyst has.
 
-301 rather than 340, because 39 customers on the books placed no order in the two quarters and
-therefore form no group.
+## Item by item
 
-## Q2. 8 rows
+| Item | Key | Why it holds | Why the others fail |
+|---|---|---|---|
+| 1 | d | One group per segment, one sum per group: 4 values. | a is `transform("sum")`, which keeps every row. b and c confuse the group key with the customer. |
+| 2 | b | Two keys give one row per pair that exists: 4 segments by 2 quarters is 8, each with the two named measures. | a is the pivoted shape, which groupby does not produce. c transposes it. d is `transform` again. |
+| 3 | a | The index is the member, and only the 107 members with a Retail-Plus order appear; one column per quarter. | b assumes the 13 members who never ordered appear. c puts quarters on the rows. d is the order index, the wrong-grain trap. |
+| 4 | c | Six months down the side, four segments across. | a swaps index and columns. b is the long form before a pivot. d forgets the columns argument. |
+| 5 | c | Growth of a segment is growth of its spend: Rs 26,720 to Rs 35,770 is 34 percent. The default averages orders and understates it. | a measures the typical order, which is a different question. b: here the direction agrees, and in Retail-Core the default flips it, so direction is not safe either. d: both pivots are correct arithmetic; only one answers the question. |
+| 6 | a | melt makes one row per member per column: 107 by 6 is 642, zeros included. | b is the long table before the pivot, which had no zero months. c confuses rows with members. d is a groupby by month. |
+| 7 | b | "Along a row" means a row per member; "drifting" means months across; summed so each cell is spend; the grand-total check proves nothing was averaged away. | a answers a segment trend. c is the order-index trap. d ranks members and says nothing about drift. |
 
-Four segments times two quarters, and every pair occurs in this book. Grouping by two columns
-makes one group per distinct **pair**.
+## The part worth arguing about
 
-Option c is the trap worth thinking about: pandas only creates groups for pairs that exist in the
-data, so if a segment had no Q2 orders the result would be 7 rows and nothing would tell you a
-pair was missing. That is a question about the data rather than about `groupby`.
-
-## Q3. One row per customer, three columns, gaps as NaN
-
-`index` becomes the rows, `columns` becomes the columns, `values` fills the grid. A customer who
-bought in July and September and not August gets a NaN in the August cell.
-
-Those NaNs are information. They mean no order that month, which is different from a zero you put
-there yourself, and `fillna(0)` erases the distinction.
-
-## Q4. The original long frame, gaps included as NaN rows
-
-`melt` reverses the widening, so every cell of the grid becomes a row, including the empty ones.
-The result is therefore **longer** than the frame you started with, because the original long
-frame had no row for a month a customer skipped and the wide frame gave that gap a cell.
-
-Round-tripping through a pivot and back is not the identity, and that surprises most people once.
-
-Option d is wrong for a small reason worth knowing: `melt` defaults `value_vars` to every column
-not named in `id_vars`, so it runs perfectly.
+Item 5, option b. Direction feels like enough for a head of segment. It was not enough for
+Retail-Core this morning, where the averaged pivot said the segment rose 1.5 percent while its
+spend fell 1.8 percent. A default that happens to agree today is still the wrong tool.

@@ -1,94 +1,104 @@
-# Joins, and the count that catches them
+# Booked against collected
 
-## Panel 1: What each join keeps
+Kalpa Retail, Week 2 Tuesday. A join is a promise about the rows that do not match, a repeating key
+multiplies before it loses, and a joined number leaves the team only when its row count is explained.
 
-**Crux:** Each join answers a different question about the rows that do not match, so choosing one
-is a business decision rather than a style preference.
+## Panel 1: The bridge, from booked to what the feed posted
 
 ```mermaid
 flowchart LR
-    A["INNER"] --> B["matches"]
-    C["LEFT"] --> D["all left"]
-    E["RIGHT"] --> F["all right"]
-    G["FULL"] --> H["both"]
+    B["<b>booked</b><br/>5,800 over 5 orders"] --> U["<b>less never paid</b><br/>800, order T-4"]
+    U --> C["<b>collected</b><br/>5,000"]
+    C --> R["<b>plus posted twice</b><br/>1,500, T-3 retry"]
+    R --> P["<b>posted in the feed</b><br/>6,500"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class B,P known
+    class U,R bad
+    class C bet
 ```
 
-| Join | Keeps |
-|---|---|
-| `INNER` | Only rows that matched on both sides |
-| `LEFT` | Every left row, matched or not |
-| `RIGHT` | Every right row, matched or not |
-| `FULL OUTER` | Everything, with NULLs on either side |
+Invented numbers, on the two tiny tables. Booked comes from `orders` alone and posted from `payments`
+alone. The unpaid list is the anti-join, and the retry list is the same instalment posted twice.
 
-## Panel 2: The count check, every time
+**Crux:** Collected sits between booked and posted, and each step of the bridge is a list of rows
+someone can act on.
 
-**Crux:** A join is done when its row count is explained, not when it is checked.
+## Panel 2: Which join answers which question
 
-```sql
--- Rows before: 1,000 orders.
--- Rows after:  1,450.
--- Difference:  450 orders carry two payment rows.
--- Therefore:   do not SUM the order amount over this join.
-```
-
-The "Therefore" line is the one that saves somebody. If you cannot write it, you do not yet know
-what your join did.
-
-## Panel 3: Fan-out, and why it doubles rather than nudges
-
-**Crux:** One row on the left times many on the right multiplies every aggregate, and the damage
-is proportional to what the duplicated rows are worth.
-
-If the duplicated orders are a random slice of the book, a total moves a few percent. If they are
-the large invoices, which is normal because large invoices get instalment terms, the total roughly
-doubles.
-
-`count`, `sum` and `avg` are all wrong after a fan-out. Only `count` looks wrong.
-
-## Panel 4: The two anti-joins
-
-**Crux:** Keep everything, then keep only what failed to match, and you have found absence.
-
-```sql
--- orders with no payment
-SELECT o.* FROM orders o
-LEFT JOIN payments p ON p.order_id = o.order_id
-WHERE p.payment_id IS NULL;
-
--- payments with no order
-SELECT p.* FROM payments p
-LEFT JOIN orders o ON o.order_id = p.order_id
-WHERE o.order_id IS NULL;
-```
-
-## Panel 5: The fix that cannot fan out
-
-**Crux:** Collapse the many side to one row per key before joining, and the count check passes by
-construction.
-
-```sql
-WITH paid AS (
-  SELECT order_id, sum(amount) AS collected
-  FROM payments GROUP BY order_id
-)
-SELECT sum(o.amount) AS booked,
-       coalesce(sum(p.collected),0) AS collected
-FROM orders o
-LEFT JOIN paid p USING (order_id);
-```
-
-`coalesce` is load-bearing: an unpaid order joins to NULL, and NULL in arithmetic makes the whole
-expression NULL.
-
-## Panel 6: Retry against instalment
-
-**Crux:** They look almost identical in the table, and what separates them is a business fact
-rather than a data fact.
-
-| Two payment rows, and | Means | What to do |
+| Join | The question it answers | Tiny rows |
 |---|---|---|
-| The amounts are identical | A repeated charge | Report it, do not net it |
-| The amounts differ | A split invoice | Leave it alone, it is correct |
+| INNER | Which orders were matched, once per payment? | 6 |
+| LEFT | What happened to every order, paid or not? | 7 |
+| RIGHT | What happened to every payment, matched or not? | 7 |
+| FULL OUTER | What is unmatched on either side? | 8 |
 
-A rule that deleted every duplicate payment would delete four hundred legitimate instalments. The
-judgment is yours and it goes in writing.
+Anand asked about every order, so his report is a LEFT JOIN with `orders` on the left.
+
+**Crux:** Every join answers a question about the rows that do not match; choose the join by that question.
+
+## Panel 3: The grain rule, and the fan-out
+
+Say what one row stands for before the join: one order in `orders`, one payment event in `payments`.
+An instalment order has two payment rows, so a join repeats its order and `SUM(o.amount)` counts it
+twice. Q2 turns 462 orders into 678 rows, and "collected" reads 1.96 times booked.
+
+```sql
+WITH paid_per_order AS (
+  SELECT order_id, SUM(amount) AS paid
+  FROM payments GROUP BY order_id)
+SELECT COUNT(*), SUM(o.amount),
+       SUM(COALESCE(pp.paid, 0))
+FROM orders o
+LEFT JOIN paid_per_order pp
+  ON pp.order_id = o.order_id
+WHERE o.quarter = 'Q2';
+```
+
+**Crux:** A key that repeats on one side multiplies the other side's rows before any number is summed.
+
+## Panel 4: The reconciliation, written above the number
+
+```sql
+-- Rows in:  every Q2 order, from orders alone.
+-- Rows out: one row per order; equals rows in.
+-- Booked:   after the join equals from orders.
+-- The gap:  booked minus collected equals
+--           the booked value of the unpaid list.
+-- The feed: collected plus the retry surplus
+--           equals what payments posted.
+```
+
+If one line fails, the number stays in the team and the line that failed is named.
+
+**Crux:** A join is done when its row count is explained: rows in, rows out, and the difference named.
+
+## Panel 5: WHERE against ON, and the anti-join
+
+A payments condition in WHERE runs after the join and throws away the NULL rows of unpaid orders.
+In ON, it decides which payments attach, and every order survives.
+
+```sql
+LEFT JOIN payments p
+  ON p.order_id = o.order_id
+ AND p.paid_date BETWEEN '2026-07-01'
+                     AND '2026-09-30'
+```
+
+The anti-join is the one WHERE test on the right table that belongs there:
+`WHERE p.payment_id IS NULL`, or `WHERE NOT EXISTS (...)`, which reads as Anand's sentence.
+
+**Crux:** A condition on the right-hand table belongs in the ON clause, or the LEFT JOIN becomes an INNER one.
+
+## Panel 6: A retry against an instalment
+
+| Pattern per order | What it is | What to do |
+|---|---|---|
+| Instalments 1 and 2 | The customer paid as asked. | Count both payments. |
+| Instalment 1 twice | The gateway retried. | Count it once and report the surplus. |
+
+`GROUP BY order_id HAVING COUNT(*) > 1` lists every instalment order as well, 216 in Q2. Group by
+`order_id, instalment_no` instead.
+
+**Crux:** Two payment rows are not a double payment until the grain says they are the same payment.

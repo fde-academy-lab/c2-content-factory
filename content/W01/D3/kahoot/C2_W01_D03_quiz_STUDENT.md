@@ -1,83 +1,86 @@
-# Kahoot, Week 1 Day 3
+# Kahoot, Week 1 Wednesday
 
-Six items plus one return question from Tuesday, one level up.
+Eight items, ungraded, scored on correctness and speed together. The first item returns to Tuesday;
+the rest climb the day's five rungs. Every number is invented unless the item says it is the day's.
 
----
-
-## Q1. What three counts does a profiler report for a field?
-*Tests: profiling is a fixed move, not an improvised look around.*
-
-a) Minimum, maximum and the average value across all of the records
-b) Present, convertible and distinct  <- correct
-c) Nulls, blanks and whitespace-only strings counted separately
-d) Rows, columns and the number of bytes the field occupies on disk
+Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q2. A dedupe finds nothing and 201 rows hold 186 ids. What happened?
-*Tests: the identity rule, and why "looks the same" is not "is the same order".*
+## Q1. Return to Tuesday: which data reason could fake a segment's fall?
+*Tests: Tuesday's finding was measured on an unchecked export, which is today's premise.*
 
-a) The dedupe ran on the whole record and the repeats differ somewhere  <- correct
-b) The ids were read as text, so the comparison never matched anything
-c) There are no duplicates and the id column simply allows repeats
-d) The file was read twice and the second read replaced the first one
-
----
-
-## Q3. You default every failed conversion to zero. The data looks clean. What was lost?
-*Tests: a silent default is a decision nobody can audit.*
-
-a) Nothing is lost, since zero is the correct value for an unknown amount
-b) The row count, because defaulted rows are dropped from the output
-c) The knowledge of how many rows failed, and why  <- correct
-d) The data types, because every column becomes an integer after this
+- A price rise in that segment during the second quarter
+- Rows copied twice in the first quarter of that segment  <- correct
+- A new customer segment launched in the second quarter
+- A discount field missing on a subset of the orders
 
 ---
 
-## Q4. Input 200, clean 183, rejected 14. Does it reconcile?
-*Tests: the only equation of the day, and the arithmetic of noticing.*
+## Q2. What three counts does a profile report for every field?
+*Tests: the profile before any total.*
 
-a) Yes, because 183 clean rows plus 14 rejected is close enough to 200
-b) Yes, if the three remaining rows were empty lines at the end of the file
-c) It cannot be told without knowing what the rejection reasons were
-d) No, three rows are unaccounted for  <- correct
-
----
-
-## Q5. The Rs 4,80,000 order survives the clean pass. Why?
-*Tests: cleaning is not making the data agree with you.*
-
-a) Because it is the largest order and the largest is always kept on purpose
-b) Because it is real  <- correct
-c) Because removing it would change the revenue total that Finance already has
-d) Because outliers are only removed once a statistical test has flagged them
+- Mean, median and maximum of the field
+- Rows, columns and the file's size on disk
+- Present, convertible and distinct  <- correct
+- Missing, duplicated and outlying values
 
 ---
 
-## Q6. Dashboard says 2.1 crore, Finance says 1.9. Which, and how?
-*Tests: the reconciliation, and the fact that both figures are computable.*
+## Q3. A dedupe says 0 duplicates; distinct ids say 186 of 200. What happened?
+*Tests: the whole-record key that makes every row unique.*
 
-a) Finance, because the books are the system of record in every company
-b) The dashboard, because it is computed from the source export directly
-c) Finance, and a bridge from 2.1 to 1.9 that names every step proves it  <- correct
-d) Neither until a third system is brought in to break the tie between them
-
----
-
-## Return question from Tuesday, one level up
-
-## Q7. Name a data reason that could fake the Retail-Plus finding.
-*Tests: Tuesday's conclusion, now under the doubt Wednesday teaches.*
-
-a) Retail-Plus members are simply ordering less often than they used to be
-b) The two quarters cover the same number of weeks as each other
-c) Duplicated Q1 rows concentrated in one segment  <- correct
-d) The discount field is absent on some of the Retail-Plus records entirely
+- 14 orders are missing from the export and need a resend
+- The id count is wrong, since the dedupe checked every field
+- Fourteen rows have a blank order_id the count skipped
+- The dedupe compared a field that differs on every row  <- correct
 
 ---
 
-## Trainer note on the set
+## Q4. Failures are turned into 0 so the loop runs. What got lost?
+*Tests: coercion hides failures and invents values.*
 
-Q4 is the one to slow down on: 183 plus 14 is 197, and the missing three are the whole point of
-writing the equation down. Q7 is the return question and it lands hardest if it is asked before the
-reveal in block five rather than after it.
+- Nothing, since zero adds nothing to the total
+- The evidence that an order's amount was unreadable  <- correct
+- Only the speed of the loop, since it now does more
+- The rows, since a zero row is dropped from the file
+
+---
+
+## Q5. Input 200, clean 183, rejected 14. Does it reconcile?
+*Tests: input equals clean plus rejected, as arithmetic.*
+
+- No, since 183 plus 14 is 197, 3 short  <- correct
+- Yes, since 183 is more than nine tenths of the input
+- Yes, since the rejected rows are all listed in the log
+- No, since a clean file must hold all 200 rows
+
+---
+
+## Q6. The rows reconcile, and Q1 is Rs 3,000 short of the books. Next step?
+*Tests: reconcile twice, in rows and in rupees.*
+
+- Ship it, since Rs 3,000 rounds away in a crore
+- Add a Rs 3,000 adjustment line to close the gap
+- Find the set-aside row that holds it  <- correct
+- Ask Finance to lower their books by Rs 3,000
+
+---
+
+## Q7. A Rs 18 lakh Business order survives cleaning. Why?
+*Tests: large is not wrong; the record decides.*
+
+- Its record and its buyer both check out  <- correct
+- Removing it would make the quarter look too small
+- Bulk orders are never checked by a cleaning pass
+- It sits below three times the quarter's mean order
+
+---
+
+## Q8. Dashboard 2.1 crore, Finance 1.9. Which is right, and how do you prove it?
+*Tests: the bridge, one move per cause, backed by rows.*
+
+- The dashboard, since it reads every row the ERP exported
+- The average of the two, since both carry some error
+- Neither, until Finance re-enters every order by hand
+- The books, once the bridge closes to them in rupees  <- correct
