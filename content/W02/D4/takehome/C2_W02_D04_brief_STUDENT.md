@@ -1,65 +1,62 @@
-# Take-home: the tool note, and one column that earns its place
+# Take-home: the refresh, run on the staging snapshot
 
-## The situation
+About two hours tonight. Friday opens by walking one learner's answer to Part 3.
 
-The senior analyst asked a question in front of the room and expects a written answer:
+> **The client's ask.** The data platform lead: "Before your refresh runs against the live
+> warehouse on Monday, run it on my staging snapshot. It is a different draw of the same
+> business, so your answers from class will not carry over. Tell me what your guards did, what
+> the table says, and which win-back threshold you would give Marketing."
 
-> "You did the tree in plain Python in Week 1, in SQL on Monday. Do it a third way now, and tell me
-> honestly which tool you would pick for which job."
+## The files
 
-Tonight you answer it, and you extend the customer table by one column that proves you understood
-what the table is for.
+Three CSVs in `content/W02/D4/data/`, written by the programme's data generator:
 
-## Part one: the tool note
-
-Five sentences. Not four, not a page.
-
-| Sentence | What it has to do |
+| File | What it holds |
 |---|---|
-| 1 | Name what the warehouse owns, and why |
-| 2 | Name what pandas owns, and why |
-| 3 | Name what plain Python owns, and why |
-| 4 | Name one thing you would **refuse** to do in one of the three, and the reason |
-| 5 | Name the case where you would change your mind about sentence 4 |
+| `C2_W02_D04_takehome_orders_STUDENT.csv` | Orders, one row each, two quarters |
+| `C2_W02_D04_takehome_customers_STUDENT.csv` | The customer list, one row per customer |
+| `C2_W02_D04_takehome_exposure_STUDENT.csv` | The monsoon sale's exposure feed |
 
-The fourth sentence has to be about audit, ownership or who can read the thing. If it is about
-speed or about a library's capabilities, rewrite it.
+Read them with `pd.read_csv(..., parse_dates=[...])`; the snapshot has no Postgres of its own.
 
-The fifth sentence is what separates a rule from a slogan. If you cannot think of a case, the rule
-is too broad.
+## Part 1. Run your refresh, and keep what it said (35 minutes)
 
-## Part two: one more column
+Adapt `build_customer_table` from the escalated case to read the three CSVs, and run it on the
+snapshot with every guard in place. **Paste the output of your first run exactly as it came
+out**, whether it was a table or an error, then what you changed and why, then the output of
+the run that passed. A first run that passed is fine; say so and say which guard would have
+stopped a bad feed.
 
-Add exactly one column to the customer table that the growth team did not ask for and would thank
-you for.
+## Part 2. The table's numbers (20 minutes)
 
-Above it, four comment lines:
+Report the row count, the spend total, the as-of date, the number of customers the sale reached
+and how many of them bought, and the 60-day win-back list. Then check them against the
+self-check file.
 
-```python
-# What it is:        in words, not in code
-# Why they want it:  the decision it would change
-# The cost:          what it assumes, or what it hides
-# Refresh safety:    what happens to it when the table is rebuilt on Monday
-```
+## Part 3. The threshold, defended (25 minutes)
 
-The refresh-safety line is the one most people skip and the one the growth team will hit first.
-A column computed from "today" means something different every Monday.
+Marketing will send a win-back discount to every customer past the threshold you choose: 45, 60
+or 90 days. Give the count at each threshold from the snapshot, choose one, and defend it in
+three sentences: what the discount costs if it reaches customers who were coming back anyway,
+what it costs if it misses customers who were leaving, and why your threshold is the trade you
+would sign. A choice with no number beside it does not count.
 
-## Constraints
+## Part 4. Two tools, actually run (20 minutes)
 
-The column must come from data already in the warehouse. No new feeds.
+Compute Retail-Plus orders per member for Q1 and Q2 on the snapshot twice: once in pandas and
+once in plain Python with a loop and a set. **Paste both outputs.** They must agree to three
+places; if they did not at first, say what was wrong.
 
-It must survive `validate="one_to_one"` on every merge used to build it. If you need a merge that
-cannot, say so and aggregate first.
+## Part 5. The months view and one line from the source (20 minutes)
 
-It must not be a rename or a rescale of a column already there. "Monetary in thousands" is not a
-new column.
+Build the Retail-Plus and Retail-Core months views with `aggfunc="sum"`, check each grand total
+against its orders, and report each segment's change from Q1 to Q2. Then open the pandas
+reference for `DataFrame.merge` (verified 29 September 2026):
+https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html
+Quote the line that says what `"one_to_one"` checks, and say in one sentence why your function
+uses it rather than `"many_to_one"`.
 
-## The self-check
+## What you hand in
 
-`C2_W02_D04_selfcheck_STUDENT.md`.
-
-## Why these two together
-
-The note is judgment with no code. The column is code that only works if the judgment is right.
-Handing in one without the other is the failure mode this pairing exists to catch.
+One notebook, run top to bottom from a fresh kernel, with Parts 1 to 5 in order, the pasted
+outputs in Parts 1 and 4, and the three sentences of Part 3 in a markdown cell.
