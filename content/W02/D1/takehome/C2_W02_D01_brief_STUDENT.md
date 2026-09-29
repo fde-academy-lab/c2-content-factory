@@ -1,48 +1,79 @@
-# Take-home: two questions Anand's analyst would ask next
+# Take-home: the question Anand's analyst asks next
 
-## The situation
+Four parts, about two hours in all. Part 1 is the day's method on a question the room never asked.
+Part 2 is two queries of your own, which is what the analyst will ask you to talk through. Part 3 is
+ten minutes from memory, and Part 4 is the practice the row sets for tonight.
 
-Your Monday suite is written and it answers what Anand asked. His analyst will read it, and an
-analyst who reads six queries always leaves with two more questions. Your job tonight is to guess
-which two, and answer them before they are asked.
+Tomorrow opens by running one learner's Part 1 file unchanged on the projector.
 
-## What to hand in
+> "The fall sits in Retail-Plus. Fine. Which cities? My regional heads will ask before I have
+> finished the sentence." Anand's analyst, replying to the Monday suite
 
-One `.sql` file holding two queries you wrote yourself, neither of which is in the suite.
+---
 
-Each query carries a comment block above it with four lines and no more:
+## Part 1. The Retail-Plus tree by city, about an hour
 
-```sql
--- Question:    the question in a stakeholder's words, not in SQL words
--- Denominator: what the number is divided by, and what that excludes
--- Answer:      the number this returned when you ran it
--- Caveat:      the one thing that would make this number wrong
-```
+The segment lives on the customer, and so does the city. Work in
+`sql/C2_W02_D01_06_takehome_STUDENT.sql`, under its comment lines.
 
-Then, separately, a short note of four or five sentences: which of the two you would put in front
-of Anand first, and why the other one waits.
+1. Write the Retail-Plus tree per city for each quarter as two CTEs, one per quarter, lined up on
+   city: buyers, orders, orders per buyer divided in numeric, and revenue.
+2. Add the change in revenue, in rupees and in percent, and order the result by the change in
+   rupees, largest fall first.
+3. Add a column, or a second query with `HAVING`, that flags every city-quarter holding fewer than
+   30 orders.
+4. Check that the six cities add back to the Retail-Plus totals you computed today, in both
+   quarters, and write the check as its own query.
 
-## Constraints that make this yours
+Then write two sentences in a comment at the end of the file: which city carries the largest part of
+the fall and through which branch, and whether the city split is a finding you would put on Anand's
+sheet or a lead for his regional heads, with the threshold that decided it.
 
-The two questions must be answerable from `orders` and `customers` alone. The payments table
-arrives tomorrow and is out of scope tonight.
+---
 
-Neither question may be one of the six in the suite, and neither may be a suite query with a
-different filter. "Revenue per channel for Q1 only" is query three with a `WHERE`, and it does not
-count.
+## Part 2. Two queries of your own, about thirty minutes
 
-At least one of the two must be a question where the **denominator** is the interesting part.
-Last week's Student segment is the shape of what is meant: a rate that looks impressive until you
-see how few observations sit under it.
+Write two more extraction queries on questions Anand's analyst might ask about the book, each with
+one comment line stating the question, the reading of revenue and the denominator. They must run
+unchanged on the warehouse and use nothing beyond today's clauses. One of them must use a CTE.
 
-## The self-check
+For each, write one line saying which of today's four traps it could have fallen into and how the
+query avoids it.
 
-Work through `C2_W02_D01_selfcheck_STUDENT.md` before you hand this in. It does not check your
-SQL. It checks whether your caveat line is doing any work.
+---
 
-## Why this is not a typing exercise
+## Part 3. The run order from memory, about ten minutes
 
-Anybody can write a query that runs. The four comment lines are the deliverable, and the caveat
-line is the one that separates an analyst from a person with database access. A caveat that says
-"the data might be wrong" is not a caveat. A caveat that says "this counts orders rather than
-customers, so one buyer placing forty orders looks like forty buyers" is one.
+At the top of your file, write the logical order of FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY
+and LIMIT in a comment, from memory, then one line saying why `WHERE count(*) > 5` is refused.
+
+---
+
+## Part 4. Practice, about twenty minutes
+
+SQLBolt, lessons 1 to 5, interactive, https://sqlbolt.com/ (verified 29 Sep 2026)
+
+Lesson 4 is "Filtering and sorting Query results" and covers `ORDER BY`, `LIMIT` and `OFFSET`. Answer
+in one line at the end of your file: which exercise in lessons 1 to 5 would have returned a
+different answer if its `ORDER BY` were removed, and why.
+
+---
+
+## What makes this hard to shortcut
+
+Part 1 runs on Kalpa's warehouse, which no assistant has seen, and its numbers either match the
+self-check or they do not. Part 1's last sentence is a defended choice with a threshold: half the city
+cells hold fewer than 30 orders, and a note that ignores that shows it. Part 2's queries are yours
+and are run unchanged in front of the room, and Part 4 asks about a specific exercise on a named
+page.
+
+---
+
+## What to bring tomorrow
+
+| Part | What to bring |
+|---|---|
+| 1 | The .sql file, which runs top to bottom unchanged, and your two sentences |
+| 2 | The two queries, their comment lines and the trap each one avoids |
+| 3 | The run order from memory, at the top of the file |
+| 4 | Your one line on SQLBolt |

@@ -1,38 +1,49 @@
-# Monday's extras
+# Extras: one to stretch, one to recover
 
-Two paths. Take the one that matches where you actually are, not where you would like to be.
+Both are optional and neither is graded. Pick the one that matches where you actually are.
 
-## Recovery: if the execution order did not land
+---
 
-Do this before tomorrow, because tomorrow assumes it.
+## Stretch: the suite that checks itself
 
-Take one query you wrote today and write the seven stages down the left of a page. Beside each
-stage, write how many rows exist at that moment. For the segment query on Q1 that reads 1,000 at
-`FROM`, 538 after `WHERE`, 4 after `GROUP BY`, 4 after `SELECT`.
+You finished the suite early and every number matched. Then this one is for you.
 
-Then do the same for a query that failed today, and stop at the stage where it failed. The number
-beside that stage is usually the explanation.
+**The situation.** Anand's analyst writes back.
 
-If that still feels thin, redo SQLBolt lessons 1 to 5 and stop after each one to say which stage
-of the picture it was about.
+> "Your six queries are fine today. What tells me, next Monday, that one of them has quietly gone
+> wrong before I read a number from it?"
 
-## Stretch: three questions the suite cannot answer
+**What to build.** A seventh query, `suite_7_checks`, that returns one row per check with a column
+saying PASS or FAIL, computed with `CASE`. At least these four:
 
-Each of these is answerable with what you know today, and each one takes a turn you have to find.
+| Check | What it compares |
+|---|---|
+| The segments add back | The eight segment-quarter order counts summed, against count(*) over orders |
+| The customers are people | count(DISTINCT customer_id) against count(*), which must differ |
+| No ratio came out whole | Every orders-per-customer value in query 3, tested for a fraction |
+| Revenue reconciles | The revenue in query 6's steps, against the revenue per quarter in query 1 |
 
-**One.** Which customers ordered in Q1 and not in Q2? You have no join tools for this yet beyond
-what you used today, so the honest route is two CTEs and a `NOT IN`. Write it, then write one
-sentence on what `NOT IN` does when the inner list contains a NULL. Test that sentence rather than
-trusting it.
+**The hard part, and the point.** A check that can never fail proves nothing. For each of your four,
+write one line saying which mistake would turn it to FAIL, then make that mistake in a copy of the
+suite and watch it happen.
 
-**Two.** What share of Q1 revenue came from the largest ten orders? Getting the numerator is easy.
-Getting numerator and denominator into the same result without running two queries is the turn.
+**If you want more.** PostgreSQL Exercises, the aggregates category, https://pgexercises.com/questions/aggregates/ (verified 29 Sep 2026)
 
-**Three.** The suite reports orders per customer as a single average per segment. Find the segment
-where that average is least honest, and prove it with one query. The word to reach for is not in
-today's material, and finding that out is the point.
+---
 
-## If you want tomorrow's advantage
+## Recovery: one clause at a time
 
-Open the `payments` table and look at five rows. Do not analyse it. Just look, and count how many
-payment rows the same `order_id` can have.
+The morning moved fast, the grouping did not land, and you would rather rebuild it than pretend.
+Run each line in `sql/`, one change at a time, and check the number before the next change.
+
+| Step | What you add | The number you should see |
+|---|---|---|
+| 1 | `SELECT count(*) FROM orders;` | 1000 |
+| 2 | `WHERE quarter = 'Q2'` | 462 |
+| 3 | Replace count(*) with `count(DISTINCT customer_id)` | 227 |
+| 4 | Remove the WHERE, add `quarter,` after SELECT and `GROUP BY quarter` at the end | two rows, 244 and 227 |
+| 5 | Add `count(*) AS orders,` to the SELECT | 538 and 462 beside the customers |
+| 6 | Add `round(count(*)::numeric / count(DISTINCT customer_id), 2)` | 2.20 and 2.04 |
+
+**The point of it.** Each step adds one clause, so when a number surprises you, the clause you just
+added is where to look. Say aloud, at each step, which clause the database ran first.

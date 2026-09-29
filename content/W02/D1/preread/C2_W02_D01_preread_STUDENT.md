@@ -1,45 +1,53 @@
-# Before Monday: the vocabulary, and one setup check
+# Pre-read for Tuesday: booked against collected
 
-Fifteen minutes tonight. Nothing to install by hand.
+About twenty minutes tonight, after the take-home. Tuesday opens on this message.
 
-## The setup check
+> "Booked revenue is not collected revenue. Some orders are paid in two instalments, some are
+> refunded, some were never paid at all. Show me, order by order, what we actually collected against
+> what we booked in Q2. If there is a gap, I want to know which orders and which channel."
+> Anand Iyer, CFO, Kalpa Retail
 
-Open the Codespace and run this in a terminal:
+Today every number came from one table, `orders`, plus one lookup to `customers` that could not
+change the row count, because each order has exactly one customer. Tomorrow's number needs a second
+table whose rows do not line up one to one with the orders, and that changes what a count and a sum
+mean.
 
-```bash
-psql -c "SELECT count(*) FROM orders;"
+---
+
+## The words you will meet, and the gap each one fills
+
+| Word | What it means | The question it answers tomorrow |
+|---|---|---|
+| Join | Lining up rows of two tables on a shared key, such as order_id | Which payments belong to which order? |
+| Key | The column two tables share, such as order_id in orders and in payments | What does the database match on? |
+| One-to-many | One row on one side can match several rows on the other | Can one order carry more than one payment? |
+| INNER JOIN | Keeps only the rows that found a match on both sides | What happens to an order nobody paid? |
+| LEFT JOIN | Keeps every row of the left table, matched or not, with NULLs where nothing matched | How do we keep the unpaid orders on the report? |
+| Anti-join | A LEFT JOIN kept only where the right side is NULL | Which orders have no payment at all? |
+| Row-count check | Rows before the join, rows after, and the difference explained | How do we know the join added or lost nothing? |
+
+---
+
+## One thing to think about
+
+Today's lookup to `customers` kept 1,000 rows as 1,000 rows. Write down, before class, what you
+expect the row count to be when 1,000 orders are joined to a payments table, and what would have to
+be true of the payments for the count to stay at exactly 1,000.
+
+## The check for tonight
+
+Run this in VS Code against the warehouse and write the number down without looking anything up:
+
+```sql
+SELECT count(*) FROM payments;
 ```
 
-One thousand comes back and you are ready. Anything else, run this and try again:
+Tuesday's first question is what that number means next to 1,000 orders.
 
-```bash
-bash .devcontainer/load_warehouse.sh
-```
+## The line worth carrying in
 
-If it still fails, post the last line of the output before the session rather than during it.
+A join is done when its row count is explained, never when it runs.
 
-## Six words you will hear tomorrow
+## Reading, ten minutes
 
-| Word | What it means here |
-|---|---|
-| Table | Rows of one kind of thing, with named columns. `orders` is one row per order. |
-| Query | A description of the result you want. You do not say how to get it. |
-| Clause | One named part of a query: `SELECT`, `FROM`, `WHERE` and four more. |
-| Aggregate | A function that turns many rows into one value: `count`, `sum`, `avg`. |
-| Group | The set of rows sharing a value, which an aggregate then collapses. |
-| CTE | A named step inside a query, written `WITH name AS (...)`. |
-
-## One thing to read, and one to watch
-
-- SQLBolt, lessons 1 to 5, which run in the browser with nothing to install:
-  <https://sqlbolt.com/> (verified 13 Sep 2026)
-- freeCodeCamp.org, "Learn PostgreSQL Tutorial, Full Course for Beginners", the first forty
-  minutes only: <https://www.youtube.com/watch?v=qw--VYLpxG4> (verified 13 Sep 2026)
-
-## One question to arrive with
-
-Last week you told Meera that Q1 was Rs 2.10 crore. Tomorrow the warehouse will say something
-else, and neither number will be wrong.
-
-Spend two minutes guessing why before you are told. Write your guess down; you will want to know
-tomorrow whether you had it.
+SQLBolt, Lesson 6, multi-table queries with joins, https://sqlbolt.com/lesson/select_queries_with_joins (verified 29 Sep 2026)
