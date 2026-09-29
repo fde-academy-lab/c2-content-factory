@@ -98,6 +98,15 @@ Every plant appears by name only in `trainer/` and here.
    Neither the order amounts nor the Q2 member totals in v4 tie in the top ten; the tie the row and
    `docs/07` name for today sits at fiftieth in Retail-Plus, and the pack follows today's row. The
    mechanism is shown on six invented members instead.
+10. **Kahoot Q5 tests ROW_NUMBER's arbitrary cut at a tie, in place of the row's window-in-WHERE
+    item.** The row's Kahoot plan lists "a window function inside WHERE; why refused and the fix".
+    The requester's brief for this build says that error gets two minutes when it happens and never
+    an exercise item, and the requester outranks the row, so the error stays a two-minute aside in
+    Round 1 and the Kahoot slot tests a list that changes between runs because ROW_NUMBER cut a tie
+    with no tiebreaker. The interview question on the error stays, since it is the row's anchor.
+11. **The study notes run to about 4,400 words of prose.** The standard asks for about 4,000; the
+    count is 5,272 with code, Mermaid and tables, and the twelve full interview answers carry most of
+    the difference.
 
 ---
 
@@ -143,3 +152,9 @@ Every number and output in the pack came from PostgreSQL 16.13, Python 3.11, pan
 psycopg2 2.9.13, SQLAlchemy 2.1.1 and nbclient 0.11.0, checked on 29 September 2026. The runtime
 error quoted in the day sheet and the decks, `ERROR:  window functions are not allowed in WHERE`, was
 produced by running the query on PostgreSQL 16.13, which prints two spaces after the colon.
+
+The decks were built with mermaid-cli 12.0.0 in the build container. That version no longer takes
+`-w`, which `scripts/build_deck.py` passes, so every diagram would fall back to monospace text. The
+build put a shim first on PATH that drops `-w` and `-H` before calling mmdc, and every diagram then
+rendered; the rendered slides were checked through LibreOffice with Carlito installed. The cheat
+sheet's diagram renders as SVG, a path that never passes `-w`, and its PDF was checked by eye.
