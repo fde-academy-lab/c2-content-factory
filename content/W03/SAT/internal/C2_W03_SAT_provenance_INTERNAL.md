@@ -28,7 +28,12 @@ No URL enters this day's files.
 | The offer ran in three cities | Offers in all six cities: about half the patients in Bengaluru, Hyderabad and Mumbai, about a fifth in Delhi, Chennai and Pune | The question bank describes the files, and gives Delhi's positive split (23.5 percent, 316 offered) as the caveat challenge |
 | The old export repeats 180 rows from a mid-quarter re-export | 180 repeated booking identifiers dated 1 June to 26 September; 145 identical on every field, the rest differing only in `updated_at` | The question bank quotes the files' dates and makes no claim about when the re-export ran |
 | The generator's witness counts 60 text amounts | 35 invoice amounts carry a comma in the file | The question bank quotes 35, which is what a group reading the CSV finds |
-| Friday's day sheet: a demo that fails live gets two minutes to recover, then the group presents from its executed run | The requester's Saturday brief: cold, raw files, one run | Saturday follows the brief (no second run); Friday's first tranche follows Friday's sheet, so the two days differ until one of them is changed |
+
+## Decisions taken in this session
+
+| Decision | Who, and when | Where it landed |
+|---|---|---|
+| A live demo runs cold once, on Friday and Saturday alike: if it breaks, the group says in one sentence what broke and why and goes to questions, with no fix and no second run | The requester, 29 September 2026, choosing Saturday's rule over Friday's two minutes to recover | Friday's day sheet (`content/W03/D5/trainer/C2_W03_D05_day_sheet_TRAINER.md`, three lines) changed to match; Saturday's deck, run sheet and question bank already carried it |
 
 ## Build notes
 

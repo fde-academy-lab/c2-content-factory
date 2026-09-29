@@ -52,7 +52,7 @@ panel questions that learner separately, alone, for up to five minutes in the ro
 |---|---|---|
 | Read the presentation order drawn at Friday's close, strike the groups that presented Friday, and assign the rest to the two rooms by the rule below | Programme Head | Both room orders are printed and on each panel's table |
 | Copy Friday's GD totals (from `content/W03/D5/rubrics/C2_W03_D05_gd_scoring_sheet_TRAINER.xlsx`), Friday's first-tranche mini project totals and Thursday's mock scores (from `content/W03/D4/rubrics/C2_W03_D04_mock_scoring_sheet_TRAINER.xlsx`) into the grade closure workbook | Programme Head, with the Academic TA reading the sheets aloud | The workbook's Checks sheet shows no MISSING in the GD column for Friday's groups, none in the mini project column for the first tranche, and none in the mock column |
-| Run the demo from the frozen commit for any group with no second cold run logged on Friday, as Friday's freeze rule requires | Academic TA | Every group has a logged cold run on its frozen hash |
+| Run the demo from the frozen commit for any group with no second rehearsal cold run logged on Friday, as Friday's freeze rule requires; this is a rehearsal, and the group's one run before the panel is still to come | Academic TA | Every group has a logged cold run on its frozen hash |
 | Open each group's demo machine on a fresh Codespace at its frozen commit, with the raw files in the data folder, and leave it closed and cold; check `git rev-parse HEAD` against Friday's freeze table before each slot | Academic TA | Every group has a machine on its frozen hash, and none has run the notebook |
 | Put the question bank in front of each panel, marked with that room's sub-problems | Trainer | Each panel member has read their pages |
 
