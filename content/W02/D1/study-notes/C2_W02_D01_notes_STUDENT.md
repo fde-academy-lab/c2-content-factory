@@ -42,8 +42,8 @@ language.
 **What comes next.** Tuesday joins payments to orders to separate booked revenue from collected
 revenue, and a join is the first operation this week that can change the number of rows. Wednesday
 ranks members and compares a month with the one before it. Thursday rebuilds the same tree in
-pandas, so the room sees three tools answer one question. The afternoon closed on a tentative IITGN
-faculty session, which these notes do not cover.
+pandas, so the room sees three tools answer one question.
+The afternoon closed on a tentative IITGN faculty session, which these notes do not cover.
 
 ---
 
