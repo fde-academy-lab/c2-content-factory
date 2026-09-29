@@ -77,8 +77,10 @@ take-home self-check's expected numbers and here.
    ways past a missing key, dictionary keys against list scans, the middle half against the range).
    No new idea enters: each addition deepens one the morning already teaches. The bridge orders, the
    quartiles and the Business mean without its largest order are computed from the class file.
-8. **The study notes run to about 5,400 words against "about 4,000"**, carrying three rounds, two cases
-   and twelve full interview answers; the interview answers are where to cut.
+8. **The study notes run to about 7,000 words against "about 4,000"**: three rounds, two cases, twelve
+   full interview answers, and, since 29 Sep 2026 at the requester's ask, the morning deck's business
+   context and technical depth in the rung where each is taught. The interview answers and the
+   "Where this shows up in the work" section are where to cut.
 9. **Notebook 05 adds Retail-Plus orders per week around the assumed break** (3.9 in Q1, then 2.3 and
    1.5), computed from the file, because 18 against 8 orders compares windows of 55 and 37 days.
 
