@@ -64,7 +64,7 @@ from pptx.enum.text import PP_ALIGN
 from pptx.util import Emu, Inches, Pt
 
 import brand
-from build_cheatsheet import MERMAID_CONFIG, MermaidError, mmdc_page_width, run_mmdc, svg_labels
+from build_cheatsheet import MERMAID_CONFIG, MermaidError, mmdc_page, run_mmdc, svg_labels
 from deck_layout import (ACC, BG, BOLD, INK, LINE, MUTED, NIGHT, TINT, WHITE, MARGIN, WIDTH,
                          BODY_TOP, BODY_BOTTOM, RULE_Y, SLIDE_W, SLIDE_H, CALLOUT, CRUMB, NUMBERED,
                          QUOTE, SLIDE_ID, BEATS, add_runs, background, bar, bar_height, breadcrumb,
@@ -341,7 +341,9 @@ def render_mermaid(lines, width_in=None):
     """
     code = svg_labels("\n".join(lines).strip()) + "\n"
     scale = render_scale(lines, width_in)
-    key = hashlib.sha256((code + MERMAID_CONFIG + f"scale={scale}").encode()).hexdigest()[:16]
+    flags, config_text = mmdc_page(2600, MERMAID_CONFIG)
+    key = hashlib.sha256((code + config_text + " ".join(flags) + f"scale={scale}")
+                         .encode()).hexdigest()[:16]
     CACHE.mkdir(parents=True, exist_ok=True)
     png = CACHE / f"{key}.png"
     if png.exists():
@@ -350,8 +352,8 @@ def render_mermaid(lines, width_in=None):
         raise MermaidError("mermaid-cli is not installed, so this deck's diagrams would print as "
                            "text. Install it with npm install -g @mermaid-js/mermaid-cli.")
     (CACHE / f"{key}.mmd").write_text(code)
-    theme = CACHE / f"theme_{hashlib.sha256(MERMAID_CONFIG.encode()).hexdigest()[:8]}.json"
-    theme.write_text(MERMAID_CONFIG)
+    theme = CACHE / f"theme_{hashlib.sha256(config_text.encode()).hexdigest()[:8]}.json"
+    theme.write_text(config_text)
     config = CACHE / "puppeteer.json"
     if not config.exists():
         config.write_text('{"args":["--no-sandbox","--disable-setuid-sandbox"]}\n')
@@ -360,7 +362,7 @@ def render_mermaid(lines, width_in=None):
     if chrome:
         env["PUPPETEER_EXECUTABLE_PATH"] = chrome
     run_mmdc(["mmdc", "-i", str(CACHE / f"{key}.mmd"), "-o", str(png), "-b", "transparent",
-              *mmdc_page_width(2600), "-s", str(scale), "-c", str(theme), "-p", str(config)],
+              *flags, "-s", str(scale), "-c", str(theme), "-p", str(config)],
              env, png, 240)
     return png
 
