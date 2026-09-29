@@ -158,7 +158,10 @@ error quoted in the day sheet and the decks, `ERROR:  window functions are not a
 produced by running the query on PostgreSQL 16.13, which prints two spaces after the colon.
 
 The decks were built with mermaid-cli 12.0.0 in the build container. That version no longer takes
-`-w`, which `scripts/build_deck.py` passes, so every diagram would fall back to monospace text. The
-build put a shim first on PATH that drops `-w` and `-H` before calling mmdc, and every diagram then
-rendered; the rendered slides were checked through LibreOffice with Carlito installed. The cheat
-sheet's diagram renders as SVG, a path that never passes `-w`, and its PDF was checked by eye.
+`-w`, which `scripts/build_deck.py` passes, so every diagram would fall back to monospace text. A
+first build dropped the flag through a PATH shim, which leaves mmdc an 800 pixel page and drew the
+one fence wider than that, the WHERE aside at 936 CSS pixels, at 784. Both decks were then rebuilt
+with the builder fix in its own pull request (the page set with `--size 2600` and useMaxWidth off),
+which draws every fence at its own width, and the rendered slides were checked through LibreOffice
+with Carlito installed. The cheat sheet's diagram renders as SVG, a path that never passes `-w`,
+and its PDF was checked by eye.
