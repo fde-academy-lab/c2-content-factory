@@ -1,98 +1,49 @@
-# Take-home: a second export, and the note that goes with it
+# Take-home: a second export, and the note to Finance
 
-Anand's analyst sends a 97-row slice with a one-line note: "this one came through a different
-route." It has defects. **They are not the same defects as the class file**, so nothing from the
-session can be pasted across.
+> "The ERP team found another extract from the migration, Q1 only, a different batch. Same drill:
+> which total is right, what you set aside and why, and whether it changes anything we said today."
+>
+> Anand Iyer, finance controller, Kalpa Retail
 
----
+About two hours tonight. The file is `data/C2_W01_D03_takehome_STUDENT.csv`. Nobody has profiled it
+in class, and its defects are not the ones you met today, so today's counts will not carry over.
 
-## Part 1. The full pass
+## Part 1. The full pass, about seventy minutes
 
-Open `notebooks/C2_W01_D03_hands_on_STUDENT.ipynb`. Profile, name every defect, decide, record,
-reconcile. Fill every `__TODO__` and post the five letters.
+In a fresh notebook, using the day's helper:
 
-**Four kinds of defect are in that file and one of them does not appear in the class file at all.**
-One of the four converts cleanly and raises no error, which is why profiling comes before deciding.
+1. Read the file and profile every field: present, convertible, distinct. Write one sentence per
+   field on what its counts let you trust.
+2. Convert amounts with a rejects log. Every row that fails goes into the log with its line, field,
+   value and reason, and you read each logged row before deciding anything about it.
+3. Apply the identity rule, preferring the copy that validates, and log a reason for every row set
+   aside.
+4. For every value that converts but is still not an ordinary order, make the three-way decision,
+   drop, default or keep and flag, and write the reason. At least one decision tonight has two
+   defensible answers; choose one and say what the other would have given.
+5. Reconcile twice: rows in equal rows kept plus rows set aside, and rupees as read less the rupees
+   set aside equal your clean total. Draw the bridge with `kit.bridge`.
 
-**One row is not a defect.** It will look like one. Deciding correctly about it, and writing down
-why, is worth more than the other four put together.
+## Part 2. The note to Finance, about twenty minutes
 
----
+Under 120 words, numbers first: the clean Q1 total and how you know it, the two reconciliations, the
+decisions you flagged, and the one decision that moves the total, with the total under each answer.
 
-## Part 2. The note to Finance, four sentences
+## Part 3. Read, about twenty minutes
 
-Write it as if Anand's analyst will read it before they read your code, because they will.
-
-| Sentence | What it carries |
-|---|---|
-| 1 | What arrived: rows, distinct orders, and the one-line summary of what is wrong |
-| 2 | What you rejected and why, with counts |
-| 3 | The number you would sign |
-| 4 | The one thing you had to use judgment on, stated as a judgment |
-
-Under 120 words. Numbers first.
-
-**Sentence four is the one being marked.** A note with no judgment in it is a note from somebody who
-has not looked hard enough, and a note whose judgment is hidden inside sentence two is a note that
-will be found out later.
-
----
-
-## Part 3. The decisions log
-
-A table, one row per decision, with these columns:
-
-| Field | Issue | Rows | Decision | Reason |
-|---|---|---|---|---|
-
-Five rows at most. Two rules:
-
-1. **A reason that restates the issue is not a reason.** "It was a duplicate so I removed it" says
-   nothing. "Every field on the pair is identical and the export note says the migration re-ran"
-   says something.
-2. **The log must include a row you kept.** Anything you looked at and decided to leave in belongs
-   here too, because that is the row an auditor asks about.
-
----
-
-## Part 4. One paragraph, and this is the interview question
-
-> Your dashboard and Finance disagree by Rs 20 lakh. Walk me through what you do, in order, and tell
-> me what you would refuse to do.
-
-Under 150 words. The second half is the part people fail.
-
----
+Real Python, Reading and Writing CSV Files, the section on `csv.DictReader` (verified 03 Sep 2026):
+https://realpython.com/python-csv/
 
 ## What makes this hard to shortcut
 
-The four defects in the second export are not the four in the class file, and one of them produces
-no error at all. An assistant handed the brief alone will write a pass for the defects it was told
-about in the session.
-
-The second tell is Part 3's kept row. A log with only rejections is a log from a pass that never
-made a judgment, and a pass that never made a judgment did not look at the data.
-
----
-
-## Reading, tonight
-
-- Real Python, Reading and Writing CSV Files, the `DictReader` section (verified 03 Sep 2026):
-  https://realpython.com/python-csv/
-- Python's `json` docs, on `JSONDecodeError` (verified 03 Sep 2026):
-  https://docs.python.org/3/library/json.html
-
----
+- The file is not in any assistant's training data, and its numbers come only from running it.
+- The self-check lists the counts a correct pass reaches, so a pasted answer that was never run will
+  miss them in ways you can see.
+- The note has to name the decision that moves the total and give both totals, which only somebody
+  who read the logged rows can do.
 
 ## What to bring tomorrow
 
-| | |
-|---|---|
-| The notebook | Filled, checks passing, five letters posted |
-| The note | Four sentences, under 120 words |
-| The decisions log | Five rows at most, including one you kept |
-| The paragraph | Under 150 words, with the refusal in it |
-
-Tomorrow Meera asks whether the gap you have left is real at all, or whether it is the kind of
-difference that shows up between any two quarters. Arriving with clean numbers is what makes that
-question answerable.
+Your decisions log, your two reconciliations and the note. Thursday opens on Meera's question about
+whether the Retail-Plus fall is real, and your note is the evidence that the numbers under it are
+clean.
