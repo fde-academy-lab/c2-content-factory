@@ -17,7 +17,7 @@ tracker, and the decisions taken while building it. Checked on 29 September 2026
 | `.claude/skills/exercise-builder/SKILL.md` and `references/distractor-discipline.md` | The blueprint's pace per item type, the level and tag rules, and the distractor discipline | 29 Sep 2026 |
 | `scripts/build_saturday_paper.py`, docstring | The source file's four sections and block-style format | 29 Sep 2026 |
 | `.claude/skills/day-pack-builder/references/artifact-manifest.md`, the Saturday paragraph | The Saturday folders and what each of the three files carries | 29 Sep 2026 |
-| `content/W01/D4/trainer/C2_W01_D04_day_sheet_TRAINER.md` | The Thursday numbers the discussion guide's anchors 8 and 10 cite (the exposure mix, the Retail-Plus and Retail-Core falls, 0 of 5,000 shuffles) | 29 Sep 2026 |
+| `content/W01/D4/trainer/C2_W01_D04_day_sheet_TRAINER.md` | The Thursday numbers the discussion guide's anchors 8 and 10 cite (the exposure mix, the Retail-Plus fall at 135 of 5,000 shuffles, p = 0.027, and Retail-Core at p = 0.345) | 29 Sep 2026 |
 
 No external link enters this pack. The row's two trainer resources stay in the row and were not
 re-verified here.

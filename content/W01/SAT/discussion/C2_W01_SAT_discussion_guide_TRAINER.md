@@ -196,13 +196,16 @@ was never checking anything.
 
 *Q7, Q45 and Q48.*
 
-Claim: Retail-Plus orders per member fell about a third, against 2.7 percent for Retail-Core.
-Evidence: chance alone produced a gap this large in none of 5,000 shuffles. Caveat: these are 22
-paid-tier members over two quarters, and nothing here says why they bought less. Action: act on it,
-and ask the head of Retail-Plus which members to call first.
+Claim: Retail-Plus really is spending less, and the fall is small against the company. Evidence:
+its 22 members delivered Rs 1,110 less each in Q2 than in Q1, and chance made a fall that large in
+135 of 5,000 shuffles, p = 0.027, while Retail-Core's Rs 110 gap came back in 1,724 of 5,000, p =
+0.345, which is the usual wobble; the fall is Rs 24,420 a quarter, 0.19 percent of delivered
+revenue. Caveat: the monsoon sale went mostly to Retail-Plus, who spend more anyway, and nothing here
+measures why they spent less. Action: test a retention offer on half of Retail-Plus before anything
+is rolled out.
 
 Then defend the caveat against the room. Listen for a caveat that is a condition rather than a
-hedge: "this may not be accurate" is a hedge, while "nothing here measures why they bought less"
+hedge: "this may not be accurate" is a hedge, while "nothing here measures why they spent less"
 names what would change the claim. Q48 is the same move in a harder room: Marketing pushing a slide,
 and the answer that puts the denominator on the table before it argues.
 
