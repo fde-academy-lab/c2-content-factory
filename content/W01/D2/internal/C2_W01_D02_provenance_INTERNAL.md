@@ -71,6 +71,14 @@ take-home self-check's expected numbers and here.
    reads that back from the week of delivery, which puts the break in late August, and says it is an
    assumption wherever the timing test uses it.
 
+7. **The morning deck runs to 52 slides against the standard's "about 40"**, because each round carries
+   its full sequence and every Predict slide has its Answer slide; the afternoon deck runs to 29. The
+   D slides and the round variants are the cut lines the day sheet names.
+8. **The study notes run to about 5,400 words against "about 4,000"**, carrying three rounds, two cases
+   and twelve full interview answers; the interview answers are where to cut.
+9. **Notebook 05 adds Retail-Plus orders per week around the assumed break** (3.9 in Q1, then 2.3 and
+   1.5), computed from the file, because 18 against 8 orders compares windows of 55 and 37 days.
+
 ## Invented, and recorded as invented
 
 1. Marketing's Q2 tile cut on 15 September.
@@ -118,4 +126,8 @@ pre-installed Chromium.
 3. `scripts/distractor_audit.py`: a `<- correct` marker on its own line stops the option parser,
    though the docstring describes that shape; the Kahoot uses the inline marker every pack uses.
 4. The D1 companion's `rs()` helper formats only to Rs 99,99,999; the day's page carries its own.
-5. `content/W01/D1`'s workbook Start tab says "planted defect" in a STUDENT file, which the rule forbids.
+5. `scripts/build_deck.py` and `scripts/build_cheatsheet.py` pass `-w` to mmdc, which the installed
+   mermaid-cli 12.0.0 no longer accepts, so a plain build silently prints every diagram as code. This
+   pack's decks and sheet were built through mermaid-cli 11.17.0 installed in the session scratchpad;
+   the scripts or the environment need the fix.
+6. `content/W01/D1`'s workbook Start tab says "planted defect" in a STUDENT file, which the rule forbids.
