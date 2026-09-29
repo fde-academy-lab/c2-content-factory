@@ -532,7 +532,8 @@ The gap never changes and the p-value falls toward zero. The p-value measures ho
 LIVE, 4 minutes. The numbers are invented for the illustration: a Rs 5 gap between two quarters
 whose orders vary by about Rs 700, with the count on the axis being orders in each quarter, and the
 title says so. With two lakh orders a quarter the five-rupee gap reaches 0.02; with ten lakh it is
-off the chart. It is "significant" and still worthless. Size is a separate measurement.
+off the chart. Five rupees on an order of about Rs 2,200 is a quarter of one percent: "significant",
+and whether it is worth anything depends on what acting costs. Size is a separate measurement.
 ```
 
 ---
