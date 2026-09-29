@@ -27,6 +27,8 @@ The planted traps are the approved Build 1 spine's (docs/detailing/W03_build1_sp
 asserted after generation, so a change that breaks one fails loudly, and none is named in a STUDENT
 file: the room finds them by reconciling, splitting and asking what the denominator was.
 
+  0 headline   Dr Menon's 5 percent is her dashboard's count of retail tests booked in the old system;
+               across both systems, tests booked grew about 8 percent
   1 revenue    one corporate health-check contract of Rs 18 lakh in Q2 moves every average; a package
                is one invoice line and many tests
   2 bookings   Chennai and Pune moved to the new system late in Q2, so the old system's export shows
@@ -388,6 +390,24 @@ def witness(tables, bookings):
     w["legacy_distinct_ids"] = len(seen)
     w["newsys_rows"] = len(tables["bookings_newsys"])
 
+    # Dr Menon's 5 percent is her dashboard's: retail tests booked in the old system only, a
+    # package counted as its component tests. The whole business moved faster than that.
+    def tests_in(b):
+        return len(PACKAGES[b["package"]][2]) if b["package"] else len(b["tests"])
+    moved = {k: {"Q1": 0, "Q2": 0} for k in ("dashboard", "booked", "performed", "bookings")}
+    for b in bookings:
+        if b["channel"] == "corporate":
+            continue
+        q = "Q1" if b["date"] <= Q1[1] else "Q2"
+        moved["booked"][q] += tests_in(b)
+        moved["bookings"][q] += 1
+        if b["system"] == "legacy":
+            moved["dashboard"][q] += tests_in(b)
+        if b["status"] == "completed":
+            moved["performed"][q] += tests_in(b)
+    for k, v in moved.items():
+        w[f"{k}_q1_to_q2"] = v["Q2"] / v["Q1"] - 1
+
     inv = tables["invoices"]
     amounts = [int(str(i["amount"]).replace(",", "")) for i in inv]
     q2 = [a for i, a in zip(inv, amounts) if i["invoice_date"] >= Q2[0].isoformat()]
@@ -494,6 +514,10 @@ def check(w):
          f"real fall in the switch cities {w['switch_real_change']:.3f}, wanted -0.16 to -0.08")
     share = w["switch_real_change"] / w["switch_apparent_change"]
     want(0.35 <= share <= 0.65, f"the real fall is {share:.2f} of the apparent one, wanted about half")
+    want(0.045 <= w["dashboard_q1_to_q2"] <= 0.055,
+         f"the dashboard's growth is {w['dashboard_q1_to_q2']:.3f}, and Dr Menon says 5 percent")
+    want(w["booked_q1_to_q2"] >= w["dashboard_q1_to_q2"] + 0.02,
+         "the old system alone does not understate the growth in tests booked")
     want(w["legacy_rows"] - w["legacy_distinct_ids"] == 180,
          f"legacy duplicates {w['legacy_rows'] - w['legacy_distinct_ids']}, wanted 180")
     want(0.10 <= w["contract_share_of_q2"] <= 0.25,
