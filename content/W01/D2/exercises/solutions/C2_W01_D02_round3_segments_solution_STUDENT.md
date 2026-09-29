@@ -1,6 +1,6 @@
 # Solution: round 3, is it every segment, or one?
 
-Answers: 1b 2c 3a 4d 5c 6a 7d 8b
+Answers: 1b 2c 3a 4d 5c 6a 7d 8b 9c 10a
 
 ## The idea being tested
 
@@ -22,6 +22,8 @@ gives can reverse a decision.
 | 6 | a | A roll-up that cannot reproduce the known total is wrong, and weighting by customers (total orders over total customers) gives 1.65 to 1.25, a fall of 24.6 percent. | b swaps one unweighted statistic for another. c: rounding changes nothing about the weights. d drops a segment to get a different wrong answer. |
 | 7 | d | The tree on his tier, in both closed quarters, gives customers, frequency and order value he can hold against the company's. | a: revenue alone cannot say which branch moved. b tests one branch and assumes the answer. c counts complaints, which says how loud members are and nothing about how often they buy. |
 | 8 | b | Test the function on the known totals, then split, then count groups in and rows out, then roll up and check the total. | a and c split before the function is tested. d rolls up before any segment figures exist. |
+| 9 | c | The median fell 3.2 percent and the middle half widened only 13.1 percent, so the typical order barely moved. One order of Rs 29,45,460 stretched the range and lifted the mean Rs 1,15,924; without it, Q2's mean is Rs 9,74,750, below Q1's. | a: the mean is the measure one order moves most. b: a range is built from two orders, so it describes the extremes and nothing else. d: the measures agree once each is read for what it describes. |
+| 10 | a | A ratio of totals, never a mean of ratios: store the numerators and denominators and divide last, and the region's figure reproduces its own total at every level. | b answers a different question, order value, and leaves the roll-up broken. c: rounding changes nothing about the weights. d throws away every other segment's customers. |
 
 ## The part worth arguing about
 

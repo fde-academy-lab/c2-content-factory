@@ -14,10 +14,10 @@ Work in `notebooks/C2_W01_D02_05_second_case_STUDENT.ipynb`. It opens on the cla
 cell for each test below. Your job is to name a cause as a hypothesis, with the evidence that would
 settle it, and to hold that line against both voices.
 
-Each part ends in one item. Post one line per pair at the end, five letters in part order, no spaces:
+Each part ends in one item, and the stretch adds a sixth. Post one line per pair at the end, six letters in order, no spaces:
 
 ```
-Post exactly this shape: xxxxx
+Post exactly this shape: xxxxxx
 ```
 
 ```mermaid
@@ -91,3 +91,12 @@ a) This file's orders for Q3 as they arrive, since more orders of the same kind 
 b) A survey of all 22 members asking why they order less, since members know their own reasons
 c) For H1, reorder events and failures by week and the release date; for H2, the tier's change log
 d) The marketing lead's campaign calendar for both quarters, since campaigns explain when orders arrive
+
+## Stretch. A rival to both hypotheses
+
+### Q6. A pair points out that July opens the monsoon quarter, so a seasonal dip would also start in July. Which evidence settles the season?
+
+a) Retail-Plus orders for August and September again, to see whether they keep falling
+b) The reorder feature's failure log, since a season would show up as failed reorders
+c) Nothing, since weather is outside Kalpa's control and cannot be tested from data
+d) Last year's Q2 for Retail-Plus against Retail-Core, beside this year's two quarters

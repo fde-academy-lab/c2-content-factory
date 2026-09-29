@@ -3,10 +3,10 @@
 Ten minutes, alone, then compare with the person beside you before Kavya's review. Every item has
 one right answer. Decide first, then record the letter.
 
-Post one line, eight letters in item order, no spaces:
+Post one line, ten letters in item order, no spaces:
 
 ```
-Post exactly this shape: xxxxxxxx
+Post exactly this shape: xxxxxxxxxx
 ```
 
 Meera's reply to Monday's numbers is the ask behind every item:
@@ -87,3 +87,17 @@ a) Q3 to date against the whole of Q2, since Q2 is the latest closed quarter
 b) Q3 to date against the last two weeks of Q2, since those are the most recent
 c) Q3 to date multiplied by six and a half, against the whole of Q2
 d) The first two weeks of Q3 against the first two weeks of Q2
+
+### Q9. The marketing lead now compares closed Q2 with closed Q1, 13 weeks each. Which effect can that comparison still not rule out?
+
+a) The monsoon season, which only last year's Q2 would take out of the comparison
+b) Two missing weeks of orders, since the tile stopped short of the end of Q2 again
+c) A slip in the sums, since both totals were added up by hand from the order rows
+d) A change of definition, since one side counts booked orders and the other delivered
+
+### Q10. A dashboard tile shows Q2 at Rs 1,55,59,950 with no date beside it. Which question finds the problem where it was made?
+
+a) Which customers stopped ordering during September, and in which city they live
+b) When the tile's query last refreshed, and which window of orders it could see
+c) Which channel lost the most orders between the two quarters, and by how many
+d) Whether Finance has signed off the Q2 total in its books, and on which date

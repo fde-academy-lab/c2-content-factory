@@ -1,6 +1,6 @@
 # Solution: the second case, the hypothesis Marketing attacks
 
-Answers: 1c 2a 3d 4b 5c
+Answers: 1c 2a 3d 4b 5c 6d
 
 ## The idea being tested
 
@@ -18,6 +18,7 @@ hypotheses each piece of data tests.
 | 3 | d | Six weeks back from this week reaches late August. The monthly counts fell in July, from 14 in April and 13 in June to 9, before the break the complaint dates. After 24 August, Retail-Plus placed 8 orders, against 18 from 1 July to 24 August; whether the break deepened the fall rests on eight orders, which is Thursday's kind of question. | a reads the lowest month as proof of the cause. b miscounts six weeks. c: monthly counts can say whether the fall started before or after a date, which is the first test. |
 | 4 | b | Web fell from 24 to 9, store from 14 to 9 and app from 13 to 8. Every channel fell together, which an app-only cause would not produce. | a: the app fell too, so "no effect" is more than the data says. c credits the whole app fall to the break with no timing. d swaps one unproved cause for another. |
 | 5 | c | H1 needs the app's reorder events and failures by week, the release that broke it, and whether members who used reorder in Q1 fell more than those who did not. H2 needs the tier's change log for benefits, prices and delivery terms, renewals and members' support tickets. | a: more of the same file carries none of the fields that separate the two. b: stated reasons are weak evidence and 22 answers settle neither. d tests a third cause nobody has proposed. |
+| 6 | d | A season repeats: if last year's Q2 shows the same dip for members and not for Retail-Core, the season is the story; if last year held flat, it is not. Retail-Core kept 95 percent of its Q1 orders this year against Retail-Plus's 51, which already argues against a season that hit everyone. | a: more months of this year cannot separate a season from anything else. b tests the other hypothesis. c: a season is tested by its repetition, which the data can show. |
 
 The comparison segment: Retail-Core ordered 13, 12, 13, 12, 12 and 12 times across the six months,
 flat, which is what a segment untouched by either cause looks like.

@@ -15,10 +15,10 @@ Work in `notebooks/C2_W01_D02_04_escalated_case_STUDENT.ipynb`. It opens on the 
 that tells you whether your pick was right. Run it from the top; it stops at the first placeholder
 until you fill it, which is intended.
 
-Each part ends in one item. Post one line at the end, five letters in part order, no spaces:
+Each part ends in one item, and the stretch adds a sixth. Post one line at the end, six letters in order, no spaces:
 
 ```
-Post exactly this shape: xxxxx
+Post exactly this shape: xxxxxx
 ```
 
 ```mermaid
@@ -108,3 +108,12 @@ a) "Revenue fell 11.0 percent because Business customers are leaving, and the ru
 b) "Revenue fell 11.0 percent; order value rose 18 percent, so prices are healthy and the Rs 12 crore should go to acquiring new customers."
 c) "Revenue fell 11.0 percent; customers held at 69; 22 Retail-Plus members placed 26 orders against 51; most rupees are 3 Business orders."
 d) "Revenue fell 11.0 percent across every segment evenly, so the fall is a market-wide slowdown and no one segment needs attention."
+
+## Stretch. Would the answer survive the other order?
+
+### Q6. Moved mix first, the mix explains Rs 22,902 of the Rs 33,231 rise in revenue per order; moved rate first, Rs 24,028. The marketing lead picks the smaller one to argue customers paid more. What is the reply?
+
+a) The smaller figure is right, since the mix should always be moved first
+b) The larger figure is right, since the rate should always be moved first
+c) Neither holds, since two figures for one split mean the method is broken
+d) Either order leaves about seven tenths to mix, so nobody had to pay more

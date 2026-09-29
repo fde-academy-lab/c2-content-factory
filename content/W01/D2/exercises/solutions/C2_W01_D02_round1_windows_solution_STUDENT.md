@@ -1,6 +1,6 @@
 # Solution: round 1, is the drop real?
 
-Answers: 1c 2b 3a 4d 5c 6a 7b 8d
+Answers: 1c 2b 3a 4d 5c 6a 7b 8d 9a 10b
 
 ## The idea being tested
 
@@ -22,6 +22,8 @@ decision made on a 25.9 percent fall that was never there.
 | 6 | a | Q1 runs 1 April to 30 June, 91 days; Q2 runs 1 July to 30 September, 92 days. Per day, Q2's total is divided by one more day, so its fall reads 0.9 points larger. | b: a rate per day matches the total whenever the windows have equal days. c: the rate divides by calendar days in the window. d: both figures are exact; they answer slightly different questions. |
 | 7 | b | Both methods are fair. They differ because a few large Business orders land unevenly inside a quarter, so the first 11 weeks of Q1 hold a different share of its revenue than a weekly average implies. Once a quarter has closed, compare closed quarters. | a and c call a real difference a bug. d averages two honest numbers into one that answers no question. |
 | 8 | d | A quarter-to-date comparison uses the same weeks of both quarters, so the first two weeks of Q3 meet the first two weeks of Q2. | a is the tile's error again. b matches the length and mismatches the position in the quarter, where ordering patterns differ. c projects two weeks to thirteen on an assumption nobody has checked. |
+| 9 | a | Matched windows remove the length of the window, and nothing about the season: Q1 is April to June and Q2 is July to September, monsoon. Only the same quarter last year, which this file does not hold, removes the season, and retailers keep a 4-5-4 calendar so that comparable periods also share their weekends. | b: both quarters are closed now, so no weeks are missing. c: the totals come from the rows and are exact to the rupee. d: both sides count booked orders. |
+| 10 | b | A tile is a query frozen at its last refresh, so its window is whatever that refresh could see, and the refresh date is the fastest way to find the two missing weeks. | a and c analyse a fall before anyone knows it is real. d: Finance's sign-off concerns whether the rows are right, which is tomorrow's question, and says nothing about the tile's window. |
 
 ## The part worth arguing about
 

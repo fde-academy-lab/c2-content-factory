@@ -4,10 +4,10 @@ Ten minutes, alone, then compare with the person beside you before Kavya's revie
 one right answer. Decide first, then record the letter. Figures marked invented are made up to show
 a mechanism; every other figure comes from the class file.
 
-Post one line, eight letters in item order, no spaces:
+Post one line, ten letters in item order, no spaces:
 
 ```
-Post exactly this shape: xxxxxxxx
+Post exactly this shape: xxxxxxxxxx
 ```
 
 The asks behind every item:
@@ -97,3 +97,17 @@ a) q, r, s, p
 b) p, q, r, s
 c) q, p, s, r
 d) p, s, q, r
+
+### Q9. Business, Q1 against Q2: median Rs 9,83,780 to Rs 9,52,000; middle half of the sorted orders Rs 8,02,750 to Rs 9,08,000 wide; range up 72.6 percent; mean up 5.0 percent. The marketing lead says Business orders got bigger. Which reading holds?
+
+a) They got bigger, since the mean uses every order and it rose by 5.0 percent
+b) They got bigger, since a range that grows 72.6 percent means larger orders
+c) The typical order held; one very large order moved the range and the mean
+d) Nothing can be said, since the four measures disagree about which way it went
+
+### Q10. A regional report stores each segment's orders per customer, then shows the region as the average of those figures. What should it store instead?
+
+a) Each segment's orders and customers, dividing only at the level being shown
+b) Each segment's median order value, which one large account cannot move very far
+c) Each segment's figure rounded to one decimal place, so the average stays stable
+d) The largest segment's orders per customer, since it carries most of the region

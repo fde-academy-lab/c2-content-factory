@@ -1,6 +1,6 @@
 # Kahoot, Week 1 Tuesday
 
-Eight items, ungraded, scored on correctness and speed together. The last item returns to Monday,
+Nine items, ungraded, scored on correctness and speed together. The last item returns to Monday,
 one level up.
 
 Each item names what it tests, so an item dropped for time says what was lost.
@@ -77,7 +77,17 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q8. Return to Monday. The mean order doubled and the median did not move. What is your first check?
+## Q8. Moved first, frequency costs Rs 51.6 lakh; moved second, Rs 60.9 lakh. What goes beside the bridge?
+*Tests: a bridge's split depends on the order of its steps, so the order is written down.*
+
+- The larger figure, since it is the more cautious reading
+- The order of the steps, or the symmetric split  <- correct
+- The average of the two, about Rs 56 lakh, to be fair
+- Nothing yet, since two figures mean one of them is wrong
+
+---
+
+## Q9. Return to Monday. The mean order doubled and the median did not move. What is your first check?
 *Tests: a mean pulled away from the median points at a few extreme values.*
 
 - Recompute the median, since it should have doubled as well

@@ -1,6 +1,6 @@
 # Solution: round 2, which branch moved?
 
-Answers: 1c 2b 3d 4a 5a 6b 7c 8d
+Answers: 1c 2b 3d 4a 5a 6b 7c 8d 9d 10a
 
 ## The idea being tested
 
@@ -23,6 +23,8 @@ there reverses the direction of the finding.
 | 6 | b | Rs 180 over the three invented orders that record a value is Rs 60, and the fourth is reported as not recorded. | a counts the absence as a zero. c drops a recorded zero, which is a real value. d refuses a number the recorded orders can give. |
 | 7 | c | Even if every Q2 order carried the largest recorded discount, 86 times Rs 150 is Rs 12,900, which is under 1 percent of the Rs 23,00,000 fall. | a uses the floor as if it were the value. b quotes a change in a floor as a share of the fall. d: a bound needs only the largest recorded value. |
 | 8 | d | 81 over 54 is 1.50 and 57 over 50 is 1.14; frequency still carries the fall on Anand's definition. | a: customers fall a little on delivered orders, far less than frequency. b: revenue per order rises by 26.0 percent, which softens the fall. c: an 11.3 percent fall decomposes like any other. |
+| 9 | d | Both bridges land on the same Rs 23,00,000. Frequency and order value moved at once, and the part where they overlap is charged to whichever branch moves second. Write the order beside the bridge, or use the symmetric logarithmic split, which charges frequency Rs 55,88,480 whatever the order. In every version frequency is the branch that cost money. | a: the tree's order is a habit, never a law. b: a later price is no more accurate, only different. c: both sums are exact; they answer slightly different questions. |
+| 10 | a | `in` skips the orders without the field, `except` does whatever its branch says, and `.get` reads them as zero: three different answers to "what does absent mean?", each needing its reason written beside the number. Absence is rarely random, because some system or channel left the field empty. | b: none of them counts anything unless you add a counter. c: only `.get` with a default of zero reads absent as zero. d: all three carry on past the missing key; only the plain lookup stops. |
 
 ## The part worth arguing about
 

@@ -3,10 +3,10 @@
 Ten minutes, alone, then compare with the person beside you before Kavya's review. Every item has
 one right answer. Decide first, then record the letter.
 
-Post one line, eight letters in item order, no spaces:
+Post one line, ten letters in item order, no spaces:
 
 ```
-Post exactly this shape: xxxxxxxx
+Post exactly this shape: xxxxxxxxxx
 ```
 
 Meera's question, and the marketing lead's answer to it, are the ask behind every item:
@@ -82,3 +82,17 @@ a) Customers, down from 54 to 50, a fall of 7.4 percent that his definition brin
 b) Revenue per order, which moves from Rs 1,79,074 to Rs 2,25,696 on delivered orders
 c) None of them, since on delivered orders the fall is too small to decompose at all
 d) Orders per customer, from 1.50 to 1.14, a fall of 24.0 percent on delivered orders
+
+### Q9. Moved first, at Q1's order value, frequency costs Rs 51,57,895; moved second, at Q2's order value, it costs Rs 60,88,372. Anand asks which one is right. What is the answer?
+
+a) The first, since a bridge always moves the branches in the order the tree lists them
+b) The second, since Q2's order value is the more recent and so the more accurate price
+c) Neither, since two different answers mean the arithmetic in one of them has slipped
+d) Both; the overlap goes to whichever moves second, so name the order you used
+
+### Q10. Three ways past a missing discount key: `if "discount" in order:`, `try` with `except KeyError`, and `order.get("discount", 0)`. What do the three have in common?
+
+a) Each one decides what an absent discount means, a decision that needs its reason
+b) Each one counts how many orders lack the field and prints that count before carrying on
+c) Each one reads an absent discount as zero rupees, so all three give the same total
+d) Each one stops the loop at the first order without the field, as the KeyError did

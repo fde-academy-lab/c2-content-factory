@@ -89,6 +89,15 @@ take-home self-check's expected numbers and here.
    kept 51 percent of its Q1 orders, Retail-Core 95), the retention-cost estimates, and how a failure
    log is written. The middle half is computed by hand with the same interpolation
    statistics.quantiles uses by default, and matches it.
+   The exercises carry it as new items: two more per round set (the season a closed-quarter comparison
+   still carries, the tile's refresh as the source of a cut window, the bridge's step order, the three
+   ways past a missing key, the Business median and middle half, and a ratio of totals in reports),
+   and a stretch item on each case brief (mix and rate in both orders; the season). The two case briefs
+   keep one key string between them, 1c 2a 3d 4b 5c 6d, because the audit matches them by the last
+   word of their names.
+10. **The Kahoot runs to nine items against the standard's eight**, since the requester asked for the
+   new depth there too; the added item is the bridge's step order, placed before Monday's return
+   question, and the afternoon deck's S20 says nine.
 8. **The study notes run to about 7,000 words against "about 4,000"**: three rounds, two cases, twelve
    full interview answers, and, since 29 Sep 2026 at the requester's ask, the morning deck's business
    context and technical depth in the rung where each is taught. The interview answers and the

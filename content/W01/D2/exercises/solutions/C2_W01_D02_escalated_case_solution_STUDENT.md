@@ -1,6 +1,6 @@
 # Solution: the escalated case, mix against rate
 
-Answers: 1c 2a 3d 4b 5c
+Answers: 1c 2a 3d 4b 5c 6d
 
 ## The idea being tested
 
@@ -42,6 +42,7 @@ order once.
 | 3 | d | Q2's order mix at Q1's values gives Rs 2,07,112, so mix is Rs 22,902 of the Rs 33,231 rise, about 69 percent. Revenue per order rose mainly because small Retail-Plus orders disappeared, with no one paying more. | a: Retail-Core's revenue per order fell. b has the split backwards. c: holding one factor at Q1's value is exactly how the two are separated. |
 | 4 | b | The helper prints and returns None when a change exceeds 30 percent, so Retail-Plus (down 49.0) and Student (up 40.0) returned None and the filter dropped them. Four segments went in and two rows came out. The fix returns the change every time and flags a large one in a separate column. | a: rounding to one decimal hides nothing here. c: the printed lines are the two largest moves, with no segment name beside them. d: moving the threshold moves the bug to other data. |
 | 5 | c | It carries the fall, the flat customer count, the segment with its numbers and the rupee story, and it claims no cause. | a turns three orders into a trend and a cause. b is the marketing lead's reading, which Part 3 overturns. d: the fall is concentrated, which is the finding. |
+| 6 | d | Mix explains 68.9 percent moved first and 72.3 percent moved second. The part where mix and rate moved together goes to whichever moves second, so the split shifts by three points and the answer does not: revenue per order rose mainly because small orders disappeared. Say which order you used. | a and b make a convention into a rule. c: both figures are exact; they differ only in who is charged for the overlap. |
 
 ## The part worth arguing about
 
