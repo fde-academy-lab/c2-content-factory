@@ -310,8 +310,10 @@ each of the three cities where half were offered, offered patients book less.
 
 The three cities were already rising: their bookings per day rose 6.9 percent in the two months
 before the offer (14 May to 14 July against 1 April to 13 May), and rose 7.4 percent from those two
-months to the campaign window, against 3.1 percent in Delhi. The offer went mostly to cities that were
-growing anyway, and inside them it reached patients who had begun to book less. Delhi's offered
+months to the campaign window, against 3.0 percent in Delhi (710 against 689). The offer went to half
+the patients in the three campaign cities and a fifth elsewhere, and in the three cities offered
+patients booked less during the offer than patients who were not offered. A panel accepts neither
+story about targeting: the files show who was offered and never how they were chosen. Delhi's offered
 patients book 23.5 percent more than its others, on 316 offered against 1,184 not offered; Chennai and
 Pune sit inside the booking-system change of sub-problem 2, so their figures carry that caveat.
 
@@ -331,9 +333,8 @@ the fix is to report the split and to say what a fair test (random assignment in
    test that would settle it.
 
 **The caveat challenge.** "Delhi's offered patients book 23 percent more. Does that not prove the
-offer works?" Listen for the group separating a signal in one city from the pattern in three, for the
-fact that Delhi's offer was not assigned at random either, and for a claim narrowed to "the file does
-not show that the offer caused bookings".
+offer works?" Listen for the group separating a signal in one city from the pattern in three, and for
+a claim narrowed to "the file does not show that the offer caused bookings".
 
 **The silent teammate.** "Explain in one sentence how the offer can look positive for the whole
 company and negative inside every city that ran it." The answer is that offered patients sit mostly in
@@ -360,7 +361,7 @@ Group A that says "offered patients booked more, and I cannot say why" is honest
 
 | What happens | What the panel does |
 |---|---|
-| The demo fails on the cold run | Ask the group to say in one sentence what broke and why, then go to questions; there is no second run, and the explanation is evidence too. |
+| The demo fails on the cold run | The rule holds: a group's demo runs once, cold, on its raw files. If it fails, the group has two minutes to recover it live, as it would in front of a client. If it still fails, the group presents from its executed notebook, and the panel scores the live demo in presentation and defence as not run cold. The other 34 marks of the mini project are scored from the executed run, so a failed demo costs its own marks and never the analysis. |
 | A group runs past 17 minutes | The panel's timekeeper stops the group at 17 and moves to questions; the group keeps its full question time. |
 | One member answers every question | Name the next person for each question, and ask the silent-teammate question to the member who has spoken least; the Academic TA notes anyone still silent for the separate question at closure. |
 | A group's claim is wrong and it defends it | Ask the question that would break it once, let the answer stand, and move on; never argue the claim in the room. |
