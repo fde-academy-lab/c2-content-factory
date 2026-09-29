@@ -47,7 +47,7 @@ flowchart LR
 
 | Part | Slides | Beside it | What must land | If short of time |
 |---|---|---|---|---|
-| Debrief 2, 20 | Two of: debrief chapter 2 (S7 to S10), chapter 3 (S11 to S13), D14, D15; then S16 | The TAs' lunch tally; reference notebook sections 2, 4 or 5 | The two breaks the tally names, ten minutes each | One break only, then S16 |
+| Debrief 2, 20 | Two of: debrief chapter 2 (S7 to S10), chapter 3 (S11 to S13), D14, D15, the pair D16 and D17; then S18 | The TAs' lunch tally; reference notebook sections 2, 4 or 5 | The two breaks the tally names, ten minutes each | One break only, then S18 |
 | Rehearsal round one, 50 | Rehearsal deck S1 to S6 | `exercises/guided/C2_W01_D05_rehearsal_brief_STUDENT.md`, the feedback cards | Every learner defends Thursday's note twice; the TAs tell each learner their marked step, privately | Pair two to one defence each |
 | Rehearsal round two, 50 | S7 | A shuffled name list | About a dozen notes read to the room, one push each, a minute of Kavya's review | **Cut first**, whole or in part |
 | Timed cases, 40 | S8 to S11 | `exercises/unguided/C2_W01_D05_timed_cases_STUDENT.md`; the model answers in `trainer/C2_W01_D05_timed_cases_key_TRAINER.md` | Three cases, 13 minutes each: read 1, think 3, pairs 4, two call-outs 3, model 2 | Case 3 only |

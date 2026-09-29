@@ -152,7 +152,7 @@ picks the next two breaks from the three that follow; the others become self-stu
 ```notes
 LIVE, after lunch. Ten minutes. Run this chapter if the tally shows people set an unconvertible
 amount to zero or skipped it without logging it. If fewer than a quarter did, make it self-study
-and run S14 in its place.
+and run D14 in its place.
 ```
 
 ---
@@ -246,8 +246,8 @@ decision is theirs to defend; the only wrong answer is the one with no log line.
 
 ```notes
 LIVE, after lunch. Ten minutes. Run this chapter if the tally shows notes that lead with a segment's
-rate without its order count, or a shuffle on the wrong unit. The reserve slides D14 and D15 cover
-the other two breaks the lab produces.
+rate without its order count, or a shuffle on the wrong unit. The reserve slides D14 to D17 cover
+the other three breaks the lab produces.
 ```
 
 ---
@@ -344,7 +344,50 @@ three minutes.
 
 ---
 
-## S16. The one line you write tonight
+## D16. Reserve: one order with no segment
+*Invented numbers: Retail-Plus on 30 orders a quarter as read, and one Q2 order whose segment cell is empty.*
+
+```stats
+value: Rs 84,000 | label: Retail-Plus Q1 | note: invented
+value: Rs 82,100 | label: Q2, blank left out | note: invented
+value: -2.3% | label: Q1 to Q2 | note: "Retail-Plus has turned down"
+```
+
+**What breaks.** A filter on the segment name never sees the empty cell, so the Rs 3,100 order drops out of Retail-Plus without an error. A tier that grew reads as a second falling segment, and the note sends Meera a Retail-Plus win-back plan for a fall that never happened.
+
+```notes
+RESERVE, 2 minutes. Read the three numbers as a hurried note would. Ask where the empty cell went:
+the honest answer on most screens is that nobody decided, the filter did.
+```
+
+---
+
+## D17. Reserve answer: the segments add back to the total
+*Invented numbers: the check is one line, and it fails by exactly one order.*
+
+```mermaid
+flowchart LR
+    A["<b>segments summed</b><br/>Q2 short by Rs 3,100<br/>and 1 order"] --> B{"<b>whose order<br/>is it?</b>"}
+    B -->|"the customer's others<br/>are Retail-Plus"| C["<b>restore and flag</b><br/>Rs 85,200, 31 orders"]
+    B -->|"no way to tell"| D["<b>keep as unknown</b><br/>flag it, name it<br/>in the caveat"]
+    C --> E["<b>Retail-Plus: +1.4%</b>"]
+    classDef bad fill:#FCE8EC,stroke:#C2185B,color:#1A0F5C
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class A bad
+    class C,D,E known
+```
+
+**The rule.** The segments add back to the total, in orders and in rupees, before any segment is read. A fifth group with a blank name passes that check and is still a decision to log, never a segment.
+
+```notes
+RESERVE, 3 minutes. Run it after D16 in place of chapter 2 or 3 when the tally's C4 count is
+higher. Then open the reference notebook, section 2, and show the empty-segment row with its
+decision and reason. Ask two learners which branch their row took and where it sits in their log.
+```
+
+---
+
+## S18. The one line you write tonight
 *The step where you stalled, rerun alone, and what you will do differently.*
 
 ```timeline
