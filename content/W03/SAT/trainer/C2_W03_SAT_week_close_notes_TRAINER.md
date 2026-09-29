@@ -47,11 +47,12 @@ question bank carries the full tables.
 board. Every group in this room gave her an answer today, before a panel that had never seen the
 work. Fifteen minutes to close the week."
 
-**S1, three minutes.** Read the diagram once, left to right. Then say what the room found, from the
-chairs' list, in this form and no other: "On the headline, most groups found that the 5 percent
-counts one system's tests; on bookings, the groups that went day by day found the system change."
-Name a finding only if at least one group reached it, and credit it to the group. Never list a trap
-no group found; move to the next sub-problem without naming it. Then ask two groups which row of the table did the most work for them.
+**S1, two minutes.** Read the diagram once, left to right. Then hand each finding to the groups that
+made it: from the chairs' list, ask one group that reached a finding to state it in one sentence of
+its own ("Group 4, what did you find on bookings?"), and let the sentence stand as the group said it.
+You add no finding, name no problem in the data and correct no wording; where no group reached a
+finding, move to the next sub-problem and say nothing about it. Then ask one group which row of the
+table did the most work for it.
 
 **S2, one minute.** "The words changed: a booking, a test, a no-show. The cost of being wrong changed.
 The moves did not change, and that is the week." Ask one group for its answer to the [F] question.

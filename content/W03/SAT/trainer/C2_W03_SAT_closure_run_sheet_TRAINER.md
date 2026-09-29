@@ -52,7 +52,7 @@ panel questions that learner separately, alone, for up to five minutes in the ro
 |---|---|---|
 | Read the presentation order drawn at Friday's close, strike the groups that presented Friday, and assign the rest to the two rooms by the rule below | Programme Head | Both room orders are printed and on each panel's table |
 | Copy Friday's GD totals (from `content/W03/D5/rubrics/C2_W03_D05_gd_scoring_sheet_TRAINER.xlsx`), Friday's first-tranche mini project totals and Thursday's mock scores (from `content/W03/D4/rubrics/C2_W03_D04_mock_scoring_sheet_TRAINER.xlsx`) into the grade closure workbook | Programme Head, with the Academic TA reading the sheets aloud | The workbook's Checks sheet shows no MISSING in the GD column for Friday's groups, none in the mini project column for the first tranche, and none in the mock column |
-| Run the demo from the frozen commit for any group with no second rehearsal cold run logged on Friday, as Friday's freeze rule requires; this is a rehearsal, and the group's one run before the panel is still to come | Academic TA | Every group has a logged cold run on its frozen hash |
+| Run the demo from the frozen commit for any group with no second rehearsal cold run logged on Friday, as Friday's freeze rule requires; this is a rehearsal, and the group's one run before the panel, with its two minutes to recover, is still to come | Academic TA | Every group has a logged cold run on its frozen hash |
 | Open each group's demo machine on a fresh Codespace at its frozen commit, with the raw files in the data folder, and leave it closed and cold; check `git rev-parse HEAD` against Friday's freeze table before each slot | Academic TA | Every group has a machine on its frozen hash, and none has run the notebook |
 | Put the question bank in front of each panel, marked with that room's sub-problems | Trainer | Each panel member has read their pages |
 
@@ -112,7 +112,8 @@ flowchart TB
 | 105 to 120 | Reserve for anything that ran over; unused, the day ends here | |
 
 **The opening, in words the Programme Head can say.** "Every group presents once, for 17 minutes,
-with a live demo run cold on the raw files. The panel then asks for eight to ten minutes, and the
+with a live demo run cold on the raw files; a demo that fails has two minutes to recover, and after
+that the group presents from its executed notebook. The panel then asks for eight to ten minutes, and the
 panel chooses who answers. Where two groups took the same sub-problem, they present one after the
 other, so the panel hears two honest answers to the same question. Nobody is told anything about
 another group's work until the week close."
@@ -149,6 +150,7 @@ scores nine groups from memory scores the last three against the first six.
 | The panel scores the group's four group criteria once, out of 34, and each learner's presentation and defence out of 6, after the slot and never in front of the group | The panel chair | `rubrics/C2_W03_SAT_mini_project_scoring_TRAINER.xlsx`, sheets Groups and Learners; Friday's first tranche is already in the same sheet |
 | The scribe copies each learner's total out of 40, once, into the grade closure workbook | Trainer (expert's room), Academic TA (leader's room) | `rubrics/C2_W03_SAT_grade_closure_TRAINER.xlsx`, sheet Scores, column Mini project |
 | Each Saturday GD round is scored per learner in Friday's GD sheet, then each total out of 30 is copied once | The expert or the Principal Advisor scores; the trainer copies | `content/W03/D5/rubrics/C2_W03_D05_gd_scoring_sheet_TRAINER.xlsx`, then the closure workbook's GD column |
+| A demo that still fails after its two minutes to recover: the group presents from its executed notebook, the panel scores the live demo inside presentation and defence as not run cold, and the four group criteria (34 marks) are scored from the executed run as for any group | The panel chair | Groups and Learners, as above; the scribe notes the failed demo beside the group |
 | A learner flagged silent is questioned in the reserve before that learner's presentation and defence score is entered; the group's 34 does not wait | The panel chair, with the scribe | The Learners sheet, then the closure workbook; each cell entered once, after the follow-up |
 
 **The rubric the panels score against.** The requester approved Build 1's rubrics on 29 September
@@ -177,9 +179,9 @@ presentation, and the mock score. Every learner holds three scores when closure 
 
 | Minutes | Step | Who | The check that says it is done |
 |---|---|---|---|
-| 0 to 5 | Both scribes confirm every slot and every GD round is entered, and read out any seat whose status is not COMPLETE | Trainer and Academic TA | The Checks sheet lists each seat that is short, by seat |
+| 0 to 5 | Both scribes confirm every slot and every GD round is entered, and read out any seat whose status is not COMPLETE | Trainer and Academic TA | The Checks sheet lists each seat that is short, by seat, and each seat with an absence |
 | 5 to 15 | Every flag is cleared at its source: MISSING means find the signed sheet and enter it; OVER MAX or NOT A SCORE means re-read the signed sheet and correct the one cell | Programme Head, with the scribe who entered it | The Checks sheet's MISSING, OVER MAX and NOT A SCORE counts are all zero |
-| 15 to 20 | A learner who missed an event (absent for the mock or the GD) is recorded in the Notes column with the Programme Head's decision; this pack sets no make-up rule, because none is published | Programme Head | Every seat without three scores carries a note |
+| 15 to 20 | A learner who missed an event (absent for the mock or the GD) has ABSENT typed in that event's cell and the Programme Head's decision in the Notes column; this pack sets no make-up rule, because none is published | Programme Head | Every seat the Checks sheet lists with an absence carries a note |
 | 20 to 25 | Each assessor role marks its column signed, in the Sign-off sheet: the GD assessors, both panels and the mock assessors | Each assessor present; the Programme Head signs for any who have left, from their signed paper sheets | The Checks sheet's verdict reads READY TO SIGN |
 | 25 to 30 | The Programme Head signs the closure and saves the signed copy where the programme keeps its grade records | Programme Head | The Sign-off sheet shows the closure signed |
 
@@ -220,11 +222,11 @@ minutes, never cut grade closure below 20, and never move a group out of its sub
 | A GD round overruns | The next GD starts late and the expert's first slot slides with it; the expert's afternoon slots stay where they are, because the leader's room has the slack. |
 | More than three GD rounds remain | The Principal Advisor runs the fourth and any after it online, in parallel with the expert's rounds, from minute 10. |
 | The leader is not in the room when the day opens | The expert starts presentations in the expert's room at once, and the Principal Advisor takes the remaining GDs online. The leader's room starts on arrival and slides by the delay; up to 20 minutes late fits the morning's reserve, and up to 80 fits once the afternoon's first hour takes the leader's last two slots. |
-| The leader cannot come at all | The expert hears every group alone at 25-minute slots (17, then 6 of questions, then 2): six in the morning after the opening and three in the afternoon, with the GDs online with the Principal Advisor. Closure and the week close keep their 30 and 15. |
+| The leader cannot come at all | The expert hears every group alone at 26-minute slots (17, then the full 8 of questions, then a one-minute changeover with scores recorded in the reserve): six in the morning after a five-minute opening, which leaves 19 minutes of reserve, and three in the afternoon, with the GDs online with the Principal Advisor. Closure keeps its 30 and the week close runs in 10, so the afternoon holds 118 of its 120 minutes. |
 | The leader has to leave before their last slot | The leader's unheard groups move to the expert's afternoon, which holds two more slots before closure; the leader signs the scores already given before leaving. |
 | A demo machine fails before the demo starts (hardware or Codespace, not the group's code) | The Academic TA swaps to a spare machine; if none works, the group presents and its demo runs in the room's reserve, cold, before the same panel. |
-| A group's demo code fails on its one run | The rule holds: the group says in one sentence what broke and why, and goes to questions. There is no second run. |
-| A learner is absent | The group presents without them; the Programme Head records the absence in the workbook's Notes column at closure. |
+| A group's demo code fails on its one run | The rule holds: a group's demo runs once, cold, on its raw files. If it fails, the group has two minutes to recover it live, as it would in front of a client. If it still fails, the group presents from its executed notebook, and the panel scores the live demo in presentation and defence as not run cold. The other 34 marks of the mini project are scored from the executed run, so a failed demo costs its own marks and never the analysis. |
+| A learner is absent | The group presents without them; at closure the absent event's cell reads ABSENT and the Programme Head records the decision in the workbook's Notes column. |
 | A group disputes a score in the room | Nothing is argued in the room. The Programme Head notes the dispute and handles it after closure. |
 | The group count is not nine | The day holds nine groups. At the tracker's fifteen (three per sub-problem, fifteen groups) it does not fit 300 minutes, and the Programme Head decides the cut before Friday's close. |
 
