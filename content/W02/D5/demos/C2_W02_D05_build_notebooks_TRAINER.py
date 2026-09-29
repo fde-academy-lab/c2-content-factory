@@ -38,6 +38,12 @@ def lakh(n):
     return f"Rs {n / 1e5:.2f} lakh"
 
 
+def money(n):
+    """Crore, lakh or rupees, whichever reads the size of the number, with the sign in front."""
+    sign, a = ("-" if n < 0 else ""), abs(n)
+    return sign + (crore(a) if a >= 1e7 else lakh(a) if a >= 1e5 else kit.rupees(round(a)))
+
+
 print(len(clean), "customer rows and", len(raw), "export rows loaded")
 '''
 
@@ -126,8 +132,8 @@ tree = pivot.assign(orders_per_customer=pivot.orders / pivot.customers,
                     revenue_per_order=pivot.revenue / pivot.orders)
 tree["revenue_per_customer"] = tree.revenue / tree.customers
 kit.table(["Segment", "Customers", "Orders per customer", "Revenue per order", "Revenue per customer"],
-          [(s, int(r.customers), f"{r.orders_per_customer:.2f}", kit.rupees(r.revenue_per_order),
-            kit.rupees(r.revenue_per_customer)) for s, r in tree.iterrows()],
+          [(s, int(r.customers), f"{r.orders_per_customer:.2f}", kit.rupees(round(r.revenue_per_order)),
+            kit.rupees(round(r.revenue_per_customer))) for s, r in tree.iterrows()],
           caption="The leaves per segment, both quarters together")
 consumer = ["Retail-Core", "Retail-Plus", "Student"]
 kit.columns(consumer, [("orders per customer", [round(tree.orders_per_customer[s], 2) for s in consumer])],
@@ -143,11 +149,11 @@ plus = tree.loc["Retail-Plus"]
 kit.driver_tree({"label": "Retail-Plus revenue", "note": kit.rupees(plus.revenue), "children": [
     {"label": "customers", "note": f"{int(plus.customers)}"},
     {"label": "orders per customer", "note": f"{plus.orders_per_customer:.2f}"},
-    {"label": "revenue per order", "note": kit.rupees(plus.revenue_per_order)}]},
+    {"label": "revenue per order", "note": kit.rupees(round(plus.revenue_per_order))}]},
     title="The tree for Retail-Plus: three leaves multiply to the revenue")
 rebuilt = plus.customers * plus.orders_per_customer * plus.revenue_per_order
 kit.check("the three leaves multiply back to the revenue", abs(rebuilt - plus.revenue) < 1,
-          f"{kit.rupees(rebuilt)} against {kit.rupees(plus.revenue)}")
+          f"{kit.rupees(round(rebuilt))} against {kit.rupees(plus.revenue)}")
 kit.check("Retail-Plus pays more per order than Retail-Core",
           tree.revenue_per_order["Retail-Plus"] > tree.revenue_per_order["Retail-Core"])'''),
     md('''
@@ -242,7 +248,7 @@ second_rows = int(raw.order_amount.sum() - orders_once.order_amount.sum()) - cop
 kit.bridge(("the warehouse, both quarters", sum(WAREHOUSE.values())),
            [("second rows of instalment orders", second_rows),
             ("exact copies of the same row", copies)],
-           end_label="the hurried pivot", fmt=crore,
+           end_label="the hurried pivot", fmt=money,
            title="From the warehouse to the hurried pivot: every extra rupee is a repeated row")
 kit.check("the fixed pivot reconciles to the warehouse to the rupee",
           int(fixed.values.sum()) == sum(WAREHOUSE.values()), crore(fixed.values.sum()))
@@ -258,7 +264,7 @@ q = orders_once.groupby(["segment", "quarter"]).agg(customers=("customer_id", "n
 q["orders_per_customer"] = q.orders / q.customers
 q["revenue_per_order"] = q.revenue / q.orders
 kit.table(["Segment", "Quarter", "Customers", "Orders per customer", "Revenue per order", "Revenue"],
-          [(s, qq, int(r.customers), f"{r.orders_per_customer:.2f}", kit.rupees(r.revenue_per_order),
+          [(s, qq, int(r.customers), f"{r.orders_per_customer:.2f}", kit.rupees(round(r.revenue_per_order)),
             kit.rupees(r.revenue)) for (s, qq), r in q.iterrows()],
           caption="The tree by segment and quarter, each order counted once")
 kit.columns(consumer, [("Q1", [round(q.loc[(s, "Q1"), "orders_per_customer"], 2) for s in consumer]),
@@ -410,8 +416,10 @@ def find(member):
 
 
 print(find("C-0152"))
-kit.flow(["the id typed in", "MATCH(id, ids, 0)", "found: its row", "not found: say so"], lit=3,
-         title="An exact lookup has two exits, and both are visible")'''),
+kit.tree({"label": "MATCH(id, ids, 0)", "branches": [
+    ("found", {"label": "the member's row"}),
+    ("missing", {"label": "not in the table", "kind": "good"})]},
+    title="An exact lookup has two exits, and both are visible")'''),
     code('''
 kit.check("the exact lookup returns the member asked for", find("C-0152").startswith("C-0152"))
 kit.check("the exact lookup says so for an id that is not there", find("C-0195") == "not in the table")'''),
@@ -509,8 +517,8 @@ a half times too big. The check is to count what the foot counts: `=SUBTOTAL(102
 only visible numbers, and if that count is smaller than the rows the total adds, the total is adding
 hidden rows. The fix is `=SUBTOTAL(109, E12:E61)`, which the deck pack uses.'''),
     code('''
-kit.columns(["the foot of the Mumbai list"], [("SUM", [foot_sum]), ("SUBTOTAL(109)", [foot_visible])],
-            fmt=kit.rupees, title="Two formulas at the foot of one filtered list")
+kit.bars([("SUM at the foot", foot_sum), ("SUBTOTAL(109) at the foot", foot_visible)],
+         fmt=kit.rupees, lit=[1], title="Two formulas at the foot of the list filtered to Mumbai")
 kit.check("the foot SUM counts rows the filter hid", foot_sum > foot_visible)
 kit.check("the visible total is Mumbai's eleven members", int(top.visible.sum()) == 11, f"{int(top.visible.sum())} rows")
 kit.check("the visible total is less than a quarter of the SUM", foot_visible / foot_sum < 0.25,
@@ -617,9 +625,8 @@ type: **Revenue Rs 19.84 crore.**'''),
     code('''
 bare = int(clean.revenue.sum())
 kit.stats([(crore(bare), "Revenue", "the card as drafted, with nothing beside it")])
-kit.columns(["what the director compares", "like with like"],
-            [("the number read", [bare, q2]), ("what they remember for Q1", [q1, q1])], fmt=crore,
-            title="Read as a quarter, the bare number doubles revenue")'''),
+kit.bars([("the bare card, read as Q2", bare), ("Q2, like with like", q2), ("Q1, as the director remembers it", q1)],
+         fmt=crore, lit=[0], title="Read as a quarter, the bare number doubles revenue")'''),
     md('''
 **Why it is wrong.** A director who remembers Rs 10.00 crore for Q1 reads Rs 19.84 crore as this
 quarter and says revenue nearly doubled, and the growth review celebrates a quarter in which revenue
@@ -646,7 +653,7 @@ kit.stats([(f"{(p2 - p1) / p1:.1%}", "Retail-Plus, the card as drafted", "no bas
            (lakh(p1 - p2), "what the fall is in rupees", f"on a {crore(q1)} quarter"),
            (f"{p2 / q2:.1%}", "Retail-Plus's share of Q2", "the denominator the card left out")])
 moves = [(s, int(by_q.Q2[s] - by_q.Q1[s])) for s in ["Business", "Retail-Core", "Retail-Plus", "Student"]]
-kit.bridge(("Q1 revenue", q1), moves, end_label="Q2 revenue", fmt=crore, lo=96_000_000, lit=[2],
+kit.bridge(("Q1 revenue", q1), moves, end_label="Q2 revenue", fmt=money, lo=96_000_000, lit=[2],
            title="Q1 to Q2 by segment: the axis starts at Rs 9.60 crore so the small moves show")'''),
     md('''
 **What happened.** The answer is b, and that is the trap. The 29.4 percent is real, and it is 29.4
@@ -722,8 +729,8 @@ def card_for(scope):
 cards = {s: card_for(s) for s in ["All segments", "All except Business", "Retail-Plus"]}
 for s, (text, _) in cards.items():
     print(text)
-kit.columns(list(cards), [("change on Q1, percent", [round(c * 100, 1) for _, c in cards.values()])],
-            fmt=lambda v: f"{v:+.1f}%", title="One card, three scopes: the change a director sees")'''),
+kit.columns(list(cards), [("fall on Q1, percent", [round(-c * 100, 1) for _, c in cards.values()])],
+            fmt=lambda v: f"{v:.1f}%", title="One card, three scopes: how far each fell on Q1")'''),
     code('''
 kit.check("taking Business out turns a 1.6 percent fall into a 17.3 percent fall",
           round(cards["All except Business"][1] * 100, 1) == -17.3, f"{cards['All except Business'][1]:.1%}")
@@ -894,9 +901,9 @@ edited.loc["Retail-Plus", "Q2"] = 500000
 #   c) an error, since a typed value breaks the formula
 #   d) no change, since Q1 was not edited
 shown = __TODO1__
-kit.columns(["Retail-Plus Q2"], [("from the export", [int(sheet.loc["Retail-Plus", "Q2"])]),
-                                  ("after the edit", [int(edited.loc["Retail-Plus", "Q2"])])],
-            fmt=kit.rupees, title="One typed cell moves the card")''',
+kit.bars([("Retail-Plus Q2, from the export", int(sheet.loc["Retail-Plus", "Q2"])),
+          ("Retail-Plus Q2, after the edit", int(edited.loc["Retail-Plus", "Q2"]))],
+         fmt=kit.rupees, lit=[1], title="One typed cell moves the card")''',
      '"b"',
      '''kit.check("the edited card shows a smaller fall", shown == "b" and
           edited.loc["Retail-Plus", "Q2"] > sheet.loc["Retail-Plus", "Q2"])
@@ -929,9 +936,9 @@ On Monday the tree is rebuilt from a fresh export.""",
 #   c) it doubled, since the export has two rows per payment
 #   d) it was wiped without a trace, and so was its reason
 after = __TODO3__
-kit.columns(["Retail-Plus Q2"], [("after the edit", [int(edited.loc["Retail-Plus", "Q2"])]),
-                                  ("after the refresh", [int(refreshed.loc["Retail-Plus", "Q2"])])],
-            fmt=kit.rupees, title="The refresh puts the export's number back and loses the edit")''',
+kit.bars([("Retail-Plus Q2, after the edit", int(edited.loc["Retail-Plus", "Q2"])),
+          ("Retail-Plus Q2, after the refresh", int(refreshed.loc["Retail-Plus", "Q2"]))],
+         fmt=kit.rupees, lit=[1], title="The refresh restores the export and loses the edit")''',
      '"b"',
      '''kit.check("the refresh restores the export's number", refreshed.loc["Retail-Plus", "Q2"] == sheet.loc["Retail-Plus", "Q2"])
 kit.check("the refreshed sheet reconciles again", int(refreshed.values.sum()) == sum(WAREHOUSE.values()) and after == "d")''',
@@ -949,9 +956,9 @@ scenario_q2 = 500000
 place = __TODO4__
 actual = sheet.loc["Retail-Plus", "Q2"] / sheet.loc["Retail-Plus", "Q1"] - 1
 what_if = scenario_q2 / sheet.loc["Retail-Plus", "Q1"] - 1
-kit.columns(["Retail-Plus, Q2 on Q1"], [("actual, from the export", [round(actual * 100, 1)]),
-                                         ("the director's scenario", [round(what_if * 100, 1)])],
-            fmt=lambda v: f"{v:+.1f}%", title="Two lines on one card, each labelled")''',
+kit.bars([("actual, from the export", round(-actual * 100, 1)),
+          ("the director's scenario", round(-what_if * 100, 1))],
+         fmt=lambda v: f"down {v:.1f}%", title="Retail-Plus, Q2 on Q1: two lines on one card, each labelled")''',
      '"b"',
      '''kit.check("the actual line still reconciles", int(sheet.values.sum()) == sum(WAREHOUSE.values()))
 kit.check("the scenario is labelled and separate", place == "b" and round(what_if * 100, 1) == -14.6, f"{what_if:.1%}")''',
