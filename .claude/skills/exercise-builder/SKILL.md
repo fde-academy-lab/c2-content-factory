@@ -83,6 +83,16 @@ discussion guide, which runs the marking, takes the most-missed items first as a
 discussion with random call-outs, and closes on the scores by tag for Monday's remediation read. The
 distractor rules above apply to every option set on the paper.
 
+The bank is the floor, never the ceiling. The week's source file,
+`content/W{ww}/SAT/internal/C2_W{ww}_SAT_paper_source_INTERNAL.yaml`, lays four things on it, and
+`scripts/build_saturday_paper.py`'s docstring gives the format: new timed items where the paper runs
+longer than the bank (each descending from the week's traps and anchors, in block-style YAML), an
+exhibit for every scenario set drawn only from the set's own numbers, the reasons for every item (why
+the key holds, why each wrong option fails, and the interview answer in one breath), and an untimed
+stretch page of written, interview-grade follow-ups. `python3 scripts/build_saturday_paper.py W{ww}
+--docx` writes the paper and the key as Word files in the layout of the requester's baseline
+diagnostic, and the Word paper is what the room sits.
+
 ## The solutions file
 
 Keep the sections the existing solutions already have: the idea being tested, the answers, the part worth arguing about, and where the pattern lives in production. Add two things inside that shape:

@@ -1,0 +1,19 @@
+clinic_code,city,kind,new_system_code
+KH-BLR-01,Bengaluru,laboratory,
+KH-BLR-02,Bengaluru,walk-in clinic,
+KH-BLR-03,Bengaluru,walk-in clinic,
+KH-MUM-01,Mumbai,laboratory,
+KH-MUM-02,Mumbai,walk-in clinic,
+KH-MUM-03,Mumbai,walk-in clinic,
+KH-DEL-01,Delhi,laboratory,
+KH-DEL-02,Delhi,walk-in clinic,
+KH-DEL-03,Delhi,walk-in clinic,
+KH-CHE-01,Chennai,laboratory,MAA-01
+KH-CHE-02,Chennai,walk-in clinic,MAA-02
+KH-CHE-03,Chennai,walk-in clinic,MAA-03
+KH-HYD-01,Hyderabad,laboratory,
+KH-HYD-02,Hyderabad,walk-in clinic,
+KH-HYD-03,Hyderabad,walk-in clinic,
+KH-PUN-01,Pune,laboratory,PNQ-01
+KH-PUN-02,Pune,walk-in clinic,PNQ-02
+KH-PUN-03,Pune,walk-in clinic,PNQ-03
