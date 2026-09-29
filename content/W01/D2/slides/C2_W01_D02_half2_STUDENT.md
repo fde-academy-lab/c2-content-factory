@@ -80,12 +80,13 @@ flowchart LR
     class M,T known
 ```
 
-**The rule.** Hold one part still and move the other: Q2's shares with Q1's rates isolates the mix, and what is left is the rate.
+**The rule.** Hold one part still and move the other: Q2's shares with Q1's rates isolates the mix, and what is left is the rate. As with the morning's bridge, the order is a choice, so say which part moved first.
 
 ```notes
 LIVE, 1 minute, shown with the brief. The same idea as the morning's weighted roll-up, turned the
-other way: a blend moves when its weights move, even if no part of it changed. Then release the
-room to the notebook for 50 minutes.
+other way: a blend moves when its weights move, even if no part of it changed. The morning showed
+that a bridge's split depends on which branch moves first; the same holds here, and the debrief puts
+both orders side by side. Then release the room to the notebook for 50 minutes.
 ```
 
 ---
@@ -111,7 +112,7 @@ xychart-beta
     bar [2, 25, 3]
 ```
 
-In rupees, Business is -Rs 22,29,720 of the Rs 23,00,000 fall, 97 percent of it on three fewer orders; Retail-Plus is -Rs 65,250, which is 93 percent of the consumer fall.
+In rupees, Business is -Rs 22,29,720 of the Rs 23,00,000 fall, 97 percent of it on three fewer orders; Retail-Plus is -Rs 65,250, which is 93 percent of the consumer fall. The typical Business order barely moved (median Rs 9,83,780 to Rs 9,52,000), so the Business rupees are a count of three orders.
 
 ```notes
 LIVE, 4 minutes. Student gained 2 orders, which a bar chart of losses cannot show, so say it aloud:
@@ -119,6 +120,10 @@ LIVE, 4 minutes. Student gained 2 orders, which a bar chart of losses cannot sho
 Retail-Plus is 25 of the 28 lost orders, 89 percent. In rupees, Business is Rs 22,29,720 of the
 Rs 23,00,000 fall because each Business order is worth lakhs. Both are true; the wrong answer is
 picking one lens and calling it the story. Consumer segments fell from Rs 2,28,820 to Rs 1,58,540.
+Tie it to the morning's describe: the Business median held, the middle half of its orders widened
+only 13 percent, and one order of Rs 29,45,460 stretched the range. Twenty orders a quarter, each
+worth lakhs, is lumpy revenue: three orders landing a week later would move this lens by lakhs, which
+is why it gets checked before anyone acts, and why Thursday asks what chance alone can produce.
 ```
 
 ---
@@ -185,15 +190,17 @@ the end of the morning; say so and credit the room.
 
 ```stats
 value: +Rs 33,231 | label: revenue per order | note: Rs 1,84,211 to Rs 2,17,442
-value: +Rs 22,902 | label: from mix | note: about 69 percent
-value: +Rs 10,330 | label: from rates | note: inside segments
+value: +Rs 22,902 | label: from mix, moved first | note: 69 percent; 72 if moved second
+value: +Rs 10,330 | label: from rates | note: Rs 9,203 if moved first
 ```
 
 ```notes
 LIVE, 4 minutes. At Q2's order mix and Q1's per-segment revenue per order, revenue per order would
 have been Rs 2,07,112, so the mix alone explains Rs 22,902 of the Rs 33,231 rise. Business took a
 larger share of fewer orders and Retail-Plus a smaller one. Nobody has to have paid more for the
-average order to grow. Interview question 7 is this slide.
+average order to grow. Move the rates first instead, at Q1's shares, and the rates explain Rs 9,203
+and the mix Rs 24,028, 72 percent: the split moves by three points and the answer does not. Say the
+order you used, as in the morning's bridge. Interview question 7 is this slide.
 ```
 
 ---
@@ -320,12 +327,15 @@ value: 25 of 28 | label: lost orders | note: 89 percent of them
 value: 22 of 22 | label: members bought less | note: the whole tier moved
 ```
 
-**The reply.** The rupee fall in Business rests on three orders; the Retail-Plus fall rests on every member of a paid tier buying half as often.
+**The reply.** The rupee fall in Business rests on three orders; the Retail-Plus fall rests on every member of a paid tier buying half as often. Members already won are the cheaper lever: published estimates put acquiring a customer at 5 to 25 times the cost of keeping one.
 
 ```notes
 LIVE, 4 minutes. Pairs rehearse this reply aloud. The strength of evidence is part of the answer:
 a change carried by 22 people is harder to explain away than one carried by three orders, even
-when the rupees are smaller. Interview question 11 is this slide.
+when the rupees are smaller. The cost argument comes from the morning's S3: HBR (Gallo, 2014)
+summarises studies putting acquisition at 5 to 25 times the cost of retention; those are estimates
+across industries, not Kalpa's figures, so pairs say "estimates" when they use them. The frequency
+lever works on the 22 members Kalpa already has. Interview question 11 is this slide.
 ```
 
 ---
@@ -342,14 +352,17 @@ xychart-beta
     line [13, 12, 13, 12, 12, 12]
 ```
 
-Retail-Plus placed 18 orders from 1 July to 24 August and 8 from 25 August to 30 September. Retail-Core, the comparison segment, stayed flat.
+Retail-Plus placed 18 orders from 1 July to 24 August and 8 from 25 August to 30 September. Retail-Core, the comparison segment, stayed flat, which argues against a season that hit every customer, though only last year's Q2 can rule the season out for the tier.
 
 ```notes
 LIVE, 5 minutes. The first line is Retail-Plus and the second Retail-Core. The timing test: a
 cause cannot come after its effect. The fall began in July, before the break the complaint dates,
 so the break cannot be the whole story. Whether it deepened the fall rests on eight orders, which
-is Thursday's kind of question. Hold questions about any single month for Wednesday, when the
-export is profiled row by row.
+is Thursday's kind of question. The rival explanation a sharp pair raises is the season: July opens
+the monsoon quarter, and a seasonal dip would also start in July. Retail-Core, flat through the same
+months, is evidence against a season that hits everyone; a season that hits members harder is still
+possible, and last year's Q2 by segment settles it. Hold questions about any single month for
+Wednesday, when the export is profiled row by row.
 ```
 
 ---
@@ -379,20 +392,24 @@ why the next slide asks for data.
 
 ---
 
-## S16. Two hypotheses, and the data that settles each
-*Neither can be settled from this file, so the answer names the data to ask for.*
+## S16. Two hypotheses, a rival, and the data for each
+*None can be settled from this file, so the answer names the data to ask for.*
 
 ```cards
 icon: smartphone | eyebrow: Hypothesis 1 | title: The broken reorder feature | body: Settled by the app's reorder events and failures by week, the release that broke it, and whether members who used reorder in Q1 fell more than those who did not.
 icon: calendar-clock | eyebrow: Hypothesis 2 | title: Something changed for members in July | body: Settled by the tier's change log for benefits, prices or delivery terms, renewals, and members' support tickets. | tone: dark
+icon: cloud-rain | eyebrow: The rival | title: The season | body: A monsoon dip that hit members harder. Settled by last year's Q2 for Retail-Plus against Retail-Core.
 ```
 
 **Kavya's review.** "A cause is a hypothesis until the evidence that would settle it is in hand. Timing first, then where, then the data you still need."
 
 ```notes
 LIVE, 5 minutes, then two pairs present in 7 minutes. Listen for pairs who say "the cause is" and
-for pairs who say "the evidence would be". Only the second earns Meera's trust. Interview question
-12 is this slide.
+for pairs who say "the evidence would be". Only the second earns Meera's trust. One systems point on
+the reorder logs: ask how they are written before trusting them. A failure log that records only the
+attempts that reached the server misses every member whose tap never got that far, and that absence
+is not random, which is the morning's missing-field lesson in a new place. Interview question 12 is
+this slide.
 ```
 
 ---
@@ -428,7 +445,8 @@ that would settle it, timing first.
 3. The caller receives None, so the next step either crashes or silently drops that group, and
 the screen looked right the whole time.
 4. The window's length and dates, the metric's definition, and the population counted; compare
-closed quarters, or the same weeks of each.
+closed quarters, or the same weeks of each; and name the season, which only the same quarter last
+year removes, the reason retailers keep a 4-5-4 calendar.
 ```
 
 ---
@@ -446,13 +464,18 @@ closed quarters, or the same weeks of each.
 ```notes
 LIVE, 10 minutes.
 5. Show the tree for both quarters, show that the same customers bought in both, agree in advance
-what evidence would change your mind, and propose a check before the spend rather than a refusal.
+what evidence would change your mind, and propose a check before the spend rather than a refusal;
+the frequency lever works on customers already won, which published estimates put at a fraction of
+the cost of acquiring new ones.
 6. Move one branch at a time in a bridge: customers at the old rates, then frequency at the old
-order value, then order value on the new orders, and check the moves sum to the change.
+order value, then order value on the new orders, and check the moves sum to the change. Say which
+branch moved first, because moving order value first charges frequency Rs 60.9 lakh instead of
+Rs 51.6 lakh, or use the symmetric logarithmic split, which gives Rs 55.9 lakh whatever the order.
 7. Not necessarily: hold the segment mix still and recompute; here about 69 percent of the rise
 was mix, because small orders disappeared.
 8. No: absent is unknown; count the records without it, report them separately, write down the
-default and why, and bound how much it could matter.
+default and why, and bound how much it could matter. Ask which system left it empty, because absence
+is rarely random, and whichever of in, try/except or get you use, it encodes that decision.
 ```
 
 ---
@@ -471,7 +494,8 @@ default and why, and bound how much it could matter.
 LIVE, 10 minutes.
 9. Each segment's rate carries its own customers as weight; total orders over total customers
 reproduces the company figure, and a plain average gives two customers the same vote as
-thirty-four.
+thirty-four. A ratio of totals, never a mean of ratios: reports that store averages and average
+them again make the same mistake at every level.
 10. No: churn replaced by new customers keeps a count flat; compare the ids, lost and new.
 11. Both, each with what it rests on: the behaviour change covers a whole tier and is the stronger
 evidence; the rupee change rests on a few large orders and gets checked before anyone acts.

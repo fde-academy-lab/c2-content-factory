@@ -78,6 +78,11 @@ take-home self-check's expected numbers and here.
    No new idea enters: each addition deepens one the morning already teaches. The bridge orders, the
    quartiles and the Business mean without its largest order are computed from the class file.
    Notebook 02 carries the same three splits of the bridge, computed and checked in its section 3.
+   The afternoon deck carries the same depth where its slides meet it: both orders of the mix and rate
+   split (mix explains Rs 22,902, 69 percent, moved first, and Rs 24,028, 72 percent, moved second),
+   the Business median and middle half behind the rupee lens, the retention-cost estimates in the reply
+   to Marketing, the season as a rival to both hypotheses, and how a failure log is written. The
+   season card on S16 is this pack's construction; the row names two hypotheses.
 8. **The study notes run to about 7,000 words against "about 4,000"**: three rounds, two cases, twelve
    full interview answers, and, since 29 Sep 2026 at the requester's ask, the morning deck's business
    context and technical depth in the rung where each is taught. The interview answers and the
