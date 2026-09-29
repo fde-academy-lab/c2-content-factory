@@ -1,602 +1,584 @@
-# The leaves, and the average that lies
+# Which branch does Meera open first?
 
 Week 1, Day 1. Half two.
 
 Kicker: WEEK 1  ·  MONDAY  ·  HALF TWO
-Quote: No averages. One business customer can move an average.
-Who: Anand Iyer, finance controller, Kalpa Retail, to the data and AI team at Kalpa's Global Capability Centre
+Quote: Before I sign anything, I want to understand our own sales. Is acquisition even the branch that is short?
+Who: Meera Raghavan, CEO, Kalpa Retail, to the data and AI team at Kalpa's Global Capability Centre
 
 ```notes
-LIVE, one minute. Read Anand's line aloud and leave it on screen. The morning drew the tree and
-counted revenue; the afternoon counts two more leaves, then tests Anand's warning against the file.
-Half two runs about two hours: the leaves, the average, forty minutes unguided, and the close.
+LIVE, 1 minute. Read Meera's line aloud and leave it on screen. The morning answered three rungs:
+what sales is, how many leaves the file carries, and which typical order is honest. The afternoon
+climbs the last rung on its own: which branch Meera opens first, and what one window cannot show.
+Then the room's wrong answers, a second case in pairs, the interview drill and the close.
 ```
 
 ---
 
-## SECTION 1: The leaves
-*The tree says what to count, the file carries two of the five leaves, and one careful loop counts each.*
+## SECTION 1: The escalated case
+*Sixty minutes on your own: Meera's question answered with evidence, and the branch she opens first.*
 
 ```notes
-LIVE. Chapter one runs about 30 minutes, including the 12-minute predict-three drill. It picks up
-exactly where half one stopped: revenue is counted, customers are not.
+LIVE. This block runs 60 minutes: about 9 to brief across S1 to S6, 48 working, 3 to collect on
+S6. The trainer does not teach during the working time; the support TA answers environment
+problems only. Watch which wrong numbers appear in the room, because the debrief is built from them.
 ```
 
 ---
 
-## S1. Where the morning left the tree
-*Revenue is counted, two leaves are in the file, and three are not.*
+## S1. Meera wants one branch named by Thursday
+*Marketing has put Rs 12 crore on the customers branch, and Meera wants to know if that branch is short.*
+
+**The client asks.** "Before I sign anything, I want to understand our own sales. What is 'sales' made of? Where does revenue come from, by customer type and channel? Is acquisition even the branch that is short?"
 
 ```mermaid
 flowchart LR
-    R["<b>revenue</b><br/>Rs 5,44,810 booked"] --> G["<b>gross revenue</b><br/>customers times spend"]
-    R --> D["<b>discounts</b><br/>not in this file"]
-    G --> C["<b>customers</b><br/>in the file"]
-    G --> V["<b>revenue per customer</b><br/>orders times order value"]
-    V --> F["<b>orders per customer</b><br/>in the file"]
-    V --> O["<b>revenue per order</b><br/>items times price"]
-    O --> B["<b>items per order</b><br/>not in this file"]
-    O --> P["<b>price per item</b><br/>not in this file"]
+    R["<b>revenue</b><br/>on a definition you name"] --> C["<b>customers</b><br/>marketing's Rs 12 crore"]
+    R --> F["<b>orders per customer</b><br/>retention pays"]
+    R --> V["<b>revenue per order</b><br/>the basket and its price"]
+    V --> I["<b>items per order</b><br/>merchandising pays"]
+    V --> P["<b>price per item</b><br/>volume is at risk"]
+    V --> D["<b>less discounts</b><br/>margin for quantity"]
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class C bet
+    class I,P,D unknown
+```
+
+```notes
+LIVE, 2 minutes. This is the morning's tree with marketing's bet placed on it. By Thursday Meera
+expects a recommendation on which branch to examine first, and she will ask why the others were
+not picked. The dashed branches need fields the file does not carry. Transition: the brief turns her
+question into five parts.
+```
+
+---
+
+## S2. The escalated case asks five things of you
+*One brief in five parts, worked alone for sixty minutes, on a definition of sales you name first.*
+
+```timeline
+label: Part 1 | title: The leaves | body: Customers, orders per customer and revenue per order, each on a definition you state.
+label: Part 2 | title: The typical order | body: The honest typical order, and why you chose it over the other one.
+label: Part 3 | title: The arithmetic | body: What two 10 percent lifts give, and what a 15 percent plan asks of one branch alone.
+label: Part 4 | title: The branch | body: The branch Meera opens first, and one reason each of the others waits.
+label: Part 5 | title: The sentence | body: One sentence to Meera with its number, its caveat and its next step. | tone: dark
+```
+
+The brief is `exercises/unguided/C2_W01_D01_escalated_case_STUDENT.md`, and the notebook `notebooks/C2_W01_D01_ex1_escalated_case_STUDENT.ipynb` has a check cell under every number.
+
+```notes
+LIVE, 2 minutes to brief. Leave this slide up while the room works. Nobody pastes the morning's
+demonstration cells unread, because part 1 asks for a definition the demonstration did not always
+use. If a learner is stuck after fifteen minutes, point them at the part's slide (S3 to S6) and ask
+which rung of the morning it repeats. Transition: one slide per part, shown quickly now.
+```
+
+---
+
+## S3. Parts 1 and 2: every leaf carries its definition
+*Choose booked, not cancelled or delivered first, then count every leaf on that one choice.*
+
+```mermaid
+flowchart LR
+    A["<b>name the definition</b><br/>booked, not cancelled<br/>or delivered"] --> C["<b>count customers</b><br/>distinct ids on<br/>those orders"]
+    C --> D["<b>orders per customer</b><br/>on the same orders"]
+    D --> E["<b>the typical order</b><br/>and why that one"]
+```
+
+**The rule.** Write the definition beside every number, so a reader who chose another definition can see why your number differs.
+
+```notes
+LIVE, 1 minute. Parts 1 and 2 repeat rounds 1 to 3 on one definition of the learner's choosing.
+Any definition is right if it is named. Watch for a learner who counts customers on all 30 orders
+and orders on the delivered 21; the definition has to hold across numerator and denominator.
+Transition: part 3 pushes the tree.
+```
+
+---
+
+## S4. Part 3: push the tree and read what comes out
+*Revenue is a product of branches, so a lift on one branch multiplies through to the total.*
+
+```mermaid
+flowchart LR
+    C["<b>customers</b><br/>plus 10 percent"] --> X(("<b>times</b>"))
+    F["<b>orders per customer</b><br/>plus 10 percent"] --> X
+    V["<b>revenue per order</b><br/>held where it is"] --> X
+    X --> R["<b>revenue</b><br/>what total, and what percent?"]
+```
+
+Write down two numbers: the total when customers and orders per customer each rise 10 percent, and how far one branch alone has to move to deliver the 15 percent plan.
+
+```notes
+LIVE, 1 minute. Do not work either number here; both come back in the debrief. The second number
+matters for part 4: a branch that has to rise 15 percent on its own is a large ask, and learners
+who see it in customers and in orders say what it means in people. Transition: part 4 asks who
+pays to move each branch.
+```
+
+---
+
+## S5. Part 4: each branch sends a different bill
+*Choosing a branch means choosing who pays to move it, and what the file can say about it.*
+
+```cards
+icon: users | eyebrow: Customers | title: Acquisition | body: Marketing pays, and the Rs 12 crore request sits on this branch.
+icon: repeat | eyebrow: Orders per customer | title: Frequency | body: Retention pays, so the customers Kalpa already has come back more often.
+icon: shopping-basket | eyebrow: Items per order | title: Basket | body: Merchandising pays, and this file carries no order lines to measure it.
+icon: tag | eyebrow: Price per item | title: Price | body: A rise risks volume, and the file carries no list prices.
+icon: percent | eyebrow: Discounts | title: Discount | body: Margin is traded for quantity, and the file has no discount field. | tone: dark
+```
+
+```notes
+LIVE, 1 minute. Part 4 names one branch and gives each of the others one reason to wait. The
+three branches the file cannot measure wait for a data reason; acquisition waits for an evidence
+reason, which is what the learner has to find in the leaves. Transition: part 5 is one sentence.
+```
+
+---
+
+## S6. Part 5: one sentence Meera can act on
+*Claim, evidence, caveat and next step, shown on an invented canteen so the Kalpa sentence stays yours.*
+
+```mermaid
+flowchart LR
+    A["<b>claim</b><br/>fewer diners came,<br/>plates held steady"] --> B["<b>evidence</b><br/>410 diners<br/>against 520"]
+    B --> C["<b>caveat</b><br/>it was<br/>exam week"]
+    C --> D["<b>next step</b><br/>compare the same<br/>week last term"]
+```
+
+**Kavya's review.** "Before a note goes to Meera I read three things: the definition beside every number, customers counted by their id, and a caveat that says what one window cannot show. A note missing any of them comes back to you."
+
+```notes
+LIVE, 2 minutes at the brief and 3 minutes at the end of the hour. The canteen is invented to show
+the shape; do not show a Kalpa sentence before the close. At the end of the hour, collect three
+written sentences and three part 3 totals on the board without comment, because the debrief runs
+on them. Transition: the room's own wrong answers.
+```
+
+---
+
+## SECTION 2: The room's wrong answers
+*Four numbers that looked right an hour ago, each caught by one check.*
+
+```notes
+LIVE. The debrief runs 15 minutes, built from what the room produced. Use the room's own numbers
+where they match; the slides carry the four that every room produces. Then a 10-minute break.
+```
+
+---
+
+## S7. Which of these four numbers would you sign?
+*Four numbers a room produces on this file, each plausible on a first reading.*
+
+```stats
+value: 1.00 | label: orders per customer | note: 30 orders over 30 customers
+value: Rs 18,160 | label: typical order | note: revenue over orders
+value: 20 percent | label: growth | note: two 10 percent lifts, added
+value: Rs 5,44,810 | label: sales | note: all 30 orders summed
+```
+
+**Question.** Choose one: a) all four, since each came from the file; b) only the sales total; c) only the growth figure; d) none of the four, as written.
+
+```notes
+LIVE, 3 minutes. Letters first, then one defender for b: the sales total is a real sum, which is
+why it tempts. The answer is d, because each number answers a different question from the one it
+claims. Transition: the check that catches each.
+```
+
+---
+
+## S8. Answer: none of the four survives its check
+*Each number is caught by one check, and each fix changes what Meera would decide.*
+
+| The wrong number | What it misses | The check that catches it | What to report |
+|---|---|---|---|
+| 1.00 orders per customer | A row is an order, and 7 customers bought twice. | Compare len(rows) with len(set(ids)), which gives 30 against 23. | 23 customers placed 1.30 orders each. |
+| Rs 18,160 typical order | 29 of the 30 orders sit below the mean. | Count the orders above the mean, then sort and read the top. | The median, Rs 2,205, is the typical order. |
+| 20 percent growth | Branches multiply along the tree. | Recompute revenue through the tree: 1.10 x 1.10. | Two 10 percent lifts give 21 percent. |
+| Rs 5,44,810 as sales | Four cancelled orders never became sales. | Count orders by status before summing. | Not cancelled is Rs 5,35,760 on 26 orders. |
+
+```notes
+LIVE, 4 minutes. The answer is d. Walk the rows in the order the room met them. Row one is the
+number that would have supported the Rs 12 crore: "nobody comes back" makes acquisition look like
+the only branch. Row four is right once it carries its name, booked; the error is calling it sales.
+Transition: the arithmetic row, drawn.
+```
+
+---
+
+## S9. Two 10 percent lifts make 21 percent
+*The branches multiply, so the second lift also applies to what the first lift added.*
+
+```mermaid
+xychart-beta
+    title "Revenue after the lifts, Rs thousand"
+    x-axis ["Booked now", "Customers +10", "Both, added", "Both, multiplied"]
+    y-axis "Rs thousand" 500 --> 680
+    bar [545, 599, 654, 659]
+```
+
+1.10 x 1.10 is 1.21, so two 10 percent lifts make 21 percent: Rs 6,59,220 against the Rs 6,53,772 that adding gives, Rs 5,448 apart.
+
+```notes
+LIVE, 4 minutes. Work it on the board: Rs 5,44,810 times 1.10 is Rs 5,99,291; times 1.10 again is
+Rs 6,59,220. Adding the percentages gives Rs 6,53,772. The gap is small at 10 percent and grows
+with the lifts: two 30 percent lifts make 69 percent, where adding says 60. The axis starts at
+Rs 5 lakh so the gap is visible; say so. Interview question 10 in the drill is this slide. Transition: the 15 percent plan, one branch at a time.
+```
+
+---
+
+## S10. The 15 percent plan asks one branch for 15 percent
+*Held alone, a branch has to rise by the whole 15 percent, and the file says what that means.*
+
+```stats
+value: 26.5 | label: customers | note: from 23, if customers alone carry it
+value: 1.50 | label: orders per customer | note: from 1.30, if frequency alone carries it
+value: Rs 6,26,532 | label: revenue | note: Rs 5,44,810 times 1.15
+```
+
+Five of the 16 customers who bought once coming back for a second order would make 35 orders over 23 customers, which is 1.52 orders each and more than the plan asks.
+
+**In the interview.** [F] A business says 'grow revenue 15 percent'; how do you turn that into questions data can answer?
+
+```notes
+LIVE, 3 minutes. Customers alone need about three and a half more customers in this window, which
+is what the Rs 12 crore buys. Frequency alone needs four or five more orders from customers Kalpa
+already has. Both are 15 percent; the bills differ, which is the part 4 argument. Transition: the
+same arithmetic on a discount, for self-study.
+```
+
+---
+
+## D11. A discount multiplies too, and can shrink revenue
+*A 15 percent discount that lifts quantity 10 percent leaves revenue 6.5 percent lower.*
+
+```mermaid
+flowchart LR
+    P["<b>price per item</b><br/>times 0.85"] --> X(("<b>times</b>"))
+    Q["<b>quantity</b><br/>times 1.10"] --> X
+    X --> R["<b>revenue</b><br/>times 0.935,<br/>down 6.5 percent"]
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    class R bad
+```
+
+On Rs 5,44,810 that is Rs 5,09,397. The question to ask next is how many of the extra orders came from customers who would have paid full price anyway.
+
+```notes
+SELF-STUDY, shown live only if the debrief has time. It is the same multiplication as S9 with one
+factor below one. It answers interview question 12 in the drill.
+```
+
+---
+
+## SECTION 3: The second case, in pairs
+*Forty-five minutes in pairs: where revenue comes from, and whether one channel changes the branch.*
+
+```notes
+LIVE, after the 10-minute break. The block runs 45 minutes: 3 to brief on S12, 25 in pairs with
+no slides, then S13 to S17 as the debrief, about 17 minutes. Do not show S13 before the pairs work;
+it carries the wrong answer the pairs should meet in their own numbers.
+```
+
+---
+
+## S12. Meera asks where revenue comes from
+*By customer type and by channel, on the same 30 orders, in the second case brief and its notebook.*
+
+**The client asks.** "Where does revenue come from, by customer type and channel?"
+
+| Customer type | Orders | Booked revenue |
+|---|---|---|
+| Retail-Core | 14 | Rs 32,650 |
+| Retail-Plus | 10 | Rs 27,320 |
+| Student | 5 | Rs 4,840 |
+| Business | 1 | The order your round 3 sort put at the top |
+
+Work in pairs in `exercises/unguided/C2_W01_D01_second_case_STUDENT.md` and `notebooks/C2_W01_D01_ex2_second_case_STUDENT.ipynb`. Segment is recorded on each order, so one customer appears under two types; say so before counting customers per type.
+
+```notes
+LIVE, 3 minutes. The table is booked revenue on all 30 orders. The pairs split by channel and by
+status themselves. Watch for pairs who count 23 customers across the four types and get 24; that
+is the customer recorded under two types. Transition: 25 minutes in pairs, then the debrief.
+```
+
+---
+
+## S13. Store brings 91.6 percent, so is growth store-led?
+*Booked revenue by channel on all 30 orders, the first chart most pairs draw.*
+
+```mermaid
+xychart-beta
+    title "Share of booked revenue by channel, percent"
+    x-axis ["Store", "Web", "App"]
+    y-axis "Percent" 0 --> 100
+    bar [91.6, 5.0, 3.4]
+```
+
+**Question.** Choose one: a) yes, store carries nine rupees in ten, so it gets the budget; b) not yet, count the orders behind each share first; c) yes, and removing cancelled store orders changes little; d) no, app and web hold twenty of the thirty orders.
+
+```notes
+LIVE, 3 minutes. Letters first. Expect a from the pairs who stopped at the chart and c from the
+pairs who checked cancellations and stopped there. The answer is b. Transition: what the count
+shows.
+```
+
+---
+
+## S14. Answer: one order carries store's share
+*Count the orders behind each share, and store's 91.6 percent rests on one of its ten orders.*
+
+```stats
+value: 1 of 10 | label: store orders | note: carry almost all of store's revenue
+value: Rs 18,920 | label: store, consumer orders | note: of Rs 64,810 across 29 consumer orders
+value: 4 of 9 | label: consumer store orders | note: were cancelled, Rs 9,050
+```
+
+**In the interview.** [D] One channel carries nine rupees in ten of revenue; does that change where the growth plan invests?
+
+```notes
+LIVE, 4 minutes. The one order is the order the round 3 sort put at the top, and it is real
+revenue; nobody deletes it. The fix is to recompute on the 29 consumer orders and to report the top
+order on its own line. Among consumer orders store falls from 91.6 percent to about 29 percent.
+Transition: the consumer channels, booked against delivered.
+```
+
+---
+
+## S15. On consumer orders, web leads and half comes back
+*Booked against delivered for each channel, the 29 consumer orders only, in Rs thousand.*
+
+```mermaid
+xychart-beta
+    title "Consumer orders, booked and delivered, Rs thousand"
+    x-axis ["App booked", "App delivered", "Web booked", "Web delivered", "Store booked", "Store delivered"]
+    y-axis "Rs thousand" 0 --> 30
+    bar [18.6, 18.6, 27.3, 12.3, 18.9, 9.9]
+```
+
+Web books the most, Rs 27,290, and 5 of its 10 orders came back for Rs 14,970. App delivered all 10 of its orders, Rs 18,600, and store delivered Rs 9,870 on 5.
+
+```notes
+LIVE, 4 minutes. Read the pairs left to right: app is clean, web loses about half its booked
+revenue to returns, store loses to cancellations. Ask which channel a finance controller would
+call the healthiest, and why the answer is app although web books more. Transition: does this
+change the branch?
+```
+
+---
+
+## S16. Does one channel change the branch to open first?
+*Frequency came out of the escalated case, and the channel view either moves it or adds to the note.*
+
+```stats
+value: 16 of 23 | label: customers | note: bought once in the quarter
+value: 5 of 10 | label: web orders | note: came back as returns
+value: 4 of 9 | label: consumer store orders | note: were cancelled
+```
+
+**Question.** Choose one: a) yes, acquisition in store, where nine rupees in ten sit; b) yes, web first, since it books the most consumer revenue; c) no, frequency stays first with two leaks named; d) no, and the channel numbers stay out of the note.
+
+```notes
+LIVE, 2 minutes. Letters in pairs. A pair that says b has confused booked with kept revenue. A
+pair that says d has thrown away the two findings the second case produced. The answer is c.
+Transition: what the note now says.
+```
+
+---
+
+## S17. Answer: frequency stays first, with two leaks named
+*The channel view leaves the branch where it was and adds two leaks Meera should hear about.*
+
+```mermaid
+flowchart LR
+    B["<b>the branch</b><br/>frequency first,<br/>16 of 23 bought once"] --> N["<b>the note<br/>to Meera</b>"]
+    W["<b>leak 1: web returns</b><br/>5 of 10 orders,<br/>Rs 14,970"] --> N
+    S["<b>leak 2: store<br/>cancellations</b><br/>4 of 9 consumer<br/>orders, Rs 9,050"] --> N
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
-    class C,F known
-    class D,B,P unknown
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    class B known
+    class W,S bad
 ```
 
-The file says who bought and what each order came to, so two leaves can be counted this afternoon. The three dashed leaves need fields the file does not carry.
+**Kavya's review.** "A share is only as strong as the orders behind it. Count them and split them by status, and a 91.6 percent headline turns into two leaks and a branch that stayed where it was."
 
 ```notes
-LIVE, 1 minute. This is the morning's tree, marked with what the file can answer. Ask one learner
-to name the two solid leaves and one to name a dashed one. Spiral: this picture returns at the
-close of the chapter with numbers on it.
+LIVE, 4 minutes. The answer is c. The leaks are for the note, and neither is a branch: returns and
+cancellations sit between booked and delivered revenue on every branch. Tuesday's two quarters
+test whether either leak grew. Transition: the interview drill.
 ```
 
 ---
 
-## S2. Customers are people, not rows
-*Thirty rows, and some of them are the same person coming back.*
-
-```mermaid
-flowchart LR
-    O["<b>next order</b><br/>read its customer_id"] --> Q["<b>is the id in seen?</b>"]
-    Q -->|"no"| A["<b>append it</b><br/>a new customer"]
-    Q -->|"yes"| S["<b>skip it</b><br/>a customer coming back"]
-```
-
-```python
-seen = []
-for order in ORDERS:
-    if order["customer_id"] not in seen:
-        seen.append(order["customer_id"])
-print(len(seen))       # 23
-```
+## SECTION 4: The interview drill
+*Thirty minutes aloud in pairs: twelve questions from today, each answered in under a minute.*
 
 ```notes
-LIVE, 5 minutes. Two new pieces: an if inside the loop, and not in, which reads like English and
-checks every item of the list. Build it on the projector line by line, with the room typing. The
-trap is counting rows as customers, which gives 30.
+LIVE. The drill runs 30 minutes, about 10 per slide. In pairs, one asks and one answers aloud in
+under a minute, then they swap. The answers below are one breath each; the full answers are in the
+study notes. Listen for a number with its definition in every answer.
 ```
 
 ---
 
-## D3. A set counts distinct values in one line
-*The same twenty-three customers, counted by a structure that keeps each value once.*
+## S18. Four questions on what sales is and who bought
+*In pairs: one asks, one answers aloud in under a minute, then swap.*
 
-```python
-len({order["customer_id"] for order in ORDERS})    # 23
-```
-
-A set keeps each value once, so its length is the distinct count. Checking whether a value is already in a set goes straight to it, where not in on a list checks every item in turn, which matters when thirty orders become three million.
+| Tag | Question |
+|---|---|
+| [F] | What counts as "sales": booked, net of cancellations, or delivered, and which do you give a CEO? |
+| [F] | Your extract shows 30 orders and 30 customers; what do you check before saying nobody comes back? |
+| [SV] | How do you count distinct customers in Python, and why does a set give the answer a list does not? |
+| [SV] | A list against a dictionary: when do you reach for each? |
 
 ```notes
-SELF-STUDY, depth for the confident half; skip it live. The list version on S2 is the one to
-understand first; the set is the one to use once the list version is second nature.
+LIVE, 10 minutes. One breath each.
+Sales: name all three and give the CEO the one that fits the decision, delivered for what Kalpa
+kept and not cancelled for demand, with the definition beside the number.
+Thirty and thirty: check whether 30 is rows or distinct customer ids; here the set gives 23, so 7
+customers came back.
+Distinct customers: put the ids in a set, which keeps each value once, so its length is the
+distinct count; a list keeps every repeat.
+List against dictionary: a list when order and position matter, a dictionary when you look a
+value up by a key, as ORDERS is a list of dictionaries.
 ```
 
 ---
 
-## S4. Question: thirty orders, twenty-three customers
-*Seven rows did not add a customer. What are they?*
+## S19. Four questions on the typical order and the tree
+*The same drill, on the numbers from round 3 and the escalated case.*
 
-```stats
-value: 30 | label: orders | note: rows in the file
-value: 23 | label: customers | note: distinct customer ids
-value: 7 | label: rows | note: that added nobody new
-```
-
-**Question.** Choose one: a) duplicates to delete before counting; b) seven customers who came back for a second order; c) orders with a missing customer id; d) a mistake in the loop.
+| Tag | Question |
+|---|---|
+| [S] | Mean or median for order value, and why? |
+| [S] | The mean order is Rs 18,160 and the median Rs 2,205; what do you tell the business about its orders? |
+| [F] | Marketing says a 10 percent lift in customers and a 10 percent lift in frequency make 20 percent growth; what is the right number, and when does the difference matter? |
+| [D] | A 15 percent discount lifts quantity 10 percent; did revenue rise or fall, and what would you ask next? |
 
 ```notes
-LIVE, 2 minutes. Take letters. Expect some a, which is the most useful wrong answer of the day:
-it confuses a customer coming back with a record entered twice.
+LIVE, 10 minutes. One breath each.
+Mean or median: the median for a typical order, because one large order drags the mean; the mean
+where a total must multiply back, and both on a first look.
+Rs 18,160 against Rs 2,205: most orders are small and one order at the top drags the mean; value a
+first order near Rs 2,205 and name the top order on its own line.
+Two 10 percent lifts: 1.10 times 1.10 is 1.21, so 21 percent, Rs 6,59,220; the gap grows as the
+lifts grow.
+The discount: 0.85 times 1.10 is 0.935, so revenue fell 6.5 percent; ask how many extra orders
+would have been placed at full price.
 ```
 
 ---
 
-## S5. Answer: seven customers came back
-*The seven extra rows are real orders, and they are the frequency branch at work.*
+## S20. Four questions on the branch and the budget
+*The drill's last four, where the answer is a recommendation with its evidence.*
 
-```stats
-value: 23 | label: customers | note: distinct customer ids
-value: 16 | label: bought once | note: one order each
-value: 7 | label: came back | note: two orders each
-value: 30 | label: orders | note: 16, plus 7 times 2
-```
-
-**Kavya's review.** A customer coming back and a record entered twice look the same in a count. Check the order ids before you call anything a duplicate: here all thirty are different.
+| Tag | Question |
+|---|---|
+| [S] | How would you increase sales for an online retailer? |
+| [F] | A business says 'grow revenue 15 percent'; how do you turn that into questions data can answer? |
+| [D] | Marketing wants budget for acquisition; what would you check before agreeing it is the right branch, and how would you say no? |
+| [D] | One channel carries nine rupees in ten of revenue; does that change where the growth plan invests? |
 
 ```notes
-LIVE, 2 minutes. The answer is b. Have the room check it: thirty order ids, thirty different
-values. Real duplicates are Wednesday's subject; today's point is that a count alone cannot tell
-the two apart.
+LIVE, 10 minutes. One breath each.
+Increase sales: draw the tree, measure each branch, and open the one with room to move and the
+cheapest bill before spending on any.
+Grow 15 percent: split revenue into branches, ask which moved and by how much, and say what 15
+percent asks of each branch alone.
+Acquisition budget: check orders per customer and repeat buyers first; here 16 of 23 bought once,
+so say "frequency first, and the budget waits for two quarters".
+Nine rupees in ten: count the orders behind the share; here one order carries it, and on consumer
+orders the channel view adds leaks without moving the branch.
 ```
 
 ---
 
-## S6. Orders per customer is thirty over twenty-three
-*A rate is a numerator over a denominator, said out loud before it is computed.*
-
-```python
-orders = len(ORDERS)                    # 30
-customers = len(seen)                   # 23
-print(orders / customers)               # 1.3043478260869565
-print(f"{orders / customers:.2f}")      # 1.30
-```
-
-**Kavya's review.** A rate leaves the team with its numerator, its denominator and its window: "Orders per customer, 1 July to 26 September: 30 orders over 23 customers, 1.30."
+## SECTION 5: The close
+*The Kahoot, the sentence to Meera, five lines to keep, and the question she sends back.*
 
 ```notes
-LIVE, 3 minutes. Division always gives a float in Python 3, so the full value prints. The f-string
-formats it for a person to read and leaves the value itself alone. Ask what 1.30 means in words:
-the average customer ordered 1.3 times in the window.
+LIVE. The close runs 20 minutes: the Kahoot 10, the sentence 4, the five lines 3, Tuesday's
+question 3.
 ```
 
 ---
 
-## S7. A filter is an if inside the loop
-*Delivered revenue is the same accumulator, told which orders to skip.*
-
-```python
-delivered = 0
-for order in ORDERS:
-    if order["status"] == "delivered":
-        delivered += int(order["amount"])
-print(delivered)       # 520790
-```
-
-| Status | Orders | Amount |
-|---|---|---|
-| Delivered | 21 | Rs 5,20,790 |
-| Returned | 5 | Rs 14,970 |
-| Cancelled | 4 | Rs 9,050 |
-
-```notes
-LIVE, 3 minutes. Two equals signs compare and one assigns; say it once and point at the if. The
-three rows add back to the morning's Rs 5,44,810, which is the check a senior runs first: the
-parts of a total must add up to the total.
-```
-
----
-
-## S8. Question: predict three cells
-*Three one-liners, each a trap a real file sets. Write all three predictions before anything runs.*
-
-```python
-ORDERS[0]["Amount"]          # cell a
-"3500" > 3000                # cell b
-round(30 / 23, 2)            # cell c
-```
-
-**Question.** For each cell, write the exact output you expect: a value, or the name of the error and why.
-
-```notes
-LIVE, the 12-minute mid-session drill with the next slide. Three minutes to write predictions in
-silence, then pairs compare, then run the three cells. Collect one prediction per cell on the board
-before running, so the room sees its own reasoning tested.
-```
-
----
-
-## S9. Answer: two errors and a dropped zero
-*Keys match exactly, text never orders against a number, and round() does not format.*
-
-```text
-KeyError: 'Amount'
-TypeError: '>' not supported between instances of 'str' and 'int'
-1.3
-```
-
-| Cell | What happened | The habit it teaches |
-|---|---|---|
-| a | The key is amount, in lower case, and a dictionary matches keys exactly | Copy key names from the record, never from memory |
-| b | Python will not decide whether text is bigger than a number | Know a field's type before you compare it |
-| c | round() gives 1.3; the missing zero is display, never value | Format for people with an f-string, as on S6 |
-
-```notes
-LIVE, 4 minutes. Cell b is the morning's break in a new place: a loop counting orders above
-Rs 3,000 stops on the same record the sum stopped on, because int() in one loop fixed that loop
-only. The data still holds text. That is the question Wednesday asks of the whole file.
-```
-
----
-
-## S10. The tree, with today's numbers on it
-*Four numbers from one file, and they multiply back to the total.*
-
-```mermaid
-flowchart LR
-    R["<b>revenue</b><br/>Rs 5,44,810"] --> C["<b>customers</b><br/>23"]
-    R --> V["<b>revenue per customer</b><br/>Rs 23,687"]
-    V --> F["<b>orders per customer</b><br/>1.30"]
-    V --> O["<b>revenue per order</b><br/>Rs 18,160"]
-    O --> B["<b>items per order</b><br/>not in this file"]
-    O --> P["<b>price per item</b><br/>not in this file"]
-    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
-    class B,P unknown
-```
-
-The check: 23 customers times Rs 23,687 comes back to Rs 5,44,810. Hold on to revenue per order, Rs 18,160. It is an average, and the next chapter asks what it describes.
-
-```notes
-LIVE, 3 minutes. Draw these numbers onto the board tree. Revenue per customer is 5,44,810 over 23;
-revenue per order is 5,44,810 over 30, which is the mean order value. The discount branch is left
-off this picture because the file has no discount field at all.
-```
-
----
-
-## S11. The three missing leaves, and how to ask for them
-*Naming the missing data, and asking for it, beats filling the gap with a guess.*
-
-```cards
-icon: shopping-cart | eyebrow: Items per order | title: Needs order lines | body: One row per item sold, with the order it belongs to.
-icon: tag | eyebrow: Price per item | title: Needs list prices | body: The price of each item before any discount.
-icon: percent | eyebrow: Discounts | title: Needs what was given back | body: Per order or per line, in rupees. | tone: dark
-```
-
-**The rule.** Write the gap as a request: "Customers and frequency are counted. Basket, price and discounts need order lines, list prices and discounts, which this file does not carry."
-
-```notes
-LIVE, 3 minutes. The request is part of the deliverable, not an apology. An engineer who says what
-the data cannot answer, and exactly which fields would answer it, is the one a client trusts with
-the next question.
-```
-
----
-
-## SECTION 2: The average that lies
-*Revenue per order is an average, and one record can make an average describe nobody.*
-
-```notes
-LIVE. Chapter two runs about 30 minutes. This is the reveal the row says never to cut. The room
-finds what moves the mean by sorting; nobody names it before they do.
-```
-
----
-
-## S12. Revenue per order is an average
-*Rs 5,44,810 over 30 orders is Rs 18,160, the number a slide would call a typical order.*
-
-```stats
-value: Rs 5,44,810 | label: revenue | note: all booked orders
-value: 30 | label: orders | note: 1 July to 26 September
-value: Rs 18,160 | label: revenue per order | note: the mean order value
-```
-
-Put Rs 18,160 in Meera's note as the typical order and it says Kalpa Retail sells eighteen-thousand-rupee baskets. Anand's warning was written for this moment.
-
-```notes
-LIVE, 2 minutes. Ask the room whether anyone they know spends Rs 18,000 on one consumer-goods
-order. Let the doubt build; do not resolve it.
-```
-
----
-
-## S13. Question: does Rs 18,160 describe a typical order?
-*Sort the thirty amounts in your notebook and read the middle before you answer.*
-
-```python
-amounts = []
-for order in ORDERS:
-    amounts.append(int(order["amount"]))
-amounts.sort()
-print(amounts[14], amounts[15])    # the two in the middle
-print(amounts[-1])                 # the largest
-```
-
-**Question.** Choose one: a) yes, it is the average of every order; b) no, most orders sit far below it; c) no, most orders sit far above it; d) it cannot be judged without the segment.
-
-```notes
-LIVE, 5 minutes. Every learner runs the sort themselves and reads both prints. Then letters. The
-discovery is the room's: whoever reads the largest amount first says it aloud, and the room says
-what kind of order it must be.
-```
-
----
-
-## S14. Answer: the middle order is Rs 2,205
-*The mean sits about eight times above the order in the middle, pulled up by the top of the list.*
-
-```stats
-value: Rs 18,160 | label: the mean | note: revenue over orders
-value: Rs 2,205 | label: the median | note: the middle of 30 sorted amounts
-value: 8.2 | label: times | note: the mean over the median
-```
-
-In one sentence, before the next slide: what sits at the top of your sorted list, and why does it move the mean so far?
-
-```notes
-LIVE, 3 minutes. The answer is b. Take two or three sentences from the room about the top of the
-list. The strongest ones say what kind of customer placed it and that it is real revenue, which is
-exactly what Anand predicted.
-```
-
----
-
-## S15. How one record moves a mean and leaves a median
-*Five invented orders, then the same five with one bulk order in place of the largest.*
-
-```stats
-value: Rs 2,240 | label: mean | note: of 1,900, 2,100, 2,200, 2,400 and 2,600
-value: Rs 2,200 | label: median | note: the middle of the five
-value: 5 | label: orders | note: all of them ordinary
-```
-
-**What breaks.** Replace the Rs 2,600 order with one bulk order of Rs 90,000.
-
-```stats
-value: Rs 19,720 | label: mean | note: moved almost nine times
-value: Rs 2,200 | label: median | note: did not move at all
-value: 1 | label: order changed | note: out of five
-```
-
-```notes
-LIVE, 4 minutes. Work the first mean on the board: 11,200 over 5. Then the second: 98,600 over 5.
-The median is the middle value either way, because it only asks where the middle is, never how far
-away the top is. That is the whole mechanism, on numbers nobody has to trust.
-```
-
----
-
-## S16. The median, without a library
-*Sort, find the middle, and with an even count take the average of the two middle values.*
-
-```mermaid
-flowchart LR
-    A["<b>sort the 30 amounts</b><br/>smallest first"] --> M["<b>the middle two</b><br/>positions 15 and 16"] --> R["<b>their average</b><br/>2,110 and 2,300"] --> X["<b>median</b><br/>Rs 2,205"]
-```
-
-```python
-n = len(amounts)                                        # 30
-median = (amounts[n // 2 - 1] + amounts[n // 2]) / 2
-print(median)                                           # 2205.0
-```
-
-```notes
-LIVE, 5 minutes. Positions 15 and 16 are indexes 14 and 15, because Python counts from zero and
-people count from one; say it twice. With an odd count there is one middle value, at index n // 2.
-The confident half can write the odd case themselves.
-```
-
----
-
-## S17. Question: which number goes in Meera's note?
-*The note needs one number for a typical order, and a decision about the top of the list.*
-
-```stats
-value: Rs 18,160 | label: the mean | note: revenue over orders
-value: Rs 2,205 | label: the median | note: the middle of the sorted list
-```
-
-**Question.** Choose one: a) the mean, Rs 18,160, because it uses every order; b) the median, Rs 2,205, with the largest order named on its own line; c) the mean after deleting the largest order; d) the largest order, because it drives the revenue.
-
-```notes
-LIVE, 3 minutes. Take letters and ask a c voter to defend it; someone always does. Their argument
-sounds careful, which is why it is dangerous.
-```
-
----
-
-## S18. Answer: the median, and the large order named
-*The right number depends on what it is for, and a real order is never deleted to make a mean behave.*
-
-```mermaid
-flowchart TB
-    Q["<b>what is the number for?</b>"] --> A["<b>a typical order</b>"]
-    Q --> B["<b>a total that must add up</b>"]
-    Q --> C["<b>a first look at a file</b>"]
-    A --> A2["<b>the median</b><br/>one record cannot drag it"]
-    B --> B2["<b>the mean</b><br/>it multiplies back to the total"]
-    C --> C2["<b>both</b><br/>the gap is itself a finding"]
-```
-
-**Kavya's review.** Option c is the dangerous one: that order is real revenue. Report the median as the typical order, name the large order on its own line, and keep the total whole.
-
-```notes
-LIVE, 4 minutes. The answer is b. The mean is not wrong; it answers a different question.
-Revenue per order is a mean on purpose, because it has to multiply back to the total on the tree.
-The typical order is a median on purpose, because it has to describe an order someone placed.
-```
-
----
-
-## S19. The interview question this chapter answers
-*Mean or median for order value, and why: a strong answer has three parts.*
-
-**In the interview.** [S] Mean or median for order value, and why?
-
-```cards
-num: 1 | eyebrow: First | title: Say what it is for | body: A typical order, or a total that has to reconcile.
-num: 2 | eyebrow: Then | title: Say what the data does | body: Order values are skewed: a few very large orders pull the mean up.
-num: 3 | eyebrow: Last | title: Say what you report | body: The median as the typical order; both on a first look, with the gap named.
-```
-
-```notes
-LIVE, 2 minutes. Have one learner answer aloud in under thirty seconds using the three parts, then
-move to the unguided work.
-```
-
----
-
-## SECTION 3: Your call
-*Forty minutes unguided: three leaves on a new definition, and one sentence on which branch to open first.*
-
-```notes
-LIVE. Chapter three runs 40 minutes: two to brief, thirty-five working, three to collect. The
-trainer does not teach during this block; the support TA answers environment problems only.
-```
-
----
-
-## S20. Your call: three numbers and one sentence
-*Unguided, in the hands-on notebook, on delivered orders only, which is a definition you have not computed yet.*
-
-```cards
-icon: users | eyebrow: Number 1 | title: Customers | body: Distinct customer ids among delivered orders, counted with a loop.
-icon: repeat | eyebrow: Number 2 | title: Orders per customer | body: Written as a numerator over a denominator, then computed.
-icon: list-ordered | eyebrow: Number 3 | title: Median order value | body: Delivered amounts, sorted, with the middle found by hand.
-icon: message-square | eyebrow: The sentence | title: Which branch first | body: The branch Meera should examine first, and why not the others. | tone: dark
-```
-
-Each number has a check cell in the notebook that tells you whether it is right. The sentence has no check; it is read aloud at the close.
-
-```notes
-LIVE, 2 minutes to brief. The definition changes on purpose: the room computed everything on
-booked orders, and the filter from S7 is the only new move. Nobody pastes the demo, because the
-demo's numbers are the wrong answers here.
-```
-
----
-
-## S21. What a sentence to a CEO carries
-*Claim, evidence, caveat and next step, shown on a canteen so the Kalpa answer stays yours.*
-
-```mermaid
-flowchart LR
-    A["<b>claim</b><br/>fewer diners, not smaller plates"] --> B["<b>evidence</b><br/>410 diners against 520"] --> C["<b>caveat</b><br/>it was exam week"] --> D["<b>next step</b><br/>compare the same week last term"]
-```
-
-**The rule.** One sentence, four parts, in this order: what you found, the number that shows it, what could make it wrong, and what you will check next.
-
-```notes
-LIVE, 2 minutes, shown with the brief. The canteen numbers are invented to show the shape. The
-Kalpa sentence is the learner's own work; do not show a Kalpa version before the close.
-```
-
----
-
-## S22. If you are stuck after ten minutes
-*Three prompts, in the order you will need them; each is a question, never the code.*
-
-1. Customers: which loop from this afternoon adds an id only the first time it appears, and where does the delivered filter go in it?
-2. Orders per customer: which total goes on top, and which on the bottom, when both count delivered orders only?
-3. Median: how many delivered orders are there, and is that count odd or even?
-
-```notes
-SELF-STUDY for the room, shown only if a learner is stuck for ten minutes. The prompts point back
-to S2, S6 and S16 without giving the lines.
-```
-
----
-
-## SECTION 4: Close
-*Six questions, the sentence read aloud, and the one question Meera sends back for tomorrow.*
-
-```notes
-LIVE. The close runs 20 minutes: the Kahoot, two sentences read aloud, the day's recap, and
-Tuesday's question.
-```
-
----
-
-## S23. Kahoot: six questions, ungraded
+## S21. Kahoot: today's traps, played for speed
 *Ungraded, for you and for the trainer: it shows what the day left in the room.*
 
 ```stats
-value: 6 | label: questions | note: one per idea from today
-value: 0 | label: scores recorded | note: ungraded, every day this week
-value: 8 min | label: to play | note: then the answers, discussed
+value: 8 | label: items | note: one per trap and branch of the day
+value: 0 | label: scores recorded | note: ungraded, every day of the week
+value: 10 min | label: to play | note: then the missed ones, discussed
+value: 1 | label: return question | note: from today, in Tuesday's Kahoot
 ```
 
 ```notes
-LIVE, 8 minutes. Run the Kahoot pack from the kahoot folder. Pause on any question below
-60 percent correct and ask one learner who got it right to explain it.
+LIVE, 10 minutes. Run the Kahoot pack from the kahoot folder. Pause on any item below 60 percent
+correct and ask one learner who got it right to explain it. Transition: the sentence to Meera.
 ```
 
 ---
 
-## S24. Two sentences, read aloud
-*Two learners read their sentence to Meera, and the room checks it for the four parts.*
+## S22. The sentence to Meera, with its caveat
+*Four parts in one sentence, and a decision she can hold until Tuesday.*
 
-| Part | What the room listens for |
-|---|---|
-| Claim | Which branch to examine first, named as a branch of the tree |
-| Evidence | A number with its definition: booked or delivered, and the window |
-| Caveat | What thirty orders from one window cannot show |
-| Next step | What gets compared tomorrow, and why that settles it |
+> "On the 30 orders from 1 July to 26 September, 23 customers placed 1.30 orders each at a typical order of Rs 2,205, and 16 of them bought only once, so I would open frequency before acquisition; this one window cannot show which branch moved, so hold the Rs 12 crore until Tuesday's two quarters." The data and AI team, to Meera Raghavan, CEO, Kalpa Retail
 
-**Kavya's review.** A sentence without its evidence is an opinion, and one without its caveat is a promise. Say both, and Meera can act on it.
+```mermaid
+flowchart LR
+    A["<b>claim</b><br/>frequency before<br/>acquisition"] --> B["<b>evidence</b><br/>1.30 orders each,<br/>16 of 23 bought once"]
+    B --> C["<b>caveat</b><br/>one window cannot show<br/>which branch moved"]
+    C --> D["<b>next step</b><br/>hold the Rs 12 crore<br/>for two quarters"]
+```
 
 ```notes
-LIVE, 4 minutes. Pick one sentence that names orders per customer and one that names customers,
-if the room has both. The honest caveat for every sentence is the same: one window of thirty
-orders cannot show which branch moved, which is exactly tomorrow's question.
+LIVE, 4 minutes. Read it aloud once, then have two learners read their own from the escalated
+case and let the room check each for the four parts. A sentence without its evidence is an
+opinion, and one without its caveat is a promise. Transition: the five lines.
 ```
 
 ---
 
-## S25. What the day leaves on your desk
-*Six moves, each used again this week, in the order the day taught them.*
+## S23. Five lines to carry out of Monday
+*Each line is a trap from today turned into a habit.*
 
-| You can now | The evidence from today |
-|---|---|
-| Turn a business ask into questions data can answer | Meera's message split into four questions, two of them today's |
-| Draw the revenue tree, every branch a numerator over a denominator | The tree on the board, three leaves not in the file |
-| Keep a notebook honest | Restart and Run All; the brackets read 1, 2, 3 |
-| Count with an accumulator, and filter with an if | Revenue, customers and delivered revenue from one pattern |
-| Read a trace from its last line up | The TypeError, the KeyError and the NameError, each read aloud |
-| Choose the median over the mean on purpose | Rs 2,205 against Rs 18,160, and the reason in one sentence |
+```cards
+num: 1 | eyebrow: Round 1 | title: Definition | body: Name the definition before the number: booked, not cancelled, or delivered.
+num: 2 | eyebrow: Round 2 | title: Customers | body: Count customers by their id, never by the rows.
+num: 3 | eyebrow: Round 3 | title: Typical order | body: Report the median when one order can move the mean, and say why.
+num: 4 | eyebrow: The case | title: The tree | body: Lifts multiply along the tree: two 10 percent lifts make 21 percent.
+num: 5 | eyebrow: The caveat | title: Two windows | body: One window shows the shape of revenue; only two windows show which branch moved. | tone: dark
+```
 
 ```notes
-LIVE, 2 minutes. Ask the room which row felt weakest, by a show of hands, and note it for
-tomorrow's opening recap.
+LIVE, 3 minutes. Read the five lines aloud. They are the same lines on the cheat sheet and in the
+study notes, word for word. Ask which one the learner's own escalated case broke, and note the
+answers for Tuesday's opening. Transition: Meera's reply.
 ```
 
 ---
 
-## S26. The interview questions of the day
-*Five questions from today's row, with the tag that says how often they are asked.*
+## S24. Tomorrow, Meera asks which branch moved
+*Meera has read today's numbers, and her reply is Tuesday's work.*
 
-| Tag | Question | Where today answered it |
-|---|---|---|
-| [S] | How would you increase sales for an online retailer? | The tree, and the five branches with their bills |
-| [S] | Mean or median for order value, and why? | S19 of this half |
-| [F] | A business says "grow revenue 15 percent"; how do you turn that into questions data can answer? | The five moves in half one |
-| [SV] | A list against a dictionary: when do you reach for each? | ORDERS, a list of dictionaries |
-| [D] | Marketing wants budget for acquisition; what would you check before agreeing, and how would you say no? | Where the Rs 12 crore lands |
-
-```notes
-LIVE, 2 minutes. [S] is asked everywhere, [F] often in GCC and product screens, [SV] opens
-service-major screens, [D] separates candidates. Model answers are in the notebook's last section
-and in the trainer's day sheet; learners practise them aloud in pairs tonight.
-```
-
----
-
-## S27. Tomorrow, Meera asks which branch moved
-*Meera has read today's numbers, and her reply is tomorrow's work.*
-
-**The client asks.** "So revenue is customers, times how often they buy, times basket, times price. Now: which of those moved? Q2 was Rs 1.9 crore, Q1 was 2.1. Are we losing customers, or are the ones we have buying less?"
+**The client asks.** "So revenue is customers, times how often they buy, times basket, times price. Now: which of those moved? Q2 was Rs 1.9 crore, Q1 was 2.1."
 
 ```mermaid
 flowchart LR
     Q1["<b>Q1</b><br/>Rs 2.1 crore"] --> Q2["<b>Q2</b><br/>Rs 1.9 crore"]
-    Q2 --> C["<b>losing customers?</b><br/>marketing's answer"]
-    Q2 --> F["<b>buying less each?</b><br/>the other answer"]
+    Q2 --> C["<b>customers?</b>"]
+    Q2 --> F["<b>how often?</b>"]
+    Q2 --> B["<b>basket?</b>"]
+    Q2 --> P["<b>price?</b>"]
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class C,F,B,P unknown
 ```
 
 ```notes
-LIVE, 2 minutes. Read Meera's reply and stop. Do not predict the answer; tomorrow's file settles it.
-Remind the room of the take-home and that one of tonight's trees is walked through first thing.
+LIVE, 3 minutes. Read Meera's reply and stop. Do not predict the answer; Tuesday's file settles
+it. Remind the room of the take-home and the pre-read, and that the practice lab follows with the
+TA.
 ```
-

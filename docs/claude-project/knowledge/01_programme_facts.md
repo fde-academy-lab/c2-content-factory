@@ -82,7 +82,7 @@ Status: tentative until IIT Gandhinagar, which names the faculty member and conf
 
 ## Evaluation
 
-Status: locked. Any file may state the five components, their marks, the marks per event and the week each is earned in. No file states a rubric, a pass requirement or the day of a graded event until the programme handbook publishes them before the first graded event, in Week 3. The version in force is proposal-2026-09-25.
+Status: locked. Any file may state the five components, their marks, the marks per event and the week each is earned in. A rubric, and the day of a graded event, may be stated for a build that the rubrics block below carries, and in a STUDENT file only where that block allows learners to see it. Every other rubric and graded-event day, and every pass requirement, waits for the programme handbook, which publishes them before the first graded event, in Week 3. The version in force is proposal-2026-09-25.
 
 | Version | Status | Major exams | Mini projects | Mock interviews | Business GDs | Capstone | Source |
 |---|---|---|---|---|---|---|---|
@@ -93,6 +93,7 @@ Exams, locked: ME1 in Week 5, 70 marks, posting to M2; ME2 in Week 10, 100 marks
 Exam day and slot: open. ME1 and ME2 run during their week as a continuous activity; no artifact states a day or a slot until it is fixed.
 Ungraded indicators: daily Kahoot, the Saturday recap paper, the Week 0 diagnostic, attendance, practice exercises, the weekly written assignment, engagement.
 Attendance, locked: 90 percent minimum over the programme as a whole, recorded in every session, teaching and build weeks alike.
+Rubrics settled: Build 1 (W03), locked, by the requester, in session, on 29 September 2026, approving the drafts as written. Every other rubric waits for the programme handbook.
 
 ## Decisions and conflicts
 
@@ -101,7 +102,8 @@ Open decisions:
 | Decision | Status | Closed by | What | What it blocks |
 |---|---|---|---|---|
 | evaluation-lock | closed | the requester, on 28 September 2026 | The evaluation scheme is locked at the 25 September proposal. The parked gateway of 80 percent attendance and quiz completion before mocks and the capstone is not part of the lock, so no artifact states it. | nothing |
-| rubrics-and-calendar | open | the Programme Head | The component rubrics and the assessment calendar with the day of each graded event, which the programme handbook publishes before the first graded event, in Week 3. | every rubric, and any artifact that would name the day of a graded event |
+| build1-rubrics | closed | the requester, on 29 September 2026 | Build 1's mini project, mock and GD rubrics are approved as drafted, with the mini project scored per group on 34 marks and per learner on 6, and the mock and GD scored per learner. Learners may see them, and Build 1's learner files may name the days of its graded events. Both sit in evaluation.rubrics. | nothing |
+| rubrics-and-calendar | open | the Programme Head | The component rubrics and the assessment calendar with the day of each graded event from Build 2 on, including the capstone, which the programme handbook publishes before the first graded event, in Week 3. | every rubric and graded-event day after Build 1's |
 | w16-proposal-marks | open | the Programme Head and the AOC | Whether the Week 16 solution proposal carries marks, since the scheme has no line for it; the tabs call it assessed. | the Week 16 Wednesday pack's assessment wording |
 | recut-2026-09-21 | open | the Programme Head | The re-cut that followed the re-date, which stays open to reversal. | nothing yet, since the tracker already carries it; a reversal would reshape Weeks 1, 3, 4, 6, 7 and 8 |
 | exam-days | open | the Programme Head | The length and the paper of each major exam, and the day of ME1 and ME2. | any artifact that would name an exam day or slot |

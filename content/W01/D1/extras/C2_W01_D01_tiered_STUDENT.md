@@ -1,58 +1,55 @@
 # Extras: one to stretch, one to recover
 
-Both are optional and neither is graded. Pick the one that matches where you actually are, not the
-one that sounds better.
+Both are optional and neither is graded. Pick the one that matches where you are after today's
+rounds, and do it tonight or before Tuesday's session.
 
 ---
 
-## Stretch: the branch that pays for itself
+## Stretch: what the Rs 12 crore buys at an honest first order
 
-You finished the take-home early and the arithmetic felt easy. Then this one is for you.
+For you if the three rounds and the escalated case felt comfortable and you finished the take-home
+early.
 
-**The situation.** Meera comes back with a second question.
+> "Suppose I did give marketing the Rs 12 crore. What would it buy me, in revenue I could see this
+> year?"
+> Meera Raghavan, CEO, Kalpa Retail
 
-> "You told me which branch to look at. Now tell me which branch is worth the money. If I spend
-> Rs 1 crore, which branch gives me the most revenue back, and how sure are you?"
+Work in a new notebook on today's file. Every assumption you add is invented, and you label it
+invented where it appears.
 
-**What to build.** One table, five rows, one per branch. For each branch:
+- Take an invented cost of Rs 1,500 to acquire one new customer. How many new customers does
+  Rs 12 crore buy?
+- Value each new customer's first order twice: once at the booked mean, Rs 18,160, and once at the
+  booked median, Rs 2,205. Write both totals in crore.
+- Round 2 found 1.30 orders per customer in one quarter. If new customers behave like today's
+  customers, how many orders does each place in their first quarter, and what does that do to each
+  total?
+- Write one line on which of your two totals marketing's case most likely used, and one line on
+  what a second quarter of data would have to show before you believed either.
 
-| Column | What goes in it |
-|---|---|
-| Branch | The name |
-| What Rs 1 crore buys | Your own assumption, written as an assumption |
-| The revenue that produces | The arithmetic, shown |
-| What has to be true | The condition your number depends on |
-| How you would find out | A check somebody could run this week |
-
-**The hard part, and the point.** Every row needs an assumption you invented, clearly labelled as
-invented. The skill is not the arithmetic. It is writing a number you are willing to defend while
-saying out loud which part of it you made up.
-
-**A tell that you have done it well:** at least one row should conclude that the branch is not
-worth Rs 1 crore, with a reason.
+**A tell that you have done it well.** Your two first-quarter totals differ by a factor of about
+eight, and your last line names a branch and a number that Tuesday's two quarters would produce.
 
 ---
 
-## Recovery: thirty orders, one loop at a time
+## Recovery: the three rounds, one loop at a time
 
-The session moved fast, the loop did not land, and you would rather rebuild it than pretend. Then
-this one is for you, and doing it tonight costs you nothing tomorrow.
+For you if the loops moved faster than you did today. Doing this tonight costs nothing tomorrow.
+Work in a fresh cell of `notebooks/C2_W01_D01_01_what_sales_is_STUDENT.ipynb`, and run after every
+step.
 
-**Work in a fresh cell in today's notebook. One step at a time, running after each.**
+- Print the first record on its own, and say each field and its type aloud.
+- Write the loop that prints every status, nothing else. Then add a counter above it that counts
+  the cancelled orders, and print the counter after the loop. It should print 4.
+- Add a running total that sums the amounts of the orders that are not cancelled. If the sum stops,
+  read the last line of the message, print the order it stopped on, and convert with int(). It
+  should print 535760.
+- Make an empty set above a new loop and add each customer id to it. Print its length. It should
+  print 23, and 30 would mean you counted rows.
+- Divide the number of orders by the length of the set. It should print about 1.30.
+- Sort the amounts and print the two in the middle, the 15th and 16th. Their average should be
+  2205.
 
-1. Print the first record on its own. Look at it until the seven field names are familiar.
-2. Print just the amount of the first record: `ORDERS[0]["amount"]`.
-3. Print the amount of the second record. Then the third. By hand, three times.
-4. Now write the loop that prints every amount. Nothing else, just the print.
-5. Add a variable `total = 0` above the loop and `print(total)` below it. Run it. It prints zero,
-   because nothing adds to it yet.
-6. Add the one line inside the loop that adds to `total`. Run it.
-7. When it breaks, read the message out loud before you change anything, from its last line up.
-   Then print `order`, the record the loop stopped on, and read its amount's type.
-
-**What you should end up believing.** A loop is three decisions: where it starts, what it does each
-time, and what survives after it finishes. Everything else this week is a variation on those three.
-
-**If step 7 ran clean,** you already wrote `int()`. Take it out once and run again, so the error you
-met in class is one you can now read alone, which is cheaper tonight than on Wednesday in front of
-Finance.
+**What you should end up believing.** Each round was one loop with one decision in it: which orders
+count, what makes a customer distinct, and where the middle sits. The checks tell you whether the
+decision was right before anybody else reads the number.
