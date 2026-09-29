@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "mcp__.*(merge_pull_request|enable_pr_auto_merge)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/scripts/hooks/day_branch_merge_guard.py\"",
+            "timeout": 10,
+            "statusMessage": "Checking that this session may merge"
+          }
+        ]
+      }
+    ]
+  }
+}
