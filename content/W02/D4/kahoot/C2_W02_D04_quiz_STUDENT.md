@@ -1,61 +1,86 @@
-# Thursday's Kahoot: groupby, merge, reshape
+# Kahoot, Week 2 Thursday
 
-Ungraded. Seven questions.
+Eight items, ungraded, scored on correctness and speed together. The last item returns to
+Wednesday, one level up.
 
-## Q1. groupby, in the split-apply-combine sentence. Split on what?
+Each item names what it tests, so an item dropped for time says what was lost.
 
-a) The column you name as the key <- correct
-b) The index of the frame as it stands
-c) Whichever column holds the values
-d) The order the rows arrived in
+---
 
-## Q2. `.agg(n=("order_id","count"), m=("amount","sum"))` on 4 segments. Output shape?
+## Q1. groupby in one sentence: split, apply, combine on what?
+*Tests: the split-apply-combine sentence, said about the Monday table.*
 
-a) 8 rows, 2 columns
-b) 4 rows, 1 column
-c) 4 rows, 2 columns <- correct
-d) 2 rows, 4 columns
+- Split the customers by segment, apply a sort, combine into one list
+- Split the orders by customer, apply the measures, combine one row each  <- correct
+- Split the table by column, apply a dtype to each, combine the columns back
+- Split the orders by date, apply a filter, combine into one month
 
-## Q3. Which merge argument raises on duplicate keys, and which error?
+---
 
-a) `how="inner"`, raising a KeyError
-b) `indicator=True`, raising a ValueError
-c) `on=`, raising a MergeError
-d) `validate=`, raising a MergeError <- correct
+## Q2. agg with two measures on 4 segments and 2 quarters: what shape?
+*Tests: two group keys give one row per pair, and each named measure is a column.*
 
-## Q4. pivot against melt: which widens?
+- 4 rows by 2 columns, one row per segment
+- 2 rows by 8 columns, one row per quarter
+- 8 rows by 2 columns  <- correct
+- 1,000 rows by 2 columns, one row per order
 
-a) `melt`, which spreads the values into columns
-b) `pivot_table`, which spreads values to columns <- correct
-c) Both of them, depending on the aggfunc chosen
-d) Neither, since both only ever reorder the rows
+---
 
-## Q5. Finance's Monday number: which tool, and why?
+## Q3. Which merge argument raises on repeated keys, and with which error?
+*Tests: validate= is the row-count check made loud.*
 
-a) pandas, since the analysts already read it daily
-b) SQL in the warehouse, since it is auditable <- correct
-c) Plain Python, since it can be read aloud slowly
-d) Excel, since Finance already opens spreadsheets
+- `how="inner"`, raising KeyError on the repeated key
+- `indicator=True`, raising ValueError on the repeated key
+- `on=`, raising TypeError when a key appears twice
+- `validate="one_to_one"`, raising MergeError  <- correct
 
-## Q6. The customer table has 340 rows and the merge returned 346. What happened?
+---
 
-a) Six customers were added by the merge itself
-b) Six rows were duplicated in the left frame
-c) Six keys appear more than once on the right <- correct
-d) Six customers have a null in the merge key
+## Q4. pivot against melt: which widens and which lengthens?
+*Tests: the reshape changes the question a table answers.*
 
-## Q7. Return question, one level up
+- pivot widens and melt lengthens  <- correct
+- pivot lengthens and melt widens
+- both widen, and melt also sorts
+- both lengthen, and pivot also sums
 
-Yesterday the business said ties rank the same. Which function, and how many rows might a top
-fifty ship?
+---
 
-a) DENSE_RANK, and it ships exactly fifty rows
-b) ROW_NUMBER, and it ships exactly fifty rows
-c) RANK, and it can ship more than fifty <- correct
-d) Any of them, since a tie is rare in practice
+## Q5. Finance's Monday number: plain Python, SQL or pandas?
+*Tests: the number lives where the people who audit it can rerun it.*
 
-## Trainer note
+- pandas, because it is the fastest way to compute it
+- SQL, because Finance can rerun it at the source  <- correct
+- plain Python, because every step can be read
+- Any of them, since all three give the same number
 
-Q4 is worth a follow-up. A room that gets it right can usually still not say what `melt` returns
-when the wide frame has gaps, and the honest answer is that the round trip is not the identity:
-melting a pivot gives you more rows than you started with, because every empty cell becomes a row.
+---
+
+## Q6. 1,000 customers in, 1,120 rows out of a left merge. What happened?
+*Tests: a left merge multiplies rows when the right side repeats keys.*
+
+- 120 new customers arrived in the feed overnight
+- The left merge added the feed's unmatched rows
+- Some customers appear more than once in the feed  <- correct
+- pandas duplicated rows at random during the merge
+
+---
+
+## Q7. pivot_table with no aggfunc on member spend: each cell is what?
+*Tests: the default aggfunc is the mean, which hides how often members bought.*
+
+- The member's total spend in that month
+- The member's average order in that month  <- correct
+- The number of orders the member placed that month
+- The member's largest order in that month
+
+---
+
+## Q8. Return to Wednesday: ties must rank the same. Which function, and how many rows might "the top fifty" ship?
+*Tests: RANK gives tied members the same rank, so a tie at the boundary ships more than fifty.*
+
+- ROW_NUMBER, and exactly fifty rows every time
+- DENSE_RANK, and fewer than fifty rows when there are ties
+- NTILE, and fifty rows split across the ties evenly
+- RANK, and more than fifty when the fiftieth place is tied  <- correct

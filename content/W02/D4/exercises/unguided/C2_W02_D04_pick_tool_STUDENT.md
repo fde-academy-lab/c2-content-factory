@@ -1,59 +1,63 @@
-# Unguided: pick the tool
+# The second case, part two: pick the tool for five asks
 
-Five asks. For each, choose the tool and be ready to defend it with the three questions: who owns
-this number, for how long, and who has to be able to read it.
+Fifteen minutes in pairs, inside the second case. Each ask is one a Kalpa stakeholder has made
+this week. Pick the tool, then write the reason in one line beside your letter: who has to trust,
+rerun or audit the number decides it.
 
-## Q1.
+Post one line, five letters in item order, no spaces:
 
-Anand: "The Monday revenue figures, every Monday, that my analyst audits line by line." Which one
-appears?
+```
+Post exactly this shape: xxxxx
+```
 
-a) pandas, in a notebook the analyst can open and read
-b) SQL in the warehouse, on a schedule, with comments
-c) Plain Python, since it can be explained line by line
-d) Excel, since the analyst already works in a spreadsheet
+---
 
-## Q2.
+### Q1
 
-You, to yourself: "I want to try six versions of a customer score this afternoon and keep one."
-Which one appears?
+Anand Iyer, the finance controller: "Revenue by segment for both quarters, every Monday, computed
+so my analyst can rerun it herself and get the same number." Which tool owns it?
 
-a) SQL, since the warehouse is the source of truth
-b) Plain Python, which makes each version explicit
-c) pandas in a notebook, iterating fast on a frame
-d) Excel, where six columns sit side by side
+a) Plain Python, a script whose loop shows each step to the reader
+b) SQL, a view in the warehouse that anyone with access can rerun
+c) pandas, a notebook the analyst refreshes by hand each Monday
+d) Excel, a workbook Anand's analyst can open without a login
 
-## Q3.
+### Q2
 
-A trainer, to a room that has never seen a loop: "Show them how a total is built." Which one
-appears?
+The marketing lead: "This afternoon I want to see recency cut five different ways, 30, 45, 60,
+90 days and by segment, before I decide the win-back threshold." Which tool fits?
 
-a) Plain Python, so every step is visible
-b) pandas, since one line is easier to remember
-c) SQL, since it says what rather than how
-d) Excel, since a spreadsheet is familiar
+a) Plain Python, since each cut is a short loop anyone can follow
+b) SQL, a view per threshold so each cut is saved in the warehouse
+c) pandas, on the customer table, one line per cut and a chart each
+d) Excel, a pivot on last week's export with the thresholds typed in
 
-## Q4.
+### Q3
 
-Marketing: "The customer table, refreshed every Monday, that our analysts will build on." Which
-one appears?
+A new joiner on the team asks: "How exactly is orders per customer computed? Show me every
+step, I want to check it by hand on ten orders." Which tool do you use to show them?
 
-a) SQL, so it is owned by the warehouse
-b) Plain Python, so the logic is inspectable
-c) Excel, since their analysts open spreadsheets
-d) pandas, from the warehouse, in one run
+a) Plain Python, a loop over ten orders with the running totals printed
+b) SQL, a GROUP BY with count and count distinct in one statement
+c) pandas, a groupby chain with a named aggregation per measure
+d) Excel, a pivot table with the order ids dragged into its values box by hand
 
-## Q5.
+### Q4
 
-Somebody proposes that Finance's quarter-end number be produced by a notebook an analyst runs.
-Which one appears?
+The campaign platform sends a CSV of this week's exposures, once, and the marketing lead wants
+it matched to the customer table before lunch to see who was reached. Which tool fits?
 
-a) Fine, since the notebook reads from the warehouse anyway
-b) Fine, provided the notebook is committed to the repository
-c) Refuse: a notebook has no audit trail a controller can read
-d) Refuse: pandas cannot handle numbers of that size accurately
+a) Plain Python, reading the CSV row by row into a dictionary of customers
+b) SQL, after the platform lead loads the file into a new warehouse table
+c) pandas, reading the file and merging it with `validate="one_to_one"`
+d) Excel, a lookup from the CSV into last Friday's exported customer table
 
-## Answering
+### Q5
 
-Post one line: the five letters in order. Then take Q4 and write one sentence on why your answer
-differs from your answer to Q1, given that both are weekly and both come from the warehouse.
+Kavya: "The count of orders per quarter that the auditor will rerun next month, from the same
+source, and expect to match." Which tool owns it?
+
+a) Plain Python, a script checked into the repository beside the notebook
+b) SQL, a statement against the warehouse that the auditor can run again
+c) pandas, a notebook with its outputs saved, so the auditor can read them
+d) Excel, a sheet with the counts pasted in and the date on the tab
