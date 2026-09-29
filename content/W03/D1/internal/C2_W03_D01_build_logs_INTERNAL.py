@@ -255,6 +255,9 @@ def decisions():
     rows = [
         ("order_id", "Repeated", 14, "Drop the later occurrence",
          "The Q1 migration re-ran a batch, and every field on the pairs is identical"),
+        ("order_id", "Repeated, dates differ", 1, "Keep the later date, drop the earlier",
+         "One order recorded twice during the migration window; the later record matches the "
+         "payment date"),
         ("status", "Empty", 1, "Reject",
          "An order with no status cannot be placed in any reading of sales"),
         ("amount", "Text twelve", 1, "Reject", "Any substitute value would be invented revenue"),
@@ -265,9 +268,9 @@ def decisions():
         for c, v in enumerate(vals, 1):
             ex.cell(row=r, column=c, value=v)
             body(ex.cell(row=r, column=c))
-    ex["A10"] = ("A reason that restates the issue is not a reason. The kept row is the one an "
+    ex["A11"] = ("A reason that restates the issue is not a reason. The kept row is the one an "
                  "auditor asks about, so it goes in the log too.")
-    ex["A10"].font = Font(name=FONT, italic=True)
+    ex["A11"].font = Font(name=FONT, italic=True)
     widths(ex, {"A": 14, "B": 22, "C": 8, "D": 26, "E": 70})
 
     how = wb.create_sheet("How to use")
