@@ -51,18 +51,19 @@ Then add the card's own line, given in each block below.
 
 Listen for these in the order a discussion usually needs them. Write each one down with the learner who
 made it and the minute. They are what you describe back to the group if the Programme Head asks for
-feedback, and what the scoring sheet will draw on once the rubric is approved.
+feedback, and the evidence the scoring sheet is filled from. The right-hand column names the rubric
+criterion each move is evidence for.
 
-| Move | What it sounds like |
-|---|---|
-| Framing the decision | "So the choice is between A and B, and Dr Menon has to decide by the board meeting." |
-| Naming the metric | "We should judge this on margin in the month, since revenue flatters the cut." |
-| Putting numbers on one footing | "Marketing's nine lakh is revenue and finance's is margin, so let us convert." |
-| Using one number | "Break-even is 42 percent and they expect 40, so on their own numbers it loses." |
-| Challenging an assumption | "The 16.7 percent comes from a sample of calls; how many calls?" |
-| Stating what would change the mind | "If more than half the festive buyers are new, I would switch sides." |
-| Bringing in a quiet voice | "You have not said anything about the older patients, what do you think?" |
-| Closing | "So our position is B, the number is 7.6 percent, and we change our mind if the comparison cities rose as much." |
+| Move | What it sounds like | Evidence for |
+|---|---|---|
+| Framing the decision | "So the choice is between A and B, and Dr Menon has to decide by the board meeting." | Structures the problem |
+| Naming the metric | "We should judge this on margin in the month, since revenue flatters the cut." | Structures the problem |
+| Putting numbers on one footing | "Marketing's nine lakh is revenue and finance's is margin, so let us convert." | Structures the problem |
+| Using one number | "Break-even is 42 percent and they expect 40, so on their own numbers it loses." | Uses evidence |
+| Challenging an assumption | "The 16.7 percent comes from a sample of calls; how many calls?" | Uses evidence |
+| Stating what would change the mind | "If more than half the festive buyers are new, I would switch sides." | Lands a conclusion |
+| Bringing in a quiet voice | "You have not said anything about the older patients, what do you think?" | Engages |
+| Closing | "So our position is B, the number is 7.6 percent, and we change our mind if the comparison cities rose as much." | Lands a conclusion |
 
 ## When to intervene, and the words to use
 
@@ -83,13 +84,29 @@ Never give an answer, confirm a number, say which position is right, or say anyt
 week's data shows. If a group asks whether its reading of the card is correct, say "that is the group's
 call."
 
-## The assessors' notes
+## The assessors' notes and the rubric
 
-Until the requester approves the GD rubric, no criterion is written here and nothing is scored in the
-room. The chair keeps evidence: one line per learner per contribution, with the minute, what was said
-in their words, and which move from the table above it was. The Programme Head's scoring sheet takes
-its criteria from the approved rubric, and the GD is worth 30 marks per build week, a locked figure
-from `data/programme/facts.yaml`.
+Each learner is scored alone, on 30 marks, against the rubric the requester approved on 29 September
+2026. It renders here from `data/programme/facts.yaml`, so a change reaches this page with one sync:
+
+<!-- sync:rubric:W03/gd -->
+**Group discussion, 30 marks.** Each learner is scored alone.
+
+| Criterion | Marks | What full marks look like |
+|---|---|---|
+| Structures the problem | 8 | The learner frames the decision and the metric before arguing. |
+| Uses evidence | 8 | The learner takes a position and defends it with a number from the exhibit. |
+| Engages | 8 | The learner builds on or challenges another member's point and brings a quiet member in. |
+| Lands a conclusion | 6 | The discussion ends on a recommendation and its main risk. |
+<!-- /sync:rubric:W03/gd -->
+
+Nothing is scored in the room. During the round the chair keeps evidence: one line per learner per
+contribution, with the minute, what was said in their words, and which move from the table above it
+was. Building on or challenging another member's point is evidence for Engages too, so note who
+answered whom. In the four-minute changeover the chair turns the notes into the four scores for each
+learner in `rubrics/C2_W03_D05_gd_scoring_sheet_TRAINER.xlsx`, which totals them and flags a score
+above a criterion's maximum. A learner who spoke once gets scored on that once; a silence the chair
+created by intervening is written down and never held against anyone.
 
 The Principal Advisor's notes go to the Academic TA in the four-minute changeover, typed in the chat
 of the call or sent as a photo of the page, so both streams' notes sit in one place by the end of the

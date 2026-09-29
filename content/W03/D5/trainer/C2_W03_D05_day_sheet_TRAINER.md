@@ -119,7 +119,7 @@ the approved spine, `docs/detailing/W03_build1_spine.md`.
 | 5 Campaign | The offer ran in three cities already rising, and reached patients who had begun to drift | Offered patients book 9.0 percent more overall and less inside every campaign city (Bengaluru minus 10.8, Hyderabad minus 19.9, Mumbai minus 13.0 percent); the campaign cities rose 6.9 percent in the two months before the offer | "What did the cities without the offer do over the same weeks?" |
 
 When a group has missed its plant, ask it the question; its answer, its caveat and its log say how
-far it got. Scoring waits for the approved rubric (below).
+far it got; the mini project rubric's criteria for the data and the analysis are where that shows.
 
 ## The first tranche of presentations
 
@@ -138,15 +138,46 @@ executed run and the failure goes in the panel's notes and the group's challenge
 
 **What the panel keeps.** Evidence notes per learner, with the minute: what was claimed, which number,
 how the caveat was defended, who answered. Silent teammates are asked a question by name, as the
-Saturday row requires. No scoring in the room until the rubric is approved.
+Saturday row requires. The panel scores each group against the mini project rubric (in Scoring, below) after
+the slot, never in front of the group.
 
-## Scoring, and what waits
+## Scoring
 
-The marks per build-week event are locked (`data/programme/facts.yaml`, evaluation): the mini project 40
-including the presentation, the mock 30 and the GD 30. The rubrics for all three are drafted for the
-requester's approval and wait for it, so this pack carries no criterion and no scoring sheet yet. When the
-rubric is approved, the GD scoring sheet goes in `rubrics/` as a workbook with a formula for every total,
-and the panel's evidence notes from today are scored against it before Saturday's grade closure.
+The requester approved Build 1's three rubrics on 29 September 2026 (`data/programme/facts.yaml`,
+evaluation.rubrics.W03), and learners may see them. The marks per event are the mini project 40 including
+the presentation, the mock 30 and the GD 30. Today scores two of them.
+
+**The GD**, each learner alone, on the chair's evidence notes, in
+`rubrics/C2_W03_D05_gd_scoring_sheet_TRAINER.xlsx`:
+
+<!-- sync:rubric:W03/gd -->
+**Group discussion, 30 marks.** Each learner is scored alone.
+
+| Criterion | Marks | What full marks look like |
+|---|---|---|
+| Structures the problem | 8 | The learner frames the decision and the metric before arguing. |
+| Uses evidence | 8 | The learner takes a position and defends it with a number from the exhibit. |
+| Engages | 8 | The learner builds on or challenges another member's point and brings a quiet member in. |
+| Lands a conclusion | 6 | The discussion ends on a recommendation and its main risk. |
+<!-- /sync:rubric:W03/gd -->
+
+**The mini project**, for the first tranche's groups: the first four criteria once for the group, and
+presentation and defence for each learner:
+
+<!-- sync:rubric:W03/mini-project -->
+**Mini project, 40 marks.** The first four criteria are scored once for the group, and every member receives those 34 marks; presentation and defence is scored for each learner on 6 marks, so a silent teammate cannot ride the group's score.
+
+| Criterion | Marks | What full marks look like |
+|---|---|---|
+| The question translated | 8 | Dr Menon's words are mapped to the right Weeks 1 and 2 method, with the metric defined and the decision it feeds named. |
+| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and rupees reconcile across files. |
+| The analysis | 10 | The tree, ladder or fair comparison reaches the branch that explains the symptom, on the right denominator, with a chance test where one is needed. |
+| The claim | 6 | One sentence carries its number, denominator, period and caveat, plus an action Dr Menon can take. |
+| Presentation and defence | 6 | The live demo runs cold, and every member answers a challenge on the caveat. |
+<!-- /sync:rubric:W03/mini-project -->
+
+The Principal Advisor's and the expert's GD scores are in the sheet before the close of block two, so
+the Programme Head can read the Summary sheet before Saturday; every Build 1 grade closes on Saturday.
 
 ## The freeze
 
