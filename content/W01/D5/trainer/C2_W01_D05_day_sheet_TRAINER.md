@@ -48,8 +48,8 @@ flowchart LR
 | Part | Slides | Beside it | What must land | If short of time |
 |---|---|---|---|---|
 | Debrief 2, 20 | Two of: debrief chapter 2 (S7 to S10), chapter 3 (S11 to S13), D14, D15, the pair D16 and D17; then S18 | The TAs' lunch tally; reference notebook sections 2, 4 or 5 | The two breaks the tally names, ten minutes each | One break only, then S18 |
-| Rehearsal round one, 50 | Rehearsal deck S1 to S6 | `exercises/guided/C2_W01_D05_rehearsal_brief_STUDENT.md`, the feedback cards | Every learner defends Thursday's note twice; the TAs tell each learner their marked step, privately | Pair two to one defence each |
-| Rehearsal round two, 50 | S7 | A shuffled name list | About a dozen notes read to the room, one push each, a minute of Kavya's review | **Cut first**, whole or in part |
+| Rehearsal round one, 50 | Rehearsal deck S1 to S6 | `exercises/guided/C2_W01_D05_rehearsal_brief_STUDENT.md`, the feedback cards; a model answer for every push in `trainer/C2_W01_D05_rehearsal_key_TRAINER.md`, for a stuck pair | Every learner defends Thursday's note twice; the TAs tell each learner their marked step, privately | Pair two to one defence each |
+| Rehearsal round two, 50 | S7 | A shuffled name list; `trainer/C2_W01_D05_rehearsal_key_TRAINER.md` for the answer to each push, read after Kavya's review | About a dozen notes read to the room, one push each, a minute of Kavya's review | **Cut first**, whole or in part |
 | Timed cases, 40 | S8 to S11 | `exercises/unguided/C2_W01_D05_timed_cases_STUDENT.md`; the model answers in `trainer/C2_W01_D05_timed_cases_key_TRAINER.md` | Three cases, 13 minutes each: read 1, think 3, pairs 4, two call-outs 3, model 2 | Case 3 only |
 | Kahoot and close, 20 | S12 to S15 | `kahoot/C2_W01_D05_quiz_STUDENT.md` | Six items; Saturday's format, never an item; the five crux lines; tonight's three tasks | S14 to one line |
 
@@ -145,7 +145,7 @@ Retail-Plus orders per member 2.00 to 1.50 (-25.0 percent; -40.0 on the uncleane
 | Observing | `trainer/C2_W01_D05_observation_sheet_TRAINER.md`, one per TA |
 | The debrief | `slides/C2_W01_D05_debrief_STUDENT.pptx`, with `trainer/C2_W01_D05_lab_reference_TRAINER.ipynb` on the projector |
 | Every number | `trainer/C2_W01_D05_lab_key_TRAINER.md` |
-| The rehearsal and the cases | `slides/C2_W01_D05_rehearsal_STUDENT.pptx`, `exercises/guided/`, `exercises/unguided/C2_W01_D05_timed_cases_STUDENT.md`, `trainer/C2_W01_D05_timed_cases_key_TRAINER.md` |
+| The rehearsal and the cases | `slides/C2_W01_D05_rehearsal_STUDENT.pptx`, `exercises/guided/`, `exercises/unguided/C2_W01_D05_timed_cases_STUDENT.md`, `trainer/C2_W01_D05_rehearsal_key_TRAINER.md`, `trainer/C2_W01_D05_timed_cases_key_TRAINER.md` |
 | Close | `kahoot/C2_W01_D05_quiz_STUDENT.md` |
 | Tonight | `study-notes/`, `preread/` for Saturday, `exercises/practice/` for the practice lab |
 
