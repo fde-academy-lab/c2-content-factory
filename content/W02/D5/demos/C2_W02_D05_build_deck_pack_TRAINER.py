@@ -61,6 +61,7 @@ def rs(ref):
 
 def crl(ref):
     """Rupees in crore or lakh the way a deck says them, as a formula fragment."""
+    ref = f"({ref})"  # bracketed, so a sum such as H11+I11 is divided whole
     return (f'IF(ABS({ref})>=10000000,"Rs "&TEXT({ref}/10000000,"0.00")&" crore",'
             f'IF(ABS({ref})>=100000,"Rs "&TEXT({ref}/100000,"0.00")&" lakh",{rs(ref)}))')
 
@@ -358,7 +359,7 @@ rows = [
      f'so the protect list may be missing a member.")'),
     ("The lookup answers with the member asked for", '=IF(OR(Protect!F4="not found",Protect!F4=Protect!C6),1,0)',
      "=Protect!F7"),
-    ("The front page reconciles to the tree", "=IF(ABS(FrontPage!H11+FrontPage!I11-Tree!C14)<1,1,0)",
+    ("The front page reconciles to the warehouse", "=IF(ABS(FrontPage!H11+FrontPage!I11-Tree!C5)<1,1,0)",
      "=FrontPage!B18"),
 ]
 for i, (label, ok, why) in enumerate(rows, 5):

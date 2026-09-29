@@ -26,7 +26,15 @@ flips:
     verdicts:
       - {sheet: Tree, cell: C18, contains: "Rs 19.57 crore over the warehouse: 1450 rows carry 1000 orders"}
       - {sheet: Tree, cell: C20, expect: "Do not send: the tree counts an order once per payment row. Count each order once."}
+      - {sheet: FrontPage, cell: B18, expect: "The card does not reconcile: its two quarters sum to Rs 39.41 crore against the warehouse's Rs 19.84 crore."}
       - {sheet: FrontPage, cell: B20, contains: "Hold the card"}
+      - {sheet: Checks, cell: B8, expect: "0"}
+      - {sheet: Checks, cell: C10, contains: "Do not send anything"}
+  - name: Finance restates the warehouse one lakh higher
+    set: [{sheet: Tree, cell: C5, value: 198500000}]
+    verdicts:
+      - {sheet: Checks, cell: C6, contains: "Rs 1.22 lakh and 6 orders short of the warehouse"}
+      - {sheet: FrontPage, cell: B18, expect: "The card does not reconcile: its two quarters sum to Rs 19.84 crore against the warehouse's Rs 19.85 crore."}
       - {sheet: Checks, cell: C10, contains: "Do not send anything"}
   - name: the chief of staff looks up the missing member with an approximate match
     set: [{sheet: Protect, cell: C6, value: "C-0170"}, {sheet: Protect, cell: C7, value: "approximate"}]
