@@ -66,8 +66,9 @@ source file. Until then the key lists them under "New items waiting for the trac
    five new items; the anchors keep their answers and their item lists move to the printed numbers
    (bank items 46 to 52 now print as Q51 to Q57); the mock-interview round assigns anchor pairs by
    counting round the room, so every anchor is asked and no pair picks its favourites.
-9. **The Word files were rendered with a session shim for mermaid-cli.** The installed mermaid-cli
-   12.0.0 has no `-w` option, which `scripts/build_cheatsheet.py` passes when rendering a PNG, so
-   every Mermaid exhibit silently drops from the Word paper. This build ran with a shim outside the
-   repository that maps `-w` to `-s 2`. The fix belongs in the builder, and the orchestrating session
-   has it as a change request.
+9. **The Word files were first rendered with a session shim for mermaid-cli, and then rebuilt
+   without it.** The installed mermaid-cli 12.0.0 has no `-w` option, which the builders passed for
+   every PNG, so every Mermaid exhibit silently dropped from the Word paper. The builders now ask
+   mmdc which options it has: on 11 they pass `-w` as before, and on 12 they pass `--size` at the
+   diagram's own size, capped at the old page width. The Word paper and key were rebuilt with that
+   fix and no shim.
