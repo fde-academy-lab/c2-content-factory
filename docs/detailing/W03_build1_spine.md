@@ -46,6 +46,7 @@ the numbers below are the generator's witness.
 
 | Sub-problem | What is planted | The numbers |
 |---|---|---|
+| The headline, for every group | Dr Menon's 5 percent is her dashboard's count: retail tests booked in the old system only, a package counted as its component tests | 5.1 percent on the dashboard's count; 7.8 percent in tests booked across both systems, 8.6 percent in tests performed and 5.6 percent in bookings, all without the corporate contract, whose 1,200 health checks add 6,000 tests to Q2; every reading is short of the plan of 18 |
 | 1 Revenue | One corporate health-check contract in Q2, and packages billed as one line | Rs 18,00,000, 16.2 percent of Q2 revenue; the Q2 mean invoice is Rs 1,904 with it and Rs 1,596 without, against a median of Rs 1,499; 48,235 tests performed behind 22,152 invoice lines |
 | 2 Bookings | Chennai and Pune moved to the new booking system on 18 September, and the old system's export carries only its own bookings | The two cities fall 23.0 percent in the old export and 12.2 percent in truth; the old export also repeats 180 rows from a mid-quarter re-export |
 | 3 Billing | The payment feed keys invoices as bare digits or INV-numbers, gateway retries double-post, and the corporate invoice is unpaid | An exact join matches 2.2 percent of payments; normalised, every payment matches; 229 double posts; 102 refunds; 398 unpaid invoices |
