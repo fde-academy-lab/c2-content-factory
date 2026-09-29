@@ -1,0 +1,198 @@
+# Practice lab: joins that tell the truth
+
+About 60 minutes, run by your TA after the day's teaching blocks. Four problems, climbing. The first
+three run on small invented tables written for this lab; the fourth runs on the warehouse, on a
+quarter the day never touched. Work alone first, then compare with a neighbour before the TA walks
+the answers.
+
+The question over the whole lab is the one Anand asked in the morning, turned to a new corner of the
+book: what did we book, what happened to it afterwards, and how do you know the number is not
+double-counted?
+
+For problems 1 to 3, post one line, eleven letters in item order, no spaces, in this shape:
+
+```
+Post exactly this shape: xxxxxxxxxxx
+```
+
+---
+
+## The lab's invented tables
+
+The returns desk has sent six Q1 web orders and the refund rows raised against order ids in their
+range. Every number here is invented for the lab.
+
+`lab_orders` (invented):
+
+| order_id | channel | amount |
+|---|---|---|
+| W-1 | web | 3,200 |
+| W-2 | web | 12,500 |
+| W-3 | web | 48,000 |
+| W-4 | web | 1,900 |
+| W-5 | web | 7,400 |
+| W-6 | web | 2,600 |
+
+`lab_refunds` (invented; refunds are stored as negative amounts, as the warehouse stores them):
+
+| refund_id | order_id | refund_date | amount | reason |
+|---|---|---|---|---|
+| R-1 | W-2 | 2026-04-18 | -1,500 | damaged |
+| R-2 | W-3 | 2026-04-22 | -6,000 | wrong item |
+| R-3 | W-3 | 2026-05-06 | -4,000 | damaged |
+| R-4 | W-5 | 2026-05-10 | -7,400 | returned in full |
+| R-5 | W-7 | 2026-04-03 | -900 | damaged |
+
+To load them, paste this into a psql session; they are TEMP tables and vanish when you disconnect.
+
+```sql
+CREATE TEMP TABLE lab_orders (order_id text PRIMARY KEY, channel text, amount numeric(12, 2));
+CREATE TEMP TABLE lab_refunds (refund_id text PRIMARY KEY, order_id text, refund_date date,
+                               amount numeric(12, 2), reason text);
+INSERT INTO lab_orders VALUES
+    ('W-1', 'web', 3200), ('W-2', 'web', 12500), ('W-3', 'web', 48000),
+    ('W-4', 'web', 1900), ('W-5', 'web', 7400), ('W-6', 'web', 2600);
+INSERT INTO lab_refunds VALUES
+    ('R-1', 'W-2', '2026-04-18', -1500, 'damaged'),
+    ('R-2', 'W-3', '2026-04-22', -6000, 'wrong item'),
+    ('R-3', 'W-3', '2026-05-06', -4000, 'damaged'),
+    ('R-4', 'W-5', '2026-05-10', -7400, 'returned in full'),
+    ('R-5', 'W-7', '2026-04-03', -900, 'damaged');
+```
+
+---
+
+## Problem 1. Predict four row counts, about 10 minutes
+
+Write your four numbers on paper before you run anything. Then run the four joins and mark each
+prediction right or wrong, with the row that surprised you.
+
+### Q1. How many rows does `lab_orders JOIN lab_refunds ON order_id` return?
+
+a) 6, one row for each order the desk sent
+b) 4, one row per refund that finds its order
+c) 3, one row for each order that was refunded
+d) 5, one row for each refund row on the list
+
+### Q2. How many rows does the LEFT join from orders to refunds return?
+
+a) 6, since a LEFT join keeps each order once
+b) 5, the same as the refund rows on the list
+c) 9, the six orders and three refunded ones
+d) 7, four matched rows and three unrefunded
+
+### Q3. How many rows does the RIGHT join from orders to refunds return?
+
+a) 5, every refund row once, as ids are unique
+b) 4, since a refund with no order is dropped
+c) 7, the matched rows and the unrefunded orders
+d) 6, one row for each order the desk sent over
+
+### Q4. How many rows does the FULL join return?
+
+a) 11, the six orders and the five refunds added
+b) 7, the same as the LEFT join and no more
+c) 8, the LEFT join's rows and the refund for W-7
+d) 5, one row per refund, the larger table's count
+
+---
+
+## Problem 2. Match five business questions to the join, about 10 minutes
+
+Items 5 to 9 share the same four options, and an option may answer more than one item.
+
+### Q5. The returns desk asks: "For the orders that were refunded, what was the average refund per order?" Which join answers it?
+
+a) INNER JOIN, matched pairs only
+b) LEFT JOIN, every order kept
+c) Anti-join, unmatched orders
+d) FULL JOIN, both sides' orphans
+
+### Q6. Anand asks: "For every Q1 web order, booked and refunded, whether it was refunded or not?" Which join answers it?
+
+a) INNER JOIN, matched pairs only
+b) LEFT JOIN, every order kept
+c) Anti-join, unmatched orders
+d) FULL JOIN, both sides' orphans
+
+### Q7. Kavya asks: "Which Q1 web orders have no refund at all, so we can sample them for the satisfaction survey?" Which join answers it?
+
+a) INNER JOIN, matched pairs only
+b) LEFT JOIN, every order kept
+c) Anti-join, unmatched orders
+d) FULL JOIN, both sides' orphans
+
+### Q8. The auditor asks: "Which orders and which refunds fail to find each other, on either side?" Which join answers it?
+
+a) INNER JOIN, matched pairs only
+b) LEFT JOIN, every order kept
+c) Anti-join, unmatched orders
+d) FULL JOIN, both sides' orphans
+
+### Q9. The returns desk asks: "Which refund reasons came up on refunded orders, and how often?" Which join answers it?
+
+a) INNER JOIN, matched pairs only
+b) LEFT JOIN, every order kept
+c) Anti-join, unmatched orders
+d) FULL JOIN, both sides' orphans
+
+---
+
+## Problem 3. The refund rate that came out low, about 15 minutes
+
+Anand wants the Q1 refund rate on these web orders: refunded value over booked value. A teammate
+sends this, and reports 16.3 percent:
+
+```sql
+SELECT count(*) AS rows_out,
+       sum(o.amount) AS booked,
+       -sum(r.amount) AS refunded,
+       round(100.0 * -sum(r.amount) / sum(o.amount), 1) AS refund_rate
+FROM lab_orders o
+LEFT JOIN lab_refunds r ON r.order_id = o.order_id
+WHERE r.refund_date BETWEEN '2026-04-01' AND '2026-06-28';
+```
+
+| rows_out | booked | refunded | refund_rate |
+|---|---|---|---|
+| 4 | 1,15,900 | 18,900 | 16.3 |
+
+### Q10. What is wrong with the booked figure of 1,15,900, which is what the rate divides by?
+
+a) Nothing, since 1,15,900 is what the orders table holds
+b) The WHERE drops the unrefunded orders, and nothing more
+c) The WHERE drops unrefunded orders, and W-3 counts twice
+d) W-3 counts twice, and every order is otherwise present
+
+### Q11. With both faults fixed, what is the honest Q1 refund rate on these orders?
+
+a) 15.3 percent, once the date filter moves into the ON clause
+b) 25.0 percent, 18,900 refunded over 75,600 booked
+c) 16.3 percent, since the refunded total never changed
+d) 26.2 percent, counting the W-7 refund in the total
+
+Then write the corrected query yourself, so that it returns six rows, booked 75,600 and the rate you
+chose. Put the reconciliation above it as a comment block: orders in, rows out, and the difference.
+
+---
+
+## Problem 4. Booked against collected for Q1, about 25 minutes
+
+The day's escalated case ran on Q2. Anand now asks for the same report on Q1, the quarter the day
+never touched: "Show me, by channel, what we booked in Q1 and what we collected against it, and
+prove the collected number is not double-counted."
+
+On the warehouse, write and run:
+
+1. Q1 orders and booked by channel, from orders alone.
+2. Collected by channel at order grain, with a retry counted once, and the count reconciliation
+   written above the query before you run it.
+3. The Q1 unpaid list and the Q1 double-paid list, each with its count and value by channel.
+4. The report by channel with three checks that return true: rows out equals rows in, booked minus
+   collected equals the unpaid total, and collected plus the surplus posted twice equals what the
+   feed posted against Q1 orders.
+5. One sentence to Anand that gives the Q1 collected number and says how you know it is honest.
+
+Stretch, if you finish early: the refunds table holds refunds raised against Q1 orders. Add refunded
+and collected net of refunds by channel, and say in one comment line whether the net figure belongs
+in the report Anand signs or beside it.

@@ -1,99 +1,47 @@
-# Take-home: the page Meera reads on Monday
+# Take-home: do discounts grow baskets?
 
-This is the week's deliverable. Everything since Monday was building the numbers that go on it.
+Tonight, about ninety minutes, alone. Due before Friday's lab opens. The self-check beside this brief
+lists the numbers you should reach; open it only after your own notebook runs top to bottom.
 
----
+> **The client asks.** "Forget the monsoon sale for a moment. Across Q1, orders that carried a discount
+> were bigger baskets. Discounts grow baskets. That is why we want more of them."
+>
+> The marketing lead, Kalpa Retail, in a message to Meera after the growth-review draft went round
 
-## Part 1. Re-run the shuffle on a question you were not given
+Meera forwards it with one line: "Is that true? Same rules as today: one page, and 'not yet' is allowed."
 
-Open `notebooks/C2_W01_D04_hands_on_STUDENT.ipynb`. Marketing wants to know whether Tuesday's web
-finding survives the reconciliation. Fill every `__TODO__`, run the checks, post the five letters.
+## The file
 
-**The answer will not be the one marketing is expecting.** That is the exercise, and Part 2's
-caveat depends on it.
+`data/C2_W01_D04_takehome_STUDENT.csv` is a second Q1 export from the same ERP, pulled by a different
+team on a different day. Nobody has cleaned it. Treat it the way Wednesday taught: profile it before
+you trust a single total, and write down every decision you make about a row.
 
----
+## What you hand in
 
-## Part 2. The note, final, under 200 words
+A new notebook, `C2_W01_D04_takehome_<your name>.ipynb`, in your own folder, that runs cold top to
+bottom and carries five sections.
 
-Four parts, in this order. Claim first, because a CEO reads two minutes and stops.
+| Section | The question it answers | What it must show |
+|---|---|---|
+| 1. Profile and clean | Which rows are orders you can use? | Rows read, rows kept, and a decisions log with one line per kind of row you set aside and why |
+| 2. The blended claim | Do discounted delivered orders have bigger baskets than orders with a discount of zero? | Both averages with the count behind each, for Retail-Core and Retail-Plus together |
+| 3. Inside each segment | Does the claim hold inside Retail-Core and inside Retail-Plus separately? | The same comparison per segment, with counts, and a chart from the data |
+| 4. Chance | Could chance alone make each gap? | 5,000 shuffles with seed 2026 per comparison, and the share in the sentence that survives Kavya |
+| 5. The note | What does Meera read? | Claim, evidence, caveat, action, under 200 words |
 
-```
-CLAIM      one sentence, with the number and its denominator
-EVIDENCE   what you computed, and on how many observations
-CAVEAT     the thing that would change the claim
-ACTION     what to do, and what it costs
-```
+## Rules
 
-Answer all three of Meera's questions. **Only one of them is a yes**, and a page where all three are
-yes is a page that was written to please.
+- Delivered orders are the money kept. A discount of zero and a missing discount are different facts;
+  decide what you do with the missing ones and say so in the log.
+- Every average carries its count. Apply today's rule of thumb to every comparison.
+- The chart in section 3 comes from your data, drawn with `kit.columns` or `kit.strip`.
+- Before Friday, read the note aloud to someone outside the programme and write one line in your
+  notebook about what they asked you. A question you could not answer belongs in your caveat.
 
-| Question | What your answer has to carry |
-|---|---|
-| Is Retail-Plus real? | The p-value, written correctly, and the number of members behind it |
-| Should I fund Student? | The base, and what would change your answer |
-| Did the discount work? | The mix, the within-segment figures, and why you cannot say it failed either |
+## After it
 
----
-
-## Part 3. Read it aloud to somebody outside the programme
-
-Not a classmate. A flatmate, a parent, somebody on the phone.
-
-**Three things to listen for while you read:**
-
-1. Where do they interrupt? That sentence is unclear.
-2. Where do they nod without meaning it? That sentence is jargon.
-3. At the end, ask them what you are recommending. If they cannot say it back in one line, the claim
-   is buried.
-
-Write down which sentence you changed after reading it. That line is part of the submission.
-
----
-
-## Part 4. Two sentences from memory, no notes
-
-Close everything and write:
-
-1. What a p-value is, in one sentence, correctly.
-2. The four parts of the note, in order.
-
-Both are on Saturday's paper and both are asked in interviews. Writing them from memory tonight is
-worth more than reading them five times.
-
----
-
-## What makes this hard to shortcut
-
-The note has to hold three answers that disagree in shape: a yes, a not-yet, and a we-cannot-say.
-An assistant handed the brief alone writes three answers of the same shape, usually three yeses,
-because that is what a brief asking for a recommendation looks like.
-
-The second tell is Part 3. A note that has been read aloud to a person has short sentences in it and
-one sentence that was obviously repaired. A note that has not been read aloud does not.
-
----
-
-## Watching, tonight
-
-- Seeing Theory, frequentist inference, the interactive chapter (verified 05 Sep 2026):
-  https://seeing-theory.brown.edu/frequentist-inference/index.html
-  Then redo the shuffle on your Monday take-home data and see whether the tree branch you picked on
-  day one survives a chance reference.
-- StatQuest, the two hypothesis-testing videos from the index (verified 05 Sep 2026):
-  https://statquest.org/video_index.html
-
----
-
-## What to bring on Friday
-
-| | |
-|---|---|
-| The notebook | Filled, checks passing, five letters posted |
-| The note | Under 200 words, four parts, three answers of three shapes |
-| The repaired sentence | The one you changed after reading it aloud, and why |
-| The two from memory | The p-value sentence and the note's four parts |
-
-Friday is the AI-free lab and the growth-review rehearsal, where the note is the thing you will be
-asked to defend aloud, against a partner playing Marketing. Saturday's paper then examines the
-week.
+- **Watch.** Seeing Theory, frequentist inference, the interactive chapter on testing:
+  https://seeing-theory.brown.edu/frequentist-inference/index.html (verified 29 Sep 2026)
+- **Redo.** Run today's shuffle on your Monday take-home data too, if the practice lab did not get to it.
+- **Recap.** Write the note's four parts and the p-value sentence from memory on a card. Both are on
+  Saturday's paper.
