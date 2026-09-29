@@ -1,43 +1,25 @@
-# Solutions: pick the tool
+# Solution: pick the tool for five asks
 
-Answers: 1b 2c 3a 4d 5c
+Answers: 1b 2c 3a 4c 5b
 
-## Q1. SQL in the warehouse
+## The idea being tested
 
-Owned by the warehouse, needed indefinitely, read by an auditor who will not have you beside him.
-All three answers point the same way. The comment line stating the question and the denominator is
-what makes it auditable.
+All three tools give the same number, so the choice is about who has to trust it: Finance and
+auditors rerun and audit, so the number lives where the data lives; an analyst iterates, so the
+work sits on the bench; a reader who must follow every step gets the loop.
 
-## Q2. pandas in a notebook
+## Item by item
 
-Owned by you, needed until Friday, read by nobody but you. A notebook is exactly right here, and
-somebody reaching for SQL because it is the source of truth has answered a question nobody asked.
+| Item | Key | Why it holds | Why the others fail |
+|---|---|---|---|
+| 1 | b | A view in the warehouse is rerun at the source by anyone, and gives Anand's analyst the same number every time. | a and c run off a copy on one laptop. d: a workbook can present the number on Friday, and must never be where it is computed. |
+| 2 | c | Five cuts in an afternoon is iteration, and pandas on the customer table makes each cut one line and a chart. | a is slow to change for each cut. b turns a question into five warehouse objects. d works from last week's export, which is already out of date. |
+| 3 | a | The new joiner wants to check by hand, and a loop over ten orders with the totals printed is exactly that. | b and c are correct and compress every step into one statement, which is what the joiner cannot yet read. d hides the arithmetic inside a pivot. |
+| 4 | c | A one-off file, today, matched to the table with the fan-out guarded: that is the analyst's bench. | a rebuilds a merge by hand. b is right if the feed becomes a weekly source, and too slow for lunch today. d looks up into a stale copy and returns silently on a missing id. |
+| 5 | b | An auditor reruns a statement against the same source and expects the same count. | a and c run off copies. d is a pasted number with no trail back to the source. |
 
-Worth noticing: the same tool is correct in Q2 and refused in Q5, on the same three questions.
-The tool is not good or bad; the answers to the three questions changed.
+## The part worth arguing about
 
-## Q3. Plain Python
-
-The room has never seen a loop, so the point is that every step is visible. `groupby` in one line
-teaches nothing about how a total is built, and the fact that it is shorter is the reason it is
-wrong here.
-
-## Q4. pandas, from the warehouse, in one run
-
-This is the interesting one, and it is why the brief asks you to compare it with Q1.
-
-Both are weekly and both read from the warehouse. The difference is who reads the output and what
-they do with it. Anand's analyst audits a number and needs the query. Marketing's analysts build
-on a table and need it in the language they work in.
-
-Option a is defensible and it loses on the last of the three questions. The warehouse could own
-this table, and the people who use it could not read the definition.
-
-## Q5. Refuse, on audit
-
-A notebook has no audit trail a controller can read, no guarantee it was run against current data,
-and a cell edited at 4 pm looks identical to one nobody touched.
-
-Option b is the near-miss: committing the notebook fixes the version history and fixes none of the
-other three problems. Option d is wrong on the facts, and reaching for a technical objection when
-the real objection is procedural is a tell worth noticing in yourself.
+Item 4, option b. If the platform will send this file every week, the right long-term home is a
+warehouse table the platform lead owns, and the note should say so. For today's question, the
+bench wins, and the note says which one you chose and why.
