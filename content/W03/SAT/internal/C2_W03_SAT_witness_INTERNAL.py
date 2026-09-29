@@ -230,6 +230,23 @@ out["campaign_cities_window_change"] = during / before - 1
 out["campaign_cities_prior_change"] = before / earlier * (43 / 62) - 1
 out["delhi_window_change"] = window(["Delhi"], *CAMPAIGN) / window(["Delhi"], *PRE) - 1
 
+# ---- Supporting figures the question bank quotes beyond the spine's table ----
+sw_raw = legacy_raw[(legacy_raw.booking_date >= Q2[0]) & legacy_raw.city.isin(SWITCH)]
+out["switch_q2_old_export_with_repeats"] = len(sw_raw)
+pay["t"] = pd.to_datetime(pay.paid_at)
+ok_t = pay[pay.status == "success"]
+groups = ok_t.groupby(["invoice_ref", "amount"]).t
+spread = (groups.max() - groups.min()).dt.total_seconds() / 60
+out["double_post_max_gap_minutes"] = float(spread[groups.size() > 1].max())
+out["paid_invoice_value"] = out["invoiced_total"] - out["unpaid_value"]
+out["net_collected"] = out["collected_success_total"] - out["double_post_value"] - out["refund_value"]
+delhi = patients[patients.city == "Delhi"]
+out["delhi_offered"] = int(delhi.offered.sum())
+out["delhi_not_offered"] = int((~delhi.offered).sum())
+z_a, z_b, p0, p1 = 1.96, 0.8416, out["others_rate_scheduled"], out["small_rate_scheduled"]
+out["appointments_to_detect_gap"] = ((z_a * math.sqrt(p0 * (1 - p0)) + z_b * math.sqrt(p1 * (1 - p1)))
+                                     / (p1 - p0)) ** 2
+
 for key, value in out.items():
     if isinstance(value, float):
         print(f"{key}: {value:.4f}")
