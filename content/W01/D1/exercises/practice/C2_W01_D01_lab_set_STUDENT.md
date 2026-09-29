@@ -40,7 +40,7 @@ d) Items per order, and it costs merchandising the shelf space it needs
 
 ### Q2. A new store in a city the app already serves: which branch, and what is the catch?
 
-a) Customers, with the catch that some app buyers may simply move to the store
+a) Customers, with the catch that some app buyers simply move to the store
 b) Orders per customer, since a store makes buying easier for existing buyers
 c) Price per item, since store prices usually sit above the app's prices
 d) Items per order, since shoppers in a store pick up more lines per visit
@@ -50,7 +50,7 @@ d) Items per order, since shoppers in a store pick up more lines per visit
 a) Customers, since the card is how most people first hear of the brand
 b) Discounts, since points are money handed back at the checkout counter
 c) Price per item, since members accept the list price more willingly
-d) Orders per customer, paid in points, some to people who would return anyway
+d) Orders per customer, paid in points to some who would return anyway
 
 ### Q4. A 5 percent price rise on the top sellers: which branch, and what is the risk?
 
@@ -116,14 +116,14 @@ d) 1.00, the 6 delivered orders over the 6 delivered rows
 
 a) Rs 15,800, every order in the table
 b) Rs 11,600, the delivered orders only
-c) Rs 12,800, every order less the returned one
+c) Rs 12,800, every order less the one that was returned
 d) Rs 14,600, every order less the cancelled one
 
 ### Q11. What is the typical booked order, as the median?
 
 a) Rs 1,800, the lower of the two middle orders
 b) Rs 1,900, the average of the two middle orders
-c) Rs 1,975, the total over the count of orders
+c) Rs 1,975, the total of all eight over the count of orders
 d) Rs 2,000, the upper of the two middle orders
 
 ---
@@ -135,7 +135,7 @@ most days. Draw its revenue tree on paper in that business's own words first, th
 
 ### Q12. In the canteen's tree, which metric is "how often the same person eats here"?
 
-a) Meals sold in a week over the students enrolled on the campus
+a) Meals sold in a week over all the students enrolled on the campus
 b) People who ate in a week over the meals sold in that week
 c) Meals sold in a week over the distinct people who ate that week
 d) Revenue in a week over the meals sold in that same week
@@ -156,9 +156,9 @@ d) The denominator holds users who never ordered in September
 
 ### Q15. The canteen stays open an hour later every evening. Which branch does that move, and what does it cost?
 
-a) Price per item, since late meals can carry a small premium
-b) Customers, from people who could not come before, paid in staff and power
-c) Items per order, since late diners order more dishes at a time
+a) Price per item, since late meals can carry a small premium on the menu
+b) Customers who could not come before, paid for in staff and power
+c) Items per order, since late diners tend to order more dishes at a time
 d) Discounts, since leftover food is sold off cheaply at closing
 
 ---

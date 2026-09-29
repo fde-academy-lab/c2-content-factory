@@ -9,13 +9,13 @@ Week 1, Monday, Kalpa Retail. These are the drawings in the order they go up acr
 It goes up in the first 20 minutes, straight after Meera's ask is read out and before any notebook opens.
 
 ```mermaid
-flowchart LR
+flowchart TB
     R["<b>revenue</b><br/>4% against a 15% plan"] --> C["<b>customers</b><br/>distinct ids in the window"]
-    R --> F["<b>orders per customer</b><br/>orders / distinct customers"]
     R --> A["<b>average order value</b><br/>revenue / orders"]
     A --> I["<b>items per order</b><br/>items / orders"]
     A --> P["<b>price per item</b><br/>revenue / items"]
     A --> D["<b>discounts</b><br/>rupees given back"]
+    R --> F["<b>orders per customer</b><br/>orders / distinct customers"]
     C -.- B["<b>Rs 12 crore</b><br/>marketing's bet"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3

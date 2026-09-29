@@ -50,13 +50,13 @@ This map of the week is the programme's own construction, drawn from the Week 1 
 ## The picture to remember: the revenue tree
 
 ```mermaid
-flowchart LR
+flowchart TB
     R["<b>revenue</b><br/>4% against a 15% plan"] --> C["<b>customers</b><br/>distinct ids"]
-    R --> F["<b>orders per customer</b><br/>orders / customers"]
     R --> A["<b>average order value</b><br/>revenue / orders"]
     A --> I["<b>items per order</b><br/>not in this file"]
     A --> P["<b>price per item</b><br/>not in this file"]
     A --> D["<b>discounts</b><br/>not in this file"]
+    R --> F["<b>orders per customer</b><br/>orders / customers"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
