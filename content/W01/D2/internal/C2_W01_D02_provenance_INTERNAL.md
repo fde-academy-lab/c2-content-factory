@@ -77,6 +77,7 @@ take-home self-check's expected numbers and here.
    ways past a missing key, dictionary keys against list scans, the middle half against the range).
    No new idea enters: each addition deepens one the morning already teaches. The bridge orders, the
    quartiles and the Business mean without its largest order are computed from the class file.
+   Notebook 02 carries the same three splits of the bridge, computed and checked in its section 3.
 8. **The study notes run to about 7,000 words against "about 4,000"**: three rounds, two cases, twelve
    full interview answers, and, since 29 Sep 2026 at the requester's ask, the morning deck's business
    context and technical depth in the rung where each is taught. The interview answers and the
