@@ -38,8 +38,10 @@ log "Node packages"
 if command -v npm >/dev/null 2>&1; then
   npm install -g --silent pptxgenjs docx react react-dom react-icons sharp >/dev/null 2>&1 \
     && log "document node packages ok" || log "document node packages failed; python fallbacks will be used"
-  npm install -g --silent @mermaid-js/mermaid-cli >/dev/null 2>&1 \
-    && log "mermaid-cli installed" || log "mermaid-cli install failed"
+  # Pinned: scripts/build_deck.py passes -w, which mermaid-cli 12 removed, and 12 fails that call
+  # silently, so every deck diagram falls back to text. .claude/hooks/session-start.sh holds the same pin.
+  npm install -g --silent @mermaid-js/mermaid-cli@11.17.0 >/dev/null 2>&1 \
+    && log "mermaid-cli 11.17.0 installed" || log "mermaid-cli install failed"
   NODE_GLOBAL="$(npm root -g 2>/dev/null)"
   if [ -n "$NODE_GLOBAL" ]; then
     export NODE_PATH="$NODE_GLOBAL"
@@ -108,7 +110,9 @@ print("[setup] playwright chromium", v, "ok")
 PY
 if command -v mmdc >/dev/null 2>&1; then
   printf 'flowchart LR\n  A[setup] --> B[ok]\n' > /tmp/_mm.mmd
-  mmdc -i /tmp/_mm.mmd -o /tmp/_mm.svg >/dev/null 2>&1 && log "mermaid-cli render ok" || log "mermaid-cli installed but render failed"
+  # the flags build_deck.py passes, so a version that rejects them shows up here rather than in a deck
+  mmdc -i /tmp/_mm.mmd -o /tmp/_mm.png -b transparent -w 2600 -s 1 >/dev/null 2>&1 \
+    && log "mermaid-cli $(mmdc -V 2>/dev/null | tail -1) render ok" || log "mermaid-cli installed but render failed with build_deck.py's flags"
 else
   log "mermaid-cli unavailable"
 fi

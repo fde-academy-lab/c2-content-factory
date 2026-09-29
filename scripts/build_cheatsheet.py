@@ -809,7 +809,7 @@ def main():
 
     if not shutil.which("mmdc"):
         print("INFO  mermaid-cli is not installed, so any diagram falls back to its source. "
-              "Install it with npm install -g @mermaid-js/mermaid-cli")
+              "Install it with npm install -g @mermaid-js/mermaid-cli@11.17.0")
 
     fails = sum(build(s, a.format, verified, a.png, a.max_pages) for s in sheets)
     print(f"      {len(sheets)} sheets built")

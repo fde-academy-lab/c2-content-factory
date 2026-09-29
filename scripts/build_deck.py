@@ -327,7 +327,7 @@ def render_mermaid(lines, width_in=None):
     A mermaid fence renders as nothing at all in PowerPoint, so a deck that draws its thinking in
     mermaid needs the picture baked in. The markdown stays the authoritative source, which is what
     the verification gate reads and what renders on GitHub. Install the renderer with
-    `npm install -g @mermaid-js/mermaid-cli`; without it the fence falls back to monospace text.
+    `npm install -g @mermaid-js/mermaid-cli@11.17.0` (version 12 dropped the -w option this script passes); without it the fence falls back to monospace text.
 
     The theme is the one scripts/build_cheatsheet.py uses, so the drawing a room sees on the slide
     is the drawing they find again on the cheat sheet and in the notebook. Without it mermaid
