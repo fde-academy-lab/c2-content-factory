@@ -10,10 +10,10 @@ Each item names what it tests, so an item dropped for time says what was lost.
 ## Q1. Kalpa's revenue fell while its number of customers rose. Which branch do you open first?
 *Tests: the tree's multiplication, read backwards from a result.*
 
-- Customers, since that is the branch that visibly moved this quarter
-- Revenue per customer, since it must have fallen by more than customers rose  <- correct
+- Customers, since that is the one branch that visibly moved this quarter
+- Revenue per customer, which must have fallen by more than customers rose  <- correct
 - Price per item alone, since price is always the first suspect
-- None yet, since revenue can fall for no reason in any quarter
+- None yet, since revenue can fall for no clear reason in any given quarter
 
 ---
 
