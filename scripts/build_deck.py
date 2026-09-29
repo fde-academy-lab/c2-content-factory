@@ -64,7 +64,7 @@ from pptx.enum.text import PP_ALIGN
 from pptx.util import Emu, Inches, Pt
 
 import brand
-from build_cheatsheet import MERMAID_CONFIG, svg_labels
+from build_cheatsheet import MERMAID_CONFIG, mmdc_width_args, run_mmdc, svg_labels
 from deck_layout import (ACC, BG, BOLD, INK, LINE, MUTED, NIGHT, TINT, WHITE, MARGIN, WIDTH,
                          BODY_TOP, BODY_BOTTOM, RULE_Y, SLIDE_W, SLIDE_H, CALLOUT, CRUMB, NUMBERED,
                          QUOTE, SLIDE_ID, BEATS, add_runs, background, bar, bar_height, breadcrumb,
@@ -357,12 +357,10 @@ def render_mermaid(lines, width_in=None):
     chrome = _chromium()
     if chrome:
         env["PUPPETEER_EXECUTABLE_PATH"] = chrome
-    try:
-        subprocess.run(["mmdc", "-i", str(CACHE / f"{key}.mmd"), "-o", str(png),
-                        "-b", "transparent", "-w", "2600", "-s", str(scale), "-c", str(theme),
-                        "-p", str(config)],
-                       capture_output=True, text=True, env=env, timeout=240)
-    except Exception:
+    cmd = (["mmdc", "-i", str(CACHE / f"{key}.mmd"), "-o", str(png), "-b", "transparent"]
+           + mmdc_width_args(2600)
+           + ["-s", str(scale), "-c", str(theme), "-p", str(config)])
+    if not run_mmdc(cmd, env, 240):
         return None
     return png if png.exists() else None
 

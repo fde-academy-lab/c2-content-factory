@@ -38,8 +38,9 @@ log "Node packages"
 if command -v npm >/dev/null 2>&1; then
   npm install -g --silent pptxgenjs docx react react-dom react-icons sharp >/dev/null 2>&1 \
     && log "document node packages ok" || log "document node packages failed; python fallbacks will be used"
-  npm install -g --silent @mermaid-js/mermaid-cli >/dev/null 2>&1 \
-    && log "mermaid-cli installed" || log "mermaid-cli install failed"
+  # Pinned to 11: every committed diagram was drawn with it, and 12 draws differently and drops -w.
+  npm install -g --silent @mermaid-js/mermaid-cli@11 >/dev/null 2>&1 \
+    && log "mermaid-cli 11 installed" || log "mermaid-cli install failed"
   NODE_GLOBAL="$(npm root -g 2>/dev/null)"
   if [ -n "$NODE_GLOBAL" ]; then
     export NODE_PATH="$NODE_GLOBAL"

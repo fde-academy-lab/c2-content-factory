@@ -154,6 +154,63 @@ def svg_labels(code):
     return LABEL.sub(fix, code)
 
 
+_WIDTH_FLAG = None
+_MMDC_FAILURES = set()
+
+
+def mmdc_width_args(width):
+    """The arguments that give mmdc a page this many CSS pixels wide, where it takes one.
+
+    mermaid-cli 11 takes `-w`, and every committed deck and sheet was drawn with 11. mermaid-cli
+    12.0.0 removed `-w` and rejects it as an unknown option, so a render that passed it wrote no
+    file and each diagram fell back to its source text without a word. Its replacement, `--size`,
+    is not the same thing: it stretches every drawing to fill the page, so a fence 755 CSS pixels
+    wide came out 2,600, and the deck's sharpness scale then multiplied that again. Without a flag,
+    12 draws at the drawing's own width, which is what `-w` gave on 11. So `-w` goes in when the
+    installed mmdc lists it, nothing goes in when it does not, and a version other than 11 is
+    named once, because 12 also bundles a newer mermaid that wraps labels, draws square-cornered
+    arrows and adds shadows, and its pictures do not match the ones already shipped. setup.sh pins
+    11. The installed version's own help decides, and it is read once per run.
+    """
+    global _WIDTH_FLAG
+    if _WIDTH_FLAG is None:
+        try:
+            text = subprocess.run(["mmdc", "--help"], capture_output=True, text=True,
+                                  timeout=60).stdout
+            version = subprocess.run(["mmdc", "--version"], capture_output=True, text=True,
+                                     timeout=60).stdout.strip()
+        except Exception:
+            text, version = "", ""
+        _WIDTH_FLAG = "-w" if "--width" in text else ""
+        if version and not version.startswith("11."):
+            print(f"WARN  mermaid-cli {version} is installed and the programme's diagrams are "
+                  f"drawn with 11, so pictures will not match the shipped ones. Install it with "
+                  f"npm install -g @mermaid-js/mermaid-cli@11", file=sys.stderr)
+    return [_WIDTH_FLAG, str(width)] if _WIDTH_FLAG else []
+
+
+def run_mmdc(cmd, env, timeout):
+    """Run one mmdc render, and say so on stderr when it fails, rather than returning quietly.
+
+    A failed render leaves no file, and the caller then draws the fence as text. That fallback is
+    right when mmdc is missing and wrong when mmdc is present and broken, because the built file
+    looks finished and nobody opens it until a room does.
+    """
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=timeout)
+    except Exception as e:
+        print(f"WARN  mmdc did not run: {e}", file=sys.stderr)
+        return False
+    if r.returncode != 0:
+        last = ((r.stderr or r.stdout or "").strip().splitlines() or ["no output"])[-1]
+        if last not in _MMDC_FAILURES:
+            _MMDC_FAILURES.add(last)
+            print(f"WARN  mmdc failed, so diagrams fall back to their source text: {last}",
+                  file=sys.stderr)
+        return False
+    return True
+
+
 def render_mermaid(code, fmt="svg"):
     """Render one fence to an image and return its path, or None when mmdc is unavailable.
 
@@ -183,10 +240,8 @@ def render_mermaid(code, fmt="svg"):
     cmd = ["mmdc", "-i", str(src), "-o", str(out), "-b", "transparent",
            "-c", str(conf), "-p", str(pup)]
     if fmt == "png":
-        cmd += ["-w", "2400"]
-    try:
-        subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=300)
-    except Exception:
+        cmd += mmdc_width_args(2400)
+    if not run_mmdc(cmd, env, 300):
         return None
     if not out.exists():
         return None
