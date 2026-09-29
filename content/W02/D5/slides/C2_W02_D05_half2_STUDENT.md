@@ -368,7 +368,7 @@ customers merged to 1,120 rows.
 ## S18. Monday: the same method, a business you have not seen
 *Build 1 opens in Kalpa Health, with the project introduction online.*
 
-> "Where does our growth come from?" Dr Priya Menon, COO, Kalpa Health, whose diagnostics business grew 5 percent against a plan of 18
+Dr Priya Menon, COO of Kalpa Health, brings Meera's question to a diagnostics business that grew 5 percent against a plan of 18.
 
 ```cards
 icon: flask-conical | eyebrow: What stays | title: The method | body: The tree, the grain, the reconciliation, the card with its period and base.
