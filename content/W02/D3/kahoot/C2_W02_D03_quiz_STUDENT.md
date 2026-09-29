@@ -1,60 +1,86 @@
-# Wednesday's Kahoot: windows, ranks and the tie
+# Kahoot, Week 2 Wednesday
 
-Ungraded. Seven questions.
+Eight items, ungraded, scored on correctness and speed together. Q8 returns to Tuesday's join one
+level up, on today's question. Every member and amount in Q1 is invented for the quiz.
 
-## Q1. Rs 9,000, Rs 7,500, Rs 7,500, Rs 6,200. What does RANK return?
+Each item names what it tests, so an item dropped for time says what was lost.
 
-a) 1, 2, 3, 4
-b) 1, 2, 2, 3
-c) 1, 2, 2, 4 <- correct
-d) 1, 1, 3, 4
+---
 
-## Q2. PARTITION BY resets what?
+## Q1. Four invented members spent Rs 900, Rs 700, Rs 700 and Rs 500. What do RANK, DENSE_RANK and ROW_NUMBER give?
+*Tests: the three tie rules side by side on one small tie.*
 
-a) The sort order of the whole result set
-b) The numbering, for each group <- correct
-c) The rows the query returns at all
-d) The aggregate used inside the window
+- RANK 1,2,2,3; DENSE_RANK 1,2,2,4; ROW_NUMBER 1,2,3,4
+- RANK 1,2,2,4; DENSE_RANK 1,2,2,3; ROW_NUMBER 1,2,3,4  <- correct
+- RANK 1,2,2,4; DENSE_RANK 1,2,2,3; ROW_NUMBER 1,2,2,4
+- RANK 1,2,3,4; DENSE_RANK 1,2,2,3; ROW_NUMBER 1,2,2,3
 
-## Q3. `lag(spend)` on a customer's first month returns what?
+---
 
-a) NULL, since there is no previous row <- correct
-b) Zero, since nothing was spent before then
-c) The customer's own first month value again
-d) An error naming the missing partition row
+## Q2. A ranking uses PARTITION BY segment. What does the partition reset?
+*Tests: the partition sets the group the calculation restarts in.*
 
-## Q4. Which ORDER BY makes a running total reproducible?
+- The order in which the query returns its final rows
+- The number of rows the query returns at the end
+- Nothing, since it only sorts rows inside each segment
+- The calculation, which starts again in each segment  <- correct
 
-a) Any order, totals do not depend on it
-b) One whose values cannot tie <- correct
-c) The order the rows were inserted in
-d) Descending order, which is deterministic
+---
 
-## Q5. A window function inside WHERE. What happens?
+## Q3. LAG(spend) OVER (PARTITION BY customer_id ORDER BY month) on a member's first month returns what?
+*Tests: LAG reads the previous row of the partition, and a first row has none.*
 
-a) It filters once the window has been computed
-b) Refused, WHERE runs before the window <- correct
-c) It works only when PARTITION BY is present
-d) Refused, since windows only work in ORDER BY
+- NULL, since the member has no earlier row  <- correct
+- Zero, since no spend was recorded before it
+- The last month of the member sorted above
+- The same month's spend, repeated once more
 
-## Q6. The business says ties rank the same. Which function?
+---
 
-a) ROW_NUMBER, which gives exactly N rows
-b) DENSE_RANK, which never skips a number
-c) RANK, which shares and then skips <- correct
-d) Any of them, with ORDER BY on the id
+## Q4. Which ORDER BY makes a running total over Q2 orders give the same steps on every run?
+*Tests: a running total needs an order with no ties in it.*
 
-## Q7. Return question, one level up
+- ORDER BY order_date, since each order has a date
+- ORDER BY amount DESC, so the largest orders lead
+- ORDER BY order_date, order_id, a unique pair  <- correct
+- No ORDER BY, so the rows count once in any order
 
-Yesterday your LEFT join grew the row count. Name the cause and the check.
+---
 
-a) Duplicate rows in the left table, checked with DISTINCT
-b) A missing WHERE clause, checked by reading the query plan
-c) A wrong join type, checked by switching it to an INNER
-d) A fan-out on the key, checked by counting rows <- correct
+## Q5. A top ten per city uses ROW_NUMBER() OVER (PARTITION BY city ORDER BY revenue DESC). Two Pune members tie at tenth, and Monday's list differs from Tuesday's with no new orders. Why?
+*Tests: ROW_NUMBER cuts a tie arbitrarily, so a list without a tiebreaker does not repeat.*
 
-## Trainer note
+- A late payment changed one member's Q2 revenue overnight
+- PARTITION BY restarted the count at a different city
+- DESC puts a NULL revenue first on some runs and last on others
+- Tied members are cut arbitrarily; add a tiebreaker  <- correct
 
-Q1 is where the room splits. Anybody answering b has `DENSE_RANK` in mind, and the follow-up worth
-asking is what position 4 is telling you that position 3 would not: that three members are ahead,
-which is true, rather than that two levels are ahead, which is a different question.
+---
+
+## Q6. The business wants tied members ranked the same and nobody at the line dropped. Which function?
+*Tests: the tie rule is a business choice written as a function name.*
+
+- RANK, since ties share a place and the tie ships  <- correct
+- DENSE_RANK, since tied members share one number
+- ROW_NUMBER, since the list is the size it was asked
+- Any of the three, since ties never occur in rupees
+
+---
+
+## Q7. A member bought in July, nothing in August, then in September. What does a partitioned LAG compare September with?
+*Tests: LAG reads the previous row, which is not always the previous month.*
+
+- August, read as zero, so September counts as a rise
+- Nothing, since LAG returns NULL after any gap
+- July, as if it were last month  <- correct
+- The September of the member sorted just above him
+
+---
+
+## Q8. Tuesday's LEFT JOIN of orders to payments took 1,000 rows to 1,450. You sum revenue per member on it to rank them. What goes wrong?
+*Tests: Tuesday's fan-out, one level up: a joined total that ranks the wrong members.*
+
+- Unpaid orders are dropped, so every rank comes out lower
+- Orders with several payments repeat; check counts first  <- correct
+- Nothing, since RANK ignores rows repeated by a join
+- The ranks shift by one, since the join adds a column

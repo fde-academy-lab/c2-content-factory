@@ -1,63 +1,87 @@
-# Unguided: GROUP BY or window
+# Round 1 set: who goes on the protect list?
 
-Six questions Marketing might send you. For each, say which tool answers it. The wrong options
-are not absurd; most of them answer a nearby question.
+Marketing wrote on Monday: "Retail-Plus frequency is the problem, so we want to protect our best
+members before they drift. Give us the top fifty customers by Q2 revenue in each segment." Before
+anyone writes a query, the team has to decide which questions GROUP BY answers and which ones need
+a window, and then check that the list answers the question Marketing asked.
 
-## Q1.
+Seven items, about fifteen minutes, worked in pairs. Q2 revenue per member is the booked amount of
+the member's Q2 orders, all statuses, which is the definition Monday's suite used for the
+Rs 9,84,00,000 quarter. The warehouse has 227 Q2 buyers: 35 Business, 76 Retail-Plus, 96
+Retail-Core and 20 Student.
 
-"Total Q2 revenue for each segment." Which one appears?
+Post one line in this shape, your seven letters in item order: `1x 2x 3x 4x 5x 6x 7x`
 
-a) `GROUP BY segment`, which collapses to one row each
-b) A window function partitioned by the segment column
-c) `ORDER BY segment` with a running total taken over it
-d) `DENSE_RANK` over segment, then filter to position one
+---
 
-## Q2.
+### Q1
 
-"For every customer, their Q2 revenue and their segment's total beside it." Which one appears?
+Anand's board pack needs one line per segment carrying the segment's Q2 revenue and its number of
+buyers. Which tool answers it, and what comes back?
 
-a) `GROUP BY customer_id, segment`, then read both columns
-b) Two queries, joined afterwards on segment
-c) A window: `sum(revenue) OVER (PARTITION BY segment)`
-d) `HAVING sum(revenue) > 0`, which keeps both levels
+a) A window sum partitioned by segment, which returns 227 rows that repeat their segment's total
+b) GROUP BY segment, which returns four rows with the revenue and the buyer count on each
+c) RANK over the segment column, filtered to position one, which returns each segment's top member
+d) A running total ordered by segment, which returns 227 rows that climb to the quarter's total
 
-## Q3.
+### Q2
 
-"The three biggest spenders in each segment." Which one appears?
+Marketing wants every Q2 buyer on one sheet with the member's own Q2 revenue and the segment's
+total beside it, so a member's share of the segment can be read off the row. Which tool keeps
+both figures on the same row?
 
-a) `GROUP BY segment` with a `LIMIT 3` on the result
-b) `ORDER BY revenue DESC LIMIT 3`, run once for each segment
-c) `rank() OVER (PARTITION BY segment)`, filtered outside
-d) `HAVING count(*) <= 3` after grouping by the segment
+a) GROUP BY customer_id and segment, which returns one row per member carrying the member's total
+b) GROUP BY segment, which returns four rows, each holding the segment total and its members
+c) A HAVING clause on the member totals, which keeps the member rows and the segment rows together
+d) sum(q2_revenue) OVER (PARTITION BY segment), which keeps all 227 rows and adds the total
 
-## Q4.
+### Q3
 
-"How many customers ordered in each month of Q2." Which one appears?
+An analyst sends a protect list built with `row_number() OVER (ORDER BY q2_revenue DESC)` and a
+filter at fifty. Counted by segment it holds 35 Business, 11 Retail-Plus, 4 Retail-Core and no
+Student members. What should the reviewer conclude before it reaches Marketing?
 
-a) `count(*) OVER (PARTITION BY month)` on the order rows
-b) `lag(customer_id) OVER (ORDER BY month)`, and then count
-c) `dense_rank() OVER (ORDER BY month)`, and then a sum
-d) `GROUP BY month`, counting distinct customers
+a) It ranked the whole table, and Marketing asked for fifty members inside each segment
+b) It is right, since Business members spend the most and so deserve the most protection
+c) The Student segment had no Q2 buyers, which is why no Student member made the list
+d) The filter at fifty dropped rows, and raising it to 200 gives each segment its fifty
 
-## Q5.
+### Q4
 
-"Each customer's spend this month next to their spend last month." Which one appears?
+The fix partitions the ranking by segment and keeps `row_number() OVER (PARTITION BY segment
+ORDER BY q2_revenue DESC)` at fifty or below. How many rows does the list carry?
 
-a) `GROUP BY customer_id, month`, read two rows
-b) A self-join of the monthly table onto itself on month minus one
-c) `lag(spend) OVER (PARTITION BY customer_id ORDER BY month)`
-d) `min(spend) OVER (PARTITION BY customer_id)` subtracted
+a) 200, which is fifty for each of the four segments
+b) 227, since a partition keeps every buyer in the table
+c) 155, since two segments have fewer than fifty buyers
+d) 50, since the filter at fifty still applies to the whole result
 
-## Q6.
+### Q5
 
-"Revenue so far, week by week, without losing the weekly figures." Which one appears?
+On the fixed list the Business line holds 35 members, which is every Business member who bought in
+Q2. What should the list tell Marketing about that line?
 
-a) `GROUP BY week` with the weeks ordered ascending
-b) `sum(revenue) OVER (ORDER BY week_start)` as a window
-c) A `HAVING` clause accumulating across the groups
-d) `rank() OVER (ORDER BY week_start)` multiplied by revenue
+a) That fifteen Business members were cut by the filter and should be added back by hand
+b) That the Business fifty is every Business Q2 buyer, so nobody there was ranked out
+c) That Business needs a tighter cut-off, such as a top twenty, to keep the list selective
+d) That the Business rows should come off the list, since fifty members could not be found
 
-## Answering
+### Q6
 
-Post one line: the six letters in order. Then pick Q2 and write one sentence on what you would
-have to do without a window function, and how many queries it would take.
+A colleague's list uses `rank() OVER (PARTITION BY customer_id ORDER BY q2_revenue DESC)` on the
+table of member totals, filtered at fifty, and it comes back with all 227 Q2 buyers. What went
+wrong, and what is the fix?
+
+a) The filter ran before the rank, so the fix is to move the filter inside the window itself
+b) RANK kept every tie together, so the fix is ROW_NUMBER, which always ships exactly fifty
+c) The order should run ascending, so the fix is to reverse it and keep the same partition
+d) Each member is a partition of one row and ranks 1, so the fix is to partition by segment
+
+### Q7
+
+Which order of steps builds the per-segment protect list and proves it before Marketing sees it?
+
+a) Rank the order rows within each segment, then sum each member's Q2 orders, filter at fifty and count by segment
+b) Keep the fifty largest orders, then sum each member's Q2 orders, rank within each segment and count by segment
+c) Sum each member's Q2 orders, rank within each segment in a CTE, filter at fifty outside it, then count by segment
+d) Sum each member's Q2 orders, filter the top fifty members first, then rank within each segment and count by segment
