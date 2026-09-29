@@ -39,8 +39,6 @@ Status: tentative until IIT Gandhinagar, which names the faculty member and conf
 | W11-4 | Thu 17 Dec | W11/D4 | Evaluating retrieval and retrieval-augmented generation | Tentative | to be confirmed by IIT Gandhinagar |
 | W11-5 | Fri 18 Dec | W11/D5 | Long-context behaviour, grounding and hallucination in language models | Tentative | to be confirmed by IIT Gandhinagar |
 
-Open ruling: A day that carries a block runs to about 360 taught minutes against the 300-minute ceiling, so either the campus day runs full on those days or the trainer's agenda gives up 60 minutes, starting from its cut-first line.
-
 ## Cross-check against the tracker
 
 Every session sits on the same day in the faculty workbook and in the tracker's violet column, each on a teaching day inside its own week, and the per-week counts match the 20-Week Plan.

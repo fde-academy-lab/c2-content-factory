@@ -11,7 +11,7 @@ Every movable fact carries a status. A `locked` or `stated` fact may appear in a
 in this file: the repository is public.
 
 <!-- sync:status -->
-Facts as of 27 Sep 2026: calendar locked on 21 Sep 2026; IITGN faculty sessions 30 planned, 0 confirmed; client zero v2.2 locked and v2.3 proposed; evaluation locked; 12 decisions open.
+Facts as of 29 Sep 2026: calendar locked on 21 Sep 2026; IITGN faculty sessions 30 planned, 0 confirmed; client zero v2.2 locked and v2.3 proposed; evaluation locked; 12 decisions open.
 <!-- /sync:status -->
 
 ---
@@ -95,20 +95,21 @@ deployed engineer (16 to 20).
 
 ## THE CAMPUS DAY
 
-Two sessions a day with lunch between them, up to five teaching hours, six days a week. Sessions
-do not run past the agreed close, and AI-free segments stay visibly AI-free. No artifact states a
-clock time; lesson material uses durations only.
+Two teaching blocks of 180 minutes a day with lunch between them, six days a week, and a TA-led
+practice lab after the second block, as the requester set on 29 September 2026. The clock times
+live in `data/programme/facts.yaml`; lesson material uses durations only. Sessions do not run past
+the agreed close, and AI-free segments stay visibly AI-free.
 
 The teaching day, Monday to Friday: it opens on a Kalpa business question in a stakeholder's
-words; the analyst's thinking comes before any tool; the technique is shown working first and then
-decomposed; learners work in VS Code through GitHub Codespaces with nothing installed locally; one
-deliberate failure shows its exact error on screen; a Kahoot of a few minutes closes the day,
-ungraded; exercises are posted on GitHub Discussions, with a take-home and its self-check; and the
-setup for tomorrow ships tonight.
+words; the analyst's thinking comes before any tool; the day climbs one case in rungs of rising
+difficulty, three rounds in the morning and two cases in the afternoon; every round stages a trap,
+a plausible wrong number with the decision it would have misled; learners work in VS Code through
+GitHub Codespaces with nothing installed locally; a Kahoot of a few minutes closes the day,
+ungraded; exercises are posted on GitHub Discussions, with a take-home and its self-check; the
+practice lab runs from the day's practice set; and the setup for tomorrow ships tonight.
 
-Content covers about four hours of the teaching day, and that coverage is not discretionary. On a
-day that carries an IITGN faculty block, the block runs after the day's applied core; how that day
-fits the five-hour ceiling is an open ruling (below).
+On a day that carries an IITGN faculty block, the block runs after the day's applied core, and the
+360-minute day holds it whole: the trainer's 240 minutes and the block's 120.
 
 ## THE SATURDAY
 
@@ -205,8 +206,6 @@ Status: tentative until IIT Gandhinagar, which names the faculty member and conf
 | W11-3 | Wed 16 Dec | W11/D3 | Learning to rank, neural rerankers and rank fusion | Tentative | to be confirmed by IIT Gandhinagar |
 | W11-4 | Thu 17 Dec | W11/D4 | Evaluating retrieval and retrieval-augmented generation | Tentative | to be confirmed by IIT Gandhinagar |
 | W11-5 | Fri 18 Dec | W11/D5 | Long-context behaviour, grounding and hallucination in language models | Tentative | to be confirmed by IIT Gandhinagar |
-
-Open ruling: A day that carries a block runs to about 360 taught minutes against the 300-minute ceiling, so either the campus day runs full on those days or the trainer's agenda gives up 60 minutes, starting from its cut-first line.
 <!-- /sync:faculty-summary -->
 
 ## ASSESSMENT
@@ -277,7 +276,7 @@ Open decisions:
 | w16-proposal-marks | open | the Programme Head and the AOC | Whether the Week 16 solution proposal carries marks, since the scheme has no line for it; the tabs call it assessed. | the Week 16 Wednesday pack's assessment wording |
 | recut-2026-09-21 | open | the Programme Head | The re-cut that followed the re-date, which stays open to reversal. | nothing yet, since the tracker already carries it; a reversal would reshape Weeks 1, 3, 4, 6, 7 and 8 |
 | exam-days | open | the Programme Head | The length and the paper of each major exam, and the day of ME1 and ME2. | any artifact that would name an exam day or slot |
-| faculty-blocks | open | IIT Gandhinagar and the Programme Head | How a day absorbs an IITGN block, and the faculty names and dates from IIT Gandhinagar. | the timing lines of 30 day packs in Weeks 2, 4, 5, 7, 8, 10 and 11 |
+| faculty-blocks | open | IIT Gandhinagar and the Programme Head | The faculty names and dates from IIT Gandhinagar. How a day absorbs a block was settled on 29 September 2026, when the campus day became 360 minutes, the trainer's 240 and the block's 120. | the faculty lines of 30 day packs in Weeks 2, 4, 5, 7, 8, 10 and 11, which render from sync blocks |
 | client-zero-v2-3 | open | the Programme Head | The lock on client zero v2.3. | the Week 1 Friday lab dataset and every pack from Week 10 on |
 | build-owners | open | the Programme Head | Mock and GD owners for Builds 2 to 5, and the expert's dates for Build 4 around Christmas. | the build-week trainer sheets from Week 6 on |
 | build-sequencing | open | the Programme Head | Whether all five builds move to the sequencing discussed on 15 September, with GDs from day two, mocks in the same window and presentations by one assessor. | the build-week trainer sheets |
