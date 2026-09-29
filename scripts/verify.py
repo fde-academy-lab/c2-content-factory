@@ -234,6 +234,26 @@ def run_proofs(target):
                   f"desk is the PDF. Build it with scripts/build_cheatsheet.py.")
         fails += len(stale_pdf) + len(missing_pdf)
 
+    # A Saturday paper is handed out as the Word file, so its markdown needs the Word file beside
+    # it, built after the markdown's last change, as a cheat sheet needs its PDF.
+    papers = [p for p in files if p.suffix == ".md" and "_SAT_" in p.name
+              and p.parent.name in ("paper", "answer-key") and ("recap_paper" in p.name or "answer_key" in p.name)]
+    # The builder writes the markdown and the Word file in one run, a second apart at most, so only
+    # a Word file strictly older than its markdown is behind it.
+    stale_doc = [p.with_suffix(".docx") for p in papers
+                 if p.with_suffix(".docx").exists()
+                 and p.with_suffix(".docx").stat().st_mtime < p.stat().st_mtime
+                 and not committed_together(p, p.with_suffix(".docx"))]
+    missing_doc = [p for p in papers if not p.with_suffix(".docx").exists()]
+    if stale_doc or missing_doc:
+        for doc in stale_doc:
+            print(f"\nFAIL  {doc.name} is not newer than its markdown, so the handed-out paper and "
+                  f"the source disagree. Rebuild it with scripts/build_saturday_paper.py --docx.")
+        for md in missing_doc:
+            print(f"\nFAIL  {md.name} has no Word file beside it, and the paper a room sits is the "
+                  f"Word file. Build it with scripts/build_saturday_paper.py --docx.")
+        fails += len(stale_doc) + len(missing_doc)
+
     built = [p for p in files if p.parent.name == "slides" and p.suffix == ".pptx"]
     fresh = []
     for pptx in built:

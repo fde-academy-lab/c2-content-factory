@@ -113,12 +113,14 @@ On a day that carries an IITGN faculty block, the block runs after the day's app
 
 ## THE SATURDAY
 
-On a regular week: a pen-and-paper recap paper, AI-free and objective, then a break, then the
-solution discussion. The format was revised on 19 September and is locked: fill in the blank,
+On a regular week, 300 minutes: a pen-and-paper recap paper of two hours, AI-free and objective,
+then a break, the marking, the solution discussion and a paired mock-interview round, as the
+requester set on 29 September 2026. The format was revised on 19 September and is locked: fill in the blank,
 true or false, one correct option, more than one correct option, scenario sets, applied maths and
-ordering, graded easy, medium and hard and tagged to the roles each item serves. The paper runs
-60 minutes in the ME1 and ME2 weeks, 90 to 110 in a typical week and 120 where the interview
-weight is heaviest (SQL in Week 2, transformers in Week 8). Papers are swapped and marked against
+ordering, graded easy, medium and hard and tagged to the roles each item serves. The tracker's
+blueprint runs the paper 60 minutes in the ME1 and ME2 weeks, 90 to 110 in a typical week and 120
+where the interview weight is heaviest (SQL in Week 2, transformers in Week 8); Weeks 1 and 2 run
+120, the Week 1 paper carrying new items from its source file beyond the bank. Papers are swapped and marked against
 the key, so scores compare across the room and from week to week; the Academic TA leads the
 discussion as an interview-answer discussion with random call-outs, and the scores by question
 tag feed Monday's remediation read. Ungraded, never a ranking, never a marks component.
