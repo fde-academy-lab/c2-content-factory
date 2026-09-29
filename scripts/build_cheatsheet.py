@@ -29,6 +29,7 @@ label is dropped without warning by weasyprint, which prints every node as an em
 import argparse
 import hashlib
 import html
+import math
 import os
 import pathlib
 import re
@@ -116,6 +117,49 @@ def _chromium():
     return None
 
 
+_MMDC_VERSION = []
+
+
+def mmdc_version():
+    """The installed mermaid-cli's version, such as 12.0.0, read once a run; empty when unknown.
+
+    Every render's cache key carries it, because two versions lay the same fence out differently:
+    on 29 September 2026 the Week 2 Thursday spine drawing measured 770 by 190 CSS pixels on
+    mermaid-cli 11.17.0 and 744 by 312 on 12.0.0. A deck sizes each PNG from the SVG of the same
+    fence, so a render cached by one version and reused by the other gives it the wrong shape.
+    """
+    if not _MMDC_VERSION:
+        found = ""
+        if shutil.which("mmdc"):
+            try:
+                r = subprocess.run(["mmdc", "--version"], capture_output=True, text=True,
+                                   timeout=120)
+                m = re.search(r"\d+\.\d+\.\d+", r.stdout)
+                found = m.group(0) if m else ""
+            except Exception:
+                found = ""
+        _MMDC_VERSION.append(found)
+    return _MMDC_VERSION[0]
+
+
+def page_args(page, size):
+    """The mmdc arguments that draw a PNG at the diagram's own size, on mermaid-cli 11 or 12.
+
+    mermaid-cli 11 lays a diagram out on a page -w pixels wide and shrinks anything wider, so the
+    builders ask for a page wider than any diagram. mermaid-cli 12 has no -w and stops on it with
+    "error: unknown option '-w'", and without a size it lays out on a page 800 pixels wide, which
+    squeezed a flowchart 1,512 pixels wide to 784 on 29 September 2026. Its --size caps the
+    drawing's longer side and stretches a smaller drawing up to the cap, so the cap is the
+    drawing's own longer side, read from its SVG, and the PNG comes out at the natural size the
+    wide page gave on 11. size is the SVG's (width, height) in CSS pixels, or None when unknown.
+    """
+    major = mmdc_version().split(".")[0]
+    if major.isdigit() and int(major) >= 12:
+        longer = max(size) if size else 0
+        return ["--size", str(math.ceil(longer))] if longer > 0 else []
+    return ["-w", str(page)]
+
+
 LABEL = re.compile(r'"([^"\n]*)"')
 STYLE_TAG = re.compile(r"</?(b|strong|i|em)>", re.I)
 LINE_BREAK = re.compile(r"(<br\s*/?>)", re.I)
@@ -157,12 +201,12 @@ def svg_labels(code):
 def render_mermaid(code, fmt="svg"):
     """Render one fence to an image and return its path, or None when mmdc is unavailable.
 
-    Renders are cached by content hash and by format, so rebuilding a sheet re-renders only what
-    changed and a week of sheets sharing a diagram renders it once. The labels go through
-    svg_labels first, so what the hash covers is what mmdc draws.
+    Renders are cached by content hash, by format and by mermaid-cli version, so rebuilding a
+    sheet re-renders only what changed and a week of sheets sharing a diagram renders it once.
+    The labels go through svg_labels first, so what the hash covers is what mmdc draws.
     """
     body = svg_labels(code.strip()) + "\n"
-    key = hashlib.sha256((body + fmt + MERMAID_CONFIG).encode()).hexdigest()[:16]
+    key = hashlib.sha256((body + fmt + MERMAID_CONFIG + mmdc_version()).encode()).hexdigest()[:16]
     CACHE.mkdir(parents=True, exist_ok=True)
     out = CACHE / f"{key}.{fmt}"
     if out.exists():
@@ -183,7 +227,8 @@ def render_mermaid(code, fmt="svg"):
     cmd = ["mmdc", "-i", str(src), "-o", str(out), "-b", "transparent",
            "-c", str(conf), "-p", str(pup)]
     if fmt == "png":
-        cmd += ["-w", "2400"]
+        svg = render_mermaid(code, "svg")
+        cmd += page_args(2400, svg_size(svg) if svg else None)
     try:
         subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=300)
     except Exception:
@@ -831,6 +876,12 @@ if __name__ == "__main__":
 #     FAIL saying the sheet has no anchor to redraw from memory, and exit 1.
 # scripts/build_cheatsheet.py <sheet.md> in a session with no mermaid-cli
 #     One INFO line, then a FAIL per sheet whose diagrams fell back to their source, and exit 1.
+# scripts/build_cheatsheet.py <sheet.md> --format png, with mermaid-cli 12.0.0 as mmdc
+#     Every diagram renders at its own size and the sheet passes. With -w 2400 on the command
+#     line, mmdc 12 stopped on "error: unknown option '-w'" and the sheet failed with 0 diagrams.
+# render_mermaid(<a flowchart 1,290 CSS pixels wide>, "png"), with mermaid-cli 12.0.0
+#     A PNG 1,290 by 77 pixels, the size of its SVG, which is what build_saturday_paper.py's
+#     exhibits read; with no size argument mmdc 12 would draw it on a page 800 pixels wide.
 # scripts/build_cheatsheet.py <a sheet with twelve panels>
 #     FAIL naming the page count, because a sheet is defined by what it leaves out.
 # svg_labels('flowchart LR\n    A["<b>REVENUE</b><br/>Rs 5,44,810"]')

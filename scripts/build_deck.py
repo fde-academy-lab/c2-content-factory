@@ -64,7 +64,7 @@ from pptx.enum.text import PP_ALIGN
 from pptx.util import Emu, Inches, Pt
 
 import brand
-from build_cheatsheet import MERMAID_CONFIG, svg_labels
+from build_cheatsheet import MERMAID_CONFIG, mmdc_version, page_args, svg_labels
 from deck_layout import (ACC, BG, BOLD, INK, LINE, MUTED, NIGHT, TINT, WHITE, MARGIN, WIDTH,
                          BODY_TOP, BODY_BOTTOM, RULE_Y, SLIDE_W, SLIDE_H, CALLOUT, CRUMB, NUMBERED,
                          QUOTE, SLIDE_ID, BEATS, add_runs, background, bar, bar_height, breadcrumb,
@@ -290,6 +290,12 @@ CACHE = pathlib.Path(tempfile.gettempdir()) / "c2_mermaid_cache"
 # can tell a diagram from the background, the logo and the icons that are pictures too.
 MERMAID_PIC = "mermaid diagram"
 
+# Every fence mermaid-cli drew nothing for, grouped by the error line it gave, so the build names
+# the fence and the reason and stops. It used to print the fence's source as code and exit
+# cleanly, which is how every diagram of a deck printed as code under mermaid-cli 12 unnoticed.
+RENDER_FAILURES = {}
+_REFUSED = {}
+
 # A laptop screen 2560 pixels wide shows the slide at 192 pixels to the inch, and a 1080p
 # projector at 144, so 192 is sharp everywhere these decks are shown, at 44 percent of the pixels
 # a 4K screen would need. mmdc saves one pixel per CSS pixel unless it is given a scale, so a
@@ -321,31 +327,44 @@ def _chromium():
     return None
 
 
+def mmdc_error(result):
+    """The line of mmdc's output that says why it drew nothing, such as a parse error."""
+    said = [l.strip() for l in ((result.stderr or "") + "\n" + (result.stdout or "")).splitlines()
+            if l.strip()]
+    why = next((l for l in said if re.match(r"error\b", l, re.I)), None)
+    return why or (said[-1] if said else f"mmdc exited {result.returncode} and drew nothing")
+
+
 def render_mermaid(lines, width_in=None):
-    """Render a mermaid fence to a PNG and return its path, or None when mmdc is not installed.
+    """Render a mermaid fence to a PNG and return its path, or None when it cannot be drawn.
 
     A mermaid fence renders as nothing at all in PowerPoint, so a deck that draws its thinking in
     mermaid needs the picture baked in. The markdown stays the authoritative source, which is what
     the verification gate reads and what renders on GitHub. Install the renderer with
-    `npm install -g @mermaid-js/mermaid-cli`; without it the fence falls back to monospace text.
+    `npm install -g @mermaid-js/mermaid-cli`; without it the fence falls back to monospace text,
+    and main says so. When mmdc is installed and draws nothing, the fence and mmdc's own error
+    line go into RENDER_FAILURES, and main stops the build on it.
 
     The theme is the one scripts/build_cheatsheet.py uses, so the drawing a room sees on the slide
     is the drawing they find again on the cheat sheet and in the notebook. Without it mermaid
     paints its own lavender onto a slide that is not lavender.
 
-    The scale from render_scale is part of the cache key, so a render made at another scale is
-    never picked up again. The scale alone sets the picture's pixels: at scale one a drawing 809
-    CSS pixels wide came out 810 pixels wide on a 2600 pixel page. The labels go through the
-    cheat sheet's svg_labels, so bold prints as bold and a > survives, as they do on the sheet.
+    The scale from render_scale and the mermaid-cli version are part of the cache key, so a render
+    made at another scale or by another version is never picked up again. The scale alone sets
+    the picture's pixels: at scale one a drawing 809 CSS pixels wide came out 810 pixels wide on a
+    2600 pixel page. page_args draws the PNG at the fence's own size on mermaid-cli 11 and 12
+    alike. The labels go through the cheat sheet's svg_labels, so bold prints as bold and a >
+    survives, as they do on the sheet.
     """
     code = svg_labels("\n".join(lines).strip()) + "\n"
     scale = render_scale(lines, width_in)
-    key = hashlib.sha256((code + MERMAID_CONFIG + f"scale={scale}").encode()).hexdigest()[:16]
+    key = hashlib.sha256((code + MERMAID_CONFIG + f"scale={scale}" + mmdc_version())
+                         .encode()).hexdigest()[:16]
     CACHE.mkdir(parents=True, exist_ok=True)
     png = CACHE / f"{key}.png"
     if png.exists():
         return png
-    if not shutil.which("mmdc"):
+    if not shutil.which("mmdc") or key in _REFUSED:
         return None
     (CACHE / f"{key}.mmd").write_text(code)
     theme = CACHE / f"theme_{hashlib.sha256(MERMAID_CONFIG.encode()).hexdigest()[:8]}.json"
@@ -357,14 +376,20 @@ def render_mermaid(lines, width_in=None):
     chrome = _chromium()
     if chrome:
         env["PUPPETEER_EXECUTABLE_PATH"] = chrome
+    cmd = ["mmdc", "-i", str(CACHE / f"{key}.mmd"), "-o", str(png), "-b", "transparent",
+           *page_args(2600, (css_width(lines), css_height(lines))),
+           "-s", str(scale), "-c", str(theme), "-p", str(config)]
     try:
-        subprocess.run(["mmdc", "-i", str(CACHE / f"{key}.mmd"), "-o", str(png),
-                        "-b", "transparent", "-w", "2600", "-s", str(scale), "-c", str(theme),
-                        "-p", str(config)],
-                       capture_output=True, text=True, env=env, timeout=240)
-    except Exception:
+        r = subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=240)
+        why = "" if r.returncode == 0 and png.exists() else mmdc_error(r)
+    except Exception as e:
+        why = f"{type(e).__name__}: {e}"
+    if why:
+        _REFUSED[key] = why
+        fence = hashlib.sha256(code.encode()).hexdigest()[:12]
+        RENDER_FAILURES.setdefault(why, {})[fence] = " / ".join(l.strip() for l in lines[:2])[:70]
         return None
-    return png if png.exists() else None
+    return png
 
 
 def place_picture(s, png, top, bottom=BODY_BOTTOM, width_in=WIDTH, centre=False,
@@ -941,7 +966,25 @@ def main():
     a = ap.parse_args()
     src = pathlib.Path(a.source)
     out = pathlib.Path(a.out) if a.out else src.with_suffix(".pptx")
-    n, shrunk, cramped = build(src, out, a.footer or footer_for(src.read_text(), src.stem))
+    text = src.read_text()
+    if "```mermaid" in text and not shutil.which("mmdc"):
+        print("INFO  mermaid-cli is not installed, so every diagram prints as its source. "
+              "Install it with npm install -g @mermaid-js/mermaid-cli")
+    # The deck is built in a folder of its own and moved into place only when every diagram
+    # drew, so a render that failed leaves the last good build where it was rather than a newer
+    # file the gate would take for current.
+    work = pathlib.Path(tempfile.mkdtemp(prefix="c2_deck_"))
+    try:
+        n, shrunk, cramped = build(src, work / out.name, a.footer or footer_for(text, src.stem))
+        if RENDER_FAILURES:
+            for why, fences in RENDER_FAILURES.items():
+                print(f"FAIL  mermaid-cli drew nothing for {len(fences)} diagram(s), the first "
+                      f"'{next(iter(fences.values()))}': {why}")
+            print(f"FAIL  {out.name} was not written, so the last good build stays where it was")
+            sys.exit(1)
+        shutil.move(str(work / out.name), str(out))
+    finally:
+        shutil.rmtree(work, ignore_errors=True)
     note = f", {shrunk} set smaller so their diagram stays readable" if shrunk else ""
     print(f"      {out.name}: {n} slides{note}")
     for slide, pt, title in cramped:
@@ -977,3 +1020,14 @@ if __name__ == "__main__":
 # Any rebuilt deck, unzipped
 #     Holds one image in ppt/media for each distinct picture on its slides and nothing the layout
 #     search left behind.
+# content/W02/D4/slides/C2_W02_D04_half2_STUDENT.md with mermaid-cli 12.0.0 as mmdc, cache empty
+#     Six diagram pictures, each drawn at 192 to 198 pixels per inch. Before page_args, mmdc 12
+#     stopped on "error: unknown option '-w'", all six printed as their source, and the build
+#     exited 0 without a word.
+# The same deck with mermaid-cli 11.17.0 as mmdc, cache empty
+#     Every shape at the position and size of the build made before this change.
+# The same deck with one node's closing bracket removed
+#     "FAIL  mermaid-cli drew nothing for 1 diagram(s)" naming the fence and mmdc's "Error: Parse
+#     error on line 2:", exit 1, and the .pptx already on disk left exactly as it was.
+# The same deck in a session with no mermaid-cli
+#     One INFO line saying so, the diagrams as their source, and exit 0.
