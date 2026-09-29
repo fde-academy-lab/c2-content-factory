@@ -2,7 +2,7 @@
 
 Approved by the requester on 29 September 2026, with four decisions: the data is a synthetic Kalpa
 Health pack rather than the unnamed public source the row mentions; the mini project, mock and GD
-rubrics are drafted for the requester's approval and wait for it; the group-to-problem allocation is
+rubrics are drafted for the requester's approval, which came the same day; the group-to-problem allocation is
 decided on Monday by the Programme Head; and each day's session builds from this page without
 stopping at a spine of its own. Where this page and the Week 3 row differ, this page wins; everything
 it leaves unchanged, the row still carries.
@@ -34,9 +34,49 @@ the time after the second block is open build time with the TAs, and the pack ca
 | Fri 23 Oct | Expert day one: GD rounds at about 30 minutes per group on prompts that climb in complexity, a thread separate from the projects; build freeze; two cold demo runs; the first presentations. The pack: the GD prompts with facilitation notes, the demo rehearsal checklist. |
 | Sat 24 Oct | Expert day two with the flown-in leader: the remaining GDs, presentations with live demos at 25 to 30 minutes per group, grade closure, and one improvement per group named for Build 2. The pack: the presentation format, the panel's question bank, the closure run sheet. |
 
-Scoring sheets for the mock, the GD and the mini project take their criteria from the rubrics once the
-requester approves them; the locked marks per event (mini project 40, mock 30, GD 30) may be stated
-now, and no file states a criterion before the approval.
+## The rubrics
+
+The requester approved the three rubrics as drafted on 29 September 2026, and ruled that learners may
+see them and that Build 1's learner files may name the day of each graded event. They live in
+`data/programme/facts.yaml`, which this block renders; a learner file carries the one it needs as
+`sync:rubric:W03/mock`, `sync:rubric:W03/gd` or `sync:rubric:W03/mini-project`, and every scoring
+workbook copies its criteria from the same place.
+
+<!-- sync:rubric:W03 -->
+**Mini project, 40 marks.** The first four criteria are scored once for the group, and every member receives those 34 marks; presentation and defence is scored for each learner on 6 marks, so a silent teammate cannot ride the group's score.
+
+| Criterion | Marks | What full marks look like |
+|---|---|---|
+| The question translated | 8 | Dr Menon's words are mapped to the right Weeks 1 and 2 method, with the metric defined and the decision it feeds named. |
+| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and rupees reconcile across files. |
+| The analysis | 10 | The tree, ladder or fair comparison reaches the branch that explains the symptom, on the right denominator, with a chance test where one is needed. |
+| The claim | 6 | One sentence carries its number, denominator, period and caveat, plus an action Dr Menon can take. |
+| Presentation and defence | 6 | The live demo runs cold, and every member answers a challenge on the caveat. |
+
+**Mock interview R1, 30 marks.** Each learner is scored alone, 15 marks on the technical half and 15 on the project viva.
+
+| Half | Criterion | Marks |
+|---|---|---|
+| Technical | Correctness | 8 |
+| Technical | Reasoning aloud with numbers | 4 |
+| Technical | Handling a follow-up | 3 |
+| Project viva | The translation, with one decision defended by evidence | 6 |
+| Project viva | Defending a caveat under challenge | 6 |
+| Project viva | What they would do differently | 3 |
+
+**Group discussion, 30 marks.** Each learner is scored alone.
+
+| Criterion | Marks | What full marks look like |
+|---|---|---|
+| Structures the problem | 8 | The learner frames the decision and the metric before arguing. |
+| Uses evidence | 8 | The learner takes a position and defends it with a number from the exhibit. |
+| Engages | 8 | The learner builds on or challenges another member's point and brings a quiet member in. |
+| Lands a conclusion | 6 | The discussion ends on a recommendation and its main risk. |
+
+Mock R1 runs for every learner on Thursday 22 October. The GD rounds run on Friday 23 October and close on the morning of Saturday 24 October. The presentations run on Friday 23 October where the roster allows and on Saturday 24 October, when every Build 1 grade closes.
+
+Build 1's rubrics are locked, settled by the requester, in session, on 29 September 2026, approving the drafts as written.
+<!-- /sync:rubric:W03 -->
 
 ## The data pack, and what is planted
 
