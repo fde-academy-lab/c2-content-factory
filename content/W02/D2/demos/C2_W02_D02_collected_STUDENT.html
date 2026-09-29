@@ -1,0 +1,1701 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Booked against collected: Week 2, Tuesday companion</title>
+<style data-c2kit>
+/* c2kit.css: the look every companion page inlines, taken from the orientation deck.
+ * Violet on lavender, Georgia for headings, Calibri for text, cards with a soft shadow.
+ * scripts/build_companion.py inlines this file into each page. */
+:root{
+  --ink:#1A0F5C;--night:#1A1440;--violet:#5B3FD6;--violet-mid:#2C1A86;--lav:#D9A7FF;
+  --muted:#6B6690;--soft:#A9A3D2;--lilac:#CFC9EE;--line:#E4E1F1;--tint:#EEEAFB;--surface:#F4F2FA;
+  --white:#FFFFFF;--rose:#D63A6A;--rose-tint:#FCEBF0;--green:#1F8A5B;--green-tint:#E8F5EE;
+  --serif:Georgia,"DejaVu Serif",serif;
+  --sans:Calibri,Carlito,"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+  --mono:Consolas,ui-monospace,SFMono-Regular,Menlo,monospace;
+  --shadow:0 2px 6px rgba(26,15,92,.10),0 1px 2px rgba(26,15,92,.06);
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#F7F5FD 0%,#F2EFFB 100%);color:var(--night);
+     font:16px/1.55 var(--sans)}
+a{color:var(--violet)}
+code,kbd{font:14px var(--mono);background:var(--tint);border-radius:4px;padding:1px 5px;color:var(--ink)}
+
+/* the dark header, like a deck cover */
+.hero{background:radial-gradient(120% 140% at 85% 10%,#5B3FD6 0%,#2C1A86 45%,#1A1440 100%);
+      color:var(--white);padding:34px 40px 30px}
+.hero .kicker{display:inline-block;border:1px solid var(--lilac);border-radius:999px;padding:4px 14px;
+      font:700 11px var(--sans);letter-spacing:.24em;text-transform:uppercase;margin-bottom:14px}
+.hero h1{font:400 38px/1.15 var(--serif);margin:0 0 10px}
+.hero .quote{font:italic 20px/1.4 var(--serif);color:var(--lav);max-width:860px;margin:0 0 6px}
+.hero .who{color:var(--lilac);font-size:13px;margin:0}
+.hero .promise{color:#E4E1F1;max-width:860px;margin:16px 0 0}
+
+/* the page: a left rail and the sections */
+.page{display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;max-width:1240px;margin:0 auto;
+      padding:26px 28px 60px}
+@media (max-width:900px){.page{grid-template-columns:1fr}.rail{position:static}}
+.rail{position:sticky;top:18px;align-self:start;background:var(--white);border:1px solid var(--line);
+      border-radius:12px;padding:14px 12px;box-shadow:var(--shadow)}
+.rail .label{font:700 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--violet);
+      margin:2px 8px 8px}
+.rail a{display:flex;gap:10px;align-items:baseline;padding:7px 8px;border-radius:8px;color:var(--night);
+      text-decoration:none;font-size:14.5px}
+.rail a .n{font:15px var(--serif);color:var(--violet);min-width:22px}
+.rail a.on{background:var(--tint);color:var(--ink);font-weight:700}
+section.part{margin:0 0 38px;scroll-margin-top:16px}
+.part > .eyebrow{font:700 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--violet);
+      margin:0 0 4px}
+.part > h2{font:400 28px/1.2 var(--serif);color:var(--ink);margin:0 0 6px}
+.part > .lede{color:var(--muted);margin:0 0 16px;max-width:860px}
+
+/* cards and strips */
+.card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+      box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.grid2,.grid3{grid-template-columns:1fr}}
+.strip{border-radius:10px;padding:12px 16px;margin:12px 0;background:#F7F5FD;border:1px solid var(--line)}
+.strip b.tag{display:block;font:700 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;
+      color:var(--violet);margin-bottom:3px}
+.strip.client{background:linear-gradient(135deg,#2C1A86,#1A1440);color:var(--white);border:none}
+.strip.client b.tag{color:var(--lav)}
+.strip.bad{background:var(--rose-tint);border-color:#F3C5D3}
+.strip.bad b.tag{color:var(--rose)}
+.strip.good{background:var(--green-tint);border-color:#BFE3CF}
+.strip.good b.tag{color:var(--green)}
+.c2k-row{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
+.c2k-svg{max-width:100%;height:auto}
+.holder{overflow-x:auto}
+
+/* the guided walk */
+.walk .narration{min-height:150px}
+.walk .step{font:700 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)}
+.walk .narration h3{font:400 21px/1.25 var(--serif);color:var(--ink);margin:4px 0 8px}
+.meter{margin-top:14px}
+.meter .bar{position:relative;height:16px;border-radius:999px;background:var(--surface);border:1px solid var(--line);
+      overflow:hidden}
+.meter .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#7B62E8,#5B3FD6);
+      border-radius:999px;transition:width .35s ease}
+.meter .plan{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--rose)}
+.meter .legend{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:4px}
+.big{font:34px/1.1 var(--serif);color:var(--violet)}
+.verdict{font-weight:700;color:var(--ink)}
+
+/* buttons, toggles and inputs */
+button{font:inherit;cursor:pointer}
+.btn{padding:8px 16px;border-radius:999px;border:1px solid var(--violet);background:var(--white);color:var(--violet);
+     font-weight:700}
+.btn.primary{background:var(--violet);color:var(--white)}
+.btn[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.btn:focus-visible,.rail a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--lav);
+     outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.slider{margin:10px 0}
+.slider label{display:flex;justify-content:space-between;font-size:14.5px;color:var(--night)}
+.slider label b{color:var(--violet);font-family:var(--mono);font-weight:400}
+input[type=range]{width:100%;accent-color:var(--violet)}
+input[type=number],textarea{font:15px var(--mono);border:1px solid var(--lilac);border-radius:8px;padding:6px 9px;
+     color:var(--night);background:var(--white);width:100%}
+textarea{min-height:92px;resize:vertical}
+
+/* experiment cards */
+.exp{display:grid;gap:10px;align-content:start}
+.exp p{margin:0}
+.exp .result p{margin:0 0 8px}
+.exp .part-label{font:700 10.5px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)}
+.exp .result{border-top:1px dashed var(--lilac);padding-top:10px}
+.exp .result[hidden]{display:none}
+.exp .waiting{color:var(--muted);font-style:italic}
+.rule{font:italic 17px/1.4 var(--serif);color:var(--ink)}
+
+/* tables */
+table.t{border-collapse:collapse;width:100%;font-size:14.5px;margin:8px 0}
+table.t th{background:var(--ink);color:var(--white);text-align:left;padding:7px 10px;font-weight:700}
+table.t td{padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.t tr:nth-child(even) td{background:var(--surface)}
+table.t td.num,table.t th.num{text-align:right;font-variant-numeric:tabular-nums}
+
+/* popups */
+dialog{border:none;border-radius:14px;padding:0;max-width:min(860px,94vw);box-shadow:0 18px 50px rgba(26,15,92,.35)}
+dialog::backdrop{background:rgba(26,20,64,.45)}
+dialog .head{background:var(--ink);color:var(--white);padding:12px 18px;font:400 19px var(--serif);
+      display:flex;justify-content:space-between;align-items:center;gap:16px}
+dialog .body{padding:16px 18px}
+dialog .close{background:transparent;border:1px solid var(--lilac);color:var(--white);border-radius:999px;
+      padding:4px 12px}
+
+/* glossary */
+dl.gloss{display:grid;grid-template-columns:200px minmax(0,1fr);gap:8px 18px;margin:0}
+dl.gloss dt{font-weight:700;color:var(--ink)}
+dl.gloss dd{margin:0}
+dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
+@media (max-width:700px){dl.gloss{grid-template-columns:1fr}}
+.foot{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:10px;margin-top:30px}
+</style>
+<style>
+  html{scroll-behavior:auto}
+  .sql{font:13.5px/1.5 var(--mono);background:var(--night);color:#F4F2FA;border-radius:10px;padding:12px 14px;
+       margin:10px 0 0;overflow-x:auto;white-space:pre}
+  .ctl{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+  .ctl label{display:block;font:700 10.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--violet);
+       margin-bottom:4px}
+  select{font:15px var(--sans);border:1px solid var(--lilac);border-radius:8px;padding:7px 9px;color:var(--night);
+       background:var(--white);width:100%}
+  select:focus-visible{outline:3px solid var(--lav);outline-offset:2px}
+  .kv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:6px 0 4px}
+  .kv div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+  .kv .k{font:700 10.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--violet)}
+  .kv .v{font:22px/1.2 var(--serif);color:var(--ink);white-space:nowrap}
+  .kv .v.neg{color:var(--rose)}
+  @media (max-width:560px){.kv{grid-template-columns:1fr}}
+  table.t td.mono{font-family:var(--mono);font-size:13.5px}
+  table.t tr.rep td{background:var(--rose-tint) !important}
+  table.t tr.orph td{background:#FFF6E0 !important}
+  table.t tr.gone td{color:var(--muted);text-decoration:line-through}
+  table.t td.nul{color:var(--muted);font-style:italic}
+  .tag2{display:inline-block;font:700 10.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;border-radius:999px;
+       padding:1px 8px;margin-left:6px;text-decoration:none}
+  .tag2.rep{background:var(--rose);color:var(--white)}
+  .tag2.orph{background:#B7791F;color:var(--white)}
+  .tag2.gone{background:var(--muted);color:var(--white)}
+  .tag2.nul{background:var(--lilac);color:var(--ink)}
+  .checks{list-style:none;padding:0;margin:8px 0 0}
+  .checks li{margin:5px 0;padding-left:28px;position:relative}
+  .checks li::before{position:absolute;left:0;top:0;font:700 12px var(--sans);border-radius:999px;width:20px;height:20px;
+       display:flex;align-items:center;justify-content:center}
+  .checks li.pass::before{content:"ok";background:var(--green-tint);color:var(--green);width:22px}
+  .checks li.fail::before{content:"no";background:var(--rose-tint);color:var(--rose);width:22px}
+  .words{color:var(--night);margin:8px 0 0}
+  .note{font-size:13.5px;color:var(--muted)}
+  .legend2{font-size:13px;color:var(--muted);margin:6px 0 0}
+  .decision h3{font:400 22px/1.25 var(--serif);color:var(--ink);margin:4px 0 8px}
+  .decision p{margin:0 0 8px}
+  .jumped{font-size:13px;color:var(--muted);margin:10px 8px 2px}
+  .status{font-size:14px;color:var(--ink);margin:10px 0 0}
+  .invented{display:inline-block;background:#FFF6E0;border:1px solid #F0D9A8;color:#7A4E0F;border-radius:999px;
+       font:700 10.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:2px 10px}
+  .walk .tables{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  @media (max-width:700px){.walk .tables{grid-template-columns:1fr}}
+  .hero h1{overflow-wrap:anywhere}
+  .page > main,.page > nav{min-width:0}
+  @media (max-width:900px){.page{grid-template-columns:minmax(0,1fr)}}
+  @media (max-width:560px){.hero{padding:26px 18px 22px}.hero h1{font-size:30px}.page{padding:20px 14px 50px}
+       .card{padding:14px 12px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <span class="kicker">Week 2 &middot; Tuesday &middot; Companion</span>
+  <h1>Booked against collected, without lying</h1>
+  <p class="quote">&ldquo;Booked revenue is not collected revenue. Some orders are paid in two instalments, some are
+    refunded, some were never paid at all. Show me, order by order, what we actually collected against what we booked in
+    Q2. If there is a gap, I want to know which orders and which channel.&rdquo;</p>
+  <p class="who">Anand Iyer, finance controller, Kalpa Retail, to the data and AI team at Kalpa's Global Capability Centre</p>
+  <p class="promise">You sign off the collected number, and Anand will ask how you know it is not double-counted. This
+    page runs the day's key decision, how payments are attached to orders, on invented records only: the five orders and
+    seven payments of the morning's tiny tables, and a slightly larger invented sample of twelve orders. Change one
+    assumption at a time and watch the rows, the gap, the bridge and the sentence to Anand move with it.</p>
+</header>
+
+<div class="page">
+  <nav class="rail" aria-label="Sections">
+    <div class="label">On this page</div>
+    <a href="#walk" data-part="walk"><span class="n">01</span>The walk, three rounds</a>
+    <a href="#sim" data-part="sim"><span class="n">02</span>The join simulator</a>
+    <a href="#bridge" data-part="bridge"><span class="n">03</span>Bridge and channels</a>
+    <a href="#decision" data-part="decision"><span class="n">04</span>What you tell Anand</a>
+    <a href="#lists" data-part="lists"><span class="n">05</span>The two lists</a>
+    <a href="#experiments" data-part="experiments"><span class="n">06</span>Five experiments</a>
+    <a href="#glossary" data-part="glossary"><span class="n">07</span>Glossary</a>
+    <p class="jumped" id="jumped">You are at the top of the page.</p>
+  </nav>
+
+  <main>
+    <section class="part" id="walk">
+      <p class="eyebrow">01 &middot; The guided walk</p>
+      <h2>Three rounds on two tiny tables</h2>
+      <p class="lede">The walk runs the morning's three rounds on the invented tiny tables: what each join keeps, the
+        fan-out, the row count that has to close, the unpaid list and the retry. Each step lights the stage of the query
+        that changed, redraws the rows it returns and moves the meter.</p>
+      <div class="card"><div class="holder" id="walkFlow"></div></div>
+      <div class="walk" style="margin-top:16px">
+        <div class="card narration" aria-live="polite">
+          <div class="step" id="walkStep">Round 1 &middot; step 0 of 14</div>
+          <h3 id="walkTitle">Anand's ask, and the grain of each table</h3>
+          <p id="walkText">Before any join runs, say the grain of each table out loud.</p>
+          <div class="meter">
+            <div class="bar"><div class="fill" id="walkFill"></div><div class="plan" id="walkPlan"></div></div>
+            <div class="legend"><span>Rs 0</span><span>the rose line is booked in the orders table, Rs 5,800</span><span>Rs 9,000</span></div>
+          </div>
+          <p><span class="big" id="walkBig">no join yet</span> <span class="note" id="walkBigNote">collected, as this step's query reports it</span></p>
+          <div class="strip" id="walkInterview"><b class="tag">In the interview</b><span id="walkIq"></span></div>
+          <div class="row">
+            <button class="btn primary" id="walkNext" type="button">Next</button>
+            <button class="btn" id="walkRestart" type="button">Restart the walk</button>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <p class="note" id="walkCaption">The two invented tables.</p>
+        <div class="holder" id="walkRows"></div>
+      </div>
+    </section>
+
+    <section class="part" id="sim">
+      <p class="eyebrow">02 &middot; The simulator</p>
+      <h2>Attach payments to orders, one assumption at a time</h2>
+      <p class="lede">Each control is one assumption in the query that produces Anand's collected number. The page opens on
+        the hurried analyst's first query. Every record here is invented, and the page runs the join itself, so the SQL
+        below is the query whose result you are reading.</p>
+      <div class="card">
+        <div class="ctl">
+          <div><label for="sDs">Records</label>
+            <select id="sDs">
+              <option value="tiny">The tiny tables, 5 orders (invented)</option>
+              <option value="larger">The larger sample, 12 orders (invented)</option>
+            </select></div>
+          <div><label for="sJoin">Join type</label>
+            <select id="sJoin">
+              <option value="INNER">INNER JOIN</option>
+              <option value="LEFT">LEFT JOIN</option>
+              <option value="RIGHT">RIGHT JOIN</option>
+              <option value="FULL">FULL JOIN</option>
+            </select></div>
+          <div><label for="sGrain">Payments grain before the join</label>
+            <select id="sGrain">
+              <option value="raw">Raw rows, one per payment</option>
+              <option value="order">One row per order</option>
+              <option value="inst">One row per order and instalment</option>
+              <option value="once">One row per order, retries counted once</option>
+            </select></div>
+          <div><label for="sCond">Where the quarter condition sits</label>
+            <select id="sCond">
+              <option value="none">No condition on paid_date</option>
+              <option value="where">WHERE on paid_date in the quarter</option>
+              <option value="on">ON clause, paid_date in the quarter</option>
+            </select></div>
+          <div><label for="sAmt">Summed as collected</label>
+            <select id="sAmt">
+              <option value="order">The order amount</option>
+              <option value="pay">The payment amount</option>
+            </select></div>
+        </div>
+        <div class="row">
+          <button class="btn" id="sHurried" type="button">Load the hurried analyst's query</button>
+          <button class="btn" id="sFix" type="button">Load the fix</button>
+        </div>
+        <p class="status" id="sStatus">Loaded: the hurried analyst's first query, on the tiny tables.</p>
+      </div>
+
+      <div class="grid2" style="margin-top:16px">
+        <div class="card">
+          <div class="kv">
+            <div><div class="k">Booked, report</div><div class="v" id="rBooked">Rs 0</div></div>
+            <div><div class="k">Collected, report</div><div class="v" id="rColl">Rs 0</div></div>
+            <div><div class="k">Gap</div><div class="v" id="rGap">Rs 0</div></div>
+          </div>
+          <p class="note" id="rTruth">The orders table says booked Rs 5,800 over 5 orders.</p>
+          <p class="words" id="rWords">Rows in and rows out appear here.</p>
+        </div>
+        <div class="card">
+          <div class="step" style="font:700 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)">The checks before the number leaves the team</div>
+          <ul class="checks" id="rChecks"></ul>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <div class="step" style="font:700 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)">The query these settings run</div>
+        <pre class="sql" id="rSql"></pre>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <p class="note">The joined rows, before they are summed. <span class="tag2 rep">repeated</span> flags an order that
+          appears on more than one row, <span class="tag2 nul">NULL</span> a side the join could not fill,
+          <span class="tag2 orph">no order</span> a payment whose order is not in the table, and
+          <span class="tag2 gone">removed</span> a row the WHERE threw away after the join.</p>
+        <div class="holder" id="rRows"></div>
+      </div>
+    </section>
+
+    <section class="part" id="bridge">
+      <p class="eyebrow">03 &middot; The bridge and the channels</p>
+      <h2>What the number is made of</h2>
+      <p class="lede">The first pair of bridges is the truth for the chosen records, worked from the source tables: booked,
+        less what was never paid, lands on collected, and the retries posted twice land on what the feed posted. The second
+        bridge starts from that true collected number and walks to the number your report gives, naming every move.</p>
+      <div class="card"><div class="holder" id="bTruth"></div></div>
+      <div class="card" style="margin-top:16px">
+        <div class="holder" id="bLive"></div>
+        <p class="words" id="bLiveWords"></p>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <div class="holder" id="bCols"></div>
+        <p class="words" id="bColsWords"></p>
+      </div>
+    </section>
+
+    <section class="part" id="decision">
+      <p class="eyebrow">04 &middot; The decision card</p>
+      <h2>What you would tell Anand</h2>
+      <p class="lede">The card reads the simulator's current settings and writes the sentence those settings would send.
+        When a check fails, it says which decision the wrong number would mislead, the check that catches it and the fix.</p>
+      <div class="card decision">
+        <div class="step" id="dKicker" style="font:700 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)">The report as it stands</div>
+        <h3 id="dHead">This number does not leave the team yet</h3>
+        <div id="dBody"></div>
+        <div class="strip" id="dKavya"><b class="tag">Kavya's review</b><span id="dKavyaText"></span></div>
+      </div>
+    </section>
+
+    <section class="part" id="lists">
+      <p class="eyebrow">05 &middot; Round 3</p>
+      <h2>The unpaid list and the double-paid list</h2>
+      <p class="lede">Anand asked which orders. Two lists answer him: the orders with no payment in the quarter, found with
+        an anti-join, and the payments posted twice, found with HAVING at the right grain. The lists run on the records the
+        simulator has chosen.</p>
+      <div class="card">
+        <div class="ctl">
+          <div><label for="lPick">The list</label>
+            <select id="lPick">
+              <option value="unpaid">Orders with no payment in the quarter (anti-join)</option>
+              <option value="orphan">Payments with no order (the reverse anti-join)</option>
+              <option value="dupOrder">Double-paid, grouped by order_id</option>
+              <option value="dupInst">Double-paid, grouped by order_id and instalment_no</option>
+            </select></div>
+        </div>
+        <pre class="sql" id="lSql"></pre>
+        <div class="holder" id="lRows" style="margin-top:10px"></div>
+        <p class="words" id="lWords"></p>
+      </div>
+    </section>
+
+    <section class="part" id="experiments">
+      <p class="eyebrow">06 &middot; Experiment cards</p>
+      <h2>Five experiments, one change each</h2>
+      <p class="lede">Each card runs on the invented tiny tables and holds every setting still except one. Read the
+        situation and the hypothesis, decide what you expect, then run.</p>
+      <div class="grid2">
+        <article class="card exp" id="expA">
+          <div class="part-label">Experiment A &middot; invented records &middot; join type</div>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">INNER against LEFT, on a clean payments table</h3>
+          <p><b>Situation.</b> Payments are already rolled up to one row per order with the retry counted once, and the
+            quarter condition sits in the ON clause. The only thing left to choose is the join.</p>
+          <p><b>Hypothesis.</b> INNER reports the quarter as fully collected, and LEFT brings the unpaid order back and opens
+            a gap of Rs 800.</p>
+          <p><b>Watch for.</b> The orders counted in the report, and the gap cell.</p>
+          <div class="holder" id="expAOut"></div>
+          <div class="row">
+            <button class="btn" id="expARun" type="button" aria-pressed="false">Switch INNER to LEFT</button>
+            <button class="btn" id="expASeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expAResult" hidden>
+            <p><b>What happened.</b> <span id="expAWhat"></span></p>
+            <p><b>Why it matters.</b> The INNER report is the one that tells Anand there is nothing to chase, and the order
+              it hides is exactly the one he asked about.</p>
+            <p class="rule">Every join answers a question about the rows that do not match; choose the join by that question.</p>
+          </div>
+          <p class="waiting" id="expAWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp" id="expB">
+          <div class="part-label">Experiment B &middot; invented records &middot; payments grain</div>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">Raw payment rows against one row per order</h3>
+          <p><b>Situation.</b> A LEFT JOIN report puts booked and collected side by side, with no quarter condition. T-2 was
+            paid in two instalments and T-3 has two payment rows.</p>
+          <p><b>Hypothesis.</b> At raw grain booked reads Rs 9,300, because T-2 and T-3 each count twice; rolled up to one row
+            per order, booked drops back to Rs 5,800 and collected does not move.</p>
+          <p><b>Watch for.</b> Rows out and the booked cell, and whether collected changes at all.</p>
+          <div class="holder" id="expBOut"></div>
+          <div class="row">
+            <button class="btn" id="expBRun" type="button" aria-pressed="false">Roll payments up to one row per order</button>
+            <button class="btn" id="expBSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expBResult" hidden>
+            <p><b>What happened.</b> <span id="expBWhat"></span></p>
+            <p><b>Why it matters.</b> A both-columns report at the wrong grain inflates booked and makes the collected share
+              look like half, which is how a collections panic starts on a quarter that is mostly paid.</p>
+            <p class="rule">A key that repeats on one side multiplies the other side's rows before any number is summed.</p>
+          </div>
+          <p class="waiting" id="expBWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp" id="expC">
+          <div class="part-label">Experiment C &middot; invented records &middot; condition position</div>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">The quarter condition in WHERE, then in ON</h3>
+          <p><b>Situation.</b> The report is a LEFT JOIN on clean payments, and a colleague adds &ldquo;paid in Q2&rdquo; as a
+            filter on paid_date, because Anand asked what was collected in the quarter.</p>
+          <p><b>Hypothesis.</b> In the WHERE the filter throws away T-4, whose paid_date is NULL, and the LEFT JOIN behaves as
+            an INNER one; in the ON clause T-4 stays.</p>
+          <p><b>Watch for.</b> The orders counted and the gap, which should fall to zero under WHERE.</p>
+          <div class="holder" id="expCOut"></div>
+          <div class="row">
+            <button class="btn" id="expCRun" type="button" aria-pressed="false">Move the condition into ON</button>
+            <button class="btn" id="expCSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expCResult" hidden>
+            <p><b>What happened.</b> <span id="expCWhat"></span></p>
+            <p><b>Why it matters.</b> The query still says LEFT JOIN, so a reviewer reading it trusts that every order is
+              present, and the only sign of the loss is the count.</p>
+            <p class="rule">A condition on the right-hand table belongs in the ON clause, or the LEFT JOIN becomes an INNER one.</p>
+          </div>
+          <p class="waiting" id="expCWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp" id="expD">
+          <div class="part-label">Experiment D &middot; invented records &middot; retries</div>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">The retry counted once</h3>
+          <p><b>Situation.</b> The LEFT JOIN report closes its count, five orders in and five rows out, and still says more
+            was collected than booked. The platform lead said the feed sometimes double-posts when the gateway retries.</p>
+          <p><b>Hypothesis.</b> Counting each order and instalment once removes the retry, collected falls by Rs 1,500 and the
+            gap turns from minus Rs 700 to Rs 800.</p>
+          <p><b>Watch for.</b> The collected cell and the sign of the gap.</p>
+          <div class="holder" id="expDOut"></div>
+          <div class="row">
+            <button class="btn" id="expDRun" type="button" aria-pressed="false">Count each instalment once</button>
+            <button class="btn" id="expDSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expDResult" hidden>
+            <p><b>What happened.</b> <span id="expDWhat"></span></p>
+            <p><b>Why it matters.</b> A negative gap reads as customers overpaying, and it hides a real unpaid order behind a
+              retry of almost twice its size.</p>
+            <p class="rule">A join is done when its row count is explained: rows in, rows out, and the difference named.</p>
+          </div>
+          <p class="waiting" id="expDWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp" id="expE">
+          <div class="part-label">Experiment E &middot; invented records &middot; HAVING grain</div>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">The double-paid list, at two grains</h3>
+          <p><b>Situation.</b> Before anyone calls a customer about a refund, the double-paid list is built with HAVING
+            COUNT(*) &gt; 1 on the payments table.</p>
+          <p><b>Hypothesis.</b> Grouped by order, the list names T-2 and T-3; grouped by order and instalment, it names only
+            T-3, because T-2's two rows are its two instalments.</p>
+          <p><b>Watch for.</b> Which orders stay on the list, and the amount a refund call would chase.</p>
+          <div class="holder" id="expEOut"></div>
+          <div class="row">
+            <button class="btn" id="expERun" type="button" aria-pressed="false">Group by order and instalment</button>
+            <button class="btn" id="expESeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expEResult" hidden>
+            <p><b>What happened.</b> <span id="expEWhat"></span></p>
+            <p><b>Why it matters.</b> A refund call to a customer who paid their second instalment on time is a complaint the
+              team created, and it lands on the finance controller's desk.</p>
+            <p class="rule">Two payment rows are not a double payment until the grain says they are the same payment.</p>
+          </div>
+          <p class="waiting" id="expEWait">What happened appears here after the run.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="part" id="glossary">
+      <p class="eyebrow">07 &middot; Glossary</p>
+      <h2>The day's words, and where each first mattered</h2>
+      <div class="card">
+        <dl class="gloss">
+          <dt>Grain</dt><dd>What one row of a table stands for: one order, one payment, or one order and instalment. Say it
+            for each table before you join them.<span class="where">Round 1, the tiny tables traced row by row.</span></dd>
+          <dt>Fan-out</dt><dd>The rows a join adds when a key repeats on one side, so every matching row on the other side is
+            copied once per repeat and any sum over it grows.<span class="where">Round 1, the naive join, Rs 8,500 against
+            Rs 5,800 booked.</span></dd>
+          <dt>INNER, LEFT, RIGHT, FULL</dt><dd>INNER keeps only the rows that match; LEFT keeps every row of the left table;
+            RIGHT keeps every row of the right table; FULL keeps the unmatched rows of both.<span class="where">Round 1,
+            rung 1, six, seven, seven and eight rows.</span></dd>
+          <dt>Reconciliation</dt><dd>Proving a number against its source: rows in, rows out, and the total after the join
+            tied back to the total in the table it came from.<span class="where">Round 2, the row-count check.</span></dd>
+          <dt>Bridge</dt><dd>A chart that starts from one total and walks, move by named move, to another, so every rupee of
+            the difference has a name.<span class="where">Round 2, booked to collected to what the feed posted.</span></dd>
+          <dt>Anti-join</dt><dd>A LEFT JOIN kept only where the right side found nothing, written as WHERE the right key IS
+            NULL; it lists the orders with no payment.<span class="where">Round 3, the unpaid list.</span></dd>
+          <dt>Orphan</dt><dd>A row whose key points at nothing on the other side, such as a payment for an order id the
+            orders table does not hold.<span class="where">Round 1, P-7 in the RIGHT JOIN; round 3, the reverse
+            anti-join.</span></dd>
+          <dt>Instalment</dt><dd>One of the planned part-payments of a larger order, numbered by instalment_no, so two rows
+            for one order can both be honest money.<span class="where">Round 1, why T-2 appears twice.</span></dd>
+          <dt>Retry</dt><dd>The same instalment posted twice when the payment gateway tries again: same order, same
+            instalment, same amount, and money counted twice.<span class="where">Round 3, the double-paid list at the right
+            grain.</span></dd>
+        </dl>
+      </div>
+      <p class="foot">Week 2, Tuesday. Every record on this page is invented to show one mechanism at a time, and the tiny
+        tables are the same five orders and seven payments as the morning's SQL file,
+        C2_W02_D02_01_tiny_tables_STUDENT.sql. The one Kalpa figure quoted, the fan-out in the walk, is the result the room
+        also runs in round 1. Kalpa Retail and everyone in it are fictional. The page runs every join itself, stores
+        nothing and calls no network.</p>
+    </section>
+  </main>
+</div>
+
+<dialog id="seqDialog" aria-labelledby="seqTitle">
+  <div class="head"><span id="seqTitle">The sequence</span><button class="close" id="seqClose" type="button">Close</button></div>
+  <div class="body"><div class="holder" id="seqBody"></div><p class="note" id="seqNote"></p></div>
+</dialog>
+
+<script data-c2kit>
+/* c2kit.js: the diagram builders and page helpers every companion page inlines.
+ *
+ * The JavaScript twin of scripts/c2kit.py, so a tree on the slide, in the notebook and on the
+ * companion page is one drawing in one violet. Every builder takes data and returns an SVG
+ * element; nothing is drawn until a page calls a builder. No storage, no network, no globals
+ * beyond window.C2K. scripts/build_companion.py inlines this file into each page.
+ */
+(function () {
+  "use strict";
+  /* The SVG namespace, an identifier rather than a link, built in two parts so no checker reads it as one. */
+  var NS = "http:" + "//www.w3.org/2000/svg";
+  var C = {
+    ink: "#1A0F5C", night: "#1A1440", violet: "#5B3FD6", lav: "#D9A7FF", muted: "#6B6690",
+    lilac: "#CFC9EE", line: "#E4E1F1", tint: "#EEEAFB", surface: "#F4F2FA", white: "#FFFFFF",
+    rose: "#D63A6A", roseTint: "#FCEBF0", green: "#1F8A5B", greenTint: "#E8F5EE"
+  };
+  var FONT = "Calibri, Carlito, 'Segoe UI', system-ui, sans-serif";
+  var SERIF = "Georgia, 'DejaVu Serif', serif";
+  var KINDS = {
+    plain: [C.tint, C.violet, 1.2, C.ink, ""],
+    lit: [C.ink, C.ink, 1.2, C.white, ""],
+    known: [C.tint, C.violet, 2.6, C.ink, ""],
+    unknown: [C.white, "#B8B2D6", 1.3, C.muted, "5 4"],
+    bad: [C.roseTint, C.rose, 1.6, C.ink, ""],
+    good: [C.greenTint, C.green, 1.6, C.ink, ""]
+  };
+
+  function el(name, attrs, text) {
+    var node = document.createElementNS(NS, name);
+    Object.keys(attrs || {}).forEach(function (k) { node.setAttribute(k, attrs[k]); });
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function wrap(text, perLine) {
+    var words = String(text).split(/\s+/), lines = [], line = "";
+    words.forEach(function (w) {
+      if (line && (line + " " + w).length > perLine) { lines.push(line); line = w; }
+      else { line = line ? line + " " + w : w; }
+    });
+    if (line) lines.push(line);
+    return lines.length ? lines : [""];
+  }
+
+  function labelLines(text, w, size) {
+    var per = Math.max(8, Math.floor(w / (size * 0.56)));
+    var parts = String(text).split("\n"), out = [];
+    wrap(parts[0], per).forEach(function (l) { out.push([l, parts.length > 1]); });
+    parts.slice(1).forEach(function (p) { wrap(p, per).forEach(function (l) { out.push([l, false]); }); });
+    return out;
+  }
+
+  function boxHeight(text, w, size) {
+    size = size || 13;
+    return Math.max(40, labelLines(text, w - 16, size).length * (size + 4) + 16);
+  }
+
+  function root(width, height, title) {
+    var svg = el("svg", { xmlns: NS, width: width, height: height, viewBox: "0 0 " + width + " " + height,
+                          role: "img", "class": "c2k-svg" });
+    var defs = el("defs");
+    var marker = el("marker", { id: "c2kArrow", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 6,
+                                markerHeight: 6, orient: "auto-start-reverse" });
+    marker.appendChild(el("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: C.violet }));
+    defs.appendChild(marker);
+    svg.appendChild(defs);
+    svg.appendChild(el("rect", { width: width, height: height, rx: 10, fill: C.surface }));
+    if (title) {
+      svg.appendChild(el("text", { x: width / 2, y: height - 8, "text-anchor": "middle", fill: C.muted,
+                                   "font-family": FONT, "font-size": 12.5 }, title));
+    }
+    return svg;
+  }
+
+  function box(svg, x, y, w, h, text, kind, size) {
+    size = size || 13;
+    var k = KINDS[kind] || KINDS.plain;
+    var g = el("g", { "class": "c2k-node c2k-" + (kind || "plain") });
+    var rect = el("rect", { x: x, y: y, width: w, height: h, rx: 8, fill: k[0], stroke: k[1],
+                            "stroke-width": k[2] });
+    if (k[4]) rect.setAttribute("stroke-dasharray", k[4]);
+    g.appendChild(rect);
+    var lines = labelLines(text, w - 16, size);
+    var top = y + h / 2 - (lines.length - 1) * (size + 4) / 2 + size * 0.36;
+    lines.forEach(function (pair, i) {
+      g.appendChild(el("text", { x: x + w / 2, y: top + i * (size + 4), "text-anchor": "middle", fill: k[3],
+                                 "font-family": FONT, "font-size": size,
+                                 "font-weight": (pair[1] || (kind === "lit" && lines.length === 1)) ? 700 : 400 },
+                       pair[0]));
+    });
+    svg.appendChild(g);
+    return g;
+  }
+
+  function arrow(svg, x1, y1, x2, y2, label) {
+    svg.appendChild(el("line", { x1: x1, y1: y1, x2: x2, y2: y2, stroke: C.violet, "stroke-width": 1.5,
+                                 "marker-end": "url(#c2kArrow)" }));
+    if (label) {
+      svg.appendChild(el("text", { x: (x1 + x2) / 2, y: (y1 + y2) / 2 - 6, "text-anchor": "middle",
+                                   fill: C.muted, "font-family": FONT, "font-size": 11.5 }, label));
+    }
+  }
+
+  function curve(svg, x1, y1, x2, y2) {
+    var dx = Math.max(24, (x2 - x1) * 0.5);
+    svg.appendChild(el("path", { d: "M " + x1 + " " + y1 + " C " + (x1 + dx) + " " + y1 + ", " + (x2 - dx) + " " +
+                                 y2 + ", " + x2 + " " + y2, fill: "none", stroke: C.violet, "stroke-width": 1.5,
+                                 "marker-end": "url(#c2kArrow)" }));
+  }
+
+  /* Steps left to right, with one lit; kinds sets each step's look by name. */
+  function flow(steps, lit, opts) {
+    opts = opts || {};
+    var w = opts.width || 150, gap = 28;
+    var h = Math.max.apply(null, steps.map(function (s) { return boxHeight(s, w); }));
+    var svg = root(steps.length * w + (steps.length - 1) * gap + 28, h + 28 + (opts.title ? 22 : 0), opts.title);
+    steps.forEach(function (s, i) {
+      var x = 14 + i * (w + gap);
+      var kind = (opts.kinds && opts.kinds[i]) || (i === lit ? "lit" : "plain");
+      box(svg, x, 14, w, h, s, kind);
+      if (i) arrow(svg, x - gap, 14 + h / 2, x - 2, 14 + h / 2, opts.edges ? opts.edges[i - 1] : "");
+    });
+    return svg;
+  }
+
+  /* The same, top to bottom; edges labels the arrow into each step after the first. */
+  function vflow(steps, lit, opts) {
+    opts = opts || {};
+    var w = opts.width || 300, gap = opts.edges ? 30 : 22, y = 12, parts = [];
+    steps.forEach(function (s) { parts.push(boxHeight(s, w)); });
+    var total = parts.reduce(function (a, b) { return a + b; }, 0) + gap * (steps.length - 1) + 28;
+    var svg = root(w + 28 + (opts.edges ? 150 : 0), total + (opts.title ? 22 : 0), opts.title);
+    steps.forEach(function (s, i) {
+      if (i) {
+        arrow(svg, 14 + w / 2, y - gap, 14 + w / 2, y - 2);
+        if (opts.edges && opts.edges[i - 1]) {
+          svg.appendChild(el("text", { x: 14 + w / 2 + 10, y: y - gap / 2 + 4, fill: C.muted, "font-family": FONT,
+                                       "font-size": 12 }, opts.edges[i - 1]));
+        }
+      }
+      var kind = (opts.kinds && opts.kinds[i]) || (i === lit ? "lit" : "plain");
+      box(svg, 14, y, w, parts[i], s, kind);
+      y += parts[i] + gap;
+    });
+    return svg;
+  }
+
+  function ladder(items, lit, opts) {
+    return vflow(items.map(function (t, i) { return (i + 1) + ". " + t; }), lit, opts);
+  }
+
+  /* A decision tree, top down. node: {label, kind, branches: [[edgeLabel, child], ...]}. */
+  function tree(node, opts) {
+    opts = opts || {};
+    var levels = [];
+    (function walk(n, d) {
+      if (!levels[d]) levels[d] = [];
+      var entry = { n: n, kids: [] };
+      levels[d].push(entry);
+      (n.branches || []).forEach(function (b) { entry.kids.push([b[0], walk(b[1], d + 1)]); });
+      return entry;
+    })(node, 0);
+    var w = opts.width || 196, gx = 22, gy = 44;
+    var lh = levels.map(function (l) {
+      return Math.max.apply(null, l.map(function (e) { return boxHeight(e.n.label, w); }));
+    });
+    var width = Math.max.apply(null, levels.map(function (l) { return l.length; })) * (w + gx) + 28;
+    var height = lh.reduce(function (a, b) { return a + b; }, 0) + gy * (levels.length - 1) + 24 + (opts.title ? 22 : 0);
+    var svg = root(width, height, opts.title), y = 12;
+    levels.forEach(function (level, d) {
+      var span = level.length * (w + gx) - gx, x0 = (width - span) / 2;
+      level.forEach(function (e, i) {
+        e.x = x0 + i * (w + gx); e.y = y; e.h = lh[d];
+        box(svg, e.x, e.y, w, e.h, e.n.label, e.n.kind || "plain");
+      });
+      y += lh[d] + gy;
+    });
+    levels.forEach(function (level) {
+      level.forEach(function (e) {
+        e.kids.forEach(function (k) {
+          arrow(svg, e.x + w / 2, e.y + e.h, k[1].x + w / 2, k[1].y - 2, k[0]);
+        });
+      });
+    });
+    return svg;
+  }
+
+  /* A driver tree, left to right: a total on the left, what multiplies into it on the right.
+   * node: {label, note, kind, children: [...]}. */
+  function driverTree(node, opts) {
+    opts = opts || {};
+    var w = opts.width || 156, gx = 38, gy = 12, rows = 0, placed = [];
+    function text(n) { return n.note ? n.label + "\n" + n.note : n.label; }
+    var all = [];
+    (function walk(n) { all.push(n); (n.children || []).forEach(walk); })(node);
+    var h = Math.max.apply(null, all.map(function (n) { return boxHeight(text(n), w); }));
+    (function place(n, d) {
+      var y;
+      if (!n.children || !n.children.length) { y = rows * (h + gy); rows += 1; }
+      else {
+        var ys = n.children.map(function (k) { return place(k, d + 1); });
+        y = (ys[0] + ys[ys.length - 1]) / 2;
+      }
+      placed.push([n, d, y]);
+      return y;
+    })(node, 0);
+    var depth = Math.max.apply(null, placed.map(function (p) { return p[1]; }));
+    var svg = root((depth + 1) * w + depth * gx + 28, rows * (h + gy) - gy + 24 + (opts.title ? 24 : 0), opts.title);
+    var pos = new Map();
+    placed.forEach(function (p) { pos.set(p[0], [14 + p[1] * (w + gx), 12 + p[2]]); });
+    placed.forEach(function (p) {
+      var a = pos.get(p[0]);
+      (p[0].children || []).forEach(function (k) {
+        var b = pos.get(k);
+        curve(svg, a[0] + w, a[1] + h / 2, b[0] - 2, b[1] + h / 2);
+      });
+    });
+    placed.forEach(function (p) {
+      var a = pos.get(p[0]);
+      var g = box(svg, a[0], a[1], w, h, text(p[0]), p[0].kind || "plain");
+      if (p[0].id) g.setAttribute("data-node", p[0].id);
+    });
+    return svg;
+  }
+
+  /* Every value as a dot on one axis, with named marker lines. markers: [[label, value, kind]]. */
+  function strip(values, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || rupees, width = opts.width || 760;
+    var lo = opts.lo === undefined ? 0 : opts.lo;
+    var hi = opts.hi === undefined ? niceCeil(Math.max.apply(null, values) * 1.04) : opts.hi;
+    var left = 40, right = width - 40, axis = 150, span = (hi - lo) || 1;
+    function px(v) { return left + (right - left) * (v - lo) / span; }
+    var svg = root(width, axis + 34 + (opts.title ? 22 : 0), opts.title);
+    svg.appendChild(el("line", { x1: left, y1: axis, x2: right, y2: axis, stroke: C.muted }));
+    for (var i = 0; i < 5; i++) {
+      var v = lo + span * i / 4, x = px(v);
+      svg.appendChild(el("line", { x1: x, y1: axis, x2: x, y2: axis + 5, stroke: C.muted }));
+      svg.appendChild(el("text", { x: x, y: axis + 20, "text-anchor": "middle", fill: C.muted, "font-family": FONT,
+                                   "font-size": 12 }, fmt(v)));
+    }
+    var colour = { bad: C.rose, good: C.green, plain: C.violet };
+    var lines = opts.markers || [];
+    lines.forEach(function (m, n) {
+      var x = px(m[1]), c = colour[m[2]] || C.violet;
+      /* Two lines close together would print their labels over each other, so the lower one of a
+         close pair reads leftward from its line. */
+      var left = n > 0 && Math.abs(x - px(lines[n - 1][1])) < 150 && x <= px(lines[n - 1][1]);
+      svg.appendChild(el("line", { x1: x, y1: 34 + 16 * (n % 2), x2: x, y2: axis, stroke: c, "stroke-width": 1.6,
+                                   "stroke-dasharray": "5 4", "class": "c2k-marker" }));
+      svg.appendChild(el("text", { x: left ? x - 5 : x + 5, y: 30 + 16 * (n % 2), fill: c, "font-family": FONT,
+                                   "font-size": 12.5, "font-weight": 700, "text-anchor": left ? "end" : "start" },
+                         m[0] + " " + fmt(m[1])));
+    });
+    var bins = {};
+    values.forEach(function (v, i) {
+      var x = px(v), key = Math.round(x / 11), level = bins[key] || 0;
+      bins[key] = level + 1;
+      svg.appendChild(el("circle", { cx: x, cy: axis - 9 - level * 11, r: 5,
+                                     fill: (opts.lit || []).indexOf(i) >= 0 ? C.ink : C.violet,
+                                     "fill-opacity": 0.8, stroke: C.white, "stroke-width": 1 }));
+    });
+    return svg;
+  }
+
+  /* The next round number at or above x: 1, 2, 2.5 or 5 times a power of ten, so axis ticks read cleanly. */
+  function niceCeil(x) {
+    if (x <= 0) return 1;
+    var p = Math.pow(10, Math.floor(Math.log10(x))), steps = [1, 2, 2.5, 5, 10];
+    for (var i = 0; i < steps.length; i++) if (steps[i] * p >= x) return steps[i] * p;
+    return 10 * p;
+  }
+
+  /* The chart twins of c2kit.py's bridge, line and columns: round steps for the gridlines, a
+   * finer round top so the tallest value sits just under it, and one label style throughout. */
+  var ROUND = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8];
+  function chartCeil(x) {
+    if (x <= 0) return 1;
+    var p = Math.pow(10, Math.floor(Math.log10(x))), steps = ROUND.concat([10]);
+    for (var i = 0; i < steps.length; i++) if (steps[i] * p >= x * 0.999999) return steps[i] * p;
+    return 10 * p;
+  }
+  function tickCount(span) {
+    var tries = [5, 4, 6, 3];
+    for (var i = 0; i < tries.length; i++) {
+      var step = span / tries[i];
+      if (step <= 0) break;
+      var m = Math.round(step / Math.pow(10, Math.floor(Math.log10(step))) * 1e6) / 1e6;
+      if (ROUND.indexOf(m) >= 0) return tries[i];
+    }
+    return 4;
+  }
+  function gridlines(svg, lo, hi, fmt, left, right, py) {
+    var n = tickCount(hi - lo);
+    for (var k = 0; k <= n; k++) {
+      var v = lo + (hi - lo) * k / n, y = py(v);
+      svg.appendChild(el("line", { x1: left, y1: y, x2: right, y2: y, stroke: C.line }));
+      svg.appendChild(el("text", { x: left - 8, y: y + 4, "text-anchor": "end", fill: C.muted, "font-family": FONT,
+                                   "font-size": 11.5 }, fmt(v)));
+    }
+  }
+  function under(svg, x, y, text, per, bold) {
+    wrap(text, per || 13).slice(0, 3).forEach(function (line, i) {
+      svg.appendChild(el("text", { x: x, y: y + i * 15, "text-anchor": "middle", fill: C.ink, "font-family": FONT,
+                                   "font-size": 12, "font-weight": bold ? 700 : 400 }, line));
+    });
+  }
+  function legend(svg, items, x, y) {
+    items.forEach(function (it) {
+      if (it[2]) svg.appendChild(el("line", { x1: x, y1: y - 4, x2: x + 18, y2: y - 4, stroke: it[1], "stroke-width": 2,
+                                              "stroke-dasharray": "5 3" }));
+      else svg.appendChild(el("rect", { x: x, y: y - 10, width: 14, height: 12, rx: 3, fill: it[1] }));
+      svg.appendChild(el("text", { x: x + 22, y: y, fill: C.ink, "font-family": FONT, "font-size": 12.5 }, it[0]));
+      x += 34 + it[0].length * 7;
+    });
+  }
+
+  /* A bridge, or waterfall: start is [label, value], moves are [[label, change], ...]; each move
+   * floats from the running total, green when it adds and rose when it takes away. opts.lo raises
+   * the axis floor when the moves are small against the totals; opts.lit outlines moves by index. */
+  function bridge(start, moves, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || rupees, lit = opts.lit || [];
+    var run = start[1], levels = [0, start[1]], cols = [[start[0], start[1], null, 0, start[1]]];
+    moves.forEach(function (m, i) { cols.push([m[0], m[1], i, run, run + m[1]]); run += m[1]; levels.push(run); });
+    cols.push([opts.endLabel || "Where it lands", run, null, 0, run]);
+    var floor = opts.lo === undefined ? Math.min(0, Math.min.apply(null, levels)) : opts.lo;
+    var hi = floor + chartCeil((Math.max.apply(null, levels) - floor) * 1.06), lo = floor;
+    var colW = 92, gap = 22, left = 86, top = 30, plotH = 230;
+    var width = opts.width || left + cols.length * (colW + gap) + 6;
+    function py(v) { return top + plotH * (hi - v) / ((hi - lo) || 1); }
+    var svg = root(width, top + plotH + 20 + 45 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, lo, hi, fmt, left - 6, width - 8, py);
+    cols.forEach(function (c, k) {
+      var x = left + k * (colW + gap), y1 = py(Math.max(c[3], c[4])), y2 = py(Math.max(lo, Math.min(c[3], c[4])));
+      var isMove = c[2] !== null, fill = !isMove ? C.violet : (c[1] >= 0 ? C.green : C.rose);
+      var rect = { x: x, y: y1, width: colW, height: Math.max(2, y2 - y1), rx: 4, fill: fill, "fill-opacity": 0.88 };
+      if (isMove && lit.indexOf(c[2]) >= 0) { rect.stroke = C.ink; rect["stroke-width"] = 2.5; }
+      svg.appendChild(el("rect", rect));
+      svg.appendChild(el("text", { x: x + colW / 2, y: y1 - 7, "text-anchor": "middle", fill: C.ink, "font-family": FONT,
+                                   "font-size": 12.5, "font-weight": 700 }, (isMove && c[1] >= 0 ? "+" : "") + fmt(c[1])));
+      if (k < cols.length - 1) {
+        var level = py(c[4]);
+        svg.appendChild(el("line", { x1: x + colW, y1: level, x2: x + colW + gap, y2: level, stroke: C.muted,
+                                     "stroke-dasharray": "3 3" }));
+      }
+      under(svg, x + colW / 2, top + plotH + 20, c[0], 13, !isMove);
+    });
+    return svg;
+  }
+
+  /* Values over an ordered axis: series are [[name, values, kind], ...]; kind "plan" is a dashed
+   * reference line, "bad" and "good" colour a line by meaning. The last value prints at its end. */
+  function line(labels, series, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || function (v) { return Math.round(v).toLocaleString("en-IN"); };
+    var width = opts.width || 760, lo = opts.lo || 0, all = [];
+    series.forEach(function (s) { s[1].forEach(function (v) { if (v !== null && v !== undefined) all.push(v); }); });
+    var hi = lo + chartCeil((Math.max.apply(null, all) - lo) * 1.06);
+    var left = 86, right = width - 110, top = 44, plotH = 220, step = (right - left) / Math.max(1, labels.length - 1);
+    function py(v) { return top + plotH * (hi - v) / ((hi - lo) || 1); }
+    var svg = root(width, top + plotH + 20 + 30 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, lo, hi, fmt, left, right, py);
+    labels.forEach(function (l, i) { under(svg, left + i * step, top + plotH + 20, String(l), 10, false); });
+    var colours = { plan: C.muted, bad: C.rose, good: C.green, lit: C.ink }, keys = [];
+    series.forEach(function (s) {
+      var colour = colours[s[2]] || C.violet, dashed = s[2] === "plan", pts = [];
+      keys.push([s[0], colour, dashed]);
+      s[1].forEach(function (v, i) { if (v !== null && v !== undefined) pts.push([left + i * step, py(v), v]); });
+      var d = pts.map(function (p, j) { return (j ? "L " : "M ") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+      var path = { d: d, fill: "none", stroke: colour, "stroke-width": 2.4 };
+      if (dashed) path["stroke-dasharray"] = "6 4";
+      svg.appendChild(el("path", path));
+      if (!dashed) pts.forEach(function (p) { svg.appendChild(el("circle", { cx: p[0], cy: p[1], r: 3.6, fill: colour })); });
+      if (pts.length) {
+        var last = pts[pts.length - 1];
+        svg.appendChild(el("text", { x: last[0] + 8, y: last[1] + 4, fill: colour, "font-family": FONT, "font-size": 12.5,
+                                     "font-weight": 700 }, fmt(last[2])));
+      }
+    });
+    legend(svg, keys, left, 22);
+    return svg;
+  }
+
+  /* Vertical bars grouped by category: series are [[name, values], ...] aligned with categories,
+   * drawn light to dark in the order given, so Q1 against Q2 reads as before and after. */
+  function columns(categories, series, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || function (v) { return Math.round(v).toLocaleString("en-IN"); }, lit = opts.lit || [];
+    var shades = [C.lilac, C.violet, C.ink, C.green], all = [];
+    series.forEach(function (s) { all = all.concat(s[1]); });
+    var hi = chartCeil(Math.max.apply(null, all) * 1.1);
+    var barW = 40, inner = 6, groupGap = 34, left = 86, top = 44, plotH = 220;
+    var groupW = series.length * barW + (series.length - 1) * inner;
+    var width = opts.width || left + categories.length * (groupW + groupGap) + 10;
+    function py(v) { return top + plotH * (hi - v) / hi; }
+    var svg = root(width, top + plotH + 20 + 45 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, 0, hi, fmt, left - 6, width - 8, py);
+    categories.forEach(function (cat, c) {
+      var gx = left + c * (groupW + groupGap);
+      series.forEach(function (s, k) {
+        var v = s[1][c], x = gx + k * (barW + inner);
+        svg.appendChild(el("rect", { x: x, y: py(v), width: barW, height: Math.max(1, top + plotH - py(v)), rx: 3,
+                                     fill: shades[k % shades.length] }));
+        svg.appendChild(el("text", { x: x + barW / 2, y: py(v) - 6, "text-anchor": "middle", fill: C.ink,
+                                     "font-family": FONT, "font-size": 11, "font-weight": 700 }, fmt(v)));
+      });
+      under(svg, gx + groupW / 2, top + plotH + 20, String(cat), Math.max(10, Math.floor(groupW / 7)),
+            lit.indexOf(c) >= 0);
+    });
+    legend(svg, series.map(function (s, k) { return [s[0], shades[k % shades.length], false]; }), left, 22);
+    return svg;
+  }
+
+  /* Messages across named lanes, drawn from the run that happened. messages: [[from, to, text]]. */
+  function sequence(lanes, messages, opts) {
+    opts = opts || {};
+    var lw = opts.laneWidth || 180, top = 46, step = 44;
+    var width = lanes.length * lw + 28, height = top + Math.max(1, messages.length) * step + 34 + (opts.title ? 16 : 0);
+    var svg = root(width, height, opts.title);
+    lanes.forEach(function (lane, i) {
+      var x = 14 + i * lw;
+      box(svg, x + 10, 10, lw - 20, 30, lane, "lit", 12);
+      svg.appendChild(el("line", { x1: x + lw / 2, y1: 42, x2: x + lw / 2, y2: height - 28, stroke: C.line }));
+    });
+    messages.forEach(function (m, n) {
+      var y = top + n * step + 20;
+      var x1 = 14 + lanes.indexOf(m[0]) * lw + lw / 2, x2 = 14 + lanes.indexOf(m[1]) * lw + lw / 2;
+      if (x1 === x2) {
+        svg.appendChild(el("text", { x: x1 + 8, y: y + 4, fill: C.night, "font-family": FONT, "font-size": 12 }, m[2]));
+      } else {
+        arrow(svg, x1, y, x2 + (x2 > x1 ? -4 : 4), y, m[2]);
+      }
+    });
+    return svg;
+  }
+
+  function sideBySide() {
+    var div = document.createElement("div");
+    div.className = "c2k-row";
+    Array.prototype.forEach.call(arguments, function (svg) { div.appendChild(svg); });
+    return div;
+  }
+
+  /* Rs with Indian digit grouping, the way every Kalpa number is read aloud. */
+  function rupees(n) {
+    var sign = n < 0 ? "-" : "", s = String(Math.round(Math.abs(n)));
+    if (s.length <= 3) return sign + "Rs " + s;
+    var head = s.slice(0, -3), tail = s.slice(-3), parts = [];
+    while (head.length > 2) { parts.unshift(head.slice(-2)); head = head.slice(0, -2); }
+    if (head) parts.unshift(head);
+    return sign + "Rs " + parts.join(",") + "," + tail;
+  }
+
+  /* Put a diagram into a holder, replacing whatever was drawn there before. */
+  function draw(holder, svg) {
+    var target = typeof holder === "string" ? document.getElementById(holder) : holder;
+    target.textContent = "";
+    target.appendChild(svg);
+    return svg;
+  }
+
+  window.C2K = { colours: C, flow: flow, vflow: vflow, ladder: ladder, tree: tree, driverTree: driverTree,
+                 strip: strip, bridge: bridge, line: line, columns: columns, sequence: sequence,
+                 sideBySide: sideBySide, rupees: rupees, draw: draw };
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  /* ENGINE START: the join engine, with no page dependency, so it can be tested on its own. */
+  var WIN = ["2026-07-01", "2026-09-30"];
+  function inWin(d) { return !!d && d >= WIN[0] && d <= WIN[1]; }
+  function mkOrders(rows) { return rows.map(function (r) { return { id: r[0], ch: r[1], amt: r[2] }; }); }
+  function mkPays(rows) { return rows.map(function (r) { return { id: r[0], oid: r[1], date: r[2], amt: r[3], inst: r[4] }; }); }
+  var DATA = {
+    tiny: { name: "the tiny tables", tOrders: "tiny_orders", tPays: "tiny_payments",
+      orders: mkOrders([["T-1", "app", 1000], ["T-2", "web", 2000], ["T-3", "store", 1500], ["T-4", "app", 800],
+                        ["T-5", "store", 500]]),
+      pays: mkPays([["P-1", "T-1", "2026-07-03", 1000, 1], ["P-2", "T-2", "2026-07-05", 1200, 1],
+                    ["P-3", "T-2", "2026-08-05", 800, 2], ["P-4", "T-3", "2026-07-09", 1500, 1],
+                    ["P-5", "T-3", "2026-07-09", 1500, 1], ["P-6", "T-5", "2026-07-12", 500, 1],
+                    ["P-7", "T-9", "2026-07-14", 600, 1]]) },
+    larger: { name: "the larger sample", tOrders: "sample_orders", tPays: "sample_payments",
+      orders: mkOrders([["M-01", "app", 2400], ["M-02", "web", 6000], ["M-03", "store", 1200], ["M-04", "store", 3500],
+                        ["M-05", "app", 900], ["M-06", "web", 4800], ["M-07", "store", 700], ["M-08", "app", 5200],
+                        ["M-09", "web", 1100], ["M-10", "app", 1600], ["M-11", "store", 2200], ["M-12", "web", 800]]),
+      pays: mkPays([["Q-01", "M-01", "2026-07-04", 2400, 1], ["Q-02", "M-02", "2026-07-06", 3000, 1],
+                    ["Q-03", "M-02", "2026-08-06", 3000, 2], ["Q-04", "M-03", "2026-07-10", 1200, 1],
+                    ["Q-05", "M-05", "2026-07-18", 900, 1], ["Q-06", "M-05", "2026-07-18", 900, 1],
+                    ["Q-07", "M-06", "2026-07-22", 2400, 1], ["Q-08", "M-06", "2026-08-22", 2400, 2],
+                    ["Q-09", "M-07", "2026-08-02", 700, 1], ["Q-10", "M-08", "2026-08-09", 2600, 1],
+                    ["Q-11", "M-08", "2026-09-09", 2600, 2], ["Q-12", "M-08", "2026-09-09", 2600, 2],
+                    ["Q-13", "M-09", "2026-08-15", 1100, 1], ["Q-14", "M-11", "2026-10-01", 2200, 1],
+                    ["Q-15", "M-12", "2026-09-03", 800, 1], ["Q-16", "M-31", "2026-09-12", 1300, 1]]) }
+  };
+  var CHANNELS = ["app", "store", "web"];
+
+  function groupBy(list, keyOf) {
+    var keys = [], map = {};
+    list.forEach(function (x) { var k = keyOf(x); if (!map[k]) { map[k] = []; keys.push(k); } map[k].push(x); });
+    return keys.map(function (k) { return map[k]; });
+  }
+  function maxDate(g) { return g.reduce(function (m, p) { return p.date > m ? p.date : m; }, ""); }
+  /* Each payments row after the grain step carries the raw payments it counts in its sum. */
+  function payRows(ds, grain) {
+    var P = ds.pays;
+    if (grain === "raw") return P.map(function (p) {
+      return { id: p.id, oid: p.oid, date: p.date, amt: p.amt, inst: String(p.inst), counts: [p] }; });
+    if (grain === "order") return groupBy(P, function (p) { return p.oid; }).map(function (g) {
+      return { id: g.map(function (p) { return p.id; }).join("+"), oid: g[0].oid, date: maxDate(g),
+               amt: g.reduce(function (s, p) { return s + p.amt; }, 0), inst: g.length + (g.length > 1 ? " rows" : " row"), counts: g }; });
+    var inst = groupBy(P, function (p) { return p.oid + "|" + p.inst; }).map(function (g) {
+      return { id: g.map(function (p) { return p.id; }).join("+"), oid: g[0].oid, date: maxDate(g),
+               amt: Math.max.apply(null, g.map(function (p) { return p.amt; })), inst: String(g[0].inst), counts: [g[0]] }; });
+    if (grain === "inst") return inst;
+    return groupBy(inst, function (r) { return r.oid; }).map(function (g) {
+      return { id: g.map(function (r) { return r.id; }).join(", "), oid: g[0].oid, date: maxDate(g),
+               amt: g.reduce(function (s, r) { return s + r.amt; }, 0),
+               inst: g.length + (g.length > 1 ? " instalments" : " instalment"),
+               counts: g.reduce(function (a, r) { return a.concat(r.counts); }, []) }; });
+  }
+
+  /* The truth for a set of records, worked from the source tables alone. */
+  function truth(ds) {
+    var known = {}; ds.orders.forEach(function (o) { known[o.id] = o; });
+    var firsts = {}, retry = [], retryAmt = 0, late = [], lateAmt = 0, orphans = [], paidBy = {};
+    ds.pays.forEach(function (p) {
+      if (!known[p.oid]) { orphans.push(p); return; }
+      var k = p.oid + "|" + p.inst;
+      if (firsts[k]) { if (inWin(p.date)) { retry.push(p); retryAmt += p.amt; } return; }
+      firsts[k] = p;
+      if (!inWin(p.date)) { late.push(p); lateAmt += p.amt; return; }
+      paidBy[p.oid] = (paidBy[p.oid] || 0) + p.amt;
+    });
+    var booked = 0, coll = 0, never = [], neverAmt = 0, byCh = {};
+    CHANNELS.forEach(function (c) { byCh[c] = { booked: 0, coll: 0 }; });
+    ds.orders.forEach(function (o) {
+      booked += o.amt; coll += paidBy[o.id] || 0;
+      byCh[o.ch].booked += o.amt; byCh[o.ch].coll += paidBy[o.id] || 0;
+      var anyPay = ds.pays.some(function (p) { return p.oid === o.id; });
+      if (!anyPay) { never.push(o); neverAmt += o.amt; }
+    });
+    var owed = booked - neverAmt - lateAmt - coll;
+    return { booked: booked, coll: coll, never: never, neverAmt: neverAmt, late: late, lateAmt: lateAmt,
+             owed: owed, retry: retry, retryAmt: retryAmt, orphans: orphans, feed: coll + retryAmt,
+             paidBy: paidBy, firsts: firsts, known: known, byCh: byCh, n: ds.orders.length };
+  }
+
+  function run(dsKey, s) {
+    var ds = DATA[dsKey], T = truth(ds), R = payRows(ds, s.grain);
+    function match(o, r) { return r.oid === o.id && (s.cond !== "on" || inWin(r.date)); }
+    var rows = [], used = [], dropped = [], nulled = [], orphanKept = [], orphanDropped = [], repeats = [];
+    ds.orders.forEach(function (o) {
+      var ms = R.filter(function (r) { return match(o, r); });
+      ms.forEach(function (r) { rows.push({ o: o, r: r }); used.push(r); });
+      if (ms.length > 1) repeats.push({ o: o, k: ms.length });
+      if (!ms.length) {
+        if (s.join === "LEFT" || s.join === "FULL") { rows.push({ o: o, r: null }); nulled.push(o); }
+        else dropped.push(o);
+      }
+    });
+    R.forEach(function (r) {
+      if (used.indexOf(r) >= 0) return;
+      if (s.join === "RIGHT" || s.join === "FULL") { rows.push({ o: null, r: r }); orphanKept.push(r); }
+      else orphanDropped.push(r);
+    });
+    rows.forEach(function (x) { x.gone = s.cond === "where" && !(x.r && inWin(x.r.date)); });
+    var kept = rows.filter(function (x) { return !x.gone; });
+    var seen = {}; kept.forEach(function (x) { if (x.o) seen[x.o.id] = (seen[x.o.id] || 0) + 1; });
+    var booked = 0, coll = 0, byCh = {};
+    CHANNELS.concat(["no order"]).forEach(function (c) { byCh[c] = { booked: 0, coll: 0 }; });
+    kept.forEach(function (x) {
+      var ch = x.o ? x.o.ch : "no order";
+      if (x.o) { booked += x.o.amt; byCh[ch].booked += x.o.amt; }
+      var c = 0;
+      if (s.amt === "order") { if (x.o && x.r) c = x.o.amt; }
+      else if (x.r) c = x.r.amt;
+      coll += c; byCh[ch].coll += c;
+    });
+    /* The moves from the true collected number to the report's, each one named. */
+    var moves = [];
+    if (s.amt === "pay") {
+      var retryIn = 0, orphanIn = 0, lateIn = 0, validIn = 0;
+      kept.forEach(function (x) {
+        if (!x.r) return;
+        x.r.counts.forEach(function (p) {
+          if (!T.known[p.oid]) orphanIn += p.amt;
+          else if (T.firsts[p.oid + "|" + p.inst] !== p) retryIn += p.amt;
+          else if (!inWin(p.date)) lateIn += p.amt;
+          else validIn += p.amt;
+        });
+      });
+      if (retryIn) moves.push(["retries counted twice", retryIn]);
+      if (orphanIn) moves.push(["payments with no order", orphanIn]);
+      if (lateIn) moves.push(["paid after the quarter", lateIn]);
+      if (validIn !== T.coll) moves.push(["paid orders left out", validIn - T.coll]);
+    } else {
+      var rep = 0, notPaid = 0, left = 0;
+      ds.orders.forEach(function (o) {
+        var k = kept.filter(function (x) { return x.o === o && x.r; }).length, paid = T.paidBy[o.id] || 0;
+        if (k > 1) rep += (k - 1) * o.amt;
+        if (k >= 1) notPaid += o.amt - paid;
+        if (k === 0 && paid) left -= paid;
+      });
+      if (rep) moves.push(["order rows repeated", rep]);
+      if (notPaid) moves.push(["order value counted as paid", notPaid]);
+      if (left) moves.push(["paid orders left out", left]);
+    }
+    var explained = moves.reduce(function (a, m) { return a + m[1]; }, 0);
+    if (T.coll + explained !== coll) moves.push(["not explained", coll - T.coll - explained]);
+    var retryRows = kept.filter(function (x) { return x.r && x.r.counts.some(function (p) {
+      return T.known[p.oid] && T.firsts[p.oid + "|" + p.inst] !== p; }); });
+    return { ds: ds, T: T, s: s, R: R, rows: rows, kept: kept, dropped: dropped, nulled: nulled, orphanKept: orphanKept,
+             orphanDropped: orphanDropped, repeats: repeats, removed: rows.filter(function (x) { return x.gone; }),
+             booked: booked, coll: coll, gap: booked - coll, byCh: byCh, moves: moves, seen: seen,
+             ordersIn: Object.keys(seen).length, retryRows: retryRows,
+             lateKept: s.amt === "pay" ? moves.some(function (m) { return m[0] === "paid after the quarter"; })
+                                        : kept.some(function (x) { return x.r && x.o && !inWin(x.r.date); }) };
+  }
+
+  function list(dsKey, which) {
+    var ds = DATA[dsKey], T = truth(ds);
+    if (which === "unpaid") {
+      return ds.orders.filter(function (o) {
+        return !ds.pays.some(function (p) { return p.oid === o.id && inWin(p.date); }); })
+        .map(function (o) { return { cells: [o.id, o.ch, o.amt, "NULL"], amt: o.amt, ids: [o.id], late: !!T.paidBy[o.id] ||
+          ds.pays.some(function (p) { return p.oid === o.id; }) }; });
+    }
+    if (which === "orphan") {
+      return ds.pays.filter(function (p) { return !T.known[p.oid]; })
+        .map(function (p) { return { cells: [p.id, p.oid, p.date, p.amt], amt: p.amt, ids: [p.id] }; });
+    }
+    var key = which === "dupOrder" ? function (p) { return p.oid; } : function (p) { return p.oid + "|" + p.inst; };
+    return groupBy(ds.pays, key).filter(function (g) { return g.length > 1; }).map(function (g) {
+      var sum = g.reduce(function (a, p) { return a + p.amt; }, 0);
+      var isRetry = g.every(function (p) { return p.inst === g[0].inst && p.amt === g[0].amt; });
+      var cells = which === "dupOrder" ? [g[0].oid, g.length, sum] : [g[0].oid, g[0].inst, g.length, sum];
+      return { cells: cells, amt: sum, extra: sum - g[0].amt, ids: [g[0].oid], retry: isRetry };
+    });
+  }
+  var ENGINE = { DATA: DATA, run: run, list: list, truth: truth, payRows: payRows };
+  if (typeof window === "undefined") { module.exports = ENGINE; return; }
+  /* ENGINE END */
+
+  var K = window.C2K;
+  function $(id) { return document.getElementById(id); }
+  var R$ = K.rupees;
+  function gapText(g) { return g < 0 ? "minus " + R$(-g) : R$(g); }
+  function esc(t) { return String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  function andList(a) {
+    if (a.length <= 1) return a.join("");
+    return a.slice(0, -1).join(", ") + " and " + a[a.length - 1];
+  }
+  function ids(a) { return andList(a.map(function (x) { return x.id; })); }
+  function plural(n, one, many) { return n + " " + (n === 1 ? one : many); }
+
+  /* ---------------------------------------------------------------- the rail */
+  var rail = document.querySelectorAll(".rail a");
+  Array.prototype.forEach.call(rail, function (a) {
+    a.addEventListener("click", function () {
+      Array.prototype.forEach.call(rail, function (b) { b.classList.toggle("on", b === a); });
+      $("jumped").textContent = "You jumped to " + a.textContent.replace(/^\d+/, "").trim() + ".";
+    });
+  });
+  if ("IntersectionObserver" in window) {
+    var seenPart = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        Array.prototype.forEach.call(rail, function (b) { b.classList.toggle("on", b.dataset.part === e.target.id); });
+      });
+    }, { rootMargin: "-20% 0px -70% 0px" });
+    Array.prototype.forEach.call(document.querySelectorAll("section.part"), function (s) { seenPart.observe(s); });
+  }
+
+  /* ---------------------------------------------------------------- shared renderers */
+  var GRAIN_SHORT = { raw: "raw rows", order: "one row per order", inst: "per order and instalment", once: "per order, retries once" };
+  var COND_SHORT = { none: "no quarter condition", where: "WHERE paid_date\nin the quarter", on: "ON paid_date\nin the quarter" };
+  function stages(s) {
+    return ["orders\none row per order", "payments\n" + GRAIN_SHORT[s.grain], s.join + " JOIN\non order_id",
+            COND_SHORT[s.cond], "SUM(" + (s.amt === "order" ? "o.amount" : "p.amount") + ")\nas collected"];
+  }
+
+  function rowsTable(res) {
+    var t = document.createElement("table"); t.className = "t";
+    t.innerHTML = "<tr><th>o.order_id</th><th>channel</th><th class='num'>o.amount</th><th>p.payment_id</th>" +
+      "<th>p.order_id</th><th>paid_date</th><th>instalment</th><th class='num'>p.amount</th></tr>";
+    var count = {}; res.rows.forEach(function (x) { if (x.o) count[x.o.id] = (count[x.o.id] || 0) + 1; });
+    res.rows.forEach(function (x) {
+      var tr = document.createElement("tr"), tags = [];
+      if (x.gone) { tr.className = "gone"; tags.push("<span class='tag2 gone'>removed</span>"); }
+      else if (x.o && count[x.o.id] > 1) { tr.className = "rep"; tags.push("<span class='tag2 rep'>repeated</span>"); }
+      else if (!x.o) { tr.className = "orph"; tags.push("<span class='tag2 orph'>no order</span>"); }
+      if (!x.r) tags.push("<span class='tag2 nul'>NULL</span>");
+      var o = x.o, r = x.r;
+      function cell(v, num, isNull) {
+        return "<td class='mono" + (num ? " num" : "") + (isNull ? " nul" : "") + "'>" + esc(v) + "</td>";
+      }
+      tr.innerHTML =
+        cell(o ? o.id : "NULL", false, !o).replace("</td>", tags.join("") + "</td>") +
+        cell(o ? o.ch : "NULL", false, !o) + cell(o ? o.amt.toLocaleString("en-IN") : "NULL", true, !o) +
+        cell(r ? r.id : "NULL", false, !r) + cell(r ? r.oid : "NULL", false, !r) + cell(r ? r.date : "NULL", false, !r) +
+        cell(r ? r.inst : "NULL", false, !r) + cell(r ? r.amt.toLocaleString("en-IN") : "NULL", true, !r);
+      t.appendChild(tr);
+    });
+    return t;
+  }
+
+  function sourceTables(dsKey) {
+    var ds = DATA[dsKey], wrap = document.createElement("div"); wrap.className = "tables";
+    var a = document.createElement("div"), b = document.createElement("div");
+    a.innerHTML = "<p class='note'><b>" + ds.tOrders + "</b>, one row per order, " + ds.orders.length + " rows <span class='invented'>invented</span></p>";
+    b.innerHTML = "<p class='note'><b>" + ds.tPays + "</b>, one row per payment, " + ds.pays.length + " rows <span class='invented'>invented</span></p>";
+    var ta = document.createElement("table"); ta.className = "t";
+    ta.innerHTML = "<tr><th>order_id</th><th>channel</th><th class='num'>amount</th></tr>" + ds.orders.map(function (o) {
+      return "<tr><td class='mono'>" + o.id + "</td><td class='mono'>" + o.ch + "</td><td class='mono num'>" + o.amt.toLocaleString("en-IN") + "</td></tr>"; }).join("");
+    var tb = document.createElement("table"); tb.className = "t";
+    tb.innerHTML = "<tr><th>payment_id</th><th>order_id</th><th>paid_date</th><th class='num'>amount</th><th>instalment_no</th></tr>" +
+      ds.pays.map(function (p) { return "<tr><td class='mono'>" + p.id + "</td><td class='mono'>" + p.oid + "</td><td class='mono'>" +
+        p.date + "</td><td class='mono num'>" + p.amt.toLocaleString("en-IN") + "</td><td class='mono'>" + p.inst + "</td></tr>"; }).join("");
+    a.appendChild(ta); b.appendChild(tb); wrap.appendChild(a); wrap.appendChild(b);
+    return wrap;
+  }
+
+  function listTable(dsKey, which) {
+    var L = list(dsKey, which), t = document.createElement("table"); t.className = "t";
+    var heads = { unpaid: ["o.order_id", "channel", "o.amount", "p.payment_id"], orphan: ["payment_id", "order_id", "paid_date", "amount"],
+      dupOrder: ["order_id", "payment rows", "amount on those rows"], dupInst: ["order_id", "instalment_no", "payment rows", "amount on those rows"] }[which];
+    t.innerHTML = "<tr>" + heads.map(function (h, i) { return "<th" + (i === heads.length - 1 || /amount|rows/.test(h) ? " class='num'" : "") + ">" + h + "</th>"; }).join("") + "</tr>";
+    L.forEach(function (x) {
+      var tr = document.createElement("tr");
+      tr.innerHTML = x.cells.map(function (c, i) {
+        var num = typeof c === "number";
+        return "<td class='mono" + (num ? " num" : "") + (c === "NULL" ? " nul" : "") + "'>" + esc(num ? c.toLocaleString("en-IN") : c) + "</td>"; }).join("");
+      t.appendChild(tr);
+    });
+    if (!L.length) t.innerHTML += "<tr><td colspan='" + heads.length + "'>No rows: the list is empty.</td></tr>";
+    return { table: t, list: L };
+  }
+
+  function listSql(dsKey, which) {
+    var ds = DATA[dsKey], o = ds.tOrders, p = ds.tPays;
+    if (which === "unpaid") return "SELECT o.order_id, o.channel, o.amount, p.payment_id\nFROM " + o + " o\nLEFT JOIN " + p +
+      " p\n  ON p.order_id = o.order_id\n AND p.paid_date BETWEEN '2026-07-01' AND '2026-09-30'\nWHERE p.payment_id IS NULL\nORDER BY o.order_id;";
+    if (which === "orphan") return "SELECT p.payment_id, p.order_id, p.paid_date, p.amount\nFROM " + p + " p\nLEFT JOIN " + o +
+      " o ON o.order_id = p.order_id\nWHERE o.order_id IS NULL\nORDER BY p.payment_id;";
+    if (which === "dupOrder") return "SELECT order_id, count(*) AS payment_rows, sum(amount) AS amount\nFROM " + p +
+      "\nGROUP BY order_id\nHAVING count(*) > 1\nORDER BY order_id;";
+    return "SELECT order_id, instalment_no, count(*) AS payment_rows, sum(amount) AS amount\nFROM " + p +
+      "\nGROUP BY order_id, instalment_no\nHAVING count(*) > 1\nORDER BY order_id;";
+  }
+
+  function sqlFor(dsKey, s) {
+    var ds = DATA[dsKey], lines = [], src;
+    if (s.grain === "raw") src = ds.tPays + " p";
+    else {
+      src = "pay p";
+      if (s.grain === "order") lines.push("WITH pay AS (\n  SELECT order_id, sum(amount) AS amount, max(paid_date) AS paid_date,\n         count(*) AS payment_rows\n  FROM " + ds.tPays + "\n  GROUP BY order_id\n)");
+      else if (s.grain === "inst") lines.push("WITH pay AS (\n  SELECT order_id, instalment_no, max(amount) AS amount,\n         max(paid_date) AS paid_date\n  FROM " + ds.tPays + "\n  GROUP BY order_id, instalment_no\n)");
+      else lines.push("WITH once AS (\n  SELECT order_id, instalment_no, max(amount) AS amount,\n         max(paid_date) AS paid_date\n  FROM " + ds.tPays +
+        "\n  GROUP BY order_id, instalment_no\n),\npay AS (\n  SELECT order_id, sum(amount) AS amount, max(paid_date) AS paid_date\n  FROM once\n  GROUP BY order_id\n)");
+    }
+    var coll = s.amt === "order" ? "sum(o.amount) FILTER (WHERE p.order_id IS NOT NULL) AS collected"
+                                 : "coalesce(sum(p.amount), 0) AS collected";
+    lines.push("SELECT count(*) AS rows_out,\n       sum(o.amount) AS booked,\n       " + coll + "\nFROM " + ds.tOrders + " o\n" +
+      s.join + " JOIN " + src + "\n  ON p.order_id = o.order_id" +
+      (s.cond === "on" ? "\n AND p.paid_date BETWEEN '2026-07-01' AND '2026-09-30'" : "") +
+      (s.cond === "where" ? "\nWHERE p.paid_date BETWEEN '2026-07-01' AND '2026-09-30'" : "") + ";");
+    return lines.join("\n");
+  }
+
+  function rowWords(res) {
+    var n = res.ds.orders.length, out = res.kept.length, parts = [];
+    var extra = res.repeats.reduce(function (a, r) { return a + r.k - 1; }, 0);
+    if (extra) parts.push("plus " + plural(extra, "repeated row", "repeated rows") + " because " +
+      andList(res.repeats.map(function (r) { return r.o.id + " matched " + r.k + " payment rows"; })));
+    if (res.dropped.length) parts.push("less " + plural(res.dropped.length, "order", "orders") + " the " + res.s.join +
+      " JOIN dropped for finding no payment (" + ids(res.dropped) + ")");
+    if (res.nulled.length) parts.push("with " + ids(res.nulled) + " kept on a row of NULLs");
+    if (res.orphanKept.length) parts.push("plus " + plural(res.orphanKept.length, "payment row", "payment rows") +
+      " with no order (" + ids(res.orphanKept) + ")");
+    if (res.removed.length) parts.push("less " + plural(res.removed.length, "row", "rows") + " the WHERE removed after the join (" +
+      andList(res.removed.map(function (x) { return x.o ? x.o.id : x.r.id; })) + ")");
+    var head = "Rows in: " + n + " orders and " + res.R.length + " payment rows (" + GRAIN_SHORT[res.s.grain] + "). Rows out: " + out + ", which is ";
+    var body = n + " orders" + (parts.length ? ", " + parts.join(", ") : ", one row each") + ". ";
+    var closes = out === n && res.ordersIn === n;
+    return head + body + (closes ? "The count closes at order grain: every order is in the report exactly once."
+      : "The count does not close at order grain, so the number does not leave the team yet.");
+  }
+
+  function checks(res) {
+    var n = res.ds.orders.length, T = res.T;
+    return [
+      [res.kept.length === n, "Rows out equal orders in: " + res.kept.length + " rows against " + n + " orders."],
+      [res.ordersIn === n, "Every order is in the report: " + res.ordersIn + " of " + n + " orders."],
+      [res.booked === T.booked, "Booked in the report ties to the orders table: " + R$(res.booked) + " against " + R$(T.booked) + "."],
+      [res.s.amt === "pay", res.s.amt === "pay" ? "Collected sums the payment amount, which is money received."
+        : "Collected sums the order amount, which assumes every paid order was paid in full."],
+      [!res.retryRows.length, res.retryRows.length ? "A retry is inside collected: the same instalment is counted twice."
+        : "No instalment is counted twice in collected."],
+      [!res.orphanKept.length,
+        res.orphanKept.length ? "Payments with no order sit in the report: " + ids(res.orphanKept) + "."
+        : "Every payment in the report belongs to an order on the book."],
+      [!res.lateKept, res.lateKept ? "A payment made after the quarter closed is counted as collected in it."
+        : "Nothing paid after the quarter is counted in it."]
+    ];
+  }
+
+  var KAVYA = [
+    "A join is a multiplication until you prove it is not. Tell me the grain of each table before you tell me a total.",
+    "Rows in, rows out, and the difference explained, written above the number. If the count does not close, the number does not leave the team.",
+    "Two payment rows are not a double payment. Show me what makes a retry a retry before you call anyone about a refund."
+  ];
+
+  function decision(res) {
+    var T = res.T, n = res.ds.orders.length, head, kick, body = [], kav;
+    var said = "<p><b>What the report says.</b> Collected " + R$(res.coll) + " against " + R$(res.booked) +
+      " booked, a gap of " + gapText(res.gap) + ".</p>";
+    function trap(decisionText, check, fix, round) {
+      kick = "A check fails"; head = "This number does not leave the team yet";
+      body.push(said, "<p><b>The decision it would mislead.</b> " + decisionText + "</p>",
+        "<p><b>The check that catches it.</b> " + check + "</p>", "<p><b>The fix.</b> " + fix + "</p>");
+      kav = KAVYA[round];
+    }
+    if (res.repeats.length) {
+      trap(res.coll > T.booked ? "Collections look ahead of bookings at " + (res.coll / T.booked).toFixed(2) +
+          " times, so the collections team is stood down." : "Booked in the report reads " + R$(res.booked) +
+          " against " + R$(T.booked) + " in the orders table, so the collected share looks far worse than it is and a collections panic starts.",
+        "Rows out, " + res.kept.length + ", against orders in, " + n + ": " + andList(res.repeats.map(function (r) { return r.o.id; })) +
+          " appear more than once.",
+        "Bring payments to one row per order in a CTE first, then join at order grain.", 0);
+    } else if (res.ordersIn < n) {
+      trap("Anand hears the gap is " + gapText(res.gap) + ", and nobody chases " + ids(res.dropped.length ? res.dropped :
+          res.ds.orders.filter(function (o) { return !res.seen[o.id]; })) + ".",
+        res.ordersIn + " orders in the report against " + n + " in the quarter.",
+        res.s.cond === "where" ? "Move the paid_date condition from the WHERE into the ON clause, so the LEFT JOIN keeps every order."
+          : "Use a LEFT JOIN and read a missing payment as zero with COALESCE(p.amount, 0).", 1);
+    } else if (res.orphanKept.length) {
+      trap("Money that belongs to no order on the book is counted in the quarter, and the payments with no order are never investigated.",
+        "Rows out, " + res.kept.length + ", against orders in, " + n + ": " + ids(res.orphanKept) + " carry no order.",
+        "Join from orders with a LEFT JOIN, and list the payments with no order on their own with the reverse anti-join.", 1);
+    } else if (res.s.amt === "order") {
+      trap("Every order with any payment counts as collected in full, so an order paid in part, or paid after the quarter, reads as settled.",
+        "Collected is the sum of o.amount, which is a booked value; money received is p.amount.",
+        "Sum p.amount as collected, at order grain.", 0);
+    } else if (res.retryRows.length) {
+      trap(res.gap < 0 ? "A negative gap reads as customers paying more than they owe, and the unpaid order hides behind the retry."
+          : "The gap looks smaller than it is by the retry, and the unpaid orders look partly covered.",
+        "The double-paid list at order and instalment grain names " + andList(list(res.s.ds, "dupInst").filter(function (x) { return x.retry; })
+          .map(function (x) { return x.ids[0]; })) + ", and the bridge shows collected above booked less never paid.",
+        "Count each order and instalment once before rolling payments up to the order.", 2);
+    } else if (res.lateKept) {
+      trap("A payment that arrived after the quarter closed is counted as collected in it, so the quarter looks better paid than it was.",
+        "The bridge from true collected to the report carries a move named paid after the quarter.",
+        "Put the paid_date condition in the ON clause.", 1);
+    } else {
+      kick = "Every check passes"; head = "What you tell Anand";
+      var unpaid = list(res.s.ds, "unpaid"), retr = list(res.s.ds, "dupInst").filter(function (x) { return x.retry; });
+      var orph = list(res.s.ds, "orphan");
+      var s = "<p>In Q2 we booked " + R$(T.booked) + " on " + n + " orders and collected " + R$(T.coll) +
+        ", a gap of " + R$(T.booked - T.coll) + ". The gap is " + plural(unpaid.length, "order", "orders") + " with no payment in the quarter: " +
+        andList(unpaid.map(function (u) { return u.cells[0] + " on " + u.cells[1] + " for " + R$(u.amt); })) + ".";
+      if (T.late.length) s += " Of those, " + andList(T.late.map(function (p) { return p.oid; })) + " was paid after the quarter closed, so it is late rather than lost.";
+      if (retr.length) s += " The feed posted " + R$(T.retryAmt) + " twice when the gateway retried on " + andList(retr.map(function (x) { return x.ids[0]; })) +
+        ", and each retry is counted once.";
+      if (orph.length) s += " " + (orph.length === 1 ? "One payment (" : orph.length + " payments (") + andList(orph.map(function (x) { return x.ids[0]; })) +
+        (orph.length === 1 ? ") names an order that is not on the book, and it is listed" : ") name orders that are not on the book, and they are listed") +
+        " for the platform lead to trace.";
+      s += " The count closes: " + n + " orders in, " + n + " rows out.</p>";
+      body.push(s, "<p class='note'>The records are invented, so the sentence is the shape to use on Kalpa's Q2, with Kalpa's numbers in it.</p>");
+      kav = KAVYA[1] + " This one closes, and it can go.";
+    }
+    return { kick: kick, head: head, body: body.join(""), kavya: kav };
+  }
+
+  /* ---------------------------------------------------------------- the simulator */
+  var CTL = { ds: "sDs", join: "sJoin", grain: "sGrain", cond: "sCond", amt: "sAmt" };
+  var HURRIED = { join: "INNER", grain: "raw", cond: "none", amt: "order" };
+  var FIX = { join: "LEFT", grain: "once", cond: "on", amt: "pay" };
+  function state() {
+    return { ds: $("sDs").value, join: $("sJoin").value, grain: $("sGrain").value, cond: $("sCond").value, amt: $("sAmt").value };
+  }
+  function render() {
+    var s = state(), res = run(s.ds, s), T = res.T;
+    res.s.ds = s.ds;
+    $("rBooked").textContent = R$(res.booked);
+    $("rColl").textContent = R$(res.coll);
+    $("rGap").textContent = gapText(res.gap);
+    $("rGap").className = "v" + (res.gap < 0 ? " neg" : "");
+    $("rTruth").textContent = "The orders table says booked " + R$(T.booked) + " over " + T.n + " orders, and the report counts " +
+      res.ordersIn + " of them. Records: " + res.ds.name + ", invented.";
+    $("rWords").textContent = rowWords(res);
+    var ul = $("rChecks"); ul.textContent = "";
+    checks(res).forEach(function (c) { var li = document.createElement("li"); li.className = c[0] ? "pass" : "fail"; li.textContent = c[1]; ul.appendChild(li); });
+    $("rSql").textContent = sqlFor(s.ds, s);
+    K.draw("rRows", rowsTable(res));
+
+    /* the bridges */
+    var t1 = [["less never paid", -T.neverAmt]];
+    if (T.lateAmt) t1.push(["less paid after the quarter", -T.lateAmt]);
+    if (T.owed) t1.push(["less still owed", -T.owed]);
+    var lit2 = res.retryRows.length ? [0] : [];
+    K.draw("bTruth", K.sideBySide(
+      K.bridge(["booked", T.booked], t1, { endLabel: "collected", title: "The truth, part 1: booked to collected (" + res.ds.name + ", invented)" }),
+      K.bridge(["collected", T.coll], [["plus posted twice", T.retryAmt]], { endLabel: "posted in the feed", lit: lit2,
+        title: "Part 2: collected to what the feed posted" })));
+    K.draw("bLive", K.bridge(["true collected", T.coll], res.moves, { endLabel: "your report", lit: res.moves.map(function (m, i) { return i; }),
+      title: "From the true collected number to your report's" }));
+    $("bLiveWords").textContent = res.moves.length
+      ? "Your report lands at " + R$(res.coll) + ", " + gapText(res.coll - T.coll).replace("minus ", "") + (res.coll > T.coll ? " above" : " below") +
+        " the true collected " + R$(T.coll) + ". The moves are " + andList(res.moves.map(function (m) { return m[0] + " (" + (m[1] < 0 ? "minus " : "plus ") + R$(Math.abs(m[1])) + ")"; })) + "."
+      : "Your report lands exactly on the true collected " + R$(T.coll) + ", and there is no move to explain.";
+    var cats = CHANNELS.slice(), orphanShown = res.byCh["no order"].coll || res.byCh["no order"].booked;
+    if (orphanShown) cats.push("no order");
+    K.draw("bCols", K.columns(cats, [
+      ["booked, orders table", cats.map(function (c) { return c === "no order" ? 0 : T.byCh[c].booked; })],
+      ["booked, your report", cats.map(function (c) { return res.byCh[c].booked; })],
+      ["collected, your report", cats.map(function (c) { return res.byCh[c].coll; })],
+      ["collected, true", cats.map(function (c) { return c === "no order" ? 0 : T.byCh[c].coll; })]],
+      { title: "By channel: which channel carries the gap (" + res.ds.name + ", invented)" }));
+    var worst = CHANNELS.slice().sort(function (a, b) { return (T.byCh[b].booked - T.byCh[b].coll) - (T.byCh[a].booked - T.byCh[a].coll); })[0];
+    var off = CHANNELS.filter(function (c) { return res.byCh[c].coll !== T.byCh[c].coll || res.byCh[c].booked !== T.byCh[c].booked; });
+    $("bColsWords").textContent = "In the source tables the largest gap sits on " + worst + ", " + R$(T.byCh[worst].booked - T.byCh[worst].coll) + ". " +
+      (off.length ? "Your report disagrees with the source on " + andList(off) + (orphanShown ? ", and it carries money on a channel called no order" : "") + "."
+        : (orphanShown ? "Your report carries money on a channel called no order." : "Your report agrees with the source on every channel."));
+
+    var d = decision(res);
+    $("dKicker").textContent = d.kick;
+    $("dHead").textContent = d.head;
+    $("dBody").innerHTML = d.body;
+    $("dKavyaText").textContent = d.kavya;
+    renderList();
+  }
+  Object.keys(CTL).forEach(function (k) {
+    $(CTL[k]).addEventListener("change", function () {
+      var sel = this;
+      render();
+      $("sStatus").textContent = "Changed: " + sel.options[sel.selectedIndex].text + ". Everything below is redrawn from this setting.";
+    });
+  });
+  function load(preset, name) {
+    var changed = 0;
+    Object.keys(preset).forEach(function (k) { if ($(CTL[k]).value !== preset[k]) { $(CTL[k]).value = preset[k]; changed++; } });
+    render();
+    $("sStatus").textContent = "Loaded: " + name + (changed ? ", " + plural(changed, "setting", "settings") + " changed." : ", which was already in place.");
+  }
+  $("sHurried").addEventListener("click", function () { load(HURRIED, "the hurried analyst's first query"); });
+  $("sFix").addEventListener("click", function () { load(FIX, "the fix, LEFT JOIN on payments counted once per instalment and rolled up to the order, with the quarter in ON"); });
+
+  /* ---------------------------------------------------------------- the lists */
+  function renderList() {
+    var dsKey = $("sDs").value, which = $("lPick").value, lt = listTable(dsKey, which), L = lt.list;
+    $("lSql").textContent = listSql(dsKey, which);
+    K.draw("lRows", lt.table);
+    var w;
+    if (which === "unpaid") w = "The anti-join keeps only the orders whose payment side came back NULL, with the quarter in the ON clause: " +
+      plural(L.length, "order", "orders") + " worth " + R$(L.reduce(function (a, x) { return a + x.amt; }, 0)) + ". This is the list Anand asked for, order by order and channel by channel.";
+    else if (which === "orphan") w = "Turned round, the anti-join finds " + plural(L.length, "payment", "payments") + " naming an order the table does not hold. They are money with no booking behind it, and they go to the platform lead to trace, outside the collected number.";
+    else if (which === "dupOrder") w = "Grouped by order_id, HAVING COUNT(*) > 1 lists " + plural(L.length, "order", "orders") + ": " +
+      andList(L.map(function (x) { return x.ids[0] + (x.retry ? " (a retry)" : " (its instalments)"); })) +
+      ". Only the retries are double payments; the rest are orders paid in two instalments, and a refund call on them would be wrong.";
+    else w = "Grouped by order_id and instalment_no, the list keeps " + plural(L.length, "order", "orders") + ": " +
+      andList(L.map(function (x) { return x.ids[0]; })) + ", the same instalment posted twice, with " +
+      R$(L.reduce(function (a, x) { return a + x.extra; }, 0)) + " counted twice. That is the grain at which a retry is a retry.";
+    $("lWords").textContent = w + " Records: " + DATA[dsKey].name + ", invented.";
+  }
+  $("lPick").addEventListener("change", renderList);
+
+  /* ---------------------------------------------------------------- the guided walk */
+  var IQ = [
+    "[S] INNER against LEFT join: what does each drop or keep? [S] Your join grew the row count; name the cause and the check.",
+    "[F] A filter on the right-hand table of a LEFT JOIN: WHERE or ON, and what changes? [F] How do you reconcile a total after a join back to its source table?",
+    "[F] How do you find orders with no payment? [F] HAVING COUNT(*) > 1 on payments by order: what does it find, and what does it wrongly include?"
+  ];
+  function S(join, grain, cond, amt) { return { join: join, grain: grain, cond: cond, amt: amt }; }
+  var WALK = [
+    { r: 0, view: "tables", s: S("INNER", "raw", "none", "pay"), lit: 0, t: "Anand's ask, and the grain of each table",
+      x: "Anand wants what was collected against what was booked, order by order. Before any join runs, say each table's grain out loud: tiny_orders holds one row per order, five rows and Rs 5,800 booked, and tiny_payments holds one row per payment, seven rows. A key that repeats on the payments side will repeat the order it joins to." },
+    { r: 0, view: "join", s: S("INNER", "raw", "none", "pay"), lit: 2, t: "INNER JOIN keeps the orders that found a payment",
+      x: "Six rows come back from five orders. T-4 has no payment, so INNER drops it without a word, and T-2 and T-3 appear twice because each has two payment rows. P-7 names T-9, which is not in the orders table, so INNER drops it too." },
+    { r: 0, view: "join", s: S("LEFT", "raw", "none", "pay"), lit: 2, t: "LEFT JOIN keeps every order",
+      x: "Seven rows: T-4 comes back with NULL on every payment column, which is exactly the row Anand is asking about. T-2 and T-3 still appear twice, since LEFT decides what happens to the rows that do not match and leaves the repeats alone." },
+    { r: 0, view: "join", s: S("RIGHT", "raw", "none", "pay"), lit: 2, t: "RIGHT JOIN keeps every payment",
+      x: "Seven rows again, and a different seven: T-4 is gone, and P-7 arrives with NULL where its order should be. That is an orphan, a payment against an order id the orders table does not hold." },
+    { r: 0, view: "join", s: S("FULL", "raw", "none", "pay"), lit: 2, t: "FULL JOIN keeps the unmatched rows of both sides",
+      x: "Eight rows: the six matches, T-4 with no payment and P-7 with no order. Every join answers a question about the rows that do not match; choose the join by that question. Anand's question is about every booked order, so it starts from orders." },
+    { r: 0, view: "join", s: S("INNER", "raw", "none", "order"), lit: 4, t: "The plausible wrong answer: Rs 8,500",
+      x: "A hurried analyst sums the order amount over the join and calls it the value of the paid orders: Rs 8,500 against Rs 5,800 booked, 1.47 times, and every row is a real order with a real payment. The decision it would mislead is to stand the collections team down. On Kalpa's Q2 the same query returns Rs 19,29,04,410 against Rs 9,84,00,000 booked." },
+    { r: 0, view: "join", s: S("LEFT", "order", "none", "pay"), lit: 1, t: "The fix: one row per order before the join",
+      x: "The check is rows out against orders in, six against five, and the fix brings payments to one row per order in a CTE before joining. Five orders in, five rows out, and booked in the report is back to Rs 5,800. Kavya closes round 1: “" + KAVYA[0] + "”" },
+    { r: 1, view: "join", s: S("INNER", "order", "none", "pay"), lit: 2, t: "Round 2's wrong answer: fully collected, with a surplus",
+      x: "Payments are at order grain now, and the report is an INNER JOIN: booked Rs 5,000, collected Rs 6,500, a gap of minus Rs 1,500. Anand would hear that everything was collected and a little more, and nobody would chase the unpaid invoice. The check is the count: four orders in the report against five in the quarter." },
+    { r: 1, view: "join", s: S("LEFT", "raw", "where", "pay"), lit: 3, t: "The WHERE that turns LEFT into INNER",
+      x: "Switched to a LEFT JOIN, the analyst adds paid_date in the quarter as a WHERE. The join returns seven rows and the WHERE removes T-4's, because a NULL paid_date fails every comparison, so six rows remain and T-4 is gone again. The query still says LEFT JOIN, and only the count shows the loss." },
+    { r: 1, view: "join", s: S("LEFT", "order", "on", "pay"), lit: 3, t: "The condition in ON: the count closes",
+      x: "In the ON clause the condition decides which payments match, and T-4 stays with NULLs. Five in, five out, booked Rs 5,800, collected Rs 6,500, and the gap is minus Rs 700: more collected than booked, on a table where one order was never paid. A count that closes is necessary, and the bridge still has to say what the number is made of. Kavya closes round 2: “" + KAVYA[1] + "”" },
+    { r: 2, view: "list", list: "unpaid", s: S("LEFT", "order", "on", "pay"), lit: 2, t: "The unpaid list, with an anti-join",
+      x: "Keep only the LEFT JOIN rows whose payment side came back NULL, and the list is T-4 on app for Rs 800: the order Anand asked about by name. Turned round, the same pattern lists P-7, the payment with no order." },
+    { r: 2, view: "list", list: "dupOrder", s: S("LEFT", "order", "on", "pay"), lit: 1, t: "Round 3's wrong answer: two double payments",
+      x: "The double-paid list is written as GROUP BY order_id HAVING COUNT(*) > 1, and it names T-2 and T-3. The decision it would mislead is a refund call to both customers, and T-2's second row is its second instalment, paid on time." },
+    { r: 2, view: "list", list: "dupInst", s: S("LEFT", "order", "on", "pay"), lit: 1, t: "The fix: group at the grain of a payment",
+      x: "A retry is the same instalment posted twice, so the list groups by order_id and instalment_no and keeps only T-3, with Rs 1,500 posted twice. T-2 leaves the list, because its two rows are two different instalments." },
+    { r: 2, view: "join", s: S("LEFT", "once", "on", "pay"), lit: 1, t: "Retries counted once: the gap is the unpaid order",
+      x: "Counting each order and instalment once before rolling up to the order gives collected Rs 5,000 and a gap of Rs 800, which is T-4 to the rupee. The bridge reads booked Rs 5,800, less never paid Rs 800, collected Rs 5,000, plus posted twice Rs 1,500, posted in the feed Rs 6,500. Kavya closes round 3: “" + KAVYA[2] + "”" },
+    { r: 2, view: "join", s: S("LEFT", "once", "on", "pay"), lit: 4, t: "The sentence to Anand",
+      x: "In Q2 the invented book shows Rs 5,800 booked on five orders and Rs 5,000 collected. The gap of Rs 800 is one order, T-4 on app, with no payment. The feed posted Rs 1,500 twice on T-3 when the gateway retried, and that copy is left out. Five orders in, five rows out." }
+  ];
+  var walkAt = 0;
+  function showWalk() {
+    var w = WALK[walkAt], res = run("tiny", w.s);
+    K.draw("walkFlow", K.flow(stages(w.s), w.lit, { title: "The query in five stages; the lit stage is the one this step changes" }));
+    $("walkStep").textContent = "Round " + (w.r + 1) + " · step " + walkAt + " of " + (WALK.length - 1);
+    $("walkTitle").textContent = w.t;
+    $("walkText").textContent = w.x;
+    $("walkIq").textContent = IQ[w.r];
+    $("walkPlan").style.left = (100 * 5800 / 9000) + "%";
+    if (w.view === "tables") {
+      $("walkFill").style.width = "0%";
+      $("walkBig").textContent = "no join yet";
+      $("walkBigNote").textContent = "booked in the orders table is Rs 5,800";
+      $("walkCaption").textContent = "The two invented tables, as the morning's SQL file creates them.";
+      K.draw("walkRows", sourceTables("tiny"));
+    } else {
+      $("walkFill").style.width = Math.min(100, 100 * res.coll / 9000) + "%";
+      $("walkBig").textContent = R$(res.coll);
+      $("walkBigNote").textContent = "collected as this step's query reports it, against " + R$(res.booked) + " booked in the report, a gap of " + gapText(res.gap);
+      if (w.view === "list") {
+        var lt = listTable("tiny", w.list);
+        $("walkCaption").textContent = "The list this step's query returns, on the invented tiny tables.";
+        var box = document.createElement("div");
+        var pre = document.createElement("pre"); pre.className = "sql"; pre.textContent = listSql("tiny", w.list);
+        box.appendChild(lt.table); box.appendChild(pre);
+        K.draw("walkRows", box);
+      } else {
+        $("walkCaption").textContent = "The joined rows this step's query returns: " + res.kept.length + " rows out from 5 orders.";
+        K.draw("walkRows", rowsTable(res));
+      }
+    }
+    $("walkNext").textContent = walkAt === WALK.length - 1 ? "Back to the start" : "Next";
+  }
+  $("walkNext").addEventListener("click", function () { walkAt = (walkAt + 1) % WALK.length; showWalk(); });
+  $("walkRestart").addEventListener("click", function () {
+    walkAt = 0; showWalk(); $("walkStep").textContent = "Round 1 · step 0 of " + (WALK.length - 1) + ", restarted";
+  });
+
+  /* ---------------------------------------------------------------- the sequence popup */
+  function openSeq(title, lanes, messages, note) {
+    $("seqTitle").textContent = title;
+    K.draw("seqBody", K.sequence(lanes, messages, { laneWidth: 200 }));
+    $("seqNote").textContent = note;
+    var d = $("seqDialog");
+    if (typeof d.showModal === "function") d.showModal(); else d.setAttribute("open", "");
+  }
+  $("seqClose").addEventListener("click", function () { $("seqDialog").close(); });
+
+  function reveal(key, text) {
+    $(key + "What").textContent = text;
+    $(key + "Result").hidden = false;
+    $(key + "Wait").hidden = true;
+  }
+  function statTable(label, res) {
+    var t = document.createElement("table"); t.className = "t";
+    t.innerHTML = "<tr><th>" + esc(label) + ", tiny tables, invented</th><th class='num'>value</th></tr>" +
+      [["rows out", res.kept.length], ["orders in the report", res.ordersIn + " of 5"], ["booked", R$(res.booked)],
+       ["collected", R$(res.coll)], ["gap", gapText(res.gap)]].map(function (r) {
+        return "<tr><td>" + r[0] + "</td><td class='num'>" + r[1] + "</td></tr>"; }).join("");
+    return t;
+  }
+
+  /* One card per assumption: a base setting, the one field it changes, and the two values. */
+  var EXP = {
+    expA: { base: S("INNER", "once", "on", "pay"), field: "join", a: "INNER", b: "LEFT", label: ["INNER JOIN", "LEFT JOIN"],
+      btn: ["Switch INNER to LEFT", "Switch back to INNER"],
+      what: function (x, y) { return "INNER counted " + x.ordersIn + " of 5 orders and reported booked " + R$(x.booked) + " against collected " + R$(x.coll) +
+        ", a gap of " + gapText(x.gap) + ". LEFT counts all " + y.ordersIn + ", booked " + R$(y.booked) + ", collected " + R$(y.coll) +
+        ", a gap of " + gapText(y.gap) + ": the Rs 800 is T-4, the order INNER hid."; },
+      seq: [["tiny_orders", "the join", "5 orders"], ["tiny_payments", "the join", "4 order rows, retry counted once"],
+            ["the join", "the report", "INNER: 4 orders, gap Rs 0"], ["the join", "the report", "LEFT: 5 orders, T-4 with NULL"],
+            ["the report", "the report", "gap Rs 800, which is T-4"]],
+      note: "Only the join type changed; the payments table and the condition stayed as they were." },
+    expB: { base: S("LEFT", "raw", "none", "pay"), field: "grain", a: "raw", b: "order", label: ["raw payment rows", "one row per order"],
+      btn: ["Roll payments up to one row per order", "Go back to raw rows"],
+      what: function (x, y) { return "At raw grain the join returned " + x.kept.length + " rows and booked read " + R$(x.booked) +
+        ", because T-2 and T-3 each came back twice. Rolled up first, it returns " + y.kept.length + " rows and booked is " + R$(y.booked) +
+        ". Collected stayed at " + R$(y.coll) + " both times, since each payment still joins to one order."; },
+      seq: [["tiny_payments", "tiny_payments", "7 rows, T-2 and T-3 twice"], ["tiny_payments", "the join", "raw: 7 rows in"],
+            ["the join", "the report", "booked Rs 9,300"], ["tiny_payments", "tiny_payments", "rolled up: one row per order"],
+            ["tiny_payments", "the join", "5 orders, 5 rows"], ["the join", "the report", "booked Rs 5,800"]],
+      note: "Only the grain of the payments table changed before the join." },
+    expC: { base: S("LEFT", "once", "where", "pay"), field: "cond", a: "where", b: "on", label: ["condition in WHERE", "condition in ON"],
+      btn: ["Move the condition into ON", "Move it back to WHERE"],
+      what: function (x, y) { return "With the condition in the WHERE, the report counted " + x.ordersIn + " of 5 orders and showed a gap of " + gapText(x.gap) +
+        ", because T-4's NULL paid_date failed the filter after the join. In the ON clause all " + y.ordersIn + " orders stay and the gap is " + gapText(y.gap) + "."; },
+      seq: [["tiny_orders", "the join", "LEFT keeps T-4 with NULLs"], ["the join", "the WHERE", "NULL paid_date fails the test"],
+            ["the WHERE", "the report", "T-4 removed, gap Rs 0"], ["tiny_orders", "the join", "ON tests payments while matching"],
+            ["the join", "the report", "T-4 stays, gap Rs 800"]],
+      note: "Only the position of the paid_date condition changed." },
+    expD: { base: S("LEFT", "order", "on", "pay"), field: "grain", a: "order", b: "once", label: ["one row per order", "retries counted once"],
+      btn: ["Count each instalment once", "Count every payment row again"],
+      what: function (x, y) { return "Summing every payment row, collected was " + R$(x.coll) + " and the gap " + gapText(x.gap) +
+        ". Counting each order and instalment once, collected is " + R$(y.coll) + " and the gap " + gapText(y.gap) +
+        ": the Rs 1,500 retry on T-3 left collected, and the gap now equals the unpaid T-4."; },
+      seq: [["tiny_payments", "tiny_payments", "P-4 and P-5: T-3, instalment 1, Rs 1,500"], ["tiny_payments", "the join", "both summed: T-3 paid Rs 3,000"],
+            ["the join", "the report", "gap minus Rs 700"], ["tiny_payments", "tiny_payments", "one per order and instalment"],
+            ["tiny_payments", "the join", "T-3 paid Rs 1,500"], ["the join", "the report", "gap Rs 800"]],
+      note: "Only the retry handling changed; the join, the condition and the amount stayed." }
+  };
+  function drawExp(key, on) {
+    var e = EXP[key], s = {}; Object.keys(e.base).forEach(function (k) { s[k] = e.base[k]; });
+    s[e.field] = on ? e.b : e.a;
+    var res = run("tiny", s);
+    K.draw(key + "Out", statTable(on ? e.label[1] : e.label[0], res));
+    return res;
+  }
+  Object.keys(EXP).forEach(function (key) {
+    var e = EXP[key], on = false;
+    drawExp(key, false);
+    $(key + "Run").addEventListener("click", function () {
+      on = !on;
+      this.setAttribute("aria-pressed", String(on));
+      this.textContent = on ? e.btn[1] : e.btn[0];
+      drawExp(key, on);
+      var sa = {}, sb = {}; Object.keys(e.base).forEach(function (k) { sa[k] = e.base[k]; sb[k] = e.base[k]; });
+      sa[e.field] = e.a; sb[e.field] = e.b;
+      reveal(key, e.what(run("tiny", sa), run("tiny", sb)));
+    });
+    $(key + "Seq").addEventListener("click", function () {
+      openSeq(key.replace("exp", "Experiment ") + ", as a sequence", ["tiny_orders", "tiny_payments", "the join", "the WHERE", "the report"]
+        .filter(function (l) { return e.seq.some(function (m) { return m[0] === l || m[1] === l; }); }), e.seq, e.note);
+    });
+  });
+
+  /* Experiment E runs on the list, since HAVING is a query of its own. */
+  var eOn = false;
+  function drawE() {
+    var which = eOn ? "dupInst" : "dupOrder", lt = listTable("tiny", which);
+    var box = document.createElement("div"), cap = document.createElement("p"); cap.className = "note";
+    cap.textContent = eOn ? "GROUP BY order_id, instalment_no HAVING count(*) > 1, on the invented tiny tables"
+                          : "GROUP BY order_id HAVING count(*) > 1, on the invented tiny tables";
+    box.appendChild(cap); box.appendChild(lt.table);
+    K.draw("expEOut", box);
+  }
+  drawE();
+  $("expERun").addEventListener("click", function () {
+    eOn = !eOn;
+    this.setAttribute("aria-pressed", String(eOn));
+    this.textContent = eOn ? "Group by order only" : "Group by order and instalment";
+    drawE();
+    var a = list("tiny", "dupOrder"), b = list("tiny", "dupInst");
+    reveal("expE", "Grouped by order, the list named " + andList(a.map(function (x) { return x.ids[0]; })) + ", with " +
+      R$(a.reduce(function (s, x) { return s + x.amt; }, 0)) + " on their rows. Grouped by order and instalment it names only " +
+      andList(b.map(function (x) { return x.ids[0]; })) + ", with " + R$(b.reduce(function (s, x) { return s + x.extra; }, 0)) +
+      " posted twice, because T-2's two rows are instalments 1 and 2.");
+  });
+  $("expESeq").addEventListener("click", function () {
+    openSeq("Experiment E, as a sequence", ["tiny_payments", "GROUP BY", "the list"], [
+      ["tiny_payments", "GROUP BY", "by order_id"], ["GROUP BY", "the list", "T-2 (2 rows), T-3 (2 rows)"],
+      ["tiny_payments", "GROUP BY", "by order_id, instalment_no"], ["GROUP BY", "the list", "T-3 only, instalment 1 twice"]],
+      "Only the grouping changed, and with it the answer to what counts as the same payment.");
+  });
+
+  showWalk();
+  render();
+})();
+</script>
+</body>
+</html>
