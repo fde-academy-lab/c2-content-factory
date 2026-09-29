@@ -1,84 +1,92 @@
 # The revenue tree
 
-Kalpa Retail, Week 1 Monday. Revenue is a product of counts and prices, less what is given back, and
-every number leaves the team with its definition. Every day this week returns to this sheet.
+Kalpa Retail, Week 1 Monday. Revenue is a tree of metrics that multiply, every number carries its definition, and each trap below is a plausible wrong number with the check that catches it.
 
-## Panel 1: The tree, and the one rule
+## Panel 1: The revenue tree, with Monday's numbers on it
 
 ```mermaid
-flowchart LR
-    R["<b>revenue</b><br/>gross less discounts"] --> G["<b>gross revenue</b><br/>customers times spend"]
-    R --> D["<b>discounts</b><br/>what we gave back"]
-    G --> C["<b>customers</b><br/>how many bought"]
-    G --> V["<b>revenue per customer</b><br/>orders times order value"]
-    V --> F["<b>orders per customer</b><br/>how often each came back"]
-    V --> O["<b>revenue per order</b><br/>items times price"]
-    O --> B["<b>items per order</b><br/>how full the basket was"]
-    O --> P["<b>price per item</b><br/>what each line cost"]
+flowchart TB
+    R["<b>revenue</b><br/>Rs 5,44,810 booked"] --> C["<b>customers</b><br/>23 distinct ids<br/>Rs 12 crore bet"]
+    R --> F["<b>orders per<br/>customer</b><br/>30 / 23 = 1.30"]
+    R --> A["<b>typical order</b><br/>median Rs 2,205"]
+    A --> I["<b>items per order</b><br/>not in file"]
+    A --> P["<b>price per item</b><br/>not in file"]
+    A --> D["<b>discounts</b><br/>not in file"]
+    A --> M["<b>mean</b><br/>Rs 18,160, a trap"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    class F,A known
+    class I,P,D unknown
+    class C bet
+    class M bad
 ```
 
-Five leaves, and each one is a lever with its own bill. Branches multiply, so two 10 percent lifts
-give 21 percent, and 15 percent off for 10 percent more volume leaves 0.935 of today.
+**Crux:** Revenue is customers times orders per customer times average order value, and average order value is items per order times price per item, less discounts.
 
-**Crux:** Write every branch as a numerator over a denominator before any number is computed, and
-move a budget only after finding which branch is short.
+## Panel 2: Every branch is a metric with a bill
 
-## Panel 2: Every leaf is a metric with a bill
-
-| Leaf | Over what | What moving it costs |
+| Branch | Over what | What moving it costs |
 |---|---|---|
-| Customers | A count, in the window | Marketing; buyers who never return |
-| Orders per customer | Distinct customers, same window | Loyalty; paying those who would return |
-| Items per order | Orders | Merchandising; low-margin baskets |
-| Price per item | Items | Volume; the price-sensitive leave |
+| Customers | A count of distinct ids in the window | Marketing spend |
+| Orders per customer | Distinct customers, same window | Retention |
+| Items per order | Orders | Merchandising |
+| Price per item | Items | Volume, as buyers leave |
 | Discounts | Revenue before discounts | Margin, traded for quantity |
 
-## Panel 3: One word, four readings
+The identity checks the tree: 23 x (30 / 23) x (Rs 5,44,810 / 30) = Rs 5,44,810.
 
-Booked, not cancelled, delivered, and after discounts: four honest totals of the same orders, each
-answering a different question.
+## Panel 3: Trap 1, which total is "sales"
 
-**Crux:** Name the definition and the window before the number: "Revenue, all booked orders, 1 July
-to 26 September".
-
-## Panel 4: The accumulator, three ways
-
-```python
-revenue = 0                          # start, before the loop
-for order in ORDERS:
-    revenue += int(order["amount"])  # update, once per record
-print(revenue)                       # finish, after the loop
-```
-
-Count adds 1. Sum adds the value. A distinct count appends an id only when it is `not in` the list.
-A filter puts an `if` before the update.
-
-## Panel 5: Mean or median
-
-| The number is for | Report |
+| | |
 |---|---|
-| A typical order | The median |
-| A total that must add up | The mean |
-| A first look at a file | Both, and the gap |
+| Wrong number | Rs 5,44,810 called sales, with 4 cancelled store orders inside it. |
+| Check | Count by status first: 21 delivered, 5 returned, 4 cancelled. |
+| Fix | Not cancelled is Rs 5,35,760 on 26 orders; delivered is Rs 5,20,790 on 21. |
 
-The median of an even count is the average of the two middles: indexes `n // 2 - 1` and `n // 2`.
-One value moved by d moves the mean by d over n and the median not at all.
+**Crux:** Name the definition before the number: booked, not cancelled, or delivered.
 
-**Crux:** When the mean sits far above the median, the gap is the finding: read the top of the
-sorted list and name what sits there.
+## Panel 4: Trap 2, rows counted as customers
 
-## Panel 6: Errors met today, read from the last line up
-
-| Last line | First move |
+| | |
 |---|---|
-| `NameError: name 'ORDERS' is not defined` | Restart and Run All |
-| `TypeError: ... 'int' and 'str'` | Print the record the loop stopped on |
-| `KeyError: 'Amount'` | Copy the key from the record |
-| `ValueError: invalid literal for int()` | Decide the rule for that field |
+| Wrong number | 30 customers, so 30 / 30 = 1.00 and "nobody comes back". |
+| Check | `len(rows)` against `len(set(ids))`: 30 against 23. |
+| Fix | 23 customers, 1.30 orders each, 7 came back and 16 bought once. |
 
-## Panel 7: The sentence to Meera
+**Crux:** Count customers by their id, never by the rows.
 
-Claim, the branch to examine first. Evidence, a number with its definition and window. Caveat,
-what one window cannot show. Next step, the comparison that settles it.
+## Panel 5: Trap 3, the mean sold as typical
 
-**Crux:** A sentence without its evidence is an opinion, and one without its caveat is a promise.
+| | |
+|---|---|
+| Wrong number | A first order valued at the mean, Rs 18,160. |
+| Check | Orders above the mean: 1 of 30. Sort and read the top. |
+| Fix | Median Rs 2,205 booked, Rs 2,060 delivered; the top order gets its own line. |
+
+**Crux:** Report the median when one order can move the mean, and say why.
+
+## Panel 6: Trap 4, lifts added instead of multiplied
+
+| | |
+|---|---|
+| Wrong number | Customers +10 percent and frequency +10 percent called 20 percent. |
+| Check | Recompute through the tree: 1.10 x 1.10 = 1.21. |
+| Fix | Rs 6,59,220, against Rs 6,53,772 by adding. 15 percent off for 10 percent more quantity is 0.85 x 1.10 = 0.935, a 6.5 percent fall. |
+
+**Crux:** Lifts multiply along the tree: two 10 percent lifts make 21 percent.
+
+## Panel 7: Trap 5, one channel's share
+
+| | |
+|---|---|
+| Wrong number | Store brings 91.6 percent of booked revenue, so the plan should be store-led. |
+| Check | Count the orders behind the share; split each channel by status. |
+| Fix | Consumer orders: web Rs 27,290 with 5 of 10 returned, app Rs 18,600 all delivered, store Rs 18,920 with 4 of 9 cancelled. |
+
+## Panel 8: What goes to Meera
+
+"23 customers placed 1.30 orders each at a typical order of Rs 2,205, and 16 bought only once, so open frequency before acquisition; hold the Rs 12 crore until Tuesday's two quarters."
+
+**Crux:** One window shows the shape of revenue; only two windows show which branch moved.

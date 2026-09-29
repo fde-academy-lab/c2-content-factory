@@ -1,39 +1,59 @@
-# Self-check before you hand in Thursday's take-home
+# Self-check: know you are right before Friday
 
-Ten checks.
+Every checkpoint is something you verify alone, on the staging snapshot. If one fails, the fix
+is named beside it.
 
-## The note
+---
 
-1. Count your sentences. Five. If you have seven, two of them are saying the same thing and you
-   have not decided which.
+## Part 1 and 2, the numbers
 
-2. Read sentence four. Is it about audit, ownership or readership? If the words "faster",
-   "slower", "can handle" or "scales" appear, it is the wrong kind of objection.
+| # | Checkpoint | What you should see | If it does not match |
+|---|---|---|---|
+| 1 | Rows in the table | 340 | 309 means the table was built from the orders; start from the customer list |
+| 2 | Spend | Rs 19,84,00,000, equal to the snapshot's orders | More than that means the exposure merge multiplied some customers' rows |
+| 3 | As-of date | 28 September 2026 | Any later date is the wall clock; use the orders' last date |
+| 4 | Smallest recency | 0 days | 21 or more means recency from a run day |
+| 5 | Customers with no orders | 31, with frequency 0 and no recency | NaN in frequency means the zeros were never filled |
+| 6 | Customers the sale reached | 153 | A larger number means a customer is counted once per feed row |
+| 7 | Of those, customers who bought | 142 | 153 bought out of 153 means the reached customers with no orders lost their segment and were dropped |
+| 8 | The 60-day win-back list | 123 | 162 is the list measured from Monday 19 October |
 
-3. Read sentence five. Does it name a concrete situation, or does it hedge? "Unless the situation
-   requires it" is a hedge. "Unless the number is a one-off nobody will re-run" is a case.
+## Part 3, the counts behind the threshold
 
-4. Would sentences one to three survive somebody asking "why not the other two" for each? Try it
-   out loud on sentence two.
+| Threshold | Customers on the list |
+|---|---|
+| 45 days | 150 |
+| 60 days | 123 |
+| 90 days | 77 |
 
-5. Is there a tool you named twice for different jobs? That is a good sign, and worth saying
-   explicitly rather than leaving the reader to notice.
+Any of the three can be defended. The defence is marked by whether each sentence carries a
+number and a cost.
 
-## The column
+## Part 4, the two tools
 
-6. Read your "what it is" line to somebody who has not seen the table. Do they understand what the
-   number means without seeing the code? If not, the column name is doing work the line should.
+| Quarter | Orders | Members | Orders per member |
+|---|---|---|---|
+| Q1 | 215 | 98 | 2.194 |
+| Q2 | 140 | 75 | 1.867 |
 
-7. Your "why they want it" line names a decision. Which decision, made by whom? If the answer is
-   "it would be interesting", the column has not earned its place.
+1.000 in either tool means members were counted once per order: a list instead of a set in the
+loop, or `count` instead of `nunique` in pandas.
 
-8. The cost line: every derived column assumes something or hides something. If yours genuinely
-   does neither, you have probably renamed an existing column.
+## Part 5, the months views
 
-9. Refresh safety. Rebuild the table with `AS_OF` moved forward by one week and diff your column.
-   Did it change for customers whose orders did not? If yes, say so in the line rather than fixing
-   it silently, because that may be the correct behaviour.
+| Segment | Q1 | Q2 | Change |
+|---|---|---|---|
+| Retail-Plus | Rs 6,12,880 | Rs 3,89,970 | a fall of 36.4 percent |
+| Retail-Core | Rs 3,90,870 | Rs 3,59,120 | a fall of 8.1 percent |
 
-10. Run every merge in your build with `validate=` set. All of them, not the ones you think are
-    safe. If any raises, you have found something about the data worth reporting, which is a
-    better hand-in than a column that merged quietly.
+A Retail-Plus fall near 31 percent, or a Retail-Core fall near 11 percent, means the pivot
+averaged: write `aggfunc="sum"`.
+
+---
+
+## The questions to ask your own notebook
+
+1. Does it run from a fresh kernel, top to bottom, with every guard in the function?
+2. Is the as-of date in the table itself, where Marketing can read it?
+3. Does every number in Part 3 carry its threshold and its count?
+4. Did you paste outputs in Parts 1 and 4, rather than describe them?

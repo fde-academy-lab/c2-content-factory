@@ -1,32 +1,32 @@
-# Solution: six calls, each one defended
+# Solution: round 3 set, decide, reconcile, defend
 
-Answers: 1c 2b 3d 4a 5b 6c
+Answers: 1c 2a 3d 4b 5a 6c 7d
 
----
+## The idea being tested
 
-| Item | Key | Why, and why the rest fail |
-|---|---|---|
-| **1** | `c` | Every alternative invents a number. Zero understates revenue and keeps the order count, the segment median is a guess wearing statistics, and keeping it as text moves the problem to whoever sums the column next. Reject it, record it, and if the amount matters ask the source system. |
-| **2** | `b` | Status decides which of the four readings of "sales" the row belongs to, so an order without one cannot be counted in any of them. `a` is the dangerous option: defaulting to the most common value makes the split look cleaner and quietly moves revenue between buckets. |
-| **3** | `d` | One order id is one order. Keeping both double counts it, rejecting both loses a real order, and averaging the dates produces a date on which nothing happened. Take one, say which, and say why in the log. |
-| **4** | `a` | The second header line was never an order. The first one is the header and belongs where it is. `d` is the trap that matters: defaulting its amount to zero makes it a silent extra row in every count. |
-| **5** | `b` | It is a real order from a real corporate customer. Rejecting it, capping it or hiding it in a second file are all ways of making the data agree with you. Report it, keep it, and describe the file with a median rather than a mean. |
-| **6** | `c` | A bridge with a gap has a step missing, and the step is the finding. `b` is the one that ends careers: adjusting a figure so two systems agree is the difference between reconciling and fabricating. |
+Every cleaning act is drop, default, or keep and flag, and a reconciliation holds only when rows and
+rupees both tie out to the books. The items move the round's two traps, the real order fenced out
+and the count that reconciles while the rupees miss, into new numbers.
 
----
+## Item by item
 
-## The decisions log
+| Item | Key | Why it holds | Why the others fail |
+|---|---|---|---|
+| 1 | c | Revenue stays whole and the order stays out of every count that needs its status. | a: removes a booked order. b and d: invent a fact nobody recorded. |
+| 2 | a | Nothing about the record is wrong, so it is revenue; showing both readings lets the reader see how much one order carries. | b: size is not a defect. c: invents a smaller order. d: moves revenue between quarters. |
+| 3 | d | A count reconciliation proves no row vanished, not that the right rows stayed; the missing rupees sit in a set-aside row whose kept twin lacks them. | a: rounding is where the gap hides. b: an adjustment line hides the cause. c: the books are the reference until a row proves otherwise. |
+| 4 | b | 3,40,00,000 less 30,00,000 is 3,10,00,000, the books exactly. | a: reverses the finding. c: the bridge already closes. d: the copies close the whole gap. |
+| 5 | a | A finding that shrank, reported first and with its reason, keeps the stakeholder's trust. | b: repeats a number known to be wrong. c: buries the change. d: the clean number is ready today; Thursday tests whether it is real. |
+| 6 | c | 50,00,000 less 4,20,000 is 45,80,000, which equals the books, so the rupees reconcile. | a: the size of a move is not a test. b: that is what the row reconciliation proves. d: the rupee check stands on its own and is the stronger of the two. |
+| 7 | d | The order is real, so the quarter is a 2 percent dip; the flag and the check say so in writing. | a, b and c: each leads with a fall invented by removing real revenue. |
 
-A full-credit log is specific, counted, and reads as something an auditor could question.
+## The part worth arguing about
 
-| Field | Issue | Rows | Decision | Reason |
-|---|---|---|---|---|
-| `order_id` | Repeated | 14 | Drop the later occurrence | The Q1 migration re-ran a batch, and every field on the pairs is identical |
-| `order_id` | Repeated, dates differ | 1 | Keep the later date, drop the earlier | One order recorded twice during the migration window; the later record matches the payment date |
-| `status` | Empty | 1 | Reject | An order with no status cannot be placed in any reading of sales |
-| `amount` | Text `twelve` | 1 | Reject | Any substitute value would be invented revenue |
-| `amount` | Rs 4,80,000 outlier | 1 | Keep, flagged | A real corporate order. Described with the median rather than the mean. |
+Item 3. Option b looks like accounting. An unexplained adjustment line is exactly what an auditor
+circles first, because it closes the gap without saying why. Find the row.
 
-**What loses credit:** a reason that restates the issue ("it was a duplicate so I removed it"), a
-missing row count, or a log that does not mention the order that was kept. The kept row is the one
-an auditor asks about, because it is the one that changes the total most.
+## Where the pattern lives in production
+
+Finance teams reconcile control totals in counts and in money after every load, and a variance that
+rounds away is still investigated when it is not zero. The habit you practised today is the one a
+controller will expect on your first month-end.
