@@ -1097,19 +1097,21 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
       var kept = names.filter(function (n) { return Math.abs(ch[n]) <= 30 && ch[n] < 0; });
       lines.push("changes = {" + names.map(function (n) { return "'" + n + "': " + (Math.abs(ch[n]) > 30 ? "None" : ch[n].toFixed(1)); }).join(", ") + "}");
       lines.push("falls   = {" + kept.map(function (n) { return "'" + n + "': " + ch[n].toFixed(1); }).join(", ") + "}");
-      lines.push("segments in: " + names.length + "    rows out: " + kept.length);
-      return { html: lines.join("\n"), kept: kept, names: names };
+      var none = names.filter(function (n) { return Math.abs(ch[n]) > 30; }).length;
+      var allFalls = names.filter(function (n) { return ch[n] < 0; }).length;
+      lines.push("segments in: " + names.length + "    came back None: " + none + "    falls: " + kept.length + " of the " + allFalls + " a working helper keeps");
+      return { html: lines.join("\n"), kept: kept, names: names, none: none };
     }
     var falls = names.filter(function (n) { return ch[n] < 0; });
     lines.push("changes = {" + names.map(function (n) { return "'" + n + "': " + ch[n].toFixed(1); }).join(", ") + "}");
     lines.push("flagged = [" + names.filter(function (n) { return Math.abs(ch[n]) > 30; }).map(function (n) { return "'" + n + "'"; }).join(", ") + "]   beyond 30 percent, check by hand");
     lines.push("falls   = {" + falls.map(function (n) { return "'" + n + "': " + ch[n].toFixed(1); }).join(", ") + "}");
-    lines.push("segments in: " + names.length + "    rows out: " + names.length);
-    return { html: lines.join("\n"), kept: falls, names: names };
+    lines.push("segments in: " + names.length + "    came back None: 0    falls: " + falls.length + ", since a segment that rose is left out by the filter");
+    return { html: lines.join("\n"), kept: falls, names: names, none: 0 };
   }
   function helperFlow(mode) {
     var out = helperOutput(mode);
-    return K.flow(["4 segments in", "pct_change on each", (mode === "prints" ? out.kept.length : out.names.length) + " rows out"], null,
+    return K.flow(["4 segments in", "pct_change on each", out.none + " came back None"], null,
       { width: 150, kinds: ["known", "plain", mode === "prints" ? "bad" : "good"] });
   }
 
@@ -1247,7 +1249,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     setState("stWindow", w.fair ? "Both sides cover the same kind of window." : "Q2 covers 11 weeks against Q1's 13.", w.fair);
     setState("stDiscount", s.disc === "zero" ? "An absent field was counted as no discount." : "The default is chosen and written down.", s.disc !== "zero");
     setState("stRollup", s.roll === "weighted" ? "It reproduces 1.65 and 1.25 from the totals." : "It does not reproduce the company totals.", s.roll === "weighted");
-    setState("stHelper", h.names.length + " segments in, " + (s.help === "prints" ? h.kept.length : h.names.length) + " rows out.", s.help === "returns");
+    setState("stHelper", h.names.length + " segments in, " + h.none + " came back None.", s.help === "returns");
     setState("stMeasure", s.meas === "rupees" ? "Rupees point at Business; show orders beside them." : "Orders point at Retail-Plus; show rupees beside them.", true);
 
     K.draw("simFlow", K.flow(RUNGS, null, { width: 150, title: "Where this reading holds and where it breaks",

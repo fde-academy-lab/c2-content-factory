@@ -84,8 +84,8 @@ def tree_for(rows):
     return {"revenue": revenue, "orders": n, "customers": c}
 ```
 
-A helper that prints for large changes returns `None`, the filter drops it, and four segments go in
-while two rows come out. Check with `None in changes.values()`.
+A helper that prints for large changes returns `None`, and the filter drops it: four segments go in
+and two come back as `None`. Check with `None in changes.values()`.
 
 **Crux:** A function returns its answer; count the groups in and the groups out.
 

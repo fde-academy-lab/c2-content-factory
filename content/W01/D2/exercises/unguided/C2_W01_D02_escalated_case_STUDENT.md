@@ -94,7 +94,7 @@ in every segment, most in Business, 15.0 percent."
 ### Q4. What went wrong, and which check would have caught it?
 
 a) The helper rounds to one decimal, and the rounding hid two segments; check the unrounded values
-b) Two segments returned None and dropped out; count the segments in (4) against the rows out (2)
+b) Two segments returned None; count the segments in (4) against the ones that came back None (2)
 c) The two printed lines are warnings about the data, so the summary is right to leave them out
 d) The threshold of 30 is too low; raise it to 50 and every segment returns a value to the summary
 

@@ -451,8 +451,10 @@ tier is not in the table.
 the filter drops `None` without complaint. Two lines, "check by hand: -49.0%" and "check by hand:
 +40.0%", scroll past with no segment name beside them. Retail-Plus and Student are gone.
 
-**The check.** Count the groups in and the groups out: four segments went in and two rows came out.
-`None in changes.values()` answers the question in one line.
+**The check.** Count the groups in and the ones that came back with no number: four segments went in
+and two came back as `None`, which `None in changes.values()` answers in one line. Then compare the
+falls table with the helper fixed: three rows against the broken two. The bug dropped one fall,
+Retail-Plus; Student rose 40.0 percent, so the filter for falls leaves it out either way.
 
 **The fix.** Return the change every time, and put the flag in a separate column, so a large change
 is reported and marked instead of silently removed.

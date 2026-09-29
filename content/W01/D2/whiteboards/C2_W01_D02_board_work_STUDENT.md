@@ -123,14 +123,16 @@ percent of orders.
 ```mermaid
 flowchart LR
     S["<b>4 segments in</b>"] --> H["<b>pct_change</b><br/>prints over 30 percent"]
-    H --> K["<b>2 rows out</b><br/>Retail-Core, Business"]
+    H --> K["<b>falls: 2 of 3</b><br/>Retail-Core, Business"]
     H -.-> N["<b>None, None</b><br/>Retail-Plus, Student"]
     classDef bad fill:#FBE3EA,stroke:#D63A6A,color:#1A0F5C
     class N bad
 ```
 
-The second is the helper that returned nothing, drawn as groups in against groups out, with
-`None in changes.values()` written under it as the one-line check. Rung 4 gets its tick.
+The second is the helper that returned nothing, drawn as groups in against the two that came back
+as None, with `None in changes.values()` written under it as the one-line check. Beside it goes the
+falls table fixed, three rows, against the broken two: the bug cost Retail-Plus, and Student leaves
+by the filter because it rose. Rung 4 gets its tick.
 
 ---
 

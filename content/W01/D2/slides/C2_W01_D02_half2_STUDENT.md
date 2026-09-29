@@ -140,9 +140,10 @@ print(falls)    # {'Retail-Core': -5.3, 'Business': -15.0}
 ```mermaid
 flowchart LR
     I["<b>4 segments in</b>"] --> H["<b>pct_change</b><br/>prints above 30%<br/>returns None"]
-    H --> O["<b>2 rows out</b><br/>Retail-Plus -49.0<br/>Student +40.0 gone"]
+    H --> O["<b>2 came back None</b><br/>Retail-Plus -49.0<br/>Student +40.0"]
+    O --> F["<b>falls: 2 of 3</b><br/>Retail-Plus<br/>missing"]
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
-    class O bad
+    class O,F bad
 ```
 
 ```notes
@@ -150,8 +151,10 @@ LIVE, 4 minutes. The summary read "orders per customer fell in every segment, mo
 15.0 percent". Two lines, "check by hand: -49.0%" and "check by hand: +40.0%", printed above it
 with no segment name, and nobody connected them. The decision it misleads: Business accounts
 opened first, and the head of Retail-Plus is told his tier is not in the table. The check: four
-segments in against two rows out, or None in changes.values(). The fix: return the change on every
-path and put the flag in a separate column. The comprehension is the colleague's code; the room
+segments in and two came back as None, which None in changes.values() answers in one line. With the
+helper fixed, the falls table holds three rows against the broken two, so the bug dropped one fall,
+Retail-Plus; Student rose, and the filter leaves it out by design. The fix: return the change on
+every path and put the flag in a separate column. The comprehension is the colleague's code; the room
 reads it and does not need to write one.
 ```
 
