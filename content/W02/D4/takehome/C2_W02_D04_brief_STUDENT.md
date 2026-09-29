@@ -51,8 +51,10 @@ places; if they did not at first, say what was wrong.
 
 Build the Retail-Plus and Retail-Core months views with `aggfunc="sum"`, check each grand total
 against its orders, and report each segment's change from Q1 to Q2. Then open the pandas
-reference for `DataFrame.merge` (verified 29 September 2026):
-https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html
+reference for `DataFrame.merge`:
+
+https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html (verified 29 September 2026)
+
 Quote the line that says what `"one_to_one"` checks, and say in one sentence why your function
 uses it rather than `"many_to_one"`.
 
