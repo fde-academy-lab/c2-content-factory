@@ -39,8 +39,9 @@ edit it, so the take-home sample is made inside the day folder; see the change r
 | Wednesday's 14 duplicated Q1 rows (11 Retail-Plus in May, 2 Business at Rs 9,83,780 in April, 1 Retail-Core in June) | Nothing today | Unmentioned in every STUDENT file; the day sheet warns the trainer |
 
 The take-home file's own findings (Retail-Core customers 34 to 26 with none new, Q2 cut on
-15 September, the discount field absent on 26 and 24 records) are named only in the day sheet, the
-take-home self-check's expected numbers and here.
+15 September, the discount field absent on 26 and 24 records) are named only in the day sheet and
+here. The take-home self-check verifies the learner's numbers by invariants, such as a weekly rate
+that multiplies back to the quarter's total, and never prints a finding or its deciding number.
 
 ## Decisions that depart from a source
 
