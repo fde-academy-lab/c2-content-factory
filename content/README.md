@@ -75,10 +75,11 @@ follows the tab.
 ### A build day, on weeks 3, 6, 9, 12 and 15
 
 Build weeks ship the build-week pack rather than the teaching manifest, so their folders are
-different: `briefs/`, `rubrics/`, `gd/`, `parallel-build/`, `checkpoints/`, `mocks/`, `trainer/`
-and `internal/`. Most of these artifacts are week-level rather than day-level, so each one lives
-in the day folder where it is first used: the five sub-problem briefs in `D1/briefs/`, the mock
-material in the mock day's `mocks/`, and the GD prompts in the expert days.
+different: `briefs/`, `rubrics/`, `gd/`, `parallel-build/`, `checkpoints/`, `mocks/`, `trainer/`,
+`internal/` and `data/`. Most of these artifacts are week-level rather than day-level, so each one
+lives in the day folder where it is first used: the five sub-problem briefs and the week's data pack
+in `D1/`, the mock material in the mock day's `mocks/`, and the GD prompts in the expert days. Build
+1's data pack is written by `data/generate_kalpa_health.py`, never by hand.
 
 ### A Saturday
 
