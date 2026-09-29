@@ -1,87 +1,100 @@
-# Mid-session: read the profile, decide what you trust
+# Round 1 set: read the profile before any total
 
-Six items. Post one line with your six letters in item order.
+Seven items, about fifteen minutes, after round 1. Every item is a question Anand's analyst or Kavya
+would put to you about an export, and every number in it is invented unless it says it is from
+today's file. Work alone, then compare with a partner before posting.
+
+Post one line, seven letters in item order, no spaces:
 
 ```
-Post exactly this shape: xxxxxx
+Post exactly this shape: xxxxxxx
 ```
 
----
-
-## Two profiles of the same field, from two exports
-
-| | Export A | Export B |
-|---|---|---|
-| Rows | 201 | 201 |
-| `order_id` present | 201 | 201 |
-| `order_id` distinct | 186 | 201 |
-| `amount` present | 201 | 201 |
-| `amount` convertible | 200 | 201 |
-| `status` present | 200 | 201 |
-| `status` distinct | 3 | 1 |
+The hands-on part of the day is the escalated case notebook, `notebooks/C2_W01_D03_hands_on_STUDENT.ipynb`,
+after lunch.
 
 ---
 
-## Q1. Which export would you analyse first?
+### Q1
 
-Which one?
+An analyst reads three amounts straight from a CSV, `["950", "18000", "4500"]`, and calls
+`max()` on the list to name the largest order for Anand. Which order does the note name as the largest?
 
-a) A, because its defects are visible and countable
-b) B, because it has no missing values and everything converts cleanly
-c) Either, since the two have the same number of rows in them
-d) Neither until the source team explains where each of them came from
+a) Rs 18,000, since max compares the numbers the text holds
+b) Rs 4,500, since max takes the middle value of three strings
+c) Rs 950, since text compares one character at a time
+d) None of them, since max raises an error on a list of text
 
----
+### Q2
 
-## Q2. Export B's `status` has one distinct value. What is that?
+Two exports of the same quarter arrive, profiled the same way.
 
-Which one?
+| Export | Rows | Distinct order ids | Amounts that convert | Status present |
+|---|---|---|---|---|
+| North | 240 | 240 | 238 | 240 |
+| South | 240 | 221 | 240 | 240 |
 
-a) Good news, since a single status means the data is internally consistent
-b) Expected, because most orders in a healthy retailer are delivered anyway
-c) A finding, and probably a filter or a default applied at export
-d) Irrelevant, because status is not used in the revenue calculation
+Which export would you total first for Anand?
 
----
+a) South, since every one of its amounts converts cleanly
+b) Neither, since both carry at least one field that fails
+c) North, whose two failed amounts can be logged and read
+d) Both at once, since the two profiles have equal row counts
 
-## Q3. Export A has 201 rows and 186 distinct ids. What does that alone prove?
+### Q3
 
-Which one?
+A colleague's profile of a Kalpa export reports 300 of 300 amounts convertible, and the sorted
+amounts start `0, 0, 0, 410, 460`. What most likely happened?
 
-a) That fifteen rows are duplicates and can be removed straight away
-b) That some ids appear more than once
-c) That the export process ran twice over part of the date range
-d) That revenue is overstated by exactly the amount those rows carry
+a) Three customers placed free orders during a promotion
+b) Three orders were cancelled, and cancelled orders carry 0
+c) The profile is right, and zero is a valid Kalpa order value
+d) Three amounts failed and a helper turned each into 0
 
----
+### Q4
 
-## Q4. Which of these belongs in the rejects log rather than in clean?
+Anand asks about this invented profile of an export.
 
-Which one?
+| Field | Present | Convertible | Distinct |
+|---|---|---|---|
+| order_id | 180 | text | 171 |
+| amount | 180 | 180 | 164 |
+| channel | 180 | text | 3 |
+| discount | 122 | 122 | 5 |
 
-a) An order of Rs 4,80,000 from a corporate customer, four times the next largest
-b) A row whose `order_date` is written as `12/05/2026` when the rest use dashes
-c) A row for a customer who appears only once in the whole file
-d) A row whose `order_id` is the text `order_id`
+Which field could move his revenue figure?
 
----
+a) discount, since a third of its values are missing
+b) channel, since three values cannot describe 180 orders
+c) amount, since 164 distinct values means some repeat
+d) order_id, since 180 rows hold only 171 distinct orders
 
-## Q5. You default every failed conversion to zero. What have you lost?
+### Q5
 
-Which one?
+`json.load` on the app's feed stops with `JSONDecodeError: Unterminated string starting at: line 812
+column 9`. What do you do first?
 
-a) Nothing, because zero is the safest possible value for an unknown amount
-b) The row count, since defaulted rows are silently dropped from the output
-c) How many rows failed, and why
-d) The data types, because the whole column becomes an integer afterwards
+a) Open the file at line 812 and read what is there
+b) Wrap the load in try and skip the whole feed
+c) Ask the ERP team to resend the feed in CSV
+d) Re-run the load, since the error is often transient
 
----
+### Q6
 
-## Q6. Clean plus rejected is three less than input. What is your next move?
+The same order reads `"status": ""` in the CSV and has no `status` key in the JSON feed. A loop
+running `r["status"]` over both files for the delivered count does what?
 
-Which one?
+a) Counts both records as delivered by default
+b) Raises a KeyError on the JSON record only
+c) Returns an empty string for both records
+d) Raises a KeyError on the CSV record only
 
-a) Find the three rows, because a pass that loses rows silently loses others
-b) Report it as a rounding difference, since three rows in 201 is immaterial
-c) Adjust the rejected count by three so the equation balances properly
-d) Re-read the file, because the row count was probably read wrongly first
+### Q7
+
+An invented export holds 150 rows and 141 distinct order ids, and 148 of its amounts convert.
+How many rows sit beyond one per order?
+
+a) 2
+b) 7
+c) 9
+d) 11
