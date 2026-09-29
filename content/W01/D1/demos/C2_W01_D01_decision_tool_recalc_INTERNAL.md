@@ -1,53 +1,87 @@
 # Recalculation manifest: Monday's decision tool
 
 INTERNAL. This drives `scripts/xlsx_recalc.py`, which forces LibreOffice to recompute the workbook
-and then applies each fix to prove the verdicts move.
+and then applies each fix to prove the verdicts move. The build script
+`C2_W01_D01_build_decision_tool_TRAINER.py` writes this file together with the workbook.
 
 The workbook ships with one planted formula defect per tab, so as shipped every verdict asks for
-its fix and the Export release reads "not ready". Each flip below is the fix a learner makes, and
-the last applies all four, which is the only state that releases the brief.
+its fix and the Export release reads "not ready". Each flip below is the fix a learner makes, some
+with a decision changed after the fix, and the last applies all five, which is the only state that
+releases the brief.
 
 ```yaml
 workbook: C2_W01_D01_decision_tool_STUDENT.xlsx
 verdicts:
-  - {sheet: Sales, cell: B19, contains: "fix the total that leaves a row out"}
-  - {sheet: Tree, cell: B16, contains: "fix the index that adds"}
-  - {sheet: Average, cell: D13, contains: "fix the median formula"}
-  - {sheet: Discount, cell: B12, contains: "fix the break-even formula"}
-  - {sheet: Export, cell: B5, expect: "Not ready: 4 of the four tabs still carry a defect to fix first."}
+  - {sheet: Sales, cell: B19, expect: "Fix the not-cancelled total before any number leaves the team."}
+  - {sheet: Customers, cell: B17, expect: "Fix the customer count before you say anything about frequency."}
+  - {sheet: Typical, cell: B14, expect: "Fix the typical order before it values anything."}
+  - {sheet: Lifts, cell: B18, expect: "Fix the new revenue before you quote any growth."}
+  - {sheet: Channel, cell: B18, expect: "Fix the delivered column before you rank any channel."}
+  - {sheet: Sales, cell: B15, contains: "still carries the cancelled orders"}
+  - {sheet: Lifts, cell: B16, contains: "disagree by Rs 5,448"}
+  - {sheet: Export, cell: B5, expect: "Not ready: tabs still carrying a defect, 5 of five."}
 flips:
-  - name: the booked total counts the cancelled row too
-    set: [{sheet: Sales, cell: C10, value: "=C5+C6+C7"}]
+  - name: the not-cancelled total leaves the cancelled orders out
+    set: [{sheet: Sales, cell: C11, value: "=C5+C6"}]
     verdicts:
-      - {sheet: Sales, cell: B19, expect: "Revenue, all booked orders, 1 July to 26 September: Rs 5,44,810."}
-      - {sheet: Export, cell: B5, contains: "3 of the four"}
-  - name: the tree index multiplies its branches
-    set: [{sheet: Tree, cell: B11, value: "=100*C5*C6*C7*C8*C9"}]
+      - {sheet: Sales, cell: B19, expect: "Sales, not cancelled, 1 July to 26 September: Rs 5,35,760 on 26 orders, with Rs 9,050 and 4 orders of the booked total left out by the definition."}
+      - {sheet: Export, cell: B5, expect: "Not ready: tabs still carrying a defect, 4 of five."}
+  - name: the fixed sales tab, read as delivered
+    set: [{sheet: Sales, cell: C11, value: "=C5+C6"}, {sheet: Sales, cell: B14, value: "delivered"}]
     verdicts:
-      - {sheet: Tree, cell: B16, expect: "The moves reach the plan: revenue index 115.5 against 115."}
-  - name: the fixed tree with a smaller customer lift
-    set: [{sheet: Tree, cell: B11, value: "=100*C5*C6*C7*C8*C9"}, {sheet: Tree, cell: B5, value: 5}]
+      - {sheet: Sales, cell: B19, contains: "Rs 5,20,790 on 21 orders, with Rs 24,020 and 9 orders"}
+  - name: customers counted by id
+    set: [{sheet: Customers, cell: B11, value: "=SUM(B5:B8)"}]
     verdicts:
-      - {sheet: Tree, cell: B16, contains: "fall short: revenue index 110.3, 4.8 points"}
-  - name: the median is the median
-    set: [{sheet: Average, cell: D7, value: "=MEDIAN(A5:A14)"}]
+      - {sheet: Customers, cell: B17, expect: "23 customers placed 1.30 orders each; 7 of them (30 percent) came back and 16 bought once, so frequency is a live branch before acquisition."}
+  - name: the fixed count on a file where nobody came back
+    set: [{sheet: Customers, cell: B11, value: "=SUM(B5:B8)"}, {sheet: Customers, cell: B5, value: 30}, {sheet: Customers, cell: B6, value: 0}]
     verdicts:
-      - {sheet: Average, cell: D13, contains: "Report the median, Rs 2,200, as the typical order"}
-  - name: the fixed median, asked for a total that must add up
-    set: [{sheet: Average, cell: D7, value: "=MEDIAN(A5:A14)"}, {sheet: Average, cell: D11, value: "a total that must add up"}]
+      - {sheet: Customers, cell: B17, contains: "Every one of the 30 customers bought once"}
+  - name: the typical order reads the median
+    set: [{sheet: Typical, cell: B9, value: "=B7"}]
     verdicts:
-      - {sheet: Average, cell: D13, contains: "Use the mean, Rs 19,720"}
-  - name: the break-even lift is computed, not guessed
-    set: [{sheet: Discount, cell: B9, value: "=100*(1/(1-B5/100)-1)"}]
+      - {sheet: Typical, cell: B14, expect: "Report the median, Rs 2,205, as the typical order: the mean of Rs 18,160 is 8.2 times it, so a first order is worth about Rs 2,205 to the acquisition case."}
+  - name: the fixed typical order, asked for a total that must add up
+    set: [{sheet: Typical, cell: B9, value: "=B7"}, {sheet: Typical, cell: B11, value: "a total that must add up"}]
     verdicts:
-      - {sheet: Discount, cell: B12, contains: "needs 17.6 percent more volume"}
-  - name: all four tabs fixed
+      - {sheet: Typical, cell: B14, contains: "Use the mean, Rs 18,160, on the tree"}
+  - name: new revenue multiplies the branches
+    set: [{sheet: Lifts, cell: B13, value: "=ROUND(B4*C6*C7*C8,0)"}]
+    verdicts:
+      - {sheet: Lifts, cell: B18, expect: "Through the tree, revenue moves from Rs 5,44,810 to Rs 6,59,220, up 21.0 percent, which reaches the 15 percent plan; adding the lifts would have said Rs 6,53,772."}
+  - name: the fixed tree, running the 15 percent discount
+    set: [{sheet: Lifts, cell: B13, value: "=ROUND(B4*C6*C7*C8,0)"}, {sheet: Lifts, cell: B6, value: 0}, {sheet: Lifts, cell: B8, value: -15}]
+    verdicts:
+      - {sheet: Lifts, cell: B18, contains: "down 6.5 percent, which misses the 15 percent plan"}
+  - name: delivered takes the returns out
+    set: [{sheet: Channel, cell: F8, value: "=C8-D8-E8"}, {sheet: Channel, cell: F9, value: "=C9-D9-E9"}, {sheet: Channel, cell: F10, value: "=C10-D10-E10"}]
+    verdicts:
+      - {sheet: Channel, cell: B18, expect: "On consumer orders delivered, app leads with Rs 18,600 of Rs 40,790; returns took Rs 14,970 and cancellations Rs 9,050, so the channel view adds two leaks to name and leaves frequency first standing."}
+  - name: the fixed channel tab, read as booked
+    set: [{sheet: Channel, cell: F8, value: "=C8-D8-E8"}, {sheet: Channel, cell: F9, value: "=C9-D9-E9"}, {sheet: Channel, cell: F10, value: "=C10-D10-E10"}, {sheet: Channel, cell: B4, value: "booked"}]
+    verdicts:
+      - {sheet: Channel, cell: B18, contains: "On consumer orders booked, web leads with Rs 27,290 of Rs 64,810"}
+  - name: four of five fixed still holds the release
     set:
-      - {sheet: Sales, cell: C10, value: "=C5+C6+C7"}
-      - {sheet: Tree, cell: B11, value: "=100*C5*C6*C7*C8*C9"}
-      - {sheet: Average, cell: D7, value: "=MEDIAN(A5:A14)"}
-      - {sheet: Discount, cell: B9, value: "=100*(1/(1-B5/100)-1)"}
+      - {sheet: Sales, cell: C11, value: "=C5+C6"}
+      - {sheet: Customers, cell: B11, value: "=SUM(B5:B8)"}
+      - {sheet: Typical, cell: B9, value: "=B7"}
+      - {sheet: Lifts, cell: B13, value: "=ROUND(B4*C6*C7*C8,0)"}
+    verdicts:
+      - {sheet: Export, cell: B5, expect: "Not ready: tabs still carrying a defect, 1 of five."}
+  - name: all five tabs fixed
+    set:
+      - {sheet: Sales, cell: C11, value: "=C5+C6"}
+      - {sheet: Customers, cell: B11, value: "=SUM(B5:B8)"}
+      - {sheet: Typical, cell: B9, value: "=B7"}
+      - {sheet: Lifts, cell: B13, value: "=ROUND(B4*C6*C7*C8,0)"}
+      - {sheet: Channel, cell: F8, value: "=C8-D8-E8"}
+      - {sheet: Channel, cell: F9, value: "=C9-D9-E9"}
+      - {sheet: Channel, cell: F10, value: "=C10-D10-E10"}
     verdicts:
       - {sheet: Export, cell: B5, expect: "Ready to paste into the note to Meera."}
-      - {sheet: Export, cell: B7, contains: "Sales: Revenue, all booked orders"}
+      - {sheet: Export, cell: B7, contains: "Rs 5,35,760 on 26 orders"}
+      - {sheet: Export, cell: B7, contains: "Customers: 23 customers placed 1.30 orders each"}
+      - {sheet: Export, cell: B7, contains: "hold the Rs 12 crore until Tuesday's two quarters"}
 ```
