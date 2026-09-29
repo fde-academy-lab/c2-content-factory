@@ -1,8 +1,8 @@
 -- Kalpa Retail, Week 2 Monday, round 1: is the warehouse the book we reconciled last week?
 --
 -- Anand wants last week's numbers every Monday, computed from the warehouse itself. Before a
--- single number goes on his sheet, the team checks that the warehouse and last week's extract
--- tell the same story. Run one block at a time: put the cursor inside a block and run it.
+-- single number goes on his sheet, the team checks every leaf of the tree against last week's
+-- file and explains each difference. Run one block at a time: put the cursor inside a block and run it.
 -- Every block states its question first. The notebook runs the same blocks by their names.
 
 -- name: r1_tables
@@ -49,6 +49,29 @@ FROM   orders o
 JOIN   customers c USING (customer_id)
 WHERE  c.segment = 'Retail-Plus';
 
+-- name: r1_leaves_book
+-- The question: every leaf of the tree in each quarter, for the whole book. Customers means the
+-- customers who bought in that quarter, each counted once; revenue is booked revenue.
+SELECT count(DISTINCT customer_id) FILTER (WHERE quarter = 'Q1') AS q1_customers,
+       count(DISTINCT customer_id) FILTER (WHERE quarter = 'Q2') AS q2_customers,
+       count(*)                    FILTER (WHERE quarter = 'Q1') AS q1_orders,
+       count(*)                    FILTER (WHERE quarter = 'Q2') AS q2_orders,
+       sum(amount)                 FILTER (WHERE quarter = 'Q1') AS q1_revenue,
+       sum(amount)                 FILTER (WHERE quarter = 'Q2') AS q2_revenue
+FROM   orders;
+
+-- name: r1_leaves_plus
+-- The question: the same leaves for Retail-Plus, the segment Week 1 read the frequency branch in.
+SELECT count(DISTINCT o.customer_id) FILTER (WHERE o.quarter = 'Q1') AS q1_customers,
+       count(DISTINCT o.customer_id) FILTER (WHERE o.quarter = 'Q2') AS q2_customers,
+       count(*)                      FILTER (WHERE o.quarter = 'Q1') AS q1_orders,
+       count(*)                      FILTER (WHERE o.quarter = 'Q2') AS q2_orders,
+       sum(o.amount)                 FILTER (WHERE o.quarter = 'Q1') AS q1_revenue,
+       sum(o.amount)                 FILTER (WHERE o.quarter = 'Q2') AS q2_revenue
+FROM   orders o
+JOIN   customers c USING (customer_id)
+WHERE  c.segment = 'Retail-Plus';
+
 -- name: r1_customers_hurried
 -- The question: how many customers bought in the two quarters? (The hurried version.)
 SELECT count(*) AS customers
@@ -66,6 +89,15 @@ FROM   orders;
 SELECT round(avg(amount))                                   AS mean_order,
        percentile_cont(0.5) WITHIN GROUP (ORDER BY amount)  AS median_order
 FROM   orders;
+
+-- name: r1_typical_rest
+-- The question: is the gap between mean and median two big orders, or something wider? The same
+-- two numbers with the two largest orders set aside, largest found by ordering on amount.
+SELECT round(avg(amount))                                   AS mean_order,
+       percentile_cont(0.5) WITHIN GROUP (ORDER BY amount)  AS median_order,
+       count(*)                                             AS orders
+FROM   orders
+WHERE  order_id NOT IN (SELECT order_id FROM orders ORDER BY amount DESC, order_id LIMIT 2);
 
 -- name: r1_readings
 -- The question: which total is "sales"? Three honest readings, one query each.
