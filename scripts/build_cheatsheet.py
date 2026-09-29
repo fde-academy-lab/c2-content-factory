@@ -154,6 +154,48 @@ def svg_labels(code):
     return LABEL.sub(fix, code)
 
 
+_MMDC_MAJOR = []
+
+
+def mmdc_major():
+    """The installed mermaid-cli's major version, read once, or 0 when it cannot be read."""
+    if not _MMDC_MAJOR:
+        try:
+            out = subprocess.run(["mmdc", "--version"], capture_output=True, text=True,
+                                 timeout=60).stdout
+            m = re.search(r"(\d+)\.\d+", out)
+            _MMDC_MAJOR.append(int(m.group(1)) if m else 0)
+        except Exception:
+            _MMDC_MAJOR.append(0)
+    return _MMDC_MAJOR[0]
+
+
+def page_args(code, page_px):
+    """The mmdc flags that lay a fence out on a page wide enough for its natural size.
+
+    Up to mermaid-cli 11, -w sets the page width and the drawing keeps its natural size on it.
+    Version 12 removed -w and exits on it, which left every PNG unrendered while the deck fell
+    back to printing the fence as code. Its replacement, --size, also stretches the drawing to
+    fill the page, so the page is given exactly the drawing's own larger dimension, read from
+    the SVG render's viewBox, and the drawing comes out at its natural size as before; -s alone
+    still decides the pixels. Without an SVG to measure, no flag is passed and mmdc uses its
+    800-pixel page, which shrinks a wide drawing rather than failing.
+    """
+    if mmdc_major() < 12:
+        return ["-w", str(page_px)]
+    svg = render_mermaid(code, "svg")
+    w, h = svg_size(svg) if svg else (0, 0)
+    return ["--size", str(int(-(-max(w, h) // 1)))] if w and h else []
+
+
+def mmdc_failed(result, what):
+    """Say why mmdc produced nothing, so a missing picture is never silent."""
+    lines = [ln for ln in ((result.stderr or "") + (result.stdout or "")).splitlines()
+             if ln.strip()]
+    print(f"      mmdc produced no {what}: {lines[-1] if lines else 'no message'}",
+          file=sys.stderr)
+
+
 def render_mermaid(code, fmt="svg"):
     """Render one fence to an image and return its path, or None when mmdc is unavailable.
 
@@ -183,12 +225,13 @@ def render_mermaid(code, fmt="svg"):
     cmd = ["mmdc", "-i", str(src), "-o", str(out), "-b", "transparent",
            "-c", str(conf), "-p", str(pup)]
     if fmt == "png":
-        cmd += ["-w", "2400"]
+        cmd += page_args(code, 2400)
     try:
-        subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=300)
+        result = subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=300)
     except Exception:
         return None
     if not out.exists():
+        mmdc_failed(result, fmt)
         return None
     if fmt == "svg" and b"foreignObject" in out.read_bytes():
         # An unrendered label is worse than a missing diagram, because it looks finished.

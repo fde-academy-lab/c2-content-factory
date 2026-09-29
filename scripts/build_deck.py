@@ -357,14 +357,19 @@ def render_mermaid(lines, width_in=None):
     chrome = _chromium()
     if chrome:
         env["PUPPETEER_EXECUTABLE_PATH"] = chrome
+    from build_cheatsheet import page_args, mmdc_failed
     try:
-        subprocess.run(["mmdc", "-i", str(CACHE / f"{key}.mmd"), "-o", str(png),
-                        "-b", "transparent", "-w", "2600", "-s", str(scale), "-c", str(theme),
-                        "-p", str(config)],
-                       capture_output=True, text=True, env=env, timeout=240)
+        result = subprocess.run(
+            ["mmdc", "-i", str(CACHE / f"{key}.mmd"), "-o", str(png), "-b", "transparent",
+             *page_args("\n".join(lines).strip(), 2600), "-s", str(scale), "-c", str(theme),
+             "-p", str(config)],
+            capture_output=True, text=True, env=env, timeout=240)
     except Exception:
         return None
-    return png if png.exists() else None
+    if not png.exists():
+        mmdc_failed(result, "diagram picture")
+        return None
+    return png
 
 
 def place_picture(s, png, top, bottom=BODY_BOTTOM, width_in=WIDTH, centre=False,
