@@ -167,7 +167,25 @@ LEFT fix alone minus 700.
 problem. The last problem runs the day's reconciliation on Q1, where the room meets the Q1 retries
 and no unpaid orders; its solution gives the invariants, never the Q1 counts.
 
-**The take-home.** See the take-home section below for its plants and expected numbers.
+**The take-home.** An invented second Q2 book, 120 orders (app 27, store 50, web 43), 125 payment
+rows and 2 refunds, loaded from `data/C2_W02_D02_takehome_STUDENT.sql` into its own schema,
+`takehome`, by `internal/C2_W02_D02_takehome_data_INTERNAL.py` (seed 20261013). Its five plants, which
+the self-check never names:
+
+| Plant | Records | Value |
+|---|---|---|
+| Never paid | TH-0017 (store), TH-0046 (app), TH-0103 (store) and the large TH-0071 (web) | Rs 4,03,250 |
+| Gateway retries, instalment 1 posted twice | TH-0024 and TH-0058 (store), TH-0089 (app) | Surplus Rs 9,890 |
+| Orphan payment | TP-0085, wallet, 21 Aug, against TH-0131, which is not in the book | Rs 4,750 |
+| Partial payment | TH-0035 (store, Rs 1,72,400): instalment 1 of Rs 1,03,440 arrived, instalment 2 never did | Rs 68,960 outstanding |
+| Refunds, stored as negatives | TR-001 on TH-0012, TR-002 on TH-0064, both web | Rs 4,250 |
+
+Expected: booked Rs 16,97,600 (app Rs 1,87,210; store Rs 5,12,740; web Rs 9,97,650); 120 rows out at
+order grain, 128 from the naive join; collected Rs 12,25,390; net of refunds Rs 12,21,140; gap
+Rs 4,72,210, which is the unpaid Rs 4,03,250 plus the partial's Rs 68,960; posted against orders
+Rs 12,35,280 and the whole feed Rs 12,40,030. The two slips to expect: TH-0035 put on the unpaid
+list at its full value, which gives Rs 5,75,650 and overshoots the gap; and the refunds' stored negatives
+subtracted, which adds them back and gives Rs 12,29,640.
 
 **The Kahoot.** Eight items, the return question from Monday included, in `kahoot/`.
 
@@ -183,7 +201,7 @@ and no unpaid orders; its solution gives the invariants, never the Q1 counts.
 | Round 2 live | `sql/C2_W02_D02_03_reconcile_STUDENT.sql`, `notebooks/C2_W02_D02_02_reconcile_STUDENT.ipynb` |
 | Round 3 live | `sql/C2_W02_D02_04_lists_STUDENT.sql`, `notebooks/C2_W02_D02_03_lists_STUDENT.ipynb` |
 | One assumption changed at a time | `demos/C2_W02_D02_collected_STUDENT.html` |
-| The rounds' scenario sets | `exercises/unguided/` fanout, reconcile and lists sets |
+| The rounds' scenario sets | `exercises/unguided/C2_W02_D02_fanout_STUDENT.md`, `..._reconcile_STUDENT.md` and `..._lists_STUDENT.md` |
 | The escalated case | `exercises/unguided/C2_W02_D02_case_STUDENT.md`, `sql/C2_W02_D02_05_case_start_STUDENT.sql`, `notebooks/C2_W02_D02_case_STUDENT.ipynb` |
 | Your key for the case, with every real output | `trainer/C2_W02_D02_case_key_TRAINER.ipynb` |
 | Released at the close | `exercises/solutions/` |
