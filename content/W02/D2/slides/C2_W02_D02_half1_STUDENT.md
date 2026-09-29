@@ -155,7 +155,7 @@ label: Step 4 | title: Explain | body: Name every row of difference: repeated ke
 label: Step 5 | title: Then the number | body: Only now read the total, with the reconciliation written above it. | tone: dark
 ```
 
-**In the interview.** [D] Design the validation you run before a joined number reaches Finance, and say what you do when it fails at 5 pm on reporting day.
+**In the interview.** [D] Design the validation you run before a joined number reaches Finance, and say what you do when it fails at the end of reporting day.
 
 ```notes
 LIVE, 4 minutes. This is Week 1 Wednesday's reconciliation, one tool later: input equals clean
