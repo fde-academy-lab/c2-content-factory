@@ -12,7 +12,8 @@ counts, so bring the counts as well as the queries.
 
 ## Before you start: load the sample, about five minutes
 
-The sample has the warehouse's shape (customers, orders and the plan line) and none of its numbers.
+The sample has the warehouse's shape (customers, orders and the plan line) and none of its headline
+numbers: its order count, its Q2 total, its plan line and where Q2 closes against plan are its own.
 It loads into its own schema, `takehome`, so the warehouse you used today stays as it was. From the
 repository root, in the Codespace terminal:
 

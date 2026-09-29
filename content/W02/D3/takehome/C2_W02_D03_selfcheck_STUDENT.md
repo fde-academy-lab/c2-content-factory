@@ -15,18 +15,18 @@ psql -d kalpa -f content/W02/D3/data/C2_W02_D03_takehome_STUDENT.sql
 
 | # | Checkpoint | What you should see | If it does not match |
 |---|---|---|---|
-| 1 | The base | 462 Q2 orders, a Q2 total of Rs 9,84,00,000 and 95 Retail-Core members with a Q2 order | A total well above Rs 9,84,00,000 means Q1 crept in, so filter on the quarter; a different buyer count means you counted order rows instead of distinct members. |
+| 1 | The base | 454 Q2 orders, a Q2 total of Rs 9,23,60,000 and 98 Retail-Core members with a Q2 order | A total well above Rs 9,23,60,000 means Q1 crept in, so filter on the quarter; a different buyer count means you counted order rows instead of distinct members. |
 | 2 | A top twenty under ROW_NUMBER | 20 members | If you get more, the filter sits on the wrong column; ROW_NUMBER can never ship more than twenty. |
 | 3 | A top twenty under RANK | 21 members | If you get 20, you ranked the whole book or ranked orders instead of members; rank Retail-Core members by their Q2 total. |
 | 4 | A top twenty under DENSE_RANK | 22 members | If you expected it to match RANK, read the dense_rank column either side of twenty and see where it stops leaving gaps. |
 | 5 | A top twenty under whole ties only | 18 members | If you get 21, you kept a tie that does not fit inside twenty; a tie is kept only when its last position is twenty or less. |
-| 6 | The flag across the whole book, no PARTITION BY | 23 flagged, 5 of them compared with another member's row | If the second count is zero, check that you compared the member of the row two back, lag(customer_id, 2), with the current one. |
-| 7 | The flag with PARTITION BY customer_id | 18 flagged, 11 of them reading a skipped month as last month | If the second count is zero, carry lag(month) beside lag(spend) and compare it with the calendar month before. |
-| 8 | The flag that requires August and July | 7 flagged across the whole book | If you get 18, the calendar check is missing; if you get more than 18, the September filter is missing. |
-| 9 | The flag on your RANK list of 21 | 2 members carry the step 8 flag, and 4 carry the step 7 flag | If you get 7, you flagged the whole book and never joined the flag to your list. |
-| 10 | Mid-quarter, the end of the seventh plan week (the week starting 17 August) | Booked to date Rs 6,10,48,650 against plan to date Rs 5,29,84,610, which is Rs 80,64,040 ahead | If the plan side reads Rs 75,69,230, you set a running actual beside one week's plan; accumulate the plan too. |
-| 11 | The close, the week starting 28 September | Booked to date Rs 9,84,00,000 against plan to date Rs 9,83,99,990, which is Rs 10 ahead | If your close reads Rs 9,26,75,720, your join dropped every order before the plan line's first week; read the actual at each plan week's last day instead. |
-| 12 | The first plan week (the week starting 6 July) | Booked to date Rs 2,14,44,530 against Rs 75,69,230 | If you see Rs 1,57,20,250, your running total starts at the first plan week instead of the first day of Q2. |
+| 6 | The flag across the whole book, no PARTITION BY | 21 flagged, 8 of them compared with another member's row | If the second count is zero, check that you compared the member of the row two back, lag(customer_id, 2), with the current one. |
+| 7 | The flag with PARTITION BY customer_id | 13 flagged, 7 of them reading a skipped month as last month | If the second count is zero, carry lag(month) beside lag(spend) and compare it with the calendar month before. |
+| 8 | The flag that requires August and July | 6 flagged across the whole book | If you get 13, the calendar check is missing; if you get more than 13, the September filter is missing. |
+| 9 | The flag on your RANK list of 21 | 1 member carries the step 8 flag, and the step 7 flag catches no one else on the list | If you get 6, you flagged the whole book and never joined the flag to your list. |
+| 10 | Mid-quarter, the end of the seventh plan week (the week starting 17 August) | Booked to date Rs 5,07,89,120 against plan to date Rs 5,06,80,000, which is Rs 1,09,120 ahead | If the plan side reads Rs 72,40,000, you set a running actual beside one week's plan; accumulate the plan too. |
+| 11 | The close, the week starting 28 September | Booked to date Rs 9,23,60,000 against plan to date Rs 9,41,20,000, which is Rs 17,60,000 behind | If your close reads Rs 8,66,29,560, your join dropped every order before the plan line's first week; read the actual at each plan week's last day instead. |
+| 12 | The first plan week (the week starting 6 July) | Booked to date Rs 1,35,56,560 against Rs 72,40,000 | If you see Rs 78,26,120, your running total starts at the first plan week instead of the first day of Q2. |
 
 When checkpoints 10 and 11 both match, look at where the lead was largest and ask whether the
 quarter was on track by its total, by its weekly run rate or by both. Put the answer in your third

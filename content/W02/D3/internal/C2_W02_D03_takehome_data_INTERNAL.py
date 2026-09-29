@@ -2,9 +2,10 @@
 
 The take-home runs the day's three rounds on data the room has not seen, so no number from the
 morning can be pasted across. The sample comes from data/generate_client_zero.py, which is imported
-and rerun with a different seed, so its shape, its segments and its plan line are the warehouse's
-and every number in it is new. Two things are then planted for this sample alone, and only the
-trainer day sheet names them:
+and rerun with a different seed, its own Q1 and Q2 totals, fewer Q2 orders and its own weekly plan,
+so its tables and segments are the warehouse's and no headline number is: the order count, the Q2
+order count, both quarter totals, the plan line and the close all differ from the day's. Two things
+are then planted for this sample alone, and only the trainer day sheet names them:
 
 1. A three-way Q2 revenue tie across the 19th, 20th and 21st Retail-Core positions, so a top
    twenty ships 20 rows under ROW_NUMBER, 21 under RANK, 22 under DENSE_RANK and 18 under "whole
@@ -13,7 +14,7 @@ trainer day sheet names them:
    Retail-Plus members.
 
 The generator's own tie step also runs under any seed, so this sample carries a second tie at the
-fiftieth Retail-Plus position (C-0203 and C-0247 on Rs 3,780). The brief does not ask about it.
+fiftieth Retail-Plus position (C-0175 and C-0247 on Rs 3,680). The brief does not ask about it.
 
 Usage, from the repository root:
     python3 content/W02/D3/internal/C2_W02_D03_takehome_data_INTERNAL.py
@@ -29,6 +30,10 @@ sys.path.insert(0, str(ROOT / "data"))
 import generate_client_zero as gcz  # noqa: E402
 
 SEED = 20261014          # the day's date, so the sample is reproducible and unlike the warehouse
+Q1_TOTAL = 96120000      # Rs 9,61,20,000, against the warehouse's Rs 10,00,00,000
+Q2_TOTAL = 92360000      # Rs 9,23,60,000, against the warehouse's Rs 9,84,00,000
+Q2_PLAN = {"Student": 38, "Business": 87, "Retail-Plus": 140, "Retail-Core": 189}   # 454 Q2 orders, not 462
+WEEKLY_PLAN = 7240000    # Rs 72,40,000 a week, so the plan is Rs 9,41,20,000 and Q2 closes behind it
 TIE_AT = 19              # the three-way tie spans positions 19, 20 and 21 of Retail-Core
 OUT = ROOT / "content/W02/D3/data/C2_W02_D03_takehome_STUDENT.sql"
 
@@ -100,8 +105,12 @@ def plant_tie(tables):
 
 def main():
     gcz.SEED = SEED
+    gcz.V4_Q1_TOTAL, gcz.V4_Q2_TOTAL = Q1_TOTAL, Q2_TOTAL
+    gcz.V4_PLAN = {"Q1": gcz.V4_PLAN["Q1"], "Q2": Q2_PLAN}
     tables = gcz.build_v4()
     tied, amount = plant_tie(tables)
+    for week in tables["plan_line"]:
+        week["plan_revenue"] = WEEKLY_PLAN
     out = [HEADER]
     for name, cols in TABLES:
         out.append(f"COPY takehome.{name} ({', '.join(cols)}) FROM stdin;")
@@ -117,7 +126,9 @@ def main():
     print(f"Retail-Core tie at positions {TIE_AT} to {TIE_AT + 2}: {', '.join(tied)} on Rs {amount:,}")
     print(f"falling-spend ladder members: {', '.join(tables['_meta']['falling'])}")
     q2 = sum(o["amount"] for o in tables["orders"] if o["quarter"] == "Q2")
-    print(f"orders {len(tables['orders'])}, Q2 booked Rs {q2:,}")
+    n_q2 = sum(1 for o in tables["orders"] if o["quarter"] == "Q2")
+    print(f"orders {len(tables['orders'])}, Q2 orders {n_q2}, Q2 booked Rs {q2:,}, "
+          f"plan Rs {WEEKLY_PLAN * len(tables['plan_line']):,}")
 
 
 if __name__ == "__main__":
@@ -127,9 +138,10 @@ if __name__ == "__main__":
 # --------------------------------
 # python3 content/W02/D3/internal/C2_W02_D03_takehome_data_INTERNAL.py
 #     Writes the take-home SQL file and prints the three tied Retail-Core members and their Q2
-#     revenue, the three falling-ladder members, and "orders 1000, Q2 booked Rs 98,400,000".
+#     revenue, the three falling-ladder members, and
+#     "orders 992, Q2 orders 454, Q2 booked Rs 92,360,000, plan Rs 94,120,000".
 # psql -d kalpa -f content/W02/D3/data/C2_W02_D03_takehome_STUDENT.sql
-#     Creates the takehome schema with 340 customers, 1,000 orders and 13 plan weeks, and leaves
+#     Creates the takehome schema with 340 customers, 992 orders and 13 plan weeks, and leaves
 #     the public warehouse untouched.
 # Run twice in a row
 #     Writes a byte-identical file, since the seed is fixed.
