@@ -30,7 +30,7 @@ flowchart LR
 | Part | Slides (morning deck) | Beside it | What must land | If short of time |
 |---|---|---|---|---|
 | The ask, 20 | S1 to S5 | The board's first drawing | Three questions sorted into chance, the count and a fair comparison; the note's four parts drawn | S5 to one sentence |
-| Round 1, 50 | S6 to S17 | Notebook 1; `guided/C2_W01_D04_ten_cards_STUDENT.md`; the companion's walk | The hand shuffle (10 minutes, never cut); the loop read against the cards; Retail-Core as the wobble; the trap and its rewrite; the room's Retail-Plus run | The exact-share section of notebook 1 stays self-study |
+| Round 1, 50 | S6 to S17 | Notebook 1; `guided/C2_W01_D04_ten_cards_STUDENT.md`; the companion's walk | The hand shuffle (10 minutes, never cut); the loop read against the cards; Retail-Core as the wobble; the room's Retail-Plus run; the trap staged on the room's own share and its rewrite | The exact-share section of notebook 1 stays self-study |
 | Round 2, 50 | S18 to S28 | Notebook 2; `unguided/C2_W01_D04_round2_STUDENT.md` | Real and worth acting on as two sentences; the bridge by segment; the retention offer's 45 percent break-even | S26 first, then S22 to its headline |
 | Break, 10 | after S28 | | | |
 | Round 3, 50 | S29 to S38 | Notebook 3; `unguided/C2_W01_D04_round3_STUDENT.md` | The count found by the room in the empty cell; the coin-flip share; the rule of thumb; the confounder vignettes that prepare the afternoon | D39 stays self-study |

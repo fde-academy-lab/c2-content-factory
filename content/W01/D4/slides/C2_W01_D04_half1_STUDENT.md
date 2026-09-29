@@ -144,8 +144,8 @@ Transition: a gap exists; the first habit asks whether chance alone could have m
 
 ```notes
 LIVE. Fifty minutes: the question and its picture (5), the ten-card shuffle by hand (12), the loop
-in code and the Retail-Core demonstration (13), the trap (8), the room's Retail-Plus run (10), and
-Kavya's review (2). Notebook 1 runs beside it.
+in code and the Retail-Core demonstration (13), the room's Retail-Plus run (8), the trap staged on
+the room's own share and its fix (10), and Kavya's review (2). Notebook 1 runs beside it.
 ```
 
 ---
@@ -316,12 +316,31 @@ it before judging Retail-Plus.
 
 ---
 
-## S13. The plausible wrong answer
-*A draft note, written in a hurry after a shuffle test came back at 0.03.*
+## S13. Your turn: Retail-Plus, 5,000 shuffles
+*The same loop on the segment Meera asked about, run by the room before anyone says a number.*
+
+```timeline
+label: Step 1 | title: The measure | body: Delivered revenue per Retail-Plus member, Q1 and Q2, from notebook 1, level 4.
+label: Step 2 | title: The real gap | body: Q1 mean less Q2 mean, printed in rupees before any shuffle runs.
+label: Step 3 | title: The shuffles | body: 5,000, seed 2026, and the share at least as large as the real gap.
+label: Step 4 | title: The first draft | body: One line to Meera on what your share means, written fast and kept. | tone: dark
+```
+
+```notes
+LIVE, 8 minutes. The room runs level 4 of notebook 1 and writes a first-draft sentence without help.
+Do not read a number out first; every laptop gets the same share because of the seed. When most
+laptops show a share, ask one pair to read theirs aloud and write it on the board. That number is
+the one the next three slides work on, and it belongs to the room.
+```
+
+---
+
+## S14. The plausible wrong answer
+*A draft note, written in a hurry from the share the room has just computed.*
 
 ```mermaid
 flowchart LR
-    R["<b>the result</b><br/>p = 0.03"] --> W["<b>the draft note</b><br/>there is a 3 percent<br/>chance we are wrong"]
+    R["<b>your result</b><br/>the share, about 0.03"] --> W["<b>the draft note</b><br/>there is a 3 percent<br/>chance we are wrong"]
     W --> D["<b>the decision it drives</b><br/>treat the finding as<br/>97 percent certain"]
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     class W,D bad
@@ -330,14 +349,14 @@ flowchart LR
 **What breaks.** "p = 0.03, so there is a 3 percent chance we are wrong" reads as precise, sounds like probability, and sends Meera into Monday certain.
 
 ```notes
-LIVE, 3 minutes. Put the sentence up and ask who would have written it. Most hands go up; it is the
-most common p-value sentence in industry and it appears in the row's list of what the room must
-handle. Do not correct it yet; the next slide does.
+LIVE, 3 minutes. Put the sentence up next to the room's share on the board and ask whose first
+draft looks like it. Most hands go up; it is the most common p-value sentence in industry and it
+appears in the row's list of what the room must handle. Do not correct it yet; the next slide does.
 ```
 
 ---
 
-## S14. Why it is wrong: the share was counted under chance
+## S15. Why it is wrong: the share was counted under chance
 *Every shuffle assumed the quarter made no difference, so the share says nothing about being wrong.*
 
 ```mermaid
@@ -360,7 +379,7 @@ in one line and stop; it is a later week's topic.
 
 ---
 
-## S15. The fix: the sentence that survives an audit
+## S16. The fix: the sentence that survives an audit
 *Say the share, the world it was counted in, and what it lets you conclude, in that order.*
 
 | Draft | Rewritten |
@@ -372,27 +391,10 @@ in one line and stop; it is a later week's topic.
 **The rule.** A p-value is a share of chance-only worlds; it is never the chance the finding is wrong.
 
 ```notes
-LIVE, 2 minutes. The rewritten column is what Kavya signs. The third row hands over to round two:
-real is one call, worth acting on is another.
-```
-
----
-
-## S16. Your turn: Retail-Plus, 5,000 shuffles
-*The same loop on the segment Meera asked about, run by the room, with the sentence written after.*
-
-```timeline
-label: Step 1 | title: The measure | body: Delivered revenue per Retail-Plus member, Q1 and Q2, from notebook 1, level 4.
-label: Step 2 | title: The real gap | body: Q1 mean less Q2 mean, printed in rupees before any shuffle runs.
-label: Step 3 | title: The shuffles | body: 5,000, seed 2026, and the share at least as large as the real gap.
-label: Step 4 | title: The sentence | body: One line in the rewritten form, read aloud to your partner. | tone: dark
-```
-
-```notes
-LIVE, 10 minutes. The room runs level 4 of notebook 1 and writes the sentence. Do not read a
-number out first; every laptop gets the same share because of the seed. Collect three sentences
-aloud and have the room vote each one defensible or wrong. The share they find is the round's
-answer and belongs to them.
+LIVE, 4 minutes. Each pair rewrites its first draft in the rewritten form and reads it to the
+partner. Collect three sentences aloud and have the room vote each one defensible or wrong. The
+rewritten column is what Kavya signs. The third row hands over to round two: real is one call,
+worth acting on is another.
 ```
 
 ---
@@ -496,11 +498,11 @@ day's second board drawing.
 ---
 
 ## S21. The plausible wrong answer
-*The draft ranks Retail-Plus first because its p-value is the smallest on the page.*
+*The draft ranks Retail-Plus first because the room's own p-value is the smallest on the page.*
 
 ```mermaid
 flowchart LR
-    P["<b>p = 0.03</b><br/>smallest on the page"] --> C["<b>the draft's claim</b><br/>Retail-Plus is our<br/>biggest problem"]
+    P["<b>your share, 0.03</b><br/>smallest on the page"] --> C["<b>the draft's claim</b><br/>Retail-Plus is our<br/>biggest problem"]
     C --> D["<b>the decision</b><br/>fund a retention<br/>programme first"]
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     class C,D bad
@@ -563,17 +565,18 @@ Business carries most of it, which the next slide shows.
 
 ```mermaid
 xychart-beta
-    title "Delivered revenue in Q2 by segment, Rs lakh"
-    x-axis ["Business", "Retail-Plus", "Retail-Core", "Student"]
-    y-axis "Rs lakh" 0 --> 130
-    bar [127.6, 0.5, 0.5, 0.05]
+    title "Delivered revenue in Q2, the three consumer segments, Rs thousand"
+    x-axis ["Retail-Plus", "Retail-Core", "Student"]
+    y-axis "Rs thousand" 0 --> 50
+    bar [47.7, 47.6, 5.0]
 ```
 
-The consumer bars are too small to see at this scale, which is itself the finding: size every consumer gap against a quarter that Business dominates.
+Business delivered Rs 1,27,64,460 in the same quarter, about 268 times Retail-Plus, so on this axis its bar would stand 268 times as tall. Size every consumer gap against a quarter that Business dominates.
 
 ```notes
-LIVE, 3 minutes. Delivered revenue in Q2 was Rs 1,28,64,680, of which Business delivered
-Rs 1,27,64,460. The room computed these on Tuesday and Wednesday. Do not state the Retail-Plus gap
+LIVE, 3 minutes. The chart draws the consumer segments alone so their bars stand in proportion; a
+single axis with Business on it would flatten all three to the floor. Delivered revenue in Q2 was
+Rs 1,28,64,680, of which Business delivered Rs 1,27,64,460. The room computed these on Tuesday and Wednesday. Do not state the Retail-Plus gap
 in rupees; the room computes it next.
 ```
 
