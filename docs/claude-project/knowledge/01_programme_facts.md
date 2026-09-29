@@ -33,7 +33,7 @@ Facts as of 29 Sep 2026: calendar locked on 21 Sep 2026; IITGN faculty sessions 
 ## Campus day
 
 Two teaching blocks of 180 minutes each with lunch between them, six days a week, and a TA-led practice lab after the second block.
-A pen-and-paper recap paper of about two hours, AI-free, then a break, then the solution discussion led by the Academic TA.
+A pen-and-paper recap paper of two hours, AI-free, then a break, the marking, the solution discussion led by the Academic TA and a paired mock-interview round, in a Saturday of 300 minutes.
 
 ## Cohort
 
