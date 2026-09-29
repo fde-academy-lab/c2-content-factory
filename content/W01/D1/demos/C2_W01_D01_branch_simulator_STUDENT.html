@@ -1385,7 +1385,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     function k(which, good) { return pick === which ? (good ? "good" : "bad") : "plain"; }
     K.draw("decTree", K.tree({ label: "Which branch does Meera open first?", kind: pick ? "plain" : "lit", branches: [
       ["customers", { label: "Acquisition now\nsign the Rs 12 crore", kind: k("acq", false) }],
-      ["orders per customer", { label: "Frequency first\n16 of 23 bought once", kind: k("freq", true) }],
+      ["frequency", { label: "Frequency first\n16 of 23 bought once", kind: k("freq", true) }],
       ["channel", { label: "Store-led plan\n91.6 percent of booked", kind: k("store", false) }]] },
       { width: 220, title: "Three answers on Meera's desk" }));
   }
