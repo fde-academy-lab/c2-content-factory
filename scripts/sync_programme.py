@@ -43,6 +43,8 @@ The block names a markdown file can carry, and what each renders:
     sync:module:W02/D1             the module a day posts to, as "Module 1: Foundations of AI and Data"
     sync:day-date:W02/D1           the day's date, as "Mon 12 Oct 2026"
     sync:faculty-day:W02/D1        that day's IITGN block, or a line saying there is none
+    sync:rubric:W03                a build's settled rubrics and graded days, from evaluation.rubrics
+    sync:rubric:W03/mock           one of them: mini-project, mock or gd
 
 A file's audience comes from its name: _STUDENT, _TRAINER or _INTERNAL, and INTERNAL for anything
 else. A STUDENT file never receives a proposed or open fact, and a tentative one arrives with the
@@ -499,6 +501,10 @@ def render_evaluation(ctx, arg, audience):
     exams = "; ".join(f"{k} in Week {v['week']}, {v['marks']} marks, posting to {v['posts_to']}"
                       + (f", {v['when']}" if v.get("when") else "") for k, v in ev["exams"].items())
     att = ev.get("attendance")
+    rub = ev.get("rubrics") or {}
+    settled = [f"Rubrics settled: " + "; ".join(f"{v['build']} ({k}), {v['status']}, by {v['settled']}"
+                                                for k, v in rub.items())
+               + ". Every other rubric waits for the programme handbook."] if rub else []
     return "\n".join([f"Status: {ev['status']}. {ev['rule']} The version in force is {ev['current']}.",
                       ""] + ec.md_table(head, rows) +
                      ["", f"Exams, {ev['exams']['ME1']['status']}: {exams}.",
@@ -506,7 +512,7 @@ def render_evaluation(ctx, arg, audience):
                       f"{ev['exam_day_and_slot']['rule']}",
                       f"Ungraded indicators: {', '.join(ev['ungraded'])}."] +
                      ([f"Attendance, {att['status']}: {att['minimum']} minimum over {att['over']}, "
-                       f"recorded {att['recorded']}."] if att else []))
+                       f"recorded {att['recorded']}."] if att else []) + settled)
 
 
 def render_decisions(ctx, arg, audience):
@@ -520,6 +526,34 @@ def render_decisions(ctx, arg, audience):
     lines += ["", "Known conflicts between the sources, and the working rule until one is fixed:", ""]
     lines += ec.md_table(["Conflict", "Sources", "What disagrees", "Working rule"], rows)
     return "\n".join(lines)
+
+
+def render_rubric(ctx, arg, audience):
+    """A build's settled rubrics: all of them for W03, one for W03/mock. The marks must add up."""
+    week, _, event = arg.partition("/")
+    entry = (ctx.facts["evaluation"].get("rubrics") or {}).get(week)
+    if not entry:
+        raise ValueError(f"no settled rubric for {week}; it waits for the programme handbook")
+    if audience == "STUDENT" and (entry["status"] != "locked" or entry.get("learner_facing") != "allowed"):
+        raise ValueError(f"the {week} rubrics are not open to learners")
+    events = entry["events"]
+    if event and event not in events:
+        raise ValueError(f"no {event} rubric for {week}; the events are {', '.join(events)}")
+    out = []
+    for key in [event] if event else list(events):
+        e = events[key]
+        at = e["columns"].index("Marks")
+        total = sum(int(row[at]) for row in e["criteria"])
+        if total != e["marks"]:
+            raise ValueError(f"the {week} {key} criteria add to {total}, not {e['marks']}")
+        out += ([""] if out else []) + [f"**{e['title']}, {e['marks']} marks.** {e['scored']}", ""]
+        out += ec.md_table(e["columns"], [[str(c) for c in row] for row in e["criteria"]])
+    if not event:
+        days = entry.get("graded_days") or {}
+        out += ["", " ".join(days.values())] if days else []
+        if audience != "STUDENT":
+            out += ["", f"{entry['build']}'s rubrics are {entry['status']}, settled by {entry['settled']}."]
+    return "\n".join(out)
 
 
 def need_day(ctx, arg):
@@ -578,6 +612,7 @@ RENDERERS = {
     "module": render_module,
     "day-date": render_day_date,
     "faculty-day": render_faculty_day,
+    "rubric": render_rubric,
 }
 
 OPEN = re.compile(r"<!-- sync:([a-z-]+)(?::([A-Za-z0-9/_-]+))? -->")
@@ -934,5 +969,11 @@ if __name__ == "__main__":
 #     FAIL naming the row and the session; nothing written.
 # A STUDENT file carrying <!-- sync:evaluation --><!-- /sync:evaluation -->
 #     FAIL: the evaluation block never renders in a STUDENT file.
+# A STUDENT file with <!-- sync:rubric:W03/mock --><!-- /sync:rubric:W03/mock -->
+#     The mock's six criteria render as a table, since Build 1's rubrics are open to learners.
+# <!-- sync:rubric:W06 --> in any file while Build 2's rubrics are unsettled
+#     FAIL: no settled rubric for W06; it waits for the programme handbook.
+# facts.yaml: one Build 1 GD criterion raised from 8 to 9 marks
+#     FAIL: the W03 gd criteria add to 31, not 30; nothing written.
 # A file with <!-- sync:day-date:W02/D1 -->x<!-- /sync:day-date:W02/D1 -->
 #     The x becomes "Mon 12 Oct 2026" on the same line.

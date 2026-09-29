@@ -1,39 +1,41 @@
-# Thursday's extras
+# Tiered extras: stretch and recovery
 
-## Recovery: if groupby still feels like magic
+Two short paths for after the day. Pick the one that fits where you finished.
 
-Take twenty order rows, no more, and do it by hand on paper. Write the customer ids down the left,
-then tally each order under its customer, then total each tally.
+---
 
-That is split, apply, combine, and you have just done all three yourself. Now write the `groupby`
-that does it and point at which part of your paper each piece of the call replaced.
+## Recovery: the table in four moves, slowly
 
-Then do the same for `agg` with two measures, and notice that only the applying changed.
+For anyone who left the escalated case with a check failing.
 
-If the merge is the part that blurs, run today's demo page and change the feed between "as
-delivered" and "aggregated" with `validate="one_to_one"` set. Watch the same call succeed and
-fail on the same claim.
+1. **The count.** Read the orders with `pd.read_sql` and print `len(orders)`. It is 1,000; if it is
+   not, the warehouse is not loaded, and `bash .devcontainer/load_warehouse.sh` rebuilds it.
+2. **The groupby, beside the loop.** Write the Week 1 loop that totals spend per customer in a
+   dictionary, then `orders.groupby("customer_id")["amount"].sum()`, and check that the two agree
+   for every customer. Say aloud why both have 301 entries.
+3. **The spine.** Merge the totals onto `customers` with `how="left"` and `validate="one_to_one"`.
+   Check 340 rows. Print `dtypes`, find the column that became `float64`, and fill it with 0 on
+   purpose.
+4. **The date.** Compute `AS_OF = orders["order_date"].max()` and recency from it. Check that the
+   smallest recency is 0. Then compute it from `pd.Timestamp("2026-10-19")` and say, in one
+   sentence to the growth team, why their win-back list would have been 55 customers too long.
 
-## Stretch: three that go past today
+When all four pass, rerun the escalated notebook from a fresh kernel.
 
-**One.** The customer table is built from `orders` alone, so a customer who never ordered is
-absent entirely. Rebuild it starting from `customers` instead, so all 340 appear and the ones who
-never ordered carry zeros or NaNs. Then write two sentences on which version Marketing should get
-and what the difference does to any average computed from it. This is a denominator question
-wearing a pandas costume.
+---
 
-**Two.** Today's merges all used `validate=`. Find a pair of tables in the warehouse where
-`one_to_one` is genuinely correct and prove it, then find a pair where `many_to_one` is the
-honest claim and say what would have to change in the data for it to start failing.
+## Stretch: the table grows up
 
-**Three.** The reshape round trip is not the identity: pivot then melt gives you more rows than
-you started with, because every gap became a cell and every cell became a row. Demonstrate it with
-numbers, then write one sentence on when those extra rows are a bug and when they are the point.
+For anyone who finished the escalated case with every check passing.
 
-## If you want tomorrow's advantage
-
-Tomorrow the chief of staff wants three things that open on a laptop with no login.
-
-Tonight, open any spreadsheet you have and try to break a lookup on purpose: search for a value
-that is not there and see what comes back. Write down what happened. Tomorrow you will find out
-whether what happened was the safe behaviour or the dangerous one.
+1. **A third flag.** Add `channel_switch`: a customer whose Q2 orders came mostly through a
+   different channel from their Q1 orders. Build it with two `pivot_table` calls stating `aggfunc`,
+   decide what "mostly" means when a customer is tied, and write the tie rule beside the code.
+2. **The refresh log.** Make `build_customer_table` return a second object: a one-row DataFrame
+   with the run's as-of date, row count, spend total, reached count and the number of feed rows the
+   first-touch rule removed. Run it twice and prove the logs agree.
+3. **The SQL twin.** Write the whole customer table as one SQL query against the warehouse, with a
+   CTE per source, and compare it to your pandas table with `DataFrame.equals` after sorting both.
+   Where they differ, find out which tool you trust and why.
+4. **The interview answer.** Record yourself answering "Same question, three tools: how do you
+   choose, and defend one choice?" in under a minute, and check it names who must trust the number.

@@ -1,77 +1,88 @@
-# Provenance: Week 2, Tuesday
+# Provenance: Week 2, Tuesday. Booked against collected
 
-INTERNAL.
+**INTERNAL.** Where every number, decision and link in this pack came from.
 
-## Numbers, and where each comes from
+## Sources, in the order they were read
 
-Every figure is asserted by `python3 data/generate_client_zero.py --contract` and was re-proved in
-`psql` against the loaded warehouse on 13 September 2026.
-
-| Figure | Value | Asserted |
-|---|---|---|
-| Rows a LEFT JOIN to payments returns | 1,450 from 1,000 | Yes |
-| Orders carrying more than one payment row | 450 | Yes |
-| Of those: instalment plans | 400 | Derived, proved in psql |
-| Of those: gateway retries | 50 | Derived, proved in psql |
-| Orders never paid | 30 | Yes |
-| Payments whose order is not in the book | 8 | Yes |
-| The naive total over the join, against the true book | 1.9952 times | Yes |
-| Share of the book held by the 450 duplicated orders | Over 80 percent | Derived |
-
-## The arithmetic the curriculum row implied
-
-The locked client-zero file says three things at once: a LEFT JOIN grows 1,000 rows to 1,450,
-50 orders carry gateway retries, and collected revenue doubles. Those only hold together one way.
-
-1,450 rows from 1,000 orders with 30 unpaid means 1,420 rows across 970 paid orders, so 450 extra
-payment rows. Fifty come from the retries the file names, so 400 come from orders paid in two
-instalments, which the Tuesday scenario text already mentions.
-
-For the total to double, those 450 duplicated orders must carry as much revenue as the whole paid
-book. That is only true if the instalment orders are the large invoices, which is true of real
-businesses: corporate buyers settle big orders in parts. The generator selects the instalment set
-as the top 400 paid orders by value, which is why the ratio lands at 1.9952 rather than at some
-uninformative 1.2.
-
-This is a construction in the sense that the locked file does not say which orders get instalment
-terms. It is recorded here.
-
-## A change made during the build
-
-The first version selected the 30 unpaid orders as the last 30 delivered in list order, which put
-them all in small consumer orders and left Anand's Q2 gap at Rs 23,320 across the whole quarter.
-A gap that small is not a business story and the day's closing report had nothing in it.
-
-The generator now takes two of the thirty from Q2 corporate invoices on different channels. The
-Q2 gap by channel is now store Rs 9,51,970, web Rs 7,81,710 and app Rs 500. The contrast between a
-channel with a problem and one without is what makes the report worth reading.
-
-All fourteen v4 contract assertions still pass after the change.
-
-## Error text
-
-No Postgres error is staged today. The failure is a query that runs perfectly and returns a number
-that is twice the truth, which is deliberately a different shape of failure from Monday's. The
-"exact wrong output" the method asks for is the ratio 1.9952, and every artifact carries it.
-
-## Links, all verified 13 September 2026
-
-| Link | Used in |
+| Source | What it gave the pack |
 |---|---|
-| <https://sqlbolt.com/> (verified 13 Sep 2026) | pre-read, study notes |
-| <https://pgexercises.com/> (verified 13 Sep 2026) | study notes |
-| <https://www.youtube.com/watch?v=FprFu75BoE4> (verified 13 Sep 2026) | pre-read, study notes |
+| `docs/detailing/W01_W02_spine.md`, approved 29 September 2026 | The case, the five rungs, the three traps, the faculty-day shape (morning, then 45 for the case and 15 for the Kahoot) and the practice lab set |
+| `.claude/skills/day-pack-builder/references/the-standard.md` | The form and the volume of every family |
+| `docs/curriculum/W2_Data_manipulation.md`, Tue 13 Oct row and its IITGN column | The scenario, the thinking, the outcome, the plants, the interview anchors, the references and the Kahoot plan |
+| `docs/programme/calendar.md` | W02/D2, Tue 13 Oct 2026, teaching, M1, W2-2 tentative |
+| `docs/07_Client_Zero.md`, v4 row of section 7 | The planted witnesses |
+| `content/W01/D1` | The model for the form of every artifact |
 
-The video was confirmed live by title and channel through the oEmbed endpoint: "POSTGRESQL JOINS
-[Complete guide in 12 mins]", cudidotdev.
+## The data
 
-## Open, for the reviewer
+The warehouse is `content/W02/D1/data/C2_W02_D01_warehouse_v4_STUDENT.sql`, written by
+`data/generate_client_zero.py --version v4` and loaded with `.devcontainer/load_warehouse.sh`. This
+pack reads it and never writes it. Every number was measured on PostgreSQL 16.13 on 29 September
+2026 with the warehouse loaded: customers 340, orders 1,000, payments 1,428, refunds 12,
+campaign_exposure 136, plan_line 13.
 
-The take-home requires a join where a fan-out is possible, which rules out `orders` to `customers`
-and forces `payments` or `refunds`. A reviewer who thinks that over-constrains a first join
-exercise should say so; the alternative is a take-home that can be satisfied by a safe join, which
-does not test the habit the day exists to build.
+The take-home book is written by `internal/C2_W02_D02_takehome_data_INTERNAL.py` into
+`data/C2_W02_D02_takehome_STUDENT.sql`, which loads into its own schema, `takehome`, so it never
+touches the warehouse tables. The generator has no second v4 sample; see the change requested below.
 
-## Re-dated on 27 September 2026
+## The plants, and where each is used
 
-Tracker v7 of 21 September 2026 moved this row one week later, to Tuesday 13 October 2026, and gave it the violet IITGN faculty column: session W2-2, tentative, after the applied core, picking up where the row stops. The day sheet carries the block as a sync block, and the pack does not teach into it.
+| Plant | Value | STUDENT files | TRAINER files |
+|---|---|---|---|
+| Unpaid Q2 orders | 30 orders, Rs 17,54,930; KR-00577 and KR-00582 are the two large ones | None names them; the sql files and your-turn cells let the room find them | Day sheet, case key notebook |
+| Gateway retries | 50 orders (22 on Q1, 28 on Q2), Q2 surplus Rs 20,750 | None | Day sheet, case key notebook |
+| Orphan payments | 8, KR-90000 to KR-90007, Rs 24,680 | None | Day sheet, case key notebook |
+| Instalments | 400 orders, 188 in Q2 (the fan-out's cause, not a plant) | Named as a mechanism; 216 Q2 multi-row orders shown in the round 3 trap | Day sheet |
+
+The rule the STUDENT files follow: no count, id or rupee total of the unpaid, retried or orphan
+records, and never the Q2 INNER order count beside the LEFT one. The INNER and WHERE traps are
+shown exactly on the invented tiny tables; on Kalpa data they run live from the day sheet and as
+your-turn cells with silent checks.
+
+## Decisions that depart from a source
+
+| Decision | Source it departs from | Why |
+|---|---|---|
+| Trap 3 filters `p.paid_date BETWEEN '2026-07-01' AND '2026-09-30'` | The spine's check used `WHERE p.status = 'ok'` | The v4 payments table has no status column. The quarter cut-off is the filter a hurried analyst adds for "collected in Q2", and it drops the unpaid orders in the same way; checked on PostgreSQL 16.13 on 29 September 2026. |
+| A fourth trap: `HAVING count(*) > 1` by order flags 216 Q2 orders | The row says HAVING COUNT(*) > 1 "lists the double posts" | In v4 it also lists the 188 legitimate instalment orders, so the row's own method is a plausible wrong list; the fix groups by order and instalment. |
+| The fan-out's doubling comes mostly from instalments | The v4 witness line attributes 1,450 rows to the 50 retries | The 1,450 is 400 instalment orders plus 50 retries; the pack teaches the mechanism on the instalments and keeps the retries for the room to find. |
+| "Collected" means cash with each payment counted once | The row does not define it | Anand's question and the platform lead's remark force the definition; the decks and notes state it before any number. |
+| Traps 2 and 3 are shown exactly on invented tables in STUDENT files | The standard asks for the trainer's demonstration on Kalpa data | On Kalpa data both wrong numbers give the unpaid count away, which the row says the room must find; the trainer runs them live. |
+| The afternoon deck carries 13 slides | The standard's afternoon deck of about 20 | A faculty day gives the trainer 60 minutes of the afternoon, with no second case and no interview drill. |
+| No decision workbook | The standard's family list | The volume table sets the floor and does not list it; the companion carries the day's decision. |
+| No refunds in the Q2 report | Anand's message mentions refunds | All 12 refund rows sit on Q1 orders; the take-home carries refunds inside its quarter. |
+
+## Invented material
+
+The two tiny tables (5 orders T-1 to T-5, 7 payments P-1 to P-7), labelled invented wherever they
+appear; the companion's larger invented sample of 12 orders and 16 payments; the practice lab's
+tables; the take-home book in its own schema.
+
+## Links, each checked on 29 September 2026
+
+| Link | Checked, and what came back |
+|---|---|
+| https://www.postgresql.org/docs/16/tutorial-join.html | checked 29 Sep 2026, 200, "2.6. Joins Between Tables" |
+| https://www.postgresql.org/docs/16/queries-table-expressions.html | checked 29 Sep 2026, 200, "7.2. Table Expressions" |
+| https://sqlbolt.com/lesson/select_queries_with_joins | checked 29 Sep 2026, 200, lesson 6 |
+| https://sqlbolt.com/lesson/select_queries_with_outer_joins | checked 29 Sep 2026, 200, lesson 7 |
+| https://sqlbolt.com/lesson/select_queries_with_nulls | checked 29 Sep 2026, 200, lesson 8 |
+| https://pgexercises.com/questions/joins/ | checked 29 Sep 2026, 200 |
+| https://www.pgtutorial.com/ | checked 29 Sep 2026, 200 |
+| https://www.youtube.com/watch?v=aY7z4HcHm5M | checked 29 Sep 2026, oEmbed resolves: "SQL Joins Basics (Visually Explained)", Data with Baraa |
+
+## Tool versions
+
+PostgreSQL 16.13 (Ubuntu 16.13-0ubuntu0.24.04.1). Python 3 with psycopg2-binary and SQLAlchemy for
+the notebooks. mermaid-cli 11.17.0 for the deck diagrams, because the container's mermaid-cli 12.0.0
+rejects the `-w` flag that `scripts/build_deck.py` passes and falls back to printing the code.
+LibreOffice for the render check, with fonts-crosextra-carlito installed.
+
+## Changes requested of shared tools
+
+1. `scripts/build_deck.py` passes `-w 2600` to mmdc, which mermaid-cli 12 no longer accepts, so every
+   diagram silently prints as code; it should detect the version or drop the flag.
+2. `data/generate_client_zero.py` has no second v4 sample for a take-home; a `v4b` book in its own
+   schema would replace this pack's local builder.
+3. `docs/07_Client_Zero.md` and the Tuesday row describe HAVING COUNT(*) > 1 as the double-post
+   finder and attribute the 1,450 rows to the retries; both should name the instalments.
