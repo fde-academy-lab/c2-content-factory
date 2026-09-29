@@ -64,7 +64,7 @@ from pptx.enum.text import PP_ALIGN
 from pptx.util import Emu, Inches, Pt
 
 import brand
-from build_cheatsheet import MERMAID_CONFIG, svg_labels
+from build_cheatsheet import MERMAID_CONFIG, page_args, svg_labels
 from deck_layout import (ACC, BG, BOLD, INK, LINE, MUTED, NIGHT, TINT, WHITE, MARGIN, WIDTH,
                          BODY_TOP, BODY_BOTTOM, RULE_Y, SLIDE_W, SLIDE_H, CALLOUT, CRUMB, NUMBERED,
                          QUOTE, SLIDE_ID, BEATS, add_runs, background, bar, bar_height, breadcrumb,
@@ -340,7 +340,8 @@ def render_mermaid(lines, width_in=None):
     """
     code = svg_labels("\n".join(lines).strip()) + "\n"
     scale = render_scale(lines, width_in)
-    key = hashlib.sha256((code + MERMAID_CONFIG + f"scale={scale}").encode()).hexdigest()[:16]
+    tag = f"scale={scale} page=natural"
+    key = hashlib.sha256((code + MERMAID_CONFIG + tag).encode()).hexdigest()[:16]
     CACHE.mkdir(parents=True, exist_ok=True)
     png = CACHE / f"{key}.png"
     if png.exists():
@@ -359,8 +360,8 @@ def render_mermaid(lines, width_in=None):
         env["PUPPETEER_EXECUTABLE_PATH"] = chrome
     try:
         subprocess.run(["mmdc", "-i", str(CACHE / f"{key}.mmd"), "-o", str(png),
-                        "-b", "transparent", "-w", "2600", "-s", str(scale), "-c", str(theme),
-                        "-p", str(config)],
+                        "-b", "transparent", *page_args("\n".join(lines).strip(), 2600),
+                        "-s", str(scale), "-c", str(theme), "-p", str(config)],
                        capture_output=True, text=True, env=env, timeout=240)
     except Exception:
         return None

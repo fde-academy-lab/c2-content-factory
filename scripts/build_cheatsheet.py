@@ -29,6 +29,7 @@ label is dropped without warning by weasyprint, which prints every node as an em
 import argparse
 import hashlib
 import html
+import math
 import os
 import pathlib
 import re
@@ -154,6 +155,35 @@ def svg_labels(code):
     return LABEL.sub(fix, code)
 
 
+_MMDC_HELP = None
+
+
+def page_args(code, width):
+    """mmdc's page-width option for a PNG, on whichever mermaid-cli this session has.
+
+    mermaid-cli 11 takes -w, the page width, and draws the diagram at its own size up to it.
+    mermaid-cli 12 dropped -w: left alone it fits the diagram to an 800 pixel page, so a wide
+    chain came out 784 pixels across, and its --size stretches the longer side to the number
+    given. So on 12 the diagram's own size is read from its SVG render and passed as --size,
+    capped at the old page width, so 12 draws at the diagram's own size as 11 did.
+    """
+    global _MMDC_HELP
+    if _MMDC_HELP is None:
+        try:
+            _MMDC_HELP = subprocess.run(["mmdc", "--help"], capture_output=True, text=True,
+                                        timeout=60).stdout
+        except Exception:
+            _MMDC_HELP = ""
+    if "--width" in _MMDC_HELP:
+        return ["-w", str(width)]
+    svg = render_mermaid(code, "svg")
+    w, h = svg_size(svg) if svg else (0, 0)
+    if not w or not h:
+        return []
+    fit = min(1.0, width / w)
+    return ["--size", str(math.ceil(max(w, h) * fit))]
+
+
 def render_mermaid(code, fmt="svg"):
     """Render one fence to an image and return its path, or None when mmdc is unavailable.
 
@@ -162,7 +192,9 @@ def render_mermaid(code, fmt="svg"):
     svg_labels first, so what the hash covers is what mmdc draws.
     """
     body = svg_labels(code.strip()) + "\n"
-    key = hashlib.sha256((body + fmt + MERMAID_CONFIG).encode()).hexdigest()[:16]
+    # "page=natural" retires PNGs that mermaid-cli 12 squeezed to 784 pixels before page_args.
+    tag = "page=natural" if fmt == "png" else ""
+    key = hashlib.sha256((body + fmt + MERMAID_CONFIG + tag).encode()).hexdigest()[:16]
     CACHE.mkdir(parents=True, exist_ok=True)
     out = CACHE / f"{key}.{fmt}"
     if out.exists():
@@ -183,7 +215,7 @@ def render_mermaid(code, fmt="svg"):
     cmd = ["mmdc", "-i", str(src), "-o", str(out), "-b", "transparent",
            "-c", str(conf), "-p", str(pup)]
     if fmt == "png":
-        cmd += ["-w", "2400"]
+        cmd += page_args(code, 2400)
     try:
         subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=300)
     except Exception:
