@@ -68,8 +68,8 @@ the evidence; the fix is one number fewer, never a faster voice.
 
 ```mermaid
 flowchart LR
-    A["<b>the sale lifted revenue 6%</b><br/>what more do you want?"] --> N["<b>your note</b>"]
-    B["<b>we asked for Rs 12 crore</b><br/>for new customers"] --> N
+    A["<b>the sale lifted</b><br/><b>revenue 6%</b><br/>what more do you want?"] --> N["<b>your note</b>"]
+    B["<b>we asked for</b><br/><b>Rs 12 crore</b><br/>for new customers"] --> N
     C["<b>Student is up 40%</b><br/>why not move budget?"] --> N
     D["<b>you dropped rows</b><br/>whose, and who said so?"] --> N
     classDef bad fill:#FCE8EC,stroke:#C2185B,color:#1A0F5C

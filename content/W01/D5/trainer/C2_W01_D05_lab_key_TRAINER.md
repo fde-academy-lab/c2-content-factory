@@ -18,7 +18,7 @@ the real one live from the reference notebook.
 
 | Planted | Where it sits | What a correct run does | If nobody finds it by the 65-minute mark |
 |---|---|---|---|
-| A September batch posted twice: 10 exact repeat rows | Q2 only: 9 Retail-Core orders dated 2 to 10 September (between KR-07169 and KR-07179, Rs 15,410 in all) and the corporate order KR-07143 of Rs 13,20,000, inserted as a block after the originals | Profile shows 207 rows and 197 distinct ids; identity rule on order_id; 10 dropped with a reason | Nothing during the lab; the observation sheet records it and the debrief opens on it |
+| A batch posted twice: 10 exact repeat rows | Q2 only: 9 Retail-Core orders dated 2 to 10 September (between KR-07169 and KR-07179, Rs 15,410 in all) and the corporate order KR-07143 of Rs 13,20,000 dated 7 August, inserted as a block after the originals | Profile shows 207 rows and 197 distinct ids; identity rule on order_id; 10 dropped with a reason | Nothing during the lab; the observation sheet records it and the debrief opens on it |
 | One amount stored as text, "9,85,000" | KR-07073, a Q1 corporate order, customer C-7302 | Converted by removing the grouping commas, kept, flagged in the log | Nothing during the lab |
 | One empty segment | KR-07146, a Q2 order of Rs 2,930, customer C-7101, whose other orders are all Retail-Plus | Restored to Retail-Plus from the customer's other orders and flagged, or kept as a flagged unknown with the segment sums reconciled | Nothing during the lab |
 | Business on six orders then four | 5 corporate customers; Rs 58,50,000 then Rs 41,40,000 | Named with its count, kept in the caveat, never the headline | Nothing during the lab |

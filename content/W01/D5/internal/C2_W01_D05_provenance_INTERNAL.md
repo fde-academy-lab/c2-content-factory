@@ -39,7 +39,7 @@ contract passes with the v3-lab block added.
 
 | Plant | Lab file | Used in (TRAINER and INTERNAL only) | Learner files |
 |---|---|---|---|
-| September batch posted twice, 10 rows in Q2 | KR-07143 and nine Retail-Core orders | Lab key, day sheet, reference notebook, observation sheet | Never named; the debrief shows the mechanism on invented numbers |
+| A batch posted twice, 10 rows in Q2 | KR-07143 (7 August) and nine Retail-Core orders (2 to 10 September) | Lab key, day sheet, reference notebook, observation sheet | Never named; the debrief shows the mechanism on invented numbers |
 | "9,85,000" stored as text | KR-07073 | Same | Never named; the debrief uses an invented "7,50,000" |
 | Empty segment | KR-07146 | Same | Never named |
 | Business on 6 then 4 orders | 5 corporate customers | Same | Never named; the debrief uses an invented 6 then 3 |

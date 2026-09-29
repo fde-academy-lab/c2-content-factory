@@ -53,10 +53,6 @@ flowchart LR
 | Timed cases, 40 | S8 to S11 | `exercises/unguided/C2_W01_D05_timed_cases_STUDENT.md`; the model answers in `trainer/C2_W01_D05_timed_cases_key_TRAINER.md` | Three cases, 13 minutes each: read 1, think 3, pairs 4, two call-outs 3, model 2 | Case 3 only |
 | Kahoot and close, 20 | S12 to S15 | `kahoot/C2_W01_D05_quiz_STUDENT.md` | Six items; Saturday's format, never an item; the five crux lines; tonight's three tasks | S14 to one line |
 
-The row's agenda held 240 minutes; the spine's 360-minute day keeps its order and adds the timed
-cases. The break falls between the lab and the debrief, so the debrief splits across lunch: the
-reconciliation first, which the row predicts, then the two breaks the observation tally names.
-
 ---
 
 ## The traps, each with its exact wrong number
@@ -79,8 +75,8 @@ The only runtime error the file forces is `ValueError: invalid literal for int()
 
 ## What is planted, and what to do if nobody finds it
 
-The list with order ids is in the lab key. In short: ten rows of a September batch posted twice, all
-in Q2 (nine Retail-Core, one corporate order of Rs 13,20,000); one corporate Q1 amount stored as the
+The list with order ids is in the lab key. In short: ten rows of a batch posted twice, all
+in Q2 (nine Retail-Core orders from September, one corporate order of Rs 13,20,000 dated 7 August); one corporate Q1 amount stored as the
 text "9,85,000"; one Q2 Retail-Plus order with an empty segment; Business on six orders then four.
 During the lab, nothing is done if nobody finds a plant: the lab measures what each learner does
 alone, and the debrief is where each is found. If a learner asks whether the file is rigged, answer
