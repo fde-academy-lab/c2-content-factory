@@ -62,6 +62,25 @@ the caveat: a stated gap survives the panel and a hidden one does not.
 
 ---
 
+## How the claim is scored
+
+The mini project's rubric, approved for learners to see. The claim you pin today is the one "The
+claim" row scores, and the six tests above are the checks behind its full-marks line.
+
+<!-- sync:rubric:W03/mini-project -->
+**Mini project, 40 marks.** The first four criteria are scored once for the group, and every member receives those 34 marks; presentation and defence is scored for each learner on 6 marks, so a silent teammate cannot ride the group's score.
+
+| Criterion | Marks | What full marks look like |
+|---|---|---|
+| The question translated | 8 | Dr Menon's words are mapped to the right Weeks 1 and 2 method, with the metric defined and the decision it feeds named. |
+| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and rupees reconcile across files. |
+| The analysis | 10 | The tree, ladder or fair comparison reaches the branch that explains the symptom, on the right denominator, with a chance test where one is needed. |
+| The claim | 6 | One sentence carries its number, denominator, period and caveat, plus an action Dr Menon can take. |
+| Presentation and defence | 6 | The live demo runs cold, and every member answers a challenge on the caveat. |
+<!-- /sync:rubric:W03/mini-project -->
+
+---
+
 ## At the close
 
 Each group gets about a minute. One member says the CLAIM line, and a different member says the

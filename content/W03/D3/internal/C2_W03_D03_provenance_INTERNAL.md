@@ -13,7 +13,7 @@ Built on 29 September 2026.
 | `docs/detailing/W03_build1_spine.md` (approved 29 September 2026) | The day's shape (checkpoint 30, parallel build 60, build time, close 20), the five sub-problems by number and name, the plant table and its witness numbers |
 | `docs/curriculum/W3_Build_1.md`, Monday's row and Wednesday's row | The scenario, the thinking trained, the trainer agenda, the learner outcome, the trainer notes, the after-class task and the interview angle ([F] and [D]) |
 | `docs/programme/calendar.md`, line W03/D3 | Wed 21 Oct, build week, Module 1, no faculty block |
-| `data/programme/facts.yaml` (as of 29 September 2026) | The campus day (two 180-minute blocks, then the TA time), the cohort (35 learners, nine groups, stated), the locked per-event marks (40, 30, 30), the `groups` conflict, the open `rubrics-and-calendar` decision |
+| `data/programme/facts.yaml` (as of 29 September 2026) | The campus day (two 180-minute blocks, then the TA time), the cohort (35 learners, nine groups, stated), the locked per-event marks (40, 30, 30), the `groups` conflict, the `build1-rubrics` decision (closed) |
 | `docs/07_Client_Zero.md`, sections 1a and 1b and the Build 1 seeds | Dr Priya Menon as the one named Kalpa Health stakeholder, the GCC frame, Kavya Nair's review beat |
 | `data/generate_kalpa_health.py`, its docstring and `--witness` | The ten files, what each system exports, the witness numbers |
 | The ten files in `content/W03/D1/data/` | Every number in the pack, recomputed by `internal/C2_W03_D03_numbers_INTERNAL.py` |
@@ -61,7 +61,7 @@ slice's numbers.
 | The spine says the offer ran in three cities; the campaign file carries offers in all six | That is what the files hold (Delhi 316, Chennai 215, Pune 208). In Delhi, offered patients book 23.5 percent more than the rest. The checkpoint guide and day sheet tell the trainer how to handle a group that finds it. The orchestrating session should decide whether the spine or the generator changes. |
 | The witness's `text_amounts: 60` against 35 comma-written amounts in the file | 60 amounts were written as text, but 25 of them are under Rs 1,000 and print with no comma, so a learner sees 35. The pack quotes 35 and 4 (Delhi). |
 | The spine's "48,235 tests performed behind 22,152 invoice lines" | 48,235 counts tests on every non-corporate booking, cancelled ones included. On completed bookings, which are the ones invoiced, it is 46,867. The checkpoint guide gives both. |
-| STUDENT files do not name the day of the mock or the presentations | The `rubrics-and-calendar` decision is open and blocks any artifact naming the day of a graded event. TRAINER files follow the requester's brief and the tracker ("tomorrow opens the mocks"). The headline sheet names the Saturday file by its fixed name only. |
+| The rubrics were drafted and awaiting approval when the brief was written; the requester approved them on 29 September 2026 (main, #151) | The day sheet and the headline sheet carry the mini project's rubric through `sync:rubric:W03/mini-project`, and the day sheet names the mock and GD days, which facts.yaml now allows for Build 1. |
 | The pack carries no deck | The brief's artifact table names none. The close uses the presentation format from the Saturday pack. |
 
 ---

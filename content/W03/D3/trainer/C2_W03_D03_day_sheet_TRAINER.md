@@ -16,8 +16,8 @@ and its plant table is the answer key for everything the groups will find.
 |---|---|
 | **Start from** | Monday's scopes and translation worksheets. The files went out on Monday with the data dictionary, so every group has already met the mess. Today opens on it, not on a drop of files. |
 | **Go as far as** | Every group past profiling and into analysis, both logs moving, and one testable headline claim stated at the close with its denominators and caveat, or a named blocker. |
-| **Stop before** | Any new technique, any answer to a group's sub-problem, any scoring criterion. The rubrics are drafted for the requester's approval and wait for it. |
-| **Comes later** | Tomorrow the mocks open, each with a viva on the group's own work, and the build completes around the roster. Expert day one follows with GDs and the first presentations. |
+| **Stop before** | Any new technique, and any answer to a group's sub-problem. The rubrics are approved and learners may see them; quote them, never a verdict against them. |
+| **Comes later** | Mock R1 runs for every learner on Thursday 22 October, each with a viva on the group's own work, and the build completes around the roster. Friday 23 October brings the GD rounds and the first presentations. |
 | **Cut first** | Build time, never the checkpoint or the close. Inside the parallel build, the clinic split and then the per-day table (see the run sheet). |
 
 ---
@@ -74,9 +74,23 @@ per group, so the count changes only how long the checkpoint and the close take.
 | The decisions log | The Week 1 Wednesday shape: Field, Issue, Rows, Decision, Reason, including one row kept (`content/W03/D1/briefs/C2_W03_D01_decisions_log_STUDENT.xlsx`) |
 | The challenges log | Every obstacle and open question as it happened (`content/W03/D1/briefs/C2_W03_D01_challenges_log_STUDENT.xlsx`) |
 
-**Marks, if a learner asks.** The per-event marks are locked: the mini project 40, including the
-presentation, the mock 30 and the GD 30. The criteria are not yet approved, so say exactly that and
-nothing about what earns a mark.
+**Marks, if a learner asks.** The per-event marks are locked (mini project 40, mock 30, GD 30), and
+the requester approved the three rubrics on 29 September 2026 for learners to see. The mini project's
+rubric, rendered from `data/programme/facts.yaml`:
+
+<!-- sync:rubric:W03/mini-project -->
+**Mini project, 40 marks.** The first four criteria are scored once for the group, and every member receives those 34 marks; presentation and defence is scored for each learner on 6 marks, so a silent teammate cannot ride the group's score.
+
+| Criterion | Marks | What full marks look like |
+|---|---|---|
+| The question translated | 8 | Dr Menon's words are mapped to the right Weeks 1 and 2 method, with the metric defined and the decision it feeds named. |
+| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and rupees reconcile across files. |
+| The analysis | 10 | The tree, ladder or fair comparison reaches the branch that explains the symptom, on the right denominator, with a chance test where one is needed. |
+| The claim | 6 | One sentence carries its number, denominator, period and caveat, plus an action Dr Menon can take. |
+| Presentation and defence | 6 | The live demo runs cold, and every member answers a challenge on the caveat. |
+<!-- /sync:rubric:W03/mini-project -->
+
+Today's close is where "The claim" criterion is first heard, so hear each sentence against its line.
 
 ---
 
@@ -162,7 +176,7 @@ would have to explain.
 | A Codespace will not open for a group | That group works from one member's laptop for the checkpoint, and the TA sorts the environment in the first build stretch. The data is in the repository at `content/W03/D1/data/`. |
 | Half the room is stuck on the same step | Stop build time for five minutes and ask the checkpoint nudge for that step to the whole room. Never demonstrate the answer. |
 | A group finishes its sub-problem early | Ask it for a second way to reach its headline number, then for the claim's weakest assumption, tested. Keep it out of another group's sub-problem. |
-| A group asks what the rubric rewards | Say the marks are locked (40, 30 and 30) and the criteria are awaiting approval, then send the group back to the six tests on the headline sheet. |
+| A group asks what the rubric rewards | Point at the rubric on the headline sheet and read the line for the criterion it is asking about. Never say where the group stands against it. |
 | Two groups on one sub-problem reach opposite claims | That is the week working. Tell both to keep their caveats; the panel hears alternate viewpoints on purpose. |
 | The close runs long | Cut the one-thing-to-say to a single question and keep every group's sentence. A group that does not speak today enters tomorrow's viva with no claim. |
 
