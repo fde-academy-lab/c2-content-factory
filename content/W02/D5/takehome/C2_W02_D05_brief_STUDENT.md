@@ -33,8 +33,8 @@ crore for Q2.
 
 - Test the lookup with an id you know is missing from the fresh customer table before you test it
   with one that is there. Find the missing id yourself, from the files; the log says how you found it.
-- Read Microsoft's SUBTOTAL page (verified 29 September 2026):
-  https://support.microsoft.com/en-us/office/subtotal-function-7b027003-f060-4ade-9040-e478765b9939
+- Read Microsoft's SUBTOTAL page,
+  https://support.microsoft.com/en-us/office/subtotal-function-7b027003-f060-4ade-9040-e478765b9939 (verified 29 September 2026),
   and write, as the log's last line, the one situation in which `SUBTOTAL(9)` and `SUBTOTAL(109)`
   give different totals, and which one your foot uses.
 

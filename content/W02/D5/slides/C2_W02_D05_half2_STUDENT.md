@@ -355,7 +355,7 @@ LIVE, 2 minutes. Read them once. They are on the cheat sheet's panels in this or
 
 ```stats
 value: 8 | label: items | note: including the return question
-value: 0 | label: marks | note: a performance indicator only
+value: 0 | label: grades | note: a performance indicator only
 ```
 
 ```notes

@@ -319,7 +319,7 @@ orders still appear twice. A rule that removes duplicates is a cleaning step, wh
 ---
 
 ## S16. The fix: count each order once
-*A helper column marks the first row of each order, and the tree sums only those.*
+*A helper column flags the first row of each order, and the tree sums only those.*
 
 ```mermaid
 flowchart LR

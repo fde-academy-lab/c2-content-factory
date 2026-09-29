@@ -39,7 +39,7 @@ d) `=IF(COUNTIF($A$2:A2,A2)=1,1,0)`
 
 a) It understates Q2, since the latest orders are the smallest ones
 b) It overstates Q2, since most customers last bought in Q2
-c) It leaves Q2 exact, since the last date marks the quarter
+c) It leaves Q2 exact, since the last date sets the quarter
 d) It leaves Q2 unchanged and only moves revenue within Q1
 
 ### Q6. The tree now ties to the warehouse's Rs 19,84,00,000 to the rupee. Which question does that still leave open for Monday's deck?

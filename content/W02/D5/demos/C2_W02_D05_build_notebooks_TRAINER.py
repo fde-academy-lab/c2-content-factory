@@ -232,7 +232,7 @@ column, and left 1,400 rows, because an instalment's two rows differ in `paid_am
 duplicates. The total barely moved. The grain is the problem, and the fix names the grain.
 
 **The fix.** Count each order once. In Excel, a helper column in the export,
-`=IF(COUNTIF($A$2:A2,A2)=1,1,0)`, marks the first row of each order; the pivot then filters on it, or
+`=IF(COUNTIF($A$2:A2,A2)=1,1,0)`, flags the first row of each order; the pivot then filters on it, or
 a `SUMIFS` over it builds the tree. In pandas it is one line.'''),
     code('''
 orders_once = raw.drop_duplicates("order_id")
