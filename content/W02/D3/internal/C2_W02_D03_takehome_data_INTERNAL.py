@@ -7,9 +7,13 @@ and every number in it is new. Two things are then planted for this sample alone
 trainer day sheet names them:
 
 1. A three-way Q2 revenue tie across the 19th, 20th and 21st Retail-Core positions, so a top
-   twenty ships 20 rows under ROW_NUMBER, 21 under RANK and 18 under "whole ties only".
+   twenty ships 20 rows under ROW_NUMBER, 21 under RANK, 22 under DENSE_RANK and 18 under "whole
+   ties only".
 2. The generator's own falling-spend ladder, which under this seed lands on three different
    Retail-Plus members.
+
+The generator's own tie step also runs under any seed, so this sample carries a second tie at the
+fiftieth Retail-Plus position (C-0203 and C-0247 on Rs 3,780). The brief does not ask about it.
 
 Usage, from the repository root:
     python3 content/W02/D3/internal/C2_W02_D03_takehome_data_INTERNAL.py
