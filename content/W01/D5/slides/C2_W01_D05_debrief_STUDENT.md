@@ -106,15 +106,15 @@ decision, not the precision. Ask one learner what Meera would have done on Monda
 
 ```mermaid
 flowchart TB
-    R["<b>a segment's revenue</b><br/>flat, as read"] --> F["<b>orders per customer</b><br/>1.50 to 1.80 as read<br/>1.50 to 1.50 clean"]
-    R --> B["<b>revenue per order</b><br/>Rs 2,000 to Rs 1,670"]
+    R["<b>a segment's revenue</b><br/>flat, as read"] --> F["<b>orders per customer</b><br/>1.40 to 1.75 as read<br/>1.40 to 1.40 clean"]
+    R --> B["<b>revenue per order</b><br/>Rs 2,400 to Rs 2,100"]
     classDef bad fill:#FCE8EC,stroke:#C2185B,color:#1A0F5C
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class F bad
     class B known
 ```
 
-On the rows as read, customers seem to order a fifth more often and the segment looks flat. Clean, frequency holds and the basket falls by a sixth, which is a different branch and a different owner.
+On the rows as read, customers seem to order a quarter more often and the segment looks flat. Clean, frequency holds and the basket falls by an eighth, which is a different branch and a different owner.
 
 ```notes
 LIVE, 2 minutes. This is why the reconciliation comes before the tree in the method: repeated rows
@@ -242,7 +242,7 @@ decision is theirs to defend; the only wrong answer is the one with no log line.
 ---
 
 ## SECTION 3: The headline on too few orders
-*A rate on ten orders is a rumour with a percent sign.*
+*A rate on a handful of orders is a rumour with a percent sign.*
 
 ```notes
 LIVE, after lunch. Ten minutes. Run this chapter if the tally shows notes that lead with a segment's
@@ -252,16 +252,16 @@ the other two breaks the lab produces.
 
 ---
 
-## S11. The corporate book fell 30 percent
-*Invented numbers: a segment's revenue, true to the rupee, on eight orders.*
+## S11. The corporate book fell 45 percent
+*Invented numbers: a segment's revenue, true to the rupee, on nine orders.*
 
 ```stats
-value: -30.0% | label: corporate revenue, Q1 to Q2 | note: invented
-value: 5 then 3 | label: orders | note: invented
-value: 2 | label: orders that explain it | note: out of eight
+value: -45.0% | label: corporate revenue, Q1 to Q2 | note: invented
+value: 6 then 3 | label: orders | note: invented
+value: 3 | label: orders that explain it | note: out of nine
 ```
 
-The rupees reconcile and the percentage is right. A note that leads with it sends Meera after two invoices.
+The rupees reconcile and the percentage is right. A note that leads with it sends Meera after three invoices.
 
 ```notes
 LIVE, 2 minutes. Read it as the headline many notes led with. The number is correct; the question
@@ -291,14 +291,14 @@ flowchart TB
     Q --> C["<b>customers</b><br/>flat"]
     Q --> F["<b>orders per customer</b><br/>flat"]
     Q --> B["<b>revenue per order</b><br/>moved, on 40-plus orders"]
-    Q --> S["<b>a segment on 8 orders</b><br/>caveat, with its count"]
+    Q --> S["<b>a segment on 9 orders</b><br/>caveat, with its count"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
     class B known
     class S unknown
 ```
 
-**Kavya's review.** Say the count before the rate, every time: "8 orders, down 30 percent" is honest, and "down 30 percent" alone is a headline.
+**Kavya's review.** Say the count before the rate, every time: "9 orders, down 45 percent" is honest, and "down 45 percent" alone is a headline.
 
 ```notes
 LIVE, 3 minutes. The answer is d. Then open the reference notebook, section 4, and show the tree

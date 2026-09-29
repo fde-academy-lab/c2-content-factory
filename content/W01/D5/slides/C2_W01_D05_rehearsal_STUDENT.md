@@ -309,7 +309,7 @@ preread/ and ships tonight.
 
 1. A total you have not reconciled is a guess with a decimal point.
 2. Zero rejects on a file you know is dirty is a finding, not a result.
-3. Count before rate: a rate on ten orders is a rumour with a percent sign.
+3. Count before rate: a rate on a handful of orders is a rumour with a percent sign.
 4. Shuffle what belongs together: the customer, not the order.
 5. Say the claim with its denominator, the caveat before they find it, and what would change your mind.
 
