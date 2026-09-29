@@ -368,9 +368,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
           <div class="part-label">Experiment C &middot; round 3 &middot; invented orders</div>
           <h3 class="exp-title">One large order and the mean</h3>
           <p><b>Situation.</b> Five invented orders sit between Rs 1,900 and Rs 2,600. An invented order of Rs 90,000 then
-            replaces the Rs 2,600 one, which is the shape Anand warned about.</p>
-          <p><b>Hypothesis.</b> The mean jumps by about the large order's extra size divided by five, and the median does not
-            move.</p>
+            joins them as a sixth, which is the shape Anand warned about.</p>
+          <p><b>Hypothesis.</b> The mean jumps to several times its old value, and the median moves by only a few rupees.</p>
           <p><b>Watch for.</b> The rose mean line leaving the pile of dots, and whether the green median line moves at all.</p>
           <div class="holder" id="expCDraw"><p class="note">The strip appears here after the run.</p></div>
           <div class="row">
@@ -1288,7 +1287,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
       "A set keeps each id once, which is why its length counts people where the list's length counts orders.");
   });
 
-  var ORDINARY = [1900, 2100, 2200, 2400, 2600], LARGE = [1900, 2100, 2200, 2400, 90000];
+  var ORDINARY = [1900, 2100, 2300, 2400, 2600], LARGE = [1900, 2100, 2300, 2400, 2600, 90000];
   function mean(a) { return a.reduce(function (s, x) { return s + x; }, 0) / a.length; }
   function median(a) {
     var s = a.slice().sort(function (x, y) { return x - y; }), n = s.length;
@@ -1299,19 +1298,19 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     cOn = !cOn;
     toggle(this, cOn, "Add the invented large order", "Take the invented large order out");
     var list = cOn ? LARGE : ORDINARY;
-    K.draw("expCDraw", K.strip(list, { lo: 0, hi: 100000, width: 560, lit: cOn ? [4] : [],
+    K.draw("expCDraw", K.strip(list, { lo: 0, hi: 100000, width: 560, lit: cOn ? [5] : [],
       markers: [["mean", mean(list), "bad"], ["median", median(list), "good"]],
       title: cOn ? "Invented orders, with the invented Rs 90,000 order" : "Five invented ordinary orders" }));
     reveal("expC", cOn
-      ? "The mean moved from Rs 2,240 to Rs 19,720, almost nine times, while the median stayed at Rs 2,200. One order of five changed, and now 1 of 5 orders sits above the mean."
-      : "Without the large order the mean is Rs 2,240 and the median Rs 2,200: the two agree when nothing sits far out.");
+      ? "The mean moved from Rs 2,260 to Rs 16,883, more than seven times, while the median moved Rs 50, from Rs 2,300 to Rs 2,350. One order was added, and now 1 of 6 orders sits above the mean."
+      : "Without the large order the mean is Rs 2,260 and the median Rs 2,300: the two agree when nothing sits far out.");
   });
   $("expCSeq").addEventListener("click", function () {
     openSeq("Experiment C, as a sequence", ["the invented list", "the mean", "the median"], [
-      ["the invented list", "the mean", "total 11,200 over 5"], ["the mean", "the mean", "Rs 2,240"],
-      ["the invented list", "the median", "sorted, the third of five"], ["the median", "the median", "Rs 2,200"],
-      ["the invented list", "the mean", "total 98,600 over 5"], ["the mean", "the mean", "Rs 19,720"],
-      ["the invented list", "the median", "sorted again, still the third"], ["the median", "the median", "Rs 2,200, unmoved"]],
+      ["the invented list", "the mean", "total 11,300 over 5"], ["the mean", "the mean", "Rs 2,260"],
+      ["the invented list", "the median", "sorted, the third of five"], ["the median", "the median", "Rs 2,300"],
+      ["the invented list", "the mean", "total 1,01,300 over 6"], ["the mean", "the mean", "Rs 16,883"],
+      ["the invented list", "the median", "sorted, the third and fourth of six"], ["the median", "the median", "Rs 2,350, moved Rs 50"]],
       "The mean reads every value's size; the median only asks which value stands in the middle.");
   });
 

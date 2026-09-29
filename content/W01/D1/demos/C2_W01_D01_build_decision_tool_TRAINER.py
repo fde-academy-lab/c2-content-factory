@@ -203,12 +203,12 @@ put(ws, "B14", '=IF(AND(B9=B8,B10>=2),"Fix the typical order before it values an
 long_cell(ws, "B14", 48)
 put(ws, "A15", "Fixed, for the Export tab", NOTE); put(ws, "B15", "=IF(B9=B7,1,0)")
 head(ws, 17, ["Invented orders (Rs)", "Invented list, measure"])
-for i, v in enumerate([1900, 2100, 2200, 2400, 90000], 18):
+for i, v in enumerate([1900, 2100, 2300, 2400, 2600, 90000], 18):
     put(ws, f"A{i}", v, fill=INPUT, fmt="#,##0")
-put(ws, "A23", "These five amounts are invented; change the last one to see the mean move and the median stay.", NOTE)
-put(ws, "C18", "Mean"); put(ws, "D18", "=ROUND(AVERAGE(A18:A22),0)", fmt="#,##0")
-put(ws, "C19", "Median"); put(ws, "D19", "=MEDIAN(A18:A22)", fmt="#,##0")
-put(ws, "C20", "Orders above the mean"); put(ws, "D20", '=COUNTIF(A18:A22,">"&D18)')
+put(ws, "A24", "These six amounts are invented; clear the last one to see the mean fall back while the median barely moves.", NOTE)
+put(ws, "C18", "Mean"); put(ws, "D18", "=ROUND(AVERAGE(A18:A23),0)", fmt="#,##0")
+put(ws, "C19", "Median"); put(ws, "D19", "=MEDIAN(A18:A23)", fmt="#,##0")
+put(ws, "C20", "Orders above the mean"); put(ws, "D20", '=COUNTIF(A18:A23,">"&D18)')
 
 # ---------------------------------------------------------------- Lifts
 ws = sheet(wb, "Lifts", "Do two lifts add or multiply?",

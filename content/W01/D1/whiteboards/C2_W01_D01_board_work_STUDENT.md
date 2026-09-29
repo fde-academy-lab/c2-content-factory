@@ -73,19 +73,19 @@ The check goes beside it in code: the length of the rows against the length of t
 
 ## Drawing 4: sorted amounts, with the mean and the median drawn on invented values
 
-It goes up in round 3, after the room has seen the mean and the median of the real file and before anyone sorts it. The five amounts are invented, so the mechanism shows on numbers nobody has to trust.
+It goes up in round 3, after the room has seen the mean and the median of the real file and before anyone sorts it. Every amount here is invented, so the mechanism shows on numbers nobody has to trust.
 
 ```mermaid
 xychart-beta
-    title "Five invented orders, sorted, after the last is replaced"
-    x-axis ["order 1", "order 2", "order 3", "order 4", "order 5"]
+    title "Six invented orders, sorted, after the sixth is added"
+    x-axis ["order 1", "order 2", "order 3", "order 4", "order 5", "order 6"]
     y-axis "Rs" 0 --> 95000
-    bar [1900, 2100, 2200, 2400, 90000]
-    line [19720, 19720, 19720, 19720, 19720]
-    line [2200, 2200, 2200, 2200, 2200]
+    bar [1900, 2100, 2300, 2400, 2600, 90000]
+    line [16883, 16883, 16883, 16883, 16883, 16883]
+    line [2350, 2350, 2350, 2350, 2350, 2350]
 ```
 
-The upper line is the mean, Rs 19,720, and the lower line is the median, Rs 2,200. Before the last amount was replaced, the five orders ran from Rs 1,900 to Rs 2,600 with a mean of Rs 2,240 and the same median. Four of the five bars sit far below the mean line, which is the picture the room then looks for in its own sort of the 30 real amounts.
+Five invented orders of Rs 1,900, 2,100, 2,300, 2,400 and 2,600 go up first, with a mean of Rs 2,260 and a median of Rs 2,300. An invented Rs 90,000 order is then added as the sixth. The upper line is the new mean, Rs 16,883, and the lower line is the new median, Rs 2,350, the average of the two middle amounts. The mean jumped by more than Rs 14,000 and the median moved by Rs 50, and five of the six bars sit far below the mean line, which is the picture the room then looks for in its own sort of the 30 real amounts.
 
 ---
 
