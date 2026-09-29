@@ -99,7 +99,8 @@ your revenue tree for Kalpa Health, and tell me where it differs from Meera's."
 **What is planted.** One corporate health-check contract in Q2: invoice KH/26-27/007802, account
 CORP-0007, Rs 18,00,000, which is 16.2 percent of Q2's invoiced revenue of Rs 1,11,31,711. The Q2
 mean invoice is Rs 1,904 with it and Rs 1,596 without it, against a median of Rs 1,499. Packages bill
-as one line: 22,152 invoice lines outside the contract stand behind 48,235 tests. Invoiced revenue
+as one line: 22,152 invoice lines outside the contract bill 46,867 tests on their completed bookings
+(48,235 counting cancelled bookings, which the booking-tests file also lists). Invoiced revenue
 outside the contract rose from Rs 85,74,238 in Q1 to Rs 93,31,711 in Q2, 8.8 percent; Chennai fell
 5.4 percent and Pune 11.6 percent, while Hyderabad rose 26.2 percent. Thirty-five invoice amounts are
 written with a thousands comma ("2,600"), so a numeric read of the column fails or skips them.
@@ -115,7 +116,7 @@ there?"**
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| Counted tests from the booking-tests file, component and single-test lines, and got far more tests than invoice lines (48,235 against 22,152 across both quarters, outside the contract) | Counts invoice lines or line items as tests | "Why do invoice lines and tests disagree, and which one is Dr Menon's volume?" (A package is one line and many tests; volume is tests.) |
+| Counted tests from the booking-tests file, component and single-test lines, and got far more tests than invoice lines (48,235 in the file, 46,867 on completed bookings, against 22,152 invoice lines across both quarters, outside the contract) | Counts invoice lines or line items as tests | "Why do invoice lines and tests disagree, and which one is Dr Menon's volume?" (A package is one line and many tests; volume is tests.) |
 
 **P3. "Which branch of the business is short, in rupees?"**
 

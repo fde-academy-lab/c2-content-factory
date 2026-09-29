@@ -73,10 +73,11 @@ bookings or summed text as numbers. Ask for the row count and the distinct-id co
 | 2. Reconcile | All 2,381 appear in the patients file, each in the same city. 1,716 of them have at least one booking in the old export. Patients with no booking at all are counted and set aside with a stated reason. | "We joined and it worked", with no counts | "How many offered patients have no booking at all, and did you count them in the denominator?" |
 | 3. Denominator | Bookings per patient over a stated window (the spine's is 15 July to 14 September), offered against not offered. Overall, offered patients book 9.0 percent more. Within each of Bengaluru, Hyderabad and Mumbai they book less (down 10.8, 19.9 and 13.0 percent). Those three cities were already rising 6.9 percent before the offer. | 9 percent restated with no city split, or "the campaign worked" | "Run the same comparison inside one city." |
 
-**One note the spine does not carry.** The spine says the offer ran in three cities. The campaign file
-also carries offers in Delhi, Chennai and Pune at a lower rate, and in Delhi, offered patients
-out-book the rest by 23.5 percent. A group that finds this has found something real. Ask it whether
-offered and unoffered patients in Delhi are alike before either group reads it as a lift. Do not
+**The offer outside the three cities.** The campaign file also carries offers in Delhi, Chennai and
+Pune, to a fifth of patients at random, against half in the campaign cities. In Delhi, offered
+patients out-book the rest by 23.5 percent, a chance draw that a permutation test puts at p of about
+0.03; Chennai shows minus 4.8 and Pune plus 0.6. A group that reads Delhi as proof the offer works has
+met a false positive. Ask it whether the other two cities without the drift show the same gap. Do not
 settle it at the checkpoint.
 
 ---

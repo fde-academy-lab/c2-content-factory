@@ -113,10 +113,12 @@ holds the answer (5.1 percent on the dashboard's count, 7.8 in tests booked acro
 in tests performed and 5.6 in bookings, all without the corporate contract, and every reading short
 of 18).
 
-**One thing the spine does not say.** The campaign file carries offers in all six cities, not only
-the three the spine names. Delhi has 316, and in Delhi, offered patients out-book the rest by 23.5
-percent. Handle it as the checkpoint guide says: a group that finds it has found something real, and
-the question is whether the offered and unoffered patients in Delhi are alike.
+**The offer outside the three cities.** The campaign file carries offers in all six cities: half
+the patients in Bengaluru, Hyderabad and Mumbai, and a fifth elsewhere at random (Delhi 316). In
+Delhi, offered patients out-book the rest by 23.5 percent, and a permutation test puts that at p of
+about 0.03. It is a chance draw, since the offer there was random and carried no drift. A group that
+finds it has met a false positive. Ask it what else it would expect to see if the offer caused the
+gap, and whether Chennai and Pune show it (minus 4.8 and plus 0.6 percent).
 
 ---
 
