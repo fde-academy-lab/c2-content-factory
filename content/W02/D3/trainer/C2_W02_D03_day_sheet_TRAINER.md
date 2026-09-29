@@ -2,7 +2,7 @@
 
 **TRAINER ONLY.** Nothing on this page reaches a learner.
 
-Posts to <!-- sync:module:W02/D3 --><!-- /sync:module:W02/D3 -->, on <!-- sync:day-date:W02/D3 --><!-- /sync:day-date:W02/D3 -->.
+Posts to <!-- sync:module:W02/D3 -->Module 1: Foundations of AI and Data<!-- /sync:module:W02/D3 -->, on <!-- sync:day-date:W02/D3 -->Wed 14 Oct 2026<!-- /sync:day-date:W02/D3 -->.
 
 | | |
 |---|---|
@@ -17,6 +17,13 @@ Posts to <!-- sync:module:W02/D3 --><!-- /sync:module:W02/D3 -->, on <!-- sync:d
 ## The faculty block, and where the trainer's row stops
 
 <!-- sync:faculty-day:W02/D3 -->
+**IITGN faculty block W2-3 (tentative), 120 minutes, after this row's applied core.** Faculty: to be confirmed by IIT Gandhinagar.
+
+TOPIC: Errors, power and sample size: Type I and Type II errors, power, the sample size a comparison needs, multiple comparisons, and statistical against practical significance.
+PICKS UP WHERE THE ROW STOPS: Week 1 Thursday gave a rule of thumb of thirty observations and stopped before power.
+CONNECTS TO KALPA: how many Student orders Meera would need before she could trust 40 percent; marketing testing ten segments and finding one that looks significant.
+BY THE END: a learner can size a comparison roughly, and can explain why testing many segments manufactures findings. The block closes the statistics that ME1 draws on.
+DOES NOT REPEAT: correlation against causation, which the campaigns table already taught.
 <!-- /sync:faculty-day:W02/D3 -->
 
 The trainer's row stops where the faculty block starts, which is after the Kahoot and Thursday's
@@ -83,7 +90,7 @@ sheet.
 
 | Part | Slides | Beside it | What must land | If short of time |
 |---|---|---|---|---|
-| The escalated case | Afternoon deck, SECTION 1: The escalated case | `notebooks/C2_W02_D03_hands_on_STUDENT.ipynb` or `sql/C2_W02_D03_04_marketing_case_STUDENT.sql`, with the brief in `exercises/unguided/C2_W02_D03_marketing_case_STUDENT.md` | Thirty-five minutes alone on five parts: the protect list with its tie rule, the flag on the listed members, the running total against plan, the check that it closes on Rs 9,84,00,000, and the sentence to Marketing. The support TA answers environment problems only. | Part 5 becomes one sentence written in the notebook, and the debrief reads the model sentence instead. |
+| The escalated case | Afternoon deck, SECTION 1: The escalated case | `notebooks/C2_W02_D03_hands_on_STUDENT.ipynb` or `sql/C2_W02_D03_04_marketing_case_STUDENT.sql`, with the brief in `exercises/unguided/C2_W02_D03_marketing_case_STUDENT.md` | A four-minute brief, then thirty-one minutes alone on five parts: the protect list with its tie rule, the flag on the listed members, the running total against plan, the check that it closes on Rs 9,84,00,000, and the sentence to Marketing. The support TA answers environment problems only. | Part 5 becomes one sentence written in the notebook, and the debrief reads the model sentence instead. |
 | The debrief, folded into the case | Afternoon deck, SECTION 2: The debrief | `exercises/solutions/C2_W02_D03_hands_on_solution_STUDENT.ipynb` and `exercises/solutions/C2_W02_D03_protect_list_solution_STUDENT.sql` | Ten minutes on the room's own wrong answers, first the plan-first join that closed Rs 15,39,810 short of plan, then the sentence to Marketing read aloud and checked for its three counts. | Show only the plan-first join and the close; the solution notebook carries the rest. |
 | The close | Afternoon deck, SECTION 3: The close | `kahoot/C2_W02_D03_quiz_STUDENT.md`, then Thursday's ask read and left open | Eight items with Tuesday's return question, the four crux lines, and Thursday's stakeholder message read once. | Drop to six Kahoot items; keep the return question and Q7 on the holiday month. |
 | The faculty block | Not in the trainer's decks | The faculty block above | The trainer hands over on time. | Nothing is cut from the block. |

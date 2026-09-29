@@ -1,7 +1,8 @@
 # The escalated case: Marketing's list for Monday
 
-Forty-five minutes, unguided, on your own or in the pair you sat with this morning. The trainer
-answers questions about the brief and never about the query. The debrief follows straight after
+Forty-five minutes in all, unguided and on your own: a four-minute brief, thirty-one minutes on
+the five parts, and ten minutes of debrief. The trainer answers questions about the brief and never
+about the query. The debrief follows straight after
 and replays the wrong answers the room produced, so keep every wrong turn you take; it is worth more
 in the debrief than a clean first attempt.
 
