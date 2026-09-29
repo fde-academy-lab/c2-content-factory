@@ -327,7 +327,7 @@ def render_mermaid(lines, width_in=None):
     A mermaid fence renders as nothing at all in PowerPoint, so a deck that draws its thinking in
     mermaid needs the picture baked in. The markdown stays the authoritative source, which is what
     the verification gate reads and what renders on GitHub. Install the renderer with
-    `npm install -g @mermaid-js/mermaid-cli`; without it the fence falls back to monospace text.
+    `npm install -g @mermaid-js/mermaid-cli@11`; without it the fence falls back to monospace text.
 
     The theme is the one scripts/build_cheatsheet.py uses, so the drawing a room sees on the slide
     is the drawing they find again on the cheat sheet and in the notebook. Without it mermaid
@@ -357,13 +357,21 @@ def render_mermaid(lines, width_in=None):
     chrome = _chromium()
     if chrome:
         env["PUPPETEER_EXECUTABLE_PATH"] = chrome
+    from build_cheatsheet import mmdc_page_args, mmdc_failed, _mmdc_supports
+    natural = None
+    if not _mmdc_supports("--width"):
+        from build_cheatsheet import render_mermaid as svg_render, svg_size
+        svg = svg_render("\n".join(lines).strip(), "svg")
+        natural = svg_size(svg) if svg else None
     try:
-        subprocess.run(["mmdc", "-i", str(CACHE / f"{key}.mmd"), "-o", str(png),
-                        "-b", "transparent", "-w", "2600", "-s", str(scale), "-c", str(theme),
-                        "-p", str(config)],
-                       capture_output=True, text=True, env=env, timeout=240)
+        result = subprocess.run(["mmdc", "-i", str(CACHE / f"{key}.mmd"), "-o", str(png),
+                                 "-b", "transparent", *mmdc_page_args(2600, natural),
+                                 "-s", str(scale), "-c", str(theme), "-p", str(config)],
+                                capture_output=True, text=True, env=env, timeout=240)
     except Exception:
         return None
+    if not png.exists():
+        mmdc_failed(result)
     return png if png.exists() else None
 
 

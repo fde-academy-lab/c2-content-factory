@@ -183,18 +183,67 @@ def render_mermaid(code, fmt="svg"):
     cmd = ["mmdc", "-i", str(src), "-o", str(out), "-b", "transparent",
            "-c", str(conf), "-p", str(pup)]
     if fmt == "png":
-        cmd += ["-w", "2400"]
+        natural = None
+        if not _mmdc_supports("--width"):
+            svg = render_mermaid(code, "svg")
+            natural = svg_size(svg) if svg else None
+        cmd += mmdc_page_args(2400, natural)
     try:
-        subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=300)
+        result = subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=300)
     except Exception:
         return None
     if not out.exists():
+        mmdc_failed(result)
         return None
     if fmt == "svg" and b"foreignObject" in out.read_bytes():
         # An unrendered label is worse than a missing diagram, because it looks finished.
         out.unlink()
         return None
     return out
+
+
+_MMDC_HELP = None
+_MMDC_WARNED = set()
+
+
+def _mmdc_supports(flag):
+    """Whether the installed mermaid-cli lists flag in its help, read once per run."""
+    global _MMDC_HELP
+    if _MMDC_HELP is None:
+        try:
+            _MMDC_HELP = subprocess.run(["mmdc", "--help"], capture_output=True, text=True,
+                                        timeout=60).stdout
+        except Exception:
+            _MMDC_HELP = ""
+    return flag in _MMDC_HELP
+
+
+def mmdc_page_args(page_width, natural=None):
+    """The mmdc flags that give a PNG render the page it needs, for either mermaid-cli.
+
+    mermaid-cli 11 takes -w, the width of the page it draws on, and these scripts pass a wide page
+    so a long chain is never squeezed. mermaid-cli 12.0 removed -w and refuses any command that
+    carries it, which left every diagram falling back to its source text with no message. Its
+    replacement, --size, sets the viewport and then stretches the drawing to fill it, so it is
+    passed the drawing's own size in CSS pixels (natural, from the SVG render's viewBox), which
+    reproduces what -w gave. Without a natural size there is nothing safe to pass, and the drawing
+    renders on the default 800-pixel page.
+    """
+    if _mmdc_supports("--width"):
+        return ["-w", str(page_width)]
+    if _mmdc_supports("--size") and natural and max(natural) > 0:
+        return ["--size", str(int(max(natural) + 0.999))]
+    return []
+
+
+def mmdc_failed(result, fence_kind="diagram"):
+    """Say once why mmdc drew nothing, since the fallback to source text looks like a success."""
+    lines = [ln.strip() for ln in (result.stderr or result.stdout or "").splitlines() if ln.strip()]
+    said = next((ln for ln in lines if ln.lower().startswith(("error", "unknown option"))),
+                lines[-1] if lines else "no output")
+    if said not in _MMDC_WARNED:
+        _MMDC_WARNED.add(said)
+        print(f"WARN  mermaid-cli drew no {fence_kind}: {said}", file=sys.stderr)
 
 
 def svg_size(path):
@@ -809,7 +858,7 @@ def main():
 
     if not shutil.which("mmdc"):
         print("INFO  mermaid-cli is not installed, so any diagram falls back to its source. "
-              "Install it with npm install -g @mermaid-js/mermaid-cli")
+              "Install it with npm install -g @mermaid-js/mermaid-cli@11")
 
     fails = sum(build(s, a.format, verified, a.png, a.max_pages) for s in sheets)
     print(f"      {len(sheets)} sheets built")
