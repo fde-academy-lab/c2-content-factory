@@ -733,11 +733,11 @@ of that tie. I would not use DENSE_RANK, because it ships more than N rows even 
 line: every tie above the line pulls the later members up, which is how Retail-Core's top fifty
 became 52. The report then states the count and the reason in one line."
 
-**[F] Your top-fifty list came back with 51 rows. What do you tell the stakeholder, and is it a
+**[F] Your top-ten list came back with eleven rows. What do you tell the stakeholder, and is it a
 bug?** "First I find out whether it is a tie or a mistake: I count members at the last position and
 read the rows either side of the line with ROW_NUMBER, RANK and DENSE_RANK side by side. If two
-members share fiftieth on exactly the same spend and I ranked with RANK, it is the rule working, and
-I tell the stakeholder that the list has 51 members because two tie at fiftieth, with both names.
+members share tenth on exactly the same spend and I ranked with RANK, it is the rule working, and
+I tell the stakeholder that the list has eleven members because two tie at tenth, with both names.
 If the extra row came from DENSE_RANK, or from a join that duplicated a member, it is a bug, and I
 fix it before the list goes anywhere."
 """),
@@ -1060,8 +1060,9 @@ kit.check("the steps run from Rs 3,45,16,000 to Rs 3,76,90,290",
 '''),
         md(r"""
 Now against the plan. `plan_line` has thirteen weeks starting Monday 6 July, Rs 75,69,230 each. Both
-sides accumulate, and the actual is read at each plan week's last day, `week_start + 6`, so orders
-placed before the plan's first week still count.
+sides accumulate, and the actual is read at each plan week's last day, `week_start + 6`. This round
+reads the first seven plan weeks, up to mid-quarter; the full thirteen and the close are the
+afternoon's case.
 
 **Predict before you run.** At mid-quarter, the end of the seventh plan week, where did Q2 stand?
 a) behind plan; b) on plan within a lakh; c) ahead by about Rs 1.58 crore; d) at nine times the plan.
@@ -1082,6 +1083,7 @@ plan = sql("""
     SELECT p.week_start, p.plan_revenue, p.plan_to_date,
            (SELECT max(t.booked_to_date) FROM to_date t WHERE t.order_date <= p.week_end) AS booked_to_date
     FROM   plan p
+    WHERE  p.week_start <= DATE '2026-08-17'
     ORDER  BY p.week_start""")
 for r in plan:
     r["ahead_of_plan"] = r["booked_to_date"] - r["plan_to_date"]
@@ -1090,12 +1092,12 @@ kit.line(weeks, [("plan to date", [r["plan_to_date"] for r in plan], "plan"),
                  ("booked to date", [r["booked_to_date"] for r in plan], "good")],
          fmt=crore, title="Q2 booked to date against plan to date, read at each plan week's last day")
 show([{k: r[k] for k in ("week_start", "plan_to_date", "booked_to_date", "ahead_of_plan")} for r in plan],
-     money=("plan_to_date", "booked_to_date", "ahead_of_plan"), caption="The thirteen plan weeks")
+     money=("plan_to_date", "booked_to_date", "ahead_of_plan"), caption="The first seven plan weeks, to mid-quarter")
 '''),
         code(r'''
 weekly = [plan[0]["booked_to_date"]] + [plan[i]["booked_to_date"] - plan[i - 1]["booked_to_date"]
                                         for i in range(1, len(plan))]
-kit.bars([("1 Jul to 12 Jul" if i == 0 else f"week of {w}", v) for i, (w, v) in enumerate(zip(weeks, weekly))],
+kit.bars([(f"week of {w}", v) for w, v in zip(weeks, weekly)],
          fmt=kit.rupees,
          lit=[i for i, v in enumerate(weekly) if v < plan[i]["plan_revenue"]], width=820,
          title="Booked in each plan week; dark bars fell below the weekly plan of Rs 75,69,230")
@@ -1103,22 +1105,22 @@ kit.bars([("1 Jul to 12 Jul" if i == 0 else f"week of {w}", v) for i, (w, v) in 
         md(r"""
 **What happened.** The answer is c. At the end of the seventh plan week, the week of 17 August, Q2
 had booked Rs 6,87,36,590 against a plan to date of Rs 5,29,84,610, ahead by Rs 1,57,51,980. Almost
-all of that lead came from the week of 13 July, which booked Rs 2.66 crore on its own. From the week
-of 10 August, six of the seven full weeks booked below the weekly plan, and the lead shrank from a
-peak of Rs 2,16,69,660 to Rs 10 at the close: Rs 9,84,00,000 against Rs 9,83,99,990. On track by the
-total, off track by the run rate. Option d is what a dashboard shows when it sets the running actual
-beside one week's plan instead of the plan to date.
+all of that lead came from the week of 13 July, which booked Rs 2.66 crore on its own, and by the
+seventh week the lead had already shrunk from its peak of Rs 2,16,69,660 at the end of the week of
+3 August. Option d is what a dashboard shows when it sets the running actual beside one week's plan
+instead of the plan to date. Where the quarter closed, and whether this running total closes on
+Monday's Q2 total, is the check the afternoon's case asks for.
 """),
         code(r'''
 ahead = [r["ahead_of_plan"] for r in plan]
-kit.check("thirteen plan weeks", len(plan) == 13)
-kit.check("booked to date closes on Monday's Q2 total", plan[-1]["booked_to_date"] == 98400000,
-          kit.rupees(plan[-1]["booked_to_date"]))
-kit.check("the plan closes at Rs 9,83,99,990", plan[-1]["plan_to_date"] == 98399990)
+kit.check("seven plan weeks, to mid-quarter", len(plan) == 7)
+kit.check("both sides accumulate", all(plan[i]["booked_to_date"] >= plan[i - 1]["booked_to_date"]
+                                       and plan[i]["plan_to_date"] > plan[i - 1]["plan_to_date"]
+                                       for i in range(1, len(plan))))
+kit.check("plan to date at mid-quarter is Rs 5,29,84,610", plan[6]["plan_to_date"] == 52984610)
 kit.check("ahead by Rs 1,57,51,980 at mid-quarter", ahead[6] == 15751980, kit.rupees(ahead[6]))
-kit.check("the lead peaked at Rs 2,16,69,660", max(ahead) == 21669660)
-kit.check("six of the seven full weeks from 10 August booked below plan",
-          sum(1 for i in range(5, 12) if weekly[i] < plan[i]["plan_revenue"]) == 6)
+kit.check("the lead peaked at Rs 2,16,69,660, above the mid-quarter lead",
+          max(ahead) == 21669660 and max(ahead) > ahead[6])
 '''),
         # ---------------------------------------------------------- SUM
         md(r"""
@@ -1133,7 +1135,7 @@ kit.vflow(["LAG without PARTITION BY\n20 flagged, 4 against another member",
            "PARTITION BY customer_id\n16 flagged, 7 across a gap",
            "previous rows must be August and July\n9 flagged",
            "running total, date then order_id\none step per order",
-           "read at each plan week's last day\ncloses on Rs 9,84,00,000"],
+           "read at each plan week's last day\nahead at mid-quarter"],
           kinds=["bad", "bad", "good", "known", "good"],
           title="Round 3: the flag, fix by fix, then the plan line")
 kit.table(["Question", "Answer", "What it means for Marketing and Meera"],
@@ -1141,7 +1143,7 @@ kit.table(["Question", "Answer", "What it means for Marketing and Meera"],
            ("Flagged with the member partition?", "16", "Seven of them read a holiday as a fall."),
            ("Flagged with consecutive months?", "9", "The list Marketing can defend."),
            ("Ahead of plan at mid-quarter?", kit.rupees(ahead[6]), "Almost all of it from one July week."),
-           ("Where did Q2 close?", kit.rupees(plan[-1]["booked_to_date"]), "Rs 10 ahead of the plan line.")],
+           ("Where did Q2 close?", "The afternoon's case", "The close is checked against Monday's total.")],
           caption="What Round 3 established")
 '''),
         md(r"""
@@ -1290,7 +1292,8 @@ WHY = {
     1: "a) ROW_NUMBER breaks a tie at the line by customer_id, a coin toss the head of Retail-Plus ruled out. "
        "b) DENSE_RANK closes the gaps after every tie, so a segment ships more than fifty with no tie at the "
        "line, 52 in Retail-Core. d) RANK without PARTITION BY ranks the whole table, the Round 1 trap, and "
-       "hands Retail-Plus 11 members.",
+       "hands Retail-Plus 11 members. With c, the list carries 51 Retail-Plus members because two tie at "
+       "fiftieth, which is also the answer to Round 2's Retail-Plus cell.",
     2: "b) June two back means July is missing, the gap Round 3 refused to read as a fall. c) matches "
        "whatever month sits two rows back, so a member with no July order is read as falling from June. d) "
        "August is already the row one back, so no September row has August two back and nobody is flagged.",
@@ -1452,7 +1455,8 @@ kit.check("the flag counts 9 members, and all 9 are on the list",
 ## Part 3. Revenue against plan, both sides accumulating
 
 Both sides accumulate: the booked total runs by day, the plan runs by week, and the actual is read
-once per plan week. Orders placed before the plan's first week must still count.
+once per plan week. The question the case asks: does your booked-to-date at the last plan week
+close on Monday's Q2 total, and if it does not, which orders did the query leave out?
 """),
         code(READ_OPTIONS + f"""read_sql = READ_ON[{pick(3)}]
 """ + r'''
