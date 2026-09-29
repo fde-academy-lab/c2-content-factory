@@ -1,13 +1,34 @@
 # Mock R1: what it is and how to prepare
 
-Your first mock interview runs during Build 1, one learner at a time, while your group keeps
-building. It lasts about 20 minutes. Your slot, and the assessor you sit with, come from the roster
+Your first mock interview, Mock R1, runs on Thursday 22 October, one learner at a time, while your
+group keeps building. It lasts about 20 minutes. Your slot, and the assessor you sit with, come from the roster
 the Programme Head shares at the start of the day. Your group-mates' slots are spread through the
 day, so the group is never more than one person short.
 
 The mock is one of the three Build 1 scores, alongside the mini project and the group discussion.
 It carries 30 marks. The mini project carries 40, including the presentation, and the group
 discussion 30.
+
+## How the mock is scored
+
+You are scored alone, 15 marks on each half, on this rubric:
+
+<!-- sync:rubric:W03/mock -->
+**Mock interview R1, 30 marks.** Each learner is scored alone, 15 marks on the technical half and 15 on the project viva.
+
+| Half | Criterion | Marks |
+|---|---|---|
+| Technical | Correctness | 8 |
+| Technical | Reasoning aloud with numbers | 4 |
+| Technical | Handling a follow-up | 3 |
+| Project viva | The translation, with one decision defended by evidence | 6 |
+| Project viva | Defending a caveat under challenge | 6 |
+| Project viva | What they would do differently | 3 |
+<!-- /sync:rubric:W03/mock -->
+
+Two of the six rows reward what happens after your first answer: handling a follow-up, and defending
+a caveat when a stakeholder pushes on it. A third asks what you would do differently, which your
+challenges log answers if you keep it honest.
 
 ## Who interviews you
 
@@ -32,7 +53,9 @@ as far as the first question. No question asks you to write code from memory.
 **The viva, about eight minutes.** Questions on your own group's Kalpa Health sub-problem. The viva asks
 how you carried the fortnight's method into a business you had never seen: why the tree, the ladder,
 the reconciliation or the comparison you chose fits Kalpa Health, and what you had to change to make
-it fit. It asks about a decision your group made and whether you would defend it.
+it fit. It asks about a decision your group made and whether you would defend it. It asks for your
+group's headline claim and its caveat, and then pushes on the caveat the way Dr Menon or one of
+her team would. It closes by asking what you would do differently if you started again.
 It asks you to show where a number comes from, in your notebook or SQL, and to talk through your
 group's challenges log and decisions log.
 
@@ -59,7 +82,8 @@ total, in short pieces.
 |---|---|---|
 | Before the day starts | 10 | Reread your group's challenges log and decisions log end to end. For every entry, say aloud what happened and why. Mark any entry you could not explain, and ask its author before your slot. |
 | During the build | 10 | Pick one number your group will give Dr Menon. Find the cell that produces it, say its denominator and its window, and say what would make it wrong. Swap with a group-mate and quiz each other on one number each. |
-| Two slots before yours | 10 | Say your answer to "walk me through the analysis you did on unfamiliar data and one decision you would defend" in under two minutes. Then say one move from each week of the fortnight in a stakeholder's words: the revenue tree, the investigation ladder, profile and reconcile, real or noise, booked against collected, and choosing the tool. |
+| Two slots before yours | 10 | Say your answer to "walk me through the analysis you did on unfamiliar data and one decision you would defend" in under two minutes. Then say your group's headline claim with its caveat, and defend the caveat against the
+strongest objection a group-mate can raise. Then say one move from each week of the fortnight in a stakeholder's words: the revenue tree, the investigation ladder, profile and reconcile, real or noise, booked against collected, and choosing the tool. |
 
 A thin log is the easiest place for a viva to find a gap, so a group that writes its challenges and
 decisions down as they happen is also preparing its mocks.

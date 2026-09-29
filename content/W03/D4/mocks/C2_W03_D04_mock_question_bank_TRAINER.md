@@ -8,6 +8,15 @@ Weeks 1 and 2, so the half tests the fortnight's method and never Python or SQL 
 The viva half, on the group's Kalpa Health work, is a separate file,
 `C2_W03_D04_viva_prompts_TRAINER.md`.
 
+## What the half is scored on
+
+The technical half carries 15 of the mock's 30 marks, on three criteria approved on 29 September
+2026 and held in `data/programme/facts.yaml`: correctness (8), reasoning aloud with numbers (4) and
+handling a follow-up (3). Each question in this bank serves all three. The model answer is the bar for
+correctness, the numbers inside it are the bar for reasoning aloud, and the follow-up, with what it
+separates, is the bar for handling a follow-up. Score the three questions together at the end of the
+half, never question by question.
+
 ## How the bank is cut
 
 | Level | What it asks for | What an understood answer shows |

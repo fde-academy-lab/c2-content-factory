@@ -11,17 +11,33 @@ breaks soonest where the group's challenges log is thin.
 
 ## The eight minutes
 
-| Minutes | Probe | Where it comes from |
+| Minutes | Probe | Where it comes from | The rubric criterion it evidences |
+|---|---|---|---|
+| 1.5 | The opener, the same for every learner | The row's interview angle | The translation, with one decision defended by evidence (6) |
+| 1.5 | The translation probe for the group's sub-problem | The row's thinking column | The translation, with one decision defended by evidence (6) |
+| 2 | One plant probe for the group's sub-problem, chosen by seat | The spine's plant table | The translation, with one decision defended by evidence (6) |
+| 2 | The caveat challenge for the group's sub-problem | The group's headline claim from Wednesday | Defending a caveat under challenge (6) |
+| 1 | The looking-back probe | The group's challenges log and decisions log | What they would do differently (3) |
+
+The rubric, rendered from `data/programme/facts.yaml`:
+
+<!-- sync:rubric:W03/mock -->
+**Mock interview R1, 30 marks.** Each learner is scored alone, 15 marks on the technical half and 15 on the project viva.
+
+| Half | Criterion | Marks |
 |---|---|---|
-| 2 | The opener, the same for every learner | The row's interview angle |
-| 2 | The translation probe for the group's sub-problem | The row's thinking column |
-| 2.5 | One plant probe for the group's sub-problem, chosen by seat | The spine's plant table |
-| 1.5 | The log probe | The group's challenges log and decisions log |
+| Technical | Correctness | 8 |
+| Technical | Reasoning aloud with numbers | 4 |
+| Technical | Handling a follow-up | 3 |
+| Project viva | The translation, with one decision defended by evidence | 6 |
+| Project viva | Defending a caveat under challenge | 6 |
+| Project viva | What they would do differently | 3 |
+<!-- /sync:rubric:W03/mock -->
 
 **Rotate by seat so group-mates meet different probes.** Each sub-problem below carries plant probes
 numbered P1 to P4. Seat 1 takes P1, seat 2 takes P2, seat 3 takes P3 and seat 4 takes P4. The opener,
-the translation probe and the log probe stay the same for everyone, since a learner's own words are
-what they test, and group-mates' answers to them should differ.
+the translation probe, the caveat challenge and the looking-back probe stay the same for everyone,
+since a learner's own words are what they test, and group-mates' answers to them should differ.
 
 **Ask the learner to show the work.** The learner has the group's notebook or SQL, the decisions log
 and the challenges log open. Ask for the cell or the log line behind a number at least once. A
@@ -113,6 +129,12 @@ there?"**
 |---|---|---|
 | Found the comma-formatted amounts (35 of them), stripped the comma, logged the rule, and checked the revenue total before and after | "We cleaned the amount column" | "How much revenue would have gone missing if those rows had been coerced to empty?" (It depends on the rows; a learner who did it can compute it in the notebook.) |
 
+**The caveat challenge.** Ask for the group's headline claim and its caveat, then push as the COO: "Your caveat says the Rs 18 lakh contract distorts the averages. It is revenue. Why should I not count it?"
+
+| Did the work | Carried it | The follow-up |
+|---|---|---|
+| Keeps it counted in revenue and shows it apart: the contract is real and it is 16 percent of Q2, so any average or growth rate with it inside describes one customer; the caveat is about which number describes the business, never about removing revenue | Removes the contract, or drops the caveat | "Would your recommendation change if the contract renews next quarter?" |
+
 ---
 
 ## Sub-problem 2, bookings: bookings fell in two cities in Q2
@@ -155,6 +177,12 @@ the new system's 153, the real count is 1,243, a fall of 12.2 percent. The old e
 | Did the work | Carried it | The follow-up |
 |---|---|---|
 | 11,729 rows, 11,549 distinct ids, 180 repeats from a re-export; kept one per id, the latest update, and logged it | "There were some duplicates" | "Would the repeats have changed the two cities' fall?" (The learner who did it checks the repeats by city and quarter rather than guessing.) |
+
+**The caveat challenge.** Ask for the group's headline claim and its caveat, then push as the finance head: "Your caveat says the two cities' numbers depend on stitching two systems together. I do not want caveats; did bookings fall or not?"
+
+| Did the work | Carried it | The follow-up |
+|---|---|---|
+| Holds both halves: yes, bookings fell about 12 percent, and the 23 percent on the old dashboard is the system switch; the caveat is the size of the fall, never whether it happened, and it names what would shrink it (the new system's export being complete for the second half of September) | Drops the caveat under pressure and gives one number, or retreats to "it depends" | "What would you check tomorrow to make the caveat smaller?" |
 
 ---
 
@@ -199,6 +227,12 @@ Rs 1,70,97,980, and the gap to invoiced is exactly the unpaid invoices plus the 
 |---|---|---|
 | Invoiced about Rs 1.97 crore; successful payments sum to about Rs 1.76 crore, which overstates collection by the double posts; net of those and of refunds, collected is about Rs 1.71 crore; the gap is the unpaid invoices plus the refunds | Gives collected as the naive sum, or cannot bridge the two numbers | "Which line of your bridge would you check first if finance's number differed from yours by Rs 3.5 lakh?" (The double posts.) |
 
+**The caveat challenge.** Ask for the group's headline claim and its caveat, then push as the COO: "Your caveat says the double posts are gateway retries. My finance head says patients complain of being charged twice. Is your caveat hiding a problem?"
+
+| Did the work | Carried it | The follow-up |
+|---|---|---|
+| Keeps the rule and says what evidence would change it: the retries sit about two minutes apart on one reference, which is a gateway pattern, and the list of 229 goes to finance to check against the gateway's own record and any refund requests; if patients were charged twice, the gateway shows two settlements | Concedes that patients may have paid twice, or insists without evidence | "Which single record from the gateway would settle it for one of the 229?" |
+
 ---
 
 ## Sub-problem 4, no-shows: one clinic's rate, real or noise
@@ -239,6 +273,12 @@ probability 0.22.
 | Did the work | Carried it | The follow-up |
 |---|---|---|
 | Not on this evidence: the fair gap is inside chance; keep reading the rate on scheduled visits monthly and act if it holds; the cost of retraining is small, so a cheap reminder call trial is a fair middle | Agrees, because the rate "is double" | "What would change your advice?" |
+
+**The caveat challenge.** Ask for the group's headline claim and its caveat, then push as the clinics' operations head: "You say the gap could be chance. Twenty percent is twenty percent. Why should I not act?"
+
+| Did the work | Carried it | The follow-up |
+|---|---|---|
+| Holds it with the number: on fifty scheduled visits, two or three patients decide the gap, and a gap this size appears by chance about one time in five; acting is fine if it is cheap, and the caveat says what to measure next and for how long | Agrees the clinic is worse, or repeats "not significant" with no number | "If you had to give her one action today, what is it and what would it cost?" |
 
 ---
 
@@ -287,16 +327,23 @@ into the offer window, against 3.0 percent in Delhi over the same windows.
 |---|---|---|
 | Uptake says people used a free service, which they would do anyway; the question is whether they booked more than they would have, which uptake cannot answer | Agrees, or quotes the 9 percent | "What would you want to know about the 948 before and after the offer?" |
 
----
-
-## The log probe, every learner
-
-**"Show me the challenges log entry you are proudest of, and the one that is thinnest."**
+**The caveat challenge.** Ask for the group's headline claim and its caveat, then push as the marketing head: "You cannot prove the campaign did nothing. Your caveat is just doubt. I need budget for the next wave."
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| Opens the log, finds an entry they wrote, says what the challenge was, what they tried first and why it failed, and what they did next; names a thin entry honestly | Reads an entry aloud as if for the first time, or names only entries a group-mate wrote | "That entry says you tried something first. What was the number or error that told you it had failed?" |
+| Agrees the data cannot prove harm or help, which is the point of the caveat; offers the next wave as the test, with a random held-out share of eligible patients, so the budget buys an answer | Says the campaign failed, or gives in and agrees it worked | "How large a held-out share would you ask for, and what would you compare?" |
 
-If the group's challenges log has fewer than a handful of entries by Thursday, note it; the log probe
-then asks about the decisions log instead: "Pick one line in the decisions log and tell me who
+---
+
+## The looking-back probe, every learner
+
+**"From your challenges log: what would you do differently if you started this sub-problem again
+tomorrow?"**
+
+| Did the work | Carried it | The follow-up |
+|---|---|---|
+| Opens the log, finds an entry they wrote, names the step they would move earlier or do another way (profile both systems before any join, ask the data team a question on the first day) and the time or error it would have saved | Gives a general lesson ("manage time better") or reads an entry a group-mate wrote as if for the first time | "Which entry in your log shows the moment you should have changed course, and what told you?" |
+
+If the group's challenges log has fewer than a handful of entries by Thursday, note it; the looking-back
+probe then asks about the decisions log instead: "Pick one line in the decisions log and tell me who
 decided it and what they looked at."

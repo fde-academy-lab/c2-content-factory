@@ -17,8 +17,24 @@ The files this day uses: the roster, `mocks/C2_W03_D04_roster_TRAINER.xlsx`; the
 `mocks/C2_W03_D04_mock_question_bank_TRAINER.md`; the viva prompts,
 `mocks/C2_W03_D04_viva_prompts_TRAINER.md`; the assessors' guide,
 `mocks/C2_W03_D04_assessors_guide_TRAINER.md`; and the learner's brief,
-`mocks/C2_W03_D04_mock_brief_STUDENT.md`, which goes out at the start of the day. The mock scoring
-sheet is not in this pack: it waits for the approved rubric.
+`mocks/C2_W03_D04_mock_brief_STUDENT.md`, which goes out at the start of the day; and the scoring
+sheet, `rubrics/C2_W03_D04_mock_scoring_sheet_TRAINER.xlsx`, one shared copy that all three assessors
+score into during their changeovers.
+
+The mock is scored on the rubric approved on 29 September 2026:
+
+<!-- sync:rubric:W03/mock -->
+**Mock interview R1, 30 marks.** Each learner is scored alone, 15 marks on the technical half and 15 on the project viva.
+
+| Half | Criterion | Marks |
+|---|---|---|
+| Technical | Correctness | 8 |
+| Technical | Reasoning aloud with numbers | 4 |
+| Technical | Handling a follow-up | 3 |
+| Project viva | The translation, with one decision defended by evidence | 6 |
+| Project viva | Defending a caveat under challenge | 6 |
+| Project viva | What they would do differently | 3 |
+<!-- /sync:rubric:W03/mock -->
 
 ---
 
@@ -122,12 +138,13 @@ These point at where to look and never at what is there. Use one, once, and leav
 
 ## The close, 15 minutes
 
-The first 10 minutes are the assessors' impressions, away from the room, run from the assessors'
-guide: the translation, the carried work and the technical half, three minutes each. Write one line
+The first 10 minutes are the assessors' impressions on the fixed rubric, away from the room, run from
+the assessors' guide: the translation, the carried work and the technical half, three minutes each,
+with the scoring sheet's Assessors sheet open for the calibration check. Write one line
 per point. Take two things into Friday: the probes that broke most often, which become the first
 build-completion check before the freeze, and every group whose notebook did not run cold at check 3.
 
-The last 5 minutes are with the room. Say: "Every mock is done. Scores come later, together, not today.
+The last 5 minutes are with the room. Say: "Every mock is done. Scores close with every other Build 1 grade on Saturday.
 Tomorrow the build freezes and each group runs its demo cold twice. Tonight: draft the presentation and
 rehearse the demo path once, start to finish, on the raw files." Name the groups that passed check 3
 and say that every other group spends its open build time on that run.
