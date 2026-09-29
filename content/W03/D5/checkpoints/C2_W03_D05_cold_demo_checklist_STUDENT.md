@@ -37,8 +37,8 @@ Tick each box on both runs.
       `slide_numbers.txt` file from step 5. Write down the commit hash.
 - [ ] **Open a new Codespace, never your working one.** On the repository page on GitHub, pick your
       branch, click **Code**, open the **Codespaces** tab and click **Create a codespace on BRANCH**
-      (steps from GitHub's documentation, verified 29 September 2026:
-      https://docs.github.com/en/codespaces/developing-in-a-codespace/creating-a-codespace-for-a-repository).
+      (steps from GitHub's documentation,
+      https://docs.github.com/en/codespaces/developing-in-a-codespace/creating-a-codespace-for-a-repository, verified 29 September 2026).
       A fresh Codespace holds no variable, no file and no package you added by hand.
 - [ ] **Use the raw files as the data team dropped them.** The ten Kalpa Health CSV files, unedited.
       A file opened in Excel and saved again has changed, even if it looks the same; the script in
