@@ -19,7 +19,7 @@ interview drill and the Kahoot.
 
 ```notes
 LIVE. Sixty minutes, unguided. The TODO notebook is notebooks/C2_W01_D04_ex1_escalated_case_STUDENT.ipynb
-and the brief is exercises/unguided/C2_W01_D04_escalated_case_STUDENT.md. The support TA answers
+and the brief is exercises/unguided/C2_W01_D04_escalated_STUDENT.md. The support TA answers
 environment problems only. Do not help with the discount; the debrief is built on what the room
 gets wrong there.
 ```
@@ -232,7 +232,7 @@ marketing pushes back.
 *Forty-five minutes in pairs: marketing defends the monsoon sale, and the pair holds the caveat.*
 
 ```notes
-LIVE. Ten-minute break before this chapter. Pairs work from exercises/unguided/C2_W01_D04_second_case_STUDENT.md
+LIVE. Ten-minute break before this chapter. Pairs work from exercises/unguided/C2_W01_D04_pushback_STUDENT.md
 and notebooks/C2_W01_D04_ex2_second_case_STUDENT.ipynb. One partner plays marketing for the last ten
 minutes.
 ```

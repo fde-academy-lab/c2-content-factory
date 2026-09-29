@@ -82,6 +82,15 @@ percent). The v3 files regenerate byte-identical to the ones the 9 September pac
 
 The row's trainer resources (Khan Academy, Exponent, GeeksforGeeks) are not carried into any pack file.
 
+## Citations in the study notes, each checked on 29 Sep 2026
+
+| Citation | How it was checked |
+|---|---|
+| Fisher, The Design of Experiments, 1935, as an original reference for the permutation test | Crossref lists contemporary reviews dated December 1935; the Wikipedia article "Permutation test" lists it under original references |
+| Wasserstein and Lazar, "The ASA Statement on p-Values: Context, Process, and Purpose", The American Statistician 70, 2016, principle 2 | Crossref record for DOI 10.1080/00031305.2016.1154108; the principle's wording read verbatim from the ASA's own PDF of the statement |
+| Simpson, "The Interpretation of Interaction in Contingency Tables", JRSS Series B 13, 1951 | Crossref record for DOI 10.1111/j.2517-6161.1951.tb00088.x |
+| Bickel, Hammel and O'Connell, "Sex Bias in Graduate Admissions: Data from Berkeley", Science 187, 1975 | Crossref record and abstract for DOI 10.1126/science.187.4175.398; the notes' sentence follows the abstract ("about as many units appear to favor women as to favor men") |
+
 ## Tools the numbers and outputs came from
 
 Python 3.11.15; nbclient 0.11.0 and nbformat 5.11.1 through `scripts/nb_make.py`; pandas is not used
