@@ -133,9 +133,8 @@ ends recompute.
 `content/W03/SAT/slides/C2_W03_SAT_presentation_format_STUDENT.md`, inside a 30-minute slot. The trainer
 shows cards at 5 minutes and 1 minute left of the talk and demo, and at the end of the slot. The demo
 runs cold on the group's own files: a kernel restarted in front of the panel, the notebook run from the
-top, once. A demo that fails live is not fixed and not run again: the group says in one sentence what
-broke and why, the panel goes to questions, and the failure goes in the panel's notes and the group's
-challenges log. The rule is the same on Saturday.
+top. A demo that fails live gets two minutes to recover; after that the group presents from its
+executed run and the failure goes in the panel's notes and the group's challenges log.
 
 **What the panel keeps.** Evidence notes per learner, with the minute: what was claimed, which number,
 how the caveat was defended, who answered. Silent teammates are asked a question by name, as the
@@ -230,10 +229,10 @@ and logged.
 | The Principal Advisor's connection fails | The Academic TA pauses the clock; past five minutes, the round moves to stream A after round 5 and runs in the expert's write-up slot. |
 | A group is one learner short | The GD runs with three, and the chair notes it; the absent learner's GD is the Programme Head's decision. |
 | A group's GD slot clashes with its own sub-problem | Swap the card within its level on the roster, or use card 08. Never hand a group the card on its own sub-problem. |
-| A group's cold run fails and it cannot find why | The TA sits with it for ten minutes on the checklist's table of usual breaks. If it still fails, the group logs it; on the day its demo still runs cold once, and if it breaks the group says in one sentence what broke and why, then goes to questions. |
+| A group's cold run fails and it cannot find why | The TA sits with it for ten minutes on the checklist's table of usual breaks. If it still fails, the group logs it, and on Saturday presents from its executed run with the failure stated. |
 | A group asks to keep building after the freeze | The rule holds for every group; a fix after the freeze becomes a caveat on Saturday. |
 | The tranche overruns | Cut from the slack at the end of block two, never from the roll call. |
-| The tranche group's live demo fails | No fix and no second run: the group says in one sentence what broke and why, and the panel goes to questions. |
+| The tranche group's live demo fails | Two minutes to recover, then the executed run. |
 
 ## If the Programme Head runs more groups
 
