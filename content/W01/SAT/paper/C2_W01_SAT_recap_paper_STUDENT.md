@@ -1,8 +1,8 @@
 # Week 1 recap paper
 
-Saturday 10 October 2026 · 120 minutes · 52 items · pen and paper, no assistant, no notes
+Saturday 10 October 2026 · 120 minutes · 57 items · pen and paper, no assistant, no notes
 
-Name: ____________________    Marked by: ____________________    Items right: ____ of 52
+Name: ____________________    Marked by: ____________________    Items right: ____ of 57
 
 Answer every item in the space it gives you. Each section says how. After the break the papers are swapped and marked against the key, and the discussion starts with the items the room missed most.
 
@@ -299,13 +299,20 @@ d) It says nothing about whether the gap is large enough to matter.
 
 ---
 
-## E. Scenario set (Q36 to Q45)
+## E. Scenario set (Q36 to Q50)
 
 Each set opens on one Kalpa situation. Answer each item the way it asks: circle a letter, write T or F, or write the number or the word.
 
 ### Set 1
 
 **Situation.** Kalpa Retail, two quarters. Q1: 1,000 customers, 2,400 orders, revenue Rs 48.0 lakh. Q2: 1,000 customers, 2,160 orders, revenue Rs 43.2 lakh.
+
+| Quarter | Customers | Orders | Revenue |
+|---|---|---|---|
+| Q1 | 1,000 | 2,400 | Rs 48.0 lakh |
+| Q2 | 1,000 | 2,160 | Rs 43.2 lakh |
+
+*Kalpa Retail, the two quarters as the situation gives them.*
 
 #### Q36
 
@@ -344,6 +351,15 @@ d) It is supported, because revenue per order fell by about 10 percent.
 
 **Situation.** The ERP export holds 214 rows. Your cleaning run removes 14 exact duplicates and rejects 3 more rows: one amount spelt as a word, one row missing a required field and one truncated line. Every removed row goes to the rejects log with its reason.
 
+| What left the ERP export | Rows |
+|---|---|
+| Exact duplicates | 14 |
+| Amount spelt as a word | 1 |
+| Missing required field | 1 |
+| Truncated line | 1 |
+
+*The 214 rows of the ERP export, and what the cleaning run took out of them.*
+
 #### Q40
 
 The clean file holds ____ rows.
@@ -369,6 +385,14 @@ d) It turns into a rise in every case.
 
 **Situation.** After the monsoon discount, total revenue rose 6 percent. Split by segment, revenue per customer fell in every segment. The customers who received the discount were, on average, more frequent buyers than those who did not.
 
+| What was measured | What it showed |
+|---|---|
+| Total revenue after the monsoon discount | Rose 6 percent |
+| Revenue per customer inside each segment | Fell in every segment |
+| Customers who received the discount | Bought more often on average than those who did not |
+
+*The monsoon discount, as the situation reports it.*
+
 #### Q43
 
 What is this pattern an example of?
@@ -393,13 +417,77 @@ b) Double the discount, because a larger offer will lift every segment in turn.
 c) Say nothing yet, because a single campaign can never be evaluated at all.
 d) Do not repeat it as designed: no segment improved, and the lift is a mix effect.
 
+### Set 4
+
+**Situation.** Kalpa's April export for two segments holds 500 order rows placed by 250 distinct customers. Retail: 400 orders, revenue Rs 8.0 lakh. Business: 100 orders, revenue Rs 12.0 lakh. A slide built from the export reads: orders per customer 1.00, average order value Rs 7,000.
+
+| Segment | Order rows | Revenue |
+|---|---|---|
+| Retail | 400 | Rs 8.0 lakh |
+| Business | 100 | Rs 12.0 lakh |
+
+*April, two segments. The 500 order rows come from 250 distinct customers.*
+
+#### Q46
+
+Orders per customer, divided by the number of distinct customers, is ____.
+
+Answer: ____________________
+
+#### Q47
+
+The average order value across both segments is Rs ____.
+
+Answer: ____________________
+
+#### Q48
+
+Marketing reads the slide as "nobody comes back, so buy new customers". What do you say in the room?
+
+a) Agree, because the export shows each customer placing exactly one order in April.
+b) Agree, once the median order value has been checked beside the Rs 7,000 mean.
+c) Push back: 250 customers placed 500 orders, so "nobody comes back" is false.
+d) Push back, because the Rs 7,000 average shows customers already spend enough.
+
+### Set 5
+
+**Situation.** Kalpa's store-channel export for Q1 holds 1,200 rows worth Rs 96.0 lakh. A dedupe that compares whole records reports 0 duplicates. A second pass keyed on order_id finds 40 rows whose order_id already appeared, each differing from the first row only in its timestamp. The run keeps 1,160 clean rows worth Rs 88.0 lakh and logs the 40 repeats as rejects worth Rs 5.0 lakh.
+
+```mermaid
+flowchart LR
+  A["Q1 store export<br/>1,200 rows<br/>Rs 96.0 lakh"] --> B["Whole-record dedupe<br/>0 duplicates"]
+  A --> C["order_id pass<br/>40 repeats"]
+  C --> D["Rejects log<br/>40 rows<br/>Rs 5.0 lakh"]
+  A --> E["Clean file<br/>1,160 rows<br/>Rs 88.0 lakh"]
+```
+
+*The cleaning run on the store export, with the rows and the rupees at each stage.*
+
+#### Q49
+
+Which duplicate count should the run trust?
+
+a) Zero, because a duplicate has to match the earlier row in every field.
+b) Zero, because a different timestamp proves two separate orders were placed.
+c) Forty, but only once Finance has confirmed every pair by hand.
+d) Forty, because the identity rule says one order_id is one order.
+
+#### Q50
+
+The row counts add up: 1,160 clean plus 40 rejected is 1,200. What is the honest status of the run?
+
+a) Reconciled, because the clean rows and the rejects add back to the 1,200 input rows.
+b) Not reconciled, because Rs 3.0 lakh is in neither the clean file nor the log.
+c) Not reconciled, because Rs 8.0 lakh left the file when the 40 repeats were removed.
+d) Reconciled, because a gap under 5 percent of the input is within ordinary rounding.
+
 ---
 
-## F. Applied maths (Q46 to Q50)
+## F. Applied maths (Q51 to Q55)
 
 Show the working, then the answer.
 
-#### Q46
+#### Q51
 
 A 15 percent discount lifts the quantity sold by 10 percent. By what percent does revenue change?
 
@@ -407,7 +495,7 @@ Working:
 
 Answer: ____________________
 
-#### Q47
+#### Q52
 
 Five order values in rupees: 800, 1,200, 1,400, 2,000 and 480,000. Give the median and the mean.
 
@@ -415,7 +503,7 @@ Working:
 
 Answer: ____________________
 
-#### Q48
+#### Q53
 
 Revenue was Rs 2.1 crore in Q1 and Rs 1.9 crore in Q2. Give the percentage change to one decimal place.
 
@@ -423,7 +511,7 @@ Working:
 
 Answer: ____________________
 
-#### Q49
+#### Q54
 
 In 5,000 label shuffles, 140 produced a gap at least as large as the real one. What is the p-value?
 
@@ -431,7 +519,7 @@ Working:
 
 Answer: ____________________
 
-#### Q50
+#### Q55
 
 A retailer has 50,000 customers, 2 orders per customer, 3 items per order, Rs 400 per item and Rs 1 crore of discounts. What is its revenue?
 
@@ -441,11 +529,11 @@ Answer: ____________________
 
 ---
 
-## G. Order the steps (Q51 to Q52)
+## G. Order the steps (Q56 to Q57)
 
 Write the letters in the right order.
 
-#### Q51
+#### Q56
 
 Put the five rungs of the sales-drop investigation ladder in order.
 
@@ -457,7 +545,7 @@ e) Decompose along the revenue tree.
 
 Order: ____________________
 
-#### Q52
+#### Q57
 
 Put the cleaning pass in order.
 
@@ -467,3 +555,25 @@ c) Recompute the revenue tree on the clean data.
 d) Decide drop, default or flag for each defect, with a written reason.
 
 Order: ____________________
+
+---
+
+## Stretch: untimed, and not marked
+
+For anyone who finishes early. Nothing here is counted; each item is the kind an interviewer asks after your first answer, so write the answer you would say.
+
+### Stretch 1
+
+Marketing concedes that frequency fell but says acquisition is still the cheaper way to add Rs 1 crore of revenue. What would you need to see before agreeing, and how would you say it to Meera in three sentences?
+
+### Stretch 2
+
+A shuffle test on the gap between two segments returns p = 0.03. Meera asks, "So we are 97 percent sure?" Answer in two sentences she can repeat to the board.
+
+### Stretch 3
+
+An auditor asks you to walk through the rows your cleaning run removed. Describe the four things you show them, in order.
+
+### Stretch 4
+
+You have two hours and a raw export, and Meera wants the Q1 figure by lunch. What do you do first, what do you skip, and what do you refuse to skip?
