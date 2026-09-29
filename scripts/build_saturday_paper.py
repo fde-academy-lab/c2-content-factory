@@ -457,18 +457,24 @@ PURPOSE = ("Saying the week out loud is the interview skill itself. This paper f
 
 
 def exhibit_png(ex):
-    """The exhibit's mermaid fence as a PNG path with its size, or None without mermaid-cli."""
+    """The exhibit's mermaid fence as a PNG path with its print size, or None when it has none.
+
+    The room sits the Word paper, so an exhibit that cannot render stops the build: mermaid-cli
+    missing raises SystemExit, and one that writes nothing raises MermaidError.
+    """
     if not ex.get("mermaid"):
         return None
     from PIL import Image
     sys.path.insert(0, str(HERE))
-    from build_cheatsheet import render_mermaid
+    from build_cheatsheet import PNG_SCALE, render_mermaid
     png = render_mermaid(str(ex["mermaid"]), "png")
     if not png:
-        return None
+        raise SystemExit("mermaid-cli is not installed, so the Word paper would lose its exhibits. "
+                         "Install it with npm install -g @mermaid-js/mermaid-cli and build again.")
     with Image.open(png) as img:
-        w, h = img.size
-    # mermaid-cli renders the PNG wide for sharpness; the page wants it at a readable print size.
+        w, h = (d / PNG_SCALE for d in img.size)
+    # The PNG holds PNG_SCALE pixels per CSS pixel for sharpness; the page prints it at its
+    # natural size, capped at the column's width.
     scale = min(1.0, 610 / w)
     return {"path": str(png), "w": round(w * scale), "h": round(h * scale)}
 

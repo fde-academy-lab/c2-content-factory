@@ -154,15 +154,68 @@ def svg_labels(code):
     return LABEL.sub(fix, code)
 
 
-def render_mermaid(code, fmt="svg"):
-    """Render one fence to an image and return its path, or None when mmdc is unavailable.
+class MermaidError(RuntimeError):
+    """mermaid-cli is installed and still wrote no picture, so the build stops rather than ship
+    a page, a slide or a paper without it."""
 
-    Renders are cached by content hash and by format, so rebuilding a sheet re-renders only what
-    changed and a week of sheets sharing a diagram renders it once. The labels go through
-    svg_labels first, so what the hash covers is what mmdc draws.
+
+_MMDC_MAJOR = []
+
+# A PNG renders at twice its CSS size, so an exhibit printed at its natural size holds about 200
+# pixels to the inch. Callers that size a picture from its pixels divide by this first.
+PNG_SCALE = 2
+
+
+def mmdc_major():
+    """The installed mermaid-cli's major version, read once; 0 when it cannot be read."""
+    if not _MMDC_MAJOR:
+        major = 0
+        try:
+            out = subprocess.run(["mmdc", "--version"], capture_output=True, text=True, timeout=120)
+            found = re.match(r"\s*(\d+)\.", out.stdout or "")
+            major = int(found.group(1)) if found else 0
+        except (OSError, subprocess.SubprocessError):
+            major = 0
+        _MMDC_MAJOR.append(major)
+    return _MMDC_MAJOR[0]
+
+
+def mmdc_page_width(pixels):
+    """The page-width option for the installed mermaid-cli, which version 12 removed.
+
+    mermaid-cli 11 lays a diagram out on a page -w pixels wide, so a wide diagram is not squeezed
+    to the 800 pixel default. Version 12.0.0 (24 September 2026, read from its package on 29
+    September 2026) removed -w and -H, rejects them as unknown options, and fits its page to the
+    diagram; its new --size caps the picture instead. So 11 gets -w and 12 gets nothing, and the
+    scale alone sets the pixels on both.
+    """
+    return ["-w", str(pixels)] if 0 < mmdc_major() < 12 else []
+
+
+def run_mmdc(cmd, env, out, timeout):
+    """Run mmdc, and raise MermaidError in mmdc's own words when it wrote no picture."""
+    try:
+        done = subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=timeout)
+    except (OSError, subprocess.SubprocessError) as e:
+        raise MermaidError(f"mermaid-cli did not run: {e}") from e
+    if done.returncode != 0 or not out.exists():
+        said = (done.stderr or done.stdout or "no output").strip().splitlines()[-3:]
+        raise MermaidError(f"mermaid-cli {mmdc_major() or 'of an unknown version'} wrote no "
+                           f"picture: {' / '.join(said)}")
+
+
+def render_mermaid(code, fmt="svg"):
+    """Render one fence to an image and return its path.
+
+    Returns None when mmdc is not installed, and raises MermaidError when it is installed and
+    writes nothing, so a failed render is never mistaken for a finished page. Renders are cached
+    by content hash and by format, so rebuilding a sheet re-renders only what changed and a week
+    of sheets sharing a diagram renders it once. The labels go through svg_labels first, so what
+    the hash covers is what mmdc draws. A PNG renders at PNG_SCALE, and the scale is in its key.
     """
     body = svg_labels(code.strip()) + "\n"
-    key = hashlib.sha256((body + fmt + MERMAID_CONFIG).encode()).hexdigest()[:16]
+    tag = f"scale={PNG_SCALE}" if fmt == "png" else ""
+    key = hashlib.sha256((body + fmt + MERMAID_CONFIG + tag).encode()).hexdigest()[:16]
     CACHE.mkdir(parents=True, exist_ok=True)
     out = CACHE / f"{key}.{fmt}"
     if out.exists():
@@ -183,13 +236,8 @@ def render_mermaid(code, fmt="svg"):
     cmd = ["mmdc", "-i", str(src), "-o", str(out), "-b", "transparent",
            "-c", str(conf), "-p", str(pup)]
     if fmt == "png":
-        cmd += ["-w", "2400"]
-    try:
-        subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=300)
-    except Exception:
-        return None
-    if not out.exists():
-        return None
+        cmd += mmdc_page_width(2400) + ["-s", str(PNG_SCALE)]
+    run_mmdc(cmd, env, out, 300)
     if fmt == "svg" and b"foreignObject" in out.read_bytes():
         # An unrendered label is worse than a missing diagram, because it looks finished.
         out.unlink()
@@ -338,7 +386,11 @@ def render_body(lines, fmt, missing):
         elif mode == "code":
             pieces.append(("code", "<pre>" + html.escape("\n".join(buf).rstrip()) + "</pre>", (0, 0)))
         elif mode == "mermaid":
-            img = render_mermaid("\n".join(buf), fmt)
+            try:
+                img = render_mermaid("\n".join(buf), fmt)
+            except MermaidError as e:
+                print(f"      {e}")
+                img = None
             if img:
                 pieces.append(("diagram",
                                f'<figure class="diagram"><img src="{img.as_uri()}"></figure>',
