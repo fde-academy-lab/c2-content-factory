@@ -39,7 +39,7 @@ flowchart LR
     M["<b>Monday</b><br/>the tree as queries"] --> T["<b>Tuesday</b><br/>booked against collected"]
     T --> W["<b>Wednesday</b><br/>rank without collapsing"]
     W --> H["<b>Thursday</b><br/>the same in pandas"]
-    H --> F["<b>Friday</b><br/>the week rebuilt alone"]
+    H --> F["<b>Friday</b><br/>the number reaches the deck"]
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
