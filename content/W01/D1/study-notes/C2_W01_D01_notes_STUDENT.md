@@ -227,11 +227,11 @@ The recommendation comes from the leaves. Of 23 customers, 16 bought once in the
 
 Meera's second question was where revenue comes from, and split by channel on booked revenue the answer looks dramatic.
 
-| Channel | Orders | Booked | Delivered |
+| Channel | Orders | Share of booked revenue | Status |
 |---|---|---|---|
-| App | 10 | Rs 18,600 | Rs 18,600 (10 of 10) |
-| Web | 10 | Rs 27,290 | Rs 12,320 (5 delivered, 5 returned) |
-| Store | 10 | Rs 4,98,920 | 6 delivered, 4 cancelled |
+| App | 10 | 3.4 percent | 10 delivered |
+| Web | 10 | 5.0 percent | 5 delivered, 5 returned |
+| Store | 10 | 91.6 percent | 6 delivered, 4 cancelled |
 
 By customer type, Retail-Core booked Rs 32,650 on 14 orders, Retail-Plus Rs 27,320 on 10 and Student Rs 4,840 on 5; segment is recorded on the order, so one customer appears under two segments.
 
@@ -239,7 +239,7 @@ By customer type, Retail-Core booked Rs 32,650 on 14 orders, Retail-Plus Rs 27,3
 
 | | |
 |---|---|
-| The wrong number | "Store brings 91.6 percent of revenue, Rs 4,98,920 of Rs 5,44,810, so the growth plan should be store-led." |
+| The wrong number | "Store brings 91.6 percent of revenue, so the growth plan should be store-led." |
 | Why it is wrong | One order carries store's share: the order your round 3 sort put at the top. Among consumer orders, the 29 outside the Business segment, store has Rs 18,920 of Rs 64,810, and 4 of its 9 consumer orders were cancelled. |
 | The check | Count the orders behind each share, recompute on consumer orders, and split each channel by status. |
 | The fix | On consumer orders web leads booked revenue at Rs 27,290, and half its orders came back (5 returned, Rs 14,970); app is clean at 10 of 10 delivered and Rs 18,600; store delivered Rs 9,870 on 5 orders. |

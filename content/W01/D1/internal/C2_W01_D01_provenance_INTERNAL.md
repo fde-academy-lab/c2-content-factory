@@ -72,7 +72,10 @@ in five rungs, a trap per rung, and the 360-minute day.
    record. Aggregates that include the order (the mean, the median, store's share, booked revenue)
    are the trap numbers and are printed. Numbers computed without it appear only in afternoon files,
    after round 3's sort has found it, and they are introduced as "the order your round 3 sort put at
-   the top". The Kahoot's comparison trap uses "3500" where the row wrote "4500".
+   the top". The Kahoot's comparison trap uses "3500" where the row wrote "4500". On 29 September 2026
+   the requester had the all-orders rupee figures dropped from the second case: its brief, solution,
+   notebooks, simulator card and workbook tab show channel shares on all 30 orders and rupees only on
+   consumer orders, so store's booked total no longer sits beside its consumer total for a subtraction.
 6. **Anand Iyer is the finance controller.** The row calls him the CFO; `docs/07` says finance
    controller, and the pack follows `docs/07`.
 7. **The second case groups revenue by segment and channel.** The row's stop-before line names

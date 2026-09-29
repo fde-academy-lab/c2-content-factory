@@ -260,8 +260,7 @@ for col in "BCDEF":
 put(ws, "A4", "The view you give Meera", BOLD); put(ws, "B4", "delivered", fill=INPUT)
 choice(ws, "B4", ["booked", "delivered"])
 put(ws, "A5", "The headline it replaces", NOTE)
-put(ws, "B5", "Store carried 91.6 percent of all booked revenue, Rs 4,98,920 of Rs 5,44,810, on every order in the "
-              "file.", NOTE)
+put(ws, "B5", "Store carried 91.6 percent of all booked revenue on 10 of the 30 orders in the file.", NOTE)
 put(ws, "A13", "The check", BOLD)
 put(ws, "B13", '=IF(F11+D11+E11<>C11,"Delivered, cancelled and returned add to "&' + rs("F11+D11+E11") +
                '&" against "&' + rs("C11") + '&" booked: the delivered column still carries the returns. '

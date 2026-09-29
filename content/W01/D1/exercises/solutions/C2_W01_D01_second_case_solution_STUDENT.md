@@ -21,7 +21,7 @@ to name in the note: web returns and store cancellations.
 
 | Item | Key | Why it holds | Why the others fail |
 |---|---|---|---|
-| 11 | c | Store's Rs 4,98,920 is mostly one order, so its share describes that order and says little about store's customers. | a moves the share the wrong way for the wrong reason; delivered orders make it about 94 percent, which is the same order again. b swaps rupees for orders without saying so. d accepts a total the morning taught you to question. |
+| 11 | c | Store's 91.6 percent is mostly one order, so its share describes that order and says little about store's customers. | a moves the share the wrong way for the wrong reason; delivered orders make it about 94 percent, which is the same order again. b swaps rupees for orders without saying so. d accepts a total the morning taught you to question. |
 | 12 | a | Store's other 9 orders total Rs 18,920, and Rs 18,920 over Rs 64,810 is 29 percent. | b keeps the order the question set aside. c divides delivered rupees by booked rupees, two definitions in one ratio. d is a share of orders, and the question asked for revenue. |
 | 13 | d | Web's 10 orders split 5 delivered, Rs 12,320, and 5 returned, Rs 14,970, so more than half of its booked rupees came back. | a: web delivered only Rs 12,320, less than app's Rs 18,600. b: web had no cancelled orders. c: half of web's orders were returned. |
 | 14 | b | Store's 9 orders on this base split 4 cancelled, Rs 9,050, and 5 delivered, Rs 9,870. | a: 4 were cancelled. c: store had no returns; the returns sit on web. d: 5 of the 9 were delivered. |

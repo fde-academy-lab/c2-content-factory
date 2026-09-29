@@ -433,7 +433,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         <article class="card exp">
           <div class="part-label">Experiment F &middot; second case &middot; Kalpa totals</div>
           <h3 class="exp-title">Store brings 91.6 percent of revenue</h3>
-          <p><b>Situation.</b> By channel, store carries Rs 4,98,920 of the Rs 5,44,810 booked, 91.6 percent, and a draft
+          <p><b>Situation.</b> By channel, store carries 91.6 percent of booked revenue on 10 of the 30 orders, and a draft
             says the growth plan should be store-led.</p>
           <p><b>Hypothesis.</b> One order carries store's share, so on consumer orders alone the three channels sit much
             closer together.</p>
@@ -1354,7 +1354,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   });
 
   var fOn = false;
-  var SHARE_ALL = [18600, 27290, 498920].map(function (v) { return 100 * v / 544810; });
+  var SHARE_ALL = [3.414, 5.009, 91.577];   // share of booked revenue, all 30 orders
   var SHARE_CON = CONSUMER.bookedRs.map(function (v) { return 100 * v / 64810; });
   $("expFRun").addEventListener("click", function () {
     fOn = !fOn;

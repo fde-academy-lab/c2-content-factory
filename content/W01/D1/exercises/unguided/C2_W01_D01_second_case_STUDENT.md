@@ -19,7 +19,7 @@ Post exactly this shape: xxxxxx
 
 ```mermaid
 flowchart LR
-    R["<b>booked revenue</b><br/>Rs 5,44,810"] --> A["<b>app</b><br/>10 orders"]
+    R["<b>booked revenue</b><br/>all 30 orders"] --> A["<b>app</b><br/>10 orders"]
     R --> W["<b>web</b><br/>10 orders"]
     R --> S["<b>store</b><br/>10 orders"]
     S --> T["<b>the order your round 3 sort<br/>put at the top</b>"]
@@ -28,7 +28,7 @@ flowchart LR
 
 ---
 
-### Q11. The channel slide says "Store brings 91.6 percent of revenue, Rs 4,98,920 of Rs 5,44,810, so the growth plan should be store-led." What is the first thing wrong with it?
+### Q11. The channel slide says "Store brings 91.6 percent of revenue, so the growth plan should be store-led." What is the first thing wrong with it?
 
 a) The share should be taken on delivered orders, which lifts it higher still
 b) Store's share is really 33 percent, since it holds 10 of the 30 orders
