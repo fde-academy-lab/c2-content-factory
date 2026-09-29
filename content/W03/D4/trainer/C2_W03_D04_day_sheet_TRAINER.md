@@ -95,7 +95,7 @@ Every group ships five things on Saturday, described in the same words across th
 
 Three rounds, three minutes per group, nine groups. Ask; do not fix, and never name what is in the
 data. A group that is stuck gets one question, from the table after the checks, and the Wednesday
-catch-up plan in `content/W03/D3/`.
+catch-up plan, `content/W03/D3/checkpoints/C2_W03_D03_catchup_plan_TRAINER.md`.
 
 ### Check 1, the running order (block 1 buffer)
 
@@ -117,7 +117,9 @@ needs to rerun from the raw files now, while there is still the afternoon.
 ### Check 3, the handover to Friday (block 2 buffer)
 
 Watch the notebook run from the kernel restart to the last cell on a group member's machine, or the
-SQL run in order against a fresh load. Count it as a pass only if it runs clean with no manual step.
+SQL run in order against a fresh load. Count it as a pass only if it runs clean with no manual step. Friday's cold-demo checklist,
+`content/W03/D5/checkpoints/C2_W03_D05_cold_demo_checklist_STUDENT.md`, is the same test run twice; a
+group that passes check 3 is ready for it.
 Then read the one-slide answer aloud and ask: "Which sentence is the caveat?" A group that fails either
 part spends the open build time after the second block on it, with a TA.
 
