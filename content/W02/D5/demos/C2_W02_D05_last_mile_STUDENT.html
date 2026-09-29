@@ -1,0 +1,1093 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The last mile: Week 2, Friday companion</title>
+<style data-c2kit>
+/* c2kit.css: the look every companion page inlines, taken from the orientation deck.
+ * Violet on lavender, Georgia for headings, Calibri for text, cards with a soft shadow.
+ * scripts/build_companion.py inlines this file into each page. */
+:root{
+  --ink:#1A0F5C;--night:#1A1440;--violet:#5B3FD6;--violet-mid:#2C1A86;--lav:#D9A7FF;
+  --muted:#6B6690;--soft:#A9A3D2;--lilac:#CFC9EE;--line:#E4E1F1;--tint:#EEEAFB;--surface:#F4F2FA;
+  --white:#FFFFFF;--rose:#D63A6A;--rose-tint:#FCEBF0;--green:#1F8A5B;--green-tint:#E8F5EE;
+  --serif:Georgia,"DejaVu Serif",serif;
+  --sans:Calibri,Carlito,"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+  --mono:Consolas,ui-monospace,SFMono-Regular,Menlo,monospace;
+  --shadow:0 2px 6px rgba(26,15,92,.10),0 1px 2px rgba(26,15,92,.06);
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#F7F5FD 0%,#F2EFFB 100%);color:var(--night);
+     font:16px/1.55 var(--sans)}
+a{color:var(--violet)}
+code,kbd{font:14px var(--mono);background:var(--tint);border-radius:4px;padding:1px 5px;color:var(--ink)}
+
+/* the dark header, like a deck cover */
+.hero{background:radial-gradient(120% 140% at 85% 10%,#5B3FD6 0%,#2C1A86 45%,#1A1440 100%);
+      color:var(--white);padding:34px 40px 30px}
+.hero .kicker{display:inline-block;border:1px solid var(--lilac);border-radius:999px;padding:4px 14px;
+      font:700 11px var(--sans);letter-spacing:.24em;text-transform:uppercase;margin-bottom:14px}
+.hero h1{font:400 38px/1.15 var(--serif);margin:0 0 10px}
+.hero .quote{font:italic 20px/1.4 var(--serif);color:var(--lav);max-width:860px;margin:0 0 6px}
+.hero .who{color:var(--lilac);font-size:13px;margin:0}
+.hero .promise{color:#E4E1F1;max-width:860px;margin:16px 0 0}
+
+/* the page: a left rail and the sections */
+.page{display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;max-width:1240px;margin:0 auto;
+      padding:26px 28px 60px}
+@media (max-width:900px){.page{grid-template-columns:1fr}.rail{position:static}}
+.rail{position:sticky;top:18px;align-self:start;background:var(--white);border:1px solid var(--line);
+      border-radius:12px;padding:14px 12px;box-shadow:var(--shadow)}
+.rail .label{font:700 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--violet);
+      margin:2px 8px 8px}
+.rail a{display:flex;gap:10px;align-items:baseline;padding:7px 8px;border-radius:8px;color:var(--night);
+      text-decoration:none;font-size:14.5px}
+.rail a .n{font:15px var(--serif);color:var(--violet);min-width:22px}
+.rail a.on{background:var(--tint);color:var(--ink);font-weight:700}
+section.part{margin:0 0 38px;scroll-margin-top:16px}
+.part > .eyebrow{font:700 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--violet);
+      margin:0 0 4px}
+.part > h2{font:400 28px/1.2 var(--serif);color:var(--ink);margin:0 0 6px}
+.part > .lede{color:var(--muted);margin:0 0 16px;max-width:860px}
+
+/* cards and strips */
+.card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+      box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.grid2,.grid3{grid-template-columns:1fr}}
+.strip{border-radius:10px;padding:12px 16px;margin:12px 0;background:#F7F5FD;border:1px solid var(--line)}
+.strip b.tag{display:block;font:700 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;
+      color:var(--violet);margin-bottom:3px}
+.strip.client{background:linear-gradient(135deg,#2C1A86,#1A1440);color:var(--white);border:none}
+.strip.client b.tag{color:var(--lav)}
+.strip.bad{background:var(--rose-tint);border-color:#F3C5D3}
+.strip.bad b.tag{color:var(--rose)}
+.strip.good{background:var(--green-tint);border-color:#BFE3CF}
+.strip.good b.tag{color:var(--green)}
+.c2k-row{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
+.c2k-svg{max-width:100%;height:auto}
+.holder{overflow-x:auto}
+
+/* the guided walk */
+.walk .narration{min-height:150px}
+.walk .step{font:700 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)}
+.walk .narration h3{font:400 21px/1.25 var(--serif);color:var(--ink);margin:4px 0 8px}
+.meter{margin-top:14px}
+.meter .bar{position:relative;height:16px;border-radius:999px;background:var(--surface);border:1px solid var(--line);
+      overflow:hidden}
+.meter .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#7B62E8,#5B3FD6);
+      border-radius:999px;transition:width .35s ease}
+.meter .plan{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--rose)}
+.meter .legend{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:4px}
+.big{font:34px/1.1 var(--serif);color:var(--violet)}
+.verdict{font-weight:700;color:var(--ink)}
+
+/* buttons, toggles and inputs */
+button{font:inherit;cursor:pointer}
+.btn{padding:8px 16px;border-radius:999px;border:1px solid var(--violet);background:var(--white);color:var(--violet);
+     font-weight:700}
+.btn.primary{background:var(--violet);color:var(--white)}
+.btn[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.btn:focus-visible,.rail a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--lav);
+     outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.slider{margin:10px 0}
+.slider label{display:flex;justify-content:space-between;font-size:14.5px;color:var(--night)}
+.slider label b{color:var(--violet);font-family:var(--mono);font-weight:400}
+input[type=range]{width:100%;accent-color:var(--violet)}
+input[type=number],textarea{font:15px var(--mono);border:1px solid var(--lilac);border-radius:8px;padding:6px 9px;
+     color:var(--night);background:var(--white);width:100%}
+textarea{min-height:92px;resize:vertical}
+
+/* experiment cards */
+.exp{display:grid;gap:10px;align-content:start}
+.exp p{margin:0}
+.exp .result p{margin:0 0 8px}
+.exp .part-label{font:700 10.5px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)}
+.exp .result{border-top:1px dashed var(--lilac);padding-top:10px}
+.exp .result[hidden]{display:none}
+.exp .waiting{color:var(--muted);font-style:italic}
+.rule{font:italic 17px/1.4 var(--serif);color:var(--ink)}
+
+/* tables */
+table.t{border-collapse:collapse;width:100%;font-size:14.5px;margin:8px 0}
+table.t th{background:var(--ink);color:var(--white);text-align:left;padding:7px 10px;font-weight:700}
+table.t td{padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.t tr:nth-child(even) td{background:var(--surface)}
+table.t td.num,table.t th.num{text-align:right;font-variant-numeric:tabular-nums}
+
+/* popups */
+dialog{border:none;border-radius:14px;padding:0;max-width:min(860px,94vw);box-shadow:0 18px 50px rgba(26,15,92,.35)}
+dialog::backdrop{background:rgba(26,20,64,.45)}
+dialog .head{background:var(--ink);color:var(--white);padding:12px 18px;font:400 19px var(--serif);
+      display:flex;justify-content:space-between;align-items:center;gap:16px}
+dialog .body{padding:16px 18px}
+dialog .close{background:transparent;border:1px solid var(--lilac);color:var(--white);border-radius:999px;
+      padding:4px 12px}
+
+/* glossary */
+dl.gloss{display:grid;grid-template-columns:200px minmax(0,1fr);gap:8px 18px;margin:0}
+dl.gloss dt{font-weight:700;color:var(--ink)}
+dl.gloss dd{margin:0}
+dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
+@media (max-width:700px){dl.gloss{grid-template-columns:1fr}}
+.foot{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:10px;margin-top:30px}
+</style>
+<style>
+  .formula{font:15px var(--mono);background:var(--surface);border:1px solid var(--line);border-radius:8px;
+           padding:8px 12px;margin-top:10px;color:var(--ink);overflow-x:auto}
+  .jumped{font-size:13px;color:var(--muted);margin:10px 8px 2px}
+  .note{font-size:13.5px;color:var(--muted)}
+  .ok{color:var(--green);font-weight:700}
+  .warn{color:var(--rose);font-weight:700}
+  select,input[type=text]{font:15px var(--sans);border:1px solid var(--lilac);border-radius:8px;padding:6px 9px;
+           color:var(--ink);background:var(--white)}
+  .ctl{margin:10px 0}
+  .ctl .name{display:block;font:700 10.5px var(--sans);letter-spacing:.2em;text-transform:uppercase;
+           color:var(--violet);margin-bottom:6px}
+  table.mini{border-collapse:collapse;font-size:14px;width:100%}
+  table.mini th{background:var(--ink);color:var(--white);text-align:left;padding:5px 8px}
+  table.mini td{padding:4px 8px;border-bottom:1px solid var(--line)}
+  table.mini td.num{text-align:right;font-family:var(--mono)}
+  tr.hid td{color:var(--soft);text-decoration:line-through}
+</style>
+</head>
+<body>
+<header class="hero">
+  <span class="kicker">Week 2 &middot; Friday &middot; Companion</span>
+  <h1>The last mile</h1>
+  <p class="quote">&ldquo;If a director changes an assumption in the room, the sheet must recalculate in front of them.&rdquo;</p>
+  <p class="who">Meera's chief of staff, Kalpa Retail, to the data and AI team at Kalpa's Global Capability Centre</p>
+  <p class="promise">This page is the director's sheet with its assumptions on switches. Walk the day in six steps,
+    then change what a director changes: how orders are counted, which id is looked up and how, which city the list
+    is filtered to, and what the card covers. The sheet's numbers come from Friday's two exports; the four experiment
+    cards run on invented records, and each says so.</p>
+</header>
+
+<div class="page">
+  <nav class="rail" aria-label="Sections">
+    <div class="label">On this page</div>
+    <a href="#walk" data-part="walk"><span class="n">01</span>The day in six steps</a>
+    <a href="#sheet" data-part="sheet"><span class="n">02</span>The director's sheet</a>
+    <a href="#experiments" data-part="experiments"><span class="n">03</span>Four experiments</a>
+    <a href="#glossary" data-part="glossary"><span class="n">04</span>Glossary</a>
+    <p class="jumped" id="jumped">You are at the top of the page.</p>
+  </nav>
+
+  <main>
+    <section class="part" id="walk">
+      <p class="eyebrow">01 &middot; The guided walk</p>
+      <h2>From two exports to a front page</h2>
+      <p class="lede">Each step is one decision the day made, drawn from Friday's exports. Press Next.</p>
+      <div class="card"><div class="holder" id="walkChart"></div></div>
+      <div class="walk" style="margin-top:16px">
+        <div class="card narration" aria-live="polite">
+          <div class="step" id="walkStep">Step 1 of 6</div>
+          <h3 id="walkTitle"></h3>
+          <p id="walkText"></p>
+          <div class="row">
+            <button class="btn primary" id="walkNext" type="button">Next</button>
+            <button class="btn" id="walkRestart" type="button">Restart the walk</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="part" id="sheet">
+      <p class="eyebrow">02 &middot; The simulator</p>
+      <h2>The director's sheet</h2>
+      <p class="lede">Four assumptions, each a switch. The tree, the lookup, the list's foot and the card recompute
+        from the same numbers, and the release line says what may go into Monday's deck.</p>
+      <div class="grid2">
+        <div class="card">
+          <div class="ctl"><span class="name">Count each order</span>
+            <div class="row" style="margin-top:0">
+              <button class="btn" id="modeOnce" type="button" aria-pressed="true">once per order</button>
+              <button class="btn" id="modeRow" type="button" aria-pressed="false">once per payment row</button>
+            </div></div>
+          <div class="ctl"><span class="name">What the card covers</span>
+            <select id="scope" aria-label="What the card covers">
+              <option>All segments</option><option>All except Business</option><option>Retail-Plus</option>
+              <option>Retail-Core</option><option>Student</option><option>Business</option>
+            </select></div>
+          <div class="ctl"><span class="name">Member id to look up</span>
+            <select id="lookId" aria-label="Member id to look up">
+              <option value="C-0152">C-0152</option><option value="C-0194">C-0194</option>
+              <option value="C-0195">C-0195</option><option value="C-0999">C-0999</option>
+            </select>
+            <div class="row" style="margin-top:6px">
+              <button class="btn" id="matchExact" type="button" aria-pressed="true">exact match</button>
+              <button class="btn" id="matchApprox" type="button" aria-pressed="false">approximate match</button>
+            </div></div>
+          <div class="ctl"><span class="name">Filter the protect list to a city</span>
+            <select id="city" aria-label="Filter the protect list to a city"><option>All cities</option></select>
+            <div class="row" style="margin-top:6px">
+              <button class="btn" id="footSub" type="button" aria-pressed="true">SUBTOTAL(109) at the foot</button>
+              <button class="btn" id="footSum" type="button" aria-pressed="false">SUM at the foot</button>
+            </div></div>
+          <div class="row"><button class="btn" id="sheetReset" type="button">Back to the honest sheet</button></div>
+          <p class="note" id="sheetSays" aria-live="polite">Change a switch and this line says what the change did.</p>
+        </div>
+        <div class="card">
+          <div class="step" style="font:700 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)">The card</div>
+          <p class="verdict" id="card"></p>
+          <div class="holder" id="trend"></div>
+          <div class="step" style="font:700 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet);margin-top:10px">The lookup</div>
+          <p id="lookOut"></p>
+          <div class="step" style="font:700 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet);margin-top:10px">The foot of the list</div>
+          <p id="footOut"></p>
+          <div class="strip" id="releaseStrip"><b class="tag">Release</b><span id="release"></span></div>
+        </div>
+      </div>
+      <div class="grid2" style="margin-top:18px">
+        <div class="card"><div class="holder" id="treeChart"></div><p class="note" id="treeNote"></p></div>
+        <div class="card"><div class="holder" id="bridgeChart"></div></div>
+      </div>
+    </section>
+
+    <section class="part" id="experiments">
+      <p class="eyebrow">03 &middot; Experiment cards</p>
+      <h2>Four experiments, one change each</h2>
+      <p class="lede">Read the situation and the hypothesis, decide what you expect, then run. Every record in these
+        cards is invented to isolate one mechanism.</p>
+      <div class="grid2">
+        <article class="card exp" id="expA">
+          <div class="part-label">Experiment A &middot; invented rows</div>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">Remove Duplicates on a payment export</h3>
+          <p><b>Situation.</b> Three invented orders of Rs 1,000, Rs 2,000 and Rs 4,000. The second was paid in two
+            instalments of Rs 1,200 and Rs 800; the third was posted twice by the gateway. The export has five rows.</p>
+          <p><b>Hypothesis.</b> Removing rows that are identical in every column brings the total back to Rs 7,000.</p>
+          <p><b>Watch for.</b> How many rows go, and where the total lands.</p>
+          <div class="holder" id="expAChart"></div>
+          <div class="row">
+            <button class="btn" id="expARun" type="button" aria-pressed="false">Remove Duplicates</button>
+            <button class="btn" id="expASeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expAResult" hidden>
+            <p><b>What happened.</b> <span id="expAWhat"></span></p>
+            <p><b>Why it matters.</b> An analyst who ran Remove Duplicates believes the export is clean and ships a
+              number still inflated by every instalment order.</p>
+            <p class="rule">Count each order once by its key; removing identical rows is not the same thing.</p>
+          </div>
+          <p class="waiting" id="expAWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp" id="expB">
+          <div class="part-label">Experiment B &middot; invented ids</div>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">An approximate match on a missing id</h3>
+          <p><b>Situation.</b> Eight invented members, C-0401 to C-0409, sorted by id, with C-0405 missing. The chief
+            of staff types C-0405.</p>
+          <p><b>Hypothesis.</b> An exact match says the id is not there; an approximate match returns C-0404.</p>
+          <p><b>Watch for.</b> Whether either answer carries a warning.</p>
+          <div class="formula" id="expBWork">MATCH("C-0405", ids, ?)</div>
+          <div class="row">
+            <button class="btn" id="expBRun" type="button" aria-pressed="false">Run both lookups</button>
+            <button class="btn" id="expBSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expBResult" hidden>
+            <p><b>What happened.</b> <span id="expBWhat"></span></p>
+            <p><b>Why it matters.</b> The approximate answer looks exactly like a real one, so nobody in the room can
+              tell it is somebody else's row.</p>
+            <p class="rule">Test every lookup with an id you know is missing before anyone else uses it.</p>
+          </div>
+          <p class="waiting" id="expBWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp" id="expC">
+          <div class="part-label">Experiment C &middot; invented members</div>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">The foot of a filtered list</h3>
+          <p><b>Situation.</b> Eight invented members worth Rs 60,000 together, three of them in Mumbai worth Rs 25,500.
+            The list is filtered to Mumbai.</p>
+          <p><b>Hypothesis.</b> SUM at the foot still reads Rs 60,000; SUBTOTAL(109) reads Rs 25,500.</p>
+          <p><b>Watch for.</b> The struck-through rows, and which foot follows them.</p>
+          <div class="holder" id="expCTable"></div>
+          <div class="row">
+            <button class="btn" id="expCRun" type="button" aria-pressed="false">Filter to Mumbai</button>
+            <button class="btn" id="expCSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expCResult" hidden>
+            <p><b>What happened.</b> <span id="expCWhat"></span></p>
+            <p><b>Why it matters.</b> A store head told Rs 60,000 plans a retention budget for members who are not on
+              their list.</p>
+            <p class="rule">The foot of a filtered list is SUBTOTAL(109), and a count of visible rows sits beside it.</p>
+          </div>
+          <p class="waiting" id="expCWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp" id="expD">
+          <div class="part-label">Experiment D &middot; invented numbers</div>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">The base of a change</h3>
+          <p><b>Situation.</b> An invented segment fell from Rs 500 in one quarter to Rs 400 in the next.</p>
+          <p><b>Hypothesis.</b> Measured on the earlier quarter the fall is 20 percent; divided by the later one it
+            reads 25 percent.</p>
+          <p><b>Watch for.</b> Which denominator the formula uses.</p>
+          <div class="formula" id="expDWork">(400 - 500) / ? = ?</div>
+          <div class="row">
+            <button class="btn" id="expDRun" type="button" aria-pressed="false">Compute both</button>
+            <button class="btn" id="expDSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expDResult" hidden>
+            <p><b>What happened.</b> <span id="expDWhat"></span></p>
+            <p><b>Why it matters.</b> On Friday's Retail-Plus numbers the same slip turns a 29.4 percent fall into 41.7.</p>
+            <p class="rule">A change is measured on the period you are comparing against.</p>
+          </div>
+          <p class="waiting" id="expDWait">What happened appears here after the run.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="part" id="glossary">
+      <p class="eyebrow">04 &middot; Glossary</p>
+      <h2>The day's words, and where each first mattered</h2>
+      <div class="card">
+        <dl class="gloss">
+          <dt>Grain</dt><dd>What one row of a table stands for: a customer, an order or a payment.<span class="where">Half
+            one, S7; notebook 1, section 1.</span></dd>
+          <dt>PivotTable</dt><dd>Excel's grouped summary of a range; it keeps its own copy of the source and needs a
+            refresh when the source changes.<span class="where">Half one, S8; notebook 1, section 1.</span></dd>
+          <dt>Control total</dt><dd>A number owned upstream, such as Monday's warehouse revenue, that a sheet must
+            reproduce before it is trusted.<span class="where">Half one, S13; notebook 1, section 4.</span></dd>
+          <dt>Exact and approximate match</dt><dd>An exact match finds the id or says it is missing; an approximate
+            match returns the nearest id below.<span class="where">Half one, S22 to S25; notebook 2, section 3.</span></dd>
+          <dt>SUBTOTAL(109)</dt><dd>A sum that leaves out rows a filter or a hide has taken off the screen.<span
+            class="where">Half one, S27; notebook 2, section 4.</span></dd>
+          <dt>Period, comparison, base</dt><dd>The three things a front-page number carries so it cannot be misread.<span
+            class="where">Half one, S30 to S35; notebook 3.</span></dd>
+          <dt>Drift</dt><dd>A sheet that no longer ties to its source, usually because a cell was typed over.<span
+            class="where">Half two, S8; the second case.</span></dd>
+          <dt>Operating rule</dt><dd>The warehouse owns the number, pandas owns the iteration, Excel owns the last
+            mile.<span class="where">Half two, S9.</span></dd>
+        </dl>
+      </div>
+      <p class="foot">Week 2, Friday. The workbooks beside this page are the versions to keep: the deck pack holds
+        the three deliverables as live formulas, and the decision tool hides one formula defect per tab. Kalpa Retail and
+        everyone in it are fictional. The page stores nothing and calls no network.</p>
+    </section>
+  </main>
+</div>
+
+<dialog id="seqDialog" aria-labelledby="seqTitle">
+  <div class="head"><span id="seqTitle">The sequence</span><button class="close" id="seqClose" type="button">Close</button></div>
+  <div class="body"><div class="holder" id="seqBody"></div><p class="note" id="seqNote"></p></div>
+</dialog>
+
+<script data-c2kit>
+/* c2kit.js: the diagram builders and page helpers every companion page inlines.
+ *
+ * The JavaScript twin of scripts/c2kit.py, so a tree on the slide, in the notebook and on the
+ * companion page is one drawing in one violet. Every builder takes data and returns an SVG
+ * element; nothing is drawn until a page calls a builder. No storage, no network, no globals
+ * beyond window.C2K. scripts/build_companion.py inlines this file into each page.
+ */
+(function () {
+  "use strict";
+  /* The SVG namespace, an identifier rather than a link, built in two parts so no checker reads it as one. */
+  var NS = "http:" + "//www.w3.org/2000/svg";
+  var C = {
+    ink: "#1A0F5C", night: "#1A1440", violet: "#5B3FD6", lav: "#D9A7FF", muted: "#6B6690",
+    lilac: "#CFC9EE", line: "#E4E1F1", tint: "#EEEAFB", surface: "#F4F2FA", white: "#FFFFFF",
+    rose: "#D63A6A", roseTint: "#FCEBF0", green: "#1F8A5B", greenTint: "#E8F5EE"
+  };
+  var FONT = "Calibri, Carlito, 'Segoe UI', system-ui, sans-serif";
+  var SERIF = "Georgia, 'DejaVu Serif', serif";
+  var KINDS = {
+    plain: [C.tint, C.violet, 1.2, C.ink, ""],
+    lit: [C.ink, C.ink, 1.2, C.white, ""],
+    known: [C.tint, C.violet, 2.6, C.ink, ""],
+    unknown: [C.white, "#B8B2D6", 1.3, C.muted, "5 4"],
+    bad: [C.roseTint, C.rose, 1.6, C.ink, ""],
+    good: [C.greenTint, C.green, 1.6, C.ink, ""]
+  };
+
+  function el(name, attrs, text) {
+    var node = document.createElementNS(NS, name);
+    Object.keys(attrs || {}).forEach(function (k) { node.setAttribute(k, attrs[k]); });
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function wrap(text, perLine) {
+    var words = String(text).split(/\s+/), lines = [], line = "";
+    words.forEach(function (w) {
+      if (line && (line + " " + w).length > perLine) { lines.push(line); line = w; }
+      else { line = line ? line + " " + w : w; }
+    });
+    if (line) lines.push(line);
+    return lines.length ? lines : [""];
+  }
+
+  function labelLines(text, w, size) {
+    var per = Math.max(8, Math.floor(w / (size * 0.56)));
+    var parts = String(text).split("\n"), out = [];
+    wrap(parts[0], per).forEach(function (l) { out.push([l, parts.length > 1]); });
+    parts.slice(1).forEach(function (p) { wrap(p, per).forEach(function (l) { out.push([l, false]); }); });
+    return out;
+  }
+
+  function boxHeight(text, w, size) {
+    size = size || 13;
+    return Math.max(40, labelLines(text, w - 16, size).length * (size + 4) + 16);
+  }
+
+  function root(width, height, title) {
+    var svg = el("svg", { xmlns: NS, width: width, height: height, viewBox: "0 0 " + width + " " + height,
+                          role: "img", "class": "c2k-svg" });
+    var defs = el("defs");
+    var marker = el("marker", { id: "c2kArrow", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 6,
+                                markerHeight: 6, orient: "auto-start-reverse" });
+    marker.appendChild(el("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: C.violet }));
+    defs.appendChild(marker);
+    svg.appendChild(defs);
+    svg.appendChild(el("rect", { width: width, height: height, rx: 10, fill: C.surface }));
+    if (title) {
+      svg.appendChild(el("text", { x: width / 2, y: height - 8, "text-anchor": "middle", fill: C.muted,
+                                   "font-family": FONT, "font-size": 12.5 }, title));
+    }
+    return svg;
+  }
+
+  function box(svg, x, y, w, h, text, kind, size) {
+    size = size || 13;
+    var k = KINDS[kind] || KINDS.plain;
+    var g = el("g", { "class": "c2k-node c2k-" + (kind || "plain") });
+    var rect = el("rect", { x: x, y: y, width: w, height: h, rx: 8, fill: k[0], stroke: k[1],
+                            "stroke-width": k[2] });
+    if (k[4]) rect.setAttribute("stroke-dasharray", k[4]);
+    g.appendChild(rect);
+    var lines = labelLines(text, w - 16, size);
+    var top = y + h / 2 - (lines.length - 1) * (size + 4) / 2 + size * 0.36;
+    lines.forEach(function (pair, i) {
+      g.appendChild(el("text", { x: x + w / 2, y: top + i * (size + 4), "text-anchor": "middle", fill: k[3],
+                                 "font-family": FONT, "font-size": size,
+                                 "font-weight": (pair[1] || (kind === "lit" && lines.length === 1)) ? 700 : 400 },
+                       pair[0]));
+    });
+    svg.appendChild(g);
+    return g;
+  }
+
+  function arrow(svg, x1, y1, x2, y2, label) {
+    svg.appendChild(el("line", { x1: x1, y1: y1, x2: x2, y2: y2, stroke: C.violet, "stroke-width": 1.5,
+                                 "marker-end": "url(#c2kArrow)" }));
+    if (label) {
+      svg.appendChild(el("text", { x: (x1 + x2) / 2, y: (y1 + y2) / 2 - 6, "text-anchor": "middle",
+                                   fill: C.muted, "font-family": FONT, "font-size": 11.5 }, label));
+    }
+  }
+
+  function curve(svg, x1, y1, x2, y2) {
+    var dx = Math.max(24, (x2 - x1) * 0.5);
+    svg.appendChild(el("path", { d: "M " + x1 + " " + y1 + " C " + (x1 + dx) + " " + y1 + ", " + (x2 - dx) + " " +
+                                 y2 + ", " + x2 + " " + y2, fill: "none", stroke: C.violet, "stroke-width": 1.5,
+                                 "marker-end": "url(#c2kArrow)" }));
+  }
+
+  /* Steps left to right, with one lit; kinds sets each step's look by name. */
+  function flow(steps, lit, opts) {
+    opts = opts || {};
+    var w = opts.width || 150, gap = 28;
+    var h = Math.max.apply(null, steps.map(function (s) { return boxHeight(s, w); }));
+    var svg = root(steps.length * w + (steps.length - 1) * gap + 28, h + 28 + (opts.title ? 22 : 0), opts.title);
+    steps.forEach(function (s, i) {
+      var x = 14 + i * (w + gap);
+      var kind = (opts.kinds && opts.kinds[i]) || (i === lit ? "lit" : "plain");
+      box(svg, x, 14, w, h, s, kind);
+      if (i) arrow(svg, x - gap, 14 + h / 2, x - 2, 14 + h / 2, opts.edges ? opts.edges[i - 1] : "");
+    });
+    return svg;
+  }
+
+  /* The same, top to bottom; edges labels the arrow into each step after the first. */
+  function vflow(steps, lit, opts) {
+    opts = opts || {};
+    var w = opts.width || 300, gap = opts.edges ? 30 : 22, y = 12, parts = [];
+    steps.forEach(function (s) { parts.push(boxHeight(s, w)); });
+    var total = parts.reduce(function (a, b) { return a + b; }, 0) + gap * (steps.length - 1) + 28;
+    var svg = root(w + 28 + (opts.edges ? 150 : 0), total + (opts.title ? 22 : 0), opts.title);
+    steps.forEach(function (s, i) {
+      if (i) {
+        arrow(svg, 14 + w / 2, y - gap, 14 + w / 2, y - 2);
+        if (opts.edges && opts.edges[i - 1]) {
+          svg.appendChild(el("text", { x: 14 + w / 2 + 10, y: y - gap / 2 + 4, fill: C.muted, "font-family": FONT,
+                                       "font-size": 12 }, opts.edges[i - 1]));
+        }
+      }
+      var kind = (opts.kinds && opts.kinds[i]) || (i === lit ? "lit" : "plain");
+      box(svg, 14, y, w, parts[i], s, kind);
+      y += parts[i] + gap;
+    });
+    return svg;
+  }
+
+  function ladder(items, lit, opts) {
+    return vflow(items.map(function (t, i) { return (i + 1) + ". " + t; }), lit, opts);
+  }
+
+  /* A decision tree, top down. node: {label, kind, branches: [[edgeLabel, child], ...]}. */
+  function tree(node, opts) {
+    opts = opts || {};
+    var levels = [];
+    (function walk(n, d) {
+      if (!levels[d]) levels[d] = [];
+      var entry = { n: n, kids: [] };
+      levels[d].push(entry);
+      (n.branches || []).forEach(function (b) { entry.kids.push([b[0], walk(b[1], d + 1)]); });
+      return entry;
+    })(node, 0);
+    var w = opts.width || 196, gx = 22, gy = 44;
+    var lh = levels.map(function (l) {
+      return Math.max.apply(null, l.map(function (e) { return boxHeight(e.n.label, w); }));
+    });
+    var width = Math.max.apply(null, levels.map(function (l) { return l.length; })) * (w + gx) + 28;
+    var height = lh.reduce(function (a, b) { return a + b; }, 0) + gy * (levels.length - 1) + 24 + (opts.title ? 22 : 0);
+    var svg = root(width, height, opts.title), y = 12;
+    levels.forEach(function (level, d) {
+      var span = level.length * (w + gx) - gx, x0 = (width - span) / 2;
+      level.forEach(function (e, i) {
+        e.x = x0 + i * (w + gx); e.y = y; e.h = lh[d];
+        box(svg, e.x, e.y, w, e.h, e.n.label, e.n.kind || "plain");
+      });
+      y += lh[d] + gy;
+    });
+    levels.forEach(function (level) {
+      level.forEach(function (e) {
+        e.kids.forEach(function (k) {
+          arrow(svg, e.x + w / 2, e.y + e.h, k[1].x + w / 2, k[1].y - 2, k[0]);
+        });
+      });
+    });
+    return svg;
+  }
+
+  /* A driver tree, left to right: a total on the left, what multiplies into it on the right.
+   * node: {label, note, kind, children: [...]}. */
+  function driverTree(node, opts) {
+    opts = opts || {};
+    var w = opts.width || 156, gx = 38, gy = 12, rows = 0, placed = [];
+    function text(n) { return n.note ? n.label + "\n" + n.note : n.label; }
+    var all = [];
+    (function walk(n) { all.push(n); (n.children || []).forEach(walk); })(node);
+    var h = Math.max.apply(null, all.map(function (n) { return boxHeight(text(n), w); }));
+    (function place(n, d) {
+      var y;
+      if (!n.children || !n.children.length) { y = rows * (h + gy); rows += 1; }
+      else {
+        var ys = n.children.map(function (k) { return place(k, d + 1); });
+        y = (ys[0] + ys[ys.length - 1]) / 2;
+      }
+      placed.push([n, d, y]);
+      return y;
+    })(node, 0);
+    var depth = Math.max.apply(null, placed.map(function (p) { return p[1]; }));
+    var svg = root((depth + 1) * w + depth * gx + 28, rows * (h + gy) - gy + 24 + (opts.title ? 24 : 0), opts.title);
+    var pos = new Map();
+    placed.forEach(function (p) { pos.set(p[0], [14 + p[1] * (w + gx), 12 + p[2]]); });
+    placed.forEach(function (p) {
+      var a = pos.get(p[0]);
+      (p[0].children || []).forEach(function (k) {
+        var b = pos.get(k);
+        curve(svg, a[0] + w, a[1] + h / 2, b[0] - 2, b[1] + h / 2);
+      });
+    });
+    placed.forEach(function (p) {
+      var a = pos.get(p[0]);
+      var g = box(svg, a[0], a[1], w, h, text(p[0]), p[0].kind || "plain");
+      if (p[0].id) g.setAttribute("data-node", p[0].id);
+    });
+    return svg;
+  }
+
+  /* Every value as a dot on one axis, with named marker lines. markers: [[label, value, kind]]. */
+  function strip(values, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || rupees, width = opts.width || 760;
+    var lo = opts.lo === undefined ? 0 : opts.lo;
+    var hi = opts.hi === undefined ? niceCeil(Math.max.apply(null, values) * 1.04) : opts.hi;
+    var left = 40, right = width - 40, axis = 150, span = (hi - lo) || 1;
+    function px(v) { return left + (right - left) * (v - lo) / span; }
+    var svg = root(width, axis + 34 + (opts.title ? 22 : 0), opts.title);
+    svg.appendChild(el("line", { x1: left, y1: axis, x2: right, y2: axis, stroke: C.muted }));
+    for (var i = 0; i < 5; i++) {
+      var v = lo + span * i / 4, x = px(v);
+      svg.appendChild(el("line", { x1: x, y1: axis, x2: x, y2: axis + 5, stroke: C.muted }));
+      svg.appendChild(el("text", { x: x, y: axis + 20, "text-anchor": "middle", fill: C.muted, "font-family": FONT,
+                                   "font-size": 12 }, fmt(v)));
+    }
+    var colour = { bad: C.rose, good: C.green, plain: C.violet };
+    var lines = opts.markers || [];
+    lines.forEach(function (m, n) {
+      var x = px(m[1]), c = colour[m[2]] || C.violet;
+      /* Two lines close together would print their labels over each other, so the lower one of a
+         close pair reads leftward from its line. */
+      var left = n > 0 && Math.abs(x - px(lines[n - 1][1])) < 150 && x <= px(lines[n - 1][1]);
+      svg.appendChild(el("line", { x1: x, y1: 34 + 16 * (n % 2), x2: x, y2: axis, stroke: c, "stroke-width": 1.6,
+                                   "stroke-dasharray": "5 4", "class": "c2k-marker" }));
+      svg.appendChild(el("text", { x: left ? x - 5 : x + 5, y: 30 + 16 * (n % 2), fill: c, "font-family": FONT,
+                                   "font-size": 12.5, "font-weight": 700, "text-anchor": left ? "end" : "start" },
+                         m[0] + " " + fmt(m[1])));
+    });
+    var bins = {};
+    values.forEach(function (v, i) {
+      var x = px(v), key = Math.round(x / 11), level = bins[key] || 0;
+      bins[key] = level + 1;
+      svg.appendChild(el("circle", { cx: x, cy: axis - 9 - level * 11, r: 5,
+                                     fill: (opts.lit || []).indexOf(i) >= 0 ? C.ink : C.violet,
+                                     "fill-opacity": 0.8, stroke: C.white, "stroke-width": 1 }));
+    });
+    return svg;
+  }
+
+  /* The next round number at or above x: 1, 2, 2.5 or 5 times a power of ten, so axis ticks read cleanly. */
+  function niceCeil(x) {
+    if (x <= 0) return 1;
+    var p = Math.pow(10, Math.floor(Math.log10(x))), steps = [1, 2, 2.5, 5, 10];
+    for (var i = 0; i < steps.length; i++) if (steps[i] * p >= x) return steps[i] * p;
+    return 10 * p;
+  }
+
+  /* The chart twins of c2kit.py's bridge, line and columns: round steps for the gridlines, a
+   * finer round top so the tallest value sits just under it, and one label style throughout. */
+  var ROUND = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8];
+  function chartCeil(x) {
+    if (x <= 0) return 1;
+    var p = Math.pow(10, Math.floor(Math.log10(x))), steps = ROUND.concat([10]);
+    for (var i = 0; i < steps.length; i++) if (steps[i] * p >= x * 0.999999) return steps[i] * p;
+    return 10 * p;
+  }
+  function tickCount(span) {
+    var tries = [5, 4, 6, 3];
+    for (var i = 0; i < tries.length; i++) {
+      var step = span / tries[i];
+      if (step <= 0) break;
+      var m = Math.round(step / Math.pow(10, Math.floor(Math.log10(step))) * 1e6) / 1e6;
+      if (ROUND.indexOf(m) >= 0) return tries[i];
+    }
+    return 4;
+  }
+  function gridlines(svg, lo, hi, fmt, left, right, py) {
+    var n = tickCount(hi - lo);
+    for (var k = 0; k <= n; k++) {
+      var v = lo + (hi - lo) * k / n, y = py(v);
+      svg.appendChild(el("line", { x1: left, y1: y, x2: right, y2: y, stroke: C.line }));
+      svg.appendChild(el("text", { x: left - 8, y: y + 4, "text-anchor": "end", fill: C.muted, "font-family": FONT,
+                                   "font-size": 11.5 }, fmt(v)));
+    }
+  }
+  function under(svg, x, y, text, per, bold) {
+    wrap(text, per || 13).slice(0, 3).forEach(function (line, i) {
+      svg.appendChild(el("text", { x: x, y: y + i * 15, "text-anchor": "middle", fill: C.ink, "font-family": FONT,
+                                   "font-size": 12, "font-weight": bold ? 700 : 400 }, line));
+    });
+  }
+  function legend(svg, items, x, y) {
+    items.forEach(function (it) {
+      if (it[2]) svg.appendChild(el("line", { x1: x, y1: y - 4, x2: x + 18, y2: y - 4, stroke: it[1], "stroke-width": 2,
+                                              "stroke-dasharray": "5 3" }));
+      else svg.appendChild(el("rect", { x: x, y: y - 10, width: 14, height: 12, rx: 3, fill: it[1] }));
+      svg.appendChild(el("text", { x: x + 22, y: y, fill: C.ink, "font-family": FONT, "font-size": 12.5 }, it[0]));
+      x += 34 + it[0].length * 7;
+    });
+  }
+
+  /* A bridge, or waterfall: start is [label, value], moves are [[label, change], ...]; each move
+   * floats from the running total, green when it adds and rose when it takes away. opts.lo raises
+   * the axis floor when the moves are small against the totals; opts.lit outlines moves by index. */
+  function bridge(start, moves, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || rupees, lit = opts.lit || [];
+    var run = start[1], levels = [0, start[1]], cols = [[start[0], start[1], null, 0, start[1]]];
+    moves.forEach(function (m, i) { cols.push([m[0], m[1], i, run, run + m[1]]); run += m[1]; levels.push(run); });
+    cols.push([opts.endLabel || "Where it lands", run, null, 0, run]);
+    var floor = opts.lo === undefined ? Math.min(0, Math.min.apply(null, levels)) : opts.lo;
+    var hi = floor + chartCeil((Math.max.apply(null, levels) - floor) * 1.06), lo = floor;
+    var colW = 92, gap = 22, left = 86, top = 30, plotH = 230;
+    var width = opts.width || left + cols.length * (colW + gap) + 6;
+    function py(v) { return top + plotH * (hi - v) / ((hi - lo) || 1); }
+    var svg = root(width, top + plotH + 20 + 45 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, lo, hi, fmt, left - 6, width - 8, py);
+    cols.forEach(function (c, k) {
+      var x = left + k * (colW + gap), y1 = py(Math.max(c[3], c[4])), y2 = py(Math.max(lo, Math.min(c[3], c[4])));
+      var isMove = c[2] !== null, fill = !isMove ? C.violet : (c[1] >= 0 ? C.green : C.rose);
+      var rect = { x: x, y: y1, width: colW, height: Math.max(2, y2 - y1), rx: 4, fill: fill, "fill-opacity": 0.88 };
+      if (isMove && lit.indexOf(c[2]) >= 0) { rect.stroke = C.ink; rect["stroke-width"] = 2.5; }
+      svg.appendChild(el("rect", rect));
+      svg.appendChild(el("text", { x: x + colW / 2, y: y1 - 7, "text-anchor": "middle", fill: C.ink, "font-family": FONT,
+                                   "font-size": 12.5, "font-weight": 700 }, (isMove && c[1] >= 0 ? "+" : "") + fmt(c[1])));
+      if (k < cols.length - 1) {
+        var level = py(c[4]);
+        svg.appendChild(el("line", { x1: x + colW, y1: level, x2: x + colW + gap, y2: level, stroke: C.muted,
+                                     "stroke-dasharray": "3 3" }));
+      }
+      under(svg, x + colW / 2, top + plotH + 20, c[0], 13, !isMove);
+    });
+    return svg;
+  }
+
+  /* Values over an ordered axis: series are [[name, values, kind], ...]; kind "plan" is a dashed
+   * reference line, "bad" and "good" colour a line by meaning. The last value prints at its end. */
+  function line(labels, series, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || function (v) { return Math.round(v).toLocaleString("en-IN"); };
+    var width = opts.width || 760, lo = opts.lo || 0, all = [];
+    series.forEach(function (s) { s[1].forEach(function (v) { if (v !== null && v !== undefined) all.push(v); }); });
+    var hi = lo + chartCeil((Math.max.apply(null, all) - lo) * 1.06);
+    var left = 86, right = width - 110, top = 44, plotH = 220, step = (right - left) / Math.max(1, labels.length - 1);
+    function py(v) { return top + plotH * (hi - v) / ((hi - lo) || 1); }
+    var svg = root(width, top + plotH + 20 + 30 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, lo, hi, fmt, left, right, py);
+    labels.forEach(function (l, i) { under(svg, left + i * step, top + plotH + 20, String(l), 10, false); });
+    var colours = { plan: C.muted, bad: C.rose, good: C.green, lit: C.ink }, keys = [];
+    series.forEach(function (s) {
+      var colour = colours[s[2]] || C.violet, dashed = s[2] === "plan", pts = [];
+      keys.push([s[0], colour, dashed]);
+      s[1].forEach(function (v, i) { if (v !== null && v !== undefined) pts.push([left + i * step, py(v), v]); });
+      var d = pts.map(function (p, j) { return (j ? "L " : "M ") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+      var path = { d: d, fill: "none", stroke: colour, "stroke-width": 2.4 };
+      if (dashed) path["stroke-dasharray"] = "6 4";
+      svg.appendChild(el("path", path));
+      if (!dashed) pts.forEach(function (p) { svg.appendChild(el("circle", { cx: p[0], cy: p[1], r: 3.6, fill: colour })); });
+      if (pts.length) {
+        var last = pts[pts.length - 1];
+        svg.appendChild(el("text", { x: last[0] + 8, y: last[1] + 4, fill: colour, "font-family": FONT, "font-size": 12.5,
+                                     "font-weight": 700 }, fmt(last[2])));
+      }
+    });
+    legend(svg, keys, left, 22);
+    return svg;
+  }
+
+  /* Vertical bars grouped by category: series are [[name, values], ...] aligned with categories,
+   * drawn light to dark in the order given, so Q1 against Q2 reads as before and after. */
+  function columns(categories, series, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || function (v) { return Math.round(v).toLocaleString("en-IN"); }, lit = opts.lit || [];
+    var shades = [C.lilac, C.violet, C.ink, C.green], all = [];
+    series.forEach(function (s) { all = all.concat(s[1]); });
+    var hi = chartCeil(Math.max.apply(null, all) * 1.1);
+    var barW = 40, inner = 6, groupGap = 34, left = 86, top = 44, plotH = 220;
+    var groupW = series.length * barW + (series.length - 1) * inner;
+    var width = opts.width || left + categories.length * (groupW + groupGap) + 10;
+    function py(v) { return top + plotH * (hi - v) / hi; }
+    var svg = root(width, top + plotH + 20 + 45 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, 0, hi, fmt, left - 6, width - 8, py);
+    categories.forEach(function (cat, c) {
+      var gx = left + c * (groupW + groupGap);
+      series.forEach(function (s, k) {
+        var v = s[1][c], x = gx + k * (barW + inner);
+        svg.appendChild(el("rect", { x: x, y: py(v), width: barW, height: Math.max(1, top + plotH - py(v)), rx: 3,
+                                     fill: shades[k % shades.length] }));
+        svg.appendChild(el("text", { x: x + barW / 2, y: py(v) - 6, "text-anchor": "middle", fill: C.ink,
+                                     "font-family": FONT, "font-size": 11, "font-weight": 700 }, fmt(v)));
+      });
+      under(svg, gx + groupW / 2, top + plotH + 20, String(cat), Math.max(10, Math.floor(groupW / 7)),
+            lit.indexOf(c) >= 0);
+    });
+    legend(svg, series.map(function (s, k) { return [s[0], shades[k % shades.length], false]; }), left, 22);
+    return svg;
+  }
+
+  /* Messages across named lanes, drawn from the run that happened. messages: [[from, to, text]]. */
+  function sequence(lanes, messages, opts) {
+    opts = opts || {};
+    var lw = opts.laneWidth || 180, top = 46, step = 44;
+    var width = lanes.length * lw + 28, height = top + Math.max(1, messages.length) * step + 34 + (opts.title ? 16 : 0);
+    var svg = root(width, height, opts.title);
+    lanes.forEach(function (lane, i) {
+      var x = 14 + i * lw;
+      box(svg, x + 10, 10, lw - 20, 30, lane, "lit", 12);
+      svg.appendChild(el("line", { x1: x + lw / 2, y1: 42, x2: x + lw / 2, y2: height - 28, stroke: C.line }));
+    });
+    messages.forEach(function (m, n) {
+      var y = top + n * step + 20;
+      var x1 = 14 + lanes.indexOf(m[0]) * lw + lw / 2, x2 = 14 + lanes.indexOf(m[1]) * lw + lw / 2;
+      if (x1 === x2) {
+        svg.appendChild(el("text", { x: x1 + 8, y: y + 4, fill: C.night, "font-family": FONT, "font-size": 12 }, m[2]));
+      } else {
+        arrow(svg, x1, y, x2 + (x2 > x1 ? -4 : 4), y, m[2]);
+      }
+    });
+    return svg;
+  }
+
+  function sideBySide() {
+    var div = document.createElement("div");
+    div.className = "c2k-row";
+    Array.prototype.forEach.call(arguments, function (svg) { div.appendChild(svg); });
+    return div;
+  }
+
+  /* Rs with Indian digit grouping, the way every Kalpa number is read aloud. */
+  function rupees(n) {
+    var sign = n < 0 ? "-" : "", s = String(Math.round(Math.abs(n)));
+    if (s.length <= 3) return sign + "Rs " + s;
+    var head = s.slice(0, -3), tail = s.slice(-3), parts = [];
+    while (head.length > 2) { parts.unshift(head.slice(-2)); head = head.slice(0, -2); }
+    if (head) parts.unshift(head);
+    return sign + "Rs " + parts.join(",") + "," + tail;
+  }
+
+  /* Put a diagram into a holder, replacing whatever was drawn there before. */
+  function draw(holder, svg) {
+    var target = typeof holder === "string" ? document.getElementById(holder) : holder;
+    target.textContent = "";
+    target.appendChild(svg);
+    return svg;
+  }
+
+  window.C2K = { colours: C, flow: flow, vflow: vflow, ladder: ladder, tree: tree, driverTree: driverTree,
+                 strip: strip, bridge: bridge, line: line, columns: columns, sequence: sequence,
+                 sideBySide: sideBySide, rupees: rupees, draw: draw };
+})();
+</script>
+<script id="data" type="application/json">{"segments":["Business","Retail-Core","Retail-Plus","Student"],"cities":["Bengaluru","Chennai","Delhi","Hyderabad","Mumbai","Pune"],"warehouse":{"Q1":100000000,"Q2":98400000},"monthly":{"Business":{"once":[40470440,27720000,30824000,44766600,26626000,26192000],"row":[80940880,55440000,61648000,88606200,53252000,51614000]},"Retail-Core":{"once":[126140,121000,125930,129830,124660,111760],"row":[140920,141050,151790,155490,153040,129630]},"Retail-Plus":{"once":[187540,201100,197130,149170,139640,124570],"row":[299040,326040,313080,264110,237830,198970]},"Student":{"once":[8760,9220,8740,11730,11940,12100],"row":[12030,11350,11970,16550,16670,14850]}},"tree":{"Business":{"Q1":{"once":{"customers":36,"orders":97,"revenue":99014440},"row":{"customers":194,"orders":194,"revenue":198028880}},"Q2":{"once":{"customers":35,"orders":91,"revenue":97584600},"row":{"customers":180,"orders":180,"revenue":193472200}}},"Retail-Core":{"Q1":{"once":{"customers":102,"orders":199,"revenue":373070},"row":{"customers":227,"orders":227,"revenue":433760}},"Q2":{"once":{"customers":96,"orders":193,"revenue":366250},"row":{"customers":225,"orders":225,"revenue":438160}}},"Retail-Plus":{"Q1":{"once":{"customers":91,"orders":215,"revenue":585770},"row":{"customers":312,"orders":312,"revenue":938160}},"Q2":{"once":{"customers":76,"orders":140,"revenue":413380},"row":{"customers":217,"orders":217,"revenue":700910}}},"Student":{"Q1":{"once":{"customers":15,"orders":27,"revenue":26720},"row":{"customers":39,"orders":39,"revenue":35350}},"Q2":{"once":{"customers":20,"orders":38,"revenue":35770},"row":{"customers":56,"orders":56,"revenue":48070}}}},"protect":[["C-0152","Pune",25840],["C-0183","Delhi",23450],["C-0160","Chennai",23020],["C-0167","Hyderabad",22520],["C-0219","Delhi",20640],["C-0173","Pune",20490],["C-0151","Mumbai",19840],["C-0184","Mumbai",19750],["C-0164","Bengaluru",19740],["C-0177","Delhi",19510],["C-0188","Hyderabad",18150],["C-0239","Delhi",17240],["C-0185","Delhi",16910],["C-0156","Bengaluru",16900],["C-0194","Hyderabad",16740],["C-0154","Mumbai",16360],["C-0174","Mumbai",15370],["C-0172","Delhi",15290],["C-0165","Delhi",15240],["C-0175","Mumbai",15220],["C-0171","Hyderabad",14140],["C-0162","Delhi",14100],["C-0179","Bengaluru",14090],["C-0234","Hyderabad",13360],["C-0216","Mumbai",13280],["C-0157","Mumbai",12910],["C-0161","Pune",12720],["C-0153","Mumbai",12650],["C-0227","Bengaluru",12430],["C-0252","Chennai",12280],["C-0180","Chennai",12190],["C-0191","Delhi",12140],["C-0224","Bengaluru",11510],["C-0197","Pune",11490],["C-0242","Mumbai",11360],["C-0265","Bengaluru",10700],["C-0257","Delhi",10680],["C-0212","Mumbai",10660],["C-0155","Chennai",10550],["C-0187","Pune",10180],["C-0237","Chennai",10180],["C-0189","Delhi",10120],["C-0190","Delhi",9770],["C-0238","Delhi",9610],["C-0222","Mumbai",9390],["C-0182","Chennai",9150],["C-0186","Delhi",8960],["C-0251","Delhi",8790],["C-0181","Delhi",8700],["C-0169","Hyderabad",8580]],"ids":[["C-0001","Retail-Core","Delhi",2840,0],["C-0002","Retail-Core","Chennai",6700,0],["C-0003","Retail-Core","Delhi",9710,0],["C-0004","Retail-Core","Bengaluru",3120,0],["C-0005","Retail-Core","Bengaluru",4970,0],["C-0006","Retail-Core","Hyderabad",9630,0],["C-0007","Retail-Core","Bengaluru",8250,0],["C-0008","Retail-Core","Chennai",6550,0],["C-0009","Retail-Core","Pune",8670,0],["C-0010","Retail-Core","Hyderabad",19680,0],["C-0011","Retail-Core","Bengaluru",13970,0],["C-0012","Retail-Core","Delhi",5180,0],["C-0013","Retail-Core","Hyderabad",7190,0],["C-0014","Retail-Core","Mumbai",4870,0],["C-0015","Retail-Core","Pune",2880,0],["C-0016","Retail-Core","Delhi",6780,0],["C-0017","Retail-Core","Bengaluru",11700,0],["C-0018","Retail-Core","Delhi",7430,0],["C-0019","Retail-Core","Delhi",6500,0],["C-0020","Retail-Core","Pune",15260,0],["C-0021","Retail-Core","Mumbai",10110,0],["C-0022","Retail-Core","Hyderabad",10160,0],["C-0023","Retail-Core","Bengaluru",6200,0],["C-0024","Retail-Core","Hyderabad",7770,0],["C-0025","Retail-Core","Chennai",4760,0],["C-0026","Retail-Core","Chennai",9910,0],["C-0027","Retail-Core","Mumbai",5040,0],["C-0028","Retail-Core","Hyderabad",3750,0],["C-0029","Retail-Core","Mumbai",9930,0],["C-0030","Retail-Core","Delhi",5800,0],["C-0031","Retail-Core","Hyderabad",9820,0],["C-0032","Retail-Core","Hyderabad",7440,0],["C-0033","Retail-Core","Mumbai",15910,0],["C-0034","Retail-Core","Bengaluru",9430,0],["C-0035","Retail-Core","Bengaluru",12300,0],["C-0036","Retail-Core","Delhi",7850,0],["C-0037","Retail-Core","Chennai",12240,0],["C-0038","Retail-Core","Pune",6370,0],["C-0039","Retail-Core","Delhi",7100,0],["C-0040","Retail-Core","Delhi",26020,0],["C-0041","Retail-Core","Hyderabad",12460,0],["C-0042","Retail-Core","Mumbai",7910,0],["C-0043","Retail-Core","Bengaluru",3810,0],["C-0044","Retail-Core","Pune",12600,0],["C-0045","Retail-Core","Pune",5200,0],["C-0046","Retail-Core","Delhi",8500,0],["C-0047","Retail-Core","Bengaluru",12440,0],["C-0048","Retail-Core","Pune",4510,0],["C-0049","Retail-Core","Bengaluru",9430,0],["C-0050","Retail-Core","Pune",11480,0],["C-0051","Retail-Core","Mumbai",6380,0],["C-0052","Retail-Core","Chennai",1210,0],["C-0053","Retail-Core","Chennai",1410,0],["C-0054","Retail-Core","Pune",8950,0],["C-0056","Retail-Core","Mumbai",1970,0],["C-0058","Retail-Core","Bengaluru",6280,0],["C-0060","Retail-Core","Pune",11550,0],["C-0066","Retail-Core","Chennai",6540,0],["C-0067","Retail-Core","Pune",2120,0],["C-0068","Retail-Core","Pune",4310,0],["C-0070","Retail-Core","Hyderabad",2730,0],["C-0071","Retail-Core","Hyderabad",4840,0],["C-0072","Retail-Core","Chennai",2990,0],["C-0073","Retail-Core","Delhi",1460,0],["C-0074","Retail-Core","Mumbai",2810,0],["C-0075","Retail-Core","Chennai",3330,0],["C-0076","Retail-Core","Hyderabad",1550,0],["C-0077","Retail-Core","Hyderabad",2550,0],["C-0078","Retail-Core","Bengaluru",1750,0],["C-0079","Retail-Core","Bengaluru",2630,0],["C-0080","Retail-Core","Hyderabad",1020,0],["C-0081","Retail-Core","Hyderabad",1070,0],["C-0082","Retail-Core","Bengaluru",2340,0],["C-0083","Retail-Core","Delhi",1480,0],["C-0084","Retail-Core","Pune",6400,0],["C-0085","Retail-Core","Chennai",3610,0],["C-0086","Retail-Core","Chennai",5810,0],["C-0087","Retail-Core","Pune",2970,0],["C-0088","Retail-Core","Bengaluru",960,0],["C-0089","Retail-Core","Delhi",7500,0],["C-0090","Retail-Core","Delhi",1900,0],["C-0091","Retail-Core","Hyderabad",5230,0],["C-0092","Retail-Core","Chennai",2950,0],["C-0093","Retail-Core","Mumbai",1740,0],["C-0094","Retail-Core","Hyderabad",5160,0],["C-0095","Retail-Core","Mumbai",7010,0],["C-0096","Retail-Core","Hyderabad",3210,0],["C-0098","Retail-Core","Chennai",2030,0],["C-0099","Retail-Core","Pune",1180,0],["C-0100","Retail-Core","Hyderabad",4080,0],["C-0102","Retail-Core","Hyderabad",2190,0],["C-0103","Retail-Core","Chennai",4430,0],["C-0104","Retail-Core","Delhi",4720,0],["C-0107","Retail-Core","Pune",1630,0],["C-0108","Retail-Core","Mumbai",5250,0],["C-0109","Retail-Core","Bengaluru",930,0],["C-0110","Retail-Core","Mumbai",3850,0],["C-0111","Retail-Core","Pune",8770,0],["C-0112","Retail-Core","Pune",4600,0],["C-0113","Retail-Core","Bengaluru",4300,0],["C-0115","Retail-Core","Chennai",1480,0],["C-0116","Retail-Core","Delhi",4770,0],["C-0117","Retail-Core","Hyderabad",3160,0],["C-0118","Retail-Core","Mumbai",3590,0],["C-0119","Retail-Core","Mumbai",1530,0],["C-0121","Retail-Core","Chennai",6470,0],["C-0122","Retail-Core","Pune",2480,0],["C-0123","Retail-Core","Pune",3000,0],["C-0124","Retail-Core","Pune",6610,0],["C-0125","Retail-Core","Chennai",820,0],["C-0126","Retail-Core","Mumbai",3290,0],["C-0127","Retail-Core","Chennai",5000,0],["C-0128","Retail-Core","Chennai",5700,0],["C-0129","Retail-Core","Delhi",1620,0],["C-0131","Retail-Core","Delhi",4700,0],["C-0132","Retail-Core","Pune",4540,0],["C-0133","Retail-Core","Chennai",2660,0],["C-0134","Retail-Core","Pune",890,0],["C-0136","Retail-Core","Pune",9470,0],["C-0137","Retail-Core","Hyderabad",4390,0],["C-0138","Retail-Core","Bengaluru",1480,0],["C-0139","Retail-Core","Pune",5020,0],["C-0140","Retail-Core","Bengaluru",4470,0],["C-0142","Retail-Core","Chennai",5750,0],["C-0143","Retail-Core","Pune",1140,0],["C-0144","Retail-Core","Mumbai",2340,0],["C-0145","Retail-Core","Chennai",2690,0],["C-0146","Retail-Core","Delhi",6330,0],["C-0147","Retail-Core","Pune",6370,0],["C-0148","Retail-Core","Delhi",1340,0],["C-0150","Retail-Core","Pune",2410,0],["C-0151","Retail-Plus","Mumbai",19840,7],["C-0152","Retail-Plus","Pune",25840,1],["C-0153","Retail-Plus","Mumbai",12650,28],["C-0154","Retail-Plus","Mumbai",16360,16],["C-0155","Retail-Plus","Chennai",10550,39],["C-0156","Retail-Plus","Bengaluru",16900,14],["C-0157","Retail-Plus","Mumbai",12910,26],["C-0158","Retail-Plus","Mumbai",7670,57],["C-0159","Retail-Plus","Delhi",6340,66],["C-0160","Retail-Plus","Chennai",23020,3],["C-0161","Retail-Plus","Pune",12720,27],["C-0162","Retail-Plus","Delhi",14100,22],["C-0163","Retail-Plus","Bengaluru",1220,106],["C-0164","Retail-Plus","Bengaluru",19740,9],["C-0165","Retail-Plus","Delhi",15240,19],["C-0166","Retail-Plus","Bengaluru",5820,69],["C-0167","Retail-Plus","Hyderabad",22520,4],["C-0168","Retail-Plus","Mumbai",8520,51],["C-0169","Retail-Plus","Hyderabad",8580,50],["C-0171","Retail-Plus","Hyderabad",14140,21],["C-0172","Retail-Plus","Delhi",15290,18],["C-0173","Retail-Plus","Pune",20490,6],["C-0174","Retail-Plus","Mumbai",15370,17],["C-0175","Retail-Plus","Mumbai",15220,20],["C-0176","Retail-Plus","Bengaluru",6580,62],["C-0177","Retail-Plus","Delhi",19510,10],["C-0178","Retail-Plus","Chennai",1840,100],["C-0179","Retail-Plus","Bengaluru",14090,23],["C-0180","Retail-Plus","Chennai",12190,31],["C-0181","Retail-Plus","Delhi",8700,49],["C-0182","Retail-Plus","Chennai",9150,46],["C-0183","Retail-Plus","Delhi",23450,2],["C-0184","Retail-Plus","Mumbai",19750,8],["C-0185","Retail-Plus","Delhi",16910,13],["C-0186","Retail-Plus","Delhi",8960,47],["C-0187","Retail-Plus","Pune",10180,40],["C-0188","Retail-Plus","Hyderabad",18150,11],["C-0189","Retail-Plus","Delhi",10120,42],["C-0190","Retail-Plus","Delhi",9770,43],["C-0191","Retail-Plus","Delhi",12140,32],["C-0192","Retail-Plus","Delhi",3260,93],["C-0193","Retail-Plus","Bengaluru",1580,101],["C-0194","Retail-Plus","Hyderabad",16740,15],["C-0196","Retail-Plus","Mumbai",2380,95],["C-0197","Retail-Plus","Pune",11490,34],["C-0198","Retail-Plus","Hyderabad",1850,99],["C-0200","Retail-Plus","Chennai",4010,83],["C-0201","Retail-Plus","Chennai",3840,84],["C-0202","Retail-Plus","Chennai",3840,85],["C-0204","Retail-Plus","Chennai",4350,79],["C-0205","Retail-Plus","Pune",5400,73],["C-0206","Retail-Plus","Hyderabad",3480,90],["C-0208","Retail-Plus","Bengaluru",7360,59],["C-0209","Retail-Plus","Chennai",4420,78],["C-0210","Retail-Plus","Delhi",8180,53],["C-0211","Retail-Plus","Chennai",7550,58],["C-0212","Retail-Plus","Mumbai",10660,38],["C-0213","Retail-Plus","Bengaluru",6400,64],["C-0216","Retail-Plus","Mumbai",13280,25],["C-0217","Retail-Plus","Hyderabad",4080,82],["C-0218","Retail-Plus","Hyderabad",1320,104],["C-0219","Retail-Plus","Delhi",20640,5],["C-0220","Retail-Plus","Chennai",3450,91],["C-0222","Retail-Plus","Mumbai",9390,45],["C-0223","Retail-Plus","Mumbai",7120,60],["C-0224","Retail-Plus","Bengaluru",11510,33],["C-0225","Retail-Plus","Chennai",1970,98],["C-0226","Retail-Plus","Mumbai",5950,67],["C-0227","Retail-Plus","Bengaluru",12430,29],["C-0228","Retail-Plus","Delhi",3620,88],["C-0229","Retail-Plus","Bengaluru",8070,54],["C-0230","Retail-Plus","Bengaluru",5920,68],["C-0231","Retail-Plus","Pune",4910,76],["C-0232","Retail-Plus","Bengaluru",6550,63],["C-0234","Retail-Plus","Hyderabad",13360,24],["C-0235","Retail-Plus","Mumbai",3270,92],["C-0236","Retail-Plus","Pune",4500,77],["C-0237","Retail-Plus","Chennai",10180,41],["C-0238","Retail-Plus","Delhi",9610,44],["C-0239","Retail-Plus","Delhi",17240,12],["C-0240","Retail-Plus","Bengaluru",5750,70],["C-0242","Retail-Plus","Mumbai",11360,35],["C-0243","Retail-Plus","Hyderabad",1350,103],["C-0244","Retail-Plus","Chennai",2970,94],["C-0245","Retail-Plus","Mumbai",4350,80],["C-0246","Retail-Plus","Pune",3650,87],["C-0247","Retail-Plus","Chennai",7890,56],["C-0248","Retail-Plus","Chennai",7000,61],["C-0249","Retail-Plus","Chennai",1570,102],["C-0250","Retail-Plus","Mumbai",5580,72],["C-0251","Retail-Plus","Delhi",8790,48],["C-0252","Retail-Plus","Chennai",12280,30],["C-0254","Retail-Plus","Pune",6380,65],["C-0257","Retail-Plus","Delhi",10680,37],["C-0259","Retail-Plus","Delhi",5720,71],["C-0260","Retail-Plus","Bengaluru",8320,52],["C-0261","Retail-Plus","Delhi",5270,74],["C-0262","Retail-Plus","Chennai",1310,105],["C-0263","Retail-Plus","Bengaluru",3690,86],["C-0264","Retail-Plus","Mumbai",3540,89],["C-0265","Retail-Plus","Bengaluru",10700,36],["C-0266","Retail-Plus","Bengaluru",4960,75],["C-0267","Retail-Plus","Chennai",2200,96],["C-0268","Retail-Plus","Delhi",2100,97],["C-0269","Retail-Plus","Bengaluru",7970,55],["C-0270","Retail-Plus","Delhi",4330,81],["C-0271","Business","Delhi",5649000,0],["C-0272","Business","Pune",5224000,0],["C-0273","Business","Chennai",12545000,0],["C-0274","Business","Delhi",4752000,0],["C-0275","Business","Mumbai",9603000,0],["C-0276","Business","Chennai",9377000,0],["C-0277","Business","Bengaluru",4178000,0],["C-0278","Business","Delhi",4284000,0],["C-0279","Business","Delhi",6563000,0],["C-0280","Business","Delhi",8181000,0],["C-0281","Business","Delhi",3714000,0],["C-0282","Business","Hyderabad",6084000,0],["C-0283","Business","Chennai",10263000,0],["C-0284","Business","Delhi",3532000,0],["C-0285","Business","Bengaluru",2421000,0],["C-0286","Business","Delhi",22310600,0],["C-0287","Business","Chennai",1874000,0],["C-0288","Business","Delhi",3912000,0],["C-0289","Business","Delhi",3172000,0],["C-0290","Business","Delhi",5306000,0],["C-0291","Business","Pune",13395440,0],["C-0292","Business","Mumbai",668000,0],["C-0293","Business","Bengaluru",4950000,0],["C-0294","Business","Chennai",3705000,0],["C-0295","Business","Chennai",4441000,0],["C-0296","Business","Bengaluru",5330000,0],["C-0297","Business","Mumbai",1127000,0],["C-0298","Business","Hyderabad",880000,0],["C-0299","Business","Bengaluru",2649000,0],["C-0300","Business","Bengaluru",2978000,0],["C-0302","Business","Delhi",1974000,0],["C-0303","Business","Hyderabad",1536000,0],["C-0304","Business","Pune",2853000,0],["C-0305","Business","Chennai",2753000,0],["C-0306","Business","Pune",5174000,0],["C-0307","Business","Chennai",3284000,0],["C-0308","Business","Pune",2590000,0],["C-0309","Business","Chennai",1446000,0],["C-0310","Business","Chennai",1921000,0],["C-0311","Student","Chennai",2560,0],["C-0312","Student","Chennai",1360,0],["C-0313","Student","Chennai",2200,0],["C-0314","Student","Chennai",3380,0],["C-0315","Student","Pune",5690,0],["C-0316","Student","Delhi",3710,0],["C-0317","Student","Bengaluru",2450,0],["C-0319","Student","Bengaluru",5710,0],["C-0320","Student","Hyderabad",2630,0],["C-0322","Student","Chennai",1610,0],["C-0323","Student","Mumbai",3930,0],["C-0325","Student","Chennai",3580,0],["C-0326","Student","Hyderabad",1420,0],["C-0328","Student","Delhi",2090,0],["C-0329","Student","Mumbai",1820,0],["C-0331","Student","Bengaluru",1070,0],["C-0332","Student","Chennai",1340,0],["C-0333","Student","Bengaluru",3730,0],["C-0334","Student","Pune",2150,0],["C-0335","Student","Pune",1650,0],["C-0336","Student","Bengaluru",1100,0],["C-0337","Student","Chennai",2100,0],["C-0338","Student","Delhi",3590,0],["C-0340","Student","Mumbai",1620,0]]}</script>
+<script>
+(function () {
+  "use strict";
+  var K = window.C2K;
+  var D = JSON.parse(document.getElementById("data").textContent);
+  function $(id) { return document.getElementById(id); }
+  var MONTHS = ["Apr", "May", "Jun", "Jul", "Aug", "Sep"];
+  function money(n) {
+    var a = Math.abs(n);
+    if (a >= 1e7) return "Rs " + (n / 1e7).toFixed(2) + " crore";
+    if (a >= 1e5) return "Rs " + (n / 1e5).toFixed(2) + " lakh";
+    return K.rupees(n);
+  }
+  function pct(x) { return (Math.round(x * 1000) / 10).toFixed(1); }
+
+  /* ---------------------------------------------------------------- the rail */
+  var rail = document.querySelectorAll(".rail a");
+  Array.prototype.forEach.call(rail, function (a) {
+    a.addEventListener("click", function () {
+      Array.prototype.forEach.call(rail, function (b) { b.classList.toggle("on", b === a); });
+      $("jumped").textContent = "You jumped to " + a.textContent.replace(/^\d+/, "").trim() + ".";
+    });
+  });
+
+  /* ---------------------------------------------------------------- sums over the data */
+  function segTotal(seg, q, mode) { return D.tree[seg][q][mode].revenue; }
+  function scopeSegs(scope) {
+    if (scope === "All segments") return D.segments;
+    if (scope === "All except Business") return D.segments.filter(function (s) { return s !== "Business"; });
+    return [scope];
+  }
+  function scopeQ(scope, q, mode) {
+    return scopeSegs(scope).reduce(function (t, s) { return t + segTotal(s, q, mode); }, 0);
+  }
+  function scopeMonths(scope, mode) {
+    return MONTHS.map(function (_, i) {
+      return scopeSegs(scope).reduce(function (t, s) { return t + D.monthly[s][mode][i]; }, 0);
+    });
+  }
+
+  /* ---------------------------------------------------------------- the walk */
+  var consumer = ["Retail-Core", "Retail-Plus", "Student"];
+  var WALK = [
+    { t: "Two exports, two grains",
+      x: "The customer table has one row per customer. The raw export has one row per payment, 1,450 rows for 1,000 orders, and it is the only one that can split the quarters.",
+      draw: function () { return K.columns(["rows in the raw export", "distinct orders"], [["count", [1450, 1000]]], { title: "The raw export: more rows than orders" }); } },
+    { t: "The hurried pivot",
+      x: "Sum of order_amount over every payment row reads Rs 39.41 crore for the half-year, and says Retail-Core grew. The warehouse says Rs 19.84 crore.",
+      draw: function () { return K.bridge(["the warehouse", 198400000], [["repeated rows", scopeQ("All segments", "Q1", "row") + scopeQ("All segments", "Q2", "row") - D.warehouse.Q1 - D.warehouse.Q2]], { fmt: money, endLabel: "the hurried pivot", title: "From the warehouse to the hurried pivot" }); } },
+    { t: "Count each order once",
+      x: "A first-row flag per order brings the tree back to the warehouse to the rupee. Retail-Plus orders per customer fell from 2.36 to 1.84.",
+      draw: function () { return K.columns(consumer, [["Q1", consumer.map(function (s) { return D.tree[s].Q1.once.revenue; })], ["Q2", consumer.map(function (s) { return D.tree[s].Q2.once.revenue; })]], { fmt: money, lit: [1], title: "Consumer revenue by quarter, each order once" }); } },
+    { t: "A lookup that fails out loud",
+      x: "C-0195 has no orders in the two quarters. An approximate match hands back C-0194, rank 15 on the protect list; an exact match says the id is not in the table.",
+      draw: function () { return K.flow(["find C-0195", "approximate: C-0194's row", "exact: not in the table"], 2, { title: "Two lookups, one missing id" }); } },
+    { t: "The foot of a filtered list",
+      x: "Filtered to Mumbai, the protect list shows 11 members worth Rs 1,56,790. SUM at the foot still reads Rs 7,14,890.",
+      draw: function () { return K.columns(["the foot"], [["SUM", [714890]], ["SUBTOTAL(109)", [156790]]], { fmt: money, title: "One filtered list, two feet" }); } },
+    { t: "The card, with its period, comparison and base",
+      x: "Q2, July to September 2026: Rs 9.84 crore, down 1.6 percent on Q1 (Rs 10.00 crore). Take Business out and it is down 17.3 percent; the scope is printed on the card.",
+      draw: function () { return K.line(MONTHS, [["all except Business", scopeMonths("All except Business", "once"), "bad"]], { fmt: money, title: "Consumer revenue by month" }); } }
+  ];
+  var walkAt = 0;
+  function showWalk() {
+    var w = WALK[walkAt];
+    K.draw("walkChart", w.draw());
+    $("walkStep").textContent = "Step " + (walkAt + 1) + " of " + WALK.length;
+    $("walkTitle").textContent = w.t;
+    $("walkText").textContent = w.x;
+    $("walkNext").textContent = walkAt === WALK.length - 1 ? "Back to the start" : "Next";
+  }
+  $("walkNext").addEventListener("click", function () { walkAt = (walkAt + 1) % WALK.length; showWalk(); });
+  $("walkRestart").addEventListener("click", function () {
+    walkAt = 0; showWalk(); $("walkStep").textContent = "Step 1 of " + WALK.length + ", restarted";
+  });
+  showWalk();
+
+  /* ---------------------------------------------------------------- the simulator */
+  var S = { mode: "once", match: "exact", foot: "sub" };
+  D.cities.forEach(function (c) { var o = document.createElement("option"); o.textContent = c; $("city").appendChild(o); });
+  function press(on, off) { $(on).setAttribute("aria-pressed", "true"); $(off).setAttribute("aria-pressed", "false"); }
+
+  function lookup(id) {
+    var ids = D.ids, i, found = null, below = null;
+    for (i = 0; i < ids.length; i++) {
+      if (ids[i][0] === id) found = ids[i];
+      if (ids[i][0] <= id) below = ids[i];
+    }
+    return S.match === "exact" ? found : below;
+  }
+
+  function render() {
+    var scope = $("scope").value;
+    var q1 = scopeQ(scope, "Q1", S.mode), q2 = scopeQ(scope, "Q2", S.mode);
+    var comp = scopeQ("All segments", "Q2", S.mode);
+    var total = scopeQ("All segments", "Q1", S.mode) + comp;
+    var ties = Math.abs(total - (D.warehouse.Q1 + D.warehouse.Q2)) < 1;
+    var change = (q2 - q1) / q1;
+    $("card").textContent = ties
+      ? scope + ", Q2, July to September 2026: " + money(q2) + ", " + (change < 0 ? "down " : "up ") + pct(Math.abs(change)) +
+        " percent on Q1, April to June 2026 (" + money(q1) + "); " + pct(q2 / comp) + " percent of company revenue in Q2."
+      : "Hold the card: its two quarters sum to " + money(total) + " against the warehouse's " + money(D.warehouse.Q1 + D.warehouse.Q2) + ".";
+    K.draw("trend", K.line(MONTHS, [[scope, scopeMonths(scope, S.mode), ties ? "plain" : "bad"]], { fmt: money, width: 520, title: "Monthly revenue, " + scope }));
+
+    var id = $("lookId").value, row = lookup(id);
+    if (!row) $("lookOut").innerHTML = '<span class="ok">' + id + " is not in the customer table.</span> Say so, and check the export before anyone answers.";
+    else if (row[0] !== id) $("lookOut").innerHTML = '<span class="warn">The sheet shows ' + K.rupees(row[3]) + (row[4] && row[4] <= 50 ? ", rank " + row[4] + " on the list" : "") + ".</span> That is " + row[0] + "'s row, returned for " + id + ", with no warning.";
+    else $("lookOut").textContent = id + ": " + row[1] + ", " + row[2] + ", " + K.rupees(row[3]) + (row[4] && row[4] <= 50 ? ", rank " + row[4] + " of 50 on the protect list." : ", not on the protect list.");
+
+    var city = $("city").value, visible = D.protect.filter(function (r) { return city === "All cities" || r[1] === city; });
+    var sumAll = D.protect.reduce(function (t, r) { return t + r[2]; }, 0);
+    var sumVis = visible.reduce(function (t, r) { return t + r[2]; }, 0);
+    var shown = S.foot === "sub" ? sumVis : sumAll;
+    $("footOut").innerHTML = (S.foot === "sum" && city !== "All cities" ? '<span class="warn">' : '<span class="ok">') + K.rupees(shown) +
+      "</span> at the foot, with " + visible.length + " of 50 members on screen" + (city === "All cities" ? "." : ", filtered to " + city + ".");
+
+    var lookBad = row && row[0] !== id, footBad = S.foot === "sum" && city !== "All cities";
+    var msg;
+    if (!ties) msg = "Do not send anything: the tree counts an order once per payment row, and the card inherits it.";
+    else if (lookBad || footBad) msg = "Do not read the list aloud: " + (lookBad ? "the lookup answered with a neighbour" : "the foot adds rows the filter hid") + ".";
+    else msg = "The tree and the card tie to the warehouse; the list's lookup and foot answer honestly.";
+    $("release").textContent = msg;
+    $("releaseStrip").className = "strip " + (ties && !lookBad && !footBad ? "good" : "bad");
+
+    K.draw("treeChart", K.columns(consumer, [["Q1", consumer.map(function (s) { return D.tree[s].Q1[S.mode].orders / D.tree[s].Q1[S.mode].customers; })],
+      ["Q2", consumer.map(function (s) { return D.tree[s].Q2[S.mode].orders / D.tree[s].Q2[S.mode].customers; })]],
+      { fmt: function (v) { return v.toFixed(2); }, lit: [1], title: "Orders per customer, Q1 against Q2" }));
+    $("treeNote").textContent = S.mode === "once"
+      ? "Customers counted once each, orders once each: Retail-Plus falls from 2.36 to 1.84."
+      : "Counted per payment row, every customer and order is a row, so the rate reads 1.00 and the tree says nothing.";
+    K.draw("bridgeChart", K.bridge(["Q1 revenue", scopeQ(scope, "Q1", S.mode)],
+      scopeSegs(scope).map(function (s) { return [s, segTotal(s, "Q2", S.mode) - segTotal(s, "Q1", S.mode)]; }),
+      { fmt: money, endLabel: "Q2 revenue", title: "Q1 to Q2 by segment, " + scope }));
+  }
+  function says(text) { $("sheetSays").textContent = text; }
+  $("modeOnce").addEventListener("click", function () { S.mode = "once"; press("modeOnce", "modeRow"); render();
+    says("Each order counted once: the tree and the card tie to the warehouse's Rs 19.84 crore."); });
+  $("modeRow").addEventListener("click", function () { S.mode = "row"; press("modeRow", "modeOnce"); render();
+    says("Each payment row counted: the half-year reads Rs 39.41 crore and the release holds everything."); });
+  $("matchExact").addEventListener("click", function () { S.match = "exact"; press("matchExact", "matchApprox"); render();
+    says("Exact match: a missing id is reported as missing."); });
+  $("matchApprox").addEventListener("click", function () { S.match = "approx"; press("matchApprox", "matchExact"); render();
+    says("Approximate match: a missing id comes back as its neighbour's row. Try C-0195 or C-0999."); });
+  $("footSub").addEventListener("click", function () { S.foot = "sub"; press("footSub", "footSum"); render();
+    says("SUBTOTAL(109): the foot adds only the members on screen."); });
+  $("footSum").addEventListener("click", function () { S.foot = "sum"; press("footSum", "footSub"); render();
+    says("SUM: the foot adds all fifty, whatever the filter hides. Pick a city to see it."); });
+  ["scope", "lookId", "city"].forEach(function (k) { $(k).addEventListener("change", function () {
+    render(); says("Changed " + $(k).getAttribute("aria-label").toLowerCase() + " to " + $(k).value + "."); }); });
+  $("sheetReset").addEventListener("click", function () {
+    S = { mode: "once", match: "exact", foot: "sub" };
+    press("modeOnce", "modeRow"); press("matchExact", "matchApprox"); press("footSub", "footSum");
+    $("scope").value = "All segments"; $("lookId").value = "C-0152"; $("city").value = "All cities";
+    render();
+    $("release").textContent = "Back to the honest sheet: every switch at its safe setting.";
+    says("Every switch is back at its safe setting.");
+  });
+  render();
+
+  /* ---------------------------------------------------------------- the sequence popup */
+  function openSeq(title, lanes, messages, note) {
+    $("seqTitle").textContent = title;
+    K.draw("seqBody", K.sequence(lanes, messages, { laneWidth: 200 }));
+    $("seqNote").textContent = note;
+    var d = $("seqDialog");
+    if (typeof d.showModal === "function") d.showModal(); else d.setAttribute("open", "");
+  }
+  $("seqClose").addEventListener("click", function () { $("seqDialog").close(); });
+  function reveal(key, text) { $(key + "What").textContent = text; $(key + "Result").hidden = false; $(key + "Wait").hidden = true; }
+
+  /* ---------------------------------------------------------------- experiment A */
+  var aDone = false;
+  function drawA() {
+    K.draw("expAChart", K.columns(["as exported", "after Remove Duplicates", "each order once"], [["total", [13000, aDone ? 9000 : 13000, 7000]]],
+      { fmt: K.rupees, lit: [1], title: aDone ? "One row went; the instalment order still counts twice" : "Five rows for three orders worth Rs 7,000" }));
+  }
+  $("expARun").addEventListener("click", function () {
+    aDone = !aDone; this.setAttribute("aria-pressed", String(aDone));
+    this.textContent = aDone ? "Put the rows back" : "Remove Duplicates";
+    drawA();
+    reveal("expA", aDone ? "One row went, the gateway's copy. The instalment order's two rows differ in the amount paid, so both stay, and four rows total Rs 9,000 where the orders are worth Rs 7,000."
+      : "Back to the export: five rows, a total of Rs 13,000 for three orders worth Rs 7,000.");
+  });
+  $("expASeq").addEventListener("click", function () {
+    openSeq("Experiment A, as a sequence", ["the export", "Remove Duplicates", "the pivot"], [
+      ["the export", "Remove Duplicates", "five rows"], ["Remove Duplicates", "Remove Duplicates", "drop the identical copy"],
+      ["Remove Duplicates", "the pivot", "four rows"], ["the pivot", "the pivot", "Rs 9,000, still over"]],
+      "Identical rows are one defect; a finer grain is another, and only a key-based count fixes the second.");
+  });
+  drawA();
+
+  /* ---------------------------------------------------------------- experiment B */
+  $("expBRun").addEventListener("click", function () {
+    var on = this.getAttribute("aria-pressed") !== "true";
+    this.setAttribute("aria-pressed", String(on));
+    $("expBWork").textContent = on ? 'MATCH("C-0405", ids, 0) is #N/A; MATCH("C-0405", ids, 1) is C-0404' : 'MATCH("C-0405", ids, ?)';
+    reveal("expB", on ? "The exact match returned #N/A, which IFERROR turns into 'not in the table'. The approximate match returned C-0404's row, Rs 8,760, and nothing on the screen said so."
+      : "Run it again to see both answers side by side.");
+  });
+  $("expBSeq").addEventListener("click", function () {
+    openSeq("Experiment B, as a sequence", ["chief of staff", "the lookup", "the ids"], [
+      ["chief of staff", "the lookup", "find C-0405"], ["the lookup", "the ids", "exact: none"], ["the lookup", "chief of staff", "not in the table"],
+      ["the lookup", "the ids", "approximate: largest not above"], ["the lookup", "chief of staff", "C-0404, Rs 8,760"]],
+      "Both lookups ran on the same eight ids; only one of them admitted the id was missing.");
+  });
+
+  /* ---------------------------------------------------------------- experiment C */
+  var MEMBERS = [["C-0501", "Delhi", 11000], ["C-0502", "Mumbai", 9200], ["C-0503", "Pune", 8000], ["C-0504", "Mumbai", 8400],
+    ["C-0505", "Delhi", 6000], ["C-0506", "Mumbai", 7900], ["C-0507", "Chennai", 5500], ["C-0508", "Pune", 4000]];
+  var cOn = false;
+  function drawC() {
+    var html = '<table class="mini"><tr><th>Member (invented)</th><th>City</th><th>Revenue</th></tr>';
+    MEMBERS.forEach(function (m) { html += '<tr class="' + (cOn && m[1] !== "Mumbai" ? "hid" : "") + '"><td>' + m[0] + "</td><td>" + m[1] + '</td><td class="num">' + K.rupees(m[2]) + "</td></tr>"; });
+    var vis = MEMBERS.filter(function (m) { return !cOn || m[1] === "Mumbai"; }).reduce(function (t, m) { return t + m[2]; }, 0);
+    html += '<tr><td colspan="2"><b>SUM</b></td><td class="num">' + K.rupees(60000) + '</td></tr><tr><td colspan="2"><b>SUBTOTAL(109)</b></td><td class="num">' + K.rupees(vis) + "</td></tr></table>";
+    $("expCTable").innerHTML = html;
+  }
+  $("expCRun").addEventListener("click", function () {
+    cOn = !cOn; this.setAttribute("aria-pressed", String(cOn)); this.textContent = cOn ? "Clear the filter" : "Filter to Mumbai";
+    drawC();
+    reveal("expC", cOn ? "Five rows went off the screen. SUM still reads Rs 60,000; SUBTOTAL(109) reads Rs 25,500, the three members you can see."
+      : "No filter: both feet read Rs 60,000, which is why the defect hides until someone filters.");
+  });
+  $("expCSeq").addEventListener("click", function () {
+    openSeq("Experiment C, as a sequence", ["the filter", "SUM", "SUBTOTAL(109)"], [
+      ["the filter", "SUM", "hide five rows"], ["SUM", "SUM", "adds all eight: Rs 60,000"],
+      ["the filter", "SUBTOTAL(109)", "hide five rows"], ["SUBTOTAL(109)", "SUBTOTAL(109)", "adds three: Rs 25,500"]],
+      "The filter changes what the eye sees; only one of the two formulas follows the eye.");
+  });
+  drawC();
+
+  /* ---------------------------------------------------------------- experiment D */
+  $("expDRun").addEventListener("click", function () {
+    var on = this.getAttribute("aria-pressed") !== "true";
+    this.setAttribute("aria-pressed", String(on));
+    $("expDWork").textContent = on ? "(400 - 500) / 500 = -20.0%;  (400 - 500) / 400 = -25.0%" : "(400 - 500) / ? = ?";
+    reveal("expD", on ? "On the earlier quarter the fall is 20 percent; divided by the later quarter it reads 25 percent. The same rupees, two stories."
+      : "Run it again to see both bases.");
+  });
+  $("expDSeq").addEventListener("click", function () {
+    openSeq("Experiment D, as a sequence", ["the change", "the right base", "the wrong base"], [
+      ["the change", "the change", "400 - 500 = -100"], ["the change", "the right base", "divide by 500"], ["the right base", "the right base", "-20.0%"],
+      ["the change", "the wrong base", "divide by 400"], ["the wrong base", "the wrong base", "-25.0%"]],
+      "A change answers 'compared with what', and the answer is the earlier period.");
+  });
+})();
+</script>
+</body>
+</html>
