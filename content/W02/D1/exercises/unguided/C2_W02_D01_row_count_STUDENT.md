@@ -2,7 +2,7 @@
 
 Seven items, about seven minutes, at the close of round 1. Every item is a question Anand's analyst
 or Kavya would put to you about the first queries. Run a block of
-`sql/C2_W02_D01_01_first_queries_STUDENT.sql` whenever an item lets you check your answer.
+`sql/C2_W02_D01_01_warehouse_STUDENT.sql` whenever an item lets you check your answer.
 
 Post one line, seven letters in item order, no spaces:
 

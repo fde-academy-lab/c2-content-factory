@@ -178,7 +178,7 @@ Transition: rung 1 opens with a connection.
 ```notes
 LIVE. Fifty minutes: the question and its picture (5), first contact and the leaves (15), the
 customer trap (10), the sample trap and the harder variant (15), Kavya's review (5).
-Notebook: notebooks/C2_W02_D01_01_warehouse_STUDENT.ipynb. SQL: sql/C2_W02_D01_01_first_queries_STUDENT.sql.
+Notebook: notebooks/C2_W02_D01_01_warehouse_STUDENT.ipynb. SQL: sql/C2_W02_D01_01_warehouse_STUDENT.sql.
 ```
 
 ---
@@ -212,7 +212,7 @@ Leave the question open; the demonstration answers it.
 
 ```timeline
 label: Step 1 | title: Connect | body: The Postgres extension in VS Code, the Codespace's warehouse, database kalpa.
-label: Step 2 | title: Open the file | body: sql/C2_W02_D01_01_first_queries_STUDENT.sql, one block per question.
+label: Step 2 | title: Open the file | body: sql/C2_W02_D01_01_warehouse_STUDENT.sql, one block per question.
 label: Step 3 | title: Run one block | body: Cursor inside the block, run it, read the grid under the editor.
 label: Step 4 | title: Read the schema | body: Seven tables; orders and customers carry today's tree. | tone: dark
 ```

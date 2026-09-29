@@ -40,7 +40,7 @@ flowchart LR
 | Part | Slides | Beside it | What must land | If short of time |
 |---|---|---|---|---|
 | The ask, 20 | Half one, S1 to S7 | The board: the Week 1 to SQL table and the seven-box run order | Anand's four questions separated; option a on S3; the run order drawn and left up | S7 to one sentence |
-| Round 1, 50 | S8 to S20 | `notebooks/C2_W02_D01_01_warehouse_STUDENT.ipynb`, `sql/C2_W02_D01_01_first_queries_STUDENT.sql`, `unguided/C2_W02_D01_row_count_STUDENT.md` | Everyone connected by S9; the rate carries over and the total does not; 1,000 against 301; Rs 3,900 against Rs 4,590 | S19's typing to five minutes |
+| Round 1, 50 | S8 to S20 | `notebooks/C2_W02_D01_01_warehouse_STUDENT.ipynb`, `sql/C2_W02_D01_01_warehouse_STUDENT.sql`, `unguided/C2_W02_D01_row_count_STUDENT.md` | Everyone connected by S9; the rate carries over and the total does not; 1,000 against 301; Rs 3,900 against Rs 4,590 | S19's typing to five minutes |
 | Round 2, 50 | S21 to S30 | Notebook 02, `sql/C2_W02_D01_02_segments_STUDENT.sql`, `guided/C2_W02_D01_first_aggregate_STUDENT.md`, `unguided/C2_W02_D01_clause_order_STUDENT.md` | The groups add back to 1,000; the GROUP BY error in two minutes; 1 against 1.84 with the multiply-back check; HAVING flags Student Q1 | S29 becomes the round set's item 5 |
 | Round 3, 50 | S31 to S41 | Notebook 03, `sql/C2_W02_D01_03_quarters_STUDENT.sql`, `unguided/C2_W02_D01_quarters_STUDENT.md`, the companion's walk | Two CTEs read top to bottom; frequency is the largest branch; 15.5 against 29.4 with the 107, 91, 76 count | S32 first, then S40 to the table only |
 
@@ -188,7 +188,7 @@ grouping this morning goes to its recovery ladder before problem 3.
 | Moment | File |
 |---|---|
 | Teaching | `slides/C2_W02_D01_half1_STUDENT.pptx` and `slides/C2_W02_D01_half2_STUDENT.pptx`, speaker notes on every slide |
-| Live SQL | `sql/C2_W02_D01_01_first_queries_STUDENT.sql`, `_02_segments_`, `_03_quarters_`, one named block per step |
+| Live SQL | `sql/C2_W02_D01_01_warehouse_STUDENT.sql`, `_02_segments_`, `_03_quarters_`, one named block per step |
 | Live notebooks | `notebooks/C2_W02_D01_01_warehouse_STUDENT.ipynb`, `_02_segments_`, `_03_quarters_`, in order |
 | The projector's moving picture | `demos/C2_W02_D01_execution_order_STUDENT.html`: the walk at each round's close, the simulator in the debrief |
 | Early finishers | `demos/C2_W02_D01_decision_tool_STUDENT.xlsx`, four tabs with one formula defect each |

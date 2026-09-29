@@ -22,7 +22,7 @@ each step says what the screen asks for rather than where a button sits.
 | 2 | Add a new connection from the Connections header. | A form asking for a server name, an authentication type, a user name, a password and a database name. |
 | 3 | Fill it in: server `localhost`, authentication by password, user `postgres`, password `postgres`, database `kalpa`, and a connection name such as `kalpa warehouse`. | The fields filled, with a choice to save the password. |
 | 4 | Save and connect. | The connection in the tree with a green status mark. Open it and `kalpa` lists its tables. |
-| 5 | Open `sql/C2_W02_D01_01_first_queries_STUDENT.sql` and make sure the editor is connected to `kalpa`: the query editor's toolbar names the database it will run against. | The file, with `kalpa` named as its database. |
+| 5 | Open `sql/C2_W02_D01_01_warehouse_STUDENT.sql` and make sure the editor is connected to `kalpa`: the query editor's toolbar names the database it will run against. | The file, with `kalpa` named as its database. |
 | 6 | Put the cursor inside the first block, `r1_tables`, select it, and run it: `Ctrl+Shift+E` (`Cmd+Shift+E` on a Mac), or the run button in the editor's toolbar. | A result grid with seven tables and their column counts. |
 
 **Where this goes wrong.**
