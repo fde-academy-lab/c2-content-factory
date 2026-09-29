@@ -350,8 +350,8 @@ value: 1.96 x | label: collected over booked | note: the fan-out
 xychart-beta
     x-axis [app, store, web]
     y-axis "Rs crore" 0 --> 9
-    bar [8.50, 6.22, 4.56]
-    line [4.26, 3.21, 2.37]
+    bar "Collected, as reported" [8.50, 6.22, 4.56]
+    line "Booked" [4.26, 3.21, 2.37]
 ```
 
 ```notes
