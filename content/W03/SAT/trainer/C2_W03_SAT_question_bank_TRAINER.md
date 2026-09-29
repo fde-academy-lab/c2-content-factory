@@ -277,8 +277,8 @@ whether a walk-in can be a no-show; the fix is scheduled visits only, and then t
 
 **The caveat challenge.** "Chance produces it about one time in five, so you say it is noise. But 20
 against 15 is a third worse. Do you tell Dr Menon to do nothing?" Listen for "not proven either way":
-the gap is not evidence against the clinic and not evidence it is fine, so the group proposes watching
-it with more data and a cheap step, such as appointment reminders, rather than acting on the manager.
+fifty appointments cannot separate this clinic from the rest in either direction, so the group proposes
+watching it with more data and a cheap step, such as appointment reminders, rather than acting on the manager.
 
 **The silent teammate.** "Why did you leave out the walk-ins, and what happens to every other
 clinic's rate when you do?" The others' rate moves from 8.7 to 15.2 percent, which is most of the

@@ -132,7 +132,7 @@ minutes, and anything the morning cannot hold moves to the afternoon's first res
 
 ## Scoring as it rolls
 
-Each slot's score is recorded in its changeover, never at the end of the day, because a panel that
+Each slot's score is recorded in its own changeover, because a panel that
 scores nine groups from memory scores the last three against the first six.
 
 | Step | Who | Where |
