@@ -1,56 +1,89 @@
-# Unguided: what runs when
+# Round 2 set: per segment and per quarter
 
-Five claims about when a clause runs. One of them is wrong in each item. Work from the picture
-rather than from memory.
+Seven items, about seven minutes, at the close of round 2. Each is a question the analyst puts to
+the eight-row table. Check any answer you can against a block of
+`sql/C2_W02_D01_03_segments_STUDENT.sql`.
 
-## Q1.
+Post one line, seven letters in item order, no spaces:
 
-A query filters with `WHERE`, groups with `GROUP BY`, and computes `sum(amount) AS revenue` in
-`SELECT`. Which one appears?
+```
+Post exactly this shape: xxxxxxx
+```
 
-a) `WHERE` cannot use `revenue`, because `SELECT` runs after it
-b) `WHERE` can use `revenue`, since the alias is in the same statement
-c) `WHERE` can use `revenue` only when there is no `GROUP BY`
-d) `WHERE` can use `revenue` once it is wrapped in an aggregate
+---
 
-## Q2.
+### Q1
 
-You want the segments that placed more than a hundred orders. Which one appears?
+```sql
+SELECT c.segment, o.quarter, count(*)
+FROM   orders o JOIN customers c USING (customer_id)
+GROUP  BY c.segment, o.quarter;
+```
 
-a) `SELECT count(*) > 100`, which returns true or false per row
-b) `WHERE count(*) > 100`, filtering the rows as they arrive
-c) `ORDER BY count(*) > 100`, which sorts the passing groups first
-d) `HAVING count(*) > 100`, filtering the groups once they exist
+Anand's analyst runs this on the warehouse, where every segment ordered in both quarters. How many
+rows come back?
 
-## Q3.
+a) 4, one per segment across both quarters
+b) 2, one per quarter for all segments
+c) 8, one per segment and quarter
+d) 1,000, since grouping keeps every order row
 
-A query selects `segment` and `channel` while grouping by `segment` alone. Which one appears?
+### Q2
 
-a) It returns one row per segment carrying the first channel found in it
-b) It returns one row for every segment and channel pair in the book
-c) It is refused: `SELECT` has one row per group, many channels
-d) It is refused, because `channel` lives on a different table entirely
+A colleague's query prints Retail-Core orders per customer as 1 in Q1 and 2 in Q2, and proposes
+moving loyalty budget to Retail-Core. What do you check first?
 
-## Q4.
+a) Whether the division ran on integers and dropped the fraction
+b) Whether Retail-Core gained customers between the two quarters
+c) Whether the GROUP BY lists the segment before the quarter
+d) Whether the WHERE clause kept only delivered orders
 
-`ORDER BY revenue DESC` works where `WHERE revenue > 0` does not. Which one appears?
+### Q3
 
-a) `ORDER BY` is evaluated by the client rather than the server
-b) `ORDER BY` re-runs the `SELECT` list once for each row
-c) `ORDER BY` accepts aliases because sorting is not filtering
-d) `ORDER BY` runs after `SELECT`, so the alias already exists
+Retail-Plus had 140 Q2 orders from 76 customers. What does
+`count(*) / count(DISTINCT customer_id)` print for that group?
 
-## Q5.
+a) 1.84
+b) 2
+c) 1.8421
+d) 1
 
-A colleague says a query returns rows in insertion order without an `ORDER BY`, and shows you a
-run that proves it. Which one appears?
+### Q4
 
-a) They are right, because Postgres stores rows in insertion order forever
-b) They are right on small tables and wrong once the table grows large
-c) They saw one run, and nothing is promised without `ORDER BY`
-d) They are right until the first row in the table is updated
+Anand wants the segment-quarters with fewer than 30 orders flagged, because a rate on so few orders
+cannot be trusted. Which clause keeps only those groups?
 
-## Answering
+a) WHERE count(*) < 30
+b) HAVING count(*) < 30
+c) ORDER BY count(*) LIMIT 30
+d) HAVING count(DISTINCT customer_id) < 30
 
-Post one line: the five letters in order. Then pick the one you were least sure about and write
-one sentence defending your choice from the execution order rather than from experience.
+### Q5
+
+The analyst wants the same tree for delivered orders only. Where does `status = 'delivered'`
+belong, and why?
+
+a) In HAVING, because it filters the groups Anand reads
+b) In SELECT, as a CASE inside every aggregate on the row
+c) In WHERE, because it tests a row before any group forms
+d) In ORDER BY, so delivered orders sort to the top of each group
+
+### Q6
+
+In the eight-row table, the orders add up to 1,000 and the revenue to Rs 19.84 crore. What does
+that sum check prove?
+
+a) No order was lost or doubled by the grouping
+b) Every segment's rate is statistically reliable
+c) The orders per customer are computed correctly
+d) The segments come back in the right order
+
+### Q7
+
+The analyst reads the thin-cell query in the order Postgres runs it. Which order is that, for the
+clauses SELECT, WHERE, GROUP BY, HAVING and FROM?
+
+a) SELECT, FROM, WHERE, GROUP BY, HAVING
+b) FROM, WHERE, SELECT, GROUP BY, HAVING
+c) FROM, GROUP BY, WHERE, HAVING, SELECT
+d) FROM, WHERE, GROUP BY, HAVING, SELECT

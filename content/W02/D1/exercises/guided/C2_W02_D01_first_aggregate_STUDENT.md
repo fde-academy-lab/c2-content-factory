@@ -1,79 +1,70 @@
-# Guided: one grouped query, built a clause at a time
+# Guided: the segment count and the revenue aggregate, built together
 
-Built together. Every step names the stage of the execution order it is adding, so the picture on
-the board fills in as the query does.
+Round 2, with the trainer, about fifteen minutes. The trainer types each step on the projector and
+says the clause order aloud as the query runs; you type the same step in
+`sql/C2_W02_D01_03_segments_STUDENT.sql` below its last block and run it. Each step adds exactly one
+clause to the step before, so when a result surprises you, the new clause is where to look.
 
-## The question
+> "Every segment. I do not want a total that hides which one moved." Anand Iyer, CFO, Kalpa Retail
 
-Anand asked for revenue per segment per quarter. Nothing else. Build exactly that and stop.
+---
 
-## Step 1: the rows
-
-```sql
-SELECT * FROM orders;
-```
-
-A thousand rows. This is the `FROM` stage and nothing has been dropped yet.
-
-## Step 2: the segment lives elsewhere
-
-Segment is an attribute of the customer, not of the order, so the two tables have to meet.
+## Step 1. The whole book, one row
 
 ```sql
-SELECT o.order_id, o.amount, c.segment
-FROM   orders o
-JOIN   customers c USING (customer_id);
+SELECT count(*) AS orders, sum(amount) AS revenue
+FROM   orders;
 ```
 
-Still a thousand rows. Check that, because tomorrow the same move will not be free.
+**Said aloud.** FROM makes the rows, SELECT counts and adds them.
+**What you should see.** One row: 1,000 orders and 198400000.00, which is Rs 19.84 crore.
 
-## Step 3: drop the rows you do not want
+## Step 2. One row per quarter
 
 ```sql
-WHERE o.quarter = 'Q1'
+SELECT quarter, count(*) AS orders, sum(amount) AS revenue
+FROM   orders
+GROUP  BY quarter
+ORDER  BY quarter;
 ```
 
-This is the `WHERE` stage. It judges one row at a time, and it has no idea groups are coming.
+**Said aloud.** FROM, then GROUP BY forms two groups, then SELECT computes inside each, then ORDER BY.
+**What you should see.** Two rows, 538 and 462 orders, which add back to 1,000.
 
-## Step 4: collapse
-
-```sql
-GROUP BY c.segment
-```
-
-The order rows are gone from the result now. Four rows remain, one per segment. Say aloud what
-happened to the thousand.
-
-## Step 5: compute the columns
-
-```sql
-SELECT c.segment, count(*) AS orders, sum(o.amount) AS revenue
-```
-
-This is the `SELECT` stage and it runs after the grouping, which is why `count(*)` and `sum()`
-have something to work on.
-
-## Step 6: put it in an order
-
-```sql
-ORDER BY revenue DESC
-```
-
-`ORDER BY` runs after `SELECT`, so the alias `revenue` already exists. Try the same alias in
-`WHERE` and watch it fail, then say why using the board.
-
-## The whole thing
+## Step 3. The segment, borrowed from the customer
 
 ```sql
 SELECT c.segment, count(*) AS orders, sum(o.amount) AS revenue
 FROM   orders o
 JOIN   customers c USING (customer_id)
-WHERE  o.quarter = 'Q1'
 GROUP  BY c.segment
-ORDER  BY revenue DESC;
+ORDER  BY c.segment;
 ```
 
-## Before moving on
+**Said aloud.** Each order finds its one customer and takes the segment from it; the row count stays
+1,000, because every order has exactly one customer. Tomorrow is the day joins are taught in full.
+**What you should see.** Four rows. Business carries 196599040.00 of the revenue.
 
-Write one comment line above it stating the question and the denominator. If you cannot state the
-denominator in a short sentence, the query is not finished.
+## Step 4. Segment and quarter together
+
+Add `o.quarter` to both the SELECT and the GROUP BY, and to the ORDER BY after `c.segment`.
+
+**Said aloud.** Every column in SELECT is either grouped or aggregated; the database has no way to
+print one segment for a group that holds four.
+**What you should see.** Eight rows. Retail-Plus reads 215 orders in Q1 and 140 in Q2.
+
+## Step 5. The customers leaf
+
+Add `count(DISTINCT o.customer_id) AS customers` to the SELECT.
+
+**Said aloud.** DISTINCT counts each customer once inside each group.
+**What you should see.** Retail-Plus reads 91 customers in Q1 and 76 in Q2. Keep this query: round
+2's trap starts from it.
+
+---
+
+## Hands-on, alone, five minutes
+
+Change one thing in step 5 so it counts delivered orders only, and say which clause you changed and
+why it runs before the groups form. The answer is block `r2_delivered_by_segment` in the same file,
+which you open only after yours runs.
