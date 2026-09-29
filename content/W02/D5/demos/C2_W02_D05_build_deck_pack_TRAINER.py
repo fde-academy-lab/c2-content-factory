@@ -214,17 +214,17 @@ put(ws, "A14", "Tree total, both quarters (Rs)", BOLD); put(ws, "C14", "=F12+K12
 put(ws, "A15", "Tree total less the warehouse (Rs)"); put(ws, "C15", "=C14-C5", fmt=INDIAN)
 put(ws, "A16", "Rows in the export"); put(ws, "C16", f"=COUNTA({rr('A')})")
 put(ws, "A17", "Distinct orders in the export"); put(ws, "C17", f"=SUM({rr('K')})")
-put(ws, "A18", "The check", BOLD)
+put(ws, "A18", "The check", BOLD, wrap=True)
 put(ws, "C18", '=IF(ABS(C15)<1,"The tree reconciles to the warehouse to the rupee.",'
                '"The tree is "&' + crl("C15") + '&" over the warehouse: "&C16&" rows carry "&C17&" orders, '
                'so some orders are counted more than once.")', wrap=True)
-put(ws, "A20", "Verdict", VERDICT)
+put(ws, "A20", "Verdict", VERDICT, wrap=True)
 put(ws, "C20", '=IF(ABS(C15)>=1,"Do not send: the tree counts an order once per payment row. Count each order once.",'
                '"Send: Q2 revenue "&' + crl("K12") + '&", "&IF(L12<0,"down ","up ")&TEXT(ABS(L12)*100,"0.0")&'
                '" percent on Q1; Retail-Plus orders per customer "&TEXT(D10,"0.00")&" to "&TEXT(I10,"0.00")&'
                '", customers "&B10&" to "&G10&".")', VERDICT, TINT, True)
 ws.merge_cells("C18:L18"); ws.merge_cells("C20:L20")
-ws.row_dimensions[18].height = 32; ws.row_dimensions[20].height = 36
+ws.row_dimensions[18].height = 32; ws.row_dimensions[20].height = 48
 chart = BarChart()
 chart.type = "col"
 chart.title = "Orders per customer, Q1 against Q2"
@@ -233,34 +233,37 @@ chart.add_data(Reference(ws, min_col=4, min_row=7, max_row=11), titles_from_data
 chart.add_data(Reference(ws, min_col=9, min_row=7, max_row=11), titles_from_data=True)
 chart.set_categories(Reference(ws, min_col=1, min_row=8, max_row=11))
 chart.height, chart.width = 7.5, 16
-ws.add_chart(chart, "B23")
+for series, colour in zip(chart.series, ("CFC9EE", "5B3FD6")):
+    series.graphicalProperties.solidFill = colour
+    series.graphicalProperties.line.solidFill = colour
+ws.add_chart(chart, "B24")
 
 # ---------------------------------------------------------------- Protect
 ws = sheet(wb, "Protect", "The protect list, and a lookup by member id",
            "The top members of one segment by revenue across both quarters, from the clean customer table. "
            "The lookup must say so when an id is missing.",
-           {"A": 26, "B": 13, "C": 14, "D": 9, "E": 14, "F": 60, "G": 44})
+           {"A": 26, "B": 13, "C": 14, "D": 9, "E": 22, "F": 60, "G": 44})
 put(ws, "A4", "Segment of the list", BOLD); put(ws, "C4", "Retail-Plus", fill=INPUT); choice(ws, "C4", SEGMENTS)
 put(ws, "A5", "List size", BOLD); put(ws, "C5", 50, fill=INPUT)
 put(ws, "A6", "Member id to find", BOLD); put(ws, "C6", "C-0152", fill=INPUT)
 put(ws, "A7", "Match type", BOLD); put(ws, "C7", "exact", fill=INPUT); choice(ws, "C7", ["exact", "approximate"])
-put(ws, "E4", "Row returned", BOLD)
+put(ws, "E4", "Row returned", BOLD, wrap=True)
 put(ws, "F4", f'=IF(C7="exact",IFERROR(INDEX({cr("A")},MATCH(C6,{cr("A")},0)),"not found"),'
               f'IFERROR(INDEX({cr("A")},MATCH(C6,{cr("A")},1)),"not found"))')
-put(ws, "E5", "Revenue (Rs)", BOLD)
+put(ws, "E5", "Revenue (Rs)", BOLD, wrap=True)
 put(ws, "F5", f'=IF(F4="not found","",INDEX({cr("E")},MATCH(F4,{cr("A")},0)))', fmt=INDIAN)
-put(ws, "E6", "Place on the list", BOLD)
+put(ws, "E6", "Place on the list", BOLD, wrap=True)
 put(ws, "F6", f'=IF(F4="not found","",IFERROR(IF(INDEX({cr("G")},MATCH(F4,{cr("A")},0))<=C5,'
               f'"rank "&INDEX({cr("G")},MATCH(F4,{cr("A")},0))&" of "&C5&" on the "&C4&" list",'
               f'"outside the top "&C5),"not in the "&C4&" segment"))')
-put(ws, "E7", "The check", BOLD)
+put(ws, "E7", "The check", BOLD, wrap=True)
 put(ws, "F7", '=IF(F4="not found",C6&" is not in the customer table.",IF(F4=C6,'
               '"The row returned is the member asked for.","The lookup returned "&F4&" for "&C6&": '
               'an approximate match answered with a neighbour."))', wrap=True)
-put(ws, "E8", "XLOOKUP, in Excel", BOLD)
+put(ws, "E8", "XLOOKUP, in Excel", BOLD, wrap=True)
 put(ws, "F8", f'=_xlfn.XLOOKUP(C6,{cr("A")},{cr("E")},"not in the table",0)')
 put(ws, "G8", "Computed in Excel, not proved here: LibreOffice 24.2 returns #NAME? for XLOOKUP.", NOTE, wrap=True)
-put(ws, "E9", "Verdict", VERDICT)
+put(ws, "E9", "Verdict", VERDICT, wrap=True)
 put(ws, "F9", '=IF(F4="not found",C6&" is not in the customer table: say so, and check the export before anyone '
               'answers.",IF(F4<>C6,"Do not answer: the lookup returned "&F4&"\'s row for "&C6&". Switch the match '
               'to exact.",C6&": "&' + rs("F5") + '&" across both quarters, "&F6&"."))', VERDICT, TINT, True)
@@ -278,7 +281,7 @@ for k in range(1, 61):
 put(ws, "A73", "Members you can see", BOLD); put(ws, "E73", "=SUBTOTAL(102,E12:E71)")
 put(ws, "A74", "Total of the rows you can see (Rs)", BOLD); put(ws, "E74", "=SUBTOTAL(109,E12:E71)", fmt=INDIAN)
 put(ws, "A75", "Total of the whole list (Rs)"); put(ws, "E75", "=SUM(E12:E71)", fmt=INDIAN)
-put(ws, "A76", "List verdict", VERDICT)
+put(ws, "A76", "List verdict", VERDICT, wrap=True)
 put(ws, "B76", '=IF(E73<COUNT(E12:E71),"Filtered: the foot totals the "&E73&" members you can see, "&' + rs("E74") +
                '&"; the whole list is "&' + crl("E75") + '&".","The top "&E73&" "&C4&" members spent "&' + crl("E74") +
                '&" across both quarters.")', VERDICT, TINT, True)
@@ -290,7 +293,7 @@ ws.freeze_panes = "A12"
 ws = sheet(wb, "FrontPage", "One number, with its period, comparison, denominator and trend",
            "The card a director reads in two minutes. Change the scope and the number, the sentence and the trend move "
            "together.",
-           {"A": 34, "B": 13, "C": 13, "D": 13, "E": 13, "F": 13, "G": 13, "H": 16})
+           {"A": 34, "B": 15, "C": 15, "D": 15, "E": 15, "F": 15, "G": 15, "H": 16})
 put(ws, "A4", "What the card covers", BOLD); put(ws, "B4", "All segments", fill=INPUT)
 choice(ws, "B4", ["All segments", "All except Business"] + SEGMENTS)
 head(ws, 6, ["Revenue by month (Rs)"] + [m for _, m in MONTHS] + ["Q1 total", ])
@@ -320,11 +323,11 @@ put(ws, "B16", '=IF(H12=0,"no Q1 figure to compare",IF(I12<H12,"down ","up ")&TE
                '" percent on Q1, April to June 2026 ("&' + crl("H12") + '&")")')
 put(ws, "A17", "The denominator", BOLD)
 put(ws, "B17", '=TEXT(I12/I11*100,"0.0")&" percent of company revenue in Q2"')
-put(ws, "A18", "The check", BOLD)
+put(ws, "A18", "The check", BOLD, wrap=True)
 put(ws, "B18", '=IF(ABS(H11+I11-Tree!C5)<1,"The card reconciles to the warehouse.",'
                '"The card does not reconcile: its two quarters sum to "&' + crl("H11+I11") +
                '&" against the warehouse\'s "&' + crl("Tree!C5") + '&".")', wrap=True)
-put(ws, "A20", "The card", VERDICT)
+put(ws, "A20", "The card", VERDICT, wrap=True)
 put(ws, "B20", '=IF(ABS(H11+I11-Tree!C5)>=1,"Hold the card: it is built on a count that does not reconcile to the '
                'warehouse.",B4&", "&B15&": "&B14&", "&B16&"; "&B17&".")', VERDICT, TINT, True)
 ws.merge_cells("B18:I18"); ws.merge_cells("B20:I20")
@@ -335,6 +338,10 @@ trend.y_axis.title = "Rs"
 trend.add_data(Reference(ws, min_col=1, max_col=7, min_row=12), from_rows=True, titles_from_data=True)
 trend.set_categories(Reference(ws, min_col=2, max_col=7, min_row=6))
 trend.height, trend.width = 7.5, 18
+for series in trend.series:
+    series.smooth = False
+    series.graphicalProperties.line.solidFill = "5B3FD6"
+    series.graphicalProperties.line.width = 28575
 ws.add_chart(trend, "A23")
 
 # ---------------------------------------------------------------- Checks
