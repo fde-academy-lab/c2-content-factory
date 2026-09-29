@@ -1299,7 +1299,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     toggle(this, cOn, "Add the invented large order", "Take the invented large order out");
     var list = cOn ? LARGE : ORDINARY;
     K.draw("expCDraw", K.strip(list, { lo: 0, hi: 100000, width: 560, lit: cOn ? [5] : [],
-      markers: [["mean", mean(list), "bad"], ["median", median(list), "good"]],
+      markers: [["median", median(list), "good"], ["mean", mean(list), "bad"]],
       title: cOn ? "Invented orders, with the invented Rs 90,000 order" : "Five invented ordinary orders" }));
     reveal("expC", cOn
       ? "The mean moved from Rs 2,260 to Rs 16,883, more than seven times, while the median moved Rs 50, from Rs 2,300 to Rs 2,350. One order was added, and now 1 of 6 orders sits above the mean."
