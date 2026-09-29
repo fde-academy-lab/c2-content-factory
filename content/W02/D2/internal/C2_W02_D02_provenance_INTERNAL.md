@@ -60,16 +60,16 @@ tables; the take-home book in its own schema.
 
 ## Links, each checked on 29 September 2026
 
-| Link | Status |
+| Link | Checked, and what came back |
 |---|---|
-| https://www.postgresql.org/docs/16/tutorial-join.html | 200, "2.6. Joins Between Tables" |
-| https://www.postgresql.org/docs/16/queries-table-expressions.html | 200, "7.2. Table Expressions" |
-| https://sqlbolt.com/lesson/select_queries_with_joins | 200, lesson 6 |
-| https://sqlbolt.com/lesson/select_queries_with_outer_joins | 200, lesson 7 |
-| https://sqlbolt.com/lesson/select_queries_with_nulls | 200, lesson 8 |
-| https://pgexercises.com/questions/joins/ | 200 |
-| https://www.pgtutorial.com/ | 200 |
-| https://www.youtube.com/watch?v=aY7z4HcHm5M | oEmbed resolves: "SQL Joins Basics (Visually Explained)", Data with Baraa |
+| https://www.postgresql.org/docs/16/tutorial-join.html | checked 29 Sep 2026, 200, "2.6. Joins Between Tables" |
+| https://www.postgresql.org/docs/16/queries-table-expressions.html | checked 29 Sep 2026, 200, "7.2. Table Expressions" |
+| https://sqlbolt.com/lesson/select_queries_with_joins | checked 29 Sep 2026, 200, lesson 6 |
+| https://sqlbolt.com/lesson/select_queries_with_outer_joins | checked 29 Sep 2026, 200, lesson 7 |
+| https://sqlbolt.com/lesson/select_queries_with_nulls | checked 29 Sep 2026, 200, lesson 8 |
+| https://pgexercises.com/questions/joins/ | checked 29 Sep 2026, 200 |
+| https://www.pgtutorial.com/ | checked 29 Sep 2026, 200 |
+| https://www.youtube.com/watch?v=aY7z4HcHm5M | checked 29 Sep 2026, oEmbed resolves: "SQL Joins Basics (Visually Explained)", Data with Baraa |
 
 ## Tool versions
 
