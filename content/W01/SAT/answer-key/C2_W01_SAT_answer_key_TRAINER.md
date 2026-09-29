@@ -6,7 +6,7 @@ Saturday 10 October 2026. A 120-minute paper holding 57 items at 119.5 minutes b
 
 ## Marking
 
-1. Papers are swapped, so nobody marks their own.
+1. Papers are swapped, so nobody checks their own.
 2. The Academic TA reads the key out section by section, and the marker writes a tick or a cross beside each item.
 3. An item is right when its answer matches the key: every correct letter and no other on a more-than-one item, the number on an applied maths item (the working belongs to the discussion), and the whole sequence on an ordering item. The programme has set no partial-credit rule, so this key uses none.
 4. The marker writes the count of ticks as Items right on the front, out of 57, and hands the paper back.

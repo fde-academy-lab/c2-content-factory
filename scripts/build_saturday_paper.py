@@ -336,7 +336,7 @@ def render_key(paper, data, date, notes, printed, source, minutes):
            f"{levels['Hard']} hard."
            + (f" {len(added)} of them are new and not yet in the tracker." if added else ""), "",
            "## Marking", "",
-           "1. Papers are swapped, so nobody marks their own.",
+           "1. Papers are swapped, so nobody checks their own.",
            "2. The Academic TA reads the key out section by section, and the marker writes a tick or a "
            "cross beside each item.",
            "3. An item is right when its answer matches the key: every correct letter and no other "
@@ -534,7 +534,7 @@ def docx_spec(paper, data, date, printed, source, minutes, notes):
     key_spec = {"title": f"{title}: key", "header": f"Cohort 2  ·  {title}  ·  key  ·  TRAINER",
                 "meta": f"TRAINER.  {when_of(date, '  ·  ')}{minutes} minutes  ·  {n} items",
                 "marking": [
-                    "Papers are swapped, so nobody marks their own.",
+                    "Papers are swapped, so nobody checks their own.",
                     "The Academic TA reads the key out section by section, and the marker ticks or "
                     "crosses each item on the answer sheet.",
                     "An item is right when its answer matches the key: every correct letter and no "
