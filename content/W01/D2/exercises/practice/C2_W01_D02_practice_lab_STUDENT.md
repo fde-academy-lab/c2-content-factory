@@ -49,7 +49,7 @@ d) Name a hypothesis, which would have forced someone to ask for evidence
 Each item is a comparison someone put in a draft, and the same four readings are offered for all
 three. Only one fits each comparison.
 
-### Q3. "Retail-Core booked Rs 72,510 from 1 July to 15 September, against Rs 80,460 across Q1." Which reading fits?
+### Q3. "Retail-Core booked Rs 60,950 from 1 July to 15 September, against Rs 80,460 across Q1." Which reading fits?
 
 a) Fair: the two sides share a window, a definition and a denominator
 b) Unfair: the two sides cover windows of different length or position
