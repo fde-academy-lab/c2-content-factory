@@ -1,68 +1,85 @@
-# Profile, decide, reconcile
+# The reconciliation
 
-Week 1 Day 3, Kalpa Retail. Two figures for one quarter, both computable, only one right. This page
-is what turns "I cleaned the data" into something an auditor can follow.
+Kalpa Retail, Week 1 Wednesday. Two honest totals disagree until a bridge walks one to the other,
+one move per cause, each move backed by rows. Every cleaning act on the way is a decision with a
+written reason.
 
-## Panel 1: The only equation of the day
+## Panel 1: The bridge, and the one rule
 
 ```mermaid
 flowchart LR
-    I["<b>INPUT</b><br/>201"] --> C["<b>CLEAN</b><br/>184"]
-    I --> R["<b>REJECTED</b><br/>17"]
-    C --> E["184 + 17 = 201"]
-    R --> E
+    E["<b>exported</b><br/>Rs 2,09,98,210"] -->|"corporate copies"| A["<b>less Rs 19,67,560</b>"]
+    A -->|"consumer copies"| B["<b>less Rs 30,650</b>"]
+    B --> C["<b>clean = books</b><br/>Rs 1,90,00,000"]
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class C bet
 ```
 
-**Crux:** A cleaning pass that cannot produce input equals clean plus rejected is a pass nobody can check, and the rejected rows are a deliverable rather than a by-product.
+Rows: 201 in equals 186 kept plus 15 set aside. Rupees: Q1 as exported less the rupees set aside
+equals the books to the rupee.
 
-## Panel 2: Profile before you decide
+**Crux:** Reconcile twice, in rows and in rupees, to the books.
 
-| Count | The question it answers |
-|---|---|
-| Present | How many records carry the field at all |
-| Convertible | How many of those become the type you need |
-| Distinct | How many different values there are |
+## Panel 2: The pass, in order
 
-Distinct is the one that catches a migration. 201 rows carrying 186 order ids is a finding before anything is removed.
-
-## Panel 3: Three answers, always
-
-| Choice | What it costs |
-|---|---|
-| Drop the row | The count changes and revenue falls |
-| Default it | The count holds and the value is a guess |
-| Keep and flag | Nothing is lost and somebody must look |
-
-**Crux:** There is no free option, so the decision, the reason and the row count go in the log as you make them, because writing the log afterwards means writing it from memory.
-
-## Panel 4: The identity rule
-
-| Same | Different | Verdict |
+| Step | What it does | The failure it prevents |
 |---|---|---|
-| Every field | Nothing | A duplicate, remove one |
-| The order id | The date | One order, twice. Pick, and record which. |
-| All but the id | The id | Two real orders. Keep both. |
+| Profile | Present, convertible, distinct per field | A total from an unread file |
+| Convert | Value or reason, failures logged | An order worth Rs 0 |
+| Identity rule | One row per order_id, the copy that validates | Copies in revenue |
+| Keep, drop or flag | One decision per defect, with a reason | A guess that becomes a fact |
+| Reconcile | Rows and rupees, to the books | A pass that rounds to right |
+| Recompute | Every number already reported | A finding nobody rechecked |
 
-A duplicate is a row that **is the same order**, not one that looks the same.
+**Crux:** Profile before you total: present, convertible, distinct, for every field.
 
-## Panel 5: The errors of the day
+## Panel 3: Convert on purpose
 
-| Message | What it means |
-|---|---|
-| `FileNotFoundError` | The path, not the file, is usually wrong |
-| `ValueError: invalid literal for int()` | A word where a number belongs |
-| `JSONDecodeError: Unterminated string` | The transfer was cut, so ask for the file again |
+```python
+def convert(value):
+    try:
+        return int(value), ""
+    except (TypeError, ValueError):
+        return None, "amount does not convert"
+```
 
-A truncated file is a complete file that stops early. Patching it invents data.
+Everything read from a CSV is text: `"900" < "1200"` is False. A missing value is `""` in a CSV and
+an absent key in JSON.
 
-## Panel 6: The bridge
+**Crux:** A failure is counted and logged, never turned into a number.
 
-Rs 2.10 crore as exported, less 15 duplicate ids, less one row with no status, less one amount that will not convert, gives Rs 1.90 crore.
+## Panel 4: Which copy stays
 
-**Crux:** A bridge that does not land on the other system's figure has a step missing, and the missing step is the finding rather than a rounding difference.
+| The pair | Keep | Log |
+|---|---|---|
+| Identical | The first | Second copy of the order |
+| One amount unreadable | The copy that validates | Its twin carries the value |
+| Valid, a field disagrees | The first extract | The field, and a question for the source |
 
-## Panel 7: What must not be cleaned
+**Crux:** Say what makes two rows one order before you count duplicates.
 
-The Rs 4,80,000 corporate order is an outlier and it is real. It survives, and the log records that it was looked at and kept.
+## Panel 5: Keep, drop or flag
 
-Remove every uncomfortable row and you have a dataset that agrees with you. Report it and describe the file with a median.
+| Decision | Revenue | A status count | Use it when |
+|---|---|---|---|
+| Drop | Moves | Unchanged | The record is not an order |
+| Default | Unchanged | Invents a value | A stated rule covers it |
+| Keep and flag | Unchanged | Leaves it out | The value is unknown |
+
+**Crux:** Large is not wrong: check the record, keep it, and show it both ways.
+
+## Panel 6: The four wrong numbers of the day
+
+| The number | The step | The check |
+|---|---|---|
+| 201 of 201 convert, Q1 Rs 2,09,98,210 | Failures coerced to 0 | An order worth Rs 0 |
+| 0 duplicates | The file line in the key | 201 rows, 186 order ids |
+| Q2 Rs 1,57,54,540, a 17.1% fall | The real bulk order fenced out | A known account, valid fields |
+| Q1 Rs 1,89,98,210, "reconciled" | Keep the first copy, then convert | Rs 1,790 short of the books |
+
+## Panel 7: What changed downstream
+
+Revenue Q1 to Q2: -1.6% on clean data, not -11.0%. Retail-Plus orders per customer: 1.82 to 1.18,
+-35.0%, not -49.0%. The finding stands, smaller.
+
+**Crux:** Recompute what you reported, and say what changed, the smaller number first.

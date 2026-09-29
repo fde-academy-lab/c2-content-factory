@@ -1,68 +1,45 @@
-# Before tomorrow: real or noise, cause or coincidence
+# Before tomorrow: real, or the wobble every quarter shows?
 
-Ships tonight. Fifteen minutes, and tomorrow is the day the week has been building to.
-
----
-
-## What tomorrow is about
-
-With Finance reconciled, Meera sets the growth review for Monday and sends three questions.
+**Week 1, Thursday pre-read. About fifteen minutes tonight.**
 
 > "One: Retail-Plus is down, smaller than first reported. Real, or the wobble we see every quarter?
 > Two: Student is up 40 percent; should I move budget there? Three: marketing ran a monsoon-sale
 > discount for Retail-Plus in August, says it lifted revenue 6 percent, and wants to repeat it for
-> Diwali. Did the discount work, or did those customers buy anyway?"
+> Diwali. Did the discount work, or did those customers buy anyway? One page, two minutes. If the
+> honest answer is 'we do not know yet', say so and tell me what would tell us."
+>
+> Meera Raghavan, CEO, Kalpa Retail
 
-Her constraint: **"One page, two minutes. If the honest answer is 'we do not know yet', say so and
-tell me what would tell us."**
+## What tomorrow is about
 
----
+Today proved the numbers are the right numbers. Tomorrow asks whether a difference between two of
+them means anything. A fall of 35 percent in Retail-Plus orders per customer is a fact about the file;
+whether it is a fact about Kalpa's members, or the kind of swing that two ordinary quarters produce by
+chance, is a different question, and it is the one Meera is asking.
 
 ## The words you will hear tomorrow
 
-Fill these in from memory tonight.
+| Word | What it means, in one line | What you already know that it builds on |
+|---|---|---|
+| Chance reference | What a difference looks like when nothing real is going on | Today's clean file, shuffled |
+| Shuffle test | Mix the labels, recompute the gap many times, and see how often chance alone is as large | A loop and a count, from Monday |
+| p-value | How often the shuffled gap is at least as large as the real one | A count divided by a count, a rate |
+| Sample size | How many records a rate rests on | Today's profile: present, for a segment |
+| Confounder | Something that drives both who got a treatment and how they behaved | The tree: two branches that move together |
 
-| Word | What you think it means, in your own words |
-|---|---|
-| Chance | |
-| Significant | |
-| Sample size | |
-| Confounder | |
-| Fair comparison | |
+## One thing to think about before you arrive
 
-The gap between what you write tonight and what the words turn out to mean is exactly the size of
-tomorrow.
+Toss a coin ten times and count heads, then do it again. The two counts will rarely match, and
+nothing about the coin changed. How different would the two counts have to be before you believed the
+coin had changed? Hold your answer; tomorrow gives it a number.
 
----
+## The check for tonight
 
-## Two things to think about before you arrive
+Open today's clean file and count the orders in each segment for each quarter. Write down the
+smallest count you find. If a segment's headline rate rests on a count that small, how much would one
+more order move it?
 
-**One.** You have a 33 percent gap between two segments. Suppose the two segments were actually
-identical and every customer's behaviour were shuffled at random between them. Would a gap that
-large ever turn up anyway? Write down how you would find out **without any statistics you have
-been taught**. There is a way, and it takes ten playing cards.
+## The line worth carrying in
 
-**Two.** Student is up 40 percent. Write down the single question you would ask before putting that
-in front of a CEO. One question, one line.
-
-Bring both. You will be asked for them in the first ten minutes.
-
----
-
-## Setup for tonight
-
-Nothing to install. Two checks.
-
-1. Your Day 3 notebook runs cold with `7 checks passed and 0 failed`.
-2. Bring your decisions log. Tomorrow's data is the cleaned file, and the numbers in it are the ones
-   your own pass produced.
-
----
-
-## The one line worth carrying in
-
-> Statistically real and worth acting on are two different calls, and a CEO is asking for the second
-> one.
-
-Tomorrow is that sentence, four hours long, and it ends with a one-page note that has to survive
-marketing defending its own campaign.
+A difference in the data is a fact about the file; whether it is a fact about the business is a
+question you answer with a comparison to chance.

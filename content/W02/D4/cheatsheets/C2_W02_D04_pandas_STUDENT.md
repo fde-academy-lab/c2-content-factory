@@ -1,95 +1,86 @@
-# pandas, against SQL, against plain Python
+# The Monday customer table in pandas
 
-## Panel 1: Split, apply, combine
+Kalpa Retail, Week 2 Thursday. One row per customer, built from the warehouse every Monday, with
+every default written down and three checks before it leaves the team.
 
-**Crux:** `groupby` is the Week 1 accumulator with the splitting and the combining done for you,
-leaving only the part that was ever about your question.
+## Panel 1: A spine, three attachments, three checks
 
 ```mermaid
 flowchart LR
-    A["rows"] --> B["split"] --> C["apply"] --> D["combine"]
+    C["<b>customers</b><br/>340 rows, the spine"] --> T["<b>the Monday table</b><br/>one row per customer"]
+    O["<b>orders</b><br/>1,000 rows, grouped"] -->|"left merge"| T
+    E["<b>exposure feed</b><br/>first touch"] -->|"validated merge"| T
+    T --> K["<b>three checks</b><br/>rows, rupees, as-of date"]
 ```
+
+Rows against the customer list (340), spend against Monday's book (Rs 19,84,00,000), and recency
+from the data's last date (28 September 2026), where the smallest recency is 0.
+
+**Crux:** groupby is the accumulator automated: split, apply, combine.
+
+## Panel 2: One row per customer
 
 ```python
-orders.groupby("customer_id").agg(
-    frequency=("order_id", "count"),
-    monetary=("amount", "sum"),
-    last_order=("order_date", "max"),
-)
+rfm = (orders.groupby("customer_id")
+             .agg(last_order=("order_date", "max"),
+                  frequency=("order_id", "count"),
+                  monetary=("amount", "sum"))
+             .reset_index())
+table = customers.merge(rfm, on="customer_id",
+                        how="left", validate="one_to_one")
+table["frequency"] = table["frequency"].fillna(0).astype("int64")
+AS_OF = orders["order_date"].max()
+table["recency_days"] = (AS_OF - table["last_order"]).dt.days
 ```
 
-## Panel 2: Name every aggregation
+**Crux:** Start from the customer list; groupby only knows the keys it sees.
 
-**Crux:** The short form sums every numeric column, including ones nobody meant to add up, and
-names them after the inputs.
+## Panel 3: Three tools, one move
 
-| Form | What it costs |
-|---|---|
-| `.sum()` | Shorter to type, and six months later nobody can tell whether a column was chosen or inherited |
-| `.agg(name=(col, fn))` | Longer to type, and every column says where it came from |
-
-State a reference date for recency. Counting from today makes the table change meaning every time
-it is rebuilt.
-
-## Panel 3: merge is join, with the same danger
-
-**Crux:** A merge fans out exactly like a join, and pandas will refuse if you tell it what you
-believe.
-
-```python
-table.merge(feed, on="customer_id",
-            how="left", validate="one_to_one")
-```
-
-```
-pandas.errors.MergeError: Merge keys are not
-unique in right dataset; not a one-to-one merge
-```
-
-## Panel 4: The four validate values
-
-**Crux:** Each value is a claim about the data, so choosing one forces you to say what you believe
-before the data disagrees.
-
-| Value | Promises |
-|---|---|
-| `one_to_one` | Keys unique on both sides |
-| `one_to_many` | Keys unique on the left |
-| `many_to_one` | Keys unique on the right |
-| `many_to_many` | Nothing, and says so out loud |
-
-Fixing a failure is a decision, not a keyword: drop duplicates and you pick a row arbitrarily,
-aggregate first and you keep both facts, ask the feed's owner and you fix it upstream.
-
-## Panel 5: Reshape changes the question
-
-**Crux:** `pivot_table` widens and `melt` lengthens, and nothing is added or removed by either.
-
-```python
-wide = long.pivot_table(index="customer_id",
-        columns="month", values="spend", aggfunc="sum")
-back = wide.reset_index().melt(id_vars="customer_id")
-```
-
-| Shape | One row is | Easy question |
+| The move | SQL | pandas |
 |---|---|---|
-| Long | A customer-month | How did this move |
-| Wide | A customer | How do these compare |
+| per customer | `GROUP BY` | `groupby().agg()` |
+| attach a source | `LEFT JOIN` | `merge(how="left")` |
+| window total | `sum() OVER` | `groupby().transform("sum")` |
+| previous month | `LAG() OVER` | `groupby().shift(1)` |
 
-Read the row labels aloud before reading any value. "Each row is one order" is how a wrong index
-gives itself away.
+## Panel 4: Four defaults that decide a number
 
-## Panel 6: Which tool owns which number
-
-**Crux:** Three questions pick the tool nearly every time, and none of them is about syntax.
-
-Who owns this number, for how long, and who has to be able to read it.
-
-| Tool | Owns | Never |
+| Default | What it did | The check |
 |---|---|---|
-| Warehouse | Numbers Finance acts on | Exploration |
-| pandas | The analyst's iteration | The source of truth |
-| Plain Python | What you explain line by line | Anything at scale |
+| recency from today | win-back 166, truly 111 | smallest recency is 0 |
+| `merge(validate=None)` | a repeat copies spend | rows in equal rows out |
+| `groupby(dropna=True)` | reach 107 at 100 percent | groups add back to rows |
+| `pivot_table(aggfunc="mean")` | a fall of 18, truly 29 percent | grand total equals source |
 
-A notebook has no audit trail a controller can read, and a cell edited at 4 pm looks identical to
-one nobody touched.
+**Crux:** Measure recency from the data's last date, never from today.
+
+## Panel 5: The merge, made loud
+
+```python
+first = (exposure.sort_values("exposed_date")
+                 .drop_duplicates("customer_id", keep="first"))
+table.merge(first, on="customer_id", how="left",
+            validate="one_to_one")
+# a repeat raises pandas.errors.MergeError
+```
+
+**Crux:** A merge is a join, and validate= turns the fan-out into a MergeError.
+
+## Panel 6: Reshape with the aggregation said
+
+| Call | Shape | Answers |
+|---|---|---|
+| `pivot_table(index=member, columns=month, aggfunc="sum")` | wide | compare along a row |
+| `.melt(id_vars=member)` | long | follow a trend |
+| `pivot(...)` | wide, or ValueError on a repeat | one value per cell |
+
+**Crux:** pivot_table averages unless you write aggfunc.
+
+## Panel 7: Which tool owns which job
+
+SQL owns what Finance audits and reruns; pandas is the analyst's bench for files, merges and five
+cuts in an afternoon; plain Python shows every step to a reviewer. A hand-edited sheet never
+computes the source of truth.
+
+**Crux:** SQL for what Finance audits, pandas for the analyst's bench, plain Python to explain.
