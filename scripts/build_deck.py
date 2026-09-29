@@ -48,6 +48,7 @@ sys.path.insert(0, str(_pl.Path(__file__).parent))
 
 import argparse
 import hashlib
+import json
 import math
 import os
 import pathlib
@@ -321,6 +322,37 @@ def _chromium():
     return None
 
 
+# mmdc draws on a page 2600 pixels wide, so a wide drawing keeps its own width. mermaid-cli 11
+# and older set the page with -w. Version 12 refuses -w and sets the page with --size, which also
+# caps each drawing's max-width at the size, so a drawing whose config asks for useMaxWidth, 100
+# percent of its page, stretched to fill it: a 360 pixel chain came out 2600 pixels wide. Turning
+# useMaxWidth off for the render keeps every drawing at its own width, which is what -w gave.
+# Dropping the flag is no fix: version 12 then draws on an 800 pixel page, and a chain 1704
+# pixels wide came out 784.
+PAGE_PX = 2600
+_PAGE = {}
+_WARNED = set()
+
+
+def _page_flags():
+    """The mmdc flags for a PAGE_PX page and the mermaid config to render with, asked once."""
+    if not _PAGE:
+        try:
+            said = subprocess.run(["mmdc", "--help"], capture_output=True, text=True,
+                                  timeout=120).stdout
+        except Exception:
+            said = ""
+        if "--width" in said:
+            _PAGE["flags"], _PAGE["config"] = ["-w", str(PAGE_PX)], MERMAID_CONFIG
+        else:
+            config = json.loads(MERMAID_CONFIG)
+            for kind in ("flowchart", "sequence", "class", "state", "er", "gantt", "journey",
+                         "pie", "timeline", "mindmap"):
+                config.setdefault(kind, {})["useMaxWidth"] = False
+            _PAGE["flags"], _PAGE["config"] = ["--size", str(PAGE_PX)], json.dumps(config)
+    return _PAGE["flags"], _PAGE["config"]
+
+
 def render_mermaid(lines, width_in=None):
     """Render a mermaid fence to a PNG and return its path, or None when mmdc is not installed.
 
@@ -337,10 +369,16 @@ def render_mermaid(lines, width_in=None):
     never picked up again. The scale alone sets the picture's pixels: at scale one a drawing 809
     CSS pixels wide came out 810 pixels wide on a 2600 pixel page. The labels go through the
     cheat sheet's svg_labels, so bold prints as bold and a > survives, as they do on the sheet.
+
+    A render that fails says so once per fence, with mmdc's last line. It used to fall back to
+    text in silence, and when mermaid-cli 12 refused -w every diagram in a deck printed as its
+    source while every gate passed.
     """
     code = svg_labels("\n".join(lines).strip()) + "\n"
     scale = render_scale(lines, width_in)
-    key = hashlib.sha256((code + MERMAID_CONFIG + f"scale={scale}").encode()).hexdigest()[:16]
+    flags, mermaid_config = _page_flags()
+    key = hashlib.sha256((code + mermaid_config + " ".join(flags) + f"scale={scale}")
+                         .encode()).hexdigest()[:16]
     CACHE.mkdir(parents=True, exist_ok=True)
     png = CACHE / f"{key}.png"
     if png.exists():
@@ -348,8 +386,8 @@ def render_mermaid(lines, width_in=None):
     if not shutil.which("mmdc"):
         return None
     (CACHE / f"{key}.mmd").write_text(code)
-    theme = CACHE / f"theme_{hashlib.sha256(MERMAID_CONFIG.encode()).hexdigest()[:8]}.json"
-    theme.write_text(MERMAID_CONFIG)
+    theme = CACHE / f"theme_{hashlib.sha256(mermaid_config.encode()).hexdigest()[:8]}.json"
+    theme.write_text(mermaid_config)
     config = CACHE / "puppeteer.json"
     if not config.exists():
         config.write_text('{"args":["--no-sandbox","--disable-setuid-sandbox"]}\n')
@@ -357,14 +395,22 @@ def render_mermaid(lines, width_in=None):
     chrome = _chromium()
     if chrome:
         env["PUPPETEER_EXECUTABLE_PATH"] = chrome
+    said = ""
     try:
-        subprocess.run(["mmdc", "-i", str(CACHE / f"{key}.mmd"), "-o", str(png),
-                        "-b", "transparent", "-w", "2600", "-s", str(scale), "-c", str(theme),
-                        "-p", str(config)],
-                       capture_output=True, text=True, env=env, timeout=240)
-    except Exception:
-        return None
-    return png if png.exists() else None
+        done = subprocess.run(["mmdc", "-i", str(CACHE / f"{key}.mmd"), "-o", str(png),
+                               "-b", "transparent", *flags, "-s", str(scale), "-c", str(theme),
+                               "-p", str(config)],
+                              capture_output=True, text=True, env=env, timeout=240)
+        said = (done.stderr or done.stdout or "").strip()
+    except Exception as e:
+        said = str(e)
+    if png.exists():
+        return png
+    if code not in _WARNED:
+        _WARNED.add(code)
+        last = said.splitlines()[-1] if said else "no message"
+        print(f"      WARN  mmdc drew nothing, so a mermaid fence prints as text: {last}")
+    return None
 
 
 def place_picture(s, png, top, bottom=BODY_BOTTOM, width_in=WIDTH, centre=False,
@@ -977,3 +1023,10 @@ if __name__ == "__main__":
 # Any rebuilt deck, unzipped
 #     Holds one image in ppt/media for each distinct picture on its slides and nothing the layout
 #     search left behind.
+# A flowchart 1704 CSS pixels wide, rendered at scale one by mermaid-cli 12, which has no -w
+#     Comes out 1704 pixels wide on a 2600 pixel page set by --size, with useMaxWidth off. Dropping
+#     -w alone drew it 784 wide, and --size with useMaxWidth on drew a 360 pixel chain 2600 wide.
+# The same fence with mermaid-cli 11 or older, whose help lists --width
+#     Gets -w 2600 and the shared config unchanged, as before.
+# An mmdc that draws nothing, for example one that refuses a flag
+#     Prints one WARN line per fence carrying mmdc's last line, and that fence falls back to text.
