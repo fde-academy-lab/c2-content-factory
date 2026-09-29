@@ -75,7 +75,11 @@ in five rungs, a trap per rung, and the 360-minute day.
    the top". The Kahoot's comparison trap uses "3500" where the row wrote "4500".
 6. **Anand Iyer is the finance controller.** The row calls him the CFO; `docs/07` says finance
    controller, and the pack follows `docs/07`.
-7. **Seven interview questions are added to the row's five.** They are this pack's case-style
+7. **The second case groups revenue by segment and channel.** The row's stop-before line names
+   grouping by segment, and the spine's afternoon table asks for revenue by customer type and
+   channel on the same file. The spine wins: the grouping is a dictionary accumulator counted by hand
+   in the second case only, with no helper function, and Tuesday still owns grouping as a technique.
+8. **Seven interview questions are added to the row's five.** They are this pack's case-style
    follow-ups, as the spine asks, and their tags are this pack's calibration on the row's scale.
 
 ## Invented, and recorded as invented
