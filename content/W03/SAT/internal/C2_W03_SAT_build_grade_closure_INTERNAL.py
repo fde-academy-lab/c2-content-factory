@@ -7,8 +7,8 @@ Writes, beside each other in content/W03/SAT/rubrics/:
   C2_W03_SAT_grade_closure_recalc_INTERNAL.md  the verdicts and flips scripts/xlsx_recalc.py asserts
 
 The workbook states the locked marks per event (GD 30, mini project 40 including the presentation,
-mock 30, from data/programme/facts.yaml) and no criterion, because the rubrics wait for the
-requester's approval. Every total and every check is a formula, so LibreOffice or Excel recomputes
+mock 30, from data/programme/facts.yaml) and takes each event's total from its scoring sheet, so it
+carries no criterion itself; the approved criteria live in facts.yaml and in the scoring sheets. Every total and every check is a formula, so LibreOffice or Excel recomputes
 them as scores are entered.
 """
 import pathlib
@@ -78,7 +78,7 @@ def build():
     rm["A2"] = "TRAINER ONLY. The committed file is the empty template; a filled copy holds learners' scores and is never committed."
     rm["A2"].font = font(italic=True)
     rows = [
-        ("What it closes", "Three scores per learner: the GD score out of 30, the mini project score out of 40 including the presentation, and the Mock R1 score out of 30. The marks per event are locked (data/programme/facts.yaml); the criteria come from the rubrics the requester approves, and this workbook states none."),
+        ("What it closes", "Three scores per learner: the GD score out of 30, the mini project score out of 40 including the presentation, and the Mock R1 score out of 30. The marks per event are locked (data/programme/facts.yaml). Each total is copied from its scoring sheet, which carries the criteria the requester approved on 29 September 2026: the GD from content/W03/D5/rubrics/C2_W03_D05_gd_scoring_sheet_TRAINER.xlsx, the mini project from C2_W03_SAT_mini_project_scoring_TRAINER.xlsx beside this file, and the mock from Thursday's mock scoring sheet."),
         ("Where to type", "Only the yellow cells on the Scores sheet (columns C to G and J) and the Signed column on the Sign-off sheet. Every other cell is a formula."),
         ("Entered once", "Each score is typed once, by the scribe named on the run sheet, from the assessor's signed sheet. A correction replaces the one cell; it is never typed in a second place."),
         ("Seats, never names", "Seats are labelled by group and seat (G1-S1). The Programme Head keeps the seat-to-learner key outside this repository. Eight groups hold four seats and G9 holds three, as the handover's 35 learners in nine groups give; relabel the seat column if Monday's allocation put the group of three elsewhere."),

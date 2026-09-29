@@ -9,7 +9,9 @@
 | The spine, its plants and its witness | `docs/detailing/W03_build1_spine.md`, approved 29 September 2026 | Approved |
 | The 300-minute Saturday | `data/programme/facts.yaml`, campus_day.saturday_minutes | Locked |
 | 35 learners in nine groups of four | `data/programme/facts.yaml`, cohort; the `groups` conflict with the tracker's fifteen is carried in the run sheet | Stated (handover) |
-| Marks per event: mini project 40, mock 30, GD 30 | `data/programme/facts.yaml`, evaluation, proposal-2026-09-25 | Locked; the rubrics wait for the requester |
+| Marks per event: mini project 40, mock 30, GD 30 | `data/programme/facts.yaml`, evaluation, proposal-2026-09-25 | Locked |
+| The Build 1 rubrics, the mini project's 34 per group and 6 per learner | `data/programme/facts.yaml`, evaluation.rubrics.W03, approved 29 September 2026; read by `internal/C2_W03_SAT_build_mini_project_scoring_INTERNAL.py` and rendered by the sync into the run sheet | Locked |
+| Saturday's two GD rounds, the first tranche and the drawn order | `content/W03/D5/trainer/C2_W03_D05_day_sheet_TRAINER.md` | Friday's pack |
 | Dr Priya Menon, Meera Raghavan, Kavya Nair | `docs/07_Client_Zero.md` sections 1a and 1b | Locked v2.2, with the GCC addendum |
 | Meera's Week 4 Monday words | `docs/curriculum/W4_Analyst_craft.md`, Monday 26 October, business scenario | Tracker v7 |
 | Build 2 in Week 6, Kalpa Financial Services | `docs/programme/calendar.md`, W06 lines | Locked calendar |
@@ -26,6 +28,7 @@ No URL enters this day's files.
 | The offer ran in three cities | Offers in all six cities: about half the patients in Bengaluru, Hyderabad and Mumbai, about a fifth in Delhi, Chennai and Pune | The question bank describes the files, and gives Delhi's positive split (23.5 percent, 316 offered) as the caveat challenge |
 | The old export repeats 180 rows from a mid-quarter re-export | 180 repeated booking identifiers dated 1 June to 26 September; 145 identical on every field, the rest differing only in `updated_at` | The question bank quotes the files' dates and makes no claim about when the re-export ran |
 | The generator's witness counts 60 text amounts | 35 invoice amounts carry a comma in the file | The question bank quotes 35, which is what a group reading the CSV finds |
+| Friday's day sheet: a demo that fails live gets two minutes to recover, then the group presents from its executed run | The requester's Saturday brief: cold, raw files, one run | Saturday follows the brief (no second run); Friday's first tranche follows Friday's sheet, so the two days differ until one of them is changed |
 
 ## Build notes
 

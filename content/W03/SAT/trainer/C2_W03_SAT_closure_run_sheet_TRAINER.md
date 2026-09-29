@@ -51,8 +51,9 @@ panel questions that learner separately, alone, for up to five minutes in the ro
 | Step | Who | Done when |
 |---|---|---|
 | Read the presentation order drawn at Friday's close, strike the groups that presented Friday, and assign the rest to the two rooms by the rule below | Programme Head | Both room orders are printed and on each panel's table |
-| Enter Friday's GD scores and Thursday's mock scores into the grade closure workbook from the signed sheets | Programme Head, with the Academic TA reading the sheets aloud | The workbook's Checks sheet shows no MISSING in the GD column for Friday's groups and none in the mock column |
-| Open each group's demo machine on a fresh Codespace with the raw files in the data folder, and leave it closed and cold | Academic TA | Every group has a machine, and none has run the notebook |
+| Copy Friday's GD totals (from `content/W03/D5/rubrics/C2_W03_D05_gd_scoring_sheet_TRAINER.xlsx`), Friday's first-tranche mini project totals and Thursday's mock scores into the grade closure workbook | Programme Head, with the Academic TA reading the sheets aloud | The workbook's Checks sheet shows no MISSING in the GD column for Friday's groups, none in the mini project column for the first tranche, and none in the mock column |
+| Run the demo from the frozen commit for any group with no second cold run logged on Friday, as Friday's freeze rule requires | Academic TA | Every group has a logged cold run on its frozen hash |
+| Open each group's demo machine on a fresh Codespace at its frozen commit, with the raw files in the data folder, and leave it closed and cold; check `git rev-parse HEAD` against Friday's freeze table before each slot | Academic TA | Every group has a machine on its frozen hash, and none has run the notebook |
 | Put the question bank in front of each panel, marked with that room's sub-problems | Trainer | Each panel member has read their pages |
 
 **The room rule.** Keep every sub-problem's groups together on one panel and back to back, so a
@@ -67,9 +68,17 @@ on Monday; this sheet does not assume it.
 
 ## Plan A: the clusters are 2, 2, 2, 2 and 1 (every sub-problem covered by nine groups)
 
-The planning case assumes nobody presented on Friday and three GD rounds remain, which is the
-heaviest Saturday the week can hand over. Every group Friday took off frees one slot of 30 minutes in
-its room.
+This plan is sized for the heaviest Saturday the week could hand over: nobody presented on Friday
+and three GD rounds remain. Every group Friday took off frees one slot of 30 minutes in its room.
+
+**The likely Saturday, from Friday's pack.** Friday runs seven GD rounds and a first tranche of up to
+three presentations in whole clusters (`content/W03/D5/trainer/C2_W03_D05_day_sheet_TRAINER.md`), so
+Saturday holds two GD rounds (slots 8 and 9, one of them the Principal Advisor's online) and about six
+presentations. Run both GD rounds in parallel in the first 30 minutes after the opening (the expert in
+the room, the Principal Advisor online), start the leader's room at once, and let the expert's room
+begin its slots after the GD; the two groups in Saturday's GDs present no earlier than the third slot
+of their room, as Friday's draw requires. Six slots then end before lunch in both rooms, and the
+afternoon runs follow-ups, closure and the week close with its reserve.
 
 ```mermaid
 flowchart TB
@@ -137,15 +146,27 @@ scores nine groups from memory scores the last three against the first six.
 
 | Step | Who | Where |
 |---|---|---|
-| The panel scores each learner in the group on the mini project scoring sheet the requester approves with the rubric | The panel chair | The paper or digital scoring sheet for that group, signed by the chair |
-| The scribe enters each learner's mini project score out of 40, once, in the grade closure workbook | Trainer (expert's room), Academic TA (leader's room) | `rubrics/C2_W03_SAT_grade_closure_TRAINER.xlsx`, sheet Scores, column Mini project |
-| After each GD round, the GD assessor's scores out of 30 are entered, once | Trainer, from the expert's or the Principal Advisor's signed sheet | The same workbook, column GD |
-| A learner flagged silent is questioned in the reserve, and the panel confirms or changes that learner's score before it is entered | The panel chair, with the scribe | The same cell; it is entered once, after the follow-up |
+| The panel scores the group's four group criteria once, out of 34, and each learner's presentation and defence out of 6, after the slot and never in front of the group | The panel chair | `rubrics/C2_W03_SAT_mini_project_scoring_TRAINER.xlsx`, sheets Groups and Learners; Friday's first tranche is already in the same sheet |
+| The scribe copies each learner's total out of 40, once, into the grade closure workbook | Trainer (expert's room), Academic TA (leader's room) | `rubrics/C2_W03_SAT_grade_closure_TRAINER.xlsx`, sheet Scores, column Mini project |
+| Each Saturday GD round is scored per learner in Friday's GD sheet, then each total out of 30 is copied once | The expert or the Principal Advisor scores; the trainer copies | `content/W03/D5/rubrics/C2_W03_D05_gd_scoring_sheet_TRAINER.xlsx`, then the closure workbook's GD column |
+| A learner flagged silent is questioned in the reserve before that learner's presentation and defence score is entered; the group's 34 does not wait | The panel chair, with the scribe | The Learners sheet, then the closure workbook; each cell entered once, after the follow-up |
 
-**Marks are stated, criteria are not.** The events carry their locked marks: GD 30, mini project 40
-including the presentation, and the mock 30. The criteria come from the rubrics once the requester
-approves them; this pack states none, and a panel member who asks what earns which marks is pointed
-to the approved scoring sheet.
+**The rubric the panels score against.** The requester approved Build 1's rubrics on 29 September
+2026 (`data/programme/facts.yaml`, evaluation.rubrics.W03), and learners may see them. The group part
+is where a missed plant shows (the data and the analysis); presentation and defence is where a silent
+teammate shows.
+
+<!-- sync:rubric:W03/mini-project -->
+**Mini project, 40 marks.** The first four criteria are scored once for the group, and every member receives those 34 marks; presentation and defence is scored for each learner on 6 marks, so a silent teammate cannot ride the group's score.
+
+| Criterion | Marks | What full marks look like |
+|---|---|---|
+| The question translated | 8 | Dr Menon's words are mapped to the right Weeks 1 and 2 method, with the metric defined and the decision it feeds named. |
+| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and rupees reconcile across files. |
+| The analysis | 10 | The tree, ladder or fair comparison reaches the branch that explains the symptom, on the right denominator, with a chance test where one is needed. |
+| The claim | 6 | One sentence carries its number, denominator, period and caveat, plus an action Dr Menon can take. |
+| Presentation and defence | 6 | The live demo runs cold, and every member answers a challenge on the caveat. |
+<!-- /sync:rubric:W03/mini-project -->
 
 ---
 
