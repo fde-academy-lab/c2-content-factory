@@ -118,6 +118,8 @@ ORDER  BY order_id;
 -- The question: by the end of each plan week, how much had Q2 booked, against the plan so far?
 -- Both sides accumulate. A running actual set beside one week's plan compares a quarter-to-date
 -- total with seven days of target.
+-- This block reads the first seven plan weeks, up to mid-quarter. The full thirteen weeks and
+-- the close against Monday's Q2 total are the afternoon's case.
 WITH daily AS (
     SELECT order_date, sum(amount) AS booked
     FROM   orders
@@ -136,4 +138,5 @@ plan AS (
 SELECT p.week_start, p.plan_to_date,
        (SELECT max(t.booked_to_date) FROM to_date t WHERE t.order_date <= p.week_end) AS booked_to_date
 FROM   plan p
+WHERE  p.week_start <= DATE '2026-08-17'
 ORDER  BY p.week_start;
