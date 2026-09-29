@@ -40,8 +40,8 @@ bottom and carries five sections.
 
 ## After it
 
-- **Watch.** Seeing Theory, frequentist inference, the interactive chapter on testing (verified 05 Sep
-  2026): https://seeing-theory.brown.edu/frequentist-inference/index.html
+- **Watch.** Seeing Theory, frequentist inference, the interactive chapter on testing:
+  https://seeing-theory.brown.edu/frequentist-inference/index.html (verified 29 Sep 2026)
 - **Redo.** Run today's shuffle on your Monday take-home data too, if the practice lab did not get to it.
 - **Recap.** Write the note's four parts and the p-value sentence from memory on a card. Both are on
   Saturday's paper.
