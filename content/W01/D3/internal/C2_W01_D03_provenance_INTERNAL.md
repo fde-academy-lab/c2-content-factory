@@ -61,10 +61,10 @@ take-home file the v2b sample.
    file is the second sample the standard assigns to the take-home.
 9. **The afternoon deck has 14 body slides and 5 section openers**, 20 slides with the cover, against
    "about 20".
-10. **Old files not removed.** Deleting the previous pack was refused in this session, so the build
-    overwrote every file whose name fits the new pack. Two old files remain and should be removed:
-    `notebooks/C2_W01_D03_01_reconciliation_STUDENT.ipynb` (its saved outputs name planted records)
-    and `demos/C2_W01_D03_identity_rule_STUDENT.html`.
+10. **The previous pack is replaced in full.** The build overwrote every old file whose name fits the
+    new pack, and the requester had the last two removed with `git rm` on 29 September 2026:
+    `notebooks/C2_W01_D03_01_reconciliation_STUDENT.ipynb`, whose saved outputs named planted
+    records, and `demos/C2_W01_D03_identity_rule_STUDENT.html`.
 
 ## Invented, and recorded as invented
 
