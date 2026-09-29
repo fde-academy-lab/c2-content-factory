@@ -83,6 +83,12 @@ take-home self-check's expected numbers and here.
    the Business median and middle half behind the rupee lens, the retention-cost estimates in the reply
    to Marketing, the season as a rival to both hypotheses, and how a failure log is written. The
    season card on S16 is this pack's construction; the row names two hypotheses.
+   Notebooks 04 and 05 carry it as worked cells in both twins, with no new TODO, so the answer keys
+   are unchanged: the Business lens described (median, middle half, mean with and without its largest
+   order), the mix and rate split in both orders, the season tested against Retail-Core (Retail-Plus
+   kept 51 percent of its Q1 orders, Retail-Core 95), the retention-cost estimates, and how a failure
+   log is written. The middle half is computed by hand with the same interpolation
+   statistics.quantiles uses by default, and matches it.
 8. **The study notes run to about 7,000 words against "about 4,000"**: three rounds, two cases, twelve
    full interview answers, and, since 29 Sep 2026 at the requester's ask, the morning deck's business
    context and technical depth in the rung where each is taught. The interview answers and the
@@ -151,6 +157,12 @@ pre-installed Chromium.
 3. `scripts/distractor_audit.py`: a `<- correct` marker on its own line stops the option parser,
    though the docstring describes that shape; the Kahoot uses the inline marker every pack uses.
 4. The D1 companion's `rs()` helper formats only to Rs 99,99,999; the day's page carries its own.
+7. `scripts/c2kit.py`, `strip()`: the marker loop assigns a boolean to `left`, the name that also
+   holds the chart's left margin, so after the first marker every later marker and every dot is drawn
+   with no margin, up to 40 pixels left of its true place (the mean landed left of the median). This
+   pack draws its strips without markers and names the median and mean in the title; renaming the
+   loop's variable fixes it. `content/W01/D1/notebooks/C2_W01_D01_04_average_that_lies_STUDENT.ipynb`
+   calls strip with markers and is affected.
 5. `scripts/build_deck.py` and `scripts/build_cheatsheet.py` pass `-w` to mmdc, which the installed
    mermaid-cli 12.0.0 no longer accepts, so a plain build silently prints every diagram as code. This
    pack's decks and sheet were built through mermaid-cli 11.17.0 installed in the session scratchpad;
