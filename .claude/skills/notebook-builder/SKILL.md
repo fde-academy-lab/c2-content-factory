@@ -1,6 +1,6 @@
 ---
 name: notebook-builder
-description: Build or raise a teaching notebook that runs, proves itself and reads as a document. Use whenever the work touches an .ipynb, a demo notebook, a hands-on notebook, an exercise notebook with TODO markers, a notebook that has to run cold in a Codespace, or a request to add checks, diagrams or executed outputs to something that already runs. Trigger it when someone says notebook, demo, hands-on, walkthrough code, "make the cells prove it", or hands over a script that a learner is meant to work through. Covers the shared helper module, the MAP, DO, SEE, CHECK, SUM rhythm, the break-it-on-purpose section, and the pick-from-options exercise twin.
+description: Build or raise a teaching notebook that runs, proves itself and reads as a document. Use whenever the work touches an .ipynb, a demo notebook, a hands-on notebook, an exercise notebook with TODO markers, a notebook that has to run cold in a Codespace, or a request to add checks, diagrams or executed outputs to something that already runs. Trigger it when someone says notebook, demo, hands-on, walkthrough code, "make the cells prove it", or hands over a script that a learner is meant to work through. Covers the shared helper module, the MAP, DO, SEE, CHECK, SUM rhythm, the trap that stages a plausible wrong number, and the pick-from-options exercise twin.
 ---
 
 # Notebook builder
@@ -37,7 +37,9 @@ The helper reads its palette from `scripts/brand.py`, as the decks and cheat she
 5. A CHECK cell with two or more `check()` calls asserting on the shape of what happened, never on wording.
 6. At each milestone, the industry example and the interview question the milestone just made answerable.
 
-**One break-it-on-purpose section per notebook**, carrying the exact error text or the exact wrong output, then the fix, then the check that proves the fix.
+**At least one trap per notebook**: the plausible wrong number computed the way a hurried analyst would, why it is wrong in business terms, the check that exposes it, and the fix with what changed. A runtime error met on the way gets one cell and its last line; a notebook never builds a section around a syntax error.
+
+**Charts from the data.** Every level that produces a number shows it: `kit.columns` for groups, `kit.line` for a trend or a plan, `kit.bridge` for a reconciliation or a decomposition, `kit.strip` for a distribution and `kit.bars` for a ranking.
 
 **A plant is found in an empty your-turn cell.** Where a section leads the learner to a record planted in the day's data, the markdown gives the lines to type and the code cell below it ships empty, so no saved output names the record. A mechanism that needs the plant to show is taught on invented numbers, labelled invented.
 
@@ -66,7 +68,7 @@ For each unguided exercise that has a notebook to point at, build `notebooks/C2_
 - [ ] At least three diagram outputs are rendered and saved.
 - [ ] At least five `check()` calls exist and all of them pass.
 - [ ] Every code cell carries a saved output.
-- [ ] One break-it-on-purpose section carries exact text, the fix and a proving check.
+- [ ] At least one trap shows the plausible wrong number, why it is wrong, the check that exposes it and the fix.
 - [ ] No saved output or markdown line names a planted record; each discovery sits in an empty your-turn cell.
 - [ ] Every logical group closes on a SUM cell with a diagram and a table.
 - [ ] The last cell prints `check_summary()` and names what comes next.

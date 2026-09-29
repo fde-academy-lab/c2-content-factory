@@ -64,16 +64,16 @@ Each check names what it is proving in the label, so a FAIL line reads as an ins
 
 At each milestone, two markdown beats: one industry example of the technique in production, and one interview question the milestone just made answerable. These are not decoration. The industry example is what a learner repeats in a screen, and the interview question is what the day is being built toward.
 
-## The break-it-on-purpose section
+## The trap
 
-One per notebook, no more. It carries four parts and all four are visible:
+At least one per notebook. A trap is a plausible wrong number, the kind a hurried analyst ships, and it carries four visible parts:
 
-1. The broken artifact, in a code cell.
-2. The exact error text, or the exact wrong output. Where the break is a crash, the traceback is caught and printed so the notebook keeps running, and the uncaught form is quoted in a markdown cell underneath so the learner recognises it on their own screen.
-3. The fix, in a code cell.
-4. A check that proves the fix.
+1. **The plausible wrong answer**, in a code cell that computes it the natural-looking way: rows counted as customers, totals over unequal windows, a join that fanned out, an average of averages.
+2. **Why it is wrong**, in business terms first: which decision the wrong number would have driven, and what it hid.
+3. **The check that exposes it**, a `kit.check` on the reconciliation, the grain or the denominator, which fails on the wrong number and passes on the right one.
+4. **The fix**, recomputed, with what changed stated in rupees, customers or rows.
 
-A wrong-output failure is harder than a crash and needs more care: print the wrong number, print the right one, and put a check on the difference. The reader must be able to see that something was wrong without being told which line to look at.
+The reader must be able to see that something was wrong without being told which line to look at, so the wrong number and the right one sit side by side in a table or a chart. A runtime error met on the way is shown in one cell with `kit.expect_error()` and its last line, and the notebook moves on; it never becomes the trap.
 
 ## The SUM cell, per logical group
 
@@ -94,7 +94,7 @@ The final cell prints `check_summary()` and one sentence on what the next notebo
 
 ## Sizing
 
-Sixteen to twenty-eight cells is the working range for a teaching notebook in the predict rhythm. Under sixteen and the concept has not been walked; over twenty-eight and it is two notebooks, split by chapter so each sits beside one part of the deck. Markdown outnumbers code where the concept needs it, and a wall of text is as banned as a wall of code.
+A round notebook climbs four levels of one business question in 24 to 36 cells. Under 24 and the question has not been climbed; over 36 and it is two notebooks, split by level so each sits beside one part of the deck. Markdown outnumbers code where the concept needs it, and a wall of text is as banned as a wall of code.
 
 ## The four things that make a notebook fail review
 

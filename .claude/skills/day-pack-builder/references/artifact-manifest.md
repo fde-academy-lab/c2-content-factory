@@ -4,7 +4,7 @@ Every specification below binds the build. Where this file and an older day-pack
 
 ## 1. Deck, one or two per day
 
-One deck carries a single-arc day. A day with two distinct arcs (for example a morning concept arc and an afternoon applied arc) splits into half one and half two, each with its own opening promise and its own close. Split when the second arc would force a mid-deck reset of the mental model; never split to hide an over-full day.
+A teaching day ships two decks: the morning deck (half one), which carries the ask, the thinking and three rounds, and the afternoon deck (half two), which carries the escalated case, the debrief of wrong answers, the second case, the interview drill and the close. Their sizes and a round's slide sequence are in `the-standard.md`.
 
 **The deck opens on the day's business scenario**, taken from column 2 of the row and said in the
 stakeholder's words, with the questions they are asking. Slide two is the thinking that scenario demands,
@@ -18,7 +18,7 @@ Deck behaviour: visual and thin, narration in the trainer notes, one idea per sl
 
 A notebook is a teaching document that happens to run. **Its first markdown cell is the same business
 scenario the deck opened on**, so a learner who reopens the notebook a month later meets the question before
-the code. Cell order per concept: the idea in one markdown beat; a diagram or mental-model cell; the working demo; its visible output; the deliberate failure with its exact trace; the fix; and, at each milestone, one industry example of the technique in production and one interview question the milestone just made answerable.
+the code. A day carries one notebook per round, each climbing four levels of one business question, plus the two case notebooks. Cell order per level: the idea in one markdown beat; a diagram or a chart; the working demo; its visible output; at the trap, the plausible wrong number computed the way a hurried analyst would, why it is wrong in business terms, the check that exposes it and the fix; and, at each milestone, one industry example of the technique in production and one interview question the milestone just made answerable.
 
 Progression is the notebook's spine: build the thing in variations, smallest first, exactly one new element per step. The canonical shape, kept from delivered work: a simple agent loop by hand, then the loop with one tool, then many tools, then one turn, then multiple turns. Apply the same ladder logic to any topic: each notebook section is the previous section plus one decision.
 
@@ -73,8 +73,9 @@ Six to eight items per the row's quiz plan, traps included, plus the return ques
 ## 8. Trainer notes and the day sheet
 
 One TRAINER file: the two-minute continuity block from the row (start from, do not repeat, go as far as,
-stop before, comes later), per-slide Say, Then, Draw, Ask, Trap and Bridge labels, the breaks to run with
-exact error text, the ranked cut list, and the checkpoint questions.
+stop before, comes later), per-slide Say, Then, Draw, Ask, Trap and Bridge labels, the traps to run with
+their exact wrong numbers and the checks that catch them, the ranked cut list, the checkpoint questions,
+and the practice lab note: where learners stall on each problem and the one hint to give.
 
 It also carries **the plant list**, copied from the row's client-zero column, which is labelled TRAINER ONLY:
 the dataset version, exactly what is seeded in it, what the room is supposed to find, and what to do if
@@ -102,6 +103,10 @@ The next day's vocabulary as a gap sheet plus any setup the learner must complet
 ## 12. Tiered extras
 
 One stretch task for fast finishers and one recovery task for stuck learners, built in advance, allowed to be weekly rather than daily.
+
+## 12a. The practice lab set
+
+The TA-led practice lab runs after the second block. The pack supplies it in `exercises/practice/`: three or four problems on the day's data, climbing in difficulty and ending on one that combines the day's rounds, with solutions in `exercises/solutions/` and the TA note in the day sheet. It passes `scripts/distractor_audit.py` like any other exercise.
 
 ## 13. Corrections card, conditional
 

@@ -49,7 +49,7 @@ from the tracker, so it is always the calendar the board and the verifier read.
 | `whiteboards/` | The board work: markdown walkthroughs, and images of the diagrams and sketches a topic needs, including anything drawn from deeper research than the row carries. |
 | `cheatsheets/` | One per major topic the day earns, plus its gap variant. |
 | `study-notes/` | The notes a learner reads after the session, revised against the transcript when it arrives. |
-| `exercises/` | An index at the root, then `guided/` for what the trainer builds with the room, `unguided/` for what a learner does alone, and `solutions/` for the answers, kept in one folder so they are easy to withhold until the close. |
+| `exercises/` | An index at the root, then `guided/` for what the trainer builds with the room, `unguided/` for what a learner does alone, `practice/` for the TA-led practice lab after the second block, and `solutions/` for the answers, kept in one folder so they are easy to withhold until the close. |
 | `takehome/` | The brief and its self-check spine. |
 | `kahoot/` | The day's quiz pack, ungraded. |
 | `preread/` | Tomorrow's vocabulary and tonight's setup, which ships the evening before. |
