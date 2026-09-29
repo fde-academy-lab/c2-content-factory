@@ -109,11 +109,11 @@ put(ws, "A7", "The pivot's grand total (Rs)"); put(ws, "B7", 394095490, fill=INP
 put(ws, "A8", "The warehouse total for the same period (Rs)"); put(ws, "B8", 198400000, fill=INPUT, fmt=INDIAN)
 put(ws, "A10", "Rows per order"); put(ws, "B10", "=B5/B6", fmt="0.00")
 put(ws, "A11", "The pivot less the warehouse (Rs)"); put(ws, "B11", "=B7-B7", fmt=INDIAN)
-put(ws, "A12", "The check", BOLD)
+put(ws, "A12", "The check", BOLD, wrap=True)
 put(ws, "B12", '=IF(B11<>B7-B8,"The difference reads "&B11&" while the pivot and the warehouse disagree: the formula '
                'compares the pivot with itself. Fix it first.","The difference compares the pivot with the '
                'warehouse.")', wrap=True)
-put(ws, "A14", "Verdict", VERDICT)
+put(ws, "A14", "Verdict", VERDICT, wrap=True)
 put(ws, "B14", '=IF(B11<>B7-B8,"Fix the difference formula before trusting the pivot.",IF(ABS(B11)<1,'
                '"Slice it live: the pivot reconciles to the warehouse.",IF(B10>1,"Do not slice this pivot: it is "&'
                + crl("B11") + '&" off the warehouse and carries "&TEXT(B10,"0.00")&" rows per order. Rebuild it on '
@@ -136,11 +136,11 @@ put(ws, "D5", "Member id to find", BOLD); put(ws, "E5", "C-0405", fill=INPUT)
 put(ws, "D7", "Row returned"); put(ws, "E7", "=INDEX(A5:A12,MATCH(E5,A5:A12,1))")
 put(ws, "D8", "Revenue on that row (Rs)")
 put(ws, "E8", '=IF(E7="not in the table","",INDEX(B5:B12,MATCH(E7,A5:A12,0)))', fmt=INDIAN)
-put(ws, "D9", "The check", BOLD)
+put(ws, "D9", "The check", BOLD, wrap=True)
 put(ws, "E9", '=IF(E7=E5,"The row returned is the member asked for.",IF(E7="not in the table",'
               '"The lookup says the id is missing.","The lookup returned "&E7&" for "&E5&": the match type answers '
               'with a neighbour. Fix it first."))', wrap=True)
-put(ws, "D11", "Verdict", VERDICT)
+put(ws, "D11", "Verdict", VERDICT, wrap=True)
 put(ws, "E11", '=IF(AND(E7<>E5,E7<>"not in the table"),"Fix the match type before answering the chief of staff.",'
                'IF(E7="not in the table",E5&" is not in the table: say so, and check the export before anyone '
                'answers.",E5&": "&' + rs("E8") + '&", on the list."))', VERDICT, TINT, True)
@@ -167,10 +167,10 @@ ws.auto_filter.add_filter_column(1, ["Mumbai"])
 put(ws, "A14", "The foot: total revenue (Rs)", BOLD); put(ws, "C14", "=SUM(C5:C12)", fmt=INDIAN)
 put(ws, "A15", "Rows you can see"); put(ws, "C15", "=SUBTOTAL(103,A5:A12)")
 put(ws, "A16", "Rows in the list"); put(ws, "C16", "=COUNTA(A5:A12)")
-put(ws, "A17", "The check", BOLD)
+put(ws, "A17", "The check", BOLD, wrap=True)
 put(ws, "B17", '=IF(C14<>SUBTOTAL(109,C5:C12),"The foot adds "&C16&" rows while "&C15&" are visible: it counts '
                'rows the filter hid. Fix it first.","The foot adds only the rows you can see.")', wrap=True)
-put(ws, "A19", "Verdict", VERDICT)
+put(ws, "A19", "Verdict", VERDICT, wrap=True)
 put(ws, "B19", '=IF(C14<>SUBTOTAL(109,C5:C12),"Fix the foot total before reading it as the city\'s list.",'
                '"The "&C15&" members you can see spent "&' + rs("C14") + '&".")', VERDICT, TINT, True)
 put(ws, "A20", "Fixed, for the Export tab", NOTE); put(ws, "B20", "=IF(C14=SUBTOTAL(109,C5:C12),1,0)")
@@ -188,12 +188,12 @@ put(ws, "A8", "The period it is compared with"); put(ws, "B8", "Q1, April to Jun
 put(ws, "A9", "Company revenue in the same period (Rs)"); put(ws, "B9", 98400000, fill=INPUT, fmt=INDIAN)
 put(ws, "A10", "What the number covers"); put(ws, "B10", "All segments", fill=INPUT)
 put(ws, "A12", "Change on the comparison"); put(ws, "B12", "=(B5-B6)/B5", fmt="0.0%")
-put(ws, "A13", "The check", BOLD)
+put(ws, "A13", "The check", BOLD, wrap=True)
 put(ws, "B13", '=IF(ABS(B12-(B5-B6)/B6)>0.00001,"The change is divided by the current period; a change is measured '
                'on the earlier one. Fix it first.","The change is measured on the earlier period.")', wrap=True)
 put(ws, "A14", "What the card still lacks")
 put(ws, "B14", '=IF(B7="","the period",IF(B8="","the comparison",IF(B9=0,"the denominator","")))')
-put(ws, "A16", "Verdict", VERDICT)
+put(ws, "A16", "Verdict", VERDICT, wrap=True)
 put(ws, "B16", '=IF(ABS(B12-(B5-B6)/B6)>0.00001,"Fix the change formula before the card is drafted.",IF(B14<>"",'
                '"Not ready for the front page: add "&B14&", or the number is read against whatever the director '
                'remembers.",B10&", "&B7&": "&' + crl("B5") + '&", "&IF(B12<0,"down ","up ")&TEXT(ABS(B12)*100,"0.0")&'
@@ -215,11 +215,11 @@ for ref in ("B5", "B6", "B7", "B8"):
     choice(ws, ref, ["yes", "no"])
 put(ws, "A10", "Who owns it"); put(ws, "B10", '=IF(B8="yes","Excel",IF(B5="yes","the warehouse",IF(B6="yes",'
                                                '"the warehouse",IF(B7="yes","pandas","Excel"))))')
-put(ws, "A11", "The check", BOLD)
+put(ws, "A11", "The check", BOLD, wrap=True)
 put(ws, "B11", '=IF(AND(OR(B5="yes",B6="yes"),B10<>"the warehouse"),"Finance audits it or it needs cleaning, yet the '
                'rule sends it to "&B10&": the tests run in the wrong order. Fix it first.","The source of truth is '
                'decided before who presents it.")', wrap=True)
-put(ws, "A13", "Verdict", VERDICT)
+put(ws, "A13", "Verdict", VERDICT, wrap=True)
 put(ws, "B13", '=IF(AND(OR(B5="yes",B6="yes"),B10<>"the warehouse"),"Fix the order of the tests before the rule is '
                'written down.",B4&": "&IF(B10="the warehouse","the warehouse computes it"&IF(B8="yes",", and Excel '
                'presents it read-only, refreshed from the export",""),IF(B10="pandas","pandas owns the iteration '
@@ -235,10 +235,10 @@ ws = sheet(wb, "Export", "The operating rule, assembled",
 ws.column_dimensions["B"].width = 118
 put(ws, "A4", "Tabs fixed", BOLD)
 put(ws, "B4", "=Pivot!B15+Lookup!E12+'Visible total'!B20+'Front page'!B17+Rule!B14")
-put(ws, "A5", "Release", VERDICT)
+put(ws, "A5", "Release", VERDICT, wrap=True)
 put(ws, "B5", '=IF(B4=5,"Ready to paste into the team note.","Not ready: "&(5-B4)&" of the five tabs still carry a '
               'defect to fix first.")', VERDICT, TINT, True)
-put(ws, "A7", "Paste-ready rule", BOLD)
+put(ws, "A7", "Paste-ready rule", BOLD, wrap=True)
 put(ws, "B7", '=IF(B4=5,"Pivot: "&Pivot!B14&CHAR(10)&"Lookup: "&Lookup!E11&CHAR(10)&"Visible total: "&'
               '\'Visible total\'!B19&CHAR(10)&"Front page: "&\'Front page\'!B16&CHAR(10)&"Rule: "&Rule!B13,'
               '"The rule assembles once every tab passes its check.")', wrap=True)
