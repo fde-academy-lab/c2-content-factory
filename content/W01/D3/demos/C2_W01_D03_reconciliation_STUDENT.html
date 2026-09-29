@@ -1,0 +1,1131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which Q1 figure is right: Week 1, Wednesday companion</title>
+<style data-c2kit>
+/* c2kit.css: the look every companion page inlines, taken from the orientation deck.
+ * Violet on lavender, Georgia for headings, Calibri for text, cards with a soft shadow.
+ * scripts/build_companion.py inlines this file into each page. */
+:root{
+  --ink:#1A0F5C;--night:#1A1440;--violet:#5B3FD6;--violet-mid:#2C1A86;--lav:#D9A7FF;
+  --muted:#6B6690;--soft:#A9A3D2;--lilac:#CFC9EE;--line:#E4E1F1;--tint:#EEEAFB;--surface:#F4F2FA;
+  --white:#FFFFFF;--rose:#D63A6A;--rose-tint:#FCEBF0;--green:#1F8A5B;--green-tint:#E8F5EE;
+  --serif:Georgia,"DejaVu Serif",serif;
+  --sans:Calibri,Carlito,"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+  --mono:Consolas,ui-monospace,SFMono-Regular,Menlo,monospace;
+  --shadow:0 2px 6px rgba(26,15,92,.10),0 1px 2px rgba(26,15,92,.06);
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#F7F5FD 0%,#F2EFFB 100%);color:var(--night);
+     font:16px/1.55 var(--sans)}
+a{color:var(--violet)}
+code,kbd{font:14px var(--mono);background:var(--tint);border-radius:4px;padding:1px 5px;color:var(--ink)}
+
+/* the dark header, like a deck cover */
+.hero{background:radial-gradient(120% 140% at 85% 10%,#5B3FD6 0%,#2C1A86 45%,#1A1440 100%);
+      color:var(--white);padding:34px 40px 30px}
+.hero .kicker{display:inline-block;border:1px solid var(--lilac);border-radius:999px;padding:4px 14px;
+      font:700 11px var(--sans);letter-spacing:.24em;text-transform:uppercase;margin-bottom:14px}
+.hero h1{font:400 38px/1.15 var(--serif);margin:0 0 10px}
+.hero .quote{font:italic 20px/1.4 var(--serif);color:var(--lav);max-width:860px;margin:0 0 6px}
+.hero .who{color:var(--lilac);font-size:13px;margin:0}
+.hero .promise{color:#E4E1F1;max-width:860px;margin:16px 0 0}
+
+/* the page: a left rail and the sections */
+.page{display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;max-width:1240px;margin:0 auto;
+      padding:26px 28px 60px}
+@media (max-width:900px){.page{grid-template-columns:1fr}.rail{position:static}}
+.rail{position:sticky;top:18px;align-self:start;background:var(--white);border:1px solid var(--line);
+      border-radius:12px;padding:14px 12px;box-shadow:var(--shadow)}
+.rail .label{font:700 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--violet);
+      margin:2px 8px 8px}
+.rail a{display:flex;gap:10px;align-items:baseline;padding:7px 8px;border-radius:8px;color:var(--night);
+      text-decoration:none;font-size:14.5px}
+.rail a .n{font:15px var(--serif);color:var(--violet);min-width:22px}
+.rail a.on{background:var(--tint);color:var(--ink);font-weight:700}
+section.part{margin:0 0 38px;scroll-margin-top:16px}
+.part > .eyebrow{font:700 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--violet);
+      margin:0 0 4px}
+.part > h2{font:400 28px/1.2 var(--serif);color:var(--ink);margin:0 0 6px}
+.part > .lede{color:var(--muted);margin:0 0 16px;max-width:860px}
+
+/* cards and strips */
+.card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+      box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.grid2,.grid3{grid-template-columns:1fr}}
+.strip{border-radius:10px;padding:12px 16px;margin:12px 0;background:#F7F5FD;border:1px solid var(--line)}
+.strip b.tag{display:block;font:700 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;
+      color:var(--violet);margin-bottom:3px}
+.strip.client{background:linear-gradient(135deg,#2C1A86,#1A1440);color:var(--white);border:none}
+.strip.client b.tag{color:var(--lav)}
+.strip.bad{background:var(--rose-tint);border-color:#F3C5D3}
+.strip.bad b.tag{color:var(--rose)}
+.strip.good{background:var(--green-tint);border-color:#BFE3CF}
+.strip.good b.tag{color:var(--green)}
+.c2k-row{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
+.c2k-svg{max-width:100%;height:auto}
+.holder{overflow-x:auto}
+
+/* the guided walk */
+.walk .narration{min-height:150px}
+.walk .step{font:700 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)}
+.walk .narration h3{font:400 21px/1.25 var(--serif);color:var(--ink);margin:4px 0 8px}
+.meter{margin-top:14px}
+.meter .bar{position:relative;height:16px;border-radius:999px;background:var(--surface);border:1px solid var(--line);
+      overflow:hidden}
+.meter .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#7B62E8,#5B3FD6);
+      border-radius:999px;transition:width .35s ease}
+.meter .plan{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--rose)}
+.meter .legend{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:4px}
+.big{font:34px/1.1 var(--serif);color:var(--violet)}
+.verdict{font-weight:700;color:var(--ink)}
+
+/* buttons, toggles and inputs */
+button{font:inherit;cursor:pointer}
+.btn{padding:8px 16px;border-radius:999px;border:1px solid var(--violet);background:var(--white);color:var(--violet);
+     font-weight:700}
+.btn.primary{background:var(--violet);color:var(--white)}
+.btn[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.btn:focus-visible,.rail a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--lav);
+     outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.slider{margin:10px 0}
+.slider label{display:flex;justify-content:space-between;font-size:14.5px;color:var(--night)}
+.slider label b{color:var(--violet);font-family:var(--mono);font-weight:400}
+input[type=range]{width:100%;accent-color:var(--violet)}
+input[type=number],textarea{font:15px var(--mono);border:1px solid var(--lilac);border-radius:8px;padding:6px 9px;
+     color:var(--night);background:var(--white);width:100%}
+textarea{min-height:92px;resize:vertical}
+
+/* experiment cards */
+.exp{display:grid;gap:10px;align-content:start}
+.exp p{margin:0}
+.exp .result p{margin:0 0 8px}
+.exp .part-label{font:700 10.5px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)}
+.exp .result{border-top:1px dashed var(--lilac);padding-top:10px}
+.exp .result[hidden]{display:none}
+.exp .waiting{color:var(--muted);font-style:italic}
+.rule{font:italic 17px/1.4 var(--serif);color:var(--ink)}
+
+/* tables */
+table.t{border-collapse:collapse;width:100%;font-size:14.5px;margin:8px 0}
+table.t th{background:var(--ink);color:var(--white);text-align:left;padding:7px 10px;font-weight:700}
+table.t td{padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.t tr:nth-child(even) td{background:var(--surface)}
+table.t td.num,table.t th.num{text-align:right;font-variant-numeric:tabular-nums}
+
+/* popups */
+dialog{border:none;border-radius:14px;padding:0;max-width:min(860px,94vw);box-shadow:0 18px 50px rgba(26,15,92,.35)}
+dialog::backdrop{background:rgba(26,20,64,.45)}
+dialog .head{background:var(--ink);color:var(--white);padding:12px 18px;font:400 19px var(--serif);
+      display:flex;justify-content:space-between;align-items:center;gap:16px}
+dialog .body{padding:16px 18px}
+dialog .close{background:transparent;border:1px solid var(--lilac);color:var(--white);border-radius:999px;
+      padding:4px 12px}
+
+/* glossary */
+dl.gloss{display:grid;grid-template-columns:200px minmax(0,1fr);gap:8px 18px;margin:0}
+dl.gloss dt{font-weight:700;color:var(--ink)}
+dl.gloss dd{margin:0}
+dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
+@media (max-width:700px){dl.gloss{grid-template-columns:1fr}}
+.foot{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:10px;margin-top:30px}
+</style>
+<style>
+  .note{font-size:13.5px;color:var(--muted)}
+  .ok{color:var(--green);font-weight:700}
+  .warn{color:var(--rose);font-weight:700}
+  .formula{font:15px var(--mono);background:var(--surface);border:1px solid var(--line);border-radius:8px;
+           padding:8px 12px;margin-top:10px;color:var(--ink);overflow-x:auto}
+  .controls label{display:block;font-weight:700;color:var(--ink);margin:12px 0 4px}
+  .controls select{width:100%;font:15px var(--sans);padding:6px 8px;border:1px solid var(--lilac);border-radius:8px;
+           background:var(--white);color:var(--ink)}
+  table.nums{border-collapse:collapse;width:100%;font-size:14.5px;margin-top:8px}
+  table.nums td{padding:5px 8px;border-bottom:1px solid var(--line);color:var(--ink)}
+  table.nums td:last-child{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+  .reasons{margin:8px 0 0;padding-left:18px}
+  .reasons li{margin:4px 0}
+  .jumped{font-size:13px;color:var(--muted);margin:10px 8px 2px}
+</style>
+</head>
+<body>
+<header class="hero">
+  <span class="kicker">Week 1 &middot; Wednesday &middot; Companion</span>
+  <h1>Which Q1 figure is right?</h1>
+  <p class="quote">&ldquo;Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9. Until your numbers match ours,
+    Finance will not act on a drop measured from an ERP export.&rdquo;</p>
+  <p class="who">Anand Iyer, finance controller, Kalpa Retail</p>
+  <p class="promise">This page makes the day's decisions move. Walk the reconciliation one rung at a time, then set
+    each cleaning decision yourself and watch Q1, Q2, the bridge and the verdict to Anand change. The simulator's
+    numbers are totals computed in advance from the day's export for every combination of decisions; the page holds
+    no record from it. The four experiments run on invented records, and each says so.</p>
+</header>
+
+<div class="page">
+  <nav class="rail" aria-label="Sections">
+    <div class="label">On this page</div>
+    <a href="#walk" data-part="walk"><span class="n">01</span>The walk to the books</a>
+    <a href="#sim" data-part="sim"><span class="n">02</span>Make the decisions</a>
+    <a href="#experiments" data-part="experiments"><span class="n">03</span>Four experiments</a>
+    <a href="#copy" data-part="copy"><span class="n">04</span>Which copy stays</a>
+    <a href="#glossary" data-part="glossary"><span class="n">05</span>Glossary</a>
+    <p class="jumped" id="jumped">You are at the top of the page.</p>
+  </nav>
+
+  <main>
+    <section class="part" id="walk">
+      <p class="eyebrow">01 &middot; The guided walk</p>
+      <h2>From the dashboard's figure to the books, one rung at a time</h2>
+      <p class="lede">Each step lights the rung the reconciliation is on and redraws Q1 with the decisions made so far.
+        The totals come from the day's export.</p>
+      <div class="card"><div class="holder" id="walkMap"></div></div>
+      <div class="walk" style="margin-top:16px">
+        <div class="card narration" aria-live="polite">
+          <div class="step" id="walkStep">Step 0 of 5</div>
+          <h3 id="walkTitle">Two figures, one quarter</h3>
+          <p id="walkText">The dashboard reads Q1 from the ERP export and gets about Rs 2.1 crore. Finance's books say
+            Rs 1.9 crore. Both are honest arithmetic on something; the walk finds what.</p>
+          <div class="holder" id="walkChart"></div>
+          <div class="row">
+            <button class="btn primary" id="walkNext" type="button">Next</button>
+            <button class="btn" id="walkRestart" type="button">Restart the walk</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="part" id="sim">
+      <p class="eyebrow">02 &middot; The simulator</p>
+      <h2>Make the five decisions yourself</h2>
+      <p class="lede">Every setting below is a decision somebody makes in a cleaning pass. Change one and the numbers,
+        the bridge and the verdict to Anand redraw. The verdict is ready only when both reconciliations hold and
+        nothing real was removed.</p>
+      <div class="grid2">
+        <div class="card controls">
+          <label for="dAmt">An amount int() cannot read</label>
+          <select id="dAmt">
+            <option value="log">Log it with its line and reason</option>
+            <option value="zero">Turn it into 0 so the loop runs</option>
+          </select>
+          <label for="dKey">What makes two rows the same order</label>
+          <select id="dKey">
+            <option value="order_id">order_id, the ERP's key</option>
+            <option value="record">Every field except the file line</option>
+            <option value="line">Every field, file line included</option>
+          </select>
+          <label for="dPref">Which copy of a pair stays</label>
+          <select id="dPref">
+            <option value="validates">The copy whose fields validate</option>
+            <option value="first">The first copy in the file</option>
+          </select>
+          <label for="dBulk">The largest Q2 order, a Business account</label>
+          <select id="dBulk">
+            <option value="keep">Keep and flag it</option>
+            <option value="remove">Remove it as an outlier</option>
+          </select>
+          <label for="dStatus">The order with no status</label>
+          <select id="dStatus">
+            <option value="flag">Keep and flag it</option>
+            <option value="drop">Drop the order</option>
+            <option value="default">Default it to delivered</option>
+          </select>
+          <div class="row">
+            <button class="btn" id="presetHurried" type="button">Load a hurried pass</button>
+            <button class="btn primary" id="presetHonest" type="button">Load the honest pass</button>
+          </div>
+          <p class="note" id="presetNote">No preset loaded yet; the selectors start on the honest choices.</p>
+        </div>
+        <div class="card">
+          <p class="note" id="simChanged">The page opens on the honest choices; change one to see what it moves.</p>
+          <table class="nums" id="simTable"></table>
+          <div class="strip" id="simVerdict"><b class="tag">The verdict to Anand</b>Choose the decisions on the left.</div>
+          <ul class="reasons" id="simReasons"></ul>
+        </div>
+      </div>
+      <div class="grid2" style="margin-top:16px">
+        <div class="card"><div class="holder" id="simBridge"></div></div>
+        <div class="card"><div class="holder" id="simCols"></div></div>
+      </div>
+    </section>
+
+    <section class="part" id="experiments">
+      <p class="eyebrow">03 &middot; Experiment cards</p>
+      <h2>Four experiments, one change each</h2>
+      <p class="lede">Read the situation and the hypothesis, decide what you expect, then run. Every record in these
+        cards is invented to isolate one mechanism.</p>
+      <div class="grid2">
+        <article class="card exp" id="expA">
+          <div class="part-label">Experiment A &middot; invented records</div>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">A failure turned into zero</h3>
+          <p><b>Situation.</b> Five invented order amounts reach a profile, and one of them reads "n/a". The profile
+            either logs the failure or turns it into 0.</p>
+          <p><b>Hypothesis.</b> The coerced profile will report every amount convertible and a smaller total, and
+            nothing will say an order was lost.</p>
+          <p><b>Watch for.</b> The failures count and the lowest dot on the strip.</p>
+          <div class="holder" id="expAStrip"></div>
+          <div class="row">
+            <button class="btn" id="expARun" type="button" aria-pressed="false">Coerce the failure to 0</button>
+            <button class="btn" id="expASeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expAResult" hidden>
+            <p><b>What happened.</b> <span id="expAWhat"></span></p>
+            <p><b>Why it matters.</b> A zero is a claim that the order was worth nothing. On the day's file the same
+              move reports every amount convertible and a Q1 that reads as the dashboard's figure.</p>
+            <p class="rule">A failure is counted and logged, never turned into a number.</p>
+          </div>
+          <p class="waiting" id="expAWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp" id="expB">
+          <div class="part-label">Experiment B &middot; invented records</div>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">The line number in the key</h3>
+          <p><b>Situation.</b> Five invented rows, two of them exported twice, each carrying the file line it came
+            from for the rejects log.</p>
+          <p><b>Hypothesis.</b> A whole-record dedupe finds no duplicates while the line is in the record, and finds
+            both once the line is left out.</p>
+          <p><b>Watch for.</b> The duplicates count on each run.</p>
+          <div class="formula" id="expBWork">rows 5 &middot; distinct order ids 3 &middot; duplicates found: not run</div>
+          <div class="row">
+            <button class="btn" id="expBRun" type="button" aria-pressed="false">Dedupe with the line in the key</button>
+            <button class="btn" id="expBSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expBResult" hidden>
+            <p><b>What happened.</b> <span id="expBWhat"></span></p>
+            <p><b>Why it matters.</b> A dedupe that reports zero sends Finance hunting for revenue that was never
+              earned. The count of distinct keys against rows is what catches it.</p>
+            <p class="rule">Say what makes two rows one order before counting duplicates.</p>
+          </div>
+          <p class="waiting" id="expBWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp" id="expC">
+          <div class="part-label">Experiment C &middot; invented records</div>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">A fence around the tail</h3>
+          <p><b>Situation.</b> Eight invented Business orders, one of them twice the next. A fence at a multiple of
+            the median decides what counts as an outlier.</p>
+          <p><b>Hypothesis.</b> A tight fence removes real revenue and turns a small dip into a collapse.</p>
+          <p><b>Watch for.</b> The fence line and how many dots fall to its right.</p>
+          <div class="slider"><label for="expCFence">Fence, as a multiple of the median <b id="expCFenceV">3.0x</b></label>
+            <input type="range" id="expCFence" min="1.2" max="4" step="0.1" value="3"></div>
+          <div class="holder" id="expCStrip"></div>
+          <div class="row">
+            <button class="btn" id="expCRun" type="button" aria-pressed="false">Apply the fence</button>
+            <button class="btn" id="expCSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expCResult" hidden>
+            <p><b>What happened.</b> <span id="expCWhat"></span></p>
+            <p><b>Why it matters.</b> On the day's file, removing the largest Q2 order turns a 1.6 percent dip into a
+              17.1 percent fall, and Finance's books still hold that order.</p>
+            <p class="rule">Large is not wrong: check the record, keep it, and show it both ways.</p>
+          </div>
+          <p class="waiting" id="expCWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp" id="expD">
+          <div class="part-label">Experiment D &middot; invented records</div>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">Counts that reconcile</h3>
+          <p><b>Situation.</b> Four invented rows, one pair sharing an id: the first copy's amount is unreadable and
+            the second's is Rs 2,600. The books say Rs 9,600.</p>
+          <p><b>Hypothesis.</b> Keeping the first copy reconciles the rows and leaves the rupees Rs 2,600 short.</p>
+          <p><b>Watch for.</b> Both reconciliation lines, rows and rupees.</p>
+          <div class="formula" id="expDWork">books Rs 9,600 &middot; not run</div>
+          <div class="row">
+            <button class="btn" id="expDRun" type="button" aria-pressed="false">Keep the first copy</button>
+            <button class="btn" id="expDSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expDResult" hidden>
+            <p><b>What happened.</b> <span id="expDWhat"></span></p>
+            <p><b>Why it matters.</b> On the day's file the same pass reconciles 201 rows and lands Rs 1,790 short of
+              the books, which rounds to 1.9 crore and fails an analyst who ties out to the rupee.</p>
+            <p class="rule">Reconcile twice, in rows and in rupees, to the books.</p>
+          </div>
+          <p class="waiting" id="expDWait">What happened appears here after the run.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="part" id="copy">
+      <p class="eyebrow">04 &middot; The decision</p>
+      <h2>Which copy of a pair stays?</h2>
+      <p class="lede">Pick what the two copies look like, and the tree lights the rule.</p>
+      <div class="card"><div class="holder" id="copyTree"></div></div>
+      <div class="card" style="margin-top:16px">
+        <div class="row" style="margin-top:0">
+          <button class="btn" id="cSame" type="button" aria-pressed="false">The copies are identical</button>
+          <button class="btn" id="cBad" type="button" aria-pressed="false">One copy's amount will not convert</button>
+          <button class="btn" id="cDiff" type="button" aria-pressed="false">Both valid, a field disagrees</button>
+        </div>
+        <div class="strip" id="copyWhy"><b class="tag">Kavya's review</b>Pick what the pair looks like to see the
+          rule and its reason.</div>
+      </div>
+    </section>
+
+    <section class="part" id="glossary">
+      <p class="eyebrow">05 &middot; Glossary</p>
+      <h2>The day's words, and where each first mattered</h2>
+      <div class="card">
+        <dl class="gloss">
+          <dt>Profile</dt><dd>Three counts per field before any total: present, convertible to the type it needs, and
+            distinct.<span class="where">Half one, S7 to S10; notebook 01, section 2.</span></dd>
+          <dt>Convertible</dt><dd>A value the field's type accepts, such as an amount int() can read.<span
+            class="where">Half one, S9; notebook 01, section 2.</span></dd>
+          <dt>Rejects log</dt><dd>Every row set aside, with its file line, the field, the value and the reason.<span
+            class="where">Half one, S15; notebook 01, section 3.</span></dd>
+          <dt>Decisions log</dt><dd>Every cleaning act with its reason, so an analyst can follow the pass.<span
+            class="where">Half one, S5 and S29; notebook 03, section 3.</span></dd>
+          <dt>Identity rule</dt><dd>What makes two rows the same thing; for an order, the ERP's order_id.<span
+            class="where">Half one, S21; notebook 02, section 3.</span></dd>
+          <dt>Duplicate</dt><dd>A second row for the same thing under the identity rule, whether or not every field
+            matches.<span class="where">Half one, S19 to S23; notebook 02.</span></dd>
+          <dt>Drop, default, keep and flag</dt><dd>The three decisions for a missing or malformed value, each moving a
+            different number.<span class="where">Half one, S28 and S29; notebook 03, section 1.</span></dd>
+          <dt>Outlier</dt><dd>A value far from the rest, which is a question about a record and never a reason to delete
+            it.<span class="where">Half one, S30 and S31; notebook 03, section 2.</span></dd>
+          <dt>Reconciliation</dt><dd>Proof that the clean data is the same data: input equals clean plus rejected, in
+            rows and in rupees.<span class="where">Half one, S32 to S34; notebook 03, section 3.</span></dd>
+          <dt>Revenue bridge</dt><dd>A total walked to another total, one move per cause, each backed by the rows that
+            carry it.<span class="where">Half one, S35; notebook 03, section 3.</span></dd>
+          <dt>JSONDecodeError</dt><dd>The error json raises when a file stops being valid JSON, naming the line and
+            column.<span class="where">Half one, S16; notebook 01, section 4.</span></dd>
+        </dl>
+      </div>
+      <p class="foot">Week 1, Wednesday. The same decisions live in the workbook beside this page,
+        C2_W01_D03_decision_tool_STUDENT.xlsx, where each tab hides one formula defect to find first and the Export
+        tab assembles the note to Anand. Kalpa Retail and everyone in it are fictional. The simulator's totals were
+        computed in advance from the day's export; the experiment records are invented. The page stores nothing and
+        calls no network.</p>
+    </section>
+  </main>
+</div>
+
+<dialog id="seqDialog" aria-labelledby="seqTitle">
+  <div class="head"><span id="seqTitle">The sequence</span><button class="close" id="seqClose" type="button">Close</button></div>
+  <div class="body"><div class="holder" id="seqBody"></div><p class="note" id="seqNote"></p></div>
+</dialog>
+
+<script data-c2kit>
+/* c2kit.js: the diagram builders and page helpers every companion page inlines.
+ *
+ * The JavaScript twin of scripts/c2kit.py, so a tree on the slide, in the notebook and on the
+ * companion page is one drawing in one violet. Every builder takes data and returns an SVG
+ * element; nothing is drawn until a page calls a builder. No storage, no network, no globals
+ * beyond window.C2K. scripts/build_companion.py inlines this file into each page.
+ */
+(function () {
+  "use strict";
+  /* The SVG namespace, an identifier rather than a link, built in two parts so no checker reads it as one. */
+  var NS = "http:" + "//www.w3.org/2000/svg";
+  var C = {
+    ink: "#1A0F5C", night: "#1A1440", violet: "#5B3FD6", lav: "#D9A7FF", muted: "#6B6690",
+    lilac: "#CFC9EE", line: "#E4E1F1", tint: "#EEEAFB", surface: "#F4F2FA", white: "#FFFFFF",
+    rose: "#D63A6A", roseTint: "#FCEBF0", green: "#1F8A5B", greenTint: "#E8F5EE"
+  };
+  var FONT = "Calibri, Carlito, 'Segoe UI', system-ui, sans-serif";
+  var SERIF = "Georgia, 'DejaVu Serif', serif";
+  var KINDS = {
+    plain: [C.tint, C.violet, 1.2, C.ink, ""],
+    lit: [C.ink, C.ink, 1.2, C.white, ""],
+    known: [C.tint, C.violet, 2.6, C.ink, ""],
+    unknown: [C.white, "#B8B2D6", 1.3, C.muted, "5 4"],
+    bad: [C.roseTint, C.rose, 1.6, C.ink, ""],
+    good: [C.greenTint, C.green, 1.6, C.ink, ""]
+  };
+
+  function el(name, attrs, text) {
+    var node = document.createElementNS(NS, name);
+    Object.keys(attrs || {}).forEach(function (k) { node.setAttribute(k, attrs[k]); });
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function wrap(text, perLine) {
+    var words = String(text).split(/\s+/), lines = [], line = "";
+    words.forEach(function (w) {
+      if (line && (line + " " + w).length > perLine) { lines.push(line); line = w; }
+      else { line = line ? line + " " + w : w; }
+    });
+    if (line) lines.push(line);
+    return lines.length ? lines : [""];
+  }
+
+  function labelLines(text, w, size) {
+    var per = Math.max(8, Math.floor(w / (size * 0.56)));
+    var parts = String(text).split("\n"), out = [];
+    wrap(parts[0], per).forEach(function (l) { out.push([l, parts.length > 1]); });
+    parts.slice(1).forEach(function (p) { wrap(p, per).forEach(function (l) { out.push([l, false]); }); });
+    return out;
+  }
+
+  function boxHeight(text, w, size) {
+    size = size || 13;
+    return Math.max(40, labelLines(text, w - 16, size).length * (size + 4) + 16);
+  }
+
+  function root(width, height, title) {
+    var svg = el("svg", { xmlns: NS, width: width, height: height, viewBox: "0 0 " + width + " " + height,
+                          role: "img", "class": "c2k-svg" });
+    var defs = el("defs");
+    var marker = el("marker", { id: "c2kArrow", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 6,
+                                markerHeight: 6, orient: "auto-start-reverse" });
+    marker.appendChild(el("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: C.violet }));
+    defs.appendChild(marker);
+    svg.appendChild(defs);
+    svg.appendChild(el("rect", { width: width, height: height, rx: 10, fill: C.surface }));
+    if (title) {
+      svg.appendChild(el("text", { x: width / 2, y: height - 8, "text-anchor": "middle", fill: C.muted,
+                                   "font-family": FONT, "font-size": 12.5 }, title));
+    }
+    return svg;
+  }
+
+  function box(svg, x, y, w, h, text, kind, size) {
+    size = size || 13;
+    var k = KINDS[kind] || KINDS.plain;
+    var g = el("g", { "class": "c2k-node c2k-" + (kind || "plain") });
+    var rect = el("rect", { x: x, y: y, width: w, height: h, rx: 8, fill: k[0], stroke: k[1],
+                            "stroke-width": k[2] });
+    if (k[4]) rect.setAttribute("stroke-dasharray", k[4]);
+    g.appendChild(rect);
+    var lines = labelLines(text, w - 16, size);
+    var top = y + h / 2 - (lines.length - 1) * (size + 4) / 2 + size * 0.36;
+    lines.forEach(function (pair, i) {
+      g.appendChild(el("text", { x: x + w / 2, y: top + i * (size + 4), "text-anchor": "middle", fill: k[3],
+                                 "font-family": FONT, "font-size": size,
+                                 "font-weight": (pair[1] || (kind === "lit" && lines.length === 1)) ? 700 : 400 },
+                       pair[0]));
+    });
+    svg.appendChild(g);
+    return g;
+  }
+
+  function arrow(svg, x1, y1, x2, y2, label) {
+    svg.appendChild(el("line", { x1: x1, y1: y1, x2: x2, y2: y2, stroke: C.violet, "stroke-width": 1.5,
+                                 "marker-end": "url(#c2kArrow)" }));
+    if (label) {
+      svg.appendChild(el("text", { x: (x1 + x2) / 2, y: (y1 + y2) / 2 - 6, "text-anchor": "middle",
+                                   fill: C.muted, "font-family": FONT, "font-size": 11.5 }, label));
+    }
+  }
+
+  function curve(svg, x1, y1, x2, y2) {
+    var dx = Math.max(24, (x2 - x1) * 0.5);
+    svg.appendChild(el("path", { d: "M " + x1 + " " + y1 + " C " + (x1 + dx) + " " + y1 + ", " + (x2 - dx) + " " +
+                                 y2 + ", " + x2 + " " + y2, fill: "none", stroke: C.violet, "stroke-width": 1.5,
+                                 "marker-end": "url(#c2kArrow)" }));
+  }
+
+  /* Steps left to right, with one lit; kinds sets each step's look by name. */
+  function flow(steps, lit, opts) {
+    opts = opts || {};
+    var w = opts.width || 150, gap = 28;
+    var h = Math.max.apply(null, steps.map(function (s) { return boxHeight(s, w); }));
+    var svg = root(steps.length * w + (steps.length - 1) * gap + 28, h + 28 + (opts.title ? 22 : 0), opts.title);
+    steps.forEach(function (s, i) {
+      var x = 14 + i * (w + gap);
+      var kind = (opts.kinds && opts.kinds[i]) || (i === lit ? "lit" : "plain");
+      box(svg, x, 14, w, h, s, kind);
+      if (i) arrow(svg, x - gap, 14 + h / 2, x - 2, 14 + h / 2, opts.edges ? opts.edges[i - 1] : "");
+    });
+    return svg;
+  }
+
+  /* The same, top to bottom; edges labels the arrow into each step after the first. */
+  function vflow(steps, lit, opts) {
+    opts = opts || {};
+    var w = opts.width || 300, gap = opts.edges ? 30 : 22, y = 12, parts = [];
+    steps.forEach(function (s) { parts.push(boxHeight(s, w)); });
+    var total = parts.reduce(function (a, b) { return a + b; }, 0) + gap * (steps.length - 1) + 28;
+    var svg = root(w + 28 + (opts.edges ? 150 : 0), total + (opts.title ? 22 : 0), opts.title);
+    steps.forEach(function (s, i) {
+      if (i) {
+        arrow(svg, 14 + w / 2, y - gap, 14 + w / 2, y - 2);
+        if (opts.edges && opts.edges[i - 1]) {
+          svg.appendChild(el("text", { x: 14 + w / 2 + 10, y: y - gap / 2 + 4, fill: C.muted, "font-family": FONT,
+                                       "font-size": 12 }, opts.edges[i - 1]));
+        }
+      }
+      var kind = (opts.kinds && opts.kinds[i]) || (i === lit ? "lit" : "plain");
+      box(svg, 14, y, w, parts[i], s, kind);
+      y += parts[i] + gap;
+    });
+    return svg;
+  }
+
+  function ladder(items, lit, opts) {
+    return vflow(items.map(function (t, i) { return (i + 1) + ". " + t; }), lit, opts);
+  }
+
+  /* A decision tree, top down. node: {label, kind, branches: [[edgeLabel, child], ...]}. */
+  function tree(node, opts) {
+    opts = opts || {};
+    var levels = [];
+    (function walk(n, d) {
+      if (!levels[d]) levels[d] = [];
+      var entry = { n: n, kids: [] };
+      levels[d].push(entry);
+      (n.branches || []).forEach(function (b) { entry.kids.push([b[0], walk(b[1], d + 1)]); });
+      return entry;
+    })(node, 0);
+    var w = opts.width || 196, gx = 22, gy = 44;
+    var lh = levels.map(function (l) {
+      return Math.max.apply(null, l.map(function (e) { return boxHeight(e.n.label, w); }));
+    });
+    var width = Math.max.apply(null, levels.map(function (l) { return l.length; })) * (w + gx) + 28;
+    var height = lh.reduce(function (a, b) { return a + b; }, 0) + gy * (levels.length - 1) + 24 + (opts.title ? 22 : 0);
+    var svg = root(width, height, opts.title), y = 12;
+    levels.forEach(function (level, d) {
+      var span = level.length * (w + gx) - gx, x0 = (width - span) / 2;
+      level.forEach(function (e, i) {
+        e.x = x0 + i * (w + gx); e.y = y; e.h = lh[d];
+        box(svg, e.x, e.y, w, e.h, e.n.label, e.n.kind || "plain");
+      });
+      y += lh[d] + gy;
+    });
+    levels.forEach(function (level) {
+      level.forEach(function (e) {
+        e.kids.forEach(function (k) {
+          arrow(svg, e.x + w / 2, e.y + e.h, k[1].x + w / 2, k[1].y - 2, k[0]);
+        });
+      });
+    });
+    return svg;
+  }
+
+  /* A driver tree, left to right: a total on the left, what multiplies into it on the right.
+   * node: {label, note, kind, children: [...]}. */
+  function driverTree(node, opts) {
+    opts = opts || {};
+    var w = opts.width || 156, gx = 38, gy = 12, rows = 0, placed = [];
+    function text(n) { return n.note ? n.label + "\n" + n.note : n.label; }
+    var all = [];
+    (function walk(n) { all.push(n); (n.children || []).forEach(walk); })(node);
+    var h = Math.max.apply(null, all.map(function (n) { return boxHeight(text(n), w); }));
+    (function place(n, d) {
+      var y;
+      if (!n.children || !n.children.length) { y = rows * (h + gy); rows += 1; }
+      else {
+        var ys = n.children.map(function (k) { return place(k, d + 1); });
+        y = (ys[0] + ys[ys.length - 1]) / 2;
+      }
+      placed.push([n, d, y]);
+      return y;
+    })(node, 0);
+    var depth = Math.max.apply(null, placed.map(function (p) { return p[1]; }));
+    var svg = root((depth + 1) * w + depth * gx + 28, rows * (h + gy) - gy + 24 + (opts.title ? 24 : 0), opts.title);
+    var pos = new Map();
+    placed.forEach(function (p) { pos.set(p[0], [14 + p[1] * (w + gx), 12 + p[2]]); });
+    placed.forEach(function (p) {
+      var a = pos.get(p[0]);
+      (p[0].children || []).forEach(function (k) {
+        var b = pos.get(k);
+        curve(svg, a[0] + w, a[1] + h / 2, b[0] - 2, b[1] + h / 2);
+      });
+    });
+    placed.forEach(function (p) {
+      var a = pos.get(p[0]);
+      var g = box(svg, a[0], a[1], w, h, text(p[0]), p[0].kind || "plain");
+      if (p[0].id) g.setAttribute("data-node", p[0].id);
+    });
+    return svg;
+  }
+
+  /* Every value as a dot on one axis, with named marker lines. markers: [[label, value, kind]]. */
+  function strip(values, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || rupees, width = opts.width || 760;
+    var lo = opts.lo === undefined ? 0 : opts.lo;
+    var hi = opts.hi === undefined ? niceCeil(Math.max.apply(null, values) * 1.04) : opts.hi;
+    var left = 40, right = width - 40, axis = 150, span = (hi - lo) || 1;
+    function px(v) { return left + (right - left) * (v - lo) / span; }
+    var svg = root(width, axis + 34 + (opts.title ? 22 : 0), opts.title);
+    svg.appendChild(el("line", { x1: left, y1: axis, x2: right, y2: axis, stroke: C.muted }));
+    for (var i = 0; i < 5; i++) {
+      var v = lo + span * i / 4, x = px(v);
+      svg.appendChild(el("line", { x1: x, y1: axis, x2: x, y2: axis + 5, stroke: C.muted }));
+      svg.appendChild(el("text", { x: x, y: axis + 20, "text-anchor": "middle", fill: C.muted, "font-family": FONT,
+                                   "font-size": 12 }, fmt(v)));
+    }
+    var colour = { bad: C.rose, good: C.green, plain: C.violet };
+    var lines = opts.markers || [];
+    lines.forEach(function (m, n) {
+      var x = px(m[1]), c = colour[m[2]] || C.violet;
+      /* Two lines close together would print their labels over each other, so the lower one of a
+         close pair reads leftward from its line. */
+      var left = n > 0 && Math.abs(x - px(lines[n - 1][1])) < 150 && x <= px(lines[n - 1][1]);
+      svg.appendChild(el("line", { x1: x, y1: 34 + 16 * (n % 2), x2: x, y2: axis, stroke: c, "stroke-width": 1.6,
+                                   "stroke-dasharray": "5 4", "class": "c2k-marker" }));
+      svg.appendChild(el("text", { x: left ? x - 5 : x + 5, y: 30 + 16 * (n % 2), fill: c, "font-family": FONT,
+                                   "font-size": 12.5, "font-weight": 700, "text-anchor": left ? "end" : "start" },
+                         m[0] + " " + fmt(m[1])));
+    });
+    var bins = {};
+    values.forEach(function (v, i) {
+      var x = px(v), key = Math.round(x / 11), level = bins[key] || 0;
+      bins[key] = level + 1;
+      svg.appendChild(el("circle", { cx: x, cy: axis - 9 - level * 11, r: 5,
+                                     fill: (opts.lit || []).indexOf(i) >= 0 ? C.ink : C.violet,
+                                     "fill-opacity": 0.8, stroke: C.white, "stroke-width": 1 }));
+    });
+    return svg;
+  }
+
+  /* The next round number at or above x: 1, 2, 2.5 or 5 times a power of ten, so axis ticks read cleanly. */
+  function niceCeil(x) {
+    if (x <= 0) return 1;
+    var p = Math.pow(10, Math.floor(Math.log10(x))), steps = [1, 2, 2.5, 5, 10];
+    for (var i = 0; i < steps.length; i++) if (steps[i] * p >= x) return steps[i] * p;
+    return 10 * p;
+  }
+
+  /* The chart twins of c2kit.py's bridge, line and columns: round steps for the gridlines, a
+   * finer round top so the tallest value sits just under it, and one label style throughout. */
+  var ROUND = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8];
+  function chartCeil(x) {
+    if (x <= 0) return 1;
+    var p = Math.pow(10, Math.floor(Math.log10(x))), steps = ROUND.concat([10]);
+    for (var i = 0; i < steps.length; i++) if (steps[i] * p >= x * 0.999999) return steps[i] * p;
+    return 10 * p;
+  }
+  function tickCount(span) {
+    var tries = [5, 4, 6, 3];
+    for (var i = 0; i < tries.length; i++) {
+      var step = span / tries[i];
+      if (step <= 0) break;
+      var m = Math.round(step / Math.pow(10, Math.floor(Math.log10(step))) * 1e6) / 1e6;
+      if (ROUND.indexOf(m) >= 0) return tries[i];
+    }
+    return 4;
+  }
+  function gridlines(svg, lo, hi, fmt, left, right, py) {
+    var n = tickCount(hi - lo);
+    for (var k = 0; k <= n; k++) {
+      var v = lo + (hi - lo) * k / n, y = py(v);
+      svg.appendChild(el("line", { x1: left, y1: y, x2: right, y2: y, stroke: C.line }));
+      svg.appendChild(el("text", { x: left - 8, y: y + 4, "text-anchor": "end", fill: C.muted, "font-family": FONT,
+                                   "font-size": 11.5 }, fmt(v)));
+    }
+  }
+  function under(svg, x, y, text, per, bold) {
+    wrap(text, per || 13).slice(0, 3).forEach(function (line, i) {
+      svg.appendChild(el("text", { x: x, y: y + i * 15, "text-anchor": "middle", fill: C.ink, "font-family": FONT,
+                                   "font-size": 12, "font-weight": bold ? 700 : 400 }, line));
+    });
+  }
+  function legend(svg, items, x, y) {
+    items.forEach(function (it) {
+      if (it[2]) svg.appendChild(el("line", { x1: x, y1: y - 4, x2: x + 18, y2: y - 4, stroke: it[1], "stroke-width": 2,
+                                              "stroke-dasharray": "5 3" }));
+      else svg.appendChild(el("rect", { x: x, y: y - 10, width: 14, height: 12, rx: 3, fill: it[1] }));
+      svg.appendChild(el("text", { x: x + 22, y: y, fill: C.ink, "font-family": FONT, "font-size": 12.5 }, it[0]));
+      x += 34 + it[0].length * 7;
+    });
+  }
+
+  /* A bridge, or waterfall: start is [label, value], moves are [[label, change], ...]; each move
+   * floats from the running total, green when it adds and rose when it takes away. opts.lo raises
+   * the axis floor when the moves are small against the totals; opts.lit outlines moves by index. */
+  function bridge(start, moves, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || rupees, lit = opts.lit || [];
+    var run = start[1], levels = [0, start[1]], cols = [[start[0], start[1], null, 0, start[1]]];
+    moves.forEach(function (m, i) { cols.push([m[0], m[1], i, run, run + m[1]]); run += m[1]; levels.push(run); });
+    cols.push([opts.endLabel || "Where it lands", run, null, 0, run]);
+    var floor = opts.lo === undefined ? Math.min(0, Math.min.apply(null, levels)) : opts.lo;
+    var hi = floor + chartCeil((Math.max.apply(null, levels) - floor) * 1.06), lo = floor;
+    var colW = 92, gap = 22, left = 86, top = 30, plotH = 230;
+    var width = opts.width || left + cols.length * (colW + gap) + 6;
+    function py(v) { return top + plotH * (hi - v) / ((hi - lo) || 1); }
+    var svg = root(width, top + plotH + 20 + 45 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, lo, hi, fmt, left - 6, width - 8, py);
+    cols.forEach(function (c, k) {
+      var x = left + k * (colW + gap), y1 = py(Math.max(c[3], c[4])), y2 = py(Math.max(lo, Math.min(c[3], c[4])));
+      var isMove = c[2] !== null, fill = !isMove ? C.violet : (c[1] >= 0 ? C.green : C.rose);
+      var rect = { x: x, y: y1, width: colW, height: Math.max(2, y2 - y1), rx: 4, fill: fill, "fill-opacity": 0.88 };
+      if (isMove && lit.indexOf(c[2]) >= 0) { rect.stroke = C.ink; rect["stroke-width"] = 2.5; }
+      svg.appendChild(el("rect", rect));
+      svg.appendChild(el("text", { x: x + colW / 2, y: y1 - 7, "text-anchor": "middle", fill: C.ink, "font-family": FONT,
+                                   "font-size": 12.5, "font-weight": 700 }, (isMove && c[1] >= 0 ? "+" : "") + fmt(c[1])));
+      if (k < cols.length - 1) {
+        var level = py(c[4]);
+        svg.appendChild(el("line", { x1: x + colW, y1: level, x2: x + colW + gap, y2: level, stroke: C.muted,
+                                     "stroke-dasharray": "3 3" }));
+      }
+      under(svg, x + colW / 2, top + plotH + 20, c[0], 13, !isMove);
+    });
+    return svg;
+  }
+
+  /* Values over an ordered axis: series are [[name, values, kind], ...]; kind "plan" is a dashed
+   * reference line, "bad" and "good" colour a line by meaning. The last value prints at its end. */
+  function line(labels, series, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || function (v) { return Math.round(v).toLocaleString("en-IN"); };
+    var width = opts.width || 760, lo = opts.lo || 0, all = [];
+    series.forEach(function (s) { s[1].forEach(function (v) { if (v !== null && v !== undefined) all.push(v); }); });
+    var hi = lo + chartCeil((Math.max.apply(null, all) - lo) * 1.06);
+    var left = 86, right = width - 110, top = 44, plotH = 220, step = (right - left) / Math.max(1, labels.length - 1);
+    function py(v) { return top + plotH * (hi - v) / ((hi - lo) || 1); }
+    var svg = root(width, top + plotH + 20 + 30 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, lo, hi, fmt, left, right, py);
+    labels.forEach(function (l, i) { under(svg, left + i * step, top + plotH + 20, String(l), 10, false); });
+    var colours = { plan: C.muted, bad: C.rose, good: C.green, lit: C.ink }, keys = [];
+    series.forEach(function (s) {
+      var colour = colours[s[2]] || C.violet, dashed = s[2] === "plan", pts = [];
+      keys.push([s[0], colour, dashed]);
+      s[1].forEach(function (v, i) { if (v !== null && v !== undefined) pts.push([left + i * step, py(v), v]); });
+      var d = pts.map(function (p, j) { return (j ? "L " : "M ") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+      var path = { d: d, fill: "none", stroke: colour, "stroke-width": 2.4 };
+      if (dashed) path["stroke-dasharray"] = "6 4";
+      svg.appendChild(el("path", path));
+      if (!dashed) pts.forEach(function (p) { svg.appendChild(el("circle", { cx: p[0], cy: p[1], r: 3.6, fill: colour })); });
+      if (pts.length) {
+        var last = pts[pts.length - 1];
+        svg.appendChild(el("text", { x: last[0] + 8, y: last[1] + 4, fill: colour, "font-family": FONT, "font-size": 12.5,
+                                     "font-weight": 700 }, fmt(last[2])));
+      }
+    });
+    legend(svg, keys, left, 22);
+    return svg;
+  }
+
+  /* Vertical bars grouped by category: series are [[name, values], ...] aligned with categories,
+   * drawn light to dark in the order given, so Q1 against Q2 reads as before and after. */
+  function columns(categories, series, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || function (v) { return Math.round(v).toLocaleString("en-IN"); }, lit = opts.lit || [];
+    var shades = [C.lilac, C.violet, C.ink, C.green], all = [];
+    series.forEach(function (s) { all = all.concat(s[1]); });
+    var hi = chartCeil(Math.max.apply(null, all) * 1.1);
+    var barW = 40, inner = 6, groupGap = 34, left = 86, top = 44, plotH = 220;
+    var groupW = series.length * barW + (series.length - 1) * inner;
+    var width = opts.width || left + categories.length * (groupW + groupGap) + 10;
+    function py(v) { return top + plotH * (hi - v) / hi; }
+    var svg = root(width, top + plotH + 20 + 45 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, 0, hi, fmt, left - 6, width - 8, py);
+    categories.forEach(function (cat, c) {
+      var gx = left + c * (groupW + groupGap);
+      series.forEach(function (s, k) {
+        var v = s[1][c], x = gx + k * (barW + inner);
+        svg.appendChild(el("rect", { x: x, y: py(v), width: barW, height: Math.max(1, top + plotH - py(v)), rx: 3,
+                                     fill: shades[k % shades.length] }));
+        svg.appendChild(el("text", { x: x + barW / 2, y: py(v) - 6, "text-anchor": "middle", fill: C.ink,
+                                     "font-family": FONT, "font-size": 11, "font-weight": 700 }, fmt(v)));
+      });
+      under(svg, gx + groupW / 2, top + plotH + 20, String(cat), Math.max(10, Math.floor(groupW / 7)),
+            lit.indexOf(c) >= 0);
+    });
+    legend(svg, series.map(function (s, k) { return [s[0], shades[k % shades.length], false]; }), left, 22);
+    return svg;
+  }
+
+  /* Messages across named lanes, drawn from the run that happened. messages: [[from, to, text]]. */
+  function sequence(lanes, messages, opts) {
+    opts = opts || {};
+    var lw = opts.laneWidth || 180, top = 46, step = 44;
+    var width = lanes.length * lw + 28, height = top + Math.max(1, messages.length) * step + 34 + (opts.title ? 16 : 0);
+    var svg = root(width, height, opts.title);
+    lanes.forEach(function (lane, i) {
+      var x = 14 + i * lw;
+      box(svg, x + 10, 10, lw - 20, 30, lane, "lit", 12);
+      svg.appendChild(el("line", { x1: x + lw / 2, y1: 42, x2: x + lw / 2, y2: height - 28, stroke: C.line }));
+    });
+    messages.forEach(function (m, n) {
+      var y = top + n * step + 20;
+      var x1 = 14 + lanes.indexOf(m[0]) * lw + lw / 2, x2 = 14 + lanes.indexOf(m[1]) * lw + lw / 2;
+      if (x1 === x2) {
+        svg.appendChild(el("text", { x: x1 + 8, y: y + 4, fill: C.night, "font-family": FONT, "font-size": 12 }, m[2]));
+      } else {
+        arrow(svg, x1, y, x2 + (x2 > x1 ? -4 : 4), y, m[2]);
+      }
+    });
+    return svg;
+  }
+
+  function sideBySide() {
+    var div = document.createElement("div");
+    div.className = "c2k-row";
+    Array.prototype.forEach.call(arguments, function (svg) { div.appendChild(svg); });
+    return div;
+  }
+
+  /* Rs with Indian digit grouping, the way every Kalpa number is read aloud. */
+  function rupees(n) {
+    var sign = n < 0 ? "-" : "", s = String(Math.round(Math.abs(n)));
+    if (s.length <= 3) return sign + "Rs " + s;
+    var head = s.slice(0, -3), tail = s.slice(-3), parts = [];
+    while (head.length > 2) { parts.unshift(head.slice(-2)); head = head.slice(0, -2); }
+    if (head) parts.unshift(head);
+    return sign + "Rs " + parts.join(",") + "," + tail;
+  }
+
+  /* Put a diagram into a holder, replacing whatever was drawn there before. */
+  function draw(holder, svg) {
+    var target = typeof holder === "string" ? document.getElementById(holder) : holder;
+    target.textContent = "";
+    target.appendChild(svg);
+    return svg;
+  }
+
+  window.C2K = { colours: C, flow: flow, vflow: vflow, ladder: ladder, tree: tree, driverTree: driverTree,
+                 strip: strip, bridge: bridge, line: line, columns: columns, sequence: sequence,
+                 sideBySide: sideBySide, rupees: rupees, draw: draw };
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var K = window.C2K;
+  var R = K.rupees;
+  function $(id) { return document.getElementById(id); }
+  var COMBOS = {"log|line|first|keep|flag":{"kept":200,"aside":1,"q1":20998210,"q2":18703710,"drop":10.9,"gap":1998210,"zeros":0,"logged":1,"deliv":58,"rp":-46.0,"exp":20998210,"rowsok":true},"log|line|first|keep|drop":{"kept":199,"aside":2,"q1":20998210,"q2":18701860,"drop":10.9,"gap":1998210,"zeros":0,"logged":1,"deliv":58,"rp":-46.0,"exp":20998210,"rowsok":true},"log|line|first|keep|default":{"kept":200,"aside":1,"q1":20998210,"q2":18703710,"drop":10.9,"gap":1998210,"zeros":0,"logged":1,"deliv":59,"rp":-46.0,"exp":20998210,"rowsok":true},"log|line|first|remove|flag":{"kept":199,"aside":2,"q1":20998210,"q2":15758250,"drop":25.0,"gap":1998210,"zeros":0,"logged":1,"deliv":57,"rp":-46.0,"exp":20998210,"rowsok":true},"log|line|first|remove|drop":{"kept":198,"aside":3,"q1":20998210,"q2":15756400,"drop":25.0,"gap":1998210,"zeros":0,"logged":1,"deliv":57,"rp":-46.0,"exp":20998210,"rowsok":true},"log|line|first|remove|default":{"kept":199,"aside":2,"q1":20998210,"q2":15758250,"drop":25.0,"gap":1998210,"zeros":0,"logged":1,"deliv":58,"rp":-46.0,"exp":20998210,"rowsok":true},"log|line|validates|keep|flag":{"kept":200,"aside":1,"q1":20998210,"q2":18703710,"drop":10.9,"gap":1998210,"zeros":0,"logged":1,"deliv":58,"rp":-46.0,"exp":20998210,"rowsok":true},"log|line|validates|keep|drop":{"kept":199,"aside":2,"q1":20998210,"q2":18701860,"drop":10.9,"gap":1998210,"zeros":0,"logged":1,"deliv":58,"rp":-46.0,"exp":20998210,"rowsok":true},"log|line|validates|keep|default":{"kept":200,"aside":1,"q1":20998210,"q2":18703710,"drop":10.9,"gap":1998210,"zeros":0,"logged":1,"deliv":59,"rp":-46.0,"exp":20998210,"rowsok":true},"log|line|validates|remove|flag":{"kept":199,"aside":2,"q1":20998210,"q2":15758250,"drop":25.0,"gap":1998210,"zeros":0,"logged":1,"deliv":57,"rp":-46.0,"exp":20998210,"rowsok":true},"log|line|validates|remove|drop":{"kept":198,"aside":3,"q1":20998210,"q2":15756400,"drop":25.0,"gap":1998210,"zeros":0,"logged":1,"deliv":57,"rp":-46.0,"exp":20998210,"rowsok":true},"log|line|validates|remove|default":{"kept":199,"aside":2,"q1":20998210,"q2":15758250,"drop":25.0,"gap":1998210,"zeros":0,"logged":1,"deliv":58,"rp":-46.0,"exp":20998210,"rowsok":true},"log|record|first|keep|flag":{"kept":187,"aside":14,"q1":19000000,"q2":18703710,"drop":1.6,"gap":0,"zeros":0,"logged":1,"deliv":58,"rp":-32.5,"exp":20998210,"rowsok":true},"log|record|first|keep|drop":{"kept":186,"aside":15,"q1":19000000,"q2":18701860,"drop":1.6,"gap":0,"zeros":0,"logged":1,"deliv":58,"rp":-32.5,"exp":20998210,"rowsok":true},"log|record|first|keep|default":{"kept":187,"aside":14,"q1":19000000,"q2":18703710,"drop":1.6,"gap":0,"zeros":0,"logged":1,"deliv":59,"rp":-32.5,"exp":20998210,"rowsok":true},"log|record|first|remove|flag":{"kept":186,"aside":15,"q1":19000000,"q2":15758250,"drop":17.1,"gap":0,"zeros":0,"logged":1,"deliv":57,"rp":-32.5,"exp":20998210,"rowsok":true},"log|record|first|remove|drop":{"kept":185,"aside":16,"q1":19000000,"q2":15756400,"drop":17.1,"gap":0,"zeros":0,"logged":1,"deliv":57,"rp":-32.5,"exp":20998210,"rowsok":true},"log|record|first|remove|default":{"kept":186,"aside":15,"q1":19000000,"q2":15758250,"drop":17.1,"gap":0,"zeros":0,"logged":1,"deliv":58,"rp":-32.5,"exp":20998210,"rowsok":true},"log|record|validates|keep|flag":{"kept":187,"aside":14,"q1":19000000,"q2":18703710,"drop":1.6,"gap":0,"zeros":0,"logged":1,"deliv":58,"rp":-32.5,"exp":20998210,"rowsok":true},"log|record|validates|keep|drop":{"kept":186,"aside":15,"q1":19000000,"q2":18701860,"drop":1.6,"gap":0,"zeros":0,"logged":1,"deliv":58,"rp":-32.5,"exp":20998210,"rowsok":true},"log|record|validates|keep|default":{"kept":187,"aside":14,"q1":19000000,"q2":18703710,"drop":1.6,"gap":0,"zeros":0,"logged":1,"deliv":59,"rp":-32.5,"exp":20998210,"rowsok":true},"log|record|validates|remove|flag":{"kept":186,"aside":15,"q1":19000000,"q2":15758250,"drop":17.1,"gap":0,"zeros":0,"logged":1,"deliv":57,"rp":-32.5,"exp":20998210,"rowsok":true},"log|record|validates|remove|drop":{"kept":185,"aside":16,"q1":19000000,"q2":15756400,"drop":17.1,"gap":0,"zeros":0,"logged":1,"deliv":57,"rp":-32.5,"exp":20998210,"rowsok":true},"log|record|validates|remove|default":{"kept":186,"aside":15,"q1":19000000,"q2":15758250,"drop":17.1,"gap":0,"zeros":0,"logged":1,"deliv":58,"rp":-32.5,"exp":20998210,"rowsok":true},"log|order_id|first|keep|flag":{"kept":185,"aside":16,"q1":18998210,"q2":18700000,"drop":1.6,"gap":-1790,"zeros":0,"logged":1,"deliv":57,"rp":-33.3,"exp":20998210,"rowsok":true},"log|order_id|first|keep|drop":{"kept":184,"aside":17,"q1":18998210,"q2":18698150,"drop":1.6,"gap":-1790,"zeros":0,"logged":1,"deliv":57,"rp":-33.3,"exp":20998210,"rowsok":true},"log|order_id|first|keep|default":{"kept":185,"aside":16,"q1":18998210,"q2":18700000,"drop":1.6,"gap":-1790,"zeros":0,"logged":1,"deliv":58,"rp":-33.3,"exp":20998210,"rowsok":true},"log|order_id|first|remove|flag":{"kept":184,"aside":17,"q1":18998210,"q2":15754540,"drop":17.1,"gap":-1790,"zeros":0,"logged":1,"deliv":56,"rp":-33.3,"exp":20998210,"rowsok":true},"log|order_id|first|remove|drop":{"kept":183,"aside":18,"q1":18998210,"q2":15752690,"drop":17.1,"gap":-1790,"zeros":0,"logged":1,"deliv":56,"rp":-33.3,"exp":20998210,"rowsok":true},"log|order_id|first|remove|default":{"kept":184,"aside":17,"q1":18998210,"q2":15754540,"drop":17.1,"gap":-1790,"zeros":0,"logged":1,"deliv":57,"rp":-33.3,"exp":20998210,"rowsok":true},"log|order_id|validates|keep|flag":{"kept":186,"aside":15,"q1":19000000,"q2":18700000,"drop":1.6,"gap":0,"zeros":0,"logged":0,"deliv":57,"rp":-35.0,"exp":20998210,"rowsok":true},"log|order_id|validates|keep|drop":{"kept":185,"aside":16,"q1":19000000,"q2":18698150,"drop":1.6,"gap":0,"zeros":0,"logged":0,"deliv":57,"rp":-35.0,"exp":20998210,"rowsok":true},"log|order_id|validates|keep|default":{"kept":186,"aside":15,"q1":19000000,"q2":18700000,"drop":1.6,"gap":0,"zeros":0,"logged":0,"deliv":58,"rp":-35.0,"exp":20998210,"rowsok":true},"log|order_id|validates|remove|flag":{"kept":185,"aside":16,"q1":19000000,"q2":15754540,"drop":17.1,"gap":0,"zeros":0,"logged":0,"deliv":56,"rp":-35.0,"exp":20998210,"rowsok":true},"log|order_id|validates|remove|drop":{"kept":184,"aside":17,"q1":19000000,"q2":15752690,"drop":17.1,"gap":0,"zeros":0,"logged":0,"deliv":56,"rp":-35.0,"exp":20998210,"rowsok":true},"log|order_id|validates|remove|default":{"kept":185,"aside":16,"q1":19000000,"q2":15754540,"drop":17.1,"gap":0,"zeros":0,"logged":0,"deliv":57,"rp":-35.0,"exp":20998210,"rowsok":true},"zero|line|first|keep|flag":{"kept":201,"aside":0,"q1":20998210,"q2":18703710,"drop":10.9,"gap":1998210,"zeros":1,"logged":0,"deliv":58,"rp":-47.1,"exp":20998210,"rowsok":true},"zero|line|first|keep|drop":{"kept":200,"aside":1,"q1":20998210,"q2":18701860,"drop":10.9,"gap":1998210,"zeros":1,"logged":0,"deliv":58,"rp":-47.1,"exp":20998210,"rowsok":true},"zero|line|first|keep|default":{"kept":201,"aside":0,"q1":20998210,"q2":18703710,"drop":10.9,"gap":1998210,"zeros":1,"logged":0,"deliv":59,"rp":-47.1,"exp":20998210,"rowsok":true},"zero|line|first|remove|flag":{"kept":200,"aside":1,"q1":20998210,"q2":15758250,"drop":25.0,"gap":1998210,"zeros":1,"logged":0,"deliv":57,"rp":-47.1,"exp":20998210,"rowsok":true},"zero|line|first|remove|drop":{"kept":199,"aside":2,"q1":20998210,"q2":15756400,"drop":25.0,"gap":1998210,"zeros":1,"logged":0,"deliv":57,"rp":-47.1,"exp":20998210,"rowsok":true},"zero|line|first|remove|default":{"kept":200,"aside":1,"q1":20998210,"q2":15758250,"drop":25.0,"gap":1998210,"zeros":1,"logged":0,"deliv":58,"rp":-47.1,"exp":20998210,"rowsok":true},"zero|line|validates|keep|flag":{"kept":201,"aside":0,"q1":20998210,"q2":18703710,"drop":10.9,"gap":1998210,"zeros":1,"logged":0,"deliv":58,"rp":-47.1,"exp":20998210,"rowsok":true},"zero|line|validates|keep|drop":{"kept":200,"aside":1,"q1":20998210,"q2":18701860,"drop":10.9,"gap":1998210,"zeros":1,"logged":0,"deliv":58,"rp":-47.1,"exp":20998210,"rowsok":true},"zero|line|validates|keep|default":{"kept":201,"aside":0,"q1":20998210,"q2":18703710,"drop":10.9,"gap":1998210,"zeros":1,"logged":0,"deliv":59,"rp":-47.1,"exp":20998210,"rowsok":true},"zero|line|validates|remove|flag":{"kept":200,"aside":1,"q1":20998210,"q2":15758250,"drop":25.0,"gap":1998210,"zeros":1,"logged":0,"deliv":57,"rp":-47.1,"exp":20998210,"rowsok":true},"zero|line|validates|remove|drop":{"kept":199,"aside":2,"q1":20998210,"q2":15756400,"drop":25.0,"gap":1998210,"zeros":1,"logged":0,"deliv":57,"rp":-47.1,"exp":20998210,"rowsok":true},"zero|line|validates|remove|default":{"kept":200,"aside":1,"q1":20998210,"q2":15758250,"drop":25.0,"gap":1998210,"zeros":1,"logged":0,"deliv":58,"rp":-47.1,"exp":20998210,"rowsok":true},"zero|record|first|keep|flag":{"kept":188,"aside":13,"q1":19000000,"q2":18703710,"drop":1.6,"gap":0,"zeros":1,"logged":0,"deliv":58,"rp":-34.1,"exp":20998210,"rowsok":true},"zero|record|first|keep|drop":{"kept":187,"aside":14,"q1":19000000,"q2":18701860,"drop":1.6,"gap":0,"zeros":1,"logged":0,"deliv":58,"rp":-34.1,"exp":20998210,"rowsok":true},"zero|record|first|keep|default":{"kept":188,"aside":13,"q1":19000000,"q2":18703710,"drop":1.6,"gap":0,"zeros":1,"logged":0,"deliv":59,"rp":-34.1,"exp":20998210,"rowsok":true},"zero|record|first|remove|flag":{"kept":187,"aside":14,"q1":19000000,"q2":15758250,"drop":17.1,"gap":0,"zeros":1,"logged":0,"deliv":57,"rp":-34.1,"exp":20998210,"rowsok":true},"zero|record|first|remove|drop":{"kept":186,"aside":15,"q1":19000000,"q2":15756400,"drop":17.1,"gap":0,"zeros":1,"logged":0,"deliv":57,"rp":-34.1,"exp":20998210,"rowsok":true},"zero|record|first|remove|default":{"kept":187,"aside":14,"q1":19000000,"q2":15758250,"drop":17.1,"gap":0,"zeros":1,"logged":0,"deliv":58,"rp":-34.1,"exp":20998210,"rowsok":true},"zero|record|validates|keep|flag":{"kept":188,"aside":13,"q1":19000000,"q2":18703710,"drop":1.6,"gap":0,"zeros":1,"logged":0,"deliv":58,"rp":-34.1,"exp":20998210,"rowsok":true},"zero|record|validates|keep|drop":{"kept":187,"aside":14,"q1":19000000,"q2":18701860,"drop":1.6,"gap":0,"zeros":1,"logged":0,"deliv":58,"rp":-34.1,"exp":20998210,"rowsok":true},"zero|record|validates|keep|default":{"kept":188,"aside":13,"q1":19000000,"q2":18703710,"drop":1.6,"gap":0,"zeros":1,"logged":0,"deliv":59,"rp":-34.1,"exp":20998210,"rowsok":true},"zero|record|validates|remove|flag":{"kept":187,"aside":14,"q1":19000000,"q2":15758250,"drop":17.1,"gap":0,"zeros":1,"logged":0,"deliv":57,"rp":-34.1,"exp":20998210,"rowsok":true},"zero|record|validates|remove|drop":{"kept":186,"aside":15,"q1":19000000,"q2":15756400,"drop":17.1,"gap":0,"zeros":1,"logged":0,"deliv":57,"rp":-34.1,"exp":20998210,"rowsok":true},"zero|record|validates|remove|default":{"kept":187,"aside":14,"q1":19000000,"q2":15758250,"drop":17.1,"gap":0,"zeros":1,"logged":0,"deliv":58,"rp":-34.1,"exp":20998210,"rowsok":true},"zero|order_id|first|keep|flag":{"kept":186,"aside":15,"q1":18998210,"q2":18700000,"drop":1.6,"gap":-1790,"zeros":1,"logged":0,"deliv":57,"rp":-35.0,"exp":20998210,"rowsok":true},"zero|order_id|first|keep|drop":{"kept":185,"aside":16,"q1":18998210,"q2":18698150,"drop":1.6,"gap":-1790,"zeros":1,"logged":0,"deliv":57,"rp":-35.0,"exp":20998210,"rowsok":true},"zero|order_id|first|keep|default":{"kept":186,"aside":15,"q1":18998210,"q2":18700000,"drop":1.6,"gap":-1790,"zeros":1,"logged":0,"deliv":58,"rp":-35.0,"exp":20998210,"rowsok":true},"zero|order_id|first|remove|flag":{"kept":185,"aside":16,"q1":18998210,"q2":15754540,"drop":17.1,"gap":-1790,"zeros":1,"logged":0,"deliv":56,"rp":-35.0,"exp":20998210,"rowsok":true},"zero|order_id|first|remove|drop":{"kept":184,"aside":17,"q1":18998210,"q2":15752690,"drop":17.1,"gap":-1790,"zeros":1,"logged":0,"deliv":56,"rp":-35.0,"exp":20998210,"rowsok":true},"zero|order_id|first|remove|default":{"kept":185,"aside":16,"q1":18998210,"q2":15754540,"drop":17.1,"gap":-1790,"zeros":1,"logged":0,"deliv":57,"rp":-35.0,"exp":20998210,"rowsok":true},"zero|order_id|validates|keep|flag":{"kept":186,"aside":15,"q1":18998210,"q2":18700000,"drop":1.6,"gap":-1790,"zeros":1,"logged":0,"deliv":57,"rp":-35.0,"exp":20998210,"rowsok":true},"zero|order_id|validates|keep|drop":{"kept":185,"aside":16,"q1":18998210,"q2":18698150,"drop":1.6,"gap":-1790,"zeros":1,"logged":0,"deliv":57,"rp":-35.0,"exp":20998210,"rowsok":true},"zero|order_id|validates|keep|default":{"kept":186,"aside":15,"q1":18998210,"q2":18700000,"drop":1.6,"gap":-1790,"zeros":1,"logged":0,"deliv":58,"rp":-35.0,"exp":20998210,"rowsok":true},"zero|order_id|validates|remove|flag":{"kept":185,"aside":16,"q1":18998210,"q2":15754540,"drop":17.1,"gap":-1790,"zeros":1,"logged":0,"deliv":56,"rp":-35.0,"exp":20998210,"rowsok":true},"zero|order_id|validates|remove|drop":{"kept":184,"aside":17,"q1":18998210,"q2":15752690,"drop":17.1,"gap":-1790,"zeros":1,"logged":0,"deliv":56,"rp":-35.0,"exp":20998210,"rowsok":true},"zero|order_id|validates|remove|default":{"kept":185,"aside":16,"q1":18998210,"q2":15754540,"drop":17.1,"gap":-1790,"zeros":1,"logged":0,"deliv":57,"rp":-35.0,"exp":20998210,"rowsok":true}};
+  var BOOKS = 19000000;
+
+  /* ---------------------------------------------------------------- the rail */
+  var rail = document.querySelectorAll(".rail a");
+  Array.prototype.forEach.call(rail, function (a) {
+    a.addEventListener("click", function () {
+      Array.prototype.forEach.call(rail, function (b) { b.classList.toggle("on", b === a); });
+      $("jumped").textContent = "You jumped to " + a.textContent.replace(/^\d+/, "").trim() + ".";
+    });
+  });
+
+  function lakh(v) { return (v / 1e5).toFixed(2) + " L"; }
+  function outcome(d) { return COMBOS[[d.amt, d.key, d.pref, d.bulk, d.status].join("|")]; }
+  function bridgeFor(o, holder, title) {
+    K.draw(holder, K.bridge(["Q1 as exported", o.exp], [["rows set aside or changed", o.q1 - o.exp]],
+      { endLabel: "Q1 after the pass", lo: 18800000, lit: [0], width: 420, title: title }));
+  }
+
+  /* ---------------------------------------------------------------- the walk */
+  var RUNGS = ["the profile", "the copies", "the identity rule", "missing and malformed", "the bridge"];
+  var WALK = [
+    { t: "Two figures, one quarter", lit: null, d: { amt: "zero", key: "line", pref: "first", bulk: "keep", status: "flag" },
+      x: "The dashboard reads Q1 from the ERP export and gets about Rs 2.1 crore. Finance's books say Rs 1.9 crore. Both are honest arithmetic on something; the walk finds what." },
+    { t: "Profile, and log the failure", lit: 0, d: { amt: "log", key: "line", pref: "first", bulk: "keep", status: "flag" },
+      x: "The profile counts 201 rows and 186 distinct order ids, and one amount that will not convert. Logging it instead of zeroing it leaves Q1 at Rs 2,09,98,210 and removes the order worth Rs 0." },
+    { t: "A dedupe that finds nothing", lit: 1, d: { amt: "log", key: "line", pref: "first", bulk: "keep", status: "flag" },
+      x: "With the file line in every record, a whole-record dedupe reports zero duplicates and Q1 does not move. The 15-row gap between rows and order ids says the key is wrong." },
+    { t: "The identity rule, the copy that validates", lit: 2, d: { amt: "log", key: "order_id", pref: "validates", bulk: "keep", status: "flag" },
+      x: "One row per order_id, keeping the copy whose fields validate. Fifteen rows are set aside and Q1 lands on Rs 1,90,00,000, the books." },
+    { t: "Keep what is real, flag what is unknown", lit: 3, d: { amt: "log", key: "order_id", pref: "validates", bulk: "keep", status: "flag" },
+      x: "The order with no status is kept and flagged, and the largest Q2 order, a Business account with orders in both quarters, is kept and shown both ways. Q2 stays at Rs 1,87,00,000." },
+    { t: "Reconciled in rows and rupees", lit: 4, d: { amt: "log", key: "order_id", pref: "validates", bulk: "keep", status: "flag" },
+      x: "201 rows in equals 186 kept plus 15 set aside, and Q1 as exported less the set-aside rupees equals the books to the rupee. On clean data the drop is 1.6 percent and Retail-Plus frequency falls 35.0 percent." }
+  ];
+  var walkAt = 0;
+  function showWalk() {
+    var w = WALK[walkAt], o = outcome(w.d);
+    K.draw("walkMap", K.flow(RUNGS, w.lit === null ? -1 : w.lit, { title: "The five rungs; the lit one is this step's" }));
+    bridgeFor(o, "walkChart", "Q1 in rupees, from the export to this step's pass");
+    $("walkStep").textContent = "Step " + walkAt + " of " + (WALK.length - 1);
+    $("walkTitle").textContent = w.t;
+    $("walkText").textContent = w.x;
+    $("walkNext").textContent = walkAt === WALK.length - 1 ? "Back to the start" : "Next";
+  }
+  $("walkNext").addEventListener("click", function () { walkAt = (walkAt + 1) % WALK.length; showWalk(); });
+  $("walkRestart").addEventListener("click", function () {
+    walkAt = 0; showWalk(); $("walkStep").textContent = "Step 0 of " + (WALK.length - 1) + ", restarted";
+  });
+  showWalk();
+
+  /* ---------------------------------------------------------------- the simulator */
+  var IDS = { amt: "dAmt", key: "dKey", pref: "dPref", bulk: "dBulk", status: "dStatus" };
+  function read() { var d = {}; Object.keys(IDS).forEach(function (k) { d[k] = $(IDS[k]).value; }); return d; }
+  var lastOutcome = null;
+  function sim() {
+    var d = read(), o = outcome(d);
+    lastOutcome = o;
+    var expected = 186 - (d.bulk === "remove" ? 1 : 0) - (d.status === "drop" ? 1 : 0);
+    var rows = [["Rows kept", o.kept], ["Rows set aside", o.aside], ["Kept plus set aside", (o.kept + o.aside) + " of 201"],
+      ["Orders at Rs 0", o.zeros], ["Q1", R(o.q1)], ["Q1 against the books", (o.gap >= 0 ? "+" : "") + R(o.gap)],
+      ["Q2", R(o.q2)], ["Drop, Q1 to Q2", o.drop.toFixed(1) + "%"], ["Q2 delivered orders", o.deliv],
+      ["Retail-Plus orders per customer", o.rp.toFixed(1) + "%"]];
+    var t = $("simTable"); t.textContent = "";
+    rows.forEach(function (r) { var tr = t.insertRow(); tr.insertCell().textContent = r[0]; tr.insertCell().textContent = r[1]; });
+    var reasons = [];
+    if (o.zeros) reasons.push("An order sits at Rs 0: a failure became a number, and Finance booked that order at a value.");
+    if (o.kept > expected) reasons.push("The file still counts " + (o.kept - expected) + " order" + (o.kept - expected > 1 ? "s" : "") + " twice: the key is not the identity rule.");
+    if (o.gap !== 0) reasons.push("Q1 misses the books by " + R(Math.abs(o.gap)) + ", so the rupee reconciliation fails even where the rows tie out.");
+    if (d.bulk === "remove") reasons.push("A real Business order was removed, so the drop reads " + o.drop.toFixed(1) + " percent instead of 1.6.");
+    if (d.status === "drop") reasons.push("A booked order was dropped for a missing status, which moves revenue on a guess.");
+    if (d.status === "default") reasons.push("The missing status was defaulted to delivered, a fact nobody recorded.");
+    var ready = !reasons.length;
+    var v = $("simVerdict");
+    v.className = "strip " + (ready ? "good" : "bad");
+    v.innerHTML = '<b class="tag">The verdict to Anand</b>' + (ready
+      ? "Ready: 201 rows equal 186 kept plus 15 set aside, Q1 equals the books to the rupee, and nothing real was removed."
+      : "Not ready: " + reasons.length + " reason" + (reasons.length > 1 ? "s" : "") + " below.");
+    var ul = $("simReasons"); ul.textContent = "";
+    reasons.forEach(function (x) { var li = document.createElement("li"); li.textContent = x; ul.appendChild(li); });
+    bridgeFor(o, "simBridge", "Q1 from the export to this pass; the books are Rs 1,90,00,000");
+    K.draw("simCols", K.columns(["Q1", "Q2"], [["this pass, Rs lakh", [o.q1 / 1e5, o.q2 / 1e5]], ["clean, Rs lakh", [190, 187]]],
+      { fmt: function (v) { return v.toFixed(1); }, title: "Quarter revenue: this pass against the clean pass" }));
+  }
+  var LABELS = { amt: "an amount int() cannot read", key: "what makes two rows one order", pref: "which copy stays",
+                 bulk: "the largest Q2 order", status: "the order with no status" };
+  Object.keys(IDS).forEach(function (k) {
+    $(IDS[k]).addEventListener("change", function () {
+      var s = $(IDS[k]);
+      var before = lastOutcome;
+      sim();
+      $("simChanged").textContent = "You changed " + LABELS[k] + " to: " + s.options[s.selectedIndex].text.toLowerCase() +
+        ". The totals " + (JSON.stringify(before) === JSON.stringify(outcome(read())) ? "are what they were" : "moved") + " for this combination.";
+    });
+  });
+  var presets = 0;
+  function preset(d, name) {
+    Object.keys(IDS).forEach(function (k) { $(IDS[k]).value = d[k]; });
+    presets += 1;
+    $("presetNote").textContent = "Loaded " + name + " (preset " + presets + " this visit).";
+    sim();
+  }
+  $("presetHurried").addEventListener("click", function () {
+    preset({ amt: "zero", key: "line", pref: "first", bulk: "remove", status: "drop" }, "a hurried pass");
+  });
+  $("presetHonest").addEventListener("click", function () {
+    preset({ amt: "log", key: "order_id", pref: "validates", bulk: "keep", status: "flag" }, "the honest pass");
+  });
+  sim();
+
+  /* ---------------------------------------------------------------- the sequence popup */
+  function openSeq(title, lanes, messages, note) {
+    $("seqTitle").textContent = title;
+    K.draw("seqBody", K.sequence(lanes, messages, { laneWidth: 200 }));
+    $("seqNote").textContent = note;
+    var dlg = $("seqDialog");
+    if (typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open", "");
+  }
+  $("seqClose").addEventListener("click", function () { $("seqDialog").close(); });
+  function reveal(key, text) { $(key + "What").textContent = text; $(key + "Result").hidden = false; $(key + "Wait").hidden = true; }
+
+  /* ---------------------------------------------------------------- experiment A */
+  var A_TEXT = ["2400", "1300", "n/a", "3100", "1800"];
+  var aOn = false;
+  function drawA() {
+    var vals = [], fails = 0;
+    A_TEXT.forEach(function (t) { var n = parseInt(t, 10); if (isNaN(n)) { fails += 1; if (aOn) vals.push(0); } else vals.push(n); });
+    var total = vals.reduce(function (s, x) { return s + x; }, 0);
+    K.draw("expAStrip", K.strip(vals, { lo: 0, hi: 4000, width: 520, lit: aOn ? [2] : [],
+      title: aOn ? "Coerced: " + vals.length + " amounts, total " + R(total) + ", failures reported 0"
+                 : "Logged: " + vals.length + " amounts, total " + R(total) + ", failures logged " + fails }));
+    return total;
+  }
+  drawA();
+  $("expARun").addEventListener("click", function () {
+    aOn = !aOn;
+    this.setAttribute("aria-pressed", String(aOn));
+    this.textContent = aOn ? "Log the failure instead" : "Coerce the failure to 0";
+    drawA();
+    reveal("expA", aOn
+      ? "The coerced profile reports five of five amounts convertible, a total of Rs 8,600, and a dot at Rs 0 that no order was ever worth."
+      : "The logged profile reports four amounts, a total of Rs 8,600, and one failure with its reason; nothing sits at Rs 0.");
+  });
+  $("expASeq").addEventListener("click", function () {
+    openSeq("Experiment A, as a sequence", ["the file", "convert", "the log"], [
+      ["the file", "convert", "five amounts as text"], ["convert", "convert", "four numbers"],
+      ["convert", "the log", "\"n/a\": does not convert"], ["the log", "the log", "line, field, value, reason"]],
+      "Invented records. Coercing puts a 0 where the log line would be.");
+  });
+
+  /* ---------------------------------------------------------------- experiment B */
+  var bRuns = 0;
+  $("expBRun").addEventListener("click", function () {
+    bRuns += 1;
+    var withLine = bRuns % 2 === 1;
+    this.setAttribute("aria-pressed", String(withLine));
+    this.textContent = withLine ? "Dedupe with the line left out" : "Dedupe with the line in the key";
+    $("expBWork").textContent = "rows 5 · distinct order ids 3 · duplicates found: " + (withLine ? "0, line in the key" : "2, line left out");
+    reveal("expB", withLine
+      ? "With the file line in every record, no two rows match, so the dedupe finds 0 duplicates in a file where 5 rows hold 3 orders."
+      : "With the line left out, the two exported-twice rows match their originals and the dedupe finds 2 duplicates, which equals rows less distinct ids.");
+  });
+  $("expBSeq").addEventListener("click", function () {
+    openSeq("Experiment B, as a sequence", ["rows", "the key", "the count"], [
+      ["rows", "the key", "INV-01 line 2, INV-01 line 4"], ["the key", "the count", "line in: two keys"],
+      ["the key", "the count", "order_id: one key"], ["the count", "the count", "rows 5, ids 3, gap 2"]],
+      "Invented records. The gap between rows and distinct ids is the check.");
+  });
+
+  /* ---------------------------------------------------------------- experiment C */
+  var C_ORDERS = [310000, 420000, 450000, 520000, 610000, 700000, 880000, 1800000];
+  var cOn = false;
+  function median(a) { var s = a.slice().sort(function (x, y) { return x - y; }), n = s.length;
+    return n % 2 ? s[(n - 1) / 2] : (s[n / 2 - 1] + s[n / 2]) / 2; }
+  function drawC() {
+    var f = Number($("expCFence").value), m = median(C_ORDERS), cut = f * m;
+    $("expCFenceV").textContent = f.toFixed(1) + "x";
+    var lit = []; C_ORDERS.forEach(function (v, i) { if (cOn && v > cut) lit.push(i); });
+    K.draw("expCStrip", K.strip(C_ORDERS, { lo: 0, hi: 2000000, width: 520, lit: lit,
+      markers: [["median", m, "good"], ["fence", cut, "bad"]], title: "Eight invented Business orders" }));
+    var kept = C_ORDERS.filter(function (v) { return !(cOn && v > cut); });
+    var total = C_ORDERS.reduce(function (s, x) { return s + x; }, 0), after = kept.reduce(function (s, x) { return s + x; }, 0);
+    return [C_ORDERS.length - kept.length, total, after, cut];
+  }
+  $("expCFence").addEventListener("input", function () { var r = drawC(); if (cOn) reveal("expC", sayC(r)); });
+  function sayC(r) {
+    return r[0] ? "A fence at " + R(r[3]) + " removes " + r[0] + " order" + (r[0] > 1 ? "s" : "") + " and takes the total from " + R(r[1]) + " to " + R(r[2]) + ", a fall of " + (100 * (1 - r[2] / r[1])).toFixed(1) + " percent that no customer caused."
+                : "At this fence no order falls outside, and the total stays at " + R(r[1]) + ".";
+  }
+  drawC();
+  $("expCRun").addEventListener("click", function () {
+    cOn = !cOn;
+    this.setAttribute("aria-pressed", String(cOn));
+    this.textContent = cOn ? "Remove the fence" : "Apply the fence";
+    reveal("expC", cOn ? sayC(drawC()) : "Without the fence every order counts and the total is " + R(drawC()[1]) + ".");
+  });
+  $("expCSeq").addEventListener("click", function () {
+    openSeq("Experiment C, as a sequence", ["the orders", "the fence", "the total"], [
+      ["the orders", "the fence", "median Rs 5,65,000"], ["the fence", "the fence", "cut at a multiple"],
+      ["the fence", "the total", "orders outside removed"], ["the total", "the total", "a fall nobody caused"]],
+      "Invented records. The check is on the record, not its size.");
+  });
+
+  /* ---------------------------------------------------------------- experiment D */
+  var dRuns = 0;
+  $("expDRun").addEventListener("click", function () {
+    dRuns += 1;
+    var first = dRuns % 2 === 1;
+    this.setAttribute("aria-pressed", String(first));
+    this.textContent = first ? "Keep the copy that validates" : "Keep the first copy";
+    $("expDWork").textContent = first
+      ? "rows 4 = 2 kept + 2 set aside: holds · rupees Rs 7,000 against books Rs 9,600: short by Rs 2,600"
+      : "rows 4 = 3 kept + 1 set aside: holds · rupees Rs 9,600 against books Rs 9,600: holds";
+    reveal("expD", first
+      ? "Keeping the first copy keeps the unreadable one, which is then rejected; the rows still reconcile, and the rupees land Rs 2,600 short of the books."
+      : "Keeping the copy that validates sets aside the unreadable one; the rows reconcile and the rupees land on the books.");
+  });
+  $("expDSeq").addEventListener("click", function () {
+    openSeq("Experiment D, as a sequence", ["the pair", "the rule", "the books"], [
+      ["the pair", "the rule", "copy 1 unreadable, copy 2 Rs 2,600"], ["the rule", "the rule", "keep first, or keep valid"],
+      ["the rule", "the books", "rows: always reconcile"], ["the rule", "the books", "rupees: only the valid copy lands"]],
+      "Invented records. Only the rupee reconciliation tells the two apart.");
+  });
+
+  /* ---------------------------------------------------------------- the copy tree */
+  var WHY = {
+    cSame: ["same", "Identical copies carry the same value; keep the first, set the other aside with the reason \"second copy of the order\"."],
+    cBad: ["bad", "Keep the copy whose amount converts. Keeping the first would keep the one that cannot be summed and lose the order's value."],
+    cDiff: ["diff", "No rule inside the file can say which value is true. Keep the first extract's row, log the disagreement, and ask the ERP team."]
+  };
+  function drawCopy(lit) {
+    function n(id, label) { return ["", { label: label, kind: lit === id ? "lit" : "plain" }]; }
+    K.draw("copyTree", K.tree({ label: "rows sharing an order_id", kind: "known", branches: [
+      n("same", "identical\nkeep the first"), n("bad", "one amount unreadable\nkeep the copy that validates"),
+      n("diff", "valid, a field disagrees\nkeep the first, log, ask")] }, { title: "Which copy stays" }));
+  }
+  drawCopy(null);
+  Object.keys(WHY).forEach(function (id) {
+    $(id).addEventListener("click", function () {
+      Object.keys(WHY).forEach(function (o) { $(o).setAttribute("aria-pressed", String(o === id)); });
+      drawCopy(WHY[id][0]);
+      $("copyWhy").innerHTML = '<b class="tag">Kavya\'s review</b>' + WHY[id][1];
+    });
+  });
+})();
+</script>
+</body>
+</html>
