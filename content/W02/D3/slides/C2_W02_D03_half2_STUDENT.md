@@ -208,23 +208,23 @@ revealing anything.
 
 ---
 
-## S9. Answer: 51, with RANK, and the line says why
-*Two Retail-Plus members tie at fiftieth, so RANK keeps both and ships fifty-one.*
+## S9. Answer: RANK's count, and the line says why
+*The room's four counts came from four rules, and the one to ship is the count RANK returned.*
 
-| Rule | Retail-Plus ships | What it did at the line |
+| Rule | The room's count | What the rule did at the line, in the room's files |
 |---|---|---|
-| RANK at most 50 | 51 | Both tied members kept, which is what the head asked |
-| Whole ties only | 49 | Both tied members dropped, the forty-nine he forbade |
-| ROW_NUMBER at most 50 | 50 | One tied member dropped by the database's choice |
-| DENSE_RANK at most 50 | 52 | A tie higher up saved a number, so a member past the line ships |
+| RANK at most 50 | 51 | Every member sharing the last position kept, which is what the head asked |
+| Whole ties only | 49 | The members sharing the last position all dropped, the forty-nine he forbade |
+| ROW_NUMBER at most 50 | 50 | One member at the last position dropped by the database's choice |
+| DENSE_RANK at most 50 | 52 | A shared position higher up saved a number, so a member past the line ships |
 
-**Kavya's review.** Fifty-one is correct, and it is only defensible with its reason beside it: "51 Retail-Plus members, because two tie at fiftieth."
+**Kavya's review.** The RANK count is correct, and it is only defensible with its reason beside it, read from your own file: count the members at the last position and say it in the same line as the count.
 
 ```notes
 LIVE, 2 minutes. RANK is the rule the head of Retail-Plus asked for. ROW_NUMBER's fifty looks
-right and is the dangerous one: which of the tied pair ships depends on the tiebreaker, so a member
-can be on Monday's list and off Tuesday's with the same spend. Interview [F] follow-up: your top
-fifty came back with 51 rows; it is no bug, and the stakeholder is told the tie and the count.
+right and is the dangerous one: which member at the line ships depends on the tiebreaker, so a
+member can be on Monday's list and off Tuesday's with the same spend. Interview [F] follow-up: your
+top ten came back with eleven rows; it is no bug, and the stakeholder is told the tie and the count.
 ```
 
 ---
@@ -242,7 +242,7 @@ flowchart TB
     class K known
 ```
 
-**The rule.** A month with no order is no reading, so it breaks the run. Nine listed members spent less in August than July and less again in September, three each in Business, Retail-Core and Retail-Plus.
+**The rule.** A month with no order is no reading, so it breaks the run. Nine listed members spent less in August than July and less again in September.
 
 ```notes
 LIVE, 1 minute. C-0216 is the example: May, July and September, and LAG called July last month.
@@ -278,7 +278,7 @@ Transition: the sentence that goes to Marketing and Meera.
 ## S12. The sentence to Marketing and Meera
 *Three sentences, each carrying its number and what it means for the decision.*
 
-> "We ranked with RANK inside each segment, so tied members share a place and nobody at the line is dropped by a coin toss: the list carries 35 Business and 20 Student members, which is every Q2 buyer there, 50 Retail-Core and 51 Retail-Plus, because two Retail-Plus members tie at fiftieth. Nine listed members spent less in August than July and less again in September; a member with no August order is not flagged, because a month without an order is no reading. Q2 closed on plan, Rs 9,84,00,000 against Rs 9,83,99,990, and the Rs 1.58 crore lead at mid-quarter came from one week in July, so the weekly run rate has been below plan since 10 August."
+> "We ranked with RANK inside each segment, so tied members share a place and nobody at the line is dropped by a coin toss: the list carries 35 Business and 20 Student members, which is every Q2 buyer there, 50 Retail-Core and 51 Retail-Plus, where our RANK file shows two members sharing the fiftieth place. Nine listed members spent less in August than July and less again in September; a member with no August order is not flagged, because a month without an order is no reading. Q2 closed on plan, Rs 9,84,00,000 against Rs 9,83,99,990, and the Rs 1.58 crore lead at mid-quarter came from one week in July, so the weekly run rate has been below plan since 10 August."
 
 ```notes
 LIVE, 1 minute. Read it aloud once, slowly, and ask each learner to compare it with their own Part 5:

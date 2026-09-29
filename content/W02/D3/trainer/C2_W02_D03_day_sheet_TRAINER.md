@@ -162,6 +162,10 @@ the list is Rs 3,53,430 under ROW_NUMBER and Rs 3,56,780 under RANK.
 | DENSE_RANK | 52 rows ship. | 52 rows ship. | 5 rows ship. |
 | Whole ties only | 50 rows ship. | 49 rows ship. | 3 rows ship. |
 
+The key to Round 2's empty Retail-Plus cell in `notebooks/C2_W02_D03_02_ties_STUDENT.ipynb` is the
+sentence the learner writes: 51 Retail-Plus members, because two tie at fiftieth, C-0242 and C-0185
+on Rs 3,350. Read it out only after the room has written its own.
+
 The six invented members of Round 2 (Rs 7,500, 7,500, 6,000, 5,200, 5,200 and 4,100) give
 ROW_NUMBER 1 to 6, RANK 1, 1, 3, 4, 4, 6 and DENSE_RANK 1, 1, 2, 3, 3, 4.
 
@@ -217,7 +221,7 @@ quarter is on track by the total and off track by the run rate.
 | [F] | How would you find customers whose spend fell two months in a row? | Build one row per customer per month, take LAG 1 and LAG 2 of spend partitioned by customer and ordered by month, check the lagged months really are the previous two calendar months, and flag where each month is below the one before. |
 | [F] | Why can a window function not sit inside WHERE, and what do you do instead? | WHERE filters rows before the window is computed, so the position does not exist yet; you compute it in a CTE or subquery and filter on it outside. |
 | [D] | The business says 'ties rank the same'; which function, and how many rows might the top-N report ship? | RANK, and the report can ship more than N rows when a tie straddles the line, so it states the count and why; DENSE_RANK can ship even more, and ROW_NUMBER hides the tie. |
-| [F] | Your top-fifty list came back with 51 rows. What do you tell the stakeholder, and is it a bug? | It is the tie rule working, because two members tie at fiftieth and the rule the stakeholder chose keeps both, so I say the count and the reason in the same line and offer the alternative with its cost. |
+| [F] | Your top-ten list came back with eleven rows. What do you tell the stakeholder, and is it a bug? | It is the tie rule working, because two members tie at tenth and the rule the stakeholder chose keeps both, so I say the count and the reason in the same line and offer the alternative with its cost. |
 | [F] | LAG returned a value for a customer's very first month. What went wrong, and how do you check for it in a result of ten thousand rows? | The window has no PARTITION BY customer, so LAG crossed into the previous customer; carry lag(customer_id) beside the value and count rows where it differs from the current customer, which should be zero. |
 | [D] | A member says he was on holiday in August and should not be flagged. How does your definition treat a month with no orders, and why not fill it with zero? | A month with no order is no reading, so it breaks the run and he is not flagged; filling it with zero would turn every holiday into a fall to zero and flag people for resting. |
 | [F] | What makes a running total deterministic, and how would you notice one that was not? | An ORDER BY that is unique within the window, such as the date plus the order id; you notice the ambiguous one because rows sharing a date all show the same cumulative figure or the steps change between runs. |
@@ -242,30 +246,33 @@ Marketing's asks, climbing to a problem that combines the day's rounds.
 
 The sample is schema `takehome`, loaded from `data/C2_W02_D03_takehome_STUDENT.sql` and built by
 `internal/C2_W02_D03_takehome_data_INTERNAL.py` under seed 20261014. It has the warehouse's shape
-(340 customers, 1,000 orders, 13 plan weeks) and new numbers: Q2 is again Rs 9,84,00,000 on 462
-orders, with 34 Business, 84 Retail-Plus, 95 Retail-Core and 20 Student buyers. The brief asks for
-the top twenty Retail-Core members, and the self-check quotes counts without names.
+(340 customers, the orders and 13 plan weeks) and none of its headline numbers: 992 orders, Q1 at
+Rs 9,61,20,000, and Q2 at Rs 9,23,60,000 on 454 orders, with 33 Business, 86 Retail-Plus, 98
+Retail-Core and 20 Student buyers. The plan line is Rs 72,40,000 a week, Rs 9,41,20,000 in all, so
+Q2 closes Rs 17,60,000 behind plan; 26 orders worth Rs 57,30,440 fall before the plan's first week.
+The brief asks for the top twenty Retail-Core members, and the self-check quotes counts without
+names.
 
 | Its plant | Where it is | What a learner should reach |
 |---|---|---|
-| A three-way Q2 tie across Retail-Core positions 19 to 21 | C-0014, C-0021 and C-0023, all on Rs 5,480; 22nd is C-0100 on Rs 5,200 | A top twenty ships 20 under ROW_NUMBER, 21 under RANK, 22 under DENSE_RANK and 18 under whole ties only. ROW_NUMBER with customer_id as the tiebreaker drops C-0023. |
-| The generator's falling ladder | C-0154 (July Rs 4,200, August Rs 3,100, September Rs 1,900), C-0165 (Rs 3,800, Rs 2,600, Rs 1,400) and C-0170 (Rs 4,400, Rs 2,900, Rs 1,600), all Retail-Plus | Across the whole book the flag counts 23 without a partition (5 compared with another member), 18 with PARTITION BY customer_id (11 across a gap) and 7 with the calendar check, and the ladder's three are among the seven. |
-| The generator's own tie at fiftieth in Retail-Plus, which the builder did not add and does not name | C-0203 and C-0247, both on Rs 3,780 | The brief does not ask for it; a learner who picks Retail-Plus for Part 2 will meet 50, 51, 56 and 49 rows. |
+| A three-way Q2 tie across Retail-Core positions 19 to 21 | C-0017, C-0033 and C-0144, all on Rs 5,170; 22nd is C-0007 on Rs 4,910 | A top twenty ships 20 under ROW_NUMBER, 21 under RANK, 22 under DENSE_RANK and 18 under whole ties only. ROW_NUMBER with customer_id as the tiebreaker drops C-0144. |
+| The generator's falling ladder | C-0154 (July Rs 4,200, August Rs 3,100, September Rs 1,900), C-0165 (Rs 3,800, Rs 2,600, Rs 1,400) and C-0170 (Rs 4,400, Rs 2,900, Rs 1,600), all Retail-Plus | Across the whole book the flag counts 21 without a partition (8 compared with another member), 13 with PARTITION BY customer_id (7 across a gap) and 6 with the calendar check, and the ladder's three are among the six. |
+| The generator's own tie at fiftieth in Retail-Plus, which the builder did not add and does not name | C-0175 and C-0247, both on Rs 3,680 | The brief does not ask for it; a learner who picks Retail-Plus for Part 2 will meet 50, 51, 57 and 49 rows. |
 
-On the Retail-Core list under RANK (21 members), the partitioned flag without the calendar check
-catches 4 and the calendar-checked flag catches 2: C-0144 at position 8 (July Rs 4,050, August
-Rs 1,880, September Rs 1,320) and C-0041 at position 15 (Rs 2,870, Rs 1,650, Rs 1,220). The other
-two are gap-spanners, and one of them is C-0023, a member of the tie (June Rs 6,720, July Rs 3,170,
-no August, September Rs 2,310), which mirrors C-0185 in the day's data. The seven flagged across the book
-with the calendar check are C-0271 and C-0280 (Business), C-0041 and C-0144 (Retail-Core), and
-C-0154, C-0165 and C-0170 (Retail-Plus).
+On the Retail-Core list under RANK (21 members), both the partitioned flag and the calendar-checked
+flag catch one member, C-0019 at position 9 (July Rs 3,380, August Rs 1,950, September Rs 990). The
+gap-spanners all sit off the list, so the list shows the calendar check agreeing and the whole book
+shows it removing seven. The six flagged across the book with the calendar check are C-0271 and
+C-0280 (Business), C-0019 (Retail-Core), and C-0154, C-0165 and C-0170 (Retail-Plus). The mid-quarter
+reading, the end of the week of 17 August, is Rs 5,07,89,120 booked against Rs 5,06,80,000, Rs 1,09,120
+ahead.
 
-The running total, read at each plan week's last day, runs Rs 1,38,75,300 ahead after the first
-plan week (the week of 29 June already holds Rs 57,24,280 on 22 orders), peaks at Rs 1,47,49,890
-ahead at the end of the week of 20 July, stands at Rs 6,10,48,650 booked against Rs 5,29,84,610
-planned at mid-quarter (Rs 80,64,040 ahead), and closes at Rs 9,84,00,000 against Rs 9,83,99,990,
-Rs 10 ahead. A plan-first join closes at Rs 9,26,75,720 and reports Q2 Rs 57,24,270 short of plan.
-Six of the twelve full weeks from 6 July booked below the weekly plan.
+The running total, read at each plan week's last day, runs Rs 63,16,560 ahead after the first plan
+week (the days from 1 to 5 July already hold Rs 57,30,440 on 26 orders), peaks at Rs 65,15,350 ahead
+at the end of the week of 20 July, falls behind plan at the end of the weeks of 10 and 24 August,
+stands Rs 1,09,120 ahead at mid-quarter, and closes at Rs 9,23,60,000 against Rs 9,41,20,000,
+Rs 17,60,000 behind. A plan-first join closes at Rs 8,66,29,560 and reports Q2 Rs 74,90,440 short of
+plan. Seven of the twelve full weeks from 6 July booked below the weekly plan of Rs 72,40,000.
 
 This query, run on the sample, gives the four counts for the walk-through:
 

@@ -187,7 +187,7 @@ forty-nine because of a tie." Three functions number rows, and they differ only 
 | E | 5,200 | 5 | 4 | 3 |
 | F | 4,100 | 6 | 6 | 4 |
 
-ROW_NUMBER gives every row its own number and orders a tied pair however the database happens to.
+ROW_NUMBER gives every row its own number and orders a tied pair in whatever order the database happens to use.
 RANK gives tied rows the same number and then skips, so after two members at 1 the next is 3.
 DENSE_RANK shares the number without skipping, so the next is 2. RANK's 1, 1, 3 surprises people who
 expected 1, 1, 2, and the skip is the point: position 3 means "two members spent more than this one".
@@ -199,16 +199,17 @@ Kalpa's Retail-Core the four rules ship 50, 50, 52 and 50. DENSE_RANK's 52 is th
 sounds like "ties rank the same", and because earlier ties compress its numbers it lets in members
 who sit at positions 51 and 52 by any honest count.
 
-When the room ran the same count for Retail-Plus, the four rules shipped 50, 51, 52 and 49, because
-two Retail-Plus members tie at fiftieth. In business terms each wrong rule has a cost.
+Where two members share the fiftieth place, the four rules split four ways: ROW_NUMBER ships 50,
+RANK 51, whole ties only 49, and DENSE_RANK 51 or more. In business terms each wrong rule has a cost.
 Forty-nine drops a member who spent exactly what the fiftieth did, which is the one thing the head of
 Retail-Plus forbade. ROW_NUMBER's fiftieth is chosen by the database, so a member can be on Monday's
-list and off Tuesday's with the same spend, and nobody can explain why. DENSE_RANK ships 52 while
-sounding faithful to the request.
+list and off Tuesday's with the same spend, and nobody can explain why. DENSE_RANK ships more than
+fifty while sounding faithful to the request.
 
 The check is to count the rows each rule ships and to read positions 44 to 54 with all three
 functions side by side. The fix is RANK within each segment, and a report that says the count and
-the reason in one breath: "51 Retail-Plus members, because two tie at fiftieth."
+the reason in one breath, read from the file: the count, and how many members share the last
+position.
 
 **WATCH OUT.** A tiebreaker such as customer_id makes ROW_NUMBER repeatable, and repeatable is a
 different thing from fair: with customer_id as the tiebreaker it always keeps the same member of a
@@ -258,8 +259,7 @@ LAG called July "last month" for September, so two gaps became a fall. Seven of 
 flagged members were compared across a gap like this. The check is to carry `lag(month)` beside
 `lag(spend)` and count the rows where the previous row is not the previous calendar month, which
 returns 7. The fix requires the two previous rows to be August and July exactly; with that
-condition 9 members are flagged, and the room found three in each of Business, Retail-Core and
-Retail-Plus, every one of them already on the protect list.
+condition 9 members are flagged, every one of them already on the protect list.
 
 A genuine fall looks like C-0010, Retail-Core's biggest Q2 member: Rs 7,840 in July, Rs 4,080 in
 August, Rs 1,990 in September, which is three readings a month apart with each lower than the one
@@ -350,7 +350,8 @@ The sentence the case closed on:
 
 > We ranked with RANK inside each segment, so tied members share a place and nobody at the line is
 > dropped by a coin toss: the list carries 35 Business and 20 Student members, which is every Q2
-> buyer there, 50 Retail-Core and 51 Retail-Plus, because two Retail-Plus members tie at fiftieth.
+> buyer there, and Retail-Core and Retail-Plus at fifty or more, with the reason beside any count
+> over fifty.
 > Nine listed members spent less in August than July and less again in September; a member with no
 > August order is not flagged, because a month without an order is no reading. Q2 closed on plan,
 > Rs 9,84,00,000 against Rs 9,83,99,990, and the Rs 1.58 crore lead at mid-quarter came from one
@@ -424,13 +425,13 @@ when WHERE wants it. I compute it in a CTE and filter from outside." Weak: "it i
 **5. [D] The business says 'ties rank the same'; which function, and how many rows might the top-N
 report ship?** Tested: turning a sentence into a rule and owning its count. "RANK, because tied rows
 share a position and nobody at the line is dropped. It ships more than N when a tie crosses the
-line, so the report says why: fifty-one Retail-Plus members, because two tie at fiftieth. DENSE_RANK
+line, so the report says why: fifty-one members, because two share the fiftieth place. DENSE_RANK
 sounds like the same rule and can ship more still." Weak: a function with no row count.
 
-**6. [F] Your top-fifty list came back with 51 rows. What do you tell the stakeholder, and is it a
+**6. [F] Your top-ten list came back with eleven rows. What do you tell the stakeholder, and is it a
 bug?** Tested: owning a correct surprise. "It is the rule working: you asked for ties to rank the
-same, and two members tie at fiftieth, so both are on. If you need exactly fifty, which one comes off
-is your call, and I will show you the two side by side." Weak: silently cutting it to fifty.
+same, and two members tie at tenth, so both are on. If you need exactly ten, which one comes off is
+your call, and I will show you the two side by side." Weak: silently cutting it to ten.
 
 **7. [F] LAG returned a value for a customer's very first month. What went wrong, and how do you
 check for it in a result of ten thousand rows?** Tested: diagnosing a missing partition. "The window

@@ -53,13 +53,13 @@ Every plant appears by name only in `trainer/` and here.
 
 | Planted | Where it is used |
 |---|---|
-| The exact Q2 tie at fiftieth in Retail-Plus, C-0242 and C-0185 on Rs 3,350 (warehouse v4) | Round 2, where the room runs the Retail-Plus variant of section 3 of `sql/C2_W02_D03_02_protect_list_STUDENT.sql` and the empty your-turn cell of notebook 02; the escalated case, Part 1; the afternoon debrief and the released solutions, which show the count the room found without calling it planted |
+| The exact Q2 tie at fiftieth in Retail-Plus, C-0242 and C-0185 on Rs 3,350 (warehouse v4) | Round 2, where the room runs the Retail-Plus variant of section 3 of `sql/C2_W02_D03_02_protect_list_STUDENT.sql` and the empty your-turn cell of notebook 02; the escalated case, Part 1; the afternoon debrief, which after the case shows only the four counts the room's own files returned and asks each learner to read the last position in their own file; the released solutions, which carry the count with its reason. The study notes teach the tie rule and its check on the invented list and on Retail-Core, and name no segment as carrying a tie at fiftieth |
 | The natural tie at 48th in Retail-Plus, C-0189 and C-0206 on Rs 3,480, which nobody planted and which makes DENSE_RANK ship 52 | Round 2's boundary read, positions 44 to 54, and the day sheet's plant table |
-| Three Retail-Plus members whose spend fell in each Q2 month, C-0161, C-0171 and C-0175 (warehouse v4) | Round 3, block 5 of `sql/C2_W02_D03_03_falling_spend_STUDENT.sql` and the empty your-turn cell of notebook 03; the escalated case, Part 2; the debrief, as three of the nine flagged |
+| Three Retail-Plus members whose spend fell in each Q2 month, C-0161, C-0171 and C-0175 (warehouse v4) | Round 3, block 5 of `sql/C2_W02_D03_03_falling_spend_STUDENT.sql` and the empty your-turn cell of notebook 03; the escalated case, Part 2; the debrief, inside the nine flagged, with no split by segment |
 | The plan line as a small table, 13 weeks from 6 July at Rs 75,69,230 | Round 3, block 7; the escalated case, Parts 3 and 4, where the plan-first join drops the week of 29 June |
-| The take-home's three-way Retail-Core tie at positions 19 to 21, C-0014, C-0021 and C-0023 on Rs 5,480, added by the builder | The take-home, Part 1, and Thursday's walk-through from the day sheet |
-| The take-home's falling ladder, C-0154, C-0165 and C-0170, which the generator places under the new seed | The take-home's whole-book flag counts, 23, 18 and 7 |
-| The take-home's tie at fiftieth in Retail-Plus, C-0203 and C-0247 on Rs 3,780, which the generator's own tie step places under any seed and the builder's docstring does not mention | Nowhere in the brief; the day sheet names it in case a learner meets it in Part 2 |
+| The take-home's three-way Retail-Core tie at positions 19 to 21, C-0017, C-0033 and C-0144 on Rs 5,170, added by the builder | The take-home, Part 1, and Thursday's walk-through from the day sheet |
+| The take-home's falling ladder, C-0154, C-0165 and C-0170, which the generator places under the new seed | The take-home's whole-book flag counts, 21, 13 and 6 |
+| The take-home's tie at fiftieth in Retail-Plus, C-0175 and C-0247 on Rs 3,680, which the generator's own tie step places under any seed and the builder's docstring does not mention | Nowhere in the brief; the day sheet names it in case a learner meets it in Part 2 |
 
 ---
 
@@ -86,10 +86,14 @@ Every plant appears by name only in `trainer/` and here.
    The site has no separate window functions category; its window questions sit in the Aggregation
    category. The first three there are countmembers, nummembers and fachours4, and the take-home
    names them with their check dates.
-6. **The take-home builds its sample by rerunning build_v4 under a new seed.** The generator has no
-   seed flag, so the builder imports it and sets `SEED` before calling `build_v4`. It then adds a
+6. **The take-home builds its sample by rerunning build_v4 under a new seed and new totals.** The
+   generator has no seed flag, so the builder imports it and sets `SEED`, the two quarter totals
+   (Rs 9,61,20,000 and Rs 9,23,60,000) and a Q2 order plan of 454 orders before calling `build_v4`,
+   then sets its own plan line of Rs 72,40,000 a week. The first sample reused the warehouse's Q2
+   total, its 462 Q2 orders and its plan line, so its close matched the class answer to the rupee;
+   the review of 29 September 2026 caught it, and no headline number now matches. It then adds a
    three-way tie across Retail-Core positions 19 to 21, and takes the added rupees off Q2's last
-   Business order so the quarter still lands on Rs 9,84,00,000.
+   Business order so the quarter still lands on Rs 9,23,60,000.
 7. **The take-home's ask is Marketing's, on Retail-Core, with the head of Retail-Plus's tie rule.**
    `docs/07_Client_Zero.md` has no head of Retail-Core, so the brief does not invent one.
 8. **No decision workbook ships today.** The standard's volume table does not require one, and the
