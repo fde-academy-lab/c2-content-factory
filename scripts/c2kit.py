@@ -17,9 +17,9 @@ What it holds: loaders for the day's data from ../data/, check and check_summary
 expect_error for a failure staged on purpose, a trace viewer, and the diagram builders, which render
 SVG from a code cell and save as an SVG image output, which every notebook viewer shows. The
 builders are ladder, flow, vflow, stack, sequence, tree, driver_tree, matrix, decision_ladder,
-equation and side_by_side for the thinking, and strip, bars, columns, line and bridge for the data:
-a distribution, a ranking, a comparison across groups, a trend against a plan, and a reconciliation
-from one total to another.
+equation and side_by_side for the thinking, and strip, histogram, bars, columns, line and bridge for
+the data: a distribution, a distribution of thousands, a ranking, a comparison across groups, a
+trend against a plan, and a reconciliation from one total to another.
 
 The colours come from scripts/brand.py, the same values the decks and the cheat sheets read, so a
 tree in a notebook and the tree on the slide are the same drawing in the same violet.
@@ -673,6 +673,8 @@ def strip(values, markers=(), title="", show=True, lo=0, hi=None, fmt=None, widt
           lit=()):
     """Every value as a dot on one axis, with the mean, the median or any line you name.
 
+    Up to about 150 values; for thousands, such as a shuffle test's gaps, use histogram.
+
     markers is a list of (label, value, kind) where kind is "bad" or "good" or "plain". Dots that
     would overlap stack upward, so thirty values that sit close together show as a pile. lit is
     a list of indexes whose dots are drawn dark.
@@ -720,6 +722,59 @@ def strip(values, markers=(), title="", show=True, lo=0, hi=None, fmt=None, widt
         body.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="5" fill="{fill}" fill-opacity="0.8" '
                     f'stroke="{WHITE}" stroke-width="1"/>')
     return _emit(_svg(width, axis_y + 34 + (22 if title else 0), "".join(body), title), show)
+
+
+def histogram(values, markers=(), bins=24, lo=None, hi=None, title="", show=True, fmt=None,
+              width=820):
+    """Values counted into bins of equal width, for a distribution too large to draw as dots.
+
+    strip draws one dot per value and reads well up to about 150 values; past that the piles
+    climb off the chart. Five thousand shuffled gaps belong here. markers are (label, value,
+    kind) as in strip, drawn as dashed lines over the bars, so a real gap reads against the
+    chance distribution. lo and hi fix the axis, which keeps two histograms comparable.
+    """
+    fmt = fmt or rupees
+    vals = list(values)
+    lo = min(vals) if lo is None else lo
+    hi = max(vals) if hi is None else hi
+    hi = hi if hi > lo else lo + 1
+    step = (hi - lo) / bins
+    counts = [0] * bins
+    for v in vals:
+        counts[min(max(int((v - lo) / step), 0), bins - 1)] += 1
+    left, right, top, plot_h = 70, width - 24, 50, 200
+    ymax = _chart_ceil(max(counts) * 1.1) or 1
+
+    def py(c):
+        return top + plot_h * (ymax - c) / ymax
+
+    def px(v):
+        return left + (right - left) * (min(max(v, lo), hi) - lo) / (hi - lo)
+
+    body = [_ticks(0, ymax, lambda c: f"{c:,.0f}", left - 6, right, py)]
+    bar_w = (right - left) / bins
+    for i, c in enumerate(counts):
+        body.append(f'<rect x="{left + i * bar_w + 0.5:.1f}" y="{py(c):.1f}" '
+                    f'width="{max(1, bar_w - 1):.1f}" height="{max(0, top + plot_h - py(c)):.1f}" '
+                    f'fill="{ACCENT}" fill-opacity="0.85"/>')
+    base = top + plot_h
+    for k in range(5):
+        v = lo + (hi - lo) * k / 4
+        x = px(v)
+        body.append(f'<line x1="{x:.0f}" y1="{base}" x2="{x:.0f}" y2="{base + 5}" stroke="{MUTED}"/>'
+                    f'<text x="{x:.0f}" y="{base + 20}" text-anchor="middle" fill="{MUTED}" '
+                    f'font-family="{FONT}" font-size="12">{_html.escape(fmt(v))}</text>')
+    colours = {"bad": FAIL_COLOUR, "good": PASS_COLOUR, "plain": INK}
+    for n, (label, v, kind) in enumerate(markers):
+        x, c = px(v), colours.get(kind, INK)
+        leftward = x > left + (right - left) * 0.7
+        body.append(f'<line x1="{x:.0f}" y1="{top - 12 + 14 * (n % 2)}" x2="{x:.0f}" y2="{base}" '
+                    f'stroke="{c}" stroke-width="1.8" stroke-dasharray="5 4"/>'
+                    f'<text x="{x - 5 if leftward else x + 5:.0f}" y="{top - 16 + 14 * (n % 2)}" '
+                    f'text-anchor="{"end" if leftward else "start"}" fill="{c}" font-family="{FONT}" '
+                    f'font-size="12.5" font-weight="700">{_html.escape(label)} '
+                    f'{_html.escape(fmt(v))}</text>')
+    return _emit(_svg(width, base + 34 + (22 if title else 0), "".join(body), title), show)
 
 
 def bars(rows, title="", show=True, fmt=None, lit=(), width=720):

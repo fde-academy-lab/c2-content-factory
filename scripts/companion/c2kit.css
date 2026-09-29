@@ -29,7 +29,6 @@ code,kbd{font:14px var(--mono);background:var(--tint);border-radius:4px;padding:
 /* the page: a left rail and the sections */
 .page{display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;max-width:1240px;margin:0 auto;
       padding:26px 28px 60px}
-@media (max-width:900px){.page{grid-template-columns:1fr}.rail{position:static}}
 .rail{position:sticky;top:18px;align-self:start;background:var(--white);border:1px solid var(--line);
       border-radius:12px;padding:14px 12px;box-shadow:var(--shadow)}
 .rail .label{font:700 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--violet);
@@ -38,6 +37,10 @@ code,kbd{font:14px var(--mono);background:var(--tint);border-radius:4px;padding:
       text-decoration:none;font-size:14.5px}
 .rail a .n{font:15px var(--serif);color:var(--violet);min-width:22px}
 .rail a.on{background:var(--tint);color:var(--ink);font-weight:700}
+/* after the rail's own rules, or the sticky position above wins on a phone and pins the rail over
+   the content; min-width lets the main column shrink below its widest chart */
+.page > main{min-width:0}
+@media (max-width:900px){.page{grid-template-columns:1fr}.rail{position:static}}
 section.part{margin:0 0 38px;scroll-margin-top:16px}
 .part > .eyebrow{font:700 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--violet);
       margin:0 0 4px}

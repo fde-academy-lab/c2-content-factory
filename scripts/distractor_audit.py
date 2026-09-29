@@ -281,7 +281,8 @@ def main():
 
     # Only the folders that hold answerable items. A deck, a brief or a day sheet may carry a
     # lettered list, and auditing it as a quiz reports failures nobody can act on.
-    AUDITED = {"unguided", "guided", "exercises", "kahoot", "paper", "answer-key", "notebooks"}
+    AUDITED = {"unguided", "guided", "practice", "exercises", "kahoot", "paper", "answer-key",
+               "notebooks"}
     files = []
     for t in targets:
         if t.is_dir():

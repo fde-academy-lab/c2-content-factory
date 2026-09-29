@@ -36,7 +36,6 @@ code,kbd{font:14px var(--mono);background:var(--tint);border-radius:4px;padding:
 /* the page: a left rail and the sections */
 .page{display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;max-width:1240px;margin:0 auto;
       padding:26px 28px 60px}
-@media (max-width:900px){.page{grid-template-columns:1fr}.rail{position:static}}
 .rail{position:sticky;top:18px;align-self:start;background:var(--white);border:1px solid var(--line);
       border-radius:12px;padding:14px 12px;box-shadow:var(--shadow)}
 .rail .label{font:700 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--violet);
@@ -45,6 +44,10 @@ code,kbd{font:14px var(--mono);background:var(--tint);border-radius:4px;padding:
       text-decoration:none;font-size:14.5px}
 .rail a .n{font:15px var(--serif);color:var(--violet);min-width:22px}
 .rail a.on{background:var(--tint);color:var(--ink);font-weight:700}
+/* after the rail's own rules, or the sticky position above wins on a phone and pins the rail over
+   the content; min-width lets the main column shrink below its widest chart */
+.page > main{min-width:0}
+@media (max-width:900px){.page{grid-template-columns:1fr}.rail{position:static}}
 section.part{margin:0 0 38px;scroll-margin-top:16px}
 .part > .eyebrow{font:700 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--violet);
       margin:0 0 4px}
@@ -640,6 +643,49 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     return svg;
   }
 
+  /* Values counted into bins of equal width, for a distribution too large to draw as dots: strip
+   * reads well up to about 150 values, and thousands of shuffled gaps belong here. markers are
+   * [label, value, kind] as in strip. opts: bins (24), lo, hi, fmt, title, width. */
+  function histogram(values, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || rupees, width = opts.width || 760, bins = opts.bins || 24;
+    var lo = opts.lo === undefined ? Math.min.apply(null, values) : opts.lo;
+    var hi = opts.hi === undefined ? Math.max.apply(null, values) : opts.hi;
+    if (hi <= lo) hi = lo + 1;
+    var step = (hi - lo) / bins, counts = [];
+    for (var b = 0; b < bins; b++) counts.push(0);
+    values.forEach(function (v) {
+      counts[Math.min(Math.max(Math.floor((v - lo) / step), 0), bins - 1)] += 1;
+    });
+    var left = 70, right = width - 24, top = 50, plotH = 200, base = top + plotH;
+    var ymax = chartCeil(Math.max.apply(null, counts) * 1.1) || 1;
+    function py(c) { return top + plotH * (ymax - c) / ymax; }
+    function px(v) { return left + (right - left) * (Math.min(Math.max(v, lo), hi) - lo) / (hi - lo); }
+    var svg = root(width, base + 34 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, 0, ymax, function (c) { return Math.round(c).toLocaleString("en-IN"); }, left - 6, right, py);
+    var barW = (right - left) / bins;
+    counts.forEach(function (c, i) {
+      svg.appendChild(el("rect", { x: left + i * barW + 0.5, y: py(c), width: Math.max(1, barW - 1),
+                                   height: Math.max(0, base - py(c)), fill: C.violet, "fill-opacity": 0.85 }));
+    });
+    for (var k = 0; k < 5; k++) {
+      var v = lo + (hi - lo) * k / 4, x = px(v);
+      svg.appendChild(el("line", { x1: x, y1: base, x2: x, y2: base + 5, stroke: C.muted }));
+      svg.appendChild(el("text", { x: x, y: base + 20, "text-anchor": "middle", fill: C.muted, "font-family": FONT,
+                                   "font-size": 12 }, fmt(v)));
+    }
+    var colour = { bad: C.rose, good: C.green, plain: C.ink };
+    (opts.markers || []).forEach(function (m, n) {
+      var x = px(m[1]), c = colour[m[2]] || C.ink, leftward = x > left + (right - left) * 0.7;
+      svg.appendChild(el("line", { x1: x, y1: top - 12 + 14 * (n % 2), x2: x, y2: base, stroke: c, "stroke-width": 1.8,
+                                   "stroke-dasharray": "5 4", "class": "c2k-marker" }));
+      svg.appendChild(el("text", { x: leftward ? x - 5 : x + 5, y: top - 16 + 14 * (n % 2), fill: c, "font-family": FONT,
+                                   "font-size": 12.5, "font-weight": 700, "text-anchor": leftward ? "end" : "start" },
+                         m[0] + " " + fmt(m[1])));
+    });
+    return svg;
+  }
+
   /* The next round number at or above x: 1, 2, 2.5 or 5 times a power of ten, so axis ticks read cleanly. */
   function niceCeil(x) {
     if (x <= 0) return 1;
@@ -838,7 +884,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   }
 
   window.C2K = { colours: C, flow: flow, vflow: vflow, ladder: ladder, tree: tree, driverTree: driverTree,
-                 strip: strip, bridge: bridge, line: line, columns: columns, sequence: sequence,
+                 strip: strip, histogram: histogram, bridge: bridge, line: line, columns: columns, sequence: sequence,
                  sideBySide: sideBySide, rupees: rupees, draw: draw };
 })();
 </script>

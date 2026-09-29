@@ -32,6 +32,7 @@ TRAINER_NAMES = ["Akash","Ishu","Anmol","Rushikesh","Navaid","Kanchan","Umashank
 CLOCK = re.compile(r"\b\d{1,2}[:.]\d{2}\s?(AM|PM|am|pm)\b")
 NXBY = re.compile(r"\bnot\s+\w+[^.\n]{0,40},\s*but\b", re.IGNORECASE)
 URL = re.compile(r"https?://\S+")
+TODO_MARK = re.compile(r"__TODO\d*__")
 DAY_FOLDER = re.compile(r"W(\d{1,2})[/\\](D(\d{1,2})|SAT)$")
 DAY_STEM = re.compile(r"^C2_W(\d{2})_(D\d{2}|SAT)_")
 DATED = re.compile(r"(verified|checked)\s+\d{1,2}\s+\w+\s+\d{4}", re.IGNORECASE)
@@ -203,7 +204,8 @@ def run_proofs(target):
         fails += run_proof("nb_check.py", [str(target)],
                            "notebooks carry outputs, diagrams and passing checks")
 
-    if any(p.parent.name in ("unguided", "guided", "kahoot", "paper", "exercises") for p in files):
+    if any(p.parent.name in ("unguided", "guided", "practice", "kahoot", "paper", "exercises")
+           for p in files):
         fails += run_proof("distractor_audit.py", [str(target)],
                            "no option set gives its key away")
 
@@ -323,7 +325,9 @@ def main():
         if execute and p.suffix == ".ipynb":
             # A TODO twin stops at its first placeholder on purpose, so cold-running it is not a
             # test of anything. Its executed solution twin is the one that has to run clean.
-            if "__TODO" in p.read_text(encoding="utf-8", errors="replace"):
+            # The placeholder itself, as nb_check.py reads it: a solution whose prose merely
+            # mentions the placeholder syntax still has to run cold.
+            if TODO_MARK.search(p.read_text(encoding="utf-8", errors="replace")):
                 print(f"INFO  {name}: TODO twin, so it is not cold-run; its solution twin is")
                 continue
             # nbconvert runs the notebook with its own folder as the working directory, which is
