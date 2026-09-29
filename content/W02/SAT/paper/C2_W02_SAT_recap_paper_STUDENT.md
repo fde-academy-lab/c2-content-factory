@@ -340,6 +340,19 @@ Each set opens on one Kalpa situation. Answer each item the way it asks: circle 
 
 **Situation.** The warehouse holds 1,000 Q2 orders. 920 orders have one payment row. 50 orders have two payment rows, because the gateway retried and recorded the same payment a second time. 30 delivered orders have no payment row.
 
+```mermaid
+flowchart LR
+  O["1,000 Q2 orders"]
+  O --> A["920 orders"]
+  O --> B["50 orders"]
+  O --> C["30 delivered orders"]
+  A --> PA["1 payment row each"]
+  B --> PB["2 payment rows each, the gateway retried"]
+  C --> PC["no payment row"]
+```
+
+*The orders and their payment rows, as the situation describes them.*
+
 #### Q40
 
 A LEFT JOIN from orders to payments returns ____ rows.
@@ -370,6 +383,17 @@ Answer: ____________________
 ### Set 2
 
 **Situation.** Q2 revenue in Rs thousand for six Retail-Plus members: A 900, B 850, C 850, D 700, E 700, F 650. Ranks run from the highest revenue down.
+
+| Member | Q2 revenue, Rs thousand |
+|---|---|
+| A | 900 |
+| B | 850 |
+| C | 850 |
+| D | 700 |
+| E | 700 |
+| F | 650 |
+
+*The six members, highest revenue first.*
 
 #### Q44
 
@@ -404,6 +428,17 @@ d) LAG, at the cost of losing the first row of every partition.
 ### Set 3
 
 **Situation.** Marketing's customer table has 1,000 rows. The campaign exposure table lists the same 1,000 customers, and 60 of them appear twice. An analyst merges the two on customer_id with how='left' and sends the result to Excel, where a pivot sums revenue.
+
+```mermaid
+flowchart LR
+  C["Customer table: 1,000 rows, one per customer"]
+  E["Exposure table: the same 1,000 customers, 60 of them listed twice"]
+  C --> M["Left merge on customer_id"]
+  E --> M
+  M --> X["Excel pivot: sum of revenue"]
+```
+
+*The analyst's path from two tables to the pivot.*
 
 #### Q48
 
@@ -509,3 +544,25 @@ b) The warehouse computes the source of truth.
 c) pandas carries the analyst's iteration.
 
 Order: ____________________
+
+---
+
+## Stretch: untimed, and not marked
+
+For anyone who finishes early. Nothing here is counted; each item is the kind an interviewer asks after your first answer, so write the answer you would say.
+
+### Stretch 1
+
+COUNT(*) / COUNT(DISTINCT customer_id) over 1,000 orders and 400 customers puts 2 orders per customer in the Monday report. What went wrong, what is the right number, and how do you write it?
+
+### Stretch 2
+
+Orders LEFT JOIN payments with WHERE payments.amount_paid > 0 loses the 30 unpaid orders out of 1,000. Why, where does the condition belong, and what else do you check before Finance sees the total?
+
+### Stretch 3
+
+A top-fifty list built with RANK returns 51 names on a tie at fifty. The segment head says ties rank the same; Finance says the list is fifty. What do you ship, and what do you say?
+
+### Stretch 4
+
+A pandas pivot_table of revenue by segment sits far below the warehouse, and an Excel lookup shows details for an id that is in no table. Name the setting behind each, and the fix.
