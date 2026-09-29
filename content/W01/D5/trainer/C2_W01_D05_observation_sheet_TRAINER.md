@@ -21,12 +21,12 @@ The step a learner should have reached by each mark, if they keep the brief's pa
 
 | Mark | Expected step | Stall codes to watch for |
 |---|---|---|
-| 20 | Profile read; moving to clean | P1 computed a total before any profile; P2 profile has no distinct count |
+| 20 | Profile read; moving to clean | P1 computed a total before any profile; P2 profile has no distinct count; P3 the mean quoted as the typical order |
 | 50 | Cleaning done, log written | C1 no log rows; C2 text amount set to zero or skipped with no log line; C3 repeats not found; C4 empty segment left as a fifth group or dropped silently |
 | 65 | Reconciled | R1 no count check; R2 a count check and no rupee check; R3 checks written and failing, and the learner moved on |
 | 90 | Tree built | D1 total only, no segments; D2 a rate without its order count; D3 frequency named as the branch on uncleaned rows |
 | 105 | Shuffle run | T1 orders shuffled instead of customers; T2 a test on Business; T3 p-value sentence says "chance we are wrong" |
-| 120 | Note written | N1 no caveat; N2 the corporate rate as the headline; N3 no action or no cost |
+| 120 | Note written | N1 no caveat; N2 the corporate rate as the headline; N3 no action or no cost; N4 a mean order in the claim as the typical one |
 
 ## The sheet
 
@@ -60,19 +60,21 @@ The wrong numbers a hurried run prints, so a TA recognises each without reading 
 | Retail-Core orders per customer 1.77 in Q2 | The tree read on the uncleaned rows |
 | p = 0.0755, or anything near 0.07 to 0.08 | Orders shuffled instead of customers |
 | Mean order about Rs 52,000 quoted as typical | The typical-order trap |
+| Retail-Plus Q2 34 orders and Rs 93,670, or a segment with a blank name | The empty segment dropped or bucketed |
 | Q2 down 28.5 percent, p between 0.013 and 0.027 | A correct run |
 
 ## Over lunch: the tally for the debrief
 
-Count, across your rows, the learners with each of these at the snapshot, and give the three numbers
-to the trainer before the afternoon starts.
+Count, across your rows, the learners with each of these five breaks at the snapshot, and give the
+five counts to the trainer before the afternoon starts.
 
 | Break | Count from | Debrief slides |
 |---|---|---|
 | The pass that looks clean | C2 or R2 | Chapter 2, S7 to S10 |
 | The headline on too few orders | D2 or N2 | Chapter 3, S11 to S13 |
 | The wrong unit | T1 | Reserve D14 |
-| The typical order | P1 with a mean quoted, or N1 with a mean in the claim | Reserve D15 |
+| The typical order | P3 or N4 | Reserve D15 |
+| The empty segment | C4 | Reserve D16 and D17 |
 
 The trainer runs the two with the highest counts. A tie goes to the pass that looks clean.
 
