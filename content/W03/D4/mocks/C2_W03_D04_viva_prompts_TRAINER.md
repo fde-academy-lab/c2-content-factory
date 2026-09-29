@@ -267,7 +267,7 @@ into the offer window, against 3.0 percent in Delhi over the same windows.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| The 9 percent is offered against not offered, across all cities; inside each campaign city offered patients booked less, by 11 to 20 percent; so the 9 percent is not the campaign's effect | "Yes, 9 percent" or "No, it is a paradox" with no numbers | "So did the campaign reduce bookings?" (Not shown either: the offer went to drifting patients, so the comparison inside a city is not fair in the other direction.) |
+| The 9 percent is offered against not offered, across all cities; inside each campaign city offered patients booked less, by 11 to 20 percent; so the 9 percent measures where the offer went | "Yes, 9 percent" or "No, it is a paradox" with no numbers | "So did the campaign reduce bookings?" (Not shown either: the offer went to drifting patients, so the comparison inside a city is not fair in the other direction.) |
 
 **P2. "The campaign cities were growing. By how much, before the offer?"**
 

@@ -65,9 +65,7 @@ word-perfect, go straight to the follow-up and then to one reserve from the same
 ## The calibration floor
 
 The row names GeeksforGeeks, "Data Analyst Interview Questions and Answers", for calibrating the
-technical half:
-https://www.geeksforgeeks.org/data-analysis/data-analyst-interview-questions-and-answers/
-(verified 29 September 2026; the page shows 95 numbered questions and was last updated on
+technical half, https://www.geeksforgeeks.org/data-analysis/data-analyst-interview-questions-and-answers/ (verified 29 September 2026; the page shows 95 numbered questions and was last updated on
 24 July 2026). Its questions are definitional ("what is a join", "what is a p-value"). This bank sits
 one step above them, because a GCC screen at the 0 to 3 year band asks for the definition inside a
 business case. If a learner cannot answer a question at the case level, ask the definitional form
