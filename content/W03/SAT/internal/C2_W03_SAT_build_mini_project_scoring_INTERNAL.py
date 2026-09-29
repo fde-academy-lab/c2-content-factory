@@ -3,15 +3,16 @@
     python3 content/W03/SAT/internal/C2_W03_SAT_build_mini_project_scoring_INTERNAL.py
 
 Writes, beside each other in content/W03/SAT/rubrics/:
-  C2_W03_SAT_mini_project_scoring_TRAINER.xlsx        nine groups and 36 seats, never a name
+  C2_W03_SAT_mini_project_scoring_TRAINER.xlsx        nine groups and 35 seats, never a name
   C2_W03_SAT_mini_project_scoring_recalc_INTERNAL.md  the verdicts and flips scripts/xlsx_recalc.py asserts
 
 The criteria are read from data/programme/facts.yaml (evaluation.rubrics.W03.events.mini-project),
 which the requester approved on 29 September 2026, so rerunning this after a sync keeps the sheet
 true. The first four criteria are scored once per group and every member receives them; presentation
 and defence is scored per learner. The layout follows Friday's GD scoring sheet
-(content/W03/D5/rubrics/C2_W03_D05_gd_scoring_sheet_TRAINER.xlsx): nine groups of four seats, with an
-unused seat marked N.
+(content/W03/D5/rubrics/C2_W03_D05_gd_scoring_sheet_TRAINER.xlsx), with 35 seats for the cohort's
+35 learners (facts.yaml, cohort.students): eight groups of four and G9 of three, as the grade closure
+workbook holds them, and an absent learner's seat marked N.
 """
 import pathlib
 
@@ -30,7 +31,10 @@ facts = yaml.safe_load((ROOT / "data" / "programme" / "facts.yaml").read_text(en
 EVENT = facts["evaluation"]["rubrics"]["W03"]["events"]["mini-project"]
 CRITERIA = EVENT["criteria"]
 GROUP_CRITERIA, LEARNER_CRITERION = CRITERIA[:4], CRITERIA[4]
-GROUPS = [f"G{g}" for g in range(1, 10)]
+# The cohort's 35 learners in nine groups: eight of four and G9 of three, as in the closure workbook.
+SEATS = [(f"G{g}", 4) for g in range(1, 9)] + [("G9", 3)]
+assert sum(n for _, n in SEATS) == facts["cohort"]["students"]["value"]
+GROUPS = [g for g, _ in SEATS]
 
 ARIAL = "Arial"
 INK = "1A0F5C"
@@ -71,7 +75,8 @@ def build():
         (f"The rubric is Build 1's mini project rubric as the requester approved it on 29 September 2026, recorded in data/programme/facts.yaml (evaluation.rubrics.W03). {EVENT['scored']}", font()),
         ("Yellow cells with blue text are the inputs. On Groups: the sub-problem, the panel, the day, and the four group criteria. On Learners: whether the seat is in use and the presentation and defence score. Totals, checks and the summary are formulas.", font()),
         ("Score each group after its slot, never in front of it, from the panel's evidence notes and the question bank (content/W03/SAT/trainer/C2_W03_SAT_question_bank_TRAINER.md). A silent teammate's presentation and defence score waits for the separate question in the room's reserve.", font()),
-        ("Mark an unused seat (the group of three, or an absent learner) N in the In use column; the row then reads absent and drops out of the counts. An absence is recorded with the Programme Head's decision in the grade closure workbook's Notes.", font()),
+        ("The demo rule on both expert days: a group's demo runs once, cold, on its raw files. If it fails, the group has two minutes to recover it live, as it would in front of a client. If it still fails, the group presents from its executed notebook, and the panel scores the live demo in presentation and defence as not run cold. The other 34 marks of the mini project are scored from the executed run, so a failed demo costs its own marks and never the analysis.", font()),
+        ("The Learners sheet holds 35 seats, one per learner: eight groups of four and G9 of three. Relabel the seats if Monday's allocation put the group of three elsewhere. Mark an absent learner N in the In use column; the row then reads absent and drops out of the counts. An absence is recorded with the Programme Head's decision in the grade closure workbook.", font()),
         ("Each learner's total out of 40 is copied once into the grade closure workbook (C2_W03_SAT_grade_closure_TRAINER.xlsx, Scores, Mini project). Learner names go only into the copy the Programme Head keeps, never into the committed file, because the repository is public.", font()),
     ]
     for i, (text, f) in enumerate(lines, start=1):
@@ -135,8 +140,8 @@ def build():
     yn = DataValidation(type="list", formula1='"Y,N"', allow_blank=False)
     ls.add_data_validation(yn)
     r = 3
-    for g in GROUPS:
-        for s in range(1, 5):
+    for g, n in SEATS:
+        for s in range(1, n + 1):
             ls[f"A{r}"], ls[f"B{r}"], ls[f"C{r}"] = g, s, "Y"
             inputs(ls, [f"C{r}", f"D{r}"])
             yn.add(f"C{r}")
@@ -199,7 +204,7 @@ def manifest(v, llast):
         "verdicts:",
         "  - {sheet: Rubric, cell: B8, expect: \"40\"}",
         "  - {sheet: Rubric, cell: B9, expect: \"34\"}",
-        f"  - {{sheet: Summary, cell: B{v}, expect: \"36 learners still to score\"}}",
+        f"  - {{sheet: Summary, cell: B{v}, expect: \"35 learners still to score\"}}",
         "  - {sheet: Learners, cell: F3, expect: \"incomplete\"}",
         "flips:",
         "  - name: G1 scored as a group, one member scored alone",
@@ -213,16 +218,16 @@ def manifest(v, llast):
         "    verdicts:",
         "      - {sheet: Groups, cell: J3, expect: \"above a maximum or below zero\"}",
         f"      - {{sheet: Summary, cell: B{v}, expect: \"1 score(s) outside the rubric\"}}",
-        "  - name: the group of three marks its fourth seat unused",
-        "    set: [{sheet: Learners, cell: C38, value: \"N\"}]",
+        f"  - name: an absent learner's seat marked unused",
+        f"    set: [{{sheet: Learners, cell: C{llast}, value: \"N\"}}]",
         "    verdicts:",
-        "      - {sheet: Learners, cell: F38, expect: \"absent\"}",
-        "      - {sheet: Summary, cell: B3, expect: \"35\"}",
+        f"      - {{sheet: Learners, cell: F{llast}, expect: \"absent\"}}",
+        "      - {sheet: Summary, cell: B3, expect: \"34\"}",
         "  - name: every group and every learner scored",
         f"    set: [{', '.join(groups + learners)}]",
         "    verdicts:",
         f"      - {{sheet: Summary, cell: B{v}, expect: \"every learner in use is scored\"}}",
-        "      - {sheet: Learners, cell: F38, expect: \"30\"}",
+        f"      - {{sheet: Learners, cell: F{llast}, expect: \"30\"}}",
         "```",
         "",
     ]
@@ -235,9 +240,9 @@ if __name__ == "__main__":
     print(f"wrote {OUT / BOOK} and {OUT / MANIFEST}")
 
 # Test inputs and expected outcomes (run scripts/xlsx_recalc.py content/W03/SAT after building).
-# 1. The empty template: Rubric totals read 40 and 34; Summary verdict "36 learners still to score".
+# 1. The empty template: Rubric totals read 40 and 34; Summary verdict "35 learners still to score".
 # 2. G1 scored 6, 8, 7 and 5 as a group and its first member 4: group part 26, that learner 30,
 #    the second member still "incomplete".
 # 3. A group criterion typed as 11 where the maximum is 10: the row's check and the verdict flag it.
-# 4. G9's fourth seat set to N: it reads "absent" and seats in use drop to 35.
+# 4. G9's last seat (G9-S3) set to N for an absence: it reads "absent" and seats in use drop to 34.
 # 5. Every group scored 26 and every learner 4: verdict "every learner in use is scored".
