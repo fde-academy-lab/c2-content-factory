@@ -529,13 +529,13 @@ slide shows what the third one decides.
 
 ---
 
-## S22. The wrong answer: discounts fell 8.0 percent
-*Reading a missing discount as zero gives a total, a story and a decision.*
+## S22. The wrong answer: half the orders had no discount
+*Reading a missing discount as zero gives a share, a story and a decision.*
 
 ```mermaid
 flowchart LR
-    A["<b>Rs 5,000</b><br/>to Rs 4,600"] --> B["<b>-8.0%</b><br/>discounts<br/>tightened"]
-    B --> C["<b>members</b><br/>pulled back"] --> D["<b>restore</b><br/>the discounts"]
+    A["<b>43 of 86</b><br/>Q2 orders"] --> B["<b>50.0%</b><br/>with a<br/>discount"]
+    B --> C["<b>half</b><br/>went<br/>without"] --> D["<b>extend</b><br/>to the<br/>other half"]
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     class A,B,C,D bad
 ```
@@ -544,53 +544,56 @@ flowchart LR
 |---|---|---|---|
 | A, B | Rs 100, Rs 0 | Rs 100, Rs 0 | Rs 100, Rs 0 |
 | C | absent | Rs 0 | left out |
-| Average | | Rs 33 | Rs 50 |
+| Share with a discount | | 1 of 3, 33% | 1 of 2, 50% |
 
 ```notes
-LIVE, 4 minutes. This is the round's trap. The hurried default silences the error and the story
-writes itself: discounts fell 8.0 percent, members pulled back, restore the discounts. The three
+LIVE, 4 minutes. This is the round's trap. The hurried default silences the error, and the share of
+Q2 orders with a discount above zero comes out at 50.0 percent, 43 of 86. The story writes itself:
+half the orders went without, so Marketing extends the monsoon discount to the other half. The three
 orders are invented to show the mechanism: B is a real zero, someone recorded no discount; C is
-unknown. The default of zero erases the difference, and the total becomes a floor nobody labelled.
+unknown. The default of zero files C beside B, and the share becomes a floor nobody labelled.
 ```
 
 ---
 
-## S23. Question: the average where a discount is recorded?
-*Q1 averages Rs 60.98 per order that records one; predict Q2.*
+## S23. Question: what were the 43 "no discount" orders?
+*The hurried reading says 43 of Q2's 86 orders went without; predict what they are.*
 
 ```stats
-value: Rs 43.86 | label: Q1, absent as zero | note: per order
-value: Rs 53.49 | label: Q2, absent as zero | note: per order
-value: Rs 60.98 | label: Q1, recorded only | note: per order that records it
+value: 42.1% | label: Q1, absent as zero | note: orders with a discount
+value: 50.0% | label: Q2, absent as zero | note: orders with a discount
+value: 43 | label: Q2, read as none | note: of 86 orders
 ```
 
-**Question.** Predict Q2's average over orders that record a discount: a) Rs 53.49, the same; b) Rs 46.00, down; c) Rs 60.98, flat; d) Rs 76.67, up.
+**Question.** Of the 43 Q2 orders read as "no discount", how many record Rs 0? a) all 43; b) 34; c) 17; d) none.
 
 ```notes
-LIVE, 3 minutes. Before running, each learner counts the orders that record the field in each
-quarter in the empty your-turn cell of notebook 02. Nobody reads a count aloud. Then take letters.
+LIVE, 3 minutes. Before the answer, each learner runs the count in the empty your-turn cell of
+notebook 02: orders with no discount field, per quarter. Then take letters. Anyone who says a) has
+not yet separated a recorded zero from a field nobody wrote.
 ```
 
 ---
 
-## S24. Answer: up 25.7 percent, and a bound on the branch
-*Where it is recorded, the discount rose; and even at its worst, the branch is too small to matter.*
+## S24. Answer: 17 recorded zeros and 26 unknowns
+*Where the field is recorded, 71.7 percent of Q2's orders carry a discount, and the rest is a range.*
 
-| Reading | Q1 | Q2 | Change |
-|---|---|---|---|
-| Total, absent read as zero | Rs 5,000 | Rs 4,600 | -8.0% |
-| Average, recorded only | Rs 60.98 | Rs 76.67 | +25.7% |
-| Most Q2 could give, Rs 150 on every order | | Rs 12,900 | of a Rs 23,00,000 fall |
+| Share of orders with a discount | Q1 | Q2 |
+|---|---|---|
+| Blanks read as zero | 42.1%, 48 of 114 | 50.0%, 43 of 86 |
+| No discount field (the check) | 32 orders | 26 orders |
+| Over orders that record the field | 58.5%, 48 of 82 | 71.7%, 43 of 60 |
+| Range, blanks unknown | 42.1% to 70.2% | 50.0% to 80.2% |
 
-**The fix.** Write the default with its reason: "absent means not recorded; reported separately; never summed as zero". Absence is rarely random, because some system or channel decided not to write the field, so the recorded orders may not speak for the rest; the worst-case bound closes the branch without guessing.
+**The fix.** Write the default with its reason: "absent means not recorded; reported separately; never counted as zero". Only 17 of Q2's 86 orders are known to have had no discount, so the extension loses its premise; and at Rs 150 on every Q2 order, the most anyone recorded, the branch holds at most Rs 12,900 of a Rs 23,00,000 fall.
 
 ```notes
-LIVE, 5 minutes. The answer is d: the direction flipped. Three moves. First, the decision goes in
-writing beside the number. Second, ask who wrote the records without the field: an older checkout, a
-channel, a batch. Statisticians separate data missing at random from data missing for a reason
-(Rubin, 1976, "Inference and missing data", Biometrika); the business version is "which system
-left it empty, and does that system sell differently?". Third, a bound: the largest recorded
-discount is Rs 150, so the branch is at most Rs 12,900 against Rs 23,00,000, under one percent.
+LIVE, 5 minutes. The answer is c: 17 recorded zeros and 26 records with no field. Three moves.
+First, the decision goes in writing beside the number. Second, ask who wrote the records without the
+field: an older checkout, a channel, a batch. Statisticians separate data missing at random from
+data missing for a reason (Rubin, 1976, "Inference and missing data", Biometrika); the business
+version is "which system left it empty, and does that system sell differently?". Third, a bound: the
+share lies between 50.0 and 80.2 percent, and in rupees the branch is under one percent of the fall.
 Interview question [S] lives here: a field is missing on some records; do you fill it with zero?
 ```
 

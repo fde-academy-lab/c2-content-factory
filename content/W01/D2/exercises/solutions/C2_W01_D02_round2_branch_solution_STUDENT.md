@@ -9,7 +9,7 @@ per order. On the two closed quarters, customers held at 69, orders per customer
 1.25, and revenue per order rose from Rs 1,84,211 to Rs 2,17,442. The product of the three ratios,
 1.000 times 0.754 times 1.180, is 0.890, which is Rs 1,87,00,000 over Rs 2,10,00,000, so the tree
 accounts for the whole fall. The discount branch is where a missing field tempts a zero, and a zero
-there reverses the direction of the finding.
+there files every unknown order under "no discount", so a floor is reported as the fact.
 
 ## Item by item
 
@@ -19,9 +19,9 @@ there reverses the direction of the finding.
 | 2 | b | Customers held, so acquisition is the branch that did not move; the fall sits in frequency, and a rise in order value softened it. | a reads a rising branch as proof about a flat one. c: the export's totals are exact, and the tree explains them. d: the product of the branches says exactly how much each contributed. |
 | 3 | d | The branches multiply, and 0.890 equals the revenue ratio, so the decomposition is complete. | a adds ratios that multiply. b: the frequency branch alone is 0.754, and 0.890 is the product of all three. c names one factor as if it were the product. |
 | 4 | a | 69 times less 0.4058 is 28 fewer orders, and 28 times Rs 1,84,211 is Rs 51,57,895. | b is the whole fall, which nets two branches. c prices the orders at Q2's value, which double counts the order-value branch. d is the order-value branch, which is a gain of Rs 28,57,895. |
-| 5 | a | `.get("discount", 0)` turns "not recorded" into "no discount", so both totals are floors. Over the orders that record the field, discount per order rose from Rs 60.98 to Rs 76.67, the opposite direction to the report. | b repeats the misleading number. c changes the statistic and keeps the zero. d removes real orders from revenue to tidy a discount column. |
+| 5 | a | `.get("discount", 0)` turns "not recorded" into "no discount", so the 43 Q2 orders read as having none are 17 recorded zeros and 26 records with no field. Over the 60 orders that record it, 43 carry a discount, 71.7 percent, and across all 86 the share lies between 50.0 and 80.2 percent, so "the other half" does not exist. | b repeats the misleading number. c changes the population and keeps the zero. d removes real orders from revenue to tidy a discount column. |
 | 6 | b | Rs 180 over the three invented orders that record a value is Rs 60, and the fourth is reported as not recorded. | a counts the absence as a zero. c drops a recorded zero, which is a real value. d refuses a number the recorded orders can give. |
-| 7 | c | Even if every Q2 order carried the largest recorded discount, 86 times Rs 150 is Rs 12,900, which is under 1 percent of the Rs 23,00,000 fall. | a uses the floor as if it were the value. b quotes a change in a floor as a share of the fall. d: a bound needs only the largest recorded value. |
+| 7 | c | Even if every Q2 order carried the largest recorded discount, 86 times Rs 150 is Rs 12,900, which is under 1 percent of the Rs 23,00,000 fall. | a prices only the orders with no field, and the recorded discounts count too. b quotes a change in a floor, in points of a share, as a bound on rupees. d: a bound needs only the largest recorded value. |
 | 8 | d | 81 over 54 is 1.50 and 57 over 50 is 1.14; frequency still carries the fall on Anand's definition. | a: customers fall a little on delivered orders, far less than frequency. b: revenue per order rises by 26.0 percent, which softens the fall. c: an 11.3 percent fall decomposes like any other. |
 | 9 | d | Both bridges land on the same Rs 23,00,000. Frequency and order value moved at once, and the part where they overlap is charged to whichever branch moves second. Write the order beside the bridge, or use the symmetric logarithmic split, which charges frequency Rs 55,88,480 whatever the order. In every version frequency is the branch that cost money. | a: the tree's order is a habit, never a law. b: a later price is no more accurate, only different. c: both sums are exact; they answer slightly different questions. |
 | 10 | a | `in` skips the orders without the field, `except` does whatever its branch says, and `.get` reads them as zero: three different answers to "what does absent mean?", each needing its reason written beside the number. Absence is rarely random, because some system or channel left the field empty. | b: none of them counts anything unless you add a counter. c: only `.get` with a default of zero reads absent as zero. d: all three carry on past the missing key; only the plain lookup stops. |
@@ -30,7 +30,7 @@ there reverses the direction of the finding.
 
 Item 5. The hurried fix makes the KeyError go away, and a notebook that runs feels like a notebook
 that is right. The default in `.get()` is a decision about what an absence means, and it belongs in
-a written line: absent means not recorded, reported separately, never summed as zero. How many
+a written line: absent means not recorded, reported separately, never counted as zero. How many
 orders lack the field is the count you made in your own notebook, and it is the first line of that
 note.
 

@@ -55,12 +55,12 @@ b) Less Rs 23,00,000, the whole fall between the two quarters
 c) Less Rs 60,88,376, the 28 lost orders at Q2's order value
 d) Less Rs 28,57,895, the part that order value gives back
 
-### Q5. The tree's last branch is discounts. A hurried fix reads a missing field with `order.get("discount", 0)` and reports "discount given fell from Rs 5,000 to Rs 4,600, down 8.0 percent, so restore the discounts." What is wrong with the report?
+### Q5. The tree's last branch is discounts. A hurried fix reads a missing field with `order.get("discount", 0)` and reports "50.0 percent of Q2's orders, 43 of 86, had a discount, so extend the monsoon discount to the other half." What is wrong with the report?
 
-a) An absent field is unknown; per order that records it, discount rose from Rs 60.98 to Rs 76.67
-b) The totals are right, and an 8.0 percent fall is small enough to leave out of the note to Meera
-c) The totals should use the median discount, since a mean is pulled up by the largest discounts
-d) The fix should have skipped every order without the field, and taken its revenue out as well
+a) A missing field is unknown, and over the 60 orders that record it the share is 71.7 percent
+b) The share is right, and extending the discount to the other half is a call for Marketing alone
+c) The share should count delivered orders only, since a returned order never kept its discount
+d) The fix should have dropped every order without the field, and taken its revenue out as well
 
 ### Q6. Three invented orders carry discounts of Rs 120, Rs 60 and Rs 0, and a fourth invented order has no discount field. What is the average discount, honestly reported?
 
@@ -71,8 +71,8 @@ d) No average can be given, since one of the four orders carries no value at all
 
 ### Q7. The largest discount any order records is Rs 150, and Q2 has 86 orders. What is the most the discount branch could explain, and what follows?
 
-a) At most Rs 4,600, the Q2 total with missing fields read as zero, which settles the branch for good
-b) At most 8.0 percent of the fall, the change in discount given between the two closed quarters
+a) At most Rs 3,900, the 26 Q2 orders with no field at Rs 150 each, which settles the branch for good
+b) At most 7.9 points, the rise in the hurried share of orders with a discount between the quarters
 c) At most Rs 12,900 against a Rs 23,00,000 fall, so the discount branch did not move revenue
 d) It cannot be bounded until every missing discount is recovered from the source billing system
 

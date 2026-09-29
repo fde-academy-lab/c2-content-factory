@@ -35,7 +35,7 @@ edit it, so the take-home sample is made inside the day folder; see the change r
 |---|---|---|
 | Customer count flat, 69 and 69 | Round 2's demonstration | Notebook 02 and the half one Answer slide, after a Predict |
 | Orders per customer falling in Retail-Plus only (2.32 to 1.18 as exported) | Round 3's harder variant, then the escalated case | An empty your-turn cell at the end of notebook 03; the afternoon from the escalated case on |
-| The discount field absent on a subset (32 of 114 Q1 records, 26 of 86 Q2) | Round 2's trap | The KeyError live; the count stays in an empty your-turn cell and no STUDENT file prints it |
+| The discount field absent on a subset (32 of 114 Q1 records, 26 of 86 Q2) | Round 2's trap | The KeyError live, which names the field to every learner; the room counts the blanks in an empty your-turn cell, and the check that follows prints the counts, because the review of 29 September 2026 made the counts the trap's check. The Kahoot item uses invented counts |
 | Wednesday's 14 duplicated Q1 rows (11 Retail-Plus in May, 2 Business at Rs 9,83,780 in April, 1 Retail-Core in June) | Nothing today | Unmentioned in every STUDENT file; the day sheet warns the trainer |
 
 The take-home file's own findings (Retail-Core customers 34 to 26 with none new, Q2 cut on
@@ -95,9 +95,9 @@ take-home self-check's expected numbers and here.
    and a stretch item on each case brief (mix and rate in both orders; the season). The two case briefs
    keep one key string between them, 1c 2a 3d 4b 5c 6d, because the audit matches them by the last
    word of their names.
-10. **The Kahoot runs to nine items against the standard's eight**, since the requester asked for the
-   new depth there too; the added item is the bridge's step order, placed before Monday's return
-   question, and the afternoon deck's S20 says nine.
+10. **The Kahoot runs to the standard's eight items.** The review of 29 September 2026 cut the
+   ladder's first-move item, which repeated what the matched-windows item tests with a number, and
+   kept the bridge's step order; the afternoon deck's S20 says eight.
 8. **The study notes run to about 7,000 words against "about 4,000"**: three rounds, two cases, twelve
    full interview answers, and, since 29 Sep 2026 at the requester's ask, the morning deck's business
    context and technical depth in the rung where each is taught. The interview answers and the

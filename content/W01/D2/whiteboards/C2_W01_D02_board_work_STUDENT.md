@@ -70,8 +70,8 @@ rupees: Rs 2,10,00,000, then Rs 0 for customers, minus Rs 51,57,895 for orders p
 Rs 28,57,895 for revenue per order, ending at Rs 1,87,00,000.
 
 Beside the discounts box go three invented orders, Rs 100, Rs 0 and one with no field, with the two
-averages they give: Rs 33 when the absent one is read as zero, and Rs 50 over the two that recorded
-it. The bound goes under them: at most Rs 12,900 against a Rs 23,00,000 fall. Rung 2 gets its tick.
+shares with a discount they give: 1 of 3, 33 percent, when the absent one is read as zero, and 1 of 2,
+50 percent, over the two that recorded it. The bound goes under them: at most Rs 12,900 against a Rs 23,00,000 fall. Rung 2 gets its tick.
 
 ---
 

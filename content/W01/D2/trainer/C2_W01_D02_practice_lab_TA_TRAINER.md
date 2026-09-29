@@ -33,8 +33,8 @@ problem and nothing more; a second hint turns the problem into a demonstration.
 - A learner who asks why Retail-Plus shows 24 orders in May should be told that Wednesday's
   reconciliation looks at the file line by line, and that the question is a good one to carry in.
   Do not explain it tonight; Wednesday's lesson rests on the room finding the cause itself.
-- The count of orders without a discount field stays in each learner's own notebook; do not read it
-  out to the room.
+- The count of orders without a discount field came out of each learner's own notebook in round 2;
+  point a learner who lost it back to that cell rather than reading it out.
 
 ## What a finished lab looks like
 

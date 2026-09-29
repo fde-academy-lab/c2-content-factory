@@ -514,11 +514,11 @@ LIVE. The close runs 20 minutes: Kahoot 10, the sentence and the crux lines 7, t
 
 ---
 
-## S20. Kahoot: nine questions, ungraded
+## S20. Kahoot: eight questions, ungraded
 *One per idea from today, plus Monday's return question.*
 
 ```stats
-value: 9 | label: questions | note: eight from today, one from Monday
+value: 8 | label: questions | note: seven from today, one from Monday
 value: 0 | label: scores recorded | note: ungraded, every day this week
 value: 10 min | label: to play and discuss | note: answers talked through
 ```

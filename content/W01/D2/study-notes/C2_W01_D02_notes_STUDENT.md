@@ -284,26 +284,34 @@ them.
 it with `KeyError: 'discount'`, a runtime error read from its last line in two minutes. The hurried
 fix is the dangerous part.
 
-**The trap, and the decision it misleads.** `order.get("discount", 0)` makes the error go away by
-reading every absent field as zero. The totals it gives are Rs 5,000 of discount in Q1 and Rs 4,600
-in Q2, "discounts fell 8.0 percent", and the story writes itself: the discount branch tightened,
-members pulled back, so restore the discounts.
+**The trap, and the decision it misleads.** Marketing's monsoon plan starts from one number, the
+share of orders that carry a discount. `order.get("discount", 0)` makes the error go away by reading
+every absent field as zero, and the count of orders with a discount above zero gives 42.1 percent of
+Q1's 114 orders and 50.0 percent of Q2's 86, which is 43 of them. The story writes itself: half of
+Q2's orders went without a discount, so extend the monsoon discount to the other half.
 
 **Why it is wrong.** An absent field means nobody recorded a discount, which could be zero or could be
-Rs 150. Reading it as zero turns a gap in the record into a fact about the customer. The mechanism is
-clear on three invented orders: discounts of Rs 100, Rs 0 and one with no field average Rs 33 when
-the absent one is read as zero, and Rs 50 over the two that recorded it.
+Rs 150. Reading it as zero files every unrecorded order beside the orders where someone wrote Rs 0,
+and turns a gap in the record into a fact about the customer. The mechanism is clear on three
+invented orders: with discounts of Rs 100, Rs 0 and one with no field, the share with a discount is
+1 of 3, 33 percent, when the absent one is read as zero, and 1 of 2, 50 percent, over the two that
+recorded it.
 
-**The check.** Count the orders that carry the field in each quarter, and compute the average only
-where it is recorded. With absences read as zero, the average per order is Rs 43.86 in Q1 and Rs 53.49
-in Q2. Over recorded orders only, it is Rs 60.98 in Q1 and Rs 76.67 in Q2, a rise of 25.7 percent,
-which runs the opposite way from the hurried total.
+**The check.** Split the orders the hurried reading called "no discount" into recorded zeros and
+records with no field, quarter by quarter. In Q1, 34 orders record Rs 0 and 32 carry no field; in Q2,
+17 record Rs 0 and 26 carry no field. Of the 43 Q2 orders read as "no discount", only 17 are known
+to have had none.
 
-**The fix.** Write the default and its reason where the next person will read it: absent means not
-recorded, it is reported separately, and it is never summed as zero. Then bound the branch. The
-largest recorded discount is Rs 150, so even if every Q2 order carried Rs 150, the discount branch
-could explain at most Rs 12,900, which is 86 times 150, against a fall of Rs 23,00,000. The discount
-branch did not move revenue, and the proof needs no guess about the missing values.
+**The fix.** Treat a blank as unknown, and write the rule where the next person will read it: absent
+means not recorded, it is reported separately, and it is never counted as zero. Over the orders that
+record the field, 48 of 82 carried a discount in Q1, 58.5 percent, and 43 of 60 in Q2, 71.7 percent.
+Across all orders the blanks allow a range, 42.1 to 70.2 percent in Q1 and 50.0 to 80.2 percent in
+Q2, and the hurried figure is the bottom of that range reported as the fact. "The other half" of Q2's
+orders does not exist, so the extension goes back to Marketing until someone finds which system left
+26 records blank. Then bound the branch in rupees. The largest recorded discount is Rs 150, so even if
+every Q2 order carried Rs 150, the discount branch could explain at most Rs 12,900, which is 86 times
+150, against a fall of Rs 23,00,000. The discount branch did not move revenue, and the proof needs no
+guess about the missing values.
 
 **Three ways past a missing key, and the decision each makes quietly.**
 
@@ -530,8 +538,8 @@ No writing: pick a letter for each, then check the key.
    count once each.
 4. A function prints its result and has no `return`. A variable set to its call holds: a) the printed
    text; b) `None`; c) zero; d) an error.
-5. Some orders carry no discount field. In the discount total they count as: a) zero; b) the average
-   discount; c) unknown, reported separately; d) the largest discount.
+5. Some orders carry no discount field. In the share of orders with a discount they count as: a) no
+   discount; b) the average discount; c) unknown, reported separately; d) the largest discount.
 6. From Monday: the mean order doubled and the median did not move. The first check is: a) read the
    top of the sorted list; b) recount the customers; c) change the window; d) drop the largest order.
 
@@ -623,7 +631,7 @@ accepting or rejecting the cause on instinct.
 | Decomposition | A change split along the tree into branches that multiply | Round 2; notebook 02 | 1.000 times 0.754 times 1.180 is 0.890 |
 | Bridge | A change in rupees moved one branch at a time from start to end | Round 2; notebook 02 | Orders per customer took away Rs 51,57,895 |
 | Middle half | The spread between the first and third quartiles of the sorted values | Round 3; `describe` | Business, Rs 8,02,750 wide in Q1 |
-| Default | The value used when a field is absent, with its written reason | Round 2; notebook 02 | Absent discount reported separately, never summed as zero |
+| Default | The value used when a field is absent, with its written reason | Round 2; notebook 02 | Absent discount reported separately, never counted as zero |
 | Function | A named block that takes inputs and returns one answer | Round 3; notebook 03 | `tree_for(rows)` returns a dictionary of the tree |
 | Weighted roll-up | A company rate built from totals, so each group counts by its size | Round 3; notebook 03 | 114 orders over 69 customers is 1.65 |
 | Mix against rate | An overall rate split into a change of weights and a change inside groups | Escalated case; notebook 04 | Mix explains about 69 percent of the rise in revenue per order |

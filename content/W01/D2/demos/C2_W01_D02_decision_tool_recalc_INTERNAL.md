@@ -5,8 +5,8 @@ and then applies each fix to prove the verdicts move.
 
 The workbook ships with one planted formula defect per tab, so as shipped every verdict asks for
 its fix and the Export release reads "not ready". The defects are: Window!B10 divides the tile's
-revenue by Q1's weeks; Tree!C10 divides Q2 revenue by customers; Discount!C12 divides the recorded
-total by every order; Rollup!B10 averages the segment averages; Segments!D5:D8 return an empty cell
+revenue by Q1's weeks; Tree!C10 divides Q2 revenue by customers; Discount!C12 divides the orders
+with a discount by every order; Rollup!B10 averages the segment averages; Segments!D5:D8 return an empty cell
 for any change beyond 30 percent, as the printing helper does. Each flip below is the fix a learner
 makes, some with a changed choice or input to prove the verdict follows it, and the last applies
 all five, which is the only state that releases the brief.
@@ -16,7 +16,7 @@ workbook: C2_W01_D02_decision_tool_STUDENT.xlsx
 verdicts:
   - {sheet: Window, cell: B18, contains: "fix the weekly rate that divides by the wrong weeks"}
   - {sheet: Tree, cell: B15, contains: "fix the rate with the wrong denominator"}
-  - {sheet: Discount, cell: B18, contains: "fix the where-recorded average"}
+  - {sheet: Discount, cell: B18, contains: "fix the where-recorded share"}
   - {sheet: Rollup, cell: B15, contains: "fix the roll-up that averages the averages"}
   - {sheet: Segments, cell: B16, contains: "fix the change formula that drops the big moves"}
   - {sheet: Segments, cell: B12, contains: "2 of 4 segments went in and came out empty"}
@@ -43,14 +43,14 @@ flips:
     set: [{sheet: Tree, cell: C10, value: "=C7/C6"}, {sheet: Tree, cell: C5, value: 80}]
     verdicts:
       - {sheet: Tree, cell: B15, contains: "Customers rose 15.9 percent, so the customer branch moved"}
-  - name: the where-recorded average divides by recorded orders, default still zero
+  - name: the where-recorded share divides by recorded orders, default still zero
     set: [{sheet: Discount, cell: C12, value: "=C7/C6"}]
     verdicts:
       - {sheet: Discount, cell: B18, contains: "Refuse the zero default"}
   - name: the fixed discount, reported where recorded
     set: [{sheet: Discount, cell: C12, value: "=C7/C6"}, {sheet: Discount, cell: B16, value: "report where recorded"}]
     verdicts:
-      - {sheet: Discount, cell: B18, expect: "Report the discount where recorded, Rs 60 to Rs 75 an order, with the orders that lack the field reported separately."}
+      - {sheet: Discount, cell: B18, expect: "Report the share where recorded, 60.0% to 66.7% of orders, with the orders that lack the field reported separately."}
   - name: the fixed discount, bounded
     set: [{sheet: Discount, cell: C12, value: "=C7/C6"}, {sheet: Discount, cell: B16, value: "bound with the largest value"}]
     verdicts:

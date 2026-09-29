@@ -178,25 +178,28 @@ ws = sheet(wb, "Discount", "What does an absent discount mean?",
 head(ws, 4, ["Input", "Q1", "Q2"])
 put(ws, "A5", "Orders in the quarter"); put(ws, "B5", 50, fill=INPUT); put(ws, "C5", 45, fill=INPUT)
 put(ws, "A6", "Orders that record the field"); put(ws, "B6", 40, fill=INPUT); put(ws, "C6", 30, fill=INPUT)
-put(ws, "A7", "Discount recorded, total (Rs)"); put(ws, "B7", 2400, fill=INPUT); put(ws, "C7", 2250, fill=INPUT)
+put(ws, "A7", "Orders with a discount above Rs 0"); put(ws, "B7", 24, fill=INPUT); put(ws, "C7", 20, fill=INPUT)
 put(ws, "A8", "Largest recorded discount (Rs)"); put(ws, "B8", 150, fill=INPUT)
 put(ws, "A9", "The revenue fall to explain (Rs)"); put(ws, "B9", 2300000, fill=INPUT)
-put(ws, "A11", "Per order, absent read as zero"); put(ws, "B11", "=B7/B5"); put(ws, "C11", "=C7/C5")
-put(ws, "A12", "Per order, where recorded"); put(ws, "B12", "=B7/B6"); put(ws, "C12", "=C7/C5")
-put(ws, "A13", "The most the branch could move (Rs)"); put(ws, "C13", "=B8*C5")
-put(ws, "A14", "The check", BOLD)
-put(ws, "B14", '=IF(AND(ABS(B12*B6-B7)<0.5,ABS(C12*C6-C7)<0.5),"The where-recorded averages multiply back to the '
-               'recorded totals.","A where-recorded average does not multiply back to its recorded total: it divides by '
-               'every order. Fix it first.")', wrap=True)
+put(ws, "A11", "Share with a discount, absent read as zero"); put(ws, "B11", "=B7/B5"); put(ws, "C11", "=C7/C5")
+put(ws, "A12", "Share with a discount, where recorded"); put(ws, "B12", "=B7/B6"); put(ws, "C12", "=C7/C5")
+put(ws, "A13", "Share at most, every blank discounted"); put(ws, "B13", "=(B7+B5-B6)/B5"); put(ws, "C13", "=(C7+C5-C6)/C5")
+put(ws, "A14", "The most the branch could move (Rs)"); put(ws, "C14", "=B8*C5")
+for ref in ("B11", "C11", "B12", "C12", "B13", "C13"):
+    ws[ref].number_format = "0.0%"
+put(ws, "A15", "The check", BOLD)
+put(ws, "B15", '=IF(AND(ABS(B12*B6-B7)<0.5,ABS(C12*C6-C7)<0.5),"The where-recorded shares multiply back to the '
+               'orders with a discount.","A where-recorded share does not multiply back to its orders with a discount: '
+               'it divides by every order. Fix it first.")', wrap=True)
 put(ws, "A16", "Your default", BOLD); put(ws, "B16", "read absent as zero", fill=INPUT)
 choice(ws, "B16", ["read absent as zero", "report where recorded", "bound with the largest value"])
 put(ws, "A18", "Verdict", VERDICT)
-put(ws, "B18", '=IF(OR(ABS(B12*B6-B7)>=0.5,ABS(C12*C6-C7)>=0.5),"Fix the where-recorded average before choosing a default.",'
-               'IF(B16="read absent as zero","Refuse the zero default: an absent discount is unknown, so the total is a '
+put(ws, "B18", '=IF(OR(ABS(B12*B6-B7)>=0.5,ABS(C12*C6-C7)>=0.5),"Fix the where-recorded share before choosing a default.",'
+               'IF(B16="read absent as zero","Refuse the zero default: an absent discount is unknown, so the share is a '
                'floor; choose a default and write down why.",'
-               'IF(B16="report where recorded","Report the discount where recorded, "&' + rs("B12") + '&" to "&'
-               + rs("C12") + '&" an order, with the orders that lack the field reported separately.",'
-               '"The discount branch is at most "&' + rs("C13") + '&", "&TEXT(100*C13/B9,"0.00")&" percent of the fall, '
+               'IF(B16="report where recorded","Report the share where recorded, "&TEXT(B12,"0.0%")&" to "&'
+               'TEXT(C12,"0.0%")&" of orders, with the orders that lack the field reported separately.",'
+               '"The discount branch is at most "&' + rs("C14") + '&", "&TEXT(100*C14/B9,"0.00")&" percent of the fall, '
                'so it did not move revenue.")))', VERDICT, TINT, True)
 put(ws, "A19", "Fixed, for the Export tab", NOTE)
 put(ws, "B19", "=IF(AND(ABS(B12*B6-B7)<0.5,ABS(C12*C6-C7)<0.5),1,0)")

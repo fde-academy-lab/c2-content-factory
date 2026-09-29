@@ -313,18 +313,18 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
           <h3>An absent discount read as zero</h3>
           <p><b>Situation.</b> The tree's last branch is discounts. Some orders carry no discount field at all, and the
             hurried fix reads every absent field as Rs 0.</p>
-          <p><b>Hypothesis.</b> Averaged only where the field is recorded, the discount per order moves the other way from
-            the zero-filled total.</p>
-          <p><b>Watch for.</b> The direction of the two bars, and the percentage in the title.</p>
+          <p><b>Hypothesis.</b> Counted only over the orders that record the field, the share of orders with a discount
+            is far above the zero-filled share.</p>
+          <p><b>Watch for.</b> The gap between the two bars in Q2, and the percentage in the title.</p>
           <div class="holder" id="expBChart"></div>
           <div class="row">
-            <button class="btn" id="expBRun" type="button" aria-pressed="false">Average where recorded</button>
+            <button class="btn" id="expBRun" type="button" aria-pressed="false">Count where recorded</button>
             <button class="btn" id="expBSeq" type="button">Show the sequence</button>
           </div>
           <div class="result" id="expBResult" hidden>
             <p><b>What happened.</b> <span id="expBWhat"></span></p>
-            <p><b>Why it matters.</b> The zero-filled total says discounts were cut and members pulled back, which
-              argues for restoring them; the largest recorded discount is Rs 150, so the branch is at most Rs 12,900 a
+            <p><b>Why it matters.</b> The zero-filled share says half the orders went without a discount, which
+              argues for extending it to the other half; the largest recorded discount is Rs 150, so the branch is at most Rs 12,900 a
               quarter against a Rs 23,00,000 fall.</p>
             <p class="rule">Missing means unknown until someone chooses a default and writes down why.</p>
           </div>
@@ -998,7 +998,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   function p1(x) { return (x >= 0 ? "+" : "") + x.toFixed(1) + "%"; }
   function words(x) { return Math.abs(x).toFixed(1) + " percent"; }
   function f2(x) { return x.toFixed(2); }
-  function rs2(x) { return "Rs " + x.toFixed(2); }
+  function pc1(x) { return x.toFixed(1) + "%"; }
   function sum(a) { return a.reduce(function (s, x) { return s + x; }, 0); }
 
   /* ---------------------------------------------------------------- the totals the page holds
@@ -1017,7 +1017,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     same: { a: 18751440, b: 15559950, la: "Q1, first 11 weeks", lb: "Q2, first 11 weeks", weeks: "11 weeks against 11", fair: true }
   };
   var CUM = { labels: ["start", "week 11", "week 13"], q1: [0, 18751440, 21000000], q2: [0, 15559950, 18700000] };
-  var DISC = { total: [5000, 4600], zeroAvg: [43.86, 53.49], recAvg: [60.98, 76.67], maxRecorded: 150 };
+  var DISC = { zeroShare: [42.1, 50.0], recShare: [58.5, 71.7], topShare: [70.2, 80.2], maxRecorded: 150 };
   var PLUS_MONTHS = [14, 24, 13, 9, 9, 8], CORE_MONTHS = [13, 12, 13, 12, 12, 12];
   var MONTHS = ["Apr", "May", "Jun", "Jul", "Aug", "Sep"];
   var PLUS_CHANNEL = { names: ["web", "store", "app"], q1: [24, 14, 13], q2: [9, 9, 8] };
@@ -1067,11 +1067,11 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         { fmt: K.rupees, width: 420, title: "Rs 150 on all 86 Q2 orders: " + (100 * bound / FALL).toFixed(2) + " percent of the fall" });
     }
     if (mode === "zero") {
-      return K.columns(["Q1", "Q2"], [["discount given, absent read as zero", DISC.total]],
-        { fmt: K.rupees, width: 420, title: "Discount given: " + p1(pct(DISC.total[0], DISC.total[1])) });
+      return K.columns(["Q1", "Q2"], [["orders with a discount, absent read as zero", DISC.zeroShare]],
+        { fmt: pc1, width: 420, title: "Absent read as zero: " + pc1(DISC.zeroShare[1]) + " of Q2 orders" });
     }
-    return K.columns(["Q1", "Q2"], [["per order where recorded", DISC.recAvg]],
-      { fmt: rs2, width: 420, title: "Discount per order where recorded: " + p1(pct(DISC.recAvg[0], DISC.recAvg[1])) });
+    return K.columns(["Q1", "Q2"], [["absent read as zero", DISC.zeroShare], ["where recorded", DISC.recShare]],
+      { fmt: pc1, width: 420, title: "Where recorded: " + pc1(DISC.recShare[1]) + " of Q2 orders" });
   }
   function rollupChart(mode, lit) {
     var cats = SEG.map(function (s) { return s.name; }).concat([mode === "weighted" ? "company, weighted" : "company, averaged"]);
@@ -1146,9 +1146,9 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     { t: "Rung 2: the tree, decomposed", lit: 1, big: f2(weighted(0)) + " to " + f2(weighted(1)), cap: "orders per customer; customers held at 69",
       chart: function () { return windowBridge("closed"); },
       x: "Customers held at 69 in both quarters, so the customer branch moved by Rs 0. Orders per customer fell from 1.65 to 1.25, which took Rs 51,57,895 off, and revenue per order rose 18.0 percent, which put Rs 28,57,895 back. The ratios 1.000 times 0.754 times 1.180 multiply to 0.890, the revenue ratio." },
-    { t: "Rung 2: the discount branch", lit: 1, big: p1(pct(DISC.recAvg[0], DISC.recAvg[1])), cap: "discount per order where the field is recorded",
+    { t: "Rung 2: the discount branch", lit: 1, big: pc1(DISC.recShare[1]), cap: "Q2 orders with a discount, where the field is recorded",
       chart: function () { return discountChart("recorded"); },
-      x: "Some orders carry no discount field. Read as zero, the total fell from Rs 5,000 to Rs 4,600, which says discounts were cut. Averaged where the field is recorded, the discount per order rose from Rs 60.98 to Rs 76.67. Either way the branch is at most Rs 12,900 a quarter against a Rs 23,00,000 fall." },
+      x: "Some orders carry no discount field. Read as zero, 50.0 percent of Q2's orders carry a discount, which says half went without. Over the orders that record the field it is 71.7 percent, and with the blanks unknown the share lies between 50.0 and 80.2 percent. Either way the branch is at most Rs 12,900 a quarter against a Rs 23,00,000 fall." },
     { t: "Rung 3: the segment split", lit: 2, big: p1(ch["Retail-Plus"]), cap: "orders per customer in Retail-Plus, the same 22 members",
       chart: function () { return rollupChart("weighted"); },
       x: "The same function run on each segment shows where frequency fell: Retail-Plus from 2.32 to 1.18 orders per member, while Retail-Core moved 5.3 percent and Student rose. The company figure is weighted by customers, 1.65 to 1.25, and it reproduces rung 2. Averaging the four segment figures gives 1.94 to 1.82, which does not." },
@@ -1220,9 +1220,9 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     if (s.roll === "weighted") para(box, "Orders per customer fell from 1.65 to 1.25, " + words(fchange) + ", so frequency is the branch that moved.");
     else { para(box, "Orders per customer fell only " + words(fchange) + ", 1.94 to 1.82, which reads as if frequency is not the branch either.", true);
            wrong.push("a frequency fall of 6.0 percent that leaves Marketing's story standing"); }
-    if (s.disc === "zero") { para(box, "Discount given fell from Rs 5,000 to Rs 4,600, 8.0 percent, which reads as discounts cut and members pulling back.", true);
-           wrong.push("a call to restore discounts on a branch worth at most Rs 12,900"); }
-    else if (s.disc === "recorded") para(box, "Where the discount is recorded it rose from Rs 60.98 to Rs 76.67 an order; absent values are reported separately and never summed as zero.");
+    if (s.disc === "zero") { para(box, "Half of Q2's orders, 50.0 percent, carry a discount, which reads as half the orders going without one.", true);
+           wrong.push("extending the monsoon discount to an \"other half\" of orders that the record does not show"); }
+    else if (s.disc === "recorded") para(box, "Where the field is recorded, 71.7 percent of Q2's orders carry a discount, 58.5 percent in Q1; absent values are reported separately and never counted as zero.");
     else para(box, "Even at Rs 150 on every Q2 order, the discount branch is at most Rs 12,900 against a Rs 23,00,000 fall, so it did not move revenue.");
     var h = helperOutput(s.help);
     if (s.help === "prints") { para(box, "The segment summary shows Retail-Core -5.3 and Business -15.0 only, so Business reads as the largest fall and two of four segments are missing.", true);
@@ -1245,7 +1245,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     }
 
     setState("stWindow", w.fair ? "Both sides cover the same kind of window." : "Q2 covers 11 weeks against Q1's 13.", w.fair);
-    setState("stDiscount", s.disc === "zero" ? "An absent field was summed as Rs 0." : "The default is chosen and written down.", s.disc !== "zero");
+    setState("stDiscount", s.disc === "zero" ? "An absent field was counted as no discount." : "The default is chosen and written down.", s.disc !== "zero");
     setState("stRollup", s.roll === "weighted" ? "It reproduces 1.65 and 1.25 from the totals." : "It does not reproduce the company totals.", s.roll === "weighted");
     setState("stHelper", h.names.length + " segments in, " + (s.help === "prints" ? h.kept.length : h.names.length) + " rows out.", s.help === "returns");
     setState("stMeasure", s.meas === "rupees" ? "Rupees point at Business; show orders beside them." : "Orders point at Retail-Plus; show rupees beside them.", true);
@@ -1255,8 +1255,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
               (s.help === "returns" ? "good" : "bad"), wrong.length ? "unknown" : "known"] }));
     K.draw("simWindow", windowBridge(s.win));
     K.draw("simDiscount", discountChart(s.disc));
-    $("simDiscountNote").textContent = s.disc === "zero" ? "Read as zero, the per-order figure is Rs 43.86 then Rs 53.49 and the total Rs 5,000 then Rs 4,600." :
-      (s.disc === "recorded" ? "The count of orders without the field is yours to take from the file; the average here uses only orders that record it." :
+    $("simDiscountNote").textContent = s.disc === "zero" ? "Read as zero, every order with no field counts as an order that went without a discount." :
+      (s.disc === "recorded" ? "The share here uses only the orders that record the field; with the blanks unknown, Q2 lies between 50.0 and 80.2 percent." :
        "The bound needs no default at all: the largest recorded value times the orders in the window.");
     K.draw("simRollup", rollupChart(s.roll));
     $("simHelper").innerHTML = h.html;
@@ -1322,15 +1322,15 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   });
 
   /* B: the discount default */
-  toggler("expB", ["Average where recorded", "Read absent as zero again"],
+  toggler("expB", ["Count where recorded", "Read absent as zero again"],
     function (on) { K.draw("expBChart", discountChart(on ? "recorded" : "zero")); },
     function (on) { return on
-      ? "Averaged where the field is recorded, the discount per order rose from Rs 60.98 to Rs 76.67, up 25.7 percent, the opposite direction to the zero-filled total, which fell from Rs 5,000 to Rs 4,600."
-      : "Read as zero, discount given fell from Rs 5,000 to Rs 4,600, 8.0 percent, and the per-order figure is Rs 43.86 then Rs 53.49 with every absent field counted as nothing."; });
+      ? "Over the orders that record the field, 71.7 percent of Q2's orders carry a discount against 50.0 percent with blanks read as zero; with the blanks unknown, the share lies between 50.0 and 80.2 percent."
+      : "Read as zero, 42.1 percent of Q1's orders and 50.0 percent of Q2's carry a discount, and every order with no field counts as one that went without."; });
   $("expBSeq").addEventListener("click", function () {
     openSeq("Experiment B, as a sequence", ["the order", "the default", "the total"], [
-      ["the order", "the default", "no discount field"], ["the default", "the total", "read as Rs 0: Rs 5,000 to Rs 4,600"],
-      ["the default", "the default", "absent means not recorded"], ["the default", "the total", "recorded only: Rs 60.98 to Rs 76.67"],
+      ["the order", "the default", "no discount field"], ["the default", "the total", "read as Rs 0: 50.0 percent in Q2"],
+      ["the default", "the default", "absent means not recorded"], ["the default", "the total", "recorded only: 71.7 percent in Q2"],
       ["the total", "the total", "bound: at most Rs 12,900"]],
       "The default is a decision with a reason written beside it, and the bound says whether the branch matters at all.");
   });
