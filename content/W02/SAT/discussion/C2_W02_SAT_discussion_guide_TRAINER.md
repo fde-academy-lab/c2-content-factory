@@ -52,7 +52,8 @@ the mock-interview round, so a learner who writes them now has rehearsed.
    partial credit, because the programme has set no rule for it.
 
 Say once, at the start, that the marker decides nothing: reading somebody else's answer against the
-key is the exercise. The paper is ungraded and goes on no record.
+key is the exercise. The paper carries no marks and ranks nobody; the misses are counted by topic
+only so that Monday's session knows what to revisit.
 
 ---
 
@@ -69,7 +70,7 @@ section has the reason behind every wrong option.
 | Item | What it tests | The trap most papers fall into | The repair, said aloud |
 |---|---|---|---|
 | 24 and 53 | The join that multiplied money | Checking the rows, which all look fine | Compare the row count before and after the join first: fifty retried payments of Rs 2,000 turn Rs 20 lakh collected into a sum of Rs 21 lakh. |
-| 28 | A window that changes between runs | Blaming the cache or the database | The ORDER BY inside the window has ties, so the row order is undefined and the running total can differ; name a tiebreaker. |
+| 28 | A window that changes between runs | Blaming the cache or the database | Under a ROWS frame, ties in the window's ORDER BY leave the row order undefined, so the running total at the tied rows can differ between runs; Postgres's default RANGE frame gives tied rows one shared total instead. Either way, name a tiebreaker. |
 | 35 | What a full outer join adds | Ticking the orders with two payments | Only rows with no partner on the other side are new: orders with no payment and payments with no order. |
 | 36 | When GROUP BY runs out | Ticking total revenue per segment | A rank within a segment, the previous month beside this one, and a running total with every row kept all need a window; a total per segment does not. |
 | 46, 47 and 54 | Ties in a top-N | Assuming a top-N always returns N rows | DENSE_RANK three or less returns five members in set 2, RANK fifty or less ships 51 rows on a tie at fifty, and only ROW_NUMBER returns exactly N, by breaking the tie arbitrarily unless a tiebreaker is named. |
@@ -227,11 +228,11 @@ The method transfers. The domain does not.
 
 ## After the session
 
-Collect the marked papers. Using the key file's items-by-tag list, count the crosses per tag for each
-learner and enter that row in the ground team's tracker: one row per learner per week, the count of
-items right and the misses by tag. The misses by day point at the day each gap came from.
+Collect the marked papers. Using the key file's list of items by tag, level and day, count the
+crosses across the room per tag and per day: the tags show which kind of thinking slipped, and the
+days point at where each gap came from. That count by topic is what is kept, and it goes to Monday's
+session so it knows what to revisit.
 
-Write a short note for the build team beside the tally. Any item where more than half the papers gave
-the same wrong answer points at the teaching and belongs in a follow-up issue. Name the two or three
-learners who answered anchor 10 with habits: they are the ones to watch in Build 1. The paper is
-ungraded, never a ranking, and never read out by name.
+Any item where more than half the papers gave the same wrong answer points at the teaching and
+belongs in a follow-up issue for the build team. The paper carries no marks, ranks nobody, and is
+never read out by name.
