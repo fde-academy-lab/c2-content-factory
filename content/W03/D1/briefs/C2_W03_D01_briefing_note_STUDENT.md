@@ -20,7 +20,7 @@ packages by walking in, on the app, by phone, or for collection at home, and our
 book health checks for their staff. Our financial year runs April to March, so Q1 is April to June
 and Q2 is July to September 2026.
 
-> "I do not need a dashboard. I need to know where the 13 points went, and what to do on Monday."
+> "I do not need a dashboard. I need to know where the 13 points went, and what to do next."
 > Dr Priya Menon
 
 ## What my team is asking

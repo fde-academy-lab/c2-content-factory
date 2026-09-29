@@ -54,7 +54,7 @@ Do not say anything about how the 5 percent was counted. That is for the groups 
 ## S2. What Dr Menon wrote, and what her heads asked
 *Five questions from four people, each put as it was put to her.*
 
-**The client asks.** "I do not need a dashboard. I need to know where the 13 points went, and what to do on Monday."
+**The client asks.** "I do not need a dashboard. I need to know where the 13 points went, and what to do next."
 
 | Who is asking | What they asked Dr Menon |
 |---|---|
@@ -69,8 +69,8 @@ LIVE, the Programme Head, 4 minutes. Read Dr Menon's line, then each row. These 
 words, and each group will own one row by the end of the allocation. The full wording is in the
 briefing note, C2_W03_D01_briefing_note_STUDENT.md, which every learner has.
 Watch for learners who start explaining a row ("it must be the new system"). Say: hold that, write
-it in your challenges log as a hypothesis, and test it on Wednesday. A hypothesis said aloud on
-Monday is a guess the whole room hears.
+it in your challenges log as a hypothesis, and test it once the build starts. A hypothesis said
+aloud today is a guess the whole room hears.
 ```
 
 ---
@@ -173,23 +173,23 @@ Do not announce the allocation method here; the Programme Head chooses it on the
 
 ---
 
-## S7. The week, day by day
-*Tuesday is Dussehra, so Wednesday carries two build days.*
+## S7. The week, in five stages
+*A holiday falls inside the week, so one day carries two build days.*
 
 ```timeline
-label: Monday | title: Translate and scope | body: This introduction (60 min), the allocation (30 min), your sub-problem in the Weeks 1 and 2 method, the challenges log opened, scopes pinned at the close (15 min).
-label: Wednesday | title: Profile, clean, reconcile | body: The checkpoint (30 min), the trainer's parallel build in the open (60 min), build time, and each group's headline claim with its denominators and caveat (20 min).
-label: Thursday | title: Mock round 1, build complete | body: Every learner mocked once, about 20 minutes: half technical on Weeks 1 and 2, half a viva on your group's work.
-label: Friday | title: GDs and the build freeze | body: The industry expert runs group discussions, about 30 minutes per group; builds freeze; two cold demo runs; the first presentations.
-label: Saturday | title: Presentations and closure | body: The remaining GDs, then presentations with live demos, 25 to 30 minutes per group, before the expert and a senior industry leader. | tone: dark
+label: Stage 1 | title: Translate and scope | body: This introduction (60 min), the allocation (30 min), your sub-problem in the Weeks 1 and 2 method, the challenges log opened, scopes pinned at the close (15 min).
+label: Stage 2 | title: Profile, clean, reconcile | body: The checkpoint (30 min), the trainer's parallel build in the open (60 min), build time, and each group's headline claim with its denominators and caveat (20 min).
+label: Stage 3 | title: Mock round 1, build complete | body: Every learner mocked once, about 20 minutes: half technical on Weeks 1 and 2, half a viva on your group's work.
+label: Stage 4 | title: GDs and the build freeze | body: The industry expert runs group discussions, about 30 minutes per group; builds freeze; two cold demo runs; the first presentations.
+label: Stage 5 | title: Presentations and closure | body: The remaining GDs, then presentations with live demos, 25 to 30 minutes per group, before the expert and a senior industry leader. | tone: dark
 ```
 
 ```notes
-LIVE, the Programme Head, 4 minutes. Walk the days left to right. Three things to land:
-the headline claim is stated on Wednesday so that Thursday tests it rather than finishes it; the
+LIVE, the Programme Head, 4 minutes. Walk the stages left to right. Three things to land:
+the headline claim is stated in stage 2 so that stage 3 tests it rather than finishes it; the
 mock's viva half runs on your own group's work, so the challenges log is revision material; the
 group discussions run on Kalpa Health's problem space and are a thread separate from the project.
-Tuesday 20 October is a gazetted holiday. The time after the second block each day is open build
+One day this week is a gazetted holiday. The time after the second block each day is open build
 time with the TAs.
 ```
 
@@ -365,7 +365,7 @@ flowchart LR
 
 ```notes
 LIVE, the Programme Head, 2 minutes. Week 2 Tuesday's rule for joins, the one Anand's booked-against-
-collected report rested on. The Your-turn question is Wednesday's interview question, asked early on
+collected report rested on. The Your-turn question is a later build day's interview question, asked early on
 purpose; leave it open.
 ```
 
@@ -409,28 +409,28 @@ icon: check-check | eyebrow: What we decided | title: The decision | body: What 
 The log is `C2_W03_D01_challenges_log_STUDENT.xlsx`. Its Example sheet shows one entry, and its Summary sheet counts what is still open.
 
 ```notes
-LIVE, the Programme Head, 2 minutes. Thursday's viva reads this log. Prepared answers break where
-the log is thin, so an entry written on Monday is worth more than three written on Thursday night.
+LIVE, the Programme Head, 2 minutes. The mock's viva reads this log. Prepared answers break where
+the log is thin, so an entry written today is worth more than three written the night before the viva.
 A challenge that needed a cleaning or matching decision also goes in the decisions log.
 ```
 
 ---
 
-## S17. The close, and Wednesday's checkpoint
-*Scopes pinned today; three checkpoint questions per group on Wednesday.*
+## S17. The close, and the next checkpoint
+*Scopes pinned today; three checkpoint questions per group next build day.*
 
 | When | What each group does |
 |---|---|
 | The close today, 15 min | Pins its one-sentence scope, with the one thing it will not do |
-| Tonight, open build time | Starts the build against its own scope, and logs challenges as they happen |
-| Wednesday, 30 min | Answers the day's three checkpoint questions in two minutes |
-| Wednesday, 20 min | States its headline claim in one sentence, with its denominators and caveat |
+| After today's blocks, open build time | Starts the build against its own scope, and logs challenges as they happen |
+| Next build day, 30 min | Answers the day's three checkpoint questions in two minutes |
+| Next build day, 20 min | States its headline claim in one sentence, with its denominators and caveat |
 
 **In the interview.** [F] What changes when the cost of an error is a missed diagnosis rather than a missed sale?
 
 ```notes
 LIVE, the Programme Head, 2 minutes. The checkpoint questions are not shared today; a group that
-cannot answer them on Wednesday is stuck and should say so, because Thursday opens the mocks.
+cannot answer them at the checkpoint is stuck and should say so then, because the mocks follow.
 Take questions for the remaining ten minutes of the hour, then close on the [F] question and leave
 it on screen as the room breaks for the allocation. Each group
 answers it for its own sub-problem in Part 5 of the worksheet; nobody answers it for them.
