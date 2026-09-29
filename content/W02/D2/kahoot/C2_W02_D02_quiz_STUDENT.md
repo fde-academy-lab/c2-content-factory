@@ -1,61 +1,95 @@
-# Tuesday's Kahoot: joins, and the count that catches them
+# Kahoot, Week 2 Tuesday
 
-Ungraded. Seven questions, twenty seconds each.
+Eight items, ungraded, scored on correctness and speed together. Item 7 reaches back to Monday, one
+level up: Monday separated WHERE from HAVING on one table, and today the same two clauses sit on
+either side of a join.
 
-## Q1. A LEFT JOIN keeps every unmatched row from which side?
+Each item names what it tests, so an item dropped for time says what was lost.
 
-a) The right side, the one being attached
-b) Both sides equally, which is the point
-c) Neither, unmatched rows are always dropped
-d) The left side, the one named first <- correct
+---
 
-## Q2. 1,000 orders LEFT JOIN payments, where 450 orders carry two payment rows and 30 carry none. How many rows?
+## Q1. Orders LEFT JOIN payments. Which side keeps its unmatched rows?
 
-a) 1,420
-b) 1,000
-c) 1,450 <- correct
-d) 1,480
+*Tests: a LEFT join keeps every row of the table named first, matched or not.*
 
-## Q3. What does an INNER join do to the orders that were never paid?
+- The payments side, so every payment row survives
+- The orders side, so an unpaid order stays in  <- correct
+- Both sides, so every orphan shows up somewhere
+- Neither side, since only the matches come back
 
-a) Removes them, and says nothing about it <- correct
-b) Returns them with NULL in the payment columns
-c) Raises an error naming every unmatched row
-d) Returns them once for each payment attempted
+---
 
-## Q4. "Orders with no payment", in join words. Which is it?
+## Q2. 1,000 orders LEFT JOIN payments, where 50 orders have two payments and every other order has one. How many rows come back?
 
-a) INNER JOIN payments, then filter on amount
-b) LEFT JOIN payments, keep rows where it is NULL <- correct
-c) RIGHT JOIN payments, keep rows where it is NULL
-d) FULL OUTER JOIN, then count the rows returned
+*Tests: a key that repeats on one side multiplies the other side's rows.*
 
-## Q5. Collected revenue doubled after a join. What do you look at first?
+- 1,000, since a LEFT join keeps each order once
+- 2,000, since the two-payment orders double it all
+- 1,050, one extra row for each two-payment order  <- correct
+- 950, since the fifty repeated orders collapse
 
-a) The payment amounts, for a currency error
-b) The row count before and after the join <- correct
-c) The order table, for duplicated order rows
-d) The date range, for an overlapping quarter
+---
 
-## Q6. `HAVING count(*) > 1` on payments grouped by order finds what?
+## Q3. Booked against collected, with an INNER join. What happens to the orders nobody paid?
 
-a) Payments larger than one rupee
-b) Orders with exactly two payments
-c) Orders paid more than once <- correct
-d) Customers who placed several orders
+*Tests: an INNER join drops unmatched rows silently, and the gap leaves with them.*
 
-## Q7. Return question, one level up
+- They drop out, and their gap vanishes with them  <- correct
+- They stay in, with zero in the collected column
+- They raise an error, since a NULL cannot be summed
+- They stay in, with NULL in the collected column
 
-Monday you met WHERE and HAVING. One sentence each, and say which one could have found today's
-double-posted orders.
+---
 
-a) WHERE filters groups, HAVING filters rows, so WHERE would find them here
-b) WHERE filters rows, HAVING filters groups, so HAVING finds them <- correct
-c) Both of them filter rows, and HAVING is simply the newer of the two
-d) HAVING only ever works with count, so WHERE is the general one
+## Q4. "Orders LEFT JOIN payments WHERE the payment key IS NULL." What does it list, in Anand's words?
 
-## Trainer note
+*Tests: the anti-join is the question about rows that found no match.*
 
-Q2 is the one worth slowing down on. A room that gets it right has usually added 450 to 1,000 and
-stopped, which is the right answer by a wrong route: the 30 unpaid orders still contribute one row
-each, and it is worth asking where those 30 went before moving on.
+- Payments that no order in the book can claim
+- Orders with a payment of zero rupees against them
+- Orders paid for twice by a gateway that retried
+- Orders that were booked and never paid at all  <- correct
+
+---
+
+## Q5. Collected revenue doubled after a join, and every row looks fine. What is the first check?
+
+*Tests: a join is done when its row count is explained.*
+
+- Rows out of the join against orders in  <- correct
+- A second quarter, to see whether it doubled too
+- The payments table's total, summed on its own
+- The largest ten orders, read one at a time
+
+---
+
+## Q6. `GROUP BY order_id HAVING COUNT(*) > 1` on payments. What does it find?
+
+*Tests: the grain decides what a HAVING count is counting.*
+
+- Only the payments a gateway retry posted twice
+- Retries mixed with honest two-instalment orders  <- correct
+- Only the orders that were paid in two instalments
+- The orders with no payment row at all, in full
+
+---
+
+## Q7. The double-paid query filters Q2 orders and keeps instalments posted more than once. Where does each condition go?
+
+*Tests: WHERE filters rows before the groups form, HAVING filters the groups, and a join does not change that (Monday's clause order, one level up).*
+
+- Both in HAVING, since the query has a GROUP BY
+- Both in WHERE, since the join runs before either
+- The quarter in HAVING, the count in WHERE
+- The quarter in WHERE, the count in HAVING  <- correct
+
+---
+
+## Q8. Orders LEFT JOIN payments ON order_id, then `WHERE p.paid_date >= '2026-07-01'`. What happens to the unpaid orders?
+
+*Tests: a condition on the right-hand table in WHERE turns a LEFT join into an INNER one.*
+
+- They stay, since the join was written as a LEFT one
+- They vanish, since a NULL date fails the WHERE  <- correct
+- They stay, with the date filled in as today's
+- They raise an error, since NULL cannot be compared
