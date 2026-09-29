@@ -37,8 +37,10 @@ file: the room finds them by reconciling, splitting and asking what the denomina
                nothing; gateway retries double-post; the corporate invoice is still unpaid
   4 no-shows   one small clinic's rate looks double the others' because the others count walk-ins,
                and on its base the remaining gap is within chance
-  5 campaign   the offer ran where bookings were already rising, and offered patients out-book the
-               rest overall while booking less than the rest inside every city that ran it
+  5 campaign   the offer went to half the patients in three cities where bookings were already
+               rising, and to a fifth of patients elsewhere at random; offered patients out-book the
+               rest overall while booking less than the rest inside each of the three campaign cities,
+               and outside them any gap is chance (Delhi's draw happens to show one)
 """
 import argparse
 import csv
@@ -152,8 +154,9 @@ def generate():
     weights = {city: [p["_weight"] for p in by_city[city]] for city in by_city}
     site_codes = {city: [c["clinic_code"] for c in sites if c["city"] == city] for city, _ in CITIES}
 
-    # The campaign offer is decided up front. In the campaign cities it went to lapsed patients far
-    # more than to frequent ones, and it barely reached the other cities at all.
+    # The campaign offer is decided up front, at random: half the patients in the campaign cities
+    # and a fifth elsewhere. The drift that makes offered patients book less comes later, from
+    # OFFER_SKIP, and only inside the campaign cities, so outside them any gap is chance.
     offered, took_up = {}, set()
     for p in people:
         chance = OFFER_CHANCE["campaign"] if p["city"] in CAMPAIGN_CITIES else OFFER_CHANCE["other"]
@@ -421,12 +424,18 @@ def witness(tables, bookings):
     w["q2_mean_without_contract"] = sum(q2_no_corp) / len(q2_no_corp)
     s = sorted(q2)
     w["q2_median_invoice"] = (s[len(s) // 2 - 1] + s[len(s) // 2]) / 2 if len(s) % 2 == 0 else s[len(s) // 2]
-    w["text_amounts"] = sum(1 for i in inv if isinstance(i["amount"], str))
+    # Sixty amounts are written as text with a thousands separator, but an amount under Rs 1,000 has no
+    # separator to show, so a learner sees only the ones that carry a comma.
+    w["text_amounts"] = sum(1 for i in inv if isinstance(i["amount"], str) and "," in i["amount"])
     lines = sum(i["line_items"] for i in inv if not i["corporate_account"])
-    tests = sum(1 for t in tables["booking_tests"] if t["line"] in ("test", "component")
-                and not t["package_code"] == "PKG-CORP")
+    completed = {b["booking_id"] for b in bookings if b["status"] == "completed"}
+    tests = [t for t in tables["booking_tests"] if t["line"] in ("test", "component")
+             and not t["package_code"] == "PKG-CORP"]
     w["invoice_lines_non_corporate"] = lines
-    w["tests_performed_non_corporate"] = tests
+    # Tests on every booking, cancelled ones included, and on the completed bookings, which are the
+    # ones the invoice lines bill: the second is the like-for-like count behind the lines.
+    w["tests_booked_non_corporate"] = len(tests)
+    w["tests_on_invoiced_bookings_non_corporate"] = sum(1 for t in tests if t["booking_id"] in completed)
 
     inv_nos = {i["invoice_no"] for i in inv}
     pays = tables["payments"]
@@ -485,6 +494,13 @@ def witness(tables, bookings):
     w["campaign_lift_by_city"] = {c: rate([p for p in off if p["city"] == c])
                                   / rate([p for p in rest if p["city"] == c]) - 1
                                   for c in CAMPAIGN_CITIES}
+    # Outside the campaign cities the offer was random and carries no drift, so these gaps are chance.
+    w["campaign_lift_other_cities"] = {c: rate([p for p in off if p["city"] == c])
+                                       / rate([p for p in rest if p["city"] == c]) - 1
+                                       for c, _ in CITIES if c not in CAMPAIGN_CITIES}
+    w["offered_share"] = {group: sum(1 for p in off if (p["city"] in CAMPAIGN_CITIES) == inside)
+                          / sum(1 for p in people if (p["city"] in CAMPAIGN_CITIES) == inside)
+                          for group, inside in (("campaign_cities", True), ("other_cities", False))}
 
     def window_count(city_set, lo, hi):
         return sum(1 for b in bookings if b["city"] in city_set and lo <= b["date"] <= hi
@@ -524,7 +540,7 @@ def check(w):
          f"contract share of Q2 revenue {w['contract_share_of_q2']:.3f}, wanted 0.10 to 0.25")
     want(w["q2_mean_invoice"] >= 1.08 * w["q2_mean_without_contract"],
          "the contract does not move the Q2 mean invoice by 8 percent or more")
-    want(w["tests_performed_non_corporate"] >= 1.5 * w["invoice_lines_non_corporate"],
+    want(w["tests_on_invoiced_bookings_non_corporate"] >= 1.5 * w["invoice_lines_non_corporate"],
          "packages do not hide at least half again as many tests as invoice lines show")
     want(w["exact_join_share"] <= 0.04, f"exact join matches {w['exact_join_share']:.3f} of payments")
     want(w["normalised_join_unmatched"] == 0, f"{w['normalised_join_unmatched']} payments unmatched after normalising")
