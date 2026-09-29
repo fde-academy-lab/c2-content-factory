@@ -898,6 +898,7 @@ Transition: level 4, the running total.
 | KR-00557 | Rs 930 | Rs 3,76,90,290 | Rs 3,45,16,000 |
 | KR-00580 | Rs 8,55,000 | Rs 3,76,90,290 | Rs 3,53,71,000 |
 | KR-00601 | Rs 10,40,000 | Rs 3,76,90,290 | Rs 3,64,11,000 |
+| ... | eight more orders | Rs 3,76,90,290 each | one step each |
 | KR-00979 | Rs 970 | Rs 3,76,90,290 | Rs 3,76,90,290 |
 
 ```sql
