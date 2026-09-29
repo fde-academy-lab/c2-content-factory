@@ -288,12 +288,13 @@ slide.
 
 ## After the session
 
-Collect the marked papers. Using the key file's items-by-tag list, count the crosses per tag for
-each learner and enter that row in the ground team's tracker: one row per learner per week, the
-count of items right out of 57 and the misses by tag. The misses by day point at the day each gap
-came from, which is where Monday's remediation starts.
+The paper carries no marks and ranks nobody. What is kept is the score by topic, so Monday's session
+knows what to revisit. Collect the marked papers and, using the key file's items-by-tag list, count
+the items each learner got right under each tag and enter that row in the ground team's tracker: one
+row per learner per week, the misses by tag and by day. The misses by day point at the day each gap
+came from, which is where Monday's remediation starts. The row is never totalled into a mark, never
+compared across learners, and never read out by name.
 
-Two things are worth noting beside the tally. Which items more than a third of the room lost: those
-come back one level up in Week 2's return questions. And who answered well when called cold or in
-the mock round, which is the mock-interview signal Week 1 produces. The paper is ungraded, never a
-ranking, and never read out by name.
+Two things are worth noting beside the topic scores. Which items more than a third of the room lost:
+those come back one level up in Week 2's return questions. And who answered well when called cold or
+in the mock round, which is the mock-interview signal Week 1 produces.
