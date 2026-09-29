@@ -81,6 +81,28 @@ Each is drawn from the day's own row; the day's session writes the detail.
 | W2 Thu | The customer table with a validated merge and one reshaped view | The three-tool re-expression and the tool-choice note | Predict the shape of four groupby and pivot calls, and pick the tool for five asks |
 | W2 Fri | The three deliverables for Monday's deck, refreshable from the exported customer table | The operating rule defended against a director who wants to edit the source | Warehouse, pandas or Excel for eight asks, and the misread in three front-page numbers |
 
+## The Saturdays
+
+The requester set the Saturday at 300 minutes on 29 September 2026, and the papers at two hours.
+
+| Part | Minutes | What runs |
+|---|---|---|
+| The recap paper | 120 | Pen and paper, AI-free, from the Word file |
+| Break | 20 | |
+| Marking | 20 | Papers swapped and marked against the key, read out by the Academic TA |
+| The solution discussion | 90 | The most-missed items first, then the week's anchors answered aloud as interview answers, with random call-outs |
+| The mock-interview round | 30 | In pairs, each learner asks the other two of the week's anchors and one follow-up from the stretch page, then they swap |
+| Doubts and the bridge | 20 | Week 1: the CFO wants the numbers from the warehouse every Monday. Week 2: Build 1 opens in Kalpa Health |
+
+**The papers.** The tracker's bank is the floor. Week 1's bank fills 107 of the 120 minutes, so the
+week's source file adds about 13 minutes of new timed items: one or two new scenario sets built on
+the week's traps in this spine, at the blueprint's pace. Week 2's bank fills 119.5 minutes and needs
+no timed additions. Both source files add an exhibit for every scenario set, drawn only from the
+set's own numbers; the reasons for every item, which are why the key holds, why each wrong option
+fails and the interview answer in one breath; and an untimed stretch page of three or four written,
+interview-grade follow-ups. The builder and the source file's format are in
+`scripts/build_saturday_paper.py`.
+
 ## Checked on 29 September 2026
 
 On PostgreSQL 16.13, `count(*) / count(distinct customer)` over 3 orders and 2 customers returns 1;

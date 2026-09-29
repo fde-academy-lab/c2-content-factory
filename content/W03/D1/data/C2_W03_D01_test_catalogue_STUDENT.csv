@@ -1,0 +1,17 @@
+code,name,list_price,kind
+T-CBC,Complete blood count,350,test
+T-LIP,Lipid profile,600,test
+T-HBA,HbA1c,450,test
+T-THY,Thyroid profile,500,test
+T-LFT,Liver function test,650,test
+T-KFT,Kidney function test,700,test
+T-VTD,Vitamin D,1200,test
+T-B12,Vitamin B12,900,test
+T-URN,Urine routine,200,test
+T-FBS,Fasting blood sugar,120,test
+T-CRP,C-reactive protein,550,test
+T-ESR,Erythrocyte sedimentation rate,150,test
+PKG-FB,Full body checkup,2999,package
+PKG-DB,Diabetes care,1499,package
+PKG-SC,Senior citizen checkup,3499,package
+PKG-CORP,Corporate health check,1500,package

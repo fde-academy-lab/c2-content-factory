@@ -1,76 +1,63 @@
-# Before Friday: the week, run alone
+# Before tomorrow: the week, rebuilt alone
 
-Ships tonight. Tomorrow is the AI-free lab and the growth-review rehearsal, and Saturday is the
-recap paper, so this covers both.
-
----
-
-## What Friday is
-
-Kavya Nair takes the day. The growth review is on Monday and Marketing will be in the room, so
-before anything goes to Meera, you rebuild the week from a raw export and then say it aloud to
-somebody paid to disagree.
-
-| Block | Duration | What happens |
-|---|---|---|
-| 1 | 10 min | Kavya's terms, and the lab's rules |
-| 2 | 120 min | The AI-free lab: the week's method end to end on an export you have not seen |
-| 3 | 30 min | The debrief: the places most of the room broke, each rerun once on the projector |
-| 4 | 60 min | The rehearsal: your note read aloud in pairs, one partner playing Marketing, then two-minute call-outs |
-| 5 | 20 min | Kahoot, close, and Saturday's paper previewed |
-
-**The lab's rules.** A fresh export, no assistant, notes closed, and a TA watching where you stall.
-The lab adds no new idea: it finds out which of the week's ideas are yours. It is ungraded, and what
-it shows sets your first stretch or recovery task.
+Ships tonight. Fifteen minutes of reading and one check to run. Tomorrow is the AI-free lab and the
+growth-review rehearsal, and a room that has read this walks in knowing what the day asks of it.
 
 ---
 
-## The order you will run tomorrow
+## What tomorrow is about
 
-The same order every time, which is the point of the lab:
+Kavya takes Friday:
 
-1. Profile: how many records, which fields convert, what repeats.
-2. Clean, with a written reason for every decision.
-3. Reconcile: input equals clean plus rejected, and revenue checks against Finance.
-4. Decompose along the revenue tree.
-5. Test the gap with one shuffle test.
-6. Write the four-part note.
+> "Before anything goes to Meera, rebuild the week from a raw export with no assistant and no notes.
+> Then say it to me the way you will say it to her, because I will push the way Marketing will."
+>
+> Kavya Nair, senior analyst, Kalpa Retail
 
-Tonight, rerun the week once in a fresh Codespace, top to bottom, from Monday's notebook to
-Thursday's, and note anything that fails cold. Tomorrow nobody will be there to rescue a notebook
-that only runs warm.
+```mermaid
+flowchart LR
+    P["<b>profile</b>"] --> C["<b>clean</b><br/>with reasons"] --> R["<b>reconcile</b>"] --> T["<b>the tree</b><br/>which branch"] --> G["<b>test the gap</b>"] --> N["<b>the note</b><br/>said aloud"]
+```
+
+The lab adds no new idea. It finds out which of the week's ideas are yours when the notebook is
+closed.
 
 ---
 
-## The five things worth knowing from memory
+## The words you will hear tomorrow
 
-No notes tomorrow or on Saturday, so these are the ones to close your eyes and say.
+Fill these in from memory tonight. The lab assumes you can, and nobody will explain them again.
 
-| | |
+| Word | What you think it means, in your own words |
 |---|---|
-| The revenue tree | Five branches, each with its denominator |
-| The ladder | Five rungs, in order, and what each needs |
-| `INPUT = CLEAN + REJECTED` | And why a pass that cannot produce it is unauditable |
-| The p-value sentence | The share of chance-only worlds at least this extreme |
-| The note | Claim, evidence, caveat, action |
+| Profile | |
+| Reconcile | |
+| Decisions log | |
+| Chance reference | |
+| Confounder | |
+| Caveat | |
 
-If you can say those five cold, you can rebuild the lab and every answer on Saturday's paper from
-them.
-
----
-
-## What Saturday is
-
-Four hours, no new content. A recap paper of objective items (fill in the blank, true or false,
-one or more correct options, scenario sets, applied maths and ordering), pen and paper, AI-free,
-then a break. The papers are swapped and marked against a key, and the discussion starts with the
-items the room missed most, then asks the week's interview questions aloud, with random call-outs.
-It is ungraded: a performance indicator, and the closest thing to an interview you will sit this
-month.
+If you cannot fill one in, that is the one to reread in this week's study notes.
 
 ---
 
-## The one line worth carrying in
+## One thing to think about
 
-> Every question, tomorrow and on Saturday, is a business question first and a technique question
-> second, because that is the order an interviewer asks them in.
+Tomorrow's rehearsal partner plays Marketing and is told to push. Which of your three answers to
+Meera is the weakest, and what is the one question that would expose it? Write that question down;
+you will be asked something close to it.
+
+---
+
+## The check for tonight
+
+Open a Codespace and run `notebooks/C2_W01_D04_01_real_or_wobble_STUDENT.ipynb` with Restart and Run
+All. If it does not reach the last cell with every check passing, tell the support TA before the lab
+opens, because tomorrow no one will help you debug the environment during the timed part.
+
+---
+
+## The line worth carrying in
+
+A method is yours when you can run it cold on a file you have never seen, in the same order every
+time, and say what it found in two minutes to someone who disagrees.

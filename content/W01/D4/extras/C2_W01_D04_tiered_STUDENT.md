@@ -1,65 +1,53 @@
 # Extras: one to stretch, one to recover
 
----
-
-## Stretch: how small a difference could you have caught?
-
-You finished early and the shuffle felt straightforward. Then this, and it is the question a good
-interviewer asks next.
-
-**The situation.** You told Meera that Retail-Plus is real and Student is not. She asks the obvious
-follow-up:
-
-> "Fine. If Student had actually moved, how big would the move have had to be before your method
-> would have noticed?"
-
-**What to build.** Take the Student data, twelve orders. For each possible split from 6 and 6 up to
-0 and 12, compute the rise and run the same chance test. Build one table:
-
-| Q1 orders | Q2 orders | The rise | p-value | Would you report it? |
-|---|---|---|---|---|
-
-Then answer three questions in writing.
-
-1. At what split does the p-value first drop below 0.05, and what rise does that correspond to?
-2. What does that tell you about what twelve observations can and cannot detect?
-3. If Meera insists on a Student answer this quarter, what is the smallest honest thing you can tell
-   her?
-
-**The hard part, and the point.** The answer to question one is a surprisingly large rise. That
-number is the **smallest effect your method could have caught**, and knowing it turns "not
-significant" from an excuse into a measurement. Any interviewer who asks "how would you know if you
-were wrong" is asking for this.
+Both are optional and neither is graded. Pick the one that matches where you actually are.
 
 ---
 
-## Recovery: ten cards, on your own table
+## Stretch: a shuffle that respects the members
 
-The shuffle went past you and the code made it worse. Then do it with cards tonight, alone, and skip
-the code entirely.
+You finished the take-home and the shuffle felt easy. Then this one is for you.
 
-**You need ten playing cards and ten minutes.**
+**The situation.** Kavya reads your Retail-Plus test and asks one more question.
 
-1. Write `A` on six cards and `B` on four. These are two groups.
-2. Write a number on the back of each card: any ten numbers between 1 and 20. Do not think about it.
-3. Deal by the letters. Compute the average of the `A` backs and the average of the `B` backs.
-   Write the difference down and circle it. **That is your real gap.**
-4. Now turn every card face down, shuffle the whole pack, and deal six and four **ignoring the
-   letters**. Compute the two averages and the difference. Write it in a list.
-5. Do step 4 nine more times, so you have ten differences.
-6. Count how many of your ten are at least as big as the circled one, ignoring the sign.
+> "You pooled all 44 member-quarters and dealt them out at random. But the same 22 members are in both
+> quarters. A member who spends a lot in Q1 usually spends a lot in Q2. Does your shuffle know that?"
 
-```
-that count, over ten
-```
+**What to build.** A second shuffle that keeps each member's pair together. For each member, compute
+the Q1 less Q2 difference; in each shuffle, flip the sign of each member's difference at random (if
+the quarter made no difference, either order was as likely); the gap in that world is the mean of the
+flipped differences. Run it 5,000 times with seed 2026.
 
-That is a p-value. You have now computed one by hand.
+| Column | What goes in it |
+|---|---|
+| The pooled shuffle's share | From notebook 1 |
+| The paired shuffle's share | Your new number |
+| Which is smaller, and why | One sentence in business terms |
+| Which you would report | One sentence, and the reason |
 
-**What you should end up believing.** The shuffle does not know anything about your data. It builds
-worlds where the labels mean nothing and asks how often those worlds look like yours. If they often
-do, your labels might mean nothing either.
+**The hard part, and the point.** Both shuffles are legitimate; they answer slightly different
+questions about the same members. The skill is saying which question Meera asked, and choosing the
+test that answers it.
 
-**Then do one thing more.** Go back to step 2 and, instead of any ten numbers, write 15 to 20 on the
-`A` cards and 1 to 6 on the `B` cards. Repeat the whole exercise. Your count out of ten will be zero
-or one, and you will have felt the difference between a real effect and noise without a formula
-anywhere near it.
+---
+
+## Recover: the three sentences, until they are automatic
+
+Today felt fast, and the p-value sentence still comes out wrong under pressure. Then do this, and
+nothing else, tonight.
+
+**Step 1.** Write the three sentences on a card, from the cheat sheet:
+
+- "If nothing had changed, a gap this large turns up in about ___ of every 100 shuffles."
+- "It is worth Rs ___ a quarter, ___ percent of the company."
+- "The rate stands on ___ orders; under thirty, it is a lead."
+
+**Step 2.** Open notebook 1 and rerun sections 3 and 4 only. Fill the first sentence twice, once for
+Retail-Core and once for Retail-Plus, and read both aloud.
+
+**Step 3.** Open the round 1 set in `exercises/unguided/` and redo items 2 to 5 without looking at the
+solution. If any answer changes from your first attempt, read that item's row in the solution file and
+say the reason aloud.
+
+**Step 4.** Say the note's four parts aloud from memory: claim, evidence, caveat, action. Saturday's
+paper asks for them.

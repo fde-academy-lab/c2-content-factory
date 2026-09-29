@@ -1,19 +1,39 @@
 """Render a week's Saturday recap paper and its key from the tracker's item bank.
 
     python3 scripts/build_saturday_paper.py W01            # write Week 1's paper and key
+    python3 scripts/build_saturday_paper.py W01 --docx     # the same, plus both as Word files
     python3 scripts/build_saturday_paper.py --all          # every week with a SAT folder and a paper
     python3 scripts/build_saturday_paper.py W01 --check    # write nothing; exit 1 if either differs
 
 The bank is the 'Saturday papers' tab of docs/curriculum/source.xlsx. The STUDENT paper prints the
-Item column only, grouped by item type in the bank's order, with a line for the name and the count
-of items right and nothing else. The TRAINER key carries every other column (key, type, level, tag,
-roles, day, minutes and the interview anchor), the marking rule, and the item numbers by tag, level
-and day, which is what the Academic TA tallies for Monday's remediation read.
+items only, grouped by item type in the bank's order and numbered Q1 upward as printed, with a line
+for the name and the count of items right and nothing else. The TRAINER key carries every other
+column (key, type, level, tag, roles, day, minutes and the interview anchor), the marking rule, and
+the item numbers by tag, level and day, which is what the Academic TA tallies for Monday's
+remediation read.
 
-Edits in data/programme/paper_edits.yaml are laid on top of the bank before rendering. Each one
-rewords options of one item and never its stem or key; the key file lists every edit still waiting
-for the tracker. scripts/sync_programme.py re-renders every week whose paper already exists, so a changed item or
-a new edit reaches a built Saturday with one sync; a new Saturday starts with this script.
+Three sources are laid on the bank before rendering:
+
+  data/programme/paper_edits.yaml    rewords options of one item, never its stem or key
+  data/programme/facts.yaml          saturday_papers.paper_minutes, where a paper runs longer than
+                                     the tracker's slot
+  content/W{ww}/SAT/internal/C2_W{ww}_SAT_paper_source_INTERNAL.yaml, the week's own additions:
+      additions   new timed items, printed inside their type's section after the bank's, each
+                  carrying why, wrong and answer for the key; listed in the key as waiting for the
+                  tracker
+      exhibits    per scenario set number, a mermaid fence or a small table printed once under the
+                  set's situation, drawn only from the situation's own numbers
+      notes       per bank item number: why the key holds, why each wrong option fails
+                  ({letter: reason}), and the interview answer in one breath
+      stretch     untimed, unmarked written items for fast finishers, each with its answer
+  Write the file in block style: a comma inside an inline {a: ..., b: ...} mapping splits a
+  reason in two without any error.
+
+--docx renders every exhibit through mermaid-cli and writes the paper and the key as Word files
+through scripts/saturday_docx.js, in the layout of the requester's baseline diagnostic. The markdown
+stays the file the gates read, so --docx follows every change to it.
+scripts/sync_programme.py re-renders every week whose paper already exists, so a changed item or a
+new edit reaches a built Saturday with one sync; a new Saturday starts with this script.
 """
 import argparse
 import datetime as dt
@@ -29,6 +49,7 @@ HERE = pathlib.Path(__file__).resolve().parent
 ROOT = HERE.parent
 TRACKER = ROOT / "docs/curriculum/source.xlsx"
 EDITS = ROOT / "data/programme/paper_edits.yaml"
+FACTS = ROOT / "data/programme/facts.yaml"
 DAYS_JSON = ROOT / "data/programme/days.json"
 TAB = "Saturday papers"
 
@@ -134,10 +155,56 @@ def saturday_date(week):
         return None
 
 
+def source_path(week):
+    return ROOT / "content" / week / "SAT" / "internal" / f"C2_{week}_SAT_paper_source_INTERNAL.yaml"
+
+
+def read_source(week):
+    path = source_path(week)
+    return (yaml.safe_load(path.read_text(encoding="utf-8")) or {}) if path.exists() else {}
+
+
+def paper_minutes(week, slot):
+    """The paper's length: the requester's override in facts.yaml, or the tracker's slot."""
+    try:
+        facts = yaml.safe_load(FACTS.read_text(encoding="utf-8"))
+        return int((facts.get("saturday_papers") or {}).get("paper_minutes", {}).get(week) or slot)
+    except (OSError, ValueError, TypeError, AttributeError):
+        return slot
+
+
+def assemble(data, source):
+    """The items in printed order, each carrying q, its printed number.
+
+    Sections follow the item types in the bank's order. Within a section the bank's items come
+    first, in the bank's order, and the source's additions follow in the order the file lists them.
+    """
+    bank = sorted((dict(i, added=False) for i in data["items"]), key=lambda i: i["no"])
+    notes = {str(k): v for k, v in (source.get("notes") or {}).items()}
+    for item in bank:
+        item["note"] = notes.get(str(item["no"]), {})
+    added = []
+    for a in source.get("additions") or []:
+        added.append({"no": None, "type": a["type"], "level": a["level"], "tag": a["tag"],
+                      "roles": a.get("roles", ""), "day": a.get("day", ""),
+                      "min": float(a.get("min", 0)), "key": str(a["key"]),
+                      "text": str(a["text"]).strip(), "anchor": a.get("anchor", ""), "edit": None,
+                      "added": True, "note": {"why": a.get("why", ""), "wrong": a.get("wrong", {}),
+                                              "answer": a.get("answer", "")}})
+    order = []
+    for item in bank + added:
+        if item["type"] not in order:
+            order.append(item["type"])
+    printed = sorted(bank + added, key=lambda i: (order.index(i["type"]), i["added"]))
+    for q, item in enumerate(printed, 1):
+        item["q"] = q
+    return printed
+
+
 def groups(items):
-    """Consecutive runs of one type, in the bank's order."""
+    """Consecutive runs of one type, in printed order."""
     out = []
-    for item in sorted(items, key=lambda i: i["no"]):
+    for item in items:
         if out and out[-1][0] == item["type"]:
             out[-1][1].append(item)
         else:
@@ -146,56 +213,106 @@ def groups(items):
 
 
 def span(items):
-    a, b = items[0]["no"], items[-1]["no"]
-    return f"item {a}" if a == b else (f"items {a} and {b}" if b == a + 1 else f"items {a} to {b}")
+    a, b = items[0]["q"], items[-1]["q"]
+    return f"Q{a}" if a == b else f"Q{a} to Q{b}"
 
 
-def render_item(item):
-    lines, out, has_options = item["text"].split("\n"), [], False
-    for ln in lines:
+def parts(item):
+    """(stem lines, [(letter, text)], answer kind) for one item, without its set lines."""
+    stem, options = [], []
+    for ln in item["text"].split("\n"):
         s = ln.strip()
         if not s or SET_START.match(s) or SET_CONT.match(s):
             continue
         m = OPTION.match(s)
         if m:
-            if not has_options:
-                out.append("")
-            has_options = True
-            out.append(f"{m.group(1)}) {m.group(2)}")
+            options.append((m.group(1), m.group(2)))
         else:
-            out.append(s)
-    block = [f"#### {item['no']}", ""] + out
+            stem.append(s)
     if item["type"] == "Applied maths":
-        block += ["", "Working:", "", "Answer: ____________________"]
+        answer = "working"
     elif item["type"] == "Order the steps":
+        answer = "order"
+    elif options:
+        answer = None
+    else:
+        answer = "line"
+    return stem, options, answer
+
+
+def render_item(item):
+    stem, options, answer = parts(item)
+    block = [f"#### Q{item['q']}", ""] + stem
+    if options:
+        block.append("")
+        block += [f"{letter}) {text}" for letter, text in options]
+    if answer == "working":
+        block += ["", "Working:", "", "Answer: ____________________"]
+    elif answer == "order":
         block += ["", "Order: ____________________"]
-    elif not has_options:
+    elif answer == "line":
         block += ["", "Answer: ____________________"]
     return block + [""]
 
 
-def render_paper(paper, data, date):
-    items = sorted(data["items"], key=lambda i: i["no"])
-    n, week = len(items), int(paper[1:])
-    when = date.strftime("%A %d %B %Y").replace(" 0", " ") + " · " if date else ""
+def exhibit_md(ex):
+    out = []
+    if ex.get("mermaid"):
+        out += ["```mermaid", str(ex["mermaid"]).rstrip(), "```", ""]
+    if ex.get("table"):
+        head, rows = ex["table"]["head"], ex["table"]["rows"]
+        out += ["| " + " | ".join(map(str, head)) + " |", "|" + "---|" * len(head)]
+        out += ["| " + " | ".join(map(str, r)) + " |" for r in rows] + [""]
+    if ex.get("caption"):
+        out += [f"*{ex['caption']}*", ""]
+    return out
+
+
+def sets_in(run):
+    """Yield (item, set number or None, situation or None) with each set announced once."""
+    current = None
+    for item in run:
+        m = SET_START.match(item["text"].split("\n")[0].strip())
+        if m and m.group(1) != current:
+            current = m.group(1)
+            yield item, m.group(1), m.group(2)
+        else:
+            yield item, None, None
+
+
+def when_of(date, sep):
+    return date.strftime("%A %d %B %Y").replace(" 0", " ") + sep if date else ""
+
+
+STRETCH_TITLE = "Stretch: untimed, and not marked"
+STRETCH_INTRO = ("For anyone who finishes early. Nothing here is counted; each item is the kind an "
+                 "interviewer asks after your first answer, so write the answer you would say.")
+
+
+def render_paper(paper, data, date, printed, source, minutes):
+    n, week = len(printed), int(paper[1:])
+    exhibits = {str(k): v for k, v in (source.get("exhibits") or {}).items()}
     out = [f"# Week {week} recap paper", "",
-           f"{when}{data['slot']} minutes · {n} items · pen and paper, no assistant, no notes", "",
+           f"{when_of(date, ' · ')}{minutes} minutes · {n} items · pen and paper, no assistant, "
+           f"no notes", "",
            "Name: ____________________    Marked by: ____________________    "
            f"Items right: ____ of {n}", "",
            "Answer every item in the space it gives you. Each section says how. After the break the "
            "papers are swapped and marked against the key, and the discussion starts with the items "
            "the room missed most.", ""]
     letters = "ABCDEFGHIJ"
-    for k, (kind, run) in enumerate(groups(items)):
+    for k, (kind, run) in enumerate(groups(printed)):
         out += ["---", "", f"## {letters[k]}. {kind} ({span(run)})", "", HOW.get(kind, ""), ""]
-        current_set = None
-        for item in run:
-            first = item["text"].split("\n")[0].strip()
-            m = SET_START.match(first)
-            if m and m.group(1) != current_set:
-                current_set = m.group(1)
-                out += [f"### Set {current_set}", "", f"**Situation.** {m.group(2)}", ""]
+        for item, number, situation in sets_in(run):
+            if number:
+                out += [f"### Set {number}", "", f"**Situation.** {situation}", ""]
+                out += exhibit_md(exhibits.get(number, {}))
             out += render_item(item)
+    stretch = source.get("stretch") or []
+    if stretch:
+        out += ["---", "", f"## {STRETCH_TITLE}", "", STRETCH_INTRO, ""]
+        for i, s in enumerate(stretch, 1):
+            out += [f"### Stretch {i}", "", str(s["text"]).strip(), ""]
     return "\n".join(out).rstrip() + "\n"
 
 
@@ -203,19 +320,21 @@ def cell(v):
     return str(v).replace("|", "\\|").replace("\n", "<br>")
 
 
-def render_key(paper, data, date, notes):
-    items = sorted(data["items"], key=lambda i: i["no"])
-    n, week = len(items), int(paper[1:])
-    minutes = sum(i["min"] for i in items)
-    levels = {lv: sum(1 for i in items if i["level"] == lv) for lv in ("Easy", "Medium", "Hard")}
-    when = date.strftime("%A %d %B %Y").replace(" 0", " ") + ". " if date else ""
+def render_key(paper, data, date, notes, printed, source, minutes):
+    n, week = len(printed), int(paper[1:])
+    pace = sum(i["min"] for i in printed)
+    levels = {lv: sum(1 for i in printed if i["level"] == lv) for lv in ("Easy", "Medium", "Hard")}
+    added = [i for i in printed if i["added"]]
     out = [f"# Week {week} recap paper: key", "",
-           "TRAINER. Rendered from the tracker's item bank by `scripts/build_saturday_paper.py`. "
-           "Change an item in the tracker, or an option in `data/programme/paper_edits.yaml`, and "
-           "sync; never edit this file by hand.", "",
-           f"{when}A {data['slot']}-minute slot holding {n} items at {minutes:g} minutes by the "
-           f"blueprint's pace: {levels['Easy']} easy, {levels['Medium']} medium and {levels['Hard']} "
-           f"hard.", "",
+           "TRAINER. Rendered from the tracker's item bank and the week's source file by "
+           "`scripts/build_saturday_paper.py`. Change an item in the tracker, an option in "
+           "`data/programme/paper_edits.yaml` or anything in "
+           f"`content/{week_of(paper)}/SAT/internal/C2_{week_of(paper)}_SAT_paper_source_INTERNAL.yaml`, "
+           "and rebuild; never edit this file by hand.", "",
+           f"{when_of(date, '. ')}A {minutes}-minute paper holding {n} items at {pace:g} minutes by "
+           f"the blueprint's pace: {levels['Easy']} easy, {levels['Medium']} medium and "
+           f"{levels['Hard']} hard."
+           + (f" {len(added)} of them are new and not yet in the tracker." if added else ""), "",
            "## Marking", "",
            "1. Papers are swapped, so nobody marks their own.",
            "2. The Academic TA reads the key out section by section, and the marker writes a tick or a "
@@ -229,22 +348,44 @@ def render_key(paper, data, date, notes):
            "5. The TA collects the papers and tallies the misses by tag, using the table below; that "
            "tally is Monday's remediation read. It is never a ranking and never read out by name.", "",
            "## The key", "",
-           "| No. | Key | Type | Level | Tag | Roles | Day | Min | Interview anchor |",
-           "|---|---|---|---|---|---|---|---|---|"]
-    for i in items:
-        out.append(f"| {i['no']} | {cell(i['key'])} | {i['type']} | {i['level']} | {i['tag']} | "
-                   f"{cell(i['roles'])} | {i['day']} | {i['min']:g} | {cell(i['anchor'])} |")
+           "| Q | Key | Type | Level | Tag | Roles | Day | Min | Source | Interview anchor |",
+           "|---|---|---|---|---|---|---|---|---|---|"]
+    for i in printed:
+        src = "new" if i["added"] else f"bank {i['no']}"
+        out.append(f"| {i['q']} | {cell(i['key'])} | {i['type']} | {i['level']} | {i['tag']} | "
+                   f"{cell(i['roles'])} | {i['day']} | {i['min']:g} | {src} | {cell(i['anchor'])} |")
+    reasoned = [i for i in printed if i["note"].get("why") or i["note"].get("wrong")]
+    if reasoned:
+        out += ["", "## Why each answer holds", ""]
+        for i in reasoned:
+            note = i["note"]
+            out += [f"### Q{i['q']}, key {i['key']}", ""]
+            if note.get("why"):
+                out += [f"**Why it holds.** {note['why']}", ""]
+            for letter, why in sorted((note.get("wrong") or {}).items()):
+                out.append(f"- ({letter}) {why}")
+            if note.get("wrong"):
+                out.append("")
+            if note.get("answer"):
+                out += [f"**In the interview.** {note['answer']}", ""]
     out += ["", "## Items by tag, level and day, for the tally", ""]
     for tag in TAGS:
-        hit = [str(i["no"]) for i in items if i["tag"] == tag]
+        hit = [f"Q{i['q']}" for i in printed if i["tag"] == tag]
         out.append(f"- {tag} ({len(hit)}): {', '.join(hit) if hit else 'none'}")
     for lv in ("Easy", "Medium", "Hard"):
-        hit = [str(i["no"]) for i in items if i["level"] == lv]
+        hit = [f"Q{i['q']}" for i in printed if i["level"] == lv]
         out.append(f"- {lv} ({len(hit)}): {', '.join(hit)}")
     for day in ("Mon", "Tue", "Wed", "Thu", "Fri"):
-        hit = [str(i["no"]) for i in items if i["day"] == day]
+        hit = [f"Q{i['q']}" for i in printed if i["day"] == day]
         if hit:
             out.append(f"- {day} ({len(hit)}): {', '.join(hit)}")
+    if added:
+        out += ["", "## New items waiting for the tracker", "",
+                "These items come from the week's source file, not the tracker. Accept one by adding "
+                "it to the tracker's Saturday papers tab and deleting it from the source file.", ""]
+        for i in added:
+            first = next((s for s in parts(i)[0]), "")
+            out.append(f"- Q{i['q']} ({i['type']}, {i['level']}, {i['tag']}): {first}")
     mine = [x for x in notes if x[0] == paper and x[2] == "applied"]
     if mine:
         out += ["", "## Option edits laid on the bank, waiting for the tracker", "",
@@ -253,9 +394,15 @@ def render_key(paper, data, date, notes):
                 "it into the tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.",
                 ""]
         for _, no, _, why in mine:
-            edit = next(i["edit"] for i in items if i["no"] == int(no))
-            opts = ", ".join(sorted(edit.get("options", {})))
-            out.append(f"- Item {no}, option {opts} ({edit.get('status', 'proposed')}): {why}")
+            item = next(i for i in printed if i["no"] == int(no))
+            opts = ", ".join(sorted(item["edit"].get("options", {})))
+            out.append(f"- Q{item['q']} (bank {no}), option {opts} "
+                       f"({item['edit'].get('status', 'proposed')}): {why}")
+    stretch = source.get("stretch") or []
+    if stretch:
+        out += ["", "## The stretch page", ""]
+        for k, s in enumerate(stretch, 1):
+            out.append(f"- Stretch {k}: {s.get('answer', '')}")
     return "\n".join(out).rstrip() + "\n"
 
 
@@ -285,9 +432,155 @@ def render_all(tracker=TRACKER, only=None, date_of=saturday_date, existing_only=
         if existing_only and not p_path.exists():
             continue
         date = date_of(week)
-        out[p_path] = render_paper(paper, data, date)
-        out[k_path] = render_key(paper, data, date, notes)
+        source = read_source(week)
+        printed = assemble(data, source)
+        minutes = paper_minutes(week, data["slot"])
+        out[p_path] = render_paper(paper, data, date, printed, source, minutes)
+        out[k_path] = render_key(paper, data, date, notes, printed, source, minutes)
     return out, notes
+
+
+# --------------------------------------------------------------------------- the Word files
+RULES = [
+    ["Time", "{minutes} minutes in one sitting. Each section gives its minutes as a guide, not a limit."],
+    ["Tools", "Pen and this paper only: no laptop, no phone, no notes and no assistant."],
+    ["Answers", "Each section says how: a word or a number on the line, T or F, one circled letter, "
+                "every correct letter, the working and the answer, or the letters in order. "
+                "Copy every answer to the answer sheet at the back."],
+    ["Afterwards", "Papers are swapped and marked against the key, then the discussion takes the items "
+                   "the room missed most. The paper is ungraded and goes on no record."],
+]
+PURPOSE = ("Saying the week out loud is the interview skill itself. This paper finds which of the "
+           "week's decisions you can make cold, with no notes and no assistant, so Monday's practice "
+           "starts where each of us needs it. Every item is a Kalpa business question first and a "
+           "technique question second, which is the order interviewers use.")
+
+
+def exhibit_png(ex):
+    """The exhibit's mermaid fence as a PNG path with its size, or None without mermaid-cli."""
+    if not ex.get("mermaid"):
+        return None
+    from PIL import Image
+    sys.path.insert(0, str(HERE))
+    from build_cheatsheet import render_mermaid
+    png = render_mermaid(str(ex["mermaid"]), "png")
+    if not png:
+        return None
+    with Image.open(png) as img:
+        w, h = img.size
+    # mermaid-cli renders the PNG wide for sharpness; the page wants it at a readable print size.
+    scale = min(1.0, 610 / w)
+    return {"path": str(png), "w": round(w * scale), "h": round(h * scale)}
+
+
+def docx_spec(paper, data, date, printed, source, minutes, notes):
+    week, n = week_of(paper), len(printed)
+    exhibits = {str(k): v for k, v in (source.get("exhibits") or {}).items()}
+    sections, glance, letters = [], [], "ABCDEFGHIJ"
+    for k, (kind, run) in enumerate(groups(printed)):
+        blocks = []
+        for item, number, situation in sets_in(run):
+            if number:
+                ex = exhibits.get(number, {})
+                blocks.append({"kind": "set", "n": number, "situation": situation,
+                               "image": exhibit_png(ex), "table": ex.get("table"),
+                               "caption": ex.get("caption", "")})
+            stem, options, answer = parts(item)
+            blocks.append({"kind": "item", "q": item["q"], "type": item["type"], "lines": stem,
+                           "options": [list(o) for o in options], "answer": answer})
+        mins = sum(i["min"] for i in run)
+        sections.append({"letter": letters[k], "title": kind,
+                         "intro": f"{len(run)} items, {span(run)}, about {mins:g} minutes. "
+                                  f"{HOW.get(kind, '')}", "blocks": blocks})
+        glance.append([f"{letters[k]}. {kind}", HOW.get(kind, ""), span(run), f"{mins:g}"])
+    rows = []
+    for i in printed:
+        _, options, answer = parts(i)
+        if i["type"] == "True or false":
+            rows.append({"q": i["q"], "kind": "tf"})
+        elif options and i["type"] != "Order the steps":
+            rows.append({"q": i["q"], "kind": "choice", "count": len(options)})
+        else:
+            rows.append({"q": i["q"], "kind": "line"})
+    stretch = source.get("stretch") or []
+    title = f"Week {int(paper[1:])} recap paper"
+    meta = (f"Cohort 2  ·  {when_of(date, '  ·  ')}{minutes} minutes  ·  {n} items  ·  "
+            "pen and paper  ·  ungraded")
+    paper_spec = {"title": title, "meta": meta, "header": f"Cohort 2  ·  {title}", "purpose": PURPOSE,
+                  "rules": [[r, d.format(minutes=minutes)] for r, d in RULES], "glance": glance,
+                  "sections": sections, "stretchTitle": STRETCH_TITLE, "stretchIntro": STRETCH_INTRO,
+                  "stretch": [{"lines": [ln.strip() for ln in str(s["text"]).strip().split(chr(10))
+                                         if ln.strip()]} for s in stretch],
+                  "sheet": {"n": n, "rows": rows,
+                            "note": "Fill in pen. Circle one letter per row, or every correct letter "
+                                    "where the item asks for more than one; write the others on the line."}}
+    reasons = []
+    for i in printed:
+        note = i["note"]
+        if note.get("why") or note.get("wrong") or note.get("answer"):
+            reasons.append({"q": i["q"], "key": i["key"],
+                            "meta": f"{i['type']}, {i['level']}, {i['tag']}, {i['day']}",
+                            "why": note.get("why", ""),
+                            "wrong": sorted([k, v] for k, v in (note.get("wrong") or {}).items()),
+                            "answer": note.get("answer", ""), "anchor": i["anchor"]})
+    tally = []
+    for tag in TAGS:
+        hit = [f"Q{i['q']}" for i in printed if i["tag"] == tag]
+        tally.append(f"{tag} ({len(hit)}): {', '.join(hit) if hit else 'none'}")
+    for lv in ("Easy", "Medium", "Hard"):
+        hit = [f"Q{i['q']}" for i in printed if i["level"] == lv]
+        tally.append(f"{lv} ({len(hit)}): {', '.join(hit)}")
+    added = [i for i in printed if i["added"]]
+    key_spec = {"title": f"{title}: key", "header": f"Cohort 2  ·  {title}  ·  key  ·  TRAINER",
+                "meta": f"TRAINER.  {when_of(date, '  ·  ')}{minutes} minutes  ·  {n} items",
+                "marking": [
+                    "Papers are swapped, so nobody marks their own.",
+                    "The Academic TA reads the key out section by section, and the marker ticks or "
+                    "crosses each item on the answer sheet.",
+                    "An item is right when its answer matches the key: every correct letter and no "
+                    "other on a more-than-one item, the number on an applied maths item, and the whole "
+                    "sequence on an ordering item. No partial credit.",
+                    f"The marker writes the count of ticks as Items right, out of {n}, and hands the "
+                    "paper back.",
+                    "The TA tallies the misses by tag for Monday's remediation read, never a ranking "
+                    "and never read out by name."],
+                "rows": [[str(i["q"]), i["key"], i["type"], i["level"], i["tag"], i["day"],
+                          "new" if i["added"] else f"bank {i['no']}"] for i in printed],
+                "reasons": reasons, "tally": tally,
+                "additions": [f"Q{i['q']} ({i['type']}, {i['level']}, {i['tag']}): "
+                              f"{next(iter(parts(i)[0]), '')}" for i in added],
+                "additionsNote": "These items come from the week's source file, not the tracker. "
+                                 "Accept one by adding it to the tracker's Saturday papers tab.",
+                "stretch": [str(s.get("answer", "")) for s in stretch]}
+    return {"paper": paper_spec, "key": key_spec}
+
+
+def write_docx(week):
+    """Write the week's paper and key as Word files next to their markdown."""
+    import subprocess
+    import tempfile
+    bank = read_bank(TRACKER)
+    edits = yaml.safe_load(EDITS.read_text(encoding="utf-8")) if EDITS.exists() else {}
+    notes = apply_edits(bank, edits)
+    paper = next(p for p in bank if week_of(p) == week)
+    data, source = bank[paper], read_source(week)
+    printed = assemble(data, source)
+    spec = docx_spec(paper, data, saturday_date(week), printed, source,
+                     paper_minutes(week, data["slot"]), notes)
+    p_md, k_md = targets(week)
+    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as fh:
+        json.dump(spec, fh)
+    r = subprocess.run(["node", str(HERE / "saturday_docx.js"), fh.name,
+                        str(p_md.with_suffix(".docx")), str(k_md.with_suffix(".docx"))],
+                       capture_output=True, text=True)
+    pathlib.Path(fh.name).unlink(missing_ok=True)
+    if r.returncode:
+        sys.exit(f"FAIL  the Word files were not written: {r.stderr.strip()[-600:]}")
+    missing = [s["n"] for sec in spec["paper"]["sections"] for s in sec["blocks"]
+               if s["kind"] == "set" and not s["image"] and not s["table"]]
+    for number in missing:
+        print(f"INFO  set {number} has no exhibit in the source file, or mermaid-cli is missing")
+    print(r.stdout.strip())
 
 
 def main():
@@ -296,6 +589,7 @@ def main():
     ap.add_argument("weeks", nargs="*", help="weeks as W01; none with --all")
     ap.add_argument("--all", action="store_true", help="every week with a SAT folder and a paper")
     ap.add_argument("--check", action="store_true", help="write nothing; exit 1 if a file differs")
+    ap.add_argument("--docx", action="store_true", help="also write the paper and key as Word files")
     a = ap.parse_args()
     if not a.weeks and not a.all:
         sys.exit("FAIL  name a week, as W01, or pass --all")
@@ -317,6 +611,9 @@ def main():
     print(f"      {len(files)} file(s), {len(stale)} {'stale' if a.check else 'updated'}")
     if a.check and stale:
         sys.exit(1)
+    if a.docx and not a.check:
+        for week in sorted({p.parts[-4] for p in files}):
+            write_docx(week)
 
 
 if __name__ == "__main__":
@@ -337,3 +634,11 @@ if __name__ == "__main__":
 #     INFO: that edit is folded, and it can be deleted from paper_edits.yaml.
 # python3 scripts/build_saturday_paper.py
 #     FAIL: name a week, as W01, or pass --all.
+# python3 scripts/build_saturday_paper.py W01 --docx   (no source file in W01/SAT/internal)
+#     Writes both markdown files and both Word files from the bank alone, numbered Q1 to Q52,
+#     at 120 minutes from facts.yaml, and prints one INFO line per scenario set with no exhibit.
+# The same, with a source file carrying one addition of type Scenario set
+#     The addition prints as Q46, after the bank's scenario items and before applied maths;
+#     the key lists it under New items waiting for the tracker with Source "new".
+# The same, with an exhibit whose mermaid fence has a syntax error
+#     mermaid-cli draws no PNG, the set prints without a picture, and the INFO line names it.
