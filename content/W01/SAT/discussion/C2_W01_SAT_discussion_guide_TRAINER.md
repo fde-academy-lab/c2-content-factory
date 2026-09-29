@@ -113,8 +113,11 @@ off a count of rows. Those are the answers interviewers mark down.
 
 Five rungs, in this order: confirm the drop is real; compare like with like, which means the same
 weeks and the same definitions; decompose along the revenue tree; isolate the branch and the
-segment; then hypothesise and name the evidence that would settle it. Kalpa's own case lands on the
-fourth rung: customers flat, orders per customer down 10 percent, revenue per order unchanged.
+segment; then hypothesise and name the evidence that would settle it. Kalpa's own case on Tuesday
+lands on the fourth rung. On closed quarters booked revenue fell 11.0 percent, from Rs 2.10 crore to
+Rs 1.87 crore; the same 69 customers bought in both, orders per customer fell from 1.65 to 1.25, down
+24.6 percent, and revenue per order rose 18.0 percent, mostly from the mix. The segment is
+Retail-Plus, whose orders per member fell from 2.32 to 1.18 on the file as exported.
 
 The follow-up worth asking: "which rung did you skip on the paper?" Most people skip the second, and
 Q47 is the second rung too: an average of segment averages compares a 100-order segment as if it
