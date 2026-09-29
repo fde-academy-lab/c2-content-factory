@@ -107,7 +107,7 @@ and dates day first.
 | `patient` | text | The patient's number, without the register's prefix | `004857`, `004699` |
 | `centre` | text | The site, in the new system's codes (see `clinics.new_system_code`) | `MAA-01`, `PNQ-02` |
 | `city` | text | The site's city | `Chennai`, `Pune` |
-| `created` | date, `DD/MM/YYYY` | The day the booking was made | `18/09/2026`, `26/09/2026` |
+| `created` | date, `DD/MM/YYYY` | The day the booking was made | `21/09/2026`, `26/09/2026` |
 | `channel` | text | How the patient booked | `WALKIN`, `APP`, `CALL`, `HOMEVISIT` |
 | `state` | text | Where the booking stands | `DONE`, `CXL` |
 
