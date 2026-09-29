@@ -102,6 +102,29 @@ MERMAID_CONFIG = """{
 
 PUPPETEER_CONFIG = '{"args":["--no-sandbox","--disable-setuid-sandbox"]}\n'
 
+# mermaid-cli 12 dropped the -w page-width flag and wraps labels narrower, so the same fence draws a
+# different picture. setup.sh pins 11; a render that draws nothing is reported here, once per cause,
+# because a diagram that quietly falls back to monospace text looks finished and is not.
+MMDC_FAILURES = []
+
+
+def note_mmdc_failure(result, what):
+    """Record and print why mmdc drew nothing: the last line it wrote, or the version problem."""
+    if isinstance(result, Exception):
+        last = f"{type(result).__name__}: {result}"
+    else:
+        lines = ((result.stderr or "") + "\n" + (result.stdout or "")).strip().splitlines()
+        last = lines[-1].strip() if lines else f"exit code {result.returncode} and no output"
+    if "unknown option '-w'" in last:
+        msg = ("the installed mermaid-cli is version 12 or later, which dropped -w and draws the "
+               "programme's diagrams differently; run npm install -g @mermaid-js/mermaid-cli@11, "
+               "which is what setup.sh installs")
+    else:
+        msg = f"mmdc drew nothing: {last}"
+    if msg not in MMDC_FAILURES:
+        MMDC_FAILURES.append(msg)
+        print(f"WARN  {what}: {msg}", file=sys.stderr)
+
 
 # --------------------------------------------------------------------------- mermaid
 def _chromium():
@@ -185,10 +208,12 @@ def render_mermaid(code, fmt="svg"):
     if fmt == "png":
         cmd += ["-w", "2400"]
     try:
-        subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=300)
-    except Exception:
+        result = subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=300)
+    except Exception as exc:
+        note_mmdc_failure(exc, "cheat sheet diagram")
         return None
     if not out.exists():
+        note_mmdc_failure(result, "cheat sheet diagram")
         return None
     if fmt == "svg" and b"foreignObject" in out.read_bytes():
         # An unrendered label is worse than a missing diagram, because it looks finished.
