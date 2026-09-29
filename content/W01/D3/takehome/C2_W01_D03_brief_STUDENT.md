@@ -31,8 +31,8 @@ decisions you flagged, and the one decision that moves the total, with the total
 
 ## Part 3. Read, about twenty minutes
 
-Real Python, Reading and Writing CSV Files, the section on `csv.DictReader` (verified 03 Sep 2026):
-https://realpython.com/python-csv/
+Real Python, Reading and Writing CSV Files, the section on `csv.DictReader`,
+https://realpython.com/python-csv/ (verified 03 Sep 2026).
 
 ## What makes this hard to shortcut
 
