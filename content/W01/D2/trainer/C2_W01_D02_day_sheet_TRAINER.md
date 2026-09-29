@@ -28,12 +28,12 @@ flowchart LR
 
 | Part | Slides (half one) | Beside it | What must land | If short of time |
 |---|---|---|---|---|
-| The ask and the thinking, 20 | S1 to S6 | The board: the ladder, then Monday's tree with empty Q1 and Q2 columns | Five ways the counting can make a drop; the five rungs drawn before any code | S4 read aloud, not discussed |
-| Round 1, is the drop real, 50 | S7 to S18 | Notebook `C2_W01_D02_01_is_the_drop_real_STUDENT.ipynb`; exercise set round 1 | 13 weeks against 11; the fair change is minus 11.0 percent; a rate per week rescues a cut window | S16 and S17 to one sentence |
-| Round 2, which branch moved, 50 | S19 to S33 | Notebook `02_which_branch`; exercise set round 2 | 69 customers in both quarters; frequency cost Rs 51.6 lakh; missing is unknown and the discount branch is bounded at Rs 12,900 | S32 and S33 become the room's variant only if time allows |
-| Round 3, every kind of customer, 50 | S34 to S47 | Notebook `03_which_segment`; exercise set round 3 | `tree_for` and `describe` written once and reused; the weighted roll-up; the room finds the segment on its own screens at S46 | Never cut S46; D slides stay self-study |
+| The ask, the system and the ladder, 20 | S1 to S7 | The board: the pipeline map, the ladder, then Monday's tree with empty Q1 and Q2 columns | What each branch costs and who owns it; where in the pipeline a fake drop is made; the five rungs and what each needs; changes multiply | S3's outside view to one sentence |
+| Round 1, is the drop real, 50 | S8 to S16 | Notebook `C2_W01_D02_01_is_the_drop_real_STUDENT.ipynb`; exercise set round 1 | How retailers keep periods comparable (like-for-like, 4-5-4, year on year); 13 weeks against 11; the fair change is minus 11.0 percent; lumpy revenue makes partial windows jumpy | S14 and S15 to one sentence |
+| Round 2, which branch moved, 50 | S17 to S26 | Notebook `02_which_branch`; exercise set round 2 | 69 customers in both quarters; the bridge depends on the order of steps (minus Rs 51.6 lakh or 60.9 lakh, symmetric 55.9); missing is unknown and the discount branch is bounded at Rs 12,900 | S25 becomes the room's variant only if time allows |
+| Round 3, every kind of customer, 50 | S27 to S36 | Notebook `03_which_segment`; exercise set round 3 | `tree_for` and `describe` written once and reused; the median against the range and the middle half; the weighted roll-up; the room finds the segment on its own screens at S35 | Never cut S35 |
 
-Do not run Retail-Plus or Student on the projector in round 3. The room runs all four segments at S46
+Do not run Retail-Plus or Student on the projector in round 3. The room runs all four segments at S35
 and says the segment aloud; the afternoon deck is the first place it is on a slide.
 
 ## Afternoon, 180 minutes
@@ -64,7 +64,7 @@ flowchart LR
 | Round 3 | Average of four segment averages: 1.94 then 1.82, "frequency fell only 6.0 percent" | Frequency dismissed, so Marketing's acquisition story stands | The roll-up must reproduce round 2's 1.65 and 1.25 | Weight by customers: 1.65 to 1.25, minus 24.6 percent |
 | Escalated case | `pct_change` prints moves above 30 percent and returns None: summary {Retail-Core -5.3, Business -15.0}, "Business fell most" | Business accounts opened first; the Retail-Plus head told his tier is not in the table | Segments in 4, rows out 2; `None in changes.values()` | Return every change and flag big moves in their own column |
 
-The KeyError on `order["discount"]` is a runtime error: two minutes, its last line, then S27. It is never the trap.
+The KeyError on `order["discount"]` is a runtime error: two minutes at S21, its last line and the three ways past it, then S22. It is never the trap.
 
 **Checkpoints, one learner each, under thirty seconds.** After round 1: "what has to match before two
 quarters compare?" After round 2: "which branch moved, and by how much in rupees?" After round 3: "why can
@@ -76,9 +76,9 @@ four averages not be averaged?" After the second case: "what data would prove th
 
 | Planted | Where the room meets it | If nobody finds it |
 |---|---|---|
-| Customer count flat, 69 and 69 | Round 2, S22 to S23, after a Predict | It is your demonstration; ask who predicted "fewer customers" and why |
-| Orders per customer falling in Retail-Plus only (2.32 to 1.18 on the file as exported, minus 49.0 percent) | Round 3, S46, on the room's own screens | Ask for the four `orders_per_customer` values read aloud in order; the outlier names itself. Never say it first |
-| The discount field absent on a subset (32 of 114 Q1 records, 26 of 86 Q2) | The KeyError at S26; the count in notebook 02's empty cell | Ask how many orders `"discount" in order` is False for; let the room say the number |
+| Customer count flat, 69 and 69 | Round 2, S18 to S19, after a Predict | It is your demonstration; ask who predicted "fewer customers" and why |
+| Orders per customer falling in Retail-Plus only (2.32 to 1.18 on the file as exported, minus 49.0 percent) | Round 3, S35, on the room's own screens | Ask for the four `orders_per_customer` values read aloud in order; the outlier names itself. Never say it first |
+| The discount field absent on a subset (32 of 114 Q1 records, 26 of 86 Q2) | The KeyError at S21; the count in notebook 02's empty cell | Ask how many orders `"discount" in order` is False for; let the room say the number |
 
 **Wednesday's plant sits in today's file.** The v1 export carries 14 duplicated Q1 rows: 11 Retail-Plus
 orders in May (why Retail-Plus May reads 24), 2 Business orders at Rs 9,83,780 in April, 1 Retail-Core in

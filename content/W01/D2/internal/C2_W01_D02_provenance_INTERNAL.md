@@ -71,9 +71,12 @@ take-home self-check's expected numbers and here.
    reads that back from the week of delivery, which puts the break in late August, and says it is an
    assumption wherever the timing test uses it.
 
-7. **The morning deck runs to 52 slides against the standard's "about 40"**, because each round carries
-   its full sequence and every Predict slide has its Answer slide; the afternoon deck runs to 29. The
-   D slides and the round variants are the cut lines the day sheet names.
+7. **The morning deck was rebuilt from 52 slides to 41** at the requester's ask on 29 Sep 2026, trading
+   eight predict-and-reveal pairs for business context (branch economics and owners, the pipeline map,
+   retail period conventions) and technical depth (the bridge's order and the symmetric split, the three
+   ways past a missing key, dictionary keys against list scans, the middle half against the range).
+   No new idea enters: each addition deepens one the morning already teaches. The bridge orders, the
+   quartiles and the Business mean without its largest order are computed from the class file.
 8. **The study notes run to about 5,400 words against "about 4,000"**, carrying three rounds, two cases
    and twelve full interview answers; the interview answers are where to cut.
 9. **Notebook 05 adds Retail-Plus orders per week around the assumed break** (3.9 in Q1, then 2.3 and
@@ -106,6 +109,20 @@ take-home self-check's expected numbers and here.
 | https://docs.python.org/3/tutorial/controlflow.html | Defining functions and return | checked 29 Sep 2026, the 3.14.7 documentation |
 | https://docs.python.org/3/library/stdtypes.html | `dict.get` | checked 29 Sep 2026 |
 | https://docs.python.org/3/library/statistics.html | `statistics.median` | checked 29 Sep 2026 |
+
+The morning deck, rebuilt on 29 Sep 2026 for business context and technical depth, adds these:
+
+| Link | Role | Checked |
+|---|---|---|
+| https://hbr.org/2014/10/the-value-of-keeping-the-right-customers | Half one S3: acquiring costs 5 to 25 times retaining; Reichheld's 5 percent retention lifting profits 25 to 95 percent | checked 29 Sep 2026, both sentences read on the page |
+| https://nrf.com/resources/4-5-4-calendar | Half one S9: the 4-5-4 calendar, like days against like days, derived in the 1930s | checked 29 Sep 2026, returned 200 |
+| https://docs.python.org/3/glossary.html | Half one S21: EAFP and LBYL | checked 29 Sep 2026, the 3.14.7 documentation |
+| https://wiki.python.org/moin/TimeComplexity | Half one S17: membership in a list is proportional to its length, in a set constant on average | checked 29 Sep 2026 |
+| https://doi.org/10.1016/j.enpol.2003.10.010 | Half one S20 notes: Ang (2005), the LMDI approach, Energy Policy 33(7), 867 to 871 | checked 29 Sep 2026 through Crossref metadata |
+| https://doi.org/10.1093/biomet/63.3.581 | Half one S24 notes: Rubin (1976), Inference and missing data, Biometrika 63(3), 581 to 592 | checked 29 Sep 2026 through Crossref; the publisher refused an automated request |
+
+The same-store sales definition on S9 was read on Wikipedia's article on 29 Sep 2026, whose status
+check was rate-limited, so the slide states the definition and cites NRF only.
 
 The study notes also cite the Berkeley 1973 admissions case (Bickel, Hammel and O'Connell, Science,
 1975) for weighted roll-ups, checked by search on 29 Sep 2026.
