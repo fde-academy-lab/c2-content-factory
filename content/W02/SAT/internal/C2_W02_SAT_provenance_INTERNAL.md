@@ -81,12 +81,13 @@ page 15 exactly and the builder's trailing gap pushed a blank page ahead of the 
    they swap, and the last six minutes send the hardest question back to the room.
 7. **The word for what a peer does is "check".** The guide avoids the grading vocabulary, since the
    paper is ungraded and the count on the front is items right.
+8. **Set 1 stays as the bank has it.** Its counts match the Week 2 Tuesday data (50 orders with two
+   payment rows, 30 delivered orders with none), which the room found on Tuesday. The requester
+   decided on 29 September 2026 to keep the set unchanged. The guide keeps the discussion to what
+   the room found and leaves the data's other contents unnamed.
 
 ## Open points for the orchestrating session
 
-- Set 1's situation uses the same counts as the Week 2 Tuesday data (50 orders with two payment rows,
-  30 delivered orders with none). The room found both on Tuesday, so the paper restates a finding;
-  the guide tells the Academic TA to keep the discussion to what the room found.
 - mermaid-cli 12.0.0 is the version installed in this environment, and `render_mermaid` in
   `scripts/build_cheatsheet.py` passes `-w 2400`, which that version rejects, so every exhibit PNG
   failed without an error. The build here ran with mermaid-cli 11.17.0 installed outside the
