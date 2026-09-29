@@ -85,7 +85,7 @@ Saturday 17 October 2026. A 120-minute paper holding 58 items at 119.5 minutes b
 
 ### Q2, key guarantee
 
-**Why it holds.** A table has no stored order, so without ORDER BY the database returns whichever rows its plan reaches first, and two runs can differ.
+**Why it holds.** A table has no stored order, so without ORDER BY the database returns whichever rows its plan reaches first, and two runs can differ. The common wrong answer is "sort", which fails because a plan that reads an index does return sorted rows on some runs; what the database withholds is the promise, so the word is guarantee.
 
 **In the interview.** LIMIT without ORDER BY returns some rows, never defined ones, so two analysts can get two different top fives from the same data.
 
@@ -127,7 +127,7 @@ Saturday 17 October 2026. A 120-minute paper holding 58 items at 119.5 minutes b
 
 ### Q9, key melt
 
-**Why it holds.** melt turns columns into rows, which lengthens the table; pivot_table does the reverse.
+**Why it holds.** melt turns columns into rows, which lengthens the table; pivot_table does the reverse. The common wrong answer is unstack, which fails because unstack moves an index level into the columns and so widens the table, the same direction as pivot_table.
 
 **In the interview.** pivot_table widens by turning values into columns, and melt lengthens by turning columns back into rows.
 
@@ -281,13 +281,13 @@ Saturday 17 October 2026. A 120-minute paper holding 58 items at 119.5 minutes b
 
 ### Q28, key a
 
-**Why it holds.** When the window's ORDER BY has ties, the order of the tied rows is undefined, so the running total at those rows can differ from run to run. A tiebreaker column fixes it.
+**Why it holds.** The claim needs a ROWS frame, such as ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW: tied rows are then added one at a time in an undefined order, so the running total at those rows can differ from run to run. Postgres's default frame with an ORDER BY is RANGE, which treats tied rows as peers and gives them one shared running total, so on the default the ties change only the order the rows print in. Checked in Postgres 16.13. Option a stays the only defensible cause, because b, c and d are false on any frame, and a tiebreaker column in the window's ORDER BY fixes it on both.
 
 - (b) Postgres does not sample rows inside a window.
 - (c) A cached result would repeat the same answer, never change it.
 - (d) SUM over exact numeric values is exact; it does not drift.
 
-**In the interview.** A running total that moves between runs has ties in its ORDER BY; add a tiebreaker so the order is defined.
+**In the interview.** A running total that moves between runs has ties in its ORDER BY under a ROWS frame, since the default RANGE frame gives tied rows one shared total; add a tiebreaker so the order is defined.
 
 ### Q29, key c
 
@@ -388,13 +388,13 @@ Saturday 17 October 2026. A 120-minute paper holding 58 items at 119.5 minutes b
 
 ### Q40, key 1,050
 
-**Why it holds.** 920 orders give one row each, 50 orders give two rows each and 30 unpaid orders keep one row with NULLs: 920 + 100 + 30 = 1,050. Checked in Postgres 16.13.
+**Why it holds.** 920 orders give one row each, 50 orders give two rows each and 30 unpaid orders keep one row with NULLs: 920 + 100 + 30 = 1,050. Checked in Postgres 16.13. The common wrong answer is 1,000, which fails because a left join keeps every order but writes one row per matching payment, so the 50 retried orders appear twice.
 
 **In the interview.** A left join returns one row per match plus one per unmatched left row, so 1,050 here.
 
 ### Q41, key 1,020
 
-**Why it holds.** The INNER JOIN drops the 30 unpaid orders: 920 + 100 = 1,020.
+**Why it holds.** The INNER JOIN drops the 30 unpaid orders: 920 + 100 = 1,020. The common wrong answer is 970, the count of orders with a payment, which fails because a join returns one row per matching pair and the 50 retried orders match two payment rows each.
 
 **In the interview.** An inner join returns only the matches, 1,020, and the 30 unpaid orders vanish without a word.
 
@@ -416,13 +416,13 @@ Saturday 17 October 2026. A 120-minute paper holding 58 items at 119.5 minutes b
 
 ### Q44, key 4
 
-**Why it holds.** A 900, B and C tie at rank 2, so the next rank is 4 for D and E. Checked in Postgres 16.13.
+**Why it holds.** A 900, B and C tie at rank 2, so the next rank is 4 for D and E. Checked in Postgres 16.13. The common wrong answer is 3, which is D's rank under DENSE_RANK(); RANK() skips the ranks the tie used up.
 
 **In the interview.** Under RANK the pair tied at second pushes the next member to fourth.
 
 ### Q45, key 4
 
-**Why it holds.** Dense ranks run A 1, B and C 2, D and E 3, F 4.
+**Why it holds.** Dense ranks run A 1, B and C 2, D and E 3, F 4. The common wrong answer is 6, which fails because 6 is F's rank under RANK() and its row number; DENSE_RANK() never skips a rank after a tie.
 
 **In the interview.** DENSE_RANK never skips, so F is fourth.
 
@@ -448,7 +448,7 @@ Saturday 17 October 2026. A 120-minute paper holding 58 items at 119.5 minutes b
 
 ### Q48, key 1,060
 
-**Why it holds.** 940 customers match once and 60 match twice: 940 + 120 = 1,060.
+**Why it holds.** 940 customers match once and 60 match twice: 940 + 120 = 1,060. The common wrong answer is 1,000, which fails because a left merge keeps the left table's row count only when the right key is unique, and each of the 60 repeated customer_ids adds a row.
 
 **In the interview.** Each repeated key adds a row, so 60 duplicates turn 1,000 customers into 1,060 rows.
 
@@ -480,25 +480,25 @@ Saturday 17 October 2026. A 120-minute paper holding 58 items at 119.5 minutes b
 
 ### Q52, key 8
 
-**Why it holds.** Four segments times two quarters, with every combination present, gives eight groups.
+**Why it holds.** Four segments times two quarters, with every combination present, gives eight groups. The common wrong answer is 6, which adds the segments to the quarters and fails because GROUP BY on two columns returns one row per pair of values, so the counts multiply.
 
 **In the interview.** GROUP BY returns one row per combination that exists, so 4 by 2 gives 8.
 
 ### Q53, key Rs 21 lakh, which overstates collections by Rs 1 lakh.
 
-**Why it holds.** Fifty payments of Rs 2,000 counted twice add Rs 1 lakh: Rs 20 lakh plus Rs 1 lakh is Rs 21 lakh.
+**Why it holds.** Fifty payments of Rs 2,000 counted twice add Rs 1 lakh: Rs 20 lakh plus Rs 1 lakh is Rs 21 lakh. The common wrong answer is Rs 20 lakh, which fails because SUM adds rows, and each retried payment is a second row carrying the same amount.
 
 **In the interview.** A plain SUM reports Rs 21 lakh, overstating collections by exactly the retried amount.
 
 ### Q54, key 51 under RANK(); 50 under ROW_NUMBER().
 
-**Why it holds.** Under RANK both tied members hold rank fifty, so 51 rows return; ROW_NUMBER numbers every row once and returns 50.
+**Why it holds.** Under RANK both tied members hold rank fifty, so 51 rows return; ROW_NUMBER numbers every row once and returns 50. The common wrong answer is 50 under both, which fails because RANK() gives both tied members rank fifty and the filter keeps both.
 
 **In the interview.** RANK ships 51 on a tie at fifty, ROW_NUMBER ships 50 and drops one tied member by an arbitrary rule.
 
 ### Q55, key A fall of Rs 800, then a fall of Rs 300; the flag fires.
 
-**Why it holds.** LAG gives 4,200 minus 5,000, a fall of Rs 800, and 3,900 minus 4,200, a fall of Rs 300. Two consecutive falls fire the flag.
+**Why it holds.** LAG gives 4,200 minus 5,000, a fall of Rs 800, and 3,900 minus 4,200, a fall of Rs 300. Two consecutive falls fire the flag. The common wrong answer takes last month minus this month, reads two rises of Rs 800 and Rs 300 and says the flag does not fire; LAG returns last month's value, and the change is this month minus that value, so both changes are falls.
 
 **In the interview.** LAG puts last month beside this month, and two negative changes in a row fire the flag.
 
