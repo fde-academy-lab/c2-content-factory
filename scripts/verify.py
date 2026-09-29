@@ -57,7 +57,7 @@ TEACHING_DIRS = {
 }
 BUILD_DIRS = {
     "briefs", "rubrics", "gd", "parallel-build", "checkpoints", "mocks", "trainer", "internal",
-    "data",
+    "data", "slides",
 }
 SAT_RECAP_DIRS = {"paper", "answer-key", "discussion", "internal"}
 
