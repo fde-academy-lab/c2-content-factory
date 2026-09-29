@@ -68,8 +68,8 @@ whose topic has a trace or a message exchange.
 
 ### Diagram builders
 
-Every builder takes data rather than markup, returns SVG and renders from a code cell, so the
-picture saves into the notebook and shows on GitHub. A node's look comes from its `kind`: `plain`,
+Every builder takes data rather than markup, returns SVG and renders from a code cell as an SVG
+image output, so the picture saves into the notebook and shows in every notebook viewer. A node's look comes from its `kind`: `plain`,
 `lit` for the current step, `known`, `unknown` with a dashed edge, `bad` in rose and `good` in green.
 These are the same looks the decks' Mermaid classes and the companion's builders use.
 
@@ -83,6 +83,9 @@ These are the same looks the decks' Mermaid classes and the companion's builders
 | `driver_tree` | A total on the left, what multiplies into it on the right | A metric broken into its drivers |
 | `equation` | A formula as boxes and operators | A relation worth seeing whole |
 | `strip` | Every value as a dot on one axis, with any line named, such as the mean and the median | A distribution, and what one value does to a mean |
+| `columns` | Vertical bars grouped by category, one per series, light to dark | Q1 against Q2 by segment, any before and after across groups |
+| `line` | Values over an ordered axis, with a dashed plan line | A trend, a running total against plan |
+| `bridge` | A starting total, the moves that change it, and where they land | A reconciliation, a decomposition of a change, booked to collected |
 | `bars` | Horizontal bars with their values | A comparison of a few totals |
 | `matrix` | A two-axis grid with cells filled | A choice with two independent dimensions |
 | `decision_ladder` | Options in order with the cut line marked | A choice that is a threshold |

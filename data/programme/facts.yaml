@@ -21,7 +21,7 @@
 #
 # Roles only in this file. Never a person's name, because the repository is public.
 
-as_of: 2026-09-27
+as_of: 2026-09-29
 
 sources:
   tracker:
@@ -75,11 +75,14 @@ cohort:
 
 campus_day:
   status: locked
-  source: handover, page 4; tracker, Structure tab
-  shape: Two sessions a day with lunch between them, up to five teaching hours, six days a week.
+  source: the requester, 29 September 2026, which replaces the five-hour day of the handover (page 4) and the tracker's Structure tab
+  shape: Two teaching blocks of 180 minutes each with lunch between them, six days a week, and a TA-led practice lab after the second block.
   saturday: A pen-and-paper recap paper of about two hours, AI-free, then a break, then the solution discussion led by the Academic TA.
-  teaching_ceiling_minutes: 300
-  ceiling_agreed_on: 2026-09-15
+  # Clock times live here and nowhere else; lesson material carries durations only.
+  clock: {morning: 10:00 to 13:00, lunch: 13:00 to 14:00, afternoon: 14:00 to 17:00, after: the TA-led practice lab}
+  teaching_ceiling_minutes: 360
+  ceiling_agreed_on: 2026-09-29
+  superseded: {teaching_ceiling_minutes: 300, agreed_on: 2026-09-15}
 
 faculty:
   status: tentative
@@ -92,8 +95,8 @@ faculty:
   publish_names: false
   placement: Within its week the block runs after the day's applied core and picks up where the trainer's row stops.
   ruling:
-    status: open
-    text: A day that carries a block runs to about 360 taught minutes against the 300-minute ceiling, so either the campus day runs full on those days or the trainer's agenda gives up 60 minutes, starting from its cut-first line.
+    status: closed
+    text: The 360-minute campus day of 29 September 2026 holds a faculty day whole, with the trainer's 240 minutes and the block's 120, so no trainer agenda gives time up.
   # Changes that arrive before IIT Gandhinagar returns a new workbook. Each entry sits on top of
   # the workbook's row for that session. Fold them into the workbook when the next version comes.
   #   W4-3: {date: 2026-10-29, status: Confirmed, remarks: moved at the faculty's request}
@@ -237,8 +240,8 @@ decisions:
   - id: faculty-blocks
     status: open
     closes: IIT Gandhinagar and the Programme Head
-    text: How a day absorbs an IITGN block, and the faculty names and dates from IIT Gandhinagar.
-    blocks: the timing lines of 30 day packs in Weeks 2, 4, 5, 7, 8, 10 and 11
+    text: The faculty names and dates from IIT Gandhinagar. How a day absorbs a block was settled on 29 September 2026, when the campus day became 360 minutes, the trainer's 240 and the block's 120.
+    blocks: the faculty lines of 30 day packs in Weeks 2, 4, 5, 7, 8, 10 and 11, which render from sync blocks
   - id: client-zero-v2-3
     status: open
     closes: the Programme Head

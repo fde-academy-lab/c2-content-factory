@@ -49,6 +49,11 @@ label between 9 and 18 points, and a picture beside its words wins over the same
 under them when it prints larger. Meaning is carried by four class styles, written into the fence as
 the model decks write them:
 
+A chart on a slide is a Mermaid `xychart-beta` fence, which the shared theme draws in the programme
+palette: one bar series of values at or above zero, or up to three lines. Negative bars are drawn up
+from the axis floor rather than from zero, so a change or a reconciliation goes in the notebook's
+`kit.bridge` and the slide states its numbers.
+
 ```
 classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
 classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3

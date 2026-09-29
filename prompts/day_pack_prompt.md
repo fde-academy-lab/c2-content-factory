@@ -23,7 +23,8 @@ row's stop-before line is where the faculty member starts, so the pack stops the
 day sheet carries the block and the module line as sync blocks (`sync:faculty-day:W{ww}/D{d}`,
 `sync:module:W{ww}/D{d}`).
 
-Run the gates in order and stop after gate 2 for my approval.
+Run the gates in order and stop after gate 2 for my approval, unless `docs/detailing/` holds this
+week's approved spine: then that spine is gate 2, and you state the envelope and build from it.
 
 0. **Source lock.** One written reference and one video per new topic, the product's own documentation for
    any tool used for the first time, and every movable fact verified with the date it was checked. Links I
@@ -32,9 +33,9 @@ Run the gates in order and stop after gate 2 for my approval.
 1. **Envelope and continuity.** The day's business scenario in one line, which of the three threads it
    advances (Growth, Trust, Cost and risk), what the room already knows, what today must not repeat, what
    comes later. All from the row, in one short block.
-2. **The spine, one screen.** The scenario and the thinking it trains; the deck decision (one deck, or half
-   one and half two); the section list per artifact; the day's mental-model arc in one sentence; the
-   deliberate failures with their exact error text; the activity choice and its toggle; the take-home shape
+2. **The spine, one screen.** The scenario and the thinking it trains; the five rungs, the three rounds
+   and the afternoon's two cases; the section list per artifact; the day's mental-model arc in one sentence;
+   the traps with their exact wrong numbers; the activity choice and its toggle; the take-home shape
    with its resistance patterns named; the interview questions the day equips, with their tags. Wait for my
    approval. Build nothing past this without an explicit yes.
 3. **Build passes**, one artifact family per message: (a) deck or deck halves, (b) notebooks, (c) activity,
@@ -50,8 +51,8 @@ Run the gates in order and stop after gate 2 for my approval.
 
 Binding rules: the business scenario is slide one and the notebook's first markdown cell, and it is never
 cut; the thinking is drawn before any tool opens; mental model first and spiral always; at most four new
-ideas per two-hour block; application before theory; one deliberate failure per block with exact error
-text; notebooks rich, progressive and shipped executed; the activity toggle-driven with minimal typing;
+ideas per two-hour block; application before theory; every round's trap a plausible wrong number
+with its business consequence, never a syntax error; notebooks rich, progressive and shipped executed; the activity toggle-driven with minimal typing;
 exercises few and think-heavy with selection or repair answers; the take-home shortcut-resistant with
 verified exploration links and a self-check spine.
 

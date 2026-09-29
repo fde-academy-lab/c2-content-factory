@@ -14,8 +14,6 @@ PICKS UP WHERE THE ROW STOPS: Week 1 Thursday ran the permutation test concept-f
 CONNECTS TO KALPA: the 5,000 shuffles on the Retail-Plus gap are a sampling distribution the room has already drawn.
 BY THE END: a learner can say what a standard error is, why sample means pile up in a bell shape, and why twelve Student orders give a wide one.
 DOES NOT REPEAT: the meaning of a p-value, which the room has stated correctly since Week 1.
-
-Open ruling: A day that carries a block runs to about 360 taught minutes against the 300-minute ceiling, so either the campus day runs full on those days or the trainer's agenda gives up 60 minutes, starting from its cut-first line.
 <!-- /sync:faculty-day:W02/D1 -->
 
 ## Before the room opens

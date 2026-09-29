@@ -85,27 +85,27 @@ Explaining an LLM. Open on an experience everyone has had (type a prompt, get a 
 
 Binding rules while building:
 
-- At most four new ideas per two-hour block, counted as decision sentences. A day is one block-pair; if the row's ideas exceed the cap, the row is wrong and the build stops.
+- At most four new ideas per two hours of teaching, counted as decision sentences, so a 180-minute block holds six and the day twelve; depth comes from climbing each idea through harder cases, never from adding ideas past the cap. If the row's ideas exceed it, the row is wrong and the build stops.
 - Application before theory: the working thing and its output first, the name last.
-- One deliberate failure per block, with the exact error text or the exact wrong output.
+- Every round stages a trap: a plausible wrong number or output, shown exactly, with the decision it would have misled, the check that catches it and the fix. A syntax or runtime error is met when it happens and gets two minutes; it never takes a trap slot.
 - Cognitive load is the design constraint: think trainer, psychologist and storyteller at once, and cut breadth before cutting the worked example.
 - Durations only, never clock times; role labels only, never trainer names, in anything a student sees.
 
 ## The gates
 
 1. **Envelope and continuity.** From the row: the business scenario in one line, what the room already knows, what today must not repeat, what comes later, and which thread of the three (Growth, Trust, Cost and risk) this day advances. One short block, stated to the requester.
-2. **The spine, for approval.** One screen: the scenario and the thinking it trains, the deck decision (one deck, or half one and half two when the day carries two arcs), section list per artifact, the day's mental-model arc in one sentence, the deliberate failures with their exact error text, the activity choice with its toggle, the take-home shape, and the interview questions the day equips. Stop and wait. Nothing downstream is built before the spine is approved.
+2. **The spine, for approval.** Where `docs/detailing/` holds an approved spine for the week, it is this gate for every day it covers: state the envelope, then build from it without stopping. Otherwise, one screen: the scenario and the thinking it trains, the five rungs, the three rounds and the afternoon's two cases, section list per artifact, the day's mental-model arc in one sentence, the traps with their exact wrong numbers, the activity choice with its toggle, the take-home shape, and the interview questions the day equips. Stop and wait. Nothing downstream is built before the spine is approved.
 3. **Build passes**, one artifact family per pass, in this order: deck(s); notebooks; activity; exercises plus solutions; take-home plus self-check spine; Kahoot pack; study notes, cheat sheet and pre-read. Each pass is a separate generation because mixing them flattens all of them.
 4. **Verification.** Run the checklist at the end of this file and report results, including what failed and was fixed.
 5. **Ship.** Folders and file names per the naming rule below, audience tags mandatory, files presented together.
 
 ## The artifact set
 
-The full manifest with per-artifact specifications lives in `references/artifact-manifest.md`. Read it before pass 1 on any new day. `references/the-standard.md` shows what a finished pack looks like, family by family, and names the model pack, `content/W01/D1`; open the matching file there before each build pass. The short form:
+The full manifest with per-artifact specifications lives in `references/artifact-manifest.md`. Read it before pass 1 on any new day. `references/the-standard.md` sets the bar, the 360-minute day and the volume each family ships, and names `content/W01/D1` as the model for form; read it before each build pass. The short form:
 
 | Artifact | Audience | Count per day |
 |---|---|---|
-| Deck | STUDENT-visible, trainer-driven | 1, or 2 as half one and half two |
+| Deck | STUDENT-visible, trainer-driven | 2: the morning deck (half one) and the afternoon deck (half two) |
 | Demo notebooks | STUDENT | 1 or more, rich, progressive |
 | Activity | STUDENT | 0 or 1 |
 | Guided + unguided exercises | STUDENT | few, think-heavy |
@@ -116,6 +116,7 @@ The full manifest with per-artifact specifications lives in `references/artifact
 | Study notes | STUDENT, after delivery | 1, transcript-revisable |
 | Cheat sheet | STUDENT | 0, 1 or more |
 | Pre-read + setup for tomorrow | STUDENT, ships tonight | 1 |
+| Practice lab set | STUDENT, with a TA note | 1, for the lab after the second block |
 | Tiered extras (stretch, recovery) | STUDENT | 1 pair, weekly build allowed |
 
 Saturday recap papers are weekly artifacts taken from the week's paper in the tracker's item bank (`docs/curriculum/Saturday_papers.md`): the STUDENT paper prints the items only, and the key, levels, tags and anchors go to TRAINER files. Build weeks swap this manifest for the build-week pack, and Week 0 days add the diagnostic papers and keys; all three variations are specified in the manifest reference.
@@ -134,7 +135,7 @@ Orientation moved to Week 0 Monday on the 21 September calendar. The Programme H
 4. The interview questions from column 12 appear in the pack as questions, with their tags, and the
    answers written here are not copied back into the curriculum row.
 5. Idea count per block within the cap, counted as decision sentences.
-6. Every deliberate failure carries its exact error text or exact wrong output, and the demo reproduces it.
+6. Every round's trap shows the exact wrong number or output and the decision it would have misled, and the demonstration reproduces it; no trap is a syntax error.
 7. Demo notebooks run cold in a fresh Codespace, top to bottom.
 8. Deck, notebooks and exercises follow the same segment order.
 9. Every link was verified on the day it entered an artifact and carries that date; unverified slots say "to be found".

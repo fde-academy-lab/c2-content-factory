@@ -15,6 +15,8 @@ Item count comes from the drop point's minutes at about one item per minute. A f
 
 Where a day has two or three unguided exercises, transpose the same devices across them: one on the concept, one on the code, one on the failure or operating layer. The devices repeat, the layer changes.
 
+**Every stem is a business question on Kalpa data.** An item asks which decision a number supports, which of several plausible outputs is wrong and why, what a query or a groupby returns on the day's data, or which fix restores the right number. No item tests syntax alone: an item a learner could answer by knowing the language but not the business teaches the wrong thing for the screens this programme prepares for.
+
 ## What keeps its existing kind
 
 Two exercise kinds are resistance patterns rather than selection devices, and they are not converted:
@@ -46,6 +48,7 @@ Those letters are an illustration of the shape. Check that the illustration is n
 - Diagrams as Mermaid fenced blocks, so a learner reads them on GitHub with nothing installed.
 - Each exercise gains a hands-on part pointing at its TODO notebook and listing the letters to post.
 - The key is never the longest option, and key positions spread across a to d rather than clustering.
+- The best wrong option is the plausible wrong number a hurried analyst produces: rows counted as customers, a total over unequal windows, a join that fanned out, an average that averaged averages.
 - A near-miss that is precise about the wrong grain is the best distractor. A nonsense option gives the answer away by elimination.
 - No format line, worked example or preamble contains the true answers.
 

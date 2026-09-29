@@ -15,9 +15,11 @@ folder until it finds scripts/c2kit.py:
 
 What it holds: loaders for the day's data from ../data/, check and check_summary, table and stats,
 expect_error for a failure staged on purpose, a trace viewer, and the diagram builders, which render
-SVG from a code cell so the picture saves into the notebook and shows on GitHub. The builders are
-ladder, flow, vflow, stack, sequence, tree, driver_tree, matrix, decision_ladder, equation, strip,
-bars and side_by_side.
+SVG from a code cell and save as an SVG image output, which every notebook viewer shows. The
+builders are ladder, flow, vflow, stack, sequence, tree, driver_tree, matrix, decision_ladder,
+equation and side_by_side for the thinking, and strip, bars, columns, line and bridge for the data:
+a distribution, a ranking, a comparison across groups, a trend against a plan, and a reconciliation
+from one total to another.
 
 The colours come from scripts/brand.py, the same values the decks and the cheat sheets read, so a
 tree in a notebook and the tree on the slide are the same drawing in the same violet.
@@ -451,9 +453,13 @@ _DEFS = (f'<defs><marker id="c2kArrow" viewBox="0 0 10 10" refX="9" refY="5" mar
 
 
 def _emit(svg, show=True):
-    """Draw the diagram, or hand back its SVG when a composer is going to place it."""
+    """Draw the diagram, or hand back its SVG when a composer is going to place it.
+
+    The drawing is saved as an SVG image output rather than as HTML, because every notebook
+    viewer shows an image, including the ones that drop HTML outputs.
+    """
     if show:
-        display(HTML(svg))
+        display({"image/svg+xml": svg}, raw=True)
         return None
     return svg
 
@@ -737,6 +743,208 @@ def bars(rows, title="", show=True, fmt=None, lit=(), width=720):
     return _emit(_svg(width, height, "".join(body), title), show)
 
 
+_ROUND = (1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8)
+
+
+def _chart_ceil(x):
+    """The next round number at or above x, in finer steps than _nice_ceil, so a chart's top
+    gridline sits just above its tallest value rather than up to twice as high."""
+    import math
+    if x <= 0:
+        return 1
+    p = 10 ** math.floor(math.log10(x))
+    for step in _ROUND + (10,):
+        if step * p >= x * 0.999999:
+            return step * p
+    return 10 * p
+
+
+def _tick_count(span):
+    """Five, four, six or three intervals, whichever first gives a round step."""
+    import math
+    for n in (5, 4, 6, 3):
+        step = span / n
+        if step <= 0:
+            break
+        mantissa = round(step / 10 ** math.floor(math.log10(step)), 6)
+        if mantissa in _ROUND:
+            return n
+    return 4
+
+
+def _ticks(lo, hi, fmt, left, right, py, n=None):
+    """Horizontal gridlines with their values, from lo to hi in round steps."""
+    n = n or _tick_count(hi - lo)
+    out = []
+    for k in range(n + 1):
+        v = lo + (hi - lo) * k / n
+        y = py(v)
+        out.append(f'<line x1="{left}" y1="{y:.1f}" x2="{right}" y2="{y:.1f}" stroke="{LINE}" '
+                   f'stroke-width="1"/><text x="{left - 8}" y="{y + 4:.1f}" text-anchor="end" '
+                   f'fill="{MUTED}" font-family="{FONT}" font-size="11.5">{_html.escape(fmt(v))}'
+                   f'</text>')
+    return "".join(out)
+
+
+def _under(x, y, text, per=13, size=12, bold=False):
+    """A label under a column, wrapped to its width and centred on x."""
+    return "".join(
+        f'<text x="{x:.0f}" y="{y + i * (size + 3):.0f}" text-anchor="middle" fill="{INK}" '
+        f'font-family="{FONT}" font-size="{size}" font-weight="{700 if bold else 400}">'
+        f'{_html.escape(line)}</text>' for i, line in enumerate(_wrap(text, per)[:3]))
+
+
+def _legend(items, x, y):
+    """A row of swatches and names: items is a list of (name, colour, dashed)."""
+    out, cx = [], x
+    for name, colour, dashed in items:
+        if dashed:
+            out.append(f'<line x1="{cx}" y1="{y - 4}" x2="{cx + 18}" y2="{y - 4}" stroke="{colour}" '
+                       f'stroke-width="2" stroke-dasharray="5 3"/>')
+        else:
+            out.append(f'<rect x="{cx}" y="{y - 10}" width="14" height="12" rx="3" fill="{colour}"/>')
+        out.append(f'<text x="{cx + 22}" y="{y}" fill="{INK}" font-family="{FONT}" '
+                   f'font-size="12.5">{_html.escape(name)}</text>')
+        cx += 34 + len(name) * 7
+    return "".join(out)
+
+
+def bridge(start, moves, end_label="", title="", show=True, fmt=None, lit=(), width=None,
+           lo=None):
+    """A bridge, or waterfall: a starting total, the moves that change it, and where they land.
+
+    start is (label, value) and moves is a list of (label, change). Each move floats from the
+    running total, green when it adds and rose when it takes away, and the last column is the
+    total the moves arrive at, so a reconciliation that does not land where it should shows at a
+    glance. lit is a list of move indexes outlined in ink, for the move the story is about.
+
+    lo raises the floor of the axis when the moves are small against the totals, so they stay
+    visible; the totals are then drawn from that floor, and the caption should say so.
+    """
+    fmt = fmt or rupees
+    run, levels = start[1], [0, start[1]]
+    cols = [(start[0], start[1], None, 0, start[1])]
+    for i, (label, change) in enumerate(moves):
+        cols.append((label, change, i, run, run + change))
+        run += change
+        levels.append(run)
+    cols.append((end_label or "Where it lands", run, None, 0, run))
+    floor = min(0, min(levels)) if lo is None else lo
+    hi, lo = floor + _chart_ceil((max(levels) - floor) * 1.06), floor
+    col_w, gap, left, top, plot_h = 92, 22, 86, 30, 230
+    width = width or left + len(cols) * (col_w + gap) + 6
+    span = (hi - lo) or 1
+
+    def py(v):
+        return top + plot_h * (hi - v) / span
+
+    body = [_ticks(lo, hi, fmt, left - 6, width - 8, py)]
+    for k, (label, value, move, a, b) in enumerate(cols):
+        x = left + k * (col_w + gap)
+        y1, y2 = py(max(a, b)), py(max(lo, min(a, b)))
+        if move is None:
+            fill, text = ACCENT, fmt(value)
+        else:
+            fill = PASS_COLOUR if value >= 0 else FAIL_COLOUR
+            text = ("+" if value >= 0 else "") + fmt(value)
+        outline = (f' stroke="{INK}" stroke-width="2.5"' if move is not None and move in lit
+                   else "")
+        body.append(f'<rect x="{x}" y="{y1:.1f}" width="{col_w}" height="{max(2, y2 - y1):.1f}" '
+                    f'rx="4" fill="{fill}" fill-opacity="0.88"{outline}/>'
+                    f'<text x="{x + col_w / 2:.0f}" y="{y1 - 7:.1f}" text-anchor="middle" '
+                    f'fill="{INK}" font-family="{FONT}" font-size="12.5" font-weight="700">'
+                    f'{_html.escape(text)}</text>')
+        if k < len(cols) - 1:
+            level = py(b if move is not None or k == 0 else value)
+            body.append(f'<line x1="{x + col_w}" y1="{level:.1f}" x2="{x + col_w + gap}" '
+                        f'y2="{level:.1f}" stroke="{MUTED}" stroke-width="1" '
+                        f'stroke-dasharray="3 3"/>')
+        body.append(_under(x + col_w / 2, top + plot_h + 20, label, bold=move is None))
+    height = top + plot_h + 20 + 3 * 15 + 8 + (22 if title else 0)
+    return _emit(_svg(width, height, "".join(body), title), show)
+
+
+def line(labels, series, title="", show=True, fmt=None, width=760, lo=0):
+    """Values over an ordered axis, one line per series, for a trend or a total against a plan.
+
+    series is a list of (name, values, kind): kind "plan" draws a dashed reference line, "bad"
+    and "good" colour a line by meaning, and anything else draws the accent line. The last value
+    of each line is printed at its end, so the reader sees where it finished.
+    """
+    fmt = fmt or (lambda v: f"{v:,.0f}")
+    values = [v for _, vals, _ in series for v in vals if v is not None]
+    hi = lo + _chart_ceil((max(values) - lo) * 1.06)
+    left, right, top, plot_h = 86, width - 110, 44, 220
+    span = (hi - lo) or 1
+    step = (right - left) / max(1, len(labels) - 1)
+
+    def py(v):
+        return top + plot_h * (hi - v) / span
+
+    colours = {"plan": MUTED, "bad": FAIL_COLOUR, "good": PASS_COLOUR, "lit": INK}
+    body = [_ticks(lo, hi, fmt, left, right, py)]
+    for i, label in enumerate(labels):
+        body.append(_under(left + i * step, top + plot_h + 20, str(label), per=10, size=11.5))
+    legend = []
+    for name, vals, kind in series:
+        colour = colours.get(kind, ACCENT)
+        dashed = kind == "plan"
+        legend.append((name, colour, dashed))
+        pts = [(left + i * step, py(v)) for i, v in enumerate(vals) if v is not None]
+        path = " ".join(f"{'M' if j == 0 else 'L'} {x:.1f} {y:.1f}" for j, (x, y) in enumerate(pts))
+        dash = ' stroke-dasharray="6 4"' if dashed else ""
+        body.append(f'<path d="{path}" fill="none" stroke="{colour}" stroke-width="2.4"{dash}/>')
+        if not dashed:
+            body.extend(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.6" fill="{colour}"/>'
+                        for x, y in pts)
+        if pts:
+            last = [v for v in vals if v is not None][-1]
+            body.append(f'<text x="{pts[-1][0] + 8:.0f}" y="{pts[-1][1] + 4:.0f}" fill="{colour}" '
+                        f'font-family="{FONT}" font-size="12.5" font-weight="700">'
+                        f'{_html.escape(fmt(last))}</text>')
+    body.append(_legend(legend, left, 22))
+    height = top + plot_h + 20 + 2 * 15 + 8 + (22 if title else 0)
+    return _emit(_svg(width, height, "".join(body), title), show)
+
+
+def columns(categories, series, title="", show=True, fmt=None, width=None, lit=()):
+    """Vertical bars grouped by category, one bar per series, for a side-by-side comparison.
+
+    series is a list of (name, values) aligned with categories, drawn light to dark in the order
+    given, so a Q1 against Q2 comparison reads as before and after. lit is a list of category
+    indexes whose label is set in bold, for the group the story is about.
+    """
+    fmt = fmt or (lambda v: f"{v:,.0f}")
+    shades = [LILAC, ACCENT, INK, PASS_COLOUR]
+    values = [v for _, vals in series for v in vals]
+    hi = _chart_ceil(max(values) * 1.1)
+    bar_w, inner, group_gap, left, top, plot_h = 40, 6, 34, 86, 44, 220
+    group_w = len(series) * bar_w + (len(series) - 1) * inner
+    width = width or left + len(categories) * (group_w + group_gap) + 10
+
+    def py(v):
+        return top + plot_h * (hi - v) / hi
+
+    body = [_ticks(0, hi, fmt, left - 6, width - 8, py)]
+    for c, category in enumerate(categories):
+        gx = left + c * (group_w + group_gap)
+        for s, (_, vals) in enumerate(series):
+            v = vals[c]
+            x = gx + s * (bar_w + inner)
+            body.append(f'<rect x="{x}" y="{py(v):.1f}" width="{bar_w}" '
+                        f'height="{max(1, top + plot_h - py(v)):.1f}" rx="3" '
+                        f'fill="{shades[s % len(shades)]}"/>'
+                        f'<text x="{x + bar_w / 2:.0f}" y="{py(v) - 6:.1f}" text-anchor="middle" '
+                        f'fill="{INK}" font-family="{FONT}" font-size="11" font-weight="700">'
+                        f'{_html.escape(fmt(v))}</text>')
+        body.append(_under(gx + group_w / 2, top + plot_h + 20, str(category),
+                           per=max(10, int(group_w / 7)), bold=c in lit))
+    body.append(_legend([(name, shades[s % len(shades)], False)
+                         for s, (name, _) in enumerate(series)], left, 22))
+    height = top + plot_h + 20 + 3 * 15 + 8 + (22 if title else 0)
+    return _emit(_svg(width, height, "".join(body), title), show)
+
+
 def matrix(row_labels, col_labels, cells, title="", show=True):
     """A two-axis grid, for a choice with two independent dimensions."""
     cw, ch, lw = 190, 58, 150
@@ -774,14 +982,39 @@ def decision_ladder(options, cut_at=None, title="", show=True):
     return _emit(_svg(w + 120, height, "".join(body), title), show)
 
 
-def side_by_side(*svgs, gap=26, show=True):
-    """Two or more diagrams composed horizontally, which is the opening MAP cell's shape."""
-    body = (f'<div style="display:flex;gap:{gap}px;align-items:flex-start;flex-wrap:wrap">'
-            + "".join(f"<div>{svg}</div>" for svg in svgs) + "</div>")
-    if show:
-        display(HTML(body))
-        return None
-    return body
+def side_by_side(*svgs, gap=26, show=True, max_width=1080):
+    """Two or more diagrams composed into one picture, which is the opening MAP cell's shape.
+
+    Each part keeps its own size and sits top-aligned beside the one before it; a part that would
+    push the row past max_width starts a new row, so a composite never shrinks to unreadable.
+    """
+    parts = []
+    for svg in svgs:
+        m = re.search(r'<svg[^>]*\swidth="([\d.]+)"[^>]*\sheight="([\d.]+)"', svg)
+        parts.append((svg, float(m.group(1)), float(m.group(2))))
+    rows, row, row_w = [], [], 0.0
+    for part in parts:
+        extra = part[1] + (gap if row else 0)
+        if row and row_w + extra > max_width:
+            rows.append(row)
+            row, row_w = [], 0.0
+            extra = part[1]
+        row.append(part)
+        row_w += extra
+    if row:
+        rows.append(row)
+    body, y, width = [], 0.0, 0.0
+    for row in rows:
+        x = 0.0
+        for svg, w, h in row:
+            body.append(svg.replace("<svg ", f'<svg x="{x:.0f}" y="{y:.0f}" ', 1))
+            x += w + gap
+        width = max(width, x - gap)
+        y += max(h for _, _, h in row) + gap
+    height = y - gap
+    out = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{width:.0f}" height="{height:.0f}" '
+           f'viewBox="0 0 {width:.0f} {height:.0f}" role="img">{"".join(body)}</svg>')
+    return _emit(out, show)
 
 
 # Test inputs and expected outcomes
@@ -805,3 +1038,9 @@ def side_by_side(*svgs, gap=26, show=True):
 #     Renders both diagrams in one row. Pass show=False to a builder to compose rather than draw.
 # kit.load_records() from a notebooks/ folder whose ../data holds the generated orders file
 #     Returns the 30 dictionaries. With the file missing it raises, naming the generator command.
+# kit.bridge(("Booked", 544810), [("Returned", -14970), ("Cancelled", -9050)], end_label="Delivered")
+#     Renders two violet totals with two rose moves floating between them, landing on Rs 5,20,790.
+# kit.columns(["Retail", "Retail-Plus"], [("Q1", [52, 61]), ("Q2", [51, 49])], lit=(1,))
+#     Renders two groups of two bars, Q1 light and Q2 dark, with Retail-Plus in bold.
+# kit.line(["Jul", "Aug", "Sep"], [("Plan", [70, 140, 210], "plan"), ("Actual", [66, 128, 181], "bad")])
+#     Renders a dashed plan line and a rose actual line ending at 181, below the plan's 210.

@@ -52,7 +52,7 @@ BUILD_WEEKS = {3, 6, 9, 12, 15}
 
 TEACHING_DIRS = {
     "slides", "notebooks", "sql", "demos", "whiteboards", "cheatsheets", "study-notes",
-    "exercises", "exercises/guided", "exercises/unguided", "exercises/solutions",
+    "exercises", "exercises/guided", "exercises/unguided", "exercises/practice", "exercises/solutions",
     "takehome", "kahoot", "preread", "extras", "data", "trainer", "internal", "corrections",
 }
 BUILD_DIRS = {

@@ -29,6 +29,9 @@ it. The page's own script comes after the marked block and draws through `window
 | `C2K.tree(node, opts)` | A decision tree, top down | `{label, kind, branches: [[edge label, child], ...]}` |
 | `C2K.driverTree(node, opts)` | A total on the left, its drivers on the right | `{label, note, kind, children: [...]}` |
 | `C2K.strip(values, opts)` | Every value as a dot on one axis, with `opts.markers` as named lines | `markers: [[label, value, kind], ...]` |
+| `C2K.bridge(start, moves, opts)` | A starting total, the moves that change it, and where they land | `start: [label, value]`, `moves: [[label, change], ...]`, `opts.lo` raises the floor |
+| `C2K.columns(categories, series, opts)` | Bars grouped by category, light to dark | `series: [[name, values], ...]` |
+| `C2K.line(labels, series, opts)` | A trend, with a dashed plan line | `series: [[name, values, kind], ...]`, kind `plan`, `bad` or `good` |
 | `C2K.sequence(lanes, messages, opts)` | Messages across named lanes, for a sequence popup | `messages: [[from, to, text], ...]` |
 | `C2K.sideBySide(a, b, ...)` | Two or more drawings in one row | Any builder's result |
 

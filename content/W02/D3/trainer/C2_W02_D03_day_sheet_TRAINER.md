@@ -14,8 +14,6 @@ PICKS UP WHERE THE ROW STOPS: Week 1 Thursday gave a rule of thumb of thirty obs
 CONNECTS TO KALPA: how many Student orders Meera would need before she could trust 40 percent; marketing testing ten segments and finding one that looks significant.
 BY THE END: a learner can size a comparison roughly, and can explain why testing many segments manufactures findings. The block closes the statistics that ME1 draws on.
 DOES NOT REPEAT: correlation against causation, which the campaigns table already taught.
-
-Open ruling: A day that carries a block runs to about 360 taught minutes against the 300-minute ceiling, so either the campus day runs full on those days or the trainer's agenda gives up 60 minutes, starting from its cut-first line.
 <!-- /sync:faculty-day:W02/D3 -->
 
 ## The shape of the day
