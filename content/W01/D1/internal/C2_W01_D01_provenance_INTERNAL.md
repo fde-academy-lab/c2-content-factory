@@ -91,7 +91,12 @@ in five rungs, a trap per rung, and the 360-minute day.
 4. The payback consequence in round 3 ("about eight times as many orders") is arithmetic on the
    mean against the median; no customer acquisition cost is stated anywhere, because none exists
    in the sources.
-5. Every record labelled invented in the notebooks, the companion, the workbook, the exercises and
+5. The invented sets, each labelled invented where it appears: five orders of Rs 1,900, 2,100,
+   2,300, 2,400 and 2,600 with a sixth of Rs 90,000 (the mean mechanism in the deck, notebook 3, the
+   companion, the board work, the notes and round 3's item 5); the lab's eight orders W-01 to W-08 and
+   twelve orders IV-01 to IV-12 (with a Rs 60,000 order and the text amount "2750", which carries no
+   item); 50,000 registered users in lab item 14; and a Rs 1,500 cost per customer in the stretch task.
+6. Every record labelled invented in the notebooks, the companion, the workbook, the exercises and
    the practice set is invented to isolate one mechanism, and each place says so.
 
 ## Sources, with the date each was checked
@@ -100,15 +105,15 @@ Each link was requested on 29 September 2026 and returned HTTP 200, except where
 
 | Link | Role | Checked |
 |---|---|---|
-| https://www.hackingthecaseinterview.com/pages/profitability-case-interview | The profitability case and the revenue tree, trainer preparation and the notes | 29 Sep 2026, 200 behind a bot challenge page |
-| https://www.roadtooffer.com/blog/driver-tree | Driver trees, trainer preparation | 29 Sep 2026, 200 |
-| https://mconsultingprep.com/profitability-case-framework | The framework's revenue variants, the take-home reading | 29 Sep 2026, 200, title "6 Variants of Profitability Framework" |
-| https://automatetheboringstuff.com/3e/ | Loops and dictionaries, the notes' reading path | 29 Sep 2026, 200 |
-| https://docs.github.com/en/codespaces/developing-in-a-codespace/getting-started-with-github-codespaces-for-machine-learning | Codespaces with Jupyter, trainer preparation | 29 Sep 2026, 200 |
-| https://www.youtube.com/playlist?list=PL-osiE80TeTskrapNbzXhwoFUiLCjGgY7 | Corey Schafer, the beginner playlist | 29 Sep 2026, 200; the oEmbed title reads "Python Programming Beginner Tutorials" |
-| https://www.youtube.com/watch?v=daefaLgNkw0 | Corey Schafer, Dictionaries | 29 Sep 2026; the page returned 429, and the oEmbed endpoint returned "Python Tutorial for Beginners 5: Dictionaries - Working with Key-Value Pairs" |
-| https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/mean-median-basics/v/mean-median-and-mode | Mean, median and mode | 29 Sep 2026, 200 |
-| https://britinstitute.uk/blog/data-analyst-case-study-interview-questions | The sales-drop case, Tuesday's pre-read | 29 Sep 2026, 200 |
+| https://www.hackingthecaseinterview.com/pages/profitability-case-interview | The profitability case and the revenue tree, trainer preparation and the notes | checked 29 Sep 2026, 200 behind a bot challenge page |
+| https://www.roadtooffer.com/blog/driver-tree | Driver trees, trainer preparation | checked 29 Sep 2026, 200 |
+| https://mconsultingprep.com/profitability-case-framework | The framework's revenue variants, the take-home reading | checked 29 Sep 2026, 200, title "6 Variants of Profitability Framework" |
+| https://automatetheboringstuff.com/3e/ | Loops and dictionaries, the notes' reading path | checked 29 Sep 2026, 200 |
+| https://docs.github.com/en/codespaces/developing-in-a-codespace/getting-started-with-github-codespaces-for-machine-learning | Codespaces with Jupyter, trainer preparation | checked 29 Sep 2026, 200 |
+| https://www.youtube.com/playlist?list=PL-osiE80TeTskrapNbzXhwoFUiLCjGgY7 | Corey Schafer, the beginner playlist | checked 29 Sep 2026, 200; the oEmbed title reads "Python Programming Beginner Tutorials" |
+| https://www.youtube.com/watch?v=daefaLgNkw0 | Corey Schafer, Dictionaries | checked 29 Sep 2026; the page returned 429, and the oEmbed endpoint returned "Python Tutorial for Beginners 5: Dictionaries - Working with Key-Value Pairs" |
+| https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/mean-median-basics/v/mean-median-and-mode | Mean, median and mode | checked 29 Sep 2026, 200 |
+| https://britinstitute.uk/blog/data-analyst-case-study-interview-questions | The sales-drop case, Tuesday's pre-read | checked 29 Sep 2026, 200 |
 
 ## Tools the numbers and outputs came from
 

@@ -74,8 +74,8 @@ d) Rs 2,060, the median of the 21 delivered orders
 
 ## Hands-on
 
-Open `notebooks/C2_W01_D01_03_typical_order_STUDENT.ipynb`. Type the sort into its empty your-turn
-cell, read the top of the list, and write one line in your own words on what you found. Then run its
-level 4 and check your answers to Q4 and Q7 against the medians it prints.
+Open `notebooks/C2_W01_D01_03_typical_order_STUDENT.ipynb`. In section 3, type the sort into the
+empty your-turn cell, read the top of the list, and write one line in your own words on what you
+found. Then run section 4 and check your answers to Q4 and Q7 against the medians it prints.
 
 **In the interview.** [S] Mean or median for order value, and why?

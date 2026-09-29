@@ -44,5 +44,5 @@ warehouse table.
 
 ## Hands-on
 
-Level 4 of `notebooks/C2_W01_D01_01_what_sales_is_STUDENT.ipynb` prints 26 orders and Rs 5,35,760
+Sections 1 and 2 of `notebooks/C2_W01_D01_01_what_sales_is_STUDENT.ipynb` print 26 orders and Rs 5,35,760
 on the not-cancelled definition, and 21 orders and Rs 5,20,790 on delivered, which confirm Q2 and Q3.

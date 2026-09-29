@@ -120,8 +120,9 @@ your two lines.
 
 ## Hands-on
 
-The TODO notebook's pick cells ask for letters of their own; post them as a third line, in the order
-the notebook asks for them.
+Each of the notebook's twelve TODO cells carries a lettered choice above its placeholder. Post your
+twelve picks as one more line after your sentence, in TODO order, and run the notebook top to bottom: every check should
+print PASS before you post.
 
 **In the interview.** [D] Marketing wants budget for acquisition; what would you check before
 agreeing it is the right branch, and how would you say no?

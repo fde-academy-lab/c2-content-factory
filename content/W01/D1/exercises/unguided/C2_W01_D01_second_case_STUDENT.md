@@ -74,8 +74,9 @@ d) 12, which is Rs 27,320 divided by the typical order of Rs 2,205
 
 ## Hands-on
 
-The notebook's pick cells ask for letters of their own; post them as a second line, in the order the
-notebook asks for them.
+Each of the notebook's seven TODO cells carries a lettered choice above its placeholder. Post your
+seven picks as a second line, in TODO order, and run the notebook top to bottom: every check should
+print PASS before you post.
 
 **In the interview.** [D] One channel carries nine rupees in ten of revenue; does that change where
 the growth plan invests?

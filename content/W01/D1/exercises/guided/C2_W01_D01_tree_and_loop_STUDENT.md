@@ -62,7 +62,7 @@ channel, date, amount and status. A record is a dictionary, and the file is a li
 
 ## Part 3. Orders and revenue in one loop
 
-At level 1 of `notebooks/C2_W01_D01_02_counting_leaves_STUDENT.ipynb`, type the loop with the
+In section 1 of `notebooks/C2_W01_D01_02_counting_leaves_STUDENT.ipynb`, type the loop with the
 room: one counter for orders and one running total for revenue, both set
 before the loop and both printed after it. If the loop stops part way, read the last line of the
 message aloud, find the record it stopped on, and fix it with the room. Two minutes, and then the

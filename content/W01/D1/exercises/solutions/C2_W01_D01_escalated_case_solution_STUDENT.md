@@ -65,8 +65,9 @@ interviews test the same move as the profitability framework.
 
 ## Hands-on
 
-The TODO notebook's pick cells are keyed in the executed solution notebook named above, which prints
-each correct letter beside the cell that asks for it.
+The twelve TODO picks in `notebooks/C2_W01_D01_ex1_escalated_case_STUDENT.ipynb`, in order, are
+c b d d c d a c b b a d. The executed solution notebook named above carries the filled line for each,
+and its checks all print PASS.
 
 ## The afternoon in one line
 

@@ -103,8 +103,9 @@ d) 21 orders, 21 customers, 1.00 orders each
 
 ## Hands-on
 
-Open `notebooks/C2_W01_D01_02_counting_leaves_STUDENT.ipynb` and run its level 4, the leaves on the
-delivered definition. Check your answers to Q2, Q3 and Q7 against the numbers it prints.
+Open `notebooks/C2_W01_D01_02_counting_leaves_STUDENT.ipynb` and run sections 2 to 4, from the trap
+to the leaves on the delivered definition. Check your answers to Q2, Q3 and Q7 against the numbers
+they print.
 
 **In the interview.** [F] Your extract shows 30 orders and 30 customers; what do you check before
 saying nobody comes back?

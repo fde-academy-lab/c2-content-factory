@@ -48,8 +48,9 @@ and a returns rate by channel is a standard line in any e-commerce operating rev
 
 ## Hands-on
 
-The notebook's pick cells are keyed in the executed solution notebook named above, which prints
-each correct letter beside the cell that asks for it.
+The seven TODO picks in `notebooks/C2_W01_D01_ex2_second_case_STUDENT.ipynb`, in order, are
+c b d a b c a. The executed solution notebook named above carries the filled line for each, and its
+checks all print PASS.
 
 ## The afternoon in one line
 

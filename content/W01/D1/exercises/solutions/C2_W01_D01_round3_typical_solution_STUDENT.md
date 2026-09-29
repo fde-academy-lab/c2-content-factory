@@ -44,5 +44,5 @@ count above the mean is the fastest one-line test of whether a tail is present.
 ## Hands-on
 
 The empty your-turn cell of `notebooks/C2_W01_D01_03_typical_order_STUDENT.ipynb` shows the sorted
-list when you type the sort into it; what you find at the top is yours to name. Level 4 prints the
+list when you type the sort into it; what you find at the top is yours to name. Section 4 prints the
 booked median, Rs 2,205, and the delivered median, Rs 2,060, which confirm Q4 and Q7.

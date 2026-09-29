@@ -89,9 +89,9 @@ d) Revenue per order times price per item, since both are in rupees
 
 ## Hands-on
 
-Open `notebooks/C2_W01_D01_01_what_sales_is_STUDENT.ipynb` and run its level 4, the harder variant.
-Check your answers to Q2 and Q3 against the numbers it prints, and change a letter only if your
-reasoning changes with it.
+Open `notebooks/C2_W01_D01_01_what_sales_is_STUDENT.ipynb` and run sections 1 and 2, the four
+readings of sales and the trap. Check your answers to Q2 and Q3 against the numbers they print, and
+change a letter only if your reasoning changes with it.
 
 **In the interview.** [F] What counts as "sales": booked, net of cancellations, or delivered, and
 which do you give a CEO?

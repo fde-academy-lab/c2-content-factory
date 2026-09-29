@@ -42,6 +42,6 @@ says "customers". Week 2 meets the same trap in Postgres.
 
 ## Hands-on
 
-Level 4 of `notebooks/C2_W01_D01_02_counting_leaves_STUDENT.ipynb` prints 23 customers and 1.30
+Sections 2 to 4 of `notebooks/C2_W01_D01_02_counting_leaves_STUDENT.ipynb` print 23 customers and 1.30
 orders per customer on booked orders, and 21 orders, 19 customers and 1.11 on delivered, which
 confirm Q2, Q3 and Q7.
