@@ -101,7 +101,7 @@ before the push or after it?"
 | Change, Q1 to Q2 | -28.5 percent; Rs 17,10,000 of the Rs 17,22,520 fall is Business, on 6 orders then 4 |
 | Retail-Core | 30 customers both quarters, 1.47 orders each, revenue per order Rs 2,050 to Rs 1,700, -17.1 percent |
 | Retail-Plus | 20 customers, 1.70 to 1.75 orders each, Rs 2,800 to Rs 2,760 per order |
-| Shuffle | Gap -15.6 points; 39 of 2,000; p = 0.0195; other seeds 0.0145 to 0.0270 |
+| Shuffle | Gap -15.6 points; only 39 of 2,000 customer-level shuffles as large; p = 0.0195; other seeds 0.0145 to 0.0270 |
 | Typical order | Median Rs 2,110, mean Rs 52,057, rows as read |
 
 ---

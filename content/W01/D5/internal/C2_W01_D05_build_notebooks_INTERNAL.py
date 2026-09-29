@@ -359,8 +359,8 @@ kit.check("shuffling the wrong unit moves the verdict across 0.05", ext_orders /
 
     **Evidence.** 197 distinct orders reconcile to Finance's control totals in both quarters, 98
     and 99 orders to the rupee, after dropping 10 rows posted twice and converting one amount
-    stored as text; the Retail-Core gap against Retail-Plus beat 39 of 2,000 customer-level
-    shuffles, p = 0.02.
+    stored as text; the Retail-Core gap against Retail-Plus came up as large in only 39 of
+    2,000 customer-level shuffles, p = 0.02.
 
     **Caveat.** The corporate fall rests on six orders against four, too few to call a trend, and
     one Q2 order's segment was restored from the customer's other orders.
