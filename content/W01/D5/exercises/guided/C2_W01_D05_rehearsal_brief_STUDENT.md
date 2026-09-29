@@ -13,10 +13,10 @@ note that goes to Monday's growth review.
 
 | Part | Minutes | What happens |
 |---|---|---|
-| Set up | 2 | Find a partner; decide who defends first. |
+| The brief and set up | 6 | Monday's room, the note's shape, the pushes and the card; then find a partner. |
 | Pair one, first defence | 12 | Two minutes of the note read aloud; six of pushes and answers; four for the partner to fill the feedback card and hand it over. |
 | Pair one, swap | 12 | The same, with the roles reversed. |
-| Pair two, new partner | 24 | Both defences again, with a new partner using the harder pushes below. |
+| Pair two, new partner | 20 | Both defences again, ten minutes each (two to read, five of pushes, three for the card), with a new partner using the harder pushes below. |
 
 ## Round two: to the whole room (50 minutes)
 

@@ -114,17 +114,17 @@ Student question. Then say what it would sound like to fold (dropping the caveat
 
 ```mermaid
 flowchart LR
-    S["<b>set up</b><br/>2 min"] --> A["<b>pair 1</b><br/>A defends, B pushes<br/>12 min"]
+    S["<b>the brief</b><br/>6 min"] --> A["<b>pair 1</b><br/>A defends, B pushes<br/>12 min"]
     A --> B["<b>pair 1</b><br/>swap<br/>12 min"]
-    B --> C["<b>pair 2, new partner</b><br/>harder pushes<br/>24 min"]
+    B --> C["<b>pair 2, new partner</b><br/>harder pushes<br/>2 x 10 min"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class A,B,C known
 ```
 
-Each twelve minutes runs: two minutes of the note read aloud, six of pushes and answers, four for the partner to fill the feedback card and hand it over.
+In pair one each twelve minutes runs: two minutes of the note read aloud, six of pushes and answers, four for the partner to fill the feedback card. Pair two takes ten: two, five and three.
 
 ```notes
-LIVE, 50 minutes. The TAs walk the room. Each TA also uses this round to tell each of their learners,
+LIVE, 50 minutes, of which S1 to S4 and S6 took the first six. The TAs walk the room. Each TA also uses this round to tell each of their learners,
 quietly and one at a time, the step the lab's observation sheet marked for them. Never aloud, never
 to a group.
 ```
@@ -329,7 +329,7 @@ label: RECAP | title: From memory | body: The note's four parts and the p-value 
 label: SETUP | title: Sunday evening | body: Week 2 works in a live Postgres connection from VS Code; the setup steps arrive on Sunday.
 ```
 
-**Kavya's review.** Monday's review will hear a note from somebody who rebuilt it alone this morning. That is the whole point of the day.
+**Kavya's review.** On Monday, Meera hears a note from someone who rebuilt every number in it alone this morning, and Marketing cannot say otherwise.
 
 ```notes
 LIVE, 4 minutes. Close on the three tasks. The practice set is in exercises/practice/ and the TAs
