@@ -1,8 +1,8 @@
 # Week 2 recap paper
 
-Saturday 17 October 2026 · 120 minutes · 52 items in 6 parts · pen and paper, no assistant, no notes
+Saturday 17 October 2026 · 120 minutes · 55 items in 6 parts · pen and paper, no assistant, no notes
 
-Name: ____________________    Marked by: ____________________    Items right: ____ of 52
+Name: ____________________    Marked by: ____________________    Items right: ____ of 55
 
 ## How this paper works
 
@@ -22,8 +22,8 @@ Name: ____________________    Marked by: ____________________    Items right: __
 | 3. Joins that keep their rows | whether you read the row count before and after a join and catch a join that inflates a sum | Q17 to Q27 (11) | 27 | 1 | 8 | 2 |
 | 4. Windows: rank, lag and running totals | whether you can rank within a segment, compare a month with the one before it and keep a running total | Q28 to Q39 (12) | 31 | 1 | 5 | 6 |
 | 5. pandas and the last mile to Excel | whether you can merge, group and reshape without losing or doubling rows, and choose the tool for each job | Q40 to Q51 (12) | 29.5 | 0 | 11 | 1 |
-| 6. Read the code, read the data | whether you catch a wrong number in a query, a line of pandas or a small result before it reaches a decision | Q52 (1) | 2 | 0 | 1 | 0 |
-| Total | | 52 | 113.5 | 8 | 34 | 10 |
+| 6. Read the code, read the data | whether you catch a wrong number in a query or a few lines of pandas before it reaches a decision | Q52 to Q55 (4) | 8.5 | 0 | 1 | 3 |
+| Total | | 55 | 120 | 8 | 34 | 13 |
 
 ---
 
@@ -31,7 +31,7 @@ Name: ____________________    Marked by: ____________________    Items right: __
 
 *What it shows: whether the week's definitions and rules are there without a notebook open. 11 items, about 11 minutes.*
 
-Each line is one rule from the week. Fill the gap, or mark the statement true or false.
+Anand ends the week asking what he always asks: "Do your numbers match my books, and can my analyst audit how you got them?" Each item below is one of the rules your answer rests on.
 
 #### Q1 · Medium · write the word or number
 
@@ -105,7 +105,7 @@ Answer: ____________________
 
 *What it shows: whether you can write a grouped query in the order the database runs it. 5 items, about 13 minutes.*
 
-Finance wants the Monday numbers computed in the warehouse. These items ask how a query filters, groups and orders what it reads.
+The data platform lead grants read access to the warehouse with one warning: "Query it; do not export it." These items ask how a query filters, groups and orders what it reads.
 
 #### Q12 · Easy · circle one letter
 
@@ -131,8 +131,8 @@ Which statements about WHERE and HAVING are correct? Mark every correct option.
 
 a) WHERE filters rows before grouping.
 b) HAVING filters groups after aggregation.
-c) HAVING can use COUNT(*).
-d) WHERE can use COUNT(*).
+c) HAVING can compare COUNT(*) with a number.
+d) WHERE can compare COUNT(*) with a number.
 
 #### Q15 · Easy · show the working, then the answer
 
@@ -161,7 +161,7 @@ Order: ____________________
 
 *What it shows: whether you read the row count before and after a join and catch a join that inflates a sum. 11 items, about 27 minutes.*
 
-Finance asks for Q2 revenue booked against revenue collected, and the orders and the payments sit in two tables.
+Anand asks: "Show me, order by order, what we actually collected against what we booked in Q2. If there is a gap, I want to know which orders and which channel."
 
 #### Q17 · Easy · circle one letter
 
@@ -186,7 +186,7 @@ d) Some orders have more than one payment row.
 Which query lists the orders that were paid twice?
 
 a) SELECT order_id FROM payments GROUP BY order_id HAVING COUNT(*) > 1
-b) SELECT DISTINCT order_id FROM payments
+b) SELECT DISTINCT order_id FROM payments ORDER BY order_id
 c) SELECT order_id FROM payments ORDER BY order_id
 d) SELECT order_id FROM payments WHERE COUNT(order_id) > 1 GROUP BY order_id
 
@@ -206,7 +206,7 @@ A LEFT JOIN from 1,000 orders to payments returns 1,050 rows. Which checks belon
 a) the row count before and after the join
 b) payments per order, with GROUP BY and HAVING COUNT(*) > 1
 c) booked revenue before and after the join
-d) the font of the report
+d) the number of channels before and after the join
 
 #### Q22 · Hard · circle every correct letter
 
@@ -253,7 +253,7 @@ Anand asks for the unpaid orders. Which pattern finds them?
 a) LEFT JOIN, then WHERE payments.order_id IS NULL
 b) INNER JOIN, then WHERE payments.amount_paid IS NULL
 c) GROUP BY order_id HAVING COUNT(*) > 1
-d) ORDER BY paid_at
+d) RIGHT JOIN, then WHERE orders.order_id IS NULL
 
 #### Q26 · Medium · write T or F
 
@@ -275,7 +275,7 @@ Answer: ____________________
 
 *What it shows: whether you can rank within a segment, compare a month with the one before it and keep a running total. 12 items, about 31 minutes.*
 
-Marketing wants to protect the best Retail-Plus members before they drift: the top of each segment, the members whose spend is falling, and the running total against plan.
+Marketing wants to protect the best members before they drift: "Give us the top fifty customers by Q2 revenue in each segment, and flag anyone whose monthly spend has fallen for two months running." Meera wants to see revenue accumulate week by week against the plan line.
 
 #### Q28 · Easy · circle one letter
 
@@ -318,7 +318,7 @@ d) SUM is approximate for large partitions, so its result drifts slightly.
 Which questions need a window function, because GROUP BY alone cannot answer them? Mark every correct option.
 
 a) each customer's rank within a segment
-b) total revenue per segment
+b) each segment's total revenue for the quarter
 c) each month's spend beside the same customer's previous month
 d) a running total by date with every row kept
 
@@ -327,7 +327,7 @@ d) a running total by date with every row kept
 The head of Retail-Plus wants ties ranked the same and wants to know how many members made the top fifty. Which statements are true? Mark every correct option.
 
 a) ROW_NUMBER breaks ties arbitrarily, so it does not meet the ask.
-b) RANK gives tied members the same rank.
+b) RANK gives members who tie the same rank.
 c) With RANK, a tie at position fifty can ship fifty-one rows.
 d) ROW_NUMBER always ships more than fifty rows.
 
@@ -398,7 +398,7 @@ Answer: ____________________
 
 *What it shows: whether you can merge, group and reshape without losing or doubling rows, and choose the tool for each job. 12 items, about 29.5 minutes.*
 
-Marketing refreshes the customer table every Monday, and the number it feeds travels to the leadership deck through a pivot in Excel.
+Marketing's analysts live in Python and Meera's office runs on Excel. Kavya Nair puts it to the team: "Tell me honestly which tool you would pick for which job."
 
 #### Q40 · Medium · circle one letter
 
@@ -440,7 +440,7 @@ d) De-duplicating the orders export before anyone computes revenue from it.
 
 Which statements about pandas merge are true? Mark every correct option.
 
-a) It is the pandas form of a SQL join.
+a) It is the pandas form of a SQL join on a key.
 b) validate= can make a fan-out fail loudly.
 c) It always keeps the row count of the left table.
 d) Checking the row count before and after is still worth doing.
@@ -452,7 +452,7 @@ A front-page number is misread unless it carries which of these? Mark every corr
 a) its denominator
 b) its period
 c) its comparison
-d) its cell colour
+d) its exact figure
 
 ### Set 3
 
@@ -519,13 +519,84 @@ Order: ____________________
 
 ---
 
-## Part 6. Read the code, read the data (Q52)
+## Part 6. Read the code, read the data (Q52 to Q55)
 
-*What it shows: whether you catch a wrong number in a query, a line of pandas or a small result before it reaches a decision. 1 item, about 2 minutes.*
+*What it shows: whether you catch a wrong number in a query or a few lines of pandas before it reaches a decision. 4 items, about 8.5 minutes.*
 
-Each item puts a query, a line of pandas or a small result in front of you. Read it the way the database or an auditor would, and say what it really gives.
+Kavya Nair reads the code behind a number before it leaves the team: "Show me the evidence." Read each item the way the database or pandas would before you answer.
 
-#### Q52 · Medium · circle one letter
+**Exhibit 6A.** The analyst's query, with four members' orders written into it.
+
+```sql
+WITH orders (customer_id, quarter, amount) AS (VALUES
+    ('C1', 'Q1', 2000), ('C1', 'Q2', 1200), ('C1', 'Q2', 600),
+    ('C2', 'Q1', 1600), ('C2', 'Q2', 1200),
+    ('C3', 'Q1', 1400), ('C4', 'Q1', 1000)),
+member AS (
+    SELECT customer_id,
+           sum(CASE WHEN quarter = 'Q1' THEN amount END) AS q1_spend,
+           sum(CASE WHEN quarter = 'Q2' THEN amount END) AS q2_spend
+    FROM orders GROUP BY customer_id)
+SELECT round(avg(q1_spend)) AS avg_q1, round(avg(q2_spend)) AS avg_q2 FROM member;
+```
+
+#### Q52 · Hard · circle one letter
+
+The head of Retail-Plus asks whether spend per member fell from Q1 to Q2, and the analyst answers with the query above. What does the query return, and how will she read it?
+
+a) 1,500 and 750, which reads as spend per member halved
+b) 1,500 and 1,000, which reads as spend per member down by a third
+c) 1,500 and 1,500, which reads as flat spend per member
+d) 1,500 and NULL, which reads as no Q2 figure at all
+
+**Exhibit 6B.** The analyst's query, with three Q2 orders and their payment rows written into it.
+
+```sql
+WITH orders (order_id, amount) AS (VALUES
+    ('O-1', 1200), ('O-2', 800), ('O-3', 500)),
+payments (order_id, paid_date, paid) AS (VALUES
+    ('O-1', DATE '2026-07-04', 600), ('O-1', DATE '2026-08-04', 600),
+    ('O-2', DATE '2026-10-01', 800))
+SELECT count(*) AS rows_out, sum(o.amount) AS booked
+FROM orders o
+LEFT JOIN payments p ON p.order_id = o.order_id
+WHERE p.paid_date BETWEEN DATE '2026-07-01' AND DATE '2026-09-30';
+```
+
+#### Q53 · Hard · circle one letter
+
+Anand wants every Q2 order beside what was collected on it within the quarter. Before the report goes to him, the analyst runs the query above to count its rows and their booked value. What does it return?
+
+a) 1 row, booked Rs 1,200
+b) 2 rows, booked Rs 2,400
+c) 3 rows, booked Rs 2,900
+d) 4 rows, booked Rs 3,700
+
+**Exhibit 6C.** The analyst's code, with four buyers and the five customers the sale reached written into it.
+
+```python
+import pandas as pd
+buyers = pd.DataFrame({
+    "customer_id": ["C1", "C2", "C3", "C4"],
+    "segment": ["Retail-Plus", "Retail-Core", "Retail-Plus", "Retail-Core"],
+    "orders": [3, 1, 2, 5]})
+reached = pd.DataFrame({"customer_id": ["C1", "C2", "C5", "C6", "C7"]})
+t = buyers.merge(reached, on="customer_id", how="right", validate="one_to_one")
+by_seg = t.groupby("segment").agg(reached=("customer_id", "count"),
+                                  bought=("orders", "count"))
+print(len(t), by_seg["reached"].sum(), by_seg["bought"].sum())
+```
+
+#### Q54 · Hard · circle one letter
+
+The marketing lead asks how many customers the monsoon sale reached and how many of them bought, and the analyst runs the code above. What does it print?
+
+a) 2 2 2
+b) 4 4 4
+c) 5 5 2
+d) 5 2 2
+
+#### Q55 · Medium · circle one letter
 
 A query fails with: column "segment" must appear in the GROUP BY clause or be used in an aggregate function. What fixes it?
 
