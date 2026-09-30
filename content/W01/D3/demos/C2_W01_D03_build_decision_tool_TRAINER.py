@@ -73,12 +73,13 @@ def choice(ws, ref, options):
 wb = Workbook()
 start = wb.active
 start.title = "Start"
-start["A1"] = "Which Q1 figure is right: the decision tool"
+start["A1"] = "Which four cleaning decisions get the export to the books?"
 start["A1"].font = TITLE
 start.column_dimensions["A"].width = 110
 lines = [
-    "Kalpa Retail, Week 1, Wednesday. Four cleaning decisions the day taught, one tab each, and an Export tab "
-    "that assembles the note to Anand.",
+    "Kalpa Retail, Week 1, Wednesday. Anand Iyer, the finance controller, acts only on a figure that matches his "
+    "books to the rupee, and his analyst ties out every figure, matching it to the books line by line. Four "
+    "cleaning decisions the day taught get an export there, one tab each, and an Export tab assembles the note.",
     "Yellow cells are inputs; every other number and sentence is a live formula. Every record here is invented, "
     "so the tool works on any export you paste in.",
     "Each tab carries one planted defect. Read the tab's check line first, find the cell, fix it, and watch the "
@@ -95,7 +96,7 @@ ws = sheet(wb, "Profile", "What converts, and what fails?",
            "Ten invented amounts as the file holds them, as text. A failure is counted and logged, never turned into "
            "a number.")
 head(ws, 4, ["Amount as text", "Converted", "", "Count", "Value"])
-for i, v in enumerate(["2400", "1300", "n/a", "3100", "1800", "2600", "950", "4100", "1750", "2200"], 5):
+for i, v in enumerate(["2500", "1300", "n/a", "3100", "1800", "2600", "950", "4100", "1750", "2200"], 5):
     put(ws, f"A{i}", v, fill=INPUT)
     put(ws, f"B{i}", f'=IFERROR(VALUE(A{i}),"")')
 put(ws, "D5", "Present"); put(ws, "E5", "=COUNTA(A5:A14)")
@@ -115,7 +116,7 @@ put(ws, "D12", "Fixed, for the Export tab", NOTE); put(ws, "E12", "=IF(E6+E7=E5,
 ws = sheet(wb, "Identity", "What makes two rows one order?",
            "Eight invented rows, each carrying the file line it came from. The key decides what counts as a duplicate.")
 head(ws, 4, ["order_id", "Amount", "Date", "Line", "Key used"])
-rows = [("INV-01", 2400, "2026-05-03", 2), ("INV-02", 1300, "2026-05-09", 3), ("INV-01", 2400, "2026-05-03", 4),
+rows = [("INV-01", 2500, "2026-05-03", 2), ("INV-02", 1300, "2026-05-09", 3), ("INV-01", 2500, "2026-05-03", 4),
         ("INV-03", 450000, "2026-06-11", 5), ("INV-04", 3100, "2026-06-20", 6), ("INV-03", 450000, "2026-06-11", 7),
         ("INV-05", 1800, "2026-08-21", 8), ("INV-05", 1800, "2026-07-30", 9)]
 for i, (a, b, c, d) in enumerate(rows, 5):
@@ -138,7 +139,7 @@ put(ws, "B20", '=IF(B17<>B14-B15,"Fix the key before counting duplicates.",'
 put(ws, "A21", "Fixed, for the Export tab", NOTE); put(ws, "B21", "=IF(ROUND(B17-(B14-B15),6)=0,1,0)")
 
 # ---------------------------------------------------------------- Tail
-ws = sheet(wb, "Tail", "Keep the large order?",
+ws = sheet(wb, "Tail", "Should the large order stay in revenue?",
            "Eight invented Business orders. A fence flags the tail for checking; it never removes real revenue.")
 head(ws, 4, ["Order amount (Rs)", "Above the fence"])
 for i, v in enumerate([310000, 420000, 450000, 520000, 610000, 700000, 880000, 1800000], 5):
@@ -160,7 +161,7 @@ put(ws, "E13", '=IF(E9<>E8,"Fix the revenue that drops the tail before reporting
 put(ws, "D14", "Fixed, for the Export tab", NOTE); put(ws, "E14", "=IF(E9=E8,1,0)")
 
 # ---------------------------------------------------------------- Reconcile
-ws = sheet(wb, "Reconcile", "Rows and rupees, to the books",
+ws = sheet(wb, "Reconcile", "Do rows and rupees both tie to the books?",
            "Four invented rows; one pair shares an id, and the first copy's amount will not convert. The books say "
            "Rs 9,600.")
 head(ws, 4, ["", "Value"])
@@ -180,7 +181,7 @@ put(ws, "A14", "Fixed, for the Export tab", NOTE)
 put(ws, "B14", '=IF(ISNUMBER(SEARCH("rupees",B13)),1,0)')
 
 # ---------------------------------------------------------------- Export
-ws = sheet(wb, "Export", "The note, assembled",
+ws = sheet(wb, "Export", "Is the note to Anand ready to paste?",
            "Released only when every tab's check passes. Paste it into the note to Anand.")
 ws.column_dimensions["B"].width = 110
 put(ws, "A4", "Tabs fixed", BOLD); put(ws, "B4", "=Profile!E12+Identity!B21+Tail!E14+Reconcile!B14")

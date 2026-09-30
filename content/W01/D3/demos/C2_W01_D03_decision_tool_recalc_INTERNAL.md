@@ -20,7 +20,7 @@ flips:
   - name: the convertible count counts numbers only
     set: [{sheet: Profile, cell: E6, value: "=COUNT(B5:B14)"}]
     verdicts:
-      - {sheet: Profile, cell: E11, expect: "Log 1 failure with its line and reason; 9 of 10 amounts convert, totalling Rs 20,200."}
+      - {sheet: Profile, cell: E11, expect: "Log 1 failure with its line and reason; 9 of 10 amounts convert, totalling Rs 20,300."}
       - {sheet: Export, cell: B5, contains: "3 of the four"}
   - name: the key is the order_id
     set: [{sheet: Identity, cell: B16, value: "order_id"}]
