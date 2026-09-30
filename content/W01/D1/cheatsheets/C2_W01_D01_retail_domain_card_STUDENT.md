@@ -64,8 +64,8 @@ flowchart TB
 | Word | What it means |
 |---|---|
 | **SKU** | One sellable version of a product |
-| **GMV** | All orders, before returns and tax come out |
-| **Net revenue** | Earned after returns, discounts and GST |
+| **GMV** | All orders at the prices charged, before cancellations, returns and GST |
+| **Net revenue** | GMV less cancellations, returns and GST |
 | **AOV, ABV** | Revenue per order online, per bill in store |
 | **MRP** | The legal price ceiling, taxes included |
 | **Markdown** | A permanent cut to clear stock |

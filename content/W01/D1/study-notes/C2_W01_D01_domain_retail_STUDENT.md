@@ -12,7 +12,7 @@ About a 40 minute read · 6 diagrams and 29 tables
 
 ## 1. A day in the life of a retailer
 
-One Saturday at one Kalpa Retail store and on Kalpa's app in the same city. Every role and number in the rest of this dossier appears here first. Three numbers are the story's own: revenue grew 4 percent last year against a plan of 15, marketing wants Rs 12 crore to acquire customers, and the support team answers two thousand tickets a day. Every other number is illustrative.
+This section follows one Saturday at one Kalpa Retail store and on Kalpa's app in the same city, and every role and number in the rest of the dossier appears here first. The numbers are illustrative, chosen for easy arithmetic, except the CEO's figures at the end and the support team's two thousand tickets a day, which are the story's own.
 
 ```mermaid
 flowchart LR
@@ -36,17 +36,17 @@ flowchart LR
 
 **By mid-morning** the store is full. Across the day 1,200 people come through the doors and 480 of them pay at a till, a conversion of 40 percent, with an average bill of Rs 1,250 across five items. A family doing the month's shopping fills two trolleys; a student buys one bottle of shampoo.
 
-**On the app** the same Saturday, 50,000 people open it 80,000 times. A shopper types "pressure cooker 3 litre" into search, and the order in which the results appear shapes what gets bought. Carts are filled 8,000 times and 2,000 orders are placed, at an average of Rs 1,600 for four items. One of them is the Saturday basket: a Retail-Plus member orders a detergent, a shampoo, a pressure cooker and a bedsheet, Rs 2,000 of goods, takes the member discount of Rs 200 and pays Rs 1,800 with a card the app holds only as a token.
+**On the app** the same Saturday, 50,000 different people, its visitors, open it 80,000 times, its sessions. A shopper types "pressure cooker 3 litre" into search, and the order in which the results appear shapes what gets bought. Carts are filled 8,000 times and 2,000 orders are placed, at an average of Rs 1,500 for four items. One of them is the Saturday basket: a Retail-Plus member orders a detergent, a shampoo, a pressure cooker and a bedsheet, Rs 2,000 of goods, a promotion takes Rs 200 off, and the member pays Rs 1,800 with a card the app keeps only as a token, a stand-in number from the card network, so the card itself is never stored (section 7).
 
 **At the distribution centre** pickers pull and pack the app orders, and the Saturday basket leaves in a van for the last mile. Another parcel, ordered cash on delivery, is refused at the door and starts back as an RTO, a return to origin that cost two trips and earned nothing.
 
-**The category buyer for home care** spends the afternoon on two numbers. The category holds 45 days of inventory against 60 days of supplier credit, and the festive lighting line has sold 620 of its 1,000 units in four weeks, a 62 percent sell-through, with Diwali still ahead. A markdown now gives away margin; waiting risks carrying the stock into January.
+**The category buyer for home care** spends the afternoon on two numbers. The category holds 45 days of inventory, stock that would last 45 days at the current rate of sale, and its suppliers allow 60 days before they are paid. The festive lighting line has sold 620 of its 1,000 units in four weeks, a 62 percent sell-through, with Diwali still ahead. A markdown now, a permanent price cut to clear the stock, gives away margin, the gap between what an item sells for and what it cost; waiting risks carrying the stock into January.
 
 **At the returns desk** a shopper brings back a mixer bought on the app, and next week the Saturday basket's bedsheet will come back the same way, because its colour differed from the picture. Of every 100 app orders delivered, 7 come back. Elsewhere, the support team led by Farhan Sheikh answers two thousand tickets a day, most of them asking where an order is, when a refund will land or why a payment failed.
 
 **At head office** the marketing lead is finishing the case for Rs 12 crore to acquire new customers and following January's 1,000 new customers month by month, and the head of Retail-Plus is reading the month's renewals.
 
-**After the store closes**, finance closes the week. The finance controller, Anand Iyer, has his team walk the week's gross merchandise value down through cancellations, returns and GST to net revenue, and the data team's dashboard has to agree with his books. At month end the same team will report the app's month in this city: 40,000 customers placed 50,000 orders of four items each, at Rs 450 an item before a 10 percent discount. Over the quarter, 1,00,000 customers placed 1,50,000 orders.
+**After the store closes**, finance closes the week. The finance controller, Anand Iyer, has his team walk the week's gross merchandise value, everything ordered at the prices charged, down through cancellations, returns and GST to net revenue, what Kalpa earns from the goods (section 3), and the data team's dashboard has to agree with his books.
 
 **On Monday** the CEO, Meera Raghavan, reads one page: revenue grew 4 percent last year against a plan of 15, marketing wants Rs 12 crore, and she wants to know where growth comes from and where it is leaking before she signs anything. That is the question the next two weeks answer.
 
@@ -105,13 +105,13 @@ The programme prepares you for four domains, and each opens on its own story the
 
 ## 3. How the business makes money
 
-At the checkout the Saturday basket shows Rs 1,800: four items worth Rs 2,000 at their prices, less the Rs 200 member discount. Kalpa does not keep Rs 1,800, and where the money goes is the retail profit and loss statement, the P&L.
+At the checkout the Saturday basket shows Rs 1,800: four items worth Rs 2,000 at their prices, less a Rs 200 promotional discount. Kalpa does not keep Rs 1,800, and where the money goes is the retail profit and loss statement, the P&L.
 
 ### From GMV to operating profit
 
-**Gross merchandise value (GMV)** is the value of everything customers ordered, at the prices charged, before cancellations and returns and with tax still inside. Andreessen Horowitz defines it as "the total sales dollar volume of merchandise transacting through the marketplace in a specific period" (a16z, "16 Startup Metrics", 2015). Companies differ on whether discounts or marketplace sellers' sales are included, so the first question about any GMV is what it includes.
+**Gross merchandise value (GMV)** is the value of everything customers ordered, at the prices charged, before cancellations and returns and with tax still inside. In this dossier a discount given at the checkout is already out of GMV, because GMV counts the price charged. Andreessen Horowitz calls the same measure gross merchandise volume, "the total sales dollar volume of merchandise transacting through the marketplace in a specific period" (a16z, "16 Startup Metrics", 2015). Companies differ on whether discounts or marketplace sellers' sales are included, so the first question about any GMV is what it includes.
 
-**Net revenue** is what the business earns after cancellations, returns, the discounts it funded and the GST it collects for the government. Real retailers publish both numbers: Reliance Retail reported gross revenue of Rs 90,408 crore and revenue from operations of Rs 79,745 crore for the same quarter, and Reliance's consolidated statement labels the step between the two as GST recovered (RIL, 17 July 2026). Two correct numbers for one quarter is normal in retail, which is why every number you send carries its definition.
+**Net revenue** is GMV less cancellations, returns and the GST the business collects for the government, which leaves what it earns from the goods. Real retailers publish both numbers: Reliance Retail reported gross revenue of Rs 90,408 crore and revenue from operations of Rs 79,745 crore for the same quarter, and Reliance's consolidated statement labels the step between the two as GST recovered (RIL, 17 July 2026). Two correct numbers for one quarter is normal in retail, which is why every number you send carries its definition.
 
 Below, Rs 100 of GMV travels through an illustrative app business shaped like Kalpa's; the amounts are illustrative, and the order of the lines is every retailer's.
 
@@ -143,7 +143,7 @@ Real retailers keep a thin slice. DMart reported a standalone EBITDA margin of 7
 
 | Line | Rs, illustrative | What it is |
 |---|---|---|
-| Charged at checkout | 1,800 | GMV for this order, after the member discount |
+| Charged at checkout | 1,800 | GMV for this order, after the promotional discount |
 | GST inside the price | 200 | Collected for the government |
 | Net revenue | 1,600 | What Kalpa earns on the order |
 | Cost of the four items | 1,200 | COGS |
@@ -230,7 +230,9 @@ The tension that runs through Weeks 1 and 2 sits in the middle of this table: ma
 
 ## 5. The metrics, as formulas
 
-Every retail metric hangs off one tree, and the picture to keep from this dossier is this metric tree. Revenue is customers, times orders per customer, times items per order, times price per item, less discounts. The branches say how each part is won or lost. The dotted line above revenue is the precondition, since nothing sells that is not on the shelf, and the dotted line to its right runs through the leaks to the margin that decides whether the revenue was worth having.
+On Saturday the app counted 50,000 visitors, 2,000 orders and Rs 1,500 an order. If next Saturday's sales fall, each of those numbers is a suspect: fewer people came, fewer of them bought, or each spent less, and a metric exists to say which. This section gives every metric on the domain card, which are conversion, average order value, frequency, repeat rate, retention, lifetime value, acquisition cost and payback, gross margin, days of inventory and like-for-like growth, plus sell-through and the returns rate, each as a formula with a worked number, the trap that most often makes it lie, and the person who asks for it.
+
+The picture to keep from this dossier is the metric tree below. Revenue is customers, times orders per customer, times items per order, times price per item, less discounts. The branches say how each part is won or lost. The dotted line above revenue is the precondition, since nothing sells that is not on the shelf, and the dotted line to its right runs through the leaks to the margin that decides whether the revenue was worth having.
 
 ```mermaid
 flowchart TB
@@ -253,7 +255,9 @@ flowchart TB
     class R,M,S dark
 ```
 
-The worked numbers come from section 1's illustrative Saturday, month and quarter; the few that do not are marked invented where they appear. Each metric carries the trap that most often makes it lie, and the person who will ask you for it.
+The tree's revenue is sales at the prices charged, before cancellations, returns and GST come out, which section 3 calls GMV; the leaks are where it becomes net revenue.
+
+Every worked number below is illustrative. Most come from section 1's Saturday or from the app's month and quarter in the same city: in the month, 40,000 customers placed 50,000 orders of four items each at Rs 450 an item before a 10 percent discount, 48,000 of those orders were delivered and 3,360 came back; in the quarter, 1,00,000 customers placed 1,50,000 orders and 30,000 of them ordered twice or more; and of January's 1,000 new customers, 380 ordered again in February, 300 in March and 260 in April. The store carries 5,000 products. The rest are introduced where they are used.
 
 ### The revenue tree
 
@@ -278,7 +282,7 @@ The worked numbers come from section 1's illustrative Saturday, month and quarte
 | | |
 |---|---|
 | Formula | AOV = revenue / orders; basket size = items / orders |
-| Worked | Rs 32 lakh / 2,000 = Rs 1,600 with 4 items on the app; Rs 1,250 with 5 items at the store |
+| Worked | Rs 30 lakh / 2,000 = Rs 1,500 with 4 items on the app; Rs 1,250 with 5 items at the store |
 | The trap | The app's AOV set against the store's ABV, its average bill value: the two divide different baskets, since an app order is a planned delivery and a store bill counts every quick trip for one item, so each compares only with its own history |
 | Who asks | Merchandising, marketing and finance |
 
@@ -372,9 +376,9 @@ A stakeholder meeting assumes these words. Each is defined in plain language and
 | Term | In plain words | Said in a meeting |
 |---|---|---|
 | SKU | A stock keeping unit: one sellable version of a product, such as one size | "A shampoo in two sizes is two SKUs, and home care carries 1,200 of them." |
-| GMV | Gross merchandise value: all orders at the price charged, before returns | "GMV grew 12 percent; after returns and GST, net revenue grew 8." |
-| Net revenue | Earned after cancellations, returns, funded discounts and tax | "Finance reports net revenue, so reconcile to that." |
-| AOV and ABV | Revenue per order online (AOV) or per bill in a store (ABV) | "The app's AOV is Rs 1,600 and the store's ABV is Rs 1,250, on different baskets." |
+| GMV | Gross merchandise value: all orders at the prices charged, before cancellations, returns and GST come out | "GMV grew 12 percent; after returns and GST, net revenue grew 8." |
+| Net revenue | GMV less cancellations, returns and the GST collected for the government | "Finance reports net revenue, so reconcile to that." |
+| AOV and ABV | Average order value online and average bill value in a store: sales per order or per bill | "The app's AOV is Rs 1,500 and the store's ABV is Rs 1,250, on different baskets." |
 | MRP | Maximum retail price: the legal ceiling for a packaged item, taxes included | "We can sell below MRP on the app, never above it." |
 | Markdown | A permanent price cut to clear stock that is not selling | "Take the festive lights down 30 percent before they become next year's problem." |
 | COGS | Cost of goods sold: what we paid suppliers for what we sold | "Margin moved because COGS rose; we did not discount more." |
