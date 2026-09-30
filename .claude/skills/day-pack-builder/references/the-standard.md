@@ -34,6 +34,9 @@ sets the form and the volume. The mechanics stay in the skills and scripts it po
   output shown exactly, the decision it would have misled, the check that catches it, and the fix.
   A syntax or runtime error is met when it happens and gets two minutes and the last line of its
   trace; it never takes a trap slot, a chapter or an exercise item.
+- **Nothing spoils a later day.** No file teaches a trap or a method that a later day stages, under
+  any numbers, since the room is meant to meet each one cold; the week's spine lists every day's traps
+  and is the checklist. A file may point back at an earlier day's trap by name.
 - **Complexity climbs at three scales.** Within a chapter, from a one-line question to a multi-step
   analysis; across the day, from the chapters to the escalated case to the second case; across the
   week, as the data versions grow and the stakeholders push back harder.
@@ -59,14 +62,18 @@ Lesson material carries durations only.
 On a domain's first day the domain story takes 45 minutes in place of the 20-minute ask, and chapter 5
 moves to the afternoon, whose case blocks give up the difference; the day sheet shows which minutes.
 
-A chapter is about 30 minutes live and runs in a fixed order: **the need** (the stakeholder's problem,
-the metric and the decision riding on it, and the real company that faces it), **the options** (two
-to four ways to answer it, each with its sizing, and the best-fit call with the fact that would change
-it), **the build** (the chosen way on Kalpa data, each step predicted before it runs), **the trap**
-(the plausible wrong number, the check that catches it and the fix), **the second route** (the same
-answer reached another way, and when to switch), and **Kavya's review**. The notebook carries more than
-the live minutes allow, since it is also the self-study text. A faculty day, a lab day and any other
-exception take the shape their week's spine gives them.
+A chapter is about 30 minutes live and runs in a fixed order: **the need** (the stakeholder's
+problem, the metric and the decision riding on it, and the real company that faces it), **the
+options** (two to four genuinely different ways to answer it, each sized on what separates them,
+such as the rows or orders it needs, the error it risks and what it assumes, and the best-fit call
+with the fact that would change it; a sizing column where every option scores the same separates
+nothing), **the build** (the chosen way on Kalpa data, each step predicted before it runs), **the
+trap** (the plausible wrong number, the check that catches it and the fix), **the second route**
+(the same answer reached by an independent method, and when to switch; a route that re-derives the
+first route's identity cannot fail when the first route is wrong, so it is not a second route), and
+**Kavya's review**. The notebook carries more than the live minutes allow, since it is also the
+self-study text. A faculty day, a lab day and any other exception take the shape their week's spine
+gives them.
 
 ## Volume per teaching day
 
@@ -163,6 +170,9 @@ in its own folder. `content/W01/D1/notebooks/` shows the rhythm; the chapter str
 - The escalated case is a TODO twin with its executed solution, per
   `notebook-builder/references/exercise-notebooks.md`, and the second case is a notebook with its
   solution in `exercises/solutions/`.
+- A check cell under a TODO checks a value the learner's code computed, in a later cell, and never
+  prints or tests the key's words, since a check that reveals the answer before anything runs is a
+  worked example with the working removed.
 
 ### The companion page, in `demos/`
 
@@ -232,7 +242,7 @@ asked, what it found and what changed. A pass that finds nothing says so.
 | 1. Draft | The builder | Is every chapter built from the row, the week's spine and the domain's dossier, in the chapter order? |
 | 2. Domain | The builder | Could a learner who has never worked in a business say, for every chapter, who asks, why the metric matters, what a wrong number costs and which real company faces the same question? |
 | 3. Problem first | The builder | Does every technique arrive as the answer to a stated problem, with two or more options, a sizing and the best-fit call with what would change it, and is the code its last mile? |
-| 4. Rigor | A fresh reviewer agent | Do the notebooks run cold, does every trap show its exact wrong number and its check, does every sizing's arithmetic hold, is every real-world fact sourced, and would a strong interviewer accept every answer? The reviewer also sits the day's exercises blind, from the STUDENT files alone, and names every key a cue gives away and every item labelled hard or design that one step answers. |
+| 4. Rigor | A fresh reviewer agent | Do the notebooks run cold, does every trap show its exact wrong number and its check, does every sizing's arithmetic hold, is every real-world fact sourced, and would a strong interviewer accept every answer? The reviewer also sits the day's exercises blind, from the STUDENT files alone, and names every key a cue gives away and every item labelled hard or design that one step answers, and checks every STUDENT file against the traps later days stage. |
 | 5. Pedagogy and language | A fresh reviewer agent | Does each chapter pair one deck chapter with one notebook that builds on the last, do the devices vary, does every diagram read at print size, and is the language free of the tics the scrubber finds? |
 
 A reviewer writes findings, never edits; the builder fixes and records the fix. Passes 4 and 5 fail a
