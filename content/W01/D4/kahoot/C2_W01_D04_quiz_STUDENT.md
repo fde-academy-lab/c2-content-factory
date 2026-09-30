@@ -77,7 +77,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q8. Wednesday's duplicates shrank the Retail-Plus drop. Does the drop survive, and how do you know?
+## Q8. Wednesday's cleaning shrank the Retail-Plus drop. Does the drop survive, and how do you know?
 *Tests: the return question from Wednesday, answered with today's test.*
 
 - No: once the duplicates went, the drop was only noise

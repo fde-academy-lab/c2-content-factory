@@ -36,7 +36,8 @@ d) Moving Student into Retail-Core, so that the rate stands on a larger count
 
 ### Q3
 
-An invented segment's rate stands on 15 orders. How far does one extra order move it?
+Kavya points at an invented segment whose rate stands on 15 orders and asks how far one extra order
+would move it. What do you tell her?
 
 a) About 1.5 points
 b) About 15 points, since each order is one of fifteen and moves the rate by its own count
@@ -59,7 +60,7 @@ The coin flips on Student's orders gave a share of 0.397, and counting every pos
 do you say?
 
 a) Once the count reaches a few dozen orders, since the list of deals then runs into the billions
-b) Never, since counting every deal is exact and the flips are only an estimate of it on any count, however large
+b) Never, since counting every deal is exact and the flips are only an estimate of it on any count, at any count
 c) Once the two routes disagree by more than 0.01
 d) Once the rate rises past 40 percent
 

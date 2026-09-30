@@ -2,14 +2,14 @@
 
 This set follows chapter 6: items 1 and 2 run live in the chapter's last three minutes, and the
 rest open the TA-led practice lab or are worked tonight, after the room has put
-Retail-Core beside Retail-Plus across the months and designed the Diwali hold-back. Six items, each a
+Retail-Core beside Retail-Plus across the months and designed the Diwali hold-back. Seven items, each a
 question the marketing lead, Meera or Kavya would ask. The segments, months and spends in items 1
 and 3 are invented, so each tests the habit on numbers the notebook never used.
 
-Post one line, six letters in item order, no spaces:
+Post one line, seven letters in item order, no spaces:
 
 ```
-Post exactly this shape: xxxxxx
+Post exactly this shape: xxxxxxx
 ```
 
 ---
@@ -74,3 +74,15 @@ a) Drop the split and report the blended figure, since a disputed number should 
 b) Split again by city and by payment method, and report whichever cut shows a lift
 c) Agree, since any split can be chosen to show whatever the analyst wants
 d) The segments were fixed before looking, both fell alike, and a hold-back at Diwali settles it
+
+### Q7
+
+Meera asks what each comparison takes on trust. Match the four comparisons, A before and after, B the
+change beside an untargeted segment, C inside each segment, D a random hold-back, to what each
+assumes: 1 nothing else changed between the months; 2 both segments would have moved alike; 3 who got
+it inside a segment was as good as random; 4 nothing, since a coin decides. Which matching is right?
+
+a) A1, B2, C3, D4
+b) A2, B1, C3, D4
+c) A1, B3, C2, D4
+d) A3, B2, C1, D4, since the split is the comparison that trusts the months and the hold-back trusts the coin

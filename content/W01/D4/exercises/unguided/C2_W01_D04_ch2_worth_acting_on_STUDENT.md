@@ -16,8 +16,9 @@ Post exactly this shape: xxxxxx
 
 ### Q1
 
-An invented tier lost Rs 1,000 of delivered revenue per member across 30 members, in a quarter when
-the company delivered Rs 1 crore. What share of the company's quarter is the fall?
+The head of an invented tier reports a loss of Rs 1,000 of delivered revenue per member across 30
+members, in a quarter when the company delivered Rs 1 crore. Meera asks what share of the company's
+quarter the fall is. What do you tell her?
 
 a) 3 percent
 b) 0.3 percent

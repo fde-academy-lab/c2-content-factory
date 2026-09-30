@@ -1,6 +1,6 @@
 # Solution: chapter 6 set, the fair comparison
 
-Answers: 1b 2d 3a 4c 5c 6d
+Answers: 1b 2d 3a 4c 5c 6d 7a
 
 ## The idea being tested
 
@@ -20,6 +20,7 @@ split is called cherry-picking.
 | 4 | design | c | When the forgone lift runs into lakhs, the change beside the change over a long run of months becomes the cheaper route. | a: a different target changes who is held back, never whether to hold back. b: a deeper discount still needs a comparison, and it raises the break-even. d: five weeks is ample time to decide a random hold-back. |
 | 5 | design | c | Two routes built on different ideas agree that no lift can be claimed, and both rest on groups a rule chose. | a: failing to rule a lift out is different from finding one. b: "cannot tell" and "3 percent less" point the same way. d: the split also rests on a chosen group, so neither route is fair. |
 | 6 | concept | d | Cherry-picking means choosing the cut after seeing the results; the segments were set before, they agree, and the hold-back removes the argument. | a: drops the fair comparison for the unfair one. b: that is what cherry-picking is. c: concedes a charge the method does not deserve. |
+| 7 | match | a | Before and after trusts that the month changed nothing else, the change beside the change trusts parallel segments, the split trusts that the choice inside a segment was as good as random, and only the coin trusts nothing. | b: swaps the two month-based routes. c: swaps the split and the parallel-segments assumption. d: the split never looks at months. |
 
 ## The part worth arguing about
 

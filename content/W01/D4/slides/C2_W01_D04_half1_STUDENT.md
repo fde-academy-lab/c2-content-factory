@@ -447,7 +447,7 @@ flowchart LR
     class K3 bet
 ```
 
-**Kavya's review.** Retail-Core's third is the baseline, Retail-Plus's 0.03 is the gap against it, the textbook test agrees, and your sentence would still be true if the drop turned out to be a fluke. Now tell me how much money it is.
+**Kavya's review.** Retail-Core's share of about a third shows the usual wobble, Retail-Plus's 0.027 sits well outside it, the textbook test agrees, and your sentence would still be true if the drop turned out to be a fluke. Now tell me how much money it is.
 
 **In the interview.** [S] What does p = 0.03 mean, and not mean? [S] How do you know whether a change in a metric is significant? [D] A shuffle test, a textbook test, or wait a quarter: which do you run for a CEO's Monday?
 

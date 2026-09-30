@@ -21,8 +21,7 @@ Kahoot.
 ```notes
 LIVE. Thirty minutes: the need and the company (3), the options and the call (5), who got it (3),
 the trap (3), what else changed (6), the fix (3), the hold-back designed (4), the second route (2),
-and Kavya's review (1). Notebook 6 runs beside it. The chapter opener prints 06 because the
-afternoon deck is renumbered after it is built; see the day sheet.
+and Kavya's review (1). Notebook 6 runs beside it.
 ```
 
 ---
@@ -171,20 +170,15 @@ many orders July's figure stands on. Take two answers.
 ## S8. Why it is wrong: August moved for everyone
 *The segment the sale was not aimed at jumped too, and months swing by half with no sale at all.*
 
-```mermaid
-xychart-beta
-    title "Delivered revenue by month, Rs thousand"
-    x-axis ["Apr", "May", "Jun", "Jul", "Aug", "Sep"]
-    y-axis "Rs thousand" 0 --> 40
-    line [19.7, 36.8, 15.6, 9.3, 25.1, 13.4]
-    line [11.9, 15.0, 24.4, 13.3, 23.1, 11.1]
-```
+| Delivered, Rs | Apr | May | Jun | Jul | Aug | Sep |
+|---|---|---|---|---|---|---|
+| Retail-Plus, targeted | 19,650 | 36,840 | 15,640 | 9,280 | 25,060 | 13,370 |
+| Retail-Core, not targeted | 11,920 | 15,000 | 24,380 | 13,320 | 23,090 | 11,140 |
 
 **The check.** Retail-Core, the segment the sale was not aimed at, rose 73 percent from July to August. Retail-Plus fell 58 percent from May to June with no sale running. July's Retail-Plus figure stands on 4 delivered orders.
 
 ```notes
-LIVE, 4 minutes. The first line is Retail-Plus, the second Retail-Core, from notebook 6, level 3.
-Point at May to June: a fall of more than half, no campaign anywhere. A month's revenue on a few
+LIVE, 4 minutes. Notebook 6, level 3, draws these two rows as lines. Point at May to June: a fall of more than half, no campaign anywhere. A month's revenue on a few
 orders swings by half on its own.
 ```
 
@@ -213,11 +207,11 @@ in 100: not rare. What changed: a 170 percent claim shrinks to "cannot tell from
 *Decide before the sale, inside each segment, with a coin, and agree the measure in advance.*
 
 ```mermaid
-flowchart TB
-    L["<b>before Diwali</b><br/>list each segment's customers"] --> C{"<b>a coin</b><br/>per customer"}
-    C -->|"one in five"| H["<b>held back</b><br/>no sale"]
-    C -->|"the rest"| S["<b>the sale</b><br/>same window"]
-    H --> M["<b>after</b><br/>spend per customer, inside<br/>each segment, shuffle-tested"]
+flowchart LR
+    L["<b>before Diwali</b><br/>each segment's<br/>customers"] --> C{"<b>a coin</b>"}
+    C -->|"one in five"| H["<b>held back</b>"]
+    C -->|"the rest"| S["<b>the sale</b>"]
+    H --> M["<b>after</b><br/>compare inside<br/>each segment"]
     S --> M
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -619,8 +613,8 @@ value: 9 min | label: to run it | note: then two answers discussed
 ```
 
 ```notes
-LIVE, 9 minutes. Run kahoot/C2_W01_D04_quiz_STUDENT.md. Stop after item 2 and item 5 for thirty
-seconds each; they are the two traps of the day.
+LIVE, 9 minutes. Run kahoot/C2_W01_D04_quiz_STUDENT.md. Stop after item 2 and item 7 for thirty
+seconds each: the p-value read as the chance of being wrong, and significance read as importance.
 ```
 
 ---

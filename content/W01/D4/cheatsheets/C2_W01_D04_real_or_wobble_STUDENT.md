@@ -6,11 +6,11 @@ number reaches her note, and one page that may say "not yet".
 ## Panel 1: Three questions, three checks, one note
 
 ```mermaid
-flowchart LR
-    Q1["<b>Is the drop real?</b><br/>a gap"] --> H1["<b>chance</b><br/>could shuffling make it?"]
-    Q2["<b>Move budget to Student?</b><br/>a rate"] --> H2["<b>the count</b><br/>how many orders behind it?"]
-    Q3["<b>Did the discount work?</b><br/>a rise after a campaign"] --> H3["<b>a fair comparison</b><br/>who got it, against whom?"]
-    H1 --> N["<b>one note</b><br/>claim, evidence,<br/>caveat, action"]
+flowchart TB
+    Q1["<b>Is the drop real?</b> a gap"] --> H1["<b>chance</b>: could shuffling make it?"]
+    Q2["<b>Move budget to Student?</b> a rate"] --> H2["<b>the count</b>: how many orders behind it?"]
+    Q3["<b>Did the discount work?</b> a rise"] --> H3["<b>a fair comparison</b>: who got it, against whom?"]
+    H1 --> N["<b>one note</b>: claim, evidence, caveat, action"]
     H2 --> N
     H3 --> N
 ```

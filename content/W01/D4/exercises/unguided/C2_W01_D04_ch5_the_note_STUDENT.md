@@ -2,13 +2,13 @@
 
 This set follows chapter 5: items 1 and 2 run live in the chapter's last three minutes, and the
 rest open the TA-led practice lab or are worked tonight, after the room has audited the
-headline note and written the four-part note. Six items, each a question Meera or Kavya would ask.
+headline note and written the four-part note. Seven items, each a question Meera or Kavya would ask.
 The word count in item 5 is invented; every other figure comes from the morning's chapters.
 
-Post one line, six letters in item order, no spaces:
+Post one line, seven letters in item order, no spaces:
 
 ```
-Post exactly this shape: xxxxxx
+Post exactly this shape: xxxxxxx
 ```
 
 ---
@@ -66,6 +66,16 @@ d) Find where it came from, since a figure typed by hand is the likeliest to be 
 Meera replies, "Just give me yes or no on Student." What do you say?
 
 a) "Yes, since it is our fastest-growing segment and the rise is real arithmetic."
-b) "No, since a small segment can never be worth budget, however fast it grows, and the note already says as much to anyone who reads it."
+b) "No, since a small segment can never be worth budget, at any rate of growth it grows, and the note already says as much to anyone who reads it."
 c) "Not yet: we watch Student until it carries thirty orders a quarter, and then I will bring you the answer."
 d) "It depends, and I will need another week of analysis before I can say anything."
+
+### Q7
+
+Kavya hands you one line of the headline note, "Retail-Plus revenue fell 34%", and asks you to audit
+it before it goes to Meera. In which order do the four steps run?
+
+a) State the caveat, find the number, name its base, attach its count or chance
+b) Find the number, name its base, attach its count or chance, state the caveat that would flip it
+c) Name the base, state the caveat, find the number, attach its count or chance
+d) Attach the count or chance first, since a number with no chance reference cannot be read at all, then find the number, name its base and state the caveat

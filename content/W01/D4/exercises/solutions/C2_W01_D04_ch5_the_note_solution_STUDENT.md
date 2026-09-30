@@ -1,6 +1,6 @@
 # Solution: chapter 5 set, the note that may say not yet
 
-Answers: 1b 2d 3a 4c 5d 6c
+Answers: 1b 2d 3a 4c 5d 6c 7b
 
 ## The idea being tested
 
@@ -20,6 +20,7 @@ so that it still answers.
 | 4 | concept | c | It has the claim, the evidence inside each segment, and an action that makes the next comparison fair. | a: the chapter 4 trap. b: overclaims the other way and offers no way to learn. d: a caveat with no evidence and no action. |
 | 5 | design | d | Tracing is the second route on a note: a figure that traces nowhere was typed by hand, and it is the one to check. | a: a single wrong figure can carry a wrong decision. b: guessing the source repeats the error with more confidence. c: reading aloud finds tone and misses figures. |
 | 6 | concept | c | "Not yet" is a claim, a caveat and an action in one sentence, and it names what turns it into a yes. | a: the headline reading, with the count left out. b: overclaims from size, which the evidence never measured. d: a delay with no threshold is the answer Meera asked the team not to give. |
+| 7 | order | b | The audit starts from the figure as written, then asks what it is a share of, how many stand behind it, and what would change it; the base comes before the count because a count without its base is still unreadable. | a: a caveat written before the number is known has nothing to qualify. c: the base cannot be named before the number is found. d: a chance reference means nothing until the number and its base are fixed. |
 
 ## The part worth arguing about
 
