@@ -43,8 +43,8 @@ different directions are in the retail dossier,
 `content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md`, which these notes assume. One
 point from it matters today: the dossier's net revenue subtracts cancellations and returns, while
 both of Anand's figures in this case count booked value, every order whatever its status. The two
-figures disagree on rows, not on definition, and checking that first was part of the ask. Thursday asks whether the finding that survived is real or the wobble every
-quarter shows, and Week 2 runs this whole pass again in SQL and in pandas.
+figures share a definition and disagree on rows, and checking the definition first was part of the
+ask. Thursday asks whether the finding that survived is real or the wobble every quarter shows, and Week 2 runs this whole pass again in SQL and in pandas.
 
 ```mermaid
 flowchart LR
@@ -91,7 +91,8 @@ disagree" into "here is exactly why".
 of what arrived. If the note to him says the dashboard is right and it is not, his analyst finds it
 and discounts everything else the team sends. Target Canada is the public version of skipping this
 step: it opened 133 stores in 2013 on product data typed into a new system under deadline, lost
-almost a billion dollars in its first year and closed every store in January 2015 (CBC News,
+almost a billion dollars in its first year and in January 2015 announced it would close all 133
+stores (CBC News,
 15 January 2015). Salsify's summary of the Canadian Business investigation puts the accuracy of that
 product data at about 30 percent (both checked 30 September 2026).
 
@@ -101,7 +102,7 @@ product data at about 30 percent (both checked 30 September 2026).
 |---|---|---|---|
 | Total and compare | 201 amounts | under a second | stops on an unreadable amount, and says nothing about why |
 | Scroll it | 2,010 cells by eye | about 17 minutes, at half a second a cell | misses a repeat a hundred rows from its twin |
-| Sample 20 rows | 20 rows | about 10 minutes of tying out | an 80 percent chance to meet a repeated row, 10 percent to meet the bad amount |
+| Sample 20 rows | 20 rows | about 10 minutes of tying out | a 13 percent chance to draw both copies of a pair, the only way a repeat shows, and 10 percent to meet the bad amount |
 | Profile every field | 2,010 values by code | under a second | every count that does not fit |
 
 The minutes are illustrative; the chances are exact, since 15 of 201 rows are repeats and one amount
@@ -148,12 +149,12 @@ company repaid about one million customers (NBC News and AP, 10 June 2009, check
 | Whole record, as loaded | 0 | Rs 1,87,03,710 | 15 | Rs 0 |
 | Whole record less the line | 13 | Rs 1,87,03,710 | 2 | Rs 0 |
 | order_id | 15 | Rs 1,87,00,000 | 0 | Rs 0 |
-| Same customer and amount | 15 | Rs 1,69,29,000 | 1 | Rs 17,71,000 |
+| Fuzzy: same customer and amount, within 60 days | 15 | Rs 1,69,29,000 | 1 | Rs 17,71,000 |
 
 **The call:** the order id, because the ERP issues one per order and never reuses it. **What would
 switch it:** two systems issuing their own ids. The key would then be the system plus the id. The
-fuzzy key also costs the most: without a key to group on, every row is compared with every other,
-20,100 pairs here and about 2 lakh crore on a file of 2 crore rows, which is why record linkage
+fuzzy match also costs the most: without a key to group on, every row is compared with every other,
+20,100 pairs here and about 200 lakh crore on a file of 2 crore rows, which is why record linkage
 blocks by a field such as city before it compares anything.
 
 **The build.** Q1 holds 114 rows for 100 orders and Q2 holds 87 for 86. Grouped by `order_id`, 15
@@ -167,9 +168,9 @@ where a row sat, never what the order is, so leaving it in the key makes every r
 is chapter 1's: 201 rows and 186 ids cannot both be true of a file with no repeats. The fix is the
 business key.
 
-**The harder form.** The fuzzy key flags 15 rows, as many as the order id, and the two sets share
-only 14. The fuzzy key calls a real Business order a copy because the same customer spent the same
-Rs 17,71,000 again the next quarter, and it misses a pair whose amounts differ. A count that matches
+**The harder form.** The fuzzy match flags 15 rows, as many as the order id, and the two sets share
+only 14. The fuzzy match calls a real Business order a copy because the same customer spent the same
+Rs 17,71,000 again within 60 days, and it misses a pair whose amounts differ. A count that matches
 is not a match.
 
 **The second route.** Rows less distinct ids, per quarter, gives 14 and 1, the same 15 the groups
@@ -432,10 +433,12 @@ asked everywhere, [F] frequent in GCC and product screens, [SV] service-major sc
 differentiator. This programme's own calibration for 0 to 3 year Indian-market candidates.
 
 **[S] How do you handle missing data?** "First I measure it per field: present, convertible,
-distinct. Then I ask what the absence means, because an optional discount that is absent means no
-discount, while a missing status means we do not know the order's fate. Then one of three decisions,
-each written down with its reason: drop the record, fill a stated default, or keep it and flag it. For
-money I almost never fill, since the books either have a value or they do not." Tested: whether you
+distinct. Then I ask what the absence means, because a blank discount may mean no discount or a
+discount nobody recorded, and a missing status means we do not know the order's fate. Then one of
+three decisions, each written down with its reason and sized on what it moves: drop the record, fill
+a stated default, or keep it and flag it. Today reading 55 blank discounts as zero pulled the average
+from about Rs 67 to Rs 47, so they stayed unknown. For money I never fill, since the books either
+have a value or they do not." Tested: whether you
 treat missingness as a decision. Weak answer: "I fill with the mean."
 
 **[S] Finance and your dashboard disagree; what do you do?** "I assume both numbers are honest
@@ -467,7 +470,7 @@ reconcile, 114 Q1 rows in and 100 kept, and the rupees bridge to your books exac
 keys against rows. If they disagree, the dedupe compared on something that makes every row unique: a
 load timestamp, a surrogate key or a line number."
 
-**[S] The largest order is 1.66 times the next. Do you remove it?** "I check the record, not its size.
+**[S] The largest order is 1.66 times the next. Do you remove it?** "I check the record before its size.
 A valid id, a real account with other orders and fields that convert make it revenue. I keep it, flag
 it, and show the result with and without it. Today, removing it would have turned a 1.6 percent dip
 into a 17.1 percent fall."
@@ -488,18 +491,18 @@ was reported from the raw file."
 
 **[D] Cleaning shrank the finding you reported yesterday. What do you tell the stakeholder?** "The
 smaller number first, what changed and why, and whether the decision it supported still holds. Today
-the Retail-Plus fall went from 49 to 35 percent: still the largest fall, still worth acting on, and
+the Retail-Plus fall went from 49 to 35 percent: still the largest fall, which Thursday tests for chance, and
 now on numbers Finance agrees with."
 
 **[D] How do you know Finance's number is right, and not yours?** "Neither is right by rank. The bridge
 closes to the books because every move is backed by rows I can show. If it had not closed, the gap
-would itself be a finding to put in front of Finance's analyst, with the rows, not an accusation."
+would itself be a finding to put in front of Finance's analyst, with the rows and without an accusation."
 
 **[D] Design. Order id, whole record or fuzzy, for customers from two apps?** "Neither app's id
 identifies a person across both, and two systems never write a record identically, so the id and the
 whole record are out. I would clean phone and email the same way on both sides and match on those,
 block by city so the comparisons stay in the thousands, and send every match nobody has confirmed to
-a person. On Kalpa's orders the fuzzy key of customer and amount flagged as many rows as the order id
+a person. On Kalpa's orders a fuzzy match on customer and amount within 60 days flagged as many rows as the order id
 and merged a real Rs 17,71,000 order, which is why I would not trust it unreviewed. What would switch
 me back to a key is one customer id issued by one system."
 
@@ -528,11 +531,15 @@ prove. If a bridge does not close, the gap is the finding, and it may sit in Fin
 | Survivor rule | Which copy of a repeated record stays | Chapter 3; notebook 03 | The copy that validates, then the first |
 | Keep and flag | Keep a record whose value is unknown, marked, out of counts that need it | Chapter 4; notebook 04 | A Q2 order with no status |
 | Coercion | Turning a value that fails into a default; a claim, never a fix | Chapter 4; notebook 04 | An order at Rs 0 |
-| Outlier | A value far from the rest; a question about a record, never a reason to delete it | Chapter 5; notebook 05 | The largest Q2 order |
+| Outlier | A value far from the rest; a question about its record | Chapter 5; notebook 05 | The largest Q2 order |
 | Revenue bridge | One total walked to another, one move per cause | Chapter 5; notebook 05 | Rs 2,09,98,210 to Rs 1,90,00,000 |
 | Reconciliation | Proof the clean data is the same data, in rows and in rupees | Chapters 5 and 6; notebooks 05 and 06 | 201 = 186 + 15 |
 | Decisions log | Every cleaning rule with the rows and rupees it moved | Chapter 6; notebook 06 | Missing status: keep and flag |
 | Replay | Rebuilding the clean file from the raw export and the log alone | Chapter 6; notebook 06 | 186 orders at the same amounts |
+| Booked value | Every order at its price, whatever its status, before returns and cancellations | The ask; chapter 5 | Both Rs 2.1 crore and Rs 1.9 crore |
+| Set aside | Removed from the clean file with a logged reason and the line of the row that stayed | Chapters 3 and 6 | 15 rows |
+| Control totals | A count and a sum computed at both ends of a transfer and compared | Chapter 6; notebook 06 | 201 rows and Rs 2,09,98,210 in |
+| Fence | A cut-off above which values get called outliers; a question, never a verdict | Chapter 5; notebook 05 | Three times the median Q2 order |
 
 ---
 

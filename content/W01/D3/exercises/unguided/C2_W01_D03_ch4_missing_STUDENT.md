@@ -28,14 +28,14 @@ b) Three customers placed free orders in a promotion
 c) Three orders were cancelled, and cancelled orders carry 0
 d) The profile is right, and zero is a valid Kalpa order
 
-### Q3
+### Q3 (Design)
 
-The same order reads `"status": ""` in the CSV and has no `status` key in the JSON feed. A loop running `r["status"]` over both files does what?
+A colleague converts amounts with `int(v) if v.isdigit() else 0`. The take-home file's refund of `-2400` comes out as Rs 0. Which change fixes the logic?
 
-a) Counts both records as delivered by default
-b) Returns an empty string for both records
-c) Raises a KeyError on the CSV record only
-d) Raises a KeyError on the JSON record only
+a) Keep the isdigit test and footnote the refund
+b) Replace the 0 with the segment's median amount
+c) Wrap int() in try and return 0 on any failure
+d) Try int(); log the value and its reason
 
 ### Q4 (Design)
 

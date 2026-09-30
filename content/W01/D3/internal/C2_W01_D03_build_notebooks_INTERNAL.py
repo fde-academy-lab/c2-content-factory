@@ -15,6 +15,7 @@ runs on invented records labelled invented.
 import pathlib
 import re
 import sys
+import textwrap
 
 sys.path.insert(0, "scripts")
 from nb_make import SETUP, build, code, empty, md  # noqa: E402
@@ -30,6 +31,7 @@ CHAPTERS = ["what the ERP sent", "the rows that repeat", "the copy that stays",
 READ = SETUP + '''
 import csv, json, math
 from collections import Counter
+from datetime import date
 
 DATA = kit.data_dir()
 ORDERS_CSV = DATA / "C2_W01_D03_orders_STUDENT.csv"
@@ -128,6 +130,7 @@ def mapcell(n, levels, lit=0):
 
 
 def opener(n, title, need, prev):
+    need = textwrap.indent(textwrap.dedent(need).strip(), "    ")[4:]
     return md(f'''
     # {n}. {title}
 
@@ -158,10 +161,12 @@ def ch1():
         built on it.
 
         **Who else faces it.** Target Canada launched in March 2013, lost almost a billion dollars in its first
-        year and in January 2015 closed all 133 stores (CBC News, 15 January 2015, checked 30 Sep 2026).
+        year and in January 2015 announced it would close all 133 stores (CBC News, 15 January 2015, checked
+        30 Sep 2026).
         Salsify's summary of the Canadian Business investigation puts the accuracy of the product data
         in its new system at about 30 percent, against 98 to 99 percent in the US (checked 30 Sep 2026).
-        Nobody had profiled what arrived before trusting it.
+        Data loaded in a hurry during a system change is the kind that needs counting before anyone
+        trusts it, and Kalpa's export was stitched during a migration.
         ''', "Tuesday's finding, Retail-Plus orders per customer down 49 percent, was measured on the "
              "export exactly as delivered. This chapter profiles what arrived, before any total."),
         md('''
@@ -188,12 +193,14 @@ def ch1():
         '''),
         code('''
         cells = len(raw) * len(FIELDS)
-        p_sample_copy = 1 - math.comb(186, 20) / math.comb(201, 20)    # 15 extra rows among 201
+        # a repeat is recognisable only when both copies of a pair are drawn: 15 pairs among 201 rows
+        p_sample_copy = sum((-1) ** (k + 1) * math.comb(15, k) * math.comb(201 - 2 * k, 20 - 2 * k) / math.comb(201, 20)
+                            for k in range(1, 11))
         p_sample_bad = 20 / len(raw)                                     # one unreadable amount
         sizing = [
             ("a) total and compare", "201 amounts", "under a second", "stops on the first unreadable amount; says nothing about why"),
             ("b) scroll it", f"{cells:,} cells by eye", "about 17 minutes at half a second a cell", "repeats far apart are missed"),
-            ("c) sample 20 rows", "20 rows", "about 10 minutes of tying out", f"{p_sample_copy:.0%} chance to meet a repeated row, {p_sample_bad:.0%} to meet the bad amount"),
+            ("c) sample 20 rows", "20 rows", "about 10 minutes of tying out", f"{p_sample_copy:.0%} chance to draw both copies of a pair, {p_sample_bad:.0%} to meet the bad amount"),
             ("d) profile every field", f"{cells:,} values by code", "under a second", "finds every count that does not fit; the choice of copy waits"),
         ]
         kit.table(["option", "what it reads", "time", "what it catches"], sizing,
@@ -513,7 +520,7 @@ def ch2():
         | a) The whole record | every field matches, as the rows now stand | Most tools' default dedupe |
         | b) The whole record less the line | every field but the file line matches | The first fix people reach for |
         | c) The business key | `order_id` matches | The ERP issues one id per order |
-        | d) A fuzzy key | same customer and same amount | Record linkage when no key can be trusted |
+        | d) A fuzzy match | same customer and same amount, dated within 60 days | Record linkage when no key can be trusted |
 
         **Predict before you run.** Which options will flag the same number of rows as c? a) none;
         b) only b; c) only d; d) b and d.
@@ -536,9 +543,21 @@ def ch2():
             "a) whole record": lambda r: tuple(sorted(r.items())),
             "b) whole record less line": lambda r: tuple(sorted((k, v) for k, v in r.items() if k != "line")),
             "c) order_id": lambda r: r["order_id"],
-            "d) customer and amount": lambda r: (r["customer_id"], r["amount"]),
         }
         by_key = {name: flagged_by(raw, f) for name, f in KEYS.items()}
+
+        def fuzzy_flagged(rows, days=60):
+            """A fuzzy match: same customer, same amount, dates within `days`. No key to group on, so every pair is compared."""
+            out, comparisons = {}, 0
+            for i, a in enumerate(rows):
+                for b in rows[i + 1:]:
+                    comparisons += 1
+                    if (a["customer_id"] == b["customer_id"] and a["amount"] == b["amount"] and
+                            abs((date.fromisoformat(a["order_date"]) - date.fromisoformat(b["order_date"])).days) <= days):
+                        out[b["line"]] = b
+            return list(out.values()), comparisons
+
+        by_key["d) fuzzy match"], comparisons = fuzzy_flagged(raw)
         truth = {r["line"] for r in by_key["c) order_id"]}
         rows_out = []
         for name, flagged in by_key.items():
@@ -547,18 +566,18 @@ def ch2():
             wrong = [r for r in flagged if r["line"] not in truth]
             rows_out.append((name, len(flagged), kit.rupees(Q(kept, "Q1")), kit.rupees(Q(kept, "Q2")),
                              len(truth - lines), kit.rupees(sum(convert(r["amount"])[0] or 0 for r in wrong)),
-                             "20,100 pairs" if name.startswith("d") else "201 lookups"))
+                             f"{comparisons:,} pairs" if name.startswith("d") else "201 lookups"))
         kit.table(["key", "rows flagged", "Q1 after", "Q2 after", "copies missed", "real rupees removed", "work"],
                   rows_out, caption="Each key sized on the ERP file; 'copies missed' is measured against the order_id key")
         kit.bars([(n, len(f)) for n, f in by_key.items()], lit=(2,), title="Rows each key flags as a repeat")
         '''),
         md('''
-        **What happened.** The answer is c: the fuzzy key flags 15 rows, as many as the order id, and they
+        **What happened.** The answer is c: the fuzzy match flags 15 rows, as many as the order id, and they
         are not the same 15. It removes one real Business order worth Rs 17,71,000, placed by a customer
-        who spent the same amount again the next quarter, and it misses a pair whose amounts differ. The
+        who spent the same amount again within 60 days, and it misses a pair whose amounts differ. The
         whole record flags nothing, and the whole record less the line flags 13 and misses two pairs.
         The fuzzy key also costs the most work: without a key to group on, every row is compared with
-        every other, 20,100 pairs here and about 2 lakh crore on a file of 2 crore rows.
+        every other, 20,100 pairs here and about 200 lakh crore on a file of 2 crore rows.
 
         **The best-fit call: c, the order id.** The ERP issues one id per order and never reuses it, so
         the id is what the business says an order is. **The fact that would change it:** two systems
@@ -670,13 +689,13 @@ kit.check("on invented records, leaving out the line finds both copies", found =
         the two sets share? a) 15; b) 14; c) 13; d) none.
         '''),
         code('''
-        fuzzy = {r["line"] for r in by_key["d) customer and amount"]}
+        fuzzy = {r["line"] for r in by_key["d) fuzzy match"]}
         shared = fuzzy & truth
         kit.columns(["order_id key", "fuzzy key"], [("flagged", [len(truth), len(fuzzy)]), ("shared", [len(shared), len(shared)])],
                     title="Same count, different rows: 15 against 15, 14 in common")
         kit.check("the two keys share 14 of their 15 rows", len(shared) == 14, f"{len(shared)}")
         kit.check("the fuzzy key removes a real order worth Rs 17,71,000",
-                  sum(convert(r["amount"])[0] or 0 for r in by_key["d) customer and amount"] if r["line"] not in truth) == 1771000)
+                  sum(convert(r["amount"])[0] or 0 for r in by_key["d) fuzzy match"] if r["line"] not in truth) == 1771000)
         '''),
         md('''
         **What happened.** The answer is b. A count that matches is not a match: the two keys agree on 14
@@ -1083,8 +1102,8 @@ def ch4():
         does not move it; it moves any average discount a report quotes.
 
         **Predict before you run.** The average discount over orders that carry one, against the average
-        with the missing ones read as zero: how far apart? a) the same; b) a few rupees; c) about a
-        quarter lower with zeros; d) higher with zeros.
+        with the missing ones read as zero: how far apart? a) the same; b) a few rupees; c) about 30
+        percent lower with zeros; d) higher with zeros.
         '''),
         code('''
         with_disc = [int(r["discount"]) for r in clean if r["discount"] != ""]
@@ -1151,7 +1170,7 @@ def ch4():
         copy says `fourteen` and the second `1400`:
         '''),
         code('''
-        WORDS = {"twelve": 12, "fourteen": 14, "twenty": 20}
+        WORDS = {"fourteen": 14, "twenty": 20}
         invented_pair = [{"order_id": "INV-21", "amount": "fourteen"}, {"order_id": "INV-21", "amount": "1400"}]   # invented
         read_as_word = WORDS[invented_pair[0]["amount"]]
         kit.table(["repair", "value", "against the twin"], [("read the word", read_as_word, read_as_word - 1400),
@@ -1380,14 +1399,15 @@ def ch5():
         every order in lakhs, so a Business order at Rs 29 lakh is the business doing what it does. Removing
         it turns a 1.6 percent dip into a 17.1 percent collapse: Marketing would fund a rescue for a fall
         that never happened, and Finance, whose books hold that order, would reject the reconciliation on
-        sight. The check asks whether anything about the record is wrong, not whether it is big.
+        sight. A fence is a cut-off above which a hurried analyst calls values outliers; the simplest is a
+        multiple of the median, and the check below sizes one at three times the median Q2 order. The real
+        check asks whether anything about the record is wrong, never whether it is big.
         '''),
         code('''
         buyer_orders = [r for r in clean if r["customer_id"] == top["customer_id"]]
         amounts_q2 = sorted(r["amount"] for r in q2_orders)
-        n = len(amounts_q2)
-        q1_, q3_ = amounts_q2[n // 4], amounts_q2[(3 * n) // 4]
-        fence_all = sum(1 for a in amounts_q2 if a > q3_ + 1.5 * (q3_ - q1_))
+        median_q2 = amounts_q2[len(amounts_q2) // 2]
+        fence_all = sum(1 for a in amounts_q2 if a > 3 * median_q2)    # a fence at three times the median
         kit.check("the largest Q2 order is a Business order", top["segment"] == "Business")
         kit.check("its customer ordered in both quarters", {r["quarter"] for r in buyer_orders} == {"Q1", "Q2"}, f"{len(buyer_orders)} orders")
         kit.check("a fence on the whole quarter would flag every Business order", fence_all == sum(1 for r in q2_orders if r["segment"] == "Business"),
@@ -1398,18 +1418,23 @@ def ch5():
         '''),
         md('''
         **The fix, and what changed.** Keep it, flag it, and show Q2 both ways. Q2 goes back from
-        Rs 1,57,54,540 to Rs 1,87,00,000, and the drop from 17.1 percent to 1.6. A fence on the whole quarter
-        flags all 17 Business orders, because the quarter mixes a Rs 2,000 basket with a corporate order; a
+        Rs 1,57,54,540 to Rs 1,87,00,000, and the drop from 17.1 percent to 1.6. A fence at three times the median
+        Q2 order flags all 17 Business orders, because the quarter mixes a Rs 2,000 basket with a corporate order; a
         fence means something only inside one segment, and even there it is a question about a record.
         '''),
 
         md('''
         ## 4. The note to Finance
 
-        Numbers first, which figure is right and why, both reconciliations, what was kept and flagged, and
+        **Predict before you run.** Which number leads the note? a) the 49 percent Tuesday reported, since
+        leadership has seen it; b) the 1.9 crore and why it is right; c) the Rs 29 lakh order; d) the
+        count of rows set aside.
+
+        The answer is b: Anand asked which figure is right, so that goes first, then the proof, then what
+        changed. Numbers first, which figure is right and why, both reconciliations, what was kept and flagged, and
         whether Tuesday survives, in under 120 words:
 
-        > "Anand, your 1.9 crore is right. The ERP export counted fifteen rows twice, fourteen of them in
+        > "Anand, your 1.9 crore is right. The ERP export counted fifteen orders twice, fourteen of them in
         > Q1; copies of two corporate orders carry Rs 19,67,560 of the Rs 19,98,210 difference. Rows
         > reconcile, 201 received equals 186 kept plus 15 set aside, and rupees reconcile to your books
         > exactly. Every row set aside and every decision is in the attached log. Kept and flagged: one Q2
@@ -1418,7 +1443,7 @@ def ch5():
         > survives, smaller."
         '''),
         code('''
-        note = ("Anand, your 1.9 crore is right. The ERP export counted fifteen rows twice, fourteen of them in Q1; "
+        note = ("Anand, your 1.9 crore is right. The ERP export counted fifteen orders twice, fourteen of them in Q1; "
                 "copies of two corporate orders carry Rs 19,67,560 of the Rs 19,98,210 difference. Rows reconcile, 201 "
                 "received equals 186 kept plus 15 set aside, and rupees reconcile to your books exactly. Every row set "
                 "aside and every decision is in the attached log. Kept and flagged: one Q2 order with no status, and "
@@ -1474,6 +1499,15 @@ def ch5():
         **Design. Prove the figure with a bridge, or rebuild it from a second source?** "A bridge, when a log
         backs each move, because it says why as well as how much. I would switch to a rebuild when the two
         sources are independent and complete, which this JSON feed is not."
+
+        ### Depth: a bridge with more than one kind of move
+
+        Today's bridge had one cause, copies, split by segment. A month-end bridge between a sales system and
+        the ledger usually carries several kinds of move: timing (an order booked on the last day of one
+        month and invoiced on the first of the next), definition (returns netted in one system and not the
+        other), and error (copies, typos). Each kind gets its own column, and a bridge that closes only
+        after an "other" column has not closed. Tesco's GBP 263 million was bridged by period for the same
+        reason: a reader needs to see which kind of move each rupee is.
         '''),
         code('''
         kit.check_summary()
@@ -1487,7 +1521,7 @@ def ch6():
     return [
         opener(6, "The log the analyst audits", '''
         **The need.** Anand's analyst checks the reconciliation tonight, and an auditor may ask next quarter
-        why any row was dropped. The metric is a pair of control totals, rows and rupees, that tie from the
+        why any row was dropped. The metric is a pair of control totals, a count and a sum computed at each end and compared, rows and rupees, that tie from the
         export to the clean file to the books, and every row that left traceable to a rule. A log the analyst
         cannot follow costs a week of questions; a log that ties in rows and misses in rupees costs the team
         the analyst's trust in everything else it sends.
@@ -1562,6 +1596,10 @@ def ch6():
 
         A log that lives only in the notebook reaches nobody. `csv.DictWriter` writes the row logs and
         `json.dump` the decisions; reading them back proves the files hold what the notebook holds.
+
+        **Predict before you run.** Read back from the CSV, what type is each amount in the log? a) `int`,
+        since it was written from numbers; b) `str`, since a CSV holds only text; c) `None` for the
+        unreadable one and `int` for the rest; d) it depends on the row.
         '''),
         code('''
         out = pathlib.Path(tempfile.mkdtemp())
@@ -1582,6 +1620,9 @@ def ch6():
                   sum(convert(r["amount"])[0] or 0 for r in back if r["quarter"] == "Q1") == q1_aside)
         '''),
         md('''
+        **What happened.** The answer is b. The log went out as text and comes back as text, which is why
+        the rupee check converts it again; chapter 1's rule holds for your own files too.
+
         **Your turn.** In the empty cell, print the set-aside log as the analyst will read it, with
         `print(open(out / "set_aside_log.csv").read())`. Pick one row and follow its `kept_line` to the
         row that stayed.
@@ -1701,6 +1742,14 @@ def ch6():
         reason, the value, and the line of the row that stayed; plus a decisions log with each rule's rows
         and rupees, and the control totals. I would add a full diff only for an external auditor who has to
         re-derive every row."
+
+        ### Depth: control totals, and why a log is versioned
+
+        A control total is a count or a sum computed at both ends of a transfer and compared: rows sent
+        against rows received, rupees exported against rupees loaded. Finance teams keep them per batch, so
+        a load that drops or doubles rows is caught before anyone reads a report. A log is also only
+        replayable against the export it was written for, so it carries the export's name, row count and
+        date, and a new export gets a new log. Week 2 keeps these totals in the warehouse.
         '''),
         code('''
         kit.flow(["decide\\nfive decisions", "log\\nrows and rules", "reconcile\\nrows and rupees",
@@ -1964,7 +2013,7 @@ kit.check("the log states the copy, the field and the reason", "field" in log_ru
 # TODO 5. Which statement is the one the evidence supports?
 #   a) 14 Q1 rows were deleted as errors
 #   b) the dashboard was right and the books are short
-#   c) 14 Q1 rows are second copies set aside by the order_id rule; rows and rupees reconcile
+#   c) 14 Q1 rows are copies of kept orders, set aside by the order_id rule; rows and rupees reconcile
 #   d) the 14 rows were outliers
 statement = __TODO5__
 ''', '''
@@ -1977,7 +2026,7 @@ kit.check_summary()
 ]
 AUDIT_ANSWERS = {1: "q1_in - q1_kept", 2: 'r["order_id"] in kept_ids', 3: "list(zip(segs, rows_by, rupees_by))",
                  4: '{"copy": "kept", "field": "which one differed", "why": "the copy that validates"}',
-                 5: '"14 Q1 rows are second copies set aside by the order_id rule; rows and rupees reconcile"'}
+                 5: '"14 Q1 rows are copies of kept orders, set aside by the order_id rule; rows and rupees reconcile"'}
 AUDIT_WHY = {
     1: "b. the auditor asked about Q1. a counts both quarters and gives 15, c counts orders, not rows, and d counts the one unreadable amount.",
     2: "a. a twin is the same order_id. b and c match different orders that happen to share a value or a buyer, and d is where a row sits, not what it is.",
@@ -2032,7 +2081,8 @@ COMPANY = {
                     "customers (NBC News and AP, 10 June 2009, checked 30 Sep 2026). The same purchase recorded twice "
                     "looks like two purchases until someone asks what makes two records one."),
     "COMPANY_CH3": ("India's GST system writes the identity rule into law for every business invoice. The Invoice "
-                    "Registration Portal rejects an invoice already reported under the same supplier GSTIN, invoice "
+                    "Registration Portal rejects an invoice already reported under the same supplier GSTIN (its GST "
+                    "registration number), invoice "
                     "number, document type and financial year, the fields it also hashes into the invoice's reference "
                     "number (GSTN e-invoice FAQ, version 1.4, checked 30 Sep 2026). Since 1 August 2023 that applies "
                     "to every business above Rs 5 crore of turnover (Notification 10/2023-Central Tax, checked "

@@ -8,8 +8,8 @@ written reason.
 
 ```mermaid
 flowchart LR
-    E["<b>exported</b><br/>Rs 2,09,98,210"] -->|"corporate copies"| A["<b>less Rs 19,67,560</b>"]
-    A -->|"consumer copies"| B["<b>less Rs 30,650</b>"]
+    E["<b>Q1 exported</b><br/>Rs 2,09,98,210"] --> A["<b>corporate copies</b><br/>less Rs 19,67,560"]
+    A --> B["<b>consumer copies</b><br/>less Rs 30,650"]
     B --> C["<b>clean = books</b><br/>Rs 1,90,00,000"]
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class C bet
@@ -56,7 +56,7 @@ an absent key in JSON.
 | One amount unreadable | The copy that validates | Its twin carries the value |
 | Valid, a field disagrees | The first extract | The field, and a question for the source |
 
-Choose the key before counting: whole record 0, record less line 13, order_id 15, customer and amount
+Choose the key before counting: whole record 0, record less line 13, order_id 15, a fuzzy match on customer and amount within 60 days
 15 with one real Rs 17,71,000 order among them.
 
 **Crux:** Say what makes two rows one order before you count duplicates.
@@ -65,7 +65,7 @@ Choose the key before counting: whole record 0, record less line 13, order_id 15
 
 | Decision | Revenue | A status count | Use it when |
 |---|---|---|---|
-| Drop | Moves | Unchanged | The record is not an order |
+| Drop | Moves | Changes its denominator | The record is not an order |
 | Default | Unchanged | Invents a value | A stated rule covers it |
 | Keep and flag | Unchanged | Leaves it out | The value is unknown |
 
@@ -87,7 +87,11 @@ and Q2 is shown both ways. Repair a value only from a copy that could not share 
 
 ## Panel 7: What changed downstream
 
-Revenue Q1 to Q2: -1.6% on clean data, not -11.0%. Retail-Plus orders per customer: 1.82 to 1.18,
--35.0%, not -49.0%. The finding stands, smaller.
+| Number | As Tuesday reported | On clean data |
+|---|---|---|
+| Revenue, Q1 to Q2 | -11.0% | -1.6% |
+| Retail-Plus orders per customer | -49.0% | -35.0%, 1.82 to 1.18 |
+
+The finding stands, smaller.
 
 **Crux:** Recompute what you reported, and say what changed, the smaller number first.

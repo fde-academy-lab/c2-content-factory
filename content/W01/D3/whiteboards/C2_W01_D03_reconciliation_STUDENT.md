@@ -51,7 +51,7 @@ Drawn in chapter 2, as a table the room fills in before the notebook sizes it.
 | Whole record, line included | 0 | none |
 | Whole record less the line | 13 | none |
 | order_id | 15 | none |
-| Same customer and amount | 15 | one, Rs 17,71,000 |
+| Fuzzy: customer and amount, 60 days | 15 | one, Rs 17,71,000 |
 
 Beside it: "same count, other rows".
 

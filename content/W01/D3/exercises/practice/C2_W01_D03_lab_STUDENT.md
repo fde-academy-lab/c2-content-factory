@@ -94,8 +94,8 @@ compare each with the CSV row that carries the same order_id.
 
 ### Q7
 
-How many complete records does the feed yield, and how many carry the same amount text as their
-CSV row?
+How many complete records does the feed yield, and how many carry the same amount text as the CSV
+row on the same file line, the row each was cut from?
 
 a) 120 and 119
 b) 119 and 118
@@ -104,7 +104,7 @@ d) 119 and 119
 
 ### Q8
 
-The feed and the CSV agree on every amount they share. What does that prove about the CSV?
+The feed and the CSV agree, line for line, on every amount the feed holds. What does that prove about the CSV?
 
 a) That the CSV is clean for every row the feed covers
 b) A common source, and nothing about cleanliness

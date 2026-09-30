@@ -30,7 +30,7 @@ flowchart LR
 
 Every chapter runs the same thirty minutes: the need (3), the real company (2), the options sized
 (5), the picture or the predict pair (4), the build (4), the trap (6), the fix and the second route
-(4), Kavya's review (2).
+(4), Kavya's review (2). The options slide closes on **The call**, so Kavya's review stays the chapter's last beat.
 
 | Part | Slides, half one | Beside it | What must land | If short of time |
 |---|---|---|---|---|
@@ -71,7 +71,7 @@ flowchart LR
 | Chapter | The options | The best-fit call, and what would switch it | The second route |
 |---|---|---|---|
 | 1 | Total and compare; scroll; sample 20; profile every field | Profile, then read the rows it flags; a file with no order key | A Counter over ids and the rejects log's length |
-| 2 | Whole record; record less line; order_id; customer and amount | order_id; two systems issuing their own ids | Rows less distinct ids, per quarter |
+| 2 | Whole record; record less line; order_id; a fuzzy match on customer and amount within 60 days | order_id; two systems issuing their own ids | Rows less distinct ids, per quarter |
 | 3 | First; last; the copy that validates; escalate all | The copy that validates, then the first; the ERP team calling the second extract a fix | A dict keyed by id over valid rows |
 | 4 | Status: drop, default, impute, flag. Amount: coerce, reject, read the word, repair from a copy | Flag; reject, repair only from an independent copy; a delivery system to ask, or a same-extract copy | The profile of the clean file against the logs |
 | 5 | Take the books; difference of totals; bridge by cause; rebuild from the feed | The bridge; a bridge that does not close | Bottom up: the kept orders summed |
@@ -105,6 +105,11 @@ Every fact was checked on 30 September 2026; the provenance holds the URLs.
 
 Chapters 2, 4, 5 and 6 carry the spine's four traps. Chapters 1 and 3 carry traps this build added so
 every chapter has one; the provenance records both.
+
+Tuesday's dashboard read Q1 as Rs 2,10,00,000 because Tuesday's v1 file carried both copies of the
+unreadable order at a value; today's export has one copy unreadable, so Q1 as exported reads
+Rs 2,09,98,210. Both round to 2.1 crore. If a learner asks, that is the answer: the number moves
+because the export moved, and today's bridge starts from today's file.
 
 The runtime errors are met, read and left in two minutes each; none is a trap.
 
@@ -148,7 +153,7 @@ the room before it finds it.
 
 Not a v2 plant, and found by sorting: the largest Q2 order, KR-02186, Business, customer C-4004,
 Rs 29,45,460, 1.66 times the next. C-4004 ordered in both quarters. Also not a plant: KR-02087 in Q1
-and KR-02185 in Q2, both C-4001 at Rs 17,71,000, the real pair the fuzzy key merges in chapter 2.
+and KR-02185 in Q2, both C-4001 at Rs 17,71,000, the real pair the fuzzy match merges in chapter 2.
 
 The take-home export, `C2_W01_D03_takehome_STUDENT.csv`, carries its own: the header row pasted in at
 line 46, a refund posted as a negative amount of Rs 2,400 (KR-02018), a date in the other format
@@ -172,8 +177,8 @@ Rs 80,53,330 with the refund flagged outside revenue, or Rs 80,50,930 netted.
 | Retail-Core orders per customer: Tuesday / clean | -5.3% / -2.7% (1.09 to 1.06) |
 | Q2 delivered share: keep and flag / default or impute / drop | 57 of 86, 66.3% / 58 of 86, 67.4% / 57 of 85, 67.1% |
 | Average discount: over 131 orders that carry one / blanks as zero | about Rs 67 / about Rs 47 |
-| Fuzzy key: rows flagged / shared with order_id / real rupees removed | 15 / 14 / Rs 17,71,000 |
-| Sampling 20 of 201 rows: chance to meet a repeat / the bad amount | 80% / 10% |
+| Fuzzy match: rows flagged / shared with order_id / real rupees removed / pairs compared | 15 / 14 / Rs 17,71,000 / 20,100 |
+| Sampling 20 of 201 rows: chance to draw both copies of a pair / the bad amount | 13% / 10% |
 | JSON feed: complete records / Q1 among them / amounts agreeing with clean | 119 / 100 / 118 |
 | Hand-over lines: logs and totals / full diff / clean file alone | 23 / 201 / 387 |
 | Smallest real order; smallest Business order | Rs 680; Rs 2,03,060 |
@@ -192,7 +197,7 @@ Rs 80,53,330 with the refund flagged outside revenue, or Rs 80,50,930 netted.
 | [F] | A dedupe returns zero. Believe it? | Only after counting distinct business keys against rows; a timestamp or line in the key makes every row unique. |
 | [F] | Row counts reconcile. Done? | No: rows prove nothing vanished, rupees prove the right rows stayed; today's colleague was Rs 1,790 short. |
 | [S] | The largest order is 1.66 times the next. Remove it? | Check the record, not the size; keep, flag, show both; removing it turns 1.6 percent into 17.1. |
-| [D] | Order id, whole record or fuzzy, for customers from two apps? | Clean phone and email, block by city, review doubtful pairs; the fuzzy key merged a real Rs 17,71,000 order today; switch back to a key when one system issues it. |
+| [D] | Order id, whole record or fuzzy, for customers from two apps? | Clean phone and email, block by city, review doubtful pairs; the fuzzy match merged a real Rs 17,71,000 order today; switch back to a key when one system issues it. |
 | [D] | Coerce, reject or repair a malformed amount? | Reject to a log; repair only from an independent source; a zero cost Rs 1,790 today; switch to a rule only for an exact format fix. |
 | [D] | Bridge or rebuild from a second source? | Bridge when a log backs each move; rebuild only from an independent, complete source, which the feed was not. |
 | [SV] | Clean a file you have never seen. | Profile, convert with a log, identity rule, decide each defect with a reason, reconcile twice, recompute. |

@@ -50,14 +50,21 @@ b) A zero in its place, so the quarter's total can run
 c) The segment median in its place, with a footnote
 d) Nothing, since one amount cannot move a crore
 
-### Q4
+### Q4 (Fix the logic)
 
-After conversion, the rows you accepted plus the rows you logged must equal what?
+A colleague's pass reads as below, and its Q1 lands Rs 1,790 short of the books. Which change fixes
+the logic?
 
-a) The distinct order ids in the file
-b) The rows in Finance's books for the quarter
-c) Every row the file holds
-d) The rows the dashboard used for its figure
+```python
+rows = read_orders()
+kept = keep_first_copy_per_order_id(rows)
+clean = [r for r in kept if convert(r["amount"])[0] is not None]
+```
+
+a) Round Q1 to the crore before it goes in the note
+b) Add a Rs 1,790 adjustment line so the rupees tie
+c) Prefer the copy whose amount converts inside the dedupe
+d) Turn every failed amount into zero before the dedupe
 
 ## Part 3. The identity rule
 
@@ -81,14 +88,15 @@ d) That both rows were set aside until the ERP team replies
 
 ## Part 4. Two decisions
 
-### Q7
+### Q7 (Design)
 
-One order has no status. Revenue is booked value. What happens to it?
+One Q2 order has no status. Sized on the clean file, which option keeps Q2 revenue at
+Rs 1,87,00,000 and the delivered share where the data supports it?
 
-a) It is dropped, since its fate is unknown
-b) It is defaulted to delivered, the common case
-c) It moves to the rejects log with the unreadable amount
-d) It is kept and flagged, out of every status count
+a) Drop it: Q2 falls by the order, 57 of 85 delivered
+b) Default it to delivered: 58 of 86 delivered
+c) Impute it from the customer's last order: 58 of 86
+d) Keep and flag it: 57 of 86 delivered
 
 ### Q8
 
@@ -101,14 +109,14 @@ d) Whether removing it makes the quarters look alike
 
 ## Part 5. Reconcile, bridge, recompute
 
-### Q9
+### Q9 (Match the question to the method)
 
-Which pair of checks goes at the top of the note?
+Anand asks, "Which Q1 figure is right, and how do you know?" Which method answers him?
 
-a) Rows in equal kept plus set aside; Q1 equals the books
-b) Q1 rounds to 1.9 crore, and the rows kept equal the distinct ids
-c) The rejects log is empty, and Q2 is unchanged by cleaning
-d) The dashboard's figure is explained, and the JSON feed agrees
+a) A bridge to the books, one move per cause
+b) The average of the two figures, both in the note
+c) A rebuild of Q1 from the JSON feed alone
+d) A fresh profile of the export, field by field
 
 ### Q10
 

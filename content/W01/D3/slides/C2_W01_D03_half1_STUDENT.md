@@ -47,7 +47,7 @@ something, and the job is to find what.
 | Who | Their question | What answers it |
 |---|---|---|
 | Anand | Which Q1 figure is right, and the proof | A bridge from 2.1 to 1.9, move by move |
-| His analyst | Can every row you removed be followed | The logs and two control totals |
+| His analyst | Can every row you removed be followed | The logs, and control totals: rows and rupees counted at both ends |
 | Marketing | Does Tuesday's finding survive | Tuesday recomputed on the clean file |
 | An auditor | Why did you drop any row | Rows that tie, with a reason per row |
 
@@ -160,7 +160,7 @@ LIVE. Thirty minutes. Notebook C2_W01_D03_01_profile is the demonstration.
 *Anand's metric is Q1 revenue to the rupee, and every later number stands on this one.*
 
 ```stats
-value: Q1 revenue | label: the metric | note: booked value, every status
+value: Q1 revenue | label: the metric | note: booked value: every order at its price, whatever its status
 value: Anand | label: who asks | note: finance controller
 value: a month | label: a wrong number costs | note: Marketing waits, Finance distrusts
 ```
@@ -176,15 +176,15 @@ finds it and discounts every later number the team sends.
 ---
 
 ## S8. Target Canada trusted data nobody had profiled
-*133 stores opened in 2013 and all closed in January 2015.*
+*It opened in 2013, and in January 2015 announced it would close all 133 stores.*
 
 ```stats
-value: 133 | label: stores closed | note: January 2015, CBC News
+value: 133 | label: stores to close | note: announced January 2015, CBC News
 value: ~$1 bn | label: first-year loss | note: CBC News
 value: ~30% | label: product data accurate | note: Salsify, citing Canadian Business
 ```
 
-**What breaks.** Data typed into a new system under deadline was used before anyone counted what was complete and correct. Kalpa's ERP export was stitched during a migration too.
+**What breaks.** Data loaded in a hurry during a system change is the kind that needs counting before anyone trusts it. Kalpa's ERP export was stitched during a migration.
 
 ```notes
 LIVE, 2 minutes. Sources checked 30 Sep 2026: CBC News, 15 January 2015; Salsify's summary of Joe
@@ -201,14 +201,15 @@ the US. Say "about" and name the source aloud; the 30 percent is a secondary sum
 |---|---|---|---|
 | a) Total and compare | 201 amounts | under a second | stops on an unreadable amount |
 | b) Scroll it | 2,010 cells by eye | about 17 minutes | misses repeats far apart |
-| c) Sample 20 rows | 20 rows | about 10 minutes | 80% chance to meet a repeat |
+| c) Sample 20 rows | 20 rows | about 10 minutes | 13% chance to see both copies of a pair |
 | d) Profile every field | 2,010 values by code | under a second | every count that does not fit |
 
-**Kavya's review.** d, then sample only where the profile points. What would switch it: a file with no field that names an order.
+**The call.** d, then sample only where the profile points. What would switch it: a file with no field that names an order.
 
 ```notes
 LIVE, 5 minutes. The minutes for b and c are an illustrative half-second a cell and half a minute a
-row. The 80 percent is exact: 1 minus C(186,20)/C(201,20), since 15 of 201 rows are repeats. The
+row. The 13 percent is exact by inclusion and exclusion over the 15 pairs: a repeat is seen only
+when both copies are drawn, since one copy alone ties to the books like any order. The
 chance of the sample meeting the one unreadable amount is 10 percent.
 ```
 
@@ -345,7 +346,7 @@ value: 119 | label: JSON feed records | note: complete, then the file is cut
 **When to switch.** The profile for a first look; the Counter when one field matters, since it keeps how often each id appears. The JSON feed is a witness to compare against, never a replacement.
 
 ```notes
-LIVE, 3 minutes. The JSONDecodeError is met in an empty cell: two minutes, open the file at the
+LIVE, 2 minutes. The JSONDecodeError is met in an empty cell: two minutes, open the file at the
 line and column it names. A CSV writes a missing value as an empty string and JSON leaves the key
 out; profile() uses .get(field, "") so both count the same.
 ```
@@ -383,15 +384,14 @@ LIVE. Thirty minutes. Notebook C2_W01_D03_02_duplicates is the demonstration.
 ## S18. The need: 186 orders on 201 rows
 *If the migration exported orders twice, Q1 revenue and every per-customer rate are inflated.*
 
-```mermaid
-xychart-beta
-    title "Rows beyond one per order, by quarter"
-    x-axis ["Q1", "Q2"]
-    y-axis "rows" 0 --> 16
-    bar [14, 1]
+```stats
+value: 114 for 100 | label: Q1 rows for orders | note: the quarter the migration touched
+value: 87 for 86 | label: Q2 rows for orders | note: one extra row
 ```
 
 **The client asks.** "Which rows did the export count twice, and how do you know they are copies?"
+
+**What breaks.** Every copy left in adds its rupees to Q1 and an extra order to a Retail-Plus rate; every real order removed takes rupees out of Finance's books.
 
 ```notes
 LIVE, 3 minutes. Q1 holds 114 rows for 100 orders, Q2 87 for 86. The extra rows sit in the quarter
@@ -427,35 +427,39 @@ charge, the customer's side of the same mistake Kalpa's export makes in its reve
 | a) Whole record | 0 | Rs 1,87,03,710 | 15 | Rs 0 |
 | b) Record less line | 13 | Rs 1,87,03,710 | 2 | Rs 0 |
 | c) order_id | 15 | Rs 1,87,00,000 | 0 | Rs 0 |
-| d) Customer and amount | 15 | Rs 1,69,29,000 | 1 | Rs 17,71,000 |
+| d) Fuzzy: customer, amount, 60 days | 15 | Rs 1,69,29,000 | 1 | Rs 17,71,000 |
 
-**Kavya's review.** c, because the ERP issues one id per order. What would switch it: two systems issuing their own ids, and then the key is the system plus the id.
+**The call.** c, because the ERP issues one id per order. What would switch it: two systems issuing their own ids, and then the key is the system plus the id.
 
 ```notes
-LIVE, 5 minutes. The fuzzy key costs 20,100 pair comparisons here against 201 lookups for a key,
-and about 2 lakh crore pairs on a file of 2 crore rows. Point at d: same count as c, different rows.
+LIVE, 5 minutes. The fuzzy match, same customer and amount dated within 60 days, has no key to group on, so it costs 20,100 pair comparisons here against 201 lookups for a key,
+and about 200 lakh crore pairs on a file of 2 crore rows. Point at d: same count as c, different rows.
 ```
 
 ---
 
-## S21. Question: the dedupe reports zero. Believe it?
-*Chapter 1 taught the rejects log to carry each row's file line.*
+## S21. The plausible wrong answer: zero duplicates
+*Chapter 1 taught the rejects log to carry each row's file line, and the default dedupe runs.*
 
 ```python
 kept = whole_record_dedupe(raw)   # every field compared
 len(raw) - len(kept)              # 0
 ```
 
-**Question.** What do you do with a dedupe that finds zero, as a letter? a) report no duplicates; b) count distinct ids against rows first; c) rerun it; d) sort the file and look.
+```stats
+value: 0 | label: duplicates found | note: the whole-record dedupe
+value: Rs 2,09,98,210 | label: Q1 | note: unchanged, the dashboard looks right
+```
 
 ```notes
-LIVE, 2 minutes. Letters in chat. Most say a, since the function ran without error.
+LIVE, 3 minutes. Ask what they would do with a dedupe that finds zero; most would report it, since
+the function ran without error.
 ```
 
 ---
 
-## S22. Answer: 201 rows and 186 ids cannot both be true
-*The plausible wrong number is zero duplicates and Q1 unchanged at Rs 2,09,98,210.*
+## S22. Why it is wrong: 201 rows, 186 ids
+*Both cannot be true of a file with no repeats.*
 
 ```mermaid
 flowchart LR
@@ -466,7 +470,7 @@ flowchart LR
     class Z,N bad
 ```
 
-**What breaks.** The file line is where a row sat, never what the order is. Leave it in the key and no two rows can match. The answer is b.
+**The check.** Count distinct ids against rows first. The file line is where a row sat, never what the order is; leave it in the key and no two rows can match.
 
 ```notes
 LIVE, 4 minutes. Show the five invented records in notebook 02: the whole record with the line
@@ -485,7 +489,7 @@ value: 15 | label: orders twice | note: one row too many each
 value: 14 + 1 | label: by quarter | note: Q1 and Q2
 ```
 
-**What changed.** A count of nothing became a list of 15 orders, each with two lines. The room lists them in the empty cell and reads the second line numbers.
+**What changed.** A count of nothing became a list of 15 orders, each on two lines, and the second lines sit together at the end of the file.
 
 ```notes
 LIVE, 4 minutes. Do not read the ids aloud. Ask what the second line numbers have in common:
@@ -495,18 +499,18 @@ they sit together at the end of the file, where the second extract was appended.
 ---
 
 ## S24. The harder variant: the same count, other rows
-*The fuzzy key flags 15 and the order id flags 15; they share 14.*
+*The fuzzy match flags 15 and the order id flags 15; they share 14.*
 
 ```mermaid
 flowchart LR
     O["<b>order_id key</b><br/>15 rows"] --> S["<b>14 shared</b>"]
-    F["<b>customer and amount</b><br/>15 rows"] --> S
+    F["<b>fuzzy match</b><br/>15 rows"] --> S
     F --> X["<b>1 real order</b><br/>Rs 17,71,000"]
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     class X bad
 ```
 
-**What breaks.** A count that matches is not a match. A Business customer spent the same Rs 17,71,000 again next quarter, and the fuzzy key calls it a copy.
+**What breaks.** A count that matches is not a match. A Business customer spent the same Rs 17,71,000 again within 60 days, and the fuzzy match calls it a copy.
 
 ```notes
 LIVE, 4 minutes. The decision it misleads: a reviewer comparing counts signs off a pass that
@@ -573,6 +577,8 @@ flowchart LR
 
 **The client asks.** "When two copies disagree, which one did you keep, and why that one?"
 
+**What breaks.** Keeping the wrong copy of one pair costs Rs 1,790 against the books, and the analyst finds it on her first tie-out.
+
 ```notes
 LIVE, 3 minutes. Anand's analyst is the reader. Every choice is visible to her in the log.
 ```
@@ -588,7 +594,7 @@ value: rejected | label: a second copy | note: GSTN e-invoice FAQ
 value: Rs 5 crore | label: turnover threshold | note: since 1 August 2023
 ```
 
-**What breaks.** Without a written rule for what makes two records one, every team chooses its own survivor. Kalpa's Business segment sells to companies and meets this rule on every invoice.
+**What breaks.** GSTIN is a business's GST registration number. Without a written rule for what makes two records one, every team chooses its own survivor. Kalpa's Business segment sells to companies and meets this rule on every invoice.
 
 ```notes
 LIVE, 2 minutes. Sources checked 30 Sep 2026: GSTN e-invoice FAQ version 1.4, question 65, and
@@ -608,7 +614,7 @@ number, and a repeat is refused at the door.
 | c) The copy that validates | Rs 1,90,00,000 | Rs 0 | 0 |
 | d) Escalate all 15 | open | open | 0, after days of waiting |
 
-**Kavya's review.** c, and escalate only the pair whose valid copies disagree. Last lands here by file order, which is luck. What would switch it: the ERP team saying the second extract was a corrected re-run.
+**The call.** c, and escalate only the pair whose valid copies disagree. Last lands here by file order, which is luck. What would switch it: the ERP team saying the second extract was a corrected re-run.
 
 ```notes
 LIVE, 5 minutes. Thirteen of the fifteen escalations would carry no question at all.
@@ -709,19 +715,16 @@ Retail-Plus, the segment Tuesday's finding is about.
 ## S35. Rows against rupees: 98 percent in two rows
 *Of Rs 19,98,210 set aside in Q1, two Business rows carry Rs 19,67,560.*
 
-```mermaid
-xychart-beta
-    title "Q1 set aside: rows and rupees by segment"
-    x-axis ["Business", "Retail-Plus", "Retail-Core"]
-    y-axis "share of the total, percent" 0 --> 100
-    bar [14, 79, 7]
-    line [98.5, 1.4, 0.1]
-```
+| Segment | Rows set aside | Share of rows | Rupees set aside | Share of rupees |
+|---|---|---|---|---|
+| Business | 2 | 14% | Rs 19,67,560 | 98.5% |
+| Retail-Plus | 11 | 79% | Rs 27,760 | 1.4% |
+| Retail-Core | 1 | 7% | Rs 2,890 | 0.1% |
 
-**What changed.** Anand's gap is two corporate orders counted twice; Tuesday's rate was measured on eleven extra Retail-Plus rows. Bars are rows, the line is rupees.
+**What changed.** Anand's gap is two corporate orders counted twice; Tuesday's rate was measured on eleven extra Retail-Plus rows.
 
 ```notes
-LIVE, 3 minutes. Rows: 2, 11 and 1 of 14. Rupees: Rs 19,67,560, Rs 27,760 and Rs 2,890. Two
+LIVE, 2 minutes. Rows: 2, 11 and 1 of 14. Rupees: Rs 19,67,560, Rs 27,760 and Rs 2,890. Two
 conversations follow: Anand's gap, and Tuesday's finding, which chapter 5 recomputes.
 ```
 
@@ -738,7 +741,7 @@ len(by_id)     # 186, the same orders at the same amounts
 **When to switch.** The dict is the fast check that the totals are right. It keeps the last copy silently and logs nothing, so it is never the pass.
 
 ```notes
-LIVE, 3 minutes. Notebook 03 asserts the same 186 ids and amounts by both routes.
+LIVE, 2 minutes. Notebook 03 asserts the same 186 ids and amounts by both routes.
 ```
 
 ---
@@ -779,6 +782,8 @@ icon: circle-dashed | eyebrow: A missing value | title: 55 orders, no discount |
 icon: triangle-alert | eyebrow: A malformed value | title: An amount that will not convert | body: The next export will carry one with no twin. | tone: dark
 ```
 
+**What breaks.** A default invents a delivery Operations never recorded; a zero invents an order sold for nothing.
+
 ```notes
 LIVE, 3 minutes. Each choice keeps revenue whole, invents a fact or deletes one.
 ```
@@ -813,7 +818,7 @@ of items" were not verified and stay out.
 | c) Impute from last order | Rs 1,87,00,000 | 58 of 86 | 67.4% |
 | d) Keep and flag | Rs 1,87,00,000 | 57 of 86 | 66.3% |
 
-**Kavya's review.** Status: d. Amount: reject to the log, and repair only from an independent copy. What would switch them: a delivery system to ask, or a second export cut from the same extract.
+**The call.** Status: d. Amount: reject to the log, and repair only from an independent copy. What would switch them: a delivery system to ask, or a second export cut from the same extract.
 
 ```notes
 LIVE, 5 minutes. The amount options: coerce to zero misses the books by Rs 1,790 and leaves a Rs 0
@@ -832,7 +837,7 @@ flowchart LR
     D --> U["<b>kept unknown?</b>"]
 ```
 
-**Question.** The average discount with blanks read as zero, against the average over orders that carry one, as a letter? a) the same; b) a few rupees apart; c) about a quarter lower with zeros; d) higher with zeros.
+**Question.** The average discount with blanks read as zero, against the average over orders that carry one, as a letter? a) the same; b) a few rupees apart; c) about 30 percent lower with zeros; d) higher with zeros.
 
 ```notes
 LIVE, 2 minutes. This is Tuesday's trap coming back in a new place.
@@ -852,7 +857,7 @@ value: 55 | label: flagged | note: the count beside every figure
 **What changed.** The answer is c. The field stays blank, the count goes beside the figure, and revenue is untouched.
 
 ```notes
-LIVE, 2 minutes. Then the day's second spine trap.
+LIVE, 3 minutes. Then the day's second spine trap.
 ```
 
 ---
@@ -933,7 +938,7 @@ order by Rs 1,386. A word is never an amount.
 **When to switch.** The profile finds defects; the log shows them. Profile the clean file at the end of every pass.
 
 ```notes
-LIVE, 3 minutes. A defect that slipped past the log would show as a count that disagrees.
+LIVE, 4 minutes. A defect that slipped past the log would show as a count that disagrees.
 ```
 
 ---
@@ -983,21 +988,21 @@ LIVE, 3 minutes. A rescue campaign for Retail-Plus is waiting on the second numb
 
 ---
 
-## S49. Tesco bridged its gap from £250m to £263m
+## S49. Tesco bridged its gap from GBP 250m to 263m
 *In 2014 a retailer's own figure was wrong, and the investigation split it by period.*
 
 ```stats
-value: £250m | label: first estimate | note: 22 September 2014
-value: £263m | label: after investigation | note: 23 October 2014
-value: £118m | label: first half alone | note: the rest in earlier years
+value: GBP 250m | label: first estimate | note: 22 September 2014
+value: GBP 263m | label: after investigation | note: 23 October 2014
+value: GBP 118m | label: first half alone | note: the rest in earlier years
 ```
 
 **What breaks.** Supplier income booked early made the reported figure wrong. The fix was a bridge: how much, from which period, for what cause.
 
 ```notes
 LIVE, 2 minutes. Sources checked 30 Sep 2026: BBC News, 22 September 2014; Tesco interim results
-statement, 23 October 2014, which splits £263m into £118m for the first half, about £70m for
-2013/14 and about £75m before.
+statement, 23 October 2014, which splits GBP 263m into GBP 118m for the first half, about GBP 70m
+for 2013/14 and about GBP 75m before.
 ```
 
 ---
@@ -1012,7 +1017,7 @@ statement, 23 October 2014, which splits £263m into £118m for the first half, 
 | c) A bridge by cause | 15 logged rows | to the rupee | yes |
 | d) Rebuild from the JSON feed | 119 records | -Rs 1,790 | no |
 
-**Kavya's review.** c. What would switch it: a bridge that does not close, and then the gap itself is the finding, perhaps in Finance's books.
+**The call.** c. What would switch it: a bridge that does not close, and then the gap itself is the finding, perhaps in Finance's books.
 
 ```notes
 LIVE, 5 minutes. The feed carries the same unreadable amount and holds only 19 of Q2's 86 orders.
@@ -1032,7 +1037,7 @@ flowchart LR
     class B bet
 ```
 
-**What changed.** The unreadable amount needs no move: it was never in the exported total, and its twin stayed. The notebook draws it with kit.bridge, the axis raised to Rs 1.88 crore.
+**What changed.** The unreadable amount needs no move: it was never in the exported total, and its twin stayed.
 
 ```notes
 LIVE, 4 minutes. Predict first: how many moves? Two. Draw the bridge on the board beside the
@@ -1090,7 +1095,7 @@ fall that never happened, and Finance rejects the reconciliation because its boo
 
 ---
 
-## S55. Why it is wrong: large is not wrong
+## S55. Why it is wrong: size proves nothing
 *A Business order in lakhs is the business doing what it does.*
 
 ```mermaid
@@ -1105,7 +1110,7 @@ flowchart LR
     class K bet
 ```
 
-**The check.** Ask whether the record is wrong, never whether it is big. A fence over the whole quarter flags all 17 Business orders, since it mixes a Rs 2,000 basket with a corporate order.
+**The check.** Ask whether the record is wrong, never whether it is big. A fence is a cut-off above which values get called outliers; one at three times the median Q2 order flags all 17 Business orders, since the quarter mixes a Rs 2,000 basket with a corporate order.
 
 ```notes
 LIVE, 3 minutes. The fix: keep it, flag it, show Q2 both ways. Q2 back to Rs 1,87,00,000, the drop
@@ -1114,10 +1119,10 @@ back to 1.6 percent.
 
 ---
 
-## S56. A second route, and the note to Finance
-*Bottom up, the kept orders sum to the same Q1 the bridge reached top down.*
+## S56. The fix, the second route, the note
+*Keep and flag it: Q2 back to Rs 1,87,00,000 and the drop back to 1.6 percent. Bottom up, the kept orders sum to the bridge's Q1.*
 
-> "Anand, your 1.9 crore is right. The ERP export counted fifteen rows twice, fourteen of them in Q1; copies of two corporate orders carry Rs 19,67,560 of the Rs 19,98,210 difference. Rows and rupees reconcile to your books. On clean data the drop is 1.6 percent, not 11, and the Retail-Plus fall is 35 percent, not 49. It survives, smaller." The GCC data and AI team
+> "Anand, your 1.9 crore is right. The ERP export counted fifteen orders twice, fourteen of them in Q1; copies of two corporate orders carry Rs 19,67,560 of the Rs 19,98,210 difference. Rows and rupees reconcile to your books. On clean data the drop is 1.6 percent against the 11 we reported, and the Retail-Plus fall is 35 percent against 49. It survives, smaller." The GCC data and AI team
 
 ```notes
 LIVE, 3 minutes. Bottom up is the check anyone can run; top down is the proof, since only the

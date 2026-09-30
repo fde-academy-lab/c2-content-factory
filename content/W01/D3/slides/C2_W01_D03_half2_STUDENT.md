@@ -27,7 +27,7 @@ the numeral on screen reads 01 because it opens this deck.
 *The analyst checks tonight; an auditor may ask next quarter.*
 
 ```stats
-value: rows and rupees | label: the metric | note: control totals, export to books
+value: rows and rupees | label: the metric | note: control totals: counts and sums at both ends
 value: the analyst | label: who asks | note: for Anand
 value: a week | label: a log she cannot follow | note: of questions, and her trust
 ```
@@ -42,11 +42,11 @@ everything else it sends.
 ---
 
 ## S2. Patisserie Valerie's auditor missed the red flags
-*A UK cafe chain's accounting hole reached £94m; the auditor was fined.*
+*A UK cafe chain's accounting hole reached GBP 94m; the auditor was fined.*
 
 ```stats
-value: £94m | label: the hole | note: administrators, March 2019
-value: £4m | label: FRC fine | note: reduced to £2.34m
+value: GBP 94m | label: the hole | note: administrators, March 2019
+value: GBP 4m | label: FRC fine | note: reduced to GBP 2.34m
 value: 3 years | label: of audits | note: sanctioned in September 2021
 ```
 
@@ -69,7 +69,7 @@ criminal case against individuals is unresolved, so name no person and say nobod
 | c) Logs and control totals | 23 | yes | yes | yes |
 | d) A full diff | 201 | yes | no | no |
 
-**Kavya's review.** c. What would switch it: an external auditor who must re-derive every row, and then d goes beside c.
+**The call.** c. What would switch it: an external auditor who must re-derive every row, and then d goes beside c.
 
 ```notes
 LIVE, 5 minutes. 23 lines: 15 set-aside rows, 1 flag, 5 decisions, 2 control totals, and an empty
@@ -93,7 +93,7 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 3 minutes. The decisions log has five lines; only the identity rule moves Q1 rupees, all
+LIVE, 2 minutes. The decisions log has five lines; only the identity rule moves Q1 rupees, all
 Rs 19,98,210, and every other decision still gets its line.
 ```
 
@@ -202,7 +202,7 @@ flowchart LR
 **When to switch.** Control totals are the quick test; the replay is for an auditor who trusts nothing, and it runs before any log leaves the team.
 
 ```notes
-LIVE, 3 minutes. Notebook 06 asserts the replay equals the clean file.
+LIVE, 2 minutes. Notebook 06 asserts the replay equals the clean file.
 ```
 
 ---
@@ -220,7 +220,7 @@ icon: circle-help | eyebrow: The escalated case | title: Next | body: The whole 
 ```
 
 ```notes
-LIVE, 2 minutes. One breath: set aside, not dropped; the rule, the twin, the rupees by segment,
+LIVE, 2 minutes. One breath: set aside with a reason, never dropped; the rule, the twin, the rupees by segment,
 both totals tie and the log replays.
 ```
 
@@ -257,7 +257,7 @@ only after rounding.
 
 ---
 
-## S13. The checks you post with your letters
+## D13. The checks you post with your letters
 *Every check in the notebook passes before the letters go into chat.*
 
 ```stats
@@ -354,7 +354,7 @@ LIVE, 3 minutes. "Dropped" is the word to correct.
 ## S17. Question: which statement does the auditor sign?
 *Four statements, one supported by the evidence.*
 
-**Question.** As a letter? a) 14 Q1 rows were deleted as errors; b) the dashboard was right and the books are short; c) 14 Q1 rows are second copies set aside by the order_id rule, and rows and rupees reconcile; d) the 14 rows were outliers.
+**Question.** As a letter? a) 14 Q1 rows were deleted as errors; b) the dashboard was right and the books are short; c) 14 Q1 rows are copies of kept orders, set aside by the order_id rule, and rows and rupees reconcile; d) the 14 rows were outliers.
 
 ```mermaid
 flowchart LR
@@ -443,7 +443,7 @@ LIVE. Fifteen minutes: the Kahoot, then this chapter.
 ## S21. The sentence to Anand
 *Which figure is right, the proof, and what changed downstream.*
 
-> "Your 1.9 crore is right: the export counted fifteen rows twice, and the bridge from 2.1 closes to your books in rows and in rupees. On clean data the drop is 1.6 percent and the Retail-Plus fall is 35 percent, smaller than we reported." The GCC data and AI team
+> "Your 1.9 crore is right: the export counted fifteen orders twice, and the bridge from 2.1 closes to your books in rows and in rupees. On clean data the drop is 1.6 percent and the Retail-Plus fall is 35 percent, smaller than we reported." The GCC data and AI team
 
 ```mermaid
 flowchart LR

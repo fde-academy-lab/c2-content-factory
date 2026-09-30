@@ -30,7 +30,7 @@ d) No, since the rows have not been counted yet
 
 ### Q3 (Design)
 
-Put the pass in order for Anand's analyst: 1 apply the identity rule, 2 reconcile rupees to the books, 3 convert amounts and log failures, 4 reconcile rows. Which order holds?
+Put the pass in order for Anand's analyst: 1 apply the identity rule, 2 reconcile rupees to the books, 3 test which amounts convert and log the failures, 4 reconcile rows. Which order holds?
 
 a) 1, 3, 4, 2
 b) 3, 1, 4, 2

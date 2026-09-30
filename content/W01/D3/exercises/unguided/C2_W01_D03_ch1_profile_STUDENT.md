@@ -53,14 +53,14 @@ b) channel, since three values cannot describe 180 orders
 c) amount, since 164 distinct values means some repeat
 d) order_id, since 180 rows hold 171 orders
 
-### Q4
+### Q4 (Design)
 
-`json.load` on the app's feed stops with `JSONDecodeError: Unterminated string starting at: line 812 column 9`. What do you do first?
+Anand asks, "How many orders did the ERP send for the two quarters?" Which count from the profile answers him?
 
-a) Wrap the load in try and skip the whole feed
-b) Open the file at line 812 and read what is there
-c) Ask the ERP team to resend the feed as a CSV file
-d) Re-run the load, since the error is often transient
+a) Rows in the file
+b) Distinct order ids
+c) Amounts that convert
+d) Rows with a status present
 
 ### Q5 (Design)
 
