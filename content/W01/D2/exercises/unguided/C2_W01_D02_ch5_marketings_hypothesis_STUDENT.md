@@ -35,40 +35,40 @@ flowchart LR
 
 a) Compare the counts again with a different definition of customer
 b) Ask Marketing's CRM for new sign-ups by month
-c) The id overlap: both, only Q1, only Q2
+c) The overlap of ids, counting both quarters, only Q1 and only Q2
 d) Average the orders per customer across segments
 
 ### Q2. (design) What would make you distrust the id overlap?
 
-a) One person holding a store id and an app id
-b) A quarter holding many more orders than the other quarter does
+a) One person holding two ids, one from the store and one from the app
+b) A quarter holding many more orders than the other quarter in the file
 c) A segment with only two customers
 d) An export with 200 rows instead of 2,000
 
 ### Q3. The overlap comes out 69 in both quarters, 0 only in Q1, 0 only in Q2. What goes back to Marketing?
 
 a) Churn is hidden in the segments, so split them first and run the overlap per segment
-b) None lost, none new: acquisition has nothing to replace
+b) Nobody was lost and nobody was new, so acquisition has nothing to replace
 c) The flat count proves customers are loyal, so no action is needed
 d) The overlap is inconclusive until Thursday's test
 
-### Q4. Last quarter's script prints `summary: {'Retail-Core': -5.3, 'Business': -15.0}`. Which check exposes the problem fastest?
+### Q4. Last quarter's script prints `summary: {'Retail-Core': -5.3, 'Business': -15.0}` because `pct_change` returns a value only when the change is 30 percent or less. Which fix to the logic keeps every segment in Meera's summary?
 
-a) Recompute Business's change by hand
-b) Check that every change in the summary is negative, as a fall should be
-c) Sort the summary by the size of the change
-d) Count groups in and out: 4 in, 2 back
+a) Raise the threshold to 50 percent, so that fewer of the changes print
+b) Print the change as well as returning it, so both appear on the screen
+c) Filter with `if ch < 0`, so that a None is compared with zero as well
+d) Return the change every time, and put the flag in a column of its own
 
 ### Q5. Marketing says Retail-Plus is Rs 65,250 out of a Rs 23 lakh fall, so it does not matter. Which reply holds?
 
 a) They are right: 3 percent of the fall is noise and can be left out of the note
-b) Retail-Plus is 93% of the consumer fall, 25 of 28 lost orders
+b) Retail-Plus is 93 percent of the consumer fall and 25 of the 28 lost orders
 c) Business should be dropped from the file as an outlier
-d) Rupees never matter; only orders count
+d) Rupees never matter, since only orders count
 
 ### Q6. (design) The second route found the consumer fall by subtracting Business from the company fall. When is the bridge by segment the better route?
 
-a) When the question is who moved
-b) When the numbers are large
+a) When the question is which consumer segment moved
+b) When the numbers involved run to crores of rupees
 c) When Business is the largest segment in rupees
-d) When the quarters are of unequal length
+d) When the two quarters being compared are of unequal length

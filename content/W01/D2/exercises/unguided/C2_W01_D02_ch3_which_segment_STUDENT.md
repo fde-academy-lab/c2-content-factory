@@ -45,7 +45,7 @@ b) A definition that changes once a quarter
 c) A stakeholder who asks for one segment at a time
 d) A file of 200 orders with four segments
 
-### Q3. `result = opc_printed(rows)` prints 1.65, and `result` holds `None`. What went wrong?
+### Q3. Anand's summary table shows a blank for Q1 orders per customer, though the helper printed 1.65 on screen. What went wrong?
 
 a) The rows list was empty, so the division failed silently
 b) The function computed the wrong rate for that quarter
@@ -55,20 +55,20 @@ d) Python rounds a float to None when it prints it
 ### Q4. Averaged over the four segments, orders per customer reads 1.94 then 1.82, a fall of 6.0 percent. A colleague says frequency is not the branch after all. What is the check?
 
 a) Recompute the averages to three decimal places
-b) The roll-up must reproduce 1.65 and 1.25
+b) The roll-up must reproduce the company figures, 1.65 and 1.25
 c) Drop the smallest segment and average the other three segments again
 d) Compare the medians of the four segments instead
 
 ### Q5. Business revenue fell Rs 22,29,720. `describe` shows the median order barely moved while the range nearly doubled. What do you say about the typical Business order?
 
-a) The typical order held; one large order stretched the range
-b) Every Business order got smaller, which is why revenue fell
+a) The typical order held, while one large order stretched the range
+b) Every Business order got smaller, which is why Business revenue fell
 c) The typical order doubled, so Business customers spend more
 d) Nothing can be said until the mean is computed
 
-### Q6. (design) The second route grouped all 200 orders by (quarter, segment) in one pass and compared each group with `tree_for`. Why does the check print agreement and no segment's numbers?
+### Q6. (design) The second route, one pass grouped by (quarter, segment), agreed with `tree_for` on all eight groups. When would you make it the main route?
 
-a) Because the second route is slower and its output is long
-b) Because the numbers of one segment are confidential to Finance
-c) Because printing tables inside a check breaks the helper
-d) So the room still finds the moving segment in its own run
+a) When a stakeholder asks for one segment at a time
+b) When the definition of a customer is about to change next quarter
+c) When the file holds 200 orders across four segments
+d) When every group is needed at once from millions of rows

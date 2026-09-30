@@ -48,21 +48,26 @@ which is what the head of Retail-Plus needs from us.""",
 Berkeley's graduate admissions for autumn 1973 (Bickel, Hammel and O'Connell, Science, volume 187,
 1975, checked through Crossref 30 Sep 2026). Across the whole university, about 44 percent of the 8,442
 men who applied were admitted against about 35 percent of the 4,321 women, as a 2025 re-analysis
-summarises the paper's table, yet department by department the rates showed no bias against women:
-women had applied mostly to the departments that admitted few applicants of either sex. A blended
-rate moved because the mix moved, which is what can happen to Kalpa's revenue per order.""",
+summarises the paper's table, yet department by department the admission rates did not differ significantly between the sexes: women had applied mostly to the departments that were hard to get into. A blended
+rate moved because the mix moved, which is what can happen to Kalpa's revenue per order. A retailer
+meets the same thing in its order value: Swiggy reported Instamart's average order value up 14 percent
+in a quarter to Rs 697 in the quarter to September 2025, and put it down to non-grocery categories and
+large packs taking a larger share of orders, while net average order value after discounts stood at
+Rs 485 (Swiggy, Q2 FY2026 shareholder letter, checked 30 Sep 2026).""",
     5: """**Who else faces this.** Every membership business runs Marketing's argument against the
 frequency argument. Harvard Business Review summarised the studies behind it: depending on the study
 and the industry, acquiring a new customer costs 5 to 25 times more than retaining an existing one,
 and Bain's Frederick Reichheld found that a 5 percent rise in retention lifts profits by 25 to 95
 percent (Amy Gallo, HBR, 29 October 2014, checked 30 Sep 2026). Those are estimates across
-industries, never Kalpa's figures, so the reply asks Finance for Kalpa's own acquisition cost.""",
-    6: """**Who else faces this.** Sonos shipped a redesigned app in May 2024 that its customers reported
-as broken. Its chief executive said the problems customers and partners met with the new app had
+industries, never Kalpa's figures, so the reply asks Finance for Kalpa's own acquisition cost. Swiggy
+shows why the two branches are reported apart: in the quarter to September 2025 its monthly
+transacting users rose 34.0 percent in a year to 22.9 million while orders per user a month fell from
+4.53 to 4.10 (Swiggy, Q2 FY2026 shareholder letter, checked 30 Sep 2026). A count that grows can hide
+customers buying less often, which is the reverse of Kalpa's quarter and the same lesson.""",
+    6: """**Who else faces this.** Sonos rolled out a redesigned app in 2024. Its chief executive said the problems customers and partners met with the new app had
 required the company to reduce its fiscal 2024 guidance, and its annual report set aside short-term
 costs of up to $30 million to fix the app (Sonos, third quarter fiscal 2024 results and fiscal 2024
-annual report, checked 30 Sep 2026). A loyal customer base, an app that broke, and a company that
-tied the two together only after it had the evidence: the head of Retail-Plus is asking whether his
+annual report, checked 30 Sep 2026). A loyal customer base, an app whose rollout went wrong, and a company that put it into its guidance: the head of Retail-Plus is asking whether his
 tier is the same story.""",
 }
 
@@ -1041,7 +1046,7 @@ kit.check("Retail-Core orders per customer fell 5.3 percent", round(core_change,
 orders per customer moved from 1.12 to 1.06, down 5.3 percent, and the typical order fell from
 Rs 2,325 to Rs 2,080. Retail-Core slipped a little, far short of the company's 24.6 percent.
 
-## 3. Business: the median barely moves while the range nearly doubles
+## 3. Business: the median barely moves while the range grows by nearly three quarters
 
 **Predict before you run.** Business revenue fell from Rs 2,07,71,180 to Rs 1,85,41,460. What does
 `describe` show about the typical Business order? a) the median fell by about a tenth, like revenue;
@@ -1059,13 +1064,13 @@ kit.columns(["median", "smallest", "largest", "range"],
             title="Business orders in lakh of rupees: the middle holds, the top end moves")
 kit.check("Business customers held at 11", biz["Q1"]["customers"] == biz["Q2"]["customers"] == 11)
 kit.check("Business orders per customer fell 15.0 percent", round(biz_change, 1) == -15.0, f"{biz_change:.2f}")
-kit.check("the Business range nearly doubled while the median moved under 4 percent",
+kit.check("the Business range grew more than 70 percent while the median moved under 4 percent",
           biz_shape["Q2"]["range"] / biz_shape["Q1"]["range"] > 1.7
           and abs(biz_shape["Q2"]["median"] / biz_shape["Q1"]["median"] - 1) < 0.04)
 '''),
         md("""
 **What happened.** The answer is b. The median Business order moved from Rs 9,83,780 to Rs 9,52,000,
-while the largest grew from Rs 17,84,000 to Rs 29,45,460 and the range nearly doubled. One large
+while the largest grew from Rs 17,84,000 to Rs 29,45,460 and the range rose about 73 percent. One large
 order sets the range. The eleven Business customers placed 17 orders against 20, down 15.0 percent
 per customer, on three orders. Neither segment shown falls 24.6 percent, so before guessing where the
 rest sits, roll the segments back up.
@@ -1436,8 +1441,9 @@ kit.check("in both orders the mix explains more than two thirds", mix / rise > 2
 disagree about which part is larger, which here they do not (69 and 72 percent).
 
 > **Kavya's review.** "Marketing looked at a blend and saw a price signal. You opened the blend and
-> found 25 small orders missing. Say it that way to Meera: nobody paid more, the small orders
-> disappeared, and they disappeared from the tier we are about to ask about."
+> found 25 small orders missing. Say it that way to Meera: no consumer segment paid meaningfully more,
+> Business's share of orders rose from 17.5 to 19.8 percent as the small member orders left, and they
+> left from the tier we are about to ask about."
 
 ### In the interview
 
@@ -1490,12 +1496,12 @@ def chapter5():
 > The marketing lead, Kalpa Retail
 
 **What chapter 4 established, and what this adds.** The rise in revenue per order is about 69
-percent mix: 25 small Retail-Plus orders disappeared, and nobody paid more. Marketing now attacks the
+percent mix: 25 small Retail-Plus orders disappeared, and no consumer segment paid meaningfully more. Marketing now attacks the
 finding on three fronts. This chapter adds two tools: a set of customer ids per quarter, which
 answers the churn claim, and a small helper that turns two numbers into a percentage change, which
 has to be checked before anyone trusts its summary.
 
-> **Kavya's review of chapter 4.** "You told Marketing nobody paid more. Expect them to come back
+> **Kavya's review of chapter 4.** "You told Marketing the consumer segments did not pay more. Expect them to come back
 > with a better argument, and answer it with a check they can run themselves."
 """),
         code(SETUP + GROUPS + TOOLS + '''
@@ -1697,7 +1703,7 @@ kit.check("Retail-Plus is 93 percent of the consumer fall", round(plus_fall / co
         md("""
 **What happened.** The answer is c. Retail-Plus is Rs 65,250 of the Rs 70,280 consumer fall, 93
 percent, and 25 of the 28 lost orders. The rupee fall in Business rests on three orders out of
-twenty, each worth lakhs, which tomorrow's reconciliation checks before anyone builds on it. The two
+twenty, each worth lakhs, which is too few to call a trend before anyone builds on it. The two
 findings go to Meera side by side: the rupees in Business, with their caveat, and the behaviour in
 Retail-Plus, with its count.
 
@@ -1792,6 +1798,11 @@ any key, by month or by channel, and uses it to test the cause the head of Retai
 """),
         code(SETUP + GROUPS + TOOLS + '''
 from datetime import date, timedelta
+
+
+def pct_change(before, after):
+    """Chapter 5's fixed helper: the change every time, in the same type."""
+    return round(100 * (after - before) / before, 1)
 
 
 def count_by(rows, key):
@@ -2031,8 +2042,7 @@ between two closed quarters, Rs 2.10 crore to Rs 1.87 crore on the export as it 
 at 69, all of them buying in both quarters, so acquisition is not the branch that moved; orders per
 customer fell from 1.65 to 1.25. In behaviour the fall sits in Retail-Plus, where the same 22 members
 placed 26 orders against 51, and revenue per order rose mainly because those small orders
-disappeared. In rupees most of the fall is three fewer Business orders, which tomorrow's
-reconciliation checks before anyone acts. The fall began in July, before the reorder button broke,
+disappeared. In rupees most of the fall is three fewer Business orders, each worth lakhs and too few to call a trend. The fall began in July, before the reorder button broke,
 and hit every channel, so the button can explain at most about 4 orders. Two hypotheses remain: the
 button deepened the fall after 25 August, settled by the app's reorder logs by week and the release
 date; and something changed for members in July, settled by the tier's change log, renewals and

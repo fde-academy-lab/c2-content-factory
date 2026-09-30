@@ -15,7 +15,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from nb_make import SETUP, md, code, build  # noqa: E402
 
 DAY = ROOT / "content" / "W01" / "D2"
-SLOT = re.compile(r"\[\[(\d+)\|(.+?)\]\]")
+SLOT = re.compile(r"\[\[(\d+)\|(.+?)\]\](?!\])", re.S)
 
 
 class SOL:
@@ -34,7 +34,10 @@ def twin(cells, solution):
             src = SLOT.sub((lambda m: m.group(2)) if solution else (lambda m: f"__TODO{m.group(1)}__"), c.source)
             c = code(src)
         elif c.cell_type == "markdown" and not solution:
-            c = md(c.source.replace("This is the solution twin", "This is the exercise twin"))
+            c = md(re.sub(r"This is the solution twin:.*?options fail\.",
+                          "This is the exercise twin: each placeholder is a lettered choice in the comment above it. "
+                          "Run it from the top; it stops at the first placeholder you have not filled, which is intended.",
+                          c.source, flags=re.S))
         out.append(c)
     return out
 
@@ -82,9 +85,7 @@ branch that held in the morning moves.
 > is made of before anyone else names it."
 
 This is the solution twin: every placeholder is filled, every cell has run, and under each step a
-line says why the other three options fail. In the exercise twin each placeholder is a lettered choice
-in the comment above it; run from the top, and the notebook stops at the first placeholder until you
-fill it, which is intended.
+line says why the other three options fail.
 """),
         code(SETUP + 'ORDERS = kit.load_records("C2_W01_D02_orders_STUDENT.py")\nSEGMENTS = ["Retail-Core", "Retail-Plus", "Business", "Student"]\n' + TOOLS + '\nprint(len(ORDERS), "booked orders loaded")'),
         code("""
@@ -192,9 +193,9 @@ churn, which is empty. d) is the customers delivered in Q2 and not Q1, the other
 overlap.
 """)),
         md("""
-**Item 3 in your brief.** The customers branch on delivered orders is fulfilment, not acquisition:
+**Item 3 in your brief.** The customers branch on delivered orders is cancellations and returns rather than acquisition:
 the 19 customers who "disappeared" all ordered in Q2, and their orders were cancelled or returned.
-The owner of that branch is operations, and the Rs 12 crore still has nothing to replace.
+Split by reason, those orders go to the teams that own fulfilment and product, and the Rs 12 crore still has nothing to replace.
 
 ## Part 4. Four segments, rolled up with their weights
 
@@ -291,7 +292,7 @@ fall that sits in one segment across four.
 **The sentence.** "On delivered orders the story holds: revenue fell 11.3 percent between closed
 quarters, and frequency carries the most rupees, Rs 32,23,327. Four fewer customers had a delivered
 order, but all 19 who dropped out of the delivered count booked again in Q2 and saw their orders
-cancelled or returned, so that branch belongs to operations, not acquisition. Retail-Plus members
+cancelled or returned, so that branch is cancellations and returns, to be split by reason, and not acquisition. Retail-Plus members
 ordered 42.6 percent less often. The two hypotheses stand as this morning: the reorder button after
 25 August, settled by the app's logs, and a change for members in July, settled by the tier's change
 log."
@@ -301,7 +302,7 @@ log."
 **[D] You change the definition of revenue and a branch that held starts to move; what do you do?**
 "I decompose the new movement before anyone names it. Here customers with a delivered order fell from
 54 to 50, which looks like churn, but every one of the 19 who left the delivered count booked again
-and had orders cancelled or returned. So the branch is fulfilment. I show both definitions side by
+and had orders cancelled or returned. So the branch is cancellations and returns, which I would split by reason. I show both definitions side by
 side and say which owner each branch goes to." The interviewer is listening for the definition named
 and the moved branch explained.
 """)),
@@ -371,8 +372,7 @@ kit.check("the 40 percent is 5 orders becoming 7 on 2 customers", (s_orders["Q1"
 is a difference of counts, which is zero whether or not anyone is new.
 
 **The answer to Marketing.** The 40 percent is two more orders from the same two students. It adds no
-customer, so it says nothing for acquisition, and a rate on two customers moves 50 percent with one
-order either way.
+customer, so it says nothing for acquisition, and on two customers one more order moves the rate by 0.5 orders per customer, 20 percent.
 """)),
         md("""
 ## Part 2. "Retail-Plus web orders fell hardest, so it is the website"
@@ -386,10 +386,10 @@ for o in ORDERS:
     if o["channel"] == "web":
         web[(o["segment"], o["quarter"])] += 1
 # TODO 2. If the website were broken for everyone, which other segment's web orders would also have fallen hard?
-#   a) only Retail-Plus's, since members use the website most
-#   b) Student's, since students order on the web
-#   c) Retail-Core's, the largest consumer segment on the same website
-#   d) none, since a website fault shows only in the app
+#   a) "Retail-Plus"
+#   b) "Student"
+#   c) "Retail-Core"
+#   d) "none"
 also_falls = [[2|"Retail-Core"]]
 kit.columns(["Retail-Plus", "Retail-Core"], [("Q1 web orders", [web[("Retail-Plus", "Q1")], web[("Retail-Core", "Q1")]]),
                                              ("Q2 web orders", [web[("Retail-Plus", "Q2")], web[("Retail-Core", "Q2")]])],

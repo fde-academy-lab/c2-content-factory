@@ -48,7 +48,7 @@ icon: megaphone | eyebrow: Acquisition | title: The marketing lead | body: Owns 
 **Your role.** The team works for the number, and each voice gets the same one. A branch that moved hands the problem to the person who owns that lever; a branch that stayed flat takes a budget off the table.
 
 ```notes
-LIVE, 3 minutes. Name the incentive behind each voice without judging it. Marketing is paid to
+LIVE, 2 minutes. Name the incentive behind each voice without judging it. Marketing is paid to
 acquire, so it reads every fall as an acquisition problem; that is how the role is paid and says
 nothing about good faith. The head of Retail-Plus wants a verdict on his tier; he gets a number in
 chapter 3 and a test of his cause in chapter 6. Anand Iyer, Finance, is listening too.
@@ -77,7 +77,7 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 4 minutes. The cost list is the curriculum row's own. Its use today: if the fall sits in
+LIVE, 3 minutes. The cost list is the curriculum row's own. Its use today: if the fall sits in
 frequency, a cheaper lever is on the table and the Rs 12 crore is aimed at the wrong branch. That is
 why every chapter puts rupees on a branch. Chapter 5 brings the published estimates of acquisition
 against retention cost.
@@ -100,7 +100,7 @@ flowchart LR
 **Question.** In pairs, two minutes: name three places between a customer's checkout and a dashboard tile where a fall could be created that the business never had.
 
 ```notes
-LIVE, 4 minutes. Two minutes in pairs, then collect answers on the board. Expect "different lengths
+LIVE, 3 minutes. Two minutes in pairs, then collect answers on the board. Expect "different lengths
 of time", "different definition of sales", "missing values", "one huge order". Push for places in
 the system as well as in the arithmetic. Keep every answer; the next slide places them on the map.
 ```
@@ -126,7 +126,7 @@ flowchart LR
 **The rule.** Find the hop a number came through before you explain it. Today's traps live at these addresses: the window, the empty field, the roll-up and the helper.
 
 ```notes
-LIVE, 3 minutes. Place the room's answers on the four hops. Chapter 1 is the export and the tile;
+LIVE, 2 minutes. Place the room's answers on the four hops. Chapter 1 is the export and the tile;
 chapter 2 is the order system's empty field; chapter 3 is the dashboard's roll-up; chapter 5 is a
 summary script. Checking the pipeline first is the cheapest investigation there is.
 ```
@@ -224,7 +224,7 @@ icon: ruler | eyebrow: The convention | title: NRF 4-5-4 calendar | body: Compar
 **The claim.** Two windows of different length never compare as totals; the retail industry built its calendars around that.
 
 ```notes
-LIVE, 2 minutes. Sources, all checked 30 Sep 2026: Avenue Supermarts investor presentation filed
+LIVE, 3 minutes. Sources, all checked 30 Sep 2026: Avenue Supermarts investor presentation filed
 2 May 2026 (LFL definition and FY26 8.1 percent); Target fourth quarter and full year 2023 results
 (53 weeks, the extra week $1,715 million) and its 10-K on "equivalent length"; nrf.com 4-5-4 calendar.
 The link to Kalpa: Q2's tile had two fewer weeks than Q1.
@@ -267,7 +267,7 @@ flowchart TB
 **Question.** Predict before the loop prints: a) 13 weeks against 13; b) 13 weeks against 11; c) 12 weeks against 12; d) 13 weeks against 9.
 
 ```notes
-LIVE, 2 minutes. Take letters. Some count months and say three against two and a half; the count
+LIVE, 3 minutes. Take letters. Some count months and say three against two and a half; the count
 in weeks is the one a rate per week needs.
 ```
 
@@ -310,7 +310,7 @@ flowchart LR
 **Why it is wrong.** The tile stopped on 15 September, so it holds 11 weeks of trading against 13. **The check** that catches it in a minute: the first and last order date of each window, and the weeks between them.
 
 ```notes
-LIVE, 3 minutes. This is the chapter's trap, and it is a plausible wrong number with correct
+LIVE, 4 minutes. This is the chapter's trap, and it is a plausible wrong number with correct
 arithmetic. Say the business cost out loud: a crisis read rushes the acquisition budget. The check
 is cheap and nobody runs it, because a tile shows a number without its window.
 ```
@@ -361,7 +361,7 @@ xychart-beta
 **The check.** April to June add to Rs 2,10,00,000 and July to September to Rs 1,87,00,000: minus 11.0 percent both ways. **When to switch:** keep the quarter key for the headline, and use the month key once a question moves inside the quarter, as chapter 6's will.
 
 ```notes
-LIVE, 3 minutes. The second route ignores the quarter field and trusts only the dates, so if the
+LIVE, 4 minutes. The second route ignores the quarter field and trusts only the dates, so if the
 two routes disagreed, one would be reading the file wrongly. The notebook asserts they are equal.
 ```
 
@@ -419,7 +419,7 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 2 minutes. The metric at stake is the rupees each branch carries. A wrong split sends crores to
+LIVE, 3 minutes. The metric at stake is the rupees each branch carries. A wrong split sends crores to
 the wrong owner for a quarter. Remind the room that price and basket fold into revenue per order on
 this file.
 ```
@@ -438,7 +438,7 @@ value: +1.5% / +1.1% | label: Walmart U.S. transactions / ticket | note: quarter
 **The claim.** A quick-commerce app and the world's largest store chain both answer "more visits or bigger baskets?" every quarter.
 
 ```notes
-LIVE, 1 minute. Sources checked 30 Sep 2026: Eternal shareholders' letter of 28 April 2026, Blinkit
+LIVE, 2 minutes. Sources checked 30 Sep 2026: Eternal shareholders' letter of 28 April 2026, Blinkit
 operating metrics (net order value and net average order value, which are net figures); Walmart
 earnings release for the second quarter of fiscal 2027, comparable sales excluding fuel up 2.6
 percent, transactions 1.5, average ticket 1.1.
@@ -733,7 +733,7 @@ def tree_for(rows):
 **Test it where the answer is known.** On all of Q1 it returns 114 orders, 69 customers and 1.65; on all of Q2, 86, 69 and 1.25: chapter 2, reproduced.
 
 ```notes
-LIVE, 4 minutes. Build it line by line: def, the parameter, the body, return. A function returns
+LIVE, 3 minutes. Build it line by line: def, the parameter, the body, return. A function returns
 rather than prints, so the caller can put its answer in a table, a chart or a check; chapter 5 meets
 one that prints. A new function earns trust by reproducing a number proved another way.
 ```
@@ -894,7 +894,7 @@ value: 1,000x | label: order size, Business to consumer | note: lakhs against th
 ```
 
 ```notes
-LIVE, 3 minutes. Open by naming what the room found at the end of chapter 3: Retail-Plus, the same
+LIVE, 4 minutes. Open by naming what the room found at the end of chapter 3: Retail-Plus, the same
 22 members, 51 orders to 26. The metric at stake is a blend across segments whose orders differ a
 thousandfold. A wrong reading costs volume: a price rise on customers who never paid more.
 ```
@@ -902,24 +902,26 @@ thousandfold. A wrong reading costs volume: a price rise on customers who never 
 ---
 
 ## S39. Berkeley 1973: a blend moved, the mix did it
-*University-wide admission rates differed by sex while department by department they did not.*
+*University-wide admission rates differed by sex while department by department they did not differ significantly.*
 
 ```mermaid
 flowchart LR
     U["<b>whole university</b><br/>men about 44%<br/>women about 35%"] --> M["<b>the mix</b><br/>women applied to<br/>selective departments"]
-    M --> D["<b>department by department</b><br/>no bias against women"]
+    M --> D["<b>department by department</b><br/>no significant<br/>difference"]
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class U bad
     class D known
 ```
 
-**The claim.** When groups differ in rate and their shares move, a blended rate can move with no group moving.
+**The claim.** When groups differ in rate and their shares move, a blended rate can move with no group moving. Swiggy said the same of Instamart's order value, up 14 percent in a quarter to Rs 697, as non-grocery categories took a larger share of orders.
 
 ```notes
 LIVE, 3 minutes. Bickel, Hammel and O'Connell, Science 187, 398 to 404, 1975, citation checked
 through Crossref 30 Sep 2026; the 44.2 and 34.6 percent rates on 8,442 men and 4,321 women are as a
-2025 arXiv re-analysis (2502.10161) summarises the paper's table, so say "about".
+2025 arXiv re-analysis (2502.10161) summarises the paper's table, so say "about"; the same summary
+gives the department-level finding. Swiggy, Q2 FY2026 shareholder letter, checked 30 Sep 2026:
+Instamart AOV Rs 697, up 14 percent in the quarter, attributed to non-grocery and large-pack mix.
 ```
 
 ---
@@ -956,7 +958,7 @@ flowchart LR
 **Question.** Of the 28 lost orders: a) about 7; b) about 14; c) 25; d) all 28.
 
 ```notes
-LIVE, 2 minutes. Take letters, then run the orders bridge in notebook 04.
+LIVE, 3 minutes. Take letters, then run the orders bridge in notebook 04.
 ```
 
 ---
@@ -1035,7 +1037,7 @@ more than nine tenths Business, driven by one large order, as chapter 3's range 
 | Mix first | Rs 22,902 | Rs 10,330 | 68.9% |
 | Rate first | Rs 24,028 | Rs 9,203 | 72.3% |
 
-**Kavya's review.** "Marketing looked at a blend and saw a price signal. You opened it and found 25 small orders missing. Nobody paid more; the small orders disappeared, from the tier we are about to ask about."
+**Kavya's review.** "Marketing looked at a blend and saw a price signal. You opened it and found 25 small orders missing. No consumer segment paid meaningfully more; the small orders disappeared, from the tier we are about to ask about."
 
 **In the interview.** [F] Revenue per order rose 18 percent while revenue fell; did prices go up?
 
@@ -1071,7 +1073,7 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 2 minutes. The metric at stake is retention, and its mirror, new customers. A wrong answer is
+LIVE, 3 minutes. The metric at stake is retention, and its mirror, new customers. A wrong answer is
 Rs 12 crore spent replacing people who never left. Marketing's first claim is fair; test it.
 ```
 
@@ -1083,14 +1085,17 @@ Rs 12 crore spent replacing people who never left. Marketing's first claim is fa
 ```stats
 value: 5 to 25x | label: acquisition against retention | note: cost, by study and industry
 value: 25 to 95% | label: profit lift | note: from a 5 percent rise in retention
+value: +34% / 4.53 to 4.10 | label: Swiggy users / orders per user | note: quarter to Sep 2025
 ```
 
 **The claim.** If the fall is frequency among customers Kalpa already has, the cheaper lever is on the table; the reply asks Finance for Kalpa's own acquisition cost before comparing rupees.
 
 ```notes
-LIVE, 1 minute. Amy Gallo, "The Value of Keeping the Right Customers", Harvard Business Review,
+LIVE, 2 minutes. Amy Gallo, "The Value of Keeping the Right Customers", Harvard Business Review,
 29 October 2014, checked 30 Sep 2026; the retention figure is Frederick Reichheld of Bain, quoted
-there. Estimates across industries: say so.
+there. Estimates across industries: say so. Swiggy, Q2 FY2026 shareholder letter, checked 30 Sep 2026:
+monthly transacting users up 34.0 percent to 22.9 million while frequency fell 4.53 to 4.10, a growing
+count hiding customers who buy less often.
 ```
 
 ---
@@ -1234,7 +1239,7 @@ flowchart LR
 ```notes
 LIVE, 5 minutes. The bridge by consumer segment and the subtraction agree at Rs 70,280. When to
 switch: subtraction is quicker and hides which consumer segment moved. The Business rupees rest on
-three orders out of twenty, which tomorrow's reconciliation checks; say both findings side by side.
+three lakh-sized orders out of twenty, too few to call a trend; say both findings side by side.
 One breath for [D]: test their claim in its own terms, show the overlap, show where the fall is, end
 on what would change my mind. Lunch follows.
 ```

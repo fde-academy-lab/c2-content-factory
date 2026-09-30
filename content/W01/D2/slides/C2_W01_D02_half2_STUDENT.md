@@ -41,18 +41,18 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 2 minutes. The metric at stake is Retail-Plus orders per week before and after the break. Six
+LIVE, 3 minutes. The metric at stake is Retail-Plus orders per week before and after the break. Six
 weeks back from the week of 6 October is 25 August; say it is the complaint taken at its word. A
 wrong answer costs a quarter: blame the button for everything, fix it, and the tier keeps falling.
 ```
 
 ---
 
-## S2. Sonos tied its app to revenue with evidence
-*A loyal customer base, an app that broke, and a company that cut its guidance only once it had the numbers.*
+## S2. Sonos tied an app rollout to its guidance
+*A loyal customer base, an app rollout that went wrong, and a company that put it into its guidance.*
 
 ```stats
-value: May 2024 | label: redesigned app shipped | note: customers reported it broken
+value: 2024 | label: redesigned app rolled out | note: the problems it caused
 value: FY2024 | label: guidance reduced | note: the CEO tied it to the app's rollout
 value: up to $30 m | label: short-term cost to fix | note: set out in the annual report
 ```
@@ -60,7 +60,7 @@ value: up to $30 m | label: short-term cost to fix | note: set out in the annual
 **The claim.** A company can put a broken app into its numbers, and the head of Retail-Plus is asking whether his tier is the same story.
 
 ```notes
-LIVE, 1 minute. Sources checked 30 Sep 2026: Sonos third quarter fiscal 2024 results (the chief
+LIVE, 2 minutes. Sources checked 30 Sep 2026: Sonos third quarter fiscal 2024 results (the chief
 executive's statement that the app's rollout required a reduced fiscal 2024 guidance) and the fiscal
 2024 annual report on Form 10-K (short-term costs of up to $30 million). No revenue figure for the
 app's effect was verified on a primary page, so none is quoted.
@@ -410,7 +410,7 @@ request that settles most.
 
 | Claim | What it is made of | The reply |
 |---|---|---|
-| Student +40 percent | The same 2 customers, 5 orders to 7 | No new customer; a rate on 2 moves 50 percent per order |
+| Student +40 percent | The same 2 customers, 5 orders to 7 | No new customer, and one order moves a rate on 2 customers by 20 percent |
 | Web fell hardest | Retail-Core web held, 13 to 12, same website | A site-wide fault does not fit; members fell on every channel |
 | Who to call first | 7 members went from 3 orders to 1 | Call the 7, then the 11 who fell by one |
 
@@ -499,7 +499,7 @@ LIVE. The close runs 15 minutes: Kahoot 8, the sentence and the lines 5, tomorro
 ## S21. The sentence that goes to Meera
 *A claim, its evidence, its caveat and the next step, in the order she needs them.*
 
-> "Revenue fell 11.0 percent between two closed quarters, Rs 2.10 crore to Rs 1.87 crore on the export as it stands. Customers held at 69, every one of them buying in both quarters, so acquisition is not the branch that moved; orders per customer fell from 1.65 to 1.25. In behaviour the fall sits in Retail-Plus, where the same 22 members placed 26 orders against 51, and revenue per order rose mainly because those small orders disappeared. In rupees most of it is three fewer Business orders, which tomorrow's reconciliation checks. The fall began in July, before the reorder button broke, so the button explains at most about 4 orders; we are asking for the tier's July change log and the app's reorder logs." The data and AI team, to Meera Raghavan
+> "Revenue fell 11.0 percent between two closed quarters, Rs 2.10 crore to Rs 1.87 crore on the export as it stands. Customers held at 69, every one of them buying in both quarters, so acquisition is not the branch that moved; orders per customer fell from 1.65 to 1.25. In behaviour the fall sits in Retail-Plus, where the same 22 members placed 26 orders against 51, and revenue per order rose mainly because those small orders disappeared. In rupees most of it is three fewer Business orders, each worth lakhs and too few to call a trend. The fall began in July, before the reorder button broke, so the button explains at most about 4 orders; we are asking for the tier's July change log and the app's reorder logs." The data and AI team, to Meera Raghavan
 
 ```notes
 LIVE, 2 minutes after the Kahoot. Read it aloud once, slowly. Ask one learner which part their own

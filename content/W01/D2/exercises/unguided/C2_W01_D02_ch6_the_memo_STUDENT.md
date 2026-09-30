@@ -32,8 +32,8 @@ flowchart LR
 
 ### Q1. (design) Four tests of the button were on the table. In which order do you run them?
 
-a) The app's logs first, since they settle it and the rest can wait for them
-b) Timing, comparison, channel; request logs now
+a) The app's logs first, since they settle it and the other tests can wait for them
+b) Timing, then a comparison segment, then the channel, with the logs requested now
 c) The channel first, since the cause is an app feature
 d) All four at once, since order does not matter
 
@@ -42,13 +42,13 @@ d) All four at once, since order does not matter
 a) It uses booked orders instead of the delivered orders the board pack reports
 b) It should be measured in customers, not orders
 c) It counts only app orders
-d) It charges the button with losses before it broke
+d) It charges the button with seven weeks of losses from before it broke
 
 ### Q3. At the pre-break pace, the 37 days after the break would have carried about 12.1 orders, and the tier placed 8. What goes in the memo?
 
 a) The button caused the whole fall, now proven
 b) The button had no effect at all, since most of the fall came before it broke
-c) At most about 4 orders; the rest needs another cause
+c) The button explains at most about 4 orders, so the rest needs another cause
 d) The fall is too small to report
 
 ### Q4. Retail-Core kept 95 percent of its Q1 orders and Retail-Plus 51 percent. Which cause does this rule out?
@@ -60,7 +60,7 @@ d) A monsoon dip that hit members harder
 
 ### Q5. (design) The memo names two hypotheses. Which pairing of hypothesis and evidence is right?
 
-a) The button with the tier's change log; a July change with the app's reorder logs
+a) The button with the tier's change log, and a July change with the app's reorder logs
 b) Both with this export, cut another way
-c) The button with Marketing's campaign reach; a July change with the export
-d) Button: reorder logs; July change: tier change log
+c) The button with Marketing's campaign reach, and a July change with the export
+d) The button with the reorder logs, and a July change with the tier's change log

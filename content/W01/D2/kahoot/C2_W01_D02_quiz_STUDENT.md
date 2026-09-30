@@ -36,7 +36,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 - A rate per week, or the same 11 weeks of each quarter  <- correct
 - The two totals as they stand, since both are quarters
-- Q2's total scaled up by 13 over 11, then the two totals
+- Q2's total scaled by 11 over 13, then the two totals
 - Q1's last 11 weeks against Q2, the most recent weeks of each
 
 ---

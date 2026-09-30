@@ -246,9 +246,10 @@ price rise in the plan. Revenue per order is a blend across segments whose order
 thousandfold, and a wrong reading costs volume: a price rise on customers who never paid more.
 
 **Who else faces this.** Berkeley's graduate admissions for autumn 1973 admitted about 44 percent of
-men and 35 percent of women across the university, while department by department the rates showed
-no bias against women: women had applied mostly to selective departments (Bickel, Hammel and
-O'Connell, Science, 1975; the rates as a 2025 re-analysis summarises the paper's table).
+men and 35 percent of women across the university, while department by department the rates did not differ significantly: women had applied mostly to departments that were hard to get into (Bickel, Hammel and
+O'Connell, Science, 1975; the rates as a 2025 re-analysis summarises the paper's table). Swiggy
+reported Instamart's order value up 14 percent in a quarter to Rs 697 in the quarter to September
+2025, put down to non-grocery categories and large packs taking a larger share of orders.
 
 **The options.** A, read the blended change, which gives the size and no cause; B, each segment's
 own revenue per order, which says whether any segment paid more; C, split the rise into mix and rate,
@@ -283,7 +284,10 @@ on it.
 **Who else faces this.** Harvard Business Review summarised the studies behind the retention
 argument: acquiring a customer costs 5 to 25 times more than retaining one, and Bain's Frederick
 Reichheld found a 5 percent rise in retention lifting profits 25 to 95 percent. Those are estimates
-across industries, never Kalpa's; the reply asks Finance for Kalpa's own acquisition cost.
+across industries, never Kalpa's; the reply asks Finance for Kalpa's own acquisition cost. Swiggy
+reports its users and their frequency apart: in the quarter to September 2025 monthly transacting
+users rose 34.0 percent to 22.9 million while orders per user a month fell from 4.53 to 4.10, a
+growing count hiding customers who buy less often.
 
 **The options.** A, compare the counts, which cannot see churn because a count is net; B, the
 overlap of ids as sets, which names lost and new; C, customer by customer, which also names who
@@ -306,7 +310,7 @@ in its own column: Retail-Plus minus 49.0 percent, Business minus 15.0 on three 
 **The consumer business.** Business orders run to lakhs, so a consumer segment is judged against the
 consumer business: Rs 2,28,820 to Rs 1,58,540, a fall of Rs 70,280, of which Retail-Plus is Rs 65,250,
 93 percent, and 25 of the 28 lost orders. The rupee fall in Business rests on three orders out of
-twenty, which tomorrow's reconciliation checks.
+twenty, each worth lakhs, too few to call a trend.
 
 **The second route.** The company fall less the Business fall, Rs 23,00,000 less Rs 22,29,720, is the
 same Rs 70,280. Subtraction is quicker and hides which consumer segment moved.
@@ -320,8 +324,7 @@ Meera wants one page of what we know and what we guess. The metric is Retail-Plu
 before and after the break, taken at its word as 25 August. The decision is engineering's priority
 and the story Meera tells the board.
 
-**Who else faces this.** Sonos shipped a redesigned app in May 2024 that customers reported broken;
-its chief executive said the app's rollout had required it to reduce fiscal 2024 guidance, and its
+**Who else faces this.** Sonos rolled out a redesigned app in 2024; its chief executive said the app's rollout had required it to reduce fiscal 2024 guidance, and its
 annual report set out short-term costs of up to $30 million to fix it.
 
 **The options.** A, before and after the break, which can rule out the button as the whole story; B,
@@ -352,7 +355,7 @@ on the export as it stands. Customers held at 69, all of them buying in both qua
 is not the branch that moved; orders per customer fell from 1.65 to 1.25. In behaviour the fall sits
 in Retail-Plus, where the same 22 members placed 26 orders against 51, and revenue per order rose
 mainly because those small orders disappeared. In rupees most of the fall is three fewer Business
-orders, which tomorrow's reconciliation checks. The fall began in July, before the button broke, and
+orders, each worth lakhs, too few to call a trend. The fall began in July, before the button broke, and
 hit every channel, so the button explains at most about 4 orders. Two hypotheses remain: the button
 deepened the fall after 25 August, settled by the reorder logs by week and the release date; and
 something changed for members in July, settled by the tier's change log, renewals and support
@@ -374,22 +377,6 @@ Business's larger delivered orders carrying the rate.
 same two customers placing seven orders against five; the web claim fails because Retail-Core's web
 orders held at 13 and 12 on the same website; and the tier's call list starts with the 7 members who
 went from three orders a quarter to one.
-
----
-
-## Where this shows up in the work
-
-**A leadership review with a budget waiting on the answer.** A fall is on the first slide and a spend
-is proposed to fix it. The first deliverable is the matched comparison and the tree, because a Rs 12
-crore bet on the wrong branch costs more than a day of checking.
-
-**A segment owner who wants a yes or a no.** The head of a tier asks whether his tier is slipping.
-The answer carries both measures, orders and rupees, and says which one is being quoted, because a
-segment can be small in rupees and still be where customer behaviour changed.
-
-**A summary table built by someone else's code.** A table arrives with fewer rows than the segments
-that went in. The first move is to count groups in and groups out, and the second is to read any
-helper the table depends on for a branch that prints instead of returning.
 
 ---
 
@@ -478,7 +465,7 @@ did not change".
 **11. [D] The fall is in rupees in one segment and in behaviour in another; which do you put in front
 of the CEO first?** Tested: judging what the decision needs. Strong: put both, each labelled, and
 lead with the one that is actionable and stable; a rupee fall resting on three large orders is thin
-evidence of a trend, while every member of a tier halving their orders is a pattern, so name each with
+evidence of a trend, while 18 of a tier's 22 members slowing while its orders halved is a pattern, so name each with
 its size and its caveat. Weak: choosing the bigger rupee number without saying how many orders it rests
 on.
 
@@ -511,7 +498,9 @@ test at once, or waiting for the logs before running any.
 | Like-for-like | A comparison that holds the outlets, the weeks and the weekends equal | Chapter 1; DMart, Target, NRF | Two closed 13-week quarters |
 | Decomposition | A change split along the tree into branches that multiply | Chapter 2 | 1.000 times 0.754 times 1.180 is 0.890 |
 | Bridge | A change in rupees moved one branch at a time from start to end | Chapter 2 | Orders per customer took away Rs 51,57,895 |
-| Middle half | The spread between the first and third quartiles of the sorted values | Chapter 3; `describe` | Business, Rs 8,02,750 wide in Q1 |
+| Range | The largest value less the smallest, set by two orders alone | Chapter 3; `describe` | Business, Rs 15,80,940 in Q1 |
+| Mix | The share of orders each segment holds, which moves a blended rate on its own | Chapter 4 | Retail-Plus, 44.7 to 30.2 percent of orders |
+| Rate part | The change inside segments once the mix is held still | Chapter 4 | Rs 10,330 of the Rs 33,231 rise |
 | Default | The value used when a field is absent, with its written reason | Chapter 2 | Absent discount reported separately, never counted as zero |
 | Function | A named block that takes inputs and returns one answer | Chapter 3 | `tree_for(rows)` returns a dictionary of the tree |
 | Weighted roll-up | A company rate built from totals, so each group counts by its size | Chapter 3 | 114 orders over 69 customers is 1.65 |

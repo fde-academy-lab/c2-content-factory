@@ -48,7 +48,7 @@ d) It rounds both totals to the nearest lakh before dividing them
 
 ### Q3. (design) Q2 is still open on 15 September and Meera wants a number today. Which comparison is the best fit, and what would switch it?
 
-a) The same 11 weeks of each quarter, then closed quarters at the close
+a) The same 11 weeks of each quarter, switching to closed quarters at the close
 b) The tile against all of Q1, switching only once Marketing agrees the method is fair
 c) Q2 to date projected to 13 weeks, switching if the projection misses
 d) Per month, April against July only, switching when August closes
@@ -58,7 +58,7 @@ d) Per month, April against July only, switching when August closes
 a) Because the fastest option is always the least accurate one
 b) Because only last year's Q2 needs any computation at all
 c) Because all four read under a thousand rows, in well under a second each, on any laptop
-d) All run in milliseconds; what each controls for decides
+d) Because every option runs in milliseconds, what each one controls for decides
 
 ### Q5. Per day, the closed quarters run at Rs 2,30,769 and Rs 2,03,261, a fall of 11.9 percent. Why does this differ from the 11.0 percent on the totals?
 
@@ -71,5 +71,5 @@ d) One of the two figures has a rounding slip, and the totals are safer
 
 a) That monthly totals are the better headline for Meera than quarters
 b) That no order in the file carries a wrong amount, a duplicate or a missing field
-c) The quarter field and the dates agree on every order
+c) That the quarter field and the dates put every order in the same quarter
 d) That the fall is real and needs no comparison with last year

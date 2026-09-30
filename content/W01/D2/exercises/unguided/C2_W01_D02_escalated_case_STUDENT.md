@@ -49,7 +49,7 @@ Build the bridge in the tree's order: customers, then orders per customer, then 
 
 a) Marketing was right after all, so the acquisition budget should be released now
 b) The bridge is wrong, since the morning proved customers held at 69
-c) A branch that held on booked orders moved; find what it is made of first
+c) A branch that held on booked orders moved, so find what it is made of first
 d) Frequency no longer matters, since customers now carry most of the fall
 
 ---
@@ -73,10 +73,10 @@ Run `tree_for` per segment on delivered orders, roll the rate up, and count the 
 
 ### Q4. Which statement about delivered orders per customer holds?
 
-a) Averaged over segments it fell 9.2 percent, so frequency matters less here
+a) Averaged over the four segments it fell 9.2 percent, so frequency matters less here
 b) Business fell furthest, 11.6 percent, since its orders are the largest
 c) Every segment fell by about the same share, so no segment stands out
-d) Weighted, 1.50 to 1.14; Retail-Plus fell furthest, minus 42.6 percent
+d) Weighted it fell from 1.50 to 1.14, and Retail-Plus fell furthest at 42.6 percent
 
 ---
 
@@ -97,7 +97,7 @@ d) Delivered orders are unreliable, so the booked split should be used alone
 
 ### Q6. Meera will see both definitions again next month. Which way do you report them, and what would change it?
 
-a) Delivered alone, since it is the board's number, whatever booked says
+a) Delivered alone, since it is the board's number, whatever the booked figure says
 b) Booked alone, since it closes first and never moves after the quarter
-c) Both side by side, each labelled; delivered alone once returns settle
+c) Both side by side and labelled, moving to delivered alone once returns settle
 d) Whichever shows the smaller fall, to keep the board calm this month

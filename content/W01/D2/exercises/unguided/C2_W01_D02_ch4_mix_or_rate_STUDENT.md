@@ -35,24 +35,24 @@ flowchart LR
 
 ### Q1. Which reading of the table answers Marketing's price claim?
 
-a) No segment rose 18%; small member orders left the blend
+a) No segment rose 18 percent, because small member orders left the blend
 b) Business rose 5.0 percent, so prices across the range can safely rise 5 percent
 c) Student rose 14.8 percent, so the young pay more
 d) Retail-Core fell, so its prices should be cut
 
-### Q2. (design) Four readings of the rise were on the table: the blended change, each segment's rate, a mix-and-rate split, and medians. Which is the best fit?
+### Q2. (design) Match each question to the reading that answers it: 1 how big is the rise, 2 did any segment pay more, 3 how much of the rise is mix, 4 what is a typical order; P the blended change, Q per-segment rates, R the mix-and-rate split, S medians. Which pairing holds?
 
-a) The blended change, since it is the number Marketing quoted to Meera
-b) Medians per segment, since one large order cannot move them
-c) The mix-and-rate split, since it puts rupees on each cause
-d) Each segment's rate alone, since it answers everything asked
+a) 1P 2R 3Q 4S
+b) 1Q 2P 3R 4S
+c) 1P 2Q 3R 4S
+d) 1S 2Q 3R 4P
 
 ### Q3. (design) Which fact would make the per-segment table enough without a mix split?
 
-a) A rise in revenue per order larger than 18 percent
+a) A rise in revenue per order larger than the 18 percent seen this quarter
 b) A segment whose rate fell while the blend rose
 c) Four segments instead of two
-d) Similar order sizes, or shares that held
+d) Segments with similar order sizes, or shares that held still
 
 ### Q4. At Q2's mix and Q1's segment rates, revenue per order would be Rs 2,07,112. How much of the Rs 33,231 rise is mix?
 
@@ -65,12 +65,12 @@ d) Rs 2,07,112, the counterfactual itself
 
 a) Retail-Plus, so members did pay noticeably more for each order they placed
 b) Retail-Core, so everyday shoppers carry the rise
-c) Business, whose lakh-sized orders dominate
+c) Business, since its lakh-sized orders dominate the rate part
 d) Student, whose rate rose most in percentage terms
 
 ### Q6. (design) Moving the rate first gives mix Rs 24,028 instead of Rs 22,902. What does the second route confirm?
 
-a) Both add to Rs 33,231; mix stays over two thirds
+a) Both orders add to Rs 33,231, and mix stays above two thirds
 b) The first split had an arithmetic error of Rs 1,126 in its mix part
 c) The rate-first order is the correct one to report
 d) Mix and rate cannot be separated on this file
