@@ -1144,6 +1144,11 @@ version of the same question.
 ## S50. Question: 42 percent on 12, or 31 on 1,200?
 *Which rate does an interviewer expect you to trust, and why?*
 
+```stats
+value: 42% | label: on 12 users | note: the higher rate, on a handful
+value: 31% | label: on 1,200 users | note: the lower rate, on a hundred times more
+```
+
 **In the interview.** [F] 42 percent on 12 users against 31 percent on 1,200; which do you trust?
 
 **Question.** Which answer earns the offer? a) 42 percent, since it is higher; b) 31 percent, since 1,200 is more; c) 31 percent as the estimate, 42 percent as a lead to measure further; d) neither, since they cannot be compared.
@@ -1484,7 +1489,7 @@ independent check, from Finance's months, comes in chapter 6. Then the chapter's
 
 | The question on the way | The answer |
 |---|---|
-| 1. Which way can the files support? | The split inside each segment, one mix as its line |
+| 1. Which way can the files support? | The split inside each segment, then both groups put on one mix |
 | 2. Does the 6 percent rebuild? | Yes: Rs 3,395 against Rs 3,200, +6.1 percent |
 | 3. Repeat it for Diwali? | Not before asking who is in each group |
 | 4. Inside each segment? | 3.0 percent less in both segments |
