@@ -27,15 +27,15 @@ flowchart TB
 
 **Revenue = customers x orders per customer x items per order x price per item, less discounts.** Stock on the shelf decides whether any of it can happen, and cancellations and returns leak out before the margin is counted.
 
-The tree's revenue is GMV: sales at the prices charged, before the leaks and GST come out. Net revenue is what is left once they have.
+The tree counts revenue as GMV, and panel 6 walks it down to net revenue and on to EBITDA.
 
-**Crux:** Every retail number is a branch of revenue or a leak from it, so say its denominator and its window before the number.
+**Crux:** Every retail number is a branch of revenue or a leak from it, so find its place on the tree before explaining a change in it.
 
 ## Panel 2: The ten metrics, as formulas
 
 | Metric | Formula |
 |---|---|
-| Conversion | Orders / visits, same window |
+| Conversion | Orders / visits |
 | AOV | Revenue / orders |
 | Frequency | Orders / customers who ordered |
 | Repeat rate | Buyers with 2+ orders / all buyers |
@@ -46,20 +46,21 @@ The tree's revenue is GMV: sales at the prices charged, before the leaks and GST
 | Days of inventory | Average stock at cost / COGS per day |
 | Like-for-like growth | Stores open all of both periods: sales / the same stores' sales last period, less 1 |
 
-**Crux:** Compare rates only on the same denominator and window.
+**Crux:** Change the divisor and the metric changes.
 
 ## Panel 3: Traps that make a retail number lie
 
 | Trap | The check |
 |---|---|
-| Denominator shifted | One session rule; cohort's starting size |
+| Denominator shifted | One session rule throughout |
+| Dividing by survivors | Divide by the cohort's starting size |
 | Margin on GMV | Divide margin by net revenue |
 | Missed sales | Count empty shelf-days; a stock-out leaves no row |
 | Late returns | Wait for the return window to close |
 | New stores | Quote like-for-like |
 | Blended CAC | Count only customers the spend brought |
 
-**Crux:** Name the denominator, window and definition first.
+**Crux:** Run each check before the number leaves the team.
 
 ## Panel 4: Twenty words to say fluently
 
@@ -104,11 +105,11 @@ The tree's revenue is GMV: sales at the prices charged, before the leaks and GST
 
 | Line | Left, Rs |
 |---|---|
-| **GMV**, at the prices charged | 100 |
+| **GMV** | 100 |
 | Less cancellations, returns | 90 kept |
 | Less GST, for the state | 80 **net revenue** |
 | Less cost of the goods | 20 **gross margin** |
 | Less per-order costs | 7.5 **contribution** |
 | Less fixed costs, acquisition | 2.5 **EBITDA** |
 
-**Crux:** Owning the stock leaves about Rs 2.50 of every Rs 100 ordered, so one leak or one price cut can decide the year.
+**Crux:** On these illustrative numbers, owning the stock leaves about Rs 2.50 of every Rs 100 ordered, so one leak or one price cut can decide the year.
