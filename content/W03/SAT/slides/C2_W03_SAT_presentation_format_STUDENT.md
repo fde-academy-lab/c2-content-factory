@@ -50,12 +50,12 @@ that a group which opens with its data cleaning has answered question two before
 
 ```stats
 value: 5% | label: test volume growth | note: the dashboard, against a plan of 18
-value: 2 cities | label: bookings down | note: in Q2, per the booking data
-value: 9% | label: the campaign's lift | note: free home collection, per marketing
-value: 1 clinic | label: a worse no-show rate | note: per the clinics' operations head
+value: 2 metros | label: bookings down | note: in Q3, per the booking data
+value: 9% | label: the campaign's lift | note: free at-home collection, per marketing
+value: 1 centre | label: a worse no-show rate | note: per the centres' operations head
 ```
 
-**The claim.** Her data team adds two things it knows: two cities changed booking systems in Q2, and the payment feed keys invoices in its own format. Invoices and collections disagree, says the finance head.
+**The claim.** Her data team adds two things it knows: two metros changed booking systems in Q3, and the posting system keys claims in its own format. Claims and collections disagree, says the finance head.
 
 ```notes
 Every number on this slide came from Dr Menon or her team. A group that repeats one of them on its
