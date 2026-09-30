@@ -523,7 +523,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ## Option edits laid on the bank, waiting for the tracker
 
-These options differ from the tracker's wording, because the bank's key was the longest option. The stem and the key are the tracker's. Accept an edit by copying it into the tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.
+These options differ from the tracker's wording, each for the reason given beside it. The stem and the key are the tracker's. Accept an edit by copying it into the tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.
 
 - Q52 (bank 19), option b (proposed): The key was the longest option.
 - Q18 (bank 22), option c (proposed): The key was the longest option; the new distractor is the fan-out misread in reverse.
