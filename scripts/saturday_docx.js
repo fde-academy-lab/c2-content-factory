@@ -55,7 +55,8 @@ function grid(head, rows, widths, opts) {
   const headRow = new TableRow({ tableHeader: true, children: head.map((h, i) => cell(
     [para([run(h, { bold: true, color: "FFFFFF", size: SMALL })])], widths[i], { fill: INK, border: INK })) });
   const body = rows.map((r, n) => new TableRow({ children: r.map((v, i) => cell(
-    [para([run(v, { size: opts.size || SMALL, bold: i === 0 && opts.boldFirst })])], widths[i],
+    [para([run(v, { size: opts.size || SMALL,
+                    bold: (i === 0 && opts.boldFirst) || (opts.boldLast && n === rows.length - 1) })])], widths[i],
     { fill: n % 2 ? SURFACE : undefined })) }));
   return new Table({ width: { size: total, type: WidthType.DXA }, columnWidths: widths, rows: [headRow].concat(body) });
 }
@@ -110,17 +111,36 @@ function itemCard(item) {
   }
   return card(kids);
 }
+/* A code exhibit prints in a monospace panel, one paragraph per line, so indentation survives. */
+function codePanel(lines) {
+  const inner = lines.map((l) => new Paragraph({ spacing: { after: 0 }, children: [
+    new TextRun({ text: l.length ? l : " ", font: "Consolas", size: 18, color: INK })] }));
+  return card(inner, { fill: "FFFFFF", border: LINE });
+}
+function exhibitBody(block, kids) {
+  if (block.image) kids.push(image(block.image));
+  if (block.table) kids.push(exhibitTable(block.table));
+  if (block.code && block.code.length) kids.push(codePanel(block.code));
+}
 function setCard(block) {
   const kids = [para([run("Set " + block.n + ".  Situation", { bold: true, color: VIOLET, size: 22 })])];
   kids.push(para(block.situation));
-  if (block.image) kids.push(image(block.image));
-  if (block.table) kids.push(exhibitTable(block.table));
-  if (block.caption) kids.push(para([run(block.caption, { italics: true, color: MUTED, size: SMALL })],
-                                    { alignment: AlignmentType.CENTER }));
+  if (block.label) kids.push(para([run(block.label + ".  ", { bold: true, color: VIOLET }),
+                                   run(block.caption || "", { italics: true, color: MUTED, size: SMALL })]));
+  exhibitBody(block, kids);
+  if (block.caption && !block.label) kids.push(para([run(block.caption, { italics: true, color: MUTED, size: SMALL })],
+                                                    { alignment: AlignmentType.CENTER }));
+  return card(kids, { fill: SURFACE, border: VIOLET });
+}
+function exhibitCard(block) {
+  const kids = [para([run(block.label + ".  ", { bold: true, color: VIOLET, size: 22 }),
+                      run(block.caption || "", { italics: true, color: MUTED, size: SMALL })])];
+  exhibitBody(block, kids);
   return card(kids, { fill: SURFACE, border: VIOLET });
 }
 function answerSheet(sheet) {
-  const out = [new Paragraph({ children: [new PageBreak()] }), heading("Answer sheet", 30, 0),
+  const out = [new Paragraph({ pageBreakBefore: true, spacing: { before: 0, after: 100 },
+      children: [new TextRun({ text: "Answer sheet", font: "Georgia", size: 30, color: INK })] }),
     para([run(sheet.note, { color: MUTED, size: SMALL })]),
     grid(["Name", "Marked by", "Items right"], [["", "", "____ of " + sheet.n]], [4200, 3406, 2200]), gap(160)];
   const letters = ["a", "b", "c", "d", "e", "f"];
@@ -147,30 +167,47 @@ function answerSheet(sheet) {
   out.push(new Table({ width: { size: 2 * (w[0] + w[1]), type: WidthType.DXA }, columnWidths: [w[0], w[1], w[0], w[1]], rows: pairs }));
   return out;
 }
+/* The blueprint: sections by type in the older layout, parts with their level mix in the new one. */
+function glanceTable(p) {
+  const head = p.glanceHead || ["Section", "What it asks of you", "Items", "Minutes"];
+  if (head.length === 4) return grid(head, p.glance, [2600, CONTENT - 2600 - 1500 - 1000, 1500, 1000]);
+  const fixed = [2150, 1250, 950, 700, 950, 700];
+  const shows = CONTENT - fixed.reduce((a, b) => a + b, 0);
+  return grid(head, p.glance, [fixed[0], shows, fixed[1], fixed[2], fixed[3], fixed[4], fixed[5]], { boldLast: true });
+}
 function paperDoc(p) {
   const kids = [
     new Paragraph({ spacing: { after: 60 }, children: [new TextRun({ text: p.title, font: "Georgia", size: 44, color: INK })] }),
     para([run(p.meta, { color: MUTED })], { spacing: { after: 200 } }),
     heading("What this paper is for", 26, 120), para(p.purpose),
     heading("Rules", 26), grid(["Rule", "Detail"], p.rules, [1800, CONTENT - 1800], { boldFirst: true }),
-    heading("The paper at a glance", 26), grid(["Section", "What it asks of you", "Items", "Minutes"], p.glance,
-                                               [2600, CONTENT - 2600 - 1500 - 1000, 1500, 1000]),
+    heading("The paper at a glance", 26), glanceTable(p),
   ];
+  /* A part opens on a new page through its heading's own break, so a spacer that spills past the
+     last card of the part before can never leave a blank page behind it. */
+  const newPage = (text) => new Paragraph({ pageBreakBefore: true, spacing: { before: 0, after: 100 },
+    children: [new TextRun({ text: text, font: "Georgia", size: 30, color: INK })] });
   p.sections.forEach((s) => {
-    kids.push(new Paragraph({ children: [new PageBreak()] }));
-    kids.push(heading(s.letter + ". " + s.title, 30, 0));
-    kids.push(para([run(s.intro, { color: MUTED })], { spacing: { after: 160 } }));
-    s.blocks.forEach((b) => { kids.push(b.kind === "set" ? setCard(b) : itemCard(b)); kids.push(gap(100)); });
+    kids.push(newPage(s.letter + ". " + s.title));
+    kids.push(para([run(s.intro, { color: MUTED })], { spacing: { after: s.situation ? 100 : 160 } }));
+    if (s.situation) kids.push(para(s.situation, { spacing: { after: 160 } }));
+    s.blocks.forEach((b, i) => {
+      kids.push(b.kind === "set" ? setCard(b) : b.kind === "exhibit" ? exhibitCard(b) : itemCard(b));
+      if (i < s.blocks.length - 1) kids.push(gap(100));
+    });
   });
   if (p.stretch && p.stretch.length) {
-    kids.push(new Paragraph({ children: [new PageBreak()] }));
-    kids.push(heading(p.stretchTitle, 30, 0));
+    kids.push(newPage(p.stretchTitle));
     kids.push(para([run(p.stretchIntro, { color: MUTED })], { spacing: { after: 160 } }));
     p.stretch.forEach((s, i) => {
       const inner = [para([run("Stretch " + (i + 1), { bold: true, color: VIOLET, size: 22 })])];
       s.lines.forEach((l) => inner.push(para(l)));
-      inner.push(para([run("", {})], { spacing: { after: 1400 } }));
-      kids.push(card(inner)); kids.push(gap(100));
+      /* A recall line moved from the timed paper takes one answer line; a written stretch item
+         takes room for three sentences. */
+      inner.push(s.short ? para([run("Answer:  ", { color: MUTED }), run("_".repeat(34), { color: MUTED })])
+                         : para([run("", {})], { spacing: { after: 1400 } }));
+      kids.push(card(inner));
+      if (i < p.stretch.length - 1) kids.push(gap(100));
     });
   }
   kids.push(...answerSheet(p.sheet));
@@ -187,9 +224,18 @@ function keyDoc(k) {
     heading("Marking", 26, 120),
   ];
   k.marking.forEach((m) => kids.push(new Paragraph({ numbering: { reference: "steps", level: 0 }, spacing: { after: 60 }, children: [run(m)] })));
+  if (k.workbook) kids.push(new Paragraph({ numbering: { reference: "steps", level: 0 }, spacing: { after: 60 }, children: [run(k.workbook)] }));
+  if (k.blueprint && k.blueprint.length) {
+    kids.push(heading("The blueprint", 26));
+    kids.push(glanceTable({ glanceHead: ["Part", "What it shows", "Items", "Minutes", "Easy", "Medium", "Hard"], glance: k.blueprint }));
+  }
+  if (k.guessing) {
+    kids.push(heading("What guessing alone would score", 26));
+    kids.push(para(k.guessing));
+  }
   kids.push(heading("The key", 26));
-  kids.push(grid(["Q", "Key", "Type", "Level", "Tag", "Day", "Source"], k.rows,
-                 [600, 1500, 2300, 1100, 900, 900, CONTENT - 600 - 1500 - 2300 - 1100 - 900 - 900]));
+  kids.push(grid(["Q", "Key", "Type", "Part", "Level", "Tag", "Day", "Source"], k.rows,
+                 [600, 1400, 2200, 700, 1000, 800, 800, CONTENT - 600 - 1400 - 2200 - 700 - 1000 - 800 - 800]));
   if (k.reasons.length) {
     kids.push(new Paragraph({ children: [new PageBreak()] }));
     kids.push(heading("Why each answer holds", 30, 0));
