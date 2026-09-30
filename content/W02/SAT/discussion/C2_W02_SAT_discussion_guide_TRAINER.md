@@ -47,8 +47,9 @@ recalls after them are the week's rules, moved off the timed paper.
 1. Papers swap along the row, so nobody checks their own paper.
 2. Read the key part by part from the key file: letters in runs of five, words and numbers one at a
    time, and each ordering item's sequence slowly, twice.
-3. The marker ticks or crosses each item on the answer sheet, writes the count of ticks as Items
-   right, and hands the paper back.
+3. The marker ticks or crosses each item on the answer sheet, writes each part's ticks in the box
+   beside that part's rating and their total as Items right, out of 55, and hands the paper back,
+   so each learner reads their rating against their score part by part.
 4. The key's rule settles the edge cases: every correct letter and no other on a more-than-one item,
    the number on an applied maths item, and the whole sequence on an ordering item. There is no
    partial credit, because the programme has set no rule for it.

@@ -186,7 +186,7 @@ function rulesTable(rows) {
   return grid(["Rule", "Detail"], rows, [1500, CONTENT - 1500]);
 }
 function glanceTable(g) {
-  const fixed = [560, 2050, 1300, 900, 680, 900, 680];
+  const fixed = [560, 1800, 1200, 900, 680, 900, 680];
   const shows = CONTENT - fixed.reduce((a, b) => a + b, 0);
   const widths = [fixed[0], fixed[1], fixed[2], shows, fixed[3], fixed[4], fixed[5], fixed[6]];
   return grid(g.head, g.rows, widths, { boldLast: true, center: [0, 4, 5, 6, 7], together: true });
@@ -215,8 +215,8 @@ function scaleStrip(steps) {
   const fills = [HEADFILL, TINT, "E2C9A3", BRONZE];
   const w = Math.floor(CONTENT / steps.length);
   const row = new TableRow({ cantSplit: true, children: steps.map((st, i) => cell([
-    p([new TextRun({ text: st[0], font: SERIF, size: 36, color: i === 3 ? WHITE : BRONZE })],
-      { alignment: AlignmentType.CENTER, keepNext: true, spacing: { after: 20, line: 240 } }),
+    new Paragraph({ alignment: AlignmentType.CENTER, keepNext: true, spacing: { before: 0, after: 40 },
+      children: [new TextRun({ text: st[0], font: SERIF, size: 36, color: i === 3 ? WHITE : BRONZE })] }),
     p([run(st[1], { size: SMALL, color: i === 3 ? WHITE : INK })],
       { alignment: AlignmentType.CENTER, spacing: { after: 0, line: 252 } })],
     w, { fill: fills[i % fills.length], borders: box(WHITE), valign: VerticalAlign.TOP,
@@ -368,14 +368,17 @@ function writtenTable(rows, key, width) {
   return new Table({ width: { size: width, type: WidthType.DXA }, columnWidths: [qw, kw, aw],
     borders: tableBorders(line(RULE)), rows: [head].concat(body) });
 }
-function ratingsGrid(parts) {
-  const lw = CONTENT - 4 * 700, bw = 700;
+function ratingsGrid(parts, counts) {
+  const bw = 620, rw = counts ? 1900 : 0, lw = CONTENT - 4 * bw - rw;
+  const widths = [lw, bw, bw, bw, bw].concat(counts ? [rw] : []);
   const head = new TableRow({ tableHeader: true, cantSplit: true, children:
     [sheetCell("Part", lw, { fill: HEADFILL, bold: true, left: true })]
-      .concat([1, 2, 3, 4].map((k) => sheetCell(String(k), bw, { fill: HEADFILL, bold: true }))) });
-  const body = parts.map((t) => new TableRow({ cantSplit: true, height: { value: 280, rule: HeightRule.ATLEAST }, children:
-    [sheetCell(t, lw, { left: true })].concat([1, 2, 3, 4].map(() => sheetCell("", bw))) }));
-  return new Table({ width: { size: CONTENT, type: WidthType.DXA }, columnWidths: [lw, bw, bw, bw, bw],
+      .concat([1, 2, 3, 4].map((k) => sheetCell(String(k), bw, { fill: HEADFILL, bold: true })))
+      .concat(counts ? [sheetCell("Items right (marker)", rw, { fill: HEADFILL, bold: true })] : []) });
+  const body = parts.map((t, i) => new TableRow({ cantSplit: true, height: { value: 280, rule: HeightRule.ATLEAST }, children:
+    [sheetCell(t, lw, { left: true })].concat([1, 2, 3, 4].map(() => sheetCell("", bw)))
+      .concat(counts ? [sheetCell("____ of " + counts[i], rw, { color: MUTED })] : []) }));
+  return new Table({ width: { size: CONTENT, type: WidthType.DXA }, columnWidths: widths,
     borders: tableBorders(line(RULE)), rows: [head].concat(body) });
 }
 /* The answer sheet's grids on one page: the lettered items in three columns with the true or false
@@ -414,7 +417,7 @@ function answerSheet(sheet) {
     grid(["Name", "Seat", "Marked by", "Items right"], [["", "", "", "____ of " + sheet.n]],
          [3900, 1300, 2700, CONTENT - 3900 - 1300 - 2700])];
   out.push(h2("Step one: rate each part before you read any item", 200));
-  out.push(ratingsGrid(sheet.parts));
+  out.push(ratingsGrid(sheet.parts, sheet.partItems));
   out.push(p([run(sheet.scale, { color: MUTED, size: TINY })], { spacing: { before: 60, after: 60 } }));
   out.push(...answerGrids(sheet, false));
   return out;

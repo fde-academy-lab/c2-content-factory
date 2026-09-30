@@ -560,8 +560,8 @@ RULES_MD = [
     "A wrong answer costs nothing, so answer every item on the line under it.",
     "Pen and this paper only: no laptop, no phone, no notes and no assistant.",
     "Afterwards the papers are swapped and marked against the key, and the discussion takes the items "
-    "the room missed most. The paper is ungraded and ranks nobody; the room's scores by topic set "
-    "Monday's revision.",
+    "the room missed most. The paper is ungraded and ranks nobody; the room's rates by part and by "
+    "tag set Monday's revision.",
 ]
 
 
@@ -586,6 +586,7 @@ def render_paper_parts(paper, data, date, printed, source, minutes, moved):
             "you are today. The comparison between your rating and your score in each part is the most "
             "useful thing this paper produces for Monday.", ""]
     out += [f"- {a}: {b}" for a, b in scale_steps()] + [""]
+    out += ["Your ratings: " + " · ".join(f"Part {r[0]} ___" for r in rows), ""]
     out += ["## The paper at a glance", "",
             "| Part | What it shows | Items | Minutes | Easy | Medium | Hard |",
             "|---|---|---|---|---|---|---|"]
@@ -689,8 +690,10 @@ def render_key(paper, data, date, notes, printed, source, minutes, moved=()):
            "on a more-than-one item, the number on an applied maths item (the working belongs to the "
            "discussion), and the whole sequence on an ordering item. The programme has set no "
            "partial-credit rule, so this key uses none.",
-           f"4. The marker writes the count of ticks as Items right on the front, out of {n}, and "
-           "hands the paper back.",
+           (f"4. The marker writes each part's ticks beside its rating on the answer sheet, and their "
+            f"total as Items right, out of {n}, then hands the paper back." if source.get("parts") else
+            f"4. The marker writes the count of ticks as Items right on the front, out of {n}, and "
+            "hands the paper back."),
            "5. The TA collects the papers and tallies the misses by tag, using the table below; that "
            "tally is Monday's remediation read. It is never a ranking and never read out by name."]
     in_parts = bool(source.get("parts"))
@@ -1068,6 +1071,7 @@ def docx_spec(paper, data, date, printed, source, minutes, notes, moved=()):
         stem, options, _ = parts(item)
         stretch_items.append({"n": k, "lines": stem, "options": [[a.upper(), b] for a, b in options], "short": True})
     sheet = dict(sheet_rows(printed), title="Answer sheet", n=n, parts=part_titles, scale=SCALE,
+                 partItems=[len(r[3]) for r in rows] if in_parts else None,
                  note=(f"{name} | Cohort 2 | Week {wk}. Fill in pen. Mark one box per row, or every "
                        "correct box for a starred item; if you change your mind, cross the old box fully "
                        "and mark the new one. Write words and numbers clearly, one per space."))
@@ -1117,7 +1121,10 @@ def docx_spec(paper, data, date, printed, source, minutes, notes, moved=()):
         "An item is right when its answer matches the key: every correct box and no other on a starred "
         "item, the number on a work-it-out item (the working belongs to the discussion), and the whole "
         "sequence on an order item. The programme has set no partial-credit rule, so this key uses none.",
-        f"The marker writes the count of ticks as Items right, out of {n}, and hands the paper back.",
+        (f"The marker writes each part's ticks in its box beside the learner's rating, and their total as "
+         f"Items right, out of {n}, then hands the paper back, so each learner reads their rating against "
+         f"their score part by part." if in_parts else
+         f"The marker writes the count of ticks as Items right, out of {n}, and hands the paper back."),
         "The TA collects the answer sheets and tallies the misses by part and by tag, never a ranking and "
         "never read out by name.",
     ]

@@ -110,7 +110,8 @@ the format of the requester's baseline diagnostic (`content/W00/D2/paper/C2_W00_
 and the Word paper is what the room sits: its palette, fonts and running header; a first page with
 what the paper is for, the rules, step one (each part rated 1 to 4 before any item is read), the
 paper at a glance and a pacing ribbon; open question blocks that never split, each exhibit bound to
-the first item that reads it; and a one-page answer sheet at the end. The key ends on a marking grid.
+the first item that reads it; and a one-page answer sheet at the end, where each part's rating sits
+beside the box the marker fills with that part's score. The key ends on a marking grid.
 For a week with parts it also writes the item-analysis workbook, whose Ratings sheet sets each part's
 ratings beside its right rate. Three things in the source file make the Word paper specific rather
 than generic, and each is written for the week:

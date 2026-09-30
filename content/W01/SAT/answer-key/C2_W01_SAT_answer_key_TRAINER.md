@@ -9,7 +9,7 @@ Saturday 10 October 2026. A 120-minute paper holding 54 items at 119.5 minutes b
 1. Papers are swapped, so nobody checks their own.
 2. The Academic TA reads the key out part by part, and the marker writes a tick or a cross beside each item.
 3. An item is right when its answer matches the key: every correct letter and no other on a more-than-one item, the number on an applied maths item (the working belongs to the discussion), and the whole sequence on an ordering item. The programme has set no partial-credit rule, so this key uses none.
-4. The marker writes the count of ticks as Items right on the front, out of 54, and hands the paper back.
+4. The marker writes each part's ticks beside its rating on the answer sheet, and their total as Items right, out of 54, then hands the paper back.
 5. The TA collects the papers and tallies the misses by tag, using the table below; that tally is Monday's remediation read. It is never a ranking and never read out by name.
 6. The TA enters every paper in `C2_W01_SAT_item_analysis_TRAINER.xlsx` beside this key, by seat and never by name: 1 for a tick, 0 for a cross and a blank for an item left empty. The workbook orders the discussion from the most-missed item, flags any item to check, and gives each tag's rate for the room and for each seat.
 

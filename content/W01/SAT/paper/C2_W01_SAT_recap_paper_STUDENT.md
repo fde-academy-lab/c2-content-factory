@@ -4,6 +4,10 @@ Saturday 10 October 2026 · 120 minutes · 54 items in 6 parts · pen and paper,
 
 Name: ____________________    Marked by: ____________________    Items right: ____ of 54
 
+## What this paper is for
+
+This week Meera Raghavan asked whether the Rs 12 crore Marketing wants for acquisition goes to the branch of revenue that is actually short, Anand Iyer disputed the Q1 figure the ERP export put on the dashboard, and Meera now has to decide whether the monsoon discount runs again at Diwali. This paper puts those decisions in front of you once more, with no notebook, no notes and no assistant, to find which of them you can make cold. The room's scores in each part, set beside the ratings you give in step one, decide where Monday's revision starts. A wrong answer tells Monday more than a blank one, so answer every item.
+
 ## How this paper works
 
 - 120 minutes in one sitting. Each part gives its minutes as a guide, not a limit.
@@ -11,7 +15,19 @@ Name: ____________________    Marked by: ____________________    Items right: __
 - Every item also names its level, easy, medium or hard, so you can plan your time. A hard item is several steps on an exhibit, never an obscure fact.
 - A wrong answer costs nothing, so answer every item on the line under it.
 - Pen and this paper only: no laptop, no phone, no notes and no assistant.
-- Afterwards the papers are swapped and marked against the key, and the discussion takes the items the room missed most. The paper is ungraded and ranks nobody; the room's scores by topic set Monday's revision.
+- Afterwards the papers are swapped and marked against the key, and the discussion takes the items the room missed most. The paper is ungraded and ranks nobody; the room's rates by part and by tag set Monday's revision.
+- Every item is set inside Kalpa Retail, where you work as a trainee engineer in the data and AI team of its Global Capability Centre. Meera Raghavan is its CEO, Anand Iyer its finance controller and Kavya Nair a senior analyst in its data team; Marketing and Finance appear by function, and every number an item needs is on the page.
+
+## Step one, before Part 1
+
+Before you read any item, rate yourself from 1 to 4 on each part in the table below, as you are today. The comparison between your rating and your score in each part is the most useful thing this paper produces for Monday.
+
+- 1: I have not used this
+- 2: I can follow it when someone shows me
+- 3: I can do it alone on a small problem
+- 4: I can find and fix mistakes in someone else's version
+
+Your ratings: Part 1 ___ · Part 2 ___ · Part 3 ___ · Part 4 ___ · Part 5 ___ · Part 6 ___
 
 ## The paper at a glance
 
@@ -33,55 +49,55 @@ Name: ____________________    Marked by: ____________________    Items right: __
 
 "Say it to me the way you will say it to her, because I will push the way Marketing will." Kavya Nair, the senior analyst, starts with the week's rules, one line each, before any note goes to Meera.
 
-#### Q1 · Medium · write the word or number
+#### Q1 · Medium · write the word or number · Complete the definition
 
 The p-value is the share of chance-only worlds that show a gap at least as ____ as the one observed.
 
 Answer: ____________________
 
-#### Q2 · Medium · write the word or number
+#### Q2 · Medium · write the word or number · Name the mechanism
 
 Customers who would have bought anyway were more likely to receive the discount. A factor that drives both receiving it and buying is called a ____.
 
 Answer: ____________________
 
-#### Q3 · Medium · write T or F
+#### Q3 · Medium · write T or F · Read a p-value claim
 
 A p-value of 0.03 means there is a 3 percent chance that the finding is wrong.
 
 Answer: ____________________
 
-#### Q4 · Easy · write T or F
+#### Q4 · Easy · write T or F · Test a claim on averages
 
 If one corporate order is fifty times the size of a normal order, the median order value barely moves while the mean jumps.
 
 Answer: ____________________
 
-#### Q5 · Easy · write T or F
+#### Q5 · Easy · write T or F · Judge a claim on significance
 
 A difference can be statistically real and still not be worth acting on.
 
 Answer: ____________________
 
-#### Q6 · Easy · write T or F
+#### Q6 · Easy · write T or F · Check a claim on duplicates
 
 Removing exact duplicate rows can change a quarter's revenue.
 
 Answer: ____________________
 
-#### Q7 · Easy · write T or F
+#### Q7 · Easy · write T or F · Compare two counts
 
 A rate computed on 12 orders deserves the same trust as the same rate computed on 400 orders.
 
 Answer: ____________________
 
-#### Q8 · Easy · write T or F
+#### Q8 · Easy · write T or F · Test a causal claim
 
 If revenue rose after a discount, the discount caused the rise.
 
 Answer: ____________________
 
-#### Q9 · Hard · write T or F
+#### Q9 · Hard · write T or F · Judge an aggregate claim
 
 A total can rise while every segment inside it falls, if the mix of segments shifts.
 
@@ -95,7 +111,7 @@ Answer: ____________________
 
 "Are we losing customers, or are the ones we have buying less?" Meera Raghavan, the CEO, asks it with Q2 revenue below Q1 and Marketing asking her for Rs 12 crore to acquire new customers.
 
-#### Q10 · Easy · circle one letter
+#### Q10 · Easy · circle one letter · Rule out a branch
 
 Revenue fell from Q1 to Q2 while the customer count stayed flat. Which branch of the revenue tree can you rule out first?
 
@@ -104,7 +120,7 @@ b) the number of items per order
 c) the number of customers
 d) the value of the discounts given
 
-#### Q11 · Easy · circle one letter
+#### Q11 · Easy · circle one letter · Place the Rs 12 crore
 
 Marketing asks for Rs 12 crore to acquire new customers. On the revenue tree, which branch is that money a bet on?
 
@@ -113,7 +129,7 @@ b) orders per customer
 c) items per order
 d) price per item
 
-#### Q12 · Easy · circle one letter
+#### Q12 · Easy · circle one letter · Pick the first rung
 
 What is the first rung of the sales-drop investigation ladder?
 
@@ -122,7 +138,7 @@ b) Decompose the change along the revenue tree.
 c) State a hypothesis for the cause.
 d) Isolate the segment that moved.
 
-#### Q13 · Medium · circle one letter
+#### Q13 · Medium · circle one letter · Repair the comparison
 
 Q1 holds 13 weeks of orders and Q2 holds 11. What makes the revenue comparison fair?
 
@@ -131,7 +147,7 @@ b) Add two weeks at the Q2 weekly average and report that total as actual.
 c) Compare the quarters month by month, three months against three.
 d) Compare revenue per week, or cut both quarters to the same weeks.
 
-#### Q14 · Hard · circle one letter
+#### Q14 · Hard · circle one letter · Compare the levers
 
 With every other branch of the tree held as it is, a 10 percent lift in which branch adds the most revenue?
 
@@ -140,7 +156,7 @@ b) Orders per customer, because existing buyers cost nothing to reach.
 c) All three add the same revenue, so the choice turns on what each costs to move.
 d) Price per item, because a price rise flows straight into revenue.
 
-#### Q15 · Easy · circle every correct letter
+#### Q15 · Easy · circle every correct letter · Define a rate
 
 Which of these belong in a complete definition of a rate? Mark every correct option.
 
@@ -149,7 +165,7 @@ b) its denominator
 c) its value last quarter
 d) the time window it covers
 
-#### Q16 · Medium · circle every correct letter
+#### Q16 · Medium · circle every correct letter · Find what fakes a drop
 
 Which of these can make a quarter-on-quarter drop look real when it is not? Mark every correct option.
 
@@ -169,7 +185,7 @@ d) reporting the median beside the mean
 | Q1 | 1,000 | 2,400 | Rs 48.0 lakh |
 | Q2 | 1,000 | 2,160 | Rs 43.2 lakh |
 
-#### Q17 · Easy · circle one letter
+#### Q17 · Easy · circle one letter · Compute a leaf
 
 What is orders per customer in Q2?
 
@@ -178,7 +194,7 @@ b) 2.16
 c) 2.40
 d) 0.46
 
-#### Q18 · Medium · circle one letter
+#### Q18 · Medium · circle one letter · Find the branch that moved
 
 Which branch moved between the quarters?
 
@@ -187,13 +203,13 @@ b) orders per customer
 c) revenue per order
 d) all three
 
-#### Q19 · Medium · write T or F
+#### Q19 · Medium · write T or F · Test the decomposition
 
 True or false: The whole drop can be explained without any change in revenue per order.
 
 Answer: ____________________
 
-#### Q20 · Hard · circle one letter
+#### Q20 · Hard · circle one letter · Answer Marketing's claim
 
 Marketing says the fix is acquisition. What does the decomposition say?
 
@@ -202,7 +218,7 @@ b) It is supported, because the customer count fell between the quarters.
 c) Nothing can be said, because two quarters are too few to decompose.
 d) It is supported, because revenue per order fell by about 10 percent.
 
-#### Q21 · Medium · write the letters in order
+#### Q21 · Medium · write the letters in order · Order the ladder
 
 Put the five rungs of the sales-drop investigation ladder in order.
 
@@ -222,7 +238,7 @@ Order: ____________________
 
 "Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9." Anand Iyer, the finance controller, wrote that back to all on Tuesday's finding, and the ERP export behind the dashboard is the file on your desk.
 
-#### Q22 · Medium · circle one letter
+#### Q22 · Medium · circle one letter · Repair the crash
 
 A loop crashes on int('twelve'). Which repair is honest?
 
@@ -231,7 +247,7 @@ b) Delete the offending row from the source file, so that the crash cannot recur
 c) Convert the whole column to float, because float accepts more kinds of text.
 d) Catch the error, write the row to the rejects log with its reason, and continue.
 
-#### Q23 · Medium · circle one letter
+#### Q23 · Medium · circle one letter · Decide what a duplicate is
 
 Two rows share an order_id and differ only in one timestamp. What decides whether they are duplicates?
 
@@ -240,7 +256,7 @@ b) the identity rule you wrote down for an order
 c) whether the file arrived as CSV or as JSON
 d) whether the two amounts are large or small
 
-#### Q24 · Medium · circle one letter
+#### Q24 · Medium · circle one letter · Read the run's report
 
 A cleaning run reports input 200, clean 183 and rejected 14. What does that tell you?
 
@@ -249,7 +265,7 @@ b) Fourteen rows were duplicates, and the remaining rows are all safe to use.
 c) The run reconciles, because clean rows outnumber rejected rows.
 d) Seventeen rows were rejected, and the log has simply under-counted them.
 
-#### Q25 · Medium · circle one letter
+#### Q25 · Medium · circle one letter · Choose the first move
 
 The dashboard shows Rs 2.1 crore for Q1 and Finance shows Rs 1.9 crore. What is your first move?
 
@@ -258,7 +274,7 @@ b) Ask Finance to restate its books, because the dashboard reads the live system
 c) Report the dashboard figure, because it refreshes daily while Finance's books lag a month.
 d) Profile the export for duplicates and reconcile counts and revenue against Finance.
 
-#### Q26 · Easy · circle every correct letter
+#### Q26 · Easy · circle every correct letter · Treat a missing value
 
 Which are valid treatments for a missing value, each with a written reason? Mark every correct option.
 
@@ -267,7 +283,7 @@ b) Fill a stated default.
 c) Keep the row and flag it.
 d) Type a value into the export.
 
-#### Q27 · Easy · circle every correct letter
+#### Q27 · Easy · circle every correct letter · Define the profile
 
 What does a field profile report for each field? Mark every correct option.
 
@@ -289,19 +305,19 @@ d) the value to fill in where one is missing
 | Missing required field | 1 |
 | Truncated line | 1 |
 
-#### Q28 · Easy · write the word or number
+#### Q28 · Easy · write the word or number · Count the clean rows
 
 The clean file holds ____ rows.
 
 Answer: ____________________
 
-#### Q29 · Medium · write the word or number
+#### Q29 · Medium · write the word or number · Size the rejects log
 
 For the run to reconcile, the rejects log must hold ____ rows.
 
 Answer: ____________________
 
-#### Q30 · Hard · circle one letter
+#### Q30 · Hard · circle one letter · Update the comparison
 
 All 14 duplicates sat in Q1. What happens to the Q1 to Q2 drop once they are removed?
 
@@ -310,7 +326,7 @@ b) It stays the same, because duplicates cancel out.
 c) It shrinks, because Q1 was inflated.
 d) It turns into a rise in every case.
 
-#### Q31 · Medium · write the letters in order
+#### Q31 · Medium · write the letters in order · Order the cleaning pass
 
 Put the cleaning pass in order.
 
@@ -329,7 +345,7 @@ Order: ____________________
 
 "You gave me a number and told me what it counts." Kavya Nair, the senior analyst, now wants the code and the export behind each number read line by line, before any of it reaches Meera.
 
-#### Q32 · Medium · write T or F
+#### Q32 · Medium · write T or F · Predict the comparison
 
 In Python 3, the comparison '4500' > 3000 evaluates to True.
 
@@ -349,7 +365,7 @@ flowchart LR
   A --> E["Clean file<br/>1,160 rows<br/>Rs 88.0 lakh"]
 ```
 
-#### Q33 · Medium · circle one letter
+#### Q33 · Medium · circle one letter · Choose the count to trust
 
 Which duplicate count should the run trust?
 
@@ -358,7 +374,7 @@ b) Zero, because a different timestamp proves two separate orders were placed.
 c) Forty, but only once Finance has confirmed every pair by hand.
 d) Forty, because the identity rule says one order_id is one order.
 
-#### Q34 · Hard · circle one letter
+#### Q34 · Hard · circle one letter · Judge the reconciliation
 
 The row counts add up: 1,160 clean plus 40 rejected is 1,200. What is the honest status of the run?
 
@@ -378,19 +394,19 @@ d) Reconciled, because a gap under 5 percent of the input is within ordinary rou
 | Retail | 400 | Rs 8.0 lakh |
 | Business | 100 | Rs 12.0 lakh |
 
-#### Q35 · Easy · write the word or number
+#### Q35 · Easy · write the word or number · Count per customer
 
 Orders per customer in this export is ____.
 
 Answer: ____________________
 
-#### Q36 · Medium · write the word or number
+#### Q36 · Medium · write the word or number · Price the average order
 
 The average order value across both segments is Rs ____.
 
 Answer: ____________________
 
-#### Q37 · Hard · circle one letter
+#### Q37 · Hard · circle one letter · Reply in the room
 
 Marketing reads the slide as "nobody comes back, so buy new customers". What do you say in the room?
 
@@ -412,7 +428,7 @@ for order in orders:
 print(with_discount, "of", len(orders), "orders had a discount")
 ```
 
-#### Q38 · Medium · circle one letter
+#### Q38 · Medium · circle one letter · Read the discount count
 
 The discount field is optional in Kalpa's export. Marketing reads the line this prints as "three orders in five had no discount" and wants the offer extended to those three. What is the honest reading?
 
@@ -421,7 +437,7 @@ b) Two of the three are unknown, and 2 in 5 remains the share to report.
 c) Two of the three are broken records, so they belong in the rejects log.
 d) Two of the three are unknown, so the share is 2 of the 3 recorded.
 
-#### Q39 · Easy · circle one letter
+#### Q39 · Easy · circle one letter · Predict what result holds
 
 A function ends with print(total) and has no return statement. After result = revenue_for(seg), what does result hold?
 
@@ -443,7 +459,7 @@ changes = {"Pune": pct_change(1.60, 0.80), "Delhi": pct_change(1.50, 1.41)}
 print({city: v for city, v in changes.items() if v and v < 0})
 ```
 
-#### Q40 · Hard · circle one letter
+#### Q40 · Hard · circle one letter · Trace the summary
 
 The analyst sends Meera the last line this prints as the cities where orders per customer fell from Q1 to Q2. What does that line give her, and why?
 
@@ -464,7 +480,7 @@ print(len(rows), "rows:", len(clean), "clean,", len(rows) - len(clean),
       "set aside; Rs", sum(clean))
 ```
 
-#### Q41 · Hard · circle one letter
+#### Q41 · Hard · circle one letter · Predict the output
 
 Finance's books hold orders A, B and C at Rs 7,300 in all. This pass cleans four rows of the export, read in file order. What does it print?
 
@@ -481,7 +497,7 @@ d) 4 rows: 2 clean, 2 set aside; Rs 7300
 
 "Real, or the wobble we see every quarter? Should I move budget to Student? Did the discount work?" Meera Raghavan, the CEO, wants all three answered before Monday's growth review.
 
-#### Q42 · Hard · circle one letter
+#### Q42 · Hard · circle one letter · Read the shuffles
 
 Ten label shuffles produced gaps between 2 and 6 points, and the real gap is 5 points. What is the honest reading?
 
@@ -490,7 +506,7 @@ b) The real gap is significant, because it is larger than most of the shuffled g
 c) Chance alone often produces a gap this large, so the real gap is not surprising.
 d) The shuffle should be repeated until the real gap looks rare enough to report.
 
-#### Q43 · Easy · circle one letter
+#### Q43 · Easy · circle one letter · Advise Meera
 
 The Student segment grew 40 percent on 12 orders. What do you tell Meera?
 
@@ -499,7 +515,7 @@ b) The rate rests on too few orders to trust yet.
 c) Drop Student from the report as too small to matter.
 d) The growth is proven because 40 percent is large.
 
-#### Q44 · Medium · circle every correct letter
+#### Q44 · Medium · circle every correct letter · Design a fair test
 
 What does a fair test of 'did the discount work' need? Mark every correct option.
 
@@ -508,7 +524,7 @@ b) the same time window for both groups
 c) a comparable mix of segments in both groups
 d) a deeper discount, so any effect is easier to see
 
-#### Q45 · Hard · circle every correct letter
+#### Q45 · Hard · circle every correct letter · Check four p-value statements
 
 Which statements about the p-value are correct? Mark every correct option.
 
@@ -529,7 +545,7 @@ d) It says nothing about whether the gap is large enough to matter.
 | Revenue per customer inside each segment | Fell in every segment |
 | Customers who received the discount | Bought more often on average than those who did not |
 
-#### Q46 · Hard · circle one letter
+#### Q46 · Hard · circle one letter · Name the pattern
 
 What is this pattern an example of?
 
@@ -538,13 +554,13 @@ b) a calculation error in the segment-level revenue totals
 c) a seasonal effect that the monsoon produces every year
 d) a sample that is too small to show any pattern at all
 
-#### Q47 · Medium · write T or F
+#### Q47 · Medium · write T or F · Judge frequency's role
 
 True or false: Buying frequency is a confounder for the campaign's effect.
 
 Answer: ____________________
 
-#### Q48 · Hard · circle one letter
+#### Q48 · Hard · circle one letter · Advise on Diwali
 
 Meera asks whether to repeat the discount at Diwali. Which answer is honest?
 
@@ -561,7 +577,7 @@ d) Do not repeat it as designed: no segment improved, and the lift is a mix effe
 
 "Before anything goes to Meera, rebuild the week from a raw export with no assistant and no notes." Kavya Nair, the senior analyst, wants the working as well as the answer, on the lines under each item.
 
-#### Q49 · Easy · circle one letter
+#### Q49 · Easy · circle one letter · Read the two averages
 
 Order values show a mean of Rs 9,800 and a median of Rs 1,400. What is the likeliest explanation?
 
@@ -570,7 +586,7 @@ b) The median was miscalculated from a partial export.
 c) Half the orders are above Rs 9,800.
 d) A few very large orders pull the mean up.
 
-#### Q50 · Hard · show the working, then the answer
+#### Q50 · Hard · show the working, then the answer · Reason with numbers
 
 A 15 percent discount lifts the quantity sold by 10 percent. By what percent does revenue change?
 
@@ -578,7 +594,7 @@ Working:
 
 Answer: ____________________
 
-#### Q51 · Easy · show the working, then the answer
+#### Q51 · Easy · show the working, then the answer · Compute median and mean
 
 Five order values in rupees: 800, 1,200, 1,400, 2,000 and 480,000. Give the median and the mean.
 
@@ -586,7 +602,7 @@ Working:
 
 Answer: ____________________
 
-#### Q52 · Easy · show the working, then the answer
+#### Q52 · Easy · show the working, then the answer · Size the change
 
 Revenue was Rs 2.1 crore in Q1 and Rs 1.9 crore in Q2. Give the percentage change to one decimal place.
 
@@ -594,7 +610,7 @@ Working:
 
 Answer: ____________________
 
-#### Q53 · Medium · show the working, then the answer
+#### Q53 · Medium · show the working, then the answer · Read p off the shuffles
 
 In 5,000 label shuffles, 140 produced a gap at least as large as the real one. What is the p-value?
 
@@ -602,7 +618,7 @@ Working:
 
 Answer: ____________________
 
-#### Q54 · Medium · show the working, then the answer
+#### Q54 · Medium · show the working, then the answer · Build revenue from the tree
 
 A retailer has 50,000 customers, 2 orders per customer, 3 items per order, Rs 400 per item and Rs 1 crore of discounts. What is its revenue?
 

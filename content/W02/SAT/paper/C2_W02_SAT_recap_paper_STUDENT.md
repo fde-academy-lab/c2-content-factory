@@ -4,6 +4,10 @@ Saturday 17 October 2026 · 120 minutes · 55 items in 6 parts · pen and paper,
 
 Name: ____________________    Marked by: ____________________    Items right: ____ of 55
 
+## What this paper is for
+
+This week you computed Anand's Monday numbers in the warehouse, set booked revenue against what was actually collected, drew up Marketing's protect list of its best members, and built the customer table in pandas and carried it to the leadership deck. This paper finds which of those decisions you can make cold, with no notes and no assistant, and whether you can read a query, a join, a window or a merge and say what it returns before anyone acts on the number. The room's scores by part, set beside the ratings you give in step one, tell Monday's session where to start.
+
 ## How this paper works
 
 - 120 minutes in one sitting. Each part gives its minutes as a guide, not a limit.
@@ -11,7 +15,19 @@ Name: ____________________    Marked by: ____________________    Items right: __
 - Every item also names its level, easy, medium or hard, so you can plan your time. A hard item is several steps on an exhibit, never an obscure fact.
 - A wrong answer costs nothing, so answer every item on the line under it.
 - Pen and this paper only: no laptop, no phone, no notes and no assistant.
-- Afterwards the papers are swapped and marked against the key, and the discussion takes the items the room missed most. The paper is ungraded and ranks nobody; the room's scores by topic set Monday's revision.
+- Afterwards the papers are swapped and marked against the key, and the discussion takes the items the room missed most. The paper is ungraded and ranks nobody; the room's rates by part and by tag set Monday's revision.
+- The items are set inside Kalpa Retail, the fictional company of Weeks 1 and 2. Anand Iyer is its finance controller and Kavya Nair its senior analyst, Meera Raghavan's office reads the growth review deck, and the head of Retail-Plus, the marketing lead and the data platform lead are named by role alone. Nothing about the company needs to be known in advance.
+
+## Step one, before Part 1
+
+Before you read any item, rate yourself from 1 to 4 on each part in the table below, as you are today. The comparison between your rating and your score in each part is the most useful thing this paper produces for Monday.
+
+- 1: I have not used this
+- 2: I can follow it when someone shows me
+- 3: I can do it alone on a small problem
+- 4: I can find and fix mistakes in someone else's version
+
+Your ratings: Part 1 ___ · Part 2 ___ · Part 3 ___ · Part 4 ___ · Part 5 ___ · Part 6 ___
 
 ## The paper at a glance
 
@@ -33,67 +49,67 @@ Name: ____________________    Marked by: ____________________    Items right: __
 
 Anand ends the week asking what he always asks: "Do your numbers match my books, and can my analyst audit how you got them?" Each item below is one of the rules your answer rests on.
 
-#### Q1 · Medium · write the word or number
+#### Q1 · Medium · write the word or number · Complete the filter
 
 Orders with no payment are found with a LEFT JOIN to payments and a filter where the payment key IS ____.
 
 Answer: ____________________
 
-#### Q2 · Medium · write the word or number
+#### Q2 · Medium · write the word or number · Name what LAG returns
 
 On the first month of each customer, LAG(spend) returns ____.
 
 Answer: ____________________
 
-#### Q3 · Medium · write the word or number
+#### Q3 · Medium · write the word or number · Name the error
 
 In pandas, merge(..., validate='one_to_one') raises a ____ when a key repeats.
 
 Answer: ____________________
 
-#### Q4 · Easy · write T or F
+#### Q4 · Easy · write T or F · Check the run order
 
 In the logical order of a query, SELECT is evaluated before WHERE.
 
 Answer: ____________________
 
-#### Q5 · Medium · write T or F
+#### Q5 · Medium · write T or F · Test a group filter
 
 WHERE COUNT(*) > 5 is valid SQL for filtering groups.
 
 Answer: ____________________
 
-#### Q6 · Easy · write T or F
+#### Q6 · Easy · write T or F · What INNER keeps
 
 An INNER JOIN between orders and payments silently drops the orders that were never paid.
 
 Answer: ____________________
 
-#### Q7 · Medium · write T or F
+#### Q7 · Medium · write T or F · Read a joined SUM
 
 A join can inflate a SUM while every individual row still looks plausible.
 
 Answer: ____________________
 
-#### Q8 · Hard · write T or F
+#### Q8 · Hard · write T or F · Two rank functions
 
 RANK and DENSE_RANK give different results only when there are ties.
 
 Answer: ____________________
 
-#### Q9 · Medium · write T or F
+#### Q9 · Medium · write T or F · A window in WHERE
 
 A window function can be used directly inside a WHERE clause.
 
 Answer: ____________________
 
-#### Q10 · Easy · write T or F
+#### Q10 · Easy · write T or F · What groupby returns
 
 groupby followed by agg returns one row for each group.
 
 Answer: ____________________
 
-#### Q11 · Easy · write T or F
+#### Q11 · Easy · write T or F · A pivot on raw rows
 
 A pivot table built on an export that still contains duplicate rows reports the correct total.
 
@@ -107,7 +123,7 @@ Answer: ____________________
 
 The data platform lead grants read access to the warehouse with one warning: "Query it; do not export it." These items ask how a query filters, groups and orders what it reads.
 
-#### Q12 · Easy · circle one letter
+#### Q12 · Easy · circle one letter · Which clause
 
 Which clause runs first in the logical order of a query?
 
@@ -116,7 +132,7 @@ b) FROM
 c) WHERE
 d) ORDER BY
 
-#### Q13 · Medium · circle one letter
+#### Q13 · Medium · circle one letter · Why the warehouse
 
 Why should Finance's Monday number be computed in the warehouse and not in a notebook?
 
@@ -125,7 +141,7 @@ b) A notebook cannot hold a full quarter of orders, so its totals are always app
 c) SQL is faster than Python on every task, so the number arrives sooner each Monday.
 d) The query runs unchanged each week against the source, and every line can be audited.
 
-#### Q14 · Medium · circle every correct letter
+#### Q14 · Medium · circle every correct letter · Four statements
 
 Which statements about WHERE and HAVING are correct? Mark every correct option.
 
@@ -134,7 +150,7 @@ b) HAVING filters groups after aggregation.
 c) HAVING can compare COUNT(*) with a number.
 d) WHERE can compare COUNT(*) with a number.
 
-#### Q15 · Easy · show the working, then the answer
+#### Q15 · Easy · show the working, then the answer · Predict the row count
 
 A table has 4 segments and 2 quarters, and every combination has orders. How many rows does GROUP BY segment, quarter return?
 
@@ -142,7 +158,7 @@ Working:
 
 Answer: ____________________
 
-#### Q16 · Medium · write the letters in order
+#### Q16 · Medium · write the letters in order · Order the clauses
 
 Put the clauses in their logical execution order.
 
@@ -163,7 +179,7 @@ Order: ____________________
 
 Anand asks: "Show me, order by order, what we actually collected against what we booked in Q2. If there is a gap, I want to know which orders and which channel."
 
-#### Q17 · Easy · circle one letter
+#### Q17 · Easy · circle one letter · Name the join
 
 Which join returns only the orders that have at least one payment?
 
@@ -172,7 +188,7 @@ b) FULL OUTER JOIN
 c) INNER JOIN
 d) CROSS JOIN
 
-#### Q18 · Medium · circle one letter
+#### Q18 · Medium · circle one letter · Explain the extra rows
 
 After a LEFT JOIN from orders to payments, the row count rose from 1,000 to 1,050. What is the likeliest cause?
 
@@ -181,7 +197,7 @@ b) Some orders have no payment.
 c) The join kept the unpaid orders as extra rows.
 d) Some orders have more than one payment row.
 
-#### Q19 · Medium · circle one letter
+#### Q19 · Medium · circle one letter · Read four queries
 
 Which query lists the orders that were paid twice?
 
@@ -190,7 +206,7 @@ b) SELECT DISTINCT order_id FROM payments ORDER BY order_id
 c) SELECT order_id FROM payments ORDER BY order_id
 d) SELECT order_id FROM payments WHERE COUNT(order_id) > 1 GROUP BY order_id
 
-#### Q20 · Hard · circle one letter
+#### Q20 · Hard · circle one letter · The first check
 
 Collected revenue doubled after a join and every row looks fine. What is the first check?
 
@@ -199,7 +215,7 @@ b) Round the amounts to whole rupees, because decimals accumulate across many ro
 c) Switch to an INNER JOIN, because a LEFT JOIN is what creates the extra rows.
 d) Compare the row count before and after the join, and count payments per order.
 
-#### Q21 · Medium · circle every correct letter
+#### Q21 · Medium · circle every correct letter · Build the validation
 
 A LEFT JOIN from 1,000 orders to payments returns 1,050 rows. Which checks belong in the validation? Mark every correct option.
 
@@ -208,7 +224,7 @@ b) payments per order, with GROUP BY and HAVING COUNT(*) > 1
 c) booked revenue before and after the join
 d) the number of channels before and after the join
 
-#### Q22 · Hard · circle every correct letter
+#### Q22 · Hard · circle every correct letter · Compare two joins
 
 Which rows can appear in a FULL OUTER JOIN of orders and payments and never in an INNER JOIN? Mark every correct option.
 
@@ -234,19 +250,19 @@ flowchart LR
   C --> PC["no payment row"]
 ```
 
-#### Q23 · Medium · write the word or number
+#### Q23 · Medium · write the word or number · Trace the LEFT join
 
 A LEFT JOIN from orders to payments returns ____ rows.
 
 Answer: ____________________
 
-#### Q24 · Medium · write the word or number
+#### Q24 · Medium · write the word or number · Trace the INNER join
 
 An INNER JOIN returns ____ rows.
 
 Answer: ____________________
 
-#### Q25 · Medium · circle one letter
+#### Q25 · Medium · circle one letter · Find the unpaid orders
 
 Anand asks for the unpaid orders. Which pattern finds them?
 
@@ -255,13 +271,13 @@ b) INNER JOIN, then WHERE payments.amount_paid IS NULL
 c) GROUP BY order_id HAVING COUNT(*) > 1
 d) RIGHT JOIN, then WHERE orders.order_id IS NULL
 
-#### Q26 · Medium · write T or F
+#### Q26 · Medium · write T or F · Judge the payments SUM
 
 True or false: SUM(amount_paid) over the payments table overstates what was collected, because each retried payment is counted twice.
 
 Answer: ____________________
 
-#### Q27 · Medium · show the working, then the answer
+#### Q27 · Medium · show the working, then the answer · Reason with numbers
 
 Every Q2 order was paid in full once, which makes Rs 20 lakh collected. Fifty payments of Rs 2,000 each were then recorded a second time by the gateway. What does a plain SUM of the payments table report?
 
@@ -277,7 +293,7 @@ Answer: ____________________
 
 Marketing wants to protect the best members before they drift: "Give us the top fifty customers by Q2 revenue in each segment, and flag anyone whose monthly spend has fallen for two months running." Meera wants to see revenue accumulate week by week against the plan line.
 
-#### Q28 · Easy · circle one letter
+#### Q28 · Easy · circle one letter · Predict the ranks
 
 Revenue values are 900, 850, 850 and 700. What does RANK() return in descending order?
 
@@ -286,7 +302,7 @@ b) 1, 2, 2, 3
 c) 1, 2, 2, 4
 d) 1, 1, 2, 3
 
-#### Q29 · Medium · circle one letter
+#### Q29 · Medium · circle one letter · Same values, DENSE_RANK
 
 For the same four values, what does DENSE_RANK() return?
 
@@ -295,7 +311,7 @@ b) 1, 2, 2, 3
 c) 1, 2, 2, 4
 d) 1, 1, 2, 3
 
-#### Q30 · Medium · circle one letter
+#### Q30 · Medium · circle one letter · Top three per segment
 
 Marketing wants the top three customers in each segment. Which approach answers it?
 
@@ -304,7 +320,7 @@ b) A window function ranked within PARTITION BY segment, filtered in an outer qu
 c) ORDER BY revenue DESC with LIMIT 3, run once, since it returns the top of each segment.
 d) HAVING COUNT(*) <= 3, because HAVING keeps only the three largest rows in a group.
 
-#### Q31 · Hard · circle one letter
+#### Q31 · Hard · circle one letter · Find the cause
 
 A running total changes between two runs of the same query. What is the likeliest cause?
 
@@ -313,7 +329,7 @@ b) The partition is too large, so the database samples the rows it adds.
 c) The database cached an old result and served it for one of the runs.
 d) SUM is approximate for large partitions, so its result drifts slightly.
 
-#### Q32 · Hard · circle every correct letter
+#### Q32 · Hard · circle every correct letter · Window or GROUP BY
 
 Which questions need a window function, because GROUP BY alone cannot answer them? Mark every correct option.
 
@@ -322,7 +338,7 @@ b) each segment's total revenue for the quarter
 c) each month's spend beside the same customer's previous month
 d) a running total by date with every row kept
 
-#### Q33 · Hard · circle every correct letter
+#### Q33 · Hard · circle every correct letter · Four claims on ties
 
 The head of Retail-Plus wants ties ranked the same and wants to know how many members made the top fifty. Which statements are true? Mark every correct option.
 
@@ -346,19 +362,19 @@ d) ROW_NUMBER always ships more than fifty rows.
 | E | 700 |
 | F | 650 |
 
-#### Q34 · Medium · write the word or number
+#### Q34 · Medium · write the word or number · Rank member D
 
 Under RANK(), member D gets rank ____.
 
 Answer: ____________________
 
-#### Q35 · Medium · write the word or number
+#### Q35 · Medium · write the word or number · Dense-rank member F
 
 Under DENSE_RANK(), member F gets rank ____.
 
 Answer: ____________________
 
-#### Q36 · Hard · circle one letter
+#### Q36 · Hard · circle one letter · Count what the filter keeps
 
 With DENSE_RANK(), how many members does WHERE dense_rnk <= 3 return?
 
@@ -367,7 +383,7 @@ b) 4
 c) 5
 d) 6
 
-#### Q37 · Hard · circle one letter
+#### Q37 · Hard · circle one letter · Exactly four members
 
 Marketing wants exactly four members. Which function returns exactly four rows, and at what cost?
 
@@ -376,7 +392,7 @@ b) DENSE_RANK, at no cost, because it never leaves a gap in the ranks.
 c) ROW_NUMBER, and the D-E tie is broken arbitrarily unless a tiebreaker is named.
 d) LAG, at the cost of losing the first row of every partition.
 
-#### Q38 · Hard · show the working, then the answer
+#### Q38 · Hard · show the working, then the answer · Count both lists
 
 Two members tie exactly at position fifty and nobody else ties. How many rows does WHERE rnk <= 50 return under RANK(), and how many under ROW_NUMBER()?
 
@@ -384,7 +400,7 @@ Working:
 
 Answer: ____________________
 
-#### Q39 · Medium · show the working, then the answer
+#### Q39 · Medium · show the working, then the answer · Run the falling flag
 
 A member's monthly spend is Rs 5,000, then Rs 4,200, then Rs 3,900. Using LAG, give the two month-on-month changes and say whether the 'fell two months running' flag fires.
 
@@ -400,7 +416,7 @@ Answer: ____________________
 
 Marketing's analysts live in Python and Meera's office runs on Excel. Kavya Nair puts it to the team: "Tell me honestly which tool you would pick for which job."
 
-#### Q40 · Medium · circle one letter
+#### Q40 · Medium · circle one letter · Define groupby
 
 Which sentence describes groupby correctly?
 
@@ -409,7 +425,7 @@ b) It joins two tables on a key, and then keeps one row for every match.
 c) It splits rows by key, applies a computation to each group and combines the results.
 d) It removes duplicate keys, and then counts how many rows were removed.
 
-#### Q41 · Medium · circle one letter
+#### Q41 · Medium · circle one letter · Explain the row count
 
 A merge of 1,000 customers with the campaign exposure table returns 1,120 rows. What happened?
 
@@ -418,7 +434,7 @@ b) Some customer keys repeat in the exposure table, so those customers were mult
 c) pandas appended its index as extra rows, which happens whenever how='left' is used.
 d) The key columns had different names, so pandas fell back to matching on row position.
 
-#### Q42 · Medium · circle one letter
+#### Q42 · Medium · circle one letter · Find the wrong setting
 
 XLOOKUP returned a member's details for an id that does not exist. Which setting was wrong?
 
@@ -427,7 +443,7 @@ b) The lookup array was sorted in ascending order before the formula ran.
 c) The sheet was protected, so the formula returned the last cached result.
 d) The match mode asked for a nearest match when it should have been exact.
 
-#### Q43 · Medium · circle one letter
+#### Q43 · Medium · circle one letter · Excel's job
 
 Which of these jobs belongs in Excel?
 
@@ -436,7 +452,7 @@ b) Joining payments to orders to find the orders that were never paid.
 c) Computing the source-of-truth revenue figure that Finance will check its own books against.
 d) De-duplicating the orders export before anyone computes revenue from it.
 
-#### Q44 · Medium · circle every correct letter
+#### Q44 · Medium · circle every correct letter · Four merge claims
 
 Which statements about pandas merge are true? Mark every correct option.
 
@@ -445,7 +461,7 @@ b) validate= can make a fan-out fail loudly.
 c) It always keeps the row count of the left table.
 d) Checking the row count before and after is still worth doing.
 
-#### Q45 · Medium · circle every correct letter
+#### Q45 · Medium · circle every correct letter · What a number needs
 
 A front-page number is misread unless it carries which of these? Mark every correct option.
 
@@ -469,13 +485,13 @@ flowchart LR
   M --> X["Excel pivot: sum of revenue"]
 ```
 
-#### Q46 · Medium · write the word or number
+#### Q46 · Medium · write the word or number · Count the merged rows
 
 The merged table holds ____ rows.
 
 Answer: ____________________
 
-#### Q47 · Medium · circle one letter
+#### Q47 · Medium · circle one letter · Predict what validate does
 
 What would validate='one_to_one' have done?
 
@@ -484,13 +500,13 @@ b) Nothing, because validate applies only to inner merges.
 c) Sorted both tables by key so that the rows lined up.
 d) Raised a MergeError before any number was produced.
 
-#### Q48 · Medium · write T or F
+#### Q48 · Medium · write T or F · Compare the totals
 
 True or false: The pivot's revenue total will be higher than the warehouse figure.
 
 Answer: ____________________
 
-#### Q49 · Hard · circle one letter
+#### Q49 · Hard · circle one letter · Place the fix
 
 Where does the fix belong?
 
@@ -499,7 +515,7 @@ b) In the merge: de-duplicate the exposure table on a stated rule and validate t
 c) In the chart: plot revenue per customer, which is unaffected by the repeated rows.
 d) Nowhere: a gap of this size is rounding, and the pivot can be shared as it stands.
 
-#### Q50 · Medium · show the working, then the answer
+#### Q50 · Medium · show the working, then the answer · Size the customer table
 
 1,000 orders belong to 400 customers. How many rows does the one-row-per-customer table hold, and what is the mean frequency?
 
@@ -507,7 +523,7 @@ Working:
 
 Answer: ____________________
 
-#### Q51 · Medium · write the letters in order
+#### Q51 · Medium · write the letters in order · Order the tools
 
 Put the week's tools in the order a number travels to the leadership deck.
 
@@ -540,7 +556,7 @@ member AS (
 SELECT round(avg(q1_spend)) AS avg_q1, round(avg(q2_spend)) AS avg_q2 FROM member;
 ```
 
-#### Q52 · Hard · circle one letter
+#### Q52 · Hard · circle one letter · Predict the result
 
 The head of Retail-Plus asks whether spend per member fell from Q1 to Q2, and the analyst answers with the query above. What does the query return, and how will she read it?
 
@@ -563,7 +579,7 @@ LEFT JOIN payments p ON p.order_id = o.order_id
 WHERE p.paid_date BETWEEN DATE '2026-07-01' AND DATE '2026-09-30';
 ```
 
-#### Q53 · Hard · circle one letter
+#### Q53 · Hard · circle one letter · Run the query by hand
 
 Anand wants every Q2 order beside what was collected on it within the quarter. Before the report goes to him, the analyst runs the query above to count its rows and their booked value. What does it return?
 
@@ -587,7 +603,7 @@ by_seg = t.groupby("segment").agg(reached=("customer_id", "count"),
 print(len(t), by_seg["reached"].sum(), by_seg["bought"].sum())
 ```
 
-#### Q54 · Hard · circle one letter
+#### Q54 · Hard · circle one letter · Predict the output
 
 The marketing lead asks how many customers the monsoon sale reached and how many of them bought, and the analyst runs the code above. What does it print?
 
@@ -596,7 +612,7 @@ b) 4 4 4
 c) 5 5 2
 d) 5 2 2
 
-#### Q55 · Medium · circle one letter
+#### Q55 · Medium · circle one letter · Fix the query
 
 A query fails with: column "segment" must appear in the GROUP BY clause or be used in an aggregate function. What fixes it?
 

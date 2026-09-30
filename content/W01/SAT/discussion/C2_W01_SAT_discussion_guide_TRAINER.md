@@ -44,8 +44,9 @@ papers stay on the desks through the break.
 2. Read the key out part by part from the key file, at a pace a marker can tick to: the letters
    in runs of five, the words and numbers one at a time. Say the item number before every answer,
    since the six parts number straight through to Q54.
-3. The marker writes a tick or a cross beside every item on the answer sheet, then the count of
-   ticks as Items right, out of 54, and hands the paper back.
+3. The marker writes a tick or a cross beside every item on the answer sheet, then each part's
+   ticks in the box beside that part's rating and their total as Items right, out of 54, and hands
+   the paper back, so each learner reads their rating against their score part by part.
 4. The key file's marking rule decides the edge cases: every correct letter and no other on a
    more-than-one item, the number on an applied maths item, the whole sequence on an ordering item.
    Accept the variants the key gives in brackets, such as 2 for 2.00 on Q35. There is no partial
