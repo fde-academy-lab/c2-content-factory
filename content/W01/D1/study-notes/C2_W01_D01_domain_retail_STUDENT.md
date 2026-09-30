@@ -344,7 +344,7 @@ Every worked number below is illustrative. Most come from section 1's Saturday o
 |---|---|
 | Formula | Returned / delivered, in units, orders or rupees, on one stated basis |
 | Worked | Of the month's 50,000 orders, 48,000 were delivered and 3,360 came back: 7 percent |
-| The trap | Returns arrive late, so this month looks clean and past months keep rising; two months compare only once both return windows close |
+| The trap | Returns arrive late, so this month looks clean while earlier months keep rising, and a month's rate is final only once its return window has closed |
 | Who asks | Finance, the fashion category, support and logistics |
 
 ### Same-store sales, or like-for-like growth
