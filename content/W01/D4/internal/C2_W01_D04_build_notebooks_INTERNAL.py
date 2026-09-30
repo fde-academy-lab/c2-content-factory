@@ -910,8 +910,8 @@ the option that depends on it is sized after that.
 |---|---|---|
 | A. Trust the headline | Rank segments by growth and fund the fastest | Moving money on a rate a coin could make |
 | B. A chance reference for the count | Deal each order to a quarter by coin flip and see how often chance makes a 40 percent rise | Nothing, once the count is found |
-| C. The rule of thumb | Treat any rate standing on fewer than thirty orders as a lead | A blunt line: it says careful and stops there |
-| D. Wait for thirty orders | Hold the decision until the rate stands on thirty orders or more | Time, which depends on the count and its growth |
+| C. The rule of thumb | Treat any rate standing on fewer than thirty customers as a lead, however many orders they placed | A blunt line: it says careful and stops there |
+| D. Wait for thirty customers | Hold the decision until thirty or more customers stand behind the rate | Time, which depends on how fast new customers arrive |
 '''),
         code('''
 order_segments = ["Retail-Core", "Retail-Plus", "Business", "Student"]
@@ -920,10 +920,10 @@ rows = [
      "budget follows a rise a coin could make"),
     ("B. Coin flips on the count", "the count behind the rate, found in section 2",
      "each order was as likely to land in either quarter", "none, once the count is known"),
-    ("C. The rule of thumb", "one count against thirty", "thirty is roughly where a rate settles",
-     "it says careful and stops there"),
-    ("D. Wait for thirty", "the count and its growth, sized after section 2", "the segment keeps growing",
-     "the chance to invest early"),
+    ("C. The rule of thumb", "the customers behind the rate, against thirty",
+     "thirty independent buyers is roughly where a rate settles", "it says careful and stops there"),
+    ("D. Wait for thirty customers", "the customers behind the rate and how fast new ones arrive, sized after section 2",
+     "new customers keep arriving", "the chance to invest early"),
 ]
 kit.table(["Option", "What it needs", "What it assumes", "What it risks"], rows,
           caption="The options sized by what each needs and assumes")
@@ -934,9 +934,11 @@ kit.check("every segment carries orders in both quarters, so every rate exists",
 '''),
         md('''
 **The best-fit call: B, said with C.** The coin flips tell Meera how often chance alone makes her
-headline, which is the question; the rule of thumb is the sentence she remembers. D is the action
-the answer may lead to, and how long it takes depends on the count, so you size it once you have
-found the count. **The fact that would change the call.** A cheap way to buy more orders fast, such
+headline, which is the question; the rule of thumb is the sentence she remembers. The rule counts
+customers, because more orders from the same few customers add orders and no new evidence: thirty
+orders from two people are still two people's habits. D is the action the answer may lead to, and
+how long it takes depends on how many customers stand behind the rate, so you size it once you have
+found them. **The fact that would change the call.** A cheap way to buy more orders fast, such
 as a small paid test aimed only at students: then D stops being a wait and becomes a two-week
 experiment.
 '''),
@@ -990,22 +992,18 @@ print(len({o["customer_id"] for o in student}), "distinct Student customers")
 '''),
         empty(),
         md('''
-**Your turn, continued: size option D.** With the count you have found, how long would waiting
-take? Suppose Student's 40 percent rise held every quarter. Type these lines into the next empty
-cell: they count the quarters until a quarter-on-quarter rate stands on thirty orders or more.
+**Your turn, continued: size option D.** Option D waits until thirty or more customers stand
+behind the rate, since more orders from the same customers settle nothing. How fast are new Student
+customers arriving? Type these lines into the next empty cell:
 
 ```python
-latest = sum(1 for o in student if o["quarter"] == "Q2")
-behind, quarters = len(student), 0
-while behind < 30:                 # the next rate stands on the latest quarter and the one after it
-    quarters += 1
-    after = round(latest * 1.4)
-    behind, latest = latest + after, after
-print(quarters, "more quarters before the rate stands on thirty orders, if the rise held every quarter")
+q1_buyers = {o["customer_id"] for o in student if o["quarter"] == "Q1"}
+q2_buyers = {o["customer_id"] for o in student if o["quarter"] == "Q2"}
+print(len(q1_buyers | q2_buyers), "customers behind the rise;", len(q2_buyers - q1_buyers), "of them new in Q2")
 ```
 
-Then write one sentence on what option D costs Meera, and one on what a two-week paid test would
-change.
+Then write one sentence on how long waiting for thirty customers would take at that pace, and one on
+what a two-week paid test aimed at new students would change.
 '''),
         empty(),
         md('''
@@ -1047,9 +1045,10 @@ print(f"share of chance-only worlds with a rise of 40 percent or more: {student_
 '''),
         md('''
 **What happened.** The answer is c. About four in ten coin-flip worlds make a rise of 40 percent or
-more from Student's orders alone. Chance makes Meera's headline almost as often as not. Now the same
-40 percent on bigger counts: a segment with Retail-Core's orders, and an **invented** segment of
-400.
+more from Student's orders alone. Chance makes Meera's headline almost as often as not, and the flips
+are generous: they treat each order as its own draw, while Student's orders come from very few
+customers, whose orders move together. Now the same 40 percent on bigger counts: a segment with
+Retail-Core's orders, and an **invented** segment of 400.
 '''),
         code('''
 core_n = sum(1 for o in ORDERS if o["segment"] == "Retail-Core")
@@ -1067,9 +1066,10 @@ kit.check("on 400 orders chance almost never makes it", compare["invented, 400 o
         md('''
 **The fix.** The rate, its count, and whether chance makes it, with the decision that follows:
 "Student orders rose 40 percent, on a count so small that chance alone makes a rise that size in
-about 40 percent of coin-flip worlds. Not yet: we watch Student until its rise stands on thirty
-orders or more before any budget moves." What changed: the decision. The draft moved budget; the
-fix moves nothing and names the count that would reopen the question.
+about 40 percent of coin-flip worlds. Not yet: we watch Student until more customers buy, thirty or
+more behind the rise, before any budget moves." What changed: the decision. The draft moved budget;
+the fix moves nothing and names the count that would reopen the question, in customers, since
+orders from the same few customers are one habit counted again.
 
 ## 4. 42 percent on 12 users, or 31 percent on 1,200?
 
@@ -1157,9 +1157,9 @@ segment they come from, so the verdict holds: chance makes Meera's headline abou
 ten. **When to switch.** Count every deal while the count is small enough to list; on a few dozen
 orders the list runs into the billions, and the flips are the only practical route.
 
-> **Kavya's review.** "Student's rise is real arithmetic on too few orders to act on. Count them,
-> say how often chance makes the rise, and give Meera the count that would reopen it. That is a
-> complete answer, and it costs nothing to be right later."
+> **Kavya's review.** "Student's rise is real arithmetic on too few orders, from too few customers,
+> to act on. Count both, say how often chance makes the rise, and give Meera the number of customers
+> that would reopen it. That is a complete answer, and it costs nothing to be right later."
 
 ### In the interview
 
@@ -1170,15 +1170,18 @@ is different about that group and measure it on more users before acting."
 
 **[D] A segment is up 40 percent and the CEO wants to move budget; you can trust it, test it on the
 count, or wait. Which, and what would change your mind?** "Test it on the count first: how often do
-coin flips make that rise on that many orders? If chance makes it often, the answer is not yet, with
-the count that would reopen it. A cheap, fast way to get more orders from that segment would turn
-the wait into a short experiment, and I would propose that."
+coin flips make that rise on that many orders, and how many customers placed them? If chance makes it
+often, or a few customers made it, the answer is not yet, with the number of customers that would
+reopen it. A cheap, fast way to reach new customers in that segment would turn the wait into a short
+experiment, and I would propose that."
 
 ### Depth: where thirty comes from
 
-Thirty is a habit, and no law: it is roughly where a count stops swinging wildly from one extra
-observation. The curve below is the coin-flip chance of a 40 percent rise at growing counts behind
-the rate, the same simulation as section 3.
+Thirty is a habit, and no law: it is roughly where a count of independent observations stops
+swinging wildly from one extra. Orders from the same customer are not independent, since a customer
+who orders once tends to order again, so the observations that count are customers: thirty orders
+from two customers are two observations. The curve below is the coin-flip chance of a 40 percent
+rise at growing counts of independent buyers, each buying once, the same simulation as section 3.
 '''),
         code('''
 counts = [10, 20, 30, 50, 100, 200, 400]
@@ -1187,8 +1190,8 @@ for n in counts:
     rises = flip_rises(n, 3000, seed=2026)
     curve.append(sum(1 for r in rises if r >= 0.4 - 1e-9) / len(rises))
 kit.line([str(n) for n in counts], [("chance of a 40% rise", curve, "bad")], fmt=lambda v: f"{v:.2f}",
-         title="Chance of a 40 percent rise from coin flips alone, by the orders behind the rate")
-kit.check("the chance falls below one in five by thirty orders", curve[2] < 0.2, f"{curve[2]:.3f}")
+         title="Chance of a 40 percent rise from coin flips alone, by the independent buyers behind the rate")
+kit.check("the chance falls below one in five by thirty independent buyers", curve[2] < 0.2, f"{curve[2]:.3f}")
 '''),
         code('''
 kit.check_summary()
@@ -1230,10 +1233,13 @@ the exposure table, and adds `spend` and `group` to the toolkit.
 
 **Where the exposure table comes from.** The exposure table is the campaign platform's August
 list: the 160 Retail-Plus and Retail-Core customers the platform held, under the platform's own
-customer ids, with one average August spend for each group. It cannot be matched to Finance's order
-file, whose 22 Retail-Plus members and discount column carry no record of the sale. So read it for
-who got the sale and how the two groups differ. The Diwali hold-back is sized on the platform's
-list, and the retention offer on Finance's order file.
+customer ids, with one average August spend for each group. It records who received the sale,
+whatever the sale was aimed at, which is why it counts Retail-Core customers among them although the
+campaigns table aimed the sale at Retail-Plus: the campaigns table is the plan, and the list is what
+the platform sent. It cannot be matched to Finance's order file, whose 22 Retail-Plus members and
+discount column carry no record of the sale. So read it for who got the sale and how the two groups
+differ. The Diwali hold-back is sized on the platform's list, and the retention offer on Finance's
+order file.
 '''),
         md('**Setup.** The toolkit so far, plus the two campaign tables and two new helpers.'),
         setup(T1, T2, T3, T4, extra='''
@@ -1468,6 +1474,7 @@ NUMBERS["tier_q1"] = delivered("Retail-Plus", "Q1")
 NUMBERS["offer"] = 500 * len(plus_q1)
 NUMBERS["low"] = sorted(bootstrap_gaps(plus_q1, plus_q2, 5000, seed=2026))[125]
 student_n = sum(1 for o in ORDERS if o["segment"] == "Student")
+student_buyers = len({o["customer_id"] for o in ORDERS if o["segment"] == "Student"})
 flips = flip_rises(student_n, 5000, seed=2026)
 NUMBERS["student_rise"] = round(100 * orders_in("Student", "Q2") / orders_in("Student", "Q1")) - 100
 NUMBERS["student_chance"] = sum(1 for r in flips if r >= 0.4 - 1e-9) / len(flips)
@@ -1667,7 +1674,7 @@ c) about 400; d) over 1,000.
         code('''
 student_line = (f"Student orders rose {NUMBERS['student_rise']} percent quarter on quarter, on a count so small that chance alone makes "
                 f"that rise in about {round(NUMBERS['student_chance'] * 100)} in 100 worlds. Not yet: no budget moves "
-                f"until its rise stands on thirty orders or more.")
+                f"until more customers buy, thirty or more behind the rise.")
 discount_line = (f"The monsoon sale did not lift spend: inside each segment, the {len(group('yes', 'Retail-Plus'))} customers who got it spent about "
                  f"{abs(NUMBERS['within']):.0%} less than customers who did not; the {NUMBERS['blend']:.0%} blend "
                  f"is higher only because the exposed group held more Retail-Plus members. Do not repeat it as "
@@ -1718,8 +1725,8 @@ own? a) none, since rules cannot write; b) one; c) two; d) all three.
 rules = [
     ("Retail-Plus", "chapter 2: the range's low end sits below the offer's cost per member",
      NUMBERS["low"] < 500, "watch, and test before funding", "fund the offer"),
-    ("Student", "chapter 3: the rise stands on fewer than thirty orders",
-     student_n < 30, "not yet", "move the budget"),
+    ("Student", "chapter 3: fewer than thirty customers stand behind the rise",
+     student_buyers < 30, "not yet", "move the budget"),
     ("Discount", "chapter 4: the blend rose while every segment fell",
      NUMBERS["blend"] > 0 and max(NUMBERS["within"], NUMBERS["within_core"]) < 0, "do not repeat as designed", "repeat it"),
 ]
@@ -1766,7 +1773,7 @@ made explicit.
 '''),
         code('''
 flips_table = [("Retail-Plus", "borderline, small, watch it", "a second quarter with a larger fall, or a recovery rate from a past offer"),
-               ("Student", "not yet", "thirty orders behind the rise, with the rise holding"),
+               ("Student", "not yet", "thirty or more customers behind the rise, with the rise holding"),
                ("Discount", "do not repeat as designed", "a random hold-back at Diwali showing a lift inside segments")]
 kit.table(["Question", "Today's line", "The fact that would flip it"], flips_table)
 kit.vflow(["claim", "evidence with its base", "caveat: what would flip it", "action with its cost"], lit=2,
@@ -1806,10 +1813,11 @@ that those ads had no measurable short-term benefit, and that the returns a cont
 were a fraction of what the usual before-and-after readings had credited.
 
 Chapter 4 split the blend by segment on the campaign platform's August list, and chapter 5 wrote the
-note. The platform's list holds 160 customers under its own ids and cannot be matched to Finance's
-order file, so this chapter reads each file for what it can answer: the platform's list for who got
-the sale and for sizing the Diwali hold-back, and Finance's order file for what the months did. It
-adds `month_delivered` and `month_orders`.
+note. The platform's list holds 160 customers under its own ids, records who received the sale
+whatever it was aimed at, and cannot be matched to Finance's order file, so this chapter reads each
+file for what it can answer: the platform's list for who got the sale and for sizing the Diwali
+hold-back, and Finance's order file for what the months did. It adds `month_delivered` and
+`month_orders`.
 '''),
         md('**Setup.** The whole toolkit, plus the two month helpers.'),
         setup(T1, T2, T3, T4, T6, extra='''
@@ -1867,7 +1875,9 @@ its caveat said aloud.
         md('''
 ## 1. Who got it
 
-The campaigns table says who the sale was aimed at; the platform's list says who received it.
+The campaigns table says whom the sale was aimed at, which is the plan; the platform's list records
+who received it, whatever it was aimed at, so where the two disagree the list is the one to trust for
+who got the sale.
 
 **Predict before you run.** Of the customers who got the monsoon sale, the share who are
 Retail-Plus members is: a) all of them, since it targeted Retail-Plus; b) about half; c) about a
