@@ -49,7 +49,10 @@ Those letters are an illustration of the shape. Check that the illustration is n
 - Learner-facing only. Any reasoning, rationale, timing, locator or facilitation that sits in an exercise file moves to its solutions file.
 - Diagrams as Mermaid fenced blocks, so a learner reads them on GitHub with nothing installed.
 - Each exercise gains a hands-on part pointing at its TODO notebook and listing the letters to post.
-- The key is never the longest option, and key positions spread across a to d rather than clustering.
+- Length points neither way. The key is never the one option far longer than the rest, and across a
+  file it is sometimes the longest and sometimes the shortest, since a room that learns "the longest
+  is always wrong" eliminates as fast as one that learns "the longest is right". Key positions spread
+  across a to d rather than clustering.
 - The best wrong option is the plausible wrong number a hurried analyst produces: rows counted as customers, a total over unequal windows, a join that fanned out, an average that averaged averages.
 - A near-miss that is precise about the wrong grain is the best distractor. A nonsense option gives the answer away by elimination.
 - No format line, worked example or preamble contains the true answers.
