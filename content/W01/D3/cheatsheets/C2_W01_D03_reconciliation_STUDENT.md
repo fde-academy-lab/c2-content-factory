@@ -57,9 +57,9 @@ and an absent key in JSON.
 | One amount unreadable | The copy that validates | Its twin carries the value |
 | Valid, a field disagrees | The first extract | The field, and a question for the source |
 
-Choose the key before counting: the whole record flags 0 rows, the record less its file line 13,
-order_id 15, and a fuzzy match on customer and amount within 60 days 15, with one real Rs 17,71,000
-order among them.
+Choose the key before counting: the whole record, which carries each row's line in the file, flags
+0 rows, the record less that line 13, order_id 15, and a fuzzy match on customer and amount within 60
+days 15, with one real Rs 17,71,000 order among them.
 
 **Crux:** Say what makes two rows one order before you count duplicates.
 
@@ -83,7 +83,7 @@ copy that could not share the error.
 |---|---|---|
 | Largest Q2 order Rs 970 | Sorting amounts as text | Below every Business order |
 | 0 duplicates | The file line in the key | 201 rows, 186 order ids |
-| 188 orders, Q2 Rs 1,87,03,710 | Record less line; Q1 tied, so stop | Rows against ids |
+| 188 orders, Q2 Rs 1,87,03,710 | The record less its line ties Q1, and the pass stops | Rows against ids |
 | 201 of 201 convert, an order at Rs 0 | Failures turned into 0 | The smallest real order is Rs 680 |
 | Q2 Rs 1,57,54,540, a 17.1% fall | The largest Q2 order removed as an outlier | A known account, valid fields |
 | 201 = 185 + 16, Rs 20,00,000 set aside | Keep the first copy, then convert | Rs 1,790 short of the books |

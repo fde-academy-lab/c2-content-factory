@@ -654,21 +654,21 @@ Finance's books."
 | Term | What it means here | Where it appeared | Example |
 |---|---|---|---|
 | Profile | Three counts per field before any total: present, convertible, distinct | Chapter 1 | order_id present on 201 rows, distinct on 186 |
-| Rejects log | Every row whose value failed, with its line, field and reason | Chapters 1 and 4 | One amount on the raw export; empty after the identity rule |
 | Identity rule | What makes two rows the same thing | Chapter 2 | order_id, the ERP's key |
+| Set aside | Removed from the clean file with a logged reason and the row that stayed | Chapters 3 and 6 | 15 rows |
 | Keep and flag | Keep a record whose value is unknown, marked, out of counts that need it | Chapter 4 | A Q2 order with no status |
+| Outlier | A value far from the rest; a question about its record | Chapter 5 | The largest Q2 order |
+| Reconciliation | Proof the clean data is the same data, in rows and in rupees | Chapters 5 and 6 | 201 = 186 + 15 |
+| Revenue bridge | One total walked to another, one move per cause | Chapter 5 | Rs 2,09,98,210 to Rs 1,90,00,000 |
+| ERP | The enterprise resource planning system Finance books orders in | The ask; chapter 1 | The source of the CSV and the JSON feed |
+| Extract | One pull of rows out of the ERP | Chapters 2 and 3 | The CSV was stitched from two |
+| Rejects log | Every row whose value failed, with its line, field and reason | Chapters 1 and 4 | One amount on the raw export; empty after the identity rule |
 | Coercion | Turning a value that fails into a default; a claim, never a fix | Chapter 4 | An order at Rs 0 |
 | Fence | A cut-off that flags a value to question, never to delete | Chapter 5 | Three times the median Q2 order |
 | Control totals | A count and a sum computed at both ends of a transfer and compared | Chapter 6 | 201 rows and Rs 2,09,98,210 in |
-| Revenue bridge | One total walked to another, one move per cause | Chapter 5 | Rs 2,09,98,210 to Rs 1,90,00,000 |
-| Outlier | A value far from the rest; a question about its record | Chapter 5 | The largest Q2 order |
-| Reconciliation | Proof the clean data is the same data, in rows and in rupees | Chapters 5 and 6 | 201 = 186 + 15 |
 | Decisions log | Every cleaning rule with the rows and rupees it moved | Chapter 6 | Missing status: keep and flag |
 | Replay | Rebuilding the clean file from the raw export and the log | Chapter 6 | 186 orders at the same amounts |
-| Booked value | Every order at the price charged, whatever its status, before cancellations and returns come out; the dossier's GMV | The ask; chapter 5 | Both Rs 2.1 crore and Rs 1.9 crore |
-| Set aside | Removed from the clean file with a logged reason and the row that stayed | Chapters 3 and 6 | 15 rows |
-| ERP | The enterprise resource planning system Finance books orders in | The ask; chapter 1 | The source of the CSV and the JSON feed |
-| Extract | One pull of rows out of the ERP | Chapters 2 and 3 | The CSV was stitched from two |
+| Booked value | Every order at the price charged, whatever its status, before cancellations and returns come out | The ask; chapter 5 | Both Rs 2.1 crore and Rs 1.9 crore |
 | Migration | The move of data from one system to another | Chapter 2 | Q1's, when the CSV was stitched |
 | Tie out | Match a figure to the books line by line, to the rupee | Chapters 3 and 6 | Anand's analyst, tonight |
 | Supplier income | The money a retailer's suppliers pay it, in Tesco's case | Chapter 5 | Booked before the activity it paid for |

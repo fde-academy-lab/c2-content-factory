@@ -10,14 +10,15 @@
 >
 > Meera Raghavan, CEO, Kalpa Retail
 
-## What tomorrow is about
+## What will tomorrow ask of the numbers we cleaned today?
 
 Today proved the numbers are the right numbers. Tomorrow asks whether a difference between two of
-them means anything. A fall of 35 percent in Retail-Plus orders per customer is a fact about the file;
-whether it is a fact about Kalpa's members, or the kind of swing that two ordinary quarters produce by
-chance, is a different question, and it is the one Meera is asking.
+them means anything. A fall of 35 percent in orders per customer in Retail-Plus, Kalpa's paid
+membership tier, is a fact about the file; whether it is a fact about Kalpa's members, or the kind of
+swing that two ordinary quarters produce by chance, is a different question, and it is the one Meera
+is asking.
 
-## The words you will hear tomorrow
+## Which words will you hear tomorrow, and what does each build on?
 
 | Word | What it means, in one line | What you already know that it builds on |
 |---|---|---|
@@ -27,20 +28,20 @@ chance, is a different question, and it is the one Meera is asking.
 | Sample size | How many records a rate rests on | Today's profile: the count of values present in a field |
 | Confounder | Something that drives both who got a treatment and how they behaved | The tree: two branches that move together |
 
-## One thing to think about before you arrive
+## How different would two runs of ten coin tosses have to be before you believed the coin changed?
 
 Toss a coin ten times and count heads, then do it again. The two counts will rarely match, and
 nothing about the coin changed. How different would the two counts have to be before you believed the
 coin had changed? Hold your answer; tomorrow gives it a number.
 
-## The check for tonight
+## Did the delivered share move between Q1 and Q2, and by enough to tell Operations?
 
 Open today's clean file and work out the share of orders marked delivered, once for Q1 and once for
 Q2, each over the orders that carry a status, with today's flagged order counted as unknown. Then
 write one sentence: how far apart would two quarters' shares have to sit before you told Operations
 that delivery had changed? Bring the two shares and the sentence tomorrow.
 
-## The line worth carrying in
+## Which line is worth carrying into tomorrow?
 
 A difference in the data is a fact about the file; whether it is a fact about the business is a
 question you answer with a comparison to chance.

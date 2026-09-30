@@ -1,4 +1,4 @@
-# Kahoot, Week 1 Wednesday
+# Kahoot, Week 1 Wednesday: can you answer the day's eight questions against the clock?
 
 Eight items, ungraded, scored on correctness and speed together. The first item returns to Tuesday;
 the rest climb the day's six chapters. Every number is invented unless the item says it is the day's.
@@ -57,7 +57,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q6. The rows reconcile, and Q1 is Rs 3,000 short of the books. Next step?
+## Q6. The rows reconcile, and Q1 is Rs 3,000 short of the books. What is the next step?
 *Tests: reconcile twice, in rows and in rupees.*
 
 - Ship it, since Rs 3,000 rounds away in a crore
