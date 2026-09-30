@@ -46,8 +46,8 @@ def build(name, footer):
 
     cover = deck_layout.title_slide
 
-    def title_slide(slide, prs, meta, chapters, total):
-        cover(slide, prs, meta, chapters, total)
+    def title_slide(slide, prs, meta, chapters, total, *numbers):
+        cover(slide, prs, meta, chapters, total, *numbers)
         k = 0
         for shape in slide.shapes:
             if shape.has_text_frame and re.fullmatch(r"\d\d", shape.text_frame.text) and k < len(marks):
