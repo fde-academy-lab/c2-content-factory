@@ -5,7 +5,7 @@
 
 **Who needs the answer.** Meera asks whether acquisition is the branch of sales that is short before
 she signs Rs 12 crore for new customers. Every exercise below practises one of the questions the day
-climbs to answer hers, and together they are the evidence that you can answer it yourself.
+climbs to answer hers, and working through them shows whether you can answer it yourself.
 
 **The questions on the way.** Which file answers which question, and when? How many items are there,
 and how many ask for a design call? When do the solutions open? What shape does every answer line
@@ -15,8 +15,8 @@ take?
 
 ## Which file answers which question, and when?
 
-The chapter sets follow the day's chapters in order, the two afternoon cases take the whole answer
-further, and the take-home follows them.
+The chapter sets follow the day's chapters in order, the two afternoon cases test the whole answer
+again, and the take-home follows them.
 
 | When | File | The question it answers | You answer with |
 |---|---|---|---|

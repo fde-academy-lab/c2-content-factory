@@ -13,8 +13,7 @@ file run, and which reading of sales does it add up?
 
 You build this with the trainer, one step at a time, with your own Codespace open. Nothing here is
 graded. The trainer asks each item aloud, the room calls its letter, and the room's answer is tested
-on the board or in the notebook before anyone moves on. Every line in your notebook is there because
-you typed it.
+on the board or in the notebook before anyone moves on. Type every line of your notebook yourself.
 
 ---
 

@@ -53,6 +53,7 @@ Transition: section 05, which branch Meera opens first.
 LIVE, 30 minutes, counting S1's two: the map and the need (3), the real company (1), the base (3),
 each branch alone (4), the evidence and the call (4), the check (2), the trap (7), the second route
 (2) and Kavya's review (2). D15 is self-study. Notebook 05 is the demonstration.
+For more depth: sections 2 and 5 of the retail dossier, study-notes/C2_W01_D01_domain_retail_STUDENT.md, on Retail-Plus and the acquisition payback.
 Transition: S2, the chapter's map.
 ```
 
@@ -92,8 +93,8 @@ Transition: S3, who asks for the branch and what a wrong one costs.
 | What a wrong number costs | Rs 12 crore goes to a branch that was fine, or the plan is sized by adding lifts that multiply. |
 
 ```notes
-LIVE, 2 minutes. The question is now a choice between branches, and a choice needs the cost of each
-option beside it. Meera decides, the marketing lead wants the Rs 12 crore for acquisition, and the
+LIVE, 2 minutes. The question is now a choice between branches, so put the cost of each option
+beside it. Meera decides, the marketing lead wants the Rs 12 crore for acquisition, and the
 head of Retail-Plus runs the paid tier whose members come back most often.
 Ask: which of the three loses most if we pick the wrong branch?
 Transition: S4, two companies that pay to buy frequency.
@@ -379,9 +380,7 @@ The base, two lifts of Rs 6,481 and the lift on the lift of Rs 648, which is 0.1
 
 ```notes
 LIVE, 2 minutes. Notebook 05 draws this as a bridge and asserts it lands on the multiplied total.
-When to switch: multiply the factors for the total, and build the parts when someone asks where the
-extra came from. The parts route is the one to bring to marketing, since the lift on the lift has
-its own line.
+Bring the parts route to marketing, since the lift on the lift has its own line there.
 Transition: D15 is self-study, so go to S16, Kavya's review.
 ```
 
@@ -440,6 +439,7 @@ Transition: section 06, the sentence Meera signs.
 LIVE, 30 minutes: the map and the need (3), the real company (1), the options (4), the first draft
 (6), the trap (8), the fix (3), the second route (3) and Kavya's review (2). D29 is self-study.
 Notebook 06 is the demonstration.
+For more depth: section 5 of the retail dossier, study-notes/C2_W01_D01_domain_retail_STUDENT.md, on retention and cohorts.
 Transition: S17, the chapter's map.
 ```
 
@@ -478,7 +478,7 @@ Transition: S18, who reads the sentence.
 | What a wrong number costs | Marketing knocks the claim down in one question, and the team loses the trust the week depends on. |
 
 ```notes
-LIVE, 2 minutes. Meera will not read six notebooks. Marketing will read the sentence looking for the
+LIVE, 2 minutes. Meera will not read the day's notebooks. Marketing will read the sentence looking for the
 number it can recompute into a different story.
 Ask: which number from chapter 5 would you least like to defend in front of the marketing lead?
 Transition: S19, a real company's first window.
@@ -494,11 +494,11 @@ label: February 2024 | title: Two-thirds of chats | body: Klarna reported its AI
 label: May 2025 | title: Quality, fifteen months on | body: Its chief executive said the focus on cost had lowered quality, and customers would always be able to reach a human (Fortune, 9 May 2025). | tone: dark
 ```
 
-A number from one window, read as the verdict, is the risk this chapter's caveat guards against.
+Meera's sentence carries a caveat so that one window's number is not taken as the verdict.
 
 ```notes
-LIVE, 1 minute. The dossier's section 8 tells the full case. One window shows a shape, and the
-verdict needs the next window.
+LIVE, 1 minute. The dossier's section 8 tells the full case. The first month measured volume, and
+the verdict on quality came fifteen months later.
 Transition: S20, four ways to hand Meera the answer.
 ```
 
@@ -649,10 +649,9 @@ xychart-beta
 **Why it is wrong.** The file shows who bought once inside the window, and whether they are lost depends on orders placed after it closes. The 7 who came back took a median of 45 days, and 9 of the 16 ordered fewer than 45 days before 26 September, so the answer is c.
 
 ```notes
-LIVE, 4 minutes. What 70 percent would mislead: retention looks like an emergency on a number
-marketing knocks down in one question. The check measures the usual gap from the customers who did
-come back and holds back everyone who has not had that long. An 88-day window only sees gaps
-shorter than 88 days, so 45 days is a floor, and more of the 16 may still be on their way back.
+LIVE, 4 minutes. The check measures the usual gap from the customers who did come back and holds
+back everyone who has not had that long. An 88-day window only sees gaps shorter than 88 days, so
+45 days is a floor, and more of the 16 may still be on their way back.
 Transition: S27, the fix in the sentence Meera signs.
 ```
 
@@ -935,9 +934,9 @@ xychart-beta
 Once the view keeps the three consumer segments Meera's plan concerns, store's share falls from 91.6 to 29.2 percent, Rs 18,920 of Rs 64,810, so its headline share came from outside those segments; web leads with Rs 27,290.
 
 ```notes
-LIVE, 2 minutes. Booked revenue still counts every order; the consumer view answers the narrower
-question the plan asks. Let the pairs say from their own table where the rest of store's booked
-revenue sits, and leave the saying to them.
+LIVE, 2 minutes. Remind the room that booked revenue still counts every order and the consumer view
+answers the plan's narrower question. Let the pairs say from their own table where the rest of
+store's booked revenue sits, and leave the saying to them.
 Transition: S38, the consumer channels split by status.
 ```
 

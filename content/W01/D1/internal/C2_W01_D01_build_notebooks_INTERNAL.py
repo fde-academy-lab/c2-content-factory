@@ -342,7 +342,7 @@ def story():
         md("""
         ## 6. How many months does a new customer take to pay back what winning them cost?
 
-        Customer lifetime value (CLV), simply, is contribution per order, times orders a year, times
+        Customer lifetime value (CLV) is contribution per order, times orders a year, times
         years as a customer. Customer acquisition cost (CAC) is acquisition spend over the new customers
         it brought, and payback is CAC over the monthly contribution per customer. On invented numbers:
         Rs 150 of contribution per order (section 2's basket), 6 orders a year, 2 years, and an invented
@@ -643,8 +643,8 @@ print(len(ORDERS), "orders loaded, dated", first_day, "to", last_day)
         md("""
         **What happened.** The answer is c: booked is the largest reading, at Rs 5,44,810, against
         Rs 5,35,760 not cancelled and Rs 5,20,790 delivered. The order count, 30, is the fourth reading
-        and answers how many times somebody decided to buy. Each narrower reading keeps less, so the
-        name beside a number decides which rupees it holds.
+        and answers how many times somebody decided to buy. Each narrower reading keeps less, so a
+        total sent without its name could be any of the three.
         """),
         md("""
         ## 2. What goes wrong if all 30 orders are sent as sales?
@@ -815,9 +815,9 @@ def ch2():
         The metric at stake is average order value (AOV), revenue over orders, the first branch this
         file can measure. Reliance reported Jio's quarter as its branches, 533 million subscribers and
         revenue per user of Rs 215.6 a month (Reliance Industries media release, 17 July 2026): a
-        telecom's tree is customers times revenue per customer, stated the way this chapter states
-        Kalpa's. Section 5 of the retail dossier, `study-notes/C2_W01_D01_domain_retail_STUDENT.md`,
-        covers the metric tree, AOV and basket size.
+        telecom's tree is customers times revenue per customer, stated the same way as Kalpa's.
+        Section 5 of the retail dossier, `study-notes/C2_W01_D01_domain_retail_STUDENT.md`, covers the
+        metric tree, AOV and basket size.
 
         Chapter 1 settled the readings of sales on the 30 orders: Rs 5,44,810 booked, Rs 5,35,760 not
         cancelled on 26 orders and Rs 5,20,790 delivered on 21, each with its name beside it. This
@@ -918,9 +918,9 @@ print(len(ORDERS), "orders loaded, every amount a whole number")
         md("""
         **What happened.** The answer is a. Kalpa's booked AOV is Rs 5,44,810 over 30 orders, about
         Rs 18,160, and 30 times the unrounded AOV, 30 x (Rs 5,44,810 / 30), lands back on the booked
-        total. That is the tree's strength and its limit:
-        the product always lands on revenue, so a wrong leaf never shows in the total and shows only in
-        the split. Whether Rs 18,160 describes an order anyone would recognise is chapter 4's question.
+        total. Because the product always lands on revenue, a wrong leaf can hide in the split while
+        the total looks right. Whether Rs 18,160 describes an order anyone would recognise is chapter
+        4's question.
         """),
         md("""
         ## 2. What goes wrong when booked rupees are divided by delivered orders?
@@ -1003,8 +1003,8 @@ print(len(ORDERS), "orders loaded, every amount a whole number")
         md("""
         **When to switch.** Revenue over orders is the route when the totals already exist in a report,
         and the mean of the list is the route when you hold the rows; `statistics.fmean` does the same
-        sum in one line. The bigger switch is the one chapter 4 makes: when the question is what a
-        typical order looks like, the mean may be the wrong middle altogether.
+        sum in one line. Chapter 4 makes a bigger switch: when the question is what a typical order
+        looks like, the mean may be the wrong middle altogether.
 
         > **Kavya's review.** When two reports feed one fraction, ask each report what it counts before
         > you divide. The identity check costs one line and would have caught this before Meera saw it.
@@ -1614,8 +1614,8 @@ print(len(amounts), "amounts; the mean, chapter 2's AOV, is", kit.rupees(mean))
         md("""
         **When to switch.** Write the middle by hand once, so you know what the library does with an
         even count; after that `statistics.median` is the route, and in Week 2 it becomes
-        `PERCENTILE_CONT(0.5)` in SQL and `.median()` in pandas. The larger switch is between middles:
-        the mean comes back whenever a total has to reconcile.
+        `PERCENTILE_CONT(0.5)` in SQL and `.median()` in pandas. The choice left is between middles,
+        since the mean comes back whenever a total has to reconcile.
 
         > **Kavya's review.** Anand said "no averages" and you now know why. Put the median in the
         > sentence, say the mean is eight times higher, and give the count of orders above it.
@@ -1895,8 +1895,8 @@ print(f"booked: {kit.rupees(revenue)} from {customers} customers, {per_customer:
         """),
         md("""
         **What happened.** The answer is c: 16 of the 23 customers bought once and 7 came back, so
-        frequency is the branch with evidence behind it. Its customers exist, some already return, and
-        the 16 are one order away from moving it.
+        frequency is the branch with evidence behind it, and each of the 16 is one order away from
+        moving it.
         """),
         md("""
         ## 2. What goes wrong when two 10 percent lifts are called 20 percent?
@@ -2045,7 +2045,7 @@ def ch6():
         md("""
         # What one sentence can Meera sign, with its evidence, its branch, its caveat and its ask?
 
-        **Week 1, Monday, chapter 6 of 6.** Meera will not read five notebooks. She needs the answer,
+        **Week 1, Monday, chapter 6 of 6.** Meera will not read the day's notebooks. She needs the answer,
         the evidence and the limit of the evidence in the time it takes to read one sentence, and
         marketing will read the same sentence looking for the weakest number in it.
 
@@ -2065,8 +2065,8 @@ def ch6():
         The metric at stake is the repeat picture: who came back, who has not, and who has not had time
         to. Klarna reported that its AI assistant handled two-thirds of customer-service chats in its
         first month (Klarna, 27 February 2024); fifteen months later its chief executive said the focus
-        on cost had lowered quality (Fortune, 9 May 2025). A first window's number read as the verdict
-        is the risk this chapter's caveat guards against. Section 5 of the retail dossier,
+        on cost had lowered quality (Fortune, 9 May 2025). Meera's sentence carries a caveat so that
+        one window's number is not taken as the verdict. Section 5 of the retail dossier,
         `study-notes/C2_W01_D01_domain_retail_STUDENT.md`, covers retention and cohorts, and its section
         8 tells Klarna's case in full.
 

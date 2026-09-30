@@ -62,6 +62,7 @@ part puts one drawing on the board, and the Rs 100 journey and the metric tree s
 story states every metric as a formula with what it answers and who asks, and it stages no wrong
 number, since each of those belongs to a chapter.
 Meera's ask follows in 4 minutes. The domain card goes out at the close of the afternoon.
+For more depth, a learner reads the retail dossier, study-notes/C2_W01_D01_domain_retail_STUDENT.md, which tells the same business at length.
 Transition: the six questions the story answers.
 ```
 
@@ -297,7 +298,7 @@ how many come back, for the head of Retail-Plus; gross margin and numbers that m
 Anand. Watch for "all three ask about revenue": revenue is Meera's number, and each of the three
 owns a branch of it and asks for that branch first.
 Land it: every number on the tree has a formula and an owner, and a number sent without knowing its
-owner reaches a decision it was never built for.
+owner can end up in a decision its formula does not answer.
 Draw the metric tree on the board, six boxes, and leave it up all day; the chapters write their
 numbers onto it.
 Transition: part 6, from describing to acting; D8 and D9, the formula tables, are self-study.
@@ -379,8 +380,8 @@ detergent, refund the bedsheet, change a price?
 Watch for "the Monday numbers, since they are only a report": they are the riskiest of the four,
 because the CEO decides on them before anyone could catch a wrong one, and the detergent reorder
 inside limits is the safest.
-Land it: an agent is only as safe as its policy and the limits around it. Keep the domain card back
-until the close of the afternoon.
+Land it: nobody checks an agent before it acts, so its policy and limits are what keep it safe.
+Keep the domain card back until the close of the afternoon.
 Transition: the business in one line, and the question its CEO asked us.
 ```
 
@@ -439,6 +440,7 @@ LIVE, 30 minutes: the map 1, the need 2, Reliance 2, the options 4, the picture 
 loop 3, with 2 of them for the TypeError if it happens, the predict 1, the answer 2 and the check
 1), the trap 7 (the draft 2, why it is wrong 3 and the fix 2), the second route 3 and the close 3.
 Notebook 01 is the demonstration, and every number on these slides is one it prints.
+For more depth: section 3 of the retail dossier, study-notes/C2_W01_D01_domain_retail_STUDENT.md, on where each rupee goes.
 Transition: who needs the answer, and the six questions on the way.
 ```
 
@@ -511,8 +513,8 @@ value: GST | label: the step between them | note: collected for the state
 Source: Reliance Industries media release, 17 July 2026. Both totals are correct, so each goes out with its name. The story's Rs 20 between GMV and net revenue holds two kinds of step, tax like Reliance's GST and orders that never stayed sold, and the second kind is the one Kalpa's file can show.
 
 ```notes
-LIVE, 2 minutes. The company is real and the numbers are its own. Make one point: the largest
-retailer in India states which revenue it means, and so does every number the team sends. Point at
+LIVE, 2 minutes. The company is real and the numbers are its own. Say that the largest retailer in
+India states which revenue it means, and so does every number the team sends. Point at
 the first arrow of the Rs 100 drawing on the board and write "tax" and "never stayed sold" beside it.
 Ask: which of Reliance's two totals would an investor compare with last year's? Either works, as
 long as it is the same one both years.
@@ -561,8 +563,8 @@ flowchart LR
 The file has no tax field, so the step Reliance reports as GST cannot be taken from it.
 
 ```notes
-LIVE, 1 minute. Draw this chain under the board tree. An engineer who can say what the data cannot
-answer saves the CEO from a guess.
+LIVE, 1 minute. Draw this chain under the board tree and say what the file cannot answer, sales
+net of tax, so the CEO is not left to guess it.
 Transition: the loop that computes all three readings.
 ```
 
@@ -794,6 +796,7 @@ Transition: chapter 2, what each branch of the tree is.
 LIVE, 30 minutes: the map 1, the need 2, Jio 1, the options 4, the picture 2, the build 6 (the code
 2, the predict 1, the answer 2 and the check 1), the trap 9 (the predict 1, the wrong answer 3, why
 it is wrong 3 and the fix 2), the second route 3 and the close 2. Notebook 02 is the demonstration.
+For more depth: section 5 of the retail dossier, study-notes/C2_W01_D01_domain_retail_STUDENT.md, on the metric tree, AOV and basket size.
 Transition: who needs the branches, and the six questions on the way.
 ```
 
@@ -860,10 +863,10 @@ value: Rs 215.6 | label: revenue per user | note: a month
 value: 1.6% | label: monthly churn | note: subscribers who leave
 ```
 
-Source: Reliance Industries media release, 17 July 2026. A telecom's revenue is subscribers times revenue per user, with churn as its leak, and investors multiply the branches the way this chapter multiplies Kalpa's.
+Source: Reliance Industries media release, 17 July 2026. A telecom's revenue is subscribers times revenue per user, with churn as its leak, and investors multiply those branches the way Kalpa's tree does.
 
 ```notes
-LIVE, 1 minute. Kalpa Connect is the Jio-like unit and arrives in Build 3. The point is the shape: a
+LIVE, 1 minute. Kalpa Connect is the Jio-like unit and arrives in Build 3. Point at the shape: a
 company reports its branches, each as a fraction.
 Transition: which tree this file can fill.
 ```
@@ -1106,8 +1109,8 @@ flowchart LR
 
 ```notes
 LIVE, 3 minutes. The notebook asserts that the three routes agree, and they agree because the mean
-is what the tree calls AOV. The switch that matters is chapter 4's: when the question is what a
-typical order looks like, the mean may be the wrong middle.
+is what the tree calls AOV. Chapter 4 names the switch: when the question is what a typical order
+looks like, the mean may be the wrong middle.
 Transition: the chapter's answers, one line each.
 ```
 
@@ -1144,6 +1147,7 @@ Transition: chapter 3, the customer branches counted.
 LIVE, 30 minutes: the map 1, the need 2, Reliance 1, the options 4, the picture 2, the build 8 (the
 code 2, the predict 1, the answer 3 and the check 2), the trap 8 (the draft 3, why it is wrong 3
 and the fix 2), the second route 2 and the close 2. Notebook 03 is the demonstration.
+For more depth: section 5 of the retail dossier, study-notes/C2_W01_D01_domain_retail_STUDENT.md, on frequency and repeat rate.
 Transition: who needs the count, and the six questions on the way.
 ```
 
@@ -1211,7 +1215,7 @@ value: 20,169 | label: stores | note: the same date
 Source: Reliance Industries media release, 17 July 2026. A registered customer is a denominator of its own: divide a quarter's orders by it and you get a smaller metric than orders per customer who ordered.
 
 ```notes
-LIVE, 1 minute. The point is the denominator: registered, active and ordering customers are three
+LIVE, 1 minute. Stress the denominator: registered, active and ordering customers are three
 different counts, and each gives a different rate.
 Transition: four ways to count customers.
 ```
@@ -1232,7 +1236,7 @@ Transition: four ways to count customers.
 
 ```notes
 LIVE, 4 minutes. B is right when only the count is needed, and C when someone will ask who came
-back. The switch to SQL is Week 2's.
+back.
 Ask: which option would you trust if the file had a million rows and you had one minute?
 Transition: why one person can leave several rows.
 ```
@@ -1360,8 +1364,8 @@ flowchart LR
 
 ```notes
 LIVE, 3 minutes. Present it as the figure a colleague's first draft sent Meera before the room built
-the count: the case for the budget, made by a counting slip. Ask what would check it before the
-next slide.
+the count; it makes the case for the budget out of a counting slip. Ask what would check it before
+the next slide.
 Watch for learners who accept it because the division is right.
 Transition: the check.
 ```
@@ -1381,8 +1385,7 @@ len(ids), len(set(ids))        # (30, 23)
 The same column counted as a list gives 30 and counted as a set gives 23, so 7 of the 30 orders came from people who had already bought.
 
 ```notes
-LIVE, 3 minutes. A set keeps each value once however often it is added, so the list's 30 against the
-set's 23 says 7 orders came from people who had already bought.
+LIVE, 3 minutes. Say why the set is shorter: it keeps each value once however often it is added.
 Transition: the fix.
 ```
 
@@ -1456,6 +1459,7 @@ LIVE, 30 minutes after the break: the map 1, the need 2, Blinkit 1, the options 
 the build 6 (the code 2, the predict 1, the answer 2 and the check 1), the trap 9 (marketing's slide
 3, why it is wrong with the sort 4 and the fix 2), the second route 3 and the close 2. D65 and D66,
 the trimmed mean on Kalpa's orders, are self-study. Notebook 04 is the demonstration.
+For more depth: section 5 of the retail dossier, study-notes/C2_W01_D01_domain_retail_STUDENT.md, on average order value and basket size.
 Transition: who needs a typical order, and the six questions on the way.
 ```
 
@@ -1637,7 +1641,7 @@ value: 8.2 | label: mean over median | note: two middles far apart
 
 ```notes
 LIVE, 1 minute. The notebook's checks confirm that the median is Rs 2,205 and the mean about eight
-times it. Two middles that far apart are a finding in themselves.
+times it, a gap worth reporting on its own.
 Transition: marketing's slide; D65 and D66, on the trimmed mean, are self-study.
 ```
 
@@ -1768,8 +1772,8 @@ statistics.median(amounts)     # 2205.0, the same as the sorted middle
 
 ```notes
 LIVE, 3 minutes. The notebook asserts that both routes agree on both definitions. After this the
-library is the route; the switch that still matters is between middles, since the mean comes back
-whenever a total has to reconcile.
+library is the route, and the choice left is between middles, since the mean comes back whenever a
+total has to reconcile.
 Transition: the chapter's answers.
 ```
 

@@ -12,8 +12,8 @@ What do customers, orders and revenue come to on a small file? What does the rev
 for a business you can watch? What does a fortnight of pop-up orders say once every check of the day
 has run on it?
 
-The practice lab after the afternoon runs four problems in about an hour. They climb: the first
-works on the tree alone, the second counts the leaves on a small file, the third moves the tree to a
+The practice lab after the afternoon runs four problems in about an hour, rising in difficulty: the
+first works on the tree alone, the second counts the leaves on a small file, the third moves the tree to a
 business you know, and the fourth runs every check of the day on one fresh file. Every record in
 problems 2 and 4 is invented for this lab and belongs to no real customer. Items marked **Design**
 ask for the best-fit approach, a sizing, or the fact that would switch the choice.
@@ -185,8 +185,8 @@ d) Discounts, since leftover food is sold off cheaply at closing
 
 ## What does a fortnight of pop-up orders say once every check has run?
 
-A first export from a new store is where the day's checks meet at once, because nobody has cleaned it
-and everybody wants a number from it. Allow about 20 minutes.
+A new store's first export needs all the day's checks at once, since nobody has cleaned it and its
+owner wants a number from it. Allow about 20 minutes.
 
 Twelve invented orders from a Kalpa pop-up store's first fortnight. Paste them into a new cell of
 your own notebook and work every item from them.

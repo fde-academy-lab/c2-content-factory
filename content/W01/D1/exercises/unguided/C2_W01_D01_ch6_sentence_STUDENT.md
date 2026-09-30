@@ -52,7 +52,7 @@ the end:
 Analysts in every capability centre choose each week whether a leader gets a number, a table, a
 sentence or a dashboard.
 
-Four forms, sized by this pack's estimate of the reader's time:
+Four forms, sized by an estimate of the reader's time:
 
 | Form | Her reading time | The decision it carries | How it gets misread |
 |---|---|---|---|
