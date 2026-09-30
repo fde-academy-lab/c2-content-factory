@@ -15,8 +15,9 @@ Raised on 30 September 2026 to the chapter standard, from, in this order:
 - `.claude/skills/day-pack-builder/references/the-standard.md`, as raised on 30 September 2026,
   including the domain-first-day variant and the depth loop.
 - `.claude/skills/day-pack-builder/references/domain-dossier.md`.
-- The retail dossier, the domain card and the talk track on `w01-domain-retail`, which this pack
-  links to and never edits.
+- The retail dossier, the domain card and the talk track, merged on `main` in pull request 194 and
+  raised with the pack to standard v3; the chapters link to the dossier by section and carry what
+  they need in their own words.
 - The Monday 5 October 2026 row of `docs/curriculum/W1_Data_analysis_found.md`, read in column
   order.
 - The day's line in `docs/programme/calendar.md`.
@@ -24,6 +25,12 @@ Raised on 30 September 2026 to the chapter standard, from, in this order:
 
 The 29 September build of this pack supplied the form: deck syntax, notebook helper and rhythm,
 companion, workbook script and day sheet.
+
+Rechecked on 30 September 2026 to standard v3 (pull request 195: decisions `question-ladder`,
+`self-contained`, `humanizer` and `opus-max`), from the recheck prompt in
+`prompts/week_revamp_W02_W03.md` on `main`, section 1, with the orchestrating session's five
+specifics: merge `main` first, the ruling on the planted order, the three review checks on the
+story, the dossier and its card and talk track to v3, and the ship to `w01-d1-chapters`.
 
 ## The data
 
@@ -36,7 +43,7 @@ python3 data/generate_client_zero.py --version v0 --out content/W01/D1/data --st
 
 | Planted | Where it is used |
 |---|---|
-| One Business order of Rs 4,80,000, KR-01031 | Chapter 4's trap (the mean of Rs 18,160 against the median of Rs 2,205), found by the learner's own sort in an empty cell; the second case, where it carries store's 91.6 percent |
+| One Business order of Rs 4,80,000, KR-01031 | Chapter 4's trap (the mean of Rs 18,160 against the median of Rs 2,205), found by the learner's own sort in an empty cell; the second case, where it lifts store to 91.6 percent of booked revenue; no learner file names it (decision 9) |
 | One amount stored as the text "4500", KR-01008 | Chapter 1's first sum, met as a TypeError in two minutes and fixed with `int()`; the record is found in an empty cell |
 | The take-home's second sample: two Business orders (Rs 3,12,000 and Rs 2,05,000) and the text "1990" | The take-home; named only in the day sheet |
 
@@ -48,7 +55,7 @@ no learner file lists the 9 ids.
 
 | Deck section | Notebook | Chapter | Trap and its exact wrong number |
 |---|---|---|---|
-| Morning, SECTION 0 | `00_retail_story` | The retail story, from the talk track and the dossier | None; the formulas on invented numbers, each with the trap the card names |
+| Morning, SECTION 0 | `00_retail_story` | The retail story, from the talk track and the dossier | None; the formulas on invented numbers, each with the question it answers and who asks, and no trap staged (decision 14) |
 | Morning, SECTION 1 | `01_four_readings_of_sales` | Four readings of sales | Rs 5,44,810 as sales, 4 cancelled store orders inside |
 | Morning, SECTION 2 | `02_the_tree_as_metrics` | The tree as metrics | AOV Rs 25,943, booked rupees over delivered orders; Rs 7,78,300 multiplied back |
 | Morning, SECTION 3 | `03_the_leaves_counted` | The leaves, counted | 30 customers, 1.00 orders each |
@@ -63,11 +70,13 @@ each chapter opener's own numeral (see decision 1).
 
 ## Decisions that depart from a source
 
-1. **Chapter opener numerals.** `scripts/build_deck.py` numbers openers by position, which would
-   print chapter 5 as 01 in the afternoon deck. The day-folder wrapper prints the number written in
-   the heading: 00 for the story, 01 to 06 for the chapters, and A to E for the afternoon's case
-   blocks, which have no chapter notebook. A rebuild with `scripts/build_deck.py` alone gives the
-   same slides with positional numerals.
+1. **Chapter opener numerals.** `scripts/build_deck.py` prints the number a numeric heading
+   carries and numbers a lettered opener by its place in the file. The day-folder wrapper gives the
+   k-th opener the k-th mark written in the headings: 00 for the story, 01 to 06 for the chapters,
+   and A to E for the afternoon's case blocks, which have no chapter notebook. The wrapper looked
+   marks up by the number passed, which broke once `main`'s e971c72 made that number the heading's
+   own; the recheck changed it to the order of appearance and checked the printed numerals on both
+   covers and all twelve openers.
 2. **Two traps are this pack's, in chapters the spine gives no trap.** The spine lists four traps
    for Monday and the standard asks one per chapter. Chapter 2 stages a fraction from two
    definitions (Rs 25,943), and chapter 6 stages one-time buyers read as lost (70 percent). Both
@@ -92,20 +101,67 @@ each chapter opener's own numeral (see decision 1).
 8. **The second case groups revenue by segment and channel** with a dictionary, per the spine's
    afternoon table, although the row's stop-before line names grouping by segment; Tuesday still
    owns grouping as a technique.
-9. **The plant rule, applied to the afternoon.** It holds as on 29 September. Aggregates that
-   include the Business order are the trap numbers and are printed. Rupees without it appear only
-   on consumer orders in afternoon files, introduced as "the order your chapter 4 sort put at the
-   top".
+9. **The plant rule, applied to the afternoon.** The orchestrating session ruled on 30 September
+   2026 that decision `plants-once-found` covers only the Saturday paper, so an afternoon file is no
+   exception. No STUDENT file names the planted order, says there is exactly one Business order or
+   customer, prints the count 29 (or "the 29 outside the Business segment", or arithmetic that
+   shows it, such as 4.35 or 33.35 orders), or points at the order a chapter 4 sort put at the top.
+   The consumer view is defined by its business rule: Meera's growth plan concerns the three
+   consumer segments, Retail-Core, Retail-Plus and Student, so the filter keeps those. The
+   learner's code finds how many orders that leaves, in an empty cell in notebook 05 and in a TODO
+   in the second case whose check tests the computed value in a later cell without printing it.
+   The consumer view's other counts (its customers, its one-time buyers, its orders per channel,
+   its delivered orders) are not printed either, and its sizing reads in rupees and percentages:
+   Rs 64,810 booked, Rs 9,722 more, a mean order of Rs 2,235, Rs 335 more per order, and 15 percent
+   more customers or orders. Aggregates over all 30 orders stay, since they are the trap numbers.
+   The second case states its finding as store falling from 91.6 to 29.2 percent once the view keeps
+   the three consumer segments, so store's headline share came from outside them. Chapter 4's check
+   reads that only 1 of the 30 orders sits above the mean, and the learner's own sort, in an empty
+   cell, finds which. TRAINER and INTERNAL files may name the order.
 10. **Interview questions.** The row's five anchors are kept. The pack adds seven case-style and
     design follow-ups, tagged on the row's scale by this pack.
 11. **The workbook gains two tabs**, Fraction and Edge, so every chapter's decision has a tab; the
     recalc manifest proves both.
 
-12. **The 15 percent plan is sized on the everyday orders.** The spine's chapter 5 asks which
+12. **The 15 percent plan is sized on the consumer view.** The spine's chapter 5 asks which
     branch Meera opens first; sized on booked revenue, each extra order would carry the Rs 18,160
-    mean, which the one Business order sets. Chapter 5 and the escalated case size the plan on the
-    orders other than the one chapter 4's sort found, and say why. The two-lifts trap stays on booked
-    revenue, since it is multiplication and holds on any base.
+    mean, which a bulk order outside the consumer segments sets. Chapter 5 and the escalated case
+    size the plan on the three consumer segments Meera's plan concerns (decision 9) and say why.
+    The two-lifts trap is shown on the same base, since it is multiplication and holds on any base.
+
+13. **Chapter openers print their question without its question mark.** Standard v3 makes an
+    opener's title the chapter's short question, and `scripts/deck_md_check.py` fails any slide
+    whose title ends in "?" unless an "Answer" slide follows, which it applies to SECTION openers
+    too, while v3 puts the map slide after each opener. The pack keeps the gate green: each
+    `## SECTION n:` title is the short question worded as a question without its mark, and the
+    italic promise on the same slide carries the full question with it. The shared tool needs to
+    exempt SECTION openers from the question-answer pairing, after which the marks come back.
+
+14. **The story teaches no trap.** The orchestrating session ruled on 30 September 2026 that the
+    domain story (the morning deck's SECTION 0, notebook 00 and the talk track) teaches no Week 1
+    trap under any numbers, names GMV and net revenue, says they differ and leaves the gap between
+    them to chapter 1. The story's retention over survivors, conversion on a shifted denominator,
+    missed sale, total against like-for-like growth, festive-lights question and the rule that a
+    metric is a numerator over a denominator in one window are gone from the deck, the notebook, the
+    talk track, the board and the notes; its P&L runs GMV Rs 100 to net revenue Rs 80 with the Rs 20
+    left open, and chapter 1 closes it on Kalpa's file (the Rs 24,020 between booked and delivered)
+    and on Reliance's GST. The dossier keeps its traps, since it is read after the day, and the card
+    keeps its trap line, since it is handed out at the afternoon's close.
+
+15. **No morning file prints what the escalated case asks for.** The recheck's first ladder gave
+    chapter 3 a sixth question on delivered orders, which would print the escalated case's first two
+    answers (19 customers, 1.11 orders each) in the morning. Chapter 3's sixth question asks instead
+    which count goes on the tree's customer branch and on which definition (23 customers at 1.30,
+    booked), and no morning slide or chapter notebook prints the delivered leaves or the delivered
+    median of Rs 2,060. The study notes, read after the day, keep the escalated case's answers in
+    its own section.
+
+16. **The workbook shows shares where it showed counts.** The Channel tab's booked-orders column
+    (which summed to the consumer view's count) became each channel's share of booked consumer
+    revenue, 28.7, 42.1 and 29.2 percent, and the simulator's Orders toggle became the percent of
+    booked rupees each channel kept: app 100, web 45.1, store 52.2 and 62.9 across the three
+    segments. The Typical tab's verdict no longer prices a first order at the median, and the
+    builder's docstring now gives its fix as the median cell, B7.
 
 ## Invented, and recorded as invented
 
@@ -114,8 +170,9 @@ each chapter opener's own numeral (see decision 1).
 2. The Week 1 extract is Kalpa Retail India for one window, 1 July to 26 September 2026.
 3. Marketing's Rs 12 crore is the acquisition line of the growth plan, not one quarter's spend.
 4. The story notebook's numbers are the dossier's illustrative numbers, labelled invented in
-   every cell that uses them: Rs 100 of GMV, the Saturday basket, the app's funnel, the month's
-   tree, January's cohort, the CLV and CAC, inventory days, the two categories and the like-for-like
+   every cell that uses them: Rs 100 of GMV and Rs 80 of net revenue, the Saturday basket, the app's
+   Saturday sessions, carts and orders, the month's tree, January's cohort, the CLV and CAC on the
+   dossier's invented Rs 3 crore campaign, days of inventory, gross margin and the like-for-like
    stores.
 5. Chapter 4's sizing and mechanism set: five invented orders of Rs 1,900 to Rs 2,600 and one of
    Rs 90,000.
@@ -160,7 +217,10 @@ Each link was requested on 29 September 2026 and returned HTTP 200, except where
 Python 3.11.15 and nbclient 0.11.0 for every notebook output and error text; python-pptx through
 `scripts/build_deck.py` for the decks, with mermaid-cli 12.0.0 as installed in the session;
 LibreOffice for the workbook recalculation and the deck render check, with the Carlito font
-installed from `fonts-crosextra-carlito` on 30 September 2026.
+installed from `fonts-crosextra-carlito` on 30 September 2026. The domain card is built with
+mermaid-cli 11.17.0, installed in the session's scratch space, as the dossier's sources file
+records: under 12.0.0 the same card, unchanged, prints on two pages. The revenue-tree sheet and the
+decks are built with 12.0.0.
 
 ## The depth loop
 
