@@ -3,7 +3,9 @@
 Eight items, ungraded, scored on correctness and speed together. There is no return question today,
 because Monday is the first teaching day of the week and there is no earlier day to return to.
 
-Each item names what it tests, so an item dropped for time says what was lost.
+Each item names what it tests, so an item dropped for time says what was lost. The items follow
+the day's chapters: Q1 and Q6 the tree, Q2 and Q7 chapter 3, Q3 chapter 2, Q4 chapter 4, Q5
+chapter 6 and Q8 chapter 5.
 
 ---
 
@@ -27,13 +29,13 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q3. In Python, what does "3500" > 3000 give you?
-*Tests: the type decides what an operation means, before the size does.*
+## Q3. Finance reports booked revenue and the dashboard counts delivered orders. What is booked revenue divided by delivered orders?
+*Tests: a fraction built on one definition, checked by multiplying back.*
 
-- True, since 3500 is the larger of the two numbers
-- False, since text always sorts below any number
-- It depends on whether the text holds only digits
-- An error: text and a number cannot be ordered  <- correct
+- The delivered AOV, since the orders counted are the delivered ones
+- The booked AOV, since the revenue counted is the booked total
+- A number that matches no definition and multiplies back to nothing  <- correct
+- A safer AOV than either, since it is the larger of the two numbers
 
 ---
 
@@ -47,13 +49,13 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q5. A fresh kernel runs the cells in the order 3, 1, 2. Cell 1 loads ORDERS and cell 3 uses it. What happens?
-*Tests: the kernel knows what it ran, never what the page shows.*
+## Q5. Customers who came back took a median of 45 days. A one-time buyer ordered 6 days before the extract ends. What are they?
+*Tests: the window's edge; a one-time buyer is not lost until they have had time to return.*
 
-- It works, since the page shows cell 1 above cell 3
-- Cell 3 raises a NameError, since ORDERS is not made yet  <- correct
-- Cell 1 raises an error, since it ran second in the order
-- Nothing prints, since the kernel skips cells run out of order
+- Lost, since they have not placed a second order yet
+- Too recent to judge, with 6 of the usual 45 days  <- correct
+- A returning customer, since they bought in the window
+- Out of every count, since the order sits at the edge
 
 ---
 

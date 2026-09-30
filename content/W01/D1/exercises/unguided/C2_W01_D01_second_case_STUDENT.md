@@ -4,7 +4,7 @@
 > business. Should the growth plan be store-led?"
 > Meera Raghavan, CEO, Kalpa Retail
 
-Forty-five minutes, in pairs, on the same 30 orders. Work in
+Twenty-five minutes, in pairs, on the same 30 orders. Work in
 `notebooks/C2_W01_D01_ex2_second_case_STUDENT.ipynb`, which splits revenue by channel and by
 customer type and then by status. Argue each item with your partner before you record it.
 

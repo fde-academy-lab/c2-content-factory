@@ -189,17 +189,17 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     <section class="part" id="walk">
       <p class="eyebrow">01 &middot; The guided walk</p>
       <h2>From Meera's ask to the sentence she gets</h2>
-      <p class="lede">The walk runs the day in order: the ask, the thinking, the three rounds, the escalated case and the
-        second case. Each step redraws the picture and moves the meter, which counts the rungs climbed.</p>
+      <p class="lede">The walk runs the day in order: the ask, the six chapters, the escalated case and the second
+        case. Each step redraws the picture and moves the meter, which counts the chapters climbed.</p>
       <div class="card"><div class="holder" id="walkDraw"></div></div>
       <div class="walk" style="margin-top:16px">
         <div class="card narration" aria-live="polite">
-          <div class="step" id="walkStep">Step 0 of 7</div>
+          <div class="step" id="walkStep">Step 0 of 8</div>
           <h3 id="walkTitle">The ask</h3>
           <p id="walkText"></p>
           <div class="meter">
             <div class="bar"><div class="fill" id="walkFill"></div></div>
-            <div class="legend"><span>no rung yet</span><span id="walkRungs">0 of 5 rungs climbed</span><span>five rungs</span></div>
+            <div class="legend"><span>no chapter yet</span><span id="walkRungs">0 of 6 chapters climbed</span><span>six chapters</span></div>
           </div>
           <div class="row">
             <button class="btn primary" id="walkNext" type="button">Next</button>
@@ -292,7 +292,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     <section class="part" id="channels">
       <p class="eyebrow">04 &middot; The channel view, for the second case</p>
       <h2>Booked against delivered, on consumer orders</h2>
-      <p class="lede">Consumer orders are the 29 orders outside the Business segment, which leaves out the order your round 3
+      <p class="lede">Consumer orders are the 29 orders outside the Business segment, which leaves out the order your chapter 4
         sort put at the top. Each channel is drawn twice: what was booked, and what was delivered.</p>
       <div class="grid2">
         <div class="card"><div class="holder" id="chDraw"></div></div>
@@ -321,7 +321,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         card C uses invented orders and says so.</p>
       <div class="grid2">
         <article class="card exp">
-          <div class="part-label">Experiment A &middot; round 1 &middot; Kalpa totals</div>
+          <div class="part-label">Experiment A &middot; chapter 1 &middot; Kalpa totals</div>
           <h3 class="exp-title">Cancelled orders counted as sales</h3>
           <p><b>Situation.</b> The first total anyone computes on the 30 orders is Rs 5,44,810, and it is about to go into
             Meera's note as sales. Four of the 30 orders were cancelled.</p>
@@ -343,7 +343,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         </article>
 
         <article class="card exp">
-          <div class="part-label">Experiment B &middot; round 2 &middot; Kalpa totals</div>
+          <div class="part-label">Experiment B &middot; chapter 3 &middot; Kalpa totals</div>
           <h3 class="exp-title">Rows counted as customers</h3>
           <p><b>Situation.</b> The extract has 30 rows, and a hurried count reports 30 customers, so orders per customer
             reads 30 / 30 = 1.00 and marketing says nobody comes back.</p>
@@ -365,7 +365,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         </article>
 
         <article class="card exp">
-          <div class="part-label">Experiment C &middot; round 3 &middot; invented orders</div>
+          <div class="part-label">Experiment C &middot; chapter 4 &middot; invented orders</div>
           <h3 class="exp-title">One large order and the mean</h3>
           <p><b>Situation.</b> Five invented orders sit between Rs 1,900 and Rs 2,600. An invented order of Rs 90,000 then
             joins them as a sixth, which is the shape Anand warned about.</p>
@@ -484,30 +484,29 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         <dl class="gloss">
           <dt>Revenue tree</dt><dd>Revenue drawn as customers times orders per customer times average order value, with
             average order value as items per order times price per item, less discounts.<span class="where">The thinking
-            drawn before round 1.</span></dd>
+            drawn in the story, before chapter 1.</span></dd>
           <dt>Branch</dt><dd>One box of the tree, a metric the business can move at its own cost: acquisition costs
-            marketing, frequency costs retention, basket costs merchandising.<span class="where">The thinking; round 1,
-            level 4.</span></dd>
+            marketing, frequency costs retention, basket costs merchandising.<span class="where">The story; chapter 5.</span></dd>
           <dt>Numerator and denominator</dt><dd>The top and the bottom of every rate, said out loud before it is
-            computed.<span class="where">Round 1, level 3.</span></dd>
-          <dt>Booked</dt><dd>Every order placed in the window, whatever happened to it afterwards.<span class="where">Round
-            1, level 1.</span></dd>
-          <dt>Not cancelled</dt><dd>Booked orders less the ones cancelled before they shipped.<span class="where">Round 1,
+            computed.<span class="where">Chapter 2.</span></dd>
+          <dt>Booked</dt><dd>Every order placed in the window, whatever happened to it afterwards.<span class="where">Chapter
+            1.</span></dd>
+          <dt>Not cancelled</dt><dd>Booked orders less the ones cancelled before they shipped.<span class="where">Chapter 1,
             the trap.</span></dd>
           <dt>Delivered</dt><dd>Orders that reached the customer and stayed there, so returns and cancellations are both
-            out.<span class="where">Round 1, the fix; round 2, level 4.</span></dd>
+            out.<span class="where">Chapter 1, the fix; chapter 3.</span></dd>
           <dt>Distinct customer</dt><dd>A customer id counted once however many rows it appears on; in Python, the length
-            of a set of ids.<span class="where">Round 2, the trap and its fix.</span></dd>
+            of a set of ids.<span class="where">Chapter 3, the trap and its fix.</span></dd>
           <dt>Orders per customer</dt><dd>Orders divided by distinct customers, the frequency branch of the tree.<span
-            class="where">Round 2, level 3.</span></dd>
-          <dt>Repeat customer</dt><dd>A customer who placed more than one order in the window.<span class="where">Round 2,
-            level 3.</span></dd>
+            class="where">Chapter 3.</span></dd>
+          <dt>Repeat customer</dt><dd>A customer who placed more than one order in the window.<span class="where">Chapter 3,
+            the build.</span></dd>
           <dt>Mean</dt><dd>The total spread evenly over the count; it multiplies back to the total, and one large order can
-            drag it.<span class="where">Round 3, level 1.</span></dd>
+            drag it.<span class="where">Chapter 4.</span></dd>
           <dt>Median</dt><dd>The middle of the sorted list, or the average of the two middles when the count is even, which
-            one large order cannot drag.<span class="where">Round 3, level 3.</span></dd>
+            one large order cannot drag.<span class="where">Chapter 4, the fix.</span></dd>
           <dt>Compounding</dt><dd>Lifts on branches that multiply, so each lift also applies to the other's gain.<span
-            class="where">The escalated case.</span></dd>
+            class="where">Chapter 5.</span></dd>
           <dt>Window</dt><dd>The dates a number covers; one window shows the shape of revenue, and two windows show which
             branch moved.<span class="where">The escalated case; Tuesday's question.</span></dd>
           <dt>Channel share</dt><dd>One channel's revenue over all revenue, read only after counting the orders behind
@@ -1068,26 +1067,28 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   }
 
   /* ---------------------------------------------------------------- the walk */
-  var RUNGS = ["Which total is sales, and which branches make it?", "Each branch as a metric with its denominator",
-               "Count the leaves: customers and orders per customer", "Which typical order is honest?",
-               "Which branch does Meera open first?"];
+  var RUNGS = ["Chapter 1: which total is sales?", "Chapter 2: each branch as a fraction",
+               "Chapter 3: customers and orders per customer", "Chapter 4: which typical order is honest?",
+               "Chapter 5: which branch first?", "Chapter 6: the sentence Meera acts on"];
   var WALK = [
     { t: "The ask", r: 0, x: "Revenue grew 4 percent against a plan of 15, and marketing wants Rs 12 crore for new customers. Meera wants to know what sales is made of and whether acquisition is even the branch that is short, and Anand wants no averages that one business customer can move.",
-      d: function () { return K.driverTree(treeData("rev"), { title: "Revenue is a tree; Meera asks which branch is short" }); } },
-    { t: "The thinking, before any tool", r: 0, x: "Revenue is customers times orders per customer times average order value, and each branch costs something different to move. Marketing's Rs 12 crore is a bet on the first branch, customers, so the question is whether that branch is the one that is short.",
-      d: function () { return K.driverTree(treeData("cust", { cust: "the Rs 12 crore bet" }), { title: "Marketing's budget sits on one branch" }); } },
-    { t: "Round 1: which total is sales?", r: 2, x: "All 30 orders add to Rs 5,44,810, and 4 of them were cancelled and 5 returned. Not cancelled is Rs 5,35,760 on 26 orders and delivered is Rs 5,20,790 on 21, so the definition travels beside the number.",
+      d: function () { return K.driverTree(treeData("cust", { cust: "the Rs 12 crore bet" }), { title: "Revenue is a tree; marketing's budget sits on one branch" }); } },
+    { t: "Chapter 1: which total is sales?", r: 1, x: "All 30 orders add to Rs 5,44,810, and 4 of them were cancelled and 5 returned. Not cancelled is Rs 5,35,760 on 26 orders and delivered is Rs 5,20,790 on 21, so the definition travels beside the number.",
       d: function () { return K.bridge(["booked", 544810], [["cancelled", -9050], ["returned", -14970]], { lo: 500000, endLabel: "delivered", title: "Booked to delivered, 1 July to 26 September" }); } },
-    { t: "Round 2: count the leaves", r: 3, x: "Counting rows gives 30 customers and 1.00 orders each, which reads as nobody comes back. Counting distinct ids gives 23 customers and 1.30 orders each, with 7 who came back, so frequency is a live branch.",
+    { t: "Chapter 2: each branch as a fraction", r: 2, x: "AOV is revenue over orders on one definition: Rs 18,160 booked, Rs 24,800 delivered. Booked rupees over delivered orders gives Rs 25,943, which multiplies back over the 30 orders to Rs 7,78,300 that nobody booked.",
+      d: function () { return K.columns(["booked / booked", "delivered / delivered", "booked / delivered"], [["AOV", [18160, 24800, 25943]]], { fmt: R, lit: [2], title: "Three AOVs; only the mixed one matches no definition" }); } },
+    { t: "Chapter 3: count the leaves", r: 3, x: "Counting rows gives 30 customers and 1.00 orders each, which reads as nobody comes back. Counting distinct ids gives 23 customers and 1.30 orders each, with 7 who came back, so frequency is a live branch.",
       d: function () { return K.columns(["counted by rows", "counted by id"], [["customers", [30, 23]], ["came back", [0, 7]]], { title: "The same 30 orders, counted two ways" }); } },
-    { t: "Round 3: which typical is honest?", r: 4, x: "The mean order is Rs 18,160 and the median Rs 2,205, and only 1 of the 30 orders sits above the mean. One order at the top of the sort drags the mean, and notebook 3's empty cell is where you find it.",
+    { t: "Chapter 4: which typical is honest?", r: 4, x: "The mean order is Rs 18,160 and the median Rs 2,205, and only 1 of the 30 orders sits above the mean. One order at the top of the sort drags the mean, and notebook 4's empty cell is where you find it.",
       d: function () { return K.columns(["booked", "delivered"], [["mean", [18160, Math.round(520790 / 21)]], ["median", [2205, 2060]]], { fmt: R, title: "Mean against median, per definition of sales" }); } },
-    { t: "The escalated case: which branch first?", r: 5, x: "Two 10 percent lifts on customers and frequency make 21 percent through the tree, Rs 6,59,220, where adding says Rs 6,53,772. Sixteen of the 23 customers bought once in the quarter, so frequency is the cheaper branch to open first.",
+    { t: "Chapter 5: which branch first?", r: 5, x: "The 15 percent plan needs 3.45 more customers or 4.5 more orders from the 23 already on file, and 16 of them bought once, so frequency is the cheaper branch to open first. Two 10 percent lifts make 21 percent through the tree, Rs 6,59,220, where adding says Rs 6,53,772.",
       d: function () { return K.bridge(["today", 544810], [["customers +10%", 54481], ["frequency +10%", 54481], ["lift on the lift", 5448]], { lo: 500000, endLabel: "through the tree", title: "Two 10 percent lifts, multiplied" }); } },
-    { t: "The second case: does a channel change it?", r: 5, x: "On consumer orders web leads booked with Rs 27,290, and half its orders came back. App delivered all 10 of its orders, Rs 18,600, and store delivered Rs 9,870 after 4 cancellations. Frequency first stands, and the note names two leaks.",
-      d: function () { return K.columns(CONSUMER.channels, [["booked", CONSUMER.bookedRs], ["delivered", CONSUMER.deliveredRs]], { fmt: R, title: "Consumer orders by channel, booked against delivered" }); } },
-    { t: "The sentence to Meera", r: 5, x: "On the 30 orders from 1 July to 26 September, 23 customers placed 1.30 orders each at a typical order of Rs 2,205, and 16 of them bought only once, so open frequency before acquisition. One window cannot show which branch moved, so the Rs 12 crore waits for Tuesday's two quarters.",
-      d: function () { return K.driverTree(treeData("freq", { freq: "open first", cust: "hold until Tuesday" }, { cust: "unknown" }), { title: "Frequency first; acquisition waits for two windows" }); } }
+    { t: "Chapter 6: the sentence Meera acts on", r: 6, x: "Sixteen of 23 bought once, and it is tempting to call 70 percent lost. Returning customers took a median of 45 days, and 9 of the 16 bought inside the last 45, so 7 came back, 7 had time and did not, and 9 are too recent to judge. Open frequency first, and hold the Rs 12 crore until Tuesday's two quarters.",
+      d: function () { return K.columns(["came back", "once, had time", "once, too recent"], [["customers", [7, 7, 9]]], { lit: [2], title: "The 23 customers, with the window's edge" }); } },
+    { t: "The escalated case: on delivered orders", r: 6, x: "On the 21 delivered orders, 19 customers kept 1.11 orders each and the median is Rs 2,060. Orders per customer fell; the typical order and the branch held, and the delivered view names the leak: second orders cancelled or returned.",
+      d: function () { return K.driverTree(treeData("freq", { freq: "open first", cust: "hold until Tuesday" }, { cust: "unknown" }), { title: "Frequency first; acquisition waits for two windows" }); } },
+    { t: "The second case: does a channel change it?", r: 6, x: "On consumer orders web leads booked with Rs 27,290, and half its orders came back. App delivered all 10 of its orders, Rs 18,600, and store delivered Rs 9,870 after 4 cancellations. Frequency first stands, and the note names two leaks.",
+      d: function () { return K.columns(CONSUMER.channels, [["booked", CONSUMER.bookedRs], ["delivered", CONSUMER.deliveredRs]], { fmt: R, title: "Consumer orders by channel, booked against delivered" }); } }
   ];
   var walkAt = 0;
   function showWalk(extra) {
@@ -1096,8 +1097,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     $("walkStep").textContent = "Step " + walkAt + " of " + (WALK.length - 1) + (extra || "");
     $("walkTitle").textContent = w.t;
     $("walkText").textContent = w.x;
-    $("walkFill").style.width = (100 * w.r / 5) + "%";
-    $("walkRungs").textContent = w.r + " of 5 rungs climbed";
+    $("walkFill").style.width = (100 * w.r / 6) + "%";
+    $("walkRungs").textContent = w.r + " of 6 chapters climbed";
     $("walkNext").textContent = walkAt === WALK.length - 1 ? "Back to the start" : "Next";
   }
   $("walkNext").addEventListener("click", function () { walkAt = (walkAt + 1) % WALK.length; showWalk(); });
@@ -1105,8 +1106,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   $("walkMeter").addEventListener("click", function () {
     var r = WALK[walkAt].r;
     openPop("What the meter counts", K.ladder(RUNGS, r ? r - 1 : -1, { width: 420 }),
-      "The meter counts the day's five rungs, each a harder business question on the same 30 orders. At this step " + r +
-      " of 5 are climbed, and the lit rung is the latest one.");
+      "The meter counts the day's six chapters, each a harder business question on the same 30 orders. At this step " + r +
+      " of 6 are climbed, and the lit rung is the latest one.");
   });
   showWalk();
 
@@ -1121,7 +1122,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   }
   function decision(L) {
     var d = L.d;
-    if (state.count === "rows") return ["bad", "On this count all " + L.cust + " customers bought once, so acquisition looks like the only branch left and the Rs 12 crore looks justified. That reading rests on rows counted as customers, which is round 2's trap; count distinct ids before anyone signs."];
+    if (state.count === "rows") return ["bad", "On this count all " + L.cust + " customers bought once, so acquisition looks like the only branch left and the Rs 12 crore looks justified. That reading rests on rows counted as customers, which is chapter 3's trap; count distinct ids before anyone signs."];
     if (state.typ === "mean") return ["bad", "Frequency is live, with " + L.back + " of " + L.cust + " customers back, and the decision still leans that way. The acquisition payback on this setting values a first order at the mean, " + R(L.mean) + ", which one order drags; switch to the median before the Rs 12 crore case is priced."];
     if (L.typ === null) return ["", "Frequency is live, with " + L.back + " of " + L.cust + " customers back. The median on the not-cancelled definition is left for you: sort the 26 amounts in notebook 3's level 4 and read the middle two, then come back and choose booked or delivered to see the full sentence."];
     return ["good", "On the " + d.orders + " orders, " + d.name + ", " + L.cust + " customers placed " + L.opc.toFixed(2) + " orders each at a typical order of " + R(L.typ) + ", and " + L.once + " of them bought only once, so open frequency before acquisition. One window cannot show which branch moved, so hold the Rs 12 crore until Tuesday's two quarters."];

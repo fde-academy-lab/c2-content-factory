@@ -1,22 +1,25 @@
-"""Build Monday's decision workbook: five taught decisions, each a tab ending in a verdict sentence.
+"""Build Monday's decision workbook: seven taught decisions, each a tab ending in a verdict sentence.
 
 Run from the repository root:  python3 content/W01/D1/demos/C2_W01_D01_build_decision_tool_TRAINER.py
 
 It writes two files beside itself: the workbook, C2_W01_D01_decision_tool_STUDENT.xlsx, and the
 manifest scripts/xlsx_recalc.py runs, C2_W01_D01_decision_tool_recalc_INTERNAL.md.
 
-The tabs follow the day's rungs: which total is sales, customers by rows or by id, the typical
-order, lifts compounded, and channel booked against delivered on consumer orders. Each tab carries
+The tabs follow the day's chapters: which total is sales, the AOV as one fraction, customers by rows
+or by id, the typical order, lifts compounded, the window's edge, and channel booked against
+delivered on consumer orders. Each tab carries
 one planted formula defect, the day's trap written as a formula, and its own check line exposes it.
-The Export tab releases the brief to Meera only when all five are fixed, so fixing one tab does not
+The Export tab releases the brief to Meera only when all seven are fixed, so fixing one tab does not
 clear the release. Every figure on the tabs is an aggregate from the day's table in the brief, or an
 invented record labelled invented; no planted record appears.
 
 The planted defects, for the trainer:
     Sales!C11      the not-cancelled total adds the cancelled row back   fix: =C5+C6
+    Fraction!B11   the AOV divides booked rupees by the chosen orders   fix: =ROUND(B10/B9,0)
     Customers!B11  customers counts orders, one per row                 fix: =SUM(B5:B8)
     Typical!B9     the typical order reads the mean cell                fix: =B8
     Lifts!B13      the new revenue adds the lifts                       fix: =B4*C6*C7*C8
+    Edge!B11       every one-time buyer is counted as lost              fix: =B7-B9
     Channel!F8     delivered leaves the returns in                      fix: =C8-D8-E8 (and fill down)
 """
 import pathlib
@@ -102,13 +105,13 @@ start.column_dimensions["A"].width = 120
 lines = [
     "Kalpa Retail, Week 1, Monday. Meera Raghavan, CEO, asked what sales is made of and whether acquisition is even the "
     "branch that is short, before she signs marketing's Rs 12 crore.",
-    "The workbook holds the five decisions the day taught, one tab each, and an Export tab that assembles the brief to Meera.",
+    "The workbook holds the seven decisions the day taught, one tab each, and an Export tab that assembles the brief to Meera.",
     "Yellow cells are inputs you may change; every other number and sentence is a live formula.",
     "Each tab carries one planted defect in one formula: the day's trap, written as a spreadsheet mistake. Read the tab's "
     "check line first, find the cell, fix the formula, and watch the verdict change.",
-    "The Export tab releases the brief only when all five tabs pass their checks, so fixing one tab does not clear it.",
-    "Sales asks which total is sales. Customers asks whether customers are counted by rows or by id. Typical asks whether "
-    "the typical order is the mean or the median. Lifts asks whether two lifts add or multiply. Channel asks what booked "
+    "The Export tab releases the brief only when all seven tabs pass their checks, so fixing one tab does not clear it.",
+    "Sales asks which total is sales. Fraction asks whether the AOV is one definition over the same definition. Customers asks whether customers are counted by rows or by id. Typical asks whether "
+    "the typical order is the mean or the median. Lifts asks whether two lifts add or multiply. Edge asks whether a one-time buyer is lost or too recent to judge. Channel asks what booked "
     "and delivered say about each channel on consumer orders.",
     "The figures on the tabs are aggregates of the day's 30 orders from 1 July to 26 September 2026, as the notebooks "
     "compute them. The few amounts marked invented are invented to show a mechanism and are not Kalpa records.",
@@ -148,6 +151,32 @@ put(ws, "B19", '=IF(C11<>C10-C7,"Fix the not-cancelled total before any number l
     VERDICT, TINT, True)
 long_cell(ws, "B19", 48)
 put(ws, "A20", "Fixed, for the Export tab", NOTE); put(ws, "B20", "=IF(C11=C10-C7,1,0)")
+
+# ---------------------------------------------------------------- Fraction
+ws = sheet(wb, "Fraction", "Is the AOV one definition over the same definition?",
+           "A branch is a fraction on one definition. Orders times AOV has to land on that definition's revenue.")
+head(ws, 4, ["Definition", "Orders", "Revenue (Rs)"])
+for i, (d, n, v) in enumerate([("booked", 30, 544810), ("delivered", 21, 520790)], 5):
+    put(ws, f"A{i}", d)
+    put(ws, f"B{i}", n, fill=INPUT)
+    put(ws, f"C{i}", v, fill=INPUT, fmt="#,##0")
+put(ws, "A8", "The definition you report", BOLD); put(ws, "B8", "delivered", fill=INPUT)
+choice(ws, "B8", ["booked", "delivered"])
+put(ws, "A9", "Its orders"); put(ws, "B9", "=INDEX(B5:B6,MATCH(B8,A5:A6,0))")
+put(ws, "A10", "Its revenue (Rs)"); put(ws, "B10", "=INDEX(C5:C6,MATCH(B8,A5:A6,0))", fmt="#,##0")
+put(ws, "A11", "AOV (Rs)", BOLD); put(ws, "B11", "=ROUND(C5/B9,0)", fmt="#,##0")
+put(ws, "A12", "Orders x AOV (Rs)"); put(ws, "B12", "=B9*B11", fmt="#,##0")
+put(ws, "A13", "The check", BOLD)
+put(ws, "B13", '=IF(ABS(B12-B10)<=B9,"Orders times AOV lands on "&B8&" revenue.","Orders times AOV comes to "&'
+               + rs("B12") + '&", which lands on no revenue: the AOV divides one definition\'s rupees by another\'s '
+               'orders. Fix it first.")', wrap=True)
+long_cell(ws, "B13", 42)
+put(ws, "A15", "Verdict", VERDICT)
+put(ws, "B15", '=IF(ABS(B12-B10)>B9,"Fix the AOV before it values any order.","AOV on the "&B8&" definition is "&'
+               + rs("B11") + '&" on "&B9&" orders, and it multiplies back to "&' + rs("B10") + '&".")',
+    VERDICT, TINT, True)
+long_cell(ws, "B15", 48)
+put(ws, "A16", "Fixed, for the Export tab", NOTE); put(ws, "B16", "=IF(B11=ROUND(B10/B9,0),1,0)")
 
 # ---------------------------------------------------------------- Customers
 ws = sheet(wb, "Customers", "Customers by rows or by id?",
@@ -241,6 +270,29 @@ put(ws, "A19", "Fixed, for the Export tab", NOTE); put(ws, "B19", "=IF(ABS(B13-B
 put(ws, "A21", "Try the discount: set customers to 0, orders per customer to 10 for the extra quantity, and average "
                "order value to minus 15 for 15 percent off.", NOTE)
 
+# ---------------------------------------------------------------- Edge
+ws = sheet(wb, "Edge", "Lost, or too recent to judge?",
+           "A one-time buyer is not lost until they have had the usual time to come back.")
+head(ws, 4, ["Measure", "Value"])
+for i, (label, v) in enumerate([("Customers", 23), ("Came back", 7), ("Bought once", 16),
+                                ("Median days between a first and second order", 45),
+                                ("One-time buyers who bought inside the last gap", 9)], 5):
+    put(ws, f"A{i}", label)
+    put(ws, f"B{i}", v, fill=INPUT)
+put(ws, "A11", "Had time and did not come back", BOLD); put(ws, "B11", "=B7")
+put(ws, "A12", "Share of customers who look lost, percent"); put(ws, "B12", "=ROUND(100*B11/B5,0)")
+put(ws, "A13", "The check", BOLD)
+put(ws, "B13", '=IF(AND(B11=B7,B9>0),"The count treats all "&B7&" one-time buyers as lost, although "&B9&'
+               '" bought inside the last "&B8&" days. Fix it first.","The count holds back the "&B9&" one-time buyers '
+               'who have not had "&B8&" days.")', wrap=True)
+long_cell(ws, "B13", 42)
+put(ws, "A15", "Verdict", VERDICT)
+put(ws, "B15", '=IF(AND(B11=B7,B9>0),"Fix the lost count before the sentence calls anyone lost.",B6&" came back, "&'
+               'B11&" had time and did not, and "&B9&" bought too recently to judge, so at most "&B12&'
+               '" percent of customers look lost.")', VERDICT, TINT, True)
+long_cell(ws, "B15", 48)
+put(ws, "A16", "Fixed, for the Export tab", NOTE); put(ws, "B16", "=IF(B11=B7-B9,1,0)")
+
 # ---------------------------------------------------------------- Channel
 ws = sheet(wb, "Channel", "Booked against delivered, by channel",
            "Consumer orders only: the 29 orders outside the Business segment. Each channel split by what happened to "
@@ -282,13 +334,13 @@ put(ws, "A19", "Fixed, for the Export tab", NOTE); put(ws, "B19", "=IF(F11+D11+E
 ws = sheet(wb, "Export", "The brief to Meera, assembled",
            "Released only when every tab's check passes. Paste the brief into the note to Meera.", widths=(24, 120))
 put(ws, "A4", "Tabs fixed", BOLD)
-put(ws, "B4", "=Sales!B20+Customers!B18+Typical!B15+Lifts!B19+Channel!B19")
+put(ws, "B4", "=Sales!B20+Fraction!B16+Customers!B18+Typical!B15+Lifts!B19+Edge!B16+Channel!B19")
 put(ws, "A5", "Release", VERDICT)
-put(ws, "B5", '=IF(B4=5,"Ready to paste into the note to Meera.","Not ready: tabs still carrying a defect, "&(5-B4)&" of '
-              'five.")', VERDICT, TINT, True)
+put(ws, "B5", '=IF(B4=7,"Ready to paste into the note to Meera.","Not ready: tabs still carrying a defect, "&(7-B4)&" of '
+              'seven.")', VERDICT, TINT, True)
 put(ws, "A7", "Paste-ready brief", BOLD)
-put(ws, "B7", '=IF(B4=5,Sales!B19&CHAR(10)&"Customers: "&Customers!B17&CHAR(10)&"Typical order: "&'
-              'Typical!B14&CHAR(10)&"Lifts: "&Lifts!B18&CHAR(10)&"Channels: "&Channel!B18&CHAR(10)&'
+put(ws, "B7", '=IF(B4=7,Sales!B19&CHAR(10)&"Order value: "&Fraction!B15&CHAR(10)&"Customers: "&Customers!B17&CHAR(10)&"Typical order: "&'
+              'Typical!B14&CHAR(10)&"Lifts: "&Lifts!B18&CHAR(10)&"The window: "&Edge!B15&CHAR(10)&"Channels: "&Channel!B18&CHAR(10)&'
               '"Recommendation: open frequency before acquisition; one window cannot show which branch moved, so hold '
               'the Rs 12 crore until Tuesday\'s two quarters.","The brief assembles once every tab passes its check.")',
     wrap=True)
@@ -305,7 +357,7 @@ and then applies each fix to prove the verdicts move. The build script
 
 The workbook ships with one planted formula defect per tab, so as shipped every verdict asks for
 its fix and the Export release reads "not ready". Each flip below is the fix a learner makes, some
-with a decision changed after the fix, and the last applies all five, which is the only state that
+with a decision changed after the fix, and the last applies all seven, which is the only state that
 releases the brief.
 
 ```yaml
@@ -318,17 +370,32 @@ verdicts:
   - {sheet: Channel, cell: B18, expect: "Fix the delivered column before you rank any channel."}
   - {sheet: Sales, cell: B15, contains: "still carries the cancelled orders"}
   - {sheet: Lifts, cell: B16, contains: "disagree by Rs 5,448"}
-  - {sheet: Export, cell: B5, expect: "Not ready: tabs still carrying a defect, 5 of five."}
+  - {sheet: Fraction, cell: B15, expect: "Fix the AOV before it values any order."}
+  - {sheet: Fraction, cell: B13, contains: "Rs 5,44,803, which lands on no revenue"}
+  - {sheet: Edge, cell: B15, expect: "Fix the lost count before the sentence calls anyone lost."}
+  - {sheet: Export, cell: B5, expect: "Not ready: tabs still carrying a defect, 7 of seven."}
 flips:
   - name: the not-cancelled total leaves the cancelled orders out
     set: [{sheet: Sales, cell: C11, value: "=C5+C6"}]
     verdicts:
       - {sheet: Sales, cell: B19, expect: "Sales, not cancelled, 1 July to 26 September: Rs 5,35,760 on 26 orders, with Rs 9,050 and 4 orders of the booked total left out by the definition."}
-      - {sheet: Export, cell: B5, expect: "Not ready: tabs still carrying a defect, 4 of five."}
+      - {sheet: Export, cell: B5, expect: "Not ready: tabs still carrying a defect, 6 of seven."}
   - name: the fixed sales tab, read as delivered
     set: [{sheet: Sales, cell: C11, value: "=C5+C6"}, {sheet: Sales, cell: B14, value: "delivered"}]
     verdicts:
       - {sheet: Sales, cell: B19, contains: "Rs 5,20,790 on 21 orders, with Rs 24,020 and 9 orders"}
+  - name: the AOV divides the chosen definition by itself
+    set: [{sheet: Fraction, cell: B11, value: "=ROUND(B10/B9,0)"}]
+    verdicts:
+      - {sheet: Fraction, cell: B15, expect: "AOV on the delivered definition is Rs 24,800 on 21 orders, and it multiplies back to Rs 5,20,790."}
+  - name: the fixed fraction, read as booked
+    set: [{sheet: Fraction, cell: B11, value: "=ROUND(B10/B9,0)"}, {sheet: Fraction, cell: B8, value: "booked"}]
+    verdicts:
+      - {sheet: Fraction, cell: B15, contains: "Rs 18,160 on 30 orders"}
+  - name: the edge holds back the recent buyers
+    set: [{sheet: Edge, cell: B11, value: "=B7-B9"}]
+    verdicts:
+      - {sheet: Edge, cell: B15, expect: "7 came back, 7 had time and did not, and 9 bought too recently to judge, so at most 30 percent of customers look lost."}
   - name: customers counted by id
     set: [{sheet: Customers, cell: B11, value: "=SUM(B5:B8)"}]
     verdicts:
@@ -361,15 +428,17 @@ flips:
     set: [{sheet: Channel, cell: F8, value: "=C8-D8-E8"}, {sheet: Channel, cell: F9, value: "=C9-D9-E9"}, {sheet: Channel, cell: F10, value: "=C10-D10-E10"}, {sheet: Channel, cell: B4, value: "booked"}]
     verdicts:
       - {sheet: Channel, cell: B18, contains: "On consumer orders booked, web leads with Rs 27,290 of Rs 64,810"}
-  - name: four of five fixed still holds the release
+  - name: six of seven fixed still holds the release
     set:
       - {sheet: Sales, cell: C11, value: "=C5+C6"}
       - {sheet: Customers, cell: B11, value: "=SUM(B5:B8)"}
       - {sheet: Typical, cell: B9, value: "=B7"}
       - {sheet: Lifts, cell: B13, value: "=ROUND(B4*C6*C7*C8,0)"}
+      - {sheet: Fraction, cell: B11, value: "=ROUND(B10/B9,0)"}
+      - {sheet: Edge, cell: B11, value: "=B7-B9"}
     verdicts:
-      - {sheet: Export, cell: B5, expect: "Not ready: tabs still carrying a defect, 1 of five."}
-  - name: all five tabs fixed
+      - {sheet: Export, cell: B5, expect: "Not ready: tabs still carrying a defect, 1 of seven."}
+  - name: all seven tabs fixed
     set:
       - {sheet: Sales, cell: C11, value: "=C5+C6"}
       - {sheet: Customers, cell: B11, value: "=SUM(B5:B8)"}
@@ -378,8 +447,11 @@ flips:
       - {sheet: Channel, cell: F8, value: "=C8-D8-E8"}
       - {sheet: Channel, cell: F9, value: "=C9-D9-E9"}
       - {sheet: Channel, cell: F10, value: "=C10-D10-E10"}
+      - {sheet: Fraction, cell: B11, value: "=ROUND(B10/B9,0)"}
+      - {sheet: Edge, cell: B11, value: "=B7-B9"}
     verdicts:
       - {sheet: Export, cell: B5, expect: "Ready to paste into the note to Meera."}
+      - {sheet: Export, cell: B7, contains: "Order value: AOV on the delivered definition is Rs 24,800"}
       - {sheet: Export, cell: B7, contains: "Rs 5,35,760 on 26 orders"}
       - {sheet: Export, cell: B7, contains: "Customers: 23 customers placed 1.30 orders each"}
       - {sheet: Export, cell: B7, contains: "hold the Rs 12 crore until Tuesday's two quarters"}

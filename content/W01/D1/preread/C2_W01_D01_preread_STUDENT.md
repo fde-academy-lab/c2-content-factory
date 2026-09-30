@@ -55,7 +55,7 @@ Think about one question tonight, and bring your answer as one sentence: with an
 
 Nothing to install. Two checks, each under five minutes.
 
-1. Open your Codespace and run Restart and Run All on Monday's three round notebooks and your case notebooks. Each should end on its checks passing; if one does not, post its last error line in the cohort channel before the session.
+1. Open your Codespace and run Restart and Run All on Monday's six chapter notebooks and your case notebooks. Each should end on its checks passing; if one does not, post its last error line in the cohort channel before the session.
 2. Save your take-home notebook with its outputs showing, since a notebook that ran but was not saved looks empty to everyone else.
 
 If you have 15 minutes more, read the Brit Institute walkthrough of analyst case questions, the sales-drop case first: https://britinstitute.uk/blog/data-analyst-case-study-interview-questions (verified 29 Sep 2026). Read it for the order of the questions it asks, and leave the answers for Tuesday.

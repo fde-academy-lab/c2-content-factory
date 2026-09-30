@@ -6,7 +6,7 @@ and then applies each fix to prove the verdicts move. The build script
 
 The workbook ships with one planted formula defect per tab, so as shipped every verdict asks for
 its fix and the Export release reads "not ready". Each flip below is the fix a learner makes, some
-with a decision changed after the fix, and the last applies all five, which is the only state that
+with a decision changed after the fix, and the last applies all seven, which is the only state that
 releases the brief.
 
 ```yaml
@@ -19,17 +19,32 @@ verdicts:
   - {sheet: Channel, cell: B18, expect: "Fix the delivered column before you rank any channel."}
   - {sheet: Sales, cell: B15, contains: "still carries the cancelled orders"}
   - {sheet: Lifts, cell: B16, contains: "disagree by Rs 5,448"}
-  - {sheet: Export, cell: B5, expect: "Not ready: tabs still carrying a defect, 5 of five."}
+  - {sheet: Fraction, cell: B15, expect: "Fix the AOV before it values any order."}
+  - {sheet: Fraction, cell: B13, contains: "Rs 5,44,803, which lands on no revenue"}
+  - {sheet: Edge, cell: B15, expect: "Fix the lost count before the sentence calls anyone lost."}
+  - {sheet: Export, cell: B5, expect: "Not ready: tabs still carrying a defect, 7 of seven."}
 flips:
   - name: the not-cancelled total leaves the cancelled orders out
     set: [{sheet: Sales, cell: C11, value: "=C5+C6"}]
     verdicts:
       - {sheet: Sales, cell: B19, expect: "Sales, not cancelled, 1 July to 26 September: Rs 5,35,760 on 26 orders, with Rs 9,050 and 4 orders of the booked total left out by the definition."}
-      - {sheet: Export, cell: B5, expect: "Not ready: tabs still carrying a defect, 4 of five."}
+      - {sheet: Export, cell: B5, expect: "Not ready: tabs still carrying a defect, 6 of seven."}
   - name: the fixed sales tab, read as delivered
     set: [{sheet: Sales, cell: C11, value: "=C5+C6"}, {sheet: Sales, cell: B14, value: "delivered"}]
     verdicts:
       - {sheet: Sales, cell: B19, contains: "Rs 5,20,790 on 21 orders, with Rs 24,020 and 9 orders"}
+  - name: the AOV divides the chosen definition by itself
+    set: [{sheet: Fraction, cell: B11, value: "=ROUND(B10/B9,0)"}]
+    verdicts:
+      - {sheet: Fraction, cell: B15, expect: "AOV on the delivered definition is Rs 24,800 on 21 orders, and it multiplies back to Rs 5,20,790."}
+  - name: the fixed fraction, read as booked
+    set: [{sheet: Fraction, cell: B11, value: "=ROUND(B10/B9,0)"}, {sheet: Fraction, cell: B8, value: "booked"}]
+    verdicts:
+      - {sheet: Fraction, cell: B15, contains: "Rs 18,160 on 30 orders"}
+  - name: the edge holds back the recent buyers
+    set: [{sheet: Edge, cell: B11, value: "=B7-B9"}]
+    verdicts:
+      - {sheet: Edge, cell: B15, expect: "7 came back, 7 had time and did not, and 9 bought too recently to judge, so at most 30 percent of customers look lost."}
   - name: customers counted by id
     set: [{sheet: Customers, cell: B11, value: "=SUM(B5:B8)"}]
     verdicts:
@@ -62,15 +77,17 @@ flips:
     set: [{sheet: Channel, cell: F8, value: "=C8-D8-E8"}, {sheet: Channel, cell: F9, value: "=C9-D9-E9"}, {sheet: Channel, cell: F10, value: "=C10-D10-E10"}, {sheet: Channel, cell: B4, value: "booked"}]
     verdicts:
       - {sheet: Channel, cell: B18, contains: "On consumer orders booked, web leads with Rs 27,290 of Rs 64,810"}
-  - name: four of five fixed still holds the release
+  - name: six of seven fixed still holds the release
     set:
       - {sheet: Sales, cell: C11, value: "=C5+C6"}
       - {sheet: Customers, cell: B11, value: "=SUM(B5:B8)"}
       - {sheet: Typical, cell: B9, value: "=B7"}
       - {sheet: Lifts, cell: B13, value: "=ROUND(B4*C6*C7*C8,0)"}
+      - {sheet: Fraction, cell: B11, value: "=ROUND(B10/B9,0)"}
+      - {sheet: Edge, cell: B11, value: "=B7-B9"}
     verdicts:
-      - {sheet: Export, cell: B5, expect: "Not ready: tabs still carrying a defect, 1 of five."}
-  - name: all five tabs fixed
+      - {sheet: Export, cell: B5, expect: "Not ready: tabs still carrying a defect, 1 of seven."}
+  - name: all seven tabs fixed
     set:
       - {sheet: Sales, cell: C11, value: "=C5+C6"}
       - {sheet: Customers, cell: B11, value: "=SUM(B5:B8)"}
@@ -79,8 +96,11 @@ flips:
       - {sheet: Channel, cell: F8, value: "=C8-D8-E8"}
       - {sheet: Channel, cell: F9, value: "=C9-D9-E9"}
       - {sheet: Channel, cell: F10, value: "=C10-D10-E10"}
+      - {sheet: Fraction, cell: B11, value: "=ROUND(B10/B9,0)"}
+      - {sheet: Edge, cell: B11, value: "=B7-B9"}
     verdicts:
       - {sheet: Export, cell: B5, expect: "Ready to paste into the note to Meera."}
+      - {sheet: Export, cell: B7, contains: "Order value: AOV on the delivered definition is Rs 24,800"}
       - {sheet: Export, cell: B7, contains: "Rs 5,35,760 on 26 orders"}
       - {sheet: Export, cell: B7, contains: "Customers: 23 customers placed 1.30 orders each"}
       - {sheet: Export, cell: B7, contains: "hold the Rs 12 crore until Tuesday's two quarters"}
