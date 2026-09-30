@@ -34,7 +34,7 @@ The parts add to 8, 6, 10, 7, 8 and 6, which is 45 minutes.
 
 "A phlebotomist draws two tubes and sticks a barcode on each, the accession number, which ties the tube to his order for the rest of its life. A courier takes the day's tubes to the Dallas lab, the machines run overnight, and his results reach his doctor the next morning. That is turnaround time, and it is what doctors notice.
 
-"Then the part that India mostly skips. The billing system turns his order into a claim: a code for each test, his diagnosis code, the doctor's ten-digit identifier, and a price from the lab's own list, $60 and $75, $135 in all. The claim goes as an electronic file called an 837 through a clearinghouse to his plan, and about three weeks later the plan answers with another file, an 835. Hold on to that $135; part 3 follows it."
+"Then the part that India mostly skips. The billing system turns his order into a claim: a code for each test, his diagnosis code, the doctor's ten-digit identifier, and a price from the lab's own list, $60 and $75, $135 in all. The claim goes as an electronic file called an 837 through a clearinghouse to his plan, and a few weeks later the plan answers with another file, an 835. Hold on to that $135; part 3 follows it."
 
 **Ask the room.** "The last time you had a blood test in India, who paid, and when did you know what it would cost?"
 

@@ -37,7 +37,7 @@ flowchart LR
 
 ### What does the doctor's order carry?
 
-James's doctor wrote an order, which a lab calls a **requisition**, for an HbA1c, which shows average blood sugar over about three months, and a cholesterol panel, a group of tests ordered by one name. It carries the reason as a diagnosis code, E11.9 for type 2 diabetes without complications, with the doctor's identifier and James's insurance.
+James's doctor wrote an order, which a lab calls a **requisition**, for an HbA1c, which shows average blood sugar over about three months, and a cholesterol panel, which measures the fats in the blood. It carries the reason as a diagnosis code, E11.9 for type 2 diabetes without complications, with the doctor's identifier and James's insurance.
 
 ### What does the front desk check before the draw?
 
@@ -53,7 +53,7 @@ The billing system turns the requisition into a **claim**, the bill to his plan:
 
 ### What does the plan send back, and when?
 
-About three weeks later the plan answers with an 835, the **remittance**. Of James's $135 its contract allows $70.20, the **allowed amount**; the other $64.80 is a **contractual adjustment** the lab agreed never to collect. The plan pays $56.16, and $14.04 is James's 20 percent **coinsurance**, his **patient responsibility**, billed to him on a statement. On the same remittance another patient's claim is **denied**, with a code saying the plan's approval was needed first and never asked for, and it goes to the denial desk.
+A few weeks later the plan answers with an 835, the **remittance**. Of James's $135 its contract allows $70.20, the **allowed amount**; the other $64.80 is a **contractual adjustment** the lab agreed never to collect. The plan pays $56.16, and $14.04 is James's 20 percent **coinsurance**, his **patient responsibility**, billed to him on a statement. On the same remittance another patient's claim is **denied**, with a code saying the plan's approval was needed first and never asked for, and it goes to the denial desk.
 
 ### What does the team in Bengaluru do with the day?
 
@@ -101,7 +101,7 @@ The benchmark to carry is Quest's: 1 percent of requisitions billed to patients 
 
 James's tests went out at $135 and brought $70.20, of which $56.16 came from his plan. Where the rest went is the lab's profit and loss statement, the P&L, and it starts with who pays.
 
-**Who needs the answer.** Kalpa Health's finance head, who reports the quarter to Dr Menon and the board. A lab bills far more than it collects, so a team that reports charges as revenue overstates the business by more than half, and finance cannot match the figure to its books.
+**Who needs the answer.** Kalpa Health's finance head, who reports the quarter to Dr Menon and the board. A lab bills far more than it collects, so a team that reports charges as revenue can more than double the business on paper, and finance cannot match the figure to its books.
 
 **The questions on the way.** Who pays for a test at Kalpa Health? How does $100 of charges become operating income? What does James's claim add once the tests are paid for? How long does the lab wait for its money?
 
@@ -228,7 +228,7 @@ When a lab's cash falls short, each number on James's claim is a suspect: the la
 
 **The questions on the way.** How much did the lab bill, and how much do the contracts accept? How much will it never ask for, and how much will it collect? How much do patients owe? What share of claims is refused, and what share leaves clean? How many days of revenue is it owed, and how much of what was allowed arrived? How long does a doctor wait?
 
-How many tests a lab performs, and where, is the half Build 1's groups draw from their own files. These ten follow a test's charge to cash, which a retailer never needed because a shopper pays at the till.
+These ten follow a test's charge to cash, a road a retailer never needed because a shopper pays at the till.
 
 ```mermaid
 flowchart LR
@@ -274,7 +274,7 @@ Every worked number below is illustrative, from one month at a made-up lab: 10,0
 |---|---|
 | Formula | Contractual adjustment = gross charges less the allowed amount |
 | Worked | $1,100,000, 55 percent of charges; James's $64.80 |
-| The trap | One "write-offs" line adding it to unpaid balances reports $1,160,000, and hides the $60,000 the team could still chase |
+| The trap | One "write-offs" line adding it to denials and unpaid balances reports $1,160,000 and buries the $60,000 of leaks, the only part the team can work on |
 | Who asks | Finance |
 
 ### How much does the lab expect to collect in the end?
@@ -301,7 +301,7 @@ Every worked number below is illustrative, from one month at a made-up lab: 10,0
 |---|---|
 | Formula | Initial denial rate = claims denied in full or in part on first answer / claims submitted, in one period, on one stated basis, counts or dollars |
 | Worked | 500 of 10,000 claims, 5 percent by count; $70,000 of $2,000,000 of charges, 3.5 percent by dollars |
-| The trap | Many small claims denied for a missing code make the count look worse than the dollars, and a stakeholder told 5 hears it as money |
+| The trap | Many small claims denied for a missing code make the count look worse than the dollars, and a stakeholder told 5 percent hears 5 percent of the money |
 | Who asks | The revenue cycle, first and always |
 
 For scale, HealthCare.gov insurers denied 19 percent of in-network claims in 2024, from 3 to 36 percent by insurer (KFF, 24 March 2026).
@@ -352,7 +352,7 @@ At the Monday revenue-cycle meeting the accounts receivable head says: "Days in 
 
 **Who needs the answer.** A trainee in the first week: the revenue-cycle team uses these words without defining them, and a trainee who mixes up a rejection and a denial sends a fix to the wrong team. The numbers in the sentences are illustrative.
 
-**The questions on the way.** Who pays, and on what terms? What happens to a sample? What turns a test into money? What do payers check first? Which codes and files does a claim carry? Which reason codes explain an unpaid dollar?
+**The questions on the way.** Who pays, and on what terms? What happens to a sample? What turns a test into money? What do payers check first? Which words decide who may see the data? Which codes and files does a claim carry? Which reason codes explain an unpaid dollar?
 
 ### Who pays, and on what terms with the patient?
 
@@ -394,6 +394,16 @@ At the Monday revenue-cycle meeting the accounts receivable head says: "Days in 
 | Prior authorisation | A payer's approval, required before some services | "The genetic panels need prior authorisation, and nobody asked." |
 | Medical necessity | A payer's test of whether a service is needed for the patient's condition | "The diagnosis on the order did not support necessity." |
 
+### Which words decide who may see the data?
+
+| Term | Meaning | In a sentence |
+|---|---|---|
+| PHI | Protected health information: health data that identifies a patient, held by a plan, a clearinghouse or a provider that bills electronically | "A name beside a service date makes that row PHI." |
+| Covered entity | A health plan, a clearinghouse, or a provider that sends standard electronic transactions | "As a lab that bills electronically, we are a covered entity." |
+| Business associate | A company that handles PHI on a covered entity's behalf under a written agreement | "The coding vendor works as our business associate." |
+| Minimum necessary | The rule to use or share only the PHI a purpose needs | "The denial model needs the codes and the payer; the address stays out." |
+| De-identified | Data from which a patient can no longer be identified, by one of the two methods in section 7 | "Send Bengaluru the de-identified extract." |
+
 ### Which codes and files does a claim carry?
 
 | Code or file | What it says | Who keeps it |
@@ -418,7 +428,7 @@ On an 835 each unpaid dollar carries a group code, saying who bears it, and a **
 | duplicate claim | 18, "Exact duplicate claim/service" | Confirms the first claim is being paid, and closes the second |
 | timely filing | 29, "The time limit for filing has expired." | Writes it off, and asks why it went late |
 
-Twenty-three words in four groups, five codes and file sets, four group codes and seven denial categories are enough to follow a revenue-cycle meeting.
+Twenty-five words in five groups, the codes and files a claim carries, four group codes and seven denial categories are enough to follow a revenue-cycle meeting.
 
 ---
 
@@ -556,7 +566,7 @@ The lookup with a coder behind it starts, since most orders repeat a few phrasin
 
 | Option | Size |
 |---|---|
-| A flat estimate per test from last year's average patient payment | Minutes; wrong whenever a deductible is met or unmet |
+| A flat estimate per test from last year's average patient payment | Minutes; wrong for most patients, whose deductibles differ |
 | The eligibility answer's remaining deductible and coinsurance, applied to the contract's allowed amount | One eligibility call per patient and a contract table per payer |
 
 The eligibility answer applied to the contract fits, since the clerk already fetches it. That changes if many estimates miss by more than a few dollars, which points at a stale contract table first.
