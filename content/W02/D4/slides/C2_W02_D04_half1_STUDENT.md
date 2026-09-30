@@ -622,6 +622,8 @@ value: 100% | label: of reached customers bought | note: the wrong table's headl
 value: 107 | label: reached | note: by the wrong table's count
 ```
 
+**The decision it misleads.** A sale that seems to turn every customer it reached into a buyer goes into next quarter's plan as the lever that always works, and nobody asks whom it reached and lost.
+
 ```notes
 LIVE, 4 minutes. Ask whether 100 percent conversion is plausible for any campaign. The room
 usually smells it; the point is to name the mechanism, next slide.
@@ -763,7 +765,7 @@ LIVE, 2 minutes. Predictions first. Almost nobody predicts b, which is the point
 *pivot_table's default aggfunc is the mean, so the columns add up averages.*
 
 ```stats
-value: 18% | label: the fall it reports | note: Rs 4,12,019 to Rs 3,37,266
+value: 18% | label: the fall it reports | note: Rs 4,12,019 to Rs 3,37,267
 value: 29% | label: the true fall | note: Rs 5,85,770 to Rs 4,13,380
 value: Rs 2.5 lakh | label: missing from the grand total | note: Rs 7,49,286 against Rs 9,99,150
 ```

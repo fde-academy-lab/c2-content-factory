@@ -192,7 +192,7 @@ Q2. `pivot_table` widens that into a column per month; `melt` lengthens it back.
 
 **The trap: pivot_table averages unless you tell it to add.** The one-line pivot,
 `plus.pivot_table(index="customer_id", columns="month", values="amount")`, with its columns summed
-for the tier, reports Q1 at Rs 4,12,019 and Q2 at Rs 3,37,266: **a fall of 18 percent**.
+for the tier, reports Q1 at Rs 4,12,019 and Q2 at Rs 3,37,267: **a fall of 18 percent**.
 
 *Why it is wrong.* `pivot_table`'s default `aggfunc` is `"mean"`. A member who ordered four times in
 June shows the average of the four orders: member C-0152's June cell reads Rs 2,557 where the

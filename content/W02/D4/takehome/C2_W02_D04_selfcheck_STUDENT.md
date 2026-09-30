@@ -15,7 +15,7 @@ is named beside it.
 | 4 | Smallest recency | 0 days | 21 or more means recency from a run day |
 | 5 | Customers with no orders | 31, with frequency 0 and no recency | NaN in frequency means the zeros were never filled |
 | 6 | Customers the sale reached | 153 | A larger number means a customer is counted once per feed row |
-| 7 | Of those, customers who bought | 142 | 153 bought out of 153 means the reached customers with no orders lost their segment and were dropped |
+| 7 | Of those, customers who bought | 142 | 142 bought out of 142, 100 percent, means the reached customers with no orders lost their segment and were dropped |
 | 8 | The 60-day win-back list | 123 | 162 is the list measured from Monday 19 October |
 
 ## Part 3, the counts behind the threshold
