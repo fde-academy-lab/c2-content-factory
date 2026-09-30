@@ -232,7 +232,7 @@ asked, what it found and what changed. A pass that finds nothing says so.
 | 1. Draft | The builder | Is every chapter built from the row, the week's spine and the domain's dossier, in the chapter order? |
 | 2. Domain | The builder | Could a learner who has never worked in a business say, for every chapter, who asks, why the metric matters, what a wrong number costs and which real company faces the same question? |
 | 3. Problem first | The builder | Does every technique arrive as the answer to a stated problem, with two or more options, a sizing and the best-fit call with what would change it, and is the code its last mile? |
-| 4. Rigor | A fresh reviewer agent | Do the notebooks run cold, does every trap show its exact wrong number and its check, does every sizing's arithmetic hold, is every real-world fact sourced, and would a strong interviewer accept every answer? |
+| 4. Rigor | A fresh reviewer agent | Do the notebooks run cold, does every trap show its exact wrong number and its check, does every sizing's arithmetic hold, is every real-world fact sourced, and would a strong interviewer accept every answer? The reviewer also sits the day's exercises blind, from the STUDENT files alone, and names every key a cue gives away and every item labelled hard or design that one step answers. |
 | 5. Pedagogy and language | A fresh reviewer agent | Does each chapter pair one deck chapter with one notebook that builds on the last, do the devices vary, does every diagram read at print size, and is the language free of the tics the scrubber finds? |
 
 A reviewer writes findings, never edits; the builder fixes and records the fix. Passes 4 and 5 fail a
