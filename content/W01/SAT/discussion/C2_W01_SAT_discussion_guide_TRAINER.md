@@ -1,28 +1,26 @@
 # Week 1 Saturday: the discussion guide
 
-**TRAINER ONLY.** The Academic TA leads the Saturday from the break onwards. The paper and its key
-are in `paper/` and `answer-key/`, and the Word files there are what the room sits and what you read
-from. The key file carries every item's key, tag, level, day and interview anchor, and a paragraph
-per item on why the key holds, why each wrong option fails and the interview answer in one breath.
+**TRAINER ONLY.** The Academic TA leads the Saturday from the break onwards. The room sits the Word
+paper in `paper/`, and you mark and discuss from the Word key in `answer-key/`, which gives each
+item's key, tag, level, day and interview anchor, why the key holds, why each wrong option fails and
+the interview answer in one breath.
 
-The discussion is worth more than the marking. Every answer is treated as an interview answer, and
-the format is deliberately uncomfortable: papers are swapped, call-outs are random, and the last
-half hour puts every learner on the interviewer's side of the table.
+The discussion gets 90 minutes to the marking's 20. Every answer in it is treated as an interview
+answer, and the format is deliberately uncomfortable: papers are swapped, call-outs are random, and
+the last half hour puts every learner on the interviewer's side of the table.
 
 The paper runs in five parts, and 21 of its 35 timed items are hard: each makes the reader combine
 two ideas on an exhibit, such as a line of code and the business call it changes, or a computation
 and the comparison that sets a call, or take several dependent steps. Expect the room's scores to
 sit lower than on a recall paper, and expect half-right answers: the options on most hard items pair
-two halves, and a learner who gets one half right lands on a near miss. Each part is named by the
-question it asks. Parts 1 to 3 climb Kalpa's week, from where the revenue went between the quarters,
-through whether the first quarter's Rs 2.1 crore or Rs 1.9 crore is right, to what Meera's note can
-say about Retail-Plus, Student and the monsoon sale. Part 4 sets the week's traps in public cases,
-each with its source named beside it, and the key's reasons carry what each source reports; when the
-room asks about a case, answer from those reasons and add nothing beyond them. Part 5 is a
-food-delivery company that does not exist: its offer, its agent, its logs and every number in it are
-illustrative, and it names no real company.
-
----
+two halves, and a learner who gets one half right lands on a near miss. Parts 1 to 3 climb Kalpa's
+week, from where the revenue went between the quarters, through whether the first quarter's Rs 2.1
+crore or Rs 1.9 crore is right, to what Meera's note can say about Retail-Plus, Student and the
+monsoon sale. Part 4 asks what a team should check before it acts on a surprising number, in four
+public cases, and the key's reasons carry what each source reports; when the room asks about a
+case, answer from those reasons and add nothing beyond them. Part 5 is a food-delivery company that
+does not exist: its offer, its agent, its logs and every number in it are illustrative, and it
+names no real company.
 
 ## The shape of the 300 minutes
 
@@ -35,8 +33,6 @@ illustrative, and it names no real company.
 | The mock-interview round | 30 min | In pairs, each learner asks the other two anchors and one stretch follow-up, then they swap. |
 | Doubts and the bridge | 20 min | Open doubts come first, then the bridge to Monday, when the same numbers come from the warehouse. |
 
----
-
 ## Before the paper
 
 Hand out the Word paper face down, one per desk, with a pen. Say four things and nothing else: the
@@ -47,8 +43,6 @@ early and is not counted. Then start.
 
 At 90 minutes into the paper, say once that thirty minutes remain. Collect nothing at the end:
 papers stay on the desks through the break.
-
----
 
 ## Marking, 20 minutes
 
@@ -63,13 +57,13 @@ papers stay on the desks through the break.
    the paper back, so each learner reads their rating against their score part by part.
 4. The key file's marking rule decides the edge cases: every correct letter and no other on a
    more-than-one item (Q11, Q18 and Q25), the letter on a match item, the number on a worked item,
-   and the whole sequence on an ordering item (Q7 and Q13). Q1 is Rs 11 crore. Q3 is Rs 2,060. Q12
+   and the whole sequence on an ordering item (Q7 and Q13). Q1 is Rs 11 crore. Q3 is Rs 2,205. Q12
    needs both quarters, Q1 Rs 4,680 and Q2 Rs 7,410, and one right figure out of two is a cross.
    Q14 and Q27 need the direction as well as the size: "a fall of 1.6 percent", "down 1.6" and
    "-1.6" all match Q14's key, and "a fall of Rs 12,500", "Rs 12,500 less" and "-12,500" all match
-   Q27's, while a bare 1.6 or 12,500 does not, since each key names a fall. Q9 and Q17 are true or
-   false with the reason, answered with a letter. There is no partial credit, because the programme
-   has set no rule for it.
+   Q27's, while a bare 1.6 or 12,500 does not, since each key names a fall. Q27 asks for the total
+   of all 500, so Rs 25 less each is a cross. Q9 and Q17 are true or false with the reason, answered
+   with a letter. There is no partial credit, because the programme has set no rule for it.
 5. The Academic TA enters each paper's ticks by seat in
    `answer-key/C2_W01_SAT_item_analysis_TRAINER.xlsx`: 1 for a tick, 0 for a cross and a blank for
    an item left empty, and no name anywhere. Its Discussion sheet gives the most-missed order the
@@ -84,38 +78,34 @@ papers stay on the desks through the break.
 Say once, at the start, that the marker is deciding nothing. Reading somebody else's answer against
 the key is the exercise, and it is harder than being marked.
 
----
-
 ## The solution discussion, 90 minutes
 
 ### Most-missed first, 35 minutes
 
 Before the anchors, take the items the room lost, in the order the workbook's Discussion
 sheet gives them: the six at the top, at about five minutes each. Ask for hands on the paper each
-person marked, "a cross on Q6?", so the room sees the count before the item is discussed. A show
-of hands on the paper you marked is never a show of hands on your own score, so nobody is exposed.
-The candidate list below is the prediction: the item, the wrong answer it tempts, the question that
-sends the room looking for the fault, and the repair said aloud.
+person marked, "a cross on Q6?", so the room sees the count before the item is discussed. Hands go
+up for the paper each person marked, so the count exposes nobody's own score.
 
 | Item | What most papers get wrong | Ask the room | The repair, said aloud |
 |---|---|---|---|
 | Q2, the channel cell | Most mark (a), which takes the printed figures and backs the store. | "Read the condition the way Python groups it. Which store orders does the printed figure carry, and does Meera's rule count them?" | The right side of the or is a non-empty string, so every order passes and the store's four cancelled orders lift it to Rs 18,920. On orders not cancelled the app's Rs 18,600 beats the store's Rs 9,870, so her rule backs the app. |
-| Q3, the first order | Most write Rs 2,100, Rs 1,480, Rs 24,800 or Rs 2,040. | "What does the model already take off, whom does it cover, and which statistic describes a typical order?" | The model takes cancellations and returns off at its own rates, so the population is the 21 delivered orders; it covers business buyers, so the Rs 4,80,000 order stays; typical means the median, the 11th, Rs 2,060. |
+| Q3, the first order | Most write Rs 2,060, Rs 18,160, Rs 1,480 or Rs 2,110. | "What does the model already take off, whom does it cover, and which statistic describes a typical order?" | The model takes cancellations and returns off at its own rates, so it prices the booked order and all 30 count; it covers business buyers, so the Rs 4,80,000 order stays; typical means the median, halfway between the 15th and the 16th, Rs 2,205, the figure Monday gave for payback. |
 | Q6, what flips the call | Most mark (a) or (b), changes that help acquisition and still fall short. | "Work each change out. Which one moves a ratio past the other?" | Acquisition returns Rs 2.00 a rupee against Rs 2.50 for a member brought back; only a Rs 800 route back, at Rs 1.88, drops below acquisition, and the turning point is Rs 750. |
-| Q8, the extra next() | Most mark (b), the right output with the pass's own report trusted to show the loss. | "What count did the pass start from, and where did the lost row go?" | The pass accounts for what it receives, 200 = 185 + 15, so KR-02001 vanishes without a trace; the file's own 201 rows, set against the 200 the pass got, show the loss where the pass's report cannot. |
-| Q10, the auditor's copy | Most mark (c), the right line read as a check that caught the loss, or (b), the line the analyst meant. | "Draw both lists and the dictionaries they hold. What does the rejects line read, and when does it read it?" | The copy shares the dictionaries, so when the rejects line runs KR-02063 reads 0, the list is empty and 2 + 0 = 2 closes by construction; a rupee total against Anand's books shows the lost value where the rows cannot. |
-| Q11, the reject loop | Most tick (a) or (c), or add (e). | "Trace the loop on the board. Which row does it never test, and why do the counts still close?" | Removing from the list being walked skips the next row, KR-09053; walking a copy or building two new lists fixes it, and setting a bad amount to "0" only hides the row as a Rs 0 sale. |
-| Q12, the duplicate rules | Most write Q1 Rs 2,890, from keeping the first copy, or Q2 Rs 11,120, from a check on whole rows. | "What makes two rows one order, and which copy stays when one will not convert?" | One order_id is one order, and the copy that validates stays: Q1 is 2,890 plus 1,790, Rs 4,680, and Q2 is 3,700 plus 3,710, Rs 7,410. |
+| Q8, the extra next() | Most mark (b), the right output with the pass's own report trusted to show the loss. | "What count did the pass start from, and where did the lost row go?" | The pass accounts only for the 200 rows it receives, so KR-02001 vanishes without a trace; the file's own 201 rows, set against the 200 the pass got, show the loss, and the pass's own report closes on 200 whatever the read lost. |
+| Q10, the auditor's copy | Most mark (c), the right line with a row count as the check, or (b), the line the analyst meant. | "Draw both lists and the dictionaries they hold. What does the rejects line read, and what would a count of rows against the books show?" | The copy shares the dictionaries, so when the rejects line runs KR-02063 reads 0, the list is empty and 2 + 0 = 2 closes by construction; the rows match the books as well, two orders against two, and only a rupee total shows the loss, Rs 3,150 against Rs 4,940. |
+| Q11, the reject loop | Most tick (a) or (c), or add (e). | "Trace the loop on the board. Which row does it never test, and why do the counts still close?" | Removing from the list being walked skips the next row, KR-09053; walking a copy or building two new lists fixes it, a continue after the removal also skips the append so nothing is logged, and setting a bad amount to "0" only hides the row as a Rs 0 sale. |
+| Q12, counting each order once | Most write Q2 Rs 11,120, from a check on whole rows, or Q1 Rs 7,570 and Q2 Rs 11,120, from no rule at all. | "What makes two rows one order, and which copy does the stem's rule keep?" | One order_id is one order, and the rule keeps the copy that reads as a number: Q1 is 2,890 plus 1,790, Rs 4,680, and Q2 is 3,700 plus 3,710, Rs 7,410. |
 | Q14 and Q15, the note's number and Retail-Plus | Most write a fall of 11.0 percent on Q14 and mark (b), (c) or (d) on Q15. | "What has the reconciliation changed since Tuesday, and which figures does it touch?" | The 14 copied Q1 rows, Rs 20,00,000, were never in the books, so revenue fell 1.6 percent. Retail-Plus falls from 40 orders to 26, 35.0 percent a member, and the company from 100 to 86, so Retail-Plus carries all 14 lost orders. |
 | Q16, the Retail-Plus line | Most mark (a), the count in one direction read as a verdict, or (b), the fall per member written as the tier's. | "When did Meera ask, and what does that do to a count in one direction? How many members share the fall?" | Meera asked after the fall was seen, so both counts go in: 145 of 5,000 flips one way, 0.029, and 286 either way, 0.057, which reads as borderline. Rs 1,110 for each of 22 members is Rs 24,420 a quarter, which is modest. |
 | Q17, per member or per buyer | Most mark (c), True, the fall among the members who still buy. | "Who is missing from the per-buyer base in each quarter?" | Per member the fall is a third and per buyer a sixth, because 6 members had nothing delivered in Q2 against 2 in Q1; the tier includes the members who went quiet. |
 | Q19, the sign flip | Most mark (b), the printed 0.992 read as chance. | "Which side of -980 does the >= count, and what did the first run count?" | The count ran on the wrong side of the gap, so 0.992 says nothing about the fall; the first run's 13 of 1,000, and 29 either way, stay under 0.05, and the note still calls the fall real. |
-| Q20, the Student line | Most mark (c), 1,985 read as noise, or (d), a count that leaves out the worlds with exactly 7. | "Which rows of the table are a rise of 40 percent or more, and what does a large share tell you?" | A rise of 40 percent or more is 7 or more of the 12 orders in Q2, 1,985 of 5,000 worlds, so the data cannot tell a rise from luck; no budget moves, and Student stays a lead until more customers buy. |
+| Q20, the Student line | Most mark (c), which reads 1,985 of 5,000 as chance explaining the rise, or (d), a count that leaves out the worlds with 7 Q2 orders. | "Which rows of the table are a rise of 40 percent or more, and what does a large share tell you?" | A rise of 40 percent or more is 7 or more of the 12 orders in Q2, 1,985 of 5,000 worlds, so the data cannot tell a rise from luck; no budget moves, and Student stays a lead, Thursday's word for a rate on fewer than thirty customers, until more customers buy. |
 | Q21, the Diwali test | Most mark (a), the right groups compared on total revenue. | "How large is each group, and what does a total compare?" | A random fifth held back inside every segment makes the groups alike, and only spend per customer compares a group four times the size of the other. |
 | Q22, two averages of seven countries | Most mark (a), the right output with the weight a year carries. | "How much of the first average does New Zealand's one counted year carry?" | Averaging the country averages gives one year a seventh of the weight, the vote of the United Kingdom's nineteen: -0.07, which rounds to the published -0.1, against 1.68 by year. |
 | Q27 and Q28, the delivery company's offer | Most write a rise of Rs 32,500 or a fall of Rs 12,000 on Q27, and mark (d), a quarter, on Q28. | "Inside which tier did the offer group spend more? What does 25 percent off do to each order?" | Each tier spent less, Rs 30 and Rs 20 a customer, so the 500 spent Rs 12,500 less than they would have; at 25 percent off orders must rise by 1 over 0.75, a third, just to hold revenue. |
 | Q29 to Q31, the agent | Most mark (a) on Q29, reading 'None' as empty, (c) on Q30, the cleared list, and (c) on Q31, a cap set from the mean. | "What does str() make of None? What happens to a customer's second message? What does a typical conversation call?" | 'None' is four letters, so found holds 3; a shared list cleared after each call forgets second turns and mixes overlapping calls, so each conversation keeps its own under its id; the median is 4 calls, so the cap is 8 and saves Rs 38.80. |
-| Q32 and Q34 to Q35, SQL | Most mark (b) on Q32, refund alone, and match 600 on Q34 and 0.375 on Q35. | "What counts as failed? What does AVG do with a NULL, and what type does COUNT(*) return?" | Failures include timeouts, so order_status reaches 34; AVG leaves the timeouts out; PostgreSQL divides integers as integers, so multiply by 1.0 first. |
+| Q32 and Q34 to Q35, SQL | Most mark (b) on Q32, refund alone, and match 600 on Q34 and 0.375 on Q35. | "What counts as failed? What does AVG do with a NULL, and what type does COUNT(*) return?" | Failures include timeouts, so order_status reaches 34; AVG leaves the timeouts out; PostgreSQL divides an integer by an integer as integers, as the cancel rate of one in five that returned 0 on Week 0's diagnostic showed, so 3 over 8 returns 0. |
 
 If an item outside this list sits higher on the Discussion sheet, it wins its place, since the sheet
 records what this room missed.
@@ -129,7 +119,8 @@ anyone says a number.
 
 Two items need their endings said aloud whatever the sheet shows. On Q26, the Bing alert, the first
 move is to check the plumbing, and the case ended well: the checks passed, the lift was real, 12
-percent and more than 100 million US dollars a year, the best revenue idea in Bing's history. On
+percent and more than 100 million US dollars a year in the United States, the best revenue idea in
+Bing's history. On
 Q20, name the thin base: all 12 Student orders came from 2 customers, so one customer's habits could
 make the whole rise, and more orders from the same two would settle nothing; Thursday's rule of thirty
 counts customers, and Student has two.
@@ -158,26 +149,26 @@ discounts and Rs 11 crore after, and Q28 is the same arithmetic under a discount
 multiply, so 25 percent off needs a third more orders just to hold revenue.
 
 Listen for a learner who names a branch before drawing the tree, or who reads orders per customer
-off a count of rows. Those are the answers interviewers mark down.
+off a count of rows, and ask that learner to draw the tree before answering again.
 
 #### 2. [S] Sales fell from Q1 to Q2; walk the investigation ladder.
 
 *Q4 to Q7, Q14 and Q15.*
 
-A strong answer climbs five rungs in this order: confirm the drop is real, which means each quarter's figure is complete
-and free of pipeline errors; compare like with like, which means the same weeks and the same
-definitions; decompose along the revenue tree; isolate the branch and the segment; then hypothesise
-and name the evidence that would settle it. Tuesday's deck climbs the same ladder in six chapters,
-opening on whether the drop is real on matched windows and splitting mix from rate between isolating
-and hypothesising, so a learner who names that split has it right. Kalpa's own case on Tuesday lands on
-the fourth rung. On closed quarters booked value fell 11.0 percent, from Rs 2.10 crore to Rs 1.87
-crore; the same 69 customers bought in both, orders per customer fell from 1.65 to 1.25, down 24.6
-percent, and
-revenue per order rose 18.0 percent, mostly from the mix. The segment is Retail-Plus, whose orders
-per member fell from 2.32 to 1.18 on the file as exported. Wednesday then sent the case back to the
-first rung: 14 copied Q1 rows, Rs 20,00,000, made the drop look larger than it was, and on the
-reconciled file revenue fell 1.6 percent and Retail-Plus orders per member 35.0 percent, and the
-tier's 14 lost orders are the company's whole fall.
+A strong answer climbs five rungs in this order: confirm the drop is real, which means each
+quarter's figure is complete and free of pipeline errors; compare like with like, which means the
+same weeks and the same definitions; decompose along the revenue tree; isolate the branch and the
+segment; then hypothesise and name the evidence that would settle it. Tuesday's deck climbs the same
+ladder in six chapters, opening on whether the drop is real on matched windows and splitting mix
+from rate between isolating and hypothesising, so a learner who names that split has it right.
+Kalpa's own case on Tuesday lands on the fourth rung. On closed quarters booked value fell 11.0
+percent, from Rs 2.10 crore to Rs 1.87 crore; the same 69 customers bought in both, orders per
+customer fell from 1.65 to 1.25, down 24.6 percent, and revenue per order rose 18.0 percent, about
+69 percent of it from the mix. The segment is Retail-Plus, whose orders per member fell from 2.32 to
+1.18 on the file as exported. Wednesday then sent the case back to the first rung: 14 copied Q1
+rows, Rs 20,00,000, made the drop look larger than it was, and on the reconciled file revenue fell
+1.6 percent and Retail-Plus orders per member 35.0 percent, and the tier's 14 lost orders are the
+company's whole fall.
 
 Then ask the follow-up, "which rung did you skip on the paper?" Most people skip the second, and
 Q14 is the second rung in full: a tile that set 11 weeks of Q2 against 13 of Q1, and a Q1 that
@@ -189,15 +180,16 @@ to the rows in the file.
 *Q3 and Q31.*
 
 Order values are skewed by a few very large orders, so the median describes the typical order and
-the mean does not: Monday's 21 delivered orders have a median of Rs 2,060 and a mean of Rs 24,800,
-because one Rs 4,80,000 Business order is 92 percent of their rupees. The mean still matters,
-because mean times the number of orders is revenue. The answer is to report both when they diverge
-and to say why they diverge.
+the mean does not: Monday's 30 orders have a median of Rs 2,205 and a mean of Rs 18,160, because one
+Rs 4,80,000 Business order is 88 percent of their rupees. The mean still matters, because mean times
+the number of orders is revenue. The answer is to report both when they diverge and to say why they
+diverge.
 
 Q3 adds the question of which orders count: a payback model that takes cancellations and returns off
-at its own rates wants the orders that stand, so the figure is the median of the 21 delivered
-orders, with the Business order kept in the file with a flag, since the model covers business
-buyers. Q31 asks it again of an agent's bill: one looping conversation is most of a shift's cost, so
+at its own rates wants each order's booked value, so the figure is the median of all 30, Rs 2,205,
+with the Business order kept in with a flag, since the model covers business buyers. The median of
+the 21 delivered orders, Rs 2,060, would take the cancellations and returns off twice. Q31 asks the
+mean-or-median question again of an agent's bill: one looping conversation is most of a shift's cost, so
 the median describes the typical conversation, the sum is what Finance pays, and a cap on model
 calls set from the typical conversation stops the next loop while the looping conversation stays in
 the log.
@@ -216,9 +208,9 @@ Q24 is the same disagreement in public: two navigation methods that should have 
 discrepancy was reported only informally and never resolved, and the board traced the loss to a
 units error.
 
-Ask the second question the first time round, and wait for it: **what would you refuse to do?** The
-answer to wait for is adjusting your own figure until it agrees, since reconciling and fabricating
-differ only in whether the steps are written down.
+Ask the second question the first time round, and wait for it: "What would you refuse to do?" The
+answer to wait for is adjusting your own figure until it agrees with the books, since every change
+to a figure needs a written step that Anand can check.
 
 #### 5. [S] What does p = 0.03 mean, and not mean?
 
@@ -259,10 +251,9 @@ where a formula spanned 15 of the sheet's 20 country rows.
 Trust the 31 percent. On 12 orders a single order moves the rate by more than 8 points, so 42
 percent is five orders out of twelve, and a shuffle would show chance producing gaps like it often.
 On 400 orders one order moves the rate by a quarter of a point. The 12-order figure is a lead, a
-reason to collect more data before anyone acts on it, and the Student segment on Thursday was
-exactly this case:
-Q20 writes its line for Meera, where 12 orders came from 2 customers, so the count that matters is
-the customers, and Q32 writes a floor of 30 into a query's HAVING.
+reason to collect more data before anyone acts on it, and Student on Thursday was this case: Q20
+writes its line for Meera, where 12 orders came from 2 customers, so the count that matters is the
+customers, and Q32 writes a floor of 30 into a query's HAVING.
 
 #### 8. [F] Revenue rose after the discount; three reasons that is not proof it worked.
 
@@ -270,32 +261,34 @@ the customers, and Q32 writes a floor of 30 into a query's HAVING.
 
 First, who received it: the sale went mostly to customers who buy more often and spend more in any
 month, so the kind of customer drives both getting the discount and spending, which makes it a
-confounder. Second, the mix: inside each segment the discounted customers spent less, so the
-headline lift is who got the sale; Q27 is the same pattern at the delivery company, where a 6.8
-percent lift becomes Rs 12,500 less spent once each customer is set against customers of the same
-tier. Third, nothing was held out, so the season is not ruled out, which is how Q25's basketball
-searches came to track flu. A deeper cut makes it worse: at 25 percent off orders must rise by a
-third just to hold revenue. The honest recommendation is Q21's: hold back a random share inside each
-segment and compare spend per customer, since the groups differ in size.
+confounder, and inside each segment the discounted customers spent less. Q27 is the same pattern at
+the delivery company, where a 6.8 percent lift becomes Rs 12,500 less spent once each customer is
+set against customers of the same tier. Second, nothing was held out, so the season and anything
+else that changed that month are not ruled out, which is how Q25's basketball searches came to
+track flu. Third, the discount also comes off the orders customers would have placed anyway, so
+revenue has to rise enough to pay for it: at 25 percent off, orders must rise by a third just to
+hold revenue. The recommendation is Q21's: hold back a random share inside each segment and compare
+spend per customer, since the groups differ in size.
 
 #### 9. [D] Your cleaning run reported zero rejects on a file you know is dirty; what do you check?
 
 *Q9 to Q12 and Stretch 3.*
 
-Treat the zero as a bug in the checker until it is proven otherwise. Check that every field was
-converted from text before the rules ran, because a comparison on text gives a wrong answer without
-an error, as '4500' < '30000' does in Q9. Check that the duplicate check is keyed on the identity
-rule rather than on whole records, which is Q12, and that the loop tested every row, since Q11's pass
-skips the row after each removal and still reconciles. Check that input equals clean plus rejected,
-that the rejects log is being written, and that the raw rows survived the pass, which Q10's
-shallow copy does not allow. Then plant one row you know is bad and rerun. If the planted row does
-not land in the log, the run was never checking anything.
+Treat the zero as a bug in the checker until it is proven otherwise. Every field has to be converted
+from text before the rules run, because a comparison on text gives a wrong answer without an error,
+as '4500' < '30000' does in Q9. The duplicate check should key on the order_id, since a check on
+whole records misses a copy whose date changed, which is Q12, and the loop has to test every row,
+since Q11's pass skips the row after each removal and still reconciles. Then confirm that input
+equals clean plus rejected, that the rejects log is being written, and that the raw rows survived
+the pass, which Q10's shallow copy does not allow. Last, plant one row you know is bad and rerun: if
+the planted row does not land in the log, the checker never tested that rule, and the earlier zero
+proves nothing.
 
 #### 10. [D] Write the four-part note for the Retail-Plus finding in four sentences, then defend the caveat.
 
 *Q15, Q16, Q17, Q20 and Stretch 2.*
 
-Claim: Retail-Plus is down by a borderline amount, and the fall is small against the company.
+Claim: Retail-Plus's fall is borderline against chance, and modest against the company.
 Evidence: its 22 members delivered Rs 1,110 less each in Q2 than in Q1; flipping each member's own
 two quarters, chance made a fall that large in 145 of 5,000 flips, 0.029, and a move that large
 either way in 286, 0.057; the fall is Rs 24,420 a quarter, 0.19 percent of delivered revenue.
@@ -317,10 +310,8 @@ Close the discussion on the workbook's Ratings sheet. Read each part's mean rati
 rate, from Part 1 to Part 5, and then name the parts where confidence ran ahead of the work: a
 high mean rating beside a low right rate, and above all a part whose last column counts seats that
 rated it 3 or 4 and got under half of it right. Say it about the room and name no seat. Those
-parts go on the board as the first line of Monday's revision, because a gap the room did not know it
-had is the one an interviewer finds first.
-
----
+parts go on the board as the first line of Monday's revision, since there the room was confident
+and got under half of it right.
 
 ## Running random call-outs without losing the room
 
@@ -331,10 +322,8 @@ had is the one an interviewer finds first.
 | Take a wrong answer, write it on the board, and ask the room to repair it | Correct it yourself |
 | Come back to the same person later with an easier one | Leave somebody who struggled sitting with it |
 
-The last row matters more than the rest. A learner who is called, struggles and is never called
-again learns that being called is a punishment.
-
----
+Coming back to a learner who struggled matters most: one who is called, struggles and is never
+called again learns that being called is a punishment.
 
 ## The mock-interview round, 30 minutes
 
@@ -351,8 +340,7 @@ helping, and gives one sentence of feedback at the end.
 | Feedback | 2 min | The new interviewer gives the same two sentences the other way round. |
 
 Hand the pairs out by counting round the room, so every anchor is asked somewhere and no pair can
-pick its favourites. Each anchor appears twice in the table, and each follow-up sits beside an
-anchor it extends:
+pick its favourites:
 
 | Pair count | First interviewer asks | Follow-up | Second interviewer asks | Follow-up |
 |---|---|---|---|---|
@@ -377,24 +365,19 @@ What the interviewer listens for, written on the board before the round starts:
 3. The candidate names what would change their answer.
 4. The answer ends inside sixty seconds, or says why it needs more.
 
----
-
 ## Doubts and the bridge into Week 2, 20 minutes
 
 Take one replayed answer from the mock round first, then open doubts, for about fifteen minutes in
 all, then close on this:
 
 > "Anand has his reconciliation. On Monday he asks for the same numbers every Monday, computed
-> from the warehouse itself, with nothing a person can mistype. The tree and the ladder stay as they
-> are; the tool changes."
+> from the warehouse itself, with nothing a person can mistype. The tree and the ladder stay the
+> same, and the numbers come from the warehouse instead of a file."
 
-Point back at Q32 to Q35 on the way out: the room has already read WHERE, HAVING, a NULL and an
-integer division on an agent's log, and Monday puts the same clauses on Kalpa's warehouse. Then ask
-the room one question and take three answers: **which parts of this week's work should never be done
-in a notebook again, and why?** The answers worth hearing are anything Finance depends on, anything
-that has to run unattended, and anything an auditor will read. That is Monday's first slide.
-
----
+Then ask the room one question and take three answers: "Which parts of this week's work should
+never be done in a notebook again, and why?" The answers worth hearing are anything Finance depends
+on, anything that has to run unattended, and anything an auditor will read. Monday's deck opens on
+Anand's version of the same ask.
 
 ## After the session
 

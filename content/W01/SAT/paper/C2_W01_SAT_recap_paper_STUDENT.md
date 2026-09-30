@@ -6,7 +6,7 @@ Name: ____________________    Marked by: ____________________    Items right: __
 
 ## What this paper is for
 
-This week Meera Raghavan, Kalpa Retail's CEO, asked whether the Rs 12 crore Marketing wants for winning new customers goes to the part of revenue that fell; Anand Iyer, the finance controller, disputed the Q1 figure on the team's dashboard; and Meera now has to decide what Monday's growth review hears about Retail-Plus, Student and the monsoon sale. Parts 1 to 3 put those decisions to you again, with no notes, and Parts 4 and 5 set the same mistakes in public cases and at a food-delivery company, where interviewers test them. The room's score in each part, set beside the rating you give it in step one, decides where Monday's revision starts. A wrong answer tells Monday more than a blank does, so answer every item.
+This week Meera Raghavan, Kalpa Retail's CEO, asked whether the Rs 12 crore Marketing wants for winning new customers goes to the part of revenue that fell; Anand Iyer, the finance controller, disputed the Q1 figure on the team's dashboard; and Meera now has to decide what Monday's growth review hears about Retail-Plus, Student and the monsoon sale. Parts 1 to 3 put those decisions to you again, with no notes, and Parts 4 and 5 set the same mistakes in public cases and at a food-delivery company, where interviewers test them. The room's score in each part, set beside the rating you give it in step one, decides where Monday's revision starts. A wrong answer tells Monday more than a blank does.
 
 ## How this paper works
 
@@ -16,7 +16,7 @@ This week Meera Raghavan, Kalpa Retail's CEO, asked whether the Rs 12 crore Mark
 - A wrong answer costs nothing, so answer every item on the line under it.
 - Pen and this paper only: no laptop, no phone, no notes and no assistant.
 - Afterwards the papers are swapped and marked against the key, and the discussion takes the items the room missed most. The paper is ungraded and ranks nobody; the room's rates by part and by tag set Monday's revision.
-- Parts 1 to 3 are set inside Kalpa Retail, where you work as a trainee engineer in the data and AI team of its Global Capability Centre, the in-house centre that builds Kalpa's data and AI systems. Meera Raghavan is Kalpa Retail's CEO, Anand Iyer its finance controller and Kavya Nair the senior analyst on your team; Marketing and Finance appear as departments. Part 4 draws on public cases, each with its source named beside it, and Part 5 imagines a food-delivery company, its offer and its support agent, all illustrative. Every number an item needs is on the page.
+- Parts 1 to 3 are set inside Kalpa Retail, where you work as a trainee engineer in the data and AI team of its Global Capability Centre, the in-house centre that builds Kalpa's data and AI systems. Meera Raghavan is Kalpa Retail's CEO, Anand Iyer its finance controller and Kavya Nair the senior analyst on your team. Part 4 draws on four public cases, and Part 5 imagines a food-delivery company, its offer and its support agent, all illustrative. Every number an item needs is on the page.
 
 ## Step one, before Part 1
 
@@ -36,7 +36,7 @@ Your ratings: Part 1 ___ · Part 2 ___ · Part 3 ___ · Part 4 ___ · Part 5 ___
 | 1. Where did Kalpa's revenue go between the first quarter and the second? | whether you can read revenue from orders and say what would change a budget call | Q1 to Q7 (7) | 21 | 1 | 3 | 3 |
 | 2. Did Kalpa book Rs 2.1 crore in the first quarter, or Rs 1.9 crore? | whether you can check an export the way an auditor would, row by row and rupee by rupee | Q8 to Q15 (8) | 29 | 0 | 2 | 6 |
 | 3. Is the Retail-Plus fall more than chance, and what should Meera's note say? | whether you can say what a chance test, a count and a fair comparison let you tell Meera | Q16 to Q21 (6) | 22.5 | 0 | 1 | 5 |
-| 4. Which check would have caught the misleading number in five public cases? | whether you can spot the week's mistakes in public cases and name the check for each | Q22 to Q26 (5) | 14 | 0 | 4 | 1 |
+| 4. What should a team check before it acts on a surprising number, in four public cases? | whether you can spot the week's mistakes in public cases and say what to check first in each | Q22 to Q26 (5) | 14 | 0 | 4 | 1 |
 | 5. Did a delivery company's offer raise spending, and are its AI agent's numbers right? | whether you can judge an offer's lift and read an agent's code, log and bill | Q27 to Q35 (9) | 31.5 | 0 | 3 | 6 |
 | Total | | 35 | 118 | 1 | 13 | 21 |
 
@@ -46,7 +46,7 @@ Your ratings: Part 1 ___ · Part 2 ___ · Part 3 ___ · Part 4 ___ · Part 5 ___
 
 *What it shows: whether you can read revenue from orders and say what would change a budget call. 7 items, about 21 minutes.*
 
-Kalpa Retail sells through its app, its website and its stores to four segments of customers: Retail-Core, Student, Business (its corporate buyers) and Retail-Plus, a membership tier whose members pay a fee to belong. Revenue here means booked value, which retail calls GMV (gross merchandise value): every order at the price charged, before cancellations and returns come out. Q1 is April to June and Q2 is July to September, and revenue fell from Q1 to Q2. Marketing wants Rs 12 crore to win new customers. Meera Raghavan, the CEO, needs to know which branch of the revenue tree below fell before she signs, since Rs 12 crore spent on a branch that held is wasted: "Is acquisition even the branch that is short?" When a sales figure drops, the team works through the sales-drop investigation ladder, five checks called rungs that are always climbed in the same order.
+Kalpa Retail sells through its app, its website and its stores to four segments of customers: Retail-Core, Student, Business (its corporate buyers) and Retail-Plus, a membership tier whose members pay a fee to belong. Revenue here means booked value, which retail calls GMV (gross merchandise value): every order at the price charged, before cancellations and returns come out. Q1 is April to June and Q2 is July to September, and revenue fell from Q1 to Q2. Marketing wants Rs 12 crore to win new customers. Meera needs to know which branch of the revenue tree below fell before she signs, since Rs 12 crore spent on a branch that held is wasted: "Is acquisition even the branch that is short?" When a sales figure drops, the team works through the sales-drop investigation ladder, five checks called rungs that are always climbed in the same order.
 
 **Exhibit 1A.** Kalpa's revenue tree, in which each branch is one of the numbers that make up revenue.
 
@@ -110,7 +110,7 @@ Working:
 
 Answer: ____________________
 
-**Exhibit 1D.** Tuesday's export counted by segment and quarter, and the analyst's cell, in which ORDERS holds the export's 200 rows.
+**Exhibit 1D.** Tuesday's export, a file of Kalpa's orders copied out of its order system, counted by segment and quarter, and the analyst's cell, in which ORDERS holds the export's 200 rows.
 
 | Segment | Q1 rows | Q2 rows |
 |---|---|---|
@@ -186,7 +186,7 @@ Order: ____________________
 
 *What it shows: whether you can check an export the way an auditor would, row by row and rupee by rupee. 8 items, about 29 minutes.*
 
-Kalpa's dashboard reads an ERP export: a copy of the orders taken out of the enterprise resource planning system that Finance books orders in. Anand Iyer, the finance controller, signs Finance's books, and both his figure and the dashboard's count booked value. Anand replied to all on Tuesday's finding: "Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9. Until your numbers match ours, Finance will not act on a drop measured from an ERP export." Meera needs the right Q1 as well, since the fall she asked about is measured from it. The ERP team adds that Wednesday's export, orders.csv, was stitched together from two extracts and holds 201 rows. Profiling a field means counting how many of its values are present, missing and malformed.
+Kalpa's dashboard reads an ERP export: a copy of the orders taken out of the enterprise resource planning system that Finance books orders in. Anand signs Finance's books, and both his figure and the dashboard's count booked value. Anand replied to all on Tuesday's finding: "Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9. Until your numbers match ours, Finance will not act on a drop measured from an ERP export." Meera needs the right Q1 as well, since the fall she asked about is measured from it. The ERP team adds that Wednesday's export, orders.csv, was stitched together from two extracts and holds 201 rows. Profiling a field means counting how many of its values are present, missing and malformed. A value that fails a check is a defect, and each defect is dropped, set to a default value or flagged for a person to decide.
 
 **Exhibit 2A.** Where the two Q1 figures come from.
 
@@ -244,10 +244,10 @@ print(len(rows), "+", len(rejects), "=", len(as_arrived), rejects)
 
 Finance's auditor wants every amount the export sent that was not a number. So before the pass converts the amounts in place, the analyst keeps the export as it came, and afterwards lists the amounts in that copy that are not digits. Anand's books hold both orders at their true values. What does the cell print, and which check would show Anand that the value of order KR-02063 was lost?
 
-a) 2 + 0 = 2 []; a rupee total against Anand's books shows it, where the printed line cannot.
-b) 2 + 1 = 2 ['KR-02063']; the printed line shows it, since clean plus rejected must equal the input.
-c) 2 + 0 = 2 []; the printed line shows it, since clean plus rejected must equal the input.
-d) 2 + 1 = 2 ['KR-02063']; a rupee total against Anand's books shows it, where the printed line cannot.
+a) 2 + 0 = 2 []; a rupee total against Anand's books would show it.
+b) 2 + 1 = 2 ['KR-02063']; a row count against Anand's books would show it.
+c) 2 + 0 = 2 []; a row count against Anand's books would show it.
+d) 2 + 1 = 2 ['KR-02063']; a rupee total against Anand's books would show it.
 
 **Exhibit 2D.** Five invented rows laid out as the export's are, and a pass meant to set aside every unreadable amount.
 
@@ -284,9 +284,9 @@ e) Loop over rows as now, and set a bad row's amount to "0" instead of removing 
 | 6 | KR-02063 | C-3003 | 2026-05-14 | 1,790 | Q1 |
 | 7 | KR-02151 | C-3014 | 2026-08-02 | 3,710 | Q2 |
 
-#### Q12 · Hard · show the working, then the answer · Apply the duplicate rules
+#### Q12 · Hard · show the working, then the answer · Count each order once
 
-Kalpa's order system gives each order one order_id, and Anand's books hold each order once, at the amount it was booked for. How much revenue do these seven rows hold for each quarter once each order is counted once? Give Q1 and Q2 in rupees.
+Kalpa's order system gives each order one order_id, and Anand's books hold each order once, at the amount it was booked for. Where two copies of an order differ, the team keeps the copy whose amount reads as a number, and otherwise the first. How much revenue do these seven rows hold for each quarter once each order is counted once? Give Q1 and Q2 in rupees.
 
 Working:
 
@@ -344,7 +344,7 @@ d) Orders per member fall 49.0 percent, and Retail-Plus carries 25 of the compan
 
 Meera has set the growth review for Monday and sent the team three questions: whether the Retail-Plus fall is real or the wobble she sees every quarter, whether to move budget to Student, which is up 40 percent, and whether the monsoon sale worked, since Marketing says it lifted revenue 6 percent and wants to run it again at Diwali. She wants the answers on "one page, two minutes", and the page decides three spends at the review: a retention offer for Retail-Plus, budget for Student and a second run of the sale.
 
-**Exhibit 3A.** Kavya's test of the Retail-Plus fall, on each member's delivered spend: the rupees of the member's delivered orders in the quarter. If the quarter made no difference to what a member spent, each member's two figures could have come in either order, so each of 5,000 flips tosses a coin for each of the 22 members, and heads swaps that member's Q1 and Q2 spend. The gap is the members' average Q1 spend less their average Q2 spend, rounded to the rupee, so a fall is a positive gap; the real gap is Rs 1,110. The share of flips whose gap is at least as large as the real one is the test's p-value.
+**Exhibit 3A.** Kavya's test of the Retail-Plus fall, on each member's delivered spend: the rupees of the member's delivered orders in the quarter. If the quarter made no difference to what a member spent, each member's two figures could have come in either order, so each of 5,000 flips tosses a coin for each of the 22 members, and heads swaps that member's Q1 and Q2 spend. The gap is the members' average Q1 spend less their average Q2 spend, rounded to the rupee, so a fall is a positive gap; the real gap is Rs 1,110. The test's p-value is the share of flips whose gap is at least as extreme as the real one.
 
 ```mermaid
 xychart-beta
@@ -365,7 +365,7 @@ xychart-beta
 
 #### Q16 · Hard · circle one letter · Answer the first question
 
-Meera sent her question about Retail-Plus after Q2's figures had shown the fall. The team reads a fall as more than chance when fewer than 5 in 100 flips reach it. Which line answers her?
+Meera sent her question about Retail-Plus after Q2's figures had shown the fall. The team's line for calling a fall more than chance is a p-value under 5 in 100. Which line answers her?
 
 a) Real: 145 of 5,000 flips reach a fall that large, a share of 0.029, under the line of 5 in 100; Rs 24,420 a quarter across the tier.
 b) Borderline: 145 of 5,000 flips reach the fall, and 286 a move that large either way; Rs 1,110 a quarter across the tier.
@@ -415,11 +415,11 @@ print(round(real_gap), p)
 
 #### Q19 · Hard · circle one letter · Predict the output and the call
 
-The web team asks whether buyers spent less after the website changed at the start of Q2. Ten invented cards hold the spend of five customers who bought in Q1 and five different customers who bought in Q2, so the test shuffles the quarter labels: shuffle_gaps pools the ten figures, deals five to each quarter at random and records the gap. The first run wrote the gap as Q1 less Q2, Rs 980, and 13 of 1,000 shuffles reached it, so the note called the fall real. An analyst reruns the cell with the gap written as Q2 less Q1, the way a fall is usually shown. What does the cell print, and what should the note say about the fall now?
+The web team asks whether buyers spent less after the website changed at the start of Q2. Ten invented cards hold the spend of five customers who bought in Q1 and five different customers who bought in Q2, so the test shuffles the quarter labels: shuffle_gaps pools the ten figures, deals five to each quarter at random and records the gap. The first run wrote the gap as Q1 less Q2, Rs 980: 13 of 1,000 shuffles reached it and 29 made a gap that large either way, so the note called the fall real. An analyst reruns the cell with the gap written as Q2 less Q1, the way a fall is usually shown. What does the cell print, and what should the note say about the fall now?
 
 a) -980 0.013; the note still calls the fall real.
 b) -980 0.992; the note should now call the fall chance.
-c) -980 0.013; the note should now call the fall chance.
+c) -980 0.013; the note should now call the fall borderline.
 d) -980 0.992; the note still calls the fall real.
 
 **Exhibit 3C.** 5,000 worlds in which a coin toss sends each of Student's 12 orders to Q1 or to Q2, as if the quarter made no difference, counted by how many of the 12 landed in Q2.
@@ -437,10 +437,10 @@ d) -980 0.992; the note still calls the fall real.
 
 Student went from 5 orders in Q1 to 7 in Q2, the 40 percent rise Meera asked about, and all 12 orders came from 2 customers. Which line goes into the one-page note?
 
-a) Up 40 percent on 12 orders from 2 customers, a rise chance makes in 951 of 5,000 worlds: noise, so Student comes out of the budget talk altogether.
-b) Up 40 percent on 12 orders from 2 customers, a rise chance makes in 1,985 of 5,000 worlds: a lead, so no budget moves until more customers buy.
-c) Up 40 percent on 12 orders from 2 customers, a rise chance makes in 1,985 of 5,000 worlds: noise, so Student comes out of the budget talk altogether.
-d) Up 40 percent on 12 orders from 2 customers, a rise chance makes in 951 of 5,000 worlds: a lead, so no budget moves until more customers buy.
+a) Up 40 percent on 12 orders from 2 customers, a rise chance makes in 951 of 5,000 worlds: chance explains it, so Student comes out of the budget talk altogether.
+b) Up 40 percent on 12 orders from 2 customers, a rise chance makes in 1,985 of 5,000 worlds: too few customers to tell, so no budget moves until more customers buy.
+c) Up 40 percent on 12 orders from 2 customers, a rise chance makes in 1,985 of 5,000 worlds: chance explains it, so Student comes out of the budget talk altogether.
+d) Up 40 percent on 12 orders from 2 customers, a rise chance makes in 951 of 5,000 worlds: too few customers to tell, so no budget moves until more customers buy.
 
 #### Q21 · Hard · circle one letter · Design the Diwali test
 
@@ -453,11 +453,11 @@ d) Offer it to all of Retail-Plus, hold back a random fifth of Retail-Core, and 
 
 ---
 
-## Part 4. Which check would have caught the misleading number in five public cases? (Q22 to Q26)
+## Part 4. What should a team check before it acts on a surprising number, in four public cases? (Q22 to Q26)
 
-*What it shows: whether you can spot the week's mistakes in public cases and name the check for each. 5 items, about 14 minutes.*
+*What it shows: whether you can spot the week's mistakes in public cases and say what to check first in each. 5 items, about 14 minutes.*
 
-Kavya runs a reading group for the team's trainees on Friday afternoons: each week one public case in which a number misled capable people, or nearly did, with its source on the table. In each case the people about to act on the number needed a check first, and each item asks for that check or for the first move. Every case is on the public record, and its source is named beside it.
+Kavya runs a reading group for the team's trainees on Friday afternoons, one public case a week in which a surprising number misled capable people or nearly did. She opens every session with the same line: "Before a number of yours reaches Meera or Anand, tell me which check it has passed." In each of the four cases below, a team had a number in hand and a decision riding on it: whether to publish a finding about debt, how to steer a spacecraft, which search terms to trust as a flu signal, and whether to ship a change to search ads.
 
 ### Set 2
 
@@ -498,7 +498,7 @@ d) 71 -0.07 1.68; New Zealand's single year carries a seventh of that weight.
 
 #### Q23 · Medium · circle one letter · Choose the check
 
-The working spreadsheet held its 20 countries in rows 30 to 49, but the formula for each average covered rows 30 to 44, which left out Australia, Austria, Belgium, Canada and Denmark; the authors accepted the error when it was found. Which check, run before publication, would have caught it?
+The working spreadsheet held its 20 countries in rows 30 to 49, but the formula for each average covered rows 30 to 44, which left out Australia, Austria, Belgium, Canada and Denmark; the authors accepted the error when it was found. Only 10 of the 20 countries ever had a year with debt above 90 percent. Which check, run before publication, would have caught it?
 
 a) Count the countries inside each band's average, and check that every band holds all 20.
 b) Plot growth against debt for every country, and look for a point that breaks the pattern.
@@ -507,7 +507,7 @@ d) Check the rows each average's formula spans against the 20 country rows in th
 
 #### Q24 · Medium · circle one letter · Choose the first move
 
-NASA's Mars Climate Orbiter was lost on 23 September 1999 as it reached Mars. One team's ground software wrote the thrusters' impulse in pound-force seconds, while the interface specification, and the navigation software that read the file, used newton-seconds, so every firing's effect was understated by a factor of 4.45. Through the spring and summer of 1999, engineers raised concerns about differences between navigation solutions, the team's estimates of the spacecraft's path, but only informally. As the spacecraft approached Mars, solutions from Doppler data alone consistently placed it closer to the planet than the other solutions did, and the differences were not resolved (NASA Mishap Investigation Board, 1999). What should the team have done when the solutions disagreed?
+NASA's Mars Climate Orbiter was lost on 23 September 1999 as it reached Mars. One team's ground software wrote the thrusters' impulse in pound-force seconds, while the interface specification, and the navigation software that read the file, used newton-seconds, so every firing's effect was understated by a factor of 4.45. Through the spring and summer of 1999, engineers raised concerns about differences between navigation solutions, the team's estimates of the spacecraft's path. As the spacecraft approached Mars, solutions from Doppler data alone consistently placed it closer to the planet than the other solutions did (NASA Mishap Investigation Board, 1999). What should the team have done when the solutions disagreed?
 
 a) Adopt the solution built on the most tracking data, since more data averages out the noise.
 b) Treat the disagreement as the finding, and trace its cause before the next manoeuvre.
@@ -539,13 +539,13 @@ d) Leave the test running for a quarter, until the lift settles near normal resu
 
 *What it shows: whether you can judge an offer's lift and read an agent's code, log and bill. 9 items, about 31.5 minutes.*
 
-Suppose you join the data and AI team of a food-delivery company. The company, its customers, its agent, its logs and every number in this part are illustrative. Members pay a monthly fee for the company's membership, and everyone else is a regular customer. The support team runs an AI agent: for each customer conversation a large language model reads the message, may ask for a tool (an order's status, a refund within a limit, a hand-off to a person) and writes the reply. Every model call is billed and writes one row to a log table. The head of customer support owns two numbers, the cost per conversation and the share of conversations the agent resolves without a person, and sets the agent's budget and limits by them. The marketing lead needs to know what an offer did before sending it again.
+Suppose you join the data and AI team of a food-delivery company. The company, its customers, its agent, its logs and every number in this part are illustrative. Members pay a monthly fee for the company's membership, and everyone else is a regular customer. The support team runs an AI agent: for each customer conversation a large language model reads the message, may ask for a tool (an order's status, a refund within a limit, a hand-off to a person) and writes the reply. Every model call is billed and writes one row to a log table. The head of customer support owns two numbers, the cost per conversation and the share of conversations the agent resolves without a person, and sets the agent's budget and limits by them: "I sign the agent's budget on these two numbers, so I need to know they are right." The marketing lead needs to know what an offer did before sending it again.
 
 ### Set 3
 
 **Situation.** Last month the company's marketing team sent a 20 percent weekend offer to 500 customers, 250 members and 250 regular customers, and not to the other 1,000, of whom 400 were members and 600 regular. That month the 500 spent Rs 1,025 each and the 1,000 spent Rs 960 each, a lift of 6.8 percent, which is the marketing lead's case for sending the offer again at the festival. The chart and its table split the same customers by tier.
 
-**Exhibit 5A.** Spend per customer last month, by tier and offer; on the chart M is members and R regular customers. Illustrative.
+**Exhibit 5A.** Spend per customer last month, by tier and offer; on the chart M is members and R regular customers.
 
 ```mermaid
 xychart-beta
@@ -566,7 +566,7 @@ xychart-beta
 
 #### Q27 · Hard · write the word or number · Size the offer's effect
 
-On these figures, how much more or less did the 500 customers who got the offer spend last month than the same customers would have spent without it? Give it in rupees.
+On these figures, how much more or less did the 500 customers who got the offer spend last month, all 500 together, than the same customers would have spent without it? Give the total in rupees.
 
 Answer: ____________________
 
@@ -579,7 +579,7 @@ b) Do not send it as it ran; orders need to rise by a third to hold revenue at 2
 c) Send it again at 25 percent off; orders need to rise by a third to hold revenue.
 d) Do not send it as it ran; orders need to rise by a quarter to hold revenue at 25 percent off.
 
-**Exhibit 5B.** One conversation, and the agent's order-status tool as first written. Illustrative.
+**Exhibit 5B.** One conversation, and the agent's order-status tool as first written.
 
 ```mermaid
 flowchart LR
@@ -610,7 +610,7 @@ b) 'order 1099: not found', and found holds 2 of the 3 lookups.
 c) 'None', and found holds 3 of the 3 lookups.
 d) 'order 1099: not found', and found holds 3 of the 3 lookups.
 
-**Exhibit 5C.** The agent's loop as first written, and three customers on one server. Illustrative.
+**Exhibit 5C.** The agent's loop as first written, and three customers on one server.
 
 ```python
 def run_agent(message, history=[]):
@@ -633,7 +633,7 @@ b) 3; keep the default list, and clear it at the end of every call so the next c
 c) 5; keep the default list, and clear it at the end of every call so the next customer starts empty.
 d) 3; keep each conversation's messages under its conversation id, and pass that list in.
 
-**Exhibit 5D.** Cost per conversation in one shift. Every model call costs Rs 0.40. Illustrative.
+**Exhibit 5D.** Cost per conversation in one shift, where every model call costs Rs 0.40.
 
 | Conversation | Model calls | Cost, Rs |
 |---|---|---|
@@ -654,7 +654,7 @@ b) Rs 1.60 is the typical cost, and the cap would have saved Rs 38.80.
 c) Rs 1.60 is the typical cost, and the cap would have saved Rs 27.60.
 d) Rs 7.26 is the typical cost, and the cap would have saved Rs 27.60.
 
-**Exhibit 5E.** The support head asks which tools failed at least 30 times in the week of 21 to 27 September; a call failed when its status is anything but ok, and called_on is a date, with no time of day. The log's calls by tool, status and week, and the analyst's query. Illustrative.
+**Exhibit 5E.** The support head asks which tools failed at least 30 times in the week of 21 to 27 September; a call failed when its status is anything but ok, and called_on is a date, with no time of day. The log's calls by tool, status and week, and the analyst's query.
 
 | tool | status | 21 to 27 Sep | 14 to 20 Sep |
 |---|---|---|---|
@@ -686,7 +686,7 @@ b) One row, refund 35, and nothing for order_status.
 c) Three rows, order_status 49, refund 80 and handover 63.
 d) Three rows, order_status 34, refund 38 and handover 27.
 
-**Exhibit 5F.** Eight calls from the same log, illustrative. latency_ms is empty, NULL, when a call timed out; tool is NULL when the model replied without calling one.
+**Exhibit 5F.** Eight calls from the same log. latency_ms is empty, NULL, when a call timed out; tool is NULL when the model replied without calling one.
 
 | call_id | conversation_id | tool | status | latency_ms |
 |---|---|---|---|---|
