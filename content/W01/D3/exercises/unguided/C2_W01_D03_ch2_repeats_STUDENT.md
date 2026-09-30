@@ -37,7 +37,7 @@ b) It stays right, since the key still finds true copies
 c) It rises, since the key keeps both orders and a copy
 d) It stays right, since two orders a day never happen
 
-### Q4 (Design)
+### Q4
 
 An invented export holds 150 rows and 141 distinct order ids, and 148 of its amounts convert. How many rows sit beyond one per order?
 

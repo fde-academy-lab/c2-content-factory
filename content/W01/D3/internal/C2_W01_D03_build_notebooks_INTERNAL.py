@@ -121,7 +121,7 @@ def setup_cell(parts, state):
 
 
 def mapcell(n, levels, lit=0):
-    ladder = ", ".join(f'"{i + 1}. {c}"' for i, c in enumerate(CHAPTERS))
+    ladder = ", ".join(f'"{c}"' for c in CHAPTERS)
     steps = ", ".join(f'"{s}"' for s in levels)
     return code(f'''kit.side_by_side(
     kit.ladder([{ladder}], lit={n - 1}, show=False),
@@ -633,7 +633,7 @@ def ch2():
                   caption="The hurried dedupe, as it would be reported")
         '''),
         md('''
-        **Why it is wrong.** The file line is where a row sat, not what the order is. Two copies of one
+        **Why it is wrong.** The file line records where a row sat and says nothing about which order it is. Two copies of one
         order sit on different lines, so every record is unique and the dedupe can never find anything.
         The note would tell Anand his books are Rs 20 lakh short, sending Finance to hunt for revenue that
         was never earned. The check is chapter 1's: 201 rows and 186 ids cannot both be true of a file
@@ -738,7 +738,7 @@ kit.check("on invented records, leaving out the line finds both copies", found =
 
         **Design. Order id, whole record or fuzzy, for a customer table merged from two apps?** "Neither
         app's id identifies a person across both, so the whole record and the id are out. I would
-        normalise email and phone and match on those, block by city to keep the comparisons in the
+        normalise email and phone and match on those, block by city so each record is compared only within its own city, which keeps the comparisons in the
         thousands, and send every fuzzy match a person has not confirmed to review. What would switch me
         back to a key is a shared customer id issued by one system."
 
@@ -1249,7 +1249,8 @@ def ch4():
 
         Statisticians separate values missing completely at random from values whose absence depends on
         something, such as discounts left blank only by one channel. Only the first can be dropped without
-        bending a rate. Week 5 meets imputation for models; for Finance, the answer stays keep and flag.
+        bending a rate. Imputation, filling a value from other records, belongs to model features with a
+        column that marks the filled values; for Finance, the answer stays keep and flag.
         '''),
         code('''
         kit.check_summary()
@@ -1392,7 +1393,7 @@ def ch5():
                    (f"{top['amount'] / runner_up['amount']:.2f}x", "the next largest", "why it looked wrong")])
         kit.strip([r["amount"] for r in q2_orders if r["segment"] == "Business"], lit=[0], lo=0, hi=3000000,
                   markers=[("next largest", runner_up["amount"], "plain")],
-                  title="Q2's Business orders on one axis; the dark dot is the one a hurried fence removes")
+                  title="Q2's Business orders on one axis; the dark dot is the one a hurried analyst removes")
         '''),
         md('''
         **Why it is wrong.** Large is not wrong. Kalpa's Business segment sells in bulk to corporate buyers,
@@ -1488,9 +1489,10 @@ def ch5():
         reconcile in rows and in rupees. When it closes I say which is right and why, fix the source and
         recompute anything reported from the wrong number."
 
-        **[S] How do you handle outliers?** "I sort, look at the tail, and ask whether the record is wrong,
-        not whether it is big. A valid id, a real account and fields that convert make it revenue. I keep
-        it, flag it, and show the result with and without it."
+        **[S] How do you handle outliers?** "I sort, look at the tail, and ask whether the record is wrong
+        before asking whether it is big. A valid id, a real account and fields that convert make it
+        revenue. I keep it, flag it, and show the result with and without it. For a model trained on the
+        data I might cap or transform a long tail, and any fence I use sits inside one segment."
 
         **[D] Cleaning shrank yesterday's finding. What do you say?** "The smaller number first, what changed
         and why, and whether the decision still holds. Here the fall is 35 percent, not 49, and Thursday
@@ -1541,17 +1543,17 @@ def ch6():
 
         | Option | What the analyst receives | What the analyst can do with it |
         |---|---|---|
-        | a) The clean file alone | 186 rows | diff it against 201 rows by hand, with no reasons |
+        | a) The clean file alone | 186 rows, read against the 201 raw | diff them by hand, with no reasons |
         | b) The clean file and a count | 186 rows and "15 set aside" | tie the rows, and nothing else |
         | c) Row logs, a decisions log and control totals | 15 set-aside rows with reasons, the flags, five decisions, rows and rupees | tie both totals and replay the pass |
         | d) A full diff of the two files | 201 lines marked kept or gone | see what went, and never why |
         '''),
         code('''
         per_line = 30    # seconds an analyst spends on one line of a log or a diff: an illustrative assumption
-        sizing = [("a) clean file alone", 201 + 186, "no", "no", "no"),
+        sizing = [("a) clean file read against raw", 201 + 186, "no", "no", "no"),
                   ("b) file and a count", 1, "yes", "no", "no"),
                   ("c) logs and control totals", len(set_aside) + len(rejects) + len(flags) + 5 + 2, "yes", "yes", "yes"),
-                  ("d) a full diff", 201, "yes", "no", "no")]
+                  ("d) a full diff", 201, "yes", "by hand", "no")]
         kit.table(["option", "lines to read", "ties rows", "ties rupees", "can be replayed"],
                   [(n, l, a, b, c) for n, l, a, b, c in sizing], caption="Each hand-over sized for the analyst")
         kit.bars([(n, l * per_line / 60) for n, l, *_ in sizing], fmt=lambda v: f"{v:.0f} min",

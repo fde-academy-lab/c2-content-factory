@@ -53,7 +53,7 @@ b) channel, since three values cannot describe 180 orders
 c) amount, since 164 distinct values means some repeat
 d) order_id, since 180 rows hold 171 orders
 
-### Q4 (Design)
+### Q4
 
 Anand asks, "How many orders did the ERP send for the two quarters?" Which count from the profile answers him?
 

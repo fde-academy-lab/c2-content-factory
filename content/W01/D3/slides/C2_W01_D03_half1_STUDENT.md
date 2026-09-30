@@ -75,7 +75,7 @@ flowchart LR
 **Question.** Which branch would you check first, as a letter? a) more rows than orders; b) bigger values than booked; c) another definition; d) rows missing from the books.
 
 ```notes
-LIVE, 5 minutes. Pairs, three minutes: one way per branch that an ERP export could produce it.
+LIVE, 4 minutes. Pairs, three minutes: one way per branch that an ERP export could produce it.
 Expect copies from a migration, a text amount read wrongly, returns counted as sales, a window
 that differs. The point is the list; the letter comes next.
 ```
@@ -97,7 +97,7 @@ flowchart LR
     class V,D,L known
 ```
 
-**Kavya's review.** Rank the checks by cost. Rows against distinct orders takes one line and rules a whole branch in or out; start there and keep the other three on the list.
+**The call.** Rank the checks by cost. Rows against distinct orders takes one line and rules a whole branch in or out; start there and keep the other three on the list.
 
 ```notes
 LIVE, 2 minutes. The answer is a, for cost more than likelihood, though the ERP note about a
@@ -176,7 +176,7 @@ finds it and discounts every later number the team sends.
 ---
 
 ## S8. Target Canada trusted data nobody had profiled
-*It opened in 2013, and in January 2015 announced it would close all 133 stores.*
+*It launched in March 2013, and in January 2015 announced it would close all 133 stores.*
 
 ```stats
 value: 133 | label: stores to close | note: announced January 2015, CBC News
@@ -439,7 +439,7 @@ and about 200 lakh crore pairs on a file of 2 crore rows. Point at d: same count
 ---
 
 ## S21. The plausible wrong answer: zero duplicates
-*Chapter 1 taught the rejects log to carry each row's file line, and the default dedupe runs.*
+*Every record now carries its file line, and the default dedupe compares every field.*
 
 ```python
 kept = whole_record_dedupe(raw)   # every field compared
@@ -586,7 +586,7 @@ LIVE, 3 minutes. Anand's analyst is the reader. Every choice is visible to her i
 ---
 
 ## S28. India's GST portal writes the identity rule into law
-*A business invoice is one invoice per supplier GSTIN, number, type and year.*
+*One invoice per supplier's GST registration, invoice number, type and year.*
 
 ```stats
 value: 4 fields | label: the identity | note: GSTIN, number, type, year
@@ -818,6 +818,13 @@ of items" were not verified and stay out.
 | c) Impute from last order | Rs 1,87,00,000 | 58 of 86 | 67.4% |
 | d) Keep and flag | Rs 1,87,00,000 | 57 of 86 | 66.3% |
 
+| Unreadable amount | Q1 against the books | What it leaves |
+|---|---|---|
+| a) Coerce to zero | -Rs 1,790 | an order at Rs 0 |
+| b) Reject to the log | Rs 0 here | the order out until repaired |
+| c) Read the word | a guess | Rs 14 for "fourteen" |
+| d) Repair from a copy | Rs 0 | needs an independent copy |
+
 **The call.** Status: d. Amount: reject to the log, and repair only from an independent copy. What would switch them: a delivery system to ask, or a second export cut from the same extract.
 
 ```notes
@@ -837,7 +844,7 @@ flowchart LR
     D --> U["<b>kept unknown?</b>"]
 ```
 
-**Question.** The average discount with blanks read as zero, against the average over orders that carry one, as a letter? a) the same; b) a few rupees apart; c) about 30 percent lower with zeros; d) higher with zeros.
+**Question.** The average discount with blanks read as zero, against the average over orders that carry one, as a letter? a) the same, since blanks add nothing; b) a few rupees apart, within rounding; c) about 30 percent lower with zeros; d) higher, since zeros shrink the spread.
 
 ```notes
 LIVE, 2 minutes. This is Tuesday's trap coming back in a new place.
@@ -1120,7 +1127,13 @@ back to 1.6 percent.
 ---
 
 ## S56. The fix, the second route, the note
-*Keep and flag it: Q2 back to Rs 1,87,00,000 and the drop back to 1.6 percent. Bottom up, the kept orders sum to the bridge's Q1.*
+*Keep and flag the bulk order, check the total bottom up, then write to Anand.*
+
+```stats
+value: Rs 1,87,00,000 | label: Q2, the order kept | note: flagged, shown both ways
+value: -1.6% | label: the drop | note: back from -17.1%
+value: Rs 1,90,00,000 | label: Q1 bottom up | note: equal to the bridge, top down
+```
 
 > "Anand, your 1.9 crore is right. The ERP export counted fifteen orders twice, fourteen of them in Q1; copies of two corporate orders carry Rs 19,67,560 of the Rs 19,98,210 difference. Rows and rupees reconcile to your books. On clean data the drop is 1.6 percent against the 11 we reported, and the Retail-Plus fall is 35 percent against 49. It survives, smaller." The GCC data and AI team
 

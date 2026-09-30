@@ -64,10 +64,10 @@ criminal case against individuals is unresolved, so name no person and say nobod
 
 | Option | Lines | Ties rows | Ties rupees | Replayable |
 |---|---|---|---|---|
-| a) The clean file alone | 387 | no | no | no |
+| a) The clean file, read against the raw | 387 | no | no | no |
 | b) The file and a count | 1 | yes | no | no |
 | c) Logs and control totals | 23 | yes | yes | yes |
-| d) A full diff | 201 | yes | no | no |
+| d) A full diff | 201 | yes | by hand | no |
 
 **The call.** c. What would switch it: an external auditor who must re-derive every row, and then d goes beside c.
 
@@ -275,7 +275,7 @@ Rs 1,57,54,540 removed the bulk order. Both are debriefed next.
 ---
 
 ## SECTION 8: The room's wrong answers
-*Fifteen minutes on the numbers the room produced, each traced to the step that made it.*
+*Every wrong number traced to the step that made it and the check that catches it.*
 
 ```notes
 LIVE. Put the most common wrong number on the screen first. Name no learner; name the step.
@@ -314,7 +314,7 @@ flowchart LR
     class Q,A,T bad
 ```
 
-**Kavya's review.** Compare to the rupee, then round for the note.
+**The rule.** Compare to the rupee, then round for the note.
 
 ```notes
 LIVE, 5 minutes. If nobody produced it, show it from chapter 6. Then the 10-minute break.
@@ -354,7 +354,7 @@ LIVE, 3 minutes. "Dropped" is the word to correct.
 ## S17. Question: which statement does the auditor sign?
 *Four statements, one supported by the evidence.*
 
-**Question.** As a letter? a) 14 Q1 rows were deleted as errors; b) the dashboard was right and the books are short; c) 14 Q1 rows are copies of kept orders, set aside by the order_id rule, and rows and rupees reconcile; d) the 14 rows were outliers.
+**Question.** As a letter? a) 14 Q1 rows were deleted as errors after the migration check; b) the dashboard was right all along, and the books are short; c) 14 Q1 rows are copies of kept orders, set aside by rule, and both totals tie; d) the 14 rows were outliers removed to keep Q1 in line with Q2.
 
 ```mermaid
 flowchart LR
@@ -376,7 +376,7 @@ value: 14 of 14 | label: with a kept twin | note: same order_id
 value: Rs 19,98,210 | label: set-aside rupees | note: 98% in two corporate rows
 ```
 
-**Kavya's review.** "Dropped" is the auditor's word; "set aside with a reason" is yours.
+**The rule.** "Dropped" is the auditor's word; "set aside with a reason" is yours.
 
 ```notes
 LIVE, 3 minutes. The answer is c.

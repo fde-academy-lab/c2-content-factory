@@ -56,8 +56,8 @@ an absent key in JSON.
 | One amount unreadable | The copy that validates | Its twin carries the value |
 | Valid, a field disagrees | The first extract | The field, and a question for the source |
 
-Choose the key before counting: whole record 0, record less line 13, order_id 15, a fuzzy match on customer and amount within 60 days
-15 with one real Rs 17,71,000 order among them.
+Choose the key before counting: whole record 0, record less line 13, order_id 15, a fuzzy match on customer and
+amount within 60 days, 15, with one real Rs 17,71,000 order among them.
 
 **Crux:** Say what makes two rows one order before you count duplicates.
 

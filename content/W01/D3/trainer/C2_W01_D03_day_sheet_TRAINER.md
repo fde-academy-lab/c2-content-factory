@@ -83,7 +83,7 @@ Every fact was checked on 30 September 2026; the provenance holds the URLs.
 
 | Chapter | Company | The fact on the slide |
 |---|---|---|
-| 1 | Target Canada | 133 stores, almost a billion dollars lost in year one, all closed January 2015 (CBC News); product data about 30 percent accurate (Salsify's summary of Canadian Business) |
+| 1 | Target Canada | Launched March 2013, almost a billion dollars lost in year one, announced in January 2015 it would close all 133 stores (CBC News); product data about 30 percent accurate (Salsify's summary of Canadian Business) |
 | 2 | Starbucks | 22 and 23 May 2009, about 7,800 stores, about a million customers billed twice and repaid (NBC News and AP) |
 | 3 | India's GST e-invoice portal | One invoice per supplier GSTIN, number, type and year; a repeat is rejected (GSTN FAQ 1.4); Rs 5 crore threshold from 1 August 2023 (Notification 10/2023) |
 | 4 | Amazon UK | Hundreds of items at 1p for about an hour on 12 December 2014; most orders cancelled (BBC News) |
@@ -133,7 +133,7 @@ JSONDecodeError: Unterminated string starting at: line 1397 column 15 (char 2767
 | End of the second case | Five and five letters: notebook 1b 2a 3b 4b 5c, brief 1c 2a 3d 4b 5c | Walk items 3 and 4 aloud |
 
 Chapter set keys: ch1 1c 2a 3d 4b 5d 6c; ch2 1b 2c 3a 4d 5c 6d; ch3 1d 2a 3b 4c 5c; ch4 1c 2a 3d 4b 5d;
-ch5 1c 2b 3d 4a 5c; ch6 1c 2b 3b 4d 5c.
+ch5 1c 2b 3d 4a 5c; ch6 1c 2a 3b 4d 5c.
 
 ---
 
@@ -180,7 +180,7 @@ Rs 80,53,330 with the refund flagged outside revenue, or Rs 80,50,930 netted.
 | Fuzzy match: rows flagged / shared with order_id / real rupees removed / pairs compared | 15 / 14 / Rs 17,71,000 / 20,100 |
 | Sampling 20 of 201 rows: chance to draw both copies of a pair / the bad amount | 13% / 10% |
 | JSON feed: complete records / Q1 among them / amounts agreeing with clean | 119 / 100 / 118 |
-| Hand-over lines: logs and totals / full diff / clean file alone | 23 / 201 / 387 |
+| Hand-over lines: logs and totals / full diff / clean file read against the raw | 23 / 201 / 387 |
 | Smallest real order; smallest Business order | Rs 680; Rs 2,03,060 |
 
 ---
@@ -196,7 +196,7 @@ Rs 80,53,330 with the refund flagged outside revenue, or Rs 80,50,930 netted.
 | [D] | An auditor asks why you dropped 14 rows. | Set aside, not dropped: 14 Q1 copies by the order_id rule, the valid copy kept, Rs 19,67,560 in two corporate rows, 114 = 100 + 14, the rupees tie and the log replays. |
 | [F] | A dedupe returns zero. Believe it? | Only after counting distinct business keys against rows; a timestamp or line in the key makes every row unique. |
 | [F] | Row counts reconcile. Done? | No: rows prove nothing vanished, rupees prove the right rows stayed; today's colleague was Rs 1,790 short. |
-| [S] | The largest order is 1.66 times the next. Remove it? | Check the record, not the size; keep, flag, show both; removing it turns 1.6 percent into 17.1. |
+| [S] | The largest order is 1.66 times the next. Remove it? | Check the record before the size; keep, flag, show both; removing it turns 1.6 percent into 17.1. |
 | [D] | Order id, whole record or fuzzy, for customers from two apps? | Clean phone and email, block by city, review doubtful pairs; the fuzzy match merged a real Rs 17,71,000 order today; switch back to a key when one system issues it. |
 | [D] | Coerce, reject or repair a malformed amount? | Reject to a log; repair only from an independent source; a zero cost Rs 1,790 today; switch to a rule only for an exact format fix. |
 | [D] | Bridge or rebuild from a second source? | Bridge when a log backs each move; rebuild only from an independent, complete source, which the feed was not. |

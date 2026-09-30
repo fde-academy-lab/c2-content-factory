@@ -63,7 +63,7 @@ clean = [r for r in kept if convert(r["amount"])[0] is not None]
 
 a) Round Q1 to the crore before it goes in the note
 b) Add a Rs 1,790 adjustment line so the rupees tie
-c) Prefer the copy whose amount converts inside the dedupe
+c) Prefer the copy that converts, inside the dedupe
 d) Turn every failed amount into zero before the dedupe
 
 ## Part 3. The identity rule
@@ -109,7 +109,7 @@ d) Whether removing it makes the quarters look alike
 
 ## Part 5. Reconcile, bridge, recompute
 
-### Q9 (Match the question to the method)
+### Q9 (Which method answers the question)
 
 Anand asks, "Which Q1 figure is right, and how do you know?" Which method answers him?
 

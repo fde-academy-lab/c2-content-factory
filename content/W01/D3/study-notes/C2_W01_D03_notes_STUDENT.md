@@ -90,8 +90,8 @@ disagree" into "here is exactly why".
 **The need.** Anand's metric is Q1 revenue to the rupee, and every later number stands on the count
 of what arrived. If the note to him says the dashboard is right and it is not, his analyst finds it
 and discounts everything else the team sends. Target Canada is the public version of skipping this
-step: it opened 133 stores in 2013 on product data typed into a new system under deadline, lost
-almost a billion dollars in its first year and in January 2015 announced it would close all 133
+step: it launched in March 2013, lost almost a billion dollars in its first year and in January
+2015 announced it would close all 133
 stores (CBC News,
 15 January 2015). Salsify's summary of the Canadian Business investigation puts the accuracy of that
 product data at about 30 percent (both checked 30 September 2026).
@@ -352,10 +352,10 @@ GBP 2.34 million, for missing red flags across three years of audits (BBC News, 
 
 | Hand-over | Lines | Ties rows | Ties rupees | Replayable |
 |---|---|---|---|---|
-| The clean file alone | 387 | no | no | no |
+| The clean file alone, read against the 201 raw rows | 387 | no | no | no |
 | The file and a count | 1 | yes | no | no |
 | Logs, decisions and control totals | 23 | yes | yes | yes |
-| A full diff | 201 | yes | no | no |
+| A full diff | 201 | yes | only by hand | no |
 
 **The call:** the logs with the control totals, about twelve minutes of reading. **What would switch
 it:** an external auditor who must re-derive every row, and then the diff goes beside the logs.
@@ -436,7 +436,8 @@ differentiator. This programme's own calibration for 0 to 3 year Indian-market c
 distinct. Then I ask what the absence means, because a blank discount may mean no discount or a
 discount nobody recorded, and a missing status means we do not know the order's fate. Then one of
 three decisions, each written down with its reason and sized on what it moves: drop the record, fill
-a stated default, or keep it and flag it. Today reading 55 blank discounts as zero pulled the average
+a stated default, or keep it and flag it. Imputation, filling a value from other records, belongs
+to model features, with a column saying which values were filled; it never fills booked money. Today reading 55 blank discounts as zero pulled the average
 from about Rs 67 to Rs 47, so they stayed unknown. For money I never fill, since the books either
 have a value or they do not." Tested: whether you
 treat missingness as a decision. Weak answer: "I fill with the mean."
@@ -499,9 +500,9 @@ closes to the books because every move is backed by rows I can show. If it had n
 would itself be a finding to put in front of Finance's analyst, with the rows and without an accusation."
 
 **[D] Design. Order id, whole record or fuzzy, for customers from two apps?** "Neither app's id
-identifies a person across both, and two systems never write a record identically, so the id and the
+identifies a person across both, and two systems rarely write a record identically, so the id and the
 whole record are out. I would clean phone and email the same way on both sides and match on those,
-block by city so the comparisons stay in the thousands, and send every match nobody has confirmed to
+block by city so each record is compared only within its own city, which across six cities cuts the pairs to about a sixth, and send every match nobody has confirmed to
 a person. On Kalpa's orders a fuzzy match on customer and amount within 60 days flagged as many rows as the order id
 and merged a real Rs 17,71,000 order, which is why I would not trust it unreviewed. What would switch
 me back to a key is one customer id issued by one system."
@@ -527,19 +528,19 @@ prove. If a bridge does not close, the gap is the finding, and it may sit in Fin
 | Profile | Three counts per field before any total: present, convertible, distinct | Chapter 1; notebook 01 | order_id present on 201 rows, distinct on 186 |
 | Rejects log | Every row whose value failed, with its line, field and reason | Chapter 1; notebooks 01 and 04 | One amount that would not convert |
 | Identity rule | What makes two rows the same thing | Chapter 2; notebook 02 | order_id, the ERP's key |
-| Duplicate | A second row for the same thing under the identity rule | Chapter 2; notebook 02 | 15 rows beyond one per order |
-| Survivor rule | Which copy of a repeated record stays | Chapter 3; notebook 03 | The copy that validates, then the first |
 | Keep and flag | Keep a record whose value is unknown, marked, out of counts that need it | Chapter 4; notebook 04 | A Q2 order with no status |
 | Coercion | Turning a value that fails into a default; a claim, never a fix | Chapter 4; notebook 04 | An order at Rs 0 |
-| Outlier | A value far from the rest; a question about its record | Chapter 5; notebook 05 | The largest Q2 order |
+| Fence | A cut-off above which values get called outliers; a question, never a verdict | Chapter 5; notebook 05 | Three times the median Q2 order |
+| Control totals | A count and a sum computed at both ends of a transfer and compared | Chapter 6; notebook 06 | 201 rows and Rs 2,09,98,210 in |
 | Revenue bridge | One total walked to another, one move per cause | Chapter 5; notebook 05 | Rs 2,09,98,210 to Rs 1,90,00,000 |
+| Duplicate | A second row for the same thing under the identity rule | Chapter 2; notebook 02 | 15 rows beyond one per order |
+| Survivor rule | Which copy of a repeated record stays | Chapter 3; notebook 03 | The copy that validates, then the first |
+| Outlier | A value far from the rest; a question about its record | Chapter 5; notebook 05 | The largest Q2 order |
 | Reconciliation | Proof the clean data is the same data, in rows and in rupees | Chapters 5 and 6; notebooks 05 and 06 | 201 = 186 + 15 |
 | Decisions log | Every cleaning rule with the rows and rupees it moved | Chapter 6; notebook 06 | Missing status: keep and flag |
 | Replay | Rebuilding the clean file from the raw export and the log alone | Chapter 6; notebook 06 | 186 orders at the same amounts |
 | Booked value | Every order at its price, whatever its status, before returns and cancellations | The ask; chapter 5 | Both Rs 2.1 crore and Rs 1.9 crore |
 | Set aside | Removed from the clean file with a logged reason and the line of the row that stayed | Chapters 3 and 6 | 15 rows |
-| Control totals | A count and a sum computed at both ends of a transfer and compared | Chapter 6; notebook 06 | 201 rows and Rs 2,09,98,210 in |
-| Fence | A cut-off above which values get called outliers; a question, never a verdict | Chapter 5; notebook 05 | Three times the median Q2 order |
 
 ---
 

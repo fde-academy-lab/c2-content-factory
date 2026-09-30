@@ -28,9 +28,9 @@ b) Three customers placed free orders in a promotion
 c) Three orders were cancelled, and cancelled orders carry 0
 d) The profile is right, and zero is a valid Kalpa order
 
-### Q3 (Design)
+### Q3
 
-A colleague converts amounts with `int(v) if v.isdigit() else 0`. The take-home file's refund of `-2400` comes out as Rs 0. Which change fixes the logic?
+A colleague converts amounts with `int(v) if v.isdigit() else 0`. On an invented export, a refund of `-1150` comes out as Rs 0. Which change fixes the logic?
 
 a) Keep the isdigit test and footnote the refund
 b) Replace the 0 with the segment's median amount
@@ -46,7 +46,7 @@ b) Reject it to the log and ask the ERP team
 c) Read the word as Rs 14, since the text says fourteen
 d) Coerce it to zero so the pass can finish tonight
 
-### Q5 (Design)
+### Q5
 
 Forty of 100 orders carry no discount, and the 60 that carry one average Rs 90. What does the average read if the blanks are taken as zero?
 

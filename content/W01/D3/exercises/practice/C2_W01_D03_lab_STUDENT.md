@@ -90,7 +90,7 @@ d) Rs 81,980
 ## Problem 3. The app's feed as a second witness, about fifteen minutes
 
 Recover the complete records from `C2_W01_D03_orders_STUDENT.json` one at a time, as chapter 1 did, and
-compare each with the CSV row that carries the same order_id.
+compare each with the CSV row on the same file line, the row it was cut from.
 
 ### Q7
 

@@ -23,8 +23,8 @@ d) Ask Finance whether their books are Rs 2,100 too high
 
 Q1 as exported is Rs 50,00,000, the rows set aside carry Rs 4,20,000, and the books say Rs 45,80,000. Does the rupee reconciliation hold, and what does it prove?
 
-a) No, since Rs 4,20,000 is more than 8 percent of Q1
-b) Yes, and the clean total equals the books
+a) Yes, and the clean total equals the books
+b) No, since Rs 4,20,000 is more than 8 percent of Q1
 c) Yes, and it proves no row vanished from the file
 d) No, since the rows have not been counted yet
 
