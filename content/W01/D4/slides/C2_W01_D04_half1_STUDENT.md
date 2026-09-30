@@ -52,8 +52,7 @@ value: 1 page | label: two minutes | note: her constraint on the answer
 ```notes
 LIVE, 4 minutes. Read the message aloud. Then read her constraint: "One page, two minutes. If the
 honest answer is 'we do not know yet', say so and tell me what would tell us." Retail-Plus is
-Kalpa's paid membership tier, where the customers who buy most often sit; Student is a small
-segment of student customers. Ask which of the three questions would cost Kalpa the most if
+Kalpa's paid membership tier, where the customers who buy most often sit. Ask which of the three questions would cost Kalpa the most if
 answered wrongly. Most say the discount, because it is about to be repeated for Diwali. Hold that;
 chapters 4 and 6 answer it. Watch for anyone answering a question now: every number on this slide
 is somebody's claim, and today tests each one. Then the question of which check each claim needs.
