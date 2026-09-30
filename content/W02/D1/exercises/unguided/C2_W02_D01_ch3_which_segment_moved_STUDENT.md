@@ -109,7 +109,7 @@ route does that, and how many rows does it move?
 
 a) Multiply 2.01 by the 96 customers and set the product beside the 193 orders, moving no rows
 b) Rerun the grouped query with the division rounded to three places instead of two, one row
-c) One row per Retail-Core customer in Q2 with their own order count, 96 rows averaged in Python
+c) One row per Retail-Core customer in Q2 with their order count, 96 rows averaged in Python
 d) Divide Retail-Core's Q2 revenue by its revenue per order, one row
 
 ## Which segment carried the fall?
