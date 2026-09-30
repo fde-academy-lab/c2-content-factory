@@ -1,8 +1,11 @@
 # The Week 2 and Week 3 revamp
 
 The requester first scheduled this for after Sunday 4 October 2026, then on 30 September asked for it
-to run straight away, with every spawned session at the highest reasoning effort (`effortLevel` in
-`.claude/settings.json`). It raises Week 2 (five teaching days) and Week 3 (Build 1 in Kalpa Health,
+to run straight away, with every session and agent on the latest Opus model at max effort (decision
+`opus-max`; `.claude/settings.json` sets both). The same day the requester raised the standard again
+(decisions `question-ladder`, `self-contained` and `humanizer`), so every pack, Week 1 included, is
+built or rechecked to that raise, which `the-standard.md` calls the second raise and this plan calls
+standard v3. It raises Week 2 (five teaching days) and Week 3 (Build 1 in Kalpa Health,
 now a US-facing business) to the chapter standard in full depth. The orchestrating session runs it,
 and the steps below are its order.
 
@@ -12,6 +15,38 @@ Check that main carries all of Week 1: the five chapter packs `content/W01/D1` t
 dossier in `content/W01/D1/`, and both raised Saturday papers. Finish whatever is still open (one
 review, one fix pass, merge) before anything below starts. The Week 2 sessions read the Week 1
 packs as the model for the chapter form.
+
+Then Week 1 is rechecked against standard v3, one cloud session per day and one for both Saturday
+papers, each given the recheck prompt below with its fills, on branches `w01-d{n}-v3` and
+`w01-w02-sat-v3`. The Week 2 paper's recheck waits for the rebuilt Week 2, since a rebuilt day can
+change a number the paper prints.
+
+### The recheck prompt
+
+````markdown
+Recheck the Week {W} {DAY} day pack for Cohort 2 ({DATE}) and raise it to standard v3. One session, one day pack.
+
+**Already decided, so do not stop for approval.** The pack in `content/W{WW}/D{N}` meets the chapter standard the requester set on 30 September 2026. The same day the requester raised it again: decisions `question-ladder`, `self-contained`, `humanizer` and `opus-max` in `data/programme/facts.yaml`. `the-standard.md` carries all of it. Build straight through without waiting, from branch {BASE}.
+
+**Read first, in this order.** `CLAUDE.md`; `.claude/skills/day-pack-builder/references/the-standard.md`, above all the question ladder, the self-contained rule and the decks; `.claude/skills/humanizer/SKILL.md`; the week's spine in `docs/detailing/`; the day's row in `docs/curriculum/`; the day's own provenance in `internal/`.
+
+**What this pass does.**
+1. **Every heading becomes a question.** In every STUDENT and TRAINER file, each heading is a plain, specific question its section answers, understandable on its own. Under each chapter-level heading, **Who needs the answer.** names the person, the decision and the cost of a wrong answer, and **The questions on the way.** lists the smaller questions; each section closes on its answer with its number. On a slide the italic subtitle asks and the action title answers; a chapter opener's title is the chapter's question in about 22 characters and its promise is the full question. The day sheet prints the whole ladder at its top. Read each file's headings alone, in order: they must tell the day's argument.
+2. **Every file stands on its own.** Open each deck, notebook, exercise file, case brief, solution file and the take-home alone. Wherever it needs another file to be followed (a scenario, a term, a number, what an earlier chapter found), carry that in, in a sentence or two; a pointer stays only for more depth. A notebook loads its own data and runs cold. Where an earlier finding is a plant, restate the rule the room drew from it, never the planted record.
+3. **The decks carry each chapter in full.** A learner who missed the class must follow every chapter from the slides and their notes. After the cover, one slide asks the day's question and lists the chapter questions. Each chapter opens on its question, then a map slide, then about 10 to 14 slides in the notebook's rhythm: the need, the real company, the options with their sizing and the best-fit call, the thinking as a picture, per build step a predict slide, the logic or code in one short block, the result with its numbers as a picture and the check, then the plausible wrong answer, why it is wrong with its check, the fix, the second route, and a close that answers each smaller question beside Kavya's review. Add the slides a thin chapter lacks. Rebuild with `scripts/build_deck.py`, render through LibreOffice with Carlito, and look at every slide: fix overflow, crowding and any picture that does not read.
+4. **The humanizer's read, everywhere.** Run the humanizer in file mode over every prose file: notes, cheat sheet, pre-read, board work, day sheet, exercises and solutions, take-home, Kahoot, the deck markdown (slide text and notes), and the notebooks' markdown through the scripts that write them. Keep code, data, paths and links as they are, and keep the standard's recurring bold beats.
+5. **Recheck everything.** Every number repeated across files matches; every trap shows its exact wrong number; no STUDENT file names a plant or teaches a later day's trap ({LATER}); every key and distractor passes the audit and reads fairly cold; every link carries its check date.
+
+{SPECIFICS}
+
+**The review.** When the five steps are done, launch one fresh reviewer subagent with the Agent tool and `model: opus`, read-only, once: it runs the headings-only read on every file, opens three files at random alone to test that each stands on its own, looks at every rendered slide, and lists every humanizer pattern still present. Fix every finding. If a fix changes a method, a key or a number other files repeat, a second fresh reviewer checks only those changes.
+
+**Boundaries.** Write only under `content/W{WW}/D{N}/`. Do not edit shared files (`scripts/`, `.claude/`, `docs/`, `data/`, `CLAUDE.md`, `prompts/`, `wiki/`) or another day's folder; name any change a shared tool needs in your report.
+
+**Proof.** `python3 scripts/verify.py content/W{WW}/D{N} --execute` passes with zero failures; `python3 scripts/build_companion.py content/W{WW}/D{N} --check` and `python3 scripts/sync_programme.py --check` pass; every deck is rebuilt and looked at; every notebook runs cold; the tic scanner is clean on every markdown file.
+
+**Ship.** Small commits whose messages say what changed, pushed to `w{WW}-d{N}-v3`. Do not open a pull request. Report: the day's question ladder (the day's question, each chapter's question and its smaller questions); what each file needed to stand on its own; slides added per chapter; the humanizer's main finds; the review's findings and fixes; the verify output; anything left undone and why.
+````
 
 ## 2. What the orchestrating session needs
 
@@ -27,16 +62,16 @@ packs as the model for the chapter form.
 ## 3. Week 2: five cloud sessions in parallel
 
 Launch one cloud session per day with `create_session`: source main, outcome branch
-`w02-d{n}-chapters`, tags `c2-chapters` and `week-2`. Each gets the day prompt below with its fills.
+`w02-d{n}-chapters`, tags `c2-chapters` and `week-2`, and model `claude-opus-5-5`. Each gets the day prompt below with its fills.
 Move the five board cards to `building` when they start. The Week 2 Saturday paper was raised on
 30 September 2026; revisit it only where a rebuilt day changes a number the paper prints.
 
 ### The day prompt
 
 ````markdown
-Raise the Week 2 {DAY} day pack for Cohort 2 ({DATE}) to the chapter standard the requester set on 30 September 2026. One session, one day pack.
+Raise the Week 2 {DAY} day pack for Cohort 2 ({DATE}) to standard v3, the chapter standard the requester set on 30 September 2026 and raised the same day. One session, one day pack.
 
-**Already decided, so do not stop for approval.** The requester approved the Weeks 1 and 2 spine on 29 September 2026 and raised the standard on 30 September 2026. The decisions are `chapter-standard` and `four-domains` in `data/programme/facts.yaml`. `docs/detailing/W01_W02_spine.md` is gate 2 for this day. State the envelope and continuity in your first message, then build straight through every pass without waiting.
+**Already decided, so do not stop for approval.** The requester approved the Weeks 1 and 2 spine on 29 September 2026 and raised the standard on 30 September 2026. The decisions are `chapter-standard`, `four-domains`, `question-ladder`, `self-contained`, `humanizer` and `opus-max` in `data/programme/facts.yaml`. `docs/detailing/W01_W02_spine.md` is gate 2 for this day. State the envelope and continuity in your first message, then build straight through every pass without waiting.
 
 **Read before building, in this order.**
 1. `CLAUDE.md`.
@@ -44,12 +79,13 @@ Raise the Week 2 {DAY} day pack for Cohort 2 ({DATE}) to the chapter standard th
 3. `docs/detailing/W01_W02_spine.md`: the rule every day follows, the faculty-day paragraph and {DAY}'s row in the Week 2 table.
 4. The {DAY} row in `docs/curriculum/W2_Data_manipulation.md`, all columns in order, including the violet IITGN faculty column.
 5. The day's line in `docs/programme/calendar.md`, and `docs/07_Client_Zero.md` for the v4 warehouse.
-6. The retail dossier, `content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md`. It is on main once merged; until then, read it from `origin/w01-domain-retail`.
+6. The retail dossier, `content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md`, and the Week 1 packs on main as the model for the chapter form.
 7. `.claude/skills/day-pack-builder/SKILL.md` and its references, and `content/README.md`.
+8. `.claude/skills/humanizer/SKILL.md`, the read every prose file passes.
 
 Then read the skills CLAUDE.md routes to for each family, each in full before the pass that uses it.
 
-**The domain.** Kalpa Retail continues, and the room met its story on Week 1 Monday. Link to the dossier by its path; never copy it. Every chapter names:
+**The domain.** Kalpa Retail continues, and the room met its story on Week 1 Monday. Each file carries what it needs from the dossier in its own words (a term's one-line meaning, a metric's formula, a role) and links to the dossier's section for more depth. Every chapter names:
 - the metric at stake;
 - who at Kalpa asks for it;
 - what a wrong number costs them in rupees, customers or time;
@@ -66,6 +102,14 @@ Check each fact about that company today with WebSearch and WebFetch, and record
 6. **Kavya's review.**
 
 SQL, pandas or Excel is the calculator, and the code is the chapter's last mile. A syntax or runtime error gets two minutes when it happens and never a trap slot, a chapter or an exercise item. The notebook sizes are 20 to 36 cells, with at least five visuals and five passing checks each. The exercise volume is about 35 items, at least a third of them design items. Both are floors.
+
+**Every heading is a question, and every file stands on its own.** The question ladder in `the-standard.md` is the form.
+- The day asks one question in the stakeholder's words. Each chapter asks the question the previous answer raised: in about 22 characters on the chapter opener and its pill (`## SECTION 2: Leave or buy less often?`), and in full as the opener's promise, the notebook's title cell, the notes' chapter heading and the scenario set's title.
+- Under each chapter heading, **Who needs the answer.** names the person, the decision and the cost of a wrong answer, and **The questions on the way.** lists the chapter's four to six smaller questions. Each smaller question is a notebook heading, a notes subheading and a slide's italic subtitle; its answer is the notebook's **What happened.**, the paragraph beneath and the slide's action title.
+- No heading is a bare label: "How much is one customer worth across all the years they keep buying?" replaces "Customer lifetime value, simply". Read each file's headings alone, in order; they must tell the day's argument.
+- Each deck, notebook, exercise file, case brief, solution file and the take-home is understood with nothing else open: its scenario, its terms, its numbers and what an earlier chapter found (in a sentence, with the number) are on the page. Where the earlier finding is a plant, restate the rule the room drew from it, never the planted record.
+
+**The decks, in depth.** A learner who missed the class follows every chapter from the slides and their notes. After the cover, one slide asks the day's question and lists the chapter questions. Each chapter opens on its question, then a map slide with who needs the answer and the smaller questions as a `timeline`, then about 10 to 14 slides in the notebook's rhythm: the need and who asks; the real company; the options with their sizing and the best-fit call; the thinking as a picture; per build step a predict slide, the logic or code in one short block, the result with its numbers as a picture, and the check; the plausible wrong answer with its exact number, why it is wrong with its check, and the fix; the second route; and a close that answers each smaller question in one line beside Kavya's review.
 
 **What the Week 1 reviews found. Build it right the first time, because each of these held a pack back from merging.**
 1. **Nothing spoils a later day.** No file teaches a trap or a method a later day stages, under any numbers. Later this week: {LATER}. A file may point back at an earlier day's trap by name.
@@ -93,7 +137,7 @@ SQL, pandas or Excel is the calculator, and the code is the chapter's last mile.
 
 Keep every file that already meets the bar, rename or delete the ones the chapters replace, and leave no orphan. The Week 1 Wednesday to Friday packs show the chapter form once they are merged.
 
-**The depth loop.** Passes 2 (domain) and 3 (problem first) are yours. For passes 4 (rigor) and 5 (pedagogy and language), launch one fresh reviewer subagent each with the Agent tool, read-only, once. The rigor reviewer also sits the day's exercises blind from the STUDENT files alone, and checks every STUDENT file against the later days' traps listed above. Fix every finding. A second round runs only when a fix changed a method, a key or a number other files repeat, and it checks only those changes. Log the passes in the provenance.
+**The depth loop.** Passes 2 (domain) and 3 (problem first) are yours. Before pass 5, run the humanizer in file mode over every prose file: the notes, the cheat sheet, the pre-read, the board work, the day sheet, every exercise and solution file, the take-home, the Kahoot, the deck markdown (slide text and notes) and the notebooks' markdown through the scripts that write them. For passes 4 (rigor) and 5 (pedagogy and language), launch one fresh reviewer subagent each with the Agent tool and `model: opus`, read-only, once. The rigor reviewer also sits the day's exercises blind from the STUDENT files alone, and checks every STUDENT file against the later days' traps listed above. The pedagogy reviewer also runs the headings-only read on every file, opens three files at random alone to test that each stands on its own, looks at every rendered slide, and lists every humanizer pattern still present. Fix every finding. A second round runs only when a fix changed a method, a key or a number other files repeat, and it checks only those changes. Log the passes in the provenance.
 
 **Boundaries.**
 - Write only under `content/W02/D{N}/`.
@@ -107,9 +151,10 @@ Keep every file that already meets the bar, rename or delete the ones the chapte
 - Every deck is built with `scripts/build_deck.py`, rendered through LibreOffice and looked at slide by slide. Install `fonts-crosextra-carlito` if the render lacks it.
 - Every notebook is executed cold in its own folder.
 - Every exercise, quiz and practice set passes `scripts/distractor_audit.py`.
-- The llm-tic-scrubber scanner is clean on every markdown file.
+- The llm-tic-scrubber scanner is clean on every markdown file, and the humanizer's read and the headings-only read are done on every file.
 
 **Ship.** Commit in small commits whose messages say what changed, and push to the branch `w02-d{N}-chapters`. Do not open a pull request. Finish with a report containing:
+- the day's question ladder: the day's question, each chapter's question and its smaller questions;
 - the chapters with their notebooks and deck sections;
 - each chapter's options, best-fit call and second route, in one line each;
 - each trap with its exact wrong number;
@@ -272,7 +317,7 @@ authorisation in its vocabulary. The build week keeps its shape from `docs/detai
    - where analytics, ML, NLP and agents pay off: denial prediction, coding assistance, prior-auth and
      claim-status agents, and no-show prediction.
 
-   Run one review round before the Week 3 packs start.
+   Its headings are questions, per the reference. Run one review round before the Week 3 packs start.
 2. **The Kalpa Health generator** (`data/generate_kalpa_health.py`) moves to the US setting:
    - dollars and US metro areas;
    - payers;
@@ -283,7 +328,9 @@ authorisation in its vocabulary. The build week keeps its shape from `docs/detai
    - rewrite the spine's "The week" section for the US setting;
    - record a decision that the Build 1 rubric's "rupees" reads "dollars";
    - run the sync.
-3. **The Week 3 packs** (`D1`, `D3`, `D4`, `D5` and `SAT`) are rebuilt by cloud sessions in parallel.
+3. **The Week 3 packs** (`D1`, `D3`, `D4`, `D5` and `SAT`) are rebuilt by cloud sessions in parallel,
+   on the latest Opus at max effort, to standard v3: question headings with who needs the answer and
+   the questions on the way, every file standing on its own, the humanizer's read and decks in depth.
    Each reads the new dossier, the regenerated data and the spine, and goes as deep as the Week 2 days:
    - the sub-problem briefs sized with options;
    - the checkpoint questions;
@@ -295,5 +342,6 @@ authorisation in its vocabulary. The build week keeps its shape from `docs/detai
 
 ## 5. Done
 
-Week 2 and Week 3 are done when every pack is merged, every board card is at review-1, and
-`python3 scripts/sync_programme.py --check` passes on main.
+Week 1's recheck, Week 2 and Week 3 are done when every pack is merged at standard v3, both Saturday
+papers are rechecked, every board card is at review-1, and `python3 scripts/sync_programme.py --check`
+passes on main.

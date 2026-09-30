@@ -38,11 +38,13 @@ flowchart LR
     class MK bad
 ```
 
-**The client asks.** Whether the week's pipeline is yours or the notebook's; which step you reach for first on a fresh export; whether your note survives a hostile question; what you still cannot do without help.
+**The client asks.** Which branch of the revenue tree moved booked revenue from Q1 to Q2, in which segment, and does the number tie to Anand's control totals? A first line that does not tie to his books is sent back, and a misread branch sends Monday's effort to the wrong team, while Marketing's Rs 12 crore request waits on the answer.
 
 ```notes
-LIVE, 2 minutes. Say the four questions on the table from the row. The first one is the morning's
-question and the third is the afternoon's. Do not add anything about which step matters most: the
+LIVE, 2 minutes. Say the metric, who asks and what a wrong number costs, then the four questions on
+the table from the row: whether the pipeline is yours or the notebook's, which step you reach for
+first, whether the note survives a hostile question, and what you still cannot do without help. The
+first is the morning's question and the third is the afternoon's. Do not add anything about which step matters most: the
 lab measures what each person does unprompted.
 ```
 
@@ -66,8 +68,8 @@ Each step answers a question the next one depends on: whether the file is what i
 
 ```notes
 LIVE, 2 minutes. Walk the six boxes left to right once, naming the day each came from. Then stop
-talking about the method. This picture stays on the second screen, if there is one, for the whole
-lab.
+talking about the method. During the lab only S7, the step names and their minutes, stays on the
+projector.
 ```
 
 ---
@@ -96,20 +98,20 @@ value: 0 | label: numbers quoted | note: until the profile is read
 **Kavya's review.** A profile costs ten minutes and tells you which of the next ninety you will spend on repairs. Skipping it moves the repairs to Monday, in front of Marketing.
 
 ```notes
-LIVE, 1 minute. The answer is b. Option d is closed by the rules anyway: no other day's notebook is
-open today, and the reason is that code written for Wednesday's file assumes Wednesday's defects.
+LIVE, 1 minute. The answer is b. Option d is closed by the rules anyway: no other notebook is open
+today, and the reason is that code written for Wednesday's file assumes Wednesday's defects.
 ```
 
 ---
 
 ## S5. The rules of the lab
-*The lab finds out what you own; it does not rank anybody.*
+*The lab shows each person which steps they own, and ranks nobody.*
 
 ```cards
 icon: bot-off | eyebrow: Rule 1 | title: No assistant | body: No chat model, no autocomplete that writes code, no search for code.
-icon: book-x | eyebrow: Rule 2 | title: Notes closed | body: No earlier notebook, deck or cheat sheet open on any screen.
+icon: book-x | eyebrow: Rule 2 | title: Notes closed | body: No other notebook in notebooks/, and no deck or cheat sheet, open on any screen.
 icon: timer | eyebrow: Rule 3 | title: 120 minutes | body: The clock runs once; save as you go and hand in what you have.
-icon: eye | eyebrow: Rule 4 | title: Observed, not scored | body: A TA notes where each person is at each mark; nothing goes on a wall.
+icon: eye | eyebrow: Rule 4 | title: Observed, with no score | body: A TA notes where each person is at each mark; nothing goes on a wall.
 ```
 
 **The rule.** Python's own documentation, reached from the notebook with `help()`, is allowed, because an analyst on the job has it too.
@@ -154,15 +156,15 @@ nothing on the projector until the 120-minute mark.
 ---
 
 ## S7. The pace, if you want one
-*Minutes are a pace, not a limit; the order is not optional.*
+*The minutes are a pace; the order of the steps is fixed.*
 
 ```timeline
-label: 0 to 20 | title: Profile | body: Three counts per field, and every mismatch written down.
-label: 20 to 50 | title: Clean | body: Drop, default, or keep and flag, each with a reason in the log.
-label: 50 to 65 | title: Reconcile | body: Counts and rupees, against Finance's control totals.
-label: 65 to 90 | title: Decompose | body: The tree, Q1 against Q2, segment by segment.
-label: 90 to 105 | title: Test | body: One shuffle, 2,000 times, on the gap that matters.
-label: 105 to 120 | title: Note | body: Claim, evidence, caveat, action.
+label: 0 to 20 | title: Profile
+label: 20 to 50 | title: Clean
+label: 50 to 65 | title: Reconcile
+label: 65 to 90 | title: Decompose
+label: 90 to 105 | title: Test
+label: 105 to 120 | title: Note
 ```
 
 ```notes
@@ -188,7 +190,7 @@ flowchart LR
     class X bad
 ```
 
-Write the line under your note in a new markdown cell. It does not change what you handed in; it is what you will say at the debrief.
+Write the line under your note in a new markdown cell. What you handed in stays as it was, and this line is what you will say at the debrief.
 
 ```notes
 LIVE, 20 minutes. The TAs copy each learner's output folder at the 120-minute mark before anyone
@@ -200,7 +202,7 @@ debrief.
 ---
 
 ## S9. Kavya's review of the morning
-*The method is yours when the order holds under a clock, not when each step is remembered.*
+*The method is yours when its order holds under a clock.*
 
 ```stats
 value: 6 | label: steps | note: in one order, every time
@@ -211,7 +213,8 @@ value: 0 | label: assistants | note: the file is new to every model too
 **Kavya's review.** The step you skipped when the clock ran is the step you do not own yet. Knowing which one it is, this week, costs nothing.
 
 ```notes
-LIVE, 1 minute, then the ten-minute break. The debrief's first break, the reconciliation, runs for
+LIVE, 1 minute, then the ten-minute break. The debrief's first chapter, the reconciliation, runs for
 twenty minutes after the break and closes the morning. Over lunch the TAs total the observation
-sheets by step, and that tally decides which two breaks open the afternoon.
+sheets by step; all three chapters run whatever the tally says, and it decides where the trainer
+lingers and which reserve slide replaces a self-study slide.
 ```

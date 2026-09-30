@@ -1,7 +1,7 @@
-# Brief 2: Bookings fell in two cities in Q2
+# Brief 2: Bookings fell in two metros in Q3
 
 **For:** the group allocated sub-problem 2
-**Client:** Dr Priya Menon, COO, Kalpa Health, and the clinics' operations head
+**Client:** Dr Priya Menon, COO, Kalpa Health, and the patient service centres' operations head
 **Read first:** `C2_W03_D01_briefing_note_STUDENT.md`
 
 Kalpa Health and everyone in it are fictional.
@@ -10,25 +10,25 @@ Kalpa Health and everyone in it are fictional.
 
 ## The question, as it was put
 
-> "Bookings fell in two of our cities in Q2. Before I send a field team or cut staff there, I need to know how far they fell, and why."
-> The clinics' operations head, Kalpa Health
+> "Bookings fell in two of our metros in Q3. Before I send a field team or cut staff there, I need to know how far they fell, and why."
+> The patient service centres' operations head, Kalpa Health
 
 ## The decision it feeds
 
-Whether the operations head sends a field team to the two cities, cuts staff there, or leaves them alone.
-A fall read too large cuts staff a city still needs; a fall read too small leaves a real decline running
+Whether the operations head sends a field team to the two metros, cuts staff there, or leaves them alone.
+A fall read too large cuts staff a metro still needs; a fall read too small leaves a real decline running
 for another quarter.
 
 ## The symptom, as the business sees it
 
-The operations head's report shows bookings down in two of the six cities from Q1 to Q2, and the
+The operations head's report shows bookings down in two of the six metros from Q2 to Q3, and the
 other four holding or growing. The operations head wants to act on it this month.
 
 ## The files that bear on it
 
 - `C2_W03_D01_bookings_legacy_STUDENT.csv`
 - `C2_W03_D01_bookings_newsys_STUDENT.csv`
-- `C2_W03_D01_clinics_STUDENT.csv`
+- `C2_W03_D01_sites_STUDENT.csv`
 - `C2_W03_D01_booking_tests_STUDENT.csv`
 - `C2_W03_D01_patients_STUDENT.csv`
 
@@ -40,7 +40,7 @@ starts.
 The panel reads your one-slide answer and then asks questions like these. Every member should be able
 to answer each one from your own work.
 
-1. Which two cities, and how far did bookings fall in each, from which files?
+1. Which two metros, and how far did bookings fall in each, from which files?
 2. How many bookings did you count in each quarter, from which files, and how does that count reconcile to the rows you were given?
 3. What did you check before you started explaining the fall?
 4. Which step of your investigation changed your answer most, and what did it change it from?
@@ -67,7 +67,7 @@ against this rubric:
 | Criterion | Marks | What full marks look like |
 |---|---|---|
 | The question translated | 8 | Dr Menon's words are mapped to the right Weeks 1 and 2 method, with the metric defined and the decision it feeds named. |
-| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and rupees reconcile across files. |
+| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and dollars reconcile across files. |
 | The analysis | 10 | The tree, ladder or fair comparison reaches the branch that explains the symptom, on the right denominator, with a chance test where one is needed. |
 | The claim | 6 | One sentence carries its number, denominator, period and caveat, plus an action Dr Menon can take. |
 | Presentation and defence | 6 | The live demo runs cold, and every member answers a challenge on the caveat. |

@@ -1,7 +1,7 @@
 # Run sheet: the parallel build, Week 3 Wednesday
 
 **TRAINER ONLY.** Sixty minutes, straight after the checkpoint. The notebook is
-`parallel-build/C2_W03_D03_delhi_revenue_tree_STUDENT.ipynb`. It ships executed, and every number
+`parallel-build/C2_W03_D03_new_york_revenue_tree_STUDENT.ipynb`. It ships executed, and every number
 below is one of its saved outputs.
 
 ---

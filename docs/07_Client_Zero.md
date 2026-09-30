@@ -82,6 +82,16 @@ dossier teaches on Build 1 Monday. Every Kalpa Health record is synthetic, so no
 information exists anywhere in the repository. The Build 1 generator and the Week 3 packs are
 revised to this setting; until they are, they carry the India setting of v2.2.
 
+Decision `build1-us-data` (closed on 30 September 2026, in `data/programme/facts.yaml`) settles
+Build 1's data in this setting. `data/generate_kalpa_health.py` writes a synthetic pack across six
+US metro areas: Dallas, Phoenix, New York, Chicago, Atlanta and Philadelphia. Its payers are
+commercial plans, Medicare, Medicaid and self-pay. Claims are billed in dollars, and remittance
+postings, also in dollars, are keyed in the posting system's own format. A denial carries one of
+seven reason categories modelled on the X12 claim adjustment reason codes: eligibility or coverage,
+missing or invalid information, medical necessity, prior authorization, non-covered service,
+duplicate claim and timely filing. The two quarters are calendar Q2 (April to June) and Q3 (July to
+September) of 2026.
+
 ## 2. The principle behind every day
 
 Each teaching day opens on a business question in a stakeholder's words, trains the thinking an analyst uses to break that question down before any tool is touched, and only then teaches the technique that produces the answer. The technique exists because the question demands it. A day whose notebook runs but whose thinking is missing teaches code rather than analysis, and that is the failure the 10 September review named.

@@ -153,7 +153,7 @@ evaluation:
           columns: [Criterion, Marks, What full marks look like]
           criteria:
             - [The question translated, 8, "Dr Menon's words are mapped to the right Weeks 1 and 2 method, with the metric defined and the decision it feeds named."]
-            - [The data made trustworthy, 10, "The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and rupees reconcile across files."]
+            - [The data made trustworthy, 10, "The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and dollars reconcile across files."]
             - [The analysis, 10, "The tree, ladder or fair comparison reaches the branch that explains the symptom, on the right denominator, with a chance test where one is needed."]
             - [The claim, 6, "One sentence carries its number, denominator, period and caveat, plus an action Dr Menon can take."]
             - [Presentation and defence, 6, "The live demo runs cold, and every member answers a challenge on the caveat."]
@@ -329,10 +329,35 @@ decisions:
     closes: the requester, on 30 September 2026
     text: The programme prepares learners for four domains, and each enters on its story from a domain dossier the first day it appears, with its one-page card and the trainer's talk track. Retail and e-commerce enter on Week 1 Monday (Kalpa Retail; the dossier is content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md). US healthcare enters on Build 1 Monday (Kalpa Health, repositioned as a US-facing business, addendum health-us-facing). Financial services enter in Week 5, where the lending question arrives, and carry Build 2 (Kalpa Financial Services). SaaS and enterprise AI enter in Week 8, as the GCC building AI products, an enterprise brain among them, for Kalpa's units and for US clients. Connect and Logistics get their story when a build first enters them. In every domain, each chapter names a real company that faces the same question, as a likeness with every fact checked and dated, and Kalpa stays the case.
     blocks: nothing
+  - id: build1-us-data
+    status: closed
+    closes: the requester's repositioning of Kalpa Health, on 30 September 2026
+    text: Build 1's data moves to the US setting of client zero section 1c. data/generate_kalpa_health.py writes a synthetic pack of six US metro areas, patient service centres, commercial, Medicare, Medicaid and self-pay payers, claims billed in dollars, remittance postings keyed in the posting system's own format, and denials in seven reason categories modelled on the X12 claim adjustment reason codes; the two quarters are calendar Q2 and Q3 of 2026. Every planted trap keeps its logic and its counts, and the Build 1 mini project rubric reads "counts and dollars reconcile across files" where it read rupees.
+    blocks: nothing
   - id: chapter-standard
     status: closed
     closes: the requester, on 30 September 2026
     text: Every teaching day is rebuilt to the raised standard in .claude/skills/day-pack-builder/references/the-standard.md. The day runs in about six chapters, each one deck chapter paired with one notebook that builds on the one before it; each chapter states the problem and lays out two to four ways to answer it, sized, with the best-fit call and the fact that would change it, before any code, and closes by reaching the same answer a second way; at least a third of a day's exercise items are design items; and every pack runs a five-pass depth loop whose last two passes are fresh reviewers. Weeks 1 and 2 are rebuilt first, Week 1 all at once.
+    blocks: nothing
+  - id: question-ladder
+    status: closed
+    closes: the requester, on 30 September 2026
+    text: Every heading in a learner file is a plain, specific question the section answers, understandable on its own, with who needs the answer and the smaller questions on the way beneath it, and each section closes on its answer with its number; generic labels such as "Customer lifetime value, simply" are replaced. The day asks one question, each chapter asks the question the previous answer raised, and each chapter climbs through four to six smaller questions. On a slide the italic subtitle asks and the action title answers. The form is the question ladder in .claude/skills/day-pack-builder/references/the-standard.md.
+    blocks: nothing
+  - id: self-contained
+    status: closed
+    closes: the requester, on 30 September 2026
+    text: Every deck, notebook, exercise file, case brief, take-home and Saturday paper is understood with nothing else open. It states its scenario, explains its terms where they first appear, loads or prints the numbers it uses and restates what an earlier chapter found when it builds on it; a pointer to another file adds depth and is never needed to follow the page. Decks carry each chapter in full depth, in the notebook's rhythm.
+    blocks: nothing
+  - id: humanizer
+    status: closed
+    closes: the requester, on 30 September 2026
+    text: The humanizer skill (blader/humanizer at 225a6f3, MIT, in .claude/skills/humanizer) is imported, and every prose file in the programme passes its read in file mode as well as the tic scanner, so that no wording reads as a language model's.
+    blocks: nothing
+  - id: opus-max
+    status: closed
+    closes: the requester, on 30 September 2026
+    text: Every session on this project, and every agent a session starts, runs the latest Opus model at max effort; .claude/settings.json sets the model, the effort level and the subagent model, and every spawned session and agent is given the Opus model explicitly.
     blocks: nothing
   - id: rubrics-and-calendar
     status: open
