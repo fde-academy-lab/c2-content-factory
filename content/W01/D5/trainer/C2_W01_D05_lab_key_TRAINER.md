@@ -13,8 +13,10 @@ python3 data/generate_client_zero.py --version v3-lab --out content/W01/D5/data 
 
 ## What is planted, and what the room should find
 
-No learner file names any of this. The debrief shows each mechanism on invented numbers and reruns
-the real one live from the reference notebook.
+No learner file names any of these records. The debrief's three chapter notebooks
+(`notebooks/C2_W01_D05_01_reconciliation_skipped_STUDENT.ipynb`, `02_pass_that_looks_clean`,
+`03_headline_on_few_orders`) run on this export after the lab clock stops: they print the totals,
+the gaps and the tree, and leave every order id and raw value to an empty your-turn cell.
 
 | Planted | Where it sits | What a correct run does | If nobody finds it by the 65-minute mark |
 |---|---|---|---|

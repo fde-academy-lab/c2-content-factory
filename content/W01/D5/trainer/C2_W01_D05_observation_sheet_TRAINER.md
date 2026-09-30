@@ -3,7 +3,7 @@
 **TRAINER ONLY.** One sheet per TA, one line per learner in that TA's rows. The data is `v3-lab`,
 proposed for client zero v2.3. Nothing on this sheet is a score, nothing is shown to the room, and
 no tally of it goes on a wall or a screen. It sets each learner's first stretch or remedial task and
-tells the trainer which two breaks follow the reconciliation in the debrief.
+tells the trainer which reserve slides, if any, the debrief's three chapters make room for.
 
 ## How to observe
 
@@ -65,18 +65,24 @@ The wrong numbers a hurried run prints, so a TA recognises each without reading 
 
 ## Over lunch: the tally for the debrief
 
-Count, across your rows, the learners with each of these five breaks at the snapshot, and give the
-five counts to the trainer before the afternoon starts.
+The debrief runs all three chapters whatever the tally says: the reconciliation skipped before lunch,
+the pass that looks clean and the headline on too few orders after it. The tally decides where the
+trainer lingers and which reserve slide replaces a chapter's self-study slide. Count, across your rows,
+the learners with each break at the snapshot, and give the counts to the trainer before the afternoon
+starts.
 
-| Break | Count from | Debrief slides |
-|---|---|---|
-| The pass that looks clean | C2 or R2 | Chapter 2, S7 to S10 |
-| The headline on too few orders | D2 or N2 | Chapter 3, S11 to S13 |
-| The wrong unit | T1 | Reserve D14 |
-| The typical order | P3 or N4 | Reserve D15 |
-| The empty segment | C4 | Reserve D16 and D17 |
+| Break | Count from | Debrief slides | If the count is more than a quarter of the room |
+|---|---|---|---|
+| The reconciliation skipped | R1, R2 or R3 | Chapter 1, S1 to S11 | Already the longest chapter; read two second-look lines instead of one |
+| The pass that looks clean | C2 or R2 | Chapter 2, S12 to S20 | Run S17's options cell slowly, then two learners name their own log line |
+| The wrong branch | D3 | D10 | Run D10 live for two minutes at the end of chapter 1 |
+| The empty segment | C4 | D19 | Run D19 live for two minutes in place of S20 |
+| The headline on too few orders | D2 or N2 | Chapter 3, S21 to S31 | Run S26's options cell slowly |
+| The wrong unit | T1 | D29 | Run D29 for three minutes in place of S28 |
+| The typical order | P3 or N4 | D30 | Run D30 for three minutes in place of S27's call-out |
 
-The trainer runs the two with the highest counts. A tie goes to the pass that looks clean.
+Chapter 2 and chapter 3 hold ten minutes each; a reserve slide that runs takes its minutes from the
+chapter's own second-route slide, which stays in the notebook for self-study.
 
 ## After the day: the first stretch and remedial tasks
 

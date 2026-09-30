@@ -276,14 +276,10 @@ LIVE. Twenty minutes: the Kahoot, Saturday previewed, the crux lines, tonight's 
 
 ```mermaid
 flowchart LR
-    O["<b>the order</b><br/>of the pipeline"] --> D["<b>design</b><br/>which check first"]
-    D --> R["<b>what must</b><br/>reconcile"]
-    R --> M["<b>when</b><br/>the median"]
-    M --> P["<b>what a p-value</b><br/>is a share of"]
-    P --> X["<b>design</b><br/>no control total,<br/>one test to spend"]
+    O["<b>the method</b><br/>its order, what must reconcile,<br/>when the median, what a p-value is"] --> X["<b>two design calls</b><br/>which check first,<br/>no control total, one test to spend"]
     X --> T["<b>Thursday's return</b><br/>the discount"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    class T known
+    class X known
 ```
 
 ```notes

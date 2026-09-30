@@ -7,7 +7,9 @@ you will say it to her, because I will push the way Marketing will."
 Nothing new was taught. The morning found out which of the week's ideas you own, and the afternoon
 found out whether you can say them to someone who disagrees. These notes walk the method once more
 as a single worked case, name the places it breaks under a clock, and answer the day's interview
-questions in full. Every number in the worked case is invented for these notes.
+questions in full. The worked case uses invented numbers, so it reads the same before and after the
+lab; the three debrief chapters that follow it use this morning's lab export, whose notebooks open
+once the lab clock has stopped.
 
 ---
 
@@ -40,6 +42,10 @@ needs its denominator. Wednesday gave the profile, the decisions log and the rec
 gave the shuffle test and the four-part note. Friday put them in one order and took away every
 support. Week 2 runs the same method against a warehouse in SQL, so the order you practised today is
 the order you will type queries in on Monday.
+
+Kalpa Retail is the business every number this week belongs to. If a term in these notes (booked
+revenue, a segment, a control total) is not yet second nature, the retail and e-commerce dossier
+tells the business's story from the start: `content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md`.
 
 ---
 
@@ -196,6 +202,145 @@ Describe a file with its median and name what sits above it; keep the mean for w
 
 ---
 
+## The three places the room broke, as worked cases
+
+The debrief ran as three chapters, each paired with a notebook of the same number and title in
+`notebooks/`. Each one starts from a problem someone at Kalpa has, lays out the ways a team could
+answer it with their cost on this morning's file, makes the call, shows the plausible wrong number and
+the check that catches it, and reaches the same answer a second way. The numbers below are the lab
+export's.
+
+### Chapter 1. The reconciliation, skipped
+
+**The need.** Anand Iyer, the finance controller, does not act on a number that does not tie to his
+control totals, and Meera Raghavan acts on the note's first line. The metric is booked revenue per
+quarter and its change from Q1 to Q2. A wrong first line costs the direction of Monday's review: a
+fall read as growth means nobody investigates, while Marketing's Rs 12 crore request is judged against
+a quarter that did not happen.
+
+**Who else faces it.** Nykaa reports two true numbers for one quarter. For April to June 2025 its
+consolidated GMV was Rs 4,182 crore and its revenue from operations Rs 2,155 crore (FSN E-Commerce
+Ventures press release, 12 August 2025), so a figure quoted without saying which it is can be out by
+nearly half. In a public case from October 2020, Public Health England said 15,841 positive COVID-19
+cases from 25 September to 2 October were left out of the daily figures because files exceeded a size
+limit (UK government statement, 4 October 2020). No step raised an error; the rows were not there.
+
+**The options, sized on the lab export.** Each option is applied to the hurried pass most notes were
+built on, which kept rows as they arrived and set a value that would not convert to zero.
+
+| Option | Analyst minutes | Headline it sends | Points off the books |
+|---|---|---|---|
+| A. Trust the pass | 0 | +11.8% | 40.3 |
+| B. Count check: rows and orders against Finance's counts | 2 | -14.6% | 13.9 |
+| C. Counts and rupees against the control totals, with a bridge | 15 | -28.5% | 0.0 |
+| D. Every order matched to Finance's ledger | about 120 | -28.5% | 0.0 |
+
+The computer's share of every option is under a millisecond, so the choice is about minutes of
+thought. **The best-fit call is C:** it needs only the control file that came with the export and
+lands to the rupee. B is where most people who checked at all stopped, and it still leaves the
+headline 14 points off. D names every order that differs and costs a request to Finance and the
+afternoon. **What would change it:** no control total at all, or a bridge that will not close; then
+D, or a second export from the source system, is the check.
+
+**The trap.** The hurried run reports Q1 Rs 50,63,000 and Q2 Rs 56,60,890, **Q2 up 11.8 percent**,
+and the note says the top line needs no action. The check is the control file: Q1 matches Finance's
+98 orders and misses by rupees, and Q2 misses on both, 109 rows against 99 orders. With counts and
+rupees both on the books, Q2 fell 28.5 percent, from Rs 60,48,000 to Rs 43,25,480. The sign changed,
+so the decision changed.
+
+**The second route.** Start at each of Finance's totals, add back the rupees of the rows removed,
+subtract the value read back, and land on what the hurried run summed. Both routes give -28.5
+percent. Show Finance the forward bridge; run the walk back when a bridge closes suspiciously neatly,
+because two mistakes that cancel pass one route and fail the other.
+
+### Chapter 2. The pass that looks clean
+
+**The need.** Anand's analyst audits every note, and asks for the rupees before the rows. The metric
+is Q1 booked revenue, the base every Q1 to Q2 rate divides by. A base that is short by one large order
+halves the fall the note reports: nobody argues with the direction, so nobody acts at the right scale.
+
+**Who else faces it.** JPMorgan Chase's own task force, reviewing the 2012 "London Whale" losses, found
+a risk spreadsheet that "divided by their sum instead of their average", which "likely had the effect
+of muting volatility by a factor of two and of lowering the VaR" (the task force report of January
+2013, as quoted by The Baseline Scenario, 9 February 2013). The losses came to $6.2 billion (FCA, 19
+September 2013). The sheet never crashed; it produced a plausible number every day.
+
+**The trap.** A `try` that sets a failure to zero reports **Q1 Rs 50,63,000 on 98 orders, zero
+rejects**, and every order count lands on Finance's. The rupee check shows Q1 Rs 9,85,000 short, 16.3
+percent of the quarter, and the note reports Q2 down 14.6 percent where the books show 28.5.
+
+**The options for one value that will not convert.**
+
+| Option | Log lines | Count check | Rupee check | Headline |
+|---|---|---|---|---|
+| A. Zero in a try | 0 | passes | fails | -14.6% |
+| B. Drop with a reason | 1 | fails | fails | -14.6% |
+| C. Read it without guessing, convert, keep and flag | 1 | passes | passes | -28.5% |
+| D. Hold it and ask the order's owner | 1 | fails | fails | provisional |
+
+**The best-fit call is C** when the value can be read without guessing, as digits with an Indian
+ledger's grouping commas can. A is the one option that is never right: it sends the same wrong
+headline as B and hides it, while B at least fails the count check, so its gap is visible. **What
+would change it:** text that needs a guess (a word, a unit that could be lakh or crore) moves the call
+to D, and a row that is not an order at all, such as a test transaction, moves it to B.
+
+**The same shape one step later.** A filter on the segment name never sees a row whose segment is
+empty. On the lab export the named segments fall one Q2 order short of the quarter, and Retail-Plus
+reads -1.6 percent on its named rows (Rs 95,200 to Rs 93,670) where, with the order restored from its
+customer's other orders, it grew 1.5 percent (to Rs 96,600). The check is one line: the segments add
+back to the quarter in orders and in rupees.
+
+**The second route.** Account for every value from inside the file: values present (197) equal those
+that convert (196) plus those in the log (1), and the logged value equals the gap the rupee check
+found. The rupee check needs a total from outside and says how much is missing; the value accounting
+needs nothing outside and says where. On a file with no control total, it is the check you still
+have.
+
+### Chapter 3. The headline on too few orders
+
+**The need.** With both quarters on the books, the question becomes which right number leads the note.
+Meera acts on the first line, and Marketing attacks any rate that rests on a handful of orders. The
+metric is the Rs 17,22,520 fall split along the tree. A trend claimed from a few orders sends a team
+after a segment that did nothing, while the branch that moved waits a quarter.
+
+**Who else faces it.** IMDb will not rank a title in its Top 250 until it has at least 25,000 ratings
+from regular voters, and its weighted rating pulls a title with few votes toward the average of all
+titles (IMDb Help, ratings FAQ, updated 9 February 2026). In a public case, Howard Wainer showed small
+schools over-represented among both the best and the worst performers, because small samples vary
+more, after the Gates Foundation had given about $1.7 billion in education grants by 2001 with small
+schools central to them (Wainer, "The Most Dangerous Equation", in Picturing the Uncertain World,
+Princeton University Press, 2009).
+
+**The trap.** Business revenue fell **29.2 percent**, and it carries Rs 17,10,000 of the Rs 17,22,520
+fall, 99.3 percent of it. It is true to the rupee, and it rests on six orders in Q1 and four in Q2. If
+each of ten orders were equally likely to land in either quarter, a split at least as uneven as six
+and four would happen in 75.4 percent of worlds. The check is to count before you rate. The fix says
+it as counts, "two fewer corporate orders, six then four", with a question to the account owner about
+which two, which costs a phone call.
+
+**The options for choosing the lead.**
+
+| Option | Leads with | Orders behind it | Chance alone | Minutes |
+|---|---|---|---|---|
+| A. Biggest rupee move | Business -29.2% | 10 | 0.75, coin flips | 5 |
+| B. The total, unsplit | revenue -28.5% | 197 | not asked | 2 |
+| C. Count before rate | Retail-Core revenue per order -17.1% | 88 | 0.0195, shuffle | 15 |
+| D. Test every segment | the smallest of four p-values | 10 to 88 | 0.19 false alarm | 45 |
+
+**The best-fit call is C.** Retail-Core kept its 30 customers and their 1.47 orders each, and its
+revenue per order fell from Rs 2,050 to Rs 1,700. Shuffling the segment label across customers, 2,000
+times with `random.Random(7)`, produced a gap as large as the real -15.6 points only 39 times: p =
+0.0195, a share of chance-only worlds, never the chance the finding is wrong. D runs four tests at
+0.05, and the chance at least one looks real by luck is about 19 percent. **What would change it:** a
+question about accounts rather than rates, a segment with hundreds of orders a quarter, or a second
+quarter of the same move.
+
+**The second route.** Customer by customer: of the 30 Retail-Core customers who ordered in both
+quarters, 21 saw their own average order fall. The shuffle says the gap is bigger than chance; the
+count says it is broad, not carried by a few people.
+
+---
+
 ## The afternoon: defending the note
 
 A finding that cannot be said in two minutes to someone who disagrees has not been communicated. The
@@ -215,6 +360,33 @@ Offering the test turns the caveat into a plan with a size and a date. The two f
 side: folding drops the caveat to end the argument, and overclaiming calls the uncertainty a
 certainty in the other direction. The caveat said before anyone asks reads as control; the same
 caveat dragged out by a push reads as a retreat.
+
+---
+
+## The three design cases
+
+The afternoon's timed round asked the design question three times, each set at Kalpa and each with a
+real company as its likeness: which approach fits, sized how, and what would make you switch.
+
+| Case | The approaches on the table | The call, sized | The switch |
+|---|---|---|---|
+| Meera's first read, two hours after the export lands | Sum and chart (10 minutes); the whole method (120); profile, clean, reconcile and decompose, marked provisional (90); wait for Finance's close (days) | The 90-minute plan, with the reconciliation never dropped | No control total: say so in the first line; a segment gap Meera will act on: add the test and cut the tree to that gap |
+| Zero rejects and a Rs 20 lakh gap after the migration | Ids against rows (a cell); the value accounting (a cell); a rupee bridge by month (about 30 minutes); every order against the ledger (a day) | The two cheap checks first, then the bridge, and stop where it closes | A month the bridge cannot close gets matched order by order |
+| 42 percent on twelve visits | Ship now; wait at 12 visits a week (about 25 weeks); a half-and-half split to about 300 visits each (about half a week); one visit in ten for a fortnight (about 240 visits) | The split, about half a week | A checkout that could lose money: a smaller share for longer; a dozen visits a week: decide on cost and reversibility |
+
+The likenesses. DMart (Avenue Supermarts) put out its July to September 2025 standalone revenue, Rs
+16,218.79 crore across 432 stores, as a provisional business update on 3 October 2025, days before its
+board approved the results. TSB's April 2018 migration to a new platform left 1.9 million customers
+unable to view their accounts, by the independent review's count, and in December 2022 the FCA and PRA
+fined it £48.65 million in total. At Bing, a headline change that had waited more than six months
+lifted revenue 12 percent when tested, worth more than $100 million a year in the US, and tripped a
+"too good to be true" alert before the analysis confirmed it (Kohavi and Thomke, Harvard Business
+Review, September to October 2017).
+
+The sizing in case 3 comes from the standard formula for comparing two proportions: to tell 42 percent
+from 31 with a 5 percent false-alarm rate and an 80 percent chance of seeing a real difference, each
+checkout needs about 300 visits. And 5 conversions in 12 visits would still turn up in about 3 weeks of
+10 if the new checkout were really no better than 31 percent.
 
 ---
 
@@ -248,6 +420,14 @@ I restate the claim with its denominator, so the room hears what the number rest
 what the data does show and what it cannot show yet. Then I offer the test that would settle it, with
 its size and how long it takes. I do not drop the caveat to end the argument, and I do not swing to
 calling the result noise when all I know is that it is uncertain.
+
+**The design question: which check, which lead, which test, sized how, and what would make you
+switch?** I name the two to four ways a team could answer it, and size each on the data in front of me:
+the minutes, the rows it touches and the error it leaves. On this week's lab export that meant a count
+check that took two minutes and left the headline 14 points off, against a counts-and-rupees check that
+took fifteen and landed on the books. I choose the cheapest option that lands on the reference, and I
+name the fact that would move me to the next one, such as no control total, a bridge that will not
+close, or a segment with too few orders to rate.
 
 ---
 
@@ -293,6 +473,10 @@ growth review hears the note you defended today.
 | Shuffle test | Re-labelling at random many times to see how often chance alone produces the gap |
 | p-value | The share of chance-only worlds with a gap at least as large as the real one |
 | Caveat | The fact that would change the claim, said before anyone finds it |
+| Best-fit call | The option chosen from two to four sized ones, with the fact that would change it |
+| Second route | The same number reached another way, so a wrong decision in the first route shows up as a disagreement |
+| Value accounting | Every value present is either summed as it came or logged with the number it was read as |
+| Provisional figure | A number sent before the books close, said as provisional, with what it was checked against |
 
 ---
 
