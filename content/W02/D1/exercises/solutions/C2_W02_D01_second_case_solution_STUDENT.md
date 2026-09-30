@@ -77,9 +77,10 @@ customer's segment, with the three consumer segments under one label.
 
 - a, "The customer's own segment name, four labels in each channel": keeps the four segments apart,
   so each channel has four kinds where the question asks for two.
-- c, "Business where the order is worth more than Rs 1,00,000, and consumer where it is not": labels
-  by order size. On this book it happens to agree, since all 188 Business orders are over a lakh and no
-  consumer order passes Rs 4,500, and it stops agreeing the day a corporate buyer places a small order.
+- c, "Business where the order is worth more than Rs 5,00,000, and consumer where it is not": labels
+  by order size, and a round threshold picked by eye. On this book it calls 50 of the 188 Business
+  orders consumer ones, every Business order from Rs 2,09,000 to Rs 5,00,000, so each channel's consumer
+  line swells with corporate rupees. The segment is the definition Anand's sheet already uses.
 - d, "A filter that drops the Business customers' orders before anything is grouped": removes
   Business, so the split the step asks for is lost.
 

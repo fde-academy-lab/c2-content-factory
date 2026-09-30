@@ -99,7 +99,7 @@ orders the way Anand's segments do?
 
 a) The customer's own segment name, four labels in each channel
 b) Business where the customer's segment is Business, consumer for the other three
-c) Business where the order is worth more than Rs 1,00,000, and consumer where it is not
+c) Business where the order is worth more than Rs 5,00,000, and consumer where it is not
 d) A filter that drops the Business customers' orders before anything is grouped
 
 ## Step 3. How did each channel's consumers move, branch by branch?
