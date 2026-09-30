@@ -45,7 +45,7 @@ flowchart LR
 
 ```notes
 LIVE, 8 minutes. Part 1 of the talk track. Tell the Saturday from the shelf check to the Monday
-page, and follow the Retail-Plus member's basket: Rs 2,000 of goods, a Rs 200 member discount,
+page, and follow the Retail-Plus member's basket: Rs 2,000 of goods, Rs 200 off in a promotion,
 Rs 1,800 paid with a card held as a token; the bedsheet comes back next week. The app's 2,000
 orders average Rs 1,500.
 Ask: think of the last thing you bought in a shop and on an app; which one knew more about you?
@@ -123,7 +123,6 @@ the costs that do not change with one more order. Real retailers keep a thin sli
 profit after tax of 4.8 percent of revenue for FY26.
 Add the marketplace sentence: a marketplace books only its fees as revenue, and foreign-owned
 multi-brand e-commerce selling to Indian consumers runs that way under Press Note 2 of 2018.
-Draw Rs 100's journey top to bottom, six boxes, each deduction on its arrow.
 Transition: who asks the data team for what.
 ```
 
@@ -357,7 +356,7 @@ Transition: build B.
 flowchart LR
     B["<b>booked</b><br/>every order"] -->|"less cancelled"| N["<b>not cancelled</b><br/>left the shelf"]
     N -->|"less returned"| D["<b>delivered</b><br/>kept"]
-    D -.-> X["<b>after discounts</b><br/>not in file"]
+    D -.-> X["<b>after discounts</b><br/>a fifth, not in file"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
     class B,N,D known
@@ -406,9 +405,9 @@ Transition: run it.
 
 ```mermaid
 xychart-beta
-    title "Sales by reading, 1 July to 26 September"
+    title "Sales by reading; the axis starts at Rs 5 lakh"
     x-axis ["booked, 30", "not cancelled, 26", "delivered, 21"]
-    y-axis "Rs thousand" 0 --> 600
+    y-axis "Rs thousand" 500 --> 550
     bar [544.81, 535.76, 520.79]
 ```
 
@@ -599,7 +598,7 @@ Transition: which tree this file can fill.
 **The rule.** B is the best fit: the deepest tree this file fills, with marketing's branch beside the two it competes with. Order lines with items and prices would move the call to C.
 
 ```notes
-LIVE, 6 minutes. The sizing here is in fields, not seconds: the file's seven fields fill A and B.
+LIVE, 6 minutes. The sizing here counts fields: the file's seven fields fill A and B.
 Ask what data would let us draw C; the order-items table arrives later in the programme.
 Transition: build B's first branch.
 ```
@@ -1007,6 +1006,7 @@ value: 8.2 | label: mean over median | note: one order does it
 ```notes
 LIVE, 5 minutes. Write Rs 2,205 on the board tree beside the pencilled Rs 18,160. The median runs
 Rs 2,205 booked, Rs 2,100 not cancelled, Rs 2,060 delivered; the mean runs Rs 18,160 to Rs 24,800.
+Notebook 04 step 2 builds option C on Kalpa's own orders: a trimmed mean of Rs 2,300.
 Transition: the number marketing sent first.
 ```
 

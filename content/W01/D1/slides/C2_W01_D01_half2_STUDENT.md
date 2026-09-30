@@ -290,7 +290,7 @@ Transition: a colleague tightens the draft for the slide.
 ## S13. Question: how many of the 16 are lost?
 *One quarter of orders, and a number that reads like churn.*
 
-**Question.** What share of Kalpa's customers can you call lost: a) about 70 percent, 16 of 23; b) 30 percent, the ones who came back; c) none yet from this file; some are too recent; d) all the one-time buyers?
+**Question.** Of the 16 who bought once, how many can you call lost from this file: a) all 16, which is 70 percent of 23 customers; b) 9, the ones who bought most recently; c) at most 7, the ones past the usual gap; d) none, since 7 customers did come back?
 
 ```mermaid
 flowchart LR
@@ -708,7 +708,7 @@ LIVE, 15 minutes: the Kahoot 9, the six lines 3, Tuesday's question 3.
 *The Kahoot is ungraded, and it shows which traps the room still falls for.*
 
 ```stats
-value: 8 | label: items | note: one per chapter, two on tree and discount
+value: 8 | label: items | note: one per chapter, the tree, a second on customers
 value: 0 | label: scores recorded | note: ungraded, every day
 value: 1 | label: return question | note: from today, in Tuesday's Kahoot
 ```

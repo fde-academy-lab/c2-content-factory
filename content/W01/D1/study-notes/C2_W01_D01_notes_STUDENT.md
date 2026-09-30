@@ -119,7 +119,8 @@ Finance decides which of the three totals goes in the note, and the bridge expla
 **The build.** The first sum stops with `TypeError: unsupported operand type(s) for +=: 'int' and
 'str'`, because one amount is stored as text. That gets two minutes: print the record, wrap the
 amount in `int()`, move on. One loop then keeps three sums. Booked is Rs 5,44,810 on 30 orders, not
-cancelled is Rs 5,35,760 on 26, and delivered is Rs 5,20,790 on 21.
+cancelled is Rs 5,35,760 on 26, and delivered is Rs 5,20,790 on 21. The order count, 30, is the fourth reading, and a
+fifth, sales after discounts, cannot be computed because the file has no discount field.
 
 **The trap.** "Sales this quarter: Rs 5,44,810 on 30 orders." It is correct arithmetic, and 4
 cancelled orders ride inside it. They are demand that never arrived, and all 4 are store orders, so

@@ -39,7 +39,7 @@ second route (3 to 5), and Kavya's review with the interview question (2 to 3).
 
 | Part | Slides | Beside it | What must land | If short of time |
 |---|---|---|---|---|
-| The retail story, 45 | Morning deck, cover and section 00, S1 to S6 | `trainer/C2_W01_D01_domain_story_TRAINER.md`; board drawings 1 to 6; notebook 00 for self-study | How Rs 100 of GMV becomes Rs 2.50 of profit, who asks for what, and the metric tree with its three denominator traps | Part 4 to its drawing, then part 6 to its question |
+| The retail story, 45 | Morning deck, cover and section 00, S1 to S6 | `trainer/C2_W01_D01_domain_story_TRAINER.md`; board drawings 1 to 6; notebook 00 for self-study | How Rs 100 of GMV becomes Rs 2.50 of EBITDA, who asks for what, and the metric tree with its three denominator traps | Part 4 to its drawing, then part 6 to its question |
 | Meera's ask, 5 | S7 and S8 | The metric tree already on the board | Four questions pulled out of one message, each with the chapter that answers it | Nothing |
 | Chapter 1: four readings of sales, 30 | Section 01, S9 to S19 | Notebook 01; `unguided/C2_W01_D01_ch1_four_readings_STUDENT.md` | Reliance's two totals; four options sized; the TypeError in two minutes, handled from S13's notes; Rs 5,44,810 against Rs 5,35,760; the bridge; the second route agreeing | The second route to its assertion |
 | Chapter 2: the tree as metrics, 30 | Section 02, S20 to S28 | Notebook 02; `unguided/C2_W01_D01_ch2_tree_metrics_STUDENT.md` | Jio's tree; which tree the file fills; AOV Rs 18,160; the mixed AOV of Rs 25,943 caught by multiplying back | The second route |
