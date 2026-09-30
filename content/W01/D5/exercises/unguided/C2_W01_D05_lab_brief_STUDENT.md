@@ -9,13 +9,15 @@ assistant and no notes."
 Meera Raghavan, Kalpa Retail's CEO, decides on Monday where the next quarter's effort goes, with
 Marketing's Rs 12 crore request to win new customers on the table. Anand Iyer, the finance
 controller, reads every number before she does, and his rule has not changed since Wednesday:
-"Until your numbers match ours, Finance will not act on a drop measured from an ERP export."
+"Until your numbers match ours, Finance will not act on a drop measured from an ERP export." An ERP
+export is a file pulled from Kalpa's ERP, the enterprise system where its orders and its books are
+recorded.
 
 | | |
 |---|---|
-| **The metric at stake** | Booked revenue per quarter, its change from Q1 to Q2, and the branch of the revenue tree (customers, orders per customer, revenue per order) that moved it, segment by segment |
+| **The metric at stake** | Booked revenue per quarter, the rupees of the orders recorded as sales in that quarter; its change from Q1 to Q2; and the branch of the revenue tree (customers, orders per customer, revenue per order) that moved it, segment by segment |
 | **Who asks** | Meera, who acts on the note's first line; Anand, who checks that line against his control totals first; Marketing, who will attack any rate that rests on too little |
-| **What a wrong number costs** | A first line with the wrong sign sends Monday's review home with nothing to investigate. A fall at half its size gets half the attention. A rate on a handful of orders sends a team after a segment that did nothing, and the first time Marketing asks "on how many orders?", the whole note loses the room. |
+| **What a wrong number costs** | A first line that does not tie to Anand's books is sent back; a misread branch sends Monday's effort to the wrong team; a rate on too few orders loses the room at Marketing's first question. |
 
 ## Kavya's question for the lab
 
@@ -34,8 +36,8 @@ to Meera."
 ## The rules
 
 - No assistant of any kind: no chat model, no code completion that writes code, no search for code.
-- Notes closed: no earlier notebook, deck, cheat sheet or study note open on any screen. Python's
-  own `help()` is allowed.
+- Notes closed: no other notebook in `notebooks/` open, and no deck, cheat sheet or study note open
+  on any screen. Python's own `help()` is allowed.
 - 120 minutes on the clock, one pass. Save as you go. Your output folder is copied at the
   120-minute mark, and that copy is what is observed.
 - A TA records, at intervals, the step each person is on. Nothing is scored, nothing is ranked and

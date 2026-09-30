@@ -38,7 +38,7 @@ flowchart LR
     class MK bad
 ```
 
-**The client asks.** Which branch of the revenue tree moved booked revenue from Q1 to Q2, in which segment, and does the number tie to Anand's control totals? A first line with the wrong sign sends Monday's review home with nothing to investigate, while Marketing's Rs 12 crore request waits on the answer.
+**The client asks.** Which branch of the revenue tree moved booked revenue from Q1 to Q2, in which segment, and does the number tie to Anand's control totals? A first line that does not tie to his books is sent back, and a misread branch sends Monday's effort to the wrong team, while Marketing's Rs 12 crore request waits on the answer.
 
 ```notes
 LIVE, 2 minutes. Say the metric, who asks and what a wrong number costs, then the four questions on
@@ -68,8 +68,8 @@ Each step answers a question the next one depends on: whether the file is what i
 
 ```notes
 LIVE, 2 minutes. Walk the six boxes left to right once, naming the day each came from. Then stop
-talking about the method. This picture stays on the second screen, if there is one, for the whole
-lab.
+talking about the method. During the lab only S7, the step names and their minutes, stays on the
+projector.
 ```
 
 ---
@@ -98,8 +98,8 @@ value: 0 | label: numbers quoted | note: until the profile is read
 **Kavya's review.** A profile costs ten minutes and tells you which of the next ninety you will spend on repairs. Skipping it moves the repairs to Monday, in front of Marketing.
 
 ```notes
-LIVE, 1 minute. The answer is b. Option d is closed by the rules anyway: no other day's notebook is
-open today, and the reason is that code written for Wednesday's file assumes Wednesday's defects.
+LIVE, 1 minute. The answer is b. Option d is closed by the rules anyway: no other notebook is open
+today, and the reason is that code written for Wednesday's file assumes Wednesday's defects.
 ```
 
 ---
@@ -109,7 +109,7 @@ open today, and the reason is that code written for Wednesday's file assumes Wed
 
 ```cards
 icon: bot-off | eyebrow: Rule 1 | title: No assistant | body: No chat model, no autocomplete that writes code, no search for code.
-icon: book-x | eyebrow: Rule 2 | title: Notes closed | body: No earlier notebook, deck or cheat sheet open on any screen.
+icon: book-x | eyebrow: Rule 2 | title: Notes closed | body: No other notebook in notebooks/, and no deck or cheat sheet, open on any screen.
 icon: timer | eyebrow: Rule 3 | title: 120 minutes | body: The clock runs once; save as you go and hand in what you have.
 icon: eye | eyebrow: Rule 4 | title: Observed, with no score | body: A TA notes where each person is at each mark; nothing goes on a wall.
 ```
@@ -159,12 +159,12 @@ nothing on the projector until the 120-minute mark.
 *The minutes are a pace; the order of the steps is fixed.*
 
 ```timeline
-label: 0 to 20 | title: Profile | body: Three counts per field, and every mismatch written down.
-label: 20 to 50 | title: Clean | body: Drop, default, or keep and flag, each with a reason in the log.
-label: 50 to 65 | title: Reconcile | body: Counts and rupees, against Finance's control totals.
-label: 65 to 90 | title: Decompose | body: The tree, Q1 against Q2, segment by segment.
-label: 90 to 105 | title: Test | body: One shuffle, 2,000 times, on the gap that matters.
-label: 105 to 120 | title: Note | body: Claim, evidence, caveat, action.
+label: 0 to 20 | title: Profile
+label: 20 to 50 | title: Clean
+label: 50 to 65 | title: Reconcile
+label: 65 to 90 | title: Decompose
+label: 90 to 105 | title: Test
+label: 105 to 120 | title: Note
 ```
 
 ```notes
@@ -213,7 +213,8 @@ value: 0 | label: assistants | note: the file is new to every model too
 **Kavya's review.** The step you skipped when the clock ran is the step you do not own yet. Knowing which one it is, this week, costs nothing.
 
 ```notes
-LIVE, 1 minute, then the ten-minute break. The first place the room broke, the reconciliation, runs for
+LIVE, 1 minute, then the ten-minute break. The debrief's first chapter, the reconciliation, runs for
 twenty minutes after the break and closes the morning. Over lunch the TAs total the observation
-sheets by step, and that tally decides which two breaks open the afternoon.
+sheets by step; all three chapters run whatever the tally says, and it decides where the trainer
+lingers and which reserve slide replaces a self-study slide.
 ```
