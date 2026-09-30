@@ -163,6 +163,34 @@ each chapter opener's own numeral (see decision 1).
     segments. The Typical tab's verdict no longer prices a first order at the median, and the
     builder's docstring now gives its fix as the median cell, B7.
 
+17. **Chapter 1 closes on named totals, with booked at the tree's root.** Every total goes to Meera
+    with its name and the bridge between the readings; booked, Rs 5,44,810 on 30 orders, heads the
+    tree for chapters 2 to 6, since they build on the same 30 orders; and which total the plan uses is
+    Meera's call with Finance. The fix slide's model sentence, net of cancellations, stays as the
+    example of a named total. The v3 review found the morning close and the afternoon's six-traps
+    table naming Rs 5,35,760 as the tree's root, against notebook 01 and the notes, and both now
+    follow the notebook.
+
+18. **The simulator leaves every customer leaf off the booked definition to the learner.** Decision
+    15 keeps the escalated case's answers out of the morning, and the simulator is on the projector
+    from chapter 4. On the not-cancelled and delivered definitions it now shows sales, orders and the
+    mean, and leaves the customers, those who came back, the orders each and the median as the
+    learner's to count, the way chapters 3 and 4 counted the booked orders; its escalated-case step
+    states what the case asks and prints no answer. The chapter 4 solution and the revenue-tree sheet
+    no longer print the delivered median, and the day sheet names the sheet's hand-out, with the
+    domain card once the cases are done.
+
+19. **Chapter 6's caveat rests on the window's edge.** The caveat once also said the 45-day gap
+    rested on 7 customers, too few to call a pattern, which teaches Thursday's trap of a headline
+    rate on a small base. It now rests on the window alone: an 88-day window cannot see a return
+    slower than 88 days, so 45 days is a floor, and a second quarter shows which of the 9 recent
+    buyers came back. Chapter 6's Q5 asks what shrinks that caveat, with the same key letter.
+
+20. **A rule before every section heading stays.** The v3 review read the horizontal rule before each
+    H2 in twenty files as the humanizer's decorative-rule pattern. The merged Week 1 Tuesday and
+    Friday packs carry the same rule before every section of their notes and sets, so the pack keeps
+    the house layout, and a change belongs to the shared standard rather than to one day.
+
 ## Invented, and recorded as invented
 
 1. Kalpa Retail sells to consumers and to businesses: consumer orders sit in the locked Rs 800 to
@@ -240,3 +268,4 @@ diagram and not by the mermaid-cli version, so it was cleared before the rebuild
 | 5. Pedagogy and language, fourth run | The same question, asked by a fresh reviewer after the third run's fixes and the dossier merge. | PASS, with nine points: the afternoon S13 key was the longest option and its stem asked a share while the title asked a count; S12 named a fourth reading the chapter never used; the Kahoot stat miscounted its extra items; S14's bars started at zero, so a 4 percent gap was invisible; S1's notes said member discount where the talk track says promotion; S3's notes gave the drawing instruction twice; the day sheet said profit for EBITDA; one antithesis line in the chapter 2 notes; notebook 04's trimmed-mean step had no pointer from the deck. | S13 asks how many of the 16 can be called lost, with the key "at most 7, the ones past the usual gap" shorter than two distractors. S12's dashed node reads "a fifth, not in file", and the notes name the order count as the fourth reading. The Kahoot stat, S1's notes, S3's notes, the day sheet and the chapter 2 notes were corrected. S14's axis starts at Rs 5 lakh and its title says so. S41's notes point to notebook 04 step 2. |
 | v3 recheck, merge and rebuild, 30 September | Does the pack still build on `main`'s tools after `main` moved again? | `main`'s deck-builder fix passes each chapter's own number to the cover, which the day-folder wrapper's cover override did not accept. | The wrapper passes the numbers through; both covers list 00 to 04 and 05, 06, A to E, checked on the render. The card, the revenue-tree sheet and both decks were rebuilt on mermaid-cli 11.17.0 with the exact card command, one page. |
 | v3 humanizer read | Which of the humanizer's patterns survive in the prose of every STUDENT and TRAINER file and in the notebooks' markdown? | The word-level tells were already gone (no dashes, curly quotes or listed AI words; the tic scanner clean on all 38 markdown files). What remained was structural: 108 edits across 15 files, mostly phrases with no verb under **Who needs the answer.**, closers restating their paragraph or slide, staged run-ups before a colon, short sayings and sentences about the page. Two agents read the pack in file mode, one on the notes, dossier, talk track, day sheet, board work, sheets, pre-read, Kahoot, take-home, extras, solutions and simulator, one on the decks, the exercise files and the notebook script; neither touched a number, key, option, quote, heading, code or fence. | Rewritten in place; the notebooks were re-executed cold from the script and the decks rebuilt. Chapter 6's "five notebooks" in notebook 06 against "six" in the deck's notes now reads "the day's notebooks" in both. Each deck chapter opener's notes now point to its dossier section, as the notebooks already did, since the morning deck named the dossier nowhere. The provenance's chapter 5 trap row now reads the consumer view's Rs 77,772 against Rs 78,420, as every learner file does. |
+| v3 review, first run | Does every heading pass the headings-only read, does each file stand on its own, does every slide render cleanly, which humanizer patterns remain, and do the hard rules hold? | FAIL on all five. Headings: eight notes headings and three deck subtitles named no object, the afternoon's map and close subtitles repeated, five afternoon section names were labels or had no noun, "the answer" had no referent in the escalated case's question, "middle" came before its definition, nine solution headings never named their pattern, and the notes' nine non-chapter sections and the two case maps lacked the ladder paragraphs. Standing alone: the escalated and chapter 2 solutions and the second case's opening cell relied on terms and findings they never stated. Slides: four morning closes printed their tables small, one strip ran into the footer, a tree drew a child under the wrong parent, S21's boxes spelled the key, three two-series charts had no legend, S6's title counted six people over four rows, S37 was cropped, three card sets printed small, and two titles or labels missed. Humanizer: rules before every H2, about forty unsourced "every retailer" work lines, sentences about the page, triads and closers, bold by rule, one staged "tempting", clipped negative tails, curly quotes and one "actually". Hard rules: chapter 1's root total disagreed between deck and notebook; "a fifth status"; four notebook pointers promised output the notebooks do not print; the simulator and the revenue-tree sheet printed the escalated case's delivered answers; chapter 6's caveat taught the small-base point; three day-sheet slide references were stale. | Every finding fixed, with decisions 17 to 20 recording the four rulings; the rules before H2 stay as house layout (decision 20). The closes became numbered lists at 11 pt, as the afternoon's; every solution file opens on its case, terms and findings; the work lines name who at Kalpa uses each skill or a dated source already in the pack; the afternoon sections are named *Does the branch survive*, *Which numbers hold up*, *Where does revenue come from*, *Can you answer the interviewer* and *What does Meera hear*. Decks rebuilt and rendered on mermaid-cli 11.17.0, notebooks re-executed cold, both sheets one page, and the full verify, companion and sync checks pass. |
