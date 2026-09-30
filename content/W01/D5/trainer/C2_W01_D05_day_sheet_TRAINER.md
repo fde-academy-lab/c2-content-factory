@@ -99,7 +99,10 @@ flowchart LR
 
 The debrief deck and the three chapter notebooks show every trap on an invented export, labelled
 invented, so no learner file names what this morning's file holds. Say this morning's numbers aloud at
-the slide and type them live in the notebook's empty your-turn cell; never put them on a slide.
+the slide and type them live in the notebook's empty your-turn cell; they stay off the slides. One
+coincidence to expect: the invented export's one-way share in notebook 3 and the notes, 0.0015,
+happens to equal this morning's revenue-per-customer route in the lab key, and the two are
+unrelated.
 
 | Slide | On the slide, invented | This morning's number, said aloud | Where the room sees it printed |
 |---|---|---|---|

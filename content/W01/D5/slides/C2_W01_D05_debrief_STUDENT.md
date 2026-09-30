@@ -973,5 +973,5 @@ label: Saturday | title: The paper | body: The note's four parts and the p-value
 
 ```notes
 LIVE, half a minute. Close the debrief. The TAs tell each person their marked step privately during
-the rehearsal, never aloud to the room.
+the rehearsal, one learner at a time.
 ```

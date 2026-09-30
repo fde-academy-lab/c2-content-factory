@@ -155,7 +155,7 @@ Thomke, "The Surprising Power of Online Experiments", Harvard Business Review, S
 article says the result tripped an alert and analysis confirmed it; it does not say the test was re-run,
 so the model answer says "checked" and avoids "re-run".
 
-**The arithmetic, for a TA asked, never for the room.** The given size comes from statistical power:
+**The arithmetic, for a TA who is asked; the room hears only the size.** The given size comes from statistical power:
 to tell 42 percent from 31 at the conventional 5 percent false-alarm rate with an 80 percent chance of
 seeing a real difference, an equal split needs n = (1.96 x sqrt(2 x 0.365 x 0.635) + 0.8416 x
 sqrt(0.31 x 0.69 + 0.42 x 0.58))² / 0.11² = 299.5 visits per checkout. For an unequal split the power
