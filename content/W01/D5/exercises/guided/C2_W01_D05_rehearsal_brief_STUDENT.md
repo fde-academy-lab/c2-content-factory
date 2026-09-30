@@ -13,10 +13,10 @@ note that goes to Monday's growth review.
 
 | Part | Minutes | What happens |
 |---|---|---|
-| The brief and set up | 6 | Monday's room, the note's shape, the pushes and the card; then find a partner. |
-| Pair one, first defence | 12 | Two minutes of the note read aloud; six of pushes and answers; four for the partner to fill the feedback card and hand it over. |
-| Pair one, swap | 12 | The same, with the roles reversed. |
-| Pair two, new partner | 20 | Both defences again, ten minutes each (two to read, five of pushes, three for the card), with a new partner using the harder pushes below. |
+| The brief and the modelled push | 12 | Monday's room, the note's shape, the pushes and the card; Marketing's sharpest push, below, answered once aloud with a TA reading Marketing's lines; then find a partner. |
+| Pair one, first defence | 10 | Two minutes of the note read aloud; five of pushes and answers; three for the partner to fill the feedback card and hand it over. |
+| Pair one, swap | 10 | The same, with the roles reversed. |
+| Pair two, new partner | 18 | Both defences again, nine minutes each (two to read, four of pushes, three for the card), with a new partner using the harder pushes below. |
 
 ## Round two: to the whole room (50 minutes)
 
@@ -31,7 +31,6 @@ Ask these as they are written or in your own words.
 
 ### For pair one
 
-- "Revenue went up 6 percent after the monsoon sale. What more proof do you want?"
 - "We asked for Rs 12 crore to bring in new customers. Where does your note say we do not need them?"
 - "Student is up 40 percent. Why are you telling Meera not to move budget there?"
 - "You removed rows from Finance's data. Whose rows, and who said you could?"
@@ -66,9 +65,9 @@ were Retail-Plus members, who spend more in any month, against 40 percent of the
 | Retail-Core | Rs 1,940 (30 customers) | Rs 2,000 (60 customers) | 3.0 percent less with the sale |
 | Blended | Rs 3,395 (60) | Rs 3,200 (100) | 6.1 percent more, because of the mix |
 
-**The answer the evidence supports.** "The 6.1 percent is real arithmetic on a mix: the average rose only because more high spenders got the sale. The sale went
-mostly to members who spend more anyway, and inside each segment the customers who got it spent 3.0
-percent less than the ones who did not: Rs 4,850 against Rs 5,000, and Rs 1,940 against Rs 2,000. At
+**The answer the evidence supports.** "The 6.1 percent is real arithmetic on a mix: the average rose only because more high spenders got the sale. Half the
+customers who got it were members who spend more anyway, and inside each segment the customers who
+got it spent 3.0 percent less than the ones who did not: Rs 4,850 against Rs 5,000, and Rs 1,940 against Rs 2,000. At
 15 percent off, the sale needed 17.6 percent more volume just to stand still, so as it was designed it
 did not pay. Run Diwali with a random slice of each
 segment held back, agreed in advance, so the next time we say a sale worked, the number holds up in

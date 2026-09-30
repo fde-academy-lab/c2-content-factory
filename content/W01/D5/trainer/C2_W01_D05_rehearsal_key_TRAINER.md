@@ -1,7 +1,8 @@
 # The rehearsal: a model answer for every Marketing push
 
-**TRAINER ONLY.** The twelve pushes are the ones in
-`exercises/guided/C2_W01_D05_rehearsal_brief_STUDENT.md`, in its order. Each answer is what a strong
+**TRAINER ONLY.** The eleven pushes on the pair lists are the ones in
+`exercises/guided/C2_W01_D05_rehearsal_brief_STUDENT.md`, in its order, and the sharpest push is
+modelled once before round one. Each answer is what a strong
 defender says in one breath, with its number and the denominator the number stands on, followed by
 what to say if Marketing pushes a second time. Every number comes from Thursday's note and its
 sources: `content/W01/D4/trainer/C2_W01_D04_day_sheet_TRAINER.md` (the day's numbers and the traps)
@@ -33,17 +34,20 @@ flowchart LR
 
 ## The sharpest push, modelled before round one
 
-The brief now carries Marketing's sharpest push, the monsoon sale's Rs 3,395 against Rs 3,200, with
-the segment table and the answer the evidence supports, worked in full. Model it once, aloud, in the
-brief-and-set-up minutes of round one, with a TA reading Marketing's lines; then take it off the pair
-lists, so every pair practises on pushes they have not seen answered. If Marketing pushes again after
-the answer ("so the sale lost money?"), the reply is in the pair-one table below.
+The brief carries Marketing's sharpest push, the monsoon sale's Rs 3,395 against Rs 3,200, with the
+segment table and the answer the evidence supports, worked in full. Model it once, aloud, in the four
+minutes after S6, with a TA reading Marketing's lines. It is on neither pair list, so every pair
+practises on pushes they have not seen answered.
+
+| If Marketing pushes again | The reply |
+|---|---|
+| "So the sale lost money?" | "At 15 percent off it needed 17.6 percent more volume to stand still, and inside each segment spend went down, so as designed it did not pay. Diwali with a random held-back slice in each segment tells us whether a different design does." |
+| "Half of them were members anyway. So what?" | "So the blend compares members with non-members. Inside Retail-Plus the 30 who got the sale spent Rs 4,850 against Rs 5,000 for the 40 who did not, and inside Retail-Core Rs 1,940 against Rs 2,000: 3.0 percent less in both." |
 
 ## For pair one
 
 | The push | The answer in one breath | If Marketing pushes again |
 |---|---|---|
-| "Revenue went up 6 percent after the monsoon sale. What more proof do you want?" | "The 6.1 percent is real arithmetic on a mix: the sale went to 30 Retail-Plus and 30 Retail-Core customers, and inside each segment the exposed spent 3.0 percent less than the unexposed, Rs 4,850 against Rs 5,000 and Rs 1,940 against Rs 2,000." | "So the sale lost money?" "At 15 percent off it needed 17.6 percent more volume to stand still, and inside each segment spend went down, so as designed it did not pay. Diwali with a random held-back slice in each segment tells us whether a different design does." |
 | "We asked for Rs 12 crore to bring in new customers. Where does your note say we do not need them?" | "It says nothing about acquisition. The Retail-Plus fall is the same 22 members spending Rs 1,110 less each, so new customers would not repair it; that fall is Rs 24,420 a quarter and the acquisition case has to be made on its own numbers." | "So you are against the request?" "I have not measured it. Give me customer counts per segment for the last four quarters and I will size the customers branch the way I sized this one." |
 | "Student is up 40 percent. Why are you telling Meera not to move budget there?" | "The 40 percent is 5 orders becoming 7, from 2 customers, and coin flips produce a rise that large on 12 orders in about 4 worlds of 10, so the number cannot yet carry budget." | "Growth has to start somewhere." "Agreed, and the note says watch it: once Student carries thirty orders a quarter and the rise holds, it comes back to Meera with a size in rupees." |
 | "You removed rows from Finance's data. Whose rows, and who said you could?" | "Fourteen Q1 rows were second copies of orders already in the file, same order_id, Rs 19,98,210 between them; every one is in the log with its order id and reason, and with them set aside and one amount written as a word repaired, my totals tie to Anand's books to the rupee." | "Finance never signed that off." "The books are the sign-off: with the copies in, the file is Rs 20 lakh above Finance, and with them out it matches. The log goes to Anand with the note, so he can check each of the 14." |

@@ -37,7 +37,7 @@ icon: badge-check | eyebrow: Paid tier | title: The head of Retail-Plus | body: 
 **The client asks.** How do you know, what did you leave out, and what would change your mind? These are the questions every interviewer asks about a project too.
 
 ```notes
-LIVE, 3 minutes. Name the four and the one thing each listens for. The note being rehearsed is the
+LIVE, 2 minutes. Name the four and the one thing each listens for. The note being rehearsed is the
 final version of Thursday's one-page note: the three answers Meera asked for, which is what goes to
 Monday's review.
 ```
@@ -57,7 +57,7 @@ label: 20 seconds | title: Action | body: What to do, what it costs, and what wo
 **Kavya's review.** Say the caveat before Marketing finds it, so the room hears it as part of the claim.
 
 ```notes
-LIVE, 2 minutes. The timings add to two minutes. A learner who runs long almost always ran long in
+LIVE, 1 minute. The timings add to two minutes. A learner who runs long almost always ran long in
 the evidence; the fix is one number fewer at the same pace.
 ```
 
@@ -83,8 +83,8 @@ The full list, with a harder set for the second pairing, is in `exercises/guided
 ```notes
 LIVE, 2 minutes. Read the four pushes in a fair Marketing voice. The partner playing
 Marketing is doing the defender a favour, and the room should hear that before round one starts.
-The first push is the sharpest: the brief answers it in full, and a TA reads Marketing's lines while
-you model the answer once.
+The first push is the sharpest: the brief answers it in full, and after S6 a TA reads Marketing's
+lines while you model the answer once, in four minutes. It is on neither pair list.
 ```
 
 ---
@@ -104,7 +104,7 @@ flowchart TB
 **In the interview.** [D] A stakeholder attacks your caveat in front of the room; how do you hold it without overclaiming?
 
 ```notes
-LIVE, 3 minutes. Demonstrate the three moves once with a volunteer playing Marketing on the
+LIVE, 2 minutes. Demonstrate the three moves once with a volunteer playing Marketing on the
 Student question. Then say what it would sound like to fold (dropping the caveat) and to overclaim
 (calling the rise noise when you only know it is uncertain); the three moves sit between the two.
 ```
@@ -116,17 +116,18 @@ Student question. Then say what it would sound like to fold (dropping the caveat
 
 ```mermaid
 flowchart LR
-    S["<b>the brief</b><br/>6 min"] --> A["<b>pair 1</b><br/>A defends, B pushes<br/>12 min"]
-    A --> B["<b>pair 1</b><br/>swap<br/>12 min"]
-    B --> C["<b>pair 2, new partner</b><br/>harder pushes<br/>2 x 10 min"]
+    S["<b>the brief and<br/>the modelled push</b><br/>12 min"] --> A["<b>pair 1</b><br/>A defends, B pushes<br/>10 min"]
+    A --> B["<b>pair 1</b><br/>swap<br/>10 min"]
+    B --> C["<b>pair 2, new partner</b><br/>harder pushes<br/>2 x 9 min"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class A,B,C known
 ```
 
-In pair one each twelve minutes runs: two minutes of the note read aloud, six of pushes and answers, four for the partner to fill the feedback card. Pair two takes ten: two, five and three.
+In pair one each ten minutes runs: two minutes of the note read aloud, five of pushes and answers, three for the partner to fill the feedback card. Pair two takes nine: two, four and three.
 
 ```notes
-LIVE, 50 minutes, of which S1 to S4 and S6 took the first six. The TAs walk the room. Each TA also uses this round to tell each of their learners,
+LIVE, 50 minutes: S1 to S4 and S6 take eight, Marketing's sharpest push, modelled once with a TA,
+takes four, and the pairs take the other 38. The TAs walk the room. Each TA also uses this round to tell each of their learners,
 quietly and one at a time, the step the lab's observation sheet marked for them. Never aloud, never
 to a group.
 ```
@@ -205,21 +206,22 @@ read the model after the call-outs.
 ---
 
 ## S9. Case 1: Meera's first read in two hours
-*A raw export, a review on Monday, and four plans that fit the clock differently.*
+*A raw export, a review on Monday, and four plans that each fit the clock and each leave a step out.*
 
-**In the interview.** [F] You have two hours and a raw export; what do you do first, and what do you skip? Here the export is Q3 from the ERP, and DMart is the likeness: it publishes a provisional quarter days before its board signs the results.
+**In the interview.** [F] You have two hours and a raw export; what do you do first, and what do you skip? Here the export is Q3 from the ERP, and DMart is the likeness: it publishes a provisional quarter days before it files the results.
 
 ```mermaid
 flowchart TB
-    Q["<b>two hours, a raw export</b><br/>which plan?"] --> A["<b>A. sum and chart</b><br/>10 min"]
-    Q --> C["<b>C. profile, clean,<br/>reconcile, decompose</b><br/>90 min"]
-    Q --> B["<b>B. the whole method</b><br/>120 min"]
-    Q --> D["<b>D. wait for the close</b><br/>days"]
+    Q["<b>two hours, a raw export</b><br/>which step do you leave out?"] --> A["<b>A.</b> no reconciliation"]
+    Q --> B["<b>B.</b> no test"]
+    Q --> C["<b>C.</b> the tree for one segment only"]
+    Q --> D["<b>D.</b> no profile"]
 ```
 
 ```notes
-LIVE, 13 minutes. Listen for the options sized against the two hours, for the reconciliation named
-as the step never dropped, and for the fact that would switch the plan.
+LIVE, 13 minutes. Listen for every plan sized from the lab's pace (all four cost between 95 and 105
+minutes, so the clock does not choose), for the reconciliation named as the step never dropped, and
+for the fact that would switch the plan.
 ```
 
 ---
@@ -227,7 +229,7 @@ as the step never dropped, and for the fact that would switch the plan.
 ## S10. Case 2: zero rejects and a Rs 20 lakh gap
 *The first quarter out of the migrated ERP, a pass that reports nothing, and Finance disagreeing.*
 
-**In the interview.** [S] Walk me through how you clean and check a dataset you have never seen. Here four checks cost from seconds to a day, and TSB is the likeness: a migrated platform trusted before it was reconciled.
+**In the interview.** [S] Walk me through how you clean and check a dataset you have never seen. Here four checks cost from seconds to a day, and TSB is a loose likeness: a new platform whose output was trusted before it was checked.
 
 ```stats
 value: 50,000 | label: rows | note: illustrative
@@ -271,11 +273,11 @@ LIVE. Twenty minutes: the Kahoot, Saturday previewed, the crux lines, tonight's 
 ---
 
 ## S12. The Kahoot: the week's method in eight questions
-*Five on the method, two design calls and Thursday's return question, ungraded.*
+*Three on the method, four design calls and Thursday's return question, ungraded.*
 
 ```mermaid
 flowchart LR
-    O["<b>the method</b><br/>its order, what must reconcile,<br/>when the median, what a p-value is"] --> X["<b>two design calls</b><br/>which check first,<br/>no control total, one test to spend"]
+    O["<b>the method</b><br/>its order, the typical order,<br/>what a p-value is a share of"] --> X["<b>four design calls</b><br/>20 extra rows, a zero-reject<br/>headline, which test, which lead"]
     X --> T["<b>Thursday's return</b><br/>the discount"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class X known
@@ -311,7 +313,7 @@ preread/ and ships tonight.
 1. Reconcile counts and rupees to a control total before you quote a total.
 2. A zero-reject pass on a file you know is dirty is the first thing to investigate.
 3. Count before rate: put the order count beside every rate before it leads a note.
-4. Shuffle what belongs together, which this week is the customer.
+4. Keep each customer's own two quarters together in every shuffle.
 5. Say the claim with its denominator, the caveat before they find it, and what would change your mind.
 
 ```notes
