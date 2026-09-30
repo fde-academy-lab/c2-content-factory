@@ -3,7 +3,9 @@
 The markdown stays the source of truth, because it is what the verification gate reads and what
 renders on GitHub. This turns it into the printed sheet: a title band, an anchor band carrying the
 one picture the sheet is built around, the blocks packed into balanced columns, and a foot strip of
-the day's vocabulary read from its study notes rather than written again.
+the day's vocabulary read from its study notes rather than written again. A sheet that prints its own
+glossary panel gets no strip, and once a sheet fits its page the anchor is printed as large as the
+page allows, up to about 7pt labels, instead of at the readable floor.
 
 Usage:
     python3 scripts/build_cheatsheet.py content/W01/D1/cheatsheets/C2_W01_D01_kernel_records_STUDENT.md
@@ -301,6 +303,7 @@ GAP_PT = 3 * 72 / 25.4               # the column gap
 PAD_PT = 5.6 * 72 / 25.4             # a panel's own padding and border
 MIN_LABEL_PT = 5.2
 MERMAID_LABEL_PX = 16.0
+ANCHOR_LABEL_PT = (7.0, 6.2)     # tried in turn once the sheet fits, largest first
 
 
 def column_pt(n):
@@ -329,7 +332,7 @@ MM = 72 / 25.4
 DIAGRAM_H_CAP_MM = 62       # past this a panel is a poster, not a block on a sheet
 
 
-def height_for(sizes, box_w_pt, cap_mm=DIAGRAM_H_CAP_MM, floor_mm=26):
+def height_for(sizes, box_w_pt, cap_mm=DIAGRAM_H_CAP_MM, floor_mm=26, label=MIN_LABEL_PT):
     """The height a set of diagrams needs before their labels drop under the readable size.
 
     The page used to fix this at a constant and quietly shrink whatever did not fit, which is how
@@ -341,7 +344,7 @@ def height_for(sizes, box_w_pt, cap_mm=DIAGRAM_H_CAP_MM, floor_mm=26):
         if not w_px or not h_px:
             continue
         by_width = (box_w_pt / (w_px * 0.75)) * h_px * 0.75 / MM
-        by_label = (MIN_LABEL_PT / 12.0) * h_px * 0.75 / MM
+        by_label = (label / 12.0) * h_px * 0.75 / MM
         need = max(need, min(by_width, by_label))
     return min(need, cap_mm)
 
@@ -525,6 +528,11 @@ def glossary_for(path, limit=8, width=76):
     stem = re.match(r"^(C2_W\d{2}_(?:D\d{2}|SAT))_", path.name)
     if not stem:
         return []
+    # A sheet with its own glossary panel, a table whose first column is headed Term or Word as
+    # the notes' glossary is, already prints the day's words, and a strip would print them twice.
+    if re.search(r"^\|\s*(?:Terms?|Words?)\s*\|", path.read_text(encoding="utf-8", errors="replace"),
+                 re.M | re.I):
+        return []
     notes = list((path.parent.parent / "study-notes").glob(f"{stem.group(1)}_*.md"))
     if not notes:
         return []
@@ -653,7 +661,11 @@ td:last-child, th:last-child {{ padding-right: 0; }}
 """
 
 
-def build_html(path, fmt, verified, cap_mm=DIAGRAM_H_CAP_MM, tight=False):
+def plural(n, word):
+    return f"{n} {word}" if n == 1 else f"{n} {word}s"
+
+
+def build_html(path, fmt, verified, cap_mm=DIAGRAM_H_CAP_MM, tight=False, anchor_pt=MIN_LABEL_PT):
     title, promise, panels, answers = parse_sheet(path)
     missing = []
     kicker, _, rest = title.partition(":")
@@ -669,7 +681,7 @@ def build_html(path, fmt, verified, cap_mm=DIAGRAM_H_CAP_MM, tight=False):
     columns = choose_columns([w for w, _ in body_sizes])
     panel_h = height_for(body_sizes, column_pt(columns), cap_mm)
     wide_h = height_for(body_sizes, (PAGE_PT - PAD_PT) * 0.62, cap_mm)
-    anchor_h = height_for(anchor_sizes, (PAGE_PT - PAD_PT) * 0.66, cap_mm)
+    anchor_h = height_for(anchor_sizes, (PAGE_PT - PAD_PT) * 0.66, cap_mm, label=anchor_pt)
     css = (CSS.replace("__PANEL_H__", f"{panel_h:.0f}")
               .replace("__WIDE_H__", f"{max(wide_h, panel_h):.0f}")
               .replace("__ANCHOR_H__", f"{anchor_h:.0f}"))
@@ -692,13 +704,21 @@ def build_html(path, fmt, verified, cap_mm=DIAGRAM_H_CAP_MM, tight=False):
         if i == 0:
             art = "".join(h for kind, h, _ in pieces if kind == "diagram")
             said = "".join(h for kind, h, _ in pieces if kind != "diagram")
-            box = ((PAGE_PT - PAD_PT) * (0.46 if said else 0.66),
+            # A wide picture set beside text takes the width it needs at the anchor's height,
+            # from 46 up to 66 percent of the band, and the text keeps the rest of the row.
+            share = 0.46
+            for kind, _, size in pieces:
+                if said and kind == "diagram" and size and size[0] and size[1]:
+                    need = ANCHOR_ART_H_PT * size[0] / size[1] / (PAGE_PT - PAD_PT)
+                    share = max(share, min(0.66, need))
+            box = ((PAGE_PT - PAD_PT) * (share if said else 0.66),
                    ANCHOR_ART_H_PT if said else ANCHOR_SOLO_H_PT)
             for kind, _, size in pieces:
                 if kind == "diagram" and label_pt(size, box) < MIN_LABEL_PT:
                     cramped.append((p["n"], size, label_pt(size, box)))
             if art and said:
-                inner = (f'<div class="split"><div class="art">{art}</div>'
+                inner = (f'<div class="split"><div class="art" style="flex-basis: '
+                         f'{share * 100:.0f}%">{art}</div>'
                          f'<div class="said">{said}{crux}</div></div>')
             elif art:
                 # Nothing to set beside the picture, so the picture takes the whole band and
@@ -746,7 +766,7 @@ def build_html(path, fmt, verified, cap_mm=DIAGRAM_H_CAP_MM, tight=False):
                 f'printed instead.</p>')
 
     stamp = (f'<div class="stamp"><b>{html.escape(path.stem)}</b><br>Verified {verified}<br>'
-             f'{len(panels)} panels, {n_diagrams} diagrams</div>')
+             f'{plural(len(panels), "panel")}, {plural(n_diagrams, "diagram")}</div>')
     page = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><title>{html.escape(title)}</title>
 <style>{css}</style></head><body>
@@ -823,6 +843,18 @@ def build(path, fmt, verified, png_dir=None, max_pages=1):
             break
         if not cramped and pages <= max_pages and (pages == 1 or fill >= 0.45):
             break
+    # The anchor is the picture a learner redraws from memory, so a sheet that already fits one
+    # page with room to spare prints it larger, and keeps the floor-sized anchor when it would not.
+    if best["pages"] == 1 and not best["cramped"] and best["n_diagrams"]:
+        grown = [(a, c, t) for a in ANCHOR_LABEL_PT for c, t in plans]
+        for anchor_pt, cap, tight in grown:
+            page, missing, n_panels, n_diagrams, wide, columns, cramped = build_html(
+                path, fmt, verified, cap, tight, anchor_pt)
+            doc = HTML(string=page, base_url=str(path.parent)).render()
+            if len(doc.pages) == 1 and not cramped and not missing:
+                best.update(page=page, missing=missing, cramped=cramped, wide=wide,
+                            columns=columns, cap=cap, tight=tight, anchor_pt=anchor_pt)
+                break
     page, missing, n_panels = best["page"], best["missing"], best["n_panels"]
     n_diagrams, wide, columns = best["n_diagrams"], best["wide"], best["columns"]
     cramped, pages = best["cramped"], best["pages"]
@@ -847,8 +879,10 @@ def build(path, fmt, verified, png_dir=None, max_pages=1):
         fails += 1
     widened = f", panels {', '.join(wide)} widened" if wide else ""
     fill = f", last page {best['fill'] * 100:.0f}% full" if pages > 1 else ""
-    print(f"      {out_pdf.name}: {n_panels} panels, {n_diagrams} diagrams, {columns} columns, "
-          f"{pages} page(s), {out_pdf.stat().st_size // 1024} KB{widened}{fill}")
+    grown = f", anchor sized for {best['anchor_pt']}pt labels" if best.get("anchor_pt") else ""
+    print(f"      {out_pdf.name}: {plural(n_panels, 'panel')}, {plural(n_diagrams, 'diagram')}, "
+          f"{columns} columns, {pages} page(s), {out_pdf.stat().st_size // 1024} KB"
+          f"{widened}{fill}{grown}")
     if png_dir:
         pathlib.Path(png_dir).mkdir(parents=True, exist_ok=True)
         subprocess.run(["pdftoppm", "-jpeg", "-r", "110", str(out_pdf),
@@ -886,7 +920,7 @@ def main():
               "Install it with npm install -g @mermaid-js/mermaid-cli")
 
     fails = sum(build(s, a.format, verified, a.png, a.max_pages) for s in sheets)
-    print(f"      {len(sheets)} sheets built")
+    print(f"      {plural(len(sheets), 'sheet')} built")
     print("RESULT:", "FAIL" if fails else "PASS", f"({fails} failures)")
     sys.exit(1 if fails else 0)
 
