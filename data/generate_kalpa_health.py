@@ -89,8 +89,8 @@ PACKAGES = {
     "PKG-CORP": ("Corporate health check", 1500, ["T-CBC", "T-LIP", "T-FBS", "T-URN", "T-LFT"]),
 }
 HOME_FEE = 100
-# Who was offered the free collection, and how much less an offered patient in a campaign city
-# books than a like-for-like one: the offer reached patients who had started to drift.
+# Who was offered the free collection, at random within each city, and how much less an offered
+# patient in a campaign city books while the offer runs than a patient who was not offered.
 OFFER_CHANCE = {"campaign": 0.50, "other": 0.20}
 OFFER_SKIP = 0.06
 CHANNELS = ("walk-in", "app", "phone", "home-collection")
@@ -152,8 +152,8 @@ def generate():
     weights = {city: [p["_weight"] for p in by_city[city]] for city in by_city}
     site_codes = {city: [c["clinic_code"] for c in sites if c["city"] == city] for city, _ in CITIES}
 
-    # The campaign offer is decided up front. In the campaign cities it went to lapsed patients far
-    # more than to frequent ones, and it barely reached the other cities at all.
+    # The campaign offer is decided up front, at random within each city: half the patients in the
+    # campaign cities and a fifth elsewhere.
     offered, took_up = {}, set()
     for p in people:
         chance = OFFER_CHANCE["campaign"] if p["city"] in CAMPAIGN_CITIES else OFFER_CHANCE["other"]
@@ -174,8 +174,8 @@ def generate():
                 p = rng.choices(by_city[city], weights=weights[city])[0]
                 pid = p["patient_id"]
                 # Within the campaign cities, a patient who was offered the free collection books
-                # a little less often than a like-for-like patient who was not: the offer went to
-                # patients who had already drifted.
+                # a little less often while the offer runs than a patient who was not; before the
+                # offer the two groups book alike, so nothing in the files shows who was targeted.
                 if (pid in offered and city in CAMPAIGN_CITIES and CAMPAIGN[0] <= d <= CAMPAIGN[1]
                         and rng.random() < OFFER_SKIP):
                     continue
@@ -422,6 +422,8 @@ def witness(tables, bookings):
     s = sorted(q2)
     w["q2_median_invoice"] = (s[len(s) // 2 - 1] + s[len(s) // 2]) / 2 if len(s) % 2 == 0 else s[len(s) // 2]
     w["text_amounts"] = sum(1 for i in inv if isinstance(i["amount"], str))
+    # Amounts under Rs 1,000 print with no comma, so the file shows only the ones that carry one.
+    w["text_amounts_with_comma"] = sum(1 for i in inv if isinstance(i["amount"], str) and "," in i["amount"])
     lines = sum(i["line_items"] for i in inv if not i["corporate_account"])
     tests = sum(1 for t in tables["booking_tests"] if t["line"] in ("test", "component")
                 and not t["package_code"] == "PKG-CORP")
@@ -485,6 +487,16 @@ def witness(tables, bookings):
     w["campaign_lift_by_city"] = {c: rate([p for p in off if p["city"] == c])
                                   / rate([p for p in rest if p["city"] == c]) - 1
                                   for c in CAMPAIGN_CITIES}
+    before = {}
+    for b in bookings:
+        if Q1[0] <= b["date"] < CAMPAIGN[0] and b["channel"] != "corporate":
+            before[b["patient_id"]] = before.get(b["patient_id"], 0) + 1
+
+    def rate_before(group):
+        return sum(before.get(p["patient_id"], 0) for p in group) / max(1, len(group))
+    w["campaign_gap_before_offer_by_city"] = {c: rate_before([p for p in off if p["city"] == c])
+                                              / rate_before([p for p in rest if p["city"] == c]) - 1
+                                              for c in CAMPAIGN_CITIES}
 
     def window_count(city_set, lo, hi):
         return sum(1 for b in bookings if b["city"] in city_set and lo <= b["date"] <= hi
@@ -540,6 +552,8 @@ def check(w):
          f"aggregate campaign lift {w['campaign_lift_aggregate']:.3f}, wanted 0.06 to 0.12")
     for city, lift in w["campaign_lift_by_city"].items():
         want(lift < 0, f"{city}: offered patients out-book the rest ({lift:.3f}); the reversal is lost")
+    for city, gap in w["campaign_gap_before_offer_by_city"].items():
+        want(abs(gap) <= 0.08, f"{city}: offered patients already booked {gap:+.3f} apart before the offer")
     return fails
 
 
@@ -590,3 +604,6 @@ if __name__ == "__main__":
 #     Byte-identical output, because every draw comes from the fixed seed.
 # A change to TREND that makes Chennai and Pune rise
 #     FAIL on the apparent and real falls, and nothing is written.
+# Starting the offered patients' shortfall on 1 April instead of on the offer's first day
+#     FAIL on the gap before the offer in all three campaign cities (among other plants), because the
+#     files would then show the offer reaching patients who were already booking less.

@@ -448,7 +448,8 @@ RULES = [
                 "every correct letter, the working and the answer, or the letters in order. "
                 "Copy every answer to the answer sheet at the back."],
     ["Afterwards", "Papers are swapped and marked against the key, then the discussion takes the items "
-                   "the room missed most. The paper is ungraded and goes on no record."],
+                   "the room missed most. The paper carries no marks and ranks nobody; the room's scores "
+                   "by topic set Monday's revision."],
 ]
 PURPOSE = ("Saying the week out loud is the interview skill itself. This paper finds which of the "
            "week's decisions you can make cold, with no notes and no assistant, so Monday's practice "
