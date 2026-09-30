@@ -67,7 +67,7 @@ W1:
       a: quarters holding unequal numbers of weeks
   32:
     status: proposed
-    why: Option d ran 33 characters against 12 for option a. It now reads 27, so every option is 27 characters or fewer, and typing into the export is the same act as typing into the source file.
+    why: Option d ran 33 characters against 12 for option a. It now reads 28, so every option is 28 characters or fewer, and typing into the export is the same act as typing into the source file.
     options:
       d: Type a value into the export.
   33:
