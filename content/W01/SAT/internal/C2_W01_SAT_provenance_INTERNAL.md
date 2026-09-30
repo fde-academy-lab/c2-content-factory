@@ -283,3 +283,11 @@ d once, and each letter sits in four or five of the six keys. `scripts/distracto
 fails a Saturday paper where one letter sits in every more-than-one key across four or more such
 items; the paper as it stood before this change fails it, and the relabelled paper passes, with the
 keys of all 31 option items at a 10, b 10, c 11 and d 12.
+
+## 30 September 2026, after the merge: Anand's title left off the paper
+
+The tracker's Week 1 and Week 2 rows and the Weeks 1 and 2 spine call Anand Iyer the CFO, while
+client zero v2.2 calls him the finance controller, and the tracker ranks higher. The paper now
+names him by his work, "Anand Iyer answers for Finance's books", which is true under either
+title, and the conflict is recorded as `anand-title` in `data/programme/facts.yaml` for the
+Programme Head to settle.

@@ -21,8 +21,8 @@ parts:
   - title: Rows you can trust
     shows: whether you clean a file with a reason for every change and reconcile it in rows and in rupees
     intro: >-
-      "Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9." Anand Iyer, the finance
-      controller, wrote that back to all on Tuesday's finding, and the ERP export behind the
+      "Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9." Anand Iyer, who answers for
+      Finance's books, wrote that back to all on Tuesday's finding, and the ERP export behind the
       dashboard is the file on your desk.
     items: [23, 24, 25, 28, 32, 33, 40, 41, 42, 52]
   - title: Read the code, read the data
@@ -62,8 +62,8 @@ purpose: >-
   a blank one, so answer every item.
 company: >-
   Every item is set inside Kalpa Retail, where you work as a trainee engineer in the data and AI
-  team of its Global Capability Centre. Meera Raghavan is its CEO, Anand Iyer its finance
-  controller and Kavya Nair a senior analyst in its data team; Marketing and Finance appear by
+  team of its Global Capability Centre. Meera Raghavan is its CEO, Anand Iyer answers for
+  Finance's books, and Kavya Nair is a senior analyst in its data team; Marketing and Finance appear by
   function, and every number an item needs is on the page.
 
 additions:
