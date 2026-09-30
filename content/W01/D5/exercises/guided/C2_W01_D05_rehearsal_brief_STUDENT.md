@@ -47,6 +47,39 @@ Ask these as they are written or in your own words.
 - "Give me one number I can take to the board. Just one."
 - "If the broken reorder feature explains the tier, why do we need your note at all?"
 
+## Marketing's sharpest push, answered
+
+Of all the pushes, this is the one most likely to land on Monday, because it arrives with numbers and
+every one of them is true.
+
+> "Customers who got the monsoon sale spent Rs 3,395 each. Customers who did not spent Rs 3,200.
+> That is 6.1 percent more, it is our best campaign of the year, and your note tells Meera not to
+> repeat it."
+
+**The numbers it cites.** The blend is right: 60 customers got the sale and spent Rs 3,395 on
+average; 100 did not and spent Rs 3,200. What the push leaves out is who the 60 were. Half of them
+were Retail-Plus members, who spend more in any month, against 40 percent of the 100 the sale missed.
+
+| Segment | Got the sale | Did not | Inside the segment |
+|---|---|---|---|
+| Retail-Plus | Rs 4,850 (30 customers) | Rs 5,000 (40 customers) | 3.0 percent less with the sale |
+| Retail-Core | Rs 1,940 (30 customers) | Rs 2,000 (60 customers) | 3.0 percent less with the sale |
+| Blended | Rs 3,395 (60) | Rs 3,200 (100) | 6.1 percent more, because of the mix |
+
+**The answer the evidence supports.** "The 6.1 percent is real arithmetic on a mix. The sale went
+mostly to members who spend more anyway, and inside each segment the customers who got it spent 3.0
+percent less than the ones who did not: Rs 4,850 against Rs 5,000, and Rs 1,940 against Rs 2,000. At
+15 percent off, the sale needed 17.6 percent more volume just to stand still, so as it was designed it
+did not pay. I am not saying never run a sale. I am saying run Diwali with a random slice of each
+segment held back, agreed in advance, so the next time we say a sale worked, the number holds up in
+front of Anand."
+
+**Why it holds.** It agrees with every number Marketing cited, so there is no fight about the data. It
+names the one fact the blend hides, who got the sale, and shows it inside each segment. It closes on a
+test with a date, which turns the disagreement into a plan Marketing can own. Folding ("fair point, I
+will soften it") loses the finding, and overclaiming ("the sale lost money, full stop") loses the
+room, since a test has not yet been run on a design that might work.
+
 ## Defending
 
 Three moves keep a claim the size the data supports when it is attacked.

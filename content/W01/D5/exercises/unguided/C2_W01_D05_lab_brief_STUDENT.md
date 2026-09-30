@@ -1,8 +1,21 @@
 # The AI-free lab: the week, rebuilt alone
 
+## The situation
+
 Kavya Nair, senior analyst, Kalpa Retail data team: "The growth review is on Monday, and Marketing
 will be in the room. Before anything goes to Meera, rebuild the week from a raw export with no
 assistant and no notes."
+
+Meera Raghavan, Kalpa Retail's CEO, decides on Monday where the next quarter's effort goes, with
+Marketing's Rs 12 crore request to win new customers on the table. Anand Iyer, the finance
+controller, reads every number before she does, and his rule has not changed since Wednesday:
+"Until your numbers match ours, Finance will not act on a drop measured from an ERP export."
+
+| | |
+|---|---|
+| **The metric at stake** | Booked revenue per quarter, its change from Q1 to Q2, and the branch of the revenue tree (customers, orders per customer, revenue per order) that moved it, segment by segment |
+| **Who asks** | Meera, who acts on the note's first line; Anand, who checks that line against his control totals first; Marketing, who will attack any rate that rests on too little |
+| **What a wrong number costs** | A first line with the wrong sign sends Monday's review home with nothing to investigate. A fall at half its size gets half the attention. A rate on a handful of orders sends a team after a segment that did nothing, and the first time Marketing asks "on how many orders?", the whole note loses the room. |
 
 ## Kavya's question for the lab
 

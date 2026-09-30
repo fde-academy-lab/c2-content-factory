@@ -31,6 +31,14 @@ flowchart LR
 | The retention offer | A Rs 11,000 offer pays only above a 45 percent recovery, so it is tested on half the tier |
 | The rows set aside on Wednesday | 14 Q1 rows that were second copies of orders already in the file, by the order_id rule, carrying Rs 19,98,210; with them set aside and the amount written as `twelve` repaired from its migration copy, the totals tie to Finance's books |
 
+## The sharpest push, modelled before round one
+
+The brief now carries Marketing's sharpest push, the monsoon sale's Rs 3,395 against Rs 3,200, with
+the segment table and the answer the evidence supports, worked in full. Model it once, aloud, in the
+brief-and-set-up minutes of round one, with a TA reading Marketing's lines; then take it off the pair
+lists, so every pair practises on pushes they have not seen answered. If Marketing pushes again after
+the answer ("so the sale lost money?"), the reply is in the pair-one table below.
+
 ## For pair one
 
 | The push | The answer in one breath | If Marketing pushes again |

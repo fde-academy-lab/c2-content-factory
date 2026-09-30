@@ -38,11 +38,13 @@ flowchart LR
     class MK bad
 ```
 
-**The client asks.** Whether the week's pipeline is yours or the notebook's; which step you reach for first on a fresh export; whether your note survives a hostile question; what you still cannot do without help.
+**The client asks.** Which branch of the revenue tree moved booked revenue from Q1 to Q2, in which segment, and does the number tie to Anand's control totals? A first line with the wrong sign sends Monday's review home with nothing to investigate, while Marketing's Rs 12 crore request waits on the answer.
 
 ```notes
-LIVE, 2 minutes. Say the four questions on the table from the row. The first one is the morning's
-question and the third is the afternoon's. Do not add anything about which step matters most: the
+LIVE, 2 minutes. Say the metric, who asks and what a wrong number costs, then the four questions on
+the table from the row: whether the pipeline is yours or the notebook's, which step you reach for
+first, whether the note survives a hostile question, and what you still cannot do without help. The
+first is the morning's question and the third is the afternoon's. Do not add anything about which step matters most: the
 lab measures what each person does unprompted.
 ```
 

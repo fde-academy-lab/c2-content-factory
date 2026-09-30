@@ -1,7 +1,8 @@
 # Kahoot, Week 1 Friday
 
-Six items, ungraded, scored on correctness and speed together: five on the week's method and the
-return question from Thursday.
+Eight items, ungraded, scored on correctness and speed together: the five on the week's method that
+the row plans, two design items on choosing a check and a test, and the return question from
+Thursday. Three of the eight are design items: which approach fits, sized how.
 
 Each item names what it tests, so an item dropped for time says what was lost.
 
@@ -17,13 +18,13 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q2. Which check catches rows the migration posted twice?
-*Tests: a duplicate is found by the identity rule, not by eye or by a total.*
+## Q2. The dashboard runs Rs 20 lakh high. Which check first, since it costs one cell?
+*Tests: the design call on a fresh export; the cheapest check that catches the commonest cause goes first.*
 
-- Sorting by amount and reading the largest orders at the top
-- Comparing the mean order against the median order, per quarter
-- Distinct order ids against the number of rows in the file  <- correct
-- Checking every field is present on every row of the export
+- A rupee bridge by month against Finance, about half an hour
+- Distinct order ids against the number of rows, one cell  <- correct
+- Every order matched to Finance's ledger, most of a day
+- A shuffle test on the gap between the two numbers
 
 ---
 
@@ -57,7 +58,27 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q6. Return from Thursday. Revenue rose after a discount. Which question comes before calling it a success?
+## Q6. No control total came with the export. What replaces the rupee check today?
+*Tests: the design call when the reference is missing: a check that needs nothing outside the file, and the gap said aloud.*
+
+- Nothing, since without Finance's total no check is possible
+- A shuffle test, since it needs no outside number at all
+- The median order, compared with last quarter's median
+- Every value summed or logged; the note says unreconciled  <- correct
+
+---
+
+## Q7. Four segments moved and you have time for one shuffle test. Which gap do you test?
+*Tests: count before rate; one test on the branch that moved on enough orders beats four tests.*
+
+- The segment with the largest percentage move, whatever its count
+- The branch that moved on the most orders, customers flat  <- correct
+- All four at 0.05, and lead with the smallest p-value
+- The corporate segment, since it carries the most rupees
+
+---
+
+## Q8. Return from Thursday. Revenue rose after a discount. Which question comes before calling it a success?
 *Tests: a fair comparison needs a like-for-like group that did not get the discount.*
 
 - How large was the discount, as a share of the price?

@@ -8,7 +8,7 @@ Who: Kavya Nair, senior analyst, Kalpa Retail data team, to the trainees at Kalp
 
 ```notes
 LIVE, one minute. The afternoon, after the debrief's second half: the rehearsal in two rounds (100
-minutes), three timed analyst cases (40), and the Kahoot with Saturday's preview (20). Nothing new
+minutes), three timed design cases (40), and the Kahoot with Saturday's preview (20). Nothing new
 is taught; the afternoon is practice with a hostile listener.
 ```
 
@@ -83,6 +83,8 @@ The full list, with a harder set for the second pairing, is in `exercises/guided
 ```notes
 LIVE, 2 minutes. Read the four pushes in a Marketing voice, not a villain's. The partner playing
 Marketing is doing the defender a favour, and the room should hear that before round one starts.
+The first push is the sharpest: the brief answers it in full, and a TA reads Marketing's lines while
+you model the answer once.
 ```
 
 ---
@@ -172,7 +174,7 @@ and the one change. This is the first round to cut if the day runs long.
 
 ---
 
-## SECTION 2: Three timed cases
+## SECTION 2: Three timed design cases
 *The week's interview angles as a screen asks them: a situation, a clock, and your answer aloud.*
 
 ```notes
@@ -182,83 +184,86 @@ key and are read only after the room has answered.
 
 ---
 
-## S8. How a timed case runs
+## S8. How a timed design case runs
 *Read, think, answer to a partner, then the room hears two answers.*
 
 ```timeline
-label: 1 minute | title: Read | body: The case, silently, once.
-label: 3 minutes | title: Think | body: On paper: the first move, what you skip, and why.
+label: 1 minute | title: Read | body: The case, its options and the real company it is like.
+label: 3 minutes | title: Think | body: On paper: which option fits, sized how, and what would switch it.
 label: 4 minutes | title: Answer aloud | body: Two minutes each, to your partner.
 label: 5 minutes | title: Two call-outs | body: Two answers to the room, then the model answer.
 ```
 
-**In the interview.** A timed case is scored on the order of your moves and the reasons you give for each, long before the final number.
+**In the interview.** A design question is scored on three things said in order: the option you choose, its size in minutes, rupees or visits, and the fact that would move you to another.
 
 ```notes
 LIVE, 1 minute. The prompts are in exercises/unguided/C2_W01_D05_timed_cases_STUDENT.md. The model
-answers are in trainer/C2_W01_D05_timed_cases_key_TRAINER.md; read the model after the call-outs.
+answers, their sizing and the real-company sources are in trainer/C2_W01_D05_timed_cases_key_TRAINER.md;
+read the model after the call-outs.
 ```
 
 ---
 
-## S9. Case 1: two hours and a raw export
-*A drop to explain, a file nobody has checked, and a deadline.*
+## S9. Case 1: Meera's first read in two hours
+*A raw export, a review on Monday, and four plans that fit the clock differently.*
 
-**In the interview.** [F] You have two hours and a raw export; what do you do first, and what do you skip? Here the export is a food-delivery client's orders, and sales fell 15 percent last month.
+**In the interview.** [F] You have two hours and a raw export; what do you do first, and what do you skip? Here the export is Q3 from the ERP, and DMart is the likeness: it publishes a provisional quarter days before its board signs the results.
 
 ```mermaid
 flowchart LR
-    X["<b>raw export</b><br/>never opened"] --> Q["<b>sales down 15%</b><br/>last month"]
-    Q --> D["<b>deadline</b><br/>two hours"]
-    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
-    class X unknown
+    A["<b>A. sum and chart</b><br/>10 min"] --> B["<b>C. profile, clean,<br/>reconcile, decompose</b><br/>90 min"]
+    B --> C["<b>B. the whole method</b><br/>120 min"]
+    C --> D["<b>D. wait for the close</b><br/>days"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class B known
 ```
 
 ```notes
-LIVE, 13 minutes. Listen for the order: profile, reconcile, then the investigation ladder. What a
-strong answer skips, and says it skips, is as important as what it does.
+LIVE, 13 minutes. Listen for the options sized against the two hours, for the reconciliation named
+as the step never dropped, and for the fact that would switch the plan.
 ```
 
 ---
 
 ## S10. Case 2: zero rejects and a Rs 20 lakh gap
-*A cleaning run that reports nothing, and Finance disagreeing anyway.*
+*The first quarter out of the migrated ERP, a pass that reports nothing, and Finance disagreeing.*
 
-**In the interview.** [S] Walk me through how you clean and check a dataset you have never seen. Here your pass on 50,000 rows reports zero rejects, and the dashboard and Finance disagree by Rs 20 lakh.
+**In the interview.** [S] Walk me through how you clean and check a dataset you have never seen. Here four checks cost from seconds to a day, and TSB is the likeness: a migrated platform trusted before it was reconciled.
 
 ```stats
-value: 50,000 | label: rows | note: the export
+value: 50,000 | label: rows | note: illustrative
 value: 0 | label: rejects | note: as the pass reports
-value: Rs 20 lakh | label: the gap | note: dashboard against Finance
+value: Rs 20 lakh | label: the gap | note: dashboard above Finance
 ```
 
 ```notes
-LIVE, 13 minutes. Listen for the rupee reconciliation and for suspicion of the zero. A candidate who
-starts by blaming Finance's number has skipped the first check.
+LIVE, 13 minutes. Listen for the checks ordered by cost against what each catches, for a stopping
+point, and for Finance's number treated as the reference until the bridge closes.
 ```
 
 ---
 
 ## S11. Case 3: 42 percent on twelve visits
-*A product head wants to scale a result tomorrow, and your caveat is in the way.*
+*A product head wants to ship a result tomorrow, and your caveat is in the way.*
 
-**In the interview.** [D] A stakeholder attacks your caveat in front of the room; how do you hold it without overclaiming? Here a new checkout flow converted 42 percent on 12 visits against 31 percent on 1,200.
+**In the interview.** [D] A stakeholder attacks your caveat in front of the room; how do you hold it without overclaiming? Here a new checkout converted 42 percent on 12 visits against 31 percent on 1,200, and Bing is the likeness: a 12 percent lift checked before anyone believed it.
 
 ```stats
-value: 42% | label: new flow | note: on 12 visits
-value: 31% | label: current flow | note: on 1,200 visits
-value: 1 | label: meeting | note: to decide
+value: 42% | label: new checkout | note: 5 of 12 visits
+value: 31% | label: current checkout | note: of 1,200 visits
+value: about 300 | label: visits per checkout | note: to tell the two apart
 ```
 
 ```notes
-LIVE, 13 minutes. Listen for the three moves from S4: restate with the denominator, bound what the
-data says, offer the test and its size. Folding and overclaiming are both answers you will hear.
+LIVE, 13 minutes. Listen for the three moves from S4 and a test sized in visits and days: about 300
+visits each, about half a week at the current traffic. Folding and overclaiming are both answers you
+will hear.
 ```
 
 ---
 
 ## SECTION 3: The close
-*The week in six questions, Saturday's paper, and the one step to rerun tonight.*
+*The week in eight questions, Saturday's paper, and the one step to rerun tonight.*
 
 ```notes
 LIVE. Twenty minutes: the Kahoot, Saturday previewed, the crux lines, tonight's tasks.
@@ -266,16 +271,17 @@ LIVE. Twenty minutes: the Kahoot, Saturday previewed, the crux lines, tonight's 
 
 ---
 
-## S12. The Kahoot: the week's method in six questions
-*Five on the method and one return question from Thursday, ungraded.*
+## S12. The Kahoot: the week's method in eight questions
+*Five on the method, two design calls and Thursday's return question, ungraded.*
 
 ```mermaid
 flowchart LR
-    O["<b>the order</b><br/>of the pipeline"] --> D["<b>the check</b><br/>for a duplicate"]
+    O["<b>the order</b><br/>of the pipeline"] --> D["<b>design</b><br/>which check first"]
     D --> R["<b>what must</b><br/>reconcile"]
     R --> M["<b>when</b><br/>the median"]
     M --> P["<b>what a p-value</b><br/>is a share of"]
-    P --> T["<b>Thursday's return</b><br/>the discount"]
+    P --> X["<b>design</b><br/>no control total,<br/>one test to spend"]
+    X --> T["<b>Thursday's return</b><br/>the discount"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class T known
 ```
@@ -291,7 +297,7 @@ wrong answer most people picked, and move on.
 *Pen and paper, no assistant, objective items, marked by a peer against the key.*
 
 ```cards
-icon: pencil | eyebrow: The paper | title: 110 minutes | body: Fill in the blank, true or false, single and multiple choice, scenario sets, applied maths and ordering.
+icon: pencil | eyebrow: The paper | title: 120 minutes | body: Blanks from a word bank, pairs from a match table, statements judged with their reason, scenario sets, applied maths and ordering.
 icon: repeat | eyebrow: Marking | title: Swapped | body: Papers change hands and are marked against the key, read out by the Academic TA.
 icon: messages-square | eyebrow: Discussion | title: Aloud | body: The most-missed items first, then the week's interview questions as interview answers.
 icon: circle-slash | eyebrow: Status | title: Ungraded | body: A performance indicator for you and the team, never a ranking.
