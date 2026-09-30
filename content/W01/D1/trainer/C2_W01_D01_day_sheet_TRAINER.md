@@ -35,12 +35,12 @@ about a business.
 
 | | Ask the room | Show once the room has answered |
 |---|---|---|
-| 1 | What happens at a Kalpa Retail store and on its app on one Saturday, and who decides each step? | One member's basket, Rs 1,800 at the checkout, goes from a picker to a van and, a week later, partly back to the returns desk, and a person decides at every step; the app keeps far more of the traces than the till. |
-| 2 | Which real companies look like parts of Kalpa? | Reliance runs Jio and Reliance Retail in one group as Kalpa runs five units, Kalpa's stores work like DMart's, its app like JioMart's grocery business, and Retail-Plus is a paid tier of the kind Amazon Prime is. Kalpa itself is fictional. |
-| 3 | How much of Rs 100 of GMV does Kalpa keep? | On the story's illustrative numbers, Rs 100 of GMV becomes Rs 80 of net revenue, Rs 20 of gross margin, Rs 7.50 of contribution and Rs 2.50 of EBITDA. GMV and net revenue differ, and the Rs 20 between them is the question chapter 1 opens. |
+| 1 | What happens at a Kalpa store and on its app in one day? | One member's basket, Rs 1,800 at the checkout, goes from a picker to a van and, a week later, partly back to the returns desk, and a person decides at every step; the app keeps far more of the traces than the till. |
+| 2 | Which real companies is Kalpa like? | Reliance runs Jio and Reliance Retail in one group as Kalpa runs five units, Kalpa's stores work like DMart's, its app like JioMart's grocery business, and Retail-Plus is a paid tier of the kind Amazon Prime is. Kalpa itself is fictional. |
+| 3 | Where does Rs 100 at the checkout go? | On the story's illustrative numbers, Rs 100 of GMV becomes Rs 80 of net revenue, Rs 20 of gross margin, Rs 7.50 of contribution and Rs 2.50 of EBITDA. GMV and net revenue differ, and the Rs 20 between them is the question chapter 1 opens. |
 | 4 | Who at Kalpa asks the data team for which number? | Meera asks where growth comes from and where it leaks, Anand asks for numbers that match his books, the marketing lead asks whether Kalpa needs more customers, the Retail-Plus head asks whether the paid tier is slipping, and Kavya checks everything before it leaves the team. |
-| 5 | How is each retail number worked out, and where does it hang on the tree? | Revenue is customers times orders per customer times average order value, and every metric is a numerator over a denominator, stated with the question it answers and the person who asks it. |
-| 6 | Where do analytics, machine learning and agents earn their keep, and what does a wrong answer cost? | Describing, predicting, recommending and acting sit on one ladder, and the further right a system sits, the more a wrong answer costs; Klarna's assistant took two-thirds of its chats in its first month, and its CEO later said quality had suffered. |
+| 5 | Which tree does every retail number hang off? | Revenue is customers times orders per customer times average order value, with the shelf above it and the leaks beside it, and every metric on it is a numerator over a denominator, stated with the question it answers and the person who asks it. |
+| 6 | How far may a system act with no person checking? | Describing, predicting, recommending and acting sit on one ladder, and the further right a system sits, the more a wrong answer costs; Klarna's assistant took two-thirds of its chats in its first month, and its CEO later said quality had suffered. |
 
 ### 1. Which of the file's totals should Meera call sales, and what does each one count?
 
@@ -91,7 +91,7 @@ the only branch left and the Rs 12 crore looks justified.
 |---|---|---|
 | 1 | Who needs the customer count, and what rides on it? | Marketing's case for Rs 12 crore rests on nobody coming back, so the count decides whether frequency is a branch at all. |
 | 2 | How do we count customers when a row is an order? | Count each customer id once, with a set of ids or a dictionary of each id's orders. |
-| 3 | How many came back? | 23 customers placed 1.30 orders each; 7 came back and 16 bought once. |
+| 3 | How many customers came back? | 23 customers placed 1.30 orders each; 7 came back and 16 bought once. |
 | 4 | What goes wrong if every row is counted as a customer? | The count reads 30 customers at 1.00 order each, which says nobody comes back. |
 | 5 | Does the mean of the counts agree? | It does: the dictionary's 23 counts average 1.30. |
 | 6 | What changes on delivered orders? | On delivered orders 19 customers kept 1.11 orders each, and only 2 kept two. |
@@ -148,7 +148,7 @@ panics the room or hands marketing an easy rebuttal.
 | 2 | Which form carries the decision? | One sentence carries it, with the evidence, the branch, the caveat and the ask in about 20 seconds of reading; one number carries no decision, and a table leaves her to choose. |
 | 3 | What does the first draft say? | It says 23 customers placed 1.30 orders each at a typical order of Rs 2,205 and 16 bought only once, so open frequency first and hold the Rs 12 crore until Tuesday's two quarters. |
 | 4 | How many of the 16 one-time buyers are really lost? | At most 7 are: returning customers took a median of 45 days, and 9 of the 16 bought inside the last 45, so "70 percent lost" counts customers who have not yet had time to return. |
-| 5 | Do due dates give the same 9? | They do: 9 of the 16 fall due for a second order after 26 September. |
+| 5 | Do due dates find the same buyers? | They do: 9 of the 16 fall due for a second order after 26 September, the same 9 that the days since ordering found. |
 | 6 | What does the sentence Meera signs say? | "On the 30 booked orders from 1 July to 26 September, 23 customers placed 1.30 orders each at a typical order of Rs 2,205; 7 came back, 7 are past the usual gap without a second order, and 9 bought too recently to judge, so I would open frequency before acquisition, and since one quarter cannot show which branch moved, hold the Rs 12 crore until Tuesday's two quarters." |
 
 ### A. Does the answer survive on the orders that stayed delivered?
@@ -195,7 +195,7 @@ The file does not show acquisition to be the short branch. Frequency has the evi
 cheapest test, one quarter cannot show which branch moved, and the Rs 12 crore waits for Tuesday's
 two quarters. The afternoon adds that the answer holds on delivered orders, where orders per customer
 falls to 1.11, and that the channel view names two leaks, web returns and store cancellations,
-without moving the branch. The afternoon deck's close says it in chapter 6's sentence.
+without moving the branch. The afternoon deck's S44 says it in chapter 6's sentence.
 
 ## What does Monday cover, and where does it stop?
 
@@ -209,12 +209,13 @@ without moving the branch. The afternoon deck's close says it in chapter 6's sen
 
 ## How do the morning's 180 minutes run, and which slides carry each part?
 
-On a domain's first day the story takes 45 minutes in place of the 20-minute ask. Meera's ask follows
-in 5 minutes, then chapters 1 to 3, the break and chapter 4. Chapter 5 moves to the afternoon.
+On a domain's first day the story takes 45 minutes in place of the 20-minute ask. The day's question
+opens the morning in 1 minute, the story follows, then Meera's ask in 4 minutes, chapters 1 to 3,
+the break and chapter 4. Chapter 5 moves to the afternoon.
 
 ```mermaid
 flowchart LR
-    S["<b>Story</b><br/>45"] --> A["<b>Ask</b><br/>5"] --> C1["<b>Ch 1</b><br/>30"] --> C2["<b>Ch 2</b><br/>30"] --> C3["<b>Ch 3</b><br/>30"] --> B["Break<br/>10"] --> C4["<b>Ch 4</b><br/>30"]
+    Q["<b>Question</b><br/>1"] --> S["<b>Story</b><br/>45"] --> A["<b>Ask</b><br/>4"] --> C1["<b>Ch 1</b><br/>30"] --> C2["<b>Ch 2</b><br/>30"] --> C3["<b>Ch 3</b><br/>30"] --> B["Break<br/>10"] --> C4["<b>Ch 4</b><br/>30"]
     classDef core fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class S core
 ```
@@ -225,13 +226,14 @@ second route (3 to 5), and Kavya's review with the interview question (2 to 3).
 
 | Part | Slides | Beside it | What must land | If short of time |
 |---|---|---|---|---|
-| The retail story, 45 | Morning deck, cover and section 00, S1 to S6 | `trainer/C2_W01_D01_domain_story_TRAINER.md`; board drawings 1 to 6; notebook 00 for self-study | Kalpa keeps a thin slice: Rs 100 of GMV is Rs 80 of net revenue and Rs 2.50 of EBITDA, and the Rs 20 between GMV and net revenue waits for chapter 1. Each learner can name who at Kalpa asks for which number and place a metric on the tree as a formula. | Shrink part 4 to its drawing, then part 6 to its question. |
-| Meera's ask, 5 | S7 and S8 | The metric tree, already on the board | Meera's one message holds four questions, and the room can say which chapter answers each. | Cut nothing. |
-| Chapter 1, Which total is sales? 30 | Section 01, S9 to S19 | Notebook 01; `unguided/C2_W01_D01_ch1_four_readings_STUDENT.md` | Reliance publishes two totals for one quarter, so every total carries its definition. Summing by status is the best fit on 30 rows, and the TypeError gets its two minutes from S13's notes if it happens. Booked Rs 5,44,810 carries the 4 cancelled store orders, not cancelled is Rs 5,35,760, delivered Rs 5,20,790, and the sums by status agree. | Cut the second route to its one assertion. |
-| Chapter 2, What is each branch? 30 | Section 02, S20 to S28 | Notebook 02; `unguided/C2_W01_D01_ch2_tree_metrics_STUDENT.md` | Jio reports revenue as a tree. The file fills three branches, and the AOV is Rs 18,160 booked. The mixed AOV of Rs 25,943 is caught by multiplying back, and items, price and discounts stay named as not in the file. | Cut the second route. |
-| Chapter 3, Do customers come back? 30 | Section 03, S29 to S37 | Notebook 03; `unguided/C2_W01_D01_ch3_leaves_STUDENT.md` | Reliance counts 396 million registered customers, a count of people. The 30 rows hold 23 customers at 1.30 orders each, 7 of whom came back, and rows counted as customers read 1.00 and "nobody comes back". | Leave the delivered count in S35's notes. |
+| The day's question, 1 | Morning deck, cover and S1 | The nine short questions on screen | Meera's question is read once and the nine short questions in order, and nothing is answered yet. | Cut nothing. |
+| The retail story, 45 | Section 00, S2 to S8 | `trainer/C2_W01_D01_domain_story_TRAINER.md`; board drawings 1 to 6; notebook 00 for self-study | Kalpa keeps a thin slice: Rs 100 of GMV is Rs 80 of net revenue and Rs 2.50 of EBITDA, and the Rs 20 between GMV and net revenue waits for chapter 1. Each learner can name who at Kalpa asks for which number and place a metric on the tree as a formula. | Shrink part 4 to its drawing, then part 6 to its question. |
+| Meera's ask, 4 | S9 and S10 | The metric tree, already on the board | Meera's one message holds four questions, and the room can say which chapter answers each. | Cut nothing. |
+| Chapter 1, Which total is sales? 30 | Section 01, S11 to S24 | Notebook 01; `unguided/C2_W01_D01_ch1_four_readings_STUDENT.md` | Reliance publishes two totals for one quarter, so every total carries its definition. Summing by status is the best fit on 30 rows, and the TypeError gets its two minutes from S16's notes if it happens. Booked Rs 5,44,810 carries the 4 cancelled store orders, not cancelled is Rs 5,35,760, delivered Rs 5,20,790, and the sums by status agree. | Cut the second route to its one assertion. |
+| Chapter 2, What is each branch? 30 | Section 02, S25 to S39 | Notebook 02; `unguided/C2_W01_D01_ch2_tree_metrics_STUDENT.md` | Jio reports revenue as a tree. The file fills three branches, and the AOV is Rs 18,160 booked. The mixed AOV of Rs 25,943 is caught by multiplying back, and items, price and discounts stay named as not in the file. | Cut the second route. |
+| Chapter 3, Do customers come back? 30 | Section 03, S40 to S54, with D53 for self-study | Notebook 03; `unguided/C2_W01_D01_ch3_leaves_STUDENT.md` | Reliance counts 396 million registered customers, a count of people. The 30 rows hold 23 customers at 1.30 orders each, 7 of whom came back, and rows counted as customers read 1.00 and "nobody comes back". | Cut D53, the delivered count, first. |
 | Break, 10 | | | | |
-| Chapter 4, What is a typical order? 30 | Section 04, S38 to S46 | Notebook 04; `unguided/C2_W01_D01_ch4_typical_STUDENT.md`; the companion's experiment C | Blinkit reports its AOV as a mean because it adds up to totals. Four middles are sized on the invented six-order set, only 1 of the 30 orders sits above the mean of Rs 18,160, each learner sorts in the empty cell and reads what sits at the top, and the median is Rs 2,205. | Never cut the sort. |
+| Chapter 4, What is a typical order? 30 | Section 04, S55 to S70, with D64 and D65 for self-study | Notebook 04; `unguided/C2_W01_D01_ch4_typical_STUDENT.md`; the companion's experiment C | Blinkit reports its AOV as a mean because it adds up to totals. Four middles are sized on the invented six-order set, only 1 of the 30 orders sits above the mean of Rs 18,160, each learner sorts in the empty cell on S67 and reads what sits at the top without reading any record aloud, and the median is Rs 2,205. | Never cut the sort on S67. |
 
 **What the story says, and what it never stages.** The story states each metric as a formula, with the
 question it answers and who asks it, and it teaches no trap under any numbers, Monday's included.
@@ -267,14 +269,14 @@ flowchart LR
 
 | Part | Slides | Beside it | What must land | If short of time |
 |---|---|---|---|---|
-| Chapter 5, Which branch first? 30 | Afternoon deck, section 05, S1 to S8 | Notebook 05; `unguided/C2_W01_D01_ch5_branch_STUDENT.md` | Flipkart Black and Amazon Prime charge a membership to buy frequency. The plan is sized on the consumer view: Rs 64,810 booked and Rs 9,722 more to find, which asks 15 percent more customers who buy like today's, 15 percent more orders from the same customers, or Rs 335 more per order. Frequency goes first, with the fact that would switch it, and two 10 percent lifts make 21 percent, Rs 78,420, where adding them says Rs 77,772. | Cut the second route. |
-| Chapter 6, What will Meera sign? 30 | Section 06, S9 to S17 | Notebook 06; `unguided/C2_W01_D01_ch6_sentence_STUDENT.md` | Klarna's assistant looked like a success in its first month, and fifteen months later its CEO said the cost focus had lowered quality, so one window's number reads as a verdict too early. Four answer formats are sized in Meera's reading time, "70 percent lost" is caught by the 45-day gap, and the four-part sentence carries the split of 7, 7 and 9. | Never cut the caveat. |
-| The escalated case, 35 | Section A, S18 and S19 | `unguided/C2_W01_D01_escalated_case_STUDENT.md`; notebook ex1 | Each learner rebuilds the whole answer alone on delivered orders, and the support TA answers environment problems only. | Cut nothing, and start on time. |
-| The debrief, 15 | Section B, S20 and S21 | The room's own wrong numbers, collected while circulating | Each of six wrong numbers meets its own check, and the room reads what moved and what held on delivered orders from the numbers below. | Cut the delivered table. |
+| Chapter 5, Which branch first? 30 | Afternoon deck, S1, then section 05, S2 to S16, with D15 for self-study | Notebook 05; `unguided/C2_W01_D01_ch5_branch_STUDENT.md` | Flipkart Black and Amazon Prime charge a membership to buy frequency. The plan is sized on the consumer view: Rs 64,810 booked and Rs 9,722 more to find, which asks 15 percent more customers who buy like today's, 15 percent more orders from the same customers, or Rs 335 more per order. Frequency goes first, with the fact that would switch it, and two 10 percent lifts make 21 percent, Rs 78,420, where adding them says Rs 77,772. | Cut the second route. |
+| Chapter 6, What will Meera sign? 30 | Section 06, S17 to S30, with D29 for self-study | Notebook 06; `unguided/C2_W01_D01_ch6_sentence_STUDENT.md` | Klarna's assistant looked like a success in its first month, and fifteen months later its CEO said the cost focus had lowered quality, so one window's number reads as a verdict too early. Four answer formats are sized in Meera's reading time, "70 percent lost" is caught by the 45-day gap, and the four-part sentence carries the split of 7, 7 and 9. | Never cut the caveat. |
+| The escalated case, 35 | Section A, S31 and S32 | `unguided/C2_W01_D01_escalated_case_STUDENT.md`; notebook ex1 | Each learner rebuilds the whole answer alone on delivered orders, and the support TA answers environment problems only. | Cut nothing, and start on time. |
+| The debrief, 15 | Section B, S33 and S34 | The room's own wrong numbers, collected while circulating | Each of six wrong numbers meets its own check, and the room reads what moved and what held on delivered orders from the numbers below. | Cut the delivered table. |
 | Break, 10 | | | | |
-| The second case, 25 | Section C, S22 to S26 | `unguided/C2_W01_D01_second_case_STUDENT.md`; notebook ex2 | Pairs see store's 91.6 percent of booked revenue fall to 29.2 percent once the view keeps the three consumer segments Meera's plan concerns, so store's headline share came from outside them. Split by status, web returns and store cancellations are the two leaks, and frequency stays first. | Let pairs skip the customer-type table. |
-| The interview drill, 20 | Section D, S27 to S29 | The twelve questions below | Each learner answers aloud in under a minute, and a partner scores the answer against the one-breath version below. | Cut to eight questions. |
-| Kahoot and Tuesday's ask, 15 | Section E, S30 to S32 | `kahoot/C2_W01_D01_quiz_STUDENT.md` | The Kahoot shows which traps the room still falls for, the six lines go up, and Tuesday's question is left open. | Cut the Kahoot to five items. |
+| The second case, 25 | Section C, S35 to S39 | `unguided/C2_W01_D01_second_case_STUDENT.md`; notebook ex2 | Pairs see store's 91.6 percent of booked revenue fall to 29.2 percent once the view keeps the three consumer segments Meera's plan concerns, so store's headline share came from outside them. Split by status, web returns and store cancellations are the two leaks, and frequency stays first; S36 stays off the screen until the pairs have worked. | Let pairs skip the customer-type table. |
+| The interview drill, 20 | Section D, S40 to S42 | The twelve questions below, whose one-breath answers also sit in each drill slide's notes | Each learner answers aloud in under a minute, and a partner scores the answer against the one-breath version below. | Cut to eight questions. |
+| Kahoot and Tuesday's ask, 15 | Section E, S43 to S46 | `kahoot/C2_W01_D01_quiz_STUDENT.md` | The Kahoot shows which traps the room still falls for, S44 gives Meera the day's answer in chapter 6's sentence, the six lines go up, and Tuesday's question is left open. | Cut the Kahoot to five items. |
 
 **How to speak about the consumer view.** Chapter 5 sizes the plan on the orders whose segment is
 Retail-Core, Retail-Plus or Student, because Meera's growth plan concerns those three consumer
