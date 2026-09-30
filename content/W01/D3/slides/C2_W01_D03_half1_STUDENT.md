@@ -8,19 +8,9 @@ Who: Anand Iyer, finance controller, Kalpa Retail, replying to all on Tuesday's 
 
 ```notes
 LIVE, one minute. Read Anand's reply aloud and leave it on screen. Tuesday's finding went to the
-leadership group last night, and this is the first reply. The day is one question climbed in five
-rungs: which Q1 figure is right, and can we prove it to an analyst who ties out to the rupee.
-Say the shape once: three rounds this block, the full pass alone after lunch, then the auditor.
-```
-
----
-
-## SECTION 1: The ask
-*Finance will not act until two numbers agree, and the reconciliation lands on your desk.*
-
-```notes
-LIVE. Twenty minutes, no Python. The job of this chapter is to list every way an export could
-produce either figure before anybody opens the file, so the room knows what it is looking for.
+leadership group last night, and this is the first reply. The day is one question climbed in six
+chapters: which Q1 figure is right, and can we prove it to an analyst who ties out to the rupee.
+Five chapters this block, the sixth after lunch, then the full pass alone and the auditor.
 ```
 
 ---
@@ -41,29 +31,30 @@ value: Rs 20 lakh | label: the gap | note: about 10 percent of Q1
 ```
 
 ```notes
-LIVE, 3 minutes. Kalpa is fictional; the reply is the kind every analyst gets in the first month.
-Ask: whose number do you trust before looking at anything? Most say Finance. The honest answer is
-neither yet: both are computed correctly from something, and the job is to find what.
+LIVE, 3 minutes. Revenue here is booked value in rupees, every order whatever its status, the
+definition Monday set in the retail dossier. Ask: whose number do you trust before looking at
+anything? Most say Finance. The honest answer is neither yet: both are computed correctly from
+something, and the job is to find what.
 ```
 
 ---
 
-## S2. What Anand will ask, and what the others will ask
-*Three people, three questions, one reconciliation that has to answer all of them.*
+## S2. Four readers, four questions
+*One reconciliation has to answer all of them.*
 
 **The client asks.** "Which figure is right, and how do you know? Can my analyst follow every decision you made?"
 
 | Who | Their question | What answers it |
 |---|---|---|
 | Anand | Which Q1 figure is right, and the proof | A bridge from 2.1 to 1.9, move by move |
-| His analyst | Can every row you removed be followed | A rejects log and a decisions log |
+| His analyst | Can every row you removed be followed | The logs and two control totals |
 | Marketing | Does Tuesday's finding survive | Tuesday recomputed on the clean file |
-| An auditor | Why did you drop any row | Counts that reconcile, with a reason per row |
+| An auditor | Why did you drop any row | Rows that tie, with a reason per row |
 
 ```notes
-LIVE, 3 minutes. A reconciliation has several readers. Separate the four questions now and say
-when each gets answered: the first three by the end of this block, the auditor after lunch.
-Watch for: learners who want to start coding. Hold them; the next slide is the thinking.
+LIVE, 3 minutes. Say when each gets answered: Anand's and Marketing's by the end of this block,
+the analyst's and the auditor's after lunch. Watch for learners who want to start coding; hold
+them, the next slide is the thinking.
 ```
 
 ---
@@ -75,24 +66,24 @@ Watch for: learners who want to start coding. Hold them; the next slide is the t
 flowchart LR
     G["<b>Rs 20 lakh</b><br/>dashboard above books"] --> U["<b>more rows</b><br/>than orders?"]
     G --> V["<b>bigger values</b><br/>than booked?"]
-    G --> D["<b>different definition</b><br/>of Q1 or of sales?"]
+    G --> D["<b>another definition</b><br/>of Q1 or of sales?"]
     G --> L["<b>rows missing</b><br/>from the books?"]
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
     class U,V,D,L unknown
 ```
 
-**Question.** In pairs, three minutes: under each branch, write one way an ERP export could produce it. Which branch would you check first, as a letter? a) more rows than orders; b) bigger values than booked; c) a different definition; d) rows missing from the books.
+**Question.** Which branch would you check first, as a letter? a) more rows than orders; b) bigger values than booked; c) another definition; d) rows missing from the books.
 
 ```notes
-LIVE, 5 minutes. Collect a way per branch from the room before the answer slide. Expect
-duplicates from a migration, a text amount read as something else, returns counted as sales,
-and a date window that differs. The point is the list, not the letter.
+LIVE, 5 minutes. Pairs, three minutes: one way per branch that an ERP export could produce it.
+Expect copies from a migration, a text amount read wrongly, returns counted as sales, a window
+that differs. The point is the list; the letter comes next.
 ```
 
 ---
 
 ## S4. Answer: rows first, because a count is cheapest
-*Every branch is possible; the cheapest check goes first, and a count is the cheapest.*
+*Every branch is possible; the cheapest check goes first.*
 
 ```mermaid
 flowchart LR
@@ -106,69 +97,125 @@ flowchart LR
     class V,D,L known
 ```
 
-**Kavya's review.** Rank the checks by cost. Counting rows against distinct orders takes one line and rules a whole branch in or out; start there, and keep the other three on the list.
+**Kavya's review.** Rank the checks by cost. Rows against distinct orders takes one line and rules a whole branch in or out; start there and keep the other three on the list.
 
 ```notes
-LIVE, 2 minutes. The answer is a, for cost rather than likelihood. Say that the ERP note about a
-stitched CSV makes branch a more likely too, but the reason to go first is that it is cheap.
-Transition: every one of these checks needs the file profiled first.
+LIVE, 2 minutes. The answer is a, for cost more than likelihood, though the ERP note about a
+stitched CSV makes it likelier too.
 ```
 
 ---
 
 ## S5. The thinking: profile, decide, reconcile, recompute
-*Four moves, drawn on the board before any tool opens.*
+*Four moves, drawn on the board before any tool opens, and a log written as you go.*
 
 ```mermaid
 flowchart LR
-    P["<b>profile</b><br/>count what arrived"] --> C["<b>decide</b><br/>drop, default, or keep and flag"]
+    P["<b>profile</b><br/>count what arrived"] --> C["<b>decide</b><br/>drop, default or flag"]
     C --> R["<b>reconcile</b><br/>rows, then rupees"]
-    R --> T["<b>recompute</b><br/>what changed downstream"]
-    C -.-> L["<b>decisions log</b><br/>a reason per act"]
+    R --> T["<b>recompute</b><br/>what changed"]
+    C -.-> L["<b>the logs</b><br/>a reason per act"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class L known
 ```
 
-Every cleaning act is a decision with a written reason. The reconciliation proves the clean file is the same data: input equals clean plus rejected, in rows and in rupees.
+Every cleaning act is a decision with a written reason. The reconciliation proves the clean file is the same data: input equals clean plus set aside, in rows and in rupees.
 
 ```notes
-LIVE, 4 minutes. Draw this on the board with the room and leave it up all day. The decisions log
-is the dotted arrow: it is written as you go, never reconstructed at the end.
-Say: Tuesday skipped the first box, and today we find out what that cost.
+LIVE, 4 minutes. Draw this with the room and leave it up all day. The dotted arrow is the log,
+written as you go and never reconstructed at the end. Tuesday skipped the first box.
 ```
 
 ---
 
-## S6. Five rungs, each a harder question
-*The morning climbs three of them in rounds; the afternoon runs all five alone.*
+## S6. Six chapters, each a harder question
+*Five this morning, the sixth after lunch, each with its own notebook.*
 
 ```timeline
-label: Rung 1 | title: The profile | body: What did the ERP send: records, complete, convertible, distinct.
-label: Rung 2 | title: The copies | body: Do some orders appear more than once, and where.
-label: Rung 3 | title: The identity rule | body: What makes two rows one order, and which copy stays.
-label: Rung 4 | title: Missing and malformed | body: Keep, drop or flag each defect, with a reason.
-label: Rung 5 | title: The bridge | body: From 2.1 to 1.9 in rupees, and Tuesday recomputed. | tone: dark
+label: Chapter 1 | title: What the ERP actually sent | body: The profile: present, convertible, distinct.
+label: Chapter 2 | title: The rows that repeat | body: What makes two rows one order.
+label: Chapter 3 | title: The copy that stays | body: The identity rule and its preference.
+label: Chapter 4 | title: What is missing or malformed | body: Drop, default or flag; coerce, reject or repair.
+label: Chapter 5 | title: The bridge to the books | body: The bridge, and Tuesday recomputed.
+label: Chapter 6 | title: The log the analyst audits | body: Logs a stranger can replay. | tone: dark
 ```
 
 ```notes
-LIVE, 3 minutes. Round 1 is rung 1, round 2 is rungs 2 and 3, round 3 is rungs 4 and 5. The
-escalated case after lunch runs all five alone on the same file.
+LIVE, 3 minutes. Each chapter runs the same way: the need, the options sized, the build, the trap,
+a second route, Kavya's review. Notebook numbers match chapter numbers. Then chapter 1.
 ```
 
 ---
 
-## SECTION 2: Round 1, the profile
-*Count what arrived before totalling anything, and let no failure turn into a number.*
+## SECTION 1: What the ERP actually sent
+*Count what arrived before totalling anything.*
 
 ```notes
-LIVE. Fifty minutes: the question and its picture (5), the demonstration (15), the trap (10),
-the room's harder variant (15), Kavya's review (5). Notebook 01_profile is the demonstration.
+LIVE. Thirty minutes. Notebook C2_W01_D03_01_profile is the demonstration.
 ```
 
 ---
 
-## S7. First, count what the ERP actually sent
-*A profile asks three questions of every field before any total.*
+## S7. The need: a total needs a file you have profiled
+*Anand's metric is Q1 revenue to the rupee, and every later number stands on this one.*
+
+```stats
+value: Q1 revenue | label: the metric | note: booked value, every status
+value: Anand | label: who asks | note: finance controller
+value: a month | label: a wrong number costs | note: Marketing waits, Finance distrusts
+```
+
+**The client asks.** "How many records did you receive, and how many can you use?"
+
+```notes
+LIVE, 3 minutes. The cost of a wrong answer here is the largest of the day, because every later
+chapter is built on this count. If the note says the dashboard is right and it is not, the analyst
+finds it and discounts every later number the team sends.
+```
+
+---
+
+## S8. Target Canada trusted data nobody had profiled
+*133 stores opened in 2013 and all closed in January 2015.*
+
+```stats
+value: 133 | label: stores closed | note: January 2015, CBC News
+value: ~$1 bn | label: first-year loss | note: CBC News
+value: ~30% | label: product data accurate | note: Salsify, citing Canadian Business
+```
+
+**What breaks.** Data typed into a new system under deadline was used before anyone counted what was complete and correct. Kalpa's ERP export was stitched during a migration too.
+
+```notes
+LIVE, 2 minutes. Sources checked 30 Sep 2026: CBC News, 15 January 2015; Salsify's summary of Joe
+Castaldo's Canadian Business investigation for the 30 percent figure, against 98 to 99 percent in
+the US. Say "about" and name the source aloud; the 30 percent is a secondary summary.
+```
+
+---
+
+## S9. Four ways to learn what arrived
+*Each option sized on this file: 201 rows, 10 fields.*
+
+| Option | What it reads | Time | What it catches |
+|---|---|---|---|
+| a) Total and compare | 201 amounts | under a second | stops on an unreadable amount |
+| b) Scroll it | 2,010 cells by eye | about 17 minutes | misses repeats far apart |
+| c) Sample 20 rows | 20 rows | about 10 minutes | 80% chance to meet a repeat |
+| d) Profile every field | 2,010 values by code | under a second | every count that does not fit |
+
+**Kavya's review.** d, then sample only where the profile points. What would switch it: a file with no field that names an order.
+
+```notes
+LIVE, 5 minutes. The minutes for b and c are an illustrative half-second a cell and half a minute a
+row. The 80 percent is exact: 1 minus C(186,20)/C(201,20), since 15 of 201 rows are repeats. The
+chance of the sample meeting the one unreadable amount is 10 percent.
+```
+
+---
+
+## S10. A profile asks three questions of every field
+*Present, convertible, distinct: what each field can be trusted for.*
 
 ```mermaid
 flowchart LR
@@ -182,118 +229,637 @@ flowchart LR
     class T bet
 ```
 
-**The client asks.** "How many records did you receive, and how many can you use?"
-
 ```notes
-LIVE, 3 minutes. The three counts per field are the whole of profiling at this level. Ask what
-"distinct" tells you about order_id that "present" cannot. Someone will say: whether ids repeat.
+LIVE, 2 minutes. Ask what "distinct" says about order_id that "present" cannot: whether ids
+repeat. Then open notebook 01. When open("orders.csv") fails with FileNotFoundError, two minutes
+on the last line, which names the folder Python looked in; the exports live in ../data/.
 ```
 
 ---
 
-## S8. Everything read from a file is text
-*The first amount arrives as the text '2200', and nothing converts it for you.*
+## S11. Question: which field falls furthest short?
+*Everything read from a CSV is text, and the profile counts it field by field.*
 
-```python
-with open(DATA / "C2_W01_D03_orders_STUDENT.csv", newline="") as f:
-    raw = list(csv.DictReader(f))
-len(raw)                  # 201
-raw[0]["amount"]          # '2200', a str
+```mermaid
+flowchart LR
+    R["<b>201 rows</b>"] --> F{"<b>which field<br/>is present least?</b>"}
 ```
 
-```stats
-value: 201 | label: rows read | note: the orders CSV
-value: str | label: every value | note: until converted on purpose
-value: 2 min | label: FileNotFoundError | note: the wrong folder, read the last line
-```
+**Question.** Which field shows the biggest gap between present and 201, as a letter? a) amount; b) discount; c) order_id; d) none, an ERP export is complete.
 
 ```notes
-LIVE, 8 minutes, notebook 01, section 1. Type open("orders.csv") first and let it fail: two
-minutes on the last line, which names the path Python looked in. The exports live in ../data/.
-Then run the real read. Ask: what does "900" < "1200" give? False, because text compares by
-character. That is why conversion is a decision.
+LIVE, 2 minutes. Letters in chat before the notebook cell runs.
 ```
 
 ---
 
-## S9. The profile, field by field
-*Three counts per field; three of them already disagree with the row count.*
+## S12. Answer: discount, and three smaller gaps matter more
+*Three counts do not fit 201, and each is a question for a later chapter.*
 
 | Field | Present | Convertible | Distinct |
 |---|---|---|---|
 | order_id | 201 | text | 186 |
-| customer_id | 201 | text | 69 |
 | amount | 201 | 200 | 161 |
-| status | 200 | text | 4 |
-| discount | 143 | 143 | 5 |
+| status | 200 | text | 3 |
+| discount | 143 | 143 | 4 |
 
-**What breaks.** Three counts do not fit 201: order ids distinct on 186, amounts convertible on 200, status present on 200. Each is a question for a later rung.
+**What breaks.** Order ids distinct on 186, amounts convertible on 200, status present on 200. Discount is Tuesday's optional field.
 
 ```notes
-LIVE, 7 minutes, notebook 01, section 2. Read the table row by row. The discount gap is Tuesday's
-optional field and is expected. The other three are today's. Do not explain any of them yet.
-When the room runs int() over the amounts, the loop stops with a ValueError: two minutes, read
-the last line aloud, write the value down, and move on. That is an error, not the lesson.
+LIVE, 3 minutes. The answer is b. Do not explain the other three yet; name the chapter that
+answers each: order_id in chapters 2 and 3, amount and status in chapter 4.
 ```
 
 ---
 
-## S10. Values present per field
-*Two fields fall short of 201, and only one of them was expected.*
+## S13. The plausible wrong answer: the top three orders
+*The analyst audits the largest orders first, and the hurried sort sends three.*
 
-```mermaid
-xychart-beta
-    title "Values present, out of 201 rows"
-    x-axis ["order_id", "segment", "date", "amount", "status", "discount"]
-    y-axis "rows" 0 --> 210
-    bar [201, 201, 201, 201, 200, 143]
+```python
+q2 = [r for r in raw if r["quarter"] == "Q2"]
+top = sorted(q2, key=lambda r: r["amount"], reverse=True)[:3]
+[r["amount"] for r in top]      # ['970', '970', '952000']
+```
+
+```stats
+value: Rs 970 | label: the largest Q2 order | note: as the hurried sort reports it
+value: 0 | label: orders above Rs 10 lakh | note: in the sample sent
 ```
 
 ```notes
-SELF-STUDY, 1 minute. The same counts as a picture. Presence alone hides the two biggest
-problems, which is why a profile carries three counts, not one.
+LIVE, 3 minutes, notebook 01, section 3. Run it and ask what the analyst would tie out tonight.
+Three small orders. The decision it misleads: an audit that passes on the part of the file
+that carries the least money.
 ```
 
 ---
 
-## S11. Question: 201 rows, 186 order ids. So what?
-*One count against another, before any total is computed.*
+## S14. Why it is wrong: text sorts by spelling
+*'970' beats '2945460' because 9 comes after 2.*
 
 ```mermaid
 flowchart LR
-    R["<b>201 rows</b>"] --- I["<b>186 distinct order ids</b>"]
-    I --> Q{"<b>what does<br/>the gap mean?</b>"}
+    A["<b>'970'</b>"] --> C{"<b>first character</b><br/>9 against 2"}
+    B["<b>'2945460'</b>"] --> C
+    C --> W["<b>'970' ranks higher</b>"]
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    class W bad
 ```
 
-**Question.** What do 201 rows and 186 distinct order ids tell you, as a letter? a) 15 orders are missing from the file; b) some orders appear on more than one row; c) 15 rows have no order id; d) nothing until the amounts are converted.
+**The check.** Can the largest Q2 order be smaller than every Business order, when Business sells in lakhs? The smallest Business order is Rs 2,03,060.
 
 ```notes
-LIVE, 2 minutes. Letters in chat. Option a is the common slip, reading the gap the wrong way.
+LIVE, 3 minutes. The check is a business question, which is the habit to build.
 ```
 
 ---
 
-## S12. Answer: some orders sit on more than one row
-*Fifteen rows beyond one per order: a lead for Anand's gap, not yet a proof.*
+## S15. The fix: convert once, then sort
+*The top three move from Rs 9,53,940 to Rs 62,11,460 of the quarter.*
 
 ```stats
-value: 201 | label: rows | note: every line after the header
-value: 186 | label: orders | note: distinct order ids
-value: 15 | label: extra rows | note: beyond one per order
+value: Rs 29,45,460 | label: the largest Q2 order | note: sorted as a number
+value: Rs 62,11,460 | label: the top three | note: against Rs 9,53,940 as text
+value: 200 + 1 | label: amounts | note: converted, and one in the rejects log
 ```
 
-**Kavya's review.** A gap between rows and keys is where a reconciliation starts. Write it down now; round 2 finds out what it carries in rupees.
+**What changed.** The same convert() that fixes the sort logs the one amount that fails, and Q1 over the amounts that convert reads Rs 2,09,98,210: the dashboard's 2.1 crore is honest arithmetic on this file.
 
 ```notes
-LIVE, 2 minutes. The answer is b. Option c is ruled out by the profile: order_id is present on
-all 201. Option d waits for something the count already told us. Transition: before rupees,
-the amounts have to convert, and there is a tempting way to make them.
+LIVE, 3 minutes. The your-turn cell has the room run int() over every amount and meet the
+ValueError: two minutes, read the last line, write the value down. Then convert() runs clean.
+Chapter 5 comes back to the Rs 29 lakh order.
 ```
 
 ---
 
-## S13. The plausible wrong answer: failures become zero
-*The ValueError stops the pass, so a helper turns anything unreadable into 0.*
+## S16. A second route, and a second witness
+*A Counter over ids and the rejects log reach the profile's counts by other code.*
+
+```stats
+value: 186 = 186 | label: distinct ids | note: the profile and a Counter
+value: 1 = 1 | label: amounts that fail | note: the profile and the rejects log
+value: 119 | label: JSON feed records | note: complete, then the file is cut
+```
+
+**When to switch.** The profile for a first look; the Counter when one field matters, since it keeps how often each id appears. The JSON feed is a witness to compare against, never a replacement.
+
+```notes
+LIVE, 3 minutes. The JSONDecodeError is met in an empty cell: two minutes, open the file at the
+line and column it names. A CSV writes a missing value as an empty string and JSON leaves the key
+out; profile() uses .get(field, "") so both count the same.
+```
+
+---
+
+## S17. Kavya's review of chapter 1
+*The profile comes first, and a failure is counted next to the successes.*
+
+**Kavya's review.** Before you total anything, tell me how many records you received, how many are complete, how many convert and how many are distinct.
+
+**In the interview.** [F] Everything read from a CSV is a string; what breaks and where do you convert?
+
+```cards
+icon: list-checks | eyebrow: Chapter 1 | title: Established | body: 201 rows, 186 order ids, 200 amounts that convert, 1 logged.
+icon: circle-help | eyebrow: Chapter 2 | title: Open | body: Which rows repeat, and what makes two rows one order. | tone: dark
+```
+
+```notes
+LIVE, 2 minutes. One breath: arithmetic, comparison and sorting break or silently lie on text;
+convert once at the boundary in one function that returns the value or the reason; log failures.
+```
+
+---
+
+## SECTION 2: The rows that repeat
+*Say what makes two rows one order before counting a single duplicate.*
+
+```notes
+LIVE. Thirty minutes. Notebook C2_W01_D03_02_duplicates is the demonstration.
+```
+
+---
+
+## S18. The need: 186 orders on 201 rows
+*If the migration exported orders twice, Q1 revenue and every per-customer rate are inflated.*
+
+```mermaid
+xychart-beta
+    title "Rows beyond one per order, by quarter"
+    x-axis ["Q1", "Q2"]
+    y-axis "rows" 0 --> 16
+    bar [14, 1]
+```
+
+**The client asks.** "Which rows did the export count twice, and how do you know they are copies?"
+
+```notes
+LIVE, 3 minutes. Q1 holds 114 rows for 100 orders, Q2 87 for 86. The extra rows sit in the quarter
+the migration touched. Cost of a wrong answer: keep Rs 20 lakh that was never earned, or delete
+real orders from the books.
+```
+
+---
+
+## S19. Starbucks billed a million customers twice
+*One processing fault, the same purchase recorded twice, about 7,800 stores.*
+
+```stats
+value: 22 to 23 May | label: 2009 | note: the fault ran two days
+value: ~7,800 | label: stores | note: company-owned, US and Canada
+value: ~1 million | label: customers repaid | note: NBC News and AP
+```
+
+**What breaks.** A repeated record looks like a second purchase until someone asks what makes two records one.
+
+```notes
+LIVE, 2 minutes. Source: NBC News and AP, 10 June 2009, checked 30 Sep 2026. It is a duplicated
+charge, the customer's side of the same mistake Kalpa's export makes in its revenue.
+```
+
+---
+
+## S20. Four keys, sized on the ERP file
+*The same file, four rules for what makes two rows one order.*
+
+| Key | Rows flagged | Q2 after | Copies missed | Real rupees removed |
+|---|---|---|---|---|
+| a) Whole record | 0 | Rs 1,87,03,710 | 15 | Rs 0 |
+| b) Record less line | 13 | Rs 1,87,03,710 | 2 | Rs 0 |
+| c) order_id | 15 | Rs 1,87,00,000 | 0 | Rs 0 |
+| d) Customer and amount | 15 | Rs 1,69,29,000 | 1 | Rs 17,71,000 |
+
+**Kavya's review.** c, because the ERP issues one id per order. What would switch it: two systems issuing their own ids, and then the key is the system plus the id.
+
+```notes
+LIVE, 5 minutes. The fuzzy key costs 20,100 pair comparisons here against 201 lookups for a key,
+and about 2 lakh crore pairs on a file of 2 crore rows. Point at d: same count as c, different rows.
+```
+
+---
+
+## S21. Question: the dedupe reports zero. Believe it?
+*Chapter 1 taught the rejects log to carry each row's file line.*
+
+```python
+kept = whole_record_dedupe(raw)   # every field compared
+len(raw) - len(kept)              # 0
+```
+
+**Question.** What do you do with a dedupe that finds zero, as a letter? a) report no duplicates; b) count distinct ids against rows first; c) rerun it; d) sort the file and look.
+
+```notes
+LIVE, 2 minutes. Letters in chat. Most say a, since the function ran without error.
+```
+
+---
+
+## S22. Answer: 201 rows and 186 ids cannot both be true
+*The plausible wrong number is zero duplicates and Q1 unchanged at Rs 2,09,98,210.*
+
+```mermaid
+flowchart LR
+    L["<b>the line field</b><br/>2, 3, 4 ... 202"] --> U["<b>every record<br/>unique</b>"]
+    U --> Z["<b>0 duplicates</b><br/>Q1 Rs 2,09,98,210"]
+    Z --> N["<b>the note: Finance<br/>is Rs 20 lakh short</b>"]
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    class Z,N bad
+```
+
+**What breaks.** The file line is where a row sat, never what the order is. Leave it in the key and no two rows can match. The answer is b.
+
+```notes
+LIVE, 4 minutes. Show the five invented records in notebook 02: the whole record with the line
+finds 0, without it finds 2. The decision it misleads: Finance sent hunting for revenue that
+was never earned.
+```
+
+---
+
+## S23. The fix: 15 orders appear exactly twice
+*Grouped by order_id: 14 pairs in Q1, one in Q2, none three times.*
+
+```stats
+value: 171 | label: orders once | note: one row each
+value: 15 | label: orders twice | note: one row too many each
+value: 14 + 1 | label: by quarter | note: Q1 and Q2
+```
+
+**What changed.** A count of nothing became a list of 15 orders, each with two lines. The room lists them in the empty cell and reads the second line numbers.
+
+```notes
+LIVE, 4 minutes. Do not read the ids aloud. Ask what the second line numbers have in common:
+they sit together at the end of the file, where the second extract was appended.
+```
+
+---
+
+## S24. The harder variant: the same count, other rows
+*The fuzzy key flags 15 and the order id flags 15; they share 14.*
+
+```mermaid
+flowchart LR
+    O["<b>order_id key</b><br/>15 rows"] --> S["<b>14 shared</b>"]
+    F["<b>customer and amount</b><br/>15 rows"] --> S
+    F --> X["<b>1 real order</b><br/>Rs 17,71,000"]
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    class X bad
+```
+
+**What breaks.** A count that matches is not a match. A Business customer spent the same Rs 17,71,000 again next quarter, and the fuzzy key calls it a copy.
+
+```notes
+LIVE, 4 minutes. The decision it misleads: a reviewer comparing counts signs off a pass that
+removes a real Q2 order. Always compare the rows, never only their number.
+```
+
+---
+
+## S25. A second route: rows less ids, per quarter
+*Arithmetic gives how many; only the groups give which.*
+
+```stats
+value: 14 + 1 | label: rows less distinct ids | note: Q1 and Q2
+value: 15 | label: from the groups | note: sum of size less one
+```
+
+**When to switch.** The arithmetic is the one-line check to run first on any file; the groups are the pass, because only they can feed a log.
+
+```notes
+LIVE, 3 minutes. Both routes in notebook 02 assert 15.
+```
+
+---
+
+## S26. Kavya's review of chapter 2
+*A count of duplicates without an identity rule is a count of nothing.*
+
+**Kavya's review.** Tell me what makes two rows the same order before you tell me how many duplicates there are.
+
+**In the interview.** [F] How do you find duplicates, and what makes two records the same?
+
+```cards
+icon: list-checks | eyebrow: Chapter 2 | title: Established | body: The order_id is the identity; 15 orders appear twice, 14 in Q1.
+icon: circle-help | eyebrow: Chapter 3 | title: Open | body: Which copy of each pair stays, and what that does to Q1. | tone: dark
+```
+
+```notes
+LIVE, 2 minutes. One breath: the business's identity rule first, rows against distinct keys, and
+weigh the copies in money. Then the 10-minute break before chapter 3 if the clock says so; the day
+sheet places it before chapter 4.
+```
+
+---
+
+## SECTION 3: The copy that stays
+*For thirteen pairs it does not matter; for two it moves Q1 and a date.*
+
+```notes
+LIVE. Thirty minutes. Notebook C2_W01_D03_03_identity_rule is the demonstration.
+```
+
+---
+
+## S27. The need: the analyst ties out to the rupee
+*A choice that loses one order's amount turns the reconciliation into a finding against the team.*
+
+```mermaid
+flowchart LR
+    P["<b>a pair</b><br/>two rows, one order"] --> E["<b>13 pairs</b><br/>identical"]
+    P --> D["<b>2 pairs</b><br/>copies disagree"]
+    D --> Q["<b>which stays?</b><br/>moves Q1 and a date"]
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class Q bet
+```
+
+**The client asks.** "When two copies disagree, which one did you keep, and why that one?"
+
+```notes
+LIVE, 3 minutes. Anand's analyst is the reader. Every choice is visible to her in the log.
+```
+
+---
+
+## S28. India's GST portal writes the identity rule into law
+*A business invoice is one invoice per supplier GSTIN, number, type and year.*
+
+```stats
+value: 4 fields | label: the identity | note: GSTIN, number, type, year
+value: rejected | label: a second copy | note: GSTN e-invoice FAQ
+value: Rs 5 crore | label: turnover threshold | note: since 1 August 2023
+```
+
+**What breaks.** Without a written rule for what makes two records one, every team chooses its own survivor. Kalpa's Business segment sells to companies and meets this rule on every invoice.
+
+```notes
+LIVE, 2 minutes. Sources checked 30 Sep 2026: GSTN e-invoice FAQ version 1.4, question 65, and
+Notification 10/2023-Central Tax. The portal hashes the same fields into the invoice reference
+number, and a repeat is refused at the door.
+```
+
+---
+
+## S29. Four ways to choose the survivor
+*Sized on the ERP file: Q1 against the books.*
+
+| Option | Q1 | Against the books | Unreadable kept |
+|---|---|---|---|
+| a) First in the file | Rs 1,89,98,210 | -Rs 1,790 | 1 |
+| b) Last in the file | Rs 1,90,00,000 | Rs 0 | 0 |
+| c) The copy that validates | Rs 1,90,00,000 | Rs 0 | 0 |
+| d) Escalate all 15 | open | open | 0, after days of waiting |
+
+**Kavya's review.** c, and escalate only the pair whose valid copies disagree. Last lands here by file order, which is luck. What would switch it: the ERP team saying the second extract was a corrected re-run.
+
+```notes
+LIVE, 5 minutes. Thirteen of the fifteen escalations would carry no question at all.
+```
+
+---
+
+## S30. The rule, drawn before the file
+*Three kinds of pair, each with its survivor, on invented records.*
+
+```mermaid
+flowchart TD
+    G["<b>rows sharing an order_id</b>"] --> A["<b>identical</b><br/>keep the first"]
+    G --> B["<b>one amount unreadable</b><br/>keep the one that validates"]
+    G --> C["<b>valid, fields disagree</b><br/>keep the first, log, ask"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class A,B,C known
+```
+
+```notes
+LIVE, 3 minutes. Invented pairs INV-11 to INV-13 in notebook 03. For the disagreeing pair no rule
+inside the file can say which date is true; the rule turns the date into a written question.
+```
+
+---
+
+## S31. Question: after the rule, what is Q1?
+*186 orders kept, 15 rows set aside, each with a reason.*
+
+```mermaid
+flowchart LR
+    R["<b>201 rows</b>"] --> K["<b>identity rule</b>"] --> Q{"<b>Q1?</b>"}
+```
+
+**Question.** Q1 after the identity rule, as a letter? a) Rs 2,09,98,210; b) Rs 1,89,98,210; c) Rs 1,90,00,000; d) Rs 2,00,00,000.
+
+```notes
+LIVE, 2 minutes. Letters in chat.
+```
+
+---
+
+## S32. Answer: Rs 1,90,00,000, the books to the rupee
+*Q2 moves to Rs 1,87,00,000, and no revenue left with the unreadable copy.*
+
+```stats
+value: Rs 1,90,00,000 | label: Q1 | note: the books, to the rupee
+value: Rs 1,87,00,000 | label: Q2 | note: one row per order
+value: 186 + 15 | label: rows | note: kept and set aside
+```
+
+**What changed.** The amount chapter 1 could not read was one copy of a pair whose twin carries the value. The answer is c.
+
+```notes
+LIVE, 3 minutes. The your-turn cell prints the two log rows whose reason says more than "second
+copy". Each learner writes the question they would send the ERP team.
+```
+
+---
+
+## S33. The plausible wrong answer: Q1 ties, so stop
+*The whole record less the line lands Q1 on the books to the rupee.*
+
+```stats
+value: Rs 1,90,00,000 | label: Q1 | note: equal to the books
+value: 188 | label: orders reported | note: in the clean file
+value: Rs 1,87,03,710 | label: Q2 | note: sent on to Marketing
+```
+
+```notes
+LIVE, 3 minutes, notebook 03, section 3. Ask who would ship this. Most hands go up: Q1 ties.
+```
+
+---
+
+## S34. Why it is wrong: a tie in rupees proves no rows
+*188 rows for 186 orders: one Q2 order counted twice, one unreadable row kept.*
+
+```mermaid
+flowchart LR
+    T["<b>Q1 ties</b><br/>to the books"] --> H["<b>the misses</b><br/>cost Q1 nothing"]
+    H --> R["<b>188 rows</b><br/>186 orders"]
+    R --> Q["<b>Q2 Rs 3,710 high</b><br/>one order twice"]
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    class R,Q bad
+```
+
+**The check.** Rows kept against distinct ids, the check chapter 2 taught.
+
+```notes
+LIVE, 3 minutes. The two pairs this pass misses cost Q1 nothing: one copy's amount cannot be read,
+so it adds nothing to the sum. The decision it misleads: a Q2 order count one too high in
+Retail-Plus, the segment Tuesday's finding is about.
+```
+
+---
+
+## S35. Rows against rupees: 98 percent in two rows
+*Of Rs 19,98,210 set aside in Q1, two Business rows carry Rs 19,67,560.*
+
+```mermaid
+xychart-beta
+    title "Q1 set aside: rows and rupees by segment"
+    x-axis ["Business", "Retail-Plus", "Retail-Core"]
+    y-axis "share of the total, percent" 0 --> 100
+    bar [14, 79, 7]
+    line [98.5, 1.4, 0.1]
+```
+
+**What changed.** Anand's gap is two corporate orders counted twice; Tuesday's rate was measured on eleven extra Retail-Plus rows. Bars are rows, the line is rupees.
+
+```notes
+LIVE, 3 minutes. Rows: 2, 11 and 1 of 14. Rupees: Rs 19,67,560, Rs 27,760 and Rs 2,890. Two
+conversations follow: Anand's gap, and Tuesday's finding, which chapter 5 recomputes.
+```
+
+---
+
+## S36. A second route: a dict keyed by id
+*A dictionary keeps one value per key, so it is an identity rule in one line.*
+
+```python
+by_id = {r["order_id"]: r for r in raw if convert(r["amount"])[0] is not None}
+len(by_id)     # 186, the same orders at the same amounts
+```
+
+**When to switch.** The dict is the fast check that the totals are right. It keeps the last copy silently and logs nothing, so it is never the pass.
+
+```notes
+LIVE, 3 minutes. Notebook 03 asserts the same 186 ids and amounts by both routes.
+```
+
+---
+
+## S37. Kavya's review of chapter 3
+*A preference for the copy that validates, and a reason on every row set aside.*
+
+**Kavya's review.** When Q1 ties to the books, check the rows before you celebrate.
+
+**In the interview.** [F] Two copies of an order disagree; which do you keep, and what did the choice cost?
+
+```cards
+icon: list-checks | eyebrow: Chapter 3 | title: Established | body: 186 orders, 15 rows set aside, Q1 on the books.
+icon: circle-help | eyebrow: Chapter 4 | title: Open | body: One order has no status, 55 no discount, and the next export will carry an unreadable amount with no twin. | tone: dark
+```
+
+```notes
+LIVE, 2 minutes. Then the 10-minute break.
+```
+
+---
+
+## SECTION 4: What is missing or malformed
+*Every defect is a decision with a written claim beside it.*
+
+```notes
+LIVE. Thirty minutes. Notebook C2_W01_D03_04_missing_malformed is the demonstration.
+```
+
+---
+
+## S38. The need: two decisions the log must carry
+*Operations reads the delivered share weekly; Finance reads every rupee.*
+
+```cards
+icon: circle-dashed | eyebrow: A missing value | title: One order, no status | body: Revenue counts it; the delivered share needs its fate.
+icon: circle-dashed | eyebrow: A missing value | title: 55 orders, no discount | body: Tuesday read the gap as zero.
+icon: triangle-alert | eyebrow: A malformed value | title: An amount that will not convert | body: The next export will carry one with no twin. | tone: dark
+```
+
+```notes
+LIVE, 3 minutes. Each choice keeps revenue whole, invents a fact or deletes one.
+```
+
+---
+
+## S39. Amazon UK sold stock at 1p for an hour
+*A repricing tool's error set hundreds of items to a penny on 12 December 2014.*
+
+```stats
+value: 1p | label: the price | note: set by a repricing tool
+value: about an hour | label: the window | note: a Friday evening
+value: most | label: orders cancelled | note: once Amazon spotted it
+```
+
+**What breaks.** A value that falls to a default is still treated as real by everything downstream. A coerced zero in a report does the same.
+
+```notes
+LIVE, 2 minutes. Source: BBC News, 15 December 2014, checked 30 Sep 2026. Counts beyond "hundreds
+of items" were not verified and stay out.
+```
+
+---
+
+## S40. Two decisions, each sized
+*The missing status on Q2, and the unreadable amount against the books.*
+
+| Missing status | Q2 revenue | Delivered | Share |
+|---|---|---|---|
+| a) Drop | Rs 1,86,98,150 | 57 of 85 | 67.1% |
+| b) Default delivered | Rs 1,87,00,000 | 58 of 86 | 67.4% |
+| c) Impute from last order | Rs 1,87,00,000 | 58 of 86 | 67.4% |
+| d) Keep and flag | Rs 1,87,00,000 | 57 of 86 | 66.3% |
+
+**Kavya's review.** Status: d. Amount: reject to the log, and repair only from an independent copy. What would switch them: a delivery system to ask, or a second export cut from the same extract.
+
+```notes
+LIVE, 5 minutes. The amount options: coerce to zero misses the books by Rs 1,790 and leaves a Rs 0
+order; reject leaves the order's rupees out until repaired; reading a word as a number is a guess;
+a twin from the other extract repairs it exactly. Walk them from the notebook's second table.
+```
+
+---
+
+## S41. Question: what should the missing discount be?
+*55 of 186 kept orders carry no discount; revenue does not need the field.*
+
+```mermaid
+flowchart LR
+    D["<b>55 blanks</b>"] --> Z["<b>read as zero?</b>"]
+    D --> U["<b>kept unknown?</b>"]
+```
+
+**Question.** The average discount with blanks read as zero, against the average over orders that carry one, as a letter? a) the same; b) a few rupees apart; c) about a quarter lower with zeros; d) higher with zeros.
+
+```notes
+LIVE, 2 minutes. This is Tuesday's trap coming back in a new place.
+```
+
+---
+
+## S42. Answer: zeros pull it from Rs 67 to Rs 47
+*Keep and flag: any discount figure is quoted over the orders that carry one.*
+
+```stats
+value: Rs 67 | label: over orders that carry one | note: 131 orders
+value: Rs 47 | label: blanks read as zero | note: 186 orders
+value: 55 | label: flagged | note: the count beside every figure
+```
+
+**What changed.** The answer is c. The field stays blank, the count goes beside the figure, and revenue is untouched.
+
+```notes
+LIVE, 2 minutes. Then the day's second spine trap.
+```
+
+---
+
+## S43. The plausible wrong answer: failures become zero
+*A helper turns anything unreadable into 0, and the first copy wins.*
 
 ```python
 def to_int(value):
@@ -304,606 +870,276 @@ def to_int(value):
 ```
 
 ```stats
-value: 201 of 201 | label: amounts convert | note: as the coerced profile reports it
-value: Rs 2,09,98,210 | label: Q1 revenue | note: reads as the dashboard's 2.1 crore
-value: 0 | label: failures logged | note: nothing anywhere says so
+value: 201 of 201 | label: amounts convert | note: the coerced profile
+value: 0 | label: rows in the rejects log | note: nothing to explain
+value: Rs 1,89,98,210 | label: Q1 after the dedupe | note: rounds to 1.9 crore
 ```
 
 ```notes
-LIVE, 5 minutes, notebook 01, section 3. Run it and let the room enjoy it: the loop finishes,
-the profile is perfect, and Q1 matches the dashboard. Ask: who would you now tell that Finance is
-wrong? Then turn the slide.
+LIVE, 3 minutes, notebook 04, section 3. Let the room enjoy it: the loop finishes, the profile is
+perfect, and Q1 rounds to the books. Ask who they would now tell the file is clean.
 ```
 
 ---
 
-## S14. Why it is wrong: a zero is a claim
-*The coerced file now holds an order worth nothing, and the evidence is gone.*
+## S44. Why it is wrong: a zero is a claim
+*Once the unreadable copy is worth Rs 0 it passes as valid, and the rule keeps it.*
 
 ```mermaid
 flowchart LR
-    A["<b>an amount int()<br/>cannot read</b>"] --> Z["<b>to_int gives 0</b>"]
-    Z --> C["<b>claim: sold<br/>for Rs 0</b>"]
-    C --> B["<b>Finance booked it<br/>at a value</b>"]
-    Z --> P["<b>profile: every<br/>amount converts</b>"]
+    A["<b>unreadable amount</b>"] --> Z["<b>to_int gives 0</b>"]
+    Z --> V["<b>looks valid</b>"]
+    V --> K["<b>first copy kept</b><br/>Rs 0 order"]
+    K --> S["<b>Q1 Rs 1,790 short</b>"]
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
-    class Z,C,P bad
+    class Z,K,S bad
 ```
 
-**The check.** Ask the result a business question: can a Kalpa order be worth nothing? The coerced file holds one order at Rs 0, and the smallest real amount in the export is Rs 400.
+**The check.** Can a Kalpa order be worth nothing? The smallest real order in the export is Rs 680, and the failure count fell from one to zero while nothing was fixed.
 
 ```notes
-LIVE, 5 minutes. The decision it would have misled: a note telling Anand that every amount
-converts and his books are behind. His analyst ties out to the rupee and finds a Rs 0 order in a
-file you called clean. The check is a question about the business, not about Python.
+LIVE, 3 minutes. The decision it misleads: a note calling the file clean with an order at Rs 0 in
+it, which the analyst finds on her first tie-out.
 ```
 
 ---
 
-## S15. The fix: convert on purpose, and log the failure
-*A conversion returns the number or the reason, and the row is set aside where anyone can read it.*
-
-```mermaid
-flowchart LR
-    T["<b>201 amounts</b><br/>as text"] --> C["<b>convert()</b><br/>value or reason"]
-    C --> A["<b>accepted</b><br/>200 numbers"]
-    C --> L["<b>rejects log</b><br/>line, field, value, reason"]
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    class L known
-```
-
-**What changed.** The rupees did not move: Q1 over the amounts that convert is still Rs 2,09,98,210. One order moved from "sold for Rs 0" to "amount unreadable, set aside on the line the log names", and the profile now reports one failure instead of none.
-
-```notes
-LIVE, 5 minutes. Show the rejects log as a count, then have every learner print it in the empty
-your-turn cell and open the CSV at the line it names. Ask: what would you need to know to give
-that order its real amount? Leave the question open; round 2 answers it.
-```
-
----
-
-## S16. The room's variant: two more files
-*A second source is worth having only once it is profiled too.*
-
-```cards
-icon: file-json | eyebrow: The app's feed | title: The JSON feed | body: json.load stops with a JSONDecodeError that names a line and a column. Read it for two minutes, open the file there, then recover the complete records one at a time.
-icon: files | eyebrow: The vendor | title: A short copy of the CSV | body: Profile it with the same function before using a row. Which counts do not fit 39 orders in two segments?
-icon: scale | eyebrow: The comparison | title: Two formats, one question | body: A CSV writes a missing value as an empty string; JSON leaves the key out. Does your profile count both the same way? | tone: dark
-```
-
-```notes
-LIVE, 15 minutes, notebook 01, section 4. Pairs. The feed yields 119 complete records, all of
-them orders the CSV holds. The vendor copy reads 40 rows, 39 amounts convert, and three
-distinct segments where two were expected. Let pairs find why in the empty cell; do not say it.
-```
-
----
-
-## S17. Kavya's review of round 1
-*The profile comes first, and a failure is counted next to the successes.*
-
-**Kavya's review.** A conversion that never fails is a conversion that lies. Show me the count of failures next to the count of successes, and the log that names each one.
-
-**In the interview.** [F] Everything read from a CSV is a string; what breaks and where do you convert?
-
-```cards
-icon: list-checks | eyebrow: Round 1 | title: Established | body: 201 rows, 186 orders, 200 amounts that convert and 1 in the rejects log.
-icon: circle-help | eyebrow: Round 2 | title: Open | body: Why 15 rows beyond one per order, and what they carry in rupees. | tone: dark
-```
-
-```notes
-LIVE, 5 minutes. The interview answer in one breath: arithmetic, comparison and sorting break or
-silently lie on text; convert once at the boundary in one function that returns the value or
-the reason; count and log the failures; never default a failure without writing it down.
-```
-
----
-
-## SECTION 3: Round 2, the copies
-*Say what makes two rows one order before counting any duplicates.*
-
-```notes
-LIVE. Fifty minutes. Notebook 02_duplicates is the demonstration. The trap in this round is
-the one most analysts meet in their first month.
-```
-
----
-
-## S18. The extra rows sit in the migration quarter
-*If the migration copied rows, the quarter it touched carries the extra rupees.*
-
-```mermaid
-xychart-beta
-    title "Rows beyond one per order, by quarter"
-    x-axis ["Q1", "Q2"]
-    y-axis "rows" 0 --> 16
-    bar [14, 1]
-```
-
-**The client asks.** "Which Q1 figure is right? My analyst will want to see every row you removed."
-
-```notes
-LIVE, 5 minutes, notebook 02, section 1. Q1 holds 114 rows for 100 orders and Q2 holds 87 for
-86. Ask: what does that tell you about where Anand's Rs 20 lakh sits? In Q1, the migration's
-quarter. A lead, not a proof, until the rows are removed.
-```
-
----
-
-## S19. The plausible wrong answer: zero duplicates
-*The rows carry their file line for the rejects log, and a whole-record dedupe finds nothing.*
-
-```python
-seen, kept = set(), []
-for r in accepted:                       # each r carries r["line"]
-    key = tuple(sorted(r.items()))       # the whole record
-    if key not in seen:
-        seen.add(key); kept.append(r)
-len(accepted) - len(kept)                # 0
-```
+## S45. The fix: reject, then repair only from a witness
+*The JSON feed repeats the defect; the second extract carried the value.*
 
 ```stats
-value: 0 | label: duplicates found | note: the whole-record dedupe
-value: Rs 2,09,98,210 | label: Q1 | note: unchanged
-value: Rs 20 lakh | label: sent back to Finance | note: as their problem
+value: 118 of 119 | label: feed amounts agree | note: with the clean file
+value: 1 | label: unreadable in the feed | note: a copy of the defect
+value: Rs 0 | label: Q1 against the books | note: after reject and the rule
 ```
 
+**What changed.** The Rs 0 order leaves the clean file, the twin with the value stays, and the profile reports the one failure the export really had.
+
 ```notes
-LIVE, 5 minutes. The dedupe runs clean and reports zero. The decision it would mislead: telling
-Anand there are no duplicates and his books are Rs 20 lakh short, which sends Finance hunting for
-revenue that was never earned. Ask: which line of round 1 contradicts this result?
+LIVE, 3 minutes. Show the invented pair INV-21 too: reading "fourteen" as 14 misses a Rs 1,400
+order by Rs 1,386. A word is never an amount.
 ```
 
 ---
 
-## S20. Why it is wrong: the line makes every row unique
-*Two copies of one order sit on different lines, so a whole-record key can never match.*
+## S46. A second route: the profile against the logs
+*Aggregate counts and row logs must agree on every defect.*
 
-```mermaid
-flowchart LR
-    A["<b>INV-01, line 2</b><br/>Rs 2,400, 03 May"] -.->|"whole record"| X["<b>different</b><br/>the lines differ"]
-    B["<b>INV-01, line 4</b><br/>Rs 2,400, 03 May"] -.-> X
-    A -->|"order_id"| S["<b>same order</b>"]
-    B --> S
-    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    class X bad
-    class S known
-```
-
-**The check.** 201 rows and 186 distinct order ids cannot both hold in a file with zero duplicates. The count from round 1 contradicts the dedupe, so the dedupe compared the wrong thing.
-
-```notes
-LIVE, 5 minutes. The records on this slide are invented. The file line is where a row sat, not
-what the order is. The same failure appears with a load timestamp or a surrogate key in any
-warehouse. Say that once; it comes back in Week 2.
-```
-
----
-
-## S21. The identity rule: say what makes two rows one
-*The ERP issues one order_id per order, so order_id is the identity.*
-
-| Candidate key | What it would say | Verdict |
+| Defect | The profile | The logs |
 |---|---|---|
-| Every field, line included | Nothing is ever a duplicate | Wrong: bookkeeping is not identity |
-| Every field, line excluded | Only exact copies match | Misses copies that differ in one field |
-| customer_id and date | Two real orders on one day merge | Wrong: loses revenue |
-| order_id | One row per order the ERP issued | The identity rule |
+| Status missing | 1 | 1 |
+| Amount that fails | 0 | 0 |
+| Discount missing | 55 | 55 |
 
-```stats
-value: 186 | label: orders kept | note: one row per order_id
-value: 15 | label: rows set aside | note: each with a reason
-```
+**When to switch.** The profile finds defects; the log shows them. Profile the clean file at the end of every pass.
 
 ```notes
-LIVE, 5 minutes. Walk the four keys. The third is the dangerous one in retail: a loyal customer
-places two orders on the same day. The rule is written in the decisions log before it is run.
+LIVE, 3 minutes. A defect that slipped past the log would show as a count that disagrees.
 ```
 
 ---
 
-## S22. Question: which copy of a pair stays?
-*Three invented pairs, each sharing an order id.*
+## S47. Kavya's review of chapter 4
+*Drop, default, or keep and flag: each is a claim about the business.*
 
-| Pair | Copy one | Copy two |
-|---|---|---|
-| INV-11 | Rs 1,800, 02 May, line 12 | Rs 1,800, 02 May, line 90 |
-| INV-12 | amount "n/a", 14 May, line 20 | Rs 2,600, 14 May, line 95 |
-| INV-13 | Rs 3,100, 21 Aug, line 40 | Rs 3,100, 30 Jul, line 99 |
+**Kavya's review.** Write the claim beside the decision. And never fill money.
 
-**Question.** For INV-12, which copy stays, as a letter? a) the first, since the first extract is the original; b) the one whose amount converts; c) both, until Finance decides; d) neither, since the pair disagrees.
-
-```notes
-LIVE, 3 minutes. These records are invented. Take letters, then ask the same question for INV-13,
-where both copies are valid and disagree on the date.
-```
-
----
-
-## S23. Answer: the copy that validates, and a logged doubt
-*Keeping the first copy would keep the one that cannot be summed.*
-
-```mermaid
-flowchart TB
-    K["<b>rows sharing an order_id</b>"] --> I["<b>identical</b><br/>keep the first"]
-    K --> U["<b>one amount unreadable</b><br/>keep the copy that validates"]
-    K --> D["<b>valid, fields disagree</b><br/>keep the first, log it, ask the ERP team"]
-    classDef good fill:#E8F5EE,stroke:#1F8A5B,color:#1A0F5C
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    class I,U good
-    class D known
-```
-
-**Kavya's review.** A rule you can say in one sentence, a preference for the copy that validates, and a reason on every row set aside. A doubt the file cannot settle goes to the people who own the source.
-
-```notes
-LIVE, 4 minutes. The answer is b. For INV-13, no rule inside the file can say which date is true:
-keep the first extract, log the disagreement, and write the question for the ERP team. Then have
-every learner run the rule on the real file and print, in the your-turn cell, the rows whose
-reason says the copies differ.
-```
-
----
-
-## S24. What changed: Q1 lands on the books
-*One row per order takes Q1 from the dashboard's figure to Finance's.*
-
-```stats
-value: Rs 2,09,98,210 | label: Q1 as exported | note: amounts that convert
-value: Rs 1,90,00,000 | label: Q1, one row per order | note: Anand's 1.9 crore
-value: 14 of 15 | label: rows set aside in Q1 | note: the migration's quarter
-```
-
-```mermaid
-xychart-beta
-    title "Q1 revenue in Rs lakh"
-    x-axis ["as exported", "one row per order"]
-    y-axis "Rs lakh" 180 --> 212
-    bar [209.98, 190.00]
-```
-
-```notes
-LIVE, 4 minutes. The unreadable amount from round 1 turns out to be a copy whose twin carries the
-value, so no revenue left with it. Ask: is this the proof Anand asked for? Not yet: it is a
-total. The proof is the bridge in round 3.
-```
-
----
-
-## S25. The room's variant: count the rows, weigh the rupees
-*Fifteen rows sound like one problem; the rupees say it is two.*
-
-```mermaid
-xychart-beta
-    title "Rupees in the rows set aside, Rs lakh"
-    x-axis ["Business", "Retail-Plus", "Retail-Core"]
-    y-axis "Rs lakh" 0 --> 21
-    bar [19.68, 0.31, 0.03]
-```
-
-**Question for pairs.** Of the Rs 19,98,210 removed from Q1, what share did the Business rows carry, given they are 2 of the 14 rows? Compute it in the notebook, then say which conversation each group of rows belongs to.
-
-```notes
-LIVE, 15 minutes, notebook 02, section 4. Two Business rows carry about 98 percent of the
-rupees; most of the rows sit in Retail-Plus in Q1. That split decides two conversations: Anand's
-gap is two corporate orders counted twice, and Tuesday's Retail-Plus finding was measured on
-inflated Q1 counts. Round 3 recomputes it.
-```
-
----
-
-## S26. Kavya's review of round 2
-*An identity rule first, a reason per row, and the rupees each group carried.*
-
-**Kavya's review.** Tell me what makes two rows the same order before you tell me how many duplicates there are. A count of duplicates without an identity rule is a count of nothing.
-
-**In the interview.** [F] How do you find duplicates, and what makes two records the same?
+**In the interview.** [S] How do you handle missing data?
 
 ```cards
-icon: list-checks | eyebrow: Round 2 | title: Established | body: 186 orders by order_id, 15 rows set aside with reasons, Q1 at Rs 1,90,00,000.
-icon: circle-help | eyebrow: Round 3 | title: Open | body: Two decisions left, the proof in rupees, and what this does to Tuesday. | tone: dark
+icon: list-checks | eyebrow: Chapter 4 | title: Established | body: Status flagged, discount kept unknown, the unreadable amount rejected and repaired from its twin.
+icon: circle-help | eyebrow: Chapter 5 | title: Open | body: The proof for Anand, and whether Tuesday survives. | tone: dark
 ```
 
 ```notes
-LIVE, 4 minutes. One-breath answer: start with the identity rule the business gives you, count
-rows against distinct keys, keep one row per key by a stated preference, log every row set
-aside, and weigh them in money as well as rows. Then the 10-minute break.
+LIVE, 2 minutes. One breath: measure per field, ask what the absence means, then drop, default or
+keep and flag with a reason, sized on what each moves.
 ```
 
 ---
 
-## SECTION 4: Round 3, the proof
-*Keep what is real, reconcile twice, and say what changed downstream.*
+## SECTION 5: The bridge to the books
+*From 2.1 to 1.9 move by move, then Tuesday recomputed on the clean file.*
 
 ```notes
-LIVE. Fifty minutes, after the break. Notebook 03_bridge is the demonstration. Two traps in
-this round, and the second is the one that costs trust.
+LIVE. Thirty minutes. Notebook C2_W01_D03_05_bridge is the demonstration.
 ```
 
 ---
 
-## S27. The proof Anand asked for, in four moves
-*Two decisions are still open, and the proof has to satisfy an analyst who ties out to the rupee.*
+## S48. The need: a proof Finance can follow
+*Anand wants the proof; Marketing wants to know if the Retail-Plus fall is real.*
 
-**The client asks.** "Which figure is right, how do you know, and can my analyst follow every decision? And tell Marketing whether Tuesday's finding survives."
+```stats
+value: Rs 19,98,210 | label: the gap to explain | note: Q1, to the rupee
+value: -49.0% | label: Tuesday's Retail-Plus | note: orders per customer
+value: -11.0% | label: Tuesday's revenue drop | note: Q1 to Q2
+```
+
+**The client asks.** "Which figure is right, and does the Retail-Plus fall still stand?"
+
+```notes
+LIVE, 3 minutes. A rescue campaign for Retail-Plus is waiting on the second number.
+```
+
+---
+
+## S49. Tesco bridged its gap from £250m to £263m
+*In 2014 a retailer's own figure was wrong, and the investigation split it by period.*
+
+```stats
+value: £250m | label: first estimate | note: 22 September 2014
+value: £263m | label: after investigation | note: 23 October 2014
+value: £118m | label: first half alone | note: the rest in earlier years
+```
+
+**What breaks.** Supplier income booked early made the reported figure wrong. The fix was a bridge: how much, from which period, for what cause.
+
+```notes
+LIVE, 2 minutes. Sources checked 30 Sep 2026: BBC News, 22 September 2014; Tesco interim results
+statement, 23 October 2014, which splits £263m into £118m for the first half, about £70m for
+2013/14 and about £75m before.
+```
+
+---
+
+## S50. Four ways to prove which figure is right
+*Sized on this export.*
+
+| Option | Rows behind it | Closes to the books | Says why |
+|---|---|---|---|
+| a) Take the books' figure | 0 | no | no |
+| b) Difference of the totals | 2 totals | as a total | no |
+| c) A bridge by cause | 15 logged rows | to the rupee | yes |
+| d) Rebuild from the JSON feed | 119 records | -Rs 1,790 | no |
+
+**Kavya's review.** c. What would switch it: a bridge that does not close, and then the gap itself is the finding, perhaps in Finance's books.
+
+```notes
+LIVE, 5 minutes. The feed carries the same unreadable amount and holds only 19 of Q2's 86 orders.
+```
+
+---
+
+## S51. The bridge from 2.1 to 1.9
+*Two moves, each backed by logged rows, land on the books.*
 
 ```mermaid
 flowchart LR
-    M["<b>a missing status</b>"] --> D["<b>decisions log</b>"]
-    B["<b>the largest order</b>"] --> D
-    D --> R["<b>reconcile rows<br/>and rupees</b>"]
-    R --> T["<b>Tuesday<br/>recomputed</b>"]
+    E["<b>Q1 as exported</b><br/>Rs 2,09,98,210"] --> C["<b>corporate copies</b><br/>-Rs 19,67,560"]
+    C --> K["<b>consumer copies</b><br/>-Rs 30,650"]
+    K --> B["<b>Q1 clean</b><br/>Rs 1,90,00,000"]
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class R bet
+    class B bet
 ```
 
+**What changed.** The unreadable amount needs no move: it was never in the exported total, and its twin stayed. The notebook draws it with kit.bridge, the axis raised to Rs 1.88 crore.
+
 ```notes
-LIVE, 3 minutes. Say the round's order: one missing value, one large value, the proof, the
-recompute. Revenue here is booked value, every order whatever its status, which is how both the
-dashboard and the books count a quarter, and how Monday defined booked revenue.
+LIVE, 4 minutes. Predict first: how many moves? Two. Draw the bridge on the board beside the
+notebook's chart; the raised axis keeps the Rs 30,650 move visible.
 ```
 
 ---
 
-## S28. Question: one order has no status
-*Three decisions are available, and each moves a different number.*
+## S52. Question: does Tuesday's finding survive?
+*Retail-Plus orders per customer fell 49 percent on the dirty export.*
 
-| Decision | Q2 revenue | Q2 delivered orders |
+```mermaid
+flowchart LR
+    T["<b>-49.0%</b><br/>2.32 to 1.18"] --> C{"<b>on clean<br/>data?</b>"}
+```
+
+**Question.** On clean data, the Retail-Plus fall, as a letter? a) disappears; b) survives, smaller; c) grows; d) moves to Retail-Core.
+
+```notes
+LIVE, 2 minutes. Letters in chat.
+```
+
+---
+
+## S53. Answer: it survives, smaller
+*-35.0 percent, 1.82 to 1.18, and the revenue drop shrinks from 11.0 to 1.6 percent.*
+
+| Number | As Tuesday reported | On clean data |
 |---|---|---|
-| Drop the order | falls by its amount | unchanged |
-| Default to delivered | unchanged | one more |
-| Keep and flag | unchanged | unchanged |
+| Revenue, Q1 to Q2 | -11.0% | -1.6% |
+| Retail-Plus orders per customer | 2.32 to 1.18, -49.0% | 1.82 to 1.18, -35.0% |
+| Retail-Core orders per customer | -5.3% | -2.7% |
 
-**Question.** Which decision leaves both numbers honest, as a letter? a) drop the order; b) default the status to delivered; c) keep the order and flag the status as unknown; d) default the status to cancelled.
+**What changed.** The answer is b. Most copies sat in Retail-Plus in Q1, so Tuesday's Q1 rate was inflated. The smaller number goes first in the note.
 
 ```notes
-LIVE, 3 minutes, notebook 03, section 1. Letters in chat.
+LIVE, 3 minutes. Thursday asks whether -35 percent on 22 members is real or chance.
 ```
 
 ---
 
-## S29. Answer: keep and flag
-*Revenue stays whole, and the order stays out of every count that needs its fate.*
-
-```cards
-icon: trash-2 | eyebrow: Drop | title: The order never happened | body: Removes a booked order Finance has in its books.
-icon: pencil | eyebrow: Default | title: A fact nobody recorded | body: Adds a delivery, or a cancellation, that the data cannot support.
-icon: flag | eyebrow: Keep and flag | title: It happened; its fate is unknown | body: Q2 stays at Rs 1,87,00,000, and one line in the log says which order, which field and why. | tone: dark
-```
-
-**Kavya's review.** Every cleaning act is drop, default, or keep and flag, and every one gets a line in the log with its reason.
-
-```notes
-LIVE, 2 minutes. The answer is c. Imputation beyond a stated default is out of scope today;
-the three-way decision is the whole of it.
-```
-
----
-
-## S30. The plausible wrong answer: the bulk order removed
-*One Q2 order sits 1.66 times above the next, and a hurried fence takes it out.*
+## S54. The plausible wrong answer: remove the outlier
+*Q2's largest order is 1.66 times the next, so a hurried analyst removes it.*
 
 ```stats
 value: Rs 1,57,54,540 | label: Q2 without it | note: the hurried figure
-value: 17.1% | label: the drop | note: Q1 1.90 crore to Q2 1.58
-value: 1.6% | label: the drop with it kept | note: Q1 1.90 crore to Q2 1.87
-```
-
-```mermaid
-xychart-beta
-    title "Quarter revenue, Rs lakh"
-    x-axis ["Q1", "Q2"]
-    y-axis "Rs lakh" 140 --> 200
-    line [190, 187]
-    line [190, 157.5]
+value: -17.1% | label: the drop | note: 1.90 crore to 1.58 crore
+value: 1.66x | label: the next largest | note: why it looked wrong
 ```
 
 ```notes
-LIVE, 5 minutes, notebook 03, section 2. The upper line keeps every order; the lower removes the
-largest. The decision it would mislead: Marketing funds a rescue for a 17 percent collapse that
-never happened, and Finance, whose books hold that order, rejects the whole reconciliation.
+LIVE, 3 minutes, notebook 05, section 3. The decision it misleads: Marketing funds a rescue for a
+fall that never happened, and Finance rejects the reconciliation because its books hold the order.
 ```
 
 ---
 
-## S31. Why it is wrong: large is not wrong
-*Check the record, not its size: a valid id, a known buyer, every field converting.*
+## S55. Why it is wrong: large is not wrong
+*A Business order in lakhs is the business doing what it does.*
 
 ```mermaid
 flowchart LR
-    O["<b>the largest Q2 order</b>"] --> S["<b>Business segment</b><br/>orders run to lakhs"]
-    O --> C["<b>a known account</b><br/>orders in both quarters"]
-    O --> F["<b>every field valid</b><br/>one id, one row"]
-    S --> K["<b>keep and flag</b><br/>show it both ways"]
+    B["<b>the largest Q2 order</b>"] --> S["<b>Business segment</b><br/>sells in lakhs"]
+    B --> C["<b>its customer</b><br/>ordered in both quarters"]
+    B --> F["<b>every field</b><br/>valid"]
+    S --> K["<b>keep, flag,<br/>show both ways</b>"]
     C --> K
     F --> K
-    classDef good fill:#E8F5EE,stroke:#1F8A5B,color:#1A0F5C
-    class K good
-```
-
-**What changed.** Q2 goes back from Rs 1,57,54,540 to Rs 1,87,00,000, and the drop from 17.1 percent to 1.6 percent. The note shows the quarter with and without the order, so nobody has to trust a removal they cannot see.
-
-```notes
-LIVE, 5 minutes. Kalpa sells in bulk to corporate buyers; the smallest Business order in the
-file is above Rs 2 lakh. Have the room sort Q2 and find the order themselves. Kavya's line: an
-outlier is a question about a record, never a reason to delete it.
-```
-
----
-
-## S32. The plausible wrong answer: counts that reconcile
-*Remove duplicate ids first, keep the first copy, then convert: the rows tie out perfectly.*
-
-```python
-first_copy = keep_first_by_order_id(raw)          # 186 rows
-clean = [r for r in first_copy if converts(r)]    # 185 rows
-len(raw) == len(clean) + 16                       # True
-```
-
-```stats
-value: 201 = 185 + 16 | label: rows reconcile | note: input equals clean plus rejected
-value: Rs 1,89,98,210 | label: Q1 | note: rounds to Finance's 1.9 crore
-value: ship it | label: the hurried verdict | note: "reconciled"
-```
-
-```notes
-LIVE, 5 minutes, notebook 03, section 3. This is the pass most people would write, in the order
-that feels natural. Ask: is this reconciled? Most of the room says yes.
-```
-
----
-
-## S33. Why it is wrong: Rs 1,790 short of the books
-*Keeping the first copy kept the unreadable one and set aside the twin that carried the value.*
-
-```mermaid
-flowchart LR
-    P["<b>a pair sharing an id</b>"] --> F["<b>keep the first</b><br/>amount unreadable"]
-    P --> T["<b>set aside the twin</b><br/>amount Rs 1,790"]
-    F --> R["<b>rejected at conversion</b>"]
-    R --> G["<b>Q1 is Rs 1,790 short</b><br/>rows still reconcile"]
-    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
-    class F,T,G bad
-```
-
-**The check.** A second reconciliation, in rupees, against the books to the rupee: Rs 1,90,00,000 less Rs 1,89,98,210 is Rs 1,790. A count reconciliation proves no row vanished; it cannot prove the right rows stayed.
-
-```notes
-LIVE, 5 minutes. The decision it misleads: a note that says "reconciled with Finance", and an
-analyst who finds a booked order missing from it and stops trusting every other line in the log.
-Rounded to the crore, the mistake is invisible, which is what makes it dangerous.
-```
-
----
-
-## S34. The fix: convert first, then reconcile twice
-*Rows in equal rows kept plus set aside; rupees in less rupees set aside equal the books.*
-
-| Reconciliation | In | Kept | Set aside | Holds |
-|---|---|---|---|---|
-| Rows, whole file | 201 | 186 | 15 | Yes |
-| Rupees, Q1 | Rs 2,09,98,210 | Rs 1,90,00,000 | Rs 19,98,210 | Yes, to the rupee |
-
-```mermaid
-flowchart LR
-    C["<b>convert</b><br/>log failures"] --> I["<b>identity rule</b><br/>prefer the copy<br/>that validates"] --> R1["<b>rows</b><br/>201 = 186 + 15"] --> R2["<b>rupees</b><br/>bridge to the books"]
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class R2 bet
+    class K bet
 ```
 
+**The check.** Ask whether the record is wrong, never whether it is big. A fence over the whole quarter flags all 17 Business orders, since it mixes a Rs 2,000 basket with a corporate order.
+
 ```notes
-LIVE, 4 minutes. Order matters: converting first lets the identity rule see which copy
-validates. What changed against the hurried pass: one Retail-Plus order and its Rs 1,790 are
-back, and both reconciliations hold.
+LIVE, 3 minutes. The fix: keep it, flag it, show Q2 both ways. Q2 back to Rs 1,87,00,000, the drop
+back to 1.6 percent.
 ```
 
 ---
 
-## S35. The bridge from 2.1 to 1.9
-*Two moves take the exported Q1 to the books, and each move is backed by the rows that carry it.*
+## S56. A second route, and the note to Finance
+*Bottom up, the kept orders sum to the same Q1 the bridge reached top down.*
 
-```mermaid
-xychart-beta
-    title "Q1 running total after each move, Rs lakh"
-    x-axis ["exported", "less corporate", "less consumer", "books"]
-    y-axis "Rs lakh" 185 --> 212
-    bar [209.98, 190.31, 190.00, 190.00]
-```
-
-**The moves.** Rs 2,09,98,210 as exported, less Rs 19,67,560 in copies of two corporate orders, less Rs 30,650 in copies of consumer orders, lands on Rs 1,90,00,000, the books to the rupee.
+> "Anand, your 1.9 crore is right. The ERP export counted fifteen rows twice, fourteen of them in Q1; copies of two corporate orders carry Rs 19,67,560 of the Rs 19,98,210 difference. Rows and rupees reconcile to your books. On clean data the drop is 1.6 percent, not 11, and the Retail-Plus fall is 35 percent, not 49. It survives, smaller." The GCC data and AI team
 
 ```notes
-LIVE, 6 minutes. The notebook draws this as a bridge with kit.bridge; the slide shows the running
-total after each move. The unreadable amount needs no move: it was never in the exported total,
-and its twin, which was, stayed. This is the page Anand's analyst checks first.
+LIVE, 3 minutes. Bottom up is the check anyone can run; top down is the proof, since only the
+bridge says what each rupee was. The full note in notebook 05 is under 120 words.
 ```
 
 ---
 
-## S36. Question: does Tuesday's finding survive?
-*Tuesday reported an 11 percent fall and a 49 percent drop in Retail-Plus frequency.*
+## S57. Kavya's review of chapter 5
+*Two reconciliations, the bridge drawn, and what changed said first.*
 
-| Measure | As Tuesday reported | On clean data |
-|---|---|---|
-| Revenue, Q1 to Q2 | -11.0% | ? |
-| Retail-Plus orders per customer | 2.32 to 1.18, -49.0% | ? |
-
-**Question.** On clean data, what happens to the Retail-Plus finding, as a letter? a) it disappears, since the copies caused it; b) it survives, smaller; c) it grows, since clean data sharpens it; d) it moves to Retail-Core.
-
-```notes
-LIVE, 3 minutes, notebook 03, section 4. Pairs compute it before the answer slide.
-```
-
----
-
-## S37. Answer: it survives, smaller
-*Most of the copies sat in Retail-Plus in Q1, so the fall was overstated rather than invented.*
-
-```mermaid
-xychart-beta
-    title "Fall in Retail-Plus orders per customer, percent"
-    x-axis ["Tuesday", "clean"]
-    y-axis "percent" 0 --> 55
-    bar [49.0, 35.0]
-```
-
-**What changed.** Revenue falls 1.6 percent from Q1 to Q2, not 11.0; Retail-Plus orders per customer fall from 1.82 to 1.18, 35.0 percent, not 49.0.
-
-```notes
-LIVE, 5 minutes. The answer is b. Say the honest sentence: the finding stands and is smaller than
-we first reported. Report the smaller numbers first. A finding that shrank and was reported
-honestly is worth more to Marketing than one that was never checked. Thursday asks whether a
-35 percent fall on 22 members is real or noise.
-```
-
----
-
-## S38. The note to Finance
-*Numbers first, under 120 words, and the finding that shrank.*
-
-> "Anand, your 1.9 crore is right. The ERP export counted fifteen rows twice, fourteen of them in Q1; copies of two corporate orders carry Rs 19,67,560 of the Rs 19,98,210 difference. Rows and rupees both reconcile to your books exactly, and every row set aside is in the attached log. We kept and flagged one Q2 order with no status and the largest Q2 order, a real Business account. On clean data the drop is 1.6 percent, not 11, and the Retail-Plus frequency fall is 35 percent, not 49." The GCC data and AI team
-
-```notes
-LIVE, 4 minutes. Read it aloud and count the words with the room. It leads with which figure is
-right, then the proof, then the flags, then what changed downstream.
-```
-
----
-
-## S39. Kavya's review of round 3
-*Two reconciliations, a reason for every act, and the smaller number reported first.*
-
-**Kavya's review.** Two reconciliations, not one: the rows and the rupees. Input equals clean plus rejected, in both. Then tell me what changed in Tuesday's story, including if it got smaller.
+**Kavya's review.** Tell me what changed in Tuesday's story, including when it got smaller.
 
 **In the interview.** [S] Finance and your dashboard disagree; what do you do?
 
-```mermaid
-flowchart LR
-    P["<b>profile</b>"] --> C["<b>convert,<br/>log failures</b>"] --> I["<b>identity rule</b>"] --> K["<b>keep, drop<br/>or flag</b>"] --> R["<b>reconcile<br/>rows and rupees</b>"] --> T["<b>recompute</b>"]
-    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class R bet
+```cards
+icon: list-checks | eyebrow: Chapter 5 | title: Established | body: Finance's 1.9 crore is right, the bridge closes, Retail-Plus -35.0 percent.
+icon: circle-help | eyebrow: Chapter 6 | title: After lunch | body: Can Anand's analyst audit and replay every decision? | tone: dark
 ```
 
 ```notes
-LIVE, 4 minutes. One-breath answer: assume both numbers are honest arithmetic on different
-inputs, get Finance's figure to the rupee with its definition, profile the source, build a bridge
-with one move per cause backed by rows, reconcile in rows and rupees, then say which is right,
-fix the source and recompute what was reported. Transition to lunch: after it, the full pass alone.
-```
-
----
-
-## D40. Depth: why reconcile in both units
-*Each reconciliation catches what the other cannot.*
-
-| Pass | Rows reconcile | Rupees reconcile | What it hides |
-|---|---|---|---|
-| Keep the first copy, then convert | Yes | No, Rs 1,790 short | A booked order swapped for an unreadable one |
-| Swap one kept order for another of equal value | No | Yes | The wrong order in the clean file |
-| Convert, prefer the valid copy | Yes | Yes | Nothing the two checks can see |
-
-```notes
-SELF-STUDY, 3 minutes. Finance teams reconcile control totals in counts and in money for exactly
-this reason. The second row is a thought experiment, not something in today's file.
+LIVE, 2 minutes. One breath: both are correct arithmetic on different inputs; bridge one move per
+cause, reconcile rows and rupees, say which is right and recompute what was reported.
 ```

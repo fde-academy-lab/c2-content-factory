@@ -23,8 +23,8 @@ DAY = pathlib.Path("content/W01/D3")
 NB = DAY / "notebooks"
 SOL = DAY / "exercises" / "solutions"
 
-CHAPTERS = ["what did the ERP send?", "which rows repeat?", "which copy stays?",
-            "what is missing or malformed?", "which figure is right?", "can the analyst audit it?"]
+CHAPTERS = ["what the ERP sent", "the rows that repeat", "the copy that stays",
+            "what is missing or malformed", "the bridge to the books", "the log the analyst audits"]
 
 # ----------------------------------------------------------------------------- the carried code
 READ = SETUP + '''
@@ -149,7 +149,7 @@ def opener(n, title, need, prev):
 # ============================================================================= chapter 1
 def ch1():
     return [
-        opener(1, "What did the ERP actually send?", '''
+        opener(1, "What the ERP actually sent", '''
         **The need.** Revenue for Q1 is booked value in rupees, and two systems disagree on it by about
         Rs 20 lakh. Anand will not let Kalpa act on Tuesday's drop until the gap is explained, and
         Marketing loses a month for every week the argument runs. Before anyone totals anything, the
@@ -489,7 +489,7 @@ for n, r in enumerate(invented, start=2):
 
 def ch2():
     return [
-        opener(2, "Which rows repeat?", '''
+        opener(2, "The rows that repeat", '''
         **The need.** Q1 as exported is Rs 2,09,98,210 and the books say Rs 1,90,00,000. The ERP team's
         note says the CSV was stitched from two extracts during the Q1 migration, and the profile found
         201 rows for 186 order ids. If orders were exported twice, Q1 revenue and Q1 order counts are
@@ -743,7 +743,7 @@ kit.check("on invented records, leaving out the line finds both copies", found =
 # ============================================================================= chapter 3
 def ch3():
     return [
-        opener(3, "Which copy stays?", '''
+        opener(3, "The copy that stays", '''
         **The need.** Fifteen orders appear twice. For thirteen the two copies are identical and either may
         stay; for two they disagree, and the choice moves Q1 and a delivery date. Anand's analyst ties out
         to the rupee, so a choice that loses one order's amount turns a reconciliation into a finding
@@ -984,7 +984,7 @@ def ch3():
 # ============================================================================= chapter 4
 def ch4():
     return [
-        opener(4, "What is missing or malformed?", '''
+        opener(4, "What is missing or malformed", '''
         **The need.** The 186 kept orders still carry two kinds of defect. One order has no status, and
         Operations reads the delivered share of orders every week. Fifty-five orders have no discount,
         which Tuesday met. And the pass needs a policy for any amount that does not convert, because the
@@ -1242,7 +1242,7 @@ def ch4():
 # ============================================================================= chapter 5
 def ch5():
     return [
-        opener(5, "Which figure is right, and does Tuesday survive?", '''
+        opener(5, "The bridge to the books", '''
         **The need.** Anand asked which Q1 figure is right and how the team knows. Marketing asks whether
         Tuesday's finding survives, because a rescue campaign for Retail-Plus is waiting on it. The metrics
         are Q1 revenue to the rupee, the Q1 to Q2 change, and Retail-Plus orders per customer. A proof
@@ -1485,7 +1485,7 @@ def ch5():
 # ============================================================================= chapter 6
 def ch6():
     return [
-        opener(6, "Can Anand's analyst audit it?", '''
+        opener(6, "The log the analyst audits", '''
         **The need.** Anand's analyst checks the reconciliation tonight, and an auditor may ask next quarter
         why any row was dropped. The metric is a pair of control totals, rows and rupees, that tie from the
         export to the clean file to the books, and every row that left traceable to a rule. A log the analyst
