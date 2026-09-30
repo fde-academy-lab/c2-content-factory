@@ -1,41 +1,38 @@
-# Solutions: what runs when
+# Solution: round 2 set, per segment and per quarter
 
-Answers: 1a 2d 3c 4d 5c
+Answers: 1c 2a 3d 4b 5c 6a 7d
 
-## Q1. WHERE cannot use the alias
+## The idea being tested
 
-`SELECT` runs after `WHERE`, so at the moment `WHERE` is evaluated the name `revenue` has not been
-created. The error is `column "revenue" does not exist`, which sounds like a typo and is really a
-timing statement.
+`GROUP BY` makes one row per group and every aggregate runs inside its group. Filters sit where the
+logical order puts them: `WHERE` tests rows before groups exist, `HAVING` tests groups after. A ratio
+of two counts is an integer division in Postgres unless one side is made numeric, and the grid shows
+no warning when it happens.
 
-The fix is to repeat the expression, or to wrap the query in a CTE and filter outside it.
+## Item by item
 
-## Q2. HAVING, once the groups exist
+| Item | Key | Why it holds | Why the others fail |
+|---|---|---|---|
+| 1 | c | Four segments times two quarters, and every pair has orders, so 8 rows. | a groups by segment only. b groups by quarter only. d: grouping collapses rows; it never keeps them one per order. |
+| 2 | a | Retail-Core's true figures are 1.95 and 2.01. A jump from 1 to 2 in one quarter is the signature of integer division dropping the fraction. | b: more customers would lower orders per customer, never double it. c: the order of grouping columns changes nothing in the result. d: a status filter changes the counts, and it cannot turn 1.95 into 1. |
+| 3 | d | Both counts are integers, so Postgres divides as integers and truncates 1.84 to 1. | a and c are the numeric results, which need `::numeric` on one side. b is rounding; integer division truncates toward zero. |
+| 4 | b | The count exists only after grouping, so the filter is `HAVING count(*) < 30`. It returns one row: Student in Q1, 27 orders. | a: `WHERE` runs before any group exists, so the database refuses an aggregate there. c returns the 30 smallest groups, and there are only eight. d counts customers, and the warning is about orders. |
+| 5 | c | The status belongs to a row, so it is a `WHERE`, and it runs before the groups form: 653 delivered orders remain. | a: `HAVING` on a column that is not grouped is refused. b gives the right numbers and hides the filter in every column, which is harder to audit. d sorts and filters nothing. |
+| 6 | a | Groups that add back to the table they came from prove no row was lost or counted twice. | b: reliability needs enough orders per cell, which is the `HAVING` check. c: a sum of counts cannot check a ratio. d: order is set by `ORDER BY` alone. |
+| 7 | d | FROM builds the rows, WHERE keeps some, GROUP BY forms groups, HAVING keeps some groups, SELECT computes the columns. | a is the written order. b puts SELECT before grouping, which cannot compute an aggregate. c puts GROUP BY before WHERE. |
 
-`WHERE` judges one row at a time and has no access to a group that has not been formed. `HAVING`
-runs immediately after `GROUP BY` and judges whole groups, which is the only place `count(*) > 100`
-is a meaningful question.
+## The part worth arguing about
 
-## Q3. Refused, and the message says why
+Item 2. A few learners pick b because more customers sounds like it moves orders per customer. It
+does, the other way: more customers with the same orders lowers the ratio. The habit worth keeping is
+the calculator check: orders per customer times customers must give the orders, and 1 times 102 is
+not 199.
 
-`ERROR: column "o.channel" must appear in the GROUP BY clause or be used in an aggregate function.`
+## Where the pattern lives in production
 
-`SELECT` has one row per segment to fill and three candidate channels for each. There are two
-honest fixes and they answer different questions: add `channel` to the grouping and get twelve
-rows, or wrap it as `count(DISTINCT channel)` and keep four.
+Integer division is behind a steady stream of wrong conversion rates, click-through rates and
+retention rates in warehouse dashboards, and it survives review because the column looks like a
+number. PostgreSQL's own table of operators says it plainly: for integral types, division truncates
+the result towards zero.
 
-## Q4. ORDER BY runs after SELECT
-
-Sorting happens on the computed output, so the alias exists by then. This asymmetry is the single
-clearest piece of evidence that the written order and the run order differ, which is why it is
-worth meeting on the first day rather than the fourth.
-
-## Q5. One run proves nothing
-
-Postgres makes no promise about row order without `ORDER BY`. A sequential scan of a freshly
-loaded table often does come back in insertion order, which is exactly why this belief survives:
-it is right often enough to feel like a rule and wrong at the worst possible moment, such as after
-a table is vacuumed or a parallel scan kicks in.
-
-Option b is the tempting one. Size is not the trigger; the plan is, and the plan can change
-without the table changing at all.
+PostgreSQL 16 documentation, mathematical functions and operators, https://www.postgresql.org/docs/16/functions-math.html (verified 29 Sep 2026)

@@ -1,37 +1,38 @@
-# Solutions: predict the row count
+# Solution: round 1 set, is the warehouse the book?
 
-Answers: 1b 2c 3a 4c
+Answers: 1b 2d 3a 4c 5b 6d 7a
 
-## Q1. Two rows
+## The idea being tested
 
-`GROUP BY quarter` makes one group per distinct value of `quarter`, and the warehouse holds two
-quarters. The thousand order rows are gone from the result; only the groups survive.
+A count answers exactly the question its argument asks: `count(*)` counts rows, `count(column)`
+counts rows where the column has a value, and `count(DISTINCT column)` counts different values. A
+list answers exactly the order it was given, and without `ORDER BY` it was given none. A new source
+is checked against the old one leaf by leaf, and every difference is stated with what explains it.
 
-The common wrong answer is 1,000, which is what the query would return with no `GROUP BY` at all.
+## Item by item
 
-## Q2. Twelve rows
+| Item | Key | Why it holds | Why the others fail |
+|---|---|---|---|
+| 1 | b | `count(*)` counts the rows that survive `WHERE`, and a row of `orders` is an order: 462 in Q2. | a is `count(DISTINCT customer_id)`, 227. c counts the customers table. d: `WHERE` runs before the count, so it can only shrink it. |
+| 2 | d | Each member counted once is `count(DISTINCT customer_id)`: 76 Retail-Plus members bought in Q2. | a and b both count order rows, 140, because every row has an id. c counts the members on the book, 120, whether or not they bought. |
+| 3 | a | 340 members sit in the customers table and 301 placed at least one order, so 39 bought nothing in the window. | b: the customer id is the table's primary key, so it cannot repeat. c: every order carries a customer id, since the column is required. d: `DISTINCT` over both quarters counts a person once. |
+| 4 | c | Without `ORDER BY`, `LIMIT 5` returns whichever five rows the database reaches first; a reload moved two rows, and the same query returned three of the same orders and two others. | a: the reload rewrote identical values, and Q1 is still Rs 10.00 crore. b: the query text is the same. d: the rows are not random either; they follow storage, which is why they look stable until something moves them. |
+| 5 | b | The warehouse is the book of record from today, so its leaves go on the sheet. The fall, revenue per order and Retail-Plus orders agree with Week 1; customers do not, and the two sources share no customer id. Stating the difference in one line is what lets the analyst trust the rest. | a: last week's file is not the book, and it shares no customer with it. c hides the leaves that moved, including the Retail-Plus members who stopped buying. d: two different records will not agree on every leaf, and waiting stops the Monday suite. |
+| 6 | d | The median describes an order somebody placed; the mean is kept beside it because it multiplies back to the total. | a: the mean is 79 times the median, and with the two largest orders set aside it is still 66.5 times, because Business orders average about Rs 8.84 lakh against a consumer median near Rs 2,500, so the mean describes no order in the book. b: those orders are real revenue, and removing them changes the book. c: an average of two averages describes nothing. |
+| 7 | a | Booked revenue, every status, is the reading Week 1 reconciled to Finance, so the suite keeps it and says so in the comment. | b and c are honest readings with their own definitions, and switching reading silently breaks the comparison with Week 1. d: a number is chosen for its question, never for its size. |
 
-Four segments times three channels, and every combination happens to occur in this book. Grouping
-by two columns makes one group per distinct **pair**, not one per column.
+## The part worth arguing about
 
-Worth saying aloud: twelve is the ceiling, not a guarantee. A segment that never used the store
-channel would leave eleven rows, and nothing in the query would tell you a combination was
-missing. That is a question about the data, and a `LEFT JOIN` against a list of all pairs is how
-you ask it.
+Item 4. Some learners argue that nobody reloads the warehouse between their run and the analyst's.
+The Postgres documentation is blunt: without `ORDER BY`, `LIMIT` returns "an unpredictable subset of
+the query's rows", and the planner may choose a different plan on a different day. The reload is
+only the easiest way to see it happen; the fix costs one line either way.
 
-## Q3. Customers who ordered exactly once
+## Where the pattern lives in production
 
-`HAVING count(*) = 1` keeps the groups whose row count is one, so the result is the customers with
-exactly one order in the book. It is not 340: customers who never ordered have no rows in `orders`
-and therefore no group, so they never reach `HAVING` at all.
+A dashboard tile labelled "customers" that is really `count(*)` over an events table is one of the
+most common metric bugs in product analytics, and it inflates every per-customer rate downstream.
+An unordered `LIMIT` in a sampling job makes an audit irreproducible, which is why audit samples in
+regulated teams are drawn with a fixed order or a stored seed.
 
-That last sentence is tomorrow's whole lesson in miniature.
-
-## Q4. Five rows, and which five is not promised
-
-`LIMIT` cuts the list the earlier stages produced. With no `ORDER BY` there is no list order to
-cut, so the server returns whichever five are cheapest to hand back. Two machines can answer
-differently, and the same machine can answer differently after an index is added.
-
-Option d is a reasonable guess and wrong: the query runs perfectly well, which is what makes this
-dangerous rather than annoying.
+PostgreSQL 16 documentation, LIMIT and OFFSET, https://www.postgresql.org/docs/16/queries-limit.html (verified 29 Sep 2026)
