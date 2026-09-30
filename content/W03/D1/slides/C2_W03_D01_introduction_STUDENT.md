@@ -44,9 +44,8 @@ value: 10 | label: files | note: exported by her data team
 ```notes
 LIVE, the Programme Head, 3 minutes. Kalpa Health is fictional, like every Kalpa unit; say it once.
 Q1 is April to June and Q2 is July to September, Kalpa Health's financial year. Ask the room which of
-the four numbers they would want to check first. Any answer is fine; the point is that the 5 percent
-is a number from a dashboard, and every number from a dashboard has a definition behind it.
-Do not say anything about how the 5 percent was counted. That is for the groups to find.
+the four numbers they would want to check first, hear two answers, and move on without ruling on
+either.
 ```
 
 ---
@@ -68,7 +67,7 @@ Do not say anything about how the 5 percent was counted. That is for the groups 
 LIVE, the Programme Head, 4 minutes. Read Dr Menon's line, then each row. These are her heads'
 words, and each group will own one row by the end of the allocation. The full wording is in the
 briefing note, C2_W03_D01_briefing_note_STUDENT.md, which every learner has.
-Watch for learners who start explaining a row ("it must be the new system"). Say: hold that, write
+Watch for learners who start explaining a row ("it must be a new competitor"). Say: hold that, write
 it in your challenges log as a hypothesis, and test it once the build starts. A hypothesis said
 aloud today is a guess the whole room hears.
 ```
@@ -121,7 +120,7 @@ is asked everywhere.
 ---
 
 ## SECTION 2: The week
-*Five sub-problems, groups of four, and six days that end in front of a panel.*
+*Five sub-problems, groups of four, and a week that ends in front of a panel on Saturday 24 October.*
 
 ```notes
 LIVE. Chapter two runs about 20 minutes: what each group takes, how the days run, what every group
@@ -173,24 +172,24 @@ Do not announce the allocation method here; the Programme Head chooses it on the
 
 ---
 
-## S7. The week, in five stages
-*A holiday falls inside the week, so one day carries two build days.*
+## S7. The week, day by day
+*Tuesday 20 October is Dussehra, so Wednesday carries two build days.*
 
 ```timeline
-label: Stage 1 | title: Translate and scope | body: This introduction (60 min), the allocation (30 min), your sub-problem in the Weeks 1 and 2 method, the challenges log opened, scopes pinned at the close (15 min).
-label: Stage 2 | title: Profile, clean, reconcile | body: The checkpoint (30 min), the trainer's parallel build in the open (60 min), build time, and each group's headline claim with its denominators and caveat (20 min).
-label: Stage 3 | title: Mock round 1, build complete | body: Every learner mocked once, about 20 minutes: half technical on Weeks 1 and 2, half a viva on your group's work.
-label: Stage 4 | title: GDs and the build freeze | body: The industry expert runs group discussions, about 30 minutes per group; builds freeze; two cold demo runs; the first presentations.
-label: Stage 5 | title: Presentations and closure | body: The remaining GDs, then presentations with live demos, 25 to 30 minutes per group, before the expert and a senior industry leader. | tone: dark
+label: Monday 19 October | title: Translate and scope | body: This introduction (60 min), the allocation (30 min), your sub-problem in the Weeks 1 and 2 method, the challenges log opened, scopes pinned at the close (15 min).
+label: Wednesday 21 October | title: Profile, clean, reconcile | body: The checkpoint (30 min), the trainer's parallel build in the open (60 min), build time, and each group's headline claim with its denominators and caveat (20 min).
+label: Thursday 22 October | title: Mock R1, build complete | body: Every learner sits Mock R1, about 20 minutes: half technical on Weeks 1 and 2, half a viva on your group's work.
+label: Friday 23 October | title: GDs and the build freeze | body: The industry expert runs the GD rounds, about 30 minutes per group; builds freeze; two cold demo runs; the first presentations where the roster allows.
+label: Saturday 24 October | title: Presentations and closure | body: The GD rounds close in the morning, then presentations with live demos, 25 to 30 minutes per group, before the expert and a senior industry leader. Every Build 1 grade closes today. | tone: dark
 ```
 
 ```notes
-LIVE, the Programme Head, 4 minutes. Walk the stages left to right. Three things to land:
-the headline claim is stated in stage 2 so that stage 3 tests it rather than finishes it; the
+LIVE, the Programme Head, 4 minutes. Walk the days left to right. Three things to land:
+the headline claim is stated on Wednesday so that Thursday tests it rather than finishes it; the
 mock's viva half runs on your own group's work, so the challenges log is revision material; the
-group discussions run on Kalpa Health's problem space and are a thread separate from the project.
-One day this week is a gazetted holiday. The time after the second block each day is open build
-time with the TAs.
+GDs run on Kalpa Health's problem space and are a thread separate from the project.
+Tuesday 20 October is Dussehra, a holiday with no session. The time after the second block each
+day is open build time with the TAs.
 ```
 
 ---
@@ -226,16 +225,89 @@ The TAs' reply to "which method do we use?" is a question back: which one did Me
 
 ```stats
 value: 40 | label: the mini project | note: marks, the presentation included
-value: 30 | label: the mock interview | note: marks, round 1 this week
-value: 30 | label: the group discussion | note: marks, this week
+value: 30 | label: the mock interview | note: marks, Mock R1 on Thursday 22 October
+value: 30 | label: the group discussion | note: marks, Friday 23 and Saturday 24 October
 ```
 
 ```notes
 LIVE, the Programme Head, 3 minutes. The marks per event are locked: mini project 40 including the
-presentation, mock 30, GD 30. Say nothing about criteria: the rubrics are not published yet, and a
-learner who asks is told they arrive when they are approved.
+presentation, mock 30, GD 30. The next three slides carry the three rubrics, and every brief
+carries the mini project's.
 The live demo runs cold: a fresh start, the raw files, top to bottom. A demo that only works warm
 fails in front of the panel.
+```
+
+---
+
+## S9a. How the mini project is scored
+*Four criteria scored once for the group, and the defence scored for each of you.*
+
+<!-- sync:rubric:W03/mini-project -->
+**Mini project, 40 marks.** The first four criteria are scored once for the group, and every member receives those 34 marks; presentation and defence is scored for each learner on 6 marks, so a silent teammate cannot ride the group's score.
+
+| Criterion | Marks | What full marks look like |
+|---|---|---|
+| The question translated | 8 | Dr Menon's words are mapped to the right Weeks 1 and 2 method, with the metric defined and the decision it feeds named. |
+| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and rupees reconcile across files. |
+| The analysis | 10 | The tree, ladder or fair comparison reaches the branch that explains the symptom, on the right denominator, with a chance test where one is needed. |
+| The claim | 6 | One sentence carries its number, denominator, period and caveat, plus an action Dr Menon can take. |
+| Presentation and defence | 6 | The live demo runs cold, and every member answers a challenge on the caveat. |
+<!-- /sync:rubric:W03/mini-project -->
+
+The presentations run on Friday 23 October where the roster allows and on Saturday 24 October, when every Build 1 grade closes.
+
+```notes
+LIVE, the Programme Head, 2 minutes. Read the five criteria top to bottom and stop on the last
+one: every member answers a challenge on the caveat, so a group that splits the work and not the
+understanding loses marks one learner at a time.
+```
+
+---
+
+## S9b. How Mock R1 is scored
+*Scored for each of you alone: a technical half and a viva on your group's work.*
+
+<!-- sync:rubric:W03/mock -->
+**Mock interview R1, 30 marks.** Each learner is scored alone, 15 marks on the technical half and 15 on the project viva.
+
+| Half | Criterion | Marks |
+|---|---|---|
+| Technical | Correctness | 8 |
+| Technical | Reasoning aloud with numbers | 4 |
+| Technical | Handling a follow-up | 3 |
+| Project viva | The translation, with one decision defended by evidence | 6 |
+| Project viva | Defending a caveat under challenge | 6 |
+| Project viva | What they would do differently | 3 |
+<!-- /sync:rubric:W03/mock -->
+
+Mock R1 runs for every learner on Thursday 22 October.
+
+```notes
+LIVE, the Programme Head, 2 minutes. The technical half is Weeks 1 and 2; the viva half is the
+group's own work, which is why the challenges log is revision material.
+```
+
+---
+
+## S9c. How the group discussion is scored
+*Scored for each of you alone, on Kalpa Health's problem space.*
+
+<!-- sync:rubric:W03/gd -->
+**Group discussion, 30 marks.** Each learner is scored alone.
+
+| Criterion | Marks | What full marks look like |
+|---|---|---|
+| Structures the problem | 8 | The learner frames the decision and the metric before arguing. |
+| Uses evidence | 8 | The learner takes a position and defends it with a number from the exhibit. |
+| Engages | 8 | The learner builds on or challenges another member's point and brings a quiet member in. |
+| Lands a conclusion | 6 | The discussion ends on a recommendation and its main risk. |
+<!-- /sync:rubric:W03/gd -->
+
+The GD rounds run on Friday 23 October and close on the morning of Saturday 24 October.
+
+```notes
+LIVE, the Programme Head, 2 minutes. The GD is a thread separate from the project. Point at
+"Engages": bringing a quiet member in earns marks, and talking over one does not.
 ```
 
 ---
@@ -256,14 +328,14 @@ today, in the translation worksheet.
 
 ```mermaid
 flowchart LR
-    R["<b>revenue</b><br/>4% against 15%"] --> G["<b>gross revenue</b><br/>customers times spend"]
-    R --> D["<b>discounts</b><br/>what we gave back"]
-    G --> C["<b>customers</b><br/>how many bought"]
-    G --> V["<b>revenue per customer</b><br/>orders times order value"]
-    V --> F["<b>orders per customer</b><br/>how often each came back"]
-    V --> O["<b>revenue per order</b><br/>items times price"]
-    O --> B["<b>items per order</b><br/>how full the basket was"]
-    O --> P["<b>price per item</b><br/>what each line cost"]
+    R["<b>revenue</b><br/>rupees in the window"] -->|"x"| C["<b>customers</b><br/>distinct customer ids"]
+    R -->|"x"| F["<b>orders per customer</b><br/>orders / customers"]
+    R -->|"x"| A["<b>average order value</b><br/>revenue / orders"]
+    A --> I["<b>items per order</b><br/>items / orders"]
+    A --> P["<b>price per item</b><br/>rupees / items"]
+    A --> D["<b>less discounts</b><br/>rupees given back"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class R,C,F,A known
 ```
 
 **Your turn.** What is each box called in Kalpa Health, and which box has no clean twin?
@@ -295,35 +367,36 @@ flowchart TB
 
 ```notes
 LIVE, the Programme Head, 2 minutes. Week 1 Tuesday's ladder, unchanged. Remind the room that
-Meera's "we are losing customers" was disproved on rung 1 in Kalpa Retail. Do not name any Kalpa
-Health symptom that might fail rung 1; that is for the groups to find.
+Meera's "we are losing customers" was disproved on rung 1 in Kalpa Retail. Leave the Your-turn
+question open; each group answers it for its own question.
 ```
 
 ---
 
 ## S12. Profile, clean, reconcile: Week 1 Wednesday
-*Input equals clean plus rejected, and every decision is written down.*
+*Rows in equal rows kept plus set aside, and every decision is written down.*
 
 ```mermaid
 flowchart LR
-    A["<b>Rs 2.10 crore</b><br/>as exported"] --> B["less 15<br/>duplicate ids"]
-    B --> C["less 1 row<br/>with no status"]
-    C --> D["less 1 amount<br/>that will not convert"]
-    D --> E["<b>Rs 1.90 crore</b><br/>reconciled"]
+    A["<b>Rs 2,09,98,210</b><br/>Q1 as exported"] --> B["less Rs 19,67,560<br/>copies of two<br/>corporate orders"]
+    B --> C["less Rs 30,650<br/>copies of<br/>consumer orders"]
+    C --> E["<b>Rs 1,90,00,000</b><br/>the books"]
 ```
 
 | Field | Issue | Rows | Decision | Reason |
 |---|---|---|---|---|
-| order_id | Repeated | 15 | Drop later occurrences | The migration re-ran a batch |
+| order_id | Repeated | 15 | Keep one row per order, preferring the copy that validates | 201 rows, 186 orders |
+| status | Empty | 1 | Keep and flag | It happened; its fate is unknown |
 
 **Your turn.** Ten Kalpa Health files, from different systems: which do you profile first, and why?
 
 ```notes
-LIVE, the Programme Head, 2 minutes. This is Anand's bridge from Week 1 Wednesday and one row of
-that day's decisions log. The decisions log this week has the same five columns, in
+LIVE, the Programme Head, 2 minutes. This is Anand's bridge from Week 1 Wednesday and two rows of
+that day's decisions log. The duplicates were the only move; the order with no status stayed in
+Q2, and the unreadable amount was one copy of a pair whose twin stayed. The decisions log this week has the same five columns, in
 C2_W03_D01_decisions_log_STUDENT.xlsx, and its Reconcile sheet checks input against clean plus
 removed for every file.
-Do not describe any Kalpa Health file's condition. "Profile before you touch" is the whole message.
+"Profile before you touch" is the whole message.
 ```
 
 ---
@@ -361,12 +434,12 @@ flowchart LR
     C --> D["Then sum"]
 ```
 
-**Your turn.** Two systems export the same entity with different ids. What do you do before you join them?
+**Your turn.** Before you join any two files, what do you profile on every key column, and what count tells you the join worked?
 
 ```notes
 LIVE, the Programme Head, 2 minutes. Week 2 Tuesday's rule for joins, the one Anand's booked-against-
-collected report rested on. The Your-turn question is a later build day's interview question, asked early on
-purpose; leave it open.
+collected report rested on. Leave the Your-turn question open; each group answers it in its own
+build.
 ```
 
 ---
@@ -410,27 +483,29 @@ The log is `C2_W03_D01_challenges_log_STUDENT.xlsx`. Its Example sheet shows one
 
 ```notes
 LIVE, the Programme Head, 2 minutes. The mock's viva reads this log. Prepared answers break where
-the log is thin, so an entry written today is worth more than three written the night before the viva.
+the log is thin, so an entry written today is worth more than three written the night before Mock R1
+on Thursday 22 October.
 A challenge that needed a cleaning or matching decision also goes in the decisions log.
 ```
 
 ---
 
-## S17. The close, and the next checkpoint
-*Scopes pinned today; three checkpoint questions per group next build day.*
+## S17. The close, and Wednesday's checkpoint
+*Scopes pinned today; three checkpoint questions per group on Wednesday 21 October.*
 
 | When | What each group does |
 |---|---|
 | The close today, 15 min | Pins its one-sentence scope, with the one thing it will not do |
 | After today's blocks, open build time | Starts the build against its own scope, and logs challenges as they happen |
-| Next build day, 30 min | Answers the day's three checkpoint questions in two minutes |
-| Next build day, 20 min | States its headline claim in one sentence, with its denominators and caveat |
+| Wednesday 21 October, 30 min | Answers the day's three checkpoint questions in two minutes |
+| Wednesday 21 October, 20 min | States its headline claim in one sentence, with its denominators and caveat |
 
 **In the interview.** [F] What changes when the cost of an error is a missed diagnosis rather than a missed sale?
 
 ```notes
 LIVE, the Programme Head, 2 minutes. The checkpoint questions are not shared today; a group that
-cannot answer them at the checkpoint is stuck and should say so then, because the mocks follow.
+cannot answer them at the checkpoint is stuck and should say so then, because Mock R1 runs on
+Thursday 22 October.
 Take questions for the remaining ten minutes of the hour, then close on the [F] question and leave
 it on screen as the room breaks for the allocation. Each group
 answers it for its own sub-problem in Part 5 of the worksheet; nobody answers it for them.
