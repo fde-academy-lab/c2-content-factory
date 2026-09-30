@@ -96,3 +96,131 @@ page 15 exactly and the builder's trailing gap pushed a blank page ahead of the 
   comes from the builder's table split.
 - The first marking step in both keys uses the third-person form of the verb mark, which is builder
   text in `render_key` and `docx_spec`; swapping it for "checks" keeps the word out of every file.
+
+## 30 September 2026: the paper in parts, three new timed items and two option edits
+
+The sections above are dated 29 September and number items as the bank does, which is how the paper
+printed until this re-cut; the statements there that the source file adds no timed items and that
+the paper holds 58 items describe that version. This section records what changed on 30 September.
+
+### The re-cut into parts
+
+The requester approved the re-cut on 30 September 2026: the paper prints in six parts named for
+what each shows, page one carries the rules and the blueprint, and every item carries its format
+and level beside its number (`data/programme/facts.yaml`, `saturday_papers.rule`). Up to six recall
+items may move to the untimed stretch page, and six moved: bank 1 (HAVING), 2 (guarantee), 3 (CTE),
+4 (left), 7 (PARTITION) and 9 (melt), all fill in the blank at one minute each. They print as
+Stretch 5 to 10, and their keys and reasons stay in the key's stretch section. The move takes the
+bank's timed items from 119.5 to 113.5 minutes, which leaves 6.5 minutes for new timed items.
+
+| Part | Items | Minutes | Easy | Medium | Hard |
+|---|---|---|---|---|---|
+| 1. The week's rules, cold | Q1 to Q11 | 11 | 4 | 6 | 1 |
+| 2. Asking the warehouse | Q12 to Q16 | 13 | 2 | 3 | 0 |
+| 3. Joins that keep their rows | Q17 to Q27 | 27 | 1 | 8 | 2 |
+| 4. Windows: rank, lag and running totals | Q28 to Q39 | 31 | 1 | 5 | 6 |
+| 5. pandas and the last mile to Excel | Q40 to Q51 | 29.5 | 0 | 11 | 1 |
+| 6. Read the code, read the data | Q52 to Q55 | 8.5 | 0 | 1 | 3 |
+| Total | 55 | 120 | 8 | 34 | 13 |
+
+Each part now opens on a stakeholder's words, from the week's rows or the stakeholder table in
+`docs/07_Client_Zero.md`: Anand's standing question for Part 1, the data platform lead's warning for Part 2, Anand's Tuesday ask for Part 3, Marketing's
+Wednesday ask for Part 4, Kavya Nair's Thursday challenge for Part 5 and her review for Part 6.
+Part 6's "shows" line now says a query or a few lines of pandas, since the part prints no small
+result and its pandas item runs to ten lines.
+
+### Three new timed items in Part 6
+
+Each exhibit is ten lines or fewer, written with invented, self-contained data in a CTE over VALUES
+or a DataFrame built in the snippet, so no key depends on the warehouse's contents and no value
+echoes a plant. Each query follows a query the week ran: Monday's `r3_member_spend_hurried`, the
+LEFT JOIN with a `paid_date` filter in WHERE from Tuesday's round 3, and the right merge grouped by
+segment from Thursday's round 2. The exhibit text was saved from the source file as it stands and
+run on PostgreSQL 16.13 and pandas 3.0.5 (Python 3.11.15) on 30 September 2026. The three print
+before bank 19, which now closes the part as Q55, so that in the Word paper each exhibit shares a
+page with its question.
+
+| Q | Id | Type, level, minutes | Key | Anchor |
+|---|---|---|---|---|
+| 52 | avg-per-member | One correct option, hard, 2 | c | [D] A stakeholder's analyst must audit your query |
+| 53 | where-on-payments | Scenario set, hard, 2.5 | b | [S] INNER against LEFT join |
+| 54 | reach-by-segment | One correct option, hard, 2 | d | [S] groupby in the split-apply-combine sentence |
+
+Q52, `psql -X -h localhost -U postgres -d kalpa -f avg-per-member.sql`:
+
+```text
+ avg_q1 | avg_q2
+--------+--------
+   1500 |   1500
+(1 row)
+```
+
+Q53, `psql -X -h localhost -U postgres -d kalpa -f where-on-payments.sql`:
+
+```text
+ rows_out | booked
+----------+--------
+        2 |   2400
+(1 row)
+```
+
+Q54, `python3 reach-by-segment.py`:
+
+```text
+5 2 2
+```
+
+Every wrong option that stands for another computation was run as that computation, and each gave
+its option's numbers exactly. For Q52, the query with COALESCE(..., 0) gives 1500 and 750, and the
+average of the Q2 order rows gives 1000; option d stands for the belief that a NULL makes AVG NULL,
+and AVG over 1,800, 1,200 and two NULLs returned 1500. For Q53, the date condition moved into ON gives 4 rows and 3700, the WHERE
+widened to keep a NULL date gives 3 rows and 2900, and payments brought to one row per order give
+1 row and 1200. For Q54, `dropna=False` gives 5 5 2, an inner merge gives 2 2 2 and a left merge
+gives 4 4 4. Each wrong option's reason in the key names the trap and the day the week staged it.
+The Q54 interview answer says that SQL's GROUP BY keeps NULL keys as one group; a GROUP BY over
+two segments and three NULLs returned three groups on PostgreSQL 16.13 the same day.
+
+### Option edits and reasons
+
+Two option edits join the eight in `data/programme/paper_edits.yaml`, both proposed. Bank 34 (Q21)
+and bank 39 (Q45) are more-than-one-correct items keyed a, b and c, and each offered a nonsense
+fourth option, the font of the report and the cell colour, so striking the nonsense left the whole
+key. Q21's option d is now "the number of channels before and after the join", a check that reads
+like the other three and cannot catch a fan-out; Q45's option d is now "its exact figure", the
+precision a room reaches for when a number is misread. Both keys' reasons for option d were
+rewritten to match. `scripts/distractor_audit.py` passes with the keys at a 9, b 9, c 8 and d 8.
+It reads 27 of the 30 option items: Q21, Q33 and Q45 open on a statement before their question, so
+the audit does not take them for a stem, and the two edited options were checked by hand.
+
+The reasons now cover all 55 printed items: why the key holds, a reason for every wrong option on
+the 30 option items, and the interview answer in one breath. The three new items carry their own,
+and the two ordering items, Q16 and Q51, now name the wrong order a paper is likely to hold.
+
+### The discussion guide, renumbered
+
+The guide's item numbers came from the paper at commit 5c57eea, which numbered items as the bank
+does. Each item was matched on its text to the final paper; the six moved items are cited as
+Stretch 5 to 10.
+
+| Old | New | Old | New | Old | New | Old | New |
+|---|---|---|---|---|---|---|---|
+| 1 | Stretch 5 | 16 | Q10 | 31 | Q42 | 46 | Q36 |
+| 2 | Stretch 6 | 17 | Q11 | 32 | Q43 | 47 | Q37 |
+| 3 | Stretch 7 | 18 | Q12 | 33 | Q14 | 48 | Q46 |
+| 4 | Stretch 8 | 19 | Q55 | 34 | Q21 | 49 | Q47 |
+| 5 | Q1 | 20 | Q13 | 35 | Q22 | 50 | Q48 |
+| 6 | Q2 | 21 | Q17 | 36 | Q32 | 51 | Q49 |
+| 7 | Stretch 9 | 22 | Q18 | 37 | Q33 | 52 | Q15 |
+| 8 | Q3 | 23 | Q19 | 38 | Q44 | 53 | Q27 |
+| 9 | Stretch 10 | 24 | Q20 | 39 | Q45 | 54 | Q38 |
+| 10 | Q4 | 25 | Q28 | 40 | Q23 | 55 | Q39 |
+| 11 | Q5 | 26 | Q29 | 41 | Q24 | 56 | Q50 |
+| 12 | Q6 | 27 | Q30 | 42 | Q25 | 57 | Q16 |
+| 13 | Q7 | 28 | Q31 | 43 | Q26 | 58 | Q51 |
+| 14 | Q8 | 29 | Q40 | 44 | Q34 | | |
+| 15 | Q9 | 30 | Q41 | 45 | Q35 | | |
+
+The new items join the guide where they belong: Q52, Q53 and Q54 in the most-missed candidate list,
+Q53 under the INNER against LEFT anchor and Q54 under the groupby anchor. The marking gains the
+step that enters each paper's ticks by seat in `C2_W02_SAT_item_analysis_TRAINER.xlsx`, whose
+Discussion sheet orders the most-missed discussion and whose flags go to the tracker's owner.
