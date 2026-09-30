@@ -15,9 +15,9 @@ revenue.
 
 | Branch | Numerator | Denominator | Today's number |
 |---|---|---|---|
-| Customers | Distinct customer ids | None, since it is a count | Round 2 counts it |
-| Orders per customer | Orders | Distinct customers, same window | Round 2 counts it |
-| Revenue per order | Revenue | Orders, same window | Round 3 asks which "typical" is honest |
+| Customers | Distinct customer ids | None, since it is a count | Chapter 3 counts it |
+| Orders per customer | Orders | Distinct customers, same window | Chapter 3 counts it |
+| Revenue per order | Revenue | Orders, same window | Chapter 4 asks which "typical" is honest |
 | Items per order | Items | Orders | Not in this file, which has no line items |
 | Price per item | Revenue before discounts | Items | Not in this file |
 
@@ -28,7 +28,7 @@ revenue.
 | 1 | c | Acquisition buys people who were not buying, and that is the customers branch. | a: new buyers add orders through the customers branch, and orders per customer is how often each buyer returns. b: price is set by the business, and acquisition does not move it. d: a first-order coupon is a cost of acquiring, and the branch it moves is still customers. |
 | 2 | a | Orders over distinct customers, with both counted in the same window. | b is the rate upside down. c divides orders by rows, which are orders, so it always gives 1. d is revenue per order, a different branch. |
 | 3 | b | A loop over the list runs once per element, and each element is one order: 30 times. | a counts customers, which the loop does not know about. c and d filter by status, which this loop does not do. |
-| 4 | d | The loop adds every order with no condition on status, so the total is booked revenue, Rs 5,44,810. | a, b and c each need a condition on status that the loop does not have; round 1 adds it. |
+| 4 | d | The loop adds every order with no condition on status, so the total is booked revenue, Rs 5,44,810. | a, b and c each need a condition on status that the loop does not have; chapter 1 adds it. |
 
 ## The part worth arguing about
 

@@ -1,13 +1,13 @@
 # Extras: one to stretch, one to recover
 
 Both are optional and neither is graded. Pick the one that matches where you are after today's
-rounds, and do it tonight or before Tuesday's session.
+chapters, and do it tonight or before Tuesday's session.
 
 ---
 
 ## Stretch: what the Rs 12 crore buys at an honest first order
 
-For you if the three rounds and the escalated case felt comfortable and you finished the take-home
+For you if the six chapters and the escalated case felt comfortable and you finished the take-home
 early.
 
 > "Suppose I did give marketing the Rs 12 crore. What would it buy me, in revenue I could see this
@@ -21,7 +21,7 @@ invented where it appears.
   Rs 12 crore buy?
 - Value each new customer's first order twice: once at the booked mean, Rs 18,160, and once at the
   booked median, Rs 2,205. Write both totals in crore.
-- Round 2 found 1.30 orders per customer in one quarter. If new customers behave like today's
+- Chapter 3 found 1.30 orders per customer in one quarter. If new customers behave like today's
   customers, how many orders does each place in their first quarter, and what does that do to each
   total?
 - Write one line on which of your two totals marketing's case most likely used, and one line on
@@ -32,10 +32,10 @@ eight, and your last line names a branch and a number that Tuesday's two quarter
 
 ---
 
-## Recovery: the three rounds, one loop at a time
+## Recovery: the chapters, one loop at a time
 
 For you if the loops moved faster than you did today. Doing this tonight costs nothing tomorrow.
-Work in a fresh cell of `notebooks/C2_W01_D01_01_what_sales_is_STUDENT.ipynb`, and run after every
+Work in a fresh cell of `notebooks/C2_W01_D01_01_four_readings_of_sales_STUDENT.ipynb`, and run after every
 step.
 
 - Print the first record on its own, and say each field and its type aloud.
@@ -50,6 +50,6 @@ step.
 - Sort the amounts and print the two in the middle, the 15th and 16th. Their average should be
   2205.
 
-**What you should end up believing.** Each round was one loop with one decision in it: which orders
+**What you should end up believing.** Each chapter was one loop with one decision in it: which orders
 count, what makes a customer distinct, and where the middle sits. The checks tell you whether the
 decision was right before anybody else reads the number.

@@ -1,4 +1,4 @@
-# Practice lab: the day's rounds, one problem at a time
+# Practice lab: the day's chapters, one problem at a time
 
 > "Before I sign anything, I want to understand our own sales."
 > Meera Raghavan, CEO, Kalpa Retail

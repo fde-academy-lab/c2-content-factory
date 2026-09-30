@@ -35,7 +35,7 @@ One page: the drawing, the table, and two sentences.
 A second sample of Kalpa Retail orders sits in `data/C2_W01_D01_takehome_STUDENT.py`. It has the same
 fields as today's file and none of the same numbers, so nothing from class can be pasted across.
 
-- Start a new notebook beside the day's notebooks, copy in the setup cell from round 1's notebook,
+- Start a new notebook beside the day's notebooks, copy in the setup cell from chapter 1's notebook,
   and point the loader at `C2_W01_D01_takehome_STUDENT.py`.
 - Compute two tree nodes, customers and orders per customer, on each of the three definitions of
   sales: booked, not cancelled and delivered. Write each as a numerator over a denominator in a

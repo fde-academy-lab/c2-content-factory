@@ -9,7 +9,7 @@ from the 30 orders.
 ## The idea being tested
 
 "Store brings 91.6 percent of revenue" is true on booked rupees and misleading as a basis for a
-plan, because one order carries it: the order your round 3 sort put at the top is a store order.
+plan, because one order carries it: the order your chapter 4 sort put at the top is a store order.
 The check is the count of orders behind each share, then the share recomputed on the other 29
 orders, then each channel split by status. On those 29 orders, Rs 64,810 in all, store holds
 Rs 18,920, 29 percent, and 4 of its 9 orders were cancelled. Web leads on booked rupees with
@@ -26,7 +26,7 @@ to name in the note: web returns and store cancellations.
 | 13 | d | Web's 10 orders split 5 delivered, Rs 12,320, and 5 returned, Rs 14,970, so more than half of its booked rupees came back. | a: web delivered only Rs 12,320, less than app's Rs 18,600. b: web had no cancelled orders. c: half of web's orders were returned. |
 | 14 | b | Store's 9 orders on this base split 4 cancelled, Rs 9,050, and 5 delivered, Rs 9,870. | a: 4 were cancelled. c: store had no returns; the returns sit on web. d: 5 of the 9 were delivered. |
 | 15 | a | The branch question was answered by customers and frequency, and no channel number changes those; the channel view adds two leaks the note should name. | b is the trap, a share carried by one order. c reads web's booked lead without its returns. d throws away two findings Meera can act on. |
-| 16 | b | The 10 Retail-Plus orders carry 8 distinct ids, and one of those customers also bought as Retail-Core, since segment is recorded on the order. | a counts orders as customers, round 2's trap on a new split. c is every customer in the file. d divides revenue by a typical order, which estimates orders, and then calls them customers. |
+| 16 | b | The 10 Retail-Plus orders carry 8 distinct ids, and one of those customers also bought as Retail-Core, since segment is recorded on the order. | a counts orders as customers, chapter 3's trap on a new split. c is every customer in the file. d divides revenue by a typical order, which estimates orders, and then calls them customers. |
 
 ## The part worth arguing about
 

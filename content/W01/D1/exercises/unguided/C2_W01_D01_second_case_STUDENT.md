@@ -22,7 +22,7 @@ flowchart LR
     R["<b>booked revenue</b><br/>all 30 orders"] --> A["<b>app</b><br/>10 orders"]
     R --> W["<b>web</b><br/>10 orders"]
     R --> S["<b>store</b><br/>10 orders"]
-    S --> T["<b>the order your round 3 sort<br/>put at the top</b>"]
+    S --> T["<b>the order your chapter 4 sort<br/>put at the top</b>"]
     S --> N["<b>store's other 9 orders</b>"]
 ```
 
@@ -35,7 +35,7 @@ b) Store's share is really 33 percent, since it holds 10 of the 30 orders
 c) One order carries most of store's share, so it says little about store
 d) Nothing, since the rupees add up and store is the largest channel
 
-### Q12. Recomputed on the 29 orders other than the one your round 3 sort put at the top, which total Rs 64,810, what share does store hold?
+### Q12. Recomputed on the 29 orders other than the one your chapter 4 sort put at the top, which total Rs 64,810, what share does store hold?
 
 a) 29 percent, Rs 18,920 of Rs 64,810
 b) 92 percent, the same share as before
@@ -56,7 +56,7 @@ b) 4 of the 9 were cancelled, Rs 9,050, and 5 were delivered, Rs 9,870
 c) 5 of the 9 were returned, Rs 14,970, the same leak as web shows
 d) Only one order is left in store once the top of the sort is set aside, since the rest were cancelled
 
-### Q15. Does the channel view change the branch Meera opens first?
+### Q15. Design. Does the channel view change the branch Meera opens first?
 
 a) No; frequency stays first, with web returns and store cancellations named
 b) Yes; the plan should turn store-led, since store carries nine rupees in ten

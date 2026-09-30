@@ -54,7 +54,7 @@ d) Revenue over orders, both counted in the same window
 
 ## Part 2. One record, then the list
 
-Run the setup cell of `notebooks/C2_W01_D01_01_what_sales_is_STUDENT.ipynb`. Then, with the room,
+Run the setup cell of `notebooks/C2_W01_D01_01_four_readings_of_sales_STUDENT.ipynb`. Then, with the room,
 print the first record and read each field aloud with its type: order id, customer id, segment,
 channel, date, amount and status. A record is a dictionary, and the file is a list of 30 of them.
 
@@ -62,7 +62,7 @@ channel, date, amount and status. A record is a dictionary, and the file is a li
 
 ## Part 3. Orders and revenue in one loop
 
-In section 1 of `notebooks/C2_W01_D01_02_counting_leaves_STUDENT.ipynb`, type the loop with the
+In the build section of `notebooks/C2_W01_D01_01_four_readings_of_sales_STUDENT.ipynb`, type the loop with the
 room: one counter for orders and one running total for revenue, both set
 before the loop and both printed after it. If the loop stops part way, read the last line of the
 message aloud, find the record it stopped on, and fix it with the room. Two minutes, and then the
@@ -87,5 +87,5 @@ d) Booked, since the loop adds every order whatever its status
 ## What you leave with
 
 The tree on paper with its numerators and denominators, a notebook that runs from a fresh kernel,
-an order count and a booked total from one loop, and the question the next round opens: which of
+an order count and a booked total from one loop, and the question chapter 1 opens: which of
 the three totals is "sales"?
