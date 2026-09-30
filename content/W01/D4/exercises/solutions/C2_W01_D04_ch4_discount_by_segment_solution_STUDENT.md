@@ -3,12 +3,14 @@
 Answers: 1c 2a 3b 4d 5b 6a
 
 Marketing reported that customers who got Kalpa Retail's monsoon sale, 15 percent off in August,
-spent 6 percent more than customers who did not, and wants the sale again at Diwali. Chapter 4
-rebuilt the figure, Rs 3,395 against Rs 3,200, a blended lift of 6.1 percent, and then split it by
-segment: inside Retail-Plus and inside Retail-Core the customers who got the sale spent 3.0 percent
-less, and the group who got it was 50 percent Retail-Plus against 40 percent of the rest. Retail-Plus
-members spend more whatever the sale does, so the blend rose because of who got the sale. Three of
-the six items are design items: 1, 3 and 5.
+spent 6 percent more than customers who did not, and wants the sale again at Diwali. The customers
+who got a campaign are its exposed group and the rest its unexposed group, a blend is one average
+over segments mixed together, and the one-mix route recomputes both groups' averages as if they held
+the same share of each segment. Chapter 4 rebuilt the figure, Rs 3,395 against Rs 3,200, a blended
+lift of 6.1 percent, and then split it by segment: inside Retail-Plus and inside Retail-Core the
+customers who got the sale spent 3.0 percent less, and the group who got it was 50 percent
+Retail-Plus against 40 percent of the rest. Retail-Plus members spend more whatever the sale does,
+so the blend rose because of who got the sale. Three of the six items are design items: 1, 3 and 5.
 
 **Who needs the answer.** You, checking your six letters after the lab or tonight. Marketing will
 defend the sale on Monday with the blended figure, and a reader who cannot say why a blend rises
@@ -16,12 +18,12 @@ while every segment falls hands them the Diwali budget.
 
 **The questions on the way.**
 
-- Which idea does this set test?
-- Why is each key right, item by item?
-- Which wrong answer is worth arguing about?
-- Where does this show up at work?
+- Which idea does the chapter 4 set test: that a blend measures who got a campaign as much as the campaign?
+- Why does each of the six keys hold, from the loyalty email to the one-mix route?
+- Why is option b in item 6, two routes agreeing, the wrong answer worth arguing about?
+- Where did UC Berkeley and eBay meet a blend that pointed the wrong way?
 
-## Which idea does this set test?
+## Which idea does the chapter 4 set test: that a blend measures who got a campaign as much as the campaign?
 
 A comparison is only as fair as the groups in it. When two groups hold different mixes of customers,
 a blended figure measures the mix as much as the campaign. The design items give new campaigns and
@@ -30,7 +32,7 @@ deeper discount, and which set-up makes the next readout fair. The other items a
 the mix alone manufactures, which figure the note reports, and what the one-mix route can and cannot
 check.
 
-## Why is each key right, item by item?
+## Why does each of the six keys hold, from the loyalty email to the one-mix route?
 
 ### Q1. Which comparison do you run first on the loyalty email, and what will the blend show?
 
@@ -128,7 +130,7 @@ What it checks is that the mix accounts for the whole of the blended lift.
 - d, "That a random hold-back would give the same answer": only a hold-back can say what a hold-back
   would show.
 
-## Which wrong answer is worth arguing about?
+## Why is option b in item 6, two routes agreeing, the wrong answer worth arguing about?
 
 Item 6, option b. Two routes agreeing usually means both are right, and some pairs will read it that
 way. Here the second route is built from the same four numbers as the first, so it would agree with
@@ -136,7 +138,7 @@ them even if one of them were mistyped. Its job is to show the mix explains the 
 could catch a wrong cell has to come from another file, which is what chapter 6 does with Finance's
 orders by month.
 
-## Where does this show up at work?
+## Where did UC Berkeley and eBay meet a blend that pointed the wrong way?
 
 UC Berkeley's 1973 graduate admissions looked biased against women in the total, 44 percent of men
 admitted against 35 percent of women, while department by department about as many departments

@@ -6,11 +6,12 @@ In the growth review, with Meera Raghavan, Kalpa Retail's CEO, listening, the ma
 the split by segment cherry-picking: "Exposed Retail-Plus members spent Rs 4,850 in August. That is
 far above the Rs 3,200 our unexposed customers averaged. The sale works." The table is the August
 list of 160 Retail-Plus and Retail-Core customers, each flagged exposed if the monsoon sale, 15
-percent off, reached them, with one average August spend per group. Pairs worked the answer in
-`notebooks/C2_W01_D04_ex2_second_case_STUDENT.ipynb`, eight lettered choices in four parts, and the
-executed solution, `C2_W01_D04_ex2_second_case_solution_STUDENT.ipynb` in this folder, runs every key.
-Two of the eight items are design items: 4, the comparison that is fair to Marketing's claim, and 8,
-whom the Diwali coin draws from.
+percent off, reached them, with one average August spend per group. Like for like means the same
+segment on both sides of a comparison, and a group's mix is its make-up by segment. Pairs worked the
+answer in `notebooks/C2_W01_D04_ex2_second_case_STUDENT.ipynb`, eight lettered choices in four
+parts, and the executed solution, `C2_W01_D04_ex2_second_case_solution_STUDENT.ipynb` in this
+folder, runs every key. Two of the eight items are design items: 4, the comparison that is fair to
+Marketing's claim, and 8, whom the Diwali coin draws from.
 
 **Who needs the answer.** You and your partner, checking your eight letters and your reply before the
 debrief moves on. Meera signs off Diwali's sale, and a pair that cannot answer a correct number that
@@ -19,20 +20,20 @@ Marketing.
 
 **The questions on the way.**
 
-- Which idea does this case test?
-- Which numbers stand behind the reply, part by part?
-- Why is each key right, marker by marker?
-- What reply held the line?
-- Where did pairs go wrong?
-- Where does this show up at work?
+- Which idea does the second case test: that a pushback is answered from the stakeholder's own table?
+- Which numbers stand behind the pair's reply, in each of the four parts?
+- Why does each of the eight keys hold, from Marketing's Rs 4,850 to the Diwali coin?
+- What reply to Marketing held the line?
+- Where did pairs go wrong in the second case, and why does each move fail?
+- Where does a campaign owner's flattering comparison come up at work?
 
-## Which idea does this case test?
+## Which idea does the second case test: that a pushback is answered from the stakeholder's own table?
 
 A pushback is answered from the same table as the claim: reproduce the stakeholder's numbers first,
 show who sits in each group, rebuild the comparison like for like with its counts, and offer the test
 that would settle it. Marketing's arithmetic is right throughout; the comparison is what fails.
 
-## Which numbers stand behind the reply, part by part?
+## Which numbers stand behind the pair's reply, in each of the four parts?
 
 | Part | Number | What it shows |
 |---|---|---|
@@ -41,7 +42,7 @@ that would settle it. Marketing's arithmetic is right throughout; the comparison
 | 3 | Retail-Plus Rs 4,850 against Rs 5,000 on 30 and 40 customers, 3.0 percent less; Retail-Core Rs 1,940 against Rs 2,000, 3.0 percent less; in the unexposed group's mix the exposed spend Rs 3,104 against Rs 3,200, 3.0 percent less | Like for like, the sale went with lower spending |
 | 4 | If the list's spend is at list price, the exposed paid Kalpa about Rs 2,886 per customer against Rs 3,200, 9.8 percent less; one in five of each segment held back at Diwali is 14 Retail-Plus and 18 Retail-Core customers, about Rs 6,360 forgone at Marketing's own 6 percent | The question Marketing has to answer, and the price of settling it |
 
-## Why is each key right, marker by marker?
+## Why does each of the eight keys hold, from Marketing's Rs 4,850 to the Diwali coin?
 
 ### Q1. Which line reproduces Marketing's Rs 4,850?
 
@@ -143,7 +144,7 @@ about Rs 6,360 forgone at Marketing's 6 percent.
 - d, `{"Retail-Plus": (count("yes", "Retail-Plus") + count("no", "Retail-Plus")) // 5}`: leaves
   Retail-Core out, so a lift there could never be checked.
 
-## What reply held the line?
+## What reply to Marketing held the line?
 
 "We split it because the sale reached more Retail-Plus members, who spend more anyway: inside
 Retail-Plus, the 30 customers who got the sale spent 3 percent less than the 40 who did not, and if
@@ -151,7 +152,7 @@ your August figures are at list price, the exposed group paid Kalpa about 10 per
 customer. Let us hold back one in five of each segment at Diwali, which costs about Rs 6,360 even at
 your 6 percent, and we will know."
 
-## Where did pairs go wrong?
+## Where did pairs go wrong in the second case, and why does each move fail?
 
 | Wrong move | Why it fails |
 |---|---|
@@ -161,7 +162,7 @@ your 6 percent, and we will know."
 | Taking the 15 percent off the spend without asking | The list does not say whether its spend is before or after the discount, so the pair asks |
 | Holding back only customers Marketing picked last time | A coin across each segment's whole list is what makes the held-back group like the rest |
 
-## Where does this show up at work?
+## Where does a campaign owner's flattering comparison come up at work?
 
 A campaign owner often defends a campaign with the comparison that flatters it, and with correct
 arithmetic. The reply that holds is the one this case rehearses: the owner's number rebuilt

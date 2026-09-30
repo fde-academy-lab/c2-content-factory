@@ -16,12 +16,12 @@ quarter, and Meera hears that line on Monday unless you catch it here.
 
 **The questions on the way.**
 
-- Which idea does this set test?
-- Why is each key right, item by item?
-- Which wrong answer is worth arguing about?
-- Where does this show up at work?
+- Which idea does the chapter 3 set test: that a rate is only as good as the customers behind it?
+- Why does each of the six keys hold, from the app team's new city to the two segments on Meera's page?
+- Why is option a in item 3, waiting eleven quarters, the wrong answer worth arguing about?
+- Where did the Gates Foundation meet a ranking that small counts had skewed?
 
-## Which idea does this set test?
+## Which idea does the chapter 3 set test: that a rate is only as good as the customers behind it?
 
 A rate is a numerator over a count, and the count decides how far the rate can be trusted. The count
 that settles a rate is customers as well as orders, since more orders from the same few customers add
@@ -30,7 +30,7 @@ the cheapest way to reach thirty customers, and which chance route fits which co
 ask how far one order moves a rate, the interview's two rates, and a headline that travels without
 its count.
 
-## Why is each key right, item by item?
+## Why does each of the six keys hold, from the app team's new city to the two segments on Meera's page?
 
 ### Q1. What goes back to the app team that wants Rs 2 lakh for a city whose orders rose 60 percent?
 
@@ -122,7 +122,7 @@ percent, so X is a lead.
 - d, "Both, weighted equally, as each is computed on its own orders": equal weight ignores the
   counts.
 
-## Which wrong answer is worth arguing about?
+## Why is option a in item 3, waiting eleven quarters, the wrong answer worth arguing about?
 
 Item 3, option a. Waiting for customers who arrive on their own sounds purer than paying for a test,
 and a paid test does bring customers who may differ from the ones who come unasked. Here waiting
@@ -130,7 +130,7 @@ costs about eleven quarters of not knowing, against two weeks and Rs 3,750. The 
 the test, names the difference a paid customer might carry, and says what the test would have to
 show.
 
-## Where does this show up at work?
+## Where did the Gates Foundation meet a ranking that small counts had skewed?
 
 The Gates Foundation put money behind small schools after small schools turned up among the best
 performers. The statistician Howard Wainer showed they were over-represented among the worst as

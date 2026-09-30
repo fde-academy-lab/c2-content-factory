@@ -32,8 +32,7 @@ nothing, and a real fall read as a wobble lets the tier drain.
 - Which line about the Retail-Plus shares goes in the note to Meera?
 - Which share does the note report when pooling and flipping disagree on a heavy-buyer tier?
 
-Every number in items 1, 3, 4 and 6 is invented, so each tests the habit on numbers the notebook
-never used; items 2 and 5 use the chapter's own results.
+Every number in items 1, 3, 4 and 6 is invented; items 2 and 5 use the chapter's own results.
 
 **What you post.** One line of six letters in item order, no spaces, in this shape:
 

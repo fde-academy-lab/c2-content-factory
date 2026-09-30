@@ -14,14 +14,14 @@ lettered choices in five parts with a check after each part, and ends on your no
 
 Kalpa Retail sells through its app, its website and its stores, to four segments: Retail-Core and
 Retail-Plus, its two consumer tiers, of which Retail-Plus is the paid membership; Student; and
-Business, its sales to companies. Revenue here is the money Kalpa kept, as Monday defined it. The
-six chapters answered Meera's questions one at a time on the day's three files, which the rules
-below list, and this case asks you to rebuild the answers alone, choosing every step, and to write
-them up. Chapter 1 set a chance reference against the Retail-Plus fall and read its share both ways,
-chapter 2 sized the fall in rupees against the company and against a retention offer, chapter 3
-counted what Student's rate stands on, chapter 4 rebuilt Marketing's 6 percent and asked who got the
-sale, chapter 5 wrote the four-part note, and chapter 6 asked what else changed in August and priced
-a hold-back for Diwali.
+Business, its sales to companies. Revenue here is the money Kalpa kept, as Monday defined it, and
+recalling which orders that covers is marker 1's question. The six chapters answered Meera's
+questions one at a time on the day's three files, which the rules below list, and this case asks you
+to rebuild the answers alone, choosing every step, and to write them up. Chapter 1 set a chance
+reference against the Retail-Plus fall and read its share both ways, chapter 2 sized the fall in
+rupees against the company and against a retention offer, chapter 3 counted what Student's rate
+stands on, chapter 4 rebuilt Marketing's 6 percent and asked who got the sale, chapter 5 wrote the
+four-part note, and chapter 6 asked what else changed in August and priced a hold-back for Diwali.
 
 A chance reference is a set of invented worlds in which nothing changed. The flip test builds them
 by letting a coin decide, for each pair of values, which one counts as the first; the label shuffle
@@ -91,19 +91,18 @@ sale, one in five inside each segment, and what that forgoes if Marketing's 6 pe
 the note, claim, evidence, caveat and action for all three questions, under 200 words, with both
 directions beside the Retail-Plus share.
 
-## Which rules does the case keep?
+## Which rules does the escalated case keep, from the files it reads to what the note carries?
 
 - The data is the day's three files: Finance's cleaned orders, 186 orders across Q1 and Q2; the
   campaign platform's August list, the exposure table, 160 customers flagged by whether they got the
   sale; and the campaigns table, one campaign. Nothing needs cleaning again.
-- The campaign platform's August list, under its own ids, cannot be matched to Finance's order file,
-  so every figure you size says which of the two lists it comes from.
+- The two lists hold different customers under different ids.
 - Every number in the note carries its count or its denominator, and the Retail-Plus share goes in
   with both directions beside it.
 - "Not yet, and here is what would tell us" is a complete answer where the evidence says so.
 - The support TA answers environment problems only.
 
-## What do you post, and in what shape?
+## How do you post your twelve letters and your note?
 
 One line of twelve letters in the order of the notebook's markers, then your note pasted below it.
 

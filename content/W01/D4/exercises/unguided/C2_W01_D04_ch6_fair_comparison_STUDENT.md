@@ -11,15 +11,14 @@ Kalpa Retail's monsoon sale ran 15 percent off in August, aimed at Retail-Plus, 
 membership tier. Chapter 4 split the comparison by segment and found that inside each segment the
 customers who got the sale spent about 3 percent less than those who did not, and the morning's note
 told Meera Raghavan, the CEO, not to repeat the sale as designed. Chapter 6 asked who got the sale,
-what else changed in August, and what would settle the question at Diwali. It read two files:
-Finance's orders by month, and the campaign platform's August list of who received the sale, which,
-under its own ids, cannot be matched to Finance's order file. A before-and-after sets a segment's
-sale month against the month before. The change beside the change sets that before-and-after against
-the same months in a segment the sale was not aimed at. A hold-back is a slice of customers that a
-coin keeps out of a sale, so the rest can be compared with them afterwards. A label shuffle deals
-the segment labels at random across different customers many times, to see how often chance alone
-makes a gap, and a second route reaches the same answer by an independent method, as a check on the
-first. Kavya Nair, the senior analyst on the team, reviews every line before it reaches Meera.
+what else changed in August, and what would settle the question at Diwali, reading Finance's orders
+by month and the list of the customers the sale reached. A before-and-after sets a segment's sale
+month against the month before. The change beside the change sets that before-and-after against the
+same months in a segment the sale was not aimed at. A hold-back is a slice of customers that a coin
+keeps out of a sale, so the rest can be compared with them afterwards. A label shuffle deals the
+segment labels at random across different customers many times, to see how often chance alone makes
+a gap, and a second route reaches the same answer by an independent method, as a check on the first.
+Kavya Nair, the senior analyst on the team, reviews every line before it reaches Meera.
 
 **Who needs the answer.** Meera signs the Diwali plan, and Marketing will defend its campaign on
 Monday. A sale widened on a jump that belongs to the month multiplies the margin it gives away.
@@ -34,8 +33,8 @@ Monday. A sale widened on a jump that belongs to the month multiplies the margin
 - What do you say when the marketing lead calls the split cherry-picking?
 - What does each of the four comparisons take on trust?
 
-The segments, months, stores and spends in items 1, 3 and 4 are invented, so each tests the habit on
-numbers the notebook never used; items 2, 5 and 6 use the chapter's own results.
+The segments, months, stores and spends in items 1, 3 and 4 are invented; items 2, 5 and 6 use the
+chapter's own results.
 
 **What you post.** One line of seven letters in item order, no spaces, in this shape:
 

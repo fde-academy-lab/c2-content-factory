@@ -1,8 +1,7 @@
 # Can you make the day's eight calls in seconds, from what a share means to the order of the note?
 
 Eight items, ungraded, scored on correctness and speed together. Seven are today's, and the last is
-the return question from Wednesday. Every number in items 1, 3 and 7 is invented. Each item names
-what it tests, so an item dropped for time says what was lost.
+the return question from Wednesday. Every number in items 1, 3 and 7 is invented.
 
 The day answered three questions from Meera Raghavan, Kalpa Retail's CEO, for Monday's growth
 review: is the fall in Retail-Plus, Kalpa's paid membership tier, real or the wobble every quarter

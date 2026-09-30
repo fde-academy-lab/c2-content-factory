@@ -33,8 +33,8 @@ have bought anyway, at Diwali's scale.
 - Which set-up makes the next campaign's readout fair?
 - What does the one-mix route's agreement with the split check?
 
-The campaigns, segments and spends in items 1 to 5 are invented, so each tests the mechanism on
-numbers the notebook never used; item 6 uses the chapter's own result.
+The campaigns, segments and spends in items 1 to 5 are invented; item 6 uses the chapter's own
+result.
 
 **What you post.** One line of six letters in item order, no spaces, in this shape:
 

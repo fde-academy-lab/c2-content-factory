@@ -38,7 +38,7 @@ questions, and a rung skipped is a line of Monday's note you will write without 
 | After chapter 6 | `unguided/C2_W01_D04_ch6_fair_comparison_STUDENT.md` | Marketing wants the sale again for more of the base: who got it, what else changed, and what would settle it at Diwali? | Seven letters; items 2, 3 and 4 are design |
 | The escalated case, alone, 50 minutes | `unguided/C2_W01_D04_escalated_STUDENT.md` with `notebooks/C2_W01_D04_ex1_escalated_case_STUDENT.ipynb` | Can you answer Meera's three questions alone in fifty minutes, and ship a note under 200 words that survives Marketing? | Twelve letters, then the note; items 2, 6, 10 and 12 are design |
 | The second case, in pairs, 40 minutes | `unguided/C2_W01_D04_pushback_STUDENT.md` with `notebooks/C2_W01_D04_ex2_second_case_STUDENT.ipynb` | Marketing calls the segment split cherry-picking and brings Rs 4,850 against Rs 3,200: is their comparison fair, and how do you hold the line? | Eight letters, then a two-sentence reply; items 4 and 8 are design |
-| The TA-led practice lab, after the afternoon block | `practice/C2_W01_D04_lab_STUDENT.md` with `notebooks/C2_W01_D04_ex3_practice_lab_STUDENT.ipynb` | Can you run the day's checks on new cases in an hour: four p-value sentences, three unexplained gaps, Monday's sample and one note? | Seven letters, five more from the notebook, and a note |
+| The TA-led practice lab, after the afternoon block | `practice/C2_W01_D04_lab_STUDENT.md` with `notebooks/C2_W01_D04_ex3_practice_lab_STUDENT.ipynb` | Can you run the day's checks on cases you have not seen, in an hour: four teams' draft sentences, three unexplained gaps, Monday's sample and one note? | Seven letters, five more from the notebook, and a note |
 | Tonight | `../takehome/C2_W01_D04_brief_STUDENT.md` | Did Q1's discounted orders really make bigger baskets, and what can Meera be told on one page? | A notebook, one note, and the self-check |
 | Tonight, before you post | `../takehome/C2_W01_D04_selfcheck_STUDENT.md` | Does your take-home reach the numbers a careful pass on Wednesday's export reaches? | Your own numbers against its tables |
 
@@ -54,7 +54,7 @@ work.
 Every solution is in `solutions/`. The six chapter sets' solutions open at the end of the practice
 lab, the two case solutions after the debrief, with their executed notebooks, and the lab solution at
 the end of the lab. Each opens on an answer line and gives, item by item, the question, the key with
-why it holds and why each other letter fails, so it reads with nothing else open.
+why it holds and why each other letter fails.
 
 | Solution | The question it answers |
 |---|---|

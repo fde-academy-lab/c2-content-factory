@@ -1,4 +1,4 @@
-# Can you run the day's checks on new cases in an hour: four p-value sentences, three unexplained gaps, Monday's sample and one note?
+# Can you run the day's checks on cases you have not seen, in an hour: four teams' draft sentences, three unexplained gaps, Monday's sample and one note?
 
 The TA-led practice lab, after the afternoon block. Four problems, climbing in difficulty, are the
 core and take about 60 minutes: problem 1 ten minutes, problem 2 fifteen, problem 3 twenty and
@@ -9,13 +9,16 @@ whatever is left is tonight's work. Everything invented is labelled so.
 
 Kavya Nair is the senior analyst on Kalpa Retail's data team, and she reviews every line before it
 reaches Meera Raghavan, the CEO. A p-value, which the day also calls a share, is the fraction of
-chance-only worlds, built by shuffling or flipping where nothing changed, that make a gap at least as
-large as the real one. It can count one direction, or a gap that large in either direction. A label
-shuffle pools the values of two groups of different customers and deals them into two piles at
+chance-only worlds, built by shuffling or flipping where nothing changed, that make a gap at least
+as large as the real one. It can count one direction, or a gap that large in either direction. The
+usual wobble is the movement chance alone makes in a number from one period or group to the next. A
+label shuffle pools the values of two groups of different customers and deals them into two piles at
 random, many times. Kalpa Retail's four segments are Retail-Core and Retail-Plus, its two consumer
-tiers, of which Retail-Plus is the paid membership; Student; and Business, its sales to companies.
-The money Kalpa kept is revenue as Monday defined it. The note to a
-stakeholder has four parts: claim, evidence, caveat and action.
+tiers, of which Retail-Plus is the paid membership; Student; and Business, its sales to companies. A
+basket is one order's amount, and a booked order is any order placed, whatever happened to it
+afterwards. Which orders count as the money Kalpa kept is Monday's definition, and recalling it is
+part of problem 3, so it is not repeated here. The note to a stakeholder has four parts: claim,
+evidence, caveat and action.
 
 **Who needs the answer.** Kavya sends back any draft that reads a share as a certainty, credits a
 change without asking what else changed, or quotes a rate without its count, and a draft she sends

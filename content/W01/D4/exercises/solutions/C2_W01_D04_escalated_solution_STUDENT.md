@@ -5,11 +5,15 @@ Answers: 1b 2c 3b 4a 5d 6c 7b 8a 9d 10b 11a 12c
 Meera Raghavan, Kalpa Retail's CEO, asked three questions for Monday's growth review: is the fall in
 Retail-Plus, Kalpa's paid membership tier, real or the usual wobble; should budget follow Student's
 40 percent rise; and did the monsoon sale, 15 percent off in August, work, or did those customers
-buy anyway? She wants one page she can read in two minutes, with "not yet" allowed. The escalated
-case asks each learner to rebuild all three answers alone in fifty minutes in
-`notebooks/C2_W01_D04_ex1_escalated_case_STUDENT.ipynb`, twelve lettered choices in five parts, and
-to write the note. The executed solution, `C2_W01_D04_ex1_escalated_case_solution_STUDENT.ipynb` in
-this folder, runs every key. Four of the twelve items are design items: 2, 6, 10 and 12.
+buy anyway? She wants one page she can read in two minutes, with "not yet" allowed. A chance
+reference is a set of invented worlds in which nothing changed, and the share is the fraction of
+them that make a gap at least as large as the real one. The customers the sale reached are the
+exposed group, a group's mix is its make-up by segment, and a hold-back is a group a coin keeps out
+of a sale so the rest can be compared with it. The escalated case asks each learner to rebuild all
+three answers alone in fifty minutes in `notebooks/C2_W01_D04_ex1_escalated_case_STUDENT.ipynb`,
+twelve lettered choices in five parts, and to write the note. The executed solution,
+`C2_W01_D04_ex1_escalated_case_solution_STUDENT.ipynb` in this folder, runs every key. Four of the
+twelve items are design items: 2, 6, 10 and 12.
 
 **Who needs the answer.** You, before the debrief, checking your twelve letters and your note. The
 debrief replays the room's wrong lines aloud, and a line you cannot defend here is the one Marketing
@@ -17,14 +21,14 @@ takes apart on Monday.
 
 **The questions on the way.**
 
-- Which idea does this case test?
-- Which numbers should you have reached, part by part?
-- Why is each key right, marker by marker?
-- What does a model note say, in 190 words?
-- Which wrong answers does the debrief replay?
-- Where does this show up at work?
+- Which idea does the escalated case test: every habit of the day, with no trainer choosing the step?
+- Which numbers should you have reached in each of the five parts?
+- Why does each of the twelve keys hold, from the orders that count to the Diwali hold-back?
+- What does a model note to Meera say, in 190 words?
+- Which wrong answers does the debrief replay, and what replaces each?
+- Where do Meera's three questions come up again at work?
 
-## Which idea does this case test?
+## Which idea does the escalated case test: every habit of the day, with no trainer choosing the step?
 
 The case tests every habit of the day at once, with no trainer choosing the step: a chance reference
 that fits the way the data was collected, read in both directions; a fall sized in rupees against the
@@ -32,7 +36,7 @@ company and a fix's cost; a rate put beside its count; a campaign compared insid
 the mix named; a hold-back drawn from the list the sale runs on; and a note of four parts that says
 "not yet" where the evidence does.
 
-## Which numbers should you have reached, part by part?
+## Which numbers should you have reached in each of the five parts?
 
 | Part | Number | What it means |
 |---|---|---|
@@ -42,7 +46,7 @@ the mix named; a hold-back drawn from the list the sale runs on; and a note of f
 | 4 | Blended Rs 3,395 against Rs 3,200, up 6.1 percent; inside Retail-Plus and inside Retail-Core, exposed customers spent 3.0 percent less; half the exposed group is Retail-Plus against 40 percent of the rest | The blend rose because of who got the discount |
 | 5 | 14 of the platform's 70 Retail-Plus customers held back; about Rs 4,200 forgone if Marketing's 6 percent were real | The price of knowing, sized on the list the sale runs on |
 
-## Why is each key right, marker by marker?
+## Why does each of the twelve keys hold, from the orders that count to the Diwali hold-back?
 
 ### Q1. Which orders count as money Kalpa kept?
 
@@ -184,18 +188,19 @@ customers is the mix of the exposed group: half, against 40 percent of the rest.
 ### Q12. How many Retail-Plus customers does the Diwali coin hold back?
 
 A design item. A coin keeps one in five out of the Diwali sale inside each segment, and the notebook
-holds Finance's 22 members and the platform's list side by side.
+asks how many Retail-Plus customers that is.
 
 The key is c, `len(platform_plus) // 5`. The sale runs on the platform's list, so the hold-back is
 one in five of its 70 Retail-Plus customers, exposed last time or not: 14, forgoing about Rs 4,200 at
 Marketing's 6 percent.
 
-- a, `len(finance_members) // 5`: takes Finance's members, a different list with different ids.
+- a, `len(finance_members) // 5`: takes Finance's 22 members, the list the retention offer was sized
+  on, where the sale does not run.
 - b, `len(platform_plus_exposed) // 5`: samples only the customers Marketing picked last time.
 - d, `len(EXPOSURE) // 5`: takes both segments at once, so Retail-Plus's slice is no longer one in
   five.
 
-## What does a model note say, in 190 words?
+## What does a model note to Meera say, in 190 words?
 
 **Claim.** Retail-Plus is down by a borderline amount and small against the company; Student is too
 thin to fund yet; the monsoon sale did not work as designed.
@@ -214,7 +219,7 @@ figure per group, so we cannot see the spread.
 more customers buy, thirty or more; do not repeat the sale as designed, and hold back a random slice
 of each segment at Diwali.
 
-## Which wrong answers does the debrief replay?
+## Which wrong answers does the debrief replay, and what replaces each?
 
 | Wrong answer | Where it comes from | The fix |
 |---|---|---|
@@ -225,9 +230,9 @@ of each segment at Diwali.
 | A hold-back of 4 drawn from Finance's 22 members | The retention offer's list used for the sale | The sale runs on the platform's list, so the coin holds back 14 of its 70 |
 | A note with no caveat | The habit of stopping at the claim | "This changes if ___; we will know by ___" |
 
-## Where does this show up at work?
+## Where do Meera's three questions come up again at work?
 
-The three are the questions a growth review asks of any metric: did it really move, does a fast
-riser have enough behind it, and did a campaign earn its lift. Each is also on the day's interview
-list, where a strong answer carries the count, the chance and the fair comparison beside each number
-and ends on what the business should do next.
+Meera's three questions are the ones a growth review asks of any metric: did it really move, does a
+fast riser have enough behind it, and did a campaign earn its lift. Each is also on the day's
+interview list, where a strong answer carries the count, the chance and the fair comparison beside
+each number and ends on what the business should do next.

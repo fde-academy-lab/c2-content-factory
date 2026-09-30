@@ -3,12 +3,14 @@
 Answers: 1b 2d 3c 4a 5c 6b
 
 Meera Raghavan, Kalpa Retail's CEO, asked whether the fall in Retail-Plus, Kalpa's paid membership
-tier, is real or the wobble Kalpa sees every quarter. The same 22 members bought in both quarters,
-so chapter 1 built its chance-only worlds by flipping each member's own Q1 and Q2 with a coin; the
-label shuffle, which pools every value and deals it into two piles at random, is the reference for
-two groups of different customers. The share, the p-value, is the fraction of chance-only worlds
-with a gap at least as large as the real one, counted for falls only or for a move that large either
-way. Three of the six items are design items: 1, 3 and 6.
+tier, is real or the wobble Kalpa sees every quarter. A chance reference is a set of invented worlds
+in which nothing changed, and Kavya Nair, the senior analyst on the team, reviews every line before
+it reaches Meera. The same 22 members bought in both quarters, so chapter 1 built its chance-only
+worlds by flipping each member's own Q1 and Q2 with a coin; the label shuffle, which pools every
+value and deals it into two piles at random, is the reference for two groups of different customers.
+The share, the p-value, is the fraction of chance-only worlds with a gap at least as large as the
+real one, counted for falls only or for a move that large either way. Three of the six items are
+design items: 1, 3 and 6.
 
 **Who needs the answer.** You, checking your six letters after the lab or tonight. A letter picked
 for the wrong reason carries that reason into Monday's note, where Kavya Nair, the senior analyst
@@ -16,12 +18,12 @@ who reviews every line before it reaches Meera, sends it back.
 
 **The questions on the way.**
 
-- Which idea does this set test?
-- Why is each key right, item by item?
-- Which wrong answer is worth arguing about?
-- Where does this show up at work?
+- Which idea does the chapter 1 set test: that the way the data was collected picks the chance reference?
+- Why does each of the six keys hold, from the store team's request to the heavy-buyer tier?
+- Why is option a in item 6, the pooled 0.24, the wrong answer worth arguing about?
+- Where does Booking.com face the same choice of chance reference?
 
-## Which idea does this set test?
+## Which idea does the chapter 1 set test: that the way the data was collected picks the chance reference?
 
 A chance reference builds worlds in which nothing changed and counts how often those worlds make a
 gap as large as the real one, and the way the data was collected decides how the worlds are built:
@@ -31,7 +33,7 @@ the textbook paired test takes over, and what pooling does on a tier where heavy
 The other items ask the question every share raises: in which world, and in which direction, was it
 counted?
 
-## Why is each key right, item by item?
+## Why does each of the six keys hold, from the store team's request to the heavy-buyer tier?
 
 ### Q1. Which chance reference fits the store team's request, and which fits the app team's?
 
@@ -125,7 +127,7 @@ gap between members. Pooling counts that spread as chance, and the flips remove 
 - d, "Neither, until a third route can break the tie between the two numbers": the two routes answer
   different designs, and the design of this data picks one.
 
-## Which wrong answer is worth arguing about?
+## Why is option a in item 6, the pooled 0.24, the wrong answer worth arguing about?
 
 Item 6, option a. Pooling uses more numbers, and some pairs will trust it for that. The numbers are
 the same people counted twice: on this invented tier a member's Q1 and Q2 correlate at 0.95, so the
@@ -134,7 +136,7 @@ fall as ordinary. On Retail-Plus the correlation is 0.04, which is why pooling h
 there, and a test chosen because it landed close on one file fails on the next tier where heavy
 buyers stay heavy.
 
-## Where does this show up at work?
+## Where does Booking.com face the same choice of chance reference?
 
 Booking.com runs about 25,000 tests a year, and about nine in ten of its experiments improve
 nothing, so its analysts read a share against the usual wobble week after week. A test that splits

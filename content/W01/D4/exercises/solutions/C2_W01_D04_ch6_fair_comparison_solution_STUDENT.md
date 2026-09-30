@@ -3,15 +3,17 @@
 Answers: 1b 2a 3b 4b 5c 6d 7c
 
 Marketing wants Kalpa Retail's monsoon sale, 15 percent off in August and aimed at Retail-Plus,
-Kalpa's paid membership tier, again at Diwali and for more of the base. Chapter 4 had found that
-inside each segment the customers who got the sale spent about 3 percent less. Chapter 6 asked who
-got it, what else changed, and what would settle it. August against July shows Retail-Plus up 170
+Kalpa's paid membership tier, again at Diwali and for more of the base. Chapter 4's split by segment
+had found that inside each segment the customers who got the sale spent about 3 percent less. A
+second route reaches the same answer by an independent method, and a hold-back is a slice of
+customers a coin keeps out of a sale so the rest can be compared with them. Chapter 6 asked who got
+it, what else changed, and what would settle it. August against July shows Retail-Plus up 170
 percent, but Retail-Core, the segment the sale was not aimed at, rose 73 percent the same month and
 July stands on 4 orders. August's share of the quarter is 52.5 percent for Retail-Plus against 48.6
-for Retail-Core, a gap label shuffles make in about 8 deals of 10 either way. Q1's months with no sale
-show gaps of 4, 22 and 26 points. A coin that holds back one in five of the 70 Retail-Plus customers
-on the sale's list at Diwali forgoes about Rs 4,200 at Marketing's own 6 percent. Three of the seven
-items are design items: 2, 3 and 4.
+for Retail-Core, a gap label shuffles make in about 8 deals of 10 either way. Q1's months with no
+sale show gaps of 4, 22 and 26 points. A coin that holds back one in five of the 70 Retail-Plus
+customers on the sale's list at Diwali forgoes about Rs 4,200 at Marketing's own 6 percent. Three of
+the seven items are design items: 2, 3 and 4.
 
 **Who needs the answer.** You, checking your seven letters after the lab or tonight. Meera signs the
 Diwali plan on Monday, and a reader who takes a month's jump for the sale's work widens a sale that
@@ -19,12 +21,12 @@ gives away margin to customers who would have bought anyway.
 
 **The questions on the way.**
 
-- Which idea does this set test?
-- Why is each key right, item by item?
-- Which wrong answer is worth arguing about?
-- Where does this show up at work?
+- Which idea does the chapter 6 set test: who got the sale, who did not, and what else changed?
+- Why does each of the seven keys hold, from a 120 percent jump to what each comparison takes on trust?
+- Why is option d in item 4, waiting for a hold-back, the wrong answer worth arguing about?
+- Where did eBay find that its brand-name ads paid for sales that would have come anyway?
 
-## Which idea does this set test?
+## Which idea does the chapter 6 set test: who got the sale, who did not, and what else changed?
 
 Every campaign readout needs three questions answered: who got it, who did not, and what else
 changed. The design items ask for a hold-back sized under a limit the marketing lead sets, a second
@@ -33,7 +35,7 @@ is refused. The other items ask what to check first on a before-and-after jump, 
 routes can say together, how to hold the line when the split is called cherry-picking, and what each
 comparison takes on trust.
 
-## Why is each key right, item by item?
+## Why does each of the seven keys hold, from a 120 percent jump to what each comparison takes on trust?
 
 ### Q1. Which check comes first on a 120 percent jump in a sale month?
 
@@ -147,7 +149,7 @@ a segment was as good as random (C1), and the coin trusts nothing beyond itself 
 - b, "A4, B3, C1, D2": swaps the two month-based routes.
 - d, "A1, B4, C3, D2": gives before and after the split's assumption.
 
-## Which wrong answer is worth arguing about?
+## Why is option d in item 4, waiting for a hold-back, the wrong answer worth arguing about?
 
 Item 4, option d. Holding out for a hold-back sounds like the rigorous answer, and chapter 6 did
 argue that only a coin settles it. Here the owners have refused, the sale runs this season either
@@ -155,7 +157,7 @@ way, and the south has two years of months beside the north. The honest note run
 the change, says aloud that it trusts both regions to move alike, and asks for a hold-back at the
 next sale that can still be designed.
 
-## Where does this show up at work?
+## Where did eBay find that its brand-name ads paid for sales that would have come anyway?
 
 eBay stopped buying search ads on its own brand name in a controlled test and found that almost all
 of the lost clicks arrived through ordinary search results instead; the researchers reported that

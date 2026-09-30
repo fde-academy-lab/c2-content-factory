@@ -31,8 +31,7 @@ draining the tier.
 - What does the budget meeting decide on a Rs 50,000 fix for a Rs 60,000 fall?
 - What happens to a Rs 20 gap's share, and to the gap, when 100 orders a quarter become 20,000?
 
-Every number in items 1, 3, 4, 5 and 6 is invented, so each tests the habit on numbers the notebook
-never used.
+Every number in items 1, 3, 4, 5 and 6 is invented; item 2 is about Kalpa's own Retail-Plus fall.
 
 **What you post.** One line of six letters in item order, no spaces, in this shape:
 

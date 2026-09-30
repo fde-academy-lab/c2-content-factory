@@ -29,8 +29,7 @@ that chance made sends a quarter's spend to a segment that may be flat next quar
 - Which chance route fits a segment on 18 orders, and which fits one on 60?
 - Which line goes in the note about a 50 percent rise on 6 orders and a 30 percent rise on 300?
 
-Every segment, count and rate in these items is invented, so each tests the habit on numbers the
-notebook never used.
+Every segment, count and rate in these items is invented.
 
 **What you post.** One line of six letters in item order, no spaces, in this shape:
 

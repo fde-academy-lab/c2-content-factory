@@ -3,12 +3,15 @@
 Answers: 1a 2c 3c 4b 5d 6a
 
 Retail-Plus, Kalpa Retail's paid membership tier, fell Rs 1,110 a member from Q1 to Q2, and chapter
-1 read that fall as borderline against chance: 0.029 of chance-only worlds made a fall that large and
-0.057 a move that large either way. Chapter 2 asked whether the fall is big enough to act on. It is
-worth Rs 24,420 a quarter, 0.19 percent of the company's Q2 delivered revenue; a Rs 500-a-member
-retention offer for all 22 members costs Rs 11,000 and must win back 45 percent of the fall to pay
-for itself, its break-even; and the range from resampling the members' own differences runs from
-about Rs 80 to Rs 2,160 a member. Three of the six items are design items: 1, 3 and 5.
+1 read that fall as borderline against chance: flipping each member's two quarters with a coin,
+0.029 of those chance-only worlds made a fall that large and 0.057 a move that large either way, and
+that fraction is the share, the p-value. Chapter 2 asked whether the fall is big enough to act on.
+It is worth Rs 24,420 a quarter, 0.19 percent of the company's Q2 delivered revenue; a Rs
+500-a-member retention offer for all 22 members costs Rs 11,000 and must win back 45 percent of the
+fall to pay for itself, its break-even; and the range from resampling the members' own differences
+runs from about Rs 80 to Rs 2,160 a member. Kavya Nair, the senior analyst on the team, reviews
+every line before it reaches Meera Raghavan, Kalpa Retail's CEO. Three of the six items are design
+items: 1, 3 and 5.
 
 **Who needs the answer.** You, checking your six letters after the lab or tonight. The head of
 Retail-Plus will ask for a budget on Monday, and a reply that confuses how sure with how big either
@@ -16,12 +19,12 @@ funds an offer that cannot pay back or waves away a fall that keeps draining the
 
 **The questions on the way.**
 
-- Which idea does this set test?
-- Why is each key right, item by item?
-- Which wrong answer is worth arguing about?
-- Where does this show up at work?
+- Which idea does the chapter 2 set test: that beating chance and being worth money are two separate calls?
+- Why does each of the six keys hold, from the first test of an offer to a Rs 20 gap on 20,000 orders?
+- Why is option b in item 5, a test on half the tier, the wrong answer worth arguing about?
+- Where did Microsoft's Bing find a change worth acting on for its size in money?
 
-## Which idea does this set test?
+## Which idea does the chapter 2 set test: that beating chance and being worth money are two separate calls?
 
 A gap raises two calls, and each has its own measure. A chance reference says whether the gap beats
 chance, and rupees set against the whole company and against the cost of acting say whether it
@@ -31,7 +34,7 @@ below the cost, and what a measured recovery rate does to the decision. The othe
 small share can and cannot say about size, how a review is ordered, and what a larger count does to a
 share.
 
-## Why is each key right, item by item?
+## Why does each of the six keys hold, from the first test of an offer to a Rs 20 gap on 20,000 orders?
 
 ### Q1. Which half of a 40-member tier gets the first test of a retention offer?
 
@@ -120,7 +123,7 @@ a quarter.
 
 The key is a, "The share falls toward zero, and the gap stays Rs 20". More orders narrow the wobble
 chance makes, so the share falls toward zero while the Rs 20 stays Rs 20: on the chapter's run it
-reads 0.002 at 20,000 orders. Significance grows with the count, and size does not.
+reads 0.002 at 20,000 orders.
 
 - b, "The share stays near 0.43, while the gap grows with the orders": the gap is set at Rs 20 at
   every size.
@@ -128,14 +131,14 @@ reads 0.002 at 20,000 orders. Significance grows with the count, and size does n
 - d, "The share rises, since more orders add more noise": more orders shrink the noise in an
   average.
 
-## Which wrong answer is worth arguing about?
+## Why is option b in item 5, a test on half the tier, the wrong answer worth arguing about?
 
 Item 5, option b. A test on half the tier sounds careful, and after chapter 2 some pairs reach for it
 by habit. Here the measured rate already answers what a test would measure, and the arithmetic says
 the fix loses money even at that rate. The honest line is "not as priced": the fix needs a cheaper
 version, or a larger fall to address, before anyone tests it.
 
-## Where does this show up at work?
+## Where did Microsoft's Bing find a change worth acting on for its size in money?
 
 At Microsoft, about a third of the experiments designed to improve a metric succeeded, and one change
 to how Bing showed ad headlines raised revenue by more than 100 million dollars a year. What made the

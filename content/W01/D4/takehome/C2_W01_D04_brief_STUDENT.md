@@ -30,12 +30,12 @@ discounts to grow baskets that a fair comparison may show never grew.
 
 **The questions on the way.**
 
-- Which file do you work on, and where do you start?
-- What do you hand in, section by section?
-- Which rules does tonight's work follow?
-- What comes after the note?
+- Which export do you work on tonight, and where do you start on it?
+- What does your take-home notebook show, section by section?
+- Which rules does tonight's discount analysis follow?
+- What do you watch, redo and recap once the note to Meera is done?
 
-## Which file do you work on, and where do you start?
+## Which export do you work on tonight, and where do you start on it?
 
 `data/C2_W01_D04_takehome_STUDENT.csv` is Wednesday's take-home export again: the same second Q1
 extract from the migration, copied into today's folder so your notebook finds it. You profiled and
@@ -44,7 +44,7 @@ that you reach the rows you kept on Wednesday, and add the one decision tonight'
 what to do with an order whose discount is missing. If your Wednesday pass is unfinished, finish it
 first; the self-check lists the counts a finished pass reaches.
 
-## What do you hand in, section by section?
+## What does your take-home notebook show, section by section?
 
 A new notebook, `C2_W01_D04_takehome_<your name>.ipynb`, in your own folder, that runs cold top to
 bottom and carries five sections.
@@ -61,7 +61,7 @@ The sentence that survives Kavya Nair, the senior analyst who reviews every line
 Meera, names the world the share was counted in: "If discounts made no difference, a gap this large
 would turn up in about ___ of every 100 shuffles, and a gap that large either way in about ___."
 
-## Which rules does tonight's work follow?
+## Which rules does tonight's discount analysis follow?
 
 - Delivered orders are the money kept. A discount of zero and a missing discount are different facts;
   decide what you do with the missing ones and say so in the log.
@@ -71,7 +71,7 @@ would turn up in about ___ of every 100 shuffles, and a gap that large either wa
 - Before Friday, read the note aloud to someone outside the programme and write one line in your
   notebook about what they asked you. A question you could not answer belongs in your caveat.
 
-## What comes after the note?
+## What do you watch, redo and recap once the note to Meera is done?
 
 - **Watch.** Seeing Theory, frequentist inference, the interactive chapter on testing:
   https://seeing-theory.brown.edu/frequentist-inference/index.html (verified 29 Sep 2026)

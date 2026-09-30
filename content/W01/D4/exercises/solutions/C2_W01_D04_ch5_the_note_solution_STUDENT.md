@@ -17,12 +17,12 @@ its own numbers, sends money the wrong way with Marketing in the room.
 
 **The questions on the way.**
 
-- Which idea does this set test?
-- Why is each key right, item by item?
-- Which wrong answer is worth arguing about?
-- Where does this show up at work?
+- Which idea does the chapter 5 set test: that every number on Meera's page travels with its partner and a decision?
+- Why does each of the seven keys hold, from the CFO's weekly form to the order of the audit?
+- Why is option a in item 5, tracing every figure, the wrong answer worth arguing about?
+- Where does Amazon run its meetings on written memos in place of slides?
 
-## Which idea does this set test?
+## Which idea does the chapter 5 set test: that every number on Meera's page travels with its partner and a decision?
 
 A CEO's note carries each number with its partner, a share with its world and its direction, a rupee
 figure with its whole, a rate with its count and a lift with its groups, and puts a decision in the
@@ -31,7 +31,7 @@ cut when a note runs long, and which second route catches a note whose decision 
 its numbers. The other items ask whether a line passes the audit, how "not yet" is said so that it
 still answers, and the order of the audit.
 
-## Why is each key right, item by item?
+## Why does each of the seven keys hold, from the CFO's weekly form to the order of the audit?
 
 ### Q1. Which form answers the CFO's same three questions every Monday for a quarter?
 
@@ -140,16 +140,14 @@ count without its base is still unreadable.
 - d, "Attach the count or chance, find the number, name its base, state the caveat": a chance
   reference means nothing until the number and its base are fixed.
 
-## Which wrong answer is worth arguing about?
+## Why is option a in item 5, tracing every figure, the wrong answer worth arguing about?
 
 Item 5, option a. Tracing every figure is the check most teams run, and some pairs will pick it by
 reflex. It passes this note, because the note's numbers are right and only its decision is wrong. A
 note can quote a correct split and still recommend the opposite of what the split says, and the check
 that catches it applies the rule the analysis ended on and compares the decision.
 
-## Where does this show up at work?
+## Where does Amazon run its meetings on written memos in place of slides?
 
 Amazon's meetings run on six-page narrative memos read in silence at the start, and Jeff Bezos's
-2017 letter to shareholders says the company does not use slide presentations. The discipline holds
-at any length: every claim carries its evidence and its caveat, and the reader leaves with a decision
-and the reasoning behind it.
+2017 letter to shareholders says the company does not use slide presentations.

@@ -20,21 +20,21 @@ you.
 
 **The questions on the way.**
 
-- Which idea does this lab test?
-- Why is each key right, item by item?
-- What does problem 3's notebook find, marker by marker?
-- What does a model note for problem 4 say?
-- Which wrong answer is worth arguing about?
-- Where does this show up at work?
+- Which idea does the practice lab test: what a p-value can say, what else differs between two groups, and which orders count?
+- Why does each of the seven keys hold, from the loyalty test's p = 0.20 to the warehouse and the courier?
+- What does problem 3's notebook find on Monday's sample, marker by marker?
+- What does a model note to the head of the app team say?
+- Why is option a in item 1, "no effect", the wrong answer worth arguing about?
+- Where do draft p-value sentences and unexplained gaps reach a senior's desk?
 
-## Which idea does this lab test?
+## Which idea does the practice lab test: what a p-value can say, what else differs between two groups, and which orders count?
 
 A p-value says how often chance alone makes a gap, in worlds where nothing changed, and nothing more:
 it is neither the chance a finding is wrong, nor a size, nor proof of no effect. A gap between two
 groups belongs to whatever else differs between them until a fair comparison rules that out. And a
 definition, such as which orders count as money kept, can move a verdict as far as the data can.
 
-## Why is each key right, item by item?
+## Why does each of the seven keys hold, from the loyalty test's p = 0.20 to the warehouse and the courier?
 
 ### Q1. Which verdict does Kavya give the loyalty test's "no effect" line?
 
@@ -139,7 +139,7 @@ landed together, and splitting by courier separates them in the data the team al
 - c, "Nothing, since two changes at once can never be separated in the data": the split can often
   separate them.
 
-## What does problem 3's notebook find, marker by marker?
+## What does problem 3's notebook find on Monday's sample, marker by marker?
 
 The head of Retail-Plus asked whether members buy bigger baskets than Retail-Core. Both tiers'
 baskets are different customers' orders, so the notebook shuffles the tier labels 5,000 times with
@@ -173,7 +173,7 @@ Rs 3,800. The definition moved the verdict and the count decided how far to trus
   definition nobody asked about; c, `1 - share_kept`, is its complement, the share of deals with a
   smaller lead; d, `min(share_booked, share_kept)`, picks whichever share flatters the claim.
 
-## What does a model note for problem 4 say?
+## What does a model note to the head of the app team say?
 
 A model note, 94 words.
 
@@ -188,14 +188,14 @@ already were; p = 0.02 says the gap beats chance, and says nothing about the cau
 **Action.** Since sending costs almost nothing, send to a random half of opted-in users for four weeks
 and compare the halves.
 
-## Which wrong answer is worth arguing about?
+## Why is option a in item 1, "no effect", the wrong answer worth arguing about?
 
 Item 1, option a. "No effect" sounds like the careful answer, and a room that has spent the day
 distrusting small shares will reach for it. A share of 0.20 says chance could have made the gap; it
 cannot say the programme did nothing, because a real effect too small for this test would read the
 same. The honest line is "not yet, and here is what would tell us".
 
-## Where does this show up at work?
+## Where do draft p-value sentences and unexplained gaps reach a senior's desk?
 
 Experiment readouts, pricing tests and campaign reviews reach a senior's desk as sentences like the
 four in problem 1, and many business questions first arrive as a store or city comparison like the

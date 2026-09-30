@@ -120,17 +120,17 @@ anyway.
 
 Kalpa Retail sells through its app, its website and its stores, to four segments: Retail-Core and
 Retail-Plus, its two consumer tiers, of which Retail-Plus is the paid membership; Student; and
-Business, its sales to companies. The setup cell below loads the day's three files: Finance's cleaned
-orders, 186 orders across Q1 and Q2; the campaign platform's August list, the exposure table, 160
-customers flagged by whether they got the sale; and the campaigns table, one campaign. The platform's
-list, under its own ids, cannot be matched to Finance's order file. Revenue here is the money Kalpa
-kept, as Monday defined it. The six chapters answered Meera's questions one at a time on these files,
+Business, its sales to companies. The setup cell below loads the day's three files: Finance's
+cleaned orders, 186 orders across Q1 and Q2; the campaign platform's August list, the exposure
+table, 160 customers flagged by whether they got the sale; and the campaigns table, one campaign.
+Revenue here is the money Kalpa kept, as Monday defined it, and recalling which orders that covers
+is marker 1's question. The six chapters answered Meera's questions one at a time on these files,
 and this case asks you to rebuild the answers alone, choosing every step, and to write them up.
-Chapter 1 set a chance reference against the Retail-Plus fall and read its share both ways, chapter 2
-sized the fall in rupees against the company and against a retention offer, chapter 3 counted what
-Student's rate stands on, chapter 4 rebuilt Marketing's 6 percent and asked who got the sale, chapter
-5 wrote the four-part note, and chapter 6 asked what else changed in August and priced a hold-back
-for Diwali.
+Chapter 1 set a chance reference against the Retail-Plus fall and read its share both ways, chapter
+2 sized the fall in rupees against the company and against a retention offer, chapter 3 counted what
+Student's rate stands on, chapter 4 rebuilt Marketing's 6 percent and asked who got the sale,
+chapter 5 wrote the four-part note, and chapter 6 asked what else changed in August and priced a
+hold-back for Diwali.
 
 A chance reference is a set of invented worlds in which nothing changed. The setup cell's `flip_gaps`
 builds them by letting a coin decide, for each pair of values, which one counts as the first;
@@ -501,22 +501,21 @@ Marketing's arithmetic wrong, it loses the room with a reading that was right.
 
 1. Can you make Marketing's Rs 4,850 and Rs 3,200 appear from the platform's list?
 2. Who sits in each of Marketing's two groups, and what else differs between them?
-3. What do exposed and unexposed customers look like like for like, with how many customers behind each?
+3. Compared like for like, how do exposed and unexposed customers differ, and how many stand behind each?
 4. If the list's August spend is at list price, what did the exposed pay Kalpa, and what would a Diwali
    hold-back cost?
 
 Kalpa Retail's monsoon sale ran 15 percent off in August, aimed at Retail-Plus, Kalpa's paid
-membership tier; Retail-Core is Kalpa's other consumer tier. The setup cell below loads the campaigns
-table and the campaign platform's August list: 160 Retail-Plus and Retail-Core customers under the
-platform's own ids, each flagged exposed if the sale reached them and unexposed if it did not, with
-one average August spend for each group. It records who received the sale, whatever the sale was
-aimed at, and under its own ids it cannot be matched to Finance's order file. Chapter 4 split this
-list by segment and found that inside Retail-Plus and inside Retail-Core the exposed customers spent
-3.0 percent less than the unexposed, while the blend, one average over both segments mixed together,
-rose 6.1 percent. Marketing now calls that split cherry-picking. A group's mix is its make-up by
-segment; like for like means the same segment on both sides of a comparison; list price is the price
-before any discount; and a hold-back is a slice of customers that a coin keeps out of a sale, so the
-rest can be compared with them afterwards.
+membership tier; Retail-Core is Kalpa's other consumer tier. The setup cell below loads the
+campaigns table and the table this case reads. The table is the campaign platform's August list: 160
+Retail-Plus and Retail-Core customers under the platform's own ids, with one average August spend
+for each group. A customer is exposed if the monsoon sale reached them and unexposed if it did not.
+Chapter 4 split this list by segment and found that inside Retail-Plus and inside Retail-Core the
+exposed customers spent 3.0 percent less than the unexposed, while the blend, one average over both
+segments mixed together, rose 6.1 percent. Marketing now calls that split cherry-picking. A group's
+mix is its make-up by segment; like for like means the same segment on both sides of a comparison;
+list price is the price before any discount; and a hold-back is a slice of customers that a coin
+keeps out of a sale, so the rest can be compared with them afterwards.
 '''
 
 EX2 = [
@@ -608,7 +607,7 @@ kit.check("three in five of Marketing's unexposed customers are Retail-Core", ro
           f"{core_share_unexposed:.0%}")
 '''),
     ("md", '''
-## Part 3. What do exposed and unexposed customers look like like for like, with how many customers behind each?
+## Part 3. Compared like for like, how do exposed and unexposed customers differ, and how many stand behind each?
 
 Used at work on every campaign readout that reaches a budget meeting.
 
@@ -663,7 +662,9 @@ Used at work whenever a discount's cost has to be set against the lift claimed f
 
 The platform's list does not say whether its August spend is counted before or after the 15 percent
 off. Suppose it is counted at list price, before the discount, and size what the exposed customers
-actually paid Kalpa. Then size the Diwali hold-back the pair will offer, on the same list.
+actually paid Kalpa. Then size the Diwali hold-back the pair will offer, on the same list. The
+hold-back is priced at Marketing's own 6 percent lift on the unexposed averages: each customer a coin
+keeps out of the sale forgoes 6 percent of what an unexposed customer of the same segment spent.
 '''),
     ("todo", '''
 off = int(CAMPAIGN["discount_pct"]) / 100
@@ -738,14 +739,16 @@ would carry the case on a difference that is not there.
 The setup cell below loads Monday's take-home sample, 24 orders you have already counted once.
 Retail-Plus and Retail-Core are Kalpa Retail's two consumer tiers, of which Retail-Plus is the paid
 membership; the sample also holds Student orders and Business orders, Business being Kalpa's sales
-to companies. A basket is one order's amount. Booked orders are every order placed, whatever happened
-to it afterwards, and the money Kalpa kept is revenue as Monday defined it. Chapter 1 flipped each
-Retail-Plus member's two quarters because the same members sat in both; the two tiers' baskets are
-different customers' orders, with no pairs to flip, so the chance reference here is the label
-shuffle, as in chapter 6: `shuffle_gaps` pools every basket and deals the baskets at random into two
-piles of the tiers' sizes, 5,000 times, and the share, the p-value, is the fraction of deals that make
-a lead at least as large as the real one. Chapter 3's rule of thumb is to distrust a comparison with
-fewer than thirty customers behind it.
+to companies. A basket is one order's amount. Booked orders are every order placed, whatever
+happened to it afterwards. Which orders count as the money Kalpa kept is Monday's definition, and
+recalling it is marker 4's question, so it is not repeated here. Chapter 1 flipped each Retail-Plus
+member's two quarters because the same members sat in both; the two tiers' baskets are different
+customers' orders, with no pairs to flip, so the chance reference here is the label shuffle, as in
+chapter 6: `shuffle_gaps` pools every basket and deals the baskets at random into two piles of the
+tiers' sizes, 5,000 times, and the share, the p-value, is the fraction of deals that make a lead at
+least as large as the real one; a lead that chance makes often is part of the usual wobble, the
+movement chance alone makes between two groups. Chapter 3's rule of thumb is to distrust a
+comparison with fewer than thirty customers behind it.
 '''
 
 EX3 = [
