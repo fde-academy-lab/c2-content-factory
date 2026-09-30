@@ -116,16 +116,27 @@ The bank sets what is tested, and the paper sets the bar. The week's source file
   the blank and bare true or false give way to these. A bank whose keys run a, b, c down its items
   fails the build.
 - **The bar**: about 35 timed items in 120 minutes, about 60 percent hard, 35 medium and 5 easy. A
-  hard item needs two steps or two ideas at once, and its most tempting wrong option is the plausible
-  wrong number an analyst actually produces; no runtime error is ever the key. Code and queries sit
+  hard item takes at least three dependent steps on an exhibit (compute, compare, then decide), its
+  most tempting wrong option is the plausible wrong number an analyst actually produces, and nothing
+  else on the paper answers it: no cue in a part's opening, another item's key, the stretch page, a
+  distractor built from halves of the key, or a stem that defines the term it asks for. One idiom,
+  one judgement or two multiplications off an exhibit is medium, whatever it is labelled, and no
+  runtime error is ever the key. Code and queries sit
   on Kalpa's own data and are asked the way strong AI and data teams interview: predict the output,
   find the silent bug, choose the right variant, name the check.
-- **An exhibit** for every scenario set, drawn only from the set's own numbers.
+- **An exhibit** for every scenario set, drawn only from the set's own numbers and agreeing with
+  every other number on the paper. A chart an item reads to an exact value prints its values as a
+  table beside it, since a mermaid bar carries no value labels on the Word page.
 - **The reasons** for every item: why the key holds, why each wrong option fails, and the interview
   answer in one breath.
 - **An untimed stretch page** of written, interview-grade follow-ups, plus any moved bank items.
 - **The proofs**: `content/W{ww}/SAT/internal/C2_W{ww}_SAT_key_proofs_INTERNAL.py` runs every code
   and SQL item cold and asserts every key.
+- **The blind sitting**: a fresh agent sits the paper from the student file alone, answers each item
+  before checking it, and reports its answers, the keys it can argue, the cues and leaks, and its own
+  count of genuinely hard items. The first sittings of the raised Week 1 and Week 2 papers, on 30
+  September 2026, found 5 to 12 genuinely hard items where 21 were labelled, so the paper is done
+  only when a second sitting's count reaches the bar and no key is arguable.
 
 `python3 scripts/build_saturday_paper.py W{ww} --docx` writes the paper and the key as Word files in
 the format of the requester's baseline diagnostic (`content/W00/D2/paper/C2_W00_D02_diagnostic_STUDENT.docx`),
