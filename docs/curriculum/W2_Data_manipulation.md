@@ -186,7 +186,7 @@ MID-SESSION (15 min each): predict four row counts before running the joins; mat
 • [S] Your join grew the row count; name the cause and the check.
 • [F] How do you find orders with no payment?
 • [F] Revenue doubled after a join and every row looks fine; where do you look?
-• [D] Design the validation you run before a joined number reaches Finance, and say what you do when it fails at 5 pm on reporting day.
+• [D] Design the validation you run before a joined number reaches Finance, and say what you do when it fails at the end of reporting day.
 Tags: [S] staple asked everywhere · [F] frequent in GCC and product screens · [SV] service-major screen opener · [D] differentiator. This programme's own calibration for 0-3 year Indian-market candidates.
 
 ### Trainer resources
