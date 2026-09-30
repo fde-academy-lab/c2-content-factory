@@ -49,7 +49,6 @@ flowchart LR
 |---|---|
 | A price-list rise read as growth | Track allowed dollars |
 | Last year's allowed share, this year's claims | Check this year's remittances |
-| Contractual and unpaid in one line | Report them apart |
 | Denials by count heard as dollars | State the basis |
 | Days in AR cut by write-offs | Read write-offs beside it |
 | Collections read before the window closes | Wait for the window |
@@ -60,39 +59,39 @@ flowchart LR
 
 | Word | What it means |
 |---|---|
-| **Payer** | Whoever pays the claim |
-| **Medicare** | Federal cover, mostly 65 and over |
-| **Medicaid** | State cover for low incomes |
-| **Requisition** | The doctor's order for tests |
-| **Accession number** | Barcode tying sample to order |
-| **Panel** | Tests ordered by one name |
-| **Chargemaster** | The lab's own price list |
-| **Deductible** | Paid by the patient each plan year before the plan pays |
-| **Coinsurance** | The patient's percentage after the deductible |
-| **CPT** | The AMA's procedure codes |
-| **ICD-10-CM** | Diagnosis codes: why it was ordered |
-| **837, 835** | The claim, and the remittance |
-| **Clearinghouse** | Checks and routes claims |
-| **Rejection** | Bounced before the payer saw it |
-| **Denial** | The payer's refusal to pay |
-| **CARC** | The 835 code saying why a dollar was adjusted |
-| **Prior authorisation** | Payer approval before a service |
-| **Medical necessity** | The payer's test that the diagnosis justifies it |
-| **Timely filing limit** | The deadline to submit a claim |
-| **PHI** | Health data that identifies a patient |
+| Payer | Whoever pays the claim |
+| Medicare | Federal cover, mostly 65 and over |
+| Medicaid | State cover for low incomes |
+| Requisition | The doctor's order for tests |
+| Accession number | Barcode tying sample to order |
+| Panel | Tests ordered by one name |
+| Chargemaster | The lab's own price list |
+| Deductible | Paid by the patient each plan year before the plan pays |
+| Coinsurance | The patient's percentage after the deductible |
+| CPT | The AMA's procedure codes |
+| ICD-10-CM | Diagnosis codes: why it was ordered |
+| 837, 835 | The claim, and the remittance |
+| Clearinghouse | Checks and routes claims |
+| Rejection | Bounced before the payer saw it |
+| Denial | The payer's refusal to pay |
+| CARC | The 835 code saying why a dollar was adjusted |
+| Prior authorisation | Payer approval before a service |
+| Medical necessity | The payer's test that the diagnosis justifies it |
+| Timely filing limit | The deadline to submit a claim |
+| PHI | Identifiable health data a plan, provider, clearinghouse or their associate holds |
 
 ## Panel 5: Which rules bind a US lab's data team?
 
 | Rule | What it requires |
 |---|---|
-| **HIPAA Privacy** | A row is PHI until de-identified |
-| **Minimum necessary** | Only what the purpose needs |
-| **De-identification** | Expert finding, or 18 identifiers out with no known way back |
-| **Business associate** | Works inside the written agreement |
-| **Breach notice** | Without unreasonable delay; 60 days at most |
-| **Medical necessity** | Never add a diagnosis to get paid |
-| **Timely filing** | Medicare: one year from service |
-| **Offshore** | No HIPAA border; contracts decide |
+| HIPAA Privacy | Use or share PHI only as the rule permits or the patient authorises |
+| Minimum necessary | Only what the purpose needs |
+| De-identification | Expert finding, or 18 identifiers out and no actual knowledge the rest identifies anyone |
+| Business associate | Bound by its agreement, and directly by parts of HIPAA |
+| Breach notice | Without unreasonable delay; 60 days at most |
+| Medical necessity | Medicare pays only for needed tests; give the ABN when it may refuse |
+| Timely filing | Medicare: one year from service |
+| Offshore | No HIPAA border; contracts decide |
 
 ## Panel 6: Where does $100 of a lab's charges go?
 
