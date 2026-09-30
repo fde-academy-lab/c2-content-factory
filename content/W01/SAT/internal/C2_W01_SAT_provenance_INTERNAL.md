@@ -4,9 +4,11 @@ INTERNAL. Where every part of the Week 1 Saturday pack came from, which items ar
 tracker, and the decisions taken while building it. Checked on 29 September 2026; the section dated
 30 September 2026 records the paper in parts and what was added to it, the section headed
 "30 September 2026, v3" records the paper raised to interview grade, the section headed "30
-September 2026, v4" records the paper after a blind sitting, and the section headed "30 September
-2026, v5" at the end records the paper as it now prints, after a second sitting; it supersedes the
-item numbers, counts and sources of every section before it.
+September 2026, v4" records the paper after a blind sitting, the section headed "30 September 2026,
+v5" records the paper after a second sitting and supersedes the item numbers, counts and sources
+before it, and the section headed "30 September 2026, v6" at the end records the paper as it now
+prints: v5's items, levels and minutes, named by the questions they ask, standing on their own,
+read by the humanizer and sat blind a third time, with Q3's key moved to Rs 2,205.
 
 ## Sources
 
@@ -1114,3 +1116,210 @@ Rewritten for this paper's numbering, with the 300-minute shape and every block'
 The most-missed round predicts the near misses of the rebuilt items, each with the half an option
 gets wrong; the marking notes name the forms that match the written keys and the two-figure key on
 Q12; the anchors round points each of the tracker's ten anchors at the items that descend from it.
+
+## 30 September 2026, v6: every part named by its question, the paper on its own, and a third blind sitting
+
+This pass raises the v5 paper to standard v3 under decisions `question-ladder`, `self-contained` and
+`humanizer` in `data/programme/facts.yaml`: each part is named by the question it asks and its
+opening says who needs the answer, every item is answerable from the paper, its exhibits and its
+match table, and the paper, the key's reasons and the discussion guide pass the humanizer's read in
+file mode. The requester fixed v5's items, keys, levels and minutes for this pass and asked for every
+finding of one fresh review to be fixed. The review showed Q3's key contradicting Monday's taught
+figure and the item's own stem, so that key moves and every other key stands. The pass ran in two
+sessions on this date: the first renamed the parts, made the items stand on their own and ran the
+humanizer's read, and stopped at the account's usage limit while its reviewer sat the paper; the
+second merged main at 1fa3822, rechecked each step, ran the review afresh and fixed its findings.
+
+### The part questions
+
+| Part | The question it asks | Who needs the answer, as the opening says it |
+|---|---|---|
+| 1 | Where did Kalpa's revenue go between the first quarter and the second? | Meera, before she signs Marketing's Rs 12 crore for new customers, since money spent on a branch that held is wasted |
+| 2 | Did Kalpa book Rs 2.1 crore in the first quarter, or Rs 1.9 crore? | Anand, whose Finance will not act on a drop measured from an export his books do not match, and Meera, whose fall is measured from Q1 |
+| 3 | Is the Retail-Plus fall more than chance, and what should Meera's note say? | Meera, whose one-page note decides three spends at Monday's growth review |
+| 4 | What should a team check before it acts on a surprising number, in four public cases? | The trainees in Kavya's reading group, whose numbers reach Meera or Anand only with the check they passed, and in each case a team deciding whether to publish, how to steer, what to trust or whether to ship |
+| 5 | Did a delivery company's offer raise spending, and are its AI agent's numbers right? | The head of customer support, who signs the agent's budget on two numbers, and the marketing lead, who wants to send the offer again |
+
+Read alone and in order, the five names tell the week in Parts 1 to 3, from where revenue went, to
+which Q1 is right, to whether the fall is real and what the note says; Parts 4 and 5 carry the same
+checks to public cases and to an illustrative company.
+
+### What the paper needed to stand on its own
+
+- Every term is explained where it first appears: booked value as the dossier's GMV, Q1 and Q2 as
+  April to June and July to September, the revenue tree and its branches, the sales-drop ladder and
+  its rungs, an export, the ERP system, profiling, a defect and its three treatments, the cleaning
+  pass, reconciling, closed quarters, the reconciled file, delivered spend, the flips and the
+  p-value, the label shuffle, GDP and the debt bands, navigation solutions, an A/B test, a tool and
+  a billed model call, and holding customers back.
+- Items gained the facts they turn on. Q12 states which copy of an order the team keeps; Q23 prints
+  that only 10 of the 20 countries ever had a year above 90 percent, which Herndon, Ash and Pollin
+  state on printed page 8 of PERI Working Paper 322, read again for this pass
+  (https://peri.umass.edu/wp-content/uploads/joomla/images/WP322.pdf, checked 30 Sep 2026); Q27 asks
+  for the total of all 500; Q16 gives the team's line as a p-value under 5 in 100, and Exhibit 3A
+  defines the p-value by gaps at least as extreme, so the page fixes no direction for the reader.
+- No stem sends the reader to a class file: the first session removed "as in class", "Thursday's ten
+  cards" and the other pointers to a day's files, and restated each finding with its number.
+
+### What the humanizer's read changed
+
+- In the paper, the openings became situations with a stakeholder's words, Parts 4 and 5 included;
+  the purpose no longer repeats the rule to answer every item; the company row no longer describes
+  the paper; the "Illustrative." tails on Part 5's captions went, since the part's opening says so;
+  and Meera and Anand are introduced with their titles once.
+- In the key, every wrong-option reason became a sentence with a subject, where 48 had opened on a
+  bare verb, and runs of identical openings were varied. Closers ("reached through a line that
+  sounds right read aloud"), sayings ("a reconciliation that starts one row short still closes"), a
+  triad of checks, clipped tails, the word honest and the intensifier exactly went; the first
+  session had removed the "Right X, wrong Y:" labels and the negation tails.
+- In the guide, every table cell became a sentence; the horizontal rules, the bold questions, the
+  paragraphs that described the file and three closing aphorisms went; anchor 8 now gives three
+  distinct reasons, the third Thursday's margin given to customers who would have bought anyway.
+- Lines the builder writes stay as they are, since this pass writes only under `content/W01/SAT/`:
+  the rule naming "a word bank or a match table" on a paper with no word bank, "as a guide, not a
+  limit", "never an obscure fact", "the most useful thing this paper produces", "by part and by tag"
+  on a paper that prints no tags, the "Set" headings and the rule before each part.
+
+### The paper against the Week 1 packs on main
+
+Checked on 30 September 2026 against main at 1fa3822, merged into this branch before the check; no
+Week 1 day file has changed on main since the Thursday merge, bda418a. Each figure was recomputed
+from the day's data file as well as read from its notes.
+
+| What the paper repeats | As the paper has it | Where the week has it | Agrees |
+|---|---|---|---|
+| Booked value | Every order at the price charged, before cancellations and returns come out, which retail calls GMV | Monday's retail dossier, section 3: GMV is everything ordered at the prices charged, before cancellations, returns and GST come out | Yes; the paper leaves GST out, since no item turns on it |
+| Monday's first sample | 30 orders: 21 delivered, 5 returned, 4 cancelled; 29 consumer orders by channel; the mean Rs 18,160; the median of all 30 Rs 2,205 and of the 21 delivered Rs 2,060 | `content/W01/D1/data`, recomputed, and Monday's notes: "Acquisition payback uses Rs 2,205" | Yes |
+| The text amount | "4500" on order KR-01008 in the first sample | Monday's data file and day sheet | Yes |
+| Tuesday's export | 200 rows; 114 in Q1 and 86 in Q2; Student 5 and 7, Retail-Plus 51 and 26, Business 20 and 17, Retail-Core 38 and 36 | `content/W01/D2/data`, recomputed | Yes |
+| Tuesday's split | The same 69 customers in both quarters; orders per customer 1.65 to 1.25; revenue per order up 18 percent, about 69 percent of it the mix, with Business's revenue per order up 5.0 percent | Tuesday's notes, chapters 2 and 4 | Yes |
+| Tuesday's quarters | Rs 2,10,00,000 against Rs 1,87,00,000, down 11.0 percent; the tile from the 15 September extract, 11 of 13 weeks, Rs 1,55,59,950, down 25.9 percent; the weekly rate down 12.4 percent | Tuesday's notes and its chapter 1 solutions | Yes |
+| Wednesday's file | orders.csv, 201 rows stitched from two extracts, opening on KR-02001 and KR-02002; KR-02063 reads "twelve" and its copy Rs 1,790; KR-02064 Rs 3,150; KR-02006 an exact repeat; KR-02151 sent again dated 2 August | `content/W01/D3/data`, by line | Yes |
+| Wednesday's reconciliation | 14 copied Q1 rows worth Rs 20,00,000 in Tuesday's file, 11 of them Retail-Plus orders in May; Q1 clean at Rs 1,90,00,000 on 100 orders; the fall 1.6 percent | Wednesday's notes and Tuesday's day sheet; Wednesday's file carries Rs 19,98,210 of readable copies because one copy reads "twelve" | Yes |
+| The reconciled Retail-Plus | 22 members in both quarters; 40 orders to 26, a fall of 35.0 percent a member; the company 100 to 86 | Recomputed from Tuesday's file with one row per order | Yes |
+| Thursday's flips | Each member's own two quarters swapped on a coin, 5,000 flips; the gap Rs 1,110; 145 flips a fall that large, 0.029; 286 either way, 0.057 | Thursday's notes, chapter 1, and day sheet | Yes |
+| Thursday's verdict | Borderline, since Meera asked after the fall was seen, and modest: Rs 24,420 a quarter, 0.19 percent of Q2 delivered revenue of Rs 1,28,64,680 | Thursday's notes, chapters 1 and 2, and the plant table: "borderline and modest" | Yes |
+| The shuffle ruling | Flips for the same 22 members across two quarters (Exhibit 3A, Stretch 2); a label shuffle for different customers (Q19's invented cards); pooling close to the flips on these 22, whose Q1 predicts Q2 at a correlation of 0.04 | Thursday's notes, chapter 1, and day sheet, the design question | Yes |
+| Per member and per buyer | Rs 3,279 and Rs 2,169 over 22; Rs 3,607 and Rs 2,982 over 20 and 16 buyers | Recomputed from `content/W01/D4/data`: Rs 72,130 over 20 is Rs 3,606.50, printed to the rupee as Rs 3,607 | Yes |
+| Student | 5 orders then 7, 12 from 2 customers; 1,985 of 5,000 worlds, 0.397 | Thursday's notes, chapter 3 | Yes |
+| Meera's three questions | Real or the wobble; budget to Student, up 40 percent; the monsoon sale's 6 percent and Diwali; "one page, two minutes" | Thursday's morning deck, S1 | Yes |
+| The Diwali hold-back | A random fifth inside each segment, compared per customer | Thursday's notes, chapter 6 design | Yes |
+
+### The plant rule
+
+Decision `plants-once-found` lets this paper name a planted value only when the room found it in
+class. Every value the STUDENT paper names was found in class; none from a take-home, Friday's lab
+or a later week prints.
+
+| Plant | Where the paper names it | Found in class |
+|---|---|---|
+| The Business order of Rs 4,80,000 | Exhibit 1C and Q3 | Monday, round 3, by sorting |
+| The amount stored as the text "4500" | Exhibit 1B's caption and Q9 | Monday, round 2, at the TypeError |
+| The customer count flat at 69 | Q6 | Tuesday, chapter 2 |
+| Retail-Plus orders per member falling 49.0 percent as exported | Exhibit 1D, Exhibit 2F and Q15's options | Tuesday, chapter 3 |
+| The 14 copied Q1 rows, 11 of them Retail-Plus in May | Set 1 and Q15 | Wednesday, chapters 1, 2 and 5 |
+| KR-02063's "twelve" and its Rs 1,790 copy | Exhibit 2C and Exhibit 2E | Wednesday, chapters 1, 3 and 4 |
+| KR-02151 sent again with a new date | Exhibit 2E | Wednesday, chapter 3 |
+| Student's 12 orders from 2 customers | Q20 | Thursday, chapter 3 |
+| The borderline Retail-Plus gap | Exhibit 3A and Q16 | Thursday, chapter 1 |
+
+The monsoon sale's reversal, Thursday's third plant, prints only as its mechanism at the illustrative
+delivery company in Part 5, on numbers of its own.
+
+### The review
+
+One fresh reviewer sat the paper blind from the student file on 30 September 2026. It recorded every
+answer before checking anything, ran every code item and query, read the part names alone, and
+listed the humanizer's patterns still present in the paper, the key's reasons and the guide. It
+agreed with 34 of the 35 keys, disputed Q3, and judged 14 of the 21 hard items hard.
+
+| Finding | What the review found | What changed |
+|---|---|---|
+| Q3's key | Rs 2,060 contradicted Monday's notes ("Acquisition payback uses Rs 2,205") and the spine, and a model that takes cancellations and returns off at its own rates needs the booked value | The key is Rs 2,205, the median of all 30 booked orders; Rs 2,060 is now a wrong answer that takes them off twice; the reasons, the guide's anchor 3 and the proofs follow |
+| Q16's option (a) | Exhibit 3A defined the p-value by a one-way count and the stem counted flips that "reach it", so (a) met the printed rule | The exhibit defines the p-value by gaps at least as extreme, and the line is a p-value under 5 in 100, so the reader decides which side counts |
+| Part 4's name | "Five public cases" held four, two of its items asked for no check, and Bing's number was real | The part asks what a team should check before it acts on a surprising number, in four public cases, and opens on Kavya's words and the four decisions |
+| Q27 | Rs 25 less for each customer was a correct answer the key did not accept | The stem asks for the total of all 500, and the key lists Rs 25 as a wrong answer |
+| Q20 | The key turned on "a lead", which the paper never explained | The options read "too few customers to tell" and "chance explains it", and the key's reason gives Thursday's word |
+| Q23 | Option (a) could be argued, since the page never said that no band holds all 20 countries | The stem prints the ten countries ever above 90 percent |
+| Q12 | The page never said which copy of an order stays | The stem states the team's rule, and the label reads "Count each order once" |
+| Q8 and Q10 | Both keys paired their output with the same outside-check half | Q10's check half sets a rupee total against a row count, both against Anand's books |
+| Q19 | Option (c) called a 0.013 share chance and eliminated itself | Option (c) reads borderline, and the stem gives the first run's 29 either way |
+| Q24 | The stem narrated its key with "but only informally" and "not resolved" | Those words left the stem and stay in the key's reason |
+| Q13 | Default, flag and defect were unexplained | Part 2's opening defines them |
+| Parts 4 and 5 | Neither opening carried a stakeholder's words, and Part 4's named no decision | Part 4 opens on Kavya's line and Part 5 on the support head's |
+| The key's reasons | Q11's (c) left out the skipped append and (e) the TypeError on tuples, Q34's overstated the average's gap and ended on a double negative, and Q24's cited an objection by Anand and a daily refresh that no Week 1 file carries | Each reason says what the code does, and both attributions went |
+| The guide | It printed a split of 200 = 185 + 15 that no paper shows, and anchor 7's numbers differed from Q20's anchor | The split went, and Q20's anchor takes the Saturday row's wording |
+| The stretch answers | Stretch 1 said the average order grew "without anyone paying more" and Stretch 2 that pooling hides the fall, where Tuesday puts Rs 10,330 of the rise inside segments and Thursday finds the two tests close on these 22 members | Both answers carry the week's figures |
+
+Findings left for the requester, each with its reason:
+
+- The levels. The reviewer judged Q6, Q11, Q14, Q17, Q21, Q28 and Q32 medium and Q24 easy. The
+  brief fixed levels and minutes for this pass, so they stand, and Q24's cue went, which returns it
+  to medium. Relabelling the seven would take the paper from 118 to 107.5 minutes by the blueprint's
+  pace and from 21 hard items to 14.
+- Q5 and Q7 answer each other's first rung. Both are bank items whose wording lives in
+  `data/programme/paper_edits.yaml`, outside this pass's folder, and folding bank 20 into Q7 would
+  change the item set the brief fixed.
+- Q34 and Q35 stage two traps that Week 2 Monday's spine lists, AVG skipping NULL and integer
+  division, although Week 0's diagnostic taught both, its Q14 returning 0 for a cancel rate of one in
+  five. The guide no longer previews Monday's clauses; whether Saturday may recall Week 0's SQL
+  before Monday stages it on Kalpa's warehouse is the requester's ruling.
+- The key is never the unique longest option, since the audit fails that; it ties for longest in
+  five items, is the shortest in eight and sits between in nine.
+- The builder's own lines, listed above.
+
+### The proof run
+
+The run of 30 September 2026, on Python 3.11.15, psycopg2 2.9.13 and PostgreSQL 16.13, printed:
+
+```
+Week 1 Saturday paper: 35 timed items. Each line gives the printed Q, the item, its key and what proves it.
+  Q1  bank 50          key Rs 11 crore  50,000 x 2 x 3 x Rs 400 is Rs 12 crore; less Rs 1 crore of discounts
+  Q2  sales-net        key c            prints {'app': 18600, 'web': 27290, 'store': 18920}; on orders not cancelled the app's Rs 18,600 beats the store's Rs 9,870
+  Q3  first-order      key Rs 2,205     median of all 30 booked orders, 2,110 and 2,300; mean 18,160; delivered median 2,060
+  Q4  quarter-counter  key d            prints '{'Q1': 38, 'Q2': 36} -5.3%': the counter holds Retail-Core's count; the file says 114 and 86
+  Q5  bank 20          key a            tracker key: the first rung is confirming the drop is real
+  Q6  budget-flip      key c            Rs 2.00 a rupee against Rs 2.50; only a Rs 800 route back, Rs 1.88, flips it
+  Q7  bank 51          key b, d, e, a, c tracker key: checked, like with like, decompose, isolate, hypothesise
+  Q8  reader-header    key c            prints '200 KR-02002'; the pass closes 200 = 185 + 15 and KR-02001 is in neither
+  Q9  text-compare     key d            '4500' < '30000' is False, silently; every CSV amount is text
+ Q10  evidence-copy    key a            prints '2 + 0 = 2 []'; with copies of the dictionaries it prints 2 + 1 = 2; rupees 3,150 against 4,940
+ Q11  reject-loop      key b, d         prints '4 + 1 = 5' with KR-09053 kept; only (b) and (d) set aside both bad rows
+ Q12  dup-rule         key 4,680; 7,410 one row per order_id, the copy that converts; whole rows leave Q2 at Rs 11,120, first copies leave Q1 at Rs 2,890
+ Q14  monday-number    key 1.6 fall     tile -25.9, weekly -12.4, closed -11.0; Q1 less Rs 20,00,000 of copies gives -1.6
+ Q15  plus-clean       key a            Retail-Plus 40 to 26 over 22 members is -35.0; the company falls 100 to 86, all 14 in Retail-Plus
+ Q13  bank 52          key b, d, a, c   tracker key: profile, decide, reconcile, recompute and send
+ Q16  plus-real        key c            flip bars [141, 766, 1526, 1683, 739, 145]; 145 of 5,000 reach the fall, 0.029, and 286 either way, 0.057: borderline
+ Q17  wald-kalpa       key a            per member falls Rs 1,110 (33.9 percent); per buyer Rs 625 (17.3); bases 22, then 20 and 16
+ Q18  bank 35          key a, c, d      tracker a, b, d relabelled a, c, d by the accepted order edit
+ Q19  shuffle-sign     key d            prints '-980 0.992'; the first run's count at +980 is 13 of 1,000, and 29 either way, both under 0.05, so the call stays real
+ Q20  student-line     key b            12 orders (5 then 7) from 2 customers; 7 or more in Q2 in 1,985 of 5,000 worlds
+ Q21  diwali-test      key c            judgement key: a random hold-back inside each segment, compared per customer
+ Q22  debt-weights     key d            prints '71 -0.07 1.68'; -0.07 rounds to the published -0.1; HAP Table 3 gives 1.7
+ Q23  debt-rows        key d            the formula spans rows 30 to 44, 15 of the sheet's 20 country rows
+ Q24  orbiter-units    key b            1 lbf = 4.448 N, the report's factor of 4.45; judgement key
+ Q25  flu-fit          key b, e         judgement key from Lazer and colleagues, 2014; no computation
+ Q26  bing-alert       key b            judgement key from Kohavi and Thomke, 2017; the lift was real
+ Q27  sale-mix         key Rs 12,500 fall 250 x -30 + 250 x -20 = -12,500 tier against tier; the blend says +32,500
+ Q28  sale-advice      key b            at 25 percent off orders must rise by 1 over 0.75, a third; each tier fell
+ Q29  tool-print       key c            the model reads 'None' for 1099; 'None' is non-empty, so found holds 3
+ Q30  agent-history    key a            the three calls send 1, 3 and 5 messages; a cleared list forgets a second turn
+ Q31  agent-cost       key b            median cost Rs 1.60; median calls 4, so a cap of 8 saves Rs 38.80; from the mean, Rs 27.60
+ Q32  sql-failing      key a            Postgres returns order_status 34 and refund 38; 'error' alone gives refund 35
+ Q33  sql-count        key 6            Postgres returns 6 for: SELECT COUNT(latency_ms) FROM calls;
+ Q34  sql-avg          key 800          Postgres returns 800.0000000000000000 for: SELECT AVG(latency_ms) FROM calls;
+ Q35  sql-rate         key 0            Postgres returns 0 for: SELECT COUNT(*) FILTER (WHERE status <> 'ok') / COUNT(*) FROM calls;
+PROVED: all 35 timed items have a key that code, SQL, arithmetic or the tracker settles; 21 are hard.
+```
+
+### The checks
+
+`scripts/distractor_audit.py` passes the paper with no failure, keys at a, b, c and d 7 times each
+and e once. `scripts/build_saturday_paper.py W01 --check` finds nothing stale, `scripts/verify.py
+content/W01/SAT` passes with no failure, `scripts/sync_programme.py --check` finds every output
+current, and the llm-tic-scrubber scanner finds the paper, the key and the discussion guide clean.
+The Word paper, converted to PDF through LibreOffice 24.2.7.2 with Liberation Sans standing in for
+Arial, runs to 23 pages, the same page breaks as v5, and was read page by page at 60 dpi: every
+exhibit prints with its item, no question block splits, the match table and the answer sheet each
+fit their page, and page 11 holds only Part 3's opening, since Exhibit 3A and Q16 move whole to page
+12, as in v5. The Word key runs to 24 pages and its marking grid carries Rs 2,205 for Q3.
