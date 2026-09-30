@@ -103,15 +103,18 @@ def story():
                   "3. the app's funnel", "4. the revenue tree for a month",
                   "5. customers over time", "6. what a customer is worth"]),
         md("""
-        ## 1. Rs 100 of GMV leaves Rs 2.50 of operating profit
+        ## 1. Rs 100 of GMV leaves Rs 2.50 of EBITDA
 
         The member's basket shows Rs 1,800 at the checkout. Gross merchandise value (GMV) is everything
         customers ordered at the price charged; the profit and loss statement walks it down, one
         deduction at a time. On Rs 100 of invented GMV: Rs 4 is cancelled and Rs 6 returned, Rs 10 is
         GST collected for the government, Rs 60 pays for the goods, Rs 12.50 is spent per order on
-        delivery, returns, payment fees and marketing, and Rs 5 pays the fixed costs.
+        picking, delivery, returns, payment fees and the offers that bring a customer back, and Rs 5
+        pays the fixed costs: stores, warehouses, technology, head office and the budget that wins new
+        customers. What is left is EBITDA, earnings before interest, tax, depreciation and
+        amortisation.
 
-        **Predict before you run.** Of Rs 100 ordered, how much is left as operating profit?
+        **Predict before you run.** Of Rs 100 ordered, how much is left as EBITDA?
 
         - a) About Rs 25, the gross margin.
         - b) About Rs 10, what a shop keeps after tax.
@@ -124,31 +127,32 @@ def story():
                  ("cost of the goods", -60), ("per-order costs", -12.5), ("fixed costs", -5)]
         left = gmv
         levels = {}
-        names = ["kept", "net revenue", "gross margin", "contribution", "operating profit"]
+        names = ["kept", "net revenue", "gross margin", "contribution", "EBITDA"]
         for (label, change), name in zip(steps, names):
             left += change
             levels[name] = left
-        kit.bridge(("GMV, invented", gmv), steps, end_label="operating profit", lit=(3,),
+        kit.bridge(("GMV, invented", gmv), steps, end_label="EBITDA", lit=(3,),
                    fmt=lambda v: f"Rs {v:g}", title="Invented: where Rs 100 of GMV goes")
         kit.table(["line", "Rs left of 100"], [(n, f"{v:g}") for n, v in levels.items()],
-                  caption="Invented numbers, the dossier's walk from GMV to operating profit")
+                  caption="Invented numbers, the dossier's walk from GMV to EBITDA")
         """),
         md("""
         **What happened.** The answer is c. Net revenue is Rs 80, gross margin Rs 20 (25 percent of
-        net revenue), contribution Rs 7.50 and operating profit Rs 2.50. A retailer keeps a thin
+        net revenue), contribution Rs 7.50 and EBITDA Rs 2.50. A retailer keeps a thin
         slice, which is why a price cut that brings no extra volume can give away the whole profit.
         """),
         code("""
         kit.check("net revenue is Rs 80 of every Rs 100 of GMV", levels["net revenue"] == 80)
         kit.check("gross margin is 25 percent of net revenue",
                   levels["gross margin"] / levels["net revenue"] == 0.25)
-        kit.check("operating profit is Rs 2.50", levels["operating profit"] == 2.5)
+        kit.check("EBITDA is Rs 2.50", levels["EBITDA"] == 2.5)
         """),
         md("""
         ## 2. One order's contribution is Rs 150 of the Rs 1,800 paid
 
         Contribution is gross margin less the costs that come with each order: picking and delivery,
-        the payment fee, the expected cost of returns and the marketing that brought the order. It is
+        the payment fee, the expected cost of returns and the retention offers that bring a customer
+        back. Winning a new customer is not in it; that spend sits in acquisition cost. It is
         what the order adds towards the costs that do not change with one more order.
 
         **Predict before you run.** The member paid Rs 1,800. What does the order contribute?
@@ -161,7 +165,7 @@ def story():
         code("""
         basket = {"charged at checkout": 1800, "GST inside the price": -200, "cost of the four items": -1200,
                   "picking, packing and delivery": -120, "payment fee": -20,
-                  "expected cost of returns": -50, "marketing that brought the order": -60}  # invented
+                  "expected cost of returns": -50, "retention marketing on repeat orders": -60}  # invented
         net_revenue = basket["charged at checkout"] + basket["GST inside the price"]
         gross_margin = net_revenue + basket["cost of the four items"]
         contribution = gross_margin + sum(v for k, v in basket.items()
@@ -289,11 +293,9 @@ def story():
         **Predict before you run.** How many months does one new customer take to pay back their
         acquisition cost?
 
-        The Rs 150 is what an order contributes after Rs 60 of marketing that brought it.
-
-        - a) One month, since one order of Rs 1,600 covers Rs 1,500.
-        - b) About 14 months.
-        - c) 20 months.
+        - a) One month, since one order's Rs 1,600 of net revenue covers Rs 1,500.
+        - b) 20 months.
+        - c) 12 months, one year of orders.
         - d) Never, since contribution is below CAC.
         """),
         code("""
@@ -301,45 +303,46 @@ def story():
         clv = per_order * per_year * years
         clv_on_revenue = 1600 * per_year * years
         cac = 12_00_00_000 / 80000
-        cautious = cac / (per_order * per_year / 12)                      # marketing counted twice
-        before_marketing = per_order + 60                                 # the order's own marketing added back
-        payback = cac / (before_marketing * per_year / 12)
+        monthly = per_order * per_year / 12
+        payback = cac / monthly
         kit.bars([("CLV on contribution", clv), ("CAC", cac), ("CLV on revenue, the trap", clv_on_revenue)],
                  fmt=kit.rupees, lit=(2,), title="Invented: what one customer is worth, two ways")
-        print(f"CLV {kit.rupees(clv)}, CAC {kit.rupees(cac)}, payback {payback:.1f} months "
-              f"({cautious:.0f} if the order's marketing is taken out again)")
+        print(f"CLV {kit.rupees(clv)}, CAC {kit.rupees(cac)}, payback {payback:.0f} months")
         kit.check("CLV on contribution is Rs 1,800", clv == 1800)
         kit.check("CAC is Rs 1,500", cac == 1500)
-        kit.check("payback is about 14 months", round(payback) == 14)
-        kit.check("the cautious reading is 20 months", cautious == 20)
+        kit.check("payback is 20 months", payback == 20)
+        kit.check("the CLV clears the CAC by Rs 300", clv - cac == 300)
         """),
         md("""
-        **What happened.** The answer is b. The Rs 150 already took out the Rs 60 of marketing that
-        brought the order, and the Rs 1,500 acquisition cost is that same marketing, so dividing one by
-        the other counts acquisition twice. Added back, the order contributes Rs 210, Rs 105 a month,
-        and Rs 1,500 is repaid in about 14 months. Option c, 20 months, is the cautious reading that
-        keeps the double count; the dossier quotes it, and it is safe as a ceiling. Valued on revenue
-        the same customer reads Rs 19,200 against Rs 1,800 of lifetime contribution, more than ten
-        times too high, and every acquisition budget sized on it is too large. Option a pays the CAC
-        out of revenue, which is the same mistake in one line.
+        **What happened.** The answer is b. Rs 75 of contribution a month repays Rs 1,500 in 20 of the
+        24 months a customer stays, so the Rs 1,800 lifetime value clears the acquisition cost by only
+        Rs 300. Valued on revenue the same customer reads Rs 19,200, more than ten times too high, and
+        every acquisition budget sized on it is too large. Option a pays the CAC out of revenue, which
+        is the same mistake in one line.
+
+        An interviewer will ask whether acquisition is counted twice. It is not here: the Rs 60 in the
+        basket's contribution is retention marketing on repeat orders, and the cost of winning the
+        customer sits only in the CAC. Had the Rs 150 already taken out the marketing that won the
+        customer, dividing the CAC by it would count that spend twice and the payback would read
+        longer than it is.
 
         ### The card's other three formulas
 
-        Inventory days, gross margin, and like-for-like growth each carry a trap the card names. The
+        Days of inventory, gross margin and like-for-like growth each carry a trap the card names. The
         cell computes all three on invented numbers.
         """),
         code("""
-        inventory_days = 45_00_000 / 1_00_000                                  # invented
+        inventory_days = 45_00_000 / 1_00_000                                  # invented, days of inventory
         margin, net, gmv = 400, 1600, 1800                                      # the invented basket
         on_net, on_gmv = margin / net, margin / gmv
         total_growth = (510 + 65) / 500 - 1                                     # invented, Rs crore
         like_for_like = 510 / 500 - 1
         kit.table(["metric", "formula", "invented result", "the trap"],
-                  [("inventory days", "stock at cost / COGS per day", f"{inventory_days:.0f} days",
+                  [("days of inventory", "average stock at cost / COGS per day", f"{inventory_days:.0f} days",
                     "stock at selling price inflates the days"),
                    ("gross margin", "(net revenue less COGS) / net revenue", f"{on_net:.0%}",
                     f"divided by GMV it reads {on_gmv:.0%}, and GST moves it"),
-                   ("like-for-like growth", "both-year stores' sales / last year's, less 1",
+                   ("like-for-like growth", "same stores' sales / their sales last period, less 1",
                     f"{like_for_like:.0%}", f"total growth with 20 new stores reads {total_growth:.0%}")],
                   caption="Invented numbers for the card's last three formulas")
         kit.columns(["gross margin", "growth"], [("the trap", [on_gmv * 100, total_growth * 100]),
@@ -354,7 +357,7 @@ def story():
         **[S] How does a retailer make money, and why is a marketplace's GMV not its revenue?** "A
         retailer buys goods and sells them at a margin: GMV less cancellations, returns and GST is net
         revenue, less the cost of goods is gross margin, less per-order costs is contribution, less
-        fixed costs is operating profit, and real retailers keep a few rupees in a hundred. A
+        fixed costs is EBITDA, and real retailers keep a few rupees in a hundred. A
         marketplace does not own the goods, so the GMV it shows is its sellers' sales and its revenue
         is only the fees it charges them."
 
@@ -373,7 +376,7 @@ def story():
                    ("conversion = orders / visits, same window", "2.5% of sessions", "marketing"),
                    ("revenue = customers x orders per customer x order value", "Rs 8.1 crore; kept up 3% on 10%", "the CEO"),
                    ("retention = cohort buyers in month k / cohort size", "30% in March", "the head of Retail-Plus"),
-                   ("payback = CAC / monthly contribution per customer", "about 14 months; 20 cautious", "the CEO, before signing")],
+                   ("payback = CAC / monthly contribution per customer", "20 months", "the CEO, before signing")],
                   caption="The story's formulas; every number invented")
         kit.check_summary()
         print("Next: chapter 1 opens Kalpa's own 30 orders and asks which total is 'sales'.")
@@ -1162,7 +1165,7 @@ def ch4():
         | Who asks | Meera and the marketing lead for the payback; Anand Iyer, who has already warned against averages |
         | What a wrong number costs | A first order valued eight times too high makes Rs 12 crore look cheap and the payback look short |
         | A real company with the same question | Blinkit reported a net average order value of Rs 518 for the quarter to June 2026 (MediaNama on Eternal's results, 24 July 2026). A reported AOV is a mean, the right number for totals across millions of orders; it is the wrong one to describe one shopper's basket when a few very large orders sit in the same file. |
-        | In the dossier (`study-notes/C2_W01_D01_domain_retail_STUDENT.md`) | Section 5, average order value and basket size: the trap of an average across segments |
+        | In the dossier (`study-notes/C2_W01_D01_domain_retail_STUDENT.md`) | Section 5, average order value and basket size: an average compares only with its own kind of order |
 
         Chapter 3 filled the customer branches: 23 customers, 1.30 orders each, 7 came back, and the
         tree multiplies back through an AOV of Rs 18,160. This chapter asks whether Rs 18,160
@@ -1497,7 +1500,7 @@ print(f"{customers} customers x {per_customer:.2f} orders x {kit.rupees(round(ao
                    ("C. order value", kit.rupees(round(c_aov)), kit.rupees(round(need["aov"])),
                     f"{kit.rupees(round(need['aov'] - c_aov))} more per order", "items and prices are not in this file"),
                    ("D. price", "today's prices", "15 percent higher", "every price up with nobody leaving", "none; and nothing sells above MRP")],
-                  caption=f"The 15 percent plan on the {c_orders} consumer orders: {kit.rupees(round(c_rev))} to {kit.rupees(round(plan))}")
+                  caption=f"The 15 percent plan on the {c_orders} consumer orders: {kit.rupees(round(c_rev))} to {kit.rupees(int(plan + 0.5))}")
         kit.columns(["customers", "orders"], [("this quarter", [c_cust, c_orders]),
                                               ("the plan, one branch alone", [need["customers"], need["orders"]])],
                     fmt=lambda v: f"{v:.2f}", title="What the plan needs from customers alone, or orders alone")
@@ -1783,7 +1786,7 @@ print(f"{len(ORDERS)} orders from {start} to {end}, {(end - start).days + 1} day
         print(f"{len(once_ids)} of {customers} customers never came back: {lost_share:.0%} of customers are lost")
         """),
         md("""
-        **Why it is wrong.** A customer who bought on 20 September had six days to come back before the
+        **Why it is wrong.** A customer who bought on 19 September had seven days to come back before the
         extract ends. The file shows who bought once inside the window; whether they are lost depends
         on orders placed after it closes, which the file cannot show. Sent to Meera, 70 percent churn makes retention look like an emergency on a
         number marketing can knock down in one question: "how long do our customers usually take to
@@ -1800,13 +1803,13 @@ print(f"{len(ORDERS)} orders from {start} to {end}, {(end - start).days + 1} day
                   ("once, too recent to judge", len(too_recent))], lit=(2,),
                  title="The 23 customers, with the window's edge taken into account")
         kit.check("the median gap between two orders is 45 days", typical_gap == 45, gaps)
-        kit.check("9 of the 16 one-time buyers bought within the last 45 days", len(too_recent) == 9)
+        kit.check("9 of the 16 one-time buyers bought fewer than 45 days before the end", len(too_recent) == 9)
         kit.check("7 came back, 7 past the usual gap, 9 are too recent",
                   (came_back, had_time, len(too_recent)) == (7, 7, 9))
         """),
         md("""
         **The fix, and what changed.** The answer is c. The seven who came back took a median of 45 days
-        to do it, and 9 of the 16 one-time buyers placed their order inside the last 45 days of the
+        to do it, and 9 of the 16 one-time buyers placed their order fewer than 45 days before the end of the
         window, so they have not had a typical customer's time to return. What the file supports is
         7 came back, 7 are past the usual gap without a second order, and 9 are too recent to judge: the "70 percent lost"
         becomes at most 7 of 23, and even that rests on a gap measured from 7 customers. The window
@@ -1856,7 +1859,7 @@ print(f"{len(ORDERS)} orders from {start} to {end}, {(end - start).days + 1} day
         **[D] You have one quarter of orders and 70 percent of customers bought once; what do you tell
         the CEO?** "That 70 percent bought once in this window, which is a fact, and that it is not a
         churn rate. Customers who came back took a median of 45 days, and 9 of the 16 one-time buyers
-        bought within the last 45 days, so they have not had time. I would say 7 came back, 7 are
+        bought fewer than 45 days before the extract ends, so they have not had time. I would say 7 came back, 7 are
         past the usual gap, 9 are too recent, and add that a one-quarter window only sees short gaps,
         so 45 days is a floor. Then I ask for the prior quarter before calling anyone lost."
 
@@ -2066,7 +2069,7 @@ print(len(ORDERS), "orders loaded; the extract ends on", end)
         discount_factor = __TODO7__
         after_discount = kept_revenue * discount_factor
         kit.table(["question", "answer"],
-                  [("the plan on everyday delivered revenue", f"{kit.rupees(round(kept_revenue))} to {kit.rupees(round(plan))}"),
+                  [("the plan on everyday delivered revenue", f"{kit.rupees(round(kept_revenue))} to {kit.rupees(int(plan + 0.5))}"),
                    ("everyday delivered orders the plan needs from frequency alone", f"{needed_orders:.2f}, {needed_orders - len(kept):.2f} more"),
                    ("everyday delivered revenue after the discount", f"{kit.rupees(round(after_discount))}, {discount_factor - 1:+.1%}")],
                   caption="The plan and the discount on what stayed delivered")
@@ -2085,7 +2088,7 @@ print(len(ORDERS), "orders loaded; the extract ends on", end)
         **Why not the others.** TODO 6: d is the customers answer; b adds 15 orders, a 75 percent lift;
         c adds 0.15 of an order. TODO 7: a adds the moves and calls a fall a rise; c raises the price; d
         cuts orders instead of lifting them.
-        **The numbers.** On the 20 everyday delivered orders, Rs 40,790, the plan is Rs 46,908; frequency
+        **The numbers.** On the 20 everyday delivered orders, Rs 40,790, the plan is Rs 46,909; frequency
         alone needs 23 of them, 3 more; the discount takes the same Rs 40,790 to Rs 38,139, a 6.5 percent
         fall.
         """),

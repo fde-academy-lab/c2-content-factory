@@ -7,7 +7,7 @@ Quote: Before I sign anything, I want to understand our own sales. Is acquisitio
 Who: Meera Raghavan, CEO, Kalpa Retail, to the data and AI team at Kalpa's Global Capability Centre
 
 ```notes
-LIVE, 1 minute. Leave Meera's words on screen while the room settles, and do not read them yet:
+On screen before the clock starts. Leave Meera's words up while the room settles, and do not read them yet:
 they close the story in 45 minutes. Say once that Kalpa is fictional and the whole programme is set
 inside it, and that the first 45 minutes are about the business, with no laptop open.
 Transition: one Saturday at Kalpa Retail.
@@ -33,96 +33,97 @@ up all day. The domain card goes out at the close of the afternoon, after the ro
 ```mermaid
 flowchart LR
     SUP["<b>suppliers</b><br/>fill rate"] --> DC["<b>distribution centre</b><br/>days of inventory"]
-    DC --> ST["<b>store</b><br/>footfall, shelf, bill"]
-    ST --> SH1["<b>shopper in store</b><br/>bill value"]
-    DC --> PK["<b>picking, packing</b>"]
-    APP["<b>the app</b><br/>search, checkout"] --> PK
-    PK --> LM["<b>last mile</b><br/>delivery, COD"]
-    LM --> SH2["<b>shopper at home</b><br/>order value"]
-    SH2 -.-> RD["<b>returns desk</b><br/>returns, RTO"]
+    DC --> ST["<b>store</b><br/>footfall, bills"]
+    DC --> LM["<b>last mile</b><br/>app orders, COD"]
+    APP["<b>the app</b><br/>visitors, orders"] --> LM
+    LM -.-> RD["<b>returns desk</b><br/>returns, RTO"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
-    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class SUP,DC,ST,PK,APP,LM known
+    class SUP,DC,ST,APP,LM known
     class RD bad
-    class SH1,SH2 bet
 ```
 
 ```notes
 LIVE, 8 minutes. Part 1 of the talk track. Tell the Saturday from the shelf check to the Monday
 page, and follow the Retail-Plus member's basket: Rs 2,000 of goods, a Rs 200 member discount,
-Rs 1,800 paid with a card held as a token; the bedsheet comes back next week.
+Rs 1,800 paid with a card held as a token; the bedsheet comes back next week. The app's 2,000
+orders average Rs 1,500.
 Ask: think of the last thing you bought in a shop and on an app; which one knew more about you?
 Land it: the data team works where customers leave traces, and a store leaves far fewer.
-Draw the value chain on the board, left to right.
+Draw the value chain on the board, six boxes left to right.
 Transition: which real companies Kalpa is like.
 ```
 
 ---
 
 ## S2. Kalpa is built like an Indian group
-*One group, five units, and one data and AI centre in Bengaluru serving all five.*
+*One group, five units, and one data and AI centre in Bengaluru serving each of them.*
 
 ```mermaid
 flowchart TB
-    G["<b>Kalpa Group</b><br/>Singapore HQ"] --> R["<b>Kalpa Retail</b><br/>stores, app, web"]
-    G --> F["<b>Financial Services</b>"]
-    G --> L["<b>Logistics</b>"]
-    G --> H["<b>Health</b>"]
-    G --> T["<b>Connect</b>"]
-    C["<b>the GCC, Bengaluru</b><br/>data and AI team"] -.-> R
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class R,F,L,H,T known
-    class G,C bet
+    G["<b>Kalpa Group</b><br/>Singapore HQ"] --> R["<b>Retail</b><br/>today"]
+    G --> H["<b>Health</b><br/>Build 1"]
+    G --> F["<b>Financial Services</b><br/>Week 5"]
+    G --> O["<b>Connect, Logistics</b><br/>later"]
+    R & H & F & O -.- C["<b>the GCC, Bengaluru</b><br/>you"]
+    classDef unit fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef dark fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class R,H,F,O unit
+    class G,C dark
 ```
 
-Kalpa Retail sits between store chains such as DMart, marketplaces such as Flipkart and Amazon India, and quick commerce such as Blinkit.
+Kalpa's stores work like DMart's, and its app sells stock Kalpa owns, like DMart Ready; Flipkart and Amazon India are marketplaces whose sellers own the goods.
 
 ```notes
-LIVE, 7 minutes. Part 2 of the talk track. Kalpa is fictional; these are real companies that look
-like parts of it, and every fact about them is in the talk track's facts table with its source.
-The GCC you have joined works like the Indian centres of Walmart, Target, Tesco and Lowe's.
-Ask: name one Indian group that sells you something, lends you money and connects your phone.
-Land it: a group's units share a customer and a brand, and each keeps its own books.
-Draw the group on the board.
+LIVE, 7 minutes. Part 2 of the talk track. Ask first: what does your phone company know about you
+that a grocer would want? Land it: units that share customers can learn a great deal about each
+one, and each unit keeps its own books and needs its own purpose before it uses the data.
+Kalpa is fictional; Reliance and Tata are real groups built like it, and every fact about them is
+in the talk track's facts table with its source. The GCC you have joined works like the Indian
+centres of Walmart, Target, Tesco and Lowe's.
+Draw the group on the board, six boxes.
 Transition: where the money goes.
 ```
 
 ---
 
-## S3. Rs 100 ordered leaves Rs 2.50 of profit
-*GMV walks down to net revenue, gross margin, contribution and operating profit.*
+## S3. Rs 100 ordered leaves Rs 2.50 of EBITDA
+*EBITDA is earnings before interest, tax, depreciation and amortisation: what the Rs 100 leaves.*
 
 ```mermaid
 flowchart LR
-    G["<b>GMV</b><br/>Rs 100"] --> K["<b>kept</b><br/>Rs 90"]
-    K --> N["<b>net revenue</b><br/>Rs 80"]
-    N --> M["<b>gross margin</b><br/>Rs 20"]
-    M --> C["<b>contribution</b><br/>Rs 7.5"]
-    C --> O["<b>operating profit</b><br/>Rs 2.5"]
+    G["<b>GMV</b><br/>Rs 100"] -->|"-10"| K["<b>kept</b><br/>Rs 90"]
+    K -->|"-10"| N["<b>net revenue</b><br/>Rs 80"]
+    N -->|"-60"| M["<b>gross margin</b><br/>Rs 20"]
+    M -->|"-12.5"| C["<b>contribution</b><br/>Rs 7.5"]
+    C -->|"-5"| O["<b>EBITDA</b><br/>Rs 2.5"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef dark fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class G,K,N,M,C known
-    class O bet
+    class O dark
 ```
 
 | Step | Less | What it is |
 |---|---|---|
-| GMV to kept | Rs 10 | The cancellations and returns come off first. |
-| Kept to net revenue | Rs 10 | The GST is collected for the state. |
-| Net revenue to gross margin | Rs 60 | The cost of the goods is paid to suppliers. |
-| Gross margin to contribution | Rs 12.5 | Delivery, returns, payment fees and marketing come with every order. |
-| Contribution to operating profit | Rs 5 | Warehouses, technology and head office are fixed. |
+| GMV to kept | Rs 10 | Cancellations and returns come off first. |
+| Kept to net revenue | Rs 10 | GST is collected for the state. |
+| Net revenue to gross margin | Rs 60 | The cost of the goods goes to suppliers. |
+| Gross margin to contribution | Rs 12.5 | Picking, delivery, fees, returns and retention offers come with every order. |
+| Contribution to EBITDA | Rs 5 | Stores, warehouses, tech, head office and acquisition do not grow with one more order. |
 
 ```notes
-LIVE, 10 minutes. Part 3 of the talk track, the part never to cut. Illustrative numbers.
-Ask first: of the member's Rs 1,800, how much does Kalpa keep as operating profit? Four ranges,
-hands up for each; then reveal about Rs 45. Real retailers keep a thin slice: DMart reported
+LIVE, 10 minutes. Part 3 of the talk track, the part never to cut. Illustrative numbers. The slide lays the board's six boxes
+left to right; on the board, draw them top to bottom and write each deduction on its arrow: cancellations and returns come off first; GST is collected for the state;
+the cost of the goods goes to suppliers; per-order costs are picking, delivery, payment fees,
+returns and the offers that bring a customer back; fixed costs are stores, warehouses,
+technology, head office and the budget that wins new customers.
+Ask first: of the member's Rs 1,800, how much does Kalpa keep as EBITDA? Four ranges, hands up
+for each; then reveal about Rs 50, the basket's Rs 150 of contribution less about Rs 100 towards
+the costs that do not change with one more order. Real retailers keep a thin slice: DMart reported
 profit after tax of 4.8 percent of revenue for FY26.
 Add the marketplace sentence: a marketplace books only its fees as revenue, and foreign-owned
-e-commerce selling to Indian consumers runs that way under Press Note 2 of 2018.
-Draw Rs 100's journey top to bottom.
+multi-brand e-commerce selling to Indian consumers runs that way under Press Note 2 of 2018.
+Draw Rs 100's journey top to bottom, six boxes, each deduction on its arrow.
 Transition: who asks the data team for what.
 ```
 
@@ -134,24 +135,28 @@ Transition: who asks the data team for what.
 ```mermaid
 flowchart LR
     CEO["<b>CEO</b><br/>Meera Raghavan"] --> FIN["<b>Finance</b><br/>Anand Iyer"]
-    CEO --> MKT["<b>Marketing</b>"]
-    CEO --> RP["<b>Retail-Plus</b>"]
-    CEO --> CS["<b>Support</b><br/>Farhan Sheikh"]
-    CEO -.->|asks| GCC["<b>the GCC</b><br/>Kavya Nair and you"]
-    GCC -.- DP["<b>data platform</b>"]
+    CEO --> MKT["<b>Marketing</b><br/>the marketing lead"]
+    CEO --> RP["<b>Retail-Plus</b><br/>its head"]
+    CEO --> OTH["<b>the other functions</b><br/>buying, pricing, supply,<br/>stores, support"]
+    FIN & MKT & RP & OTH -.-> GCC["<b>Kalpa's GCC</b><br/>Kavya Nair and you"]
+    CEO -.-> GCC
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class FIN,MKT,RP,CS known
-    class CEO,GCC,DP bet
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    classDef dark fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class FIN,MKT,RP known
+    class OTH unknown
+    class CEO,GCC dark
 ```
 
 ```notes
-LIVE, 6 minutes. Part 4 of the talk track. Name the six: Meera, Anand, the marketing lead, the head
-of Retail-Plus, the data platform lead, and Kavya Nair, who reviews everything before it leaves.
-Farhan Sheikh arrives in Week 8.
-Ask: which of them loses the most if our number is wrong? Every answer is defensible; the point
-is that each loses something different.
-Draw who asks on the board. If short of time, draw it, ask once and move on.
+LIVE, 6 minutes. Part 4 of the talk track. Name the six boxes: Meera, Anand, the marketing lead, the
+head of Retail-Plus, the other functions (buying, pricing, supply chain, stores, and support, where
+Farhan Sheikh arrives in Week 8), and Kavya Nair with us in the GCC, who reviews everything before
+it leaves. The data platform lead sits beside the GCC and wants the warehouse queried, never exported.
+Ask: if one of our numbers is wrong, whose mistake can we undo next week, and whose can we not?
+Land it: before a number leaves the team, know who asked for it and whether being wrong can be
+taken back.
+Draw who asks on the board, six boxes. If short of time, draw it, ask once and move on.
 Transition: the tree every retail number hangs off.
 ```
 
@@ -162,20 +167,17 @@ Transition: the tree every retail number hangs off.
 
 ```mermaid
 flowchart TB
-    R["<b>revenue</b>"] --> C["<b>customers</b><br/>new, returning"]
+    S["<b>on the shelf</b><br/>days of inventory, stock-outs"] -.-> R["<b>revenue</b>"]
+    R --> C["<b>customers</b><br/>new, returning"]
     R --> F["<b>orders per customer</b>"]
-    R --> A["<b>order value</b>"]
-    R -.-> L["<b>leaks</b><br/>returns"]
-    A --> I["<b>items per order</b>"]
-    A --> P["<b>price per item</b>"]
-    A --> D["<b>less discounts</b>"]
-    S["<b>on the shelf</b>"] -.-> R
+    R --> A["<b>average order value</b><br/>items x price, less discounts"]
+    R -.-> L["<b>leaks</b><br/>cancellations, returns"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
-    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class C,F,A,I,P,D known
+    classDef dark fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class C,F,A known
     class L bad
-    class R,S bet
+    class R,S dark
 ```
 
 **The rule.** Every metric is a numerator over a denominator in a window, and a rate means nothing until you say what it is compared with.
@@ -188,7 +190,8 @@ total growth of 15 percent is 2 percent like for like.
 Ask: the festive lights have sold 62 percent in four weeks with Diwali ahead; good news or bad?
 Collect three things to check first. Land it: a rate means nothing until you say what it is
 compared with, and over which window.
-Draw the metric tree and leave it on the board all day; the case writes its numbers onto it.
+Draw the metric tree, six boxes, and leave it on the board all day; the case writes its numbers
+onto it.
 Transition: from describing to acting.
 ```
 
@@ -199,9 +202,9 @@ Transition: from describing to acting.
 
 ```mermaid
 flowchart LR
-    D["<b>describe</b><br/>a person reads it"] --> P["<b>predict</b><br/>a person decides"]
-    P --> R["<b>recommend</b><br/>a person approves"]
-    R --> A["<b>act</b><br/>an agent, within limits"]
+    D["<b>describe</b><br/>what happened<br/>a person reads it"] --> P["<b>predict</b><br/>what will happen<br/>a person decides"]
+    P --> R["<b>recommend</b><br/>what to do<br/>a person approves"]
+    R --> A["<b>act</b><br/>an agent does it<br/>within limits"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     class D,P,R known
@@ -361,7 +364,7 @@ flowchart LR
     class X unknown
 ```
 
-The dashed box is an answer too: the file cannot say what sales were after discounts.
+The file has no discount field, so sales after discounts cannot be computed from it.
 
 ```notes
 LIVE, 1 minute. Draw this chain under the board tree. An engineer who can say what the data
@@ -735,7 +738,7 @@ Transition: chapter 3, counting the customer branches.
 
 ```notes
 LIVE, 30 minutes: the need (3), the options (5), the build (8), the trap (9), the second route
-(3), Kavya's review (2); the delivered leaves (D35) are self-study. Notebook 03 is the demonstration.
+(3), Kavya's review (2); the delivered leaves sit in S35's notes; cut them first. Notebook 03 is the demonstration.
 ```
 
 ---
@@ -999,7 +1002,7 @@ value: Rs 2,205 | label: median order | note: halfway between Rs 2,110 and Rs 2,
 value: 8.2 | label: mean over median | note: one order does it
 ```
 
-**The rule.** Two middles this far apart are a finding in themselves.
+**The rule.** When the mean is eight times the median, sort the file before quoting either.
 
 ```notes
 LIVE, 5 minutes. Write Rs 2,205 on the board tree beside the pencilled Rs 18,160. The median runs

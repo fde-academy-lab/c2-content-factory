@@ -7,7 +7,7 @@ Quote: Is acquisition even the branch that is short?
 Who: Meera Raghavan, CEO, Kalpa Retail, before she signs Rs 12 crore
 
 ```notes
-LIVE, 1 minute. The board tree from the morning is still up: 23 customers, 1.30 orders each,
+On screen before the clock starts. The board tree from the morning is still up: 23 customers, 1.30 orders each,
 16 bought once, a typical order of Rs 2,205. The afternoon opens on it.
 Transition: chapter 5, which branch Meera opens first.
 ```
@@ -61,7 +61,7 @@ Transition: what the plan asks of each branch.
 ---
 
 ## S3. The plan asks 3.3 customers or 4.35 orders
-*Each branch alone, on the 29 everyday orders: Rs 64,810, and Rs 9,722 more.*
+*The 29 everyday orders: 22 customers, 15 bought once; Rs 9,722 more.*
 
 | Option | The plan needs | Evidence in this file |
 |---|---|---|
@@ -125,7 +125,7 @@ value: Rs 77,772 | label: the slide's revenue | note: Rs 64,810 x 1.20, everyday
 The slide's arithmetic is the one most rooms do in their heads.
 
 ```notes
-LIVE, 4 minutes. Ask for the right number before the next slide; take letters: 20, 21, 10, 11.
+LIVE, 4 minutes. Ask for the right number before the next slide; take hands for 20, 21, 10 or 11.
 Transition: the check.
 ```
 
@@ -260,7 +260,7 @@ Transition: four ways to hand Meera the answer.
 ```notes
 LIVE, 5 minutes. Walk the four. The sentence is the only option that carries a decision and its
 limit together.
-Transition: the number most likely to be misread.
+Transition: build the first draft.
 ```
 
 ---
@@ -290,7 +290,7 @@ Transition: a colleague tightens the draft for the slide.
 ## S13. Question: how many of the 16 are lost?
 *One quarter of orders, and a number that reads like churn.*
 
-**Question.** What share of Kalpa's customers can you call lost: a) about 70 percent, 16 of 23; b) 30 percent, the ones who came back; c) none from this file alone, and some are too recent to judge; d) all the one-time buyers?
+**Question.** What share of Kalpa's customers can you call lost: a) about 70 percent, 16 of 23; b) 30 percent, the ones who came back; c) none yet from this file; some are too recent; d) all the one-time buyers?
 
 ```mermaid
 flowchart LR
@@ -318,7 +318,7 @@ Transition: the answer.
 
 ```stats
 value: 45 days | label: median repeat gap | note: from the 7 who came back
-value: 9 | label: too recent to judge | note: bought in the last 45 days
+value: 9 | label: too recent to judge | note: under 45 days before the end
 value: 7 | label: past the usual gap | note: at most 7 of 23 look lost
 ```
 
@@ -573,7 +573,7 @@ Transition: the consumer channels, booked against delivered.
 
 ---
 
-## S25. On consumer orders, web leads and half comes back
+## S25. Web leads consumer sales; half its orders return
 *Booked against delivered for each channel, in Rs thousand.*
 
 ```mermaid
@@ -584,7 +584,7 @@ xychart-beta
     bar [18.6, 18.6, 27.3, 12.3, 18.9, 9.9]
 ```
 
-Web books the most, Rs 27,290, and 5 of its 10 orders came back for Rs 14,970. App kept all 10, Rs 18,600.
+Web books the most, Rs 27,290, and 5 of its 10 orders were returned, Rs 14,970. App kept all 10, Rs 18,600.
 
 ```notes
 LIVE, 2 minutes. Ask which channel a finance controller would call the healthiest, and why it is
@@ -708,7 +708,7 @@ LIVE, 15 minutes: the Kahoot 9, the six lines 3, Tuesday's question 3.
 *The Kahoot is ungraded, and it shows which traps the room still falls for.*
 
 ```stats
-value: 8 | label: items | note: one per chapter trap, and two more
+value: 8 | label: items | note: one per chapter, two on tree and discount
 value: 0 | label: scores recorded | note: ungraded, every day
 value: 1 | label: return question | note: from today, in Tuesday's Kahoot
 ```

@@ -33,9 +33,9 @@ flowchart LR
     class S core
 ```
 
-Every chapter runs the same six steps, and the chapter's opener carries its minutes: the need (2 to
-3), the options sized (4 to 8), the build with each step predicted (4 to 8), the trap (7 to 10), the
-second route (3 to 4), and Kavya's review with the interview question (2 to 3).
+Every chapter runs the same six steps, and the chapter's opener carries its minutes: the need (3),
+the options sized (4 to 8), the build with each step predicted (4 to 8), the trap (7 to 12), the
+second route (3 to 5), and Kavya's review with the interview question (2 to 3).
 
 | Part | Slides | Beside it | What must land | If short of time |
 |---|---|---|---|---|
@@ -148,7 +148,7 @@ If a learner asks whether the data is rigged, answer with the question back: "Wh
 | Two 10 percent lifts | Rs 78,420 against the added Rs 77,772; parts Rs 6,481, Rs 6,481 and Rs 648 |
 | 15 percent off with 10 percent more orders | Rs 60,597 on the everyday orders, a 6.5 percent fall; break-even lift 17.6 percent |
 | Repeat gaps, days | 11, 35, 43, 45, 46, 63, 65; median 45; the window is 88 days |
-| Delivered plan | On the 20 everyday delivered orders, Rs 40,790 to Rs 46,908: 23 orders, 3 more; the discount takes the same Rs 40,790 to Rs 38,139 |
+| Delivered plan | On the 20 everyday delivered orders, Rs 40,790 to Rs 46,909: 23 orders, 3 more; the discount takes the same Rs 40,790 to Rs 38,139 |
 
 | Channel | Orders | Booked | Delivered | Returned | Cancelled |
 |---|---|---|---|---|---|

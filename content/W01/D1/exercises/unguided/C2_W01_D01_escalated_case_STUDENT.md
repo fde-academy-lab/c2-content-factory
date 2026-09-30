@@ -73,7 +73,7 @@ d) About Rs 46,910, a rise of 15 percent
 
 ## Part 4. The branch, with the window's edge
 
-### Q6. Compute: of the delivered customers who kept only one order, how many bought within the last 45 days of the window, too recently to judge?
+### Q6. Compute: of the delivered customers who kept only one order, how many placed their order fewer than 45 days before 26 September, too recently to judge?
 
 Write the number.
 

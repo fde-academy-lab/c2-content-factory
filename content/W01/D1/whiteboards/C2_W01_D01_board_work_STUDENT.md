@@ -10,17 +10,18 @@ the board here is the one met everywhere else this week.
 ## Drawings 1 to 6: the retail story
 
 The story's six drawings go up in its six parts, before Meera's ask, and stay up all day. Each is
-drawn exactly as the domain dossier draws it,
-`study-notes/C2_W01_D01_domain_retail_STUDENT.md`, so the board and the reading match.
+the board version of a drawing in the domain dossier,
+`study-notes/C2_W01_D01_domain_retail_STUDENT.md`, cut to six boxes or fewer so it can be drawn
+while talking; the dossier's section carries the fuller drawing.
 
 | Drawing | Story part | The dossier's section | What it shows |
 |---|---|---|---|
-| 1 | The Saturday | 1, the value chain | Suppliers to the distribution centre, the store and the app, the last mile, and the returns desk |
-| 2 | Kalpa's twins | 2, the group | Kalpa Group, its five units, and the GCC with a dotted line to each |
-| 3 | Where Rs 100 goes | 3, the P&L | Rs 100 of GMV walked to Rs 2.50 of operating profit |
-| 4 | Who asks | 4, the org chart | The CEO, the functions, and the GCC below with its "asks" line |
-| 5 | The metric tree | 5, the metric tree | Revenue, its three branches, the shelf above and the leaks beside |
-| 6 | Describe to act | 8, the ladder | Describe, predict, recommend and act, the last in rose |
+| 1 | The Saturday | 1, the value chain | Suppliers, the distribution centre, the store, the app, the last mile, and the returns desk |
+| 2 | Which real company Kalpa is like | 2, the group | Kalpa Group, its units grouped by when each becomes the room's client, and the GCC under them |
+| 3 | Where Rs 100 at the checkout goes | 3, the P&L | Rs 100 of GMV walked to Rs 2.50 of EBITDA, each deduction on its arrow |
+| 4 | Who decides, and who asks | 4, the org chart | The CEO, the functions, and the GCC, with a dotted arrow from every box to it |
+| 5 | The metric tree, and three traps | 5, the metric tree | Revenue, its three branches, the shelf above and the leaks beside |
+| 6 | From describing to acting | 8, the ladder | Describe, predict, recommend and act, the last in rose |
 
 Drawing 5 is the one the case writes on. Meera's question is read out beside it, marketing's
 Rs 12 crore is written against the customers branch, and every chapter adds a number to it:
@@ -109,7 +110,7 @@ The check goes beside it in code: the length of the rows against the length of t
 
 ## Drawing 10: sorted amounts, with the mean and the median drawn on invented values
 
-It goes up in chapter 4, after the room has seen the mean and the median of the real file and before anyone sorts it. Every amount here is invented, so the mechanism shows on numbers nobody has to trust.
+It goes up in chapter 4, after the build's median and before the empty-cell sort. Every amount here is invented, so the mechanism shows on numbers nobody has to trust.
 
 ```mermaid
 xychart-beta
@@ -156,7 +157,7 @@ asked how long customers usually take to come back.
 flowchart LR
     W["<b>88-day window</b><br/>1 July to 26 September"] --> B["<b>7 came back</b><br/>median gap 45 days"]
     W --> H["<b>7 bought once</b><br/>and had 45 days"]
-    W --> R["<b>9 bought once</b><br/>in the last 45 days<br/>too recent to judge"]
+    W --> R["<b>9 bought once</b><br/>under 45 days<br/>before the end<br/>too recent to judge"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
     class B,H known

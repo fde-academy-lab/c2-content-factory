@@ -38,7 +38,7 @@ d) Rs 2,205, halfway between the two middle amounts
 
 a) The booked mean, since every rupee counts in a total; a cleaner extract would change it
 b) The median of first orders, the typical order; a skewed segment would change it
-c) The targeted segment's mean, one-off orders aside; a new target would change it
+c) The target segment's mean contribution per order; a new target would change it
 d) The largest order, the ceiling a customer can reach; a price cut would change it
 
 ### Q4. Design. One invented Rs 90,000 order joins five invented orders of Rs 1,900 to Rs 2,600: the mean moves Rs 14,623, the median Rs 50, the trimmed mean Rs 83. Which should the team report as the typical order, and when would the trimmed mean do as well?

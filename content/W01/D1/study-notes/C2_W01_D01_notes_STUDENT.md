@@ -87,9 +87,10 @@ the day ended.
 ## The story in one paragraph, and the ask it hands over
 
 A retailer keeps a thin slice: on the dossier's illustrative numbers, Rs 100 of GMV leaves Rs 80 of
-net revenue, Rs 20 of gross margin, Rs 7.50 of contribution and Rs 2.50 of operating profit, and
+net revenue, Rs 20 of gross margin, Rs 7.50 of contribution and Rs 2.50 of EBITDA, and
 DMart reported profit after tax of 4.8 percent of its FY26 revenue. Six people at Kalpa Retail
-already want numbers from the data team, and each loses something different when a number is wrong.
+already want numbers from the data team, and some of their mistakes can be undone next week while
+others cannot.
 The story ends on Meera Raghavan's page: revenue grew 4 percent against a plan of 15, marketing
 wants Rs 12 crore to acquire customers, and she asks, "Before I sign anything, I want to understand
 our own sales. What is 'sales' made of? Where does revenue come from, by customer type and channel?
@@ -322,7 +323,7 @@ shows who bought once inside the window; whether they are lost depends on orders
 closes, which the file cannot show. The check asks the
 question marketing would ask: how long do customers usually take to come back? The 7 who did took a
 median of 45 days (11, 35, 43, 45, 46, 63 and 65). Of the 16 one-time buyers, 9 placed their order
-inside the last 45 days of the 88-day window, so they have not had a typical customer's time. The
+fewer than 45 days before the 88-day window closes, so they have not had a typical customer's time. The
 fix is that 7 came back, 7 are past the usual gap without a second order, and 9 are too recent to judge. Even the 45 days
 rests on 7 customers, so the sentence claims nothing beyond it.
 

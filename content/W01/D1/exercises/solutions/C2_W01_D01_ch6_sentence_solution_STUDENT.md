@@ -6,7 +6,7 @@ Answers: 1c 2a 3d 4c 5b
 
 "Bought once in this window" is a fact and "lost" is a claim about the future the window cannot see.
 The seven customers who came back took a median of 45 days, and 9 of the 16 one-time buyers bought
-inside the last 45 days, so the file supports 7 came back, 7 are past the usual gap, and 9 are too
+fewer than 45 days before the end, so the file supports 7 came back, 7 are past the usual gap, and 9 are too
 recent to judge. The sentence carries evidence, branch, caveat and ask in that order.
 
 ## Item by item
