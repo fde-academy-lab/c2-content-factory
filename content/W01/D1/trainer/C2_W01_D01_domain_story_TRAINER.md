@@ -9,7 +9,8 @@ Most of the room has never worked in a business role. For 45 minutes before Meer
 | **Start from** | Nothing about retail. Assume the room has shopped in a store and on an app, and nothing more. |
 | **Go as far as** | Every learner can say what GMV, net revenue, gross margin and contribution are, place a metric on the tree with its denominator, and name who at Kalpa asks for it. |
 | **Stop before** | Any Week 1 answer. The story never says which branch moved, whether the numbers reconcile, or whether a discount worked; those are the week's cases. |
-| **Hands over to** | Meera Raghavan's ask, which opens the day's case on the drawings already on the board. |
+| **Where it sits** | It opens Monday in the place of the 20-minute ask, and the morning deck's first chapter carries it; the Weeks 1 and 2 spine sets the rest of the day around it. |
+| **Hands over to** | Meera Raghavan's ask, read as the story's last line, which opens the day's case on the drawings already on the board. |
 | **Cut first** | Part 4 to its drawing and question, then part 6 to its question. Never cut part 3, the money, or part 5, the metric tree. |
 
 ```mermaid

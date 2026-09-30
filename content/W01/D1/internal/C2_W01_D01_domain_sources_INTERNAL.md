@@ -9,6 +9,7 @@
 | Source in the repository | What it supplied |
 |---|---|
 | The requester's brief of 30 September 2026, relayed by the orchestrating session | The four deliverables, the dossier's twelve sections, the likeness framing, and Kalpa Health's repositioning as a US-facing diagnostics and revenue-cycle business |
+| `main` after this branch was cut (commits f788634, faf5c8e and db185d8, read on 30 September 2026) | Client zero section 1c and addendum `health-us-facing` (Kalpa Health serves the US); decision `four-domains`; `.claude/skills/day-pack-builder/references/domain-dossier.md`, which names this dossier as the model; the spine's line that Monday's domain story takes 45 minutes in place of the 20-minute ask |
 | `CLAUDE.md` | The truth order, the writing rules, the plant rule, the diagram rule, durations only, role labels |
 | `docs/07_Client_Zero.md`, v2.2 locked 13 September 2026, with the GCC addendum of 28 September 2026 | Kalpa Group's headquarters and five units, the Bengaluru centre as the GCC, the people in section 1a, 4 percent growth against a 15 percent plan, the Build 1, 2 and 3 seeds |
 | `docs/curriculum/W1_Data_analysis_found.md` and `W2_Data_manipulation.md`, tracker v7 | Kalpa Retail selling through app, website and stores across India and South-East Asia; marketing's Rs 12 crore; the chief of staff's Week 2 Friday ask; the week's scenarios, which the dossier never pre-empts |
@@ -28,7 +29,8 @@
 | Farhan Sheikh, head of customer support, from Week 8, two thousand tickets a day | `docs/07_Client_Zero.md`, section 1a |
 | Rohan Desai from Week 5; a default costs twenty times a wrongful rejection | `docs/07_Client_Zero.md`, section 1a and the Build 2 seeds |
 | Dr Priya Menon, COO of Kalpa Health, the Build 1 stakeholder; Ananya Bose, COO of Kalpa Connect, Build 3 | `docs/07_Client_Zero.md`, section 1a and the Build seeds |
-| Kalpa Health is a US-facing diagnostics and revenue-cycle business | The requester's brief, 30 September 2026. Not yet in `docs/07_Client_Zero.md` or `facts.yaml`; see the decisions below |
+| Kalpa Health tests US patients and bills US payers, with its analytics and revenue-cycle work run from the GCC in Bengaluru | The requester's brief, 30 September 2026, and on `main` client zero section 1c with addendum `health-us-facing` |
+| The programme's four domains and when each enters: retail and e-commerce now, US healthcare on Build 1 Monday, financial services from Week 5, SaaS and enterprise AI from Week 8 | Decision `four-domains`, on `main` |
 | The Kalpa Logistics stakeholder is not yet named | `facts.yaml`, `client_zero.proposed.open` |
 | Meera's chief of staff asks for the leadership deck's numbers | Week 2 Friday row |
 
@@ -190,11 +192,12 @@ Every number below is illustrative, chosen for easy arithmetic, labelled illustr
 
 ## Decisions and open points for the orchestrating session
 
-1. **Kalpa Health's repositioning.** The brief states that the requester has repositioned Kalpa Health as a US-facing diagnostics and revenue-cycle business. `docs/07_Client_Zero.md` v2.2 calls it a diagnostics business without a market, and `facts.yaml` does not record the change. The dossier and talk track state it, on the requester's word; it should be recorded in client zero (as part of v2.3 or an addendum) so Build 1 packs and this dossier agree.
+1. **Kalpa Health's repositioning.** Settled on `main` after this branch was cut: client zero section 1c and addendum `health-us-facing`. The dossier's wording follows section 1c. This branch does not carry those files, so they arrive with the merge.
 2. **A question the story leaves open.** A Singapore-headquartered group owning an Indian store chain that sells its own stock through an app would, in the real world, meet the FDI limits in section 3. The dossier names the rule and the question and says the story does not settle it. If the requester wants it settled, the likely lines are an Indian-owned Kalpa Retail India or a marketplace app; either would be a client-zero decision.
-3. **The 45-minute domain story.** The approved spine's Monday morning opens on the client's ask (20 minutes) with no domain story. The talk track is written as a 45-minute block that hands over to Meera's ask; the Monday day sheet and spine decide where it sits.
+3. **The 45-minute domain story.** Settled on `main`: the spine now says Week 1 Monday's domain story takes 45 minutes in place of the 20-minute ask, and the domain-dossier reference says the morning deck's first chapter carries it. The talk track ends on Meera's ask, so the day's first chapter can open on it.
 4. **The sheet builder.** `scripts/build_cheatsheet.py` read the foot strip's glossary from whichever notes file the filesystem listed first, and with the dossier added it would have printed retail terms on the Monday revenue-tree sheet's next rebuild. It now prefers the notes whose topic shares a word with the sheet's name, and otherwise the day's own `_notes_` file (commit on this branch). The revenue-tree PDF was not rebuilt.
-5. **Length.** The dossier runs to about 9,500 words of prose and tables (diagram source excluded) against the brief's 6,000 to 8,000, because its twelve sections carry 31 tables. Section word counts are in the session report.
+5. **Length.** After two compression passes the dossier runs to about 8,560 words without its URLs and dated citations (about 8,800 by a plain count, diagram source excluded), against the brief's 6,000 to 8,000. Its twelve sections carry 29 tables. Section word counts are in the session report.
+6. **The depth loop.** `CLAUDE.md` on `main` now asks every pack for a rigor pass and a pedagogy-and-language pass by fresh reviewer agents. This session had no tool to start another agent, so those two reviews were not run on these files; the orchestrating session can run them.
 
 ## The plant check
 
