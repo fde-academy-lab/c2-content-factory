@@ -524,9 +524,9 @@ kit.check("the repeated rows make one segment's customers look as if they order 
     """),
     empty(),
     mdj("""
-    > **Kavya's review.** A number that has not been reconciled can point the wrong way, and on this
-    > morning's file it did for most of the room. Put the two checks in a cell before you compute the
-    > first number you plan to send, so the clock cannot remove them.
+    > **Kavya's review.** A number that has not been reconciled can point the wrong way, as the invented
+    > export's hurried run did. Put the two checks in a cell before you compute the first number you
+    > plan to send, so the clock cannot remove them.
 
     ### How would you answer this in an interview?
 
@@ -551,7 +551,7 @@ kit.check("the repeated rows make one segment's customers look as if they order 
 
     ### What do you check against when there is no control total?
 
-    Three stand-ins, in the order a careful analyst tries them: the same quarters in a second export
+    A careful analyst tries three stand-ins, in this order: the same quarters in a second export
     pulled from the source system on another day; the payment gateway's settlement totals for the
     quarter, which count collected money and so need their own bridge to booked money; last quarter's
     audited figure for the quarter that overlaps. Each is weaker than Finance's number, and the note
@@ -560,7 +560,7 @@ kit.check("the repeated rows make one segment's customers look as if they order 
     mdj("""
     ## So, do the two quarters in your note match Finance's books?
 
-    Only once both checks have run. On the invented export:
+    They match only once both checks have run. On the invented export:
 
     1. A pass that skips the reconciliation sends Q2 up 21.2 percent, where the books say down 35.0.
     2. Counts and rupees with a bridge (C) is the best fit: fifteen minutes, the only option run here
@@ -571,7 +571,7 @@ kit.check("the repeated rows make one segment's customers look as if they order 
        lands on Rs 66,00,000.
     5. The set-aside list and the log, each summed on its own, equal the two moves.
 
-    Your your-turn cells put this morning's file through the same five steps. Chapter 2 asks the
+    The your-turn cells put this morning's file through the same five steps. Chapter 2 asks the
     question the count check left open: when every count lands and nothing was rejected, what else can
     a pass have lost?
     """),
@@ -902,10 +902,10 @@ kit.check("named rows read a rise where the restored segment fell",
     mdj("""
     **What happened.** The answer is b. On named rows the invented Retail-Core's Q1 is Rs 73,250, so the
     segment seems to rise 2.2 percent to Q2's Rs 74,880; with the order restored from its customer's
-    other orders Q1 is Rs 75,600 and the segment fell 1.0 percent. A segment that fell reads as a rise,
-    and nobody decided it.
+    other orders Q1 is Rs 75,600 and the segment fell 1.0 percent. A segment that fell reads as a rise.
 
-    **Why it is wrong, and the fix.** The filter dropped the order; nobody chose to. The check is one
+    **Why it is wrong, and the fix.** The filter dropped the order, and nobody chose to drop it. The
+    check is one
     line, that the segments add back to the quarter in orders and in rupees, and it fails by exactly
     the rows the filter never saw. The fix is a logged decision: restore the segment from the customer's
     other orders when all of them carry one segment, flag it and name it in the caveat, or keep the row
@@ -999,20 +999,20 @@ kit.check("the logged values add up to the gap the rupee check found", sum(logge
 
     ### Where else can a pass look clean?
 
-    Any step that can lose something silently: a date parse that sends a bad date to a default, a
+    A pass can look clean at any step that loses something silently: a date parse that sends a bad date to a default, a
     currency converter that returns zero for a code it does not know, a filter on a name that is
     sometimes blank. The check is always the same: what went in equals what came out plus what was
     set aside, in rows and in value.
 
     ## So, when every count reconciles, is the pass finished?
 
-    Only once the rupees land too. On the invented export:
+    It is finished only once the rupees land too. On the invented export:
 
     1. The zeroing pass reports 83 Q1 orders against Finance's 83, and 0 rejects.
     2. The rupees show Q1 Rs 8,50,000 short, and the note's fall reads 17.5 percent where the books say
        35.0.
     3. Reading the value, keeping it and flagging it (C) is the best fit when it can be read without a
-       guess; D when it cannot, B when the row is not an order, and A never.
+       guess; D fits when it cannot, B when the row is not an order, and A never does.
     4. One log line moves the fall to 35.0 percent, Rs 14,00,000 on the books.
     5. A segment filter drops the unnamed order, and Retail-Core reads +2.2 percent where it fell 1.0.
     6. Values present, 167, equal 166 that convert plus 1 logged, and the logged Rs 8,50,000 is the gap.
@@ -1146,8 +1146,8 @@ kit.check("the segments add back to the quarter", all(sum(T[q, s]["rev"] for s i
     ## 2. How many orders does the biggest move rest on?
 
     **The plausible wrong answer.** "The corporate book fell 36.3 percent and drove the whole decline;
-    we recommend a corporate retention plan." It is true to the rupee, it is the biggest number on the
-    page, and it is the headline a hurried note leads with.
+    we recommend a corporate retention plan." It is true to the rupee and the biggest move on the page,
+    so a hurried note leads with it.
 
     **Predict before you run.** How many orders does that 36.3 percent rest on?
 
@@ -1202,7 +1202,7 @@ kit.check("the corporate book carries more than nine tenths of the fall", biz / 
     mdj("""
     ## 3. How should a team choose the lead, and what does each way cost?
 
-    Four ways, each sized below on the invented clean tree: the claim it leads with, the orders behind
+    The cell below sizes four ways on the invented clean tree: the claim each leads with, the orders behind
     that claim, how often chance alone produces it, and the analyst's minutes at the lab brief's pace.
     Option D is run here, one test per segment on that segment's own customers' two quarters, so its
     cost shows as a number.
@@ -1285,7 +1285,7 @@ kit.check("testing every segment turns up no second finding under 0.05", sum(1 f
     to do it: with four tests at 0.05 the chance that at least one looks real by luck is about 19
     percent, so on another file D leads with a fluke about one time in five.
 
-    **What would change the call.** A question about accounts rather than rates: if Meera asked "what
+    **What would change the call.** A question about accounts: if Meera asked "what
     happened to our corporate revenue?", the lead is the corporate fall, said as counts, with the
     accounts named by their owner. A corporate book of hundreds of orders a quarter would let its rate
     lead. And a second quarter of the same move in Business would turn a phone call into a trend worth
@@ -1571,8 +1571,8 @@ kit.check("splitting the pairs pushes both verdicts past 0.05 on the invented ex
     mdj("""
     ## So, which finding leads the note, and how sure can Meera be of it?
 
-    The branch that moved on enough orders to test, said beside the biggest move as counts. On the
-    invented export:
+    The branch that moved on enough orders to test leads, said beside the biggest move as counts. On
+    the invented export:
 
     1. Business carries Rs 13,88,200 of the Rs 14,00,000 fall, 99.2 percent, with its revenue down 36.3
        percent.
@@ -1586,7 +1586,7 @@ kit.check("splitting the pairs pushes both verdicts past 0.05 on the invented ex
     5. 13 of the 16 members saw their own basket fall, a sign test p of 0.021, so the fall is broad.
 
     Meera can act on it as a finding worth opening, sized at Rs 14,400 a quarter, with the corporate
-    book beside it as a question to its account owner. Your your-turn cells put this morning's file
+    book beside it as a question to its account owner. The your-turn cells put this morning's file
     through the same five questions, and Saturday's paper asks for the p-value sentence from memory.
     """),
     code('kit.check_summary()\nprint("Next: the rehearsal, where the note is said aloud and Marketing pushes on it.")'),

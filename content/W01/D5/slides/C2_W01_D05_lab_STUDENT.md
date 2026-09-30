@@ -37,7 +37,7 @@ question and the third is the afternoon's; the other three follow from them.
 
 ```notes
 LIVE. Ten minutes in all: who decides on Monday, the method as one picture, the first move, the
-rules and the hand-in. Nothing here is new, and the pace matters more than the words.
+rules and the hand-in. Nothing here is new, so keep to the ten minutes.
 ```
 
 ---
@@ -244,10 +244,10 @@ debrief.
 ```stats
 value: 6 | label: steps | note: in one order, every time
 value: 120 | label: minutes | note: one pass, observed
-value: 0 | label: assistants | note: the file is new to every model too
+value: 0 | label: assistants | note: no chat model and no autocomplete
 ```
 
-**Kavya's review.** The step you skipped when the clock ran is the step you do not own yet. Knowing which one it is, this week, costs nothing.
+**Kavya's review.** The step you skipped when the clock ran is the step you do not own yet, and this week you find out which one it is with nothing scored.
 
 ```notes
 LIVE, 1 minute, then the ten-minute break. The debrief's first chapter, the reconciliation, runs for

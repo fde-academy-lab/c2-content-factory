@@ -148,7 +148,7 @@ the decomposition, which is the right step on data you already trust.
 | Q1 | 83 | 83 | Rs 31,50,000 | Rs 40,00,000 |
 | Q2 | 92 | 84 | Rs 38,16,420 | Rs 26,00,000 |
 
-The answer is c. Q1 has the right count and the wrong rupees; Q2 has too many rows and too many rupees. Two errors, and the invented headline carries both.
+The answer is c. Q1 has the right count and the wrong rupees; Q2 has too many rows and too many rupees. The invented headline carries both errors.
 
 ```notes
 LIVE, 2 minutes. Open notebook 1 on the projector and type its first your-turn cell: it prints this
@@ -285,7 +285,7 @@ icon: circle-alert | eyebrow: Counts checked | title: Q2 fell 17.5% | body: The 
 icon: circle-check | eyebrow: Counts and rupees | title: Q2 fell 35.0% | body: Rs 14,00,000 to explain, and the tree says where.
 ```
 
-**In the interview.** [F] You have two hours and a raw export; what do you do first, and what do you skip? Profile first, and never skip the reconciliation, the step that can flip the sign for fifteen minutes.
+**In the interview.** [F] You have two hours and a raw export; what do you do first, and what do you skip? Profile first, and never skip the reconciliation: it costs fifteen minutes and can flip the headline's sign.
 
 ```notes
 LIVE, 1 minute. Say this morning's three headlines aloud from the day sheet's debrief table, then
@@ -498,7 +498,7 @@ your-turn cell that finds the row is for the room tonight.
 | C. Read, convert, keep and flag | 3 | 1 | passes | passes | -35.0% |
 | D. Hold and ask the owner | a wait | 1 | fails | fails | provisional |
 
-**The rule.** C, when the value can be read without guessing, as the invented export's "850000.00", an amount exported with its paise, can. D when it cannot: a word, a unit that could be lakh or crore. B when the row is not an order. A is the one option that hides its gap.
+**The rule.** Choose C when the value can be read without a guess, as the invented export's "850000.00", an amount exported with its paise, can. Choose D when reading it needs a guess, such as a word or a unit that could be lakh or crore, and B when the row is not an order at all. A is the one option that hides its gap.
 
 ```notes
 LIVE, 2 minutes. Invented numbers. Type the options your-turn cell in notebook 2, which sizes the
@@ -739,7 +739,7 @@ value: 5 then 2 | label: orders | note: what the rate rests on
 value: Rs 13,88,200 | label: the fall it carries | note: 99.2% of the quarter's
 ```
 
-True to the rupee, the biggest number on the page, and the headline a hurried note leads with: "corporate is declining; we recommend a retention plan".
+The rate is true to the rupee and the biggest move on the page, so a hurried note leads with it: "corporate is declining; we recommend a retention plan".
 
 ```notes
 LIVE, 1 minute. The number is correct. What can seven orders carry? This morning's own corporate
@@ -792,7 +792,7 @@ a handful of orders costs a quarter.
 | C. Count before rate | Retail-Plus basket -15.0%, Rs 14,400 | 64 | p = 0.011, quarters flipped | 15 |
 | D. Test every segment, run | the smallest of four p-values | 7 to 72 | 0.011, one of four under 0.05 | 45 |
 
-**The rule.** C: the one consumer move on enough orders to test, small in rupees and led beside the corporate move said as counts. Switch when Meera's question is about accounts, when a segment carries hundreds of orders a quarter, or when a second quarter repeats the move.
+**The rule.** C, because Retail-Plus's basket is the one consumer move on enough orders to test; it is small in rupees, so it leads beside the corporate move, which is said as counts. Switch when Meera's question is about accounts, when a segment carries hundreds of orders a quarter, or when a second quarter repeats the move.
 
 ```notes
 LIVE, 2 minutes. Invented numbers. B hides that nearly all of the fall is the corporate book. D

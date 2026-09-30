@@ -58,8 +58,9 @@ kit.flow(["profile", "clean, with a decisions log", "reconcile to the control to
     md("""
     ## 1. What does the file hold before any change?
 
-    Three counts per field: present, convertible where a number is expected, distinct. The finding
-    of the profile is every place where a count disagrees with what the field should hold.
+    The profile takes three counts per field: present, convertible where a number is expected, and
+    distinct. The finding of the profile is every place where a count disagrees with what the field
+    should hold.
     """),
     code('''
 def profile(records, field, numeric=False):
@@ -104,8 +105,8 @@ kit.table(["measure", "on the rows that convert, duplicates still in"],
     md("""
     ## 2. Which rows count, and what does each decision log?
 
-    Three decisions, each logged with its row count as it is made. The identity rule is the order
-    id: two rows with one id are one order. The corporate amount written with Indian digit grouping
+    The pass makes three decisions, each logged with its row count as it is made. The identity rule
+    is the order id: two rows with one id are one order. The corporate amount written with Indian digit grouping
     is a real order stored as text, so it is converted and flagged, never set to zero. The empty
     segment is restored from the same customer's other orders, flagged, because every one of that
     customer's other orders carries one segment.
@@ -559,8 +560,8 @@ kit.check("one corporate account stopped and one ordered once where it had order
     md("""
     ## What does the practice export reach, for the practice lab?
 
-    The same method on the practice file, so the TA holds every number a learner reruns toward.
-    Its defects sit in yet other places.
+    This section runs the same method on the practice file, so the TA holds every number a learner
+    reruns toward. Its defects sit in yet other places.
     """),
     code('''
 prac = kit.load_csv("C2_W01_D05_practice_orders_STUDENT.csv")
@@ -602,7 +603,7 @@ kit.check("the practice export reconciles to its control totals",
     **The practice lead, tested on its own members.** The practice export's biggest consumer move is
     Retail-Plus's orders per member, 2.00 to 1.50, and the same 8 members sit in both quarters, so the
     fair test flips each member's own two quarters. Eight members give only 256 ways to flip, so the
-    exact share is counted rather than sampled. Four members ordered once fewer and four held, which
+    exact share is counted over all of them. Four members ordered once fewer and four held, which
     is why the share comes out where it does: the lead rests on 16 then 12 orders, under the day's
     thirty-order rule, and the note carries it as a count in the caveat, "not yet".
     """),

@@ -66,7 +66,7 @@ LIVE, half a minute. Read who needs the answer and the six questions.
 icon: crown | eyebrow: CEO | title: Meera Raghavan | body: One page, two minutes, and what to do. She acts on the first line.
 icon: megaphone | eyebrow: Owns campaigns | title: The marketing lead | body: Defends the monsoon sale and the acquisition budget against your reading.
 icon: calculator | eyebrow: Finance | title: Anand Iyer | body: Checks that every number matches the books and can be audited.
-icon: badge-check | eyebrow: Paid tier | title: The head of Retail-Plus | body: Wants to know whether his tier is slipping and who to protect.
+icon: badge-check | eyebrow: Paid tier | title: The head of Retail-Plus | body: Wants to know whether the paid tier is slipping and whom to protect first.
 ```
 
 **The client asks.** How do you know, what did you leave out, and what would change your mind? These are the questions every interviewer asks about a project too.
@@ -189,7 +189,7 @@ In pair one each ten minutes runs: two minutes of the note read aloud, five of p
 LIVE, 50 minutes: S1 to S6 and S9 take eight, Marketing's sharpest push, modelled once with a TA,
 takes four, and the pairs take the other 38. The TAs walk the room. Each TA also uses this round to
 tell each of their learners, quietly and one at a time, the step the lab's observation sheet marked
-for them. Never aloud, never to a group.
+for them, never aloud and never to a group.
 ```
 
 ---
@@ -307,7 +307,7 @@ that would switch the plan. The 2,000 orders are illustrative.
 | C | 95 | Every segment but one |
 | D | 100 | The profile, so it cleans only the defects someone expected |
 
-**The rule.** B. Every plan fits the clock, so the call is which step to leave out. Switch to B with a test on the gap Meera will act on, trimming the tree; with no control total, say so in the first line.
+**The rule.** B, because every plan fits the clock and the call is which step to leave out. When Meera will act on one segment's gap, add the test on that gap and trim the tree to find the minutes, or take C if she named the segment herself. With no control total, B still holds, and the first line says the read is unreconciled.
 
 ```notes
 LIVE, 2 minutes, after the call-outs. The model answer in full is in the trainer's key.
@@ -316,7 +316,7 @@ LIVE, 2 minutes, after the call-outs. The model answer in full is in the trainer
 ---
 
 ## S15. Question: which check runs first on the gap?
-*The migrated ERP's first quarter: zero rejects, and the dashboard Rs 20 lakh above Anand's books.*
+*The migrated ERP's first quarter shows zero rejects and a dashboard Rs 20 lakh above Anand's books: which check runs first?*
 
 **Question.** About 50,000 rows. Choose the order: a) the ledger match first, since it names every order; b) ids against rows and the value accounting, then a monthly bridge; c) the monthly bridge first, then ids against rows; d) the dashboard's own query, since it ran for years.
 

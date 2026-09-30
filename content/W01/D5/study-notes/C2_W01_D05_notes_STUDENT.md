@@ -71,8 +71,9 @@ claims. Cleaning decides which rows count and writes down why. The reconciliatio
 data is still the data Finance booked. The decomposition says which branch moved. The test says
 whether chance could have done it. The note says what Meera should do.
 
-The order is the method. A learner who knows all six steps and runs them out of order has a
-collection of techniques, and a collection breaks the first time the clock runs.
+The six steps work only in this order. A learner who knows all six and runs them out of order quotes
+a total before the file is read, or tests a gap before it is reconciled, and that is what breaks first
+when the clock runs.
 
 ---
 
@@ -85,7 +86,8 @@ export's numbers is Kalpa's or the lab's.
 
 ### What does the file hold before you change anything?
 
-Three counts per field: present, convertible where a number belongs, distinct.
+The profile takes three counts per field: how many values are present, how many convert where a
+number belongs, and how many are distinct.
 
 | Field | Present | Convertible | Distinct |
 |---|---|---|---|
@@ -116,7 +118,7 @@ flagged.
 
 ### Is the clean data still the data Finance booked?
 
-Two checks, written in a cell before any analysis:
+Two checks go in a cell before any analysis:
 
 $$
 \text{input} = \text{clean} + \text{rejected} \qquad 175 = 167 + 8
@@ -284,8 +286,8 @@ September 2013). The sheet ran without an error and produced a plausible number 
 ### What does a pass that sets unreadable values to zero report?
 
 The most natural line of Python in the week is a `try` that returns 0 when `int()` fails. On the
-invented export it reports Q1 on 83 orders, zero rejects, and every order count lands on Finance's.
-That is exactly what a finished pass looks like.
+invented export it reports Q1 on 83 orders and zero rejects, and every order count lands on
+Finance's, which is exactly what a finished pass looks like.
 
 ### What do the rupees say when every count lands?
 
@@ -387,8 +389,9 @@ account owner about why fewer orders came in, which costs a phone call.
 it is the one move on enough orders to test, while the corporate rupees sit beside it in the claim as
 counts. B hides that 99.2 percent of the fall is the corporate book. D finds the same lead at three
 times the minutes, and four tests at 0.05 carry about a one-in-five chance that one looks real by
-luck, so on another file D leads with a fluke. **What would change it:** a question about accounts
-rather than rates, a segment with hundreds of orders a quarter, or a second quarter of the same move.
+luck, so on another file D leads with a fluke. **What would change it:** a question about which
+accounts ordered less, a segment with hundreds of orders a quarter, or a second quarter of the same
+move.
 
 ### Is the lead's fall more than chance on its members' own two quarters?
 
@@ -484,7 +487,7 @@ and are not Kalpa's records.
 | Zero rejects and a Rs 20 lakh gap after the migration | Ids against rows (a cell); the value accounting (a cell); a rupee bridge by month (about 30 minutes); every order against the ledger (a day) | The two cheap checks first, then the bridge, and stop where it closes | A month the bridge cannot close gets matched order by order |
 | 42 percent on twelve visits | Ship now; wait at 12 visits a week (about 14 weeks); a half-and-half split to about 300 visits each (about half a week); one visit in ten for a fortnight (about 240 new-checkout visits beside about 2,160) | The split, about half a week | A checkout that could lose money: one visit in ten for the fortnight; a dozen visits a week in all: decide on cost and reversibility |
 
-The likenesses. DMart (Avenue Supermarts) put out its July to September 2025 standalone revenue, Rs
+Each case has a real likeness. DMart (Avenue Supermarts) put out its July to September 2025 standalone revenue, Rs
 16,218.79 crore across 432 stores, as a provisional business update on 3 October 2025, and reported
 the quarter's results in a regulatory filing on 11 October 2025 (Business Today, 11 October 2025).
 TSB is a loose likeness: its April 2018 migration to a new platform left 1.9 million customers unable
@@ -522,11 +525,11 @@ revenue per order fell 15.0 percent on 32 orders a quarter while its 16 members 
 held. The evidence: the data reconciled to Finance's totals, and the same members sat in both
 quarters, so I flipped each member's two quarters at random and a change that large came up in 1.1
 percent of worlds, counting either direction. How sure: below the usual 0.05 bar, with 13 of the 16
-members' own baskets falling, and the cause still open, which is what I would test next. And the
-action I recommended, with its cost.
+members' own baskets falling, and the cause still open, which is what I would test next. Last comes
+the action I recommended, with its cost.
 
 **[F] You have two hours and a raw export; what do you do first, and what do you skip?**
-First I agree the question and the window. Then a profile, before any number. I clean with a log and
+First I agree the question and the window. Then I profile the file, before I quote any number. I clean with a log and
 I reconcile counts and rupees before I decompose, because a repeated batch or a lost amount can
 reverse a finding. I skip what does not change today's answer: extra charts, a test on every segment,
 a second source. I never skip the reconciliation, and I say out loud what I skipped.
@@ -618,4 +621,4 @@ You can when the six steps run in their order under a clock and the note survive
 showed each person which step they do not own yet; the debrief's three chapters showed that the
 reconciliation, the rupees behind a clean-looking pass and the count behind a rate are where a note
 most often breaks; and the rehearsal showed that a caveat said before the push holds where one
-defended after it folds. Tonight's rerun of your marked step is how that step becomes yours.
+defended after it folds. Tonight you rerun your marked step on the practice export.
