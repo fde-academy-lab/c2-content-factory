@@ -1184,7 +1184,8 @@ def ch3():
         kit.line(MONTHS, [("summed, the true monthly spend", col.tolist(), "lit"),
                           ("averaged, the default", col_wrong.round(0).tolist(), "bad")], fmt=kit.rupees,
                  title="The same months, two aggfuncs: the default hides a quarter of the spend")
-        kit.bridge(("fall, averaged pivot", round(q1_w - q2_w)), [("fall the average hid", round((q1_s - q2_s) - (q1_w - q2_w)))],
+        fall_w = round(q1_w) - round(q2_w)                 # the fall the averaged pivot reports, in whole rupees
+        kit.bridge(("fall, averaged pivot", fall_w), [("fall the average hid", round(q1_s - q2_s) - fall_w)],
                    end_label="fall, summed pivot", lit=(0,),
                    title="The fall from Q1 to Q2 in rupees: the averaged pivot shows well under half of it")
         kit.check("the summed pivot adds back to every Retail-Plus order", wide.values.sum() == plus["amount"].sum(),
@@ -1196,7 +1197,7 @@ def ch3():
         > grand total equals the orders. The averaged pivot would have told the review 18. Write
         > `aggfunc=` on every pivot, the way you write `how=` on every merge."
 
-        **Your turn, three minutes.** The head of Retail-Core asks for the same view of her members.
+        **Your turn, three minutes.** Kavya asks for the same view of the Retail-Core segment.
         In the empty cell, build it with `aggfunc="sum"` and `fill_value=0` from the orders of
         segment `Retail-Core`, check its grand total against those orders before you read a single
         month, then say the Q1 to Q2 change aloud and whether the averaged pivot even gets its
@@ -1414,7 +1415,8 @@ def ch4():
         sizing = [("a) plain Python", len(py_rows), len(PY.splitlines()), "the analyst's machine"),
                   ("b) SQL", len(sql_rows), len(SQL_FIX.splitlines()), "the warehouse"),
                   ("c) pandas", 0, len(PD.splitlines()), "the analyst's machine, already loaded")]
-        kit.table(["option", "rows moved for this question", "lines of logic", "where it runs"], sizing,
+        kit.table(["option", "rows moved for this question", "lines of logic", "where it runs"],
+                  [(n, f"{r:,}", l, w) for n, r, l, w in sizing],
                   caption="Each tool sized on the marketing lead's question")
         kit.bars([(name, rows) for name, rows, _, _ in sizing], lit=(1,),
                  title="Rows each tool moves out of the warehouse to answer it")
@@ -1451,6 +1453,10 @@ def ch4():
         kit.table(["segment key", "reached", "bought"],
                   [("None" if k is None else k, v["reached"], v["bought"]) for k, v in counts_py.items()],
                   caption="Plain Python, segment read from the orders")
+        keys = ["None" if k is None else k for k in counts_py]
+        kit.columns(keys, [("reached", [v["reached"] for v in counts_py.values()]),
+                           ("bought", [v["bought"] for v in counts_py.values()])],
+                    title="Plain Python's three keys: the None key holds reached customers with no orders")
         '''),
         code('''
         kit.check("the dictionary holds three keys, one of them None", len(counts_py) == 3 and None in counts_py)
@@ -1689,7 +1695,7 @@ def ch5():
         >
         > Kavya Nair, senior analyst, Kalpa Retail data team
         ''', '''
-        **Who needs the answer.** Kavya, and through her Anand Iyer, the finance controller, whose
+        **Who needs the answer.** Kavya, and behind Kavya, Anand Iyer, the finance controller, whose
         analyst reruns every number the team sends, line by line. The note decides where each recurring
         number lives. A number that lives in two tools drifts into two numbers, and two numbers for one
         metric is how Week 1 Wednesday began, with the dashboard's Rs 2.1 crore against the books' Rs
