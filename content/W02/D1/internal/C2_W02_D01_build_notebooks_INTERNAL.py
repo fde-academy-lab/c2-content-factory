@@ -544,10 +544,11 @@ def ch2():
 
         **The questions on the way.**
         1. How can two sources of different sizes be compared fairly?
-        2. Which leaves agree once each is read as a change from Q1 to Q2?
-        3. Did the customer leaf agree?
-        4. Where did the book's 17 fewer Q2 customers come from?
-        5. What goes on Anand's sheet about last week's note?
+        2. Does last week's file still give last week's numbers?
+        3. Which leaves agree once each is read as a change from Q1 to Q2?
+        4. Did the customer leaf agree?
+        5. Where did the book's 17 fewer Q2 customers come from?
+        6. What goes on Anand's sheet about last week's note?
 
         **The metric at stake.** Every leaf of the tree and its change from Q1 (April to June 2026) to
         Q2 (July to September 2026): revenue, orders, customers who bought, orders per customer and
@@ -575,7 +576,7 @@ print(len(w1_rows), "rows read from last week's extract,", W1_FILE.name)
 '''),
         where(2, ["the options\nfour ways to compare", "last week's leaves\nrecomputed from its file",
                   "every leaf\nas a change", "the customer leaf\nthe one that moved",
-                  "a second route\nthe customer bridge"]),
+                  "a second route\nthe customer bridge", "Anand's sheet\nthe line for Meera"]),
         md("""
         ## The options: how can two sources of different sizes be compared fairly?
 
@@ -787,9 +788,7 @@ print(len(w1_rows), "rows read from last week's extract,", W1_FILE.name)
         **The fix, and what it changed.** The sheet carries the book's own leaves: 244 customers bought
         in Q1 and 227 in Q2, 7.0 percent fewer, and each ordered 7.7 percent less often. Every one of
         the extract's 69 customers bought in both quarters, so its customer count could not fall; the
-        book holds 131 customers who bought in only one of them. Anand's sheet gets one line for Meera:
-        on the whole book, fewer customers bought in Q2 as well as each buying less often, and
-        chapters 3 and 4 find which segment carries each branch.
+        book holds 131 customers who bought in only one of them.
 
         ## A second route: where did the book's 17 fewer Q2 customers come from?
 
@@ -822,6 +821,19 @@ print(len(w1_rows), "rows read from last week's extract,", W1_FILE.name)
         **What happened.** The answer is b. 74 of Q1's customers bought nothing in Q2 and 57 customers
         bought in Q2 who had not bought in Q1: 244 less 74 plus 57 is 227, the same number the first
         route reached by subtracting two counts. The net fall of 17 hides 131 customers moving.
+
+        ## 4. What goes on Anand's sheet about last week's note?
+
+        Meera's decision rested on the extract's story: customers held, and each ordered 14.0 percent
+        less often. The sheet now carries the book, and it has to say what that means for her.
+
+        **Predict before you run.** Which line belongs under the customer leaf on Anand's sheet?
+
+        - a) "The warehouse confirms last week: revenue fell 1.6 percent in both."
+        - b) "On the whole book, 7.0 percent fewer customers bought in Q2, and each ordered 7.7 percent
+          less often; last week's extract held only customers who bought in both quarters."
+        - c) "Last week's note was wrong, so the Rs 12 crore budget should be released."
+        - d) Nothing, since the revenue leaf agrees.
         """),
         code(r'''
             kit.driver_tree({"label": "revenue", "note": f"{pct(book['Q1']['revenue'], book['Q2']['revenue']):+.1f}% on the book",
@@ -835,6 +847,19 @@ print(len(w1_rows), "rows read from last week's extract,", W1_FILE.name)
                        ("the customer leaf does not", "flat in the extract, 244 to 227 in the book"),
                        ("the extract held only two-quarter customers", "69 of 69, against 170 of 301 in the book")],
                       caption="The comparison, in three lines")
+            '''),
+        md("""
+        **What happened.** The answer is b. The line names both branches the book shows falling and
+        says why the extract could not show the first: its 69 customers all bought in both quarters.
+        Option a repeats the one leaf that agrees, c goes further than one chapter's evidence, and d
+        leaves Meera deciding on a story the book does not tell. Chapters 3 and 4 find which segment
+        carries each branch.
+        """),
+        code(r'''
+            kit.check("the sheet's customer line comes from the book, 244 to 227",
+                      (book["Q1"]["customers"], book["Q2"]["customers"]) == (244, 227), f"{honest['customers']:+.1f}%")
+            kit.check("the sheet's frequency line comes from the book, not the extract",
+                      round(honest["orders per customer"], 1) == -7.7 and round(hurried["orders per customer"], 1) == -14.0)
             '''),
         md("""
 
@@ -871,15 +896,17 @@ print(len(w1_rows), "rows read from last week's extract,", W1_FILE.name)
 
         1. **How can two sources of different sizes be compared fairly?** Every leaf as a change from
            Q1 to Q2, since the sources differ five times in size and share no order or customer id.
-        2. **Which leaves agree?** Revenue (down 1.6 percent in both), orders (down 14.0 and 14.1) and
+        2. **Does last week's file still give last week's numbers?** Yes: 186 orders, Rs 1,90,00,000
+           and Rs 1,87,00,000, and 69 customers in each quarter, all 69 of whom bought in both.
+        3. **Which leaves agree?** Revenue (down 1.6 percent in both), orders (down 14.0 and 14.1) and
            revenue per order (up 14.4 and 14.6).
-        3. **Did the customer leaf agree?** No: the extract held 69 customers in both quarters, and the
-           book's customers fell 7.0 percent, from 244 to 227, with orders per customer down 7.7
-           percent where the extract said 14.0.
-        4. **Where did the 17 fewer customers come from?** 74 bought in Q1 and not in Q2, and 57 bought
+        4. **Did the customer leaf agree?** No: the extract's customers held flat, and the book's fell
+           7.0 percent, from 244 to 227, with orders per customer down 7.7 percent where the extract
+           said 14.0.
+        5. **Where did the 17 fewer customers come from?** 74 bought in Q1 and not in Q2, and 57 bought
            in Q2 and not in Q1: 244 less 74 plus 57 is 227.
-        5. **What goes on Anand's sheet?** The book's leaves, with one line saying that on the whole
-           book fewer customers bought in Q2 as well as each buying less often.
+        6. **What goes on Anand's sheet?** The book's leaves, with one line saying that on the whole
+           book 7.0 percent fewer customers bought in Q2 as well as each buying 7.7 percent less often.
 
         Chapter 3 splits the book by segment, to find which one carried the fall.
         """),
@@ -1840,7 +1867,7 @@ def ch5():
         `GROUP BY GROUPING SETS ((c.segment, o.quarter), (c.segment))` groups the orders twice in one
         pass: once by segment and quarter, once by segment alone. Each count is taken from the orders
         in its own set, so the half-year rows are counted, never added. A `NULL` in the quarter column
-        marks the half-year row.
+        stands for the half-year row.
         """),
         code(r'''
             sets = run("c5_grouping_sets", "Quarters and half-year from one query", money=("revenue",))

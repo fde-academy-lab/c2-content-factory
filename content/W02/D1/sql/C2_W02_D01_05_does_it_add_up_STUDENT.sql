@@ -97,7 +97,7 @@ ORDER  BY segment;
 
 -- name: c5_grouping_sets
 -- Depth: one query that returns every segment's quarter rows and its half-year row, each counted
--- from the orders. A NULL quarter marks the half-year row.
+-- from the orders. A NULL quarter stands for the half-year row.
 SELECT c.segment,
        o.quarter,
        count(*)                      AS orders,
