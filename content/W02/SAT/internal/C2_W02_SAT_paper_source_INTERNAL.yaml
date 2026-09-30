@@ -1,6 +1,48 @@
 # Week 2 Saturday: the week's source file, laid on the tracker's bank by
 # scripts/build_saturday_paper.py. Block style throughout, so a comma never splits a reason.
-# The bank fills 119.5 of the paper's 120 minutes, so this file adds no timed items.
+
+# The printed order. Bank items by number, the additions by id; every bank item is printed in a
+# part or moved to the stretch page, and a scenario set stays whole.
+parts:
+  - title: The week's rules, cold
+    shows: whether the week's definitions and rules are there without a notebook open
+    intro: >-
+      Each line is one rule from the week. Fill the gap, or mark the statement true or false.
+    items: [5, 6, 8, 10, 11, 12, 13, 14, 15, 16, 17]
+  - title: Asking the warehouse
+    shows: whether you can write a grouped query in the order the database runs it
+    intro: >-
+      Finance wants the Monday numbers computed in the warehouse. These items ask how a query
+      filters, groups and orders what it reads.
+    items: [18, 20, 33, 52, 57]
+  - title: Joins that keep their rows
+    shows: whether you read the row count before and after a join and catch a join that inflates a sum
+    intro: >-
+      Finance asks for Q2 revenue booked against revenue collected, and the orders and the payments
+      sit in two tables.
+    items: [21, 22, 23, 24, 34, 35, 40, 41, 42, 43, 53]
+  - title: "Windows: rank, lag and running totals"
+    shows: whether you can rank within a segment, compare a month with the one before it and keep a running total
+    intro: >-
+      Marketing wants to protect the best Retail-Plus members before they drift: the top of each
+      segment, the members whose spend is falling, and the running total against plan.
+    items: [25, 26, 27, 28, 36, 37, 44, 45, 46, 47, 54, 55]
+  - title: pandas and the last mile to Excel
+    shows: whether you can merge, group and reshape without losing or doubling rows, and choose the tool for each job
+    intro: >-
+      Marketing refreshes the customer table every Monday, and the number it feeds travels to the
+      leadership deck through a pivot in Excel.
+    items: [29, 30, 31, 32, 38, 39, 48, 49, 50, 51, 56, 58]
+  - title: Read the code, read the data
+    shows: whether you catch a wrong number in a query, a line of pandas or a small result before it reaches a decision
+    intro: >-
+      Each item puts a query, a line of pandas or a small result in front of you. Read it the way
+      the database or an auditor would, and say what it really gives.
+    items: [19]
+
+# Recall items moved to the untimed stretch page to make room for harder timed items; the
+# requester approved the move on 30 September 2026. Their keys stay in the key's stretch section.
+stretch_bank: [1, 2, 3, 4, 7, 9]
 
 additions: []
 

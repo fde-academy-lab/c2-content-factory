@@ -2,8 +2,53 @@
 # scripts/build_saturday_paper.py. Block style throughout, since a comma inside an inline mapping
 # splits a reason in two without any error.
 
+# The printed order. Bank items by number, the additions by id; every bank item is printed in a
+# part or moved to the stretch page, and a scenario set stays whole.
+parts:
+  - title: The week's rules, cold
+    shows: whether the week's definitions and rules are there without a notebook open
+    intro: >-
+      Each line is one rule from the week. Fill the gap, or mark the statement true or false.
+    items: [6, 8, 9, 10, 12, 13, 14, 15, 16]
+  - title: Where did the revenue go
+    shows: whether you can break a revenue fall into its branches and choose the one to open first
+    intro: >-
+      Q2 revenue fell from Q1, Marketing wants Rs 12 crore for acquisition, and Meera Raghavan wants
+      to know which branch of the revenue tree to open before she signs.
+    items: [17, 18, 20, 21, 29, 30, 31, 36, 37, 38, 39, 51]
+  - title: Rows you can trust
+    shows: whether you clean a file with a reason for every change and reconcile it in rows and in rupees
+    intro: >-
+      The dashboard and Finance disagree on Q1. Before any figure reaches Meera, the export is
+      cleaned, every change is logged, and the run has to reconcile.
+    items: [23, 24, 25, 28, 32, 33, 40, 41, 42, 52]
+  - title: Read the code, read the data
+    shows: whether you catch a wrong number in a line of Python or an export before it reaches a decision
+    intro: >-
+      Each item puts a line of Python or a small export in front of you. Read it the way the
+      interpreter or an auditor would, and say what it really gives.
+    items: [11, 22, "new:rows-as-customers", "new:average-of-averages", "new:broken-slide",
+            "new:whole-record-dedupe", "new:rows-not-rupees"]
+  - title: Chance and a fair test
+    shows: whether you can say what a p-value means, when a gap is worth acting on and what a fair test of a cause needs
+    intro: >-
+      Two claims are on Meera's desk: the monsoon discount worked, and the Student segment is
+      growing. Ask of each whether the gap is real, whether it is worth acting on, and whether the
+      discount caused it.
+    items: [26, 27, 34, 35, 43, 44, 45]
+  - title: The numbers
+    shows: whether you can do the week's arithmetic by hand and show the working
+    intro: >-
+      Write the working on the lines under each item, then the answer.
+    items: [19, 46, 47, 48, 49, 50]
+
+# Recall items moved to the untimed stretch page to make room for harder timed items; the
+# requester approved the move on 30 September 2026. Their keys stay in the key's stretch section.
+stretch_bank: [1, 2, 3, 4, 5, 7]
+
 additions:
   - type: Scenario set
+    id: rows-as-customers
     level: Easy
     tag: "[S]"
     roles: BA, DS
@@ -29,6 +74,7 @@ additions:
       2.00 orders each, and the 1.00 on the slide would have sent Rs 12 crore to the wrong branch.
 
   - type: Scenario set
+    id: average-of-averages
     level: Medium
     tag: "[S]"
     roles: BA, DS
@@ -56,6 +102,7 @@ additions:
       slide.
 
   - type: Scenario set
+    id: broken-slide
     level: Hard
     tag: "[D]"
     roles: BA, FDE
@@ -90,6 +137,7 @@ additions:
       on what each branch costs to move.
 
   - type: Scenario set
+    id: whole-record-dedupe
     level: Medium
     tag: "[F]"
     roles: BA, DS
@@ -124,6 +172,7 @@ additions:
       re-send, so I key the check on the identity and log every repeat with its reason.
 
   - type: Scenario set
+    id: rows-not-rupees
     level: Hard
     tag: "[D]"
     roles: BA, FDE
