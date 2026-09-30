@@ -21,6 +21,9 @@ information.
 
 The two quarters are calendar Q2 2026 (April to June) and calendar Q3 2026 (July to September), the
 way a US business reports, and every file, key and message says Q2 and Q3 in that sense.
+Every file is the export taken on Friday 16 October 2026, the last working day before Build 1
+Monday, so a payer's remittance for a late-September claim posts by then, and no row is dated
+after it.
 
 Ten files, one per system Dr Menon's team exports, each messy in the way that system is:
 
@@ -90,6 +93,7 @@ CAMPAIGN_METROS = ("Dallas", "Atlanta", "Phoenix")
 CAMPAIGN = (dt.date(2026, 7, 15), dt.date(2026, 9, 14))
 PRE_CAMPAIGN = (dt.date(2026, 5, 14), dt.date(2026, 7, 14))
 SMALL_SITE = "KH-ATL-03"
+EXPORTED = dt.date(2026, 10, 16)   # the Friday before Build 1 Monday: every file runs to this day
 EMPLOYER = {"account": "EMP-0007", "metro": "Dallas", "site": "KH-DAL-01",
             "date": dt.date(2026, 8, 6), "heads": 1200, "unit": 150}
 
@@ -398,7 +402,14 @@ def generate():
         else:
             channel = "ERA"
             ref = f"CLM-{int(digits)}" if payer == "Medicaid" else digits
-            posted = dt.date.fromisoformat(c["service_date"]) + dt.timedelta(days=pay_rng.randint(14, 45))
+            served = dt.date.fromisoformat(c["service_date"])
+            lag = pay_rng.randint(14, 45)
+            # The export runs to EXPORTED, so a remittance that would land later folds back inside
+            # the window, from the same draw, and every later draw in this stream stays as it was.
+            room = (EXPORTED - served).days
+            if lag > room:
+                lag = 14 + (lag - 14) % (room - 13)
+            posted = served + dt.timedelta(days=lag)
         stamp = f"{posted.isoformat()} {pay_rng.randint(8, 21):02d}:{pay_rng.randint(0, 59):02d}"
         n_post += 1
         base = {"posting_id": f"PST{n_post:07d}", "claim_ref": ref, "payer_id": c["payer_id"],
@@ -598,6 +609,7 @@ def witness(tables, bookings):
     w["double_posted_dollars"] = round(sum(float(p["paid_amount"]) for p in doubles), 2)
     w["reversals"] = sum(1 for p in posts if p["posting"] == "reversal")
     w["denial_postings"] = sum(1 for p in posts if p["posting"] == "denial")
+    w["last_posting"] = max(p["posted_at"][:10] for p in posts)
     claim_of = {c["claim_id"]: c for c in cl}
     w["denials_matching_claims"] = sum(1 for p, m in zip(posts, matched) if p["posting"] == "denial"
                                        and m and claim_of[m]["denial_category"] == p["reason_category"])
@@ -704,7 +716,9 @@ def check(w):
          "the contract does not move the Q3 mean claim by 8 percent or more")
     want(w["tests_on_claimed_bookings_non_employer"] >= 1.5 * w["claim_lines_non_employer"],
          "panels do not hide at least half again as many tests as claim lines show")
-    # 3: the claims against the postings.
+    # 3: the claims against the postings, none dated after the export.
+    want(w["last_posting"] <= EXPORTED.isoformat(),
+         f"a posting is dated {w['last_posting']}, after the export of {EXPORTED.isoformat()}")
     want(w["exact_join_share"] <= 0.04, f"exact join matches {w['exact_join_share']:.3f} of postings")
     want(w["exact_join_matches"] > 0, "no posting matches exactly, so the room never sees a join half-work")
     want(w["normalised_join_unmatched"] == 0, f"{w['normalised_join_unmatched']} postings unmatched after normalising")
