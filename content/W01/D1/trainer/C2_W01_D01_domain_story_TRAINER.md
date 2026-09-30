@@ -1,6 +1,6 @@
 # How does a retailer like Kalpa make money, who asks the data team for which number, and how is each number worked out?
 
-**TRAINER ONLY.** Nothing on this page reaches a learner. It is the talk track for chapter 0 of Monday's morning deck, *How does retail earn?*: the 45-minute story on slides S1 to S6, which hands over to Meera Raghavan's ask on S7 and S8. The learner reads the same business at more depth in the dossier, `study-notes/C2_W01_D01_domain_retail_STUDENT.md`, and keeps its one-page summary, `cheatsheets/C2_W01_D01_retail_domain_card_STUDENT.pdf`, which goes out at the afternoon's close.
+**TRAINER ONLY.** Nothing on this page reaches a learner. It is the talk track for chapter 0 of Monday's morning deck, *How does retail earn?*: the 45-minute story on slides S2 to S10, which hands over to Meera Raghavan's ask on S11 and S12. The learner reads the same business at more depth in the dossier, `study-notes/C2_W01_D01_domain_retail_STUDENT.md`, and keeps its one-page summary, `cheatsheets/C2_W01_D01_retail_domain_card_STUDENT.pdf`, which goes out at the afternoon's close.
 
 **Who needs the answer.** Every trainee in the room, before Meera's ask reaches them. The day's case has them judge whether Rs 12 crore for new customers goes to the branch of sales that is short, in a business most of them have never worked in, and a trainee who cannot say what GMV, net revenue or contribution means, or who at Kalpa asks for which number, sends a figure its reader cannot act on.
 
@@ -11,7 +11,7 @@
 3. How much of Rs 100 ordered does Kalpa keep, and where does the rest go?
 4. Who at Kalpa asks the data team for which number, and what does a wrong one cost them?
 5. Which tree does every retail number hang off, and how is each number worked out?
-6. How much should a system decide with no person checking, and which rules bind it?
+6. How far may a system act with no person checking, and which rules bind it?
 7. Which question does Meera ask before she signs Rs 12 crore?
 
 ---
@@ -25,7 +25,7 @@ Most of the room has never worked in a business role, so no laptop opens for the
 | **Start from** | Nothing about retail. Assume the room has shopped in a store and on an app, and nothing more. |
 | **Go as far as** | Every learner can say what GMV, net revenue, gross margin, contribution and EBITDA are and that GMV and net revenue differ, can place a metric on the tree with its formula, and can name who at Kalpa asks for it. |
 | **Stop before** | Any Week 1 answer and any Week 1 trap. The story never says which branch moved, whether the numbers reconcile, whether a discount worked, or what the gap between GMV and net revenue is made of, and it shows no wrong way of working out a number, since each day's chapters meet their traps cold. |
-| **Where it sits** | It opens Monday in the place of the 20-minute ask, as SECTION 0 of the morning deck on slides S1 to S6, with Meera's ask on S7 and S8; the Weeks 1 and 2 spine sets the rest of the day around it. |
+| **Where it sits** | It opens Monday in the place of the 20-minute ask, as SECTION 0 of the morning deck on slides S2 to S10, with Meera's ask on S11 and S12; the Weeks 1 and 2 spine sets the rest of the day around it. |
 | **Hands over to** | Meera Raghavan's ask, read as the story's last line, which opens the day's case on the drawings already on the board. |
 | **Cut first** | Part 4 to its drawing and question, then part 6 to its question. Never cut part 3, the money, or part 5, the metric tree. |
 
@@ -44,7 +44,7 @@ flowchart LR
 
 ## Part 1: What happens at Kalpa Retail on one Saturday, and who makes it happen?
 
-Eight minutes, on slide S1.
+Eight minutes: one on slide S2, which reads the six part questions aloud, and seven on slide S3.
 
 **Say.** "Before any data, the business. Picture one Saturday at one Kalpa Retail store and on Kalpa's app in the same city. Before the shutters go up, the store manager checks every shelf against its planogram, the drawing of what goes where, and one check in twenty-five finds a product missing. The truck from the distribution centre brings last night's replenishment, and the cookware supplier has sent 900 of the 1,000 cases ordered. By the end of the day 1,200 people have come through the doors and 480 have paid at a till, with an average bill of Rs 1,250 across five items.
 
@@ -75,7 +75,7 @@ flowchart LR
 
 ## Part 2: Which real companies is Kalpa built like, and whose team has the room joined?
 
-Seven minutes, on slide S2.
+Seven minutes, on slide S4.
 
 **Ask the room first.** "What does your phone company know about you that a grocer would want?"
 
@@ -110,7 +110,7 @@ flowchart TB
 
 ## Part 3: How much of Rs 100 ordered does Kalpa keep, and where does the rest go?
 
-Ten minutes, on slide S3.
+Ten minutes, on slide S5.
 
 **Ask the room first.** "The member paid Rs 1,800. How much of it do you think Kalpa keeps as EBITDA, the profit before interest, tax, depreciation and amortisation? Under Rs 20, Rs 20 to 100, Rs 100 to 400, or more than Rs 400?" Take a show of hands for each range, and leave the answer open while the drawing goes up.
 
@@ -148,7 +148,7 @@ The dossier's section 3, *How does Kalpa Retail make money, and where does each 
 
 ## Part 4: Who at Kalpa asks the data team for which number, and what does a wrong one cost them?
 
-Six minutes, on slide S4.
+Six minutes, on slide S6.
 
 **Say.** "Six people at Kalpa Retail already want something from us. Meera Raghavan, the CEO, wants to know where growth comes from and where it leaks. Anand Iyer, the finance controller, wants our numbers to match his books and his analyst to audit how we got them. The marketing lead wants to know whether we need more customers and whether a campaign worked. The head of Retail-Plus wants to know whether the paid tier is slipping. The data platform lead wants us to query the warehouse and never export it. Kavya Nair, our senior analyst, checks everything before it leaves the team. From Week 8, Farhan Sheikh in customer support has two thousand tickets a day. Category buying, pricing, supply chain and store operations have heads too, and the story has not named them."
 
@@ -156,7 +156,7 @@ Six minutes, on slide S4.
 
 Listen for: a dashboard figure corrected before anyone acts on it can be undone; a figure the finance controller has already restated in front of the board, a budget the marketing lead has already spent, and a member who lapsed while the wrong ones were protected cannot. Likely wrong answer: "All of them: we send a corrected number." Correct it: a correction fixes the dashboard, and the decision taken on the wrong number stays taken. Land it: before a number leaves the team, know who asked for it and whether being wrong can be taken back.
 
-**Draw: who asks, six boxes, as slide S4 shows them.** The CEO on the left; finance, marketing and Retail-Plus in solid boxes in the middle, beside a dashed box for the other functions, where customer support sits until Farhan Sheikh arrives in Week 8; the GCC on the right, with a dotted arrow from every box to it, because every one of them asks. Say that the data platform lead sits beside the GCC. The dossier's section 4, *Who decides what at Kalpa Retail, and what does each of them ask the data team?*, shows every function with what it owns and what a wrong number costs it.
+**Draw: who asks, six boxes, as slide S6 shows them.** The CEO on the left; finance, marketing and Retail-Plus in solid boxes in the middle, beside a dashed box for the other functions, where customer support sits until Farhan Sheikh arrives in Week 8; the GCC on the right, with a dotted arrow from every box to it, because every one of them asks. Say that the data platform lead sits beside the GCC. The dossier's section 4, *Who decides what at Kalpa Retail, and what does each of them ask the data team?*, shows every function with what it owns and what a wrong number costs it.
 
 ```mermaid
 flowchart LR
@@ -180,7 +180,7 @@ flowchart LR
 
 ## Part 5: Which tree does every retail number hang off, and how is each number worked out?
 
-Nine minutes, on slide S5.
+Nine minutes, on slide S7. The ten formulas below are also on the self-study slides D8 and D9.
 
 **Say.** "Every retail number hangs off one tree. Revenue is customers, times orders per customer, times items per order, times price per item, less discounts. Customers are new or returning: new ones are won by acquisition and returning ones are kept by retention. Stock on the shelf decides whether any of it can happen, and some of what is ordered does not stay sold before the margin is counted. Each number on the tree is worked out by one formula, and each has someone at Kalpa who asks for it."
 
@@ -207,7 +207,7 @@ Listen for: the marketing lead asks about customers, the new ones above all, and
 
 ```mermaid
 flowchart TB
-    S["<b>on the shelf</b><br/>days of inventory, stock-outs"] -.-> R["<b>revenue</b>"]
+    S["<b>on the shelf</b><br/>stock, stock-outs"] -.-> R["<b>revenue</b>"]
     R --> C["<b>customers</b><br/>new, returning"]
     R --> F["<b>orders per customer</b>"]
     R --> A["<b>average order value</b><br/>items x price, less discounts"]
@@ -224,9 +224,9 @@ flowchart TB
 
 ---
 
-## Part 6: How much should a system decide with no person checking, and which rules bind it?
+## Part 6: How far may a system act with no person checking, and which rules bind it?
 
-Five minutes, on slide S6.
+Five minutes, on slide S10.
 
 **Say.** "Everything on Saturday was decided by a person. Analytics describes what happened and a person reads it. A forecast predicts and a person decides. A model recommends and a person approves. An agent acts inside limits, and nobody checks before the decision takes effect. The further right, the more a wrong answer costs. Klarna's AI assistant took two-thirds of its customer-service chats in its first month in 2024; fifteen months later its chief executive said the focus on cost had lowered quality and that customers would always be able to reach a human. When Air Canada's chatbot described a refund the airline did not offer, a tribunal held the airline responsible for what its chatbot said.
 
@@ -255,9 +255,9 @@ flowchart LR
 
 ## Which question does Meera ask before she signs Rs 12 crore?
 
-Five minutes, on slides S7 and S8, after the 45.
+Four minutes, on slides S11 and S12, after the 45.
 
-**Hand over.** Say the line that opens the case: "That is the business. On Monday its CEO read one page: revenue grew 4 percent against a plan of 15, marketing wants Rs 12 crore, and she asked us one question before she signs anything." Then read her question, which is the day's: "Is acquisition even the branch that is short?" In full, the day asks: "Before Meera signs Rs 12 crore for new customers, is acquisition even the branch of sales that is short?" It lands on the metric tree still on the board, beside the customers branch, and slide S8 splits her message into the questions the day's chapters answer.
+**Hand over.** Say the line that opens the case: "That is the business. On Monday its CEO read one page: revenue grew 4 percent against a plan of 15, marketing wants Rs 12 crore, and she asked us one question before she signs anything." Then read her message from slide S11, which ends on the day's question: "Is acquisition even the branch that is short?" In full, the day asks: "Before Meera signs Rs 12 crore for new customers, is acquisition even the branch of sales that is short?" It lands on the metric tree still on the board, beside the customers branch, and slide S12 splits her message into the questions the day's chapters answer.
 
 ---
 
