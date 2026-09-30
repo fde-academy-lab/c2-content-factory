@@ -167,9 +167,9 @@ off a count of rows. Those are the answers interviewers mark down.
 A strong answer climbs five rungs in this order: confirm the drop is real, which means each quarter's figure is complete
 and free of pipeline errors; compare like with like, which means the same weeks and the same
 definitions; decompose along the revenue tree; isolate the branch and the segment; then hypothesise
-and name the evidence that would settle it. Tuesday's deck climbs the same ladder in six chapters:
-the first two rungs share its first chapter, and it splits mix from rate between isolating and
-hypothesising, so a learner who names that split has it right. Kalpa's own case on Tuesday lands on
+and name the evidence that would settle it. Tuesday's deck climbs the same ladder in six chapters,
+opening on whether the drop is real on matched windows and splitting mix from rate between isolating
+and hypothesising, so a learner who names that split has it right. Kalpa's own case on Tuesday lands on
 the fourth rung. On closed quarters booked value fell 11.0 percent, from Rs 2.10 crore to Rs 1.87
 crore; the same 69 customers bought in both, orders per customer fell from 1.65 to 1.25, down 24.6
 percent, and
@@ -300,8 +300,8 @@ Evidence: its 22 members delivered Rs 1,110 less each in Q2 than in Q1; flipping
 two quarters, chance made a fall that large in 145 of 5,000 flips, 0.029, and a move that large
 either way in 286, 0.057; the fall is Rs 24,420 a quarter, 0.19 percent of delivered revenue.
 Caveat: Meera asked after the fall was seen, so neither count carries the reading alone, and nothing
-here measures why the members spent less. Action: test a retention offer on half of Retail-Plus
-before anything is rolled out.
+here measures why the members spent less. Action: watch Retail-Plus, and if Kalpa acts, test the
+retention offer on a coin-chosen half of the tier first.
 
 Then defend the caveat against the room. Listen for a caveat that is a condition rather than a
 hedge: "this may not be accurate" is a hedge, while "nothing here measures why they spent less"
