@@ -94,7 +94,7 @@ Kalpa's other units have twins too: Financial Services is like PhonePe in paymen
 
 At the checkout the Saturday basket shows Rs 1,800: four items worth Rs 2,000 at their prices, less a Rs 200 promotional discount. Kalpa does not keep Rs 1,800, and where the money goes is the retail profit and loss statement, the P&L.
 
-### From GMV to operating profit
+### From GMV to EBITDA
 
 **Gross merchandise value (GMV)** is the value of everything customers ordered, at the prices charged, before cancellations and returns and with tax still inside. In this dossier a discount given at the checkout is already out of GMV, because GMV counts the price charged. Andreessen Horowitz calls the same measure gross merchandise volume, "the total sales dollar volume of merchandise transacting through the marketplace in a specific period" (a16z, "16 Startup Metrics", 2015). Companies differ on whether discounts or marketplace sellers' sales are included, so the first question about any GMV is what it includes.
 
@@ -108,12 +108,12 @@ flowchart TB
     G -.- X1["less Rs 4 cancelled<br/>and Rs 6 returned"]
     K --> N["<b>net revenue</b><br/>Rs 80"]
     K -.- X2["less Rs 10 GST<br/>collected for the state"]
-    N --> M["<b>gross margin</b><br/>Rs 20, 25% of revenue"]
+    N --> M["<b>gross margin</b><br/>Rs 20, 25% of net revenue"]
     N -.- X3["less Rs 60<br/>cost of the goods"]
     M --> C["<b>contribution</b><br/>Rs 7.5"]
-    M -.- X4["less Rs 12.5 per order:<br/>delivery, returns,<br/>payment fees, marketing"]
-    C --> O["<b>operating profit</b><br/>Rs 2.5"]
-    C -.- X5["less Rs 5 fixed:<br/>warehouses, technology,<br/>head office"]
+    M -.- X4["less Rs 12.5 per order:<br/>delivery, return handling,<br/>payment fee, retention marketing"]
+    C --> O["<b>EBITDA</b><br/>Rs 2.5"]
+    C -.- X5["less Rs 5 fixed: stores,<br/>warehouses, technology, head<br/>office, winning new customers"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     classDef dark fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -122,9 +122,9 @@ flowchart TB
     class O dark
 ```
 
-**Cost of goods sold (COGS)** is what Kalpa paid suppliers for the goods it sold, and **gross margin** is net revenue less COGS. Variable costs come with every order: picking and packing, last-mile delivery, the payment fee, handling returns, and the marketing that brought the order. Gross margin less variable costs is **contribution**, what each order adds towards the costs that do not change with one more order: stores and warehouses, technology, head office. What remains is **operating profit**, before depreciation, interest and tax.
+**Cost of goods sold (COGS)** is what Kalpa paid suppliers for the goods it sold, and **gross margin** is net revenue less COGS. Variable costs come with every order: picking and packing, last-mile delivery, the payment fee, handling returns, and the retention marketing that brings an existing customer back. Gross margin less variable costs is **contribution**, what each order adds towards the costs that do not change with one more order: stores and warehouses, technology, head office, and the budget that wins new customers, which section 5 divides by the customers it brings to get CAC. What remains is **EBITDA**, earnings before interest, tax, depreciation and amortisation, which is operating profit before depreciation and the margin retailers report.
 
-Real retailers keep a thin slice. DMart reported a standalone EBITDA margin of 7.8 percent and a profit-after-tax margin of 4.8 percent on FY26 revenue of Rs 66,968 crore (DMart results release, 2 May 2026), and Reliance Retail an EBITDA margin of 7.9 percent of revenue from operations in the quarter to June 2026 (RIL, 17 July 2026). With about five rupees in a hundred reaching DMart's bottom line, a five percent price cut that brings no extra volume gives away roughly the whole profit.
+Real retailers keep a thin slice. DMart reported an EBITDA margin of 7.8 percent and a profit-after-tax margin of 4.8 percent on FY26 revenue of Rs 66,968 crore, standalone figures that count the company alone without its subsidiaries (DMart results release, 2 May 2026). Reliance Retail reported an EBITDA margin of 7.9 percent of revenue from operations in the quarter to June 2026, or 7.4 percent without its Rs 374 crore of investment income (RIL, 17 July 2026). DMart keeps Rs 4.80 of every Rs 100 of revenue after tax, about Rs 6.40 before it, so a 5 percent price cut that sells nothing extra takes Rs 5 of that Rs 6.40, about three quarters of the profit.
 
 ### Contribution per order, on the Saturday basket
 
@@ -138,7 +138,7 @@ Real retailers keep a thin slice. DMart reported a standalone EBITDA margin of 7
 | Picking, packing and last-mile delivery | 120 | Variable |
 | Payment gateway fee | 20 | Variable |
 | Expected cost of returns | 50 | An average, since most orders keep every item |
-| Marketing that brought the order | 60 | Variable |
+| Retention marketing on repeat orders | 60 | Variable: offers and reminders that bring a customer back; winning new customers sits in CAC |
 | Contribution | 150 | 9.4 percent of net revenue, left to pay the fixed costs |
 
 The trip to the door costs about the same whatever is in the bag, so a small basket carries the same delivery cost from far less margin. Quick commerce, such as Blinkit, Zepto and Swiggy Instamart, delivers small baskets in minutes from dark stores near the customer, and a Blinkit order averaged Rs 518 in the quarter to June 2026 (MediaNama, 24 July 2026), about a third of the Saturday basket's value.
@@ -233,7 +233,7 @@ flowchart TB
     A --> P["<b>price per item</b>"]
     A --> D["<b>less discounts</b>"]
     L -.-> M["<b>gross margin</b><br/>then contribution"]
-    S["<b>on the shelf</b><br/>stock days, sell-through,<br/>stock-outs"] -.-> R
+    S["<b>on the shelf</b><br/>days of inventory,<br/>sell-through, stock-outs"] -.-> R
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     classDef dark fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -296,7 +296,7 @@ Every worked number below is illustrative. Most come from section 1's Saturday o
 | | |
 |---|---|
 | Formula | CLV = contribution per order x orders a year x expected years as a customer |
-| Worked | Rs 150 x 6 x 2 = Rs 1,800 |
+| Worked | Rs 150 x 6 x 2 = Rs 1,800, on contribution after retention marketing and before the cost of winning the customer, which CAC carries |
 | The trap | Revenue in place of contribution values the same customer at Rs 19,200, more than ten times too high, and every budget sized on it is too large |
 | Who asks | Marketing and finance, whenever an acquisition budget is argued |
 
@@ -305,7 +305,7 @@ Every worked number below is illustrative. Most come from section 1's Saturday o
 | | |
 |---|---|
 | Formula | CAC = acquisition spend / new customers it brought; payback months = CAC / monthly contribution per customer |
-| Worked | Rs 12 crore for 80,000 new customers (an illustrative count) is Rs 1,500; at Rs 75 of contribution a month, payback takes 20 months, a margin of Rs 300 against the CLV |
+| Worked | Rs 12 crore for 80,000 new customers (an illustrative count) is Rs 1,500; at Rs 75 of contribution a month, payback takes 20 of the 24 months a customer is expected to stay, so the CLV of Rs 1,800 clears the CAC by only Rs 300 |
 | The trap | Blended CAC divides by every new customer, including those who came free, so it makes spend look cheaper than paid CAC does (a16z, 2015) |
 | Who asks | The CEO and the finance controller, before signing |
 
@@ -349,9 +349,9 @@ Every worked number below is illustrative. Most come from section 1's Saturday o
 
 | | |
 |---|---|
-| Formula | Sales of stores open in both periods / their sales last period, less 1 |
-| Worked | 100 stores went from Rs 500 crore to Rs 510 crore, up 2 percent, while 20 new stores added Rs 65 crore for 15 percent in all (invented). DMart reports growth on stores two years and older, 10.8 percent in the quarter to March 2026 (DMart, 2 May 2026), and Reliance Retail's grocery grew 7 percent like for like in the quarter to June 2026 (RIL, 17 July 2026). |
-| The trap | The calendar and the tax: Diwali fell on 20 and 21 October 2025, by state, and falls on 8 November 2026, and GST on goods such as shampoo fell to 5 percent from 22 September 2025 (GST Council, 3 September 2025) |
+| Formula | Sales of stores open throughout both periods / the same stores' sales in the earlier period, less 1; each company sets a minimum age for a store to count |
+| Worked | 100 stores went from Rs 500 crore to Rs 510 crore, up 2 percent, while 20 new stores added Rs 65 crore for 15 percent in all (invented). DMart counts stores two years and older, which grew 10.8 percent in the quarter to March 2026 (DMart, 2 May 2026), and Reliance Retail's grocery grew 7 percent like for like in the quarter to June 2026 (RIL, 17 July 2026). |
+| The trap | The calendar and the tax move sales while the stores stand still: Diwali fell on 20 and 21 October 2025, by state, and falls on 8 November 2026, so October against October compares the month that held the festival with a month before it, and GST on goods such as shampoo fell to 5 percent from 22 September 2025 (GST Council, 3 September 2025), so sales counted with the tax inside dip across that date for the same goods sold |
 | Who asks | The CEO, store operations and investors |
 
 ---
@@ -387,10 +387,10 @@ At Monday's trading meeting the category buyer for home care says: "The lights a
 | Sell-through | Units sold over units received, for a line over a period | "At 62 percent sell-through in four weeks, the lights need a markdown plan." |
 | Days of inventory | How many days current stock lasts at the current rate of sale | "Home care holds 45 days of inventory against 60 days of supplier credit." |
 | Replenishment | Reordering stock so the shelf is refilled before it empties | "Replenishment runs nightly from the day's sales." |
-| Like-for-like | Growth measured only on stores open in both periods; also same-store sales | "Total sales grew 15 percent, like-for-like 2." |
+| Like-for-like | Growth measured only on stores open throughout both periods; also same-store sales | "Total sales grew 15 percent, like-for-like 2." |
 | Cohort | Customers grouped by when they first bought, followed over time | "The January cohort retained 26 percent by April." |
 | Churn | Customers or members who stop buying or do not renew, as a share of the base | "Retail-Plus churn is the number its head asks about first." |
-| CAC | Customer acquisition cost: marketing spend over the new customers it brought | "At a Rs 1,500 CAC, payback takes 20 months." |
+| CAC | Customer acquisition cost: the spend on winning new customers over the number it brought | "At a Rs 1,500 CAC, payback takes 20 months." |
 | CLV | Customer lifetime value: the contribution a customer brings over their time with us | "Value customers on contribution; CLV on revenue flatters every campaign." |
 
 ---
