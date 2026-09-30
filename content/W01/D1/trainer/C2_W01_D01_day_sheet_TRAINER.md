@@ -153,8 +153,7 @@ panics the room or hands marketing an easy rebuttal.
 
 ### The escalated case: does frequency first survive on the orders that stayed delivered?
 
-The escalated case, 35 minutes, each learner alone, with notebook ex1. Its opener reads *Escalated
-case*.
+The escalated case, 35 minutes, each learner alone, with notebook ex1. Its opener prints *Does the branch survive* and its promise asks the full question.
 
 **Who needs the answer.** Anand does, since he counts only what stayed sold and puts numbers in front
 of the board. An answer that holds on booked orders alone never reaches his books.
@@ -172,7 +171,7 @@ of the board. An answer that holds on booked orders alone never reaches his book
 
 ### The second case: where does revenue come from, by customer type and channel, and does it change the branch?
 
-The second case, 25 minutes, in pairs, with notebook ex2. Its opener reads *Second case*.
+The second case, 25 minutes, in pairs, with notebook ex2. Its opener prints *Where does revenue come from* and its promise asks the full question.
 
 **Who needs the answer.** Meera asked where revenue comes from, and anyone who drafts a channel plan
 from her answer needs it too. A plan led by one channel's headline share invests where her consumer

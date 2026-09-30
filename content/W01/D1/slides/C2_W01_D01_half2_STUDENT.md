@@ -719,8 +719,8 @@ Transition: D29 is self-study, so go to S30, Kavya's review.
 *Where else does the end of a window cut a count short?*
 
 ```cards
-icon: undo-2 | eyebrow: Returns | title: Returns arrive days after delivery, so a returns rate on last week's orders looks cleaner than it is
-icon: calendar-clock | eyebrow: Renewals | title: A member whose renewal falls after the extract ends has not lapsed, whatever the file shows
+icon: undo-2 | eyebrow: Returns | title: Returns arrive days after delivery, so a returns rate on last week's orders looks cleaner than it is.
+icon: calendar-clock | eyebrow: Renewals | title: A member whose renewal falls after the extract ends has not lapsed, whatever the file shows.
 ```
 
 The fix is the same each time: measure how long the thing usually takes, and hold back judgement on everyone who has not had that long.
@@ -773,7 +773,7 @@ Transition: S31, Anand's ask.
 
 **The client asks.** "Booked includes orders we cancelled and orders that came back. Do it again on what was delivered and stayed delivered, and tell me whether your answer survives." Anand Iyer, finance controller
 
-**Who needs the answer.** Anand, before the board sees the answer: one that fails on delivered gets restated.
+**Who needs the answer.** Anand, before the board sees it: an answer failing on delivered orders is restated.
 
 1. **The delivered leaves.** Count orders, customers by id and orders per customer on delivered orders.
 2. **The typical delivered order.** Find the mean, the median of an odd count and the orders above the mean.
