@@ -123,7 +123,7 @@ Kalpa Group is built like Reliance or Tata, one group running several businesses
 
 At the checkout the Saturday basket shows Rs 1,800: four items worth Rs 2,000 at their prices, less a Rs 200 promotional discount. Kalpa does not keep Rs 1,800, and where the money goes is the retail profit and loss statement, the P&L.
 
-**Who needs the answer.** Anand Iyer, the finance controller, whose team walks the week's gross merchandise value down to net revenue and whose books the data team's dashboard has to agree with. An analyst who sends the value of everything ordered where his books carry what Kalpa earns, or a margin before each order's costs where he needs one after them, puts a figure in front of the board that he then has to restate.
+**Who needs the answer.** Anand Iyer, the finance controller, whose team walks the week's gross merchandise value down to net revenue and whose books the data team's dashboard has to agree with. Send him the value of everything ordered where his books carry what Kalpa earns, or a margin before each order's costs where he needs one after them, and he puts a figure in front of the board that he then has to restate.
 
 **The questions on the way.**
 
@@ -434,7 +434,7 @@ The numbers that run Kalpa Retail hang off one tree: customers, orders per custo
 
 At Monday's trading meeting the category buyer for home care says: "The lights are at 62 percent sell-through and the category holds 45 days of inventory, so do we mark down now or wait for Diwali?" Anyone who has to ask what sell-through or days of inventory mean has lost the thread before the question arrives.
 
-**Who needs the answer.** The category buyer for home care, and every stakeholder at a meeting like that one, who use these words without stopping to define them. An analyst who mistakes one word for another answers with a different number: net revenue given where GMV was asked for is the smaller figure, and a store's ABV set against the app's AOV compares two different baskets.
+**Who needs the answer.** The category buyer for home care, and every stakeholder at a meeting like that one, who use these words without stopping to define them. Mistake one word for another and the answer is a different number: net revenue given where GMV was asked for is the smaller figure, and a store's ABV set against the app's AOV compares two different baskets.
 
 **The questions on the way.**
 
@@ -448,7 +448,7 @@ Each word below is defined in plain language and then used as someone at Kalpa w
 
 ### Which words say what a sale is worth, from the price charged to the margin kept?
 
-| Term | In plain words | Said in a meeting |
+| Term | What it means | Said in a meeting |
 |---|---|---|
 | GMV | Gross merchandise value: all orders at the prices charged, before cancellations, returns and GST come out | "GMV grew 12 percent; after returns and GST, net revenue grew 8." |
 | Net revenue | GMV less cancellations, returns and the GST collected for the government | "Finance reports net revenue, so reconcile to that." |
@@ -463,7 +463,7 @@ Each word below is defined in plain language and then used as someone at Kalpa w
 
 ### Which words follow the stock from the supplier to the shelf?
 
-| Term | In plain words | Said in a meeting |
+| Term | What it means | Said in a meeting |
 |---|---|---|
 | SKU | A stock keeping unit: one sellable version of a product, such as one size | "A shampoo in two sizes is two SKUs, and home care carries 1,200 of them." |
 | Fill rate | The share of an order a supplier actually delivered | "The supplier's fill rate fell to 90 percent, and that is our stock-out." |
@@ -476,7 +476,7 @@ Each word below is defined in plain language and then used as someone at Kalpa w
 
 ### Which words measure the shoppers and the stores?
 
-| Term | In plain words | Said in a meeting |
+| Term | What it means | Said in a meeting |
 |---|---|---|
 | Footfall | People who walk into a store, counted at the door | "Footfall fell on Saturday, conversion rose, and sales held." |
 | Conversion | The share of visits that end in a purchase | "App conversion is 2.5 percent of sessions." |
@@ -485,7 +485,7 @@ Each word below is defined in plain language and then used as someone at Kalpa w
 
 ### Which words describe getting an order to the door, and back?
 
-| Term | In plain words | Said in a meeting |
+| Term | What it means | Said in a meeting |
 |---|---|---|
 | Dark store | A small neighbourhood warehouse that serves only online orders | "Quick commerce runs on dark stores a short ride from the customer." |
 | Last mile | The final leg of delivery, from the local hub to the door | "Our last-mile cost per order is what fast delivery really costs us." |
@@ -494,7 +494,7 @@ Each word below is defined in plain language and then used as someone at Kalpa w
 
 ### Which words describe customers over time, and what winning one costs?
 
-| Term | In plain words | Said in a meeting |
+| Term | What it means | Said in a meeting |
 |---|---|---|
 | Cohort | Customers grouped by when they first bought, followed over time | "The January cohort retained 26 percent by April." |
 | Churn | Customers or members who stop buying or do not renew, as a share of the base | "Retail-Plus churn is the number its head asks about first." |
@@ -682,7 +682,7 @@ For each of the seven, the fix is chosen by the rows it needs, its cost, its tim
 
 Most learners have lived through the five scenes below, and each turns into metrics on the tree in section 5 and a data problem hidden in it.
 
-**Who needs the answer.** Whoever brings you a scene and expects a number back, such as the head of Retail-Plus with a month of renewals or the category buyer with a shelf that emptied by evening. An analyst who cannot turn the scene into a formula and the data problem inside it answers a different question from the one asked.
+**Who needs the answer.** Whoever brings you a scene and expects a number back, such as the head of Retail-Plus with a month of renewals or the category buyer with a shelf that emptied by evening. Until the scene becomes a formula and the data problem inside it, any number sent back answers a different question from the one asked.
 
 **The questions on the way.** Each row of the table answers three, in order:
 

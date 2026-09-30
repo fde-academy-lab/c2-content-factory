@@ -1,6 +1,6 @@
 # Domain card: How does retail earn, and how is each number worked out?
 
-Kalpa Retail in Weeks 1 and 2 runs on the metric tree, ten metrics worked out as formulas, twenty words every stakeholder meeting assumes and the rules a retail data team works under. Kalpa is fictional, and its numbers here are illustrative.
+Retail and e-commerce at Kalpa, the domain of Weeks 1 and 2, runs on the metric tree, ten metrics worked out as formulas, twenty words every stakeholder meeting assumes and the rules a retail data team works under. Kalpa is fictional, and its numbers here are illustrative.
 
 ## Panel 1: Which tree does every retail number hang off?
 
@@ -48,7 +48,7 @@ The tree counts revenue as GMV, and panel 6 walks it down to net revenue and on 
 
 **Crux:** Change the divisor and the metric changes.
 
-## Panel 3: Which traps make a retail number lie, and what catches each?
+## Panel 3: Which traps make a retail number lie?
 
 | Trap | The check |
 |---|---|
@@ -101,7 +101,7 @@ The tree counts revenue as GMV, and panel 6 walks it down to net revenue and on 
 | **FDI** | Foreign-owned multi-brand e-commerce selling in India runs as a marketplace |
 | **CCPA, for US** | Requests to know, delete, correct, opt out |
 
-## Panel 6: Where does Rs 100 of GMV go, and how much is kept?
+## Panel 6: Where does Rs 100 of GMV go?
 
 | Line | Left, Rs |
 |---|---|

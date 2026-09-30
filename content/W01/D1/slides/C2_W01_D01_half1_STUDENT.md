@@ -57,7 +57,7 @@ Transition: before any data, the business, starting with how a retailer earns.
 LIVE, 45 minutes in six parts, told from the talk track, trainer/C2_W01_D01_domain_story_TRAINER.md,
 which holds what to say, the question for each part and the facts you may quote with their sources:
 the map 1, the Saturday 7, the real companies 7, where Rs 100 goes 10, who asks 6, the tree 9, and
-describing to acting 5. No laptop opens. Each part puts one drawing on the board, and the Rs 100
+describing to acting 5; D8 and D9, the tree's ten formulas, are self-study. No laptop opens. Each part puts one drawing on the board, and the Rs 100
 journey and the metric tree stay up all day. The story states every metric as a formula with what it
 answers and who asks, and it stages no wrong number, since each of those belongs to a chapter.
 Meera's ask follows in 4 minutes. The domain card goes out at the close of the afternoon.
@@ -170,7 +170,7 @@ Transition: where the money from one basket goes.
 
 ```mermaid
 flowchart LR
-    G["<b>GMV</b><br/>Rs 100 ordered"] -.->|"Rs 20, chapter 1"| N["<b>net revenue</b><br/>Rs 80"]
+    G["<b>GMV</b><br/>Rs 100 ordered"] -.->|"Rs 20: chapter 1's question"| N["<b>net revenue</b><br/>Rs 80"]
     N -->|"less 60"| M["<b>gross margin</b><br/>Rs 20"]
     M -->|"less 12.5"| C["<b>contribution</b><br/>Rs 7.5"]
     C -->|"less 5"| O["<b>EBITDA</b><br/>Rs 2.5"]
@@ -189,24 +189,27 @@ flowchart LR
 
 ```notes
 LIVE, 10 minutes, part 3 of the talk track, the part never to cut. The numbers are illustrative.
-Say that GMV, gross merchandise value, is everything customers ordered at the price they were
+Ask first: the member paid Rs 1,800, so how much of it does Kalpa keep as EBITDA: under Rs 20,
+Rs 20 to 100, Rs 100 to 400, or more than Rs 400? Take hands for each range and leave the answer
+open while the drawing goes up.
+Say that GMV, gross merchandise value, is everything customers ordered at the prices they were
 charged, and that finance reports a smaller number, net revenue, which is what Kalpa earns from the
-goods. The two differ on purpose: Rs 100 of GMV becomes Rs 80 of net revenue, and what the Rs 20
-between them is, the room finds in chapter 1 this morning, so hold the question until then. From net
-revenue take the cost of the goods and gross margin is left; take what every order costs and
-contribution is left; take the costs that do not grow with one more order and EBITDA is left. Real
-retailers keep a thin slice: DMart reported profit after tax of 4.8 percent of revenue for FY26
-(Avenue Supermarts results release, 2 May 2026).
-Ask first: of the member's Rs 1,800, how much does Kalpa keep as EBITDA: under Rs 20, Rs 20 to 100,
-Rs 100 to 400, or more than Rs 400? Hands up for each range, then reveal about Rs 50 on these
-illustrative numbers, the basket's Rs 150 of contribution less about Rs 100 towards the costs that
-do not change with one more order.
+goods; the two differ on purpose. Rs 100 of GMV becomes Rs 80 of net revenue, and what the Rs 20
+between them is made of is the question chapter 1 opens on Kalpa's own orders, so it stays on the
+board as a question. From net revenue take the cost of the goods and Rs 20 of gross margin is left;
+take what every order costs and Rs 7.50 of contribution is left; take the costs that do not grow
+with one more order and Rs 2.50 of EBITDA is left. Real retailers keep a thin slice: DMart reported
+profit after tax of 4.8 percent of revenue for FY26 (Avenue Supermarts results release, 2 May 2026).
+Then reveal the guess: on these illustrative numbers the basket keeps about Rs 50 as EBITDA, its
+Rs 150 of contribution less about Rs 100 towards the costs that do not change with one more order.
+If a learner asks how the basket reaches Rs 150, the first step, from the Rs 1,800 charged to what
+Kalpa earns, is chapter 1's question.
 Watch for rooms that guess high; they most need this part.
 Add the marketplace sentence: a marketplace such as Flipkart or Amazon India books only its fees as
 revenue, and a foreign-owned multi-brand e-commerce business selling to Indian consumers must run
 that way under Press Note 2 of 2018.
-Draw Rs 100's journey on the board, five boxes top to bottom, with the first arrow left as a
-question. It stays up all day.
+Draw Rs 100's journey on the board, five boxes top to bottom, with the first arrow written as the
+open question it is. It stays up all day.
 Transition: who asks the data team for which number.
 ```
 
@@ -218,15 +221,15 @@ Transition: who asks the data team for which number.
 ```mermaid
 flowchart LR
     CEO["<b>CEO</b><br/>Meera Raghavan"] --> FIN["<b>Finance</b><br/>Anand Iyer"]
-    CEO --> MKT["<b>Marketing, Retail-Plus</b><br/>their leads"]
-    CEO --> CS["<b>Customer support</b><br/>Farhan Sheikh, Week 8"]
-    CEO --> OTH["<b>the other functions</b><br/>buying, pricing,<br/>supply chain, stores"]
-    FIN & MKT & CS & OTH -.-> GCC["<b>Kalpa's GCC</b><br/>Kavya Nair and you"]
+    CEO --> MKT["<b>Marketing</b><br/>the marketing lead"]
+    CEO --> RP["<b>Retail-Plus</b><br/>its head"]
+    CEO --> OTH["<b>the other functions</b><br/>buying, pricing, supply,<br/>stores, support"]
+    FIN & MKT & RP & OTH -.-> GCC["<b>Kalpa's GCC</b><br/>Kavya Nair and you"]
     CEO -.-> GCC
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
     classDef dark fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class FIN,MKT,CS known
+    class FIN,MKT,RP known
     class OTH unknown
     class CEO,GCC dark
 ```
@@ -235,14 +238,16 @@ flowchart LR
 |---|---|---|
 | Meera, CEO | She wants to know where growth comes from and where it leaks. | She signs a budget for the wrong branch. |
 | Anand, finance controller | He wants our numbers to match his books. | He restates a figure in front of the board. |
-| The marketing and Retail-Plus leads | They want to know whether Kalpa needs more customers and whether the paid tier is slipping. | A campaign budget is spent, or the wrong members are protected. |
+| The marketing lead | The lead wants to know whether Kalpa needs more customers. | A campaign budget is spent before anyone can take it back. |
+| The head of Retail-Plus | The head wants to know whether the paid tier is slipping. | Members lapse while the wrong ones are protected. |
 
 ```notes
-LIVE, 6 minutes, part 4 of the talk track. Name the boxes: Meera Raghavan; Anand Iyer, the finance
-controller; the marketing lead and the head of Retail-Plus; customer support, where Farhan Sheikh
-arrives in Week 8 with two thousand tickets a day; the other functions, whose heads the story has
-not named; and Kavya Nair with us in the GCC, who checks everything before it leaves the team. The
-data platform lead sits beside the GCC and wants the warehouse queried, never exported.
+LIVE, 6 minutes, part 4 of the talk track. Name the six boxes: Meera Raghavan; Anand Iyer, the
+finance controller; the marketing lead; the head of Retail-Plus; the other functions, which are
+category buying, pricing, supply chain, store operations and customer support, where Farhan Sheikh
+arrives in Week 8 with two thousand tickets a day; and Kavya Nair with us in the GCC, who checks
+everything before it leaves the team. The data platform lead sits beside the GCC and wants the
+warehouse queried, never exported.
 Ask: if one of our numbers is wrong, whose mistake can we undo next week, and whose can we not?
 Watch for "all of them, we send a correction": a correction fixes the dashboard, and the decision
 taken on the wrong number stays taken.
@@ -258,11 +263,11 @@ Transition: the tree every retail number hangs off.
 *Which tree does every retail number hang off?*
 
 ```mermaid
-flowchart TB
-    S["<b>on the shelf</b><br/>days of inventory, stock-outs"] -.-> R["<b>revenue</b>"]
+flowchart LR
+    S["<b>on the shelf</b><br/>stock, stock-outs"] -.-> R["<b>revenue</b>"]
     R --> C["<b>customers</b><br/>new, returning"]
-    R --> F["<b>orders per customer</b>"]
-    R --> A["<b>average order value</b><br/>items x price, less discounts"]
+    R --> F["<b>orders per customer</b><br/>orders / customers<br/>who ordered"]
+    R --> A["<b>average order value</b><br/>revenue / orders<br/>items x price, less discounts"]
     R -.-> L["<b>leaks</b><br/>what does not stay sold"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
@@ -272,34 +277,75 @@ flowchart TB
     class R,S dark
 ```
 
-| Metric | Formula | Who asks for it |
-|---|---|---|
-| Revenue | Revenue is customers x orders per customer x average order value. | Meera asks, for the plan. |
-| Orders per customer | It is orders in the window over the customers who ordered in it. | The head of Retail-Plus asks. |
-| Average order value | It is revenue in the window over the orders in it. | The marketing lead asks, for the payback. |
+**The rule.** Every number on the tree is worked out by one formula, a numerator over a denominator in one window, and each has someone at Kalpa who asks for it.
 
 ```notes
-LIVE, 9 minutes, part 5 of the talk track, the other part never to cut. Say that revenue is
-customers, times orders per customer, times average order value, and that order value is items per
-order times price per item, less discounts. Customers are new or returning: winning new ones costs
-acquisition, and bringing them back is retention. Stock on the shelf decides whether any of it can
-happen, and some of what is ordered does not stay sold, which is why the leaks sit beside the tree.
-Read each formula with who asks for it, and add conversion, orders over visits in the same window,
-which the app team asks for. Every metric is a numerator over a denominator in one window.
-Ask: which branch does marketing's Rs 12 crore grow, and which would an offer to Retail-Plus
-members grow?
-Watch for the pair customers and orders per customer; some will add order value for a membership
-that lifts the basket.
-Land it: each branch has an owner, a formula and a cost to move, and Meera will ask which branch is
-short.
+LIVE, 9 minutes, part 5 of the talk track, the other part never to cut. Say that every retail number
+hangs off one tree: revenue is customers, times orders per customer, times items per order, times
+price per item, less discounts. Customers are new or returning: new ones are won by acquisition and
+returning ones kept by retention. Stock on the shelf decides whether any of it can happen, and some
+of what is ordered does not stay sold before the margin is counted. Then read the formulas off the
+tree, one line each, pointing at the branch as you say it: how the number is worked out, the
+question it answers and who at Kalpa asks; D8 and D9 list all ten for self-study. If the room
+wants a number, part 1 fills two: 2,000 orders from 80,000 visits to the app is 2.5 percent, and
+Rs 1,500 an order is the app's average order value.
+Ask: the marketing lead, the head of Retail-Plus and Anand Iyer each walk up to this board; which
+number on the tree does each of them ask about first, and why that one?
+Listen for customers, the new ones above all, for the marketing lead; how often members order and
+how many come back, for the head of Retail-Plus; gross margin and numbers that match his books, for
+Anand. Watch for "all three ask about revenue": revenue is Meera's number, and each of the three
+owns a branch of it and asks for that branch first.
+Land it: every number on the tree has a formula and an owner, and a number sent without knowing its
+owner reaches a decision it was never built for.
 Draw the metric tree on the board, six boxes, and leave it up all day; the chapters write their
 numbers onto it.
-Transition: from describing what happened to letting a system act.
+Transition: part 6, from describing to acting; D8 and D9, the formula tables, are self-study.
 ```
 
 ---
 
-## S8. The further right, the more a wrong answer costs
+## D8. The branch numbers each have a formula and an owner
+*How are the numbers on the tree's branches worked out, and who at Kalpa asks for each?*
+
+| The number | Worked out as | The question it answers | Who asks |
+|---|---|---|---|
+| Conversion | Orders / visits | Of the people who came, how many bought? | Marketing and the app's product team |
+| Average order value | Revenue / orders | How much does one order bring in? | Merchandising, marketing and finance |
+| Orders per customer | Orders / customers who ordered | How often does a customer buy? | The head of Retail-Plus and marketing |
+| Repeat rate | Customers with two or more orders / customers who ordered | How many customers came back for another order? | The head of Retail-Plus and marketing |
+| Retention | A cohort's buyers in month k / the cohort's starting size | How many of one month's new customers still buy k months on? | The head of Retail-Plus and marketing |
+
+```notes
+SELF-STUDY, 2 minutes. The first five formulas the trainer reads off the tree in part 5, each with
+the question it answers and who at Kalpa asks for it. Each is a numerator over a denominator in one
+window, and the window and the denominator are named before the number is sent.
+Transition: the money and stock numbers on the next slide.
+```
+
+---
+
+## D9. The money numbers each have a formula and an owner
+*How are the money and stock numbers worked out, and who at Kalpa asks for each?*
+
+| The number | Worked out as | The question it answers | Who asks |
+|---|---|---|---|
+| Customer lifetime value | Contribution per order x orders a year x years as a customer | What is one customer worth over the years they buy? | Marketing and finance |
+| Acquisition cost and payback | Spend / new customers, then that cost / monthly contribution per customer | What did each new customer cost, and when do they repay it? | Meera and Anand, before signing |
+| Gross margin | (Net revenue less the cost of goods) / net revenue | How much of each rupee earned is left after the goods? | Anand and the category buyers |
+| Days of inventory | Average stock at cost / cost of goods per day | How many days would today's stock last? | Supply chain, the buyers and finance |
+| Like-for-like growth | Same stores' sales this period / their sales last period, less 1 | Did the stores that were already open sell more? | Meera, store operations and investors |
+
+```notes
+SELF-STUDY, 2 minutes. The other five formulas from part 5. Lifetime value, acquisition cost and
+payback decide whether a budget such as marketing's Rs 12 crore pays for itself; gross margin and
+days of inventory are the finance controller's and the buyers' numbers; like-for-like growth is how
+a retailer with new stores reports the ones it already had.
+Transition: part 6, from describing what happened to letting a system act.
+```
+
+---
+
+## S9. The further right, the more a wrong answer costs
 *How far may a system act on its own before a person checks it?*
 
 ```mermaid
@@ -340,7 +386,7 @@ Transition: the business in one line, and the question its CEO asked us.
 
 ---
 
-## S9. Meera asks whether acquisition is the short branch
+## S10. Meera asks whether acquisition is the short branch
 *What did Kalpa's CEO ask the data team on Monday?*
 
 **The client asks.** "Before I sign anything, I want to understand our own sales. What is 'sales' made of? Where does revenue come from, by customer type and channel? Is acquisition even the branch that is short?"
@@ -358,13 +404,13 @@ LIVE, 2 minutes. Read the story's last line aloud: "That is the business. On Mon
 one page: revenue grew 4 percent against a plan of 15, marketing wants Rs 12 crore, and she asked us
 one question before she signs anything." Then read her message and Anand's line. Do not explain
 Anand's line; chapter 4 tests it on the file.
-Ask: which sentence in her message is the real question? Most pick the last one.
+Ask: which sentence in her message would you answer first? Most pick the last one.
 Transition: her message, split into the questions the chapters answer.
 ```
 
 ---
 
-## S10. Each part of Meera's message becomes a chapter
+## S11. Each part of Meera's message becomes a chapter
 *Which chapter answers each part of Meera's message?*
 
 | What she asked | The question it becomes | Where it is answered |
@@ -398,7 +444,7 @@ Transition: who needs the answer, and the six questions on the way.
 
 ---
 
-## S11. Meera and Anand need one named total for the plan
+## S12. Meera and Anand need one named total for the plan
 *Who needs to know which total is sales, and which questions lead there?*
 
 **Who needs the answer.** Meera measures the 15 percent plan from sales and Anand's books must match it, so a total that counts orders nobody kept sets the plan's base too high.
@@ -422,7 +468,7 @@ Transition: the need, in Meera's words.
 
 ---
 
-## S12. Meera's 15 percent plan is measured from sales
+## S13. Meera's 15 percent plan is measured from sales
 *Who needs one number called sales, and what does a wrong one cost?*
 
 **The client asks.** "What is 'sales' made of?"
@@ -453,7 +499,7 @@ Transition: a real retailer that publishes two totals for the same quarter.
 
 ---
 
-## S13. Reliance Retail publishes two totals a quarter
+## S14. Reliance Retail publishes two totals a quarter
 *Does a real retailer report more than one total for one quarter?*
 
 ```stats
@@ -475,7 +521,7 @@ Transition: four ways the team could answer Meera.
 
 ---
 
-## S14. Summing by status fits: one pass, every reading
+## S15. Summing by status fits: one pass, every reading
 *Which way of answering fits this file?*
 
 | Option | Rows | Time | Error on this file |
@@ -498,7 +544,7 @@ Transition: what each reading keeps.
 
 ---
 
-## S15. Each reading of sales drops one more status
+## S16. Each reading of sales drops one more status
 *What does each reading of sales keep?*
 
 ```mermaid
@@ -522,7 +568,7 @@ Transition: the loop that computes all three readings.
 
 ---
 
-## S16. One loop keeps booked, not cancelled and delivered
+## S17. One loop keeps booked, not cancelled and delivered
 *How does one pass over the 30 orders keep three sums?*
 
 ```python
@@ -552,7 +598,7 @@ Transition: predict the result before running it.
 
 ---
 
-## S17. Which reading of sales comes out largest?
+## S18. Which reading of sales comes out largest?
 *Before the loop runs, which of its three sums do you expect on top?*
 
 a) Delivered, because only delivered orders are real.
@@ -568,7 +614,7 @@ Transition: run it and read the three.
 
 ---
 
-## S18. Answer: c, booked is largest at Rs 5,44,810
+## S19. Answer: c, booked is largest at Rs 5,44,810
 *How far apart are the three readings of sales?*
 
 ```mermaid
@@ -593,7 +639,7 @@ Transition: the check that the loop did what it claims.
 
 ---
 
-## S19. Check: 30 orders, and each reading keeps less
+## S20. Check: 30 orders, and each reading keeps less
 *Did the loop visit every order, and does each narrower reading keep less?*
 
 ```python
@@ -614,7 +660,7 @@ Transition: the line a colleague sent Meera first.
 
 ---
 
-## S20. A draft sends Rs 5,44,810 on 30 orders as sales
+## S21. A draft sends Rs 5,44,810 on 30 orders as sales
 *What goes wrong if all 30 orders are sent as sales?*
 
 **The plausible wrong answer.** A colleague's first draft to Meera reads: "Sales this quarter: Rs 5,44,810 on 30 orders."
@@ -639,10 +685,10 @@ Transition: the check that catches it.
 
 ---
 
-## S21. A count by status shows 4 cancelled, all in store
+## S22. A count by status shows 4 cancelled, all in store
 *Which check catches the orders inside the total that were never sold?*
 
-**Why it is wrong.** A cancelled order never left the shelf and never paid Kalpa a rupee, so it is demand that never arrived, and counting orders by channel and status before adding any amount shows where the 4 sit.
+**Why it is wrong.** A cancelled order never left the shelf and never paid Kalpa a rupee, so it is demand that never arrived. Counting orders by channel and status before adding any amount shows where the 4 sit.
 
 | Channel | Delivered | Returned | Cancelled |
 |---|---|---|---|
@@ -660,7 +706,7 @@ Transition: the fix, drawn as a bridge.
 
 ---
 
-## S22. The fix writes the definition beside each total
+## S23. The fix writes the definition beside each total
 *What does the fix change in the note to Meera?*
 
 ```mermaid
@@ -682,15 +728,15 @@ Transition: the same three totals by a second route.
 
 ---
 
-## S23. Sums by status land on the same three totals
+## S24. Sums by status land on the same three totals
 *Do sums by status reach the same totals as the one loop?*
 
 ```python
 by_status = {}
 for order in ORDERS:
-    status = order["status"]
-    by_status[status] = by_status.get(status, 0) + int(order["amount"])
-not_cancelled = by_status["delivered"] + by_status["returned"]
+    s = order["status"]
+    amount = int(order["amount"])
+    by_status[s] = by_status.get(s, 0) + amount
 ```
 
 ```mermaid
@@ -715,7 +761,7 @@ Transition: the chapter's answers, one line each.
 
 ---
 
-## S24. Meera gets Rs 5,35,760, named net of cancellations
+## S25. Meera gets Rs 5,35,760, named net of cancellations
 *Which of the file's totals should Meera call sales, and what does each one count?*
 
 | Question | Answer |
@@ -753,7 +799,7 @@ Transition: who needs the branches, and the six questions on the way.
 
 ---
 
-## S25. Meera and marketing need each branch as a fraction
+## S26. Meera and marketing need each branch as a fraction
 *Who needs each branch of sales as a number, and which questions lead there?*
 
 **Who needs the answer.** Meera, who must see which branch of sales is short, and the marketing lead, whose payback case values every new order: a branch built from two definitions multiplies to revenue nobody booked.
@@ -776,7 +822,7 @@ Transition: why each branch has to be a fraction.
 
 ---
 
-## S26. A branch helps Meera only as a fraction
+## S27. A branch helps Meera only as a fraction
 *Who needs the branches, and why must each one be a fraction?*
 
 ```mermaid
@@ -805,7 +851,7 @@ Transition: a real company that reports its revenue this way.
 
 ---
 
-## S27. Jio reports its revenue as a tree of branches
+## S28. Jio reports its revenue as a tree of branches
 *Does a real company report its revenue as branches?*
 
 ```stats
@@ -824,7 +870,7 @@ Transition: which tree this file can fill.
 
 ---
 
-## S28. This file fills customers x frequency x AOV
+## S29. This file fills customers x frequency x AOV
 *Which tree can this file fill?*
 
 | Option | Fields it needs | In this file? | What it tells Meera |
@@ -845,7 +891,7 @@ Transition: the tree the file can fill, drawn beside what it cannot.
 
 ---
 
-## S29. Three branches can be measured and three cannot
+## S30. Three branches can be measured and three cannot
 *What does each branch divide, and which can this file measure?*
 
 ```mermaid
@@ -870,7 +916,7 @@ Transition: the code that measures the first branch.
 
 ---
 
-## S30. AOV is booked revenue over the orders it came from
+## S31. AOV is booked revenue over the orders it came from
 *How does the first branch become a number?*
 
 ```python
@@ -889,7 +935,7 @@ Transition: predict what the two multiply back to.
 
 ---
 
-## S31. What does orders times the AOV give back?
+## S32. What does orders times the AOV give back?
 *Booked revenue splits into orders x AOV, so what do the two multiply back to?*
 
 a) Exactly booked revenue, because the average was made from that total.
@@ -904,7 +950,7 @@ Transition: the answer, with the AOV.
 
 ---
 
-## S32. Answer: a, orders x AOV lands on booked revenue
+## S33. Answer: a, orders x AOV lands on booked revenue
 *What is the average order value on the booked definition?*
 
 ```mermaid
@@ -915,19 +961,19 @@ flowchart LR
     class O,A,R known
 ```
 
-The AOV is Rs 5,44,810 over 30 orders, about Rs 18,160, and 30 times the unrounded AOV is Rs 5,44,810 exactly. The product always lands on revenue, so a wrong branch never shows in the total and shows only in the split.
+The AOV is Rs 5,44,810 over 30 orders, about Rs 18,160, and 30 times the unrounded AOV is Rs 5,44,810 exactly. Since the product always lands on revenue, a wrong branch can hide in the split while the total looks right.
 
 ```notes
 LIVE, 2 minutes. The answer is a. Repeat customers (b) never enter this fraction, which counts
-orders; rounding (c) moves the product by a few rupees at most; prices per item (d) split the AOV
-further and do not change it. Write Rs 18,160 on the board tree in pencil with a question mark;
+orders; rounding (c) moves the product by Rs 10 when the AOV is first rounded to Rs 18,160, and by
+nothing when it is not; prices per item (d) split the AOV further and leave it as it is. Write Rs 18,160 on the board tree in pencil with a question mark;
 Anand's warning is about this number, and chapter 4 comes back to it.
 Transition: the checks.
 ```
 
 ---
 
-## S33. Check: the tree lands; 3 of 6 branches are absent
+## S34. Check: the tree lands; 3 of 6 branches are absent
 *Does the identity hold, and how many branches does the file lack?*
 
 ```python
@@ -947,7 +993,7 @@ Transition: what happens when two reports feed one fraction.
 
 ---
 
-## S34. What AOV do booked rupees over delivered orders give?
+## S35. What AOV do booked rupees over delivered orders give?
 *Finance reports booked revenue and the operations dashboard counts delivered orders; what if each feeds one half?*
 
 ```mermaid
@@ -966,14 +1012,14 @@ c) Rs 25,943
 d) Rs 23,687
 
 ```notes
-LIVE, 1 minute. Letters by hand. Most divide and get c; the real question is whether anyone objects
-to the division itself.
+LIVE, 1 minute. Letters by hand. Most divide and get c; watch for anyone who objects to the division
+itself, and ask them why.
 Transition: the answer, and the note a colleague sent with it.
 ```
 
 ---
 
-## S35. Answer: c, Rs 25,943, which matches no definition
+## S36. Answer: c, Rs 25,943, which matches no definition
 *What goes wrong when booked rupees are divided by delivered orders?*
 
 **The plausible wrong answer.** A colleague's note to marketing reads: "Our average order is Rs 25,943."
@@ -995,7 +1041,7 @@ Transition: the check that catches it.
 
 ---
 
-## S36. AOV x the orders summed must give revenue back
+## S37. AOV x the orders summed must give revenue back
 *Which check catches a fraction built from two definitions?*
 
 **Why it is wrong.** The numerator keeps the rupees of the 9 cancelled and returned orders while the denominator has dropped those orders, so every order looks Rs 7,783 larger than a booked order averages.
@@ -1015,7 +1061,7 @@ Transition: the fix.
 
 ---
 
-## S37. One definition per fraction: Rs 18,160 or Rs 24,800
+## S38. One definition per fraction: Rs 18,160 or Rs 24,800
 *What does the fix change in the note to marketing?*
 
 ```mermaid
@@ -1039,13 +1085,13 @@ Transition: the same AOV by a second route.
 
 ---
 
-## S38. The mean of the 30 amounts is the same Rs 18,160
+## S39. The mean of the 30 amounts is the same Rs 18,160
 *Does the mean of the amounts agree with revenue over orders?*
 
 ```python
 amounts = [order["amount"] for order in ORDERS]
-mean_route = sum(amounts) / len(amounts)     # from the rows
-statistics.fmean(amounts)                    # from the library
+mean_route = sum(amounts) / len(amounts)
+library_route = statistics.fmean(amounts)
 ```
 
 ```mermaid
@@ -1067,7 +1113,7 @@ Transition: the chapter's answers, one line each.
 
 ---
 
-## S39. Each branch is a fraction; AOV is Rs 18,160 booked
+## S40. Each branch is a fraction; AOV is Rs 18,160 booked
 *How does sales split into customers, orders per customer and order value, each a fraction on one definition?*
 
 | Question | Answer |
@@ -1097,14 +1143,14 @@ Transition: chapter 3, the customer branches counted.
 ```notes
 LIVE, 30 minutes: the map 1, the need 2, Reliance 1, the options 4, the picture 2, the build 8 (the
 code 2, the predict 1, the answer 3 and the check 2), the trap 8 (the draft 3, why it is wrong 3
-and the fix 2), the second route 2 and the close 2. D53, the count on delivered orders, is
+and the fix 2), the second route 2 and the close 2. D54, the count on delivered orders, is
 self-study; in the room it is the first thing to cut. Notebook 03 is the demonstration.
 Transition: who needs the count, and the six questions on the way.
 ```
 
 ---
 
-## S40. Meera's budget turns on whether customers return
+## S41. Meera's budget turns on whether customers return
 *Who needs the customer count, and which questions lead to it?*
 
 **Who needs the answer.** Meera, before she signs Rs 12 crore to buy customers, and the marketing lead and the head of Retail-Plus, who own the two customer branches: if nobody comes back, acquisition is the only branch, and if customers return, frequency can grow without buying anyone new.
@@ -1126,7 +1172,7 @@ Transition: what rides on the count.
 
 ---
 
-## S41. If nobody comes back, acquisition is the only branch
+## S42. If nobody comes back, acquisition is the only branch
 *Who needs the customer count, and what rides on it?*
 
 **The client asks.** "Is acquisition even the branch that is short?"
@@ -1155,7 +1201,7 @@ Transition: a real retailer's customer count, and its denominator.
 
 ---
 
-## S42. Reliance counts 396 million registered customers
+## S43. Reliance counts 396 million registered customers
 *Which customers does a real retailer count?*
 
 ```stats
@@ -1173,7 +1219,7 @@ Transition: four ways to count customers.
 
 ---
 
-## S43. A dictionary counts customers and repeats at once
+## S44. A dictionary counts customers and repeats at once
 *How do we count customers when a row is an order?*
 
 | Option | Passes | What it answers | Error on this file |
@@ -1194,7 +1240,7 @@ Transition: why one person can leave several rows.
 
 ---
 
-## S44. A row is an order, and one person can place several
+## S45. A row is an order, and one person can place several
 *Why can one customer leave several rows in the file?*
 
 ```mermaid
@@ -1217,7 +1263,7 @@ Transition: the build on Kalpa's 30 rows.
 
 ---
 
-## S45. A dictionary keyed by customer id counts orders
+## S46. A dictionary keyed by customer id counts orders
 *How does one pass count each customer's orders?*
 
 ```python
@@ -1239,7 +1285,7 @@ Transition: predict how many came back.
 
 ---
 
-## S46. How many customers bought more than once?
+## S47. How many customers bought more than once?
 *The dictionary holds each customer's order count, so how many counts are above one?*
 
 a) None, since orders per customer is close to 1.
@@ -1254,7 +1300,7 @@ Transition: the answer.
 
 ---
 
-## S47. Answer: b, 7 of Kalpa's 23 customers came back
+## S48. Answer: b, 7 of Kalpa's 23 customers came back
 *How many customers does Kalpa have, and how many came back?*
 
 ```mermaid
@@ -1278,7 +1324,7 @@ Transition: the checks.
 
 ---
 
-## S48. Check: the counts add to 30 and the tree lands
+## S49. Check: the counts add to 30 and the tree lands
 *Do the counts add back to 30, and does the tree multiply back to revenue?*
 
 ```mermaid
@@ -1300,7 +1346,7 @@ Transition: the count a colleague sent first.
 
 ---
 
-## S49. A draft counts 30 customers at 1.00 order each
+## S50. A draft counts 30 customers at 1.00 order each
 *What goes wrong if every row is counted as a customer?*
 
 **The plausible wrong answer.** A colleague's first draft to Meera reads: "30 customers placed 30 orders: 1.00 each, so nobody comes back."
@@ -1323,7 +1369,7 @@ Transition: the check.
 
 ---
 
-## S50. The id column holds 30 rows and 23 distinct ids
+## S51. The id column holds 30 rows and 23 distinct ids
 *Which check tells rows apart from customers?*
 
 **Why it is wrong.** The division is correct and its denominator is wrong: a row is an order, and one customer can place several.
@@ -1333,13 +1379,7 @@ ids = [order["customer_id"] for order in ORDERS]
 len(ids), len(set(ids))        # (30, 23)
 ```
 
-```mermaid
-xychart-beta
-    title "The same column counted two ways"
-    x-axis ["rows, as a list", "distinct ids, as a set"]
-    y-axis "count" 0 --> 32
-    bar [30, 23]
-```
+The same column counted as a list gives 30 and counted as a set gives 23, so 7 of the 30 orders came from people who had already bought.
 
 ```notes
 LIVE, 3 minutes. A set keeps each value once however often it is added, so the list's 30 against the
@@ -1349,7 +1389,7 @@ Transition: the fix.
 
 ---
 
-## S51. Fixed: 30 / 23 = 1.30 orders, and 7 came back
+## S52. Fixed: 30 / 23 = 1.30 orders, and 7 came back
 *What does dividing by distinct customers change?*
 
 ```stats
@@ -1367,7 +1407,7 @@ Transition: the same rate by a second route.
 
 ---
 
-## S52. The mean of the 23 counts is the same 1.30
+## S53. The mean of the 23 counts is the same 1.30
 *Does the mean of the counts agree with orders over customers?*
 
 ```python
@@ -1379,12 +1419,12 @@ second_route = sum(counts.values()) / len(counts)   # 1.30, the same rate
 ```notes
 LIVE, 2 minutes. The notebook asserts that the two routes agree and that the dictionary's keys are
 the set's members.
-Transition: the chapter's answers; D53, on delivered orders, is self-study.
+Transition: the chapter's answers; D54, on delivered orders, is self-study.
 ```
 
 ---
 
-## D53. On delivered orders: 19 customers, 1.11 each
+## D54. On delivered orders: 19 customers, 1.11 each
 *What changes when only delivered orders count?*
 
 | | Booked | Delivered |
@@ -1393,14 +1433,6 @@ Transition: the chapter's answers; D53, on delivered orders, is self-study.
 | Customers | 23 | 19 |
 | Orders per customer | 1.30 | 1.11 |
 | Customers with two orders | 7 | 2 |
-
-```mermaid
-xychart-beta
-    title "Customers with two orders, by definition"
-    x-axis ["booked", "delivered"]
-    y-axis "customers" 0 --> 8
-    bar [7, 2]
-```
 
 On the delivered definition 19 customers kept 21 orders and 2 kept two, so every leaf moves with the definition, and each count goes out with the definition it was taken on.
 
@@ -1414,7 +1446,7 @@ Transition: the chapter's answers.
 
 ---
 
-## S54. Kalpa has 23 customers, and 7 came back
+## S55. Kalpa has 23 customers, and 7 came back
 *How many customers does Kalpa have, and how many came back for a second order?*
 
 | Question | Answer |
@@ -1445,14 +1477,14 @@ Transition: a 10-minute break, then chapter 4.
 ```notes
 LIVE, 30 minutes after the break: the map 1, the need 2, Blinkit 1, the options 4, the picture 2,
 the build 6 (the code 2, the predict 1, the answer 2 and the check 1), the trap 9 (marketing's slide
-3, why it is wrong with the sort 4 and the fix 2), the second route 3 and the close 2. D64 and D65,
+3, why it is wrong with the sort 4 and the fix 2), the second route 3 and the close 2. D65 and D66,
 the trimmed mean on Kalpa's orders, are self-study. Notebook 04 is the demonstration.
 Transition: who needs a typical order, and the six questions on the way.
 ```
 
 ---
 
-## S55. Marketing and Anand both need a typical order
+## S56. Marketing and Anand both need a typical order
 *Who needs a typical order, and which questions lead to it?*
 
 **Who needs the answer.** The marketing lead, whose payback case values every new customer by the order they will place, Meera, who signs the budget on that payback, and Anand, who has warned against averages: an order valued too high makes Rs 12 crore look cheap.
@@ -1474,7 +1506,7 @@ Transition: what the typical order prices.
 
 ---
 
-## S56. A first order's value decides the payback
+## S57. A first order's value decides the payback
 *Who needs a typical order, and what does it price?*
 
 **The client asks.** "What does a typical order look like?"
@@ -1494,7 +1526,7 @@ Transition: a real company's reported order value.
 
 ---
 
-## S57. Blinkit reports a mean order value, right for totals
+## S58. Blinkit reports a mean order value, right for totals
 *What does a real company report as its order value?*
 
 ```stats
@@ -1512,7 +1544,7 @@ Transition: four middles a team could report.
 
 ---
 
-## S58. The median barely moves when one large order joins
+## S59. The median barely moves when one large order joins
 *Which middle survives one large order?*
 
 | Option | Moves when one large order joins | Right call when |
@@ -1536,30 +1568,29 @@ Transition: the picture of what one large order does.
 
 ---
 
-## S59. One large order drags the mean and nudges the median
+## S60. One large order drags the mean and nudges the median
 *What does one large order do to each middle?*
 
 ```mermaid
 flowchart LR
-    F["<b>five invented orders</b><br/>Rs 1,900 to Rs 2,600"] --> A1["<b>mean</b> Rs 2,260<br/><b>median</b> Rs 2,300"]
-    F -->|"add one invented Rs 90,000"| S["<b>six invented orders</b>"]
-    S --> A2["<b>mean</b> Rs 16,883<br/><b>median</b> Rs 2,350"]
+    F["<b>five invented orders</b><br/>Rs 1,900 to 2,600<br/>mean Rs 2,260<br/>median Rs 2,300"] -->|"add one invented<br/>order of Rs 90,000"| S["<b>six invented orders</b><br/>mean Rs 16,883<br/>median Rs 2,350"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
-    class F,A1,S known
-    class A2 bad
+    class F known
+    class S bad
 ```
 
 The mean shares the large order's rupees across every order, so it jumps by Rs 14,623, while the median only asks which order sits in the middle, so it moves Rs 50.
 
 ```notes
-LIVE, 2 minutes. The numbers are invented and are no Kalpa orders.
+LIVE, 2 minutes. The numbers are invented, and none of them is a Kalpa order. Ask which middle Anand
+would trust after seeing the two boxes.
 Transition: the median on Kalpa's 30 orders.
 ```
 
 ---
 
-## S60. Sort the 30 amounts and average the 15th and 16th
+## S61. Sort the 30 amounts and average the 15th and 16th
 *How is the middle of 30 orders found?*
 
 ```python
@@ -1577,7 +1608,7 @@ Transition: predict the median.
 
 ---
 
-## S61. What is the median of Kalpa's 30 orders?
+## S62. What is the median of Kalpa's 30 orders?
 *The mean is Rs 18,160, so where do you expect the middle order to sit?*
 
 a) About Rs 2,200.
@@ -1593,7 +1624,7 @@ Transition: the answer.
 
 ---
 
-## S62. Answer: a, the median order is Rs 2,205
+## S63. Answer: a, the median order is Rs 2,205
 *What is the median order, and how far is it from the mean?*
 
 ```mermaid
@@ -1607,8 +1638,8 @@ xychart-beta
 The 15th and 16th orders in size order are Rs 2,110 and Rs 2,300, so the median is Rs 2,205, about one eighth of the Rs 18,160 mean.
 
 ```notes
-LIVE, 2 minutes. The answer is a. The mean (b) and the median would match only if the orders spread
-evenly around it; half the mean (c) has no rule behind it; Rs 2,300 (d) is one of the two middle
+LIVE, 2 minutes. The answer is a. The mean (b) equals the median only when the orders spread evenly
+on both sides of the middle; half the mean (c) has no rule behind it; Rs 2,300 (d) is one of the two middle
 orders, and an even count takes the halfway point. Write Rs 2,205 on the board tree beside the
 pencilled Rs 18,160.
 Transition: the check.
@@ -1616,7 +1647,7 @@ Transition: the check.
 
 ---
 
-## S63. Check: the mean is 8.2 times the median
+## S64. Check: the mean is 8.2 times the median
 *Does the median check out, and how far apart are the two middles?*
 
 ```stats
@@ -1630,12 +1661,12 @@ value: 8.2 | label: mean over median | note: two middles far apart
 ```notes
 LIVE, 1 minute. The notebook's checks confirm that the median is Rs 2,205 and the mean about eight
 times it. Two middles that far apart are a finding in themselves.
-Transition: marketing's slide; D64 and D65, on the trimmed mean, are self-study.
+Transition: marketing's slide; D65 and D66, on the trimmed mean, are self-study.
 ```
 
 ---
 
-## D64. Where does a trimmed mean of the 30 land?
+## D65. Where does a trimmed mean of the 30 land?
 *Drop the smallest and the largest order and average the other 28: where do you expect it?*
 
 a) Near the mean of Rs 18,160.
@@ -1651,7 +1682,7 @@ Transition: the answer.
 
 ---
 
-## D65. Answer: c, the trimmed mean is Rs 2,300
+## D66. Answer: c, the trimmed mean is Rs 2,300
 *What does trimming one order from each end give on this file?*
 
 ```mermaid
@@ -1672,7 +1703,7 @@ Transition: marketing's slide.
 
 ---
 
-## S66. Marketing's slide says a typical order is Rs 18,160
+## S67. Marketing's slide says a typical order is Rs 18,160
 *What goes wrong when the mean is sold as the typical order?*
 
 **The plausible wrong answer.** Marketing's slide reads: "A typical Kalpa order is Rs 18,160, and so is each new customer's first order."
@@ -1694,7 +1725,7 @@ Transition: the check.
 
 ---
 
-## S67. Only 1 of the 30 orders sits above the mean
+## S68. Only 1 of the 30 orders sits above the mean
 *Which check shows whether Kalpa's orders look like the mean?*
 
 **Why it is wrong.** A typical order is one most orders look like, and only 1 of the 30 orders is larger than Rs 18,160, so a payback priced on the mean values each new customer's order about eight times too high.
@@ -1705,8 +1736,8 @@ above = sum(1 for a in amounts if a > mean)     # 1
 
 ```mermaid
 flowchart LR
-    M["<b>the mean</b><br/>Rs 18,160"] --> MA["<b>orders above it</b><br/>1 of 30"]
-    D["<b>the median</b><br/>Rs 2,205"] --> DA["<b>orders above it</b><br/>15 of 30"]
+    M["<b>the mean</b><br/>Rs 18,160"] --> MA["<b>above it</b><br/>1 of 30 orders"]
+    D["<b>the median</b><br/>Rs 2,205"] --> DA["<b>above it</b><br/>15 of 30 orders"]
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class M,MA bad
@@ -1724,7 +1755,7 @@ Transition: the fix.
 
 ---
 
-## S68. Send the median as typical and the mean for totals
+## S69. Send the median as typical and the mean for totals
 *What does the fix change in the numbers Meera sees?*
 
 ```stats
@@ -1744,7 +1775,7 @@ Transition: the median by a second route.
 
 ---
 
-## S69. The library's median agrees on both definitions
+## S70. The library's median agrees on both definitions
 *Does statistics.median agree with the hand-written middle?*
 
 ```python
@@ -1767,7 +1798,7 @@ Transition: the chapter's answers.
 
 ---
 
-## S70. A typical Kalpa order is Rs 2,205, the median
+## S71. A typical Kalpa order is Rs 2,205, the median
 *What does a typical Kalpa order look like, stated so that one large order cannot move it?*
 
 | Question | Answer |

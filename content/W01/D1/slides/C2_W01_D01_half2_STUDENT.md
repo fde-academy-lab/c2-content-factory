@@ -19,15 +19,20 @@ Transition: S1, what the morning found.
 *What did the morning's four chapters find on Kalpa's 30 orders?*
 
 ```mermaid
-flowchart LR
-    R["<b>sales, four readings</b><br/>30 orders, booked Rs 5,44,810<br/>not cancelled Rs 5,35,760<br/>delivered Rs 5,20,790"] --> C["<b>customers</b><br/>23, counted by id"]
-    R --> F["<b>orders per customer</b><br/>1.30: 7 came back,<br/>16 bought once"]
-    R --> A["<b>order value</b><br/>AOV, the mean, Rs 18,160<br/>median, the typical, Rs 2,205"]
+flowchart TB
+    R["<b>sales</b><br/>booked<br/>Rs 5,44,810<br/>on 30 orders"] --> C["<b>customers</b><br/>23, by id"]
+    R --> F["<b>orders each</b><br/>1.30"]
+    R --> A["<b>order value</b><br/>the mean<br/>Rs 18,160"]
+    F --> F1["7 came back"]
+    F --> F2["16 bought<br/>once"]
+    A --> A1["<b>median</b><br/>Rs 2,205"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    class R,C,F,A known
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class R,C,F,A,F1,A1 known
+    class F2 bet
 ```
 
-Chapter 1 named the definition behind each total, chapter 2 built each branch as a fraction on one definition, chapter 3 counted customers by id, and chapter 4 chose the median because only 1 of the 30 orders sits above the mean.
+Chapter 1 read sales four ways, 30 orders booked for Rs 5,44,810, Rs 5,35,760 not cancelled and Rs 5,20,790 delivered; chapter 2 built each branch as a fraction on one definition; chapter 3 counted customers by id; and chapter 4 chose the median because only 1 of the 30 orders sits above the mean.
 
 ```notes
 LIVE, 2 minutes, the first two of chapter 5's 30. Read the tree from the root: booked revenue of
@@ -82,9 +87,9 @@ Transition: S3, who asks for the branch and what a wrong one costs.
 
 | | |
 |---|---|
-| The metric at stake | Revenue growth against the 15 percent plan, and what each branch alone would have to do to reach it |
-| Who asks | Meera signs, the marketing lead owns acquisition, and the head of Retail-Plus owns the members most likely to come back |
-| What a wrong number costs | Rs 12 crore spent on a branch that was fine, or a plan sized by adding lifts that multiply |
+| The metric at stake | Revenue growth is measured against the 15 percent plan, with what each branch alone would have to do. |
+| Who asks | Meera signs, the marketing lead owns acquisition, and the head of Retail-Plus owns the members most likely to come back. |
+| What a wrong number costs | Rs 12 crore goes to a branch that was fine, or the plan is sized by adding lifts that multiply. |
 
 ```notes
 LIVE, 2 minutes. The question is now a choice between branches, and a choice needs the cost of each
@@ -121,18 +126,20 @@ Transition: S5, which orders the plan is sized on.
 Meera's plan is about customers who buy again and again, so it concerns three segments, Retail-Core, Retail-Plus and Student, and the consumer view keeps every order whose segment is one of them.
 
 ```python
-CONSUMER = {"Retail-Core", "Retail-Plus", "Student"}      # the segments the plan concerns
-consumer = [o for o in ORDERS if o["segment"] in CONSUMER]
-base = sum(o["amount"] for o in consumer)                  # Rs 64,810
-plan = base * 1.15                                         # about Rs 74,532
+CONSUMER = {"Retail-Core", "Retail-Plus",
+            "Student"}
+consumer = [o for o in ORDERS
+            if o["segment"] in CONSUMER]
+base = sum(o["amount"] for o in consumer)
+plan = base * 1.15
 ```
 
 ```mermaid
-flowchart LR
+flowchart TB
     RC["<b>Retail-Core</b><br/>Rs 32,650"] --> V["<b>consumer view</b><br/>Rs 64,810"]
     RP["<b>Retail-Plus</b><br/>Rs 27,320"] --> V
     ST["<b>Student</b><br/>Rs 4,840"] --> V
-    V -->|"x 1.15"| P["<b>the plan</b><br/>about Rs 74,532,<br/>Rs 9,722 more"]
+    V -->|"x 1.15"| P["<b>the plan</b><br/>about<br/>Rs 74,532,<br/>Rs 9,722 more"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class RC,RP,ST,V known
@@ -183,16 +190,16 @@ Transition: S7, the answer.
 **What happened.** The answer is a. Revenue is a product, so a branch that rises 15 percent while the others hold lifts revenue 15 percent, and each branch alone must bring the same Rs 9,722.
 
 ```python
-# any one factor x 1.15, the other two held, gives revenue x 1.15
-(customers * 1.15) * per_customer * order_value == plan   # customers alone
-customers * (per_customer * 1.15) * order_value == plan   # frequency alone
-customers * per_customer * (order_value * 1.15) == plan   # order value alone
+# one factor x 1.15, the other two held
+(cust * 1.15) * per_cust * value == plan
+cust * (per_cust * 1.15) * value == plan
+cust * per_cust * (value * 1.15) == plan
 ```
 
 ```mermaid
 flowchart LR
-    C["<b>customers</b><br/>x 1"] --> R["<b>revenue</b><br/>x 1.15, about Rs 74,532"]
-    F["<b>orders per customer</b><br/>x 1.15"] --> R
+    C["<b>customers</b><br/>x 1"] --> R["<b>revenue</b><br/>x 1.15, about<br/>Rs 74,532"]
+    F["<b>orders each</b><br/>x 1.15"] --> R
     A["<b>order value</b><br/>x 1"] --> R
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -214,12 +221,12 @@ Transition: S8, which branch has evidence behind it.
 ## S8. Question: which branch has evidence behind it?
 *Which branch does this file give Meera a reason to open first?*
 
-| Option, moved alone | What 15 percent asks | Who is asked |
-|---|---|---|
-| A. Customers | 15 percent more customers who buy like today's | People Kalpa has never met |
-| B. Frequency | 15 percent more orders from the same customers | People who already bought |
-| C. Order value | Rs 335 more on every order, Rs 2,235 to Rs 2,570 | Every basket |
-| D. Price | Every price 15 percent higher, with nobody leaving | Every shopper at the shelf |
+| Option, moved alone | What 15 percent asks, and of whom |
+|---|---|
+| A. Customers | It needs 15 percent more customers who buy like today's, all of them people Kalpa has never met. |
+| B. Frequency | It needs 15 percent more orders from the customers who already bought. |
+| C. Order value | It needs Rs 335 more on every basket, the mean rising from Rs 2,235 to Rs 2,570. |
+| D. Price | It needs every price 15 percent higher, with no shopper buying any less. |
 
 **Predict before you run.** Each option asks for the same Rs 9,722. Which one does this file give evidence for: a) customers, b) frequency, c) order value, or d) price?
 
@@ -236,9 +243,9 @@ Transition: S9, the answer and the call.
 
 ```mermaid
 flowchart LR
-    R["<b>revenue</b><br/>+15 percent,<br/>Rs 9,722"] --> C["<b>A. customers</b><br/>one window cannot<br/>show them falling"]
-    R --> F["<b>B. orders per customer</b><br/>1.30: 7 came back,<br/>16 bought once"]
-    R --> V["<b>C, D. order value</b><br/>items and prices<br/>are not in the file"]
+    R["<b>revenue</b><br/>+15 percent<br/>Rs 9,722"] --> C["<b>A. customers</b><br/>one window<br/>cannot show<br/>a fall"]
+    R --> F["<b>B. frequency</b><br/>1.30: 7 back,<br/>16 once"]
+    R --> V["<b>C, D. value</b><br/>items, prices<br/>not in the file"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -355,9 +362,9 @@ Transition: S14, the same total built from its parts.
 
 ```mermaid
 flowchart LR
-    B["<b>consumer view</b><br/>Rs 64,810"] -->|"+ Rs 6,481<br/>customers"| C["Rs 71,291"]
-    C -->|"+ Rs 6,481<br/>frequency"| F["Rs 77,772<br/>where the slide stops"]
-    F -->|"+ Rs 648<br/>lift on the lift"| T["<b>Rs 78,420</b><br/>after both lifts"]
+    B["<b>Rs 64,810</b><br/>the consumer<br/>view"] -->|"+ Rs 6,481"| C["<b>Rs 71,291</b><br/>customers<br/>+10 percent"]
+    C -->|"+ Rs 6,481"| F["<b>Rs 77,772</b><br/>frequency<br/>+10 percent"]
+    F -->|"+ Rs 648"| T["<b>Rs 78,420</b><br/>the lift on<br/>the lift"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -366,7 +373,7 @@ flowchart LR
     class T bet
 ```
 
-The base, two lifts of Rs 6,481 and the lift on the lift of Rs 648, which is 0.10 x 0.10 of the base, land where the multiplication did.
+The base, two lifts of Rs 6,481 and the lift on the lift of Rs 648, which is 0.10 x 0.10 of the base, land where the multiplication did; the slide's Rs 77,772 stops one part short.
 
 ```notes
 LIVE, 2 minutes. Notebook 05 draws this as a bridge and asserts it lands on the multiplied total.
@@ -404,14 +411,12 @@ Transition: S16, Kavya's review.
 ## S16. Chapter 5 opens frequency and names its switch
 *What did each of the chapter's six questions find?*
 
-| Question | Answer |
-|---|---|
-| Which base is the plan sized on? | The consumer view, Rs 64,810, needs Rs 9,722 more. |
-| What would each branch do alone? | Each would have to rise the whole 15 percent. |
-| Which branch has evidence? | Frequency has it, since 7 of 23 customers came back. |
-| Do two 10 percent lifts make 20? | They make 21 percent, Rs 78,420, against Rs 77,772. |
-| Do the four parts agree? | They land on the same Rs 78,420. |
-| What would switch the call? | Customers falling in a second quarter, or dearer retention, would. |
+1. **Which base is the plan sized on?** It is sized on the consumer view, whose Rs 64,810 needs Rs 9,722 more.
+2. **What would each branch have to do alone?** Each would have to rise the whole 15 percent.
+3. **Which branch has evidence behind it?** Frequency has, since 7 of 23 customers came back.
+4. **Do two 10 percent lifts make 20 percent?** They make 21 percent, Rs 78,420 against Rs 77,772.
+5. **Do the four parts land on the same total?** They do, on Rs 78,420.
+6. **What would switch the call?** Customers falling in a second quarter would, or a retained order costing more than a new one.
 
 **Kavya's review.** "Pick the branch the evidence points at and the one that costs least to test, then say what would make you pick another. And recompute anything someone adds up."
 
@@ -466,9 +471,9 @@ Transition: S18, who reads the sentence.
 
 | | |
 |---|---|
-| The metric at stake | The repeat picture: who came back, who has not, and who has not had time to |
-| Who asks | Meera signs, Kavya reviews it first, and the marketing lead reads it for its weakest number |
-| What a wrong number costs | A claim marketing knocks down in one question, and the trust the week depends on |
+| The metric at stake | The repeat picture shows who came back, who has not, and who has not had time to. |
+| Who asks | Meera signs, Kavya reviews it first, and the marketing lead reads it for its weakest number. |
+| What a wrong number costs | Marketing knocks the claim down in one question, and the team loses the trust the week depends on. |
 
 ```notes
 LIVE, 2 minutes. Meera will not read six notebooks. Marketing will read the sentence looking for the
@@ -683,9 +688,9 @@ Transition: S28, the same split by a second route.
 *Do due dates find the same buyers as the days since ordering?*
 
 ```python
-too_recent = [c for c in once_ids if (end - first[c]).days < 45]            # days since the order
-due_late   = [c for c in once_ids if first[c] + timedelta(days=45) > end]    # due date after the end
-assert set(due_late) == set(too_recent)                                       # the same 9 customers
+too_recent = [c for c in once_ids if (end - first[c]).days < 45]
+due_late = [c for c in once_ids if first[c] + timedelta(days=45) > end]
+assert set(due_late) == set(too_recent)       # the same 9 customers
 ```
 
 ```mermaid
@@ -730,14 +735,12 @@ Transition: S30, Kavya's review.
 ## S30. Chapter 6 hands Meera a sentence she can sign
 *What did each of the chapter's six questions find?*
 
-| Question | Answer |
-|---|---|
-| Who reads the sentence? | Meera reads it for the decision, marketing for its weakest number. |
-| Which form carries the decision? | One sentence does, in about 20 seconds, with its limit. |
-| What does the first draft say? | It says 23 customers, 1.30 each, Rs 2,205 and 16 bought once. |
-| How many of the 16 are lost? | At most 7 are, since 9 bought inside the 45-day gap. |
-| Do due dates agree? | They find the same 9 customers. |
-| What does Meera sign? | She signs 7 back, 7 past the gap and 9 too recent, frequency first. |
+1. **Who reads the sentence?** Meera reads it for the decision, and marketing for its weakest number.
+2. **Which form carries the decision?** One sentence does, in about 20 seconds, with its limit.
+3. **What does the first draft say?** It names 23 customers at 1.30 orders each, Rs 2,205 typical and 16 bought once.
+4. **How many of the 16 are really lost?** At most 7 are, since 9 bought inside the 45-day gap.
+5. **Do due dates find the same buyers?** They find the same 9.
+6. **What does Meera sign?** She signs a sentence that splits the 16 into 7 past the gap and 9 too recent, and opens frequency.
 
 **Kavya's review.** "This is a sentence I would take into the room: what we know, what we would do, and what we need before spending Rs 12 crore, and every number in it is one we can defend."
 
@@ -770,11 +773,11 @@ Transition: S31, Anand's ask.
 **The client asks.** "Booked includes orders we cancelled and orders that came back. Do it again on what was delivered and stayed delivered, and tell me whether your answer survives." Anand Iyer, finance controller
 
 ```cards
-icon: package-check | eyebrow: Part 1 | title: The delivered leaves | body: Orders, customers by id, and orders per customer, all on delivered orders.
-icon: ruler | eyebrow: Part 2 | title: The typical delivered order | body: The mean, the median of an odd count, and the orders above the mean.
-icon: calculator | eyebrow: Part 3 | title: The plan and the discount | body: What the 15 percent plan asks of delivered revenue, and a discount priced through the tree.
-icon: git-branch | eyebrow: Part 4 | title: The branch, with the window's edge | body: One-time buyers, the ones too recent to judge, and the branch.
-icon: message-square | eyebrow: Part 5 | title: The sentence | body: Chapter 6's four parts, on delivered orders, with what held. | tone: dark
+icon: package-check | eyebrow: Part 1 | title: The delivered leaves | body: Count orders, customers by id and orders per customer on delivered orders.
+icon: ruler | eyebrow: Part 2 | title: The typical delivered order | body: Find the mean, the median of an odd count and the orders above the mean.
+icon: calculator | eyebrow: Part 3 | title: The plan and the discount | body: Size the 15 percent plan on delivered revenue, and price a discount through the tree.
+icon: git-branch | eyebrow: Part 4 | title: The branch, with the window's edge | body: Hold back one-time buyers too recent to judge, then pick the branch and the headline.
+icon: message-square | eyebrow: Part 5 | title: The sentence | body: Write chapter 6's four parts on delivered orders, with what held. | tone: dark
 ```
 
 ```notes
@@ -790,9 +793,9 @@ Transition: S32, what to post and how long each part takes.
 *What do you post, and how long does each part take?*
 
 ```timeline
-label: Parts 1 and 2 | title: 12 minutes | body: The delivered leaves and the delivered median.
-label: Parts 3 and 4 | title: 12 minutes | body: The plan on delivered revenue, the discount, and the window's edge.
-label: Part 5 | title: 6 minutes | body: The sentence, and one line on what moved and what held. | tone: dark
+label: Parts 1 and 2 | title: 12 minutes | body: Rebuild the delivered leaves and find the delivered median.
+label: Parts 3 and 4 | title: 12 minutes | body: Size the plan on delivered revenue, price the discount and apply the window's edge.
+label: Part 5 | title: 6 minutes | body: Write the sentence, and one line on what moved and what held. | tone: dark
 ```
 
 Work alone in the escalated case brief and its notebook, with no hints, and run every check before you post.
@@ -843,12 +846,12 @@ Transition: S34, the checks.
 
 | The wrong number | The check that catches it | What to report |
 |---|---|---|
-| Rs 5,44,810 as sales | Count orders by status before summing. | Rs 5,35,760 not cancelled, named. |
-| Rs 25,943 AOV | AOV x the 30 orders the revenue covers must give it back. | Rs 18,160 booked or Rs 24,800 delivered. |
-| 1.00 orders each | Compare rows with distinct ids: 30 against 23. | 1.30 orders each, and 7 came back. |
-| Rs 18,160 typical | Count orders above the mean: 1 of 30. | The median, Rs 2,205. |
-| 20 percent growth | Recompute through the tree: 1.10 x 1.10. | 21 percent, Rs 78,420 on the consumer view. |
-| 70 percent lost | Hold back buyers inside the 45-day gap. | 7 back, 7 past the usual gap, 9 too recent. |
+| Rs 5,44,810 as sales | Count orders by status before summing. | Rs 5,35,760, named as not cancelled, goes in the note. |
+| Rs 25,943 AOV | AOV x the 30 orders the revenue covers must give it back. | Rs 18,160 booked or Rs 24,800 delivered, each named, is the AOV. |
+| 1.00 orders each | Compare rows with distinct ids: 30 against 23. | Kalpa has 1.30 orders per customer, and 7 came back. |
+| Rs 18,160 typical | Count orders above the mean: 1 of 30. | The median, Rs 2,205, is the typical order. |
+| 20 percent growth | Recompute through the tree: 1.10 x 1.10. | Growth is 21 percent, Rs 78,420 on the consumer view. |
+| 70 percent lost | Hold back buyers inside the 45-day gap. | 7 came back, 7 are past the usual gap and 9 are too recent. |
 
 ```notes
 LIVE, 12 minutes. The answer is d. Walk the rows in the order the room met them. Then the escalated
@@ -877,12 +880,12 @@ Transition: S35, Meera's second question.
 **The client asks.** "Where does revenue come from, by customer type and channel? The store team says they carry the business. Should the growth plan be store-led?"
 
 ```timeline
-label: Step 1 | title: By channel | body: Each channel's share of booked revenue.
-label: Step 2 | title: Behind a share | body: The orders by status in each channel.
-label: Step 3 | title: Consumer view | body: The channels on the three consumer segments.
-label: Step 4 | title: By status | body: What each channel booked, kept and lost.
-label: Step 5 | title: By type | body: Revenue for each consumer segment.
-label: Step 6 | title: The branch | body: Whether the channel view moves it. | tone: dark
+label: Step 1 | title: By channel | body: Find each channel's share of booked revenue.
+label: Step 2 | title: Behind a share | body: Count the orders by status in each channel.
+label: Step 3 | title: Consumer view | body: Recompute the channels on the three consumer segments.
+label: Step 4 | title: By status | body: Split what each channel booked, kept and lost.
+label: Step 5 | title: By type | body: Add up revenue for each consumer segment.
+label: Step 6 | title: The branch | body: Decide whether the channel view moves it. | tone: dark
 ```
 
 In pairs, 15 minutes, in the second case brief and its notebook; argue each item before you record it.
@@ -927,7 +930,7 @@ xychart-beta
     bar [42.1, 29.2, 28.7]
 ```
 
-Once the view keeps the three consumer segments Meera's plan concerns, store's share falls from 91.6 to 29.2 percent, Rs 18,920 of Rs 64,810, so store's headline share came from outside those segments. Web leads with Rs 27,290, and app holds Rs 18,600.
+Once the view keeps the three consumer segments Meera's plan concerns, store's share falls from 91.6 to 29.2 percent, Rs 18,920 of Rs 64,810, so its headline share came from outside those segments; web leads with Rs 27,290.
 
 **In the interview.** [D] One channel carries nine rupees in ten of revenue; does that change where the growth plan invests?
 
@@ -1101,9 +1104,9 @@ Transition: S44, the answer Meera hears.
 
 ```mermaid
 flowchart LR
-    S["<b>chapter 6's sentence</b><br/>frequency first,<br/>Rs 12 crore held"] --> M["<b>to Meera</b>"]
-    D["<b>escalated case</b><br/>the branch holds<br/>on delivered orders"] --> M
-    C["<b>second case</b><br/>two leaks named"] --> M
+    S["<b>chapter 6</b><br/>frequency first<br/>budget held"] --> M["<b>to Meera</b>"]
+    D["<b>escalated case</b><br/>branch holds<br/>on delivered"] --> M
+    C["<b>second case</b><br/>two leaks<br/>named"] --> M
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class S,D,C known

@@ -1,15 +1,24 @@
-# The escalated case: does the answer survive on what stayed delivered?
+# Does the answer survive on the orders that stayed delivered?
 
 > "Booked includes orders we cancelled and orders that came back. Do it again on what was delivered
 > and stayed delivered, and tell me whether your answer survives."
 > Anand Iyer, finance controller, Kalpa Retail
 
-Thirty-five minutes, alone, with no hints. The six chapters answered Meera on booked orders; this
-brief asks the same question on the 21 delivered orders, in five parts that each climb from the one
-before, and ends on one sentence to Meera. Work in
-`notebooks/C2_W01_D01_ex1_escalated_case_STUDENT.ipynb`, which carries the same five parts as TODO
-cells on the 30 orders from 1 July to 26 September. Items marked **Design** ask for the best-fit
-approach, a sizing, or the fact that would switch it.
+**Who needs the answer.** Anand counts only what stayed sold, and his numbers are the ones that reach
+the board. Meera needs to know before Thursday whether the branch she opens first changes on his
+definition. An answer that holds on booked orders alone never reaches his books.
+
+**The questions on the way.** How many customers stand behind the delivered orders, and how many
+orders does each keep? What is the typical delivered order? What does the 15 percent plan ask of
+delivered revenue, and where would marketing's discount leave it? How many delivered one-time buyers
+are too recent to judge, which branch holds, and what goes in the board's headline? What sentence
+goes to Meera?
+
+Thirty-five minutes, alone, with no hints. The five parts each climb from the one before, and the
+last ends on one sentence to Meera. Work in `notebooks/C2_W01_D01_ex1_escalated_case_STUDENT.ipynb`,
+which carries the same five parts as TODO cells on the 30 orders. Items marked **Design** ask for
+the best-fit approach, a sizing, the fact that would switch the choice, or the second route that
+would confirm a number.
 
 The afternoon's items are numbered as one run: this brief holds items 1 to 10, and the second case
 continues from item 11.
@@ -22,6 +31,26 @@ Post exactly this shape: xxxxxx
 Then this shape: n n n
 ```
 
+---
+
+## What did the chapters find on booked orders, and what changes on delivered?
+
+The six chapters answered Meera, Kalpa Retail's CEO, on the booked reading of Kalpa Retail's 30
+orders from 1 July to 26 September 2026, an 88-day window:
+
+| Question | The answer on booked orders |
+|---|---|
+| Sales | Rs 5,44,810 booked on 30 orders |
+| The customer branches | 23 customers, 1.30 orders each; 7 came back and 16 bought once |
+| The typical order | The median, Rs 2,205, halfway between the two middle amounts of an even count |
+| The plan | Sized on the consumer view, the orders whose segment is one of the three consumer segments Meera's plan concerns (Retail-Core, Retail-Plus and Student): Rs 64,810 booked, so 15 percent is Rs 9,722 more |
+| The branch | Frequency first, since the customers exist and 7 already came back |
+| The window's edge | Returning customers took a median of 45 days between orders, so 9 of the 16 one-time buyers were too recent to judge |
+
+Anand's reading keeps only the delivered orders, those that reached a customer and stayed: 21 of
+the 30 orders, Rs 5,20,790. The other 9 left the reading in two ways: 4 orders, Rs 9,050, were
+cancelled before they left the shelf, and 5, Rs 14,970, were returned after delivery.
+
 ```mermaid
 flowchart LR
     B["<b>booked</b><br/>30 orders, the chapters"] --> D["<b>delivered</b><br/>21 orders, this case"]
@@ -30,83 +59,100 @@ flowchart LR
 
 ---
 
-## Part 1. The leaves on what stayed delivered
+## How many customers stand behind the delivered orders, and how many orders does each keep?
 
-### Q1. Compute: how many distinct customers are behind the 21 delivered orders?
+Finance teams recount the customer branches on the definition their books use before any customer
+figure goes to a board.
+
+### Q1. Compute: how many distinct customers stand behind the 21 delivered orders?
 
 Write the number.
 
-### Q2. Compute: what is orders per customer on the delivered definition, to two decimals?
+### Q2. Compute: what is orders per customer on the delivered reading, to two decimals?
 
 Write the number.
 
 ---
 
-## Part 2. The typical delivered order
+## What is the typical delivered order?
 
-### Q3. The 21 delivered amounts are sorted into a list called amounts. Which expression is the median?
+Analysts recompute the typical order whenever the set of orders behind it changes, and they state
+which orders it is the middle of.
 
-a) (amounts[9] + amounts[10]) / 2, halfway between the two middles
+### Q3. Anand's typical delivered order is the median of the 21 delivered amounts, sorted from smallest to largest into a list called amounts. Which expression gives it?
+
+a) (amounts[9] + amounts[10]) / 2, halfway between two middles
 b) amounts[11], the value one place above the middle of the list
 c) amounts[10], the single middle value of an odd count
 d) sum(amounts) / 21, the total divided by the count
 
 ---
 
-## Part 3. The plan and the discount, on delivered revenue
+## What does the plan ask of delivered revenue, and where would a discount leave it?
 
-### Q4. Design. Anand wants the 15 percent plan sized on what stayed delivered. Which base should the frequency sizing use, and what does it ask for?
+Finance resizes a plan on its own definition before it signs, and it prices every proposal through
+the tree before any money moves.
 
-a) All 21 delivered orders, 3.15 more, since every delivered rupee counts toward Anand's plan
-b) The 20 everyday delivered orders, 3 more, since no offer moves the top order
-c) The 18 everyday delivered customers, 2.7 more people, since frequency is counted in people
-d) The 30 booked orders, 4.5 more, since the board set the plan on booked revenue last year
+### Q4. Design. Anand wants the 15 percent plan sized on what stayed delivered, and Meera's plan still concerns the three consumer segments. Which base should the plan use, and what does it ask for?
 
-### Q5. Design. Marketing proposes 15 percent off everything, expected to lift orders 10 percent. On the 20 everyday delivered orders, Rs 40,790, where does revenue land?
+a) All delivered revenue, Rs 5,20,790: about Rs 78,119 more, since every delivered rupee counts
+b) The consumer view's delivered revenue, Rs 40,790: about Rs 6,119 more, to about Rs 46,909
+c) The consumer view's booked revenue, Rs 64,810: about Rs 9,722 more, as chapter 5 sized it
+d) All booked revenue, Rs 5,44,810: about Rs 81,722 more, since the board reads the booked total
 
-a) About Rs 38,140, a fall of 6.5 percent
-b) About Rs 38,750, a fall of 5.0 percent
-c) About Rs 44,870, a rise of 10.0 percent
-d) About Rs 46,910, a rise of 15 percent
+### Q5. Design. Marketing proposes 15 percent off everything and expects orders to rise 10 percent. On the base you chose in Q4, where would revenue land?
+
+a) Rs 38,139, a fall of 6.5 percent
+b) Rs 61,570, a fall of 5 percent
+c) Rs 38,751, a fall of 5 percent
+d) Rs 60,597, a fall of 6.5 percent
 
 ---
 
-## Part 4. The branch, with the window's edge
+## Which branch holds on delivered orders, once the window's edge is counted?
 
-### Q6. Compute: of the delivered customers who kept only one order, how many placed their order fewer than 45 days before 26 September, too recently to judge?
+Retention teams count who has had time to come back before they call a branch dead, on every
+definition the business reports.
+
+### Q6. Compute: of the delivered customers who kept only one order, how many placed it fewer than 45 days before 26 September, too recently to judge?
 
 Write the number.
 
 ### Q7. On delivered orders, which branch should Meera open first?
 
 a) Acquisition, since few delivered customers kept a second order at all
-b) Price per item, since a price rise moves delivered revenue fastest
-c) Order value, since the delivered mean rose to Rs 24,800
-d) Frequency, with cancelled and returned repeat orders as its leak
+b) Frequency, since the delivered rate stays close to the booked 1.30
+c) Order value, since the delivered mean order rose to Rs 24,800
+d) Frequency, with the cancelled and returned repeat orders as its leak
 
 ### Q8. Which line tells Anand what moved and what held between booked and delivered?
 
-a) Everything held, so the definition never mattered to the answer
+a) Everything held, so the reading of sales never mattered to the answer
 b) Orders per customer fell; the typical order and the branch held
 c) The typical order doubled, so the branch moves to order value
 d) The branch moved to acquisition, since frequency fell on delivered orders
 
-### Q9. Design. Anand will read the note at the board. Which definition goes in its headline, and what goes beside it?
+### Q9. Design. Anand will read the note at the board, where booked is Rs 5,44,810 and delivered Rs 5,20,790, Rs 24,020 apart. Which reading of sales goes in its headline, and what goes beside it?
 
-a) Delivered, as his books count what stayed sold, with booked and the bridge beside it
-b) Booked alone, since it is the largest figure and so the most flattering for the team
-c) Whichever definition gives frequency the strongest case, so the recommendation reads cleanly
-d) Neither, since two definitions confuse a board and a single mean is simpler to take in
+a) Delivered, as his books count what stayed sold, with booked and the walk beside it
+b) Booked, since the chapters and the plan were sized on it, with delivered in a note
+c) Not cancelled, since it sits between the other two and splits the difference
+d) Delivered alone, since two readings of sales on one page confuse a board
 
 ---
 
-## Part 5. The sentence to Meera
+## What sentence goes to Meera on delivered orders?
 
-### Q10. Write one sentence, under 70 words, in chapter 6's four parts on delivered orders: the evidence with its window and definition, the branch, what one quarter cannot show, and what happens to the Rs 12 crore.
+A recommendation rebuilt on a stricter definition goes back to the person who decides in the same
+four parts, with what moved and what held.
+
+### Q10. Write one sentence, under 70 words, in chapter 6's four parts on delivered orders: the evidence with its window and reading of sales, the branch, what one quarter cannot show, and what happens to the Rs 12 crore.
 
 Paste it after your two lines.
 
-## Hands-on
+---
+
+## How do the notebook's picks go into your post?
 
 Each of the notebook's nine TODO cells carries a lettered choice above its placeholder. Post your
 nine picks as one more line after your sentence, in TODO order, and run the notebook top to bottom:

@@ -74,19 +74,20 @@ chapter writes one number onto it, and the dark box is the branch the day opens 
 one decides something with it, and a number worked out without that decision in mind can send a
 budget to the wrong branch.
 
-**The questions on the way.** Which real companies look like Kalpa? How much of Rs 100 of GMV does
-Kalpa keep? Who asks the data team for which number? How is each number worked out? What did Meera
-ask?
+**The questions on the way.** Which real companies look like Kalpa? How much of Rs 100 at the
+checkout does Kalpa keep? Who asks the data team for which number? How is each retail number worked
+out from the tree? What did Meera ask before signing Rs 12 crore?
 
 ### Which real companies look like Kalpa?
 
 Kalpa Group is fictional. It runs five units from Singapore, and its data and AI team, the one you
-have joined, sits in its Global Capability Centre (GCC) in Bengaluru. Kalpa Retail sells consumer goods through
-an app, a website and stores in India and South-East Asia, to households and to businesses. Reliance
-is the nearest real group, with Jio's 533 million subscribers and Reliance Retail's 20,169 stores in
-the quarter to June 2026 (Reliance Industries media release, 17 July 2026).
+have joined, sits in its Global Capability Centre (GCC) in Bengaluru. Kalpa Retail sells consumer
+goods through an app, a website and stores in India and South-East Asia, to households and to
+businesses. Reliance is the nearest real group, with Jio's 533 million subscribers and Reliance Retail's 20,169 stores in
+the quarter to June 2026 (Reliance Industries media release, 17 July 2026). The dossier's section on
+which real company Kalpa is like names the others.
 
-### How much of Rs 100 of GMV does Kalpa keep?
+### How much of Rs 100 at the checkout does Kalpa keep?
 
 Gross merchandise value, GMV, is everything customers ordered at the prices charged. Net revenue, the
 smaller figure Finance reports as earned from the goods, differs from it, and what fills the gap is
@@ -102,17 +103,18 @@ Meera Raghavan, the CEO, asks where growth comes from, and Anand Iyer, the finan
 whether our numbers match his books. The marketing lead asks whether Kalpa needs more customers, the
 head of Retail-Plus, the paid membership tier, asks whether his tier is slipping, and Kavya Nair, the
 senior analyst, checks every number first. A wrong dashboard figure can be corrected before anyone
-acts on it, and a budget already spent cannot be taken back.
+acts on it, and a budget already spent cannot be taken back; the dossier's section on who decides
+what draws the whole chart.
 
-### How is each number worked out?
+### How is each retail number worked out from the tree?
 
-Revenue is a product, customers x orders per customer x average order value (AOV), and each branch
-is a numerator over a denominator: AOV is revenue / orders, orders per customer is orders /
-customers, and payback is the cost of winning a customer over the contribution that customer brings
-each month. The dossier's
-section on the metrics as formulas gives the others.
+Revenue is a product, customers x orders per customer x average order value (AOV), and each branch,
+like most retail metrics, is a numerator over a denominator: AOV is revenue / orders and orders per
+customer is orders / customers. Payback, which marketing's Rs 12 crore will be judged on, is the cost
+of winning a customer over the contribution that customer brings each month. The dossier's section on
+the metrics as formulas gives the others.
 
-### What did Meera ask?
+### What did Meera ask before signing Rs 12 crore?
 
 Revenue grew 4 percent last year against a plan of 15, and marketing wants Rs 12 crore to acquire
 customers. Meera writes, "Before I sign anything, I want to understand our own sales. What is 'sales'
@@ -138,10 +140,10 @@ tree's root?
 ### Who needs one number called sales, and what does a wrong one cost?
 
 Meera plans from it and Anand checks it. Kalpa's extract holds 30 orders from 1 July to 26
-September, an 88-day window, each delivered, returned or cancelled, and Reliance Retail reported gross revenue of Rs 90,408 crore and revenue from
-operations of Rs 79,745 crore for the quarter to June 2026, with recovered GST between them (Reliance
-Industries media release, 17 July 2026), so two honest totals are normal, and one sent without its
-name measures the plan from a base nobody chose.
+September, an 88-day window, and each is delivered, returned or cancelled. Reliance Retail reported
+gross revenue of Rs 90,408 crore and revenue from operations of Rs 79,745 crore for the quarter to
+June 2026, with recovered GST between them (Reliance Industries media release, 17 July 2026), so two
+honest totals are normal, and one sent without its name measures the plan from a base nobody chose.
 
 ### Which way of answering fits this file?
 
@@ -152,15 +154,15 @@ the plan's definition.
 
 ### Which reading of sales comes out largest?
 
-Booked comes out largest. One loop keeps three sums, and a `TypeError` on the first run means one
-amount is stored as text, so wrap it in `int()` and move on. Booked, every order placed, is Rs 5,44,810 on 30; not cancelled, what
-left the shelf, Rs 5,35,760 on 26; and delivered, what reached the customer and stayed, Rs 5,20,790 on
-21. With no discount field, sales after discounts cannot be worked out.
+One loop keeps three sums, and a `TypeError` on the first run means one amount is stored as text, so
+wrap it in `int()` and move on. Booked comes out largest: every order placed, Rs 5,44,810 on 30. Not
+cancelled, what left the shelf, is Rs 5,35,760 on 26, and delivered, what reached the customer and
+stayed, is Rs 5,20,790 on 21. With no discount field, sales after discounts cannot be worked out.
 
 ### What goes wrong if all 30 orders are sent as sales?
 
 A colleague's draft reads, "Sales this quarter: Rs 5,44,810 on 30 orders." Inside it ride 4 cancelled
-store orders worth Rs 9,050, overstating store's count by 4 orders in 10. The check counts orders by
+store orders worth Rs 9,050, so store's count is 4 orders in 10 too high. The check counts orders by
 channel and status first: 21 delivered, 5 returned, all on web, and 4 cancelled, all in store. The fix
 names the definition and bridges it, less Rs 9,050 cancelled and Rs 14,970 returned, to Rs 5,20,790
 delivered. Those Rs 24,020 are the story's gap between GMV and net revenue as it shows in this file,
@@ -198,8 +200,8 @@ orders? Does the mean of the 30 amounts agree? Which branches does the file stil
 ### Who needs the branches, and why as fractions?
 
 Meera needs them to find the short branch, and chapter 1 put booked revenue, Rs 5,44,810 on 30
-orders, on the root. The branches multiply back to
-revenue, so each must count the same orders in the same window. Reliance reports Jio as such a tree,
+orders, on the root. The branches multiply back to revenue, so each must count the same orders in the
+same window. Reliance reports Jio as such a tree,
 533 million subscribers at Rs 215.6 of revenue per user a month (Reliance Industries media release,
 17 July 2026).
 
@@ -207,7 +209,7 @@ revenue, so each must count the same orders in the same window. Reliance reports
 
 Orders x AOV needs only the amount and hides who buys, while customers x orders per customer x AOV
 needs the amount and the customer id, both in the file. A deeper tree needs items, prices and
-discounts, and a funnel needs traffic, and the file has neither. The three-branch tree fits, and order
+discounts and a funnel needs traffic, neither of which the file holds. The three-branch tree fits, and order
 lines with items and prices would move the call.
 
 ### What is the average order value?
@@ -220,8 +222,8 @@ Rs 5,20,790 / 21, about Rs 24,800.
 
 A hurried analyst divides Finance's booked revenue by the dashboard's delivered orders and tells
 marketing, "Our average order is Rs 25,943." The rupees of the 9 cancelled and returned orders stay in
-the numerator while those orders leave the denominator, so 30 x (Rs 5,44,810 / 21) claims Rs 7,78,300, 43 percent
-more than anyone booked. The check is the identity, AOV times the orders its revenue was summed over,
+the numerator while those orders leave the denominator, so 30 x (Rs 5,44,810 / 21) claims
+Rs 7,78,300, 43 percent more than anyone booked. The check is the identity, AOV times the orders its revenue was summed over,
 and the fix is one definition per fraction: Rs 18,160 booked or Rs 24,800 delivered.
 
 ### Does the mean of the 30 amounts agree?
@@ -420,7 +422,7 @@ its weakest number, so a figure marketing can knock down with one question costs
 
 **The questions on the way.** Who reads the sentence, and what will they look for? Which form carries
 the decision? What does the first draft say? How many of the 16 one-time buyers are really lost? Do
-due dates give the same 9? What does the sentence Meera signs say?
+due dates find the same 9 too-recent buyers? What does the sentence Meera signs say?
 
 ### Who reads the sentence, and what will they look for?
 
@@ -433,8 +435,8 @@ on cost had lowered quality (Fortune, 9 May 2025), so a first window's number is
 
 One number, 1.30 orders each, takes two seconds and decides nothing, and the tree as a table takes a
 minute and lets Meera pick. A sentence with evidence, branch, caveat and ask takes about twenty seconds
-and carries the decision with its limit. A weekly dashboard takes weeks to build and earns that cost
-once the question turns weekly, in Week 2, so the sentence fits.
+and carries the decision with its limit, so it fits today; a weekly dashboard takes weeks to build and
+earns that cost once the question turns weekly, in Week 2.
 
 ### What does the first draft say?
 
@@ -452,7 +454,7 @@ and 65), and 9 of the 16 ordered fewer than 45 days before the 88-day window clo
 back, 7 are past the usual gap and 9 are too recent to judge, and since the gap rests on 7 customers
 in one quarter, 45 days is a floor.
 
-### Do due dates give the same 9?
+### Do due dates find the same 9 too-recent buyers?
 
 A one-time buyer's order date plus 45 days is their due date, and the 9 due after the window ends are
 the same 9, now dated for a reminder.
@@ -484,7 +486,7 @@ recent to judge? What moved and what held?
 On the 21 delivered orders, 19 customers kept 1.11 orders each and only 2 kept two. The typical
 delivered order is Rs 2,060, the 11th of 21 sorted amounts, since an odd count has one middle. On the
 consumer view's delivered orders, frequency alone still needs 15 percent more orders from the same
-customers, and the discount still loses 6.5 percent. Of the 17 delivered customers who kept one order,
+customers, and 15 percent off with 10 percent more orders still loses 6.5 percent. Of the 17 delivered customers who kept one order,
 7 bought fewer than 45 days before the window closed.
 
 The answer survives: orders per customer fell from 1.30 to 1.11 while the typical order, the window's
@@ -558,8 +560,8 @@ about people (chapter 3). 4 b, since Python counts from 0 (chapter 4). 5 d, sinc
 The first five are the curriculum's anchors. The tags are [S] staple, [F] frequent in GCC and product
 screens, [SV] service-major opener and [D] differentiator or design.
 
-**[S] How would you increase sales for an online retailer?** "Draw revenue as customers x orders per
-customer x order value and size what the target asks of each branch alone. In my case 16 of 23
+**[S] How would you increase sales for an online retailer?** "I draw revenue as customers x orders
+per customer x order value and size what the target asks of each branch alone. In my case 16 of 23
 customers bought once, and 15 percent needed 15 percent more customers or more orders from those
 already there, so I opened frequency with the cheapest test first."
 
@@ -568,19 +570,19 @@ thirty orders the mean was Rs 18,160, the median Rs 2,205, and only 1 order sat 
 mean stays for totals, and a first look reports both."
 
 **[F] A business says "grow revenue 15 percent"; how do you turn that into questions data can
-answer?** "Fix the base first, which revenue over which window for which customers, then size what
-each branch must do alone, compare two periods to find the gap, and name the decision each answer
-changes."
+answer?** "I fix the base first: which revenue, over which window, for which customers. Then I size
+what each branch must do alone, compare two periods to find the gap, and name the decision each
+answer changes."
 
 **[SV] A list against a dictionary: when do you reach for each?** "A list to keep order and walk every
 record, a dictionary to count or look up by a key such as the customer id, and a set for distinct
 values; records arrive as a list of dictionaries."
 
 **[D] Marketing wants budget for acquisition; what would you check before agreeing it is the right
-branch, and how would you say no?** "Count customers by id and who came back, price a new customer on
-the targeted segments' mean order, Rs 2,235 in my case, and ask for the prior quarter. My no is a no
-for now, with a date and a cheaper frequency test, and a customers branch that fell would win the
-budget."
+branch, and how would you say no?** "I count customers by id and who came back, price a new customer
+on the targeted segments' mean order, Rs 2,235 in my case, and ask for the prior quarter. My no is a
+no for now, with a date and a cheaper frequency test, and if customers turn out to be the branch that
+fell, the budget follows."
 
 **[F] What counts as "sales": booked, net of cancellations, or delivered, and which do you give a
 CEO?** "Booked is what was ordered, not cancelled what left the shelf, delivered what stayed:
@@ -600,8 +602,8 @@ since a payback is a total, over the segments the spend targets, with the median
 typical order; a new target segment means a new mean."
 
 **[F] A 10 percent lift in customers and a 10 percent lift in frequency make 20 percent growth; what
-is the right number, and when does it matter?** "1.10 x 1.10 = 1.21, 21 percent: Rs 78,420 on
-Rs 64,810 against Rs 77,772. It matters when lifts are large or negative: two 30 percent lifts make 69
+is the right number, and when does it matter?** "Revenue multiplies its branches, so 1.10 x 1.10 =
+1.21, 21 percent: Rs 78,420 on Rs 64,810 of consumer orders, against the Rs 77,772 addition gives. It matters when lifts are large or negative: two 30 percent lifts make 69
 percent, and 15 percent off with 10 percent more orders loses 6.5 percent."
 
 **[D] You have one quarter of orders and 70 percent of customers bought once; what do you tell the
@@ -620,18 +622,18 @@ cancellations, while the plan stayed on frequency."
 
 | Term | In plain words | Where it appeared | An example |
 |---|---|---|---|
-| Revenue tree | Revenue is drawn as the metrics that multiply into it. | The picture | Customers x orders per customer x AOV |
-| Booked revenue | It counts every order placed in the window. | Chapter 1 | Rs 5,44,810 on 30 orders |
-| Delivered revenue | It counts only orders that reached the customer and stayed. | Chapter 1 | Rs 5,20,790 on 21 orders |
-| Denominator | It is what a metric divides by, named before the metric is worked out. | Chapters 2 and 3 | Distinct customers |
-| Identity check | The branches are multiplied back to see whether they land on the total. | Chapter 2 | 30 x (Rs 5,44,810 / 30) |
-| Distinct customers | Each customer id counts once, whatever the number of its orders. | Chapter 3 | 23 behind 30 rows |
-| Median | It is the middle sorted value, or the average of the two middles. | Chapter 4 | Rs 2,205 |
-| Lift | It is a change in one branch, written as a multiplier. | Chapter 5 | 1.10 x 1.10 = 1.21 |
-| GMV | It is everything customers ordered, at the prices charged. | The story | Rs 100, illustrative |
-| Net revenue | It is what Finance reports as earned from the goods, less than GMV. | The story, chapter 1 | Rs 80 of Rs 100 |
-| Consumer view | It keeps the orders whose segment is Retail-Core, Retail-Plus or Student. | Chapter 5 | Rs 64,810 booked |
-| Window's edge | It is the end of the data, where recent buyers have not had time to return. | Chapter 6 | 9 too recent to judge |
+| Revenue tree | Revenue is split into metrics that multiply. | The picture | Customers x orders per customer x AOV |
+| Booked revenue | It counts every order placed. | Chapter 1 | Rs 5,44,810 on 30 orders |
+| Delivered revenue | It counts orders that arrived and stayed. | Chapter 1 | Rs 5,20,790 on 21 orders |
+| Denominator | It is what a metric divides by. | Chapters 2 and 3 | Distinct customers |
+| Identity check | Branches multiplied back must give the total. | Chapter 2 | 30 x (Rs 5,44,810 / 30) |
+| Distinct customers | Each customer id is counted once. | Chapter 3 | 23 behind 30 rows |
+| Median | It is the middle of the sorted values. | Chapter 4 | Rs 2,205 |
+| Lift | It is a branch's change, as a multiplier. | Chapter 5 | 1.10 x 1.10 = 1.21 |
+| GMV | It is everything ordered, at the prices charged. | The story | Rs 100, illustrative |
+| Net revenue | It is what Finance reports as earned, less than GMV. | The story, chapter 1 | Rs 80 of Rs 100 |
+| Consumer view | It keeps the Retail-Core, Retail-Plus and Student orders. | Chapter 5 | Rs 64,810 booked |
+| Window's edge | It is where recent buyers have not had time to return. | Chapter 6 | 9 too recent to judge |
 
 ---
 
@@ -654,6 +656,6 @@ cancellations, while the plan stayed on frequency."
 Not on this quarter's evidence. Kalpa's 30 booked orders came from 23 customers, 7 of whom came back
 inside 88 days, and 9 of the 16 one-time buyers have not yet had the usual 45 days. The plan's
 Rs 9,722 on the consumer segments asks the same 15 percent of either customer branch, and only
-frequency has evidence and a test that costs a reminder. The answer holds on delivered orders and the
-channel view adds two leaks without moving the branch, and since one quarter cannot show which branch
-fell, the Rs 12 crore waits for Tuesday's two quarters, where Meera's reply asks which branch moved.
+frequency has evidence and a test that costs a reminder. The answer holds on delivered orders, and
+the channel view adds two leaks without moving the branch. One quarter cannot show which branch fell,
+so the Rs 12 crore waits for Tuesday's two quarters, where Meera's reply asks which branch moved.
