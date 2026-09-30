@@ -49,10 +49,10 @@ close is the sentence the learner would actually send. The canonical Week 1 case
 what "sales" is made of before she signs a marketing budget, the room draws the revenue tree, and only
 then does Python arrive as the calculator.
 
-**What is planted in the data is never named to a learner before the room finds it.** The client-zero
-column is TRAINER ONLY. The room finds the bulk order by sorting and the duplicates by reconciling. A
-slide that announces the plant has spent the lesson; the week's Saturday recap paper follows the
-lesson and may name what the room found.
+**What is planted in the data is never named to a learner.** The client-zero column is TRAINER ONLY.
+The room finds the bulk order by sorting and the duplicates by reconciling. A slide that announces the
+plant has spent the lesson. The one exception is the week's Saturday recap paper, which may name a
+plant the room has already found in class.
 
 **The interview angle is an output.** The row carries the questions this day equips a learner to
 answer, tagged `[S]`, `[F]`, `[SV]` or `[D]`. Questions go into the pack; answers are written here at
