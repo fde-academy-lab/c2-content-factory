@@ -30,4 +30,4 @@ exactly that kind of silent loss.
 
 Every `GROUP BY` in SQL and every `groupby` in pandas is this accumulator with the loop hidden, and
 both meet later in the programme. The habit of counting groups before reading them is what catches
-a join that dropped a category or a filter that emptied a segment.
+a step that quietly lost a segment, whatever the tool.
