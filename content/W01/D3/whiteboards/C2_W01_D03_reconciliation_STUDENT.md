@@ -77,7 +77,9 @@ flowchart LR
 ```
 
 Drawn in chapter 5. Under it, the two equations: rows 201 = 186 + 15, and rupees 2,09,98,210 less
-19,98,210 = 1,90,00,000.
+19,98,210 = 1,90,00,000. Beside it, Monday's tree recomputed as Q2's multiple of Q1: customers
+x1.000, orders per customer x0.860, revenue per order x1.144, revenue x0.984, with Tuesday's x1.000,
+x0.754, x1.180 and x0.890 written above and crossed through.
 
 ## Seventh drawing: the replay
 
@@ -96,5 +98,6 @@ Beside it: "a log is finished when a stranger can replay it".
 
 The four moves across the top; the profile table with its three circled counts, each ticked; the
 four keys; the copy tree; the bridge with its two equations; the replay; and in the corner, Tuesday's two numbers crossed
-through and replaced: revenue -11.0% becomes -1.6%, and Retail-Plus -49.0% becomes -35.0%. Tomorrow's
+through and replaced: revenue -11.0% becomes -1.6%, orders per customer x0.754 becomes x0.860, and
+Retail-Plus -49.0% becomes -35.0%. Tomorrow's
 question is written under them, unanswered: is -35.0% on 22 members real, or chance?

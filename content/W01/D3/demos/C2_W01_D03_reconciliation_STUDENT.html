@@ -187,8 +187,9 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         <div class="card narration" aria-live="polite">
           <div class="step" id="walkStep">Step 0 of 5</div>
           <h3 id="walkTitle">Two figures, one quarter</h3>
-          <p id="walkText">The dashboard reads Q1 from the ERP export and gets about Rs 2.1 crore. Finance's books say
-            Rs 1.9 crore. Both are honest arithmetic on something; the walk finds what.</p>
+          <p id="walkText">The dashboard reads Q1 from an export of the ERP, the enterprise resource planning system
+            Finance books orders in, and gets about Rs 2.1 crore. Finance's books say Rs 1.9 crore. Both are honest
+            arithmetic on something; the walk finds what.</p>
           <div class="holder" id="walkChart"></div>
           <div class="row">
             <button class="btn primary" id="walkNext" type="button">Next</button>
@@ -370,27 +371,29 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
       <div class="card">
         <dl class="gloss">
           <dt>Profile</dt><dd>Three counts per field before any total: present, convertible to the type it needs, and
-            distinct.<span class="where">Half one, S7 to S10; notebook 01, section 2.</span></dd>
+            distinct.<span class="where">Half one, S10 to S12; notebook 01, section 2.</span></dd>
           <dt>Convertible</dt><dd>A value the field's type accepts, such as an amount int() can read.<span
-            class="where">Half one, S9; notebook 01, section 2.</span></dd>
-          <dt>Rejects log</dt><dd>Every row set aside, with its file line, the field, the value and the reason.<span
-            class="where">Half one, S15; notebook 01, section 3.</span></dd>
+            class="where">Half one, S10; notebook 01, section 2.</span></dd>
+          <dt>Rejects log</dt><dd>Every row whose value failed with no valid copy to stand for it, with its file line, the
+            field, the value and the reason; after the identity rule it is empty on this export.<span
+            class="where">Half one, S15 and S45; notebooks 01 and 04.</span></dd>
           <dt>Decisions log</dt><dd>Every cleaning act with its reason, so an analyst can follow the pass.<span
-            class="where">Half one, S5 and S29; notebook 03, section 3.</span></dd>
+            class="where">Half two, S4 to S6; notebook 06, section 1.</span></dd>
           <dt>Identity rule</dt><dd>What makes two rows the same thing; for an order, the ERP's order_id.<span
-            class="where">Half one, S21; notebook 02, section 3.</span></dd>
+            class="where">Half one, S20 and S30; notebooks 02 and 03.</span></dd>
           <dt>Duplicate</dt><dd>A second row for the same thing under the identity rule, whether or not every field
-            matches.<span class="where">Half one, S19 to S23; notebook 02.</span></dd>
+            matches.<span class="where">Half one, S18 to S25; notebook 02.</span></dd>
           <dt>Drop, default, keep and flag</dt><dd>The three decisions for a missing or malformed value, each moving a
-            different number.<span class="where">Half one, S28 and S29; notebook 03, section 1.</span></dd>
+            different number.<span class="where">Half one, S38 and S40; notebook 04, section 1.</span></dd>
           <dt>Outlier</dt><dd>A value far from the rest, which is a question about a record and never a reason to delete
-            it.<span class="where">Half one, S30 and S31; notebook 03, section 2.</span></dd>
-          <dt>Reconciliation</dt><dd>Proof that the clean data is the same data: input equals clean plus rejected, in
-            rows and in rupees.<span class="where">Half one, S32 to S34; notebook 03, section 3.</span></dd>
+            it.<span class="where">Half one, S54 and S55; notebook 05, section 4.</span></dd>
+          <dt>Reconciliation</dt><dd>Proof that the clean data is the same data: input equals kept plus set aside plus
+            rejected, in rows and in rupees.<span class="where">Half one, S51; half two, S7 to S10; notebooks 05 and
+            06.</span></dd>
           <dt>Revenue bridge</dt><dd>A total walked to another total, one move per cause, each backed by the rows that
-            carry it.<span class="where">Half one, S35; notebook 03, section 3.</span></dd>
+            carry it.<span class="where">Half one, S51; notebook 05, section 1.</span></dd>
           <dt>JSONDecodeError</dt><dd>The error json raises when a file stops being valid JSON, naming the line and
-            column.<span class="where">Half one, S16; notebook 01, section 4.</span></dd>
+            column.<span class="where">Half one, S16; notebook 01, section 5.</span></dd>
         </dl>
       </div>
       <p class="foot">Week 1, Wednesday. The same decisions live in the workbook beside this page,
@@ -905,7 +908,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
                "4. missing or malformed", "5. the bridge", "6. the log"];
   var WALK = [
     { t: "Two figures, one quarter", lit: null, d: { amt: "zero", key: "line", pref: "first", bulk: "keep", status: "flag" },
-      x: "The dashboard reads Q1 from the ERP export and gets about Rs 2.1 crore. Finance's books say Rs 1.9 crore. Both are honest arithmetic on something; the walk finds what, one chapter at a time." },
+      x: "The dashboard reads Q1 from an export of the ERP, the enterprise resource planning system Finance books orders in, and gets about Rs 2.1 crore. Finance's books say Rs 1.9 crore. Both are honest arithmetic on something; the walk finds what, one chapter at a time." },
     { t: "Profile, and log the failure", lit: 0, d: { amt: "log", key: "line", pref: "first", bulk: "keep", status: "flag" },
       x: "The profile counts 201 rows and 186 distinct order ids, and one amount that will not convert. Logging it instead of zeroing it leaves Q1 at Rs 2,09,98,210, the dashboard's figure, honestly labelled." },
     { t: "The rows that repeat", lit: 1, d: { amt: "log", key: "order_id", pref: "first", bulk: "keep", status: "flag" },
@@ -952,7 +955,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     var reasons = [];
     if (o.zeros) reasons.push("An order sits at Rs 0: a failure became a number, and Finance booked that order at a value.");
     if (o.kept > expected) reasons.push("The file still counts " + (o.kept - expected) + " order" + (o.kept - expected > 1 ? "s" : "") + " twice: the key is not the identity rule.");
-    if (o.gap !== 0) reasons.push("Q1 misses the books by " + R(Math.abs(o.gap)) + ", so the rupee reconciliation fails even where the rows tie out.");
+    if (o.gap !== 0) reasons.push("Q1 misses the books by " + R(Math.abs(o.gap)) + ", so the rupee reconciliation fails even where the rows tie out, matching line for line.");
     if (d.bulk === "remove") reasons.push("A real Business order was removed, so the drop reads " + o.drop.toFixed(1) + " percent instead of 1.6.");
     if (d.status === "drop") reasons.push("A booked order was dropped for a missing status, which moves revenue on a guess.");
     if (d.status === "default") reasons.push("The missing status was defaulted to delivered, a fact nobody recorded.");
@@ -1112,7 +1115,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   var WHY = {
     cSame: ["same", "Identical copies carry the same value; keep the first, set the other aside with the reason \"second copy of the order\"."],
     cBad: ["bad", "Keep the copy whose amount converts. Keeping the first would keep the one that cannot be summed and lose the order's value."],
-    cDiff: ["diff", "No rule inside the file can say which value is true. Keep the first extract's row, log the disagreement, and ask the ERP team."]
+    cDiff: ["diff", "No rule inside the file can say which value is true. Keep the row from the first extract, the first pull of rows out of the ERP, log the disagreement, and ask the ERP team."]
   };
   function drawCopy(lit) {
     function n(id, label) { return ["", { label: label, kind: lit === id ? "lit" : "plain" }]; }

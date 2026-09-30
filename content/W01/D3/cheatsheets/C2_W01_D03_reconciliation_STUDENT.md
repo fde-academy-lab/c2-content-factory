@@ -83,15 +83,16 @@ and Q2 is shown both ways. Repair a value only from a copy that could not share 
 | 188 orders, Q2 Rs 1,87,03,710 | Record less line; Q1 tied, so stop | Rows against ids |
 | 201 of 201 convert, an order at Rs 0 | Failures coerced to 0 | The smallest real order is Rs 680 |
 | Q2 Rs 1,57,54,540, a 17.1% fall | The real bulk order fenced out | A known account, valid fields |
-| 201 = 185 + 16, Q1 Rs 1,89,98,210 | Keep the first copy, then convert | Rs 1,790 short of the books |
+| 201 = 185 + 16, Rs 20,00,000 set aside | Keep the first copy, then convert | Rs 1,790 short of the books |
 
 ## Panel 7: What changed downstream
 
 | Number | As Tuesday reported | On clean data |
 |---|---|---|
 | Revenue, Q1 to Q2 | -11.0% | -1.6% |
+| Orders per customer, tree branch | x0.754 | x0.860 |
 | Retail-Plus orders per customer | -49.0% | -35.0%, 1.82 to 1.18 |
 
-The finding stands, smaller.
+Customers stay at 69, so the fall is in frequency, and smaller.
 
 **Crux:** Recompute what you reported, and say what changed, the smaller number first.

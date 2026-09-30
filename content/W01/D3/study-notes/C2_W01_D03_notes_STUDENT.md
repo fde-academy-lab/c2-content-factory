@@ -29,7 +29,11 @@ recompute what you reported. Reading time: about 30 minutes.
 
 **What the session covered.** Six chapters, each a harder form of Anand's question, each with its
 own notebook: what the ERP sent, the rows that repeat, the copy that stays, what is missing or
-malformed, the bridge to the books with Tuesday recomputed, and the log the analyst audits. Each
+malformed, the bridge to the books with Tuesday recomputed, and the log the analyst audits. The ERP
+is the enterprise resource planning system Finance books orders in; its team sent an orders CSV
+stitched from two extracts, two separate pulls of rows, during the Q1 migration, the move of the
+order data from one system to another. Anand's analyst ties out to the rupee: she matches every
+figure to the books, line by line. Each
 chapter set out two to four ways to answer its question, sized them on the export, chose one and
 reached the same number a second way. Met in
 passing and given two minutes each: `FileNotFoundError`, the `ValueError` from `int()`, and the
@@ -41,10 +45,10 @@ segment and found the fall in Retail-Plus frequency. Today asked whether the num
 finding could be trusted. What revenue is, who Anand is and why Finance and Marketing pull in
 different directions are in the retail dossier,
 `content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md`, which these notes assume. One
-point from it matters today: the dossier's net revenue subtracts cancellations and returns, while
-both of Anand's figures in this case count booked value, every order whatever its status. The two
-figures share a definition and disagree on rows, and checking the definition first was part of the
-ask. Thursday asks whether the finding that survived is real or the wobble every quarter shows, and Week 2 runs this whole pass again in SQL and in pandas.
+point from it matters today: both of Anand's figures count booked value, which is what the dossier
+calls GMV: every order at the price charged, before cancellations and returns come out. The export
+does not state whether GST is inside, which is a question an analyst asks Anand. The two figures
+share a definition and disagree on rows, and checking the definition first was part of the ask. Thursday asks whether the finding that survived is real or the wobble every quarter shows, and Week 2 runs this whole pass again in SQL and in pandas.
 
 ```mermaid
 flowchart LR
@@ -102,12 +106,13 @@ product data at about 30 percent (both checked 30 September 2026).
 |---|---|---|---|
 | Total and compare | 201 amounts | under a second | stops on an unreadable amount, and says nothing about why |
 | Scroll it | 2,010 cells by eye | about 17 minutes, at half a second a cell | misses a repeat a hundred rows from its twin |
-| Sample 20 rows | 20 rows | about 10 minutes of tying out | a 13 percent chance to draw both copies of a pair, the only way a repeat shows, and 10 percent to meet the bad amount |
+| Sample 20 rows | 20 rows | about 10 minutes of tying out | the 20 rows it reads, and nothing about the other 181 |
 | Profile every field | 2,010 values by code | under a second | every count that does not fit |
 
-The minutes are illustrative; the chances are exact, since 15 of 201 rows are repeats and one amount
-is unreadable. **The call:** profile every field, then read only the rows it points at. **What would
-switch it:** a file with no field that names an order, where nothing can be counted distinct.
+The minutes are illustrative. **The call:** profile every field, then read only the rows it points
+at. **What would switch it:** a profile too slow for the deadline, as on an export of crores of rows
+due in an hour; then profile the key and the money fields first, `order_id` and `amount`, and let the
+other fields wait.
 
 **The build.** `csv.DictReader` hands back every value as text, so the first amount is `'2200'`, the
 string. The profile asks three questions of every field: is a value present, does it convert to the
@@ -125,11 +130,11 @@ the number or the reason it failed. Sorted as numbers, the top three carry Rs 62
 Rs 9,53,940, and the rejects log holds the one amount that fails. Over the amounts that convert, Q1
 reads Rs 2,09,98,210: the dashboard's 2.1 crore is honest arithmetic on this file.
 
-**The second route.** A `Counter` over the order ids finds the same 186 distinct ids and 15 rows
-beyond one per id, and the length of the rejects log equals the profile's one failure. The profile
-is the route for a first look; the `Counter` keeps how often each id appears, which is where
-chapter 2 starts. The JSON feed yields 119 complete records before the cut and is a witness to
-compare against, never a replacement.
+**The second route.** Sorting the ids and counting each place an id differs from the one before it
+finds the same 186 distinct ids, and a pattern of digits, with no `int()` in sight, finds the same
+one amount that fails. Neither shares code with the profile, so a slip in the profile cannot move
+them. The JSON feed yields 119 complete records before the cut, and it witnesses what the extract
+held, never whether a value is right.
 
 ---
 
@@ -144,12 +149,12 @@ company repaid about one million customers (NBC News and AP, 10 June 2009, check
 
 **The options, sized on the export.**
 
-| Key | Rows flagged | Q2 after | Copies missed | Real rupees removed |
+| Key | Rows flagged | Copies missed | Real rupees removed | Work |
 |---|---|---|---|---|
-| Whole record, as loaded | 0 | Rs 1,87,03,710 | 15 | Rs 0 |
-| Whole record less the line | 13 | Rs 1,87,03,710 | 2 | Rs 0 |
-| order_id | 15 | Rs 1,87,00,000 | 0 | Rs 0 |
-| Fuzzy: same customer and amount, within 60 days | 15 | Rs 1,69,29,000 | 1 | Rs 17,71,000 |
+| Whole record, as loaded | 0 | 15 | Rs 0 | 201 lookups |
+| Whole record less the line | 13 | 2 | Rs 0 | 201 lookups |
+| order_id | 15 | 0 | Rs 0 | 201 lookups |
+| Fuzzy: same customer and amount, within 60 days | 15 | 1 | Rs 17,71,000 | 20,100 pairs |
 
 **The call:** the order id, because the ERP issues one per order and never reuses it. **What would
 switch it:** two systems issuing their own ids. The key would then be the system plus the id. The
@@ -158,8 +163,9 @@ fuzzy match also costs the most: without a key to group on, every row is compare
 blocks by a field such as city before it compares anything.
 
 **The build.** Q1 holds 114 rows for 100 orders and Q2 holds 87 for 86. Grouped by `order_id`, 15
-orders appear exactly twice, 14 of them in Q1, and none three times. The second copies sit together
-at the end of the file, where the second extract was appended.
+orders appear exactly twice, 14 of them in Q1, and none three times. The your-turn cell prints both
+lines of each order; where the second lines sit, and what that says about the migration, is yours
+to read off it.
 
 **The trap: a dedupe that reports zero.** Chapter 1 taught the rejects log to cite a file line, so
 every record carries one. A whole-record dedupe on those records reports 0 duplicates and leaves Q1
@@ -173,9 +179,10 @@ only 14. The fuzzy match calls a real Business order a copy because the same cus
 Rs 17,71,000 again within 60 days, and it misses a pair whose amounts differ. A count that matches
 is not a match.
 
-**The second route.** Rows less distinct ids, per quarter, gives 14 and 1, the same 15 the groups
-gave. The arithmetic says how many in one line; only the groups say which, and only they can feed a
-log.
+**The second route.** Comparing every row with every row after it and counting the pairs that share
+an order id gives 14 in Q1 and 1 in Q2, the same 15 the groups gave, with no dictionary and no key to
+group on. It costs 20,100 comparisons here and grows with the square of the rows, so it checks the
+grouping on a small file; only the groups say which rows, and only they can feed a log.
 
 ---
 
@@ -185,11 +192,13 @@ log.
 pair's first copy has an amount that does not convert, and one pair's copies disagree on the date.
 Anand's analyst ties out to the rupee, so a choice that loses one order's amount turns the
 reconciliation into a finding against the team. India's GST system writes an identity rule into
-law for business invoices: the Invoice Registration Portal rejects an invoice already reported
-under the same supplier GSTIN, invoice number, document type and financial year (GSTN e-invoice FAQ,
-version 1.4), and since 1 August 2023 that applies to every business above Rs 5 crore of turnover
-(Notification 10/2023-Central Tax), which includes a seller like Kalpa's Business segment (both
-checked 30 September 2026).
+law for invoices between businesses: the Invoice Registration Portal rejects an invoice already
+reported under the same supplier GSTIN, the seller's GST registration number, invoice number,
+document type and financial year (GSTN e-invoice FAQ, version 1.4). Since 1 August 2023 the rule
+binds sellers above Rs 5 crore of aggregate turnover on their invoices to registered businesses, with
+some sectors, such as banks and insurers, exempt (Notification 10/2023-Central Tax and the same FAQ,
+questions 9 and 17; both checked 30 September 2026). Those are the invoices a seller like Kalpa writes
+to the companies in its Business segment.
 
 **The options, sized against the books.**
 
@@ -208,8 +217,8 @@ then last is the rule, for a reason.
 **The build.** The rule groups rows by `order_id`, keeps the first copy whose amount converts, and
 logs every other row with its line, the rule, the reason and the line of the row that stayed. On the
 export it keeps 186 orders and sets 15 rows aside. Q1 moves to Rs 1,90,00,000, the books to the
-rupee, and Q2 to Rs 1,87,00,000. The amount chapter 1 could not read was one copy of a pair whose
-twin carries the value, so no revenue left with it.
+rupee, and Q2 to Rs 1,87,00,000. Two of the 15 carry a reason longer than "second copy of the
+order", and the your-turn cell prints them: they are where the rule made a choice.
 
 **The trap: Q1 ties, so the pass must be right.** The whole record less the line lands Q1 on
 Rs 1,90,00,000, equal to the books. It still keeps 188 rows for 186 orders: one Q2 order is counted
@@ -233,10 +242,11 @@ rule's totals and never the pass.
 
 **The need.** One kept order has no status, and Operations reads the delivered share of orders every
 week. Fifty-five kept orders have no discount. And the pass needs a policy for an amount that does
-not convert, because the next export will carry one with no twin. On 12 December 2014 a repricing
-tool set hundreds of Amazon UK items to 1p for about an hour, and Amazon said most orders were
-cancelled once the error was spotted (BBC News, 15 December 2014, checked 30 September 2026): a value
-that nothing questioned sold real stock.
+not convert, because the next export will carry one with no twin. On 12 December 2014 a fault in
+Repricer Express, a repricing tool that third-party sellers on Amazon's UK Marketplace used, priced
+hundreds of their items at 1p for about an hour, and Amazon said most orders were cancelled once the
+error was spotted (BBC News, 15 December 2014, checked 30 September 2026): a value that nothing
+questioned sold the sellers' real stock.
 
 **The options for the missing status, sized on Q2.**
 
@@ -244,7 +254,7 @@ that nothing questioned sold real stock.
 |---|---|---|---|---|
 | Drop the order | Rs 1,86,98,150 | 57 of 85 | 67.1% | the order never happened |
 | Default to delivered | Rs 1,87,00,000 | 58 of 86 | 67.4% | the order reached the customer |
-| Impute from the customer's last order | Rs 1,87,00,000 | 58 of 86 | 67.4% | history decides this order |
+| Impute from the customer's last order | Rs 1,87,00,000 | 58 of 86 | 67.4% | history decides this order; the earlier order here was delivered |
 | Keep and flag | Rs 1,87,00,000 | 57 of 86 | 66.3% | it happened; its fate is unknown |
 
 **The options for an unreadable amount.** Coercing it to zero misses the books by Rs 1,790 and
@@ -267,20 +277,24 @@ the count beside it. This was Tuesday's trap, met again in a new place.
 
 **The trap: coerce every failure to zero.** The `ValueError` stops the loop, so a helper turns
 anything unreadable into 0. The profile then reports 201 of 201 amounts convertible, the rejects log
-is empty, and after the first-copy dedupe Q1 reads Rs 1,89,98,210, which rounds to 1.9 crore. A zero
-is a claim that Kalpa sold that order for nothing. Once the unreadable copy is worth Rs 0 it passes
-as valid, the identity rule can no longer tell it from its twin, and the first copy wins. The check:
-can a Kalpa order be worth nothing, when the smallest real order in the export is Rs 680? And the
-failure count fell from one to zero while nothing was fixed.
+is empty, and the clean file holds 186 orders, one per order id, every amount a number. A zero is a
+claim that Kalpa sold that order for nothing. Once the unreadable copy is worth Rs 0 it passes as
+valid, the identity rule can no longer tell it from its twin, the first copy wins, and Q1 falls
+Rs 1,790 short of the books. The check: can a Kalpa order be worth nothing, when the smallest real
+order in the export is Rs 680? And the failure count fell from one to zero while nothing was fixed.
+The fix is the pass's own order: the identity rule first, keeping the copy whose amount converts,
+then conversion, so the unreadable copy goes to the set-aside log with its twin named and the
+rejects log stays empty.
 
-**The harder form: repair only from a witness.** The JSON feed agrees with the clean file on 118 of
-its 119 amounts. The one it does not confirm is unreadable in the feed as well, because the feed was
-cut from the same extract. The CSV's second extract carried the value, and the identity rule already
-used it.
+**The harder form: repair only from an independent source.** The JSON feed agrees with the clean file
+on 118 of its 119 amounts. The one it does not confirm is unreadable in the feed as well, because the
+feed was cut from the same extract: it witnesses what the extract held, never whether a value is
+right, so it cannot repair anything. The CSV's second extract carried the value, and the identity rule
+already used it.
 
-**The second route.** Profile the clean file and compare with the logs: one status missing in both,
-no amount that fails in either, 55 discounts missing in both. The profile finds defects; the log
-shows them.
+**The second route.** Profile the clean file and compare it with the logs the decisions wrote: one
+status missing and one line in the flags log, no amount that fails and an empty rejects log, 55
+discounts missing and 55 kept as unknown. The profile finds defects; the logs show them.
 
 ---
 
@@ -288,8 +302,9 @@ shows them.
 
 **The need.** Anand asked which Q1 figure is right and how the team knows. Marketing asks whether
 Tuesday's finding survives, because a rescue campaign for Retail-Plus is waiting on it. In 2014
-Tesco said it had overstated half-year profit guidance by about GBP 250 million, mainly by
-recognising supplier income early; its investigation then confirmed the figure at GBP 263 million,
+Tesco said it had overstated half-year profit guidance by about GBP 250 million, mainly by booking
+supplier income, the money its suppliers pay it, in a period before the activity that money paid for
+took place; its investigation then confirmed the figure at GBP 263 million,
 split by period, GBP 118 million of it in the first half (BBC News, 22 September 2014; Tesco interim
 results, 23 October 2014; both checked 30 September 2026). A retailer's own number was wrong, and
 the fix was a bridge: how much, from which period, for what cause.
@@ -304,8 +319,9 @@ the fix was a bridge: how much, from which period, for what cause.
 | Rebuild from the JSON feed | 119 records | Rs 1,790 short | no |
 
 **The call:** the bridge. The feed carries the same unreadable amount and holds only 19 of Q2's 86
-orders. **What would switch it:** a bridge that does not close. Then the gap itself is the finding,
-and it may sit in Finance's books.
+orders. **What would switch it:** a second source independent of the export and complete for the
+quarter. A rebuild from it would prove the figure on its own, and the bridge would become its check;
+this feed was cut from the same extract and stops at record 120, so it is neither.
 
 **The build.** The bridge starts at Q1 as exported, Rs 2,09,98,210, takes away the copies of two
 corporate orders, Rs 19,67,560, and the copies of consumer orders, Rs 30,650, and lands on
@@ -313,16 +329,21 @@ Rs 1,90,00,000. The unreadable amount needs no move, since it was never in the e
 twin stayed. The notebook draws it with the axis starting at Rs 1.88 crore, so the Rs 30,650 move
 stays visible; the caption says so.
 
-**Tuesday recomputed.**
+**Monday's tree and Tuesday's segment, recomputed.** Each row is Q2's multiple of Q1, the way
+Monday's tree multiplies back to revenue.
 
-| Number | As Tuesday reported | On clean data |
+| Q2 against Q1 | As Tuesday reported | On clean data |
 |---|---|---|
-| Revenue, Q1 to Q2 | -11.0% | -1.6% |
+| Customers | 69 to 69, x1.000 | 69 to 69, x1.000 |
+| Orders per customer | 1.65 to 1.25, x0.754 | 1.449 to 1.246, x0.860 |
+| Revenue per order | x1.180 | Rs 1,90,000 to Rs 2,17,442, x1.144 |
+| Revenue | x0.890, -11.0% | x0.984, -1.6% |
 | Retail-Plus orders per customer | 2.32 to 1.18, -49.0% | 1.82 to 1.18, -35.0% |
 | Retail-Core orders per customer | -5.3% | -2.7% |
 
-The finding stands, smaller, because most copies sat in Retail-Plus in Q1. The smaller number goes
-first in the note.
+The customers never moved, so the copies sat in the frequency branch: orders per customer now falls
+by about 14 percent where Tuesday read 25, and 1.000 x 0.860 x 1.144 = 0.984. The finding stands,
+smaller, because most copies sat in Retail-Plus in Q1. The smaller numbers go first in the note.
 
 **The trap: the real bulk order removed as an outlier.** Sorted as numbers, Q2's largest order is
 Rs 29,45,460, 1.66 times the next. Removing it gives Q2 Rs 1,57,54,540 and a 17.1 percent drop, and
@@ -369,9 +390,10 @@ compared, because a log that lives only in a notebook reaches nobody.
 
 **The trap: rows tie, rupees do not.** A colleague removes repeated ids first, keeping the first
 copy, then converts and rejects what fails. The log looks perfect: 201 = 185 + 16, Rs 20,00,000 set
-aside in Q1, which reads like Anand's gap, and a clean Q1 of Rs 1,89,98,210 that rounds to 1.9.
-To the rupee it is Rs 1,790 short, because keeping the first copy kept the unreadable one, rejected
-it, and set aside the twin that carried the value. A row reconciliation proves nothing vanished; it
+aside in Q1, which reads like Anand's gap, and a clean Q1 that rounds to 1.9 crore. To the rupee it
+is Rs 1,790 short, because keeping the first copy kept the unreadable one, rejected it, and set aside
+the twin that carried the value. The fix is the pass's order, the rule first and conversion after
+it: 201 = 186 + 15, the rejects log empty, Q1 on the books. A row reconciliation proves nothing vanished; it
 cannot prove the right rows stayed. Two checks catch it: the books against the clean Q1, and a
 rejected order whose twin sits in the set-aside log with a value.
 
@@ -403,8 +425,9 @@ test for an auditor who trusts nothing.
 - **Migrations.** Moving data between systems re-runs batches, stitches extracts and adds load
   columns. Every migration plan that is taken seriously has a reconciliation step, and it runs on the
   business key.
-- **Payments.** A gateway retries a payment and posts it twice. Week 2 meets this in a join, where a
-  duplicate key multiplies rows instead of adding them.
+- **Audits.** An internal or statutory auditor asks of any pipeline that removes rows the question
+  the second case asked: why those rows, and how do I know nothing else went. A log with a reason per
+  row and two reconciliations answers it.
 - **Dashboards.** A dashboard is a total nobody reconciled until somebody does. The analyst who can
   build the bridge is the one Finance calls next time.
 
@@ -412,7 +435,7 @@ test for an auditor who trusts nothing.
 
 ## Try this yourself
 
-Five questions, no writing needed; answer each in your head, then check against the sections above.
+Six questions, no writing needed; answer each in your head, then check against the sections above.
 
 1. An export reports 400 of 400 amounts convertible and the sorted amounts start `0, 0, 350`. What do
    you ask first?
@@ -428,10 +451,11 @@ Five questions, no writing needed; answer each in your head, then check against 
 
 ## Where this gets tested
 
-Fifteen questions: the row's five, seven follow-ups an interviewer uses to push, and three design
-questions that ask for a choice, a sizing and the fact that would change it. Tags: [S] staple
-asked everywhere, [F] frequent in GCC and product screens, [SV] service-major screen opener, [D]
-differentiator. This programme's own calibration for 0 to 3 year Indian-market candidates.
+Twelve questions, the same twelve the afternoon drill asks aloud: the row's five, two follow-ups an
+interviewer uses to push, and five design questions that ask for a choice, a sizing and the fact that
+would change it. Tags: [S] staple asked everywhere, [F] frequent in GCC and product screens, [SV]
+service-major screen opener, [D] differentiator. This programme's own calibration for 0 to 3 year
+Indian-market candidates.
 
 **[S] How do you handle missing data?** "First I measure it per field: present, convertible,
 distinct. Then I ask what the absence means, because a blank discount may mean no discount or a
@@ -465,12 +489,14 @@ default without writing that decision down."
 **[D] An auditor asks why you dropped 14 rows; walk them through it.** "They were set aside, not
 dropped, and each is in the log. Fourteen Q1 rows share an order id with a row that stayed. The
 identity rule is the order id, because the ERP issues one per order. For each pair I kept the copy
-whose fields validate. Two corporate copies carry Rs 19,67,560 and the rest Rs 30,650. The rows
-reconcile, 114 Q1 rows in and 100 kept, and the rupees bridge to your books exactly."
+whose fields validate. Two corporate copies carry Rs 19,67,560 and the rest Rs 30,650. Every line of
+the log carries the source line, the key, the rule, the reason, the value and the line of the row
+that stayed. The rows reconcile, 114 Q1 rows in and 100 kept, the rupees bridge to your books
+exactly, and replaying the log on the raw export rebuilds my clean file."
 
-**[F] A dedupe returns zero duplicates. Do you believe it?** "Only after I count distinct business
-keys against rows. If they disagree, the dedupe compared on something that makes every row unique: a
-load timestamp, a surrogate key or a line number."
+**[F] Your row counts reconcile. Are you done?** "No. Rows prove nothing vanished; rupees prove the
+right rows stayed. Today a pass reconciled 201 rows and was Rs 1,790 short of the books, because it
+kept an unreadable copy and set aside the one that carried the value."
 
 **[S] The largest order is 1.66 times the next. Do you remove it?** "I check the record before its size.
 A valid id, a real account with other orders and fields that convert make it revenue. I keep it, flag
@@ -478,28 +504,12 @@ it, and show the result with and without it. Today, removing it would have turne
 into a 17.1 percent fall. For a model trained on the data I might cap or transform a long tail, and
 any fence I use sits inside one segment."
 
-**[F] Your row counts reconcile. Are you done?** "No. Rows prove nothing vanished; rupees prove the
-right rows stayed. Today a pass reconciled 201 rows and was Rs 1,790 short of the books, because it
-kept an unreadable copy and set aside the one that carried the value."
-
-**[F] A JSON file fails to parse at a named line. What do you do?** "Read the last line of the error,
-open the file at that line and column, and say what is there: a cut transfer, a stray character, two
-documents merged. Then decide whether the complete part is usable as evidence, and ask for a resend
-of the rest. I never skip the file silently."
-
-**[SV] Walk me through how you clean a file you have never seen.** "Profile every field, convert with
-a rejects log, apply the identity rule, make the drop, default or flag decision for each remaining
-defect with a reason, reconcile rows and money against a trusted total, and recompute anything that
-was reported from the raw file."
-
-**[D] Cleaning shrank the finding you reported yesterday. What do you tell the stakeholder?** "The
-smaller number first, what changed and why, and whether the decision it supported still holds. Today
-the Retail-Plus fall went from 49 to 35 percent: still the largest fall, which Thursday tests for chance, and
-now on numbers Finance agrees with."
-
-**[D] How do you know Finance's number is right, and not yours?** "Neither is right by rank. The bridge
-closes to the books because every move is backed by rows I can show. If it had not closed, the gap
-would itself be a finding to put in front of Finance's analyst, with the rows and without an accusation."
+**[D] Design. A new export has 2 crore rows. Profile everything, or sample?** "Profile everything. A
+profile is three counts per field, a few minutes of machine time, and it finds a defect wherever it
+sits; a sample of 1,000 rows reads one row in 20,000 and says nothing about the rest. I would sample
+only to read rows the profile has already pointed at. What would switch me is a profile too slow for
+the deadline, and then I profile the key and the money fields first, since a repeated key or an
+unreadable amount is what moves the total." Weak answer: "I would sample, it is faster."
 
 **[D] Design. Order id, whole record or fuzzy, for customers from two apps?** "Neither app's id
 identifies a person across both, and two systems rarely write a record identically, so the id and the
@@ -509,6 +519,14 @@ a person. On Kalpa's orders a fuzzy match on customer and amount within 60 days 
 and merged a real Rs 17,71,000 order, which is why I would not trust it unreviewed. What would switch
 me back to a key is one customer id issued by one system."
 
+**[D] Design. Two copies of an order disagree: first copy, last copy or the copy that validates?**
+"The copy whose fields validate; if both do, the one the business calls the original, the first
+extract here, and I log the disagreement and ask the owner of the source. I size the choice first:
+keeping the first copy would have cost Rs 1,790 against the books, and keeping the last landed on
+the books only because of the order the migration appended its rows. If the ERP team told me the
+second extract was a corrected re-run, I would switch to the last copy and write that down as the
+reason." Weak answer: "Keep the latest one."
+
 **[D] Design. Coerce, reject or repair a malformed amount?** "Reject it to a log by default. A coerced
 zero is a false value, and it hides the defect from every later check: on Kalpa's export it let the
 unreadable copy pass as valid and cost Rs 1,790 against the books. I repair only from a source that
@@ -517,7 +535,7 @@ only for a known format problem, such as a thousands separator, where the rule i
 
 **[D] Design. Prove a figure with a bridge, or rebuild it from a second source?** "A bridge, when a
 log backs each move, because it says why as well as how much. A rebuild is worth running only when
-the second source is independent and complete; Kalpa's JSON feed was cut from the same extract,
+the second source is independent of the export and complete for the quarter; Kalpa's JSON feed was cut from the same extract,
 carried the same unreadable amount and held 19 of Q2's 86 orders, so it could confirm and never
 prove. If a bridge does not close, the gap is the finding, and it may sit in Finance's books."
 
@@ -528,7 +546,7 @@ prove. If a bridge does not close, the gap is the finding, and it may sit in Fin
 | Term | What it means here | Where it appeared | Example |
 |---|---|---|---|
 | Profile | Three counts per field before any total: present, convertible, distinct | Chapter 1; notebook 01 | order_id present on 201 rows, distinct on 186 |
-| Rejects log | Every row whose value failed, with its line, field and reason | Chapter 1; notebooks 01 and 04 | One amount that would not convert |
+| Rejects log | Every row whose value failed, with its line, field and reason | Chapter 1; notebooks 01 and 04 | One amount on the raw export; empty after the identity rule |
 | Identity rule | What makes two rows the same thing | Chapter 2; notebook 02 | order_id, the ERP's key |
 | Keep and flag | Keep a record whose value is unknown, marked, out of counts that need it | Chapter 4; notebook 04 | A Q2 order with no status |
 | Coercion | Turning a value that fails into a default; a claim, never a fix | Chapter 4; notebook 04 | An order at Rs 0 |
@@ -541,8 +559,13 @@ prove. If a bridge does not close, the gap is the finding, and it may sit in Fin
 | Reconciliation | Proof the clean data is the same data, in rows and in rupees | Chapters 5 and 6; notebooks 05 and 06 | 201 = 186 + 15 |
 | Decisions log | Every cleaning rule with the rows and rupees it moved | Chapter 6; notebook 06 | Missing status: keep and flag |
 | Replay | Rebuilding the clean file from the raw export and the log alone | Chapter 6; notebook 06 | 186 orders at the same amounts |
-| Booked value | Every order at its price, whatever its status, before returns and cancellations | The ask; chapter 5 | Both Rs 2.1 crore and Rs 1.9 crore |
+| Booked value | Every order at the price charged, whatever its status, before cancellations and returns come out; the dossier's GMV | The ask; chapter 5 | Both Rs 2.1 crore and Rs 1.9 crore |
 | Set aside | Removed from the clean file with a logged reason and the line of the row that stayed | Chapters 3 and 6 | 15 rows |
+| ERP | The enterprise resource planning system Finance books orders in | The ask; chapter 1 | The source of the CSV and the JSON feed |
+| Extract | One pull of rows out of the ERP | Chapters 2 and 3 | The CSV was stitched from two |
+| Migration | The move of data from one system to another | Chapter 2 | Q1's, when the CSV was stitched |
+| Tie out | Match a figure to the books line by line, to the rupee | Chapters 3 and 6 | Anand's analyst, tonight |
+| Supplier income | Money a retailer's suppliers pay it, as Tesco's case used the term | Chapter 5 | Booked before the activity it paid for |
 
 ---
 
