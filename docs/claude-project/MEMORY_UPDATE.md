@@ -1,4 +1,4 @@
-# Memory update for the claude.ai Project, 28 September 2026
+# Memory update for the claude.ai Project, 30 September 2026
 
 Open a new chat inside the Project and paste everything below the line. Each Project keeps its own
 memory, and a change asked for in a chat applies from the next conversation (Claude Help Center,
@@ -8,11 +8,33 @@ Check the result afterwards under Settings, then Memory.
 
 ---
 
-Update this project's memory with the programme changes of 21 to 28 September 2026. Replace what
+Update this project's memory with the programme changes of 21 to 30 September 2026. Replace what
 they supersede, and keep people's names out of memory: roles only.
 
 Remember:
 
+- The build standard was raised on 30 September 2026. A teaching day runs in about six chapters,
+  each one deck chapter paired with one notebook that builds on the one before it. Every chapter
+  states the problem, lays out two to four ways to answer it sized in rows, minutes, rupees and
+  error, makes the best-fit call and names what would change it, builds the chosen way and reaches
+  the same number a second way; code is the last mile. At least a third of a day's exercise items
+  are design items, and every pack runs a five-pass depth loop whose last two passes are fresh
+  reviewers. Weeks 1 and 2 are being rebuilt to it.
+- The programme prepares learners for four domains: retail and e-commerce (Kalpa Retail, Weeks 1
+  and 2), US healthcare (Kalpa Health, Build 1), financial services (Week 5 and Build 2) and SaaS and
+  enterprise AI (from Week 8, the GCC building AI products, an enterprise brain among them). Each
+  opens on its story from a domain dossier: how the business makes money, who decides, its metrics
+  as formulas, its language and compliance, which real company Kalpa's unit is like, and why
+  analytics, ML, NLP and agents are needed there. Every chapter names a real company that faces the
+  same question, as a likeness with its facts checked and dated; Kalpa stays the case.
+- Kalpa Health is a US-facing diagnostics and revenue-cycle business run from Kalpa's GCC, billing US
+  payers in dollars, with claims, denials and prior authorisation in its vocabulary; Dr Priya Menon
+  stays its COO. Anand Iyer is Kalpa Retail's finance controller.
+- Saturday recap papers are interview grade: the tracker's bank sets what is tested, about 60
+  percent of the timed items are hard, each part opens on a scenario with a visual, blanks are
+  answered from word banks and pairs from match tables, and items may be set at real companies or
+  in public case studies with every figure sourced. Only the week's Saturday paper may name a planted
+  value, and only one the room has already found in class.
 - The calendar moved a week and is locked: Week 0 is the in-person baseline week, 28 September to
   3 October 2026, with no marks; teaching Week 1 starts on Monday 5 October; Week 20 closes on
   Saturday 20 February 2027. Holidays: Gandhi Jayanti (Friday 2 October, Week 0), Dussehra (Tuesday
@@ -37,9 +59,10 @@ Remember:
 - The Week 0 diagnostic is the programme's own Google Form: forty questions in five sections in
   about 90 minutes on Tuesday, with the learner's rating of five areas on its first page. It is
   ungraded, and its explanations reach learners by email on submission and on GitHub Discussions.
-- The Saturday recap paper is objective (fill in the blank, true or false, one or more correct
-  options, scenario sets, applied maths, ordering), comes from the tracker's item bank, is swapped
-  and marked against a key, and its scores by tag feed Monday's remediation read. It is ungraded and
+- The Saturday recap paper is objective (word banks, match tables, true or false with a reason, one
+  or more correct options, scenario sets, applied maths, ordering), takes what it tests from the
+  tracker's item bank, is swapped and marked against a key, and its scores by part and tag feed
+  Monday's remediation read. It is ungraded and
   never a ranking.
 - The cohort is 35 students in nine build-week groups; the build-week plan of five sub-problems with
   three groups each does not fit that yet, and it is an open conflict.
@@ -52,6 +75,9 @@ Remember:
 
 Forget or correct:
 
+- A teaching day of three 50-minute rounds with one notebook per round.
+- Kalpa Health as a chain of labs and clinics in six Indian cities, and Anand Iyer as the CFO.
+- Plain fill-in-the-blank items on a Saturday paper, and a Saturday paper set only inside Kalpa.
 - Week 1 starting on 28 September, Gandhi Jayanti falling in Week 1, and Week 1 having no Friday.
 - ME3 in Week 15, and any exam marks of 50, 100 and 150.
 - The short-answer Saturday test, a Friday test, and a daily Neo question pool.
