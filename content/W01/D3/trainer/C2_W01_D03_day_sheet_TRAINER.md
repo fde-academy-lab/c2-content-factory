@@ -24,7 +24,7 @@ answer raised; the short form is the chapter opener's title, and the full form i
 notebook's title, the notes' chapter heading and the scenario set's title.
 
 **The day.** Which Q1 figure is right, the dashboard's Rs 2.1 crore or the books' Rs 1.9 crore, and how
-do we know? *Answered at half two, S25:* Anand's 1.9 crore is right; fifteen orders were counted
+do we know? *Answered at half two, S26:* Anand's 1.9 crore is right; fifteen orders were counted
 twice, fourteen in Q1, and the bridge closes to his books in rows and rupees; revenue falls 1.6
 percent, not 11, and Retail-Plus 35 percent, not 49.
 
@@ -147,8 +147,8 @@ flowchart LR
 | Debrief, 15 | S18, S19 | The room's own numbers | Each wrong number traced to its step | S19 if nobody produced it |
 | Break, 10 | | | | |
 | Second case, 40 | S20 to S22 | `notebooks/ex2_auditor` and `exercises/unguided/auditor_question` | "Set aside with a reason", never "dropped"; rows and rupees by segment | Items 3 and 4 aloud only |
-| Interview drill, 20 | S23, S24 | Study notes, the interview section | Rule, today's number, the check, in under ninety seconds; the five design questions with a sizing each | The follow-ups to four, keeping two design questions |
-| Kahoot and close, 15 | S25 to S27, D28 self-study | `kahoot/quiz` | The day's answer to Anand; the six lines; tomorrow's question left open | Never cut S25 or S27 |
+| Interview drill, 20 | S23, S24, D25 self-study | Study notes, the interview section | Rule, today's number, the check, in under ninety seconds; the five design questions with a sizing each | The follow-ups to four, keeping two design questions |
+| Kahoot and close, 15 | S26 to S28 | `kahoot/quiz` | The day's answer to Anand; the six lines; tomorrow's question left open | Never cut S26 or S28 |
 
 ---
 

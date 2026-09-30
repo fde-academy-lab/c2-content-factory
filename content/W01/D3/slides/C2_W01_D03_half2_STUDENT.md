@@ -29,7 +29,10 @@ The ERP is the enterprise resource planning system Finance books orders in; its 
 
 ```notes
 LIVE, 1 minute. A set-aside row is one removed from the clean file with a logged reason and the line
-of the row that stayed. Everything on this slide was proved this morning, and the afternoon deck
+of the row that stayed. The identity rule says what makes two rows one order, here the order_id; the
+rejects log lists every row whose value would not convert, with its line and reason; Retail-Plus is
+Kalpa's paid membership tier; the Business segment is Kalpa's sales to companies; and the bulk order
+is Q2's largest, a real Business order at Rs 29,45,460, kept and flagged. Everything on this slide was proved this morning, and the afternoon deck
 restates it so it stands alone. What is left is the analyst's question. Then chapter 6.
 ```
 
@@ -402,9 +405,9 @@ LIVE. Put the most common wrong number on the screen first. Name no learner; nam
 |---|---|---|
 | Largest Q2 order Rs 970 | Sorting amounts as text | Below every Business order |
 | 0 duplicates | The line in the whole-record key | 201 rows, 186 ids |
-| 188 orders, Q2 Rs 1,87,03,710 | Record less line; Q1 tied, so stop | Rows against ids |
-| 201 of 201 convert | Failures coerced to zero | An order worth Rs 0 |
-| Q2 Rs 1,57,54,540, -17.1% | The bulk order fenced out | A real Business account |
+| 188 orders, Q2 Rs 1,87,03,710 | The record less its line ties Q1, and the pass stops | Rows against ids |
+| 201 of 201 convert | Failures turned into zero | An order worth Rs 0 |
+| Q2 Rs 1,57,54,540, -17.1% | The largest Q2 order removed as an outlier | A real Business account |
 | 201 = 185 + 16, Rs 20,00,000 set aside | Keep first, then convert | Rs 1,790 short of the books |
 
 ```notes
@@ -488,7 +491,7 @@ LIVE, 2 minutes, after pairs finish question 5. Then the answer.
 ```stats
 value: 114 = 100 + 14 | label: Q1 rows | note: in, kept, set aside
 value: 14 of 14 | label: with a kept twin | note: same order_id
-value: Rs 19,98,210 | label: set-aside rupees | note: 98% in two corporate rows
+value: Rs 19,98,210 | label: set-aside rupees | note: 98.5% in two corporate rows
 ```
 
 **The rule.** "Dropped" is the auditor's word; "set aside with a reason" is yours.
@@ -522,7 +525,8 @@ answer should have used. Swap every three questions.
 
 ```notes
 LIVE, 10 minutes. The shape of every answer: the rule, today's number, the check. Tags: [S] staple
-asked everywhere, [F] frequent in GCC and product screens, [D] differentiator. Full answers are in
+asked everywhere, [F] frequent in screens at global capability centres (GCCs) and product
+companies, [D] differentiator. Full answers are in
 the study notes and in each notebook's interview section. Then the follow-ups.
 ```
 
@@ -549,6 +553,22 @@ Kahoot and the close.
 
 ---
 
+## D25. The same two checks run wherever money moves
+*Where else do rows and money get reconciled?*
+
+| Where | Rows | Money |
+|---|---|---|
+| Bank statement against the ledger | Transactions matched | Balance to the paisa |
+| Payment gateway against orders | Settlements per order | Collected against booked |
+| Warehouse load against the source | Row counts per table | Control totals per column |
+
+```notes
+SELF-STUDY, 3 minutes. Each trade runs the same two checks: rows prove nothing vanished, and money
+proves the right rows stayed.
+```
+
+---
+
 ## SECTION 11: What do we tell Anand?
 *Which Q1 figure is right, the dashboard's Rs 2.1 crore or the books' Rs 1.9 crore, and how do we know?*
 
@@ -558,10 +578,10 @@ LIVE. Fifteen minutes: the Kahoot, then this chapter.
 
 ---
 
-## S25. Answer: the 1.9 is right, proved in rows and rupees
+## S26. Answer: the 1.9 is right, proved in rows and rupees
 *Which Q1 figure is right, and how do we know?*
 
-> "Your 1.9 crore is right: the export counted fifteen orders twice, and the bridge from 2.1 closes to your books in rows and in rupees. On clean data the drop is 1.6 percent and the Retail-Plus fall is 35 percent, smaller than we reported." The GCC data and AI team
+> "Your 1.9 crore is right: the export counted fifteen orders twice, and the bridge from 2.1 closes to your books in rows and in rupees. On clean data the drop is 1.6 percent and the Retail-Plus fall is 35 percent, smaller than we reported." The data and AI team at Kalpa's Global Capability Centre
 
 ```mermaid
 flowchart LR
@@ -574,7 +594,7 @@ LIVE, 2 minutes. This answers the day's question. Read it aloud once. Then the s
 
 ---
 
-## S26. Six lines, one per chapter, worth keeping
+## S27. Six lines, one per chapter, worth keeping
 *What should you keep from each chapter?*
 
 | | The line |
@@ -593,7 +613,7 @@ every line on an export nobody in the room has seen. Then tomorrow's question.
 
 ---
 
-## S27. Tomorrow asks whether -35.0 percent is real or chance
+## S28. Tomorrow asks whether -35.0 percent is real or chance
 *The Retail-Plus fall survived cleaning: is it real, or the wobble every quarter shows?*
 
 **The client asks.** "Retail-Plus is down, smaller than first reported. Real, or the wobble we see every quarter?" Meera Raghavan, CEO, Kalpa Retail
@@ -609,18 +629,3 @@ flowchart LR
 LIVE, 2 minutes. Do not answer it. Thursday builds the answer.
 ```
 
----
-
-## D28. The same two checks run wherever money moves
-*Where else do rows and money get reconciled?*
-
-| Where | Rows | Money |
-|---|---|---|
-| Bank statement against the ledger | Transactions matched | Balance to the paisa |
-| Payment gateway against orders | Settlements per order | Collected against booked |
-| Warehouse load against the source | Row counts per table | Control totals per column |
-
-```notes
-SELF-STUDY, 3 minutes. Each trade runs the same two checks: rows prove nothing vanished, and money
-proves the right rows stayed.
-```

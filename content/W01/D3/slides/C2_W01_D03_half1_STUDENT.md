@@ -604,7 +604,7 @@ for q in ("Q1", "Q2"):
     print(q, len(rows_q), len({r["order_id"] for r in rows_q}))
 ```
 
-**Question.** Where do rows and distinct ids part company, as a letter? a) evenly across the two quarters; b) mostly in Q1, the quarter of the migration; c) mostly in Q2; d) nowhere, since the ids were counted over both quarters.
+**Question.** Where do rows and distinct ids part company, as a letter? a) evenly across the two quarters; b) mostly in Q1; c) mostly in Q2; d) nowhere, since each id is counted once.
 
 ```notes
 LIVE, 2 minutes. Letters in chat. Then the answer.
@@ -860,7 +860,7 @@ kinds of pair on invented records.
 | B, INV-12 | amount "n/a" | Rs 2,600 |
 | C, INV-13 | Rs 3,100, 21 August | Rs 3,100, 30 July |
 
-**Question.** Pair C's copies are both valid and disagree on the date. Which copy stays, as a letter? a) the first, logged, with the date asked of the ERP team; b) the later date; c) neither; d) both.
+**Question.** Pair C's copies are both valid and disagree on the date. Which copy stays, as a letter? a) the first extract's copy, with the date queried; b) the copy with the later date, as the newer record; c) neither, since a pair that disagrees proves nothing; d) both, since two valid rows are two orders.
 
 ```notes
 LIVE, 2 minutes. The three pairs are invented, one of each kind. Pair A is easy and pair B has one
@@ -1108,7 +1108,7 @@ value: about an hour | label: the window | note: a Friday evening
 value: most | label: orders cancelled | note: once Amazon spotted it
 ```
 
-**What breaks.** A repricing tool used by third-party sellers priced hundreds of items at a penny on 12 December 2014, and a wrong value that nothing questioned sold the sellers' real stock. A coerced zero in a report is treated as real in the same way.
+**What breaks.** A repricing tool used by third-party sellers priced hundreds of items at a penny on 12 December 2014, and a wrong value that nothing questioned sold the sellers' real stock. A zero written in where an amount would not convert is read as real in a report the same way.
 
 ```notes
 LIVE, 2 minutes. Source: BBC News, 15 December 2014, checked 30 Sep 2026: the tool was Repricer
@@ -1385,7 +1385,7 @@ sections are the six questions on the next slide.
 label: 1 | title: How could we prove it? | body: Four proofs, sized
 label: 2 | title: Which moves close it? | body: One cause per move
 label: 3 | title: Does Tuesday survive? | body: The tree and the segment
-label: 4 | title: Should the bulk order go? | body: 1.66 times the next
+label: 4 | title: Should the bulk order go? | body: Q2's largest, 1.66 times the next
 label: 5 | title: What does the note say? | body: Under 120 words
 label: 6 | title: Does a bottom-up sum agree? | body: The kept orders, added | tone: dark
 ```
@@ -1464,7 +1464,7 @@ corporate = -sum(rupees(e) for e in q1_aside if e["segment"] == "Business")
 consumer = -sum(rupees(e) for e in q1_aside if e["segment"] != "Business")
 ```
 
-**Question.** How many moves land the bridge on the books, as a letter? a) one, the copies; b) two, the corporate copies and the consumer copies; c) three, adding the unreadable amount; d) none, since 2.1 rounds close enough.
+**Question.** How many moves land the bridge on the books, as a letter? a) one, every copy in a single move; b) two, corporate copies and consumer copies; c) three, adding the unreadable amount; d) none, since 2.1 rounds close enough.
 
 ```notes
 LIVE, 2 minutes. The set-aside log holds the 15 rows the identity rule set aside, 14 of them in Q1,
@@ -1615,7 +1615,7 @@ shown both ways. Then the note.
 ## S76. The note leads with the answer: the 1.9 is right
 *What does the note to Anand say first?*
 
-> "Anand, your 1.9 crore is right. The ERP export counted fifteen orders twice, fourteen of them in Q1; copies of two corporate orders carry Rs 19,67,560 of the Rs 19,98,210 difference. Rows and rupees reconcile to your books. On clean data the drop is 1.6 percent against the 11 we reported, and the Retail-Plus fall is 35 percent against 49. It survives, smaller." The GCC data and AI team
+> "Anand, your 1.9 crore is right. The ERP export counted fifteen orders twice, fourteen of them in Q1; copies of two corporate orders carry Rs 19,67,560 of the Rs 19,98,210 difference. Rows and rupees reconcile to your books. On clean data the drop is 1.6 percent against the 11 we reported, and the Retail-Plus fall is 35 percent against 49. It survives, smaller." The data and AI team at Kalpa's Global Capability Centre
 
 ```mermaid
 flowchart LR

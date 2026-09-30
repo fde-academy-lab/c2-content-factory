@@ -563,9 +563,10 @@ answer the sixth.
 
 ## What will an interviewer ask, and what does a strong answer sound like?
 
-Each Design question asks for a choice, a sizing and the fact that would change it. The tags are this programme's own calibration for 0 to 3 year
-Indian-market candidates: [S] a staple asked everywhere, [F] frequent in GCC and product screens,
-[D] a differentiator.
+Each Design question asks for a choice, a sizing and the fact that would change it. The tags are
+this programme's own calibration for 0 to 3 year Indian-market candidates: [S] a staple asked
+everywhere, [F] frequent in screens at global capability centres (GCCs) and product companies, [D] a
+differentiator.
 
 **[S] How do you handle missing data?** "I measure it per field, present, convertible and distinct,
 and ask what each absence means: a blank discount may be no discount or one nobody recorded, and a
