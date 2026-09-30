@@ -29,7 +29,7 @@ label is dropped without warning by weasyprint, which prints every node as an em
 import argparse
 import hashlib
 import html
-import math
+import json
 import os
 import pathlib
 import re
@@ -155,46 +155,78 @@ def svg_labels(code):
     return LABEL.sub(fix, code)
 
 
-_MMDC_HELP = None
+class MermaidError(RuntimeError):
+    """mermaid-cli is installed and still wrote no picture, so the build stops rather than ship
+    a page, a slide or a paper without it."""
 
 
-def page_args(code, width):
-    """mmdc's page-width option for a PNG, on whichever mermaid-cli this session has.
+_MMDC_HELP = []
 
-    mermaid-cli 11 takes -w, the page width, and draws the diagram at its own size up to it.
-    mermaid-cli 12 dropped -w: left alone it fits the diagram to an 800 pixel page, so a wide
-    chain came out 784 pixels across, and its --size stretches the longer side to the number
-    given. So on 12 the diagram's own size is read from its SVG render and passed as --size,
-    capped at the old page width, so 12 draws at the diagram's own size as 11 did.
-    """
-    global _MMDC_HELP
-    if _MMDC_HELP is None:
+# A PNG renders at twice its CSS size, so an exhibit printed at its natural size holds about 200
+# pixels to the inch. Callers that size a picture from its pixels divide by this first.
+PNG_SCALE = 2
+
+# The diagram kinds whose drawing stretches to its page when useMaxWidth is on.
+MAX_WIDTH_KINDS = ("flowchart", "sequence", "class", "state", "er", "gantt", "journey", "pie",
+                   "timeline", "mindmap", "xyChart")
+
+
+def mmdc_has(flag):
+    """Whether the installed mermaid-cli lists flag in its help, read once per run."""
+    if not _MMDC_HELP:
         try:
-            _MMDC_HELP = subprocess.run(["mmdc", "--help"], capture_output=True, text=True,
-                                        timeout=60).stdout
-        except Exception:
-            _MMDC_HELP = ""
-    if "--width" in _MMDC_HELP:
-        return ["-w", str(width)]
-    svg = render_mermaid(code, "svg")
-    w, h = svg_size(svg) if svg else (0, 0)
-    if not w or not h:
-        return []
-    fit = min(1.0, width / w)
-    return ["--size", str(math.ceil(max(w, h) * fit))]
+            said = subprocess.run(["mmdc", "--help"], capture_output=True, text=True,
+                                  timeout=120).stdout or ""
+        except (OSError, subprocess.SubprocessError):
+            said = ""
+        _MMDC_HELP.append(said)
+    return flag in _MMDC_HELP[0]
+
+
+def mmdc_page(pixels, config):
+    """The mmdc flags and the mermaid config that draw a PNG on a page `pixels` wide.
+
+    mermaid-cli 11 sets the page with -w, and a drawing keeps its natural size on it. Version
+    12.0.0 (24 September 2026, read from its package on 29 September 2026) removed -w and refuses
+    it. Its --size sets the page but also caps every drawing at the page, so a drawing whose
+    config asks for useMaxWidth stretches to fill it, and leaving the flag out draws on an 800
+    pixel page: a chain 1704 pixels wide came out 784. So 12 gets --size with useMaxWidth off for
+    every diagram kind, which keeps each drawing at its own width, as -w did. setup.sh pins 11,
+    whose layout every built deck was measured against; this keeps a session that has 12 drawing
+    correctly rather than silently dropping its pictures.
+    """
+    if mmdc_has("--width"):
+        return ["-w", str(pixels)], config
+    cfg = json.loads(config)
+    for kind in MAX_WIDTH_KINDS:
+        cfg.setdefault(kind, {})["useMaxWidth"] = False
+    return ["--size", str(pixels)], json.dumps(cfg)
+
+
+def run_mmdc(cmd, env, out, timeout):
+    """Run mmdc, and raise MermaidError in mmdc's own words when it wrote no picture."""
+    try:
+        done = subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=timeout)
+    except (OSError, subprocess.SubprocessError) as e:
+        raise MermaidError(f"mermaid-cli did not run: {e}") from e
+    if done.returncode != 0 or not out.exists():
+        said = (done.stderr or done.stdout or "no output").strip().splitlines()[-3:]
+        raise MermaidError(f"mermaid-cli wrote no picture: {' / '.join(said)}")
 
 
 def render_mermaid(code, fmt="svg"):
-    """Render one fence to an image and return its path, or None when mmdc is unavailable.
+    """Render one fence to an image and return its path.
 
-    Renders are cached by content hash and by format, so rebuilding a sheet re-renders only what
-    changed and a week of sheets sharing a diagram renders it once. The labels go through
-    svg_labels first, so what the hash covers is what mmdc draws.
+    Returns None when mmdc is not installed, and raises MermaidError when it is installed and
+    writes nothing, so a failed render is never mistaken for a finished page. Renders are cached
+    by content hash and by format, so rebuilding a sheet re-renders only what changed and a week
+    of sheets sharing a diagram renders it once. The labels go through svg_labels first, so what
+    the hash covers is what mmdc draws. A PNG renders at PNG_SCALE, and the scale is in its key.
     """
     body = svg_labels(code.strip()) + "\n"
-    # "page=natural" retires PNGs that mermaid-cli 12 squeezed to 784 pixels before page_args.
-    tag = "page=natural" if fmt == "png" else ""
-    key = hashlib.sha256((body + fmt + MERMAID_CONFIG + tag).encode()).hexdigest()[:16]
+    flags, config = mmdc_page(2400, MERMAID_CONFIG) if fmt == "png" else ([], MERMAID_CONFIG)
+    tag = f"scale={PNG_SCALE} {' '.join(flags)}" if fmt == "png" else ""
+    key = hashlib.sha256((body + fmt + config + tag).encode()).hexdigest()[:16]
     CACHE.mkdir(parents=True, exist_ok=True)
     out = CACHE / f"{key}.{fmt}"
     if out.exists():
@@ -203,8 +235,8 @@ def render_mermaid(code, fmt="svg"):
         return None
     src = CACHE / f"{key}.mmd"
     src.write_text(body, encoding="utf-8")
-    conf = CACHE / f"mermaid_{hashlib.sha256(MERMAID_CONFIG.encode()).hexdigest()[:8]}.json"
-    conf.write_text(MERMAID_CONFIG, encoding="utf-8")
+    conf = CACHE / f"mermaid_{hashlib.sha256(config.encode()).hexdigest()[:8]}.json"
+    conf.write_text(config, encoding="utf-8")
     pup = CACHE / "puppeteer.json"
     if not pup.exists():
         pup.write_text(PUPPETEER_CONFIG)
@@ -215,13 +247,8 @@ def render_mermaid(code, fmt="svg"):
     cmd = ["mmdc", "-i", str(src), "-o", str(out), "-b", "transparent",
            "-c", str(conf), "-p", str(pup)]
     if fmt == "png":
-        cmd += page_args(code, 2400)
-    try:
-        subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=300)
-    except Exception:
-        return None
-    if not out.exists():
-        return None
+        cmd += flags + ["-s", str(PNG_SCALE)]
+    run_mmdc(cmd, env, out, 300)
     if fmt == "svg" and b"foreignObject" in out.read_bytes():
         # An unrendered label is worse than a missing diagram, because it looks finished.
         out.unlink()
@@ -370,7 +397,11 @@ def render_body(lines, fmt, missing):
         elif mode == "code":
             pieces.append(("code", "<pre>" + html.escape("\n".join(buf).rstrip()) + "</pre>", (0, 0)))
         elif mode == "mermaid":
-            img = render_mermaid("\n".join(buf), fmt)
+            try:
+                img = render_mermaid("\n".join(buf), fmt)
+            except MermaidError as e:
+                print(f"      {e}")
+                img = None
             if img:
                 pieces.append(("diagram",
                                f'<figure class="diagram"><img src="{img.as_uri()}"></figure>',
