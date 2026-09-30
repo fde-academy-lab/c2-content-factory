@@ -90,7 +90,7 @@ each is marked "counted" below.
 |---|---|
 | S1: 5 and 18 percent, six cities, 6 laboratories and 12 clinics, 10 files | The row and the clinics file |
 | S3: Meera's 4 percent against a plan of 15 | The Week 1 row's scenario |
-| S6: 35 learners, nine groups of four with one of three, five sub-problems, 30 minutes for the allocation | facts.yaml, the spine and the row |
+| S6: 35 learners in nine groups, eight of four and one of three, five sub-problems, 30 minutes for the allocation | facts.yaml, the spine and the row |
 | S7: 60, 30 and 15 minutes on Monday; 30, 60 and 20 on Wednesday; about 20 minutes a mock; about 30 minutes a GD; 25 to 30 minutes a presentation | The spine's day-by-day table and the rows |
 | S9: 40, 30 and 30 marks, and S9a to S9c | facts.yaml, through the sync blocks |
 | S10: the revenue tree | Week 1 Monday's S3, identical in every box; the slide's note calls it word for word, which holds |
