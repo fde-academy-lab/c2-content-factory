@@ -2,7 +2,7 @@
 
 Answers: 1a 2c 3d 4b 5a 6d 7b 8c 9a 10d 11b 12c 13a 14d 15b 16c 17b 18d 19a 20c 21a
 
-## What does the lab test?
+## What does the lab test on files nobody has shown you?
 
 The lab runs the day's habits again on files nobody has shown you. A growth idea is placed by the
 branch it moves and priced by what moving that branch costs. Lifts multiply along the tree, so a

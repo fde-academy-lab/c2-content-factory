@@ -9,7 +9,7 @@ The executed notebook beside this file,
 `exercises/solutions/C2_W01_D01_ex1_escalated_case_solution_STUDENT.ipynb`, computes every number
 here from the 30 orders.
 
-## What does the case test?
+## What does the case test about the orders that stayed delivered?
 
 Anand asks whether the answer holds on the orders that stayed sold. On the 21 delivered orders, 19
 customers kept 1.11 orders each and only 2 kept two. The typical delivered order is Rs 2,060, the
@@ -46,7 +46,7 @@ branch, by fixing what went wrong with the second order, and buying new customer
 **Kavya's review.** "You rebuilt it on Anand's definition and said what moved and what held. That is
 the answer that survives the board."
 
-## What does the solution notebook confirm?
+## What does the executed solution notebook confirm?
 
 Every check in the solution notebook passes, including that the branch picked is frequency and that
 frequency alone reaches the plan on the consumer view's delivered revenue.

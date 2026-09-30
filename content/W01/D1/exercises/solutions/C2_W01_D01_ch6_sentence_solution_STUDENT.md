@@ -2,7 +2,7 @@
 
 Answers: 1b 2d 3a 4c 5a
 
-## What does the set test?
+## What does the set test about the sentence Meera signs?
 
 "Bought once in this window" is a fact, and "lost" is a claim about orders the window cannot see.
 The 7 customers who came back took a median of 45 days to do it, and 9 of the 16 one-time buyers
@@ -39,7 +39,7 @@ quality. A first window's number read as a verdict is the risk the caveat guards
 same edge cuts every "who has not done it yet" count: returns not yet in, renewals not yet due, a
 cohort one month old.
 
-## What does the notebook confirm?
+## What does notebook 06 confirm?
 
 Notebook 06 prints the 45-day median gap, the split of 7 who came back, 7 past the gap and 9 too
 recent, the due-date route agreeing on 9, and the 69-word sentence built from variables.

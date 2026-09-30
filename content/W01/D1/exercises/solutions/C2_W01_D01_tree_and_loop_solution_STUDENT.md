@@ -2,7 +2,7 @@
 
 Answers: 1c 2a 3b 4d
 
-## What does the walk test?
+## What does the walk test about the tree and the first loop?
 
 The tree comes before the code: revenue is customers times orders per customer times revenue per
 order, and revenue per order is items per order times price per item, less discounts. Each branch
@@ -11,7 +11,7 @@ marketing's Rs 12 crore is a bet on the first branch. The loop is the calculator
 the numbers: it runs once per row, a row is an order, and with no test on the status it counts
 every order and adds up booked revenue.
 
-## What goes in the table?
+## What goes in the table of numerators and denominators?
 
 | Branch | Numerator | Denominator | Today's number |
 |---|---|---|---|

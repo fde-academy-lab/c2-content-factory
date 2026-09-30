@@ -2,7 +2,7 @@
 
 Answers: 1d 2b 3c 4a 5d
 
-## What does the set test?
+## What does the set test about counting Kalpa's customers?
 
 A row is an order and a customer is an id. Counted by rows, the 30 orders read as 30 customers and
 orders per customer as 1.00, so "nobody comes back" makes acquisition look like the only branch.
@@ -37,7 +37,7 @@ Reliance Retail reports 396 million registered customers. Registered, active and
 are three denominators, and each gives a different rate for the same orders, so every rate per
 customer has to say which customers it divides by.
 
-## What does the notebook confirm?
+## What does notebook 03 confirm?
 
 Notebook 03 prints 23 customers, 1.30 orders each and 7 who came back on the booked orders, and 2
 who kept two on the delivered orders.

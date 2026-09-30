@@ -6,7 +6,7 @@ The executed notebook beside this file,
 `exercises/solutions/C2_W01_D01_ex2_second_case_solution_STUDENT.ipynb`, computes every number here
 from the 30 orders.
 
-## What does the case test?
+## What does the case test about revenue by channel and customer type?
 
 "Store brings 91.6 percent of revenue" is true of booked rupees, Rs 4,98,920 of Rs 5,44,810, and
 misleading as the basis for a plan. The check is the count of orders behind each share, then the
@@ -49,7 +49,7 @@ and a plan that follows the share. Sales operations teams report shares with and
 largest accounts for this reason, and a returns rate by channel is a standard line in any
 e-commerce operating review.
 
-## What are the notebook's picks?
+## What are the second case notebook's seven picks?
 
 The seven TODO picks in `notebooks/C2_W01_D01_ex2_second_case_STUDENT.ipynb`, in order, are
 c b d a b c a. The executed solution notebook named above carries the filled line for each, and its

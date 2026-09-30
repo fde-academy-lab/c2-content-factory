@@ -2,7 +2,7 @@
 
 Answers: 1c 2b 3d 4a 5b
 
-## What does the set test?
+## What does the set test about Kalpa's readings of sales?
 
 Kalpa's 30 orders give three honest readings of sales, and each answers a different question.
 Booked, Rs 5,44,810 on 30 orders, is what customers asked for. Not cancelled, Rs 5,35,760 on 26, is
@@ -39,7 +39,7 @@ crore for the same quarter to June 2026, and every retailer's finance team keeps
 recognised revenue on separate lines. At a software company the same argument runs between bookings
 and recognised revenue.
 
-## What does the notebook confirm?
+## What does notebook 01 confirm?
 
 `notebooks/C2_W01_D01_01_four_readings_of_sales_STUDENT.ipynb` counts the orders by status before it
 sums, prints Rs 5,35,760 on the not-cancelled reading, and asserts that summing by status reaches the

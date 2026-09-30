@@ -2,7 +2,7 @@
 
 Answers: 1a 2d 3b 4c 5b
 
-## What does the set test?
+## What does the set test about the typical Kalpa order?
 
 The mean is the total over the count, so it takes in every rupee of every order, and a very large
 order can drag it: on Kalpa's 30 orders the mean is Rs 18,160 and only 1 of the 30 orders sits above
@@ -38,7 +38,7 @@ Blinkit reported a net average order value of Rs 518 for the quarter to June 202
 similar small baskets a mean describes the typical basket well; across 30 orders that include very
 large ones, the same mean describes almost none of them.
 
-## What does the notebook confirm?
+## What does notebook 04 confirm?
 
 Notebook 04 prints the median of Rs 2,205, the mean at 8.2 times the median, the count of orders on
 each side of the mean, and the median on the not-cancelled and delivered readings, Rs 2,100 and

@@ -2,7 +2,7 @@
 
 Answers: 1c 2a 3d 4b 5c
 
-## What does the set test?
+## What does the set test about the branch Meera opens first?
 
 Meera's growth plan concerns the three consumer segments, Retail-Core, Retail-Plus and Student, so it
 is sized on the consumer view, the orders whose segment is one of those three: Rs 64,810 booked this
@@ -39,7 +39,7 @@ Flipkart launched Flipkart Black at Rs 1,499 a year in 2025, and Amazon offers P
 Rs 399 to Rs 1,499 a year: both pay existing customers to come back more often, a bet on the
 frequency branch by companies that could have spent the same money on acquisition.
 
-## What does the notebook confirm?
+## What does notebook 05 confirm?
 
 Notebook 05 sizes the four branches on the consumer view, Rs 64,810 to about Rs 74,532, and builds
 the two lifts as a bridge of four parts, Rs 64,810 plus Rs 6,481, Rs 6,481 and Rs 648, landing on

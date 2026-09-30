@@ -2,7 +2,7 @@
 
 Answers: 1b 2c 3a 4d 5a
 
-## What does the set test?
+## What does the set test about the tree's fractions?
 
 A branch of the tree is a metric only when it is a numerator over a denominator on one reading of
 sales and one window. Kalpa's extract fills three of the six branches, customers, orders per
@@ -39,7 +39,7 @@ customers times revenue per customer, and investors multiply the branches back t
 A branch taken from a different report or period breaks that multiplication, which is why every
 published rate states what it divides.
 
-## What does the notebook confirm?
+## What does notebook 02 confirm?
 
 Notebook 02's identity table shows Rs 25,943 claiming Rs 7,78,300 on the 30 booked orders against
 Rs 5,44,810 booked, and it confirms Rs 18,160 booked and Rs 24,800 delivered, each multiplying back to
