@@ -47,6 +47,7 @@ Those letters are an illustration of the shape. Check that the illustration is n
 ## Rules
 
 - Learner-facing only. Any reasoning, rationale, timing, locator or facilitation that sits in an exercise file moves to its solutions file.
+- Self-contained, with question headings. A file is sat with nothing else open: it carries its case, its data or exhibit and every definition its items use, and each part heading asks the question the part practises, per the question ladder in `day-pack-builder/references/the-standard.md`. A Saturday part is named by the question it asks.
 - Diagrams as Mermaid fenced blocks, so a learner reads them on GitHub with nothing installed.
 - Each exercise gains a hands-on part pointing at its TODO notebook and listing the letters to post.
 - Length points neither way. The key is never the one option far longer than the rest, and across a

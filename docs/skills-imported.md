@@ -21,6 +21,10 @@ The upstream repositories are https://github.com/obra/superpowers, https://githu
 | `seo-content` gives every written artifact its last-mile cleanup of AI-typical phrasing and invisible Unicode characters, and its E-E-A-T scoring applies to public pages only. | It comes from `skills/seo-content` in AgriciDaniel/claude-seo at commit `e77e783` and carries the MIT licence, and `scripts/content_humanize.py` and `skills/seo/references/eeat-framework.md` were copied in from the same commit. |
 | `content-repurposer` turns a finished day pack or a capstone story into announcement posts and newsletters for public channels. | It comes from `skills/content-repurposer` in irinabuht12-oss/marketing-skills at commit `1bb135e`, which has no licence file, so this copy relies on the README's statement that the skills are MIT licensed; its description is wrapped in quotes here, since the unquoted colon made the frontmatter invalid YAML. |
 
+## humanizer
+
+`humanizer` was copied into `.claude/skills/humanizer/` on 30 September 2026 at the requester's request, so that no wording in the programme's material reads as a language model's. It comes from `SKILL.md` in https://github.com/blader/humanizer at commit `225a6f3` (version 3.1.0, dated 27 September 2026), carries the MIT licence as `LICENSE`, and its git remote was checked on 30 September 2026. The folder keeps the author's text, adds a `SOURCE` line, and opens with the house-rules note, which also says that the standard's tables, bullets and recurring bold lead-ins stay. Its 25 patterns come from Wikipedia's "Signs of AI writing", and it complements the author's `llm-tic-scrubber`: the scanner catches the tics a script can find, and the humanizer is the read a person or an agent gives the whole text in file mode, changing prose only and leaving code, data, paths and link targets as they are. The upstream repository's plugin manifests, validation script and issue templates were left out, since only the skill itself is used here.
+
 ## gsd-core
 
 `gsd-core` from https://github.com/open-gsd/gsd-core (commit `19a7b1f`, MIT, git remote checked 27 September 2026) is recorded here

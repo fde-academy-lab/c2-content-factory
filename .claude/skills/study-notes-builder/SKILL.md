@@ -279,7 +279,9 @@ script cannot see, and clear both before showing the work.
 Every heading names its topic and works as a contents entry a month later. The
 assertion goes in the first line under the heading, never in the heading.
 `Reranking, and why a good retriever still returns the wrong order` is a
-heading. `Reranking deep dive` is a label.
+heading. `Reranking deep dive` is a label. In the C2 programme every heading is also a question the
+section answers, per the question ladder in `day-pack-builder/references/the-standard.md`: `Why does a
+good retriever still return the wrong order, and what does reranking change?`
 
 ---
 
