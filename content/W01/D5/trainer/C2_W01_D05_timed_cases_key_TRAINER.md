@@ -103,17 +103,24 @@ https://theregister.com/2019/11/19/tsb_slammed_for_big_bang_it_approach_behind_d
 overclaiming? Descends from Friday's [D] and Thursday's [F] "42 percent on 12 users against 31
 percent on 1,200".
 
-**The best fit.** C, a split test until each checkout has about 300 visits, about half a week.
+**The best fit.** C, a split test until each checkout has about 300 visits, about half a week. D is
+as good on evidence and four times slower; it is the choice when a worse checkout costs money.
 
 **The sizing.** To tell 42 percent from 31 percent with the conventional 5 percent false-alarm rate
-and an 80 percent chance of seeing a real difference, each checkout needs about 300 visits (the
-standard two-proportion sample-size formula gives 299.5). At about 1,200 visits a week, a half split
-reaches 300 each in roughly three and a half days. B would take about 25 weeks at 12 visits a week. D
-gives the new checkout about 240 visits in a fortnight, short of 300. And A bets on 5 conversions: if
-the new checkout were really at 31 percent, 5 or more of 12 would still happen in about 3 weeks of 10.
+and an 80 percent chance of seeing a real difference, an equal split needs about 300 visits per
+checkout (the standard two-proportion sample-size formula gives 299.5). At about 1,200 visits a week, a
+half split reaches 300 each in roughly three and a half days. An unequal split needs fewer visits on
+the smaller side, because the larger side is measured so precisely: D, one visit in ten for a
+fortnight, puts about 240 visits on the new checkout beside about 2,160 on the current one, which gives
+about a 91 percent chance of seeing a real difference, and about 170 new-checkout visits would already
+reach 80 percent. So D is enough; it costs a fortnight where C costs half a week. B, at about 12 pilot
+visits a week beside 1,200 on the current checkout, reaches 80 percent in about 14 weeks. And A bets on
+5 conversions: if the new checkout were really at 31 percent, 5 or more of 12 would still happen in
+about 3 weeks of 10.
 
 **What would switch it.** A new checkout that could lose money if it is worse (a payment step
-that fails): C with one visit in ten, run for longer. Traffic of a dozen visits a week, as Student's
+that fails): D, one visit in ten for a fortnight, which limits the exposure and still gives about a
+91 percent chance of seeing a real difference. Traffic of a dozen visits a week, as Student's
 orders were on Thursday: no test settles it within a quarter, so decide on the cost of being wrong and
 how easily it can be reversed. A change that is free to reverse within a day: ship it behind a switch
 and measure it as it runs, which is C by another name.
@@ -140,9 +147,11 @@ Thomke, "The Surprising Power of Online Experiments", Harvard Business Review, S
 article says the result tripped an alert and analysis confirmed it; it does not say the test was re-run,
 so the model answer says "checked", never "re-run".
 
-**The arithmetic, for a TA asked.** Sample size per arm n = (1.96 x sqrt(2 x 0.365 x 0.635) + 0.8416
-x sqrt(0.31 x 0.69 + 0.42 x 0.58))² / 0.11² = 299.5. The chance of 5 or more conversions in 12
-visits at a true 31 percent is 0.303.
+**The arithmetic, for a TA asked.** Sample size per arm for an equal split, n = (1.96 x sqrt(2 x 0.365
+x 0.635) + 0.8416 x sqrt(0.31 x 0.69 + 0.42 x 0.58))² / 0.11² = 299.5. For an unequal split the power
+is the normal probability of 0.11 / sqrt(0.31 x 0.69 / n1 + 0.42 x 0.58 / n2) less 1.96: about 0.80 at
+300 and 300, 0.91 at 2,160 and 240, and 0.82 after 14 weeks at 1,200 and 12 a week. The chance of 5 or
+more conversions in 12 visits at a true 31 percent is 0.303.
 
 ## The interview questions of the day, in one breath each
 

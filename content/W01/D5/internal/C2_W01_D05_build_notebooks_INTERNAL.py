@@ -331,9 +331,10 @@ kit.check("the gap is one chance rarely produces, on every seed tried", max(band
           f"p = {extreme / 2000:.4f} on seed 7")
 '''),
     md("""
-    **The fifth trap: the wrong unit.** Shuffling orders instead of customers splits each customer's
-    orders across the two groups, builds worlds that could not exist, widens the chance spread, and
-    turns a real gap into "could be chance".
+    **The fifth trap: the wrong unit.** Shuffling orders instead of customers treats a customer's
+    orders as independent. The wrong unit can move p either way: most often too small, since correlated
+    orders count as extra evidence. Here the gap is each customer's own change from Q1 to Q2, the order
+    shuffle breaks that pairing, and a real gap reads as "could be chance".
     """),
     code('''
 both = core + plus
@@ -366,7 +367,7 @@ kit.check("shuffling the wrong unit moves the verdict across 0.05", ext_orders /
     one Q2 order's segment was restored from the customer's other orders.
 
     **Action.** Open Retail-Core's basket first, items per order and price per item, before any
-    spend; treat the corporate fall as noise until a third quarter says otherwise.
+    spend; ask the corporate account owner which two accounts did not reorder, and why.
 
     **The sixth trap: the headline on ten orders.** "Corporate revenue fell 29 percent" is true to
     the rupee and rests on ten orders; a note that leads with it sends Meera after two invoices.
@@ -424,6 +425,62 @@ kit.table(["segment", "customers", "orders per customer", "revenue per order", "
 kit.check("the practice export reconciles to its control totals",
           all(sum(r["amount"] for r in pclean if r["quarter"] == q) == int(pctl[q]["amount_rs"]) and
               sum(1 for r in pclean if r["quarter"] == q) == int(pctl[q]["orders"]) for q in ("Q1", "Q2")))
+
+'''),
+    md("""
+    **The practice lead, tested.** Retail-Plus's fall in orders per member against Retail-Core's, with
+    the segment label shuffled across customers, 2,000 times on `random.Random(7)`. The verdict depends
+    on the practice export's order with no customer_id (a Retail-Core order in Q2), so the test runs
+    both ways: that order kept as a customer of its own, and left out of the customer count.
+    """),
+    code('''
+def freq_change(rs):
+    out = []
+    for q in ("Q1", "Q2"):
+        sub = [r for r in rs if r["quarter"] == q]
+        out.append(len(sub) / len({r["cid"] for r in sub}))
+    return change(out[0], out[1])
+
+
+def practice_p(keep_blank, seed=7):
+    rs = []
+    for r in pclean:
+        if r["segment"] not in ("Retail-Plus", "Retail-Core"):
+            continue
+        if not r["customer_id"] and not keep_blank:
+            continue
+        rs.append(dict(r, cid=r["customer_id"] or "unknown-" + r["order_id"]))
+    plus_ids = sorted({r["cid"] for r in rs if r["segment"] == "Retail-Plus"})
+    groups = {}
+    for r in rs:
+        groups.setdefault(r["cid"], []).append(r)
+    ids = sorted(groups)
+    obs = freq_change([r for r in rs if r["segment"] == "Retail-Plus"]) - freq_change([r for r in rs if r["segment"] == "Retail-Core"])
+    rng = random.Random(seed)
+    hits = 0
+    for _ in range(2000):
+        m = ids[:]
+        rng.shuffle(m)
+        a = [r for c in m[:len(plus_ids)] for r in groups[c]]
+        b = [r for c in m[len(plus_ids):] for r in groups[c]]
+        try:
+            g = freq_change(a) - freq_change(b)
+        except ZeroDivisionError:
+            continue
+        if abs(g) >= abs(obs):
+            hits += 1
+    return obs, hits / 2000
+
+
+rows_p = []
+for keep in (True, False):
+    obs, pv = practice_p(keep)
+    band = [practice_p(keep, sd)[1] for sd in (1, 2, 3)]
+    rows_p.append(("kept as its own customer" if keep else "left out of the count", f"{obs:+.1f} pts", f"{pv:.4f}",
+                   f"{min(band):.4f} to {max(band):.4f}"))
+kit.table(["the order with no customer_id", "gap in frequency change", "p on seed 7", "p on seeds 1 to 3"], rows_p,
+          caption="The practice lead's shuffle test, both ways")
+kit.check("the practice test runs both ways", len(rows_p) == 2)
 '''),
     code("kit.check_summary()"),
 ]

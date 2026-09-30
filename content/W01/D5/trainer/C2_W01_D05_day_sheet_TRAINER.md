@@ -145,7 +145,7 @@ answers.
 |---|---|---|---|
 | 1. Meera's first read in two hours | DMart, whose provisional quarter goes out days before the board signs the results | C: profile, clean, reconcile, decompose, about 90 of 120 minutes, marked provisional, no test | No control total: say so in the first line; a segment gap Meera will act on: B with the test |
 | 2. Zero rejects and a Rs 20 lakh gap | TSB, whose 2018 migration left 1.9 million customers unable to see their accounts | Ids against rows, then the value accounting, a cell each; then the rupee bridge by month, about 30 minutes | A month the bridge cannot close: match that month order by order |
-| 3. 42 percent on twelve visits | Bing, whose 12 percent revenue lift was checked before anyone believed it | A half-and-half split until each checkout has about 300 visits, about half a week | A checkout that could lose money: one visit in ten for longer; a dozen visits a week: decide on cost and reversibility |
+| 3. 42 percent on twelve visits | Bing, whose 12 percent revenue lift was checked before anyone believed it | A half-and-half split until each checkout has about 300 visits, about half a week | A checkout that could lose money: one visit in ten for a fortnight, still about a 91 percent chance of seeing a real difference; a dozen visits a week in all: decide on cost and reversibility |
 
 The full model answers, the arithmetic and the sources are in `trainer/C2_W01_D05_timed_cases_key_TRAINER.md`.
 
@@ -165,8 +165,10 @@ observation sheet marked.
 | 3, the tree and the test | They read Retail-Plus frequency on the uncleaned rows and report -40 percent | "How many distinct orders does Retail-Plus hold in Q1?" |
 | 4, the note | They lead with the flat total, or with Student's 50 percent on five orders | "What is the smallest number of orders any rate in your claim rests on?" |
 
-The last item of each problem (4, 7, 12, 15) is a design item, and item 11 is a fifth: five of
-fifteen. A learner who stalled at a step answers that problem's design item aloud to the TA before
+Items 4, 7, 10, 11, 12, 15 and 16 are design items, seven of sixteen, and item 16 is the ordering
+item. The practice lead's test sits at p = 0.047 with the order that has no customer_id kept as its
+own customer and 0.011 with it left out (reference notebook, practice section); a learner who reaches
+either should say which handling they chose, and the note calls the first borderline. A learner who stalled at a step answers that problem's design item aloud to the TA before
 the rerun, so the choice of approach is said before the code is typed.
 
 The practice numbers: 79 rows, 75 distinct orders, 4 repeated Q1 Retail-Plus rows, one amount "Rs

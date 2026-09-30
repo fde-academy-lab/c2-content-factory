@@ -64,7 +64,7 @@ the evidence; the fix is one number fewer, never a faster voice.
 ---
 
 ## S3. What a partner playing Marketing pushes on
-*Every push is a fair question with a motive behind it; answer the question, not the motive.*
+*Every push is a fair question with a motive behind it; answer the question it asks.*
 
 ```mermaid
 flowchart LR
@@ -81,7 +81,7 @@ flowchart LR
 The full list, with a harder set for the second pairing, is in `exercises/guided/C2_W01_D05_rehearsal_brief_STUDENT.md`.
 
 ```notes
-LIVE, 2 minutes. Read the four pushes in a Marketing voice, not a villain's. The partner playing
+LIVE, 2 minutes. Read the four pushes in a fair Marketing voice. The partner playing
 Marketing is doing the defender a favour, and the room should hear that before round one starts.
 The first push is the sharpest: the brief answers it in full, and a TA reads Marketing's lines while
 you model the answer once.
@@ -210,12 +210,11 @@ read the model after the call-outs.
 **In the interview.** [F] You have two hours and a raw export; what do you do first, and what do you skip? Here the export is Q3 from the ERP, and DMart is the likeness: it publishes a provisional quarter days before its board signs the results.
 
 ```mermaid
-flowchart LR
-    A["<b>A. sum and chart</b><br/>10 min"] --> B["<b>C. profile, clean,<br/>reconcile, decompose</b><br/>90 min"]
-    B --> C["<b>B. the whole method</b><br/>120 min"]
-    C --> D["<b>D. wait for the close</b><br/>days"]
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    class B known
+flowchart TB
+    Q["<b>two hours, a raw export</b><br/>which plan?"] --> A["<b>A. sum and chart</b><br/>10 min"]
+    Q --> C["<b>C. profile, clean,<br/>reconcile, decompose</b><br/>90 min"]
+    Q --> B["<b>B. the whole method</b><br/>120 min"]
+    Q --> D["<b>D. wait for the close</b><br/>days"]
 ```
 
 ```notes
@@ -251,7 +250,7 @@ point, and for Finance's number treated as the reference until the bridge closes
 ```stats
 value: 42% | label: new checkout | note: 5 of 12 visits
 value: 31% | label: current checkout | note: of 1,200 visits
-value: about 300 | label: visits per checkout | note: to tell the two apart
+value: about 300 | label: visits per checkout | note: in an equal split, to tell the two apart
 ```
 
 ```notes
@@ -309,10 +308,10 @@ preread/ and ships tonight.
 ## S14. The lines to carry out of the week
 *The same five lines close the study notes, word for word.*
 
-1. A total you have not reconciled is a guess with a decimal point.
-2. Zero rejects on a file you know is dirty is a finding, not a result.
-3. Count before rate: a rate on a handful of orders is a rumour with a percent sign.
-4. Shuffle what belongs together: the customer, not the order.
+1. Reconcile counts and rupees to a control total before you quote a total.
+2. A zero-reject pass on a file you know is dirty is the first thing to investigate.
+3. Count before rate: put the order count beside every rate before it leads a note.
+4. Shuffle what belongs together, which this week is the customer.
 5. Say the claim with its denominator, the caveat before they find it, and what would change your mind.
 
 ```notes
@@ -331,7 +330,7 @@ label: RECAP | title: From memory | body: The note's four parts and the p-value 
 label: SETUP | title: Sunday evening | body: Week 2 works in a live Postgres connection from VS Code; the setup steps arrive on Sunday.
 ```
 
-**Kavya's review.** On Monday, Meera hears a note from someone who rebuilt every number in it alone this morning, and Marketing cannot say otherwise.
+**Kavya's review.** On Monday, Meera hears a note from someone who rebuilt every number in it alone this morning and reconciled it to Anand's books.
 
 ```notes
 LIVE, 4 minutes. Close on the three tasks. The practice set is in exercises/practice/ and the TAs

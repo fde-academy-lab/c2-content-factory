@@ -97,7 +97,7 @@ Retail-Plus came up as large in only 39 of 2,000 customer-level shuffles, p = 0.
 **Caveat.** The corporate fall rests on six orders against four, too few to call a trend, and one
 Q2 order's segment was restored from the customer's other orders.
 **Action.** Open Retail-Core's basket first, items per order and price per item, before any spend;
-treat the corporate fall as noise until a third quarter says otherwise.
+ask the corporate account owner which two accounts did not reorder, and why.
 
 ## The traps a hurried run falls into, each with its exact wrong number
 
@@ -109,7 +109,7 @@ treat the corporate fall as noise until a third quarter says otherwise.
 | 2 | **The pass that looks clean**: the text amount coerced to zero | 0 rejects, 98 Q1 orders that reconcile, **Q1 Rs 50,63,000** | Rs 60,48,000 | Counts reconcile, so the run is signed off | Rupees per quarter against the control total |
 | 3 | **The wrong branch**: the tree read on the uncleaned rows | Retail-Core **orders per customer 1.47 to 1.77, +20.5 percent**; revenue **Rs 90,200 to Rs 90,210, flat**; per order -17.0% | Frequency flat, basket -17.1 percent, revenue -17.1 percent | "Core is fine, its customers order more often" | Distinct ids per segment; reconcile before decomposing |
 | 4 | **The headline on ten orders** | "Corporate revenue fell **29.2 percent**" as the first line | 6 orders then 4, in the caveat | Meera chases two invoices | Count before rate; fewer than about thirty observations |
-| 5 | **The wrong unit** in the shuffle | Orders shuffled: 151 of 2,000, **p = 0.0755**, "could be chance" | Customers shuffled: p = 0.0195 | A real basket fall dismissed as noise | The unit that carries the label is the customer |
+| 5 | **The wrong unit** in the shuffle | Orders shuffled: 151 of 2,000, **p = 0.0755**, "could be chance" | Customers shuffled: p = 0.0195 | A real basket fall read as chance, because the order shuffle breaks each customer's Q1 to Q2 pairing; on other data the wrong unit more often makes a chance gap look real | The unit that carries the label is the customer |
 | 6 | **The typical order** | **Rs 52,057**, the mean, as the typical order | Rs 2,110, the median | A basket story told on an average that ten corporate orders set | Sort and read the top ten |
 | 7 | **The empty segment dropped or bucketed** | Retail-Plus Q2 **34 orders, Rs 93,670**, and a fifth segment "" of 1 order, Rs 2,930 | 35 orders, Rs 96,600 | Segment sums short of the total by Rs 2,930 | Segments add back to the total, in orders and rupees |
 

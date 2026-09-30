@@ -87,22 +87,9 @@ kit.side_by_side(
 )
 '''),
     md("""
-    ## The options
-
-    The question at this step is narrow: before a single branch of the tree is read, is the data you
-    cleaned still the data Finance booked? A team has four ways to answer it.
-
-    | Option | What it does | What it needs |
-    |---|---|---|
-    | A. Trust the pass | Sum what the cleaning pass kept and move on to the tree | Nothing |
-    | B. Count check | Rows read equal rows kept plus rows rejected, and orders per quarter equal Finance's order counts | The control file's order counts |
-    | C. Counts and rupees, with a bridge | B, plus each quarter's rupees against Finance's control total, and a bridge from what was read to what was kept | The control file's rupee totals |
-    | D. Order-level match | Every kept order matched to Finance's ledger line by line | The ledger itself, which the lab did not have |
-
-    The cell below sizes each one on this morning's file. It runs the hurried pass most notes were built
-    on (rows kept as they arrived, a value that will not convert set to zero), then applies each check
-    and fixes only what that check can see. The minutes are the lab brief's pace, and D's is this
-    programme's estimate for a request to Finance and a join; the milliseconds are measured here.
+    **The passes, as two small functions.** `quarter_totals` sums each quarter, either reading a value
+    with grouping commas or setting any value that will not convert to zero, the way the hurried pass
+    did; `first_of_each` keeps one row per order id, Wednesday's identity rule.
     """),
     code('''
 def quarter_totals(src, text_to_zero):
@@ -127,41 +114,8 @@ def first_of_each(src):
 
 
 truth = change(ctl("Q1")[0], ctl("Q2")[0])
-sizing = []
-for name, minutes, cells, dedupe, text_fixed in [
-        ("A. trust the pass", 0, 0, False, False),
-        ("B. count check", 2, 1, True, False),
-        ("C. counts and rupees, bridge", 15, 3, True, True),
-        ("D. order-level match", 120, 6, True, True)]:
-    start = time.perf_counter()
-    src = first_of_each(rows) if dedupe else rows
-    t = quarter_totals(src, text_to_zero=not text_fixed)
-    ms = 1000 * (time.perf_counter() - start)
-    reported = change(t["Q1"][0], t["Q2"][0])
-    sizing.append((name, minutes, cells, len(rows), f"{ms:.2f}", f"{reported:+.1f}%", abs(reported - truth)))
-kit.table(["option", "analyst minutes", "cells", "rows touched", "compute ms", "Q1 to Q2 it reports", "points off"],
-          [s[:6] + (f"{s[6]:.1f}",) for s in sizing],
-          caption="Four ways to check, sized on the lab export; the books say " + f"{truth:+.1f}%")
-kit.bars([(s[0], round(s[6], 1)) for s in sizing], lit=(2,), fmt=lambda v: f"{v:.1f} pts",
-         title="How far each option's headline sits from the books, in percentage points")
+print(f"Finance's books: Q1 to Q2 {truth:+.1f}%")
 '''),
-    code('''
-kit.check("the computer's cost is under a second for every option", all(float(s[4]) < 1000 for s in sizing))
-kit.check("only options C and D land on the books", [round(s[6], 1) for s in sizing][2:] == [0.0, 0.0]
-          and all(s[6] > 1 for s in sizing[:2]))
-'''),
-    md("""
-    **The best-fit call.** C. It costs about fifteen minutes of an analyst's two hours, needs only the
-    control file that came with the export, and lands on the books to the rupee; the computer's share
-    of the cost is under a millisecond for all four, so the choice is about minutes of thought, never
-    about compute. B is the option most people who did check stopped at, and it still leaves the
-    headline about 14 points off. D names every order that differs, which C cannot, and costs a request
-    to Finance and most of the afternoon.
-
-    **What would change the call.** No control total at all: then C has nothing to land on, and D, or a
-    second export pulled from the source system for the same quarters, becomes the check. A bridge
-    that does not close: then C has told you there is a gap it cannot explain, and D is how you find it.
-    """),
     md("""
     ## 1. The headline the hurried run sent
 
@@ -204,6 +158,63 @@ kit.check("the hurried run points the opposite way to the books", h_change > 0 >
           f"{h_change:+.1f}% against {truth:+.1f}%")
 '''),
     md("""
+    ## The options
+
+    The question at this step is narrow: before a single branch of the tree is read, is the data you
+    cleaned still the data Finance booked? A team has four ways to answer it.
+
+    | Option | What it does | What it needs |
+    |---|---|---|
+    | A. Trust the pass | Sum what the cleaning pass kept and move on to the tree | Nothing |
+    | B. Count check | Rows read equal rows kept plus rows rejected, and orders per quarter equal Finance's order counts | The control file's order counts |
+    | C. Counts and rupees, with a bridge | B, plus each quarter's rupees against Finance's control total, and a bridge from what was read to what was kept | The control file's rupee totals |
+    | D. Order-level match | Every kept order matched to Finance's ledger line by line | The ledger itself, which the lab did not have |
+
+    You have just seen option A's headline. The cell below sizes all four on this morning's file: it
+    runs the hurried pass, then applies each check and fixes only what that check can see. D cannot run
+    here, since the lab had no ledger; its row shows what it would land on once matched. The minutes are the lab brief's pace, and D's is this
+    programme's estimate for a request to Finance and a join; the milliseconds are measured here.
+    """),
+    code('''
+truth = change(ctl("Q1")[0], ctl("Q2")[0])
+sizing = []
+for name, minutes, cells, dedupe, text_fixed in [
+        ("A. trust the pass", 0, 0, False, False),
+        ("B. count check", 2, 1, True, False),
+        ("C. counts and rupees, bridge", 15, 3, True, True),
+        ("D. order-level match", 120, 6, True, True)]:
+    start = time.perf_counter()
+    src = first_of_each(rows) if dedupe else rows
+    t = quarter_totals(src, text_to_zero=not text_fixed)
+    ms = 1000 * (time.perf_counter() - start)
+    reported = change(t["Q1"][0], t["Q2"][0])
+    ms_text = "needs the ledger" if name.startswith("D") else f"{ms:.2f}"
+    sizing.append((name, minutes, cells, len(rows), ms_text, f"{reported:+.1f}%", abs(reported - truth)))
+kit.table(["option", "analyst minutes", "cells", "rows touched", "compute ms", "Q1 to Q2 it reports", "points off"],
+          [s[:6] + (f"{s[6]:.1f}",) for s in sizing],
+          caption="Four ways to check, sized on the lab export; the books say " + f"{truth:+.1f}%")
+kit.bars([(s[0], round(s[6], 1)) for s in sizing], lit=(2,), fmt=lambda v: f"{v:.1f} pts",
+         title="How far each option's headline sits from the books, in percentage points")
+'''),
+    code('''
+kit.check("the computer's cost is under a second for every option run here",
+          all(float(s[4]) < 1000 for s in sizing[:3]))
+kit.check("only options C and D land on the books", [round(s[6], 1) for s in sizing][2:] == [0.0, 0.0]
+          and all(s[6] > 1 for s in sizing[:2]))
+'''),
+    md("""
+    **The best-fit call.** C. It costs about fifteen minutes of an analyst's two hours, needs only the
+    control file that came with the export, and lands on the books to the rupee; the computer's share
+    of the cost is under a millisecond for all four, so the choice is about minutes of thought, never
+    about compute. B is the option most people who did check stopped at, and it still leaves the
+    headline about 14 points off. D names every order that differs, which C cannot, and costs a request
+    to Finance and most of the afternoon.
+
+    **What would change the call.** No control total at all: then C has nothing to land on, and D, or a
+    second export pulled from the source system for the same quarters, becomes the check. A bridge
+    that does not close: then C has told you there is a gap it cannot explain, and D is how you find it.
+    """),
+    md("""
     ## 2. The count check catches half of it
 
     Option B compares orders with Finance's order counts and keeps one row per order id, the identity
@@ -223,7 +234,13 @@ c_change = change(counted["Q1"][0], counted["Q2"][0])
 kit.table(["quarter", "orders kept", "Finance's orders", "rupees kept", "Finance's rupees"],
           [(q, counted[q][1], ctl(q)[1], kit.rupees(counted[q][0]), kit.rupees(ctl(q)[0])) for q in QUARTERS],
           caption=f"After the count check: {len(rows)} rows read, {len(once)} kept, {len(rows) - len(once)} rejected")
-kit.check("input equals kept plus rejected", len(rows) == len(once) + (len(rows) - len(once)))
+seen, rejected = set(), []
+for r in rows:
+    if r["order_id"] in seen:
+        rejected.append(r)
+    seen.add(r["order_id"])
+kit.check("input equals kept plus rejected, each list built on its own", len(rows) == len(once) + len(rejected),
+          f"{len(rows)} = {len(once)} + {len(rejected)}")
 kit.check("the order counts now land on Finance's in both quarters",
           all(counted[q][1] == ctl(q)[1] for q in QUARTERS))
 kit.check("Q1's rupees still miss the control total", counted["Q1"][0] != ctl("Q1")[0],
@@ -318,15 +335,18 @@ kit.table(["quarter", "Finance", "plus rows removed", "less value read back", "l
 kit.equation(["Finance's total", "+", "rows removed", "-", "value read back", "=", "the hurried sum"],
              title="The second route, read left to right")
 kit.check("the walk back lands on the hurried sum in both quarters", all(back[q] == hurried[q][0] for q in QUARTERS))
-kit.check("both routes give the same headline", round(change(ctl("Q1")[0], ctl("Q2")[0]), 1) == round(truth, 1))
+books_back = {q: hurried[q][0] - (back[q] - ctl(q)[0]) for q in QUARTERS}
+kit.check("the headline rebuilt from the walk back equals the forward bridge's",
+          round(change(books_back["Q1"], books_back["Q2"]), 1) == round(change(clean["Q1"][0], clean["Q2"][0]), 1),
+          f"{change(books_back['Q1'], books_back['Q2']):+.1f}%")
 '''),
     md("""
     **When to switch routes.** The forward bridge is the one to show Finance, because it starts from
     their export. The walk back is the one to run when a bridge closes suspiciously neatly: two
     mistakes that cancel pass one route and fail the other.
 
-    > **Kavya's review.** A number that has not been reconciled is not a rougher version of the right
-    > number. This morning it pointed the other way. Put the two checks in a cell before you compute
+    > **Kavya's review.** A number that has not been reconciled can point the wrong way, and this
+    > morning it did. Put the two checks in a cell before you compute
     > the first number you plan to send, so the clock cannot remove them.
 
     ### In the interview
@@ -372,7 +392,7 @@ kit.table(["Retail-Core", "orders per customer, Q1 to Q2", "revenue per order, Q
             f"{kit.rupees(h1[3])} to {kit.rupees(h2[3])}", f"{change(h1[4], h2[4]):+.1f}%"),
            ("one row per order", f"{c1[2]:.2f} to {c2[2]:.2f} ({change(c1[2], c2[2]):+.1f}%)",
             f"{kit.rupees(c1[3])} to {kit.rupees(c2[3])}", f"{change(c1[4], c2[4]):+.1f}%")],
-          caption="The frequency rise on the hurried rows is the rows, not the customers")
+          caption="On the hurried rows the frequency rise comes from repeated rows")
 kit.check("on the hurried rows frequency rises and revenue looks flat",
           change(h1[2], h2[2]) > 15 and abs(change(h1[4], h2[4])) < 1)
 '''),
@@ -396,8 +416,8 @@ CH2 = [
 
     **Week 1, Friday. The lab debrief, chapter 2 of 3: the rows reconcile, so is the pass finished?**
 
-    Anand Iyer's analyst audits every note that reaches Meera. Their first question is never "how many
-    rows did you drop"; it is "show me the rupees". A pass that reports zero rejects on a file everyone
+    Anand Iyer's analyst audits every note that reaches Meera. Their first question is "show me the
+    rupees". A pass that reports zero rejects on a file everyone
     knows is dirty is the one they open first.
 
     **The metric at stake.** Q1 booked revenue, the base every Q1 to Q2 rate is measured from.
@@ -685,7 +705,7 @@ kit.check("the empty cell flips Retail-Plus from a fall to a rise",
     them carry one segment, flag it, and name it in the caveat; keep it as "segment unknown" when they do
     not.
 
-    ## A second route: account for every value, not every row
+    ## A second route: account for every value
 
     The rupee check found the gap from the outside. The second route finds it from the inside, and it
     should land on the same number: every value present in the file is either summed as it came, or
@@ -748,7 +768,7 @@ CH3 = [
     **Week 1, Friday. The lab debrief, chapter 3 of 3: which finding leads the note, and how sure is it?**
 
     Meera Raghavan reads the first line of a note and acts on it. With the data reconciled, the question
-    is no longer whether the numbers are right; it is which of the right numbers deserves the first line.
+    becomes which of the right numbers deserves the first line.
 
     **The metric at stake.** The Q1 to Q2 fall of Rs 17,22,520, split along the revenue tree by segment:
     customers, orders per customer and revenue per order. **Who asks.** Meera, who needs to know which
@@ -927,7 +947,8 @@ kit.table(["option", "leads with", "orders behind it", "chance alone", "analyst 
     ("A. biggest rupee move", f"Business {change(b1['rev'], b2['rev']):+.1f}%", n, f"{p_split:.2f} (coin flips)", 5),
     ("B. the total, unsplit", f"revenue {change(ctl('Q1')[0], ctl('Q2')[0]):+.1f}%", ctl("Q1")[1] + ctl("Q2")[1],
      "not asked", 2),
-    ("C. count before rate", f"Retail-Core basket {basket_change(core):+.1f}%", len(core), f"{p_core:.4f} (shuffle)", 15),
+    ("C. count before rate", f"Retail-Core basket {basket_change(core):+.1f}%, "
+     f"{kit.rupees(T['Q1', 'Retail-Core']['rev'] - T['Q2', 'Retail-Core']['rev'])}", len(core), f"{p_core:.4f} (shuffle)", 15),
     ("D. test everything", "the smallest of four p-values", "10 to 88", f"{false_alarm:.2f} false alarm", 45),
 ], caption="Four ways to choose the lead, sized on the clean tree")
 kit.matrix(["enough orders", "too few orders"], ["moved in rupees", "moved in rate only"],
@@ -942,6 +963,9 @@ kit.check("the Retail-Core gap is one chance rarely produces, at the customer le
     md("""
     **The best-fit call.** C. It costs about fifteen minutes and one test, and it leads with a finding
     that rests on 88 orders and that came up as large in only about 2 of every 100 chance-only worlds.
+    It is small in rupees, Rs 15,400 of the fall, about 0.9 percent of it, so it leads among consumers
+    as the one move on enough orders to test, while the corporate Rs 17,10,000 sits beside it in the
+    claim as counts.
     A leads on ten orders. B hides the one thing Meera most needs, that 99 percent of the fall is two
     orders. D spends three times the minutes to run four tests, and with four tests at 0.05 the chance
     that at least one looks real by luck is about 19 percent.
@@ -1035,8 +1059,11 @@ kit.check("the second route points the same way as the shuffle", (fell > rose) =
 
     ### Depth: the wrong unit, and the typical order
 
-    Shuffling orders instead of customers splits each customer's orders across both groups, builds worlds
-    that could not exist and widens the chance spread. The cell below reruns the test that way.
+    Shuffling orders instead of customers treats a customer's orders as independent and builds worlds that
+    could not exist. The wrong unit can move p either way. Most often it makes p too small, because
+    correlated orders count as extra evidence and a chance gap looks real. Here the gap is each
+    customer's own change from Q1 to Q2, and the order shuffle breaks that pairing, so p comes out
+    larger. The cell below reruns the test that way.
     """),
     code('''
 both_rows = core + plus

@@ -26,7 +26,7 @@ been called puts one push from the lists below; Kavya's review follows in a minu
 ## Playing Marketing
 
 You are the marketing lead. You own the campaigns and the Rs 12 crore acquisition request, and you
-believe in both. Push hard and fair: ask the question, not an insult, and let the defender finish.
+believe in both. Push hard and fair: put each push as a question and let the defender finish.
 Ask these as they are written or in your own words.
 
 ### For pair one
@@ -66,11 +66,11 @@ were Retail-Plus members, who spend more in any month, against 40 percent of the
 | Retail-Core | Rs 1,940 (30 customers) | Rs 2,000 (60 customers) | 3.0 percent less with the sale |
 | Blended | Rs 3,395 (60) | Rs 3,200 (100) | 6.1 percent more, because of the mix |
 
-**The answer the evidence supports.** "The 6.1 percent is real arithmetic on a mix. The sale went
+**The answer the evidence supports.** "The 6.1 percent is real arithmetic on a mix: the average rose only because more high spenders got the sale. The sale went
 mostly to members who spend more anyway, and inside each segment the customers who got it spent 3.0
 percent less than the ones who did not: Rs 4,850 against Rs 5,000, and Rs 1,940 against Rs 2,000. At
 15 percent off, the sale needed 17.6 percent more volume just to stand still, so as it was designed it
-did not pay. I am not saying never run a sale. I am saying run Diwali with a random slice of each
+did not pay. Run Diwali with a random slice of each
 segment held back, agreed in advance, so the next time we say a sale worked, the number holds up in
 front of Anand."
 

@@ -23,10 +23,11 @@ quarter's results on 11 October. A first read that goes out before the books clo
 matters is what it has been checked against.
 
 ```mermaid
-flowchart LR
-    A["<b>A. Sum and chart</b><br/>about 10 min"] --- B["<b>B. The whole method</b><br/>about 120 min"]
-    B --- C["<b>C. Profile, clean,<br/>reconcile, decompose</b><br/>about 90 min"]
-    C --- D["<b>D. Wait for the close</b><br/>days"]
+flowchart TB
+    Q["<b>two hours, a raw export</b><br/>which plan?"] --> A["<b>A. sum and chart</b><br/>about 10 min"]
+    Q --> C["<b>C. profile, clean,<br/>reconcile, decompose</b><br/>about 90 min"]
+    Q --> B["<b>B. the whole method</b><br/>about 120 min"]
+    Q --> D["<b>D. wait for the close</b><br/>days"]
 ```
 
 | Option | What it does | Minutes, at the lab's pace |
@@ -81,9 +82,9 @@ big number was checked before it was believed, and it was checked on the traffic
 | Option | What it does | What it costs |
 |---|---|---|
 | A. Ship to everyone now | Replace the checkout on the 42 percent | Nothing today; a loss nobody measures if the 42 is luck |
-| B. Keep the caveat, keep the pilot small | Wait for more weeks at about 12 visits a week | About 25 weeks to reach 300 visits |
+| B. Keep the caveat, keep the pilot small | Wait for more weeks at about 12 visits a week, with the current checkout's visits beside them | About 14 weeks |
 | C. Split the traffic in half | Each checkout gets half the visits until each has about 300 | About half a week at 1,200 visits a week |
-| D. Give the new checkout one visit in ten for a fortnight | A cautious rollout | About 240 new-checkout visits, too few to settle it |
+| D. Give the new checkout one visit in ten for a fortnight | A cautious rollout | About 240 new-checkout visits beside about 2,160 on the current one, over two weeks |
 
 Your paper: your first sentence back to the product head; the option you offer, with its size and
 its time; what would make you agree to ship without it.

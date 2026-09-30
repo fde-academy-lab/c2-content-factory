@@ -111,7 +111,7 @@ open today, and the reason is that code written for Wednesday's file assumes Wed
 icon: bot-off | eyebrow: Rule 1 | title: No assistant | body: No chat model, no autocomplete that writes code, no search for code.
 icon: book-x | eyebrow: Rule 2 | title: Notes closed | body: No earlier notebook, deck or cheat sheet open on any screen.
 icon: timer | eyebrow: Rule 3 | title: 120 minutes | body: The clock runs once; save as you go and hand in what you have.
-icon: eye | eyebrow: Rule 4 | title: Observed, not scored | body: A TA notes where each person is at each mark; nothing goes on a wall.
+icon: eye | eyebrow: Rule 4 | title: Observed, never scored | body: A TA notes where each person is at each mark; nothing goes on a wall.
 ```
 
 **The rule.** Python's own documentation, reached from the notebook with `help()`, is allowed, because an analyst on the job has it too.
@@ -156,7 +156,7 @@ nothing on the projector until the 120-minute mark.
 ---
 
 ## S7. The pace, if you want one
-*Minutes are a pace, not a limit; the order is not optional.*
+*The minutes are a pace; the order of the steps is fixed.*
 
 ```timeline
 label: 0 to 20 | title: Profile | body: Three counts per field, and every mismatch written down.
@@ -202,7 +202,7 @@ debrief.
 ---
 
 ## S9. Kavya's review of the morning
-*The method is yours when the order holds under a clock, not when each step is remembered.*
+*The method is yours when its order holds under a clock.*
 
 ```stats
 value: 6 | label: steps | note: in one order, every time
@@ -213,7 +213,7 @@ value: 0 | label: assistants | note: the file is new to every model too
 **Kavya's review.** The step you skipped when the clock ran is the step you do not own yet. Knowing which one it is, this week, costs nothing.
 
 ```notes
-LIVE, 1 minute, then the ten-minute break. The debrief's first break, the reconciliation, runs for
+LIVE, 1 minute, then the ten-minute break. The first place the room broke, the reconciliation, runs for
 twenty minutes after the break and closes the morning. Over lunch the TAs total the observation
 sheets by step, and that tally decides which two breaks open the afternoon.
 ```

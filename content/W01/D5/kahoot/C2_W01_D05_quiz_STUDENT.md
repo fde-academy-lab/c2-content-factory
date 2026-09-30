@@ -1,10 +1,6 @@
 # Kahoot, Week 1 Friday
 
-Eight items, ungraded, scored on correctness and speed together: the five on the week's method that
-the row plans, two design items on choosing a check and a test, and the return question from
-Thursday. Three of the eight are design items: which approach fits, sized how.
-
-Each item names what it tests, so an item dropped for time says what was lost.
+Eight items, ungraded, scored on correctness and speed together.
 
 ---
 
@@ -18,13 +14,13 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q2. The dashboard runs Rs 20 lakh high. Which check first, since it costs one cell?
+## Q2. The dashboard runs Rs 20 lakh above Finance. Which check do you run first?
 *Tests: the design call on a fresh export; the cheapest check that catches the commonest cause goes first.*
 
 - A rupee bridge by month against Finance, about half an hour
 - Distinct order ids against the number of rows, one cell  <- correct
 - Every order matched to Finance's ledger, most of a day
-- A shuffle test on the gap between the two numbers
+- A shuffle test on the gap, 2,000 runs, a few minutes
 
 ---
 

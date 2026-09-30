@@ -181,11 +181,13 @@ $$
 said in one sentence: "In 1.5 percent of the worlds where segment does not matter, chance produced a
 gap this large." It is not the chance the finding is wrong.
 
-**The trap at this step: the wrong unit.** Shuffling orders instead of customers splits each
-customer's orders across the two groups, builds worlds that could not exist, and widens the spread of
-chance gaps. On the same data an order-level shuffle can report p = 0.09 where the customer-level
-shuffle reports 0.015, and a real fall gets dismissed as noise. The unit you shuffle is the unit
-that carries the label.
+**The trap at this step: the wrong unit.** Shuffling orders instead of customers treats a customer's
+orders as independent, which they are not, and builds worlds that could not exist. The wrong unit can
+move the p-value either way. Most often it makes p too small, because a customer's correlated orders
+count as extra evidence and a chance gap looks real. When the gap is each customer's own change from
+one quarter to the next, the order shuffle breaks that pairing and makes p too large instead: on the
+same data it can report 0.09 where the customer-level shuffle reports 0.015. Either way the verdict
+belongs to the unit, so the unit you shuffle is the unit that carries the label.
 
 ### 6. The note, in four parts
 
@@ -206,11 +208,8 @@ Describe a file with its median and name what sits above it; keep the mean for w
 
 ## The three places the room broke, as worked cases
 
-The debrief ran as three chapters, each paired with a notebook of the same number and title in
-`notebooks/`. Each one starts from a problem someone at Kalpa has, lays out the ways a team could
-answer it with their cost on this morning's file, makes the call, shows the plausible wrong number and
-the check that catches it, and reaches the same answer a second way. The numbers below are the lab
-export's.
+Each chapter below has a notebook of the same number and title in `notebooks/`, and its numbers are
+the lab export's.
 
 ### Chapter 1. The reconciliation, skipped
 
@@ -326,10 +325,12 @@ which two, which costs a phone call.
 |---|---|---|---|---|
 | A. Biggest rupee move | Business -29.2% | 10 | 0.75, coin flips | 5 |
 | B. The total, unsplit | revenue -28.5% | 197 | not asked | 2 |
-| C. Count before rate | Retail-Core revenue per order -17.1% | 88 | 0.0195, shuffle | 15 |
+| C. Count before rate | Retail-Core revenue per order -17.1%, Rs 15,400 | 88 | 0.0195, shuffle | 15 |
 | D. Test every segment | the smallest of four p-values | 10 to 88 | 0.19 false alarm | 45 |
 
-**The best-fit call is C.** Retail-Core kept its 30 customers and their 1.47 orders each, and its
+**The best-fit call is C.** The Retail-Core move is small in rupees, Rs 15,400, about 0.9 percent of
+the fall, and it leads among consumers because it is the one move on enough orders to test, while
+the corporate Rs 17,10,000 sits beside it in the claim as counts. Retail-Core kept its 30 customers and their 1.47 orders each, and its
 revenue per order fell from Rs 2,050 to Rs 1,700. Shuffling the segment label across customers, 2,000
 times with `random.Random(7)`, produced a gap as large as the real -15.6 points only 39 times: p =
 0.0195, a share of chance-only worlds, never the chance the finding is wrong. D runs four tests at
@@ -339,7 +340,7 @@ quarter of the same move.
 
 **The second route.** Customer by customer: of the 30 Retail-Core customers who ordered in both
 quarters, 21 saw their own average order fall. The shuffle says the gap is bigger than chance; the
-count says it is broad, not carried by a few people.
+count says the fall is broad, spread across most of the segment's customers.
 
 ---
 
@@ -374,7 +375,7 @@ real company as its likeness: which approach fits, sized how, and what would mak
 |---|---|---|---|
 | Meera's first read, two hours after the export lands | Sum and chart (10 minutes); the whole method (120); profile, clean, reconcile and decompose, marked provisional (90); wait for Finance's close (days) | The 90-minute plan, with the reconciliation never dropped | No control total: say so in the first line; a segment gap Meera will act on: add the test and cut the tree to that gap |
 | Zero rejects and a Rs 20 lakh gap after the migration | Ids against rows (a cell); the value accounting (a cell); a rupee bridge by month (about 30 minutes); every order against the ledger (a day) | The two cheap checks first, then the bridge, and stop where it closes | A month the bridge cannot close gets matched order by order |
-| 42 percent on twelve visits | Ship now; wait at 12 visits a week (about 25 weeks); a half-and-half split to about 300 visits each (about half a week); one visit in ten for a fortnight (about 240 visits) | The split, about half a week | A checkout that could lose money: a smaller share for longer; a dozen visits a week: decide on cost and reversibility |
+| 42 percent on twelve visits | Ship now; wait at 12 visits a week (about 14 weeks); a half-and-half split to about 300 visits each (about half a week); one visit in ten for a fortnight (about 240 new-checkout visits beside about 2,160, enough evidence in four times the time) | The split, about half a week | A checkout that could lose money: one visit in ten for the fortnight; a dozen visits a week in all: decide on cost and reversibility |
 
 The likenesses. DMart (Avenue Supermarts) put out its July to September 2025 standalone revenue, Rs
 16,218.79 crore across 432 stores, as a provisional business update on 3 October 2025, days before its
@@ -386,8 +387,10 @@ lifted revenue 12 percent when tested, worth more than $100 million a year in th
 Review, September to October 2017).
 
 The sizing in case 3 comes from the standard formula for comparing two proportions: to tell 42 percent
-from 31 with a 5 percent false-alarm rate and an 80 percent chance of seeing a real difference, each
-checkout needs about 300 visits. And 5 conversions in 12 visits would still turn up in about 3 weeks of
+from 31 with a 5 percent false-alarm rate and an 80 percent chance of seeing a real difference, an
+equal split needs about 300 visits per checkout. An unequal split needs fewer on the smaller side,
+because the larger side is measured so precisely: one visit in ten for a fortnight gives about a 91
+percent chance. And 5 conversions in 12 visits would still turn up in about 3 weeks of
 10 if the new checkout were really no better than 31 percent.
 
 ---
@@ -435,10 +438,10 @@ close, or a segment with too few orders to rate.
 
 ## The lines to carry out of the week
 
-1. A total you have not reconciled is a guess with a decimal point.
-2. Zero rejects on a file you know is dirty is a finding, not a result.
-3. Count before rate: a rate on a handful of orders is a rumour with a percent sign.
-4. Shuffle what belongs together: the customer, not the order.
+1. Reconcile counts and rupees to a control total before you quote a total.
+2. A zero-reject pass on a file you know is dirty is the first thing to investigate.
+3. Count before rate: put the order count beside every rate before it leads a note.
+4. Shuffle what belongs together, which this week is the customer.
 5. Say the claim with its denominator, the caveat before they find it, and what would change your mind.
 
 ---

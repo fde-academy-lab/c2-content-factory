@@ -165,10 +165,10 @@ icon: circle-alert | eyebrow: Counts checked | title: Q2 fell 14.6% | body: The 
 icon: circle-check | eyebrow: Counts and rupees | title: Q2 fell 28.5% | body: Rs 17,22,520 to explain, and the tree says where.
 ```
 
-**Kavya's review.** A number that has not been reconciled is not a rougher version of the right number. This morning it pointed the other way.
+**In the interview.** [F] You have two hours and a raw export; what do you do first, and what do you skip? Never the reconciliation: it is fifteen minutes, and it is the step that can flip the sign.
 
 ```notes
-LIVE, 2 minutes. The error changed the sign, so it changed the decision, not the precision. Ask one
+LIVE, 2 minutes. The error changed the sign, so it changed the decision itself. Ask one
 learner what Meera would have done on Monday with each of the three notes.
 ```
 
@@ -227,7 +227,7 @@ label: Reconcile | value: 15 | caption: no new number, only a yes or a no
 label: Decompose | value: 25 | caption: the finding
 ```
 
-**In the interview.** [F] You have two hours and a raw export; what do you do first, and what do you skip? Never the reconciliation: it is fifteen minutes, and it is the step that can flip the sign.
+**Kavya's review.** A number that has not been reconciled can point the wrong way, and this morning it did. Put the two checks in a cell before the first number you plan to send.
 
 ```notes
 LIVE, 2 minutes, then two learners read their second-look line: one whose totals landed and one
@@ -237,7 +237,7 @@ whose did not. Thank both the same way. Then lunch.
 ---
 
 ## SECTION 2: The pass that looks clean
-*Zero rejects on a file you know is dirty is a finding, not a result.*
+*A zero-reject pass on a file you know is dirty is the first thing to investigate.*
 
 ```notes
 LIVE, after lunch. Ten minutes. Notebook 2, C2_W01_D05_02_pass_that_looks_clean_STUDENT.ipynb, on
@@ -271,7 +271,7 @@ average and never raised an error.
 *JPMorgan's own task force found a spreadsheet that never errored and halved a risk measure.*
 
 ```cards
-icon: landmark | eyebrow: JPMorgan Chase, 2012 | title: Divided by the sum, not the average | body: A risk model run through spreadsheets "divided by their sum instead of their average", likely muting volatility by a factor of two and lowering the VaR. Source: the task force report, January 2013, as quoted by The Baseline Scenario, 9 February 2013. | tone: dark
+icon: landmark | eyebrow: JPMorgan Chase, 2012 | title: A sum where an average belonged | body: A risk model run through spreadsheets "divided by their sum instead of their average", likely muting volatility by a factor of two and lowering the VaR. Source: the task force report, January 2013, as quoted by The Baseline Scenario, 9 February 2013. | tone: dark
 icon: trending-down | eyebrow: The cost | title: $6.2 billion | body: The trading losses the FCA's fine refers to. Source: FCA press release, 19 September 2013.
 ```
 
@@ -364,16 +364,15 @@ but B fails the count check, so B's gap is visible and A's is not.
 *Every branch leaves a log line and a number in the reconciliation.*
 
 ```mermaid
-flowchart TB
-    V["<b>a value that will not convert</b>"] --> R{"<b>can you read it<br/>without guessing?</b>"}
-    R -->|"yes"| K["<b>convert, keep, flag</b><br/>log the text and the number"]
-    R -->|"no, and the row matters"| F["<b>hold it, ask the owner</b><br/>the total is provisional"]
-    R -->|"no, and it is not an order"| D["<b>drop, with a reason</b><br/>count it in rejected"]
+flowchart LR
+    R{"<b>a value that will not<br/>convert: can you read<br/>it without guessing?</b>"} -->|"yes"| K["<b>convert, keep, flag</b><br/>log the text and the number"]
+    R -->|"no, row matters"| F["<b>hold it, ask the owner</b><br/>the total is provisional"]
+    R -->|"no, not an order"| D["<b>drop, with a reason</b><br/>count it in rejected"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class K,F,D known
 ```
 
-**Kavya's review.** A count check proves the rows are there. Only a rupee check proves the values survived. Zero is a claim that the order was worth nothing, so never let a try make it for you.
+**In the interview.** [S] Walk me through how you clean and check a dataset you have never seen. A zero-reject pass is a finding: check ids against rows, check what the code did with a value it could not read, and reconcile the rupees.
 
 ```notes
 LIVE, 1 minute. Ask two learners which branch their own row took this morning and why.
@@ -415,7 +414,7 @@ flowchart LR
     class G known
 ```
 
-**In the interview.** [S] Walk me through how you clean and check a dataset you have never seen. A zero-reject pass is a finding: check ids against rows, check what the code did with a value it could not read, and reconcile the rupees.
+**Kavya's review.** A count check proves the rows are there. Only a rupee check proves the values survived. Zero is a claim that the order was worth nothing, so never let a try make it for you.
 
 ```notes
 LIVE, 1 minute. On a file with no control total, this is the check you still have: it needs nothing
@@ -425,7 +424,7 @@ outside the file and tells you where, where the rupee check tells you how much.
 ---
 
 ## SECTION 3: The headline on too few orders
-*A rate on a handful of orders is a rumour with a percent sign.*
+*A rate on a handful of orders cannot lead a note until its count is said.*
 
 ```notes
 LIVE, after lunch. Ten minutes. Notebook 3, C2_W01_D05_03_headline_on_few_orders_STUDENT.ipynb, on
@@ -512,8 +511,6 @@ flowchart TB
     class B unknown
 ```
 
-**Kavya's review.** Say the count before the rate, every time. "Six orders, then four" is honest; "down 29 percent" alone is a headline.
-
 ```notes
 LIVE, 2 minutes. The answer is d. Run the coin-flip cell in notebook 3: 0.754. The corporate action
 is a phone call, which costs nothing; a retention plan built on ten orders costs a quarter.
@@ -528,10 +525,10 @@ is a phone call, which costs nothing; a retention plan built on ten orders costs
 |---|---|---|---|---|
 | A. Biggest rupee move | Business -29.2% | 10 | 0.75, coin flips | 5 |
 | B. The total, unsplit | revenue -28.5% | 197 | not asked | 2 |
-| C. Count before rate | Retail-Core basket -17.1% | 88 | 0.0195, shuffle | 15 |
+| C. Count before rate | Retail-Core basket -17.1%, Rs 15,400 | 88 | 0.0195, shuffle | 15 |
 | D. Test every segment | the smallest p | 10 to 88 | 0.19 false alarm | 45 |
 
-**The rule.** C. Switch when Meera's question is about accounts rather than rates, when a segment carries hundreds of orders a quarter, or when a second quarter repeats the move.
+**The rule.** C: the one consumer move on enough orders to test, small in rupees (0.9 percent of the fall) and led beside the corporate move said as counts. Switch when Meera's question is about accounts rather than rates, when a segment carries hundreds of orders a quarter, or when a second quarter repeats the move.
 
 ```notes
 LIVE, 2 minutes. Run the options cell. B hides that 99 percent of the fall is two orders; D runs
@@ -565,14 +562,16 @@ word, because Saturday's paper asks for it.
 flowchart LR
     A["<b>30 customers</b><br/>ordered in both quarters"] --> F["<b>21</b><br/>own basket fell"]
     A --> O["<b>9</b><br/>rose or held"]
-    F --> V["<b>broad, not a few people</b><br/>same direction as the shuffle"]
+    F --> V["<b>broad across the segment</b><br/>same direction as the shuffle"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class F,V known
 ```
 
-**The rule.** The shuffle says whether the gap is bigger than chance; the customer count says whether it is broad. When they disagree, a handful of customers moved the average, and the note says so.
+**Kavya's review.** Say the count before the rate, every time. "Six orders, then four" is honest; "down 29 percent" alone is a headline.
 
 ```notes
+The rule to say: the shuffle says whether the gap is bigger than chance, the customer count says
+whether it is broad; when they disagree, a handful of customers moved the average.
 LIVE, 1 minute. Run the second-route cell. Then close the chapter with the note as it should read,
 from notebook 3.
 ```
@@ -584,7 +583,7 @@ from notebook 3.
 
 ```cards
 icon: users | eyebrow: Shuffle customers | title: p = 0.0195 | body: A customer's orders move together, so every world is one that could exist. | tone: dark
-icon: shuffle | eyebrow: Shuffle orders | title: p = 0.0755 | body: A customer's orders split across groups, the chance spread widens, and a real gap reads as noise.
+icon: shuffle | eyebrow: Shuffle orders | title: p = 0.0755 | body: Orders treated as independent. Most often that makes p too small; here it breaks each customer's Q1 to Q2 pairing, so a real gap reads as chance.
 ```
 
 **The rule.** The unit you shuffle is the unit that carries the label. On Thursday and today, that is the customer.
@@ -622,7 +621,7 @@ label: One line | title: What changes | body: Written under your lab note: the c
 label: Saturday | title: The paper | body: The note's four parts and the p-value sentence, from memory.
 ```
 
-**Kavya's review.** The lab told you which step you do not own yet. One rerun tonight is worth more than rereading all four days.
+**Kavya's review.** The lab told you which step you do not own yet. Rerun that step tonight on the practice export.
 
 ```notes
 LIVE, 1 minute. Close the debrief. The TAs tell each person their marked step privately during the
