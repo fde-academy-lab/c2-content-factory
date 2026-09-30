@@ -484,8 +484,6 @@ xychart-beta
 
 **The check.** Every flip assumed the quarter made no difference. One no-change segment came back at 0.003: its note would say "a 0.3 percent chance we are wrong", and it would be wrong for certain.
 
-**In the interview.** [S] What does p = 0.03 mean, and not mean? [S] How do you know whether a change in a metric is significant?
-
 ```notes
 LIVE, 2 minutes. These are notebook 1's twenty invented segments with nothing changed, the shares
 its run produced. Segment 8 comes back at 0.003. Ask of any p-value sentence: in which world was
@@ -506,6 +504,8 @@ whether the direction was chosen before the fall was seen. Then the sentence tha
 | "p = 0.03, so it is significant." | "It is more than the usual wobble by a borderline margin; its size is the next question." |
 
 **The rule.** A p-value is a share of chance-only worlds; it is never the chance the finding is wrong.
+
+**In the interview.** [S] What does p = 0.03 mean, and not mean? [S] How do you know whether a change in a metric is significant?
 
 ```notes
 LIVE, 1 minute. The numbers stay 0.029 and 0.057; the claim shrinks from "97 percent certain" to
@@ -779,8 +779,6 @@ xychart-beta
 
 **The check.** Order the same three segments by money: Business moved Rs 6,18,460, Retail-Plus Rs 24,420, Retail-Core Rs 3,750. The review opens on Business, and Retail-Plus's fall is judged on its own terms, against the company's quarter and the offer's cost.
 
-**In the interview.** [F] A metric moved and the test says significant; how do you decide whether the business should act?
-
 ```notes
 LIVE, 4 minutes. The orders are invented in notebook 2: two quarters of different orders, the
 earlier one set exactly Rs 20 higher at every size. The share falls from 0.43 to 0.002 on sample
@@ -820,6 +818,8 @@ value: +Rs 7,315 | label: wins back three quarters | note: a quarter's net gain
 ```
 
 The answer is b. Rs 11,000 a quarter against a Rs 24,420 fall means winning back almost half, and the decision rests on a recovery rate nobody has measured.
+
+**In the interview.** [F] A metric moved and the test says significant; how do you decide whether the business should act?
 
 ```notes
 LIVE, 2 minutes. At an assumed 30 percent margin (notebook 2's depth section) the offer would need

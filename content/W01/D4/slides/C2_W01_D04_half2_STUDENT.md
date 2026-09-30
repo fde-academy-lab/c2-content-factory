@@ -508,7 +508,7 @@ One partner plays Marketing for the last eight minutes.
 ```cards
 icon: repeat | eyebrow: Part 1 | title: Reproduce | body: Make Rs 4,850 and Rs 3,200 appear from the platform's list.
 icon: search-check | eyebrow: Part 2 | title: Name the mismatch | body: Who sits in each of Marketing's two groups, and what else differs.
-icon: columns-2 | eyebrow: Part 3 | title: Rebuild | body: Like for like, with the customers behind each average.
+icon: columns-2 | eyebrow: Part 3 | title: Rebuild | body: Compared like for like, how the groups differ and how many stand behind each.
 icon: message-square | eyebrow: Part 4 | title: Hold the line | body: What the exposed paid at list price, and what a Diwali hold-back costs, in two sentences. | tone: dark
 ```
 
