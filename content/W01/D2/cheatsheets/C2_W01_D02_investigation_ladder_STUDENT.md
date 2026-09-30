@@ -8,9 +8,9 @@ closed quarters, Q1 against Q2, on booked orders as exported.
 
 ```mermaid
 flowchart TB
-    V["<b>revenue</b><br/>Rs 2.10 to 1.87 cr"] --> C["<b>customers</b><br/>69 to 69"]
-    V --> F["<b>orders per customer</b><br/>1.65 to 1.25"]
-    V --> O["<b>revenue per order</b><br/>Rs 1.84 to 2.17 lakh"]
+    V["<b>revenue</b> Rs 2.10 to 1.87 cr"] --> C["<b>customers</b> 69 to 69"]
+    V --> F["<b>orders per customer</b> 1.65 to 1.25"]
+    V --> O["<b>revenue per order</b> Rs 1.84 to 2.17 lakh"]
     classDef moved fill:#FBE3EA,stroke:#D63A6A,color:#1A0F5C
     class F moved
 ```
@@ -28,7 +28,8 @@ the fall sits in Retail-Plus, where the same 22 members placed 26 orders against
 |---|---|---|
 | Q1 against Q2 cut at 15 Sep | Down 25.9 percent | First and last dates show 13 weeks against 11. |
 | Closed quarters, 13 weeks each | Down 11.0 percent | It is fair once Q2 has closed. |
-| Per week, Q2 still open | Down 12.4 percent | A rate makes it comparable. |
+| Same 11 weeks, Q2 still open | Down 17.0 percent | Matched weeks while a quarter is open. |
+| Per week on the cut window | Down 12.4 percent | A rate, said with its window. |
 | Second route, by month | Down 11.0 percent | The dates agree with the quarter field. |
 
 **Crux:** A rate without its denominator is a rumour.

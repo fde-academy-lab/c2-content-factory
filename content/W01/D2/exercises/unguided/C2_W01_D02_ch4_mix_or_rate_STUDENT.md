@@ -35,7 +35,7 @@ flowchart LR
 
 ### Q1. Which reading of the table answers Marketing's price claim?
 
-a) No segment rose 18 percent, because small member orders left the blend
+a) No segment rose 18 percent, so small member orders leaving the blend explain it
 b) Business rose 5.0 percent, so prices across the range can safely rise 5 percent
 c) Student rose 14.8 percent, so the students' higher prices explain the blended rise
 d) Retail-Core fell 4.9 percent, so its prices should be cut to win the orders back

@@ -35,7 +35,7 @@ flowchart LR
 
 a) Compare the counts again with a different definition of customer
 b) Ask Marketing's CRM for new sign-ups by month
-c) The overlap of ids, counting both quarters, only Q1 and only Q2
+c) Count the ids in both quarters, only in Q1 and only in Q2
 d) Average the orders per customer across segments
 
 ### Q2. (design) What would make you distrust the id overlap?

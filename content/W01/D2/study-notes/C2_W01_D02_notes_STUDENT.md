@@ -285,8 +285,7 @@ argument: acquiring a customer costs 5 to 25 times more than retaining one, and 
 Reichheld found a 5 percent rise in retention lifting profits 25 to 95 percent. Those are estimates
 across industries, never Kalpa's; the reply asks Finance for Kalpa's own acquisition cost. Swiggy
 reports its users and their frequency apart: in the quarter to September 2025 monthly transacting
-users rose 34.0 percent to 22.9 million while orders per user a month fell from 4.53 to 4.10, a
-growing count hiding customers who buy less often.
+users rose 34.0 percent to 22.9 million while orders per user a month fell from 4.53 to 4.10, a growing count beside a falling frequency, which new users alone could produce, so the two are read apart.
 
 **The options.** A, compare the counts, which cannot see churn because a count is net; B, the
 overlap of ids as sets, which names lost and new; C, customer by customer, which also names who
@@ -443,7 +442,7 @@ together.
 
 **7. [F] Revenue per order rose 18 percent while revenue fell; did prices go up?** Tested: mix against
 rate. Strong: not necessarily, since an average across segments moves when the mix of orders moves;
-hold each segment's rate fixed at the old mix to separate the two, and here about 69 percent of the rise
+price the later period's mix at the earlier period's segment rates to separate the two, and here about 69 percent of the rise
 came from small Retail-Plus orders disappearing. Weak: "yes, prices went up".
 
 **8. [S] A field is missing on some records; do you fill it with zero?** Tested: missing against zero.
@@ -498,8 +497,8 @@ test at once, or waiting for the logs before running any.
 | Decomposition | A change split along the tree into branches that multiply | Chapter 2 | 1.000 times 0.754 times 1.180 is 0.890 |
 | Bridge | A change in rupees moved one branch at a time from start to end | Chapter 2 | Orders per customer took away Rs 51,57,895 |
 | Range | The largest value less the smallest, set by two orders alone | Chapter 3; `describe` | Business, Rs 15,80,940 in Q1 |
-| Mix | The share of orders each segment holds, which moves a blended rate on its own | Chapter 4 | Retail-Plus, 44.7 to 30.2 percent of orders |
-| Rate part | The change inside segments once the mix is held still | Chapter 4 | Rs 10,330 of the Rs 33,231 rise |
+| Mix | Each segment's share of orders | Chapter 4 | Retail-Plus, 44.7 to 30.2 percent of orders |
+| Rate part | The change inside segments, mix held still | Chapter 4 | Rs 10,330 of the Rs 33,231 rise |
 | Default | The value used when a field is absent, with its written reason | Chapter 2 | Absent discount reported separately, never counted as zero |
 | Function | A named block that takes inputs and returns one answer | Chapter 3 | `tree_for(rows)` returns a dictionary of the tree |
 | Weighted roll-up | A company rate built from totals, so each group counts by its size | Chapter 3 | 114 orders over 69 customers is 1.65 |

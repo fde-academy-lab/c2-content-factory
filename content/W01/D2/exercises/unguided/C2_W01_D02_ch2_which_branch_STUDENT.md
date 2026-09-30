@@ -34,10 +34,10 @@ flowchart LR
 
 ### Q1. Marketing says the fall needs more customers. Which reading of the tree answers them?
 
-a) Customers fell with orders, so acquisition is the branch to fund
+a) Customers fell with orders, 114 to 86, so acquisition is the branch to fund
 b) Customers held at 69, so the fall sits in how often they buy
-c) Revenue per order rose, so the fall must be in customers
-d) The tree cannot answer until the segments are split
+c) Revenue per order rose 18.0 percent, so the fall must be in customers
+d) The tree cannot answer until the 4 segments are split
 
 ### Q2. A colleague adds the leaf changes, minus 24.6 percent and plus 18.0 percent, and reports revenue down 6.6 percent. What is wrong?
 

@@ -70,6 +70,6 @@ d) p, r, q, s
 ### Q6. (design) The second route added revenue by the month in `order_date` and reached the same minus 11.0 percent. What does agreement between the two routes prove?
 
 a) That monthly totals are the better headline for Meera than quarters
-b) That no order in the file carries a wrong amount, a duplicate or a missing field
+b) That no order in the file carries a wrong amount or a missing discount field
 c) That the quarter field and the dates give each quarter the same total
 d) That the fall is real and needs no comparison with last year

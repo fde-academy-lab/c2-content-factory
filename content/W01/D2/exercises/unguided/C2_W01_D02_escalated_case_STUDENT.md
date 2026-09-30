@@ -45,7 +45,7 @@ d) No fall at all, since returns for Q2 are still arriving and will lift its tot
 
 Build the bridge in the tree's order: customers, then orders per customer, then revenue per order.
 
-### Q2. Customers with a delivered order fell from 54 to 50, and the bridge charges that branch Rs 10,74,442. What do you conclude before Part 3?
+### Q2. (design) Customers with a delivered order fell from 54 to 50, and the bridge charges that branch Rs 10,74,442. What do you conclude before Part 3?
 
 a) Marketing was right after all, so the acquisition budget should be released now
 b) The bridge is wrong, since the morning proved customers held at 69
@@ -95,7 +95,7 @@ d) Delivered orders are unreliable, so the booked split should be used on its ow
 
 ## Stretch. The design question
 
-### Q6. Meera will see both definitions again next month. Which way do you report them, and what would change it?
+### Q6. (design) Meera will see both definitions again next month. Which way do you report them, and what would change it?
 
 a) Delivered alone, since it is the board's number, whatever the booked figure says
 b) Booked alone, since it closes first and never moves after the quarter

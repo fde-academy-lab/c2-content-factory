@@ -7,7 +7,7 @@ Quote: It is the broken reorder button. One of my members says it has been broke
 Who: The head of Retail-Plus, Kalpa's paid membership tier
 
 ```notes
-LIVE, one minute. The morning climbed five chapters: the drop is real at 11.0 percent, the branch is
+LIVE, inside chapter 6's first minutes. The morning climbed five chapters: the drop is real at 11.0 percent, the branch is
 orders per customer, the segment is Retail-Plus, the rise in order value is mostly mix, and
 Marketing's churn claim fails the overlap. The afternoon opens on chapter 6, the cause the head of
 Retail-Plus hands us, then the escalated case, the debrief, the second case, the drill and the close.
@@ -19,9 +19,9 @@ Retail-Plus hands us, then the escalated case, the debrief, the second case, the
 *Chapter 6. The tier hands us a cause and Meera wants one page: what we know, what we guess, and what would settle it.*
 
 ```notes
-LIVE. Chapter 6 runs 30 minutes: 3 on the need and Sonos, 4 on the options, 4 on the monthly line, 8
-on the trap and its ceiling, 5 on the season, the channel and the second route, 4 on the memo, 2 on
-Kavya. Open notebooks/C2_W01_D02_06_the_memo_STUDENT.ipynb. The chapter opener is numbered 6 on
+LIVE. Chapter 6 runs 30 minutes: 5 on the need and Sonos, 4 on the options, 4 on the monthly line, 8
+on the trap and its ceiling, 5 on the season, the channel and the second route, 4 on the memo and
+Kavya's review. Open notebooks/C2_W01_D02_06_the_memo_STUDENT.ipynb. The chapter opener is numbered 6 on
 purpose; it continues the morning's five.
 ```
 
@@ -123,8 +123,7 @@ xychart-beta
 The line that falls from 13 to 9 in July is Retail-Plus; the level line is Retail-Core.
 
 ```notes
-LIVE, 2 minutes. The answer is c. The button may still matter; it cannot be the whole story. If a
-learner points at May's 24, write "May, 24?" on the parking board for Wednesday and say nothing more.
+LIVE, 2 minutes. The answer is c. The button may still matter; it cannot be the whole story. Keep to the Q2 months.
 ```
 
 ---
@@ -142,7 +141,7 @@ value: 0 | label: days checked before the break | note: the missing check
 
 ```notes
 LIVE, 3 minutes. The chapter's trap. The comparison spans the whole quarter, so it charges the button
-with seven weeks of orders lost before it broke.
+with about eight weeks of orders lost before it broke.
 ```
 
 ---

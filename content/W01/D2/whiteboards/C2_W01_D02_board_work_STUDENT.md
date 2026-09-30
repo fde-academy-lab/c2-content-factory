@@ -41,7 +41,7 @@ flowchart LR
     A["<b>Q1</b><br/>1 Apr to 30 Jun<br/>13 weeks"] --> X["<b>down 25.9 percent</b><br/>unequal windows"]
     B["<b>Q2 tile</b><br/>1 Jul to 15 Sep<br/>11 weeks"] --> X
     X --> Y["<b>down 11.0 percent</b><br/>closed quarters"]
-    X --> Z["<b>down 12.4 percent</b><br/>per week, Q2 open"]
+    X --> Z["<b>down 17.0 percent</b><br/>same 11 weeks, Q2 open"]
     classDef bad fill:#FBE3EA,stroke:#D63A6A,color:#1A0F5C
     class X bad
 ```

@@ -35,7 +35,7 @@ b) r, s, t, p, q
 c) t, r, s, q, p
 d) r, t, s, p, q
 
-### Q2. Marketing's 25.9 percent reached a slide because one rung was skipped. Which rung, if run, would have stopped it?
+### Q2. (design) Marketing's 25.9 percent reached a slide because one rung was skipped. Which rung, if run, would have stopped it?
 
 a) Decompose the change along the tree, which would have shown frequency falling
 b) Compare like with like, which would have shown 11 weeks set against 13
@@ -112,7 +112,7 @@ Open a new notebook beside the day's notebooks, load the class file with
 `kit.load_records("C2_W01_D02_orders_STUDENT.py")`, and rebuild the four numbers each line needs
 with your own `tree_for`. Pick each line, then write all four in your own words under your letters.
 
-### Q9. Which first line states the drop so that nobody can argue with the window?
+### Q9. (design) Which first line states the drop so that nobody can argue with the window?
 
 a) "Revenue fell 25.9 percent quarter on quarter, from Rs 2.10 crore to Rs 1.56 crore on booked orders."
 b) "Revenue fell 11.0 percent between two closed 13-week quarters, Rs 2.10 to Rs 1.87 crore, booked."
@@ -137,5 +137,5 @@ d) "Every segment fell by a similar share, so no segment needs to be named ahead
 
 a) "The cause is the broken reorder feature, as the head of Retail-Plus has reported from his members."
 b) "The cause cannot be known from an order file, so the memo leaves the question of cause to others."
-c) "H1, the reorder feature, is settled by reorder logs by week, and H2, a July change, by the tier's log."
+c) "Two causes stay open: the reorder feature, settled by its logs, and a July change, by the tier's log."
 d) "The cause is a market-wide slowdown in July, which explains why every channel fell in the same months."

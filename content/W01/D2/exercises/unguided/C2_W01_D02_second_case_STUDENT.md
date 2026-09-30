@@ -41,7 +41,7 @@ d) The same two customers placing seven orders against five
 
 ## Part 2. "Web fell hardest, so it is the website"
 
-### Q2. Which number tests a site-wide website fault?
+### Q2. (design) Which number tests a site-wide website fault?
 
 a) Retail-Plus app orders, 13 to 8, since the app shares the website's servers
 b) Retail-Core web orders on the same website, which held at 13 and 12
@@ -63,7 +63,7 @@ d) Every one of the 22 members at once, since all of them slowed
 
 ## Part 4. The reply, and one request
 
-### Q4. The fall began in July and the button broke on 25 August. Which request settles the larger part of the fall?
+### Q4. (design) The fall began in July and the button broke on 25 August. Which request tests the cause behind the larger part of the fall?
 
 a) The tier's July change log, renewals and support tickets
 b) The app's reorder logs by week and the release that broke them

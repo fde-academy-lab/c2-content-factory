@@ -411,9 +411,9 @@ Switch to notebooks/C2_W01_D02_02_which_branch_STUDENT.ipynb.
 
 ```mermaid
 flowchart LR
-    R["<b>Rs 23,00,000</b><br/>fall"] --> C["<b>customers?</b><br/>Marketing's Rs 12 cr"]
+    R["<b>Rs 23,00,000</b><br/>fall"] --> C["<b>customers?</b><br/>Marketing<br/>Rs 12 cr"]
     R --> F["<b>how often?</b><br/>tier owners"]
-    R --> V["<b>basket and price?</b><br/>merchandising, Finance"]
+    R --> V["<b>basket and price?</b><br/>merchandising<br/>Finance"]
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
     class C,F,V unknown
 ```
@@ -945,7 +945,7 @@ attributes rupees to a cause. Write "C: mix and rate" beside rung 4.
 
 ---
 
-## S41. Question: how many lost orders were members'?
+## S41. Question: how many lost orders were members?
 *Twenty-eight orders were lost between the quarters; predict how many were Retail-Plus.*
 
 ```mermaid
@@ -1094,8 +1094,7 @@ value: +34% / 4.53 to 4.10 | label: Swiggy users / orders per user | note: quart
 LIVE, 2 minutes. Amy Gallo, "The Value of Keeping the Right Customers", Harvard Business Review,
 29 October 2014, checked 30 Sep 2026; the retention figure is Frederick Reichheld of Bain, quoted
 there. Estimates across industries: say so. Swiggy, Q2 FY2026 shareholder letter, checked 30 Sep 2026:
-monthly transacting users up 34.0 percent to 22.9 million while frequency fell 4.53 to 4.10, a growing
-count hiding customers who buy less often.
+monthly transacting users up 34.0 percent to 22.9 million while frequency fell 4.53 to 4.10, a growing count beside a falling frequency, which new users alone could produce, so the two are read apart.
 ```
 
 ---

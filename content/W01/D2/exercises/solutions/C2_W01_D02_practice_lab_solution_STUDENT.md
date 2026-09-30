@@ -29,8 +29,8 @@ frequency behind flat revenue, and Problem 4 turns the day's numbers into the me
 ## The part worth arguing about
 
 Item 8. Flat revenue is the most comfortable number a manager can see, and the invented Kochi store
-shows why the tree runs even when the total has not moved: 40 more customers bought, and every
-existing customer bought less often. Whether the Q1 buyers came back is the same set-overlap check
+shows why the tree runs even when the total has not moved: 40 more customers bought and frequency fell,
+which existing customers buying less often or new customers ordering once could each produce. Whether the Q1 buyers came back is the same set-overlap check
 the second case ran on the class file.
 
 ## Where the pattern lives in production

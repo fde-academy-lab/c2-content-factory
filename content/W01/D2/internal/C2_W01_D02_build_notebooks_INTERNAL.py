@@ -62,8 +62,7 @@ percent (Amy Gallo, HBR, 29 October 2014, checked 30 Sep 2026). Those are estima
 industries, never Kalpa's figures, so the reply asks Finance for Kalpa's own acquisition cost. Swiggy
 shows why the two branches are reported apart: in the quarter to September 2025 its monthly
 transacting users rose 34.0 percent in a year to 22.9 million while orders per user a month fell from
-4.53 to 4.10 (Swiggy, Q2 FY2026 shareholder letter, checked 30 Sep 2026). A count that grows can hide
-customers buying less often, which is the reverse of Kalpa's quarter and the same lesson.""",
+4.53 to 4.10 (Swiggy, Q2 FY2026 shareholder letter, checked 30 Sep 2026). A count and a frequency can move apart, which is why each is reported on its own, the reverse of Kalpa's quarter and the same lesson.""",
     6: """**Who else faces this.** Sonos rolled out a redesigned app in 2024. Its chief executive said the problems customers and partners met with the new app had
 required the company to reduce its fiscal 2024 guidance, and its annual report set aside short-term
 costs of up to $30 million to fix the app (Sonos, third quarter fiscal 2024 results and fiscal 2024
@@ -1900,7 +1899,7 @@ kit.check("the hurried memo blames the button for 25 orders and Rs 65,250", (wro
 '''),
         md("""
 **Why it is wrong.** The comparison spans the whole quarter, so it charges the button with every
-order lost since 1 July, including the seven weeks before it broke. Engineering would be told the fix
+order lost since 1 July, including the eight weeks or so before it broke. Engineering would be told the fix
 recovers 25 orders a quarter, and when it ships and recovers a handful, the tier's real problem has
 had another quarter to run. **The check** splits Q2 at the break and gives each side its window, as
 chapter 1 taught: a rate per week, with dates.

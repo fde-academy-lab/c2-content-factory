@@ -54,10 +54,10 @@ d) Python rounds a float to None when it prints it
 
 ### Q4. Averaged over the four segments, orders per customer reads 1.94 then 1.82, a fall of 6.0 percent. A colleague says frequency is not the branch after all. What is the check?
 
-a) Recompute the averages to three decimal places
+a) The averages must be recomputed to three decimals, 1.939 and 1.822
 b) The roll-up must reproduce the company figures, 1.65 and 1.25
-c) Drop the smallest segment and average the other three segments again
-d) Compare the medians of the four segments instead
+c) The smallest segment, 2 customers, must be dropped and the rest averaged
+d) The medians of the 4 segments' rates must be compared in its place
 
 ### Q5. Business revenue fell Rs 22,29,720. `describe` shows the median order barely moved while the range rose about 73 percent. What do you say about the typical Business order?
 

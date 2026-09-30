@@ -175,7 +175,7 @@ quarters. Compare the two views.
 booked_ids = {q: {o["customer_id"] for o in ORDERS if o["quarter"] == q} for q in ("Q1", "Q2")}
 deliv_ids = {q: {o["customer_id"] for o in dq[q]} for q in ("Q1", "Q2")}
 # TODO 3. Which set holds Q1's delivered customers with no delivered order in Q2 who still booked in Q2?
-#   a) deliv_ids["Q1"] - deliv_ids["Q2"]
+#   a) deliv_ids["Q1"] & booked_ids["Q2"]
 #   b) booked_ids["Q1"] - booked_ids["Q2"]
 #   c) (deliv_ids["Q1"] - deliv_ids["Q2"]) & booked_ids["Q2"]
 #   d) deliv_ids["Q2"] - deliv_ids["Q1"]
@@ -193,7 +193,7 @@ kit.check("19 delivered customers of Q1 had no delivered order in Q2", len(gone)
 kit.check("every one of the 19 booked again in Q2", len(still_booked) == 19)
 '''),
         SOL(md("""
-**Why the other three fail.** a) is the 19 without the test of whether they booked. b) is the booked
+**Why the other three fail.** a) is every delivered Q1 customer who booked in Q2, 54 people, including those whose Q2 orders were delivered. b) is the booked
 churn, which is empty. d) is the customers delivered in Q2 and not Q1, the other side of the
 overlap.
 """)),
@@ -225,17 +225,27 @@ kit.columns(SEGMENTS, [("Q1", [round(seg1[s]["orders_per_customer"], 2) for s in
 kit.check("the weighted roll-up reproduces 1.50 and 1.14", (round(weighted["Q1"], 2), round(weighted["Q2"], 2)) == (1.5, 1.14))
 kit.check("averaging the averages would have said minus 9.2 percent", pct_change(averaged["Q1"], averaged["Q2"]) == -9.2)
 # TODO 5. Which test proves that no segment came back without a number?
-#   a) None not in changes.values() and len(changes) == 4
-#   b) min(changes.values()) < 0
-#   c) "Business" in changes
-#   d) len(changes) > 0
-kit.check("every segment came back with a number", [[5|None not in changes.values() and len(changes) == 4]])
-kit.check("Retail-Plus fell 42.6 percent per member on delivered orders", changes["Retail-Plus"] == -42.6)
+#   a) None not in summary.values() and len(summary) == 4
+#   b) min(summary.values()) < 0 and len(summary) > 0
+#   c) "Business" in summary and len(summary) == 4
+#   d) len(summary) == 4 and "Retail-Core" in summary
+def all_numbers(summary):
+    return [[5|None not in summary.values() and len(summary) == 4]]
+
+
+broken = {"Retail-Core": -5.3, "Retail-Plus": None, "Business": -15.0, "Student": None}   # invented, last quarter's shape
+try:
+    catches = all_numbers(broken) is False
+except TypeError:
+    catches = False
+kit.check("the test passes on today's four changes", all_numbers(changes) is True)
+kit.check("the test fails on a summary where two segments came back as None", catches)
+kit.check("the largest per-member fall on delivered orders is 42.6 percent", min(changes.values()) == -42.6)
 '''),
         SOL(md("""
 **Why the other three fail.** TODO 4: a) is the average of averages, minus 9.2 percent against the
 true minus 24.0. b) is the reciprocal, customers per order. c) ignores every segment's size. TODO 5:
-b) passes while a segment is missing. c) looks at one segment. d) passes with one segment of four.
+b) raises a TypeError on a None instead of reporting it. c) and d) look for one segment by name and pass on the broken summary.
 """)),
         md("""
 **Item 4 in your brief.** On delivered orders Retail-Plus falls furthest again, 1.85 to 1.06 orders
@@ -363,17 +373,17 @@ s_ids = {q: {o["customer_id"] for o in ORDERS if o["segment"] == "Student" and o
 s_orders = {q: sum(1 for o in ORDERS if o["segment"] == "Student" and o["quarter"] == q) for q in ("Q1", "Q2")}
 # TODO 1. Which set holds the Student customers who are new in Q2?
 #   a) s_ids["Q2"] - s_ids["Q1"]
-#   b) s_ids["Q1"] - s_ids["Q2"]
+#   b) s_ids["Q1"] | s_ids["Q2"]
 #   c) s_ids["Q1"] & s_ids["Q2"]
 #   d) len(s_ids["Q2"]) - len(s_ids["Q1"])
 new_students = [[1|s_ids["Q2"] - s_ids["Q1"]]]
 kit.columns(["Q1", "Q2"], [("Student customers", [len(s_ids["Q1"]), len(s_ids["Q2"])]), ("Student orders", [s_orders["Q1"], s_orders["Q2"]])],
             width=520, title="Student: the same two customers, two more orders")
-kit.check("no Student customer is new in Q2", len(new_students) == 0)
+kit.check("no Student customer is new in Q2", isinstance(new_students, set) and len(new_students) == 0)
 kit.check("the 40 percent is 5 orders becoming 7 on 2 customers", (s_orders["Q1"], s_orders["Q2"], len(s_ids["Q2"])) == (5, 7, 2))
 '''),
         SOL(md("""
-**Why the other three fail.** b) is the Student customers lost. c) is the ones in both quarters. d)
+**Why the other three fail.** b) is every Student id in either quarter. c) is the ones in both quarters. d)
 is a difference of counts, which is zero whether or not anyone is new.
 
 **The answer to Marketing.** The 40 percent is two more orders from the same two students. It adds no
@@ -396,11 +406,14 @@ for o in ORDERS:
 #   c) "Retail-Core"
 #   d) "none"
 also_falls = [[2|"Retail-Core"]]
-kit.columns(["Retail-Plus", "Retail-Core"], [("Q1 web orders", [web[("Retail-Plus", "Q1")], web[("Retail-Core", "Q1")]]),
-                                             ("Q2 web orders", [web[("Retail-Plus", "Q2")], web[("Retail-Core", "Q2")]])],
-            width=560, title="Web orders by segment: members fell, Retail-Core held on the same website")
-kit.check("the test names the comparison segment", also_falls == "Retail-Core")
-kit.check("Retail-Core's web orders held, 13 to 12", (web[("Retail-Core", "Q1")], web[("Retail-Core", "Q2")]) == (13, 12))
+picked = also_falls if also_falls in SEGMENTS else "Retail-Plus"
+kit.columns(["Retail-Plus", picked], [("Q1 web orders", [web[("Retail-Plus", "Q1")], web[(picked, "Q1")]]),
+                                      ("Q2 web orders", [web[("Retail-Plus", "Q2")], web[(picked, "Q2")]])],
+            width=560, title="Web orders: the members against the segment you chose")
+kit.check("the comparison segment is another segment with enough web orders to read",
+          also_falls in SEGMENTS and also_falls != "Retail-Plus" and web[(also_falls, "Q1")] >= 10)
+kit.check("its web orders held, moving by at most one on the same website",
+          also_falls in SEGMENTS and abs(web[(also_falls, "Q1")] - web[(also_falls, "Q2")]) <= 1)
 kit.check("Retail-Plus web orders fell 24 to 9", (web[("Retail-Plus", "Q1")], web[("Retail-Plus", "Q2")]) == (24, 9))
 '''),
         SOL(md("""
@@ -452,7 +465,7 @@ call them first, and ask each whether they tried to reorder and what happened. E
 one order. Nobody stopped altogether, which fits a habit that broke more than a tier people left.
 """)),
         md("""
-## Part 4. The reply, and the one request that settles most
+## Part 4. The reply, and the one request that tests the most
 """),
         code('''
 EVIDENCE = {
@@ -461,7 +474,7 @@ EVIDENCE = {
     "app_logs": "the app's reorder attempts and failures by week, and the release date",
     "tier_log": "the tier's change log for July, renewals and support tickets",
 }
-# TODO 4. The fall began in July and the button broke on 25 August. Which request can settle the larger part of the fall?
+# TODO 4. The fall began in July and the button broke on 25 August. Which request tests the cause behind the larger part of the fall?
 #   a) "campaigns"
 #   b) "export"
 #   c) "app_logs"
@@ -469,10 +482,10 @@ EVIDENCE = {
 first_request = [[4|"tier_log"]]
 kit.tree({"label": "the reply", "kind": "lit", "branches": [
     ("to Marketing", {"label": f"Student: {len(new_students)} new ids\\nweb tested on {also_falls}", "kind": "known"}),
-    ("to the tier", {"label": f"call the {len(call_first)} who fell\\nby two or more orders", "kind": "known"}),
+    ("to the tier", {"label": f"call the {len(call_first)}\\nat the top of the list", "kind": "known"}),
     ("first request", {"label": EVIDENCE[first_request][:34], "kind": "unknown"})]},
     title="The pair's reply, in three branches")
-kit.check("the first request targets the July change, which predates the button", first_request == "tier_log")
+kit.check("the first request covers July, when the fall began, before the button broke", "July" in EVIDENCE[first_request])
 kit.check("the request is for data this export does not carry", first_request not in ("export", "campaigns"))
 '''),
         SOL(md("""
