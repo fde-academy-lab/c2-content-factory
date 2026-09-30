@@ -959,7 +959,7 @@ and an approximate match finds "the largest value less than or equal to" the one
 Support, Look up values with VLOOKUP, INDEX, or MATCH, checked 30 September 2026).
 
 **Why it is wrong.** The chief of staff tells a director that C-0195 is one of Kalpa's best members and
-spent Rs 16,740, and a retention offer goes to someone who has not bought since March. Nobody asks why
+spent Rs 16,740, and a retention offer goes to someone who placed no order between April and September. Nobody asks why
 the id was missing, because the sheet never said it was. **The check that catches it:** test every
 lookup with an id you know is missing, and print the id returned beside the id asked for.
 '''),
