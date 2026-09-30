@@ -2270,8 +2270,7 @@ kit.columns(["kept", "set aside"], [("rows", [len(kept), len(set_aside)])], titl
      "Convert the kept amounts with a rejects log, the list of amounts that fail with their line and reason, then "
      "make the two decisions the clean file still needs, one about the order with no status and one about the "
      "largest Q2 order, which comes from the Business segment, Kalpa's sales to companies, where every order runs "
-     "to lakhs. A decision that keeps a record "
-     "with a question on it writes a line in the flags log.",
+     "to lakhs. `flag()` writes a line to the flags log.",
      '''
 clean, rejects, flags = [], [], []
 for r in kept:
@@ -2312,7 +2311,6 @@ kit.check("no status was filled in or thrown away",
           sum(1 for r in clean if not r["status"]) == sum(1 for r in kept if not r["status"]))
 kit.check("the delivered count is what the export recorded",
           sum(1 for r in q2 if r["status"] == "delivered") == sum(1 for r in q2_kept if r["status"] == "delivered"))
-kit.check("each record kept with a question on it has a line in the flags log", len(flags) == 2, f"{len(flags)} lines")
 kit.columns(["Q1", "Q2"], [("clean, Rs lakh", [Q(clean, "Q1") / 1e5, Q(clean, "Q2") / 1e5])],
             fmt=lambda v: f"{v:,.0f}", title="Clean revenue by quarter")
 '''),

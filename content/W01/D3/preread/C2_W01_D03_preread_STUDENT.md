@@ -37,8 +37,8 @@ coin had changed? Hold your answer; tomorrow gives it a number.
 ## Did the delivered share move between Q1 and Q2, and by enough to tell Operations?
 
 Open today's clean file and work out the share of orders marked delivered, once for Q1 and once for
-Q2, each over all of the quarter's orders, with today's flagged order counted as an order and not as
-delivered, as chapter 4's keep and flag counted it. Then write one sentence: how far apart would two
+Q2, each over all of the quarter's orders, with the order that has no status counted as an order and not
+as delivered, as chapter 4's keep and flag counted it. Then write one sentence: how far apart would two
 quarters' shares have to sit before you told Operations that delivery had changed? Bring the two
 shares and the sentence tomorrow.
 

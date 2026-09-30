@@ -93,8 +93,7 @@ for i, text in enumerate(lines, 3):
 
 # ---------------------------------------------------------------- Profile
 ws = sheet(wb, "Profile", "What converts, and what fails?",
-           "Ten invented amounts as the file holds them, as text. A failure is counted and logged, never turned into "
-           "a number.")
+           "Ten invented amounts as the file holds them, as text. A failure is logged, never turned into a number.")
 head(ws, 4, ["Amount as text", "Converted", "", "Count", "Value"])
 for i, v in enumerate(["2500", "1300", "n/a", "3100", "1800", "2600", "950", "4100", "1750", "2200"], 5):
     put(ws, f"A{i}", v, fill=INPUT)

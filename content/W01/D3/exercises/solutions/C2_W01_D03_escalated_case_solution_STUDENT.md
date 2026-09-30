@@ -197,7 +197,9 @@ calls, then what the change means for Tuesday's finding.
 ## Which letters does the notebook take?
 
 The notebook's nine letters: 1c 2a 3d 4c 5b 6d 7b 8a 9c. Each check cell recomputes its step by a
-second route, so a wrong letter shows as a FAIL on the step it belongs to.
+second route, so a wrong letter shows as a FAIL on the step it belongs to. The notebook logs a
+replaced copy only as "replaced by a later copy of the same order"; a log an auditor reads also says
+why, here that the kept copy's amount would not convert.
 
 ## Why is item 5 worth arguing about?
 

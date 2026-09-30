@@ -178,8 +178,10 @@ or its line. The existing 29 September build already showed Rs 1,790 this way.
 30. **The escalated twin's TODO 4 logs a replaced copy neutrally**, "replaced by a later copy of the
     same order", so the branch under the placeholder no longer names its condition, and the check that
     filtered on the old reason became "where both copies of an order convert, the first copy stays",
-    which still catches option d. Every option of every TODO in both twins was run again (decision 18's
-    proof): 14 keys pass clean and all 42 wrong options fail at least one check.
+    which still catches option d. After the second review, step 4's text no longer says that a decision
+    keeping a record writes to the flags log, and the check that counted two flags went, since only the
+    keys of TODOs 5 and 6 call `flag()`. Every option of every TODO in both twins was run again
+    (decision 18's proof): 14 keys pass clean and all 42 wrong options fail at least one check.
 31. **Notebook 05's segment table leaves out the Student segment**, whose +40 percent on two customers
     is Thursday's case; the chart already left it out.
 32. **Chapter 1's question drops "actually"** in every file that prints it, the humanizer's stock word.
@@ -348,3 +350,17 @@ recheck and both reviews, and fixed what they found.
 | D. The humanizer's read | The builder | Does every prose file read as a person wrote it, with the notebooks' markdown changed through their builder? | Negative tails in deck notes and the day sheet; sweeping claims in the notes' work section; a closer restating its paragraph; one-line captions on the board | Each rewritten as a plain statement or cut; the tic scanner clean on every markdown file, the notebooks' markdown, the companion's text and both built decks |
 | E. The recheck | The builder | Do repeated numbers match, does every trap show its exact wrong number, does any STUDENT file name a plant or teach a later day's trap, do keys pass the audit, is every link dated? | The set-aside share written as about 98, 98 and 98.5 percent; the board's "on 22 members" leaning on Thursday's small-base trap; no plant named; every link dated; every key matching across the day sheet, lab note, solutions and notebook builder | 98.5 percent everywhere; the board asks whether the fall is real without the member count |
 | F. The v3 review | A fresh reviewer agent, read-only, once | The headings-only read on every file, three files opened alone (the chapter 3 set, the chapter 1 set and the escalated solution, drawn with a seeded random sample), every rendered slide, and every humanizer pattern left | Nothing blocking: no plant named, no later trap taught, no key wrong, no slide overflowing. Eleven should-fix findings: the pre-read's delivered share on a second definition; six lines that did not map to the chapters; four statuses where the export has three; a JSON feed called text; cues in the escalated twin's TODOs 4 to 6; the auditor brief's slogan key and strawmen; build-side words on learner slides; D17's words in stats slots; notebook 02's blocking sized "in the thousands"; S68's code answering its own question; gaps in the three files read alone. Eighteen minor findings on headings, glosses, keys echoing slogans, Kavya's long strip, S19's picture, S47's wrapped code, S26's empty boxes, stats words, a missed pair spent a chapter early, Thursday's Student row in notebook 05, glossary columns, notebook 03's question count, two unsourced phrasings, missing minutes and the humanizer's residue | Every finding fixed (decisions 25 to 33 record those that depart from a source); "missed red flags" confirmed on the FRC's page and "loaded in a hurry" replaced by the Salsify summary's own facts; the escalated twin's options run again |
+| G. The second review | A fresh reviewer agent, read-only, on the fixes that changed a method, a key or a number other files repeat | Does the pre-read's share match chapter 4, do the six lines match word for word and fit their chapters and panels, does the escalated twin still catch every wrong option without a cue, are the reworded keys right and fair cold, and do notebooks 03 and 05 match the data? | Four of the five hold in full, confirmed by recomputing the shares and tables from the CSV and re-running every TODO option. Should fix: the rewritten auditor Q4 was contestable, since the brief says every log line already carries its reason. Minor: the Kahoot's Q3 had a second defensible option; the escalated step's text and its two-flag check still pointed at TODOs 5 and 6. Nits: the auditor solution's 13 identical copies, the pre-read's "flagged order", the companion's two rule lines, the replaced copy's reason, the notes' escalate row and the chapter 4 item's hours | Q4 is set on a colleague's log whose 14 lines say only "dropped", and the brief says what the decisions log holds; Q3's option now says the dedupe removed the blank rows, which its stem refutes; step 4's text is neutral and the flag count is gone, with every option re-run; each nit fixed, the escalated solution naming what the replaced copy's log line leaves out. These changes touch no number or key another file repeats, so no third round runs |
+
+### The proofs
+
+- `python3 scripts/verify.py content/W01/D3 --execute`: every notebook cold-runs clean, nb_check 111
+  checks passing, distractor_audit, xlsx_recalc (5 verdicts, 7 flips), html_sweep (26 controls, 0
+  console errors), deck_md_check and deck_check (119 slides, no overflowing box); 0 failures and no
+  warnings.
+- `python3 scripts/build_companion.py content/W01/D3 --check` and `python3 scripts/sync_programme.py
+  --check` pass.
+- Both decks were rebuilt with the merged builder, rendered through LibreOffice 24.2.7.2 with Carlito,
+  and every slide was looked at; the cheat sheet PDF was rebuilt on one page and looked at.
+- The tic scanner is clean on every markdown file, the notebooks' markdown, the companion's text and
+  both built decks.

@@ -6,13 +6,14 @@
 > The internal auditor, Kalpa Retail finance
 
 The export is Kalpa Retail's file of Q1 and Q2 orders from the ERP, the enterprise resource planning
-system Finance books orders in, and it held 201 rows for 186 orders. A profile of it counted, for every
-field, the values present, the values that convert and the distinct values. The team's pass then
+system Finance books orders in, and it held 201 rows for 186 orders. A profile of it counted, for
+every field, the values present, the values that convert and the distinct values. The team's pass then
 applied the identity rule, one row kept for each order_id, the number the ERP issues once per order;
 converted the amounts, sending any that failed to a rejects log; decided each missing value and the
-largest Q2 order; and reconciled rows and rupees to the books, Finance's own record of Q1. Every row it
-did not keep went to the set-aside log with its reason. In Q1, 114 rows came in and 100 orders were
-kept, and Q1 on the clean file equals the books at Rs 1,90,00,000.
+largest Q2 order; and reconciled rows and rupees to the books, Finance's own record of Q1. Every row
+it did not keep went to the set-aside log with its reason, and the decisions log holds each cleaning
+rule once, with the rows and rupees it moved. In Q1, 114 rows came in and 100 orders were kept, and Q1
+on the clean file equals the books at Rs 1,90,00,000.
 
 A copy's twin is the other row of the same order. Chapter 3 found that two Business rows carry Rs
 19,67,560 of the Rs 19,98,210 set aside in Q1; Kalpa's Business segment is its sales to companies,
@@ -31,7 +32,7 @@ what she signs. She then asks the five questions below:
 - Why does the set-aside log hold 15 lines when the auditor asked about 14?
 - Which four set-aside rows should the auditor re-perform?
 - Would your evidence catch a real order set aside as a copy?
-- What do you change when the auditor reads "dropped" in your log?
+- What do you change in a log whose 14 lines say only "dropped"?
 - What must the reconciliation still carry if the ERP team removes copies at source?
 
 Forty minutes in pairs. One of you drives the notebook `notebooks/C2_W01_D03_ex2_auditor_STUDENT.ipynb`;
@@ -74,9 +75,10 @@ b) The rows would not tie, since a real order would be gone
 c) Nothing, since the order would share an id with a kept row
 d) The profile would show a sixteenth id on more than one row
 
-### Q4. What do you change when the auditor reads "dropped" in your log?
+### Q4. What do you change in a log whose 14 lines say only "dropped"?
 
-The auditor reads the word "dropped" in your log. What do you change?
+A colleague's set-aside log for another export reads, on each of its 14 lines, only the order_id and
+the word "dropped", and the auditor reads it tomorrow. What do you change?
 
 a) Only the word, since the decisions log already holds each reason
 b) Relabel all 14 lines 'removed as duplicates', one rule for all

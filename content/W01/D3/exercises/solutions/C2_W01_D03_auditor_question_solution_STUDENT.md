@@ -40,13 +40,13 @@ missing status were kept and flagged.
 The auditor will repeat the work herself on four of the 15 set-aside rows, with an hour to do it, and
 wants the four that test the rule hardest.
 
-The key is c, "One row from each pair that differed, and the two Business rows". The rule made a choice
-only where copies differed, and the two Business rows, Kalpa's sales to companies, carry 98.5
-percent of the rupees, so those four test the choice and the money. 13 of the 15 are identical copies,
-which test neither.
+The key is c, "One row from each pair that differed, and the two Business rows". The rule made a
+choice only where copies differed, and the two Business rows, Kalpa's sales to companies, carry 98.5
+percent of the rupees, so those four test the choice and the money. The walk's step 4 found two pairs
+that differ, so 13 of the 15 are identical copies, which test neither.
 
-- a, "Four drawn at random, so that no row is favoured over another": 13 of the 15 are identical copies,
-  so four drawn at random test mostly the easy case.
+- a, "Four drawn at random, so that no row is favoured over another": with 13 of the 15 identical
+  copies, four drawn at random test mostly the easy case.
 - b, "The first four lines of the log, since the log runs in file order": file order has no bearing on
   risk.
 - d, "The four largest by rupees, since the money is what she signs for": the largest rows test the
@@ -69,9 +69,10 @@ one cause at a time, would not close.
   field's present, convertible and distinct values, already sees the repeated id as one of the 15, so
   its count does not change.
 
-### Q4. What do you change when the auditor reads "dropped" in your log?
+### Q4. What do you change in a log whose 14 lines say only "dropped"?
 
-The auditor reads the word "dropped" in the log.
+A colleague's set-aside log for another export reads, on each of its 14 lines, only the order_id and
+the word "dropped", and the auditor reads it tomorrow.
 
 The key is d, "Each line, to name the kept row it copies and why this one went". An auditor reads
 "dropped" as gone without a trace, so each line has to say which kept row the removed one copies and

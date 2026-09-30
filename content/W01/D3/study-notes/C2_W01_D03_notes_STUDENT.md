@@ -238,7 +238,7 @@ checked 30 September 2026). Kalpa writes such invoices to the companies in its B
 | First in the file | Rs 1,89,98,210 | -Rs 1,790 | 1 |
 | Last in the file | Rs 1,90,00,000 | Rs 0 | 0 |
 | The copy that validates, then the first | Rs 1,90,00,000 | Rs 0 | 0 |
-| Keep both, escalate every pair | open | open | 15 questions to the ERP team |
+| Keep both, escalate every pair | open | open | 0, with 15 questions to the ERP team |
 
 **The call.** The copy that validates, then the first, and escalate only the pair whose valid copies
 disagree. Last lands on the books here only by the order the migration appended its rows, which is

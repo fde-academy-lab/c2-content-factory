@@ -28,9 +28,9 @@ the rest climb the day's six chapters. Every number is invented unless the item 
 ## Q3. A dedupe says 0 duplicates; distinct ids say 172 of 186 rows. What happened?
 *Tests: the whole-record key that makes every row unique.*
 
-- 14 orders are missing from the export and need a resend
+- 14 orders never arrived and need a resend
 - The id count is wrong, since the dedupe checked every field
-- Fourteen rows have a blank order_id the count skipped
+- Fourteen rows have a blank order_id, and the dedupe removed them
 - The dedupe compared a field that differs on every row  <- correct
 
 ---

@@ -10,7 +10,7 @@ Two of the four items are design items: 1 and 4.
 
 Next month about 1,800 of 60,000 orders will arrive with no status, a lookup in the courier's system takes about 2 minutes an order, and the delivered share goes out every Monday.
 
-The key is b, "Leave them flagged, with the unknown count beside the share". 1,800 lookups at 2 minutes each is 60 hours, more than a working week, so the flag stays and the report says how many are unknown. A lookup earns its place once it runs as an automatic feed from the courier, and done by hand it costs those 60 hours before every report.
+The key is b, "Leave them flagged, with the unknown count beside the share". 1,800 lookups at 2 minutes each is 60 hours, more than a working week, so the flag stays and the report says how many are unknown. A lookup earns its place once it runs as an automatic feed from the courier, and done by hand it costs 60 hours a month, about 15 before each Monday report.
 
 - a, "Look up all 1,800 by hand before the first report goes out": 60 hours of lookups before a weekly report.
 - c, "Default them to delivered, since most orders with a status are": invents up to 1,800 deliveries nobody recorded.

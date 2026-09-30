@@ -376,7 +376,7 @@ SETS = [
                   "Drop them from the report, since 3 percent cannot move a share"], "b",
                  "1,800 lookups at 2 minutes each is 60 hours, more than a working week, so the flag stays and "
                  "the report says how many are unknown. A lookup earns its place once it runs as an automatic feed "
-                 "from the courier, and done by hand it costs those 60 hours before every report.",
+                 "from the courier, and done by hand it costs 60 hours a month, about 15 before each Monday report.",
                  {"a": "60 hours of lookups before a weekly report.",
                   "c": "invents up to 1,800 deliveries nobody recorded.",
                   "d": "3 percent of orders can move a share by up to 3 points, and dropping them hides it."},
