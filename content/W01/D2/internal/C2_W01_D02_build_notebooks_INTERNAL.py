@@ -71,7 +71,8 @@ QUESTIONS = {
         "Did any segment's own revenue per order rise 18 percent?",
         "Did customers pay 18 percent more, or did the mix move the blend?",
         "What is the rate part made of?",
-        "Do two groups on an envelope, Business and everyone else, give the same share?"],
+        "Does a back-of-envelope split, Business against everyone else, put the same share of the rise on "
+        "the mix?"],
     5: ["Which of four tests can see customers lost and customers new?",
         "How many of Q1's 69 customers are missing from Q2?",
         "Who placed fewer orders in Q2?",
@@ -95,7 +96,7 @@ STEPS = {
     3: ["Copy, function or one pass?", "Does tree_for agree?", "How did Retail-Core move?",
         "What did Business do?", "What does the roll-up say?\nthe trap", "Does one pass agree?\nthe second route"],
     4: ["Which reading of the rise?", "Whose orders were lost?", "Did any segment rise 18%?",
-        "Price or mix?\nthe trap", "What is the rate part?", "Does the envelope agree?\nthe second route"],
+        "Price or mix?\nthe trap", "What is the rate part?", "Does a two-group split agree?\nthe second route"],
     5: ["Which test sees churn?", "How many are missing?", "Who slowed down?",
         "Which segment fell most?\nthe trap", "Too small to matter?", "Do the dates agree?\nthe second route"],
     6: ["Which tests, in what order?", "When did orders drop?", "How many did it cost?\nthe trap",
@@ -139,8 +140,8 @@ behind the second: depending on the study and the industry, acquiring a new cust
 times more than retaining an existing one,
 and Bain's Frederick Reichheld found that a 5 percent rise in retention lifts profits by 25 to 95
 percent (Amy Gallo, HBR, 29 October 2014, checked 30 Sep 2026). Those are estimates across
-industries, never Kalpa's figures, so the reply asks Finance for Kalpa's own acquisition cost. Swiggy
-shows why the two branches are reported apart: in the quarter to September 2025 its monthly
+industries and say nothing about Kalpa's own costs, so the reply asks Finance for Kalpa's acquisition
+cost. Swiggy shows why the two branches are reported apart: in the quarter to September 2025 its monthly
 transacting users, the people who ordered at least once in a month, rose 34.0 percent in a year to
 22.9 million while orders per user a month fell from 4.53 to 4.10 (Swiggy, Q2 FY2026 shareholder
 letter, checked 30 Sep 2026). A count and a frequency can move apart, so each is reported on its own:
@@ -152,6 +153,14 @@ short-term costs of up to $30 million to fix the app (Sonos, third quarter fisca
 fiscal 2024 annual report, checked 30 Sep 2026). An app rollout went wrong badly enough to reach the
 company's guidance, and the head of Retail-Plus is asking whether his tier is the same story.""",
 }
+
+# The legend for the interview tags, set under each chapter's "### In the interview" heading, above its
+# first tagged question. The wording matches the notes and the decks.
+TAGS = ("The tags mark how often a question comes up: [S] a staple asked everywhere, [F] frequent in GCC "
+        "and product screens, [SV] a service-major screen opener, [D] a differentiator.")
+
+# Kavya's introduction, set just above her first quote in each chapter.
+KAVYA = "Kavya Nair, the team's senior analyst, reviews every number before it leaves."
 
 
 def _para(text):
@@ -264,8 +273,8 @@ question.
 | C. A rate per week or per day | Revenue divided by the weeks or days each window covers | Length, whatever the windows | The window stated beside the rate |
 | D. The same quarter last year | Q2 this year against Q2 last year | Length and the season | Last year's export, which this file does not hold |
 
-The cell below sizes each one on this file: how many rows it reads, what answer it gives, how far
-that answer sits from option A, and what it leaves out.
+On this file each option is sized by the rows it reads, the answer it gives, how far that answer
+sits from option A, and what it leaves out.
 """),
         code("""
 def revenue_between(start, end):
@@ -386,7 +395,7 @@ window holds eleven weeks of trading, and it is set against thirteen. Two weeks 
 counted yet show up as lost revenue. Read as a crisis, a 25.9 percent fall pushes Meera to release
 the Rs 12 crore acquisition budget in a hurry, on a gap that is mostly the calendar.
 
-**The check** prints, for each window, where it starts and ends, the first and last order inside it,
+**The check.** For each window, print where it starts and ends, the first and last order inside it,
 and the weeks it covers.
 """),
         code("""
@@ -432,9 +441,9 @@ kit.check("Q1 covers 13 whole weeks and the tile 11", (days["Q1, whole quarter"]
 kit.check("Marketing's figure rounds to minus 25.9 percent", round(wrong, 1) == -25.9, f"{wrong:.2f}")
 """),
         md("""
-**The fix.** Compare the closed quarters, thirteen weeks each: minus 11.0 percent, Rs 23,00,000. The
-bridge below shows where Marketing's extra fall went: Q2's last two weeks, which the tile had not
-reached, carried Rs 31,40,050 of revenue.
+**The fix.** Compare the closed quarters, thirteen weeks each: minus 11.0 percent, Rs 23,00,000.
+Marketing's extra fall is Q2's last two weeks, which the tile had not reached: they carried
+Rs 31,40,050 of revenue, and the bridge walks from Q1 to Q2 in those two steps.
 """),
         code("""
 late = revenue["Q2"] - tile_revenue
@@ -450,8 +459,8 @@ kit.check("the uncounted weeks hold 16 orders and Rs 31,40,050", (orders["Q2"] -
 """),
         md("""
 **What changed.** The fall Meera is asked to act on shrank from Rs 54,40,050 to Rs 23,00,000, and
-from 25.9 percent to 11.0 percent. Sixteen orders worth Rs 31,40,050 were never missing; they had not
-happened yet when the tile was read.
+from 25.9 percent to 11.0 percent. Sixteen orders worth Rs 31,40,050 came in after the tile was
+read.
 """),
         md(f"""
 ## 4. {QUESTIONS[1][3]}
@@ -542,12 +551,16 @@ minus 11.0 percent both ways.
 moves inside the quarter, as it will in chapter 6, where the head of Retail-Plus dates a cause to a
 week in August.
 
+""" + KAVYA + """
+
 > **Kavya's review.** "Marketing's arithmetic was correct on a quarter that had not finished. Say
 > both windows out loud with their first and last dates before you say a percentage, and say which
-> option you picked and what would make you pick another. If the windows do not match, nothing you
-> say after that counts."
+> option you picked and what would make you pick another. Unmatched windows make every later number
+> wrong."
 
 ### In the interview: how would you investigate a sales drop, and when is a quarter-on-quarter comparison fair?
+
+""" + TAGS + """
 
 **[S] Sales dropped 15 percent last month; how would you investigate?** "I work in a fixed order.
 First I confirm the drop is real: the same window on both sides, closed periods or the same days of each,
@@ -558,13 +571,14 @@ change in rate is behind it. Only then do I name a cause, as a hypothesis, with 
 would settle it, and timing is the first test: a cause cannot come after its effect." The
 interviewer is listening for the order, and above all for the first step, which most candidates skip.
 
-**[F] What has to match before a quarter-on-quarter comparison is fair?** "Five things have to
-match: the window, the definition, the population, the denominator and the export. The windows must
-be the same length with both periods closed; if one is still open, I compare the same weeks of each,
-or a rate per week with its window stated. What is counted, booked or delivered, must be the same on
-both sides, and so must the segments and customers in scope and the denominator behind any rate. The
-export itself must have been pulled when the later period was complete. Today a dashboard tile read
-on 15 September and set against a full quarter turned an 11.0 percent fall into 25.9." The
+**[F] What has to match before a quarter-on-quarter comparison is fair?** "Four things have to
+match: the window, the definition, the population and the denominator, all on an export pulled after
+the later period closed. The windows must be the same length with both periods closed; if one is
+still open, I compare the same weeks of each and state a rate per week beside them, since a rate
+fixes the length of the windows and leaves their position. What is
+counted, booked or delivered, must be the same on both sides, and so must the segments and customers
+in scope and the denominator behind any rate. Today a dashboard tile read on 15 September and set
+against a full quarter turned an 11.0 percent fall into 25.9." The
 interviewer is listening for window, definition, population and denominator named without prompting.
 
 **The design question. Q2 is still open; which comparison do you send, and what would make you
@@ -654,6 +668,8 @@ at a branch that moved.
 
 """ + COMPANY[2] + """
 
+""" + KAVYA + """
+
 > **Kavya's review of chapter 1.** "Good: you said both windows before you said a percentage. Now
 > stop describing the fall and start taking it apart."
 
@@ -675,9 +691,9 @@ A team could split the fall across the branches in four ways.
 | C. A symmetric split | Share the fall in proportion to each leaf's logarithmic change | Rupees that do not depend on any order |
 | D. Customer by customer | Each of the 69 customers' Q1 and Q2 orders side by side | Who moved, at 69 rows of reading before any total |
 
-The cell below sizes B, C and a reversed bridge on this file, since the order of the steps is where
-the choice bites, and says for each option whether its rupees add to the fall and what Meera would
-have to read.
+On this file each option is sized by the rupees it charges frequency, whether those rupees add to
+the fall and depend on the order of the steps, and what Meera would have to read. The bridge is sized
+twice, in the tree's order and reversed, since the order of the steps is where the choice bites.
 """),
         code("""
 import math
@@ -832,7 +848,7 @@ kit.check("the loop stopped on a missing key", err.name == "KeyError", f"{err.na
         md("""
 That is a runtime error, and it takes two minutes: some records carry no `discount` key at all, and
 indexing a dictionary with a key it lacks raises `KeyError`. A `try` and `except KeyError` around the
-line would also get past it. The question that matters is what a missing discount means.
+line would also get past it. What a missing discount means decides the number.
 
 **Predict before you run.** A hurried analyst reads every missing discount as zero. What share of
 Q2's 86 orders will carry a discount? a) about a quarter; b) about half; c) about seven in ten;
@@ -983,6 +999,8 @@ someone else rebuilds the split every month, since then nobody argues about orde
 
 ### In the interview: how do you split a revenue change, why does a rate need its denominator, and is a missing field a zero?
 
+""" + TAGS + """
+
 **[F] Revenue fell 11 percent; how do you split the change between customers, frequency and order
 value?** "I write revenue as customers times orders per customer times revenue per order and compute
 each leaf in both periods. The ratios multiply back to the revenue ratio, which proves the leaves are
@@ -993,9 +1011,10 @@ split depends on the order, and I keep the order fixed across reports." The inte
 for the multiplicative check and for rupees in place of percentages that do not add.
 
 **[S] Why is a rate without a denominator meaningless?** "Because a rate is a count divided by
-something over a window, and changing either of the other two changes the number. Orders per
-customer of 1.25 over 69 customers on booked orders becomes 1.14 over 50 customers with a delivered order. When someone quotes a rate, I ask what was counted, what it was divided by and over
-which dates." The interviewer is listening for all three parts.
+something over a window, and changing either of the other two changes the number. On invented
+numbers, 120 orders in a quarter come to 1.20 orders per customer over the 100 customers who bought,
+and to 0.60 over the 200 who hold an account. When someone quotes a rate, I ask what was counted,
+what it was divided by and over which dates." The interviewer is listening for all three parts.
 
 **[S] A field is missing on some records; do you fill it with zero?** "Only if zero is what missing
 means, and someone has written down why. Usually missing means not recorded, which is unknown.
@@ -1007,7 +1026,7 @@ blanks, and a bound.
 **The design question. Which way do you split a revenue change for a CEO, and when would you
 change it?** "A bridge in the tree's order, with the order written beside it, because it adds
 exactly and a CEO can follow it. On Kalpa's quarters the order moves frequency's charge between
-Rs 51.6 lakh and Rs 60.9 lakh and never changes which branch is guilty. If the split is rebuilt
+Rs 51.6 lakh and Rs 60.9 lakh and never changes which branch carries the fall. If the split is rebuilt
 monthly by someone else, I switch to the symmetric split so nobody argues about order." The
 interviewer is listening for a reason and the fact that would switch it.
 
@@ -1016,9 +1035,9 @@ interviewer is listening for a reason and the fact that would switch it.
 With three branches moving at once, a sequential bridge has six possible orders, and the symmetric
 split still gives one answer, because the logarithms of the three ratios add exactly to the logarithm
 of the revenue ratio (B. W. Ang, "The LMDI approach to decomposition analysis: a practical guide",
-Energy Policy, 2005, checked through Crossref 29 Sep 2026). Try it: in the escalated case this
-afternoon customers move too; run the second route's split there and count how many of the six
-bridge orders put the most rupees on the same branch.
+Energy Policy, 2005, checked through Crossref 29 Sep 2026). Try it: invent two quarters in which
+customers move as well as the other two leaves, run the second route's split on them, and count how
+many of the six bridge orders put the most rupees on the same branch.
 
 References for the chapter:
 
@@ -1122,6 +1141,8 @@ fund to fix it, or whether it sits elsewhere.
 
 """ + COMPANY[3] + """
 
+""" + KAVYA + """
+
 > **Kavya's review of chapter 2.** "You have written the same accumulating loop three times since
 > this morning. The fourth time, write it once, give it a name, and make it hand back its answer."
 
@@ -1143,8 +1164,8 @@ needed for eight groups, and a team could produce them in three ways.
 | B. Write a function | `tree_for(rows)` takes any list of orders and returns the five numbers | One place to edit; each call reads its own group |
 | C. Group by a key in one pass | One loop over all 200 orders adds into `totals[(quarter, segment)]` | One pass over the rows; the code is shaped for these eight groups only |
 
-The cell below sizes each: lines of code, places to edit when Anand Iyer, the finance controller,
-changes the definition to delivered orders, and rows read.
+Each option is sized by its lines of code, the places to edit when Anand Iyer, the finance
+controller, changes the definition to delivered orders, and the rows it reads.
 """),
         code(TOOLS.strip() + '''
 
@@ -1294,10 +1315,13 @@ kit.stats([(f'{averaged["Q1"]:.2f}', "Q1, average of 4 segments", "each segment 
 '''),
         md("""
 **Why it is wrong.** The answer to the prediction is b, and it is the wrong conclusion. Averaging
-the averages gives every segment one vote, so a segment of 2 customers counts as much as one of 34.
-"Frequency fell only 6.0 percent, so it is not the branch, and Marketing may be right" would send
-Meera back to the acquisition budget on a number that describes no customer. **The check:** a roll-up
-of the segments must reproduce the company figure, 1.65 and 1.25, and this one does not.
+the averages gives every segment one vote, so a segment of 2 customers counts as much as one of 34,
+and the averaged rate falls 6.0 percent on the unrounded figures, 1.9385 to 1.8215. "Frequency fell
+only 6.0 percent, so it is not the branch, and Marketing may be right" would send Meera back to the
+acquisition budget on a number that describes no customer.
+
+**The check.** A roll-up of the segments must reproduce the company figure, 1.65 and 1.25, and this
+one does not.
 
 The mechanism on **invented** numbers: 30 customers who order 1.1 times each, and 2 who order 3.5
 times each.
@@ -1406,6 +1430,8 @@ denominator.
 
 ### In the interview: why can't four segment rates be averaged, and do you copy the code, write a function or group by a key?
 
+""" + TAGS + """
+
 **[F] You have orders per customer for four segments; why can't you average them for the company
 figure?** "Because each segment's rate has its own denominator, and averaging the rates gives every
 segment the same weight whatever its size. The company figure is total orders over total customers,
@@ -1496,6 +1522,8 @@ customer, the branch that moved, worse.
 
 """ + COMPANY[4] + """
 
+""" + KAVYA + """
+
 > **Kavya's review of chapter 3.** "You rolled the segments up with their weights and got 1.65 and
 > 1.25 back. Now the same weights answer Marketing's price question."
 
@@ -1519,8 +1547,8 @@ print("revenue per order:", kit.rupees(round(all1["revenue_per_order"])), "to", 
 | C. Split the rise into mix and rate | Price Q2's order mix at Q1's segment rates; the rest is rate | Rupees of the rise from mix and from rate, adding to the whole |
 | D. Each segment's median order | `describe` per segment | The typical order, which one lakh-sized order cannot move |
 
-The cell below sizes each on this file: how much of the Rs 33,231 rise each can put rupees on,
-whether one lakh-sized order can move it, and what it leaves open.
+On this file each reading is sized by how much of the Rs 33,231 rise it can put rupees on, whether
+one lakh-sized order can move it, and what it leaves open.
 """),
         code('''
 rise = all2["revenue_per_order"] - all1["revenue_per_order"]
@@ -1605,9 +1633,13 @@ kit.check("the hurried figure is plus 18.0 percent", round(wrong_rise, 1) == 18.
 **Why it is wrong.** Revenue per order is a blend. It rises whenever small orders fall away, even if
 no customer pays a rupee more, and 25 small Retail-Plus orders fell away. Reading it as a price
 signal would put a price rise on customers who never paid more, in the tier whose orders already
-halved. **The check** is question 3's table: no segment's own revenue per order rose 18 percent.
-**The fix** is option C: price Q2's order mix at Q1's revenue per order in each segment, and call
-what is left the rate.
+halved.
+
+**The check.** Question 3's table already shows that no segment's own revenue per order rose 18
+percent.
+
+**The fix.** Option C prices Q2's order mix at Q1's revenue per order in each segment and calls what
+is left the rate.
 """),
         code('''
 s1 = [round(share1[seg] * 100, 1) for seg in SEGMENTS]
@@ -1621,9 +1653,10 @@ kit.check("at Q2's mix and Q1's rates, revenue per order is Rs 2,07,112", round(
 kit.check("mix explains about 69 percent of the rise", round(mix / rise * 100) == 69, f"{mix / rise * 100:.1f}")
 '''),
         md("""
-**What changed.** "Customers pay 18 percent more, raise prices" became "at Q2's mix and Q1's prices,
+**What changed.** "Customers pay 18 percent more, raise prices" became "at Q2's mix and Q1's rates,
 revenue per order would already have been Rs 2,07,112: the mix explains Rs 22,902 of the Rs 33,231
-rise, about 69 percent, and the rate inside segments Rs 10,330". The price rise loses its evidence.
+rise, about 69 percent, and the rate inside segments Rs 10,330", so the price rise has lost its
+evidence.
 """),
         md("""
 ## 5. """ + QUESTIONS[4][4] + """
@@ -1645,7 +1678,7 @@ kit.check("Business carries more than nine tenths of the rate part", rate_parts[
         md("""
 **What happened.** The answer is c. The rate part is almost all Business, whose 17 orders each grew
 about Rs 52,000 on average, and one large order drives that, as chapter 3's range showed. The
-consumer segments' own prices moved by a few hundred rupees at most.
+consumer segments' own revenue per order moved by a few hundred rupees at most.
 """),
         md("""
 ## 6. """ + QUESTIONS[4][5] + """
@@ -1684,6 +1717,8 @@ segments' own shares move a lot against each other, since it cannot see inside t
 > left from the tier we are about to ask about."
 
 ### In the interview: did prices go up when revenue per order rose, and when does a mix split matter?
+
+""" + TAGS + """
 
 **[F] Revenue per order rose 18 percent while revenue fell; did prices go up?** "Prices may not
 have moved at all, and on Kalpa's quarters they mostly did not. Revenue per order is a blend across
@@ -1724,8 +1759,8 @@ References for the chapter:
             Rs 10,330.""",
             """The rate part is almost all Business, whose 17 orders each grew about Rs 52,000 on average, one
             large order driving it; the consumer segments' own rates moved a few hundred rupees at most.""",
-            """Two groups on an envelope, Business and everyone else, give the same share: Rs 23,039, 69.3
-            percent, against 68.9 percent from four segments.""",
+            """A back-of-envelope split, Business against everyone else, puts the same share of the rise on
+            the mix: Rs 23,039, 69.3 percent, against 68.9 percent from four segments.""",
         ], """
 No. The 18 percent is no price signal: about 69 percent of the rise is mix, the small member orders
 that left, and most of the rest is Business's lakh-sized orders.
@@ -1750,8 +1785,8 @@ quarter, which answers the churn claim, and a small helper that turns two number
 change, which has to be checked before anyone trusts its summary.
 """, """
 > **Marketing pushes back.** "A flat count can hide churn replaced by new customers, which is why we
-> need acquisition. And Retail-Plus is Rs 65,250 out of a Rs 23 lakh fall. Last quarter's summary
-> script says Business fell most; it does not matter."
+> need acquisition. And Retail-Plus is Rs 65,250 out of a Rs 23 lakh fall; it does not matter. Last
+> quarter's summary script says Business fell most."
 >
 > The marketing lead, Kalpa Retail
 """, """
@@ -1766,6 +1801,8 @@ and its mirror, the new customers of Q2. The decision riding on it is the acquis
 and a wrong answer can also leave a retention problem to run while the money goes elsewhere.
 
 """ + COMPANY[5] + """
+
+""" + KAVYA + """
 
 > **Kavya's review of chapter 4.** "You told Marketing the consumer segments did not pay more.
 > Expect them to come back with a better argument, and answer it with a check they can run
@@ -1792,7 +1829,7 @@ A team could test "a flat count hides churn replaced by new customers" in four w
 | C. Customer by customer | Each id's Q1 and Q2 orders side by side | Yes, and who slowed down as well |
 | D. Ask Marketing's CRM | New sign-ups by month from the campaign system | Only new customers, from a second system to reconcile |
 
-The cell below sizes each on this file: what it gives Meera to read, whether it sees lost and new
+On this file each test is sized by what it gives Meera to read, whether it sees lost and new
 customers, and what it assumes.
 """),
         code('''
@@ -1907,7 +1944,7 @@ orders per member halved, is exactly the kind of large change the script was wri
 fell out of the summary. The decision it misleads: Meera opens Business accounts first, and the head
 of Retail-Plus is told his tier is not in the table.
 
-**The check** counts the groups in and the groups out: four segments went in.
+**The check.** Count the groups in and the groups out: four segments went in.
 """),
         code('''
 none_back = [seg for seg, ch in changes.items() if ch is None]
@@ -2010,6 +2047,8 @@ dates add a warning the overlap cannot: a first order in this export is only the
 > back from every helper you did not write."
 
 ### In the interview: how do you answer Marketing's churn claim, and why does a helper that prints and returns nothing break a pipeline?
+
+""" + TAGS + """
 
 **[D] Marketing insists the answer is acquisition and your data says frequency; how do you make the
 case in the room?** "I take their claim seriously and test it in its own terms, with a check they can
@@ -2148,7 +2187,7 @@ A team could test a cause in four ways here, three with the data in hand and one
 | C. The channel it predicts | A broken app feature can only stop app orders | An app-only cause, if the web and the store fell too |
 | D. The app's logs | Reorder attempts and failures by week, and the release that broke it | Nothing today: a data request, days away |
 
-The cell below sizes each on this file: rows read, and the verdict each one can reach today.
+On this file each test is sized by the rows it reads and the verdict it can reach today.
 """),
         code('''
 BREAK = (date(2026, 10, 6) - timedelta(weeks=6)).isoformat()      # "six weeks", taken at its word
@@ -2211,8 +2250,10 @@ kit.check("the hurried memo blames the button for 25 orders and Rs 65,250", (wro
 **Why it is wrong.** The comparison spans the whole quarter, so it charges the button with every
 order lost since 1 July, including the eight weeks or so before it broke. Engineering would be told
 the fix recovers 25 orders a quarter, and when it ships and recovers a handful, the tier's real
-problem has had another quarter to run. **The check** splits Q2 at the break and gives each side
-its window, as chapter 1 taught: a rate per week, with dates.
+problem has had another quarter to run.
+
+**The check.** Split Q2 at the break and give each side its window, as chapter 1 taught: a rate per
+week, with dates.
 """),
         code('''
 days_q1 = 91
@@ -2378,11 +2419,15 @@ most about 4 orders. Two hypotheses remain: the button deepened the fall after 2
 the app's reorder logs by week and the release date; and something changed for members in July,
 settled by the tier's change log, renewals and support tickets. Last year's Q2 by segment rules the season in or out. We are asking for all three."
 
+""" + KAVYA + """
+
 > **Kavya's review.** "You gave the head of Retail-Plus a number for his cause, a ceiling of about 4
 > orders, and named the data that would settle it. Now say what you know and what you are guessing,
 > in that order, and stop."
 
 ### In the interview: how do you test a cause a stakeholder hands you, and what goes in the one-page memo?
+
+""" + TAGS + """
 
 **[D] A stakeholder hands you a cause; how do you test it with the data you have and name the data
 you need?** "I restate it as a hypothesis with a mechanism and test what the mechanism predicts,

@@ -123,7 +123,7 @@ for i, text in enumerate(lines, 3):
 
 # ---------------------------------------------------------------- Window
 ws = sheet(wb, "Window", "Is the drop real on matched windows?",
-           "Two quarters are compared only when they cover the same weeks, or as a rate per week.")
+           "Two quarters are compared only when they cover the same weeks, with any rate per week stated beside them.")
 head(ws, 4, ["Window", "Revenue (Rs)", "Weeks covered"])
 put(ws, "A5", "Q1, closed quarter"); put(ws, "B5", tot["Q1"]["rev"], fill=INPUT); put(ws, "C5", 13, fill=INPUT)
 put(ws, "A6", "Q2 dashboard tile, cut at 15 September"); put(ws, "B6", tile, fill=INPUT); put(ws, "C6", 11, fill=INPUT)

@@ -48,6 +48,19 @@ EX2_PARTS = ["Does 7 percent more per order make the tier healthy?", "Is the web
              "Which members does the tier call first?", "Which one request goes first?"]
 
 
+# The solution twin's line under the opening, and the line the exercise twin carries in its place.
+SOLUTION_LINE = ("Every placeholder is filled, every cell has run, and under each step a line says why the other "
+                 "three options fail.")
+EXERCISE_LINE = ("Each placeholder is a lettered choice in the comment above it. Run the notebook from the top; it "
+                 "stops, as intended, at the first placeholder you have not filled.")
+
+# Kavya's introduction, set just above her first quote, and the legend for the interview tags, set above
+# the first tagged question; both read as the chapter notebooks do.
+KAVYA = "Kavya Nair, the team's senior analyst, reviews every number before it leaves."
+TAGS = ("The tags mark how often a question comes up: [S] a staple asked everywhere, [F] frequent in GCC "
+        "and product screens, [SV] a service-major screen opener, [D] a differentiator.")
+
+
 def questions_on_the_way(questions):
     return "**The questions on the way.**\n\n" + "\n".join(f"{i}. {q}" for i, q in enumerate(questions, start=1))
 
@@ -86,16 +99,19 @@ def twin(cells, solution):
                     src = src.replace(claim, plain)
             c = code(src)
         elif c.cell_type == "markdown" and not solution:
-            c = md(re.sub(r"This is the solution twin:.*?options fail\.",
-                          "This is the exercise twin: each placeholder is a lettered choice in the comment above it. "
-                          "Run it from the top; it stops at the first placeholder you have not filled, which is intended.",
-                          c.source, flags=re.S))
+            c = md(c.source.replace(SOLUTION_LINE, EXERCISE_LINE))
             for claim, plain in NEUTRAL_MD.items():
                 c = md(c.source.replace(claim, plain))
             c = md(re.sub(r"\*\*Item (\d) in your brief\.?\*\*.*?(?=\n\n|$)",
                           lambda m: f"**Item {m.group(1)} in your brief** goes in now, from what this part printed.",
                           c.source, flags=re.S))
         out.append(c)
+    if not solution:
+        # The exercise twin must carry none of the solution's claims: a leftover claim title, a key-hinting
+        # line or the solution twin's own line under the opening would give a key away.
+        text = "\n".join(c.source for c in out)
+        leaks = [s for s in [*NEUTRAL, *NEUTRAL_MD, SOLUTION_LINE] if s in text]
+        assert not leaks, f"the exercise twin still carries solution text: {leaks}"
     return out
 
 
@@ -149,12 +165,13 @@ so, the board acts on a story its own numbers do not support, and next quarter's
 
 """ + questions_on_the_way(EX1_PARTS + [EX1_SENTENCE]) + """
 
+""" + KAVYA + """
+
 > **Kavya's review of the morning.** "Every number you gave Meera this morning was on booked orders.
 > Change the definition and rerun every rung. If a branch that held starts to move, find out what it
 > is made of before anyone else names it."
 
-This is the solution twin: every placeholder is filled, every cell has run, and under each step a
-line says why the other three options fail.
+""" + SOLUTION_LINE + """
 """),
         code(SETUP + 'ORDERS = kit.load_records("C2_W01_D02_orders_STUDENT.py")\nSEGMENTS = ["Retail-Core", "Retail-Plus", "Business", "Student"]\n' + TOOLS + '\nprint(len(ORDERS), "booked orders loaded")'),
         code(f"""
@@ -320,7 +337,6 @@ on the broken summary.
         md("""
 **Item 4 in your brief.** On delivered orders Retail-Plus falls furthest again, 1.85 to 1.06 orders
 per member, minus 42.6 percent; Business and Retail-Core fall about 11.5 percent each; Student rises.
-The segment survives the definition.
 
 ## Part 5. """ + EX1_PARTS[4] + """
 
@@ -384,6 +400,8 @@ and a change for members in July, settled by the tier's change log."
 
 ### In the interview: what do you do when a new definition of revenue moves a branch that held?
 
+""" + TAGS + """
+
 **[D] You change the definition of revenue and a branch that held starts to move; what do you do?**
 "I decompose the new movement before anyone names it. Here customers with a delivered order fell from
 54 to 50, which looks like churn, but every one of the 19 who left the delivered count booked again
@@ -428,12 +446,13 @@ order.
 
 """ + questions_on_the_way(EX2_PARTS) + """
 
+""" + KAVYA + """
+
 > **Kavya's review of the escalated case.** "You found a branch that moved for a reason nobody
 > guessed. Do the same with Marketing's two new numbers: find what each is made of before you agree
 > or disagree."
 
-This is the solution twin: every placeholder is filled, every cell has run, and under each step a
-line says why the other three options fail.
+""" + SOLUTION_LINE + """
 """),
         code(SETUP + 'ORDERS = kit.load_records("C2_W01_D02_orders_STUDENT.py")\nSEGMENTS = ["Retail-Core", "Retail-Plus", "Business", "Student"]\n' + TOOLS + '\nprint(len(ORDERS), "orders loaded")'),
         code(f"""
@@ -474,13 +493,14 @@ kit.check("your expression gives back the tier's Q2 revenue, counted order by or
 '''),
         SOL(md("""
 **Why the other three fail.** b) adds two changes, minus 49.0 and plus 7.0 percent, as if percentages
-added, which is Monday's two lifts called 20 percent turned round. c) is the one leaf Marketing
-quoted. d) averages two ratios, which is no quantity in the tree.
+added, which is the error from Monday of adding two 10 percent lifts to make 20 when they make 21,
+turned round. c) is the one leaf Marketing quoted. d) averages two ratios, which is no quantity in the
+tree.
 
 **The answer to Marketing.** The same 22 members spent 7.0 percent more per order and placed about
 half as many orders, 2.32 each to 1.18, so the tier's revenue fell to 0.545 of Q1, Rs 1,43,550 to
-Rs 78,300, about 45 percent down. One leaf that rose inside a tier whose orders halved says nothing
-about the tier's health.
+Rs 78,300. One leaf rose inside a tier whose orders halved, and tier revenue still fell about 45
+percent.
 """)),
         md("""
 **Item 1 in your brief** goes in now, from what this part printed.
@@ -609,6 +629,8 @@ what changed for them in July. We are asking for the tier's July change log, ren
 tickets first, and the app's reorder logs second."
 
 ### In the interview: what do you check when someone says higher spend per order means a healthy business?
+
+""" + TAGS + """
 
 **[F] A stakeholder says customers spend more per order, so the business is healthy; what do you
 check?** "I check what that rate multiplies with: how many customers there are and how often they

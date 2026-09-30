@@ -653,10 +653,10 @@ difference between showing and handing back. Strong: printing sends text to the 
 from the summary; return the value and let the caller decide what to print. Weak: "printing is slower".
 
 **4. [F] What has to match before a quarter-on-quarter comparison is fair?** Tested: like with like.
-Strong: the same length of window or a rate per week or per day, the same definition of revenue, the
-same segments, and the same denominators; once a quarter closes, compare closed quarters; and say that
-a quarter-on-quarter comparison still carries the season, which only the same quarter last year
-removes. Weak: comparing whatever totals the dashboard shows.
+Strong: the same weeks on both sides, which means closed quarters once both have closed and, while
+one is open, the same weeks of each with a rate per week beside them; the same definition of revenue,
+the same segments, and the same denominators; and say that a quarter-on-quarter comparison still
+carries the season, which only the same quarter last year removes. Weak: comparing whatever totals the dashboard shows.
 
 **5. [D] Marketing insists the answer is acquisition and your data says frequency; how do you make the
 case in the room?** Tested: judgement under pressure. Strong: agree the goal, show the tree with

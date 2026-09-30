@@ -209,7 +209,7 @@ customer minus Rs 51,57,895, revenue per order plus Rs 28,57,895. Retail-Plus mo
 1. **[S] Sales dropped 15 percent; investigate.** Confirm on matched windows, decompose along the tree, isolate branch and segment, split mix from rate, then hypothesise and name the evidence.
 2. **[S] A rate without a denominator.** "Down 20 percent" of what, over which window and which base is unknown, so nobody can check it or compare it.
 3. **[F] Print instead of return.** Print hands back None, so the next step silently drops or crashes on that value; our summary lost two of four segments.
-4. **[F] A fair quarter comparison.** Same window length, same definition, same segments, same denominators; the season needs last year.
+4. **[F] A fair quarter comparison.** The same weeks, closed or matched with a rate per week beside them, the same definition, segments and denominators; the season needs last year.
 5. **[D] Marketing says acquisition, data says frequency.** Test their claim in its terms: 69 and 69, overlap 69, 0, 0; then where the fall is; then what would change my mind.
 6. **[F] Splitting a revenue change.** A bridge one leaf at a time in a stated order; the order moves frequency between Rs 51.6 and 60.9 lakh and never the verdict.
 7. **[F] Revenue per order up 18 percent.** Mostly mix: small Retail-Plus orders vanished; 69 percent of the rise.
