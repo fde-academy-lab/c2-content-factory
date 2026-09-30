@@ -89,8 +89,9 @@ lines = [
     "and watch the verdict change.",
     "The Export tab releases the paste-ready note only when all four tabs pass their checks, so fixing one tab "
     "does not clear it.",
-    "Share: what a p-value says. Size: whether a real gap is worth acting on. Count: whether a rate is a finding "
-    "or a lead. Mix: whether the campaign worked once the segments are split.",
+    "Share: what a share says, in both directions. Size: whether a real gap is worth acting on. Count: whether a "
+    "rate is a lead or worth testing, counted in customers. Mix: whether the campaign worked once the segments are "
+    "split.",
     "The note to Meera runs claim, evidence, caveat, action, and each verdict is written to sit inside it.",
 ]
 for i, text in enumerate(lines, 3):
@@ -98,29 +99,43 @@ for i, text in enumerate(lines, 3):
 
 # ---------------------------------------------------------------- Share
 ws = sheet(wb, "Share", "What does the share say?",
-           "Shuffle the segment labels many times and count how often chance alone makes a gap this large. "
-           "The numbers are invented, change them.")
+           "Flip each member's pair many times (or shuffle the labels, for different customers) and count how often "
+           "chance alone makes a gap this large, one way and either way. The numbers are invented, change them.")
 head(ws, 4, ["Input", "Value"])
-put(ws, "A5", "Shuffles run"); put(ws, "B5", 5000, fill=INPUT)
-put(ws, "A6", "Shuffles at least as large as the real gap"); put(ws, "B6", 210, fill=INPUT)
-put(ws, "A8", "The share (the p-value)", BOLD); put(ws, "B8", "=B6/1000")
-put(ws, "A9", "The check", BOLD)
-put(ws, "B9", '=IF(AND(B8>=0,B8<=1,ABS(B8-B6/B5)<0.0000001),"The share is the count at least as large, over '
-              'the shuffles run.","The share is outside 0 to 1 or differs from the count over the shuffles: it '
-              'divides by the wrong cell. Fix it first.")', wrap=True)
-put(ws, "A11", "The sentence you would write", BOLD)
-put(ws, "B11", "a X percent chance we are wrong", fill=INPUT)
-choice(ws, "B11", ["a X percent chance we are wrong", "X of every 100 chance-only worlds", "X percent certain"])
-put(ws, "A12", "Is it defensible?")
-put(ws, "B12", '=IF(B11="X of every 100 chance-only worlds","Defensible: the share counts chance-only worlds, '
+put(ws, "A5", "Flips run"); put(ws, "B5", 5000, fill=INPUT)
+put(ws, "A6", "Flips with a fall at least as large as the real one"); put(ws, "B6", 210, fill=INPUT)
+put(ws, "A7", "Flips with a move that large in either direction"); put(ws, "B7", 400, fill=INPUT)
+put(ws, "A8", "The direction the team decided before the test"); put(ws, "B8", "not decided before the test", fill=INPUT)
+choice(ws, "B8", ["falls only", "either way", "not decided before the test"])
+put(ws, "A9", "Agreed before the test: a share below this reads as rare"); put(ws, "B9", 0.01, fill=INPUT)
+put(ws, "A10", "Agreed before the test: a share above this reads as the usual wobble"); put(ws, "B10", 0.1, fill=INPUT)
+put(ws, "A12", "The share, falls only", BOLD); put(ws, "B12", "=B6/1000")
+put(ws, "A13", "The share, either way", BOLD); put(ws, "B13", "=B7/B5")
+put(ws, "A14", "The share the verdict reads"); put(ws, "B14", '=IF(B8="falls only",B12,B13)')
+put(ws, "A15", "The check", BOLD)
+put(ws, "B15", '=IF(AND(B12>=0,B12<=1,ABS(B12-B6/B5)<0.0000001),"The share is the count at least as large, over '
+               'the flips run.","The share is outside 0 to 1 or differs from the count over the flips: it '
+               'divides by the wrong cell. Fix it first.")', wrap=True)
+put(ws, "A17", "The sentence you would write", BOLD)
+put(ws, "B17", "a X percent chance we are wrong", fill=INPUT)
+choice(ws, "B17", ["a X percent chance we are wrong", "X of every 100 chance-only worlds", "X percent certain"])
+put(ws, "A18", "Is it defensible?")
+put(ws, "B18", '=IF(B17="X of every 100 chance-only worlds","Defensible: the share counts chance-only worlds, '
                'which is all a p-value measures.","Indefensible: a p-value is a share of chance-only worlds, '
-               'never the chance the finding is wrong. Choose the chance-only worlds sentence.")', wrap=True)
-put(ws, "A14", "Verdict", VERDICT)
-put(ws, "B14", '=IF(ABS(B8-B6/B5)>=0.0000001,"Fix the share formula before reading the verdict.",'
-               'IF(B8<0.05,"Chance makes a gap this large in about "&TEXT(B8*100,"0.0")&" of every 100 shuffles, '
-               'so treat it as real and size it next.","Chance makes a gap this large in about "&TEXT(B8*100,"0.0")&'
-               '" of every 100 shuffles: inside the usual wobble, so not yet."))', VERDICT, TINT, True)
-put(ws, "A15", "Fixed, for the Export tab", NOTE); put(ws, "B15", "=IF(ABS(B8-B6/B5)<0.0000001,1,0)")
+               'and it cannot be the chance the finding is wrong. Choose the chance-only worlds sentence.")', wrap=True)
+put(ws, "A20", "Verdict", VERDICT)
+put(ws, "B20", '=IF(ABS(B12-B6/B5)>=0.0000001,"Fix the share formula before reading the verdict.",'
+               'IF(B8="falls only","Counting falls only, as decided before the test, chance makes a fall this large in '
+               'about "&TEXT(B12*100,"0.0")&" of every 100 flips, and a move that large either way in about "&'
+               'TEXT(B13*100,"0.0")&". ",IF(B8="either way","Counting either way, as decided before the test, chance '
+               'makes a move this large in about "&TEXT(B13*100,"0.0")&" of every 100 flips, and a fall this large in '
+               'about "&TEXT(B12*100,"0.0")&". ","No direction was decided before the test, so both go in the note: a '
+               'fall this large turns up in about "&TEXT(B12*100,"0.0")&" of every 100 flips, and a move that large '
+               'either way in about "&TEXT(B13*100,"0.0")&". "))&IF(B14<B9,"By the reading agreed before the test, '
+               'that is rare as pure wobble, so size it next.",IF(B14<=B10,"By the reading agreed before the test, '
+               'that is borderline: size it, and watch it before acting on it alone.","By the reading agreed before '
+               'the test, that is inside the usual wobble, so not yet.")))', VERDICT, TINT, True)
+put(ws, "A21", "Fixed, for the Export tab", NOTE); put(ws, "B21", "=IF(ABS(B12-B6/B5)<0.0000001,1,0)")
 
 # ---------------------------------------------------------------- Size
 ws = sheet(wb, "Size", "Is it worth acting on?",
@@ -150,27 +165,30 @@ put(ws, "B17", '=IF(ABS(B11/B6-B5)>=0.005,"Fix the segment fall formula before s
 put(ws, "A18", "Fixed, for the Export tab", NOTE); put(ws, "B18", "=IF(ABS(B11/B6-B5)<0.005,1,0)")
 
 # ---------------------------------------------------------------- Count
-ws = sheet(wb, "Count", "Is the rate a finding or a lead?",
-           "A rate that jumps by 40 percent can stand on a handful of orders. Count what it stands on first. "
-           "The numbers are invented, change them.")
+ws = sheet(wb, "Count", "Is the rate a lead, or worth testing?",
+           "A rate that jumps by 40 percent can stand on a handful of orders from a handful of customers. Count "
+           "both first; the rule of thumb counts customers, since more orders from the same few customers add no "
+           "new evidence. The numbers are invented, change them.")
 head(ws, 4, ["Input", "Value"])
 put(ws, "A5", "Orders in the earlier quarter"); put(ws, "B5", 8, fill=INPUT)
 put(ws, "A6", "Orders in the later quarter"); put(ws, "B6", 14, fill=INPUT)
-put(ws, "A8", "Rate change, percent", BOLD); put(ws, "B8", "=100*(B6-B5)/B5")
-put(ws, "A9", "Orders the rate stands on"); put(ws, "B9", "=B5+B6")
-put(ws, "A10", "One-order swing, points"); put(ws, "B10", "=100/B9")
-put(ws, "A11", "The call"); put(ws, "B11", '=IF(B8<30,"lead","finding")')
-put(ws, "A12", "The check", BOLD)
-put(ws, "B12", '=IF(B11=IF(B9<30,"lead","finding"),"The call reads the count of orders against thirty.",'
-               '"The call and the count disagree: the threshold test reads the rate where it should read the count. '
-               'Fix it first.")', wrap=True)
-put(ws, "A14", "Verdict", VERDICT)
-put(ws, "B14", '=IF(B11<>IF(B9<30,"lead","finding"),"Fix the threshold test before calling the rate.",'
-               'IF(B9<30,"A rise of "&TEXT(B8,"0.0")&" percent on "&B9&" orders is a lead: watch it until it carries '
-               'thirty or more. One order moves it by about "&TEXT(B10,"0.0")&" points.",'
-               '"A rise of "&TEXT(B8,"0.0")&" percent on "&B9&" orders is a finding worth testing."))',
-    VERDICT, TINT, True)
-put(ws, "A15", "Fixed, for the Export tab", NOTE); put(ws, "B15", '=IF(B11=IF(B9<30,"lead","finding"),1,0)')
+put(ws, "A7", "Customers who placed those orders"); put(ws, "B7", 5, fill=INPUT)
+put(ws, "A9", "Rate change, percent", BOLD); put(ws, "B9", "=100*(B6-B5)/B5")
+put(ws, "A10", "Orders the rate stands on"); put(ws, "B10", "=B5+B6")
+put(ws, "A11", "One-order swing, points"); put(ws, "B11", "=100/B10")
+put(ws, "A12", "The call"); put(ws, "B12", '=IF(B9<30,"lead","worth testing")')
+put(ws, "A13", "The check", BOLD)
+put(ws, "B13", '=IF(B12=IF(B7<30,"lead","worth testing"),"The call reads the customers behind the rate against '
+               'thirty.","The call and the count disagree: the threshold test reads the rate where it should read '
+               'the customers. Fix it first.")', wrap=True)
+put(ws, "A15", "Verdict", VERDICT)
+put(ws, "B15", '=IF(B12<>IF(B7<30,"lead","worth testing"),"Fix the threshold test before calling the rate.",'
+               'IF(B7<30,"A rise of "&TEXT(B9,"0.0")&" percent on "&B10&" orders from "&B7&" customers is a lead: '
+               'watch it until more customers buy, thirty or more, since more orders from the same few customers '
+               'add no new evidence. One order moves it by about "&TEXT(B11,"0.0")&" points.",'
+               '"A rise of "&TEXT(B9,"0.0")&" percent on "&B10&" orders from "&B7&" customers is worth testing on '
+               'its count."))', VERDICT, TINT, True)
+put(ws, "A16", "Fixed, for the Export tab", NOTE); put(ws, "B16", '=IF(B12=IF(B7<30,"lead","worth testing"),1,0)')
 
 # ---------------------------------------------------------------- Mix
 ws = sheet(wb, "Mix", "Did the campaign work?",
@@ -208,12 +226,12 @@ ws = sheet(wb, "Export", "The note, assembled",
            "Released only when every tab's check passes. Paste the lines into the note to Meera as claim, "
            "evidence, caveat and action.")
 ws.column_dimensions["B"].width = 110
-put(ws, "A4", "Tabs fixed", BOLD); put(ws, "B4", "=Share!B15+Size!B18+Count!B15+Mix!B19")
+put(ws, "A4", "Tabs fixed", BOLD); put(ws, "B4", "=Share!B21+Size!B18+Count!B16+Mix!B19")
 put(ws, "A5", "Release", VERDICT)
 put(ws, "B5", '=IF(B4=4,"Ready to paste into the note to Meera.","Not ready: "&(4-B4)&" of the four tabs still '
               'carry a defect to fix first.")', VERDICT, TINT, True)
 put(ws, "A7", "Paste-ready note", BOLD)
-put(ws, "B7", '=IF(B4=4,"Share: "&Share!B14&CHAR(10)&"Size: "&Size!B17&CHAR(10)&"Count: "&Count!B14&CHAR(10)&'
+put(ws, "B7", '=IF(B4=4,"Share: "&Share!B20&CHAR(10)&"Size: "&Size!B17&CHAR(10)&"Count: "&Count!B15&CHAR(10)&'
               '"Mix: "&Mix!B18,"The note assembles once every tab passes its check.")', wrap=True)
 ws.row_dimensions[7].height = 120
 

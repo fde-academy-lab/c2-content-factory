@@ -27,8 +27,8 @@ THIN = Side(style="thin", color="B8B2D6")
 BOX = Border(left=THIN, right=THIN, top=THIN, bottom=THIN)
 ROWS = 60  # entry rows a group gets on each log
 
-FILES = ["patients", "clinics", "test_catalogue", "bookings_legacy", "bookings_newsys",
-         "booking_tests", "invoices", "payments", "appointments", "campaign"]
+FILES = ["patients", "sites", "test_catalogue", "bookings_legacy", "bookings_newsys",
+         "booking_tests", "claims", "remittances", "appointments", "campaign"]
 
 
 def style_header(ws, row, cols):
@@ -131,12 +131,12 @@ def challenges():
     style_header(ex, 4, len(head))
     example = [1, "Monday", "19 Oct 2026", "(yours)",
                "Nobody in the group had worked in diagnostics, so we could not say what "
-               "'home collection' means in the files or who pays for it.",
+               "'at-home' means in the files or who pays for it.",
                "Brief, data dictionary: bookings_legacy.channel",
                "Read the data dictionary and the brief; asked the trainer what a phlebotomist "
                "does, which is a domain question and allowed.",
-               "Wrote a one-line definition into our vocabulary map and agreed that a "
-               "home-collection booking is still one booking, counted once.",
+               "Wrote a one-line definition into our vocabulary map and agreed that an "
+               "at-home booking is still one booking, counted once.",
                "resolved", "19 Oct 2026", 20, 0]
     for c, v in enumerate(example, 1):
         ex.cell(row=5, column=c, value=v)

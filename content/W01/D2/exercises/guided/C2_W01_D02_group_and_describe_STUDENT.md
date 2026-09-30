@@ -1,6 +1,6 @@
 # Guided: group, describe, and write it once
 
-Built with the trainer across rounds 2 and 3, one step at a time, in your own Codespace. Nothing
+Built with the trainer across chapters 2 and 3, one step at a time, in your own Codespace. Nothing
 here is graded. Every line on your screen is there because you typed it, which is what makes it
 yours when the afternoon's case arrives and nobody types it for you.
 
@@ -28,7 +28,7 @@ flowchart LR
 
 ## Step 1. Group by quarter
 
-Open a new cell below the setup cell of round 2's notebook and type the accumulator with the room:
+Open a new cell below the setup cell of chapter 2's notebook and type the accumulator with the room:
 
 ```python
 ORDERS = kit.load_records("C2_W01_D02_orders_STUDENT.py")
@@ -66,7 +66,7 @@ The same move with a key made of two parts. Change the key line to
 `key = (order["quarter"], order["segment"])` and build `orders_by_key` and `customers_by_key`,
 where the second holds a set of customer ids for each key. Run it, then print the keys in order
 with `for key in sorted(orders_by_key): print(key)`. Read the counts in your own notebook; the room
-reads them together in round 3.
+reads them together in chapter 3.
 
 ### Checkpoint 3. Before you read a single count, how many keys should `orders_by_key` hold, and why check?
 
@@ -130,4 +130,4 @@ d) `total`, as the last line, so the notebook displays the value
 
 A dictionary accumulator you can point at any key, one segment described by its typical value and
 its spread, and a function that returns its answer. The next step, running the tree on every
-segment in both quarters, is yours alone at the end of round 3.
+segment in both quarters, is yours alone at the end of chapter 3.

@@ -35,12 +35,12 @@ b) r, s, t, p, q
 c) t, r, s, q, p
 d) r, t, s, p, q
 
-### Q2. Marketing's 25.9 percent reached a slide because one rung was skipped. Which rung, if run, would have stopped it?
+### Q2. (design) Marketing's 25.9 percent reached a slide on 15 September because one rung was skipped. What should that rung have sent Meera that day, and what would switch it once Q2 closed?
 
-a) Decompose the change along the tree, which would have shown frequency falling
-b) Compare like with like, which would have shown 11 weeks set against 13
-c) Isolate the segment, which would have shown the fall sitting in one place
-d) Name a hypothesis, which would have forced someone to ask for evidence
+a) The tile against all of Q1, minus 25.9 percent, switching once Marketing agrees the method is fair
+b) The same 11 weeks of each quarter, minus 17.0 percent, switching to closed quarters at the close
+c) A rate per week, minus 12.4 percent, switching to last year's Q2 once the export arrives from Finance
+d) The tree's leaves, frequency and order value, switching to the segments once they are split
 
 ---
 
@@ -102,7 +102,7 @@ d) Rs 1,500 to Rs 1,550, a rise of 3.2 percent against Q2's order value
 a) Revenue is flat, so the manager is right and the review can be skipped this quarter
 b) Order value rose 3.3 percent, so the store's pricing is working and needs no change
 c) Customers rose 10 percent and so did revenue, so the new customers carried the quarter
-d) New customers masked existing ones buying less often; check if Q1's buyers came back
+d) New customers may have masked existing ones buying less often, so check Q1's buyers
 
 ---
 
@@ -124,11 +124,11 @@ d) "Revenue fell sharply between the two quarters, and the fall is large enough 
 a) "Customers fell, so acquisition is the branch to fund, as the marketing lead has said from the start."
 b) "Averaged across the four segments, frequency fell only 6.0 percent, so no single branch moved much."
 c) "Order value rose 18.0 percent, so the fall must sit in the number of customers who bought from us."
-d) "Customers held at 69, all of them bought in both quarters; orders per customer fell, 1.65 to 1.25."
+d) "Customers held at 69, every one buying in both quarters, and orders per customer fell 1.65 to 1.25."
 
 ### Q11. Which third line names the segment, in behaviour and in rupees?
 
-a) "In behaviour, the same 22 Retail-Plus members placed 26 orders against 51; in rupees, 3 Business orders."
+a) "In behaviour, 22 Retail-Plus members placed 26 orders against 51, and in rupees it is 3 Business orders."
 b) "In behaviour and in rupees alike, the fall sits in Business, which lost Rs 22,29,720 across three orders."
 c) "In rupees, the fall sits in Retail-Plus, whose revenue halved from Rs 1,43,550 to Rs 78,300 in the quarter."
 d) "Every segment fell by a similar share, so no segment needs to be named ahead of the others in the memo."
@@ -137,5 +137,5 @@ d) "Every segment fell by a similar share, so no segment needs to be named ahead
 
 a) "The cause is the broken reorder feature, as the head of Retail-Plus has reported from his members."
 b) "The cause cannot be known from an order file, so the memo leaves the question of cause to others."
-c) "H1, the broken reorder feature, settled by reorder logs by week; H2, a July change, by the tier's log."
+c) "Two causes stay open: the reorder feature, settled by its logs, and a July change, by the tier's log."
 d) "The cause is a market-wide slowdown in July, which explains why every channel fell in the same months."

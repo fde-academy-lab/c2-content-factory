@@ -1,0 +1,19 @@
+site_code,metro,kind,new_system_code
+KH-DAL-01,Dallas,laboratory,
+KH-DAL-02,Dallas,patient service center,
+KH-DAL-03,Dallas,patient service center,
+KH-PHX-01,Phoenix,laboratory,
+KH-PHX-02,Phoenix,patient service center,
+KH-PHX-03,Phoenix,patient service center,
+KH-NYC-01,New York,laboratory,
+KH-NYC-02,New York,patient service center,
+KH-NYC-03,New York,patient service center,
+KH-CHI-01,Chicago,laboratory,ORD-01
+KH-CHI-02,Chicago,patient service center,ORD-02
+KH-CHI-03,Chicago,patient service center,ORD-03
+KH-ATL-01,Atlanta,laboratory,
+KH-ATL-02,Atlanta,patient service center,
+KH-ATL-03,Atlanta,patient service center,
+KH-PHI-01,Philadelphia,laboratory,PHL-01
+KH-PHI-02,Philadelphia,patient service center,PHL-02
+KH-PHI-03,Philadelphia,patient service center,PHL-03

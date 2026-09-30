@@ -47,7 +47,7 @@ opening the code.
 The session moved fast, the accumulator did not land, and you would rather rebuild it than pretend.
 Then this one is for you, and doing it tonight costs you nothing tomorrow.
 
-**Work in a fresh cell in round 2's notebook. One step at a time, running after each.**
+**Work in a fresh cell in chapter 2's notebook. One step at a time, running after each.**
 
 1. Print the first three records on their own. Point at the quarter and the segment in each.
 2. Make an empty dictionary, `counts = {}`, and print it. It prints `{}`.

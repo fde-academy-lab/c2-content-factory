@@ -33,7 +33,7 @@ flips:
   - name: a kept row does not count as removed
     set:
       - {sheet: Log, cell: C5, value: "patients"}
-      - {sheet: Log, cell: D5, value: "corporate_account"}
+      - {sheet: Log, cell: D5, value: "employer_account"}
       - {sheet: Log, cell: F5, value: 1}
       - {sheet: Log, cell: H5, value: "keeps rows"}
       - {sheet: Reconcile, cell: D5, value: 6700}

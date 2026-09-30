@@ -48,7 +48,7 @@ no test.
 | Block | Min | What runs | Who leads | The file |
 |---|---|---|---|---|
 | Morning | 30 | **The daily checkpoint.** Each group answers its sub-problem's three questions in two minutes. | Trainer | `checkpoints/C2_W03_D03_checkpoint_questions_STUDENT.md` on screen; `checkpoints/C2_W03_D03_checkpoint_guide_TRAINER.md` in hand |
-| Morning | 60 | **The parallel build.** Delhi's revenue tree, Q1 against Q2, solved in the open. | Trainer | `parallel-build/C2_W03_D03_delhi_revenue_tree_STUDENT.ipynb`, run from `parallel-build/C2_W03_D03_run_sheet_TRAINER.md` |
+| Morning | 60 | **The parallel build.** Delhi's revenue tree, Q1 against Q2, solved in the open. | Trainer | `parallel-build/C2_W03_D03_new_york_revenue_tree_STUDENT.ipynb`, run from `parallel-build/C2_W03_D03_run_sheet_TRAINER.md` |
 | Morning | 90 | **Build time.** Groups profile, clean, reconcile and cut. The trainer circulates, stuck groups from the checkpoint first. | Groups; trainer circulates | The group's own notebook or SQL, the decisions log, the challenges log |
 | Afternoon | 160 | **Build time.** Groups keep building. At the halfway mark, each group writes its draft claim on the headline sheet's shape. | Groups; trainer circulates | `checkpoints/C2_W03_D03_headline_claim_STUDENT.md` |
 | Afternoon | 20 | **The close.** Each group states its headline claim in one sentence with its denominators and caveat, or names its blocker, and receives the presentation format. | Trainer | The headline sheet, and `content/W03/SAT/slides/C2_W03_SAT_presentation_format_STUDENT.md` handed out |
@@ -84,7 +84,7 @@ rubric, rendered from `data/programme/facts.yaml`:
 | Criterion | Marks | What full marks look like |
 |---|---|---|
 | The question translated | 8 | Dr Menon's words are mapped to the right Weeks 1 and 2 method, with the metric defined and the decision it feeds named. |
-| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and rupees reconcile across files. |
+| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and dollars reconcile across files. |
 | The analysis | 10 | The tree, ladder or fair comparison reaches the branch that explains the symptom, on the right denominator, with a chance test where one is needed. |
 | The claim | 6 | One sentence carries its number, denominator, period and caveat, plus an action Dr Menon can take. |
 | Presentation and defence | 6 | The live demo runs cold, and every member answers a challenge on the caveat. |
@@ -190,7 +190,7 @@ would have to explain.
 | Moment | File |
 |---|---|
 | The checkpoint | `checkpoints/C2_W03_D03_checkpoint_questions_STUDENT.md`, `checkpoints/C2_W03_D03_checkpoint_guide_TRAINER.md` |
-| The parallel build | `parallel-build/C2_W03_D03_delhi_revenue_tree_STUDENT.ipynb`, `parallel-build/C2_W03_D03_run_sheet_TRAINER.md` |
+| The parallel build | `parallel-build/C2_W03_D03_new_york_revenue_tree_STUDENT.ipynb`, `parallel-build/C2_W03_D03_run_sheet_TRAINER.md` |
 | Build time and the close | `checkpoints/C2_W03_D03_headline_claim_STUDENT.md` |
 | Open build time | `checkpoints/C2_W03_D03_catchup_plan_TRAINER.md` |
 | Monday's pack, referenced | `content/W03/D1/briefs/` (the briefing note, the five briefs, the data dictionary, the translation worksheet, both logs) and `content/W03/D1/slides/C2_W03_D01_introduction_STUDENT.md` |

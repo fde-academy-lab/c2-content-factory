@@ -17,7 +17,7 @@ that only prints cannot feed a table.
 | 2 | b | Summing the amounts per quarter gives Rs 2,10,00,000 and Rs 1,87,00,000. | a is revenue per order, a rate. c is the whole file, which no quarter holds. d gives Q2 the first quarter's total, which happens only when the key is ignored. |
 | 3 | a | Four segments times two quarters is eight keys, and counting the keys before reading the values catches a segment missing from one quarter. | b drops the quarter from the key, which mixes two quarters into one count. c: a dictionary holds one entry per key, not per row. d keys by customer, which is a different split. |
 | 4 | c | Sorted, the 38 amounts run from Rs 860 to Rs 3,000; the middle two average Rs 2,325; the range is Rs 2,140. | a puts the mean, Rs 2,117, in the median's place. b is Retail-Core in Q2. d adds the minimum to the maximum where the range subtracts it. |
-| 5 | b | `return total` hands the value to whatever called the function, so a loop can store it in a table. | a prints and returns None. c returns what `print` returns, which is None. d displays the value only when the call is the last line of a cell, and returns None inside the function. |
+| 5 | b | `return total` hands the value to whatever called the function, so a loop can store it in a table. | a prints and returns None. c returns what `print` returns, which is None. d is a bare expression inside a function, which displays nothing and leaves the function returning None. |
 
 ## The part worth arguing about
 
@@ -30,4 +30,4 @@ exactly that kind of silent loss.
 
 Every `GROUP BY` in SQL and every `groupby` in pandas is this accumulator with the loop hidden, and
 both meet later in the programme. The habit of counting groups before reading them is what catches
-a join that dropped a category or a filter that emptied a segment.
+a step that quietly lost a segment, whatever the tool.
