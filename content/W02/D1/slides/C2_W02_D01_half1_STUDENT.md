@@ -176,8 +176,8 @@ Transition: rung 1 opens with a connection.
 *Before one number goes on Anand's sheet, the warehouse has to agree with what we already defended.*
 
 ```notes
-LIVE. Fifty minutes: the question and its picture (5), first contact and the leaves (15), the
-customer trap (10), the sample trap and the harder variant (15), Kavya's review (5).
+LIVE. Fifty minutes: the question and its picture (5), first contact and every leaf against Week 1 (17),
+the customer trap (10), the sample trap and the harder variant (13), Kavya's review (5).
 Notebook: notebooks/C2_W02_D01_01_warehouse_STUDENT.ipynb. SQL: sql/C2_W02_D01_01_warehouse_STUDENT.sql.
 ```
 
@@ -270,7 +270,7 @@ LIVE, 2 minutes. Letters first, then run both blocks.
 ---
 
 ## S12. Answer: five times the totals, the same fall
-*The book is the whole two quarters; last week's files were an extract.*
+*One leaf agrees; the tree has eight more.*
 
 ```mermaid
 xychart-beta
@@ -283,10 +283,56 @@ xychart-beta
 Extract: Rs 1.90 crore to Rs 1.87 crore. Warehouse: Rs 10.00 crore to Rs 9.84 crore. Both fall 1.6 percent.
 
 ```notes
-LIVE, 4 minutes. The answer is b. The extract held 186 cleaned orders; the warehouse holds 1,000.
-The rate carries over and the total does not, and that is the check whenever a source changes.
-Retail-Plus orders fall 34.9 percent in the book against 35.0 in the extract (r1_plus_orders).
-Kavya's point: the warehouse is now the source, because it agrees on the rate.
+LIVE, 2 minutes. The answer is b. Last week's file held 186 cleaned orders; the warehouse holds
+1,000. The fall agrees, and that is one leaf. Transition: so check every leaf.
+```
+
+---
+
+## S12a. Every leaf against Week 1
+*Three leaves agree; the customer leaves do not, and everything divided by customers follows them.*
+
+| Leaf | Week 1 file | Warehouse | What explains it |
+|---|---|---|---|
+| Book revenue | 1.6% down | 1.6% down | The two agree. |
+| Book revenue per order | 14.4% up | 14.6% up | The two agree. |
+| Book customers | 69, flat | 244 to 227 | The files share no customer, and the warehouse is the record. |
+| Book orders per customer | 14.0% down | 7.7% down | It follows the customer count. |
+| Plus customers | 22, flat | 91 to 76 | The files share no member, and the warehouse is the record. |
+| Plus orders per customer | 35.0% down | 22.0% down | It follows the customer count. |
+| Plus orders | 35.0% down | 34.9% down | The two agree. |
+| Plus revenue per order | 5.7% up | 8.4% up | No source explains it, and the warehouse is the record. |
+| Plus revenue | 31.3% down | 29.4% down | It carries the order-value gap. |
+
+```notes
+LIVE, 3 minutes. Notebook 01, section 2, runs this table and proves the files share no order id
+and no customer id. Read the three agreeing rows first, then the customer rows. Frequency is
+orders over customers: orders fall by the same third in both, so fewer buyers means a smaller fall
+per buyer. Where a source does not explain a gap, say that the numbers differ and that the
+warehouse is the book of record; do not offer a reason.
+```
+
+---
+
+## S12b. Retail-Plus, leaf by leaf
+*The orders agree; the warehouse also shows members who stopped buying.*
+
+```mermaid
+xychart-beta
+    title "Retail-Plus, Q2 as an index on Q1 = 100"
+    x-axis ["customers", "frequency", "orders", "order value", "revenue"]
+    y-axis "index" 0 --> 120
+    bar [83.5, 78.0, 65.1, 108.4, 70.6]
+    line [100, 65.0, 65.0, 105.7, 68.7]
+```
+
+The bars are the warehouse and the line is Week 1's file. Fewer members bought, 91 to 76, and those who bought ordered less often.
+
+```notes
+LIVE, 1 minute. The finding Meera accepted survives in direction: Retail-Plus orders fell by a
+third and its members ordered less often. The warehouse adds what the smaller file could not show,
+members who bought nothing in Q2. Anand's sheet carries the warehouse's numbers and one line on
+where they differ from last week's.
 ```
 
 ---
@@ -431,19 +477,20 @@ xychart-beta
 **The harder variant.** Write the not-cancelled and delivered readings for each quarter, and say which one Anand's sheet uses and where the comment says so. Block `r1_readings` has the answer for both quarters together.
 
 ```notes
-LIVE, 10 minutes of the room's own typing. The bars are r1_readings' three totals. The suite uses booked revenue, the definition Week 1 reconciled; the comment line
+LIVE, 8 minutes of the room's own typing. The bars are r1_readings' three totals. The suite uses booked revenue, the definition Week 1 reconciled; the comment line
 says so. Fast finishers compute the median order with percentile_cont (block r1_typical): the
-mean is about 80 times the median, the Week 1 shape at warehouse scale.
+mean is 79 times the median, and block r1_typical_rest shows it is still 66.5 times with the two
+largest orders set aside, because Business orders average about Rs 8.84 lakh.
 ```
 
 ---
 
 ## S20. Round 1: the warehouse is the book
-*It agrees with Week 1 on the rate, so it is the source from Monday on.*
+*It agrees with Week 1 on three leaves, differs on who bought, and is the book of record from today.*
 
 ```mermaid
 flowchart LR
-    A["<b>the book</b><br/>1.6% fall, as in Week 1"] --> B["<b>customers</b><br/>301 who bought"] --> C["<b>the sample</b><br/>ORDER BY a unique key"]
+    A["<b>the book</b><br/>every leaf against Week 1"] --> B["<b>customers</b><br/>301 who bought"] --> C["<b>the sample</b><br/>ORDER BY a unique key"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class A,B,C known
 ```

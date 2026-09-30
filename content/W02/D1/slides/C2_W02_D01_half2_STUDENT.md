@@ -168,18 +168,21 @@ and it returns word for word in the study notes.
 
 ---
 
-## S8. What the suite says: Retail-Plus moved
-*Query 6, the one row per segment Anand reads first.*
+## S8. What the suite says: two questions, two answers
+*Query 6 in percent, and query 3's revenue turned into rupees.*
 
-| Segment | Customers | Frequency | Order value | Revenue |
-|---|---|---|---|---|
-| Business | 2.8% down | 3.5% down | 5.1% up | 1.4% down |
-| Retail-Core | 5.9% down | 3.0% up | 1.2% up | 1.8% down |
-| Retail-Plus | 16.5% down | 22.0% down | 8.4% up | 29.4% down |
-| Student | 33.3% up | 5.6% up | 4.9% down | 33.9% up |
+| Segment | Customers | Frequency | Order value | Revenue | Rupees moved |
+|---|---|---|---|---|---|
+| Business | 2.8% down | 3.5% down | 5.1% up | 1.4% down | Rs 14,29,840 down |
+| Retail-Core | 5.9% down | 3.0% up | 1.2% up | 1.8% down | Rs 6,820 down |
+| Retail-Plus | 16.5% down | 22.0% down | 8.4% up | 29.4% down | Rs 1,72,390 down |
+| Student | 33.3% up | 5.6% up | 4.9% down | 33.9% up | Rs 9,050 up |
 
 ```notes
-LIVE, 2 minutes. Frequency is the branch that fell furthest, which is Week 1's finding at warehouse
+LIVE, 2 minutes. Ask two questions and take an answer to each. Where did the rupees fall?
+Business: it carries 99.1 percent of revenue, so its 1.4 percent dip is Rs 14,29,840 of the
+Rs 16,00,000 fall. Where did the orders and the frequency fall? Retail-Plus: it lost 75 of the
+book's 76 fewer orders, and its frequency fell furthest, which is Week 1's lever at warehouse
 scale. Student grows on 27 and 38 orders, so its row carries the thin-cell warning.
 ```
 
@@ -193,15 +196,16 @@ flowchart LR
     C["<b>claim</b>"] --> E["<b>evidence</b>"] --> V["<b>caveat</b>"] --> N["<b>next step</b>"]
 ```
 
-**The claim.** Booked revenue fell 1.6 percent from Q1 to Q2, the same fall last week's extract showed, so the warehouse agrees with the note Meera accepted.
+**The claim.** Booked revenue fell 1.6 percent from Q1 to Q2, Rs 16,00,000, the same rate last week's file showed.
 
-**The evidence.** The fall sits in Retail-Plus, down 29.4 percent: its members ordered less often, 2.36 to 1.84 per quarter, and fewer bought at all, 91 to 76; the other segments moved under 2 percent or grew.
+**The evidence.** The rupees fell in Business, which carries 99.1 percent of revenue and lost Rs 14,29,840 on a 1.4 percent dip. The orders fell in Retail-Plus: it lost 75 of the book's 76 fewer orders, its members ordered less often, 2.36 to 1.84 per quarter, and fewer bought at all, 91 to 76.
 
-**The caveat.** This is booked revenue; Student's Q1 rate rests on 27 orders. **The next step.** Collected revenue, tomorrow.
+**The caveat.** This is booked revenue; Student's Q1 rate rests on 27 orders; the warehouse counts different customers from last week's file and is the book of record. **The next step.** Collected revenue, tomorrow.
 
 ```notes
 LIVE, 1 minute. Read it aloud. Ask for the one number the analyst would check first: the 1.6
-percent against query 1.
+percent against query 1. Then ask why the evidence has two halves: rupees and orders are different
+questions, and here they have different answers.
 ```
 
 ---
