@@ -141,8 +141,9 @@ The bank sets what is tested, and the paper sets the bar. The week's source file
   count of hard items. It judges difficulty for the room, trainees in the programme's early weeks,
   as a strong interviewer would grade their answers, since an agent that knows every idiom finds
   every single-idiom item easy. The first sittings of the raised Week 1 and Week 2 papers, on 30
-  September 2026, found 5 to 12 hard items where 21 were labelled, so the paper is done only when a
-  later sitting finds no arguable key, no cue and no leak, and its hard count reaches the bar.
+  September 2026, found 5 to 12 hard items where 21 were labelled. One sitting per paper: the author
+  fixes every arguable key, cue and leak it names and relabels honestly, and the orchestrating
+  session confirms the fixes against the proofs and the audit rather than sitting the paper again.
 
 `python3 scripts/build_saturday_paper.py W{ww} --docx` writes the paper and the key as Word files in
 the format of the requester's baseline diagnostic (`content/W00/D2/paper/C2_W00_D02_diagnostic_STUDENT.docx`),
