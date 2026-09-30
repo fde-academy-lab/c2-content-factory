@@ -1204,7 +1204,7 @@ def case_cells(solution):
         # The escalated case: the full pass, alone
 
         **Week 1, Wednesday afternoon, the escalated case.** Anand has replied: "Send the reconciliation
-        and the log by five. My analyst checks it tonight." Run the whole pass on the ERP export: read and
+        and the log before the day closes. My analyst checks it tonight." Run the whole pass on the ERP export: read and
         profile, convert with a rejects log, apply the identity rule, make the two open decisions,
         reconcile in rows and in rupees, draw the bridge, and recompute Tuesday.
 

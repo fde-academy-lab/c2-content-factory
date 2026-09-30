@@ -66,10 +66,10 @@ if the sources are not dated.
 comments on specific lines. Those comments go to Claude with your next message, which is far more
 precise than describing the problem in prose.
 
-**7. Ask it to run the gate.** `python3 scripts/verify.py content/W03/D2`. A pack that has not
+**7. Ask it to run the gate.** `python3 scripts/verify.py content/W04/D2`. A pack that has not
 passed is not reviewable.
 
-**8. Let it commit and push to a branch** named `w03-d2`. **In a cloud session it stops there.** You
+**8. Let it commit and push to a branch** named `w04-d2`. **In a cloud session it stops there.** You
 open the pull request, so a human reads the diff before anything reaches `main`.
 
 ---

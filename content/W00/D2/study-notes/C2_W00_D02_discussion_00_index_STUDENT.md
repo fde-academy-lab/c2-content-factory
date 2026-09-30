@@ -29,6 +29,11 @@ flowchart LR
 
 Each thread follows the same order for every question, so you can jump to the part you need.
 
+The foundations guide works the same forty questions in one place, in
+[Chapter 9](C2_W00_D02_foundations_09_diagnostic_worked_STUDENT.md), and its eight earlier chapters
+give each section's picture, its history and a mini project to build; [the map](C2_W00_D02_foundations_00_map_STUDENT.md)
+says where to start.
+
 | Part | What it gives you |
 |---|---|
 | The answer | The letter and the one-sentence reason. |

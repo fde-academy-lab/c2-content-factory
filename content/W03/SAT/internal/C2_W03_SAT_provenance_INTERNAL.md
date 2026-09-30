@@ -8,7 +8,7 @@
 | The row | `docs/curriculum/W3_Build_1.md`, Saturday 24 October, all fifteen columns, and Monday's row for the week | Tracker v7 |
 | The spine, its plants and its witness | `docs/detailing/W03_build1_spine.md`, approved 29 September 2026 | Approved |
 | The 300-minute Saturday | `data/programme/facts.yaml`, campus_day.saturday_minutes | Locked |
-| 35 learners in nine groups of four | `data/programme/facts.yaml`, cohort; the `groups` conflict with the tracker's fifteen is carried in the run sheet | Stated (handover) |
+| 35 learners in nine groups, eight of four and one of three | `data/programme/facts.yaml`, cohort; the `groups` conflict with the tracker's fifteen is carried in the run sheet | Stated (handover) |
 | Marks per event: mini project 40, mock 30, GD 30 | `data/programme/facts.yaml`, evaluation, proposal-2026-09-25 | Locked |
 | The Build 1 rubrics, the mini project's 34 per group and 6 per learner | `data/programme/facts.yaml`, evaluation.rubrics.W03, approved 29 September 2026; read by `internal/C2_W03_SAT_build_mini_project_scoring_INTERNAL.py` and rendered by the sync into the run sheet and the presentation deck's S19 | Locked |
 | Saturday's two GD rounds, the first tranche and the drawn order | `content/W03/D5/trainer/C2_W03_D05_day_sheet_TRAINER.md` | Friday's pack |
@@ -26,7 +26,7 @@ No URL enters this day's files.
 | The spine says | The files hold | What this pack does |
 |---|---|---|
 | The offer ran in three cities | Offers in all six cities: about half the patients in Bengaluru, Hyderabad and Mumbai, about a fifth in Delhi, Chennai and Pune | The question bank describes the files, and gives Delhi's positive split (23.5 percent, 316 offered) as the caveat challenge |
-| The old export repeats 180 rows from a mid-quarter re-export | 180 repeated booking identifiers dated 1 June to 26 September; 145 identical on every field, the rest differing only in `updated_at` | The question bank quotes the files' dates and makes no claim about when the re-export ran |
+| The old export repeats 180 rows from a mid-quarter re-export | 180 repeated booking identifiers dated 1 June to 26 September; 145 identical on every field and 35 not: 30 differ in `updated_at`, one of them in `channel` as well, and 5 differ only in `channel`, so six differ in `channel` and in each of the six one copy leaves it blank | The question bank quotes the files' dates and makes no claim about when the re-export ran |
 | The generator's witness counts 60 text amounts | 35 invoice amounts carry a comma in the file | The question bank quotes 35, which is what a group reading the CSV finds |
 
 ## Decisions taken in this session

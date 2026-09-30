@@ -38,6 +38,22 @@ One-to-ones that did not happen today happen during Thursday's lab time.
 
 ---
 
+## The foundations guide, at your own pace
+
+The foundations guide takes each diagnostic section one level deeper, with the picture to redraw,
+where the idea comes from and a mini project to build. Two chapters match this week's brush-ups; read
+them at your own pace before Monday, never in place of tonight's task.
+
+| Chapter | Reading | Hands-on | Why now |
+|---|---|---|---|
+| [Chapter 1, Python](../../D2/study-notes/C2_W00_D02_foundations_01_python_STUDENT.md) | 13 min | 90 min | It is today's brush-up, one level deeper |
+| [Chapter 2, SQL](../../D2/study-notes/C2_W00_D02_foundations_02_sql_STUDENT.md) | 11 min | 90 min | It is tomorrow's brush-up, read ahead |
+
+[The map](../../D2/study-notes/C2_W00_D02_foundations_00_map_STUDENT.md) lists every chapter, and [Chapter 9](../../D2/study-notes/C2_W00_D02_foundations_09_diagnostic_worked_STUDENT.md)
+works all forty diagnostic questions with the steps and why each other option fails.
+
+---
+
 ## To watch any of it again
 
 Corey Schafer's Python beginner playlist, checked 28 September 2026: https://www.youtube.com/playlist?list=PL-osiE80TeTskrapNbzXhwoFUiLCjGgY7

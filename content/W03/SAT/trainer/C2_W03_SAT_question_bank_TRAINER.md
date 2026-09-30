@@ -138,8 +138,8 @@ old system's last booking in those two cities is dated 17 September, and the new
 holds 153 bookings (85 in Chennai, 68 in Pune) with its own identifiers (`NB/MAA/000001`), its own
 centre codes (`MAA-01`, `PNQ-02`), dates written day first (`18/09/2026`), statuses `DONE` and
 `CXL`, and its own channel words. The clinics file maps each new code to its old one. The old export
-also repeats 180 booking identifiers: 145 of the repeated rows match on every field and the rest
-differ only in `updated_at`.
+also repeats 180 booking identifiers: 145 of the repeated rows match on every field, 30 differ in
+`updated_at` (one of them in `channel` as well), and 5 differ only in a `channel` one copy leaves blank.
 
 | Chennai and Pune together | Q1 | Q2 | Change |
 |---|---|---|---|
@@ -168,7 +168,8 @@ in both cities after 17 September; the fix is to map the new export onto the old
 3. "How did you match `MAA-01` to a Kalpa clinic?" The answer is the `new_system_code` column of the
    clinics file.
 4. "How many rows did you set aside as repeats, and what made them repeats?" The strong answer is
-   180, the same booking identifier, and a word on the 35 that differ only in their update time.
+   180, the same booking identifier, and a word on the 35 that do not match on every field: 30 differ
+   in their update time and 5 only in a channel one copy leaves blank.
 5. "Is the fall real?" The strong answer is yes, about 12 percent, and it names what it cannot see:
    whether the new system misses bookings of its own.
 
