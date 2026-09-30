@@ -1250,7 +1250,7 @@ def ch4():
         Statisticians separate values missing completely at random from values whose absence depends on
         something, such as discounts left blank only by one channel. Only the first can be dropped without
         bending a rate. Imputation, filling a value from other records, belongs to model features with a
-        column that marks the filled values; for Finance, the answer stays keep and flag.
+        column that flags the filled values; for Finance, the answer stays keep and flag.
         '''),
         code('''
         kit.check_summary()
