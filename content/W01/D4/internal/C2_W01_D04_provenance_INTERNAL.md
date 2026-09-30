@@ -197,4 +197,5 @@ Proof run before the push: `python3 scripts/verify.py content/W01/D4 --execute`,
 `python3 scripts/build_companion.py content/W01/D4 --check`, `python3 scripts/sync_programme.py
 --check`, `scripts/distractor_audit.py` on every option file, the case builder's `--verify`, both
 decks rebuilt with `scripts/build_deck.py` and checked by `scripts/deck_check.py`, every changed
-notebook executed cold, and the tic scanner on every changed markdown file.
+notebook executed cold, and the tic scanner on every changed markdown file. Every one passed on
+30 September 2026: verify with `--execute` reported zero failures, with 116 notebook checks passing.
