@@ -245,7 +245,7 @@ chance made sends a quarter's spend to a segment that may be flat next quarter.
 3. Should acquisition budget move to the fastest riser?
 4. How often does chance alone make a 40 percent rise on Student's count?
 5. Which do you trust, 42 percent on 12 users or 31 percent on 1,200?
-6. Do an exact count of every split between the quarters, and real Retail-Core orders, give the flips' share?
+6. Do an exact count of every way the orders could split between the quarters, and real Retail-Core orders, give the flips' reading?
 
 **IN THE FIELD.** The Gates Foundation backed small schools partly because they were
 over-represented among top performers; among the best, Howard Wainer wrote, "we would expect 3% of
@@ -290,11 +290,12 @@ invented 400.
 The 31 percent, as the estimate. One user of 12 moves the rate 8.3 points, and a true 31 percent
 reads 42 or more in about a third of groups of 12.
 
-### Do an exact count of every split between the quarters, and real Retail-Core orders, give the flips' share?
+### Do an exact count of every way the orders could split between the quarters, and real Retail-Core orders, give the flips' reading?
 
 Yes. Counting every way the orders could split between the two quarters gives an exact 0.387
 against the flips' 0.397. Handfuls of Retail-Core's own orders, drawn at Student's size, make the
-rise in 0.344, while handfuls of sixty almost never do.
+rise in 0.344, while handfuls of sixty almost never do. Every route reads the same: on a count this
+small, chance makes such a rise a third of the time or more.
 
 **WATCH OUT.** The largest percentage on a page most often sits on the smallest base.
 

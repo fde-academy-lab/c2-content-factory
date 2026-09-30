@@ -22,6 +22,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from nb_make import SETUP, build, code, empty, md  # noqa: E402
 
 OUT = ROOT / "content" / "W01" / "D4" / "notebooks"
+DASHBOARD_WORDS = 506   # every word the shipped chapter 1 to 4 notebooks print; notebook 5 states it
 CHAPTERS = ["Real, or the wobble?", "Worth acting on?", "How many behind 40%?",
             "Did the discount work?", "What goes on the page?", "What would settle it?"]
 
@@ -954,7 +955,7 @@ segment. A rise that chance made sends a quarter's spend to a segment that may b
 3. Should acquisition budget move to the fastest riser?
 4. How often does chance alone make a 40 percent rise on Student's count?
 5. Which do you trust, 42 percent on 12 users or 31 percent on 1,200?
-6. Do an exact count of every split between the quarters, and real Retail-Core orders, give the flips' share?
+6. Do an exact count of every way the orders could split between the quarters, and real Retail-Core orders, give the flips' reading?
 
 **The metric at stake.** Orders placed per quarter in the Student segment, Q2 against Q1, whatever
 their status, since Meera's 40 percent counts orders placed.
@@ -1176,7 +1177,7 @@ kit.check("on 1,200 users it never reaches 42 percent", max(large_rates) < 5 / 1
 percent of groups of twelve, while groups of 1,200 all land between about 28 and 35 percent. One
 user out of twelve is 8.3 points; one out of 1,200 is under a tenth of a point.
 
-## 6. Do an exact count of every split between the quarters, and real Retail-Core orders, give the flips' share?
+## 6. Do an exact count of every way the orders could split between the quarters, and real Retail-Core orders, give the flips' reading?
 
 The coin flips sampled 5,000 worlds. Two checks follow. The first recounts the same coin model
 exactly: with a count this small, every possible way of dealing the orders to the two quarters can
@@ -1286,8 +1287,9 @@ kit.check("the chance falls below one in five by thirty independent buyers", cur
    count, against 0.086 on Retail-Core's 73 orders and under 0.002 on an invented 400.
 5. The 31 percent, as the estimate: one user of 12 moves the rate 8.3 points, and a true 31 percent
    reads 42 or more in about a third of groups of 12.
-6. Yes: counting every split exactly gives 0.387 against the flips' 0.397, and Student-sized handfuls of
-   Retail-Core's own orders show the rise in 0.344 of draws.
+6. Yes: counting every deal exactly gives 0.387 against the flips' 0.397, and Student-sized handfuls of
+   Retail-Core's own orders show the rise in 0.344 of draws, so every route reads the same: on a count
+   this small, chance makes such a rise a third of the time or more.
 
 Not yet. No budget moves until more customers buy, thirty or more behind the rise.
 '''),
@@ -1362,7 +1364,7 @@ print(len(EXPOSURE), "customers on the platform's list;", CAMPAIGNS[0]["name"], 
                     "3. Repeat it for Diwali?\\nthe plausible wrong answer",
                     "4. Inside each segment?\\nthe split",
                     "5. What does the note say?\\nthe line to Meera",
-                    "6. One mix, the same answer?\\nwhat it can check"]),
+                    "6. On one mix, still apart?\\nwhat it can check"]),
         md('''
 ## 1. Which of four ways to answer "did the discount work?" can the files support?
 
@@ -1675,8 +1677,8 @@ print(len(NUMBERS), "numbers gathered from chapters 1 to 4")
 ## 1. Which of four ways to answer Meera in writing fits two minutes?
 
 Four ways a team could answer Meera in writing. The sizing cell counts the words each asks her to
-read and what each carries. The dashboard is everything chapters 1 to 4's notebooks print, 506
-words, and the cell recounts it whenever those notebooks sit beside this one.
+read and what each carries. The dashboard is everything chapters 1 to 4's notebooks print: 506
+words as the pack ships them.
 
 | Option | What it is | What it risks |
 |---|---|---|
@@ -1686,17 +1688,8 @@ words, and the cell recounts it whenever those notebooks sit beside this one.
 | D. A slide deck | Ten slides for Monday | A meeting to present it; the logic lives in the talk and leaves the page |
 '''),
         code('''
-import json
-
 option_a = "Retail-Plus: yes, it is down. Student: yes, move budget. Discount: yes, it worked."
-DASHBOARD_WORDS = 506                                    # every word chapters 1 to 4 print, counted when the pack was built
-siblings = sorted(pathlib.Path.cwd().glob("C2_W01_D04_0[1-4]_*_STUDENT.ipynb"))
-if len(siblings) == 4:                                   # beside its sibling notebooks, recount the dashboard
-    printed = ["".join(out.get("text", "")) for p in siblings for cell in json.loads(p.read_text())["cells"]
-               for out in cell.get("outputs", [])]
-    recount = len(" ".join(printed).split())
-    kit.check("the dashboard recounts to 506 words from chapters 1 to 4's printed output",
-              recount == DASHBOARD_WORDS, f"{recount} words")
+DASHBOARD_WORDS = __DASHBOARD_WORDS__                                    # every word chapters 1 to 4 print, counted when the pack was built
 option_c_limit = 200
 rows = [("A. Yes or no", len(option_a.split()), "none", "every caveat"),
         ("B. Dashboard", DASHBOARD_WORDS, "all of them, unsorted", "the decision"),
@@ -1707,7 +1700,7 @@ kit.table(["Option", "Words", "Bases carried", "What it loses"], rows,
 kit.bars([(r[0], r[1]) for r in rows[:3]], fmt=lambda v: f"{v} words", lit=[2],
          title="Words each written option asks Meera to read; C is the ceiling she set")
 kit.check("the yes-or-no option is short and drops the caveats", len(option_a.split()) < 20 and "not yet" not in option_a)
-'''),
+'''.replace("__DASHBOARD_WORDS__", str(DASHBOARD_WORDS))),
         md('''
 **The best-fit call: C, the four-part note under 200 words.** It is the only option that carries
 each number with its base and a decision in the same place, which is what Meera asked for. A drops
@@ -2355,10 +2348,21 @@ BUILDERS = {1: ("01_real_or_wobble", chapter1), 2: ("02_worth_acting_on", chapte
             3: ("03_count_behind_the_rate", chapter3), 4: ("04_discount_by_segment", chapter4),
             5: ("05_the_note", chapter5), 6: ("06_fair_comparison", chapter6)}
 
+def dashboard_words():
+    """Count every word the saved chapter 1 to 4 notebooks print, the dashboard notebook 5 sizes."""
+    import json
+    printed = ["".join(out.get("text", "")) for p in sorted(OUT.glob("C2_W01_D04_0[1-4]_*_STUDENT.ipynb"))
+               for cell in json.loads(p.read_text())["cells"] for out in cell.get("outputs", [])]
+    return len(" ".join(printed).split())
+
+
 if __name__ == "__main__":
     wanted = [int(a) for a in sys.argv[1:]] or list(BUILDERS)
     for n in wanted:
         stem, fn = BUILDERS[n]
         path = OUT / f"C2_W01_D04_{stem}_STUDENT.ipynb"
+        if n == 5 and dashboard_words() != DASHBOARD_WORDS:
+            sys.exit(f"chapters 1 to 4 now print {dashboard_words()} words and notebook 5 states "
+                     f"{DASHBOARD_WORDS}: update DASHBOARD_WORDS before building notebook 5")
         nb = build(path, fn(), timeout=300)
         print(f"built {path.name}: {len(nb.cells)} cells")

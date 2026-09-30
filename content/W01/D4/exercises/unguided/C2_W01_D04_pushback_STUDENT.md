@@ -1,8 +1,9 @@
 # Marketing calls the segment split cherry-picking and brings Rs 4,850 against Rs 3,200: is their comparison fair, and how do you hold the line?
 
-The second case: forty minutes, in pairs, after the break. One partner builds the answer in
-`notebooks/C2_W01_D04_ex2_second_case_STUDENT.ipynb`, eight lettered choices in four parts, while the
-other plays the marketing lead for the last eight minutes; then you swap roles for the reply.
+The second case: forty minutes after the break, thirty-four of them in pairs once the case is set
+out. One partner builds the answer in `notebooks/C2_W01_D04_ex2_second_case_STUDENT.ipynb`, eight
+lettered choices in four parts, while the other plays the marketing lead for the last six minutes;
+then you swap roles for the reply.
 
 > "Your segment split is slicing the data until it says what you want. Exposed Retail-Plus members
 > spent Rs 4,850 in August. That is far above the Rs 3,200 our unexposed customers averaged. The sale
@@ -45,7 +46,7 @@ Marketing's arithmetic wrong, it loses the room with a reading that was right.
 
 Used at work as the first reply to any stakeholder who brings a number into a meeting.
 
-Seven minutes, the notebook's markers 1 and 2:
+Six minutes, the notebook's markers 1 and 2:
 
 - Marker 1 asks which average on the list is Marketing's Rs 4,850.
 - Marker 2 asks which average on the list is Marketing's Rs 3,200.
@@ -54,7 +55,7 @@ Seven minutes, the notebook's markers 1 and 2:
 
 Used at work whenever two groups are compared on an average.
 
-Eight minutes, marker 3:
+Seven minutes, marker 3:
 
 - Marker 3 asks what share of the unexposed customers behind Marketing's Rs 3,200 are Retail-Core.
 
@@ -62,7 +63,7 @@ Eight minutes, marker 3:
 
 Used at work on every campaign readout that reaches a budget meeting.
 
-Twelve minutes, markers 4 to 6:
+Ten minutes, markers 4 to 6:
 
 - Marker 4 asks what each segment's exposed average goes against, like for like.
 - Marker 5 asks which weights make the exposed group's average comparable with Marketing's Rs 3,200.
@@ -73,7 +74,7 @@ Twelve minutes, markers 4 to 6:
 
 Used at work whenever a discount's cost has to be set against the lift claimed for it.
 
-Thirteen minutes, markers 7 and 8, then the reply. The hold-back is priced at Marketing's own 6
+Eleven minutes, markers 7 and 8, then the reply. The hold-back is priced at Marketing's own 6
 percent lift on the unexposed averages: each customer a coin keeps out of the Diwali sale forgoes 6
 percent of what an unexposed customer of the same segment spent, Rs 300 in Retail-Plus and Rs 120 in
 Retail-Core.

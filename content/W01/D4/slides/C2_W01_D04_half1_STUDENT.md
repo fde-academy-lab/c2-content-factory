@@ -737,7 +737,7 @@ value: 0.19% | label: of the quarter | note: the fall against the company
 Business, Kalpa's sales to companies, delivered Rs 1,27,64,460 of that quarter, about 268 times Retail-Plus, so every consumer segment's move is small against the company.
 
 ```notes
-LIVE, 2 minutes. Retail-Plus delivered Rs 47,710 in Q2, Retail-Core Rs 47,600 and Student about
+LIVE, 2 minutes. Retail-Plus delivered Rs 47,710 in Q2, Retail-Core Rs 47,550 and Student about
 Rs 5,000, against Business's Rs 1,27,64,460: every Business order is in lakhs. Then the draft that
 ranks the review.
 ```
@@ -1179,8 +1179,8 @@ route to the Student share.
 
 ---
 
-## S52. Every split gives 0.387; real handfuls give 0.344
-*Do an exact count of every split between the quarters, and real Retail-Core orders, give the flips' share?*
+## S52. Every deal gives 0.387; real handfuls give 0.344
+*Do an exact count of every way the orders could split between the quarters, and real Retail-Core orders, give the flips' reading?*
 
 ```stats
 value: 0.397 | label: coin flips | note: 5,000 sampled worlds
@@ -1209,7 +1209,7 @@ number of deals or the size of a handful, which would give the count away. Then 
 | 3. Budget to the fastest riser? | Not on the rate: under thirty customers stand behind it |
 | 4. How often by chance? | 0.397 of worlds; 0.086 on Retail-Core's 73 orders |
 | 5. 42 on 12, or 31 on 1,200? | 31 as the estimate; 42 as a lead to measure |
-| 6. Do other routes agree? | Yes: every deal 0.387, real handfuls 0.344 |
+| 6. Do other routes agree? | Yes, the same reading: every deal 0.387, real handfuls 0.344 |
 
 **Kavya's review.** Student's rise is real arithmetic on too few orders, from too few customers, to act on. Count both, say how often chance makes the rise, and give Meera the number of customers that would reopen it. Waiting for thirty customers costs Kalpa nothing but time.
 

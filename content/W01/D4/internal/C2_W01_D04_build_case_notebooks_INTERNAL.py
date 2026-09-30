@@ -483,8 +483,8 @@ EX2_TITLE = ("# Marketing calls the segment split cherry-picking and brings Rs 4
              "comparison fair, and how do you hold the line?")
 
 EX2_HEAD = '''
-**Week 1, Thursday afternoon. The second case: 40 minutes, in pairs.** Four parts and eight lettered
-choices, then the reply spoken aloud to a partner playing Marketing.
+**Week 1, Thursday afternoon. The second case: 34 minutes in pairs, inside a 40-minute slot.** Four
+parts and eight lettered choices, then the reply spoken aloud to a partner playing Marketing.
 
 > **The client asks.** "Your segment split is slicing the data until it says what you want. Exposed
 > Retail-Plus members spent Rs 4,850 in August. That is far above the Rs 3,200 our unexposed customers

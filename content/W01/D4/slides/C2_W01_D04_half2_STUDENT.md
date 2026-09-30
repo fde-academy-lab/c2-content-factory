@@ -493,9 +493,10 @@ where Marketing pushes back with a new number.
 *Marketing calls the segment split cherry-picking and brings Rs 4,850 against Rs 3,200: is their comparison fair, and how do you hold the line?*
 
 ```notes
-LIVE. Ten-minute break before this chapter, then forty minutes in pairs. Pairs work from
+LIVE. Ten-minute break before this chapter, then forty minutes: four on S21 and S22, thirty-four
+in pairs, and two on S23a once the replies are spoken. Pairs work from
 exercises/unguided/C2_W01_D04_pushback_STUDENT.md and notebooks/C2_W01_D04_ex2_second_case_STUDENT.ipynb.
-One partner plays Marketing for the last eight minutes.
+One partner plays Marketing for the last six minutes of the pairs' time.
 ```
 
 ---
@@ -513,9 +514,9 @@ icon: message-square | eyebrow: Part 4 | title: Hold the line | body: What the e
 ```
 
 ```notes
-LIVE, 3 minutes. Part 4 is spoken before anything is written. The partner playing Marketing is
-allowed to push once more, and the pair answers with chapter 6's design and its price. Then
-Marketing's rebuttal.
+LIVE, 2 minutes. Part 4 is spoken before anything is written. The partner playing Marketing is
+allowed to push once more, and the pair answers with chapter 6's design, priced on this list for
+both segments as part 4 asks, where chapter 6 priced Retail-Plus alone. Then Marketing's rebuttal.
 ```
 
 ---
@@ -534,7 +535,7 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 3 minutes. Both numbers are in the platform's list and the pair can reproduce them. The trap is
+LIVE, 2 minutes. Both numbers are in the platform's list and the pair can reproduce them. The trap is
 the comparison: one segment's exposed members against everyone unexposed. Let the pairs find it.
 Then what the discount cost.
 ```
@@ -557,7 +558,7 @@ flowchart LR
 **Question.** If the list's spend is at list price, what did each exposed customer pay Kalpa, against the Rs 3,200 the rest spent? Work it in part 4 before the next slide.
 
 ```notes
-LIVE, 3 minutes, then the pairs work for the rest of the forty. The campaigns table records 15
+LIVE, 1 minute, when the pairs reach part 4, inside its eleven minutes. The campaigns table records 15
 percent off. The platform's list does not say whether its August spend is before or after the
 discount; the pair sizes it both ways and lists the question for Marketing rather than assuming it.
 Show the next slide only after the pairs have spoken their replies.
