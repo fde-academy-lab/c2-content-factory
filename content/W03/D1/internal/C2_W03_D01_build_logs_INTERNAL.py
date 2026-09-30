@@ -253,16 +253,19 @@ def decisions():
         ex.cell(row=4, column=c, value=h)
     style_header(ex, 4, len(head3))
     rows = [
-        ("order_id", "Repeated", 14, "Drop the later occurrence",
-         "The Q1 migration re-ran a batch, and every field on the pairs is identical"),
-        ("order_id", "Repeated, dates differ", 1, "Keep the later date, drop the earlier",
-         "One order recorded twice during the migration window; the later record matches the "
-         "payment date"),
-        ("status", "Empty", 1, "Reject",
-         "An order with no status cannot be placed in any reading of sales"),
-        ("amount", "Text twelve", 1, "Reject", "Any substitute value would be invented revenue"),
-        ("amount", "Rs 4,80,000 outlier", 1, "Keep, flagged",
-         "A real corporate order. Described with the median rather than the mean."),
+        ("order_id", "Repeated", 15, "Keep one row per order: the first copy, or the copy that "
+         "validates where one copy's amount will not convert",
+         "201 rows for 186 orders, and 14 of the 15 extra rows sit in Q1, the migration's quarter"),
+        ("amount", "Will not convert, on one copy of a repeated order", 1,
+         "Set aside with the duplicates; its twin, whose amount converts, stays",
+         "Keeping the first copy would keep the one that cannot be summed, and Q1 would sit "
+         "Rs 1,790 short of the books"),
+        ("status", "Empty", 1, "Keep and flag",
+         "It happened and its fate is unknown: dropping it would remove a booked order from Q2, "
+         "and a default would invent a delivery or a cancellation"),
+        ("amount", "Largest Q2 order, 1.66 times the next", 1, "Keep and flag, shown both ways",
+         "Large is not wrong: a Business-segment account with orders in both quarters, every "
+         "field valid"),
     ]
     for r, vals in enumerate(rows, 5):
         for c, v in enumerate(vals, 1):
