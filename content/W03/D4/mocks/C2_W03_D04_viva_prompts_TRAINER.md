@@ -292,14 +292,15 @@ the equivalent of the segment split here, and what did it show?"
 |---|---|---|
 | The split is by city, and within the campaign cities; offered patients book more in total and less inside every campaign city, so the 9 percent comes from who was offered it and where | Says "Simpson's paradox" with no city numbers, or confirms the 9 percent | "Where did the offer run, and what were those cities doing before it started?" |
 
-**What is planted.** The offer ran in three cities that were already rising, Bengaluru, Hyderabad and
-Mumbai, and within them it reached patients who had begun to drift. Offered patients (2,381, of whom
-948 took it up) book 9.0 percent more than the rest in the offer window overall, and less than the
-rest in every campaign city: Bengaluru 10.8 percent less, Hyderabad 19.9 percent less, Mumbai 13.0
-percent less. The drift starts before the offer: in the campaign cities, offered patients booked
-0.49 times each from April to mid-May against 0.48 for the rest, then 0.66 against 0.70 in the two
-months before the offer, then 0.70 against 0.81 in the offer window (old-system bookings, per
-patient). The overall 9 percent comes from where the offer went: about half the patients in the
+**What is planted.** The offer went at random to half the patients in three cities that were already
+rising, Bengaluru, Hyderabad and Mumbai, and to a fifth of patients elsewhere; inside the three cities
+an offered patient books less than one who was not offered while the offer runs. Offered patients
+(2,381, of whom 948 took it up) book 9.0 percent more than the rest in the offer window overall, and
+less than the rest in every campaign city: Bengaluru 10.8 percent less, Hyderabad 19.9 percent less,
+Mumbai 13.0 percent less. Before the offer the two groups book alike: from 1 April to 14 July, offered
+patients booked within about 6 percent of the rest in each campaign city (Bengaluru 1.4 percent more,
+Hyderabad 5.2 and Mumbai 6.1 percent less), so the files show who was offered and never how they were
+chosen. The overall 9 percent comes from where the offer went: about half the patients in the
 campaign cities were offered it against about a fifth elsewhere, and the campaign cities book more
 per patient. The campaign cities rose 6.9 percent in the two months before the offer, and 7.4 percent
 into the offer window, against 3.0 percent in Delhi over the same windows.
@@ -308,7 +309,7 @@ into the offer window, against 3.0 percent in Delhi over the same windows.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| The 9 percent is offered against not offered, across all cities; inside each campaign city offered patients booked less, by 11 to 20 percent; so the 9 percent measures where the offer went | "Yes, 9 percent" or "No, it is a paradox" with no numbers | "So did the campaign reduce bookings?" (Not shown either: the offer went to drifting patients, so the comparison inside a city is not fair in the other direction.) |
+| The 9 percent is offered against not offered, across all cities; inside each campaign city offered patients booked less, by 11 to 20 percent; so the 9 percent measures where the offer went | "Yes, 9 percent" or "No, it is a paradox" with no numbers | "So did the campaign reduce bookings?" (The files cannot settle it: they show who was offered and never how they were chosen, so the gap inside a city may come from who was chosen. A held-out random share would settle it.) |
 
 **P2. "The campaign cities were growing. By how much, before the offer?"**
 
@@ -320,7 +321,7 @@ into the offer window, against 3.0 percent in Delhi over the same windows.
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| Compared offered and not-offered patients in the campaign cities over the months before the offer: level with their neighbours in April and early May, behind them in the two months before the offer, so the offer reached patients who had begun to drift and the two groups differ before the campaign starts | "The offer was random" | "How would you design the next wave so the question can be answered?" (Hold out a random share of eligible patients and compare.) |
+| Compared offered and not-offered patients in each campaign city before the offer: within about 6 percent of each other, with the sign changing between cities, so nothing before the campaign separates the two groups, the gap opens inside the offer window, and the files cannot say how the offer was assigned | Asserts that the offer went to drifting patients, or that it was random, without comparing the two groups before the offer | "How would you design the next wave so the question can be answered?" (Hold out a random share of eligible patients and compare.) If a group shows offered patients behind in the two months just before the offer: "Could chance give a gap that size between two groups this big?" |
 
 **P4. "The marketing head says 948 people took it up, so it worked. Answer them."**
 

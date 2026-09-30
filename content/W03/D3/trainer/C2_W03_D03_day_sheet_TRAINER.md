@@ -116,7 +116,8 @@ of 18).
 **The offer outside the three cities.** The campaign file carries offers in all six cities: half
 the patients in Bengaluru, Hyderabad and Mumbai, and a fifth elsewhere at random (Delhi 316). In
 Delhi, offered patients out-book the rest by 23.5 percent, and a permutation test puts that at p of
-about 0.03. It is a chance draw, since the offer there was random and carried no drift. A group that
+about 0.03. It is a chance draw: the offer there was random, and nothing in the data makes an offered patient
+there book differently. A group that
 finds it has met a false positive. Ask it what else it would expect to see if the offer caused the
 gap, and whether Chennai and Pune show it (minus 4.8 and plus 0.6 percent).
 

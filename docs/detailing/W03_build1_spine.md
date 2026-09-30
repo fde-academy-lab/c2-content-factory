@@ -34,6 +34,15 @@ the time after the second block is open build time with the TAs, and the pack ca
 | Fri 23 Oct | Expert day one: GD rounds at about 30 minutes per group on prompts that climb in complexity, a thread separate from the projects; build freeze; two cold demo runs; the first presentations. The pack: the GD prompts with facilitation notes, the demo rehearsal checklist. |
 | Sat 24 Oct | Expert day two with the flown-in leader: the remaining GDs, presentations with live demos at 25 to 30 minutes per group, grade closure, and one improvement per group named for Build 2. The pack: the presentation format, the panel's question bank, the closure run sheet. |
 
+## A demo that fails in the room
+
+The requester left the call to the orchestrating session on 29 September 2026, and one rule runs on
+both expert days. A group's demo runs once, cold, on its raw files. If it fails, the group has two
+minutes to recover it live, as it would in front of a client. If it still fails, the group presents
+from its executed notebook, and the panel scores the live demo in presentation and defence as not
+run cold. The other 34 marks of the mini project are scored from the executed run, so a failed demo
+costs its own marks and never the analysis.
+
 ## The rubrics
 
 The requester approved the three rubrics as drafted on 29 September 2026, and ruled that learners may
@@ -91,7 +100,7 @@ the numbers below are the generator's witness.
 | 2 Bookings | Chennai and Pune moved to the new booking system on 18 September, and the old system's export carries only its own bookings | The two cities fall 23.0 percent in the old export and 12.2 percent in truth; the old export also repeats 180 rows from a mid-quarter re-export |
 | 3 Billing | The payment feed keys invoices as bare digits or INV-numbers, gateway retries double-post, and the corporate invoice is unpaid | An exact join matches 2.2 percent of payments; normalised, every payment matches; 229 double posts; 102 refunds; 398 unpaid invoices |
 | 4 No-shows | One small clinic runs by appointment while the others' visit counts include walk-ins | 19.2 percent against 8.7 percent on all visits; 20.0 percent (10 of 50) against 15.2 percent on scheduled visits, a gap chance produces with probability 0.22 |
-| 5 Campaign | The offer went to half the patients in three cities already rising, and within them it reached patients who had begun to drift; it also went to a fifth of patients in the other three cities, at random and with no drift | Offered patients book 9.0 percent more overall and less in every campaign city (Bengaluru -10.8, Hyderabad -19.9, Mumbai -13.0 percent); the campaign cities rose 6.9 percent in the two months before the offer. Outside them the gaps are chance: Chennai -4.8 and Pune +0.6 percent, and Delhi +23.5 percent, a random draw that a permutation test puts at p of about 0.03, so a group that finds it has met a false positive rather than a lift |
+| 5 Campaign | The offer went at random to half the patients in three cities already rising and to a fifth of the patients elsewhere, and inside the three cities an offered patient booked less while the offer ran than one who was not offered | Offered patients book 9.0 percent more overall and less in every campaign city (Bengaluru -10.8, Hyderabad -19.9, Mumbai -13.0 percent); before the offer the two groups booked within about 6 percent of each other (Bengaluru +1.4, Hyderabad -5.2, Mumbai -6.1 percent), so the files cannot show who was targeted; the campaign cities rose 6.9 percent in the two months before the offer. Outside them the gaps are chance: Chennai -4.8 and Pune +0.6 percent, and Delhi +23.5 percent, a random draw that a permutation test puts at p of about 0.03, so a group that finds it has met a false positive rather than a lift |
 
 ## Sessions and branches
 

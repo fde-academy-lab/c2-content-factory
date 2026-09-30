@@ -38,8 +38,10 @@ log "Node packages"
 if command -v npm >/dev/null 2>&1; then
   npm install -g --silent pptxgenjs docx react react-dom react-icons sharp >/dev/null 2>&1 \
     && log "document node packages ok" || log "document node packages failed; python fallbacks will be used"
-  npm install -g --silent @mermaid-js/mermaid-cli >/dev/null 2>&1 \
-    && log "mermaid-cli installed" || log "mermaid-cli install failed"
+  # Pinned to 11: the deck and cheat-sheet layouts are measured against its rendering, and 12.0
+  # removed the -w page-width flag (scripts/build_cheatsheet.py mmdc_page_args handles both).
+  npm install -g --silent @mermaid-js/mermaid-cli@11 >/dev/null 2>&1 \
+    && log "mermaid-cli 11 installed" || log "mermaid-cli install failed"
   NODE_GLOBAL="$(npm root -g 2>/dev/null)"
   if [ -n "$NODE_GLOBAL" ]; then
     export NODE_PATH="$NODE_GLOBAL"
@@ -55,7 +57,7 @@ if [ "$APT_OK" = "1" ]; then
   $SUDO apt-get update -qq >/dev/null 2>&1
   $SUDO apt-get install -y -qq --no-install-recommends \
     libreoffice-impress libreoffice-calc libreoffice-writer poppler-utils pandoc \
-    fonts-dejavu fonts-liberation \
+    fonts-dejavu fonts-liberation fonts-crosextra-carlito \
     libpango-1.0-0 libpangoft2-1.0-0 libharfbuzz0b libcairo2 libgdk-pixbuf-2.0-0 shared-mime-info libffi8 \
     >/dev/null 2>&1 && log "libreoffice, poppler, pandoc, fonts and weasyprint libraries ok" \
     || log "one or more system libraries failed; see the report below for what works"
@@ -99,6 +101,7 @@ node -e "require('pptxgenjs')" >/dev/null 2>&1 && log "pptxgenjs ok" || log "ppt
 command -v soffice >/dev/null 2>&1 && log "libreoffice ok" || log "libreoffice unavailable"
 command -v pdftoppm >/dev/null 2>&1 && log "poppler ok" || log "poppler unavailable"
 command -v pandoc >/dev/null 2>&1 && log "pandoc ok" || log "pandoc unavailable"
+fc-list 2>/dev/null | grep -qi carlito && log "carlito font ok, so Calibri text measures as on a trainer's laptop" || log "carlito font unavailable; deck renders will measure text in a substitute font"
 python3 -c "import weasyprint; print('[setup] weasyprint', weasyprint.__version__, 'ok')" 2>/dev/null || log "weasyprint unavailable (needs pango and cairo system libraries)"
 python3 - << 'PY' 2>/dev/null || echo "[setup] playwright browser launch failed"
 from playwright.sync_api import sync_playwright

@@ -77,7 +77,7 @@ bookings or summed text as numbers. Ask for the row count and the distinct-id co
 Pune, to a fifth of patients at random, against half in the campaign cities. In Delhi, offered
 patients out-book the rest by 23.5 percent, a chance draw that a permutation test puts at p of about
 0.03; Chennai shows minus 4.8 and Pune plus 0.6. A group that reads Delhi as proof the offer works has
-met a false positive. Ask it whether the other two cities without the drift show the same gap. Do not
+met a false positive. Ask it whether the other two cities outside the campaign show the same gap. Do not
 settle it at the checkpoint.
 
 ---
