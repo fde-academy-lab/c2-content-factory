@@ -10,19 +10,20 @@ Problem 3's five letters are `cabdb`, and its executed notebook is
 | Item | Key | Why it holds | Why the others fail |
 |---|---|---|---|
 | 1 | b | A large share says chance makes the gap often; a real effect too small for this test would look the same. | a: absence of evidence read as evidence of zero. c: the count does not change what the share means. d: the share is never a size. |
-| 2 | a | The share was counted in no-lift worlds, so 1 minus it is not a confidence in the redesign. | b: the day's first trap in its most common form. c: more shuffles sharpen the share, never its meaning. d: the share is never a size. |
-| 3 | c | It states the share and the world, and draws the honest conclusion: not yet. | a: 10 is no threshold, and 8 in 100 is common enough to be the wobble. b: shuffles are how the share was counted. d: cost is the next question, never a condition for this sentence. |
+| 2 | a | The share was counted in no-lift worlds, so one minus it is no measure of how sure anyone can be. | b: the day's first trap in its most common form. c: more shuffles sharpen the share and leave its meaning where it was. d: the share is never a size. |
+| 3 | c | It states the share and the world, and draws the honest conclusion: not yet. | a: 10 is no threshold, and 8 in 100 is common enough to be the wobble. b: shuffles are how the share was counted. d: cost is the next question, and this sentence answers the first. |
 | 4 | d | Significance is settled; Rs 2 on each order is the size, and only the cost of what produced it says whether it is a win. | a and b: significance read as size. c: multiplying a share by orders makes no quantity. |
-| 5 | c | The stores that got the range were already the high-spending stores, which is the confounder. | a: the range is one difference among several. b: 25 percent is large. d: the season affects every store alike. |
+| 5 | c | The stores that got the range were already the high-spending stores, which is the confounder. | a: the range is one difference among several. b: 25 percent is large. d: a festival grows every store's baskets alike. |
 | 6 | b | Chance deciding who gets the newsletter makes the two halves alike apart from it. | a: a longer window keeps the self-selection. c: openers before and after mixes in everything else that changed. d: a shuffle cannot undo who chose to open. |
 | 7 | d | Two changes landed together; splitting by courier separates them in the data the team already has. | a: overclaims for the courier. b: first is not the same as cause. c: the split can often separate them. |
 
 ## Problem 3, what the numbers say
 
-On every booked order, Retail-Plus leads Retail-Core by Rs 1,326 per order, and chance makes that lead
-only 2 times in 1,000. On delivered orders, the money kept, Retail-Plus has only three orders, the lead
-is Rs 671, and chance makes it about 15 times in 100. The definition moved the verdict and the count
-decided how far to trust it: not yet.
+The two tiers' baskets are different customers' orders, so the chance reference shuffles the tier
+labels. On every booked order, Retail-Plus leads Retail-Core by Rs 1,326 per order, and shuffled
+labels make a lead that large only 2 times in 1,000. On delivered orders, the money kept, Retail-Plus
+has only three orders, the lead is Rs 671, and chance makes it about 15 times in 100. The definition
+moved the verdict and the count decided how far to trust it: not yet.
 
 ## Problem 4, a model note, 98 words
 

@@ -23,7 +23,8 @@ scripts/brand.py). What a source can ask for:
 
     ## SECTION 1: The ask                a chapter opener: numeral, name, the chapter pills; the
                                          numeral is the one written, so an afternoon deck that
-                                         opens on SECTION 6 prints 06
+                                         opens on SECTION 6 prints 06, on its opener and in the
+                                         cover's chapter strip
     *A CEO asks what sales are made of.* its first italic line is the chapter's promise
 
     ## S3. An action title               a content slide
@@ -862,13 +863,18 @@ def build(src, out, footer):
     slides = parse(md)
     meta = deck_meta(md, pathlib.Path(src).stem)
     prepare_icons(slides)
-    chapters = [chapter_name(t) for t, _ in slides if t.upper().startswith("SECTION")]
+    sections = [t for t, _ in slides if t.upper().startswith("SECTION")]
+    chapters = [chapter_name(t) for t in sections]
+    numbers = []
+    for i, t in enumerate(sections):
+        sec = SECTION_TITLE.match(t)
+        numbers.append(int(sec.group(1)) if sec and sec.group(1) else i + 1)
     total = len(slides) + (1 if meta["cover"] else 0)
     shrunk, cramped = 0, []
     offset = 0
     if meta["cover"]:
         cover = prs.slides.add_slide(prs.slide_layouts[6])
-        title_slide(cover, prs, meta, chapters, total)
+        title_slide(cover, prs, meta, chapters, total, numbers)
         set_notes(cover, meta.get("cover_notes", ""))
         offset = 1
     current = None

@@ -1,6 +1,6 @@
 # Feedback card: one defence
 
-The partner who played Marketing fills this in during the last four minutes and hands it to the
+The partner who played Marketing fills this in during the last three minutes and hands it to the
 defender, who keeps it. There is no score on it, and there is nowhere to write one.
 
 Defender: ____________________     Partner: ____________________     Round: one / two
