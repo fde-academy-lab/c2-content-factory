@@ -558,7 +558,7 @@ the cause.
 ### T07-L3 `[D]` The judgement
 
 **Anchor.** Week 2 Tuesday: "Design the validation you run before a joined number reaches Finance, and
-say what you do when it fails at 5 pm on reporting day."
+say what you do when it fails at the end of reporting day."
 
 **Ask.** "Design the checks you run before a joined number reaches Anand. Then it is an hour before his
 reporting deadline and one check fails. What do you do?"
