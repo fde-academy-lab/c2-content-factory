@@ -1,11 +1,11 @@
-# Before Saturday: the week, on paper
+# What will Saturday's paper ask, and how do you get ready tonight?
 
 Ships tonight. Twenty minutes of reading and recall, and nothing to install. Saturday puts the week
 under questioning on paper, and Monday's growth review is the real audience for every answer.
 
 ---
 
-## What Saturday is about
+## What does Saturday's paper test, and how is it marked?
 
 Meera set the bar on Thursday, and it is the bar Saturday's paper and Monday's review both hold you
 to:
@@ -33,7 +33,7 @@ week's interview questions are discussed aloud, with names called at random.
 
 ---
 
-## The words the paper assumes
+## Which words does the paper assume you know?
 
 Fill these in from memory tonight, one line each, without opening a notebook. The ones you cannot
 fill in are the ones to reread.
@@ -52,7 +52,7 @@ fill in are the ones to reread.
 
 ---
 
-## One thing to think about before you arrive
+## How can a number be computed correctly and still be wrong?
 
 A number can be wrong in two different ways. It can be computed wrongly, or it can be computed
 correctly on the wrong rows, the wrong window or the wrong unit. The paper tests the second kind far
@@ -64,7 +64,7 @@ name is called.
 
 ---
 
-## The check for tonight
+## What do you check tonight?
 
 1. Write the note's four parts, in order, and the p-value sentence, from memory. Then check both
    against Thursday's material. Both are on Saturday's paper.
@@ -75,6 +75,6 @@ name is called.
 
 ---
 
-## The line worth carrying in
+## Which line do you carry into Saturday?
 
 > A total you have not reconciled is a guess with a decimal point.

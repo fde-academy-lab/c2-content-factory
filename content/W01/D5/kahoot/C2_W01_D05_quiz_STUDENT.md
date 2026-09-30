@@ -1,6 +1,7 @@
-# Kahoot, Week 1 Friday
+# Which of the week's calls can you make in twenty seconds?
 
-Eight items, ungraded, scored on correctness and speed together.
+The Kahoot for Week 1, Friday: eight items, ungraded, scored on correctness and speed together.
+Every number in an item is invented for it.
 
 ---
 
@@ -68,9 +69,9 @@ Eight items, ungraded, scored on correctness and speed together.
 *Tests: count before rate and size together: a lead needs enough orders and a move worth acting on.*
 
 - Business revenue -35%, 7 orders then 5
-- Retail-Core basket -12%, 140 orders then 138  <- correct
+- Retail-Plus basket -12%, 140 orders then 138  <- correct
 - Student revenue +50%, 6 orders then 9
-- Retail-Plus frequency -2%, 90 orders then 88
+- Retail-Core frequency -2%, 90 orders then 88
 
 ---
 

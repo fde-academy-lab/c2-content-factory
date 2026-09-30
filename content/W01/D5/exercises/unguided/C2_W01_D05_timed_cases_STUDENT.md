@@ -1,16 +1,29 @@
-# Three timed design cases
+# Which approach fits each case, sized how, and what would make you switch?
 
 Each case is a question an analytics screen asks, set at Kalpa: a situation, a few ways a team could
 answer it, and a clock. Read it once, think for three minutes on paper, then answer aloud to your
 partner in two minutes. Two answers go to the room before the model answer is read.
 
+**Who needs the answer.** An interviewer asking the design question, and behind each case a Kalpa
+stakeholder who acts on the call: Meera Raghavan, the CEO; Anand Iyer, the finance controller; and
+the head of the app team's product. A call without a size, or without the fact that would switch it,
+is an opinion, and each of them hears it that way.
+
+**The questions on the way.**
+
+1. What do you leave out when Meera wants a first read in two hours?
+2. Which check runs first when zero rejects meet a Rs 20 lakh gap?
+3. Can 5 of 12 visits beat 31 percent of 1,200?
+
 Every case asks the same three things, because every design question in an interview does: **which
 approach fits, sized how, and what would make you switch.** The numbers marked illustrative are set
 for the case and are not Kalpa's records.
 
-## Case 1: Meera's first read, two hours after the export lands
+## Case 1: what do you leave out when Meera wants a first read in two hours?
 
-*[F] You have two hours and a raw export; what do you do first, and what do you skip?*
+*[F] You have two hours and a raw export; what do you do first, and what do you skip?* At work,
+this is the call an analyst makes on every quarter's first read, when the books are still open and
+the review is fixed.
 
 Meera Raghavan wants a first read on Q3 booked revenue by segment before Monday's review. The raw
 export from the ERP lands on your screen with two hours to go, about 2,000 orders (illustrative),
@@ -44,9 +57,11 @@ flowchart TB
 Your paper: the option you choose and the minutes each plan costs; the one step you will not drop at
 any point on the clock, and why; the fact about the export that would make you switch, and to what.
 
-## Case 2: zero rejects and a Rs 20 lakh gap, after the migration
+## Case 2: which check runs first when zero rejects meet a Rs 20 lakh gap?
 
-*[S] Walk me through how you clean and check a dataset you have never seen.*
+*[S] Walk me through how you clean and check a dataset you have never seen.* At work, this is the
+first quarter out of any new system, when Finance and a dashboard disagree and someone must say
+which number is the reference.
 
 The first full quarter out of the migrated ERP is about 50,000 rows (illustrative). Your cleaning
 pass reports zero rejects. The dashboard built on it shows the quarter Rs 20 lakh above Anand
@@ -70,10 +85,10 @@ the first thing to check.
 Your paper: the order you run them in and why that order; the point at which you stop; what you tell
 Anand tonight, before the gap is explained.
 
-## Case 3: 42 percent on twelve visits
+## Case 3: can 5 of 12 visits beat 31 percent of 1,200?
 
 *[D] A stakeholder attacks your caveat in front of the room; how do you hold it without
-overclaiming?*
+overclaiming?* At work, this is every pilot a product team wants to ship on a week's numbers.
 
 Kalpa's app team tried a redesigned checkout for a week: 5 of 12 visits converted, 42 percent. The
 current checkout converted 31 percent of 1,200 visits in the same week (illustrative). Your note says
