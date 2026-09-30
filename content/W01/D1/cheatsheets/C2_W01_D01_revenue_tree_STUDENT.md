@@ -1,6 +1,6 @@
 # What is revenue made of, and which check catches each wrong number?
 
-Kalpa Retail, Week 1 Monday. Before Meera Raghavan signs Rs 12 crore for new customers, is acquisition even the branch that is short? Each panel gives a chapter's wrong number, its check and its fix, on 30 orders from 1 July to 26 September.
+Kalpa Retail, Week 1 Monday. Before Meera Raghavan signs Rs 12 crore for new customers, is acquisition even the branch that is short? On 30 orders from 1 July to 26 September, each chapter met a plausible wrong number that one check caught before it reached her.
 
 ## Panel 1: What is revenue made of, with Monday's numbers on it?
 

@@ -2,6 +2,12 @@
 
 Answers: 1c 2a 3b 4d
 
+Kalpa Retail's revenue grew 4 percent last year against a 15 percent plan, and marketing has asked
+Meera Raghavan, the CEO, for Rs 12 crore to acquire new customers, so she asks what sales is made of.
+The file holds Kalpa's 30 orders from 1 July to 26 September 2026, each a record of seven fields, among
+them the customer id, the amount and the status: delivered, returned after delivery or cancelled before
+it left the shelf. Booked revenue counts every order placed, whatever its status.
+
 ## What does the walk test about the tree and the first loop?
 
 The tree comes before the code: revenue is customers times orders per customer times revenue per
@@ -40,9 +46,10 @@ where the cost lands, is the habit the whole day uses.
 **Kavya's review.** "Draw the tree before you open the notebook. If you cannot say which branch a
 number fills, you do not yet know why you are computing it."
 
-## Where does this pattern show up at work?
+## Where do the revenue tree and the counting loop show up at work?
 
-Metric trees, driver trees and the profitability framework are the same drawing under three names.
-Product teams keep one on the wall for their main metric, finance teams build plans from one, and
-consulting interviews open with one. The loop with a counter and a running total is the shape under
-every SQL COUNT and SUM the programme reaches in Week 2.
+Metric trees, driver trees and the profitability framework are the same drawing under three names,
+and Road to Offer's guide to driver trees and MConsultingPrep's profitability framework, both checked
+29 Sep 2026, each walk through it. At Kalpa the tree carries marketing's Rs 12 crore on its customers
+branch, and Tuesday asks which of its branches moved between two quarters. The loop's counter and
+running total are the shape under the SQL COUNT and SUM the programme reaches in Week 2.

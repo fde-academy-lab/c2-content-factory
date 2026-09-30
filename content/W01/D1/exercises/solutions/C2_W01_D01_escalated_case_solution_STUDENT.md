@@ -1,9 +1,15 @@
-# Which answers show whether Meera's answer survives on the delivered orders?
+# Which answers show whether frequency first survives on the delivered orders?
 
 Answers: 3c 4b 5a 7d 8b 9a
 
 The three numbers: item 1 is 19 customers, item 2 is 1.11 orders per customer, and item 6 is 7
 customers. The notebook's nine TODO picks are `cbdcaabbc`.
+
+On Kalpa Retail's 30 booked orders, 1 July to 26 September 2026, the chapters told Meera Raghavan, the
+CEO, to open frequency first and hold marketing's Rs 12 crore: 23 customers at 1.30 orders each, 7
+back, 9 of 16 one-time buyers too recent to judge and a typical Rs 2,205 order. Anand Iyer, the finance
+controller, counts only delivered orders. The consumer view is the three segments her plan concerns,
+Rs 64,810 booked, and the window's edge is its last 45 days, the median gap between orders of those 7.
 
 The executed notebook beside this file,
 `exercises/solutions/C2_W01_D01_ex1_escalated_case_solution_STUDENT.ipynb`, computes every number
@@ -11,7 +17,7 @@ here from the 30 orders.
 
 ## What does the case test about the orders that stayed delivered?
 
-Anand asks whether the answer holds on the orders that stayed sold. On the 21 delivered orders, 19
+Anand asks whether frequency first holds on the orders that stayed sold. On the 21 delivered orders, 19
 customers kept 1.11 orders each and only 2 kept two. The typical delivered order is Rs 2,060, the
 11th of the 21 sorted amounts, since an odd count has one middle. Sized on the consumer view's
 delivered revenue, Rs 40,790, the plan asks about Rs 6,119 more, to about Rs 46,909, and marketing's

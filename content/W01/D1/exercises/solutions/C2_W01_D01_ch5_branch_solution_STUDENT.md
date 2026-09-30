@@ -2,6 +2,12 @@
 
 Answers: 1c 2a 3d 4b 5c
 
+Before Meera Raghavan, Kalpa Retail's CEO, signs Rs 12 crore for acquisition, she must pick the branch
+of revenue = customers x orders per customer x order value to open first, since revenue grew 4 percent
+last year against a 15 percent plan. The file is Kalpa's 30 orders from 1 July to 26 September 2026,
+Rs 5,44,810 booked: 23 customers placed 1.30 orders each, 7 came back, 16 bought once, and the typical
+order is the median, Rs 2,205. A lift is a branch's change as a multiplier, 1.10 for 10 percent more.
+
 ## What does the set test about the branch Meera opens first?
 
 Meera's growth plan concerns the three consumer segments, Retail-Core, Retail-Plus and Student, so it
@@ -33,11 +39,12 @@ growth for a 15 percent plan.
 **Kavya's review.** "Recompute through the tree anything someone adds up, and say what base the plan
 sits on before anyone argues about its size."
 
-## Where does this pattern show up at work?
+## Where does a bet on the frequency branch show up at work?
 
-Flipkart launched Flipkart Black at Rs 1,499 a year in 2025, and Amazon offers Prime in India from
-Rs 399 to Rs 1,499 a year: both pay existing customers to come back more often, a bet on the
-frequency branch by companies that could have spent the same money on acquisition.
+Flipkart launched Flipkart Black at Rs 1,499 a year in 2025 (Flipkart Stories, 12 September 2025),
+and Amazon offers Prime in India from Rs 399 to Rs 1,499 a year (About Amazon India): both pay
+existing customers to come back more often, a bet on the frequency branch by companies that could
+have spent the same money on acquisition.
 
 ## What does notebook 05 confirm?
 

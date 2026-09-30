@@ -66,8 +66,8 @@ rupee of difference.
 
 ## Which way of answering fits Meera's first look, and which fits the board?
 
-Analysts choose every week between computing a figure themselves and taking the one in Finance's
-books.
+At Kalpa this choice comes up whenever Meera wants a figure sooner than Finance, which takes a day or
+more, can give her one.
 
 Four ways a team could answer "what are our sales?", sized on this file:
 
@@ -89,8 +89,8 @@ d) Tick the orders off by hand for both, since a spreadsheet leaves a trail anyo
 
 ## Which total can go on Meera's slide as sales, and which checks run first?
 
-Every finance and analytics team checks what a total counts before it leaves the team, because a
-figure called sales gets quoted in rooms the analyst never enters.
+Your slide goes to Meera first, and Anand takes the team's figure to Kalpa's board next month, so
+both pass these checks before they leave the team.
 
 ### Q2. Your first slide for Meera reads "Sales last quarter: Rs 5,44,810 (30 orders)." What is wrong with that line before it leaves the team?
 
@@ -110,8 +110,8 @@ d) q, r, p, s
 
 ## Which change gives Anand his reading, and which route keeps working?
 
-Analysts inherit cells that print a number, and their first job is to say what the number counts
-before they change a line of it.
+Anand's request lands on a cell a colleague wrote for another question, and Kavya's review asks what
+that cell counts before any line of it changes.
 
 ### Q4. Anand asked for revenue on the orders that were not cancelled, and a colleague's cell printed 9050. Which one change gives him his number?
 

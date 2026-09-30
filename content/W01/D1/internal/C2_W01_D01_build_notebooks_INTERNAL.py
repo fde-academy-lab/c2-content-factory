@@ -2650,7 +2650,7 @@ print(len(ORDERS), "orders loaded; the extract ends on", end)
         """),
         md("""
         SOLUTION ONLY
-        ## Did Meera's answer survive on the orders that stayed delivered?
+        ## Did frequency first survive on the orders that stayed delivered?
 
         It did. Frequency stays the branch to open first, orders per customer fell from 1.30 to 1.11,
         and the typical order held at Rs 2,060 against Rs 2,205.

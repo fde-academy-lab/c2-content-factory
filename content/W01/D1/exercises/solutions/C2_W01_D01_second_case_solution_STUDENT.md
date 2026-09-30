@@ -2,6 +2,12 @@
 
 Answers: 11c 12a 13d 14b 15a 16b
 
+Meera Raghavan, Kalpa Retail's CEO, asked where revenue comes from by customer type and channel, and
+the store team says it carries the business. The file is Kalpa's 30 orders from 1 July to 26 September
+2026, each with a channel, a segment and a status: delivered, returned after delivery or cancelled
+before it left the shelf. The chapters found 23 customers at 1.30 orders each and chose frequency
+first, and the consumer view keeps the three consumer segments her plan concerns, Rs 64,810 booked.
+
 The executed notebook beside this file,
 `exercises/solutions/C2_W01_D01_ex2_second_case_solution_STUDENT.ipynb`, computes every number here
 from the 30 orders.
@@ -35,19 +41,19 @@ and store cancellations.
 Item 15. Pairs who found the web returns will want the note to lead with them, since they are the
 most striking number in the split. They belong in the note, second. Meera asked which branch to
 open, and the returns are a leak inside one channel's revenue, which leaves the branch where it was.
-A note that leads with its most striking finding over the one that was asked for reads as a change of
-subject.
+A note that opens on the web returns makes Meera read past a leak to reach the branch she asked
+about.
 
 **Kavya's review.** "Before anyone plans around a share, say how many orders make it and whose orders
 they are."
 
-## Where does this pattern show up at work?
+## Where does a share read on the wrong base show up at work?
 
-Channel mix reviews in retail, marketplace seller rankings and regional revenue splits all carry the
-same risk: a share set by a few large accounts or orders from outside the business a plan concerns,
-and a plan that follows the share. Sales operations teams report shares with and without their
-largest accounts for this reason, and a returns rate by channel is a standard line in any
-e-commerce operating review.
+At Kalpa it arrived as the store team's claim that it carries the business, and a store-led plan
+would have followed a share that came from outside the segments Meera's plan concerns. A regional
+revenue split or a ranking of marketplace sellers can mislead the same way when a few large accounts
+set the share, so a share goes to a planner with the base it was read on, with and without its
+largest accounts, and at Kalpa with each channel's split by status beside it.
 
 ## What are the second case notebook's seven picks?
 

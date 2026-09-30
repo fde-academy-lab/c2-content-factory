@@ -2,9 +2,9 @@
 
 Week 1, Monday, Kalpa Retail. Meera Raghavan, Kalpa Retail's CEO, asks whether acquisition is even
 the branch of sales that is short before she signs Rs 12 crore for new customers, and the room answers
-on 30 orders placed from 1 July to 26 September. The drawings below are listed in the order they go
-up: six for the retail story, one or two for each of the six chapters, and one for the second case. The
-metric tree from the story is the one the deck, the notebooks and the cheat sheet use all week.
+on 30 orders placed from 1 July to 26 September. Six drawings go up during the retail story, one or
+two during each of the six chapters, and one during the second case, and the metric tree drawn in the
+story is the same tree the deck, the notebooks and the cheat sheet use all week.
 
 ---
 

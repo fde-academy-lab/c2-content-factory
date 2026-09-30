@@ -2,6 +2,12 @@
 
 Answers: 1b 2d 3a 4c 5a
 
+Meera Raghavan, Kalpa Retail's CEO, decides from one sentence whether marketing gets Rs 12 crore for
+new customers. The file is Kalpa's 30 orders from 1 July to 26 September 2026, an 88-day window: 23
+customers placed 1.30 orders each, 7 came back and 16 bought once, the typical order is Rs 2,205, and
+frequency is the branch to open first. The repeat gap is the days between a returning customer's two
+orders, and a buyer who ordered within one usual gap of 26 September sits at the window's edge.
+
 ## What does the set test about the sentence Meera signs?
 
 "Bought once in this window" is a fact, and "lost" is a claim about orders the window cannot see.
@@ -31,13 +37,14 @@ not show up inside 88, so 45 days is a floor and more of the 16 may still be on 
 
 **Kavya's review.** "Every number in the sentence is one we can defend when marketing asks."
 
-## Where does this pattern show up at work?
+## Where does reading a first window's count as a verdict show up at work?
 
 Klarna reported that its assistant handled two-thirds of customer-service chats in its first month
-(February 2024), and fifteen months later its chief executive said the focus on cost had lowered
-quality. A first window's number read as a verdict is the risk the caveat guards against, and the
-same edge cuts every "who has not done it yet" count: returns not yet in, renewals not yet due, a
-cohort one month old.
+(Klarna press release, 27 February 2024), and fifteen months later its chief executive said the
+focus on cost had lowered quality (Fortune, 9 May 2025). A first window's number read as a verdict
+is the risk the caveat guards against. The same edge cuts any count of who has not done something
+yet, such as renewals not yet due or a cohort one month old, and at Kalpa it cuts the returns desk's
+count of orders delivered in a quarter's last days as well as the 9 buyers too recent to judge.
 
 ## What does notebook 06 confirm?
 

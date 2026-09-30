@@ -28,8 +28,8 @@ Post exactly this shape: xxxxxxx / xxxx / xxxx / xxxxxx
 
 ## Which branch does each growth idea move, and what does moving it cost?
 
-Strategy teams place every initiative on the branch it moves before they price it, since two ideas
-on one branch compete for the same customers. Allow about 15 minutes.
+Meera's marketing list holds these five ideas, and placing each on the branch it moves shows which
+of them would compete for the same customers. Allow about 15 minutes.
 
 Five initiatives are on marketing's list: a discount, a new store, a loyalty card, a price rise and
 an app redesign. Revenue is customers, times orders per customer, times revenue per order, and
@@ -98,8 +98,8 @@ d) 40 percent, twice the cut, to cover the lost margin as well
 
 ## What do customers, orders and revenue come to on a small file?
 
-Analysts predict a number before they compute it, so a wrong result is noticed the moment it prints.
-Allow about 10 minutes.
+The chapters put these measures on Meera's tree, and a kiosk's eight orders are few enough to predict
+each one before the code prints it. Allow about 10 minutes.
 
 Eight invented orders from one week at a Kalpa kiosk. Predict each number before you compute it,
 then check your prediction in a notebook.
@@ -147,7 +147,8 @@ d) Rs 2,000, the upper of the two middle orders
 
 ## What does the revenue tree look like for a business you can watch?
 
-Case interviews and first client meetings both open by drawing the tree in the client's own words.
+The profitability case in Hacking the Case Interview (checked 29 Sep 2026) shows this tree spoken
+aloud in an interview, and tonight's take-home asks you to draw it for a business you can watch.
 Allow about 15 minutes.
 
 Take a business you can watch: the canteen, a kirana store near where you live, or an app you use
@@ -185,8 +186,8 @@ d) Discounts, since leftover food is sold off cheaply at closing
 
 ## What does a fortnight of pop-up orders say once every check has run?
 
-A new store's first export needs all the day's checks at once, since nobody has cleaned it and its
-owner wants a number from it. Allow about 20 minutes.
+The pop-up's owner wants a first number from this fortnight, and nobody at Kalpa has cleaned the
+export, so every check of the day runs on it at once. Allow about 20 minutes.
 
 Twelve invented orders from a Kalpa pop-up store's first fortnight. Paste them into a new cell of
 your own notebook and work every item from them.

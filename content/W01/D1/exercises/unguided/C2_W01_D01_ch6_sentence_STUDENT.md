@@ -49,8 +49,8 @@ the end:
 
 ## Which form carries the decision, and when would the form change?
 
-Analysts in every capability centre choose each week whether a leader gets a number, a table, a
-sentence or a dashboard.
+Meera decides on the Rs 12 crore from whatever form this answer reaches her in, and from Week 2 her
+chief of staff wants the same numbers every Monday.
 
 Four forms, sized by an estimate of the reader's time:
 
@@ -72,7 +72,8 @@ d) A dashboard now, since it is needed anyway, with the sentence added once it i
 
 ## Which statement about the one-time buyers can go to Meera?
 
-Retention and CRM teams write about one-time buyers in every monthly review.
+The marketing lead will read any statement about the one-time buyers for its weakest number, since
+those buyers decide whether acquisition or frequency gets the budget.
 
 ### Q2. A colleague tightens the first draft for the slide: "16 of 23 customers never came back: 70 percent of customers are lost." Using the gaps and the days above, which statement about the one-time buyers can go to Meera as written?
 
@@ -92,8 +93,8 @@ d) Fixed, since five clean days in a row show the new packaging works
 
 ## Does a second route give the same count, and what would shrink the caveat?
 
-A number that goes into a caveat is checked a second way before it is signed, and the team says what
-data would narrow it.
+Kavya reviews every number in the sentence before Meera signs it, and the caveat's count of buyers
+too recent to judge is one of them.
 
 ### Q4. Design. The team checks the too-recent count a second way: each one-time buyer gets a due date, the order date plus the 45-day gap. Which due dates mark a buyer as too recent to judge, and what is the due-date route better for?
 

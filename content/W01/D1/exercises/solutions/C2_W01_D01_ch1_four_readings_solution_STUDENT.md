@@ -2,6 +2,12 @@
 
 Answers: 1c 2b 3d 4a 5b
 
+Before Meera Raghavan, Kalpa Retail's CEO, signs Rs 12 crore for new customers, she asks what sales is
+made of. The file is Kalpa's 30 orders from 1 July to 26 September 2026, each delivered, returned after
+delivery or cancelled before it left the shelf, and Anand Iyer, the finance controller, takes Finance's
+figure to the board. The walk names every rupee between one reading of sales and the next, and the four
+ways are adding every amount, summing by status, asking Finance and ticking orders by hand.
+
 ## What does the set test about Kalpa's readings of sales?
 
 Kalpa's 30 orders give three honest readings of sales, and each answers a different question.
@@ -32,12 +38,13 @@ every rupee between the readings and lets Finance confirm the one Meera chooses.
 **Kavya's review.** "I will accept any of the three readings. I will not accept a number that does
 not say which one it is."
 
-## Where does this pattern show up at work?
+## Where does naming the reading of sales beside a total show up at work?
 
 Reliance Retail reported gross revenue of Rs 90,408 crore and revenue from operations of Rs 79,745
-crore for the same quarter to June 2026, and every retailer's finance team keeps booked, net and
-recognised revenue on separate lines. At a software company the same argument runs between bookings
-and recognised revenue.
+crore for the quarter to June 2026 (Reliance Industries media release, 17 July 2026), two totals for
+one quarter, each on its own line under its own name. At Kalpa the same walk runs from the booked
+total on the tree's root to the delivered total in Anand's books, and at a software company the same
+argument runs between bookings and recognised revenue.
 
 ## What does notebook 01 confirm?
 

@@ -23,8 +23,8 @@ minutes of reading with one specific thing to cite.
 
 ## What does the revenue tree look like for a business you know, and which branch would you open first?
 
-A first client meeting and a case interview both open this way: the business's revenue drawn as a
-tree in its own words, and one branch defended. Allow about an hour.
+Meera wants the same thing from the team by Thursday, a tree with one branch defended, and an
+interviewer will ask you to talk this part through. Allow about an hour.
 
 Pick a business you can stand in front of this week: the canteen, a kirana store near where you
 live, or an app you use most days. A company you have only read about does not count. Revenue is
@@ -34,8 +34,8 @@ numerator over a denominator in one window.
 - Draw its revenue tree on paper, with every branch in that business's own words. A canteen does
   not have "orders per customer"; it has how many times a week the same person eats there.
 - Beside each branch, write the metric as a numerator over a denominator, with the window.
-- Beside each branch, write what moving it would cost the owner in the owner's terms, such as "a
-  board outside the gate" or "staying open an hour later", and never "marketing spend".
+- Beside each branch, write what moving it would cost the owner, named as the thing the owner would
+  pay for, such as "a board outside the gate" or "staying open an hour later".
 - Name the branch you believe moves most for that business, and defend it with a threshold: "I would
   open this branch first if at least N of every 10 regulars come fewer than M times a week", with
   your N and M, and say what you would open instead if the threshold failed.
@@ -47,8 +47,8 @@ Hand in one page with the drawing, the table and two sentences.
 
 ## Do the day's numbers come out right on a second Kalpa sample?
 
-An analyst proves a method by running it on data nobody has explained, since every real extract
-arrives that way. Allow about forty minutes.
+Meera's Thursday recommendation will rest on numbers the team computes from files that arrive with
+nobody to explain them, as this second sample does. Allow about forty minutes.
 
 A second sample of Kalpa Retail orders sits in `data/C2_W01_D01_takehome_STUDENT.py`. It has the same
 fields as today's file, the order id, customer id, segment, channel, order date, amount and status,
@@ -79,8 +79,9 @@ Run the notebook from a fresh kernel, top to bottom, before you call it done. Th
 
 ## What does the profitability framework add to today's tree, or leave out?
 
-Consulting and analytics interviews expect a candidate to tell the tree and the framework apart in
-one sentence. Allow about twenty minutes.
+Today's staple interview question, how you would increase sales for an online retailer, can be
+answered from either the tree or the framework, so where they differ is part of your answer. Allow
+about twenty minutes.
 
 MConsultingPrep, the profitability framework: https://mconsultingprep.com/profitability-case-framework (verified 29 Sep 2026)
 

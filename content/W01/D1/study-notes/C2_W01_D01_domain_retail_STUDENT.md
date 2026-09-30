@@ -6,7 +6,7 @@ This is the business you work inside for the next two weeks: which real companie
 
 About a 55 minute read · 6 diagrams and 32 tables
 
-> Kalpa Group, its people and its numbers are fictional. The real companies named here are analogies, each fact about them checked on 30 September 2026 against the source named beside it, and none of them is Kalpa's model. A number marked illustrative is a round number chosen for easy arithmetic, neither Kalpa's data nor any real company's.
+> Kalpa Group, its people and its numbers are fictional. Reliance, DMart, Tata and the other real companies are analogies for how a business like Kalpa's works, and none of them is Kalpa's model; each fact about them was checked on 30 September 2026 against its source. An illustrative number is a round number chosen for easy arithmetic, neither Kalpa's data nor any real company's.
 
 ---
 
@@ -43,23 +43,23 @@ flowchart LR
     class SH1,SH2 dark
 ```
 
-**Before the shutters go up**, the store manager checks each shelf against its planogram, the drawing of what goes where. One check in twenty-five finds a product missing, a stock-out rate of 4 percent, and last month's stock count came up half a percent of sales short, which is shrinkage. The distribution centre's truck brings the replenishment ordered from yesterday's sales, but the cookware supplier sent only 900 of the 1,000 cases ordered, a fill rate of 90 percent, so pressure cookers will run short by Sunday.
+Before the shutters go up, the store manager checks each shelf against its planogram, the drawing of what goes where. One check in twenty-five finds a product missing, a stock-out rate of 4 percent, and last month's stock count came up half a percent of sales short, which is shrinkage. The distribution centre's truck brings the replenishment ordered from yesterday's sales, but the cookware supplier sent only 900 of the 1,000 cases ordered, a fill rate of 90 percent, so pressure cookers will run short by Sunday.
 
-**By mid-morning** the store is full. Across the day 1,200 people come through the doors and 480 of them pay at a till, a conversion of 40 percent, with an average bill of Rs 1,250 across five items. A family doing the month's shopping fills two trolleys; a student buys one bottle of shampoo.
+By mid-morning the store is full. Across the day 1,200 people come through the doors and 480 of them pay at a till, a conversion of 40 percent, with an average bill of Rs 1,250 across five items. A family doing the month's shopping fills two trolleys; a student buys one bottle of shampoo.
 
-**On the app** the same Saturday, 50,000 different people, its visitors, open it 80,000 times, its sessions. A shopper types "pressure cooker 3 litre" into search, and the order in which the results appear shapes what gets bought. Carts are filled 8,000 times and 2,000 orders are placed, at an average of Rs 1,500 for four items. One of them is the Saturday basket: a member of Retail-Plus, Kalpa's paid membership tier (section 2), orders a detergent, a shampoo, a pressure cooker and a bedsheet, Rs 2,000 of goods, a promotion takes Rs 200 off, and the member pays Rs 1,800 with a card the app keeps only as a token, a stand-in number from the card network, so the card itself is never stored (section 7).
+On the app the same Saturday, 50,000 different people, its visitors, open it 80,000 times, its sessions. A shopper types "pressure cooker 3 litre" into search, and the order in which the results appear shapes what gets bought. Carts are filled 8,000 times and 2,000 orders are placed, at an average of Rs 1,500 for four items. One of them is the Saturday basket: a member of Retail-Plus, Kalpa's paid membership tier (section 2), orders a detergent, a shampoo, a pressure cooker and a bedsheet, Rs 2,000 of goods, a promotion takes Rs 200 off, and the member pays Rs 1,800 with a card the app keeps only as a token, a stand-in number from the card network, so the card itself is never stored (section 7).
 
-**At the distribution centre** pickers pull and pack the app orders, and the Saturday basket leaves in a van for the last mile. Another parcel, ordered cash on delivery, is refused at the door and starts back as an RTO, a return to origin that cost two trips and earned nothing.
+At the distribution centre pickers pull and pack the app orders, and the Saturday basket leaves in a van for the last mile. Another parcel, ordered cash on delivery, is refused at the door and starts back as an RTO, a return to origin that cost two trips and earned nothing.
 
-**The category buyer for home care** spends the afternoon on two numbers. The category holds 45 days of inventory, stock that would last 45 days at the current rate of sale, and its suppliers allow 60 days before they are paid. The festive lighting line has sold 620 of its 1,000 units in four weeks, a 62 percent sell-through, with Diwali still ahead. A markdown now, a permanent price cut to clear the stock, gives away margin, the gap between what an item sells for and what it cost; waiting risks carrying the stock into January.
+The category buyer for home care spends the afternoon on two numbers. The category holds 45 days of inventory, stock that would last 45 days at the current rate of sale, and its suppliers allow 60 days before they are paid. The festive lighting line has sold 620 of its 1,000 units in four weeks, a 62 percent sell-through, with Diwali still ahead. A markdown now, a permanent price cut to clear the stock, gives away margin, the gap between what an item sells for and what it cost; waiting risks carrying the stock into January.
 
-**At the returns desk** a shopper brings back a mixer bought on the app, and next week the Saturday basket's bedsheet will come back the same way, because its colour differed from the picture. Of every 100 app orders delivered, 7 come back. Elsewhere, the support team led by Farhan Sheikh answers two thousand tickets a day, most of them asking where an order is, when a refund will land or why a payment failed.
+At the returns desk a shopper brings back a mixer bought on the app, and next week the Saturday basket's bedsheet will come back the same way, because its colour differed from the picture. Of every 100 app orders delivered, 7 come back. Elsewhere, the support team led by Farhan Sheikh answers two thousand tickets a day, most of them asking where an order is, when a refund will land or why a payment failed.
 
-**At head office** the marketing lead is finishing the case for Rs 12 crore to acquire new customers and following January's 1,000 new customers month by month, and the head of Retail-Plus is reading the month's renewals.
+At head office the marketing lead is finishing the case for Rs 12 crore to acquire new customers and following January's 1,000 new customers month by month, and the head of Retail-Plus is reading the month's renewals.
 
-**After the store closes**, finance closes the week. The finance controller, Anand Iyer, has his team walk the week's gross merchandise value, everything ordered at the prices charged, down through cancellations, returns and GST to net revenue, what Kalpa earns from the goods (section 3), and the data team's dashboard has to agree with his books.
+After the store closes, finance closes the week. The finance controller, Anand Iyer, has his team walk the week's gross merchandise value, everything ordered at the prices charged, down through cancellations, returns and GST to net revenue, what Kalpa earns from the goods (section 3), and the data team's dashboard has to agree with his books.
 
-**On Monday** the CEO, Meera Raghavan, reads one page: revenue grew 4 percent last year against a plan of 15, marketing wants Rs 12 crore, and she wants to know where growth comes from and where it is leaking before she signs anything.
+On Monday the CEO, Meera Raghavan, reads one page: revenue grew 4 percent last year against a plan of 15, marketing wants Rs 12 crore, and she wants to know where growth comes from and where it is leaking before she signs anything.
 
 In one working day, then, goods travel from suppliers through the distribution centre to 480 bills at the store's tills and 2,000 orders on the app, and 7 of every 100 app orders delivered come back. The store manager, the pickers, the category buyer, the returns desk, Farhan Sheikh's support team, the marketing lead, the head of Retail-Plus, Anand Iyer's finance team and Meera Raghavan each make a part of it happen, and her question on Monday is the one the next two weeks answer.
 
@@ -466,7 +466,7 @@ The numbers in the meeting lines are illustrative.
 | Term | What it means | Said in a meeting |
 |---|---|---|
 | SKU | A stock keeping unit: one sellable version of a product, such as one size | "A shampoo in two sizes is two SKUs, and home care carries 1,200 of them." |
-| Fill rate | The share of an order a supplier actually delivered | "The supplier's fill rate fell to 90 percent, and that is our stock-out." |
+| Fill rate | The share of an order a supplier delivered | "The supplier's fill rate fell to 90 percent, and that is our stock-out." |
 | Replenishment | Reordering stock so the shelf is refilled before it empties | "Replenishment runs nightly from the day's sales." |
 | Days of inventory | How many days current stock lasts at the current rate of sale | "Home care holds 45 days of inventory against 60 days of supplier credit." |
 | Planogram | The diagram that says which product goes on which shelf, in which place | "The new planogram moved detergents to eye level; check sales by shelf position." |

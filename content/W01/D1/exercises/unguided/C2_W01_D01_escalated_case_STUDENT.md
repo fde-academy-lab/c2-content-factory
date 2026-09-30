@@ -1,4 +1,4 @@
-# Does the answer survive on the orders that stayed delivered?
+# Does frequency first survive on the orders that stayed delivered?
 
 > "Booked includes orders we cancelled and orders that came back. Do it again on what was delivered
 > and stayed delivered, and tell me whether your answer survives."
@@ -61,8 +61,8 @@ flowchart LR
 
 ## How many customers stand behind the delivered orders, and how many orders does each keep?
 
-Finance teams recount the customer branches on the definition their books use before any customer
-figure goes to a board.
+Anand recounts the customer branches on the delivered orders before any customer figure goes to
+Kalpa's board, because his books count only what stayed sold.
 
 ### Q1. Compute: how many distinct customers stand behind the 21 delivered orders?
 
@@ -76,8 +76,9 @@ Write the number.
 
 ## What is the typical delivered order?
 
-Analysts recompute the typical order whenever the set of orders behind it changes, and they state
-which orders it is the middle of.
+Marketing prices a new customer's first order from the typical order, so when Anand moves the
+reading to delivered, the typical order is recomputed on the delivered amounts and says which orders
+it describes.
 
 ### Q3. Anand's typical delivered order is the median of the 21 delivered amounts, sorted from smallest to largest into a list called amounts. Which expression gives it?
 
@@ -90,8 +91,8 @@ d) sum(amounts) / 21, the total divided by the count
 
 ## What does the plan ask of delivered revenue, and where would a discount leave it?
 
-Finance resizes a plan on its own definition before it signs, and it prices every proposal before
-any money moves.
+Anand sizes Meera's 15 percent plan on what stayed delivered before the board sees it, and he prices
+marketing's discount on the same base before any money moves.
 
 ### Q4. Design. Anand wants the 15 percent plan sized on what stayed delivered, and Meera's plan still concerns the three consumer segments. Which base should the plan use, and what does it ask for?
 
@@ -111,7 +112,8 @@ d) Rs 60,597, a fall of 6.5 percent
 
 ## Which branch holds on delivered orders, once the window's edge is counted?
 
-Retention teams re-read the one-time buyers on every definition the business reports.
+The head of Retail-Plus owns the members who return, so he needs the one-time buyers, and the recent
+ones among them, counted on the reading Anand's books use.
 
 ### Q6. Compute: of the delivered customers who kept only one order, how many placed it fewer than 45 days before 26 September, too recently to judge?
 
@@ -142,8 +144,8 @@ d) Delivered alone, since two readings of sales on one page confuse a board
 
 ## What sentence goes to Meera on delivered orders?
 
-A recommendation rebuilt on a stricter definition goes back to the person who decides in the same
-four parts, with what moved and what held.
+This sentence reaches Meera before she decides on the Rs 12 crore, and Anand checks it against his
+books, so it carries chapter 6's four parts and says what moved and what held.
 
 ### Q10. What one sentence, under 70 words, goes to Meera in chapter 6's four parts on delivered orders: the evidence with its window and reading of sales, the branch, what one quarter cannot show, and what happens to the Rs 12 crore?
 

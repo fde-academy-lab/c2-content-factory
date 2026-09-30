@@ -2,6 +2,12 @@
 
 Answers: 1d 2b 3c 4a 5d
 
+Before Meera Raghavan, Kalpa Retail's CEO, signs Rs 12 crore to acquire new customers, she asks whether
+customers are the short branch. The file is Kalpa's 30 orders from 1 July to 26 September 2026, one row
+per order, and a customer is one customer id; orders per customer is orders over distinct customers in
+the same window. The head of Retail-Plus, Kalpa's paid membership tier, asks how many bought and how
+often, and Anand Iyer, the finance controller, counts customers only on the 26 orders not cancelled.
+
 ## What does the set test about counting Kalpa's customers?
 
 A row is an order and a customer is an id. Counted by rows, the 30 orders read as 30 customers and
@@ -31,11 +37,12 @@ it.
 **Kavya's review.** "Your first 30 was a count of rows, divided as if it were people. Count people by
 their ids."
 
-## Where does this pattern show up at work?
+## Where does the choice of which customers to divide by show up at work?
 
-Reliance Retail reports 396 million registered customers. Registered, active and ordering customers
-are three denominators, and each gives a different rate for the same orders, so every rate per
-customer has to say which customers it divides by.
+Reliance Retail reported 396 million registered customers at 30 June 2026 (Reliance Industries media
+release, 17 July 2026). Registered, active and ordering customers are three denominators that give
+three different rates for the same orders, so a rate per customer that goes to Meera says which
+customers it divides by, as the 1.30 divides by the 23 who ordered in the window.
 
 ## What does notebook 03 confirm?
 

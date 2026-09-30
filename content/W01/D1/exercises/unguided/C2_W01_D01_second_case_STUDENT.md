@@ -65,8 +65,8 @@ flowchart LR
 
 ## What should happen before a channel's share becomes a plan?
 
-Sales operations and finance teams read channel shares in every monthly review before any budget
-follows them.
+The store team has told Meera it carries the business, and a store-led plan would move Kalpa's
+growth budget on the strength of one share.
 
 ### Q11. The channel slide says: "Store brings 91.6 percent of revenue, so the growth plan should be store-led." What should the team do before anyone plans around that share?
 
@@ -79,8 +79,8 @@ d) Nothing more, since the channels' rupees add up to the booked total
 
 ## What share does store hold once the view keeps the three consumer segments?
 
-Planning teams read every share against a stated base before anyone argues about which channel
-leads.
+Whoever drafts Kalpa's channel plan states the base each share is read on, since the same channel
+can lead on one base and trail on another.
 
 ### Q12. Design. Meera's growth plan concerns the three consumer segments, which book Rs 64,810 of the Rs 5,44,810. On which base should a channel plan read store's share, and what share does store hold there?
 
@@ -93,8 +93,8 @@ d) All 30 orders by count: 33.3 percent, 10 of the 30 orders
 
 ## What does each channel keep once its rupees are split by status?
 
-Every e-commerce operating review splits each channel's rupees by what happened to the orders:
-delivered, returned or cancelled.
+Anand's books keep only what stayed delivered, so before a channel's lead goes into the note, its
+rupees are split into delivered, returned and cancelled, as chapter 1 split the whole file.
 
 ### Q13. In the consumer view, web leads booked revenue with Rs 27,290. What does splitting web's rupees by status add?
 
@@ -114,8 +114,8 @@ d) A small part was cancelled and a small part returned, under a tenth each
 
 ## Does the channel view change the branch, and how many customers does one segment hold?
 
-A finding from a new cut of the data goes into the note only after the team checks whether it
-changes the decision already on the table.
+Kavya reviews the note before it reaches Meera, and the head of Retail-Plus reads it for what it
+says about his own members.
 
 ### Q15. Design. Three plans are on the table: store-led, on store's 91.6 percent of booked revenue; web-led, on web's lead in the consumer view; or frequency first, as the chapters found. Which does the evidence support, and what goes in the note?
 

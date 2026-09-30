@@ -2,6 +2,12 @@
 
 Answers: 1a 2c 3d 4b 5a 6d 7b 8c 9a 10d 11b 12c 13a 14d 15b 16c 17b 18d 19a 20c 21a
 
+Meera Raghavan, Kalpa Retail's CEO, is weighing Rs 12 crore for new customers, and the lab runs the
+day's checks away from her 30 orders: on five growth ideas, a kiosk's eight invented orders, a business
+you can watch and a Kalpa pop-up's twelve invented orders. Revenue is customers x orders per customer x
+revenue per order, and revenue per order is items x price, less discounts. Booked counts every order,
+not cancelled drops the cancelled ones, and delivered keeps what reached a customer and stayed.
+
 ## What does the lab test on files nobody has shown you?
 
 A growth idea is placed by the
@@ -58,16 +64,16 @@ Item 5. Pairs will split between customers and orders per customer, and both are
 version of the redesign. "An app redesign" names no behaviour, so the answer is a question back:
 which behaviour is it meant to change?
 
-Problem 4's text amount stops the sum, and that is a two-minute fix, never a finding. The findings
-in that file are the cancelled orders, the repeat customers, the large order and the multiplying
-lifts.
+Problem 4's text amount stops the sum, and converting it with int() takes two minutes. The findings
+the owner's sentence reports are the cancelled orders, the repeat customers, the large order and the
+multiplying lifts.
 
 **Kavya's review.** "Name the reading, count distinct ids, take the median and multiply the lifts.
 If you ran all four on the pop-up without being told where each problem was, you are ready for
 Tuesday."
 
-## Where does this pattern show up at work?
+## Where does running the day's four checks on a first export show up at work?
 
-A first export from a new store, a new market or a new product is where these checks meet at once,
-because nobody has cleaned it and everybody wants a number from it. An analyst who runs the four
-checks before reporting sends a first number that survives the review.
+At Kalpa the pop-up's first fortnight is that kind of file, since nobody has cleaned it and its owner
+wants a number from it, and the first export from any new store, market or product arrives the same
+way. A first number sent after all four checks is one that survives Kavya's review.

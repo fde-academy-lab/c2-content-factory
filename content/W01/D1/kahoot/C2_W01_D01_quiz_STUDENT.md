@@ -12,9 +12,9 @@ The quiz has eight items, ungraded and scored on correctness and speed together.
 question today, because Monday is the first teaching day of the week and there is no earlier day to
 return to.
 
-Each item names what it tests, so an item dropped for time says what was lost. The items follow the
-day's chapters: Q1 the tree, Q8 chapter 1, Q3 chapter 2, Q2 and Q7 chapter 3, Q4 chapter 4, Q6
-chapter 5 and Q5 chapter 6.
+Q1 checks the tree, Q8 chapter 1's total, Q3 chapter 2's fraction, Q2 and Q7 chapter 3's customer
+count, Q4 chapter 4's mean and median, Q6 chapter 5's discount and Q5 chapter 6's window, so an item
+dropped for time leaves that chapter's check unasked.
 
 ---
 

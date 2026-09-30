@@ -29,8 +29,8 @@ returned after delivery, or cancelled before the order left the shelf.
 
 ## Which branches multiply into revenue?
 
-Consultants and finance teams draw this tree before they touch any data, because it says which
-number each question needs.
+Meera's question, whether acquisition is the branch that is short, can only be answered once the
+branches are drawn, and marketing's Rs 12 crore sits on one of them.
 
 Copy the tree from the board onto paper, with revenue on the left and what multiplies into it on the
 right.
@@ -74,7 +74,8 @@ d) Revenue over orders, both counted in the same window
 
 ## What does one Kalpa order hold?
 
-Every analyst's first minute with a new extract goes on reading one record, field by field.
+Every number Meera sees today is built from these seven fields, so the room reads one record aloud
+before it adds anything.
 
 Run the setup cell of `notebooks/C2_W01_D01_01_four_readings_of_sales_STUDENT.ipynb`. Then, with the
 room, print the first record and read each field aloud with its type: the order id, customer id,
@@ -85,8 +86,8 @@ them.
 
 ## How does one loop count the orders and add up their revenue?
 
-The counter and the running total inside a loop are the shape under every count and sum an analyst
-writes, in Python today and in SQL from Week 2.
+The order count and the revenue total this loop prints are the first numbers the team writes on
+Meera's tree, and the same counter and running total come back in Week 2 as SQL's COUNT and SUM.
 
 In the build section of `notebooks/C2_W01_D01_01_four_readings_of_sales_STUDENT.ipynb`, type the
 loop with the room: one counter for orders and one running total for revenue, both set before the

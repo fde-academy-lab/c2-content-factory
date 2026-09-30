@@ -54,8 +54,8 @@ flowchart LR
 
 ## Which base is the plan sized on, and what does a different base ask?
 
-Every growth plan is sized on a stated base before any team is asked to move a branch, and finance
-sends back a plan whose base is left unsaid.
+At Kalpa, marketing's slide and Meera's plan can start from different bases, so the base is named
+before any branch owner is asked to move.
 
 ### Q1. Design. Marketing's slide sizes the 15 percent plan on all booked revenue and asks for Rs 81,722 more this quarter. The plan's offers reach only the three consumer segments, so every rupee of it has to come from them. How much would those segments have to grow?
 
@@ -68,8 +68,8 @@ d) About 13 percent, since Rs 81,722 is 13 percent of the Rs 6,26,532 the plan r
 
 ## What would each branch have to do alone, and which has evidence behind it?
 
-Strategy and finance teams size what each lever must deliver on its own before they fund any of
-them, since a lever that needs an impossible move is off the table.
+Meera funds one branch first, and the marketing lead and the head of Retail-Plus each own one of the
+customer branches, so the team sizes what each would have to do alone before she chooses.
 
 On the consumer view, each branch alone would have to do this to reach the plan:
 
@@ -91,7 +91,8 @@ d) Price, since 15 percent on every price needs no customer to change what they 
 
 ## What do two lifts make together?
 
-Plans that combine two levers are checked before they reach a budget meeting.
+Marketing's slide asks Meera to fund both customer branches at once, and the combined figure on it
+is the one she would sign.
 
 ### Q3. Marketing's slide says a 10 percent lift in customers and a 10 percent lift in orders per customer make 20 percent growth, Rs 77,772 on the consumer view's Rs 64,810. What do the two lifts make through the tree?
 
@@ -104,8 +105,8 @@ d) 21 percent, Rs 78,420, since the second lift applies to the first
 
 ## What would switch the call, and which first test costs least?
 
-A recommendation that names what would change it, and the cheapest way to test it, is one a leader
-can sign today and revisit next quarter.
+Tuesday brings the quarter before this one, and Meera wants to know before then which finding would
+change the branch and what a first test would cost.
 
 ### Q4. Design. Tuesday brings the quarter before this one. Which finding in it would show that acquisition is the branch that is short?
 

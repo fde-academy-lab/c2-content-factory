@@ -15,8 +15,8 @@ chapters, and do it tonight or before Tuesday's session.
 ## What would marketing's Rs 12 crore buy, in revenue Meera could see this year?
 
 This is the stretch, for you if the six chapters and the escalated case felt comfortable and you
-finished the take-home early. Finance teams test an acquisition budget this way before they sign
-it.
+finished the take-home early. It is the question Meera puts to marketing's Rs 12 crore before she
+signs it.
 
 > "Suppose I did give marketing the Rs 12 crore. What would it buy me, in revenue I could see this
 > year?"
@@ -45,9 +45,9 @@ last line names a branch and a number that Tuesday's two quarters would produce.
 ## Can you rebuild each chapter's number one loop at a time?
 
 This is the recovery, for you if the loops moved faster than you did today; doing it tonight costs
-nothing tomorrow. Every analyst rebuilds a number by hand once before trusting the shortcut that
-computes it. Work in a fresh cell of `notebooks/C2_W01_D01_01_four_readings_of_sales_STUDENT.ipynb`,
-and run after every step.
+nothing tomorrow. The numbers you rebuild are the chapters' own, and a number you have built once by
+hand is one you can explain when Kavya asks where it came from. Work in a fresh cell of
+`notebooks/C2_W01_D01_01_four_readings_of_sales_STUDENT.ipynb`, and run after every step.
 
 - Print the first record on its own, and say each field and its type aloud.
 - Write the loop that prints every status and nothing else. Then add a counter above it that counts
@@ -61,6 +61,8 @@ and run after every step.
 - Sort the amounts and print the two in the middle, the 15th and 16th. Their average should be
   2205.
 
-Each chapter was one loop with one decision in it: which orders count, what makes a customer
-distinct, and where the middle sits. The checks tell you whether the decision was right before
-anybody else reads the number.
+Each counting step prints the number it should reach: 4 cancelled orders, 535760 on the orders not
+cancelled, 23 customers, about 1.30 orders each and 2205 halfway between the two middle amounts. A
+step that prints anything else has one wrong decision in its loop, such as a status test that keeps
+the wrong orders or a count taken over rows where it should run over ids, so fix that line before
+the next step builds on it.

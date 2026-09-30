@@ -2,13 +2,19 @@
 
 Answers: 1a 2d 3b 4c 5b
 
+Marketing's case for Rs 12 crore to win new customers rests on a payback, how soon that spend comes
+back from what each new customer brings in, and Meera Raghavan, Kalpa Retail's CEO, signs on it, so she
+asks what a typical order is worth. The file is Kalpa's 30 orders from 1 July to 26 September 2026,
+booked at Rs 5,44,810, and a middle value is one number that stands for all of them: the mean, the
+median or a trimmed mean. Contribution is what an order leaves after its goods and delivery.
+
 ## What does the set test about the typical Kalpa order?
 
 The mean is the total over the count, so it takes in every rupee of every order, and a very large
 order can drag it: on Kalpa's 30 orders the mean is Rs 18,160 and only 1 of the 30 orders sits above
 it. The median, Rs 2,205, halfway between the 15th and 16th sorted amounts, is the typical order,
-and it barely moves when the reading of sales changes: Rs 2,100 on the not-cancelled orders and
-Rs 2,060 on the delivered ones. The mean keeps its own job, since only a mean adds up to a total, so
+and it barely moves when the reading of sales changes: Rs 2,100 on the not-cancelled orders. The
+mean keeps its own job, since only a mean adds up to a total, so
 a payback is built on the mean of the segments the spend targets. The design items ask which number
 a payback needs and size how far each middle moves when one large order arrives.
 
@@ -32,11 +38,13 @@ The booked mean of Rs 18,160 fails for the other reason: it is a mean of every s
 **Kavya's review.** "Put the median in the sentence and the mean beside it, and say how many orders
 sit above the mean."
 
-## Where does this pattern show up at work?
+## Where does the choice between a mean and a median for the typical order show up at work?
 
-Blinkit reported a net average order value of Rs 518 for the quarter to June 2026. Across millions of
-similar small baskets a mean describes the typical basket well; across 30 orders that include very
-large ones, the same mean describes almost none of them.
+Blinkit reported a net average order value of Rs 518 for the quarter to June 2026 (MediaNama on
+Eternal's Q1 FY27 earnings call, July 2026). Across millions of similar small baskets a mean
+describes the typical basket well; across 30 orders that include very large ones, the same mean
+describes almost none of them, so the sentence to Meera quotes the median as the typical order and
+keeps a mean for the payback.
 
 ## What does notebook 04 confirm?
 

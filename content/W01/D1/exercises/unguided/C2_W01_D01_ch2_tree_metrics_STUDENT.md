@@ -57,7 +57,8 @@ counts delivered orders, because delivery is what operations runs.
 
 ## Which tree can this file fill today?
 
-Every analytics team handed a revenue question draws the tree before it opens the data.
+Kalpa's data team draws the tree before it computes anything for Meera, because the fields in the
+extract decide which branches its numbers can fill.
 
 Four trees a team could draw, and what each needs:
 
@@ -79,8 +80,8 @@ d) A funnel from visits to orders, since it shows where shoppers drop out before
 
 ## What is an order worth, on one reading of sales?
 
-Finance and product teams publish every rate with its numerator and its denominator written beside
-it.
+Marketing's payback case for the Rs 12 crore values each new customer by what an order is worth, so
+this number travels straight into Meera's decision.
 
 ### Q2. Marketing's payback needs the value of an order that stayed delivered. Delivered revenue is Rs 5,20,790 on 21 delivered orders. What is the delivered AOV?
 
@@ -100,8 +101,8 @@ d) It is the booked AOV, since the rupees it divides are the booked ones, so it 
 
 ## Which check keeps a fraction honest, and which data would deepen the tree?
 
-Analysts who divide one team's number by another's check the result before it travels, and they
-know which table they are still waiting for.
+At Kalpa, Finance's revenue and the warehouse's order count come from two different systems, and
+marketing's payback team will divide one by the other next quarter.
 
 ### Q4. Design. Next quarter the payback team will divide Finance's revenue by an order count from the warehouse. Which check, run after dividing, tells them whether the two numbers share a definition?
 

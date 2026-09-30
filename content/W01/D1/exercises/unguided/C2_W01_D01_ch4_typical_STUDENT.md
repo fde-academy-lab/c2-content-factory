@@ -55,8 +55,9 @@ what an order leaves after the cost of its goods and of delivering it.
 
 ## What does the mean say about Kalpa's orders, and what is the middle order?
 
-Analysts at every retailer report a typical basket beside the average basket in their weekly
-numbers.
+Blinkit reported a net average order value of Rs 518 for the quarter to June 2026 (MediaNama on
+Eternal's Q1 FY27 earnings call, July 2026); at Kalpa, Meera wants to know what a typical order looks
+like before she judges marketing's case.
 
 ### Q1. The mean of the 30 orders is Rs 18,160, and only 1 of the 30 sits above it. What does that say about Kalpa's orders?
 
@@ -76,8 +77,8 @@ d) Rs 2,205, halfway between the two middle amounts
 
 ## Which number should the payback use, and which middle survives a large order?
 
-Marketing and finance teams argue about which middle goes into a payback in every budget cycle, and
-the analyst's job is to say which number answers which question.
+Marketing's payback for the Rs 12 crore is built on one of these numbers, and Meera signs the budget
+on that payback.
 
 ### Q3. Design. Marketing's payback adds up what a new customer brings in over their first year, to see how soon the cost of winning them comes back. Which number should it be built on, and what would change it?
 
@@ -97,7 +98,8 @@ d) The trimmed mean always, since it moved almost as little as the median and is
 
 ## Does the typical order hold when the reading of sales changes?
 
-Finance asks whether a figure survives a change of definition before it goes into any plan.
+Anand's books use a different reading of sales from the chapters, so he asks whether the typical
+order moves with it before the number goes into Meera's plan.
 
 ### Q5. Anand asks whether the typical order depends on the reading of sales. On not-cancelled orders the mean is Rs 20,606 and the median Rs 2,100. Set them beside the booked mean of Rs 18,160 and the booked median you found in Q2. What should the team tell him?
 

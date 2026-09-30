@@ -2,6 +2,12 @@
 
 Answers: 1b 2c 3a 4d 5a
 
+Before Meera Raghavan, Kalpa Retail's CEO, signs Rs 12 crore for new customers, she asks which branch
+of sales is short. The file is Kalpa's 30 orders from 1 July to 26 September 2026: booked revenue,
+every order placed, is Rs 5,44,810 on 30 orders, and delivered revenue, the orders that reached a
+customer and stayed, is Rs 5,20,790 on 21. The revenue tree writes revenue as customers x orders per
+customer x average order value (AOV), and AOV as items per order x price per item, less discounts.
+
 ## What does the set test about the tree's fractions?
 
 A branch of the tree is a metric only when it is a numerator over a denominator on one reading of
@@ -32,12 +38,13 @@ were summed over, here 30.
 **Kavya's review.** "When two reports feed one fraction, ask each report what it counts before you
 divide."
 
-## Where does this pattern show up at work?
+## Where does a tree of fractions that multiply back to the total show up at work?
 
-Reliance reports Jio as 533 million subscribers and revenue per user of Rs 215.6 a month, a tree of
-customers times revenue per customer, and investors multiply the branches back to check the total.
-A branch taken from a different report or period breaks that multiplication, which is why every
-published rate states what it divides.
+Reliance reports Jio as 533 million subscribers and revenue per user of Rs 215.6 a month for the
+quarter to June 2026 (Reliance Industries media release, 17 July 2026), a tree of customers times
+revenue per customer that an investor can multiply back to check the total. A branch taken from a
+different report or period would break that multiplication, and at Kalpa the branch at risk is the
+AOV in marketing's payback, which values every new customer the Rs 12 crore would buy.
 
 ## What does notebook 02 confirm?
 
