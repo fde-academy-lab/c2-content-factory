@@ -36,6 +36,35 @@ NEUTRAL_MD = {
         "Change the definition and rerun every rung; say what moved and what you\n> would check next.",
 }
 
+# The case's question ladder, word for word: each part heading asks one of these, and the opening cell
+# lists them under The questions on the way. None of them names or hints at a key.
+EX1_TITLE = "Does the story survive when revenue counts only the orders that reached customers and stayed?"
+EX1_PARTS = ["Is the delivered drop real?", "Which branch moves on delivered orders?", "Are those lost customers?",
+             "Which segment moves on delivered orders?", "Is the delivered rise mix or rate?"]
+EX1_SENTENCE = "What does the sentence to Meera say on delivered orders?"
+EX2_TITLE = ("Marketing's new deck says members spend 7 percent more per order and the web fell hardest: does "
+             "either claim hold, and whom does the tier call first?")
+EX2_PARTS = ["Does 7 percent more per order make the tier healthy?", "Is the web's fall the website's fault?",
+             "Which members does the tier call first?", "Which one request goes first?"]
+
+
+def questions_on_the_way(questions):
+    return "**The questions on the way.**\n\n" + "\n".join(f"{i}. {q}" for i, q in enumerate(questions, start=1))
+
+
+def check_case(cells, title, parts, extra=()):
+    """Refuse a case whose title or part headings drift from its ladder, or whose headings stop being
+    questions."""
+    heads = [line for c in cells for line in c.source.splitlines()
+             if c.cell_type == "markdown" and line.startswith("#")]
+    assert heads[0].endswith(title[1:]), heads[0]
+    want = [f"## Part {i}. {q}" for i, q in enumerate(parts, start=1)]
+    assert [h for h in heads if h.startswith("## Part ")] == want, heads
+    for h in extra:
+        assert h in heads, h
+    assert all(h.endswith("?") for h in heads), [h for h in heads if not h.endswith("?")]
+    return cells
+
 
 class SOL:
     def __init__(self, cell):
@@ -96,10 +125,13 @@ def pct_change(before, after):
 def escalated(solution):
     cells = [
         md("""
-# Escalated case: the ladder again, on the orders that reached customers
+# Escalated case: """ + EX1_TITLE[0].lower() + EX1_TITLE[1:] + """
 
 **Week 1, Tuesday afternoon. The escalated case, unguided, fifty minutes.** The morning climbed six
-chapters on booked orders. This case climbs the same ladder alone, on a harder definition, where one
+chapters on booked orders, every order placed before any cancellation or return. On them revenue fell
+11.0 percent between two closed quarters, Rs 2,10,00,000 to Rs 1,87,00,000, while customers held at
+69 and orders per customer fell from 1.65 to 1.25.
+This case climbs the same ladder alone, on a harder definition, where one
 branch that held in the morning moves.
 
 The board pack is the set of numbers Kalpa's board reads every quarter.
@@ -110,6 +142,13 @@ The board pack is the set of numbers Kalpa's board reads every quarter.
 >
 > Meera Raghavan, CEO, Kalpa Retail
 
+**Who needs the answer.** Meera Raghavan, the CEO, takes revenue to the board on the board pack's
+definition, so before the morning's story reaches the board she needs to know whether each rung of it
+holds on orders that reached the customer and stayed there. If a rung does not hold and nobody says
+so, the board acts on a story its own numbers do not support, and next quarter's money follows it.
+
+""" + questions_on_the_way(EX1_PARTS + [EX1_SENTENCE]) + """
+
 > **Kavya's review of the morning.** "Every number you gave Meera this morning was on booked orders.
 > Change the definition and rerun every rung. If a branch that held starts to move, find out what it
 > is made of before anyone else names it."
@@ -118,14 +157,13 @@ This is the solution twin: every placeholder is filled, every cell has run, and 
 line says why the other three options fail.
 """),
         code(SETUP + 'ORDERS = kit.load_records("C2_W01_D02_orders_STUDENT.py")\nSEGMENTS = ["Retail-Core", "Retail-Plus", "Business", "Student"]\n' + TOOLS + '\nprint(len(ORDERS), "booked orders loaded")'),
-        code("""
+        code(f"""
 kit.side_by_side(
-    kit.ladder(["Is the delivered drop real?", "The tree on delivered", "Are those lost customers?",
-                "Four segments on delivered", "Mix or rate on delivered"], show=False),
+    kit.ladder({EX1_PARTS!r}, show=False),
     kit.flow(["booked\\n200 orders", "delivered only", "the same ladder", "the sentence"], lit=1, show=False),
 )"""),
         md("""
-## Part 1. Is the delivered drop real?
+## Part 1. """ + EX1_PARTS[0] + """
 
 Keep only the orders that reached the customer and stayed, then compare the two closed quarters.
 """),
@@ -161,7 +199,7 @@ file again.
 Rs 16,40,290, 11.3 percent, on two closed quarters of thirteen weeks: the drop survives the
 definition.
 
-## Part 2. The tree on delivered orders
+## Part 2. """ + EX1_PARTS[1] + """
 
 Put rupees on each branch with the bridge in the tree's order: customers first, then orders per
 customer, then revenue per order.
@@ -193,7 +231,7 @@ not add along a bridge in rupees.
 Rs 32,23,327, and revenue per order gives back Rs 26,57,479. Marketing will read the first number as
 lost customers. Part 3 finds out what it is.
 
-## Part 3. Are those lost customers?
+## Part 3. """ + EX1_PARTS[2] + """
 
 Four fewer customers had a delivered order in Q2. The morning showed all 69 customers booked in both
 quarters. Compare the two views.
@@ -222,17 +260,17 @@ kit.check("your set placed orders in Q2", sum(their_q2.values()) > 0, f"{sum(the
 kit.check("none of your set's Q2 orders counts as delivered", their_q2.get("delivered", 0) == 0)
 '''),
         SOL(md("""
-**Why the other three fail.** a) is every delivered Q1 customer who booked in Q2, 54 people, including those whose Q2 orders were delivered. b) is the booked
-churn, which is empty. d) is the customers delivered in Q2 and not Q1, the other side of the
-overlap.
+**Why the other three fail.** a) is every delivered Q1 customer who booked in Q2, 54 people,
+including those whose Q2 orders were delivered. b) is the booked churn, which is empty. d) is the
+customers delivered in Q2 and not Q1, the other side of the overlap.
 """)),
         md("""
-**Item 3 in your brief.** The customers branch on delivered orders is cancellations and returns rather than acquisition:
-the 19 customers who "disappeared" all ordered in Q2, and their orders were cancelled or returned.
-Split by reason, those orders go to the teams that own fulfilment, getting orders to customers
-intact, and the product, and the Rs 12 crore still has nothing to replace.
+**Item 3 in your brief.** The customers branch on delivered orders is cancellations and returns: the
+19 customers who "disappeared" all ordered in Q2, and their orders were cancelled or returned. Split
+by reason, those orders go to the teams that own fulfilment, getting orders to customers intact, and
+the product, and Marketing's Rs 12 crore still has no lost customer to replace.
 
-## Part 4. Four segments on delivered orders
+## Part 4. """ + EX1_PARTS[3] + """
 
 Run `tree_for` per segment on delivered orders, roll the rate up to the company, and count the groups
 that come back.
@@ -276,14 +314,15 @@ kit.check("every segment has its change on delivered orders", len(changes) == 4)
         SOL(md("""
 **Why the other three fail.** TODO 4: a) is the average of averages, minus 9.2 percent against the
 true minus 24.0. b) is the reciprocal, customers per order. c) ignores every segment's size. TODO 5:
-b) raises a TypeError on a None instead of reporting it. c) and d) look for one segment by name and pass on the broken summary.
+b) raises a TypeError on a None and reports nothing. c) and d) look for one segment by name and pass
+on the broken summary.
 """)),
         md("""
 **Item 4 in your brief.** On delivered orders Retail-Plus falls furthest again, 1.85 to 1.06 orders
 per member, minus 42.6 percent; Business and Retail-Core fall about 11.5 percent each; Student rises.
 The segment survives the definition.
 
-## Part 5. Mix or rate, on delivered orders
+## Part 5. """ + EX1_PARTS[4] + """
 
 Delivered revenue per order rose 26.0 percent. Split it the way chapter 4 did: price Q2's mix at Q1's
 segment rates.
@@ -314,10 +353,10 @@ again.
         md("""
 **Item 5 in your brief.** On booked orders the mix explained 69 percent of the rise; on delivered
 orders 44 percent, because Business's delivered orders grew in size, from Rs 10,24,651 to
-Rs 11,60,405 each on average. The consumer segments still paid about the same. The definition moved
-the split; it did not create a price signal in the consumer business.
+Rs 11,60,405 each on average. The definition moved the split, and the consumer segments still paid
+about the same, so the consumer business shows no price signal on either definition.
 
-## The sentence
+## """ + EX1_SENTENCE + """
 """),
         code('''
 # TODO 7. Which segment leads the sentence as the behaviour finding on delivered orders?
@@ -338,35 +377,38 @@ fall that sits in one segment across four.
 **The sentence.** "On delivered orders the story holds: revenue fell 11.3 percent between closed
 quarters, and frequency carries the most rupees, Rs 32,23,327. Four fewer customers had a delivered
 order, but all 19 who dropped out of the delivered count booked again in Q2 and saw their orders
-cancelled or returned, so that branch is cancellations and returns, to be split by reason, and not acquisition. Retail-Plus members
-ordered 42.6 percent less often. The two hypotheses stand as this morning: the reorder button after
-25 August, settled by the app's logs, and a change for members in July, settled by the tier's change
-log."
+cancelled or returned, so that branch is cancellations and returns, to be split by reason, with no
+lost customer for acquisition to replace. Retail-Plus members ordered 42.6 percent less often. The
+two hypotheses stand as this morning: the reorder button after 25 August, settled by the app's logs,
+and a change for members in July, settled by the tier's change log."
 
-### In the interview
+### In the interview: what do you do when a new definition of revenue moves a branch that held?
 
 **[D] You change the definition of revenue and a branch that held starts to move; what do you do?**
 "I decompose the new movement before anyone names it. Here customers with a delivered order fell from
 54 to 50, which looks like churn, but every one of the 19 who left the delivered count booked again
-and had orders cancelled or returned. So the branch is cancellations and returns, which I would split by reason. I show both definitions side by
-side and say which owner each branch goes to." The interviewer is listening for the definition named
+and had orders cancelled or returned. So the branch is cancellations and returns, which I would
+split by reason. I show both definitions side by side and say which owner each branch goes to." The interviewer is listening for the definition named
 and the moved branch explained.
 """)),
         code("""
 kit.check_summary()
 print("Answer string for the TODOs: b a c d a b d.")"""),
     ]
-    return twin(cells, solution)
+    return check_case(twin(cells, solution), EX1_TITLE, EX1_PARTS, extra=("## " + EX1_SENTENCE,))
 
 
 # --------------------------------------------------------------------------------------------- ex2
 def second(solution):
     cells = [
         md("""
-# Second case: the tier's question and Marketing's pushback, argued from the same numbers
+# Second case: """ + EX2_TITLE + """
 
-**Week 1, Tuesday afternoon. The second case, in pairs, forty minutes.** One of you answers Marketing,
-the other answers the head of Retail-Plus, from the same file, and together you write the reply.
+**Week 1, Tuesday afternoon. The second case, in pairs, forty minutes.** The morning found the fall
+in how often customers order, and Retail-Plus, Kalpa's paid membership tier, the segment that fell
+furthest; chapter 6 capped the broken reorder button at about 4 of the tier's 25 lost orders. One of
+you answers Marketing, the other answers the head of Retail-Plus, from the same file, and together
+you write the reply.
 
 > **Marketing comes back with a new deck.** "Retail-Plus members spend 7 percent more every time they
 > order, so the tier is healthy and the answer is still acquisition. And Retail-Plus web orders fell
@@ -378,6 +420,14 @@ the other answers the head of Retail-Plus, from the same file, and together you 
 >
 > The head of Retail-Plus
 
+**Who needs the answer.** Meera Raghavan, the CEO, needs to know whether Marketing's two new numbers
+reopen the acquisition budget or hand the problem to the website team, and the head of Retail-Plus
+needs a call list and the one request to make first. A wrong answer sends crores, or the website
+team's quarter, after a claim nobody checked, and leaves the tier calling its members in no useful
+order.
+
+""" + questions_on_the_way(EX2_PARTS) + """
+
 > **Kavya's review of the escalated case.** "You found a branch that moved for a reason nobody
 > guessed. Do the same with Marketing's two new numbers: find what each is made of before you agree
 > or disagree."
@@ -386,16 +436,15 @@ This is the solution twin: every placeholder is filled, every cell has run, and 
 line says why the other three options fail.
 """),
         code(SETUP + 'ORDERS = kit.load_records("C2_W01_D02_orders_STUDENT.py")\nSEGMENTS = ["Retail-Core", "Retail-Plus", "Business", "Student"]\n' + TOOLS + '\nprint(len(ORDERS), "orders loaded")'),
-        code("""
+        code(f"""
 kit.side_by_side(
-    kit.ladder(["7 percent more per order: a healthy tier?", "Web fell hardest: the website?",
-                "Who to call first", "The reply and the evidence"], show=False),
+    kit.ladder({EX2_PARTS!r}, show=False),
     kit.matrix(["Marketing", "the head of Retail-Plus"], ["claim", "test"],
                [["a healthy tier; the website", "the tier's own tree; web in another segment"], ["which members", "orders per member, Q1 to Q2"]],
                show=False),
 )"""),
         md("""
-## Part 1. "Members spend 7 percent more per order, so the tier is healthy"
+## Part 1. """ + EX2_PARTS[0] + """
 
 Revenue per order is one leaf of the tree. Build the tier's tree for both quarters, then put the
 leaves back together into the tier's revenue.
@@ -436,7 +485,7 @@ about the tier's health.
         md("""
 **Item 1 in your brief** goes in now, from what this part printed.
 
-## Part 2. "Retail-Plus web orders fell hardest, so it is the website"
+## Part 2. """ + EX2_PARTS[1] + """
 
 A broken website hurts every customer who uses it. If the website were the cause, what would another
 segment's web orders show?
@@ -475,7 +524,7 @@ the app fell too.
         md("""
 **Item 2 in your brief** goes in now, from what this part printed.
 
-## Part 3. "Which of my members do I call first?"
+## Part 3. """ + EX2_PARTS[2] + """
 
 Count each member's orders in Q1 and Q2, and decide who goes first.
 """),
@@ -521,7 +570,7 @@ one order. Nobody stopped altogether, which fits a habit that broke more than a 
         md("""
 **Item 3 in your brief** goes in now, from what this part printed.
 
-## Part 4. The reply, and the one request that tests the most
+## Part 4. """ + EX2_PARTS[3] + """
 
 Item 4 in your brief goes in once this part has run.
 """),
@@ -554,14 +603,16 @@ the data that raised the question. c) settles the button, which chapter 6 capped
 
 **The pair's reply.** "To Marketing: the tier's members did spend 7 percent more per order, but the
 same 22 members placed about half as many orders, so the tier's revenue fell about 45 percent; and
-Retail-Core's web orders held at 13 and 12 on the same website, so a site-wide fault does not fit. To the head of Retail-Plus: call the seven members
-who went from three orders to one first, and ask what changed for them in July. We are asking for the
-tier's July change log, renewals and support tickets first, and the app's reorder logs second."
+Retail-Core's web orders held at 13 and 12 on the same website, so a site-wide fault does not fit.
+To the head of Retail-Plus: call the seven members who went from three orders to one first, and ask
+what changed for them in July. We are asking for the tier's July change log, renewals and support
+tickets first, and the app's reorder logs second."
 
-### In the interview
+### In the interview: what do you check when someone says higher spend per order means a healthy business?
 
 **[F] A stakeholder says customers spend more per order, so the business is healthy; what do you
-check?** "What that rate multiplies with: how many customers there are and how often they buy.
+check?** "I check what that rate multiplies with: how many customers there are and how often they
+buy.
 Revenue per order is one leaf of the tree. Here the tier's members spent 7 percent more per order and
 ordered about half as often, so the tier's revenue fell about 45 percent. I put the leaves back
 together before I agree that anything is healthy." The interviewer is listening for the tree and the
@@ -571,7 +622,7 @@ product of its leaves.
 kit.check_summary()
 print("Answer string for the TODOs: a c b d.")"""),
     ]
-    return twin(cells, solution)
+    return check_case(twin(cells, solution), EX2_TITLE, EX2_PARTS)
 
 
 if __name__ == "__main__":
