@@ -287,7 +287,7 @@ read the model after the call-outs.
 
 **Question.** Each plan fits the clock at the lab's pace. Choose one: a) no reconciliation; b) no test, the note marked provisional; c) the tree and a test for one segment only; d) no profile, straight to cleaning.
 
-**In the interview.** [F] You have two hours and a raw export; what do you do first, and what do you skip? DMart is the likeness: it puts out a provisional quarter days before it files the results.
+**In the interview.** [F] You have two hours and a raw export; what do you do first, and what do you skip? DMart is the likeness: its July to September 2025 revenue went out as a provisional update eight days before it filed the results.
 
 ```notes
 LIVE, 13 minutes: read 1, think 3, pairs 4, two call-outs 3, the next slide 2. Listen for every plan

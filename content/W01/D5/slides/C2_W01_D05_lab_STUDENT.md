@@ -253,5 +253,5 @@ value: 0 | label: assistants | note: no chat model and no autocomplete
 LIVE, 1 minute, then the ten-minute break. The debrief's first chapter, the reconciliation, runs for
 twenty minutes after the break and closes the morning. Over lunch the TAs total the observation
 sheets by step; all three chapters run whatever the tally says, and it decides where the trainer
-lingers and which reserve slide replaces a self-study slide.
+lingers and which reserve slide runs live.
 ```

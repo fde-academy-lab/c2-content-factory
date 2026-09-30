@@ -2,19 +2,19 @@
 
 **TRAINER ONLY.** The eleven pushes on the pair lists are the ones in
 `exercises/guided/C2_W01_D05_rehearsal_brief_STUDENT.md`, in its order, and the sharpest push is
-modelled once before round one. Each answer is what a strong
-defender says in one breath, with its number and the denominator the number stands on, followed by
-what to say if Marketing pushes a second time. Every number comes from Thursday's note and its
-sources: `content/W01/D4/trainer/C2_W01_D04_day_sheet_TRAINER.md` (the day's numbers and the traps)
-and, for the rows set aside, `content/W01/D3/trainer/C2_W01_D03_day_sheet_TRAINER.md`.
+modelled once before round one. Each answer is what a strong defender says in one breath, with its
+number and the denominator the number stands on, followed by what to say if Marketing pushes a
+second time. Every number comes from Thursday's note and its sources:
+`content/W01/D4/trainer/C2_W01_D04_day_sheet_TRAINER.md` (the day's numbers and the traps) and, for
+the rows set aside, `content/W01/D3/trainer/C2_W01_D03_day_sheet_TRAINER.md`.
 
 **Who needs the answer.** The trainer and the TAs, when a pair is stuck in round one and after
 Kavya's minute of review in round two: an answer read before the defender has tried teaches the room
 to wait for it.
 
-Use these in round two after Kavya's minute of review, and in round one only when a pair is stuck.
-Read the answer after the defender has tried, never before. A defender who reaches the same shape in
-their own words has it right; the numbers are the part to check.
+In round one, use these answers only for a stuck pair, and in either round read an answer only after
+the defender has tried. A defender who reaches the same shape in their own words has it right; the
+numbers are the part to check.
 
 ```mermaid
 flowchart LR
@@ -62,9 +62,9 @@ practises on pushes they have not seen answered.
 
 | The push | The answer in one breath | If Marketing pushes again |
 |---|---|---|
-| "Your p-value is 0.03. So you are 97 percent sure. Why the hedging?" | "It is 0.027, and it says that if nothing had changed, a fall of Rs 1,110 per member would turn up in about 3 of every 100 shuffles, 135 of 5,000; that is the chance of the gap in a world with no change, which is a different thing from the chance I am wrong." | "Same thing in practice." "The size is what sets the action: the fall beats the wobble and it is still Rs 24,420 a quarter, 0.19 percent of revenue, so the action is a test on half the tier and nothing bigger." |
+| "Your p-value is 0.03. So you are 97 percent sure. Why the hedging?" | "It is 0.027, and it says that if nothing had changed, a fall of Rs 1,110 per member would turn up in about 3 of every 100 shuffles, 135 of 5,000; that is the chance of the gap in a world with no change, which is a different thing from the chance I am wrong." | "Same thing in practice." "The size sets the action: the fall beats the wobble and it is still Rs 24,420 a quarter, 0.19 percent of revenue, so the action stops at a test on half the tier." |
 | "Every quarter wobbles. Why is this one any different?" | "We measured the wobble: Retail-Core's own gap of Rs 110 per member came up in 1,724 of 5,000 shuffles, ordinary, while Retail-Plus's Rs 1,110 came up in 135 of 5,000, so this one sits outside what chance does on 22 members." | "One quarter is still one quarter." "Yes, which is why the note sizes it small and asks for a test; if Q3 moves back without the offer, the half that did not get it will show that." |
 | "If the sale had gone to everybody, would you still say it did not work?" | "If it had gone to everybody there would be no one to compare against and I could say nothing; as it ran, it went to 60 customers, half of them Retail-Plus against 40 percent of the 100 it missed, and inside each segment they spent 3.0 percent less than the customers it missed." | "So you want us to withhold discounts from customers?" "From a random slice of each segment for Diwali, agreed in advance, so the next time you say the sale worked, the number holds up in front of Anand." |
 | "You are two weeks into this job. Why should Meera trust your number over our dashboard?" | "Meera should trust whichever number ties to Finance's books; mine does, to the rupee, and the dashboard's Q1 ran Rs 20 lakh high because 14 orders were counted twice." | "The dashboard has run for years." "Then the fix is one rule on order_id, and I will hand the 14 order ids to whoever owns it; after that the dashboard and the note should agree." |
-| "Give me one number I can take to the board. Just one." | "Rs 24,420 a quarter: what Retail-Plus's 22 members stopped spending, 0.19 percent of delivered revenue, real by the shuffle and small by the rupee." | "The board wants a percent." "Then 0.19 percent of revenue. The segment's own 33.9 percent is true of a Rs 72,130 segment and will read as a crisis the company does not have." |
+| "Give me one number I can take to the board. Just one." | "Rs 24,420 a quarter: what Retail-Plus's 22 members stopped spending, 0.19 percent of delivered revenue. The shuffle says it is real, and in rupees it is small." | "The board wants a percent." "Then 0.19 percent of revenue. The segment's own 33.9 percent is true of a Rs 72,130 segment and will read as a crisis the company does not have." |
 | "If the broken reorder feature explains the tier, why do we need your note at all?" | "The note measures that Retail-Plus spends less and that it beats the wobble, and Retail-Plus placed 65 orders in Q2 for every 100 in Q1, which fits a reorder problem; whether the feature caused it needs reorder-button events per member per week for the six weeks, which the note does not have." | "So just fix the button." "Fix it, it is cheap; the retention test on half the tier still runs, because without the events data we do not know the button is the whole story." |
