@@ -2,6 +2,10 @@
 
 **INTERNAL.** Built on 29 September 2026 to that day's standard, and raised on 30 September 2026 to
 the chapter standard (decisions `chapter-standard` and `four-domains`), from the approved spine.
+Rechecked the same day to standard v3, the second raise (decisions `question-ladder`,
+`self-contained`, `humanizer` and `opus-max`), from the recheck prompt in
+`prompts/week_revamp_W02_W03.md`, section 1, on branch `w01-d2-v3` from main at bda418a, after
+pull requests 199 (this pack) and 200 (the cover's chapter strip) merged.
 
 ## Sources, in the order they were read
 
@@ -13,6 +17,8 @@ the chapter standard (decisions `chapter-standard` and `four-domains`), from the
 | `docs/programme/calendar.md` | Tue 06 Oct 2026, teaching day, Module 1, no faculty block |
 | `docs/07_Client_Zero.md` v2.2 with the 28 Sep 2026 GCC addendum | The stakeholders, Kavya's review, the v1 data description; Anand's books count booked revenue net of the migration's duplicates (Wednesday), which is why the escalated case puts the delivered question in Meera's mouth |
 | `content/W01/D1` | The form of every family |
+| The recheck of 30 Sep 2026: `prompts/week_revamp_W02_W03.md` section 1 with its fills, `the-standard.md` as raised twice, `.claude/skills/humanizer/SKILL.md` | The question ladder, the self-contained rule, the deck in depth, the humanizer's read and the four specifics: chapter 6's ceiling on both baselines, every merged number kept, the Retail-Plus wording left as merged and unspread, and both decks rebuilt with the cover strip of pull request 200 |
+| The sibling branches `w01-d3-v3` and `w01-d5-v3`, read on 30 Sep 2026 for form only | The opener titled with the chapter's question and followed by an `Answered in ...` map slide, which `deck_md_check.py` pairs as the question's answer; the notebook's title cell, numbered question sections and closing `## So, ...?` cell |
 | The retail dossier, `content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md` | Linked by path from the notes, the day sheet and notebook 01; the branch `w01-domain-retail` was fetched on 30 Sep 2026 after two earlier fetches found it absent; the pack links its sections 2, 4 and 5 by path and copies nothing; its DMart (10.8 percent, quarter to March 2026) and Blinkit (Rs 518, quarter to June 2026) figures cover other periods than this pack's (8.1 percent FY26; Rs 525, Q4 FY26), and both are labelled with their periods |
 
 ## The data
@@ -62,17 +68,25 @@ frequency.
    The spine's "decomposition for all four segments, the branch and segment, two hypotheses" holds.
    The second case became Marketing's new deck and the tier's call list, which is the spine's "the
    Retail-Plus head's question and Marketing's pushback, argued from the same numbers".
-4. **Chapter titles carry no question mark.** `scripts/deck_md_check.py` treats a SECTION heading
-   ending in "?" as a question slide needing an answer slide, so the chapter titles drop it in the deck
-   and the notebooks alike, and match word for word.
+4. **Chapter titles are questions** since the v3 recheck of 30 Sep 2026: the deck's `## SECTION n:`
+   carries the chapter's short question with its mark ("Is the drop real?", "Did customers pay
+   more?"), its promise the full question, and the notebook's title cell the full question.
+   `scripts/deck_md_check.py` treats a SECTION heading ending in "?" as a question slide, so the slide
+   after each opener is the chapter's map, titled "Answered in six questions, ...", which the gate
+   reads as the answer, as the Wednesday v3 pack does. The notebook file names keep their merged
+   stems (`04_mix_or_rate` for "Did customers pay more?"), since every other file links them.
 5. **The afternoon deck's openers print 06 to 11** from their own `## SECTION n:` headings, since the
-   merged `scripts/build_deck.py` (e971c72) takes the numeral from the heading; the internal patch
-   script that did it retired on 30 Sep 2026. The half-two cover's chapter strip still numbers its
-   chapters 01 to 05 by position, from `scripts/deck_layout.py`, requested below.
+   merged `scripts/build_deck.py` (e971c72) takes the numeral from the heading, and since pull request
+   200 (429ee7a) the half-two cover's chapter strip numbers them 06 to 11 as well, wrapping 11 to a
+   second row; both decks were rebuilt on it in the v3 recheck.
 6. **The segment finding.** It stays out of notebooks 01 to 03 and their outputs, the morning deck up
-   to S37, the guided exercise and the chapter 1 to 3 sets; chapter 3's second route prints agreement
-   and no segment's numbers. From chapter 4 it is named, after the room found it in its own cell, as
-   the 29 September build did from the afternoon on.
+   to S53, the guided exercise and the chapter 1 to 3 sets; chapter 3's second route prints agreement
+   and no segment's numbers. From chapter 4 it is named, after the room found it in its own cell at
+   S52, as the 29 September build did from the afternoon on. The v3 rebuild renumbered the slides
+   (the room's cell was S36 and chapter 3 closed at S37 before it) and changed nothing else here: the
+   wording waits on the requester's ruling, so the recheck neither changed it nor spread it, and no
+   morning file before S54, no pre-read and no earlier-day file names it. The morning deck's
+   day-question slide and chapter 3's closing answer stay neutral.
 7. **Sizing on what separates the options.** On 200 rows speed decides nothing, so since 30 Sep 2026
    no sizing table carries a column every option scores alike: chapter 1 dropped its timing column
    for what each option leaves out, and chapters 2, 4 and 5 their rows-read columns for whether the
@@ -91,10 +105,12 @@ frequency.
     copy, function or key design question.
 11. **Kahoot.** The first-rung item returns (the row's plan) and a mix item joins; the discount item
     and the bridge-order item left, since chapter 2's set tests both.
-12. **The study notes run to about 6,600 words** against 4,000 to 5,000, counting tables and links:
+12. **The study notes run to about 8,100 words** against 4,000 to 5,000, counting tables and links:
     six chapters as worked cases, two cases, fourteen interview answers. The review pass of 30 Sep 2026
     added a clause for each business term and a sentence for each new second route, and cut two
-    tangential readings and a repeated clause; nothing was cut to reach a count.
+    tangential readings and a repeated clause. The v3 recheck added about 1,500: each chapter's who
+    needs the answer, its six questions listed and asked again as subheadings, and a closing answer
+    with its number. Nothing was cut to reach a count.
 13. **The cheat sheet runs to a second page** for its glossary foot, within the two-page limit.
 14. **Each chapter's second route is an independent method** since 30 Sep 2026: chapter 1 by month
     in the order date, chapter 2 the symmetric split, chapter 3 one pass by key, chapter 4 two groups
@@ -104,9 +120,32 @@ frequency.
     replace (28 lost orders times Q1's value, the rate-first order, the total less Business, the
     pre-break pace carried forward) each re-derived the first route's identity and could not fail.
 15. **Chapter 6's ceiling rests on a baseline**, the tier's pace over the 55 days from 1 July to the
-    break. Over only the 37 days just before the break the pace was higher (15 orders) and the
-    ceiling would be 7.0; notebook 06's depth section asks the learner to find this and say which
-    baseline the memo names. The headline stays "at most about 4 orders", on the stated baseline.
+    break: 18 orders, so 12.1 expected in the 37 days after it against 8 placed, about 4.1. Over only
+    the 37 days just before the break, 19 July to 24 August, the tier placed 15 orders and the ceiling
+    is 7.0; both recomputed from the class file on 30 Sep 2026. Since the v3 recheck every place the
+    headline appears says so and says the call holds either way, far below the 25 orders claimed:
+    half two's S12 (the fix, with both baselines in its table) and its notes, S16's close and notes,
+    S28's notes, the study notes, the day sheet (its ladder, trap table and a note on the baseline),
+    the cheat sheet's panel 8, the board work and the companion's walk. Notebook 06 states only the
+    55-day ceiling at its fix and in its memo claim, and keeps its depth exercise, which asks the
+    learner to find the 37-day figure. The headline stays "at most about 4 orders", on the stated
+    baseline.
+
+16. **The question ladder was fixed before any file changed**, in one scratch file holding the day's
+    question, each chapter's short and full question, who needs the answer, the six smaller questions
+    with their answers and numbers, and the afternoon's section questions; the decks, notebooks, notes,
+    day sheet, board work and exercise sets copy it word for word. The notebook builders refuse to
+    build when a title or numbered heading drifts from it.
+17. **The decks grew to carry each chapter in full.** The morning deck runs 88 slides (59 before),
+    the afternoon 37 (29 before): after the cover a slide asks the day's question and lists the six
+    chapter questions; each chapter adds its map, the thinking as a picture, the code in one block and
+    a predict pair where it lacked them, and closes on a table answering its six questions beside
+    Kavya's review. Slide minutes still sum to 20 for the ask, 30 per chapter, and 50, 15, 40, 20 and
+    15 for the afternoon's blocks.
+18. **The companion's glossary and walk point at chapters.** They still named the retired rounds of
+    29 September ("Round 2; notebook 02", and "the escalated case; notebook 04" for the summary
+    helper, which chapter 5 teaches); each entry now names its chapter and notebook, and the walk,
+    headings and ladder labels ask the chapters' questions.
 
 ## Invented, and recorded as invented
 
@@ -208,11 +247,12 @@ mermaid-cli 12.0.0, WeasyPrint 70.0, Playwright 1.63.0 with the pre-installed Ch
 ## Shared-tool changes requested
 
 1. `data/generate_client_zero.py`: a `v1b` take-home sample, so the day folder's workaround script can retire.
-2. `scripts/deck_layout.py`, `title_slide`: number the cover's chapter strip from each SECTION's own
-   heading, as `build_deck.py` now does for the openers (e971c72); the half-two cover still prints
-   01 to 05 for chapters 6 to 10, and the strip shows five of the six chapters.
-3. `scripts/deck_md_check.py`: skip the question-and-answer pairing for SECTION headings, so a chapter
-   titled with its question ("Is the drop real?") can keep its question mark.
+2. Done by pull request 200 (429ee7a): the cover's chapter strip numbers each chapter from its SECTION
+   heading and wraps to a second row, so half two's cover lists 06 to 11 in full.
+3. `scripts/deck_md_check.py`: skip the question-and-answer pairing for SECTION headings. The v3 pack
+   keeps its chapter titles' question marks by titling each map slide "Answered in six questions, ...",
+   which the gate reads as an answer; a gate that knew a SECTION opener from a question slide would
+   let the map carry any title.
 4. `scripts/c2kit.py`, `strip()`: the marker loop still reassigns `left`, the chart's margin, so every
    dot and marker after the first marker is drawn up to 40 pixels off; this pack draws strips without
    markers. Renaming the loop's variable fixes it.
