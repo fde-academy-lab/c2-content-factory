@@ -96,7 +96,7 @@ Where: D is the dossier and its section, C is the card and its panel, T is the t
 
 | Fact as the files state it | Where | Source |
 |---|---|---|
-| Reliance: 2,221 Jio-bp fuel outlets, Jio's 533 million subscribers (533.3 million), Reliance Retail's 20,169 stores, in the quarter to 30 June 2026 | D2, T2 | 1 |
+| Reliance: Jio's 533 million subscribers (533.3 million), Reliance Retail's 20,169 stores, JioMart serving about 5,500 pin codes, and the oil-to-chemicals segment, in the quarter to 30 June 2026. Jio-bp was left out of the opening scene because it is a joint venture with bp | D2, T2 | 1 |
 | Reliance Retail: gross revenue Rs 90,408 crore and revenue from operations Rs 79,745 crore in the quarter; the consolidated statement's step is "Less: GST Recovered" | D3 | 1 |
 | Reliance Retail: EBITDA margin 7.9 percent, calculated on revenue from operations | D3 | 1 |
 | Reliance Retail: grocery like-for-like growth of 7 percent; 396 million registered customers | D5, T facts | 1 |
@@ -110,6 +110,7 @@ Where: D is the dossier and its section, C is the card and its panel, T is the t
 | Tesco Bengaluru: since 2004, more than 4,000 colleagues | D2, T2 | 7 |
 | Lowe's India: established 2014, more than 5,000 associates across technology, analytics, finance and shared services | D2, T2 | 8 |
 | DMart: 500 stores at 31 March 2026; "everyday low cost, everyday low price"; FY26 standalone revenue Rs 66,968 crore, EBITDA margin 7.8 percent, profit-after-tax margin 4.8 percent; stores two years and older grew 10.8 percent in the quarter to March 2026 | D2, D3, D5, T3, T5 | 9 |
+| DMart Ready, DMart's online grocery business, operated in 18 cities at 31 March 2026 | D3 | 9 |
 | Trent: 301 Westside and 982 Zudio stores at 30 June 2026 | D2, T facts | 10, 11 |
 | Amazon's seller terms call amazon.in the "Marketplace" on which registered sellers sell | D2 | 12 |
 | Blinkit: 2,443 dark stores at the end of the quarter to June 2026; net average order value Rs 518 | D2, D3, D10, T facts | 13 |
@@ -193,7 +194,7 @@ Every number below is illustrative, chosen for easy arithmetic, labelled illustr
 2. **A question the story leaves open.** A Singapore-headquartered group owning an Indian store chain that sells its own stock through an app would, in the real world, meet the FDI limits in section 3. The dossier names the rule and the question and says the story does not settle it. If the requester wants it settled, the likely lines are an Indian-owned Kalpa Retail India or a marketplace app; either would be a client-zero decision.
 3. **The 45-minute domain story.** The approved spine's Monday morning opens on the client's ask (20 minutes) with no domain story. The talk track is written as a 45-minute block that hands over to Meera's ask; the Monday day sheet and spine decide where it sits.
 4. **The sheet builder.** `scripts/build_cheatsheet.py` read the foot strip's glossary from whichever notes file the filesystem listed first, and with the dossier added it would have printed retail terms on the Monday revenue-tree sheet's next rebuild. It now prefers the notes whose topic shares a word with the sheet's name, and otherwise the day's own `_notes_` file (commit on this branch). The revenue-tree PDF was not rebuilt.
-5. **Length.** The dossier runs to about 9,500 words of prose and tables (diagram source excluded) against the brief's 6,000 to 8,000, because its twelve sections carry 32 tables. Section word counts are in the session report.
+5. **Length.** The dossier runs to about 9,500 words of prose and tables (diagram source excluded) against the brief's 6,000 to 8,000, because its twelve sections carry 31 tables. Section word counts are in the session report.
 
 ## The plant check
 

@@ -61,7 +61,7 @@ flowchart LR
 
 ## Part 2: Which real company Kalpa is like (7 minutes)
 
-**Say.** "Kalpa Group is headquartered in Singapore and runs five businesses: Retail, Financial Services, Logistics, Health and Connect. Its largest engineering and data centre is in Bengaluru, and that centre, the Global Capability Centre, is the team you have joined. India has groups built like that. In one quarter Reliance Industries reported fuel outlets, Jio with 533 million subscribers and Reliance Retail with 20,169 stores. Tata runs 31 companies across ten verticals, from consumer and retail to financial services and telecom.
+**Say.** "Kalpa Group is headquartered in Singapore and runs five businesses: Retail, Financial Services, Logistics, Health and Connect. Its largest engineering and data centre is in Bengaluru, and that centre, the Global Capability Centre, is the team you have joined. India has groups built like that. In one quarter Reliance Industries reported Jio with 533 million subscribers and Reliance Retail with 20,169 stores and the JioMart app, beside an oil-to-chemicals business. Tata runs 31 companies across ten verticals, from consumer and retail to financial services and telecom.
 
 "The team you joined works the way the Indian centres of global retailers work. Walmart Global Tech has teams in Bengaluru, Chennai and Gurugram; Target in India's expanded Bengaluru campus will bring together more than 5,700 people; Tesco has been in Bengaluru since 2004 and Lowe's since 2014. Your clients are colleagues who run a business somewhere else.
 

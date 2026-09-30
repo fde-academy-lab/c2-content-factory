@@ -4,7 +4,7 @@
 
 The business you work inside for the next two weeks: which real companies Kalpa is like, how a rupee at the checkout becomes profit, who asks the data team for what, every metric as a formula with a worked number and the trap it hides, and the words a stakeholder meeting assumes you know.
 
-About a 40 minute read · 6 diagrams and 32 tables
+About a 45 minute read · 6 diagrams and 31 tables
 
 > Kalpa Group, its people and its numbers are fictional, and any resemblance to a real company is coincidental. The real companies named here are analogies: each fact about them was checked on 30 September 2026 against the source named beside it, and none of them is the model for Kalpa. A number marked illustrative is a round number chosen for easy arithmetic; it is neither Kalpa's data nor any real company's.
 
@@ -44,9 +44,9 @@ flowchart LR
 
 **At the returns desk** a shopper brings back a mixer bought on the app, and next week the Saturday basket's bedsheet will come back the same way, because its colour differed from the picture. Of every 100 app orders delivered, 7 come back. Elsewhere, the support team led by Farhan Sheikh answers two thousand tickets a day, most of them asking where an order is, when a refund will land or why a payment failed.
 
-**At head office** the marketing lead is finishing the case for Rs 12 crore to acquire new customers, and the head of Retail-Plus is reading the month's renewals.
+**At head office** the marketing lead is finishing the case for Rs 12 crore to acquire new customers and following January's 1,000 new customers month by month, and the head of Retail-Plus is reading the month's renewals.
 
-**After the store closes**, finance closes the week. The finance controller, Anand Iyer, has his team walk the week's gross merchandise value down through cancellations, returns and GST to net revenue, and the data team's dashboard has to agree with his books. At month end the same team will report the app's month in this city: 40,000 customers placed 50,000 orders of four items each, at Rs 450 an item before a 10 percent discount.
+**After the store closes**, finance closes the week. The finance controller, Anand Iyer, has his team walk the week's gross merchandise value down through cancellations, returns and GST to net revenue, and the data team's dashboard has to agree with his books. At month end the same team will report the app's month in this city: 40,000 customers placed 50,000 orders of four items each, at Rs 450 an item before a 10 percent discount. Over the quarter, 1,00,000 customers placed 1,50,000 orders.
 
 **On Monday** the CEO, Meera Raghavan, reads one page: revenue grew 4 percent last year against a plan of 15, marketing wants Rs 12 crore, and she wants to know where growth comes from and where it is leaking before she signs anything. That is the question the next two weeks answer.
 
@@ -58,14 +58,14 @@ flowchart LR
 | 4 percent, half a percent, 900 of 1,000 | Stock-outs, shrinkage and the supplier's fill rate | Sections 5 and 6 |
 | 45 days, 60 days, 620 of 1,000 | Days of inventory, supplier credit, festive sell-through | Sections 3, 5 and 10 |
 | 7 in 100 | Delivered app orders that come back | Section 5 |
-| 40,000 customers, 50,000 orders, Rs 450, 10 percent | The app's month in one city | Section 5 |
+| 40,000 customers, 50,000 orders, Rs 450, 10 percent; 1,00,000 customers and 1,50,000 orders in the quarter; January's 1,000 new customers | The app's month, quarter and newest cohort in one city | Section 5 |
 | Rs 12 crore; 4 percent against 15; two thousand tickets a day | The story's own numbers | Sections 4, 5 and 8 |
 
 ---
 
 ## 2. Which real company is Kalpa like
 
-In one week a family in Pune can fill the car at a Jio-bp pump, recharge two Jio phone numbers and buy the month's groceries at a Reliance store, and every one of those rupees lands in the same group. For the quarter to 30 June 2026, Reliance Industries reported oil to chemicals with 2,221 Jio-bp fuel outlets, Jio with 533 million subscribers, and Reliance Retail with 20,169 stores (Reliance Industries media release, 17 July 2026). The Tata group works the same way from a different history: founded in 1868, it runs 31 companies across ten verticals, including consumer and retail, financial services, and telecom and media, with Tata Sons as the principal investment holding company that promotes them (tata.com, business overview).
+In one week a family in Pune can recharge two Jio phone numbers, order the month's groceries on JioMart and buy school shoes at a Reliance store, and every one of those rupees lands in the same group. For the quarter to 30 June 2026, Reliance Industries reported Jio with 533 million subscribers, and Reliance Retail with 20,169 stores and a JioMart app serving about 5,500 pin codes, beside its oil-to-chemicals business (Reliance Industries media release, 17 July 2026). The Tata group works the same way from a different history: founded in 1868, it runs 31 companies across ten verticals, including consumer and retail, financial services, and telecom and media, with Tata Sons as the principal investment holding company that promotes them (tata.com, business overview).
 
 Kalpa Group is built like that: one group headquartered in Singapore, five business units, and one engineering and data centre in Bengaluru that serves all five. For an analyst the point is practical. The units share customers, a brand and a data centre, and each is still run and measured on its own numbers, so a metric that is right for Retail can mean nothing in Health.
 
@@ -110,7 +110,7 @@ Kalpa Retail sells consumer goods through its app, its website and its stores ac
 | Marketplace | Flipkart, about 77 percent owned by Walmart since August 2018 (Walmart corporate, 18 August 2018); Amazon India, whose seller terms call amazon.in the Marketplace on which registered sellers sell (sell.amazon.in) | Commissions, fees, advertising and delivery services charged to sellers who own the goods | GMV, the share kept as fees, seller quality, returns |
 | Quick commerce | Blinkit, with 2,443 dark stores at the end of June 2026 and a net average order value of Rs 518 (MediaNama on Eternal's results, 24 July 2026); Zepto; Swiggy Instamart | Small baskets delivered in minutes from dark stores near the customer | Orders per store per day, basket value, delivery cost per order |
 
-Kalpa Retail owns its stock and stores like DMart and sells through an app like Flipkart, so its data team needs both vocabularies. Section 3 shows that the app half raises a question the story leaves open.
+Kalpa Retail sells from stores like DMart and through an app like Flipkart, so its data team needs both vocabularies. Section 3 shows that the app half raises a question the story leaves open.
 
 ### Retail-Plus, the paid tier
 
@@ -118,7 +118,7 @@ Memberships are how retailers buy frequency. Amazon offers Prime in India from R
 
 ### The other four units, and when they become your client
 
-- **Kalpa Financial Services** is like PhonePe, with more than 520 million registered users and 230 million transactions a day by Walmart's count (Walmart corporate, "Walmart in India"), and Tata Capital in lending (tata.com). Rohan Desai, its head of risk, arrives in Week 5 with loans where a default costs twenty times a wrongful rejection.
+- **Kalpa Financial Services** is like PhonePe, with more than 520 million registered users and more than 230 million transactions a day by Walmart's count (Walmart corporate, "Walmart in India"), and Tata Capital in lending (tata.com). Rohan Desai, its head of risk, arrives in Week 5 with loans where a default costs twenty times a wrongful rejection.
 - **Kalpa Logistics** is like Ekart, the Flipkart group's logistics arm, which reaches more than 95 percent of Indian pin codes (Business Standard, 28 July 2026); its stakeholder is not yet named.
 - **Kalpa Health** runs diagnostic testing, and the revenue cycle behind it, for patients in the United States, like Quest Diagnostics, which says it serves one in three adult Americans each year (questdiagnostics.com), and Labcorp, with more than 71,000 employees (labcorp.com). Revenue-cycle firms such as Omega Healthcare verify insurance, code, bill, fight denied claims and collect for US providers (omegahms.com). Dr Priya Menon, its COO, is your client in Build 1, where a test booked and the cash collected for it are two different numbers.
 - **Kalpa Connect** is like Jio: 533 million customers, an average revenue per user of Rs 215.6 a month and monthly churn of 1.6 percent in the quarter to June 2026 (RIL, 17 July 2026). Ananya Bose, its COO, brings text problems at telecom scale in Build 3.
@@ -198,7 +198,7 @@ The cash conversion cycle is inventory days plus receivable days less payable da
 | Revenue booked | The full selling price, net of tax | The full selling price, net of tax | Only the commission and fees |
 | The margin that matters | Gross margin, after store costs | Gross margin, after delivery costs | The take rate: fees as a share of GMV |
 | Inventory risk | The retailer's | The retailer's | The sellers' |
-| Indian example | DMart | Kalpa's app, in the story | Flipkart, Amazon India |
+| Indian example | DMart's stores | DMart Ready, DMart's own online grocery, in 18 cities at 31 March 2026 (DMart, 2 May 2026) | Flipkart, Amazon India |
 
 The marketplace column exists in India largely because of one rule. Since 1 February 2019, foreign direct investment has been permitted up to 100 percent in the marketplace model of e-commerce and not permitted in the inventory-based model (DPIIT, Press Note 2 of 2018, dated 26 December 2018). The press note bars a marketplace from owning or controlling the inventory sold on it, treats a seller as controlled when more than 25 percent of its purchases come from the marketplace or its group companies, and forbids the marketplace to influence sale prices. That is why Flipkart, majority-owned by Walmart, and Amazon India run as marketplaces. Press Note 3 of 2026, dated 23 July 2026, opened an inventory model to foreign-owned e-commerce companies only for exporting goods made in India, and left the ban on selling owned stock to Indian consumers in place (EY India tax alert, September 2026). Store chains sit under a separate rule: foreign investment in multi-brand retail is capped at 51 percent with government approval, and such a company may not sell by e-commerce in any form (Consolidated FDI Policy 2020, paragraph 5.2.15.4).
 
@@ -275,7 +275,7 @@ flowchart TB
     class R,M,S dark
 ```
 
-The worked numbers come from section 1's illustrative Saturday and month. Each metric carries the trap that most often makes it lie, and the person who will ask you for it.
+The worked numbers come from section 1's illustrative Saturday, month and quarter; the few that do not are marked invented where they appear. Each metric carries the trap that most often makes it lie, and the person who will ask you for it.
 
 ### The revenue tree
 
@@ -346,7 +346,7 @@ The worked numbers come from section 1's illustrative Saturday and month. Each m
 |---|---|
 | Formula | Gross margin percent = (net revenue less COGS) / net revenue; contribution = gross margin less variable costs |
 | Worked | The Saturday basket: Rs 400 / Rs 1,600 = 25 percent; contribution Rs 150, or 9.4 percent |
-| The trap | Averaging percentages. Staples at 10 percent on Rs 90 lakh and fashion at 40 percent on Rs 10 lakh average to 25 percent, while the business earns Rs 13 lakh on Rs 1 crore: 13 percent. Margins are weighted by revenue before they are combined. |
+| The trap | Averaging percentages. Staples at 10 percent on Rs 90 lakh and fashion at 40 percent on Rs 10 lakh (invented numbers) average to 25 percent, while the business earns Rs 13 lakh on Rs 1 crore: 13 percent. Margins are weighted by revenue before they are combined. |
 | Who asks | The finance controller and the category buyers |
 
 ### Inventory turns and days of inventory
@@ -381,7 +381,7 @@ The worked numbers come from section 1's illustrative Saturday and month. Each m
 | | |
 |---|---|
 | Formula | Same-store growth = this period's sales of stores open in both periods / their sales last period, less 1 |
-| Worked | Last year 100 stores sold Rs 500 crore; this year the same 100 sold Rs 510 crore, up 2 percent, and 20 new stores added Rs 65 crore, so total sales grew 15 percent. The honest headline is 2 percent. DMart reports the same idea: its stores two years and older grew 10.8 percent in the quarter to March 2026 (DMart, 2 May 2026), and Reliance Retail's grocery business grew 7 percent like for like in the quarter to June 2026 (RIL, 17 July 2026). |
+| Worked | Last year 100 stores sold Rs 500 crore (invented numbers); this year the same 100 sold Rs 510 crore, up 2 percent, and 20 new stores added Rs 65 crore, so total sales grew 15 percent. The honest headline is 2 percent. DMart reports the same idea: its stores two years and older grew 10.8 percent in the quarter to March 2026 (DMart, 2 May 2026), and Reliance Retail's grocery business grew 7 percent like for like in the quarter to June 2026 (RIL, 17 July 2026). |
 | The trap | The calendar and the tax. Diwali fell on 20 and 21 October in 2025, by state, and falls on 8 November in 2026, which moves festive sales between months and quarters. GST on everyday goods such as shampoo and toilet soap fell to 5 percent from 22 September 2025 (GST Council, 3 September 2025), so a comparison straddling that date mixes a price change into a sales change. |
 | Who asks | The CEO, store operations and every investor |
 
@@ -567,7 +567,7 @@ Five scenes most learners have lived through, each turned into its metrics and t
 | A DMart-style weekend rush: queues at every till, trolleys full, the favourite brand of rice gone by evening | Conversion = bills / footfall; bill value = sales / bills; items per bill; stock-outs by hour | Forecasting footfall by hour to open tills and refill fast movers, and a denominator trap: a family of four is four through the door and one bill |
 | A delivery promised in minutes from a dark store nearby | Orders per dark store per day; average order value, Rs 518 at Blinkit in the quarter to June 2026 (MediaNama); delivery cost per order; contribution per order | Placing each product in the right dark store by forecast, and a speed promise weighed against riders' safety: in January 2026, after a government intervention, Blinkit dropped the "10-minute" promise from its branding and the other platforms agreed to follow (All India Radio News, 13 January 2026) |
 | A festive sale, such as Flipkart's Big Billion Days or Amazon's Great Indian Festival, with early access for members | GMV; discount depth; sell-through; returns that arrive weeks later; sales pulled forward from the weeks after | Separating sales the event added from sales it only moved earlier, and forecasting its demand from few comparable events |
-| A membership renewal: the reminder that Retail-Plus renews next week | Renewal rate = members renewing / members due; orders per member against orders per non-member; fee revenue against delivery given away | Members were heavier buyers before they joined, so comparing them with non-members overstates what the membership caused; a churn score decides who gets a renewal offer |
+| A membership renewal: the reminder that Retail-Plus renews next week | Renewal rate = members renewing / members due; orders per member against orders per non-member; fee revenue against delivery given away | The customers who join are often those who already buy the most, so comparing members with non-members can overstate what the membership caused; a churn score decides who gets a renewal offer |
 | A return: the Saturday basket's bedsheet goes back because the colour differs from the picture | Returns rate = returned / delivered; reverse-logistics cost; the order's contribution after the refund | "Not as described" returns trace back to catalogue data, abuse hides among honest returns, and a refund agent must act within the policy |
 
 ---
