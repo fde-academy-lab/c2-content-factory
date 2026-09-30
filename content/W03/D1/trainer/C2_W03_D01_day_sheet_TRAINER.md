@@ -99,13 +99,7 @@ Programme Head chooses on the day, and this sheet gives both.
 | **Gives up** | Two of Dr Menon's questions go unanswered, so her board answer is partial | Trios become pairs, and one group has no counterpart to be compared with |
 | **Wednesday's parallel build** | The trainer's smaller slice can come from a spare sub-problem, so solving it in the open hands no group its answer | The slice sits inside a sub-problem some group holds, so it must stop before that group's finding |
 | **Thursday's viva** | Viva prompts for three sub-problems | Viva prompts for five |
-| **Recommendation (this sheet's, not a source's)** | Take 1 revenue, 3 billing and 5 campaign: one sub-problem each for the tree, reconciliation across two systems' keys, and the fair comparison. Spare 2 and 4, which repeat the ladder and the fair comparison on smaller files | Give the single group, which should be the group of three, sub-problem 4 no-shows: the smallest file (7,133 visits) and one comparison |
-
-**Roster arithmetic, either option.** Nine groups at about 30 minutes of GD each is 270 minutes,
-4.5 hours across Friday and Saturday; nine presentations at 25 to 30 minutes are 225 to 270 minutes.
-Thursday's mocks at about 20 minutes for 35 learners are 700 minutes, about 11.7 hours, split between
-the Principal Advisor online and the Programme Head and the Academic TA in person, which is close to
-four hours each if the three share it equally; the sources do not fix the shares.
+| **Which sub-problems** | 1 revenue, 3 billing and 5 campaign, with 2 and 4 spare | All five, with the group of three on sub-problem 4 no-shows |
 
 **Running the 30 minutes.** The sources name the Programme Head as the allocator and say nothing about
 how groups are formed. If the group list is not ready when the allocation opens, the Programme Head
@@ -164,7 +158,7 @@ it on Wednesday." Another group's finding it for itself is the lesson.
 | A group opens a notebook and starts analysing | Ask for the one-sentence question first. A group may open a file to see what a column holds; analysis waits for the pinned scope. |
 | Two groups on the same sub-problem compare notes | They may talk about the domain. They keep their mappings to themselves until Saturday, since the panel wants their different viewpoints. |
 | The group of three asks for a lighter brief | No. The brief is the same; the scope sentence can be narrower, and the group says so in its "we will not". |
-| Someone asks for the scoring criteria | The rubrics are not approved yet, and nobody states a criterion before they are. The marks per event are locked: mini project 40 including the presentation, mock 30, GD 30. |
+| Someone asks for the scoring criteria | Point to slides S9a to S9c and the briefing note, which carry all three rubrics; every brief carries the mini project's. Mock R1 runs on Thursday 22 October, the GD rounds on Friday 23 October closing on the morning of Saturday 24 October, and the presentations on Friday 23 October where the roster allows and on Saturday 24 October. |
 | Someone asks whether the data is real | It is synthetic, Kalpa Health is fictional, and every learner holds the same bytes, so a group's number can be checked against another's. |
 | Codespaces will not open | Nothing today needs code. The CSV files open in VS Code or Excel; the worksheet is markdown. |
 | A learner is absent | The group carries on; the worksheet in the group's repository is how the learner catches up. |
