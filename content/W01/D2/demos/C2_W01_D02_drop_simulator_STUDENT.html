@@ -1,0 +1,1471 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which branch moved: Week 1, Tuesday companion</title>
+<style data-c2kit>
+/* c2kit.css: the look every companion page inlines, taken from the orientation deck.
+ * Violet on lavender, Georgia for headings, Calibri for text, cards with a soft shadow.
+ * scripts/build_companion.py inlines this file into each page. */
+:root{
+  --ink:#1A0F5C;--night:#1A1440;--violet:#5B3FD6;--violet-mid:#2C1A86;--lav:#D9A7FF;
+  --muted:#6B6690;--soft:#A9A3D2;--lilac:#CFC9EE;--line:#E4E1F1;--tint:#EEEAFB;--surface:#F4F2FA;
+  --white:#FFFFFF;--rose:#D63A6A;--rose-tint:#FCEBF0;--green:#1F8A5B;--green-tint:#E8F5EE;
+  --serif:Georgia,"DejaVu Serif",serif;
+  --sans:Calibri,Carlito,"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+  --mono:Consolas,ui-monospace,SFMono-Regular,Menlo,monospace;
+  --shadow:0 2px 6px rgba(26,15,92,.10),0 1px 2px rgba(26,15,92,.06);
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#F7F5FD 0%,#F2EFFB 100%);color:var(--night);
+     font:16px/1.55 var(--sans)}
+a{color:var(--violet)}
+code,kbd{font:14px var(--mono);background:var(--tint);border-radius:4px;padding:1px 5px;color:var(--ink)}
+
+/* the dark header, like a deck cover */
+.hero{background:radial-gradient(120% 140% at 85% 10%,#5B3FD6 0%,#2C1A86 45%,#1A1440 100%);
+      color:var(--white);padding:34px 40px 30px}
+.hero .kicker{display:inline-block;border:1px solid var(--lilac);border-radius:999px;padding:4px 14px;
+      font:700 11px var(--sans);letter-spacing:.24em;text-transform:uppercase;margin-bottom:14px}
+.hero h1{font:400 38px/1.15 var(--serif);margin:0 0 10px}
+.hero .quote{font:italic 20px/1.4 var(--serif);color:var(--lav);max-width:860px;margin:0 0 6px}
+.hero .who{color:var(--lilac);font-size:13px;margin:0}
+.hero .promise{color:#E4E1F1;max-width:860px;margin:16px 0 0}
+
+/* the page: a left rail and the sections */
+.page{display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;max-width:1240px;margin:0 auto;
+      padding:26px 28px 60px}
+@media (max-width:900px){.page{grid-template-columns:1fr}.rail{position:static}}
+.rail{position:sticky;top:18px;align-self:start;background:var(--white);border:1px solid var(--line);
+      border-radius:12px;padding:14px 12px;box-shadow:var(--shadow)}
+.rail .label{font:700 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--violet);
+      margin:2px 8px 8px}
+.rail a{display:flex;gap:10px;align-items:baseline;padding:7px 8px;border-radius:8px;color:var(--night);
+      text-decoration:none;font-size:14.5px}
+.rail a .n{font:15px var(--serif);color:var(--violet);min-width:22px}
+.rail a.on{background:var(--tint);color:var(--ink);font-weight:700}
+section.part{margin:0 0 38px;scroll-margin-top:16px}
+.part > .eyebrow{font:700 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--violet);
+      margin:0 0 4px}
+.part > h2{font:400 28px/1.2 var(--serif);color:var(--ink);margin:0 0 6px}
+.part > .lede{color:var(--muted);margin:0 0 16px;max-width:860px}
+
+/* cards and strips */
+.card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+      box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.grid2,.grid3{grid-template-columns:1fr}}
+.strip{border-radius:10px;padding:12px 16px;margin:12px 0;background:#F7F5FD;border:1px solid var(--line)}
+.strip b.tag{display:block;font:700 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;
+      color:var(--violet);margin-bottom:3px}
+.strip.client{background:linear-gradient(135deg,#2C1A86,#1A1440);color:var(--white);border:none}
+.strip.client b.tag{color:var(--lav)}
+.strip.bad{background:var(--rose-tint);border-color:#F3C5D3}
+.strip.bad b.tag{color:var(--rose)}
+.strip.good{background:var(--green-tint);border-color:#BFE3CF}
+.strip.good b.tag{color:var(--green)}
+.c2k-row{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
+.c2k-svg{max-width:100%;height:auto}
+.holder{overflow-x:auto}
+
+/* the guided walk */
+.walk .narration{min-height:150px}
+.walk .step{font:700 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)}
+.walk .narration h3{font:400 21px/1.25 var(--serif);color:var(--ink);margin:4px 0 8px}
+.meter{margin-top:14px}
+.meter .bar{position:relative;height:16px;border-radius:999px;background:var(--surface);border:1px solid var(--line);
+      overflow:hidden}
+.meter .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#7B62E8,#5B3FD6);
+      border-radius:999px;transition:width .35s ease}
+.meter .plan{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--rose)}
+.meter .legend{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:4px}
+.big{font:34px/1.1 var(--serif);color:var(--violet)}
+.verdict{font-weight:700;color:var(--ink)}
+
+/* buttons, toggles and inputs */
+button{font:inherit;cursor:pointer}
+.btn{padding:8px 16px;border-radius:999px;border:1px solid var(--violet);background:var(--white);color:var(--violet);
+     font-weight:700}
+.btn.primary{background:var(--violet);color:var(--white)}
+.btn[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.btn:focus-visible,.rail a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--lav);
+     outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.slider{margin:10px 0}
+.slider label{display:flex;justify-content:space-between;font-size:14.5px;color:var(--night)}
+.slider label b{color:var(--violet);font-family:var(--mono);font-weight:400}
+input[type=range]{width:100%;accent-color:var(--violet)}
+input[type=number],textarea{font:15px var(--mono);border:1px solid var(--lilac);border-radius:8px;padding:6px 9px;
+     color:var(--night);background:var(--white);width:100%}
+textarea{min-height:92px;resize:vertical}
+
+/* experiment cards */
+.exp{display:grid;gap:10px;align-content:start}
+.exp p{margin:0}
+.exp .result p{margin:0 0 8px}
+.exp .part-label{font:700 10.5px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)}
+.exp .result{border-top:1px dashed var(--lilac);padding-top:10px}
+.exp .result[hidden]{display:none}
+.exp .waiting{color:var(--muted);font-style:italic}
+.rule{font:italic 17px/1.4 var(--serif);color:var(--ink)}
+
+/* tables */
+table.t{border-collapse:collapse;width:100%;font-size:14.5px;margin:8px 0}
+table.t th{background:var(--ink);color:var(--white);text-align:left;padding:7px 10px;font-weight:700}
+table.t td{padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.t tr:nth-child(even) td{background:var(--surface)}
+table.t td.num,table.t th.num{text-align:right;font-variant-numeric:tabular-nums}
+
+/* popups */
+dialog{border:none;border-radius:14px;padding:0;max-width:min(860px,94vw);box-shadow:0 18px 50px rgba(26,15,92,.35)}
+dialog::backdrop{background:rgba(26,20,64,.45)}
+dialog .head{background:var(--ink);color:var(--white);padding:12px 18px;font:400 19px var(--serif);
+      display:flex;justify-content:space-between;align-items:center;gap:16px}
+dialog .body{padding:16px 18px}
+dialog .close{background:transparent;border:1px solid var(--lilac);color:var(--white);border-radius:999px;
+      padding:4px 12px}
+
+/* glossary */
+dl.gloss{display:grid;grid-template-columns:200px minmax(0,1fr);gap:8px 18px;margin:0}
+dl.gloss dt{font-weight:700;color:var(--ink)}
+dl.gloss dd{margin:0}
+dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
+@media (max-width:700px){dl.gloss{grid-template-columns:1fr}}
+.foot{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:10px;margin-top:30px}
+</style>
+<style>
+  html{scroll-behavior:auto}
+  .formula{font:15px var(--mono);background:var(--surface);border:1px solid var(--line);border-radius:8px;
+           padding:8px 12px;margin-top:10px;color:var(--ink);overflow-x:auto;white-space:pre-wrap}
+  .console{font:14px var(--mono);background:var(--night);color:#F4F2FA;border-radius:8px;padding:10px 14px;
+           margin-top:10px;white-space:pre-wrap;overflow-x:auto}
+  .console .flag{color:#FFB3C7}
+  .ok{color:var(--green);font-weight:700}
+  .warn{color:var(--rose);font-weight:700}
+  .jumped{font-size:13px;color:var(--muted);margin:10px 8px 2px}
+  .note{font-size:13.5px;color:var(--muted)}
+  .ctl{display:grid;gap:4px;margin:0 0 12px}
+  .ctl label{font-weight:700;color:var(--ink);font-size:14.5px}
+  .ctl select{font:15px var(--sans);border:1px solid var(--lilac);border-radius:8px;padding:6px 9px;color:var(--night);
+              background:var(--white);width:100%}
+  .ctl .state{font-size:13.5px}
+  .sentence p{margin:0 0 8px}
+  .sentence p.bad{color:var(--rose)}
+  .headline{display:flex;gap:28px;flex-wrap:wrap;align-items:baseline;margin:6px 0 10px}
+  .headline .cap{display:block;font-size:13px;color:var(--muted)}
+  .big.bad{color:var(--rose)}
+  .big.good{color:var(--green)}
+  .panel h3,.exp h3{font:400 20px var(--serif);color:var(--ink);margin:0 0 6px}
+  .stack{display:grid;gap:16px}
+  .sim-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:16px}
+  @media (max-width:900px){.sim-grid{grid-template-columns:1fr}}
+  .calc input[type=number]{max-width:160px}
+  .calc .pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+</style>
+</head>
+<body>
+<header class="hero">
+  <span class="kicker">Week 1 &middot; Tuesday &middot; Companion</span>
+  <h1>Which branch moved?</h1>
+  <p class="quote">&ldquo;Q2 was Rs 1.9 crore, Q1 was 2.1. Are we losing customers, or are the ones we have buying less?
+    Marketing says more customers. Prove it or disprove it.&rdquo;</p>
+  <p class="who">Meera Raghavan, CEO, Kalpa Retail, to the data and AI team at Kalpa's Global Capability Centre</p>
+  <p class="promise">This page makes the day's drop investigation move. Walk the five rungs, then change the five
+    assumptions a hurried reading gets wrong and watch the number and the sentence to Meera change with each one.
+    Every figure is a quarter or segment total from the day's order file as exported, or is invented for a
+    calculator and says so.</p>
+</header>
+
+<div class="page">
+  <nav class="rail" aria-label="Sections">
+    <div class="label">On this page</div>
+    <a href="#walk" data-part="walk"><span class="n">01</span>The five rungs</a>
+    <a href="#sim" data-part="sim"><span class="n">02</span>The drop simulator</a>
+    <a href="#experiments" data-part="experiments"><span class="n">03</span>Five experiments</a>
+    <a href="#segments" data-part="segments"><span class="n">04</span>Mix against rate</a>
+    <a href="#calc" data-part="calc"><span class="n">05</span>Two calculators</a>
+    <a href="#hypothesis" data-part="hypothesis"><span class="n">06</span>The hypothesis</a>
+    <a href="#glossary" data-part="glossary"><span class="n">07</span>Glossary</a>
+    <p class="jumped" id="jumped">You are at the top of the page.</p>
+  </nav>
+
+  <main>
+    <section class="part" id="walk">
+      <p class="eyebrow">01 &middot; The guided walk</p>
+      <h2>Five rungs from the drop to the cause</h2>
+      <p class="lede">Each step lights one rung of the ladder and draws the number that answers it. The walk uses the
+        closed quarters as exported: Q1 is 1 April to 30 June and Q2 is 1 July to 30 September, 13 weeks each.</p>
+      <div class="grid2">
+        <div class="card"><div class="holder" id="walkChart"></div></div>
+        <div class="card"><div class="holder" id="walkLadder"></div></div>
+      </div>
+      <div class="walk" style="margin-top:16px">
+        <div class="card narration" aria-live="polite">
+          <div class="step" id="walkStep">Step 0 of 9</div>
+          <h3 id="walkTitle">The ask</h3>
+          <p id="walkText"></p>
+          <p><span class="big" id="walkBig"></span> <span class="note" id="walkCap"></span></p>
+          <div class="row">
+            <button class="btn primary" id="walkNext" type="button">Next</button>
+            <button class="btn" id="walkRestart" type="button">Restart the walk</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="part" id="sim">
+      <p class="eyebrow">02 &middot; The simulator</p>
+      <h2>Change one assumption and watch the answer move</h2>
+      <p class="lede">The page opens on the settings a hurried reading reaches, the ones behind Marketing's deck. Change
+        them one at a time. The headline, the five-rung picture, the sentence to Meera and the verdict on Marketing's
+        acquisition ask all redraw from the totals below.</p>
+      <div class="grid2">
+        <div class="card">
+          <div class="ctl"><label for="sWindow">1. The window</label>
+            <select id="sWindow">
+              <option value="closed">Closed quarters, 13 weeks against 13</option>
+              <option value="cut" selected>Q2 tile cut at 15 September, 11 weeks against 13</option>
+              <option value="week">A rate per week on the cut window</option>
+              <option value="same">The same first 11 weeks of each quarter</option>
+            </select><span class="state" id="stWindow"></span></div>
+          <div class="ctl"><label for="sDiscount">2. The discount default</label>
+            <select id="sDiscount">
+              <option value="zero" selected>An absent discount read as zero</option>
+              <option value="recorded">Reported where it is recorded</option>
+              <option value="worst">Worst case, Rs 150 on every order</option>
+            </select><span class="state" id="stDiscount"></span></div>
+          <div class="ctl"><label for="sRollup">3. The roll-up of orders per customer</label>
+            <select id="sRollup">
+              <option value="weighted">Weighted by customers: total orders over total customers</option>
+              <option value="averaged" selected>The average of the four segment averages</option>
+            </select><span class="state" id="stRollup"></span></div>
+          <div class="ctl"><label for="sHelper">4. The helper behind the segment summary</label>
+            <select id="sHelper">
+              <option value="returns">Returns every change and flags the big ones</option>
+              <option value="prints" selected>Prints big moves and returns nothing for them</option>
+            </select><span class="state" id="stHelper"></span></div>
+          <div class="ctl"><label for="sMeasure">5. The measure of the segment split</label>
+            <select id="sMeasure">
+              <option value="rupees" selected>Rupees</option>
+              <option value="orders">Orders</option>
+            </select><span class="state" id="stMeasure"></span></div>
+          <div class="row">
+            <button class="btn" id="simFix" type="button">Set the defensible reading</button>
+            <button class="btn" id="simHurry" type="button">Back to the hurried reading</button>
+          </div>
+          <p class="note" id="simLog">Change any setting and this line says what moved.</p>
+        </div>
+        <div class="card">
+          <div class="step" style="font:700 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)">The number and the decision</div>
+          <div class="headline">
+            <div><span class="big" id="hRevenue"></span><span class="cap" id="hRevenueCap"></span></div>
+            <div><span class="big" id="hFreq"></span><span class="cap" id="hFreqCap"></span></div>
+          </div>
+          <div class="sentence" id="simSentence"></div>
+          <div class="strip" id="simVerdict"><b class="tag">Marketing's acquisition ask</b><span></span></div>
+          <div class="strip" id="simReview"><b class="tag">Kavya's review</b><span></span></div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px"><div class="holder" id="simFlow"></div></div>
+      <div class="sim-grid">
+        <div class="card panel"><h3>The window</h3><div class="holder" id="simWindow"></div></div>
+        <div class="card panel"><h3>The discount branch</h3><div class="holder" id="simDiscount"></div>
+          <p class="note" id="simDiscountNote"></p></div>
+        <div class="card panel"><h3>Orders per customer, rolled up</h3><div class="holder" id="simRollup"></div></div>
+        <div class="card panel"><h3>The segment summary</h3><div class="console" id="simHelper"></div>
+          <div class="holder" id="simHelperFlow"></div></div>
+      </div>
+      <div class="card panel" style="margin-top:16px"><h3>Where the fall sits, by segment</h3><div class="holder" id="simMeasure"></div></div>
+    </section>
+
+    <section class="part" id="experiments">
+      <p class="eyebrow">03 &middot; Experiment cards</p>
+      <h2>Five experiments, one change each</h2>
+      <p class="lede">Read the situation and the hypothesis, decide what you expect, then run. Each card changes exactly
+        one assumption and names the number that moves.</p>
+      <div class="grid2">
+        <article class="card exp" id="expA">
+          <div class="part-label">Experiment A &middot; the window</div>
+          <h3>The dashboard tile against the closed quarter</h3>
+          <p><b>Situation.</b> Marketing's deck puts the Q2 dashboard tile, exported on 15 September, beside the whole of
+            Q1. Meera reads the percentage aloud in the leadership review.</p>
+          <p><b>Hypothesis.</b> Once both windows cover 13 weeks, the fall shrinks from about a quarter of revenue to about
+            a tenth.</p>
+          <p><b>Watch for.</b> The Q2 line, which stops at week 11 on the tile, and the percentage in the title.</p>
+          <div class="holder" id="expAChart"></div>
+          <div class="row">
+            <button class="btn" id="expARun" type="button" aria-pressed="false">Close the Q2 window</button>
+            <button class="btn" id="expASeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expAResult" hidden>
+            <p><b>What happened.</b> <span id="expAWhat"></span></p>
+            <p><b>Why it matters.</b> A 25.9 percent fall reads as a crisis and rushes the Rs 12 crore acquisition
+              budget; an 11.0 percent fall between closed quarters is a question to answer first.</p>
+            <p class="rule">Confirm the drop on matched windows before you explain it.</p>
+          </div>
+          <p class="waiting" id="expAWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp" id="expB">
+          <div class="part-label">Experiment B &middot; the discount default</div>
+          <h3>An absent discount read as zero</h3>
+          <p><b>Situation.</b> The tree's last branch is discounts. Some orders carry no discount field at all, and the
+            hurried fix reads every absent field as Rs 0.</p>
+          <p><b>Hypothesis.</b> Counted only over the orders that record the field, the share of orders with a discount
+            is far above the zero-filled share.</p>
+          <p><b>Watch for.</b> The gap between the two bars in Q2, and the percentage in the title.</p>
+          <div class="holder" id="expBChart"></div>
+          <div class="row">
+            <button class="btn" id="expBRun" type="button" aria-pressed="false">Count where recorded</button>
+            <button class="btn" id="expBSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expBResult" hidden>
+            <p><b>What happened.</b> <span id="expBWhat"></span></p>
+            <p><b>Why it matters.</b> The zero-filled share says half the orders went without a discount, which
+              argues for extending it to the other half; the largest recorded discount is Rs 150, so the branch is at most Rs 12,900 a
+              quarter against a Rs 23,00,000 fall.</p>
+            <p class="rule">Missing means unknown until someone chooses a default and writes down why.</p>
+          </div>
+          <p class="waiting" id="expBWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp" id="expC">
+          <div class="part-label">Experiment C &middot; the roll-up</div>
+          <h3>The average of four segment averages</h3>
+          <p><b>Situation.</b> A colleague has orders per customer for each of the four segments and averages the four
+            to get the company figure for the note.</p>
+          <p><b>Hypothesis.</b> The weighted figure falls four times as far as the averaged one, because Student's two
+            customers count as much as Retail-Core's thirty-four in an average of averages.</p>
+          <p><b>Watch for.</b> The company column at the right of the chart, and whether it matches round 2's 1.65 and
+            1.25.</p>
+          <div class="holder" id="expCChart"></div>
+          <div class="row">
+            <button class="btn" id="expCRun" type="button" aria-pressed="false">Weight by customers</button>
+            <button class="btn" id="expCSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expCResult" hidden>
+            <p><b>What happened.</b> <span id="expCWhat"></span></p>
+            <p><b>Why it matters.</b> A 6.0 percent fall says frequency is not the branch and Marketing may be right; a
+              24.6 percent fall says frequency carries the drop.</p>
+            <p class="rule">Roll a rate up with its weights; never average the averages.</p>
+          </div>
+          <p class="waiting" id="expCWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp" id="expD">
+          <div class="part-label">Experiment D &middot; the helper</div>
+          <h3>A helper that prints instead of returning</h3>
+          <p><b>Situation.</b> Last quarter's <code>pct_change</code> prints &ldquo;check by hand&rdquo; for any change
+            beyond 30 percent and returns nothing in that case. The summary keeps only the falls it gets back.</p>
+          <p><b>Hypothesis.</b> The two largest moves vanish from the summary, and nobody notices because the printed
+            lines carry no segment name.</p>
+          <p><b>Watch for.</b> The number of segments going in against the number of rows coming out.</p>
+          <div class="console" id="expDOut"></div>
+          <div class="row">
+            <button class="btn" id="expDRun" type="button" aria-pressed="false">Return every change</button>
+            <button class="btn" id="expDSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expDResult" hidden>
+            <p><b>What happened.</b> <span id="expDWhat"></span></p>
+            <p><b>Why it matters.</b> The short summary sends Business accounts to the front and tells the head of
+              Retail-Plus his tier is not in the table, when his tier has the largest fall of all.</p>
+            <p class="rule">A function returns its answer; count the groups in and the groups out.</p>
+          </div>
+          <p class="waiting" id="expDWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp" id="expE">
+          <div class="part-label">Experiment E &middot; the measure</div>
+          <h3>Rupees against orders</h3>
+          <p><b>Situation.</b> The same segment split can be drawn in rupees or in orders, and Meera will hear whichever
+            one reaches her first.</p>
+          <p><b>Hypothesis.</b> In rupees one segment carries almost the whole fall; in orders a different segment
+            does.</p>
+          <p><b>Watch for.</b> Which bar is tallest in the bridge, and its share in the title.</p>
+          <div class="holder" id="expEChart"></div>
+          <div class="row">
+            <button class="btn" id="expERun" type="button" aria-pressed="false">Count orders instead</button>
+            <button class="btn" id="expESeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expEResult" hidden>
+            <p><b>What happened.</b> <span id="expEWhat"></span></p>
+            <p><b>Why it matters.</b> The rupee story rests on three orders, too few to call a trend today; the order
+              story is 22 members whose buying halved, which is a change in behaviour.</p>
+            <p class="rule">Say which measure a share is of, and show both when they point at different segments.</p>
+          </div>
+          <p class="waiting" id="expEWait">What happened appears here after the run.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="part" id="segments">
+      <p class="eyebrow">04 &middot; The segment table</p>
+      <h2>Why revenue per order rose while revenue fell</h2>
+      <p class="lede">The four segments, Q1 then Q2, from the day's order file as exported. Revenue per order rose 18.0
+        percent. Split that rise into the part that comes from the order mix changing and the part that comes from each
+        segment's own revenue per order.</p>
+      <div class="card"><div class="holder" id="segTable"></div></div>
+      <div class="grid2" style="margin-top:16px">
+        <div class="card"><div class="holder" id="segChart"></div></div>
+        <div class="card">
+          <p id="segText">The split appears here once you run it: revenue per order at Q2's order mix and Q1's
+            per-segment prices, set against both quarters.</p>
+          <div class="formula" id="segFormula">revenue per order at Q2 mix = sum of (Q2 share of orders x Q1 revenue per order)</div>
+          <div class="row">
+            <button class="btn" id="segRun" type="button" aria-pressed="false">Split the rise into mix and rate</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="part" id="calc">
+      <p class="eyebrow">05 &middot; Calculators</p>
+      <h2>Two rules with a number in them</h2>
+      <p class="lede">The first calculator starts on invented groups, labelled invented; put your own segments in. The
+        second bounds a branch you cannot measure fully.</p>
+      <div class="grid2">
+        <div class="card calc">
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0 0 6px">Weighted against averaged</h3>
+          <p class="note">Invented starting values: 30 customers at 1.1 orders each and 2 customers at 3.5.</p>
+          <div class="pair">
+            <div class="ctl"><label for="rA">Group A customers</label><input type="number" id="rA" min="1" max="500" step="1" value="30"></div>
+            <div class="ctl"><label for="fA">Group A orders per customer</label><input type="number" id="fA" min="0" max="10" step="0.1" value="1.1"></div>
+            <div class="ctl"><label for="rB">Group B customers</label><input type="number" id="rB" min="1" max="500" step="1" value="2"></div>
+            <div class="ctl"><label for="fB">Group B orders per customer</label><input type="number" id="fB" min="0" max="10" step="0.1" value="3.5"></div>
+          </div>
+          <div class="formula" id="rollFormula"></div>
+          <p class="verdict" id="rollVerdict"></p>
+        </div>
+        <div class="card calc">
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0 0 6px">The most a branch could move</h3>
+          <p class="note">Starting values: the largest recorded discount, Q2's order count and the fall between closed
+            quarters.</p>
+          <div class="pair">
+            <div class="ctl"><label for="bMax">Largest recorded value, Rs</label><input type="number" id="bMax" min="0" max="100000" step="10" value="150"></div>
+            <div class="ctl"><label for="bN">Orders in the window</label><input type="number" id="bN" min="1" max="100000" step="1" value="86"></div>
+            <div class="ctl"><label for="bFall">The fall to explain, Rs</label><input type="number" id="bFall" min="1" max="1000000000" step="10000" value="2300000"></div>
+          </div>
+          <div class="formula" id="boundFormula"></div>
+          <p class="verdict" id="boundVerdict"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="part" id="hypothesis">
+      <p class="eyebrow">06 &middot; The decision</p>
+      <h2>A cause is a hypothesis with its evidence</h2>
+      <p class="lede">The head of Retail-Plus says the broken reorder feature did it; the member's complaint dates the
+        break six weeks back from this week. Test the timing and the channel with the data in hand, then name the data
+        that would settle each hypothesis.</p>
+      <div class="grid2">
+        <div class="card"><div class="holder" id="hypTiming"></div></div>
+        <div class="card"><div class="holder" id="hypChannel"></div></div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <div class="holder" id="hypTree"></div>
+        <div class="row">
+          <button class="btn" id="hypH1" type="button" aria-pressed="false">H1: the broken reorder feature</button>
+          <button class="btn" id="hypH2" type="button" aria-pressed="false">H2: something changed for members in July</button>
+        </div>
+        <div class="strip" id="hypWhy"><b class="tag">Kavya's review</b><span>Pick a hypothesis to see what the data in
+          hand says about it and which data would settle it.</span></div>
+      </div>
+    </section>
+
+    <section class="part" id="glossary">
+      <p class="eyebrow">07 &middot; Glossary</p>
+      <h2>The day's words, and where each first mattered</h2>
+      <div class="card">
+        <dl class="gloss">
+          <dt>The investigation ladder</dt><dd>Five rungs climbed in order: is the drop real, which branch of the tree,
+            which segment, mix against rate, and the hypothesis with its evidence.<span class="where">The ask, before
+            round 1; every notebook opens on its rung.</span></dd>
+          <dt>Matched window</dt><dd>Two periods of the same length and the same kind, compared as closed quarters or as
+            a rate per week.<span class="where">Round 1; notebook 01.</span></dd>
+          <dt>Rate</dt><dd>A numerator over a denominator over a window, and a rate that arrives without its denominator
+            is a rumour.<span class="where">Round 1; notebook 01.</span></dd>
+          <dt>Dictionary accumulator</dt><dd>A dictionary started empty before a loop, with one total per key updated
+            inside it, which groups records by segment or month.<span class="where">Round 2; notebook 02.</span></dd>
+          <dt>Decomposition</dt><dd>Revenue split into customers, orders per customer and revenue per order, whose
+            ratios multiply back to the revenue ratio.<span class="where">Round 2; notebook 02.</span></dd>
+          <dt>Default for a missing field</dt><dd>The value a team decides an absent field takes, written down with its
+            reason, since an absent value is unknown until then.<span class="where">Round 2; notebook 02.</span></dd>
+          <dt>Typical value and spread</dt><dd>The median of a group with its minimum, maximum and range, which says both
+            where a group sits and how far it reaches.<span class="where">Round 3; notebook 03.</span></dd>
+          <dt>Function and return</dt><dd>A named block that applies one decision to any group and hands its answer back
+            with return; a function that only prints hands back None.<span class="where">Round 3; notebook 03.</span></dd>
+          <dt>Groups in, groups out</dt><dd>The count of groups a comparison started with against the count it reports,
+            which catches a group that dropped out silently.<span class="where">The escalated case; notebook 04.</span></dd>
+          <dt>Weighted roll-up</dt><dd>A company rate computed from the totals, so each segment counts in proportion to
+            its size.<span class="where">Round 3 and the escalated case; notebooks 03 and 04.</span></dd>
+          <dt>Mix against rate</dt><dd>A change in an overall rate split into the part caused by the groups' shares
+            moving and the part caused by the groups' own rates moving.<span class="where">The escalated case; notebook
+            04.</span></dd>
+          <dt>Hypothesis and evidence</dt><dd>A cause stated as a claim that could be wrong, with the data that would
+            settle it, and timing is the first test.<span class="where">The second case; notebook 05.</span></dd>
+        </dl>
+      </div>
+      <p class="foot">Week 1, Tuesday. The same five decisions live in the workbook beside this page,
+        C2_W01_D02_decision_tool_STUDENT.xlsx, which is the version to keep: each tab hides one formula defect to find
+        first, and its Export tab assembles the brief for Meera. Kalpa Retail and everyone in it are fictional. The
+        totals here come from the day's order file as exported, before any cleaning; the calculator's starting groups
+        are invented. The page stores nothing and calls no network.</p>
+    </section>
+  </main>
+</div>
+
+<dialog id="seqDialog" aria-labelledby="seqTitle">
+  <div class="head"><span id="seqTitle">The sequence</span><button class="close" id="seqClose" type="button">Close</button></div>
+  <div class="body"><div class="holder" id="seqBody"></div><p class="note" id="seqNote"></p></div>
+</dialog>
+
+<script data-c2kit>
+/* c2kit.js: the diagram builders and page helpers every companion page inlines.
+ *
+ * The JavaScript twin of scripts/c2kit.py, so a tree on the slide, in the notebook and on the
+ * companion page is one drawing in one violet. Every builder takes data and returns an SVG
+ * element; nothing is drawn until a page calls a builder. No storage, no network, no globals
+ * beyond window.C2K. scripts/build_companion.py inlines this file into each page.
+ */
+(function () {
+  "use strict";
+  /* The SVG namespace, an identifier rather than a link, built in two parts so no checker reads it as one. */
+  var NS = "http:" + "//www.w3.org/2000/svg";
+  var C = {
+    ink: "#1A0F5C", night: "#1A1440", violet: "#5B3FD6", lav: "#D9A7FF", muted: "#6B6690",
+    lilac: "#CFC9EE", line: "#E4E1F1", tint: "#EEEAFB", surface: "#F4F2FA", white: "#FFFFFF",
+    rose: "#D63A6A", roseTint: "#FCEBF0", green: "#1F8A5B", greenTint: "#E8F5EE"
+  };
+  var FONT = "Calibri, Carlito, 'Segoe UI', system-ui, sans-serif";
+  var SERIF = "Georgia, 'DejaVu Serif', serif";
+  var KINDS = {
+    plain: [C.tint, C.violet, 1.2, C.ink, ""],
+    lit: [C.ink, C.ink, 1.2, C.white, ""],
+    known: [C.tint, C.violet, 2.6, C.ink, ""],
+    unknown: [C.white, "#B8B2D6", 1.3, C.muted, "5 4"],
+    bad: [C.roseTint, C.rose, 1.6, C.ink, ""],
+    good: [C.greenTint, C.green, 1.6, C.ink, ""]
+  };
+
+  function el(name, attrs, text) {
+    var node = document.createElementNS(NS, name);
+    Object.keys(attrs || {}).forEach(function (k) { node.setAttribute(k, attrs[k]); });
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function wrap(text, perLine) {
+    var words = String(text).split(/\s+/), lines = [], line = "";
+    words.forEach(function (w) {
+      if (line && (line + " " + w).length > perLine) { lines.push(line); line = w; }
+      else { line = line ? line + " " + w : w; }
+    });
+    if (line) lines.push(line);
+    return lines.length ? lines : [""];
+  }
+
+  function labelLines(text, w, size) {
+    var per = Math.max(8, Math.floor(w / (size * 0.56)));
+    var parts = String(text).split("\n"), out = [];
+    wrap(parts[0], per).forEach(function (l) { out.push([l, parts.length > 1]); });
+    parts.slice(1).forEach(function (p) { wrap(p, per).forEach(function (l) { out.push([l, false]); }); });
+    return out;
+  }
+
+  function boxHeight(text, w, size) {
+    size = size || 13;
+    return Math.max(40, labelLines(text, w - 16, size).length * (size + 4) + 16);
+  }
+
+  function root(width, height, title) {
+    var svg = el("svg", { xmlns: NS, width: width, height: height, viewBox: "0 0 " + width + " " + height,
+                          role: "img", "class": "c2k-svg" });
+    var defs = el("defs");
+    var marker = el("marker", { id: "c2kArrow", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 6,
+                                markerHeight: 6, orient: "auto-start-reverse" });
+    marker.appendChild(el("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: C.violet }));
+    defs.appendChild(marker);
+    svg.appendChild(defs);
+    svg.appendChild(el("rect", { width: width, height: height, rx: 10, fill: C.surface }));
+    if (title) {
+      svg.appendChild(el("text", { x: width / 2, y: height - 8, "text-anchor": "middle", fill: C.muted,
+                                   "font-family": FONT, "font-size": 12.5 }, title));
+    }
+    return svg;
+  }
+
+  function box(svg, x, y, w, h, text, kind, size) {
+    size = size || 13;
+    var k = KINDS[kind] || KINDS.plain;
+    var g = el("g", { "class": "c2k-node c2k-" + (kind || "plain") });
+    var rect = el("rect", { x: x, y: y, width: w, height: h, rx: 8, fill: k[0], stroke: k[1],
+                            "stroke-width": k[2] });
+    if (k[4]) rect.setAttribute("stroke-dasharray", k[4]);
+    g.appendChild(rect);
+    var lines = labelLines(text, w - 16, size);
+    var top = y + h / 2 - (lines.length - 1) * (size + 4) / 2 + size * 0.36;
+    lines.forEach(function (pair, i) {
+      g.appendChild(el("text", { x: x + w / 2, y: top + i * (size + 4), "text-anchor": "middle", fill: k[3],
+                                 "font-family": FONT, "font-size": size,
+                                 "font-weight": (pair[1] || (kind === "lit" && lines.length === 1)) ? 700 : 400 },
+                       pair[0]));
+    });
+    svg.appendChild(g);
+    return g;
+  }
+
+  function arrow(svg, x1, y1, x2, y2, label) {
+    svg.appendChild(el("line", { x1: x1, y1: y1, x2: x2, y2: y2, stroke: C.violet, "stroke-width": 1.5,
+                                 "marker-end": "url(#c2kArrow)" }));
+    if (label) {
+      svg.appendChild(el("text", { x: (x1 + x2) / 2, y: (y1 + y2) / 2 - 6, "text-anchor": "middle",
+                                   fill: C.muted, "font-family": FONT, "font-size": 11.5 }, label));
+    }
+  }
+
+  function curve(svg, x1, y1, x2, y2) {
+    var dx = Math.max(24, (x2 - x1) * 0.5);
+    svg.appendChild(el("path", { d: "M " + x1 + " " + y1 + " C " + (x1 + dx) + " " + y1 + ", " + (x2 - dx) + " " +
+                                 y2 + ", " + x2 + " " + y2, fill: "none", stroke: C.violet, "stroke-width": 1.5,
+                                 "marker-end": "url(#c2kArrow)" }));
+  }
+
+  /* Steps left to right, with one lit; kinds sets each step's look by name. */
+  function flow(steps, lit, opts) {
+    opts = opts || {};
+    var w = opts.width || 150, gap = 28;
+    var h = Math.max.apply(null, steps.map(function (s) { return boxHeight(s, w); }));
+    var svg = root(steps.length * w + (steps.length - 1) * gap + 28, h + 28 + (opts.title ? 22 : 0), opts.title);
+    steps.forEach(function (s, i) {
+      var x = 14 + i * (w + gap);
+      var kind = (opts.kinds && opts.kinds[i]) || (i === lit ? "lit" : "plain");
+      box(svg, x, 14, w, h, s, kind);
+      if (i) arrow(svg, x - gap, 14 + h / 2, x - 2, 14 + h / 2, opts.edges ? opts.edges[i - 1] : "");
+    });
+    return svg;
+  }
+
+  /* The same, top to bottom; edges labels the arrow into each step after the first. */
+  function vflow(steps, lit, opts) {
+    opts = opts || {};
+    var w = opts.width || 300, gap = opts.edges ? 30 : 22, y = 12, parts = [];
+    steps.forEach(function (s) { parts.push(boxHeight(s, w)); });
+    var total = parts.reduce(function (a, b) { return a + b; }, 0) + gap * (steps.length - 1) + 28;
+    var svg = root(w + 28 + (opts.edges ? 150 : 0), total + (opts.title ? 22 : 0), opts.title);
+    steps.forEach(function (s, i) {
+      if (i) {
+        arrow(svg, 14 + w / 2, y - gap, 14 + w / 2, y - 2);
+        if (opts.edges && opts.edges[i - 1]) {
+          svg.appendChild(el("text", { x: 14 + w / 2 + 10, y: y - gap / 2 + 4, fill: C.muted, "font-family": FONT,
+                                       "font-size": 12 }, opts.edges[i - 1]));
+        }
+      }
+      var kind = (opts.kinds && opts.kinds[i]) || (i === lit ? "lit" : "plain");
+      box(svg, 14, y, w, parts[i], s, kind);
+      y += parts[i] + gap;
+    });
+    return svg;
+  }
+
+  function ladder(items, lit, opts) {
+    return vflow(items.map(function (t, i) { return (i + 1) + ". " + t; }), lit, opts);
+  }
+
+  /* A decision tree, top down. node: {label, kind, branches: [[edgeLabel, child], ...]}. */
+  function tree(node, opts) {
+    opts = opts || {};
+    var levels = [];
+    (function walk(n, d) {
+      if (!levels[d]) levels[d] = [];
+      var entry = { n: n, kids: [] };
+      levels[d].push(entry);
+      (n.branches || []).forEach(function (b) { entry.kids.push([b[0], walk(b[1], d + 1)]); });
+      return entry;
+    })(node, 0);
+    var w = opts.width || 196, gx = 22, gy = 44;
+    var lh = levels.map(function (l) {
+      return Math.max.apply(null, l.map(function (e) { return boxHeight(e.n.label, w); }));
+    });
+    var width = Math.max.apply(null, levels.map(function (l) { return l.length; })) * (w + gx) + 28;
+    var height = lh.reduce(function (a, b) { return a + b; }, 0) + gy * (levels.length - 1) + 24 + (opts.title ? 22 : 0);
+    var svg = root(width, height, opts.title), y = 12;
+    levels.forEach(function (level, d) {
+      var span = level.length * (w + gx) - gx, x0 = (width - span) / 2;
+      level.forEach(function (e, i) {
+        e.x = x0 + i * (w + gx); e.y = y; e.h = lh[d];
+        box(svg, e.x, e.y, w, e.h, e.n.label, e.n.kind || "plain");
+      });
+      y += lh[d] + gy;
+    });
+    levels.forEach(function (level) {
+      level.forEach(function (e) {
+        e.kids.forEach(function (k) {
+          arrow(svg, e.x + w / 2, e.y + e.h, k[1].x + w / 2, k[1].y - 2, k[0]);
+        });
+      });
+    });
+    return svg;
+  }
+
+  /* A driver tree, left to right: a total on the left, what multiplies into it on the right.
+   * node: {label, note, kind, children: [...]}. */
+  function driverTree(node, opts) {
+    opts = opts || {};
+    var w = opts.width || 156, gx = 38, gy = 12, rows = 0, placed = [];
+    function text(n) { return n.note ? n.label + "\n" + n.note : n.label; }
+    var all = [];
+    (function walk(n) { all.push(n); (n.children || []).forEach(walk); })(node);
+    var h = Math.max.apply(null, all.map(function (n) { return boxHeight(text(n), w); }));
+    (function place(n, d) {
+      var y;
+      if (!n.children || !n.children.length) { y = rows * (h + gy); rows += 1; }
+      else {
+        var ys = n.children.map(function (k) { return place(k, d + 1); });
+        y = (ys[0] + ys[ys.length - 1]) / 2;
+      }
+      placed.push([n, d, y]);
+      return y;
+    })(node, 0);
+    var depth = Math.max.apply(null, placed.map(function (p) { return p[1]; }));
+    var svg = root((depth + 1) * w + depth * gx + 28, rows * (h + gy) - gy + 24 + (opts.title ? 24 : 0), opts.title);
+    var pos = new Map();
+    placed.forEach(function (p) { pos.set(p[0], [14 + p[1] * (w + gx), 12 + p[2]]); });
+    placed.forEach(function (p) {
+      var a = pos.get(p[0]);
+      (p[0].children || []).forEach(function (k) {
+        var b = pos.get(k);
+        curve(svg, a[0] + w, a[1] + h / 2, b[0] - 2, b[1] + h / 2);
+      });
+    });
+    placed.forEach(function (p) {
+      var a = pos.get(p[0]);
+      var g = box(svg, a[0], a[1], w, h, text(p[0]), p[0].kind || "plain");
+      if (p[0].id) g.setAttribute("data-node", p[0].id);
+    });
+    return svg;
+  }
+
+  /* Every value as a dot on one axis, with named marker lines. markers: [[label, value, kind]]. */
+  function strip(values, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || rupees, width = opts.width || 760;
+    var lo = opts.lo === undefined ? 0 : opts.lo;
+    var hi = opts.hi === undefined ? niceCeil(Math.max.apply(null, values) * 1.04) : opts.hi;
+    var left = 40, right = width - 40, axis = 150, span = (hi - lo) || 1;
+    function px(v) { return left + (right - left) * (v - lo) / span; }
+    var svg = root(width, axis + 34 + (opts.title ? 22 : 0), opts.title);
+    svg.appendChild(el("line", { x1: left, y1: axis, x2: right, y2: axis, stroke: C.muted }));
+    for (var i = 0; i < 5; i++) {
+      var v = lo + span * i / 4, x = px(v);
+      svg.appendChild(el("line", { x1: x, y1: axis, x2: x, y2: axis + 5, stroke: C.muted }));
+      svg.appendChild(el("text", { x: x, y: axis + 20, "text-anchor": "middle", fill: C.muted, "font-family": FONT,
+                                   "font-size": 12 }, fmt(v)));
+    }
+    var colour = { bad: C.rose, good: C.green, plain: C.violet };
+    var lines = opts.markers || [];
+    lines.forEach(function (m, n) {
+      var x = px(m[1]), c = colour[m[2]] || C.violet;
+      /* Two lines close together would print their labels over each other, so the lower one of a
+         close pair reads leftward from its line. */
+      var left = n > 0 && Math.abs(x - px(lines[n - 1][1])) < 150 && x <= px(lines[n - 1][1]);
+      svg.appendChild(el("line", { x1: x, y1: 34 + 16 * (n % 2), x2: x, y2: axis, stroke: c, "stroke-width": 1.6,
+                                   "stroke-dasharray": "5 4", "class": "c2k-marker" }));
+      svg.appendChild(el("text", { x: left ? x - 5 : x + 5, y: 30 + 16 * (n % 2), fill: c, "font-family": FONT,
+                                   "font-size": 12.5, "font-weight": 700, "text-anchor": left ? "end" : "start" },
+                         m[0] + " " + fmt(m[1])));
+    });
+    var bins = {};
+    values.forEach(function (v, i) {
+      var x = px(v), key = Math.round(x / 11), level = bins[key] || 0;
+      bins[key] = level + 1;
+      svg.appendChild(el("circle", { cx: x, cy: axis - 9 - level * 11, r: 5,
+                                     fill: (opts.lit || []).indexOf(i) >= 0 ? C.ink : C.violet,
+                                     "fill-opacity": 0.8, stroke: C.white, "stroke-width": 1 }));
+    });
+    return svg;
+  }
+
+  /* The next round number at or above x: 1, 2, 2.5 or 5 times a power of ten, so axis ticks read cleanly. */
+  function niceCeil(x) {
+    if (x <= 0) return 1;
+    var p = Math.pow(10, Math.floor(Math.log10(x))), steps = [1, 2, 2.5, 5, 10];
+    for (var i = 0; i < steps.length; i++) if (steps[i] * p >= x) return steps[i] * p;
+    return 10 * p;
+  }
+
+  /* The chart twins of c2kit.py's bridge, line and columns: round steps for the gridlines, a
+   * finer round top so the tallest value sits just under it, and one label style throughout. */
+  var ROUND = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8];
+  function chartCeil(x) {
+    if (x <= 0) return 1;
+    var p = Math.pow(10, Math.floor(Math.log10(x))), steps = ROUND.concat([10]);
+    for (var i = 0; i < steps.length; i++) if (steps[i] * p >= x * 0.999999) return steps[i] * p;
+    return 10 * p;
+  }
+  function tickCount(span) {
+    var tries = [5, 4, 6, 3];
+    for (var i = 0; i < tries.length; i++) {
+      var step = span / tries[i];
+      if (step <= 0) break;
+      var m = Math.round(step / Math.pow(10, Math.floor(Math.log10(step))) * 1e6) / 1e6;
+      if (ROUND.indexOf(m) >= 0) return tries[i];
+    }
+    return 4;
+  }
+  function gridlines(svg, lo, hi, fmt, left, right, py) {
+    var n = tickCount(hi - lo);
+    for (var k = 0; k <= n; k++) {
+      var v = lo + (hi - lo) * k / n, y = py(v);
+      svg.appendChild(el("line", { x1: left, y1: y, x2: right, y2: y, stroke: C.line }));
+      svg.appendChild(el("text", { x: left - 8, y: y + 4, "text-anchor": "end", fill: C.muted, "font-family": FONT,
+                                   "font-size": 11.5 }, fmt(v)));
+    }
+  }
+  function under(svg, x, y, text, per, bold) {
+    wrap(text, per || 13).slice(0, 3).forEach(function (line, i) {
+      svg.appendChild(el("text", { x: x, y: y + i * 15, "text-anchor": "middle", fill: C.ink, "font-family": FONT,
+                                   "font-size": 12, "font-weight": bold ? 700 : 400 }, line));
+    });
+  }
+  function legend(svg, items, x, y) {
+    items.forEach(function (it) {
+      if (it[2]) svg.appendChild(el("line", { x1: x, y1: y - 4, x2: x + 18, y2: y - 4, stroke: it[1], "stroke-width": 2,
+                                              "stroke-dasharray": "5 3" }));
+      else svg.appendChild(el("rect", { x: x, y: y - 10, width: 14, height: 12, rx: 3, fill: it[1] }));
+      svg.appendChild(el("text", { x: x + 22, y: y, fill: C.ink, "font-family": FONT, "font-size": 12.5 }, it[0]));
+      x += 34 + it[0].length * 7;
+    });
+  }
+
+  /* A bridge, or waterfall: start is [label, value], moves are [[label, change], ...]; each move
+   * floats from the running total, green when it adds and rose when it takes away. opts.lo raises
+   * the axis floor when the moves are small against the totals; opts.lit outlines moves by index. */
+  function bridge(start, moves, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || rupees, lit = opts.lit || [];
+    var run = start[1], levels = [0, start[1]], cols = [[start[0], start[1], null, 0, start[1]]];
+    moves.forEach(function (m, i) { cols.push([m[0], m[1], i, run, run + m[1]]); run += m[1]; levels.push(run); });
+    cols.push([opts.endLabel || "Where it lands", run, null, 0, run]);
+    var floor = opts.lo === undefined ? Math.min(0, Math.min.apply(null, levels)) : opts.lo;
+    var hi = floor + chartCeil((Math.max.apply(null, levels) - floor) * 1.06), lo = floor;
+    var colW = 92, gap = 22, left = 86, top = 30, plotH = 230;
+    var width = opts.width || left + cols.length * (colW + gap) + 6;
+    function py(v) { return top + plotH * (hi - v) / ((hi - lo) || 1); }
+    var svg = root(width, top + plotH + 20 + 45 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, lo, hi, fmt, left - 6, width - 8, py);
+    cols.forEach(function (c, k) {
+      var x = left + k * (colW + gap), y1 = py(Math.max(c[3], c[4])), y2 = py(Math.max(lo, Math.min(c[3], c[4])));
+      var isMove = c[2] !== null, fill = !isMove ? C.violet : (c[1] >= 0 ? C.green : C.rose);
+      var rect = { x: x, y: y1, width: colW, height: Math.max(2, y2 - y1), rx: 4, fill: fill, "fill-opacity": 0.88 };
+      if (isMove && lit.indexOf(c[2]) >= 0) { rect.stroke = C.ink; rect["stroke-width"] = 2.5; }
+      svg.appendChild(el("rect", rect));
+      svg.appendChild(el("text", { x: x + colW / 2, y: y1 - 7, "text-anchor": "middle", fill: C.ink, "font-family": FONT,
+                                   "font-size": 12.5, "font-weight": 700 }, (isMove && c[1] >= 0 ? "+" : "") + fmt(c[1])));
+      if (k < cols.length - 1) {
+        var level = py(c[4]);
+        svg.appendChild(el("line", { x1: x + colW, y1: level, x2: x + colW + gap, y2: level, stroke: C.muted,
+                                     "stroke-dasharray": "3 3" }));
+      }
+      under(svg, x + colW / 2, top + plotH + 20, c[0], 13, !isMove);
+    });
+    return svg;
+  }
+
+  /* Values over an ordered axis: series are [[name, values, kind], ...]; kind "plan" is a dashed
+   * reference line, "bad" and "good" colour a line by meaning. The last value prints at its end. */
+  function line(labels, series, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || function (v) { return Math.round(v).toLocaleString("en-IN"); };
+    var width = opts.width || 760, lo = opts.lo || 0, all = [];
+    series.forEach(function (s) { s[1].forEach(function (v) { if (v !== null && v !== undefined) all.push(v); }); });
+    var hi = lo + chartCeil((Math.max.apply(null, all) - lo) * 1.06);
+    var left = 86, right = width - 110, top = 44, plotH = 220, step = (right - left) / Math.max(1, labels.length - 1);
+    function py(v) { return top + plotH * (hi - v) / ((hi - lo) || 1); }
+    var svg = root(width, top + plotH + 20 + 30 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, lo, hi, fmt, left, right, py);
+    labels.forEach(function (l, i) { under(svg, left + i * step, top + plotH + 20, String(l), 10, false); });
+    var colours = { plan: C.muted, bad: C.rose, good: C.green, lit: C.ink }, keys = [];
+    series.forEach(function (s) {
+      var colour = colours[s[2]] || C.violet, dashed = s[2] === "plan", pts = [];
+      keys.push([s[0], colour, dashed]);
+      s[1].forEach(function (v, i) { if (v !== null && v !== undefined) pts.push([left + i * step, py(v), v]); });
+      var d = pts.map(function (p, j) { return (j ? "L " : "M ") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+      var path = { d: d, fill: "none", stroke: colour, "stroke-width": 2.4 };
+      if (dashed) path["stroke-dasharray"] = "6 4";
+      svg.appendChild(el("path", path));
+      if (!dashed) pts.forEach(function (p) { svg.appendChild(el("circle", { cx: p[0], cy: p[1], r: 3.6, fill: colour })); });
+      if (pts.length) {
+        var last = pts[pts.length - 1];
+        svg.appendChild(el("text", { x: last[0] + 8, y: last[1] + 4, fill: colour, "font-family": FONT, "font-size": 12.5,
+                                     "font-weight": 700 }, fmt(last[2])));
+      }
+    });
+    legend(svg, keys, left, 22);
+    return svg;
+  }
+
+  /* Vertical bars grouped by category: series are [[name, values], ...] aligned with categories,
+   * drawn light to dark in the order given, so Q1 against Q2 reads as before and after. */
+  function columns(categories, series, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || function (v) { return Math.round(v).toLocaleString("en-IN"); }, lit = opts.lit || [];
+    var shades = [C.lilac, C.violet, C.ink, C.green], all = [];
+    series.forEach(function (s) { all = all.concat(s[1]); });
+    var hi = chartCeil(Math.max.apply(null, all) * 1.1);
+    var barW = 40, inner = 6, groupGap = 34, left = 86, top = 44, plotH = 220;
+    var groupW = series.length * barW + (series.length - 1) * inner;
+    var width = opts.width || left + categories.length * (groupW + groupGap) + 10;
+    function py(v) { return top + plotH * (hi - v) / hi; }
+    var svg = root(width, top + plotH + 20 + 45 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, 0, hi, fmt, left - 6, width - 8, py);
+    categories.forEach(function (cat, c) {
+      var gx = left + c * (groupW + groupGap);
+      series.forEach(function (s, k) {
+        var v = s[1][c], x = gx + k * (barW + inner);
+        svg.appendChild(el("rect", { x: x, y: py(v), width: barW, height: Math.max(1, top + plotH - py(v)), rx: 3,
+                                     fill: shades[k % shades.length] }));
+        svg.appendChild(el("text", { x: x + barW / 2, y: py(v) - 6, "text-anchor": "middle", fill: C.ink,
+                                     "font-family": FONT, "font-size": 11, "font-weight": 700 }, fmt(v)));
+      });
+      under(svg, gx + groupW / 2, top + plotH + 20, String(cat), Math.max(10, Math.floor(groupW / 7)),
+            lit.indexOf(c) >= 0);
+    });
+    legend(svg, series.map(function (s, k) { return [s[0], shades[k % shades.length], false]; }), left, 22);
+    return svg;
+  }
+
+  /* Messages across named lanes, drawn from the run that happened. messages: [[from, to, text]]. */
+  function sequence(lanes, messages, opts) {
+    opts = opts || {};
+    var lw = opts.laneWidth || 180, top = 46, step = 44;
+    var width = lanes.length * lw + 28, height = top + Math.max(1, messages.length) * step + 34 + (opts.title ? 16 : 0);
+    var svg = root(width, height, opts.title);
+    lanes.forEach(function (lane, i) {
+      var x = 14 + i * lw;
+      box(svg, x + 10, 10, lw - 20, 30, lane, "lit", 12);
+      svg.appendChild(el("line", { x1: x + lw / 2, y1: 42, x2: x + lw / 2, y2: height - 28, stroke: C.line }));
+    });
+    messages.forEach(function (m, n) {
+      var y = top + n * step + 20;
+      var x1 = 14 + lanes.indexOf(m[0]) * lw + lw / 2, x2 = 14 + lanes.indexOf(m[1]) * lw + lw / 2;
+      if (x1 === x2) {
+        svg.appendChild(el("text", { x: x1 + 8, y: y + 4, fill: C.night, "font-family": FONT, "font-size": 12 }, m[2]));
+      } else {
+        arrow(svg, x1, y, x2 + (x2 > x1 ? -4 : 4), y, m[2]);
+      }
+    });
+    return svg;
+  }
+
+  function sideBySide() {
+    var div = document.createElement("div");
+    div.className = "c2k-row";
+    Array.prototype.forEach.call(arguments, function (svg) { div.appendChild(svg); });
+    return div;
+  }
+
+  /* Rs with Indian digit grouping, the way every Kalpa number is read aloud. */
+  function rupees(n) {
+    var sign = n < 0 ? "-" : "", s = String(Math.round(Math.abs(n)));
+    if (s.length <= 3) return sign + "Rs " + s;
+    var head = s.slice(0, -3), tail = s.slice(-3), parts = [];
+    while (head.length > 2) { parts.unshift(head.slice(-2)); head = head.slice(0, -2); }
+    if (head) parts.unshift(head);
+    return sign + "Rs " + parts.join(",") + "," + tail;
+  }
+
+  /* Put a diagram into a holder, replacing whatever was drawn there before. */
+  function draw(holder, svg) {
+    var target = typeof holder === "string" ? document.getElementById(holder) : holder;
+    target.textContent = "";
+    target.appendChild(svg);
+    return svg;
+  }
+
+  window.C2K = { colours: C, flow: flow, vflow: vflow, ladder: ladder, tree: tree, driverTree: driverTree,
+                 strip: strip, bridge: bridge, line: line, columns: columns, sequence: sequence,
+                 sideBySide: sideBySide, rupees: rupees, draw: draw };
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var K = window.C2K;
+  function $(id) { return document.getElementById(id); }
+  function pct(a, b) { return 100 * (b - a) / a; }
+  function p1(x) { return (x >= 0 ? "+" : "") + x.toFixed(1) + "%"; }
+  function words(x) { return Math.abs(x).toFixed(1) + " percent"; }
+  function f2(x) { return x.toFixed(2); }
+  function pc1(x) { return x.toFixed(1) + "%"; }
+  function sum(a) { return a.reduce(function (s, x) { return s + x; }, 0); }
+
+  /* ---------------------------------------------------------------- the totals the page holds
+     Quarter and segment totals from the day's order file as exported, booked orders. */
+  var Q = { rev: [21000000, 18700000], orders: [114, 86], cust: [69, 69] };
+  var SEG = [
+    { name: "Retail-Core", cust: [34, 34], orders: [38, 36], rev: [80460, 72510] },
+    { name: "Retail-Plus", cust: [22, 22], orders: [51, 26], rev: [143550, 78300] },
+    { name: "Business", cust: [11, 11], orders: [20, 17], rev: [20771180, 18541460] },
+    { name: "Student", cust: [2, 2], orders: [5, 7], rev: [4810, 7730] }
+  ];
+  var WINDOWS = {
+    closed: { a: 21000000, b: 18700000, la: "Q1, 13 weeks", lb: "Q2, 13 weeks", weeks: "13 weeks against 13", fair: true },
+    cut: { a: 21000000, b: 15559950, la: "Q1, 13 weeks", lb: "Q2 tile, 11 weeks", weeks: "11 weeks against 13", fair: false },
+    week: { a: 1615385, b: 1414541, la: "Q1, a week", lb: "Q2 to 15 Sep, a week", weeks: "a rate per week", fair: true },
+    same: { a: 18751440, b: 15559950, la: "Q1, first 11 weeks", lb: "Q2, first 11 weeks", weeks: "11 weeks against 11", fair: true }
+  };
+  var CUM = { labels: ["start", "week 11", "week 13"], q1: [0, 18751440, 21000000], q2: [0, 15559950, 18700000] };
+  var DISC = { zeroShare: [42.1, 50.0], recShare: [58.5, 71.7], topShare: [70.2, 80.2], maxRecorded: 150 };
+  var PLUS_MONTHS = [14, 24, 13, 9, 9, 8], CORE_MONTHS = [13, 12, 13, 12, 12, 12];
+  var MONTHS = ["Apr", "May", "Jun", "Jul", "Aug", "Sep"];
+  var PLUS_CHANNEL = { names: ["web", "store", "app"], q1: [24, 14, 13], q2: [9, 9, 8] };
+  var RUNGS = ["Is the drop real?\nlike with like", "Which branch?\nthe tree", "Which segment?\nthe split",
+               "Mix or rate?\nrupees and orders", "Which cause?\nhypothesis and evidence"];
+
+  function opc(s, q) { return s.orders[q] / s.cust[q]; }
+  function weighted(q) { return Q.orders[q] / Q.cust[q]; }
+  function averaged(q) { return sum(SEG.map(function (s) { return opc(s, q); })) / SEG.length; }
+  var FALL = Q.rev[0] - Q.rev[1];
+  var RPO = [Q.rev[0] / Q.orders[0], Q.rev[1] / Q.orders[1]];
+  /* The tree bridge: customers, then frequency at Q1 revenue per order, then revenue per order at Q2 orders. */
+  var TREE_MOVES = [["customers", 0], ["orders per customer", (Q.orders[1] - Q.orders[0]) * RPO[0]],
+                    ["revenue per order", Q.orders[1] * (RPO[1] - RPO[0])]];
+  function segMoves(key) { return SEG.map(function (s) { return [s.name, s[key][1] - s[key][0]]; }); }
+  function shareOf(key, name) {
+    var total = Q[key === "rev" ? "rev" : "orders"], fall = total[0] - total[1];
+    var s = SEG.filter(function (x) { return x.name === name; })[0];
+    return { amount: s[key][0] - s[key][1], share: 100 * (s[key][0] - s[key][1]) / fall, fall: fall };
+  }
+  function changes() {
+    var out = {};
+    SEG.forEach(function (s) { out[s.name] = Math.round(10 * pct(opc(s, 0), opc(s, 1))) / 10; });
+    return out;
+  }
+  function kfmt(v) { return Math.round(v).toLocaleString("en-IN"); }
+
+  /* ---------------------------------------------------------------- chart makers shared by the walk and the simulator */
+  function windowLine(mode, title) {
+    var q2 = mode === "cut" || mode === "week" ? [0, CUM.q2[1], null] : CUM.q2;
+    return K.line(CUM.labels, [["Q1 cumulative revenue", CUM.q1, "plan"], ["Q2 cumulative revenue", q2, mode === "cut" ? "bad" : "lit"]],
+                  { fmt: K.rupees, width: 620, title: title });
+  }
+  function windowBridge(mode) {
+    var w = WINDOWS[mode], moves, lo;
+    if (mode === "closed") { moves = TREE_MOVES; lo = 15000000; }
+    else if (mode === "cut") { moves = [["real change", -FALL], ["weeks left out", CUM.q2[1] - Q.rev[1]]]; lo = 10000000; }
+    else if (mode === "week") { moves = [["change per week", w.b - w.a]]; lo = 1000000; }
+    else { moves = [["same-week change", w.b - w.a]]; lo = 10000000; }
+    return K.bridge([w.la, w.a], moves, { lo: lo, endLabel: w.lb,
+      title: "Revenue, " + w.weeks + ": " + p1(pct(w.a, w.b)) });
+  }
+  function discountChart(mode) {
+    if (mode === "worst") {
+      var bound = DISC.maxRecorded * Q.orders[1];
+      return K.columns(["the discount branch at most", "the revenue fall"], [["rupees", [bound, FALL]]],
+        { fmt: K.rupees, width: 420, title: "Rs 150 on all 86 Q2 orders: " + (100 * bound / FALL).toFixed(2) + " percent of the fall" });
+    }
+    if (mode === "zero") {
+      return K.columns(["Q1", "Q2"], [["orders with a discount, absent read as zero", DISC.zeroShare]],
+        { fmt: pc1, width: 420, title: "Absent read as zero: " + pc1(DISC.zeroShare[1]) + " of Q2 orders" });
+    }
+    return K.columns(["Q1", "Q2"], [["absent read as zero", DISC.zeroShare], ["where recorded", DISC.recShare]],
+      { fmt: pc1, width: 420, title: "Where recorded: " + pc1(DISC.recShare[1]) + " of Q2 orders" });
+  }
+  function rollupChart(mode, lit) {
+    var cats = SEG.map(function (s) { return s.name; }).concat([mode === "weighted" ? "company, weighted" : "company, averaged"]);
+    var f = mode === "weighted" ? weighted : averaged;
+    return K.columns(cats, [["Q1", SEG.map(function (s) { return opc(s, 0); }).concat([f(0)])],
+                            ["Q2", SEG.map(function (s) { return opc(s, 1); }).concat([f(1)])]],
+      { fmt: f2, lit: lit === false ? [] : [4], title: "Orders per customer; company " + f2(f(0)) + " to " + f2(f(1)) + ", " + p1(pct(f(0), f(1))) });
+  }
+  function measureBridge(mode, width) {
+    if (mode === "orders") {
+      var so = shareOf("orders", "Retail-Plus");
+      return K.bridge(["Q1 orders", Q.orders[0]], segMoves("orders"), { lo: 60, endLabel: "Q2 orders", fmt: kfmt,
+        lit: [1], title: "Orders, 114 to 86: Retail-Plus is " + so.amount + " of " + so.fall + ", " + Math.round(so.share) + " percent" });
+    }
+    var sr = shareOf("rev", "Business");
+    return K.bridge(["Q1 revenue", Q.rev[0]], segMoves("rev"), { lo: 18000000, endLabel: "Q2 revenue",
+      lit: [2], title: "Revenue by segment: Business is " + K.rupees(sr.amount) + ", " + Math.round(sr.share) + " percent of the fall" });
+  }
+  function helperOutput(mode) {
+    var ch = changes(), lines = [], names = Object.keys(ch);
+    if (mode === "prints") {
+      names.forEach(function (n) { if (Math.abs(ch[n]) > 30) lines.push("<span class='flag'>  check by hand: " + p1(ch[n]) + "</span>"); });
+      var kept = names.filter(function (n) { return Math.abs(ch[n]) <= 30 && ch[n] < 0; });
+      lines.push("changes = {" + names.map(function (n) { return "'" + n + "': " + (Math.abs(ch[n]) > 30 ? "None" : ch[n].toFixed(1)); }).join(", ") + "}");
+      lines.push("falls   = {" + kept.map(function (n) { return "'" + n + "': " + ch[n].toFixed(1); }).join(", ") + "}");
+      var none = names.filter(function (n) { return Math.abs(ch[n]) > 30; }).length;
+      var allFalls = names.filter(function (n) { return ch[n] < 0; }).length;
+      lines.push("segments in: " + names.length + "    came back None: " + none + "    falls: " + kept.length + " of the " + allFalls + " a working helper keeps");
+      return { html: lines.join("\n"), kept: kept, names: names, none: none };
+    }
+    var falls = names.filter(function (n) { return ch[n] < 0; });
+    lines.push("changes = {" + names.map(function (n) { return "'" + n + "': " + ch[n].toFixed(1); }).join(", ") + "}");
+    lines.push("flagged = [" + names.filter(function (n) { return Math.abs(ch[n]) > 30; }).map(function (n) { return "'" + n + "'"; }).join(", ") + "]   beyond 30 percent, check by hand");
+    lines.push("falls   = {" + falls.map(function (n) { return "'" + n + "': " + ch[n].toFixed(1); }).join(", ") + "}");
+    lines.push("segments in: " + names.length + "    came back None: 0    falls: " + falls.length + ", since a segment that rose is left out by the filter");
+    return { html: lines.join("\n"), kept: falls, names: names, none: 0 };
+  }
+  function helperFlow(mode) {
+    var out = helperOutput(mode);
+    return K.flow(["4 segments in", "pct_change on each", out.none + " came back None"], null,
+      { width: 150, kinds: ["known", "plain", mode === "prints" ? "bad" : "good"] });
+  }
+
+  /* ---------------------------------------------------------------- the rail */
+  var rail = document.querySelectorAll(".rail a");
+  Array.prototype.forEach.call(rail, function (a) {
+    a.addEventListener("click", function () {
+      Array.prototype.forEach.call(rail, function (b) { b.classList.toggle("on", b === a); });
+      $("jumped").textContent = "You jumped to " + a.textContent.replace(/^\d+/, "").trim() + ".";
+    });
+  });
+  if ("IntersectionObserver" in window) {
+    var seen = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        Array.prototype.forEach.call(rail, function (b) { b.classList.toggle("on", b.dataset.part === e.target.id); });
+      });
+    }, { rootMargin: "-20% 0px -70% 0px" });
+    Array.prototype.forEach.call(document.querySelectorAll("section.part"), function (s) { seen.observe(s); });
+  }
+
+  /* ---------------------------------------------------------------- the walk */
+  var ch = changes();
+  var WALK = [
+    { t: "The ask", lit: null, big: "Rs 2.10 crore to Rs 1.87 crore", cap: "booked revenue, Q1 then Q2",
+      chart: function () { return windowLine("closed", "Cumulative revenue through each quarter"); },
+      x: "Meera wants to know which branch of the tree moved: fewer customers, or the same customers buying less. Marketing says the answer is more customers and wants the acquisition budget. The ladder answers in a fixed order, starting with whether the drop is real." },
+    { t: "Rung 1: the number in Marketing's deck", lit: 0, big: p1(pct(WINDOWS.cut.a, WINDOWS.cut.b)), cap: "the Q2 tile cut at 15 September against the whole of Q1", bad: true,
+      chart: function () { return windowLine("cut", "The Q2 tile stops at week 11"); },
+      x: "The Q2 dashboard tile was exported on 15 September, so it covers 11 weeks against Q1's 13. Set beside each other as totals, they read as a fall of a quarter, which is the crisis read that rushes the budget. The first and last order dates of each window are the check." },
+    { t: "Rung 1: like with like", lit: 0, big: p1(pct(Q.rev[0], Q.rev[1])), cap: "closed quarters, 13 weeks each; per week on the cut window " + p1(pct(WINDOWS.week.a, WINDOWS.week.b)),
+      chart: function () { return windowBridge("cut"); },
+      x: "Compared as closed quarters, revenue fell 11.0 percent, Rs 23,00,000. As a rate per week on the cut window it fell 12.4 percent. The remaining Rs 31,40,050 of the tile's gap was the two weeks it left out, so the drop is real and about a tenth, and it now needs explaining." },
+    { t: "Rung 2: the tree, decomposed", lit: 1, big: f2(weighted(0)) + " to " + f2(weighted(1)), cap: "orders per customer; customers held at 69",
+      chart: function () { return windowBridge("closed"); },
+      x: "Customers held at 69 in both quarters, so the customer branch moved by Rs 0. Orders per customer fell from 1.65 to 1.25, which took Rs 51,57,895 off, and revenue per order rose 18.0 percent, which put Rs 28,57,895 back. The ratios 1.000 times 0.754 times 1.180 multiply to 0.890, the revenue ratio." },
+    { t: "Rung 2: the discount branch", lit: 1, big: pc1(DISC.recShare[1]), cap: "Q2 orders with a discount, where the field is recorded",
+      chart: function () { return discountChart("recorded"); },
+      x: "Some orders carry no discount field. Read as zero, 50.0 percent of Q2's orders carry a discount, which says half went without. Over the orders that record the field it is 71.7 percent, and with the blanks unknown the share lies between 50.0 and 80.2 percent. Either way the branch is at most Rs 12,900 a quarter against a Rs 23,00,000 fall." },
+    { t: "Rung 3: the segment split", lit: 2, big: p1(ch["Retail-Plus"]), cap: "orders per customer in Retail-Plus, the same 22 members",
+      chart: function () { return rollupChart("weighted"); },
+      x: "The same function run on each segment shows where frequency fell: Retail-Plus from 2.32 to 1.18 orders per member, while Retail-Core moved 5.3 percent and Student rose. The company figure is weighted by customers, 1.65 to 1.25, and it reproduces rung 2. Averaging the four segment figures gives 1.94 to 1.82, which does not." },
+    { t: "Rung 4: the rupees", lit: 3, big: Math.round(shareOf("rev", "Business").share) + " percent", cap: "of the rupee fall sits in Business, on three fewer orders out of twenty",
+      chart: function () { return measureBridge("rupees", 620); },
+      x: "In rupees, Business carries Rs 22,29,720 of the Rs 23,00,000 fall, because each of its orders is worth lakhs. Three fewer Business orders out of twenty is too few to call a trend today. Revenue per order rose mainly because small Retail-Plus orders disappeared from the mix, and nobody paid more." },
+    { t: "Rung 4: the orders", lit: 3, big: shareOf("orders", "Retail-Plus").amount + " of " + (Q.orders[0] - Q.orders[1]), cap: "lost orders sit in Retail-Plus",
+      chart: function () { return measureBridge("orders", 620); },
+      x: "In orders, Retail-Plus carries 25 of the 28 lost orders. Every member still bought in Q2; the members who ordered three times in Q1 now order once. A helper that printed its big moves and returned nothing would have dropped exactly this segment from the summary." },
+    { t: "Rung 5: the hypothesis and its timing", lit: 4, big: "July", cap: "the month the Retail-Plus fall began",
+      chart: function () { return K.line(MONTHS, [["Retail-Plus orders", PLUS_MONTHS, "bad"], ["Retail-Core orders", CORE_MONTHS, "plan"]], { width: 620, title: "Orders by month; Retail-Core is the comparison" }); },
+      x: "The complaint dates the broken reorder feature six weeks back from this week, which is late August. Retail-Plus orders were already down in July, before the break, so the break cannot be the whole story. Retail-Core stayed flat across the six months, so the fall is particular to the paid tier." },
+    { t: "Kavya's review", lit: null, big: "Frequency, not acquisition", cap: "the branch that moved, stated as a finding with its hypothesis beside it",
+      chart: function () { return K.flow(RUNGS.map(function (r) { return r.split("\n")[0]; }), null, { width: 112, kinds: ["good", "good", "good", "good", "unknown"] }); },
+      x: "Tell Meera that customers held at 69 and every one bought in both quarters, so acquisition is not the branch that moved. Orders per customer fell from 1.65 to 1.25; in behaviour the fall is Retail-Plus, and in rupees it is three Business orders that tomorrow's reconciliation checks before anyone acts. The reorder feature is a hypothesis, and the app's reorder logs would settle it." }
+  ];
+  var walkAt = 0;
+  function showWalk() {
+    var w = WALK[walkAt];
+    K.draw("walkLadder", K.ladder(RUNGS, w.lit === null ? -1 : w.lit, { width: 250, title: "The investigation ladder" }));
+    K.draw("walkChart", w.chart());
+    $("walkStep").textContent = "Step " + walkAt + " of " + (WALK.length - 1);
+    $("walkTitle").textContent = w.t;
+    $("walkText").textContent = w.x;
+    $("walkBig").textContent = w.big;
+    $("walkBig").className = "big" + (w.bad ? " bad" : "");
+    $("walkCap").textContent = w.cap;
+    $("walkNext").textContent = walkAt === WALK.length - 1 ? "Back to the start" : "Next";
+  }
+  $("walkNext").addEventListener("click", function () { walkAt = (walkAt + 1) % WALK.length; showWalk(); });
+  $("walkRestart").addEventListener("click", function () {
+    walkAt = 0; showWalk(); $("walkStep").textContent = "Step 0 of " + (WALK.length - 1) + ", restarted";
+  });
+  showWalk();
+
+  /* ---------------------------------------------------------------- the simulator */
+  var IDS = ["sWindow", "sDiscount", "sRollup", "sHelper", "sMeasure"];
+  var DEFENSIBLE = { sWindow: "closed", sDiscount: "recorded", sRollup: "weighted", sHelper: "returns", sMeasure: "orders" };
+  var HURRIED = { sWindow: "cut", sDiscount: "zero", sRollup: "averaged", sHelper: "prints", sMeasure: "rupees" };
+  function state() {
+    return { win: $("sWindow").value, disc: $("sDiscount").value, roll: $("sRollup").value,
+             help: $("sHelper").value, meas: $("sMeasure").value };
+  }
+  function para(box, text, bad) {
+    var p = document.createElement("p"); p.textContent = text; if (bad) p.className = "bad"; box.appendChild(p);
+  }
+  function setState(id, text, good) {
+    $(id).innerHTML = "<span class='" + (good ? "ok" : "warn") + "'>" + (good ? "Holds." : "Misleads.") + "</span> ";
+    $(id).appendChild(document.createTextNode(text));
+  }
+  function simulate() {
+    var s = state(), w = WINDOWS[s.win], change = pct(w.a, w.b);
+    var f = s.roll === "weighted" ? weighted : averaged, fchange = pct(f(0), f(1));
+    $("hRevenue").textContent = p1(change);
+    $("hRevenue").className = "big " + (w.fair ? "good" : "bad");
+    $("hRevenueCap").textContent = "revenue, " + w.weeks;
+    $("hFreq").textContent = f2(f(0)) + " to " + f2(f(1));
+    $("hFreq").className = "big " + (s.roll === "weighted" ? "good" : "bad");
+    $("hFreqCap").textContent = "orders per customer, " + (s.roll === "weighted" ? "weighted" : "averaged") + ", " + p1(fchange);
+
+    var box = $("simSentence"), wrong = [];
+    box.textContent = "";
+    if (s.win === "closed") para(box, "Revenue fell " + words(change) + " between two closed quarters of 13 weeks each, " + K.rupees(w.a) + " to " + K.rupees(w.b) + ".");
+    else if (s.win === "week") para(box, "Per week, revenue fell " + words(change) + ", " + K.rupees(w.a) + " a week in Q1 against " + K.rupees(w.b) + " a week in Q2 up to 15 September.");
+    else if (s.win === "same") para(box, "Over the same first 11 weeks of each quarter revenue fell " + words(change) + "; now that Q2 has closed, the closed quarters are the comparison, and they say 11.0 percent.");
+    else { para(box, "Revenue fell " + words(change) + ", " + K.rupees(w.a) + " against " + K.rupees(w.b) + ", on a Q2 window of 11 weeks set against Q1's 13.", true);
+           wrong.push("a crisis read that rushes the Rs 12 crore acquisition budget"); }
+    para(box, "Customers held at 69, and every one of them bought in both quarters, so the customer branch did not move.");
+    if (s.roll === "weighted") para(box, "Orders per customer fell from 1.65 to 1.25, " + words(fchange) + ", so frequency is the branch that moved.");
+    else { para(box, "Orders per customer fell only " + words(fchange) + ", 1.94 to 1.82, which reads as if frequency is not the branch either.", true);
+           wrong.push("a frequency fall of 6.0 percent that leaves Marketing's story standing"); }
+    if (s.disc === "zero") { para(box, "Half of Q2's orders, 50.0 percent, carry a discount, which reads as half the orders going without one.", true);
+           wrong.push("extending the monsoon discount to an \"other half\" of orders that the record does not show"); }
+    else if (s.disc === "recorded") para(box, "Where the field is recorded, 71.7 percent of Q2's orders carry a discount, 58.5 percent in Q1; absent values are reported separately and never counted as zero.");
+    else para(box, "Even at Rs 150 on every Q2 order, the discount branch is at most Rs 12,900 against a Rs 23,00,000 fall, so it did not move revenue.");
+    var h = helperOutput(s.help);
+    if (s.help === "prints") { para(box, "The segment summary shows Retail-Core -5.3 and Business -15.0 only, so Business reads as the largest fall and two of four segments are missing.", true);
+           wrong.push("Business accounts sent to the front and Retail-Plus told his tier is not in the table"); }
+    else para(box, "Orders per customer fell in three segments and rose in Student; the largest fall is Retail-Plus, 49.0 percent, where the same 22 members placed 26 orders against 51.");
+    if (s.meas === "rupees") para(box, "In rupees, Business carries " + K.rupees(shareOf("rev", "Business").amount) + " of the fall, " + Math.round(shareOf("rev", "Business").share) + " percent, on three fewer orders out of twenty, too few to call a trend today.");
+    else para(box, "In orders, Retail-Plus carries 25 of the 28 lost orders, " + Math.round(shareOf("orders", "Retail-Plus").share) + " percent, while Business lost three.");
+
+    var v = $("simVerdict").querySelector("span"), r = $("simReview").querySelector("span");
+    if (!wrong.length) {
+      $("simVerdict").className = "strip good";
+      v.textContent = "It does not stand on this data. Customers held at 69 with nobody lost and nobody new, and orders per customer carries the fall; tell Meera the branch is frequency, the behaviour sits in Retail-Plus, and the rupees sit in three Business orders.";
+      r.textContent = s.meas === "rupees"
+        ? "The reading holds. Put the order view beside the rupee view before it reaches Meera, because the rupees point at Business and the behaviour points at Retail-Plus."
+        : "The reading holds. Put the rupee view beside it before it reaches Meera, because three Business orders carry most of the rupees, and name the reorder feature as a hypothesis with the logs that would settle it.";
+    } else {
+      $("simVerdict").className = "strip bad";
+      v.textContent = "This reading would mislead the room into " + wrong.join("; and ") + ".";
+      r.textContent = wrong.length + " of 4 settings that decide the answer still read the hurried way. Fix the window first, then the roll-up, the discount default and the helper, and watch the sentence change after each one.";
+    }
+
+    setState("stWindow", w.fair ? "Both sides cover the same kind of window." : "Q2 covers 11 weeks against Q1's 13.", w.fair);
+    setState("stDiscount", s.disc === "zero" ? "An absent field was counted as no discount." : "The default is chosen and written down.", s.disc !== "zero");
+    setState("stRollup", s.roll === "weighted" ? "It reproduces 1.65 and 1.25 from the totals." : "It does not reproduce the company totals.", s.roll === "weighted");
+    setState("stHelper", h.names.length + " segments in, " + h.none + " came back None.", s.help === "returns");
+    setState("stMeasure", s.meas === "rupees" ? "Rupees point at Business; show orders beside them." : "Orders point at Retail-Plus; show rupees beside them.", true);
+
+    K.draw("simFlow", K.flow(RUNGS, null, { width: 150, title: "Where this reading holds and where it breaks",
+      kinds: [w.fair ? "good" : "bad", (s.disc === "zero" ? "bad" : "good"), (s.roll === "weighted" ? "good" : "bad"),
+              (s.help === "returns" ? "good" : "bad"), wrong.length ? "unknown" : "known"] }));
+    K.draw("simWindow", windowBridge(s.win));
+    K.draw("simDiscount", discountChart(s.disc));
+    $("simDiscountNote").textContent = s.disc === "zero" ? "Read as zero, every order with no field counts as an order that went without a discount." :
+      (s.disc === "recorded" ? "The share here uses only the orders that record the field; with the blanks unknown, Q2 lies between 50.0 and 80.2 percent." :
+       "The bound needs no default at all: the largest recorded value times the orders in the window.");
+    K.draw("simRollup", rollupChart(s.roll));
+    $("simHelper").innerHTML = h.html;
+    K.draw("simHelperFlow", helperFlow(s.help));
+    K.draw("simMeasure", measureBridge(s.meas));
+  }
+  IDS.forEach(function (id) {
+    $(id).addEventListener("change", function () {
+      var label = $(id).parentNode.querySelector("label").textContent.replace(/^\d\.\s*/, "");
+      $("simLog").textContent = "You changed " + label.toLowerCase() + " to “" + $(id).options[$(id).selectedIndex].text.toLowerCase() + "”.";
+      simulate();
+    });
+  });
+  function applySet(target, name) {
+    var moved = 0;
+    IDS.forEach(function (id) { if ($(id).value !== target[id]) { $(id).value = target[id]; moved += 1; } });
+    simulate();
+    $("simLog").textContent = moved ? "The " + name + " changed " + moved + " setting" + (moved === 1 ? "" : "s") + "." :
+      "Every setting already reads the " + name.replace("reading", "way") + ", so nothing changed; try one setting at a time.";
+  }
+  $("simFix").addEventListener("click", function () { applySet(DEFENSIBLE, "defensible reading"); });
+  $("simHurry").addEventListener("click", function () { applySet(HURRIED, "hurried reading"); });
+  simulate();
+
+  /* ---------------------------------------------------------------- the sequence popup */
+  function openSeq(title, lanes, messages, note) {
+    $("seqTitle").textContent = title;
+    K.draw("seqBody", K.sequence(lanes, messages, { laneWidth: 210 }));
+    $("seqNote").textContent = note;
+    var d = $("seqDialog");
+    if (typeof d.showModal === "function") d.showModal(); else d.setAttribute("open", "");
+  }
+  $("seqClose").addEventListener("click", function () { $("seqDialog").close(); });
+  function reveal(key, text) {
+    $(key + "What").textContent = text;
+    $(key + "Result").hidden = false;
+    $(key + "Wait").hidden = true;
+  }
+  function toggler(key, labels, draw, what) {
+    var on = false;
+    $(key + "Run").addEventListener("click", function () {
+      on = !on;
+      this.setAttribute("aria-pressed", String(on));
+      this.textContent = on ? labels[1] : labels[0];
+      draw(on);
+      reveal(key, what(on));
+    });
+    draw(false);
+  }
+
+  /* A: the window */
+  toggler("expA", ["Close the Q2 window", "Cut Q2 at 15 September again"],
+    function (on) { K.draw("expAChart", windowLine(on ? "closed" : "cut",
+      on ? "Closed quarters: " + p1(pct(Q.rev[0], Q.rev[1])) : "The tile against Q1: " + p1(pct(WINDOWS.cut.a, WINDOWS.cut.b)))); },
+    function (on) { return on
+      ? "With Q2 closed on 30 September both windows cover 13 weeks, and the fall is " + p1(pct(Q.rev[0], Q.rev[1])) + " where the tile said " + p1(pct(WINDOWS.cut.a, WINDOWS.cut.b)) + ". Of the tile's Rs 54,40,050 gap, Rs 31,40,050 was the two weeks it left out."
+      : "Back on the tile, Q2 stops at week 11 and the fall reads " + p1(pct(WINDOWS.cut.a, WINDOWS.cut.b)) + ", which is the number Marketing's deck carries."; });
+  $("expASeq").addEventListener("click", function () {
+    openSeq("Experiment A, as a sequence", ["the dashboard tile", "the analyst", "Meera"], [
+      ["the dashboard tile", "the analyst", "Q2 to 15 Sep, Rs 1,55,59,950"], ["the analyst", "the analyst", "first and last order dates: 11 weeks against 13"],
+      ["the analyst", "the analyst", "closed Q2, Rs 1,87,00,000, 13 weeks"], ["the analyst", "Meera", "down 11.0 percent, Rs 23,00,000"]],
+      "The check is the first and last order date of each window, done before any explanation starts.");
+  });
+
+  /* B: the discount default */
+  toggler("expB", ["Count where recorded", "Read absent as zero again"],
+    function (on) { K.draw("expBChart", discountChart(on ? "recorded" : "zero")); },
+    function (on) { return on
+      ? "Over the orders that record the field, 71.7 percent of Q2's orders carry a discount against 50.0 percent with blanks read as zero; with the blanks unknown, the share lies between 50.0 and 80.2 percent."
+      : "Read as zero, 42.1 percent of Q1's orders and 50.0 percent of Q2's carry a discount, and every order with no field counts as one that went without."; });
+  $("expBSeq").addEventListener("click", function () {
+    openSeq("Experiment B, as a sequence", ["the order", "the default", "the total"], [
+      ["the order", "the default", "no discount field"], ["the default", "the total", "read as Rs 0: 50.0 percent in Q2"],
+      ["the default", "the default", "absent means not recorded"], ["the default", "the total", "recorded only: 71.7 percent in Q2"],
+      ["the total", "the total", "bound: at most Rs 12,900"]],
+      "The default is a decision with a reason written beside it, and the bound says whether the branch matters at all.");
+  });
+
+  /* C: the roll-up */
+  toggler("expC", ["Weight by customers", "Average the averages again"],
+    function (on) { K.draw("expCChart", rollupChart(on ? "weighted" : "averaged")); },
+    function (on) { return on
+      ? "Weighted by customers, orders per customer fell from " + f2(weighted(0)) + " to " + f2(weighted(1)) + ", " + p1(pct(weighted(0), weighted(1))) + ", which reproduces round 2. The average of averages had said " + f2(averaged(0)) + " to " + f2(averaged(1)) + ", " + p1(pct(averaged(0), averaged(1))) + "."
+      : "The average of the four segment figures reads " + f2(averaged(0)) + " to " + f2(averaged(1)) + ", " + p1(pct(averaged(0), averaged(1))) + ", and it does not match the company totals of 1.65 and 1.25."; });
+  $("expCSeq").addEventListener("click", function () {
+    openSeq("Experiment C, as a sequence", ["the segments", "the roll-up", "the check"], [
+      ["the segments", "the roll-up", "four figures, each counted once"], ["the roll-up", "the check", "1.94 to 1.82"],
+      ["the check", "the check", "round 2 said 1.65 to 1.25: mismatch"], ["the segments", "the roll-up", "114 orders over 69, 86 over 69"],
+      ["the roll-up", "the check", "1.65 to 1.25: matches"]],
+      "A roll-up is checked by whether it reproduces the total computed from the whole file.");
+  });
+
+  /* D: the helper */
+  toggler("expD", ["Return every change", "Go back to the printing helper"],
+    function (on) { $("expDOut").innerHTML = helperOutput(on ? "returns" : "prints").html; },
+    function (on) { return on
+      ? "Returning every change gives four rows for four segments: Retail-Plus " + p1(ch["Retail-Plus"]) + " and Student " + p1(ch["Student"]) + " are back, flagged in their own column, and Retail-Plus is the largest fall."
+      : "The printing helper hands back None for Retail-Plus and Student, the summary keeps {Retail-Core -5.3, Business -15.0}, and two segments went in without coming out."; });
+  $("expDSeq").addEventListener("click", function () {
+    openSeq("Experiment D, as a sequence", ["the summary", "pct_change", "the screen"], [
+      ["the summary", "pct_change", "Retail-Plus: 2.32 to 1.18"], ["pct_change", "the screen", "check by hand: -49.0%"],
+      ["pct_change", "the summary", "None"], ["the summary", "the summary", "None is dropped from falls"],
+      ["the summary", "the screen", "{Retail-Core -5.3, Business -15.0}"]],
+      "The printed line carries no segment name, and the value that came back was None, so the loss is silent.");
+  });
+
+  /* E: the measure */
+  toggler("expE", ["Count orders instead", "Back to rupees"],
+    function (on) { K.draw("expEChart", measureBridge(on ? "orders" : "rupees", 560)); },
+    function (on) { var r = shareOf("rev", "Business"), o = shareOf("orders", "Retail-Plus"); return on
+      ? "Counted in orders, Retail-Plus is " + o.amount + " of the " + o.fall + " lost orders, " + Math.round(o.share) + " percent, and Business is 3. In rupees Business had carried " + K.rupees(r.amount) + ", " + Math.round(r.share) + " percent."
+      : "In rupees, Business carries " + K.rupees(r.amount) + " of the " + K.rupees(r.fall) + " fall, " + Math.round(r.share) + " percent, and Retail-Plus " + K.rupees(shareOf("rev", "Retail-Plus").amount) + "."; });
+  $("expESeq").addEventListener("click", function () {
+    openSeq("Experiment E, as a sequence", ["the segment split", "rupees", "orders"], [
+      ["the segment split", "rupees", "Business -Rs 22,29,720"], ["rupees", "rupees", "97 percent, on 3 orders"],
+      ["the segment split", "orders", "Retail-Plus -25"], ["orders", "orders", "89 percent, 22 members halved"]],
+      "Both views are true; the note to Meera leads with behaviour and names the rupee risk beside it.");
+  });
+
+  /* ---------------------------------------------------------------- the segment table and mix against rate */
+  (function table() {
+    var t = document.createElement("table"); t.className = "t";
+    t.innerHTML = "<tr><th>Segment</th><th class='num'>Customers</th><th class='num'>Orders</th><th class='num'>Orders per customer</th><th class='num'>Revenue</th><th class='num'>Revenue per order</th></tr>";
+    SEG.concat([{ name: "All four", cust: Q.cust, orders: Q.orders, rev: Q.rev }]).forEach(function (s) {
+      var tr = document.createElement("tr");
+      var cells = [s.name, s.cust[0] + ", " + s.cust[1], s.orders[0] + ", " + s.orders[1],
+        f2(s.orders[0] / s.cust[0]) + ", " + f2(s.orders[1] / s.cust[1]) + " (" + p1(pct(s.orders[0] / s.cust[0], s.orders[1] / s.cust[1])) + ")",
+        K.rupees(s.rev[0]) + ", " + K.rupees(s.rev[1]),
+        K.rupees(s.rev[0] / s.orders[0]) + ", " + K.rupees(s.rev[1] / s.orders[1]) + " (" + p1(pct(s.rev[0] / s.orders[0], s.rev[1] / s.orders[1])) + ")"];
+      cells.forEach(function (c, i) { var td = document.createElement("td"); td.textContent = c; if (i) td.className = "num"; tr.appendChild(td); });
+      t.appendChild(tr);
+    });
+    $("segTable").appendChild(t);
+    var cap = document.createElement("p"); cap.className = "note";
+    cap.textContent = "Each cell reads Q1, then Q2.";
+    $("segTable").appendChild(cap);
+  })();
+  function shares(q) { return SEG.map(function (s) { return 100 * s.orders[q] / Q.orders[q]; }); }
+  K.draw("segChart", K.columns(SEG.map(function (s) { return s.name; }), [["Q1 share of orders", shares(0)], ["Q2 share of orders", shares(1)]],
+    { fmt: function (v) { return v.toFixed(1) + "%"; }, title: "Where the orders came from, percent of each quarter" }));
+  var split = false;
+  $("segRun").addEventListener("click", function () {
+    split = !split;
+    this.setAttribute("aria-pressed", String(split));
+    this.textContent = split ? "Hide the split" : "Split the rise into mix and rate";
+    if (!split) { $("segText").textContent = "The split is hidden. Run it again to see the mix and the rate side by side."; return; }
+    var atMix = sum(SEG.map(function (s) { return (s.orders[1] / Q.orders[1]) * (s.rev[0] / s.orders[0]); }));
+    var mix = atMix - RPO[0], rate = RPO[1] - atMix, total = RPO[1] - RPO[0];
+    $("segFormula").textContent = "at Q2 mix and Q1 prices = " + K.rupees(atMix) + "\nmix  = " + K.rupees(atMix) + " - " + K.rupees(RPO[0]) + " = +" + K.rupees(mix) +
+      "\nrate = " + K.rupees(RPO[1]) + " - " + K.rupees(atMix) + " = +" + K.rupees(rate);
+    $("segText").textContent = "Revenue per order rose by " + K.rupees(total) + ", from " + K.rupees(RPO[0]) + " to " + K.rupees(RPO[1]) + ". The shift in mix explains " +
+      K.rupees(mix) + " of it, about " + Math.round(100 * mix / total) + " percent, and the segments' own revenue per order " + K.rupees(rate) +
+      ". Small Retail-Plus orders fell from " + shares(0)[1].toFixed(1) + " to " + shares(1)[1].toFixed(1) + " percent of all orders, so the average order got larger without anyone paying more.";
+  });
+
+  /* ---------------------------------------------------------------- the calculators */
+  function roll() {
+    function num(id) { return Math.round(100 * Number($(id).value)) / 100; }
+    var a = num("rA"), fa = num("fA"), b = num("rB"), fb = num("fB");
+    if (!(a > 0 && b > 0)) { $("rollVerdict").textContent = "Both groups need at least one customer for a rate to exist."; return; }
+    var w = (a * fa + b * fb) / (a + b), avg = (fa + fb) / 2;
+    $("rollFormula").textContent = "weighted = (" + a + " x " + fa + " + " + b + " x " + fb + ") / (" + a + " + " + b + ") = " + w.toFixed(2) +
+      "\naveraged = (" + fa + " + " + fb + ") / 2 = " + avg.toFixed(2);
+    var gap = Math.abs(avg - w);
+    $("rollVerdict").textContent = gap < 0.005
+      ? "The two agree at " + w.toFixed(2) + ", which happens only when the groups are the same size or share a rate; the weighted figure is still the one that multiplies back to the orders."
+      : "The average of averages is " + avg.toFixed(2) + " against the weighted " + w.toFixed(2) + ", off by " + gap.toFixed(2) + " orders per customer, because the group of " + Math.min(a, b) + " counts as much as the group of " + Math.max(a, b) + ".";
+  }
+  ["rA", "fA", "rB", "fB"].forEach(function (id) { $(id).addEventListener("input", roll); });
+  roll();
+  function bound() {
+    var m = Number($("bMax").value), n = Number($("bN").value), fall = Number($("bFall").value), b = m * n;
+    if (!(fall > 0)) { $("boundVerdict").textContent = "Enter the fall the branch is meant to explain."; return; }
+    var share = 100 * b / fall;
+    $("boundFormula").textContent = "most the branch could move = " + K.rupees(m) + " x " + n + " = " + K.rupees(b) + "\nagainst the fall: " + share.toFixed(2) + " percent of " + K.rupees(fall);
+    $("boundVerdict").textContent = share < 5
+      ? "Even at its largest the branch is " + share.toFixed(2) + " percent of the fall, so it cannot be the cause, whatever default the missing values take."
+      : "At its largest the branch could reach " + share.toFixed(1) + " percent of the fall, so the default for the missing values matters here and has to be chosen and written down.";
+  }
+  ["bMax", "bN", "bFall"].forEach(function (id) { $(id).addEventListener("input", bound); });
+  bound();
+
+  /* ---------------------------------------------------------------- the hypothesis */
+  K.draw("hypTiming", K.line(MONTHS, [["Retail-Plus orders", PLUS_MONTHS, "bad"], ["Retail-Core orders", CORE_MONTHS, "plan"]],
+    { width: 520, title: "Retail-Plus fell from July; the break dates to late August" }));
+  K.draw("hypChannel", K.columns(PLUS_CHANNEL.names, [["Q1", PLUS_CHANNEL.q1], ["Q2", PLUS_CHANNEL.q2]],
+    { width: 420, title: "Retail-Plus orders by channel: every channel fell" }));
+  var HYP = {
+    hypH1: ["h1", "H1 meets the timing test badly: Retail-Plus placed 18 orders between 1 July and 24 August, before the break, and 8 after it, and the fall had begun in July. The channel test agrees, since web fell from 24 to 9 and store from 14 to 9 as well as app from 13 to 8. The app's reorder events and failures by week, the release that broke it, and whether members who used reorder in Q1 fell more than those who did not would settle it."],
+    hypH2: ["h2", "H2 fits the timing: the fall starts in July, across every channel, in the paid tier only, while Retail-Core stays flat. It needs data this file does not carry: the tier's change log for benefits, prices or delivery terms, member renewals, and members' support tickets from July onwards."]
+  };
+  function drawHyp(pick) {
+    function k(which, good) { return pick === which ? (good ? "good" : "lit") : "plain"; }
+    K.draw("hypTree", K.tree({ label: "Retail-Plus members order half as often", kind: pick ? "plain" : "lit", branches: [
+      ["timing", { label: "H1: the reorder feature broke", kind: k("h1"), branches: [["settle with", { label: "reorder events by week\nand the release date", kind: k("h1", true) }]] }],
+      ["timing", { label: "H2: something changed in July", kind: k("h2"), branches: [["settle with", { label: "the tier's change log\nand renewals", kind: k("h2", true) }]] }]] },
+      { width: 240, title: "Two hypotheses, each with the evidence that would settle it" }));
+  }
+  Object.keys(HYP).forEach(function (id) {
+    $(id).addEventListener("click", function () {
+      Object.keys(HYP).forEach(function (other) { $(other).setAttribute("aria-pressed", String(other === id)); });
+      drawHyp(HYP[id][0]);
+      $("hypWhy").querySelector("span").textContent = HYP[id][1];
+    });
+  });
+  drawHyp(null);
+})();
+</script>
+</body>
+</html>
