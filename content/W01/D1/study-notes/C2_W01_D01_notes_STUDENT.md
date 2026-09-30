@@ -219,7 +219,7 @@ the file.
 order joins five invented orders of Rs 1,900 to Rs 2,600. The mean moves Rs 14,623, since every rupee
 of the new order enters it. The median moves Rs 50, one place along the sort. A trimmed mean that
 drops one order at each end moves Rs 83, but it needs a rule for how many to drop. A mean per
-customer type does not move within a type, but it needs the types. The best fit for "what does a
+customer type stays put within a type, and it needs the types. The best fit for "what does a
 typical order look like" is the median, with the mean beside it for the total. If marketing prices
 the payback per customer type, the mean per type answers better.
 

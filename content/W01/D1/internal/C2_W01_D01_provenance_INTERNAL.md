@@ -7,19 +7,28 @@ departs from a source.
 
 ## The sources
 
-Built on 29 September 2026 from, in this order: `docs/detailing/W01_W02_spine.md`, approved by the
-requester on 29 September 2026, which sets the day's case, its five rungs, its traps, the campus day
-and the afternoon-and-lab table; `.claude/skills/day-pack-builder/references/the-standard.md`, which
-sets the form and the volume; the Monday 5 October 2026 row of
-`docs/curriculum/W1_Data_analysis_found.md`, read in column order, for everything the spine leaves
-unchanged (the scenario, the data version, the plants, the interview anchors, the references and the
-Kahoot plan); the day's line in `docs/programme/calendar.md`; and `docs/07_Client_Zero.md` at v2.2,
-locked 13 September 2026, with the Global Capability Centre addendum of 28 September 2026.
+Raised on 30 September 2026 to the chapter standard, from, in this order:
+
+- `docs/detailing/W01_W02_spine.md`, approved on 29 September 2026 and raised on 30 September 2026
+  (decisions `chapter-standard` and `four-domains`). It sets the case, the rungs that become
+  chapters, the traps and the campus day.
+- `.claude/skills/day-pack-builder/references/the-standard.md`, as raised on 30 September 2026,
+  including the domain-first-day variant and the depth loop.
+- `.claude/skills/day-pack-builder/references/domain-dossier.md`.
+- The retail dossier, the domain card and the talk track on `w01-domain-retail`, which this pack
+  links to and never edits.
+- The Monday 5 October 2026 row of `docs/curriculum/W1_Data_analysis_found.md`, read in column
+  order.
+- The day's line in `docs/programme/calendar.md`.
+- `docs/07_Client_Zero.md` at v2.2, locked 13 September 2026.
+
+The 29 September build of this pack supplied the form: deck syntax, notebook helper and rhythm,
+companion, workbook script and day sheet.
 
 ## The data
 
 Every file in `data/` is written by `data/generate_client_zero.py`, version `v0`; nothing is
-hand-edited, and a regeneration on 29 September 2026 produced byte-identical files.
+hand-edited, and a regeneration on 30 September 2026 produced byte-identical files.
 
 ```
 python3 data/generate_client_zero.py --version v0 --out content/W01/D1/data --stem C2_W01_D01
@@ -27,63 +36,70 @@ python3 data/generate_client_zero.py --version v0 --out content/W01/D1/data --st
 
 | Planted | Where it is used |
 |---|---|
-| One Business order of Rs 4,80,000, KR-01031 | Round 3's trap (the mean of Rs 18,160 against the median of Rs 2,205), found by the learner's own sort in an empty cell; the second case, where it carries store's 91.6 percent |
-| One amount stored as the text "4500", KR-01008 | Round 2, met as a TypeError in two minutes and fixed with `int()`; the record is found in an empty cell |
+| One Business order of Rs 4,80,000, KR-01031 | Chapter 4's trap (the mean of Rs 18,160 against the median of Rs 2,205), found by the learner's own sort in an empty cell; the second case, where it carries store's 91.6 percent |
+| One amount stored as the text "4500", KR-01008 | Chapter 1's first sum, met as a TypeError in two minutes and fixed with `int()`; the record is found in an empty cell |
 | The take-home's second sample: two Business orders (Rs 3,12,000 and Rs 2,05,000) and the text "1990" | The take-home; named only in the day sheet |
 
-The plants appear by value only in `trainer/` and here.
+The plants appear by value only in `trainer/` and here. Chapter 6 counts the Business customer
+among the 9 one-time buyers too recent to judge, since it ordered 43 days before the extract ends;
+no learner file lists the 9 ids.
 
-## Rebuilt on 29 September 2026 to the approved spine
+## The build: the story and six chapters
 
-The pilot of 28 September was rejected for its content: staged Python errors, code-reading
-exercises and a 230-minute day. Its form was kept. Every family was rebuilt around one case climbed
-in five rungs, a trap per rung, and the 360-minute day.
+| Deck section | Notebook | Chapter | Trap and its exact wrong number |
+|---|---|---|---|
+| Morning, SECTION 0 | `00_retail_story` | The retail story, from the talk track and the dossier | None; the formulas on invented numbers, each with the trap the card names |
+| Morning, SECTION 1 | `01_four_readings_of_sales` | Four readings of sales | Rs 5,44,810 as sales, 4 cancelled store orders inside |
+| Morning, SECTION 2 | `02_the_tree_as_metrics` | The tree as metrics | AOV Rs 25,943, booked rupees over delivered orders; Rs 7,78,300 multiplied back |
+| Morning, SECTION 3 | `03_the_leaves_counted` | The leaves, counted | 30 customers, 1.00 orders each |
+| Morning, SECTION 4 | `04_the_typical_order` | The typical order | The mean of Rs 18,160 as typical, median Rs 2,205 |
+| Afternoon, SECTION 5 | `05_which_branch_first` | Which branch first | Two 10 percent lifts called 20 percent, Rs 6,53,772 against Rs 6,59,220 |
+| Afternoon, SECTION 6 | `06_the_sentence` | The sentence Meera acts on | "70 percent lost", when 9 of 16 one-time buyers are inside the 45-day repeat gap |
 
-| Family | The pilot | Now |
-|---|---|---|
-| Decks | A half-one and a half-two deck built around a NameError, a TypeError and code-reading drills | A morning deck of the ask and three rounds, and an afternoon deck of the two cases, the debrief of wrong answers, the interview drill and the close |
-| Notebooks | Four chapter notebooks and a hands-on twin | One notebook per round climbing four levels with its trap, plus the escalated case and the second case, each a TODO twin with an executed solution |
-| Companion | A revenue-tree page | A branch simulator: every assumption the traps turn on is a control, and the number and the decision move with it |
-| Workbook | Four tabs on the tree | One tab per taught decision, one planted formula defect each |
-| Exercises | Three lettered sets on concept, code and operation | One scenario set per round, the two case briefs, and the practice lab set, every stem a Kalpa business question |
-| Reading | Notes and a sheet on the old chapters | Notes carrying the three rounds as worked cases, the sheet with the traps, the board work in order, Tuesday's pre-read |
+The notebooks are written by `internal/C2_W01_D01_build_notebooks_INTERNAL.py` and executed cold in
+their own folder by `scripts/nb_make.py`. The decks are built by
+`internal/C2_W01_D01_build_decks_INTERNAL.py`, which runs `scripts/build_deck.py`'s build and prints
+each chapter opener's own numeral (see decision 1).
 
 ## Decisions that depart from a source
 
-1. **The rungs map onto the rounds two to one at the start.** The spine names five rungs and the
-   day has three morning rounds and two afternoon cases. Round 1 carries rungs one and two (four
-   readings of sales, and the tree as metrics), rounds 2 and 3 carry the leaves and the typical
-   order, and the escalated case carries the fifth rung, which branch Meera opens first. The second
-   case is the spine's second case.
-2. **Each round's trap is assigned from the spine's Monday list.** The cancelled-orders trap sits in
-   round 1, the rows-as-customers trap in round 2, the mean in round 3 and the two 10 percent lifts in
-   the escalated case. The second case carries its own trap, store's 91.6 percent, which the spine
-   does not list; it follows from the spine's question ("whether one channel changes the
-   recommendation") on this file.
-3. **The row's environment block (25 minutes) becomes two minutes inside round 1.** Week 0 set up
-   the Codespace; the 360-minute day has no environment slot, and the standard says a runtime error
-   gets two minutes when it happens.
-4. **The Kahoot has eight items and no return question.** The standard asks for the return question
-   from the day before; the row says there is none on Day 1, and the spine keeps the Kahoot plans as
-   the rows have them. The row's six items are kept, and two are added for the rows-as-customers and
-   the two-lifts traps.
-5. **The plant rule, applied to the afternoon.** A learner file never prints the Business order's
-   amount, id, customer or position, the words "bulk order" or "corporate order", or the text amount's
-   record. Aggregates that include the order (the mean, the median, store's share, booked revenue)
-   are the trap numbers and are printed. Numbers computed without it appear only in afternoon files,
-   after round 3's sort has found it, and they are introduced as "the order your round 3 sort put at
-   the top". The Kahoot's comparison trap uses "3500" where the row wrote "4500". On 29 September 2026
-   the requester had the all-orders rupee figures dropped from the second case: its brief, solution,
-   notebooks, simulator card and workbook tab show channel shares on all 30 orders and rupees only on
-   consumer orders, so store's booked total no longer sits beside its consumer total for a subtraction.
-6. **Anand Iyer is the finance controller.** The row calls him the CFO; `docs/07` says finance
+1. **Chapter opener numerals.** `scripts/build_deck.py` numbers openers by position, which would
+   print chapter 5 as 01 in the afternoon deck. The day-folder wrapper prints the number written in
+   the heading: 00 for the story, 01 to 06 for the chapters, and A to E for the afternoon's case
+   blocks, which have no chapter notebook. A rebuild with `scripts/build_deck.py` alone gives the
+   same slides with positional numerals.
+2. **Two traps are this pack's, in chapters the spine gives no trap.** The spine lists four traps
+   for Monday and the standard asks one per chapter. Chapter 2 stages a fraction from two
+   definitions (Rs 25,943), and chapter 6 stages one-time buyers read as lost (70 percent). Both
+   follow from the chapters' questions on this file.
+3. **The escalated case moves to the delivered definition.** The spine's escalated case answers
+   the leaves, the typical order, the branch and the window, and chapters 3 to 6 now teach all four
+   on booked orders. Rebuilding the answer on Anand's delivered definition keeps the case a harder,
+   unguided climb, with the odd-count median, the plan and discount on delivered revenue, and the
+   window's edge.
+4. **The afternoon's minutes.** Chapter 5 moves to the afternoon, and the case blocks give up the 30
+   minutes: the escalated case runs 35 (from 50) and the second case 25 (from 40). The debrief,
+   break, drill and Kahoot keep the standard's minutes. The morning runs the story 45, the ask 5,
+   chapters 1 to 3, the break before chapter 4, and chapter 4.
+5. **The row's environment block (25 minutes) is gone.** Week 0 set up the Codespace; the day
+   carries the one TypeError in chapter 1, two minutes.
+6. **The Kahoot departs from the row's plan in two items.** The row's Q3 ("'4500' > 3000") tests
+   syntax, and its Q5 (cells run out of order) tests a kernel topic the chapter grid no longer
+   teaches. They are replaced by chapter 2's mixed fraction and chapter 6's window edge. There is no
+   return question on Day 1, as the row says.
+7. **Anand Iyer is the finance controller.** The row calls him the CFO; `docs/07` says finance
    controller, and the pack follows `docs/07`.
-7. **The second case groups revenue by segment and channel.** The row's stop-before line names
-   grouping by segment, and the spine's afternoon table asks for revenue by customer type and
-   channel on the same file. The spine wins: the grouping is a dictionary accumulator counted by hand
-   in the second case only, with no helper function, and Tuesday still owns grouping as a technique.
-8. **Seven interview questions are added to the row's five.** They are this pack's case-style
-   follow-ups, as the spine asks, and their tags are this pack's calibration on the row's scale.
+8. **The second case groups revenue by segment and channel** with a dictionary, per the spine's
+   afternoon table, although the row's stop-before line names grouping by segment; Tuesday still
+   owns grouping as a technique.
+9. **The plant rule, applied to the afternoon.** It holds as on 29 September. Aggregates that
+   include the Business order are the trap numbers and are printed. Rupees without it appear only
+   on consumer orders in afternoon files, introduced as "the order your chapter 4 sort put at the
+   top".
+10. **Interview questions.** The row's five anchors are kept. The pack adds seven case-style and
+    design follow-ups, tagged on the row's scale by this pack.
+11. **The workbook gains two tabs**, Fraction and Edge, so every chapter's decision has a tab; the
+    recalc manifest proves both.
 
 ## Invented, and recorded as invented
 
@@ -91,37 +107,57 @@ in five rungs, a trap per rung, and the 360-minute day.
    Rs 3,000 band and the Business segment buys in bulk, as the generator's docstring sets it.
 2. The Week 1 extract is Kalpa Retail India for one window, 1 July to 26 September 2026.
 3. Marketing's Rs 12 crore is the acquisition line of the growth plan, not one quarter's spend.
-4. The payback consequence in round 3 ("about eight times as many orders") is arithmetic on the
-   mean against the median; no customer acquisition cost is stated anywhere, because none exists
-   in the sources.
-5. The invented sets, each labelled invented where it appears: five orders of Rs 1,900, 2,100,
-   2,300, 2,400 and 2,600 with a sixth of Rs 90,000 (the mean mechanism in the deck, notebook 3, the
-   companion, the board work, the notes and round 3's item 5); the lab's eight orders W-01 to W-08 and
-   twelve orders IV-01 to IV-12 (with a Rs 60,000 order and the text amount "2750", which carries no
-   item); 50,000 registered users in lab item 14; and a Rs 1,500 cost per customer in the stretch task.
-6. Every record labelled invented in the notebooks, the companion, the workbook, the exercises and
-   the practice set is invented to isolate one mechanism, and each place says so.
+4. The story notebook's numbers are the dossier's illustrative numbers, labelled invented in
+   every cell that uses them: Rs 100 of GMV, the Saturday basket, the app's funnel, the month's
+   tree, January's cohort, the CLV and CAC, inventory days, the two categories and the like-for-like
+   stores.
+5. Chapter 4's sizing and mechanism set: five invented orders of Rs 1,900 to Rs 2,600 and one of
+   Rs 90,000.
+6. Chapter 6's reading times for the four answer formats (2, 20 and 60 seconds) are this pack's
+   estimates, labelled as the sizing of a choice.
+7. The lab's orders W-01 to W-08 and IV-01 to IV-12, 50,000 registered users in lab item 14, and a
+   Rs 1,500 cost per customer in the stretch task, each labelled invented where it appears.
 
-## Sources, with the date each was checked
+## The real company in each chapter
+
+All are from the dossier's likeness section and its sources file, checked on 30 September 2026.
+
+| Chapter | Fact | Link | Checked |
+|---|---|---|---|
+| 1 | Reliance Retail: gross revenue Rs 90,408 crore and revenue from operations Rs 79,745 crore, quarter to June 2026 | https://www.ril.com/sites/default/files/2026-07/Media_Release_RIL_Q1_FY2026-27_Financial_and_Operational_Performance.pdf | checked 30 Sep 2026 |
+| 2 | Jio: 533 million subscribers, revenue per user Rs 215.6 a month, churn 1.6 percent a month | The same release | checked 30 Sep 2026 |
+| 3 | Reliance Retail: 396 million registered customers and 20,169 stores at 30 June 2026 | The same release | checked 30 Sep 2026 |
+| 4 | Blinkit: net AOV Rs 518 and 2,443 dark stores, quarter to June 2026 | https://www.medianama.com/2026/07/223-takeaways-eternal-q1-fy27-earnings-call/ | checked 30 Sep 2026 |
+| 5 | Flipkart Black at Rs 1,499 a year, 2025 | https://stories.flipkart.com/flipkart-black-loyalty-program-2025 | checked 30 Sep 2026 |
+| 5 | Amazon Prime in India from Rs 399 to Rs 1,499 a year | https://www.aboutamazon.in/news/retail/new-amazon-prime-membership-plans-in-india | checked 30 Sep 2026 |
+| 6 | Klarna: two-thirds of chats in the first month | https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/ | checked 30 Sep 2026 |
+| 6 | Klarna's CEO on lower quality from a cost-first approach | https://fortune.com/2025/05/09/klarna-ai-humans-return-on-investment/ | checked 30 Sep 2026 |
+
+## The row's references, with the date each was checked
 
 Each link was requested on 29 September 2026 and returned HTTP 200, except where noted.
 
 | Link | Role | Checked |
 |---|---|---|
-| https://www.hackingthecaseinterview.com/pages/profitability-case-interview | The profitability case and the revenue tree, trainer preparation and the notes | checked 29 Sep 2026, 200 behind a bot challenge page |
-| https://www.roadtooffer.com/blog/driver-tree | Driver trees, trainer preparation | checked 29 Sep 2026, 200 |
-| https://mconsultingprep.com/profitability-case-framework | The framework's revenue variants, the take-home reading | checked 29 Sep 2026, 200, title "6 Variants of Profitability Framework" |
+| https://www.hackingthecaseinterview.com/pages/profitability-case-interview | The profitability case, trainer preparation and the notes | checked 29 Sep 2026, 200 behind a bot challenge page |
+| https://www.roadtooffer.com/blog/driver-tree | Driver trees, the notes | checked 29 Sep 2026, 200 |
+| https://mconsultingprep.com/profitability-case-framework | The framework's revenue variants, the notes and the take-home | checked 29 Sep 2026, 200 |
 | https://automatetheboringstuff.com/3e/ | Loops and dictionaries, the notes' reading path | checked 29 Sep 2026, 200 |
 | https://docs.github.com/en/codespaces/developing-in-a-codespace/getting-started-with-github-codespaces-for-machine-learning | Codespaces with Jupyter, trainer preparation | checked 29 Sep 2026, 200 |
-| https://www.youtube.com/playlist?list=PL-osiE80TeTskrapNbzXhwoFUiLCjGgY7 | Corey Schafer, the beginner playlist | checked 29 Sep 2026, 200; the oEmbed title reads "Python Programming Beginner Tutorials" |
-| https://www.youtube.com/watch?v=daefaLgNkw0 | Corey Schafer, Dictionaries | checked 29 Sep 2026; the page returned 429, and the oEmbed endpoint returned "Python Tutorial for Beginners 5: Dictionaries - Working with Key-Value Pairs" |
+| https://www.youtube.com/playlist?list=PL-osiE80TeTskrapNbzXhwoFUiLCjGgY7 | Corey Schafer, the beginner playlist | checked 29 Sep 2026, 200 |
+| https://www.youtube.com/watch?v=daefaLgNkw0 | Corey Schafer, Dictionaries | checked 29 Sep 2026 through the oEmbed endpoint, since the page returned 429 |
 | https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/mean-median-basics/v/mean-median-and-mode | Mean, median and mode | checked 29 Sep 2026, 200 |
 | https://britinstitute.uk/blog/data-analyst-case-study-interview-questions | The sales-drop case, Tuesday's pre-read | checked 29 Sep 2026, 200 |
 
 ## Tools the numbers and outputs came from
 
-Python 3.11.15, IPython 9.17.1 and nbclient 0.11.0 for every notebook output and error text;
-python-pptx for the decks; mermaid-cli 11.17.0 for every rendered diagram, run from a session-local
-install because the installed mermaid-cli 12.0.0 rejects the `-w` flag that `scripts/build_deck.py`
-and `scripts/build_cheatsheet.py` pass; LibreOffice for the workbook recalculation and the deck
-render check, with the Carlito font installed.
+Python 3.11.15 and nbclient 0.11.0 for every notebook output and error text; python-pptx through
+`scripts/build_deck.py` for the decks, with mermaid-cli 12.0.0 as installed in the session;
+LibreOffice for the workbook recalculation and the deck render check, with the Carlito font
+installed from `fonts-crosextra-carlito` on 30 September 2026.
+
+## The depth loop
+
+| Pass | Asked | Found | Changed |
+|---|---|---|---|
+| 1. Draft | Is every chapter built from the row, the spine and the dossier, in the chapter order? | The spine's five rungs became six chapters, with the sixth the rung's hardest form, the sentence with its caveat. Every deck chapter and notebook runs need, options, build, trap, second route and review. | Nothing further. |
