@@ -22,13 +22,13 @@ verdicts:
   - {sheet: Fraction, cell: B15, expect: "Fix the AOV before it values any order."}
   - {sheet: Fraction, cell: B13, contains: "Rs 5,44,803, which lands on no revenue"}
   - {sheet: Edge, cell: B15, expect: "Fix the lost count before the sentence calls anyone lost."}
-  - {sheet: Export, cell: B5, expect: "Not ready: tabs still carrying a defect, 7 of seven."}
+  - {sheet: Export, cell: B5, expect: "Not ready: 7 of 7 tabs still carry a defect."}
 flips:
   - name: the not-cancelled total leaves the cancelled orders out
     set: [{sheet: Sales, cell: C11, value: "=C5+C6"}]
     verdicts:
       - {sheet: Sales, cell: B19, expect: "Sales, not cancelled, 1 July to 26 September: Rs 5,35,760 on 26 orders, with Rs 9,050 and 4 orders of the booked total left out by the definition."}
-      - {sheet: Export, cell: B5, expect: "Not ready: tabs still carrying a defect, 6 of seven."}
+      - {sheet: Export, cell: B5, expect: "Not ready: 6 of 7 tabs still carry a defect."}
   - name: the fixed sales tab, read as delivered
     set: [{sheet: Sales, cell: C11, value: "=C5+C6"}, {sheet: Sales, cell: B14, value: "delivered"}]
     verdicts:
@@ -56,7 +56,7 @@ flips:
   - name: the typical order reads the median
     set: [{sheet: Typical, cell: B9, value: "=B7"}]
     verdicts:
-      - {sheet: Typical, cell: B14, expect: "Report the median, Rs 2,205, as the typical order: the mean of Rs 18,160 is 8.2 times it, so a first order is worth about Rs 2,205 to the acquisition case."}
+      - {sheet: Typical, cell: B14, expect: "Report the median, Rs 2,205, as the typical order: the mean of Rs 18,160 is 8.2 times it, so the mean describes no typical first order."}
   - name: the fixed typical order, asked for a total that must add up
     set: [{sheet: Typical, cell: B9, value: "=B7"}, {sheet: Typical, cell: B11, value: "a total that must add up"}]
     verdicts:
@@ -72,11 +72,11 @@ flips:
   - name: delivered takes the returns out
     set: [{sheet: Channel, cell: F8, value: "=C8-D8-E8"}, {sheet: Channel, cell: F9, value: "=C9-D9-E9"}, {sheet: Channel, cell: F10, value: "=C10-D10-E10"}]
     verdicts:
-      - {sheet: Channel, cell: B18, expect: "On consumer orders delivered, app leads with Rs 18,600 of Rs 40,790; returns took Rs 14,970 and cancellations Rs 9,050, so the channel view adds two leaks to name and leaves frequency first standing."}
+      - {sheet: Channel, cell: B18, expect: "In the consumer view, delivered, app leads with Rs 18,600 of Rs 40,790; returns took Rs 14,970 and cancellations Rs 9,050, so the channel view adds two leaks to name and leaves frequency first standing."}
   - name: the fixed channel tab, read as booked
     set: [{sheet: Channel, cell: F8, value: "=C8-D8-E8"}, {sheet: Channel, cell: F9, value: "=C9-D9-E9"}, {sheet: Channel, cell: F10, value: "=C10-D10-E10"}, {sheet: Channel, cell: B4, value: "booked"}]
     verdicts:
-      - {sheet: Channel, cell: B18, contains: "On consumer orders booked, web leads with Rs 27,290 of Rs 64,810"}
+      - {sheet: Channel, cell: B18, contains: "In the consumer view, booked, web leads with Rs 27,290 of Rs 64,810"}
   - name: six of seven fixed still holds the release
     set:
       - {sheet: Sales, cell: C11, value: "=C5+C6"}
@@ -86,7 +86,7 @@ flips:
       - {sheet: Fraction, cell: B11, value: "=ROUND(B10/B9,0)"}
       - {sheet: Edge, cell: B11, value: "=B7-B9"}
     verdicts:
-      - {sheet: Export, cell: B5, expect: "Not ready: tabs still carrying a defect, 1 of seven."}
+      - {sheet: Export, cell: B5, expect: "Not ready: 1 of 7 tabs still carries a defect."}
   - name: all seven tabs fixed
     set:
       - {sheet: Sales, cell: C11, value: "=C5+C6"}

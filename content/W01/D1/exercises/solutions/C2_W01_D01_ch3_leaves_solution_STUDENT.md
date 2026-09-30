@@ -1,37 +1,42 @@
-# Solution: chapter 3, the leaves, counted
+# Which letters answer chapter 3's set on how many customers came back?
 
-Answers: 1c 2d 3b 4b 5d
+Answers: 1d 2b 3c 4a 5d
 
-## The idea being tested
+## What does the set test?
 
-A row is an order and a customer is an id. Counted by rows, orders per customer reads 1.00 and
-"nobody comes back" makes acquisition look like the only branch; counted by distinct ids it is 30 /
-23 = 1.30, and 7 customers came back. The dictionary of counts fills both customer branches in one
-pass; a set is enough when only the count is asked; the warehouse's COUNT(DISTINCT) takes over at
-scale.
+A row is an order and a customer is an id. Counted by rows, the 30 orders read as 30 customers and
+orders per customer as 1.00, so "nobody comes back" makes acquisition look like the only branch.
+Counted by distinct ids, Kalpa has 23 customers, 30 / 23 = 1.30 orders each, and 7 of them came
+back while 16 bought once. A set counts customers in one line; the dictionary of counts fills both
+customer branches in one pass and names who came back; the warehouse's COUNT(DISTINCT) takes over
+when the rows run into crores.
 
-## Item by item
+## Why is each key right, and why does each other option fail?
 
-| Item | Key | Why it holds | Why the others fail |
-|---|---|---|---|
-| 1 | c | A set counts distinct ids, a dictionary keeps a count per id, the `&` of two sets keeps the ids both hold, and the row count is the order count. | a uses the row count for customers, the chapter's trap. b and d swap the set and the dictionary, which answer different questions. |
-| 2 | d | "Nobody comes back" says frequency is dead, so buying customers looks like the only way to grow, which is marketing's Rs 12 crore. | a is chapter 1's cancellations. b is chapter 4's question. c has nothing to do with the count. |
-| 3 | b | At 4 crore rows the data stays where it lives and the database counts it; Week 2 teaches it. | a works and is the wrong tool at that size. c is the trap at any size. d is impossible by hand. |
-| 4 | b | With nobody keeping three orders, 26 orders less 21 customers is 5 customers with two orders. | a is the booked answer. c counts every customer. d counts rows as customers, chapter 3's trap. |
-| 5 | d | A set answers "how many" in one line; the dictionary earns its extra line when the question becomes "how many came back". | a is the trap. b works and is more than the ask. c is error-prone and has nothing to do with size. |
+| Item | Key | The question in one line | Why the key holds | Why each other option fails |
+|---|---|---|---|---|
+| 1 | d | Which tool answers each of the head of Retail-Plus's four questions? | A set counts distinct ids (1q), a dictionary keeps a count per id (2r), the `&` of two sets keeps the ids both hold (3s), and the row count is the order count (4p). | a: the row count answers how many orders, and a set answers how many customers, so 1p and 4q swap them. b: 2s and 3r swap the `&` and the dictionary, which answer different questions. c: 1r and 2q swap the dictionary and the set, and a set forgets how many orders each id placed. |
+| 2 | b | What does a cell that divides the 30 orders by `len(ORDERS)` print, and what would Meera read into it? | The row count is 30, so 30 / 30 prints 1.00, which reads as nobody coming back and makes buying new customers look like the only way to grow. | a: 1.30 divides by the 23 distinct ids, which this cell never counts. c: 0.77 is 23 / 30, the rate upside down, from ids this cell never counts. d: dividing 30 by 30 cannot print 23. |
+| 3 | c | Which way of counting customers fits 4 crore rows in the warehouse? | The count runs where the rows live and one number comes back; Week 2 teaches the SQL. | a: a loop works on 30 rows and first has to move 4 crore rows into a notebook. b: a row count counts orders at any size. d: a spreadsheet cannot hold 4 crore rows, and a count by hand misses changes. |
+| 4 | a | How many of Anand's customers kept two orders, with 26 not-cancelled orders from 21 customers and nobody on three? | With nobody on three orders, each extra order belongs to a different customer: 26 - 21 = 5 customers kept two. | b: 7 came back on the booked orders, a different reading. c: 21 counts every customer. d: 26 counts rows as customers. |
+| 5 | d | Which tool fits "how many customers bought this quarter?", and what would switch it? | A set answers "how many" in one line; the dictionary earns its extra lines once the question becomes who came back or how often. | a: the row count counts orders, whatever the number looks like. b: a dictionary works and answers more than was asked. c: a sort is easy to miscount and has nothing to do with a thousand rows. |
 
-## The part worth arguing about
+## Which item is worth arguing about?
 
-Item 4. The shortcut, orders less customers, holds only when nobody has three orders. The
-dictionary is the count to trust, and the stem says why the shortcut is safe here.
+Item 4. The shortcut, orders less customers, holds only when nobody placed three orders, which is why
+the stem says so. With one customer on three orders the subtraction counts that customer's two extra orders as
+two people, so the dictionary is the count to trust whenever the stem cannot promise it.
 
-**Kavya's review.** "Your first 30 was a count of rows, divided as if it were people. Count people by their ids."
+**Kavya's review.** "Your first 30 was a count of rows, divided as if it were people. Count people by
+their ids."
 
-## Where the pattern lives in production
+## Where does this pattern show up at work?
 
-Reliance Retail reports 396 million registered customers. Registered, active and ordering are three
-denominators, and each gives a different rate for the same orders.
+Reliance Retail reports 396 million registered customers. Registered, active and ordering customers
+are three denominators, and each gives a different rate for the same orders, so every rate per
+customer has to say which customers it divides by.
 
-## Hands-on
+## What does the notebook confirm?
 
-Notebook 03 prints 23 customers, 1.30 orders each, 7 came back, and 2 on delivered orders.
+Notebook 03 prints 23 customers, 1.30 orders each and 7 who came back on the booked orders, and 2
+who kept two on the delivered orders.

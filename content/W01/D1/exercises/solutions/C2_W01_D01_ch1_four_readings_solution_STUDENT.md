@@ -1,43 +1,46 @@
-# Solution: chapter 1, four readings of sales
+# Which letters answer chapter 1's set on the total Meera should call sales?
 
-Answers: 1b 2d 3a 4c 5b
+Answers: 1c 2b 3d 4a 5b
 
-## The idea being tested
+## What does the set test?
 
-"Sales" is three honest numbers on one file, and each answers a different question. Booked, Rs
-5,44,810 on 30 orders, is what customers asked for. Not cancelled, Rs 5,35,760 on 26, is what left
-the shelf. Delivered, Rs 5,20,790 on 21, is what stayed sold. The trap is the first number reported
-as sales with no definition beside it: 4 cancelled orders ride inside it, all 4 from store. The
-check is a count by status before any sum, and the fix is the definition written beside the number.
-The two design items ask when each way of answering is the right one.
+Kalpa's 30 orders give three honest readings of sales, and each answers a different question.
+Booked, Rs 5,44,810 on 30 orders, is what customers asked for. Not cancelled, Rs 5,35,760 on 26, is
+what left the shelf. Delivered, Rs 5,20,790 on 21, is what stayed sold. The chapter's wrong number is
+the first of them sent as "sales" with no reading named: 4 cancelled orders, Rs 9,050, all of
+them on the store channel, ride inside it. The check is a count by status before any sum, and the
+fix is the reading written beside the number with the walk between the readings. The two design
+items ask when each way of answering is the right one.
 
-## Item by item
+## Why is each key right, and why does each other option fail?
 
-| Item | Key | Why it holds | Why the others fail |
-|---|---|---|---|
-| 1 | b | Rs 5,44,810 is booked revenue, and 4 of its 30 orders were cancelled, so it carries Rs 9,050 that never became a sale. | a: a median describes a typical order, and a total is a total. c: the returns are inside the Rs 5,44,810 already. d: the ask is about last quarter, which is the window the file holds. |
-| 2 | d | The count by status comes first, since it is the check that catches cancelled orders; then the sums, then the definition beside the total, and the reconciliation last, since it is for the board. | a sums before counting, so the cancelled orders ride in unseen. b reconciles a figure that does not yet say what it is. c writes the definition before the count that tells you which definitions exist. |
-| 3 | a | A first look needs every reading at once, which summing by status gives in one pass; the board needs the figure in the books, which only Finance can confirm. | b waits a day or more for a first look that needed an afternoon. c sends the undefined total, the chapter's trap. d is ten minutes at 30 rows and impossible at the full export, and a spreadsheet by hand is where typos hide. |
-| 4 | c | The condition picks out the cancelled orders, which is why it printed their Rs 9,050; != keeps the other 26 and prints 535760. | a answers a stricter definition, delivered, and prints 520790. b prints thirty running lines and still sums the wrong orders. d changes the type of the total and leaves the wrong orders in it. |
-| 5 | b | A new status becomes a new key with no new code; booked is the sum of every key and not cancelled is booked less one key, so both stay right. | a needs a new if in every reading the new status touches. c is wrong for the status route, which absorbs the new key. d moves the question to Finance and does not compute the readings at all. |
+| Item | Key | The question in one line | Why the key holds | Why each other option fails |
+|---|---|---|---|---|
+| 1 | c | Which pairing of the four ways fits Meera's first look this afternoon and Anand's board figure next month? | Summing by status takes one pass and under a second, gives every reading at once and lands on the booked total, which suits a first look; the board needs the figure in the books, which only Finance can confirm. | a: adding every amount is no faster than summing by status on 30 rows, and it sends one total with no reading named. b: waiting a day or more for the books costs Meera the afternoon she asked for. d: ten minutes of ticking at 30 rows becomes impossible on the full export, and a hand tally is where typos hide. |
+| 2 | b | What is wrong with the slide line "Sales last quarter: Rs 5,44,810 (30 orders)"? | Rs 5,44,810 is booked revenue: 4 of its 30 orders were cancelled before they left the shelf, Rs 9,050 that never became a sale, and the line names no reading. | a: a customer meaning to buy is booked demand, and a cancelled order never paid Kalpa a rupee. c: delivered is one honest reading among three, and swapping in another unnamed total repeats the fault. d: the 5 returned orders, Rs 14,970, sit inside the Rs 5,44,810 already. |
+| 3 | d | In which order do the four steps run before the board figure leaves the team? | The count by status comes first because it shows which orders the sums will hold; then the sums, then the reading written beside the total, and the reconciliation last, since it compares a finished, named figure with Finance's. | a: summing before counting lets the cancelled orders ride in unseen. b: reconciling before the reading is written compares a figure that does not yet say what it is. c: writing the reading before the count guesses which readings the file holds. |
+| 4 | a | Which one change to the cell that printed 9050 gives Anand revenue on the orders that were not cancelled? | The test picked out the cancelled orders, which is why the cell printed their Rs 9,050; != keeps the other 26 orders and prints 535760. | b: delivered is a stricter reading than Anand asked for, and the cell would print 520790. c: skipping the returned orders keeps the cancelled ones and prints 529840. d: summing everything that was not delivered prints 24020, the rupees that did not stay sold. |
+| 5 | b | When a fifth status, "part-refunded", arrives, which way of computing the readings shows it with no new code? | Summing by status gives every status its own total, so part-refunded appears as a new line in the walk the first time it is in the file, and the walk still lands on the booked total. | a: a loop with one test per reading folds the new orders into whichever readings its tests happen to catch, and nothing reports that a new status arrived. c: the status route needs no rewrite, since a new key is one more line. d: Finance's figure is one reading on Finance's terms, and it computes none of the three. |
 
-## The part worth arguing about
+## Which item is worth arguing about?
 
-Item 3. Some will argue that Finance's figure should be the only one Meera ever sees. It should be
-the one the board sees; for a first look the same afternoon, waiting for the books costs the
-decision a day, and the bridge shows every gap the books will later confirm.
+Item 1. Some will argue that Finance's figure should be the only one Meera ever sees. It is the one
+the board should see, since a number that disagrees with the books loses that room. For a first look
+the same afternoon, waiting for the books costs the decision a day, while the walk by status shows
+every rupee between the readings and lets Finance confirm the one Meera chooses.
 
-**Kavya's review.** "I will accept any of the three definitions. I will not accept a number that
-does not say which one it is."
+**Kavya's review.** "I will accept any of the three readings. I will not accept a number that does
+not say which one it is."
 
-## Where the pattern lives in production
+## Where does this pattern show up at work?
 
 Reliance Retail reported gross revenue of Rs 90,408 crore and revenue from operations of Rs 79,745
 crore for the same quarter to June 2026, and every retailer's finance team keeps booked, net and
-recognised revenue on separate lines. Bookings against revenue is the same argument at a product
-company.
+recognised revenue on separate lines. At a software company the same argument runs between bookings
+and recognised revenue.
 
-## Hands-on
+## What does the notebook confirm?
 
-`notebooks/C2_W01_D01_01_four_readings_of_sales_STUDENT.ipynb` prints Rs 5,35,760 on the
-not-cancelled definition and asserts the two routes agree, which confirms Q1 and Q5; its order of cells, count then sum, is Q2.
+`notebooks/C2_W01_D01_01_four_readings_of_sales_STUDENT.ipynb` counts the orders by status before it
+sums, prints Rs 5,35,760 on the not-cancelled reading, and asserts that summing by status reaches the
+same three totals as one loop with three tests, which confirms items 2 and 5.

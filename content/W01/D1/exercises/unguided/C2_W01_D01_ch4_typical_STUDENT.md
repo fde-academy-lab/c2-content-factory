@@ -1,10 +1,21 @@
-# Chapter 4 scenario set: the typical order
+# What does a typical Kalpa order look like, stated so that one large order cannot move it?
 
-> "No averages. One business customer can move an average."
-> Anand Iyer, finance controller, Kalpa Retail
+> Meera: "What does a typical order look like?"
+> Anand: "No averages. One business customer can move an average."
+> Meera Raghavan, CEO, and Anand Iyer, finance controller, Kalpa Retail
 
-Five items on the same 30 orders, alone, in the room's turn of chapter 4. Items marked **Design**
-ask for the best-fit approach, a sizing, or the fact that would switch it.
+**Who needs the answer.** Marketing's case for Rs 12 crore values every new customer by the orders
+that customer will place, so Meera needs to know what a typical order is worth before she judges
+whether the budget is cheap, and Anand has already said how he will read the answer. A first order
+valued far too high makes Rs 12 crore look cheap and the payback look short.
+
+**The questions on the way.** What does the mean say about the orders? What is the middle order?
+Which number should a payback be built on? Which middle survives one large order? Does the typical
+order hold when the reading of sales changes?
+
+Five items, alone, in the room's turn of chapter 4. Every item has one right answer, so decide it
+before you record the letter. Items marked **Design** ask for the best-fit approach, a sizing, the
+fact that would switch the choice, or the second route that would confirm a number.
 
 Post one line, five letters in item order, no spaces:
 
@@ -12,54 +23,95 @@ Post one line, five letters in item order, no spaces:
 Post exactly this shape: xxxxx
 ```
 
+---
+
+## What did chapters 1 to 3 find, and what are the middles?
+
+Kalpa Retail grew revenue 4 percent last year against a plan of 15 percent, and marketing has asked
+for Rs 12 crore to win new customers. Chapter 1 read the 30 orders from 1 July to 26 September 2026
+three ways: booked, Rs 5,44,810 on 30 orders; not cancelled, Rs 5,35,760 on 26; and delivered,
+Rs 5,20,790 on 21. Chapter 2 measured the average order value on booked orders at Rs 5,44,810 / 30 =
+Rs 18,160. Chapter 3 counted 23 customers, 1.30 orders each, and 7 of them came back.
+
+A middle is one number that stands for all the orders, and three are in play:
+
+| Middle | How it is worked out |
+|---|---|
+| The mean | The total of the amounts over their count, which is the average order value |
+| The median | The middle amount once the amounts are sorted; with an even count, halfway between the two middle amounts |
+| The trimmed mean | The mean of what is left after a rule drops the smallest and the largest orders |
+
 ```mermaid
 flowchart LR
     S["<b>sort the amounts</b>"] --> M["<b>take the middle</b><br/>or halfway between two"]
     M --> T["<b>the typical order</b>"]
 ```
 
+A payback asks how soon the money spent winning a customer comes back from what that customer
+brings in. It adds up the customer's orders over a period, so it needs each order's contribution:
+what an order leaves after the cost of its goods and of delivering it.
+
 ---
 
-### Q1. The mean of 30 orders is Rs 18,160 and 29 of them sit below it. What does that say about the orders?
+## What does the mean say about Kalpa's orders, and what is the middle order?
+
+Analysts at every retailer report a typical basket beside the average, because the two part company
+whenever a few large orders sit among many small ones.
+
+### Q1. The mean of the 30 orders is Rs 18,160, and only 1 of the 30 sits above it. What does that say about Kalpa's orders?
 
 a) One or a few very large orders pull the mean far above a typical order
-b) Most orders sit near Rs 18,160, and a few small ones pull the mean down below them
-c) The mean is wrong arithmetic, and it should be recomputed by hand from the amounts
-d) The orders are spread evenly, so the mean and the median must sit close together
+b) Most orders sit near Rs 18,160, and a few small ones pull the mean down
+c) The sum is wrong, so the mean should be recomputed by hand from the amounts
+d) The orders are spread evenly, so the mean and the median sit close together
 
-### Q2. The 30 amounts are sorted; the 15th is Rs 2,110 and the 16th Rs 2,300. What is the median order?
+### Q2. Anand wants the typical order as the middle of the sorted amounts. Sorted, the 15th of the 30 amounts is Rs 2,110 and the 16th is Rs 2,300. What is the median order?
 
-a) Rs 2,110, the 15th amount in size order
-b) Rs 2,300, the 16th amount in size order
-c) Rs 18,160, the booked total divided by the count of 30
+a) Rs 2,110, the lower of the two middle amounts
+b) Rs 2,300, the upper of the two middle amounts
+c) Rs 18,160, the booked total over the 30 orders placed
 d) Rs 2,205, halfway between the two middle amounts
-
-### Q3. Design. Marketing's payback adds up what a new customer brings over their first year. Which number should it be built on, and what would change it?
-
-a) The booked mean, since every rupee counts in a total; a cleaner extract would change it
-b) The median of first orders, the typical order; a skewed segment would change it
-c) The target segment's mean contribution per order; a new target would change it
-d) The largest order, the ceiling a customer can reach; a price cut would change it
-
-### Q4. Design. One invented Rs 90,000 order joins five invented orders of Rs 1,900 to Rs 2,600: the mean moves Rs 14,623, the median Rs 50, the trimmed mean Rs 83. Which should the team report as the typical order, and when would the trimmed mean do as well?
-
-a) The mean, since the order that moved it most is the one the business most needs to see
-b) The median; the trimmed mean would do once its rule drops every large order
-c) The trimmed mean always, since it throws away the two orders most likely to be errors
-d) Any of the three, since on five ordinary orders they all sit within Rs 100 of each other
-
-### Q5. On not-cancelled orders the mean is Rs 20,606 and the median Rs 2,100; on booked orders, Rs 18,160 and Rs 2,205. Which figure should Meera plan the typical order on?
-
-a) Rs 20,606, the not-cancelled mean, since those orders at least stayed sold
-b) About Rs 2,100 to Rs 2,205, the median, named with its definition
-c) Rs 18,160, because the mean is the figure that multiplies back to revenue
-d) Rs 19,383, the average of the two means, so both definitions are represented
 
 ---
 
-## Hands-on
+## Which number should the payback use, and which middle survives a large order?
 
-`notebooks/C2_W01_D01_04_the_typical_order_STUDENT.ipynb` sizes the four middles on the invented
-records and prints the median under each definition. Check Q2, Q4 and Q5 against it.
+Marketing and finance teams argue about which middle goes into a payback in every budget cycle, and
+the analyst's job is to say which number answers which question.
+
+### Q3. Design. Marketing's payback adds up what a new customer brings in over their first year, to see how soon the cost of winning them comes back. Which number should it be built on, and what would change it?
+
+a) The booked mean, since every rupee counts in a total; a cleaner extract would change it
+b) The mean contribution per order of the segments the spend targets; a new target changes it
+c) The median of first orders, since it is the typical order; a skewed segment would change it
+d) The largest order, since it is the most a customer can reach; any price cut would change it
+
+### Q4. Design. One invented Rs 90,000 order joins five invented orders of Rs 1,900 to Rs 2,600. The mean moves Rs 14,623, the median Rs 50 and the trimmed mean Rs 83. Which middle should the team report as the typical order, and when would the trimmed mean do as well?
+
+a) The mean, since the order that moved it most is the one the business most needs to see
+b) Any of the three, since on the five ordinary orders they sit within Rs 100 of each other
+c) The median, which needs no rule; a trimmed mean matches it while it trims each large order
+d) The trimmed mean always, since it moved almost as little as the median and is still a mean
+
+---
+
+## Does the typical order hold when the reading of sales changes?
+
+Finance asks whether a figure survives a change of definition before it goes into any plan.
+
+### Q5. Anand asks whether the typical order depends on the reading of sales. On not-cancelled orders the mean is Rs 20,606 and the median Rs 2,100; on booked orders they are Rs 18,160 and Rs 2,205. What should the team tell him?
+
+a) Both middles move with the reading, so the typical order waits for Finance's definition
+b) The median moves Rs 105 and the mean Rs 2,446, so the median is the figure to plan on
+c) The mean moves less in percent than the median, so the mean is the steadier figure
+d) Neither moves enough to matter, so either middle can go into the plan as the typical order
+
+---
+
+## How do you check your letters against the notebook?
+
+`notebooks/C2_W01_D01_04_the_typical_order_STUDENT.ipynb` sizes the three middles on the invented
+orders and prints the median under each reading of sales. Check Q2, Q4 and Q5 against it, and change
+a letter only if your reasoning changes with it.
 
 **In the interview.** [S] Mean or median for order value, and why?
