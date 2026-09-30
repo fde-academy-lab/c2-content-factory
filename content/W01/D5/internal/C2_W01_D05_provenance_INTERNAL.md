@@ -53,7 +53,9 @@ contract passes with the v3-lab block added.
 | Empty segment | KR-07146 | Same | None of its quarter, segment, amount or id. D28, the notes and notebook 2's level 5 show the mechanism on the invented export's Q1 Retail-Core order; the lab's row is a your-turn cell |
 | Business on 6 then 4 orders | 5 corporate customers: C-7304 did not reorder and C-7300 ordered once where it had ordered twice | Same | None of its counts, accounts, rate or rupees. The deck (S34 to S38), the notes and notebook 3 show the mechanism on the invented export (5 orders then 2, -36.3 percent, Rs 13,88,200, 99.2 percent of the fall); the lab's counts, rate and coin-flip share are notebook 3's your-turn cells |
 
-The practice export's defects appear in its solution file, which opens only after the practice lab.
+The practice export's defects are named only in the day sheet's practice note and the reference
+notebook's last section. The practice solution, a STUDENT file, gives the totals, the tree and the
+test a correct rerun reaches, and names no defect.
 
 **The debrief's chapter notebooks and the plants.** The fix pass after the orchestrating review sized
 the chapter notebooks' options on the lab export and printed four numbers computed from it: the three
@@ -94,8 +96,10 @@ reader's comment says it reads a value "in the forms this week's exports used" a
 | The note's test flips each Retail-Core customer's own two quarters, reported both ways; the segment label shuffled across whole customers stays as the fair test of a different question; pooling a customer's two quarters (per customer or order by order) and shuffling single orders are traps 5b and 5 | The 29 September key, which tested the note with a label shuffle across customers, accepted the quarter label dealt across single orders, and credited Thursday with the design | Ruling 2 |
 | The three chapter notebooks are `01_debrief_quarters`, `02_debrief_values` and `03_debrief_segments` | The raise's names, which named each trap | Ruling 1: a folder listing names no trap |
 | The rehearsal defends Thursday's final note | The row says "the note" | Thursday's note is the one going to Monday's review, which is what the rehearsal rehearses |
+| The rehearsal brief and deck model Marketing's sharpest push on an invented blend, labelled invented, and the rehearsal key maps each invented figure to Thursday's real one | The 29 September brief and deck, which printed the monsoon sale's figures from Thursday's data | Thursday's day sheet lists those figures among its plants, and decision `plants-once-found` lets only the Saturday paper name a plant; a defender whose note carries the real figures answers in the same shape with the real ones |
+| The rehearsal key answers Thursday's Retail-Plus fall with this morning's paired flips counted both ways (p = 0.052, at the edge of chance), and gives the trainer a line for a note that quotes Thursday's 0.027 | Thursday's pack, whose test dealt the members' pooled Q1 and Q2 totals and quoted 0.027 one way | This morning's debrief teaches pooling paired data as trap 5b and both-ways reporting for a direction chosen after looking; a key that defended 0.027 would contradict the debrief an hour after it. Thursday's own files are another day's folder and stay as merged |
 | Three decks named lab, debrief, rehearsal, where the standard names half1 and half2 | The standard | A lab day takes its week spine's shape; three decks follow the three moments a trainer switches files |
-| No companion page, decision workbook, cheat sheet, take-home, whiteboard, tiered extras or per-chapter scenario sets | The standard's teaching-day volume | The raise for this day lists what it adds, and none of these is on it; the lab adds no idea, the chapter notebooks carry a predict item at every level, and the practice set carries the row's FIX task |
+| No companion page, decision workbook, cheat sheet, take-home, whiteboard, tiered extras or per-chapter scenario sets | The standard's teaching-day volume | The raise for this day lists what it adds, and none of these is on it; the lab adds no idea, the chapter notebooks carry a predict item at most levels, and the practice set carries the row's FIX task |
 | The practice set is four problems of lettered items with a hands-on rerun | The standard: three or four problems | Four problems, each with three to five lettered items, so the audit can check it |
 
 ## Invented
@@ -138,11 +142,17 @@ over it. Eighteen of the forty seeds have all five; seed 36 is one of them, and 
 ones above. None of these numbers is a Kalpa record or the lab's.
 
 **Elsewhere.** The Kahoot's exhibits (12,400 rows and 12,380 ids; Rs 50, 45 and 47 lakh; p = 0.04; the
-four moves in Q7) and the practice set's items on other exports (the 1,240-row profile, "4.5k", "TBC"
-and "TEST", 5 lakh rows, 6 "UNKNOWN" of 1,000 orders, Rs 30 and 27 lakh against Rs 28.2 and 29.4 lakh,
-2,480 rows and Rs 14,600, the 120-minute read, p = 0.048) are invented, each set on an export the
-stem names as another file. The rehearsal's Marketing pushes beyond the row's own facts are invented.
-The three design cases' situations are marked illustrative in the STUDENT file: a Q3 export of about
+four moves in Q7) and the practice set's items on other exports (the 1,240-row profile with 1,223
+distinct ids, so 17 repeat rows, a count chosen apart from Wednesday's 14; "4.5k", "TBC" and "TEST"; 5
+lakh rows; 6 "UNKNOWN" of 1,000 orders; Rs 30 and 27 lakh against Rs 28.2 and 29.4 lakh; 2,480 rows
+and Rs 14,600; the 120-minute read; item 14's earlier note, a basket down 8 percent on 62 orders then
+57 from 33 customers at 1 time in 100; p = 0.048) are invented, each set on an export the stem names
+as another file. The rehearsal's Marketing pushes beyond the row's own facts are invented. The
+modelled push's figures are invented for the brief: 60 customers got the sale, 30 of them Retail-Plus
+members at Rs 3,990 and 30 Retail-Core customers at Rs 2,090, a blend of Rs 3,040; 100 did not, 35
+members at Rs 4,200 and 65 Retail-Core customers at Rs 2,200, a blend of Rs 2,900; the blend is up 4.8
+percent while each segment spent 5.0 percent less with the sale; and a 10 percent discount needs
+1 / 0.9 - 1 = 11.1 percent more volume to stand still. The three design cases' situations are marked illustrative in the STUDENT file: a Q3 export of about
 2,000 orders two hours before the review; the migrated ERP's first full quarter of about 50,000 rows
 and a Rs 20 lakh gap; a redesigned app checkout at 5 of 12 visits against 31 percent of 1,200, 1,200
 visits a week, and about 300 visits per checkout as the case's given size. The 42 against 31 on 12
@@ -155,6 +165,15 @@ the TA block; 5 or more conversions in 12 visits at a true 31 percent, 0.303; te
 least as unevenly as six and four by coin flips, 0.754; the chance at least one of four tests at 0.05
 looks real by luck, 0.185; the note's paired test exact over all 2^30 flips, 0.0035; the sign test on
 21 against 9, 0.0428; the practice lead's paired test exact over 256 flips, 32 of 256, 0.125.
+
+Computed here from Thursday's orders file, `content/W01/D4/data/C2_W01_D04_orders_STUDENT.csv`, for
+the rehearsal key, with delivered orders per member as Thursday's note reads them: Retail-Plus's 22
+members, Rs 3,279 to Rs 2,169 each (Rs 72,130 to Rs 47,710), each member's two quarters flipped 2,000
+times on `random.Random(7)`, 103 as large either way, p = 0.0515; exact over all 2^22 flip patterns
+0.0549 both ways and 0.0274 one way; 15 fell and 7 rose, a sign test of 0.1338 both ways. Retail-Core's
+34 members, Rs 1,509 to Rs 1,399 each, 1,433 of 2,000, p = 0.7165, 0.7182 exact. Thursday's own test,
+the members' Q1 and Q2 totals pooled and dealt 5,000 times, reproduces as 135 one way (0.027) and 252
+both ways (0.0504) for Retail-Plus and 1,724 one way (0.345) for Retail-Core.
 
 ## The real companies, each fact checked on 30 September 2026
 
