@@ -1,35 +1,71 @@
-# The growth-review rehearsal
+# Does your note hold when Marketing pushes?
 
 Kavya Nair: "Then say it to me the way you will say it to her, because I will push the way
 Marketing will."
 
-## What you defend
+**Who needs the answer.** Meera Raghavan, Kalpa Retail's CEO, needs it at Monday's growth review,
+where the marketing lead will be in the room. A caveat that folds under a push sends her budget after
+a number that has not earned it, and one that overclaims loses the room.
 
-The final version of your one-page note from Thursday: Meera's three questions (Retail-Plus, the
-Student rise, and the monsoon sale), each with its claim, evidence, caveat and action. That is the
-note that goes to Monday's growth review.
+**The questions on the way.**
 
-## Round one: pairs, then a new pair (50 minutes)
+1. Which note are you defending, and which rules does it rest on?
+2. How do the rehearsal's two rounds run?
+3. What will a partner playing Marketing push on?
+4. How do you answer the push whose every number is true?
+5. How do you hold a caveat without folding or overclaiming?
+
+## Which note are you defending, and which rules does it rest on?
+
+You defend the final version of your one-page note from Thursday, the note that goes to Monday's
+growth review. It answers Meera's three questions, each in four parts: the claim with its number and
+what it is out of, the evidence and how it was checked, the caveat that would change the claim, and
+the action with its cost. Bring your own note. The rules it rests on, as the room drew them on
+Thursday, are these.
+
+| Meera's question | The rule your answer rests on |
+|---|---|
+| Is Retail-Plus's gap real, and is it worth acting on? | Real and worth acting on are two questions: a shuffle test says how often chance alone makes a gap that large, and the gap's size in rupees against the cost of acting says whether to act, and at what scale |
+| Should budget move to the Student rise? | A rate on a handful of orders goes beside its count, and a count too small to call a trend carries no budget until it grows |
+| Did the monsoon sale work? | A blended average can rise while every segment falls, when the people who got the sale differ from those who did not; compare like with like, inside each segment |
+
+Before Monday, check the test in your note against the rule this morning's debrief drew. When the
+same members sit in both quarters, the fair test keeps each member's own two quarters together and
+flips them at random, and when you chose the direction of the change after looking at the data, the
+share is counted in both directions. Count each flipped world by the measure your claim uses, so a
+claim about revenue per member in rupees counts each world's change in rupees per member, and name
+that measure beside the share: the same flips counted as a percentage change give a different share,
+because a fall and a rise of the same percentage are different sizes in rupees. If your note's test pooled the members' figures from the two
+quarters and dealt them as strangers, or counted one direction only, rerun it the fair way, then
+rewrite the evidence with the share it gives, and any claim, caveat or action that leaned on the old
+share.
+
+The Retail-Plus answer also draws on Tuesday, when the head of Retail-Plus forwarded a member's
+complaint that the app's reorder feature had been broken for six weeks; your note carries that cause
+as a hypothesis, with the test that would settle it.
+
+## How do the rehearsal's two rounds run?
+
+Round one runs in pairs for 50 minutes.
 
 | Part | Minutes | What happens |
 |---|---|---|
-| The brief and the modelled push | 12 | Monday's room, the note's shape, the pushes and the card; Marketing's sharpest push, below, answered once aloud with a TA reading Marketing's lines; then find a partner. |
-| Pair one, first defence | 10 | Two minutes of the note read aloud; five of pushes and answers; three for the partner to fill the feedback card and hand it over. |
-| Pair one, swap | 10 | The same, with the roles reversed. |
-| Pair two, new partner | 18 | Both defences again, nine minutes each (two to read, four of pushes, three for the card), with a new partner using the harder pushes below. |
+| The brief and the modelled push | 12 | The brief covers Monday's room, the note's shape, the pushes and the card. Marketing's sharpest push, below, is then answered once aloud with a TA reading Marketing's lines, and you find a partner. |
+| Pair one, first defence | 10 | The defender reads the note aloud for two minutes and answers pushes for five, and the partner takes the last three to fill in the feedback card and hand it over. |
+| Pair one, swap | 10 | The same ten minutes run again with the roles reversed. |
+| Pair two, new partner | 18 | With a new partner, both defences run again at nine minutes each (two to read, four of pushes, three for the card), and the partner uses the harder pushes below. |
 
-## Round two: to the whole room (50 minutes)
+Round two runs in front of the whole room for 50 minutes, with names called at random. When your
+name is called you read your note standing, in two minutes; one person who has not yet been called
+puts one push to you from the lists below, and Kavya's one-minute review follows.
 
-Names are called at random. You read your note standing, in two minutes; one person who has not yet
-been called puts one push from the lists below; Kavya's review follows in a minute.
+## What will a partner playing Marketing push on?
 
-## Playing Marketing
+When you play Marketing, you are the marketing lead: you own the campaigns and the Rs 12 crore
+acquisition request, and you believe in both. Push hard and fair: put each push as a question and let
+the defender finish. Ask these as they are written or in your own words.
 
-You are the marketing lead. You own the campaigns and the Rs 12 crore acquisition request, and you
-believe in both. Push hard and fair: put each push as a question and let the defender finish.
-Ask these as they are written or in your own words.
-
-### For pair one
+### Which pushes does pair one use?
 
 - "We asked for Rs 12 crore to bring in new customers. Where does your note say we do not need them?"
 - "Student is up 40 percent. Why are you telling Meera not to move budget there?"
@@ -37,51 +73,57 @@ Ask these as they are written or in your own words.
 - "Your caveat says 'not yet'. Meera needs a decision on Monday. Which is it?"
 - "What would change your mind?"
 
-### For pair two, harder
+### Which harder pushes does pair two use?
 
-- "Your p-value is 0.03. So you are 97 percent sure. Why the hedging?"
+- "Your test says the fall is unlikely by chance. So you are 95 percent sure. Why the hedging?"
 - "Every quarter wobbles. Why is this one any different?"
 - "If the sale had gone to everybody, would you still say it did not work?"
 - "You are two weeks into this job. Why should Meera trust your number over our dashboard?"
 - "Give me one number I can take to the board. Just one."
 - "If the broken reorder feature explains the tier, why do we need your note at all?"
 
-## Marketing's sharpest push, answered
+## How do you answer the push whose every number is true?
 
-Of all the pushes, this is the one most likely to land on Monday, because it arrives with numbers and
-every one of them is true.
+Marketing's sharpest push is the one most likely to land on Monday, because it arrives with numbers
+and every one of them is true. The figures in this section are invented; the note you defend carries
+Thursday's real ones, and the same answer fits them.
 
-> "Customers who got the monsoon sale spent Rs 3,395 each. Customers who did not spent Rs 3,200.
-> That is 6.1 percent more, it is our best campaign of the year, and your note tells Meera not to
+Marketing's push, on the invented figures:
+
+> "Customers who got the monsoon sale spent Rs 3,040 each. Customers who did not spent Rs 2,900.
+> That is 4.8 percent more, it is our best campaign of the year, and your note tells Meera not to
 > repeat it."
 
-**The numbers it cites.** The blend is right: 60 customers got the sale and spent Rs 3,395 on
-average; 100 did not and spent Rs 3,200. What the push leaves out is who the 60 were. Half of them
-were Retail-Plus members, who spend more in any month, against 40 percent of the 100 the sale missed.
+The blend it cites is right on the invented figures: 60 customers got the sale and spent Rs 3,040 on
+average, and 100 did not and spent Rs 2,900. The push leaves out who the 60 were. Half of them were
+Retail-Plus members, who spend more in any month, against 35 percent of the 100 the sale missed. The
+invented sale took 10 percent off, and a discount that size needs 1 / 0.9 - 1 = 11.1 percent more
+volume just to keep revenue where it was.
 
-| Segment | Got the sale | Did not | Inside the segment |
+| Segment, invented figures | Got the sale | Did not | Inside the segment |
 |---|---|---|---|
-| Retail-Plus | Rs 4,850 (30 customers) | Rs 5,000 (40 customers) | 3.0 percent less with the sale |
-| Retail-Core | Rs 1,940 (30 customers) | Rs 2,000 (60 customers) | 3.0 percent less with the sale |
-| Blended | Rs 3,395 (60) | Rs 3,200 (100) | 6.1 percent more, because of the mix |
+| Retail-Plus | Rs 3,990 (30 customers) | Rs 4,200 (35 customers) | 5.0 percent less with the sale |
+| Retail-Core | Rs 2,090 (30 customers) | Rs 2,200 (65 customers) | 5.0 percent less with the sale |
+| Blended | Rs 3,040 (60) | Rs 2,900 (100) | 4.8 percent more, because of the mix |
 
-**The answer the evidence supports.** "The 6.1 percent is real arithmetic on a mix: the average rose only because more high spenders got the sale. Half the
+The answer the evidence supports, on the invented figures, is this: "The 4.8 percent is real
+arithmetic on a mix: the average rose only because more high spenders got the sale. Half the
 customers who got it were members who spend more anyway, and inside each segment the customers who
-got it spent 3.0 percent less than the ones who did not: Rs 4,850 against Rs 5,000, and Rs 1,940 against Rs 2,000. At
-15 percent off, the sale needed 17.6 percent more volume just to stand still, so as it was designed it
-did not pay. Run Diwali with a random slice of each
-segment held back, agreed in advance, so the next time we say a sale worked, the number holds up in
-front of Anand."
+got it spent 5.0 percent less than the ones who did not: Rs 3,990 against Rs 4,200, and Rs 2,090
+against Rs 2,200. At 10 percent off, the sale needed 11.1 percent more volume just to stand still, so
+as it was designed it did not pay. Run Diwali with a random slice of each segment held back, agreed
+in advance, so the next time we say a sale worked, the number holds up in front of Anand."
 
-**Why it holds.** It agrees with every number Marketing cited, so there is no fight about the data. It
-names the one fact the blend hides, who got the sale, and shows it inside each segment. It closes on a
-test with a date, which turns the disagreement into a plan Marketing can own. Folding ("fair point, I
-will soften it") loses the finding, and overclaiming ("the sale lost money, full stop") loses the
-room, since a test has not yet been run on a design that might work.
+The answer holds because it agrees with every number Marketing cited, so there is no fight about the
+data. It names the one fact the blend hides, who got the sale, shows it inside each segment, and
+closes on a test with a date, which turns the disagreement into a plan Marketing can own.
 
-## Defending
+## How do you hold a caveat without folding or overclaiming?
 
-Three moves keep a claim the size the data supports when it is attacked.
+Folding drops the caveat to end the argument, as in "fair point, I will soften it". Overclaiming
+turns the uncertainty into a certainty in the other direction, as in "the sale lost money, full
+stop", said before any test has run on a design that might work. Three moves keep a claim the size
+the data supports when it is attacked.
 
 ```mermaid
 flowchart LR
@@ -90,9 +132,6 @@ flowchart LR
     B --> T["offer the test<br/>what would change your mind, and when"]
 ```
 
-Folding drops the caveat to end the argument. Overclaiming calls the uncertainty a certainty in the
-other direction. Both lose Meera's trust by Monday afternoon.
-
-## The interview question this trains
+## Which interview question does the rehearsal train?
 
 [D] A stakeholder attacks your caveat in front of the room; how do you hold it without overclaiming?

@@ -1,6 +1,7 @@
-# Kahoot, Week 1 Friday
+# Which of the week's calls can you make in twenty seconds?
 
-Eight items, ungraded, scored on correctness and speed together.
+The Kahoot for Week 1, Friday, has eight items. It is ungraded and scores correctness and speed
+together, and every number in an item is invented for it.
 
 ---
 
@@ -45,7 +46,7 @@ Eight items, ungraded, scored on correctness and speed together.
 ---
 
 ## Q5. A shuffle test gives p = 0.04. What is 0.04 a share of?
-*Tests: the p-value is a share of chance-only worlds, never the chance the finding is wrong.*
+*Tests: that the p-value is a share of chance-only worlds, a different number from the chance the finding is wrong.*
 
 - Chance-only worlds with a gap at least this large  <- correct
 - Findings like this one that later turn out to be wrong
@@ -68,9 +69,9 @@ Eight items, ungraded, scored on correctness and speed together.
 *Tests: count before rate and size together: a lead needs enough orders and a move worth acting on.*
 
 - Business revenue -35%, 7 orders then 5
-- Retail-Core basket -12%, 140 orders then 138  <- correct
+- Retail-Plus basket -12%, 140 orders then 138  <- correct
 - Student revenue +50%, 6 orders then 9
-- Retail-Plus frequency -2%, 90 orders then 88
+- Retail-Core frequency -2%, 90 orders then 88
 
 ---
 
