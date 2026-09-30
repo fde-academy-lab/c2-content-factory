@@ -1614,7 +1614,8 @@ kit.check("the mean sits more than ten times above the median", typical[0][1] > 
 
     Meera can act on it as a finding worth opening, sized at Rs 14,400 a quarter, with the corporate
     book beside it as a question to its account owner. The your-turn cells put this morning's file
-    through the same five questions, and Saturday's paper asks for the p-value sentence from memory.
+    through the same five questions, and the note's four parts and the p-value sentence are both on
+    Saturday's paper.
     """),
     code('kit.check_summary()\nprint("Next: the rehearsal, where the note is said aloud and Marketing pushes on it.")'),
 ]

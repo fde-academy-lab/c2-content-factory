@@ -410,8 +410,8 @@ LIVE, half a minute.
 
 ---
 
-## S20. Eight questions test the week's method
-*Did the week's method stick, and which calls still wobble?*
+## S20. Eight ungraded questions show which calls wobble
+*How will you find out which of the week's calls still wobble?*
 
 ```mermaid
 flowchart LR

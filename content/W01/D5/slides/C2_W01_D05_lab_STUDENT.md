@@ -231,7 +231,7 @@ flowchart LR
 Write the line under your note in a new markdown cell. What you handed in stays as it was, and this line is what you will say at the debrief.
 
 ```notes
-LIVE, 20 minutes. The TAs copy each learner's output folder at the 120-minute mark before anyone
+LIVE, 19 minutes, and S11 takes the twentieth. The TAs copy each learner's output folder at the 120-minute mark before anyone
 edits it; that snapshot is what the observation sheet records. Then read this slide aloud. Most of
 the room will find its first real number here. Do not comment on anybody's result until the
 debrief.

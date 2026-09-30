@@ -78,4 +78,5 @@ your name is called.
 
 ## Which line do you carry into Saturday?
 
-> A total you have not reconciled is a guess with a decimal point.
+> Before a total goes out, its orders and its rupees land on Finance's control totals, or its first
+> line says they do not.

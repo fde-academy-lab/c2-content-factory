@@ -825,7 +825,7 @@ SELF-STUDY. The picture behind S39's call, and the order of the note's claim and
 ---
 
 ## S41. Question: where does the real change sit?
-*Among 2,000 worlds with each member's two quarters flipped, how extreme is -15.0 percent?*
+*Among 2,000 worlds with each member's two quarters flipped, how extreme is the invented -15.0 percent?*
 
 **Question.** Choose one: a) in the middle of the pile; b) at the edge, with about two dozen worlds as extreme; c) beyond every flipped world; d) nowhere, since members placed different numbers of orders.
 
@@ -854,8 +854,8 @@ value: 0.0107 | label: counted exactly | note: over all 65,536 ways to flip 16 m
 
 ```notes
 LIVE, 1 minute. The answer is b. The fall was found in the tree, so the note reports both
-directions. Read the p-value sentence aloud once, word for word, because Saturday's paper asks for
-it: "In 1.1 percent of worlds where the quarter made no difference to each member's basket, chance
+directions. Read the p-value sentence aloud once, word for word, since Saturday's paper tests what it
+means: "In 1.1 percent of worlds where the quarter made no difference to each member's basket, chance
 produced a change this large, either way." Type the paired-test your-turn cell in notebook 3 with
 the segment each learner's lab tree named.
 ```
@@ -968,7 +968,7 @@ question to its account owner.
 ```timeline
 label: Tonight | title: Rerun the step | body: On the practice export, the step the TA marked, with the practice set beside it.
 label: One line | title: What changes | body: Written under your lab note: the check you will put first next time.
-label: Saturday | title: The paper | body: The note's four parts and the p-value sentence, from memory.
+label: Saturday | title: The paper | body: The note's four parts and the p-value sentence are both on it.
 ```
 
 ```notes
