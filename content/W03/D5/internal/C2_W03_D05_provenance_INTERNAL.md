@@ -3,10 +3,11 @@
 **INTERNAL.** Where every part of this pack came from, the numbers it quotes and their sources, what
 it departs from, and what was invented. The pack was built on 29 September 2026 and reached main that
 day with pull request #161. Its day sheet changed twice more with #177, in commit 1a879ee on 29
-September 2026 and in the merge commit 59f336b on 30 September 2026. This record was written on 30
-September 2026 from the repository alone: the day's files, the spine, `data/programme/facts.yaml`,
-the generator and its witness, and `git log` on each file, with `--follow` and across merges. Where
-the repository does not say something, this record says so.
+September 2026 and in the merge commit 59f336b on 30 September 2026, and commit f335887, of 30
+September 2026, seated the cohort as 35 in the day sheet and in a rebuilt GD scoring sheet. This
+record was written on 30 September 2026 from the repository alone: the day's files, the spine,
+`data/programme/facts.yaml`, the generator and its witness, and `git log` on each file, with
+`--follow` and across merges. Where the repository does not say something, this record says so.
 
 ---
 
@@ -99,11 +100,13 @@ percent).
 | Blocks of 180 minutes and nine groups | `data/programme/facts.yaml`, campus_day and cohort (stated) |
 | 270 minutes of GD this build | Nine groups times 30, asserted by the recalc manifest |
 | The sub-problem of each group on Inputs (G1 and G2 on 1, G3 and G4 on 2, G5 and G6 on 3, G7 and G8 on 4, G9 on 5) | An example, as the Read me says, "so the checks have something to check"; Monday's allocation replaces it |
-| Four criteria with maximums of 8, 8, 8 and 6, adding to 30, over 36 seats | `evaluation.rubrics.W03` for the criteria; nine groups of four for the seats, with an empty seat marked N by hand |
+| Four criteria with maximums of 8, 8, 8 and 6, adding to 30, over 35 seats | `evaluation.rubrics.W03` for the criteria; the cohort's 35 learners in nine groups, eight of four and G9 of three, from `data/programme/facts.yaml`, as Thursday's roster and Saturday's workbooks seat them |
 
-Neither workbook has a build script in the repository. Their metadata says openpyxl created both on
-29 September 2026 and LibreOffice 24.2.7.2 saved them last, which is the recalculation
-`scripts/xlsx_recalc.py` runs.
+The roster has no build script in the repository. Its metadata says openpyxl created it on 29
+September 2026 and LibreOffice 24.2.7.2 saved it last, which is the recalculation
+`scripts/xlsx_recalc.py` runs. Since commit f335887 the scoring sheet and its recalc manifest are
+written by `internal/C2_W03_D05_build_gd_scoring_INTERNAL.py`, which reads the GD rubric and the
+cohort from `data/programme/facts.yaml`.
 
 ---
 
@@ -137,7 +140,7 @@ the cards are the five kinds above and nothing else.
 | A first tranche of three presentations in whole sub-problem clusters | The row says "where the roster allows"; the pack fixes three, drawn by cluster (#161's departures). |
 | Checksums hard-coded in the cold-run script | They are the data pack's as of 29 September 2026, and `--reference` covers a re-issued pack (#161's departures). They still match on 30 September 2026. |
 | Nine groups where the tracker plans fifteen | facts.yaml's stated nine; the day sheet names the conflict and the roster names the stretch. |
-| 36 seats on the GD scoring sheet | The sheet seats nine groups of four, and the day sheet calls the plan nine groups of four from 35 learners, which is one seat more than the cohort. Thursday's roster and scoring sheet seat 35 as eight groups of four and one of three, and on this sheet the empty seat is marked N by hand. |
+| 35 seats, as on Thursday and Saturday | The GD scoring sheet seated nine groups of four, 36 seats, and the day sheet called the plan nine groups of four from 35 learners, one seat more than the cohort. Commit f335887 (30 September 2026) made both agree with Thursday's roster and Saturday's workbooks: nine groups, eight of four and G9 of three, 35 seats. It rebuilt the scoring sheet from a new builder, with the summary's ranges and the recalc manifest's verdicts following the 35 seats, a Read me line on the seating, and blue text in the input cells, as the sheet's Read me already said. |
 | The demo that fails in the room | The day sheet gives two minutes to recover, then the executed run, which is the spine's rule, set on 29 September 2026 by the orchestrating session on the requester's delegation and added to the spine with #169. On the Saturday branch, commit 045a746 changed this sheet to one run with no recovery and commit 1af434b restored it, and #164's merge message records that Friday's sheet went back to main's version. |
 | The plant row brought in line with the spine | Commit 1a879ee (#177) gave the like-for-like test count and the offer outside the three campaign cities, and the merge commit 59f336b (#177) stopped the row calling the campaign cities' shortfall a drift. |
 | The rubrics | Commit 813308d built the GD scoring sheet once the rubric locked (#151) and put the GD and mini project rubrics in sync blocks. |
@@ -162,8 +165,9 @@ against a plan of 18, are the row's and the spine's.
 
 ## What this record could not establish
 
-- The session that built the pack kept no provenance, no numbers script and no workbook builder, and
-  its commit messages name no tool versions. #161's description shows `scripts/verify.py content/W03/D5
+- The session that built the pack kept no provenance, no numbers script and no workbook builder
+  (the scoring sheet's builder dates from commit f335887), and its commit messages name no tool
+  versions. #161's description shows `scripts/verify.py content/W03/D5
   --execute` passing on 29 September 2026; the versions behind that run are unknown.
 - #161 lists five departures "to review"; the repository records their merge and no separate review
   of them.
@@ -173,8 +177,9 @@ against a plan of 18, are the row's and the spine's.
 
 ## Tool versions
 
-The build's own versions are not recorded, apart from LibreOffice 24.2.7.2, which the two workbooks'
-metadata names. This record's checks ran on 30 September 2026 under Python 3.11.15, pandas 3.0.5 (for
+The build's own versions are not recorded, apart from LibreOffice 24.2.7.2, which the roster's
+metadata names. The scoring sheet was rebuilt on 30 September 2026 with openpyxl 3.1.5 and PyYAML
+6.0.1. This record's checks ran on 30 September 2026 under Python 3.11.15, pandas 3.0.5 (for
 the Saturday witness script), openpyxl 3.1.5, LibreOffice 24.2.7.2 (for the recalc that
 `scripts/verify.py` runs) and git 2.43.0. The cold-run script calls `jupyter nbconvert`, which is
 nbconvert 7.17.1 in this container; it was not run here. The generator, the D1 witness check and the

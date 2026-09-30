@@ -3,7 +3,8 @@
 **INTERNAL.** Where every part of this pack came from, the numbers it quotes and their sources, what
 it departs from, and what was invented. The pack was built on 29 September 2026 and reached main that
 day with pull request #163. Two later changes came with #177: commit 1a879ee on 29 September 2026
-and the merge commit 59f336b on 30 September 2026. This record was written on 30 September 2026 from
+and the merge commit 59f336b on 30 September 2026. Commit 0269e51, of 30 September 2026, brought two
+viva figures in line with the files. This record was written on 30 September 2026 from
 the repository alone: the day's files, the spine, `data/programme/facts.yaml`, the generator and its
 witness, and `git log` on each file, with `--follow` and across merges. Where the repository does not
 say something, this record says so.
@@ -63,11 +64,11 @@ counted from the CSV files in this session with a scratch script that is not kep
 | A Full body checkup as one invoice line, twelve tests and Rs 2,999, about Rs 250 a test, against a list-price sum of Rs 6,370 | Counted from the test catalogue and the booking-tests file |
 | Sub-problem 2: the switch on 18 September and the old system's last date for the two cities on 17 September; 153 new-system bookings with NB/MAA and NB/PNQ references, MAA and PNQ centre codes and day/month/year dates; 1,415 bookings in Q1, 1,090 in the old export for Q2 (down 23.0 percent) and 1,243 with the new system (down 12.2 percent); 11,729 rows for 11,549 ids | The spine and the witness scripts; the formats read from the files |
 | The new system's ten cancellations | Counted: 10 of the 153 rows are CXL |
-| "Of the 180 repeated ids, 30 differ in the update time, so a whole-row dedupe leaves those 30 in" | Counted: 145 repeated ids are identical on every field, 30 differ in the update time (one of them in the channel as well), and 5 differ only in the channel, which one copy leaves blank. The 30 is right about the update time, and a whole-row dedupe of the file leaves 35 repeats in, 11,584 rows for 11,549 ids. The last section carries this. |
+| "Of the 180 repeated ids, 145 match on every column and 35 do not: 30 differ in the update time, one of them in the channel as well, and 5 differ only in a channel that one copy leaves blank. A whole-row dedupe leaves those 35 in." | Counted: exactly that, and a whole-row dedupe of the file leaves 11,584 rows for 11,549 ids. Until commit 0269e51 the follow-up said a whole-row dedupe left "those 30" in, which missed the 5 repeats that differ only in the channel. |
 | Sub-problem 3: an exact join matching 247 of 11,289 payments (2.2 percent) and every payment once normalised; 229 double posts about two minutes apart; 102 refunds; 398 unpaid invoices worth Rs 24,47,805, Rs 18,00,000 of it the contract; invoiced Rs 1,97,05,949; successful payments Rs 1,76,13,398; double posts Rs 3,55,254; refunds Rs 1,60,164; collected Rs 1,70,97,980 | The spine for the counts; the Saturday witness for every rupee figure and the two-minute gap. The gap from invoiced to collected, Rs 26,07,969, equals the unpaid invoices plus the refunds to the rupee. |
 | The feed's reference formats, bare digits such as 000123 and INV-123 | Counted: 247 references in the invoice's own format, 1,972 as INV- with an unpadded number and 9,070 as six bare digits |
 | Sub-problem 4: KH-HYD-03 at 19.2 percent (10 of 52) against 8.7 on all visits, and 20.0 percent (10 of 50) against 15.2 on scheduled visits; a probability of 0.22; about 7.6 no-shows at the other clinics' rate | The spine and the witness scripts; 15.24 percent of 50 is 7.6 |
-| "About 42 percent walk-ins" in the other clinics' visits | Counted: 3,040 walk-ins in 7,081 visits, which is 42.9 percent |
+| "About 43 percent walk-ins" in the other clinics' visits | Counted: 3,040 walk-ins in 7,081 visits, which is 42.9 percent. The file said about 42 percent until commit 0269e51. |
 | Sub-problem 5: 2,381 patients offered and 948 taking it up; 9.0 percent more bookings overall; 10.8, 19.9 and 13.0 percent fewer in Bengaluru, Hyderabad and Mumbai; before the offer, from 1 April to 14 July, 1.4 percent more and 5.2 and 6.1 percent fewer; about half the patients offered in the campaign cities against about a fifth elsewhere; the campaign cities up 6.9 percent in the two months before the offer and 7.4 percent into its window, against 3.0 percent in Delhi | The spine as corrected in #169 and #177; the generator's witness, whose window before the offer runs from 1 April to 14 July and whose comparison city is Delhi alone, since Chennai and Pune are left out for the switch |
 
 ### The day sheet
@@ -148,6 +149,7 @@ assessors by role.
 | The close | The row's 15 minutes; the pack gives 10 of them to the assessors away from the room and 5 to the room. |
 | No AI assistant during the mock | The pack's rule, in the brief and the assessors' guide; no source in the repository sets it for the mocks. |
 | The campaign probes | Rewritten in the merge commit 59f336b (#177), which brought in #169's correction of the spine's campaign row: P3 now rewards comparing the two groups before the offer and the caveat that the files cannot say how the offer was assigned, and P1's follow-up says a held-out share would settle it. Commit 1a879ee (#177) had already given sub-problem 1 the like-for-like test count. |
+| Two viva figures brought to the files | Commit 0269e51 (30 September 2026) corrected two figures that read differently from the files when this record was first written: the sub-problem 2 follow-up now says a whole-row dedupe leaves 35 repeats in, where it said 30, and the sub-problem 4 note gives the other clinics' walk-in share as about 43 percent, where it said 42. |
 
 ---
 
@@ -172,10 +174,6 @@ Dr Menon's figures, 5 percent against a plan of 18, are the row's and the spine'
   unknown, and the two workbooks cannot be rebuilt from the repository.
 - The pack's own choices above are recorded only as the build session's commits of 29 September 2026
   and the merge of #163; the repository holds no separate sign-off on them.
-- Two figures in the viva prompts read differently from the files. The translation probe's follow-up
-  says a whole-row dedupe leaves "those 30" repeats in, where the files leave 35, because 5 repeated
-  ids differ only in a blank channel. The walk-in share is given as about 42 percent, where the files
-  give 42.9. This record leaves the viva file as it is and reports both.
 
 ## Tool versions
 
