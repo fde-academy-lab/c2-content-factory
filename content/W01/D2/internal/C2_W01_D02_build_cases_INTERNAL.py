@@ -18,6 +18,16 @@ DAY = ROOT / "content" / "W01" / "D2"
 SLOT = re.compile(r"\[\[(\d+)\|(.+?)\]\](?!\])", re.S)
 
 
+# Chart titles that state a finding stay in the solution twin; the exercise twin names only what is drawn.
+NEUTRAL = {
+    "The delivered fall along the tree: the customers branch moves now": "The delivered bridge, one leaf at a time in the tree's order",
+    "The 'lost' delivered customers all ordered again in Q2": "Q1 delivered customers missing from Q2, and what they did in Q2",
+    "Delivered revenue per order: here the rate carries more than the mix": "Delivered revenue per order, split into mix and rate",
+    "Student: the same two customers, two more orders": "Student customers and orders, Q1 and Q2",
+    "Retail-Plus members by orders in Q1 to orders in Q2": "Retail-Plus members, by orders in Q1 and in Q2",
+}
+
+
 class SOL:
     def __init__(self, cell):
         self.cell = cell
@@ -34,6 +44,8 @@ def twin(cells, solution):
             src = SLOT.sub((lambda m: m.group(2)) if solution else (lambda m: f"__TODO{m.group(1)}__"), c.source)
             if not solution:
                 src = re.sub(r'\nprint\("Answer string[^\n]*', "", src)
+                for claim, plain in NEUTRAL.items():
+                    src = src.replace(claim, plain)
             c = code(src)
         elif c.cell_type == "markdown" and not solution:
             c = md(re.sub(r"This is the solution twin:.*?options fail\.",
@@ -488,7 +500,7 @@ kit.tree({"label": "the reply", "kind": "lit", "branches": [
     ("first request", {"label": EVIDENCE[first_request][:34], "kind": "unknown"})]},
     title="The pair's reply, in three branches")
 kit.check("the request's data starts by the month the fall began", STARTS[first_request] <= FALL_BEGAN, STARTS[first_request])
-kit.check("the request is for data this export does not carry", first_request not in ("export", "campaigns"))
+kit.check("the request tests a cause inside the tier", first_request not in ("export", "campaigns"))
 '''),
         SOL(md("""
 **Why the other three fail.** a) measures acquisition, which Part 1 and chapter 5 ruled out. b) is
