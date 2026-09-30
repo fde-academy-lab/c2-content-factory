@@ -395,7 +395,7 @@ with three must-fix findings and about thirty-five should-fix ones. Every findin
 | 38 | Should fix | Notebook 1's your-turn lines carried a floor fitted to the lab's bridge | The typed lines compute the floor from the lab's own moves, and the title names no figure |
 | 39 | Optional | The lab workspace preset the strip's axis at plus and minus 30 | The bounds are TODOs |
 | 40 | Should fix | Nine debrief slides showed invented numbers with no label | Each carries "invented" in its caption, stat note, rule or subtitle |
-| 41 | Should fix | Predicts answered by the slide or cell before them | Each predict moved ahead of what answers it: debrief S10, S22, S26 and S41, notebook 1 level 3, notebook 2 levels 1, 2 and 4, notebook 3 levels 2 and 4; lab S5's predict became S4, before the steps |
+| 41 | Should fix | Predicts answered by the slide or cell before them | Predicts moved ahead of what answers them at debrief S10, S22, S26 and S41, notebook 1 level 3, notebook 2 levels 1, 2 and 4 and notebook 3 levels 2 and 4, and lab S5's predict became S4, before the steps; the second review found four still answered earlier, fixed as its table records |
 | 42 | Should fix | Practice keys given away by other items' stems | No item moved and no key changed. Items 9 to 13 no longer name the branch, the 25 percent or 16 then 12; item 11 no longer calls the flip the first question's test; item 12 gains a reversal option; item 14 moves to an earlier note on another export, a basket down 8 percent on 62 orders then 57 at 1 time in 100; items 7 and 8 no longer cue items 6 and 7. Two mild cues stay by design: item 11 shows the flip on Retail-Plus's members, and item 8 lists accounting for every value as a move |
 | 43 | Should fix | The key was the unique longest option on rehearsal S15 and S17 | The distractors were brought to the key's length and precision |
 | 44 | Should fix | Timed case 3 could not be sized from its file | The case gives about 300 visits a checkout as its size for telling 42 percent from 31 |
@@ -411,4 +411,48 @@ with three must-fix findings and about thirty-five should-fix ones. Every findin
 | 54 | Should fix | Rehearsal S15 said TSB's output was trusted before it was checked | S15 calls TSB a loose likeness, its customers locked out of a new platform |
 | 55 | Optional | The index claimed a predict at every level; "from memory" read as the paper's format; practice item 1 reused Wednesday's 14; the 0.0015 coincidence | The index says most levels, and the provenance's decision row says the same; debrief S42, S48 and notebook 3 say both are on Saturday's paper, which tests them; item 1 now counts 17 repeats; the day sheet warns the TAs that the invented one-way 0.0015 equals a lab route by coincidence |
 
-SECOND_REVIEW
+**The second review.** A second fresh reviewer agent, read-only, checked only the changes that
+altered a method, a key or a number other files repeat, in ten checks, and recomputed each figure. It
+found one must-fix finding, eight should-fix and several optional ones; its checks of the invented
+push, the typical order and the lab deck's opening found nothing. Every finding and what changed:
+
+| Finding | Severity | What the reviewer found | What changed, or why it stays |
+|---|---|---|---|
+| 1.1 | Must fix | The rehearsal key said its fair-test figures came from notebook 3's method, but notebook 3's `paired_test` counts a percentage change, which on Thursday's data gives 245 of 2,000, p = 0.12 (0.119 exact), where the key's 103 of 2,000, p = 0.052, counts rupees per member | The key names the measure beside each share, adds the percentage count and tells the trainer how to read a defender who brings 0.12; the brief asks each learner to count by the measure the claim uses and to name it; notebook 3's depth section, D45 and the notes say the 0.0025 counts rupees per member where level 4's 0.011 counts the percentage change; the provenance records both counts |
+| 1.2 | Optional | "15 of the 22 members fell" did not say what fell | The key says the delivered revenue of 15 of the 22 members fell |
+| 1.3 | Optional | The day sheet's rehearsal rows said nothing of the key's line for a note that quotes 0.027 | Round one's row carries it, with both counts |
+| 3.1 | Should fix | The practice set's new definition of a branch that moved made item 9 double-keyed, since the basket also changed | The set defines the branch that moved as the one carrying most of the segment's change, and item 9 asks which branch carries most of Retail-Plus's change; the solution row gives the 26.3 percent fall it carries |
+| 3.2 | Optional | Item 4's heading echoed its key; items 11 and 8 keep two mild cues | Item 4's heading names the 6 "UNKNOWN" orders; the two cues stay by design, as the first review's table records |
+| 4.1 | Should fix | S10 and notebook 1's level 3 were answered by S7's answer line, D9's diagram and notes, and the sizing table's "what it can see" column | S7's line says only that both quarters miss the books, D9 and notebook 1's table say C sees extra rows and any rupee gap, and the predict now asks the room to reason from S7's table |
+| 4.2 | Should fix | S22 and notebook 2's level 2 were answered by S18, S19 and chapter 1 on the same export | S22 asks what `int()` does with "850000.00", which chapter 1 never showed, and S23 answers it with the Rs 8,50,000 gap; notebook 2's level 2 is labelled recall, since chapter 1 ran the same export |
+| 4.3 | Should fix | Notebook 2's level 1 key was the notebook's own title | Level 1 asks the same `int()` question, and its cell prints the ValueError before the pass runs |
+| 4.4 | Optional | S26 and notebook 2's level 4 sit one subtraction from S23's gap | Kept: the predict asks for the fall's new size in rupees, which the room still has to compute |
+| 4.5 | Optional | S41 and level 4 could be narrowed from S39's title and D40; S39's notes ran the lab's option D before the lead's own test | Kept for S41, whose options b, c and d stay open after S39; the option D typing moved to S42, as 5.2 records |
+| 4.6 | Optional | S11, S27, S42 and lab S5 give the letter only in the notes | Kept: each carries code or stats beside another block, and a line more made the deck check report each as carrying more than one idea |
+| 5.1 | Should fix | The notes' option table still carried C's 0.011 and D's "one of four under 0.05" | The notes' cells match S39 and notebook 3 |
+| 5.2 | Should fix | The day sheet's S39 row showed the old cells and had the trainer read C's 0.006 and option D's four lab p-values before the lead's own test, and S39's notes said both | The S39 row gives A, B and C and says the rest waits for S42; the S42 row carries option D's four beside the lead's 0.006; S39's notes send the typing to S42; notebook 3's option D your-turn cell now sits after level 4 |
+| 8.1 | Optional | Notebook 3's model note and S47's notes left Student out of the caveat | Both add Student's rise on 10 orders then 14 |
+| 9.1 | Optional | The S42 row said notebook 3 prints 0.0035 | The row says the exact 0.0035 is the reference notebook's, said aloud |
+| 10.1 | Should fix | Case 3's given size of 300 a checkout contradicted B's 14 weeks and D's evidence at 240 visits | The case file, the notes, rehearsal S18 and the key add the uneven-split size, about 170 new-checkout visits beside two thousand or more current ones, from which B's 14 weeks and D's evidence follow |
+| Style | Optional | The practice solution's row 14 said "instead of" | It says d attacks the person who asked and leaves the question unanswered |
+
+Found in the same pass: notebook 3's level 4 still called the p-value "never the chance the finding
+is wrong", and now states the meaning in the positive. No third review ran, since the prompt asks for
+one second review; every figure these fixes touched was recomputed in the session: Thursday's 103 and
+245 of 2,000 with 0.0549 and 0.1191 exact, Retail-Core's 1,433 and 1,453, the practice tier's 26.3
+percent fall, and `int("850000.00")` raising a ValueError.
+
+**The proofs, run on the branch after the last change.** `python3 scripts/verify.py content/W01/D5
+--execute`: PASS, 0 failures and 0 warnings; the three chapter notebooks and the reference run cold
+and clean, 66 checks passing and 0 failing across five notebooks, the lab workspace reported as its
+TODO twin; the distractor audit at a=4 b=4 c=4 d=4 on the practice set and a=2 b=2 c=2 d=2 on the
+Kahoot; the deck sources at 0 failures and 0 slides carrying more than one idea; 93 built slides with
+no overflowing box. `python3 scripts/build_companion.py content/W01/D5 --check`: exit 0.
+`python3 scripts/sync_programme.py --check`: every output current. The tic scanner is clean on all
+nineteen markdown files. All three decks were rebuilt with `scripts/build_deck.py` and rendered
+through LibreOffice 24.2.7.2 with Carlito; all 93 slides were looked at, and each slide changed
+after that was looked at again once rebuilt. A
+search of every STUDENT surface (markdown, deck slides and notes, notebook sources and saved outputs)
+for the lab export's values, ids, dates and counts finds none outside the lines a learner types into
+an empty your-turn cell; its only hits are the invented export's own figures, real sources' dates and
+the invented one-way 0.0015 the day sheet flags.
