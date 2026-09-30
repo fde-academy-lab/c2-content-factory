@@ -55,13 +55,13 @@ d) LIMIT samples at random, so either five is a fair audit sample
 
 ### Q5
 
-Week 1's extract put Q1 at Rs 1.90 crore; the warehouse says Rs 10.00 crore. Which check tells
-Kavya the warehouse tells the story Week 1 defended?
+Both sources show the 1.6 percent fall, but Week 1's file had 69 buyers in each quarter and the
+warehouse has 244 then 227. What goes on Anand's sheet?
 
-a) The two Q1 totals agree to the rupee
-b) The Q1 to Q2 fall agrees, 1.6 percent in both
-c) The order counts agree, quarter by quarter
-d) None, until Finance reconciles the warehouse by hand again
+a) Week 1's flat 69, since it is the count Meera accepted
+b) The warehouse's leaves, with the difference stated
+c) Only the leaves on which both sources agree
+d) Nothing, until the two sources agree on every leaf
 
 ### Q6
 

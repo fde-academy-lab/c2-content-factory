@@ -26,18 +26,19 @@ unchanged against the warehouse.
 | 2 | c | Orders per customer in a quarter divides that quarter's orders by that quarter's buyers. | a counts members who bought nothing, which lowers the ratio for no reason. b uses a two-quarter denominator for one quarter. d is round 1's trap. |
 | 3 | b | A ratio times its denominator gives its numerator: 1.84 times 76 is 139.8, which rounds back to 140. | a multiplies a rate by orders and compares it with rupees. c: rates over different denominators do not add. d: a frequency ratio is one branch of the revenue change, never the whole of it. |
 | 4 | d | Segment and quarter together are unique in this result, so the order is fixed on every run. | a: `GROUP BY` promises no order. b and c sort on values that can tie, and a tie lets two rows swap. |
-| 5 | c | A mean far above the median means a few very large orders sit above the rest, the Week 1 shape. | a: both use the amount. b: a median of Rs 8.32 lakh and a mean of Rs 10.72 lakh cannot come from orders all near Rs 10 lakh. d: the medians say nothing about the total. |
+| 5 | c | The gap sits at the top of Business's Q2: one order far above the rest lifts the mean, and with it set aside the other 90 average Rs 8,63,633, within Rs 32,133 of the median of Rs 8,31,500 they leave. | a: both use the amount. b: half of Q2's Business orders sit at or below Rs 8,32,000, so the orders are not all near Rs 10 lakh; the mean sits there because of the top. d: the medians say nothing about the total. |
 | 6 | a | The suite shows the cell and warns about it, so Anand sees Student and knows how far to trust its rate. | b hides a segment. c destroys the segment the sheet is about. d moves the goalposts until the warning disappears. |
 | 7 | d | Identical steps give identical columns, so the final SELECT compares like with like and the analyst audits one step to trust both. | a: CTEs in one WITH can have any shapes. b: speed has nothing to do with it. c: a join needs a shared key, never shared names. |
-| 8 | b | The book's fall is 1.6 percent and query 6 places it in Retail-Plus frequency, which fell furthest. | a quotes one segment's fall as if it were the book's, and prescribes the branch that moved least. c contradicts query 6. d ignores a segment down 29.4 percent. |
+| 8 | b | Rupees and orders are two questions with two answers. Business carries 99.1 percent of revenue, so its 1.4 percent dip is Rs 14,29,840 of the Rs 16,00,000 fall, against Rs 1,72,390 in Retail-Plus. Retail-Plus lost 75 of the book's 76 fewer orders, and its frequency fell furthest, 22.0 percent. | a quotes one segment's fall as if it were the book's, and prescribes acquisition when frequency fell furthest. c contradicts query 6, where Retail-Plus falls 29.4 percent and Student grows 33.9. d ignores a segment down 29.4 percent. |
 
 ## The sentence to Anand, as a model
 
-Booked revenue fell 1.6 percent from Q1 to Q2, the same fall last week's extract showed, so the
-warehouse agrees with the note Meera accepted. The fall sits in Retail-Plus, down 29.4 percent: its
-members ordered less often, 2.36 to 1.84 per quarter, and fewer bought at all, 91 to 76; the other
-segments moved under 2 percent or grew. This is booked revenue, and Student's Q1 rate rests on 27
-orders. Tomorrow we check collected revenue against it.
+Booked revenue fell 1.6 percent from Q1 to Q2, Rs 16,00,000, the same rate last week's file showed.
+The rupees fell in Business, which carries 99.1 percent of revenue and lost Rs 14,29,840 on a 1.4
+percent dip; Retail-Plus lost Rs 1,72,390. The orders fell in Retail-Plus: it lost 75 of the book's
+76 fewer orders, its members ordered less often, 2.36 to 1.84 per quarter, and fewer bought at all,
+91 to 76. This is booked revenue, Student's Q1 rate rests on 27 orders, and the warehouse counts
+different customers from last week's file. Tomorrow we check collected revenue against it.
 
 ## The part worth arguing about
 

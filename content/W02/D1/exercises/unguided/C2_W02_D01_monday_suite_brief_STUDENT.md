@@ -118,7 +118,7 @@ d) So the leaves line up and one step audits both
 Which sentence goes to Anand?
 
 a) Revenue fell 29.4 percent, so Retail-Plus needs acquisition money.
-b) The 1.6 percent fall sits in Retail-Plus frequency.
+b) Business lost most of the rupees, Retail-Plus most orders.
 c) Revenue fell 1.6 percent, spread evenly across the four segments.
 d) Revenue is flat, so no segment needs attention this quarter.
 
