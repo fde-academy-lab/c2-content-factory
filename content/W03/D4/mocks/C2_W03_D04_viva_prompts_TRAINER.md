@@ -145,7 +145,7 @@ rows the same booking, and why that rule?"
 
 | Did the work | Carried it | The follow-up |
 |---|---|---|
-| The booking id within the old system, since the old export repeats rows from a re-export and some repeated rows differ in their update time; the new system's references have their own format, so the two systems are stacked with a system column and never deduplicated against each other | "We used drop_duplicates" | "Did the repeated rows match on every column? What would a whole-row dedupe have reported?" (Of the 180 repeated ids, 30 differ in the update time, so a whole-row dedupe leaves those 30 in.) |
+| The booking id within the old system, since the old export repeats rows from a re-export and some repeated rows differ in their update time; the new system's references have their own format, so the two systems are stacked with a system column and never deduplicated against each other | "We used drop_duplicates" | "Did the repeated rows match on every column? What would a whole-row dedupe have reported?" (Of the 180 repeated ids, 145 match on every column and 35 do not: 30 differ in the update time, one of them in the channel as well, and 5 differ only in a channel that one copy leaves blank. A whole-row dedupe leaves those 35 in.) |
 
 **What is planted.** Chennai and Pune moved to the new booking system on 18 September; the old
 system's export carries only its own bookings, with the two cities' last old-system date on
@@ -247,7 +247,7 @@ comparison between clinics need here?"
 
 **What is planted.** Clinic KH-HYD-03, a small clinic that runs by appointment, shows 19.2 percent
 no-shows on all its visits (10 of 52) against 8.7 percent for the other clinics, whose visit counts
-are about 42 percent walk-ins. On scheduled visits only, it is 20.0 percent (10 of 50) against 15.2
+are about 43 percent walk-ins. On scheduled visits only, it is 20.0 percent (10 of 50) against 15.2
 percent. If its true rate were 15.2 percent, ten or more no-shows in fifty would happen by chance with
 probability 0.22.
 
