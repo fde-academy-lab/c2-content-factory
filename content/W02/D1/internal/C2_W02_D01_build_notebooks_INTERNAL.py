@@ -560,12 +560,12 @@ def ch2():
         Rs 1,87,00,000, and 69 customers in each quarter. Meera accepted "real, modest, fix frequency"
         from it.
 
-        **A real company with the same question.** Airbnb's data team wrote in April 2021 that when the
-        chief executive asked which city had the most bookings in the previous week, "Data Science and
-        Finance would sometimes provide diverging answers using slightly different tables, metric
-        definitions, and business logic" (The Airbnb Tech Blog, "How Airbnb Achieved Metric Consistency
-        at Scale", 30 April 2021). Two sources that answer one question differently are settled leaf by
-        leaf before either reaches a decision maker.
+        **A real company with the same question.** Airbnb's data team wrote in April 2021 that, years
+        earlier, when the chief executive asked which city had the most bookings in the previous week,
+        "Data Science and Finance would sometimes provide diverging answers using slightly different
+        tables, metric definitions, and business logic" (The Airbnb Tech Blog, "How Airbnb achieved
+        metric consistency at scale", 30 April 2021). Two sources that answer one question differently
+        are settled leaf by leaf before either reaches a decision maker.
         """),
         setup_note("02_same_story"),
         setup("02_same_story", r'''
@@ -1332,10 +1332,11 @@ def ch4():
         fell 1.4 percent.
 
         **A real company with the same question.** GitLab's data team publishes the SQL style guide it
-        writes to: "Prefer CTEs over sub-queries as CTEs make SQL more readable", each CTE should
+        writes to: "Prefer CTEs over sub-queries as CTEs make SQL more readable ...", each CTE should
         "perform a single, logical unit of work", and a calculation should carry "a brief description
         of what's going on" (GitLab handbook, SQL Style Guide, checked 30 September 2026). A team whose
-        queries are read by other people writes them as named steps.
+        queries are read by other people writes them as named steps. The guide also calls CTEs more
+        performant on GitLab's own warehouse; on Postgres the reason to name steps is the reader.
         """),
         setup_note("04_which_branch"),
         setup("04_which_branch"),
@@ -1941,10 +1942,11 @@ def ch6():
         the book, and the half-year counts each customer once: 301 in the book, 107 in Retail-Plus.
 
         **A real company with the same question.** Netflix's data engineering team described a pattern
-        it called write, audit, publish: each run's new data is written somewhere hidden, audited with
-        checks such as its row count and its count of missing values against the previous run, and
-        published only if it passes (Michelle Ufford, "Whoops, the Numbers are wrong! Scaling Data
-        Quality @ Netflix", DataWorks/Hadoop Summit, 13 June 2017). A number that is published every week
+        it called write, audit, publish: each run's new data is written first to an audit table,
+        checked against the runs before it on measures such as its row count and its count of missing
+        values, and published only when the checks set to fail the job pass, while a check set to warn
+        raises an alert (Michelle Ufford, "Whoops, The Numbers Are Wrong! Scaling Data Quality @
+        Netflix", DataWorks Summit, San Jose, 13 June 2017). A number that is published every week
         checks itself against last week before anyone reads it.
         """),
         setup_note("06_same_answer"),
@@ -2211,11 +2213,12 @@ def ch6():
 
         ### Depth: what does Netflix's audit check, and what would Kalpa's add?
 
-        In the Netflix talk the audit step compares each new batch with the previous one on measures
-        such as its row count and its count of missing values. One slide sets a new batch of 17,240 rows
-        with 17,240 missing values beside the previous day's 16,135 rows with 21: every value of the
-        column was missing, and the audit is there to stop that batch before it is published. A fingerprint that stores the count of missing amounts and
-        customer ids beside the rows and rupees would catch the same failure at Kalpa before Anand read
+        In the Netflix talk the audit step sets each new batch beside the runs before it. One slide
+        puts a new batch of 17,240 rows with 17,240 missing values beside the previous day's 16,135
+        rows with 21: every value of the column was missing. In the talk's rules the row-count checks
+        fail the job, while the missing-value check only warns, and its walk-through flags that batch
+        with a warning. A fingerprint that stores the count of missing amounts and customer ids beside
+        the rows and rupees would put the same failure in front of the team at Kalpa before Anand read
         a number built on it. Kalpa's warehouse holds no missing value in any column today, which is
         exactly what the fingerprint would prove each Monday.
 

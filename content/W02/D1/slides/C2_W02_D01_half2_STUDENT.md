@@ -88,9 +88,9 @@ to September 2026. Then a company that checks every run before anyone reads it.
 
 ```mermaid
 flowchart LR
-    W["<b>write</b><br/>the run's new data,<br/>somewhere hidden"] --> A["<b>audit</b><br/>row count, missing values,<br/>against the last run"]
+    W["<b>write</b><br/>the run's new data,<br/>to an audit table"] --> A["<b>audit</b><br/>row count, missing values,<br/>against earlier runs"]
     A -->|"passes"| P["<b>publish</b><br/>readers see it"]
-    A -.->|"fails"| S["<b>stopped</b><br/>before anyone reads it"]
+    A -.->|"a check set<br/>to fail"| S["<b>stopped</b><br/>before anyone reads it"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -102,10 +102,11 @@ flowchart LR
 Netflix's data engineering team called the pattern write, audit, publish: a number published every week checks itself against last week before anyone reads it.
 
 ```notes
-LIVE, 1 minute. Michelle Ufford's talk "Whoops, the Numbers are wrong! Scaling Data Quality @
-Netflix" at the DataWorks and Hadoop Summit, June 2017. One of its slides sets a new batch of
-17,240 rows with 17,240 missing values beside the previous day's 16,135 rows with 21: every value
-of the column was missing, and the audit exists to stop that batch. Source and check date are in
+LIVE, 1 minute. Michelle Ufford's talk "Whoops, The Numbers Are Wrong! Scaling Data Quality @
+Netflix" at DataWorks Summit, San Jose, 13 June 2017. One of its slides sets a new batch of 17,240
+rows with 17,240 missing values beside the previous day's 16,135 rows with 21: every value of the
+column was missing. In the talk's rules the row-count checks fail the job and the missing-value
+check only warns, so that batch raised a warning; say it that way. Source and check date are in
 the day's provenance. Then four ways a Kalpa run could prove itself.
 ```
 

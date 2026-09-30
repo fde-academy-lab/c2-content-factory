@@ -243,16 +243,16 @@ numbers moved by hand.
 > JPMorgan Chase's task force on its 2012 trading losses, report of 16 January 2013, page 124
 
 ```stats
-value: $5.8 billion | label: trading losses | note: by 30 June 2012, the same report
-value: 1 | label: model built by hand | note: the one the quote describes
+value: $5.8 billion | label: losses for the year | note: through 30 June 2012, the report's page 7
+value: 132 pages | label: the task force's report | note: 16 January 2013
 ```
 
 A number a person moves by hand can be moved wrongly, and Anand's rule keeps Kalpa's book away from that.
 
 ```notes
-LIVE, 1 minute. The London Whale losses. The quote is about the bank's value-at-risk model, the
-number that told management how much the trading book could lose; hand-moved inputs were among
-the problems the task force found. Do not claim the spreadsheet caused the loss; say it was one of
+LIVE, 1 minute. The London Whale losses. The quote is about the chief investment office's new
+value-at-risk model, the number that told management how much the trading book could lose;
+hand-moved inputs were among the problems the task force found. Do not claim the spreadsheet caused the loss; say it was one of
 the control failures the report names. Source and check date are in the day's provenance. Then
 the three places the Monday numbers could be computed.
 ```
@@ -554,7 +554,7 @@ cannot match; the question is whether the story does. Then a company that met th
 *Has a real company seen two sources answer one question differently?*
 
 > "Data Science and Finance would sometimes provide diverging answers using slightly different tables, metric definitions, and business logic"
-> The Airbnb Tech Blog, "How Airbnb Achieved Metric Consistency at Scale", 30 April 2021
+> The Airbnb Tech Blog, "How Airbnb achieved metric consistency at scale", 30 April 2021
 
 ```mermaid
 flowchart LR
@@ -569,7 +569,8 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 1 minute. The question in the post was the chief executive's. Two sources that answer one
+LIVE, 1 minute. The question in the post was the chief executive's, years before the post was
+written. Two sources that answer one
 question differently are settled leaf by leaf, with the definitions side by side, before either
 reaches a decision maker. Source and check date are in the day's provenance. Then four ways to
 compare Kalpa's two sources.
@@ -1181,7 +1182,7 @@ writes them.
 ## S50. GitLab writes every query as named steps
 *How does a real data team keep a query readable for the people who audit it?*
 
-> "Prefer CTEs over sub-queries as CTEs make SQL more readable"
+> "Prefer CTEs over sub-queries as CTEs make SQL more readable ..."
 > GitLab handbook, SQL Style Guide
 
 ```cards
@@ -1192,8 +1193,9 @@ icon: message-square | eyebrow: The habit | title: Say what it does | body: A ca
 ```notes
 LIVE, 1 minute. A CTE, a common table expression, is a named step written with WITH: the query
 reads as a list of steps, each with a name and a one-line comment, and the last step reads the
-ones above it. GitLab publishes the style guide its data team writes to. Source and check date
-are in the day's provenance. Then three ways to write the comparison.
+ones above it. GitLab publishes the style guide its data team writes to; the sentence goes on
+to call CTEs more performant, which is about GitLab's own warehouse, so on Postgres the reason to
+name steps is the reader. Source and check date are in the day's provenance. Then three ways to write the comparison.
 ```
 
 ---
