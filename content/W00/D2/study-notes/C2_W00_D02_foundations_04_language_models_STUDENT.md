@@ -218,6 +218,8 @@ the README with one sentence each on why the model went wrong. Self-check: the C
 and no empty labels; the per-label counts add up to twenty; the README names the label the model
 over-predicts.
 
+**GUIDED PRACTICE.** A guided notebook walks this hands-on step by step inside its 60 minutes: you redraw the chapter's picture, predict before you run, trace one step by hand and break the chapter's trap on purpose, and the last step says what to copy into your repository. Start with [the guided notebook](../exercises/guided/C2_W00_D02_foundations_04_language_models_guided_STUDENT.ipynb), and open [the worked solution](../exercises/solutions/C2_W00_D02_foundations_04_language_models_solution_STUDENT.ipynb) once you have tried it. [All eight exercises](../exercises/C2_W00_D02_foundations_exercises_STUDENT.md) are listed together.
+
 ## Where this gets tested
 
 **Interview question.** "Explain how an LLM generates text." Tested: the call anatomy. Strong

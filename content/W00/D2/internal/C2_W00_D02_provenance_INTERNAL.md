@@ -126,37 +126,37 @@ words are kept; conversion changed only what a markdown chapter needs.
 
 | Link as the guide gives it | On 30 September 2026 | Where it resolves |
 |---|---|---|
-| https://developers.google.com/machine-learning/crash-course | Opens (HTTP 200) | The same page |
-| https://docs.github.com | Opens (HTTP 200) | https://docs.github.com/en |
-| https://docs.github.com/en/account-and-profile/how-tos/profile-customization/managing-your-profile-readme | Opens (HTTP 200) | The same page |
-| https://docs.github.com/en/codespaces/getting-started/quickstart | Opens (HTTP 200) | https://docs.github.com/en/codespaces/quickstart |
-| https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github | Opens (HTTP 200) | https://docs.github.com/en/account-and-profile/how-tos/account-management/creating-an-account-on-github |
-| https://docs.python.org | Opens (HTTP 200) | https://docs.python.org/3/ |
-| https://docs.python.org/3/tutorial/errors.html | Opens (HTTP 200) | The same page |
-| https://freecodecamp.org/news/introduction-to-git-and-github | Opens (HTTP 200) | The same page |
-| https://github.com | Opens through a direct fetch | The page loads |
-| https://github.com/skills/code-with-codespaces | Opens through a direct fetch | Code with GitHub Codespaces and Visual Studio Code |
-| https://learnsql.com | Opens (HTTP 200) | The same page |
-| https://learnsql.com/blog/window-functions | Opens (HTTP 200) | The same page |
-| https://nedbatchelder.com | Opens (HTTP 200) | The same page |
-| https://nedbatchelder.com/text/names.html | Opens (HTTP 200) | https://nedbatchelder.com/text/names |
-| https://pandas.pydata.org | Opens (HTTP 200) | The same page |
-| https://pandas.pydata.org/docs/user_guide/10min.html | Opens (HTTP 200) | The same page |
-| https://platform.claude.com/docs/en/build-with-claude/prompt-engineering | Opens (HTTP 200) | https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview |
-| https://platform.openai.com/docs/guides/prompt-engineering | Opens (HTTP 200) | https://developers.openai.com/api/docs/guides/prompt-engineering |
-| https://plato.stanford.edu/entries/paradox-simpson | Opens (HTTP 200) | The same page |
-| https://postgresql.org | Opens (HTTP 200) | The same page |
-| https://postgresql.org/docs/current/tutorial-sql.html | Opens (HTTP 200) | The same page |
-| https://support.microsoft.com | Opens (HTTP 200) | https://support.microsoft.com/en-us/ |
-| https://support.microsoft.com/office/18fb0032-b01a-4c99-9a5f-7ab09edde05a | Opens (HTTP 200) | https://support.microsoft.com/en-us/excel/get-started/create-a-pivottable-to-analyze-worksheet-data |
-| https://youtube.com/playlist?list=PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS | Opens (YouTube oEmbed, HTTP 200) | "Pandas Tutorials", Corey Schafer |
-| https://youtube.com/watch?v=HXV3zeQKqGY | Opens (YouTube oEmbed, HTTP 200) | "SQL Tutorial - Full Database Course for Beginners", freeCodeCamp.org |
-| https://youtube.com/watch?v=HZGCoVF3YvM | Opens (YouTube oEmbed, HTTP 200) | "Bayes theorem, the geometry of changing beliefs", 3Blue1Brown |
-| https://youtube.com/watch?v=RGOj5yH7evk | Opens (YouTube oEmbed, HTTP 200) | "Git and GitHub for Beginners - Crash Course", freeCodeCamp.org |
-| https://youtube.com/watch?v=ZyhVh-qRZPA | Opens (YouTube oEmbed, HTTP 200) | "Python Pandas Tutorial (Part 1): Getting Started with Data Analysis - Installation and Loading Data", Corey Schafer |
-| https://youtube.com/watch?v=_AEJHKGk9ns | Confirmed by the author's own page | https://nedbatchelder.com/text/names1.html, which names it "Python Names and Values", PyCon 2015, Montreal, 29 March 2015 |
-| https://youtube.com/watch?v=wjZofJX0v4M | Opens (YouTube oEmbed, HTTP 200) | "Transformers, the tech behind LLMs \| Deep Learning Chapter 5", 3Blue1Brown |
-| https://youtube.com/watch?v=zjkBMFhNj_g | Opens (YouTube oEmbed, HTTP 200) | "[1hr Talk] Intro to Large Language Models", Andrej Karpathy |
+| https://developers.google.com/machine-learning/crash-course | Opens (HTTP 200), checked 30 September 2026 | The same page |
+| https://docs.github.com | Opens (HTTP 200), checked 30 September 2026 | https://docs.github.com/en |
+| https://docs.github.com/en/account-and-profile/how-tos/profile-customization/managing-your-profile-readme | Opens (HTTP 200), checked 30 September 2026 | The same page |
+| https://docs.github.com/en/codespaces/getting-started/quickstart | Opens (HTTP 200), checked 30 September 2026 | https://docs.github.com/en/codespaces/quickstart |
+| https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github | Opens (HTTP 200), checked 30 September 2026 | https://docs.github.com/en/account-and-profile/how-tos/account-management/creating-an-account-on-github |
+| https://docs.python.org | Opens (HTTP 200), checked 30 September 2026 | https://docs.python.org/3/ |
+| https://docs.python.org/3/tutorial/errors.html | Opens (HTTP 200), checked 30 September 2026 | The same page |
+| https://freecodecamp.org/news/introduction-to-git-and-github | Opens (HTTP 200), checked 30 September 2026 | The same page |
+| https://github.com | Opens through a direct fetch, checked 30 September 2026 | The page loads |
+| https://github.com/skills/code-with-codespaces | Opens through a direct fetch, checked 30 September 2026 | Code with GitHub Codespaces and Visual Studio Code |
+| https://learnsql.com | Opens (HTTP 200), checked 30 September 2026 | The same page |
+| https://learnsql.com/blog/window-functions | Opens (HTTP 200), checked 30 September 2026 | The same page |
+| https://nedbatchelder.com | Opens (HTTP 200), checked 30 September 2026 | The same page |
+| https://nedbatchelder.com/text/names.html | Opens (HTTP 200), checked 30 September 2026 | https://nedbatchelder.com/text/names |
+| https://pandas.pydata.org | Opens (HTTP 200), checked 30 September 2026 | The same page |
+| https://pandas.pydata.org/docs/user_guide/10min.html | Opens (HTTP 200), checked 30 September 2026 | The same page |
+| https://platform.claude.com/docs/en/build-with-claude/prompt-engineering | Opens (HTTP 200), checked 30 September 2026 | https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview |
+| https://platform.openai.com/docs/guides/prompt-engineering | Opens (HTTP 200), checked 30 September 2026 | https://developers.openai.com/api/docs/guides/prompt-engineering |
+| https://plato.stanford.edu/entries/paradox-simpson | Opens (HTTP 200), checked 30 September 2026 | The same page |
+| https://postgresql.org | Opens (HTTP 200), checked 30 September 2026 | The same page |
+| https://postgresql.org/docs/current/tutorial-sql.html | Opens (HTTP 200), checked 30 September 2026 | The same page |
+| https://support.microsoft.com | Opens (HTTP 200), checked 30 September 2026 | https://support.microsoft.com/en-us/ |
+| https://support.microsoft.com/office/18fb0032-b01a-4c99-9a5f-7ab09edde05a | Opens (HTTP 200), checked 30 September 2026 | https://support.microsoft.com/en-us/excel/get-started/create-a-pivottable-to-analyze-worksheet-data |
+| https://youtube.com/playlist?list=PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS | Opens (YouTube oEmbed, HTTP 200), checked 30 September 2026 | "Pandas Tutorials", Corey Schafer |
+| https://youtube.com/watch?v=HXV3zeQKqGY | Opens (YouTube oEmbed, HTTP 200), checked 30 September 2026 | "SQL Tutorial - Full Database Course for Beginners", freeCodeCamp.org |
+| https://youtube.com/watch?v=HZGCoVF3YvM | Opens (YouTube oEmbed, HTTP 200), checked 30 September 2026 | "Bayes theorem, the geometry of changing beliefs", 3Blue1Brown |
+| https://youtube.com/watch?v=RGOj5yH7evk | Opens (YouTube oEmbed, HTTP 200), checked 30 September 2026 | "Git and GitHub for Beginners - Crash Course", freeCodeCamp.org |
+| https://youtube.com/watch?v=ZyhVh-qRZPA | Opens (YouTube oEmbed, HTTP 200), checked 30 September 2026 | "Python Pandas Tutorial (Part 1): Getting Started with Data Analysis - Installation and Loading Data", Corey Schafer |
+| https://youtube.com/watch?v=_AEJHKGk9ns | Confirmed by the author's own page, checked 30 September 2026 | https://nedbatchelder.com/text/names1.html, which names it "Python Names and Values", PyCon 2015, Montreal, 29 March 2015 |
+| https://youtube.com/watch?v=wjZofJX0v4M | Opens (YouTube oEmbed, HTTP 200), checked 30 September 2026 | "Transformers, the tech behind LLMs \| Deep Learning Chapter 5", 3Blue1Brown |
+| https://youtube.com/watch?v=zjkBMFhNj_g | Opens (YouTube oEmbed, HTTP 200), checked 30 September 2026 | "[1hr Talk] Intro to Large Language Models", Andrej Karpathy |
 
 ### Where the chapters depart from the guide's text
 

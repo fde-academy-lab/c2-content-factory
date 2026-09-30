@@ -98,6 +98,8 @@ the pivot for revenue by tier, write the `SUMIFS` for Plus, and check the two ag
 notebook. Put a screenshot of the pivot in the `w00-diagnostic-pandas` README beside the pandas
 result.
 
+**GUIDED PRACTICE.** A guided workbook walks this hands-on step by step inside its 45 minutes: you redraw the chapter's picture, predict before you run, trace one step by hand and break the chapter's trap on purpose, and the last step says what to copy into your repository. Start with [the guided workbook](../exercises/guided/C2_W00_D02_foundations_07_excel_guided_STUDENT.xlsx), and open [the worked solution](../exercises/solutions/C2_W00_D02_foundations_07_excel_solution_STUDENT.xlsx) once you have tried it. [All eight exercises](../exercises/C2_W00_D02_foundations_exercises_STUDENT.md) are listed together.
+
 ## Glossary
 
 | Term | Plain meaning | Where it appeared | Example |

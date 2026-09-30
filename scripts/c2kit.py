@@ -145,9 +145,12 @@ def connect():
     try:
         return psycopg2.connect(**WAREHOUSE)
     except Exception as e:
+        where = (f"{WAREHOUSE['host']}:{WAREHOUSE.get('port', '5432')}" if WAREHOUSE.get("host")
+                 else "the local socket")
         raise SystemExit(
-            f"No warehouse answered at {WAREHOUSE['host']}:{WAREHOUSE['port']}. "
-            f"Run bash .devcontainer/load_warehouse.sh to build it.\n  {e}")
+            f"No database {WAREHOUSE.get('dbname', '')!r} answered at {where}. For the Kalpa warehouse, "
+            f"run bash .devcontainer/load_warehouse.sh to build it; for a practice database, run the "
+            f"setup steps the notebook's first cell names.\n  {e}")
 
 
 def engine():

@@ -190,6 +190,8 @@ by the check you would run first. Self-check: every node's deltas add up to its 
 hypothesis names a number that already exists in the table; the sentence contains a number, a driver
 and a check, and no word you would not say aloud.
 
+**GUIDED PRACTICE.** A guided notebook walks this hands-on step by step inside its 60 minutes: you redraw the chapter's picture, predict before you run, trace one step by hand and break the chapter's trap on purpose, and the last step says what to copy into your repository. Start with [the guided notebook](../exercises/guided/C2_W00_D02_foundations_05_business_problems_guided_STUDENT.ipynb), and open [the worked solution](../exercises/solutions/C2_W00_D02_foundations_05_business_problems_solution_STUDENT.ipynb) once you have tried it. [All eight exercises](../exercises/C2_W00_D02_foundations_exercises_STUDENT.md) are listed together.
+
 ## Where this gets tested
 
 **Interview question.** "Revenue fell 5 percent. Walk me through what you would do." Tested: the

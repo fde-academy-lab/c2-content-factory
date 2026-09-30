@@ -148,6 +148,8 @@ paid orders, merge a two-row `customers.csv` with `validate="many_to_one"`, and 
 cells. Self-check: the `NaN` count equals the number of bad amounts you planted; the tier totals
 equal mini project 1's totals; the notebook runs top to bottom after a restart.
 
+**GUIDED PRACTICE.** A guided notebook walks this hands-on step by step inside its 90 minutes: you redraw the chapter's picture, predict before you run, trace one step by hand and break the chapter's trap on purpose, and the last step says what to copy into your repository. Start with [the guided notebook](../exercises/guided/C2_W00_D02_foundations_06_pandas_guided_STUDENT.ipynb), and open [the worked solution](../exercises/solutions/C2_W00_D02_foundations_06_pandas_solution_STUDENT.ipynb) once you have tried it. [All eight exercises](../exercises/C2_W00_D02_foundations_exercises_STUDENT.md) are listed together.
+
 ## Where this gets tested
 
 **Interview question.** "How do you handle a numeric column that has some bad strings?" Tested:

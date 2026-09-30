@@ -287,6 +287,8 @@ amounts. Self-check: the notebook restarts and runs top to bottom with no error;
 exactly the bad rows you planted; changing one amount to `'0'` keeps the row (a truthiness test would
 drop it).
 
+**GUIDED PRACTICE.** A guided notebook walks this hands-on step by step inside its 90 minutes: you redraw the chapter's picture, predict before you run, trace one step by hand and break the chapter's trap on purpose, and the last step says what to copy into your repository. Start with [the guided notebook](../exercises/guided/C2_W00_D02_foundations_01_python_guided_STUDENT.ipynb), and open [the worked solution](../exercises/solutions/C2_W00_D02_foundations_01_python_solution_STUDENT.ipynb) once you have tried it. [All eight exercises](../exercises/C2_W00_D02_foundations_exercises_STUDENT.md) are listed together.
+
 ## Where this gets tested
 
 **Interview question.** "What does `b = a` do when `a` is a list?" Tested: whether you hold the
