@@ -1,8 +1,8 @@
 # Week 1 recap paper
 
-Saturday 10 October 2026 · 120 minutes · 51 items in 6 parts · pen and paper, no assistant, no notes
+Saturday 10 October 2026 · 120 minutes · 54 items in 6 parts · pen and paper, no assistant, no notes
 
-Name: ____________________    Marked by: ____________________    Items right: ____ of 51
+Name: ____________________    Marked by: ____________________    Items right: ____ of 54
 
 ## How this paper works
 
@@ -20,10 +20,10 @@ Name: ____________________    Marked by: ____________________    Items right: __
 | 1. The week's rules, cold | whether the week's definitions and rules are there without a notebook open | Q1 to Q9 (9) | 9 | 5 | 3 | 1 |
 | 2. Where did the revenue go | whether you can break a revenue fall into its branches and choose the one to open first | Q10 to Q21 (12) | 27.5 | 5 | 5 | 2 |
 | 3. Rows you can trust | whether you clean a file with a reason for every change and reconcile it in rows and in rupees | Q22 to Q31 (10) | 23 | 3 | 6 | 1 |
-| 4. Read the code, read the data | whether you catch a wrong number in a line of Python or an export before it reaches a decision | Q32 to Q38 (7) | 15.5 | 2 | 3 | 2 |
-| 5. Chance and a fair test | whether you can say what a p-value means, when a gap is worth acting on and what a fair test of a cause needs | Q39 to Q45 (7) | 16.5 | 1 | 2 | 4 |
-| 6. The numbers | whether you can do the week's arithmetic by hand and show the working | Q46 to Q51 (6) | 22 | 3 | 2 | 1 |
-| Total | | 51 | 113.5 | 19 | 21 | 11 |
+| 4. Read the code, read the data | whether you catch a wrong number in a line of Python or an export before it reaches a decision | Q32 to Q41 (10) | 21.5 | 2 | 4 | 4 |
+| 5. Chance and a fair test | whether you can say what a p-value means, when a gap is worth acting on and what a fair test of a cause needs | Q42 to Q48 (7) | 16.5 | 1 | 2 | 4 |
+| 6. The numbers | whether you can do the week's arithmetic by hand and show the working | Q49 to Q54 (6) | 22 | 3 | 2 | 1 |
+| Total | | 54 | 119.5 | 19 | 22 | 13 |
 
 ---
 
@@ -31,7 +31,7 @@ Name: ____________________    Marked by: ____________________    Items right: __
 
 *What it shows: whether the week's definitions and rules are there without a notebook open. 9 items, about 9 minutes.*
 
-Each line is one rule from the week. Fill the gap, or mark the statement true or false.
+"Say it to me the way you will say it to her, because I will push the way Marketing will." Kavya Nair, the senior analyst, starts with the week's rules, one line each, before any note goes to Meera.
 
 #### Q1 · Medium · write the word or number
 
@@ -93,7 +93,7 @@ Answer: ____________________
 
 *What it shows: whether you can break a revenue fall into its branches and choose the one to open first. 12 items, about 27.5 minutes.*
 
-Q2 revenue fell from Q1, Marketing wants Rs 12 crore for acquisition, and Meera Raghavan wants to know which branch of the revenue tree to open before she signs.
+"Are we losing customers, or are the ones we have buying less?" Meera Raghavan, the CEO, asks it with Q2 revenue below Q1 and Marketing asking her for Rs 12 crore to acquire new customers.
 
 #### Q10 · Easy · circle one letter
 
@@ -220,7 +220,7 @@ Order: ____________________
 
 *What it shows: whether you clean a file with a reason for every change and reconcile it in rows and in rupees. 10 items, about 23 minutes.*
 
-The dashboard and Finance disagree on Q1. Before any figure reaches Meera, the export is cleaned, every change is logged, and the run has to reconcile.
+"Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9." Anand Iyer, the finance controller, wrote that back to all on Tuesday's finding, and the ERP export behind the dashboard is the file on your desk.
 
 #### Q22 · Medium · circle one letter
 
@@ -323,11 +323,11 @@ Order: ____________________
 
 ---
 
-## Part 4. Read the code, read the data (Q32 to Q38)
+## Part 4. Read the code, read the data (Q32 to Q41)
 
-*What it shows: whether you catch a wrong number in a line of Python or an export before it reaches a decision. 7 items, about 15.5 minutes.*
+*What it shows: whether you catch a wrong number in a line of Python or an export before it reaches a decision. 10 items, about 21.5 minutes.*
 
-Each item puts a line of Python or a small export in front of you. Read it the way the interpreter or an auditor would, and say what it really gives.
+"You gave me a number and told me what it counts." Kavya Nair, the senior analyst, now wants the code and the export behind each number read line by line, before any of it reaches Meera.
 
 #### Q32 · Medium · write T or F
 
@@ -335,52 +335,11 @@ In Python 3, the comparison '4500' > 3000 evaluates to True.
 
 Answer: ____________________
 
-#### Q33 · Easy · circle one letter
-
-A function ends with print(total) and has no return statement. After result = revenue_for(seg), what does result hold?
-
-a) 0, because a missing return defaults to zero for numbers.
-b) The total, because print both displays the value and sends it back to the caller.
-c) None, because a function without a return statement hands back None.
-d) An error, because Python refuses to assign from such a function.
-
 ### Set 3
-
-**Situation.** Kalpa's April export for two segments holds 500 order rows placed by 250 distinct customers. Retail: 400 orders, revenue Rs 8.0 lakh. Business: 100 orders, revenue Rs 12.0 lakh. A slide built from the export reads: orders per customer 1.00, average order value Rs 7,000.
-
-**Exhibit 4A.** April, two segments. The 500 order rows come from 250 distinct customers.
-
-| Segment | Order rows | Revenue |
-|---|---|---|
-| Retail | 400 | Rs 8.0 lakh |
-| Business | 100 | Rs 12.0 lakh |
-
-#### Q34 · Easy · write the word or number
-
-Orders per customer in this export is ____.
-
-Answer: ____________________
-
-#### Q35 · Medium · write the word or number
-
-The average order value across both segments is Rs ____.
-
-Answer: ____________________
-
-#### Q36 · Hard · circle one letter
-
-Marketing reads the slide as "nobody comes back, so buy new customers". What do you say in the room?
-
-a) Agree, because the export shows each customer placing exactly one order in April.
-b) Agree, once the median order value has been checked beside the Rs 7,000 mean.
-c) Push back: 250 customers placed 500 orders, so "nobody comes back" is false.
-d) Push back, because the Rs 7,000 average shows customers already spend enough.
-
-### Set 4
 
 **Situation.** Kalpa's store-channel export for Q1 holds 1,200 rows worth Rs 96.0 lakh. A dedupe that compares whole records reports 0 duplicates. A second pass keyed on order_id finds 40 rows whose order_id already appeared, each differing from the first row only in its timestamp. The run keeps 1,160 clean rows worth Rs 88.0 lakh and logs the 40 repeats as rejects worth Rs 5.0 lakh.
 
-**Exhibit 4B.** The cleaning run on the store export, with the rows and the rupees at each stage.
+**Exhibit 4A.** The cleaning run on the store export, with the rows and the rupees at each stage.
 
 ```mermaid
 flowchart LR
@@ -390,7 +349,7 @@ flowchart LR
   A --> E["Clean file<br/>1,160 rows<br/>Rs 88.0 lakh"]
 ```
 
-#### Q37 · Medium · circle one letter
+#### Q33 · Medium · circle one letter
 
 Which duplicate count should the run trust?
 
@@ -399,7 +358,7 @@ b) Zero, because a different timestamp proves two separate orders were placed.
 c) Forty, but only once Finance has confirmed every pair by hand.
 d) Forty, because the identity rule says one order_id is one order.
 
-#### Q38 · Hard · circle one letter
+#### Q34 · Hard · circle one letter
 
 The row counts add up: 1,160 clean plus 40 rejected is 1,200. What is the honest status of the run?
 
@@ -408,15 +367,121 @@ b) Not reconciled, because Rs 3.0 lakh is in neither the clean file nor the log.
 c) Not reconciled, because Rs 8.0 lakh left the file when the 40 repeats were removed.
 d) Reconciled, because a gap under 5 percent of the input is within ordinary rounding.
 
+### Set 4
+
+**Situation.** Kalpa's April export for two segments holds 500 order rows placed by 250 distinct customers. Retail: 400 orders, revenue Rs 8.0 lakh. Business: 100 orders, revenue Rs 12.0 lakh. A slide built from the export reads: orders per customer 1.00, average order value Rs 7,000.
+
+**Exhibit 4B.** April, two segments. The 500 order rows come from 250 distinct customers.
+
+| Segment | Order rows | Revenue |
+|---|---|---|
+| Retail | 400 | Rs 8.0 lakh |
+| Business | 100 | Rs 12.0 lakh |
+
+#### Q35 · Easy · write the word or number
+
+Orders per customer in this export is ____.
+
+Answer: ____________________
+
+#### Q36 · Medium · write the word or number
+
+The average order value across both segments is Rs ____.
+
+Answer: ____________________
+
+#### Q37 · Hard · circle one letter
+
+Marketing reads the slide as "nobody comes back, so buy new customers". What do you say in the room?
+
+a) Agree, because the export shows each customer placing exactly one order in April.
+b) Agree, once the median order value has been checked beside the Rs 7,000 mean.
+c) Push back: 250 customers placed 500 orders, so "nobody comes back" is false.
+d) Push back, because the Rs 7,000 average shows customers already spend enough.
+
+**Exhibit 4C.** Five invented orders, and the loop that counts the ones with a discount.
+
+```python
+orders = [{"order_id": "INV-1", "discount": 150},
+          {"order_id": "INV-2", "discount": 0}, {"order_id": "INV-3"},
+          {"order_id": "INV-4", "discount": 200}, {"order_id": "INV-5"}]
+with_discount = 0
+for order in orders:
+    if order.get("discount", 0) > 0:
+        with_discount += 1
+print(with_discount, "of", len(orders), "orders had a discount")
+```
+
+#### Q38 · Medium · circle one letter
+
+The discount field is optional in Kalpa's export. Marketing reads the line this prints as "three orders in five had no discount" and wants the offer extended to those three. What is the honest reading?
+
+a) Three in five had no discount, so the offer would reach customers who had none.
+b) Two of the three are unknown, and 2 in 5 remains the share to report.
+c) Two of the three are broken records, so they belong in the rejects log.
+d) Two of the three are unknown, so the share is 2 of the 3 recorded.
+
+#### Q39 · Easy · circle one letter
+
+A function ends with print(total) and has no return statement. After result = revenue_for(seg), what does result hold?
+
+a) 0, because a missing return defaults to zero for numbers.
+b) The total, because print both displays the value and sends it back to the caller.
+c) None, because a function without a return statement hands back None.
+d) An error, because Python refuses to assign from such a function.
+
+**Exhibit 4D.** The helper and the summary line, run on two cities' invented figures.
+
+```python
+def pct_change(before, after):
+    change = 100 * (after - before) / before
+    if abs(change) > 30:
+        print(f"check by hand: {change:+.1f}%")
+    else:
+        return round(change, 1)
+changes = {"Pune": pct_change(1.60, 0.80), "Delhi": pct_change(1.50, 1.41)}
+print({city: v for city, v in changes.items() if v and v < 0})
+```
+
+#### Q40 · Hard · circle one letter
+
+The analyst sends Meera the last line this prints as the cities where orders per customer fell from Q1 to Q2. What does that line give her, and why?
+
+a) Both cities, Pune down 50.0 percent and Delhi down 6.0, with Pune flagged for a check.
+b) Delhi alone, because Pune's change came back as None and the filter dropped it.
+c) Delhi alone, and rightly, since the check-by-hand line was a warning about Pune's data.
+d) Delhi alone, because Pune's change came back as zero, and zero is not a fall.
+
+**Exhibit 4E.** Four invented rows in file order, and the cleaning pass run on them.
+
+```python
+rows = [("A", "2400"), ("B", "n/a"), ("B", "1800"), ("C", "3100")]
+first = {}
+for order_id, amount in rows:
+    first.setdefault(order_id, amount)
+clean = [int(a) for a in first.values() if a != "n/a"]
+print(len(rows), "rows:", len(clean), "clean,", len(rows) - len(clean),
+      "set aside; Rs", sum(clean))
+```
+
+#### Q41 · Hard · circle one letter
+
+Finance's books hold orders A, B and C at Rs 7,300 in all. This pass cleans four rows of the export, read in file order. What does it print?
+
+a) 4 rows: 2 clean, 2 set aside; Rs 5500
+b) 4 rows: 3 clean, 1 set aside; Rs 7300
+c) 4 rows: 3 clean, 1 set aside; Rs 5500
+d) 4 rows: 2 clean, 2 set aside; Rs 7300
+
 ---
 
-## Part 5. Chance and a fair test (Q39 to Q45)
+## Part 5. Chance and a fair test (Q42 to Q48)
 
 *What it shows: whether you can say what a p-value means, when a gap is worth acting on and what a fair test of a cause needs. 7 items, about 16.5 minutes.*
 
-Two claims are on Meera's desk: the monsoon discount worked, and the Student segment is growing. Ask of each whether the gap is real, whether it is worth acting on, and whether the discount caused it.
+"Real, or the wobble we see every quarter? Should I move budget to Student? Did the discount work?" Meera Raghavan, the CEO, wants all three answered before Monday's growth review.
 
-#### Q39 · Hard · circle one letter
+#### Q42 · Hard · circle one letter
 
 Ten label shuffles produced gaps between 2 and 6 points, and the real gap is 5 points. What is the honest reading?
 
@@ -425,7 +490,7 @@ b) The real gap is significant, because it is larger than most of the shuffled g
 c) Chance alone often produces a gap this large, so the real gap is not surprising.
 d) The shuffle should be repeated until the real gap looks rare enough to report.
 
-#### Q40 · Easy · circle one letter
+#### Q43 · Easy · circle one letter
 
 The Student segment grew 40 percent on 12 orders. What do you tell Meera?
 
@@ -434,7 +499,7 @@ b) The rate rests on too few orders to trust yet.
 c) Drop the Student segment.
 d) The growth is proven because 40 percent is large.
 
-#### Q41 · Medium · circle every correct letter
+#### Q44 · Medium · circle every correct letter
 
 What does a fair test of 'did the discount work' need? Mark every correct option.
 
@@ -443,7 +508,7 @@ b) the same time window for both groups
 c) a comparable mix of segments in both groups
 d) a deeper discount
 
-#### Q42 · Hard · circle every correct letter
+#### Q45 · Hard · circle every correct letter
 
 Which statements about the p-value are correct? Mark every correct option.
 
@@ -464,7 +529,7 @@ d) It says nothing about whether the gap is large enough to matter.
 | Revenue per customer inside each segment | Fell in every segment |
 | Customers who received the discount | Bought more often on average than those who did not |
 
-#### Q43 · Hard · circle one letter
+#### Q46 · Hard · circle one letter
 
 What is this pattern an example of?
 
@@ -473,13 +538,13 @@ b) a calculation error in the segment-level revenue totals
 c) a seasonal effect that the monsoon produces every year
 d) a sample that is too small to show any pattern at all
 
-#### Q44 · Medium · write T or F
+#### Q47 · Medium · write T or F
 
 True or false: Buying frequency is a confounder for the campaign's effect.
 
 Answer: ____________________
 
-#### Q45 · Hard · circle one letter
+#### Q48 · Hard · circle one letter
 
 Meera asks whether to repeat the discount at Diwali. Which answer is honest?
 
@@ -490,13 +555,13 @@ d) Do not repeat it as designed: no segment improved, and the lift is a mix effe
 
 ---
 
-## Part 6. The numbers (Q46 to Q51)
+## Part 6. The numbers (Q49 to Q54)
 
 *What it shows: whether you can do the week's arithmetic by hand and show the working. 6 items, about 22 minutes.*
 
-Write the working on the lines under each item, then the answer.
+"Before anything goes to Meera, rebuild the week from a raw export with no assistant and no notes." Kavya Nair, the senior analyst, wants the working as well as the answer, on the lines under each item.
 
-#### Q46 · Easy · circle one letter
+#### Q49 · Easy · circle one letter
 
 Order values show a mean of Rs 9,800 and a median of Rs 1,400. What is the likeliest explanation?
 
@@ -505,7 +570,7 @@ b) The median has been miscalculated from an incomplete export.
 c) Half the orders are above Rs 9,800.
 d) A few very large orders pull the mean up.
 
-#### Q47 · Hard · show the working, then the answer
+#### Q50 · Hard · show the working, then the answer
 
 A 15 percent discount lifts the quantity sold by 10 percent. By what percent does revenue change?
 
@@ -513,7 +578,7 @@ Working:
 
 Answer: ____________________
 
-#### Q48 · Easy · show the working, then the answer
+#### Q51 · Easy · show the working, then the answer
 
 Five order values in rupees: 800, 1,200, 1,400, 2,000 and 480,000. Give the median and the mean.
 
@@ -521,7 +586,7 @@ Working:
 
 Answer: ____________________
 
-#### Q49 · Easy · show the working, then the answer
+#### Q52 · Easy · show the working, then the answer
 
 Revenue was Rs 2.1 crore in Q1 and Rs 1.9 crore in Q2. Give the percentage change to one decimal place.
 
@@ -529,7 +594,7 @@ Working:
 
 Answer: ____________________
 
-#### Q50 · Medium · show the working, then the answer
+#### Q53 · Medium · show the working, then the answer
 
 In 5,000 label shuffles, 140 produced a gap at least as large as the real one. What is the p-value?
 
@@ -537,7 +602,7 @@ Working:
 
 Answer: ____________________
 
-#### Q51 · Medium · show the working, then the answer
+#### Q54 · Medium · show the working, then the answer
 
 A retailer has 50,000 customers, 2 orders per customer, 3 items per order, Rs 400 per item and Rs 1 crore of discounts. What is its revenue?
 

@@ -115,12 +115,12 @@ flips:
     cell: M7
     contains: bottom third beat the top third
   - sheet: Marks
-    cell: BC5
+    cell: BF5
     expect: top
   - sheet: Marks
-    cell: BC10
+    cell: BF10
     expect: bottom
   - sheet: Marks
-    cell: BC7
+    cell: BF7
     expect: middle
 ```

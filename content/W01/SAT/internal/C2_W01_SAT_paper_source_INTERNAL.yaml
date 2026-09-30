@@ -8,38 +8,43 @@ parts:
   - title: The week's rules, cold
     shows: whether the week's definitions and rules are there without a notebook open
     intro: >-
-      Each line is one rule from the week. Fill the gap, or mark the statement true or false.
+      "Say it to me the way you will say it to her, because I will push the way Marketing will."
+      Kavya Nair, the senior analyst, starts with the week's rules, one line each, before any note
+      goes to Meera.
     items: [6, 8, 9, 10, 12, 13, 14, 15, 16]
   - title: Where did the revenue go
     shows: whether you can break a revenue fall into its branches and choose the one to open first
     intro: >-
-      Q2 revenue fell from Q1, Marketing wants Rs 12 crore for acquisition, and Meera Raghavan wants
-      to know which branch of the revenue tree to open before she signs.
+      "Are we losing customers, or are the ones we have buying less?" Meera Raghavan, the CEO, asks
+      it with Q2 revenue below Q1 and Marketing asking her for Rs 12 crore to acquire new customers.
     items: [17, 18, 20, 21, 29, 30, 31, 36, 37, 38, 39, 51]
   - title: Rows you can trust
     shows: whether you clean a file with a reason for every change and reconcile it in rows and in rupees
     intro: >-
-      The dashboard and Finance disagree on Q1. Before any figure reaches Meera, the export is
-      cleaned, every change is logged, and the run has to reconcile.
+      "Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9." Anand Iyer, the finance
+      controller, wrote that back to all on Tuesday's finding, and the ERP export behind the
+      dashboard is the file on your desk.
     items: [23, 24, 25, 28, 32, 33, 40, 41, 42, 52]
   - title: Read the code, read the data
     shows: whether you catch a wrong number in a line of Python or an export before it reaches a decision
     intro: >-
-      Each item puts a line of Python or a small export in front of you. Read it the way the
-      interpreter or an auditor would, and say what it really gives.
-    items: [11, 22, "new:rows-as-customers", "new:average-of-averages", "new:broken-slide",
-            "new:whole-record-dedupe", "new:rows-not-rupees"]
+      "You gave me a number and told me what it counts." Kavya Nair, the senior analyst, now wants
+      the code and the export behind each number read line by line, before any of it reaches Meera.
+    items: [11, "new:whole-record-dedupe", "new:rows-not-rupees", "new:rows-as-customers",
+            "new:average-of-averages", "new:broken-slide", "new:blank-discount", 22,
+            "new:helper-summary", "new:first-copy"]
   - title: Chance and a fair test
     shows: whether you can say what a p-value means, when a gap is worth acting on and what a fair test of a cause needs
     intro: >-
-      Two claims are on Meera's desk: the monsoon discount worked, and the Student segment is
-      growing. Ask of each whether the gap is real, whether it is worth acting on, and whether the
-      discount caused it.
+      "Real, or the wobble we see every quarter? Should I move budget to Student? Did the discount
+      work?" Meera Raghavan, the CEO, wants all three answered before Monday's growth review.
     items: [26, 27, 34, 35, 43, 44, 45]
   - title: The numbers
     shows: whether you can do the week's arithmetic by hand and show the working
     intro: >-
-      Write the working on the lines under each item, then the answer.
+      "Before anything goes to Meera, rebuild the week from a raw export with no assistant and no
+      notes." Kavya Nair, the senior analyst, wants the working as well as the answer, on the lines
+      under each item.
     items: [19, 46, 47, 48, 49, 50]
 
 # Recall items moved to the untimed stretch page to make room for harder timed items; the
@@ -204,6 +209,163 @@ additions:
     answer: >-
       I reconcile rows and then rupees; here the rows close and Rs 3.0 lakh does not, so I trace
       that gap row by row, usually to an amount coerced to zero, before any figure goes to Finance.
+
+  # Three code items for part 4, 2 minutes each, which takes the timed paper from 113.5 to 119.5
+  # minutes. Every exhibit is invented data run through code faithful to the week's notebooks, and
+  # its printed output is recorded in the provenance as the proof of the key.
+  - type: One correct option
+    id: blank-discount
+    level: Medium
+    tag: "[S]"
+    roles: BA, DS
+    day: Tue
+    min: 2
+    key: d
+    anchor: How do you handle missing data?
+    exhibit:
+      caption: Five invented orders, and the loop that counts the ones with a discount.
+      code:
+        lang: python
+        text: |
+          orders = [{"order_id": "INV-1", "discount": 150},
+                    {"order_id": "INV-2", "discount": 0}, {"order_id": "INV-3"},
+                    {"order_id": "INV-4", "discount": 200}, {"order_id": "INV-5"}]
+          with_discount = 0
+          for order in orders:
+              if order.get("discount", 0) > 0:
+                  with_discount += 1
+          print(with_discount, "of", len(orders), "orders had a discount")
+    text: |
+      The discount field is optional in Kalpa's export. Marketing reads the line this prints as "three orders in five had no discount" and wants the offer extended to those three. What is the honest reading?
+      (a) Three in five had no discount, so the offer would reach customers who had none.
+      (b) Two of the three are unknown, and 2 in 5 remains the share to report.
+      (c) Two of the three are broken records, so they belong in the rejects log.
+      (d) Two of the three are unknown, so the share is 2 of the 3 recorded.
+    why: >-
+      The loop prints "2 of 5 orders had a discount". It counts an order only when its discount is
+      above zero, and .get hands back the default 0 for an order with no discount field, so the
+      three without are INV-2, which records a zero, and INV-3 and INV-5, which carry no discount
+      field at all. An optional field left blank is unknown: the share is 2 of the 3 orders that
+      record a discount, and across all five it lies between 40 and 80 percent.
+    wrong:
+      a: >-
+        The blank read as zero, the trap Tuesday's round 2 staged: .get's default turns two unknown
+        discounts into none, and Marketing extends the offer to orders that may already have had
+        one.
+      b: >-
+        Knows the two blanks are unknown and reports 2 in 5 anyway, which counts them as
+        undiscounted after all. It is Tuesday's round 2 trap in its quietest form; the share runs
+        over the orders that record a discount.
+      c: >-
+        Sends real orders to the rejects log for a blank optional field. Wednesday's log took rows
+        that broke a rule, such as an amount that would not convert, and Wednesday's round 3 kept a
+        record with a missing field and flagged it, because dropping it says the order never
+        happened.
+    answer: >-
+      A blank is unknown, never zero: I report the share over the orders that record the field, 2
+      of 3 here, say how many are blank, and give the range across all of them before anyone
+      extends an offer on it.
+
+  - type: One correct option
+    id: helper-summary
+    level: Hard
+    tag: "[F]"
+    roles: BA, DS
+    day: Tue
+    min: 2
+    key: b
+    anchor: Why does a function that prints instead of returning break a pipeline?
+    exhibit:
+      caption: The helper and the summary line, run on two cities' invented figures.
+      code:
+        lang: python
+        text: |
+          def pct_change(before, after):
+              change = 100 * (after - before) / before
+              if abs(change) > 30:
+                  print(f"check by hand: {change:+.1f}%")
+              else:
+                  return round(change, 1)
+          changes = {"Pune": pct_change(1.60, 0.80), "Delhi": pct_change(1.50, 1.41)}
+          print({city: v for city, v in changes.items() if v and v < 0})
+    text: |
+      The analyst sends Meera the last line this prints as the cities where orders per customer fell from Q1 to Q2. What does that line give her, and why?
+      (a) Both cities, Pune down 50.0 percent and Delhi down 6.0, with Pune flagged for a check.
+      (b) Delhi alone, because Pune's change came back as None and the filter dropped it.
+      (c) Delhi alone, and rightly, since the check-by-hand line was a warning about Pune's data.
+      (d) Delhi alone, because Pune's change came back as zero, and zero is not a fall.
+    why: >-
+      Pune moves from 1.60 to 0.80, a change of -50.0 percent and beyond the helper's 30, so the
+      helper prints "check by hand: -50.0%" and hands back None. Delhi's -6.0 comes back as a
+      number. The filter keeps a value only when it is present and below zero, and None counts as
+      false, so the last line reads {'Delhi': -6.0} and tells Meera that the city which halved did
+      not fall at all.
+    wrong:
+      a: >-
+        Reads print as return, the trap Tuesday's escalated case staged: the helper shows -50.0% on
+        the screen and hands the caller None, so Pune never reaches the line.
+      c: >-
+        Takes the printed line for a warning about the data, which is how Tuesday's escalated case
+        let its summary stand. Pune's figures are sound; the helper printed the change instead of
+        returning it.
+      d: >-
+        Reads the missing return as zero, the belief behind Tuesday's round 2 blank read as zero.
+        Python has no numeric default: the helper hands back None, and the filter drops it because
+        None counts as false.
+    answer: >-
+      A helper that prints on one path hands back None on that path, and a filter drops None
+      without a word, so the summary lost the city that halved; my helpers return every change, and
+      a separate column flags the ones to check by hand.
+
+  - type: One correct option
+    id: first-copy
+    level: Hard
+    tag: "[F]"
+    roles: BA, FDE
+    day: Wed
+    min: 2
+    key: a
+    anchor: Everything read from a CSV is a string; what breaks and where do you convert?
+    exhibit:
+      caption: Four invented rows in file order, and the cleaning pass run on them.
+      code:
+        lang: python
+        text: |
+          rows = [("A", "2400"), ("B", "n/a"), ("B", "1800"), ("C", "3100")]
+          first = {}
+          for order_id, amount in rows:
+              first.setdefault(order_id, amount)
+          clean = [int(a) for a in first.values() if a != "n/a"]
+          print(len(rows), "rows:", len(clean), "clean,", len(rows) - len(clean),
+                "set aside; Rs", sum(clean))
+    text: |
+      Finance's books hold orders A, B and C at Rs 7,300 in all. This pass cleans four rows of the export, read in file order. What does it print?
+      (a) 4 rows: 2 clean, 2 set aside; Rs 5500
+      (b) 4 rows: 3 clean, 1 set aside; Rs 7300
+      (c) 4 rows: 3 clean, 1 set aside; Rs 5500
+      (d) 4 rows: 2 clean, 2 set aside; Rs 7300
+    why: >-
+      The dictionary keeps the first amount it meets for each order_id, since setdefault never
+      overwrites, so B keeps "n/a" and its readable copy, Rs 1,800, is passed over as a repeat. The
+      conversion step then drops "n/a", so order B leaves the clean file altogether. The pass counts
+      everything that is not clean as set aside, 4 less 2, so the rows add up by construction while
+      the total, Rs 5,500, is Rs 1,800 short of the books. It prints "4 rows: 2 clean, 2 set aside;
+      Rs 5500".
+    wrong:
+      b: >-
+        Keeps the copy that validates, which is the fix from Wednesday's round 3 and not what this
+        pass does: setdefault keeps the first copy it meets, and here that is the unreadable one.
+      c: >-
+        Keeps the unreadable amount as an order at Rs 0, the coercion Wednesday's round 1 staged.
+        This pass drops "n/a" at the conversion step, so B leaves the clean file instead of staying
+        at zero.
+      d: >-
+        Assumes the rupees close because the rows do, the trap Wednesday's round 3 staged: 4 = 2 + 2
+        holds by construction, and the total is still Rs 1,800 short of the books.
+    answer: >-
+      I convert every amount at the read and only then apply the identity rule, keeping the copy
+      that validates, and I reconcile rupees as well as rows, because here the rows close at 4 = 2
+      + 2 while Rs 1,800 of order B has vanished.
 
 exhibits:
   1:
