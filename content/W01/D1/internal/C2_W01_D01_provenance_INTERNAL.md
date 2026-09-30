@@ -60,7 +60,7 @@ no learner file lists the 9 ids.
 | Morning, SECTION 2 | `02_the_tree_as_metrics` | The tree as metrics | AOV Rs 25,943, booked rupees over delivered orders; Rs 7,78,300 multiplied back |
 | Morning, SECTION 3 | `03_the_leaves_counted` | The leaves, counted | 30 customers, 1.00 orders each |
 | Morning, SECTION 4 | `04_the_typical_order` | The typical order | The mean of Rs 18,160 as typical, median Rs 2,205 |
-| Afternoon, SECTION 5 | `05_which_branch_first` | Which branch first | Two 10 percent lifts called 20 percent, Rs 6,53,772 against Rs 6,59,220 |
+| Afternoon, SECTION 5 | `05_which_branch_first` | Which branch first | Two 10 percent lifts called 20 percent on the consumer view, Rs 77,772 against Rs 78,420 |
 | Afternoon, SECTION 6 | `06_the_sentence` | The sentence Meera acts on | "70 percent lost", when 9 of 16 one-time buyers are inside the 45-day repeat gap |
 
 The notebooks are written by `internal/C2_W01_D01_build_notebooks_INTERNAL.py` and executed cold in
