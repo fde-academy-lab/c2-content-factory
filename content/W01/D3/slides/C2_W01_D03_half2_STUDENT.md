@@ -17,8 +17,7 @@ answers, the auditor in pairs, the interview drill and the close.
 *A log is finished when a stranger can replay it.*
 
 ```notes
-LIVE. Thirty minutes. Notebook C2_W01_D03_06_audit_logs is the demonstration. Say it is chapter 6:
-the numeral on screen reads 01 because it opens this deck.
+LIVE. Thirty minutes. Notebook C2_W01_D03_06_audit_logs is the demonstration.
 ```
 
 ---
@@ -53,8 +52,8 @@ value: 3 years | label: of audits | note: sanctioned in September 2021
 **What breaks.** An auditor who cannot trace a number to its rows signs off on it anyway, and pays for it later.
 
 ```notes
-LIVE, 2 minutes. Sources checked 30 Sep 2026: BBC News, 15 March 2019; FRC, 27 September 2021. The
-criminal case against individuals is unresolved, so name no person and say nobody was convicted.
+LIVE, 2 minutes. Sources checked 30 Sep 2026: BBC News, 15 March 2019; FRC, 27 September 2021.
+Name no person.
 ```
 
 ---
@@ -138,7 +137,7 @@ log is read back with a plain DictReader. Point that out if a learner trips on i
 ```stats
 value: 201 = 185 + 16 | label: rows reconcile | note: in equals kept plus logged
 value: Rs 20,00,000 | label: Q1 set aside | note: Anand's gap, to the lakh
-value: Rs 1,89,98,210 | label: Q1 clean | note: 1.90 crore when rounded
+value: Rs 1.90 crore | label: Q1 clean | note: as the note rounds it
 ```
 
 ```notes
@@ -171,7 +170,7 @@ stayed. The colleague's bridge closes on its own file and misses the books.
 ---
 
 ## S9. The fix, and the auditor's 14
-*Convert inside the identity rule; then every Q1 row set aside has a kept twin.*
+*The rule first, then conversion; every Q1 row set aside has a kept twin.*
 
 ```stats
 value: 114 = 100 + 14 | label: Q1 rows | note: in, kept, set aside
@@ -179,7 +178,7 @@ value: 14 of 14 | label: with a kept twin | note: same order_id
 value: Rs 0 | label: against the books | note: Q1 clean
 ```
 
-**What changed.** The Rs 1,790 order is back, the rejects log is empty, and "set aside with a reason" replaces "dropped".
+**What changed.** The Rs 1,790 order is back; the unreadable copy sits in the set-aside log with its twin named, so the rejects log is empty; and "set aside with a reason" replaces "dropped".
 
 ```notes
 LIVE, 3 minutes. The second case after the break walks this in pairs.
@@ -240,19 +239,19 @@ choices; the brief is in exercises/unguided.
 *Five parts, one file, and a log that has to stand up tonight.*
 
 ```timeline
-label: Part 1 | title: Read and profile | body: Rows, distinct orders, and the three counts for every field.
-label: Part 2 | title: Convert with a log | body: Every amount that fails, set aside with its line and reason.
-label: Part 3 | title: The identity rule | body: One row per order, and the copy that validates stays.
-label: Part 4 | title: Two decisions | body: The missing status and the largest order, each with a reason.
-label: Part 5 | title: Reconcile and recompute | body: Rows and rupees to the books, the bridge, Tuesday, the note. | tone: dark
+label: Part 1 | title: Read and profile | body: Rows against orders, and the amount that will not convert.
+label: Part 2 | title: The identity rule, built | body: Yours this time: the key, and when a later copy takes the place of the kept one.
+label: Part 3 | title: Convert and decide | body: The rejects log, then the missing status and the largest order.
+label: Part 4 | title: Reconcile | body: Rows and rupees, a rupee test that fails the colleague's pass, the bridge.
+label: Part 5 | title: The tree and the note | body: Monday's tree on the clean file, Tuesday's segment, the note. | tone: dark
 ```
 
 **The client asks.** "Which figure is right, the proof in rows and in rupees, and every decision in a log my analyst can follow."
 
 ```notes
-LIVE, 3 minutes. Eight notebook letters, ten brief letters, then the note in under 120 words.
-Watch for rows totalled before profiling, a first-copy dedupe, and a bridge that closes to 1.9
-only after rounding.
+LIVE, 3 minutes. Nine notebook letters, ten brief letters, then the note in under 120 words. Watch
+for rows totalled before profiling, a first-copy rule, a rupee test that rounds, and a tree whose
+customers are rows.
 ```
 
 ---
@@ -261,15 +260,16 @@ only after rounding.
 *Every check in the notebook passes before the letters go into chat.*
 
 ```stats
-value: 186 + 15 | label: rows | note: kept and set aside, of 201
-value: Rs 1,90,00,000 | label: Q1 clean | note: the books, to the rupee
-value: Rs 1,87,00,000 | label: Q2 clean | note: every real order kept
-value: -35.0% | label: Retail-Plus | note: orders per customer, clean
+value: rows | label: kept plus set aside | note: equal the rows the ERP sent
+value: Q1 | label: to the rupee | note: equal to the books after the rule
+value: the test | label: your rupee test | note: passes yours, fails the colleague's
+value: the tree | label: three branches | note: multiply back to revenue's change
 ```
 
 ```notes
-SELF-STUDY, reference while working. A Q1 of Rs 1,89,98,210 kept the wrong copy; a Q2 of
-Rs 1,57,54,540 removed the bulk order. Both are debriefed next.
+SELF-STUDY, reference while working. Each check recomputes its step another way, so the numbers are
+the learner's to reach. A Q1 Rs 1,790 short kept the wrong copy; a Q2 Rs 29,45,460 light removed
+the bulk order. Both are debriefed next.
 ```
 
 ---
@@ -293,7 +293,7 @@ LIVE. Put the most common wrong number on the screen first. Name no learner; nam
 | 188 orders, Q2 Rs 1,87,03,710 | Record less line; Q1 tied, so stop | Rows against ids |
 | 201 of 201 convert | Failures coerced to zero | An order worth Rs 0 |
 | Q2 Rs 1,57,54,540, -17.1% | The bulk order fenced out | A real Business account |
-| 201 = 185 + 16, Q1 Rs 1,89,98,210 | Keep first, then convert | Rs 1,790 short of the books |
+| 201 = 185 + 16, Rs 20,00,000 set aside | Keep first, then convert | Rs 1,790 short of the books |
 
 ```notes
 LIVE, 10 minutes. For each, ask a pair that produced it which line of code made it. Each wrong
@@ -354,7 +354,7 @@ LIVE, 3 minutes. "Dropped" is the word to correct.
 ## S17. Question: which statement does the auditor sign?
 *Four statements, one supported by the evidence.*
 
-**Question.** As a letter? a) 14 Q1 rows were deleted as errors after the migration was checked; b) the dashboard was right all along, and the books are short; c) 14 Q1 rows are copies of kept orders, set aside by rule; both totals tie; d) the 14 rows were outliers removed to keep Q1 in line with Q2.
+**Question.** As a letter? a) 14 Q1 rows were deleted as errors after the migration was checked; b) the dashboard was right all along, and the books are short; c) 14 Q1 rows are copies of kept orders, set aside; both totals tie; d) the 14 rows were outliers removed to keep Q1 in line with Q2.
 
 ```mermaid
 flowchart LR
@@ -412,21 +412,22 @@ the study notes and the notebooks' In the interview sections.
 
 ---
 
-## S20. Seven follow-ups, the design questions among them
+## S20. Seven follow-ups, five of them design
 *Each is a chapter's trap or its options, asked as a case.*
 
 | Tag | Question |
 |---|---|
-| [F] | A dedupe returns zero. Do you believe it? |
 | [F] | Your row counts reconcile. Are you done? |
-| [S] | The largest order is 1.66 times the next. Remove it? |
-| [D] | Order id, whole record or fuzzy, for customers from two apps? |
-| [D] | Coerce, reject or repair a malformed amount, and what would switch you? |
-| [D] | Bridge or rebuild from a second source to prove a figure? |
-| [SV] | Walk me through cleaning a file you have never seen. |
+| [S] | The largest order is 1.66 times the next. Do you remove it? |
+| [D] | Design: 2 crore rows. Profile everything, or sample? |
+| [D] | Design: order id, whole record or fuzzy, for customers from two apps? |
+| [D] | Design: two copies disagree. First, last, or the copy that validates? |
+| [D] | Design: coerce, reject or repair a malformed amount? |
+| [D] | Design: prove a figure with a bridge, or rebuild it from a second source? |
 
 ```notes
 LIVE, 10 minutes. The design questions want a choice, a sizing and the fact that would change it.
+The row's five and these seven are the day's twelve, the same twelve the study notes answer.
 ```
 
 ---
@@ -503,6 +504,6 @@ LIVE, 2 minutes. Do not answer it. Thursday builds the chance reference with a s
 | Warehouse load against the source | Row counts per table | Control totals per column |
 
 ```notes
-SELF-STUDY, 3 minutes. Week 2 Tuesday meets the gateway case, where one order carries two payment
-rows and the rupees double.
+SELF-STUDY, 3 minutes. Each trade runs the same two checks: rows prove nothing vanished, and money
+proves the right rows stayed.
 ```
