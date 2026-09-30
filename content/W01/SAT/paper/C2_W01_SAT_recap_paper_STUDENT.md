@@ -1,12 +1,12 @@
 # Week 1 recap paper
 
-Saturday 10 October 2026 · 120 minutes · 36 items in 5 parts · pen and paper, no assistant, no notes
+Saturday 10 October 2026 · 120 minutes · 35 items in 5 parts · pen and paper, no assistant, no notes
 
-Name: ____________________    Marked by: ____________________    Items right: ____ of 36
+Name: ____________________    Marked by: ____________________    Items right: ____ of 35
 
 ## What this paper is for
 
-This week Meera Raghavan asked whether the Rs 12 crore Marketing wants for acquisition goes to the branch of revenue that is actually short, Anand Iyer disputed the Q1 figure the ERP export put on the dashboard, and Meera now has to decide whether the monsoon discount runs again at Diwali. This paper puts those decisions in front of you again, cold, and then the same traps in public cases and in an AI agent's logs, where interviewers will test them. The room's scores in each part, set beside the ratings you give in step one, decide where Monday's revision starts. A wrong answer tells Monday more than a blank one, so answer every item.
+This week Meera Raghavan asked whether the Rs 12 crore Marketing wants for acquisition goes to the branch of revenue that is actually short, Anand Iyer disputed the Q1 figure the ERP export put on the dashboard, and Meera now has to decide what the growth review hears about Retail-Plus, Student and the monsoon sale. This paper puts those decisions in front of you again, cold, and then the same traps in public cases and in a delivery company's offer and AI agent, where interviewers will test them. The room's scores in each part, set beside the ratings you give in step one, decide where Monday's revision starts. A wrong answer tells Monday more than a blank one, so answer every item.
 
 ## How this paper works
 
@@ -16,7 +16,7 @@ This week Meera Raghavan asked whether the Rs 12 crore Marketing wants for acqui
 - A wrong answer costs nothing, so answer every item on the line under it.
 - Pen and this paper only: no laptop, no phone, no notes and no assistant.
 - Afterwards the papers are swapped and marked against the key, and the discussion takes the items the room missed most. The paper is ungraded and ranks nobody; the room's rates by part and by tag set Monday's revision.
-- Parts 1 to 3 are set inside Kalpa Retail, where you work as a trainee engineer in the data and AI team of its Global Capability Centre: Meera Raghavan is its CEO, Anand Iyer its finance controller and Kavya Nair a senior analyst in its data team, and Marketing and Finance appear by function. Part 4 draws on public cases, each with its source named beside it, and Part 5 imagines the support agent of a food-delivery company such as Swiggy, with illustrative numbers. Every number an item needs is on the page.
+- Parts 1 to 3 are set inside Kalpa Retail, where you work as a trainee engineer in the data and AI team of its Global Capability Centre: Meera Raghavan is its CEO, Anand Iyer its finance controller and Kavya Nair a senior analyst in its data team, and Marketing and Finance appear by function. Part 4 draws on public cases, each with its source named beside it, and Part 5 imagines a food-delivery company, its offer and its support agent, all illustrative. Every number an item needs is on the page.
 
 ## Step one, before Part 1
 
@@ -33,20 +33,20 @@ Your ratings: Part 1 ___ · Part 2 ___ · Part 3 ___ · Part 4 ___ · Part 5 ___
 
 | Part | What it shows | Items | Minutes | Easy | Medium | Hard |
 |---|---|---|---|---|---|---|
-| 1. Where the revenue went | whether you can read revenue from orders and say what would change a budget call | Q1 to Q8 (8) | 25.5 | 2 | 1 | 5 |
-| 2. Which Q1 figure is right | whether you read an export as an auditor will and close its rows and its rupees | Q9 to Q16 (8) | 27.5 | 0 | 3 | 5 |
-| 3. Real, worth it, and caused | whether you can say what chance, a count and a fair test let you claim | Q17 to Q22 (6) | 22.5 | 0 | 1 | 5 |
-| 4. The same traps, in public | whether you spot the week's traps in public cases and name the check for each | Q23 to Q28 (6) | 21 | 0 | 2 | 4 |
-| 5. The agent's bill and its logs | whether you can read an agent's code and log and size its cost honestly | Q29 to Q36 (8) | 23 | 0 | 6 | 2 |
-| Total | | 36 | 119.5 | 2 | 13 | 21 |
+| 1. Where the revenue went | whether you can read revenue from orders and say what would change a budget call | Q1 to Q7 (7) | 21.5 | 2 | 1 | 4 |
+| 2. Which Q1 figure is right | whether you read an export as an auditor will and close its rows and its rupees | Q8 to Q15 (8) | 29 | 0 | 2 | 6 |
+| 3. Real, or the wobble | whether you can say what a shuffle, a count and a fair test let you tell Meera | Q16 to Q20 (5) | 17 | 0 | 2 | 3 |
+| 4. The same traps, in public | whether you spot the week's traps in public cases and name the check for each | Q21 to Q26 (6) | 18 | 0 | 4 | 2 |
+| 5. An offer, an agent and its logs | whether you can judge an offer's lift and read an agent's code, log and bill | Q27 to Q35 (9) | 31.5 | 0 | 3 | 6 |
+| Total | | 35 | 117 | 2 | 12 | 21 |
 
 ---
 
-## Part 1. Where the revenue went (Q1 to Q8)
+## Part 1. Where the revenue went (Q1 to Q7)
 
-*What it shows: whether you can read revenue from orders and say what would change a budget call. 8 items, about 25.5 minutes.*
+*What it shows: whether you can read revenue from orders and say what would change a budget call. 7 items, about 21.5 minutes.*
 
-Kalpa Retail sells through its app, its website and its stores. Its revenue is a tree of branches multiplied together: customers, orders per customer (how often each customer buys), items per order and price per item, less the discounts given; revenue per order, the average order value, is the last two branches together. Retail-Plus is Kalpa's paid-membership tier, customers who pay to be members, and Business is its segment of corporate buyers. Marketing wants Rs 12 crore to acquire new customers, and Meera Raghavan, the CEO, will not sign until the data answers her: "Is acquisition even the branch that is short?" Anand Iyer, the finance controller, adds a rule of his own: "No averages. One business customer can move an average."
+Kalpa Retail sells through its app, its website and its stores. Its revenue is a tree of branches multiplied together: customers, orders per customer (how often each customer buys), items per order and price per item, less the discounts given; revenue per order, the average order value, is items per order times price per item, before discounts. Most orders run between Rs 800 and Rs 3,000, while Business orders, from corporate buyers, are few and large: in Tuesday's Q1 export, 20 Business rows carried Rs 2.08 crore of the Rs 2.10 crore booked. Retail-Plus is Kalpa's paid-membership tier, customers who pay to be members. Marketing wants Rs 12 crore to acquire new customers, and Meera Raghavan, the CEO, will not sign until the data answers her: "Is acquisition even the branch that is short?"
 
 **Exhibit 1A.** Kalpa's revenue tree. The branches multiply, and the discounts come off the product.
 
@@ -61,7 +61,7 @@ flowchart LR
 
 #### Q1 · Easy · show the working, then the answer · Compute median and mean
 
-Five order values in rupees: 800, 1,200, 1,400, 2,000 and 480,000. Give the median and the mean.
+Five order values in rupees: 800, 1,200, 1,400, 2,000 and 4,80,000. Give the median and the mean.
 
 Working:
 
@@ -74,7 +74,6 @@ Answer: ____________________
 | delivered | 21 | 5,20,790 |
 | returned | 5 | 14,970 |
 | cancelled | 4 | 9,050 |
-| all | 30 | 5,44,810 |
 
 ```python
 sales, n = 0, 0
@@ -87,33 +86,34 @@ print(n, "orders, Rs", sales)
 
 #### Q2 · Hard · circle one letter · Predict the output
 
-Every Kalpa order carries a status: delivered (it reached the customer), returned (it came back for a refund) or cancelled (it never left the shelf). Meera asked for sales net of cancellations, and the analyst ran this cell on Monday's 30 orders. What does it print?
+Every Kalpa order carries a status: delivered (it reached the customer), returned (it came back for a refund) or cancelled (it never left the shelf). Meera's first reading of sales counts every order that left the shelf, delivered or returned, and leaves out the cancelled ones; refunds get a line of their own in her note. The analyst ran this cell on Monday's 30 orders to give her that figure. What does it print, and how does it compare with the figure Meera asked for?
 
-a) 26 orders, Rs 535760
-b) 21 orders, Rs 520790
-c) 30 orders, Rs 544810
-d) 5 orders, Rs 14970
+a) 26 orders, Rs 535760, which is Meera's figure exactly.
+b) 30 orders, Rs 544810, which is Rs 9,050 above Meera's figure.
+c) 21 orders, Rs 520790, which is Rs 14,970 below Meera's figure.
+d) 30 orders, Rs 544810, which is Rs 14,970 above Meera's figure.
 
-#### Q3 · Hard · circle one letter · Price the first order
+**Exhibit 1C.** Monday's 30 orders by status: 21 delivered, 5 returned and 4 cancelled, each status's amounts sorted from the smallest, in rupees.
 
-Marketing's payback model asks what a new customer's first order is worth, and it uses Rs 18,160, the mean of Monday's 30 orders. The median of the same orders is Rs 2,205, and one Business order of Rs 4,80,000, which the room found by sorting, is 88 percent of the Rs 5,44,810 booked. What goes back to Marketing?
+| Status | Places | Amounts |
+|---|---|---|
+| delivered | 1 to 7 | 400, 860, 940, 1,120, 1,190, 1,440, 1,520 |
+| delivered | 8 to 14 | 1,650, 1,890, 2,020, 2,060, 2,090, 2,110, 2,300 |
+| delivered | 15 to 21 | 2,500, 2,520, 2,780, 2,800, 4,100, 4,500, 4,80,000 |
+| returned | 1 to 5 | 1,240, 2,880, 2,930, 3,830, 4,090 |
+| cancelled | 1 to 4 | 1,450, 2,430, 2,430, 2,740 |
 
-a) Keep Rs 18,160, since the mean times the 30 orders gives back the booked revenue exactly.
-b) Use the median, about Rs 2,205, and keep the Rs 4,80,000 order in the file with a flag.
-c) Delete the Rs 4,80,000 order from the file as an error, and use the mean of the other 29.
-d) Use the mean of the 21 delivered orders, Rs 24,800, since only those became sales.
+#### Q3 · Hard · show the working, then the answer · Price the first order
 
-#### Q4 · Hard · show the working, then the answer · Size the discount's effect
-
-A 15 percent discount lifts the quantity sold by 10 percent. By what percent does revenue change?
+Marketing's payback model needs what a new customer's first order is typically worth to Kalpa, and it uses Rs 18,160, the mean of Monday's 30 orders. A cancelled order is never charged and a returned one is refunded, so only a delivered order stays paid for; Finance's books hold every delivered order, the Rs 4,80,000 Business order the room found by sorting among them. What figure goes back to Marketing? Give it in rupees.
 
 Working:
 
 Answer: ____________________
 
-**Exhibit 1C.** Tuesday's 200 orders by segment and quarter, and the analyst's cell.
+**Exhibit 1D.** Tuesday's export, 200 rows, by segment and quarter, and the analyst's cell.
 
-| Segment | Q1 orders | Q2 orders |
+| Segment | Q1 rows | Q2 rows |
 |---|---|---|
 | Retail-Core | 38 | 36 |
 | Retail-Plus | 51 | 26 |
@@ -135,16 +135,16 @@ change = (orders_in["Q2"] / orders_in["Q1"] - 1) * 100
 print(orders_in, f"{change:+.1f}%")
 ```
 
-#### Q5 · Hard · circle one letter · Predict the headline
+#### Q4 · Hard · circle one letter · Predict the headline
 
-For Meera's first slide an analyst wants the orders placed in each quarter of Tuesday's export, and writes this cell. What does it print?
+For Meera's first slide an analyst wants the orders in each quarter of Tuesday's export, and writes this cell. What does it print?
 
 a) {'Q1': 114, 'Q2': 86} -24.6%
 b) {'Q1': 38, 'Q2': 36} -5.3%
 c) {'Q1': 51, 'Q2': 26} -49.0%
 d) {'Q1': 5, 'Q2': 7} +40.0%
 
-#### Q6 · Easy · circle one letter · Pick the first rung
+#### Q5 · Easy · circle one letter · Pick the first rung
 
 What is the first rung of the sales-drop investigation ladder?
 
@@ -153,40 +153,47 @@ b) Decompose the change along the revenue tree.
 c) State a hypothesis for the cause.
 d) Isolate the segment that moved.
 
-#### Q7 · Hard · circle one letter · Name what would change the call
+**Exhibit 1E.** Marketing's estimates for the next quarter, for each customer won.
 
-Tuesday's decomposition goes to Meera: the same 69 customers bought in both quarters, orders per customer fell from 1.65 to 1.25, and revenue per order rose 18 percent, mostly because the smaller Retail-Plus orders fell away. The note says frequency, how often customers come back, is the branch that moved, and proposes spending on bringing customers back before any acquisition. Which fact, if it turned up, would make acquisition the better use of Marketing's Rs 12 crore?
+| Route | Cost to win one | Revenue in the next quarter |
+|---|---|---|
+| A new customer | Rs 1,200 | Rs 2,400 |
+| A lapsed member won back | Rs 600 | Rs 1,500 |
 
-a) Marketing's campaigns reach more people per rupee than they did in the same quarter last year.
-b) The fall in orders per customer sits almost entirely in Retail-Plus, the paid-membership tier.
-c) Customers who still buy spend 18 percent more per order, so each one who returns is worth more.
-d) A rupee spent winning new customers buys more revenue than a rupee spent bringing them back.
+#### Q6 · Hard · circle one letter · Find what flips the call
 
-#### Q8 · Medium · write the letters in order · Order the ladder
+Tuesday's decomposition found the same 69 customers in both quarters and orders per customer down from 1.65 to 1.25, so the note proposes winning lapsed Retail-Plus members back before any spend on acquisition. Marketing answers with its own estimates, in the table. Kavya compares the two routes on the revenue each brings in the next quarter for every rupee spent. Which one of these changes, on its own, would make acquisition the better use of the next rupee?
 
-Put the five rungs of the sales-drop investigation ladder in order.
+a) A new customer's orders in the next quarter rise to Rs 2,800.
+b) Winning a new customer costs Rs 1,000 through a cheaper channel.
+c) Winning back a member costs Rs 800 once the easiest are won.
+d) A member won back brings only Rs 1,300 in the next quarter.
+
+#### Q7 · Medium · write the letters in order · Order the ladder
+
+Put the five rungs of Tuesday's sales-drop investigation ladder in the order they are climbed, each rung resting on the one before it.
 
 a) Isolate the branch and the segment.
-b) Confirm that the drop is real.
+b) Confirm the drop is real: each quarter's figure is complete and free of pipeline errors.
 c) Hypothesise, and name the evidence that would settle it.
-d) Compare like with like.
+d) Compare like with like: the two quarters cover the same weeks and the same definitions.
 e) Decompose along the revenue tree.
 
 Order: ____________________
 
 ---
 
-## Part 2. Which Q1 figure is right (Q9 to Q16)
+## Part 2. Which Q1 figure is right (Q8 to Q15)
 
-*What it shows: whether you read an export as an auditor will and close its rows and its rupees. 8 items, about 27.5 minutes.*
+*What it shows: whether you read an export as an auditor will and close its rows and its rupees. 8 items, about 29 minutes.*
 
-Kalpa's dashboard reads an ERP export, a copy of the orders taken out of the company's order system, while Finance's books, which Anand Iyer signs, record the revenue Kalpa reports. Anand replied to all on Tuesday's finding: "Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9." The ERP team adds that the CSV file was stitched from two extracts during the Q1 migration. A reconciliation proves which figure is right: every row of the export ends in the clean file or in the rejects log with its reason, so input rows equal clean rows plus rejected rows, and the clean rupees tie to the books.
+Kalpa's dashboard reads an ERP export, a copy of the orders taken out of the company's order system, while Finance's books, which Anand Iyer signs, record the revenue Kalpa reports. Anand replied to all on Tuesday's finding: "Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9." The ERP team adds that Wednesday's export, orders.csv, was stitched from two extracts during the Q1 migration, and it holds 201 rows against the 200 in Tuesday's file. A reconciliation proves which figure is right: every row of the export ends in the clean file or in the rejects log with its reason, so input rows equal clean rows plus rejected rows, and the clean rupees tie to the books.
 
 **Exhibit 2A.** Where the two Q1 figures come from.
 
 ```mermaid
 flowchart LR
-  E1["Extract 1"] --> CSV["orders.csv<br/>201 order rows"]
+  E1["Extract 1"] --> CSV["orders.csv<br/>201 rows"]
   E2["Extract 2<br/>Q1 migration"] --> CSV
   CSV --> D["Dashboard<br/>Q1 Rs 2.1 crore"]
   B["Finance's books<br/>Q1 Rs 1.9 crore"]
@@ -204,22 +211,25 @@ with open("C2_W01_D03_orders_STUDENT.csv") as f:
 print(len(rows), rows[0]["order_id"])
 ```
 
-#### Q9 · Hard · circle one letter · Predict the output
+#### Q8 · Hard · circle one letter · Predict the output
 
-The export's first line names its columns, and 201 order rows follow it. The first order is KR-02001, a Q1 order of Rs 2,200. What does the cell print?
+The export's first line names its columns, and 201 rows follow it; the first two rows are orders KR-02001, a Q1 order of Rs 2,200, and KR-02002. The analyst's cleaning pass then runs on rows and reports input 200 = clean 185 + rejected 15 to Anand. What does the cell print, and what does the pass's report hide?
 
-a) 201 KR-02001
-b) 200 KR-02002
-c) 200 KR-02001
-d) 201 KR-02002
+a) 201 KR-02001; nothing, since every order reached the pass and all of its counts close.
+b) 200 KR-02001; one order is counted twice, since the header was read as a row.
+c) 200 KR-02002; the counts close, yet KR-02001 is in neither the clean file nor the log.
+d) 200 KR-02002; nothing, since a pass cannot close its counts with an order missing.
 
-#### Q10 · Medium · write T or F · Predict the comparison
+#### Q9 · Medium · circle one letter · Judge the comparison
 
-Every amount csv.DictReader reads arrives as text, as the amount "4500" on Monday's order KR-01008 did. True or false: in Python 3, the comparison '4500' < '30000' evaluates to True.
+Every amount csv.DictReader reads arrives as text, as the amount "4500" on Monday's order KR-01008 did. Statement: in Python 3, the comparison '4500' < '30000' evaluates to True. True or false, and why?
 
-Answer: ____________________
+a) True, because Python compares the numbers that the two strings of digits spell.
+b) True, because a string with fewer characters sorts before a longer one.
+c) False, because Python 3 refuses to order two strings made of digits.
+d) False, because text compares character by character, and '4' follows '3'.
 
-**Exhibit 2C.** Two rows of the export as the reader hands them over, and the analyst's pass.
+**Exhibit 2C.** Two rows of the export as the reader hands them over, and the analyst's cell.
 
 ```python
 rows = [{"order_id": "KR-02063", "amount": "twelve"},
@@ -227,16 +237,17 @@ rows = [{"order_id": "KR-02063", "amount": "twelve"},
 as_arrived = rows.copy()        # the export as it came, for the auditor
 for r in rows:
     r["amount"] = int(r["amount"]) if r["amount"].isdigit() else 0
+rows.append({"order_id": "KR-02065", "amount": 2400})
 ```
 
-#### Q11 · Hard · circle one letter · Judge the auditor's copy
+#### Q10 · Hard · circle one letter · Judge the auditor's copy
 
-The auditor wants every amount as the export gave it, so before the pass converts the amounts in place the analyst keeps a copy. Statement: after the pass, as_arrived[0]["amount"] still holds "twelve". True or false, and why?
+The auditor wants every row as the export gave it, so before the pass converts the amounts in place the analyst keeps a copy; a later line appends an order to rows. Statement: after the cell runs, as_arrived still holds the export as it came, two rows with "twelve" in the first. True or false, and why?
 
-a) True, because rows.copy() builds a new list, and the pass only loops over rows.
-b) True, because a dictionary inside a copied list is copied along with the list.
-c) False, because both lists hold the same dictionaries, which the pass rewrote.
-d) False, because rows.copy() hands back the very same list object as rows.
+a) True: it is a new list, so it keeps two rows and the text "twelve".
+b) True: copying a list copies the dictionaries in it, so "twelve" survives there.
+c) False: it keeps two rows, but they share dictionaries, so the first reads 0.
+d) False: it is the same list as rows, so it holds three rows and a 0.
 
 **Exhibit 2D.** Five invented rows laid out as the export's are, and a pass meant to set aside every unreadable amount.
 
@@ -251,7 +262,7 @@ for row in rows:
 print(len(rows), "+", len(rejects), "=", len(rows) + len(rejects))
 ```
 
-#### Q12 · Hard · circle every correct letter · Choose every fix
+#### Q11 · Hard · circle every correct letter · Choose every fix
 
 The pass prints 4 + 1 = 5, so its rows reconcile, yet order KR-09053 is still among the clean rows. Which rewrites set aside every unreadable row and keep every readable one? Mark every correct option.
 
@@ -261,20 +272,30 @@ c) Loop over rows as now, and add continue straight after the rows.remove(row).
 d) Build two new lists: kept from rows with digit amounts, rejects from the rest.
 e) Loop over rows as now, and set a bad row's amount to "0" instead of removing it.
 
-#### Q13 · Medium · circle one letter · Decide what a duplicate is
+**Exhibit 2E.** Six rows of Wednesday's export. The five columns not shown match within each order_id.
 
-Order KR-02151 appears twice in Wednesday's export. Both copies are Q2 orders of Rs 3,710, one dated 25 September and one 2 August, so a check that compares whole rows reports no duplicate. What decides whether the two rows are one order?
+| Row | order_id | customer_id | order_date | amount | quarter |
+|---|---|---|---|---|---|
+| 1 | KR-02006 | C-2015 | 2026-06-17 | 2,890 | Q1 |
+| 2 | KR-02150 | C-3013 | 2026-08-01 | 3,700 | Q2 |
+| 3 | KR-02151 | C-3014 | 2026-09-25 | 3,710 | Q2 |
+| 4 | KR-02152 | C-3015 | 2026-07-28 | 3,520 | Q2 |
+| 5 | KR-02006 | C-2015 | 2026-06-17 | 2,890 | Q1 |
+| 6 | KR-02151 | C-3014 | 2026-08-02 | 3,710 | Q2 |
 
-a) whether the two rows match in every field, the dates included
-b) the identity rule you wrote down for an order
-c) which of the two dates falls inside the quarter being reported
-d) whether the two amounts differ by more than a rounding error
+#### Q12 · Hard · show the working, then the answer · Apply the identity rule
+
+A check that compares whole rows reports one duplicate in these six rows. Anand's books hold each order once, under Wednesday's identity rule: one order_id is one order. How much Q2 revenue do the six rows hold once that rule has run? Give it in rupees.
+
+Working:
+
+Answer: ____________________
 
 ### Set 1
 
-**Situation.** Tuesday's numbers reached Meera before Wednesday's reconciliation did. A dashboard tile read on 15 September set Q2 so far, 11 of its 13 weeks, against all of Q1 and showed revenue down 25.9 percent. The closed quarters as exported read Rs 2.10 crore and Rs 1.87 crore, down 11.0 percent. The reconciliation then set aside 14 duplicated Q1 rows worth Rs 19,98,210, which brought Q1 to Rs 1.90 crore, the figure in Anand's books, and left Q2 at Rs 1.87 crore.
+**Situation.** Tuesday's numbers reached Meera before Wednesday's reconciliation did. The first dashboard tile she saw was built from an extract taken on 15 September, when Q2 had run 11 of its 13 weeks, and it set that part of Q2, Rs 1,55,59,950, against all of Q1, Rs 2,10,00,000: down 25.9 percent. The closed quarters as exported read Rs 2,10,00,000 and Rs 1,87,00,000, down 11.0 percent. Wednesday's reconciliation then found that 14 of Q1's rows were copies of other Q1 orders, together worth Rs 20,00,000, which Anand's books never held.
 
-**Exhibit 2E.** Retail-Plus orders by month, as Tuesday's export held them.
+**Exhibit 2F.** Retail-Plus orders by month, as Tuesday's export held them.
 
 ```mermaid
 xychart-beta
@@ -284,24 +305,25 @@ xychart-beta
   bar [14, 24, 13, 9, 9, 8]
 ```
 
-#### Q14 · Hard · circle one letter · Choose Monday's number
+| Month | Apr | May | Jun | Jul | Aug | Sep |
+|---|---|---|---|---|---|---|
+| Orders | 14 | 24 | 13 | 9 | 9 | 8 |
 
-Meera's growth review is on Monday. Which change in revenue goes into her note?
+#### Q13 · Hard · write the word or number · Give Monday's number
 
-a) Down 25.9 percent, the tile's reading, since it is the most recent view of Q2.
-b) Down 12.4 percent, the tile's weekly rate against Q1's, which levels the windows.
-c) Down 11.0 percent, the closed quarters as exported, since both hold 13 weeks.
-d) Down 1.6 percent, the closed quarters after the reconciliation with the books.
-
-#### Q15 · Hard · write the word or number · Recompute the finding
-
-The chart is Tuesday's count of Retail-Plus orders by month, as exported; Q1 is April to June and Q2 is July to September. Retail-Plus had the same 22 members in both quarters, and 11 of the 14 duplicated Q1 rows were Retail-Plus orders placed in May. Give the change in Retail-Plus orders per member from Q1 to Q2 on the reconciled file, as a percentage to one decimal place.
+Give the change in revenue from Q1 to Q2 that belongs in Meera's note on Monday, as a percentage to one decimal place.
 
 Answer: ____________________
 
-#### Q16 · Medium · write the letters in order · Order the cleaning pass
+#### Q14 · Hard · write the word or number · Recompute the finding
 
-Put the cleaning pass in order.
+The chart and its table are Tuesday's count of Retail-Plus orders by month, as exported; Q1 is April to June and Q2 is July to September. Retail-Plus had the same 22 members in both quarters, and 11 of the 14 copied Q1 rows were Retail-Plus orders placed in May. Give the change in Retail-Plus orders per member from Q1 to Q2 on the reconciled file, as a percentage to one decimal place.
+
+Answer: ____________________
+
+#### Q15 · Medium · write the letters in order · Order the cleaning pass
+
+Put Wednesday's cleaning pass in order. Kavya's rule for it: nothing is computed from the clean file until the file accounts for every row and rupee that came in.
 
 a) Reconcile counts and revenue.
 b) Profile each field.
@@ -312,23 +334,41 @@ Order: ____________________
 
 ---
 
-## Part 3. Real, worth it, and caused (Q17 to Q22)
+## Part 3. Real, or the wobble (Q16 to Q20)
 
-*What it shows: whether you can say what chance, a count and a fair test let you claim. 6 items, about 22.5 minutes.*
+*What it shows: whether you can say what a shuffle, a count and a fair test let you tell Meera. 5 items, about 17 minutes.*
 
-Meera has set the growth review for Monday and sent three questions. "One: Retail-Plus is down, smaller than first reported. Real, or the wobble we see every quarter? Two: Student is up 40 percent; should I move budget there? Three: marketing ran a monsoon-sale discount for Retail-Plus in August, says it lifted revenue 6 percent, and wants to repeat it for Diwali." Her constraint: "One page, two minutes. If the honest answer is 'we do not know yet', say so and tell me what would tell us." A shuffle test answers the first question: deal the members' figures to the two quarters at random thousands of times, and count how often chance alone makes a gap as large as the real one. That share is the p-value.
+Meera has set the growth review for Monday and sent three questions. "One: Retail-Plus is down, smaller than first reported. Real, or the wobble we see every quarter? Two: Student is up 40 percent; should I move budget there? Three: Marketing says the monsoon sale lifted revenue 6 percent and wants to repeat it at Diwali." Her constraint: "One page, two minutes. If the honest answer is 'we do not know yet', say so and tell me what would tell us."
 
-**Exhibit 3A.** Retail-Plus, 5,000 shuffles of its 22 members' delivered revenue between the quarters. Each gap is Q1 spend per member less Q2, in rupees, so a fall is a positive gap; the real fall is Rs 1,110 per member.
+**Exhibit 3A.** Kavya's test of the Retail-Plus fall. Each of 5,000 shuffles keeps every member's two quarters together and tosses a coin for each of the 22 members: heads swaps that member's Q1 and Q2 spend. The gap is the members' average Q1 spend less their average Q2 spend, rounded to the rupee, so a fall is a positive gap; the real gap is Rs 1,110.
 
 ```mermaid
 xychart-beta
   title "Retail-Plus: 5,000 shuffled gaps"
-  x-axis "Gap per member, Rs" ["-1,110 or less", "-1,110 to -555", "-555 to 0", "0 to 555", "555 to 1,110", "1,110 or more"]
+  x-axis "Gap per member, Rs" ["-1,110 or less", "-1,109 to -555", "-554 to -1", "0 to 554", "555 to 1,109", "1,110 or more"]
   y-axis "Shuffles" 0 --> 1800
-  bar [117, 728, 1620, 1679, 721, 135]
+  bar [141, 766, 1526, 1683, 739, 145]
 ```
 
-#### Q17 · Hard · circle every correct letter · Check four p-value statements
+| Gap per member, Rs | Shuffles |
+|---|---|
+| -1,110 or less | 141 |
+| -1,109 to -555 | 766 |
+| -554 to -1 | 1,526 |
+| 0 to 554 | 1,683 |
+| 555 to 1,109 | 739 |
+| 1,110 or more | 145 |
+
+#### Q16 · Hard · circle one letter · Answer the first question
+
+Kavya's rule for Meera's first question: count the shuffles whose gap reaches the real one in the direction of the fall, and call the fall real when their share is under 0.05. Which line answers Meera, with the size of the fall across the tier beside it?
+
+a) Real: 145 of 5,000 shuffles, a p of 0.029, on a fall of Rs 24,420 a quarter across the tier.
+b) Not shown: 286 of 5,000 shuffles reach the gap one way or the other, a p of 0.057.
+c) Not shown: 884 of 5,000 shuffles show a fall of Rs 555 or more, a p of 0.177.
+d) Real: 145 of 5,000 shuffles, a p of 0.029, on a fall of Rs 1,110 a quarter across the whole tier.
+
+#### Q17 · Medium · circle every correct letter · Check four p-value statements
 
 Which statements about the p-value are correct? Mark every correct option.
 
@@ -359,92 +399,71 @@ print(round(real_gap), p)
 
 #### Q18 · Hard · circle one letter · Predict the output
 
-Thursday's ten cards held five Q1 member totals and five Q2 totals, and in class 21 of 1,000 shuffles reached the real gap of Rs 880. An analyst reruns the test with the gap written as Q2 less Q1, the way a fall is usually shown. What does the cell print?
+Thursday's ten cards held five members' Q1 spend and five other members' Q2 spend, and in class 21 of 1,000 shuffles reached the real gap of Rs 880. An analyst reruns the test with the gap written as Q2 less Q1, the way a fall is usually shown. What does the cell print?
 
 a) -880 0.021
 b) 880 0.021
 c) -880 0.981
 d) -880 0.042
 
+**Exhibit 3C.** Student's 12 orders dealt to Q1 or Q2 by the toss of a coin, 5,000 times: the worlds by the number of orders that landed in Q2.
+
+| Q2 orders out of 12 | Worlds |
+|---|---|
+| 4 or fewer | 918 |
+| 5 | 964 |
+| 6 | 1,133 |
+| 7 | 1,034 |
+| 8 | 595 |
+| 9 or more | 356 |
+
 #### Q19 · Hard · circle one letter · Write the Student line
 
-Student rose from 5 orders in Q1 to 7 in Q2, the 40 percent Meera asked about, on 12 orders from 2 customers. When each of those 12 orders is dealt to Q1 or Q2 by the toss of a coin, a rise of 40 percent or more turns up in 0.397 of 5,000 such worlds. Kavya's rule is no rate on fewer than 30 orders. Which line goes into the one-page note?
+Student went from 5 orders in Q1 to 7 in Q2, the 40 percent rise Meera asked about, and all 12 orders came from 2 customers. Kavya's rule is no decision on a rate from fewer than 30 orders. Which line goes into the one-page note?
 
-a) Student is our fastest-growing segment, up 40 percent; move acquisition budget to it now.
-b) Up 40 percent on 12 orders, a rise chance makes 2 times in 5; hold, re-read at 30 orders.
-c) Student's 0.397 is far above 0.05, which proves the rise is noise; close the Student offer.
-d) Student's 12 orders are too few to say anything, so leave Student out of the note entirely.
+a) 7 orders against 5, from 2 customers; chance alone does this in 951 of 5,000 worlds. Hold, and re-read at 30 orders.
+b) 7 orders against 5, from 2 customers; chance alone does this in 1,985 of 5,000 worlds. Hold, and re-read at 30 orders.
+c) 7 orders against 5, from 2 customers; chance alone does this in 1,985 of 5,000 worlds, so the rise is noise.
+d) 7 orders against 5, from 2 customers; chance alone does this in 1,034 of 5,000 worlds. Hold, and re-read at 30 orders.
 
-### Set 2
-
-**Situation.** Marketing's monsoon sale, aimed at Retail-Plus, Kalpa's paid-membership tier, took 15 percent off from 5 to 19 August and reached 60 customers, 30 Retail-Plus members and 30 Retail-Core customers. In August those 60 spent Rs 3,395 each and the 100 who did not get the sale spent Rs 3,200, a lift of 6.1 percent, which is Marketing's case for repeating it at Diwali. The chart splits the same customers by segment. Retail-Plus members buy more often and spend more than Retail-Core customers in any month.
-
-**Exhibit 3C.** August spend per customer. The sale went to 30 Retail-Plus and 30 Retail-Core customers; 40 Retail-Plus and 60 Retail-Core customers did not get it.
-
-```mermaid
-xychart-beta
-  title "August spend per customer, Rs"
-  x-axis "Group" ["Plus, sale", "Plus, none", "Core, sale", "Core, none", "All, sale", "All, none"]
-  y-axis "Rupees" 0 --> 5500
-  bar [4850, 5000, 1940, 2000, 3395, 3200]
-```
-
-#### Q20 · Hard · circle one letter · Name the pattern
-
-What is this pattern an example of?
-
-a) a reversal driven by a shift in the mix of customers
-b) a calculation error in the segment-level revenue totals
-c) a seasonal effect that the monsoon produces every year
-d) a sample that is too small to show any pattern at all
-
-#### Q21 · Hard · circle one letter · Advise on Diwali
-
-Meera asks whether to repeat the discount at Diwali. Which answer is honest?
-
-a) Repeat it exactly as it ran, because total revenue rose 6 percent after the campaign.
-b) Double the discount, because a larger offer will lift every segment in turn.
-c) Say nothing yet, because a single campaign can never be evaluated at all.
-d) Do not repeat it as designed: no segment improved, and the lift is a mix effect.
-
-#### Q22 · Medium · circle one letter · Design the Diwali test
+#### Q20 · Medium · circle one letter · Design the Diwali test
 
 Meera agrees to run the Diwali offer as a test. Which design lets the next note say whether the discount itself changes what customers spend?
 
-a) Offer it to every customer, and compare this Diwali with last year's Diwali.
-b) Offer it to Retail-Plus, and compare its members with Retail-Core customers.
-c) Hold back a random share in each segment, and compare within the segment.
-d) Let customers opt in on the app, and compare the ones who opt in with the rest.
+a) Hold back a random share inside each segment, and compare the offer and hold-back groups within it.
+b) Send the offer to every Retail-Plus member, and compare them with a random sample of Retail-Core.
+c) Send the offer to a random half of all customers, and compare this Diwali's spend with last Diwali's.
+d) Let customers opt in on the app, and compare them with a random sample of those who did not.
 
 ---
 
-## Part 4. The same traps, in public (Q23 to Q28)
+## Part 4. The same traps, in public (Q21 to Q26)
 
-*What it shows: whether you spot the week's traps in public cases and name the check for each. 6 items, about 21 minutes.*
+*What it shows: whether you spot the week's traps in public cases and name the check for each. 6 items, about 18 minutes.*
 
 Interviewers at strong AI and data teams like to test a method on a case the candidate has not seen. Every case in this part is on the public record, with its source named beside it, and every number an item needs is on the page. Read each one the way Kavya Nair reads a draft: what the number is, what it was computed on, and which check would have caught it.
 
-### Set 3
+### Set 2
 
-**Situation.** In 2010 the economists Carmen Reinhart and Kenneth Rogoff reported that advanced economies whose public debt was above 90 percent of GDP (gross domestic product, the value of everything an economy produces in a year) grew at -0.1 percent a year on average. In 2013 Thomas Herndon, Michael Ash and Robert Pollin rebuilt the figure from the authors' working spreadsheet. The table gives the seven countries that entered the above-90 average, with the years each spent above 90 percent and its average growth in those years.
+**Situation.** In 2010 the economists Carmen Reinhart and Kenneth Rogoff reported that advanced economies whose public debt was above 90 percent of GDP (gross domestic product, the value of everything an economy produces in a year) grew at -0.1 percent a year on average. In 2013 Thomas Herndon, Michael Ash and Robert Pollin rebuilt the figure from the authors' working spreadsheet. The table gives the seven countries in that average as the spreadsheet carried them. It counted one year for New Zealand, 1951, and carried its growth at -7.9 percent where the country's own sheet said -7.6; it left out New Zealand's four earlier years above 90 percent, 1946 to 1949.
 
-**Exhibit 4A.** The seven countries in the above-90 average. Source: Herndon, Ash and Pollin, 2013, Table 2.
+**Exhibit 4A.** The seven countries in the above-90 average, as the working spreadsheet carried them. Source: Herndon, Ash and Pollin, 2013, Table 2.
 
-| Country | Years above 90 percent | Average growth in those years, percent |
+| Country | Years counted above 90 percent | Average growth in those years, percent |
 |---|---|---|
 | Greece | 19 | 2.9 |
 | Ireland | 7 | 2.4 |
 | Italy | 10 | 1.0 |
 | Japan | 11 | 0.7 |
-| New Zealand | 1 | -7.6 |
+| New Zealand | 1 | -7.9 |
 | United Kingdom | 19 | 2.4 |
 | United States | 4 | -2.0 |
 
-**Exhibit 4B.** The two averages, computed on the seven countries in the table.
+**Exhibit 4B.** The two averages, computed on the seven countries as the table gives them.
 
 ```python
 above_90 = {"Greece": (19, 2.9), "Ireland": (7, 2.4), "Italy": (10, 1.0),
-            "Japan": (11, 0.7), "New Zealand": (1, -7.6),
+            "Japan": (11, 0.7), "New Zealand": (1, -7.9),
             "United Kingdom": (19, 2.4), "United States": (4, -2.0)}
 years = sum(n for n, g in above_90.values())
 by_country = sum(g for n, g in above_90.values()) / len(above_90)
@@ -452,36 +471,45 @@ by_year = sum(n * g for n, g in above_90.values()) / years
 print(years, f"{by_country:.2f}", f"{by_year:.2f}")
 ```
 
-#### Q23 · Hard · circle one letter · Predict the output
+#### Q21 · Hard · circle one letter · Predict the output
 
 What does the cell print, and what explains the gap between its two averages?
 
-a) 71 -0.03 1.68: in the first, one New Zealand year weighs as much as nineteen British years.
-b) 71 1.68 -0.03: weighting by years lets New Zealand's one bad year dominate the second figure.
-c) 71 -0.03 -0.03: no weighting can move an average of the same seven country figures at all.
-d) 7 -0.03 1.68: years holds the count of countries, and the weights come from the years instead.
+a) 71 -0.07 1.68: counted by country, one New Zealand year weighs as much as nineteen British years.
+b) 71 1.68 -0.07: counted by year, New Zealand's one bad year drags the second average below zero.
+c) 71 -0.07 -0.07: both lines average the same seven growth figures, so the weights change nothing.
+d) 7 -0.07 1.68: years counts the seven countries, and the second line weights each one by its years.
 
-#### Q24 · Medium · circle one letter · Choose the check
+#### Q22 · Medium · circle one letter · Choose the check
 
-The working spreadsheet held 20 countries, but the formula for each average covered rows 30 to 44 where it should have covered rows 30 to 49, which left out Australia, Austria, Belgium, Canada and Denmark; the authors accepted the error when it was found. Which check, run before publication, would have caught it?
+The working spreadsheet held its 20 countries in rows 30 to 49, but the formula for each average covered rows 30 to 44, which left out Australia, Austria, Belgium, Canada and Denmark; the authors accepted the error when it was found. Which check, run before publication, would have caught it?
 
-a) Count the countries inside each average, and set that count against the sheet's 20.
-b) Recompute each average as a median, which a few missing rows cannot move very far.
-c) Plot growth against debt for every country, and look for a point that breaks the pattern.
-d) Round every average to one decimal place, so that small slips in the sheet cannot show.
+a) Recompute each band's average as a median, which a few missing rows cannot move far.
+b) Plot growth against debt for every country, and look for a point that breaks the pattern.
+c) Recompute each band's average with the same formula on a fresh copy of the sheet.
+d) Check the rows each average's formula spans against the 20 country rows in the sheet.
 
-#### Q25 · Medium · circle one letter · Choose the first move
+#### Q23 · Hard · circle one letter · Judge the fairer figure
 
-NASA's Mars Climate Orbiter was lost on 23 September 1999 as it reached Mars. One team's ground software wrote the thrusters' impulse in pound-force seconds, while the interface specification, and the navigation software that read the file, used newton-seconds, so every firing's effect was understated by a factor of 4.45. For months before arrival, navigation solutions from Doppler data alone kept placing the spacecraft closer to Mars than the other solutions did; the concern was raised informally and never resolved (NASA Mishap Investigation Board, 1999). In this week's terms, what should have happened when the two estimates disagreed?
+In the Second World War, Abraham Wald of the Statistical Research Group at Columbia University estimated how vulnerable aircraft were from the damage on the aircraft that came back, reasoning that a hit a returning aircraft carries is a hit an aircraft can survive (Mangel and Samaniego, Journal of the American Statistical Association, 1984). Back at Kalpa, Kavya lays two versions of the Retail-Plus figure side by side. Per member, over all 22 members: Rs 3,279 in Q1 and Rs 2,169 in Q2. Per buyer, over the 20 members who bought in Q1 and the 16 who bought in Q2: Rs 3,607 and Rs 2,982. Statement: the per-buyer figure is the fairer read, since a member who bought nothing has no spend to average. True or false, and why?
 
-a) Average the two navigation estimates, since each one carries an error of its own.
-b) Trust the combined estimate, since it drew on more of the tracking data.
-c) Treat the disagreement as the finding, and trace its cause before the next burn.
-d) Widen the tolerance, since small differences build up over a nine-month cruise.
+a) True: per buyer it falls Rs 625, which is the fall among the members who still buy.
+b) True: per buyer or per member, it falls by about a third of Q1's spend.
+c) False: per buyer it falls by about half, as fewer buyers share Q2's total.
+d) False: per buyer it falls a sixth against a third, as 6 members stopped buying.
 
-#### Q26 · Hard · circle every correct letter · Choose every reason
+#### Q24 · Medium · circle one letter · Choose the first move
 
-Google Flu Trends estimated flu activity in the United States from how often people searched for certain terms. Its builders tested 50 million search terms for those whose weekly volume best fit 1,152 data points of the CDC's figures (the Centers for Disease Control and Prevention, which counts doctor visits for flu-like illness), and weeded out terms such as high school basketball that fit well and had nothing to do with flu (Lazer and colleagues, Science, 2014). Why could basketball searches fit the flu figures? Mark every correct option.
+NASA's Mars Climate Orbiter was lost on 23 September 1999 as it reached Mars. One team's ground software wrote the thrusters' impulse in pound-force seconds, while the interface specification, and the navigation software that read the file, used newton-seconds, so every firing's effect was understated by a factor of 4.45. Through the spring and summer of 1999, engineers raised concerns about differences between navigation solutions, but only informally. As the spacecraft approached Mars, solutions from Doppler data alone consistently placed it closer to the planet than the other solutions did, and the differences were not resolved (NASA Mishap Investigation Board, 1999). In this week's terms, what should have happened when the solutions disagreed?
+
+a) Adopt the solution built on the most tracking data, since more data averages out the noise.
+b) Treat the disagreement as the finding, and trace its cause before the next manoeuvre.
+c) Average the solutions, and carry their spread forward as the uncertainty of the approach.
+d) Plan the approach on the solution farthest from the planet, since it leaves the widest margin.
+
+#### Q25 · Medium · circle every correct letter · Choose both reasons
+
+Google Flu Trends estimated flu activity in the United States from how often people searched for certain terms. Its builders tested 50 million search terms for those whose weekly volume best fit 1,152 data points of the CDC's figures (the Centers for Disease Control and Prevention, which counts doctor visits for flu-like illness), and weeded out terms such as high school basketball that fit well and had nothing to do with flu (Lazer and colleagues, Science, 2014). The paper gives two reasons such a term can fit: one tied to the season, and one that holds for any search through so many terms. Which are they? Mark every correct option.
 
 a) Basketball games spread flu, since crowds gather indoors through the winter.
 b) Winter drives both basketball searches and flu visits, so each rises with the season.
@@ -489,7 +517,7 @@ c) The CDC's figures carried errors that the basketball searches happened to mat
 d) Search volume measures illness directly, so any term searched in winter measures flu.
 e) Among 50 million candidate terms, some will fit 1,152 points by chance alone.
 
-#### Q27 · Hard · circle one letter · Answer the alert
+#### Q26 · Medium · circle one letter · Answer the alert
 
 In 2012 an idea for changing how Bing displayed the headlines of its search ads had waited more than six months for a slot, until an engineer ran it as an A/B test, a controlled experiment that shows a change to a random share of users and compares them with the rest. Within hours the new version was producing abnormally high revenue, and a "too good to be true" alert fired (Kohavi and Thomke, Harvard Business Review, 2017). You are the analyst on call. What do you do first?
 
@@ -498,56 +526,83 @@ b) Treat the alert as a likely bug, and check the logging and the group split.
 c) Stop the test and discard it, since a lift that large is almost always a bug.
 d) Leave the test running for a quarter, until the lift settles near normal results.
 
-#### Q28 · Hard · circle one letter · Judge the fairer figure
-
-In the Second World War, Abraham Wald of the Statistical Research Group at Columbia University estimated how vulnerable aircraft were from the hits on the aircraft that came back and the share that did not: a hit a returning aircraft carries is a hit an aircraft can survive (Mangel and Samaniego, Journal of the American Statistical Association, 1984). Kavya lays two versions of the Retail-Plus figure side by side. Per member, over all 22 members: Rs 3,279 in Q1 and Rs 2,169 in Q2. Per buyer, over the 20 members who bought in Q1 and the 16 who bought in Q2: Rs 3,607 and Rs 2,982. Statement: the per-buyer figure is the fairer read, since a member who bought nothing has no spend to average. True or false, and why?
-
-a) True, because averaging in members who spent nothing drags the figure down unfairly.
-b) True, because the question is what buyers spend, and members who did not buy are not buyers.
-c) False, because members who stopped buying drop out of it, and the fall shrinks by half.
-d) False, because two different denominators make the two quarters impossible to compare.
-
 ---
 
-## Part 5. The agent's bill and its logs (Q29 to Q36)
+## Part 5. An offer, an agent and its logs (Q27 to Q35)
 
-*What it shows: whether you can read an agent's code and log and size its cost honestly. 8 items, about 23 minutes.*
+*What it shows: whether you can judge an offer's lift and read an agent's code, log and bill. 9 items, about 31.5 minutes.*
 
-Suppose you join the AI team of a food-delivery company such as Swiggy; the agent, its logs and every number in this part are illustrative. For each customer conversation a large language model reads the message, may ask for a tool (an order's status, a refund within a limit, a hand-off to a person) and writes the reply. Every model call is billed by the token, a small piece of text, and writes one row to a log table. The head of customer support owns two numbers: the cost per conversation, and the share of conversations the agent resolves without a person.
+Suppose you join the data and AI team of a food-delivery company. The company, its customers, its agent, its logs and every number in this part are illustrative. Members pay a monthly fee for the company's membership, and everyone else is a regular customer. The support team runs an AI agent: for each customer conversation a large language model reads the message, may ask for a tool (an order's status, a refund within a limit, a hand-off to a person) and writes the reply. Every model call is billed and writes one row to a log table. The head of customer support owns two numbers: the cost per conversation, and the share of conversations the agent resolves without a person.
 
-**Exhibit 5A.** One conversation. The agent calls the model twice, and each call is billed.
+### Set 3
+
+**Situation.** Last month the company's marketing team sent a 20 percent weekend offer to 500 customers, 250 members and 250 regular customers, and not to the other 1,000, of whom 400 were members and 600 regular. That month the 500 spent Rs 1,025 each and the 1,000 spent Rs 960 each, a lift of 6.8 percent, which is the marketing lead's case for sending the offer again at the festival. The chart and its table split the same customers by tier.
+
+**Exhibit 5A.** Spend per customer last month, by tier and offer; on the chart M is members and R regular customers. Illustrative.
+
+```mermaid
+xychart-beta
+  title "Spend per customer last month, Rs"
+  x-axis "Group" ["M, offer", "M, none", "R, offer", "R, none", "All, offer", "All, none"]
+  y-axis "Rupees" 0 --> 1600
+  bar [1470, 1500, 580, 600, 1025, 960]
+```
+
+| Group | Customers | Spend per customer, Rs |
+|---|---|---|
+| Members with the offer | 250 | 1,470 |
+| Members without it | 400 | 1,500 |
+| Regular with the offer | 250 | 580 |
+| Regular without it | 600 | 600 |
+| All with the offer | 500 | 1,025 |
+| All without it | 1,000 | 960 |
+
+#### Q27 · Hard · write the word or number · Compute at one mix
+
+At the no-offer group's mix of members and regular customers, what would the offer group have spent per customer? Give its change against the no-offer group's Rs 960, as a percentage to one decimal place.
+
+Answer: ____________________
+
+#### Q28 · Hard · circle one letter · Advise on the festival
+
+The marketing lead wants to send the offer again at the festival, at 25 percent off, to the same kind of list. What do you advise?
+
+a) Send it at 25 percent off: the offer group outspent the rest by 6.8 percent, and a deeper cut should widen the lead.
+b) Do not send it as it ran: each tier spent less with the offer, and at 25 percent off orders must rise by a quarter to hold revenue.
+c) Do not send it as it ran: each tier spent less with the offer, and at 25 percent off orders must rise by a third to hold revenue.
+d) Send it to members only: members spend about two and a half times what regular customers do, so the offer pays best there.
+
+**Exhibit 5B.** One conversation, and the agent's order-status tool as first written. Illustrative.
 
 ```mermaid
 flowchart LR
-  C["Customer asks<br/>about SW-1042"] --> M1["Model call 1<br/>billed"]
+  C["Customer asks<br/>about an order"] --> M1["Model call 1<br/>billed"]
   M1 --> T["Tool runs<br/>get_order_status"]
   T --> M2["Model call 2<br/>billed"]
   M2 --> R["Reply to<br/>the customer"]
 ```
 
-**Exhibit 5B.** The agent's order-status tool, as first written. Illustrative.
-
 ```python
-ORDER_STATUS = {"SW-1041": "delivered", "SW-1042": "out for delivery"}
+ORDER_STATUS = {"1041": "delivered", "1042": "out for delivery"}
 
 def get_order_status(order_id):
-    status = ORDER_STATUS.get(order_id, "not found")
-    print(f"{order_id}: {status}")
+    if order_id in ORDER_STATUS:
+        return ORDER_STATUS[order_id]
+    print(f"order {order_id}: not found")
 
-result = get_order_status("SW-1042")
-tool_message = {"role": "tool", "content": str(result)}   # sent to the model
+results = [str(get_order_status(o)) for o in ["1042", "1099", "1041"]]
 ```
 
 #### Q29 · Hard · circle one letter · Predict what the model reads
 
-The agent sends the model whatever the tool function returns, as the tool's result. A customer asks about order SW-1042, which is out for delivery. What does the model read as the tool's result?
+The agent sends the model whatever the tool returns, as text. Three customers ask about orders 1042, 1099, a mistyped number, and 1041. What does the model read as the three tool results, and which change fixes it?
 
-a) 'out for delivery', so the reply tells the customer the order is on its way.
-b) 'None', so the model has no status to report and may say it cannot find it.
-c) 'SW-1042: out for delivery', the line the tool printed on the agent's console.
-d) Nothing at all, since str(None) raises an error and the agent retries the call.
+a) 'out for delivery', 'not found', 'delivered'; nothing, since the tool already reports the missing order.
+b) 'out for delivery', 'None', 'delivered'; return a "not found" message where the tool now prints one.
+c) 'out for delivery', 'order 1099: not found', 'delivered'; send the console's last line as the result.
+d) 'out for delivery', 'None', 'delivered'; wrap the call in try and except so that the error is caught.
 
-**Exhibit 5C.** The agent's loop, as first written. Illustrative.
+**Exhibit 5C.** The agent's loop as first written, and three customers on one server. Illustrative.
 
 ```python
 def run_agent(message, history=[]):
@@ -556,72 +611,73 @@ def run_agent(message, history=[]):
     history.append({"role": "assistant", "content": reply})
     return reply
 
-run_agent("Where is order SW-1042?")        # customer A
-run_agent("Please cancel order SW-2210")    # customer B
+run_agent("Where is order 1042?")          # customer A
+run_agent("Please cancel order 2210")      # customer B
+run_agent("Is my refund done?")            # customer C
 ```
 
-#### Q30 · Medium · circle one letter · Choose the fix
+#### Q30 · Hard · circle one letter · Count the messages
 
-The agent keeps a conversation's messages in a list and sends the whole list to the model on every call. A minute after customer A asks about order SW-1042, customer B, on the same server, asks to cancel order SW-2210, and B's model call carries A's messages too, which leaks A's order to B and bills B for A's tokens. Which change fixes it?
+Customer C says the agent's reply mentioned somebody else's order. How many messages does C's model call send, and which change gives each conversation only its own messages?
 
-a) Default history to None, and create a new list inside when it is None.
-b) Move history out to one module-level list that every call appends to.
-c) Keep the default list, and trim it to its last 20 messages on each call.
-d) Keep the default list, and clear it only when a call raises an error.
+a) 5; default history to None, and make a new list inside the function when it is None.
+b) 1; nothing, since each call starts again from the empty list in the definition.
+c) 3; keep the default list, and trim it to the last 3 messages on each call.
+d) 5; move history out to one list at module level that every call to run_agent appends to.
 
-**Exhibit 5D.** Cost per conversation in one shift, illustrative. C-01 to C-06 made 3 to 5 model calls each; C-07 looped and made 90.
+**Exhibit 5D.** Cost per conversation in one shift. Every model call costs Rs 0.40. Illustrative.
 
-```mermaid
-xychart-beta
-  title "Cost per conversation, one shift"
-  x-axis "Conversation" [C-01, C-02, C-03, C-04, C-05, C-06, C-07]
-  y-axis "Rupees" 0 --> 45
-  bar [1.4, 1.8, 1.2, 2.1, 1.6, 1.5, 42.0]
-```
+| Conversation | Model calls | Cost, Rs |
+|---|---|---|
+| C-01 | 4 | 1.60 |
+| C-02 | 3 | 1.20 |
+| C-03 | 5 | 2.00 |
+| C-04 | 4 | 1.60 |
+| C-05 | 3 | 1.20 |
+| C-06 | 3 | 1.20 |
+| C-07 | 105 | 42.00 |
 
-#### Q31 · Hard · circle one letter · Choose the dashboard number
+#### Q31 · Hard · circle one letter · Size the bill
 
-In C-07 the model kept calling the same tool until a timeout stopped it. The head of support wants one number on the dashboard that shows the typical conversation's cost drifting, and a control that stops the next C-07. Which pair?
+In C-07 the model kept calling the same tool until a timeout stopped it. The head of support wants the typical conversation's cost on the dashboard, and asks what a cap of 5 model calls per conversation would have saved this shift. Which pair is right?
 
-a) The mean, Rs 7.37, which rises whenever any one conversation misbehaves.
-b) The median, Rs 1.60, and C-07 deleted from the log as a failed run.
-c) The mean without C-07, Rs 1.60, since a looping run is an error to ignore.
-d) The median, Rs 1.60, with a cap on the model calls per conversation.
+a) Rs 7.26, the mean of all seven; the cap would have saved Rs 40.00.
+b) Rs 1.40, the median once C-07 is dropped; the cap would have saved Rs 40.00.
+c) Rs 1.60, the median of all seven; the cap would have saved Rs 42.00.
+d) Rs 1.60, the median of all seven; the cap would have saved Rs 40.00.
 
-**Exhibit 5E.** The support head asks which tools failed at least 30 times this week. The analyst's query against the call log, with two numbered blanks.
+**Exhibit 5E.** The support head asks which tools failed at least 30 times in the week of 21 to 27 September; a call failed when its status is anything but ok. The log's calls by tool, status and week, and the analyst's query. Illustrative.
+
+| tool | status | 21 to 27 Sep | 14 to 20 Sep |
+|---|---|---|---|
+| order_status | ok | 410 | 388 |
+| order_status | error | 12 | 9 |
+| order_status | timeout | 22 | 6 |
+| refund | ok | 96 | 90 |
+| refund | error | 35 | 40 |
+| refund | timeout | 3 | 2 |
+| handover | error | 9 | 11 |
+| handover | timeout | 18 | 25 |
 
 ```sql
 SELECT tool, COUNT(*) AS failed_calls
 FROM calls
-__(1)__ status = 'error'
+WHERE status <> 'ok'
+  AND called_on BETWEEN '2026-09-21' AND '2026-09-27'
 GROUP BY tool
-__(2)__ COUNT(*) >= 30;
+HAVING COUNT(*) >= 30;
 ```
 
-**Word bank 1.** Write the letter of the SQL word that completes each numbered blank in the query above. Each is used once at most, and some are not used.
+#### Q32 · Hard · circle one letter · Predict the query's rows
 
-| Letter | Word or phrase |
-|---|---|
-| a | ON |
-| b | HAVING |
-| c | LIMIT |
-| d | WHERE |
-| e | ORDER BY |
-| f | DISTINCT |
+What does the query return?
 
-#### Q32 · Medium · write the letter from Word bank 1 · Fill blank 1
+a) Two rows, order_status 34 and refund 38.
+b) One row, refund 35, and nothing for order_status.
+c) Three rows, order_status 49, refund 80 and handover 63.
+d) Three rows, order_status 34, refund 38 and handover 27.
 
-Blank (1), which keeps only the failed calls before any grouping, is ____.
-
-Answer: ____________________
-
-#### Q33 · Medium · write the letter from Word bank 1 · Fill blank 2
-
-Blank (2), which keeps only the tools with at least 30 failed calls, Kavya's floor for reading a count, is ____.
-
-Answer: ____________________
-
-**Exhibit 5F.** Eight calls from the log, illustrative. latency_ms is empty, NULL, when a call timed out; tool is NULL when the model replied without calling one.
+**Exhibit 5F.** Eight calls from the same log, illustrative. latency_ms is empty, NULL, when a call timed out; tool is NULL when the model replied without calling one.
 
 | call_id | conversation_id | tool | status | latency_ms |
 |---|---|---|---|---|
@@ -634,18 +690,18 @@ Answer: ____________________
 | 7 | CV-5 | handover | timeout | NULL |
 | 8 | CV-6 | order_status | ok | 800 |
 
-**Match table 1.** Write the letter of the value each query returns on the eight calls in the exhibit above. Each value is used once at most, and some are not used.
+**Match table 1.** Write the letter of the value each query returns in PostgreSQL on the eight calls in the exhibit above. Each value is used once at most, and some are not used.
 
 | Item | To match | Letter | Match |
 |---|---|---|---|
-| Q34 (Medium) | SELECT COUNT(latency_ms) FROM calls; | a | 0 |
-| Q35 (Medium) | SELECT AVG(latency_ms) FROM calls; | b | 0.375 |
-| Q36 (Medium) | SELECT COUNT(*) FILTER (WHERE status <> 'ok') / COUNT(*) FROM calls; | c | 6 |
+| Q33 (Medium) | SELECT COUNT(latency_ms) FROM calls; | a | 0 |
+| Q34 (Medium) | SELECT AVG(latency_ms) FROM calls; | b | 0.375 |
+| Q35 (Medium) | SELECT COUNT(*) FILTER (WHERE status <> 'ok') / COUNT(*) FROM calls; | c | 6 |
 |  |  | d | 8 |
 |  |  | e | 600 |
 |  |  | f | 800 |
 
-Answers: Q34 ____    Q35 ____    Q36 ____
+Answers: Q33 ____    Q34 ____    Q35 ____
 
 ---
 
@@ -655,7 +711,7 @@ For anyone who finishes early. Nothing here is counted; each item is the kind an
 
 ### Stretch 1
 
-Marketing concedes that frequency fell but says acquisition is still the cheaper way to add Rs 1 crore of revenue. What would you need to see before agreeing, and how would you say it to Meera in three sentences?
+Revenue per order rose 18 percent between Tuesday's two quarters while orders per customer fell. Meera asks whether the rise is good news. Answer in three sentences she could repeat.
 
 ### Stretch 2
 

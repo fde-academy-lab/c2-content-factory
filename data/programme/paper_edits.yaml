@@ -19,12 +19,6 @@
 # status: proposed (awaiting the Programme Head) or accepted (agreed, not yet in the tracker).
 
 W1:
-  11:
-    stem:
-      status: proposed
-      why: The tracker's comparison of text with a number raises a TypeError, which makes a runtime error the point of the item; the reworded comparison of two texts returns a silent wrong answer, keeps the key False and keeps the "4500" the room found on Monday.
-      text: |-
-        Every amount csv.DictReader reads arrives as text, as the amount "4500" on Monday's order KR-01008 did. True or false: in Python 3, the comparison '4500' < '30000' evaluates to True.
   17:
     status: accepted
     why: The key (23 characters) was the only option phrased as a count; the two frequency branches now read the same way. Option d, discounts, ran 9 characters against 33 for the longest; it now names the value of the discounts given, so the options run 23 to 33.
@@ -50,18 +44,6 @@ W1:
     why: The key was the longest option; the print distractor now states the misconception in full.
     options:
       b: The total, because print both displays the value and sends it back to the caller.
-  24:
-    status: proposed
-    why: Three options were ones no reader would take once the pair is on the page, the file's size, its format and how large the amounts are, so the item tested one idea against nothing. The new options are the three rules a hurried analyst actually applies, whole rows, the dates and the amounts; the key, the identity rule, is unchanged. The options run 44 to 62 characters.
-    stem:
-      status: proposed
-      why: The tracker's stem describes the pair in general; the reworded stem puts Wednesday's own near-duplicate on the page, order KR-02151 with its two dates, which the room found in class, so the item is the trap it names.
-      text: |-
-        Order KR-02151 appears twice in Wednesday's export. Both copies are Q2 orders of Rs 3,710, one dated 25 September and one 2 August, so a check that compares whole rows reports no duplicate. What decides whether the two rows are one order?
-    options:
-      a: whether the two rows match in every field, the dates included
-      c: which of the two dates falls inside the quarter being reported
-      d: whether the two amounts differ by more than a rounding error
   27:
     status: accepted
     why: Options a and c ran 26 and 24 characters against 48 for option d. Each now carries the belief behind it, a at 50 and c at 51, so the options run 45 to 51 and the key is the shortest of them.
@@ -120,16 +102,34 @@ W1:
     options:
       a: It grows, because removing rows takes revenue out.
       b: It stays the same, because duplicates cancel out.
-  43:
-    situation:
-      status: proposed
-      why: The situation now carries the week's own numbers from Thursday's exposure table, the sale, its dates and the blended lift, so the set's chart can show the split and the key's reasons can cite it; the pattern the item asks about, and its key, are unchanged.
-      text: Marketing's monsoon sale, aimed at Retail-Plus, Kalpa's paid-membership tier, took 15 percent off from 5 to 19 August and reached 60 customers, 30 Retail-Plus members and 30 Retail-Core customers. In August those 60 spent Rs 3,395 each and the 100 who did not get the sale spent Rs 3,200, a lift of 6.1 percent, which is Marketing's case for repeating it at Diwali. The chart splits the same customers by segment. Retail-Plus members buy more often and spend more than Retail-Core customers in any month.
   45:
     status: accepted
     why: The key was the longest option.
     options:
       a: Repeat it exactly as it ran, because total revenue rose 6 percent after the campaign.
+  47:
+    stem:
+      status: proposed
+      why: The paper writes every rupee amount in the Indian grouping, as Rs 4,80,000, and the tracker's 480,000 was the one figure in the international style; the value and the key are unchanged.
+      text: |-
+        Five order values in rupees: 800, 1,200, 1,400, 2,000 and 4,80,000. Give the median and the mean.
+  51:
+    status: proposed
+    why: A blind sitting found that "compare like with like" could be read as part of confirming the drop is real, since a matched window is also how a drop is confirmed. The two options now say what each rung checks, each quarter's figure on its own against the two quarters side by side, so their order follows; the key and the other options are unchanged. The options run 33 to 88 characters, as ordering steps.
+    stem:
+      status: proposed
+      why: The stem now says each rung rests on the one before it, which is the ladder's rule and settles where the two checks fall.
+      text: |-
+        Put the five rungs of Tuesday's sales-drop investigation ladder in the order they are climbed, each rung resting on the one before it.
+    options:
+      b: "Confirm the drop is real: each quarter's figure is complete and free of pipeline errors."
+      d: "Compare like with like: the two quarters cover the same weeks and the same definitions."
+  52:
+    stem:
+      status: proposed
+      why: A blind sitting found that reconciling and then recomputing could be argued against recomputing and then tying out. The stem now carries Kavya's rule for the pass, that nothing is computed from the clean file until it accounts for every row and rupee that came in, which fixes the order; the key is unchanged.
+      text: |-
+        Put Wednesday's cleaning pass in order. Kavya's rule for it: nothing is computed from the clean file until the file accounts for every row and rupee that came in.
 
 W2:
   19:

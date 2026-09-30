@@ -136,13 +136,13 @@ flips:
     cell: M7
     contains: bottom third beat the top third
   - sheet: Marks
-    cell: AN5
+    cell: AM5
     expect: top
   - sheet: Marks
-    cell: AN10
+    cell: AM10
     expect: bottom
   - sheet: Marks
-    cell: AN7
+    cell: AM7
     expect: middle
   - sheet: Ratings
     cell: D43
