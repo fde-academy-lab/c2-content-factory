@@ -32,11 +32,16 @@ def twin(cells, solution):
             continue
         if c.cell_type == "code":
             src = SLOT.sub((lambda m: m.group(2)) if solution else (lambda m: f"__TODO{m.group(1)}__"), c.source)
+            if not solution:
+                src = re.sub(r'\nprint\("Answer string[^\n]*', "", src)
             c = code(src)
         elif c.cell_type == "markdown" and not solution:
             c = md(re.sub(r"This is the solution twin:.*?options fail\.",
                           "This is the exercise twin: each placeholder is a lettered choice in the comment above it. "
                           "Run it from the top; it stops at the first placeholder you have not filled, which is intended.",
+                          c.source, flags=re.S))
+            c = md(re.sub(r"\*\*Item (\d) in your brief\.?\*\*.*?(?=\n\n|$)",
+                          lambda m: f"**Item {m.group(1)} in your brief** goes in now, from what this part printed.",
                           c.source, flags=re.S))
         out.append(c)
     return out
@@ -281,7 +286,7 @@ the split; it did not create a price signal in the consumer business.
 #   d) "Retail-Plus"
 lead = [[7|"Retail-Plus"]]
 kit.flow([f"drop real\\n{d_change}% delivered", f"branch\\nfrequency {kit.rupees(round(move_frequency))}",
-          f"customers branch\\n19 still booked", f"segment\\n{lead} {changes[lead]}%", "two hypotheses\\nand their evidence"],
+          f"customers branch\\n{len(still_booked)} still booked", f"segment\\n{lead} {changes[lead]}%", "two hypotheses\\nand their evidence"],
          kinds=["known", "bad", "unknown", "bad", "known"], title="The sentence to Meera, on delivered orders")
 kit.check("the lead segment is the largest per-member fall", lead == min(changes, key=changes.get))
 '''),
@@ -463,9 +468,9 @@ EVIDENCE = {
 #   d) "tier_log"
 first_request = [[4|"tier_log"]]
 kit.tree({"label": "the reply", "kind": "lit", "branches": [
-    ("to Marketing", {"label": "Student: same 2 ids\\nweb: Retail-Core held", "kind": "known"}),
-    ("to the tier", {"label": "call the 7 who fell\\nfrom three orders to one", "kind": "known"}),
-    ("first request", {"label": "the tier's July change log", "kind": "unknown"})]},
+    ("to Marketing", {"label": f"Student: {len(new_students)} new ids\\nweb tested on {also_falls}", "kind": "known"}),
+    ("to the tier", {"label": f"call the {len(call_first)} who fell\\nby two or more orders", "kind": "known"}),
+    ("first request", {"label": EVIDENCE[first_request][:34], "kind": "unknown"})]},
     title="The pair's reply, in three branches")
 kit.check("the first request targets the July change, which predates the button", first_request == "tier_log")
 kit.check("the request is for data this export does not carry", first_request not in ("export", "campaigns"))
@@ -485,7 +490,7 @@ tier's July change log, renewals and support tickets first, and the app's reorde
 
 **[D] A stakeholder quotes a 40 percent rise; what do you ask before you react?** "What it is a rate
 of, over how many, and whether the rise is new people or the same people doing more. Here it was two
-customers placing seven orders against five, so one order moves it 50 percent." The interviewer is
+customers placing seven orders against five, so one order moves it by 20 percent." The interviewer is
 listening for the denominator first.
 """)),
         code("""

@@ -37,8 +37,8 @@ flowchart LR
 
 a) No segment rose 18 percent, because small member orders left the blend
 b) Business rose 5.0 percent, so prices across the range can safely rise 5 percent
-c) Student rose 14.8 percent, so the young pay more
-d) Retail-Core fell, so its prices should be cut
+c) Student rose 14.8 percent, so the students' higher prices explain the blended rise
+d) Retail-Core fell 4.9 percent, so its prices should be cut to win the orders back
 
 ### Q2. (design) Match each question to the reading that answers it: 1 how big is the rise, 2 did any segment pay more, 3 how much of the rise is mix, 4 what is a typical order; P the blended change, Q per-segment rates, R the mix-and-rate split, S medians. Which pairing holds?
 
@@ -56,10 +56,10 @@ d) Segments with similar order sizes, or shares that held still
 
 ### Q4. At Q2's mix and Q1's segment rates, revenue per order would be Rs 2,07,112. How much of the Rs 33,231 rise is mix?
 
-a) Rs 10,330, the part inside segments
-b) Rs 22,902, about 69 percent
-c) Rs 33,231, all of it
-d) Rs 2,07,112, the counterfactual itself
+a) Rs 10,330, about 31 percent, the part inside the segments
+b) Rs 22,902, about 69 percent, the part the mix explains
+c) Rs 33,231, all of it, since no segment rose 18 percent
+d) Rs 2,07,112, the level at Q2's mix and Q1's rates
 
 ### Q5. The rate part, Rs 10,330, splits by segment. Which segment carries most of it, and why does that matter for the price rise?
 

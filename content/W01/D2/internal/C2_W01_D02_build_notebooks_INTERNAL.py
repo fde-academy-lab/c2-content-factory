@@ -52,7 +52,7 @@ summarises the paper's table, yet department by department the admission rates d
 rate moved because the mix moved, which is what can happen to Kalpa's revenue per order. A retailer
 meets the same thing in its order value: Swiggy reported Instamart's average order value up 14 percent
 in a quarter to Rs 697 in the quarter to September 2025, and put it down to non-grocery categories and
-large packs taking a larger share of orders, while net average order value after discounts stood at
+large packs taking a larger share of gross order value, while net average order value after discounts stood at
 Rs 485 (Swiggy, Q2 FY2026 shareholder letter, checked 30 Sep 2026).""",
     5: """**Who else faces this.** Every membership business runs Marketing's argument against the
 frequency argument. Harvard Business Review summarised the studies behind it: depending on the study
@@ -241,7 +241,7 @@ kit.check("the closed-quarter change rounds to minus 11.0 percent", round(change
 kit.check("the accumulator agrees with option A in the sizing cell", round(change, 6) == round(option_a, 6))
 """),
         md("""
-## 2. The trap: Marketing's 25.9 percent compares eleven weeks with thirteen
+## 2. The trap: Marketing's 25.9 percent compares 11 weeks with 13
 
 Marketing's deck reads the Q2 figure from the dashboard tile, which somebody screenshotted on
 15 September, and sets it against the whole of Q1.
@@ -1225,8 +1225,7 @@ small file, rows read on a large one.
 
 ### Depth: what a range can and cannot say
 
-A range is set by two orders, the smallest and the largest, so one order can double it, as Business
-showed; a median is set by the middle of the list, so it barely moves. Between the two, the middle
+A range is set by two orders, the smallest and the largest, so one order can stretch it, as Business showed with a rise of about 73 percent; a median is set by the middle of the list, so it barely moves. Between the two, the middle
 half of the sorted values says how wide the ordinary orders sit. Try it on Business: sort each
 quarter's amounts, drop the lowest and highest quarter of the list, and take the range of what is
 left. Thursday asks whether differences of this size are more than noise.
@@ -1279,7 +1278,7 @@ print("revenue per order:", kit.rupees(round(all1["revenue_per_order"])), "to", 
 
 Revenue per order rose from Rs 1,84,211 to Rs 2,17,442. Marketing reads that as customers paying
 more, and wants a price rise in the growth plan. The metric at stake is revenue per order, a blend
-across segments whose orders differ a thousandfold: a Business order runs to lakhs and a Retail-Plus
+across segments whose orders differ several hundredfold: a Business order runs to lakhs and a Retail-Plus
 order to about three thousand rupees. The decision riding on it is a price rise across the range. A
 wrong reading costs volume: raise prices on customers who never paid more, and the fall in orders
 per customer, the branch that actually moved, gets worse.
@@ -1360,7 +1359,7 @@ kit.check("no segment's own revenue per order rose as far as 18 percent", max(se
 '''),
         md("""
 **What happened.** The answer is d. Business rose 5.0 percent, Retail-Plus 7.0, Student 14.8 on a
-handful of orders, and Retail-Core fell 4.9. The blend rose 18.0 percent while no segment did, which
+handful of orders, and Retail-Core fell 4.9. The blend rose 18.0 percent while no segment rose that far, which
 is the Berkeley pattern: the mix moved.
 
 ## 3. The trap: 18 percent read as customers paying more
@@ -1457,7 +1456,7 @@ listening for mix, the split, and a number for each part.
 
 **The design question. When does a mix split matter, and when is a per-segment table enough?** "It
 matters when the segments' rates differ a lot and their shares moved, since then the blend can move
-with no segment moving; Kalpa's orders differ a thousandfold between Business and consumers, so it
+with no segment moving; Kalpa's orders differ several hundredfold between Business and consumers, so it
 matters here. When the segments look alike, or their shares held, the per-segment table says it all.
 And I report the order of the split, since the joint part moves with it." The interviewer is
 listening for the two conditions and the order.

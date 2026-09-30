@@ -59,16 +59,16 @@ b) The roll-up must reproduce the company figures, 1.65 and 1.25
 c) Drop the smallest segment and average the other three segments again
 d) Compare the medians of the four segments instead
 
-### Q5. Business revenue fell Rs 22,29,720. `describe` shows the median order barely moved while the range nearly doubled. What do you say about the typical Business order?
+### Q5. Business revenue fell Rs 22,29,720. `describe` shows the median order barely moved while the range rose about 73 percent. What do you say about the typical Business order?
 
 a) The typical order held, while one large order stretched the range
 b) Every Business order got smaller, which is why Business revenue fell
-c) The typical order doubled, so Business customers spend more
+c) The typical order grew sharply, so Business customers spend more
 d) Nothing can be said until the mean is computed
 
-### Q6. (design) The second route, one pass grouped by (quarter, segment), agreed with `tree_for` on all eight groups. When would you make it the main route?
+### Q6. Anand asks for the company's orders per customer rolled up from the four segments. Order the steps: p) add each segment's orders, q) add each segment's customers, r) divide total orders by total customers, s) check the result is 1.65 and 1.25. Which order is right?
 
-a) When a stakeholder asks for one segment at a time
-b) When the definition of a customer is about to change next quarter
-c) When the file holds 200 orders across four segments
-d) When every group is needed at once from millions of rows
+a) s, p, q, r
+b) r, p, q, s
+c) p, r, q, s
+d) p, q, r, s

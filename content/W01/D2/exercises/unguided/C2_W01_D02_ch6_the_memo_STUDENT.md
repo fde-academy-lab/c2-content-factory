@@ -33,23 +33,23 @@ flowchart LR
 ### Q1. (design) Four tests of the button were on the table. In which order do you run them?
 
 a) The app's logs first, since they settle it and the other tests can wait for them
-b) Timing, then a comparison segment, then the channel, with the logs requested now
-c) The channel first, since the cause is an app feature
-d) All four at once, since order does not matter
+b) Timing first, since it can rule the cause out cheaply, and request the logs now
+c) The channel first, since the cause is an app feature, then timing and the logs
+d) A comparison segment first, since the season is the likeliest rival, then timing
 
 ### Q2. The hurried memo says the button cost 25 orders and Rs 65,250. What is wrong with the figure?
 
 a) It uses booked orders instead of the delivered orders the board pack reports
-b) It should be measured in customers, not orders
-c) It counts only app orders
-d) It charges the button with seven weeks of losses from before it broke
+b) It should be measured in members, 22 in both quarters, and not in orders
+c) It counts only the 13 and 8 app orders, and leaves out the web and the store
+d) It charges the button with about eight weeks of losses from before it broke
 
 ### Q3. At the pre-break pace, the 37 days after the break would have carried about 12.1 orders, and the tier placed 8. What goes in the memo?
 
-a) The button caused the whole fall, now proven
+a) The button caused the fall, since the tier placed 8 orders after the break against 18 before
 b) The button had no effect at all, since most of the fall came before it broke
 c) The button explains at most about 4 orders, so the rest needs another cause
-d) The fall is too small to report
+d) The button explains about 12 orders, since 12.1 orders were expected after the break
 
 ### Q4. Retail-Core kept 95 percent of its Q1 orders and Retail-Plus 51 percent. Which cause does this rule out?
 

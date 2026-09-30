@@ -57,19 +57,19 @@ d) Per month, April against July only, switching when August closes
 
 a) Because the fastest option is always the least accurate one
 b) Because only last year's Q2 needs any computation at all
-c) Because all four read under a thousand rows, in well under a second each, on any laptop
-d) Because every option runs in milliseconds, what each one controls for decides
+c) Because the option that reads the most rows is always the most accurate one on any file
+d) Because each option that can run takes milliseconds, what each controls for decides
 
-### Q5. Per day, the closed quarters run at Rs 2,30,769 and Rs 2,03,261, a fall of 11.9 percent. Why does this differ from the 11.0 percent on the totals?
+### Q5. Four moves answer "is the drop real": p) find the first and last order date of each window, q) choose closed quarters or matched weeks, r) compute the change, s) state the definition and the window in the sentence. Which order is right?
 
-a) A rate per day always runs higher than a rate on totals, for any windows
-b) Q2 has 92 days and Q1 has 91, so Q2's total spreads over one more day
-c) The per-day rate counts only the days on which an order was placed
-d) One of the two figures has a rounding slip, and the totals are safer
+a) r, p, q, s
+b) p, q, r, s
+c) q, r, p, s
+d) p, r, q, s
 
 ### Q6. (design) The second route added revenue by the month in `order_date` and reached the same minus 11.0 percent. What does agreement between the two routes prove?
 
 a) That monthly totals are the better headline for Meera than quarters
 b) That no order in the file carries a wrong amount, a duplicate or a missing field
-c) That the quarter field and the dates put every order in the same quarter
+c) That the quarter field and the dates give each quarter the same total
 d) That the fall is real and needs no comparison with last year

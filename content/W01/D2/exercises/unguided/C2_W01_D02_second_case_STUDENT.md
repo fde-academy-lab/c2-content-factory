@@ -56,7 +56,7 @@ d) The total of all web orders, 44 to 30, since it covers every segment
 
 a) Members with no order in Q2, since they have stopped altogether
 b) Members who ordered once in Q1, since they are the least attached
-c) The 7 members who went from three orders a quarter down to one
+c) The 7 who fell from three orders to one, since they slowed most
 d) Every one of the 22 members at once, since all of them slowed
 
 ---

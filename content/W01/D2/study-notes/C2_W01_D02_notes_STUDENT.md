@@ -140,8 +140,7 @@ which weeks a cut includes moves the answer. Once a quarter closes, compare clos
 
 **The second route.** Key the accumulator by the month in the order date instead of the quarter
 field, and add the months back: April to June give Rs 2,10,00,000 and July to September
-Rs 1,87,00,000, the same minus 11.0 percent. Agreement proves the quarter field and the dates put
-every order in the same quarter. Use the month key once a question moves inside a quarter.
+Rs 1,87,00,000, the same minus 11.0 percent. Agreement proves the quarter field and the dates give each quarter the same total, which is agreement in aggregate. Use the month key once a question moves inside a quarter.
 
 ---
 
@@ -223,7 +222,7 @@ table, a chart or a check, and it earns trust by reproducing chapter 2: 1.65 and
 customers. `describe` returns a group's median, smallest and largest values and range. Retail-Core's
 34 customers slipped from 1.12 to 1.06 orders each, minus 5.3 percent, and its median order fell from
 Rs 2,325 to Rs 2,080. Business's median barely moved, Rs 9,83,780 to Rs 9,52,000, while one order of
-Rs 29,45,460 nearly doubled the range; its 11 customers fell 15.0 percent on three orders.
+Rs 29,45,460 widened the range by about 73 percent; its 11 customers fell 15.0 percent on three orders.
 
 **The trap.** Averaging the four segments' orders per customer gives 1.94 then 1.82, minus 6.0
 percent: "frequency is not the branch, Marketing may be right". A 2-customer segment votes as much as
@@ -243,13 +242,13 @@ the segment where orders per member fell furthest.
 **The need.** Your run showed Retail-Plus: the same 22 members placed 26 orders in Q2 against 51 in
 Q1. Marketing reads the 18 percent rise in revenue per order as customers paying more and wants a
 price rise in the plan. Revenue per order is a blend across segments whose orders differ a
-thousandfold, and a wrong reading costs volume: a price rise on customers who never paid more.
+several hundredfold, and a wrong reading costs volume: a price rise on customers who never paid more.
 
 **Who else faces this.** Berkeley's graduate admissions for autumn 1973 admitted about 44 percent of
 men and 35 percent of women across the university, while department by department the rates did not differ significantly: women had applied mostly to departments that were hard to get into (Bickel, Hammel and
 O'Connell, Science, 1975; the rates as a 2025 re-analysis summarises the paper's table). Swiggy
 reported Instamart's order value up 14 percent in a quarter to Rs 697 in the quarter to September
-2025, put down to non-grocery categories and large packs taking a larger share of orders.
+2025, put down to non-grocery categories and large packs taking a larger share of gross order value.
 
 **The options.** A, read the blended change, which gives the size and no cause; B, each segment's
 own revenue per order, which says whether any segment paid more; C, split the rise into mix and rate,
@@ -369,7 +368,7 @@ tickets. Last year's Q2 by segment rules the season in or out."
 survives, minus 11.3 percent; frequency still carries the most rupees; Retail-Plus falls 42.6 percent
 per member. One branch moves that held on booked orders: customers with a delivered order fall from
 54 to 50. All 19 who left the delivered count booked again in Q2 and had those orders cancelled or
-returned, so the branch is fulfilment, owned by operations, and acquisition still has nothing to
+returned, so the branch is cancellations and returns, to be split by reason, and acquisition still has nothing to
 replace. On delivered orders the mix explains 44 percent of the rise in revenue per order, with
 Business's larger delivered orders carrying the rate.
 

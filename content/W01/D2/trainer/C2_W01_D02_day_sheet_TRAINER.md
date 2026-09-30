@@ -88,7 +88,7 @@ The afternoon deck's chapter openers are numbered 6 to 11 by
 | Chapter 4 | Revenue per order "up 18.0 percent, customers pay more" | A price rise on the tier whose orders halved | No segment's own revenue per order rose 18 percent | Mix Rs 22,902 of Rs 33,231, about 69 percent |
 | Chapter 5 | `pct_change` prints above 30 percent and returns None: summary {Retail-Core -5.3, Business -15.0}, "Business fell most" | Business accounts first; the tier told it is not in the table | Four segments in, two numbers back | Return every change, flag it in a column: Retail-Plus minus 49.0 |
 | Chapter 6 | "The button cost 25 orders, Rs 65,250" | Engineering promised a fix that recovers the tier | Split Q2 at 25 August with each window: 3.92, 2.29, 1.51 a week | Ceiling of about 4.1 orders, about Rs 12,400 |
-| Escalated case | Delivered customers 54 to 50, "Marketing was right" | Acquisition funded on a fulfilment problem | Booked overlap 69, 0, 0; all 19 booked again | The branch is cancellations and returns, owned by operations |
+| Escalated case | Delivered customers 54 to 50, "Marketing was right" | Acquisition funded on a fulfilment problem | Booked overlap 69, 0, 0; all 19 booked again | The branch is cancellations and returns, to split by reason |
 
 The KeyError on `order["discount"]` is a runtime error: two minutes at S23, its last line and the
 three ways past it, then S24. It is never the trap.

@@ -7,7 +7,7 @@ closed quarters, Q1 against Q2, on booked orders as exported.
 ## Panel 1: The tree, Q1 against Q2
 
 ```mermaid
-flowchart LR
+flowchart TB
     V["<b>revenue</b><br/>Rs 2.10 to 1.87 cr"] --> C["<b>customers</b><br/>69 to 69"]
     V --> F["<b>orders per customer</b><br/>1.65 to 1.25"]
     V --> O["<b>revenue per order</b><br/>Rs 1.84 to 2.17 lakh"]

@@ -2,7 +2,7 @@
 
 Answers: 1d 2a 3c 4b 5a 6d
 
-3 of the 6 items are design items.
+2 of the 6 items are design items.
 
 ## Item by item
 
@@ -12,5 +12,5 @@ Answers: 1d 2a 3c 4b 5a 6d
 | 2 | design | a | On a large file, reading the rows once instead of once per group is what matters; that is `groupby` in Week 2. | b: Changing definitions favour the function. c: Groups asked one at a time favour the function. d: That is today's file, where the function wins. |
 | 3 | scenario | c | A function without `return` hands back `None`; the screen looked right and the caller got nothing. | a: An empty list would raise a division error. b: 1.65 is the right Q1 figure. d: Printing never changes a value. |
 | 4 | scenario | b | Averaging gives a 2-customer segment the vote of a 34-customer one; total orders over total customers must give 114 over 69 and 86 over 69. | a: More decimals of a wrong roll-up stay wrong. c: Dropping groups hides the weighting problem. d: Medians of rates share the same flaw. |
-| 5 | scenario | a | The median moved from Rs 9,83,780 to Rs 9,52,000, while one order of Rs 29,45,460 set the range; the fall is three fewer orders. | b: The median held. c: The range doubled, not the typical order. d: The mean is the number one order moves most. |
-| 6 | design | d | Reading the rows once instead of once per group matters on a large file when every group is wanted together. | a: Groups asked one at a time favour the function. b: A changing definition favours one function holding it. c: On 200 rows the function costs nothing extra. |
+| 5 | scenario | a | The median moved from Rs 9,83,780 to Rs 9,52,000, while one order of Rs 29,45,460 set the range; the fall is three fewer orders. | b: The median held. c: The range grew, not the typical order. d: The mean is the number one order moves most. |
+| 6 | scenario | d | Totals first, the ratio of totals next, and the check that it reproduces the company figure last. | a: Checks before there is a number to check. b: Divides before the totals exist, which invites averaging the rates. c: Divides with only one of the two totals in hand. |

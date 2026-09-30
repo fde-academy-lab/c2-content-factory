@@ -279,7 +279,7 @@ value: 1 | label: sentence to Meera | note: branch, segment, hypotheses
 **The rule.** Every number carries its definition: say "delivered" beside each one, and "booked" beside anything from this morning.
 
 ```notes
-LIVE, 1 minute before work starts. Remind the room that the notebook stops at the first placeholder
+LIVE, inside the 3-minute brief, before work starts. Remind the room that the notebook stops at the first placeholder
 until it is filled, which is intended.
 ```
 
@@ -310,7 +310,7 @@ flowchart LR
     class C,D known
 ```
 
-**The check.** The booked overlap is 69, 0 and 0. The branch that moved is fulfilment, owned by operations, and acquisition still has nothing to replace.
+**The check.** The booked overlap is 69, 0 and 0. The branch that moved is cancellations and returns, to be split by reason, and acquisition still has nothing to replace.
 
 ```notes
 LIVE, 4 minutes. Ask who wrote "customers fell 7.4 percent" in part 2 and stopped there. The part 3

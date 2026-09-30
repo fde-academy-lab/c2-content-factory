@@ -454,7 +454,7 @@ percent, transactions 1.5, average ticket 1.1.
 | A. Leaf percentages only | no rupees: percentages do not add | no |
 | B. Bridge in the tree's order | -Rs 51,57,895 | yes |
 | B. Bridge, order reversed | -Rs 60,88,372 | yes |
-| C. Symmetric split | -Rs 55,88,480 | no |
+| C. Symmetric (log-mean) split | -Rs 55,88,480 | no |
 | D. Customer by customer | 69 rows before any total | no |
 
 **The call.** B, with its order written beside it: it adds exactly and a CEO can follow it. **What would change it:** a split Finance rebuilds monthly goes symmetric; "which customers?" goes to D, in chapter 5.
@@ -896,7 +896,7 @@ value: 1,000x | label: order size, Business to consumer | note: lakhs against th
 ```notes
 LIVE, 4 minutes. Open by naming what the room found at the end of chapter 3: Retail-Plus, the same
 22 members, 51 orders to 26. The metric at stake is a blend across segments whose orders differ a
-thousandfold. A wrong reading costs volume: a price rise on customers who never paid more.
+several hundredfold. A wrong reading costs volume: a price rise on customers who never paid more.
 ```
 
 ---
@@ -907,14 +907,14 @@ thousandfold. A wrong reading costs volume: a price rise on customers who never 
 ```mermaid
 flowchart LR
     U["<b>whole university</b><br/>men about 44%<br/>women about 35%"] --> M["<b>the mix</b><br/>women applied to<br/>selective departments"]
-    M --> D["<b>department by department</b><br/>no significant<br/>difference"]
+    M --> D["<b>each department</b><br/>no significant<br/>difference"]
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class U bad
     class D known
 ```
 
-**The claim.** When groups differ in rate and their shares move, a blended rate can move with no group moving. Swiggy said the same of Instamart's order value, up 14 percent in a quarter to Rs 697, as non-grocery categories took a larger share of orders.
+**The claim.** When groups differ in rate and their shares move, a blended rate can move with no group moving. Swiggy said the same of Instamart's order value, up 14 percent in a quarter to Rs 697, as non-grocery categories took a larger share of gross order value.
 
 ```notes
 LIVE, 3 minutes. Bickel, Hammel and O'Connell, Science 187, 398 to 404, 1975, citation checked
@@ -1185,7 +1185,7 @@ summary aloud. Ask whether anyone trusts it. Most will; it looks tidy.
 flowchart LR
     A["<b>4 segments in</b>"] --> B["<b>pct_change</b><br/>prints above 30%"]
     B --> C["<b>2 numbers</b><br/>2 None"]
-    C --> D["<b>if ch and ch &lt; 0</b><br/>drops None"]
+    C --> D["<b>the filter</b><br/>drops None"]
     D --> E["<b>2 in the summary</b><br/>Retail-Plus gone"]
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     class B,C,D,E bad

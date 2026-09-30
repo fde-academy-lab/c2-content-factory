@@ -34,10 +34,10 @@ Keep the orders whose status is delivered and compare the two closed quarters of
 
 ### Q1. Which figure answers Meera on delivered orders?
 
-a) Down 25.9 percent, since delivered orders run behind booked ones in Q2
-b) Down 11.3 percent, Rs 1,45,04,970 to Rs 1,28,64,680 on closed quarters
-c) Down 11.0 percent, since the definition changes no total that matters
-d) No fall at all, since returns are still arriving for the later quarter
+a) Down 25.9 percent, since the Q2 tile holds 11 weeks of delivered orders against 13
+b) Down 11.3 percent, since closed delivered quarters differ by Rs 16,40,290
+c) Down 11.0 percent, since the definition changes no total that matters to Meera
+d) No fall at all, since returns for Q2 are still arriving and will lift its total
 
 ---
 
@@ -86,10 +86,10 @@ Split the rise in delivered revenue per order, Rs 1,79,074 to Rs 2,25,696, into 
 
 ### Q5. The mix explains 44 percent of the delivered rise against 69 percent on booked orders. What does that mean for the consumer business?
 
-a) Little: the rate part is Business's larger orders, not consumer prices
-b) Consumer prices rose, since the rate now carries most of the rise
-c) The split failed, since mix and rate should not change with a definition
-d) Delivered orders are unreliable, so the booked split should be used alone
+a) Little, since the rate part is Business's larger orders, not consumer prices
+b) Consumer prices rose, since the rate part now carries most of the rise
+c) The split failed, since mix and rate should not change with the definition used
+d) Delivered orders are unreliable, so the booked split should be used on its own
 
 ---
 
