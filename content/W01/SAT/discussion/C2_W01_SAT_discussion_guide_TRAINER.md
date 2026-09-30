@@ -15,7 +15,7 @@ half hour puts every learner on the interviewer's side of the table.
 
 | Block | Duration | What happens |
 |---|---|---|
-| The paper | 120 min | Pen and paper, AI-free, no notes: 57 objective items, then the untimed stretch page for anyone who finishes early. |
+| The paper | 120 min | Pen and paper, AI-free, no notes: 54 objective items in six parts, then the untimed stretch page for anyone who finishes early. |
 | Break | 20 min | Papers stay face down on the desks. |
 | Marking | 20 min | Papers swapped and marked against the key, read out by you. |
 | The solution discussion | 90 min | The most-missed items first (35), then the ten anchors answered aloud as interview answers, with random call-outs (55). |
@@ -39,16 +39,21 @@ papers stay on the desks through the break.
 
 1. Papers swap along the row, so nobody checks their own and nobody checks the same neighbour twice in
    a month.
-2. Read the key out section by section from the key file, at a pace a marker can tick to: the
-   letters in runs of five, the words and numbers one at a time. Say the item number before every
-   answer, since the scenario section now runs to Q50.
+2. Read the key out part by part from the key file, at a pace a marker can tick to: the letters
+   in runs of five, the words and numbers one at a time. Say the item number before every answer,
+   since the six parts number straight through to Q54.
 3. The marker writes a tick or a cross beside every item on the answer sheet, then the count of
-   ticks as Items right, out of 57, and hands the paper back.
+   ticks as Items right, out of 54, and hands the paper back.
 4. The key file's marking rule decides the edge cases: every correct letter and no other on a
    more-than-one item, the number on an applied maths item, the whole sequence on an ordering item.
-   Accept the variants the key gives in brackets, such as 2 for 2.00 on Q46. There is no partial
+   Accept the variants the key gives in brackets, such as 2 for 2.00 on Q35. There is no partial
    credit, because the programme has set no rule for it.
-5. The stretch page is not marked. Anyone who wrote on it keeps it for the mock-interview round.
+5. The Academic TA enters each paper's ticks by seat in
+   `answer-key/C2_W01_SAT_item_analysis_TRAINER.xlsx`: 1 for a tick, 0 for a cross and a blank for
+   an item left empty, and never a name. Its Discussion sheet gives the most-missed order the
+   discussion takes, and any item the workbook flags goes to the tracker's owner with the room's
+   rate, because the fault may sit in the item.
+6. The stretch page is not marked. Anyone who wrote on it keeps it for the mock-interview round.
 
 Say once, at the start, that the marker is deciding nothing. Reading somebody else's answer against
 the key is the exercise, and it is harder than being marked.
@@ -59,28 +64,32 @@ the key is the exercise, and it is harder than being marked.
 
 ### Most-missed first, 35 minutes
 
-Before the anchors, find the items the room actually lost. Read out the candidate list below and
-ask for hands on the paper each person marked: "a cross on Q9?" Write the counts on the board and
-take the six highest, in order, at about five minutes each. A show of hands on the paper you marked
-is never a show of hands on your own score, so nobody is exposed.
+Before the anchors, take the items the room actually lost, in the order the workbook's Discussion
+sheet gives them: the six at the top, at about five minutes each. Ask for hands on the paper each
+person marked, "a cross on Q3?", so the room sees the count before the item is discussed. A show
+of hands on the paper you marked is never a show of hands on your own score, so nobody is exposed.
+The candidate list below is the prediction, with the trap each item sets and the repair.
 
 | Item | What it tests | The trap most papers fall into | The repair, said aloud |
 |---|---|---|---|
-| Q9 and Q35 | What a p-value is and is not | Reading p = 0.03 as a 3 percent chance of being wrong | The p-value is computed assuming chance alone; it measures how rare the gap would be in that world, and says nothing about whether the hypothesis is true or the gap is worth acting on. |
-| Q26 | Reading a shuffle | Calling a 5-point gap significant because it beats most of ten shuffles | Ten shuffles that already reach 6 points say chance makes gaps like this easily; the real gap is unsurprising. |
-| Q11 | Types from a CSV | Expecting `'4500' > 3000` to compare numbers | In Python 3 the comparison raises a `TypeError`, so the statement is false; the fix is converting at the read, once. |
-| Q16 and Q43 | The mix effect | Treating a total that rose as proof that the parts rose | A total can rise while every segment falls, when the mix shifts toward the richer segment. |
-| Q21 | A fair comparison | Comparing a 13-week quarter with an 11-week one as they stand | Compare revenue per week, or cut both quarters to the same weeks. |
-| Q29 | Levers on the tree | Picking the branch that sounds cheapest | Held equal, a 10 percent lift in any branch adds the same revenue; the choice turns on what each costs to move. |
-| Q41 and Q42 | Reconciliation | Logging only the three rejects and forgetting the fourteen duplicates | Every removed row is logged, so the rejects log holds 17, and removing Q1's duplicates shrinks the Q1 to Q2 drop. |
-| Q46 | Rows counted as customers | Dividing 500 rows by 500 and reading 1.00 as "nobody comes back" | A row is an order. Orders per customer divides by distinct customers: 500 over 250 is 2.00. |
-| Q47 | An average of averages | Averaging Rs 2,000 and Rs 12,000 to get the slide's Rs 7,000 | Divide total revenue by total orders, Rs 20.0 lakh over 500, which is Rs 4,000; the 400 Retail orders outweigh the 100 Business ones. |
-| Q49 | A whole-record dedupe | Trusting the zero because no two rows match in every field | A re-sent order carries a new timestamp, so whole rows differ; the identity rule, one order_id per order, finds the 40. |
-| Q50 | Counts that reconcile while rupees do not | Calling the run clean because 1,160 plus 40 is 1,200 | Rs 88.0 lakh plus Rs 5.0 lakh is Rs 93.0 lakh against Rs 96.0 lakh in, so Rs 3.0 lakh is unaccounted for; nothing goes to Finance until it is found. |
-| Q51 | Discount arithmetic | Adding the percentages: 10 minus 15 | Multiply the factors: 1.10 times 0.85 is 0.935, so revenue falls 6.5 percent. |
+| Q3 and Q45 | What a p-value is and is not | Reading p = 0.03 as a 3 percent chance of being wrong | The p-value is computed assuming chance alone; it measures how rare the gap would be in that world, and says nothing about whether the hypothesis is true or the gap is worth acting on. |
+| Q9 and Q46 | The mix effect | Treating a total that rose as proof that the parts rose | A total can rise while every segment falls, when the mix shifts toward the richer segment. |
+| Q13 | A fair comparison | Comparing a 13-week quarter with an 11-week one as they stand | Compare revenue per week, or cut both quarters to the same weeks. |
+| Q14 | Levers on the tree | Picking the branch that sounds cheapest | Held equal, a 10 percent lift in any branch adds the same revenue; the choice turns on what each costs to move. |
+| Q29 and Q30 | Reconciliation | Logging only the three rejects and forgetting the fourteen duplicates | Every removed row is logged, so the rejects log holds 17, and removing Q1's duplicates shrinks the Q1 to Q2 drop. |
+| Q32 | Types from a CSV | Expecting `'4500' > 3000` to compare numbers | In Python 3 the comparison raises a `TypeError`, so the statement is false; the fix is converting at the read, once. |
+| Q33 | A whole-record dedupe | Trusting the zero because no two rows match in every field | A re-sent order carries a new timestamp, so whole rows differ; the identity rule, one order_id per order, finds the 40. |
+| Q34 | Counts that reconcile while rupees do not | Calling the run clean because 1,160 plus 40 is 1,200 | Rs 88.0 lakh plus Rs 5.0 lakh is Rs 93.0 lakh against Rs 96.0 lakh in, so Rs 3.0 lakh is unaccounted for; nothing goes to Finance until it is found. |
+| Q35 | Rows counted as customers | Dividing 500 rows by 500 and reading 1.00 as "nobody comes back" | A row is an order. Orders per customer divides by distinct customers: 500 over 250 is 2.00. |
+| Q36 | An average of averages | Averaging Rs 2,000 and Rs 12,000 to get the slide's Rs 7,000 | Divide total revenue by total orders, Rs 20.0 lakh over 500, which is Rs 4,000; the 400 Retail orders outweigh the 100 Business ones. |
+| Q38 | A blank read as zero | Reading Marketing's "three in five had no discount" as three orders at full price | Only one order records a zero; the other two carry no discount field, so the share is 2 of the 3 that record one, and anywhere from 40 to 80 percent of all five. |
+| Q40 | A helper that prints | Taking the one-city summary as every city that fell | The helper printed Pune's -50.0 percent and handed back None, and the filter dropped it without a word; return every change and flag the big ones in their own column. |
+| Q41 | Deduping before converting | Choosing Rs 7300 because the rows add up to 4 | The first copy of B is the unreadable one, so its Rs 1,800 twin is passed over and B leaves the clean file while the rows still close; convert first and keep the copy that validates. |
+| Q42 | Reading a shuffle | Calling a 5-point gap significant because it beats most of ten shuffles | Ten shuffles that already reach 6 points say chance makes gaps like this easily; the real gap is unsurprising. |
+| Q50 | Discount arithmetic | Adding the percentages: 10 minus 15 | Multiply the factors: 1.10 times 0.85 is 0.935, so revenue falls 6.5 percent. |
 
-If an item outside this list carries more crosses, it wins its place. The list is a prediction, and
-the hands are the evidence.
+If an item outside this list sits higher on the Discussion sheet, it wins its place. The list is a
+prediction, and the sheet is the evidence.
 
 On every item, take the wrong answer first. Ask who wrote it, or who nearly did, and have them say
 why it looked right; the key file's line for that option names the misconception, and the room
@@ -96,7 +105,7 @@ in 55 minutes is about five minutes each, and the last two take the extra.
 
 #### 1. [S] Kalpa wants 15 percent growth; draw the revenue tree and name the branch you would investigate first.
 
-*Q1, Q2, Q18, Q29, Q30, Q46, Q51 and Q55.*
+*Q11, Q14, Q15, Q35, Q50, Q54, Stretch 5 and Stretch 6.*
 
 A strong answer draws the tree first: revenue is customers, times orders per customer, times items
 per order, times price per item, less discounts. It then says that a 10 percent lift in any branch
@@ -109,7 +118,7 @@ off a count of rows. Those are the answers interviewers mark down.
 
 #### 2. [S] Sales fell from Q1 to Q2; walk the investigation ladder.
 
-*Q17, Q20, Q31, Q36 to Q39, Q47, Q53 and Q56.*
+*Q10, Q12, Q16 to Q21, Q36, Q38, Q40 and Q52.*
 
 Five rungs, in this order: confirm the drop is real; compare like with like, which means the same
 weeks and the same definitions; decompose along the revenue tree; isolate the branch and the
@@ -120,12 +129,12 @@ Rs 1.87 crore; the same 69 customers bought in both, orders per customer fell fr
 Retail-Plus, whose orders per member fell from 2.32 to 1.18 on the file as exported.
 
 The follow-up worth asking: "which rung did you skip on the paper?" Most people skip the second, and
-Q47 is the second rung too: an average of segment averages compares a 100-order segment as if it
+Q36 is the second rung too: an average of segment averages compares a 100-order segment as if it
 were as big as a 400-order one.
 
 #### 3. [S] Mean or median for order value, and why?
 
-*Q10, Q19 and Q52.*
+*Q4, Q49 and Q51.*
 
 Order values are skewed by a few very large orders, so the median describes the typical order and
 the mean does not: five orders of 800, 1,200, 1,400, 2,000 and 480,000 rupees have a median of
@@ -134,18 +143,18 @@ revenue. The answer is to report both when they diverge and to say why they dive
 
 #### 4. [S] Finance and the dashboard disagree by Rs 20 lakh; what do you do first?
 
-*Q5, Q25, Q28, Q40 to Q42, Q50 and Q57.*
+*Q24, Q25, Q28 to Q31, Q34 and Stretch 9.*
 
 Profile the export before arguing about the number: duplicates, the date window, and what each side
 counts. Then reconcile counts first and rupees second, line by line, against Finance's books, which
-are the reference for money. Q50 is why the second step exists: rows can close while Rs 3.0 lakh
+are the reference for money. Q34 is why the second step exists: rows can close while Rs 3.0 lakh
 does not. Ask the second question the first time round, and wait for it: **what would you refuse
 to do?** Adjusting your own figure until it agrees. Reconciling and fabricating differ only in
 whether the steps are written down.
 
 #### 5. [S] What does p = 0.03 mean, and not mean?
 
-*Q6, Q9, Q12, Q26, Q35 and Q54.*
+*Q1, Q3, Q5, Q42, Q45 and Q53.*
 
 If chance alone were at work, a gap at least this large would turn up in about 3 percent of
 shuffles, so the gap would be rare under chance. It does not mean a 3 percent chance the finding is
@@ -157,7 +166,7 @@ one survives somebody saying "so there is a three percent chance we are wrong".
 
 #### 6. [F] Input 200, clean 183, rejected 14: does it reconcile, and what is the missing number?
 
-*Q5, Q40, Q41, Q50 and Q57.*
+*Q28, Q29, Q31, Q34, Q41 and Stretch 9.*
 
 It does not reconcile: 183 plus 14 is 197, so 3 rows are unaccounted for. Nothing is reported
 until those 3 are found, and the usual culprits are rows removed by a step that does not write to
@@ -166,7 +175,7 @@ aloud: even when the rows close, the rupees have to close too.
 
 #### 7. [F] 42 percent on 12 orders against 31 percent on 400; which do you trust?
 
-*Q14 and Q27.*
+*Q7 and Q43.*
 
 The 31 percent. On 12 orders a single order moves the rate by more than 8 points, so 42 percent is
 five orders out of twelve, and a shuffle would show chance producing gaps like it often. On 400
@@ -175,7 +184,7 @@ collect more data on, never a finding, and the Student segment on Thursday was e
 
 #### 8. [F] Revenue rose after the discount; three reasons that is not proof it worked.
 
-*Q8, Q15, Q16, Q34 and Q43 to Q45.*
+*Q2, Q8, Q9, Q44 and Q46 to Q48.*
 
 First, who received it: the discounted customers were already the frequent buyers, so buying
 frequency drives both getting the discount and spending, which makes it a confounder. Second, the
@@ -186,18 +195,18 @@ recommendation is to randomise the next campaign inside a segment.
 
 #### 9. [D] Your cleaning run reported zero rejects on a file you know is dirty; what do you check?
 
-*Q4, Q11, Q13, Q23, Q24, Q32, Q33 and Q49.*
+*Q6, Q22, Q23, Q26, Q27, Q32, Q33, Q41 and Stretch 8.*
 
 Treat the zero as a bug in the checker until it is proven otherwise. Check that every field was
 converted from text before the rules ran, because a check on a string can pass quietly; check that
-the duplicate check is keyed on the identity rule and not on whole records, which is Q49; check
+the duplicate check is keyed on the identity rule and not on whole records, which is Q33; check
 that input equals clean plus rejected; check that the rejects log is actually being written; and
 then plant one row you know is bad and rerun. If the planted row does not land in the log, the run
 was never checking anything.
 
 #### 10. [D] Write the four-part note for the Retail-Plus finding in four sentences, then defend the caveat.
 
-*Q7, Q45 and Q48.*
+*Q37, Q48 and Stretch 10.*
 
 Claim: Retail-Plus really is spending less, and the fall is small against the company. Evidence:
 its 22 members delivered Rs 1,110 less each in Q2 than in Q1, and chance made a fall that large in
@@ -209,7 +218,7 @@ is rolled out.
 
 Then defend the caveat against the room. Listen for a caveat that is a condition rather than a
 hedge: "this may not be accurate" is a hedge, while "nothing here measures why they spent less"
-names what would change the claim. Q48 is the same move in a harder room: Marketing pushing a slide,
+names what would change the claim. Q37 is the same move in a harder room: Marketing pushing a slide,
 and the answer that puts the denominator on the table before it argues.
 
 ---
