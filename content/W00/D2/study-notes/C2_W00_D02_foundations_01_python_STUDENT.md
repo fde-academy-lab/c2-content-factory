@@ -325,6 +325,6 @@ code, in that order.
 | Step | Resource | Time | Why this one |
 |---|---|---|---|
 | 1 | Ned Batchelder, "Facts and Myths about Python names and values", PyCon 2015, [youtube.com/watch?v=_AEJHKGk9ns](https://youtube.com/watch?v=_AEJHKGk9ns) (checked 30 September 2026) | 30 min | The board, animated, by the person who drew it |
-| 2 | The same talk in text, [nedbatchelder.com/text/names.html](https://nedbatchelder.com/text/names) | 20 min | For re-reading after the mini project |
+| 2 | The same talk in text, [nedbatchelder.com/text/names.html](https://nedbatchelder.com/text/names) (checked 30 September 2026) | 20 min | For re-reading after the mini project |
 | 3 | The Python Tutorial, section 8, Errors and Exceptions, [docs.python.org/3/tutorial/errors.html](https://docs.python.org/3/tutorial/errors.html) (checked 30 September 2026) | 25 min | The tracebacks you will actually see, explained by the source |
 | 4 | Mini project 1 | 90 min | The loop, the conversion and the rejects, in a notebook you keep |

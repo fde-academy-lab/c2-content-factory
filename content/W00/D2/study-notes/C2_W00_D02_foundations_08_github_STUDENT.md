@@ -42,7 +42,8 @@ flowchart LR
     P["<b>Profile README</b><br/>who you are, in one screen"] --> R["<b>One repo per project</b><br/>w00-diagnostic,<br/>w03-build-1 ..."]
     R --> D["<b>Cohort repo Discussions</b><br/>every exercise<br/>you answered"]
     R --> C["<b>Codespaces</b><br/>the VS Code you<br/>actually work in"]
-    classDef ring fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef default fill:#FFFFFF,stroke:#1C1B16,color:#1C1B16
+    classDef ring fill:#FFFFFF,stroke:#B37A33,color:#1C1B16,stroke-width:2px
     class R ring
 ```
 
@@ -76,11 +77,12 @@ flowchart TB
         N["<b>The username is<br/>public and permanent<br/>in practice;<br/>firstname-lastname<br/>beats a gaming handle.</b>"]
         B ~~~ T1 ~~~ U ~~~ T2 ~~~ N
     end
-    style W fill:#FFFFFF,stroke:#1A0F5C,color:#1A0F5C
-    classDef bar fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    classDef line fill:#FFFFFF,stroke:#FFFFFF,color:#1A0F5C
-    classDef ring fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef note fill:#FFFFFF,stroke:#FFFFFF,color:#5B3FD6
+    style W fill:#FFFFFF,stroke:#1C1B16,color:#1C1B16
+    classDef default fill:#FFFFFF,stroke:#1C1B16,color:#1C1B16
+    classDef bar fill:#1C1B16,stroke:#1C1B16,color:#FFFFFF
+    classDef line fill:#FFFFFF,stroke:#FFFFFF,color:#1C1B16
+    classDef ring fill:#FFFFFF,stroke:#B37A33,color:#1C1B16,stroke-width:2px
+    classDef note fill:#FFFFFF,stroke:#FFFFFF,color:#B37A33
     class B bar
     class T1,T2 line
     class U ring
@@ -104,11 +106,12 @@ flowchart TB
         N["<b>Losing the phone<br/>without recovery codes<br/>locks you out of<br/>your own portfolio.</b>"]
         B ~~~ T1 ~~~ R ~~~ T2 ~~~ N
     end
-    style W fill:#FFFFFF,stroke:#1A0F5C,color:#1A0F5C
-    classDef bar fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    classDef line fill:#FFFFFF,stroke:#FFFFFF,color:#1A0F5C
-    classDef ring fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef note fill:#FFFFFF,stroke:#FFFFFF,color:#5B3FD6
+    style W fill:#FFFFFF,stroke:#1C1B16,color:#1C1B16
+    classDef default fill:#FFFFFF,stroke:#1C1B16,color:#1C1B16
+    classDef bar fill:#1C1B16,stroke:#1C1B16,color:#FFFFFF
+    classDef line fill:#FFFFFF,stroke:#FFFFFF,color:#1C1B16
+    classDef ring fill:#FFFFFF,stroke:#B37A33,color:#1C1B16,stroke-width:2px
+    classDef note fill:#FFFFFF,stroke:#FFFFFF,color:#B37A33
     class B bar
     class T1,T2 line
     class R ring
@@ -145,12 +148,13 @@ flowchart TB
         end
         B ~~~ T1 ~~~ ROW
     end
-    style W fill:#FFFFFF,stroke:#1A0F5C,color:#1A0F5C
+    style W fill:#FFFFFF,stroke:#1C1B16,color:#1C1B16
     style ROW fill:#FFFFFF,stroke:#FFFFFF
-    classDef bar fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    classDef line fill:#FFFFFF,stroke:#FFFFFF,color:#1A0F5C
-    classDef ring fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef note fill:#FFFFFF,stroke:#FFFFFF,color:#5B3FD6
+    classDef default fill:#FFFFFF,stroke:#1C1B16,color:#1C1B16
+    classDef bar fill:#1C1B16,stroke:#1C1B16,color:#FFFFFF
+    classDef line fill:#FFFFFF,stroke:#FFFFFF,color:#1C1B16
+    classDef ring fill:#FFFFFF,stroke:#B37A33,color:#1C1B16,stroke-width:2px
+    classDef note fill:#FFFFFF,stroke:#FFFFFF,color:#B37A33
     class B bar
     class T1 line
     class K ring
@@ -195,11 +199,12 @@ flowchart TB
         N["<b>Stop the codespace<br/>when you finish; it keeps<br/>your files and stops<br/>the clock.</b>"]
         B ~~~ T1 ~~~ K ~~~ T2 ~~~ N
     end
-    style W fill:#FFFFFF,stroke:#1A0F5C,color:#1A0F5C
-    classDef bar fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    classDef line fill:#FFFFFF,stroke:#FFFFFF,color:#1A0F5C
-    classDef ring fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef note fill:#FFFFFF,stroke:#FFFFFF,color:#5B3FD6
+    style W fill:#FFFFFF,stroke:#1C1B16,color:#1C1B16
+    classDef default fill:#FFFFFF,stroke:#1C1B16,color:#1C1B16
+    classDef bar fill:#1C1B16,stroke:#1C1B16,color:#FFFFFF
+    classDef line fill:#FFFFFF,stroke:#FFFFFF,color:#1C1B16
+    classDef ring fill:#FFFFFF,stroke:#B37A33,color:#1C1B16,stroke-width:2px
+    classDef note fill:#FFFFFF,stroke:#FFFFFF,color:#B37A33
     class B bar
     class T1,T2 line
     class K ring
@@ -230,11 +235,12 @@ flowchart TB
         N["<b>A Discussion reply is<br/>public writing. It is read<br/>by the TAs and, later,<br/>by you.</b>"]
         B ~~~ T1 ~~~ R ~~~ T2 ~~~ N
     end
-    style W fill:#FFFFFF,stroke:#1A0F5C,color:#1A0F5C
-    classDef bar fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    classDef line fill:#FFFFFF,stroke:#FFFFFF,color:#1A0F5C
-    classDef ring fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef note fill:#FFFFFF,stroke:#FFFFFF,color:#5B3FD6
+    style W fill:#FFFFFF,stroke:#1C1B16,color:#1C1B16
+    classDef default fill:#FFFFFF,stroke:#1C1B16,color:#1C1B16
+    classDef bar fill:#1C1B16,stroke:#1C1B16,color:#FFFFFF
+    classDef line fill:#FFFFFF,stroke:#FFFFFF,color:#1C1B16
+    classDef ring fill:#FFFFFF,stroke:#B37A33,color:#1C1B16,stroke-width:2px
+    classDef note fill:#FFFFFF,stroke:#FFFFFF,color:#B37A33
     class B bar
     class T1,T2 line
     class R ring
@@ -272,7 +278,8 @@ flowchart LR
     T --> F["<b>Fri: one commit</b><br/>code that runs"]
     F --> S["<b>Sat: recap, README</b><br/>what changed this week"]
     S --> U["<b>Sun: nothing</b><br/>rest is part of the loop"]
-    classDef ring fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef default fill:#FFFFFF,stroke:#1C1B16,color:#1C1B16
+    classDef ring fill:#FFFFFF,stroke:#B37A33,color:#1C1B16,stroke-width:2px
     class F ring
 ```
 

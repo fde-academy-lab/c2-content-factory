@@ -77,7 +77,8 @@ flowchart LR
     C --> D["<b>groupby</b><br/>one group per tier"]
     D --> E["<b>agg</b><br/>sum and count"]
     E --> F["<b>merge</b><br/>join customers"]
-    classDef ring fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef default fill:#FFFFFF,stroke:#1C1B16,color:#1C1B16
+    classDef ring fill:#FFFFFF,stroke:#B37A33,color:#1C1B16,stroke-width:2px
     class D ring
 ```
 

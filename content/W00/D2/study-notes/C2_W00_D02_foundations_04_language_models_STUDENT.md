@@ -252,7 +252,7 @@ validate. Weak answer: "deterministic output".
 | Step | Resource | Time | Why this one |
 |---|---|---|---|
 | 1 | 3Blue1Brown, "Transformers, the tech behind LLMs \| Deep Learning Chapter 5", [youtube.com/watch?v=wjZofJX0v4M](https://youtube.com/watch?v=wjZofJX0v4M) (checked 30 September 2026) (April 2024) | 27 min | Tokens, scores and sampling drawn, not asserted |
-| 2 | Andrej Karpathy, "[1hr Talk] Intro to Large Language Models", [youtube.com/watch?v=zjkBMFhNj_g](https://youtube.com/watch?v=zjkBMFhNj_g) (November 2023) | 60 min | The two files, training against inference, and the failure modes |
+| 2 | Andrej Karpathy, "[1hr Talk] Intro to Large Language Models", [youtube.com/watch?v=zjkBMFhNj_g](https://youtube.com/watch?v=zjkBMFhNj_g) (checked 30 September 2026) (November 2023) | 60 min | The two files, training against inference, and the failure modes |
 | 3 | Anthropic, prompt engineering overview, [platform.claude.com/docs/en/build-with-claude/prompt-engineering](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview) (checked 30 September 2026) | 30 min | The four-part prompt as the vendor states it, with examples |
 | 4 | OpenAI, prompt engineering guide, [platform.openai.com/docs/guides/prompt-engineering](https://developers.openai.com/api/docs/guides/prompt-engineering) (checked 30 September 2026) | 20 min | The same ideas in a second vendor's words, which is how you learn what is general |
 | 5 | Mini project 4 | 60 min | Your first golden set |
