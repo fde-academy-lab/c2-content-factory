@@ -33,8 +33,8 @@ provisional, with no test, in 105 of the 120 minutes.
 15 = 105, C 20 + 30 + 15 + 15 + 15 = 95 and D 30 + 15 + 25 + 15 + 15 = 100, so every plan fits the
 clock and the choice is which step to leave out. A leaves out the reconciliation, the one step that
 can flip the sign of the first line: on this morning's lab export (proposed for client zero v2.3) a
-pass of that kind reported Q2 up 11.8 percent where the books said down 28.5. C answers one segment
-where Meera asked for all of them. D cleans a file nobody has profiled, so it cleans only the defects
+pass of that kind reported Q2 up 11.8 percent where the books said down 28.5. C skips the tree and tests one
+segment's gap, so it answers one segment where Meera asked for all of them. D cleans a file nobody has profiled, so it cleans only the defects
 someone already expected. B leaves out the test, which matters only when Meera is about to act on a
 gap between segments, and the provisional label says what was not done.
 
@@ -131,7 +131,7 @@ that fails), run D, one visit in ten for a fortnight, which limits the exposure 
 more evidence than C. If the traffic is a dozen visits a week, as Student's orders were on Thursday,
 no test settles it within a quarter, so decide on the cost of being wrong and how easily the change
 can be reversed. If the change is free to reverse within a day, ship it behind a switch and measure
-it as it runs, which is C by another name.
+it as it runs, which gives C's comparison while the change is live.
 
 **The model answer.** "Forty-two is higher than thirty-one, and I would like it to be true too. It
 rests on five conversions out of twelve visits, and if the new checkout were really no better, five

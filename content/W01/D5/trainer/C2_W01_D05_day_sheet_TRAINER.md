@@ -5,6 +5,15 @@ client zero v2.3** and not yet locked.
 
 Posts to <!-- sync:module:W01/D5 -->Module 1: Foundations of AI and Data<!-- /sync:module:W01/D5 -->, on <!-- sync:day-date:W01/D5 -->Fri 09 Oct 2026<!-- /sync:day-date:W01/D5 -->.
 
+**Who needs the answer.** Kavya Nair, who takes the room's work to Meera Raghavan's growth review on
+Monday with Marketing in the room: a learner who cannot run the method alone, or who folds at
+Marketing's first push, puts a number in front of Meera that nobody in the room can defend.
+
+**The questions on the way.** Can you take a raw export to a note Finance would sign, alone, in two
+hours? Where did the room break, and what should each step have been? Does your note hold when
+Marketing pushes? Which approach fits each timed case? What did the week make yours? The table below
+gives each part's smaller questions in the order the trainer asks them.
+
 ## Which questions does the day ask, in the order the trainer asks them?
 
 The day's question, in Kavya Nair's words: **can you rebuild the week alone on a raw export, and hold
@@ -14,9 +23,9 @@ hears no question beyond "what would you check?".
 
 | Part | Its question | The smaller questions, in order |
 |---|---|---|
-| The lab (morning) | Can you take a raw export to a note Anand would sign, alone, in two hours? | What does this file hold before you change anything? Which rows count, and why? Is the clean data still the data Finance booked? Which branch of the revenue tree moved, in which segment, and on how many orders? Could chance alone produce the gap you will lead with? What should Meera do on Monday, and how sure is the note? |
-| Debrief chapter 1 | Do the two quarters in your note match Finance's books? | What headline does a pass that skips the reconciliation send? Which check should run before the number is sent, and what does each one cost? What does the count check fix, and what does it leave behind? Which two moves walk the hurried sum to Finance's total? Does a sum of the decisions themselves land on the same two moves? |
-| Debrief chapter 2 | Every count reconciles and nothing was rejected: is the pass finished? | What does a pass that sets unreadable values to zero report? What do the rupees say when every count lands? Which of four answers fits a value that will not convert? What does reading the value change in the note? Can a segment filter drop a row the same way? Can the file alone, with no control total, find the gap? |
+| The lab (morning) | Can you take a raw export to a note Finance would sign, alone, in two hours? | What does this file hold before you change anything? Which rows count, and why? Is the clean data still the data Finance booked? Which branch of the revenue tree moved, in which segment, and on how many orders? Could chance alone produce the gap you will lead with? What should Meera do on Monday, and how sure is the note? |
+| Debrief chapter 1 | Do the two quarters in your note match Finance's books? | What headline does a pass that skips the reconciliation send? Which check should run before the number is sent, and what does each one cost? What does the count check fix, and what does it leave behind? Which two moves walk the hurried sum to Finance's total? Does a sum of the decisions themselves land on the bridge's two moves? |
+| Debrief chapter 2 | Every count reconciles and nothing was rejected: is the pass finished? | What does a pass that sets unreadable values to zero report? What do the rupees say when every count lands? Which of four answers fits a value that will not convert? What does reading the value change in the note? Can a segment filter drop a row without a word, as the zero did? Can the file alone, with no control total, find the gap? |
 | Debrief chapter 3 | Which finding leads the note, and how sure can Meera be of it? | Where in the tree does the fall sit? How many orders does the biggest move rest on? How should a team choose the lead, and what does each way cost? Is the lead's fall more than chance on its members' own two quarters? Is the fall broad, or carried by a few members? |
 | The rehearsal | Does your note hold when Marketing pushes? | Who hears the note, and what does each listen for? How do two minutes carry four parts? What will Marketing push on? How do you hold a caveat without folding or overclaiming? How do the rounds run? What does a partner write? |
 | The design cases | Which approach fits each case, sized how, and what would make you switch? | What do you leave out when Meera wants a first read in two hours? Which check runs first when zero rejects meet a Rs 20 lakh gap? Can 5 of 12 visits beat 31 percent of 1,200? |

@@ -5,12 +5,11 @@ Meera, rebuild the week from a raw export with no assistant and no notes. Then s
 you will say it to her, because I will push the way Marketing will."
 
 Nothing new was taught. The morning found out which of the week's ideas you own, and the afternoon
-found out whether you can say them to someone who disagrees. These notes walk the method once more
-as a worked case, take the three places most rooms broke as three chapters, and answer the day's
-interview questions in full. Every number in the worked case and the chapters comes from an invented
-export, labelled invented, which carries the week's four kinds of defect in places the lab file does
-not, so the notes read the same before and after the lab. The lab file's own numbers appear only in
-the debrief notebooks' your-turn cells, when you type them.
+found out whether you can say them to someone who disagrees. Below, the method runs once more as a
+worked case, the three places a hurried run breaks become three chapters, and the day's interview
+questions get full answers. Every number in the worked case and the chapters comes from an invented
+export, labelled invented, so none of it is Kalpa's or the lab file's; the lab file's own numbers
+appear only when you type the debrief notebooks' your-turn cells.
 
 ---
 
@@ -40,10 +39,11 @@ flowchart LR
     F --> S["<b>Sat</b><br/>on paper"]
 ```
 
-Monday gave the revenue tree (revenue is customers, times orders per customer, times revenue per
-order) and the median. Tuesday gave the investigation ladder and the rule that a rate needs its
-denominator. Wednesday gave the profile, the decisions log and the reconciliation. Thursday gave the
-shuffle test and the four-part note. Friday put them in one order and took away every support. Week
+Monday built the revenue tree (revenue is customers, times orders per customer, times revenue per
+order) and the median. On Tuesday came the investigation ladder, which climbs from whether a drop is
+real to which branch and segment moved, and the rule that a rate needs its denominator. Wednesday
+added the profile, the decisions log and the reconciliation, and Thursday the shuffle test and the
+four-part note. Friday put them in one order and took away every support. Week
 2 runs the same method against a warehouse in SQL, so the order you practised today is the order you
 will type queries in on Monday.
 
@@ -67,9 +67,9 @@ flowchart LR
 ```
 
 Each step answers the question the next one depends on. The profile says whether the file is what it
-claims. Cleaning decides which rows count and writes down why. The reconciliation proves the clean
-data is still the data Finance booked. The decomposition says which branch moved. The test says
-whether chance could have done it. The note says what Meera should do.
+claims, and cleaning decides which rows count and writes down why. The reconciliation proves the
+clean data is still the data Finance booked; the decomposition then says which branch moved, the test
+whether chance could have done it, and the note what Meera should do.
 
 The six steps work only in this order. A learner who knows all six and runs them out of order quotes
 a total before the file is read, or tests a gap before it is reconciled, and that is what breaks first
@@ -78,6 +78,19 @@ when the clock runs.
 ---
 
 ## How does the method run on a fresh export, step by step?
+
+**Who needs the answer.** Kavya Nair, who needs to know before Monday's growth review that each of
+you can run the whole method alone, in its order, on a file you have not seen; a step run out of
+order is the one that breaks when the clock runs.
+
+**The questions on the way.**
+
+1. What does the file hold before you change anything?
+2. Which rows count, and why?
+3. Is the clean data still the data Finance booked?
+4. Which branch moved, in which segment, and on how many orders?
+5. Could chance alone produce the move you will lead with?
+6. What should Meera do, in four parts?
 
 The export in this worked case is invented: two quarters, 175 rows as it arrives, and Finance's
 control totals beside it, Q1 Rs 40,00,000 on 83 orders and Q2 Rs 26,00,000 on 84 orders. A control
@@ -134,8 +147,10 @@ and the bridge that closes it.
 
 ### Which branch moved, in which segment, and on how many orders?
 
-Revenue is customers, times orders per customer, times revenue per order. The total moved, and the
-tree says where.
+Revenue is customers, times orders per customer, times revenue per order. Orders per customer is
+the frequency and revenue per order the basket. Kalpa's four segments are Retail-Core, Retail-Plus
+(the paid members' tier, whose customers are its members), Student and Business (the corporate
+book). The total moved, and the tree says where.
 
 | Segment | Customers Q1 / Q2 | Orders per customer | Revenue per order | Orders |
 |---|---|---|---|---|
@@ -144,8 +159,10 @@ tree says where.
 | Student | 10 / 10 | 1.00 / 1.40 | Rs 900 / Rs 880 | 10 / 14 |
 | Business | 5 / 2 | 1.00 / 1.00 | about Rs 7.6 lakh / Rs 12.2 lakh | 5 / 2 |
 
-Two things moved: Retail-Plus's basket, down 15.0 percent on 32 orders a quarter with members and
-frequency flat, and the corporate book, on five orders and then two.
+Three things moved. Retail-Plus's basket fell 15.0 percent on 32 orders a quarter with its members
+and their frequency flat; the corporate book moved on five orders and then two; and Student's
+frequency rose from 1.00 to 1.40, on 10 orders and then 14. Only the first rests on enough orders to
+test.
 
 ### Could chance alone produce the move you will lead with?
 
@@ -156,14 +173,15 @@ third chapter below runs it: 22 of 2,000 flipped worlds are as extreme, p = 0.01
 ### What should Meera do, in four parts?
 
 **Claim.** Q2 revenue fell 35.0 percent, from Rs 40,00,000 to Rs 26,00,000; Rs 13,88,200 of it is the
-corporate book, and among consumers the one branch that moved is Retail-Plus's revenue per order,
+corporate book, and among consumers the one branch that moved on enough orders to test is
+Retail-Plus's revenue per order,
 down 15.0 percent from Rs 3,000 to Rs 2,550, with its 16 members and 2.00 orders each unchanged.
 **Evidence.** 167 distinct orders reconcile to Finance's control totals in both quarters after
 setting aside 8 repeated rows and reading one amount stored with its paise; with each member's two
 quarters flipped at random, a change this large came up in 22 of 2,000 worlds, p = 0.011, and 13 of
 the 16 members saw their own basket fall.
-**Caveat.** The corporate book moved on five orders then two, too few to call a trend, and one Q1
-order's segment was restored from its customer's other orders.
+**Caveat.** The corporate book moved on five orders then two and Student's on 10 then 14, too few to
+call a trend, and one Q1 order's segment was restored from its customer's other orders.
 **Action.** Ask the corporate account owner why fewer orders came in, and look at Retail-Plus's
 items per order and price per item before any spend.
 
@@ -186,7 +204,7 @@ Marketing's Rs 12 crore request to win new customers is judged against a quarter
 2. Which check should run before the number is sent, and what does each one cost?
 3. What does the count check fix, and what does it leave behind?
 4. Which two moves walk the hurried sum to Finance's total?
-5. Does a sum of the decisions themselves land on the same two moves?
+5. Does a sum of the decisions themselves land on the bridge's two moves?
 
 The metric is booked revenue per quarter, the rupees of the orders recorded as sales in it, and its
 change from Q1 to Q2. Nykaa faces the same question every quarter: it reports gross merchandise value
@@ -201,7 +219,7 @@ government statement, 4 October 2020). No step raised an error, and the rows wer
 ### What headline does a pass that skips the reconciliation send?
 
 **The plausible wrong answer.** On the invented export, a pass that keeps the rows as they arrived and
-sets a value that will not convert to zero reads Q1 as Rs 31,50,000 on 83 rows and Q2 as Rs 38,16,420
+sets to zero any value that will not convert reads Q1 as Rs 31,50,000 on 83 rows and Q2 as Rs 38,16,420
 on 92 rows, and reports Q2 up 21.2 percent. The books say Q2 fell 35.0 percent. The error reversed the
 finding, and a note built on it tells Meera that a quarter which fell was a good one.
 
@@ -223,8 +241,8 @@ Each option is applied to the same hurried pass.
 
 The computer's share of every option is under a millisecond, so the choice is about minutes of
 thought and what each check needs from outside the file. **The best-fit call is C:** it needs only
-the control file that came with the export and lands to the rupee. B is where most people who
-checked at all stopped, and it still leaves the headline 17.5 points off. D would name every order
+the control file that came with the export and lands to the rupee. B is where a hurried
+check usually stops, and it still leaves the headline 17.5 points off. D would name every order
 that differs, once Finance sends its ledger, and costs that request and the afternoon. **What would
 change it:** no control total at all, or a bridge that will not close; then D, or a second export
 from the source system, is the check.
@@ -243,7 +261,7 @@ walk from Rs 69,66,420 lands on Rs 66,00,000. With both quarters on the books, t
 of 35.0 percent. The sign changed, so the decision changed: Monday's review has Rs 14,00,000 of fall
 to explain.
 
-### Does a sum of the decisions themselves land on the same two moves?
+### Does a sum of the decisions themselves land on the bridge's two moves?
 
 The bridge's two moves were found by subtracting one total from another. The second route sums the
 decisions on their own: the 8 rows set aside as repeats come to Rs 12,16,420 and the one log line
@@ -270,7 +288,7 @@ every other number in the note is doubted with it.
 2. What do the rupees say when every count lands?
 3. Which of four answers fits a value that will not convert?
 4. What does reading the value change in the note?
-5. Can a segment filter drop a row the same way?
+5. Can a segment filter drop a row without a word, as the zero did?
 6. Can the file alone, with no control total, find the gap?
 
 The metric is Q1 booked revenue, the base every Q1 to Q2 rate divides by. JPMorgan Chase's own task
@@ -317,7 +335,7 @@ that is not an order at all, such as a test transaction, moves it to B.
 One log line moves the reported fall from 17.5 to 35.0 percent, Rs 14,00,000 of fall on the books:
 the difference between "a soft quarter" and "a quarter to explain".
 
-### Can a segment filter drop a row the same way?
+### Can a segment filter drop a row without a word, as the zero did?
 
 A filter on the segment name never sees a row whose segment is empty. On the invented export the
 named segments fall one order short in Q1: Retail-Core reads Rs 73,250 on its named Q1 rows, so it
@@ -453,7 +471,7 @@ loses the room.
 3. How do you hold a caveat without folding or overclaiming?
 
 Meera wants one page in two minutes and acts on the first line; the marketing lead defends the
-monsoon sale and the acquisition budget; Anand checks every number against the books; the head of
+monsoon sale, the discount campaign Thursday's note judged, and the acquisition budget; Anand checks every number against the books; the head of
 Retail-Plus wants to know whether the tier is slipping. The two-minute shape is the note's own: about
 thirty seconds of claim, forty of evidence, thirty of caveat, twenty of action.
 
@@ -481,11 +499,17 @@ bounds and offers a test, so the room hears the caveat as part of the claim.
 stakeholder who acts on the call. The numbers marked illustrative in the cases are set for the case
 and are not Kalpa's records.
 
+**The questions on the way.**
+
+1. What do you leave out when Meera wants a first read in two hours?
+2. Which check runs first when zero rejects meet a Rs 20 lakh gap?
+3. Can 5 of 12 visits beat 31 percent of 1,200?
+
 | Case | The approaches on the table | The call, sized | The switch |
 |---|---|---|---|
-| Meera's first read, two hours after the export lands | Four plans at the lab's pace, each leaving one step out: no reconciliation (105 minutes), no test (105), the tree for one segment only (95), no profile (100) | The plan with no test, marked provisional, with the reconciliation never dropped | A segment gap Meera will act on: add the test on that gap and trim the tree; no control total: say so in the first line |
-| Zero rejects and a Rs 20 lakh gap after the migration | Ids against rows (a cell); the value accounting (a cell); a rupee bridge by month (about 30 minutes); every order against the ledger (a day) | The two cheap checks first, then the bridge, and stop where it closes | A month the bridge cannot close gets matched order by order |
-| 42 percent on twelve visits | Ship now; wait at 12 visits a week (about 14 weeks); a half-and-half split to about 300 visits each (about half a week); one visit in ten for a fortnight (about 240 new-checkout visits beside about 2,160) | The split, about half a week | A checkout that could lose money: one visit in ten for the fortnight; a dozen visits a week in all: decide on cost and reversibility |
+| Meera wants a first read two hours after a raw export lands | Four plans at the lab's pace each leave one step out: no reconciliation (105 minutes), no test (105), no tree with one segment's gap tested (95), or no profile (100) | The plan with no test fits, marked provisional, and the reconciliation is never dropped | If Meera will act on a segment gap, add the test on that gap and trim the tree; with no control total, say so in the first line |
+| A migrated ERP's first quarter shows zero rejects and a Rs 20 lakh gap | Ids against rows takes a cell, the value accounting a cell, a rupee bridge by month about 30 minutes, and every order against the ledger a day | The two cheap checks run first, then the bridge, and the work stops where it closes | A month the bridge cannot close gets matched order by order |
+| A redesigned checkout converts 5 of 12 visits against 31 percent of 1,200 | Ship now; wait at 12 visits a week, about 14 weeks; split the traffic in half to about 300 visits each, about half a week; or give it one visit in ten for a fortnight, about 240 visits beside about 2,160 | The half-and-half split fits, in about half a week | If a worse checkout could lose money, use one visit in ten for the fortnight; with a dozen visits a week in all, decide on cost and reversibility |
 
 Each case has a real likeness. DMart (Avenue Supermarts) put out its July to September 2025 standalone revenue, Rs
 16,218.79 crore across 432 stores, as a provisional business update on 3 October 2025, and reported
@@ -503,8 +527,11 @@ where that figure comes from is a later week's topic. What the room can compute 
 side of it: 5 conversions in 12 visits would still turn up in about 3 weeks of 10 if the new checkout
 were really no better than 31 percent.
 
-**The answer.** Each case is answered with the option, its size in minutes, rupees or visits, and
-the fact that would switch it, in that order.
+**The answer.** Case 1 takes the plan with no test, 105 minutes at the lab's pace, marked
+provisional, and never drops the reconciliation. Case 2 runs the two one-cell checks, then the rupee
+bridge by month, about 30 minutes, and stops where it closes. Case 3 splits the traffic in half until
+each checkout has about 300 visits, about half a week at 1,200 visits a week. Each answer names the
+option, its size and the fact that would switch it, in that order.
 
 ---
 
@@ -576,8 +603,8 @@ broke.
 
 ## Where is this tested next?
 
-Saturday's paper is pen and paper, no assistant, objective items, marked by a peer against a key and
-discussed as interview answers. The note's four parts and the p-value sentence are on it. Monday's
+Saturday's paper is sat on pen and paper with no assistant; its items are objective, a peer marks
+them against a key, and the room discusses them as interview answers. The note's four parts and the p-value sentence are on it. Monday's
 growth review hears the note you defended today.
 
 ---
@@ -587,6 +614,11 @@ growth review hears the note you defended today.
 | Term | Meaning |
 |---|---|
 | Profile | Present, convertible and distinct counts for every field, read before any change |
+| Segment | The customer group an order belongs to; Kalpa's four are Retail-Core, Retail-Plus, Student and Business |
+| Members | Retail-Plus's customers, who pay for the members' tier |
+| Corporate book | The Business segment's orders, few and large |
+| Frequency | Orders per customer in a period, one branch of the revenue tree |
+| Basket | Revenue per order, another branch of the revenue tree |
 | Decisions log | One line per cleaning decision: the order id, drop or default or keep and flag, and the reason |
 | Identity rule | What makes two rows the same order; here, the order id |
 | Control total | The source system's own count and rupee total for a period, which a clean pass must land on |

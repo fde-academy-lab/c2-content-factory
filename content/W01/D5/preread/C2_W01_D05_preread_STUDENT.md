@@ -13,8 +13,9 @@ Meera set the bar on Thursday, and Saturday's paper and Monday's review both hol
 > "One page, two minutes. If the honest answer is 'we do not know yet', say so and tell me what
 > would tell us."
 
-Every question on the paper is a Kalpa business question first and a technique question second, the
-order interviewers use.
+Every part of the paper opens on a business situation, most of them at Kalpa and some at a named
+company or in a public case, and asks the business question before the technique, the order
+interviewers use.
 
 ```mermaid
 flowchart LR

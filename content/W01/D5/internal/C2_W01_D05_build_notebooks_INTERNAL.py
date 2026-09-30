@@ -91,7 +91,7 @@ kit.check("one amount will not convert and one segment is empty",
           prof["amount"][1] == 206 and prof["segment"][0] == 206)
 '''),
     md("""
-    **The first trap: the typical order.** A hurried profile reports the mean order as the typical
+    **Trap 6, the typical order.** A hurried profile reports the mean order as the typical
     one. The median is the honest answer, because ten corporate orders sit above Rs 7 lakh while
     every consumer order sits under Rs 4,000.
     """),
@@ -107,7 +107,7 @@ kit.table(["measure", "on the rows that convert, duplicates still in"],
 
     The pass makes three decisions, each logged with its row count as it is made. The identity rule
     is the order id: two rows with one id are one order. The corporate amount written with Indian digit grouping
-    is a real order stored as text, so it is converted and flagged, never set to zero. The empty
+    is a real order stored as text, so it is read, converted and flagged in the log. The empty
     segment is restored from the same customer's other orders, flagged, because every one of that
     customer's other orders carries one segment.
     """),
@@ -152,7 +152,7 @@ kit.check("the restored segment comes from a customer with one segment only",
           all(len(customer_segment[r["customer_id"]]) == 1 for r in clean))
 '''),
     md("""
-    **The second trap: the pass that looks clean.** A hurried pass wraps `int()` in a try and sets a
+    **Trap 2, the pass that looks clean.** A hurried pass wraps `int()` in a try and sets a
     failure to zero. It reports no rejects, the row count reconciles, and Q1 is short by the whole
     corporate order.
     """),
@@ -201,7 +201,7 @@ print(f"as read {kit.rupees(as_read)}, duplicates {kit.rupees(dupes)}, text amou
       f"lands on {kit.rupees(as_read + dupes + text_back)}")
 '''),
     md("""
-    **The third trap, the one most rooms fall into: the reconciliation skipped.** A run that keeps
+    **Trap 1, the reconciliation skipped, the one most rooms fall into.** A run that keeps
     the repeated rows and loses the text amount compares two wrong quarters and reports growth. Each
     half of the mistake on its own gives a different wrong number, and all three are below.
     """),
@@ -277,7 +277,7 @@ kit.check("the corporate fall rests on fewer than thirty orders",
           tree(clean, "Q1", "Business")[0] + tree(clean, "Q2", "Business")[0] < 30)
 '''),
     md("""
-    **The fourth trap: the wrong branch.** On the uncleaned rows Retail-Core's customers seem to
+    **Trap 3, the wrong branch.** On the uncleaned rows Retail-Core's customers seem to
     order about a fifth more often in Q2, which cancels the basket fall and reads the segment as
     flat. The frequency rise is the repeated batch and nothing else.
     """),
@@ -485,7 +485,7 @@ kit.check("the flagged-unknown handling reads Plus Q2 as 34 orders and Rs 93,670
           len(q2_named) == 34 and sum(r["amount"] for r in q2_named) == 93670)
 '''),
     md("""
-    **The fifth trap: the wrong unit, in two forms.** Both hurried routes split what belongs together.
+    **Traps 5 and 5b, the wrong unit.** Both hurried routes split what belongs together.
     Shuffling segment labels across single orders splits one customer's orders between the groups
     (trap 5); pooling each customer's Q1 and Q2 figures and dealing the quarter labels treats a
     customer's own two quarters as strangers (trap 5b), and so does dealing the quarter label across
@@ -531,7 +531,7 @@ kit.check("the quarter label dealt across single orders lands below the note's t
     spend; ask the corporate account owner why C-7304 did not reorder and why C-7300 ordered once
     where it had ordered twice.
 
-    **The sixth trap: the headline on ten orders.** "Corporate revenue fell 29 percent" is true to
+    **Trap 4, the headline on ten orders.** "Corporate revenue fell 29 percent" is true to
     the rupee and rests on ten orders; a note that leads with it sends Meera after two invoices.
     """),
     code('''
@@ -634,9 +634,10 @@ kit.check("the practice lead rests on under thirty orders a quarter", n1 < 30 an
     differ from Retail-Core's? Those are different customers, so the segment label is shuffled across
     customers, 2,000 times on `random.Random(7)`. The verdict depends on the practice export's order
     with no customer_id (a Retail-Core order in Q2). The test runs two ways that give the order a
-    customer or none: kept as a customer of its own, and left out of the file entirely. Item 3's
-    handling, kept as an order with its customer uncounted, moves the observed gap too, but its order
-    has no customer to shuffle, so its row shows the gap only.
+    customer or none: kept as a customer of its own, and left out of the file entirely. Item 4's
+    handling, kept as an order with its customer uncounted, moves the observed gap too, but a shuffle
+    of whole customers has nowhere to put an order that belongs to no customer, so its row shows the
+    gap only.
     """),
     code('''
 def freq_change(rs):
@@ -707,16 +708,17 @@ kit.check("the verdict turns on the handling: one p sits at the edge of 0.05, th
 # --------------------------------------------------------------------------- the lab workspace
 LAB = [
     md("""
-    # Can you take a raw export to a note Anand would sign, alone, in two hours?
+    # Can you take a raw export to a note Finance would sign, alone, in two hours?
 
     **The AI-free lab, Week 1, Friday.** Kavya Nair, senior analyst, to the team: "Before anything
     goes to Meera, rebuild the week from a raw export with no assistant and no notes. Then say it to me
     the way you will say it to her, because I will push the way Marketing will."
 
-    **Who needs the answer.** Meera Raghavan, the CEO, acts on the note's first line at Monday's
-    growth review, with Marketing's Rs 12 crore request on the table, and Anand Iyer, the finance
-    controller, reads every number against his control totals before she does. A first line that
-    does not tie to his books is sent back.
+    **Who needs the answer.** Kavya Nair needs it before Monday's growth review, where Meera Raghavan,
+    the CEO, acts on a note's first line with Marketing's Rs 12 crore request on the table, and Anand
+    Iyer, the finance controller, reads every number against his control totals before she does. This
+    export is a drill, re-keyed so nothing in it goes to Monday's review, and Kavya reads your note the
+    way they will: a first line that does not tie to the control totals is sent back.
 
     **The questions on the way.** The six sections below ask them in the week's order: what the file
     holds before you change anything; which rows count, and why; whether the clean data is still the
@@ -814,9 +816,9 @@ kit.check("__TODO15__", __TODO16__)
 __TODO17__
 '''),
     code('''
-kit.strip(__TODO18__, markers=[("observed", __TODO19__, "bad")], lo=-30, hi=30,
+kit.strip(__TODO18__, markers=[("observed", __TODO19__, "bad")], lo=__TODO20__, hi=__TODO21__,
           fmt=lambda v: f"{v:+.0f}", title="Chance-only worlds against the real gap")
-kit.check("__TODO20__", __TODO21__)
+kit.check("__TODO22__", __TODO23__)
 '''),
     md("""
     ## 6. What should Meera do on Monday, and how sure is the note?
@@ -827,10 +829,10 @@ kit.check("__TODO20__", __TODO21__)
     """),
     code('''
 note = """
-Claim: __TODO22__
-Evidence: __TODO23__
-Caveat: __TODO24__
-Action: __TODO25__
+Claim: __TODO24__
+Evidence: __TODO25__
+Caveat: __TODO26__
+Action: __TODO27__
 """
 out = pathlib.Path("output")
 out.mkdir(exist_ok=True)

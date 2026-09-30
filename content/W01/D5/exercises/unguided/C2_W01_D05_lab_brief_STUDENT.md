@@ -1,17 +1,19 @@
-# Can you take a raw export to a note Anand would sign, alone, in two hours?
+# Can you take a raw export to a note Finance would sign, alone, in two hours?
 
 In the AI-free lab on Friday of Week 1, Kavya Nair, senior analyst in the Kalpa Retail data team,
 sets the task: "The growth review is on Monday, and Marketing will be in the room. Before anything
 goes to Meera, rebuild the week from a raw export with no assistant and no notes."
 
-**Who needs the answer.** Meera Raghavan, Kalpa Retail's CEO, decides on Monday where the next
-quarter's effort goes, with Marketing's Rs 12 crore request to win new customers on the table. Anand
-Iyer, the finance controller, reads every number before she does, and his rule has not changed since
-Wednesday: "Until your numbers match ours, Finance will not act on a drop measured from an ERP
-export." An ERP export is a file pulled from Kalpa's ERP, the enterprise system where its orders and
-its books are recorded. If the note's first line does not tie to Anand's books, the note is sent
-back. A misread branch sends Monday's effort to the wrong team, and a rate on too few orders loses
-the room at Marketing's first question.
+**Who needs the answer.** Kavya Nair needs it before Monday's growth review. There Meera Raghavan,
+Kalpa Retail's CEO, decides where the next quarter's effort goes, with Marketing's Rs 12 crore request
+to win new customers on the table, and Anand Iyer, the finance controller, reads every number before
+she does. His rule has not changed since Wednesday: "Until your numbers match ours, Finance will not
+act on a drop measured from an ERP export." An ERP export is a file pulled from Kalpa's ERP, the
+enterprise system where its orders and its books are recorded. Today's export is a drill, re-keyed
+so nothing in it goes to Monday's review, and Kavya reads your note the way Anand and Meera will read
+Monday's: if its first line does not tie to Finance's own totals it is sent back, a misread branch
+sends effort to the wrong team, and a rate on too few orders loses the room at Marketing's first
+question.
 
 **The questions on the way.** The lab asks six, in the week's order, and each has its own part
 below:

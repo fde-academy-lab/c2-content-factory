@@ -47,7 +47,7 @@ four-part note (claim, evidence, caveat, action) 15.
 flowchart TB
     Q["<b>two hours, a raw export</b><br/>which step do you leave out?"] --> A["<b>A.</b> no reconciliation"]
     Q --> B["<b>B.</b> no test"]
-    Q --> C["<b>C.</b> the tree for one segment only"]
+    Q --> C["<b>C.</b> no tree, one segment's gap tested"]
     Q --> D["<b>D.</b> no profile"]
 ```
 
@@ -116,6 +116,9 @@ That number was checked on the test's own traffic before anyone believed it.
 | B. Keep the caveat, keep the pilot small | Wait for more weeks at about 12 visits a week, with the current checkout's visits beside them | About 14 weeks |
 | C. Split the traffic in half | Each checkout gets half the visits until each has about 300 | About half a week at 1,200 visits a week |
 | D. Give the new checkout one visit in ten for a fortnight | A cautious rollout | About 240 new-checkout visits beside about 2,160 on the current one, over two weeks |
+
+Take about 300 visits per checkout as the case's given size for telling 42 percent from 31 percent at
+the usual bar, and size each option in visits and days from the traffic above.
 
 On your paper, write your first sentence back to the product head, the option you offer with its
 size and its time, and what would make you agree to ship without it.

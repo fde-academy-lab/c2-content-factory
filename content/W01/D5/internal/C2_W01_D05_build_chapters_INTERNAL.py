@@ -74,11 +74,10 @@ print(f"The invented export: {len(rows)} rows over two quarters, with Finance's 
 
 HONESTY = """
 **Before you read on.** This notebook runs on an invented export built for the debrief: 175 rows
-over two quarters, with Finance's control totals beside it, carrying the week's four kinds of defect
-in places this morning's file does not. Its numbers are labelled invented wherever they appear, and
-none of them is Kalpa's or this morning's. After each step an empty cell gives the lines that run
-the same step on this morning's lab export. It ships empty so that the notebook shows nobody what the
-lab file holds before they have run the lab; type the lines and run the cells in order.
+over two quarters, with Finance's control totals beside it. Its numbers are labelled invented
+wherever they appear, and none of them is Kalpa's or this morning's. After each step, the lines under
+**Your turn** run the same step on this morning's lab export: once the lab is over, type them into the
+empty cell below them and run the cells in order.
 """
 
 
@@ -113,7 +112,7 @@ CH1 = [
     2. Which check should run before the number is sent, and what does each one cost?
     3. What does the count check fix, and what does it leave behind?
     4. Which two moves walk the hurried sum to Finance's total?
-    5. Does a sum of the decisions themselves land on the same two moves?
+    5. Does a sum of the decisions themselves land on the bridge's two moves?
 
     **The metric at stake.** Booked revenue per quarter, the rupees of the orders recorded as sales
     in that quarter, and its change from Q1 to Q2, which the note leads with. A control total is the
@@ -170,9 +169,8 @@ print(f"Invented: Finance's books say Q1 to Q2 {truth:+.1f}%, "
     mdj("""
     ## 1. What headline does a pass that skips the reconciliation send?
 
-    Most notes this morning were built on a pass that kept the rows as they arrived and set any value
-    that would not convert to zero. It runs to the end without an error, so nothing on the screen says
-    to stop.
+    A hurried pass keeps the rows as they arrived and sets to zero any value that will not convert. It
+    runs to the end without an error, so nothing on the screen says to stop.
 
     **Predict before you run.** On the invented export, what Q1 to Q2 change does that pass report?
 
@@ -206,8 +204,8 @@ kit.check("the hurried run points the opposite way to the books", h_change > 0 >
 
     **Why it is wrong.** Nobody asked whether the data summed is the data Finance booked. Sent to
     Meera, the line tells her that a quarter which fell was a good one, and the review spends its time
-    on Marketing's plans instead of on the fall. The check that catches it is one comparison with the
-    control file, in orders and in rupees.
+    on Marketing's plans while the fall goes unexplained. The check that catches it is one comparison
+    with the control file, in orders and in rupees.
 
     **Your turn, on this morning's file.** Load the lab export and its control totals, run the same
     hurried pass on it, and put it beside Finance's totals. Type these lines into the empty cell below
@@ -224,8 +222,8 @@ kit.check("the hurried run points the opposite way to the books", h_change > 0 >
           f"the books {change(ctl('Q1', lab_book)[0], ctl('Q2', lab_book)[0]):+.1f}%")
     ```
 
-    Does this morning's hurried headline point the same way as the books, and does each quarter miss
-    in orders, in rupees, or both?
+    Does this morning's hurried headline point the same way as the books, and where does each quarter
+    miss them, if it does?
     """),
     empty(),
     mdj("""
@@ -311,12 +309,13 @@ kit.check("the count check moves the headline and still misses the books",
     counts. The rows it sets aside go to a rejected list, so rows read equal rows kept plus rows
     rejected.
 
-    **Predict before you run.** After B's fix, what does the invented export's headline say?
+    **Predict before you run.** Once every order count lands on Finance's, what can still be wrong in
+    the invented export?
 
-    - a) Q2 up 21.2 percent, unchanged.
-    - b) Q2 down 35.0 percent, the books.
-    - c) Q2 down 17.5 percent.
-    - d) The check cannot run without the order-level ledger.
+    - a) The rows that repeat an order, which the check has not yet removed.
+    - b) A value inside a kept row, which the check cannot see.
+    - c) Nothing, since the counts now land on the books.
+    - d) The order ids, which the check trusts without reading.
     """),
     code('''
 once = first_of_each(rows)
@@ -336,7 +335,7 @@ kit.check("the rupees still miss Finance's control totals", any(counted[q][0] !=
           f"Q1 to Q2 after the count check {c_change:+.1f}%")
 '''),
     mdj("""
-    **What happened.** The answer is c. Every order count lands, and the invented headline moves from
+    **What happened.** The answer is b. Every order count lands, and the invented headline moves from
     +21.2 to -17.5 percent: the right direction at half the size. A count check proves the rows are
     there and says nothing about whether each row's value survived the conversion; Q1 still sums to Rs
     31,50,000 against Finance's Rs 40,00,000. That gap is chapter 2's question.
@@ -391,7 +390,7 @@ kit.check("both quarters land, orders and rupees", all(clean[q] == ctl(q) for q 
     mdj("""
     **What happened.** The answer is a. On the invented export the rows Finance does not hold carry Rs
     12,16,420 and the value read back carries Rs 8,50,000, and the walk from Rs 69,66,420 lands on Rs
-    66,00,000, Finance's two quarters together. Both moves had to be found before it landed.
+    66,00,000, Finance's two quarters together.
 
     **The fix, and what it changes.** With both quarters on the books the invented headline is a fall
     of 35.0 percent, from Rs 40,00,000 to Rs 26,00,000. The note changes sign, so the decision changes
@@ -403,10 +402,11 @@ kit.check("both quarters land, orders and rupees", all(clean[q] == ctl(q) for q 
 
     ```python
     lab_read, lab_extra, lab_back = bridge_moves(lab)
+    floor = 0.9 * min(lab_read, lab_read + lab_extra, lab_read + lab_extra + lab_back)
     kit.bridge(("the hurried sum", lab_read), [("rows Finance does not hold", lab_extra),
                                                ("a value read back", lab_back)],
-               end_label="clean, both quarters", lit=[0], lo=9_000_000,
-               title="This morning's file: from the hurried sum to the books (the axis starts at Rs 90 lakh)")
+               end_label="clean, both quarters", lit=[0], lo=int(floor // 100_000) * 100_000,
+               title="This morning's file: from the hurried sum to the books")
     ```
     """),
     empty(),
@@ -418,7 +418,7 @@ kit.bars([(f"{n}: {'a rise' if h > 0 else 'a fall'}", round(abs(h), 1)) for n, h
          fmt=lambda v: f"{v:.1f}%", width=640, title="Invented: the same file, three first lines (the size of each change)")
 '''),
     mdj("""
-    ## 5. Does a sum of the decisions themselves land on the same two moves?
+    ## 5. Does a sum of the decisions themselves land on the bridge's two moves?
 
     The bridge's two moves were found by subtracting one total from another. The second route builds
     the evidence on its own: every row set aside as a repeat of an order already kept, summed from the
@@ -473,8 +473,7 @@ kit.check("the values in the log add up to the rupees the bridge read back", rea
     kit.table(list(lab[0]), [list(r.values()) for r in lab_set_aside], caption="Rows Finance does not hold")
     ```
 
-    Read the dates and the segments: what do the rows have in common, and what would you tell the
-    person who owns the export?
+    Read the rows the table lists, and write what you would tell the person who owns the export.
     """),
     empty(),
     mdj("""
@@ -507,6 +506,8 @@ kit.check("the repeated rows make one segment's customers look as if they order 
     order 2.44 times each in Q2 against 2.00 in Q1 on the hurried rows, a fifth more often, while one
     row per order shows frequency flat at 2.00 and revenue per order down 15.0 percent. A note built on
     the hurried rows would have named a frequency rise that never happened and missed the basket fall.
+    Retail-Core reads 1.46 orders per customer in Q1 in this table, where chapter 3's clean tree gives
+    1.50, because one of its Q1 orders has no segment until chapter 2 restores it.
 
     **Your turn, on this morning's file.** Run the same comparison on the lab export. Type these lines
     into the empty cell below and run it:
@@ -519,8 +520,8 @@ kit.check("the repeated rows make one segment's customers look as if they order 
               f"per order; revenue per order {change(bc1, bc2):+.1f}%")
     ```
 
-    Where do this morning's repeated rows sit, and which branch would a note built on the hurried rows
-    have named?
+    Do this morning's hurried rows move any segment's orders per customer, and which branch would a
+    note built on them have named?
     """),
     empty(),
     mdj("""
@@ -586,9 +587,9 @@ CH2 = [
     **Week 1, Friday. The lab debrief, chapter 2 of 3.** Chapter 1 put the room's hurried headline
     beside Finance's books, on an invented export: the hurried pass sent Q2 up 21.2 percent, a count
     check moved it to -17.5 percent with every order landing, and only the rupee check reached the
-    books' -35.0. This chapter finds out how a pass can land every count and still be short in rupees,
-    sizes four ways to handle a value that will not convert, and meets the same silence one step later,
-    where a segment filter drops a row without a word.
+    books' -35.0. This chapter asks what else a pass can lose when every count lands, sizes four ways
+    to handle a value that will not convert, and follows the same silence one step later, into a
+    segment filter.
 
     **Who needs the answer.** Anand Iyer's analyst audits every note before it reaches Meera Raghavan,
     and asks for the rupees before the rows. A base quarter short by one large order can halve the fall
@@ -601,7 +602,7 @@ CH2 = [
     2. What do the rupees say when every count lands?
     3. Which of four answers fits a value that will not convert?
     4. What does reading the value change in the note?
-    5. Can a segment filter drop a row the same way?
+    5. Can a segment filter drop a row without a word, as the zero did?
     6. Can the file alone, with no control total, find the gap?
 
     **The metric at stake.** Q1 booked revenue, the base every Q1 to Q2 rate is measured from.
@@ -636,7 +637,7 @@ print(f"{len(once)} orders after one row per order id; the books say Q1 to Q2 {t
     ## 1. What does a pass that sets unreadable values to zero report?
 
     The most natural line of Python in the week wraps the conversion in a `try` and sets a failure to
-    zero. It never stops, it reports nothing, and every row survives.
+    zero, and it runs to the end without an error.
 
     **Predict before you run.** The pass keeps one row per order and sets any value that will not
     convert to zero. On the invented export, how many orders does Q1 report against Finance's 83, and
@@ -837,13 +838,13 @@ kit.vflow(["a value that will not convert",
     mdj("""
     ## 4. What does reading the value change in the note?
 
-    **Predict before you run.** With option C on the invented export, what does the note's first line
-    become?
+    **Predict before you run.** Reading the value moves the invented headline from -17.5 to -35.0
+    percent. How many more rupees of fall does Monday's review now have to explain?
 
-    - a) Q2 down 17.5 percent, unchanged.
-    - b) Q2 down 35.0 percent.
-    - c) Q2 up 21.2 percent.
-    - d) Q2 down about a quarter.
+    - a) Rs 5,50,000.
+    - b) Rs 8,50,000.
+    - c) Rs 14,00,000.
+    - d) Rs 26,00,000.
     """),
     code('''
 fixed, fixed_counts, fixed_log = run_option(once, "C")
@@ -855,11 +856,12 @@ kit.check("the fixed pass lands on both control totals", all(fixed[q] == ctl(q)[
 kit.check("one log line records the decision", len(fixed_log) == 1)
 '''),
     mdj("""
-    **What happened.** The answer is b. One log line moves the invented export's reported fall from
-    17.5 to 35.0 percent, which is Rs 14,00,000 of fall on the books. In the review, that is the
-    difference between "a soft quarter" and "a quarter to explain".
+    **What happened.** The answer is b. One log line adds Rs 8,50,000 of fall to the note: the
+    invented export's reported fall grows from Rs 5,50,000, 17.5 percent, to Rs 14,00,000, 35.0 percent,
+    on the books. In the review, that is the difference between "a soft quarter" and "a quarter to
+    explain".
 
-    ## 5. Can a segment filter drop a row the same way?
+    ## 5. Can a segment filter drop a row without a word, as the zero did?
 
     A pass looks clean whenever a step can lose something without saying so. The next place it happens
     is the tree: a filter on the segment name never sees a row whose segment is empty. On the invented
@@ -902,11 +904,11 @@ kit.check("named rows read a rise where the restored segment fell",
     mdj("""
     **What happened.** The answer is b. On named rows the invented Retail-Core's Q1 is Rs 73,250, so the
     segment seems to rise 2.2 percent to Q2's Rs 74,880; with the order restored from its customer's
-    other orders Q1 is Rs 75,600 and the segment fell 1.0 percent. A segment that fell reads as a rise.
+    other orders Q1 is Rs 75,600 and the segment fell 1.0 percent, so the named rows turned a fall into
+    a rise.
 
     **Why it is wrong, and the fix.** The filter dropped the order, and nobody chose to drop it. The
-    check is one
-    line, that the segments add back to the quarter in orders and in rupees, and it fails by exactly
+    check is one line, that the segments add back to the quarter in orders and in rupees, and it fails by exactly
     the rows the filter never saw. The fix is a logged decision: restore the segment from the customer's
     other orders when all of them carry one segment, flag it and name it in the caveat, or keep the row
     as "segment unknown", named and flagged, with the segment sums reconciled to the quarter.
@@ -980,7 +982,7 @@ kit.check("the logged values add up to the gap the rupee check found", sum(logge
     mdj("""
     ### How would you answer this in an interview?
 
-    **[S] Your cleaning pass reports zero rejects. What do you check?** "I distrust the zero before I
+    **[D] Your cleaning pass reports zero rejects. What do you check?** "I distrust the zero before I
     trust it. First, rows against distinct ids, because a repeated batch is the commonest reason a total
     runs high. Second, how my code handled a value that would not convert: if a `try` set it to zero,
     the rejects count is hiding it. Third, the rupees per period against a control total, with a bridge
@@ -1030,11 +1032,12 @@ CH3 = [
     **Week 1, Friday. The lab debrief, chapter 3 of 3.** Chapters 1 and 2 put both quarters of an
     invented export on the books to the rupee: Q1 Rs 40,00,000 on 83 orders and Q2 Rs 26,00,000 on 84,
     a fall of 35.0 percent, once 8 repeated rows were set aside, one value stored as text was read and
-    one unnamed order was restored to its customer's segment. This chapter reads the clean tree, sizes
+    one order with no segment was restored to its customer's segment. This chapter reads the clean tree, sizes
     four ways to choose the lead and runs every one of them, and tests the lead on each member's own
     two quarters.
 
-    **Who needs the answer.** Meera Raghavan reads the first line of the note and acts on it, and
+    **Who needs the answer.** Meera Raghavan, Kalpa Retail's CEO, reads the first line of the note and
+    acts on it, and
     Marketing will attack any rate that rests on a handful of orders. A trend claimed from a few orders
     sends a team to fix a segment that did nothing while the branch that moved goes unopened for a
     quarter, and the first time Marketing asks "on how many orders?", the whole note loses the room.
@@ -1048,7 +1051,8 @@ CH3 = [
     5. Is the fall broad, or carried by a few members?
 
     **The metric at stake.** The Q1 to Q2 fall split along the revenue tree, segment by segment:
-    revenue is customers, times orders per customer, times revenue per order.
+    revenue is customers, times orders per customer (how often each buys, the frequency), times revenue
+    per order (the basket). Retail-Plus is the paid members' tier and Business is the corporate book.
 
     **Who else faces this.** IMDb will not rank a film in its Top 250 until it has at least 25,000
     ratings from regular voters, and its weighted rating pulls a title with few votes toward the average
@@ -1149,12 +1153,14 @@ kit.check("the segments add back to the quarter", all(sum(T[q, s]["rev"] for s i
     we recommend a corporate retention plan." It is true to the rupee and the biggest move on the page,
     so a hurried note leads with it.
 
-    **Predict before you run.** How many orders does that 36.3 percent rest on?
+    **Predict before you run.** The tree above puts five corporate orders in Q1 and two in Q2. If each
+    of the seven were equally likely to land in either quarter, how often would a split at least that
+    uneven come up?
 
-    - a) About 170, the whole file.
-    - b) About 40, the corporate share of orders.
-    - c) Fewer than ten.
-    - d) It cannot be counted from the export.
+    - a) About 5 percent of the time.
+    - b) About 20 percent.
+    - c) About 45 percent.
+    - d) About 90 percent.
     """),
     code('''
 def coin_flip_share(n1, n2):
@@ -1172,10 +1178,10 @@ kit.check("the corporate rate rests on fewer than thirty orders", b1 + b2 < 30, 
 kit.check("the corporate book carries more than nine tenths of the fall", biz / fall > 0.9)
 '''),
     mdj("""
-    **What happened.** The answer is c: five orders in Q1 and two in Q2. A corporate order here is worth
-    several lakh, so a change of two or three orders moves the book by a third. If each of the seven
-    orders were equally likely to land in either quarter, a split at least as uneven as five and two
-    would come up in 45 percent of worlds.
+    **What happened.** The answer is c. If each of the seven orders were equally likely to land in
+    either quarter, a split at least as uneven as five and two would come up in 45 percent of worlds,
+    and a corporate order here is worth several lakh, so a change of two or three orders moves the book
+    by a third.
 
     **Why it is wrong.** The rupees are real and Meera should hear them. What a handful of orders cannot
     carry is the word "trend", or a plan built on it. The check is to count before you rate: put the
@@ -1246,7 +1252,6 @@ plus = [r for r in clean if r["segment"] == "Retail-Plus"]
 obs_plus, worlds_plus, p_plus = paired_test(clean, "Retail-Plus")
 four = [(s, *paired_test(clean, s, basket=False)[::2]) for s in SEGS]
 false_alarm = 1 - 0.95 ** 4
-lead_d = min(four, key=lambda f: f[2])
 kit.table(["option", "leads with", "orders behind it", "chance alone", "analyst minutes"], [
     ("A. biggest rupee move", f"Business {change(T['Q1', 'Business']['rev'], T['Q2', 'Business']['rev']):+.1f}%",
      b1 + b2, f"{uneven:.0%} of coin-flip worlds as uneven", 5),
@@ -1254,14 +1259,12 @@ kit.table(["option", "leads with", "orders behind it", "chance alone", "analyst 
      "not asked", 2),
     ("C. count before rate", f"Retail-Plus revenue per order {obs_plus:+.1f}%, "
      f"{kit.rupees(T['Q1', 'Retail-Plus']['rev'] - T['Q2', 'Retail-Plus']['rev'])}", len(plus),
-     f"{p_plus:.3f}, each member's quarters flipped", 15),
-    ("D. test every segment", f"{lead_d[0]}, the smallest of four p-values",
+     "one test on its members' own two quarters, run at level 4", 15),
+    ("D. test every segment", "the smallest of four p-values",
      f"{min(len([r for r in clean if r['segment'] == s]) for s in SEGS)} to "
      f"{max(len([r for r in clean if r['segment'] == s]) for s in SEGS)}",
-     f"{lead_d[2]:.3f}, with a {false_alarm:.2f} chance that one of four looks real by luck", 45),
+     f"four tests, with a {false_alarm:.2f} chance that one looks real by luck; run at level 4", 45),
 ], caption="Invented: four ways to choose the lead, sized")
-kit.table(["segment", "revenue change", "p, each customer's quarters flipped, 2,000 times"],
-          [(s, f"{o:+.1f}%", f"{p:.3f}") for s, o, p in four], caption="Invented: option D, run, one test per segment")
 kit.matrix(["enough orders", "too few orders"], ["moved in rupees", "moved in rate only"],
            [["lead with it, tested", "lead only if it survives a test"],
             ["say it as counts, ask the owner", "leave it out of the claim"]],
@@ -1269,21 +1272,19 @@ kit.matrix(["enough orders", "too few orders"], ["moved in rupees", "moved in ra
 '''),
     code('''
 kit.check("Retail-Plus's basket rests on more than thirty orders", len(plus) > 30, f"{len(plus)} orders")
-kit.check("Retail-Plus's fall is one chance rarely produces on its members' own quarters", p_plus < 0.05,
-          f"p = {p_plus:.3f}")
-kit.check("testing every segment turns up no second finding under 0.05", sum(1 for f in four if f[2] < 0.05) == 1)
+kit.check("two segments rest on thirty or more orders, and the other two on fewer",
+          sorted(len([r for r in clean if r["segment"] == s]) >= 30 for s in SEGS) == [False, False, True, True])
 '''),
     mdj("""
     **What happened, and the best-fit call.** C. It costs about fifteen minutes and one test, and on the
-    invented export it leads with Retail-Plus's revenue per order, down 15.0 percent on 64 orders, a
-    change as large as that in either direction turning up in only 22 of 2,000 worlds where each
-    member's two quarters were swapped at random. The move is small in rupees, Rs 14,400 of the fall,
-    about 1 percent of it, so it leads among consumers as the one move on enough orders to test, while
-    the corporate Rs 13,88,200 sits beside it in the claim as counts. A leads on seven orders, too few
-    to call a trend. B hides the one thing Meera most needs, that 99.2 percent of the fall is the
-    corporate book. D, run here, finds the same lead at three times the minutes and spends four tests
-    to do it: with four tests at 0.05 the chance that at least one looks real by luck is about 19
-    percent, so on another file D leads with a fluke about one time in five.
+    invented export it leads with Retail-Plus's revenue per order, down 15.0 percent on 64 orders, the
+    one consumer move on enough orders to test; level 4 runs that test. The move is small in rupees, Rs
+    14,400 of the fall, about 1 percent of it, so it leads among consumers while the corporate Rs
+    13,88,200 sits beside it in the claim as counts. A leads on seven orders, too few to call a trend. B
+    hides the one thing Meera most needs, that 99.2 percent of the fall is the corporate book. D spends
+    four tests at three times the minutes, and with four tests at 0.05 the chance that at least one
+    looks real by luck is about 19 percent, so on another file D leads with a fluke about one time in
+    five; level 4 runs it on this file.
 
     **What would change the call.** A question about accounts: if Meera asked "what
     happened to our corporate revenue?", the lead is the corporate fall, said as counts, with the
@@ -1357,6 +1358,20 @@ kit.check("the dark bars hold exactly the worlds counted as extreme",
     0.0107, so 2,000 flips land close. Counted one way, a fall at least as large, it is 0.0015, the
     number a note would quote only if the fall had been predicted before the data was seen; it was found
     in the tree, so the note reports both directions.
+
+    **Option D, run.** One test per segment, each on its own customers' two quarters, now that the
+    lead's own test is in: the cell below shows whether any second segment comes in under 0.05.
+    """),
+    code('''
+kit.table(["segment", "revenue change", "p, each customer's quarters flipped, 2,000 times"],
+          [(s, f"{o:+.1f}%", f"{p:.3f}") for s, o, p in four], caption="Invented: option D, run, one test per segment")
+kit.check("Retail-Plus's fall is one chance rarely produces on its members' own quarters", p_plus < 0.05,
+          f"p = {p_plus:.3f}")
+kit.check("testing every segment turns up no second finding under 0.05", sum(1 for f in four if f[2] < 0.05) == 1)
+'''),
+    mdj("""
+    **What happened.** Only Retail-Plus comes in under 0.05, so D finds the same lead as C, at three
+    times the minutes and with four chances of a fluke where C took one.
 
     **A different question needs a different test.** "Did Retail-Plus's basket move differently from
     Retail-Core's?" compares two groups of different customers. There the fair test shuffles the segment
@@ -1457,7 +1472,7 @@ kit.check("the second route points the same way as the flips", (fell > rose) == 
     **When to switch routes.** The flips say whether the tier's change is bigger than chance; the
     member count says whether it is broad or carried by a few people. When the two disagree, a handful
     of members moved the average, and the note says so. The sign test uses only the direction of each
-    member's change, never its size, which is why its p of 0.021 sits above the flips' 0.011.
+    member's change, which is why its p of 0.021 sits above the flips' 0.011.
 
     **Your turn, on this morning's file.** Run the sign test on your lab lead. Type this line into the
     empty cell below and run it:
@@ -1540,10 +1555,6 @@ def split_tests(src, seg, other, seed=7):
 depth = split_tests(clean, "Retail-Plus", "Retail-Core")
 kit.table(["measure", "the test", "what it keeps together", "p, both directions"], depth,
           caption="Invented: each fair test beside the hurried twin that splits the pair")
-amounts = sorted(r["amount"] for r in clean)
-kit.table(["measure", "value"], [("mean order, clean", kit.rupees(round(statistics.mean(amounts)))),
-                                 ("median order, clean", kit.rupees(statistics.median(amounts)))],
-          caption="Invented: the typical order")
 kit.check("splitting the pairs pushes both verdicts past 0.05 on the invented export",
           float(depth[1][3]) > 0.05 > float(depth[0][3]) and float(depth[3][3]) > 0.05 > float(depth[2][3]))
 '''),
@@ -1551,10 +1562,8 @@ kit.check("splitting the pairs pushes both verdicts past 0.05 on the invented ex
     **What happened.** On the invented export, flipping each member's two quarters puts the fall in
     revenue per member at p = 0.0025, and pooling the same figures and dealing them reads it as chance,
     p = 0.222; shuffling the label across whole customers puts the gap to Retail-Core at 0.0385, and
-    shuffling single orders reads it as chance too, 0.0945. A test that splits the pair reached the
-    wrong verdict twice on the same data. The mean order, Rs 39,521, is pulled up by seven corporate
-    orders and describes no order anybody placed; the median, Rs 2,350, is the typical one, and the
-    mean belongs in anything that must reconcile.
+    shuffling single orders reads it as chance too, 0.0945, so the test that splits the pair reached the
+    wrong verdict both times on the same data.
 
     **Your turn, on this morning's file.** Run the same four tests on your lab lead and the segment you
     compared it with. Type this line into the empty cell below and run it:
@@ -1568,6 +1577,24 @@ kit.check("splitting the pairs pushes both verdicts past 0.05 on the invented ex
     verdict?
     """),
     empty(),
+    mdj("""
+    ### Which number describes a typical order in this file?
+
+    A note that says "the typical order" needs one number, and a file with a few corporate orders among
+    the consumer ones pulls its mean far from what most customers spend.
+    """),
+    code('''
+amounts = sorted(r["amount"] for r in clean)
+typical = [("mean order, clean", round(statistics.mean(amounts))), ("median order, clean", statistics.median(amounts))]
+kit.table(["measure", "value"], [(m, kit.rupees(v)) for m, v in typical], caption="Invented: the typical order")
+kit.check("the mean sits more than ten times above the median", typical[0][1] > 10 * typical[1][1],
+          f"{kit.rupees(typical[0][1])} against {kit.rupees(typical[1][1])}")
+'''),
+    mdj("""
+    **What happened.** The mean order, Rs 39,521, is pulled up by seven corporate orders and describes no
+    order anybody placed; the median, Rs 2,350, is the typical one, and the mean belongs in anything that
+    must reconcile.
+    """),
     mdj("""
     ## So, which finding leads the note, and how sure can Meera be of it?
 

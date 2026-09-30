@@ -7,7 +7,7 @@ Quote: Before anything goes to Meera, rebuild the week from a raw export with no
 Who: Kavya Nair, senior analyst, Kalpa Retail data team, to the trainees at Kalpa's Global Capability Centre
 
 ```notes
-LIVE, one minute. Read Kavya's line aloud and leave it up. Today teaches nothing new: the morning
+LIVE, half a minute. Read Kavya's line aloud and leave it up. Today teaches nothing new: the morning
 finds out which of the week's ideas each person owns, and the afternoon finds out whether they can
 say it under pressure. Kavya's terms and the rules take ten minutes, then the clock starts.
 ```
@@ -26,7 +26,7 @@ label: The close | title: What is yours now? | body: The Kahoot, Saturday's pape
 ```
 
 ```notes
-LIVE, 1 minute. Read the day's question once, then the five parts. The first is the morning's
+LIVE, half a minute. Read the day's question once, then the five parts. The first is the morning's
 question and the third is the afternoon's; the other three follow from them.
 ```
 
@@ -43,24 +43,24 @@ rules and the hand-in. Nothing here is new, so keep to the ten minutes.
 ---
 
 ## S2. Answered in four questions, in ten minutes
-*Who needs this answer, and which smaller questions lead to it?*
+*Who needs the lab run alone, and which four questions set its terms?*
 
 **Who needs the answer.** Kavya Nair, before Monday's growth review: Meera acts on a note only when the person who wrote it can rebuild every number in it, and Marketing will be in the room.
 
 ```timeline
-label: Question 1 | title: Who decides on Monday? | body: And on what.
-label: Question 2 | title: In what order does it run? | body: The week's method, one picture.
-label: Question 3 | title: What do you open first? | body: The first ten minutes.
-label: Question 4 | title: What are the terms? | body: The rules and the hand-in. | tone: dark
+label: Question 1 | title: Who decides on Monday? | body: Meera decides, on the note's first line.
+label: Question 2 | title: What do you open first? | body: The first ten minutes set the rest.
+label: Question 3 | title: In what order does it run? | body: The week's method has one fixed order.
+label: Question 4 | title: What are the terms? | body: The rules decide what you may open and hand in. | tone: dark
 ```
 
 ```notes
-LIVE, 1 minute. Read who needs the answer and the four questions, then start.
+LIVE, half a minute. Read who needs the answer and the four questions, then start.
 ```
 
 ---
 
-## S3. Monday's room decides on what you can run alone
+## S3. Meera decides Monday on what you can run alone
 *Who decides on Monday, and what will they act on?*
 
 ```mermaid
@@ -74,54 +74,31 @@ flowchart LR
     class MK bad
 ```
 
-**The client asks.** Which branch of the revenue tree moved booked revenue from Q1 to Q2, in which segment, and does the number tie to Anand's control totals? A first line that does not tie to his books is sent back, and a misread branch sends Monday's effort to the wrong team, while Marketing's Rs 12 crore request waits on the answer.
+**The client asks.** From Q1 to Q2 in this export, which branch of the revenue tree moved, in which segment, and do your numbers tie to Finance's control totals? Write it as you would write it to Meera, since on Monday a first line that does not tie to Anand's books is sent back.
 
 ```notes
-LIVE, 2 minutes. Say the metric, who asks and what a wrong number costs, then the four questions on
-the table from the row: whether the pipeline is yours or the notebook's, which step you reach for
-first, whether the note survives a hostile question, and what you still cannot do without help. Do
-not add anything about which step matters most: the lab measures what each person does unprompted.
+LIVE, 1 and a half minutes. Say the metric, who asks and what a wrong number costs, then the four
+questions on the table from the row: whether the pipeline is yours or the notebook's, which step you
+reach for first, whether the note survives a hostile question, and what you still cannot do without
+help. Do not add anything about which step matters most: the lab measures what each person does
+unprompted.
 ```
 
 ---
 
-## S4. Six steps, each built on a day of this week
-*In what order does the week's method run, and why that order?*
-
-```mermaid
-flowchart LR
-    P["<b>1. profile</b><br/>Wednesday"] --> C["<b>2. clean</b><br/>with a log"]
-    C --> R["<b>3. reconcile</b><br/>to the control totals"]
-    R --> D["<b>4. decompose</b><br/>Monday's tree"]
-    D --> T["<b>5. shuffle test</b><br/>Thursday"]
-    T --> N["<b>6. the note</b><br/>four parts"]
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    class P,C,R,D,T,N known
-```
-
-Each step answers a question the next one depends on: whether the file is what it claims, which rows count, whether the clean data is still the same data, which branch moved, whether chance could do it, and what Meera should do.
-
-```notes
-LIVE, 2 minutes. Walk the six boxes left to right once, naming the day each came from. Then stop
-talking about the method. During the lab only S9, the step questions and their minutes, stays on
-the projector.
-```
-
----
-
-## S5. Question: what do you open first on a fresh export?
+## S4. Question: what do you open first on a fresh export?
 *Two hours, a raw file and a stakeholder waiting: where do the first ten minutes go?*
 
 **Question.** Choose one: a) the quarter totals, so Meera has a number early; b) a profile of every field, before any number; c) the segment split, because that is where last week's finding sat; d) the notebook from Wednesday, to reuse its cleaning code.
 
 ```notes
-LIVE, 2 minutes. Take letters from three people. Expect some a: it is the instinct under time
+LIVE, 1 minute. Take letters from three people. Expect some a: it is the instinct under time
 pressure and the reason a total gets quoted before anybody knows what the file holds.
 ```
 
 ---
 
-## S6. Answer: a profile, before any number
+## S5. Answer: a profile, before any number
 *Why does the profile come before any total?*
 
 ```stats
@@ -139,12 +116,36 @@ today, because code written for Wednesday's file assumes Wednesday's defects.
 
 ---
 
+## S6. Six steps in a fixed order, from profile to note
+*In what order does the week's method run, and why that order?*
+
+```mermaid
+flowchart LR
+    P["<b>1. profile</b><br/>Wednesday"] --> C["<b>2. clean</b><br/>with a log"]
+    C --> R["<b>3. reconcile</b><br/>to the control totals"]
+    R --> D["<b>4. split</b><br/>along the tree"]
+    D --> T["<b>5. shuffle test</b><br/>Thursday"]
+    T --> N["<b>6. the note</b><br/>four parts"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class P,C,R,D,T,N known
+```
+
+Each step answers a question the next one depends on: whether the file is what it claims, which rows count, whether the clean data is still the same data, which branch moved, whether chance could do it, and what Meera should do. Monday built the tree, Tuesday split it by segment, Wednesday profiled, cleaned and reconciled, and Thursday tested and wrote the note.
+
+```notes
+LIVE, 1 and a half minutes. Walk the six boxes left to right once, naming the day each came from.
+Then stop talking about the method. During the lab only S9, the step questions and their minutes,
+stays on the projector.
+```
+
+---
+
 ## S7. Four rules, and no score on any wall
 *What are the lab's rules, and why is it observed without a score?*
 
 ```cards
-icon: bot-off | eyebrow: Rule 1 | title: No assistant | body: No chat model, no autocomplete that writes code, no search for code.
-icon: book-x | eyebrow: Rule 2 | title: Notes closed | body: No other notebook in notebooks/, and no deck or cheat sheet, open on any screen.
+icon: bot-off | eyebrow: Rule 1 | title: No assistant | body: No chat model, code-writing autocomplete or search for code is allowed.
+icon: book-x | eyebrow: Rule 2 | title: Notes closed | body: No other notebook in notebooks/, deck or cheat sheet is open on any screen.
 icon: timer | eyebrow: Rule 3 | title: 120 minutes | body: The clock runs once; save as you go and hand in what you have.
 icon: eye | eyebrow: Rule 4 | title: Observed, with no score | body: A TA notes where each person is at each mark; nothing goes on a wall.
 ```
@@ -174,14 +175,14 @@ flowchart LR
 The three files land in `notebooks/output/` as `clean_orders.csv`, `decisions_log.csv` and `note.md`. Open `notebooks/C2_W01_D05_lab_STUDENT.ipynb` and `exercises/unguided/C2_W01_D05_lab_brief_STUDENT.md` now; the export and Finance's control totals load in the first cell.
 
 ```notes
-LIVE, 1 minute. Everyone opens both files now and runs the first cell before the clock starts, so a
+LIVE, 1 and a half minutes. Everyone opens both files now and runs the first cell before the clock starts, so a
 Codespace problem is found in the ten minutes of terms and never inside the lab.
 ```
 
 ---
 
 ## SECTION 2: Can you run it alone?
-*Can you take a raw export to a note Anand would sign, alone, in 120 minutes?*
+*Can you take a raw export to a note Finance would sign, alone, in 120 minutes?*
 
 ```notes
 LIVE. The clock starts when the next slide goes up. Leave S9 on screen for the whole lab, and change
@@ -194,15 +195,15 @@ nothing on the projector until the 120-minute mark.
 *Which six questions does the lab ask, and how long does each take?*
 
 ```timeline
-label: 0 to 20 | title: What does the file hold? | body: Profile.
-label: 20 to 50 | title: Which rows count? | body: Clean, with a log.
-label: 50 to 65 | title: Is it still Finance's data? | body: Reconcile.
-label: 65 to 90 | title: Which branch moved? | body: Decompose.
-label: 90 to 105 | title: Could chance do it? | body: One shuffle test.
-label: 105 to 120 | title: What should Meera do? | body: The note. | tone: dark
+label: 0 to 20 | title: What does the file hold? | body: Profile every field.
+label: 20 to 50 | title: Which rows count? | body: Clean, and log each decision.
+label: 50 to 65 | title: Is it still Finance's data? | body: Reconcile to the control file.
+label: 65 to 90 | title: Which branch moved? | body: Split along the tree.
+label: 90 to 105 | title: Could chance do it? | body: Run one shuffle test.
+label: 105 to 120 | title: What should Meera do? | body: Write the note. | tone: dark
 ```
 
-**Who needs the answer.** Anand checks the note's first line against his books, and Meera acts on it on Monday. The minutes are a pace; the order of the steps is fixed.
+**Who needs the answer.** Kavya reads each note the way Anand and Meera will read Monday's, first line against the books. The minutes are a pace, and the order of the steps is fixed.
 
 ```notes
 LIVE, the whole lab. At each mark the TAs walk their rows with the observation sheet and record the
@@ -238,13 +239,13 @@ debrief.
 
 ---
 
-## S11. The step the clock took is the step to own
+## S11. Your TA marks the one step you do not own yet
 *What does the morning tell each of you?*
 
 ```stats
 value: 6 | label: steps | note: in one order, every time
-value: 120 | label: minutes | note: one pass, observed
-value: 0 | label: assistants | note: no chat model and no autocomplete
+value: 1 | label: step marked | note: the one the clock took from you
+value: 0 | label: scores | note: nothing goes on a wall
 ```
 
 **Kavya's review.** The step you skipped when the clock ran is the step you do not own yet, and this week you find out which one it is with nothing scored.
