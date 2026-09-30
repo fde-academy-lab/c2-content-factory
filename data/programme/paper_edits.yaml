@@ -125,6 +125,12 @@ W2:
     options:
       b: SELECT DISTINCT order_id FROM payments ORDER BY order_id
       d: SELECT order_id FROM payments WHERE COUNT(order_id) > 1 GROUP BY order_id
+  27:
+    stem:
+      status: proposed
+      why: The tracker's stem asks for top three per segment with no business context. The new stem opens on Marketing's first protect list, sorted over every member, and the numbers it produced on Wednesday, so the item asks why that list fails before it asks for the approach; the options and the key are the tracker's.
+      text: |-
+        Marketing's first protect list sorted every member by Q2 revenue and kept the top fifty: 35 Business members, 11 Retail-Plus, 4 Retail-Core and no Student, because one Business order outweighs a year of a retail member's orders. For a pilot, Marketing now wants the top three customers in each segment. Which approach answers it?
   29:
     status: accepted
     why: The key was the longest option.

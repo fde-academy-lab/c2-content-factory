@@ -1,22 +1,22 @@
 # Week 2 recap paper
 
-Saturday 17 October 2026 · 120 minutes · 55 items in 6 parts · pen and paper, no assistant, no notes
+Saturday 17 October 2026 · 120 minutes · 35 items in 6 parts · pen and paper, no assistant, no notes
 
-Name: ____________________    Marked by: ____________________    Items right: ____ of 55
+Name: ____________________    Marked by: ____________________    Items right: ____ of 35
 
 ## What this paper is for
 
-This week you computed Anand's Monday numbers in the warehouse, set booked revenue against what was actually collected, drew up Marketing's protect list of its best members, and built the customer table in pandas and carried it to the leadership deck. This paper finds which of those decisions you can make cold, with no notes and no assistant, and whether you can read a query, a join, a window or a merge and say what it returns before anyone acts on the number. The room's scores by part, set beside the ratings you give in step one, tell Monday's session where to start.
+This week you computed Anand's Monday numbers in the warehouse, set booked revenue against the cash actually collected, drew up Marketing's protect list, built the customer table in pandas and carried it to the leadership deck in Excel. This paper finds which of those decisions you can make cold, with no notes and no assistant: sizing a join before it runs, choosing the tie rule the business asked for, placing the check that stops a wrong number, and reading a query or a few lines of pandas before anyone acts on what it returns. Some items take the same traps to public cases and to an AI team's tables. The room's scores by part, set beside the ratings you give in step one, tell Monday's session where to start.
 
 ## How this paper works
 
 - 120 minutes in one sitting. Each part gives its minutes as a guide, not a limit.
-- Every item names its format beside its number: circle one letter, circle every correct letter, write T or F, write the word or number, show the working, or write the letters in order.
+- Every item names its format beside its number: circle one letter, circle every correct letter, write T or F, write a letter from a word bank or a match table, write the word or number, show the working, or write the letters in order.
 - Every item also names its level, easy, medium or hard, so you can plan your time. A hard item is several steps on an exhibit, never an obscure fact.
 - A wrong answer costs nothing, so answer every item on the line under it.
 - Pen and this paper only: no laptop, no phone, no notes and no assistant.
 - Afterwards the papers are swapped and marked against the key, and the discussion takes the items the room missed most. The paper is ungraded and ranks nobody; the room's rates by part and by tag set Monday's revision.
-- The items are set inside Kalpa Retail, the fictional company of Weeks 1 and 2. Anand Iyer is its finance controller and Kavya Nair its senior analyst, Meera Raghavan's office reads the growth review deck, and the head of Retail-Plus, the marketing lead and the data platform lead are named by role alone. Nothing about the company needs to be known in advance.
+- Parts 1 to 4 and the workbook in Part 5 are set inside Kalpa Retail, the fictional company of Weeks 1 and 2: Anand Iyer is its finance controller, Kavya Nair its senior analyst and Meera Raghavan its CEO, and the head of Retail-Plus, the data platform lead and Meera's chief of staff are named by role. Six items draw on public cases at Facebook, Public Health England, genomics journals, an economics paper, JPMorgan and Uber, each with its source beside it. Part 6 imagines an AI team at a food-delivery company such as Swiggy or Zomato, and its tables and numbers are illustrative. Every number an item needs is on the page.
 
 ## Step one, before Part 1
 
@@ -33,132 +33,42 @@ Your ratings: Part 1 ___ · Part 2 ___ · Part 3 ___ · Part 4 ___ · Part 5 ___
 
 | Part | What it shows | Items | Minutes | Easy | Medium | Hard |
 |---|---|---|---|---|---|---|
-| 1. The week's rules, cold | whether the week's definitions and rules are there without a notebook open | Q1 to Q11 (11) | 11 | 4 | 6 | 1 |
-| 2. Asking the warehouse | whether you can write a grouped query in the order the database runs it | Q12 to Q16 (5) | 13 | 2 | 3 | 0 |
-| 3. Joins that keep their rows | whether you read the row count before and after a join and catch a join that inflates a sum | Q17 to Q27 (11) | 27 | 1 | 8 | 2 |
-| 4. Windows: rank, lag and running totals | whether you can rank within a segment, compare a month with the one before it and keep a running total | Q28 to Q39 (12) | 31 | 1 | 5 | 6 |
-| 5. pandas and the last mile to Excel | whether you can merge, group and reshape without losing or doubling rows, and choose the tool for each job | Q40 to Q51 (12) | 29.5 | 0 | 11 | 1 |
-| 6. Read the code, read the data | whether you catch a wrong number in a query or a few lines of pandas before it reaches a decision | Q52 to Q55 (4) | 8.5 | 0 | 1 | 3 |
-| Total | | 55 | 120 | 8 | 34 | 13 |
+| 1. Anand's Monday numbers | whether you read a query the way the database runs it, and choose where a number Finance audits is computed | Q1 to Q6 (6) | 17.5 | 2 | 1 | 3 |
+| 2. Booked against collected | whether you size a join before it runs, order the steps of a reconciliation, and decide what leaves when a check fails | Q7 to Q11 (5) | 20 | 0 | 0 | 5 |
+| 3. The protect list and the plan line | whether you rank within a segment with the tie rule the business asked for, and read a monthly flag and a run rate before anyone acts | Q12 to Q16 (5) | 18.5 | 0 | 1 | 4 |
+| 4. One row per customer | whether you size a merge, place the guard that stops a double count, and read a pivot that averages or a key that changed on its way in | Q17 to Q22 (6) | 19.5 | 0 | 3 | 3 |
+| 5. The last mile, and spreadsheets in public | whether you match each workbook job to the technique that does it, and name the check that catches a spreadsheet error before the room sees it | Q23 to Q29 (7) | 20.5 | 0 | 5 | 2 |
+| 6. Read the code, read the data: an AI team's tables | whether you catch the week's traps in the tables an AI team keeps, from evaluation runs to an assistant's logs | Q30 to Q35 (6) | 21 | 0 | 2 | 4 |
+| Total | | 35 | 117 | 2 | 12 | 21 |
 
 ---
 
-## Part 1. The week's rules, cold (Q1 to Q11)
+## Part 1. Anand's Monday numbers (Q1 to Q6)
 
-*What it shows: whether the week's definitions and rules are there without a notebook open. 11 items, about 11 minutes.*
+*What it shows: whether you read a query the way the database runs it, and choose where a number Finance audits is computed. 6 items, about 17.5 minutes.*
 
-Anand ends the week asking what he always asks: "Do your numbers match my books, and can my analyst audit how you got them?" Each item below is one of the rules your answer rests on.
+Anand Iyer, Kalpa Retail's finance controller, keeps the books every revenue figure has to match. Every Monday he wants revenue, orders and customers for each segment, the groups Kalpa sells to (Business, Retail-Core, Retail-Plus, which is the paid-membership tier, and Student), and for each channel (app, web and store). His words: "Compute them from the warehouse itself. No notebooks, no exports, nothing a person can mistype." The warehouse is the company's central Postgres database, and his analyst will audit every query line by line before a number is used.
 
-#### Q1 · Medium · write the word or number · Complete the filter
+**Exhibit 1A.** The Retail-Plus branch of Anand's revenue tree, as the warehouse holds it: revenue is members who ordered, times orders per member, times revenue per order.
 
-Orders with no payment are found with a LEFT JOIN to payments and a filter where the payment key IS ____.
+```mermaid
+flowchart LR
+  R["Retail-Plus revenue<br/>Q1 Rs 5,85,770<br/>Q2 Rs 4,13,380"] --> M["Members who ordered<br/>Q1 91, Q2 76"]
+  R --> F["Orders per member<br/>Q1 ?, Q2 ?"]
+  R --> V["Revenue per order<br/>Q1 Rs 2,725, Q2 Rs 2,953"]
+  F --- O["Orders placed<br/>Q1 215, Q2 140"]
+```
 
-Answer: ____________________
+#### Q1 · Hard · circle one letter · Predict and read the leaf
 
-#### Q2 · Medium · write the word or number · Name what LAG returns
+Anand's analyst fills the missing leaf with SELECT quarter, count(*) / count(DISTINCT customer_id) FROM rp_orders GROUP BY quarter, where rp_orders holds the Retail-Plus orders above. What does the query return, and what should the note to the head of Retail-Plus say?
 
-On the first month of each customer, LAG(spend) returns ____.
+a) 2.36 and 1.84; dividing two counts keeps the decimals, a fall of 22 percent
+b) 2 and 2; Postgres rounds each ratio to a whole number, so frequency held
+c) 2 and 1; the counts divide as integers, and the true 2.36 and 1.84 fell 22 percent
+d) 2 and 1; orders per member halved, so Retail-Plus needs the retention budget first
 
-Answer: ____________________
-
-#### Q3 · Medium · write the word or number · Name the error
-
-In pandas, merge(..., validate='one_to_one') raises a ____ when a key repeats.
-
-Answer: ____________________
-
-#### Q4 · Easy · write T or F · Check the run order
-
-In the logical order of a query, SELECT is evaluated before WHERE.
-
-Answer: ____________________
-
-#### Q5 · Medium · write T or F · Test a group filter
-
-WHERE COUNT(*) > 5 is valid SQL for filtering groups.
-
-Answer: ____________________
-
-#### Q6 · Easy · write T or F · What INNER keeps
-
-An INNER JOIN between orders and payments silently drops the orders that were never paid.
-
-Answer: ____________________
-
-#### Q7 · Medium · write T or F · Read a joined SUM
-
-A join can inflate a SUM while every individual row still looks plausible.
-
-Answer: ____________________
-
-#### Q8 · Hard · write T or F · Two rank functions
-
-RANK and DENSE_RANK give different results only when there are ties.
-
-Answer: ____________________
-
-#### Q9 · Medium · write T or F · A window in WHERE
-
-A window function can be used directly inside a WHERE clause.
-
-Answer: ____________________
-
-#### Q10 · Easy · write T or F · What groupby returns
-
-groupby followed by agg returns one row for each group.
-
-Answer: ____________________
-
-#### Q11 · Easy · write T or F · A pivot on raw rows
-
-A pivot table built on an export that still contains duplicate rows reports the correct total.
-
-Answer: ____________________
-
----
-
-## Part 2. Asking the warehouse (Q12 to Q16)
-
-*What it shows: whether you can write a grouped query in the order the database runs it. 5 items, about 13 minutes.*
-
-The data platform lead grants read access to the warehouse with one warning: "Query it; do not export it." These items ask how a query filters, groups and orders what it reads.
-
-#### Q12 · Easy · circle one letter · Which clause
-
-Which clause runs first in the logical order of a query?
-
-a) SELECT
-b) FROM
-c) WHERE
-d) ORDER BY
-
-#### Q13 · Medium · circle one letter · Why the warehouse
-
-Why should Finance's Monday number be computed in the warehouse and not in a notebook?
-
-a) The warehouse hides the raw data from Finance, which keeps the number from being disputed.
-b) A notebook cannot hold a full quarter of orders, so its totals are always approximate.
-c) SQL is faster than Python on every task, so the number arrives sooner each Monday.
-d) The query runs unchanged each week against the source, and every line can be audited.
-
-#### Q14 · Medium · circle every correct letter · Four statements
-
-Which statements about WHERE and HAVING are correct? Mark every correct option.
-
-a) WHERE filters rows before grouping.
-b) WHERE can compare COUNT(*) with a number.
-c) HAVING filters groups after aggregation.
-d) HAVING can compare COUNT(*) with a number.
-
-#### Q15 · Easy · show the working, then the answer · Predict the row count
-
-A table has 4 segments and 2 quarters, and every combination has orders. How many rows does GROUP BY segment, quarter return?
-
-Working:
-
-Answer: ____________________
-
-#### Q16 · Medium · write the letters in order · Order the clauses
+#### Q2 · Medium · write the letters in order · Order the clauses
 
 Put the clauses in their logical execution order.
 
@@ -171,401 +81,113 @@ f) HAVING
 
 Order: ____________________
 
+**Word bank 1.** Write the letter of the word or phrase that completes each statement. Each is used once at most, and some are not used.
+
+| Letter | Word or phrase |
+|---|---|
+| a | sort |
+| b | CTE |
+| c | view |
+| d | guarantee |
+| e | subquery |
+
+#### Q3 · Easy · write the letter from Word bank 1 · Complete the LIMIT rule
+
+Without ORDER BY, LIMIT 5 returns five rows in an order the database does not ____.
+
+Answer: ____________________
+
+#### Q4 · Easy · write the letter from Word bank 1 · Complete the WITH rule
+
+A named query step introduced by the keyword WITH is called a ____.
+
+Answer: ____________________
+
+#### Q5 · Hard · circle one letter · Name the deciding fact
+
+The Monday suite runs as saved queries in the warehouse, so each Monday it reruns unchanged on the source, and Anand's analyst can read every step. Which fact, if it became true of one of its numbers, would make an Excel workbook the better home for that number?
+
+a) Directors will change it in the room as a what-if, and nothing is filed from it
+b) It must reach Anand at the start of Monday, before the warehouse finishes loading
+c) Anand's analyst wants to audit it line by line before it reaches the board
+d) It is revenue per segment, which a pivot gives in two clicks from an export
+
+**Exhibit 1B.** Five illustrative video views; the metric follows the definition Facebook corrected in 2016 (TechCrunch, 2016).
+
+```sql
+WITH views (view_id, seconds) AS (VALUES
+    (1, 2), (2, 14), (3, 1), (4, 9), (5, 4))
+SELECT round(sum(seconds)::numeric
+             / count(CASE WHEN seconds >= 3 THEN 1 END), 1) AS reported,
+       round(sum(seconds)::numeric / count(*), 1)          AS per_view
+FROM views;
+```
+
+#### Q6 · Hard · circle one letter · Size the overstatement
+
+In 2016 Facebook told advertisers that its average duration of video viewed had divided the total time watched by the number of views lasting 3 seconds or more, where it should have divided by every view (TechCrunch, 2016). The query above rebuilds both versions of the metric. What does it return, and by how much does the reported figure overstate the average per view?
+
+a) 10.0 and 6.0; the reported figure is about 40 percent too high
+b) 9.0 and 6.0; the reported figure is 50 percent too high
+c) 6.0 and 6.0; count(CASE ...) counts all five views, so both agree
+d) 10.0 and 6.0; the reported figure is about 67 percent too high
+
 ---
 
-## Part 3. Joins that keep their rows (Q17 to Q27)
+## Part 2. Booked against collected (Q7 to Q11)
 
-*What it shows: whether you read the row count before and after a join and catch a join that inflates a sum. 11 items, about 27 minutes.*
+*What it shows: whether you size a join before it runs, order the steps of a reconciliation, and decide what leaves when a check fails. 5 items, about 20 minutes.*
 
-Anand asks: "Show me, order by order, what we actually collected against what we booked in Q2. If there is a gap, I want to know which orders and which channel."
-
-#### Q17 · Easy · circle one letter · Name the join
-
-Which join returns only the orders that have at least one payment?
-
-a) LEFT JOIN
-b) FULL OUTER JOIN
-c) INNER JOIN
-d) CROSS JOIN
-
-#### Q18 · Medium · circle one letter · Explain the extra rows
-
-After a LEFT JOIN from orders to payments, the row count rose from 1,000 to 1,050. What is the likeliest cause?
-
-a) The payments table is empty.
-b) Some orders have no payment.
-c) The join kept the unpaid orders as extra rows.
-d) Some orders have more than one payment row.
-
-#### Q19 · Medium · circle one letter · Read four queries
-
-Which query lists the orders that were paid twice?
-
-a) SELECT order_id FROM payments GROUP BY order_id HAVING COUNT(*) > 1
-b) SELECT DISTINCT order_id FROM payments ORDER BY order_id
-c) SELECT order_id FROM payments ORDER BY order_id
-d) SELECT order_id FROM payments WHERE COUNT(order_id) > 1 GROUP BY order_id
-
-#### Q20 · Hard · circle one letter · The first check
-
-Collected revenue doubled after a join and every row looks fine. What is the first check?
-
-a) Rerun the query at a quieter hour, in case the warehouse returned a partial result.
-b) Round the amounts to whole rupees, because decimals accumulate across many rows.
-c) Switch to an INNER JOIN, because a LEFT JOIN is what creates the extra rows.
-d) Compare the row count before and after the join, and count payments per order.
-
-#### Q21 · Medium · circle every correct letter · Build the validation
-
-A LEFT JOIN from 1,000 orders to payments returns 1,050 rows. Which checks belong in the validation? Mark every correct option.
-
-a) the number of channels before and after the join
-b) the row count before and after the join
-c) payments per order, with GROUP BY and HAVING COUNT(*) > 1
-d) booked revenue before and after the join
-
-#### Q22 · Hard · circle every correct letter · Compare two joins
-
-Which rows can appear in a FULL OUTER JOIN of orders and payments and never in an INNER JOIN? Mark every correct option.
-
-a) orders with exactly one payment
-b) orders with no payment
-c) orders with two payments
-d) payments with no order
+Booked revenue is the value of the orders customers placed; collected revenue is the cash that actually arrived for them. The two differ when an order is never paid, when a large invoice is paid in two instalments (two payments against one order), or when the payment gateway records one payment twice. Anand asks: "Show me, order by order, what we actually collected against what we booked in Q2. If there is a gap, I want to know which orders and which channel." A reconciliation is the written account of every rupee between the two figures, and Anand will not use a collected number that arrives without one.
 
 ### Set 1
 
-**Situation.** The warehouse holds 1,000 Q2 orders. 920 orders have one payment row. 50 orders have two payment rows, because the gateway retried and recorded the same payment a second time. 30 delivered orders have no payment row.
+**Situation.** Q2 holds 462 orders, booked at Rs 9,84,00,000. In the payments feed, 216 of them have one payment row; 188 have two rows, instalments 1 and 2 of one invoice; 28 have two identical rows, because the gateway posted instalment 1 twice; and 30 delivered orders have no payment row at all. Eight further payment rows carry an order_id that no order has.
 
-**Exhibit 3A.** The orders and their payment rows, as the situation describes them.
+**Exhibit 2A.** Q2's orders by their payment rows, as the situation describes them.
 
 ```mermaid
 flowchart LR
-  O["1,000 Q2 orders"]
-  O --> A["920 orders"]
-  O --> B["50 orders"]
-  O --> C["30 delivered orders"]
-  A --> PA["1 payment row each"]
-  B --> PB["2 payment rows each, the gateway retried"]
-  C --> PC["no payment row"]
+  O["Q2: 462 orders"] --> A["216 orders:<br/>1 payment row each"]
+  O --> B["188 orders: 2 rows,<br/>instalments 1 and 2"]
+  O --> C["28 orders: 2 identical rows,<br/>the gateway's repeat"]
+  O --> D["30 delivered orders:<br/>no payment row"]
+  P["8 payment rows:<br/>no order matches"]
 ```
 
-#### Q23 · Medium · write the word or number · Trace the LEFT join
-
-A LEFT JOIN from orders to payments returns ____ rows.
-
-Answer: ____________________
-
-#### Q24 · Medium · write the word or number · Trace the INNER join
-
-An INNER JOIN returns ____ rows.
-
-Answer: ____________________
-
-#### Q25 · Medium · circle one letter · Find the unpaid orders
-
-Anand asks for the unpaid orders. Which pattern finds them?
-
-a) LEFT JOIN, then WHERE payments.order_id IS NULL
-b) INNER JOIN, then WHERE payments.amount_paid IS NULL
-c) GROUP BY order_id HAVING COUNT(*) > 1
-d) RIGHT JOIN, then WHERE orders.order_id IS NULL
-
-#### Q26 · Medium · write T or F · Judge the payments SUM
-
-True or false: SUM(amount_paid) over the payments table overstates what was collected, because each retried payment is counted twice.
-
-Answer: ____________________
-
-#### Q27 · Medium · show the working, then the answer · Reason with numbers
-
-Every Q2 order was paid in full once, which makes Rs 20 lakh collected. Fifty payments of Rs 2,000 each were then recorded a second time by the gateway. What does a plain SUM of the payments table report?
-
-Working:
-
-Answer: ____________________
-
----
-
-## Part 4. Windows: rank, lag and running totals (Q28 to Q39)
-
-*What it shows: whether you can rank within a segment, compare a month with the one before it and keep a running total. 12 items, about 31 minutes.*
-
-Marketing wants to protect the best members before they drift: "Give us the top fifty customers by Q2 revenue in each segment, and flag anyone whose monthly spend has fallen for two months running." Meera wants to see revenue accumulate week by week against the plan line.
-
-#### Q28 · Easy · circle one letter · Predict the ranks
-
-Revenue values are 900, 850, 850 and 700. What does RANK() return in descending order?
-
-a) 1, 2, 3, 4
-b) 1, 2, 2, 3
-c) 1, 2, 2, 4
-d) 1, 1, 2, 3
-
-#### Q29 · Medium · circle one letter · Same values, DENSE_RANK
-
-For the same four values, what does DENSE_RANK() return?
-
-a) 1, 2, 3, 4
-b) 1, 2, 2, 3
-c) 1, 2, 2, 4
-d) 1, 1, 2, 3
-
-#### Q30 · Medium · circle one letter · Top three per segment
-
-Marketing wants the top three customers in each segment. Which approach answers it?
-
-a) GROUP BY segment with LIMIT 3, because the limit is applied to each group in turn.
-b) A window function ranked within PARTITION BY segment, filtered in an outer query.
-c) ORDER BY revenue DESC with LIMIT 3, run once, since it returns the top of each segment.
-d) HAVING COUNT(*) <= 3, because HAVING keeps only the three largest rows in a group.
-
-#### Q31 · Hard · circle one letter · Find the cause
-
-A running total changes between two runs of the same query. What is the likeliest cause?
-
-a) The ORDER BY inside the window has ties, so the row order is ambiguous.
-b) The partition is too large, so the database samples the rows it adds.
-c) The database cached an old result and served it for one of the runs.
-d) SUM is approximate for large partitions, so its result drifts slightly.
-
-#### Q32 · Hard · circle every correct letter · Window or GROUP BY
-
-Which questions need a window function, because GROUP BY alone cannot answer them? Mark every correct option.
-
-a) each customer's rank within a segment
-b) each segment's total revenue for the quarter
-c) each month's spend beside the same customer's previous month
-d) a running total by date with every row kept
-
-#### Q33 · Hard · circle every correct letter · Four claims on ties
-
-The head of Retail-Plus wants ties ranked the same and wants to know how many members made the top fifty. Which statements are true? Mark every correct option.
-
-a) ROW_NUMBER breaks ties arbitrarily, so it does not meet the ask.
-b) RANK gives members who tie the same rank.
-c) With RANK, a tie at position fifty can ship fifty-one rows.
-d) ROW_NUMBER always ships more than fifty rows.
-
-### Set 2
-
-**Situation.** Q2 revenue in Rs thousand for six Retail-Plus members: A 900, B 850, C 850, D 700, E 700, F 650. Ranks run from the highest revenue down.
-
-**Exhibit 4A.** The six members, highest revenue first.
-
-| Member | Q2 revenue, Rs thousand |
-|---|---|
-| A | 900 |
-| B | 850 |
-| C | 850 |
-| D | 700 |
-| E | 700 |
-| F | 650 |
-
-#### Q34 · Medium · write the word or number · Rank member D
-
-Under RANK(), member D gets rank ____.
-
-Answer: ____________________
-
-#### Q35 · Medium · write the word or number · Dense-rank member F
-
-Under DENSE_RANK(), member F gets rank ____.
-
-Answer: ____________________
-
-#### Q36 · Hard · circle one letter · Count what the filter keeps
-
-With DENSE_RANK(), how many members does WHERE dense_rnk <= 3 return?
-
-a) 3
-b) 4
-c) 5
-d) 6
-
-#### Q37 · Hard · circle one letter · Exactly four members
-
-Marketing wants exactly four members. Which function returns exactly four rows, and at what cost?
-
-a) RANK, at no cost, because every rank above four is simply filtered out by the WHERE.
-b) DENSE_RANK, at no cost, because it never leaves a gap in the ranks.
-c) ROW_NUMBER, and the D-E tie is broken arbitrarily unless a tiebreaker is named.
-d) LAG, at the cost of losing the first row of every partition.
-
-#### Q38 · Hard · show the working, then the answer · Count both lists
-
-Two members tie exactly at position fifty and nobody else ties. How many rows does WHERE rnk <= 50 return under RANK(), and how many under ROW_NUMBER()?
-
-Working:
-
-Answer: ____________________
-
-#### Q39 · Medium · show the working, then the answer · Run the falling flag
-
-A member's monthly spend is Rs 5,000, then Rs 4,200, then Rs 3,900. Using LAG, give the two month-on-month changes and say whether the 'fell two months running' flag fires.
-
-Working:
-
-Answer: ____________________
-
----
-
-## Part 5. pandas and the last mile to Excel (Q40 to Q51)
-
-*What it shows: whether you can merge, group and reshape without losing or doubling rows, and choose the tool for each job. 12 items, about 29.5 minutes.*
-
-Marketing's analysts live in Python and Meera's office runs on Excel. Kavya Nair puts it to the team: "Tell me honestly which tool you would pick for which job."
-
-#### Q40 · Medium · circle one letter · Define groupby
-
-Which sentence describes groupby correctly?
-
-a) It sorts the rows by key, and then returns the first row of every key as the group's result.
-b) It joins two tables on a key, and then keeps one row for every match.
-c) It splits rows by key, applies a computation to each group and combines the results.
-d) It removes duplicate keys, and then counts how many rows were removed.
-
-#### Q41 · Medium · circle one letter · Explain the row count
-
-A merge of 1,000 customers with the campaign exposure table returns 1,120 rows. What happened?
-
-a) 120 customers had no exposure record, so pandas added an empty row for each of them.
-b) Some customer keys repeat in the exposure table, so those customers were multiplied.
-c) pandas appended its index as extra rows, which happens whenever how='left' is used.
-d) The key columns had different names, so pandas fell back to matching on row position.
-
-#### Q42 · Medium · circle one letter · Find the wrong setting
-
-XLOOKUP returned a member's details for an id that does not exist. Which setting was wrong?
-
-a) The return array was one row shorter than the lookup array it pairs with.
-b) The lookup array was sorted in ascending order before the formula ran.
-c) The sheet was protected, so the formula returned the last cached result.
-d) The match mode asked for a nearest match when it should have been exact.
-
-#### Q43 · Medium · circle one letter · Excel's job
-
-Which of these jobs belongs in Excel?
-
-a) Letting a director slice a clean customer table and watch one number recalculate.
-b) Joining payments to orders to find the orders that were never paid.
-c) Computing the source-of-truth revenue figure that Finance will check its own books against.
-d) De-duplicating the orders export before anyone computes revenue from it.
-
-#### Q44 · Medium · circle every correct letter · Four merge claims
-
-Which statements about pandas merge are true? Mark every correct option.
-
-a) It is the pandas form of a SQL join on a key.
-b) validate= can make a fan-out fail loudly.
-c) It always keeps the row count of the left table.
-d) Checking the row count before and after is still worth doing.
-
-#### Q45 · Medium · circle every correct letter · What a number needs
-
-A front-page number is misread unless it carries which of these? Mark every correct option.
-
-a) its denominator
-b) its period
-c) its comparison
-d) its exact figure
-
-### Set 3
-
-**Situation.** Marketing's customer table has 1,000 rows. The campaign exposure table lists the same 1,000 customers, and 60 of them appear twice. An analyst merges the two on customer_id with how='left' and sends the result to Excel, where a pivot sums revenue.
-
-**Exhibit 5A.** The analyst's path from two tables to the pivot.
-
-```mermaid
-flowchart LR
-  C["Customer table: 1,000 rows, one per customer"]
-  E["Exposure table: the same 1,000 customers, 60 of them listed twice"]
-  C --> M["Left merge on customer_id"]
-  E --> M
-  M --> X["Excel pivot: sum of revenue"]
+**Exhibit 2B.** The first query in Anand's report, run before any rupee is summed.
+
+```sql
+SELECT count(*)                   AS rows_out,
+       count(DISTINCT o.order_id) AS orders,
+       count(p.payment_id)        AS payment_rows
+FROM   orders o
+LEFT   JOIN payments p ON p.order_id = o.order_id
+WHERE  o.quarter = 'Q2';
 ```
 
-#### Q46 · Medium · write the word or number · Count the merged rows
+#### Q7 · Hard · circle one letter · Size the join first
 
-The merged table holds ____ rows.
+Before the report goes to Anand, the analyst sizes the join by hand. What will the query above return?
 
-Answer: ____________________
+a) 462, 462 and 432
+b) 678, 462 and 648
+c) 678, 462 and 678
+d) 686, 470 and 656
 
-#### Q47 · Medium · circle one letter · Predict what validate does
+#### Q8 · Hard · write the letters in order · Order the report's steps
 
-What would validate='one_to_one' have done?
+Put the steps of Anand's collected-revenue report in the order they must run.
 
-a) Removed the repeated keys silently and kept the first of each.
-b) Nothing, because validate applies only to inner merges.
-c) Sorted both tables by key so that the rows lined up.
-d) Raised a MergeError before any number was produced.
-
-#### Q48 · Medium · write T or F · Compare the totals
-
-True or false: The pivot's revenue total will be higher than the warehouse figure.
-
-Answer: ____________________
-
-#### Q49 · Hard · circle one letter · Place the fix
-
-Where does the fix belong?
-
-a) In the pivot: type the warehouse total over the pivot's own total before the file is shared.
-b) In the merge: de-duplicate the exposure table on a stated rule and validate the keys.
-c) In the chart: plot revenue per customer, which is unaffected by the repeated rows.
-d) Nowhere: a gap of this size is rounding, and the pivot can be shared as it stands.
-
-#### Q50 · Medium · show the working, then the answer · Size the customer table
-
-1,000 orders belong to 400 customers. How many rows does the one-row-per-customer table hold, and what is the mean frequency?
-
-Working:
-
-Answer: ____________________
-
-#### Q51 · Medium · write the letters in order · Order the tools
-
-Put the week's tools in the order a number travels to the leadership deck.
-
-a) Excel presents it and lets a director explore.
-b) The warehouse computes the source of truth.
-c) pandas carries the analyst's iteration.
+a) LEFT JOIN the 462 orders to those per-order payments
+b) Send booked, collected and the gap to Anand, by channel
+c) Keep one row per order and instalment, dropping the gateway's repeats
+d) Check for 462 rows out, and a gap equal to the unpaid orders' booked value
+e) Sum the remaining payments to one row per order
 
 Order: ____________________
 
----
-
-## Part 6. Read the code, read the data (Q52 to Q55)
-
-*What it shows: whether you catch a wrong number in a query or a few lines of pandas before it reaches a decision. 4 items, about 8.5 minutes.*
-
-Kavya Nair reads the code behind a number before it leaves the team: "Show me the evidence." Read each item the way the database or pandas would before you answer.
-
-**Exhibit 6A.** The analyst's query, with four members' orders written into it.
-
-```sql
-WITH orders (customer_id, quarter, amount) AS (VALUES
-    ('C1', 'Q1', 2000), ('C1', 'Q2', 1200), ('C1', 'Q2', 600),
-    ('C2', 'Q1', 1600), ('C2', 'Q2', 1200),
-    ('C3', 'Q1', 1400), ('C4', 'Q1', 1000)),
-member AS (
-    SELECT customer_id,
-           sum(CASE WHEN quarter = 'Q1' THEN amount END) AS q1_spend,
-           sum(CASE WHEN quarter = 'Q2' THEN amount END) AS q2_spend
-    FROM orders GROUP BY customer_id)
-SELECT round(avg(q1_spend)) AS avg_q1, round(avg(q2_spend)) AS avg_q2 FROM member;
-```
-
-#### Q52 · Hard · circle one letter · Predict the result
-
-The head of Retail-Plus asks whether spend per member fell from Q1 to Q2, and the analyst answers with the query above. What does the query return, and how will she read it?
-
-a) 1,500 and 750, which reads as spend per member halved
-b) 1,500 and 1,000, which reads as spend per member down by a third
-c) 1,500 and 1,500, which reads as flat spend per member
-d) 1,500 and NULL, which reads as no Q2 figure at all
-
-**Exhibit 6B.** The analyst's query, with three Q2 orders and their payment rows written into it.
+**Exhibit 2C.** The analyst's query, with three Q2 orders and their payment rows written into it.
 
 ```sql
 WITH orders (order_id, amount) AS (VALUES
@@ -579,102 +201,471 @@ LEFT JOIN payments p ON p.order_id = o.order_id
 WHERE p.paid_date BETWEEN DATE '2026-07-01' AND DATE '2026-09-30';
 ```
 
-#### Q53 · Hard · circle one letter · Run the query by hand
+#### Q9 · Hard · circle one letter · Run the query by hand
 
-Anand wants every Q2 order beside what was collected on it within the quarter. Before the report goes to him, the analyst runs the query above to count its rows and their booked value. What does it return?
+Anand wants every Q2 order beside what was collected on it within the quarter, so the analyst adds a date filter on the payments. Before the report goes to him, the analyst runs the query above to count its rows and their booked value. What does it return?
 
 a) 1 row, booked Rs 1,200
 b) 2 rows, booked Rs 2,400
 c) 3 rows, booked Rs 2,900
 d) 4 rows, booked Rs 3,700
 
-**Exhibit 6C.** The analyst's code, with four buyers and the five customers the sale reached written into it.
+**Exhibit 2D.** Suppose these are the report's checks at the end of a later reporting day; the figures are illustrative.
+
+| Check | Expected | Found | Result |
+|---|---|---|---|
+| Rows out against the orders in | 462 | 462 | Passes |
+| Booked after the join against Monday's figure | Rs 9,84,00,000 | Rs 9,84,00,000 | Passes |
+| The gap against the unpaid list's booked value | Rs 17,33,180 | Rs 17,54,930 | Fails by Rs 21,750 |
+
+#### Q10 · Hard · circle one letter · Decide what leaves tonight
+
+It is the end of reporting day, and Anand expects the report tonight. Two checks pass, and the third fails by Rs 21,750 that nobody has explained yet. What do you send?
+
+a) Booked and collected, with Rs 21,750 added to the unpaid list so the bridge closes
+b) Collected alone, as the figure Anand asked for, with the failed check in a footnote
+c) Booked as it stands, with collected held back and the Rs 21,750 named as an open line
+d) Nothing tonight, since a report with one failed check is trusted in none of its figures
+
+**Exhibit 2E.** Public Health England's case data path in autumn 2020, as reported (GOV.UK, 2020; The Register, 2020).
+
+```mermaid
+flowchart LR
+  L["Labs' result files<br/>in CSV"] --> X["Converted to .xls:<br/>at most 65,536 rows<br/>a sheet"]
+  X --> C["Loaded into<br/>central systems"]
+  C --> D["Daily case<br/>dashboard"]
+```
+
+#### Q11 · Hard · circle every correct letter · Choose the checks
+
+In October 2020 Public Health England found that 15,841 positive COVID-19 cases from 25 September to 2 October had been left out of the daily figures, because some files were larger than the load could take (GOV.UK, 2020); rows past the old format's limit were dropped without a warning (The Register, 2020). Which of these, run on every file, would have told the team that cases were missing on the day they went missing? Mark every correct option.
+
+a) Saving the files in the newer .xlsx format, whose sheets hold about a million rows
+b) Counting each file's records against the rows loaded, and stopping when they differ
+c) Removing duplicate rows from each file before it is loaded, so no case counts twice
+d) Tying the day's loaded total to the sum of the counts the labs themselves reported
+e) Building a pivot of the loaded cases by lab and by day, for the team that runs the dashboard
+
+---
+
+## Part 3. The protect list and the plan line (Q12 to Q16)
+
+*What it shows: whether you rank within a segment with the tie rule the business asked for, and read a monthly flag and a run rate before anyone acts. 5 items, about 18.5 minutes.*
+
+Retail-Plus, Kalpa's paid-membership tier, is where orders per member fell. Marketing will offer a retention benefit to the members it most wants to keep: "Give us the top fifty customers by Q2 revenue in each segment, and flag anyone whose monthly spend has fallen for two months running." That list is the protect list. The head of Retail-Plus adds: "If two members spent the same, I want them ranked the same, and I want to know how many made the top fifty, not forty-nine because of a tie." Meera also wants Q2's revenue to build up week by week against the plan line, the revenue the growth plan expects each week.
+
+### Set 2
+
+**Situation.** Retail-Plus had 76 members who ordered in Q2. Sorted by Q2 revenue from the highest, the top 45 each spent a different amount, all above Rs 3,600, and rows 46 to 53 are in the table. The protect list keeps the members numbered 50 or better.
+
+**Exhibit 3A.** Retail-Plus members in rows 46 to 53 when sorted by Q2 revenue, highest first, with tied members in order of their ids.
+
+| Row, highest revenue first | Member | Q2 revenue, Rs |
+|---|---|---|
+| 46 | C-0162 | 3,600 |
+| 47 | C-0264 | 3,540 |
+| 48 | C-0189 | 3,480 |
+| 49 | C-0206 | 3,480 |
+| 50 | C-0185 | 3,350 |
+| 51 | C-0242 | 3,350 |
+| 52 | C-0259 | 3,200 |
+| 53 | C-0252 | 3,150 |
+
+#### Q12 · Hard · circle one letter · Count what each rule ships
+
+The analyst computes RANK(), DENSE_RANK() and ROW_NUMBER() over Q2 revenue, highest first, and keeps the members numbered 50 or better under each. How many members does each keep?
+
+a) 51, 52 and 50
+b) 51, 51 and 50
+c) 50, 51 and 50
+d) 52, 51 and 50
+
+#### Q13 · Hard · circle one letter · Make the head's call
+
+Which list meets the head of Retail-Plus's ask, and what does the note to Marketing say?
+
+a) DENSE_RANK: 52 members, since it ranks ties the same and leaves no gaps
+b) ROW_NUMBER by member id: 50 members, dropping C-0242 because its id sorts later
+c) Whole ties only: 49 members, leaving both tied members off the list
+d) RANK: 51 members, saying that C-0185 and C-0242 tie at fiftieth on Rs 3,350
+
+#### Q14 · Medium · circle one letter · Choose the approach
+
+Marketing's first protect list sorted every member by Q2 revenue and kept the top fifty: 35 Business members, 11 Retail-Plus, 4 Retail-Core and no Student, because one Business order outweighs a year of a retail member's orders. For a pilot, Marketing now wants the top three customers in each segment. Which approach answers it?
+
+a) GROUP BY segment with LIMIT 3, because the limit is applied to each group in turn.
+b) A window function ranked within PARTITION BY segment, filtered in an outer query.
+c) ORDER BY revenue DESC with LIMIT 3, run once, since it returns the top of each segment.
+d) HAVING COUNT(*) <= 3, because HAVING keeps only the three largest rows in a group.
+
+**Exhibit 3B.** Four Retail-Plus members' monthly spend in rupees; a blank month had no order, so the member_month table has no row for it.
+
+| Member | Apr | May | Jun | Jul | Aug | Sep |
+|---|---|---|---|---|---|---|
+| C-0161 | 3,520 |  |  | 4,200 | 3,100 | 1,900 |
+| C-0171 |  | 2,210 | 4,130 | 3,800 | 2,600 | 1,400 |
+| C-0185 | 3,880 | 6,990 | 2,690 | 1,900 |  | 1,450 |
+| C-0216 |  | 6,440 |  | 4,300 |  | 2,540 |
+
+#### Q15 · Hard · circle one letter · Run the falling flag
+
+The falling flag reads member_month, one row per member per month with an order. It takes prev1 = LAG(spend, 1) and prev2 = LAG(spend, 2), each partitioned by member and ordered by month, and flags a member whose September spend is below prev1 while prev1 is below prev2. Which members does it flag, and which of them should Marketing call falling two months running?
+
+a) C-0161 and C-0171 only, since LAG steps back to the previous calendar month
+b) All four, and all four go to Marketing as falling two months running
+c) All four; only C-0161 and C-0171 fell in two calendar months running
+d) C-0161, C-0171 and C-0185; C-0216 has too few months for LAG(spend, 2)
+
+**Exhibit 3C.** Q2's last seven full weeks: the bars are booked revenue and the line is the plan's Rs 75.69 lakh a week.
+
+```mermaid
+xychart-beta
+  title "Weekly booked revenue against the weekly plan, Rs lakh"
+  x-axis "Week starting" ["10 Aug", "17 Aug", "24 Aug", "31 Aug", "7 Sep", "14 Sep", "21 Sep"]
+  y-axis "Rs lakh" 0 --> 100
+  bar [37.7, 54.5, 32.2, 34.4, 65.3, 93.0, 66.8]
+  line [75.7, 75.7, 75.7, 75.7, 75.7, 75.7, 75.7]
+```
+
+#### Q16 · Hard · circle one letter · Read the run rate
+
+Q2 closed at Rs 9,84,00,000 against a plan of Rs 9,83,99,990 for the quarter. At mid-quarter the running total had been Rs 1.58 crore ahead of plan, almost all of it from one week in July. Meera's chief of staff wants one line about the plan for Monday's front page. Which do you send?
+
+a) Q2 closed on plan, but six of its last seven full weeks booked below the weekly plan
+b) Q2 closed on plan, and its run rate is on plan, since the total matched it to the rupee
+c) Q2 fell below plan in six of its last seven weeks, so the quarter closed below plan
+d) Q2 beat plan by Rs 1.58 crore, the lead the running total showed at mid-quarter
+
+---
+
+## Part 4. One row per customer (Q17 to Q22)
+
+*What it shows: whether you size a merge, place the guard that stops a double count, and read a pivot that averages or a key that changed on its way in. 6 items, about 19.5 minutes.*
+
+Marketing chooses who gets which offer from one table with one row per customer: recency (days since the last order), frequency (orders placed) and monetary value (rupees spent), with the customer's segment and whether the monsoon sale reached them. The data platform lead: "The warehouse queries are fine for Finance, but Marketing's analysts live in Python. Build them the table in pandas, from the warehouse, and make it refreshable in one run." It is rebuilt every Monday, and Kavya Nair, the senior analyst, reviews it before it leaves the team: "Show me the evidence, and do it a second way."
+
+### Set 3
+
+**Situation.** The customer table has 340 rows, one per customer, and its spend column adds up to the book's Rs 19,84,00,000. The monsoon sale's exposure feed, which lists the customers the sale reached, holds 136 rows for 130 customers, because six customers were sent a second time on 11 August. The analyst merges the feed onto the table with how='left' and sends the result to Excel, where a pivot sums spend.
+
+**Exhibit 4A.** Monday's refresh, as the situation describes it.
+
+```mermaid
+flowchart LR
+  T["Customer table:<br/>340 rows, one per customer"] --> M["Left merge<br/>on customer_id"]
+  F["Exposure feed: 136 rows,<br/>130 customers, 6 sent twice"] --> M
+  M --> X["Excel pivot:<br/>sum of spend"]
+```
+
+#### Q17 · Medium · write the word or number · Size the merge
+
+How many rows does the merged table hold?
+
+Answer: ____________________
+
+#### Q18 · Medium · circle one letter · Judge the claim
+
+The analyst tells Marketing: "The pivot's grand total will equal the book's Rs 19,84,00,000." True or false, and why?
+
+a) True, because a left merge keeps the 340 customers and adds no spend
+b) True, because the pivot sums spend by customer_id, so each counts once
+c) False, because the 210 customers the sale never reached drop out
+d) False, because the six customers sent twice sit on two rows each
+
+#### Q19 · Medium · circle every correct letter · Place the guards
+
+Which of these, added to Monday's refresh, would have stopped the run before the pivot was built? Mark every correct option.
+
+a) validate='one_to_one' on the merge itself, so a repeated key stops it
+b) drop_duplicates() on the merged table, before it goes to Excel
+c) indicator=True on the merge, with the rows then counted by _merge
+d) how='inner' in place of how='left', so only reached customers remain
+e) an assert that the merged table has as many rows as the customer table
+
+#### Q20 · Hard · circle one letter · Place the fix
+
+Next Monday's feed may repeat customers again. Where does the fix belong, so the refresh runs clean without anyone editing its output?
+
+a) In the pivot: type the book's total over the pivot's own total before it is shared
+b) In the merged table: run drop_duplicates() on every column before it goes to Excel
+c) In the feed: keep each customer's first exposure, then merge with validate still on
+d) In the chart: show spend per reached customer, which the repeated rows cannot change
+
+**Exhibit 4B.** The analyst's months view for the head of Retail-Plus, on four illustrative orders.
 
 ```python
 import pandas as pd
-buyers = pd.DataFrame({
-    "customer_id": ["C1", "C2", "C3", "C4"],
-    "segment": ["Retail-Plus", "Retail-Core", "Retail-Plus", "Retail-Core"],
-    "orders": [3, 1, 2, 5]})
-reached = pd.DataFrame({"customer_id": ["C1", "C2", "C5", "C6", "C7"]})
-t = buyers.merge(reached, on="customer_id", how="right", validate="one_to_one")
-by_seg = t.groupby("segment").agg(reached=("customer_id", "count"),
-                                  bought=("orders", "count"))
-print(len(t), by_seg["reached"].sum(), by_seg["bought"].sum())
+plus = pd.DataFrame({
+    "member": ["M1", "M1", "M1", "M2"],
+    "month":  ["Jun", "Jun", "Jul", "Jun"],
+    "amount": [3000, 1000, 2400, 1800]})
+wide = plus.pivot_table(index="member", columns="month", values="amount")
+long = wide.reset_index().melt(id_vars="member", value_name="amount")
+print(wide.loc["M1", "Jun"], len(long), long["amount"].sum())
 ```
 
-#### Q54 · Hard · circle one letter · Predict the output
+#### Q21 · Hard · circle one letter · Predict the months view
 
-The marketing lead asks how many customers the monsoon sale reached and how many of them bought, and the analyst runs the code above. What does it print?
+The head of Retail-Plus wants one row per member and one column per month, to read who is drifting, and a long copy of the same view for a trend chart. What does the code above print?
 
-a) 2 2 2
-b) 4 4 4
-c) 5 5 2
-d) 5 2 2
+a) 4000.0 4 8200.0
+b) 2000.0 4 6200.0
+c) 2000.0 3 6200.0
+d) 4000.0 3 8200.0
 
-#### Q55 · Medium · circle one letter · Fix the query
+**Exhibit 4C.** A lab's gene list after a trip through Excel, with illustrative values; the conversions are the ones Ziemann and colleagues documented (Genome Biology, 2016).
 
-A query fails with: column "segment" must appear in the GROUP BY clause or be used in an aggregate function. What fixes it?
+```python
+import pandas as pd
+lab = pd.DataFrame({"symbol": ["TP53", "2-Sep", "BRCA1", "1-Mar"],
+                    "fold_change": [2.1, 0.4, 1.8, 3.2]})
+ref = pd.DataFrame({"symbol": ["TP53", "SEPT2", "BRCA1", "MARCH1", "EGFR"],
+                    "panel": ["A", "B", "A", "C", "B"]})
+m = lab.merge(ref, on="symbol", how="left", indicator=True)
+print(len(m), (m["_merge"] == "both").sum())
+```
 
-a) Add segment to GROUP BY, or wrap it in an aggregate.
-b) Move the WHERE filter into a HAVING clause after GROUP BY.
-c) Add LIMIT 1 so that only one segment returns.
-d) Add ORDER BY segment at the end of the query.
+#### Q22 · Hard · circle one letter · Predict the merge
+
+A gene symbol is the short name a gene is known by, such as SEPT2 or MARCH1. Ziemann and colleagues found that Excel's default settings turn such symbols into dates, SEPT2 into 2-Sep and MARCH1 into 1-Mar, and that about a fifth of genomics papers with Excel gene lists carried such errors (Genome Biology, 2016). An analyst merges a lab's list onto a reference table. What does the code above print, and what should the analyst do?
+
+a) 4 2; two genes lose their annotation with no error, so go back to the lab
+b) 4 4; pandas parses 2-Sep back to SEPT2, so every gene finds its row
+c) 5 2; the left merge also brings in EGFR, the reference row nothing matched
+d) 2 2; a left merge keeps only the genes that found a match in the reference
+
+---
+
+## Part 5. The last mile, and spreadsheets in public (Q23 to Q29)
+
+*What it shows: whether you match each workbook job to the technique that does it, and name the check that catches a spreadsheet error before the room sees it. 7 items, about 20.5 minutes.*
+
+Meera's chief of staff builds the deck for Monday's growth review and works only in Excel: "The revenue tree by segment for both quarters, the top-fifty protect list with a lookup so I can find any member by id, and one number on the front page with its trend. If a director changes an assumption in the room, the sheet must recalculate in front of them." Excel is where analysis meets its audience, so an error made here reaches the room directly, as it has at larger organisations than Kalpa.
+
+**Exhibit 5A.** The chief of staff's workbook for Monday's review.
+
+```mermaid
+flowchart LR
+  W["Warehouse export:<br/>each order once"] --> T["Tree tab:<br/>revenue by segment"]
+  W --> P["Protect tab:<br/>top fifty and a lookup"]
+  W --> F["Front page:<br/>one number, its trend"]
+  D["A director's<br/>what-if"] --> F
+```
+
+**Match table 1.** Each numbered row is a job the chief of staff's workbook must do. Write the letter of the technique that does it. Each letter is used once at most, and two are not used.
+
+| Item | To match | Letter | Match |
+|---|---|---|---|
+| Q23 (Medium) | Find any member by id, and say so plainly when the id is not in the list | a | SUBTOTAL(109, ...) at the foot of the list |
+| Q24 (Medium) | A total at the foot of the protect list that follows the filter to one city | b | VLOOKUP with its fourth argument left out |
+| Q25 (Medium) | Revenue by segment from an export with one row per payment, so an order paid in two instalments appears twice | c | a labelled input cell beside the actual figure |
+| Q26 (Medium) | Let a director try Rs 5,00,000 for Retail-Plus in Q2 without touching the source figures | d | XLOOKUP with a message for a missing id |
+|  |  | e | Remove Duplicates on the whole export |
+|  |  | f | a first-row flag per order, summed with SUMIFS |
+
+Answers: Q23 ____    Q24 ____    Q25 ____    Q26 ____
+
+#### Q27 · Hard · circle one letter · Name the check
+
+In 2013 Herndon, Ash and Pollin tried to reproduce an influential 2010 paper by Reinhart and Rogoff from its own spreadsheet, and found an average whose range stopped short of the data, leaving Australia, Austria, Belgium, Canada and Denmark out of one group (PERI working paper 322, 2013). The chief of staff's workbook carries the same risk: next Monday's export holds 311 customers where Friday's held 300, and the Protect tab's formulas end at row 301. Which check, run on every refresh, catches both?
+
+a) Protect the sheet, so that nobody can edit or extend any formula once it is checked
+b) Refresh every pivot and recalculate the workbook before it is shared
+c) Recompute each average by hand on its first five rows and compare the two
+d) Tie each total to the source's control total, and count the rows each range covers
+
+**Exhibit 5B.** Illustrative rates; the formula's mistake is the one JPMorgan's task force reported (JPMorgan Chase, 2013).
+
+| Row | Old rate, column B | New rate, column C | The sheet's change, column D |
+|---|---|---|---|
+| 2 | 2.00 | 2.60 | =(C2-B2)/(B2+C2) |
+
+#### Q28 · Hard · circle one letter · Check the formula
+
+JPMorgan's task force on the 2012 losses in its Chief Investment Office reported that a value-at-risk model, an estimate of how much a trading book can lose on a bad day, ran through Excel spreadsheets filled by copying and pasting, and that one step divided a change in rates by the sum of the old and new rates where the modeller meant their average (JPMorgan Chase, 2013). What does the sheet return for the row above, and which check catches the error?
+
+a) 0.130, half the intended 0.261; recompute one row a second way
+b) 0.261, as intended; only the copying between the sheets needs a check
+c) 0.130, the right relative change; the formula needs no second calculation
+d) 0.300, the change over the old rate; a pivot of the changes would show it
+
+#### Q29 · Medium · show the working, then the answer · Size the overcharge
+
+In 2017 Uber said it had been taking its commission from New York City drivers on the gross fare, before sales tax and other fees were deducted, where it should have used the fare after them, and that it would repay affected drivers about 900 dollars each on average (CBS News, 2017). Suppose a trip's gross fare is 30.00 dollars, of which 2.40 dollars is tax and fees, and the commission is 25 percent. How much more commission did the gross-fare calculation take on this trip?
+
+Working:
+
+Answer: ____________________
+
+---
+
+## Part 6. Read the code, read the data: an AI team's tables (Q30 to Q35)
+
+*What it shows: whether you catch the week's traps in the tables an AI team keeps, from evaluation runs to an assistant's logs. 6 items, about 21 minutes.*
+
+Kavya Nair: "AI teams interview on the same traps, on their own tables." Suppose a food-delivery company such as Swiggy or Zomato runs a support assistant, a chatbot that answers customers and hands hard cases to a person. The team scores each model version on a fixed set of test tickets, which is an evaluation run; it collects customers' ratings of the replies; and it logs every conversation and every handoff to a person. The tables and every number below are illustrative.
+
+**Exhibit 6A.** The assistant team's tables, as this part imagines them.
+
+```mermaid
+flowchart LR
+  E["eval_runs:<br/>model, run, date, accuracy"]
+  P["predictions:<br/>ticket, pred"] --- L["labels:<br/>ticket, label"]
+  R["replies:<br/>reply, model, rating"]
+  C["conversations"] --- H["handoffs:<br/>conversation_id"]
+  K["calls:<br/>call, day, tokens"]
+```
+
+**Exhibit 6B.** The team's scoring code, on five illustrative test tickets.
+
+```python
+import pandas as pd
+preds = pd.DataFrame({"ticket": ["T1", "T2", "T3", "T4", "T5"],
+                      "pred": ["refund", "late", "refund", "late", "other"]})
+labels = pd.DataFrame({"ticket": ["T1", "T2", "T3", "T4", "T5", "T3", "T5"],
+                       "label": ["refund", "late", "late", "late", "refund",
+                                 "late", "refund"]})
+m = preds.merge(labels, on="ticket")
+print(len(m), round((m["pred"] == m["label"]).mean(), 2))
+```
+
+#### Q30 · Hard · circle one letter · Predict the accuracy
+
+The team scores a model that sorts support tickets into refund, late and other, against labels from an annotation vendor. The vendor re-sent a batch, so two tickets carry their label twice. What does the code above print, and what is the model's accuracy on the five tickets?
+
+a) 5 0.6; the merge keeps one row per ticket, and 0.6 is the accuracy
+b) 7 0.6; the re-sent labels match their tickets, so the score holds
+c) 7 0.43; the model's two misses now count twice, against a true 0.6
+d) 7 0.71; the re-sent rows add correct answers, against a true 0.6
+
+**Exhibit 6C.** The table eval_runs: the team's evaluation runs, illustrative.
+
+| model | run_id | finished_on | accuracy |
+|---|---|---|---|
+| bot-a | r1 | 1 September | 0.81 |
+| bot-a | r2 | 8 September | 0.78 |
+| bot-b | r3 | 2 September | 0.84 |
+| bot-b | r4 | 9 September | 0.86 |
+| bot-b | r5 | 9 September | 0.79 |
+
+#### Q31 · Hard · circle one letter · Choose the query
+
+The leaderboard must show each model's latest run and its accuracy, and show the same thing every morning. bot-b finished two runs on 9 September. Which approach does that?
+
+a) GROUP BY model, keeping max(finished_on) beside max(accuracy) from the same group
+b) ROW_NUMBER over each model's runs, newest date first, and keep row 1
+c) RANK over each model's runs, newest date first, and keep every rank 1
+d) ROW_NUMBER over each model's runs, newest date then run_id first, keep row 1
+
+**Exhibit 6D.** Seven replies and the ratings customers gave them, illustrative.
+
+```sql
+WITH replies (reply_id, model, rating) AS (VALUES
+    (1, 'bot-a', 1), (2, 'bot-a', 4), (3, 'bot-a', 2),
+    (4, 'bot-b', 2), (5, 'bot-b', 5),
+    (6, 'bot-c', 5), (7, 'bot-c', 4))
+SELECT model, count(*) AS low_rated
+FROM replies
+WHERE rating <= 2
+GROUP BY model
+HAVING count(*) >= 2;
+```
+
+#### Q32 · Hard · circle one letter · Predict the rows
+
+Customers rate each reply from 1 to 5. The team lead asks which models had at least two replies rated 2 or below this week. What does the query above return?
+
+a) bot-a 2 and bot-b 1
+b) bot-a 2 alone
+c) bot-a 2, bot-b 1 and bot-c 0
+d) bot-a 3, bot-b 2 and bot-c 2
+
+**Exhibit 6E.** Four conversations and the handoff log, illustrative.
+
+```sql
+WITH conversations (conversation_id) AS (VALUES ('c1'), ('c2'), ('c3'), ('c4')),
+handoffs (conversation_id) AS (VALUES ('c2'), ('c4'), (NULL))
+SELECT count(*) AS resolved_by_bot
+FROM conversations
+WHERE conversation_id NOT IN (SELECT conversation_id FROM handoffs);
+```
+
+#### Q33 · Hard · circle one letter · Predict the count
+
+The weekly review reads how many conversations the assistant resolved without a person. This week the handoff log gained a row whose conversation_id is NULL. What does the query above return, and what will the review conclude?
+
+a) 2, c1 and c3; the review sees the assistant resolving half the conversations
+b) 3; the NULL row counts as one more conversation nobody handed off
+c) 0; the review concludes the assistant resolved nothing without a person
+d) An error; NOT IN cannot compare a conversation_id with a NULL
+
+**Exhibit 6F.** Four model calls and the tokens each used, illustrative.
+
+```sql
+WITH calls (call_id, day, tokens) AS (VALUES
+    (1, DATE '2026-09-21', 400), (2, DATE '2026-09-22', 300),
+    (3, DATE '2026-09-22', 500), (4, DATE '2026-09-23', 200))
+SELECT call_id, sum(tokens) OVER (ORDER BY day) AS tokens_so_far
+FROM calls
+ORDER BY call_id;
+```
+
+#### Q34 · Medium · circle one letter · Predict the running total
+
+The model's bill is charged per token, so the finance partner wants tokens used so far, call by call, to watch the bill build up. What does tokens_so_far read for calls 1 to 4?
+
+a) 400, 1200, 1200 and 1400
+b) 400, 700, 1200 and 1400
+c) 1400, 1400, 1400 and 1400
+d) 400, 900, 1200 and 1400
+
+**Exhibit 6G.** Distinct users of the assistant on each day of one week, illustrative.
+
+```mermaid
+xychart-beta
+  title "Daily active users of the assistant, one week"
+  x-axis "Day" ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+  y-axis "Users" 0 --> 1000
+  bar [700, 720, 680, 750, 810, 800, 740]
+```
+
+#### Q35 · Medium · circle one letter · Read the chart
+
+The seven daily counts in the chart above add up to 5,200. Counted once each, 2,100 different people used the assistant during the week. The product manager wants the week's active users for the deck. Which number do you give, and why?
+
+a) 5,200, since each day's count is already a count of distinct users
+b) 743, the daily average, since it smooths out the busy Friday
+c) 810, the busiest day, since the deck should show peak demand
+d) 2,100, since someone active on several days counts once
 
 ---
 
 ## Stretch: untimed, and not marked
 
-For anyone who finishes early. Nothing here is counted. Stretch 1 to 4 are the kind an interviewer asks after your first answer, so write the answer you would say. Stretch 5 to 10 are one-line recalls of the week's rules, answered on the line.
+For anyone who finishes early. Nothing here is counted. Stretch 1 to 4 are the kind an interviewer asks after your first answer, so write the answer you would say. Stretch 5 is a quick check on the week's material, answered on the line.
 
 ### Stretch 1
 
-COUNT(*) / COUNT(DISTINCT customer_id) over 1,000 orders and 400 customers puts 2 orders per customer in the Monday report. What went wrong, what is the right number, and how do you write it?
+Your report drops the gateway's repeats by order and instalment. Anand's analyst asks what you would do if a repeat ever arrived a day after the payment it copies. What makes a row a repeat, and what would you add to the check?
 
 ### Stretch 2
 
-Orders LEFT JOIN payments with WHERE payments.amount_paid > 0 loses the 30 unpaid orders out of 1,000. Why, where does the condition belong, and what else do you check before Finance sees the total?
+Next Monday three Retail-Plus members tie on the same Q2 revenue in rows 49, 50 and 51. What does RANK ship, and what does the note to the head of Retail-Plus say?
 
 ### Stretch 3
 
-A top-fifty list built with RANK returns 51 names on a tie at fifty. The segment head says ties rank the same; Finance says the list is fifty. What do you ship, and what do you say?
+Explain the gene-name case to a product manager in two sentences: why did the fix go into the gene names, and what would you still check in every file you receive?
 
 ### Stretch 4
 
-A pandas pivot_table of revenue by segment sits far below the warehouse, and an Excel lookup shows details for an id that is in no table. Name the setting behind each, and the fix.
+A director says the front page should read Rs 19.84 crore because "that is the real number". Answer in two sentences.
 
 ### Stretch 5
 
-WHERE filters rows before they are grouped, and ____ filters the groups after they are formed.
+Put the week's tools in the order a number travels to the leadership deck.
 
-Answer: ____________________
-
-### Stretch 6
-
-Without ORDER BY, LIMIT 5 returns five rows in an order the database does not ____.
-
-Answer: ____________________
-
-### Stretch 7
-
-A named query step introduced by the keyword WITH is called a ____.
-
-Answer: ____________________
-
-### Stretch 8
-
-A LEFT JOIN keeps every row from the ____ table, whether it finds a match or not.
-
-Answer: ____________________
-
-### Stretch 9
-
-The clause that restarts a window calculation for each segment is ____ BY.
-
-Answer: ____________________
-
-### Stretch 10
-
-pivot_table makes a table wider, and ____ makes it longer.
+a) Excel presents it and lets a director explore.
+b) The warehouse computes the source of truth.
+c) pandas carries the analyst's iteration.
 
 Answer: ____________________
