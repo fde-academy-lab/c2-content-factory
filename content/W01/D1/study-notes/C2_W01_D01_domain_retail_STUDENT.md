@@ -54,9 +54,9 @@ flowchart LR
 
 ## 2. Which real company is Kalpa like
 
-In one week a family in Pune can recharge two Jio phone numbers, order the month's groceries on JioMart and buy school shoes at a Reliance store, and every one of those rupees lands in the same group. For the quarter to 30 June 2026, Reliance Industries reported Jio with 533 million subscribers, and Reliance Retail with 20,169 stores and a JioMart app serving about 5,500 pin codes, beside its oil-to-chemicals business (Reliance Industries media release, 17 July 2026). The Tata group works the same way from a different history: founded in 1868, it runs 31 companies across ten verticals, including consumer and retail, financial services, and telecom and media, with Tata Sons as the principal investment holding company that promotes them (tata.com, business overview).
+In one week a family in Pune can recharge two Jio phone numbers, order the month's groceries on JioMart and buy school shoes at a Reliance store, and every one of those rupees lands in the same group. For the quarter to 30 June 2026, Reliance Industries reported Jio with 533 million subscribers, and Reliance Retail with 20,169 stores and a JioMart app serving about 5,500 pin codes, beside its oil-to-chemicals business (Reliance Industries media release, 17 July 2026). The Tata group works the same way from a different history: founded in 1868, it runs 31 companies across ten verticals, including consumer and retail, financial services, and telecom and media, and Tata Sons is the principal investment holding company and promoter of the Tata companies, the shareholder that controls them (tata.com, business overview).
 
-Kalpa Group is built like that: one group headquartered in Singapore, five business units, and one engineering and data centre in Bengaluru that serves all five. The units share customers, a brand and a data centre, and each is run and measured on its own numbers, so a metric that is right for Retail can mean nothing in Health. Each unit below has a real-world twin, named as an analogy, and each twin teaches something the unit will ask of you.
+Kalpa Group is built like that: one group headquartered in Singapore with five business units, which share the Kalpa name and its largest engineering and data centre, in Bengaluru. Each unit is run and measured on its own numbers, so a metric that is right for Retail can mean nothing in Health, and each has a real-world twin, named below as an analogy.
 
 ```mermaid
 flowchart TB
@@ -65,7 +65,7 @@ flowchart TB
     G --> L["<b>Kalpa Logistics</b><br/>moving goods"]
     G --> H["<b>Kalpa Health</b><br/>diagnostics, revenue cycle"]
     G --> T["<b>Kalpa Connect</b><br/>telecom, subscriptions"]
-    C["<b>the GCC, Bengaluru</b><br/>data and AI team"] -.-> R & F & L & H & T
+    R & F & L & H & T -.- C["<b>the GCC, Bengaluru</b><br/>data and AI team, serving all five"]
     classDef unit fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef dark fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class R,F,L,H,T unit
@@ -74,32 +74,19 @@ flowchart TB
 
 ### The GCC: whose team you join
 
-A Global Capability Centre is a company's own team in another country, and the Indian centres of global retailers are the closest real picture of yours. Walmart Global Tech has teams in Bengaluru, Chennai and Gurugram (Walmart corporate, "Walmart in India"); Target in India has operated for more than 21 years, and its expanded Bengaluru campus will bring together more than 5,700 team members (Analytics India Magazine, 29 September 2026); Tesco Bengaluru dates from 2004, with more than 4,000 colleagues (tescobengaluru.com); and Lowe's India from 2014, with more than 5,000 associates (lowes.co.in). Your stakeholders are internal clients who run a business elsewhere and judge you by whether their decision improved, and a senior on your own team, at Kalpa Kavya Nair, checks every number first.
+A Global Capability Centre is a company's own team in another country, and the Indian centres of global retailers are the closest real picture of yours. Walmart Global Tech has teams in Bengaluru, Chennai and Gurugram (Walmart corporate, "Walmart in India"), and Target, Tesco and Lowe's each run a Bengaluru centre of several thousand people (Analytics India Magazine, 29 September 2026; tescobengaluru.com; lowes.co.in). Your stakeholders are internal clients who run a business elsewhere and judge you by whether their decision improved, and at Kalpa a senior on your own team, Kavya Nair, checks every number first.
 
 ### Kalpa Retail, between the shelf and the screen
 
-Kalpa Retail sells consumer goods through its app, its website and its stores across India and South-East Asia, between three kinds of Indian retailer.
-
-| Kind of retailer | Real examples, checked | How it makes money | What its data team watches |
-|---|---|---|---|
-| Store-led chain | DMart, with 500 stores at 31 March 2026 and an "everyday low cost, everyday low price" strategy (DMart results release, 2 May 2026); Reliance Retail, with 20,169 stores (RIL, 17 July 2026); Trent, with 301 Westside and 982 Zudio stores at 30 June 2026 (Business Standard, 7 July 2026) | Buys goods and sells them from its stores at a margin | Footfall, conversion, bill value, like-for-like growth, days of inventory |
-| Marketplace | Flipkart, about 77 percent owned by Walmart since August 2018 (Walmart corporate, 18 August 2018); Amazon India, whose seller terms call amazon.in the Marketplace on which registered sellers sell (sell.amazon.in) | Commissions, fees, advertising and delivery charged to sellers who own the goods | GMV, the share kept as fees, seller quality, returns |
-| Quick commerce | Blinkit, with 2,443 dark stores at the end of June 2026 and a net average order value of Rs 518 (MediaNama on Eternal's results, 24 July 2026); Zepto; Swiggy Instamart | Small baskets delivered in minutes from dark stores near the customer | Orders per store per day, basket value, delivery cost per order |
-
-Kalpa Retail sells from stores like DMart and through an app like Flipkart, so its data team needs both vocabularies, and section 3 shows that the app half raises a question the story leaves open.
+Kalpa Retail sells consumer goods through its app, its website and its stores across India and South-East Asia. Its stores work like DMart's or Reliance Retail's, buying goods and selling them at a margin. Its app books the full price of what it sells and the cost of the goods, as a retailer that owns its stock does, which makes it like DMart Ready, the online grocery retail business of DMart's parent, with revenue of Rs 4,093 crore in the year to March 2026 (Upstox, 8 June 2026), and like JioMart's grocery business, whose digital orders made 13.4 percent of Reliance Retail's grocery sales to consumers in the quarter to June 2026 (RIL, 17 July 2026). Flipkart and Amazon India run the other model, a marketplace where sellers own the goods, and section 3 sets the three side by side.
 
 ### Retail-Plus, the paid tier
 
-Memberships are how retailers buy frequency. Amazon offers Prime in India from Rs 399 to Rs 1,499 a year (About Amazon India), Flipkart launched Flipkart Black at Rs 1,499 a year in 2025, evolving it from its VIP programme (Flipkart Stories, 12 September 2025), and Walmart+ costs $98 a year or $12.95 a month in the United States (NBC Select, updated 25 September 2026). Free or faster delivery removes the reason to wait and batch an order, and early access pulls members into a sale first, as Amazon's 24-hour early access for Prime members did before its Great Indian Festival in 2025 (About Amazon India). The head of Retail-Plus lives on three numbers: how many members renew, how often they order, and whether the fee covers the delivery the tier gives away.
+Memberships are how retailers buy frequency. Paid tiers such as Amazon Prime, from Rs 399 to Rs 1,499 a year in India, typically carry faster delivery and early access to sales events such as the Great Indian Festival (About Amazon India), and those benefits remove the reason to wait and batch an order. The story does not list Retail-Plus's benefits, so read these as illustration. Its head watches how many members renew, how often they order, and whether the fees cover what the benefits cost.
 
 ### The other four units, and when they become your client
 
-The programme prepares you for four domains, and each opens on its own story the day it arrives: retail and e-commerce today, US healthcare with Kalpa Health on Build 1 Monday, financial services from Week 5, and SaaS and enterprise AI from Week 8, as the GCC builds AI products for Kalpa's units and for US clients.
-
-- **Kalpa Financial Services** is like PhonePe, with more than 520 million registered users and more than 230 million transactions a day by Walmart's count (Walmart corporate, "Walmart in India"), and Tata Capital in lending (tata.com). It teaches that a wrong call costs very different amounts each way: Rohan Desai, its head of risk, arrives in Week 5 with loans where a default costs twenty times a wrongful rejection.
-- **Kalpa Logistics** is like Ekart, the Flipkart group's logistics arm, which reaches more than 95 percent of Indian pin codes (Business Standard, 28 July 2026), and teaches the cost of each shipment and each failed delivery; its stakeholder is not yet named.
-- **Kalpa Health** tests US patients and bills US payers, with its analytics and revenue-cycle work run from the GCC in Bengaluru. Its twins are Quest Diagnostics, which says it serves one in three adult Americans each year (questdiagnostics.com), and Labcorp, with more than 71,000 employees (labcorp.com), and revenue-cycle firms such as Omega Healthcare, which verify insurance, code, bill, fight denied claims and collect for US providers (omegahms.com). It teaches the growth question with an insurer between the patient and the bill: Dr Priya Menon, its COO, is your client in Build 1, where a test booked and the cash collected for it are two different numbers.
-- **Kalpa Connect** is like Jio, and teaches subscription economics: 533 million customers, an average revenue per user of Rs 215.6 a month and monthly churn of 1.6 percent in the quarter to June 2026 (RIL, 17 July 2026). Ananya Bose, its COO, brings text problems at telecom scale in Build 3.
+Kalpa's other units have twins too: Financial Services is like PhonePe in payments and Tata Capital in lending, where a wrong call on a loan costs very different amounts each way; Logistics is like Ekart, the Flipkart group's logistics arm, where every failed delivery has a price; Health is like Quest Diagnostics and Labcorp, with revenue-cycle firms such as Omega Healthcare, where an insurer stands between the patient and the bill; and Connect is like Jio, where subscribers and churn run the business. The programme prepares you for four domains, and each opens on its own story the day it arrives: retail and e-commerce today, US healthcare with Kalpa Health on Build 1 Monday, financial services from Week 5, and SaaS and enterprise AI from Week 8, as the GCC builds AI products for Kalpa's units and for US clients.
 
 ---
 
@@ -154,7 +141,7 @@ Real retailers keep a thin slice. DMart reported a standalone EBITDA margin of 7
 | Marketing that brought the order | 60 | Variable |
 | Contribution | 150 | 9.4 percent of net revenue, left to pay the fixed costs |
 
-The trip to the door costs about the same whatever is in the bag, so a small basket carries the same delivery cost from far less margin. A Blinkit order averaged Rs 518 in the quarter to June 2026 (MediaNama, 24 July 2026), about a third of the Saturday basket's value.
+The trip to the door costs about the same whatever is in the bag, so a small basket carries the same delivery cost from far less margin. Quick commerce, such as Blinkit, Zepto and Swiggy Instamart, delivers small baskets in minutes from dark stores near the customer, and a Blinkit order averaged Rs 518 in the quarter to June 2026 (MediaNama, 24 July 2026), about a third of the Saturday basket's value.
 
 ### Working capital: who pays for the shelf
 
@@ -168,19 +155,18 @@ A retailer pays for stock before a customer pays for it, and the gap is working 
 
 The cash conversion cycle is inventory days plus receivable days less payable days: 45 plus 2 less 60 is minus 13 days, so suppliers fund the shelves. Stock that stops selling reverses it, until the business borrows to hold goods nobody is buying.
 
-### Three ways to sell, and why foreign-owned e-commerce in India is a marketplace
+### Three ways to sell, and why foreign-owned multi-brand e-commerce in India is a marketplace
 
 | | Store-led | Inventory e-commerce | Marketplace |
 |---|---|---|---|
 | Who owns the goods | The retailer | The retailer | The sellers |
 | Revenue booked | The full selling price, net of tax | The full selling price, net of tax | Only the commission and fees |
-| The margin that matters | Gross margin, after store costs | Gross margin, after delivery costs | The take rate: fees as a share of GMV |
+| The margin that matters | Gross margin, then store costs | Gross margin, then delivery cost per order | The take rate: fees as a share of GMV |
 | Inventory risk | The retailer's | The retailer's | The sellers' |
-| Indian example | DMart's stores | DMart Ready, DMart's own online grocery, in 18 cities at 31 March 2026 (DMart, 2 May 2026) | Flipkart, Amazon India |
+| Indian examples, checked | DMart, with 503 stores at 30 June 2026 (Business Standard, 11 July 2026); Reliance Retail, with 20,169 (RIL, 17 July 2026); Trent's Westside and Zudio | DMart Ready, in 11 cities at 30 June 2026 (Business Standard, 11 July 2026); JioMart's grocery business | Flipkart, majority-owned by Walmart since August 2018 and about 85 percent owned at 31 January 2024 (Walmart's Form 10-K, filed 13 March 2026); Amazon India, whose seller terms call amazon.in the Marketplace on which registered sellers sell (sell.amazon.in) |
+| What its data team watches | Footfall, conversion, bill value, like-for-like growth, days of inventory | Conversion, order value, delivery cost per order, returns, days of inventory | GMV, the take rate, seller quality, returns |
 
-The marketplace column exists in India largely because of one rule. Since 1 February 2019, foreign direct investment has been permitted up to 100 percent in the marketplace model of e-commerce and not permitted in the inventory-based model (DPIIT, Press Note 2 of 2018, dated 26 December 2018). The press note bars a marketplace from owning or controlling the inventory sold on it, treats a seller as controlled when more than 25 percent of its purchases come from the marketplace or its group companies, and forbids the marketplace to influence sale prices. That is why Flipkart, majority-owned by Walmart, and Amazon India run as marketplaces. Press Note 3 of 2026, dated 23 July 2026, opened an inventory model to foreign-owned e-commerce companies only for exporting goods made in India, and left the ban on selling owned stock to Indian consumers in place (EY India tax alert, September 2026). Store chains sit under a separate rule: foreign investment in multi-brand retail is capped at 51 percent with government approval, and such a company may not sell by e-commerce in any form (Consolidated FDI Policy 2020, paragraph 5.2.15.4).
-
-A question the story leaves open: Kalpa Group is headquartered in Singapore and Kalpa Retail sells from stores and an app in India, so in the real world the first question would be who owns the Indian business, since that decides whether it may own stock and sell it online. The story does not settle it and no Week 1 or Week 2 case depends on it; in an interview, naming the rule and the question is the right answer.
+The marketplace column exists in India largely because of one rule. Since 1 February 2019, foreign direct investment has been permitted up to 100 percent in marketplace e-commerce and not in the inventory model, and a marketplace may not own or control the goods sold on it or influence their prices (DPIIT, Press Note 2 of 2018). A foreign-owned multi-brand e-commerce business selling to Indian consumers must therefore run as a marketplace, which is why Flipkart and Amazon India do. The rule has edges: a single-brand retailer may sell its own brand online, food made in India has a government-approval route (Consolidated FDI Policy 2020, paragraphs 5.2.15.3(2)(g) and 5.2.5.2), and since 3 September 2026 a foreign-owned marketplace may hold stock for export (Press Note 3 of 2026; EY India, 25 September 2026).
 
 ---
 
@@ -421,7 +407,7 @@ The Saturday basket passed through six sets of rules on its way to the door: the
 | **Digital Personal Data Protection Act 2023 and Rules 2025.** The Rules were notified on 14 November 2025 with an eighteen-month phase-in: a consent notice naming the purpose, use only for lawful and specific purposes, prompt notice of a breach, verifiable parental consent for a child's data, and penalties of up to Rs 250 crore for failing to keep reasonable security safeguards (PIB explainer, 17 November 2025). | Data collected to deliver a parcel is not automatically free to train a model. Analysis tables carry member IDs rather than names and phone numbers, deletion requests reach every copy, and a single view of a customer needs a purpose. |
 | **RBI card-on-file tokenisation.** Only card issuers and networks may store the card number; merchants hold a token and may keep the last four digits and the issuer's name for reconciliation (RBI/2021-22/96, 7 September 2021; in force from 1 October 2022 after two extensions, BusinessToday, 24 June 2022). | No payments table holds a full card number; reconciliation joins on the token, or on the last four digits with the issuer. |
 | **PCI DSS**, the card industry's security standard for anyone who stores, processes or transmits card data; version 4.0.1, published 11 June 2024, has been the only supported version since 31 December 2024 (PCI Security Standards Council blog). | Card data stays out of analytics environments, logs and model inputs. |
-| **FDI policy on e-commerce.** Marketplace only, for foreign-owned e-commerce selling to Indian consumers (section 3). | A marketplace must not steer its sellers' prices, so a pricing model built there advises sellers. |
+| **FDI policy on e-commerce.** A foreign-owned multi-brand e-commerce business selling to Indian consumers runs as a marketplace (section 3). | A marketplace must not steer its sellers' prices, so a pricing model built there advises sellers. |
 
 **For a GCC serving a US retailer**, the customer's rights travel with the data. California's privacy law lets a resident learn what personal information a business holds, have it deleted or corrected, stop its sale or sharing (including through a global privacy control signal), and limit the use of sensitive personal information (California Attorney General, CCPA page); rules on automated decision-making technology took effect on 1 January 2026, with their duties for significant decisions from 1 January 2027 (CPPA, 23 September 2025). PCI DSS covers a US retailer's card data as it does in India, and a deletion request made in California has to reach the copy in a Bengaluru notebook.
 
@@ -544,7 +530,7 @@ Five scenes most learners have lived through, each turned into its metrics and t
 | The scene | Its metrics and formulas | The data and AI problem hidden in it |
 |---|---|---|
 | A DMart-style weekend rush: queues at every till, trolleys full, the favourite brand of rice gone by evening | Conversion = bills / footfall; bill value = sales / bills; items per bill; stock-outs by hour | Forecasting footfall by hour to open tills and refill fast movers, and a denominator trap: a family of four is four through the door and one bill |
-| A delivery promised in minutes from a dark store nearby | Orders per dark store per day; average order value, Rs 518 at Blinkit in the quarter to June 2026 (MediaNama); delivery cost per order; contribution per order | Placing each product in the right dark store by forecast, and a speed promise weighed against riders' safety: in January 2026, after a government intervention, Blinkit dropped the "10-minute" promise from its branding and the other platforms agreed to follow (All India Radio News, 13 January 2026) |
+| A delivery promised in minutes from a dark store nearby | Orders per dark store per day; average order value; delivery cost per order; contribution per order | Placing each product in the right dark store by forecast, and a speed promise weighed against riders' safety: in January 2026, after a government intervention, Blinkit dropped the "10-minute" promise from its branding and the other platforms agreed to follow (All India Radio News, 13 January 2026) |
 | A festive sale, such as Flipkart's Big Billion Days or Amazon's Great Indian Festival, with early access for members | GMV; discount depth; sell-through; returns that arrive weeks later; sales pulled forward from the weeks after | Separating sales the event added from sales it only moved earlier, and forecasting its demand from few comparable events |
 | A membership renewal: the reminder that Retail-Plus renews next week | Renewal rate = members who renew / members due to renew that month; orders per member per month; fee revenue against what the tier's benefits cost | Predicting who will not renew in time to act, with a churn score from each member's recent orders, returns and support contacts, judged by how many of the members it flags do lapse |
 | A return: the Saturday basket's bedsheet goes back because the colour differs from the picture | Returns rate = returned / delivered; reverse-logistics cost; the order's contribution after the refund | "Not as described" returns trace back to catalogue data, abuse hides among honest returns, and a refund agent must act within the policy |
