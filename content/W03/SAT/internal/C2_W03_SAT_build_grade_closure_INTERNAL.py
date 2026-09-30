@@ -27,8 +27,8 @@ OUT = HERE.parent / "rubrics"
 BOOK = "C2_W03_SAT_grade_closure_TRAINER.xlsx"
 MANIFEST = "C2_W03_SAT_grade_closure_recalc_INTERNAL.md"
 
-# The cohort as the handover states it (facts.yaml, cohort: 35 students in nine groups of four), so
-# eight groups of four and one of three. Which group holds three is the Programme Head's Monday call.
+# The cohort as the handover states it (facts.yaml, cohort: 35 students, 9 build groups, groups of
+# 4), and 9 groups of 4 would be 36, so eight groups of four and one of three. Which group holds three is the Programme Head's Monday call.
 GROUPS = [(f"G{g}", 4) for g in range(1, 9)] + [("G9", 3)]
 facts = yaml.safe_load((ROOT / "data" / "programme" / "facts.yaml").read_text(encoding="utf-8"))
 EVENTS = facts["evaluation"]["rubrics"]["W03"]["events"]
