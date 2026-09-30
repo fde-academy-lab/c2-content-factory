@@ -31,16 +31,17 @@ the region needs, and a number Anand cannot find in a cell sends the memo back.
 - What does the one-page memo tell Meera, and in what order?
 - How does your ladder compare with a published walkthrough of a sales drop?
 
-Three parts, about two and a half hours in all. Part 1 is the day's ladder on a file you have not
-seen. Part 2 is the memo, one page, and it is the part Meera reads. Part 3 is reading and watching,
-with one change to make if the reading changes your mind. Tomorrow opens by walking one learner's
-memo in front of the room.
+The take-home has three parts and takes about two and a half hours in all. Part 1 is the day's
+ladder on a file you have not seen. Part 2 is the memo, one page, and it is the part Meera reads.
+Part 3 is reading and watching, with one change to make if the reading changes your mind. Tomorrow
+opens by walking one learner's memo in front of the room.
 
 ---
 
 ## Part 1. What does the day's ladder find on a second sample nobody has explained?
 
-About ninety minutes; used at work on every new export before any figure from it is quoted.
+This takes about ninety minutes, and at work it runs on every new export before any figure from it
+is quoted.
 
 The file sits in `data/C2_W01_D02_takehome_STUDENT.py`. It has the same fields as the class file and
 none of the same numbers, so nothing from today's notebooks can be pasted across.
@@ -67,7 +68,8 @@ Run the notebook from a fresh kernel, top to bottom, before you call it done. Th
 
 ## Part 2. What does the one-page memo tell Meera, and in what order?
 
-About forty minutes; used at work whenever a finding goes to a leader who reads only the first line.
+This takes about forty minutes, and at work it comes up whenever a finding goes to a leader who reads
+only the first line.
 
 Write it as a markdown cell at the end of your notebook, or as a page beside it. It has five parts,
 in this order:
@@ -78,8 +80,8 @@ in this order:
    quarters on a matched comparison.
 3. The segment line says which segment carries it, with its numbers, and gives one line on the
    segments that did not move.
-4. The hypotheses name two causes that could explain what you found, each stated as a hypothesis, a
-   named cause with the evidence that would settle it.
+4. The hypotheses line names two causes that could explain what you found, each stated as a
+   hypothesis.
 5. The evidence line gives, for each hypothesis, the data that would settle it, and says whether this
    file carries it or someone has to be asked for it.
 
@@ -97,7 +99,8 @@ behind it has not answered the question.
 
 ## Part 3. How does your ladder compare with a published walkthrough of a sales drop?
 
-About twenty minutes; used at work whenever you check your own method against someone else's.
+This takes about twenty minutes, and at work it comes up whenever you set your own method beside
+someone else's.
 
 Brit Institute, data analyst case study questions, including "Sales dropped last month. How would you investigate?": https://britinstitute.uk/blog/data-analyst-case-study-interview-questions (verified 29 Sep 2026)
 

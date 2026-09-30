@@ -1,7 +1,7 @@
 # Where does the practice lab stall, and which one hint moves each learner on?
 
-**TA note, Week 1 Tuesday. TRAINER ONLY.** For the TA running the lab after the afternoon block. The
-learner file is `exercises/practice/C2_W01_D02_practice_lab_STUDENT.md`, and the solution,
+**TA note, Week 1 Tuesday. TRAINER ONLY.** It is for the TA who runs the lab after the afternoon
+block. The learner file is `exercises/practice/C2_W01_D02_practice_lab_STUDENT.md`, and the solution,
 `exercises/solutions/C2_W01_D02_practice_lab_solution_STUDENT.md`, opens when the lab closes.
 
 Answers: 1d 2b 3b 4a 5c 6c 7a 8d 9b 10d 11a 12c

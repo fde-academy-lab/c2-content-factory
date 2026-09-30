@@ -1,12 +1,12 @@
 # How much of the Retail-Plus fall can the broken reorder button explain, and what evidence goes in Meera's memo?
 
-Chapter 6 set, 6 items, about ten minutes alone after chapter 6, then compare your letters with the person beside you before Kavya's review. Kavya Nair is the senior analyst on Kalpa Retail's data team, and her review is the check that closes every chapter. Retail-Plus is Kalpa's paid membership tier, and the reorder button is the button in Kalpa's app for placing an earlier order again. The member's complaint says the button has been broken for six weeks; read back from the week the complaint arrived, that puts the break on 25 August, an assumption every timing test here rests on.
+The chapter 6 set has six items. Take about ten minutes alone after chapter 6, then compare your letters with the person beside you before Kavya's review. Kavya Nair is the senior analyst on Kalpa Retail's data team, and her review is the check that closes every chapter. Retail-Plus is Kalpa's paid membership tier, and the reorder button is the button in Kalpa's app for placing an earlier order again. The member's complaint says the button has been broken for six weeks; read back from the week the complaint arrived, that puts the break on 25 August, an assumption every timing test here rests on.
 
 > "It is the broken reorder button. One of my members says it has been broken for six weeks."
 >
 > The head of Retail-Plus, Kalpa Retail
 
-The morning found booked revenue, every order placed at the price charged before any cancellation or return, down 11.0 percent between two closed quarters, from Rs 2,10,00,000 to Rs 1,87,00,000, with the same 69 customers buying in both and orders per customer down from 1.65 to 1.25. In Retail-Plus the same 22 members placed 26 orders in Q2 against 51 in Q1, and chapter 5 found 18 of the 23 customers who slowed were members. Retail-Core, shoppers who place many small orders, is the comparison segment, a segment the button cannot touch. A pace is orders per day or per week. A ceiling is the most a cause could explain, given what else was already moving. A hypothesis is a named cause stated with the evidence that would settle it.
+The morning found booked revenue, every order placed at the price charged before any cancellation or return, down 11.0 percent between two closed quarters, from Rs 2,10,00,000 to Rs 1,87,00,000, with the same 69 customers buying in both and orders per customer down from 1.65 to 1.25. In Retail-Plus the same 22 members placed 26 orders in Q2 against 51 in Q1, and chapter 5 found 18 of the 23 customers who slowed were members. Retail-Core, shoppers who place many small orders, is the comparison segment, a segment the button cannot touch. The board pack is the set of numbers Kalpa's board reads every quarter, a pace is orders per day or per week, and a ceiling is the most a cause could explain, given what else was already moving. A hypothesis is a named cause stated with the evidence that would settle it.
 
 **Who needs the answer.** The head of Retail-Plus and engineering decide what to fix first, and Meera Raghavan, the CEO, decides what the board hears as the cause. Blame the button for everything and the tier keeps falling for a reason nobody looked for; dismiss it and members keep failing to reorder.
 
@@ -19,7 +19,7 @@ The morning found booked revenue, every order placed at the price charged before
 - Which evidence goes with each of the memo's two hypotheses?
 - What does a pace corrected by Retail-Core's change show?
 
-The numbers every item refers to, Retail-Plus's booked orders on the export as it stands:
+Every item refers to these numbers, Retail-Plus's booked orders on the export as it stands:
 
 | Retail-Plus window | Days | Orders | Orders per week |
 |---|---|---|---|
@@ -36,7 +36,7 @@ flowchart LR
 
 Every item has one right answer. Decide first, then record the letter. An item marked Design asks for the best-fit approach, a sizing, the fact that would switch it, or the second route.
 
-**What you post.** One line of 6 letters in item order, no spaces, in this shape:
+**What you post.** You post one line of six letters in item order, with no spaces, in this shape:
 
 ```
 Post exactly this shape: xxxxxx

@@ -1,6 +1,6 @@
 # Revenue per order rose 18 percent while revenue fell: did customers pay more, or did the mix of orders change?
 
-Chapter 4 set, 6 items, about ten minutes alone after chapter 4, then compare your letters with the person beside you before Kavya's review. Kavya Nair is the senior analyst on Kalpa Retail's data team, and her review is the check that closes every chapter. Revenue per order is revenue over orders, one branch of Monday's revenue tree, and the blended figure is taken over every order of every segment together. Kalpa has four segments: Retail-Core, shoppers who place many small orders; Retail-Plus, the paid membership tier; Student, small discounted baskets; and Business, Kalpa's sales to companies, every order in lakhs. The first three are the consumer segments.
+The chapter 4 set has six items. Take about ten minutes alone after chapter 4, then compare your letters with the person beside you before Kavya's review. Kavya Nair is the senior analyst on Kalpa Retail's data team, and her review is the check that closes every chapter. Revenue per order is revenue over orders, one branch of Monday's revenue tree, and the blended figure is taken over every order of every segment together. Kalpa has four segments: Retail-Core, shoppers who place many small orders; Retail-Plus, the paid membership tier; Student, small discounted baskets; and Business, Kalpa's sales to companies, every order in lakhs. The first three are the consumer segments.
 
 > "Revenue per order is up 18 percent. Our customers are happy to pay more. Put a price rise into the plan."
 >
@@ -19,7 +19,7 @@ Chapter 2 found the same 69 customers in both quarters, orders per customer down
 - Which segment carries most of the rate part?
 - What does a split into Business and everyone else put on the mix?
 
-The numbers every item refers to, in booked orders on the export as it stands:
+Every item refers to these numbers, in booked orders on the export as it stands:
 
 | Segment | Share of orders Q1, Q2 | Revenue per order Q1 | Revenue per order Q2 |
 |---|---|---|---|
@@ -38,7 +38,7 @@ flowchart LR
 
 Every item has one right answer. Decide first, then record the letter. An item marked Design asks for the best-fit approach, a sizing, the fact that would switch it, or the second route.
 
-**What you post.** One line of 6 letters in item order, no spaces, in this shape:
+**What you post.** You post one line of six letters in item order, with no spaces, in this shape:
 
 ```
 Post exactly this shape: xxxxxx

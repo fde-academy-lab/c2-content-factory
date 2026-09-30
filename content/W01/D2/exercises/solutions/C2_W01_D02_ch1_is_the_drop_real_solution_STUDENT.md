@@ -36,7 +36,7 @@ The key is a, "Minus 12.4 percent, and it still compares Q2's early weeks with t
 - c, "Minus 11.0 percent, since a rate per week removes every difference in the windows": 11.0 percent is the closed quarters' figure, which needs Q2 to have closed.
 - d, "Minus 17.0 percent, the answer that matched weeks of each quarter would give": the same weeks give minus 17.0 because Kalpa's weeks are lumpy, so the two methods disagree on this file.
 
-### Q4. Which comparison answers Meera's question about the monsoon, and what does it need? (Design)
+### Q4. Which comparison answers Meera's question about the monsoon? (Design)
 
 With both quarters closed, Meera asks whether Q2 is always weaker than Q1 because of the monsoon.
 

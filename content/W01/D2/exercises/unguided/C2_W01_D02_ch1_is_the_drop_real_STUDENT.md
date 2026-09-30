@@ -1,12 +1,12 @@
 # Did revenue really fall from Q1 to Q2, and by how much, once both sides cover the same weeks?
 
-Chapter 1 set, 6 items, about ten minutes alone after chapter 1, then compare your letters with the person beside you before Kavya's review. Kavya Nair is the senior analyst on Kalpa Retail's data team, and her review is the check that closes every chapter. Kalpa Retail's financial year opens in April, so Q1 runs from April to June and Q2 from July to September.
+The chapter 1 set has six items. Take about ten minutes alone after chapter 1, then compare your letters with the person beside you before Kavya's review. Kavya Nair is the senior analyst on Kalpa Retail's data team, and her review is the check that closes every chapter. Kalpa Retail's financial year opens in April, so Q1 runs from April to June and Q2 from July to September.
 
 > "Q2 was Rs 1.9 crore, Q1 was 2.1. Marketing says more customers. Prove it or disprove it."
 >
 > Meera Raghavan, CEO, Kalpa Retail
 
-Revenue in every item is booked revenue: every order placed, at the price charged, before any cancellation or return. A quarter is closed once its last day has passed and no order can still land in it. Marketing has asked for Rs 12 crore to win new customers, on a slide whose Q2 figure is a tile on Marketing's dashboard, read on 15 September. Chapter 1 weighed four ways to size the fall: the closed quarters as totals; matched weeks, the same weeks of each quarter set side by side; a rate per day or per week, each side's revenue divided by the days or weeks its dates cover; and the same quarter last year. A second route reaches the same number by an independent method, one that could have disagreed with the first. Each order record carries its `order_date`, the day it was placed, and a `quarter` field that the export fills in.
+Revenue in every item is booked revenue: every order placed, at the price charged, before any cancellation or return. Delivered revenue would count only the orders that reached the customer and were not sent back. A quarter is closed once its last day has passed and no order can still land in it. Marketing has asked for Rs 12 crore to win new customers, on a slide whose Q2 figure is a tile on Marketing's dashboard, read on 15 September. Chapter 1 weighed four ways to size the fall: the closed quarters as totals; matched weeks, the same weeks of each quarter set side by side; a rate per day or per week, each side's revenue divided by the days or weeks its dates cover; and the same quarter last year. A second route reaches the same number by an independent method, one that could have disagreed with the first. Each order record carries its `order_date`, the day it was placed, and a `quarter` field that the export fills in.
 
 **Who needs the answer.** Meera Raghavan, the CEO, decides whether Marketing's Rs 12 crore acquisition request is urgent, and the request rests on a slide saying revenue fell 25.9 percent. Overstate the fall and crores move in a hurry on a lever nobody has checked; understate it and a real leak runs another quarter.
 
@@ -15,11 +15,11 @@ Revenue in every item is booked revenue: every order placed, at the price charge
 - How far did revenue fall between the two closed quarters?
 - Why does Marketing's slide say revenue fell 25.9 percent?
 - What does revenue per week give on 15 September, and what does it miss?
-- Which comparison answers Meera's question about the monsoon, and what does it need?
+- Which comparison answers Meera's question about the monsoon?
 - In which order do the four moves that test the drop run?
 - What does adding revenue by month prove when it matches the closed quarters?
 
-The numbers every item refers to, in booked revenue on the export as it stands:
+Every item refers to these numbers, in booked revenue on the export as it stands:
 
 | Window | Dates | Orders | Revenue |
 |---|---|---|---|
@@ -36,7 +36,7 @@ flowchart LR
 
 Every item has one right answer. Decide first, then record the letter. An item marked Design asks for the best-fit approach, a sizing, the fact that would switch it, or the second route.
 
-**What you post.** One line of 6 letters in item order, no spaces, in this shape:
+**What you post.** You post one line of six letters in item order, with no spaces, in this shape:
 
 ```
 Post exactly this shape: xxxxxx
@@ -71,7 +71,7 @@ b) Minus 25.9 percent, since dividing both sides by weeks leaves their ratio alo
 c) Minus 11.0 percent, since a rate per week removes every difference in the windows
 d) Minus 17.0 percent, the answer that matched weeks of each quarter would give
 
-### Q4. Which comparison answers Meera's question about the monsoon, and what does it need? (Design)
+### Q4. Which comparison answers Meera's question about the monsoon? (Design)
 
 Both quarters have closed. Meera now asks: "Is Q2 always weaker than Q1, because of the monsoon?" Which option answers her, and what does it need?
 

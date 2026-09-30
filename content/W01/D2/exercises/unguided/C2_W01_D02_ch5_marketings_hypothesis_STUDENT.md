@@ -1,6 +1,6 @@
 # Marketing says the flat count hides customers lost and replaced: were any lost, who slowed instead, and which segment fell most?
 
-Chapter 5 set, 6 items, about ten minutes alone after chapter 5, then compare your letters with the person beside you before Kavya's review. Kavya Nair is the senior analyst on Kalpa Retail's data team, and her review is the check that closes every chapter. A customer is a distinct customer id with an order in the quarter, and churn is a customer who stops buying. Kalpa's consumer business is its three consumer segments together: Retail-Core, shoppers who place many small orders; Retail-Plus, the paid membership tier; and Student, small discounted baskets. Business, Kalpa's sales to companies, runs to lakhs an order.
+The chapter 5 set has six items. Take about ten minutes alone after chapter 5, then compare your letters with the person beside you before Kavya's review. Kavya Nair is the senior analyst on Kalpa Retail's data team, and her review is the check that closes every chapter. A customer is a distinct customer id with an order in the quarter, and churn is a customer who stops buying. Kalpa's consumer business is its three consumer segments together: Retail-Core, shoppers who place many small orders; Retail-Plus, the paid membership tier; and Student, small discounted baskets. Business, Kalpa's sales to companies, runs to lakhs an order.
 
 > "A flat count can hide churn replaced by new customers. And Retail-Plus is Rs 65,250 out of a Rs 23 lakh fall."
 >
@@ -19,7 +19,7 @@ Chapter 2 counted 69 customers in each quarter while orders fell from 114 to 86,
 - Does the tier's Rs 65,250 matter in a Rs 23 lakh fall?
 - What does each customer's first and last order date add, and where does it stop?
 
-The numbers every item refers to, in booked orders on the export as it stands:
+Every item refers to these numbers, in booked orders on the export as it stands:
 
 | Measure | Value |
 |---|---|
@@ -35,7 +35,7 @@ flowchart LR
 
 Every item has one right answer. Decide first, then record the letter. An item marked Design asks for the best-fit approach, a sizing, the fact that would switch it, or the second route.
 
-**What you post.** One line of 6 letters in item order, no spaces, in this shape:
+**What you post.** You post one line of six letters in item order, with no spaces, in this shape:
 
 ```
 Post exactly this shape: xxxxxx

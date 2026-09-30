@@ -26,7 +26,7 @@ The key is d, "The leaves multiply: 0.754 times 1.180 is 0.890, a fall of 11.0 p
 - b, "The customer leaf was left out of the sum, and it carries the missing 4.4 points": the customer leaf is 1.000 and carries nothing.
 - c, "The two leaves should be averaged, which puts the fall at 3.3 percent": an average of two changes is no quantity in the tree.
 
-### Q3. Which split of the fall fits Meera, and which fits Finance? (Design)
+### Q3. Which split of the fall fits Meera's slide and Finance's monthly rebuild? (Design)
 
 Meera wants rupees per branch on one slide she can follow, and Finance will rebuild the same split every month while two branches keep moving together.
 
@@ -54,7 +54,7 @@ The key is d, "Only 17 of the 43 record Rs 0, and the other 26 never recorded th
 
 - a, "Q1 had 32 blanks as well, so the offer has to reach both quarters' blank orders": it keeps reading the blanks as zeros, on more orders.
 - b, "The 43 hold, but they should be counted by revenue, since orders differ in size": changing the weights leaves the blanks read as zeros.
-- c, "Blank and Rs 0 both mean no discount, so the 43 hold and only the offer's size is open": that is the misreading itself: 26 of the 43 are blanks, which are unknown.
+- c, "Blank and Rs 0 both mean no discount, so the 43 hold and only the offer's size is open": that is the misreading itself, since 26 of the 43 are blanks, which are unknown.
 
 ### Q6. What does the symmetric split show beside the bridge? (Design)
 

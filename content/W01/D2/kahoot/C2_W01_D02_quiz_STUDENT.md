@@ -1,9 +1,9 @@
 # Can you make seven of Tuesday's calls and one of Monday's at speed?
 
-Eight items, ungraded, scored on correctness and speed together. Every item comes from the day's
-case: Kalpa Retail's booked revenue, every order placed before any cancellation or return, fell from
-Q1 to Q2, and the day climbed the investigation one rung at a time, each rung a question settled
-before the next. The last item returns to Monday, one level up.
+The quiz has eight items, ungraded and scored on correctness and speed together. Every item comes
+from the day's case: Kalpa Retail's booked revenue, every order placed before any cancellation or
+return, fell from Q1 to Q2, and the day climbed the investigation one rung at a time, each rung a
+question settled before the next. The last item returns to Monday, one level up.
 
 Each item names what it tests, so an item dropped for time says what was lost.
 

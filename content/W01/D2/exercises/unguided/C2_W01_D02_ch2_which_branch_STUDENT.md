@@ -1,6 +1,6 @@
 # Which branch of the revenue tree carries the Rs 23,00,000 fall: customers, how often they buy, or what each order is worth?
 
-Chapter 2 set, 6 items, about ten minutes alone after chapter 2, then compare your letters with the person beside you before Kavya's review. Kavya Nair is the senior analyst on Kalpa Retail's data team, and her review is the check that closes every chapter. Monday's revenue tree splits revenue into three leaves, or branches, that multiply: revenue = customers x orders per customer x revenue per order. Customers are the distinct customer ids with an order in the quarter, orders per customer is orders over customers, and revenue per order is revenue over orders. Each leaf is read as a ratio, Q2's value over Q1's.
+The chapter 2 set has six items. Take about ten minutes alone after chapter 2, then compare your letters with the person beside you before Kavya's review. Kavya Nair is the senior analyst on Kalpa Retail's data team, and her review is the check that closes every chapter. Monday's revenue tree splits revenue into three leaves, or branches, that multiply: revenue = customers x orders per customer x revenue per order. Customers are the distinct customer ids with an order in the quarter, orders per customer is orders over customers, and revenue per order is revenue over orders. Each leaf is read as a ratio, Q2's value over Q1's.
 
 > "Are we losing customers, or are the ones we have buying less? Marketing says more customers."
 >
@@ -14,12 +14,12 @@ Chapter 1 confirmed the drop on two closed quarters of 13 weeks each: booked rev
 
 - Which reading of the tree answers Marketing's call for more customers?
 - What is wrong with a 6.6 percent fall built from the leaves?
-- Which split of the fall fits Meera, and which fits Finance?
+- Which split of the fall fits Meera's slide and Finance's monthly rebuild?
 - What does the bridge's frequency step come to in the tree's order?
 - Why is the count of 43 orders without a discount unsafe?
 - What does the symmetric split show beside the bridge?
 
-The numbers every item refers to, in booked revenue on the export as it stands:
+Every item refers to these numbers, in booked revenue on the export as it stands:
 
 | Branch | Q1 | Q2 | Ratio |
 |---|---|---|---|
@@ -37,7 +37,7 @@ flowchart LR
 
 Every item has one right answer. Decide first, then record the letter. An item marked Design asks for the best-fit approach, a sizing, the fact that would switch it, or the second route.
 
-**What you post.** One line of 6 letters in item order, no spaces, in this shape:
+**What you post.** You post one line of six letters in item order, with no spaces, in this shape:
 
 ```
 Post exactly this shape: xxxxxx
@@ -63,7 +63,7 @@ b) The customer leaf was left out of the sum, and it carries the missing 4.4 poi
 c) The two leaves should be averaged, which puts the fall at 3.3 percent
 d) The leaves multiply: 0.754 times 1.180 is 0.890, a fall of 11.0 percent
 
-### Q3. Which split of the fall fits Meera, and which fits Finance? (Design)
+### Q3. Which split of the fall fits Meera's slide and Finance's monthly rebuild? (Design)
 
 Meera wants rupees per branch on one slide she can follow, and Finance will rebuild the same split every month while two branches keep moving together. Which split fits which reader?
 

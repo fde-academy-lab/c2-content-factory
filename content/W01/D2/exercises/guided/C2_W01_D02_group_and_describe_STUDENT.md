@@ -1,7 +1,7 @@
 # How do you total any group of Kalpa's orders, describe it, and write the total once for every segment and quarter?
 
-Built with the trainer across chapters 2 and 3, one step at a time, in your own Codespace. Nothing
-here is graded. Every line on your screen is there because you typed it, which is what makes it
+You build this exercise with the trainer across chapters 2 and 3, one step at a time, in your own
+Codespace, and nothing here is graded. Every line on your screen is there because you typed it, which is what makes it
 yours when the afternoon's case arrives and nobody types it for you.
 
 > "Are we losing customers, or are the ones we have buying less? Is it across all our customers, or
@@ -32,7 +32,8 @@ next, puts a wrong number in front of both of them.
 Five checkpoints sit between the steps. Answer each one before you run the cell, then run it and
 see whether you were right.
 
-**What you post.** One line at the end, five letters in checkpoint order, no spaces, in this shape:
+**What you post.** You post one line at the end, five letters in checkpoint order with no spaces, in
+this shape:
 
 ```
 Post exactly this shape: xxxxx
@@ -50,7 +51,7 @@ flowchart LR
 
 ## Step 1. How do you count and total the orders of each quarter in one pass?
 
-Used at work in every report that gives a number per period, which is most of them.
+At work this comes up in every report that gives a number per period, which is most of them.
 
 Open a new cell below the setup cell of chapter 2's notebook,
 `notebooks/C2_W01_D02_02_which_branch_STUDENT.ipynb`, the cell that loads the day's helper as `kit`,
@@ -93,7 +94,8 @@ d) Rs 2,10,00,000 in Q1 and Rs 2,10,00,000 in Q2, the first quarter's
 
 ## Step 2. How do you group the same orders by quarter and segment together?
 
-Used at work whenever a number is asked for per segment, per channel or per month inside a period.
+At work this comes up whenever a number is asked for per segment, per channel or per month inside a
+period.
 
 The move is the same, with a key made of two parts. Change the key line to
 `key = (order["quarter"], order["segment"])` and build `orders_by_key` and `customers_by_key`, where
@@ -115,7 +117,7 @@ d) Sixty-nine, one per customer; a customer is the unit Meera is asking about
 
 ## Step 3. How do you describe one segment's orders with a typical value and a spread?
 
-Used at work whenever someone asks what a typical customer or a typical order looks like.
+At work this comes up whenever someone asks what a typical customer or a typical order looks like.
 
 Pull the Retail-Core amounts for Q1 into a list, sort it, and describe it with the room:
 
@@ -147,8 +149,8 @@ d) Median Rs 2,325, min Rs 860, max Rs 3,000, range Rs 3,860
 
 ## Step 4. How do you write the total once so that every segment and quarter can call it?
 
-Used at work whenever the same number is needed for many groups and each group has to get it the
-same way.
+At work this comes up whenever the same number is needed for many groups and each group has to get
+it the same way.
 
 The same total is needed for every segment in every quarter, so it moves into a function:
 

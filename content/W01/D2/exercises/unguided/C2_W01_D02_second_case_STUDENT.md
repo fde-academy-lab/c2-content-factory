@@ -18,7 +18,7 @@ cancellation or return, and Monday's revenue tree splits it into three leaves th
 members. Kalpa's other consumer segments are Retail-Core, shoppers who place many small orders, and
 Student, small discounted baskets.
 
-The morning found that the tier's same 22 members placed 26 orders in Q2 against 51 in Q1, and
+The morning found that the same 22 members of the tier placed 26 orders in Q2 against 51 in Q1, and
 chapter 5 found that 18 of the 23 customers who ordered less in Q2 were members. Chapter 6 found that
 the tier's fall began in July, before the app's reorder button broke on 25 August, and capped what
 the button can explain at about 4 of the tier's 25 lost orders.
@@ -36,13 +36,13 @@ members.
 - Which members does the tier call first?
 - Which one request goes first?
 
-Forty minutes, in pairs. One of you answers the marketing lead, the other answers the head of
-Retail-Plus, from the same file, and together you write one reply. Work in
+You work in pairs for forty minutes. One of you answers the marketing lead, the other answers the
+head of Retail-Plus, from the same file, and together you write one reply. Work in
 `notebooks/C2_W01_D02_ex2_second_case_STUDENT.ipynb`, which has a lettered `TODO` for each part and a
 check that says whether your pick holds. Each part ends in one item below.
 
-**What you post.** One line per pair at the end, four letters in item order, no spaces, in this
-shape:
+**What you post.** Each pair posts one line at the end, four letters in item order with no spaces,
+in this shape:
 
 ```
 Post exactly this shape: xxxx
@@ -60,7 +60,7 @@ flowchart TD
 
 ## Part 1. Does 7 percent more per order make the tier healthy?
 
-Used at work whenever a stakeholder brings one number as proof that a group is healthy.
+At work this comes up whenever a stakeholder brings one number as proof that a group is healthy.
 
 ### Q1. What does the tier's own tree say to Marketing's 7 percent? (Design)
 
@@ -76,7 +76,7 @@ d) The same 22 members ordered half as often, so tier revenue fell about 45 perc
 
 ## Part 2. Is the web's fall the website's fault?
 
-Used at work whenever a team is blamed for a fall that shows up in its own channel.
+At work this comes up whenever a team is blamed for a fall that shows up in its own channel.
 
 ### Q2. Which number tests a fault across the whole website? (Design)
 
@@ -92,7 +92,7 @@ d) The total of all web orders, 44 to 30, since it covers every segment
 
 ## Part 3. Which members does the tier call first?
 
-Used at work whenever a team has fewer calls to make than customers who slowed.
+At work this comes up whenever a team has fewer calls to make than customers who slowed.
 
 ### Q3. Which of four member lists does the head of Retail-Plus call first?
 
@@ -107,7 +107,7 @@ d) The 11 who fell by one order, since they are the largest group that slowed
 
 ## Part 4. Which one request goes first?
 
-Used at work whenever two data requests compete and only one can go out first.
+At work this comes up whenever two data requests compete and only one can go out first.
 
 ### Q4. Which request goes first, with the button capped at about 4 of 25 lost orders? (Design)
 

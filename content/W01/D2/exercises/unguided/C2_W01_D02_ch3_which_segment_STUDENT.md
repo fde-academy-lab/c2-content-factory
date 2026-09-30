@@ -1,6 +1,6 @@
 # Which of the four customer segments carries the fall in orders per customer, measured the same way for every segment and quarter?
 
-Chapter 3 set, 6 items, about ten minutes alone after chapter 3, then compare your letters with the person beside you before Kavya's review. Kavya Nair is the senior analyst on Kalpa Retail's data team, and her review is the check that closes every chapter. Orders per customer is orders over customers, one of the three branches of Monday's revenue tree, revenue = customers x orders per customer x revenue per order. Kalpa's customers sit in four segments. Two appear in the exhibit below: Retail-Core, shoppers who place many small orders, and Business, Kalpa's sales to companies, a few very large accounts whose every order runs to lakhs. The other two, the paid membership tier and Student, a segment of small discounted baskets, are left to your own run.
+The chapter 3 set has six items. Take about ten minutes alone after chapter 3, then compare your letters with the person beside you before Kavya's review. Kavya Nair is the senior analyst on Kalpa Retail's data team, and her review is the check that closes every chapter. Orders per customer is orders over customers, one of the three branches of Monday's revenue tree, revenue = customers x orders per customer x revenue per order. Kalpa's customers sit in four segments. Two appear in the exhibit below: Retail-Core, shoppers who place many small orders, and Business, Kalpa's sales to companies, a few very large accounts whose every order runs to lakhs. The other two, the paid membership tier and Student, a segment of small discounted baskets, are left to your own run.
 
 > "One of my members says the app's reorder button has been broken for six weeks. Is my tier the one slipping?"
 >
@@ -19,7 +19,7 @@ Chapter 2 found where the fall sits: the same 69 customers placed 114 orders in 
 - What happened to the typical Business order in Q2?
 - In which order does the roll-up of the four segments run?
 
-The numbers every item refers to, as the projector showed them, in booked orders on the export as it stands:
+Every item refers to these numbers, as the projector showed them, in booked orders on the export as it stands:
 
 | Shown on the projector | Customers | Orders Q1, Q2 | Orders per customer Q1, Q2 |
 |---|---|---|---|
@@ -36,7 +36,7 @@ flowchart LR
 
 Every item has one right answer. Decide first, then record the letter. An item marked Design asks for the best-fit approach, a sizing, the fact that would switch it, or the second route.
 
-**What you post.** One line of 6 letters in item order, no spaces, in this shape:
+**What you post.** You post one line of six letters in item order, with no spaces, in this shape:
 
 ```
 Post exactly this shape: xxxxxx

@@ -25,7 +25,7 @@ too, in front of the people who act on it.
 
 ## Part 1. Do your numbers match a correct run of the ladder?
 
-Used at work before any number leaves the notebook it was computed in.
+At work this check runs before any number leaves the notebook it was computed in.
 
 | # | Rung | Checkpoint | What you should see | If it does not match |
 |---|---|---|---|---|
@@ -53,7 +53,7 @@ When all seventeen match, read your memo's first line again with checkpoints 5 a
 
 ## Part 2. Would Meera and Anand accept your memo as written?
 
-Used at work before any memo goes to the person who decides.
+At work this read comes before any memo goes to the person who decides.
 
 Read your page back and answer each question yes or no. Two noes means rewrite it.
 
@@ -71,7 +71,7 @@ Read your page back and answer each question yes or no. Two noes means rewrite i
 
 ## Part 3. Did the reading and the video change anything in your work?
 
-Used at work whenever someone else's method is set beside your own.
+At work this comes up whenever someone else's method is set beside your own.
 
 Brit Institute, data analyst case study questions, including "Sales dropped last month. How would you investigate?": https://britinstitute.uk/blog/data-analyst-case-study-interview-questions (verified 29 Sep 2026)
 

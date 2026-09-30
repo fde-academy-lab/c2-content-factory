@@ -73,7 +73,7 @@ Q2 orders were 10 cancelled and 10 returned.
 
 ## Part 4. Which segment moves on delivered orders?
 
-### Q4. How did delivered orders per customer move, for the company and by segment?
+### Q4. How did orders per customer move on delivered orders?
 
 The notebook runs `tree_for` on each segment's delivered orders and rolls the rate up to the company.
 
@@ -108,7 +108,7 @@ consumer segments moved by about a hundred rupees at most.
 
 ## Stretch. How do you report two definitions next month?
 
-### Q6. Which way of reporting both definitions fits next month? (Design)
+### Q6. What goes in next month's report, and what would change it? (Design)
 
 Meera will see both definitions again next month, booked and delivered.
 

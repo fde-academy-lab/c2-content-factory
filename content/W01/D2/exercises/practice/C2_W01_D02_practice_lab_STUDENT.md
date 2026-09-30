@@ -24,13 +24,13 @@ claim that nobody can check.
 - What does the revenue tree say about a store whose revenue stayed flat?
 - Which four lines open the memo to Meera, and which numbers do they rest on?
 
-About an hour, in the TA-led lab after the afternoon. Four problems, each harder than the last. The
-first three need a pen and the numbers on the page; the fourth runs on the class file in your own
-notebook and ends in the first lines of tonight's memo. Figures marked invented are made up for the
-problem, and every other figure comes from the class file.
+The lab takes about an hour, led by a TA after the afternoon, and each of its four problems is
+harder than the last. The first three need a pen and the numbers on the page; the fourth runs on the
+class file in your own notebook and ends in the first lines of tonight's memo. Figures marked
+invented are made up for the problem, and every other figure comes from the class file.
 
-**What you post.** One line when you finish, twelve letters in item order, no spaces, then your four
-memo lines under it, in this shape:
+**What you post.** When you finish, you post one line of twelve letters in item order with no
+spaces, and your four memo lines under it, in this shape:
 
 ```
 Post exactly this shape: xxxxxxxxxxxx
@@ -47,8 +47,8 @@ flowchart LR
 
 ## Problem 1. In which order does a sales-drop investigation run?
 
-About ten minutes; used at work on the first day of every drop investigation, before anyone opens a
-notebook.
+This takes about ten minutes, and at work it comes first in every drop investigation, before anyone
+opens a notebook.
 
 Kavya hands a new analyst five cards, shuffled: p) isolate the branch and the segment, q) name a
 hypothesis and the evidence that would settle it, r) confirm the drop is real, s) decompose the
@@ -66,7 +66,7 @@ d) r, t, s, p, q
 ### Q2. What should the skipped rung have sent Meera on 15 September? (Design)
 
 Marketing's slide set a dashboard tile read on 15 September, while Q2 was still open, against all of
-Q1 and reported a fall of 25.9 percent. The 25.9 percent reached a slide because one rung was
+Q1 and reported a fall of 25.9 percent, a figure that reached the slide because one rung was
 skipped. What should that rung have sent Meera that day, and what would switch it once Q2 closed?
 
 a) The tile against all of Q1, minus 25.9 percent, switching once Marketing agrees the method is fair
@@ -78,7 +78,8 @@ d) The tree's leaves, frequency and order value, switching to the segments once 
 
 ## Problem 2. Which of three draft comparisons set like against like?
 
-About ten minutes; used at work whenever a draft compares two periods, two definitions or two rates.
+This takes about ten minutes, and at work it comes up whenever a draft compares two periods, two
+definitions or two rates.
 
 Each item is a comparison someone put in a draft, and the same four readings are offered for all
 three. Only one fits each comparison. A rate divides a total by a denominator, such as the days in
@@ -118,10 +119,10 @@ d) Unfair: the rate on one side divides by a different population of customers t
 
 ## Problem 3. What does the revenue tree say about a store whose revenue stayed flat?
 
-About fifteen minutes; used at work whenever a manager reads a total and asks whether a review is
-needed.
+This takes about fifteen minutes, and at work it comes up whenever a manager reads a total and asks
+whether a review is needed.
 
-An invented case. Kalpa's invented pilot store in Kochi reports two closed quarters:
+This case is invented. Kalpa's pilot store in Kochi, also invented, reports two closed quarters:
 
 | Quarter | Customers | Orders | Revenue |
 |---|---|---|---|
@@ -162,8 +163,8 @@ d) New customers may have masked existing ones buying less often, so check Q1's 
 
 ## Problem 4. Which four lines open the memo to Meera, and which numbers do they rest on?
 
-About twenty-five minutes; used at work whenever a finding goes to a leader who reads only the first
-lines.
+This takes about twenty-five minutes, and at work it comes up whenever a finding goes to a leader who
+reads only the first lines.
 
 Open a new notebook beside the day's notebooks, load the class file with
 `kit.load_records("C2_W01_D02_orders_STUDENT.py")`, and rebuild the four numbers each line needs

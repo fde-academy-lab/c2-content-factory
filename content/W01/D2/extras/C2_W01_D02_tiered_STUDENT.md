@@ -1,11 +1,11 @@
 # Which extra should you take tonight, the stretch or the recovery?
 
-Both are optional and neither is graded. Pick the one that matches where you actually are, even if
-the other sounds better. The stretch writes the day's mix-and-rate split once, as a function; the recovery
-rebuilds the day's grouping one step at a time.
+Both are optional and neither is graded. Pick the one that matches where you are, even if the other
+sounds better. The stretch writes the day's mix-and-rate split once, as a function, and the
+recovery rebuilds the day's grouping one step at a time.
 
 **Who needs the answer.** You do. Anand Iyer, Kalpa Retail's finance controller, wants the
-mix-and-rate split rerun next quarter by whoever is on shift, and the rest of the week keeps grouping
+mix-and-rate split run again next quarter by somebody else, and the rest of the week keeps grouping
 orders by key. A split nobody can rerun, or a grouping step that never landed, costs more later than
 it does tonight.
 
@@ -21,9 +21,7 @@ it does tonight.
 This one is for you if you finished the take-home early and the afternoon's mix against rate felt
 like arithmetic you did by hand.
 
-### What does Anand ask for?
-
-Anand Iyer comes back after the afternoon.
+### What does Anand ask for after the afternoon?
 
 > "Your split of revenue per order into mix and rate convinced me for one quarter. Next quarter
 > somebody else will run it, on a different file, at the end of a long day. Give me the split as
@@ -36,7 +34,7 @@ segment's share of orders, and a segment's rate is its own revenue per order. Th
 later period's mix at each segment's earlier rate: what that moves is the mix part, and the rest, the
 change inside the segments, is the rate part.
 
-### What must the function do?
+### What must `mix_and_rate` do, step by step?
 
 Write one function, `mix_and_rate(before_rows, after_rows, key)`, that returns a dictionary with
 four entries: the overall rate before, the overall rate after, the part of the change explained by
@@ -50,20 +48,20 @@ the mix of groups, and the part explained by the rates within groups.
 | 4 | It returns the mix part and the rate part, and checks that they add up to the whole change. |
 | 5 | It refuses, with a clear message, when a group exists on one side only. |
 
-### Which check must it pass?
+### Which check on the class file must it pass?
 
 On the class file, with `key="segment"`, it reproduces the afternoon's split of the Rs 33,231 rise
 in revenue per order, Rs 1,84,211 in Q1 to Rs 2,17,442 in Q2: Rs 22,902 of mix and Rs 10,330 of
 rate, within a rupee.
 
-### What is the hard part?
+### What should the function do with a group that exists on one side only?
 
-Step 5. A group that exists on one side only has no before rate or no after rate, and the split has
-no honest answer for it. Decide what the function does, write the reason in its docstring, and then
+Step 5 is the hard part. A group that exists on one side only has no before rate or no after rate,
+and the split has no honest answer for it. Decide what the function does, write the reason in its docstring, and then
 run it on the take-home file, the regional export, with `key="channel"`, and say in one line what the
 split tells the regional operations head.
 
-### How do you know you have done it well?
+### How do you know the function is done well?
 
 The function prints nothing, returns its answer whenever an honest answer exists, and carries a
 docstring from which a colleague could learn what happens to a missing group without opening the
@@ -76,7 +74,7 @@ code.
 This one is for you if the session moved fast and the accumulator did not land. Rebuilding it
 tonight costs you nothing tomorrow.
 
-### What do you do, one step at a time?
+### Which seven steps rebuild the grouping?
 
 Work in a fresh cell in chapter 2's notebook, `notebooks/C2_W01_D02_02_which_branch_STUDENT.ipynb`,
 and run after each step. Each order in the class file is a record, a dictionary, that carries its
@@ -96,13 +94,13 @@ and run after each step. Each order in the class file is a record, a dictionary,
    maximum and the range by hand, then check each with code. The median is the middle value once the
    orders are sorted, and the range is the largest less the smallest.
 
-### What should you end up believing?
+### What should the recovery leave you believing about grouping and functions?
 
 Grouping is one move: a dictionary, a key, and an update per record. A function is worth writing
 when it hands its answer back, and the `None` you saw in step 6 is what every table built on a
 printing function is full of.
 
-### What if step 7 surprised you?
+### What if the three invented orders in step 7 surprised you?
 
 Look at the gap between the mean and the median of those three invented orders, and say in one
 sentence which of the two you would put in a note to Meera Raghavan, Kalpa Retail's CEO.

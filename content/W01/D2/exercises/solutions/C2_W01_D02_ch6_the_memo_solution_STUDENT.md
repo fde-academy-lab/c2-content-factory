@@ -2,7 +2,7 @@
 
 Answers: 1c 2d 3b 4a 5d 6a
 
-The head of Retail-Plus, Kalpa Retail's paid membership tier, blames the fall in his members' orders on the app's reorder button, broken for six weeks by one member's account, which puts the break on 25 August. The tier's members placed 51 orders in Q1, then 18 between 1 July and 24 August and 8 from 25 August to 30 September, and Meera Raghavan, the CEO, wants a memo on what the data can and cannot say about the cause.
+The head of Retail-Plus, Kalpa Retail's paid membership tier, blames the fall in his members' orders on the app's reorder button, which one member says has been broken for six weeks, a break the team reads as 25 August. The tier's members placed 51 orders in Q1, then 18 between 1 July and 24 August and 8 from 25 August to 30 September, and Meera Raghavan, the CEO, wants a memo on what the data can and cannot say about the cause.
 
 Four of the six items are design items: 1, 3, 5 and 6.
 

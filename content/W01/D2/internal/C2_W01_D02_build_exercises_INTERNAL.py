@@ -50,8 +50,8 @@ BANNED = [w for w in _verify.BANNED if " " not in w]
 MERGED = {1: "1c 2b 3a 4d 5b 6c", 2: "1b 2d 3c 4a 5d 6b", 3: "1d 2a 3c 4b 5a 6d",
           4: "1b 2c 3d 4a 5b 6a", 5: "1c 2a 3b 4d 5b 6d", 6: "1c 2d 3b 4a 5d 6a"}
 
-KAVYA = ("then compare your letters with the person beside you before Kavya's review. Kavya Nair is the "
-         "senior analyst on Kalpa Retail's data team, and her review is the check that closes every chapter.")
+KAVYA = ("Kavya Nair is the senior analyst on Kalpa Retail's data team, and her review is the check that "
+         "closes every chapter.")
 RULES = ("Every item has one right answer. Decide first, then record the letter. An item marked Design asks "
          "for the best-fit approach, a sizing, the fact that would switch it, or the second route.")
 
@@ -70,7 +70,8 @@ SETS = [
         quote=("Q2 was Rs 1.9 crore, Q1 was 2.1. Marketing says more customers. Prove it or disprove it.",
                "Meera Raghavan, CEO, Kalpa Retail"),
         so_far=("Revenue in every item is booked revenue: every order placed, at the price charged, before any "
-                "cancellation or return. A quarter is closed once its last day has passed and no order can still "
+                "cancellation or return. Delivered revenue would count only the orders that reached the customer "
+                "and were not sent back. A quarter is closed once its last day has passed and no order can still "
                 "land in it. Marketing has asked for Rs 12 crore to win new customers, on a slide whose Q2 figure "
                 "is a tile on Marketing's dashboard, read on 15 September. Chapter 1 weighed four ways to size "
                 "the fall: the closed quarters as totals; matched weeks, the same weeks of each quarter set side "
@@ -81,7 +82,7 @@ SETS = [
         who=("Meera Raghavan, the CEO, decides whether Marketing's Rs 12 crore acquisition request is urgent, "
              "and the request rests on a slide saying revenue fell 25.9 percent. Overstate the fall and crores "
              "move in a hurry on a lever nobody has checked; understate it and a real leak runs another quarter."),
-        exhibit="The numbers every item refers to, in booked revenue on the export as it stands:",
+        exhibit="Every item refers to these numbers, in booked revenue on the export as it stands:",
         table="""| Window | Dates | Orders | Revenue |
 |---|---|---|---|
 | Q1, closed | 1 Apr to 30 Jun | 114 | Rs 2,10,00,000 |
@@ -146,7 +147,7 @@ SETS = [
                  "On 15 September, with Q2 still open, a colleague divides each side of Marketing's slide by the "
                  "weeks its dates cover.",
                  "design"),
-            item("Which comparison answers Meera's question about the monsoon, and what does it need?",
+            item("Which comparison answers Meera's question about the monsoon?",
                  "Both quarters have closed. Meera now asks: \"Is Q2 always weaker than Q1, because of the "
                  "monsoon?\" Which option answers her, and what does it need?",
                  ["Closed quarters again, since both are complete and compare like with like",
@@ -220,7 +221,7 @@ SETS = [
              "merchandising, the team that chooses the range and the pack sizes, owns what each order is "
              "worth; and Finance with Marketing owns price. A wrong split sends crores to the wrong owner for "
              "a quarter, and Marketing's Rs 12 crore to a branch that may not have moved."),
-        exhibit="The numbers every item refers to, in booked revenue on the export as it stands:",
+        exhibit="Every item refers to these numbers, in booked revenue on the export as it stands:",
         table="""| Branch | Q1 | Q2 | Ratio |
 |---|---|---|---|
 | Customers | 69 | 69 | 1.000 |
@@ -267,7 +268,7 @@ SETS = [
                  "A colleague adds the two leaf changes, minus 24.6 percent in orders per customer and plus 18.0 "
                  "percent in revenue per order, and reports revenue down 6.6 percent.",
                  "scenario"),
-            item("Which split of the fall fits Meera, and which fits Finance?",
+            item("Which split of the fall fits Meera's slide and Finance's monthly rebuild?",
                  "Meera wants rupees per branch on one slide she can follow, and Finance will rebuild the same "
                  "split every month while two branches keep moving together. Which split fits which reader?",
                  ["The symmetric split for both, since any order of steps is a bias someone will argue",
@@ -312,7 +313,7 @@ SETS = [
                  "extension then spends margin on orders that may already carry one.",
                  {"a": "it keeps reading the blanks as zeros, on more orders.",
                   "b": "changing the weights leaves the blanks read as zeros.",
-                  "c": "that is the misreading itself: 26 of the 43 are blanks, which are unknown."},
+                  "c": "that is the misreading itself, since 26 of the 43 are blanks, which are unknown."},
                  "A hurried count reads every missing discount as zero, finds 43 of Q2's 86 orders without one, "
                  "and Marketing wants the discount extended to them.",
                  "scenario"),
@@ -359,7 +360,7 @@ SETS = [
         who=("The head of the paid membership tier decides whether his tier needs rescuing. Renewals, the "
              "members who pay for another year, are the metric of his job, so orders per member is his number. "
              "A wrong answer costs a tier nobody protects, or a quarter spent fixing one that was fine."),
-        exhibit=("The numbers every item refers to, as the projector showed them, in booked orders on the "
+        exhibit=("Every item refers to these numbers, as the projector showed them, in booked orders on the "
                  "export as it stands:"),
         table="""| Shown on the projector | Customers | Orders Q1, Q2 | Orders per customer Q1, Q2 |
 |---|---|---|---|
@@ -502,7 +503,7 @@ SETS = [
         who=("Meera Raghavan, the CEO, and Finance decide whether a price rise goes into the plan, on "
              "Marketing's reading of the 18 percent. A wrong reading raises prices on customers who never paid "
              "more, and costs volume in the tier whose orders already halved."),
-        exhibit="The numbers every item refers to, in booked orders on the export as it stands:",
+        exhibit="Every item refers to these numbers, in booked orders on the export as it stands:",
         table="""| Segment | Share of orders Q1, Q2 | Revenue per order Q1 | Revenue per order Q2 |
 |---|---|---|---|
 | Retail-Core | 33.3%, 41.9% | Rs 2,117 | Rs 2,014 |
@@ -644,7 +645,7 @@ SETS = [
         who=("Meera Raghavan, the CEO, decides whether to release the Rs 12 crore acquisition budget, which "
              "Marketing now rests on churn hiding in a flat count. A wrong answer spends crores replacing "
              "customers who never left, while the ones who slowed keep slowing."),
-        exhibit="The numbers every item refers to, in booked orders on the export as it stands:",
+        exhibit="Every item refers to these numbers, in booked orders on the export as it stands:",
         table="""| Measure | Value |
 |---|---|
 | Customer ids in Q1, in Q2 | 69, 69 |
@@ -773,13 +774,14 @@ SETS = [
                 "customer down from 1.65 to 1.25. In Retail-Plus the same 22 members placed 26 orders in Q2 "
                 "against 51 in Q1, and chapter 5 found 18 of the 23 customers who slowed were members. "
                 "Retail-Core, shoppers who place many small orders, is the comparison segment, a segment the button "
-                "cannot touch. A pace is orders per day or per week. "
-                "A ceiling is the most a cause could explain, given what else was already moving. A hypothesis "
-                "is a named cause stated with the evidence that would settle it."),
+                "cannot touch. The board pack is the set of numbers Kalpa's board reads every quarter, a pace is "
+                "orders per day or per week, and a ceiling is the most a cause could explain, given what else "
+                "was already moving. A hypothesis is a named cause stated with the evidence that would settle "
+                "it."),
         who=("The head of Retail-Plus and engineering decide what to fix first, and Meera Raghavan, the CEO, "
              "decides what the board hears as the cause. Blame the button for everything and the tier keeps "
              "falling for a reason nobody looked for; dismiss it and members keep failing to reorder."),
-        exhibit="The numbers every item refers to, Retail-Plus's booked orders on the export as it stands:",
+        exhibit="Every item refers to these numbers, Retail-Plus's booked orders on the export as it stands:",
         table="""| Retail-Plus window | Days | Orders | Orders per week |
 |---|---|---|---|
 | Q1, 1 Apr to 30 Jun | 91 | 51 | 3.92 |
@@ -790,8 +792,8 @@ SETS = [
     B --> C["<b>25 Aug</b><br/>the button breaks"]
     C --> D["<b>30 Sep</b><br/>Q2 closes"]""",
         scenario=("The head of Retail-Plus, Kalpa Retail's paid membership tier, blames the fall in his members' "
-                  "orders on the app's reorder button, broken for six weeks by one member's account, which puts "
-                  "the break on 25 August. The tier's members placed 51 orders in Q1, then 18 between 1 July and "
+                  "orders on the app's reorder button, which one member says has been broken for six weeks, a "
+                  "break the team reads as 25 August. The tier's members placed 51 orders in Q1, then 18 between 1 July and "
                   "24 August and 8 from 25 August to 30 September, and Meera Raghavan, the CEO, wants a memo on "
                   "what the data can and cannot say about the cause."),
         items=[
@@ -938,13 +940,16 @@ def write_set(s):
     assert s["question"].endswith("?"), n
 
     stu = [f"# {s['question']}", "",
-           f"Chapter {n} set, {k} items, about ten minutes alone after chapter {n}, {KAVYA} {s['terms']}", "",
+           f"The chapter {n} set has {NUMBER_WORDS[k].lower()} items. Take about ten minutes alone after "
+           f"chapter {n}, then compare your letters with the person beside you before Kavya's review. "
+           f"{KAVYA} {s['terms']}", "",
            f"> \"{s['quote'][0]}\"", ">", f"> {s['quote'][1]}", "", s["so_far"], "",
            f"**Who needs the answer.** {s['who']}", "",
            "**The questions on the way.**", ""]
     stu += [f"- {it['heading']}" for it in items]
     stu += ["", s["exhibit"], "", s["table"], "", "```mermaid", s["picture"], "```", "", RULES, "",
-            f"**What you post.** One line of {k} letters in item order, no spaces, in this shape:", "",
+            f"**What you post.** You post one line of {NUMBER_WORDS[k].lower()} letters in item order, with "
+            "no spaces, in this shape:", "",
             "```", "Post exactly this shape: " + "x" * k, "```", "", "---"]
 
     sol = [f"# Solution: {s['question']}", "", f"Answers: {answers}", "", s["scenario"], "",

@@ -38,7 +38,7 @@ puts a wrong cause in front of the people who decide where the money goes.
 - Is the delivered rise mix or rate?
 - How do you report two definitions next month?
 
-Fifty minutes, alone, unguided; the solution opens after the debrief. Work in
+You work alone and unguided for fifty minutes, and the solution opens after the debrief. Work in
 `notebooks/C2_W01_D02_ex1_escalated_case_STUDENT.ipynb`. It opens on the class file, carries
 `tree_for`, the function that gives any list of orders its revenue, orders, customers and rates, and
 `pct_change`, the summary helper fixed in the morning to return every change, and it has a lettered
@@ -46,7 +46,8 @@ Fifty minutes, alone, unguided; the solution opens after the debrief. Work in
 stops at the first placeholder until you fill it, which is intended. Each part ends in one item
 below, and the stretch adds a sixth.
 
-**What you post.** One line at the end, six letters in item order, no spaces, in this shape:
+**What you post.** You post one line at the end, six letters in item order with no spaces, in this
+shape:
 
 ```
 Post exactly this shape: xxxxxx
@@ -64,8 +65,8 @@ flowchart LR
 
 ## Part 1. Is the delivered drop real?
 
-Used at work whenever a stakeholder moves to another definition of revenue and asks whether the fall
-still holds.
+At work this comes up whenever a stakeholder moves to another definition of revenue and asks whether
+the fall still holds.
 
 ### Q1. Which figure answers Meera on delivered revenue?
 
@@ -81,7 +82,8 @@ d) No fall at all, since returns for Q2 are still arriving and will lift its tot
 
 ## Part 2. Which branch moves on delivered orders?
 
-Used at work whenever a decomposition is rerun on a new definition before anyone repeats its verdict.
+At work this comes up whenever a decomposition is rerun on a new definition before anyone repeats
+its verdict.
 
 Build the bridge in the tree's order: customers, then orders per customer, then revenue per order.
 
@@ -99,7 +101,8 @@ d) The tree per segment; a fall inside one segment would make it that segment's 
 
 ## Part 3. Are those lost customers?
 
-Used at work whenever a customer count moves and someone has to say who those customers are.
+At work this comes up whenever a customer count moves and someone has to say who those customers
+are.
 
 ### Q3. What happened to the 19 customers with no delivered order in Q2?
 
@@ -114,12 +117,12 @@ d) Customers whose Q1 orders were delivered late and counted in Q2 instead
 
 ## Part 4. Which segment moves on delivered orders?
 
-Used at work whenever a rate is compared across segments or rolled up to the company.
+At work this comes up whenever a rate is compared across segments or rolled up to the company.
 
 Run `tree_for` per segment on delivered orders, roll the rate up to the company, and count the groups
 that come back.
 
-### Q4. How did delivered orders per customer move, for the company and by segment?
+### Q4. How did orders per customer move on delivered orders?
 
 Your notebook has the delivered tree for each segment and the rate rolled up to the company. Which
 statement about delivered orders per customer holds?
@@ -133,7 +136,8 @@ d) Weighted it fell from 1.50 to 1.14, and Retail-Plus fell furthest at 42.6 per
 
 ## Part 5. Is the delivered rise mix or rate?
 
-Used at work whenever an average across groups moves and a price decision rides on the reason.
+At work this comes up whenever an average across groups moves and a price decision rides on the
+reason.
 
 Split the rise in delivered revenue per order, Rs 1,79,074 to Rs 2,25,696, into mix and rate by
 pricing Q2's mix of orders at each segment's Q1 rate.
@@ -152,9 +156,9 @@ d) Delivered orders are unreliable, so the booked split should be used on its ow
 
 ## Stretch. How do you report two definitions next month?
 
-Used at work every month that two teams report the same number two ways.
+At work this comes up every month that two teams report the same number two ways.
 
-### Q6. Which way of reporting both definitions fits next month? (Design)
+### Q6. What goes in next month's report, and what would change it? (Design)
 
 Meera will see both definitions again next month, booked and delivered. Which way do you report them,
 and what would change it?

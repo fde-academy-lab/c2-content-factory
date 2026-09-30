@@ -104,4 +104,4 @@ against groups out, comes back later in the day.
 
 Every `GROUP BY` in SQL and every `groupby` in pandas is this accumulator with the loop hidden, and
 the programme meets both later. The habit of counting groups before reading them is what catches a
-step that quietly lost a segment, whatever the tool.
+step that lost a segment without a word, whatever the tool.
