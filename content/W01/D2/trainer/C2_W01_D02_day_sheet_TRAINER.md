@@ -9,7 +9,7 @@ Posts to <!-- sync:module:W01/D2 -->Module 1: Foundations of AI and Data<!-- /sy
 **The day's question, in Meera's words.** Q2 came in below Q1: are we losing customers, or are the
 ones we have buying less? Ask it at the morning's cover and S1; the afternoon answers it at S28.
 Ask each chapter's question before its opener goes up, and each smaller question before its answer
-slide. The answers here are the ones the slides show.
+slide.
 
 1. **Is the drop real?** Did revenue really fall from Q1 to Q2, and by how much, once both sides
    cover the same weeks? *Answer: yes, minus 11.0 percent, Rs 23,00,000, on two closed quarters.*
@@ -44,7 +44,7 @@ slide. The answers here are the ones the slides show.
    3. Did any segment's own revenue per order rise 18 percent? (no; Student's 14.8 is the most)
    4. Did customers pay 18 percent more, or did the mix move the blend? (mix, about 69 percent)
    5. What is the rate part made of? (Business, Rs 10,302 of Rs 10,330)
-   6. Do two groups on an envelope give the same share? (yes, 69.3 against 68.9 percent)
+   6. Does a back-of-envelope split, Business against everyone else, put the same share of the rise on the mix? (yes, 69.3 against 68.9 percent)
 5. **Were customers lost?** Marketing says the flat count hides customers lost and replaced: were
    any lost, who slowed instead, and which segment fell most? *Answer: none lost, none new; 23
    slowed, 18 of them members; Retail-Plus minus 49.0 percent.*
@@ -60,7 +60,7 @@ slide. The answers here are the ones the slides show.
    1. Which of four tests of a cause run today, and in which order? (timing, a segment, the channel; logs requested)
    2. When did Retail-Plus orders drop below every Q1 month? (July)
    3. How many orders can the button have cost the tier? (about 4, or 7.0 on the shorter baseline)
-   4. Could a season that hit every customer explain the fall? (no, Retail-Core kept 95 percent)
+   4. Could a season that hit every customer explain the fall? (not one that hit everyone: Retail-Core kept 95 percent; a members-only dip stays open)
    5. Did only the app channel fall, as a broken app feature predicts? (no, every channel fell)
    6. Does a pace corrected by Retail-Core's own change stay inside the ceiling? (yes, about 3.5)
 
@@ -123,7 +123,7 @@ flowchart LR
 | Part | Slides (half two) | Beside it | What must land | If short of time |
 |---|---|---|---|---|
 | Chapter 6, did the button do it?, 30 | Cover, S1, SECTION 6, S2 to S16 | Notebook `06_the_memo`; set `ch6_the_memo` | Timing first; July before the break; the ceiling of about 4 orders on its 55-day baseline and 7.0 on the 37 days before the break, both far below 25; season and channel; two hypotheses with evidence | S14 to one sentence |
-| Escalated case, 50 | SECTION 7, S17 to S18 | Brief `unguided/..._escalated_case`; notebook `ex1_escalated_case` (TODO twin) | The ladder on delivered orders; the customers branch moves and is fulfilment | Part 5 becomes homework |
+| Escalated case, 50 | SECTION 7, S17 to S18 | Brief `unguided/..._escalated_case`; notebook `ex1_escalated_case` (TODO twin) | The ladder on delivered orders; the customers branch moves, and it is cancellations and returns | Part 5 becomes homework |
 | Debrief, 15 | SECTION 8, S19 to S23 | Solution notebook `ex1` released at the end | The four wrong answers with their numbers, each a morning trap in a new place | S22 to one sentence |
 | Break, 10 | after S23 | | | |
 | Second case, pairs, 40 | SECTION 9, S24 to S25 | Brief `unguided/..._second_case`; notebook `ex2_second_case` | The tier's leaves multiply to about 0.55, revenue down about 45 percent on 7 percent more per order (0.545 counted directly); Retail-Core web held; the 7 members; the July change log first | Hear one pair, not two |
@@ -136,7 +136,7 @@ flowchart LR
 
 | Chapter | Options | The call, and what would switch it | Second route |
 |---|---|---|---|
-| 1 | Closed quarters; the same 11 weeks; per day; last year's Q2 | Closed quarters; Q2 open means same weeks; the season means last year | Revenue keyed by month adds to the same minus 11.0 |
+| 1 | Closed quarters; the same 11 weeks; a rate per day or week; last year's Q2 | Closed quarters; Q2 open means same weeks; the season means last year | Revenue keyed by month adds to the same minus 11.0 |
 | 2 | Leaf percentages; bridge in tree order; bridge reversed; symmetric split; customer by customer | Bridge in tree order, stated; symmetric if rebuilt monthly | The symmetric split charges frequency Rs 55,88,480: the same branch, and Rs 4,30,585 of joint part |
 | 3 | Copy the loop per group; a function; one pass by key | Function; millions of rows and every group at once means one pass | One pass by key agrees with `tree_for` on all 8 groups |
 | 4 | Blended change; per-segment rates; mix and rate split; medians | The split; similar order sizes would make the table enough | Two groups on an envelope: Business's share change times its gap, about Rs 23,000, 69 percent |
@@ -153,10 +153,10 @@ flowchart LR
 | Chapter 4 | Revenue per order "up 18.0 percent, customers pay more" | A price rise on the tier whose orders halved | No segment's own revenue per order rose 18 percent | Mix Rs 22,902 of Rs 33,231, about 69 percent |
 | Chapter 5 | `pct_change` prints above 30 percent and returns None: summary {Retail-Core -5.3, Business -15.0}, "Business fell most" | Business accounts first; the tier told it is not in the table | Four segments in, two numbers back | Return every change, flag it in a column: Retail-Plus minus 49.0 |
 | Chapter 6 | "The button cost 25 orders, Rs 65,250" | Engineering promised a fix that recovers the tier | Split Q2 at 25 August with each window: 3.92, 2.29, 1.51 a week | A ceiling of about 4.1 orders, about Rs 12,400, on the 55 days before the break; 7.0 on the 37 days just before it (15 orders); either way far below 25, so the call holds |
-| Escalated case | Delivered customers 54 to 50, "Marketing was right" | Acquisition funded on a fulfilment problem | Booked overlap 69, 0, 0; all 19 booked again | The branch is cancellations and returns, to split by reason |
+| Escalated case | Delivered customers 54 to 50, "Marketing was right" | Acquisition funded on a problem of cancellations and returns | Booked overlap 69, 0, 0; all 19 booked again | The branch is cancellations and returns, to split by reason |
 
 The KeyError on `order["discount"]` is a runtime error: two minutes at S33, its last line and the
-three ways past it, then S34. It is never the trap.
+three ways past it, then S34, where the trap is what the third way decides.
 
 **The ceiling's baseline, if a learner asks.** The headline, about 4 orders, uses the tier's pace
 over all 55 days from 1 July to the break. Over the 37 days just before the break, 19 July to 24

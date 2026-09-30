@@ -50,7 +50,7 @@ the fall sits in Retail-Plus, where the same 22 members placed 26 orders against
 ## Panel 4: What does a missing discount count as?
 
 ```python
-order.get("discount", 0)   # a decision that looks like no decision
+order.get("discount", 0)   # silently makes a blank Rs 0
 ```
 
 Read as zero, a blank counts as "no discount", so 50.0 percent of Q2's orders seem to carry one. Split
@@ -61,7 +61,7 @@ the blanks allow, and bound the branch: Rs 150 on 86 orders is at most Rs 12,900
 
 ## Panel 5: How do four segments roll up into one rate?
 
-A function beats eight copied loops. A plain average of four segments gives 1.94 and 1.82; total
+One function replaces eight copied loops and eight places to edit. A plain average of four segments gives 1.94 and 1.82; total
 orders over total customers gives 1.65 and 1.25, the figure a roll-up must reproduce.
 
 **Crux:** Roll a rate up with its weights; never average the averages.

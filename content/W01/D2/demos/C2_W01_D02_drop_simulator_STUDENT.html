@@ -169,10 +169,10 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 <header class="hero">
   <span class="kicker">Week 1 &middot; Tuesday &middot; Companion</span>
   <h1>Which branch moved?</h1>
-  <p class="quote">&ldquo;Q2 was Rs 1.9 crore, Q1 was 2.1. Are we losing customers, or are the ones we have buying less?
-    Marketing says more customers. Prove it or disprove it.&rdquo;</p>
+  <p class="quote">"Q2 was Rs 1.9 crore, Q1 was 2.1. Are we losing customers, or are the ones we have buying less?
+    Marketing says more customers. Prove it or disprove it."</p>
   <p class="who">Meera Raghavan, CEO, Kalpa Retail, to the data and AI team at Kalpa's Global Capability Centre</p>
-  <p class="promise">This page makes the day's drop investigation move. Walk the six chapters, then change the five
+  <p class="promise">Walk the six chapters, then change the five
     assumptions a hurried reading gets wrong and watch the number and the sentence to Meera change with each one.
     Every figure is a quarter or segment total from the day's order file as exported, or is invented for a
     calculator and says so.</p>
@@ -357,7 +357,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         <article class="card exp" id="expD">
           <div class="part-label">Experiment D &middot; the helper</div>
           <h3>What if the helper prints instead of returning?</h3>
-          <p><b>Situation.</b> Last quarter's <code>pct_change</code> prints &ldquo;check by hand&rdquo; for any change
+          <p><b>Situation.</b> Last quarter's <code>pct_change</code> prints "check by hand" for any change
             beyond 30 percent and returns nothing in that case. The summary keeps only the falls it gets back.</p>
           <p><b>Hypothesis.</b> The two largest moves vanish from the summary, and nobody notices because the printed
             lines carry no segment name.</p>
@@ -411,7 +411,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         <div class="card"><div class="holder" id="segChart"></div></div>
         <div class="card">
           <p id="segText">The split appears here once you run it: revenue per order at Q2's order mix and Q1's
-            per-segment prices, set against both quarters.</p>
+            per-segment revenue per order, set against both quarters.</p>
           <div class="formula" id="segFormula">revenue per order at Q2 mix = sum of (Q2 share of orders x Q1 revenue per order)</div>
           <div class="row">
             <button class="btn" id="segRun" type="button" aria-pressed="false">Split the rise into mix and rate</button>
@@ -510,7 +510,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
       <p class="foot">Week 1, Tuesday. The same five decisions live in the workbook beside this page,
         C2_W01_D02_decision_tool_STUDENT.xlsx, which is the version to keep: each tab hides one formula defect to find
         first, and its Export tab assembles the brief for Meera. Kalpa Retail and everyone in it are fictional. The
-        totals here come from the day's order file as exported, before any cleaning; the calculator's starting groups
+        totals here come from the day's order file as exported; the calculator's starting groups
         are invented. The page stores nothing and calls no network.</p>
     </section>
   </main>
@@ -1013,7 +1013,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   var WINDOWS = {
     closed: { a: 21000000, b: 18700000, la: "Q1, 13 weeks", lb: "Q2, 13 weeks", weeks: "13 weeks against 13", fair: true },
     cut: { a: 21000000, b: 15559950, la: "Q1, 13 weeks", lb: "Q2 tile, 11 weeks", weeks: "11 weeks against 13", fair: false },
-    week: { a: 1615385, b: 1414541, la: "Q1, a week", lb: "Q2 to 15 Sep, a week", weeks: "a rate per week", fair: true },
+    week: { a: 1615385, b: 1414541, la: "Q1, a week", lb: "Q2 to 15 Sep, a week", weeks: "a rate per week", fair: true,
+            note: "A rate per week fixes the length and leaves the position: send the same weeks of both beside it while Q2 is open." },
     same: { a: 18751440, b: 15559950, la: "Q1, first 11 weeks", lb: "Q2, first 11 weeks", weeks: "11 weeks against 11", fair: true }
   };
   var CUM = { labels: ["start", "week 11", "week 13"], q1: [0, 18751440, 21000000], q2: [0, 15559950, 18700000] };
@@ -1154,16 +1155,16 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     { t: "Chapter 3: which segment moved?", lit: 2, big: p1(ch["Retail-Plus"]), cap: "orders per customer in Retail-Plus, the same 22 members",
       chart: function () { return rollupChart("weighted"); },
       x: "The same function run on each segment shows where frequency fell: Retail-Plus from 2.32 to 1.18 orders per member, while Retail-Core moved 5.3 percent and Student rose. The company figure is weighted by customers, 1.65 to 1.25, and it reproduces chapter 2. Averaging the four segment figures gives 1.94 to 1.82, which does not." },
-    { t: "Chapter 4: whose orders were lost?", lit: 3, big: shareOf("orders", "Retail-Plus").amount + " of " + (Q.orders[0] - Q.orders[1]), cap: "lost orders sit in Retail-Plus",
+    { t: "Chapter 4: did customers pay more?", lit: 3, big: shareOf("orders", "Retail-Plus").amount + " of " + (Q.orders[0] - Q.orders[1]), cap: "lost orders sit in Retail-Plus, small orders of about three thousand rupees",
       chart: function () { return measureBridge("orders", 620); },
-      x: "In orders, Retail-Plus carries 25 of the 28 lost orders. Every member still bought in Q2; seven of the ten members who ordered three times in Q1 now order once. A helper that printed its big moves and returned nothing would have dropped exactly this segment from the summary." },
-    { t: "Chapter 5: where does the fall sit in rupees?", lit: 4, big: Math.round(shareOf("rev", "Business").share) + " percent", cap: "of the rupee fall sits in Business, on three fewer orders out of twenty",
+      x: "In orders, Retail-Plus carries 25 of the 28 lost orders, each worth about three thousand rupees. With the small orders gone, revenue per order rose 18 percent while no segment's own revenue per order rose that far: about 69 percent of the rise is the mix, and no consumer segment paid meaningfully more." },
+    { t: "Chapter 5: were customers lost?", lit: 4, big: "69, 0, 0", cap: "customers in both quarters, lost, and new",
       chart: function () { return measureBridge("rupees", 620); },
-      x: "In rupees, Business carries Rs 22,29,720 of the Rs 23,00,000 fall, because each of its orders is worth lakhs. Three fewer Business orders out of twenty, each worth lakhs, move with one account's timing. Revenue per order rose mainly because small Retail-Plus orders disappeared from the mix, and no consumer segment paid meaningfully more." },
+      x: "None were lost and none are new: all 69 customers bought in both quarters. Twenty-three bought less often, 18 of them members, and seven of the ten members who ordered three times in Q1 now order once. In rupees, Business carries Rs 22,29,720 of the Rs 23,00,000 fall on three fewer orders out of twenty, each worth lakhs, which one account's timing moves. A helper that printed its big moves and returned nothing would have dropped Retail-Plus from the summary." },
     { t: "Chapter 6: when did the fall begin, and what can the button explain?", lit: 5, big: "July", cap: "the month the Retail-Plus fall began",
       chart: function () { return K.line(MONTHS, [["Retail-Plus orders", PLUS_MONTHS, "bad"], ["Retail-Core orders", CORE_MONTHS, "plan"]], { width: 620, title: "Orders by month; Retail-Core is the comparison" }); },
       x: "The complaint dates the broken reorder feature six weeks back from this week, which is late August. Retail-Plus orders were already down in July, before the break, so the break cannot be the whole story: at the tier's pace over the 55 days before the break, the button explains at most about 4 orders, and at its pace over the 37 days just before it, 7.0, far below the 25 a hurried memo charges either way. Retail-Core stayed flat across the six months, so the fall is particular to the paid tier." },
-    { t: "What does Kavya say goes to Meera?", lit: null, big: "Frequency, not acquisition", cap: "the branch that moved, stated as a finding with its hypothesis beside it",
+    { t: "What does Kavya say goes to Meera?", lit: null, big: "Frequency moved; customers held", cap: "the branch that moved, stated as a finding with its hypothesis beside it",
       chart: function () { return K.flow(RUNGS.map(function (r) { return r.split("\n")[0]; }), null, { width: 96, kinds: ["good", "good", "good", "good", "good", "unknown"] }); },
       x: "Tell Meera that customers held at 69 and every one bought in both quarters, so acquisition is not the branch that moved. Orders per customer fell from 1.65 to 1.25; in behaviour the fall is Retail-Plus, and in rupees it is three Business orders, each worth lakhs, which one account's timing moves. The reorder feature is a hypothesis, and the app's reorder logs would settle it." }
   ];
@@ -1246,7 +1247,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
       r.textContent = wrong.length + " of 4 settings that decide the answer still read the hurried way. Fix the window first, then the roll-up, the discount default and the helper, and watch the sentence change after each one.";
     }
 
-    setState("stWindow", w.fair ? "Both sides cover the same kind of window." : "Q2 covers 11 weeks against Q1's 13.", w.fair);
+    setState("stWindow", w.note || (w.fair ? "Both sides cover the same kind of window." : "Q2 covers 11 weeks against Q1's 13."), w.fair);
     setState("stDiscount", s.disc === "zero" ? "An absent field was counted as no discount." : "The default is chosen and written down.", s.disc !== "zero");
     setState("stRollup", s.roll === "weighted" ? "It reproduces 1.65 and 1.25 from the totals." : "It does not reproduce the company totals.", s.roll === "weighted");
     setState("stHelper", h.names.length + " segments in, " + h.none + " came back None.", s.help === "returns");
@@ -1268,7 +1269,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   IDS.forEach(function (id) {
     $(id).addEventListener("change", function () {
       var label = $(id).parentNode.querySelector("label").textContent.replace(/^\d\.\s*/, "");
-      $("simLog").textContent = "You changed " + label.toLowerCase() + " to “" + $(id).options[$(id).selectedIndex].text.toLowerCase() + "”.";
+      $("simLog").textContent = "You changed " + label.toLowerCase() + " to \"" + $(id).options[$(id).selectedIndex].text.toLowerCase() + "\".";
       simulate();
     });
   });
@@ -1448,7 +1449,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     { width: 420, title: "Retail-Plus orders by channel: every channel fell" }));
   var HYP = {
     hypH1: ["h1", "H1 meets the timing test badly: Retail-Plus placed 18 orders between 1 July and 24 August, before the break, and 8 after it, and the fall had begun in July. The channel test agrees, since web fell from 24 to 9 and store from 14 to 9 as well as app from 13 to 8. The app's reorder events and failures by week, the release that broke it, and whether members who used reorder in Q1 fell more than those who did not would settle it."],
-    hypH2: ["h2", "H2 fits the timing: the fall starts in July, across every channel, in the paid tier only, while Retail-Core stays flat. It needs data this file does not carry: the tier's change log for benefits, prices or delivery terms, member renewals, and members' support tickets from July onwards."]
+    hypH2: ["h2", "H2 fits the timing: the fall in orders per member starts in July, across every channel, while Retail-Core stays flat. It needs data this file does not carry: the tier's change log for benefits, prices or delivery terms, member renewals, and members' support tickets from July onwards."]
   };
   function drawHyp(pick) {
     function k(which, good) { return pick === which ? (good ? "good" : "lit") : "plain"; }

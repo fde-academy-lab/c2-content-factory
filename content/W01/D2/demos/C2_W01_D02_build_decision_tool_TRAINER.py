@@ -143,9 +143,9 @@ put(ws, "A18", "Verdict", VERDICT)
 put(ws, "B18", '=IF(ABS(B10*C6-B6)>=1,"Fix the weekly rate that divides by the wrong weeks before comparing anything.",'
                'IF(B13="closed quarters",IF(C7=C5,"Revenue "&' + moved("B14") + '&" between closed quarters of "&C5&'
                '" weeks each.","The closed quarters cover different weeks: compare a rate per week."),'
-               'IF(B13="rate per week","Per week, revenue "&' + moved("B16") + '&" on the cut window.",'
+               'IF(B13="rate per week","Per week, revenue "&' + moved("B16") + '&" on the cut window; the rate fixes the length, so send the same weeks of both beside it.",'
                'IF(C6<>C5,"Refuse the comparison: "&C6&" weeks against "&C5&" reads as "&TEXT(ABS(B15),"0.0")&'
-               '" percent; close the window or use a rate per week.","Revenue "&' + moved("B15") + '&" on matched weeks."))))',
+               '" percent; compare the same weeks of both, with a rate per week beside them.","Revenue "&' + moved("B15") + '&" on matched weeks."))))',
     VERDICT, TINT, True)
 put(ws, "A19", "Fixed, for the Export tab", NOTE); put(ws, "B19", "=IF(ABS(B10*C6-B6)<1,1,0)")
 
@@ -234,7 +234,7 @@ put(ws, "B16", "=IF(AND(ABS(B10*SUM(B5:B8)-SUM(D5:D8))<0.5,ABS(B11*SUM(C5:C8)-SU
 
 # ---------------------------------------------------------------- Segments
 ws = sheet(wb, "Segments", "Does every group that goes in come back out?",
-           "The change in orders per customer for every segment, with big moves flagged in their own column rather than dropped.",
+           "The change in orders per customer for every segment, with big moves flagged in their own column and every segment kept.",
            widths=(30, 16, 16, 18, 22, 60))
 head(ws, 4, ["Segment", "Q1 orders per customer", "Q2 orders per customer", "Change, percent", "Flag"])
 for i in range(5, 9):

@@ -1,7 +1,6 @@
 # What goes up on the board on Tuesday, and in what order?
 
-The board work for Week 1, Tuesday, in the order it is drawn. The ladder goes up first and stays up
-all day, and every later drawing fills one of its six chapters. Beside each chapter's drawing go the
+The ladder goes up first and stays up all day, and every later drawing fills one of its six chapters. Beside each chapter's drawing go the
 options it weighed, the one chosen and the second route that proved it, and the chapter's rung gets a
 tick when its answer is on the board.
 
@@ -119,7 +118,7 @@ Retail-Plus is circled: the same 22 members, 51 orders against 26, and 25 of the
 
 ---
 
-## Sixth drawing: is the rise mix or rate, and which rows did the summary lose?
+## Sixth drawing: is the rise mix or rate, and which segments did the summary lose?
 
 Chapter 4 adds the mix: revenue per order rose Rs 33,231, and about 69 percent of the rise is the
 change of mix, because Retail-Plus fell from 44.7 to 30.2 percent of orders. The envelope, Business's
@@ -137,8 +136,8 @@ flowchart LR
 
 The helper is drawn as groups in against the two that came back as None, with
 `None in changes.values()` written under it as the one-line check. Beside it goes the falls table
-fixed, three rows, against the broken two: the bug cost Retail-Plus, and Student leaves by the filter
-because it rose. Under it: Retail-Plus is 93 percent of the consumer fall, and the second route, each
+fixed, three rows, against the broken two: the bug cost the table Retail-Plus, and Student, which
+rose, drops out of the falls table on its own. Under it: Retail-Plus is 93 percent of the consumer fall, and the second route, each
 customer's first and last order date, finds none new and none lost again.
 
 ---
