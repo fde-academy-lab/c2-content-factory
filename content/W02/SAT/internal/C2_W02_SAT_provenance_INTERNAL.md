@@ -224,3 +224,92 @@ The new items join the guide where they belong: Q52, Q53 and Q54 in the most-mis
 Q53 under the INNER against LEFT anchor and Q54 under the groupby anchor. The marking gains the
 step that enters each paper's ticks by seat in `C2_W02_SAT_item_analysis_TRAINER.xlsx`, whose
 Discussion sheet orders the most-missed discussion and whose flags go to the tracker's owner.
+
+## 30 September 2026, later: the Word paper in the diagnostic's format
+
+### The format
+
+The Word paper now takes the layout of the requester's baseline diagnostic,
+`content/W00/D2/paper/C2_W00_D02_diagnostic_STUDENT.docx`, which the builder draws from commit
+f7dff4f: a first page with what the paper is for and the rules with a Company row, then step one,
+where each learner rates the six parts from 1 to 4 before reading any item; the paper at a glance
+and a pacing ribbon; open question blocks with each item's label beside its level, never split
+across pages, with every exhibit and set case opening the block of its first question; and an
+answer sheet on one page. The key ends on a marking grid, and the item-analysis workbook gains a
+Ratings sheet. Rendered through LibreOffice on 30 September 2026, the paper runs to 16 pages and the
+key to 17. Every exhibit and set case prints on the page of its first question, the answer sheet is
+page 16 alone, and the ribbon's narrowest band, Part 6 at 8.5 minutes, prints its label whole.
+
+### The labels
+
+Every printed item carries a label of two to five words, printed beside its level, saying what the
+item asks the reader to do with what is in front of them; none states or hints at the key, and no
+two neighbouring items share one. The bank items' labels sit in `notes`, and the additions carry
+their own.
+
+| Q | Label | Q | Label | Q | Label |
+|---|---|---|---|---|---|
+| Q1 | Complete the filter | Q20 | The first check | Q39 | Run the falling flag |
+| Q2 | Name what LAG returns | Q21 | Build the validation | Q40 | Define groupby |
+| Q3 | Name the error | Q22 | Compare two joins | Q41 | Explain the row count |
+| Q4 | Check the run order | Q23 | Trace the LEFT join | Q42 | Find the wrong setting |
+| Q5 | Test a group filter | Q24 | Trace the INNER join | Q43 | Excel's job |
+| Q6 | What INNER keeps | Q25 | Find the unpaid orders | Q44 | Four merge claims |
+| Q7 | Read a joined SUM | Q26 | Judge the payments SUM | Q45 | What a number needs |
+| Q8 | Two rank functions | Q27 | Reason with numbers | Q46 | Count the merged rows |
+| Q9 | A window in WHERE | Q28 | Predict the ranks | Q47 | Predict what validate does |
+| Q10 | What groupby returns | Q29 | Same values, DENSE_RANK | Q48 | Compare the totals |
+| Q11 | A pivot on raw rows | Q30 | Top three per segment | Q49 | Place the fix |
+| Q12 | Which clause | Q31 | Find the cause | Q50 | Size the customer table |
+| Q13 | Why the warehouse | Q32 | Window or GROUP BY | Q51 | Order the tools |
+| Q14 | Four statements | Q33 | Four claims on ties | Q52 | Predict the result |
+| Q15 | Predict the row count | Q34 | Rank member D | Q53 | Run the query by hand |
+| Q16 | Order the clauses | Q35 | Dense-rank member F | Q54 | Predict the output |
+| Q17 | Name the join | Q36 | Count what the filter keeps | Q55 | Fix the query |
+| Q18 | Explain the extra rows | Q37 | Exactly four members |  |  |
+| Q19 | Read four queries | Q38 | Count both lists |  |  |
+
+### Option edits for balance
+
+`scripts/distractor_audit.py` now fails a Saturday item whose options run past 30 characters when
+the shortest is under 60 percent of the longest, and six items failed it. Each outlier was reworded
+in `data/programme/paper_edits.yaml`, status proposed, keeping every stem and key; the lengths are
+the audit's, without a closing full stop.
+
+| Q (bank) | Option | Was | Now | Lengths before, after |
+|---|---|---|---|---|
+| Q14 (33) | c, in the key | HAVING can use COUNT(*). | HAVING can compare COUNT(*) with a number. | 22 to 39, then 34 to 41 |
+| Q14 (33) | d | WHERE can use COUNT(*). | WHERE can compare COUNT(*) with a number. | as above |
+| Q19 (23) | b | SELECT DISTINCT order_id FROM payments | SELECT DISTINCT order_id FROM payments ORDER BY order_id | 38 to 73, then 47 to 73 |
+| Q25 (42) | d | ORDER BY paid_at | RIGHT JOIN, then WHERE orders.order_id IS NULL | 16 to 51, then 37 to 51 |
+| Q32 (36) | b | total revenue per segment | each segment's total revenue for the quarter | 25 to 60, then 37 to 60 |
+| Q33 (37) | b, in the key | RANK gives tied members the same rank. | RANK gives members who tie the same rank. | 37 to 63, then 40 to 63 |
+| Q44 (38) | a, in the key | It is the pandas form of a SQL join. | It is the pandas form of a SQL join on a key. | 35 to 60, then 40 to 60 |
+
+Each wrong option stays a misconception the week staged: WHERE comparing COUNT(*) is the aggregate
+in WHERE, the sorted DISTINCT list hides the duplicates it was meant to find, the RIGHT JOIN with IS
+NULL on the orders side is the anti-join from the other side that Tuesday's round 3 ran as step A7,
+and a segment's total for the quarter is one row per group, which GROUP BY answers alone. The key's
+reasons that quoted a changed option were rewritten: bank 23's option b, bank 33's why and option d,
+bank 36's option b and bank 42's option d. The audit now reads all 30 option items and passes with
+the keys at a 12, b 12, c 11 and d 8, which supersedes the count of 27 recorded above.
+
+### Purpose and company
+
+The purpose paragraph walks the week's case in order, from the rows: Anand's Monday numbers
+computed in the warehouse, booked revenue against collected, Marketing's protect list, and the
+customer table built in pandas and carried to the leadership deck; then what the paper finds out,
+and that the room's scores by part beside the step-one ratings tell Monday's session where to
+start. The Company row names the people the items and the part openings name, with the titles the
+week's files give them: Anand Iyer as finance controller, as Tuesday's and Thursday's files and the
+client-zero lock have it (Monday's files call him CFO); Kavya Nair as senior analyst; Meera Raghavan
+by her office and the growth review deck from Friday's row, since no Week 2 file gives her title;
+and the head of Retail-Plus, the marketing lead and the data platform lead by role alone.
+
+### The discussion guide
+
+The guide adds step one: learners rate the six parts before reading any item, the Academic TA
+enters the ratings by seat in the workbook's Ratings sheet with the ticks, and the last 5 minutes
+of the 90-minute discussion set each part's mean rating beside its right rate and name the parts
+where confidence ran ahead of the work. The anchors round is 50 minutes, ten anchors at five
+minutes each, as the guide already paced it.
