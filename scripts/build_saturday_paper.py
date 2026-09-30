@@ -909,7 +909,7 @@ def item_block(item):
     kind = answer_kind(item)
     return {"kind": "item", "q": item["q"], "level": item["level"], "label": item_label(item),
             "lines": stem, "options": [[a.upper(), b] for a, b in options], "answer": kind,
-            "room": 1800 if kind == "working" else 0}
+            "room": 1600 if kind == "working" else 0}
 
 
 def sheet_rows(printed, with_key=False):
