@@ -391,7 +391,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
           </div>
           <div class="result" id="expEResult" hidden>
             <p><b>What happened.</b> <span id="expEWhat"></span></p>
-            <p><b>Why it matters.</b> The rupee story rests on three orders, too few to call a trend today; the order
+            <p><b>Why it matters.</b> The rupee story is three orders, each worth lakhs, which one account's timing can move; the order
               story is 18 of 22 members buying less often while the tier's orders halved, which is a change in behaviour.</p>
             <p class="rule">Say which measure a share is of, and show both when they point at different segments.</p>
           </div>
@@ -1159,13 +1159,13 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
       x: "In orders, Retail-Plus carries 25 of the 28 lost orders. Every member still bought in Q2; seven of the ten members who ordered three times in Q1 now order once. A helper that printed its big moves and returned nothing would have dropped exactly this segment from the summary." },
     { t: "Chapter 5: the rupees", lit: 4, big: Math.round(shareOf("rev", "Business").share) + " percent", cap: "of the rupee fall sits in Business, on three fewer orders out of twenty",
       chart: function () { return measureBridge("rupees", 620); },
-      x: "In rupees, Business carries Rs 22,29,720 of the Rs 23,00,000 fall, because each of its orders is worth lakhs. Three fewer Business orders out of twenty is too few to call a trend today. Revenue per order rose mainly because small Retail-Plus orders disappeared from the mix, and no consumer segment paid meaningfully more." },
+      x: "In rupees, Business carries Rs 22,29,720 of the Rs 23,00,000 fall, because each of its orders is worth lakhs. Three fewer Business orders out of twenty, each worth lakhs, move with one account's timing. Revenue per order rose mainly because small Retail-Plus orders disappeared from the mix, and no consumer segment paid meaningfully more." },
     { t: "Chapter 6: the hypothesis and its timing", lit: 5, big: "July", cap: "the month the Retail-Plus fall began",
       chart: function () { return K.line(MONTHS, [["Retail-Plus orders", PLUS_MONTHS, "bad"], ["Retail-Core orders", CORE_MONTHS, "plan"]], { width: 620, title: "Orders by month; Retail-Core is the comparison" }); },
       x: "The complaint dates the broken reorder feature six weeks back from this week, which is late August. Retail-Plus orders were already down in July, before the break, so the break cannot be the whole story: at the pace the tier had already fallen to, the button explains at most about 4 orders. Retail-Core stayed flat across the six months, so the fall is particular to the paid tier." },
     { t: "Kavya's review", lit: null, big: "Frequency, not acquisition", cap: "the branch that moved, stated as a finding with its hypothesis beside it",
       chart: function () { return K.flow(RUNGS.map(function (r) { return r.split("\n")[0]; }), null, { width: 96, kinds: ["good", "good", "good", "good", "good", "unknown"] }); },
-      x: "Tell Meera that customers held at 69 and every one bought in both quarters, so acquisition is not the branch that moved. Orders per customer fell from 1.65 to 1.25; in behaviour the fall is Retail-Plus, and in rupees it is three Business orders, each worth lakhs and too few to call a trend. The reorder feature is a hypothesis, and the app's reorder logs would settle it." }
+      x: "Tell Meera that customers held at 69 and every one bought in both quarters, so acquisition is not the branch that moved. Orders per customer fell from 1.65 to 1.25; in behaviour the fall is Retail-Plus, and in rupees it is three Business orders, each worth lakhs, which one account's timing moves. The reorder feature is a hypothesis, and the app's reorder logs would settle it." }
   ];
   var walkAt = 0;
   function showWalk() {
@@ -1230,7 +1230,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     if (s.help === "prints") { para(box, "The segment summary shows Retail-Core -5.3 and Business -15.0 only, so Business reads as the largest fall and two of four segments are missing.", true);
            wrong.push("Business accounts sent to the front and Retail-Plus told his tier is not in the table"); }
     else para(box, "Orders per customer fell in three segments and rose in Student; the largest fall is Retail-Plus, 49.0 percent, where the same 22 members placed 26 orders against 51.");
-    if (s.meas === "rupees") para(box, "In rupees, Business carries " + K.rupees(shareOf("rev", "Business").amount) + " of the fall, " + Math.round(shareOf("rev", "Business").share) + " percent, on three fewer orders out of twenty, too few to call a trend today.");
+    if (s.meas === "rupees") para(box, "In rupees, Business carries " + K.rupees(shareOf("rev", "Business").amount) + " of the fall, " + Math.round(shareOf("rev", "Business").share) + " percent, on three fewer orders out of twenty, each worth lakhs, which one account's timing can move.");
     else para(box, "In orders, Retail-Plus carries 25 of the 28 lost orders, " + Math.round(shareOf("orders", "Retail-Plus").share) + " percent, while Business lost three.");
 
     var v = $("simVerdict").querySelector("span"), r = $("simReview").querySelector("span");

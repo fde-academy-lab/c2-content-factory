@@ -102,6 +102,8 @@ def escalated(solution):
 chapters on booked orders. This case climbs the same ladder alone, on a harder definition, where one
 branch that held in the morning moves.
 
+The board pack is the set of numbers Kalpa's board reads every quarter.
+
 > **The client asks.** "The board pack reports revenue on orders that reached the customer and
 > stayed there. Monday you taught me that cancelled orders are not sales. Does your story survive on
 > delivered orders? Which branch, which segment, and what would you bet on?"
@@ -227,7 +229,8 @@ overlap.
         md("""
 **Item 3 in your brief.** The customers branch on delivered orders is cancellations and returns rather than acquisition:
 the 19 customers who "disappeared" all ordered in Q2, and their orders were cancelled or returned.
-Split by reason, those orders go to the teams that own fulfilment and product, and the Rs 12 crore still has nothing to replace.
+Split by reason, those orders go to the teams that own fulfilment, getting orders to customers
+intact, and the product, and the Rs 12 crore still has nothing to replace.
 
 ## Part 4. Four segments on delivered orders
 

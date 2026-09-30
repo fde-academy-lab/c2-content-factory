@@ -76,7 +76,8 @@ Rs 28,57,895 for revenue per order, ending at Rs 1,87,00,000.
 Beside the discounts box go three invented orders, Rs 100, Rs 0 and one with no field, with the two
 shares with a discount they give: 1 of 3, 33 percent, when the absent one is read as zero, and 1 of 2,
 50 percent, over the two that recorded it. The bound goes under them: at most Rs 12,900 against a Rs 23,00,000 fall. Beside the bridge: "frequency first, stated; Rs 51.6
-to 60.9 lakh by order", and the second route, 28 lost orders times Rs 1,84,211. Chapter 2 gets its
+to 60.9 lakh by order", and the second route, the symmetric split, frequency minus Rs 55.9 lakh:
+the same branch. Chapter 2 gets its
 tick.
 
 ---
@@ -124,7 +125,8 @@ Chapter 3 gets its tick.
 
 Chapter 4 adds the mix: revenue per order rose Rs 33,231, and
 about 69 percent of the rise is the change of mix, because Retail-Plus fell from 44.7 to 30.2
-percent of orders; moved rate first, 72 percent, and chapter 4 gets its tick. Chapter 5 adds the id
+percent of orders; the envelope, Business's share change times its gap over a consumer order, gives
+about Rs 23,000, 69 percent again, and chapter 4 gets its tick. Chapter 5 adds the id
 overlap, 69, 0 and 0, and a helper that returned nothing.
 
 ```mermaid
@@ -139,8 +141,9 @@ flowchart LR
 The helper is drawn as groups in against the two that came back
 as None, with `None in changes.values()` written under it as the one-line check. Beside it goes the
 falls table fixed, three rows, against the broken two: the bug cost Retail-Plus, and Student leaves
-by the filter because it rose. Under it: Retail-Plus is 93 percent of the consumer fall, reached by a
-bridge and by subtraction. Chapter 5 gets its tick.
+by the filter because it rose. Under it: Retail-Plus is 93 percent of the consumer fall, and the
+second route, each customer's first and last order date, finds none new and none lost again. Chapter
+5 gets its tick.
 
 ---
 
@@ -160,7 +163,8 @@ flowchart LR
 
 Beside it go the channel counts, web 24 to 9, store 14 to 9 and app 13 to 8, and the id overlap
 and the ceiling: 3.92 orders a week in Q1, 2.29 before the break, 1.51 after, so the button explains
-at most about 4 orders. Chapter 6 gets its tick.
+at most about 4 orders; corrected by Retail-Core's own slowing across the same date, about 3.5.
+Chapter 6 gets its tick.
 
 ---
 

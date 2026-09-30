@@ -1,6 +1,7 @@
 # The escalated case: the ladder again, on delivered orders
 
-Fifty minutes, alone, unguided. The solution opens after the debrief.
+Fifty minutes, alone, unguided. The solution opens after the debrief. The board pack is the set of
+numbers Kalpa's board reads every quarter.
 
 > "The board pack reports revenue on orders that reached the customer and stayed there. Monday you
 > taught me that cancelled orders are not sales. Does your story survive on delivered orders? Which

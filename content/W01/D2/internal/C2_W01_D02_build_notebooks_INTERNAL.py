@@ -32,11 +32,11 @@ it reported that the extra week alone added $1,715 million of sales (Target, fou
 year 2023 results, checked 30 Sep 2026). The National Retail Federation's 4-5-4 calendar exists for the
 same reason: comparable months hold the same number of weeks and weekends (NRF, checked 30 Sep 2026).""",
     2: """**Who else faces this.** Blinkit, the quick-commerce app, reports its orders and its net average
-order value side by side, so its net order value can be read as the two branches of this tree: in the
+order value, the average order after discounts, side by side, so its net order value can be read as the two branches of this tree: in the
 fourth quarter of FY26 it reported 273.9 million orders at Rs 525 each, about Rs 14,386 crore
 (Eternal, shareholders' letter, 28 April 2026, checked 30 Sep 2026). Walmart splits the growth of its
 U.S. comparable sales the same way every quarter: in the quarter ended 31 July 2026, comparable sales
-excluding fuel rose 2.6 percent, made of transactions up 1.5 percent and average ticket up 1.1 percent
+excluding fuel rose 2.6 percent, made of transactions up 1.5 percent and average ticket, the spend per transaction, up 1.1 percent
 (Walmart earnings release, second quarter of fiscal 2027, checked 30 Sep 2026). The question each
 answers is Meera's: did more visits move the number, or bigger baskets?""",
     3: """**Who else faces this.** Costco reports its membership renewal rate twice: for the United States
@@ -58,10 +58,11 @@ and Bain's Frederick Reichheld found that a 5 percent rise in retention lifts pr
 percent (Amy Gallo, HBR, 29 October 2014, checked 30 Sep 2026). Those are estimates across
 industries, never Kalpa's figures, so the reply asks Finance for Kalpa's own acquisition cost. Swiggy
 shows why the two branches are reported apart: in the quarter to September 2025 its monthly
-transacting users rose 34.0 percent in a year to 22.9 million while orders per user a month fell from
+transacting users, the people who ordered at least once in a month, rose 34.0 percent in a year to 22.9 million while orders per user a month fell from
 4.53 to 4.10 (Swiggy, Q2 FY2026 shareholder letter, checked 30 Sep 2026). A count and a frequency can move apart, which is why each is reported on its own, the reverse of Kalpa's quarter and the same lesson.""",
     6: """**Who else faces this.** Sonos rolled out a redesigned app in 2024. Its chief executive said the problems customers and partners met with the new app had
-required the company to reduce its fiscal 2024 guidance, and its annual report set aside short-term
+required the company to reduce its fiscal 2024 guidance, the revenue it had told investors to
+expect, and its annual report set aside short-term
 costs of up to $30 million to fix the app (Sonos, third quarter fiscal 2024 results and fiscal 2024
 annual report, checked 30 Sep 2026). A loyal customer base, an app whose rollout went wrong, and a company that put it into its guidance: the head of Retail-Plus is asking whether his
 tier is the same story.""",
@@ -122,7 +123,8 @@ print("fields:", ", ".join(ORDERS[0]))"""),
 
 Meera is about to answer Marketing's request for Rs 12 crore to acquire new customers, and the
 request rests on one slide: revenue fell by about a quarter. The metric at stake is the change in
-booked revenue between two quarters, and the decision riding on it is whether the fall is a crisis
+booked revenue, every order placed before any cancellation or return, between two quarters, and the
+decision riding on it is whether the fall is a crisis
 that needs money now. A wrong number here costs in two directions: overstate the fall and Kalpa
 spends crores in a hurry on a lever nobody has checked; understate it and a real leak runs another
 quarter. Kalpa's financial year opens in April, so Q1 is April to June and Q2 is July to
@@ -503,8 +505,9 @@ monsoon discount plan lives.
 Meera's tree has four branches: customers, how often they buy, basket, and price. Each branch has an
 owner and a price tag. Customers belong to Marketing and cost acquisition spend; how often they buy
 belongs to the tier and product owners and costs retention work on people already won; basket
-belongs to merchandising; price and discounts belong to Finance with Marketing and trade margin for
-volume. The metric at stake is the rupees each branch carries of the Rs 23,00,000 fall, and the
+belongs to merchandising, the team that picks the range and the pack sizes; price and discounts
+belong to Finance with Marketing, who trade margin for volume, giving up some profit on each order to
+sell more of them. The metric at stake is the rupees each branch carries of the Rs 23,00,000 fall, and the
 decision riding on it is which owner gets the problem, and whether Marketing's Rs 12 crore is aimed
 at a branch that moved. A wrong split sends crores to the wrong owner for a quarter.
 """),
@@ -1516,7 +1519,8 @@ print("segments carried from chapter 3:", ", ".join(SEGMENTS))'''),
         md("""
 ## The need
 
-Marketing's Rs 12 crore rests on one claim: Kalpa is losing customers and must replace them. The
+Marketing's Rs 12 crore rests on one claim: Kalpa is losing customers, which is churn, and must
+replace them. The
 metric at stake is retention, the customers of Q1 who bought again in Q2, and its mirror, the new
 customers of Q2. The decision riding on it is the acquisition budget itself. A wrong answer costs
 either Rs 12 crore spent replacing customers who never left, or a retention problem left to run
@@ -1703,8 +1707,8 @@ kit.check("Retail-Plus is 93 percent of the consumer fall", round(plus_fall / co
 '''),
         md("""
 **What happened.** The answer is c. Retail-Plus is Rs 65,250 of the Rs 70,280 consumer fall, 93
-percent, and 25 of the 28 lost orders. The rupee fall in Business rests on three orders out of
-twenty, each worth lakhs, which is too few to call a trend before anyone builds on it. The two
+percent, and 25 of the 28 lost orders. The rupee fall in Business is three orders out of twenty,
+each worth lakhs, so one account ordering early or late moves it by lakhs. The two
 findings go to Meera side by side: the rupees in Business, with their caveat, and the behaviour in
 Retail-Plus, with its count.
 
@@ -2065,7 +2069,7 @@ between two closed quarters, Rs 2.10 crore to Rs 1.87 crore on the export as it 
 at 69, all of them buying in both quarters, so acquisition is not the branch that moved; orders per
 customer fell from 1.65 to 1.25. In behaviour the fall sits in Retail-Plus, where the same 22 members
 placed 26 orders against 51, and revenue per order rose mainly because those small orders
-disappeared. In rupees most of the fall is three fewer Business orders, each worth lakhs and too few to call a trend. The fall began in July, before the reorder button broke,
+disappeared. In rupees most of the fall is three fewer Business orders, each worth lakhs, so one account's timing moves it by lakhs. The fall began in July, before the reorder button broke,
 and hit every channel, so the button can explain at most about 4 orders. Two hypotheses remain: the
 button deepened the fall after 25 August, settled by the app's reorder logs by week and the release
 date; and something changed for members in July, settled by the tier's change log, renewals and
