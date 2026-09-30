@@ -126,16 +126,16 @@ the wrong rupees is chapter 2.
 | A. Trust the pass | 0 | nothing | +21.2% | 56.2 |
 | B. Count check only | 2 | Finance's order counts | -17.5% | 17.5 |
 | C. Counts and rupees, with a bridge | 15 | Finance's rupee totals | -35.0% | 0.0 |
-| D. Match every order to the ledger | about 120 | Finance's ledger | -35.0%, each order named | 0.0 |
+| D. Match every order to the ledger | about 120 | Finance's ledger | not run: no ledger came with the export | not run |
 
 **The rule.** C, because it needs only the control file that came with the export and lands to the rupee. Switch to D when there is no control total, or when C's bridge will not close.
 
 ```notes
 LIVE, 3 minutes. Then run the sizing cell in notebook 1, which sizes the same options on this
-morning's file, with D marked not run because the lab had no ledger. Land two points: B is where
-most people who did check stopped, and it still leaves the headline well off the books; D is right
-and costs the afternoon. Minutes are the lab brief's pace, D's an estimate for a request to Finance
-and a join.
+morning's file, with D marked not run for the same reason: no ledger came with either export. Land
+two points: B is where most people who did check stopped, and it still leaves the headline well off
+the books; D would name every order that differs and costs the afternoon, once Finance sends the
+ledger. Minutes are the lab brief's pace, D's an estimate for a request to Finance and a join.
 ```
 
 ---

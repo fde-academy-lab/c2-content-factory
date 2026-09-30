@@ -250,13 +250,13 @@ rows as they arrived and set a value that would not convert to zero.
 | A. Trust the pass | 0 | nothing | +21.2% | 56.2 |
 | B. Count check: rows and orders against Finance's counts | 2 | Finance's order counts | -17.5% | 17.5 |
 | C. Counts and rupees against the control totals, with a bridge | 15 | Finance's rupee totals | -35.0% | 0.0 |
-| D. Every order matched to Finance's ledger | about 120 | Finance's ledger | -35.0%, each order named | 0.0 |
+| D. Every order matched to Finance's ledger | about 120 | Finance's ledger | not run: no ledger came with the export | not run |
 
 The computer's share of every option is under a millisecond, so the choice is about minutes of
 thought and what each check needs from outside the file. **The best-fit call is C:** it needs only
 the control file that came with the export and lands to the rupee. B is where most people who
-checked at all stopped, and it still leaves the headline 17.5 points off. D names every order that
-differs and costs a request to Finance and the afternoon. **What would change it:** no control total
+checked at all stopped, and it still leaves the headline 17.5 points off. D would name every order
+that differs, once Finance sends its ledger, and costs that request and the afternoon. **What would change it:** no control total
 at all, or a bridge that will not close; then D, or a second export from the source system, is the
 check. Notebook 1 sizes the same options on this morning's file.
 
