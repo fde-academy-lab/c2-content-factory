@@ -153,7 +153,7 @@ A retailer pays for stock before a customer pays for it, and the gap is working 
 | Days of receivables | Money owed by customers and payment partners / net revenue per day | 2 days, an illustrative lag for card and UPI settlement |
 | Days of payables | Money owed to suppliers / COGS per day | 60 days of supplier credit |
 
-The cash conversion cycle is inventory days plus receivable days less payable days: 45 plus 2 less 60 is minus 13 days, so suppliers fund the shelves. Stock that stops selling reverses it, until the business borrows to hold goods nobody is buying.
+The cash conversion cycle is days of inventory plus days of receivables less days of payables: 45 plus 2 less 60 is minus 13 days, so suppliers fund the shelves. Stock that stops selling reverses it, until the business borrows to hold goods nobody is buying.
 
 ### Three ways to sell, and why foreign-owned multi-brand e-commerce in India is a marketplace
 
