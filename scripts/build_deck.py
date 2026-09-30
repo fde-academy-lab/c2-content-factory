@@ -21,7 +21,9 @@ scripts/brand.py). What a source can ask for:
     Kicker: / Header:                    override the cover pill / the header line
     ```notes above the first slide       the cover's speaker notes
 
-    ## SECTION 1: The ask                a chapter opener: numeral, name, the chapter pills
+    ## SECTION 1: The ask                a chapter opener: numeral, name, the chapter pills; the
+                                         numeral is the one written, so an afternoon deck that
+                                         opens on SECTION 6 prints 06
     *A CEO asks what sales are made of.* its first italic line is the chapter's promise
 
     ## S3. An action title               a content slide
@@ -876,7 +878,11 @@ def build(src, out, footer):
         if title.upper().startswith("SECTION"):
             current = 0 if current is None else current + 1
             promise = subtitle or next((l.strip() for l in drawn if l.strip()), "")
-            section_slide(s, prs, current + 1, chapter_name(title), promise, chapters, current,
+            # The numeral is the one the author wrote, so an afternoon deck that opens on
+            # chapter 6 prints 06; a SECTION with no number takes its place in the file.
+            sec = SECTION_TITLE.match(title)
+            number = int(sec.group(1)) if sec and sec.group(1) else current + 1
+            section_slide(s, prs, number, chapter_name(title), promise, chapters, current,
                           footer, total, n)
             set_notes(s, notes)
             continue
