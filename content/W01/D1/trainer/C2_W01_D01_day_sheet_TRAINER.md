@@ -108,7 +108,7 @@ payback case, and Anand has warned that one business customer can move an averag
 | | Ask the room | Show once the room has answered |
 |---|---|---|
 | 1 | Who needs a typical order, and what does it price? | Marketing needs it to price a new customer's first order in the payback case for the Rs 12 crore. |
-| 2 | Which middle survives one large order? | The median does: on the invented set of six orders, one large order moves the mean Rs 14,623 and the median Rs 50. |
+| 2 | Which middle value, a mean or a median, survives one large order? | The median does: on the invented set of six orders, one large order moves the mean Rs 14,623 and the median Rs 50. |
 | 3 | What is the median order? | It is Rs 2,205, halfway between the 15th and 16th sorted amounts, Rs 2,110 and Rs 2,300. |
 | 4 | What goes wrong when the mean is sold as typical? | Rs 18,160 goes to marketing as a typical first order, when only 1 of the 30 orders sits above it. |
 | 5 | Does statistics.median agree? | It does, at Rs 2,205. |

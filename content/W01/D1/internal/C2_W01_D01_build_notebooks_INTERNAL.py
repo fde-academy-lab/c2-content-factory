@@ -435,10 +435,10 @@ def story():
         ordered. I name the denominator and the window with every number I send."
         """),
         md("""
-        ## Which formulas does the day use, and who asks for each?
+        ## Which formulas did the story work out, and who asks for each?
 
-        The day uses six formulas, each asked for by a named person, and chapter 1 starts from the
-        first of them on Kalpa's own orders.
+        The story worked out six formulas on invented numbers, each asked for by a named person, and
+        the domain card adds three more; chapter 1 starts from the first of them on Kalpa's own orders.
 
         - Where does Rs 100 of what customers order go? Net revenue is Rs 80, gross margin Rs 20,
           contribution Rs 7.50 and EBITDA Rs 2.50, and the Rs 20 between GMV and net revenue is
@@ -747,7 +747,7 @@ print(len(ORDERS), "orders loaded, dated", first_day, "to", last_day)
         because a number that disagrees with the books loses the room whatever its logic."
         """),
         md("""
-        ### What would a part-refund status do to each route?
+        ### What would a part-refund status do to the status dictionary and to the one-loop route?
 
         A part-refunded order would sit between delivered and returned. The status route absorbs it with
         no new code, and the one-loop route needs a new `if` for every reading it touches, so when the
@@ -1315,7 +1315,7 @@ print(len(ORDERS), "orders,", kit.rupees(revenue), "booked")
         kit.check("every repeat buyer used a second channel", multi == repeat == 7, multi)
         """),
         md("""
-        ### When does orders less customers stop counting the repeat buyers?
+        ### When does subtracting customers from orders stop counting the customers who came back?
 
         On Kalpa's file, 30 orders less 23 customers is 7, and 7 customers came back, because nobody
         bought three times. On three **invented** customers with 3, 1 and 1 orders, orders less
@@ -1349,7 +1349,8 @@ print(len(ORDERS), "orders,", kit.rupees(revenue), "booked")
           on booked orders, written with that definition.
         - Which channel did the repeat buyers come back through? All 7 came back through a different
           channel from their first order.
-        - When does orders less customers stop counting repeat buyers? It stops as soon as anyone
+        - When does subtracting customers from orders stop counting the customers who came back? It
+          stops as soon as anyone
           places a third order, as the invented three show: 2 extra orders from 1 customer who came
           back.
         """),
@@ -1389,7 +1390,7 @@ def ch4():
 
         **The questions on the way.**
 
-        1. Which middle survives one large order?
+        1. Which middle value, a mean or a median, survives one large order?
         2. What is the median Kalpa order?
         3. Where does a trimmed mean of Kalpa's 30 orders land?
         4. What goes wrong when the mean is sold as the typical order?
@@ -1424,7 +1425,7 @@ print(len(amounts), "amounts; the mean, chapter 2's AOV, is", kit.rupees(mean))
                   "2. Where does a trimmed mean land?", "3. What if the mean is typical?",
                   "Does Python's median agree?", "What goes into the payback?"]),
         md("""
-        ## Which middle survives one large order?
+        ## Which middle value, a mean or a median, survives one large order?
 
         A team could report four middles. The sizing says how far each moves when one **invented**
         Rs 90,000 order joins five invented orders of Rs 1,900 to Rs 2,600, which is the test Anand set.
@@ -1663,7 +1664,7 @@ print(len(amounts), "amounts; the mean, chapter 2's AOV, is", kit.rupees(mean))
         contribution of the customers the spend targets, and the booked mean of Rs 18,160 stays beside
         the median for totals.
 
-        - Which middle survives one large order? The median survives, moving Rs 50 where the mean moves
+        - Which middle value survives one large order? The median survives, moving Rs 50 where the mean moves
           more than Rs 14,000 on the invented six.
         - What is the median order? It is Rs 2,205, halfway between Rs 2,110 and Rs 2,300.
         - Where does a trimmed mean land? It lands at Rs 2,300, near the median, because its rule
@@ -2320,7 +2321,7 @@ CASE_KEY = "cbdcaabbc"
 def case():
     return [
         md("""
-        # Does the answer survive on the orders that stayed delivered?
+        # Does frequency first survive on the orders that stayed delivered?
 
         **Week 1, Monday, afternoon: the escalated case, alone, 35 minutes.** The six chapters answered
         Meera on booked orders. Anand Iyer, the finance controller, has read the draft and pushes back:
@@ -2361,9 +2362,8 @@ def case():
         """),
         md("""
         SOLUTION ONLY
-        Every placeholder is filled with the right option, and the notebook was executed from a fresh
-        kernel. Under each part sits why the other options fail. The nine TODO picks, in order, are
-        `cbdcaabbc`.
+        Every placeholder holds the right option, and under each part sits why the other options fail.
+        The nine TODO picks, in order, are `cbdcaabbc`.
         """),
         md("""
         **Setup.** The first cell finds the shared helper, loads the 30 orders from `../data/`, and
@@ -2691,8 +2691,10 @@ def second():
         md("""
         # Where does revenue come from, by customer type and channel, and does it change the branch?
 
-        **Week 1, Monday, afternoon: the second case, in pairs, 25 minutes.** Meera asked two things at
-        the start of the day, and the chapters answered the second, which branch of sales is short.
+        **Week 1, Monday, afternoon: the second case, in pairs, 25 minutes.** Kalpa Retail's revenue grew
+        4 percent last year against a growth plan of 15 percent, and marketing wants Rs 12 crore to win
+        new customers. Meera asked two things at the start of the day, and the chapters answered the
+        second, which branch of sales is short.
         This case answers the first on the same 30 orders, placed from 1 July to 26 September 2026, and
         tests whether the channel view changes the recommendation.
 
@@ -2716,8 +2718,9 @@ def second():
 
         The metric at stake is share of revenue: a channel's or a customer type's rupees over the total
         they are part of. Booked revenue counts every order placed, cancellations and returns included,
-        and delivered counts what reached a customer and stayed. The chapters found frequency the branch
-        to open first, since on the 30 booked orders 16 of 23 customers bought once and 7 came back, and
+        and delivered counts what reached a customer and stayed. The chapters found frequency, the
+        orders-per-customer branch, the one to open first, since on the 30 booked orders 16 of 23
+        customers bought once and 7 came back, and
         the escalated case rebuilt that answer on delivered orders.
 
         > **Kavya's review.** Meera will open the channel slide before she reads your sentence, and the
@@ -2733,9 +2736,9 @@ def second():
         """),
         md("""
         SOLUTION ONLY
-        Every placeholder is filled with the right option, and the notebook was executed from a fresh
-        kernel. Under each step sits the reason the other three options fail, and step 1 stages the
-        plausible wrong answer with its exact number. The seven TODO picks, in order, are `cbdabca`.
+        Every placeholder holds the right option, and under each step sits the reason the other three
+        options fail; step 1 stages the plausible wrong answer with its exact number. The seven TODO
+        picks, in order, are `cbdabca`.
         """),
         md("""
         **Setup.** The first cell finds the shared helper, loads the 30 orders from `../data/`, turns

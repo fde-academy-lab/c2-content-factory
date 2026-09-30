@@ -161,15 +161,15 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 <header class="hero">
   <span class="kicker">Week 1 &middot; Monday &middot; Companion</span>
   <h1>Which branch does Meera open first?</h1>
-  <p class="quote">&ldquo;Before I sign anything, I want to understand our own sales. What is &lsquo;sales&rsquo; made of?
-    Where does revenue come from, by customer type and channel? Is acquisition even the branch that is short?&rdquo;</p>
+  <p class="quote">"Before I sign anything, I want to understand our own sales. What is 'sales' made of?
+    Where does revenue come from, by customer type and channel? Is acquisition even the branch that is short?"</p>
   <p class="who">Meera Raghavan, CEO, Kalpa Retail, to the data and AI team at Kalpa's Global Capability Centre.
-    Anand Iyer, finance controller, adds: &ldquo;No averages. One business customer can move an average.&rdquo;</p>
+    Anand Iyer, finance controller, adds: "No averages. One business customer can move an average."</p>
   <p class="promise">Kalpa Retail grew revenue 4 percent last year against a plan of 15, and marketing asks for Rs 12 crore
-    to acquire new customers. This page is a simulator for the one decision the day builds towards: which branch of the
-    revenue tree Meera opens first, and whether the Rs 12 crore case holds. Change one assumption at a time and watch the
-    number and the decision move. The Kalpa figures here are totals from the day's 30 orders, 1 July to 26 September 2026;
-    anything else is invented to show a mechanism and says so.</p>
+    to acquire new customers. The decision the day builds towards is which branch of the revenue tree Meera opens first,
+    and whether the Rs 12 crore case holds; change one assumption at a time and watch the number and the decision move.
+    The Kalpa figures are totals from the day's 30 orders, 1 July to 26 September 2026, and every other figure is
+    labelled invented where it appears.</p>
 </header>
 
 <div class="page">
@@ -402,8 +402,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
           </div>
           <div class="result" id="expDResult" hidden>
             <p><b>What happened.</b> <span id="expDWhat"></span></p>
-            <p><b>Why it matters.</b> Rs 648 is small on one quarter of consumer revenue, and the same habit of adding percentages hides a
-              fall where one branch rises and another drops, which is where a plan goes wrong.</p>
+            <p><b>Why it matters.</b> Rs 648 is small on one quarter of consumer revenue, and the gap grows with the lifts
+              themselves, so a plan sized by adding percentages misses by more the larger the lifts it counts on.</p>
             <p class="rule">Lifts multiply along the tree: two 10 percent lifts make 21 percent.</p>
           </div>
           <p class="waiting" id="expDWait">What happened appears here after the run.</p>
@@ -426,7 +426,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
             <p><b>What happened.</b> <span id="expEWhat"></span></p>
             <p><b>Why it matters.</b> A discount trades margin for quantity, and it pays only when quantity rises by more than
               the price falls; at 15 percent off, quantity has to rise by about 17.6 percent just to stand still.</p>
-            <p class="rule">Recompute revenue through the tree, never by adding the percentages.</p>
+            <p class="rule">Recompute revenue through the tree, multiplying the percentages.</p>
           </div>
           <p class="waiting" id="expEWait">What happened appears here after the run.</p>
         </article>
@@ -471,11 +471,11 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         </div>
         <div class="strip" id="decWhy"><b class="tag">Kavya's review</b><span id="decWhyText">Pick an answer above and
           Kavya reviews it the way she would before it reaches Meera.</span></div>
-        <div class="strip good"><b class="tag">Kavya's review of the note that goes</b>&ldquo;On the 30 booked orders from
+        <div class="strip good"><b class="tag">Kavya's review of the note that goes</b>"On the 30 booked orders from
           1 July to 26 September, 23 customers placed 1.30 orders each at a typical order of Rs 2,205; 7 came back, 7 are
           past the usual gap without a second order, and 9 bought too recently to judge, so I would open frequency before
           acquisition, and since one quarter cannot show which branch moved, hold the Rs 12 crore until Tuesday's two
-          quarters.&rdquo; That is the sentence to send. It names the definition, counts customers by id, uses the median,
+          quarters." That is the sentence to send. It names the definition, counts customers by id, uses the median,
           splits the one-time buyers at the window's edge and says what one quarter cannot show.</div>
       </div>
     </section>
@@ -1096,7 +1096,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
       d: function () { return K.columns(["booked", "not cancelled"], [["mean", [18160, 20606]], ["median", [2205, 2100]]], { fmt: R, title: "Mean against median, per definition of sales" }); } },
     { t: "Chapter 5: which branch first?", r: 5, x: "Meera's plan concerns the three consumer segments, where booked revenue is Rs 64,810, so 15 percent is Rs 9,722 more: 15 percent more customers who buy like today's, 15 percent more orders from the same customers, or Rs 335 more per order. About three in ten of the view's one-time buyers returning once would carry it, so frequency is the cheaper branch to open first. Two 10 percent lifts make 21 percent through the tree, Rs 78,420, where adding says Rs 77,772.",
       d: function () { return K.bridge(["consumer view", 64810], [["customers +10%", 6481], ["frequency +10%", 6481], ["lift on the lift", 648]], { lo: 60000, endLabel: "through the tree", title: "Two 10 percent lifts on the consumer view, multiplied" }); } },
-    { t: "Chapter 6: what will Meera sign?", r: 6, x: "Sixteen of 23 bought once, and it is tempting to call 70 percent lost. Returning customers took a median of 45 days, and 9 of the 16 bought inside the last 45, so 7 came back, 7 are past the usual gap without a second order, and 9 are too recent to judge. Open frequency first, and hold the Rs 12 crore until Tuesday's two quarters.",
+    { t: "Chapter 6: what will Meera sign?", r: 6, x: "Sixteen of 23 bought once, which a hurried draft calls 70 percent lost. Returning customers took a median of 45 days, and 9 of the 16 bought inside the last 45, so 7 came back, 7 are past the usual gap without a second order, and 9 are too recent to judge. Open frequency first, and hold the Rs 12 crore until Tuesday's two quarters.",
       d: function () { return K.columns(["came back", "once, past the gap", "once, too recent"], [["customers", [7, 7, 9]]], { lit: [2], title: "The 23 customers, with the window's edge" }); } },
     { t: "Escalated case: does frequency first survive on delivered orders?", r: 6, x: "The case rebuilds the customer leaves, the typical order and the plan on the 21 delivered orders, the reading Anand's books keep, and asks which numbers move and whether the call on booked orders still holds. Its numbers are yours to compute in the escalated case's notebook.",
       d: function () { return K.driverTree(treeData("freq", { freq: "booked: open first", cust: "booked: hold" }, { cust: "unknown" }), { title: "The call on booked orders, which the case retests on delivered" }); } },
