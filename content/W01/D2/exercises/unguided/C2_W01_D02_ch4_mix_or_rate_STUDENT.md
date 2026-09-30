@@ -61,7 +61,7 @@ b) Rs 2,07,112, so the mix is Rs 10,330 of the rise, about 31 percent
 c) Rs 1,93,414, so the mix is Rs 9,203 of the rise, about 28 percent
 d) Rs 2,17,442, so the mix is all Rs 33,231 of the rise, every rupee
 
-### Q5. The rate part, Rs 10,330, splits by segment. Which segment carries most of it, and why does that matter for the price rise?
+### Q5. The rate part of the rise, what is left once the mix is priced, splits by segment. Which segment carries most of it, and why does that matter for the price rise?
 
 a) Retail-Plus, so members did pay noticeably more for each order they placed
 b) Business, since its lakh-sized orders dominate the rate part

@@ -66,7 +66,7 @@ b) The button with Retail-Core's orders by week, and a July change with the tier
 c) The button with the tier's renewals, and a July change with the app's release date
 d) The button with the reorder logs, and a July change with the tier's change log
 
-### Q6. (design) The second route scales the tier's expected 12.1 orders by Retail-Core's own change in pace across the break, 0.946, and compares with the 8 the tier placed. What does it show?
+### Q6. (design) The second route scales the tier's pre-break pace by Retail-Core's own change in pace across the break, 0.946, before comparing with what the tier placed after it. What does it show?
 
 a) About 3.5 orders, inside the ceiling, as part of the dip hit Retail-Core too
 b) About 11.5 orders, the button's full cost once the season is taken out

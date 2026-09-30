@@ -45,16 +45,16 @@ b) It sets about 11 weeks of Q2 against all 13 weeks of the closed Q1
 c) It counts booked orders, where Finance would count delivered ones
 d) It rounds both totals to the nearest lakh before dividing them
 
-### Q3. (design) On 15 September, with Q2 still open, a colleague divides each side by its weeks: Q1's Rs 2,10,00,000 over 13 and the tile's Rs 1,55,59,950 over 11. What does the rate per week give, and what does it still miss?
+### Q3. (design) On 15 September, with Q2 still open, a colleague turns both sides of Marketing's slide into revenue per week, each side divided by the weeks its dates cover. What does the rate give, and what does it still miss?
 
-a) Minus 12.4 percent, and it still sets Q2's first 11 weeks against all 13 of Q1's
+a) Minus 12.4 percent, and it still compares Q2's early weeks with the whole of Q1
 b) Minus 25.9 percent, since dividing both sides by weeks leaves their ratio alone
 c) Minus 11.0 percent, since a rate per week removes every difference in the windows
-d) Minus 17.0 percent, the same answer the same 11 weeks of each quarter would give
+d) Minus 17.0 percent, the answer that matched weeks of each quarter would give
 
 ### Q4. (design) Both quarters have closed. Meera now asks: "Is Q2 always weaker than Q1, because of the monsoon?" Which option answers her, and what does it need?
 
-a) Closed quarters again, since both hold 13 weeks and compare like with like
+a) Closed quarters again, since both are complete and compare like with like
 b) A rate per day, since it removes the one-day gap between 91 and 92 days
 c) The same 11 weeks of each quarter, since it also matches position
 d) The same quarter last year, which needs last year's export to run
@@ -66,7 +66,7 @@ b) q, s, p, r
 c) q, p, s, r
 d) q, s, r, p
 
-### Q6. (design) The second route added revenue by the month in `order_date` and reached the same minus 11.0 percent. What does agreement between the two routes prove?
+### Q6. (design) The second route added revenue by the month in `order_date` and reached the same fall as the closed quarters. What does agreement between the two routes prove?
 
 a) That monthly totals are a better headline for Meera than the quarters
 b) That no order in the file carries a wrong amount or a missing field

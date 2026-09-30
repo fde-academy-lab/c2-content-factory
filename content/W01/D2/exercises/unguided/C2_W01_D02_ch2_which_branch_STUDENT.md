@@ -67,9 +67,9 @@ b) The 43 hold, but they should be counted by revenue, since orders differ in si
 c) Blank and Rs 0 both mean no discount, so the 43 hold and only the offer's size is open
 d) Only 17 of the 43 record Rs 0, and the other 26 never recorded the field
 
-### Q6. (design) The second route split the fall symmetrically and charged frequency minus Rs 55,88,480, against the bridge's minus Rs 51,57,895. What does the second route show?
+### Q6. (design) The second route split the fall symmetrically, choosing no order at all, and charged frequency minus Rs 55,88,480. Set beside the bridge, what does it show?
 
-a) The bridge overstated frequency by Rs 4,30,585, so its figure has to be corrected
+a) The bridge understated frequency, so its figure has to be corrected upwards
 b) Frequency carries the fall either way; the rupees per branch depend on the method
 c) The two agree to the rupee once the customers step is added back into the bridge
-d) The Rs 4,30,585 gap is the customers branch, which only the symmetric split sees
+d) The gap between them is the customers branch, which only the symmetric split sees

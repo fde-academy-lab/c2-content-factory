@@ -30,33 +30,33 @@ flowchart LR
 
 ---
 
-### Q1. (design) Which test answers "a flat count hides churn replaced by new customers" most directly?
+### Q1. (design) Which test answers "a flat count hides churn replaced by new customers" most directly, and what would make you distrust it?
 
-a) Count each quarter's customers by segment, since churn hides inside segments
-b) Ask Marketing's CRM for new sign-ups by month
-c) Count the ids in both quarters, only in Q1 and only in Q2
-d) Compare the counts again under a different definition of customer
+a) Count each quarter's customers by segment; a segment whose definition changed
+b) Ask Marketing's CRM for sign-ups by month; a campaign that ran in both quarters
+c) Compare the ids in both quarters, only in Q1 and only in Q2; one person with two ids
+d) Compare the counts under a new definition of customer; a customer who changed segment
 
-### Q2. (design) What would make you distrust the id overlap?
+### Q2. (design) Three numbers already answer Marketing's churn claim. When does a table of all 69 customers, one row each, become the better fit?
 
-a) One person holding two ids, say one from the store and one from the app
-b) A member who moved from Retail-Core to Retail-Plus between the quarters
-c) A customer whose Q1 order fell on 30 June and Q2 order on 1 July
-d) Customers who placed several orders in one quarter and one in the other
+a) When the next question is who slowed, which three counts cannot name
+b) When the export holds more than a few hundred customers in a quarter
+c) When Marketing wants the result in rupees rather than in customers
+d) When the ids come from two systems that each number customers apart
 
-### Q3. The overlap comes out 69 in both quarters, 0 only in Q1, 0 only in Q2. What goes back to Marketing?
+### Q3. Marketing concedes that nobody left, then adds: "23 customers ordered less, and that is churn in all but name." Which reply holds?
 
-a) Churn is hidden in the segments, so split them first and run the overlap per segment
-b) Nobody was lost and nobody was new, so acquisition has nothing to replace
-c) The flat count proves customers are loyal, so no action is needed
-d) Marketing is right in spirit, since 23 customers placed fewer orders
+a) They are right: a customer who orders less is halfway gone, so acquisition gets funded
+b) Buying less is frequency: all 23 bought in Q2, so the lever is keeping them buying
+c) Split the 23 by segment first, since churn hides inside segments until they are split
+d) Leave the 23 out of the customer count, since customers who slow down distort it
 
 ### Q4. Last quarter's script prints `summary: {'Retail-Core': -5.3, 'Business': -15.0}` because `pct_change` returns a value only when the change is 30 percent or less. Which fix to the logic keeps every segment in Meera's summary?
 
 a) Raise the threshold to 50 percent, so that fewer of the changes print
 b) Print the change as well as returning it, so both appear on the screen
 c) Filter with `if ch < 0`, so that a None is compared with zero as well
-d) Return the change every time, and put the flag in a column of its own
+d) Always hand back a number, and mark large changes in a separate column
 
 ### Q5. Marketing says Retail-Plus is Rs 65,250 out of a Rs 23 lakh fall, so it does not matter. Using the table, which reply holds?
 
@@ -67,7 +67,7 @@ d) The tier is 3 percent of the fall, so the reorder complaint can wait a quarte
 
 ### Q6. (design) The second route took each customer's first and last order date in the export and counted who first ordered in Q2 or last ordered in Q1: 0 and 0. What does it add, and where does it stop?
 
-a) Nothing new, since it counts the same 69 ids the overlap already counted
+a) Nothing new, since it reads the same 69 ids the first route already compared
 b) It proves that no customer has left Kalpa since the business opened
 c) It shows which customers slowed, which the overlap cannot see
 d) The same 0 and 0 from dates alone; new still means new since 1 April

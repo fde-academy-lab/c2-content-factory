@@ -38,11 +38,11 @@ b) One pass by key, since it is the shortest code and reads the rows once
 c) A spreadsheet, since eight groups are few enough to total by hand
 d) A function, tree_for(rows), since each later subset is one more call
 
-### Q2. (design) Next quarter's export holds 40 lakh orders, and Anand wants all 40 segment-and-month groups every Monday. Filtering the export once per group and calling tree_for on each reads how many rows, against one pass by key?
+### Q2. (design) Next quarter's export holds 40 lakh orders, and Anand wants all 40 segment-and-month groups every Monday. Filtering the export once per group and totalling each group reads how many rows, against one pass by key?
 
 a) 16 crore rows against 40 lakh, so one pass by key takes over
-b) 40 lakh either way, since each call reads only its own group
-c) 16 crore against 40 lakh, and the function stays for its one place to edit
+b) 40 lakh either way, since each group's total reads only its own rows
+c) 16 crore against 40 lakh, and filtering stays, since each group is easy to check
 d) 1,600 rows against 200, the same gap as on today's file
 
 ### Q3. Anand's summary table shows a blank for Q1 orders per customer, although calling the helper on its own in a cell shows 1.65 under it. What went wrong?
@@ -66,7 +66,7 @@ b) It grew, since a range up 73 percent means the middle of the orders moved up 
 c) It shrank, since revenue fell by Rs 22 lakh while the count moved by only three
 d) It is the mean here, since a median ignores the lakh-sized orders that matter most
 
-### Q6. Anand asks for the company's orders per customer rolled up from the four segments. Order the steps: p) divide total orders by total customers, q) run tree_for on each segment in each quarter, r) check the result against chapter 2's 1.65 and 1.25, s) add the segments' orders and their customers. Which order is right?
+### Q6. Anand asks for the company's orders per customer rolled up from the four segments. Order the steps: p) divide total orders by total customers, q) compute each segment's orders and customers in each quarter, r) check the result against chapter 2's 1.65 and 1.25, s) add the segments' orders and their customers. Which order is right?
 
 a) q, p, s, r
 b) s, q, p, r
