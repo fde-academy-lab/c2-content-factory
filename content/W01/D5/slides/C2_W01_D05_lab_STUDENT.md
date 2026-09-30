@@ -1,4 +1,4 @@
-# The week, rebuilt alone
+# Can you rebuild the week alone?
 
 Week 1, Day 5. The lab.
 
@@ -14,18 +14,54 @@ say it under pressure. Kavya's terms and the rules take ten minutes, then the cl
 
 ---
 
-## SECTION 1: Kavya's terms
-*The growth review is on Monday, Marketing will be in the room, and the method has to be yours.*
+## S1. One question for the whole day, in five parts
+*Can you rebuild the week alone on a raw export, and hold your note when Marketing pushes?*
+
+```timeline
+label: The lab | title: Can you run it alone? | body: The week's method on an export you have not seen, 150 minutes.
+label: The debrief | title: Where did it break? | body: Three chapters, one per place most rooms break.
+label: The rehearsal | title: Does the note hold? | body: Thursday's note, defended against Marketing.
+label: The cases | title: Which approach fits? | body: Three timed design cases, answered aloud.
+label: The close | title: What is yours now? | body: The Kahoot, Saturday's paper and tonight's rerun. | tone: dark
+```
 
 ```notes
-LIVE. Chapter one is ten minutes in all: the stakes, the method as one picture, the rules and the
-hand-in. Nothing here is new, and the pace matters more than the words.
+LIVE, 1 minute. Read the day's question once, then the five parts. The first is the morning's
+question and the third is the afternoon's; the other three follow from them.
 ```
 
 ---
 
-## S1. Monday's room decides on what you can run alone
-*Meera acts on a note only when the person who wrote it can rebuild every number in it.*
+## SECTION 1: Why rebuild it alone?
+*Why does Kavya want the week rebuilt alone before Monday, and on what terms?*
+
+```notes
+LIVE. Ten minutes in all: who decides on Monday, the method as one picture, the first move, the
+rules and the hand-in. Nothing here is new, and the pace matters more than the words.
+```
+
+---
+
+## S2. Answered in four questions, in ten minutes
+*Who needs this answer, and which smaller questions lead to it?*
+
+**Who needs the answer.** Kavya Nair, before Monday's growth review: Meera acts on a note only when the person who wrote it can rebuild every number in it, and Marketing will be in the room.
+
+```timeline
+label: Question 1 | title: Who decides on Monday? | body: And on what.
+label: Question 2 | title: In what order does it run? | body: The week's method, one picture.
+label: Question 3 | title: What do you open first? | body: The first ten minutes.
+label: Question 4 | title: What are the terms? | body: The rules and the hand-in. | tone: dark
+```
+
+```notes
+LIVE, 1 minute. Read who needs the answer and the four questions, then start.
+```
+
+---
+
+## S3. Monday's room decides on what you can run alone
+*Who decides on Monday, and what will they act on?*
 
 ```mermaid
 flowchart LR
@@ -43,20 +79,19 @@ flowchart LR
 ```notes
 LIVE, 2 minutes. Say the metric, who asks and what a wrong number costs, then the four questions on
 the table from the row: whether the pipeline is yours or the notebook's, which step you reach for
-first, whether the note survives a hostile question, and what you still cannot do without help. The
-first is the morning's question and the third is the afternoon's. Do not add anything about which step matters most: the
-lab measures what each person does unprompted.
+first, whether the note survives a hostile question, and what you still cannot do without help. Do
+not add anything about which step matters most: the lab measures what each person does unprompted.
 ```
 
 ---
 
-## S2. The method, in the order you run it
-*Six steps, each one built on a day of this week, and the order never changes.*
+## S4. Six steps, each built on a day of this week
+*In what order does the week's method run, and why that order?*
 
 ```mermaid
 flowchart LR
     P["<b>1. profile</b><br/>Wednesday"] --> C["<b>2. clean</b><br/>with a log"]
-    C --> R["<b>3. reconcile</b><br/>counts and rupees"]
+    C --> R["<b>3. reconcile</b><br/>to the control totals"]
     R --> D["<b>4. decompose</b><br/>Monday's tree"]
     D --> T["<b>5. shuffle test</b><br/>Thursday"]
     T --> N["<b>6. the note</b><br/>four parts"]
@@ -68,14 +103,14 @@ Each step answers a question the next one depends on: whether the file is what i
 
 ```notes
 LIVE, 2 minutes. Walk the six boxes left to right once, naming the day each came from. Then stop
-talking about the method. During the lab only S7, the step names and their minutes, stays on the
-projector.
+talking about the method. During the lab only S9, the step questions and their minutes, stays on
+the projector.
 ```
 
 ---
 
-## S3. Question: what do you open first on a fresh export?
-*Two hours, a raw file and a stakeholder waiting: the first ten minutes decide the rest.*
+## S5. Question: what do you open first on a fresh export?
+*Two hours, a raw file and a stakeholder waiting: where do the first ten minutes go?*
 
 **Question.** Choose one: a) the quarter totals, so Meera has a number early; b) a profile of every field, before any number; c) the segment split, because that is where last week's finding sat; d) the notebook from Wednesday, to reuse its cleaning code.
 
@@ -86,8 +121,8 @@ pressure and the reason a total gets quoted before anybody knows what the file h
 
 ---
 
-## S4. Answer: a profile, before any number
-*A total computed before the profile is a number about a file nobody has looked at.*
+## S6. Answer: a profile, before any number
+*Why does the profile come before any total?*
 
 ```stats
 value: 3 | label: counts per field | note: present, convertible, distinct
@@ -95,17 +130,17 @@ value: 1 | label: finding per mismatch | note: each count that disagrees with th
 value: 0 | label: numbers quoted | note: until the profile is read
 ```
 
-**Kavya's review.** A profile costs ten minutes and tells you which of the next ninety you will spend on repairs. Skipping it moves the repairs to Monday, in front of Marketing.
+**Kavya's review.** A profile costs twenty minutes and tells you which of the next hundred you will spend on repairs. Skipping it moves the repairs to Monday, in front of Marketing.
 
 ```notes
 LIVE, 1 minute. The answer is b. Option d is closed by the rules anyway: no other notebook is open
-today, and the reason is that code written for Wednesday's file assumes Wednesday's defects.
+today, because code written for Wednesday's file assumes Wednesday's defects.
 ```
 
 ---
 
-## S5. The rules of the lab
-*The lab shows each person which steps they own, and ranks nobody.*
+## S7. Four rules, and no score on any wall
+*What are the lab's rules, and why is it observed without a score?*
 
 ```cards
 icon: bot-off | eyebrow: Rule 1 | title: No assistant | body: No chat model, no autocomplete that writes code, no search for code.
@@ -124,48 +159,50 @@ only; a question about the method gets "what would you check?" and nothing more.
 
 ---
 
-## S6. What you hand in, and where
-*Three files, written by the notebook's last cell into its output folder.*
+## S8. Three files, written by the notebook's last cell
+*What do you hand in, and where does it go?*
 
 ```mermaid
 flowchart LR
-    NB["<b>the lab notebook</b><br/>notebooks/"] --> O1["<b>clean_orders.csv</b><br/>what you kept"]
-    NB --> O2["<b>decisions_log.csv</b><br/>every change, with its reason"]
-    NB --> O3["<b>note.md</b><br/>four parts, under 150 words"]
+    NB["<b>the lab notebook</b><br/>its last cell"] --> O1["<b>the clean orders</b><br/>what you kept"]
+    NB --> O2["<b>the decisions log</b><br/>every change,<br/>with its reason"]
+    NB --> O3["<b>the note</b><br/>four parts, under<br/>150 words"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class O1,O2,O3 known
 ```
 
-Open `notebooks/C2_W01_D05_lab_STUDENT.ipynb` and `exercises/unguided/C2_W01_D05_lab_brief_STUDENT.md`. The export and Finance's control totals load in the first cell.
+The three files land in `notebooks/output/` as `clean_orders.csv`, `decisions_log.csv` and `note.md`. Open `notebooks/C2_W01_D05_lab_STUDENT.ipynb` and `exercises/unguided/C2_W01_D05_lab_brief_STUDENT.md` now; the export and Finance's control totals load in the first cell.
 
 ```notes
-LIVE, 1 minute. Everyone opens both files now and runs the first cell before the clock starts, so
-a Codespace problem is found in the ten minutes of terms rather than inside the lab.
+LIVE, 1 minute. Everyone opens both files now and runs the first cell before the clock starts, so a
+Codespace problem is found in the ten minutes of terms and never inside the lab.
 ```
 
 ---
 
-## SECTION 2: The clock
-*120 minutes, one pass, the week's method from a raw file to a note.*
+## SECTION 2: Can you run it alone?
+*Can you take a raw export to a note Anand would sign, alone, in 120 minutes?*
 
 ```notes
-LIVE. The clock starts when this slide goes up. Leave S7 on screen for the whole lab, and change
+LIVE. The clock starts when the next slide goes up. Leave S9 on screen for the whole lab, and change
 nothing on the projector until the 120-minute mark.
 ```
 
 ---
 
-## S7. The pace, if you want one
-*The minutes are a pace; the order of the steps is fixed.*
+## S9. Answered in six steps, at this pace
+*Which six questions does the lab ask, and how long does each take?*
 
 ```timeline
-label: 0 to 20 | title: Profile
-label: 20 to 50 | title: Clean
-label: 50 to 65 | title: Reconcile
-label: 65 to 90 | title: Decompose
-label: 90 to 105 | title: Test
-label: 105 to 120 | title: Note
+label: 0 to 20 | title: What does the file hold? | body: Profile.
+label: 20 to 50 | title: Which rows count? | body: Clean, with a log.
+label: 50 to 65 | title: Is it still Finance's data? | body: Reconcile.
+label: 65 to 90 | title: Which branch moved? | body: Decompose.
+label: 90 to 105 | title: Could chance do it? | body: One shuffle test.
+label: 105 to 120 | title: What should Meera do? | body: The note. | tone: dark
 ```
+
+**Who needs the answer.** Anand checks the note's first line against his books, and Meera acts on it on Monday. The minutes are a pace; the order of the steps is fixed.
 
 ```notes
 LIVE, the whole lab. At each mark the TAs walk their rows with the observation sheet and record the
@@ -175,8 +212,8 @@ step each learner is on, without a word. Say nothing to the room except the time
 
 ---
 
-## S8. The second look, after the clock stops
-*Hand-in is frozen at 120 minutes; the next twenty are yours to check what you sent.*
+## S10. Your totals, set against the control file
+*After the clock stops, what do you check, and what do you write down?*
 
 ```mermaid
 flowchart LR
@@ -201,8 +238,8 @@ debrief.
 
 ---
 
-## S9. Kavya's review of the morning
-*The method is yours when its order holds under a clock.*
+## S11. The step the clock took is the step to own
+*What does the morning tell each of you?*
 
 ```stats
 value: 6 | label: steps | note: in one order, every time
