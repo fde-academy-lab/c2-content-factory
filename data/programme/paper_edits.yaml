@@ -107,6 +107,17 @@ W1:
     why: The key was the longest option.
     options:
       a: Repeat it exactly as it ran, because total revenue rose 6 percent after the campaign.
+  51:
+    status: proposed
+    why: A blind sitting found that the tracker's first rung, "Confirm that the drop is real", repeats bank 20's key word for word, and a second found that "compare like with like" could be read as part of confirming the drop, since a partial quarter fails both. The two options now say what each rung checks, each quarter's figure on its own against the two checked figures side by side, so the second rests on the first; the key and the other options are unchanged. The options run 33 to 84 characters, as ordering steps.
+    options:
+      b: "Check each quarter's figure on its own: no rows missing, doubled or malformed."
+      d: Set the two checked figures side by side on the same weeks and the same definitions.
+  52:
+    status: proposed
+    why: A blind sitting found that reconciling and then recomputing could be argued against recomputing and then tying out. The last step now ends in sending the figure to Anand, and a figure is reconciled before it leaves, which fixes the order without a rule in the stem; the key and the other options are unchanged.
+    options:
+      c: Recompute the revenue tree on the clean data, and send it to Anand.
 
 W2:
   2:
