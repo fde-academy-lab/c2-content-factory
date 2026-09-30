@@ -3,24 +3,25 @@
 Kavya Nair: "Then say it to me the way you will say it to her, because I will push the way
 Marketing will."
 
-**Who needs the answer.** Meera Raghavan, Kalpa Retail's CEO, at Monday's growth review, with the
-marketing lead in the room. A caveat that folds under a push sends her budget after a number that has
-not earned it, and one that overclaims loses the room.
+**Who needs the answer.** Meera Raghavan, Kalpa Retail's CEO, needs it at Monday's growth review,
+where the marketing lead will be in the room. A caveat that folds under a push sends her budget after
+a number that has not earned it, and one that overclaims loses the room.
 
 **The questions on the way.**
 
-1. What are you defending?
-2. How does round one run, and how does round two?
+1. Which note are you defending, and which rules does it rest on?
+2. How do the rehearsal's two rounds run?
 3. What will a partner playing Marketing push on?
 4. How do you answer the push whose every number is true?
 5. How do you hold a caveat without folding or overclaiming?
 
-## What are you defending?
+## Which note are you defending, and which rules does it rest on?
 
-The final version of your one-page note from Thursday, the note that goes to Monday's growth review.
-It answers Meera's three questions, each in four parts: the claim with its number and what it is out
-of, the evidence and how it was checked, the caveat that would change the claim, and the action with
-its cost. Bring your own note; the rules it rests on, as the room drew them on Thursday, are these.
+You defend the final version of your one-page note from Thursday, the note that goes to Monday's
+growth review. It answers Meera's three questions, each in four parts: the claim with its number and
+what it is out of, the evidence and how it was checked, the caveat that would change the claim, and
+the action with its cost. Bring your own note. The rules it rests on, as the room drew them on
+Thursday, are these.
 
 | Meera's question | The rule your answer rests on |
 |---|---|
@@ -28,30 +29,30 @@ its cost. Bring your own note; the rules it rests on, as the room drew them on T
 | Should budget move to the Student rise? | A rate on a handful of orders goes beside its count, and a count too small to call a trend carries no budget until it grows |
 | Did the monsoon sale work? | A blended average can rise while every segment falls, when the people who got the sale differ from those who did not; compare like with like, inside each segment |
 
-One thread from Tuesday runs through the Retail-Plus answer: the head of Retail-Plus forwarded a member's
-complaint that the app's reorder feature had been broken for six weeks, and your note carries that
-cause as a hypothesis with the test that would settle it.
+The Retail-Plus answer also draws on Tuesday, when the head of Retail-Plus forwarded a member's
+complaint that the app's reorder feature had been broken for six weeks; your note carries that cause
+as a hypothesis, with the test that would settle it.
 
-## How does round one run, and how does round two?
+## How do the rehearsal's two rounds run?
 
 Round one runs in pairs for 50 minutes.
 
 | Part | Minutes | What happens |
 |---|---|---|
-| The brief and the modelled push | 12 | Monday's room, the note's shape, the pushes and the card; Marketing's sharpest push, below, answered once aloud with a TA reading Marketing's lines; then find a partner. |
-| Pair one, first defence | 10 | Two minutes of the note read aloud; five of pushes and answers; three for the partner to fill the feedback card and hand it over. |
-| Pair one, swap | 10 | The same, with the roles reversed. |
-| Pair two, new partner | 18 | Both defences again, nine minutes each (two to read, four of pushes, three for the card), with a new partner using the harder pushes below. |
+| The brief and the modelled push | 12 | The brief covers Monday's room, the note's shape, the pushes and the card. Marketing's sharpest push, below, is then answered once aloud with a TA reading Marketing's lines, and you find a partner. |
+| Pair one, first defence | 10 | The defender reads the note aloud for two minutes and answers pushes for five, and the partner takes the last three to fill in the feedback card and hand it over. |
+| Pair one, swap | 10 | The same ten minutes run again with the roles reversed. |
+| Pair two, new partner | 18 | With a new partner, both defences run again at nine minutes each (two to read, four of pushes, three for the card), and the partner uses the harder pushes below. |
 
-Round two runs to the whole room for 50 minutes. Names are called at random. You read your note
-standing, in two minutes; one person who has not yet been called puts one push from the lists below;
-Kavya's review follows in a minute.
+Round two runs in front of the whole room for 50 minutes, with names called at random. When your
+name is called you read your note standing, in two minutes; one person who has not yet been called
+puts one push to you from the lists below, and Kavya's one-minute review follows.
 
 ## What will a partner playing Marketing push on?
 
-You are the marketing lead. You own the campaigns and the Rs 12 crore acquisition request, and you
-believe in both. Push hard and fair: put each push as a question and let the defender finish.
-Ask these as they are written or in your own words.
+When you play Marketing, you are the marketing lead: you own the campaigns and the Rs 12 crore
+acquisition request, and you believe in both. Push hard and fair: put each push as a question and let
+the defender finish. Ask these as they are written or in your own words.
 
 ### Which pushes does pair one use?
 
@@ -72,16 +73,16 @@ Ask these as they are written or in your own words.
 
 ## How do you answer the push whose every number is true?
 
-Of all the pushes, this is the one most likely to land on Monday, because it arrives with numbers and
-every one of them is true.
+Marketing's sharpest push is the one most likely to land on Monday, because it arrives with numbers
+and every one of them is true.
 
 > "Customers who got the monsoon sale spent Rs 3,395 each. Customers who did not spent Rs 3,200.
 > That is 6.1 percent more, it is our best campaign of the year, and your note tells Meera not to
 > repeat it."
 
-**The numbers it cites.** The blend is right: 60 customers got the sale and spent Rs 3,395 on
-average; 100 did not and spent Rs 3,200. What the push leaves out is who the 60 were. Half of them
-were Retail-Plus members, who spend more in any month, against 40 percent of the 100 the sale missed.
+The blend it cites is right: 60 customers got the sale and spent Rs 3,395 on average, and 100 did
+not and spent Rs 3,200. The push leaves out who the 60 were. Half of them were Retail-Plus members,
+who spend more in any month, against 40 percent of the 100 the sale missed.
 
 | Segment | Got the sale | Did not | Inside the segment |
 |---|---|---|---|
@@ -89,19 +90,19 @@ were Retail-Plus members, who spend more in any month, against 40 percent of the
 | Retail-Core | Rs 1,940 (30 customers) | Rs 2,000 (60 customers) | 3.0 percent less with the sale |
 | Blended | Rs 3,395 (60) | Rs 3,200 (100) | 6.1 percent more, because of the mix |
 
-**The answer the evidence supports.** "The 6.1 percent is real arithmetic on a mix: the average rose
-only because more high spenders got the sale. Half the customers who got it were members who spend
-more anyway, and inside each segment the customers who got it spent 3.0 percent less than the ones
-who did not: Rs 4,850 against Rs 5,000, and Rs 1,940 against Rs 2,000. At 15 percent off, the sale
-needed 17.6 percent more volume just to stand still, so as it was designed it did not pay. Run
-Diwali with a random slice of each segment held back, agreed in advance, so the next time we say a
-sale worked, the number holds up in front of Anand."
+The answer the evidence supports is this: "The 6.1 percent is real arithmetic on a mix: the
+average rose only because more high spenders got the sale. Half the customers who got it were
+members who spend more anyway, and inside each segment the customers who got it spent 3.0 percent
+less than the ones who did not: Rs 4,850 against Rs 5,000, and Rs 1,940 against Rs 2,000. At
+15 percent off, the sale needed 17.6 percent more volume just to stand still, so as it was designed
+it did not pay. Run Diwali with a random slice of each segment held back, agreed in advance, so the
+next time we say a sale worked, the number holds up in front of Anand."
 
-**Why it holds.** It agrees with every number Marketing cited, so there is no fight about the data. It
-names the one fact the blend hides, who got the sale, and shows it inside each segment. It closes on a
-test with a date, which turns the disagreement into a plan Marketing can own. Folding ("fair point, I
-will soften it") loses the finding, and overclaiming ("the sale lost money, full stop") loses the
-room, since a test has not yet been run on a design that might work.
+The answer holds because it agrees with every number Marketing cited, so there is no fight about the
+data. It names the one fact the blend hides, who got the sale, shows it inside each segment, and
+closes on a test with a date, which turns the disagreement into a plan Marketing can own. Folding
+("fair point, I will soften it") loses the finding, and overclaiming ("the sale lost money, full
+stop") loses the room, since a test has not yet been run on a design that might work.
 
 ## How do you hold a caveat without folding or overclaiming?
 
@@ -114,9 +115,9 @@ flowchart LR
     B --> T["offer the test<br/>what would change your mind, and when"]
 ```
 
-Folding drops the caveat to end the argument. Overclaiming calls the uncertainty a certainty in the
-other direction. Both lose Meera's trust by Monday afternoon.
+Folding drops the caveat to end the argument, and overclaiming turns the uncertainty into a certainty
+in the other direction; either one loses Meera's trust by Monday afternoon.
 
-## Which interview question does this train?
+## Which interview question does the rehearsal train?
 
 [D] A stakeholder attacks your caveat in front of the room; how do you hold it without overclaiming?

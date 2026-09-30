@@ -1,13 +1,14 @@
 # What did this defence hold, and what should change before Monday?
 
 The partner who played Marketing fills this in during the last three minutes and hands it to the
-defender, who keeps it. There is no score on it, and there is nowhere to write one.
+defender, who keeps it. The card carries no score and has no space for one.
 
-**Who needs the answer.** The defender, who takes Thursday's note to Meera Raghavan's growth review
-on Monday: a card that says only "good job" leaves the one weak sentence in the note.
+**Who needs the answer.** The defender needs it, because they take Thursday's note to Meera
+Raghavan's growth review on Monday, and a card that says only "good job" leaves the one weak sentence
+in the note.
 
 **The questions on the way.** What was the claim, as you heard it? When did the caveat come? Which
-push landed? Which sentence stays and which goes?
+push landed? Which sentence of the note stays and which goes?
 
 Defender: ____________________     Partner: ____________________     Round: one / two
 
@@ -35,7 +36,7 @@ ______________________________________________________________________________
 
 Did the defender fold, overclaim, or hold? Fold / Overclaim / Hold
 
-## 4. Which sentence stays, and which goes?
+## 4. Which sentence of the note stays, and which goes?
 
 One sentence to keep, word for word:
 

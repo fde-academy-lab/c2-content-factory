@@ -1,7 +1,7 @@
 # Which of the week's calls can you make in twenty seconds?
 
-The Kahoot for Week 1, Friday: eight items, ungraded, scored on correctness and speed together.
-Every number in an item is invented for it.
+The Kahoot for Week 1, Friday, has eight items. It is ungraded and scores correctness and speed
+together, and every number in an item is invented for it.
 
 ---
 
@@ -46,7 +46,7 @@ Every number in an item is invented for it.
 ---
 
 ## Q5. A shuffle test gives p = 0.04. What is 0.04 a share of?
-*Tests: the p-value is a share of chance-only worlds, never the chance the finding is wrong.*
+*Tests: that the p-value is a share of chance-only worlds, a different number from the chance the finding is wrong.*
 
 - Chance-only worlds with a gap at least this large  <- correct
 - Findings like this one that later turn out to be wrong

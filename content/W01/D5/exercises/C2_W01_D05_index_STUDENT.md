@@ -1,8 +1,8 @@
 # Which exercises does Friday run, and what do you hand in?
 
-The lab is the day's exercise; everything after it is practice with a listener. Kavya Nair set the
-day's question: can you rebuild the week alone on a raw export, and hold your note when Marketing
-pushes?
+Kavya Nair set the day's question: can you rebuild the week alone on a raw export, and hold your
+note when Marketing pushes? The lab is the day's exercise, and everything after it is practice with
+someone listening.
 
 | When | File | What it asks | You hand in |
 |---|---|---|---|

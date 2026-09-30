@@ -1,17 +1,17 @@
 # Can you take a raw export to a note Anand would sign, alone, in two hours?
 
-The AI-free lab, Week 1, Friday. Kavya Nair, senior analyst, Kalpa Retail data team: "The growth
-review is on Monday, and Marketing will be in the room. Before anything goes to Meera, rebuild the
-week from a raw export with no assistant and no notes."
+In the AI-free lab on Friday of Week 1, Kavya Nair, senior analyst in the Kalpa Retail data team,
+sets the task: "The growth review is on Monday, and Marketing will be in the room. Before anything
+goes to Meera, rebuild the week from a raw export with no assistant and no notes."
 
 **Who needs the answer.** Meera Raghavan, Kalpa Retail's CEO, decides on Monday where the next
 quarter's effort goes, with Marketing's Rs 12 crore request to win new customers on the table. Anand
 Iyer, the finance controller, reads every number before she does, and his rule has not changed since
 Wednesday: "Until your numbers match ours, Finance will not act on a drop measured from an ERP
 export." An ERP export is a file pulled from Kalpa's ERP, the enterprise system where its orders and
-its books are recorded. A first line that does not tie to Anand's books is sent back; a misread
-branch sends Monday's effort to the wrong team; a rate on too few orders loses the room at
-Marketing's first question.
+its books are recorded. If the note's first line does not tie to Anand's books, the note is sent
+back. A misread branch sends Monday's effort to the wrong team, and a rate on too few orders loses
+the room at Marketing's first question.
 
 **The questions on the way.** The lab asks six, in the week's order, and each has its own part
 below:
@@ -31,48 +31,51 @@ to Meera."
 
 The metric at stake is booked revenue per quarter, the rupees of the orders recorded as sales in that
 quarter, and its change from Q1 to Q2. The revenue tree splits that change into three branches:
-revenue is customers, times orders per customer, times revenue per order, read segment by segment.
+revenue is customers, times orders per customer, times revenue per order, read segment by segment,
+where a segment is the customer group the export records against each order.
 
-## What do you have to work with?
+## Which files does the lab give you?
 
 | File | What it is |
 |---|---|
-| `data/C2_W01_D05_lab_orders_STUDENT.csv` | Two quarters of orders you have not seen, as the export arrived. Kalpa-shaped and re-keyed for the drill, so nothing in it belongs in Monday's note. |
+| `data/C2_W01_D05_lab_orders_STUDENT.csv` | Two quarters of orders you have not seen, as the export arrived. The file is Kalpa-shaped and re-keyed for the drill, so nothing in it belongs in Monday's note. |
 | `data/C2_W01_D05_lab_control_STUDENT.csv` | Finance's control totals for the same export: distinct orders and booked rupees per quarter. A control total is the source system's own count and sum for a period. |
 | `notebooks/C2_W01_D05_lab_STUDENT.ipynb` | Your workspace: six sections in the week's order, and a last cell that writes what you hand in. |
 
-## What are the rules?
+## What are the lab's rules?
 
-- No assistant of any kind: no chat model, no code completion that writes code, no search for code.
-- Notes closed: no other notebook in `notebooks/` open, and no deck, cheat sheet or study note open
-  on any screen. Python's own `help()` is allowed.
-- 120 minutes on the clock, one pass. Save as you go. Your output folder is copied at the
+- No assistant of any kind is allowed: no chat model, no code completion that writes code, and no
+  search for code.
+- Notes stay closed, so no other notebook in `notebooks/` is open, and no deck, cheat sheet or study
+  note is open on any screen. Python's own `help()` is allowed.
+- The clock runs 120 minutes for one pass, so save as you go. Your output folder is copied at the
   120-minute mark, and that copy is what is observed.
-- A TA records, at intervals, the step each person is on. Nothing is scored, nothing is ranked and
-  nothing is shown to the room.
+- A TA records, at intervals, the step each person is on, and none of it is scored, ranked or shown
+  to the room.
 
 ## Which six parts does the lab run, and in what order?
 
-The order is fixed; the minutes are a pace.
+The order of the parts is fixed, and the minutes given for each are a guide to your pace.
 
 ### 1. What does this file hold before you change anything?
 
 At work, every analyst reads a new extract before quoting from it, because a number quoted from a
-file nobody has read is the one that gets taken back. In about 20 minutes you produce present,
-convertible and distinct counts for every field, and write down each count that is not what the
-field should hold.
+file nobody has read is the one that gets taken back. In about 20 minutes you count, for every field,
+how many values are present, how many convert to a number where one belongs and how many are
+distinct, and write down each count that is not what the field should hold.
 
 ### 2. Which rows count, and why?
 
 At work, an auditor asks for the reason behind every change to a finance number, months after it was
 made. In about 30 minutes you produce a clean list of orders, a rejected list, and one log row per
-decision with the order id, the decision (drop, default, or keep and flag) and the reason.
+decision with the order id, the decision (drop the row, default a missing value, or keep the value and
+flag it) and the reason.
 
 ### 3. Is the clean data still the data Finance booked?
 
 At work, Finance signs off a number only when the analyst can show how it ties to the books. In
-about 15 minutes you produce the checks you would show Finance, and a bridge from what you read to
-what you kept.
+about 15 minutes you produce the checks you would show Finance, and a bridge from the total you read
+to the total you kept, one explained move at a time.
 
 ### 4. Which branch of the revenue tree moved, in which segment, and on how many orders?
 
@@ -94,11 +97,11 @@ produce the note in four parts, claim, evidence, caveat and action, under 150 wo
 ## What do you hand in, and where?
 
 The notebook's last cell writes three files into `notebooks/output/`: `clean_orders.csv`,
-`decisions_log.csv` and `note.md`. Run it before the clock stops, even if a section is unfinished;
-an unfinished note with a true caveat is worth more than a finished one without it.
+`decisions_log.csv` and `note.md`. Run it before the clock stops, even if a section is unfinished,
+because an unfinished note with a true caveat is worth more than a finished one without it.
 
-## What happens after the clock stops?
+## What happens after the lab clock stops?
 
 You get twenty minutes for a second look. Compare the two quarter totals you used against the
 control totals, and write one line under your note in a new cell: what you checked, or what moved
-and by how much. What you handed in stays as it was, and this line is what you bring to the debrief.
+and by how much. What you handed in stays as it was, and you bring this line to the debrief.

@@ -3,9 +3,9 @@
 Kavya Nair, the morning after a lab: "Tell me which step you stalled on, and show me you can run it
 alone on a file you have not seen."
 
-**Who needs the answer.** You and your TA: the observation sheet marked one step of your lab as the
-one you do not own yet, and Monday's growth review hears a note from someone who can run every step
-alone.
+**Who needs the answer.** You and your TA need it. The observation sheet marked one step of your lab
+as the one you do not own yet, and Monday's growth review hears a note from someone who can run every
+step alone.
 
 **The questions on the way.**
 
@@ -22,14 +22,14 @@ illustrative. Kalpa's segments are Retail-Core, Retail-Plus (the paid members' t
 Business (the corporate book); a control total is the source system's own count of orders and sum of
 rupees for a quarter.
 
-**How to run it.** Open a fresh copy of `notebooks/C2_W01_D05_lab_STUDENT.ipynb`, change the two file
-names in the first cell to the practice files, and run the week's method again. Start at the problem
-that holds the step your TA marked and carry on from there; the four problems climb from the profile
-to the note. About an hour in all.
+To run it, open a fresh copy of `notebooks/C2_W01_D05_lab_STUDENT.ipynb`, change the two file names
+in the first cell to the practice files, and run the week's method again. Start at the problem that
+holds the step your TA marked and carry on from there; the four problems climb from the profile to
+the note, and the set takes about an hour in all.
 
 Answer each item with one letter, in order, and post the letters as one line. Nine of the sixteen
-items are design items, the last of each problem among them: which approach fits, sized how, and what
-would switch it.
+items, the last of each problem among them, are design items: they ask which approach fits, sized
+how, and what would switch it.
 
 ```
 Post one line in this shape: 1x 2x 3x 4x 5x 6x 7x 8x 9x 10x 11x 12x 13x 14x 15x 16x
@@ -62,7 +62,7 @@ d) 14 repeat rows; 2 customers who appear twice; 4 amounts stored as zero; one s
 
 ### Item 2: What do you do with three values that will not convert?
 
-Three values on last month's export would not convert.
+Three values on another export would not convert.
 
 | Value | What else the file says |
 |---|---|
@@ -82,7 +82,7 @@ d) read as 4,500 and flag; hold and ask the owner; set to zero
 Next month's export will be about 5 lakh rows. One way to find rows that repeat an order compares
 every pair of rows, n(n - 1)/2 comparisons; another counts each order id in one pass and lists the
 ids seen more than once. What does the pair-by-pair way cost at 5 lakh rows, and which way fits
-both files?
+both last month's 1,240 rows and next month's 5 lakh?
 
 a) About 2.5 lakh comparisons, so the pair-by-pair way is fine at either size
 b) About 125 billion comparisons, so the one-pass count
@@ -106,9 +106,9 @@ d) Keep the 6 in revenue, flagged; 400 customers plus 6 orders with no known buy
 
 At work, this is the check Finance asks for before it acts on any number an analyst sends.
 
-### Item 5: What went wrong in last month's pass, and what did it send?
+### Item 5: What went wrong in a colleague's pass, and what did it send?
 
-On last month's export, Finance's control totals are Q1 Rs 30,00,000 on 410 orders and Q2 Rs
+On a second two-quarter export, Finance's control totals are Q1 Rs 30,00,000 on 410 orders and Q2 Rs
 27,00,000 on 395 orders. A colleague's pass summed Q1 Rs 28,20,000 on 410 rows and Q2 Rs 29,40,000
 on 403 rows. What went wrong, and what headline did the pass send?
 
@@ -119,7 +119,7 @@ d) A Q1 value lost, Rs 1,80,000; 8 extra Q2 rows, Rs 2,40,000; it sent +4.3 perc
 
 ### Item 6: Where does a gap sit when only the file can tell you?
 
-On last month's export the count check passes: input 2,480 equals kept 2,431 plus set aside 49, and
+On a third two-quarter export the count check passes: input 2,480 equals kept 2,431 plus set aside 49, and
 every order count matches Finance's. The rupee check shows Q1 Rs 14,600 short, and the decisions log
 holds no conversion lines. Which second route finds where the gap sits using only the file, and what
 should it show?
@@ -142,7 +142,7 @@ d) Q2 is reconciled to Q1's control total, scaled by Q2's order count
 ### Item 8: In what order do the moves fit a two-hour read?
 
 Meera wants a first read on next month's export in 120 minutes, and it came with no control totals.
-Your moves: profile (20 minutes), account for every value (10), decompose (25), and a request to
+You have four moves: profile (20 minutes), account for every value (10), decompose (25), and ask
 Finance for control totals, whose reply takes 90 minutes. The reply must land at least 15 minutes
 before the read so you can reconcile to it. Which order meets that?
 
@@ -160,7 +160,7 @@ first question.
 
 ### Item 9: Which branch moved inside Retail-Plus?
 
-Your tree on the clean practice data: which branch moved inside Retail-Plus, and by how much?
+On your tree for the clean practice data, which branch moved inside Retail-Plus, and by how much?
 
 a) Orders per member, down 25.0 percent
 b) Customers, down 25.0 percent
@@ -178,7 +178,7 @@ b) Shuffle the segment label across whole customers; flip each member's own two 
 c) Deal the quarter label across every Retail-Plus order; shuffle the label across single orders
 d) Flip each member's own two quarters; shuffle the segment label across single orders
 
-### Item 11: How many of 256 flips are at least as extreme?
+### Item 11: In how many of the 256 flips is the change at least as large as the real one?
 
 For the first question, tally each member's orders in the two quarters from your clean data. A flip
 swaps one member's two quarters, and there are 256 ways to flip the 8. In how many is the total change
@@ -189,9 +189,10 @@ b) 32 of 256, p = 0.125
 c) 2 of 256, p = 0.008
 d) 128 of 256, p = 0.5
 
-### Item 12: What would change that verdict?
+### Item 12: What would change the flip test's verdict on Retail-Plus?
 
-What would change the verdict that test gives on the first question?
+Item 11's flip test answers Meera's first question, whether Retail-Plus's 8 members ordered less
+often in Q2 than in Q1. What would change the verdict it gives?
 
 a) 20,000 flips on today's orders in place of 2,000
 b) A rerun of today's test with another seed
@@ -206,7 +207,7 @@ At work, this is the one page a CEO reads in two minutes, said aloud to a room t
 
 ### Item 13: Which first line fits the practice note?
 
-Which first line fits the practice note?
+Which of these first lines fits the note you write on the practice export?
 
 a) "Retail-Plus members ordered 25 percent less often, so the tier needs a retention plan now."
 b) "Student revenue rose 50 percent, the fastest-growing segment this quarter."
@@ -223,7 +224,7 @@ b) "It is 16 orders then 12 from 8 members, and chance does that 1 time in 8."
 c) "It is noise: the test came out above 0.05, so the fall did not happen."
 d) "A 25 percent fall on a tier this small cannot matter to anyone at Kalpa."
 
-### Item 15: Which line lets a pass look clean?
+### Item 15: Which line of a colleague's cleaning cell lets the pass look clean?
 
 A colleague's cleaning cell for last month's export is below. One line lets the pass look clean
 while it is short in rupees.
@@ -248,7 +249,7 @@ b) Line 3, since it skips a row whose order id is already kept
 c) Line 6, since int() fails on a value it cannot read
 d) Line 8, where an unread value turns into zero with no log
 
-### Item 16: How much does a share wobble at 2,000 shuffles?
+### Item 16: How much does a p-value of 0.048 wobble at 2,000 shuffles?
 
 Last month's test on a lead came out at p = 0.048 on 2,000 shuffles. The share's own wobble at 2,000
 shuffles is about the square root of p(1 - p)/2,000. What is the wobble, and what do you do before
