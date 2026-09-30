@@ -15,10 +15,10 @@ half hour puts every learner on the interviewer's side of the table.
 
 | Block | Duration | What happens |
 |---|---|---|
-| The paper | 120 min | Pen and paper, AI-free, no notes: 54 objective items in six parts, then the untimed stretch page for anyone who finishes early. |
+| The paper | 120 min | Pen and paper, AI-free, no notes: step one's six ratings, then 54 objective items in six parts, then the untimed stretch page for anyone who finishes early. |
 | Break | 20 min | Papers stay face down on the desks. |
 | Marking | 20 min | Papers swapped and marked against the key, read out by you. |
-| The solution discussion | 90 min | The most-missed items first (35), then the ten anchors answered aloud as interview answers, with random call-outs (55). |
+| The solution discussion | 90 min | The most-missed items first (35), then the ten anchors answered aloud as interview answers, with random call-outs (50), then the room's ratings against its work (5). |
 | The mock-interview round | 30 min | In pairs, each learner asks the other two anchors and one stretch follow-up, then they swap. |
 | Doubts and the bridge | 20 min | Open doubts, then Monday: the same numbers from the warehouse. |
 
@@ -26,9 +26,11 @@ half hour puts every learner on the interviewer's side of the table.
 
 ## Before the paper
 
-Hand out the Word paper face down, one per desk, with a pen. Say three things and nothing else: the
-paper is 120 minutes and ungraded, the answer sheet at the back is where every answer goes, and the
-stretch page at the end is for anyone who finishes early and is not counted. Then start.
+Hand out the Word paper face down, one per desk, with a pen. Say four things and nothing else: the
+paper is 120 minutes and ungraded; step one comes first, a rating from 1 to 4 for each of the six
+parts in the box at the top of the answer sheet, given before any item is read; the answer sheet at
+the back is where every answer goes; and the stretch page at the end is for anyone who finishes
+early and is not counted. Then start.
 
 At 90 minutes into the paper, say once that thirty minutes remain. Collect nothing at the end:
 papers stay on the desks through the break.
@@ -53,7 +55,11 @@ papers stay on the desks through the break.
    an item left empty, and never a name. Its Discussion sheet gives the most-missed order the
    discussion takes, and any item the workbook flags goes to the tracker's owner with the room's
    rate, because the fault may sit in the item.
-6. The stretch page is not marked. Anyone who wrote on it keeps it for the mock-interview round.
+6. The same TA types the six step-one ratings from the top of each answer sheet into the workbook's
+   Ratings sheet, by seat, 1 to 4 for each part. The sheet sets each part's mean rating beside the
+   room's right rate in it, and counts the seats that rated a part 3 or 4 and got under half of it
+   right.
+7. The stretch page is not marked. Anyone who wrote on it keeps it for the mock-interview round.
 
 Say once, at the start, that the marker is deciding nothing. Reading somebody else's answer against
 the key is the exercise, and it is harder than being marked.
@@ -95,13 +101,13 @@ On every item, take the wrong answer first. Ask who wrote it, or who nearly did,
 why it looked right; the key file's line for that option names the misconception, and the room
 repairs it before you read the key's reason.
 
-### The interview anchors, 55 minutes
+### The interview anchors, 50 minutes
 
 Ask each anchor aloud as an interviewer would: name the person, then the question, then wait. Give
 sixty seconds. After the answer, ask the room what one sentence would make it stronger, and read
 the answer below only if nobody gets there. The items listed after each anchor are the ones on the
 paper that descend from it, so a learner who lost those items is a good person to call. Ten anchors
-in 55 minutes is about five minutes each, and the last two take the extra.
+in 50 minutes is five minutes each, so keep the clock on the board.
 
 #### 1. [S] Kalpa wants 15 percent growth; draw the revenue tree and name the branch you would investigate first.
 
@@ -220,6 +226,15 @@ Then defend the caveat against the room. Listen for a caveat that is a condition
 hedge: "this may not be accurate" is a hedge, while "nothing here measures why they spent less"
 names what would change the claim. Q37 is the same move in a harder room: Marketing pushing a slide,
 and the answer that puts the denominator on the table before it argues.
+
+### The ratings against the work, 5 minutes
+
+Close the discussion on the workbook's Ratings sheet. Read each part's mean rating beside its right
+rate, from Part 1 to Part 6, and then name the parts where confidence ran ahead of the work: a
+high mean rating beside a low right rate, and above all a part whose last column counts seats that
+rated it 3 or 4 and got under half of it right. Say it about the room, never about a seat. Those
+parts go on the board as the first line of Monday's revision, because a gap the room did not know it
+had is the one an interviewer finds first.
 
 ---
 
