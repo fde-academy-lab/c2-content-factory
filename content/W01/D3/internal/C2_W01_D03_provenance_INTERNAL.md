@@ -93,8 +93,13 @@ or its line. The existing 29 September build already showed Rs 1,790 this way.
 9. **The afternoon deck's chapter opener shows 06.** Main's deck builder now prints the number each
    `## SECTION n:` heading carries, so chapter 6 opens the afternoon deck as 06, and the notes no
    longer explain an 01.
-10. **Chapter titles are statements.** `scripts/deck_md_check.py` reads a SECTION title ending in a
-    question mark as a question slide, so the six titles drop the mark in the decks and notebooks alike.
+10. **Chapter titles are questions, and the slide after each opener answers the gate.** Standard v3
+    makes every chapter opener the chapter's short question. `scripts/deck_md_check.py` reads a
+    SECTION title ending in a question mark as a question slide whose next slide must open on
+    "Answer", so each chapter's map slide opens on "Answering it for ..." and each non-chapter opener
+    in half two is followed by a slide opening on "Answer". The shared change to ask for is an
+    exemption for SECTION headings in that rule. This replaces the 30 September decision that chapter
+    titles were statements.
 11. **The study notes run to about 6,650 words, about 5,550 outside the tables,** against the
     standard's 4,000 to 5,000, because six chapters as worked cases with options and sizing, the
     recomputed tree and twelve full interview answers do not fit the lower figure without cutting
@@ -128,6 +133,26 @@ or its line. The existing 29 September build already showed Rs 1,790 this way.
     (`03_bridge` removed; `03_identity_rule`, `04_missing_malformed`, `05_bridge`, `06_audit_logs`
     added); `hands_on` and its solution became `ex1_escalated_case`; the three round sets and their
     solutions became six chapter sets. All removals by `git rm`.
+20. **The notebooks' sections are the ladder's six questions.** Each chapter notebook numbers its
+    sections 1 to 6 as its six smaller questions. Chapter 1's type check and its profile share
+    section 2, chapter 5's recomputed tree and Tuesday's segment share section 3 under the Retail-Plus
+    predict, and chapter 5's note to Anand is section 5. Every code cell kept its source and output
+    except the map cells, the closing lines and chapter 1's merged check cell, and the build script
+    refuses a notebook whose headings drift from the ladder.
+21. **The decisions log's other four decisions touch 57 rows.** Half two's slide on the decisions log
+    said 58; the log's own rows are 0 rejected, 1 status, 55 discounts and 1 bulk order, so the slide,
+    its notes and the day sheet's numbers table say 57.
+22. **The workbook's INV-01 and the profile's first amount moved from Rs 2,400 to Rs 2,500**, as
+    chapter 2's INV-01 and the companion's experiment A had already moved, so no invented value echoes
+    the take-home's refund; the recalc manifest's expected total moved from Rs 20,200 to Rs 20,300.
+23. **GMV and GST stay where the review put them.** The notes and the day sheet each say once that
+    booked value is the retail dossier's GMV and that GST inside it is a question for Anand; every other
+    file says booked value with its clause and says nothing of GMV or of GST in revenue; chapter 3's GST
+    e-invoice portal is a separate company fact.
+24. **Every file explains its own terms.** The review's second ruling glossed ERP, tie out, extract,
+    migration and supplier income once per family; under standard v3 each file that uses one explains
+    it in a clause where it first appears, the cheat sheet and the afternoon deck included, and each
+    file says who Anand, his analyst and Kavya Nair are where it needs them.
 
 ## Invented, and recorded as invented
 
