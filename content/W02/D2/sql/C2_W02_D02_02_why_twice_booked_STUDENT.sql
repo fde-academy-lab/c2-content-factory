@@ -42,11 +42,11 @@ WHERE quarter = 'Q2'
 GROUP BY channel
 ORDER BY channel;
 
--- One order, two payment rows: KR-00667
+-- One order, two payment rows: KR-00595
 SELECT o.order_id, o.amount AS booked, p.payment_id, p.instalment_no, p.amount AS paid
 FROM orders o
 JOIN payments p ON p.order_id = o.order_id
-WHERE o.order_id = 'KR-00667'
+WHERE o.order_id = 'KR-00595'
 ORDER BY p.instalment_no;
 
 -- Option B, sized: what does DISTINCT on the amount return?

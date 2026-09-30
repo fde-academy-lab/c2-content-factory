@@ -73,7 +73,7 @@ who puts the two lists side by side meets this chapter's question.""",
     2: """**Who else faces this.** Shopify creates a transaction "for every order that results in an
 exchange of money", and one order can carry several: an authorization, which is money the customer
 has agreed to pay, a capture of that same money, a sale, a void or a refund (Shopify developer
-documentation, the Transaction resource and the OrderTransactionKind values, checked 30 Sep 2026).
+documentation, the REST Admin API's Transaction resource, checked 30 Sep 2026).
 A report that adds every transaction of an order counts an authorised and captured payment twice.
 dbt Labs names the mechanism in its MetricFlow documentation: "Fan-out joins are when one row in a
 table is joined to multiple rows in another table, resulting in more output rows than input rows",
@@ -92,24 +92,25 @@ it, and "subsequent requests with the same key return the same result" (Stripe A
 Idempotent requests, checked 30 Sep 2026). India's regulator puts a clock on the other side of the
 same problem. Under the Reserve Bank of India's circular of 20 September 2019, when a customer's
 account is debited for an online card payment and the merchant's system never receives the
-confirmation, the debit must be reversed within five days of the transaction, with compensation of
+confirmation, the debit must be reversed automatically within five days of the transaction, with compensation of
 Rs 100 for every day of delay after that (RBI/2019-20/67, in force from 15 October 2019, checked 30
 Sep 2026). A payment posted twice can be money a customer is owed back.""",
     5: """**Who else faces this.** Infosys reports the gap between what it has billed and what it has
 collected every quarter, as days sales outstanding, which is money owed by customers divided by
 revenue per day: 63 days for the quarter ended 30 June 2026, against 67 at 31 March 2026 and 70 a
-year earlier, on the last twelve months' revenue (Infosys fact sheet, filed with the US Securities
-and Exchange Commission as Exhibit 99.4 to its Form 6-K, checked 30 Sep 2026). A finance team that
+year earlier, on the last twelve months' revenue (Infosys fact sheet, Exhibit 99.4 to the Form 6-K
+furnished to the US Securities and Exchange Commission on 28 July 2026, checked 30 Sep 2026). A finance team that
 publishes a collections figure every quarter answers for it, which is the position Anand is in when
 he signs this report.""",
     6: """**Who else faces this.** Wirecard, a German payments company, collapsed in June 2020 over cash it
-reported and did not have. On 18 June its auditor, EY, refused to sign the accounts because it could
-not confirm that the money existed; on 22 June Wirecard said there was "a prevailing likelihood"
+reported and did not have. On 18 June its auditor, EY, refused to sign off on the accounts, saying it
+was unable to confirm that the money existed; on 22 June Wirecard said there was "a prevailing likelihood"
 that 1.9 billion euros of trust account balances did not exist; on 25 June it filed for insolvency
-(BBC News, 18, 22 and 25 June 2020, checked 30 Sep 2026). The Financial Times reported that from
-2016 to 2018 the auditor had not checked directly with the bank said to hold the money, and relied
-on documents and screenshots from a third-party trustee and from Wirecard itself (FT, republished
-by the Irish Times, 26 June 2020, checked 30 Sep 2026). A check that reads a company's own records
+(BBC News, 18, 22 and 25 June 2020, checked 30 Sep 2026). People with first-hand knowledge told the
+Financial Times that from 2016 to 2018 the auditor had not checked directly with Singapore's OCBC
+Bank, where Wirecard claimed it had up to 1 billion euros in cash, and relied instead on documents
+and screenshots from a third-party trustee and from Wirecard itself (FT, republished by the Irish
+Times, 26 June 2020, checked 30 Sep 2026). A check that reads a company's own records
 back to it cannot fail.""",
 }
 
@@ -659,7 +660,7 @@ ORDER BY channel""",
 SELECT o.order_id, o.amount AS booked, p.payment_id, p.instalment_no, p.amount AS paid
 FROM orders o
 JOIN payments p ON p.order_id = o.order_id
-WHERE o.order_id = 'KR-00667'
+WHERE o.order_id = 'KR-00595'
 ORDER BY p.instalment_no""",
     "option_a": """
 WITH posted_per_order AS (
@@ -750,20 +751,23 @@ only; d) about half, at random.
 """),
         code(f"""
 largest = run(\"\"\"{Q2['largest']}\"\"\")
-show(largest, "Q2's ten largest orders and their payment rows", money=["booked"])
-kit.bars([(r["order_id"], float(r["booked"]) / 1e5) for r in largest], lit=[0],
-         fmt=lambda v: f"Rs {{v:,.1f}} lakh", title="Q2's ten largest orders, each paid in two instalments")"""),
+show([{{"rank by amount": i, "channel": r["channel"], "status": r["status"],
+        "payment rows": r["payment_rows"], "instalments": r["instalments"]}} for i, r in enumerate(largest, 1)],
+     "Q2's ten largest orders and their payment rows")
+kit.columns(["1 payment row", "2 payment rows"],
+            [("Q2's ten largest orders", [sum(1 for r in largest if r["payment_rows"] == 1),
+                                         sum(1 for r in largest if r["payment_rows"] == 2)])],
+            title="Q2's ten largest orders, counted by payment rows")"""),
         md("""
 **What happened.** The answer is b. Every one of Q2's ten largest orders carries two payment rows,
 instalment 1 and instalment 2: large business invoices at Kalpa are settled in two parts, as Anand
-said. The largest, KR-00667, is booked at Rs 1,98,57,600, a fifth of the quarter on its own. An
-order that owns two payment rows comes out of a join twice.
+said, so each order owns two payment rows and comes out of a join twice.
 """),
         code("""
 kit.check("each of the ten largest Q2 orders carries two payment rows",
           all(r["payment_rows"] == 2 for r in largest), f'{len(largest)} orders')
-kit.check("the largest Q2 order is paid in instalments 1 and 2",
-          largest[0]["instalments"] == "1 and 2", largest[0]["order_id"])"""),
+kit.check("every one of the ten is paid in instalments 1 and 2",
+          all(r["instalments"] == "1 and 2" for r in largest), "instalments 1 and 2")"""),
         md("""
 ## 2. What does a first draft of collected report for Q2?
 
@@ -815,17 +819,17 @@ against the orders that went in, and compare collected with booked, since cash a
 never honestly exceed them.
 """),
         code(f"""
-kr667 = run(\"\"\"{Q2['one_order']}\"\"\")
-show(kr667, "KR-00667, one order, two payment rows after the join", money=["booked", "paid"])
-kit.flow(["KR-00667\\nbooked once, Rs 1.99 crore", "row 1\\ninstalment 1", "row 2\\ninstalment 2",
-          "sum(o.amount)\\ncounts Rs 3.97 crore"], kinds=["known", "plain", "plain", "bad"],
+kr595 = run(\"\"\"{Q2['one_order']}\"\"\")
+show(kr595, "KR-00595, one order, two payment rows after the join", money=["booked", "paid"])
+kit.flow(["KR-00595\\nbooked once, Rs 4,01,000", "row 1\\ninstalment 1", "row 2\\ninstalment 2",
+          "sum(o.amount)\\ncounts Rs 8,02,000"], kinds=["known", "plain", "plain", "bad"],
          title="The order amount rides along on every payment row")
 kit.check("the join returns more rows than Q2 has orders", draft["rows_out"] > booked_q2["orders"],
           f'{{booked_q2["orders"]}} orders in, {{draft["rows_out"]}} rows out')
 kit.check("the draft's collected exceeds booked, which cash cannot do",
           draft["collected"] > booked_q2["booked"], f'{{draft["collected"] / booked_q2["booked"]:.2f}} times')
-kit.check("KR-00667 alone is summed twice by the draft",
-          sum(r["booked"] for r in kr667) == 2 * kr667[0]["booked"], kit.rupees(2 * kr667[0]["booked"]))"""),
+kit.check("KR-00595 alone is summed twice by the draft",
+          sum(r["booked"] for r in kr595) == 2 * kr595[0]["booked"], kit.rupees(2 * kr595[0]["booked"]))"""),
         md("""
 ## Which of four ways stops the double count, and what does each cost on this data?
 
@@ -989,7 +993,7 @@ that works on the grain says which rows it merged and why; DISTINCT cannot say e
 ## What did this chapter answer, one line per question?
 
 1. Kalpa's large business invoices are paid in two instalments, so every one of Q2's ten largest
-   orders owns two payment rows; KR-00667 alone is Rs 1,98,57,600.
+   orders owns two payment rows, instalment 1 and instalment 2.
 2. The first draft reports Rs 19,29,04,410 collected against Rs 9,84,00,000 booked, 1.96 times.
 3. It is wrong because the order amount rides on every payment row, so 462 orders become 678 rows
    and the sum runs at the payment's grain.
@@ -1013,7 +1017,7 @@ rupee, separates booked from posted? That is chapter 3.
                ("The trap: what does the first draft report as collected?", Q2["draft"]),
                ("The first draft by channel", Q2["draft_by_channel"]),
                ("Booked by channel, from orders alone", Q2["booked_by_channel"]),
-               ("One order, two payment rows: KR-00667", Q2["one_order"]),
+               ("One order, two payment rows: KR-00595", Q2["one_order"]),
                ("Option B, sized: what does DISTINCT on the amount return?", Q2["option_b"]),
                ("Why DISTINCT fails: how many Q2 orders share an amount?", Q2["shared_amounts"]),
                ("The fix, option A: one row per order, then join", Q2["option_a"]),
@@ -1841,10 +1845,10 @@ the same fault.
 ## 3. Where does a condition on the payments table belong?
 
 In the ON clause. ON decides which payment rows count as a match, before the join; WHERE decides
-which joined rows survive, after it. The PostgreSQL manual says it directly: "a restriction placed
-in the ON clause is processed before the join, while a restriction placed in the WHERE clause is
-processed after the join. That does not matter with inner joins, but it matters a lot with outer
-joins" (PostgreSQL 16 documentation, 7.2 Table Expressions, checked 30 Sep 2026).
+which joined rows survive, after it. The PostgreSQL manual says that a restriction placed in the ON
+clause "is processed before the join, while a restriction placed in the WHERE clause is processed
+after the join", and that the difference "matters a lot with outer joins" (PostgreSQL 16
+documentation, section 7.2.1.1, Joined Tables, checked 30 Sep 2026).
 
 **Predict before you run.** With the dates moved into ON, how many rows does the join return, and
 which orders does the unpaid list hold? a) 6 rows, no orders; b) 7 rows, T-4; c) 7 rows, T-4 and T-9;
