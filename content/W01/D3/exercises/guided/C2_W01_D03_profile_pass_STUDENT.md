@@ -4,7 +4,7 @@
 >
 > Anand Iyer, finance controller, Kalpa Retail
 
-The trainer builds this on the screen during round 1 and you mirror it line for line in your own
+This is built on the screen during chapter 1, and you mirror it line for line in your own
 notebook. It is the one exercise of the day where copying is the point: the shape you type here is
 the shape every later step reuses.
 

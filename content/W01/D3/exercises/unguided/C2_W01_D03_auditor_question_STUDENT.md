@@ -5,9 +5,10 @@
 >
 > The internal auditor, Kalpa Retail finance
 
-Forty-five minutes in pairs. One of you drives the notebook `notebooks/C2_W01_D03_ex2_auditor_STUDENT.ipynb`;
-the other plays the auditor, asks the next question only when the check passes, and answers the five
-items below aloud before either of you posts. Swap roles halfway.
+Forty minutes in pairs. One of you drives the notebook `notebooks/C2_W01_D03_ex2_auditor_STUDENT.ipynb`;
+the other plays the auditor and asks the next question only when the check passes. Swap roles
+halfway. When the notebook's walk is done, the auditor has five more questions, below: answer each
+aloud before either of you posts.
 
 ```
 Post exactly this shape: notebook xxxxx · brief xxxxx
@@ -17,45 +18,49 @@ Post exactly this shape: notebook xxxxx · brief xxxxx
 
 ### Q1
 
-The auditor's first question is "which 14?". Which count answers it?
+The auditor counts 15 lines in your set-aside log and asks why her question was about 14. What is
+the 15th line?
 
-a) Every row in the file less every order kept
-b) The rows in the rejects log, both quarters
-c) Q1 rows in, less Q1 orders kept
-d) The distinct order ids in Q1
+a) The unreadable amount, which the log keeps apart from the copies
+b) A Q2 copy, set aside by the same rule as the 14 copies in Q1
+c) The largest Q2 order, taken out of Q2 as an outlier
+d) The order with no status, which the pass could not place
 
-### Q2
+### Q2 (Design)
 
-"How do I know each of the 14 was a copy?" What evidence answers it?
+The auditor will re-perform your work on four of the 15 set-aside rows and has an hour to do it.
+Which four test your rule hardest?
 
-a) Each row set aside shares an order_id with a kept row
-b) Each row set aside shares an amount with a kept row
-c) Each row set aside sits below the file's line 186
-d) Each row set aside belongs to a customer with another order
+a) Four drawn at random, so that no row is favoured over another
+b) The first four lines of the log, since the log runs in file order
+c) One row from each pair that differed, and the two Business rows
+d) The four largest by rupees, since the money is what she signs for
 
-### Q3
+### Q3 (Design)
 
-"Two of the 14 carry almost all the rupees." How do you show that?
+The auditor asks: if one of the 14 had been a real second order that the ERP numbered with a
+repeated id, what in your evidence would have shown it?
 
-a) One total for all 14 rows, beside the books
-b) The largest row alone, since it dominates the rest
-c) The 14 rupee amounts as a share of Q2 revenue
-d) Rows and rupees by segment, side by side
+a) The rupees would miss the books by the real order's amount
+b) The rows would not tie, since a real order would be gone
+c) Nothing, since the order would share an id with a kept row
+d) The profile would show a sixteenth id on more than one row
 
 ### Q4
 
 The auditor reads the word "dropped" in your log. What do you change?
 
-a) Nothing, since dropped and set aside mean the same
-b) The word, to "set aside", and show each row's reason
-c) The count, since a dropped row should not appear in the log
-d) The file, by deleting the 14 rows so the log is shorter
+a) Nothing, since dropped and set aside mean the same to Finance
+b) The count, since a dropped row should not appear in the log
+c) The format, into one summary line so that the log is shorter
+d) The word, to "set aside", with each row's reason shown beside
 
-### Q5
+### Q5 (Design)
 
-Which statement does the auditor sign?
+The auditor suggests that next quarter the ERP team remove the copies before the export leaves the
+ERP. What must your reconciliation still carry?
 
-a) Fourteen Q1 rows were errors, deleted to match the books
-b) The dashboard was right, and the books are Rs 20 lakh short
-c) Fourteen Q1 copies set aside by order_id; both reconcile
-d) Fourteen Q1 rows were outliers, removed for the quarter's sake
+a) Nothing new, since a clean export needs no set-aside log
+b) The row count the ERP team reports, since the rupees follow the rows
+c) The ERP team's own log of rows removed, and both totals tied
+d) A fuzzy match on the export, to catch copies the ERP team missed

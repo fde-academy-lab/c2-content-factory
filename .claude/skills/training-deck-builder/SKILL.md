@@ -307,7 +307,9 @@ The three that have actually caused rejections here:
 
 Every slide title should be an **action title**: a full sentence stating the
 point, which the body then proves. "Ninety out of a hundred is worse than none"
-is a title. "Coverage analysis" is a label.
+is a title. "Coverage analysis" is a label. In the C2 programme the italic subtitle under an action title asks
+the question the title answers, and a chapter opener's title is the chapter's short question, per the
+question ladder in `day-pack-builder/references/the-standard.md`.
 
 ## CONVERT FORMULAS, DO NOT IMPORT THEM (added 21 Aug 2026)
 
