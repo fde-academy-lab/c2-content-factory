@@ -17,6 +17,8 @@ Where a day has two or three unguided exercises, transpose the same devices acro
 
 **Every stem is a business question on Kalpa data.** An item asks which decision a number supports, which of several plausible outputs is wrong and why, what a query or a groupby returns on the day's data, or which fix restores the right number. No item tests syntax alone: an item a learner could answer by knowing the language but not the business teaches the wrong thing for the screens this programme prepares for.
 
+**At least a third of a day's items are design items.** A design item puts two to four ways of answering a problem in front of the learner, sized in the stem or an exhibit, and asks which fits and why, what a sizing comes to, which fact would switch the choice, or which second route would confirm the number. These are the items that separate an analyst who can run the code from one a GCC hands a problem to, and they are the design question every interview loop in the programme's target companies asks.
+
 ## What keeps its existing kind
 
 Two exercise kinds are resistance patterns rather than selection devices, and they are not converted:
@@ -165,6 +167,7 @@ The solutions file is the only place the rationale lives. A solutions file is al
 
 - [ ] Item count matches the drop point's minutes at about one a minute, and the arithmetic was stated in the reply.
 - [ ] The devices vary across the file and transpose across the day's exercises by layer.
+- [ ] At least a third of the day's items are design items: the best-fit approach, a sizing, the fact that would switch it, or the second route.
 - [ ] Every item is answerable as a letter, and the format line's letters are not the key.
 - [ ] Nothing in the exercise file addresses the trainer.
 - [ ] Every diagram is a Mermaid fence.
