@@ -1,8 +1,8 @@
 # How do you total any group of Kalpa's orders, describe it, and write the total once for every segment and quarter?
 
 You build this exercise with the trainer across chapters 2 and 3, one step at a time, in your own
-Codespace, and nothing here is graded. Every line on your screen is there because you typed it, which is what makes it
-yours when the afternoon's case arrives and nobody types it for you.
+Codespace, and nothing here is graded. Every line on your screen is there because you typed it, so
+you can rebuild it alone in the afternoon's case.
 
 > "Are we losing customers, or are the ones we have buying less? Is it across all our customers, or
 > one kind of customer?"
@@ -75,7 +75,7 @@ for order in ORDERS:
 
 Anand asks how many orders each quarter booked. After the loop, what does `orders_by_quarter` hold?
 
-a) `{"Q1": 69, "Q2": 69}`, one count for each distinct customer
+a) `{"Q1": 1, "Q2": 1}`, one count the first time each quarter appears
 b) `{"Q2": 1}`, since the dictionary is reset on every order
 c) `{"Q1": 200, "Q2": 200}`, since every order is counted twice
 d) `{"Q1": 114, "Q2": 86}`, one count for each order booked
@@ -122,6 +122,8 @@ At work this comes up whenever someone asks what a typical customer or a typical
 Pull the Retail-Core amounts for Q1 into a list, sort it, and describe it with the room:
 
 ```python
+import statistics
+
 amounts = []
 for order in ORDERS:
     if order["quarter"] == "Q1" and order["segment"] == "Retail-Core":

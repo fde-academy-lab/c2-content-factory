@@ -30,7 +30,7 @@ The key is d, "It charges the button with about eight weeks of losses from befor
 
 The tier placed 18 orders in the 55 days before the break and 8 in the 37 days after it.
 
-The key is b, "About 4: the pre-break pace gives about 12.1 in 37 days, and 8 came". 18 orders in 55 days is 0.327 a day, about 12.1 in the 37 days after the break. The tier placed 8, so about 4.1 orders is the most the button can explain, and it is a ceiling, since anything else still worsening would claim part of it.
+The key is b, "About 4, since the pre-break pace gives 12.1 in 37 days and 8 came". 18 orders in 55 days is 0.327 a day, about 12.1 in the 37 days after the break. The tier placed 8, so about 4.1 orders is the most the button can explain, and it is a ceiling, since anything else still worsening would claim part of it.
 
 - a, "About 10, since 18 orders came before the break and 8 came after it": it compares windows of 55 and 37 days, chapter 1's trap.
 - c, "About 25, the tier's whole fall from Q1's 51 orders to Q2's 26": it charges the button with the fall that came before it broke.

@@ -16,13 +16,13 @@ The key is b, "Customers held at 69, so the fall sits in how often they buy". Cu
 - c, "Revenue per order rose 18.0 percent, so the fall must sit with customers": customers held, so a rise in order value cannot put the fall there.
 - d, "The tree cannot answer until the four segments are split": the tree answers Marketing's claim now, and the segments come in chapter 3.
 
-### Q2. What is wrong with a 6.6 percent fall built from the leaves?
+### Q2. What do you say to a 6.6 percent fall built by adding the leaves?
 
 A colleague adds the two leaf changes, minus 24.6 percent in orders per customer and plus 18.0 percent in revenue per order, and reports revenue down 6.6 percent.
 
 The key is d, "The leaves multiply: 0.754 times 1.180 is 0.890, a fall of 11.0 percent". Revenue is customers times orders per customer times revenue per order, so the ratios multiply. Adding the percentages drops the part where two leaves moved together, the way Monday's two 10 percent lifts were called 20 percent when together they make 21.
 
-- a, "Nothing: the customer leaf adds zero, so minus 24.6 and plus 18.0 net to minus 6.6": percentage changes on leaves do not add.
+- a, "It holds: the customer leaf adds zero, so minus 24.6 and plus 18.0 net to minus 6.6": percentage changes on leaves do not add.
 - b, "The customer leaf was left out of the sum, and it carries the missing 4.4 points": the customer leaf is 1.000 and carries nothing.
 - c, "The two leaves should be averaged, which puts the fall at 3.3 percent": an average of two changes is no quantity in the tree.
 
@@ -30,7 +30,7 @@ The key is d, "The leaves multiply: 0.754 times 1.180 is 0.890, a fall of 11.0 p
 
 Meera wants rupees per branch on one slide she can follow, and Finance will rebuild the same split every month while two branches keep moving together.
 
-The key is c, "The bridge in tree order for Meera, order stated; the symmetric split for Finance". A CEO follows one leaf at a time, so Meera gets the bridge with its order written beside it. A split rebuilt every month while two branches move together goes symmetric, so nobody argues about the order.
+The key is c, "The bridge in tree order for Meera, order stated, and a symmetric split for Finance". A CEO follows one leaf at a time, so Meera gets the bridge with its order written beside it. A split rebuilt every month while two branches move together goes symmetric, so nobody argues about the order.
 
 - a, "The symmetric split for both, since any order of steps is a bias someone will argue": Meera loses the one-step reading, and on this quarter every order gives the same verdict.
 - b, "Leaf percentages for Meera, since she reads percentages, and the bridge for Finance": percentages do not add, so Meera gets no rupees.
@@ -46,7 +46,7 @@ The key is a, "Minus Rs 51,57,895: 69 customers times 0.406 fewer orders at Rs 1
 - c, "Minus Rs 23,00,000, since frequency is the only branch of the three that fell": the fall is net of the order value step, which gave back Rs 28,57,895.
 - d, "Minus Rs 28,57,895, since the order value step takes away the rest of it": that is the order value step, which added Rs 28,57,895 back.
 
-### Q5. Why is the count of 43 orders without a discount unsafe?
+### Q5. What do the 43 orders read as "no discount" hold?
 
 A hurried count reads every missing discount as zero, finds 43 of Q2's 86 orders without one, and Marketing wants the discount extended to them.
 
@@ -60,7 +60,7 @@ The key is d, "Only 17 of the 43 record Rs 0, and the other 26 never recorded th
 
 The second route, a symmetric split that chooses no order, charges frequency minus Rs 55,88,480 against the bridge's minus Rs 51,57,895.
 
-The key is b, "Frequency carries the fall either way; the rupees per branch depend on the method". An independent split that chooses no order puts the largest fall on the same branch. The Rs 4,30,585 between the two frequency figures is the part where frequency and order value moved together, which each method shares out in its own way.
+The key is b, "Frequency carries the fall either way, and rupees per branch depend on the method". An independent split that chooses no order puts the largest fall on the same branch. The Rs 4,30,585 between the two frequency figures is the part where frequency and order value moved together, which each method shares out in its own way.
 
 - a, "The bridge understated frequency, so its figure has to be corrected upwards": neither figure is wrong, since the bridge charges the joint part, Rs 4,30,585, to the leaf that moves second.
 - c, "The two agree to the rupee once the customers step is added back into the bridge": the customers step is zero in both routes.

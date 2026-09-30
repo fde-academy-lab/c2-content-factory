@@ -5,8 +5,6 @@ from the day's case: Kalpa Retail's booked revenue, every order placed before an
 return, fell from Q1 to Q2, and the day climbed the investigation one rung at a time, each rung a
 question settled before the next. The last item returns to Monday, one level up.
 
-Each item names what it tests, so an item dropped for time says what was lost.
-
 ---
 
 ## Q1. When sales fall, which rung of the investigation comes first?
@@ -30,19 +28,19 @@ Each item names what it tests, so an item dropped for time says what was lost.
 ---
 
 ## Q3. With 13 weeks of orders in Q1 and 11 in Q2, which comparison is fair?
-*Tests: a comparison across periods needs matched windows or a rate.*
+*Tests: while a quarter is still open, the fair comparison is the same weeks of both quarters, with a rate per week beside them.*
 
-- A rate per week, or the same 11 weeks of each quarter  <- correct
-- The two totals as they stand, since both are quarters
-- Q2's total scaled by 11 over 13, then the two totals
-- Q1's last 11 weeks against Q2's first 11, the latest weeks of Q1
+- The same 11 weeks of each quarter, with a rate per week beside them  <- correct
+- The two totals as they stand, since both windows are called quarters
+- Q2's total scaled up by 13 over 11, then the two totals
+- Q1's last 11 weeks against Q2's first 11, the most recent weeks of Q1
 
 ---
 
 ## Q4. What do you say about a segment whose median order is Rs 1,200 and whose range is Rs 80,000?
 *Tests: a typical value and a spread describe a group together.*
 
-- Most orders are small; a few large ones stretch the range  <- correct
+- Most orders are small, and a few large ones stretch the range  <- correct
 - Most orders sit near Rs 80,000, with a few small ones below
 - The typical order is about Rs 40,000, halfway up the range
 - The segment's figures must be wrong, since the gap is too wide
@@ -75,7 +73,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 - Marketing lost customers, so the acquisition budget is the fix
 - Prices rose across the company, so every customer bought less
 - The segment's buyers left, and new buyers replaced them
-- That segment's buyers slowed; timing and its data test why  <- correct
+- That segment's buyers slowed, and its timing and data test why  <- correct
 
 ---
 

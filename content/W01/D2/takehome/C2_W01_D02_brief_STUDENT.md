@@ -1,4 +1,4 @@
-# Is the region's drop the same story as Kalpa's, and does the win-back offer go to the region by Friday?
+# Is a region's 5 percent drop the same story as Kalpa's, and does the members' win-back offer go to it by Friday?
 
 > "Our region is down about 5 percent quarter on quarter. Same story as the national numbers, I
 > assume: customers buying less often. We would like the Retail-Plus win-back offer extended to our

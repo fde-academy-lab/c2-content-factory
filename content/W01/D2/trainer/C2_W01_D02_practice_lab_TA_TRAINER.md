@@ -1,7 +1,7 @@
 # Where does the practice lab stall, and which one hint moves each learner on?
 
-**TA note, Week 1 Tuesday. TRAINER ONLY.** It is for the TA who runs the lab after the afternoon
-block. The learner file is `exercises/practice/C2_W01_D02_practice_lab_STUDENT.md`, and the solution,
+**TA note, Week 1 Tuesday. TRAINER ONLY.** The learner file is
+`exercises/practice/C2_W01_D02_practice_lab_STUDENT.md`, and the solution,
 `exercises/solutions/C2_W01_D02_practice_lab_solution_STUDENT.md`, opens when the lab closes.
 
 Answers: 1d 2b 3b 4a 5c 6c 7a 8d 9b 10d 11a 12c
@@ -32,11 +32,11 @@ The one hint: "What would have stopped the 25.9 percent from reaching the slide 
 ### Problem 2. Is a rate per day across 92 and 91 days a mismatched window?
 
 Item 4 is the stall. Learners see 92 days against 91 and call it a window mismatch, when a rate per
-day is the fix for unequal length. Item 5 is missed by learners who read only the dates and never
-the definitions.
+day evens out the unequal length and both windows are whole quarters, so their position already
+matches. Item 5 is missed by learners who read only the dates and never the definitions.
 
-The one hint: "Is the rate already dividing each side by its own days? Then what is left to be
-unequal?"
+The one hint: "Both sides are whole quarters, and the rate divides each by its own days. What is
+left to be unequal?"
 
 ### Problem 3. Which two branches moved to keep the Kochi store's revenue flat?
 

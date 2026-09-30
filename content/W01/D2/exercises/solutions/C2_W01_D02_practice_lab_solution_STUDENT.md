@@ -13,8 +13,8 @@ One of the twelve items is a design item: 2.
 
 The ladder runs in a fixed order because each rung protects the next one. A comparison on
 mismatched windows makes every later number wrong, and a hypothesis named before the decomposition
-is a guess dressed as a finding. The Kochi store in Problem 3 shows the same tree finding a fall in
-frequency behind flat revenue, and Problem 4 turns the day's numbers into the memo's first lines.
+is a guess. The Kochi store in Problem 3 shows the same tree finding a fall in frequency behind flat
+revenue, and Problem 4 turns the day's numbers into the memo's first lines.
 
 ## Problem 1. In which order does a sales-drop investigation run?
 
@@ -38,8 +38,9 @@ because one rung was skipped.
 
 The key is b, "The same 11 weeks of each quarter, minus 17.0 percent, switching to closed quarters at
 the close". The skipped rung is like with like. With Q2 open, the same 11 weeks of each quarter
-control for both length and position, minus 17.0 percent, and the day Q2 closes the closed quarters
-answer directly.
+control for both length and position, minus 17.0 percent, with the rate per week, minus 12.4
+percent, beside them, since a few lakh-sized orders make single weeks lumpy. The day Q2 closes, the
+closed quarters answer directly.
 
 - a, "The tile against all of Q1, minus 25.9 percent, switching once Marketing agrees the method is
   fair": it is the unmatched comparison that made the slide.
@@ -59,7 +60,8 @@ The key is b, "Unfair: the two sides cover windows of different length or positi
 Retail-Core's booked revenue from 1 July to 15 September, about 11 weeks, set against all 13 weeks
 of Q1; its closed Q2 is Rs 72,510.
 
-- a, "Fair: the two sides share a window, a definition and a denominator": the windows differ.
+- a, "Fair: each side is a rate over its stated window, on one definition and one denominator":
+  both sides are totals with no rate taken, and their windows differ in length.
 - c, "Unfair: the two sides count revenue under different definitions": both sides are booked
   revenue.
 - d, "Unfair: the rate on one side divides by a different population of customers than the other":
@@ -69,11 +71,13 @@ of Q1; its closed Q2 is Rs 72,510.
 
 "Q2 booked revenue per day was Rs 2,03,261, against Rs 2,30,769 a day in Q1, across 92 and 91 days."
 
-The key is a, "Fair: the two sides share a window, a definition and a denominator". A rate per day
-divides each quarter by its own days, so the windows compare fairly.
+The key is a, "Fair: each side is a rate over its stated window, on one definition and one
+denominator". Each side is booked revenue divided by the days of its own whole closed quarter, 92
+for Q2 and 91 for Q1. The rate evens out the one day of difference in length, and the position
+already matches, since each window is a whole quarter.
 
 - b, "Unfair: the two sides cover windows of different length or position": the rate per day is the
-  fix for unequal length.
+  fix for unequal length, and two whole quarters leave no difference in position.
 - c, "Unfair: the two sides count revenue under different definitions": both sides are booked.
 - d, "Unfair: the rate on one side divides by a different population of customers than the other":
   the denominator is days, and each side uses its own.
@@ -85,7 +89,8 @@ divides each quarter by its own days, so the windows compare fairly.
 The key is c, "Unfair: the two sides count revenue under different definitions". Delivered revenue
 sits on one side and booked on the other, so the gap mixes the fall with cancellations and returns.
 
-- a, "Fair: the two sides share a window, a definition and a denominator": the definitions differ.
+- a, "Fair: each side is a rate over its stated window, on one definition and one denominator":
+  both sides are totals, and they count revenue under two definitions, delivered and booked.
 - b, "Unfair: the two sides cover windows of different length or position": both are closed
   quarters.
 - d, "Unfair: the rate on one side divides by a different population of customers than the other":
@@ -187,7 +192,7 @@ Business orders." It gives both halves of the finding, each with its numbers.
 
 The memo's fourth line states the cause the way Kavya, the team's senior analyst, would sign it off.
 
-The key is c, "Two causes stay open: the reorder feature, settled by its logs, and a July change, by
+The key is c, "Two causes stay open, the reorder feature, settled by its logs, and a July change, by
 the tier's log." It names two hypotheses, each with the data that would settle it.
 
 - a, "The cause is the broken reorder feature, as the head of Retail-Plus has reported from his

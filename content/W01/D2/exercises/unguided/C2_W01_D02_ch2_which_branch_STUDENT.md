@@ -13,10 +13,10 @@ Chapter 1 confirmed the drop on two closed quarters of 13 weeks each: booked rev
 **The questions on the way.**
 
 - Which reading of the tree answers Marketing's call for more customers?
-- What is wrong with a 6.6 percent fall built from the leaves?
+- What do you say to a 6.6 percent fall built by adding the leaves?
 - Which split of the fall fits Meera's slide and Finance's monthly rebuild?
 - What does the bridge's frequency step come to in the tree's order?
-- Why is the count of 43 orders without a discount unsafe?
+- What do the 43 orders read as "no discount" hold?
 - What does the symmetric split show beside the bridge?
 
 Every item refers to these numbers, in booked revenue on the export as it stands:
@@ -54,11 +54,11 @@ b) Customers held at 69, so the fall sits in how often they buy
 c) Revenue per order rose 18.0 percent, so the fall must sit with customers
 d) The tree cannot answer until the four segments are split
 
-### Q2. What is wrong with a 6.6 percent fall built from the leaves?
+### Q2. What do you say to a 6.6 percent fall built by adding the leaves?
 
-A colleague adds the leaf changes, minus 24.6 percent and plus 18.0 percent, and reports revenue down 6.6 percent. What is wrong?
+A colleague adds the leaf changes, minus 24.6 percent and plus 18.0 percent, and reports revenue down 6.6 percent. What do you say to the colleague?
 
-a) Nothing: the customer leaf adds zero, so minus 24.6 and plus 18.0 net to minus 6.6
+a) It holds: the customer leaf adds zero, so minus 24.6 and plus 18.0 net to minus 6.6
 b) The customer leaf was left out of the sum, and it carries the missing 4.4 points
 c) The two leaves should be averaged, which puts the fall at 3.3 percent
 d) The leaves multiply: 0.754 times 1.180 is 0.890, a fall of 11.0 percent
@@ -69,7 +69,7 @@ Meera wants rupees per branch on one slide she can follow, and Finance will rebu
 
 a) The symmetric split for both, since any order of steps is a bias someone will argue
 b) Leaf percentages for Meera, since she reads percentages, and the bridge for Finance
-c) The bridge in tree order for Meera, order stated; the symmetric split for Finance
+c) The bridge in tree order for Meera, order stated, and a symmetric split for Finance
 d) Customer by customer for both, since it names who moved before anyone adds them up
 
 ### Q4. What does the bridge's frequency step come to in the tree's order? (Design)
@@ -81,9 +81,9 @@ b) Minus Rs 60,88,372: the same fall in frequency priced at Q2's Rs 2,17,442
 c) Minus Rs 23,00,000, since frequency is the only branch of the three that fell
 d) Minus Rs 28,57,895, since the order value step takes away the rest of it
 
-### Q5. Why is the count of 43 orders without a discount unsafe?
+### Q5. What do the 43 orders read as "no discount" hold?
 
-A hurried count reads every missing discount as zero and finds 43 of Q2's 86 orders "without a discount". Marketing wants the discount extended to them. Why is the premise unsafe?
+A hurried count reads every missing discount as zero and finds 43 of Q2's 86 orders "without a discount". Marketing wants the discount extended to them. What do you tell Marketing about the 43?
 
 a) Q1 had 32 blanks as well, so the offer has to reach both quarters' blank orders
 b) The 43 hold, but they should be counted by revenue, since orders differ in size
@@ -95,6 +95,6 @@ d) Only 17 of the 43 record Rs 0, and the other 26 never recorded the field
 The second route, a symmetric split that chooses no order at all, charged frequency minus Rs 55,88,480. Set beside the bridge, what does it show?
 
 a) The bridge understated frequency, so its figure has to be corrected upwards
-b) Frequency carries the fall either way; the rupees per branch depend on the method
+b) Frequency carries the fall either way, and rupees per branch depend on the method
 c) The two agree to the rupee once the customers step is added back into the bridge
 d) The gap between them is the customers branch, which only the symmetric split sees

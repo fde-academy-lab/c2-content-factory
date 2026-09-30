@@ -20,8 +20,10 @@ Student, small discounted baskets.
 
 The morning found that the same 22 members of the tier placed 26 orders in Q2 against 51 in Q1, and
 chapter 5 found that 18 of the 23 customers who ordered less in Q2 were members. Chapter 6 found that
-the tier's fall began in July, before the app's reorder button broke on 25 August, and capped what
-the button can explain at about 4 of the tier's 25 lost orders.
+the tier's fall began in July, before the app's reorder button broke, and capped what the button can
+explain at about 4 of the tier's 25 lost orders. The break date comes from a member's complaint that
+the button had been broken for six weeks: six weeks back from the week of 6 October is about 25
+August, and the day works from that date until the app's release log confirms it.
 
 **Who needs the answer.** The head of Retail-Plus decides which members his team calls first, and
 Meera Raghavan, Kalpa Retail's CEO, decides whether Marketing's new deck changes anything about the

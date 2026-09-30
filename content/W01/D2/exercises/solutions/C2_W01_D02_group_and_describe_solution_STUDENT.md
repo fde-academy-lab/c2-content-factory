@@ -26,8 +26,9 @@ every order.
 The key is d, "`{"Q1": 114, "Q2": 86}`, one count for each order booked". One count per order,
 grouped by quarter, gives 114 in Q1 and 86 in Q2.
 
-- a, "`{"Q1": 69, "Q2": 69}`, one count for each distinct customer": it counts distinct customers,
-  which answers a different question.
+- a, "`{"Q1": 1, "Q2": 1}`, one count the first time each quarter appears": it reads the two
+  additions as part of the `if` block, which runs only the first time a quarter appears. They sit
+  level with the `if`, so they run for every order.
 - b, "`{"Q2": 1}`, since the dictionary is reset on every order": that is what a dictionary created
   inside the loop would leave, and this one is created above it.
 - c, "`{"Q1": 200, "Q2": 200}`, since every order is counted twice": each order passes through the

@@ -18,10 +18,10 @@ it does tonight.
 
 ## Stretch. Can you write the split of revenue per order into mix and rate as one function Anand can trust?
 
-This one is for you if you finished the take-home early and the afternoon's mix against rate felt
-like arithmetic you did by hand.
+This one is for you if you finished the take-home early and chapter 4's split of mix against rate,
+this morning, felt like arithmetic you did by hand.
 
-### What does Anand ask for after the afternoon?
+### What does Anand ask for after chapter 4's split?
 
 > "Your split of revenue per order into mix and rate convinced me for one quarter. Next quarter
 > somebody else will run it, on a different file, at the end of a long day. Give me the split as
@@ -36,13 +36,13 @@ change inside the segments, is the rate part.
 
 ### What must `mix_and_rate` do, step by step?
 
-Write one function, `mix_and_rate(before_rows, after_rows, key)`, that returns a dictionary with
+Write one function, `mix_and_rate(before_rows, after_rows, field)`, that returns a dictionary with
 four entries: the overall rate before, the overall rate after, the part of the change explained by
 the mix of groups, and the part explained by the rates within groups.
 
 | Step | What it must do |
 |---|---|
-| 1 | It groups both sets of rows by `key` with your own accumulator and counts the groups in each. |
+| 1 | It groups both sets of rows by the named `field` with your own accumulator and counts the groups in each. |
 | 2 | It computes each group's share of orders and its revenue per order, before and after. |
 | 3 | It computes what the overall rate would have been with the after mix and the before rates. |
 | 4 | It returns the mix part and the rate part, and checks that they add up to the whole change. |
@@ -50,7 +50,7 @@ the mix of groups, and the part explained by the rates within groups.
 
 ### Which check on the class file must it pass?
 
-On the class file, with `key="segment"`, it reproduces the afternoon's split of the Rs 33,231 rise
+On the class file, with `field="segment"`, it reproduces chapter 4's split of the Rs 33,231 rise
 in revenue per order, Rs 1,84,211 in Q1 to Rs 2,17,442 in Q2: Rs 22,902 of mix and Rs 10,330 of
 rate, within a rupee.
 
@@ -58,7 +58,7 @@ rate, within a rupee.
 
 Step 5 is the hard part. A group that exists on one side only has no before rate or no after rate,
 and the split has no honest answer for it. Decide what the function does, write the reason in its docstring, and then
-run it on the take-home file, the regional export, with `key="channel"`, and say in one line what the
+run it on the take-home file, the regional export, with `field="channel"`, and say in one line what the
 split tells the regional operations head.
 
 ### How do you know the function is done well?
@@ -71,8 +71,7 @@ code.
 
 ## Recovery. Can you rebuild the day's grouping one step at a time on the class file?
 
-This one is for you if the session moved fast and the accumulator did not land. Rebuilding it
-tonight costs you nothing tomorrow.
+This one is for you if the session moved fast and the accumulator did not land.
 
 ### Which seven steps rebuild the grouping?
 
@@ -87,9 +86,12 @@ and run after each step. Each order in the class file is a record, a dictionary,
    first time a quarter is seen. Print `counts`. It should say 114 for Q1 and 86 for Q2.
 5. Change the key to the pair `(order["quarter"], order["segment"])`. Before you run it, write down
    how many keys you expect. Run it and count them.
-6. Wrap steps 4 and 5 in a function, `count_by(rows, field)`, that ends in `return counts`. Call it,
-   store the result, and print the stored result. Then change `return` to `print` once, run it
-   again, and print the stored result, which now says `None`.
+6. Wrap the loop from steps 4 and 5 in a function, `count_by(rows, key)`, as chapter 6 writes it:
+   `key` is a small function that takes a record and returns its key, the loop counts each record
+   under `key(record)`, and the function ends in `return counts`. Call it with
+   `lambda order: order["quarter"]`, a one-line function with no name, and then with
+   `lambda order: (order["quarter"], order["segment"])`, storing each result and printing it. Then
+   change `return` to `print` once, run it again, and print the stored result, which now says `None`.
 7. On three invented orders of Rs 1,000, Rs 1,200 and Rs 40,000, write the median, the minimum, the
    maximum and the range by hand, then check each with code. The median is the middle value once the
    orders are sorted, and the range is the largest less the smallest.

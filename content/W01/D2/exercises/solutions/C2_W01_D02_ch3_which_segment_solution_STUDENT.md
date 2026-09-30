@@ -2,7 +2,7 @@
 
 Answers: 1d 2a 3c 4b 5a 6d
 
-The head of Kalpa Retail's paid membership tier asked whether his tier is the one slipping, after a member reported the app's reorder button broken for six weeks. Chapter 3 wrote Monday's tree once as `tree_for(rows)`, ran it on each of the four customer segments in both quarters, and rolled the segments back up to the company's orders per customer, 1.65 in Q1 and 1.25 in Q2, from 114 and 86 orders by the same 69 customers.
+The head of Kalpa Retail's paid membership tier asked whether his tier is the one slipping, after a member reported the app's reorder button broken for six weeks. Monday's revenue tree says revenue is customers times orders per customer times revenue per order. Chapter 3 wrote that tree once as `tree_for(rows)`, ran it on each of the four customer segments in both quarters, and rolled the segments back up to the company's orders per customer, 1.65 in Q1 and 1.25 in Q2, from 114 and 86 orders by the same 69 customers.
 
 Two of the six items are design items: 1 and 2.
 
@@ -10,7 +10,7 @@ Two of the six items are design items: 1 and 2.
 
 Copying the loop takes 72 lines and 8 places to edit, a function 21 lines and 1 place, one pass by key 14 lines and 1 place but shaped for these eight groups, and a channel, a month and delivered orders are asked for later today.
 
-The key is d, "A function, tree_for(rows), since each later subset is one more call". The later asks are new subsets of orders, and a function answers any list of orders with one call; one pass by key would need a new loop for each new key.
+The key is d, "A function, tree_for, since each later subset is one more call". The later asks are new subsets of orders, and a function answers any list of orders with one call; one pass by key would need a new loop for each new key.
 
 - a, "Copy the loop per group, since each copy can be checked on its own": eight places to edit when the definition changes, and one gets forgotten.
 - b, "One pass by key, since it is the shortest code and reads the rows once": it is the shortest today, and a channel or a month needs a new loop.
@@ -18,7 +18,7 @@ The key is d, "A function, tree_for(rows), since each later subset is one more c
 
 ### Q2. How many rows does filtering once per group read on 40 lakh orders? (Design)
 
-Suppose next quarter's export holds 40 lakh orders and Anand wants all 40 segment-and-month groups every Monday; the item sets filtering once per group against one pass by key.
+Suppose next quarter's export holds 40 lakh orders across ten cities, and Anand Iyer, the finance controller, wants all 40 segment-and-city groups, four segments in each city, every Monday. The item sets filtering the export once per group against one pass by key.
 
 The key is a, "16 crore rows against 40 lakh, so one pass by key takes over". Each filter reads the whole export, 40 times over, while one pass reads it once and fills every group. That volume is the fact the chapter named for switching to one pass by key.
 
@@ -38,7 +38,7 @@ The key is c, "The helper printed its answer and returned nothing, so the table 
 
 ### Q4. What does a weighted roll-up of the four segments give?
 
-Averaged over the four segments, orders per customer reads 1.94 then 1.82, minus 6.0 percent, while the four segments hold 69 customers who placed 114 orders in Q1 and 86 in Q2.
+Averaged over the four segments, orders per customer reads 1.94 then 1.82, minus 6.0 percent on the unrounded figures, while the four segments hold 69 customers who placed 114 orders in Q1 and 86 in Q2.
 
 The key is b, "1.65 to 1.25, a fall of 24.6 percent, so frequency is the branch after all". Total orders over total customers weights each segment by its customers: 114 over 69 and 86 over 69, minus 24.6 percent, which reproduces chapter 2's figure.
 
@@ -48,9 +48,9 @@ The key is b, "1.65 to 1.25, a fall of 24.6 percent, so frequency is the branch 
 
 ### Q5. What happened to the typical Business order in Q2?
 
-Business revenue fell Rs 22,29,720 on three fewer orders, and `describe` shows the median Business order barely moved while the range rose about 73 percent.
+Business revenue fell Rs 22,29,720 on three fewer orders, and `describe`, which gives a group's median, extremes and range, shows the median Business order barely moved while the range rose about 73 percent.
 
-The key is a, "It held: one very large order stretched the range; the fall is three fewer orders". The median is the typical order, and it barely moved. The range is set by the two extreme orders, and one very large order widened it, while the rupee fall is three orders worth lakhs each.
+The key is a, "It held while one big order widened the range, and the fall is three fewer orders". The median is the typical order, and it barely moved. The range is set by the two extreme orders, and one very large order widened it, while the rupee fall is three orders worth lakhs each.
 
 - b, "It grew, since a range up 73 percent means the middle of the orders moved up too": it reads a spread as a level.
 - c, "It shrank, since revenue fell by Rs 22 lakh while the count moved by only three": three orders at about Rs 10 lakh each come to about Rs 30 lakh, so the count carries the fall.

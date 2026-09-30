@@ -1,10 +1,10 @@
 # Do your take-home numbers match a correct run, and does your memo answer Meera?
 
 Every checkpoint is something you can verify alone, in the order the ladder runs, the day's
-investigation climbed one rung at a time. If one fails, the fix is named beside it. Read this after
-your notebook runs, never before, because the order in which you meet these numbers is the
-investigation. Where a number would tell you what you are meant to find, the checkpoint gives a sum
-of your own figures instead: add yours and compare.
+investigation climbed one rung at a time. If one fails, the fix is named beside it. Read this once
+your notebook runs, because meeting these numbers in order is how the investigation runs. Where a
+number would tell you what you are meant to find, the checkpoint gives a sum of your own figures
+instead: add yours and compare.
 
 The take-home is the regional export, `data/C2_W01_D02_takehome_STUDENT.py`, and the memo answers
 Meera Raghavan, Kalpa Retail's CEO, on whether the region's drop is the same story as the national
@@ -33,7 +33,7 @@ At work this check runs before any number leaves the notebook it was computed in
 | 2 | 1 | Q1's window | First order 1 April, last order 28 June | Sort the dates as text in the form the file gives them, since they sort correctly as written. |
 | 3 | 1 | Q2's window | First order 4 July; your last date is the final entry when every Q2 date is sorted, and it is the date checkpoint 5 counts to | Use the same fix as checkpoint 2. |
 | 4 | 1 | The headline change on totals | Rs 2,05,00,000 to Rs 1,94,00,000, down 5.4 percent | A fall of 5.7 percent means you measured against Q2. |
-| 5 | 1 | Weeks covered | 13 in Q1; in Q2, the weeks from 1 July to the last date you printed at checkpoint 3 | Count to the last date the file reaches, never to a date it does not. |
+| 5 | 1 | Weeks covered | 13 in Q1; in Q2, the weeks from 1 July to the last date you printed at checkpoint 3 | Count to the last date the file reaches. |
 | 6 | 1 | Revenue per week | Rs 15,76,923 in Q1; your Q2 rate times your checkpoint 5 weeks gives back Rs 1,94,00,000 | A rate that gives back Rs 1,94,00,000 only when multiplied by a different count of weeks was divided by the wrong weeks. |
 | 7 | 2 | Orders and customers | 90 orders in Q1 and 79 in Q2; your two customer counts add to 116 | Customer counts of 90 and 79 mean you counted rows, so count each id once. |
 | 8 | 2 | Orders per customer | Each quarter's figure times that quarter's customer count gives back its orders, 90 and 79 | A figure below 1 is the rate upside down. |
@@ -78,6 +78,6 @@ Brit Institute, data analyst case study questions, including "Sales dropped last
 Corey Schafer, "Python Tutorial for Beginners 8: Functions": https://www.youtube.com/watch?v=9Os0o3wzS_I (verified 29 Sep 2026)
 
 Your line on the walkthrough names one specific step, in the walkthrough's own words, and says
-whether your ladder took it. If the line could have been written without opening the page, it is not
-yet the line. After the video, every function in your notebook ends in `return`; search the notebook
-for `def` and check each one.
+whether your ladder took it. If the line could have been written without opening the page, rewrite
+it in the walkthrough's words. After the video, every function in your notebook ends in `return`;
+search the notebook for `def` and check each one.

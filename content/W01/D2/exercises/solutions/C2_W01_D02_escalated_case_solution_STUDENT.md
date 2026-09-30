@@ -56,7 +56,7 @@ Churn would show as a leaver with no Q2 order at all.
 
 ## Part 3. Are those lost customers?
 
-### Q3. What happened to the 19 customers with no delivered order in Q2?
+### Q3. What happened to the customers who dropped out of the delivered count in Q2?
 
 Nineteen of Q1's delivered customers have no delivered order in Q2.
 

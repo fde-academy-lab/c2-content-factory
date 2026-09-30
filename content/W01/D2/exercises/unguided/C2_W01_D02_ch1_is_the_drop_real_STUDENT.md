@@ -59,7 +59,7 @@ Marketing's slide reads "Q2 Rs 1,55,59,950 against Q1 Rs 2,10,00,000: revenue fe
 
 a) The percentage is computed on Q2's total, which overstates the fall
 b) It sets about 11 weeks of Q2 against all 13 weeks of the closed Q1
-c) It counts booked orders, where Finance would count delivered ones
+c) It counts booked orders, where a count of delivered orders would be lower
 d) It rounds both totals to the nearest lakh before dividing them
 
 ### Q3. What does revenue per week give on 15 September, and what does it miss? (Design)

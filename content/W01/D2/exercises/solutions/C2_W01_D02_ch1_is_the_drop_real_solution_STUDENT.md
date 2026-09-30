@@ -23,7 +23,7 @@ Marketing's slide sets the Q2 dashboard tile, Rs 1,55,59,950 read on 15 Septembe
 The key is b, "It sets about 11 weeks of Q2 against all 13 weeks of the closed Q1". The tile runs from 1 July to 15 September, about 11 weeks, against Q1's 13, so two weeks are missing from one side only, and Rs 12 crore would move on a gap that is mostly the calendar.
 
 - a, "The percentage is computed on Q2's total, which overstates the fall": Rs 54,40,050 over Rs 2,10,00,000 is 25.9 percent, so the base is already Q1.
-- c, "It counts booked orders, where Finance would count delivered ones": both sides count booked orders, so the definition is the same on each.
+- c, "It counts booked orders, where a count of delivered orders would be lower": both sides count booked orders, so the definition is the same on each.
 - d, "It rounds both totals to the nearest lakh before dividing them": both totals are exact to the rupee.
 
 ### Q3. What does revenue per week give on 15 September, and what does it miss? (Design)

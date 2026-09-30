@@ -54,7 +54,7 @@ The key is b, "Business, since its lakh-sized orders dominate the rate part". Bu
 
 - a, "Retail-Plus, so members did pay noticeably more for each order they placed": Retail-Plus's rise is about Rs 200 an order on 30 percent of orders, about Rs 60 of the rate part.
 - c, "Retail-Core, so everyday shoppers carry the rise": Retail-Core's rate fell.
-- d, "Student, whose rate rose most in percentage terms": the largest percentage sits on the smallest orders, about Rs 11 of the rate part.
+- d, "Student, whose rate rose most in percentage terms": the largest percentage sits on the smallest orders, about Rs 12 of the rate part.
 
 ### Q6. What does a split into Business and everyone else put on the mix? (Design)
 

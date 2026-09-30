@@ -51,11 +51,11 @@ Copying the loop takes 72 lines and 8 places to edit, a function 21 lines and 1 
 a) Copy the loop per group, since each copy can be checked on its own
 b) One pass by key, since it is the shortest code and reads the rows once
 c) A spreadsheet, since eight groups are few enough to total by hand
-d) A function, tree_for(rows), since each later subset is one more call
+d) A function, tree_for, since each later subset is one more call
 
 ### Q2. How many rows does filtering once per group read on 40 lakh orders? (Design)
 
-Suppose next quarter's export holds 40 lakh orders, and Anand wants all 40 segment-and-month groups every Monday. Filtering the export once per group and totalling each group reads how many rows, against one pass by key?
+Suppose next quarter's export holds 40 lakh orders across ten cities, and Anand wants all 40 segment-and-city groups, four segments in each city, every Monday. Filtering the export once per group and totalling each group reads how many rows, against one pass by key?
 
 a) 16 crore rows against 40 lakh, so one pass by key takes over
 b) 40 lakh either way, since each group's total reads only its own rows
@@ -73,7 +73,7 @@ d) The helper returned from inside its loop, before the last order was counted
 
 ### Q4. What does a weighted roll-up of the four segments give?
 
-Averaged over the four segments, orders per customer reads 1.94 then 1.82, a fall of 6.0 percent. The four segments hold 69 customers, who placed 114 orders in Q1 and 86 in Q2. What does the roll-up with weights give?
+Averaged over the four segments, orders per customer reads 1.94 then 1.82, a fall of 6.0 percent on the unrounded figures. The four segments hold 69 customers, who placed 114 orders in Q1 and 86 in Q2. What does the roll-up with weights give?
 
 a) 1.94 to 1.82, since the weights cancel out once all four segments are counted
 b) 1.65 to 1.25, a fall of 24.6 percent, so frequency is the branch after all
@@ -84,7 +84,7 @@ d) 0.61 to 0.80, total customers over total orders in each quarter
 
 Business revenue fell Rs 22,29,720 on three fewer orders. `describe` shows the median Business order barely moved while the range rose about 73 percent. What do you say about the typical Business order?
 
-a) It held: one very large order stretched the range; the fall is three fewer orders
+a) It held while one big order widened the range, and the fall is three fewer orders
 b) It grew, since a range up 73 percent means the middle of the orders moved up too
 c) It shrank, since revenue fell by Rs 22 lakh while the count moved by only three
 d) It is the mean here, since a median ignores the lakh-sized orders that matter most

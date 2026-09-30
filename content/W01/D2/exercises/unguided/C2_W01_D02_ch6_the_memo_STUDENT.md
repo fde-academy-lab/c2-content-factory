@@ -67,7 +67,7 @@ d) It charges the button with about eight weeks of losses from before it broke
 The tier placed 18 orders in the 55 days before the break and 8 in the 37 days after it. At most how many orders can the button explain?
 
 a) About 10, since 18 orders came before the break and 8 came after it
-b) About 4: the pre-break pace gives about 12.1 in 37 days, and 8 came
+b) About 4, since the pre-break pace gives 12.1 in 37 days and 8 came
 c) About 25, the tier's whole fall from Q1's 51 orders to Q2's 26
 d) About 12, the 12.1 orders the pre-break pace predicts after the break
 

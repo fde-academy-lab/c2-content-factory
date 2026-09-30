@@ -95,4 +95,4 @@ The second route took each customer's first and last order date in the export an
 a) Nothing new, since it reads the same 69 ids the first route already compared
 b) It proves that no customer has left Kalpa since the business opened
 c) It shows which customers slowed, which the overlap cannot see
-d) The same 0 and 0 from dates alone; new still means new since 1 April
+d) The same 0 and 0 from dates alone, though new still means new since 1 April

@@ -90,7 +90,7 @@ the window or the customers who bought.
 "Retail-Core booked Rs 60,950 from 1 July to 15 September, against Rs 80,460 across Q1." Which
 reading fits?
 
-a) Fair: the two sides share a window, a definition and a denominator
+a) Fair: each side is a rate over its stated window, on one definition and one denominator
 b) Unfair: the two sides cover windows of different length or position
 c) Unfair: the two sides count revenue under different definitions
 d) Unfair: the rate on one side divides by a different population of customers than the other
@@ -100,7 +100,7 @@ d) Unfair: the rate on one side divides by a different population of customers t
 "Q2 booked revenue per day was Rs 2,03,261, against Rs 2,30,769 a day in Q1, across 92 and 91 days."
 Which reading fits?
 
-a) Fair: the two sides share a window, a definition and a denominator
+a) Fair: each side is a rate over its stated window, on one definition and one denominator
 b) Unfair: the two sides cover windows of different length or position
 c) Unfair: the two sides count revenue under different definitions
 d) Unfair: the rate on one side divides by a different population of customers than the other
@@ -110,7 +110,7 @@ d) Unfair: the rate on one side divides by a different population of customers t
 "Delivered revenue in Q2 was Rs 1,28,64,680, against booked revenue of Rs 2,10,00,000 in Q1." Which
 reading fits?
 
-a) Fair: the two sides share a window, a definition and a denominator
+a) Fair: each side is a rate over its stated window, on one definition and one denominator
 b) Unfair: the two sides cover windows of different length or position
 c) Unfair: the two sides count revenue under different definitions
 d) Unfair: the rate on one side divides by a different population of customers than the other
@@ -166,11 +166,12 @@ d) New customers may have masked existing ones buying less often, so check Q1's 
 This takes about twenty-five minutes, and at work it comes up whenever a finding goes to a leader who
 reads only the first lines.
 
-Open a new notebook beside the day's notebooks, load the class file with
-`kit.load_records("C2_W01_D02_orders_STUDENT.py")`, and rebuild the four numbers each line needs
-with your own `tree_for`, the function from chapter 3 that gives any list of orders its revenue,
-orders, customers and rates. Pick each line, then write all four in your own words under your
-letters.
+Open a new notebook beside the day's notebooks and copy in the setup cell from chapter 3's notebook,
+`notebooks/C2_W01_D02_03_which_segment_STUDENT.ipynb`, which imports the day's helper as `kit`, loads
+the class file with `kit.load_records("C2_W01_D02_orders_STUDENT.py")` and groups its orders by
+quarter and segment. Then rebuild the four numbers each line needs with your own `tree_for`, the
+function from chapter 3 that gives any list of orders its revenue, orders, customers and rates. Pick
+each line, then write all four in your own words under your letters.
 
 ### Q9. Which first line states the drop?
 
@@ -208,5 +209,5 @@ Which fourth line does that?
 
 a) "The cause is the broken reorder feature, as the head of Retail-Plus has reported from his members."
 b) "The cause cannot be known from an order file, so the memo leaves the question of cause to others."
-c) "Two causes stay open: the reorder feature, settled by its logs, and a July change, by the tier's log."
+c) "Two causes stay open, the reorder feature, settled by its logs, and a July change, by the tier's log."
 d) "The cause is a market-wide slowdown in July, which explains why every channel fell in the same months."

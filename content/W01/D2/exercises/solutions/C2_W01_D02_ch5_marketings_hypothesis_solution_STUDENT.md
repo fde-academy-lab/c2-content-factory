@@ -60,7 +60,7 @@ The key is b, "Retail-Plus is 93 percent of the consumer business's Rs 70,280 fa
 
 The second route took each customer's first and last order date in the export and counted who first ordered in Q2 or last ordered in Q1: 0 and 0.
 
-The key is d, "The same 0 and 0 from dates alone; new still means new since 1 April". It reaches the overlap's answer without the quarter field or any set arithmetic, so it could have disagreed. A first order in this export is only the first since 1 April.
+The key is d, "The same 0 and 0 from dates alone, though new still means new since 1 April". It reaches the overlap's answer without the quarter field or any set arithmetic, so it could have disagreed. A first order in this export is only the first since 1 April.
 
 - a, "Nothing new, since it reads the same 69 ids the first route already compared": it reads the dates and never the quarter field, so a mislabelled quarter would split the two routes.
 - b, "It proves that no customer has left Kalpa since the business opened": the export covers two quarters.

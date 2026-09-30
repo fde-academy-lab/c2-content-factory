@@ -104,9 +104,9 @@ d) The tree per segment; a fall inside one segment would make it that segment's 
 At work this comes up whenever a customer count moves and someone has to say who those customers
 are.
 
-### Q3. What happened to the 19 customers with no delivered order in Q2?
+### Q3. What happened to the customers who dropped out of the delivered count in Q2?
 
-Nineteen of Q1's delivered customers have no delivered order in Q2. What are they?
+Some of the customers delivered to in Q1 have no delivered order in Q2. What are they?
 
 a) Customers who ordered in Q2 and had those orders cancelled or returned
 b) Customers Kalpa lost, replaced by fifteen new ones who joined in Q2

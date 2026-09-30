@@ -30,9 +30,10 @@ and 1.000 times 0.510 times 1.070 is about 0.55. Counted directly, Rs 1,43,550 t
 about 45 percent down.
 
 - a, "The tier is healthy, since 7 percent more per order outweighs the fall in orders": one leaf
-  that rose inside a tier whose orders halved says nothing of its health.
+  rose inside a tier whose orders halved, and tier revenue still fell about 45 percent.
 - b, "Tier revenue fell about 42 percent, orders down 49 and value up 7, so it is minor": it adds
-  minus 49 and plus 7 as if percentages added, Monday's two lifts turned round.
+  minus 49 and plus 7 as if percentages added, which is Monday's error of adding two 10 percent lifts
+  to make 20 percent when together they make 21, turned round on a fall and a rise.
 - c, "New, richer members joined, so acquisition is already working inside the tier": the members
   are the same 22 in both quarters, as chapter 5's overlap of ids showed.
 

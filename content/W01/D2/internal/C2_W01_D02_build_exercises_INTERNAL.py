@@ -19,9 +19,10 @@ switch it or the second route, and "scenario" is every other business item. Each
 its Answers line and then gives, item by item, the same heading, the stem in one line, the key with
 why it holds and each other letter with why it fails, so it reads with nothing else open.
 
-The options, the keys and every number are the ones merged on 30 September 2026; the provenance's
-depth-loop table says why each is as it is. The script refuses to write a set whose answer string
-has drifted from that, whose keys pile onto one position, whose key is the lone longest option, whose
+The keys and every number are the ones merged on 30 September 2026; the provenance's depth-loop
+table says why each is as it is. The script refuses to write a set whose answer string has drifted
+from that, whose keys pile onto one position, whose key is the lone longest option, whose key alone
+carries a semicolon, a colon or a bracket (or alone lacks one that every other option carries), whose
 heading or stem is not a question, whose heading carries a word that only one option uses when the
 stem does not carry it too, or whose text carries a dash, the rupee glyph or a banned word.
 """
@@ -118,7 +119,7 @@ SETS = [
                  "percent.\" What makes the slide unfit to act on?",
                  ["The percentage is computed on Q2's total, which overstates the fall",
                   "It sets about 11 weeks of Q2 against all 13 weeks of the closed Q1",
-                  "It counts booked orders, where Finance would count delivered ones",
+                  "It counts booked orders, where a count of delivered orders would be lower",
                   "It rounds both totals to the nearest lakh before dividing them"], "b",
                  "The tile runs from 1 July to 15 September, about 11 weeks, against Q1's 13, so two weeks are "
                  "missing from one side only, and Rs 12 crore would move on a gap that is mostly the calendar.",
@@ -252,10 +253,10 @@ SETS = [
                  "Marketing says the fall needs more customers, and the tree shows 69 customers in each quarter, "
                  "114 orders against 86, and revenue per order up 18.0 percent.",
                  "scenario"),
-            item("What is wrong with a 6.6 percent fall built from the leaves?",
+            item("What do you say to a 6.6 percent fall built by adding the leaves?",
                  "A colleague adds the leaf changes, minus 24.6 percent and plus 18.0 percent, and reports "
-                 "revenue down 6.6 percent. What is wrong?",
-                 ["Nothing: the customer leaf adds zero, so minus 24.6 and plus 18.0 net to minus 6.6",
+                 "revenue down 6.6 percent. What do you say to the colleague?",
+                 ["It holds: the customer leaf adds zero, so minus 24.6 and plus 18.0 net to minus 6.6",
                   "The customer leaf was left out of the sum, and it carries the missing 4.4 points",
                   "The two leaves should be averaged, which puts the fall at 3.3 percent",
                   "The leaves multiply: 0.754 times 1.180 is 0.890, a fall of 11.0 percent"], "d",
@@ -273,7 +274,7 @@ SETS = [
                  "split every month while two branches keep moving together. Which split fits which reader?",
                  ["The symmetric split for both, since any order of steps is a bias someone will argue",
                   "Leaf percentages for Meera, since she reads percentages, and the bridge for Finance",
-                  "The bridge in tree order for Meera, order stated; the symmetric split for Finance",
+                  "The bridge in tree order for Meera, order stated, and a symmetric split for Finance",
                   "Customer by customer for both, since it names who moved before anyone adds them up"], "c",
                  "A CEO follows one leaf at a time, so Meera gets the bridge with its order written beside it. A "
                  "split rebuilt every month while two branches move together goes symmetric, so nobody argues "
@@ -302,9 +303,10 @@ SETS = [
                  "With 69 customers in each quarter, orders per customer at 1.652 and then 1.246, and Q1's "
                  "revenue per order at Rs 1,84,211, the bridge in the tree's order moves frequency second.",
                  "design"),
-            item("Why is the count of 43 orders without a discount unsafe?",
+            item("What do the 43 orders read as \"no discount\" hold?",
                  "A hurried count reads every missing discount as zero and finds 43 of Q2's 86 orders \"without "
-                 "a discount\". Marketing wants the discount extended to them. Why is the premise unsafe?",
+                 "a discount\". Marketing wants the discount extended to them. What do you tell Marketing about "
+                 "the 43?",
                  ["Q1 had 32 blanks as well, so the offer has to reach both quarters' blank orders",
                   "The 43 hold, but they should be counted by revenue, since orders differ in size",
                   "Blank and Rs 0 both mean no discount, so the 43 hold and only the offer's size is open",
@@ -321,7 +323,7 @@ SETS = [
                  "The second route, a symmetric split that chooses no order at all, charged frequency minus "
                  "Rs 55,88,480. Set beside the bridge, what does it show?",
                  ["The bridge understated frequency, so its figure has to be corrected upwards",
-                  "Frequency carries the fall either way; the rupees per branch depend on the method",
+                  "Frequency carries the fall either way, and rupees per branch depend on the method",
                   "The two agree to the rupee once the customers step is added back into the bridge",
                   "The gap between them is the customers branch, which only the symmetric split sees"], "b",
                  "An independent split that chooses no order puts the largest fall on the same branch. The "
@@ -372,8 +374,9 @@ SETS = [
     T --> B["<b>Business</b><br/>-15.0%"]
     T --> C["<b>the rest</b><br/>your run"]""",
         scenario=("The head of Kalpa Retail's paid membership tier asked whether his tier is the one slipping, "
-                  "after a member reported the app's reorder button broken for six weeks. Chapter 3 wrote "
-                  "Monday's tree once as `tree_for(rows)`, ran it on each of the four customer segments in both "
+                  "after a member reported the app's reorder button broken for six weeks. Monday's revenue tree "
+                  "says revenue is customers times orders per customer times revenue per order. Chapter 3 wrote "
+                  "that tree once as `tree_for(rows)`, ran it on each of the four customer segments in both "
                   "quarters, and rolled the segments back up to the company's orders per customer, 1.65 in Q1 "
                   "and 1.25 in Q2, from 114 and 86 orders by the same 69 customers."),
         items=[
@@ -384,7 +387,7 @@ SETS = [
                  ["Copy the loop per group, since each copy can be checked on its own",
                   "One pass by key, since it is the shortest code and reads the rows once",
                   "A spreadsheet, since eight groups are few enough to total by hand",
-                  "A function, tree_for(rows), since each later subset is one more call"], "d",
+                  "A function, tree_for, since each later subset is one more call"], "d",
                  "The later asks are new subsets of orders, and a function answers any list of orders with one "
                  "call; one pass by key would need a new loop for each new key.",
                  {"a": "eight places to edit when the definition changes, and one gets forgotten.",
@@ -395,9 +398,9 @@ SETS = [
                  "delivered orders are asked for later today.",
                  "design"),
             item("How many rows does filtering once per group read on 40 lakh orders?",
-                 "Suppose next quarter's export holds 40 lakh orders, and Anand wants all 40 segment-and-month "
-                 "groups every Monday. Filtering the export once per group and totalling each group reads how "
-                 "many rows, against one pass by key?",
+                 "Suppose next quarter's export holds 40 lakh orders across ten cities, and Anand wants all 40 "
+                 "segment-and-city groups, four segments in each city, every Monday. Filtering the export once "
+                 "per group and totalling each group reads how many rows, against one pass by key?",
                  ["16 crore rows against 40 lakh, so one pass by key takes over",
                   "40 lakh either way, since each group's total reads only its own rows",
                   "16 crore against 40 lakh, and filtering stays, since each group is easy to check",
@@ -408,8 +411,9 @@ SETS = [
                        "key.",
                   "c": "one pass by key checks just as well group by group, and it reads the export once.",
                   "d": "that is today's 200-row file, where speed decides nothing."},
-                 "Suppose next quarter's export holds 40 lakh orders and Anand wants all 40 segment-and-month "
-                 "groups every Monday; the item sets filtering once per group against one pass by key.",
+                 "Suppose next quarter's export holds 40 lakh orders across ten cities, and Anand Iyer, the "
+                 "finance controller, wants all 40 segment-and-city groups, four segments in each city, every "
+                 "Monday. The item sets filtering the export once per group against one pass by key.",
                  "design"),
             item("Why does Anand's summary table show a blank where the helper shows 1.65?",
                  "Anand's summary table shows a blank for Q1 orders per customer, although calling the helper that "
@@ -428,8 +432,8 @@ SETS = [
                  "scenario"),
             item("What does a weighted roll-up of the four segments give?",
                  "Averaged over the four segments, orders per customer reads 1.94 then 1.82, a fall of 6.0 "
-                 "percent. The four segments hold 69 customers, who placed 114 orders in Q1 and 86 in Q2. What "
-                 "does the roll-up with weights give?",
+                 "percent on the unrounded figures. The four segments hold 69 customers, who placed 114 orders "
+                 "in Q1 and 86 in Q2. What does the roll-up with weights give?",
                  ["1.94 to 1.82, since the weights cancel out once all four segments are counted",
                   "1.65 to 1.25, a fall of 24.6 percent, so frequency is the branch after all",
                   "1.65 to 1.25, a fall of 32.0 percent, measured against the Q2 figure",
@@ -439,14 +443,15 @@ SETS = [
                  {"a": "weights cancel only when every segment is the same size.",
                   "c": "32.0 percent is the change measured against Q2.",
                   "d": "that is the reciprocal, customers per order."},
-                 "Averaged over the four segments, orders per customer reads 1.94 then 1.82, minus 6.0 percent, "
-                 "while the four segments hold 69 customers who placed 114 orders in Q1 and 86 in Q2.",
+                 "Averaged over the four segments, orders per customer reads 1.94 then 1.82, minus 6.0 percent "
+                 "on the unrounded figures, while the four segments hold 69 customers who placed 114 orders in "
+                 "Q1 and 86 in Q2.",
                  "scenario"),
             item("What happened to the typical Business order in Q2?",
                  "Business revenue fell Rs 22,29,720 on three fewer orders. `describe` shows the median Business "
                  "order barely moved while the range rose about 73 percent. What do you say about the typical "
                  "Business order?",
-                 ["It held: one very large order stretched the range; the fall is three fewer orders",
+                 ["It held while one big order widened the range, and the fall is three fewer orders",
                   "It grew, since a range up 73 percent means the middle of the orders moved up too",
                   "It shrank, since revenue fell by Rs 22 lakh while the count moved by only three",
                   "It is the mean here, since a median ignores the lakh-sized orders that matter most"], "a",
@@ -457,8 +462,9 @@ SETS = [
                   "c": "three orders at about Rs 10 lakh each come to about Rs 30 lakh, so the count carries the "
                        "fall.",
                   "d": "the mean is what one large order pulls, and the median is the typical order."},
-                 "Business revenue fell Rs 22,29,720 on three fewer orders, and `describe` shows the median "
-                 "Business order barely moved while the range rose about 73 percent.",
+                 "Business revenue fell Rs 22,29,720 on three fewer orders, and `describe`, which gives a "
+                 "group's median, extremes and range, shows the median Business order barely moved while the "
+                 "range rose about 73 percent.",
                  "scenario"),
             item("In which order does the roll-up of the four segments run?",
                  "Anand asks for the company's orders per customer rolled up from the four segments. Order the "
@@ -597,7 +603,7 @@ SETS = [
                  {"a": "Retail-Plus's rise is about Rs 200 an order on 30 percent of orders, about Rs 60 of the "
                        "rate part.",
                   "c": "Retail-Core's rate fell.",
-                  "d": "the largest percentage sits on the smallest orders, about Rs 11 of the rate part."},
+                  "d": "the largest percentage sits on the smallest orders, about Rs 12 of the rate part."},
                  "The rate part of the rise, what is left once the mix is priced, is split by segment to see "
                  "which carries most of it.",
                  "scenario"),
@@ -747,7 +753,7 @@ SETS = [
                  ["Nothing new, since it reads the same 69 ids the first route already compared",
                   "It proves that no customer has left Kalpa since the business opened",
                   "It shows which customers slowed, which the overlap cannot see",
-                  "The same 0 and 0 from dates alone; new still means new since 1 April"], "d",
+                  "The same 0 and 0 from dates alone, though new still means new since 1 April"], "d",
                  "It reaches the overlap's answer without the quarter field or any set arithmetic, so it could "
                  "have disagreed. A first order in this export is only the first since 1 April.",
                  {"a": "it reads the dates and never the quarter field, so a mislabelled quarter would split the "
@@ -834,7 +840,7 @@ SETS = [
                  "The tier placed 18 orders in the 55 days before the break and 8 in the 37 days after it. At "
                  "most how many orders can the button explain?",
                  ["About 10, since 18 orders came before the break and 8 came after it",
-                  "About 4: the pre-break pace gives about 12.1 in 37 days, and 8 came",
+                  "About 4, since the pre-break pace gives 12.1 in 37 days and 8 came",
                   "About 25, the tier's whole fall from Q1's 51 orders to Q2's 26",
                   "About 12, the 12.1 orders the pre-break pace predicts after the break"], "b",
                  "18 orders in 55 days is 0.327 a day, about 12.1 in the 37 days after the break. The tier placed "
@@ -913,6 +919,17 @@ def lone_longest(opts, key):
     return lengths[k] == max(lengths) and lengths.count(max(lengths)) == 1
 
 
+def lone_marks(opts, key):
+    """Marks that set the key apart by form: only the key carries one, or only the key lacks it."""
+    k = LETTERS.index(key)
+    found = []
+    for mark in ";:(":
+        has = [mark in o for o in opts]
+        if (has[k] and has.count(True) == 1) or (not has[k] and has.count(False) == 1):
+            found.append(mark)
+    return found
+
+
 def clean(text, where):
     """Refuse a dash, the rupee glyph or a banned word anywhere a learner reads."""
     assert "\u2014" not in text and "\u2013" not in text, (where, "dash")
@@ -962,6 +979,7 @@ def write_set(s):
         assert it["heading"].endswith("?") and it["stem"].rstrip().endswith("?"), where
         assert not heading_points(it), (where, heading_points(it))
         assert not lone_longest(opts, key), (where, [len(o) for o in opts])
+        assert not lone_marks(opts, key), (where, lone_marks(opts, key))
         assert set(it["others"]) == set(LETTERS) - {key}, where
         head = f"### Q{i}. {it['heading']}" + (" (Design)" if it["kind"] == "design" else "")
         stu += ["", head, "", it["stem"], ""]
