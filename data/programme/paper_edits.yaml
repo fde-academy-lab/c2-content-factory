@@ -107,8 +107,25 @@ W1:
     why: The key was the longest option.
     options:
       a: Repeat it exactly as it ran, because total revenue rose 6 percent after the campaign.
+  51:
+    status: proposed
+    why: A blind sitting found that the tracker's first rung, "Confirm that the drop is real", repeats bank 20's key word for word, and a second found that "compare like with like" could be read as part of confirming the drop, since a partial quarter fails both. The two options now say what each rung checks, each quarter's figure on its own against the two checked figures side by side, so the second rests on the first; the key and the other options are unchanged. The options run 33 to 84 characters, as ordering steps.
+    options:
+      b: "Check each quarter's figure on its own: no rows missing, doubled or malformed."
+      d: Set the two checked figures side by side on the same weeks and the same definitions.
+  52:
+    status: proposed
+    why: A blind sitting found that reconciling and then recomputing could be argued against recomputing and then tying out. The last step now ends in sending the figure to Anand, and a figure is reconciled before it leaves, which fixes the order without a rule in the stem; the key and the other options are unchanged.
+    options:
+      c: Recompute the revenue tree on the clean data, and send it to Anand.
 
 W2:
+  2:
+    stem:
+      status: proposed
+      why: The paper answers this item from a word bank of five nouns shared with item 3, and the tracker's blank takes a verb, so only two of the five words fit it and the grammar halves the bank. The new stem's blank takes a noun, so every word fits the sentence and only the key fits its sense; the key is the tracker's.
+      text: |-
+        Without ORDER BY, the database makes no ____ about which five rows LIMIT 5 returns.
   19:
     status: accepted
     why: The key was the longest option.
@@ -125,6 +142,19 @@ W2:
     options:
       b: SELECT DISTINCT order_id FROM payments ORDER BY order_id
       d: SELECT order_id FROM payments WHERE COUNT(order_id) > 1 GROUP BY order_id
+  27:
+    status: proposed
+    why: The key was the only option without a "because" or a "since", and the only item on the paper whose options end in full stops, so its form alone gave it away. Each option now names an approach and says in the same form what it does, and none ends in a full stop; the options run 74 to 78 characters, the key is not the longest, and the same option stays correct.
+    options:
+      a: GROUP BY segment with LIMIT 3, which applies the limit to each group in turn
+      b: A rank within PARTITION BY segment, which an outer query keeps at 3 or better
+      c: ORDER BY revenue DESC with LIMIT 3, which returns the top rows of each segment
+      d: HAVING count(*) <= 3, which keeps the three largest rows inside each group
+    stem:
+      status: proposed
+      why: The tracker's stem asks for top three per segment with no business context. The new stem opens on Marketing's first protect list, sorted over every customer, and the numbers it produced on Wednesday, so the item asks why that list fails before it asks for the approach; the key is the tracker's. It names the quarter by its months, since the paper numbers its items Q1 onwards, calls only Retail-Plus customers members, since membership is that tier's name, and gives the reason all 35 Business customers made the list.
+      text: |-
+        Marketing's first protect list sorted every customer by revenue for July to September and kept the top fifty: all 35 Business customers who ordered, because the smallest of their spends is ten times the largest retail spend, then 11 Retail-Plus members and 4 Retail-Core customers, and no Student. For a pilot, Marketing now wants the top three customers in each segment. Which approach answers it?
   29:
     status: accepted
     why: The key was the longest option.

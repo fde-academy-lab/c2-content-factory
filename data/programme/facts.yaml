@@ -302,7 +302,7 @@ decisions:
   - id: plants-once-found
     status: closed
     closes: the requester, on 30 September 2026
-    text: Only the week's Saturday recap paper may name a planted value, and only one the room has already found in class, so the Week 1 Saturday paper keeps Q32 and Q51, two tracker items that name values planted in the Week 1 Monday dataset; every other learner file names no plant.
+    text: Only the week's Saturday recap paper may name a planted value, and only one the room has already found in class, so the Week 1 Saturday paper keeps the two tracker items that name values planted in the Week 1 Monday dataset (banks 11 and 47, printed as Q32 and Q51 when this was decided and folded since into the deeper items that still print their values); every other learner file names no plant.
     blocks: nothing
   - id: reporting-day-line
     status: closed
@@ -318,6 +318,11 @@ decisions:
     status: closed
     closes: the requester, on 30 September 2026
     text: The Saturday recap papers may set items at named, real companies and in public case studies, used directly or as inspiration, alongside Kalpa's own case. Every real fact or figure a paper prints is checked against a primary or reputable source whose URL and date sit in the provenance; a figure that cannot be checked appears only in a hypothetical marked as illustrative, and a named company in a hypothetical reads as one.
+    blocks: nothing
+  - id: w2-set1-fold
+    status: closed
+    closes: the requester, on 30 September 2026, who left the call to the build
+    text: The Week 2 Saturday paper folds the bank's Set 1 into a set on the room's own Q2 warehouse, which tests the same fan-out and unpaid-order logic on numbers the room worked with; this replaces the 29 September ruling that kept Set 1 as the bank has it.
     blocks: nothing
   - id: four-domains
     status: closed
