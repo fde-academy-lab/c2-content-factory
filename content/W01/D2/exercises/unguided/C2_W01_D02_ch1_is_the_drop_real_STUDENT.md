@@ -16,18 +16,17 @@ The ask behind every item:
 
 The numbers every item refers to, booked orders, the export as it stands:
 
-| Window | Dates | Weeks | Orders | Revenue |
-|---|---|---|---|---|
-| Q1, closed | 1 Apr to 30 Jun | 13 | 114 | Rs 2,10,00,000 |
-| Q2, closed | 1 Jul to 30 Sep | 13 | 86 | Rs 1,87,00,000 |
-| Q2 dashboard tile, cut on 15 September | 1 Jul to 15 Sep | 11 | 70 | Rs 1,55,59,950 |
+| Window | Dates | Orders | Revenue |
+|---|---|---|---|
+| Q1, closed | 1 Apr to 30 Jun | 114 | Rs 2,10,00,000 |
+| Q2, closed | 1 Jul to 30 Sep | 86 | Rs 1,87,00,000 |
+| Q2 dashboard tile, cut on 15 September | 1 Jul to 15 Sep | 70 | Rs 1,55,59,950 |
 
 ```mermaid
 flowchart LR
-    A["<b>Q1</b><br/>13 weeks"] --> C{"same window?"}
-    B["<b>Q2 tile</b><br/>11 weeks"] --> C
-    C -->|"no"| D["match the weeks<br/>or use a rate"]
-    C -->|"yes"| E["compute the change"]
+    A["<b>1 Apr</b><br/>Q1 opens"] --> B["<b>1 Jul</b><br/>Q2 opens"]
+    B --> C["<b>15 Sep</b><br/>the tile is cut"]
+    C --> D["<b>30 Sep</b><br/>Q2 closes"]
 ```
 
 ---
@@ -36,40 +35,40 @@ flowchart LR
 
 a) 12.3 percent, the Rs 23,00,000 gap measured against Q2's total
 b) 9.5 percent, from the rounded Rs 1.9 crore against Rs 2.1 crore
-c) 11.0 percent, the Rs 23,00,000 gap against Q1's total
+c) 11.0 percent, the Rs 23,00,000 gap measured against Q1's total
 d) 25.9 percent, the figure on the dashboard tile Marketing quotes
 
 ### Q2. Marketing's slide reads "Q2 Rs 1,55,59,950 against Q1 Rs 2,10,00,000: revenue fell 25.9 percent." What makes the slide unfit to act on?
 
 a) The percentage is computed on Q2's total, which overstates the fall
-b) It compares 11 weeks of Q2 against all 13 weeks of Q1
+b) It sets about 11 weeks of Q2 against all 13 weeks of the closed Q1
 c) It counts booked orders, where Finance would count delivered ones
 d) It rounds both totals to the nearest lakh before dividing them
 
-### Q3. (design) Q2 is still open on 15 September and Meera wants a number today. Which comparison is the best fit, and what would switch it?
+### Q3. (design) On 15 September, with Q2 still open, a colleague divides each side by its weeks: Q1's Rs 2,10,00,000 over 13 and the tile's Rs 1,55,59,950 over 11. What does the rate per week give, and what does it still miss?
 
-a) The same 11 weeks of each quarter, switching to closed quarters at the close
-b) The tile against all of Q1, switching only once Marketing agrees the method is fair
-c) Q2 to date projected to 13 weeks, switching if the projection misses
-d) Per month, April against July only, switching when August closes
+a) Minus 12.4 percent, and it still sets Q2's first 11 weeks against all 13 of Q1's
+b) Minus 25.9 percent, since dividing both sides by weeks leaves their ratio alone
+c) Minus 11.0 percent, since a rate per week removes every difference in the windows
+d) Minus 17.0 percent, the same answer the same 11 weeks of each quarter would give
 
-### Q4. (design) Four options were sized on this file: closed quarters (200 rows, minus 11.0), the same 11 weeks (167 rows, minus 17.0), per day (200 rows, minus 11.9) and last year's Q2 (0 rows, cannot run). Why is speed no reason to choose between them here?
+### Q4. (design) Both quarters have closed. Meera now asks: "Is Q2 always weaker than Q1, because of the monsoon?" Which option answers her, and what does it need?
 
-a) Because the fastest option is always the least accurate one
-b) Because only last year's Q2 needs any computation at all
-c) Because the option that reads the most rows is always the most accurate one on any file
-d) Because each option that can run takes milliseconds, what each controls for decides
+a) Closed quarters again, since both hold 13 weeks and compare like with like
+b) A rate per day, since it removes the one-day gap between 91 and 92 days
+c) The same 11 weeks of each quarter, since it also matches position
+d) The same quarter last year, which needs last year's export to run
 
-### Q5. Four moves answer "is the drop real": p) find the first and last order date of each window, q) choose closed quarters or matched weeks, r) compute the change, s) state the definition and the window in the sentence. Which order is right?
+### Q5. Four moves answer "is the drop real": p) compute the change, q) find the first and last order date of each window, r) state the definition and the window in the sentence to Meera, s) choose closed quarters or matched weeks. Which order is right?
 
-a) r, p, q, s
-b) p, q, r, s
-c) q, r, p, s
-d) p, r, q, s
+a) s, q, p, r
+b) q, s, p, r
+c) q, p, s, r
+d) q, s, r, p
 
 ### Q6. (design) The second route added revenue by the month in `order_date` and reached the same minus 11.0 percent. What does agreement between the two routes prove?
 
-a) That monthly totals are the better headline for Meera than quarters
-b) That no order in the file carries a wrong amount or a missing discount field
+a) That monthly totals are a better headline for Meera than the quarters
+b) That no order in the file carries a wrong amount or a missing field
 c) That the quarter field and the dates give each quarter the same total
 d) That the fall is real and needs no comparison with last year

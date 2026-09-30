@@ -25,32 +25,31 @@ The numbers every item refers to, booked orders, the export as it stands:
 
 ```mermaid
 flowchart LR
-    A["<b>Q1 ids</b>"] --> O["<b>overlap</b><br/>both, only Q1, only Q2"]
-    B["<b>Q2 ids</b>"] --> O
+    A["<b>Marketing's claim</b><br/>a flat count hides churn"] --> B["<b>Marketing's ask</b><br/>Rs 12 crore for acquisition"]
 ```
 
 ---
 
 ### Q1. (design) Which test answers "a flat count hides churn replaced by new customers" most directly?
 
-a) Compare the counts again with a different definition of customer
+a) Count each quarter's customers by segment, since churn hides inside segments
 b) Ask Marketing's CRM for new sign-ups by month
 c) Count the ids in both quarters, only in Q1 and only in Q2
-d) Average the orders per customer across segments
+d) Compare the counts again under a different definition of customer
 
 ### Q2. (design) What would make you distrust the id overlap?
 
-a) One person holding two ids, one from the store and one from the app
-b) A quarter holding many more orders than the other quarter in the file
-c) A segment with only two customers
-d) An export with 200 rows instead of 2,000
+a) One person holding two ids, say one from the store and one from the app
+b) A member who moved from Retail-Core to Retail-Plus between the quarters
+c) A customer whose Q1 order fell on 30 June and Q2 order on 1 July
+d) Customers who placed several orders in one quarter and one in the other
 
 ### Q3. The overlap comes out 69 in both quarters, 0 only in Q1, 0 only in Q2. What goes back to Marketing?
 
 a) Churn is hidden in the segments, so split them first and run the overlap per segment
 b) Nobody was lost and nobody was new, so acquisition has nothing to replace
 c) The flat count proves customers are loyal, so no action is needed
-d) The overlap is inconclusive until Thursday's test
+d) Marketing is right in spirit, since 23 customers placed fewer orders
 
 ### Q4. Last quarter's script prints `summary: {'Retail-Core': -5.3, 'Business': -15.0}` because `pct_change` returns a value only when the change is 30 percent or less. Which fix to the logic keeps every segment in Meera's summary?
 
@@ -59,16 +58,16 @@ b) Print the change as well as returning it, so both appear on the screen
 c) Filter with `if ch < 0`, so that a None is compared with zero as well
 d) Return the change every time, and put the flag in a column of its own
 
-### Q5. Marketing says Retail-Plus is Rs 65,250 out of a Rs 23 lakh fall, so it does not matter. Which reply holds?
+### Q5. Marketing says Retail-Plus is Rs 65,250 out of a Rs 23 lakh fall, so it does not matter. Using the table, which reply holds?
 
-a) They are right: 3 percent of the fall is noise and can be left out of the note
-b) Retail-Plus is 93 percent of the consumer fall and 25 of the 28 lost orders
-c) Business should be dropped from the file as an outlier
-d) Rupees never matter, since only orders count
+a) They are right in rupees, so the memo leads with Business and footnotes the tier
+b) Retail-Plus is 93 percent of the consumer business's Rs 70,280 fall
+c) The tier is 49 percent of the fall, since its orders per member fell 49 percent
+d) The tier is 3 percent of the fall, so the reorder complaint can wait a quarter
 
-### Q6. (design) The second route found the consumer fall by subtracting Business from the company fall. When is the bridge by segment the better route?
+### Q6. (design) The second route took each customer's first and last order date in the export and counted who first ordered in Q2 or last ordered in Q1: 0 and 0. What does it add, and where does it stop?
 
-a) When the question is which consumer segment moved
-b) When the numbers involved run to crores of rupees
-c) When Business is the largest segment in rupees
-d) When the two quarters being compared are of unequal length
+a) Nothing new, since it counts the same 69 ids the overlap already counted
+b) It proves that no customer has left Kalpa since the business opened
+c) It shows which customers slowed, which the overlap cannot see
+d) The same 0 and 0 from dates alone; new still means new since 1 April

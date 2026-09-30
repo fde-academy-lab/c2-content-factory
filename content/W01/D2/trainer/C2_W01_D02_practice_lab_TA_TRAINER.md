@@ -19,7 +19,7 @@ problem and nothing more; a second hint turns the problem into a demonstration.
 
 | Problem | Where learners stall | The one hint |
 |---|---|---|
-| 1. Order the rungs | Learners who ran the chapters in order still put "decompose" before "like with like", because the tree felt like the real work. Item 2 then goes wrong for the same reason. | "What would have stopped the 25.9 percent from reaching the slide at all?" |
+| 1. Order the rungs | Learners who ran the chapters in order still put "decompose" before "like with like", because the tree felt like the real work. Item 2 then goes wrong for the same reason, or picks the rate per week, which fixes the length of the windows and not their position. | "What would have stopped the 25.9 percent from reaching the slide at all?" |
 | 2. Spot the mismatched window | Item 4 is the stall: learners see 92 days against 91 and call it a window mismatch, when a rate per day is the fix for unequal length. Item 5 is missed by learners who read only the dates. | "Is the rate already dividing each side by its own days? Then what is left to be unequal?" |
 | 3. Predict the tree for a new case | Learners compute revenue's change, see 0.6 percent, and stop. Others pick the revenue per customer figure in item 7 because it moves most. | "Revenue is flat. Which two branches moved in opposite directions to keep it flat?" |
 | 4. The memo's first lines | Learners pick the right lines in items 9 to 12 and then write their own versions without the window, the definition or the numbers. The fourth line is the hardest: many write the reorder feature as the cause. | "Read your line to me as Anand would, looking for the number it rests on. Where is it?" |

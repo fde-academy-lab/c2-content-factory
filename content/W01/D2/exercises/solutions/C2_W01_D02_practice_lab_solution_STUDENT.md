@@ -14,7 +14,7 @@ frequency behind flat revenue, and Problem 4 turns the day's numbers into the me
 | Item | Key | Why it holds | Why the others fail |
 |---|---|---|---|
 | 1 | d | Confirm the drop, compare like with like, decompose, isolate, hypothesise. | a decomposes before anyone knows the drop is real. b decomposes before the windows match. c starts on like with like before confirming a drop exists, and hypothesises before isolating. |
-| 2 | b | Like with like checks the windows, and the tile's 11 weeks against 13 fails that check at once. | a, c and d are later rungs, and each would have run on the wrong 25.9 percent. |
+| 2 | b | The skipped rung is like with like. With Q2 open, the same 11 weeks of each quarter control for length and position, minus 17.0 percent, and the day Q2 closes the closed quarters answer directly. | a is the unmatched comparison that made the slide. c: a rate fixes length and not position, and the season is a different question from an open quarter. d decomposes a drop nobody has confirmed. |
 | 3 | b | Rs 60,950 is Retail-Core's booked revenue from 1 July to 15 September, about 11 weeks, set against all 13 weeks of Q1; its closed Q2 is Rs 72,510. | a: the windows differ. c: both sides are booked revenue. d: no rate is involved. |
 | 4 | a | A rate per day divides each quarter by its own days, so the windows compare fairly. | b: the per-day rate is the fix for unequal length. c: both are booked. d: the denominator is days, and each side uses its own. |
 | 5 | c | Delivered revenue on one side and booked on the other; the gap mixes the fall with returns and cancellations. | a: the definitions differ. b: both are closed quarters. d: no rate is involved. |

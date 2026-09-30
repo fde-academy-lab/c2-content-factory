@@ -3,9 +3,9 @@
 Forty minutes, in pairs. One of you answers the marketing lead, the other answers the head of
 Retail-Plus, from the same file, and together you write one reply.
 
-> "Student orders per customer rose 40 percent after our campus push, so acquisition works. And
-> Retail-Plus web orders fell hardest, 24 to 9, so this is the website team's problem, not the
-> tier's and not the app's." (the marketing lead)
+> "Retail-Plus members spend 7 percent more every time they order, so the tier is healthy and the
+> answer is still acquisition. And Retail-Plus web orders fell hardest, 24 to 9, so this is the
+> website team's problem, not the tier's and not the app's." (the marketing lead)
 >
 > "Fine. Which of my members do I call first?" (the head of Retail-Plus)
 
@@ -28,14 +28,14 @@ flowchart TD
 
 ---
 
-## Part 1. "Student rose 40 percent, so acquisition works"
+## Part 1. "Members spend 7 percent more per order, so the tier is healthy"
 
-### Q1. What is the 40 percent made of?
+### Q1. (design) Put the tier's leaves back together. What does its own tree say to Marketing?
 
-a) Two new student customers who each placed several orders in Q2
-b) A campus campaign that lifted student orders across every channel
-c) A rounding effect on the student segment's revenue per order
-d) The same two customers placing seven orders against five
+a) The tier is healthy, since 7 percent more per order outweighs the fall in orders
+b) Tier revenue fell about 42 percent, orders down 49 and value up 7, so it is minor
+c) New, richer members joined, so acquisition is already working inside the tier
+d) The same 22 members ordered half as often, so tier revenue fell about 45 percent
 
 ---
 
@@ -45,7 +45,7 @@ d) The same two customers placing seven orders against five
 
 a) Retail-Plus app orders, 13 to 8, since the app shares the website's servers
 b) Retail-Core web orders on the same website, which held at 13 and 12
-c) Student web orders, which rose from one to three in the quarter
+c) Retail-Plus web orders by month, to see when the members' fall began
 d) The total of all web orders, 44 to 30, since it covers every segment
 
 ---
@@ -57,15 +57,15 @@ d) The total of all web orders, 44 to 30, since it covers every segment
 a) Members with no order in Q2, since they have stopped altogether
 b) Members who ordered once in Q1, since they are the least attached
 c) The 7 who fell from three orders to one, since they slowed most
-d) Every one of the 22 members at once, since all of them slowed
+d) The 11 who fell by one order, since they are the largest group that slowed
 
 ---
 
 ## Part 4. The reply, and one request
 
-### Q4. (design) The fall began in July and the button broke on 25 August. Which request tests the cause behind the larger part of the fall?
+### Q4. (design) The tier lost 25 orders between the quarters, and chapter 6 capped the button at about 4 of them. Which request goes first?
 
 a) The tier's July change log, renewals and support tickets
 b) The app's reorder logs by week since the 25 August release
-c) Marketing's campaign reach by month for the July student push
+c) Marketing's new-member sign-ups by month from July
 d) This export again, cut by city, channel and week from July

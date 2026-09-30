@@ -35,12 +35,12 @@ b) r, s, t, p, q
 c) t, r, s, q, p
 d) r, t, s, p, q
 
-### Q2. (design) Marketing's 25.9 percent reached a slide because one rung was skipped. Which rung, if run, would have stopped it?
+### Q2. (design) Marketing's 25.9 percent reached a slide on 15 September because one rung was skipped. What should that rung have sent Meera that day, and what would switch it once Q2 closed?
 
-a) Decompose the change along the tree, which would have shown frequency falling
-b) Compare like with like, which would have shown 11 weeks set against 13
-c) Isolate the segment, which would have shown the fall sitting in one place
-d) Name a hypothesis, which would have forced someone to ask for evidence
+a) The tile against all of Q1, minus 25.9 percent, switching once Marketing agrees the method is fair
+b) The same 11 weeks of each quarter, minus 17.0 percent, switching to closed quarters at the close
+c) A rate per week, minus 12.4 percent, switching to last year's Q2 once the export arrives from Finance
+d) The tree's leaves, frequency and order value, switching to the segments once they are split
 
 ---
 
@@ -112,7 +112,7 @@ Open a new notebook beside the day's notebooks, load the class file with
 `kit.load_records("C2_W01_D02_orders_STUDENT.py")`, and rebuild the four numbers each line needs
 with your own `tree_for`. Pick each line, then write all four in your own words under your letters.
 
-### Q9. (design) Which first line states the drop so that nobody can argue with the window?
+### Q9. Which first line states the drop so that nobody can argue with the window?
 
 a) "Revenue fell 25.9 percent quarter on quarter, from Rs 2.10 crore to Rs 1.56 crore on booked orders."
 b) "Revenue fell 11.0 percent between two closed 13-week quarters, Rs 2.10 to Rs 1.87 crore, booked."

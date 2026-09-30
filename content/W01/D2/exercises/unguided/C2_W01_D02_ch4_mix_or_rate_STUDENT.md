@@ -35,42 +35,42 @@ flowchart LR
 
 ### Q1. Which reading of the table answers Marketing's price claim?
 
-a) No segment rose 18 percent, so small member orders leaving the blend explain it
-b) Business rose 5.0 percent, so prices across the range can safely rise 5 percent
+a) Business rose 5.0 percent, so prices across the range can safely rise 5 percent
+b) No segment rose 18 percent, so small member orders leaving the blend explain it
 c) Student rose 14.8 percent, so the students' higher prices explain the blended rise
 d) Retail-Core fell 4.9 percent, so its prices should be cut to win the orders back
 
-### Q2. (design) Match each question to the reading that answers it: 1 how big is the rise, 2 did any segment pay more, 3 how much of the rise is mix, 4 what is a typical order; P the blended change, Q per-segment rates, R the mix-and-rate split, S medians. Which pairing holds?
+### Q2. (design) Match each question to the reading that answers it: 1 how big is the rise, 2 did any segment pay more, 3 how much of the rise is mix, 4 what is a typical order; P the per-segment rates, Q the medians, R the blended change, S the mix-and-rate split. Which pairing holds?
 
-a) 1P 2R 3Q 4S
-b) 1Q 2P 3R 4S
-c) 1P 2Q 3R 4S
-d) 1S 2Q 3R 4P
+a) 1R 2S 3P 4Q
+b) 1S 2P 3R 4Q
+c) 1R 2P 3S 4Q
+d) 1R 2P 3Q 4S
 
 ### Q3. (design) Which fact would make the per-segment table enough without a mix split?
 
 a) A rise in revenue per order larger than the 18 percent seen this quarter
-b) A segment whose rate fell while the blend rose
+b) Segments whose own rates all moved by less than the blend did
 c) Four segments instead of two
 d) Segments with similar order sizes, or shares that held still
 
-### Q4. At Q2's mix and Q1's segment rates, revenue per order would be Rs 2,07,112. How much of the Rs 33,231 rise is mix?
+### Q4. (design) Price Q2's order mix at each segment's Q1 revenue per order, using the table. What does revenue per order come to, and how much of the Rs 33,231 rise is mix?
 
-a) Rs 10,330, about 31 percent, the part inside the segments
-b) Rs 22,902, about 69 percent, the part the mix explains
-c) Rs 33,231, all of it, since no segment rose 18 percent
-d) Rs 2,07,112, the level at Q2's mix and Q1's rates
+a) Rs 2,07,112, so the mix is Rs 22,902 of the rise, about 69 percent
+b) Rs 2,07,112, so the mix is Rs 10,330 of the rise, about 31 percent
+c) Rs 1,93,414, so the mix is Rs 9,203 of the rise, about 28 percent
+d) Rs 2,17,442, so the mix is all Rs 33,231 of the rise, every rupee
 
 ### Q5. The rate part, Rs 10,330, splits by segment. Which segment carries most of it, and why does that matter for the price rise?
 
 a) Retail-Plus, so members did pay noticeably more for each order they placed
-b) Retail-Core, so everyday shoppers carry the rise
-c) Business, since its lakh-sized orders dominate the rate part
+b) Business, since its lakh-sized orders dominate the rate part
+c) Retail-Core, so everyday shoppers carry the rise
 d) Student, whose rate rose most in percentage terms
 
-### Q6. (design) Moving the rate first gives mix Rs 24,028 instead of Rs 22,902. What does the second route confirm?
+### Q6. (design) The envelope route treats Kalpa as two groups: Business's share of orders rose from 17.5 to 19.8 percent, and a Q1 Business order was worth Rs 10,36,125 more than a consumer order. What does it put on the mix, and what does that show?
 
-a) Both orders add to Rs 33,231, and mix stays above two thirds
-b) The first split had an arithmetic error of Rs 1,126 in its mix part
-c) The rate-first order is the correct one to report
-d) Mix and rate cannot be separated on this file
+a) About Rs 23,000, within 1 percent of the split, so the call holds however it is cut
+b) About Rs 23,000, so the four-segment split was out by Rs 137 and needs correcting
+c) About Rs 2,300, since a 2.2-point move in share moves the blend 2.2 percent at most
+d) All Rs 33,231, since only Business's share moved while the consumer prices held

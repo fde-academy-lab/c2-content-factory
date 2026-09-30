@@ -53,7 +53,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 - The segment had no orders, so the total was zero
 - The function was called before it had been defined
 - The function prints its total and returns nothing  <- correct
-- The variable name result is reserved in Python
+- The return sits inside the loop, so it stopped after one order
 
 ---
 

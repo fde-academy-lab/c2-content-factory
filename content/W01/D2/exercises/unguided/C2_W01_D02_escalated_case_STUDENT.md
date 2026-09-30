@@ -45,18 +45,18 @@ d) No fall at all, since returns for Q2 are still arriving and will lift its tot
 
 Build the bridge in the tree's order: customers, then orders per customer, then revenue per order.
 
-### Q2. (design) Customers with a delivered order fell from 54 to 50, and the bridge charges that branch Rs 10,74,442. What do you conclude before Part 3?
+### Q2. (design) Customers with a delivered order fell from 54 to 50, and the bridge charges that branch Rs 10,74,442. Which check do you run before anyone names the branch, and what result would make it churn?
 
-a) Marketing was right after all, so the acquisition budget should be released now
-b) The bridge is wrong, since the morning proved customers held at 69
-c) A branch that held on booked orders moved, so find what it is made of first
-d) Frequency no longer matters, since customers now carry most of the fall
+a) The CRM's sign-ups by month; a Q2 campaign would make it acquisition
+b) The bridge in the other order; a smaller customers step would make it an artefact
+c) The delivered ids against the booked ids; a leaver who never booked in Q2 is churn
+d) The tree per segment; a fall inside one segment would make it that segment's churn
 
 ---
 
 ## Part 3. Are those lost customers?
 
-Compare the delivered overlap with the booked overlap from chapter 5.
+Find out what the customers who dropped out of the delivered count did in Q2.
 
 ### Q3. Nineteen of Q1's delivered customers have no delivered order in Q2. What are they?
 
@@ -67,9 +67,10 @@ d) Customers whose Q1 orders were delivered late and counted in Q2 instead
 
 ---
 
-## Part 4. Four segments, rolled up with their weights
+## Part 4. Four segments on delivered orders
 
-Run `tree_for` per segment on delivered orders, roll the rate up, and count the groups.
+Run `tree_for` per segment on delivered orders, roll the rate up to the company, and count the groups
+that come back.
 
 ### Q4. Which statement about delivered orders per customer holds?
 
@@ -100,4 +101,4 @@ d) Delivered orders are unreliable, so the booked split should be used on its ow
 a) Delivered alone, since it is the board's number, whatever the booked figure says
 b) Booked alone, since it closes first and never moves after the quarter
 c) Both side by side and labelled, moving to delivered alone once returns settle
-d) Whichever shows the smaller fall, to keep the board calm this month
+d) Delivered alone, with last quarter's booked figures restated as delivered

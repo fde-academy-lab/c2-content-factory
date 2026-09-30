@@ -1,6 +1,6 @@
 # Solution: chapter 2 scenario set: which branch moved
 
-Answers: 1b 2d 3a 4c 5d 6a
+Answers: 1b 2d 3c 4a 5d 6b
 
 3 of the 6 items are design items.
 
@@ -8,9 +8,9 @@ Answers: 1b 2d 3a 4c 5d 6a
 
 | Item | Kind | Key | Why it holds | Why the others fail |
 |---|---|---|---|---|
-| 1 | scenario | b | The count is 69 in both quarters and orders fell from 114 to 86, so orders per customer carries the fall. | a: The count did not fall. c: A rise in one leaf says nothing about customers, which are counted directly. d: The tree answers the branch question on totals; segments answer the next one. |
-| 2 | scenario | d | Revenue is a product of its leaves, so their ratios multiply; adding percentages ignores the part where both moved. | a: They add only for tiny changes. b: The customer ratio is 1.000 and contributes nothing. c: The sign of the order-value change is right; the operation is wrong. |
-| 3 | design | a | The bridge adds exactly to the fall and reads one step at a time; when others rebuild it every month and argue about order, the symmetric split removes the argument. | b: Percentages give no rupees, which is what she asked for. c: The symmetric split is harder to explain and the bridge's order never changes the verdict here. d: Reading 69 rows first delays the answer; it is the option for who slowed. |
-| 4 | design | c | Whichever leaf moves second is charged for the joint part; all three splits add to the same Rs 23,00,000. | a: All three are exact and land on the fall. b: Discounts sit inside revenue per order and are bounded at Rs 12,900. d: The customer branch is zero in every order. |
-| 5 | scenario | d | A blank is unknown; treating it as zero files 26 unknown orders under "no discount", and the extension spends margin on orders that may already carry one. | a: The quarter is not the issue; the blanks are. b: Ownership does not make the share right. c: Rs 150 is the largest recorded discount, not a threshold. |
-| 6 | design | a | The direct count equals the frequency step only because the customer count held; once customers move, some lost orders belong to the customer branch. | b: Revenue per order changed here too, and the routes still agreed. c: Discounts do not enter either route. d: Both routes use the same closed quarters. |
+| 1 | scenario | b | Customers held at 69 in both quarters, while orders per customer fell from 1.65 to 1.25, so the branch Marketing wants to fund did not move. | a: 114 and 86 are orders: rows counted as customers, Monday's trap. c: Customers held, so a rise in order value cannot put the fall there. d: The tree answers Marketing's claim now; segments come in chapter 3. |
+| 2 | scenario | d | Revenue is customers times frequency times order value, so the ratios multiply; adding percentages drops the part where two leaves moved together, as Monday's two lifts called 20 percent did. | a: Percentage changes on leaves do not add. b: The customer leaf is 1.000 and carries nothing. c: An average of two changes is no quantity in the tree. |
+| 3 | design | c | A CEO follows one leaf at a time, so she gets the bridge with its order written beside it; a split rebuilt monthly while two branches move together goes symmetric, so nobody argues about order. | a: Meera loses the one-step reading, and on this quarter every order gives the same verdict. b: Percentages do not add, so Meera gets no rupees. d: 69 rows before any total answer who moved, not which branch. |
+| 4 | design | a | In the tree's order frequency moves second, with customers at Q2 and order value still at Q1: 69 times minus 0.406 times Rs 1,84,211, which is 28 fewer orders at Q1's value. | b: Pricing at Q2's value moves frequency after order value, which is the reversed bridge. c: The fall is net of the order value step, which gave back Rs 28,57,895. d: That is the order value step, and it gave rupees back rather than taking them. |
+| 5 | scenario | d | A blank is unknown; reading it as zero files 26 unknown orders under "no discount", and the extension spends margin on orders that may already carry one. | a: It keeps reading the blanks as zeros, on more orders. b: Changing the weights leaves the blanks read as zeros. c: That is the misreading itself: 26 of the 43 are blanks, which are unknown. |
+| 6 | design | b | An independent split that chooses no order puts the largest fall on the same branch; the Rs 4,30,585 between them is the part where frequency and order value moved together, which each method shares out differently. | a: Neither figure is wrong; the bridge charges the joint part to the leaf that moves second. c: The customers step is zero in both routes. d: Customers held at 69; the gap is the joint part of frequency and order value. |

@@ -31,44 +31,44 @@ flowchart LR
 
 ---
 
-### Q1. (design) The same five numbers are needed for four segments in two quarters, then for a channel and for delivered orders later today. Which is the best fit?
+### Q1. (design) Copying the loop takes 72 lines and 8 places to edit, a function 21 lines and 1 place, and one pass by key 14 lines and 1 place, shaped for these eight groups. A channel, a month and delivered orders are asked for later today. Which is the best fit?
 
-a) Paste the loop once per group, since eight copies are quick to type
-b) One pass grouped by (quarter, segment), since it reads fewest rows
-c) A spreadsheet, since the groups are few enough to read by eye
-d) A function `tree_for(rows)`, since any later subset is one call
+a) Copy the loop per group, since each copy can be checked on its own
+b) One pass by key, since it is the shortest code and reads the rows once
+c) A spreadsheet, since eight groups are few enough to total by hand
+d) A function, tree_for(rows), since each later subset is one more call
 
-### Q2. (design) Which fact would switch the call from a function to one pass grouped by key?
+### Q2. (design) Next quarter's export holds 40 lakh orders, and Anand wants all 40 segment-and-month groups every Monday. Filtering the export once per group and calling tree_for on each reads how many rows, against one pass by key?
 
-a) Millions of rows with every group needed at once
-b) A definition that changes once a quarter
-c) A stakeholder who asks for one segment at a time
-d) A file of 200 orders with four segments
+a) 16 crore rows against 40 lakh, so one pass by key takes over
+b) 40 lakh either way, since each call reads only its own group
+c) 16 crore against 40 lakh, and the function stays for its one place to edit
+d) 1,600 rows against 200, the same gap as on today's file
 
-### Q3. Anand's summary table shows a blank for Q1 orders per customer, though the helper printed 1.65 on screen. What went wrong?
+### Q3. Anand's summary table shows a blank for Q1 orders per customer, although calling the helper on its own in a cell shows 1.65 under it. What went wrong?
 
-a) The rows list was empty, so the division failed silently
-b) The function computed the wrong rate for that quarter
-c) The function printed its answer and returned nothing
-d) Python rounds a float to None when it prints it
+a) The table was filled before the helper ran, so it still holds an old blank
+b) The helper rounds 1.652 to 1.65, and the table will not take a rounded value
+c) The helper printed its answer and returned nothing, so the table got None
+d) The helper returned from inside its loop, before the last order was counted
 
-### Q4. Averaged over the four segments, orders per customer reads 1.94 then 1.82, a fall of 6.0 percent. A colleague says frequency is not the branch after all. What is the check?
+### Q4. Averaged over the four segments, orders per customer reads 1.94 then 1.82, a fall of 6.0 percent. The four segments hold 69 customers, who placed 114 orders in Q1 and 86 in Q2. What does the roll-up with weights give?
 
-a) The averages must be recomputed to three decimals, 1.939 and 1.822
-b) The roll-up must reproduce the company figures, 1.65 and 1.25
-c) The smallest segment, 2 customers, must be dropped and the rest averaged
-d) The medians of the 4 segments' rates must be compared in its place
+a) 1.94 to 1.82, since the weights cancel out once all four segments are counted
+b) 1.65 to 1.25, a fall of 24.6 percent, so frequency is the branch after all
+c) 1.65 to 1.25, a fall of 32.0 percent, measured against the Q2 figure
+d) 0.61 to 0.80, total customers over total orders in each quarter
 
-### Q5. Business revenue fell Rs 22,29,720. `describe` shows the median order barely moved while the range rose about 73 percent. What do you say about the typical Business order?
+### Q5. Business revenue fell Rs 22,29,720 on three fewer orders. `describe` shows the median Business order barely moved while the range rose about 73 percent. What do you say about the typical Business order?
 
-a) The typical order held, while one large order stretched the range
-b) Every Business order got smaller, which is why Business revenue fell
-c) The typical order grew sharply, so Business customers spend more
-d) Nothing can be said until the mean is computed
+a) It held: one very large order stretched the range; the fall is three fewer orders
+b) It grew, since a range up 73 percent means the middle of the orders moved up too
+c) It shrank, since revenue fell by Rs 22 lakh while the count moved by only three
+d) It is the mean here, since a median ignores the lakh-sized orders that matter most
 
-### Q6. Anand asks for the company's orders per customer rolled up from the four segments. Order the steps: p) add each segment's orders, q) add each segment's customers, r) divide total orders by total customers, s) check the result is 1.65 and 1.25. Which order is right?
+### Q6. Anand asks for the company's orders per customer rolled up from the four segments. Order the steps: p) divide total orders by total customers, q) run tree_for on each segment in each quarter, r) check the result against chapter 2's 1.65 and 1.25, s) add the segments' orders and their customers. Which order is right?
 
-a) s, p, q, r
-b) r, p, q, s
-c) p, r, q, s
-d) p, q, r, s
+a) q, p, s, r
+b) s, q, p, r
+c) q, s, r, p
+d) q, s, p, r
