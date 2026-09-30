@@ -49,11 +49,12 @@ def item(heading, stem, options, key, why, others, short, kind):
 SETS = [
     dict(
         name="ch1_profile", chapter=1,
-        question="What did the ERP actually send, and does the dashboard's Rs 2.1 crore follow from it?",
-        topic="what the ERP actually sent",
+        question="What did the ERP send, and does the dashboard's Rs 2.1 crore follow from it?",
+        topic="what the ERP sent",
         terms=("The ERP is the enterprise resource planning system Finance books orders in. Kalpa Retail's "
                "dashboard reads an export of orders from it and puts Q1 revenue at Rs 2.1 crore, while the "
-               "books, Finance's own record of Q1, say Rs 1,90,00,000 to the rupee."),
+               "books, Finance's own record of Q1, say Rs 1,90,00,000 to the rupee. A CSV hands back every "
+               "value as text, so an amount has to be converted to a number before it is compared or summed."),
         quote=("How many records did you receive, and how many can you use?",
                "Anand Iyer, finance controller, Kalpa Retail"),
         who=("Anand Iyer, the finance controller, decides whether Finance acts at all on the drop the team "
@@ -61,17 +62,17 @@ SETS = [
              "ties out every figure: she matches each one to the books line by line, so a rupee's difference "
              "is a finding. A wrong count costs the most of the day, since every later number stands on it. "
              "A note that calls the dashboard right when it is not makes the analyst discount everything the "
-             "team sends, and Marketing loses a month."),
+             "team sends, and Marketing, whose campaign waits on the finding, loses a month."),
         so_far=("Both of Anand's figures count booked value, every order at the price charged, whatever its "
                 "status. Chapter 1 profiled the export before totalling anything: for every field it counted "
                 "the values present, the values that convert to the type the field needs, and the distinct "
                 "values. The profile found 201 rows for 186 distinct order ids and one amount that does not "
-                "convert, and Q1 over the 200 amounts that do convert is Rs 2,09,98,210, so the dashboard's "
+                "convert, and Q1, summed over its amounts that convert, is Rs 2,09,98,210, so the dashboard's "
                 "Rs 2.1 crore is honest arithmetic on this file. Kalpa's Business segment is its sales to "
                 "companies, every order in lakhs."),
         scenario=("Anand Iyer, Kalpa Retail's finance controller, will not act on the dashboard's Rs 2.1 crore "
                   "for Q1 until the team shows what the ERP, the enterprise resource planning system Finance "
-                  "books orders in, actually sent, since the books, Finance's own record of Q1, say Rs 1.9 "
+                  "books orders in, sent, since the books, Finance's own record of Q1, say Rs 1.9 "
                   "crore and his analyst ties out every figure, matching it to the books line by line."),
         items=[
             item("Should the note on the largest Q2 order go to Anand?",
@@ -105,7 +106,7 @@ SETS = [
                  "they flag, and those two fields are where a repeated order or an unreadable amount would move "
                  "Anand's figure.",
                  {"a": "72 minutes, so the analyst starts before the profile has finished.",
-                  "c": "reads under a tenth of a percent of the rows and says nothing about the rest.",
+                  "c": "reads under a tenth of a percent of the rows and cannot see the rest.",
                   "d": "a total cannot say why it differs from the books."},
                  "A new export of 1.2 crore rows and 12 fields lands, the analyst starts in 45 minutes, and the "
                  "team's profile, three counts for every field, reads about 20 lakh values a minute.",
@@ -127,7 +128,7 @@ SETS = [
                  "Next quarter's export will hold 4 crore rows. A Python set of order ids takes about 100 bytes "
                  "an id, and the laptop the team leaves running overnight has 2 GB free. Which route counts the "
                  "distinct order ids?",
-                 ["A set of every id, then its length, as chapter 1 did",
+                 ["A set of every id, then its length",
                   "A Counter over every id, which also keeps how often each appears",
                   "A set of the first crore ids, with the answer times four",
                   "Sort the ids on disk, then count each change from the last"], "d",
@@ -172,7 +173,7 @@ SETS = [
             item("Why does a dedupe find 0 copies when 300 rows hold 284 order ids?",
                  "A colleague's dedupe of a 300-row export reports 0 duplicates, and a count of distinct order "
                  "ids returns 284. The pipeline stamps every row with the time it was loaded. What happened?",
-                 ["The load stamp differs on every row, so no two rows matched",
+                 ["A field that differs on all 300 rows left no two rows alike",
                   "16 orders were lost in the load, and the ERP team must resend",
                   "The dedupe is right, and the id count is off by 16 somewhere",
                   "16 rows carry a blank order_id, so the id count falls short"], "a",
@@ -218,7 +219,7 @@ SETS = [
                  "themselves show which real orders one key removed and which copies it missed.",
                  {"a": "counts by quarter can match while the rows differ.",
                   "c": "a narrower window changes the count and cannot test whether the rows are the same.",
-                  "d": "a check on one segment, Kalpa's sales to companies, says nothing about which rows either "
+                  "d": "a check on one segment, Kalpa's sales to companies, cannot show which rows either "
                        "key flagged."},
                  "On an invented export the order_id key and a fuzzy match on customer and amount within 60 days "
                  "each flag 22 rows, and the reviewer is about to sign off because the counts agree.",
@@ -260,8 +261,10 @@ SETS = [
                 "one order: 15 orders appear twice, 14 in Q1 and 1 in Q2, none three times. For 13 of those "
                 "pairs the two copies are identical, and for 2 they disagree. A survivor rule picks which copy "
                 "of a pair stays in the clean file, and every copy it does not keep is set aside to a log with "
-                "its reason; a copy's twin is the other row of the same order. Kalpa's Business segment is its sales to companies, every order in lakhs, and "
-                "Retail-Plus is its paid membership tier."),
+                "its reason; a copy's twin is the other row of the same order. An amount converts when it reads as "
+                "a whole number of rupees. As exported, Q1 comes to Rs 2,09,98,210 against the books' "
+                "Rs 1,90,00,000, Rs 19,98,210 apart. Kalpa's Business segment is its sales to companies, every "
+                "order in lakhs, and Retail-Plus is its paid membership tier."),
         scenario=("When an order appears twice in Kalpa Retail's export from the ERP, the enterprise resource "
                   "planning system Finance books orders in, the team has to choose which copy stays, and Anand "
                   "Iyer's analyst checks that choice against the books, Finance's own record of Q1 at "
@@ -306,7 +309,7 @@ SETS = [
                  "copied April's and June's unchanged. Which survivor rule goes in the log?",
                  ["Last copy for every pair, since the second extract is the fix",
                   "First copy for every pair, as the first extract is the original",
-                  "The copy that converts, then the first, everywhere: it tied Q1",
+                  "The copy that converts, then the first, everywhere, as it tied Q1 today",
                   "Last copy for May; elsewhere the copy that converts, then first"], "d",
                  "May's second copies carry the corrected prices, so they win in May. April and June were copied "
                  "unchanged, so the day's rule still decides there, and it keeps a readable copy wherever one "
@@ -319,10 +322,12 @@ SETS = [
                  "design"),
             item("Who hears first about the two Business rows set aside?",
                  "Twenty rows are set aside as copies. Two are Business orders carrying Rs 9,00,000 of the "
-                 "Rs 9,30,000 set aside, and eighteen are Retail-Plus orders. Which conversation do the two "
+                 "Rs 9,30,000 set aside, and eighteen are Retail-Plus orders. Anand needs the gap to his books "
+                 "explained in rupees, Marketing reads the per-customer rates behind Tuesday's finding, the auditor "
+                 "asks why each row went, and Operations counts deliveries. Which conversation do the two "
                  "Business rows belong to first?",
                  ["Marketing's, since Retail-Plus carries most of the rows set aside",
-                  "Anand's, since two rows carry nearly all of the rupees set aside",
+                  "Anand's, since nearly all of the gap in rupees sits in those two",
                   "The auditor's, since every row set aside needs its reason first",
                   "Operations', since Business orders move the count of deliveries"], "b",
                  "Two rows carry about 97 percent of the rupees, which is where Anand's gap sits. The eighteen "
@@ -366,7 +371,7 @@ SETS = [
                  "up in the courier's system at about 2 minutes an order, and the delivered share goes out every "
                  "Monday. Which plan fits the weekly report?",
                  ["Look up all 1,800 by hand before the first report goes out",
-                  "Keep and flag them; report the share and the count unknown",
+                  "Leave them flagged, with the unknown count beside the share",
                   "Default them to delivered, since most orders with a status are",
                   "Drop them from the report, since 3 percent cannot move a share"], "b",
                  "1,800 lookups at 2 minutes each is 60 hours, more than a working week, so the flag stays and "
@@ -407,7 +412,7 @@ SETS = [
                  "repairs it, and nothing is sold for Rs 0.",
                  {"a": "the order still reads Rs 0 in every total.",
                   "b": "invents an amount nobody booked.",
-                  "c": "still turns a failure into a zero, more quietly."},
+                  "c": "still turns every failure into a zero, whatever its cause."},
                  "A colleague converts amounts with `int(v) if v.isdigit() else 0`, and an invented amount "
                  "written `1,150`, with a thousands separator, comes out as Rs 0.",
                  "fix the logic"),
@@ -528,11 +533,11 @@ SETS = [
                  "quarters, with every field valid. Marketing asks for Q2 without it. What goes in the note?",
                  ["Q2 without it, since one order that size distorts the quarter",
                   "Q2 with the order capped at the next largest, to keep the shape",
-                  "Q2 with it, flagged, and the figure without it shown beside",
+                  "Q2 as booked, with the figure without it printed next to it",
                   "Q2 without it, and a footnote that names the account"], "c",
                  "Nothing about the record is wrong, so it is revenue, and the note shows both readings and says "
                  "which one Finance's books hold.",
-                 {"a": "an order's size says nothing against it, and Finance's books hold the order.",
+                 {"a": "an order's size is no charge against it, and Finance's books hold the order.",
                   "b": "invents a smaller order nobody booked.",
                   "d": "a footnote leaves the order's booked value, the price it was charged, out of the quarter."},
                  "The largest Q2 order is 1.8 times the next, from a Business account, one of Kalpa's sales to "
@@ -574,7 +579,7 @@ SETS = [
                   "Add a Rs 2,100 adjustment line, labelled, so the rupees tie",
                   "Find the set-aside row whose value its kept twin lacks",
                   "Ask Finance whether its books carry Rs 2,100 too much"], "c",
-                 "Rows prove no row vanished and say nothing about which rows stayed. The missing rupees sit in a "
+                 "Rows prove no row vanished; only the rupees show whether the right rows stayed. The missing rupees sit in a "
                  "set-aside row whose twin, the kept copy of the same order, cannot be summed.",
                  {"a": "a gap of any size is an order missing from a file called reconciled.",
                   "b": "an adjustment closes the gap without a cause.",
@@ -626,7 +631,7 @@ SETS = [
                  "The replay shares no code with the pass: if the raw export less the logged lines equals the "
                  "clean file, nothing left without a line.",
                  {"a": "counts can match while the rows differ.",
-                  "c": "proves that each line has a reason and says nothing about a removal with no line.",
+                  "c": "proves that each line has a reason and cannot find a removal with no line.",
                   "d": "the same code repeats the same mistakes."},
                  "The analyst asks how she can know the log is complete without trusting the code that wrote it.",
                  "design"),

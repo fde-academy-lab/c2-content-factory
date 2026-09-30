@@ -10,7 +10,7 @@ Two of the four items are design items: 2 and 4.
 
 A dedupe of a 300-row export reports 0 duplicates, a count of distinct order ids returns 284, and the pipeline stamps every row with the time it was loaded.
 
-The key is a, "The load stamp differs on every row, so no two rows matched". A load stamp differs on every row, so a key that compares the whole record never finds a match, and 300 rows against 284 ids says 16 rows repeat an order.
+The key is a, "A field that differs on all 300 rows left no two rows alike". A load stamp differs on every row, so a key that compares the whole record never finds a match, and 300 rows against 284 ids says 16 rows repeat an order.
 
 - b, "16 orders were lost in the load, and the ERP team must resend": all 300 rows are present, so nothing was lost.
 - c, "The dedupe is right, and the id count is off by 16 somewhere": the id count is the check, and it disagrees with the dedupe.
@@ -34,7 +34,7 @@ The key is b, "Compare the two lists of flagged rows, line against line". Two ke
 
 - a, "Compare the two keys' counts again, quarter by quarter": counts by quarter can match while the rows differ.
 - c, "Rerun the fuzzy match with a 30-day window to confirm 22": a narrower window changes the count and cannot test whether the rows are the same.
-- d, "Check that both keys flag at least one Business order": a check on one segment, Kalpa's sales to companies, says nothing about which rows either key flagged.
+- d, "Check that both keys flag at least one Business order": a check on one segment, Kalpa's sales to companies, cannot show which rows either key flagged.
 
 ### Q4 (Design). Where does the fuzzy match leave revenue against the order_id key?
 

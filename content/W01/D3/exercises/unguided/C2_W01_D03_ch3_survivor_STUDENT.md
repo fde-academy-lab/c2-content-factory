@@ -6,7 +6,7 @@ Chapter 3 set, 4 items, about 12 minutes, after chapter 3. The books are Finance
 >
 > Anand Iyer, finance controller, Kalpa Retail
 
-The export was stitched from two extracts, two separate pulls of rows out of the ERP. Chapter 2 found that the order_id, the number the ERP issues once per order, decides when two rows are one order: 15 orders appear twice, 14 in Q1 and 1 in Q2, none three times. For 13 of those pairs the two copies are identical, and for 2 they disagree. A survivor rule picks which copy of a pair stays in the clean file, and every copy it does not keep is set aside to a log with its reason; a copy's twin is the other row of the same order. Kalpa's Business segment is its sales to companies, every order in lakhs, and Retail-Plus is its paid membership tier.
+The export was stitched from two extracts, two separate pulls of rows out of the ERP. Chapter 2 found that the order_id, the number the ERP issues once per order, decides when two rows are one order: 15 orders appear twice, 14 in Q1 and 1 in Q2, none three times. For 13 of those pairs the two copies are identical, and for 2 they disagree. A survivor rule picks which copy of a pair stays in the clean file, and every copy it does not keep is set aside to a log with its reason; a copy's twin is the other row of the same order. An amount converts when it reads as a whole number of rupees. As exported, Q1 comes to Rs 2,09,98,210 against the books' Rs 1,90,00,000, Rs 19,98,210 apart. Kalpa's Business segment is its sales to companies, every order in lakhs, and Retail-Plus is its paid membership tier.
 
 **Who needs the answer.** Anand Iyer is the finance controller, and his analyst ties out to the rupee: she matches every figure to the books line by line, and a rupee's difference is a finding. If the copy kept for any order moves Q1 away from the books, the reconciliation she checks becomes a finding against the team, and on today's file keeping the wrong copy moved Q1 by Rs 1,790.
 
@@ -51,14 +51,14 @@ The ERP team replies that the second extract re-ran May's orders after a pricing
 
 a) Last copy for every pair, since the second extract is the fix
 b) First copy for every pair, as the first extract is the original
-c) The copy that converts, then the first, everywhere: it tied Q1
+c) The copy that converts, then the first, everywhere, as it tied Q1 today
 d) Last copy for May; elsewhere the copy that converts, then first
 
 ### Q4. Who hears first about the two Business rows set aside?
 
-Twenty rows are set aside as copies. Two are Business orders carrying Rs 9,00,000 of the Rs 9,30,000 set aside, and eighteen are Retail-Plus orders. Which conversation do the two Business rows belong to first?
+Twenty rows are set aside as copies. Two are Business orders carrying Rs 9,00,000 of the Rs 9,30,000 set aside, and eighteen are Retail-Plus orders. Anand needs the gap to his books explained in rupees, Marketing reads the per-customer rates behind Tuesday's finding, the auditor asks why each row went, and Operations counts deliveries. Which conversation do the two Business rows belong to first?
 
 a) Marketing's, since Retail-Plus carries most of the rows set aside
-b) Anand's, since two rows carry nearly all of the rupees set aside
+b) Anand's, since nearly all of the gap in rupees sits in those two
 c) The auditor's, since every row set aside needs its reason first
 d) Operations', since Business orders move the count of deliveries

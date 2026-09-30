@@ -10,7 +10,7 @@ Two of the four items are design items: 1 and 4.
 
 Next month about 1,800 of 60,000 orders will arrive with no status, a lookup in the courier's system takes about 2 minutes an order, and the delivered share goes out every Monday.
 
-The key is b, "Keep and flag them; report the share and the count unknown". 1,800 lookups at 2 minutes each is 60 hours, more than a working week, so the flag stays and the report says how many are unknown. A lookup earns its place once it runs as an automatic feed from the courier, and done by hand it costs those 60 hours before every report.
+The key is b, "Leave them flagged, with the unknown count beside the share". 1,800 lookups at 2 minutes each is 60 hours, more than a working week, so the flag stays and the report says how many are unknown. A lookup earns its place once it runs as an automatic feed from the courier, and done by hand it costs those 60 hours before every report.
 
 - a, "Look up all 1,800 by hand before the first report goes out": 60 hours of lookups before a weekly report.
 - c, "Default them to delivered, since most orders with a status are": invents up to 1,800 deliveries nobody recorded.
@@ -34,7 +34,7 @@ The key is d, "Try int(); on failure, log the value and its reason". isdigit rej
 
 - a, "Keep the isdigit test and footnote the order in the note": the order still reads Rs 0 in every total.
 - b, "Replace the 0 with the segment's median amount": invents an amount nobody booked.
-- c, "Wrap int() in try and return 0 on any failure": still turns a failure into a zero, more quietly.
+- c, "Wrap int() in try and return 0 on any failure": still turns every failure into a zero, whatever its cause.
 
 ### Q4 (Design). What goes in the log for an amount that reads `fourteen`?
 

@@ -50,8 +50,8 @@ The key is a, "It has halved, from 0.40 to 0.20 orders per customer". The gap is
 
 The largest Q2 order is 1.8 times the next, from a Business account, one of Kalpa's sales to companies, that ordered in both quarters with every field valid, and Marketing asks for Q2 without it.
 
-The key is c, "Q2 with it, flagged, and the figure without it shown beside". Nothing about the record is wrong, so it is revenue, and the note shows both readings and says which one Finance's books hold.
+The key is c, "Q2 as booked, with the figure without it printed next to it". Nothing about the record is wrong, so it is revenue, and the note shows both readings and says which one Finance's books hold.
 
-- a, "Q2 without it, since one order that size distorts the quarter": an order's size says nothing against it, and Finance's books hold the order.
+- a, "Q2 without it, since one order that size distorts the quarter": an order's size is no charge against it, and Finance's books hold the order.
 - b, "Q2 with the order capped at the next largest, to keep the shape": invents a smaller order nobody booked.
 - d, "Q2 without it, and a footnote that names the account": a footnote leaves the order's booked value, the price it was charged, out of the quarter.

@@ -1,8 +1,8 @@
-# Which answers hold in the chapter 1 set on what the ERP actually sent, and why?
+# Which answers hold in the chapter 1 set on what the ERP sent, and why?
 
 Answers: 1c 2b 3a 4d
 
-Anand Iyer, Kalpa Retail's finance controller, will not act on the dashboard's Rs 2.1 crore for Q1 until the team shows what the ERP, the enterprise resource planning system Finance books orders in, actually sent, since the books, Finance's own record of Q1, say Rs 1.9 crore and his analyst ties out every figure, matching it to the books line by line.
+Anand Iyer, Kalpa Retail's finance controller, will not act on the dashboard's Rs 2.1 crore for Q1 until the team shows what the ERP, the enterprise resource planning system Finance books orders in, sent, since the books, Finance's own record of Q1, say Rs 1.9 crore and his analyst ties out every figure, matching it to the books line by line.
 
 Two of the four items are design items: 2 and 4.
 
@@ -23,7 +23,7 @@ A new export of 1.2 crore rows and 12 fields lands, the analyst starts in 45 min
 The key is b, "Profile order_id and amount, then read the rows they flag". All 12 fields are 14.4 crore values, 72 minutes at 20 lakh a minute, past the deadline. order_id and amount are 2.4 crore values, 12 minutes, which leaves half an hour to read what they flag, and those two fields are where a repeated order or an unreadable amount would move Anand's figure.
 
 - a, "Profile all 12 fields, then read the rows the profile flags": 72 minutes, so the analyst starts before the profile has finished.
-- c, "Tie out a random sample of 10,000 rows against the books": reads under a tenth of a percent of the rows and says nothing about the rest.
+- c, "Tie out a random sample of 10,000 rows against the books": reads under a tenth of a percent of the rows and cannot see the rest.
 - d, "Total every amount, then set the total beside the books": a total cannot say why it differs from the books.
 
 ### Q3. How many rows are copies, and how many amounts cannot be read?
@@ -42,6 +42,6 @@ Next quarter's export will hold 4 crore rows, a Python set takes about 100 bytes
 
 The key is d, "Sort the ids on disk, then count each change from the last". 4 crore ids at 100 bytes each is about 4 GB, twice the memory free, so any route that holds every id at once stops part way. A sort can run on disk and has to remember only the id before.
 
-- a, "A set of every id, then its length, as chapter 1 did": needs about 4 GB.
+- a, "A set of every id, then its length": needs about 4 GB.
 - b, "A Counter over every id, which also keeps how often each appears": needs at least as much as a set, since it keeps a count beside every id.
 - c, "A set of the first crore ids, with the answer times four": scales a count that does not scale, since repeated ids can sit anywhere in the file.

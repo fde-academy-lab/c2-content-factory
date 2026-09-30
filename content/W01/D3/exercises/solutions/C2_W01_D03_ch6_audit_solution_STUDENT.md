@@ -10,7 +10,7 @@ Three of the four items are design items: 2, 3 and 4.
 
 A pass reports 500 rows in, 470 kept and 30 set aside, and its Q1 comes out Rs 2,100 below the books' Rs 3,20,00,000.
 
-The key is c, "Find the set-aside row whose value its kept twin lacks". Rows prove no row vanished and say nothing about which rows stayed. The missing rupees sit in a set-aside row whose twin, the kept copy of the same order, cannot be summed.
+The key is c, "Find the set-aside row whose value its kept twin lacks". Rows prove no row vanished; only the rupees show whether the right rows stayed. The missing rupees sit in a set-aside row whose twin, the kept copy of the same order, cannot be summed.
 
 - a, "Ship it, since the rows reconcile and Rs 2,100 is a rounding error": a gap of any size is an order missing from a file called reconciled.
 - b, "Add a Rs 2,100 adjustment line, labelled, so the rupees tie": an adjustment closes the gap without a cause.
@@ -43,5 +43,5 @@ The analyst asks how she can know the log is complete without trusting the code 
 The key is b, "Replay the log on the raw export and compare with the clean file". The replay shares no code with the pass: if the raw export less the logged lines equals the clean file, nothing left without a line.
 
 - a, "Count the log's lines and compare them with the rows removed": counts can match while the rows differ.
-- c, "Read every line of the log and check that each has a reason": proves that each line has a reason and says nothing about a removal with no line.
+- c, "Read every line of the log and check that each has a reason": proves that each line has a reason and cannot find a removal with no line.
 - d, "Rerun the pass and compare the new log with the old, line by line": the same code repeats the same mistakes.

@@ -32,7 +32,7 @@ Post exactly this shape: xxxx
 Next month about 1,800 of 60,000 orders will arrive with no status. Operations can look an order up in the courier's system at about 2 minutes an order, and the delivered share goes out every Monday. Which plan fits the weekly report?
 
 a) Look up all 1,800 by hand before the first report goes out
-b) Keep and flag them; report the share and the count unknown
+b) Leave them flagged, with the unknown count beside the share
 c) Default them to delivered, since most orders with a status are
 d) Drop them from the report, since 3 percent cannot move a share
 

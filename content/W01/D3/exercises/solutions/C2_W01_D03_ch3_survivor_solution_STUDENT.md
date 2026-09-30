@@ -34,13 +34,13 @@ The key is d, "Last copy for May; elsewhere the copy that converts, then first".
 
 - a, "Last copy for every pair, since the second extract is the fix": applies May's reason to months it does not cover.
 - b, "First copy for every pair, as the first extract is the original": keeps May's prices from before the fix.
-- c, "The copy that converts, then the first, everywhere: it tied Q1": a rupee tie on today's file is no reason to keep May's prices from before the fix.
+- c, "The copy that converts, then the first, everywhere, as it tied Q1 today": a rupee tie on today's file is no reason to keep May's prices from before the fix.
 
 ### Q4. Who hears first about the two Business rows set aside?
 
 Twenty rows are set aside as copies: two Business orders, Kalpa's sales to companies, carry Rs 9,00,000 of the Rs 9,30,000, and eighteen are Retail-Plus orders, from Kalpa's paid membership tier.
 
-The key is b, "Anand's, since two rows carry nearly all of the rupees set aside". Two rows carry about 97 percent of the rupees, which is where Anand's gap sits. The eighteen Retail-Plus rows matter to a per-customer rate, which is a second conversation.
+The key is b, "Anand's, since nearly all of the gap in rupees sits in those two". Two rows carry about 97 percent of the rupees, which is where Anand's gap sits. The eighteen Retail-Plus rows matter to a per-customer rate, which is a second conversation.
 
 - a, "Marketing's, since Retail-Plus carries most of the rows set aside": the Retail-Plus rows are Marketing's, and they carry Rs 30,000.
 - c, "The auditor's, since every row set aside needs its reason first": the auditor wants every row, and the money decides which to show first.

@@ -1,14 +1,14 @@
-# What did the ERP actually send, and does the dashboard's Rs 2.1 crore follow from it?
+# What did the ERP send, and does the dashboard's Rs 2.1 crore follow from it?
 
-Chapter 1 set, 4 items, about 12 minutes, after chapter 1. The ERP is the enterprise resource planning system Finance books orders in. Kalpa Retail's dashboard reads an export of orders from it and puts Q1 revenue at Rs 2.1 crore, while the books, Finance's own record of Q1, say Rs 1,90,00,000 to the rupee.
+Chapter 1 set, 4 items, about 12 minutes, after chapter 1. The ERP is the enterprise resource planning system Finance books orders in. Kalpa Retail's dashboard reads an export of orders from it and puts Q1 revenue at Rs 2.1 crore, while the books, Finance's own record of Q1, say Rs 1,90,00,000 to the rupee. A CSV hands back every value as text, so an amount has to be converted to a number before it is compared or summed.
 
 > "How many records did you receive, and how many can you use?"
 >
 > Anand Iyer, finance controller, Kalpa Retail
 
-Both of Anand's figures count booked value, every order at the price charged, whatever its status. Chapter 1 profiled the export before totalling anything: for every field it counted the values present, the values that convert to the type the field needs, and the distinct values. The profile found 201 rows for 186 distinct order ids and one amount that does not convert, and Q1 over the 200 amounts that do convert is Rs 2,09,98,210, so the dashboard's Rs 2.1 crore is honest arithmetic on this file. Kalpa's Business segment is its sales to companies, every order in lakhs.
+Both of Anand's figures count booked value, every order at the price charged, whatever its status. Chapter 1 profiled the export before totalling anything: for every field it counted the values present, the values that convert to the type the field needs, and the distinct values. The profile found 201 rows for 186 distinct order ids and one amount that does not convert, and Q1, summed over its amounts that convert, is Rs 2,09,98,210, so the dashboard's Rs 2.1 crore is honest arithmetic on this file. Kalpa's Business segment is its sales to companies, every order in lakhs.
 
-**Who needs the answer.** Anand Iyer, the finance controller, decides whether Finance acts at all on the drop the team reported on Tuesday, the fall from Q1 to Q2 measured on the export as delivered. Tonight his analyst ties out every figure: she matches each one to the books line by line, so a rupee's difference is a finding. A wrong count costs the most of the day, since every later number stands on it. A note that calls the dashboard right when it is not makes the analyst discount everything the team sends, and Marketing loses a month.
+**Who needs the answer.** Anand Iyer, the finance controller, decides whether Finance acts at all on the drop the team reported on Tuesday, the fall from Q1 to Q2 measured on the export as delivered. Tonight his analyst ties out every figure: she matches each one to the books line by line, so a rupee's difference is a finding. A wrong count costs the most of the day, since every later number stands on it. A note that calls the dashboard right when it is not makes the analyst discount everything the team sends, and Marketing, whose campaign waits on the finding, loses a month.
 
 **The questions on the way.**
 
@@ -58,7 +58,7 @@ d) 9 copies and 3 unreadable amounts
 
 Next quarter's export will hold 4 crore rows. A Python set of order ids takes about 100 bytes an id, and the laptop the team leaves running overnight has 2 GB free. Which route counts the distinct order ids?
 
-a) A set of every id, then its length, as chapter 1 did
+a) A set of every id, then its length
 b) A Counter over every id, which also keeps how often each appears
 c) A set of the first crore ids, with the answer times four
 d) Sort the ids on disk, then count each change from the last

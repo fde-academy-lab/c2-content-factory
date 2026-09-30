@@ -70,5 +70,5 @@ The largest Q2 order is 1.8 times the next, placed by a Business account that or
 
 a) Q2 without it, since one order that size distorts the quarter
 b) Q2 with the order capped at the next largest, to keep the shape
-c) Q2 with it, flagged, and the figure without it shown beside
+c) Q2 as booked, with the figure without it printed next to it
 d) Q2 without it, and a footnote that names the account

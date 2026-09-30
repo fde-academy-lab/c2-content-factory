@@ -181,7 +181,7 @@ def mapcell(n, levels, lit=0):
 
 
 TITLES = {
-    1: "What did the ERP actually send, and does the dashboard's Rs 2.1 crore follow from it?",
+    1: "What did the ERP send, and does the dashboard's Rs 2.1 crore follow from it?",
     2: "The file holds 201 rows for 186 orders: which rows did the export count twice, and what makes two "
        "rows one order?",
     3: "When an order appears twice, which copy stays, and does Q1 then land on the books?",
@@ -214,7 +214,7 @@ def opener(n, prev, who, need):
     steps = "\n".join(f"{i}. {q}" for i, q in enumerate(LADDER[n], start=1))
     return md("\n\n".join([
         f"# {n}. {TITLES[n]}",
-        f"**Week 1, Wednesday. Chapter {n} of 6.** {_para(prev)}",
+        f"Week 1, Wednesday, chapter {n} of 6. {_para(prev)}",
         QUOTE,
         f"**Who needs the answer.** {_para(who)}",
         f"**The questions on the way.**\n\n{steps}",
@@ -299,7 +299,7 @@ def ch1():
         code('''
         cells = len(raw) * len(FIELDS)
         sizing = [
-            ("a) total and compare", "201 amounts", "under a second", "stops on the first unreadable amount; says nothing about why"),
+            ("a) total and compare", "201 amounts", "under a second", "stops on the first unreadable amount without saying why"),
             ("b) scroll it", f"{cells:,} cells by eye", "about 17 minutes at half a second a cell", "repeats far apart are missed"),
             ("c) sample 20 rows", "20 rows", "about 10 minutes of tying out", f"the 20 rows it reads, and nothing about the other {len(raw) - 20}"),
             ("d) profile every field", f"{cells:,} values by code", "under a second", "finds every count that does not fit; the choice of copy waits"),
@@ -310,10 +310,10 @@ def ch1():
                  lit=(3,), title="Values each option reads: b and d read all 2,010, and only d does it in under a second")
         '''),
         md('''
-        **The best-fit call: d, then a sample where the profile points.** A profile reads every value in
+        **The best-fit call.** d, then a sample where the profile points. A profile reads every value in
         under a second and turns each defect into a count that does not fit, and those counts are what a
         reconciliation needs first. The minutes for b and c are illustrative: half a second a cell to
-        scroll and half a minute a row to tie out. **The fact that would change it:** a profile too slow
+        scroll and half a minute a row to tie out. **What would switch it.** A profile too slow
         for the deadline, as on an export of crores of rows due in an hour. Then profile the key and the
         money fields first, `order_id` and `amount`, read only the rows they flag, and let the other
         fields wait.
@@ -562,7 +562,7 @@ def ch1():
 
         **[D] Design. A new export has 2 crore rows. Profile everything, or sample?** "Profile everything.
         A profile is three counts per field, a few minutes of machine time, and it finds a defect wherever
-        it sits; a sample of 1,000 rows reads one row in 20,000 and says nothing about the rest. I would
+        it sits; a sample of 1,000 rows reads one row in 20,000 and cannot see the rows it skips. I would
         sample only to read rows the profile has already pointed at. What would switch me is a profile too
         slow for the deadline, and then I profile the key and the money fields first."
 
@@ -583,7 +583,7 @@ def ch1():
            converts on 200, `status` is present on 200 and `discount` on 143.
         3. The largest Q2 order is Rs 29,45,460 once amounts are numbers, and sorted as text the hurried
            answer is Rs 970.
-        4. The dashboard's figure does follow from the file: Q1 over the 200 amounts that convert is
+        4. The dashboard's figure does follow from the file: Q1, summed over its amounts that convert, is
            Rs 2,09,98,210, and the one failure sits in the rejects log.
         5. The JSON feed shows what the extract held, 119 complete records that are all orders the CSV
            holds, and never whether a value is right.
@@ -591,7 +591,7 @@ def ch1():
            one failure.
 
         The ERP sent 201 rows for 186 order ids, with one amount that does not convert and one row with no
-        status. Q1 over the 200 amounts that convert is Rs 2,09,98,210, so the dashboard's 2.1 crore is
+        status. Q1, summed over its amounts that convert, is Rs 2,09,98,210, so the dashboard's 2.1 crore is
         honest arithmetic on this file, and the 15 rows beyond one per order are the lead.
         '''),
         code('''
@@ -629,7 +629,7 @@ def ch2():
         Chapter 1 profiled the export from the ERP, the enterprise resource planning system Finance books
         orders in, counting what every field holds: 201 rows, 186 distinct order ids, one amount that does
         not convert, and Q1 at
-        Rs 2,09,98,210 over the 200 amounts that do. This chapter decides what makes two rows one order,
+        Rs 2,09,98,210 summed over the amounts that do. This chapter decides what makes two rows one order,
         which a dedupe, the step that removes repeated rows, has to know before it runs.
         ''', '''
         Anand Iyer, the finance controller, needs to know whether his books, Finance's own record of Q1 at
@@ -724,9 +724,9 @@ def ch2():
         without a key to group on, every row is compared with every other, 20,100 pairs here and about
         200 lakh crore on a file of 2 crore rows.
 
-        **The best-fit call: c, the order id.** The ERP issues one id per order and never reuses it, so
+        **The best-fit call.** c, the order id. The ERP issues one id per order and never reuses it, so
         the id is what the business says an order is, and the rule that says what makes two rows one order
-        is called the identity rule. **The fact that would change it:** two systems issuing their own ids,
+        is called the identity rule. **What would switch it.** Two systems issuing their own ids,
         the app numbering from one and the stores numbering from one. The id alone would then merge
         different orders, and the key becomes the source system plus the id.
         '''),
@@ -780,7 +780,7 @@ def ch2():
                   caption="The hurried dedupe, as it would be reported")
         '''),
         md('''
-        **Why it is wrong.** The file line records where a row sat and says nothing about which order it is.
+        **Why it is wrong.** The file line records only where a row sat, and the two copies of one order sit on different lines.
         Two copies of one order sit on different lines, so every record is unique and the dedupe can never
         find anything. The note would tell Anand his books are Rs 20 lakh short, sending Finance to hunt for
         revenue that was never earned. The check is chapter 1's count: 201 rows and 186 ids cannot both be
@@ -893,20 +893,21 @@ kit.check("on invented records, leaving out the line finds both copies", found =
         the identity rule. For an order that is the id the system issues; for a customer it might be a
         normalised email, for a payment the gateway's reference. Then I count rows against distinct keys.
         A whole-record comparison finds only exact copies, and a migration copy often differs somewhere: a
-        timestamp, a load id, a line number. Then I weigh them, since two rows can carry more money than a
-        hundred."
+        timestamp, a load id, a line number. Then I weigh them in rupees as well as rows: on Kalpa's
+        export two corporate copies carried Rs 19,67,560 of the Rs 19,98,210 the copies added to Q1."
 
         **[D] Design. Order id, whole record or fuzzy, for a customer table merged from two apps?** "Neither
         app's id identifies a person across both, so the whole record and the id are out. I would
         normalise email and phone and match on those, block by city so each record is compared only within
-        its own city, which keeps the comparisons in the thousands, and send every fuzzy match a person has
+        its own city, which across six cities cuts the pairs to about a sixth and misses anyone whose two
+        records name different cities, and send every fuzzy match a person has
         not confirmed to review. What would switch me back to a key is a shared customer id issued by one
         system."
 
         ### Depth: what if the identity rule needs more than one field?
 
         Customer id and order date together is a composite key; on this file it finds 14 of the 15,
-        because one pair's copies disagree on the date. Record linkage across systems starts the same
+        and chapter 3 shows which pair it misses. Record linkage across systems starts the same
         way, by writing down what makes two records one before counting anything.
         '''),
         md('''
@@ -995,7 +996,8 @@ def ch3():
 
         options = {"a) first": keep(raw, "first"), "b) last": keep(raw, "last"), "c) validates": keep(raw, "validates")}
         rows_out = [(name, kit.rupees(Q(k, "Q1")), kit.rupees(Q(k, "Q1") - BOOKS_Q1),
-                     sum(1 for r in k if convert(r["amount"])[0] is None), "none") for name, k in options.items()]
+                     sum(1 for r in k if convert(r["amount"])[0] is None), "1" if name.startswith("c") else "none")
+                    for name, k in options.items()]
         rows_out.append(("d) escalate all", "open", "open", 0, "15 pairs, days of waiting"))
         kit.table(["option", "Q1", "against the books", "unreadable orders kept", "questions to the ERP team"], rows_out,
                   caption="Each option sized on the ERP file")
@@ -1008,9 +1010,9 @@ def ch3():
         everything leaves Q1 open for as long as the ERP team takes to answer 15 questions, 13 of them about
         pairs whose copies are identical.
 
-        **The best-fit call: c, and escalate only a pair whose valid copies disagree.** The last copy lands
+        **The best-fit call.** c, and escalate only a pair whose valid copies disagree. The last copy lands
         on the books here only because of the order in which the migration appended its rows, and no rule
-        promises that order next time. **The fact that would change it:** the ERP team saying the second
+        promises that order next time. **What would switch it.** The ERP team saying the second
         extract was a corrected re-run. Then b is the rule, and it is right for a reason.
         '''),
 
@@ -1105,7 +1107,7 @@ def ch3():
         '''),
         md('''
         **Why it is wrong.** Q1 ties because the two pairs this pass misses happen to cost Q1 nothing: one
-        copy's amount cannot be read, so it adds nothing to the sum. The file still holds 188 rows for 186
+        copy's amount cannot be read, so it adds nothing to the sum, and the other pair sits in Q2. The file still holds 188 rows for 186
         orders. One Q2 order is counted twice, so Q2 is Rs 3,710 high and the Q2 order count for
         Retail-Plus, Kalpa's paid membership tier, is one too many, and an order with an unreadable amount
         sits in the clean file as an order. A
@@ -1328,7 +1330,7 @@ def ch4():
         charged, whatever its status, so the order stays in revenue, and the flag keeps it out of the
         delivered count, which stays at 57 of 86. For the amount, b by default and d when an independent
         copy exists, which on this file it does: the identity rule already kept the twin that carries the
-        value. **The facts that would change them:** for the status, a delivery system that can be asked,
+        value. **What would switch them.** For the status, a delivery system that can be asked,
         which turns the flag into a lookup; for the amount, an independent source carrying the value, which
         turns the reject into a repair. A second export cut from the same extract, the same pull of rows out
         of the ERP, never counts, since it copies the defect.
@@ -1512,7 +1514,7 @@ def ch4():
         because an absent discount and an absent status mean different things. Then one of three decisions
         with a written reason: drop, fill a stated default, or keep and flag. I size each on the numbers it
         moves: here dropping costs Rs 1,850 of booked revenue, a default adds a delivery nobody recorded,
-        and keep and flag moves nothing and says so. For money I never fill."
+        and keep and flag moves nothing and says so; a missing amount of money is never filled."
 
         **[D] Design. Coerce, reject or repair a malformed amount?** "Reject to a log by default, since a
         coerced zero is a false value and hides the defect from every later check. Repair only from an
@@ -1631,9 +1633,9 @@ def ch5():
                  title="Why the feed cannot carry the proof: it barely reaches Q2")
         '''),
         md('''
-        **The best-fit call: c.** A bridge closes to the rupee and every move is a row in the log, so Anand's
+        **The best-fit call.** c, since a bridge closes to the rupee and every move is a row in the log, so Anand's
         analyst can test each one. The feed is short by Rs 1,790 in Q1 because it carries the same
-        unreadable amount, and it holds 19 of Q2's 86 orders. **The fact that would change it:** a second
+        unreadable amount, and it holds 19 of Q2's 86 orders. **What would switch it.** A second
         source that is independent of the export and complete for the quarter. A rebuild from it would
         prove the figure on its own, and the bridge would become its check; this feed is neither, since it
         was cut from the same extract, the same pull of rows out of the ERP, and stops at record 120.
@@ -1713,14 +1715,14 @@ def ch5():
         instead of 25. The segment Tuesday named is next.
         '''),
         code('''
-        segs = ["Retail-Core", "Retail-Plus", "Business", "Student"]
-        tuesday = {"Retail-Core": -5.3, "Retail-Plus": -49.0, "Business": -15.0, "Student": 40.0}
+        segs = ["Retail-Core", "Retail-Plus", "Business"]
+        tuesday = {"Retail-Core": -5.3, "Retail-Plus": -49.0, "Business": -15.0}
         cleaned = {s: round(100 * (per_customer(clean, "Q2", s) / per_customer(clean, "Q1", s) - 1), 1) for s in segs}
         kit.table(["segment", "as Tuesday reported", "clean Q1", "clean Q2", "clean change"],
                   [(s, f"{tuesday[s]:+.1f}%", round(per_customer(clean, "Q1", s), 2), round(per_customer(clean, "Q2", s), 2),
                     f"{cleaned[s]:+.1f}%") for s in segs], caption="Orders per customer, Q1 to Q2")
-        kit.columns(segs[:3], [("fall as Tuesday reported", [-tuesday[s] for s in segs[:3]]), ("fall on clean data", [-cleaned[s] for s in segs[:3]])],
-                    fmt=lambda v: f"{v:.0f}%", lit=(1,), title="The fall in orders per customer, percent; Student rose and is left out")
+        kit.columns(segs, [("fall as Tuesday reported", [-tuesday[s] for s in segs]), ("fall on clean data", [-cleaned[s] for s in segs])],
+                    fmt=lambda v: f"{v:.0f}%", lit=(1,), title="The fall in orders per customer, percent, by segment")
         kit.check("Retail-Plus still falls on clean data", cleaned["Retail-Plus"] < -30, f"{cleaned['Retail-Plus']:+.1f}%")
         kit.check("the Retail-Plus fall is smaller than Tuesday reported", cleaned["Retail-Plus"] > tuesday["Retail-Plus"])
         '''),
@@ -1795,8 +1797,8 @@ def ch5():
         > reconcile, 201 received equals 186 kept plus 15 set aside, and rupees reconcile to your books
         > exactly. Every row set aside and every decision is in the attached log. Kept and flagged: one Q2
         > order with no status, and the largest Q2 order, a real Business account. On clean data the Q1 to
-        > Q2 drop is 1.6 percent, not 11, and the Retail-Plus frequency fall is 35 percent, not 49. It
-        > survives, smaller."
+        > Q2 drop is 1.6 percent, not 11, and the Retail-Plus frequency fall is 35 percent, not 49, so the
+        > finding survives, smaller."
         '''),
         code('''
         note = ("Anand, your 1.9 crore is right. The ERP export counted fifteen orders twice, fourteen of them in Q1; "
@@ -1804,7 +1806,7 @@ def ch5():
                 "received equals 186 kept plus 15 set aside, and rupees reconcile to your books exactly. Every row set "
                 "aside and every decision is in the attached log. Kept and flagged: one Q2 order with no status, and "
                 "the largest Q2 order, a real Business account. On clean data the Q1 to Q2 drop is 1.6 percent, not 11, "
-                "and the Retail-Plus frequency fall is 35 percent, not 49. It survives, smaller.")
+                "and the Retail-Plus frequency fall is 35 percent, not 49, so the finding survives, smaller.")
         kit.check("the note is under 120 words", len(note.split()) < 120, f"{len(note.split())} words")
         '''),
 
@@ -1957,9 +1959,9 @@ def ch6():
                  lit=(2,), title="Minutes of reading, at an illustrative 30 seconds a line")
         '''),
         md('''
-        **The best-fit call: c.** Option c is 24 lines that tie both totals, and the analyst can re-run the
+        **The best-fit call.** Option c is 24 lines that tie both totals, and the analyst can re-run the
         pass from them. Option b is the fastest read and proves the least; a and d cost over an hour and
-        still say nothing about why. **The fact that would change it:** an analyst who must re-derive every
+        still do not say why. **What would switch it.** An analyst who must re-derive every
         row independently, as an external auditor sometimes must; then d goes alongside c.
         '''),
 
@@ -2244,7 +2246,7 @@ def identity_rule(rows):
         #   c) not ok(kept[k]) and ok(r)
         #   d) True
         elif __TODO4__:
-            set_aside.append(dict(kept[k], reason="copy whose amount does not convert", kept_line=r["line"]))
+            set_aside.append(dict(kept[k], reason="replaced by a later copy of the same order", kept_line=r["line"]))
             kept[k] = r
         else:
             set_aside.append(dict(r, reason="second copy of the order", kept_line=kept[k]["line"]))
@@ -2256,8 +2258,11 @@ kept_ids = [r["order_id"] for r in kept]
 kit.check("one kept row per order, and every order the export holds is kept",
           len(kept_ids) == len(set(kept_ids)) == orders_sent, f"{len(kept)} kept")
 kit.check("rows reconcile: every row is kept or set aside", len(raw) == len(kept) + len(set_aside))
-kit.check("every row logged as unreadable really is unreadable",
-          all(not ok(r) for r in set_aside if r["reason"].startswith("copy whose amount")))
+first_copy = {}
+for r in raw:
+    first_copy.setdefault(r["order_id"], r)
+kit.check("where both copies of an order convert, the first copy stays",
+          all(r is first_copy[r["order_id"]] or not ok(first_copy[r["order_id"]]) for r in kept))
 kit.check("Q1 over the kept rows equals the books", Q(kept, "Q1") == BOOKS_Q1, kit.rupees(Q(kept, "Q1")))
 kit.columns(["kept", "set aside"], [("rows", [len(kept), len(set_aside)])], title="Every row the ERP sent, kept or set aside")
 '''),
@@ -2281,7 +2286,7 @@ def flag(row, field, why):
     flags.append({"line": row["line"], "order_id": row["order_id"], "field": field, "why": why})
 
 missing = [r for r in clean if not r["status"]]
-# TODO 5. One kept order has no status. Which line keeps Q2 revenue whole and every status as the export recorded it?
+# TODO 5. One kept order has no status. Which line decides what happens to it?
 #   a) clean = [r for r in clean if r not in missing]
 #   b) for r in missing: flag(r, "status", "unknown")
 #   c) for r in missing: r["status"] = "delivered"
@@ -2291,7 +2296,7 @@ __TODO5__
 q2_sorted = sorted((r for r in clean if r["quarter"] == "Q2"), key=lambda r: r["amount"], reverse=True)
 top, runner_up = q2_sorted[0], q2_sorted[1]
 median_q2 = q2_sorted[len(q2_sorted) // 2]["amount"]
-# TODO 6. The largest Q2 order is 1.66 times the next, from a Business account with orders in both quarters. Which line handles it?
+# TODO 6. The largest Q2 order is 1.66 times the next. Which line handles it?
 #   a) clean = [r for r in clean if r is not top]
 #   b) clean = [dict(r, amount=runner_up["amount"]) if r is top else r for r in clean]
 #   c) clean = [dict(r, amount=min(r["amount"], 3 * median_q2)) for r in clean]
@@ -2407,7 +2412,7 @@ CASE_WHY = {
     4: "c. A later copy takes the kept one's place only when the kept one cannot be read and the later one can. a keeps "
        "whichever copy is dated later, which here keeps the unreadable copy and leaves Q1 Rs 1,790 short; b compares the "
        "amounts as text, so the unreadable copy wins in the same way; d keeps every last copy, which lands on the books "
-       "only by file order and logs 14 readable copies as unreadable.",
+       "only by file order and, in the 14 pairs where both copies convert, keeps the second copy over the first.",
     5: "b. The order stays in revenue, its status stays blank, and the flags log says why. a drops a booked order; c "
        "records a delivery nobody recorded; d records a cancellation nobody recorded.",
     6: "d. The order is real, so it stays, flagged, and Q2 is shown with and without it. a removes Rs 29,45,460 of booked "
@@ -2470,7 +2475,7 @@ def case_head(title, scene, who, steps):
 def case_cells(solution):
     head = case_head(CASE_TITLE, CASE_SCENE, CASE_WHO, [t for t, *_ in CASE_STEPS])
     cells = [
-        md(f"# {CASE_TITLE}\n\n**Week 1, Wednesday afternoon, the escalated case.** " + head + "\n\n" + _para('''
+        md(f"# {CASE_TITLE}\n\nWeek 1, Wednesday afternoon, the escalated case. " + head + "\n\n" + _para('''
         Each step has lettered choices in a comment above a placeholder such as `__TODO1__`. Replace the
         placeholder with the code of the option you choose, run the step, then run its check cell, which
         recomputes the result another way. Run as shipped, the notebook stops at the first placeholder
@@ -2479,7 +2484,7 @@ def case_cells(solution):
         note to Finance in under 120 words.
         ''') if not solution else
            f"# Solution: {CASE_TITLE[0].lower()}{CASE_TITLE[1:]}\n\n"
-           "**Week 1, Wednesday afternoon, the escalated case, solution twin.** " + head + "\n\n" + _para(f'''
+           "Week 1, Wednesday afternoon, the escalated case, solution twin. " + head + "\n\n" + _para(f'''
         Every placeholder is filled with its keyed option and the notebook runs clean. Under each step, one
         line says why the other letters fail. The letters, in order: {CASE_KEY}.
         ''')),
@@ -2656,7 +2661,7 @@ AUDIT_WHY = {
        "to companies, carrying 98.5 percent of the money. a hides where the money sits; c drops the rows the "
        "auditor asked about; d divides by Q2, the wrong quarter.",
     4: "a. The line names the row that stayed and the fields the copies disagree on, so the auditor can follow the "
-       "choice. b says nothing about which copy stayed; c invents an amount nobody booked; d says both rows went, which "
+       "choice. b leaves out which copy stayed; c invents an amount nobody booked; d says both rows went, which "
        "is false.",
     5: "c. Rows and rupees both tie in Q1, and a pass that kept the unreadable copy misses the books, Finance's own "
        "record of Q1, by Rs 1,790. a holds for that wrong pass too; b rounds the gap away; d is true of any pass by "
@@ -2685,7 +2690,7 @@ sends.
 def audit_cells(solution):
     head = case_head(AUDIT_TITLE, AUDIT_SCENE, AUDIT_WHO, [t for t, *_ in AUDIT_STEPS])
     cells = [
-        md(f"# {AUDIT_TITLE}\n\n**Week 1, Wednesday afternoon, the second case, in pairs.** " + head + "\n\n" + _para('''
+        md(f"# {AUDIT_TITLE}\n\nWeek 1, Wednesday afternoon, the second case, in pairs. " + head + "\n\n" + _para('''
         Answer from the log and the file, one question at a time. One of the pair drives; the other plays
         the auditor and asks the next question only when the check passes.
 
@@ -2695,7 +2700,7 @@ def audit_cells(solution):
         check passes.
         ''') if not solution else
            f"# Solution: {AUDIT_TITLE[0].lower()}{AUDIT_TITLE[1:]}\n\n"
-           "**Week 1, Wednesday afternoon, the second case, solution twin.** " + head + "\n\n" + _para(f'''
+           "Week 1, Wednesday afternoon, the second case, solution twin. " + head + "\n\n" + _para(f'''
         Every placeholder is filled with its keyed option and the notebook runs clean. The letters, in
         order: {AUDIT_KEY}.
         ''')),
