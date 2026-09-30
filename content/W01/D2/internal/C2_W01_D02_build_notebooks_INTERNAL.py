@@ -18,7 +18,7 @@ from nb_make import SETUP, md, code, empty, build  # noqa: E402
 DAY = ROOT / "content" / "W01" / "D2"
 NB = DAY / "notebooks"
 
-LADDER = ["Is the drop real?", "Which branch moved?", "Which segment?", "Mix or rate?",
+LADDER = ["Is the drop real", "Which branch moved", "Which segment", "Mix or rate",
           "Marketing's hypothesis", "The memo and its evidence"]
 
 # The real company per chapter. Each fact is checked on 30 Sep 2026; the provenance holds the URLs.
@@ -87,7 +87,7 @@ kit.side_by_side(
 # --------------------------------------------------------------------------------------------- 1
 def chapter1():
     cells = [
-        head(1, "Is the drop real?",
+        head(1, "Is the drop real",
              "By the end of this notebook you can say whether Kalpa's revenue fell between the two "
              "quarters, by how much, and on which windows, before anyone explains why."),
         md("""
@@ -480,7 +480,7 @@ print(len(by_quarter["Q1"]), "orders in Q1 and", len(by_quarter["Q2"]), "in Q2")
 
 def chapter2():
     cells = [
-        head(2, "Which branch moved?",
+        head(2, "Which branch moved",
              "By the end of this notebook you can split the quarter's fall along the revenue tree, "
              "say in rupees how much each branch carries, and answer Marketing's claim about "
              "customers with a count."),
@@ -906,7 +906,7 @@ for order in ORDERS:
 
 def chapter3():
     cells = [
-        head(3, "Which segment?",
+        head(3, "Which segment",
              "By the end of this notebook you can write two functions that return the tree and the "
              "shape of any group of orders, run them on any segment and quarter, and roll a rate up to "
              "the company figure without averaging the averages."),
@@ -1243,7 +1243,7 @@ print("Next: chapter 4, whether revenue per order rose because of mix or because
 # --------------------------------------------------------------------------------------------- 4
 def chapter4():
     cells = [
-        head(4, "Mix or rate?",
+        head(4, "Mix or rate",
              "By the end of this notebook you can say how much of the rise in revenue per order came "
              "from the mix of orders and how much from customers paying more inside their segment."),
         md("""
