@@ -1711,7 +1711,7 @@ flowchart LR
 **Question.** What turns "not yet" into an answer Meera can use? a) a promise to look again later; b) the count or the test that would turn it into a yes; c) a softer word such as "possibly"; d) a second analyst's agreement.
 
 ```notes
-LIVE, 2 minutes. Letters. Expect a. Hold it. Then the answer.
+LIVE, 2 minutes. Take letters; most rooms pick a, so hold it until the answer slide. Then the answer.
 ```
 
 ---
