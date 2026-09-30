@@ -23,7 +23,8 @@ NEUTRAL = {
     "The delivered fall along the tree: the customers branch moves now": "The delivered bridge, one leaf at a time in the tree's order",
     "The 'lost' delivered customers all ordered again in Q2": "Q1 delivered customers missing from Q2, and what they did in Q2",
     "Delivered revenue per order: here the rate carries more than the mix": "Delivered revenue per order, split into mix and rate",
-    "Student: the same two customers, two more orders": "Student customers and orders, Q1 and Q2",
+    "Retail-Plus revenue: half the orders at 7 percent more each": "Retail-Plus revenue, Q1 and Q2",
+    "Your set's Q2 orders: every one cancelled or returned": "Your set's Q2 orders, by how each ended",
     "Retail-Plus members by orders in Q1 to orders in Q2": "Retail-Plus members, by orders in Q1 and in Q2",
 }
 
@@ -118,7 +119,7 @@ line says why the other three options fail.
         code("""
 kit.side_by_side(
     kit.ladder(["Is the delivered drop real?", "The tree on delivered", "Are those lost customers?",
-                "Four segments, rolled up", "Mix or rate on delivered"], show=False),
+                "Four segments on delivered", "Mix or rate on delivered"], show=False),
     kit.flow(["booked\\n200 orders", "delivered only", "the same ladder", "the sentence"], lit=1, show=False),
 )"""),
         md("""
@@ -198,23 +199,25 @@ quarters. Compare the two views.
         code('''
 booked_ids = {q: {o["customer_id"] for o in ORDERS if o["quarter"] == q} for q in ("Q1", "Q2")}
 deliv_ids = {q: {o["customer_id"] for o in dq[q]} for q in ("Q1", "Q2")}
-# TODO 3. Which set holds Q1's delivered customers with no delivered order in Q2 who still booked in Q2?
+# TODO 3. Marketing will call the customers who dropped out of the delivered count lost. Which set holds
+# the ones among them who still placed an order in Q2?
 #   a) deliv_ids["Q1"] & booked_ids["Q2"]
 #   b) booked_ids["Q1"] - booked_ids["Q2"]
 #   c) (deliv_ids["Q1"] - deliv_ids["Q2"]) & booked_ids["Q2"]
 #   d) deliv_ids["Q2"] - deliv_ids["Q1"]
 still_booked = [[3|(deliv_ids["Q1"] - deliv_ids["Q2"]) & booked_ids["Q2"]]]
-gone = deliv_ids["Q1"] - deliv_ids["Q2"]
-statuses = {}
+print(len(still_booked), "customers in your set")
+'''),
+        code('''
+their_q2 = {}
 for o in ORDERS:
-    if o["quarter"] == "Q2" and o["customer_id"] in gone:
-        statuses[o["status"]] = statuses.get(o["status"], 0) + 1
-kit.bars([("no delivered order in Q2", len(gone)), ("of those, still booked in Q2", len(still_booked)),
-          ("lost on booked orders", len(booked_ids["Q1"] - booked_ids["Q2"]))],
-         lit=[1], title="The 'lost' delivered customers all ordered again in Q2")
-kit.table(["Their Q2 orders ended as", "Orders"], sorted(statuses.items()), caption="What happened to those customers' Q2 orders")
-kit.check("the set of delivered customers missing from Q2 matches the file", len(gone) == 19, f"{len(gone)}")
-kit.check("your set holds exactly the missing customers who booked again", still_booked == gone & booked_ids["Q2"], f"{len(still_booked)}")
+    if o["quarter"] == "Q2" and o["customer_id"] in still_booked:
+        their_q2[o["status"]] = their_q2.get(o["status"], 0) + 1
+kit.bars([(status, n) for status, n in sorted(their_q2.items())] + [("lost on booked orders", len(booked_ids["Q1"] - booked_ids["Q2"]))],
+         title="Your set's Q2 orders: every one cancelled or returned")
+kit.table(["Their Q2 orders ended as", "Orders"], sorted(their_q2.items()), caption="What happened to your set's Q2 orders")
+kit.check("your set placed orders in Q2", sum(their_q2.values()) > 0, f"{sum(their_q2.values())} orders")
+kit.check("none of your set's Q2 orders counts as delivered", their_q2.get("delivered", 0) == 0)
 '''),
         SOL(md("""
 **Why the other three fail.** a) is every delivered Q1 customer who booked in Q2, 54 people, including those whose Q2 orders were delivered. b) is the booked
@@ -226,9 +229,10 @@ overlap.
 the 19 customers who "disappeared" all ordered in Q2, and their orders were cancelled or returned.
 Split by reason, those orders go to the teams that own fulfilment and product, and the Rs 12 crore still has nothing to replace.
 
-## Part 4. Four segments, rolled up with their weights
+## Part 4. Four segments on delivered orders
 
-Run `tree_for` per segment on delivered orders, check a colleague's roll-up, and count the groups.
+Run `tree_for` per segment on delivered orders, roll the rate up to the company, and count the groups
+that come back.
 """),
         code('''
 seg1 = {s: tree_for([o for o in dq["Q1"] if o["segment"] == s]) for s in SEGMENTS}
@@ -273,8 +277,8 @@ b) raises a TypeError on a None instead of reporting it. c) and d) look for one 
 """)),
         md("""
 **Item 4 in your brief.** On delivered orders Retail-Plus falls furthest again, 1.85 to 1.06 orders
-per member, minus 42.6 percent; Business and Retail-Core fall about 11.5 percent each; Student rises
-on two customers. The segment survives the definition.
+per member, minus 42.6 percent; Business and Retail-Core fall about 11.5 percent each; Student rises.
+The segment survives the definition.
 
 ## Part 5. Mix or rate, on delivered orders
 
@@ -361,9 +365,9 @@ def second(solution):
 **Week 1, Tuesday afternoon. The second case, in pairs, forty minutes.** One of you answers Marketing,
 the other answers the head of Retail-Plus, from the same file, and together you write the reply.
 
-> **Marketing comes back with a new deck.** "Student orders per customer rose 40 percent after our
-> campus push, so acquisition works. And Retail-Plus web orders fell hardest, 24 to 9, so this is the
-> website team's problem, not the tier's and not the app's."
+> **Marketing comes back with a new deck.** "Retail-Plus members spend 7 percent more every time they
+> order, so the tier is healthy and the answer is still acquisition. And Retail-Plus web orders fell
+> hardest, 24 to 9, so this is the website team's problem, not the tier's and not the app's."
 >
 > The marketing lead, Kalpa Retail
 
@@ -381,37 +385,50 @@ line says why the other three options fail.
         code(SETUP + 'ORDERS = kit.load_records("C2_W01_D02_orders_STUDENT.py")\nSEGMENTS = ["Retail-Core", "Retail-Plus", "Business", "Student"]\n' + TOOLS + '\nprint(len(ORDERS), "orders loaded")'),
         code("""
 kit.side_by_side(
-    kit.ladder(["Student +40 percent: acquisition?", "Web fell hardest: the website?",
+    kit.ladder(["7 percent more per order: a healthy tier?", "Web fell hardest: the website?",
                 "Who to call first", "The reply and the evidence"], show=False),
     kit.matrix(["Marketing", "the head of Retail-Plus"], ["claim", "test"],
-               [["campaigns work; the website", "new ids; web in another segment"], ["which members", "orders per member, Q1 to Q2"]],
+               [["a healthy tier; the website", "the tier's own tree; web in another segment"], ["which members", "orders per member, Q1 to Q2"]],
                show=False),
 )"""),
         md("""
-## Part 1. "Student orders per customer rose 40 percent, so acquisition works"
+## Part 1. "Members spend 7 percent more per order, so the tier is healthy"
 
-Acquisition means new customers. Count the Student ids in each quarter and the ones that are new.
+Revenue per order is one leaf of the tree. Build the tier's tree for both quarters, then put the
+leaves back together into the tier's revenue.
 """),
         code('''
-s_ids = {q: {o["customer_id"] for o in ORDERS if o["segment"] == "Student" and o["quarter"] == q} for q in ("Q1", "Q2")}
-s_orders = {q: sum(1 for o in ORDERS if o["segment"] == "Student" and o["quarter"] == q) for q in ("Q1", "Q2")}
-# TODO 1. Which set holds the Student customers who are new in Q2?
-#   a) s_ids["Q2"] - s_ids["Q1"]
-#   b) s_ids["Q1"] | s_ids["Q2"]
-#   c) s_ids["Q1"] & s_ids["Q2"]
-#   d) len(s_ids["Q2"]) - len(s_ids["Q1"])
-new_students = [[1|s_ids["Q2"] - s_ids["Q1"]]]
-kit.columns(["Q1", "Q2"], [("Student customers", [len(s_ids["Q1"]), len(s_ids["Q2"])]), ("Student orders", [s_orders["Q1"], s_orders["Q2"]])],
-            width=520, title="Student: the same two customers, two more orders")
-kit.check("your set matches a second route over the Q2 ids", new_students == {c for c in s_ids["Q2"] if c not in s_ids["Q1"]})
-kit.check("the Student order counts add up to the file", s_orders["Q1"] + s_orders["Q2"] == sum(1 for o in ORDERS if o["segment"] == "Student"))
+plus = {q: [o for o in ORDERS if o["segment"] == "Retail-Plus" and o["quarter"] == q] for q in ("Q1", "Q2")}
+t1, t2 = tree_for(plus["Q1"]), tree_for(plus["Q2"])
+ratio = {leaf: t2[leaf] / t1[leaf] for leaf in ("customers", "orders_per_customer", "revenue_per_order")}
+kit.table(["Leaf", "Q1", "Q2", "Q2 over Q1"],
+          [("members", t1["customers"], t2["customers"], f'{ratio["customers"]:.3f}'),
+           ("orders per member", f'{t1["orders_per_customer"]:.2f}', f'{t2["orders_per_customer"]:.2f}', f'{ratio["orders_per_customer"]:.3f}'),
+           ("revenue per order", kit.rupees(round(t1["revenue_per_order"])), kit.rupees(round(t2["revenue_per_order"])),
+            f'{ratio["revenue_per_order"]:.3f}')],
+          caption="Retail-Plus, leaf by leaf")
+# TODO 1. Which expression gives the tier's Q2 revenue as a share of its Q1 revenue, from the leaves?
+#   a) ratio["customers"] * ratio["orders_per_customer"] * ratio["revenue_per_order"]
+#   b) ratio["orders_per_customer"] + ratio["revenue_per_order"] - 1
+#   c) ratio["revenue_per_order"]
+#   d) (ratio["orders_per_customer"] + ratio["revenue_per_order"]) / 2
+tier_share = [[1|ratio["customers"] * ratio["orders_per_customer"] * ratio["revenue_per_order"]]]
+kit.columns(["Q1", "Q2, from your expression"], [("tier revenue", [t1["revenue"], round(t1["revenue"] * tier_share)])],
+            fmt=kit.rupees, width=520, title="Retail-Plus revenue: half the orders at 7 percent more each")
+'''),
+        code('''
+kit.check("your expression gives back the tier's Q2 revenue, counted order by order",
+          abs(t1["revenue"] * tier_share - t2["revenue"]) < 1, kit.rupees(round(t1["revenue"] * tier_share)))
 '''),
         SOL(md("""
-**Why the other three fail.** b) is every Student id in either quarter. c) is the ones in both quarters. d)
-is a difference of counts, which is zero whether or not anyone is new.
+**Why the other three fail.** b) adds two changes, minus 49.0 and plus 7.0 percent, as if percentages
+added, which is Monday's two lifts called 20 percent turned round. c) is the one leaf Marketing
+quoted. d) averages two ratios, which is no quantity in the tree.
 
-**The answer to Marketing.** The 40 percent is two more orders from the same two students. It adds no
-customer, so it says nothing for acquisition, and on two customers one more order moves the rate by 0.5 orders per customer, 20 percent.
+**The answer to Marketing.** The same 22 members spent 7.0 percent more per order and placed about
+half as many orders, 2.32 each to 1.18, so the tier's revenue fell to 0.546 of Q1, Rs 1,43,550 to
+Rs 78,300, about 45 percent down. One leaf that rose inside a tier whose orders halved says nothing
+about the tier's health.
 """)),
         md("""
 **Item 1 in your brief** goes in now, from what this part printed.
@@ -436,14 +453,17 @@ picked = also_falls if also_falls in SEGMENTS else "Retail-Plus"
 kit.columns(["Retail-Plus", picked], [("Q1 web orders", [web[("Retail-Plus", "Q1")], web[(picked, "Q1")]]),
                                       ("Q2 web orders", [web[("Retail-Plus", "Q2")], web[(picked, "Q2")]])],
             width=560, title="Web orders: the members against the segment you chose")
-kit.check("your pick is a segment that can test the website claim",
-          also_falls in SEGMENTS and also_falls != "Retail-Plus" and web[(also_falls, "Q1")] >= 10)
+'''),
+        code('''
+comparison = (web[(also_falls, "Q1")], web[(also_falls, "Q2")]) if also_falls in SEGMENTS else (0, 0)
+kit.check("the segment you drew is not the members, and had enough web orders in Q1 to show a fall",
+          also_falls != "Retail-Plus" and comparison[0] >= 10, f"{comparison[0]} and {comparison[1]}")
 kit.check("Retail-Plus web orders fell 24 to 9", (web[("Retail-Plus", "Q1")], web[("Retail-Plus", "Q2")]) == (24, 9))
 '''),
         SOL(md("""
 **Why the other three fail.** a) is the pattern Marketing already saw; it cannot tell a website fault
-from anything else that hits members. b) Student has one web order in Q1, too few to read. d) a
-website fault shows on the website.
+from anything else that hits members. b) Student placed one web order in Q1, so it has no fall to
+show either way. d) a website fault shows on the website.
 
 **The answer to Marketing.** Retail-Core's web orders held at 13 and 12 on the same website, so a
 site-wide fault does not fit. Something hit members, on every channel: chapter 6 showed the store and
@@ -478,8 +498,12 @@ for cid in per["Q1"]:
 labels = [f"{a} to {b}" for a, b in sorted(pairs, reverse=True)]
 kit.bars([(l, pairs[k]) for l, k in zip(labels, sorted(pairs, reverse=True))],
          title="Retail-Plus members by orders in Q1 to orders in Q2")
-drops = {c: per["Q1"][c] - per["Q2"].get(c, 0) for c in per["Q1"]}
-kit.check("your list matches a second route over the per-member counts", set(call_first) == {c for c in drops if drops[c] == max(drops.values())})
+'''),
+        code('''
+lost_by_list = sum(per["Q1"][c] - per["Q2"].get(c, 0) for c in call_first)
+lost_by_tier = sum(per["Q1"].values()) - sum(per["Q2"].values())
+kit.check("the members on your list carry more than half of the tier's lost orders", 2 * lost_by_list > lost_by_tier,
+          f"{lost_by_list} of {lost_by_tier}")
 kit.check("the per-member counts add back to the tier's orders", sum(per["Q1"].values()) + sum(per["Q2"].values()) == sum(1 for o in ORDERS if o["segment"] == "Retail-Plus"))
 '''),
         SOL(md("""
@@ -500,19 +524,19 @@ Item 4 in your brief goes in once this part has run.
 """),
         code('''
 EVIDENCE = {
-    "campaigns": "Marketing's campaign reach by month for the July student push",
+    "campaigns": "Marketing's new-member sign-ups by month from July",
     "export": "this export again, cut by city, channel and week from July",
     "app_logs": "the app's reorder logs by week since the 25 August release",
     "tier_log": "the tier's July change log, renewals and support tickets",
 }
-# TODO 4. The fall began in July and the button broke on 25 August. Which request tests the cause behind the larger part of the fall?
+# TODO 4. The tier lost 25 orders and chapter 6 capped the button at about 4 of them. Which request goes first?
 #   a) "campaigns"
 #   b) "export"
 #   c) "app_logs"
 #   d) "tier_log"
 first_request = [[4|"tier_log"]]
 kit.tree({"label": "the reply", "kind": "lit", "branches": [
-    ("to Marketing", {"label": f"Student: {len(new_students)} new ids\\nweb tested on {also_falls}", "kind": "known"}),
+    ("to Marketing", {"label": f"tier revenue x {tier_share:.2f}\\nweb tested on {also_falls}", "kind": "known"}),
     ("to the tier", {"label": f"call the {len(call_first)}\\nat the top of the list", "kind": "known"}),
     ("first request", {"label": EVIDENCE[first_request][:34], "kind": "unknown"})]},
     title="The pair's reply, in three branches")
@@ -521,22 +545,24 @@ kit.check("your pick matches the key, stored as a fingerprint", hashlib.sha256(f
 kit.check("your pick names one of the four sources", first_request in EVIDENCE)
 '''),
         SOL(md("""
-**Why the other three fail.** a) measures acquisition, which Part 1 and chapter 5 ruled out. b) is
-the data that raised the question. c) settles the button, which chapter 6 capped at about 4 orders
-after 25 August, the smaller part.
+**Why the other three fail.** a) measures acquisition, which chapter 5's overlap ruled out. b) is
+the data that raised the question. c) settles the button, which chapter 6 capped at about 4 of the
+25 lost orders, the smaller part.
 
-**The pair's reply.** "To Marketing: Student's 40 percent is two more orders from the same two
-customers, so it adds no evidence for acquisition, and Retail-Core's web orders held at 13 and 12 on
-the same website, so a site-wide fault does not fit. To the head of Retail-Plus: call the seven members
+**The pair's reply.** "To Marketing: the tier's members did spend 7 percent more per order, but the
+same 22 members placed about half as many orders, so the tier's revenue fell about 45 percent; and
+Retail-Core's web orders held at 13 and 12 on the same website, so a site-wide fault does not fit. To the head of Retail-Plus: call the seven members
 who went from three orders to one first, and ask what changed for them in July. We are asking for the
 tier's July change log, renewals and support tickets first, and the app's reorder logs second."
 
 ### In the interview
 
-**[D] A stakeholder quotes a 40 percent rise; what do you ask before you react?** "What it is a rate
-of, over how many, and whether the rise is new people or the same people doing more. Here it was two
-customers placing seven orders against five, so one order moves it by 20 percent." The interviewer is
-listening for the denominator first.
+**[F] A stakeholder says customers spend more per order, so the business is healthy; what do you
+check?** "What that rate multiplies with: how many customers there are and how often they buy.
+Revenue per order is one leaf of the tree. Here the tier's members spent 7 percent more per order and
+ordered about half as often, so the tier's revenue fell about 45 percent. I put the leaves back
+together before I agree that anything is healthy." The interviewer is listening for the tree and the
+product of its leaves.
 """)),
         code("""
 kit.check_summary()
