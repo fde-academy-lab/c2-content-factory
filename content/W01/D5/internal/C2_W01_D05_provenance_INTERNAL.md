@@ -17,7 +17,7 @@ Raised to the chapter standard on 30 September 2026.
 | `docs/curriculum/Saturday_papers.md`, W1 paper | Saturday's format for the preview; the Kahoot avoids the paper's items |
 | The requester's raise of 30 September 2026 (decisions `chapter-standard` and `four-domains` in `data/programme/facts.yaml`) and the session brief for this day | The lab brief opening on the business situation; the debrief as three chapters paired with notebooks; the timed cases as design cases at Kalpa with a real company each; Marketing's sharpest push; design items in the Kahoot and the practice set; the depth loop |
 | `data/programme/facts.yaml`, `saturday_papers.paper_minutes` | The Saturday paper at 120 minutes, which corrected a 110 on the rehearsal deck's S13 |
-| The retail and e-commerce dossier, `content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md` | Linked by path from the day sheet and the study notes, never copied. Its branch, `w01-domain-retail`, had not been pushed when this pack was built (`git fetch origin w01-domain-retail` found no such ref on 30 September 2026), so the link points at the path the spine names |
+| The retail and e-commerce dossier, `content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md` | Linked by path from the day sheet and the study notes, never copied. Its branch, `w01-domain-retail`, was absent at the start of the build and fetched later on 30 September 2026 (`git show origin/w01-domain-retail:<path>`); the pack's stakeholders, their questions and the DMart likeness agree with its sections 2 and 4, and the day sheet and notes point at its sections 4 and 5. Its one-page card was not yet on the branch |
 
 ## The data
 

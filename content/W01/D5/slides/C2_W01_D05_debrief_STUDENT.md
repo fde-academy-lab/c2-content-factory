@@ -43,7 +43,9 @@ value: the sign | label: what a wrong number costs | note: a falling quarter rep
 LIVE, 2 minutes. Say who asks and why it matters to them: Anand returns any figure that does not tie
 to his control total, and Meera acts on the first line of the note. A wrong first line sends
 Monday's review home with nothing to investigate, while Marketing's Rs 12 crore request is judged
-against a quarter that did not happen.
+against a quarter that did not happen. Then one sentence of likeness, even when D2 is left to
+self-study: Nykaa reports GMV of Rs 4,182 crore and revenue of Rs 2,155 crore for the same quarter,
+so every figure there names its base and bridges to the books.
 ```
 
 ---
@@ -258,7 +260,9 @@ value: half | label: what a wrong base costs | note: the fall reported at half i
 ```notes
 LIVE, 1 minute. A base that is short by one large order halves the fall the note reports. Nobody
 argues with the direction, so nobody acts at the right scale, and when Finance finds the order,
-every other number in the note is doubted with it.
+every other number in the note is doubted with it. One sentence of likeness, even when D13 is
+self-study: JPMorgan's own task force found a risk spreadsheet that divided by a sum instead of an
+average and never raised an error.
 ```
 
 ---
@@ -444,7 +448,9 @@ value: one line | label: what Meera acts on | note: the note's first
 ```notes
 LIVE, 1 minute. Meera and Marketing both read the first line: Meera acts on it, and Marketing
 attacks any rate that rests on a handful of orders. A trend claimed from a few orders sends a team
-to fix a segment that did nothing while the branch that moved goes unopened.
+to fix a segment that did nothing while the branch that moved goes unopened. One sentence of
+likeness, even when D22 is self-study: IMDb will not rank a title in its Top 250 until it has 25,000
+ratings.
 ```
 
 ---

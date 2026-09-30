@@ -15,8 +15,10 @@ Posts to <!-- sync:module:W01/D5 -->Module 1: Foundations of AI and Data<!-- /sy
 
 **The domain.** Kalpa Retail is the room's first business. Its story (how it makes money, who
 decides what, its metrics as formulas) is the retail and e-commerce dossier,
-`content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md`, with its one-page card in
-`content/W01/D1/cheatsheets/`. Today retells none of it: every chapter names the metric at stake
+`content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md`; its section 4 is who decides
+what (Anand's "Do your numbers match my books?" is its finance row) and section 5 is the metrics as
+formulas, the revenue tree among them. Its one-page card is to ship in `content/W01/D1/cheatsheets/`.
+Today retells none of it: every chapter names the metric at stake
 (booked revenue per quarter and its branches), who at Kalpa asks for it and what a wrong number
 costs, and a learner who is unsure of a term is sent to the dossier.
 

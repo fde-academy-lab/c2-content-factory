@@ -46,6 +46,8 @@ the order you will type queries in on Monday.
 Kalpa Retail is the business every number this week belongs to. If a term in these notes (booked
 revenue, a segment, a control total) is not yet second nature, the retail and e-commerce dossier
 tells the business's story from the start: `content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md`.
+Its section 4 says who at Kalpa asks which question, and its section 5 writes the revenue tree and the
+other metrics as formulas.
 
 ---
 
