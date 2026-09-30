@@ -157,12 +157,16 @@ def opener(n, title, need, prev):
 def ch1():
     return [
         opener(1, "What the ERP actually sent", '''
-        **The need.** Revenue for Q1 is booked value in rupees, and two systems disagree on it by about
-        Rs 20 lakh. Anand will not let Kalpa act on Tuesday's drop until the gap is explained, and
-        Marketing loses a month for every week the argument runs. Before anyone totals anything, the
-        question is what the ERP sent: how many records, how many complete, how many readable as
-        numbers, how many distinct. A wrong answer here costs the most, because every later number is
-        built on it.
+        **The need.** Revenue for Q1 is booked value in rupees, and two numbers for it disagree by about
+        Rs 20 lakh. The dashboard reads an export from the ERP, the enterprise resource planning system
+        Finance books orders in, and the ERP team's note says the orders CSV was stitched from two
+        extracts, two separate pulls of rows out of the ERP, during the Q1 migration, the move of the
+        order data from one system to another. Anand will not let Kalpa act on Tuesday's drop until the
+        gap is explained, and his analyst ties out to the rupee: she matches every figure to the books,
+        line by line, and a rupee's difference is a finding. Marketing loses a month for every week the
+        argument runs. Before anyone totals anything, the question is what the ERP sent: how many
+        records, how many complete, how many readable as numbers, how many distinct. A wrong answer here
+        costs the most, because every later number is built on it.
 
         **Who else faces it.** Target Canada launched in March 2013, lost almost a billion dollars in its first
         year and in January 2015 announced it would close all 133 stores (CBC News, 15 January 2015, checked
@@ -181,7 +185,7 @@ def ch1():
         setup_cell([READ, PROFILE], 'raw = read_orders()\nprint(len(raw), "rows read from", ORDERS_CSV.name)'),
         mapcell(1, ["the options\\nhow to learn what arrived", "1. everything read is text",
                     "2. the profile\\npresent, convertible, distinct", "3. the trap\\nthe largest order, sorted as text",
-                    "4. convert on purpose\\nfailures logged", "5. a second witness\\nthe JSON feed",
+                    "4. convert on purpose\\nfailures logged", "5. the JSON feed\\nwhat it can witness",
                     "a second route\\nthe same counts another way"]),
         md('''
         ## The options
@@ -197,14 +201,10 @@ def ch1():
         '''),
         code('''
         cells = len(raw) * len(FIELDS)
-        # a repeat is recognisable only when both copies of a pair are drawn: 15 pairs among 201 rows
-        p_sample_copy = sum((-1) ** (k + 1) * math.comb(15, k) * math.comb(201 - 2 * k, 20 - 2 * k) / math.comb(201, 20)
-                            for k in range(1, 11))
-        p_sample_bad = 20 / len(raw)                                     # one unreadable amount
         sizing = [
             ("a) total and compare", "201 amounts", "under a second", "stops on the first unreadable amount; says nothing about why"),
             ("b) scroll it", f"{cells:,} cells by eye", "about 17 minutes at half a second a cell", "repeats far apart are missed"),
-            ("c) sample 20 rows", "20 rows", "about 10 minutes of tying out", f"{p_sample_copy:.0%} chance to draw both copies of a pair, {p_sample_bad:.0%} to meet the bad amount"),
+            ("c) sample 20 rows", "20 rows", "about 10 minutes of tying out", f"the 20 rows it reads, and nothing about the other {len(raw) - 20}"),
             ("d) profile every field", f"{cells:,} values by code", "under a second", "finds every count that does not fit; the choice of copy waits"),
         ]
         kit.table(["option", "what it reads", "time", "what it catches"], sizing,
@@ -215,10 +215,11 @@ def ch1():
         md('''
         **The best-fit call: d, then a sample where the profile points.** A profile reads every value
         in under a second and turns each defect into a count that does not fit, which is what a
-        reconciliation needs first. The minutes in b and the 17 minutes of scrolling are an assumption
-        of half a second a cell, labelled as illustrative. **The fact that would change it:** a file with
-        no field that names an order. Then there is nothing to count distinct, and chapter 2's fuzzy
-        match becomes the only way to find repeats.
+        reconciliation needs first. The minutes in b and c are illustrative: half a second a cell to
+        scroll, half a minute a row to tie out. **The fact that would change it:** a profile too slow
+        for the deadline, as on an export of crores of rows due in an hour. Then profile the key and the
+        money fields first, `order_id` and `amount`, read only the rows they flag, and let the other
+        fields wait.
         '''),
 
         md('''
@@ -375,7 +376,7 @@ def ch1():
         '''),
 
         md('''
-        ## 5. The harder variant: the JSON feed as a second witness
+        ## 5. The harder variant: the JSON feed, and what it can witness
 
         The ERP also sent the app's JSON feed. `json.load` stops with a `JSONDecodeError`.
 
@@ -385,9 +386,9 @@ def ch1():
         empty(),
         md('''
         **Predict before you run.** The code below reads the feed one complete record at a time and stops
-        at the first that is not complete. How should the feed be used? a) in place of the CSV; b) as a
-        second witness, compared field by field for the orders it holds; c) not at all; d) merged into
-        the CSV so nothing is lost.
+        at the first that is not complete. How should the feed be used? a) in place of the CSV, as the
+        app's own record; b) as a witness to what the extract held, compared field by field; c) not at
+        all, since it fails to parse; d) merged into the CSV, so no order is lost between them.
         '''),
         code('''
         text = (DATA / "C2_W01_D03_orders_STUDENT.json").read_text(encoding="utf-8")
@@ -412,34 +413,42 @@ def ch1():
         kit.check("every feed record is an order the CSV holds", all(r["order_id"] in csv_ids for r in feed))
         '''),
         md('''
-        **What happened.** The answer is b. The feed yields 119 complete records, all orders the CSV holds,
-        so it can confirm the CSV field by field for those orders and can never replace it. Missing looks
-        different in each format: a CSV writes an absent value as an empty string, while JSON leaves the
-        key out, so `record["status"]` can raise `KeyError` where the CSV returned `""`. The profile uses
-        `.get(field, "")`, which counts both the same way.
+        **What happened.** The answer is b. The feed yields 119 complete records, all orders the CSV holds.
+        It witnesses what the extract held, never whether a value is right: where the two agree, they
+        agree on what was exported, and a defect in the extract sits in both. It stops part way through,
+        so it can never replace the CSV either. Missing looks different in each format: a CSV writes an
+        absent value as an empty string, while JSON leaves the key out, so `record["status"]` can raise
+        `KeyError` where the CSV returned `""`. The profile uses `.get(field, "")`, which counts both the
+        same way.
         '''),
 
         md('''
         ## A second route: the same counts, reached another way
 
-        The profile counted distinct ids with a set and failures with `convert()`. A `Counter` over the
-        ids and the length of the rejects log reach the same two numbers by different code; if they
-        disagree, one of the two is wrong.
+        The profile counted distinct ids with a set and failures with `convert()`. Two methods that share
+        none of that code reach the same numbers: sort the ids and count the places where an id differs
+        from the one before it, and test each amount against a pattern of digits instead of asking
+        `int()`. If the two routes disagree, one of them is wrong.
         '''),
         code('''
-        id_counts = Counter(r["order_id"] for r in raw)
-        repeated = sum(n - 1 for n in id_counts.values())
-        kit.table(["count", "the profile", "the second route"],
-                  [("distinct order ids", prof["order_id"]["distinct"], len(id_counts)),
-                   ("rows beyond one per id", len(raw) - prof["order_id"]["distinct"], repeated),
-                   ("amounts that fail", prof["amount"]["present"] - prof["amount"]["convertible"], len(rejects))])
-        kit.check("both routes find 186 distinct ids", len(id_counts) == prof["order_id"]["distinct"] == 186)
-        kit.check("both routes find one amount that fails", len(rejects) == prof["amount"]["present"] - prof["amount"]["convertible"])
+        import re
+        ids_sorted = sorted(r["order_id"] for r in raw)
+        distinct_by_sort = 1 + sum(1 for a, b in zip(ids_sorted, ids_sorted[1:]) if a != b)
+        fail_by_pattern = sum(1 for r in raw if not re.fullmatch(r"[0-9]+", r["amount"]))
+        kit.table(["count", "the profile", "the second route", "how the second route counts"],
+                  [("distinct order ids", prof["order_id"]["distinct"], distinct_by_sort, "sorted ids, one more at each change"),
+                   ("rows beyond one per id", len(raw) - prof["order_id"]["distinct"], len(raw) - distinct_by_sort, "rows less the sorted count"),
+                   ("amounts that fail", prof["amount"]["present"] - prof["amount"]["convertible"], fail_by_pattern, "a pattern of digits, no int()")])
+        kit.check("both routes find 186 distinct ids", distinct_by_sort == prof["order_id"]["distinct"] == 186)
+        kit.check("both routes find one amount that fails",
+                  fail_by_pattern == prof["amount"]["present"] - prof["amount"]["convertible"] == 1)
+        kit.check("the rejects log agrees with the pattern", len(rejects) == fail_by_pattern)
         '''),
         md('''
         **When to switch.** The profile is the route for a first look, since it asks every field the same
-        three questions. The `Counter` is the route when one field matters, because it keeps how many
-        times each id appears, which is where chapter 2 starts.
+        three questions. The sort and the pattern are the routes to trust when the profile's own code is
+        in doubt, because they share none of it: a slip in `convert()` or in a set cannot move them.
+        Chapter 2 goes one step further and keeps which rows share an id.
 
         > **Kavya's review.** "Before you total anything, tell me how many records you received, how many
         > are complete, how many convert and how many are distinct. A total from a file you have not
@@ -454,21 +463,19 @@ def ch1():
         and I count and log the failures. I never turn a failure into a default without writing that
         decision down, because a zero is a claim about the business."
 
-        **[S] How do you handle missing data?** "I measure it per field first: present, convertible,
-        distinct. Then I ask what the absence means, and chapter 4 makes the decision."
-
-        **Design. A new export has 2 crore rows. Profile everything, or sample?** "Profile everything. A
-        profile is three counts per field, a few minutes of machine time, and it finds a defect wherever
-        it sits; a sample of 1,000 rows has well under a one percent chance of meeting a single bad row.
-        I would sample only to read rows the profile has already pointed at. What would switch me is a
-        profile too slow for the deadline, and then I profile the key and the money fields first."
+        **[D] Design. A new export has 2 crore rows. Profile everything, or sample?** "Profile everything.
+        A profile is three counts per field, a few minutes of machine time, and it finds a defect wherever
+        it sits; a sample of 1,000 rows reads one row in 20,000 and says nothing about the rest. I would
+        sample only to read rows the profile has already pointed at. What would switch me is a profile too
+        slow for the deadline, and then I profile the key and the money fields first."
 
         ### Depth: look before you leap, or ask forgiveness
 
         Python offers two styles for a conversion. Look before you leap checks first, as `value.isdigit()`
-        does, and rejects `"-2400"`, a valid integer. Easier to ask forgiveness tries the conversion and
-        handles the exception, as `convert()` does, so the rule for a valid amount lives in one place.
-        Real Python compares the two (https://realpython.com/python-lbyl-vs-eafp/, verified 03 Sep 2026).
+        does, and so refuses `" 950"`, an invented amount with a stray leading space that `int()` reads as
+        950 without complaint. Easier to ask forgiveness tries the conversion and handles the exception, as
+        `convert()` does, so the rule for a valid amount lives in one place. Real Python compares the two
+        (https://realpython.com/python-lbyl-vs-eafp/, verified 03 Sep 2026).
         '''),
         code('''
         kit.table(["What chapter 1 established", "The number"],
@@ -487,9 +494,9 @@ def ch1():
 INVENTED_DUPES = '''
 # Invented records, to show the mechanism without touching the ERP file.
 invented = [
-    {"order_id": "INV-01", "segment": "Retail-Plus", "order_date": "2026-05-03", "amount": "2400"},
+    {"order_id": "INV-01", "segment": "Retail-Plus", "order_date": "2026-05-03", "amount": "2500"},
     {"order_id": "INV-02", "segment": "Retail-Core", "order_date": "2026-05-09", "amount": "1300"},
-    {"order_id": "INV-01", "segment": "Retail-Plus", "order_date": "2026-05-03", "amount": "2400"},
+    {"order_id": "INV-01", "segment": "Retail-Plus", "order_date": "2026-05-03", "amount": "2500"},
     {"order_id": "INV-03", "segment": "Business", "order_date": "2026-06-11", "amount": "450000"},
     {"order_id": "INV-03", "segment": "Business", "order_date": "2026-06-11", "amount": "450000"},
 ]
@@ -566,12 +573,11 @@ def ch2():
         rows_out = []
         for name, flagged in by_key.items():
             lines = {r["line"] for r in flagged}
-            kept = [r for r in raw if r["line"] not in lines]
             wrong = [r for r in flagged if r["line"] not in truth]
-            rows_out.append((name, len(flagged), kit.rupees(Q(kept, "Q1")), kit.rupees(Q(kept, "Q2")),
-                             len(truth - lines), kit.rupees(sum(convert(r["amount"])[0] or 0 for r in wrong)),
+            rows_out.append((name, len(flagged), len(truth - lines),
+                             kit.rupees(sum(convert(r["amount"])[0] or 0 for r in wrong)),
                              f"{comparisons:,} pairs" if name.startswith("d") else "201 lookups"))
-        kit.table(["key", "rows flagged", "Q1 after", "Q2 after", "copies missed", "real rupees removed", "work"],
+        kit.table(["key", "rows flagged", "copies missed", "real rupees removed", "work"],
                   rows_out, caption="Each key sized on the ERP file; 'copies missed' is measured against the order_id key")
         kit.bars([(n, len(f)) for n, f in by_key.items()], lit=(2,), title="Rows each key flags as a repeat")
         '''),
@@ -708,21 +714,31 @@ kit.check("on invented records, leaving out the line finds both copies", found =
         '''),
 
         md('''
-        ## A second route: count the copies with arithmetic
+        ## A second route: every row against every later row
 
-        The groups gave 15 repeated orders. Rows less distinct ids per quarter reaches the same number
-        without grouping at all.
+        The groups found 15 rows beyond one per order by building a dictionary keyed on the id. A route
+        that builds nothing compares every row with every row after it and counts the pairs that share an
+        order id; with no id on three rows, each such pair is one extra row.
         '''),
         code('''
-        arithmetic = sum(by_q[q][0] - by_q[q][1] for q in ("Q1", "Q2"))
+        pairs, compared = {"Q1": 0, "Q2": 0}, 0
+        for i, a in enumerate(raw):
+            for b in raw[i + 1:]:
+                compared += 1
+                if a["order_id"] == b["order_id"]:
+                    pairs[b["quarter"]] += 1
         grouped = sum(len(rs) - 1 for rs in groups.values())
-        kit.table(["route", "rows beyond one per order"], [("rows less distinct ids, per quarter", arithmetic),
-                                                           ("groups by order_id", grouped)])
-        kit.check("both routes find 15 rows beyond one per order", arithmetic == grouped == 15)
+        kit.table(["route", "rows beyond one per order", "Q1", "Q2", "work"],
+                  [("groups by order_id", grouped, by_q["Q1"][0] - by_q["Q1"][1], by_q["Q2"][0] - by_q["Q2"][1], f"{len(raw)} lookups"),
+                   ("every row against every later row", sum(pairs.values()), pairs["Q1"], pairs["Q2"], f"{compared:,} comparisons")])
+        kit.check("both routes find 15 rows beyond one per order", sum(pairs.values()) == grouped == 15)
+        kit.check("and agree quarter by quarter", (pairs["Q1"], pairs["Q2"]) == (by_q["Q1"][0] - by_q["Q1"][1], by_q["Q2"][0] - by_q["Q2"][1]))
         '''),
         md('''
-        **When to switch.** The arithmetic answers how many in one line and is the check to run first on
-        any file. The groups answer which, and only they can feed a log.
+        **When to switch.** The pairwise count needs no dictionary and no key to group on, so it is the
+        check to run when the grouping code is in doubt on a small file. Its cost grows with the square
+        of the rows, 20,100 comparisons here and about 200 lakh crore on 2 crore rows, so on anything large
+        the groups are the pass, and only they say which rows, which a log needs.
 
         > **Kavya's review.** "Tell me what makes two rows the same order before you tell me how many
         > duplicates there are. A count of duplicates without an identity rule is a count of nothing."
@@ -736,11 +752,7 @@ kit.check("on invented records, leaving out the line finds both copies", found =
         differs somewhere: a timestamp, a load id, a line number. Then I weigh them, since two rows can
         carry more money than a hundred."
 
-        **[F] A dedupe returns zero duplicates. Do you believe it?** "Only after checking it against a
-        count of distinct keys. If rows and keys disagree, the dedupe compared on something that makes
-        every row unique."
-
-        **Design. Order id, whole record or fuzzy, for a customer table merged from two apps?** "Neither
+        **[D] Design. Order id, whole record or fuzzy, for a customer table merged from two apps?** "Neither
         app's id identifies a person across both, so the whole record and the id are out. I would
         normalise email and phone and match on those, block by city so each record is compared only within its own city, which keeps the comparisons in the
         thousands, and send every fuzzy match a person has not confirmed to review. What would switch me
@@ -750,8 +762,7 @@ kit.check("on invented records, leaving out the line finds both copies", found =
 
         Customer id and order date together is a composite key; on this file it finds 14 of the 15,
         because one pair's copies disagree on the date. Record linkage across systems starts the same
-        way, by writing down what makes two records one before counting anything. Week 2 meets
-        repeated keys again in a join, where they multiply rows instead of adding them.
+        way, by writing down what makes two records one before counting anything.
         '''),
         code('''
         kit.flow(["rows against keys\\n201 rows, 186 ids", "the trap\\nthe line in the key",
@@ -881,12 +892,14 @@ def ch3():
         '''),
         md('''
         **What happened.** The answer is c. Q1 moves from Rs 2,09,98,210 to Rs 1,90,00,000, Finance's 1.9
-        crore to the rupee, and Q2 from Rs 1,87,03,710 to Rs 1,87,00,000. The amount chapter 1 could not
-        read turned out to be one copy of a pair whose twin carries the value, so no revenue went with it.
+        crore to the rupee, and Q2 from Rs 1,87,03,710 to Rs 1,87,00,000. Two of the 15 rows set aside
+        carry a reason longer than "second copy of the order", and those two are where the rule made a
+        choice.
 
-        **Your turn.** In the empty cell, print the log rows whose reason is more than "second copy of the
-        order": `[(e["line"], e["order_id"], e["reason"]) for e in set_aside if e["reason"] != "second copy of the order"]`.
-        For each, write the question you would send the ERP team.
+        **Your turn.** In the empty cell, print them:
+        `[(e["line"], e["order_id"], e["reason"]) for e in set_aside if e["reason"] != "second copy of the order"]`.
+        For each, say what the reason tells you: where the amount chapter 1 could not read went, and which
+        field a pair's copies disagree on. Then write the question you would send the ERP team.
         '''),
         empty(),
 
@@ -981,14 +994,13 @@ def ch3():
 
         ### In the interview
 
-        **[F] Two copies of an order disagree. Which do you keep?** "The one whose fields validate; if
-        both do, the one the business calls the original, and I log the disagreement and ask the owner
-        of the source. I size the choice first: here keeping the first copy would have cost Rs 1,790."
-
-        **Design. First copy, last copy or the one that validates?** "The copy that validates, then the
-        first, with every set-aside row logged. Last copy happened to land on the books here, by file
-        order. If the ERP team told me the second extract was a corrected re-run, I would switch to last
-        and write that down as the reason."
+        **[D] Design. Two copies of an order disagree: first copy, last copy or the copy that validates?**
+        "The copy whose fields validate; if both do, the one the business calls the original, the first
+        extract here, and I log the disagreement and ask the owner of the source. I size the choice first:
+        keeping the first copy would have cost Rs 1,790 against the books, and keeping the last landed on
+        the books only because of the order the migration appended its rows. If the ERP team told me the
+        second extract was a corrected re-run, I would switch to the last copy and write that down as the
+        reason."
 
         ### Depth: survivorship in a dedupe
 
@@ -1017,11 +1029,21 @@ def ch4():
         **Who else faces it.** COMPANY_CH4
         ''', "Chapter 3 kept 186 orders by the identity rule and set 15 rows aside; Q1 is Rs 1,90,00,000. "
              "This chapter decides each missing and malformed value, and writes the reason down."),
-        md('**Setup.** The tools so far and the identity rule from chapter 3, so this notebook starts from the 186 kept orders.'),
+        md('''
+        **Setup.** The tools so far and the identity rule from chapter 3, then the conversion that follows
+        it: every kept amount is converted, and any that fails goes to a rejects log. That is the pass's
+        order for the rest of the day, the identity rule first and conversion after it.
+        '''),
         setup_cell([READ, PROFILE, RULE],
                    'raw = read_orders()\nkept, set_aside = identity_rule(raw)\n'
-                   'clean = [dict(r, amount=convert(r["amount"])[0]) for r in kept]\n'
-                   'print(len(clean), "orders kept;", len(set_aside), "rows set aside")'),
+                   'clean, rejects = [], []\n'
+                   'for r in kept:\n'
+                   '    value, reason = convert(r["amount"])\n'
+                   '    if value is None:\n'
+                   '        rejects.append({"line": r["line"], "order_id": r["order_id"], "field": "amount", "reason": reason})\n'
+                   '    else:\n'
+                   '        clean.append(dict(r, amount=value))\n'
+                   'print(len(clean), "orders kept;", len(set_aside), "rows set aside;", len(rejects), "in the rejects log")'),
         mapcell(4, ["the options\\ntwo decisions, sized", "1. a missing status\\ndrop, default or flag",
                     "2. a missing discount\\nzero or unknown", "3. the trap\\ncoerced to zero",
                     "4. repair from a witness\\nonly an independent one", "a second route\\nthe profile against the logs"]),
@@ -1048,9 +1070,17 @@ def ch4():
         q2 = [r for r in clean if r["quarter"] == "Q2"]
         no_status = [r for r in q2 if not r["status"]]
         delivered = sum(1 for r in q2 if r["status"] == "delivered")
-        status_opts = [("a) drop", Q(q2, "Q2") - sum(r["amount"] for r in no_status), len(q2) - 1, delivered),
-                       ("b) default delivered", Q(q2, "Q2"), len(q2), delivered + 1),
-                       ("c) impute from last order", Q(q2, "Q2"), len(q2), delivered + 1),
+
+        def last_status(order, rows):
+            """The status on the customer's most recent earlier order that carries one."""
+            earlier = [r for r in rows if r["customer_id"] == order["customer_id"] and r["status"]
+                       and r["order_date"] < order["order_date"]]
+            return max(earlier, key=lambda r: r["order_date"])["status"] if earlier else ""
+
+        imputed = [last_status(o, clean) for o in no_status]
+        status_opts = [("a) drop", Q(q2, "Q2") - sum(r["amount"] for r in no_status), len(q2) - len(no_status), delivered),
+                       ("b) default delivered", Q(q2, "Q2"), len(q2), delivered + len(no_status)),
+                       ("c) impute from last order", Q(q2, "Q2"), len(q2), delivered + imputed.count("delivered")),
                        ("d) keep and flag", Q(q2, "Q2"), len(q2), delivered)]
         kit.table(["missing status", "Q2 revenue", "Q2 orders", "delivered", "delivered share"],
                   [(n, kit.rupees(v), o, d, f"{d / o:.1%}") for n, v, o, d in status_opts],
@@ -1092,11 +1122,14 @@ def ch4():
                  fmt=lambda v: f"{v:.1f}%", lo=60, title="The delivered share moves with the choice; the axis starts at 60 percent")
         kit.check("exactly one kept order has no status", len(no_status) == 1)
         kit.check("keep and flag leaves Q2 whole", status_opts[3][1] == 18700000, kit.rupees(status_opts[3][1]))
-        kit.check("only a default or an imputation adds a delivery", status_opts[1][3] == status_opts[2][3] == delivered + 1)
+        kit.check("the imputation read a status from the same customer's earlier order", all(imputed), f"{len(imputed)} imputed")
+        kit.check("a default and this imputation each add a delivery nobody recorded",
+                  status_opts[1][3] > delivered and status_opts[2][3] > delivered)
         '''),
         md('''
-        **What happened.** The answer is d. Dropping removes a booked order that Finance has; defaulting and
-        imputing each add a delivery nobody recorded, lifting the delivered share from 66.3 to 67.4 percent.
+        **What happened.** The answer is d. Dropping removes a booked order that Finance has. Defaulting
+        adds a delivery nobody recorded, and so does the imputation here, because the customer's earlier
+        order was delivered; each lifts the delivered share from 66.3 to 67.4 percent.
         Keep and flag leaves Q2 at Rs 1,87,00,000 and writes one line in the flags log.
         '''),
 
@@ -1112,11 +1145,12 @@ def ch4():
         '''),
         code('''
         with_disc = [int(r["discount"]) for r in clean if r["discount"] != ""]
-        as_zero = with_disc + [0] * (len(clean) - len(with_disc))
+        discount_unknown = [r["line"] for r in clean if r["discount"] == ""]     # kept, and flagged as unknown
+        as_zero = with_disc + [0] * len(discount_unknown)
         avg_known, avg_zero = sum(with_disc) / len(with_disc), sum(as_zero) / len(as_zero)
         kit.columns(["missing read as zero", "missing kept as unknown"], [("average discount, Rs", [avg_zero, avg_known])],
                     fmt=lambda v: f"Rs {v:.0f}", title="Average discount per order, two readings of the same file")
-        kit.check("55 kept orders carry no discount", len(clean) - len(with_disc) == 55)
+        kit.check("55 kept orders carry no discount", len(discount_unknown) == 55)
         kit.check("zeros pull the average down by over a quarter", avg_zero < 0.75 * avg_known, f"Rs {avg_zero:.0f} against Rs {avg_known:.0f}")
         '''),
         md('''
@@ -1143,7 +1177,7 @@ def ch4():
         failures = sum(1 for r in coerced if not isinstance(r["amount"], int))
         kit.stats([(f"{len(raw) - failures} of {len(raw)}", "amounts convert", "the coerced profile"),
                    ("0", "rows in the rejects log", "nothing to explain"),
-                   (kit.rupees(Q(coerced_kept, "Q1")), "Q1 after the dedupe", "rounds to 1.9 crore")],
+                   (f"{len(coerced_kept)} orders", "in the clean file", "one per order id, all of them numbers")],
                   caption="The coerced pass, as it would be reported")
         '''),
         md('''
@@ -1163,13 +1197,16 @@ def ch4():
                    lo=18990000, title="What the zero cost against the books; the axis starts at Rs 1.899 crore")
         '''),
         md('''
-        **The fix, and what changed.** Reject to the log, then let the identity rule prefer the copy that
-        validates: the Rs 0 order leaves the clean file, the twin with the value stays, and Q1 is back on
-        the books. The profile reports one failure, which is the truth about the export.
+        **The fix, and what changed.** The pass's own order: the identity rule first, keeping the copy
+        whose amount converts, then conversion, with a rejects log for any amount left without a valid
+        twin. The unreadable copy goes to the set-aside log with its twin named, the twin with the value
+        stays, the Rs 0 order never exists, and Q1 is back on the books. The profile of the export still
+        reports one failure, which is the truth about the export; the rejects log after the rule is empty,
+        which is the truth about the clean file.
         '''),
 
         md('''
-        ## 4. The harder variant: repair only from an independent witness
+        ## 4. The harder variant: repair only from an independent source
 
         Two repairs look tempting. Reading the text as a number, on an invented pair in which the first
         copy says `fourteen` and the second `1400`:
@@ -1209,10 +1246,10 @@ def ch4():
         kit.check("the one it does not confirm is unreadable in the feed too", unreadable_in_feed == 1)
         '''),
         md('''
-        **What happened.** The answer is b. The feed repeats the defect, because it was cut from the same
-        extract, so it is a copy and no witness. The CSV's second extract carried the value, and the
-        identity rule already used it. The rule for the log: repair only from a source that could not have
-        copied the error, and name the source.
+        **What happened.** The answer is b. The feed witnesses what the extract held, never whether a
+        value is right: it carries the same unreadable text, so it cannot repair it. The CSV's second
+        extract carried the value, and the identity rule already used it. The rule for the log: repair
+        only from a source that could not have copied the error, and name the source.
         '''),
 
         md('''
@@ -1224,10 +1261,12 @@ def ch4():
         p = profile(clean)
         kit.table(["defect", "from the profile of the clean file", "from the logs"],
                   [("status missing", len(clean) - p["status"]["present"], len(flags)),
-                   ("amount that fails", p["amount"]["present"] - p["amount"]["convertible"], 0),
-                   ("discount missing", len(clean) - p["discount"]["present"], len(clean) - len(with_disc))])
+                   ("amount that fails", p["amount"]["present"] - p["amount"]["convertible"], len(rejects)),
+                   ("discount missing", len(clean) - p["discount"]["present"], len(discount_unknown))])
         kit.check("the profile and the flags log agree on the status", len(clean) - p["status"]["present"] == len(flags))
-        kit.check("no amount in the clean file fails", p["amount"]["convertible"] == len(clean))
+        kit.check("the profile and the rejects log agree on the amount",
+                  p["amount"]["present"] - p["amount"]["convertible"] == len(rejects) == 0)
+        kit.check("the profile and the discount flags agree", len(clean) - p["discount"]["present"] == len(discount_unknown))
         '''),
         md('''
         **When to switch.** The profile is how you find defects; the log is how you show them. Run the
@@ -1282,8 +1321,8 @@ def ch5():
                    'raw = read_orders()\nclean, set_aside, rejects, flags = clean_pass(raw)\n'
                    'print(len(clean), "orders;", len(set_aside), "set aside;", len(flags), "flagged")'),
         mapcell(5, ["the options\\nhow to prove it", "1. the bridge\\nRs 2.1 crore to Rs 1.9 crore",
-                    "2. Tuesday recomputed", "3. the trap\\nthe bulk order removed",
-                    "4. the note to Finance", "a second route\\nbottom up"]),
+                    "2. the tree recomputed", "3. Tuesday's segment recomputed", "4. the trap\\nthe bulk order removed",
+                    "5. the note to Finance", "a second route\\nbottom up"]),
         md('''
         ## The options
 
@@ -1320,8 +1359,10 @@ def ch5():
         md('''
         **The best-fit call: c.** A bridge closes to the rupee and every move is a row in the log, so Anand's
         analyst can test each one. The feed is short by Rs 1,790 in Q1 because it carries the same
-        unreadable amount, and it holds 19 of Q2's 86 orders. **The fact that would change it:** a bridge that
-        does not close. Then the gap is the finding, and it may be Finance's books that miss a booked order.
+        unreadable amount, and it holds 19 of Q2's 86 orders. **The fact that would change it:** a second
+        source that is independent of the export and complete for the quarter. A rebuild from it would
+        prove the figure on its own, and the bridge would become its check; this feed is neither, since it
+        was cut from the same extract and stops at record 120.
         '''),
 
         md('''
@@ -1350,11 +1391,56 @@ def ch5():
         '''),
 
         md('''
-        ## 2. Tuesday recomputed on the clean file
+        ## 2. Monday's tree, recomputed on the clean file
 
-        Tuesday told the leadership group that revenue fell about 11 percent from Q1 to Q2 and that
-        Retail-Plus orders per customer fell 49 percent, 2.32 to 1.18, both measured on the export as
-        delivered.
+        Monday's tree splits revenue into customers, orders per customer and revenue per order, and Tuesday
+        read the Q1 to Q2 change off it on the export as delivered: customers x1.000, orders per customer
+        x0.754, revenue per order x1.180, revenue x0.890, a fall of 11.0 percent. The copies sat in Q1, so
+        at least one branch has to move.
+
+        **Predict before you run.** Recomputed on the clean file, which branch moves furthest from
+        Tuesday's reading? a) customers, which the copies counted twice; b) orders per customer, since
+        the copies were Q1 orders; c) revenue per order, since two copies were corporate orders; d) all
+        three by about the same share.
+        '''),
+        code('''
+        def tree(rows, q):
+            """Monday's tree for one quarter: its three branches and the revenue they multiply to."""
+            rs = [r for r in rows if r["quarter"] == q]
+            customers = len({r["customer_id"] for r in rs})
+            return {"customers": customers, "orders per customer": len(rs) / customers,
+                    "revenue per order": Q(rs, q) / len(rs), "revenue": Q(rs, q)}
+
+        t1, t2 = tree(clean, "Q1"), tree(clean, "Q2")
+        tuesday_x = {"customers": 1.000, "orders per customer": 0.754, "revenue per order": 1.180, "revenue": 0.890}
+        clean_x = {k: t2[k] / t1[k] for k in t1}
+        show = {"customers": str, "orders per customer": lambda v: f"{v:.3f}",
+                "revenue per order": lambda v: kit.rupees(round(v)), "revenue": kit.rupees}
+        kit.table(["branch", "Q1 clean", "Q2 clean", "Q2 against Q1, clean", "as Tuesday read it"],
+                  [(k, show[k](t1[k]), show[k](t2[k]), f"x{clean_x[k]:.3f}", f"x{tuesday_x[k]:.3f}") for k in t1],
+                  caption="The revenue tree, Q1 to Q2, recomputed on the clean file")
+        branches = ["customers", "orders per customer", "revenue per order"]
+        kit.columns(branches, [("as Tuesday read it", [tuesday_x[k] for k in branches]),
+                               ("on the clean file", [clean_x[k] for k in branches])],
+                    fmt=lambda v: f"x{v:.3f}", lit=(1,), title="Each branch's Q2 multiple of Q1, before and after cleaning")
+        product = clean_x["customers"] * clean_x["orders per customer"] * clean_x["revenue per order"]
+        shift = {k: abs(clean_x[k] - tuesday_x[k]) for k in branches}
+        kit.check("the three branches multiply back to revenue", abs(product - clean_x["revenue"]) < 1e-9, f"x{product:.3f}")
+        kit.check("customers do not move: the same 69 bought in both quarters", t1["customers"] == t2["customers"] == 69)
+        kit.check("orders per customer moves furthest from Tuesday's reading", max(shift, key=shift.get) == "orders per customer")
+        kit.check("the revenue drop shrinks to under 2 percent", 1 - clean_x["revenue"] < 0.02, f"{1 - clean_x['revenue']:.1%}")
+        '''),
+        md('''
+        **What happened.** The answer is b. Customers stay at 69 in both quarters. Orders per customer now
+        move from 1.449 to 1.246, x0.860 against the x0.754 Tuesday read, because the copies were Q1
+        orders; revenue per order moves x1.144 instead of x1.180; and revenue x0.984, a fall of 1.6 percent
+        instead of 11.0. The tree still points at frequency, and the fall it points at is about 14 percent
+        instead of 25. The next level asks the same of the segment Tuesday named.
+
+        ## 3. Tuesday's segment, recomputed
+
+        Tuesday told the leadership group that Retail-Plus orders per customer fell 49 percent, 2.32 to
+        1.18, measured on the export as delivered.
 
         **Predict before you run.** On clean data, the Retail-Plus finding: a) disappears; b) survives,
         smaller; c) grows; d) moves to Retail-Core.
@@ -1368,23 +1454,18 @@ def ch5():
                     f"{cleaned[s]:+.1f}%") for s in segs], caption="Orders per customer, Q1 to Q2")
         kit.columns(segs[:3], [("fall as Tuesday reported", [-tuesday[s] for s in segs[:3]]), ("fall on clean data", [-cleaned[s] for s in segs[:3]])],
                     fmt=lambda v: f"{v:.0f}%", lit=(1,), title="The fall in orders per customer, percent; Student rose and is left out")
-        rev_dirty, rev_clean = 1 - 18700000 / 21000000, 1 - Q(clean, "Q2") / Q(clean, "Q1")
-        kit.line(["Q1", "Q2"], [("as Tuesday reported, Rs lakh", [210.0, 187.0], "bad"),
-                                ("on clean data, Rs lakh", [Q(clean, "Q1") / 1e5, Q(clean, "Q2") / 1e5], "good")],
-                 lo=150, title="Revenue Q1 to Q2: an 11 percent fall becomes 1.6 percent; the axis starts at Rs 150 lakh")
         kit.check("Retail-Plus still falls on clean data", cleaned["Retail-Plus"] < -30, f"{cleaned['Retail-Plus']:+.1f}%")
         kit.check("the Retail-Plus fall is smaller than Tuesday reported", cleaned["Retail-Plus"] > tuesday["Retail-Plus"])
-        kit.check("the revenue drop shrinks to under 2 percent", rev_clean < 0.02, f"{rev_clean:.1%} against {rev_dirty:.1%}")
         '''),
         md('''
         **What happened.** The answer is b. Retail-Plus orders per customer fall 35.0 percent on clean data,
         1.82 to 1.18, against the 49 Tuesday reported: the finding stands, smaller, because most copies sat
-        in Retail-Plus in Q1. The revenue drop shrinks from 11.0 to 1.6 percent. Both go in the note, the
-        smaller numbers first.
+        in Retail-Plus in Q1. With the tree's 1.6 percent in place of 11.0, both go in the note, the smaller
+        numbers first.
         '''),
 
         md('''
-        ## 3. The trap: the real bulk order removed as an outlier
+        ## 4. The trap: the real bulk order removed as an outlier
 
         **The plausible wrong answer.** Sorted as numbers, Q2's largest order sits far above the rest, 1.66
         times the next. The hurried analyst removes it "to be safe" and reports the quarter without it.
@@ -1430,7 +1511,7 @@ def ch5():
         '''),
 
         md('''
-        ## 4. The note to Finance
+        ## 5. The note to Finance
 
         **Predict before you run.** Which number leads the note? a) the 49 percent Tuesday reported, since
         leadership has seen it; b) the 1.9 crore and why it is right; c) the Rs 29 lakh order; d) the
@@ -1494,18 +1575,17 @@ def ch5():
         reconcile in rows and in rupees. When it closes I say which is right and why, fix the source and
         recompute anything reported from the wrong number."
 
-        **[S] How do you handle outliers?** "I sort, look at the tail, and ask whether the record is wrong
-        before asking whether it is big. A valid id, a real account and fields that convert make it
-        revenue. I keep it, flag it, and show the result with and without it. For a model trained on the
-        data I might cap or transform a long tail, and any fence I use sits inside one segment."
+        **[S] The largest order is 1.66 times the next. Do you remove it?** "I sort, look at the tail, and
+        ask whether the record is wrong before asking whether it is big. A valid id, a real account with
+        orders in both quarters and fields that convert make it revenue. I keep it, flag it, and show the
+        result with and without it: removing it here turns a 1.6 percent dip into a 17.1 percent fall. For
+        a model trained on the data I might cap or transform a long tail, and any fence I use sits inside
+        one segment."
 
-        **[D] Cleaning shrank yesterday's finding. What do you say?** "The smaller number first, what changed
-        and why, and whether the decision still holds. Here the fall is 35 percent, not 49, and Thursday
-        tests whether 35 is real."
-
-        **Design. Prove the figure with a bridge, or rebuild it from a second source?** "A bridge, when a log
-        backs each move, because it says why as well as how much. I would switch to a rebuild when the two
-        sources are independent and complete, which this JSON feed is not."
+        **[D] Design. Prove the figure with a bridge, or rebuild it from a second source?** "A bridge, when a
+        log backs each move, because it says why as well as how much. I would switch to a rebuild when the
+        second source is independent of the export and complete for the quarter, which this JSON feed is
+        not: it was cut from the same extract and holds 19 of Q2's 86 orders."
 
         ### Depth: a bridge with more than one kind of move
 
@@ -1656,13 +1736,13 @@ def ch6():
         col_aside_q1 = sum(convert(r["amount"])[0] or 0 for r in col_aside if r["quarter"] == "Q1")
         kit.stats([(f"{len(raw)} = {len(col_clean)} + {len(col_aside) + len(col_rejects)}", "rows reconcile", "in equals kept plus logged"),
                    (kit.rupees(col_aside_q1), "Q1 set aside", "Anand's gap, to the lakh"),
-                   (kit.rupees(Q(col_clean, "Q1")), "Q1 clean", "1.90 crore when rounded")],
+                   (f"Rs {Q(col_clean, 'Q1') / 1e7:.2f} crore", "Q1 clean", "as the note rounds it")],
                   caption="The colleague's log, as it would be sent")
         '''),
         md('''
         **Why it is wrong.** Rs 20,00,000 set aside looks like Anand's gap, and the rows tie, and Q1 rounds to
-        1.9. To the rupee, Q1 is Rs 1,89,98,210, Rs 1,790 short of the books: keeping the first copy kept one
-        whose amount could not be read, rejected it, and set aside the twin that carried the value. A row
+        1.9. To the rupee, Q1 is Rs 1,790 short of the books: keeping the first copy kept one whose amount
+        could not be read, rejected it, and set aside the twin that carried the value. A row
         reconciliation proves no row vanished; it cannot prove the right rows stayed. The analyst ties to
         the rupee, finds a booked order missing from a file called reconciled, and questions every other
         line. Two checks catch it: the books against the clean Q1, and a rejected order whose twin sits in
@@ -1679,9 +1759,10 @@ def ch6():
                    title="The colleague's bridge closes on its own file and misses the books; axis from Rs 1.88 crore")
         '''),
         md('''
-        **The fix, and what changed.** Convert inside the identity rule, preferring the copy that validates,
-        as `clean_pass()` does. The Rs 1,790 order comes back, the rejects log empties because the unreadable
-        copy is set aside with its twin named, and both totals tie: rows 201 = 186 + 15, rupees to the books.
+        **The fix, and what changed.** The pass's own order, as `clean_pass()` runs it: the identity rule
+        first, keeping the copy whose amount converts, then conversion. The Rs 1,790 order comes back; the
+        unreadable copy goes to the set-aside log with its twin named, so the rejects log is empty; and both
+        totals tie: rows 201 = 186 + 15, rupees to the books.
         '''),
 
         md('''
@@ -1738,17 +1819,14 @@ def ch6():
         **[D] An auditor asks why you dropped 14 rows; walk them through it.** "They were set aside, not
         dropped, and each is in the log. Fourteen Q1 rows share an order id with another row; the identity
         rule is the order id, because the ERP issues one per order. For each pair I kept the copy whose
-        fields validate, and the log names the kept line. Two corporate copies carry Rs 19,67,560 and the
-        rest Rs 30,650. Q1 rows tie, 114 in and 100 kept, the rupees bridge to your books exactly, and
-        replaying the log on the raw export rebuilds my clean file."
+        fields validate. Each line of the log carries the source line, the key, the rule, the reason, the
+        value and the line of the row that stayed, and a decisions log carries each rule's rows and rupees.
+        Two corporate copies carry Rs 19,67,560 and the rest Rs 30,650. Q1 rows tie, 114 in and 100 kept,
+        the rupees bridge to your books exactly, and replaying the log on the raw export rebuilds my clean
+        file. A full diff I would add only for an external auditor who has to re-derive every row."
 
-        **[F] The row counts reconcile. Are you done?** "No. Rows prove nothing vanished; rupees prove the
+        **[F] Your row counts reconcile. Are you done?** "No. Rows prove nothing vanished; rupees prove the
         right rows stayed. A colleague's pass here tied in rows and was Rs 1,790 short."
-
-        **Design. What goes in a log so a stranger can replay it?** "The source line, the key, the rule, the
-        reason, the value, and the line of the row that stayed; plus a decisions log with each rule's rows
-        and rupees, and the control totals. I would add a full diff only for an external auditor who has to
-        re-derive every row."
 
         ### Depth: control totals, and why a log is versioned
 
@@ -1772,132 +1850,240 @@ LADDER_PM = '''kit.ladder(["chapters 1 to 6, the pass built", "the escalated cas
             "the second case: the auditor asks why"], lit={lit}, show=False)'''
 
 CASE_STEPS = [
-    ("Step 1. Read and profile", '''
-# TODO 1. Which call reads the export so every value can be profiled as the file holds it?
-#   a) [dict(r) for r in csv.reader(open(ORDERS_CSV))]
-#   b) read_orders()
-#   c) json.load(open(ORDERS_CSV))
-#   d) open(ORDERS_CSV).read().split(",")
-raw = __TODO1__
-ids = {r["order_id"] for r in raw}
+    ("Step 1. Rows against orders",
+     "Anand's analyst will ask how many orders the export holds before she reads anything else. Count them.",
+     '''
+raw = read_orders()
+# TODO 1. Anand's analyst asks how many orders the export holds. Which count answers her?
+#   a) len(raw)
+#   b) len({r["customer_id"] for r in raw})
+#   c) len({r["order_id"] for r in raw})
+#   d) sum(1 for r in raw if ok(r))
+orders_sent = __TODO1__
 ''', '''
-kit.check("201 rows read", len(raw) == 201, f"{len(raw)}")
-kit.check("186 distinct order ids", len(ids) == 186, f"{len(ids)}")
-kit.bars([("rows", len(raw)), ("distinct order ids", len(ids))], title="Rows against orders in the export")
+ids = sorted(r["order_id"] for r in raw)
+by_sort = 1 + sum(1 for a, b in zip(ids, ids[1:]) if a != b)
+kit.check("your count matches a second count: the sorted ids, one more at each change", orders_sent == by_sort, f"{orders_sent}")
+kit.check("the export holds more rows than orders", len(raw) > orders_sent, f"{len(raw)} rows")
+kit.bars([("rows in the export", len(raw)), ("orders", orders_sent)], title="Rows against orders in the export")
 '''),
-    ("Step 2. Convert with a rejects log", '''
-# TODO 2. What should happen to an amount that int() refuses?
-#   a) it becomes 0, so the total runs
-#   b) the row is deleted before anyone sees it
-#   c) it goes to the rejects log with its line and reason
-#   d) it becomes the median amount of its segment
-failed = [r for r in raw if convert(r["amount"])[0] is None]
-rejects_log = __TODO2__
+    ("Step 2. The amount that will not convert",
+     "One amount will not convert. The identity rule runs next, and it needs every row the ERP sent in front of it.",
+     '''
+failed = []
+# TODO 2. What does the pass do with that row before the identity rule runs?
+#   a) failed = [r for r in raw if not ok(r)]
+#   b) raw = [r for r in raw if ok(r)]
+#   c) raw = [dict(r, amount=r["amount"] if r["amount"].isdigit() else "0") for r in raw]
+#   d) raw = [dict(r, amount=str(convert(r["amount"])[0] or 0)) for r in raw]
+__TODO2__
 ''', '''
-kit.check("one amount is logged, not zeroed", len(rejects_log) == 1 and all("line" in x for x in rejects_log))
+unreadable = [r["line"] for r in raw if not re.fullmatch(r"[0-9]+", r["amount"])]
+kit.check("every row the ERP sent is still in the pass", len(raw) == len(read_orders()), f"{len(raw)} rows")
+kit.check("the rows counted for reading are the ones a digit pattern cannot read",
+          bool(failed) and [r["line"] for r in failed] == unreadable, f"{len(failed)} row")
 '''),
-    ("Step 3. The identity rule", '''
-# TODO 3. Which key says two rows are the same order?
-#   a) the whole record, file line included
-#   b) customer_id and amount together
-#   c) the whole record, file line excluded
-#   d) order_id alone
-KEY = __TODO3__
+    ("Step 3. The identity rule, built",
+     "Write the rule that keeps one row per order. The two lines that decide are yours; the rest logs every "
+     "row set aside with its reason and the line of the row that stayed.",
+     '''
+def identity_rule(rows):
+    """One row per order: the kept rows, and a set-aside log with a reason on every line."""
+    kept, set_aside = {}, []
+    for r in rows:
+        # TODO 3. What makes two rows one order?
+        #   a) r["line"]
+        #   b) (r["customer_id"], r["amount"])
+        #   c) tuple(sorted((f, v) for f, v in r.items() if f != "line"))
+        #   d) r["order_id"]
+        k = __TODO3__
+        if k not in kept:
+            kept[k] = r
+        # TODO 4. When does a later copy take the place of the one already kept?
+        #   a) r["order_date"] > kept[k]["order_date"]
+        #   b) r["amount"] > kept[k]["amount"]
+        #   c) not ok(kept[k]) and ok(r)
+        #   d) True
+        elif __TODO4__:
+            set_aside.append(dict(kept[k], reason="copy whose amount does not convert", kept_line=r["line"]))
+            kept[k] = r
+        else:
+            set_aside.append(dict(r, reason="second copy of the order", kept_line=kept[k]["line"]))
+    return list(kept.values()), set_aside
 
-# TODO 4. Inside a group of rows sharing that key, which copy stays?
-#   a) the first copy in the file
-#   b) the copy whose amount converts
-#   c) the copy with the larger amount
-#   d) the last copy in the file
-PREFER = __TODO4__
-clean, set_aside = apply_rule(raw, KEY, PREFER)
+kept, set_aside = identity_rule(raw)
 ''', '''
-kit.check("186 orders kept", len(clean) == 186, f"{len(clean)}")
-kit.check("15 rows set aside", len(set_aside) == 15, f"{len(set_aside)}")
-kit.check("Q1 is Rs 1,90,00,000", Q(clean, "Q1") == 19000000, kit.rupees(Q(clean, "Q1")))
+kept_ids = [r["order_id"] for r in kept]
+kit.check("one kept row per order, and every order the export holds is kept",
+          len(kept_ids) == len(set(kept_ids)) == orders_sent, f"{len(kept)} kept")
+kit.check("rows reconcile: every row is kept or set aside", len(raw) == len(kept) + len(set_aside))
+kit.check("every row logged as unreadable really is unreadable",
+          all(not ok(r) for r in set_aside if r["reason"].startswith("copy whose amount")))
+kit.check("Q1 over the kept rows equals the books", Q(kept, "Q1") == BOOKS_Q1, kit.rupees(Q(kept, "Q1")))
+kit.columns(["kept", "set aside"], [("rows", [len(kept), len(set_aside)])], title="Every row the ERP sent, kept or set aside")
 '''),
-    ("Step 4. The two open decisions", '''
-# TODO 5. One order has no status. Which decision keeps revenue and the delivered count honest?
-#   a) keep and flag
-#   b) drop the order
-#   c) default it to delivered
-#   d) default it to cancelled
-STATUS_DECISION = __TODO5__
+    ("Step 4. Convert, and the two open decisions",
+     "Convert the kept amounts with a rejects log, then make the two decisions the clean file still needs. "
+     "A decision that keeps a record with a question on it writes a line in the flags log.",
+     '''
+clean, rejects, flags = [], [], []
+for r in kept:
+    value, reason = convert(r["amount"])
+    if value is None:
+        rejects.append({"line": r["line"], "order_id": r["order_id"], "quarter": r["quarter"],
+                        "amount": r["amount"], "field": "amount", "reason": reason})
+    else:
+        clean.append(dict(r, amount=value))
 
-# TODO 6. The largest Q2 order is 1.66 times the next. What happens to it?
-#   a) remove it as an outlier
-#   b) cap it at the next largest order
-#   c) keep it and flag it, shown with and without
-#   d) move it to Q1
-BULK_DECISION = __TODO6__
-decisions = [("status missing on one Q2 order", STATUS_DECISION), ("largest Q2 order", BULK_DECISION)]
+def flag(row, field, why):
+    flags.append({"line": row["line"], "order_id": row["order_id"], "field": field, "why": why})
+
+missing = [r for r in clean if not r["status"]]
+# TODO 5. One kept order has no status. Which line keeps Q2 revenue whole and every status as the export recorded it?
+#   a) clean = [r for r in clean if r not in missing]
+#   b) for r in missing: flag(r, "status", "unknown")
+#   c) for r in missing: r["status"] = "delivered"
+#   d) for r in missing: r["status"] = "cancelled"
+__TODO5__
+
+q2_sorted = sorted((r for r in clean if r["quarter"] == "Q2"), key=lambda r: r["amount"], reverse=True)
+top, runner_up = q2_sorted[0], q2_sorted[1]
+median_q2 = q2_sorted[len(q2_sorted) // 2]["amount"]
+# TODO 6. The largest Q2 order is 1.66 times the next, from a Business account with orders in both quarters. Which line handles it?
+#   a) clean = [r for r in clean if r is not top]
+#   b) clean = [dict(r, amount=runner_up["amount"]) if r is top else r for r in clean]
+#   c) clean = [dict(r, amount=min(r["amount"], 3 * median_q2)) for r in clean]
+#   d) flag(top, "amount", "largest Q2 order; shown with and without")
+__TODO6__
 ''', '''
-kit.check("Q2 stays at Rs 1,87,00,000", Q(clean, "Q2") == 18700000 and "keep" in STATUS_DECISION and "keep" in BULK_DECISION)
+q2 = [r for r in clean if r["quarter"] == "Q2"]
+q2_kept = [r for r in kept if r["quarter"] == "Q2"]
+kit.check("the rejects log is empty: every kept amount converts", not rejects)
+kit.check("every kept order is still in the clean file", len(clean) == len(kept), f"{len(clean)} orders")
+kit.check("Q2 is every rupee the kept Q2 rows carry", Q(q2, "Q2") == Q(q2_kept, "Q2"), kit.rupees(Q(q2, "Q2")))
+kit.check("no status was filled in or thrown away",
+          sum(1 for r in clean if not r["status"]) == sum(1 for r in kept if not r["status"]))
+kit.check("the delivered count is what the export recorded",
+          sum(1 for r in q2 if r["status"] == "delivered") == sum(1 for r in q2_kept if r["status"] == "delivered"))
+kit.check("each record kept with a question on it has a line in the flags log", len(flags) == 2, f"{len(flags)} lines")
 kit.columns(["Q1", "Q2"], [("clean, Rs lakh", [Q(clean, "Q1") / 1e5, Q(clean, "Q2") / 1e5])],
             fmt=lambda v: f"{v:,.0f}", title="Clean revenue by quarter")
 '''),
-    ("Step 5. Reconcile twice and draw the bridge", '''
-# TODO 7. Which pair of checks proves the reconciliation to Anand's analyst?
-#   a) rows in equal rows kept, and Q1 rounds to 1.9 crore
-#   b) rows in equal kept plus set aside, and exported Q1 less set-aside rupees equals the books
-#   c) rows kept equal distinct ids, and Q2 is unchanged
-#   d) the rejects log is empty, and Q1 is below the dashboard
-exported_q1 = Q(raw, "Q1")
-removed_q1 = sum(convert(r["amount"])[0] or 0 for r in set_aside if r["quarter"] == "Q1")
-proof = __TODO7__
+    ("Step 5. Reconcile twice, and the bridge",
+     "Rows tie on any pass that logs what it sets aside, including chapter 6's colleague, who kept the first "
+     "copy and then converted. The rupee test is the one that has to tell the two passes apart.",
+     '''
+def colleague_pass(rows):
+    """Chapter 6's colleague: repeated ids out first, keeping the first copy, then conversion."""
+    seen, first, aside = set(), [], []
+    for r in rows:
+        (aside if r["order_id"] in seen else first).append(r)
+        seen.add(r["order_id"])
+    return ([dict(r, amount=convert(r["amount"])[0]) for r in first if ok(r)],
+            aside + [r for r in first if not ok(r)])
+
+def rupee_test(clean_rows, aside_rows):
+    # TODO 7. Which rupee test passes a right pass and fails the colleague's, which is Rs 1,790 short?
+    #   a) round(Q(clean_rows, "Q1") / 1e7, 2) == round(BOOKS_Q1 / 1e7, 2)
+    #   b) Q(raw, "Q1") - Q(aside_rows, "Q1") == BOOKS_Q1
+    #   c) Q(clean_rows, "Q1") < Q(raw, "Q1")
+    #   d) abs(Q(clean_rows, "Q1") - BOOKS_Q1) < 0.01 * BOOKS_Q1
+    return __TODO7__
+
+col_clean, col_aside = colleague_pass(raw)
 ''', '''
-kit.check("rows reconcile", len(raw) == len(clean) + len(set_aside))
-kit.check("rupees reconcile to the books", exported_q1 - removed_q1 == 19000000)
-kit.bridge(("Q1 as exported", exported_q1), [("rows set aside", -removed_q1)], end_label="Q1 clean, the books",
-           lo=18800000, title="Q1 from the export to the books; the axis starts at Rs 1.88 crore")
+kit.check("rows tie on your pass", len(raw) == len(clean) + len(set_aside) + len(rejects))
+kit.check("rows tie on the colleague's pass too", len(raw) == len(col_clean) + len(col_aside))
+kit.check("your rupee test passes your pass", rupee_test(clean, set_aside + rejects))
+kit.check("and fails the colleague's", not rupee_test(col_clean, col_aside))
+q1_aside = [r for r in set_aside if r["quarter"] == "Q1"]
+kit.bridge(("Q1 as exported", Q(raw, "Q1")),
+           [("copies of corporate orders", -Q([r for r in q1_aside if r["segment"] == "Business"], "Q1")),
+            ("copies of consumer orders", -Q([r for r in q1_aside if r["segment"] != "Business"], "Q1"))],
+           end_label="Q1 clean", lit=(0,), lo=18800000,
+           title="Your bridge from the dashboard's 2.1 crore; the axis starts at Rs 1.88 crore")
 '''),
-    ("Step 6. Tuesday recomputed, and the note", '''
-# TODO 8. Retail-Plus orders per customer fell 49.0 percent as Tuesday reported. On clean data?
-#   a) it vanishes
-#   b) it grows past 49 percent
-#   c) it moves to Retail-Core
-#   d) it falls 35.0 percent, smaller
-TUESDAY_VERDICT = __TODO8__
-rp = [per_customer(clean, q, "Retail-Plus") for q in ("Q1", "Q2")]
+    ("Step 6. The tree recomputed, and Tuesday's segment",
+     "Monday's tree, recomputed on the clean file: customers, orders per customer and revenue per order for "
+     "each quarter, then each branch's Q2 multiple of Q1. Tuesday read the multiples on the export as "
+     "delivered: customers x1.000, orders per customer x0.754, revenue per order x1.180, revenue x0.890.",
+     '''
+def leaves(rows, q):
+    """Monday's tree for one quarter: customers, orders per customer, revenue per order, revenue."""
+    rs = [r for r in rows if r["quarter"] == q]
+    # TODO 8. Which count is the tree's customers branch?
+    #   a) len({r["customer_id"] for r in rs})
+    #   b) len(rs)
+    #   c) len({r["order_id"] for r in rs})
+    #   d) len({(r["customer_id"], r["order_date"]) for r in rs})
+    customers = __TODO8__
+    return customers, len(rs) / customers, Q(rs, q) / len(rs), Q(rs, q)
+
+t1, t2 = leaves(clean, "Q1"), leaves(clean, "Q2")
+# TODO 9. Which line gives each branch's Q2 multiple of Q1, the way the tree multiplies back to revenue?
+#   a) [b - a for a, b in zip(t1, t2)]
+#   b) [a / b for a, b in zip(t1, t2)]
+#   c) [b / a for a, b in zip(t1, t2)]
+#   d) [(b - a) / b for a, b in zip(t1, t2)]
+moves = __TODO9__
 ''', '''
-kit.check("Retail-Plus falls about 35 percent on clean data", round(100 * (rp[1] - rp[0]) / rp[0], 1) == -35.0)
+buyers = {q: Counter(r["customer_id"] for r in clean if r["quarter"] == q) for q in ("Q1", "Q2")}
+kit.check("the customers branch matches a Counter of the buyers in each quarter",
+          (t1[0], t2[0]) == (len(buyers["Q1"]), len(buyers["Q2"])))
+kit.check("the three branch multiples multiply back to revenue's", abs(moves[0] * moves[1] * moves[2] - moves[3]) < 1e-9)
+kit.check("revenue's multiple is Q2 over Q1 on the clean file", abs(moves[3] - Q(clean, "Q2") / Q(clean, "Q1")) < 1e-9,
+          f"x{moves[3]:.3f}")
+kit.columns(["customers", "orders per customer", "revenue per order"],
+            [("as Tuesday read it", [1.000, 0.754, 1.180]), ("on the clean file", list(moves[:3]))],
+            fmt=lambda v: f"x{v:.3f}", title="Each branch's Q2 multiple of Q1, as Tuesday read it and on the clean file")
+rp = [per_customer(clean, q, "Retail-Plus") for q in ("Q1", "Q2")]
 kit.line(["Q1", "Q2"], [("Retail-Plus orders per customer, clean", [round(x, 2) for x in rp], "good"),
                         ("as Tuesday reported", [2.32, 1.18], "bad")], fmt=lambda v: f"{v:.2f}",
-         title="Retail-Plus frequency: the finding stands, smaller")
+         title="Retail-Plus frequency on the clean file, against Tuesday's reading")
 kit.check_summary()
 '''),
 ]
 
-CASE_ANSWERS = {1: "read_orders()", 2: '[{"line": r["line"], "order_id": r["order_id"], "reason": "amount does not convert"} for r in failed]',
-                3: '"order_id"', 4: '"validates"', 5: '"keep and flag"', 6: '"keep and flag, shown with and without"',
-                7: '(len(raw) == len(clean) + len(set_aside), exported_q1 - removed_q1 == 19000000)',
-                8: '"falls 35.0 percent, smaller"'}
+CASE_ANSWERS = {1: 'len({r["order_id"] for r in raw})', 2: 'failed = [r for r in raw if not ok(r)]', 3: 'r["order_id"]',
+                4: 'not ok(kept[k]) and ok(r)', 5: 'for r in missing: flag(r, "status", "unknown")',
+                6: 'flag(top, "amount", "largest Q2 order; shown with and without")',
+                7: 'Q(raw, "Q1") - Q(aside_rows, "Q1") == BOOKS_Q1', 8: 'len({r["customer_id"] for r in rs})',
+                9: '[b / a for a, b in zip(t1, t2)]'}
+CASE_KEY = "1c 2a 3d 4c 5b 6d 7b 8a 9c"
 CASE_WHY = {
-    1: "b. read_orders() keeps every value as the file's text and records the line. a loses the header names, c is the wrong parser for a CSV, and d splits the whole file on commas without rows.",
-    2: "c. a failure is kept where anyone can read it. a invents an order worth nothing, b deletes evidence, and d invents an amount.",
-    3: "d. the ERP issues one order_id per order. a finds nothing because the line makes every row unique, b removes a real Rs 17,71,000 order and misses a pair, and c misses the two pairs whose copies differ.",
-    4: "b. the copy that validates carries the value. a keeps an unreadable amount and loses Rs 1,790, c picks by size, which is no rule, and d lands on the books here only because of file order.",
-    5: "a. revenue is booked value and the fate is unknown. b removes a booked order, c and d invent a status.",
-    6: "c. it is a real Business order. a turns a 1.6 percent dip into 17.1, b invents a smaller order, and d moves revenue between quarters.",
-    7: "b. rows and rupees both reconcile. a is the count-only pass that lost Rs 1,790, c proves nothing about rupees, and d is false, since the rule sets the unreadable copy aside.",
-    8: "d. 1.82 to 1.18 is a fall of 35.0 percent. a and b misread the recompute, and c confuses segments.",
+    1: "c. An order is its order_id, so the distinct ids count the orders. a counts rows, copies included; b counts "
+       "the 69 customers; d counts rows whose amount converts, copies included.",
+    2: "a. The row is counted and read, and the identity rule decides it next with its twin in view. b deletes the row "
+       "before anyone knows it is a copy whose twin carries the value; c and d write a zero over the text, so the rule "
+       "can no longer tell the copy from its twin, the coerced pass of chapter 4.",
+    3: "d. The ERP issues one order_id per order. a makes every row unique, so nothing is set aside; b merges a real "
+       "Rs 17,71,000 Business order into an earlier one and misses the pair whose amounts differ; c misses the two pairs "
+       "whose copies differ in one field.",
+    4: "c. A later copy takes the kept one's place only when the kept one cannot be read and the later one can. a keeps "
+       "whichever copy is dated later, which here keeps the unreadable copy and leaves Q1 Rs 1,790 short; b compares the "
+       "amounts as text, so the unreadable copy wins in the same way; d keeps every last copy, which lands on the books "
+       "only by file order and logs 14 readable copies as unreadable.",
+    5: "b. The order stays in revenue, its status stays blank, and the flags log says why. a drops a booked order; c "
+       "records a delivery nobody recorded; d records a cancellation nobody recorded.",
+    6: "d. The order is real, so it stays, flagged, and Q2 is shown with and without it. a removes Rs 29,45,460 of booked "
+       "revenue; b writes the next order's amount over a real one; c caps every order at three times the Q2 median, "
+       "which cuts every Business order.",
+    7: "b. The export's Q1 less the rupees set aside equals the books only when the right copy stayed. a rounds the "
+       "Rs 1,790 away; c holds for any pass that removes anything; d allows Rs 1,90,000 of error, about a hundred times "
+       "the gap it has to catch.",
+    8: "a. Customers are the distinct buyers in the quarter, 69 in each. b counts orders as customers, Monday's first "
+       "trap; c counts orders again; d counts each customer once per order date, which is visits.",
+    9: "c. A branch's multiple is Q2 over Q1, and the three multiples multiply back to revenue's. a gives differences, "
+       "which do not multiply; b gives Q1 over Q2, the tree read backwards; d gives the change as a share of Q2, which "
+       "does not multiply back either.",
 }
 
 CASE_HELPERS = READ + '''
-def apply_rule(rows, key, prefer):
-    """One row per key; prefer is "validates" or "first". Returns (kept, set aside)."""
-    kept, aside = {}, []
-    for r in rows:
-        k = r[key] if isinstance(key, str) and key in r else tuple(sorted(r.items()))
-        if k not in kept:
-            kept[k] = r
-        elif prefer == "validates" and convert(kept[k]["amount"])[0] is None and convert(r["amount"])[0] is not None:
-            aside.append(kept[k]); kept[k] = r
-        else:
-            aside.append(r)
-    good = [dict(r, amount=convert(r["amount"])[0]) for r in kept.values() if convert(r["amount"])[0] is not None]
-    aside += [r for r in kept.values() if convert(r["amount"])[0] is None]
-    return good, aside
+import re
+
+def ok(row):
+    """True when a row's amount converts to rupees."""
+    return convert(row["amount"])[0] is not None
 
 def per_customer(rows, q, seg):
     rs = [r for r in rows if r["quarter"] == q and r["segment"] == seg]
@@ -1912,30 +2098,32 @@ def case_cells(solution):
 
         **Week 1, Wednesday afternoon, the escalated case.** Anand has replied: "Send the reconciliation
         and the log before the day closes. My analyst checks it tonight." Run the whole pass the six
-        chapters built: read and profile, convert with a rejects log, apply the identity rule, make the
-        two open decisions, reconcile in rows and in rupees, draw the bridge, and recompute Tuesday.
+        chapters built, and two pieces no chapter built for you: this time you write the identity rule
+        yourself, and you recompute Monday's revenue tree on the clean file. `ok(row)` says whether a
+        row's amount converts; everything else is the day's own code.
 
-        Each step has lettered choices above a placeholder such as `__TODO1__`. Replace the placeholder
-        with the code of the option you choose, run the step, and read its checks. Run as shipped, the
-        notebook stops at the first placeholder with a `NameError`; that is expected. Post your eight
-        letters in order when every check passes, then write the note to Finance in under 120 words.
-        ''' if not solution else '''
+        Each step has lettered choices in a comment above a placeholder such as `__TODO1__`. Replace the
+        placeholder with the code of the option you choose, run the step, then run its check cell, which
+        recomputes the result another way. Run as shipped, the notebook stops at the first placeholder
+        with a `NameError`; that is expected. Post your nine letters in order when every check passes,
+        then write the note to Finance in under 120 words.
+        ''' if not solution else f'''
         # The escalated case: the full pass, solution
 
         **Week 1, Wednesday afternoon, the escalated case, solution twin.** Every placeholder is filled
         with its keyed option and the notebook runs clean. Under each step, one line says why the other
-        three letters fail.
+        letters fail.
 
-        The letters, in order: 1b 2c 3d 4b 5a 6c 7b 8d.
+        The letters, in order: {CASE_KEY}.
         '''),
         code(CASE_HELPERS + '\nprint("helper and case functions loaded")'),
         code("kit.side_by_side(\n    " + LADDER_PM.format(lit=1) + ''',
-    kit.vflow(["read and profile", "convert with a log", "the identity rule", "two decisions",
-               "reconcile twice", "Tuesday and the note"], lit=0, show=False),
+    kit.vflow(["rows against orders", "the amount that fails", "the identity rule, built",
+               "convert and decide", "reconcile twice", "the tree and Tuesday"], lit=0, show=False),
 )'''),
     ]
-    for title, body, check in CASE_STEPS:
-        cells.append(md(f"## {title}"))
+    for title, purpose, body, check in CASE_STEPS:
+        cells.append(md(f"## {title}\n\n{purpose}"))
         src = body.strip("\n")
         if solution:
             for k, v in CASE_ANSWERS.items():
@@ -1946,100 +2134,151 @@ def case_cells(solution):
             cells.append(md("**Why the other letters fail.** " + " ".join(CASE_WHY[k] for k in nums)))
         cells.append(code(check.strip("\n")))
     cells.append(md('''
-    **Post** your eight letters in order, then the note to Finance: numbers first, which figure is right
-    and why, the two reconciliations, the two flagged decisions, and whether Tuesday's finding survives.
+    **Post** your nine letters in order, then the note to Finance in under 120 words: numbers first,
+    which figure is right and why, the two reconciliations, the two flags, what the recomputed tree
+    says, and whether Tuesday's finding survives.
     '''))
     return cells
 
 
 # ============================================================================= the second case
-AUDIT_HELPERS = CASE_HELPERS + '''
+AUDIT_HELPERS = READ + RULE + PASS + '''
 raw = read_orders()
-clean, set_aside = apply_rule(raw, "order_id", "validates")
-by_id = {}
-for r in raw:
-    by_id.setdefault(r["order_id"], []).append(r)
-q1_aside = [r for r in set_aside if r["quarter"] == "Q1"]
-print(len(clean), "orders kept;", len(q1_aside), "Q1 rows set aside")
+clean, set_aside, rejects, flags = clean_pass(raw)
+raw_by_line = {r["line"]: r for r in raw}
+q1_aside = [e for e in set_aside if e["quarter"] == "Q1"]
+print(len(clean), "orders kept; the set-aside log, the rejects log and the flags log are loaded")
 '''
 
 AUDIT_STEPS = [
-    ("Question 1. How many Q1 rows were set aside, and is that the auditor's 14?", '''
-# TODO 1. Which count answers the auditor's first question?
-#   a) rows in the file less orders kept, both quarters
-#   b) Q1 rows in less Q1 orders kept
-#   c) distinct order ids in Q1
-#   d) rows in the rejects log
+    ("Question 1. Which 14?", '''
 q1_in = sum(1 for r in raw if r["quarter"] == "Q1")
 q1_kept = sum(1 for r in clean if r["quarter"] == "Q1")
+# TODO 1. Which count answers the auditor's first question, which 14?
+#   a) len(raw) - len(clean)
+#   b) len({r["order_id"] for r in raw if r["quarter"] == "Q1"})
+#   c) q1_in - q1_kept
+#   d) len(rejects)
 answer_1 = __TODO1__
 ''', '''
-kit.check("the auditor's 14 is Q1 rows in less Q1 orders kept", answer_1 == 14, f"{answer_1}")
-kit.columns(["Q1"], [("rows in", [q1_in]), ("orders kept", [q1_kept])], title="Q1 rows in against orders kept")
+kit.check("your count is the auditor's 14, and the log lists that many Q1 rows", answer_1 == 14 == len(q1_aside), f"{answer_1}")
+kit.columns(["Q1"], [("rows in", [q1_in]), ("orders kept", [q1_kept]), ("set aside", [len(q1_aside)])],
+            title="Q1 rows in, kept and set aside")
 '''),
-    ("Question 2. Is every one of the 14 a second copy of a kept order?", '''
-# TODO 2. Which test shows each set-aside row has a twin that stayed?
-#   a) its order_id appears among the kept orders
-#   b) its amount appears among the kept orders
-#   c) its customer_id appears among the kept orders
-#   d) its line number is above 186
-kept_ids = {r["order_id"] for r in clean}
-has_twin = [__TODO2__ for r in q1_aside]
+    ("Question 2. Is every one of the 14 a copy?", '''
+kept_raw = [raw_by_line[r["line"]] for r in clean]
+aside_raw = [raw_by_line[e["line"]] for e in q1_aside]
+
+def has_twin(row, others):
+    # TODO 2. Which test says a row has a twin among the others, the evidence that it was a copy?
+    #   a) any(o["amount"] == row["amount"] for o in others)
+    #   b) any(o["customer_id"] == row["customer_id"] for o in others)
+    #   c) row["line"] > len(others)
+    #   d) any(o["order_id"] == row["order_id"] for o in others)
+    return __TODO2__
 ''', '''
-kit.check("all 14 have a kept twin", all(has_twin) and len(has_twin) == 14)
+kit.check("the test finds a twin among the kept orders for every one of the 14", all(has_twin(r, kept_raw) for r in aside_raw))
+kit.check("and finds none for a kept order among the other kept orders",
+          not any(has_twin(r, [o for o in kept_raw if o is not r]) for r in kept_raw))
 '''),
     ("Question 3. Which rows carry the rupees?", '''
-# TODO 3. How should the rupees be shown to the auditor?
-#   a) one total for all 14 rows
-#   b) split by the segment of each row, rows and rupees side by side
-#   c) only the largest row, since it dominates
-#   d) as a share of Q2 revenue
 segs = ["Business", "Retail-Plus", "Retail-Core"]
-rows_by = [sum(1 for r in q1_aside if r["segment"] == s) for s in segs]
-rupees_by = [sum(convert(r["amount"])[0] or 0 for r in q1_aside if r["segment"] == s) for s in segs]
+rows_by = [sum(1 for e in q1_aside if e["segment"] == s) for s in segs]
+rupees_by = [sum(convert(e["amount"])[0] or 0 for e in q1_aside if e["segment"] == s) for s in segs]
+# TODO 3. How should the rupees be laid out for the auditor?
+#   a) [sum(rupees_by)]
+#   b) list(zip(segs, rows_by, rupees_by))
+#   c) [(s, v) for s, v in zip(segs, rupees_by)]
+#   d) [(s, n, v / Q(clean, "Q2")) for s, n, v in zip(segs, rows_by, rupees_by)]
 shown = __TODO3__
 ''', '''
-kit.check("the rupees add to Rs 19,98,210", sum(rupees_by) == 1998210, kit.rupees(sum(rupees_by)))
+def lays_out(table):
+    try:
+        return (sorted(x[0] for x in table) == sorted(segs) and sum(x[1] for x in table) == len(q1_aside)
+                and sum(x[2] for x in table) == sum(convert(e["amount"])[0] or 0 for e in q1_aside))
+    except (TypeError, IndexError):
+        return False
+
+kit.check("one line per segment, the rows adding to the 14 and the rupees to all set aside in Q1", lays_out(shown))
 kit.bars(list(zip(segs, rupees_by)), fmt=kit.rupees, title="Rupees in the 14 Q1 rows, by segment")
 kit.bars(list(zip(segs, rows_by)), title="Rows among the 14, by segment")
 '''),
     ("Question 4. Why was one copy chosen over its twin?", '''
-# TODO 4. For a pair whose copies differ, what does the log have to say?
-#   a) nothing, since the pair shares an id
-#   b) which copy stayed, which field differed, and why that copy
-#   c) the average of the two copies
-#   d) that the pair was deleted
-pairs_differing = [k for k, rs in by_id.items() if len(rs) > 1
-                   and len({tuple((f, v) for f, v in r.items() if f != "line") for r in rs}) > 1]
-log_rule = __TODO4__
+by_id = {}
+for r in raw:
+    by_id.setdefault(r["order_id"], []).append(r)
+kept_by_id = {r["order_id"]: r for r in clean}
+differing = {k: rs for k, rs in by_id.items() if len(rs) > 1
+             and len({tuple((f, v) for f, v in r.items() if f != "line") for r in rs}) > 1}
+
+def fields_differ(rs):
+    return [f for f in rs[0] if f != "line" and rs[0][f] != rs[1][f]]
+
+# TODO 4. For each pair whose copies differ, which log line lets the auditor follow the choice?
+#   a) {"order_id": k, "kept": kept_by_id[k]["line"], "differs": fields_differ(rs)}
+#   b) {"order_id": k, "note": "the pair shares an id"}
+#   c) {"order_id": k, "amount": sum(convert(r["amount"])[0] or 0 for r in rs) / len(rs)}
+#   d) {"order_id": k, "deleted": [r["line"] for r in rs]}
+log_lines = {k: __TODO4__ for k, rs in differing.items()}
 ''', '''
-kit.check("two pairs differ between their copies", len(pairs_differing) == 2)
-kit.check("the log states the copy, the field and the reason", "field" in log_rule and "why" in log_rule)
+kit.check("two pairs differ between their copies", len(differing) == 2)
+kit.check("each log line names the row that stayed", all(e.get("kept") in {r["line"] for r in clean} for e in log_lines.values()))
+kit.check("and the fields its copies disagree on", all(e.get("differs") == fields_differ(differing[k]) for k, e in log_lines.items()))
 '''),
     ("Question 5. What does the auditor sign?", '''
-# TODO 5. Which statement is the one the evidence supports?
-#   a) 14 Q1 rows were deleted as errors
-#   b) the dashboard was right and the books are short
-#   c) 14 Q1 rows are copies of kept orders, set aside by the order_id rule; rows and rupees reconcile
-#   d) the 14 rows were outliers
-statement = __TODO5__
+def q1_rows(rows):
+    return [r for r in rows if r["quarter"] == "Q1"]
+
+def rows_tie(clean_rows, aside_rows):
+    return len(q1_rows(raw)) == len(q1_rows(clean_rows)) + len(q1_rows(aside_rows))
+
+def rupees_tie(aside_rows):
+    return Q(raw, "Q1") - Q(aside_rows, "Q1") == BOOKS_Q1
+
+def colleague_pass(rows):
+    """Chapter 6's colleague: repeated ids out first, keeping the first copy, then conversion."""
+    seen, first, aside = set(), [], []
+    for r in rows:
+        (aside if r["order_id"] in seen else first).append(r)
+        seen.add(r["order_id"])
+    good = [dict(r, amount=convert(r["amount"])[0]) for r in first if convert(r["amount"])[0] is not None]
+    return good, aside + [r for r in first if convert(r["amount"])[0] is None]
+
+def evidence(c, a):
+    # TODO 5. Which evidence shows nothing else went, and would have caught a pass that kept the wrong copy?
+    #   a) rows_tie(c, a)
+    #   b) round(Q(c, "Q1") / 1e7, 1) == round(BOOKS_Q1 / 1e7, 1)
+    #   c) rows_tie(c, a) and rupees_tie(a)
+    #   d) len(a) == len(raw) - len(c)
+    return __TODO5__
 ''', '''
-kit.check("rows reconcile in Q1", q1_in == q1_kept + len(q1_aside))
-kit.check("rupees reconcile in Q1", Q(raw, "Q1") - sum(rupees_by) == 19000000)
-kit.flow(["the question\\nwhy 14 rows", "the rule\\norder_id", "the twins\\nall 14 have one",
-          "the rupees\\nby segment", "the signature\\nboth reconcile"], lit=4, title="The auditor's walk through the log")
+col_clean, col_aside = colleague_pass(raw)
+kit.check("the evidence holds for this pass", evidence(clean, set_aside))
+kit.check("and would have caught the colleague's pass, which kept the unreadable copy", not evidence(col_clean, col_aside))
+kit.flow(["the question\\nwhy 14 rows", "the count\\nQ1 in less kept", "the twins\\none for each",
+          "the rupees\\nby segment", "the signature\\nrows and rupees"], lit=4, title="The auditor's walk through the log")
 kit.check_summary()
 '''),
 ]
-AUDIT_ANSWERS = {1: "q1_in - q1_kept", 2: 'r["order_id"] in kept_ids', 3: "list(zip(segs, rows_by, rupees_by))",
-                 4: '{"copy": "kept", "field": "which one differed", "why": "the copy that validates"}',
-                 5: '"14 Q1 rows are copies of kept orders, set aside by the order_id rule; rows and rupees reconcile"'}
+AUDIT_ANSWERS = {1: "q1_in - q1_kept", 2: 'any(o["order_id"] == row["order_id"] for o in others)',
+                 3: "list(zip(segs, rows_by, rupees_by))",
+                 4: '{"order_id": k, "kept": kept_by_id[k]["line"], "differs": fields_differ(rs)}',
+                 5: "rows_tie(c, a) and rupees_tie(a)"}
+AUDIT_KEY = "1c 2d 3b 4a 5c"
 AUDIT_WHY = {
-    1: "b. the auditor asked about Q1. a counts both quarters and gives 15, c counts orders, not rows, and d counts the one unreadable amount.",
-    2: "a. a twin is the same order_id. b and c match different orders that happen to share a value or a buyer, and d is where a row sits, not what it is.",
-    3: "b. the auditor needs rows and rupees by kind, since two rows carry 98 percent of the money. a hides that, c hides the other rows, and d answers a different quarter.",
-    4: "b. a pair that differs needs the kept copy, the field and the reason. a leaves the auditor guessing, c invents a value, and d is false.",
-    5: "c. it states the rule and both reconciliations. a calls copies errors and says deleted, b reverses the finding, and d confuses copies with outliers.",
+    1: "c. The auditor asked about Q1: 114 Q1 rows in less 100 Q1 orders kept is 14. a counts both quarters and gives "
+       "15; b counts Q1's distinct orders, 100; d counts the rejects log, which is empty because the unreadable copy "
+       "went to the set-aside log with its twin named.",
+    2: "d. A twin is the same order_id on another row. a matches orders that happen to share an amount and misses the "
+       "copy whose amount is unreadable; b matches any customer with more than one order; c tests where a row sits, "
+       "and one of the 14 sits early in the file.",
+    3: "b. One line per segment, rows and rupees side by side, shows two Business rows carrying about 98 percent of the "
+       "money. a hides where the money sits; c drops the rows the auditor asked about; d divides by Q2, the wrong quarter.",
+    4: "a. The line names the row that stayed and the fields the copies disagree on, so the auditor can follow the "
+       "choice. b says nothing about which copy stayed; c invents an amount nobody booked; d says both rows went, which "
+       "is false.",
+    5: "c. Rows and rupees both tie in Q1, and a pass that kept the unreadable copy misses the books by Rs 1,790. a holds "
+       "for that wrong pass too; b rounds the gap away; d is true of any pass by arithmetic.",
 }
 
 
@@ -2054,13 +2293,14 @@ def audit_cells(solution):
         auditor and asks the next question only when the check passes.
 
         Each question has lettered choices above a placeholder such as `__TODO1__`. Replace it with the
-        code of the option you choose. Run as shipped, the notebook stops at the first placeholder with a
-        `NameError`, which is expected. Post your five letters when every check passes.
-        ''' if not solution else '''
+        code of the option you choose, run it, then run the check cell. Run as shipped, the notebook stops
+        at the first placeholder with a `NameError`, which is expected. Post your five letters when every
+        check passes.
+        ''' if not solution else f'''
         # The second case: the auditor's question, solution
 
         **Week 1, Wednesday afternoon, the second case, solution twin.** Every placeholder filled, run
-        clean. The letters, in order: 1b 2a 3b 4b 5c.
+        clean. The letters, in order: {AUDIT_KEY}.
         '''),
         code(AUDIT_HELPERS),
         code("kit.side_by_side(\n    " + LADDER_PM.format(lit=2) + ''',
@@ -2087,19 +2327,22 @@ COMPANY = {
                     "about 7,800 company-owned stores in the US and Canada, and the company repaid about one million "
                     "customers (NBC News and AP, 10 June 2009, checked 30 Sep 2026). The same purchase recorded twice "
                     "looks like two purchases until someone asks what makes two records one."),
-    "COMPANY_CH3": ("India's GST system writes the identity rule into law for every business invoice. The Invoice "
-                    "Registration Portal rejects an invoice already reported under the same supplier GSTIN (its GST "
-                    "registration number), invoice "
-                    "number, document type and financial year, the fields it also hashes into the invoice's reference "
-                    "number (GSTN e-invoice FAQ, version 1.4, checked 30 Sep 2026). Since 1 August 2023 that applies "
-                    "to every business above Rs 5 crore of turnover (Notification 10/2023-Central Tax, checked "
-                    "30 Sep 2026), which includes a seller like Kalpa's Business segment."),
-    "COMPANY_CH4": ("On the evening of Friday 12 December 2014 a repricing tool used by Amazon UK sellers set "
-                    "hundreds of items to 1p for about an hour; Amazon said most orders were cancelled once the error "
-                    "was spotted (BBC News, 15 December 2014, checked 30 Sep 2026). A wrong value that nothing "
-                    "questioned sold real stock, which is what a coerced zero does in a report."),
+    "COMPANY_CH3": ("India's GST system writes an identity rule into law for invoices between businesses. The "
+                    "Invoice Registration Portal rejects an invoice already reported under the same supplier GSTIN "
+                    "(the seller's GST registration number), invoice number, document type and financial year, the "
+                    "fields it also hashes into the invoice's reference number (GSTN e-invoice FAQ, version 1.4, "
+                    "checked 30 Sep 2026). Since 1 August 2023 the rule binds sellers above Rs 5 crore of aggregate "
+                    "turnover on their invoices to registered businesses, with some sectors, such as banks and "
+                    "insurers, exempt (Notification 10/2023-Central Tax and the same FAQ, both checked 30 Sep 2026). "
+                    "Those are the invoices a seller like Kalpa writes to the companies in its Business segment."),
+    "COMPANY_CH4": ("On the evening of Friday 12 December 2014 a fault in Repricer Express, a tool that third-party "
+                    "sellers on Amazon's UK Marketplace used to set their prices, priced hundreds of items at 1p for "
+                    "about an hour; Amazon said most orders were cancelled once the error was spotted (BBC News, "
+                    "15 December 2014, checked 30 Sep 2026). A wrong value that nothing questioned sold those "
+                    "sellers' real stock, which is what a coerced zero does in a report."),
     "COMPANY_CH5": ("In September 2014 Tesco said it had overstated its half-year profit guidance by about "
-                    "GBP 250 million, mainly by recognising supplier income early. Its own investigation then "
+                    "GBP 250 million, mainly by booking supplier income, the money its suppliers pay it, in a period "
+                    "before the activity that money paid for took place. Its own investigation then "
                     "confirmed the figure at GBP 263 million, split by period: GBP 118 million in the first half, "
                     "about GBP 70 million in 2013/14 and about GBP 75 million before (BBC News, 22 September 2014; "
                     "Tesco interim results, 23 October 2014; both checked 30 Sep 2026). The question was Anand's: "
