@@ -905,11 +905,6 @@ Collect two lines aloud.
 
 **In the interview.** [F] 42 percent on 12 users against 31 percent on 1,200; which do you trust?
 
-```bar
-label: One user moves 12 by | value: 8.3 | caption: points
-label: One user moves 1,200 by | value: 0.1 | caption: points
-```
-
 **Question.** Which answer earns the offer? a) 42 percent, since it is higher; b) 31 percent, since 1,200 is more; c) 31 percent as the estimate, 42 percent as a lead to measure further; d) neither, since they cannot be compared.
 
 ```notes
