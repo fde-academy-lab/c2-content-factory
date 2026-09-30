@@ -9,16 +9,21 @@ it leaves unchanged, the row still carries.
 
 ## The week
 
-Kalpa Health runs diagnostic laboratories and walk-in clinics in six Indian cities. Its COO, Dr Priya
-Menon, asks why test volumes grew 5 percent against a plan of 18, and which branch of her business is
-short. Five sub-problems, each the Week 1 and 2 method in a domain the room has never seen:
+Kalpa Health is a US diagnostics business, set there by the requester on 30 September 2026 (client
+zero section 1c): its laboratories and patient service centres in six US metro areas test US patients
+and bill US payers in dollars, and its analytics and revenue-cycle work runs from Kalpa's GCC in
+Bengaluru. Its COO, Dr Priya Menon, asks why test volumes grew 5 percent from calendar Q2 to Q3 of
+2026 against a plan of 18, and which branch of her business is short. Five sub-problems, each the
+Week 1 and 2 method in a domain the room has never seen:
 
-1. Where lab revenue comes from, and which branch is short: the revenue tree for a diagnostics
-   business.
-2. Bookings fell in two cities in Q2: the investigation ladder on booking data.
-3. Invoices and collections disagree: reconciliation between the billing export and the payment feed.
-4. The no-show rate looks worse in one clinic: real or noise, and what a fair comparison needs.
-5. A free home-collection campaign "lifted bookings 9 percent": cause or coincidence.
+1. Where the lab's billed revenue comes from, and which branch is short: the revenue tree for a US
+   diagnostics business, across payers, panels and single tests.
+2. Bookings fell in two metros in Q3: the investigation ladder on booking data.
+3. Claims and remittances disagree: reconciliation between the claims billed to payers and the
+   payments and denials posted back.
+4. The no-show rate looks worse at one patient service centre: real or noise, and what a fair
+   comparison needs.
+5. An at-home collection (mobile draw) offer "lifted bookings 9 percent": cause or coincidence.
 
 The campus day runs two 180-minute blocks as `data/programme/facts.yaml` gives them. In a build week
 the time after the second block is open build time with the TAs, and the pack carries no practice set.
@@ -57,7 +62,7 @@ workbook copies its criteria from the same place.
 | Criterion | Marks | What full marks look like |
 |---|---|---|
 | The question translated | 8 | Dr Menon's words are mapped to the right Weeks 1 and 2 method, with the metric defined and the decision it feeds named. |
-| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and rupees reconcile across files. |
+| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and dollars reconcile across files. |
 | The analysis | 10 | The tree, ladder or fair comparison reaches the branch that explains the symptom, on the right denominator, with a chance test where one is needed. |
 | The claim | 6 | One sentence carries its number, denominator, period and caveat, plus an action Dr Menon can take. |
 | Presentation and defence | 6 | The live demo runs cold, and every member answers a challenge on the caveat. |
@@ -95,12 +100,15 @@ the numbers below are the generator's witness.
 
 | Sub-problem | What is planted | The numbers |
 |---|---|---|
-| The headline, for every group | Dr Menon's 5 percent is her dashboard's count: retail tests booked in the old system only, a package counted as its component tests | 5.1 percent on the dashboard's count; 7.8 percent in tests booked across both systems, 8.6 percent in tests performed and 5.6 percent in bookings, all without the corporate contract, whose 1,200 health checks add 6,000 tests to Q2; every reading is short of the plan of 18 |
-| 1 Revenue | One corporate health-check contract in Q2, and packages billed as one line | Rs 18,00,000, 16.2 percent of Q2 revenue; the Q2 mean invoice is Rs 1,904 with it and Rs 1,596 without, against a median of Rs 1,499; 22,152 invoice lines bill 46,867 tests on the completed bookings behind them (48,235 counting cancelled bookings, which the booking-tests file also lists) |
-| 2 Bookings | Chennai and Pune moved to the new booking system on 18 September, and the old system's export carries only its own bookings | The two cities fall 23.0 percent in the old export and 12.2 percent in truth; the old export also repeats 180 rows from a mid-quarter re-export |
-| 3 Billing | The payment feed keys invoices as bare digits or INV-numbers, gateway retries double-post, and the corporate invoice is unpaid | An exact join matches 2.2 percent of payments; normalised, every payment matches; 229 double posts; 102 refunds; 398 unpaid invoices |
-| 4 No-shows | One small clinic runs by appointment while the others' visit counts include walk-ins | 19.2 percent against 8.7 percent on all visits; 20.0 percent (10 of 50) against 15.2 percent on scheduled visits, a gap chance produces with probability 0.22 |
-| 5 Campaign | The offer went at random to half the patients in three cities already rising and to a fifth of the patients elsewhere, and inside the three cities an offered patient booked less while the offer ran than one who was not offered | Offered patients book 9.0 percent more overall and less in every campaign city (Bengaluru -10.8, Hyderabad -19.9, Mumbai -13.0 percent); before the offer the two groups booked within about 6 percent of each other (Bengaluru +1.4, Hyderabad -5.2, Mumbai -6.1 percent), so the files cannot show who was targeted; the campaign cities rose 6.9 percent in the two months before the offer. Outside them the gaps are chance: Chennai -4.8 and Pune +0.6 percent, and Delhi +23.5 percent, a random draw that a permutation test puts at p of about 0.03, so a group that finds it has met a false positive rather than a lift |
+| The headline, for every group | Dr Menon's 5 percent is her dashboard's count: retail tests booked in the old system only, a panel counted as its component tests | 5.1 percent on the dashboard's count; 7.8 percent in tests booked across both systems, 8.6 percent in tests performed and 5.6 percent in bookings, all without the employer contract, whose 1,200 wellness screenings add 6,000 tests to Q3; every reading is short of the plan of 18 |
+| 1 Revenue | One employer wellness contract in Q3, and panels billed as one claim line | $180,000, 14.6 percent of Q3 billed charges of $1,231,001; the Q3 mean claim is $210.50 with it and $179.75 without, against a median of $150; 22,152 claim lines bill 46,867 tests on the completed bookings behind them (48,235 counting cancelled bookings, which the booking-tests file also lists); sixty billed amounts are text such as "$1,050.00" |
+| 2 Bookings | Chicago and Philadelphia moved to the new booking system on 18 September, and the old system's export carries only its own bookings | The two metros fall 23.0 percent in the old export and 12.2 percent in truth; the old export also repeats 180 rows from a mid-quarter re-export, and the new system writes dates month first |
+| 3 Billing | The posting system keys claims as bare digits or CLM-numbers, duplicate ERA loads double-post, the employer invoice is unpaid, and denials post with nothing paid | An exact join matches 1.9 percent of postings; normalised, every posting matches; 280 double posts worth $19,204.63; 105 reversals; 398 claims with no posting, the employer invoice among them; 1,137 denials, 10.4 percent of retail claims (Medicaid 14.9, commercial 11.3, Medicare 8.8, self-pay none), billing $230,132; paid net of double posts is $801,314 against $2,201,099 billed, since payers allow a contracted share of list price |
+| 4 No-shows | One small patient service centre runs by appointment while the others' visit counts include walk-ins | 19.2 percent against 8.7 percent on all visits; 20.0 percent (10 of 50) against 15.2 percent on scheduled visits, a gap chance produces with probability 0.22 |
+| 5 Campaign | The offer went at random to half the patients in three metros already rising and to a fifth of the patients elsewhere, and inside the three metros an offered patient booked less while the offer ran than one who was not offered | Offered patients book 9.0 percent more overall and less in every campaign metro (Dallas -10.8, Atlanta -19.9, Phoenix -13.0 percent); before the offer the two groups booked within about 6 percent of each other (Dallas +1.4, Atlanta -5.2, Phoenix -6.1 percent), so the files cannot show who was targeted; the campaign metros rose 6.9 percent in the two months before the offer. Outside them the gaps are chance: Chicago -4.8 and Philadelphia +0.6 percent, and New York +23.5 percent, a random draw that a permutation test puts at p of about 0.03, so a group that finds it has met a false positive rather than a lift |
+
+The payer mix of the 11,355 retail claims is 53.9 percent commercial, 23.9 percent Medicare, 14.5
+percent Medicaid and 7.7 percent self-pay. Every list price and allowed share is synthetic.
 
 ## Sessions and branches
 

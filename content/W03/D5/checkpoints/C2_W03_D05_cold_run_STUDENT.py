@@ -11,8 +11,8 @@ What it does, in order:
    folder, and times the run.
 3. Reads every printed output of the executed notebook and looks for each number in --slide, one
    number per line, written exactly as the slide shows it. Anything after a | on a line is your label.
-   Commas, "Rs", "percent" and "%" are ignored in the comparison, so "Rs 12,34,500" on the slide
-   matches 1234500 or 12,34,500 printed by the notebook. A number the notebook computes and never
+   Commas, "$", "percent" and "%" are ignored in the comparison, so "$180,000" on the slide
+   matches 180000 or 180,000 printed by the notebook. A number the notebook computes and never
    prints does not count, so print every slide number in the slide's own format.
 4. Prints one line to paste into the cold-run log in the demo checklist.
 
@@ -30,16 +30,16 @@ import tempfile
 import time
 
 RAW = {
-    "C2_W03_D01_appointments_STUDENT.csv": "dfb4a573c1f2ea84bf2c3ad01c7cf7c2fef47d370bfdeca3a55ed326d2020e9a",
-    "C2_W03_D01_booking_tests_STUDENT.csv": "5c36d8de9c0a57075ef710a8cd0786ba1ab1f85fb9ba293e68fa7ba2d86c8cad",
-    "C2_W03_D01_bookings_legacy_STUDENT.csv": "6247e20a808de47747823130409deafae9022519f2f3c7a2f8e28deba869593f",
-    "C2_W03_D01_bookings_newsys_STUDENT.csv": "ea6ce4bfd90b29e90d07bde5a1a8b20ee7045e4c82f4e2303f5684b80c1ecbd1",
-    "C2_W03_D01_campaign_STUDENT.csv": "2e7744d62491af7df177f9f706f30a8cdb265a89f5018ea8b735f74a47953608",
-    "C2_W03_D01_clinics_STUDENT.csv": "cbe836671ce4d0e5d2c0ec431836acf67e5691260a895daf5dd5f6969310a53f",
-    "C2_W03_D01_invoices_STUDENT.csv": "425ed3a0f50a4277b1bea43030d79daf6a8fadef28712c9246b1119dd64461c0",
-    "C2_W03_D01_patients_STUDENT.csv": "d9bbb67fe65e302112febf6d697ebc2b2690332d522b2879b41b3fa03b91a82b",
-    "C2_W03_D01_payments_STUDENT.csv": "f302f4656c3d64f8c9ccee25ad06cd1f832a39c610f5e8cfc289abc8e61771bb",
-    "C2_W03_D01_test_catalogue_STUDENT.csv": "3c265cc4db9a7712ee522ab9c02ade4eda1bb635b7e8a40040f7268cb2b08c23",
+    "C2_W03_D01_appointments_STUDENT.csv": "cf6cda6760fb4d77ebc4668550bd6236ab8149a5df602bd4409f33fb80ebeb62",
+    "C2_W03_D01_booking_tests_STUDENT.csv": "830a209b61b95ae97f8ca7ab5a68a7e6d71891befcf2623f96b18dc2e6d3bf29",
+    "C2_W03_D01_bookings_legacy_STUDENT.csv": "9bce555418273bda2296581297d9e478c9e6432270ba4745599e4fb2aa4e372a",
+    "C2_W03_D01_bookings_newsys_STUDENT.csv": "f10318c173e2453988e7c2b93c1b11eac97ec485285840885a254fd7e68a8523",
+    "C2_W03_D01_campaign_STUDENT.csv": "d908805cb393b270519402cd8622ca4bf228357ba90dfc8fc2244f6a494d8da2",
+    "C2_W03_D01_claims_STUDENT.csv": "80ce3072366d3cffd38791608d9a2155ee904223d8d927ddb9416e5f6a829b1b",
+    "C2_W03_D01_patients_STUDENT.csv": "bf0ad86a73787a79bd2d12f3b15b2d62af97f9434cfd6fde75b070ba53864623",
+    "C2_W03_D01_remittances_STUDENT.csv": "12ad2fd159414d7b92b9cb3459c540acba38254de9efff78cbd1b677541341b2",
+    "C2_W03_D01_sites_STUDENT.csv": "10ad6074d49c8504f0b39dcf23a5cb8e545896791aa452eb52555cdd15086a0a",
+    "C2_W03_D01_test_catalogue_STUDENT.csv": "00e2faf07da527a140ba008fa1ed71b9768285103126aec37f52c21cced34eee",
 }
 
 
@@ -68,7 +68,7 @@ def check_raw(data_dir, reference_dir=None):
 
 def normalise(text):
     """Drop the decorations a slide and a print() disagree on, and keep the digits."""
-    text = text.replace(",", "")
+    text = text.replace(",", "").replace("$", "")
     text = re.sub(r"\bRs\.?\s*", "", text)
     text = re.sub(r"\s*(percent|%)", "", text)
     return text
@@ -173,7 +173,7 @@ if __name__ == "__main__":
 # Test inputs and expected outcomes
 # ---------------------------------
 # A notebook that reads the ten untouched files and prints 1,250 and 25.4, with a slide file holding
-#     Rs 1,250 | example label
+#     $1,250 | example label
 #     25.4 percent | example label
 #   prints PASS for the raw files, the run and both numbers, and exits 0.
 # The same run with a slide file that also holds "99.9 percent", which the notebook never prints,
