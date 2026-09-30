@@ -42,10 +42,10 @@ nothing else, tonight.
 - "It is worth Rs ___ a quarter, ___ percent of the company."
 - "The rate stands on ___ orders; under thirty, it is a lead."
 
-**Step 2.** Open notebook 1 and rerun sections 3 and 4 only. Fill the first sentence twice, once for
+**Step 2.** Open notebook 1 and rerun sections 2 and 3 only. Fill the first sentence twice, once for
 Retail-Core and once for Retail-Plus, and read both aloud.
 
-**Step 3.** Open the round 1 set in `exercises/unguided/` and redo items 2 to 5 without looking at the
+**Step 3.** Open the chapter 1 set in `exercises/unguided/` and redo every item without looking at the
 solution. If any answer changes from your first attempt, read that item's row in the solution file and
 say the reason aloud.
 

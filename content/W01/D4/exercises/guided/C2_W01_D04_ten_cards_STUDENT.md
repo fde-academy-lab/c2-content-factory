@@ -31,15 +31,15 @@ How many of your ten reached Rs 880 or more? Write it on the board beside your p
 
 ## Step 2. The same deal, as a loop
 
-In notebook 1, section 1, the trainer types `shuffle_gaps` with you line by line. Say what each line
+In notebook 1, section 1, the trainer reads `shuffle_gaps` from the setup cell with you line by line. Say what each line
 does in card words: `pool` is the ten cards face down, `random.shuffle` is the deal, the two slices are
 the two piles, and the gap is the number you wrote in step 1. A thousand shuffles with seed 2026 put
 21 gaps at Rs 880 or more.
 
 ## Step 3. The usual wobble, then Retail-Plus
 
-The trainer runs Retail-Core in notebook 1, section 3: a gap of Rs 110 per member that about a third
-of 5,000 shuffles match. You run Retail-Plus in section 4 and fill in:
+The trainer runs Retail-Core in notebook 1, section 2: a gap of Rs 110 per member that about a third
+of 5,000 shuffles match. You run Retail-Plus in section 3 and fill in:
 
 | Retail-Plus | Your number |
 |---|---|

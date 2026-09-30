@@ -1334,17 +1334,24 @@ Four ways a team could answer Meera in writing.
 | D. A slide deck | Ten slides for Monday | A meeting to present it; the logic lives in the talk, never on the page |
 '''),
         code('''
+import json
+
 option_a = "Retail-Plus: yes, it is down. Student: yes, move budget. Discount: yes, it worked."
-option_b = " ".join(f"{k} {v}" for k, v in NUMBERS.items()) + " " + " ".join(["number"] * 40)
+printed = []                                             # the dashboard: everything chapters 1 to 4 printed
+for path in sorted(pathlib.Path.cwd().glob("C2_W01_D04_0[1-4]_*_STUDENT.ipynb")):
+    for cell in json.loads(path.read_text())["cells"]:
+        for out in cell.get("outputs", []):
+            printed.append("".join(out.get("text", "")))
+option_b = " ".join(printed)
 option_c_limit = 200
 rows = [("A. Yes or no", len(option_a.split()), "none", "every caveat"),
-        ("B. Dashboard", len(option_b.split()), "all of them", "the decision"),
+        ("B. Dashboard", len(option_b.split()), "all of them, unsorted", "the decision"),
         ("C. Four-part note", option_c_limit, "each claim's", "only length"),
-        ("D. Slide deck", 10 * 25, "on the slides, if drawn", "a meeting to present")]
+        ("D. Slide deck", "about ten slides", "what the slides draw", "a meeting to present")]
 kit.table(["Option", "Words, about", "Bases carried", "What it loses"], rows,
           caption="The options sized in words and in what they carry")
-kit.bars([(r[0], r[1]) for r in rows], fmt=lambda v: f"{v} words", lit=[2],
-         title="Words each option asks Meera to read; C is the ceiling she can read in two minutes")
+kit.bars([(r[0], r[1]) for r in rows[:3]], fmt=lambda v: f"{v} words", lit=[2],
+         title="Words each written option asks Meera to read; C is the ceiling she set")
 kit.check("the yes-or-no option is short and drops the caveats", len(option_a.split()) < 20 and "not yet" not in option_a)
 '''),
         md('''
