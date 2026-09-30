@@ -334,6 +334,26 @@ decisions:
     closes: the requester, on 30 September 2026
     text: Every teaching day is rebuilt to the raised standard in .claude/skills/day-pack-builder/references/the-standard.md. The day runs in about six chapters, each one deck chapter paired with one notebook that builds on the one before it; each chapter states the problem and lays out two to four ways to answer it, sized, with the best-fit call and the fact that would change it, before any code, and closes by reaching the same answer a second way; at least a third of a day's exercise items are design items; and every pack runs a five-pass depth loop whose last two passes are fresh reviewers. Weeks 1 and 2 are rebuilt first, Week 1 all at once.
     blocks: nothing
+  - id: question-ladder
+    status: closed
+    closes: the requester, on 30 September 2026
+    text: Every heading in a learner file is a plain, specific question the section answers, understandable on its own, with who needs the answer and the smaller questions on the way beneath it, and each section closes on its answer with its number; generic labels such as "Customer lifetime value, simply" are replaced. The day asks one question, each chapter asks the question the previous answer raised, and each chapter climbs through four to six smaller questions. On a slide the italic subtitle asks and the action title answers. The form is the question ladder in .claude/skills/day-pack-builder/references/the-standard.md.
+    blocks: nothing
+  - id: self-contained
+    status: closed
+    closes: the requester, on 30 September 2026
+    text: Every deck, notebook, exercise file, case brief, take-home and Saturday paper is understood with nothing else open. It states its scenario, explains its terms where they first appear, loads or prints the numbers it uses and restates what an earlier chapter found when it builds on it; a pointer to another file adds depth and is never needed to follow the page. Decks carry each chapter in full depth, in the notebook's rhythm.
+    blocks: nothing
+  - id: humanizer
+    status: closed
+    closes: the requester, on 30 September 2026
+    text: The humanizer skill (blader/humanizer at 225a6f3, MIT, in .claude/skills/humanizer) is imported, and every prose file in the programme passes its read in file mode as well as the tic scanner, so that no wording reads as a language model's.
+    blocks: nothing
+  - id: opus-max
+    status: closed
+    closes: the requester, on 30 September 2026
+    text: Every session on this project, and every agent a session starts, runs the latest Opus model at max effort; .claude/settings.json sets the model, the effort level and the subagent model, and every spawned session and agent is given the Opus model explicitly.
+    blocks: nothing
   - id: rubrics-and-calendar
     status: open
     closes: the Programme Head
