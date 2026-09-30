@@ -11,7 +11,7 @@ This week Meera Raghavan asked whether the Rs 12 crore Marketing wants for acqui
 ## How this paper works
 
 - 120 minutes in one sitting. Each part gives its minutes as a guide, not a limit.
-- Every item names its format beside its number: circle one letter, circle every correct letter, write T or F, write a letter from a word bank or a match table, write the word or number, show the working, or write the letters in order.
+- Every item names its format beside its number, and a word bank or a match table names it once, above its items: circle one letter, circle every correct letter, write the matching letter, write the word or number, show the working and the answer, or write the letters in order.
 - Every item also names its level, easy, medium or hard, so you can plan your time. A hard item is several steps on an exhibit, never an obscure fact.
 - A wrong answer costs nothing, so answer every item on the line under it.
 - Pen and this paper only: no laptop, no phone, no notes and no assistant.
