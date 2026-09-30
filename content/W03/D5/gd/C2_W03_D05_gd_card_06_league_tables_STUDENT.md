@@ -4,7 +4,7 @@ Handed out when the round opens. Three minutes to read, eighteen to reach a posi
 
 ## Dr Menon's ask
 
-> "The clinics' operations head wants to send every clinic manager a monthly no-show league table, worst clinic at the bottom, to push the laggards into fixing their reminders. I worry it shames the wrong clinics. Should we publish it, and in what form?"
+> "The patient service centres' operations head wants to send every centre manager a monthly no-show league table, worst centre at the bottom, to push the laggards into fixing their reminders. I worry it shames the wrong centres. Should we publish it, and in what form?"
 
 ## What your group owes Dr Menon when the discussion closes
 
@@ -16,7 +16,7 @@ Handed out when the round opens. Three minutes to read, eighteen to reach a posi
 
 The table below is an illustration the operations head drew up to show the format. It is **this prompt's assumption**, not Kalpa Health's figures.
 
-| Clinic | Visits in the month | No-shows | No-show rate |
+| Centre | Visits in the month | No-shows | No-show rate |
 |---|---|---|---|
 | A | 900 | 64 | 7.1 percent |
 | B | 820 | 68 | 8.3 percent |
@@ -27,12 +27,12 @@ The table below is an illustration the operations head drew up to show the forma
 
 | What | Number | Where it comes from |
 |---|---|---|
-| Cost of one reminder message | Rs 4 | This prompt's assumption |
-| Clinic managers who would see the table | twelve | This prompt's assumption |
+| Cost of one reminder message | $0.40 | This prompt's assumption |
+| Centre managers who would see the table | twelve | This prompt's assumption |
 
 Rows marked **this prompt's assumption** are the prompt's own and do not come from Kalpa Health's files. Argue with them if you think they are wrong, and say what you would use instead.
 
 ## Who else is in the room
 
-- **The clinics' operations head:** "What gets ranked gets fixed. Clinic F has been bottom three months running."
-- **Clinic F's manager, by message:** "Five people missed an appointment with me this month. Five."
+- **The patient service centres' operations head:** "What gets ranked gets fixed. Centre F has been bottom three months running."
+- **Centre F's manager, by message:** "Five people missed an appointment with me this month. Five."

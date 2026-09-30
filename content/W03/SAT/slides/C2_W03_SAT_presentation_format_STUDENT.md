@@ -50,12 +50,12 @@ that a group which opens with its data cleaning has answered question two before
 
 ```stats
 value: 5% | label: test volume growth | note: the dashboard, against a plan of 18
-value: 2 cities | label: bookings down | note: in Q2, per the booking data
-value: 9% | label: the campaign's lift | note: free home collection, per marketing
-value: 1 clinic | label: a worse no-show rate | note: per the clinics' operations head
+value: 2 metros | label: bookings down | note: in Q3, per the booking data
+value: 9% | label: the campaign's lift | note: free at-home collection, per marketing
+value: 1 centre | label: a worse no-show rate | note: per the centres' operations head
 ```
 
-**The claim.** Her data team adds two things it knows: two cities changed booking systems in Q2, and the payment feed keys invoices in its own format. Invoices and collections disagree, says the finance head.
+**The claim.** Her data team adds two things it knows: two metros changed booking systems in Q3, and the posting system keys claims in its own format. Claims and collections disagree, says the finance head.
 
 ```notes
 Every number on this slide came from Dr Menon or her team. A group that repeats one of them on its
@@ -451,7 +451,7 @@ same for every group.
 | Criterion | Marks | What full marks look like |
 |---|---|---|
 | The question translated | 8 | Dr Menon's words are mapped to the right Weeks 1 and 2 method, with the metric defined and the decision it feeds named. |
-| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and rupees reconcile across files. |
+| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and dollars reconcile across files. |
 | The analysis | 10 | The tree, ladder or fair comparison reaches the branch that explains the symptom, on the right denominator, with a chance test where one is needed. |
 | The claim | 6 | One sentence carries its number, denominator, period and caveat, plus an action Dr Menon can take. |
 | Presentation and defence | 6 | The live demo runs cold, and every member answers a challenge on the caveat. |

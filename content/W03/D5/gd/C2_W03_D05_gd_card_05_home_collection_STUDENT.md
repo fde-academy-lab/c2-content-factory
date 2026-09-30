@@ -4,7 +4,7 @@ Handed out when the round opens. Three minutes to read, eighteen to reach a posi
 
 ## Dr Menon's ask
 
-> "The marketing head says the free home-collection offer lifted bookings 9 percent, and wants it in all six cities from next quarter. The finance head says every free visit is money we never see again. I need a recommendation I can defend in front of the board."
+> "The marketing head says the free at-home collection offer lifted bookings 9 percent, and wants it in all six cities from next quarter. The finance head says every free visit is money we never see again. I need a recommendation I can defend in front of the board."
 
 ## What your group owes Dr Menon when the discussion closes
 
@@ -16,13 +16,13 @@ Handed out when the round opens. Three minutes to read, eighteen to reach a posi
 
 | What | Number | Where it comes from |
 |---|---|---|
-| Home collection's share of bookings, April to September, where the channel is recorded | 13 percent | Kalpa Health bookings, both booking systems |
-| Complete blood count, Lipid profile, HbA1c, Vitamin D, list prices | Rs 350, Rs 600, Rs 450, Rs 1,200 | Kalpa Health test catalogue |
+| At-home collection's share of bookings, April to September, where the channel is recorded | 13 percent | Kalpa Health bookings, both booking systems |
+| Complete blood count, Cholesterol panel, Hemoglobin A1c, Vitamin D, list prices | $45, $75, $60, $150 | Kalpa Health test catalogue |
 | The campaign's lift, as the marketing head reports it | 9 percent | The marketing head |
 | Bookings in a year | 23,000 | This prompt's assumption |
-| Average value of one booking, and Kalpa's gross margin on it | Rs 1,500, and 40 percent | This prompt's assumption |
-| What a home visit costs Kalpa, and what a patient pays for one today | Rs 220, and Rs 150 | This prompt's assumption |
-| Home collection's share of bookings once the offer is free everywhere | 25 percent | This prompt's assumption |
+| Average value of one booking, and Kalpa's gross margin on it | $150, and 40 percent | This prompt's assumption |
+| What a home visit costs Kalpa, and what a patient pays for one today | $22, and $15 | This prompt's assumption |
+| At-home collection's share of bookings once the offer is free everywhere | 25 percent | This prompt's assumption |
 
 Rows marked **this prompt's assumption** are the prompt's own and do not come from Kalpa Health's files. Argue with them if you think they are wrong, and say what you would use instead.
 
