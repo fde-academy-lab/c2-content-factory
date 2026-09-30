@@ -44,16 +44,13 @@ and Canada, and worldwide. At the end of its fiscal 2025 the first stood at 92.3
 at 89.8 percent (Costco, fourth quarter fiscal 2025 results filed with the SEC, checked 30 Sep 2026).
 One blended rate would hide where renewals are weaker, so the segments are reported beside the whole,
 which is what the head of Retail-Plus needs from us.""",
-    4: """**Who else faces this.** The public case every analyst meets is the University of California,
-Berkeley's graduate admissions for autumn 1973 (Bickel, Hammel and O'Connell, Science, volume 187,
-1975, checked through Crossref 30 Sep 2026). Across the whole university, about 44 percent of the 8,442
-men who applied were admitted against about 35 percent of the 4,321 women, as a 2025 re-analysis
-summarises the paper's table, yet department by department the admission rates did not differ significantly between the sexes: women had applied mostly to the departments that were hard to get into. A blended
-rate moved because the mix moved, which is what can happen to Kalpa's revenue per order. A retailer
-meets the same thing in its order value: Swiggy reported Instamart's average order value up 14 percent
-in a quarter to Rs 697 in the quarter to September 2025, and put it down to non-grocery categories and
-large packs taking a larger share of gross order value, while net average order value after discounts stood at
-Rs 485 (Swiggy, Q2 FY2026 shareholder letter, checked 30 Sep 2026).""",
+    4: """**Who else faces this.** Swiggy, the food and grocery delivery app, reported the average order
+value of Instamart, its quick-commerce store, up 14 percent in a single quarter to Rs 697 in the
+quarter to September 2025. It did not call that a price rise: it put the rise down to non-grocery
+categories and large packs taking a larger share of gross order value, the value of orders before
+discounts, while the net average order value after discounts stood at Rs 485 (Swiggy, Q2 FY2026
+shareholder letter, checked 30 Sep 2026). The average order grew because the mix of what people
+bought moved, which is the reading Marketing's price claim skips for Kalpa's revenue per order.""",
     5: """**Who else faces this.** Every membership business runs Marketing's argument against the
 frequency argument. Harvard Business Review summarised the studies behind it: depending on the study
 and the industry, acquiring a new customer costs 5 to 25 times more than retaining an existing one,
@@ -113,7 +110,6 @@ and import it as `kit`. The export loads as a list of dictionaries, one per book
 arrives so that a window can be measured in days.
 """),
         code(SETUP + """from datetime import date, timedelta   # calendar days, so a window can be measured
-import time
 
 ORDERS = kit.load_records("C2_W01_D02_orders_STUDENT.py")
 print(len(ORDERS), "orders loaded")
@@ -150,7 +146,7 @@ Four ways a team could put a number on "revenue fell", each answering a slightly
 | D. The same quarter last year | Q2 this year against Q2 last year | Length and the season | Last year's export, which this file does not hold |
 
 The cell below sizes each one on this file: how many rows it reads, what answer it gives, how far
-that answer sits from option A, and how long it takes.
+that answer sits from option A, and what it leaves out.
 """),
         code("""
 def revenue_between(start, end):
@@ -162,28 +158,22 @@ def revenue_between(start, end):
             rows += 1
     return total, rows
 
-sizing = []
-t0 = time.perf_counter()
 a1, n1 = revenue_between(date(2026, 4, 1), date(2026, 6, 30))
 a2, n2 = revenue_between(date(2026, 7, 1), date(2026, 9, 30))
 option_a = (a2 - a1) / a1 * 100
-sizing.append(("A. closed quarters", n1 + n2, option_a, time.perf_counter() - t0))
-
-t0 = time.perf_counter()
 b1, m1 = revenue_between(date(2026, 4, 1), date(2026, 6, 16))
 b2, m2 = revenue_between(date(2026, 7, 1), date(2026, 9, 15))
 option_b = (b2 - b1) / b1 * 100
-sizing.append(("B. same 11 weeks", m1 + m2, option_b, time.perf_counter() - t0))
-
-t0 = time.perf_counter()
 option_c = (a2 / 92 - a1 / 91) / (a1 / 91) * 100
-sizing.append(("C. per day, closed", n1 + n2, option_c, time.perf_counter() - t0))
 
-rows = []
-for name, read, answer, secs in sizing:
-    rows.append((name, read, f"{answer:.1f}%", f"{answer - option_a:+.1f} points", f"{secs * 1000:.2f} ms"))
-rows.append(("D. same quarter last year", 0, "cannot run", "no last-year rows", "a data request"))
-kit.table(["Option", "Rows read", "Answer", "Gap from A", "Time on this file"], rows,
+left_out = len(ORDERS) - (m1 + m2)
+rows = [("A. closed quarters", n1 + n2, f"{option_a:.1f}%", "+0.0 points", "nothing, once both quarters have closed"),
+        ("B. same 11 weeks", m1 + m2, f"{option_b:.1f}%", f"{option_b - option_a:+.1f} points",
+         f"the last two weeks of each quarter, {left_out} orders"),
+        ("C. per day, closed", n1 + n2, f"{option_c:.1f}%", f"{option_c - option_a:+.1f} points",
+         "nothing; it spreads each total over 91 and 92 days"),
+        ("D. same quarter last year", 0, "cannot run", "no last-year rows", "everything, until last year's export arrives")]
+kit.table(["Option", "Rows read", "Answer", "Gap from A", "What it leaves out"], rows,
           caption="Four ways to size the fall, on the export as it stands")
 kit.bars([("A. closed quarters", round(-option_a, 1)), ("B. same 11 weeks", round(-option_b, 1)),
           ("C. per day, closed", round(-option_c, 1))],
@@ -194,8 +184,8 @@ kit.check("option B reads fewer rows, because it drops two weeks of each quarter
         md("""
 **The best-fit call.** Option A, closed quarters as totals, because both quarters closed on
 30 September and each holds thirteen weeks, so the totals already compare like with like and every
-reader can rebuild the number from the rows. Every option costs well under a second on 200 rows, so
-speed decides nothing here; what separates them is the question each answers. **The fact that would
+reader can rebuild the number from the rows. What separates the options is the question each answers
+and what each leaves out, and on a closed pair of quarters A leaves out nothing. **The fact that would
 change the call:** if Q2 were still open, option B, the same weeks of both quarters, would take
 over; if Meera asked whether the monsoon explains the fall, only option D answers, and it needs last
 year's export.
@@ -506,7 +496,7 @@ monsoon discount plan lives.
         code(CH2_SETUP),
         mapcell(2, ["the need: which lever moved?", "the options: four ways to split Rs 23 lakh",
                     "customers, counted", "the leaves, multiplied back", "rupees per branch",
-                    "the trap: a blank discount read as zero", "a second route: 28 lost orders"]),
+                    "the trap: a blank discount read as zero", "a second route: the symmetric split"]),
         md("""
 ## The need
 
@@ -532,10 +522,11 @@ Four ways to split the fall across the branches.
 | D. Customer by customer | Each of the 69 customers' Q1 and Q2 orders side by side | Who moved, at 69 rows of reading before any total |
 
 The cell below sizes B, C and a reversed bridge on this file, since the order of the steps is where
-the choice bites.
+the choice bites, and says for each option whether its rupees add to the fall and what Meera would
+have to read.
 """),
         code("""
-import math, time
+import math
 
 def leaves(rows):
     seen = {}
@@ -547,20 +538,17 @@ def leaves(rows):
 
 c1, f1, v1, r1 = leaves(by_quarter["Q1"])
 c2, f2, v2, r2 = leaves(by_quarter["Q2"])
-t0 = time.perf_counter()
 b_freq = c2 * (f2 - f1) * v1                       # B: frequency moved before order value
-b_rev = r2 - r1
 rev_freq = c2 * (f2 - f1) * v2                     # B reversed: order value first, frequency second
 log_mean = (r2 - r1) / math.log(r2 / r1)
 c_freq = log_mean * math.log(f2 / f1)              # C: symmetric
-secs = time.perf_counter() - t0
-kit.table(["Option", "Rows read", "Frequency's rupees", "Depends on order?"],
-          [("A. percentages only", 200, "none: percentages do not add", "no"),
-           ("B. bridge, tree order", 200, kit.rupees(round(b_freq)), "yes"),
-           ("B. bridge, order reversed", 200, kit.rupees(round(rev_freq)), "yes"),
-           ("C. symmetric split", 200, kit.rupees(round(c_freq)), "no"),
-           ("D. customer by customer", 200, "69 rows to read, then a total", "no")],
-          caption=f"Sizing the split; all of it ran in {secs * 1000:.2f} ms")
+kit.table(["Option", "Frequency's rupees", "Adds to the fall?", "Depends on order?", "What Meera reads"],
+          [("A. percentages only", "none: percentages do not add", "no", "no", "three percentages"),
+           ("B. bridge, tree order", kit.rupees(round(b_freq)), "yes, exactly", "yes", "three rupee steps"),
+           ("B. bridge, order reversed", kit.rupees(round(rev_freq)), "yes, exactly", "yes", "three rupee steps"),
+           ("C. symmetric split", kit.rupees(round(c_freq)), "yes, exactly", "no", "three rupee figures and a logarithm"),
+           ("D. customer by customer", "a total only after 69 rows", "after summing", "no", "69 rows")],
+          caption="Sizing the split on the Rs 23,00,000 fall")
 kit.bars([("B, tree order", round(-b_freq)), ("C, symmetric", round(-c_freq)), ("B, reversed", round(-rev_freq))],
          fmt=kit.rupees, lit=[0], title="What frequency is charged depends on the order of the steps")
 kit.check("the three rupee figures sit within Rs 10 lakh of each other", abs(rev_freq - b_freq) < 1000000,
@@ -794,24 +782,34 @@ is recorded, 71.7 percent of Q2's orders carried a discount; 17 of 86 are known 
 26 are unknown". The extension loses its premise until someone finds which system left those records
 blank, and the whole branch is worth at most Rs 12,900, so discounts leave the list of causes.
 
-## A second route: 28 lost orders at Q1's revenue per order
+## A second route: the symmetric split, which chooses no order
 
-The bridge's frequency step is a formula. The second route counts it directly: the orders Kalpa lost
-between the quarters, each priced at what an order was worth in Q1. The two must agree to the rupee.
+The bridge charged the part where two leaves moved together to whichever leaf moved second. The
+second route splits the same fall a different way: each leaf takes a share in proportion to its
+logarithmic change, so no order is chosen at all. It is an independent method, so if the bridge had
+put the fall on the wrong branch, this split would say so. The rupees per branch will differ by that
+joint part; the branch that carries the fall must not.
 """),
         code("""
-lost_orders = orders["Q1"] - orders["Q2"]
-route_two = -lost_orders * v1
-kit.bars([("bridge, frequency step", round(-move_frequency)), ("28 lost orders x Q1 revenue per order", round(-route_two))],
-         fmt=kit.rupees, title="The frequency step, reached two ways")
-kit.check("28 orders were lost between the quarters", lost_orders == 28)
-kit.check("both routes put the frequency step at Rs 51,57,895", round(route_two) == round(move_frequency) == -5157895,
-          kit.rupees(round(route_two)))
+weight = (r2 - r1) / math.log(r2 / r1)          # the log-mean of the two quarters' revenue
+symmetric = {"customers": weight * math.log(c2 / c1),
+             "orders per customer": weight * math.log(f2 / f1),
+             "revenue per order": weight * math.log(v2 / v1)}
+bridge_moves = {"customers": move_customers, "orders per customer": move_frequency,
+                "revenue per order": move_order_value}
+kit.columns(list(symmetric), [("bridge, tree order", [round(bridge_moves[k]) for k in symmetric]),
+                              ("symmetric split", [round(symmetric[k]) for k in symmetric])],
+            fmt=kit.rupees, width=620, title="The fall split two ways: the same branch carries it")
+kit.check("the symmetric split adds to the same fall", round(sum(symmetric.values())) == round(r2 - r1),
+          kit.rupees(round(sum(symmetric.values()))))
+kit.check("both routes charge the largest fall to orders per customer",
+          min(symmetric, key=symmetric.get) == min(bridge_moves, key=bridge_moves.get) == "orders per customer")
 """),
         md("""
-**When to switch.** The direct count works because customers did not move; when customers change too,
-the lost orders mix both branches, and only the bridge separates them. The escalated case this
-afternoon meets exactly that.
+**When to switch.** Keep the bridge for Meera, with its order written beside it, because a CEO can
+follow one leaf at a time. Switch to the symmetric split when two branches keep moving together and
+someone else rebuilds the split every month, since then nobody argues about order. Here the two
+differ by Rs 4,30,585 on frequency, the joint part, and agree on the branch.
 
 > **Kavya's review.** "Meera asked two questions and you answered both with a count: customers held
 > at 69, and the ones we have bought less often. Put the bridge in front of her with its order
@@ -853,8 +851,9 @@ interviewer is listening for a reason and the fact that would switch it.
 With three branches moving at once, a sequential bridge has six possible orders, and the symmetric
 split still gives one answer, because the logarithms of the three ratios add exactly to the logarithm
 of the revenue ratio (B. W. Ang, "The LMDI approach to decomposition analysis: a practical guide",
-Energy Policy, 2005, checked through Crossref 29 Sep 2026). Try it: add a customers term to the
-symmetric code in the sizing cell and check that the three moves still sum to the fall.
+Energy Policy, 2005, checked through Crossref 29 Sep 2026). Try it: in the escalated case this
+afternoon customers move too; run the second route's split there and count how many of the six
+bridge orders put the most rupees on the same branch.
 
 References for the chapter:
 
@@ -1270,7 +1269,7 @@ print("revenue per order:", kit.rupees(round(all1["revenue_per_order"])), "to", 
         mapcell(4, ["the need: are customers paying more?", "the options, sized",
                     "orders lost, by segment", "each segment's own revenue per order",
                     "the trap: 18 percent read as a price rise", "the split: mix and rate",
-                    "a second route: rate first"]),
+                    "a second route: two groups on an envelope"]),
         md("""
 ## The need
 
@@ -1292,8 +1291,8 @@ per customer, the branch that actually moved, gets worse.
 | C. Split the rise into mix and rate | Price Q2's order mix at Q1's segment rates; the rest is rate | Rupees of the rise from mix and from rate, adding to the whole |
 | D. Each segment's median order | `describe` per segment | The typical order, which one lakh-sized order cannot move |
 
-The cell below sizes each on this file: rows read, and how much of the Rs 33,231 rise each can
-attribute to a cause.
+The cell below sizes each on this file: how much of the Rs 33,231 rise each can put rupees on,
+whether one lakh-sized order can move it, and what it leaves open.
 """),
         code('''
 rise = all2["revenue_per_order"] - all1["revenue_per_order"]
@@ -1302,11 +1301,11 @@ share2 = {seg: q2[seg]["orders"] / all2["orders"] for seg in SEGMENTS}
 at_q2_mix = sum(share2[seg] * q1[seg]["revenue_per_order"] for seg in SEGMENTS)
 mix = at_q2_mix - all1["revenue_per_order"]
 rate = all2["revenue_per_order"] - at_q2_mix
-kit.table(["Option", "Rows read", "Rise explained", "What it leaves open"],
-          [("A. blended change", 200, "none: it is the rise", "why"),
-           ("B. per segment", 200, "direction per segment", "how the segments add up"),
-           ("C. mix and rate", 200, f"all {kit.rupees(round(rise))}, split", "which prices moved, if any"),
-           ("D. medians per segment", 200, "the typical order", "rupees")],
+kit.table(["Option", "Rupees of the rise it explains", "Can one lakh-sized order move it?", "What it leaves open"],
+          [("A. blended change", "none: it is the rise", "yes", "why"),
+           ("B. per segment", "none: a direction per segment", "yes, inside Business", "how the segments add up"),
+           ("C. mix and rate", f"all {kit.rupees(round(rise))}, split", "the rate part, yes", "which prices moved, if any"),
+           ("D. medians per segment", "none: the typical order", "no", "rupees")],
           caption="Sizing four readings of one rise")
 kit.bars([("A. blended change", 0), ("B. per segment", 0), ("C. mix and rate", round(rise)), ("D. medians", 0)],
          fmt=kit.rupees, lit=[2], title="Rupees of the rise each option attributes to a cause")
@@ -1356,9 +1355,9 @@ kit.check("no segment's own revenue per order rose as far as 18 percent", max(se
           f"largest {max(seg_rpo_change.values()):.1f}%")
 '''),
         md("""
-**What happened.** The answer is d. Business rose 5.0 percent, Retail-Plus 7.0, Student 14.8 on a
-handful of orders, and Retail-Core fell 4.9. The blend rose 18.0 percent while no segment rose that far, which
-is the Berkeley pattern: the mix moved.
+**What happened.** The answer is d. Business rose 5.0 percent, Retail-Plus 7.0, Student 14.8, and
+Retail-Core fell 4.9. The blend rose 18.0 percent while no segment rose that far, so the blend moved
+because the mix of orders moved.
 
 ## 3. The trap: 18 percent read as customers paying more
 
@@ -1416,26 +1415,32 @@ kit.check("Business carries more than nine tenths of the rate part", rate_parts[
 about Rs 52,000 on average, and one large order drives that, as chapter 3's range showed. The
 consumer segments' own prices moved by a few hundred rupees at most.
 
-## A second route: move the rate first
+## A second route: two groups on the back of an envelope
 
-The split above moved the mix first, pricing Q2's mix at Q1's rates. Move the rate first instead,
-pricing Q1's mix at Q2's rates. The part where mix and rate moved together is charged to whichever
-goes second, as with chapter 2's bridge, so the parts shift a little; both orders must add to the
-same Rs 33,231.
+The split above priced four segments. An independent check treats Kalpa as two groups, Business and
+everyone else, and asks how far the blend moves when only Business's share of orders moves: the
+change in that share times the gap between a Business order and a consumer order, both at Q1's
+values. It uses no rate inside the consumer business, so if the four-segment split had mispriced a
+consumer segment, the two routes would disagree.
 """),
         code('''
-at_q1_mix_q2_rates = sum(share1[seg] * q2[seg]["revenue_per_order"] for seg in SEGMENTS)
-rate_first = at_q1_mix_q2_rates - all1["revenue_per_order"]
-mix_second = all2["revenue_per_order"] - at_q1_mix_q2_rates
-kit.columns(["mix first", "rate first"], [("mix", [round(mix), round(mix_second)]), ("rate", [round(rate), round(rate_first)])],
-            fmt=kit.rupees, width=560, title="Either order, the mix carries about seven tenths of the rise")
-kit.check("both orders add to the same Rs 33,231 rise", round(mix + rate) == round(mix_second + rate_first) == round(rise))
-kit.check("in both orders the mix explains more than two thirds", mix / rise > 2 / 3 and mix_second / rise > 2 / 3,
-          f"{mix / rise * 100:.1f} and {mix_second / rise * 100:.1f}")
+consumer_q1 = [o for o in by_quarter["Q1"] if o["segment"] != "Business"]
+consumer_rpo_q1 = sum(o["amount"] for o in consumer_q1) / len(consumer_q1)
+gap_q1 = q1["Business"]["revenue_per_order"] - consumer_rpo_q1
+envelope = (share2["Business"] - share1["Business"]) * gap_q1
+kit.stats([(f'{share1["Business"] * 100:.1f}% to {share2["Business"] * 100:.1f}%', "Business's share of orders", "Q1 to Q2"),
+           (kit.rupees(round(gap_q1)), "a Business order less a consumer order", "both at Q1's values"),
+           (kit.rupees(round(envelope)), "the mix, from two groups", f"four segments gave {kit.rupees(round(mix))}")])
+kit.columns(["four segments", "two groups"], [("mix", [round(mix), round(envelope)])], fmt=kit.rupees, width=520,
+            title="The mix part of the Rs 33,231 rise, reached two ways")
+kit.check("the two routes agree within 2 percent", abs(envelope - mix) / mix < 0.02, f"{envelope:.0f} and {mix:.0f}")
+kit.check("both routes put more than two thirds of the rise on the mix", mix / rise > 2 / 3 and envelope / rise > 2 / 3,
+          f"{mix / rise * 100:.1f} and {envelope / rise * 100:.1f}")
 '''),
         md("""
-**When to switch.** Report the mix-first split and say so; switch to showing both orders when the two
-disagree about which part is larger, which here they do not (69 and 72 percent).
+**When to switch.** Report the four-segment split, since it names each segment's part. The envelope
+is the check a senior runs in a meeting with no laptop, and it stops agreeing when the consumer
+segments' own shares move a lot against each other, since it cannot see inside them.
 
 > **Kavya's review.** "Marketing looked at a blend and saw a price signal. You opened the blend and
 > found 25 small orders missing. Say it that way to Meera: no consumer segment paid meaningfully more,
@@ -1459,16 +1464,16 @@ matters here. When the segments look alike, or their shares held, the per-segmen
 And I report the order of the split, since the joint part moves with it." The interviewer is
 listening for the two conditions and the order.
 
-### Depth: the Berkeley table, rebuilt
+### Depth: a mix inside one segment
 
-Rebuild the paradox with invented numbers: two departments, one admitting 80 percent and one 20
-percent, and two groups of applicants who apply to them in opposite proportions. Show that each
-department treats both groups equally while the totals differ by 30 points. Then ask which number a
-newspaper would print.
+Retail-Plus's own revenue per order rose 7.0 percent. That can be a mix as well: if the members who
+place small orders are the ones who slowed, the tier's average order grows with no member paying
+more. Try it: split the tier's rise by channel, the way this chapter split the company's by segment,
+and say how much of the 7.0 percent is mix.
 
 References for the chapter:
 
-- Bickel, Hammel and O'Connell, "Sex Bias in Graduate Admissions: Data from Berkeley", Science 187 (4175), 398 to 404, 1975: https://doi.org/10.1126/science.187.4175.398 (verified 30 Sep 2026 through Crossref)
+- Swiggy, Q2 FY2026 shareholder letter: https://www.swiggy.com/corporate/wp-content/uploads/2025/10/Q2-FY2026-Shareholder-letter.pdf (verified 30 Sep 2026)
 - Khan Academy, summarizing quantitative data: https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data (verified 29 Sep 2026)
 """),
         code("""
@@ -1507,7 +1512,7 @@ q2 = {seg: tree_for(groups["Q2"][seg]) for seg in SEGMENTS}
 print("segments carried from chapter 3:", ", ".join(SEGMENTS))'''),
         mapcell(5, ["the need: is acquisition the answer?", "the options: four ways to test churn",
                     "the id overlap", "customer by customer", "the trap: a helper that returns nothing",
-                    "the consumer business", "a second route: the total less Business"]),
+                    "the consumer business", "a second route: first and last dates"]),
         md("""
 ## The need
 
@@ -1539,11 +1544,11 @@ for order in ORDERS:
     q, cid = order["quarter"], order["customer_id"]
     ids[q].add(cid)
     per_customer[q][cid] = per_customer[q].get(cid, 0) + 1
-kit.table(["Option", "Rows read", "Output to read", "Sees lost and new?"],
-          [("A. counts", 200, "2 numbers", "no"),
-           ("B. id overlap", 200, "3 numbers", "yes"),
-           ("C. customer by customer", 200, f"{len(ids['Q1'] | ids['Q2'])} rows", "yes, and who slowed"),
-           ("D. Marketing's CRM", "another system", "sign-ups by month", "new only")],
+kit.table(["Option", "Output to read", "Sees lost and new?", "What it assumes"],
+          [("A. counts", "2 numbers", "no", "nothing: a count is net"),
+           ("B. id overlap", "3 numbers", "yes", "one id per person"),
+           ("C. customer by customer", f"{len(ids['Q1'] | ids['Q2'])} rows", "yes, and who slowed", "one id per person"),
+           ("D. Marketing's CRM", "sign-ups by month", "new only", "the CRM and the export share their ids")],
           caption="Sizing four tests of the churn claim")
 kit.matrix(["A. counts", "B. overlap", "C. per customer"], ["sees lost", "sees new", "sees who slowed"],
            [["no", "no", "no"], ["yes", "yes", "no"], ["yes", "yes", "yes"]],
@@ -1671,9 +1676,8 @@ kit.check("Retail-Plus fell 49.0 percent and Student rose 40.0", (fixed["Retail-
 '''),
         md("""
 **What changed.** "Business fell most, 15.0 percent" became "Retail-Plus fell 49.0 percent, 2.32 to
-1.18 orders per member, and Business 15.0 percent on three orders". Student, which rose 40.0 percent
-on two customers, also went missing from the broken script, and the filter would have dropped it
-anyway because it rose.
+1.18 orders per member, and Business 15.0 percent on three orders". Student, which rose, also came
+back as `None` from the broken script, and the filter would have dropped it anyway because it rose.
 
 ## 4. Too small to matter? The consumer business, in its own terms
 
@@ -1704,22 +1708,35 @@ twenty, each worth lakhs, which is too few to call a trend before anyone builds 
 findings go to Meera side by side: the rupees in Business, with their caveat, and the behaviour in
 Retail-Plus, with its count.
 
-## A second route: the whole fall less Business
+## A second route: each customer's first and last order
 
-The bridge added three consumer segments' moves. The second route takes the company's fall and
-removes Business; the two must agree to the rupee.
+Section 1's overlap trusted the `quarter` field and set arithmetic. A second route uses only the
+dates: each customer's first and last order in the export. A customer whose first order falls in Q2
+is new, and one whose last order falls in Q1 was lost. If the quarter field were wrong, or the sets
+had been built on the wrong field, the two routes would disagree.
 """),
         code('''
-total_fall = sum(q1[s]["revenue"] for s in SEGMENTS) - sum(q2[s]["revenue"] for s in SEGMENTS)
-business_fall = q1["Business"]["revenue"] - q2["Business"]["revenue"]
-route_two = total_fall - business_fall
-kit.bars([("company fall", total_fall), ("Business fall", business_fall), ("company less Business", route_two)],
-         fmt=kit.rupees, lit=[2], title="The consumer fall, reached by subtraction")
-kit.check("both routes give Rs 70,280", route_two == consumer_fall, kit.rupees(route_two))
+first, last = {}, {}
+for order in ORDERS:
+    cid, d = order["customer_id"], order["order_date"]
+    first[cid] = min(first.get(cid, d), d)
+    last[cid] = max(last.get(cid, d), d)
+new_by_date = [cid for cid in first if first[cid] >= "2026-07-01"]
+lost_by_date = [cid for cid in last if last[cid] <= "2026-06-30"]
+MONTHS = ["2026-04", "2026-05", "2026-06", "2026-07", "2026-08", "2026-09"]
+firsts = [sum(1 for d in first.values() if d[:7] == m) for m in MONTHS]
+lasts = [sum(1 for d in last.values() if d[:7] == m) for m in MONTHS]
+kit.columns(["Apr", "May", "Jun", "Jul", "Aug", "Sep"], [("first order", firsts), ("last order", lasts)],
+            title="Customers by the month of their first and their last order in the export")
+kit.table(["Route", "New in Q2", "Lost after Q1"],
+          [("the id overlap, section 1", len(new), len(lost)), ("first and last dates", len(new_by_date), len(lost_by_date))],
+          caption="Lost and new, counted two ways")
+kit.check("the dates find the same lost and new counts as the overlap", (len(new_by_date), len(lost_by_date)) == (len(new), len(lost)))
 '''),
         md("""
-**When to switch.** Subtraction is quicker and hides which consumer segment moved; the bridge is the
-one to show when the question is who.
+**When to switch.** Show Marketing the overlap, since it names lost and new in three numbers. The
+dates add a warning the overlap cannot: a first order in this export is only the first since
+1 April, so on a longer question "new" needs each customer's whole history, which the CRM holds.
 
 > **Kavya's review.** "Three attacks, three checks anyone can rerun: the overlap for churn, groups in
 > and out for the script, and the consumer business for size. And you nearly shipped a summary that
@@ -1814,7 +1831,7 @@ core = [o for o in ORDERS if o["segment"] == "Retail-Core"]
 print(len(plus), "Retail-Plus orders and", len(core), "Retail-Core orders across both quarters")'''),
         mapcell(6, ["the need: is it the button?", "the options: four tests of a cause",
                     "orders by month", "the trap: the button blamed for 25 orders",
-                    "the season, a rival", "the channel the cause predicts", "a second route: the pace",
+                    "the season, a rival", "the channel the cause predicts", "a second route: the pace, corrected",
                     "the memo"]),
         md("""
 ## The need
@@ -1984,27 +2001,37 @@ kit.check("the app fell by a smaller share than the web", by_channel["Q2"]["app"
 from 13 to 8. An app-only cause predicts the app falling first and alone, and it did not; something
 touched members in every channel.
 
-## A second route: the pace the tier had already set
+## A second route: the pace, corrected by a segment the button cannot touch
 
-Section 2's ceiling came from a difference of two rates. The second route counts instead: if the
-tier had kept its pre-break pace, how many orders would the 37 days after the break have carried, and
-how many did it place? The two routes must agree.
+Section 2's ceiling assumed the tier would have kept its pre-break pace. An independent check asks
+what happened across the same date to Retail-Core, which the button did not touch because the
+complaint is about members' reorders. If every customer slowed a little after 25 August, part of the
+tier's shortfall belongs to that and not to the button. Scale the tier's expected orders by
+Retail-Core's own change in pace across the break, then compare with what the tier placed. If the
+button were the only thing moving, this route would give the same 4.1 orders; if something else
+slowed every customer, it gives fewer, which is why section 2's figure is a ceiling.
 """),
         code('''
-expected_after = before / days_before * days_after
-route_two = expected_after - after
+core_before = len([o for o in core if o["quarter"] == "Q2" and o["order_date"] < BREAK])
+core_after = len([o for o in core if o["quarter"] == "Q2"]) - core_before
+core_change = (core_after / days_after) / (core_before / days_before)
+route_two = before / days_before * days_after * core_change - after
 cum_days = list(range(1, 93))
 q2_dates = sorted(date.fromisoformat(o["order_date"]) for o in plus if o["quarter"] == "Q2")
 actual_cum = [sum(1 for d in q2_dates if (d - date(2026, 7, 1)).days < n) for n in cum_days]
 pace_cum = [round(before / days_before * n, 2) for n in cum_days]
 kit.line([str(n) if n % 15 == 1 else "" for n in cum_days],
          [("pre-break pace, carried on", pace_cum, "plan"), ("Retail-Plus orders, Q2", actual_cum, "bad")],
-         fmt=lambda v: f"{v:.0f}", title="Q2 orders against the pace set before the break (day 56 is 25 August)")
-kit.check("both routes put the button's ceiling at the same 4.1 orders", abs(route_two - ceiling) < 1e-9, f"{route_two:.2f}")
+         fmt=lambda v: f"{v:.0f}", title="Section 2's reading: Q2 orders against the pace set before the break (day 56 is 25 August)")
+kit.bars([("section 2: the pre-break pace", round(ceiling, 1)), ("second route: corrected by Retail-Core", round(route_two, 1))],
+         fmt=lambda v: f"{v:g} orders", lit=[1], title="What the button can be charged with, reached two ways")
+kit.check("Retail-Core placed 22 orders before the break and 14 after", (core_before, core_after) == (22, 14))
+kit.check("the corrected route charges the button no more than the ceiling", 0 < route_two <= ceiling, f"{route_two:.2f}")
 '''),
         md("""
-**When to switch.** The rate route is the one to write in the memo; the counting route is the one to
-draw, since a line that bends away from its own pace is what a room can see.
+**When to switch.** Write section 2's ceiling in the memo, since it assumes nothing about any other
+segment; bring the corrected route when someone argues for the season, since it takes out what hit
+Retail-Core as well. Here it charges the button with about 3.5 orders, inside the ceiling of about 4.
 
 ## The memo: the claim and the evidence that settles each hypothesis
 
@@ -2077,6 +2104,11 @@ A failure log that records only the attempts that reached the server misses ever
 never got that far, so the members most hurt by a break may be the ones the log cannot see. That
 absence is not random, which is chapter 2's missing discount field in a new place. Ask which system
 writes the log, and what it does when the app never calls it.
+
+The ceiling also rests on a baseline: the tier's pace over all 55 days from 1 July to the break. Try
+it: take only the 37 days just before the break as the baseline, the same length as the window after
+it, and recompute the ceiling. Say which baseline you would defend to the head of Retail-Plus, and
+why the memo has to name the one it used.
 
 References for the chapter:
 
