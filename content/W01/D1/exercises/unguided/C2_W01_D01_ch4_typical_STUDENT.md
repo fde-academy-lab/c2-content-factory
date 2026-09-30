@@ -34,19 +34,19 @@ b) Rs 2,300, the 16th amount in size order
 c) Rs 18,160, the booked total divided by the count of 30
 d) Rs 2,205, halfway between the two middle amounts
 
-### Q3. Design. Marketing will price the acquisition payback on one value per new customer's first order. Which middle fits, and what would change it?
+### Q3. Design. Marketing's payback adds up what a new customer brings over their first year. Which number should it be built on, and what would change it?
 
-a) The mean, since every rupee of every order has to show up in a payback calculation
-b) The trimmed mean, since dropping one order at each end is always enough to be safe
-c) The median of first orders, and a mean per customer type if types get separate plans
+a) The booked mean, since every rupee of every order has to show up somewhere in a payback total
+b) The median of first orders, since that is the order a typical new customer places
+c) The targeted segment's mean, bulk orders set aside; a new target means a new segment
 d) The largest order, since the payback should be planned around the very best customers
 
-### Q4. Design. One invented Rs 90,000 order joins five invented orders of Rs 1,900 to Rs 2,600. Which middle moves by about Rs 14,600?
+### Q4. Design. One invented Rs 90,000 order joins five invented orders of Rs 1,900 to Rs 2,600: the mean moves Rs 14,623, the median Rs 50, the trimmed mean Rs 83. Which should the team report as the typical order, and when would the trimmed mean do as well?
 
-a) The median, which moves by one place along the sorted amounts
-b) The mean, which takes in every rupee of the new order
-c) The trimmed mean, which drops one order at each end
-d) None of the three, since one order in six is too few to move anything
+a) The mean, since the order that moved it most is the one the business most needs to see
+b) The median; the trimmed mean would do once its rule drops every bulk order, not just one
+c) The trimmed mean always, since it throws away the two orders most likely to be errors
+d) Any of the three, since on five ordinary orders they all sit within Rs 100 of each other
 
 ### Q5. On delivered orders the mean is Rs 24,800 and the median Rs 2,060; on booked orders, Rs 18,160 and Rs 2,205. Which figure should Meera plan the typical order on?
 

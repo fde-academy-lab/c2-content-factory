@@ -20,12 +20,12 @@ flowchart LR
 
 ---
 
-### Q1. The extract has 30 rows and 23 distinct customer ids. What is orders per customer?
+### Q1. Match each question to the tool that answers it. Questions: 1) how many customers bought, 2) how many orders each customer placed, 3) which customers bought on both the app and the web, 4) how many orders there are. Tools: p) `len(ORDERS)`, q) `len(set(ids))`, r) a dictionary of counts, s) the `&` of two sets. Which matching holds?
 
-a) 1.00, one order for every row in the extract
-b) 0.77, customers divided by orders
-c) 1.30, orders divided by distinct customers
-d) 7.00, orders less customers
+a) 1p 2r 3s 4q
+b) 1q 2s 3r 4p
+c) 1q 2r 3s 4p
+d) 1r 2q 3s 4p
 
 ### Q2. A colleague reports "30 customers, 1.00 orders each, so nobody comes back." Which decision would that number have misled?
 
@@ -60,7 +60,7 @@ d) A set of ids, and switch when someone asks how many came back
 ## Hands-on
 
 `notebooks/C2_W01_D01_03_the_leaves_counted_STUDENT.ipynb` counts the leaves under all three
-definitions. Check Q1 and Q4 against it.
+definitions. Check Q1 and Q4 against it: its set, dictionary and `&` cells are Q1's tools.
 
 **In the interview.** [F] Your extract shows 30 orders and 30 customers; what do you check before
 saying nobody comes back?

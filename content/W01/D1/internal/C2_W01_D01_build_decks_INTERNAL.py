@@ -3,7 +3,7 @@
 build_deck.py numbers chapter openers by their position in the deck, so the afternoon deck would
 print chapter 5 as 01. Monday pairs each deck chapter with the notebook of the same number, so this
 wrapper keeps build_deck.py's whole build and changes one thing: the numeral on a chapter opener is
-the one written in its heading. `## SECTION 5: ...` prints 05; `## SECTION A: ...` prints A, which
+the one written in its heading, on the opener and in the cover's list of chapters. `## SECTION 5: ...` prints 05; `## SECTION A: ...` prints A, which
 the afternoon's case blocks use since they have no chapter notebook.
 
 Run from the repository root:
@@ -41,9 +41,21 @@ def build(name, footer):
                 shape.text_frame.paragraphs[0].runs[0].text = want
                 break
 
+    cover = deck_layout.title_slide
+
+    def title_slide(slide, prs, meta, chapters, total):
+        cover(slide, prs, meta, chapters, total)
+        k = 0
+        for shape in slide.shapes:
+            if shape.has_text_frame and re.fullmatch(r"\d\d", shape.text_frame.text) and k < len(marks):
+                shape.text_frame.paragraphs[0].runs[0].text = marks[k]
+                k += 1
+
     build_deck.section_slide = section_slide
+    build_deck.title_slide = title_slide
     n, shrunk, cramped = build_deck.build(src, src.with_suffix(".pptx"), footer)
     build_deck.section_slide = original
+    build_deck.title_slide = cover
     print(f"      {name}: {n} slides, openers numbered {', '.join(marks)}")
     for slide, pt, title in cramped:
         print(f"      slide {slide} prints its diagram labels at {pt}pt: {title}")

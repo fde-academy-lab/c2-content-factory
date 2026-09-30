@@ -80,7 +80,7 @@ flowchart LR
     class F,O,X bad
 ```
 
-The check written under it: orders times AOV lands on that definition's revenue, or the fraction
+The check written under it: AOV times the orders the revenue was summed over gives that revenue back, or the fraction
 mixes two reports.
 
 ---

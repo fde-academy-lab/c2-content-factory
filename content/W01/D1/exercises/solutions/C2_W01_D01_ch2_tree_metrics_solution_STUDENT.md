@@ -8,7 +8,7 @@ A branch is a metric only when it is a numerator over a denominator on one defin
 window. This file fills three of the six branches; items, price and discounts are not in it. The
 trap is a fraction built from two reports: booked rupees over delivered orders gives Rs 25,943, an
 AOV that matches no definition and multiplies back to Rs 7,78,300. The check is the tree's own
-identity, orders times AOV landing on that definition's revenue.
+identity: AOV times the orders the revenue was summed over must give that revenue back.
 
 ## Item by item
 

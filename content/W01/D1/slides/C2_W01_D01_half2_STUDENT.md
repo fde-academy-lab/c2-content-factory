@@ -18,7 +18,7 @@ Transition: chapter 5, which branch Meera opens first.
 *The plan asks little of either customer branch; the evidence says which one to test.*
 
 ```notes
-LIVE, 30 minutes: the need (3), the options sized (8), the build (4), the trap (8), the second
+LIVE, 30 minutes: the need (3), the options sized (7), the build (5), the trap (8), the second
 route (4), Kavya's review (3). Notebook 05 is the demonstration.
 ```
 
@@ -31,7 +31,7 @@ route (4), Kavya's review (3). Notebook 05 is the demonstration.
 
 | | |
 |---|---|
-| The metric at stake | Growth against the 15 percent plan, Rs 81,722 more on this extract |
+| The metric at stake | Growth against the 15 percent plan, sized on the 29 everyday orders |
 | Who asks | Meera; the marketing lead owns acquisition, the head of Retail-Plus owns the members who come back |
 | What a wrong number costs | Rs 12 crore on the branch that was fine, sized by adding lifts that multiply |
 
@@ -60,20 +60,22 @@ Transition: what the plan asks of each branch.
 
 ---
 
-## S3. The plan asks 3.45 customers or 4.5 orders
-*Each branch moved alone, sized on this file, with the evidence the file holds for it.*
+## S3. The plan asks 3.3 customers or 4.35 orders
+*Each branch alone, on the 29 everyday orders: Rs 64,810, and Rs 9,722 more.*
 
 | Option | The plan needs | Evidence in this file |
 |---|---|---|
-| A. Customers | 3.45 more who buy like today's | None; one window cannot show customers falling. |
-| B. Frequency | 4.5 more orders from the same 23 | 7 of 23 already came back. |
-| C. Order value | Rs 2,724 more on every order | Items and prices are not in the file. |
+| A. Customers | 3.3 more who buy like today's | None; one window cannot show customers falling. |
+| B. Frequency | 4.35 more orders from the same 22 | 7 already came back. |
+| C. Order value | Rs 335 more on every order | Items and prices are not in the file. |
 | D. Price | Every price 15 percent higher, nobody leaving | None, and nothing sells above MRP. |
 
-**The rule.** B is the best fit: about 5 of the 16 one-time buyers returning once carries the plan, and a retention test costs a reminder to people already on the list.
+**The rule.** B is the best fit: 4 or 5 of the 15 one-time buyers returning once at a typical order carries the plan, and a retention test costs a reminder to people already on the list.
 
 ```notes
-LIVE, 6 minutes. Walk the four. A and B are small asks in customers' actions; the difference is
+LIVE, 7 minutes. Say why the base is the 29: the order at the top of chapter 4's sort carries most
+of booked revenue, and no offer repeats it; on booked revenue the plan reads 4.5 orders, but each
+would have to be worth the Rs 18,160 mean. Walk the four. A and B are small asks in customers' actions; the difference is
 who is asked: people Kalpa has never met, or people who already bought. C rests on an average the
 morning showed one order drags.
 What would change the call: Tuesday's second quarter showing customers falling while frequency
@@ -103,7 +105,7 @@ value: 7 | label: came back | note: frequency is live
 ```
 
 ```notes
-LIVE, 4 minutes. Light the frequency branch on the board tree. Notebook 05's build draws the same
+LIVE, 5 minutes. Light the frequency branch on the board tree. Notebook 05's build draws the same
 tree and counts the one-time buyers.
 Transition: marketing answers with a bigger plan.
 ```
@@ -123,7 +125,7 @@ value: Rs 6,53,772 | label: the slide's revenue | note: Rs 5,44,810 x 1.20
 The slide's arithmetic is the one most rooms do in their heads.
 
 ```notes
-LIVE, 3 minutes. Ask for the right number before the next slide; take letters: 20, 21, 10, 11.
+LIVE, 4 minutes. Ask for the right number before the next slide; take letters: 20, 21, 10, 11.
 Transition: the check.
 ```
 
@@ -144,7 +146,7 @@ xychart-beta
 1.10 x 1.10 = 1.21: Rs 6,59,220, Rs 5,448 above the slide. The line is the added figure and the bars the multiplied one; the gap grows with the lifts.
 
 ```notes
-LIVE, 3 minutes. Work it on the board: Rs 5,44,810 x 1.10 = Rs 5,99,291; x 1.10 again =
+LIVE, 4 minutes. Work it on the board: Rs 5,44,810 x 1.10 = Rs 5,99,291; x 1.10 again =
 Rs 6,59,220. What it would mislead: a target sized by addition is missed by the lift on the lift.
 The same rule prices a discount: 0.85 x 1.10 = 0.935, a 6.5 percent fall.
 Transition: the lift, part by part.
@@ -167,7 +169,7 @@ Transition: the lift, part by part.
 
 ```notes
 LIVE, 4 minutes. Notebook 05 draws this as a bridge and asserts it lands on the multiplied total.
-The parts route wins the argument with the slide.
+Bring the parts route to marketing: the lift on the lift has its own line.
 Transition: Kavya's review.
 ```
 
@@ -202,8 +204,8 @@ Transition: chapter 6, the sentence.
 *One sentence she can sign against, and the one number in it most likely to be misread.*
 
 ```notes
-LIVE, 30 minutes: the need (3), the options (5), the trap (10), the build (6), the second route
-(3), Kavya's review (3). Notebook 06 is the demonstration.
+LIVE, 30 minutes: the need (3), the options (5), the build (4), the trap and the fix (12), the
+second route (3), Kavya's review (3). Notebook 06 is the demonstration.
 ```
 
 ---
@@ -230,7 +232,7 @@ Transition: a real company's first-window number.
 
 ```timeline
 label: February 2024 | title: Two-thirds of chats | body: Klarna reported its AI assistant handled two-thirds of customer-service chats in its first month (Klarna, 27 February 2024).
-label: May 2025 | title: The cost of cost | body: Its chief executive said the focus on cost had lowered quality, and customers would always reach a human (Fortune, 9 May 2025).
+label: May 2025 | title: Quality, fifteen months on | body: Its chief executive said the focus on cost had lowered quality, and customers would always reach a human (Fortune, 9 May 2025).
 ```
 
 A number from one window, read as the verdict, is the risk this chapter's caveat guards against.
@@ -285,7 +287,7 @@ Transition: a colleague tightens the draft for the slide.
 
 ---
 
-## S13. Question: 16 of 23 bought once. How many lost?
+## S13. Question: how many of the 16 are lost?
 *One quarter of orders, and a number that reads like churn.*
 
 **Question.** What share of Kalpa's customers can you call lost: a) about 70 percent, 16 of 23; b) 30 percent, the ones who came back; c) none from this file alone, and some are too recent to judge; d) all the one-time buyers?
@@ -301,7 +303,8 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 2 minutes. Letters by hand. Most pick a. Ask the question marketing would ask: how long do
+LIVE, 2 minutes. Present the 70 percent as the colleague's tightened draft of S12's sentence, which is how it
+would reach Meera. Take letters by hand; most pick a. Ask the question marketing would ask: how long do
 our customers usually take to come back?
 Transition: the answer.
 ```
@@ -398,14 +401,14 @@ LIVE, 3 minutes. One learner answers aloud. Then the escalated case: Anand pushe
 *Anand asks for the whole answer again on what was delivered, alone, in 35 minutes.*
 
 ```notes
-LIVE, 35 minutes: 3 to brief on S18 and S19, 30 alone with no slides. The support TA answers
+LIVE, 35 minutes: 5 to brief on S18 and S19, 30 alone with no slides. The support TA answers
 environment problems only. Collect wrong numbers while circulating for the debrief.
 ```
 
 ---
 
 ## S18. Anand wants it on what stayed delivered
-*A recommendation that holds on one definition only is a coincidence.*
+*Anand asks whether the answer holds on the orders that stayed sold.*
 
 **The client asks.** "Booked includes orders we cancelled and orders that came back. Do it again on what was delivered and stayed delivered, and tell me whether your answer survives." Anand Iyer, finance controller
 
@@ -418,16 +421,17 @@ icon: message-square | eyebrow: Part 5 | title: The sentence | body: Chapter 6's
 ```
 
 ```notes
-LIVE, 3 minutes. The brief is exercises/unguided/C2_W01_D01_escalated_case_STUDENT.md and the
-notebook is notebooks/C2_W01_D01_ex1_escalated_case_STUDENT.ipynb. Each learner posts nine
-letters, the numbers each part asks for, and the sentence.
+LIVE, 5 minutes. The brief is exercises/unguided/C2_W01_D01_escalated_case_STUDENT.md and the
+notebook is notebooks/C2_W01_D01_ex1_escalated_case_STUDENT.ipynb. Each learner posts the
+brief's two lines (six letters, then three numbers), the sentence, and the notebook's nine TODO
+picks on one more line.
 Transition: 30 minutes alone.
 ```
 
 ---
 
 ## S19. What to post, and what counts as done
-*Nine letters, the numbers each part asks for, and one sentence.*
+*Six letters and three numbers, one sentence, then the notebook's nine picks.*
 
 ```timeline
 label: Parts 1 and 2 | title: 12 minutes | body: The delivered leaves and the delivered median, which is one value since 21 is odd.
@@ -481,7 +485,7 @@ Transition: the checks.
 | The wrong number | The check that catches it | What to report |
 |---|---|---|
 | Rs 5,44,810 as sales | Count orders by status before summing. | Rs 5,35,760 not cancelled, named. |
-| Rs 25,943 AOV | Orders x AOV must land on its own revenue. | Rs 18,160 booked or Rs 24,800 delivered. |
+| Rs 25,943 AOV | AOV x the 30 orders the revenue covers must give it back. | Rs 18,160 booked or Rs 24,800 delivered. |
 | 1.00 orders each | Compare rows with distinct ids: 30 against 23. | 1.30 orders each, 7 came back. |
 | Rs 18,160 typical | Count orders above the mean: 1 of 30. | The median, Rs 2,205. |
 | 20 percent growth | Recompute through the tree: 1.10 x 1.10. | 21 percent, Rs 6,59,220. |
@@ -509,8 +513,8 @@ Transition: a 10-minute break, then the second case.
 The delivered view adds a leak to the note: customers come back, and their second orders are the ones cancelled or returned.
 
 ```notes
-SELF-STUDY, 4 minutes live if the debrief has time. The key is cbdcaabbc, in the solution
-notebook, released at the close.
+SELF-STUDY, 4 minutes live if the debrief has time. The keys are in the day sheet and the
+solutions, released at the close.
 ```
 
 ---
@@ -621,7 +625,7 @@ flowchart LR
     class W,S bad
 ```
 
-**Kavya's review.** "A share is only as strong as the orders behind it. Count them and split them by status, and a 91.6 percent headline turns into two leaks and a branch that stayed where it was."
+**Kavya's review.** "Count the orders behind a share before you show it. Count them and split them by status, and a 91.6 percent headline turns into two leaks and a branch that stayed where it was."
 
 ```notes
 LIVE, 2 minutes. The leaks sit between booked and delivered on every branch; Tuesday tests
@@ -677,8 +681,8 @@ by a key; records are a list of dictionaries.
 LIVE, 7 minutes. One breath each.
 Mean or median: the median for a typical order, because one large order drags the mean; the mean
 where a total must multiply back.
-Payback: the median of new customers' first orders; a mean per customer type if the plan targets
-types separately.
+Payback: a mean, because a payback is a total, taken from the segment the spend targets with bulk
+orders set aside; the median sits beside it as the typical order.
 Grow 15 percent: which revenue and window, then what 15 percent asks of each branch alone.
 Two lifts: 1.10 x 1.10 = 1.21, so 21 percent; the gap grows with the lifts.
 ```
@@ -701,7 +705,7 @@ Increase sales: draw the tree, measure each branch, open the one with room to mo
 cheapest bill.
 Acquisition budget: repeat buyers and the median first order; frequency first, budget waits for
 two quarters.
-Seventy percent: bought once in this window is a fact and not churn; 9 of 16 bought inside the
+Seventy percent: bought once in this window is a fact about the window, and churn is a claim about the future; 9 of 16 bought inside the
 45-day gap.
 Nine rupees in ten: count the orders behind the share; one order carries it.
 ```
@@ -718,7 +722,7 @@ LIVE, 15 minutes: the Kahoot 9, the six lines 3, Tuesday's question 3.
 ---
 
 ## S31. Kahoot: today's traps, played for speed
-*Ungraded: it shows what the day left in the room.*
+*The Kahoot is ungraded, and it shows which traps the room still falls for.*
 
 ```stats
 value: 8 | label: items | note: one per chapter trap, and two more
@@ -738,7 +742,7 @@ Transition: six lines to keep.
 *Each line is a chapter's trap turned into a habit.*
 
 ```cards
-num: 1 | eyebrow: Chapter 1 | title: Definition | body: Name the definition before the number: booked, not cancelled, or delivered.
+num: 1 | eyebrow: Chapter 1 | title: Definition | body: Name the definition before the number: booked, "not cancelled", or delivered.
 num: 2 | eyebrow: Chapter 2 | title: One fraction | body: Build every fraction on one definition, and check that it multiplies back.
 num: 3 | eyebrow: Chapter 3 | title: Customers | body: Count customers by their id, never by the rows.
 num: 4 | eyebrow: Chapter 4 | title: Typical order | body: Report the median when one order can move the mean, and say why.

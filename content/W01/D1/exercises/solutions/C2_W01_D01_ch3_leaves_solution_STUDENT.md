@@ -14,7 +14,7 @@ scale.
 
 | Item | Key | Why it holds | Why the others fail |
 |---|---|---|---|
-| 1 | c | Orders over distinct customers: 30 / 23 = 1.30. | a divides by rows, the chapter's trap. b is the rate upside down. d is a difference, not a rate. |
+| 1 | c | A set counts distinct ids, a dictionary keeps a count per id, the `&` of two sets keeps the ids both hold, and the row count is the order count. | a uses the row count for customers, the chapter's trap. b and d swap the set and the dictionary, which answer different questions. |
 | 2 | d | "Nobody comes back" says frequency is dead, so buying customers looks like the only way to grow, which is marketing's Rs 12 crore. | a is chapter 1's cancellations. b is chapter 4's question. c has nothing to do with the count. |
 | 3 | b | At 4 crore rows the data stays where it lives and the database counts it; Week 2 teaches it. | a works and is the wrong tool at that size. c is the trap at any size. d is impossible by hand. |
 | 4 | b | With nobody keeping three orders, 21 orders less 19 customers is 2 customers with two orders. | a and d are the booked and not-cancelled answers. c counts every customer. |

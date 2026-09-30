@@ -30,12 +30,12 @@ b) It counts the 4 cancelled orders, demand that never became a sale
 c) It leaves out the 5 returned orders, which belong in any figure called sales
 d) It should cover a full year, since one quarter is too short a window to report on
 
-### Q2. The 4 cancelled orders total Rs 9,050 and the 5 returned orders total Rs 14,970. What is revenue on the not-cancelled definition?
+### Q2. Before a sales figure leaves the team, four steps run: p) write the definition beside the total, q) count the orders by status, r) sum each reading, s) reconcile to Finance's figure for the board. In which order do they run?
 
-a) Rs 5,29,840, booked less the returned orders
-b) Rs 5,20,790, booked less the cancelled and the returned orders
-c) Rs 5,53,860, booked with the cancelled orders added back in
-d) Rs 5,35,760, booked less the cancelled orders
+a) r, q, p, s
+b) q, r, s, p
+c) r, p, q, s
+d) q, r, p, s
 
 ### Q3. Design. Meera wants a first look this afternoon, and Anand will take a figure to the board next month. Which pairing of approaches fits the two asks?
 
@@ -73,7 +73,7 @@ d) Finance's figure alone, since the books will already treat part-refunds in th
 ## Hands-on
 
 Open `notebooks/C2_W01_D01_01_four_readings_of_sales_STUDENT.ipynb` and run it to the second route.
-Check Q2 against the numbers it prints, and change a letter only if your reasoning changes with it.
+Check Q1 against the numbers it prints, and change a letter only if your reasoning changes with it.
 
 **In the interview.** [F] What counts as "sales": booked, net of cancellations, or delivered, and
 which do you give a CEO?

@@ -69,7 +69,7 @@ flowchart LR
 
 | Part | Slides | Beside it | What must land | If short of time |
 |---|---|---|---|---|
-| Chapter 5: which branch first, 30 | Afternoon deck, section 05, S1 to S8 | Notebook 05; `unguided/C2_W01_D01_ch5_branch_STUDENT.md` | Flipkart Black and Prime buying frequency; the plan needs 3.45 customers or 4.5 orders; frequency first and what would switch it; 20 percent against 21 | The second route |
+| Chapter 5: which branch first, 30 | Afternoon deck, section 05, S1 to S8 | Notebook 05; `unguided/C2_W01_D01_ch5_branch_STUDENT.md` | Flipkart Black and Prime buying frequency; the plan on the 29 everyday orders needs 3.3 customers or 4.35 orders; frequency first and what would switch it; 20 percent against 21 | The second route |
 | Chapter 6: the sentence, 30 | Section 06, S9 to S17 | Notebook 06; `unguided/C2_W01_D01_ch6_sentence_STUDENT.md` | Klarna's first month; four answer formats sized; "70 percent lost" caught by the 45-day gap; the four-part sentence | Never cut the caveat |
 | The escalated case, 35 | Section A, S18 and S19 | `unguided/C2_W01_D01_escalated_case_STUDENT.md`; notebook ex1 | The whole answer on delivered orders, alone; the support TA answers environment problems only | Nothing; start on time |
 | The debrief, 15 | Section B, S20 and S21, D22 | The room's own wrong numbers, collected while circulating | Six wrong numbers, each with its check; what moved and what held on delivered | D22 |
@@ -78,7 +78,9 @@ flowchart LR
 | The interview drill, 20 | Section D, S28 to S30 | The twelve questions below | Each learner answers aloud in under a minute; a partner scores it against the one-breath answer | Eight questions |
 | Kahoot and Tuesday's ask, 15 | Section E, S31 to S33 | `kahoot/C2_W01_D01_quiz_STUDENT.md` | The six lines; Tuesday's question left open | The Kahoot to five items |
 
-Release the chapter solutions and both case solutions at the close, never before.
+Release the chapter solutions and both case solutions at the close, never before. The escalated
+case's keys: the brief's letters `cbadba` for items 3, 4, 5, 7, 8 and 9, its numbers 19, 1.11 and 7,
+and the notebook's nine picks `cbdcaabbc`. The second case's letters are in its solution file.
 
 **Checkpoints.** After chapter 5: what would move the first branch to acquisition? After chapter 6:
 why is 70 percent not a churn rate? After the escalated case: what moved and what held on delivered
@@ -91,7 +93,7 @@ orders? After the second case: does one channel change the recommendation?
 | Chapter | The wrong number | The decision it would mislead | The check that catches it | The fix |
 |---|---|---|---|---|
 | 1 | Sales of Rs 5,44,810 on 30 orders, cancelled orders included | The growth baseline counts demand that never became a sale, and store's orders are overstated by 4 in 10 | Count orders by channel and status before summing: 21 delivered, 5 returned, 4 cancelled, all 4 in store | Not cancelled, Rs 5,35,760 on 26; delivered, Rs 5,20,790 on 21; the definition written beside the number |
-| 2 | An AOV of Rs 25,943, booked rupees over delivered orders | The payback values each new order at a figure no definition supports; multiplied back over the 30 orders it claims Rs 7,78,300 | Orders x AOV must land on that definition's revenue | One definition per fraction: Rs 18,160 booked, Rs 24,800 delivered |
+| 2 | An AOV of Rs 25,943, booked rupees over delivered orders | The payback values each new order at a figure no definition supports; multiplied back over the 30 orders it claims Rs 7,78,300 | AOV times the orders the revenue was summed over must give it back: 30 x Rs 25,943 = Rs 7,78,300 | One definition per fraction: Rs 18,160 booked, Rs 24,800 delivered |
 | 3 | 30 customers, so orders per customer reads 1.00 and "nobody comes back" | Frequency looks dead and the Rs 12 crore looks like the only way to grow | `len(ORDERS)` against `len(set(ids))`: 30 against 23 | 23 customers, 1.30 orders each, 7 came back |
 | 4 | A typical order of Rs 18,160, the mean | Marketing values a first order at Rs 18,160 and sizes the payback on it | Count orders above the mean: 1 of 30; sort and read the top | Median Rs 2,205, about one eighth, so the payback needs about eight times as many orders |
 | 5 | Two 10 percent lifts called 20 percent, Rs 6,53,772 | The plan looks met with room to spare by adding lifts that multiply | Recompute through the tree: 1.10 x 1.10 = 1.21 | 21 percent, Rs 6,59,220; the same rule makes 15 percent off with 10 percent more orders a 6.5 percent fall |
@@ -138,14 +140,15 @@ If a learner asks whether the data is rigged, answer with the question back: "Wh
 
 | Chapter 5 and 6 sizing | Value |
 |---|---|
-| The 15 percent plan on booked | Rs 6,26,532, Rs 81,722 more |
-| Customers alone | 26.45, 3.45 more |
-| Orders alone | 34.5 from the same 23, 4.5 more |
-| AOV alone | Rs 20,884, Rs 2,724 more |
+| The 15 percent plan, on the 29 everyday orders | Rs 64,810 to Rs 74,532, Rs 9,722 more; 22 customers, 1.32 each, AOV Rs 2,235 |
+| Customers alone | 25.3, 3.3 more |
+| Orders alone | 33.35 from the same 22, 4.35 more; 15 of them bought once |
+| AOV alone | Rs 2,570, Rs 335 more |
+| The same plan on booked, for the debrief | 4.5 more orders, but each would have to be worth the booked mean of Rs 18,160 |
 | Two 10 percent lifts | Rs 6,59,220 against the added Rs 6,53,772; parts Rs 54,481, Rs 54,481 and Rs 5,448 |
 | 15 percent off with 10 percent more orders | Rs 5,09,397 booked, a 6.5 percent fall; break-even lift 17.6 percent |
 | Repeat gaps, days | 11, 35, 43, 45, 46, 63, 65; median 45; the window is 88 days |
-| Delivered plan | Rs 5,98,909; 24.15 orders, 3.15 more; discount Rs 4,86,939 |
+| Delivered plan | On the 20 everyday delivered orders, Rs 40,790 to Rs 46,908: 23 orders, 3 more; the discount takes all delivered revenue to Rs 4,86,939 |
 
 | Channel | Orders | Booked | Delivered | Returned | Cancelled |
 |---|---|---|---|---|---|
@@ -198,13 +201,13 @@ The first five are the row's anchors; the rest are this pack's case-style and de
 |---|---|---|
 | [S] | How would you increase sales for an online retailer? | Draw the tree, measure each branch on one definition and window, find the short one, then pick the cheapest lever on it and say how you would measure it. |
 | [S] | Mean or median for order value, and why? | The median for the typical order, because one large order drags the mean; the mean where totals must reconcile; report both on a first look. |
-| [F] | A business says "grow revenue 15 percent"; how do you turn that into questions data can answer? | Fix the base and window, draw the tree, and size what 15 percent asks of each branch alone: here 3.45 customers or 4.5 orders. |
+| [F] | A business says "grow revenue 15 percent"; how do you turn that into questions data can answer? | Fix the base and window, draw the tree, and size what 15 percent asks of each branch alone: here, on the everyday orders, 3.3 customers or 4.35 orders. |
 | [SV] | A list against a dictionary: when do you reach for each? | A list to keep order and walk every record, a dictionary to count or look up by a key, and a list of dictionaries for records. |
 | [D] | Marketing wants budget for acquisition; what would you check before agreeing it is the right branch, and how would you say no? | Repeat buyers and the median first order on the same window, then the prior quarter; say no for now with a date and offer the cheaper frequency test. |
 | [F] | What counts as "sales": booked, net of cancellations, or delivered, and which do you give a CEO? | Each answers a different question; give the one her plan was set on, with its definition and the bridge to the others. |
 | [D] | How would you decide between summing the file yourself and asking Finance for the number? | Sum by status for a first look in a second; reconcile to Finance for anything the board sees. |
 | [F] | Your extract shows 30 orders and 30 customers; what do you check before saying nobody comes back? | Whether 30 is rows or distinct ids: here 23 customers, 1.30 orders each, and 7 came back. |
-| [D] | Which middle would you put in a payback model, and what would make you change it? | The median of first orders; a mean per customer type once types get separate plans. |
+| [D] | Which middle would you put in a payback model, and what would make you change it? | A mean, since a payback is a total, from the segment the spend targets with bulk orders set aside; the median beside it as the typical order; a new target means a new segment and a new mean. |
 | [F] | A 10 percent lift in customers and a 10 percent lift in frequency make 20 percent growth; what is the right number, and when does it matter? | 21 percent, because branches multiply; it matters when lifts are large or many. |
 | [D] | You have one quarter of orders and 70 percent of customers bought once; what do you tell the CEO? | That it is a fact about the window and not a churn rate: with a 45-day repeat gap, 9 of the 16 are too recent to judge. |
 | [D] | One channel carries nine rupees in ten of revenue; does that change where the growth plan invests? | Only after counting the orders behind the share; here one order carries it, and the consumer channels add two leaks without moving the branch. |

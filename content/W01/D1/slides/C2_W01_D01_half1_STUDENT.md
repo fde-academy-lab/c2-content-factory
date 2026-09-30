@@ -22,7 +22,7 @@ Transition: one Saturday at Kalpa Retail.
 LIVE, 45 minutes in six parts, then 5 minutes for Meera's ask. The talk track is
 trainer/C2_W01_D01_domain_story_TRAINER.md, and it holds what to say, the question per part and
 the facts you may quote with their sources. Six drawings go on the board, one per part, and stay
-up all day. The domain card goes out at the end of the day, after the room has met the traps.
+up all day. The domain card goes out at the close of the afternoon, after the room has met the traps.
 ```
 
 ---
@@ -47,8 +47,6 @@ flowchart LR
     class RD bad
     class SH1,SH2 bet
 ```
-
-The store sees 1,200 people and 480 bills of Rs 1,250; the app sees 50,000 people, 8,000 carts and 2,000 orders of Rs 1,600. Every number here is illustrative.
 
 ```notes
 LIVE, 8 minutes. Part 1 of the talk track. Tell the Saturday from the shelf check to the Monday
@@ -136,18 +134,16 @@ Transition: who asks the data team for what.
 ```mermaid
 flowchart LR
     CEO["<b>CEO</b><br/>Meera Raghavan"] --> FIN["<b>Finance</b><br/>Anand Iyer"]
-    CEO --> MKT["<b>Marketing</b><br/>its lead"]
-    CEO --> RP["<b>Retail-Plus</b><br/>its head"]
+    CEO --> MKT["<b>Marketing</b>"]
+    CEO --> RP["<b>Retail-Plus</b>"]
     CEO --> CS["<b>Support</b><br/>Farhan Sheikh"]
     CEO -.->|asks| GCC["<b>the GCC</b><br/>Kavya Nair and you"]
-    GCC -.- DP["<b>data platform</b><br/>its lead"]
+    GCC -.- DP["<b>data platform</b>"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class FIN,MKT,RP,CS known
     class CEO,GCC,DP bet
 ```
-
-Each asks for a different number, and each loses something different when it is wrong: Anand a restated figure, marketing a wasted budget.
 
 ```notes
 LIVE, 6 minutes. Part 4 of the talk track. Name the six: Meera, Anand, the marketing lead, the head
@@ -167,13 +163,13 @@ Transition: the tree every retail number hangs off.
 ```mermaid
 flowchart TB
     R["<b>revenue</b>"] --> C["<b>customers</b><br/>new, returning"]
-    R --> F["<b>orders per customer</b><br/>frequency"]
-    R --> A["<b>average order value</b>"]
-    R -.-> L["<b>leaks</b><br/>cancellations, returns"]
+    R --> F["<b>orders per customer</b>"]
+    R --> A["<b>order value</b>"]
+    R -.-> L["<b>leaks</b><br/>returns"]
     A --> I["<b>items per order</b>"]
     A --> P["<b>price per item</b>"]
     A --> D["<b>less discounts</b>"]
-    S["<b>on the shelf</b><br/>stock-outs"] -.-> R
+    S["<b>on the shelf</b>"] -.-> R
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -275,7 +271,7 @@ flowchart LR
 
 ```notes
 LIVE, 3 minutes. Point at each chapter once. Each ends on a number written onto the board tree,
-and each has a wrong number that looks right; an analyst is paid to catch those before a CEO acts.
+and each has a wrong number that looks right; an analyst's job is to catch those before a CEO acts on one.
 Chapters 1 to 4 run this morning, with the break before chapter 4; 5 and 6 open the afternoon.
 Transition: chapter 1, which total is sales.
 ```
@@ -286,8 +282,8 @@ Transition: chapter 1, which total is sales.
 *Thirty orders add up to more than one honest total, and a number without its definition misleads.*
 
 ```notes
-LIVE, 30 minutes: the need (3), the options (5), the build with the TypeError (8), the trap (7),
-the second route (4), Kavya's review (3). Notebook 01 is the demonstration.
+LIVE, 30 minutes: the need (3), the options (5), the build (8, with 2 for the TypeError if it
+happens), the trap (7), the second route (4), Kavya's review (3). Notebook 01 is the demonstration.
 ```
 
 ---
@@ -323,7 +319,7 @@ value: GST | label: the step between | note: collected for the state
 Source: Reliance Industries media release, 17 July 2026. Two correct numbers for one quarter is normal in retail, which is why every number carries its definition.
 
 ```notes
-LIVE, 1 minute. The company is real and the numbers are its own. The point is not Reliance; it is
+LIVE, 1 minute. The company is real and the numbers are its own. The point to make is
 that the largest retailer in India states which revenue it means.
 Transition: four ways the team could answer Meera.
 ```
@@ -369,7 +365,7 @@ The dashed box is an answer too: the file cannot say what sales were after disco
 
 ```notes
 LIVE, 1 minute. Draw this chain under the board tree. An engineer who can say what the data
-cannot answer is worth more than one who guesses.
+cannot answer saves the CEO from a guess.
 Transition: open notebook 01.
 ```
 
@@ -475,7 +471,7 @@ Transition: the check that catches it.
 **The rule.** Count the statuses before adding the amounts, and write the definition beside every total.
 
 ```notes
-LIVE, 2 minutes. The check is a count, not a sum. Store's 10 orders overstate its kept orders
+LIVE, 2 minutes. The check counts orders before anything is summed. Store's 10 orders overstate its kept orders
 by 4 in 10. The five returns did become sales and came back, which is why they stay in "not
 cancelled" and leave "delivered".
 Transition: the fix, as a bridge.
@@ -555,8 +551,8 @@ Transition: chapter 2, the tree as metrics.
 *A branch helps Meera only when it is a fraction on one definition and one window.*
 
 ```notes
-LIVE, 30 minutes: the need (3), the options (5), the build (7), the trap (8), the second route
-(4), Kavya's review (3). Notebook 02 is the demonstration.
+LIVE, 30 minutes: the need (3), the options (6), the build (4), the trap (9), the second route
+(5), Kavya's review (3). Notebook 02 is the demonstration.
 ```
 
 ---
@@ -619,7 +615,7 @@ Transition: which tree this file can fill.
 **The rule.** B is the best fit: the deepest tree this file fills, with marketing's branch beside the two it competes with. Order lines with items and prices would move the call to C.
 
 ```notes
-LIVE, 5 minutes. The sizing here is in fields, not seconds: the file's seven fields fill A and B.
+LIVE, 6 minutes. The sizing here is in fields, not seconds: the file's seven fields fill A and B.
 Ask what data would let us draw C; the order-items table arrives later in the programme.
 Transition: build B's first branch.
 ```
@@ -635,7 +631,7 @@ value: Rs 5,44,810 | label: booked revenue | note: chapter 1
 value: Rs 18,160 | label: AOV | note: 5,44,810 over 30
 ```
 
-**The rule.** The product always lands on revenue, so a wrong leaf never shows in the total; it only shows in the split.
+**The rule.** The product always lands on revenue, so a wrong leaf never shows in the total and shows only in the split.
 
 ```notes
 LIVE, 4 minutes. Predict first: what does 30 times Rs 18,160 give? Exactly booked revenue. Write
@@ -682,17 +678,17 @@ value: Rs 24,800 | label: delivered AOV | note: delivered / delivered
 The numerator keeps the rupees of 9 cancelled and returned orders while the denominator has dropped those orders.
 
 ```notes
-LIVE, 3 minutes. The answer is c. What it would mislead: marketing's payback case values each new
+LIVE, 4 minutes. The answer is c. What it would mislead: marketing's payback case values each new
 customer's order at Rs 25,943. The error is invisible until something is multiplied back.
 Transition: the one-line check.
 ```
 
 ---
 
-## S27. The check: orders x AOV must land on its revenue
+## S27. Check: AOV x the orders summed gives revenue
 *On one definition the identity holds; on a mixed one it lands on nothing.*
 
-| Fraction | AOV | Orders x AOV | Lands on a real total? |
+| Fraction | AOV | x the orders the revenue covers | Gives that revenue back? |
 |---|---|---|---|
 | Booked / booked | Rs 18,160 | Rs 5,44,810 | Yes, booked revenue. |
 | Delivered / delivered | Rs 24,800 | Rs 5,20,790 | Yes, delivered revenue. |
@@ -720,7 +716,7 @@ statistics.fmean(amounts)                     # from the library
 **The rule.** Totals route when a report holds them; rows route when you hold the rows. Chapter 4 asks whether the mean is the right middle at all.
 
 ```notes
-LIVE, 4 minutes. The notebook asserts all three agree. The real switch is the one chapter 4
+LIVE, 5 minutes. The notebook asserts all three agree. The real switch is the one chapter 4
 makes: for "what does a typical order look like", the mean may be the wrong middle.
 Transition: Kavya's review.
 ```
@@ -732,14 +728,13 @@ Transition: Kavya's review.
 
 ```mermaid
 flowchart LR
-    R["<b>revenue</b><br/>Rs 5,44,810 booked"] --> C["<b>customers</b><br/>chapter 3"]
-    R --> F["<b>orders per customer</b><br/>chapter 3"]
+    R["<b>revenue</b>"] --> C["<b>customers</b><br/>chapter 3"]
     R --> A["<b>AOV</b><br/>Rs 18,160"]
     A --> I["<b>items, price,<br/>discounts</b><br/>not in file"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
     class R,A known
-    class C,F,I unknown
+    class C,I unknown
 ```
 
 **Kavya's review.** "A branch you cannot divide is a label. You gave me each branch as a fraction and told me which three this file cannot fill."
@@ -758,8 +753,8 @@ Transition: chapter 3, counting the customer branches.
 *Customers and how often they buy, counted from 30 rows, and the tree multiplied back.*
 
 ```notes
-LIVE, 30 minutes: the need (3), the options (4), the trap (7), the build (8), the delivered
-leaves (3), the second route (3), Kavya's review (2). Notebook 03 is the demonstration.
+LIVE, 30 minutes: the need (3), the options (5), the build (8), the trap (9), the second route
+(3), Kavya's review (2); the delivered leaves (D35) are self-study. Notebook 03 is the demonstration.
 ```
 
 ---
@@ -814,7 +809,7 @@ Transition: four ways to count customers.
 **The rule.** C is the best fit because one pass fills both customer branches and names the repeat buyers. At millions of rows it becomes one COUNT(DISTINCT) in the warehouse.
 
 ```notes
-LIVE, 4 minutes. B is right when only the count is needed. The switch to SQL is Week 2's.
+LIVE, 5 minutes. B is right when only the count is needed. The switch to SQL is Week 2's.
 Transition: the hurried count.
 ```
 
@@ -833,7 +828,7 @@ for order in ORDERS:
 **Question.** How many of the 23 bought more than once: a) none, b) 7, c) 16, or d) 23?
 
 ```notes
-LIVE, 2 minutes. Letters by hand. Some say 16, confusing one-time with repeat.
+LIVE, 3 minutes. Letters by hand. Some say 16, confusing one-time with repeat.
 Transition: the answer.
 ```
 
@@ -851,7 +846,7 @@ value: 7 | label: came back | note: 16 bought once
 **The rule.** 23 x 1.30 x Rs 18,160 = Rs 5,44,810. The answer is b; here orders less customers equals repeat buyers only because nobody bought three times.
 
 ```notes
-LIVE, 4 minutes. Write 23 and 1.30 on the board tree. Note one repeat customer carries two
+LIVE, 5 minutes. Write 23 and 1.30 on the board tree. Note one repeat customer carries two
 segments because the segment sits on each order.
 Transition: the leaves on delivered orders.
 ```
@@ -891,7 +886,8 @@ value: Rs 12 cr | label: what it justifies | note: acquisition as the only branc
 The division is correct and its denominator is wrong: a row is an order, and one customer can place several.
 
 ```notes
-LIVE, 3 minutes. Present it as the case for the budget, made by a counting slip. Ask what would
+LIVE, 4 minutes. Present it as the figure a colleague's first draft sent Meera before the room built the count;
+the room's job is to name the check that would have caught it. Present it as the case for the budget, made by a counting slip. Ask what would
 check it before the next slide.
 Transition: the check.
 ```
@@ -914,7 +910,7 @@ flowchart LR
 `len(ids)` is 30 and `len(set(ids))` is 23: seven orders came from people who had already bought.
 
 ```notes
-LIVE, 4 minutes. A set keeps each value once however often it is added. The fix: 30 / 23 = 1.30
+LIVE, 5 minutes. A set keeps each value once however often it is added. The fix: 30 / 23 = 1.30
 orders per customer, and frequency is a live branch.
 Transition: who came back.
 ```
@@ -968,8 +964,8 @@ Transition: a 10-minute break, then chapter 4.
 *Anand said no averages, and one order is about to show why.*
 
 ```notes
-LIVE, 30 minutes after the break: the need (3), the options (5), the trap (7), the build and the
-sort (8), the second route (4), Kavya's review (3). Notebook 04 is the demonstration.
+LIVE, 30 minutes after the break: the need (3), the options (5), the build (5), the trap with the
+sort and the fix (10), the second route (4), Kavya's review (3). Notebook 04 is the demonstration.
 ```
 
 ---
@@ -983,7 +979,7 @@ sort (8), the second route (4), Kavya's review (3). Notebook 04 is the demonstra
 
 | | |
 |---|---|
-| The metric at stake | The typical order, which the acquisition payback is priced on |
+| The metric at stake | The typical order, which marketing's payback credits to every new customer |
 | Who asks | Meera and the marketing lead; Anand, who warned against averages |
 | What a wrong number costs | A first order valued eight times too high, and a payback that looks short |
 
@@ -1044,7 +1040,7 @@ value: Rs 2,060 | label: delivered median | note: the median barely moves
 **The rule.** Two middles this far apart are a finding in themselves; the next slide is what happens when the wrong one is sent.
 
 ```notes
-LIVE, 4 minutes. Write Rs 2,205 on the board tree beside the pencilled Rs 18,160. The median runs
+LIVE, 5 minutes. Write Rs 2,205 on the board tree beside the pencilled Rs 18,160. The median runs
 Rs 2,205 booked, Rs 2,100 not cancelled, Rs 2,060 delivered; the mean runs Rs 18,160 to Rs 24,800.
 Transition: the median another way.
 ```
@@ -1064,7 +1060,8 @@ value: 1 of 30 | label: orders above it | note: 29 sit below
 Valued at Rs 18,160, a new customer looks about eight times more valuable than the orders Kalpa takes, and Rs 12 crore looks cheap.
 
 ```notes
-LIVE, 3 minutes. Ask first how many orders sit above the mean; most say about half. The check is
+LIVE, 4 minutes. Present it as marketing's slide, which reached Meera before the room built the median; the
+room's job is to name the check. Ask first how many orders sit above the mean; most say about half. The check is
 that count: one.
 Transition: see it.
 ```
@@ -1072,7 +1069,7 @@ Transition: see it.
 ---
 
 ## S45. The check: 29 of 30 orders sit below the mean
-*Every amount drawn as a dot, on a scale where each step is ten times the last.*
+*Notebook 04 draws every amount as a dot; here, where they sit against the mean.*
 
 ```mermaid
 flowchart LR
@@ -1100,13 +1097,14 @@ Transition: the middle one order cannot drag.
 
 ```stats
 value: Rs 2,205 | label: the typical order | note: the median, booked
-value: 8x | label: more orders | note: for the payback than the slide implied
+value: 8x | label: overstated | note: a typical order, credited at the mean
 ```
 
-**The rule.** Report the median for the typical order and the mean for the total, and say which order separates them. A payback priced on Rs 2,205 needs about eight times as many orders as one priced on the mean.
+**The rule.** Report the median for the typical order and the mean for the total, and say which order separates them. A payback needs a mean, from the segment the spend targets, with the bulk order set aside.
 
 ```notes
-LIVE, 2 minutes. What changed: the first order in the payback falls from Rs 18,160 to Rs 2,205.
+LIVE, 2 minutes. What changed: the typical order is Rs 2,205, and the slide's Rs 18,160 overstates it
+eightfold. The payback itself is rebuilt on the consumer segment's mean, which chapter 5 uses.
 Write Rs 2,205 on the board tree beside the pencilled Rs 18,160.
 Transition: the median another way.
 ```

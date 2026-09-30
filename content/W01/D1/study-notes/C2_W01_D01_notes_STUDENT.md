@@ -159,7 +159,7 @@ shows in the split.
 hurried analyst divides one by the other: Rs 5,44,810 / 21 = Rs 25,943. The numerator keeps the
 rupees of 9 cancelled and returned orders while the denominator has dropped those orders. Multiplied
 back over the 30 orders it claims Rs 7,78,300, 43 percent more than anyone booked. The check is the
-identity: on one definition, orders times AOV must land on that definition's revenue. The fix is Rs
+identity: AOV times the orders the revenue was summed over must give that revenue back, and 30 x Rs 25,943 does not. The fix is Rs
 18,160 booked or Rs 24,800 delivered, each named.
 
 **The second route.** Revenue over orders is the mean of the 30 amounts, so `sum(amounts) /
@@ -226,7 +226,8 @@ the payback per customer type, the mean per type answers better.
 **The build.** Sorted, the 15th and 16th amounts are Rs 2,110 and Rs 2,300, so the median is Rs
 2,205, about one eighth of the mean. It holds under every definition: Rs 2,100 not cancelled, Rs
 2,060 delivered. The mean swings from Rs 18,160 to Rs 24,800 over the same three definitions. A
-payback priced on Rs 2,205 needs about eight times as many orders as one priced on the mean.
+payback that credits each new customer with Rs 18,160 an order overstates a typical order about
+eightfold.
 
 **The trap.** "A typical Kalpa order is Rs 18,160." Only 1 of the 30 orders sits above it, and the
 other 29 sit below. That count is the check, and sorting the amounts and reading the top shows why.
@@ -243,8 +244,9 @@ order does it."
 ## Chapter 5: which branch first
 
 **The need.** Every branch is measured, and marketing has proposed moving one of them. The plan is
-15 percent on booked revenue, Rs 81,722 more on this extract, and Meera wants the branch to open
-first and why not the others. Flipkart launched Flipkart Black at Rs 1,499 a year in 2025, and
+15 percent, and Meera wants the branch to open first and why not the others. Chapter 4 found one
+order carrying most of the booked total, and no retention offer or campaign repeats it, so the
+plan is sized on the other 29, the everyday consumer orders: Rs 64,810, and Rs 9,722 more. Flipkart launched Flipkart Black at Rs 1,499 a year in 2025, and
 Amazon offers Prime in India from Rs 399 to Rs 1,499 a year. Both pay existing customers to come back
 more often, a bet on the frequency branch by companies that could have spent the money on
 acquisition.
@@ -253,9 +255,9 @@ acquisition.
 
 | Branch | The plan needs | Evidence in this file |
 |---|---|---|
-| Customers | 3.45 more who buy like today's | None; one window cannot show customers falling |
-| Frequency | 4.5 more orders from the same 23, about 5 of the 16 one-time buyers returning once | 7 of 23 already came back |
-| Order value | Rs 2,724 more on every order | Items and prices are not in the file |
+| Customers | 3.3 more who buy like today's | None; one window cannot show customers falling |
+| Frequency | 4.35 more orders from the same 22, 4 or 5 of the 15 one-time buyers returning once | 7 already came back |
+| Order value | Rs 335 more on every order | Items and prices are not in the file |
 | Price | Every price 15 percent higher with nobody leaving | None; nothing sells above MRP |
 
 The best fit is frequency: the customers exist, some return, and a reorder reminder to people
@@ -272,7 +274,7 @@ tree. The same rule prices a discount: 15 percent off with 10 percent more order
 
 **The second route.** The total after both lifts is four parts: the base, Rs 54,481 for customers,
 Rs 54,481 for frequency, and Rs 5,448 for the lift on the lift. The parts land on the multiplied
-total. The parts route wins the argument with the slide, because the lift on the lift has its own
+total. The parts route is the one to bring to marketing, because the lift on the lift has its own
 line.
 
 **Kavya's review.** "Pick the branch the evidence points at and the one that costs least to test,
@@ -328,8 +330,8 @@ today's state; a due date is the day a reminder would go out.
 
 Anand pushes back: booked includes cancelled and returned orders, so do it again on delivered. On 21
 delivered orders, 19 customers kept 1.11 orders each and only 2 kept two. The typical order is Rs
-2,060; since 21 is odd, that is the single middle value, the 11th. The plan needs 3.15 more delivered
-orders from frequency alone, 24.15 in all, and the discount still loses 6.5 percent. Of the 17
+2,060; since 21 is odd, that is the single middle value, the 11th. The plan, sized on the 20 everyday delivered
+orders, needs 3 more from frequency alone, and the discount still loses 6.5 percent. Of the 17
 one-time buyers, 7 bought inside the 45-day edge. Orders per customer fell, while the typical order,
 the window's edge and the branch held. The delivered view adds a leak to the note: customers come
 back, and their second orders are the ones cancelled or returned.
@@ -343,13 +345,13 @@ the 29 consumer orders, Rs 64,810 booked, web leads with Rs 27,290 but 5 of its 
 App kept all 10, Rs 18,600. Store holds Rs 18,920, and 4 of its 9 were cancelled. Frequency stays
 first, and the note to Meera gains two leaks: web returns and store cancellations.
 
-**Kavya's review.** "A share is only as strong as the orders behind it."
+**Kavya's review.** "Count the orders behind a share before you show it to Meera."
 
 ---
 
 ## The six lines to keep
 
-1. Name the definition before the number: booked, not cancelled, or delivered.
+1. Name the definition before the number: booked, "not cancelled", or delivered.
 2. Build every fraction on one definition, and check that it multiplies back.
 3. Count customers by their id, never by the rows.
 4. Report the median when one order can move the mean, and say why.
@@ -397,8 +399,8 @@ design.
 "I draw revenue first: customers, times orders per customer, times average order value, each on one
 definition and window. Then I size what the target asks of each branch alone and weigh the cost of
 moving it: acquisition costs marketing, frequency costs retention, price risks volume. On one
-quarter I worked, 16 of 23 customers bought once, and 15 percent needed 3.45 more customers or 4.5
-more orders from the customers already there. I opened frequency, with the cheapest test agreed
+quarter I worked, 16 of 23 customers bought once, and on the everyday orders 15 percent needed 3.3 more
+customers or 4.35 more orders from the customers already there. I opened frequency, with the cheapest test agreed
 first."
 
 **[S] Mean or median for order value, and why?**
@@ -444,9 +446,10 @@ back?**
 since a customer who buys every four months looks one-time in a quarter."
 
 **[D] Which middle would you put in a payback model, and what would make you change it?**
-"The median of new customers' first orders, since that is the order the spend buys. I would switch
-to a mean per customer type once the plan targets types separately, because within a type the large
-orders no longer mix with the small."
+"A payback adds up what a customer brings over time, so it needs a mean, and the mean has to come
+from the customers the spend targets: the consumer segment's mean contribution per customer over the
+repeat window, with bulk and business orders set aside. The median is what I quote beside it as the
+typical order. If the spend targeted business buyers, I would switch segment, and the mean with it."
 
 **[F] A 10 percent lift in customers and a 10 percent lift in frequency make 20 percent growth; what
 is the right number, and when does it matter?**
@@ -456,7 +459,7 @@ make 69 percent, and 15 percent off with 10 percent more orders is a 6.5 percent
 
 **[D] You have one quarter of orders and 70 percent of customers bought once; what do you tell the
 CEO?**
-"That 70 percent bought once in this window, which is a fact, and not a churn rate. I measure how
+"That 70 percent bought once in this window, which is a fact about the window; a churn rate is a claim about the future. I measure how
 long returning customers took, 45 days in the case I worked. Then I hold back everyone who bought
 inside that gap: 9 of the 16. So 7 came back, 7 had time and did not, 9 are too recent. I ask for the
 prior quarter before calling anyone lost."

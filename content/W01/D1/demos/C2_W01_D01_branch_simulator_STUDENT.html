@@ -337,7 +337,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
             <p><b>What happened.</b> <span id="expAWhat"></span></p>
             <p><b>Why it matters.</b> A cancelled order never became a sale. All four are store orders, so store's order
               count is overstated by 4 in 10, and the growth baseline includes demand that never arrived.</p>
-            <p class="rule">Name the definition before the number: booked, not cancelled, or delivered.</p>
+            <p class="rule">Name the definition before the number: booked, "not cancelled", or delivered.</p>
           </div>
           <p class="waiting" id="expAWait">What happened appears here after the run.</p>
         </article>
@@ -1081,7 +1081,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
       d: function () { return K.columns(["counted by rows", "counted by id"], [["customers", [30, 23]], ["came back", [0, 7]]], { title: "The same 30 orders, counted two ways" }); } },
     { t: "Chapter 4: which typical is honest?", r: 4, x: "The mean order is Rs 18,160 and the median Rs 2,205, and only 1 of the 30 orders sits above the mean. One order at the top of the sort drags the mean, and notebook 4's empty cell is where you find it.",
       d: function () { return K.columns(["booked", "delivered"], [["mean", [18160, Math.round(520790 / 21)]], ["median", [2205, 2060]]], { fmt: R, title: "Mean against median, per definition of sales" }); } },
-    { t: "Chapter 5: which branch first?", r: 5, x: "The 15 percent plan needs 3.45 more customers or 4.5 more orders from the 23 already on file, and 16 of them bought once, so frequency is the cheaper branch to open first. Two 10 percent lifts make 21 percent through the tree, Rs 6,59,220, where adding says Rs 6,53,772.",
+    { t: "Chapter 5: which branch first?", r: 5, x: "On the 29 everyday orders the 15 percent plan needs 3.3 more customers or 4.35 more orders from the 22 already on file, and 15 of them bought once, so frequency is the cheaper branch to open first. Two 10 percent lifts make 21 percent through the tree, Rs 6,59,220, where adding says Rs 6,53,772.",
       d: function () { return K.bridge(["today", 544810], [["customers +10%", 54481], ["frequency +10%", 54481], ["lift on the lift", 5448]], { lo: 500000, endLabel: "through the tree", title: "Two 10 percent lifts, multiplied" }); } },
     { t: "Chapter 6: the sentence Meera acts on", r: 6, x: "Sixteen of 23 bought once, and it is tempting to call 70 percent lost. Returning customers took a median of 45 days, and 9 of the 16 bought inside the last 45, so 7 came back, 7 had time and did not, and 9 are too recent to judge. Open frequency first, and hold the Rs 12 crore until Tuesday's two quarters.",
       d: function () { return K.columns(["came back", "once, had time", "once, too recent"], [["customers", [7, 7, 9]]], { lit: [2], title: "The 23 customers, with the window's edge" }); } },

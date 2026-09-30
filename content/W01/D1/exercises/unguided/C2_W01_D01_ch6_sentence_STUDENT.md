@@ -24,7 +24,7 @@ flowchart LR
 a) 70 percent of our customers are lost and will need to be won back
 b) Retention is 30 percent a quarter, so seven in ten customers leave us
 c) 16 of 23 bought once in this window, 9 of them too recently to judge
-d) Nobody comes back after one order, so acquisition is the only branch
+d) 16 of 23 bought once, so frequency is the weakest branch to fund
 
 ### Q2. Returning customers took a median of 45 days between orders. A one-time buyer ordered 6 days before the extract ends. How does the sentence treat them?
 

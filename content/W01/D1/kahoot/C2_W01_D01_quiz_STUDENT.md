@@ -4,17 +4,17 @@ Eight items, ungraded, scored on correctness and speed together. There is no ret
 because Monday is the first teaching day of the week and there is no earlier day to return to.
 
 Each item names what it tests, so an item dropped for time says what was lost. The items follow
-the day's chapters: Q1 and Q6 the tree, Q2 and Q7 chapter 3, Q3 chapter 2, Q4 chapter 4, Q5
-chapter 6 and Q8 chapter 5.
+the day's chapters: Q1 the tree, Q8 chapter 1, Q3 chapter 2, Q2 and Q7 chapter 3, Q4 chapter 4, Q6
+chapter 5 and Q5 chapter 6.
 
 ---
 
 ## Q1. Kalpa's revenue fell while its number of customers rose. Which branch do you open first?
 *Tests: the tree's multiplication, read backwards from a result.*
 
-- Customers, since that is the one branch that visibly moved this quarter
-- Revenue per customer, which must have fallen by more than customers rose  <- correct
-- Price per item alone, since price is always the first suspect
+- Customers, since that is the one branch that visibly moved this whole quarter
+- Orders per customer or order value, one of which fell enough to offset them  <- correct
+- Price per item alone, since price is always the first suspect in a fall
 - None yet, since revenue can fall for no clear reason in any given quarter
 
 ---
@@ -30,11 +30,11 @@ chapter 6 and Q8 chapter 5.
 ---
 
 ## Q3. Finance reports booked revenue and the dashboard counts delivered orders. What is booked revenue divided by delivered orders?
-*Tests: a fraction built on one definition, checked by multiplying back.*
+*Tests: reading a fraction whose top and bottom come from two reports.*
 
 - The delivered AOV, since the orders counted are the delivered ones
 - The booked AOV, since the revenue counted is the booked total
-- A number that matches no definition and multiplies back to nothing  <- correct
+- A number that matches no definition of the business at all  <- correct
 - A safer AOV than either, since it is the larger of the two numbers
 
 ---
@@ -50,7 +50,7 @@ chapter 6 and Q8 chapter 5.
 ---
 
 ## Q5. Customers who came back took a median of 45 days. A one-time buyer ordered 6 days before the extract ends. What are they?
-*Tests: the window's edge; a one-time buyer is not lost until they have had time to return.*
+*Tests: what the end of a data window does to a count of one-time buyers.*
 
 - Lost, since they have not placed a second order yet
 - Too recent to judge, with 6 of the usual 45 days  <- correct
@@ -62,15 +62,15 @@ chapter 6 and Q8 chapter 5.
 ## Q6. Fifteen percent off lifts quantity 10 percent. Did revenue rise or fall?
 *Tests: branches multiply, and a discount needs more volume than its cut.*
 
-- Rise, to 1.10 of today, since the quantity is up 10 percent
+- Rise, to 1.10 of today, since the quantity sold is up 10 percent
 - Rise, by 25 percent, since both changes help the shopper
-- Fall, to 0.935 of today, since 0.85 times 1.10 is 0.935  <- correct
-- Stay level, since the discount and the quantity cancel out
+- Fall, by about 6.5 percent of today's revenue  <- correct
+- Fall by 5 percent, since 10 less 15 is minus 5
 
 ---
 
 ## Q7. A loop counted 30 customers in a file of 30 orders. What is the likeliest mistake?
-*Tests: a row is an order, and a customer is counted by a distinct id.*
+*Tests: telling a count of rows from a count of people.*
 
 - It counted rows, so a customer with two orders counts twice  <- correct
 - None, since each order in a file comes from its own customer
@@ -79,10 +79,10 @@ chapter 6 and Q8 chapter 5.
 
 ---
 
-## Q8. Customers rise 10 percent and orders per customer rise 10 percent. What happens to revenue?
-*Tests: lifts multiply along the tree, so two 10 percent lifts make 21 percent.*
+## Q8. A file of 40 orders adds up to Rs 90,000, and 5 of the orders were cancelled. What goes in the note as sales?
+*Tests: which total earns the word sales, and what goes beside it.*
 
-- Up 20 percent, since the two lifts add together
-- Up 10 percent, since only one of the lifts counts
-- Up 11 percent, one lift and a tenth of the other
-- Up 21 percent, since 1.10 times 1.10 is 1.21  <- correct
+- Rs 90,000 as sales, since every order in the file was placed by a customer
+- The median order, since a total can be moved by one large order in the file
+- Nothing yet, since a total cannot be reported until the returns have come back
+- The total with its definition, cancelled orders taken out of "sales"  <- correct

@@ -56,4 +56,4 @@ checks all print PASS.
 
 For the debrief, both cases together:
 
-Answer key: 3b 4d 6a 7c 8b 9d 10a 11c 12a 13d 14b 15a 16b
+Answer key: 3c 4b 5a 7d 8b 9a 11c 12a 13d 14b 15a 16b; the numbers are item 1, 19 customers; item 2, 1.11 orders each; item 6, 7 customers.

@@ -55,12 +55,12 @@ d) sum(amounts) / 21, the total divided by the count
 
 ## Part 3. The plan and the discount, on delivered revenue
 
-### Q4. Design. The plan is 15 percent on delivered revenue of Rs 5,20,790. If frequency carries it alone, how many more delivered orders does it need from the same customers?
+### Q4. Design. Anand wants the 15 percent plan sized on what stayed delivered. Which base should the frequency sizing use, and what does it ask for?
 
-a) 2.85, which is the number of extra customers the plan would need
-b) 15, one order for every point of the plan
-c) 0.15 of one order, since the rate moves by 0.15
-d) 3.15, from 21 delivered orders to 24.15
+a) All 21 delivered orders, 3.15 more, since every delivered rupee counts toward Anand's plan
+b) The 20 everyday delivered orders, 3 more, since no offer moves the top order
+c) The 18 everyday delivered customers, 2.7 more people, since frequency is counted in people
+d) The 30 booked orders, 4.5 more, since the board set the plan on booked revenue last year
 
 ### Q5. Design. Marketing proposes 15 percent off everything, expected to lift delivered orders 10 percent. Where does delivered revenue land?
 

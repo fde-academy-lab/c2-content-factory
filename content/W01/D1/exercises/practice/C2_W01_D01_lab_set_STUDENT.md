@@ -40,9 +40,9 @@ d) Items per order, and it costs merchandising the shelf space it needs
 
 ### Q2. A new store in a city the app already serves: which branch, and what is the catch?
 
-a) Customers, with the catch that some app buyers simply move to the store
+a) Price per item, since store prices usually sit above the app's prices
 b) Orders per customer, since a store makes buying easier for existing buyers
-c) Price per item, since store prices usually sit above the app's prices
+c) Customers, with the catch that some app buyers simply move to the store
 d) Items per order, since shoppers in a store pick up more lines per visit
 
 ### Q3. A loyalty card with points on every order: which branch does it move, and what does it cost?
@@ -107,9 +107,9 @@ d) 2, the customers who came back
 
 ### Q9. What is orders per customer on the delivered definition?
 
-a) 1.50, the 6 delivered orders over their 4 customers
+a) 1.20, the 6 delivered orders over the 5 booked customers
 b) 1.60, the 8 booked orders over their 5 customers
-c) 1.20, the 6 delivered orders over the 5 booked customers
+c) 1.50, the 6 delivered orders over their 4 customers
 d) 1.00, the 6 delivered orders over the 6 delivered rows
 
 ### Q10. What is revenue on the not-cancelled definition?
@@ -142,10 +142,10 @@ d) Revenue in a week over the meals sold in that same week
 
 ### Q13. The kirana owner's "average bill" is the week's revenue over what?
 
-a) The number of bills rung up in the same week
+a) The number of items sold across the counter that week
 b) The number of days the shop was open that week
 c) The number of distinct customers the owner recognised
-d) The number of items sold across the counter that week
+d) The number of bills rung up in the same week
 
 ### Q14. An app's report says "orders per user: 0.4", computed as September's orders over all 50,000 registered users (invented numbers). What is wrong with it?
 
@@ -198,8 +198,8 @@ d) It uses the wrong window and counts only the delivered customers
 
 ### Q17. What is revenue on the not-cancelled definition, and on how many orders?
 
-a) Rs 79,050 on 10 orders
-b) Rs 77,450 on 9 orders
+a) Rs 77,450 on 9 orders
+b) Rs 79,050 on 10 orders
 c) Rs 84,350 on 12 orders
 d) Rs 82,750 on 11 orders
 

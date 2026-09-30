@@ -21,12 +21,12 @@ flowchart LR
 
 ---
 
-### Q1. Design. The 15 percent plan needs Rs 81,722 more on this extract. Holding the other branches, what does frequency alone need?
+### Q1. Design. Chapter 4 found one order at the top of the sort carrying most of booked revenue. Which base should the 15 percent frequency sizing use, and what does it ask for?
 
-a) 3.45 more customers who buy the way today's customers do
-b) Rs 2,724 more on every order the customers already place
-c) 15 more orders, one for each point of the plan
-d) 4.5 more orders from the same 23 customers
+a) All 30 booked orders, 4.5 more from the 23 customers, since the board set the plan on booked revenue
+b) The 29 everyday orders, about 4.35 more at a typical value, since no offer repeats the top order
+c) The 21 delivered orders, 3.15 more, since only what stayed delivered counts as real growth
+d) The top order alone, one more like it, since it carries most of the revenue already
 
 ### Q2. Marketing says a 10 percent lift in customers and a 10 percent lift in orders per customer make 20 percent growth. What do they make through the tree?
 
@@ -51,7 +51,7 @@ d) Web returns fell from 5 of 10 orders to 3 of 10 orders between quarters
 
 ### Q5. Design. Which is the cheapest first test of the frequency branch?
 
-a) A Rs 12 crore acquisition campaign launched across every city at once
+a) A survey asking the one-time buyers why they have not ordered again
 b) A 15 percent discount on every order for a whole month
 c) A reorder reminder to the one-time buyers, against a held-out group
 d) A five percent price rise on the top-selling products
