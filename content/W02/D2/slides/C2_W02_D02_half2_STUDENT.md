@@ -140,7 +140,7 @@ icon: copy-x | eyebrow: No payment counted twice | title: Retries removed by gra
 icon: list-checks | eyebrow: No order hidden | title: The gap has names | body: Booked less collected equals the unpaid list's total, order by order. | tone: dark
 ```
 
-**In the interview.** [D] Design the validation you run before a joined number reaches Finance, and say what you do when it fails at 5 pm on reporting day.
+**In the interview.** [D] Design the validation you run before a joined number reaches Finance, and say what you do when it fails at the end of reporting day.
 
 ```notes
 LIVE, 4 minutes. Two learners read their two sentences aloud and the room checks the four parts.
@@ -211,7 +211,7 @@ word.
 | [S] | Your join grew the row count; name the cause and the check. |
 | [F] | How do you find orders with no payment? |
 | [F] | Revenue doubled after a join and every row looks fine; where do you look? |
-| [D] | Design the validation you run before a joined number reaches Finance, and say what you do when it fails at 5 pm on reporting day. |
+| [D] | Design the validation you run before a joined number reaches Finance, and say what you do when it fails at the end of reporting day. |
 | [F] | A filter on the right-hand table of a LEFT JOIN: WHERE or ON, and what changes? |
 | [F] | HAVING COUNT(*) > 1 on payments by order: what does it find, and what does it wrongly include? |
 | [S] | When is an INNER join the honest choice? |

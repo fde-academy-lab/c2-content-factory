@@ -494,7 +494,7 @@ right side's is not. Then fix at the grain and show booked back at its source va
 rows one by one looking for a bad value.
 
 **[D] Design the validation you run before a joined number reaches Finance, and say what you do when
-it fails at 5 pm on reporting day.** Tested: owning a number under pressure. Strong: the checks are
+it fails at the end of reporting day.** Tested: owning a number under pressure. Strong: the checks are
 written above the query and run with it: rows out against rows in, the sum of the left table's amount
 after the join against its source, the gap against the list that explains it, the posted total
 against the feed, and every right-side row accounted for as matched or orphaned. When one fails late

@@ -40,12 +40,11 @@ Write one SQL file, `C2_W02_D02_takehome_<your name>.sql`, that holds, in this o
 4. **The checks**, each a query that returns true: rows out equals rows in; booked after the join
    equals booked from orders alone; the gap is fully explained by the orders you list as short of
    payment; and the feed's rows and rupees are all accounted for.
-5. **The classification you chose.** Books like this one can hold orders whose money arrived in
-   part. If you find one, decide whether it belongs on the unpaid list, on a list of its own, or
-   nowhere, and write three sentences defending the choice by what Anand would do with each list.
-   A classification without a reason counts as no classification.
-6. **The refunds.** Look at how the refunds table stores its amounts before you subtract anything,
-   and write one comment line on what you did about it.
+5. **The lists you hand Anand.** Anand will act on every order you put in front of him, so decide
+   which orders belong on the list his team chases and which do not, and write three sentences
+   defending each list by what Anand would do with it. A list without a reason counts as no list.
+6. **The refunds.** Anand reads "refunded" as money that went back to customers. Write one comment
+   line on how you made sure your refunded column and your net figure mean exactly that.
 7. **The decision sentence to Anand**: the collected net figure, how you know it is honest, and the
    one action you want from him, with the order ids it applies to.
 
@@ -86,7 +85,7 @@ At the top of your SQL file, write one comment line on when an INNER join is the
 ## What makes this hard to shortcut
 
 The book in Part 1 is new tonight, so no assistant has seen its numbers, and your report either
-matches the self-check or it does not. The classification in step 5 and the action in step 7 are
+matches the self-check or it does not. The lists in step 5 and the action in step 7 are
 choices with reasons, and a reason that could be written without running the queries reads that way
 at once. Part 2 is a question you chose, and tomorrow the room asks you why that join.
 
@@ -96,7 +95,7 @@ at once. Part 2 is a question you chose, and tomorrow the room asks you why that
 
 | Part | What to bring |
 |---|---|
-| 1 | The SQL file, run from a fresh connection, every check true, with your classification and your sentence to Anand |
+| 1 | The SQL file, run from a fresh connection, every check true, with your lists and your sentence to Anand |
 | 2 | Your question, its query and its reconciliation block |
 | 3 | The SQLBolt lessons finished |
 | 4 | Your one line |
