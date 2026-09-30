@@ -80,12 +80,12 @@ out from the tree? What did Meera ask before signing Rs 12 crore?
 
 ### Which real companies look like Kalpa?
 
-Kalpa Group is fictional. It runs five units from Singapore, and its data and AI team, the one you
-have joined, sits in its Global Capability Centre (GCC) in Bengaluru. Kalpa Retail sells consumer
-goods through an app, a website and stores in India and South-East Asia, to households and to
-businesses. Reliance is the nearest real group, with Jio's 533 million subscribers and Reliance Retail's 20,169 stores in
-the quarter to June 2026 (Reliance Industries media release, 17 July 2026). The dossier's section on
-which real company Kalpa is like names the others.
+Kalpa Group is fictional. It runs five units from Singapore, and its data and AI team, the one you have
+joined, sits in its Global Capability Centre (GCC) in Bengaluru. Kalpa Retail sells consumer goods
+through an app, a website and stores in India and South-East Asia, to households and to businesses.
+Reliance is the nearest real group, with Jio's 533 million subscribers and Reliance Retail's 20,169
+stores in the quarter to June 2026 (Reliance Industries media release, 17 July 2026). The dossier's
+section 2, on which real companies work the way Kalpa Retail does, names the others.
 
 ### How much of Rs 100 at the checkout does Kalpa keep?
 
@@ -103,16 +103,16 @@ Meera Raghavan, the CEO, asks where growth comes from, and Anand Iyer, the finan
 whether our numbers match his books. The marketing lead asks whether Kalpa needs more customers, the
 head of Retail-Plus, the paid membership tier, asks whether his tier is slipping, and Kavya Nair, the
 senior analyst, checks every number first. A wrong dashboard figure can be corrected before anyone
-acts on it, and a budget already spent cannot be taken back; the dossier's section on who decides
-what draws the whole chart.
+acts on it, and a budget already spent cannot be taken back; the dossier's section 4, on who
+decides what at Kalpa Retail, draws the whole chart.
 
 ### How is each retail number worked out from the tree?
 
 Revenue is a product, customers x orders per customer x average order value (AOV), and each branch,
 like most retail metrics, is a numerator over a denominator: AOV is revenue / orders and orders per
 customer is orders / customers. Payback, which marketing's Rs 12 crore will be judged on, is the cost
-of winning a customer over the contribution that customer brings each month. The dossier's section on
-the metrics as formulas gives the others.
+of winning a customer over the contribution that customer brings each month. The dossier's section 5,
+on which numbers run Kalpa Retail, gives the others.
 
 ### What did Meera ask before signing Rs 12 crore?
 
@@ -233,8 +233,8 @@ hand where the totals route suits a report.
 
 ### Which branches does the file still lack?
 
-Items per order, price per item and discounts are missing, so the tree stops at AOV and the answer
-says so.
+Items per order, price per item and discounts are not in this extract, so the tree stops at AOV and
+the answer says so.
 
 **Kavya's review.** "Write each branch as a numerator over a denominator. When two reports feed one
 fraction, ask each what it counts before you divide."
@@ -251,7 +251,8 @@ nobody returns, the Rs 12 crore looks like the only lever, so a wrong count fund
 
 **The questions on the way.** Who needs the customer count, and what rides on it? How do we count
 customers when a row is an order? How many came back? What goes wrong if every row is counted as a
-customer? Does the mean of the counts agree? What changes on delivered orders?
+customer? Does the mean of the counts agree? Which count goes on the tree's customer branch, and on which
+definition?
 
 ### Who needs the customer count, and what rides on it?
 
@@ -284,10 +285,11 @@ customers at 1.30 orders each.
 It does: (16 x 1 + 7 x 2) / 23 is the same 1.30, and the counts show the spread the ratio hides, 16
 customers at one order and 7 at two.
 
-### What changes on delivered orders?
+### Which count goes on the tree's customer branch, and on which definition?
 
-Orders per customer falls to 1.11, since 19 customers kept 21 delivered orders and only 2 kept two;
-4 of the 7 second orders were cancelled or returned, against 5 of the 23 first orders.
+The branch carries 23 customers at 1.30 orders each, written as booked orders from 1 July to 26
+September, because every leaf moves with the definition it was counted on. The escalated case
+recounts it on the orders that stayed delivered.
 
 **Kavya's review.** "Your first 30 was a count of rows, divided as if it were people. A count of
 people comes from their ids."
@@ -535,18 +537,20 @@ web returns and store cancellations.
 
 Pick a letter for each and note how sure you were before reading the key.
 
-1. A report says "sales Rs 5,44,810" and nothing else. What does Meera still need? a) the median;
-   b) the customer count; c) which orders it counts, and when; d) the channel split.
-2. Revenue from one report is divided by orders from another. What is the first check? a) round both;
-   b) average the two; c) keep the larger AOV; d) multiply back to a total.
+1. A report says "sales Rs 5,44,810" and nothing else. What does Meera still need? a) the median
+   beside it; b) a count of the customers; c) which orders, and when; d) the split by channel.
+2. Revenue from one report is divided by orders from another. What is the first check? a) round both
+   to thousands; b) average the two figures; c) keep the larger of the two; d) multiply back to a total.
 3. An extract has 40 rows and 40 distinct order ids. How many customers does it hold? a) unknown until
-   ids are counted; b) fewer than 40; c) exactly 40; d) more than 40.
+   ids are counted; b) fewer than 40, as ids repeat; c) exactly 40, one per order; d) more than 40, as
+   orders are shared.
 4. Eleven sorted amounts sit in a Python list. At which index is the median? a) 4; b) 5; c) 6;
    d) between 5 and 6.
 5. Orders per customer rise 10 percent and AOV falls 10 percent with customers steady. What happens
    to revenue? a) no change; b) up 1 percent; c) down 10 percent; d) down 1 percent.
 6. A customer bought once, three days before the extract ends, and repeat buyers usually take 45 days.
-   How do you count them? a) lost; b) too recent to judge; c) a repeat customer; d) left out.
+   How do you count them? a) lost to a rival; b) too recent to judge; c) a repeat customer; d) left out
+   of the counts.
 
 **The key, and what to re-read.** 1 c, since a total needs its reading and its window (chapter 1).
 2 d, since mixed definitions multiply back to nothing (chapter 2). 3 a, since order ids say nothing
@@ -641,7 +645,7 @@ cancellations, while the plan stayed on frequency."
 
 | Order | What | Time | Why this one |
 |---|---|---|---|
-| 1 | The domain dossier, `study-notes/C2_W01_D01_domain_retail_STUDENT.md`, its sections on how the business makes money and the metrics as formulas | 20 minutes | It walks the money and every metric's formula. |
+| 1 | The domain dossier, `study-notes/C2_W01_D01_domain_retail_STUDENT.md`, section 3, on how Kalpa Retail makes money, and section 5, on how each number is worked out | 20 minutes | It walks the money and every metric's formula. |
 | 2 | MConsultingPrep, the profitability framework, https://mconsultingprep.com/profitability-case-framework (verified 29 Sep 2026) | 20 minutes | It covers the revenue side of the case framework. |
 | 3 | Road to Offer, driver trees, https://www.roadtooffer.com/blog/driver-tree (verified 29 Sep 2026) | 20 minutes | It carries one branch's change through a tree. |
 | 4 | Hacking the Case Interview, the profitability case, https://www.hackingthecaseinterview.com/pages/profitability-case-interview (verified 29 Sep 2026) | 25 minutes | It shows the tree spoken aloud in an interview. |

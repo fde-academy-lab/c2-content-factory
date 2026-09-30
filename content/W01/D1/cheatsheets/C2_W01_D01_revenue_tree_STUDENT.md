@@ -79,6 +79,6 @@ flowchart LR
 
 ## Panel 8: What will Meera sign?
 
-"23 customers, 1.30 orders each, a typical order of Rs 2,205; 7 came back and 9 are too recent to judge, so open frequency first and hold the Rs 12 crore for Tuesday's two quarters."
+"On 30 booked orders, 23 customers placed 1.30 orders each at a typical Rs 2,205; 7 came back and 9 are too recent to judge, so open frequency first and hold the Rs 12 crore for Tuesday's two quarters."
 
 **Crux:** The sentence names its definition, its branch and its caveat, and waits for a second quarter before the budget.

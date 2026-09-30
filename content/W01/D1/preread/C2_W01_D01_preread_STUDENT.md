@@ -7,16 +7,16 @@
 > Meera Raghavan, CEO, Kalpa Retail, replying to Monday's sentence
 
 Week 1, read on Monday evening: about 15 minutes of reading and one check to run, so that Tuesday
-starts on this question instead of catching up to it.
+can start on this question from its first minute.
 
 ---
 
 ## What is Meera asking, and who else is waiting on the answer?
 
-On Monday the data team told Meera that on 30 booked orders, 23 customers placed 1.30 orders each at a
-typical order of Rs 2,205, that 7 came back and 9 bought too recently to judge, and that she should
-open frequency before acquisition and hold marketing's Rs 12 crore until two quarters can be compared.
-Her reply asks for exactly that comparison: revenue fell from Q1 to Q2, and she wants to know which
+On Monday the data team sent Meera one sentence: on 30 booked orders, 23 customers placed 1.30
+orders each at a typical order of Rs 2,205, 7 came back and 9 bought too recently to judge, so she
+should open frequency before acquisition and hold marketing's Rs 12 crore until two quarters can be
+compared. Her reply asks for exactly that comparison: revenue fell from Q1 to Q2, and she wants to know which
 branch of Monday's revenue tree moved. On the same thread the head of Retail-Plus, Kalpa's paid
 membership tier, forwards a member's complaint that the app's reorder feature has been broken for six
 weeks, and asks whether his tier is the one slipping.
@@ -32,8 +32,8 @@ flowchart LR
     class C,F unknown
 ```
 
-On Tuesday you present to both of them, name a cause as a hypothesis, and say what evidence would
-prove it, and marketing will push back on whatever you name.
+On Tuesday you present to both of them, name a cause as a hypothesis and say what evidence would
+prove it. Marketing will push back on whatever you name.
 
 ---
 

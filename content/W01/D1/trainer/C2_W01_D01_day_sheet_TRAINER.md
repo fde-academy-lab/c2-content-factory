@@ -24,7 +24,7 @@ sales that is short?
 
 ### 0. How does a retailer like Kalpa make money, who asks the data team for which number, and how is each number worked out?
 
-The story, 45 minutes, with no laptop open. Its opener reads *How does retail earn?*
+The story, 45 minutes, with no laptop open. Its opener prints *How does retail earn* and its promise asks the full question
 
 **Who needs the answer.** Every learner, because from chapter 1 on each chapter names the metric at
 stake, who asks for it and what a wrong number costs, and most of the room has never worked in a
@@ -39,12 +39,12 @@ about a business.
 | 2 | Which real companies is Kalpa like? | Reliance runs Jio and Reliance Retail in one group as Kalpa runs five units, Kalpa's stores work like DMart's, its app like JioMart's grocery business, and Retail-Plus is a paid tier of the kind Amazon Prime is. Kalpa itself is fictional. |
 | 3 | Where does Rs 100 at the checkout go? | On the story's illustrative numbers, Rs 100 of GMV becomes Rs 80 of net revenue, Rs 20 of gross margin, Rs 7.50 of contribution and Rs 2.50 of EBITDA. GMV and net revenue differ, and the Rs 20 between them is the question chapter 1 opens. |
 | 4 | Who at Kalpa asks the data team for which number? | Meera asks where growth comes from and where it leaks, Anand asks for numbers that match his books, the marketing lead asks whether Kalpa needs more customers, the Retail-Plus head asks whether the paid tier is slipping, and Kavya checks everything before it leaves the team. |
-| 5 | Which tree does every retail number hang off? | Revenue is customers times orders per customer times average order value, with the shelf above it and the leaks beside it, and every metric on it is a numerator over a denominator, stated with the question it answers and the person who asks it. |
+| 5 | Which tree does every retail number hang off? | Revenue is customers times orders per customer times average order value, with the shelf above it and the leaks beside it, and each number on it is worked out by its own formula, stated with the question it answers and the person who asks it. |
 | 6 | How far may a system act with no person checking? | Describing, predicting, recommending and acting sit on one ladder, and the further right a system sits, the more a wrong answer costs; Klarna's assistant took two-thirds of its chats in its first month, and its CEO later said quality had suffered. |
 
 ### 1. Which of the file's totals should Meera call sales, and what does each one count?
 
-Chapter 1, 30 minutes, with notebook 01. Its opener reads *Which total is sales?*
+Chapter 1, 30 minutes, with notebook 01. Its opener prints *Which total is sales* and its promise asks the full question
 
 **Who needs the answer.** Meera, who measures the 15 percent plan from this number, and Anand, whose
 books it must match. A wrong total sets the plan's base on demand that never became a sale.
@@ -62,7 +62,7 @@ books it must match. A wrong total sets the plan's base on demand that never bec
 
 ### 2. How does sales split into customers, orders per customer and order value, each a fraction on one definition?
 
-Chapter 2, 30 minutes, with notebook 02. Its opener reads *What is each branch?*
+Chapter 2, 30 minutes, with notebook 02. Its opener prints *What is each branch* and its promise asks the full question
 
 **Who needs the answer.** Meera and the marketing lead, who will price the plan branch by branch. A
 fraction built from two definitions values every order at a figure no definition supports.
@@ -80,7 +80,7 @@ fraction built from two definitions values every order at a figure no definition
 
 ### 3. How many customers does Kalpa have, and how many came back for a second order?
 
-Chapter 3, 30 minutes, with notebook 03. Its opener reads *Do customers come back?*
+Chapter 3, 30 minutes, with notebook 03. Its opener prints *Do customers come back* and its promise asks the full question
 
 **Who needs the answer.** The marketing lead and Meera. If nobody comes back, acquisition looks like
 the only branch left and the Rs 12 crore looks justified.
@@ -94,11 +94,11 @@ the only branch left and the Rs 12 crore looks justified.
 | 3 | How many customers came back? | 23 customers placed 1.30 orders each; 7 came back and 16 bought once. |
 | 4 | What goes wrong if every row is counted as a customer? | The count reads 30 customers at 1.00 order each, which says nobody comes back. |
 | 5 | Does the mean of the counts agree? | It does: the dictionary's 23 counts average 1.30. |
-| 6 | What changes on delivered orders? | On delivered orders 19 customers kept 1.11 orders each, and only 2 kept two. |
+| 6 | Which count goes on the tree's customer branch, and on which definition? | 23 customers at 1.30 orders each, written as booked orders from 1 July to 26 September; the delivered recount is the escalated case's first part, so no morning slide or notebook prints it. |
 
 ### 4. What does a typical Kalpa order look like, stated so that one large order cannot move it?
 
-Chapter 4, 30 minutes, with notebook 04. Its opener reads *What is a typical order?*
+Chapter 4, 30 minutes, with notebook 04. Its opener prints *What is a typical order* and its promise asks the full question
 
 **Who needs the answer.** The marketing lead, who values a new customer's first order in the
 payback case, and Anand, who warned that one business customer can move an average.
@@ -116,7 +116,7 @@ payback case, and Anand, who warned that one business customer can move an avera
 
 ### 5. Which branch should Meera open first to reach the 15 percent plan, and why not the others?
 
-Chapter 5, 30 minutes, the afternoon's first, with notebook 05. Its opener reads *Which branch first?*
+Chapter 5, 30 minutes, the afternoon's first, with notebook 05. Its opener prints *Which branch first* and its promise asks the full question
 
 **Who needs the answer.** Meera, who is about to sign Rs 12 crore for one branch, and the marketing
 lead, whose budget it is. The wrong branch spends the money where the business is not short.
@@ -134,7 +134,7 @@ lead, whose budget it is. The wrong branch spends the money where the business i
 
 ### 6. What one sentence can Meera sign, with its evidence, its branch, its caveat and its ask?
 
-Chapter 6, 30 minutes, with notebook 06. Its opener reads *What will Meera sign?*
+Chapter 6, 30 minutes, with notebook 06. Its opener prints *What will Meera sign* and its promise asks the full question
 
 **Who needs the answer.** Meera signs the sentence, Kavya reviews it first, and the marketing lead
 reads it looking for the weakest number. A sentence that says 70 percent of customers are lost either
@@ -227,13 +227,13 @@ second route (3 to 5), and Kavya's review with the interview question (2 to 3).
 | Part | Slides | Beside it | What must land | If short of time |
 |---|---|---|---|---|
 | The day's question, 1 | Morning deck, cover and S1 | The nine short questions on screen | Meera's question is read once and the nine short questions in order, and nothing is answered yet. | Cut nothing. |
-| The retail story, 45 | Section 00, S2 to S8 | `trainer/C2_W01_D01_domain_story_TRAINER.md`; board drawings 1 to 6; notebook 00 for self-study | Kalpa keeps a thin slice: Rs 100 of GMV is Rs 80 of net revenue and Rs 2.50 of EBITDA, and the Rs 20 between GMV and net revenue waits for chapter 1. Each learner can name who at Kalpa asks for which number and place a metric on the tree as a formula. | Shrink part 4 to its drawing, then part 6 to its question. |
-| Meera's ask, 4 | S9 and S10 | The metric tree, already on the board | Meera's one message holds four questions, and the room can say which chapter answers each. | Cut nothing. |
-| Chapter 1, Which total is sales? 30 | Section 01, S11 to S24 | Notebook 01; `unguided/C2_W01_D01_ch1_four_readings_STUDENT.md` | Reliance publishes two totals for one quarter, so every total carries its definition. Summing by status is the best fit on 30 rows, and the TypeError gets its two minutes from S16's notes if it happens. Booked Rs 5,44,810 carries the 4 cancelled store orders, not cancelled is Rs 5,35,760, delivered Rs 5,20,790, and the sums by status agree. | Cut the second route to its one assertion. |
-| Chapter 2, What is each branch? 30 | Section 02, S25 to S39 | Notebook 02; `unguided/C2_W01_D01_ch2_tree_metrics_STUDENT.md` | Jio reports revenue as a tree. The file fills three branches, and the AOV is Rs 18,160 booked. The mixed AOV of Rs 25,943 is caught by multiplying back, and items, price and discounts stay named as not in the file. | Cut the second route. |
-| Chapter 3, Do customers come back? 30 | Section 03, S40 to S54, with D53 for self-study | Notebook 03; `unguided/C2_W01_D01_ch3_leaves_STUDENT.md` | Reliance counts 396 million registered customers, a count of people. The 30 rows hold 23 customers at 1.30 orders each, 7 of whom came back, and rows counted as customers read 1.00 and "nobody comes back". | Cut D53, the delivered count, first. |
+| The retail story, 45 | Section 00, S2 to S10, with D8 and D9 for self-study | `trainer/C2_W01_D01_domain_story_TRAINER.md`; board drawings 1 to 6; notebook 00 for self-study | Kalpa keeps a thin slice: Rs 100 of GMV is Rs 80 of net revenue and Rs 2.50 of EBITDA, and the Rs 20 between GMV and net revenue waits for chapter 1. Each learner can name who at Kalpa asks for which number and place a metric on the tree as a formula. | Shrink part 4 to its drawing, then part 6 to its question. |
+| Meera's ask, 4 | S11 and S12 | The metric tree, already on the board | Meera's one message holds four questions, and the room can say which chapter answers each. | Cut nothing. |
+| Chapter 1, Which total is sales? 30 | Section 01, S13 to S26 | Notebook 01; `unguided/C2_W01_D01_ch1_four_readings_STUDENT.md` | Reliance publishes two totals for one quarter, so every total carries its definition. Summing by status is the best fit on 30 rows, and the TypeError gets its two minutes from S16's notes if it happens. Booked Rs 5,44,810 carries the 4 cancelled store orders, not cancelled is Rs 5,35,760, delivered Rs 5,20,790, and the sums by status agree. | Cut the second route to its one assertion. |
+| Chapter 2, What is each branch? 30 | Section 02, S27 to S41 | Notebook 02; `unguided/C2_W01_D01_ch2_tree_metrics_STUDENT.md` | Jio reports revenue as a tree. The file fills three branches, and the AOV is Rs 18,160 booked. The mixed AOV of Rs 25,943 is caught by multiplying back, and items, price and discounts stay named as not in the file. | Cut the second route. |
+| Chapter 3, Do customers come back? 30 | Section 03, S42 to S55 | Notebook 03; `unguided/C2_W01_D01_ch3_leaves_STUDENT.md` | Reliance counts 396 million registered customers, a count of people. The 30 rows hold 23 customers at 1.30 orders each, 7 of whom came back, and rows counted as customers read 1.00 and "nobody comes back". | Cut D53, the delivered count, first. |
 | Break, 10 | | | | |
-| Chapter 4, What is a typical order? 30 | Section 04, S55 to S70, with D64 and D65 for self-study | Notebook 04; `unguided/C2_W01_D01_ch4_typical_STUDENT.md`; the companion's experiment C | Blinkit reports its AOV as a mean because it adds up to totals. Four middles are sized on the invented six-order set, only 1 of the 30 orders sits above the mean of Rs 18,160, each learner sorts in the empty cell on S67 and reads what sits at the top without reading any record aloud, and the median is Rs 2,205. | Never cut the sort on S67. |
+| Chapter 4, What is a typical order? 30 | Section 04, S56 to S71, with D65 and D66 for self-study | Notebook 04; `unguided/C2_W01_D01_ch4_typical_STUDENT.md`; the companion's experiment C | Blinkit reports its AOV as a mean because it adds up to totals. Four middles are sized on the invented six-order set, only 1 of the 30 orders sits above the mean of Rs 18,160, each learner sorts in the empty cell on S67 and reads what sits at the top without reading any record aloud, and the median is Rs 2,205. | Never cut the sort on S67. |
 
 **What the story says, and what it never stages.** The story states each metric as a formula, with the
 question it answers and who asks it, and it teaches no trap under any numbers, Monday's included.

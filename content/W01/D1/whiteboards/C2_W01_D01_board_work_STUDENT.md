@@ -2,8 +2,8 @@
 
 Week 1, Monday, Kalpa Retail. Meera Raghavan, Kalpa Retail's CEO, asks whether acquisition is even
 the branch of sales that is short before she signs Rs 12 crore for new customers, and the room answers
-on 30 orders placed from 1 July to 26 September. The drawings below go up in the order they are drawn:
-six for the retail story, one or two for each of the six chapters, and one for the second case. The
+on 30 orders placed from 1 July to 26 September. The drawings below are listed in the order they go
+up: six for the retail story, one or two for each of the six chapters, and one for the second case. The
 metric tree from the story is the same tree the deck, the notebooks and the cheat sheet use, so the
 tree copied from this board is the one met everywhere else this week.
 
@@ -12,8 +12,8 @@ tree copied from this board is the one met everywhere else this week.
 ## What happens between a supplier and a customer on one Saturday at Kalpa Retail?
 
 Drawing 1 goes up in the story's first part. Each box is a place where the business measures
-something, and the domain dossier's section on a day in the life of a retailer
-(`study-notes/C2_W01_D01_domain_retail_STUDENT.md`) has the fuller drawing.
+something, and section 1 of the domain dossier, on what happens at Kalpa Retail in one working day
+(`study-notes/C2_W01_D01_domain_retail_STUDENT.md`), has the fuller drawing.
 
 ```mermaid
 flowchart LR
@@ -34,7 +34,8 @@ works where customers leave traces, and customers leave far more of them on the 
 ## Which real companies does Kalpa look like, and which of its units is the room's client today?
 
 Drawing 2 goes up in the story's second part. Kalpa Group is fictional; the real companies are
-likenesses, and the dossier's section on which real company Kalpa is like names them all.
+likenesses, and the dossier's section 2, on which real companies work the way Kalpa Retail does,
+names them all.
 
 ```mermaid
 flowchart TB
@@ -76,14 +77,15 @@ flowchart TB
 
 EBITDA is earnings before interest, tax, depreciation and amortisation, what is left after the goods,
 the costs every order brings and the fixed costs of stores, warehouses, technology and head office.
-Rs 2.50 of every Rs 100 is a thin slice, and real retailers keep one too.
+Rs 2.50 of every Rs 100 is a thin slice, and real retailers keep one too: DMart's profit after tax
+was 4.8 percent of its FY26 revenue (DMart results release, 2 May 2026).
 
 ---
 
 ## Who at Kalpa asks the data team for a number?
 
-Drawing 4 goes up in the story's fourth part. Solid lines report to the CEO, dotted arrows are asks
-that reach the data team, and the dashed box holds functions whose heads the story has not named.
+Drawing 4 goes up in the story's fourth part. Solid lines are reporting lines to the CEO, dotted
+arrows are asks that reach the data team, and the dashed box holds functions whose heads the story has not named.
 
 ```mermaid
 flowchart LR
@@ -110,7 +112,7 @@ corrected before anyone acts on it, and a budget already spent cannot.
 ## What is revenue made of, and what does each branch divide by?
 
 Drawing 5 goes up in the story's fifth part and stays up all day, since the day's case writes its
-numbers on it. The dossier's section on the metrics as formulas draws the full tree.
+numbers on it. The dossier's section 5, on which numbers run Kalpa Retail, draws the full tree.
 
 ```mermaid
 flowchart TB
@@ -132,8 +134,8 @@ marketing's Rs 12 crore is written against the customers branch, and each chapte
 
 ## How far should a system act before a person checks it?
 
-Drawing 6 goes up in the story's last part, and the dossier's section on where analytics, ML, NLP and
-agents earn their keep has the fuller ladder.
+Drawing 6 goes up in the story's last part, and the dossier's section 8, on where analytics, ML, NLP
+and agents pay for themselves, has the fuller ladder.
 
 ```mermaid
 flowchart LR
@@ -198,8 +200,8 @@ that revenue back, or the fraction mixes two reports.
 
 ## How many customers stand behind 30 rows?
 
-Drawing 9 goes up in chapter 3, when a colleague's 1.00 orders each is on the screen and the room is
-asked who those 30 rows are.
+Drawing 9 goes up in chapter 3, when a colleague's draft of 1.00 orders each is on the screen and the
+room is asked who those 30 rows are.
 
 ```mermaid
 flowchart LR
