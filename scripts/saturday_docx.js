@@ -28,10 +28,14 @@ const [specPath, paperOut, keyOut] = process.argv.slice(2);
 const spec = JSON.parse(fs.readFileSync(specPath, "utf8"));
 
 function run(text, opts) { return new TextRun(Object.assign({ text: String(text), size: BODY, color: INK }, opts || {})); }
+/* While an exhibit or a set's situation is being built, every paragraph in it carries keep-with-next,
+   so the card never ends a page with the question that reads it on the next one. */
+let KEEP = false;
 function para(children, opts) {
   if (typeof children === "string") children = [run(children)];
-  return new Paragraph(Object.assign({ children: children, spacing: { after: 80 } }, opts || {}));
+  return new Paragraph(Object.assign({ children: children, spacing: { after: 80 }, keepNext: KEEP }, opts || {}));
 }
+function kept(build) { KEEP = true; try { return build(); } finally { KEEP = false; } }
 function heading(text, size, before) {
   return new Paragraph({ spacing: { before: before === undefined ? 240 : before, after: 100 },
     children: [new TextRun({ text: text, font: "Georgia", size: size || 30, color: INK })] });
@@ -65,10 +69,10 @@ function card(children, opts) {
   return new Table({ width: { size: CONTENT, type: WidthType.DXA }, columnWidths: [CONTENT],
     rows: [new TableRow({ cantSplit: true, children: [cell(children, CONTENT, opts)] })] });
 }
-function gap(after) { return new Paragraph({ spacing: { after: after || 120 }, children: [] }); }
+function gap(after, keepNext) { return new Paragraph({ spacing: { after: after || 120 }, keepNext: !!keepNext, children: [] }); }
 function image(img) {
   const maxW = 610, scale = Math.min(1, maxW / img.w);
-  return new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 60, after: 60 }, children: [
+  return new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 60, after: 60 }, keepNext: KEEP, children: [
     new ImageRun({ type: "png", data: fs.readFileSync(img.path),
                    transformation: { width: Math.round(img.w * scale), height: Math.round(img.h * scale) } })] });
 }
@@ -113,7 +117,7 @@ function itemCard(item) {
 }
 /* A code exhibit prints in a monospace panel, one paragraph per line, so indentation survives. */
 function codePanel(lines) {
-  const inner = lines.map((l) => new Paragraph({ spacing: { after: 0 }, children: [
+  const inner = lines.map((l) => new Paragraph({ spacing: { after: 0 }, keepNext: KEEP, children: [
     new TextRun({ text: l.length ? l : " ", font: "Consolas", size: 18, color: INK })] }));
   return card(inner, { fill: "FFFFFF", border: LINE });
 }
@@ -192,8 +196,9 @@ function paperDoc(p) {
     kids.push(para([run(s.intro, { color: MUTED })], { spacing: { after: s.situation ? 100 : 160 } }));
     if (s.situation) kids.push(para(s.situation, { spacing: { after: 160 } }));
     s.blocks.forEach((b, i) => {
-      kids.push(b.kind === "set" ? setCard(b) : b.kind === "exhibit" ? exhibitCard(b) : itemCard(b));
-      if (i < s.blocks.length - 1) kids.push(gap(100));
+      const leads = b.kind === "set" || b.kind === "exhibit";
+      kids.push(b.kind === "set" ? kept(() => setCard(b)) : b.kind === "exhibit" ? kept(() => exhibitCard(b)) : itemCard(b));
+      if (i < s.blocks.length - 1) kids.push(gap(100, leads));
     });
   });
   if (p.stretch && p.stretch.length) {

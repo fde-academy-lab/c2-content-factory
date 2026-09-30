@@ -51,7 +51,9 @@ def _strip_fences(text):
     return "\n".join(out)
 
 
-STEM = re.compile(r"\?\s*$|^\s*(?:\*\*)?(?:Options|Which|Pick|Choose|Select)\b", re.I)
+# A stem asks: a question mark ending a sentence anywhere on the line (a stem often goes on,
+# "Which checks belong? Mark every correct option."), or a line that opens on the ask.
+STEM = re.compile(r"\?(?:\s|$)|^\s*(?:\*\*)?(?:Options|Which|Pick|Choose|Select)\b|\bMark every correct\b", re.I)
 
 
 def _clean(body):
