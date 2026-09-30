@@ -8,8 +8,9 @@ second time. Every number comes from Thursday's note and its sources:
 `content/W01/D4/trainer/C2_W01_D04_day_sheet_TRAINER.md` (the day's numbers and the traps) and, for
 the rows set aside, `content/W01/D3/trainer/C2_W01_D03_day_sheet_TRAINER.md`. The fair-test figures
 come from Thursday's orders file, `content/W01/D4/data/C2_W01_D04_orders_STUDENT.csv`, rerun with
-this morning's paired flips the way `notebooks/C2_W01_D05_03_debrief_segments_STUDENT.ipynb` runs
-them: 2,000 flips on `random.Random(7)`, and the exact share over every flip pattern.
+this morning's paired flips on the note's own measure, delivered revenue per member in rupees, the way
+the depth table of `notebooks/C2_W01_D05_03_debrief_segments_STUDENT.ipynb` counts revenue per
+member: 2,000 flips on `random.Random(7)`, and the exact share over every flip pattern.
 
 **Who needs the answer.** The trainer and the TAs, when a pair is stuck in round one and after
 Kavya's minute of review in round two: an answer read before the defender has tried teaches the room
@@ -32,10 +33,11 @@ flowchart LR
 |---|---|
 | Retail-Plus | 22 members; delivered revenue per member Rs 3,279 in Q1 and Rs 2,169 in Q2, a fall of Rs 1,110 each |
 | Retail-Plus, Thursday's test | The members' Q1 and Q2 totals pooled and dealt at random, falls only: 135 of 5,000 shuffles as large, 0.027 (0.050 both ways) |
-| Retail-Plus, this morning's fair test | Each member's own two quarters flipped at random and counted both ways, since the direction was chosen after looking: 103 of 2,000 flips, p = 0.052 (0.0515 to four places), and 0.0549 exact over all 2^22 flip patterns (0.0274 one way). 15 of the 22 members fell and 7 rose, a sign test of 0.134 both ways. The fall sits at the usual 0.05 bar, at the edge of chance |
+| Retail-Plus, this morning's fair test | Each member's own two quarters flipped at random, each world's change counted in rupees per member, both ways, since the direction was chosen after looking: 103 of 2,000 flips, p = 0.052 (0.0515 to four places), and 0.0549 exact over all 2^22 flip patterns (0.0274 one way). The delivered revenue of 15 of the 22 members fell and 7 rose, a sign test of 0.134 both ways. The fall sits at the usual 0.05 bar, at the edge of chance |
+| Retail-Plus, the same flips counted in percent | Counted by the percentage change of the tier's revenue, the way notebook 3's `paired_test` counts a basket or a segment's revenue, the same flips give 245 of 2,000, p = 0.12 (0.119 exact, 0.0274 one way), because a fall of 33.9 percent and a rise of 33.9 percent are different sizes in rupees. Either count leaves the fall above the 0.05 bar |
 | Retail-Plus in rupees | Rs 72,130 to Rs 47,710, a fall of Rs 24,420, which is 33.9 percent of the segment and 0.19 percent of Q2 delivered revenue |
 | Retail-Plus orders | 65 in Q2 for every 100 in Q1 |
-| Retail-Core, the wobble for comparison | 34 members, Rs 1,509 to Rs 1,399 per member, a gap of Rs 110; Thursday's test 1,724 of 5,000 shuffles as large, 0.345; each member's two quarters flipped and counted both ways, 1,433 of 2,000, p = 0.72 (0.718 exact) |
+| Retail-Core, the wobble for comparison | 34 members, Rs 1,509 to Rs 1,399 per member, a gap of Rs 110; Thursday's test 1,724 of 5,000 shuffles as large, 0.345; each member's two quarters flipped and counted both ways in rupees per member, 1,433 of 2,000, p = 0.72 (0.718 exact), and 0.73 counted in percent |
 | Student | 12 orders from 2 customers, 5 in Q1 and 7 in Q2; coin flips make a 40 percent rise in 0.397 of worlds on that count |
 | The monsoon sale | Blend Rs 3,395 exposed against Rs 3,200 unexposed, up 6.1 percent; inside Retail-Plus Rs 4,850 (30 exposed) against Rs 5,000 (40 unexposed), inside Retail-Core Rs 1,940 (30) against Rs 2,000 (60), both 3.0 percent less; 15 percent off needs 17.6 percent more volume to stand still |
 | The retention offer | A Rs 11,000 offer pays only above a 45 percent recovery, so it is tested on half the tier |
@@ -43,10 +45,17 @@ flowchart LR
 
 When a defender's note quotes Thursday's 0.027, say this before the push is answered: "That share
 dealt the members' Q1 and Q2 totals as strangers and counted falls only. This morning's rule flips
-each member's own two quarters and counts both ways, since you chose the direction after looking,
-and that gives 0.052: the fall sits at the edge of chance, it is still Rs 24,420 a quarter, and the
+each member's own two quarters and counts the change in rupees per member both ways, since you chose
+the direction after looking, and that gives 0.052: the fall sits at the edge of chance, it is still Rs 24,420 a quarter, and the
 action stays a test on half the tier." The defender rewrites the evidence line that way before
 Monday.
+
+A defender who brings 0.12 has run the fair flips on the percentage change of the tier's revenue,
+which is a fair route on a different measure. Ask which measure the note's test counted and accept
+either share with its measure named beside it; both say the fall is not shown below the usual 0.05
+bar. The answers below are written on the rupee count. For a defender on the percentage count, read
+245 of 2,000 and about 12 in 100 where they say 103 of 2,000 and about 5 in 100, 1,453 where they
+say Retail-Core's 1,433, and "inside what chance does" where they say "at the edge of chance".
 
 ## How is the sharpest push modelled before round one?
 

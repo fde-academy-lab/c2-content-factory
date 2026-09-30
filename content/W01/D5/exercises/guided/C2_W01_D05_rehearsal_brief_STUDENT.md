@@ -32,7 +32,10 @@ Thursday, are these.
 Before Monday, check the test in your note against the rule this morning's debrief drew. When the
 same members sit in both quarters, the fair test keeps each member's own two quarters together and
 flips them at random, and when you chose the direction of the change after looking at the data, the
-share is counted in both directions. If your note's test pooled the members' figures from the two
+share is counted in both directions. Count each flipped world by the measure your claim uses, so a
+claim about revenue per member in rupees counts each world's change in rupees per member, and name
+that measure beside the share: the same flips counted as a percentage change give a different share,
+because a fall and a rise of the same percentage are different sizes in rupees. If your note's test pooled the members' figures from the two
 quarters and dealt them as strangers, or counted one direction only, rerun it the fair way, then
 rewrite the evidence with the share it gives, and any claim, caveat or action that leaned on the old
 share.

@@ -169,9 +169,13 @@ looks real by luck, 0.185; the note's paired test exact over all 2^30 flips, 0.0
 Computed here from Thursday's orders file, `content/W01/D4/data/C2_W01_D04_orders_STUDENT.csv`, for
 the rehearsal key, with delivered orders per member as Thursday's note reads them: Retail-Plus's 22
 members, Rs 3,279 to Rs 2,169 each (Rs 72,130 to Rs 47,710), each member's two quarters flipped 2,000
-times on `random.Random(7)`, 103 as large either way, p = 0.0515; exact over all 2^22 flip patterns
+times on `random.Random(7)` and each world counted by its change in rupees per member, 103 as large
+either way, p = 0.0515; exact over all 2^22 flip patterns
 0.0549 both ways and 0.0274 one way; 15 fell and 7 rose, a sign test of 0.1338 both ways. Retail-Core's
-34 members, Rs 1,509 to Rs 1,399 each, 1,433 of 2,000, p = 0.7165, 0.7182 exact. Thursday's own test,
+34 members, Rs 1,509 to Rs 1,399 each, 1,433 of 2,000, p = 0.7165, 0.7182 exact. Counted by the percentage
+change of the tier's revenue, the way notebook 3's `paired_test` counts, the same flips give 245 of
+2,000 for Retail-Plus, p = 0.1225 (0.1191 exact, 0.0274 one way), and 1,453 for Retail-Core, p =
+0.7265 (0.7276 exact); the rehearsal key gives both and names the measure beside each. Thursday's own test,
 the members' Q1 and Q2 totals pooled and dealt 5,000 times, reproduces as 135 one way (0.027) and 252
 both ways (0.0504) for Retail-Plus and 1,724 one way (0.345) for Retail-Core.
 
