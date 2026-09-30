@@ -1,4 +1,4 @@
-# Kahoot, Week 2 Tuesday
+# Which of Tuesday's ideas held? Eight Kahoot questions
 
 Eight items, ungraded, scored on correctness and speed together. Item 7 reaches back to Monday, one
 level up: Monday separated WHERE from HAVING on one table, and today the same two clauses sit on
@@ -19,14 +19,14 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q2. 1,000 orders LEFT JOIN payments, where 50 orders have two payments and every other order has one. How many rows come back?
+## Q2. An invented shop: 800 orders LEFT JOIN payments, where 70 orders have two payment rows and every other order has one. How many rows come back?
 
 *Tests: a key that repeats on one side multiplies the other side's rows.*
 
-- 1,000, since a LEFT join keeps each order once
-- 2,000, since the two-payment orders double it all
-- 1,050, one extra row for each two-payment order  <- correct
-- 950, since the fifty repeated orders collapse
+- 800, since a LEFT join keeps each order once
+- 1,600, since the two-payment orders double it all
+- 870, one extra row for each two-payment order  <- correct
+- 730, since the seventy repeated orders collapse
 
 ---
 

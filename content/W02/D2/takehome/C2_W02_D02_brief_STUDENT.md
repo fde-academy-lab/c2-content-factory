@@ -1,11 +1,13 @@
-# Take-home: a second book, and the number Anand keeps
+# What did a second book collect net of refunds, by channel, and how do you prove it is not double-counted?
 
-Four parts, about two hours in all. Part 1 is the day's case on a book you have not seen, and it is
-the part tomorrow opens on. Part 2 is a join question of your own. Parts 3 and 4 are short.
+Four parts, about two hours in all, and a fifth if the practice lab ran out of time. Part 1 is the
+day's case on a book you have not seen, and it is the part tomorrow opens on. Part 2 is a join question
+of your own. Parts 3 and 4 are short. On a faculty day the tentative IITGN block W2-2 takes the
+afternoon's last two hours, so whatever the lab did not reach comes home as part 5.
 
 ---
 
-## The situation
+## What does Anand ask of the second book?
 
 Anand liked the Q2 report, and he has a second book for you: a smaller Q2 book, invented for
 tonight, with its own orders, payments and refunds across the same three channels. He writes:
@@ -16,7 +18,9 @@ tonight, with its own orders, payments and refunds across the same three channel
 
 ---
 
-## Part 1. Collected net of refunds, by channel, about 70 minutes
+## Part 1. What did the book collect net of refunds, by channel, and how do you prove it?
+
+About 70 minutes. At work, this is the month-end collections report on a book nobody profiled for you.
 
 The book is invented for tonight and sits in `data/C2_W02_D02_takehome_STUDENT.sql`. It loads into
 its own schema, `takehome`, and never touches the warehouse tables. From the day folder:
@@ -53,7 +57,9 @@ you whether each number is right.
 
 ---
 
-## Part 2. One more join question of your own, about 30 minutes
+## Part 2. Which join question of your own does the warehouse answer, and why that join?
+
+About 30 minutes. At work, this is the question you pose yourself before a stakeholder asks it.
 
 On the warehouse's orders and payments, pose one question the day did not ask, in a stakeholder's
 words, and answer it with a join. Above the query, write the count reconciliation as a comment block:
@@ -63,26 +69,43 @@ defend, such as a question about paid orders only, or about payments with no ord
 
 ---
 
-## Part 3. Practice, about 20 minutes
+## Part 3. Can you work the three join lessons without help?
+
+About 20 minutes.
 
 SQLBolt, the three join lessons, in order:
 
-- Lesson 6, joins: https://sqlbolt.com/lesson/select_queries_with_joins (verified 29 Sep 2026)
-- Lesson 7, outer joins: https://sqlbolt.com/lesson/select_queries_with_outer_joins (verified 29 Sep 2026)
-- Lesson 8, NULLs: https://sqlbolt.com/lesson/select_queries_with_nulls (verified 29 Sep 2026)
+- Lesson 6, joins: https://sqlbolt.com/lesson/select_queries_with_joins (checked 30 Sep 2026)
+- Lesson 7, outer joins: https://sqlbolt.com/lesson/select_queries_with_outer_joins (checked 30 Sep 2026)
+- Lesson 8, NULLs: https://sqlbolt.com/lesson/select_queries_with_nulls (checked 30 Sep 2026)
 
 If you finish early, the first three problems in the joins category of PostgreSQL Exercises,
-https://pgexercises.com/questions/joins/ (verified 29 Sep 2026).
+https://pgexercises.com/questions/joins/ (checked 30 Sep 2026).
 
 ---
 
-## Part 4. Recap, one line
+## Part 4. When is an INNER join the honest choice?
+
+One line.
 
 At the top of your SQL file, write one comment line on when an INNER join is the honest choice.
 
 ---
 
-## What makes this hard to shortcut
+## Part 5. What did the lab not reach?
+
+Only if the practice lab ran out of time. In this order, stopping when you have spent an hour:
+
+1. The escalated case, parts 3 to 5, in `notebooks/C2_W02_D02_ex1_escalated_case_STUDENT.ipynb`, with
+   its brief in `exercises/unguided/C2_W02_D02_escalated_STUDENT.md`.
+2. The second case, in `notebooks/C2_W02_D02_ex2_second_case_STUDENT.ipynb`, alone if your pair has
+   gone home.
+3. The interview drill: the questions on the afternoon deck's slides D3 and D4, each answered aloud in
+   sixty seconds and recorded on your phone. Play one back and cut whatever you would not say to Anand.
+
+---
+
+## Why is this hard to shortcut?
 
 The book in Part 1 is new tonight, so no assistant has seen its numbers, and your report either
 matches the self-check or it does not. The lists in step 5 and the action in step 7 are
@@ -91,7 +114,7 @@ at once. Part 2 is a question you chose, and tomorrow the room asks you why that
 
 ---
 
-## What to bring tomorrow
+## What do you bring tomorrow?
 
 | Part | What to bring |
 |---|---|

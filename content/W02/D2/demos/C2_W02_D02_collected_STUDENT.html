@@ -189,7 +189,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 <body>
 <header class="hero">
   <span class="kicker">Week 2 &middot; Tuesday &middot; Companion</span>
-  <h1>Booked against collected, without lying</h1>
+  <h1>What did Q2 actually collect, order by order?</h1>
   <p class="quote">&ldquo;Booked revenue is not collected revenue. Some orders are paid in two instalments, some are
     refunded, some were never paid at all. Show me, order by order, what we actually collected against what we booked in
     Q2. If there is a gap, I want to know which orders and which channel.&rdquo;</p>
@@ -203,7 +203,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 <div class="page">
   <nav class="rail" aria-label="Sections">
     <div class="label">On this page</div>
-    <a href="#walk" data-part="walk"><span class="n">01</span>The walk, three rounds</a>
+    <a href="#walk" data-part="walk"><span class="n">01</span>The walk, six chapters</a>
     <a href="#sim" data-part="sim"><span class="n">02</span>The join simulator</a>
     <a href="#bridge" data-part="bridge"><span class="n">03</span>Bridge and channels</a>
     <a href="#decision" data-part="decision"><span class="n">04</span>What you tell Anand</a>
@@ -216,15 +216,15 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   <main>
     <section class="part" id="walk">
       <p class="eyebrow">01 &middot; The guided walk</p>
-      <h2>Three rounds on two tiny tables</h2>
-      <p class="lede">The walk runs the morning's three rounds on the invented tiny tables: what each join keeps, the
-        fan-out, the row count that has to close, the unpaid list and the retry. Each step lights the stage of the query
-        that changed, redraws the rows it returns and moves the meter.</p>
+      <h2>Which rows survive each chapter's query, on two tiny tables?</h2>
+      <p class="lede">The walk runs the day's six chapters on the invented tiny tables: what each join keeps, the
+        fan-out, the count that has to close and the bridge, the two lists, the gap column and the checks. Each step lights
+        the stage of the query that changed, redraws the rows it returns and moves the meter.</p>
       <div class="card"><div class="holder" id="walkFlow"></div></div>
       <div class="walk" style="margin-top:16px">
         <div class="card narration" aria-live="polite">
-          <div class="step" id="walkStep">Round 1 &middot; step 0 of 14</div>
-          <h3 id="walkTitle">Anand's ask, and the grain of each table</h3>
+          <div class="step" id="walkStep">Chapter 1 &middot; step 0 of 16</div>
+          <h3 id="walkTitle">What is one row of each table?</h3>
           <p id="walkText">Before any join runs, say the grain of each table out loud.</p>
           <div class="meter">
             <div class="bar"><div class="fill" id="walkFill"></div><div class="plan" id="walkPlan"></div></div>
@@ -246,7 +246,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
     <section class="part" id="sim">
       <p class="eyebrow">02 &middot; The simulator</p>
-      <h2>Attach payments to orders, one assumption at a time</h2>
+      <h2>How does each assumption change the collected number?</h2>
       <p class="lede">Each control is one assumption in the query that produces Anand's collected number. The page opens on
         the hurried analyst's first query. Every record here is invented, and the page runs the join itself, so the SQL
         below is the query whose result you are reading.</p>
@@ -320,7 +320,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
     <section class="part" id="bridge">
       <p class="eyebrow">03 &middot; The bridge and the channels</p>
-      <h2>What the number is made of</h2>
+      <h2>What is the collected number made of, by move and by channel?</h2>
       <p class="lede">The first pair of bridges is the truth for the chosen records, worked from the source tables: booked,
         less what was never paid, lands on collected, and the retries posted twice land on what the feed posted. The second
         bridge starts from that true collected number and walks to the number your report gives, naming every move.</p>
@@ -337,7 +337,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
     <section class="part" id="decision">
       <p class="eyebrow">04 &middot; The decision card</p>
-      <h2>What you would tell Anand</h2>
+      <h2>What would you tell Anand, and may the number leave?</h2>
       <p class="lede">The card reads the simulator's current settings and writes the sentence those settings would send.
         When a check fails, it says which decision the wrong number would mislead, the check that catches it and the fix.</p>
       <div class="card decision">
@@ -349,8 +349,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     </section>
 
     <section class="part" id="lists">
-      <p class="eyebrow">05 &middot; Round 3</p>
-      <h2>The unpaid list and the double-paid list</h2>
+      <p class="eyebrow">05 &middot; Chapter 4</p>
+      <h2>Which orders were never paid, and which payments were posted twice?</h2>
       <p class="lede">Anand asked which orders. Two lists answer him: the orders with no payment in the quarter, found with
         an anti-join, and the payments posted twice, found with HAVING at the right grain. The lists run on the records the
         simulator has chosen.</p>
@@ -372,13 +372,13 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
     <section class="part" id="experiments">
       <p class="eyebrow">06 &middot; Experiment cards</p>
-      <h2>Five experiments, one change each</h2>
+      <h2>What changes when you change one assumption?</h2>
       <p class="lede">Each card runs on the invented tiny tables and holds every setting still except one. Read the
         situation and the hypothesis, decide what you expect, then run.</p>
       <div class="grid2">
         <article class="card exp" id="expA">
           <div class="part-label">Experiment A &middot; invented records &middot; join type</div>
-          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">INNER against LEFT, on a clean payments table</h3>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">What do INNER and LEFT do on a clean payments table?</h3>
           <p><b>Situation.</b> Payments are already rolled up to one row per order with the retry counted once, and the
             quarter condition sits in the ON clause. The only thing left to choose is the join.</p>
           <p><b>Hypothesis.</b> INNER reports the quarter as fully collected, and LEFT brings the unpaid order back and opens
@@ -400,7 +400,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
         <article class="card exp" id="expB">
           <div class="part-label">Experiment B &middot; invented records &middot; payments grain</div>
-          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">Raw payment rows against one row per order</h3>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">What do raw payment rows do against one row per order?</h3>
           <p><b>Situation.</b> A LEFT JOIN report puts booked and collected side by side, with no quarter condition. T-2 was
             paid in two instalments and T-3 has two payment rows.</p>
           <p><b>Hypothesis.</b> At raw grain booked reads Rs 9,300, because T-2 and T-3 each count twice; rolled up to one row
@@ -422,7 +422,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
         <article class="card exp" id="expC">
           <div class="part-label">Experiment C &middot; invented records &middot; condition position</div>
-          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">The quarter condition in WHERE, then in ON</h3>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">What does the quarter condition do in WHERE, then in ON?</h3>
           <p><b>Situation.</b> The report is a LEFT JOIN on clean payments, and a colleague adds &ldquo;paid in Q2&rdquo; as a
             filter on paid_date, because Anand asked what was collected in the quarter.</p>
           <p><b>Hypothesis.</b> In the WHERE the filter throws away T-4, whose paid_date is NULL, and the LEFT JOIN behaves as
@@ -444,7 +444,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
         <article class="card exp" id="expD">
           <div class="part-label">Experiment D &middot; invented records &middot; retries</div>
-          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">The retry counted once</h3>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">What happens when the retry is counted once?</h3>
           <p><b>Situation.</b> The LEFT JOIN report closes its count, five orders in and five rows out, and still says more
             was collected than booked. The platform lead said the feed sometimes double-posts when the gateway retries.</p>
           <p><b>Hypothesis.</b> Counting each order and instalment once removes the retry, collected falls by Rs 1,500 and the
@@ -466,7 +466,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
         <article class="card exp" id="expE">
           <div class="part-label">Experiment E &middot; invented records &middot; HAVING grain</div>
-          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">The double-paid list, at two grains</h3>
+          <h3 style="font:400 20px var(--serif);color:var(--ink);margin:0">What does the double-paid list show at two grains?</h3>
           <p><b>Situation.</b> Before anyone calls a customer about a refund, the double-paid list is built with HAVING
             COUNT(*) &gt; 1 on the payments table.</p>
           <p><b>Hypothesis.</b> Grouped by order, the list names T-2 and T-3; grouped by order and instalment, it names only
@@ -490,37 +490,37 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
     <section class="part" id="glossary">
       <p class="eyebrow">07 &middot; Glossary</p>
-      <h2>The day's words, and where each first mattered</h2>
+      <h2>Which words did the day use, and where did each first matter?</h2>
       <div class="card">
         <dl class="gloss">
           <dt>Grain</dt><dd>What one row of a table stands for: one order, one payment, or one order and instalment. Say it
-            for each table before you join them.<span class="where">Round 1, the tiny tables traced row by row.</span></dd>
+            for each table before you join them.<span class="where">Chapter 1, the tiny tables traced row by row.</span></dd>
           <dt>Fan-out</dt><dd>The rows a join adds when a key repeats on one side, so every matching row on the other side is
-            copied once per repeat and any sum over it grows.<span class="where">Round 1, the naive join, Rs 8,500 against
+            copied once per repeat and any sum over it grows.<span class="where">Chapter 2, the first draft, Rs 8,500 against
             Rs 5,800 booked.</span></dd>
           <dt>INNER, LEFT, RIGHT, FULL</dt><dd>INNER keeps only the rows that match; LEFT keeps every row of the left table;
-            RIGHT keeps every row of the right table; FULL keeps the unmatched rows of both.<span class="where">Round 1,
-            rung 1, six, seven, seven and eight rows.</span></dd>
+            RIGHT keeps every row of the right table; FULL keeps the unmatched rows of both.<span class="where">Chapter 1,
+            six, seven, seven and eight rows.</span></dd>
           <dt>Reconciliation</dt><dd>Proving a number against its source: rows in, rows out, and the total after the join
-            tied back to the total in the table it came from.<span class="where">Round 2, the row-count check.</span></dd>
+            tied back to the total in the table it came from.<span class="where">Chapter 3, the row-count check.</span></dd>
           <dt>Bridge</dt><dd>A chart that starts from one total and walks, move by named move, to another, so every rupee of
-            the difference has a name.<span class="where">Round 2, booked to collected to what the feed posted.</span></dd>
+            the difference has a name.<span class="where">Chapter 3, booked to collected to what the feed posted.</span></dd>
           <dt>Anti-join</dt><dd>A LEFT JOIN kept only where the right side found nothing, written as WHERE the right key IS
-            NULL; it lists the orders with no payment.<span class="where">Round 3, the unpaid list.</span></dd>
+            NULL; it lists the orders with no payment.<span class="where">Chapter 4, the unpaid list.</span></dd>
           <dt>Orphan</dt><dd>A row whose key points at nothing on the other side, such as a payment for an order id the
-            orders table does not hold.<span class="where">Round 1, P-7 in the RIGHT JOIN; round 3, the reverse
+            orders table does not hold.<span class="where">Chapter 1, P-7 in the RIGHT JOIN; chapter 4, the reverse
             anti-join.</span></dd>
           <dt>Instalment</dt><dd>One of the planned part-payments of a larger order, numbered by instalment_no, so two rows
-            for one order can both be honest money.<span class="where">Round 1, why T-2 appears twice.</span></dd>
+            for one order can both be honest money.<span class="where">Chapter 1, why T-2 appears twice.</span></dd>
           <dt>Retry</dt><dd>The same instalment posted twice when the payment gateway tries again: same order, same
-            instalment, same amount, and money counted twice.<span class="where">Round 3, the double-paid list at the right
+            instalment, same amount, and money counted twice.<span class="where">Chapter 4, the double-paid list at the right
             grain.</span></dd>
         </dl>
       </div>
       <p class="foot">Week 2, Tuesday. Every record on this page is invented to show one mechanism at a time, and the tiny
         tables are the same five orders and seven payments as the morning's SQL file,
-        C2_W02_D02_01_tiny_tables_STUDENT.sql. The one Kalpa figure quoted, the fan-out in the walk, is the result the room
-        also runs in round 1. Kalpa Retail and everyone in it are fictional. The page runs every join itself, stores
+        C2_W02_D02_01_what_a_join_keeps_STUDENT.sql. The one Kalpa figure quoted, the fan-out in the walk, is the result the room
+        also runs in chapter 2. Kalpa Retail and everyone in it are fictional. The page runs every join itself, stores
         nothing and calls no network.</p>
     </section>
   </main>
@@ -1502,48 +1502,63 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
   /* ---------------------------------------------------------------- the guided walk */
   var IQ = [
-    "[S] INNER against LEFT join: what does each drop or keep? [S] Your join grew the row count; name the cause and the check.",
-    "[F] A filter on the right-hand table of a LEFT JOIN: WHERE or ON, and what changes? [F] How do you reconcile a total after a join back to its source table?",
-    "[F] How do you find orders with no payment? [F] HAVING COUNT(*) > 1 on payments by order: what does it find, and what does it wrongly include?"
+    "[S] INNER against LEFT join: what does each drop or keep? [S] When is an INNER join the honest choice?",
+    "[S] Your join grew the row count; name the cause and the check. [F] Revenue doubled after a join and every row looks fine; where do you look?",
+    "[F] How do you reconcile a total after a join back to its source table? [D] Two errors cancel and the total looks right: how would you find them?",
+    "[F] How do you find orders with no payment? [F] HAVING COUNT(*) > 1 on payments by order: what does it find, and what does it wrongly include?",
+    "[D] Anand says the gap is too small to matter: how do you decide whether to chase it?",
+    "[D] Design the validation you run before a joined number reaches Finance, and say what you do when it fails at the end of reporting day."
+  ];
+  var KAVYA_CH = [
+    "Tell me the grain of each table, and which rows your join drops, before you tell me any total. Start from the table whose every row must survive.",
+    "A join is a multiplication until you prove it is not. Bring the many side to the grain of the question before you join, and show me rows in and rows out beside the total.",
+    "Rows in, rows out and the difference explained, written above the number. If the count does not close, the number does not leave the team, and if the gap has two causes, it gets two bars.",
+    "Two payment rows are not a double payment. Show me what makes a retry a retry before anyone rings a customer, and show me that each list adds up to its bar.",
+    "Every rupee on the page ties back to a bar, and every bar to a list. Write the definition of collected above the table, so nobody reads it as posted.",
+    "A check that cannot fail is decoration. For every check, tell me which wrong report it would have stopped, and do not send me a PASS you have never seen fail."
   ];
   function S(join, grain, cond, amt) { return { join: join, grain: grain, cond: cond, amt: amt }; }
   var WALK = [
-    { r: 0, view: "tables", s: S("INNER", "raw", "none", "pay"), lit: 0, t: "Anand's ask, and the grain of each table",
+    { r: 0, view: "tables", s: S("INNER", "raw", "none", "pay"), lit: 0, t: "What is one row of each table?",
       x: "Anand wants what was collected against what was booked, order by order. Before any join runs, say each table's grain out loud: tiny_orders holds one row per order, five rows and Rs 5,800 booked, and tiny_payments holds one row per payment, seven rows. A key that repeats on the payments side will repeat the order it joins to." },
-    { r: 0, view: "join", s: S("INNER", "raw", "none", "pay"), lit: 2, t: "INNER JOIN keeps the orders that found a payment",
+    { r: 0, view: "join", s: S("INNER", "raw", "none", "pay"), lit: 2, t: "How many rows does the INNER join keep?",
       x: "Six rows come back from five orders. T-4 has no payment, so INNER drops it without a word, and T-2 and T-3 appear twice because each has two payment rows. P-7 names T-9, which is not in the orders table, so INNER drops it too." },
-    { r: 0, view: "join", s: S("LEFT", "raw", "none", "pay"), lit: 2, t: "LEFT JOIN keeps every order",
-      x: "Seven rows: T-4 comes back with NULL on every payment column, which is exactly the row Anand is asking about. T-2 and T-3 still appear twice, since LEFT decides what happens to the rows that do not match and leaves the repeats alone." },
-    { r: 0, view: "join", s: S("RIGHT", "raw", "none", "pay"), lit: 2, t: "RIGHT JOIN keeps every payment",
-      x: "Seven rows again, and a different seven: T-4 is gone, and P-7 arrives with NULL where its order should be. That is an orphan, a payment against an order id the orders table does not hold." },
-    { r: 0, view: "join", s: S("FULL", "raw", "none", "pay"), lit: 2, t: "FULL JOIN keeps the unmatched rows of both sides",
-      x: "Eight rows: the six matches, T-4 with no payment and P-7 with no order. Every join answers a question about the rows that do not match; choose the join by that question. Anand's question is about every booked order, so it starts from orders." },
-    { r: 0, view: "join", s: S("INNER", "raw", "none", "order"), lit: 4, t: "The plausible wrong answer: Rs 8,500",
-      x: "A hurried analyst sums the order amount over the join and calls it the value of the paid orders: Rs 8,500 against Rs 5,800 booked, 1.47 times, and every row is a real order with a real payment. The decision it would mislead is to stand the collections team down. On Kalpa's Q2 the same query returns Rs 19,29,04,410 against Rs 9,84,00,000 booked." },
-    { r: 0, view: "join", s: S("LEFT", "order", "none", "pay"), lit: 1, t: "The fix: one row per order before the join",
-      x: "The check is rows out against orders in, six against five, and the fix brings payments to one row per order in a CTE before joining. Five orders in, five rows out, and booked in the report is back to Rs 5,800. Kavya closes round 1: “" + KAVYA[0] + "”" },
-    { r: 1, view: "join", s: S("INNER", "order", "none", "pay"), lit: 2, t: "Round 2's wrong answer: fully collected, with a surplus",
-      x: "Payments are at order grain now, and the report is an INNER JOIN: booked Rs 5,000, collected Rs 6,500, a gap of minus Rs 1,500. Anand would hear that everything was collected and a little more, and nobody would chase the unpaid invoice. The check is the count: four orders in the report against five in the quarter." },
-    { r: 1, view: "join", s: S("LEFT", "raw", "where", "pay"), lit: 3, t: "The WHERE that turns LEFT into INNER",
-      x: "Switched to a LEFT JOIN, the analyst adds paid_date in the quarter as a WHERE. The join returns seven rows and the WHERE removes T-4's, because a NULL paid_date fails every comparison, so six rows remain and T-4 is gone again. The query still says LEFT JOIN, and only the count shows the loss." },
-    { r: 1, view: "join", s: S("LEFT", "order", "on", "pay"), lit: 3, t: "The condition in ON: the count closes",
-      x: "In the ON clause the condition decides which payments match, and T-4 stays with NULLs. Five in, five out, booked Rs 5,800, collected Rs 6,500, and the gap is minus Rs 700: more collected than booked, on a table where one order was never paid. A count that closes is necessary, and the bridge still has to say what the number is made of. Kavya closes round 2: “" + KAVYA[1] + "”" },
-    { r: 2, view: "list", list: "unpaid", s: S("LEFT", "order", "on", "pay"), lit: 2, t: "The unpaid list, with an anti-join",
-      x: "Keep only the LEFT JOIN rows whose payment side came back NULL, and the list is T-4 on app for Rs 800: the order Anand asked about by name. Turned round, the same pattern lists P-7, the payment with no order." },
-    { r: 2, view: "list", list: "dupOrder", s: S("LEFT", "order", "on", "pay"), lit: 1, t: "Round 3's wrong answer: two double payments",
+    { r: 0, view: "join", s: S("LEFT", "raw", "none", "pay"), lit: 2, t: "Which join keeps every booked order?",
+      x: "The LEFT JOIN with orders first: seven rows, and T-4 comes back with NULL on every payment column, which is exactly the row Anand is asking about. T-2 and T-3 still appear twice, since LEFT decides what happens to the rows that do not match and leaves the repeats alone." },
+    { r: 0, view: "join", s: S("RIGHT", "raw", "none", "pay"), lit: 2, t: "What does the RIGHT join keep that LEFT drops?",
+      x: "Seven rows again, and a different seven: T-4 is gone, and P-7 arrives with NULL where its order should be. That is an orphan, a payment against an order id the orders table does not hold, and it is the platform lead's question, not Anand's." },
+    { r: 0, view: "join", s: S("FULL", "raw", "none", "pay"), lit: 2, t: "What does the FULL join keep?",
+      x: "Eight rows: the six matches, T-4 with no payment and P-7 with no order. Anand's question is about every booked order, so it starts from orders. Kavya closes chapter 1: “" + KAVYA_CH[0] + "”" },
+    { r: 1, view: "join", s: S("INNER", "raw", "none", "order"), lit: 4, t: "Why does the first draft read Rs 8,500 against Rs 5,800?",
+      x: "A hurried analyst sums the order amount over the join and calls it the value of the paid orders: Rs 8,500 against Rs 5,800 booked, 1.47 times, and every row is a real order with a real payment. The decision it would mislead is to stand the collections team down. On Kalpa's Q2 the same kind of query returns Rs 19,29,04,410 against Rs 9,84,00,000 booked." },
+    { r: 1, view: "join", s: S("LEFT", "order", "none", "pay"), lit: 1, t: "What does one row per order before the join fix?",
+      x: "The check is rows out against orders in, and the fix brings payments to one row per order in a CTE before joining. Five orders in, five rows out, and booked in the report is back to Rs 5,800. Kavya closes chapter 2: “" + KAVYA_CH[1] + "”" },
+    { r: 2, view: "join", s: S("INNER", "order", "none", "pay"), lit: 2, t: "What does a plain JOIN report once nothing counts twice?",
+      x: "Payments are at order grain now, and the report is an INNER JOIN: booked Rs 5,000, collected Rs 6,500, a gap of minus Rs 1,500. Anand would hear that everything was collected and a little more, and nobody would chase the unpaid invoice. The check is the count: four orders in the report against five in the table, and no rupee needs reading." },
+    { r: 2, view: "join", s: S("LEFT", "once", "none", "pay"), lit: 1, t: "Which moves carry booked to what the feed posted?",
+      x: "With the LEFT JOIN, and each order and instalment counted once, collected is Rs 5,000 and the gap is Rs 800. The bridge reads booked Rs 5,800, less never paid Rs 800, less paid short Rs 0, collected Rs 5,000, plus posted twice Rs 1,500, posted in the feed Rs 6,500. Kavya closes chapter 3: “" + KAVYA_CH[2] + "”" },
+    { r: 3, view: "join", s: S("LEFT", "raw", "where", "pay"), lit: 3, t: "What does a date condition in WHERE do to the LEFT JOIN?",
+      x: "The analyst adds paid_date in the quarter as a WHERE. The join returns seven rows and the WHERE removes T-4's, because a NULL paid_date fails every comparison, so six rows remain and T-4 is gone again. The query still says LEFT JOIN, and only the count shows the loss." },
+    { r: 3, view: "join", s: S("LEFT", "once", "on", "pay"), lit: 3, t: "Where does a condition on the payments table belong?",
+      x: "In the ON clause, where it decides which payments match before the join, and T-4 stays with NULLs. Five in, five out, and the gap is Rs 800 again, which is T-4. The one condition on the payments table that belongs in WHERE is the anti-join's IS NULL." },
+    { r: 3, view: "list", list: "unpaid", s: S("LEFT", "order", "on", "pay"), lit: 2, t: "Which orders did nothing match?",
+      x: "Keep only the LEFT JOIN rows whose payment side came back NULL, and the list is T-4 on app for Rs 800: the order Anand asked about by name, and the never-paid bar exactly. Turned round, the same pattern lists P-7, the payment with no order." },
+    { r: 3, view: "list", list: "dupOrder", s: S("LEFT", "order", "on", "pay"), lit: 1, t: "Are two payment rows a double payment?",
       x: "The double-paid list is written as GROUP BY order_id HAVING COUNT(*) > 1, and it names T-2 and T-3. The decision it would mislead is a refund call to both customers, and T-2's second row is its second instalment, paid on time." },
-    { r: 2, view: "list", list: "dupInst", s: S("LEFT", "order", "on", "pay"), lit: 1, t: "The fix: group at the grain of a payment",
-      x: "A retry is the same instalment posted twice, so the list groups by order_id and instalment_no and keeps only T-3, with Rs 1,500 posted twice. T-2 leaves the list, because its two rows are two different instalments." },
-    { r: 2, view: "join", s: S("LEFT", "once", "on", "pay"), lit: 1, t: "Retries counted once: the gap is the unpaid order",
-      x: "Counting each order and instalment once before rolling up to the order gives collected Rs 5,000 and a gap of Rs 800, which is T-4 to the rupee. The bridge reads booked Rs 5,800, less never paid Rs 800, collected Rs 5,000, plus posted twice Rs 1,500, posted in the feed Rs 6,500. Kavya closes round 3: “" + KAVYA[2] + "”" },
-    { r: 2, view: "join", s: S("LEFT", "once", "on", "pay"), lit: 4, t: "The sentence to Anand",
-      x: "In Q2 the invented book shows Rs 5,800 booked on five orders and Rs 5,000 collected. The gap of Rs 800 is one order, T-4 on app, with no payment. The feed posted Rs 1,500 twice on T-3 when the gateway retried, and that copy is left out. Five orders in, five rows out." }
+    { r: 3, view: "list", list: "dupInst", s: S("LEFT", "order", "on", "pay"), lit: 1, t: "What makes a retry a retry?",
+      x: "A retry is the same instalment posted twice, so the list groups by order_id and instalment_no and keeps only T-3, with Rs 1,500 posted twice, the posted-twice bar exactly. T-2 leaves the list, because its two rows are two different instalments. Kavya closes chapter 4: “" + KAVYA_CH[3] + "”" },
+    { r: 4, view: "join", s: S("LEFT", "once", "on", "pay"), lit: 4, t: "Why would the gap column read zero?",
+      x: "Add each order's gap, booked less collected, and T-4's collected is NULL, so its gap is NULL and sum() skips it: app's gap column would say 0 against a true Rs 800. Written as sum(booked - coalesce(collected, 0)), T-4 counts its whole Rs 800, and the gap below is Rs 800 again. Kavya closes chapter 5: “" + KAVYA_CH[4] + "”" },
+    { r: 4, view: "join", s: S("LEFT", "once", "on", "pay"), lit: 4, t: "What does the sentence to Anand say?",
+      x: "In Q2 the invented book shows Rs 5,800 booked on five orders and Rs 5,000 collected, each payment counted once. The gap of Rs 800 is one order, T-4 on app, with no payment. The feed posted Rs 1,500 twice on T-3 when the gateway retried, and that copy is left out. Five orders in, five rows out." },
+    { r: 5, view: "join", s: S("LEFT", "once", "on", "pay"), lit: 4, t: "Which checks let the number leave?",
+      x: "Five tie-back checks, each from one table alone: five orders on the report against five in the table; booked Rs 5,800 against Rs 5,800; the gap against booked less collected; the gap, Rs 800, against the unpaid list, T-4's Rs 800; and collected Rs 5,000 plus Rs 1,500 posted twice against Rs 6,500 in the payments table. The decision card below runs checks on whatever the simulator builds. Kavya closes chapter 6: “" + KAVYA_CH[5] + "”" }
   ];
   var walkAt = 0;
   function showWalk() {
     var w = WALK[walkAt], res = run("tiny", w.s);
     K.draw("walkFlow", K.flow(stages(w.s), w.lit, { title: "The query in five stages; the lit stage is the one this step changes" }));
-    $("walkStep").textContent = "Round " + (w.r + 1) + " · step " + walkAt + " of " + (WALK.length - 1);
+    $("walkStep").textContent = "Chapter " + (w.r + 1) + " · step " + walkAt + " of " + (WALK.length - 1);
     $("walkTitle").textContent = w.t;
     $("walkText").textContent = w.x;
     $("walkIq").textContent = IQ[w.r];
@@ -1574,7 +1589,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   }
   $("walkNext").addEventListener("click", function () { walkAt = (walkAt + 1) % WALK.length; showWalk(); });
   $("walkRestart").addEventListener("click", function () {
-    walkAt = 0; showWalk(); $("walkStep").textContent = "Round 1 · step 0 of " + (WALK.length - 1) + ", restarted";
+    walkAt = 0; showWalk(); $("walkStep").textContent = "Chapter 1 · step 0 of " + (WALK.length - 1) + ", restarted";
   });
 
   /* ---------------------------------------------------------------- the sequence popup */

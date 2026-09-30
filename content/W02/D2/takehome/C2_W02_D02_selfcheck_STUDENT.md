@@ -1,11 +1,11 @@
-# Self-check: know you are right before anybody reads it
+# How do you know your take-home is right before anybody reads it?
 
 Every checkpoint is something you can verify alone. If one fails, the likely cause is named beside
 it. Work through the numbers first, then the questions on your writing.
 
 ---
 
-## Part 1, the numbers
+## Do your part 1 numbers match?
 
 | # | Checkpoint | What you should see | If it does not match |
 |---|---|---|---|
@@ -25,7 +25,7 @@ do.
 
 ---
 
-## Part 1, the writing
+## Does your part 1 writing hold up?
 
 Answer each question yes or no. Two noes means rewrite it.
 
@@ -39,7 +39,7 @@ Answer each question yes or no. Two noes means rewrite it.
 
 ---
 
-## Part 2, your own question
+## Does your own question in part 2 hold up?
 
 1. Is the question in a stakeholder's words, with no SQL in it?
 2. Does the reconciliation block name the difference between rows in and rows out, even when it is
@@ -48,7 +48,7 @@ Answer each question yes or no. Two noes means rewrite it.
 
 ---
 
-## Part 4, the line
+## Does your part 4 line hold up?
 
 Your line says that an INNER join is honest when the question is about matched rows only, and names
 one such question. If your line could be pasted into any SQL course, make it about Kalpa.
