@@ -1,15 +1,94 @@
-# Day sheet: Week 1, Wednesday. Which Q1 figure is right?
+# Which Q1 figure is right, the dashboard's Rs 2.1 crore or the books' Rs 1.9 crore, and how do we know?
 
-**TRAINER ONLY.** Nothing on this page reaches a learner.
+**Day sheet, Week 1 Wednesday. TRAINER ONLY.** Nothing on this page reaches a learner.
 
 Posts to <!-- sync:module:W01/D3 -->Module 1: Foundations of AI and Data<!-- /sync:module:W01/D3 -->, on <!-- sync:day-date:W01/D3 -->Wed 07 Oct 2026<!-- /sync:day-date:W01/D3 -->.
 
 No IITGN faculty block on this day. The domain is retail, whose story Monday told; the dossier is
-`content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md`, and today links to it rather than
-re-telling it. Say once, in the ask, that both of Anand's figures count booked value, which is what
-the retail dossier calls GMV: every order at the price charged, before cancellations and returns come
+`content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md`, and today's files point to it for
+depth only. Say once, in the ask, that both of Anand's figures count booked value, which is what the
+retail dossier calls GMV: every order at the price charged, before cancellations and returns come
 out. The export does not state whether GST is inside, which is a question an analyst asks Anand; say
-nothing more about GST, since the client-zero lock is silent on it.
+nothing more about GST, since the client-zero lock is silent on it. The words the room meets first
+today: the ERP is the enterprise resource planning system Finance books orders in; its orders CSV was
+stitched from two extracts, two pulls of rows out of the ERP, during Q1's migration, the move of the
+order data to a new system; Anand's analyst ties out, matching every figure to the books line by
+line; and in chapter 5, Tesco's supplier income is the money its suppliers pay it.
+
+---
+
+## Which questions does the day ask, in the order the room meets them?
+
+Ask each question aloud before its answer is shown. Each chapter's question is the one the previous
+answer raised; the short form is the chapter opener's title, and the full form is its promise, the
+notebook's title, the notes' chapter heading and the scenario set's title.
+
+**The day.** Which Q1 figure is right, the dashboard's Rs 2.1 crore or the books' Rs 1.9 crore, and how
+do we know? *Answered at half two, S25:* Anand's 1.9 crore is right; fifteen orders were counted
+twice, fourteen in Q1, and the bridge closes to his books in rows and rupees; revenue falls 1.6
+percent, not 11, and Retail-Plus 35 percent, not 49.
+
+**Chapter 1. What did the ERP send?** What did the ERP actually send, and does the dashboard's
+Rs 2.1 crore follow from it? *Answer:* 201 rows for 186 orders, one unreadable amount, one missing
+status; Q1 over what converts is Rs 2,09,98,210, so 2.1 is honest arithmetic on this file.
+1. How could we learn what arrived, and what would each way cost on 201 rows? Profile every field: 2,010 values in under a second.
+2. What does the file hold, field by field? Text; order_id distinct on 186, amount converts on 200, status present on 200, discount on 143.
+3. Which Q2 order is the largest? Rs 29,45,460 as a number; the text sort's Rs 970 is the trap.
+4. Does the dashboard's Rs 2.1 crore follow from this file? Yes, Rs 2,09,98,210, with one failure logged.
+5. What can the app's JSON feed tell us? What the extract held, 119 complete records, never whether a value is right.
+6. Do two other methods reach the same counts? Yes: sorted ids 186, a digit pattern 1 failure.
+
+**Chapter 2. Which rows repeat?** The file holds 201 rows for 186 orders: which rows did the export
+count twice, and what makes two rows one order? *Answer:* the order_id; 15 orders twice, 14 in Q1.
+1. Which rules could decide that two rows are one order, and what does each flag here? Whole record 0, record less line 13, order_id 15, fuzzy 15 with a real Rs 17,71,000 order.
+2. Where do rows outnumber orders? Q1, 114 rows for 100 orders; Q2 87 for 86.
+3. Why does the default dedupe find no duplicates? The file line makes every row unique: 0, Q1 still Rs 2,09,98,210.
+4. How many orders appear twice under the order id? 15, 14 in Q1 and 1 in Q2.
+5. Does a rule that flags as many rows flag the same rows? No: 14 shared, one real order removed.
+6. Does a count with no dictionary agree? Yes: 14 + 1 pairs in 20,100 comparisons.
+
+**Chapter 3. Which copy stays?** When an order appears twice, which copy stays, and does Q1 then land
+on the books? *Answer:* the copy whose amount converts, then the first; Q1 Rs 1,90,00,000.
+1. Which copy of a pair could stay, and what does each choice do to Q1? First -Rs 1,790; last on the books by file order; the copy that validates on the books.
+2. Which copy stays when the two copies differ? The one that converts; if both do, the first, logged, with a question.
+3. What is Q1 once the rule runs? Rs 1,90,00,000: 186 kept, 15 set aside.
+4. If Q1 ties to the books, is the pass right? Not alone: 188 rows for 186 orders, Q2 Rs 3,710 high.
+5. Which rows carry the rupees set aside? Two Business rows, Rs 19,67,560, 98.5 percent.
+6. Does a dictionary keyed by id keep the same orders? Yes, the same 186, and no log.
+
+**Chapter 4. Drop, fill or flag?** What should the pass do with a value that is missing or cannot be
+read, so that no decision invents or deletes a fact? *Answer:* flag the status, keep the discount
+unknown, reject an unreadable amount and repair it only from an independent source.
+1. What could the pass do with a missing status or an unreadable amount, and what does each choice claim? Status: keep and flag; amount: reject, repair from an independent copy.
+2. What happens to the order with no status? Kept and flagged: Q2 Rs 1,87,00,000, 57 of 86 delivered.
+3. Is a missing discount a zero? No: about Rs 67 over 131 orders, never Rs 47 over 186.
+4. What if every failure is turned into zero? 201 of 201 convert, an order at Rs 0, Q1 Rs 1,790 short.
+5. Where can an unreadable amount be repaired from? Only a source that could not copy the error; the feed repairs nothing.
+6. Do the profile and the logs agree on every defect? Yes: 1, 0 and 55.
+
+**Chapter 5. Can we prove the 1.9?** Can we prove to Anand, one cause at a time, that his Rs 1.9 crore
+is right, and does Tuesday's finding survive the clean file? *Answer:* two moves bridge
+Rs 2,09,98,210 to Rs 1,90,00,000; revenue -1.6 percent, Retail-Plus -35.0 percent.
+1. How could we prove which figure is right, and what does each proof cost? A bridge by cause, 15 logged rows, to the rupee.
+2. Which moves walk Rs 2.1 crore down to the books? Corporate copies -Rs 19,67,560, consumer copies -Rs 30,650.
+3. Does Tuesday's finding survive the clean file? Yes, smaller: x0.860 against x0.754; Retail-Plus -35.0 against -49.0 percent.
+4. Should the largest Q2 order come out? No: removing it reports Q2 at Rs 1,57,54,540 and -17.1 percent.
+5. What does the note to Anand say first? That his 1.9 is right, then the proof, then what changed.
+6. Does a bottom-up sum reach the same Q1? Yes, Rs 1,90,00,000.
+
+**Chapter 6. Can the analyst replay it?** Can Anand's analyst audit every decision tonight and
+rebuild the clean file from the log alone? *Answer:* 24 lines, rows and rupees tied, and the replay
+rebuilds the 186 orders.
+1. What could the analyst receive, and how long would each take her to check? Logs and control totals, 24 lines, about 12 minutes.
+2. Which decision moved the most rupees? The identity rule, all Rs 19,98,210.
+3. Do the logs on disk hold what the notebook holds? Yes: 15 rows and 5 decisions, amounts back as text.
+4. If the rows reconcile, is the log right? No: 201 = 185 + 16 misses the books by Rs 1,790.
+5. Why were 14 Q1 rows set aside, and how do we know nothing else went? Each has a kept twin; 114 = 100 + 14, and the rupees tie.
+6. Can the clean file be rebuilt from the raw export and the log alone? Yes: the same 186 orders.
+
+---
+
+## What does the room start from, and where does the day stop?
 
 | | |
 |---|---|
@@ -17,11 +96,11 @@ nothing more about GST, since the client-zero lock is silent on it.
 | **Go as far as** | Everyone ships a cleaned file, the logs, reconciled rows and rupees, the bridge from 2.1 to 1.9, Tuesday recomputed and the note to Finance, and can say for each technique which options were weighed and why this one. |
 | **Stop before** | Statistics beyond counts and the median, imputation beyond a stated default, pandas. Say once that pandas and SQL re-run this pass in Week 2. |
 | **Comes later** | Thursday asks whether the clean Retail-Plus fall is real or chance. Week 2 re-expresses the pass in SQL and pandas. |
-| **Cut first** | `json.dump` in chapter 6 (show the read-back only), then the JSON feed in chapter 1. Never the reconciliation, never the recompute, never a chapter's options slide. |
+| **Cut first** | `json.dump` in chapter 6 (show the read-back only, half two S9), then the JSON feed in chapter 1 (half one S19). Never the reconciliation, never the recompute, never a chapter's options slide. |
 
 ---
 
-## Morning block, 180 minutes
+## How do the morning's 180 minutes run?
 
 ```mermaid
 flowchart LR
@@ -30,24 +109,29 @@ flowchart LR
     class C5 core
 ```
 
-Every chapter runs the same thirty minutes: the need (3), the real company (2), the options sized
-(5), the picture or the predict pair (4), the build (4), the trap (6), the fix and the second route
-(4), Kavya's review (2). The options slide closes on **The call**, so Kavya's review stays the chapter's last beat.
+Every chapter runs thirty minutes over about fifteen slides: the opener asks the chapter's question,
+the map slide shows who needs the answer and the six questions on the way (1), the need and the real
+company follow (4), then the options sized (4), then each build step as a predict slide and its answer,
+the trap in three slides (the plausible wrong answer, why it is wrong, the fix), the second route, and
+a close that answers the six questions in a line each beside Kavya's review (2). Each slide's italic
+subtitle is the question it answers, and its title is the answer. The options slide closes on
+**The call**, so Kavya's review stays the chapter's last beat. The minutes per slide are in each
+slide's notes.
 
 | Part | Slides, half one | Beside it | What must land | If short of time |
 |---|---|---|---|---|
-| The ask, 20 | S1 to S6 | Board, drawings one and two | Four ways an export could produce either figure; rows first because a count is cheapest; profile, decide, reconcile, recompute on the board | S2's table read, not discussed |
-| Chapter 1, what the ERP sent, 30 | S7 to S17 | Notebook 01_profile; guided profile pass | Everything read is text; the three counts; the text sort that names Rs 970; convert with a log; Q1 over amounts that convert is 2.1 | S16's feed to one sentence |
-| Chapter 2, the rows that repeat, 30 | S18 to S26 | Notebook 02_duplicates; ch2 set after | Four keys sized; the dedupe that finds nothing; 15 orders twice; same count, other rows | S25 to one sentence |
-| Chapter 3, the copy that stays, 30 | S27 to S37 | Notebook 03_identity_rule; ch3 set after | Four survivors sized; the rule; Q1 on the books; the tie in rupees that proves no rows; 98 percent in two rows | S36 to one sentence |
+| The ask, 20 | Cover, S1 to S6 | Board, drawings one and two | The day's question and the six chapter questions; four ways an export could produce either figure; rows first because a count is cheapest; profile, decide, reconcile, recompute on the board | S3's table read, not discussed |
+| Chapter 1, what did the ERP send, 30 | S7 to S21 | Notebook 01_profile; guided profile pass | Everything read is text; the three counts; the text sort that names Rs 970; convert with a log; Q1 over the amounts that convert is 2.1 | S19, the JSON feed, to one sentence |
+| Chapter 2, which rows repeat, 30 | S22 to S34 | Notebook 02_duplicates; ch2 set after | The identity rule before any count; four keys sized; the dedupe that finds nothing; 15 orders twice; same count, other rows | S33 to one sentence |
+| Chapter 3, which copy stays, 30 | S35 to S48 | Notebook 03_identity_rule; ch3 set after | Four survivors sized; the rule on invented pairs; Q1 on the books; the tie in rupees that proves no rows; 98.5 percent in two rows | S47 to one sentence |
 | Break, 10 | | | | |
-| Chapter 4, missing or malformed, 30 | S38 to S47 | Notebook 04_missing_malformed; ch4 set after | Two decisions sized; keep and flag; discount unknown, never zero; the coerced zero; repair only from an independent source | S41 and S42 to the answer alone |
-| Chapter 5, the bridge to the books, 30 | S48 to S57 | Notebook 05_bridge; ch5 set after | Four proofs sized; the bridge; Monday's tree recomputed; Tuesday smaller; the bulk order kept; the note | Never cut S51 to S55 |
+| Chapter 4, drop, fill or flag, 30 | S49 to S63 | Notebook 04_missing_malformed; ch4 set after | Two decisions sized; each a claim; keep and flag; discount unknown, never zero; the coerced zero; repair only from an independent source | S56 and S57 to the answer alone |
+| Chapter 5, can we prove the 1.9, 30 | S64 to S78 | Notebook 05_bridge; ch5 set after | Four proofs sized; the bridge; Monday's tree recomputed; Tuesday smaller; the bulk order kept; the note | Never cut S68 to S75 |
 
 The ch1 set runs after chapter 1 if the room is ahead, or in the practice lab if not; the same holds
 for every chapter set.
 
-## Afternoon block, 180 minutes
+## How do the afternoon's 180 minutes run?
 
 ```mermaid
 flowchart LR
@@ -58,17 +142,17 @@ flowchart LR
 
 | Part | Slides, half two | Beside it | What must land | If short of time |
 |---|---|---|---|---|
-| Chapter 6, the log the analyst audits, 30 | S1 to S11 | Notebook 06_audit_logs; ch6 set after | Four hand-overs sized; the decisions log; rows tie while rupees do not; the replay | `json.dump` shown as read-back only |
-| Escalated case, 50 | S12, S13 | `notebooks/ex1_escalated_case` and `exercises/unguided/escalated_case` | The full pass alone, with the identity rule and the tree built by the learner; nine notebook letters and ten brief letters; the note | Part 5's note becomes homework |
-| Debrief, 15 | S14, S15 | The room's own numbers | Each wrong number traced to its step | S15 if nobody produced it |
+| Chapter 6, can the analyst replay it, 30 | Cover, S1 (the morning restated), S2 to S15 | Notebook 06_audit_logs; ch6 set after | Four hand-overs sized; the decisions log; the logs read back; rows tie while rupees do not; the auditor's 14; the replay | `json.dump` shown as read-back only, S9 |
+| Escalated case, 50 | S16, D17 | `notebooks/ex1_escalated_case` and `exercises/unguided/escalated_case` | The full pass alone, with the identity rule and the tree built by the learner; nine notebook letters and ten brief letters; the note | Part 5's note becomes homework |
+| Debrief, 15 | S18, S19 | The room's own numbers | Each wrong number traced to its step | S19 if nobody produced it |
 | Break, 10 | | | | |
-| Second case, 40 | S16 to S18 | `notebooks/ex2_auditor` and `exercises/unguided/auditor_question` | "Set aside with a reason", never "dropped"; rows and rupees by segment | Items 3 and 4 aloud only |
-| Interview drill, 20 | S19, S20 | Study notes, "Where this gets tested" | Rule, today's number, the check, in under ninety seconds; the five design questions with a sizing each | The follow-ups to four, keeping two design questions |
-| Kahoot and close, 15 | S21 to S23, D24 self-study | `kahoot/quiz` | The sentence to Anand; the six lines; tomorrow's question left open | Never cut S23 |
+| Second case, 40 | S20 to S22 | `notebooks/ex2_auditor` and `exercises/unguided/auditor_question` | "Set aside with a reason", never "dropped"; rows and rupees by segment | Items 3 and 4 aloud only |
+| Interview drill, 20 | S23, S24 | Study notes, the interview section | Rule, today's number, the check, in under ninety seconds; the five design questions with a sizing each | The follow-ups to four, keeping two design questions |
+| Kahoot and close, 15 | S25 to S27, D28 self-study | `kahoot/quiz` | The day's answer to Anand; the six lines; tomorrow's question left open | Never cut S25 or S27 |
 
 ---
 
-## Each chapter's options, call and second route
+## What does each chapter weigh, choose and check a second way?
 
 | Chapter | The options | The best-fit call, and what would switch it | The second route |
 |---|---|---|---|
@@ -79,7 +163,7 @@ flowchart LR
 | 5 | Take the books; difference of totals; bridge by cause; rebuild from the feed | The bridge; a second source independent of the export and complete for the quarter | Bottom up: the kept orders summed |
 | 6 | Clean file alone; file and a count; logs and control totals; a full diff | Logs and totals; an external auditor re-deriving every row | Replay the log on the raw export |
 
-## The real company in each chapter
+## Which real company faces each chapter's question?
 
 Every fact was checked on 30 September 2026; the provenance holds the URLs.
 
@@ -94,7 +178,7 @@ Every fact was checked on 30 September 2026; the provenance holds the URLs.
 
 ---
 
-## The traps, each with its exact wrong number
+## Which wrong number does each trap produce, and what catches it?
 
 | Chapter | The wrong number | The decision it would mislead | The check that catches it | The fix and what changed |
 |---|---|---|---|---|
@@ -123,7 +207,7 @@ JSONDecodeError: Unterminated string starting at: line 1397 column 15 (char 2767
 
 ---
 
-## Checkpoints
+## What should every learner have at each checkpoint?
 
 | When | Every learner has | If not |
 |---|---|---|
@@ -139,7 +223,7 @@ ch6 1c 2a 3d 4b. The day carries 40 lettered items, 20 of them design.
 
 ---
 
-## What is planted, and what the room should find
+## What is planted, and what if nobody finds it?
 
 Data version v2 from `data/generate_client_zero.py`, client zero v2.2 section 7. Name none of them to
 the room before it finds it.
@@ -165,7 +249,7 @@ Rs 80,53,330 with the refund flagged outside revenue, or Rs 80,50,930 netted.
 
 ---
 
-## The numbers, so you are never caught out
+## Which numbers must the trainer have to hand?
 
 | Number | Value |
 |---|---|
@@ -175,7 +259,7 @@ Rs 80,53,330 with the refund flagged outside revenue, or Rs 80,50,930 netted.
 | Q1 clean, the books; Q2 clean | Rs 1,90,00,000; Rs 1,87,00,000 |
 | Rupees set aside in Q1: corporate copies / consumer copies | Rs 19,67,560 / Rs 30,650 |
 | Revenue change Q1 to Q2: as Tuesday reported / clean | -11.0% / -1.6% |
-| Monday's tree, Q2 over Q1: as Tuesday read it / clean | customers x1.000 / x1.000; orders per customer x0.754 / x0.860 (1.449 to 1.246); revenue per order x1.180 / x1.144 (Rs 1,90,000 to Rs 2,17,442); revenue x0.890 / x0.984 |
+| Monday's tree, Q2 over Q1: as Tuesday read it / clean | customers x1.000 / x1.000; orders per customer x0.754 / x0.860 (1.449 to 1.246); revenue per order x1.180 / x1.144 (Rs 1,90,000 to Rs 2,17,442); revenue x0.890 / x0.984 (Rs 1,90,00,000 to Rs 1,87,00,000) |
 | Q1 and Q2 delivered share over orders with a status, for tomorrow's pre-read check | 67 of 100, 67.0% / 57 of 85, 67.1% |
 | Retail-Plus orders per customer: Tuesday / clean | 2.32 to 1.18, -49.0% / 1.82 to 1.18, -35.0% |
 | Retail-Core orders per customer: Tuesday / clean | -5.3% / -2.7% (1.09 to 1.06) |
@@ -184,15 +268,16 @@ Rs 80,53,330 with the refund flagged outside revenue, or Rs 80,50,930 netted.
 | Fuzzy match: rows flagged / shared with order_id / real rupees removed / pairs compared | 15 / 14 / Rs 17,71,000 / 20,100 |
 | JSON feed: complete records / Q1 among them / amounts agreeing with clean | 119 / 100 / 118 |
 | Hand-over lines: logs and totals / full diff / clean file read against the raw | 24 / 201 / 387 |
+| Decisions log: rows each decision touched | identity rule 15; rejects 0; status 1; discount 55; bulk order 1 (57 beside the rule) |
 | Smallest real order; smallest Business order | Rs 680; Rs 2,03,060 |
 
 ---
 
-## The interview questions, answered in one breath
+## How is each interview question answered in one breath?
 
-The day's one set of twelve: the row's five, two follow-ups and five design questions. The drill asks
-them aloud (S19, S20), the study notes answer them in full, and each chapter's notebook answers its
-own.
+The day's one set of 12: the row's five, two follow-ups and five design questions. The drill asks
+them aloud (half two, S23 and S24), the study notes answer them in full, and each chapter's notebook
+answers its own.
 
 | Tag | Question | One breath |
 |---|---|---|
@@ -200,7 +285,7 @@ own.
 | [S] | Finance and your dashboard disagree; what do you do? | Both are honest arithmetic on different inputs: get Finance's figure to the rupee, profile the source, bridge one move per cause, reconcile rows and rupees, then fix and recompute. |
 | [F] | How do you find duplicates, and what makes two records the same? | The business's identity rule first, rows against distinct keys, one row per key preferring the copy that validates, a reason per row, weighed in money. |
 | [F] | Everything read from a CSV is a string; what breaks and where do you convert? | Arithmetic, comparison and sorting; convert once at the boundary in one function that returns a value or a reason, and log failures. |
-| [D] | An auditor asks why you dropped 14 rows. | Set aside, not dropped: 14 Q1 copies by the order_id rule, the valid copy kept and named on each line, Rs 19,67,560 in two corporate rows, 114 = 100 + 14, the rupees tie and the log replays. |
+| [D] | An auditor asks why you dropped 14 rows. | Set aside with a reason, never dropped: 14 Q1 copies by the order_id rule, the valid copy kept and named on each line, Rs 19,67,560 in two corporate rows, 114 = 100 + 14, the rupees tie and the log replays. |
 | [F] | Row counts reconcile. Done? | No: rows prove nothing vanished, rupees prove the right rows stayed; today's colleague was Rs 1,790 short. |
 | [S] | The largest order is 1.66 times the next. Remove it? | Check the record before the size; keep, flag, show both; removing it turns 1.6 percent into 17.1. |
 | [D] | Design: 2 crore rows. Profile everything, or sample? | Profile: three counts per field in minutes, a defect found wherever it sits; switch to the key and money fields first when the full profile misses the deadline. |
@@ -211,13 +296,13 @@ own.
 
 ---
 
-## The practice lab
+## Who runs the practice lab, and from what?
 
 The TA runs it from `exercises/practice/C2_W01_D03_lab_STUDENT.md` with the note in
 `trainer/C2_W01_D03_lab_note_TRAINER.md`: four problems, about an hour, key 1b 2c 3b 4c 5a 6a 7d 8b 9d
 10a 11b. A learner who did not finish a chapter set in class starts the lab with it.
 
-## Which file for which moment
+## Which file serves which moment?
 
 | Moment | File |
 |---|---|
