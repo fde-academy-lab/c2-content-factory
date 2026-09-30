@@ -936,7 +936,7 @@ kit.check("every segment carries orders in both quarters, so every rate exists",
 **The best-fit call: B, said with C.** The coin flips tell Meera how often chance alone makes her
 headline, which is the question; the rule of thumb is the sentence she remembers. The rule counts
 customers, because more orders from the same few customers add orders and no new evidence: thirty
-orders from two people are still two people's habits. D is the action the answer may lead to, and
+orders from three people are still three people's habits. D is the action the answer may lead to, and
 how long it takes depends on how many customers stand behind the rate, so you size it once you have
 found them. **The fact that would change the call.** A cheap way to buy more orders fast, such
 as a small paid test aimed only at students: then D stops being a wait and becomes a two-week
@@ -1180,7 +1180,7 @@ experiment, and I would propose that."
 Thirty is a habit, and no law: it is roughly where a count of independent observations stops
 swinging wildly from one extra. Orders from the same customer are not independent, since a customer
 who orders once tends to order again, so the observations that count are customers: thirty orders
-from two customers are two observations. The curve below is the coin-flip chance of a 40 percent
+from three customers are three observations. The curve below is the coin-flip chance of a 40 percent
 rise at growing counts of independent buyers, each buying once, the same simulation as section 3.
 '''),
         code('''
