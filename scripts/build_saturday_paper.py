@@ -865,7 +865,7 @@ def recall_only(moved):
 
 RULES_MD = [
     "{minutes} minutes in one sitting. Each part gives its minutes as a guide, not a limit.",
-    "Every item names its format beside its number: {formats}.",
+    "Every item names its format beside its number{head}: {formats}.",
     "Every item also names its level, easy, medium or hard, so you can plan your time. A hard item is "
     "several steps on an exhibit, never an obscure fact.",
     "A wrong answer costs nothing, so answer every item on the line under it.",
@@ -889,7 +889,9 @@ def render_paper_parts(paper, data, date, printed, source, minutes, moved):
            f"Items right: ____ of {n}", "",
            "## What this paper is for", "", " ".join(str(source.get("purpose") or PURPOSE).split()), "",
            "## How this paper works", ""]
-    out += [f"- {r.format(minutes=minutes, formats=formats_phrase(printed))}" for r in RULES_MD]
+    head = (", and a word bank or a match table names it once, above its items"
+            if any(i.get("bank_style") for i in printed) else "")
+    out += [f"- {r.format(minutes=minutes, formats=formats_phrase(printed), head=head)}" for r in RULES_MD]
     if source.get("company"):
         out.append(f"- {' '.join(str(source['company']).split())}")
     out += ["", "## Step one, before Part 1", "",
