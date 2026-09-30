@@ -22,7 +22,7 @@ yourself.
 | 8 | b | The feed was cut from the same extract, so it witnesses what the extract held, never whether a value is right: a flaw in the extract appears in both files. | a: both files can carry the same wrong value. c: agreement on amounts says nothing about repeated ids. d: the complete records are real evidence of what was exported. |
 | 9 | d | 40 rows in, 39 orders kept, 1 line set aside. | a: miscounts the rows read. b and c: the other 39 are distinct orders. |
 | 10 | a | Rupees reconcile when the same orders carry the same total. | b: the copy holds only the orders it holds, a slice of the quarter. c and d: a tolerance hides the gap an analyst ties out to. |
-| 11 | b | A witness that agrees to the rupee confirms what it holds and nothing more, which is worth one line in the note. | a: a slice of the export cannot replace the whole of it. c: it covers only the rows it holds. d: a small witness still confirms. |
+| 11 | b | A copy that agrees to the rupee shows the orders it holds match your clean file, and nothing past them, which is worth one line in the note. | a: a slice of the export cannot replace the whole of it. c: it covers only the rows it holds. d: a small copy still checks the orders it holds. |
 
 ## The part worth arguing about
 

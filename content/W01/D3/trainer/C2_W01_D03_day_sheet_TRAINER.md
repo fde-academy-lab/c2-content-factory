@@ -41,7 +41,7 @@ Every chapter runs the same thirty minutes: the need (3), the real company (2), 
 | Chapter 2, the rows that repeat, 30 | S18 to S26 | Notebook 02_duplicates; ch2 set after | Four keys sized; the dedupe that finds nothing; 15 orders twice; same count, other rows | S25 to one sentence |
 | Chapter 3, the copy that stays, 30 | S27 to S37 | Notebook 03_identity_rule; ch3 set after | Four survivors sized; the rule; Q1 on the books; the tie in rupees that proves no rows; 98 percent in two rows | S36 to one sentence |
 | Break, 10 | | | | |
-| Chapter 4, missing or malformed, 30 | S38 to S47 | Notebook 04_missing_malformed; ch4 set after | Two decisions sized; keep and flag; discount unknown, never zero; the coerced zero; repair only from a witness | S41 and S42 to the answer alone |
+| Chapter 4, missing or malformed, 30 | S38 to S47 | Notebook 04_missing_malformed; ch4 set after | Two decisions sized; keep and flag; discount unknown, never zero; the coerced zero; repair only from an independent source | S41 and S42 to the answer alone |
 | Chapter 5, the bridge to the books, 30 | S48 to S57 | Notebook 05_bridge; ch5 set after | Four proofs sized; the bridge; Monday's tree recomputed; Tuesday smaller; the bulk order kept; the note | Never cut S51 to S55 |
 
 The ch1 set runs after chapter 1 if the room is ahead, or in the practice lab if not; the same holds

@@ -1046,7 +1046,7 @@ def ch4():
                    'print(len(clean), "orders kept;", len(set_aside), "rows set aside;", len(rejects), "in the rejects log")'),
         mapcell(4, ["the options\\ntwo decisions, sized", "1. a missing status\\ndrop, default or flag",
                     "2. a missing discount\\nzero or unknown", "3. the trap\\ncoerced to zero",
-                    "4. repair from a witness\\nonly an independent one", "a second route\\nthe profile against the logs"]),
+                    "4. repair from a source\\nonly an independent one", "a second route\\nthe profile against the logs"]),
         md('''
         ## The options
 
@@ -1284,7 +1284,7 @@ def ch4():
         moves: here dropping costs Rs 1,850 of booked revenue, a default adds a delivery nobody recorded,
         and keep and flag moves nothing and says so. For money I never fill."
 
-        **Design. Coerce, reject or repair a malformed amount?** "Reject to a log by default, since a
+        **[D] Design. Coerce, reject or repair a malformed amount?** "Reject to a log by default, since a
         coerced zero is a false value and hides the defect from every later check. Repair only from an
         independent source, and name it. I would switch to repair-by-rule only for a known format issue,
         such as a thousands separator, where the rule is exact and tested."
