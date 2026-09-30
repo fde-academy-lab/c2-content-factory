@@ -819,6 +819,37 @@ def stretch_intro(written, recalled, recall_only=True):
 RECALL_TYPES = ("Fill in the blank", "True or false")
 
 
+def join_or(phrases, last="or"):
+    """a; a or b; a, b, or c."""
+    if len(phrases) < 3:
+        return f" {last} ".join(phrases)
+    return ", ".join(phrases[:-1]) + f", {last} " + phrases[-1]
+
+
+KIND_ORDER = ["one", "multi", "tf", "bank", "match", "line", "working", "order"]
+
+
+def formats_phrase(printed):
+    """The answer formats the rules name: only the ones this paper prints, in a fixed order."""
+    kinds = {answer_kind(i) for i in printed}
+    said = dict(FORMAT, working="show the working and the answer")
+    return join_or([said[k] for k in KIND_ORDER if k in kinds])
+
+
+ANSWERS = {"one": "one box for a lettered item", "multi": "every correct box for a starred one",
+           "tf": "T or F for a statement", "bank": "the letter for a word-bank or match item",
+           "written": "the number or the letters in order in the space"}
+
+
+def answers_phrase(printed):
+    """The answer sheet's rule, naming only the kinds of answer this paper asks for."""
+    kinds = {answer_kind(i) for i in printed}
+    kinds = {"bank" if k == "match" else "written" if k in ("line", "working", "order") else k
+             for k in kinds}
+    return join_or([ANSWERS[k] for k in ("one", "multi", "tf", "bank", "written") if k in kinds],
+                   last="and")
+
+
 def bank_phrase(printed, where):
     """The words a rule spends on word banks and match tables, only on a paper that prints one."""
     if not any(i.get("bank_style") for i in printed):
@@ -834,8 +865,7 @@ def recall_only(moved):
 
 RULES_MD = [
     "{minutes} minutes in one sitting. Each part gives its minutes as a guide, not a limit.",
-    "Every item names its format beside its number: circle one letter, circle every correct letter, "
-    "write T or F, {bank}write the word or number, show the working, or write the letters in order.",
+    "Every item names its format beside its number: {formats}.",
     "Every item also names its level, easy, medium or hard, so you can plan your time. A hard item is "
     "several steps on an exhibit, never an obscure fact.",
     "A wrong answer costs nothing, so answer every item on the line under it.",
@@ -859,7 +889,7 @@ def render_paper_parts(paper, data, date, printed, source, minutes, moved):
            f"Items right: ____ of {n}", "",
            "## What this paper is for", "", " ".join(str(source.get("purpose") or PURPOSE).split()), "",
            "## How this paper works", ""]
-    out += [f"- {r.format(minutes=minutes, bank=bank_phrase(printed, 'rules'))}" for r in RULES_MD]
+    out += [f"- {r.format(minutes=minutes, formats=formats_phrase(printed))}" for r in RULES_MD]
     if source.get("company"):
         out.append(f"- {' '.join(str(source['company']).split())}")
     out += ["", "## Step one, before Part 1", "",
@@ -1430,9 +1460,8 @@ def docx_spec(paper, data, date, printed, source, minutes, notes, moved=()):
         ["Tools", "Pen and this paper only: no laptop, no phone, no notes and no assistant. Rough "
                   "working goes in the margins and in the working boxes."],
         ["Answers", "Every answer goes on the answer sheet at the back, which is the page that is "
-                    "marked: one box for a lettered item, every correct box for a starred one, T or F "
-                    f"for a statement, {bank_phrase(printed, 'answers')}and the number or the "
-                    "letters in order in the space. A wrong answer costs nothing, so answer every item."],
+                    f"marked: {answers_phrase(printed)}. A wrong answer costs nothing, so answer every "
+                    "item."],
         ["Levels", "Every item shows its level beside its number, easy, medium or hard. A hard item is "
                    "several steps on an exhibit, never an obscure fact."],
         ["Exhibits", "An exhibit is printed once, labelled by its part as Exhibit 2A, 2B, and every item "
