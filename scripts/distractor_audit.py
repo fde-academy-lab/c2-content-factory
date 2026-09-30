@@ -149,11 +149,21 @@ def keys_from_solutions(path):
     """
     stem = path.stem.replace("_STUDENT", "")
     folder = path.parent
-    candidates = []
+    # The file named for this exercise wins: C2_W01_D01_second_case_STUDENT.md is keyed from
+    # C2_W01_D01_second_case_solution_STUDENT.md. Matching on the last word alone paired it with
+    # the escalated case's solutions, since both names end in "case", so that match is only the
+    # fallback for a solutions file named differently from its exercise.
+    exact, loose = [], []
     for root in (folder, folder.parent / "solutions", folder.parent.parent / "exercises" / "solutions"):
         if root.is_dir():
-            candidates += [p for p in root.glob("*.md") if stem.split("_")[-1] in p.stem
-                           or p.stem.startswith(stem)]
+            for p in sorted(root.glob("*.md")):
+                if p == path:
+                    continue
+                if p.stem.startswith(stem + "_"):
+                    exact.append(p)
+                elif stem.split("_")[-1] in p.stem:
+                    loose.append(p)
+    candidates = list(dict.fromkeys(exact + loose))
     if (folder.parent / "answer-key").is_dir():
         candidates += sorted((folder.parent / "answer-key").glob("*.md"))
     keys = {}
@@ -281,7 +291,8 @@ def main():
 
     # Only the folders that hold answerable items. A deck, a brief or a day sheet may carry a
     # lettered list, and auditing it as a quiz reports failures nobody can act on.
-    AUDITED = {"unguided", "guided", "exercises", "kahoot", "paper", "answer-key", "notebooks"}
+    AUDITED = {"unguided", "guided", "practice", "exercises", "kahoot", "paper", "answer-key",
+               "notebooks"}
     files = []
     for t in targets:
         if t.is_dir():
@@ -317,7 +328,11 @@ if __name__ == "__main__":
 #     Reads the inline `<- correct` markers, reports the key-position spread, and exits 0 when
 #     no key is the longest option and no position holds more than half the keys.
 # scripts/distractor_audit.py content/W01/D3
-#     Audits every exercise and quiz under the day, one report line each.
+#     Audits every exercise and quiz under the day, the practice lab set included, one report
+#     line each.
+# content/W01/D1/exercises/unguided/C2_W01_D01_second_case_STUDENT.md
+#     Keyed from C2_W01_D01_second_case_solution_STUDENT.md, never from the escalated case's
+#     solutions, although both exercise names end in "case".
 # An exercise whose key is 40 characters longer than every distractor
 #     One FAIL line naming both lengths, and exit 1.
 # An exercise with lettered options and no Answers line in its solutions file

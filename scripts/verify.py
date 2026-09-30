@@ -17,12 +17,14 @@ This one command then calls the five proof scripts, so a pack is proved by runni
 
 Decks route by extension. The markdown source always goes to deck_md_check.py. A built .pptx goes
 to deck_check.py only when it is newer than the markdown it came from, since a stale pptx measures
-a deck nobody is shipping; a stale one is named and skipped instead.
+a deck nobody is shipping; a stale one is named and skipped instead. Every built .pptx is also read
+for mermaid source printed on a slide, which is what a deck built on a broken mermaid-cli shows in
+place of its diagrams.
 
 A proof script that cannot run in this session (no browser, no LibreOffice) reports what it could
 not do and does not fail the gate. A proof script that finds a real defect does fail it.
 """
-import sys, re, json, pathlib, subprocess
+import sys, re, json, pathlib, subprocess, zipfile
 
 BANNED = ["Additionally","Moreover","However","Hence","Thus","Nonetheless","Furthermore","Accordingly",
           "Indeed","Dynamic","comprehensive","robust","holistic","seamless","delve",
@@ -45,6 +47,8 @@ INVISIBLE = re.compile("[\u200b\u200c\u200d\u2060\ufeff\u200e\u200f\u202a-\u202e
 FACULTY_MENTION = re.compile(r"[^.\n]*\b(IITGN faculty|faculty session|faculty block)\b[^.\n]*",
                              re.IGNORECASE)
 DAYS_JSON = pathlib.Path(__file__).resolve().parent.parent / "data" / "programme" / "days.json"
+MERMAID_SOURCE = re.compile(r"\b(flowchart (LR|RL|TD|TB|BT)|graph (LR|RL|TD|TB|BT)|xychart-beta|"
+                            r"sequenceDiagram|classDef \w)")
 
 # Build weeks per the Structure tab: 3, 6 and 9 in this workbook, then 12 and 15 later in the
 # programme. They ship the build-week pack instead of the teaching manifest, so their folders differ.
@@ -256,6 +260,13 @@ def run_proofs(target):
         fails += len(stale_doc) + len(missing_doc)
 
     built = [p for p in files if p.parent.name == "slides" and p.suffix == ".pptx"]
+    for pptx in built:
+        code = mermaid_on_slides(pptx)
+        if code:
+            print(f"\nFAIL  {pptx.name}: slide(s) {', '.join(map(str, code))} print mermaid source "
+                  f"where a diagram belongs, so mermaid-cli failed when the deck was built. Rebuild "
+                  f"it with scripts/build_deck.py once mmdc renders.")
+            fails += 1
     fresh = []
     for pptx in built:
         source = pptx.with_suffix(".md")
@@ -275,6 +286,17 @@ def run_proofs(target):
         fails += run_proof("deck_check.py", fresh, "every text box on the built deck fits")
 
     return fails
+
+
+def mermaid_on_slides(pptx):
+    """The slide numbers whose text carries mermaid source, in slide order."""
+    try:
+        with zipfile.ZipFile(pptx) as z:
+            names = [n for n in z.namelist() if re.fullmatch(r"ppt/slides/slide\d+\.xml", n)]
+            return sorted(int(re.search(r"(\d+)\.xml$", n).group(1)) for n in names
+                          if MERMAID_SOURCE.search(z.read(n).decode("utf-8", "ignore")))
+    except zipfile.BadZipFile:
+        return []
 
 
 def main():
