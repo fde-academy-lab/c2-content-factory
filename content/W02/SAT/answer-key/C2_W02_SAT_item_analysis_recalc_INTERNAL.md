@@ -1,6 +1,6 @@
 # Recalculation manifest: Week 2 item analysis
 
-INTERNAL. Written by `scripts/build_saturday_paper.py --docx` beside the workbook and read by `scripts/xlsx_recalc.py`. As shipped, no marks are entered. The flip marks six seats on the first five items so that seat 1 tops the room and seat 6 sits at the bottom, Q2 is right once in six, and on Q3 the bottom third beats the top third; both flags, the bands and the discussion order must follow.
+INTERNAL. Written by `scripts/build_saturday_paper.py --docx` beside the workbook and read by `scripts/xlsx_recalc.py`. As shipped, no marks are entered. The flip marks six seats on the first five items so that seat 1 tops the room and seat 6 sits at the bottom, Q2 is right once in six, and on Q3 the bottom third beats the top third; both flags, the bands and the discussion order must follow. The same six seats rate Part 1 as 3, 4, 2, 3, 1 and 4, so two of them (seats 4 and 6) rated it 3 or 4 and got under half of it right.
 
 ```yaml
 workbook: C2_W02_SAT_item_analysis_TRAINER.xlsx
@@ -8,6 +8,9 @@ verdicts:
 - sheet: Discussion
   cell: B2
   expect: No marks entered yet.
+- sheet: Ratings
+  cell: D43
+  expect: '0'
 flips:
 - name: six seats marked on the first five items
   set:
@@ -101,6 +104,24 @@ flips:
   - sheet: Marks
     cell: F10
     value: 0
+  - sheet: Ratings
+    cell: B5
+    value: 3
+  - sheet: Ratings
+    cell: B6
+    value: 4
+  - sheet: Ratings
+    cell: B7
+    value: 2
+  - sheet: Ratings
+    cell: B8
+    value: 3
+  - sheet: Ratings
+    cell: B9
+    value: 1
+  - sheet: Ratings
+    cell: B10
+    value: 4
   verdicts:
   - sheet: Discussion
     cell: B2
@@ -123,4 +144,7 @@ flips:
   - sheet: Marks
     cell: BG7
     expect: middle
+  - sheet: Ratings
+    cell: D43
+    expect: '2'
 ```

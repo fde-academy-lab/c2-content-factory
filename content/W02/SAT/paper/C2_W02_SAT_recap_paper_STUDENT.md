@@ -131,8 +131,8 @@ Which statements about WHERE and HAVING are correct? Mark every correct option.
 
 a) WHERE filters rows before grouping.
 b) HAVING filters groups after aggregation.
-c) HAVING can use COUNT(*).
-d) WHERE can use COUNT(*).
+c) HAVING can compare COUNT(*) with a number.
+d) WHERE can compare COUNT(*) with a number.
 
 #### Q15 · Easy · show the working, then the answer
 
@@ -186,7 +186,7 @@ d) Some orders have more than one payment row.
 Which query lists the orders that were paid twice?
 
 a) SELECT order_id FROM payments GROUP BY order_id HAVING COUNT(*) > 1
-b) SELECT DISTINCT order_id FROM payments
+b) SELECT DISTINCT order_id FROM payments ORDER BY order_id
 c) SELECT order_id FROM payments ORDER BY order_id
 d) SELECT order_id FROM payments WHERE COUNT(order_id) > 1 GROUP BY order_id
 
@@ -253,7 +253,7 @@ Anand asks for the unpaid orders. Which pattern finds them?
 a) LEFT JOIN, then WHERE payments.order_id IS NULL
 b) INNER JOIN, then WHERE payments.amount_paid IS NULL
 c) GROUP BY order_id HAVING COUNT(*) > 1
-d) ORDER BY paid_at
+d) RIGHT JOIN, then WHERE orders.order_id IS NULL
 
 #### Q26 · Medium · write T or F
 
@@ -318,7 +318,7 @@ d) SUM is approximate for large partitions, so its result drifts slightly.
 Which questions need a window function, because GROUP BY alone cannot answer them? Mark every correct option.
 
 a) each customer's rank within a segment
-b) total revenue per segment
+b) each segment's total revenue for the quarter
 c) each month's spend beside the same customer's previous month
 d) a running total by date with every row kept
 
@@ -327,7 +327,7 @@ d) a running total by date with every row kept
 The head of Retail-Plus wants ties ranked the same and wants to know how many members made the top fifty. Which statements are true? Mark every correct option.
 
 a) ROW_NUMBER breaks ties arbitrarily, so it does not meet the ask.
-b) RANK gives tied members the same rank.
+b) RANK gives members who tie the same rank.
 c) With RANK, a tie at position fifty can ship fifty-one rows.
 d) ROW_NUMBER always ships more than fifty rows.
 
@@ -440,7 +440,7 @@ d) De-duplicating the orders export before anyone computes revenue from it.
 
 Which statements about pandas merge are true? Mark every correct option.
 
-a) It is the pandas form of a SQL join.
+a) It is the pandas form of a SQL join on a key.
 b) validate= can make a fan-out fail loudly.
 c) It always keeps the row count of the left table.
 d) Checking the row count before and after is still worth doing.

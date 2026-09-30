@@ -183,9 +183,9 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q14, key a, b, c
 
-**Why it holds.** WHERE filters rows before grouping, HAVING filters groups after aggregation, and HAVING can use COUNT(*).
+**Why it holds.** WHERE filters rows before grouping, HAVING filters groups after aggregation, and HAVING can compare COUNT(*) with a number, as in HAVING COUNT(*) > 1.
 
-- (d) An aggregate in WHERE is an error, because WHERE runs before the groups exist.
+- (d) WHERE cannot compare COUNT(*) with anything: an aggregate in WHERE is an error, because WHERE runs before the groups exist.
 
 **In the interview.** WHERE filters rows before the aggregate, HAVING filters groups after it, and only HAVING can use COUNT.
 
@@ -225,7 +225,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **Why it holds.** GROUP BY order_id with HAVING COUNT(*) > 1 returns every order with more than one payment row.
 
-- (b) DISTINCT lists every paid order once and hides the duplicates it was meant to find.
+- (b) DISTINCT lists every paid order once, and the ORDER BY only sorts that list, so the duplicates it was meant to find are hidden.
 - (c) Sorting puts the duplicates next to each other and still returns every order.
 - (d) An aggregate in WHERE is an error, because WHERE runs before any group exists.
 
@@ -276,7 +276,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 - (b) An INNER JOIN has already dropped the unpaid orders, so there is nothing left to find.
 - (c) This lists the double-paid orders, a different list.
-- (d) Sorting by payment time finds nothing; it only orders the rows.
+- (d) A RIGHT JOIN with IS NULL on the orders side is the anti-join from the other side: it lists the payments whose order is missing, as step A7 of Tuesday's round 3 did, and never an unpaid order.
 
 **In the interview.** Left join, then keep the rows whose payment key IS NULL.
 
@@ -336,7 +336,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **Why it holds.** A rank within a segment, a previous month beside this one, and a running total with every row kept all need a value computed across rows while each row stays.
 
-- (b) Total revenue per segment is one aggregate per group, which GROUP BY answers alone.
+- (b) A segment's total for the quarter is one aggregate per group, which GROUP BY answers alone.
 
 **In the interview.** Use a window when the answer needs other rows while every row stays; use GROUP BY when one row per group is the answer.
 
@@ -568,12 +568,16 @@ These options differ from the tracker's wording, each for the reason given besid
 
 - Q55 (bank 19), option b (proposed): The key was the longest option.
 - Q18 (bank 22), option c (proposed): The key was the longest option; the new distractor is the fan-out misread in reverse.
-- Q19 (bank 23), option d (proposed): The key was the longest option; the distractor is now the full query with the aggregate in WHERE.
+- Q19 (bank 23), option b, d (proposed): The key was the longest option; the distractor is now the full query with the aggregate in WHERE. Option b then ran 38 characters against 73, so it now sorts its distinct list too, and the options run 47 to 73.
 - Q40 (bank 29), option a (proposed): The key was the longest option.
 - Q43 (bank 32), option c (proposed): The key was the longest option.
+- Q14 (bank 33), option c, d (proposed): Options ran 22 to 39 characters, with c at 23 and d at 22 against b at 39; c and d now say which clause can compare COUNT(*) with a number, and the options run 34 to 41.
 - Q21 (bank 34), option d (proposed): The font was a nonsense option, so striking it left a, b and c, which is the whole key; the new distractor is a check that sounds like the other three and cannot catch a fan-out.
+- Q32 (bank 36), option b (proposed): Option b ran 25 characters against 60; it now names the quarter its total covers, and the options run 37 to 60.
+- Q33 (bank 37), option b (proposed): Option b, part of the key, ran 37 characters against 63; it now says who ties, and the options run 40 to 63.
+- Q44 (bank 38), option a (proposed): Option a, part of the key, ran 35 characters against 60; it now says the join is on a key, and the options run 40 to 60.
 - Q45 (bank 39), option d (proposed): Cell colour was a nonsense option, so striking it left a, b and c, which is the whole key; the new distractor is the precision a room reaches for when a number is misread.
-- Q25 (bank 42), option b (proposed): The key was the longest option; the distractor keeps the table-qualified column the key uses.
+- Q25 (bank 42), option b, d (proposed): The key was the longest option; the distractor keeps the table-qualified column the key uses. Option d ran 16 characters against 51; it is now the anti-join from the payments side, which finds payments with no order, and the options run 37 to 51.
 - Q37 (bank 47), option a (proposed): The key was the longest option.
 - Q49 (bank 51), option a (proposed): The key was the longest option.
 
