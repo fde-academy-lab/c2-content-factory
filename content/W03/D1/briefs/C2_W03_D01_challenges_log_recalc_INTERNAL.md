@@ -11,7 +11,7 @@ verdicts:
 flips:
   - name: entry one logged and still open
     set:
-      - {sheet: Log, cell: E5, value: "We could not say what a home collection is in the files"}
+      - {sheet: Log, cell: E5, value: "We could not say what an at-home collection is in the files"}
       - {sheet: Log, cell: I5, value: "open"}
       - {sheet: Log, cell: K5, value: 20}
     verdicts:
@@ -20,7 +20,7 @@ flips:
       - {sheet: Log, cell: A5, expect: "1"}
   - name: entry one resolved
     set:
-      - {sheet: Log, cell: E5, value: "We could not say what a home collection is in the files"}
+      - {sheet: Log, cell: E5, value: "We could not say what an at-home collection is in the files"}
       - {sheet: Log, cell: I5, value: "resolved"}
     verdicts:
       - {sheet: Summary, cell: B11, expect: "All 1 resolved: the log is ready for the viva"}
