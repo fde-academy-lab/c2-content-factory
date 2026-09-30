@@ -36,8 +36,8 @@ lookup line that brings each order its customer's segment, which is tomorrow's t
 
 **What came before.** Week 1 built the tree from files: an extract of the two quarters, cleaned and
 reconciled to Rs 1.90 crore for Q1 and Rs 1.87 crore for Q2, a fall of 1.6 percent, with Retail-Plus
-members ordering less often. Every right answer today was already known; the attention went to the
-language.
+members ordering less often. Most of today's answers were known from Week 1, the warehouse's
+differences are stated where they arise, and the attention went to the language.
 
 **What comes next.** Tuesday joins payments to orders to separate booked revenue from collected
 revenue, and a join is the first operation this week that can change the number of rows. Wednesday
@@ -97,12 +97,28 @@ FROM   orders
 WHERE  quarter = 'Q1';
 ```
 
-Q1 books 538 orders and Rs 10,00,00,000; Q2 books 462 orders and Rs 9,84,00,000. Week 1's extract
-said Rs 1.90 crore and Rs 1.87 crore. The totals differ by about five times, because last week's
-files were an extract of 186 cleaned orders and the warehouse holds the whole book of 1,000. The
-rate agrees: both fall 1.6 percent. Retail-Plus orders fall 34.9 percent in the book against 35.0 in
-the extract. When a source changes, the number that must carry over is the rate, and here it does,
-so the warehouse is the source from now on.
+Q1 books 538 orders and Rs 10,00,00,000; Q2 books 462 orders and Rs 9,84,00,000. Week 1's file
+said Rs 1.90 crore and Rs 1.87 crore. Last week's file held 186 cleaned orders and the warehouse
+holds 1,000, and the two share no order id and no customer id, so they are different records of the
+same two quarters. The totals differ by about five times and the fall agrees, 1.6 percent in both.
+One leaf agreeing is not the tree agreeing, so every leaf goes beside its Week 1 number:
+
+| Leaf | Week 1 file | Warehouse | What explains it |
+|---|---|---|---|
+| Book revenue | 1.6% down | 1.6% down | The two agree. |
+| Book revenue per order | 14.4% up | 14.6% up | The two agree to 0.2 points. |
+| Book customers who bought | 69 and 69, flat | 244 to 227, 7.0% down | The files hold different customers, and no source says why last week's count was flat; the warehouse is the book of record. |
+| Book orders per customer | 14.0% down | 7.7% down | Orders fall about 14 percent in both, and the warehouse's customers fall too, so its frequency falls less. |
+| Retail-Plus customers | 22 and 22, flat | 91 to 76, 16.5% down | The files hold different members, and no source explains the flat count; the warehouse is the book of record. |
+| Retail-Plus orders per customer | 35.0% down | 22.0% down | Orders fall 35 percent in both and 16.5 percent fewer members bought, so each buyer's frequency falls 22.0 percent. |
+| Retail-Plus orders | 35.0% down | 34.9% down | The two agree. |
+| Retail-Plus revenue per order | 5.7% up | 8.4% up | The sources do not say why, and the warehouse is the book of record. |
+| Retail-Plus revenue | 31.3% down | 29.4% down | Revenue is orders times order value, so it carries the order-value gap. |
+
+Week 1's direction holds: Retail-Plus orders fell by a third and its members ordered less often.
+The warehouse adds what the smaller file could not show, members who bought nothing in Q2. From now
+on the warehouse is the source, and Anand's sheet says in one line where it differs from last
+week's.
 
 **The trap: 1,000 customers.** The next leaf is customers. The quickest query is
 `SELECT count(*) AS customers FROM orders;`, and it prints 1,000. Divide the orders by it and orders
@@ -280,11 +296,12 @@ The five rules it is audited against: revenue is booked revenue and the comment 
 is counted once; every ratio is divided in numeric and rounded on purpose; every list has an `ORDER
 BY` on a unique key; a step that feeds another step is a named CTE.
 
-The sentence to Anand: booked revenue fell 1.6 percent from Q1 to Q2, the same fall last week's
-extract showed, so the warehouse agrees with the note Meera accepted. The fall sits in Retail-Plus,
-down 29.4 percent: its members ordered less often, 2.36 to 1.84 per quarter, and fewer bought at all,
-91 to 76; the other segments moved under 2 percent or grew. This is booked revenue, and Student's Q1
-rate rests on 27 orders. Tomorrow's step is collected revenue.
+The sentence to Anand: booked revenue fell 1.6 percent from Q1 to Q2, Rs 16,00,000, the same rate
+last week's file showed. The rupees fell in Business, which carries 99.1 percent of revenue and lost
+Rs 14,29,840 on a 1.4 percent dip; Retail-Plus lost Rs 1,72,390. The orders fell in Retail-Plus: it
+lost 75 of the book's 76 fewer orders, its members ordered less often, 2.36 to 1.84 per quarter, and
+fewer bought at all, 91 to 76. This is booked revenue, Student's Q1 rate rests on 27 orders, and the
+warehouse counts different customers from last week's file. Tomorrow's step is collected revenue.
 
 ---
 

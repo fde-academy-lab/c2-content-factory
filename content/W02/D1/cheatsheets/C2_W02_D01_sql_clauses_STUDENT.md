@@ -89,8 +89,8 @@ step and every table.
 
 ## Panel 7: The sentence to Anand
 
-Claim, booked revenue fell 1.6 percent, as last week's extract showed. Evidence, the fall sits in
-Retail-Plus frequency, 2.36 to 1.84 orders per customer. Caveat, booked revenue, and a thin cell
-flagged. Next step, collected revenue.
+Claim, booked revenue fell 1.6 percent, the rate last week's file showed. Evidence, the rupees fell
+in Business, 99.1 percent of revenue; the orders and the frequency fell in Retail-Plus, 2.36 to
+1.84 orders per customer. Caveat, booked revenue, a thin cell flagged. Next step, collected revenue.
 
 **Crux:** A number the analyst cannot rerun is a number the analyst cannot sign.

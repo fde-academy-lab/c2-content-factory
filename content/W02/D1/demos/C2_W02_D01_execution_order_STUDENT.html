@@ -860,8 +860,8 @@ LIMIT  5;</div>
   var WALK = [
     { t: "Anand's ask", x: "Last week's tree, every Monday, for every segment and channel, computed in the warehouse. His analyst audits every query line by line.",
       pic: function () { return K.flow(["the warehouse\n1,000 orders", "six queries\nthe Monday suite", "the analyst\naudits each line", "Anand's sheet\nevery Monday"], 3); } },
-    { t: "Rung 1: is it the book?", x: "Week 1's extract said Rs 1.90 crore and Rs 1.87 crore; the warehouse says Rs 10.00 crore and Rs 9.84 crore. Totals differ by scale and the fall agrees, 1.6 percent in both, so the warehouse is the source.",
-      pic: function () { return K.columns(["Week 1 extract", "The warehouse"], [["Q1 = 100", [100, 100]], ["Q2", [98.4, 98.4]]], { title: "Q2 as an index on Q1 = 100", fmt: function (v) { return v.toFixed(1); } }); } },
+    { t: "Rung 1: is it the book?", x: "Every leaf against Week 1's file. Revenue falls 1.6 percent in both, and Retail-Plus orders about 35 percent in both. Customers do not agree: Week 1 had the same buyers in both quarters, the warehouse has fewer in Q2, and the two files share no customer id, so the warehouse is the book of record. Frequency is orders over customers, so it follows the customer count.",
+      pic: function () { return K.columns(["Book customers", "Book revenue", "Plus customers", "Plus frequency", "Plus orders"], [["Week 1 file", [100, 98.4, 100, 65.0, 65.0]], ["The warehouse", [93.0, 98.4, 83.5, 78.0, 65.1]]], { title: "Q2 as an index on Q1 = 100: the customer leaves part company", fmt: function (v) { return v.toFixed(1); }, lit: [0, 2, 3] }); } },
     { t: "Rung 1: who is a customer?", x: "count(*) over orders reads 1,000, which would put orders per customer at 1.00. Counted once each, 301 customers bought; 340 members sit on the book.",
       pic: function () { return K.columns(["order rows", "on the book", "who bought"], [["count", [1000, 340, 301]]], { title: "Three counts, three questions", lit: [2] }); } },
     { t: "Rung 2: per segment, per quarter", x: "GROUP BY gives eight rows. Divided as integers, Retail-Plus frequency reads 2 then 1 and Retail-Core 1 then 2; divided in numeric, 2.36 then 1.84, and 1.95 then 2.01.",
@@ -870,7 +870,7 @@ LIMIT  5;</div>
       pic: function () { return K.bridge(["Q1 revenue", 585770], [["fewer customers", -96555], ["fewer orders each", -107784], ["bigger orders", 31949]], { endLabel: "Q2 revenue", lit: [1], title: "Retail-Plus, Q1 to Q2; the axis starts at Rs 3 lakh so the moves stay visible", lo: 300000 }); } },
     { t: "Rung 3: who is averaged", x: "Spend per member read 15.5 percent down while avg skipped 31 members who stopped. Counting them as Rs 0, the fall is 29.4 percent, the same as the segment's revenue.",
       pic: function () { return K.columns(["Q1", "Q2"], [["NULLs skipped", [6437, 5439]], ["Rs 0 counted", [5474, 3863]]], { title: "Spend per Retail-Plus member", fmt: K.rupees }); } },
-    { t: "Rungs 4 and 5: the suite, then the channels", x: "Six queries the analyst reruns every Monday, and the same tree by channel in the practice lab. The sentence to Anand: the 1.6 percent fall sits in Retail-Plus frequency.",
+    { t: "Rungs 4 and 5: the suite, then the channels", x: "Six queries the analyst reruns every Monday, and the same tree by channel in the practice lab. The sentence to Anand: the rupees fell in Business, which carries 99.1 percent of revenue, and the orders and the frequency fell in Retail-Plus.",
       pic: function () { return K.flow(["1. the book", "2. customers", "3. the leaves", "4. typical order", "5. thin cells", "6. what moved"], 5, { width: 120 }); } }
   ];
   var walkAt = 0;
