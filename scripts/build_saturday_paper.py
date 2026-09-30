@@ -51,6 +51,8 @@ new edit reaches a built Saturday with one sync; a new Saturday starts with this
 """
 import argparse
 import datetime as dt
+from decimal import ROUND_HALF_UP, Decimal
+from fractions import Fraction
 import json
 import pathlib
 import re
@@ -303,22 +305,23 @@ def moved_items(data, source):
 
 
 def guess_chance(item):
-    """The chance a blind guess gets the item right: 1/k on one of k options, 1/2 on true or false,
-    1/(2**k - 1) on a more-than-one item read as any non-empty choice, 1/k! on an ordering of k
-    steps, and 0 on a written answer, since a word or a number is not guessed from a list."""
+    """The chance a blind guess gets the item right, as an exact fraction: 1/k on one of k options,
+    1/2 on true or false, 1/(2**k - 1) on a more-than-one item read as any non-empty choice, 1/k! on
+    an ordering of k steps, and 0 on a written answer, since a word or a number is not guessed from
+    a list."""
     import math
     _, options, answer = parts(item)
     key = item["key"].strip().lower()
     if item["type"] == "Order the steps":
-        return 1 / math.factorial(len(options)) if options else 0.0
+        return Fraction(1, math.factorial(len(options))) if options else Fraction(0)
     if item["type"] == "True or false" or key in ("t", "f", "true", "false"):
-        return 0.5
+        return Fraction(1, 2)
     if options and answer is None:
         k = len(options)
         if item["type"] == "More than one correct" or MULTI.match(key):
-            return 1 / (2 ** k - 1)
-        return 1 / k
-    return 0.0
+            return Fraction(1, 2 ** k - 1)
+        return Fraction(1, k)
+    return Fraction(0)
 
 
 MULTI = re.compile(r"^[a-f](\s*,\s*[a-f])+$")
@@ -326,23 +329,33 @@ MULTI = re.compile(r"^[a-f](\s*,\s*[a-f])+$")
 
 def guessing_floor(printed):
     """(mean, cut): what blind guessing on every item averages, and the smallest score that fewer
-    than one guesser in twenty reaches, from the exact distribution of the sum."""
-    dist = [1.0]
+    than one guesser in twenty reaches, from the exact distribution of the sum.
+
+    The arithmetic runs in fractions, so the printed mean and the cut are the same on every machine:
+    a mean that sits on a rounding boundary in floating point, such as 10.95, rounds one way on one
+    runner and the other way on the next."""
+    dist = [Fraction(1)]
     for item in printed:
         pr = guess_chance(item)
-        nxt = [0.0] * (len(dist) + 1)
+        nxt = [Fraction(0)] * (len(dist) + 1)
         for k, v in enumerate(dist):
             nxt[k] += v * (1 - pr)
             nxt[k + 1] += v * pr
         dist = nxt
-    mean = sum(k * v for k, v in enumerate(dist))
-    tail, cut = 0.0, len(dist) - 1
+    mean = sum((guess_chance(i) for i in printed), Fraction(0))
+    tail, cut = Fraction(0), len(dist) - 1
     for k in range(len(dist) - 1, -1, -1):
         tail += dist[k]
-        if tail > 0.05:
+        if tail > Fraction(1, 20):
             cut = k + 1
             break
     return mean, cut
+
+
+def one_place(x):
+    """A fraction to one decimal place, halves rounded up, the same on every machine."""
+    d = Decimal(x.numerator) / Decimal(x.denominator)
+    return str(d.quantize(Decimal("0.1"), rounding=ROUND_HALF_UP))
 
 
 def part_rows(printed, source):
@@ -620,7 +633,7 @@ def cell(v):
 def floor_sentence(printed):
     mean, cut = guessing_floor(printed)
     n = len(printed)
-    return (f"A learner who guessed every item blind would average {mean:.1f} of {n}, since a written "
+    return (f"A learner who guessed every item blind would average {one_place(mean)} of {n}, since a written "
             f"answer cannot be guessed from a list, and fewer than one guesser in twenty would reach "
             f"{cut}. A score of {cut - 1} or below is therefore within reach of guessing alone, and the "
             f"tally reads such a paper as a conversation to have on Monday, never as a result.")
