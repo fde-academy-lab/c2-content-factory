@@ -603,9 +603,10 @@ broke.
 
 ## Where is this tested next?
 
-Saturday's paper is sat on pen and paper with no assistant; its items are objective, a peer marks
-them against a key, and the room discusses them as interview answers. The note's four parts and the p-value sentence are on it. Monday's
-growth review hears the note you defended today.
+Saturday's paper is sat on pen and paper with no assistant; its items are objective, the papers
+change hands and are checked against the key the Academic TA reads out, and the room discusses them
+as interview answers. The note's four parts and the p-value sentence are on it. Monday's growth
+review hears the note you defended today.
 
 ---
 

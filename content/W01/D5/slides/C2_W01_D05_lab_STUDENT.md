@@ -239,7 +239,7 @@ debrief.
 
 ---
 
-## S11. Your TA marks the one step you do not own yet
+## S11. Your TA notes the one step you do not own yet
 *What does the morning tell each of you?*
 
 ```stats
