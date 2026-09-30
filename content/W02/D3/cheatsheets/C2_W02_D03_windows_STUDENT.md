@@ -1,80 +1,89 @@
-# Window functions, and the tie
+# Window functions: rank, LAG and the running total
 
-## Panel 1: Collapse or keep
+Kalpa Retail, Week 2 Wednesday. A window keeps every row and adds a column computed across the rows
+related to it. Q2 revenue per member is the booked amount of the member's Q2 orders, the definition
+behind Monday's quarter total of Rs 9,84,00,000.
 
-**Crux:** `GROUP BY` answers how much per group and the rows disappear; a window answers where
-this row stands and every row survives.
+## Panel 1: The kept rows
 
 ```mermaid
 flowchart LR
-    A["GROUP BY"] --> B["rows collapse"]
-    C["OVER"] --> D["rows survive"]
+    R["<b>Q2 revenue per member</b><br/>227 rows"] --> G["<b>GROUP BY segment</b><br/>4 rows: how much per segment"]
+    R --> W["<b>a window</b><br/>PARTITION BY segment<br/>ORDER BY revenue DESC"]
+    W --> K["<b>227 rows kept</b><br/>each with its position"]
+    K --> F["<b>filtered in a CTE</b><br/>position at most 50"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    class G bad
+    class K,F known
 ```
 
-If the answer needs the original row back, it is a window. If the answer is one number per group,
-it is `GROUP BY`, and reaching for a window is over-engineering.
+PARTITION BY sets the group the calculation restarts in, and the ORDER BY inside the window sets who
+comes first within it. A top fifty over the whole table handed Marketing 35 Business members, 11
+Retail-Plus, 4 Retail-Core and no Student, so every list is counted by segment first.
 
-## Panel 2: OVER has two dials
+**Crux:** GROUP BY answers how much per group; a window keeps every row and says where each row stands.
 
-**Crux:** `PARTITION BY` says who counts as neighbours and the window's own `ORDER BY` says in
-what order, and changing either changes the answer.
+## Panel 2: Three functions on one tie
 
-```sql
-rank() OVER (PARTITION BY segment ORDER BY revenue DESC)
-```
+| Member (invented) | Spend | ROW_NUMBER | RANK | DENSE_RANK |
+|---|---|---|---|---|
+| A | 7,500 | 1 | 1 | 1 |
+| B | 7,500 | 2 | 1 | 1 |
+| C | 6,000 | 3 | 3 | 2 |
+| D | 5,200 | 4 | 4 | 3 |
+| E | 5,200 | 5 | 4 | 3 |
+| F | 4,100 | 6 | 6 | 4 |
 
-These are not decoration on a function name. They are the definition of the question being asked.
+A top four with a tie at fourth (invented) ships 4 rows with ROW_NUMBER, 5 with RANK, 5 with
+DENSE_RANK and 3 with whole ties only. Retail-Core's top fifty ships 50, 50, 52 and 50, because
+earlier ties compress DENSE_RANK's numbers.
 
-## Panel 3: Three functions, one tie
+**Crux:** The tie rule is a business decision written as a function name: RANK keeps everyone at the line, and the report says how many.
 
-**Crux:** The difference only shows up on a tie, and a tie at the boundary changes how many rows
-your report ships.
-
-| Function | On a tie | After it | Repeatable |
-|---|---|---|---|
-| `ROW_NUMBER` | Breaks it arbitrarily | 1 2 3 | No |
-| `RANK` | Shares a position | 1 1 3 | Yes |
-| `DENSE_RANK` | Shares a position | 1 1 2 | Yes |
-
-`RANK` answers how many are ahead of me. `DENSE_RANK` answers how many levels are ahead of me.
-
-## Panel 4: Top-N inside a group
-
-**Crux:** A window cannot be filtered in `WHERE`, so compute it inside and filter outside.
+## Panel 3: Top N per group, a CTE then a filter
 
 ```sql
-WITH r AS (
-  SELECT segment, customer_id, revenue,
+WITH ranked AS (
+  SELECT segment, customer_id, q2_revenue,
          rank() OVER (PARTITION BY segment
-                      ORDER BY revenue DESC) AS pos
-  FROM q2
+                      ORDER BY q2_revenue DESC) AS pos
+  FROM   q2
 )
-SELECT * FROM r WHERE pos <= 50;
+SELECT * FROM ranked WHERE pos <= 50;
 ```
 
-`LIMIT 50` takes fifty rows from the whole result, never fifty from each group.
+A window inside WHERE stops with `ERROR:  window functions are not allowed in WHERE`, because WHERE
+runs before the window exists. The position is computed in one named step and filtered in the next.
 
-## Panel 5: LAG, and what NULL means
-
-**Crux:** `LAG` reads the previous row inside the partition, and the first row of every partition
-returns NULL because there is nothing behind it.
+## Panel 4: LAG, with the calendar check
 
 ```sql
-lag(spend, 1) OVER (PARTITION BY customer_id
-                    ORDER BY month)
+lag(spend, 1) OVER (PARTITION BY customer_id ORDER BY month)
+lag(month, 1) OVER (PARTITION BY customer_id ORDER BY month)
+-- count a fall only when
+-- month_before = month - INTERVAL '1 month'
 ```
 
-Falling two months running is two LAGs and a comparison. A member with one month of data returns
-NULL, fails the comparison and drops out, which is honest: you cannot tell.
+Without the partition, 20 members are flagged and 4 of them were compared with another member's
+month. With it, 16 are flagged and 7 of those skipped a month: a member with May, July and
+September orders has July read as last month. Requiring the previous rows to be August and July
+flags 9. A month with no order is no reading, so it breaks the run and is never filled with zero.
 
-## Panel 6: Running totals and determinism
+**Crux:** LAG reads the previous row, so partition by the member and check the previous row is last month.
 
-**Crux:** A running total is only reproducible when the window's order cannot tie.
+## Panel 5: The running total against plan
 
 ```sql
-sum(revenue) OVER (ORDER BY week_start)
+sum(amount) OVER (ORDER BY order_date, order_id)
 ```
 
-If two rows share `week_start`, their relative order is undefined and the cumulative column can
-differ between runs. Add a tiebreaker. A number that changes between runs is worse than one that
-is wrong, because nobody can reproduce the argument about it.
+| Mistake | What it shows | The fix |
+|---|---|---|
+| Order by date alone | Every order of 22 July shows Rs 3,76,90,290. | Add order_id as the tiebreaker. |
+| Actual beside one week's plan | Week seven reads as nine times plan. | Accumulate the plan as well. |
+| Plan LEFT JOIN weekly revenue | It closes Rs 15,39,820 below the quarter. | Read the actual at each week's last day. |
+
+Q2 closed at Rs 9,84,00,000 against a plan of Rs 9,83,99,990.
+
+**Crux:** A running total is only as true as its order and its start; check it closes on the quarter's total.

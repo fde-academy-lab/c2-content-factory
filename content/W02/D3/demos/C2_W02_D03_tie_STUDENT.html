@@ -1,127 +1,1549 @@
 <!doctype html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
-<title>Who makes the top five</title>
-<style>
-  :root{--ink:#1b1b1a;--paper:#faf8f4;--line:#d9d4c8;--lit:#2b4a7d;--dim:#8a8580;
-        --warn:#8a3d3d;--ok:#1f6f4a;--cut:#8a6d3b;}
-  body{margin:0;padding:22px;background:var(--paper);color:var(--ink);
-       font:15px/1.55 -apple-system,"Segoe UI",system-ui,sans-serif;}
-  h1{font-size:20px;margin:0 0 4px;}
-  p.lede{margin:0 0 18px;color:#5c5850;max-width:64ch;}
-  .wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-  @media(max-width:780px){.wrap{grid-template-columns:1fr;}}
-  .panel{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#fff;}
-  h2{font-size:14px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.05em;color:var(--dim);}
-  table{border-collapse:collapse;width:100%;font-size:13.5px;}
-  th,td{text-align:left;padding:5px 8px;border-bottom:1px solid #eee9df;}
-  th{color:var(--dim);font-weight:600;}
-  tr.in td{background:#eef6f1;}
-  tr.out td{color:var(--dim);}
-  tr.tie td{font-weight:600;}
-  tr.cut td{border-bottom:2px solid var(--cut);}
-  .row{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 14px;align-items:center;}
-  button,select,input{font:14px inherit;padding:7px 10px;border-radius:7px;
-                      border:1px solid var(--line);background:#fff;cursor:pointer;}
-  button:hover,select:hover{border-color:var(--lit);}
-  label{font-size:13px;color:#5c5850;}
-  .verdict{margin-top:13px;border-left:4px solid var(--lit);padding:9px 12px;background:#f4f1ea;
-           border-radius:0 8px 8px 0;font-size:14px;min-height:3.4em;}
-  .verdict.good{border-left-color:var(--ok);}
-  .verdict.bad{border-left-color:var(--warn);}
-  .tally{display:flex;gap:18px;margin-top:12px;font-size:14px;}
-  .tally b{display:block;font-size:22px;}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The protect list: Week 2, Wednesday companion</title>
+<style data-c2kit>
+/* c2kit.css: the look every companion page inlines, taken from the orientation deck.
+ * Violet on lavender, Georgia for headings, Calibri for text, cards with a soft shadow.
+ * scripts/build_companion.py inlines this file into each page. */
+:root{
+  --ink:#1A0F5C;--night:#1A1440;--violet:#5B3FD6;--violet-mid:#2C1A86;--lav:#D9A7FF;
+  --muted:#6B6690;--soft:#A9A3D2;--lilac:#CFC9EE;--line:#E4E1F1;--tint:#EEEAFB;--surface:#F4F2FA;
+  --white:#FFFFFF;--rose:#D63A6A;--rose-tint:#FCEBF0;--green:#1F8A5B;--green-tint:#E8F5EE;
+  --serif:Georgia,"DejaVu Serif",serif;
+  --sans:Calibri,Carlito,"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+  --mono:Consolas,ui-monospace,SFMono-Regular,Menlo,monospace;
+  --shadow:0 2px 6px rgba(26,15,92,.10),0 1px 2px rgba(26,15,92,.06);
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#F7F5FD 0%,#F2EFFB 100%);color:var(--night);
+     font:16px/1.55 var(--sans)}
+a{color:var(--violet)}
+code,kbd{font:14px var(--mono);background:var(--tint);border-radius:4px;padding:1px 5px;color:var(--ink)}
+
+/* the dark header, like a deck cover */
+.hero{background:radial-gradient(120% 140% at 85% 10%,#5B3FD6 0%,#2C1A86 45%,#1A1440 100%);
+      color:var(--white);padding:34px 40px 30px}
+.hero .kicker{display:inline-block;border:1px solid var(--lilac);border-radius:999px;padding:4px 14px;
+      font:700 11px var(--sans);letter-spacing:.24em;text-transform:uppercase;margin-bottom:14px}
+.hero h1{font:400 38px/1.15 var(--serif);margin:0 0 10px}
+.hero .quote{font:italic 20px/1.4 var(--serif);color:var(--lav);max-width:860px;margin:0 0 6px}
+.hero .who{color:var(--lilac);font-size:13px;margin:0}
+.hero .promise{color:#E4E1F1;max-width:860px;margin:16px 0 0}
+
+/* the page: a left rail and the sections */
+.page{display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;max-width:1240px;margin:0 auto;
+      padding:26px 28px 60px}
+@media (max-width:900px){.page{grid-template-columns:1fr}.rail{position:static}}
+.rail{position:sticky;top:18px;align-self:start;background:var(--white);border:1px solid var(--line);
+      border-radius:12px;padding:14px 12px;box-shadow:var(--shadow)}
+.rail .label{font:700 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--violet);
+      margin:2px 8px 8px}
+.rail a{display:flex;gap:10px;align-items:baseline;padding:7px 8px;border-radius:8px;color:var(--night);
+      text-decoration:none;font-size:14.5px}
+.rail a .n{font:15px var(--serif);color:var(--violet);min-width:22px}
+.rail a.on{background:var(--tint);color:var(--ink);font-weight:700}
+section.part{margin:0 0 38px;scroll-margin-top:16px}
+.part > .eyebrow{font:700 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--violet);
+      margin:0 0 4px}
+.part > h2{font:400 28px/1.2 var(--serif);color:var(--ink);margin:0 0 6px}
+.part > .lede{color:var(--muted);margin:0 0 16px;max-width:860px}
+
+/* cards and strips */
+.card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+      box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.grid2,.grid3{grid-template-columns:1fr}}
+.strip{border-radius:10px;padding:12px 16px;margin:12px 0;background:#F7F5FD;border:1px solid var(--line)}
+.strip b.tag{display:block;font:700 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;
+      color:var(--violet);margin-bottom:3px}
+.strip.client{background:linear-gradient(135deg,#2C1A86,#1A1440);color:var(--white);border:none}
+.strip.client b.tag{color:var(--lav)}
+.strip.bad{background:var(--rose-tint);border-color:#F3C5D3}
+.strip.bad b.tag{color:var(--rose)}
+.strip.good{background:var(--green-tint);border-color:#BFE3CF}
+.strip.good b.tag{color:var(--green)}
+.c2k-row{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
+.c2k-svg{max-width:100%;height:auto}
+.holder{overflow-x:auto}
+
+/* the guided walk */
+.walk .narration{min-height:150px}
+.walk .step{font:700 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)}
+.walk .narration h3{font:400 21px/1.25 var(--serif);color:var(--ink);margin:4px 0 8px}
+.meter{margin-top:14px}
+.meter .bar{position:relative;height:16px;border-radius:999px;background:var(--surface);border:1px solid var(--line);
+      overflow:hidden}
+.meter .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#7B62E8,#5B3FD6);
+      border-radius:999px;transition:width .35s ease}
+.meter .plan{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--rose)}
+.meter .legend{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:4px}
+.big{font:34px/1.1 var(--serif);color:var(--violet)}
+.verdict{font-weight:700;color:var(--ink)}
+
+/* buttons, toggles and inputs */
+button{font:inherit;cursor:pointer}
+.btn{padding:8px 16px;border-radius:999px;border:1px solid var(--violet);background:var(--white);color:var(--violet);
+     font-weight:700}
+.btn.primary{background:var(--violet);color:var(--white)}
+.btn[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.btn:focus-visible,.rail a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--lav);
+     outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.slider{margin:10px 0}
+.slider label{display:flex;justify-content:space-between;font-size:14.5px;color:var(--night)}
+.slider label b{color:var(--violet);font-family:var(--mono);font-weight:400}
+input[type=range]{width:100%;accent-color:var(--violet)}
+input[type=number],textarea{font:15px var(--mono);border:1px solid var(--lilac);border-radius:8px;padding:6px 9px;
+     color:var(--night);background:var(--white);width:100%}
+textarea{min-height:92px;resize:vertical}
+
+/* experiment cards */
+.exp{display:grid;gap:10px;align-content:start}
+.exp p{margin:0}
+.exp .result p{margin:0 0 8px}
+.exp .part-label{font:700 10.5px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet)}
+.exp .result{border-top:1px dashed var(--lilac);padding-top:10px}
+.exp .result[hidden]{display:none}
+.exp .waiting{color:var(--muted);font-style:italic}
+.rule{font:italic 17px/1.4 var(--serif);color:var(--ink)}
+
+/* tables */
+table.t{border-collapse:collapse;width:100%;font-size:14.5px;margin:8px 0}
+table.t th{background:var(--ink);color:var(--white);text-align:left;padding:7px 10px;font-weight:700}
+table.t td{padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.t tr:nth-child(even) td{background:var(--surface)}
+table.t td.num,table.t th.num{text-align:right;font-variant-numeric:tabular-nums}
+
+/* popups */
+dialog{border:none;border-radius:14px;padding:0;max-width:min(860px,94vw);box-shadow:0 18px 50px rgba(26,15,92,.35)}
+dialog::backdrop{background:rgba(26,20,64,.45)}
+dialog .head{background:var(--ink);color:var(--white);padding:12px 18px;font:400 19px var(--serif);
+      display:flex;justify-content:space-between;align-items:center;gap:16px}
+dialog .body{padding:16px 18px}
+dialog .close{background:transparent;border:1px solid var(--lilac);color:var(--white);border-radius:999px;
+      padding:4px 12px}
+
+/* glossary */
+dl.gloss{display:grid;grid-template-columns:200px minmax(0,1fr);gap:8px 18px;margin:0}
+dl.gloss dt{font-weight:700;color:var(--ink)}
+dl.gloss dd{margin:0}
+dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
+@media (max-width:700px){dl.gloss{grid-template-columns:1fr}}
+.foot{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:10px;margin-top:30px}
 </style>
+<style>
+  .formula{font:14.5px var(--mono);background:var(--surface);border:1px solid var(--line);border-radius:8px;
+           padding:8px 12px;margin-top:10px;color:var(--ink);overflow-x:auto;white-space:pre-wrap}
+  .err{font:14px var(--mono);color:var(--rose);white-space:pre-wrap}
+  .ok{color:var(--green);font-weight:700}
+  .warn{color:var(--rose);font-weight:700}
+  .jumped{font-size:13px;color:var(--muted);margin:10px 8px 2px}
+  .note{font-size:13.5px;color:var(--muted)}
+  .cap{font:700 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--violet);margin:0 0 6px}
+  .card h3{font:400 20px var(--serif);color:var(--ink);margin:0 0 6px}
+  table.t tr.on td{background:var(--green-tint)}
+  table.t tr.off td{color:var(--muted)}
+  table.t tr.line td{border-bottom:3px solid var(--rose)}
+  table.t td.pick,table.t th.pick{outline:2px solid var(--violet);outline-offset:-2px}
+  .inv{display:inline-block;font:700 10.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--rose);
+       border:1px solid #F3C5D3;background:var(--rose-tint);border-radius:999px;padding:2px 10px;margin-left:6px;
+       vertical-align:middle}
+  .real{display:inline-block;font:700 10.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--green);
+        border:1px solid #BFE3CF;background:var(--green-tint);border-radius:999px;padding:2px 10px;margin-left:6px;
+        vertical-align:middle}
+  .checks{margin:8px 0 0;padding-left:18px}
+  .checks li{margin:6px 0}
+  .stack{display:grid;gap:16px}
+  table.t.tight{font-size:13.5px}
+  table.t.tight td,table.t.tight th{white-space:nowrap;padding:5px 8px}
+</style>
+</head>
+<body>
+<header class="hero">
+  <span class="kicker">Week 2 &middot; Wednesday &middot; Companion</span>
+  <h1>The protect list</h1>
+  <p class="quote">&ldquo;Retail-Plus frequency is the problem, so we want to protect our best members before they
+    drift. Give us the top fifty customers by Q2 revenue in each segment, and flag anyone whose monthly spend has fallen
+    for two months running. And Meera wants to see revenue accumulate week by week against the plan line, so we know by
+    mid-quarter whether we are on track.&rdquo;</p>
+  <p class="who">Marketing, Kalpa Retail, to the data and AI team at Kalpa's Global Capability Centre in Bengaluru</p>
+  <p class="promise">This page makes the day's three decisions move: who goes on the list, what happens at the line
+    when two members tie, and whose spend is really falling, and then it checks the quarter against the plan line.
+    Every figure is either Kalpa's own, from the Q2 warehouse and marked real, or invented to show one mechanism and
+    marked invented.</p>
+</header>
 
-<h1>Who makes the top five</h1>
-<p class="lede">Eight members, and two of them spent exactly the same. Choose a ranking function
-and a cut-off, and watch how many names the list ships. The head of Retail-Plus asked for one of
-these behaviours in a single sentence.</p>
+<div class="page">
+  <nav class="rail" aria-label="Sections">
+    <div class="label">On this page</div>
+    <a href="#ask" data-part="ask"><span class="n">01</span>The ask</a>
+    <a href="#walk" data-part="walk"><span class="n">02</span>The five rungs</a>
+    <a href="#round1" data-part="round1"><span class="n">03</span>Round 1: who</a>
+    <a href="#round2" data-part="round2"><span class="n">04</span>Round 2: the tie</a>
+    <a href="#round3" data-part="round3"><span class="n">05</span>Round 3: falling</a>
+    <a href="#plan" data-part="plan"><span class="n">06</span>Against the plan</a>
+    <a href="#experiments" data-part="experiments"><span class="n">07</span>Five experiments</a>
+    <a href="#review" data-part="review"><span class="n">08</span>Kavya's review</a>
+    <a href="#glossary" data-part="glossary"><span class="n">09</span>Glossary</a>
+    <p class="jumped" id="jumped">You are at the top of the page.</p>
+  </nav>
 
-<div class="row">
-  <label for="fn">Ranking function</label>
-  <select id="fn">
-    <option value="rank">RANK: ties share a position, then it skips</option>
-    <option value="dense">DENSE_RANK: ties share a position, no skip</option>
-    <option value="row">ROW_NUMBER: ties broken arbitrarily</option>
-  </select>
-  <label for="cut">Cut at</label>
-  <select id="cut">
-    <option>3</option><option selected>5</option><option>6</option>
-  </select>
-  <button id="apply">Apply the cut</button>
+  <main>
+    <!-- ============================================================ 01 the ask -->
+    <section class="part" id="ask">
+      <p class="eyebrow">01 &middot; The ask</p>
+      <h2>Marketing will act on your list</h2>
+      <p class="lede">Q2 revenue per member, all day, is the booked amount of the member's Q2 orders, every status
+        included, which is the definition Monday's suite used for the Rs 9,84,00,000 quarter total.</p>
+      <div class="strip client"><b class="tag">The head of Retail-Plus</b>&ldquo;Ties matter. If two members spent the
+        same, I want them ranked the same, and I want to know how many made the top fifty, not forty-nine because of a
+        tie.&rdquo;</div>
+      <div class="strip"><b class="tag">Your role</b>Marketing will act on your list, so you must state the tie rule you
+        chose and why, and defend the falling-spend flag against a member who says he was on holiday.</div>
+      <div class="card"><div class="holder" id="picture"></div>
+        <p class="note">The day's picture. GROUP BY answers how much per segment in four rows; a window keeps all 227
+          members and says where each one stands, and the position is filtered in a CTE.</p></div>
+    </section>
+
+    <!-- ============================================================ 02 the walk -->
+    <section class="part" id="walk">
+      <p class="eyebrow">02 &middot; The guided walk</p>
+      <h2>Five rungs, one Kalpa case</h2>
+      <p class="lede">Each step lights one rung, shows the window that answers it and the check that keeps the answer
+        honest. The counts are Kalpa's Q2 data, checked on 29 September 2026.</p>
+      <div class="grid2">
+        <div class="card"><div class="holder" id="walkLadder"></div></div>
+        <div class="card walk narration" aria-live="polite">
+          <div class="step" id="walkStep">Step 0 of 5</div>
+          <h3 id="walkTitle">Three questions inside one request</h3>
+          <p id="walkText">Marketing asked for a list, a flag and a chart. Read as a climb, the request is five
+            business questions, each one harder than the last, and each one answered by a window that keeps every row.</p>
+          <div class="formula" id="walkCode">-- the window for each rung appears here</div>
+          <p><b>The check.</b> <span id="walkCheck">Each rung has one check that exposes the plausible wrong number.</span></p>
+          <div class="row">
+            <button class="btn primary" id="walkNext" type="button">Next</button>
+            <button class="btn" id="walkRestart" type="button">Restart the walk</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 03 round 1 -->
+    <section class="part" id="round1">
+      <p class="eyebrow">03 &middot; Round 1 &middot; Who goes on the protect list?</p>
+      <h2>Rank the whole table, or rank within each segment?</h2>
+      <p class="lede">Both queries return a top fifty, and only one of them answers what Marketing asked. Pick one and
+        count the list by segment, which is the check.<span class="real">real Q2 data</span></p>
+      <div class="grid2">
+        <div class="card">
+          <div class="row" style="margin-top:0">
+            <button class="btn" id="r1Whole" type="button" aria-pressed="false">Rank the whole table</button>
+            <button class="btn" id="r1Seg" type="button" aria-pressed="false">Rank within each segment</button>
+          </div>
+          <div class="holder" id="r1Chart" style="margin-top:12px"><p class="note">The members on the list, counted by
+            segment, appear here once you pick a ranking.</p></div>
+          <div class="formula" id="r1Code">-- the window you picked appears here</div>
+        </div>
+        <div class="stack">
+          <div class="card">
+            <p class="cap">What Marketing would do with this list</p>
+            <p class="verdict" id="r1Decision">Pick a ranking on the left to see the list Marketing would receive.</p>
+            <p id="r1Detail" class="note">The share of each segment's Q2 revenue on the list appears here too.</p>
+          </div>
+          <div class="card">
+            <p class="cap">The two-minute error</p>
+            <p>A window cannot sit in WHERE, because WHERE runs before the window is computed.</p>
+            <div class="row"><button class="btn" id="r1Where" type="button" aria-pressed="false">Filter the position in WHERE</button></div>
+            <div class="note" id="r1WhereOut">Press the button to see what Postgres 16 says.</div>
+          </div>
+        </div>
+      </div>
+      <div class="strip" id="r1Kavya"><b class="tag">Kavya's review</b>Kavya reads the count by segment before she
+        reads a single name. Pick a ranking first.</div>
+    </section>
+
+    <!-- ============================================================ 04 round 2 -->
+    <section class="part" id="round2">
+      <p class="eyebrow">04 &middot; Round 2 &middot; How many make the list when two members tie?</p>
+      <h2>The tie rule is a business decision written as a function name</h2>
+      <p class="lede">Twelve invented members, with two ties, stand in for a segment. Pick a rule, move the list size,
+        and put the line through a tie. The table shows all three functions side by side, and the count shipped is the
+        number the report has to state.<span class="inv">invented members</span></p>
+      <div class="grid2">
+        <div class="card">
+          <p class="cap">The ranked table, invented members, with the line after the last row shipped</p>
+          <div class="holder" id="r2Table"></div>
+        </div>
+        <div class="card">
+          <p class="cap">The rule</p>
+          <div class="row" style="margin-top:0">
+            <button class="btn" id="ruleRN" type="button" aria-pressed="false">ROW_NUMBER</button>
+            <button class="btn" id="ruleRK" type="button" aria-pressed="false">RANK</button>
+            <button class="btn" id="ruleDR" type="button" aria-pressed="false">DENSE_RANK</button>
+            <button class="btn" id="ruleWT" type="button" aria-pressed="false">Whole ties only</button>
+          </div>
+          <div class="slider"><label for="listN">The list size, N <b id="listNV">8</b></label>
+            <input type="range" id="listN" min="2" max="12" step="1" value="8"></div>
+          <p><span class="big" id="shipped">?</span> <span class="note">rows shipped by the rule you picked</span></p>
+          <p class="verdict" id="r2Sentence">Pick a rule, and the sentence the report would carry appears here.</p>
+          <p id="r2Verdict">The head of Retail-Plus asked for tied members ranked the same and the count stated.</p>
+          <div class="formula" id="r2Code">-- the filter for the rule you picked appears here</div>
+        </div>
+      </div>
+      <div class="grid2" style="margin-top:16px">
+        <div class="card"><div class="holder" id="r2Strip"></div>
+          <p class="note">Each dot is an invented member's spend; dots stacked on one value are a tie, and the rose line
+            is the spend of the Nth member in spend order.</p></div>
+        <div class="card">
+          <p class="cap">Retail-Core, the real count at N = 50<span class="real">real Q2 data</span></p>
+          <table class="t" id="coreTable">
+            <tr><th>Rule</th><th class="num">Rows shipped</th></tr>
+            <tr data-rule="RN"><td>ROW_NUMBER</td><td class="num">50</td></tr>
+            <tr data-rule="RK"><td>RANK</td><td class="num">50</td></tr>
+            <tr data-rule="DR"><td>DENSE_RANK</td><td class="num">52</td></tr>
+            <tr data-rule="WT"><td>Whole ties only</td><td class="num">50</td></tr>
+          </table>
+          <p id="coreNote">In Retail-Core no tie straddles fiftieth, so three rules agree, and DENSE_RANK still ships 52
+            because ties higher up compress its numbering. Run the Retail-Plus variant in notebook 02 and count what each
+            rule ships there yourself.</p>
+        </div>
+      </div>
+      <div class="strip" id="r2Kavya"><b class="tag">Kavya's review</b>Kavya asks one question of every top-N list:
+        how many rows did it ship, and why that many? Pick a rule to answer her.</div>
+    </section>
+
+    <!-- ============================================================ 05 round 3 -->
+    <section class="part" id="round3">
+      <p class="eyebrow">05 &middot; Round 3 &middot; Whose spend is falling?</p>
+      <h2>LAG reads the previous row, so the previous row has to be last month</h2>
+      <p class="lede">The flag asks whether a member spent less in August than in July and less again in September.
+        Four invented members show the mechanism, one of them away in August and one who joined late. The real
+        counts move beside them.<span class="inv">invented members</span></p>
+      <div class="card">
+        <div class="row" style="margin-top:0">
+          <button class="btn" id="r3Part" type="button" aria-pressed="false">Partition by member: off</button>
+          <button class="btn" id="r3Gap" type="button" aria-pressed="false">A missing month breaks the run: off</button>
+        </div>
+        <div class="formula" id="r3Code"></div>
+      </div>
+      <div class="grid2" style="margin-top:16px">
+        <div class="card">
+          <p class="cap">What LAG lined up for each member's September</p>
+          <div class="holder" id="r3Table"></div>
+          <p><span class="big" id="r3Count">?</span> <span class="note">invented members flagged</span></p>
+        </div>
+        <div class="stack">
+          <div class="card">
+            <p class="cap">On Kalpa's data<span class="real">real Q2 data</span></p>
+            <p><span class="big" id="r3Real">20</span> <span class="note">members flagged, of 118 with a September order</span></p>
+            <p id="r3RealText">Without a partition, 20 members are flagged, and 4 of them were compared with another
+              member's month.</p>
+          </div>
+          <div class="card">
+            <p class="cap">Member Q says he was on holiday in August</p>
+            <p id="r3Holiday">&ldquo;I was away all of August, so how can my spend have fallen two months running?&rdquo;</p>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px"><div class="holder" id="r3Lines"></div>
+        <p class="note">Each member's months, April to September; a gap in the dots is a month with no order, and a
+          rose line is a member the current flag accuses.</p></div>
+      <div class="strip" id="r3Kavya"><b class="tag">Kavya's review</b>Kavya reads the row two back for every flagged
+        member before she believes the count.</div>
+    </section>
+
+    <!-- ============================================================ 06 against the plan -->
+    <section class="part" id="plan">
+      <p class="eyebrow">06 &middot; Rung 5 &middot; Is Q2 on track against the plan line?</p>
+      <h2>A running total is only as true as its order and its start</h2>
+      <p class="lede">Booked to date against plan to date, by plan week, for the thirteen plan weeks from 6 July. Pick
+        how the running total is built, then set the running actual beside the wrong plan figure to see a misreading
+        that reaches dashboards.<span class="real">real Q2 data</span></p>
+      <div class="card">
+        <div class="row" style="margin-top:0">
+          <button class="btn" id="planEnd" type="button" aria-pressed="false">Read at each plan week's end</button>
+          <button class="btn" id="planJoin" type="button" aria-pressed="false">Join weekly revenue onto the plan</button>
+          <button class="btn" id="planBeside" type="button" aria-pressed="false">Set the running actual beside the weekly plan: off</button>
+        </div>
+        <div class="holder" id="planChart" style="margin-top:12px"><p class="note">The chart of booked to date against
+          the plan appears here once you pick how the running total is built.</p></div>
+      </div>
+      <div class="grid2" style="margin-top:16px">
+        <div class="card">
+          <p class="cap">What the chart tells Meera</p>
+          <p class="verdict" id="planVerdict">Pick a method to read the close.</p>
+          <p id="planDetail"></p>
+        </div>
+        <div class="card">
+          <p class="cap">From the hurried close to the true close</p>
+          <div class="holder" id="planBridge"><p class="note">The bridge appears once a method is picked.</p></div>
+        </div>
+      </div>
+      <div class="strip" id="planKavya"><b class="tag">Kavya's review</b>Kavya's first check on any running total: does
+        the last value equal the quarter's total, Rs 9,84,00,000?</div>
+    </section>
+
+    <!-- ============================================================ 07 experiments -->
+    <section class="part" id="experiments">
+      <p class="eyebrow">07 &middot; Experiment cards</p>
+      <h2>Five experiments, one change each</h2>
+      <p class="lede">Read the situation and the hypothesis, decide what you expect, then run. Each card says whether its
+        numbers are Kalpa's or invented.</p>
+      <div class="grid2">
+        <article class="card exp" id="expA">
+          <div class="part-label">Experiment A &middot; invented members</div>
+          <h3>Widen the list by two places</h3>
+          <p><b>Situation.</b> Marketing likes the list and asks for two more places, taking the twelve invented members'
+            list from 8 to 10.</p>
+          <p><b>Hypothesis.</b> At 10 the line no longer runs through a tie, so ROW_NUMBER and RANK agree, and
+            DENSE_RANK still ships more than asked.</p>
+          <p><b>Watch for.</b> The gap between the rule bars at each list size.</p>
+          <div class="holder" id="expAChart"></div>
+          <div class="row">
+            <button class="btn" id="expARun" type="button" aria-pressed="false">Widen the list to 10</button>
+            <button class="btn" id="expASeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expAResult" hidden>
+            <p><b>What happened.</b> <span id="expAWhat"></span></p>
+            <p><b>Why it matters.</b> A tie only changes the count where it straddles the line, so every change to N needs
+              the count read again. On Kalpa, Business and Student have 35 and 20 Q2 buyers, so a list of sixty still
+              holds every buyer there, and the list should keep saying so.</p>
+            <p class="rule">Read the line after every change to N, because a tie matters only where the line cuts it.</p>
+          </div>
+          <p class="waiting" id="expAWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp" id="expB">
+          <div class="part-label">Experiment B &middot; invented members, simulated runs</div>
+          <h3>Drop the tiebreaker</h3>
+          <p><b>Situation.</b> Someone removes member from ROW_NUMBER's ORDER BY, leaving spend alone, and the list of
+            eight is run on Monday and again on Tuesday with no change to the data.</p>
+          <p><b>Hypothesis.</b> The two runs can disagree on who is eighth, because H and I both spent Rs 5,900 and the
+            database may return tied rows in either order.</p>
+          <p><b>Watch for.</b> The name in the eighth row of each run.</p>
+          <div class="holder" id="expBTable"></div>
+          <div class="row">
+            <button class="btn" id="expBRun" type="button" aria-pressed="false">Run Monday and Tuesday</button>
+            <button class="btn" id="expBSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expBResult" hidden>
+            <p><b>What happened.</b> <span id="expBWhat"></span></p>
+            <p><b>Why it matters.</b> A member who is on Monday's list and off Tuesday's with the same spend gets a
+              retention call one week and silence the next, and nobody can explain why.</p>
+            <p class="rule">ROW_NUMBER is repeatable only with a unique tiebreaker, and even then it drops a tied member by
+              a rule nobody in the business chose.</p>
+          </div>
+          <p class="waiting" id="expBWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp" id="expC">
+          <div class="part-label">Experiment C &middot; invented member</div>
+          <h3>Zero-fill the holiday month</h3>
+          <p><b>Situation.</b> To stop LAG skipping the gap, someone fills Member Q's missing August with a zero before the
+            window runs.</p>
+          <p><b>Hypothesis.</b> September no longer reads as a fall, and August now reads as a fall to zero, so the flag
+            that ends in August accuses him instead.</p>
+          <p><b>Watch for.</b> The August dot and the month the flag lands on.</p>
+          <div class="holder" id="expCChart"></div>
+          <div class="row">
+            <button class="btn" id="expCRun" type="button" aria-pressed="false">Fill August with zero</button>
+            <button class="btn" id="expCSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expCResult" hidden>
+            <p><b>What happened.</b> <span id="expCWhat"></span></p>
+            <p><b>Why it matters.</b> Filling the gap with zero turns every holiday into a collapse, and a retention team
+              would ring members to ask why they stopped buying in the month they were away.</p>
+            <p class="rule">A month with no order is no reading, so it breaks the run and is never filled with zero.</p>
+          </div>
+          <p class="waiting" id="expCWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp" id="expD">
+          <div class="part-label">Experiment D &middot; real Q2 data</div>
+          <h3>Start the running total on 6 July</h3>
+          <p><b>Situation.</b> The plan line starts on Monday 6 July, so someone starts the running actual there too,
+            leaving out the 25 orders of 1 to 5 July.</p>
+          <p><b>Hypothesis.</b> The actual closes short of Monday's Rs 9,84,00,000 by exactly those five days, and the
+            quarter reads as a miss.</p>
+          <p><b>Watch for.</b> The sign of the gap against plan at the close.</p>
+          <div class="holder" id="expDChart"></div>
+          <div class="row">
+            <button class="btn" id="expDRun" type="button" aria-pressed="false">Start on 6 July</button>
+            <button class="btn" id="expDSeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expDResult" hidden>
+            <p><b>What happened.</b> <span id="expDWhat"></span></p>
+            <p><b>Why it matters.</b> Meera would be told the quarter missed plan when it landed on it, and the fix is
+              one check anyone can run: the last booked-to-date must equal the quarter's total.</p>
+            <p class="rule">A running total starts at the start of the period, and it closes on the period's total.</p>
+          </div>
+          <p class="waiting" id="expDWait">What happened appears here after the run.</p>
+        </article>
+
+        <article class="card exp" id="expE">
+          <div class="part-label">Experiment E &middot; real Q2 data</div>
+          <h3>Order the running total by date alone</h3>
+          <p><b>Situation.</b> Twelve orders were booked on 22 July, and the running total is ordered by order_date with
+            no order_id after it.</p>
+          <p><b>Hypothesis.</b> Rows of the same date are peers, so all twelve show the day's closing figure.</p>
+          <p><b>Watch for.</b> The first and last rows of 22 July.</p>
+          <div class="holder" id="expETable"></div>
+          <div class="row">
+            <button class="btn" id="expERun" type="button" aria-pressed="false">Add order_id as the tiebreaker</button>
+            <button class="btn" id="expESeq" type="button">Show the sequence</button>
+          </div>
+          <div class="result" id="expEResult" hidden>
+            <p><b>What happened.</b> <span id="expEWhat"></span></p>
+            <p><b>Why it matters.</b> A running total that jumps a whole day at once hides the order that moved it, and
+              two runs of an ambiguous order can disagree row by row.</p>
+            <p class="rule">A running total needs an order that no two rows share, so the date comes with the order id.</p>
+          </div>
+          <p class="waiting" id="expEWait">What happened appears here after the run.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================ 08 review -->
+    <section class="part" id="review">
+      <p class="eyebrow">08 &middot; The decision card</p>
+      <h2>What goes to Marketing and Meera, and Kavya's review</h2>
+      <p class="lede">The card reads the choices you made in the rounds above, the ranking, the tie rule, the flag and
+        the running total, and Kavya reviews each one as she would before anything leaves the team.</p>
+      <div class="card">
+        <div class="row" style="margin-top:0"><button class="btn primary" id="reviewRun" type="button">Ask Kavya to review my choices</button></div>
+        <div id="reviewOut"><p class="note">Kavya's review of your four choices appears here.</p></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 09 glossary -->
+    <section class="part" id="glossary">
+      <p class="eyebrow">09 &middot; Glossary</p>
+      <h2>The day's words, and where each first mattered</h2>
+      <div class="card">
+        <dl class="gloss">
+          <dt>Window function</dt><dd>A calculation across related rows that keeps every row and adds a column, where GROUP
+            BY collapses the rows to one per group.<span class="where">Round 1, notebook 01, the day's picture.</span></dd>
+          <dt>PARTITION BY</dt><dd>The part of a window that sets the group the calculation restarts in, such as the
+            segment for a ranking or the member for LAG.<span class="where">Round 1, rung 2; Round 3, the hurried flag.</span></dd>
+          <dt>ROW_NUMBER</dt><dd>Numbers the rows 1, 2, 3 in the window's order and breaks a tie arbitrarily unless the
+            order carries a unique tiebreaker.<span class="where">Round 1, notebook 01; Round 2, notebook 02.</span></dd>
+          <dt>RANK</dt><dd>Gives tied rows the same position and leaves a gap after them, so a top N can ship more than N
+            rows when a tie sits at the line.<span class="where">Round 2, notebook 02.</span></dd>
+          <dt>DENSE_RANK</dt><dd>Gives tied rows the same position with no gap after them, so ties higher up let extra
+            rows under the line.<span class="where">Round 2, notebook 02, the Retail-Core count.</span></dd>
+          <dt>LAG</dt><dd>Reads a value from an earlier row of the partition in the window's order; LAG(spend, 1) is the
+            row before and LAG(spend, 2) the row two back, and LEAD reads forward.<span class="where">Round 3, notebook 03.</span></dd>
+          <dt>Running total</dt><dd>SUM over a window ordered through the period, so each row carries everything up to
+            and including itself.<span class="where">Round 3, level 4; the escalated case.</span></dd>
+          <dt>Peer rows</dt><dd>Rows that share the window's ORDER BY value; a running total gives all of them the same
+            figure, the total at the last of them.<span class="where">Round 3, level 4, the orders of 22 July.</span></dd>
+          <dt>CTE</dt><dd>A named step written with WITH, used today to compute a position and then filter it outside,
+            because a window cannot sit in WHERE.<span class="where">Round 1, the two-minute error.</span></dd>
+        </dl>
+      </div>
+      <p class="foot">Week 2, Wednesday. Kalpa Retail and everyone in it are fictional. Figures marked real come from the
+        Q2 warehouse and were checked on 29 September 2026; figures marked invented isolate one mechanism and describe no
+        Kalpa member. The page stores nothing and calls no network.</p>
+    </section>
+  </main>
 </div>
 
-<div class="wrap">
-  <div class="panel">
-    <h2>The members, by Q2 revenue</h2>
-    <table id="tbl"></table>
-    <div class="tally" id="tally"></div>
-  </div>
-  <div class="panel">
-    <h2>What that means</h2>
-    <div class="verdict" id="verdict">Pick a function and apply the cut.</div>
-    <h2 style="margin-top:18px">The sentence he actually said</h2>
-    <p style="font-size:14px;margin:0;color:#5c5850">"If two members spent the same, I want them
-    ranked the same, and I want to know how many made the top five, not four because of a tie."</p>
-  </div>
-</div>
+<dialog id="seqDialog" aria-labelledby="seqTitle">
+  <div class="head"><span id="seqTitle">The sequence</span><button class="close" id="seqClose" type="button">Close</button></div>
+  <div class="body"><div class="holder" id="seqBody"></div><p class="note" id="seqNote"></p></div>
+</dialog>
 
-<script>
-const MEMBERS = [
-  {id:"C-0102", rev:9400},
-  {id:"C-0118", rev:8100},
-  {id:"C-0140", rev:7250},
-  {id:"C-0165", rev:6600},
-  {id:"C-0172", rev:6600},
-  {id:"C-0181", rev:5900},
-  {id:"C-0193", rev:5300},
-  {id:"C-0204", rev:4800}
-];
+<script data-c2kit>
+/* c2kit.js: the diagram builders and page helpers every companion page inlines.
+ *
+ * The JavaScript twin of scripts/c2kit.py, so a tree on the slide, in the notebook and on the
+ * companion page is one drawing in one violet. Every builder takes data and returns an SVG
+ * element; nothing is drawn until a page calls a builder. No storage, no network, no globals
+ * beyond window.C2K. scripts/build_companion.py inlines this file into each page.
+ */
+(function () {
+  "use strict";
+  /* The SVG namespace, an identifier rather than a link, built in two parts so no checker reads it as one. */
+  var NS = "http:" + "//www.w3.org/2000/svg";
+  var C = {
+    ink: "#1A0F5C", night: "#1A1440", violet: "#5B3FD6", lav: "#D9A7FF", muted: "#6B6690",
+    lilac: "#CFC9EE", line: "#E4E1F1", tint: "#EEEAFB", surface: "#F4F2FA", white: "#FFFFFF",
+    rose: "#D63A6A", roseTint: "#FCEBF0", green: "#1F8A5B", greenTint: "#E8F5EE"
+  };
+  var FONT = "Calibri, Carlito, 'Segoe UI', system-ui, sans-serif";
+  var SERIF = "Georgia, 'DejaVu Serif', serif";
+  var KINDS = {
+    plain: [C.tint, C.violet, 1.2, C.ink, ""],
+    lit: [C.ink, C.ink, 1.2, C.white, ""],
+    known: [C.tint, C.violet, 2.6, C.ink, ""],
+    unknown: [C.white, "#B8B2D6", 1.3, C.muted, "5 4"],
+    bad: [C.roseTint, C.rose, 1.6, C.ink, ""],
+    good: [C.greenTint, C.green, 1.6, C.ink, ""]
+  };
 
-function ranked(fn){
-  const out = [];
-  let rank = 0, dense = 0, prev = null;
-  MEMBERS.forEach((m, i) => {
-    if (m.rev !== prev){ rank = i + 1; dense += 1; prev = m.rev; }
-    out.push({...m, row: i + 1, rank: rank, dense: dense});
-  });
-  return out.map(r => ({...r, pos: fn === "rank" ? r.rank : (fn === "dense" ? r.dense : r.row)}));
-}
+  function el(name, attrs, text) {
+    var node = document.createElementNS(NS, name);
+    Object.keys(attrs || {}).forEach(function (k) { node.setAttribute(k, attrs[k]); });
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
 
-const SAYS = {
-  rank: (n,c) => `RANK ships ${n} names for a top ${c}. Both tied members share position 4, and the next member jumps to 6, so the tie costs nothing at the boundary and the list is one longer than the round number. This is what "ranked the same, and not four because of a tie" asks for.`,
-  dense: (n,c) => `DENSE_RANK ships ${n} names for a top ${c}. Ties share a position and nothing is skipped, so the cut reaches further down the list than anybody intended. Defensible, and not what was asked for.`,
-  row: (n,c) => `ROW_NUMBER ships exactly ${n} names, and one of the two tied members was dropped on no grounds at all. Run it again and the pair can swap, so the list is not even reproducible.`
-};
+  function wrap(text, perLine) {
+    var words = String(text).split(/\s+/), lines = [], line = "";
+    words.forEach(function (w) {
+      if (line && (line + " " + w).length > perLine) { lines.push(line); line = w; }
+      else { line = line ? line + " " + w : w; }
+    });
+    if (line) lines.push(line);
+    return lines.length ? lines : [""];
+  }
 
-let applied = 0;
+  function labelLines(text, w, size) {
+    var per = Math.max(8, Math.floor(w / (size * 0.56)));
+    var parts = String(text).split("\n"), out = [];
+    wrap(parts[0], per).forEach(function (l) { out.push([l, parts.length > 1]); });
+    parts.slice(1).forEach(function (p) { wrap(p, per).forEach(function (l) { out.push([l, false]); }); });
+    return out;
+  }
 
-function draw(showCut){
-  const fn = document.getElementById("fn").value;
-  const cut = Number(document.getElementById("cut").value);
-  const rows = ranked(fn);
-  const kept = rows.filter(r => r.pos <= cut);
-  let h = "<tr><th>member</th><th>Q2 revenue</th><th>position</th></tr>";
-  rows.forEach((r, i) => {
-    const isTie = MEMBERS.filter(m => m.rev === r.rev).length > 1;
-    const inList = showCut && r.pos <= cut;
-    const last = showCut && inList && (i + 1 === kept.length);
-    h += `<tr class="${showCut ? (inList ? "in" : "out") : ""} ${isTie ? "tie" : ""} ${last ? "cut" : ""}">` +
-         `<td>${r.id}</td><td>Rs ${r.rev.toLocaleString("en-IN")}</td>` +
-         `<td>${r.pos}</td></tr>`;
-  });
-  document.getElementById("tbl").innerHTML = h;
-  document.getElementById("tally").innerHTML =
-    `<div>would ship<b>${kept.length}</b></div><div>asked for<b>${cut}</b></div>` +
-    `<div>cuts applied<b>${applied}</b></div>`;
-  const v = document.getElementById("verdict");
-  if (!showCut){ v.className = "verdict"; v.textContent = "Pick a function and apply the cut."; return; }
-  v.className = "verdict " + (fn === "rank" ? "good" : "bad");
-  v.textContent = SAYS[fn](kept.length, cut);
-}
+  function boxHeight(text, w, size) {
+    size = size || 13;
+    return Math.max(40, labelLines(text, w - 16, size).length * (size + 4) + 16);
+  }
 
-document.getElementById("apply").addEventListener("click", () => { applied++; draw(true); });
-document.getElementById("fn").addEventListener("change", () => draw(applied > 0));
-document.getElementById("cut").addEventListener("change", () => draw(applied > 0));
-draw(false);
+  function root(width, height, title) {
+    var svg = el("svg", { xmlns: NS, width: width, height: height, viewBox: "0 0 " + width + " " + height,
+                          role: "img", "class": "c2k-svg" });
+    var defs = el("defs");
+    var marker = el("marker", { id: "c2kArrow", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 6,
+                                markerHeight: 6, orient: "auto-start-reverse" });
+    marker.appendChild(el("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: C.violet }));
+    defs.appendChild(marker);
+    svg.appendChild(defs);
+    svg.appendChild(el("rect", { width: width, height: height, rx: 10, fill: C.surface }));
+    if (title) {
+      svg.appendChild(el("text", { x: width / 2, y: height - 8, "text-anchor": "middle", fill: C.muted,
+                                   "font-family": FONT, "font-size": 12.5 }, title));
+    }
+    return svg;
+  }
+
+  function box(svg, x, y, w, h, text, kind, size) {
+    size = size || 13;
+    var k = KINDS[kind] || KINDS.plain;
+    var g = el("g", { "class": "c2k-node c2k-" + (kind || "plain") });
+    var rect = el("rect", { x: x, y: y, width: w, height: h, rx: 8, fill: k[0], stroke: k[1],
+                            "stroke-width": k[2] });
+    if (k[4]) rect.setAttribute("stroke-dasharray", k[4]);
+    g.appendChild(rect);
+    var lines = labelLines(text, w - 16, size);
+    var top = y + h / 2 - (lines.length - 1) * (size + 4) / 2 + size * 0.36;
+    lines.forEach(function (pair, i) {
+      g.appendChild(el("text", { x: x + w / 2, y: top + i * (size + 4), "text-anchor": "middle", fill: k[3],
+                                 "font-family": FONT, "font-size": size,
+                                 "font-weight": (pair[1] || (kind === "lit" && lines.length === 1)) ? 700 : 400 },
+                       pair[0]));
+    });
+    svg.appendChild(g);
+    return g;
+  }
+
+  function arrow(svg, x1, y1, x2, y2, label) {
+    svg.appendChild(el("line", { x1: x1, y1: y1, x2: x2, y2: y2, stroke: C.violet, "stroke-width": 1.5,
+                                 "marker-end": "url(#c2kArrow)" }));
+    if (label) {
+      svg.appendChild(el("text", { x: (x1 + x2) / 2, y: (y1 + y2) / 2 - 6, "text-anchor": "middle",
+                                   fill: C.muted, "font-family": FONT, "font-size": 11.5 }, label));
+    }
+  }
+
+  function curve(svg, x1, y1, x2, y2) {
+    var dx = Math.max(24, (x2 - x1) * 0.5);
+    svg.appendChild(el("path", { d: "M " + x1 + " " + y1 + " C " + (x1 + dx) + " " + y1 + ", " + (x2 - dx) + " " +
+                                 y2 + ", " + x2 + " " + y2, fill: "none", stroke: C.violet, "stroke-width": 1.5,
+                                 "marker-end": "url(#c2kArrow)" }));
+  }
+
+  /* Steps left to right, with one lit; kinds sets each step's look by name. */
+  function flow(steps, lit, opts) {
+    opts = opts || {};
+    var w = opts.width || 150, gap = 28;
+    var h = Math.max.apply(null, steps.map(function (s) { return boxHeight(s, w); }));
+    var svg = root(steps.length * w + (steps.length - 1) * gap + 28, h + 28 + (opts.title ? 22 : 0), opts.title);
+    steps.forEach(function (s, i) {
+      var x = 14 + i * (w + gap);
+      var kind = (opts.kinds && opts.kinds[i]) || (i === lit ? "lit" : "plain");
+      box(svg, x, 14, w, h, s, kind);
+      if (i) arrow(svg, x - gap, 14 + h / 2, x - 2, 14 + h / 2, opts.edges ? opts.edges[i - 1] : "");
+    });
+    return svg;
+  }
+
+  /* The same, top to bottom; edges labels the arrow into each step after the first. */
+  function vflow(steps, lit, opts) {
+    opts = opts || {};
+    var w = opts.width || 300, gap = opts.edges ? 30 : 22, y = 12, parts = [];
+    steps.forEach(function (s) { parts.push(boxHeight(s, w)); });
+    var total = parts.reduce(function (a, b) { return a + b; }, 0) + gap * (steps.length - 1) + 28;
+    var svg = root(w + 28 + (opts.edges ? 150 : 0), total + (opts.title ? 22 : 0), opts.title);
+    steps.forEach(function (s, i) {
+      if (i) {
+        arrow(svg, 14 + w / 2, y - gap, 14 + w / 2, y - 2);
+        if (opts.edges && opts.edges[i - 1]) {
+          svg.appendChild(el("text", { x: 14 + w / 2 + 10, y: y - gap / 2 + 4, fill: C.muted, "font-family": FONT,
+                                       "font-size": 12 }, opts.edges[i - 1]));
+        }
+      }
+      var kind = (opts.kinds && opts.kinds[i]) || (i === lit ? "lit" : "plain");
+      box(svg, 14, y, w, parts[i], s, kind);
+      y += parts[i] + gap;
+    });
+    return svg;
+  }
+
+  function ladder(items, lit, opts) {
+    return vflow(items.map(function (t, i) { return (i + 1) + ". " + t; }), lit, opts);
+  }
+
+  /* A decision tree, top down. node: {label, kind, branches: [[edgeLabel, child], ...]}. */
+  function tree(node, opts) {
+    opts = opts || {};
+    var levels = [];
+    (function walk(n, d) {
+      if (!levels[d]) levels[d] = [];
+      var entry = { n: n, kids: [] };
+      levels[d].push(entry);
+      (n.branches || []).forEach(function (b) { entry.kids.push([b[0], walk(b[1], d + 1)]); });
+      return entry;
+    })(node, 0);
+    var w = opts.width || 196, gx = 22, gy = 44;
+    var lh = levels.map(function (l) {
+      return Math.max.apply(null, l.map(function (e) { return boxHeight(e.n.label, w); }));
+    });
+    var width = Math.max.apply(null, levels.map(function (l) { return l.length; })) * (w + gx) + 28;
+    var height = lh.reduce(function (a, b) { return a + b; }, 0) + gy * (levels.length - 1) + 24 + (opts.title ? 22 : 0);
+    var svg = root(width, height, opts.title), y = 12;
+    levels.forEach(function (level, d) {
+      var span = level.length * (w + gx) - gx, x0 = (width - span) / 2;
+      level.forEach(function (e, i) {
+        e.x = x0 + i * (w + gx); e.y = y; e.h = lh[d];
+        box(svg, e.x, e.y, w, e.h, e.n.label, e.n.kind || "plain");
+      });
+      y += lh[d] + gy;
+    });
+    levels.forEach(function (level) {
+      level.forEach(function (e) {
+        e.kids.forEach(function (k) {
+          arrow(svg, e.x + w / 2, e.y + e.h, k[1].x + w / 2, k[1].y - 2, k[0]);
+        });
+      });
+    });
+    return svg;
+  }
+
+  /* A driver tree, left to right: a total on the left, what multiplies into it on the right.
+   * node: {label, note, kind, children: [...]}. */
+  function driverTree(node, opts) {
+    opts = opts || {};
+    var w = opts.width || 156, gx = 38, gy = 12, rows = 0, placed = [];
+    function text(n) { return n.note ? n.label + "\n" + n.note : n.label; }
+    var all = [];
+    (function walk(n) { all.push(n); (n.children || []).forEach(walk); })(node);
+    var h = Math.max.apply(null, all.map(function (n) { return boxHeight(text(n), w); }));
+    (function place(n, d) {
+      var y;
+      if (!n.children || !n.children.length) { y = rows * (h + gy); rows += 1; }
+      else {
+        var ys = n.children.map(function (k) { return place(k, d + 1); });
+        y = (ys[0] + ys[ys.length - 1]) / 2;
+      }
+      placed.push([n, d, y]);
+      return y;
+    })(node, 0);
+    var depth = Math.max.apply(null, placed.map(function (p) { return p[1]; }));
+    var svg = root((depth + 1) * w + depth * gx + 28, rows * (h + gy) - gy + 24 + (opts.title ? 24 : 0), opts.title);
+    var pos = new Map();
+    placed.forEach(function (p) { pos.set(p[0], [14 + p[1] * (w + gx), 12 + p[2]]); });
+    placed.forEach(function (p) {
+      var a = pos.get(p[0]);
+      (p[0].children || []).forEach(function (k) {
+        var b = pos.get(k);
+        curve(svg, a[0] + w, a[1] + h / 2, b[0] - 2, b[1] + h / 2);
+      });
+    });
+    placed.forEach(function (p) {
+      var a = pos.get(p[0]);
+      var g = box(svg, a[0], a[1], w, h, text(p[0]), p[0].kind || "plain");
+      if (p[0].id) g.setAttribute("data-node", p[0].id);
+    });
+    return svg;
+  }
+
+  /* Every value as a dot on one axis, with named marker lines. markers: [[label, value, kind]]. */
+  function strip(values, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || rupees, width = opts.width || 760;
+    var lo = opts.lo === undefined ? 0 : opts.lo;
+    var hi = opts.hi === undefined ? niceCeil(Math.max.apply(null, values) * 1.04) : opts.hi;
+    var left = 40, right = width - 40, axis = 150, span = (hi - lo) || 1;
+    function px(v) { return left + (right - left) * (v - lo) / span; }
+    var svg = root(width, axis + 34 + (opts.title ? 22 : 0), opts.title);
+    svg.appendChild(el("line", { x1: left, y1: axis, x2: right, y2: axis, stroke: C.muted }));
+    for (var i = 0; i < 5; i++) {
+      var v = lo + span * i / 4, x = px(v);
+      svg.appendChild(el("line", { x1: x, y1: axis, x2: x, y2: axis + 5, stroke: C.muted }));
+      svg.appendChild(el("text", { x: x, y: axis + 20, "text-anchor": "middle", fill: C.muted, "font-family": FONT,
+                                   "font-size": 12 }, fmt(v)));
+    }
+    var colour = { bad: C.rose, good: C.green, plain: C.violet };
+    var lines = opts.markers || [];
+    lines.forEach(function (m, n) {
+      var x = px(m[1]), c = colour[m[2]] || C.violet;
+      /* Two lines close together would print their labels over each other, so the lower one of a
+         close pair reads leftward from its line. */
+      var left = n > 0 && Math.abs(x - px(lines[n - 1][1])) < 150 && x <= px(lines[n - 1][1]);
+      svg.appendChild(el("line", { x1: x, y1: 34 + 16 * (n % 2), x2: x, y2: axis, stroke: c, "stroke-width": 1.6,
+                                   "stroke-dasharray": "5 4", "class": "c2k-marker" }));
+      svg.appendChild(el("text", { x: left ? x - 5 : x + 5, y: 30 + 16 * (n % 2), fill: c, "font-family": FONT,
+                                   "font-size": 12.5, "font-weight": 700, "text-anchor": left ? "end" : "start" },
+                         m[0] + " " + fmt(m[1])));
+    });
+    var bins = {};
+    values.forEach(function (v, i) {
+      var x = px(v), key = Math.round(x / 11), level = bins[key] || 0;
+      bins[key] = level + 1;
+      svg.appendChild(el("circle", { cx: x, cy: axis - 9 - level * 11, r: 5,
+                                     fill: (opts.lit || []).indexOf(i) >= 0 ? C.ink : C.violet,
+                                     "fill-opacity": 0.8, stroke: C.white, "stroke-width": 1 }));
+    });
+    return svg;
+  }
+
+  /* The next round number at or above x: 1, 2, 2.5 or 5 times a power of ten, so axis ticks read cleanly. */
+  function niceCeil(x) {
+    if (x <= 0) return 1;
+    var p = Math.pow(10, Math.floor(Math.log10(x))), steps = [1, 2, 2.5, 5, 10];
+    for (var i = 0; i < steps.length; i++) if (steps[i] * p >= x) return steps[i] * p;
+    return 10 * p;
+  }
+
+  /* The chart twins of c2kit.py's bridge, line and columns: round steps for the gridlines, a
+   * finer round top so the tallest value sits just under it, and one label style throughout. */
+  var ROUND = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8];
+  function chartCeil(x) {
+    if (x <= 0) return 1;
+    var p = Math.pow(10, Math.floor(Math.log10(x))), steps = ROUND.concat([10]);
+    for (var i = 0; i < steps.length; i++) if (steps[i] * p >= x * 0.999999) return steps[i] * p;
+    return 10 * p;
+  }
+  function tickCount(span) {
+    var tries = [5, 4, 6, 3];
+    for (var i = 0; i < tries.length; i++) {
+      var step = span / tries[i];
+      if (step <= 0) break;
+      var m = Math.round(step / Math.pow(10, Math.floor(Math.log10(step))) * 1e6) / 1e6;
+      if (ROUND.indexOf(m) >= 0) return tries[i];
+    }
+    return 4;
+  }
+  function gridlines(svg, lo, hi, fmt, left, right, py) {
+    var n = tickCount(hi - lo);
+    for (var k = 0; k <= n; k++) {
+      var v = lo + (hi - lo) * k / n, y = py(v);
+      svg.appendChild(el("line", { x1: left, y1: y, x2: right, y2: y, stroke: C.line }));
+      svg.appendChild(el("text", { x: left - 8, y: y + 4, "text-anchor": "end", fill: C.muted, "font-family": FONT,
+                                   "font-size": 11.5 }, fmt(v)));
+    }
+  }
+  function under(svg, x, y, text, per, bold) {
+    wrap(text, per || 13).slice(0, 3).forEach(function (line, i) {
+      svg.appendChild(el("text", { x: x, y: y + i * 15, "text-anchor": "middle", fill: C.ink, "font-family": FONT,
+                                   "font-size": 12, "font-weight": bold ? 700 : 400 }, line));
+    });
+  }
+  function legend(svg, items, x, y) {
+    items.forEach(function (it) {
+      if (it[2]) svg.appendChild(el("line", { x1: x, y1: y - 4, x2: x + 18, y2: y - 4, stroke: it[1], "stroke-width": 2,
+                                              "stroke-dasharray": "5 3" }));
+      else svg.appendChild(el("rect", { x: x, y: y - 10, width: 14, height: 12, rx: 3, fill: it[1] }));
+      svg.appendChild(el("text", { x: x + 22, y: y, fill: C.ink, "font-family": FONT, "font-size": 12.5 }, it[0]));
+      x += 34 + it[0].length * 7;
+    });
+  }
+
+  /* A bridge, or waterfall: start is [label, value], moves are [[label, change], ...]; each move
+   * floats from the running total, green when it adds and rose when it takes away. opts.lo raises
+   * the axis floor when the moves are small against the totals; opts.lit outlines moves by index. */
+  function bridge(start, moves, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || rupees, lit = opts.lit || [];
+    var run = start[1], levels = [0, start[1]], cols = [[start[0], start[1], null, 0, start[1]]];
+    moves.forEach(function (m, i) { cols.push([m[0], m[1], i, run, run + m[1]]); run += m[1]; levels.push(run); });
+    cols.push([opts.endLabel || "Where it lands", run, null, 0, run]);
+    var floor = opts.lo === undefined ? Math.min(0, Math.min.apply(null, levels)) : opts.lo;
+    var hi = floor + chartCeil((Math.max.apply(null, levels) - floor) * 1.06), lo = floor;
+    var colW = 92, gap = 22, left = 86, top = 30, plotH = 230;
+    var width = opts.width || left + cols.length * (colW + gap) + 6;
+    function py(v) { return top + plotH * (hi - v) / ((hi - lo) || 1); }
+    var svg = root(width, top + plotH + 20 + 45 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, lo, hi, fmt, left - 6, width - 8, py);
+    cols.forEach(function (c, k) {
+      var x = left + k * (colW + gap), y1 = py(Math.max(c[3], c[4])), y2 = py(Math.max(lo, Math.min(c[3], c[4])));
+      var isMove = c[2] !== null, fill = !isMove ? C.violet : (c[1] >= 0 ? C.green : C.rose);
+      var rect = { x: x, y: y1, width: colW, height: Math.max(2, y2 - y1), rx: 4, fill: fill, "fill-opacity": 0.88 };
+      if (isMove && lit.indexOf(c[2]) >= 0) { rect.stroke = C.ink; rect["stroke-width"] = 2.5; }
+      svg.appendChild(el("rect", rect));
+      svg.appendChild(el("text", { x: x + colW / 2, y: y1 - 7, "text-anchor": "middle", fill: C.ink, "font-family": FONT,
+                                   "font-size": 12.5, "font-weight": 700 }, (isMove && c[1] >= 0 ? "+" : "") + fmt(c[1])));
+      if (k < cols.length - 1) {
+        var level = py(c[4]);
+        svg.appendChild(el("line", { x1: x + colW, y1: level, x2: x + colW + gap, y2: level, stroke: C.muted,
+                                     "stroke-dasharray": "3 3" }));
+      }
+      under(svg, x + colW / 2, top + plotH + 20, c[0], 13, !isMove);
+    });
+    return svg;
+  }
+
+  /* Values over an ordered axis: series are [[name, values, kind], ...]; kind "plan" is a dashed
+   * reference line, "bad" and "good" colour a line by meaning. The last value prints at its end. */
+  function line(labels, series, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || function (v) { return Math.round(v).toLocaleString("en-IN"); };
+    var width = opts.width || 760, lo = opts.lo || 0, all = [];
+    series.forEach(function (s) { s[1].forEach(function (v) { if (v !== null && v !== undefined) all.push(v); }); });
+    var hi = lo + chartCeil((Math.max.apply(null, all) - lo) * 1.06);
+    var left = 86, right = width - 110, top = 44, plotH = 220, step = (right - left) / Math.max(1, labels.length - 1);
+    function py(v) { return top + plotH * (hi - v) / ((hi - lo) || 1); }
+    var svg = root(width, top + plotH + 20 + 30 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, lo, hi, fmt, left, right, py);
+    labels.forEach(function (l, i) { under(svg, left + i * step, top + plotH + 20, String(l), 10, false); });
+    var colours = { plan: C.muted, bad: C.rose, good: C.green, lit: C.ink }, keys = [];
+    series.forEach(function (s) {
+      var colour = colours[s[2]] || C.violet, dashed = s[2] === "plan", pts = [];
+      keys.push([s[0], colour, dashed]);
+      s[1].forEach(function (v, i) { if (v !== null && v !== undefined) pts.push([left + i * step, py(v), v]); });
+      var d = pts.map(function (p, j) { return (j ? "L " : "M ") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+      var path = { d: d, fill: "none", stroke: colour, "stroke-width": 2.4 };
+      if (dashed) path["stroke-dasharray"] = "6 4";
+      svg.appendChild(el("path", path));
+      if (!dashed) pts.forEach(function (p) { svg.appendChild(el("circle", { cx: p[0], cy: p[1], r: 3.6, fill: colour })); });
+      if (pts.length) {
+        var last = pts[pts.length - 1];
+        svg.appendChild(el("text", { x: last[0] + 8, y: last[1] + 4, fill: colour, "font-family": FONT, "font-size": 12.5,
+                                     "font-weight": 700 }, fmt(last[2])));
+      }
+    });
+    legend(svg, keys, left, 22);
+    return svg;
+  }
+
+  /* Vertical bars grouped by category: series are [[name, values], ...] aligned with categories,
+   * drawn light to dark in the order given, so Q1 against Q2 reads as before and after. */
+  function columns(categories, series, opts) {
+    opts = opts || {};
+    var fmt = opts.fmt || function (v) { return Math.round(v).toLocaleString("en-IN"); }, lit = opts.lit || [];
+    var shades = [C.lilac, C.violet, C.ink, C.green], all = [];
+    series.forEach(function (s) { all = all.concat(s[1]); });
+    var hi = chartCeil(Math.max.apply(null, all) * 1.1);
+    var barW = 40, inner = 6, groupGap = 34, left = 86, top = 44, plotH = 220;
+    var groupW = series.length * barW + (series.length - 1) * inner;
+    var width = opts.width || left + categories.length * (groupW + groupGap) + 10;
+    function py(v) { return top + plotH * (hi - v) / hi; }
+    var svg = root(width, top + plotH + 20 + 45 + 8 + (opts.title ? 22 : 0), opts.title);
+    gridlines(svg, 0, hi, fmt, left - 6, width - 8, py);
+    categories.forEach(function (cat, c) {
+      var gx = left + c * (groupW + groupGap);
+      series.forEach(function (s, k) {
+        var v = s[1][c], x = gx + k * (barW + inner);
+        svg.appendChild(el("rect", { x: x, y: py(v), width: barW, height: Math.max(1, top + plotH - py(v)), rx: 3,
+                                     fill: shades[k % shades.length] }));
+        svg.appendChild(el("text", { x: x + barW / 2, y: py(v) - 6, "text-anchor": "middle", fill: C.ink,
+                                     "font-family": FONT, "font-size": 11, "font-weight": 700 }, fmt(v)));
+      });
+      under(svg, gx + groupW / 2, top + plotH + 20, String(cat), Math.max(10, Math.floor(groupW / 7)),
+            lit.indexOf(c) >= 0);
+    });
+    legend(svg, series.map(function (s, k) { return [s[0], shades[k % shades.length], false]; }), left, 22);
+    return svg;
+  }
+
+  /* Messages across named lanes, drawn from the run that happened. messages: [[from, to, text]]. */
+  function sequence(lanes, messages, opts) {
+    opts = opts || {};
+    var lw = opts.laneWidth || 180, top = 46, step = 44;
+    var width = lanes.length * lw + 28, height = top + Math.max(1, messages.length) * step + 34 + (opts.title ? 16 : 0);
+    var svg = root(width, height, opts.title);
+    lanes.forEach(function (lane, i) {
+      var x = 14 + i * lw;
+      box(svg, x + 10, 10, lw - 20, 30, lane, "lit", 12);
+      svg.appendChild(el("line", { x1: x + lw / 2, y1: 42, x2: x + lw / 2, y2: height - 28, stroke: C.line }));
+    });
+    messages.forEach(function (m, n) {
+      var y = top + n * step + 20;
+      var x1 = 14 + lanes.indexOf(m[0]) * lw + lw / 2, x2 = 14 + lanes.indexOf(m[1]) * lw + lw / 2;
+      if (x1 === x2) {
+        svg.appendChild(el("text", { x: x1 + 8, y: y + 4, fill: C.night, "font-family": FONT, "font-size": 12 }, m[2]));
+      } else {
+        arrow(svg, x1, y, x2 + (x2 > x1 ? -4 : 4), y, m[2]);
+      }
+    });
+    return svg;
+  }
+
+  function sideBySide() {
+    var div = document.createElement("div");
+    div.className = "c2k-row";
+    Array.prototype.forEach.call(arguments, function (svg) { div.appendChild(svg); });
+    return div;
+  }
+
+  /* Rs with Indian digit grouping, the way every Kalpa number is read aloud. */
+  function rupees(n) {
+    var sign = n < 0 ? "-" : "", s = String(Math.round(Math.abs(n)));
+    if (s.length <= 3) return sign + "Rs " + s;
+    var head = s.slice(0, -3), tail = s.slice(-3), parts = [];
+    while (head.length > 2) { parts.unshift(head.slice(-2)); head = head.slice(0, -2); }
+    if (head) parts.unshift(head);
+    return sign + "Rs " + parts.join(",") + "," + tail;
+  }
+
+  /* Put a diagram into a holder, replacing whatever was drawn there before. */
+  function draw(holder, svg) {
+    var target = typeof holder === "string" ? document.getElementById(holder) : holder;
+    target.textContent = "";
+    target.appendChild(svg);
+    return svg;
+  }
+
+  window.C2K = { colours: C, flow: flow, vflow: vflow, ladder: ladder, tree: tree, driverTree: driverTree,
+                 strip: strip, bridge: bridge, line: line, columns: columns, sequence: sequence,
+                 sideBySide: sideBySide, rupees: rupees, draw: draw };
+})();
 </script>
+<script>
+(function () {
+  "use strict";
+  var K = window.C2K;
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  function crore(v) { return "Rs " + (v / 1e7).toFixed(2) + " cr"; }
+  function mixed(v) { return Math.abs(v) < 1e7 ? K.rupees(v) : crore(v); }
+  function kavya(id, text) { $(id).innerHTML = "<b class='tag'>Kavya's review</b>"; $(id).appendChild(document.createTextNode(text)); }
+  function press(ids, on) { ids.forEach(function (i) { $(i).setAttribute("aria-pressed", String(i === on)); }); }
+
+  /* ---------------------------------------------------------------- the rail */
+  var rail = document.querySelectorAll(".rail a");
+  Array.prototype.forEach.call(rail, function (a) {
+    a.addEventListener("click", function () {
+      Array.prototype.forEach.call(rail, function (b) { b.classList.toggle("on", b === a); });
+      $("jumped").textContent = "You jumped to " + a.textContent.replace(/^\d+/, "").trim() + ".";
+    });
+  });
+  if ("IntersectionObserver" in window) {
+    var seen = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        Array.prototype.forEach.call(rail, function (b) { b.classList.toggle("on", b.dataset.part === e.target.id); });
+      });
+    }, { rootMargin: "-20% 0px -70% 0px" });
+    Array.prototype.forEach.call(document.querySelectorAll("section.part"), function (s) { seen.observe(s); });
+  }
+
+  /* ---------------------------------------------------------------- the day's picture */
+  K.draw("picture", K.driverTree({ label: "Q2 revenue per member", note: "227 rows", kind: "plain", children: [
+    { label: "GROUP BY segment", note: "4 rows: how much per segment", kind: "bad" },
+    { label: "a window", note: "PARTITION BY segment, ORDER BY revenue DESC", kind: "plain", children: [
+      { label: "227 rows kept", note: "each with its position", kind: "known", children: [
+        { label: "filtered in a CTE", note: "position at most 50", kind: "known" }] }] }] },
+    { width: 190, title: "GROUP BY collapses the rows; a window keeps every row and says where it stands" }));
+
+  /* ---------------------------------------------------------------- the walk */
+  var RUNGS = ["Who are the fifty biggest members?", "Who are the fifty biggest in each segment?",
+    "What happens at the fiftieth place when two members tie?", "Whose monthly spend fell two months running?",
+    "Is Q2 on track against the plan line?"];
+  var WALK = [
+    { t: "Three questions inside one request", lit: -1, code: "-- the window for each rung appears here",
+      x: "Marketing asked for a list, a flag and a chart. Read as a climb, the request is five business questions, each one harder than the last, and each one answered by a window that keeps every row.",
+      c: "Each rung has one check that exposes the plausible wrong number." },
+    { t: "Rung 1: the fifty biggest members", lit: 0, code: "row_number() OVER (ORDER BY q2_revenue DESC)",
+      x: "Ranked over the whole table, the top fifty holds 35 Business members, 11 Retail-Plus, 4 Retail-Core and no Student, because one Business order outweighs a year of a retail member's spend.",
+      c: "Count the list by segment with a GROUP BY over the fifty rows." },
+    { t: "Rung 2: the fifty biggest in each segment", lit: 1, code: "row_number() OVER (PARTITION BY segment\n                   ORDER BY q2_revenue DESC, customer_id)",
+      x: "PARTITION BY segment restarts the numbering in every segment. The list becomes 35 Business, 50 Retail-Plus, 50 Retail-Core and 20 Student, 155 rows, and Business and Student hold every Q2 buyer they have.",
+      c: "The Retail-Plus count goes from 11 members to 50, and the list says where a segment has fewer than fifty buyers." },
+    { t: "Rung 3: a tie at the line", lit: 2, code: "rank() OVER (PARTITION BY segment ORDER BY q2_revenue DESC)",
+      x: "When two members spent the same at the line, each function ships a different count. In Retail-Core, ROW_NUMBER, RANK and whole ties only ship 50, and DENSE_RANK ships 52 because ties higher up compress its numbering.",
+      c: "Count the rows each rule ships, and read the positions either side of the line with all three functions side by side." },
+    { t: "Rung 4: spend that fell two months running", lit: 3, code: "lag(spend, 1) OVER (PARTITION BY customer_id ORDER BY month)",
+      x: "LAG without a partition flags 20 members, 4 of them compared with another member's month. Partitioned by member it flags 16, and 7 of those read across a month with no order, which leaves 9 once the previous rows must be August and July.",
+      c: "Carry lag(month) beside lag(spend) and count the rows whose previous row is not the previous calendar month." },
+    { t: "Rung 5: the quarter against the plan line", lit: 4, code: "sum(amount) OVER (ORDER BY order_date, order_id)",
+      x: "Booked to date, read at the end of each plan week, closes at Rs 9,84,00,000 against a plan of Rs 9,83,99,990. A running total built plan-first drops the 25 orders of 1 to 5 July and reports the quarter Rs 15,39,810 short.",
+      c: "The last booked-to-date must equal Monday's Q2 total, Rs 9,84,00,000." }
+  ];
+  var walkAt = 0;
+  function showWalk() {
+    var w = WALK[walkAt];
+    K.draw("walkLadder", K.ladder(RUNGS, w.lit, { width: 360, title: w.lit < 0 ? "The five rungs of the day" : "Rung " + (w.lit + 1) + " is lit" }));
+    $("walkStep").textContent = "Step " + walkAt + " of " + (WALK.length - 1);
+    $("walkTitle").textContent = w.t;
+    $("walkText").textContent = w.x;
+    $("walkCode").textContent = w.code;
+    $("walkCheck").textContent = w.c;
+    $("walkNext").textContent = walkAt === WALK.length - 1 ? "Back to the start" : "Next";
+  }
+  $("walkNext").addEventListener("click", function () { walkAt = (walkAt + 1) % WALK.length; showWalk(); });
+  $("walkRestart").addEventListener("click", function () {
+    walkAt = 0; showWalk(); $("walkStep").textContent = "Step 0 of " + (WALK.length - 1) + ", restarted";
+  });
+  showWalk();
+
+  /* ---------------------------------------------------------------- round 1 */
+  var SEGS = ["Business", "Retail-Plus", "Retail-Core", "Student"], BUYERS = [35, 76, 96, 20];
+  var R1 = {
+    whole: { list: [35, 11, 4, 0], code: "row_number() OVER (ORDER BY q2_revenue DESC) AS pos\n-- then pos <= 50: 50 rows in all",
+      decision: "Marketing would spend the protect budget on 35 Business accounts, hand the Retail-Plus team 11 members and Retail-Core 4, and give Student nobody.",
+      detail: "The smallest Retail-Plus member on this list spent Rs 9,600 and the smallest Retail-Core member Rs 9,630, so the list protects only the very top of the retail segments, and the segment Marketing named as the problem gets 11 of the fifty places.",
+      kavya: "This answers who the fifty biggest members are, which is rung 1. Marketing asked for fifty in each segment, and the count by segment shows the list is almost all Business." },
+    seg: { list: [35, 50, 50, 20], code: "row_number() OVER (PARTITION BY segment\n                   ORDER BY q2_revenue DESC, customer_id) AS pos\n-- then pos <= 50: 155 rows",
+      decision: "Each segment team gets its own list: 50 Retail-Plus members, 50 Retail-Core, and in Business and Student, which have only 35 and 20 Q2 buyers, every buyer they have.",
+      detail: "The list carries 100.0 percent of Business Q2 revenue, 85.5 percent of Retail-Plus, 76.1 percent of Retail-Core and 100.0 percent of Student. The list should say that Business and Student are every Q2 buyer, so nobody reads 35 as a short list.",
+      kavya: "This is the list Marketing asked for. The numbering restarts in every segment, and the count by segment proves it. Round 2 asks what happens if two members tie at fiftieth." }
+  };
+  function r1(which) {
+    var s = R1[which];
+    press(["r1Whole", "r1Seg"], which === "whole" ? "r1Whole" : "r1Seg");
+    K.draw("r1Chart", K.columns(SEGS, [["Q2 buyers in the segment", BUYERS], ["On the protect list", s.list]],
+      { lit: which === "whole" ? [1] : [], title: which === "whole" ? "Ranked over the whole table: 50 rows" : "Ranked within each segment: 155 rows" }));
+    $("r1Code").textContent = s.code;
+    $("r1Decision").textContent = s.decision;
+    $("r1Detail").textContent = s.detail;
+    $("r1Detail").className = "";
+    kavya("r1Kavya", s.kavya);
+    state.r1 = which;
+  }
+  var state = { r1: null, rule: null, part: false, gap: false, method: null, beside: false };
+  $("r1Whole").addEventListener("click", function () { r1("whole"); });
+  $("r1Seg").addEventListener("click", function () { r1("seg"); });
+  var whereOn = false;
+  $("r1Where").addEventListener("click", function () {
+    whereOn = !whereOn;
+    this.setAttribute("aria-pressed", String(whereOn));
+    this.textContent = whereOn ? "Compute it in a CTE instead" : "Filter the position in WHERE";
+    $("r1WhereOut").className = whereOn ? "err" : "formula";
+    $("r1WhereOut").textContent = whereOn
+      ? "SELECT customer_id, row_number() OVER (...) AS pos\nFROM q2 WHERE row_number() OVER (...) <= 50;\n\nERROR:  window functions are not allowed in WHERE"
+      : "WITH ranked AS (\n  SELECT customer_id, row_number() OVER (...) AS pos FROM q2\n)\nSELECT * FROM ranked WHERE pos <= 50;   -- runs";
+  });
+
+  /* ---------------------------------------------------------------- round 2 */
+  var MEMBERS = [["A", 9400], ["B", 8900], ["C", 8900], ["D", 7600], ["E", 7100], ["F", 6800],
+                 ["G", 6250], ["H", 5900], ["I", 5900], ["J", 5300], ["K", 4750], ["L", 4200]];
+  function positions(list) {
+    var out = [], dense = 0, prev = null;
+    list.forEach(function (m, i) {
+      var rank = i + 1;
+      if (prev !== null && m[1] === prev.spend) rank = prev.rk;
+      if (prev === null || m[1] !== prev.spend) dense += 1;
+      var tied = list.filter(function (x) { return x[1] === m[1]; }).length;
+      var row = { name: m[0], spend: m[1], rn: i + 1, rk: rank, dr: dense, tied: tied };
+      out.push(row); prev = row;
+    });
+    return out;
+  }
+  var RANKED = positions(MEMBERS);
+  var RULES = {
+    RN: { name: "ROW_NUMBER", col: "rn", code: "WHERE rn <= N" },
+    RK: { name: "RANK", col: "rk", code: "WHERE rk <= N" },
+    DR: { name: "DENSE_RANK", col: "dr", code: "WHERE dr <= N" },
+    WT: { name: "whole ties only", col: "rk", code: "WHERE rk + tied_with - 1 <= N" }
+  };
+  function ships(rule, n, row) {
+    if (rule === "RN") return row.rn <= n;
+    if (rule === "RK") return row.rk <= n;
+    if (rule === "DR") return row.dr <= n;
+    return row.rk + row.tied - 1 <= n;
+  }
+  function shipCount(rule, n) { return RANKED.filter(function (r) { return ships(rule, n, r); }).length; }
+  function sentence(rule, n) {
+    var count = shipCount(rule, n), nth = RANKED[n - 1], pair = RANKED.filter(function (r) { return r.spend === nth.spend; });
+    var atLine = pair.length > 1 && pair[0].rn <= n && pair[pair.length - 1].rn > n;
+    var names = pair.map(function (r) { return r.name; }).join(" and ");
+    if (rule === "RN") return atLine
+      ? "The list carries " + count + " members; " + pair[0].name + " made it and " + pair[pair.length - 1].name + " did not, on equal spend of " + K.rupees(nth.spend) + ", because the database broke the tie."
+      : "The list carries " + count + " members, exactly N, and no tie sits at the line this time.";
+    if (rule === "RK") return atLine
+      ? "The list carries " + count + " members, because " + names + " tie at " + ord(pair[0].rk) + " on " + K.rupees(nth.spend) + " and tied members share a place."
+      : "The list carries " + count + " members; tied members share a place, and no tie straddles the line at this N.";
+    if (rule === "DR") return count > n
+      ? "The list carries " + count + " members for a top " + n + ", because tied members higher up compress the numbering and let extra members under the line."
+      : "The list carries " + count + " members, and DENSE_RANK happens to agree with N here.";
+    return atLine
+      ? "The list carries " + count + " members; " + names + " tie at " + ord(pair[0].rk) + " and both are left off, because their tie does not fit whole."
+      : "The list carries " + count + " members, and every tie fits whole inside the line.";
+  }
+  function ord(n) { var s = ["th", "st", "nd", "rd"], v = n % 100; return n + (s[(v - 20) % 10] || s[v] || s[0]); }
+  function verdict(rule, n) {
+    var count = shipCount(rule, n);
+    if (rule === "RK") return ["ok", "Meets the head of Retail-Plus's rule: tied members rank the same, nobody at the line is dropped, and the report states " + count + "."];
+    if (rule === "RN") return ["warn", "Fails the head of Retail-Plus's rule: tied members get different positions, and one can be dropped by a coin toss."];
+    if (rule === "DR") return [count > n ? "warn" : "ok", count > n
+      ? "Sounds like ties rank the same and quietly ships " + count + " for a top " + n + ", which nobody asked for."
+      : "Ranks ties the same, and at this N ships exactly " + n + "; widen or narrow N and it drifts."];
+    return [count < n ? "warn" : "ok", count < n
+      ? "Fails the head of Retail-Plus's rule: " + count + " rows for a top " + n + " drops members who spent exactly what the last place did."
+      : "Ships " + count + " at this N, because no tie straddles the line."];
+  }
+  function drawRound2() {
+    var n = Number($("listN").value), rule = state.rule;
+    $("listNV").textContent = String(n);
+    var html = "<table class='t tight'><tr><th>Member</th><th class='num'>Q2 spend</th>" +
+      ["RN", "RK", "DR"].map(function (k) {
+        return "<th class='num" + (rule && RULES[rule].col === RULES[k].col && (rule !== "WT" || k === "RK") ? " pick" : "") + "'>" + RULES[k].name + "</th>";
+      }).join("") + "<th>On the list?</th></tr>";
+    var lastOn = -1;
+    RANKED.forEach(function (r, i) { if (rule && ships(rule, n, r)) lastOn = i; });
+    RANKED.forEach(function (r, i) {
+      var on = rule ? ships(rule, n, r) : null;
+      var cls = on === null ? "" : (on ? "on" : "off");
+      if (i === lastOn) cls += " line";
+      html += "<tr class='" + cls + "'><td>" + r.name + "</td><td class='num'>" + K.rupees(r.spend) + "</td>" +
+        "<td class='num'>" + r.rn + "</td><td class='num'>" + r.rk + "</td><td class='num'>" + r.dr + "</td><td>" +
+        (on === null ? "pick a rule" : (on ? "yes" : "no")) + "</td></tr>";
+    });
+    $("r2Table").innerHTML = html + "</table>";
+    var lit = [];
+    RANKED.forEach(function (r, i) { if (rule && ships(rule, n, r)) lit.push(i); });
+    K.draw("r2Strip", K.strip(RANKED.map(function (r) { return r.spend; }), { lo: 4000, hi: 10000, width: 560, lit: lit,
+      markers: [["the Nth spend", RANKED[n - 1].spend, "bad"]], title: "Twelve invented members; darker dots are on the list" }));
+    Array.prototype.forEach.call($("coreTable").querySelectorAll("tr[data-rule]"), function (tr) {
+      Array.prototype.forEach.call(tr.children, function (td) { td.classList.toggle("pick", tr.dataset.rule === rule); });
+    });
+    if (!rule) { $("shipped").textContent = "?"; return; }
+    $("shipped").textContent = String(shipCount(rule, n));
+    $("r2Sentence").textContent = sentence(rule, n);
+    var v = verdict(rule, n);
+    $("r2Verdict").innerHTML = "<span class='" + v[0] + "'>" + esc(v[1]) + "</span>";
+    $("r2Code").textContent = "-- " + RULES[rule].name + ", list size " + n + "\n" + RULES[rule].code.replace("N", String(n));
+    $("coreNote").textContent = "At N = 50 in Retail-Core, " + RULES[rule].name + " ships " +
+      { RN: 50, RK: 50, DR: 52, WT: 50 }[rule] + ". No tie straddles fiftieth there, so three rules agree, and DENSE_RANK ships 52 because ties higher up compress its numbering. Run the Retail-Plus variant in notebook 02 and count what each rule ships there yourself.";
+    kavya("r2Kavya", rule === "RK"
+      ? "RANK keeps everyone at the line, and the report says how many and why. That is the rule the head of Retail-Plus described, and it is a business decision you can defend."
+      : rule === "RN"
+        ? "ROW_NUMBER always ships N, which looks tidy, and at a tie it decides who is dropped by the database's order. Would you tell the member who was dropped?"
+        : rule === "DR"
+          ? "DENSE_RANK sounds like ties rank the same, and it answers a different question: how many distinct spend levels. Count what it ships before you send it."
+          : "Whole ties only never ships more than N, and it drops both members of a tie at the line. The head of Retail-Plus asked for the opposite.");
+  }
+  ["RN", "RK", "DR", "WT"].forEach(function (k) {
+    $("rule" + k).addEventListener("click", function () {
+      state.rule = k; press(["ruleRN", "ruleRK", "ruleDR", "ruleWT"], "rule" + k); drawRound2();
+    });
+  });
+  $("listN").addEventListener("input", drawRound2);
+  drawRound2();
+
+  /* ---------------------------------------------------------------- round 3 */
+  var MONTHS = ["Apr", "May", "Jun", "Jul", "Aug", "Sep"];
+  var SPEND = {
+    P: [4600, 5000, 4900, 5200, 4100, 2900],
+    Q: [3200, 3500, 3900, 3600, null, 2700],
+    R: [null, null, null, null, 2200, 1800],
+    S: [5600, 5800, 5900, 6000, 6400, 5100]
+  };
+  var WHO = { P: "fell in August and September", Q: "on holiday in August", R: "joined in August",
+              S: "one fall, in September" };
+  function rowsOf(spend) {
+    var rows = [];
+    Object.keys(spend).sort().forEach(function (m) {
+      spend[m].forEach(function (v, i) { if (v !== null) rows.push({ m: m, i: i, v: v }); });
+    });
+    return rows;
+  }
+  function flagAt(spend, part, gap, monthIndex) {
+    var rows = rowsOf(spend), out = {};
+    rows.forEach(function (r, k) {
+      if (r.i !== monthIndex) return;
+      function back(j) {
+        var p = rows[k - j];
+        if (!p) return null;
+        if (part && p.m !== r.m) return null;
+        if (part) { for (var q = 1; q < j; q++) if (rows[k - q].m !== r.m) return null; }
+        return p;
+      }
+      var b1 = back(1), b2 = back(2), ok = !!(b1 && b2 && r.v < b1.v && b1.v < b2.v);
+      if (gap && ok) ok = b1.m === r.m && b2.m === r.m && b1.i === monthIndex - 1 && b2.i === monthIndex - 2;
+      out[r.m] = { row: r, b1: b1, b2: b2, flagged: ok };
+    });
+    return out;
+  }
+  function cell(p, r) {
+    if (!p) return "NULL";
+    var mine = p.m === r.m;
+    return (mine ? "" : "<span class='warn'>") + "Member " + p.m + ", " + MONTHS[p.i] + ", " + K.rupees(p.v) + (mine ? "" : "</span>");
+  }
+  function drawRound3() {
+    var part = state.part, gap = state.gap, res = flagAt(SPEND, part, gap, 5), count = 0;
+    $("r3Part").textContent = "Partition by member: " + (part ? "on" : "off");
+    $("r3Gap").textContent = "A missing month breaks the run: " + (gap ? "on" : "off");
+    $("r3Code").textContent = "lag(spend, 1) OVER (" + (part ? "PARTITION BY customer_id " : "") + "ORDER BY " + (part ? "" : "customer_id, ") + "month)\n" +
+      (gap ? "-- and the previous two rows must be this member's August and July" : "-- a flag when September < the row before < the row two back");
+    var html = "<table class='t'><tr><th>Member</th><th class='num'>September</th><th>Row before</th><th>Row two back</th><th>Flagged?</th></tr>";
+    Object.keys(res).forEach(function (m) {
+      var x = res[m];
+      if (x.flagged) count += 1;
+      html += "<tr class='" + (x.flagged ? "line" : "") + "'><td>Member " + m + " (invented)</td><td class='num'>" + K.rupees(x.row.v) + "</td><td>" +
+        cell(x.b1, x.row) + "</td><td>" + cell(x.b2, x.row) + "</td><td>" + (x.flagged ? "<span class='warn'>flagged</span>" : "no") + "</td></tr>";
+    });
+    $("r3Table").innerHTML = html + "</table>";
+    $("r3Count").textContent = String(count);
+    var real = gap ? 9 : (part ? 16 : 20);
+    $("r3Real").textContent = String(real);
+    $("r3RealText").textContent = gap
+      ? "With the previous two rows required to be the member's own August and July, 9 members are flagged. A month with no order is no reading, so it breaks the run."
+      : part
+        ? "Partitioned by member, 16 are flagged, and 7 of those compared September with a month that was not August, because the member had a month with no order."
+        : "Without a partition, 20 members are flagged, and 4 of them were compared with another member's month.";
+    var q = res.Q;
+    $("r3Holiday").innerHTML = "&ldquo;I was away all of August, so how can my spend have fallen two months running?&rdquo; " +
+      (q.flagged
+        ? "<span class='warn'>He is right. The flag compared his September with July and called July last month, so a gap became a fall.</span>"
+        : "<span class='ok'>He is not flagged. His August is no reading, so the run is broken and there is nothing to defend.</span>");
+    var lines = Object.keys(SPEND).map(function (m) {
+      return K.line(MONTHS, [["Member " + m + " (invented)", SPEND[m], res[m] && res[m].flagged ? "bad" : null]],
+        { width: 430, lo: 0, title: "Member " + m + ": " + WHO[m] });
+    });
+    K.draw("r3Lines", K.sideBySide.apply(null, lines));
+    kavya("r3Kavya", gap
+      ? "Every flagged member now fell against their own July and August. Member Q is off the list, and if he calls, the answer is that a month with no order breaks the run."
+      : part
+        ? "Every comparison now stays inside one member, and Member Q is still accused of a fall across a month he was away. Check that the row before is last month."
+        : "Member R's September is read against Member Q's months, so the flag accuses him of a fall in someone else's account. Partition by the member first.");
+  }
+  $("r3Part").addEventListener("click", function () { state.part = !state.part; this.setAttribute("aria-pressed", String(state.part)); drawRound3(); });
+  $("r3Gap").addEventListener("click", function () { state.gap = !state.gap; this.setAttribute("aria-pressed", String(state.gap)); drawRound3(); });
+  drawRound3();
+
+  /* ---------------------------------------------------------------- rung 5 */
+  var WEEKS = ["6 Jul", "13 Jul", "20 Jul", "27 Jul", "3 Aug", "10 Aug", "17 Aug", "24 Aug", "31 Aug", "7 Sep", "14 Sep", "21 Sep", "28 Sep"];
+  var WEEKLY_PLAN = 7569230, EARLY = 1539820, QUARTER = 98400000;
+  var PLAN = WEEKS.map(function (w, i) { return WEEKLY_PLAN * (i + 1); });
+  var BOOKED = [5100180, 31729100, 42244480, 48781050, 59515810, 63284780, 68736590, 71959570, 75396740,
+                81930010, 91231660, 97909980, 98400000];
+  var JOINED = BOOKED.map(function (b) { return b - EARLY; });
+  function drawPlan() {
+    var m = state.method || "end", actual = m === "end" ? BOOKED : JOINED, last = actual[actual.length - 1];
+    press(["planEnd", "planJoin"], m === "end" ? "planEnd" : "planJoin");
+    $("planBeside").textContent = "Set the running actual beside the weekly plan: " + (state.beside ? "on" : "off");
+    $("planBeside").setAttribute("aria-pressed", String(state.beside));
+    var planSeries = state.beside ? WEEKS.map(function () { return WEEKLY_PLAN; }) : PLAN;
+    K.draw("planChart", K.line(WEEKS, [
+      [m === "end" ? "Booked to date, read at each plan week's end" : "Booked to date, plan-first join", actual, m === "end" ? null : "bad"],
+      [state.beside ? "One week's plan (the wrong partner)" : "Plan to date", planSeries, "plan"]],
+      { width: 860, fmt: crore, title: "Q2 by plan week, from the week starting 6 July" }));
+    var gapClose = last - PLAN[12];
+    if (state.beside) {
+      $("planVerdict").innerHTML = "<span class='warn'>At the end of week seven the dashboard reads " + K.rupees(BOOKED[6]) +
+        " against a plan of " + K.rupees(WEEKLY_PLAN) + ", nine times the plan.</span>";
+      $("planDetail").textContent = "That is a running actual set beside one week's plan. The plan to date at week seven is " +
+        K.rupees(PLAN[6]) + ", so Q2 was ahead by " + K.rupees(BOOKED[6] - PLAN[6]) + ", a lead worth reporting and nowhere near nine times.";
+    } else if (m === "end") {
+      $("planVerdict").innerHTML = "<span class='ok'>Q2 closed on plan: " + K.rupees(last) + " against " + K.rupees(PLAN[12]) + ", Rs 10 ahead.</span>";
+      $("planDetail").textContent = "At mid-quarter, the end of the seventh plan week, Q2 was ahead by Rs 1,57,51,980, and almost all of the lead came from the week of 13 July, which booked Rs 2.66 crore. From the week of 10 August, six of the seven full weeks booked below the weekly plan of Rs 75,69,230, and the lead shrank from its peak of Rs 2,16,69,660 to Rs 10. On track by the total, off track by the run rate.";
+    } else {
+      $("planVerdict").innerHTML = "<span class='warn'>The report says Q2 closed " + K.rupees(-gapClose) + " short of plan, at " + K.rupees(last) + ".</span>";
+      $("planDetail").textContent = "The plan line starts with the week of 6 July, so a join from the plan to weekly revenue drops the week of 29 June, which holds the 25 orders of 1 to 5 July, Rs 15,39,820. The last booked-to-date should equal Monday's Rs 9,84,00,000, and it is Rs 15,39,820 short.";
+    }
+    K.draw("planBridge", K.bridge(["The hurried close", QUARTER - EARLY], [["Orders of 1 to 5 July", EARLY]],
+      { lo: 95000000, fmt: mixed, endLabel: "The true close", lit: m === "join" ? [0] : [],
+        title: "Rs 9,68,60,180 plus Rs 15,39,820 is Rs 9,84,00,000" }));
+    kavya("planKavya", state.beside
+      ? "A running figure goes beside a running figure. Put the plan to date back before this reaches Meera."
+      : m === "end"
+        ? "The last value equals Rs 9,84,00,000, so the running total covers the quarter. Tell Meera the total is on plan and the run rate is not."
+        : "The last value is Rs 9,68,60,180, short of the quarter's total, so the running total is missing orders. The plan decides the weeks, and the orders of 1 to 5 July fall before its first week.");
+  }
+  $("planEnd").addEventListener("click", function () { state.method = "end"; drawPlan(); });
+  $("planJoin").addEventListener("click", function () { state.method = "join"; drawPlan(); });
+  $("planBeside").addEventListener("click", function () { state.beside = !state.beside; drawPlan(); });
+
+  /* ---------------------------------------------------------------- the sequence popup */
+  function openSeq(title, lanes, messages, note) {
+    $("seqTitle").textContent = title;
+    K.draw("seqBody", K.sequence(lanes, messages, { laneWidth: 210 }));
+    $("seqNote").textContent = note;
+    var d = $("seqDialog");
+    if (typeof d.showModal === "function") d.showModal(); else d.setAttribute("open", "");
+  }
+  $("seqClose").addEventListener("click", function () { $("seqDialog").close(); });
+  function reveal(key, text) { $(key + "What").textContent = text; $(key + "Result").hidden = false; $(key + "Wait").hidden = true; }
+
+  /* ---------------------------------------------------------------- experiment A */
+  var aOn = false;
+  function drawA() {
+    var names = ["ROW_NUMBER", "RANK", "DENSE_RANK", "Whole ties only"], keys = ["RN", "RK", "DR", "WT"];
+    var series = [["List of 8", keys.map(function (k) { return shipCount(k, 8); })]];
+    if (aOn) series.push(["List of 10", keys.map(function (k) { return shipCount(k, 10); })]);
+    K.draw("expAChart", K.columns(names, series, { width: 520, title: aOn ? "Rows shipped at N = 8 and N = 10" : "Rows shipped at N = 8" }));
+  }
+  $("expARun").addEventListener("click", function () {
+    aOn = !aOn; this.setAttribute("aria-pressed", String(aOn));
+    this.textContent = aOn ? "Back to a list of 8" : "Widen the list to 10";
+    drawA();
+    reveal("expA", aOn
+      ? "At 10, ROW_NUMBER, RANK and whole ties only all ship 10, because H and I now sit inside the line together, and DENSE_RANK ships all 12 members."
+      : "At 8 the line runs through H and I: ROW_NUMBER ships 8, RANK 9, DENSE_RANK 10 and whole ties only 7.");
+  });
+  $("expASeq").addEventListener("click", function () {
+    openSeq("Experiment A, as a sequence", ["the list size", "the tie", "the count"], [
+      ["the list size", "the tie", "N = 8 cuts between H and I"], ["the tie", "the count", "RANK 9, whole ties 7"],
+      ["the list size", "the tie", "N = 10 takes both"], ["the tie", "the count", "ROW_NUMBER and RANK agree on 10"]],
+      "The tie never moved; the line did, and the counts followed it.");
+  });
+  drawA();
+
+  /* ---------------------------------------------------------------- experiment B */
+  var bOn = false;
+  function drawB() {
+    function run(first) {
+      var order = RANKED.slice(0, 9).map(function (r) { return r.name; });
+      if (first === "I") { order[7] = "I"; order[8] = "H"; }
+      return order;
+    }
+    var mon = run("H"), tue = run(bOn ? "I" : "H");
+    var html = "<table class='t'><tr><th>Position</th><th>Monday's run</th><th>Tuesday's run</th></tr>";
+    [6, 7, 8].forEach(function (i) {
+      html += "<tr class='" + (i === 7 ? "line" : "") + "'><td>" + (i + 1) + (i === 8 ? ", off the list" : "") + "</td><td>" + mon[i] + " (invented)</td><td>" +
+        (bOn ? tue[i] + " (invented)" : "not run yet") + "</td></tr>";
+    });
+    $("expBTable").innerHTML = html + "</table>";
+  }
+  $("expBRun").addEventListener("click", function () {
+    bOn = !bOn; this.setAttribute("aria-pressed", String(bOn));
+    this.textContent = bOn ? "Put the tiebreaker back" : "Run Monday and Tuesday";
+    drawB();
+    reveal("expB", bOn
+      ? "Monday's run put H eighth and I ninth; Tuesday's run, with the same data, returned I first, so I made the list and H did not. The runs are simulated, and the database is free to do exactly this."
+      : "With member as the tiebreaker, every run puts H eighth and I ninth, which is repeatable and still drops I on equal spend.");
+  });
+  $("expBSeq").addEventListener("click", function () {
+    openSeq("Experiment B, as a sequence", ["the query", "the database", "the list"], [
+      ["the query", "the database", "ORDER BY spend DESC, no tiebreaker"], ["the database", "the list", "Monday: H eighth"],
+      ["the query", "the database", "the same query, Tuesday"], ["the database", "the list", "Tuesday: I eighth"]],
+      "Nothing in the data changed; the order of the tied rows was never fixed by the query.");
+  });
+  drawB();
+
+  /* ---------------------------------------------------------------- experiment C */
+  var cOn = false;
+  function drawC() {
+    var q = SPEND.Q.slice();
+    if (cOn) q[4] = 0;
+    K.draw("expCChart", K.line(MONTHS, [["Member Q (invented)", q, cOn ? "bad" : null]],
+      { width: 520, lo: 0, title: cOn ? "August filled with zero" : "August left as no reading" }));
+  }
+  $("expCRun").addEventListener("click", function () {
+    cOn = !cOn; this.setAttribute("aria-pressed", String(cOn));
+    this.textContent = cOn ? "Leave August empty" : "Fill August with zero";
+    drawC();
+    var filled = { Q: SPEND.Q.slice() }; filled.Q[4] = 0;
+    var aug = flagAt(cOn ? filled : { Q: SPEND.Q }, true, true, 4).Q, sep = flagAt(cOn ? filled : { Q: SPEND.Q }, true, true, 5).Q;
+    reveal("expC", cOn
+      ? "With a zero in August, the flag ending September is " + (sep.flagged ? "raised" : "clear") + ", because Rs 2,700 is more than zero, and the flag ending August is " + (aug && aug.flagged ? "raised" : "clear") + ": Rs 3,900, then Rs 3,600, then zero reads as two falls running."
+      : "With August left empty, Member Q has no August row, so the flag ending August cannot run, and the flag ending September needs an August it does not have.");
+  });
+  $("expCSeq").addEventListener("click", function () {
+    openSeq("Experiment C, as a sequence", ["June and July", "August", "the flag"], [
+      ["June and July", "August", "Rs 3,900, then Rs 3,600"], ["August", "August", "filled with zero"],
+      ["August", "the flag", "3,900 > 3,600 > 0"], ["the flag", "the flag", "flag raised"]],
+      "The zero is a number the data never recorded, and the flag reads it as a fall.");
+  });
+  drawC();
+
+  /* ---------------------------------------------------------------- experiment D */
+  var dOn = false;
+  function drawD() {
+    var close = dOn ? QUARTER - EARLY : QUARTER;
+    K.draw("expDChart", K.bridge(["Plan to date", PLAN[12]], [["Actual against plan", close - PLAN[12]]],
+      { lo: 95000000, fmt: mixed, width: 440, endLabel: dOn ? "Started on 6 July" : "Started on 1 July",
+        title: dOn ? "The close, started on 6 July" : "The close, started on 1 July" }));
+  }
+  $("expDRun").addEventListener("click", function () {
+    dOn = !dOn; this.setAttribute("aria-pressed", String(dOn));
+    this.textContent = dOn ? "Start on 1 July" : "Start on 6 July";
+    drawD();
+    reveal("expD", dOn
+      ? "Started on 6 July, the actual closes at Rs 9,68,60,180 against a plan of Rs 9,83,99,990, so the report reads Rs 15,39,810 short."
+      : "Started on 1 July, the actual closes at Rs 9,84,00,000 against Rs 9,83,99,990, Rs 10 ahead, and it equals Monday's quarter total.");
+  });
+  $("expDSeq").addEventListener("click", function () {
+    openSeq("Experiment D, as a sequence", ["the orders", "the running total", "the report"], [
+      ["the orders", "the running total", "1 to 5 July: 25 orders, Rs 15,39,820"], ["the running total", "the running total", "starts 6 July, skips them"],
+      ["the running total", "the report", "closes at Rs 9,68,60,180"], ["the report", "the report", "reads a miss"]],
+      "The plan's first week decided where the actual started, and the five days before it vanished.");
+  });
+  drawD();
+
+  /* ---------------------------------------------------------------- experiment E */
+  var eOn = false;
+  function drawE() {
+    var html = "<table class='t'><tr><th>Row of 22 July</th><th class='num'>Running total</th></tr>" +
+      "<tr><td>The first order of the day</td><td class='num'>" + K.rupees(eOn ? 34516000 : 37690290) + "</td></tr>" +
+      "<tr><td>The ten orders between</td><td class='num'>" + (eOn ? "one step each" : K.rupees(37690290) + " on every row") + "</td></tr>" +
+      "<tr><td>The last order of the day</td><td class='num'>" + K.rupees(37690290) + "</td></tr></table>";
+    $("expETable").innerHTML = html;
+  }
+  $("expERun").addEventListener("click", function () {
+    eOn = !eOn; this.setAttribute("aria-pressed", String(eOn));
+    this.textContent = eOn ? "Order by order_date alone" : "Add order_id as the tiebreaker";
+    drawE();
+    reveal("expE", eOn
+      ? "With order_id after the date, each of the twelve rows takes its own step, from Rs 3,45,16,000 on the first order of 22 July to Rs 3,76,90,290 on the last."
+      : "Ordered by date alone, all twelve orders of 22 July show Rs 3,76,90,290, the day's closing figure, because rows of the same date are peers.");
+  });
+  $("expESeq").addEventListener("click", function () {
+    openSeq("Experiment E, as a sequence", ["the order clause", "the window", "the rows"], [
+      ["the order clause", "the window", "ORDER BY order_date"], ["the window", "the window", "twelve peers share 22 July"],
+      ["the window", "the rows", "each row shows Rs 3,76,90,290"], ["the order clause", "the window", "add order_id"],
+      ["the window", "the rows", "one step per order"]],
+      "SUM over a window adds every peer of the current row, so the order has to separate them.");
+  });
+  drawE();
+
+  /* ---------------------------------------------------------------- the decision card */
+  $("reviewRun").addEventListener("click", function () {
+    var lines = [];
+    lines.push(state.r1 === "seg"
+      ? ["ok", "Round 1. You ranked within each segment, so every segment team gets its own list, and Business and Student are marked as every Q2 buyer."]
+      : state.r1 === "whole"
+        ? ["warn", "Round 1. You ranked the whole table, which hands Retail-Plus 11 places. Marketing asked for fifty in each segment."]
+        : ["warn", "Round 1. You have not picked a ranking yet, so there is no list to send."]);
+    lines.push(state.rule === "RK"
+      ? ["ok", "Round 2. You chose RANK, so tied members share a place and the report states the count and the tie behind it."]
+      : state.rule
+        ? ["warn", "Round 2. You chose " + RULES[state.rule].name + ". Say what it does at a tie at the line, and check it against the head of Retail-Plus's rule."]
+        : ["warn", "Round 2. You have not chosen a tie rule, and the report has to name one."]);
+    lines.push(state.part && state.gap
+      ? ["ok", "Round 3. The flag is partitioned by member and a missing month breaks the run, so the member who was on holiday is not accused."]
+      : !state.part && state.gap
+        ? ["warn", "Round 3. The month check keeps the count right, and the window still reads across members, as Member R's row two back shows. Partition by the member so the check is not doing the partition's job."]
+        : ["warn", "Round 3. The flag still " + (!state.part ? "compares some members with another member's months" : "reads across a month with no order") + ", so it accuses members of falls that did not happen."]);
+    lines.push(state.method === "end" && !state.beside
+      ? ["ok", "Rung 5. Booked to date is read at each plan week's end and closes on Rs 9,84,00,000, so Q2 is on plan by the total and behind by the run rate."]
+      : ["warn", "Rung 5. " + (state.beside ? "The running actual sits beside one week's plan, which reads as nine times the plan." : state.method === "join" ? "The plan-first join drops the orders of 1 to 5 July and reports a miss." : "You have not built the running total yet.")]);
+    var good = lines.filter(function (l) { return l[0] === "ok"; }).length;
+    var out = "<ul class='checks'>" + lines.map(function (l) { return "<li class='" + l[0] + "'>" + esc(l[1]) + "</li>"; }).join("") + "</ul>";
+    out += "<div class='strip " + (good === 4 ? "good" : "bad") + "'><b class='tag'>Kavya's review</b>" + (good === 4
+      ? "All four choices hold. Send the list with the tie rule named and the count it produced, the flag with its definition of a month with no order, and Meera's chart with the close checked against Rs 9,84,00,000. Say it in two sentences Marketing can repeat."
+      : ["None", "One", "Two", "Three"][good] + " of your four choices " + (good === 1 ? "holds" : "hold") + ". Fix the rest before this leaves the team, because Marketing will act on every name on the list.") + "</div>";
+    $("reviewOut").innerHTML = out;
+  });
+})();
+</script>
+</body>
+</html>
