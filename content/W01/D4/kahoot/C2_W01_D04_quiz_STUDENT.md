@@ -7,13 +7,13 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q1. Ten hand shuffles gave gaps from Rs 200 to Rs 600, and the real gap is Rs 500. Surprising?
-*Tests: reading a real gap against a chance reference, and knowing ten shuffles are few.*
+## Q1. Ten hand tosses gave gaps from Rs 200 to Rs 600, and the real gap is Rs 500. Surprising?
+*Tests: reading a real gap against a chance reference, and knowing ten tosses are few.*
 
-- Very: Rs 500 is almost the largest of the ten gaps, so the result is certainly real and goes in the note
-- Not at all, since any real gap under Rs 1,000 is only the usual wobble
-- Not yet clear: Rs 500 sits inside the ten, and ten shuffles cannot settle a share  <- correct
-- Impossible to say, since hand shuffles never count as evidence
+- Very: Rs 500 is near the top of the ten, so the drop is real
+- Not at all, since any gap under Rs 1,000 is the usual wobble
+- Not yet clear: ten tosses are far too few to settle a share  <- correct
+- Impossible to say, since hand tosses never count as evidence
 
 ---
 
@@ -28,12 +28,12 @@ Each item names what it tests, so an item dropped for time says what was lost.
 ---
 
 ## Q3. 45 percent on 11 orders, or 31 percent on 400. Which do you trust?
-*Tests: the count behind a rate, and the rule of thumb of thirty.*
+*Tests: the count behind a rate, and the rule of thumb of thirty customers.*
 
 - 31 percent as the estimate, 45 percent as a lead  <- correct
 - 45 percent, since it is the higher rate of the two
 - Neither, since two rates can only be compared with a shuffle
-- Both equally, since each one was computed correctly on its own orders
+- Both equally, since each was computed correctly
 
 ---
 
@@ -41,19 +41,19 @@ Each item names what it tests, so an item dropped for time says what was lost.
 *Tests: correlation against causation, and the fair comparison.*
 
 - Who got the discount, and against whom they were compared  <- correct
-- A shuffle test on the 6 percent, since a small share proves the cause
-- Nothing, since revenue rose in the same month the discount ran
-- A larger discount next time, to see whether revenue rises further still
+- A shuffle test on the 6 percent, since a small share proves it
+- Nothing, since revenue rose in the month the discount ran
+- A larger discount next time, to see if revenue rises again
 
 ---
 
 ## Q5. The blend favours the campaign; every segment says the opposite. Which do you trust?
 *Tests: Simpson's reversal at recognition depth, and the mix behind a blend.*
 
-- The blend, since it covers every customer at once
+- The blend, since it covers every customer the campaign reached
 - Neither, since the two readings cancel each other out
-- The segments, and then ask why the mix of the two groups differed  <- correct
-- The blend in public and the segments in private, since both are correct arithmetic anyway
+- The segments, then ask why the mix of the two groups differed  <- correct
+- The blend in public and the segments in private
 
 ---
 
@@ -62,7 +62,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 - Evidence, claim, action, caveat
 - Claim, evidence, caveat, action  <- correct
-- Claim, action, evidence, and a caveat only when the evidence is weak or disputed
+- Claim, action, evidence, and a caveat only if disputed
 - Caveat, claim, evidence, action
 
 ---
@@ -73,7 +73,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 - Yes: p = 0.001 is about the strongest evidence there is
 - It is real; whether it is a win depends on Rs 4 against the cost  <- correct
 - No, since a p-value that small means the test itself went wrong
-- Yes, since 5 lakh orders make any rise important for the business
+- Yes, since 5 lakh orders make any rise important to the business
 
 ---
 
@@ -81,6 +81,6 @@ Each item names what it tests, so an item dropped for time says what was lost.
 *Tests: the return question from Wednesday, answered with today's test.*
 
 - No: once the file was cleaned, the drop was only noise
-- Yes, since a drop that appears in two different files one day apart must be real
+- Yes, since a drop that shows up in two files a day apart must be real
 - Nobody can know until the next quarter's numbers arrive
-- Yes: on the cleaned file it beats the usual wobble in a shuffle test  <- correct
+- Borderline: on the cleaned file, flips make it 3 in 100, 6 either way  <- correct

@@ -69,8 +69,8 @@ d) "Real in one direction only, and noise in the other one."
 
 ### Q6
 
-An invented tier of 30 members, where heavy buyers stay heavy, fell by about Rs 430 a member.
-Pooling the 60 totals gives a share of 0.17 counting falls; flipping each member's pair gives
+An invented tier of 30 members, where heavy buyers stay heavy, fell by about Rs 310 a member.
+Pooling the 60 totals gives a share of 0.24 counting falls; flipping each member's pair gives
 0.004. Which does the note report, and why do the two differ so much?
 
 a) The pooled 0.17, because it uses all 60 totals and not just 30 differences
