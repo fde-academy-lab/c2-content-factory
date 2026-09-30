@@ -10,8 +10,8 @@
   log that never turns a failure into a number.
 - You can profile a file, present, convertible and distinct per field, and read each count as a
   business fact.
-- You can state an identity rule, choose which copy of a pair stays, decide what a missing value
-  gets, and keep a large order that is real.
+- You can say what makes two rows one order, choose which copy of a pair stays, decide what a
+  missing value gets, and keep a large order that is real.
 - For each technique, you can size two to four ways to answer its question and name the fact that
   would change your choice.
 - You can reconcile a cleaning pass in rows and in rupees, draw the bridge between two totals, and
@@ -34,9 +34,10 @@ Both of Anand's figures count booked value, which Monday's retail dossier calls 
 the price charged, before cancellations and returns come out. The export does not state whether GST
 is inside, which is a question an analyst asks Anand.
 
-Statistics beyond counts and the median, and imputation beyond a stated default, come later:
-Thursday asks whether the surviving finding is real or the wobble every quarter shows, and Week 2
-reruns this pass in SQL and pandas.
+Three Python errors were met only in passing, two minutes each: `FileNotFoundError`, the
+`ValueError` from `int()` and the `JSONDecodeError` from a feed cut short. Statistics beyond counts and the median come later, as does imputation, filling a
+blank from other records: Thursday asks whether the surviving finding is real or the wobble every
+quarter shows, and Week 2 reruns this pass in SQL and pandas.
 
 ```mermaid
 flowchart LR
@@ -266,7 +267,7 @@ is rows kept against distinct ids.
 
 ### Which rows carry the rupees set aside?
 
-Two Business rows carry Rs 19,67,560 of the Rs 19,98,210 set aside in Q1, about 98 percent, and
+Two Business rows carry Rs 19,67,560 of the Rs 19,98,210 set aside in Q1, 98.5 percent, and
 eleven Retail-Plus rows carry Rs 27,760: Anand's gap is two corporate orders counted twice.
 
 ### Does a dictionary keyed by id keep the same orders?
@@ -361,8 +362,7 @@ cost Rs 1,790.
 
 **Who needs the answer.** Anand wants a proof his analyst can follow, and Marketing's rescue
 campaign for Retail-Plus waits on whether Tuesday's finding survives. A proof Finance cannot follow
-costs his trust, and a finding nobody recomputes sends Marketing after a fall that is smaller than
-reported.
+costs his trust, and a finding nobody recomputes sends Marketing after a fall smaller than reported.
 
 **The questions on the way.**
 
@@ -375,8 +375,8 @@ reported.
 
 **Who else faces it.** In 2014 Tesco said it had overstated half-year profit guidance by about GBP
 250 million, mainly by booking supplier income, the money its suppliers pay it, in a period before
-the activity that money paid for took place; its investigation then confirmed the figure at GBP 263
-million, split by period, GBP 118 million of it in the first half (BBC News, 22 September 2014;
+the activity it paid for; its investigation then confirmed the figure at GBP 263 million, GBP 118
+million of it in the first half (BBC News, 22 September 2014;
 Tesco interim results, 23 October 2014; both checked 30 September 2026).
 
 ### How could we prove which figure is right, and what does each proof cost?
@@ -483,7 +483,7 @@ the logs.
 
 The identity rule, all Rs 19,98,210. The decisions log gives each of five decisions a line with the
 rows it touched and the Q1 rupees it moved; the other four (rejecting an unreadable amount, the
-flagged status, the discount kept unknown and the bulk order kept and flagged) move none.
+flagged status, the discount kept unknown and the largest Q2 order kept and flagged) move none.
 
 ### Do the logs on disk hold what the notebook holds?
 
@@ -504,7 +504,7 @@ log empty, Q1 on the books.
 ### Why were 14 Q1 rows set aside, and how do we know nothing else went?
 
 Each has a kept twin under the same order id, and Q1 ties in rows, 114 = 100 + 14, and in rupees,
-through the bridge. "Set aside with a reason" replaces "dropped".
+through the bridge.
 
 ### Can the clean file be rebuilt from the raw export and the log alone?
 
@@ -535,18 +535,19 @@ smaller.
 
 ## Where does this decide something at work?
 
-- At month-end close, Finance reconciles the sales system against the ledger in counts and in money,
-  and the first question from any controller is the one Anand asked.
-- A migration re-runs batches, stitches extracts and adds load columns, and every serious migration
-  plan has a reconciliation step, run on the business key.
-- An internal or statutory auditor asks of any pipeline that removes rows: why those rows, and how
-  do I know nothing else went? A log with a reason per row and two reconciliations answers it.
+- At month-end close, Finance reconciles the sales system against its books in counts and in money,
+  and a controller asks first what Anand asked.
+- A migration can re-run a batch or stitch two extracts together, so its plan ends on a
+  reconciliation run on the business key.
+- An auditor asks of any pipeline that removes rows why those rows went and how anyone knows nothing
+  else did, and a log with a reason per row and two reconciliations answers both.
 
 ---
 
 ## Can you answer these six without writing anything?
 
-Check each answer against the chapters above.
+Chapters 4, 2, 3, 6 and 5 answer the first five in turn, and chapter 2 with the two-apps interview
+answer the sixth.
 
 1. An export reports 400 of 400 amounts convertible and the sorted amounts start `0, 0, 350`. What
    do you ask first?
@@ -562,8 +563,7 @@ Check each answer against the chapters above.
 
 ## What will an interviewer ask, and what does a strong answer sound like?
 
-The afternoon drill asks these 12 aloud; each Design question asks for a choice, a sizing and the
-fact that would change it. The tags are this programme's own calibration for 0 to 3 year
+Each Design question asks for a choice, a sizing and the fact that would change it. The tags are this programme's own calibration for 0 to 3 year
 Indian-market candidates: [S] a staple asked everywhere, [F] frequent in GCC and product screens,
 [D] a differentiator.
 
@@ -621,11 +621,11 @@ the total." Weak answer: "I would sample, it is faster."
 **[D] Design. Order id, whole record or fuzzy, for customers from two apps?** "Neither app's id
 spans both, and two systems rarely write a record identically, so the id and the whole record are
 out. I would clean phone and email the same way on both sides and match on them, blocking by city so
-records meet only within a city, which across six cities cuts the pairs to about a sixth and never
-compares a person whose two records carry different cities, and send every unconfirmed match to a
-person. On Kalpa's orders a fuzzy match on customer and amount within 60 days flagged as many rows
-as the order id and called a real Rs 17,71,000 order a copy, so I would not trust one unreviewed.
-One customer id from one system would switch me back to a key."
+records meet only within a city, which across six cities cuts the pairs to about a sixth and misses
+anyone whose two records name different cities, then send every unconfirmed match to a person. On
+Kalpa's orders a fuzzy match on customer and amount within 60 days called a real Rs 17,71,000 order a
+copy, so I would not trust one unreviewed. One customer id shared by both apps would switch me back
+to a key."
 
 **[D] Design. Two copies of an order disagree: first copy, last copy or the copy that validates?**
 "The copy whose fields validate; if both do, the one the business calls the original, here the first
