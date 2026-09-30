@@ -1009,7 +1009,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   function reveal(key, text) { $(key + "What").textContent = text; $(key + "Result").hidden = false; $(key + "Wait").hidden = true; }
 
   /* ---------------------------------------------------------------- experiment A */
-  var A_TEXT = ["2400", "1300", "n/a", "3100", "1800"];
+  var A_TEXT = ["2500", "1300", "n/a", "3100", "1800"];
   var aOn = false;
   function drawA() {
     var vals = [], fails = 0;
@@ -1027,8 +1027,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     this.textContent = aOn ? "Log the failure instead" : "Coerce the failure to 0";
     drawA();
     reveal("expA", aOn
-      ? "The coerced profile reports five of five amounts convertible, a total of Rs 8,600, and a dot at Rs 0 that no order was ever worth."
-      : "The logged profile reports four amounts, a total of Rs 8,600, and one failure with its reason; nothing sits at Rs 0.");
+      ? "The coerced profile reports five of five amounts convertible, a total of Rs 8,700, and a dot at Rs 0 that no order was ever worth."
+      : "The logged profile reports four amounts, a total of Rs 8,700, and one failure with its reason; nothing sits at Rs 0.");
   });
   $("expASeq").addEventListener("click", function () {
     openSeq("Experiment A, as a sequence", ["the file", "convert", "the log"], [

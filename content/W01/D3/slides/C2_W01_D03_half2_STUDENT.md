@@ -385,7 +385,7 @@ LIVE, 3 minutes. The answer is c.
 ---
 
 ## SECTION 10: The interview drill
-*Twelve questions aloud, the design question among them, each in under ninety seconds.*
+*The day's 12 questions aloud, five design questions among them, each in under ninety seconds.*
 
 ```notes
 LIVE. Twenty minutes. Pairs: one asks, one answers, the asker times it and names the one number
@@ -427,7 +427,7 @@ the study notes and the notebooks' In the interview sections.
 
 ```notes
 LIVE, 10 minutes. The design questions want a choice, a sizing and the fact that would change it.
-The row's five and these seven are the day's twelve, the same twelve the study notes answer.
+The row's five and these seven are the day's 12, the same 12 the study notes answer.
 ```
 
 ---

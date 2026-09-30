@@ -379,7 +379,7 @@ GBP 2.34 million, for missing red flags across three years of audits (BBC News, 
 | Logs, decisions and control totals | 24 | yes | yes | yes |
 | A full diff | 201 | yes | only by hand | no |
 
-**The call:** the logs with the control totals, about twelve minutes of reading. **What would switch
+**The call:** the logs with the control totals, about 12 minutes of reading. **What would switch
 it:** an external auditor who must re-derive every row, and then the diff goes beside the logs.
 
 **The build.** Five decisions go in the decisions log, one line each with the rows it touched and the
@@ -451,7 +451,7 @@ Six questions, no writing needed; answer each in your head, then check against t
 
 ## Where this gets tested
 
-Twelve questions, the same twelve the afternoon drill asks aloud: the row's five, two follow-ups an
+The day's 12 questions, the same 12 the afternoon drill asks aloud: the row's five, two follow-ups an
 interviewer uses to push, and five design questions that ask for a choice, a sizing and the fact that
 would change it. Tags: [S] staple asked everywhere, [F] frequent in GCC and product screens, [SV]
 service-major screen opener, [D] differentiator. This programme's own calibration for 0 to 3 year
