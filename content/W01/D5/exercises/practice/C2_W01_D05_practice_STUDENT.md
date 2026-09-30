@@ -27,8 +27,8 @@ illustrative.
 Kalpa's segments are Retail-Core, Retail-Plus (the paid members' tier, whose customers are its
 members), Student and Business (the corporate book). A control total is the source system's own count
 of orders and sum of rupees for a quarter. The revenue tree splits a segment's revenue into three
-branches, customers times orders per customer times revenue per order (the basket), and a branch has
-moved when its own figure changed between the quarters. A shuffle test reassigns a label, such as the
+branches, customers times orders per customer times revenue per order (the basket), and the branch
+that moved is the one whose change carries most of the segment's change between the quarters. A shuffle test reassigns a label, such as the
 quarter or the segment, at random many times and counts how often chance alone gives a change at
 least as large as the real one; that share is the p-value, and 0.05 is the usual bar below which a
 change is called more than chance. The week's rule of thumb for a rate: one that rests on fewer than
@@ -106,7 +106,7 @@ b) About 125 billion comparisons, so the one-pass count
 c) About 125 billion comparisons, so pairs on a faster machine overnight
 d) About 5 lakh comparisons, so either way, since they cost the same
 
-### Item 4: How do you count orders that have no known buyer?
+### Item 4: How do 6 orders marked "UNKNOWN" enter the note?
 
 On another team's export, 6 of 1,000 orders carry the customer_id "UNKNOWN", and the file has 400
 known customers. Anand's analyst audits the customer count and Meera reads revenue per customer.
@@ -177,10 +177,10 @@ d) Profile, ask Finance, decompose, account for every value
 At work, this is the call on which branch a CEO opens first, and whether it survives Marketing's
 first question.
 
-### Item 9: Which branch moved inside Retail-Plus?
+### Item 9: Which branch carries Retail-Plus's change?
 
-On your revenue tree for the clean practice data, which branch moved inside Retail-Plus, and by how
-much?
+On your revenue tree for the clean practice data, which branch carries most of Retail-Plus's change
+between the quarters, and by how much did it move?
 
 a) Orders per member, down 25.0 percent
 b) Customers, down 25.0 percent

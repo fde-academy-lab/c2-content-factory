@@ -374,11 +374,12 @@ value: half a week | label: at 1,200 visits a week | note: a half-and-half split
 value: 3 in 10 | label: chance alone | note: 5 or more of 12 at a true 31%
 ```
 
-**The rule.** c. Waiting at 12 visits a week takes about 14 weeks, and shipping now bets on five conversions. Switch to d, one visit in ten for a fortnight, when a worse checkout would lose money.
+**The rule.** c. On an uneven split the new checkout needs about 170 visits beside the current one's thousands, so waiting at 12 visits a week takes about 14 weeks, and shipping now bets on five conversions. Switch to d, one visit in ten for a fortnight, when a worse checkout would lose money.
 
 ```notes
-LIVE, 2 minutes, after the call-outs. D gathers more evidence than C in four times the time; the
-arithmetic is in the trainer's key for a TA who is asked, and the room hears only the size.
+LIVE, 2 minutes, after the call-outs. D gathers more evidence than C in four times the time, since
+its 240 new-checkout visits beside 2,160 clear the 170 an uneven split needs; the arithmetic is in the
+trainer's key for a TA who is asked, and the room hears only the two sizes.
 ```
 
 ---

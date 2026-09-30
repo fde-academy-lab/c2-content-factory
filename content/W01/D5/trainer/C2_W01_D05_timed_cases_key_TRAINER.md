@@ -118,8 +118,9 @@ arithmetic below, and takes four times as long, so it is the choice when a worse
 money.
 
 **The sizing.** About 300 visits per checkout is the case's given size for a fair comparison of the
-two rates, and the room takes it as given: where it comes from is a later week's topic, Thursday's
-row puts it out of scope, and the arithmetic sits in the TA block below. At about 1,200 visits a week
+two rates, and the room takes it as given, beside the case file's second size, about 170 new-checkout visits
+beside two thousand or more current ones on an uneven split: where both come from is a later week's
+topic, Thursday's row puts it out of scope, and the arithmetic sits in the TA block below. At about 1,200 visits a week
 a half split reaches 300 each in roughly three and a half days. D, one visit in ten for a fortnight,
 puts about 240 visits on the new checkout beside about 2,160 on the current one, and the TA block
 shows that is more evidence than C gathers, in four times the time. B, at about 12 pilot visits a
@@ -155,7 +156,7 @@ Thomke, "The Surprising Power of Online Experiments", Harvard Business Review, S
 article says the result tripped an alert and analysis confirmed it; it does not say the test was re-run,
 so the model answer says "checked" and avoids "re-run".
 
-**The arithmetic, for a TA who is asked; the room hears only the size.** The given size comes from statistical power:
+**The arithmetic, for a TA who is asked; the room hears only the two sizes.** The given size comes from statistical power:
 to tell 42 percent from 31 at the conventional 5 percent false-alarm rate with an 80 percent chance of
 seeing a real difference, an equal split needs n = (1.96 x sqrt(2 x 0.365 x 0.635) + 0.8416 x
 sqrt(0.31 x 0.69 + 0.42 x 0.58))² / 0.11² = 299.5 visits per checkout. For an unequal split the power

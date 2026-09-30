@@ -118,7 +118,9 @@ That number was checked on the test's own traffic before anyone believed it.
 | D. Give the new checkout one visit in ten for a fortnight | A cautious rollout | About 240 new-checkout visits beside about 2,160 on the current one, over two weeks |
 
 Take about 300 visits per checkout as the case's given size for telling 42 percent from 31 percent at
-the usual bar, and size each option in visits and days from the traffic above.
+the usual bar when the traffic is split evenly. When one checkout gets far more visits than the other,
+the smaller side needs fewer: beside two thousand or more visits on the current checkout, about 170 on
+the new one reach the same bar. Size each option in visits and days from the traffic above.
 
 On your paper, write your first sentence back to the product head, the option you offer with its
 size and its time, and what would make you agree to ship without it.
