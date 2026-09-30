@@ -14,8 +14,9 @@ names in the first cell to the practice files, and run the week's method again. 
 your TA marked; the four problems below climb from the profile to the note, so start at the problem
 that holds your step and carry on from there. About an hour in all.
 
-Answer each item with one letter, in order, and post the letters as one line. The last item of each
-problem is a design item: which approach fits, sized how, and what would switch it.
+Answer each item with one letter, in order, and post the letters as one line. Nine of the sixteen
+items are design items, the last of each problem among them: which approach fits, sized how, and what
+would switch it.
 
 ```
 Post one line in this shape: 1x 2x 3x 4x 5x 6x 7x 8x 9x 10x 11x 12x 13x 14x 15x 16x
