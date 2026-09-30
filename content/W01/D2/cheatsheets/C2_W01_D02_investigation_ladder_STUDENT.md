@@ -1,79 +1,101 @@
-# The sales-drop investigation
+# The investigation ladder
 
-Week 1 Day 2, Kalpa Retail. The most-asked analyst case in the market. The order of the rungs is
-the skill, and a candidate who climbs them out of order answers the wrong question well.
+Kalpa Retail, Week 1 Tuesday. A drop is investigated in a fixed order, and each rung is a question
+that has to be answered before the next one is worth asking. The tree beside the ladder carries the
+closed quarters, Q1 against Q2, on booked orders as exported.
 
-## Panel 1: The ladder
+## Panel 1: The ladder beside the tree
 
 ```mermaid
-flowchart LR
-    R1["<b>1</b><br/>confirm"] --> R2["<b>2</b><br/>like with like"]
-    R2 --> R3["<b>3</b><br/>decompose"]
-    R3 --> R4["<b>4</b><br/>isolate"]
-    R4 --> R5["<b>5</b><br/>hypothesise"]
+flowchart TB
+    subgraph LAD["the ladder"]
+        direction LR
+        R1["1 is the drop real"] --> R2["2 which branch"]
+        R2 --> R3["3 which segment"]
+        R3 --> R4["4 mix or rate"]
+        R4 --> R5["5 a hypothesis"]
+    end
+    subgraph TREE["the tree, Q1 to Q2"]
+        direction LR
+        V["<b>revenue</b><br/>Rs 2.10 to 1.87 cr"] --> C["<b>customers</b><br/>69 to 69"]
+        V --> F["<b>orders per customer</b><br/>1.65 to 1.25"]
+        V --> O["<b>revenue per order</b><br/>Rs 1.84 to 2.17 lakh"]
+    end
+    LAD --> TREE
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef moved fill:#FBE3EA,stroke:#D63A6A,color:#1A0F5C
+    class R5 bet
+    class F moved
 ```
 
-**Crux:** You never climb past a rung you have not done, and most wrong answers are somebody starting at rung five because they arrived with a theory.
+Revenue fell 11.0 percent between two closed quarters. Customers held at 69, orders per customer fell
+24.6 percent, and revenue per order rose 18.0 percent, so the ratios multiply back: 1.000 times 0.754
+times 1.180 is 0.890. In behaviour the fall sits in Retail-Plus, where the same 22 members placed 26
+orders against 51.
 
-## Panel 2: What each rung needs
+**Crux:** A rate without its denominator is a rumour.
 
-| Rung | Needs | Goes wrong when |
+## Panel 2: Windows, like with like
+
+| Window | Result | Verdict |
 |---|---|---|
-| Confirm | Both totals, one definition | Delivered meets booked |
-| Like with like | Equal windows, same segments | 13 weeks meets 11 |
-| Decompose | Customers, orders, revenue | The total is called a finding |
-| Isolate | The same split per segment | A blend hides the segment |
-| Hypothesise | Something outside the data | A cause is stated as fact |
+| Q1 against Q2 cut at 15 Sep | Down 25.9 percent | First and last dates show 13 weeks against 11. |
+| Closed quarters, 13 weeks each | Down 11.0 percent | It is fair once Q2 has closed. |
+| Per week, Q2 still open | Down 12.4 percent | A rate makes it comparable. |
 
-## Panel 3: Grouping by key
+**Crux:** Confirm the drop on matched windows before you explain it.
+
+## Panel 3: The tree, as a bridge in rupees
+
+| Step | Rupees |
+|---|---|
+| Q1 revenue | Rs 2,10,00,000 |
+| Customers, 69 to 69 | Rs 0 |
+| Orders per customer, 28 fewer orders | Minus Rs 51,57,895 |
+| Revenue per order, Rs 33,231 more on 86 | Plus Rs 28,57,895 |
+| Q2 revenue | Rs 1,87,00,000 |
+
+**Crux:** Decompose along the tree: customers, orders per customer, revenue per order.
+
+## Panel 4: Missing is unknown
 
 ```python
-totals = {}
-for order in ORDERS:
-    k = order["quarter"]
-    totals[k] = totals.get(k, 0) + order["amount"]
+order.get("discount", 0)   # a decision that looks like no decision
 ```
 
-Count adds one. Revenue adds the amount. Distinct customers uses `setdefault(k, set()).add(...)`.
+Read as zero, a blank counts as "no discount", so 50.0 percent of Q2's orders seem to carry one. Split
+the rest into recorded zeros and blanks, report the share where recorded, 71.7 percent, with the range
+the blanks allow, and bound the branch: Rs 150 on 86 orders is at most Rs 12,900.
 
-## Panel 4: The decomposition has to close
+**Crux:** Missing means unknown until someone chooses a default and writes down why.
 
+## Panel 5: Roll-up with weights, and mix against rate
+
+A plain average of four segments gives 1.94 and 1.82; total orders over total customers gives 1.65
+and 1.25, which is the figure the roll-up must reproduce. Revenue per order rose Rs 33,231, and about
+69 percent of it is mix, because small Retail-Plus orders fell from 44.7 to 30.2 percent of orders.
+
+**Crux:** Roll a rate up with its weights; never average the averages.
+
+## Panel 6: Functions return
+
+```python
+def tree_for(rows):
+    ...
+    return {"revenue": revenue, "orders": n, "customers": c}
 ```
-REVENUE = CUSTOMERS x ORDERS PER CUSTOMER x REVENUE PER ORDER
-```
 
-| Factor | Q1 | Q2 | Change |
-|---|---|---|---|
-| Customers | 69 | 69 | flat |
-| Orders per customer | 1.65 | 1.25 | down 24.6% |
-| Revenue per order | 1.84L | 2.17L | up 18.0% |
-| Revenue | 2.10cr | 1.87cr | down 11.0% |
+A helper that prints for large changes returns `None`, and the filter drops it: four segments go in
+and two come back as `None`. Check with `None in changes.values()`.
 
-**Crux:** Multiply the three factor changes and they must land on the revenue change, or a factor is missing and nothing built on the decomposition is safe.
+**Crux:** A function returns its answer; count the groups in and the groups out.
 
-## Panel 5: return, never print
+## Panel 7: Hypothesis with evidence
 
-| | |
+| Test | What the file shows |
 |---|---|
-| `return` | Hands the value back, so the next line can use it |
-| `print` | Draws on a screen and hands back `None` |
+| Timing | Retail-Plus fell from July, before the late-August break the complaint dates. |
+| Channel | Web, store and app all fell, so the app did not fall first and alone. |
+| Evidence to ask for | The app's reorder logs by week, the release date, and the tier's change log. |
 
-A function that prints cannot be built on. The tell is `TypeError: 'NoneType' object is not subscriptable` one line later.
-
-## Panel 6: Defaults are decisions
-
-`KeyError: 'discount'` means the key is not there. Before reaching for `.get()`, count how many records and check whether the absence is concentrated.
-
-| Choice | What it costs |
-|---|---|
-| Drop the row | Revenue falls and the count changes |
-| Default to zero | The count holds, revenue is understated |
-| Keep and flag | Nothing lost, somebody has to look |
-
-**Crux:** There is no free option, so write the reason beside the default, because on Wednesday somebody from Finance asks for it.
-
-## Panel 7: A finding, not an opinion
-
-A cause with a test beside it is a finding. A cause without one is an opinion with numbers attached.
-
-Retail-Plus down 49 percent against Retail-Core's 5 is a finding. "The reorder button broke" is a hypothesis until reorder events per member either side of the window say so.
+**Crux:** Name the cause as a hypothesis, with the evidence that would settle it.

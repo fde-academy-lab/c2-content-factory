@@ -451,7 +451,7 @@ where a held-back group becomes a query you can run.
 |---|---|---|---|
 | Label shuffle | Dealing the quarter labels at random and recomputing the gap, to make a chance-only world | Half one, S7 and S11; notebook 1 | Ten cards, 1,000 shuffles, 21 gaps at Rs 880 or more |
 | Wobble | The gap chance produces between two ordinary quarters | Half one, S12; notebook 1 | Retail-Core's Rs 110, a share of 0.34 |
-| p-value | The share of chance-only worlds with a gap at least as large as the real one | Half one, S10 and S15; notebook 1 | 0.027 for Retail-Plus |
+| p-value | The share of chance-only worlds with a gap at least as large as the real one | Half one, S10 and S16; notebook 1 | 0.027 for Retail-Plus |
 | Confidence interval | The range of sizes the data supports, named today and built later | Half one, S26 | A range around Rs 1,110 per member |
 | Lead | A rate on fewer than thirty observations, watched and never acted on | Half one, S30; notebook 3 | Student's 40 percent |
 | Confounder | A variable that drives both who got a campaign and the outcome | Half two, S3 and S4 | Segment, in the monsoon sale |

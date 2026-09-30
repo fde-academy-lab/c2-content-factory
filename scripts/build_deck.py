@@ -64,7 +64,7 @@ from pptx.enum.text import PP_ALIGN
 from pptx.util import Emu, Inches, Pt
 
 import brand
-from build_cheatsheet import MERMAID_CONFIG, svg_labels
+from build_cheatsheet import MERMAID_CONFIG, MermaidError, mmdc_page, run_mmdc, svg_labels
 from deck_layout import (ACC, BG, BOLD, INK, LINE, MUTED, NIGHT, TINT, WHITE, MARGIN, WIDTH,
                          BODY_TOP, BODY_BOTTOM, RULE_Y, SLIDE_W, SLIDE_H, CALLOUT, CRUMB, NUMBERED,
                          QUOTE, SLIDE_ID, BEATS, add_runs, background, bar, bar_height, breadcrumb,
@@ -322,12 +322,13 @@ def _chromium():
 
 
 def render_mermaid(lines, width_in=None):
-    """Render a mermaid fence to a PNG and return its path, or None when mmdc is not installed.
+    """Render a mermaid fence to a PNG and return its path, or raise MermaidError.
 
     A mermaid fence renders as nothing at all in PowerPoint, so a deck that draws its thinking in
     mermaid needs the picture baked in. The markdown stays the authoritative source, which is what
     the verification gate reads and what renders on GitHub. Install the renderer with
-    `npm install -g @mermaid-js/mermaid-cli`; without it the fence falls back to monospace text.
+    `npm install -g @mermaid-js/mermaid-cli`. When it is missing or writes nothing the build
+    stops, because a fence printed as text on a slide looks finished and teaches nobody.
 
     The theme is the one scripts/build_cheatsheet.py uses, so the drawing a room sees on the slide
     is the drawing they find again on the cheat sheet and in the notebook. Without it mermaid
@@ -340,16 +341,19 @@ def render_mermaid(lines, width_in=None):
     """
     code = svg_labels("\n".join(lines).strip()) + "\n"
     scale = render_scale(lines, width_in)
-    key = hashlib.sha256((code + MERMAID_CONFIG + f"scale={scale}").encode()).hexdigest()[:16]
+    flags, config_text = mmdc_page(2600, MERMAID_CONFIG)
+    key = hashlib.sha256((code + config_text + " ".join(flags) + f"scale={scale}")
+                         .encode()).hexdigest()[:16]
     CACHE.mkdir(parents=True, exist_ok=True)
     png = CACHE / f"{key}.png"
     if png.exists():
         return png
     if not shutil.which("mmdc"):
-        return None
+        raise MermaidError("mermaid-cli is not installed, so this deck's diagrams would print as "
+                           "text. Install it with npm install -g @mermaid-js/mermaid-cli.")
     (CACHE / f"{key}.mmd").write_text(code)
-    theme = CACHE / f"theme_{hashlib.sha256(MERMAID_CONFIG.encode()).hexdigest()[:8]}.json"
-    theme.write_text(MERMAID_CONFIG)
+    theme = CACHE / f"theme_{hashlib.sha256(config_text.encode()).hexdigest()[:8]}.json"
+    theme.write_text(config_text)
     config = CACHE / "puppeteer.json"
     if not config.exists():
         config.write_text('{"args":["--no-sandbox","--disable-setuid-sandbox"]}\n')
@@ -357,14 +361,10 @@ def render_mermaid(lines, width_in=None):
     chrome = _chromium()
     if chrome:
         env["PUPPETEER_EXECUTABLE_PATH"] = chrome
-    try:
-        subprocess.run(["mmdc", "-i", str(CACHE / f"{key}.mmd"), "-o", str(png),
-                        "-b", "transparent", "-w", "2600", "-s", str(scale), "-c", str(theme),
-                        "-p", str(config)],
-                       capture_output=True, text=True, env=env, timeout=240)
-    except Exception:
-        return None
-    return png if png.exists() else None
+    run_mmdc(["mmdc", "-i", str(CACHE / f"{key}.mmd"), "-o", str(png), "-b", "transparent",
+              *flags, "-s", str(scale), "-c", str(theme), "-p", str(config)],
+             env, png, 240)
+    return png
 
 
 def place_picture(s, png, top, bottom=BODY_BOTTOM, width_in=WIDTH, centre=False,

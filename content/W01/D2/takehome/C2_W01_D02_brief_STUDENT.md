@@ -1,85 +1,106 @@
 # Take-home: the investigation memo
 
-One page, and it is the page Meera and the head of Retail-Plus both read. Two of these get walked
-through in front of the room tomorrow, so write it to be read aloud.
+Three parts, about two and a half hours in all. Part 1 is the day's ladder on a file you have not
+seen. Part 2 is the memo, one page, and it is the part Meera reads. Part 3 is reading and watching,
+with one change to make if the reading changes your mind.
+
+Tomorrow opens by walking one learner's memo in front of the room.
 
 ---
 
-## Part 1. Finish the channel cut
+## The ask
 
-Open `notebooks/C2_W01_D02_hands_on_STUDENT.ipynb`. Marketing does not buy media by segment, so
-they want the same fall cut by channel, and then by city. Fill every `__TODO__`, run each check,
-and post the five letters.
+A second export has arrived from Kalpa's regional operations team, cut from their own dashboard,
+with a message attached:
 
-**The trap is in the city cut**, and the notebook will not warn you about it. Look at how many
-customers sit behind each percentage before you believe any of them.
+> "Our region is down about 5 percent quarter on quarter. Same story as the national numbers, I
+> assume: customers buying less often. We would like the Retail-Plus win-back offer extended to our
+> region by Friday." (the regional operations head)
 
----
+Meera forwards it to you with one line:
 
-## Part 2. The memo, one page
-
-Write it in this order. The order is the deliverable.
-
-| Section | What goes in it | Length |
-|---|---|---|
-| **The claim** | Which branch moved, with the number and its denominator | One sentence |
-| **Where** | Which segment carries it, with the comparison that makes it stand out | One sentence |
-| **What it is not** | The claim you disproved, and the number that disproved it | One sentence |
-| **The caveat** | The factor moving the other way, and what it hides | One sentence |
-| **Two hypotheses** | Each with the evidence that would settle it, naming data somebody could pull this week | Two short paragraphs |
-| **What I would do first** | One action, with what it costs | One sentence |
-
-Under 300 words. If it runs longer, the claim is not sharp enough yet.
-
-**One of your two hypotheses must not be the reorder button.** The complaint came from the person
-whose tier it would excuse, and an investigation with one theory is a theory with an investigation
-attached.
+> "Before I say yes to anything, tell me whether this region is the same story or a different one.
+> One page. I will read the first line and the numbers, and Anand will check every number against
+> the file." (Meera Raghavan)
 
 ---
 
-## Part 3. The awkward version
+## Part 1. The ladder on a second sample, about ninety minutes
 
-Rewrite the claim sentence twice more.
+The file sits in `data/C2_W01_D02_takehome_STUDENT.py`. It has the same fields as the class file and
+none of the same numbers, so nothing from today's notebooks can be pasted across.
 
-1. **For marketing**, who buy media by channel and have just been told their acquisition case is
-   dead. Same facts, their language, no gloating.
-2. **For the head of Retail-Plus**, who forwarded the complaint and would like to be right. Same
-   facts, and the hypothesis still labelled as a hypothesis.
+1. Start a new notebook beside the day's notebooks. Copy in the setup cell from notebook 3 and load
+   the file with `kit.load_records("C2_W01_D02_takehome_STUDENT.py")`.
+2. Rung 1: confirm the drop is real. Print the first and last order date of each quarter before you
+   compute any change, and write in a markdown cell which comparison you chose and why.
+3. Rung 2: build the tree for each quarter with your own `tree_for`, and check it on the whole
+   quarter before you trust it on any segment.
+4. Rung 3: run `tree_for` on each of the four segments in each quarter. Count the segments in and the
+   rows out. Where a branch moved, compare the sets of customer ids as well as the counts.
+5. Describe the typical order and the spread of any segment you name in the memo.
+6. Count the orders that do not carry a discount field in each quarter, and write the default you
+   chose for them and why, in one sentence.
 
-Three sentences, three audiences, one set of numbers. If any of the three contains a fact the other
-two contradict, you have written three stories rather than one finding.
+Run the notebook from a fresh kernel, top to bottom, before you call it done. The self-check file
+tells you whether each number is right.
+
+---
+
+## Part 2. The memo, one page, about forty minutes
+
+Write it as a markdown cell at the end of your notebook, or as a page beside it. It has five parts,
+in this order:
+
+1. **The first line.** Whether this region is the same story as the national numbers, with the
+   window and the definition in the same sentence. Meera reads nothing else if this line is weak.
+2. **The branch.** Which branch of the tree moved, with the numbers from your notebook for both
+   quarters on a matched comparison.
+3. **The segment.** Which segment carries it, with its numbers, and one line on the segments that
+   did not move.
+4. **Two hypotheses.** Two causes that could explain what you found, each stated as a hypothesis.
+5. **The evidence.** For each hypothesis, the data that would settle it, and whether this file
+   carries it or someone has to be asked for it.
+
+Then one final line: your answer to the regional operations head's request for Friday, as one of
+these three, with the number from your notebook that decides it:
+
+- extend the win-back offer to the region, because the branch it acts on is the one that moved;
+- hold the offer and send a different recommendation, because a different branch moved;
+- hold every decision until a matched comparison exists, because the drop is not yet confirmed.
+
+The choice must follow from your own numbers. A memo that picks one and cannot point at the number
+behind it has not answered the question.
+
+---
+
+## Part 3. Read and watch, about twenty minutes
+
+Brit Institute, data analyst case study questions, including "Sales dropped last month. How would you investigate?": https://britinstitute.uk/blog/data-analyst-case-study-interview-questions (verified 29 Sep 2026)
+
+Corey Schafer, "Python Tutorial for Beginners 8: Functions": https://www.youtube.com/watch?v=9Os0o3wzS_I (verified 29 Sep 2026)
+
+Read the sales-drop walkthrough. Name, in one line under your memo, one step it takes that your
+ladder did not, or one step your ladder took that it skipped. If the reading changes your mind,
+rewrite your memo's first line and keep the old one beneath it, struck through.
+
+Watch the functions video, and then check that every function in your notebook returns its answer.
 
 ---
 
 ## What makes this hard to shortcut
 
-The memo has to reconcile three numbers that point in different directions: customers flat,
-frequency down, order value up. An assistant handed the brief alone will write a clean story about
-one of them. The tell is a memo where the 18 percent rise either does not appear or appears as good
-news.
-
-The second tell is the two hypotheses. A pair that is really one idea worded twice is the most
-common way this comes back thin.
-
----
-
-## Reading and watching, tonight
-
-- The sales-drop case walkthrough, Brit Institute (verified 13 Sep 2026):
-  https://britinstitute.uk/blog/data-analyst-case-study-interview-questions
-  Read it after you have written your memo, then rewrite your first line if it changes your mind.
-- Corey Schafer, Functions (verified 03 Sep 2026): https://www.youtube.com/watch?v=9Os0o3wzS_I
-  Twenty minutes, and it covers `return` against `print` properly.
+The memo's numbers come from a file no assistant has seen, and Anand checks each one against it. The
+final line is a choice that only your own computed values can decide, and the three options are
+written so that each is right for some file. Part 3 asks for a comparison between a named reading and
+your own ladder, which only you ran.
 
 ---
 
 ## What to bring tomorrow
 
-| | |
+| Part | What to bring |
 |---|---|
-| The notebook | Filled, run, checks passing, five letters posted |
-| The memo | One page, six sections, under 300 words |
-| The three claim sentences | Marketing, Retail-Plus, and Meera |
-
-Tomorrow Finance says the export disagrees with their books, and part of tonight's memo moves.
-Arriving with a memo you have defended is what makes that interesting rather than annoying.
+| 1 | The notebook, run from a fresh kernel, with the dates, the trees, the segment split and the discount default |
+| 2 | The memo: five parts and the final line, each number traceable to a cell |
+| 3 | Your one line on the walkthrough, and the old first line if you rewrote it |

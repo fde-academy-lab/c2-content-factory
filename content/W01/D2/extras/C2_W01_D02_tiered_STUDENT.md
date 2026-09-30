@@ -1,53 +1,70 @@
 # Extras: one to stretch, one to recover
 
----
-
-## Stretch: the cut that changes the answer
-
-You finished early and the decomposition felt straightforward. Then this.
-
-**The situation.** You cut the fall by segment and found Retail-Plus. You cut it by channel and
-found web. Both are true and the same members sit inside both. Marketing now asks the obvious
-follow-up:
-
-> "If I fix web, how much of the fall do I get back?"
-
-**What to build.** A two-way table: segment down the side, channel across the top, orders per
-customer in each cell, for both quarters, with the change. Twelve cells.
-
-Then answer three questions in writing.
-
-1. Which single cell carries the largest absolute loss of orders? Not the largest percentage, the
-   largest count.
-2. If web were restored to its Q1 rate **for Retail-Plus only**, how many orders come back, and what
-   share of the total fall is that?
-3. What does the table say that neither one-way cut said on its own?
-
-**The hard part, and the point.** A two-way cut has twelve cells and roughly sixty-nine customers,
-so some cells hold two or three people. Say which cells you refuse to read, and why, before you
-answer any of the three questions. A learner who fills in all twelve confidently has missed the
-exercise.
+Both are optional and neither is graded. Pick the one that matches where you actually are, not the
+one that sounds better.
 
 ---
 
-## Recovery: one accumulator, then two
+## Stretch: the split, written once
 
-The grouping did not land and you would rather rebuild it than nod along. Tonight, alone, costs you
-nothing tomorrow.
+You finished the take-home early and the afternoon's mix against rate felt like arithmetic you did
+by hand. Then this one is for you.
 
-**Work in a fresh cell. One step at a time, running after each.**
+**The situation.** Anand Iyer comes back after the afternoon.
 
-1. Count all the orders with yesterday's three lines. No grouping at all.
-2. Now count only Q1 orders, with an `if` inside the loop. Then only Q2, by changing one word.
-3. You now have the same code twice. That is the problem grouping solves.
-4. Make an empty dictionary called `counts`. Inside the loop, print `order["quarter"]` and nothing
-   else. Watch the keys go past.
-5. Add one line: `counts[order["quarter"]] = 0`. Run it and print `counts`. Every quarter is zero,
-   because you overwrite it every time.
-6. Change that line to use `.get()` and add one. Run it. It works, and you can now say exactly why
-   step 5 did not.
-7. Change `+ 1` to `+ order["amount"]`. Same shape, different question answered.
+> "Your split of revenue per order into mix and rate convinced me for one quarter. Next quarter
+> somebody else will run it, on a different file, at the end of a long day. Give me the split as
+> something that cannot be done differently twice." (Anand Iyer)
 
-**What you should end up believing.** A grouped accumulator is the ungrouped one with the variable
-replaced by a slot in a dictionary. Nothing else changed. If step 5 did not surprise you, run it
-again and read the output properly, because the surprise is the lesson.
+**What to build.** One function, `mix_and_rate(before_rows, after_rows, key)`, that returns a
+dictionary with four entries: the overall rate before, the overall rate after, the part of the
+change explained by the mix of groups, and the part explained by the rates within groups.
+
+| Step | What it must do |
+|---|---|
+| 1 | Group both sets of rows by `key` with your own accumulator, and count the groups in each |
+| 2 | Compute each group's share of orders and its revenue per order, before and after |
+| 3 | Compute what the overall rate would have been with the after mix and the before rates |
+| 4 | Return the mix part and the rate part, and check that they add up to the whole change |
+| 5 | Refuse, with a clear message, when a group exists on one side only |
+
+**The check it must pass.** On the class file, with `key="segment"`, it reproduces the afternoon's
+split of the Rs 33,231 rise: Rs 22,902 of mix and Rs 10,330 of rate, within a rupee.
+
+**The hard part, and the point.** Step 5. A group that exists on one side only has no before rate
+or no after rate, and the split has no honest answer for it. Decide what the function does, write
+the reason in its docstring, and then run it on the take-home file with `key="channel"` and say in
+one line what the split tells the regional operations head.
+
+**A tell that you have done it well:** the function prints nothing, returns its answer whenever an
+honest answer exists, and a colleague could read the docstring and know what happens to a missing group without
+opening the code.
+
+---
+
+## Recovery: one segment, one step at a time
+
+The session moved fast, the accumulator did not land, and you would rather rebuild it than pretend.
+Then this one is for you, and doing it tonight costs you nothing tomorrow.
+
+**Work in a fresh cell in round 2's notebook. One step at a time, running after each.**
+
+1. Print the first three records on their own. Point at the quarter and the segment in each.
+2. Make an empty dictionary, `counts = {}`, and print it. It prints `{}`.
+3. Take the first record only. Put its quarter into `counts` with the value 1, and print `counts`.
+4. Now write the loop over every record that adds 1 to its quarter's count, creating the entry the
+   first time a quarter is seen. Print `counts`. It should say 114 for Q1 and 86 for Q2.
+5. Change the key to the pair `(order["quarter"], order["segment"])`. Before you run it, write down
+   how many keys you expect. Run it and count them.
+6. Wrap steps 4 and 5 in a function, `count_by(rows, field)`, that ends in `return counts`. Call it,
+   store the result, and print the stored result. Then change `return` to `print` once, run it
+   again, and print the stored result: it says `None`.
+7. On three invented orders of Rs 1,000, Rs 1,200 and Rs 40,000, write the median, the minimum, the
+   maximum and the range by hand, then check each with code.
+
+**What you should end up believing.** Grouping is one move: a dictionary, a key, and an update per
+record. A function is worth writing when it hands its answer back, and the `None` you saw in step 6
+is what every table built on a printing function is full of.
+
+**If step 7 surprised you,** look at the gap between the mean and the median of those three invented
+orders, and say in one sentence which of the two you would put in a note to Meera.
