@@ -64,7 +64,7 @@ fetch it, and it is free to fetch it in any way that gives the same result.
 ## Anand's ask, and what it rules out
 
 > "I want these numbers every Monday, for every segment and channel, computed from the warehouse
-> itself. No notebooks, no exports, nothing a person can mistype." Anand Iyer, CFO, Kalpa Retail
+> itself. No notebooks, no exports, nothing a person can mistype." Anand Iyer, finance controller, Kalpa Retail
 
 Three things are ruled out, and one thing is not. A number on Anand's sheet may no longer come from
 a notebook on somebody's laptop, from an export that is stale the day it lands, or from a value

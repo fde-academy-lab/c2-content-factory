@@ -4,7 +4,7 @@ Week 2, Day 1. Half one.
 
 Kicker: WEEK 2  ·  MONDAY  ·  HALF ONE
 Quote: I want these numbers every Monday, for every segment and channel, computed from the warehouse itself. No notebooks, no exports, nothing a person can mistype.
-Who: Anand Iyer, CFO, Kalpa Retail, to the data and AI team at Kalpa's Global Capability Centre
+Who: Anand Iyer, finance controller, Kalpa Retail, to the data and AI team at Kalpa's Global Capability Centre
 
 ```notes
 LIVE, one minute. Read Anand's words aloud and leave them up while the room settles. Last week
@@ -17,7 +17,7 @@ row per customer in pandas, Friday the leadership deck in Excel. Say the arc onc
 ---
 
 ## SECTION 1: The ask
-*The CFO wants last week's tree every Monday, from the warehouse, and an analyst who audits every line.*
+*The finance controller wants last week's tree every Monday, from the warehouse, and an analyst who audits every line.*
 
 ```notes
 LIVE. Twenty minutes: the ask, what it rules out, and the thinking drawn on the board before any
@@ -37,7 +37,7 @@ value: 0 | label: exports | note: query it, do not export it
 ```
 
 ```notes
-LIVE, 3 minutes. The stats row is the brief. Anand is the CFO of Kalpa Retail; his analyst will
+LIVE, 3 minutes. The stats row is the brief. Anand is the finance controller of Kalpa Retail; his analyst will
 read every query line by line without the team beside him. The data platform lead has given read
 access to Postgres and one rule: query it, do not export it. Ask: which of these four numbers
 changes how you work most? The zero exports, because every Week 1 step ran on a file.

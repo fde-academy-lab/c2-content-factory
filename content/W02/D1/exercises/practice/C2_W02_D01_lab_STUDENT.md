@@ -1,6 +1,6 @@
 # Practice lab: the Monday tree by channel
 
-> "Every segment and channel." Anand Iyer, CFO, Kalpa Retail
+> "Every segment and channel." Anand Iyer, finance controller, Kalpa Retail
 
 The suite covers segments; Anand asked for channels too. Four problems, about an hour, climbing
 from predicting what a query returns to building the channel tree and saying what it means. The

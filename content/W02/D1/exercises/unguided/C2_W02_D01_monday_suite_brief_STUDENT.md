@@ -1,7 +1,7 @@
 # The case: the Monday suite
 
 > "I want these numbers every Monday, for every segment and channel, computed from the warehouse
-> itself. No notebooks, no exports, nothing a person can mistype." Anand Iyer, CFO, Kalpa Retail
+> itself. No notebooks, no exports, nothing a person can mistype." Anand Iyer, finance controller, Kalpa Retail
 
 Anand's analyst will run six queries every Monday and audit each one line by line, without you
 beside him. You have thirty minutes, alone, no hints. Write the six queries under their comment

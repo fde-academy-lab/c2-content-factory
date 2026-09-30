@@ -16,7 +16,7 @@ This week you computed Anand's Monday numbers in the warehouse, set booked reven
 - A wrong answer costs nothing, so answer every item on the line under it.
 - Pen and this paper only: no laptop, no phone, no notes and no assistant.
 - Afterwards the papers are swapped and marked against the key, and the discussion takes the items the room missed most. The paper is ungraded and ranks nobody; the room's rates by part and by tag set Monday's revision.
-- The items are set inside Kalpa Retail, the fictional company of Weeks 1 and 2. Anand Iyer answers for Finance's books, Kavya Nair is its senior analyst, Meera Raghavan's office reads the growth review deck, and the head of Retail-Plus, the marketing lead and the data platform lead are named by role alone. Nothing about the company needs to be known in advance.
+- The items are set inside Kalpa Retail, the fictional company of Weeks 1 and 2. Anand Iyer is its finance controller and Kavya Nair its senior analyst, Meera Raghavan's office reads the growth review deck, and the head of Retail-Plus, the marketing lead and the data platform lead are named by role alone. Nothing about the company needs to be known in advance.
 
 ## Step one, before Part 1
 

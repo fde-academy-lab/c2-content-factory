@@ -5,7 +5,7 @@ About twenty minutes tonight, after the take-home. Tuesday opens on this message
 > "Booked revenue is not collected revenue. Some orders are paid in two instalments, some are
 > refunded, some were never paid at all. Show me, order by order, what we actually collected against
 > what we booked in Q2. If there is a gap, I want to know which orders and which channel."
-> Anand Iyer, CFO, Kalpa Retail
+> Anand Iyer, finance controller, Kalpa Retail
 
 Today every number came from one table, `orders`, plus one lookup to `customers` that could not
 change the row count, because each order has exactly one customer. Tomorrow's number needs a second
