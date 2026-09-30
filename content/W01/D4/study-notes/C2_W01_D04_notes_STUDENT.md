@@ -253,9 +253,9 @@ chance made sends a quarter's spend to a segment that may be flat next quarter.
 
 **IN THE FIELD.** The Gates Foundation backed small schools partly because they were
 over-represented among top performers; among the best, Howard Wainer wrote, "we would expect 3% of
-small schools" and "we found 12%". He found them over-represented among the worst as well, after the
-Foundation had given about 1.7 billion dollars to education projects by 2001 (Wainer, "The Most
-Dangerous Equation", 2009).
+small schools" and "we found 12%". He found them over-represented among the worst as well. By 2001 the
+Foundation had given about 1.7 billion dollars to education projects (Wainer, "The Most Dangerous
+Equation", 2009).
 
 ### Which of four ways to answer "should budget follow the 40 percent?" fits Monday?
 
