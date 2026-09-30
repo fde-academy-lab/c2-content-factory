@@ -818,6 +818,15 @@ def stretch_intro(written, recalled, recall_only=True):
 RECALL_TYPES = ("Fill in the blank", "True or false")
 
 
+def bank_phrase(printed, where):
+    """The words a rule spends on word banks and match tables, only on a paper that prints one."""
+    if not any(i.get("bank_style") for i in printed):
+        return ""
+    return {"rules": "write a letter from a word bank or a match table, ",
+            "marking": "the letter on a word-bank or match item, ",
+            "answers": "the letter for a word-bank or match item, "}[where]
+
+
 def recall_only(moved):
     return all(i["type"] in RECALL_TYPES for i in moved)
 
@@ -825,8 +834,7 @@ def recall_only(moved):
 RULES_MD = [
     "{minutes} minutes in one sitting. Each part gives its minutes as a guide, not a limit.",
     "Every item names its format beside its number: circle one letter, circle every correct letter, "
-    "write T or F, write a letter from a word bank or a match table, write the word or number, show "
-    "the working, or write the letters in order.",
+    "write T or F, {bank}write the word or number, show the working, or write the letters in order.",
     "Every item also names its level, easy, medium or hard, so you can plan your time. A hard item is "
     "several steps on an exhibit, never an obscure fact.",
     "A wrong answer costs nothing, so answer every item on the line under it.",
@@ -850,7 +858,7 @@ def render_paper_parts(paper, data, date, printed, source, minutes, moved):
            f"Items right: ____ of {n}", "",
            "## What this paper is for", "", " ".join(str(source.get("purpose") or PURPOSE).split()), "",
            "## How this paper works", ""]
-    out += [f"- {r.format(minutes=minutes)}" for r in RULES_MD]
+    out += [f"- {r.format(minutes=minutes, bank=bank_phrase(printed, 'rules'))}" for r in RULES_MD]
     if source.get("company"):
         out.append(f"- {' '.join(str(source['company']).split())}")
     out += ["", "## Step one, before Part 1", "",
@@ -964,7 +972,7 @@ def render_key(paper, data, date, notes, printed, source, minutes, moved=()):
            f"2. The Academic TA reads the key out {'part by part' if source.get('parts') else 'section by section'}, "
            "and the marker writes a tick or a cross beside each item.",
            "3. An item is right when its answer matches the key: every correct letter and no other "
-           "on a more-than-one item, the letter on a word-bank or match item, the number on an applied "
+           f"on a more-than-one item, {bank_phrase(printed, 'marking')}the number on an applied "
            "maths item (the working belongs to the discussion), and the whole sequence on an ordering "
            "item. The programme has set no partial-credit rule, so this key uses none.",
            (f"4. The marker writes each part's ticks beside its rating on the answer sheet, and their "
@@ -1422,7 +1430,7 @@ def docx_spec(paper, data, date, printed, source, minutes, notes, moved=()):
                   "working goes in the margins and in the working boxes."],
         ["Answers", "Every answer goes on the answer sheet at the back, which is the page that is "
                     "marked: one box for a lettered item, every correct box for a starred one, T or F "
-                    "for a statement, the letter for a word-bank or match item, and the number or the "
+                    f"for a statement, {bank_phrase(printed, 'answers')}and the number or the "
                     "letters in order in the space. A wrong answer costs nothing, so answer every item."],
         ["Levels", "Every item shows its level beside its number, easy, medium or hard. A hard item is "
                    "several steps on an exhibit, never an obscure fact."],
@@ -1490,7 +1498,7 @@ def docx_spec(paper, data, date, printed, source, minutes, notes, moved=()):
         f"The Academic TA reads the key out {'part by part' if in_parts else 'section by section'}, and the "
         "marker ticks or crosses each row of the answer sheet against the marking grid at the back of this key.",
         "An item is right when its answer matches the key: every correct box and no other on a starred "
-        "item, the letter on a word-bank or match item, the number on a work-it-out item (the working "
+        f"item, {bank_phrase(printed, 'marking')}the number on a work-it-out item (the working "
         "belongs to the discussion), and the whole sequence on an order item. The programme has set no "
         "partial-credit rule, so this key uses none.",
         (f"The marker writes each part's ticks in its box beside the learner's rating, and their total as "
