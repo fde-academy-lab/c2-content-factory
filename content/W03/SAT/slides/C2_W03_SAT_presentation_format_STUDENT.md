@@ -134,7 +134,7 @@ never a disclaimer about data in general; "the data may have quality issues" is 
 | | The sentence |
 |---|---|
 | a | Retail-Plus is collapsing, and it needs a rescue plan this quarter before the members leave. |
-| b | Retail-Plus orders per member fell about a third against Retail-Core's 2.7 percent, on 22 members, and chance made a gap that large in none of 5,000 shuffles. |
+| b | Retail-Plus revenue per member fell from Rs 3,279 to Rs 2,169 on 22 members, against Retail-Core's Rs 110, and 135 of 5,000 shuffles made a fall that large. |
 | c | Several indicators in the Retail-Plus data could suggest there may possibly be a movement in member ordering that the team might want to keep watching over the coming quarters. |
 | d | Retail-Plus fell, so cut the membership price by ten percent next quarter. |
 
@@ -151,7 +151,7 @@ from Week 1, so no group's Kalpa Health answer is on the slide.
 | Option | Why it fails or holds |
 |---|---|
 | a | A verdict with no number, no count and no comparison; a board member's first question breaks it |
-| b | Holds: the measure, the comparison, the count and the chance test, in one sentence |
+| b | Holds: the measure, the comparison, the count and the chance test (0.027), in one sentence |
 | c | Hedges every word, so nobody can act on it and nobody can disagree with it |
 | d | An action with no evidence and no caveat; the price was never tested as the cause |
 
@@ -260,7 +260,7 @@ names it first. It should be a behaviour, never a feeling.
 ---
 
 ## SECTION 4: The live demo
-*Cold, from the raw files, in one run: the number on your one-slide answer, reproduced in front of the panel.*
+*Cold, from the raw files, in one run with two minutes to recover: the number on your one-slide answer, reproduced in front of the panel.*
 
 ```notes
 The demo is the evidence that the claim came from the data. Groups rehearse it cold twice on
@@ -275,7 +275,7 @@ Friday; the rules here are the ones the panel holds them to.
 ```cards
 icon: snowflake | eyebrow: Rule 1 | title: Cold | body: A fresh kernel or a fresh Codespace. Restart and run all, with no output kept from an earlier run.
 icon: file-text | eyebrow: Rule 2 | title: Raw files | body: The files exactly as Dr Menon's team sent them, read from the data folder. No hand-edited copy, no pre-cleaned extract.
-icon: play | eyebrow: Rule 3 | title: One run | body: One press, top to bottom. If it breaks, say in one sentence what broke and why, then go to questions. | tone: dark
+icon: play | eyebrow: Rule 3 | title: One run | body: One press, top to bottom. If it fails, you have two minutes to recover it live, as you would with a client. | tone: dark
 ```
 
 ```mermaid
@@ -286,43 +286,47 @@ flowchart LR
 **The claim.** The demo shows two things: the claim's main number arriving from raw files, and your decisions log's largest call happening in code.
 
 ```notes
-A demo that fails and is explained honestly in one sentence is better evidence of understanding
-than a demo that is rerun until it works. There is no second run.
+The rule, word for word: a group's demo runs once, cold, on its raw files. If it fails, the group
+has two minutes to recover it live, as it would in front of a client. If it still fails, the group
+presents from its executed notebook, and the panel scores the live demo in presentation and defence
+as not run cold. The other 34 marks of the mini project are scored from the executed run, so a
+failed demo costs its own marks and never the analysis.
 ```
 
 ---
 
 ## S12. Question: which demo meets the rules?
-*Four groups describe their demo plan.*
+*Four groups say what they will do if a cell fails on the cold run.*
 
-**Question.** Which plan meets all three rules? Answer as a letter.
+**Question.** Which plan meets the demo rules? Answer as a letter.
 
 | | The plan |
 |---|---|
-| a | Open the notebook as it was saved on Friday night, scroll through the outputs and explain each chart. |
-| b | Run a cleaned extract the group saved on Thursday, because the raw files take a minute to load. |
-| c | Restart the kernel, run every cell once on the files in the data folder, and read the claim's number off the last cell. |
-| d | Run it cold, and if one cell fails, fix that cell live and run the whole notebook again from the top so the panel sees every output. |
+| a | Skip the recovery and open the notebook as saved on Friday night, scrolling through its charts. |
+| b | Switch to a cleaned extract the group saved on Thursday, since the raw files are what broke. |
+| c | Keep debugging live for as long as it takes, so the panel sees every output in the end. |
+| d | Fix the cell live inside two minutes; if it still fails, present from the executed notebook. |
 
 ```notes
-Thirty seconds. Most rooms get c; d is the one worth discussing.
+Thirty seconds. Most rooms split between c and d; the two-minute limit is what separates them.
 ```
 
 ---
 
-## S13. Answer: c, and only c
-*Each of the other three breaks one rule.*
+## S13. Answer: d, a live fix inside two minutes
+*A client gives you two minutes to recover, and never an open-ended debugging session.*
 
 | Option | Rule it breaks |
 |---|---|
-| a | Cold: saved outputs are from an earlier run, so nothing ran in front of the panel |
-| b | Raw files: the extract hides every cleaning decision the panel wants to see made |
-| c | Meets all three: cold, raw and once |
-| d | One run: a live fix and a second run turn the demo into debugging |
+| a | Gives up the two minutes a client would allow, and shows outputs nothing ran in front of the panel |
+| b | Breaks the raw files rule: the extract hides every cleaning decision the panel wants to see made |
+| c | Breaks the two-minute limit: open-ended debugging eats the slot and the panel's questions |
+| d | Holds: two minutes to recover live, then the executed notebook, and the analysis keeps its marks |
 
 ```notes
-The answer is c. On d: a group whose demo breaks names the cause and moves on; the panel can ask
-about the fix in questions.
+The answer is d. If the demo still fails after two minutes, the group presents from its executed
+notebook and the panel scores the live demo in presentation and defence as not run cold; the other
+34 marks are scored from the executed run, so a failed demo costs its own marks and never the analysis.
 ```
 
 ---
@@ -434,4 +438,26 @@ check, never defend and never fold.
 Point groups to Monday's pack: the briefing note, their sub-problem brief, the data dictionary and
 the translation worksheet sit in the briefs folder of Monday's day. The five items here are the
 same for every group.
+```
+
+---
+
+## S19. How the mini project is scored
+*The approved rubric: 34 marks for the group's work and 6 for each learner's presentation and defence.*
+
+<!-- sync:rubric:W03/mini-project -->
+**Mini project, 40 marks.** The first four criteria are scored once for the group, and every member receives those 34 marks; presentation and defence is scored for each learner on 6 marks, so a silent teammate cannot ride the group's score.
+
+| Criterion | Marks | What full marks look like |
+|---|---|---|
+| The question translated | 8 | Dr Menon's words are mapped to the right Weeks 1 and 2 method, with the metric defined and the decision it feeds named. |
+| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and rupees reconcile across files. |
+| The analysis | 10 | The tree, ladder or fair comparison reaches the branch that explains the symptom, on the right denominator, with a chance test where one is needed. |
+| The claim | 6 | One sentence carries its number, denominator, period and caveat, plus an action Dr Menon can take. |
+| Presentation and defence | 6 | The live demo runs cold, and every member answers a challenge on the caveat. |
+<!-- /sync:rubric:W03/mini-project -->
+
+```notes
+Point groups to the last row: the live demo sits inside presentation and defence, so a demo that
+fails after its two minutes costs those marks and leaves the other 34 to the executed run.
 ```
