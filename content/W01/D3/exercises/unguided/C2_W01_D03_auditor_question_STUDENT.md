@@ -1,14 +1,45 @@
-# The second case: the auditor's question
+# Why were 14 Q1 rows set aside, and how does the auditor know nothing else went?
 
 > "Your log says 14 Q1 rows were dropped. Why those 14, and how do I know nothing else went with
 > them?"
 >
 > The internal auditor, Kalpa Retail finance
 
+**Who needs the answer.** The internal auditor decides whether Finance can rely on the team's
+reconciliation of Q1 and on the log behind it. A log she cannot follow costs a week of questions, and a
+log that fails her tie-out, which matches every figure to the books line by line, costs the team her
+trust in everything else it sends.
+
+**The questions on the way.** The notebook walks her first question in five steps: which 14 rows, whether
+each one is a copy, which rows carry the rupees, why one copy was chosen over its twin, and what she
+signs. She then asks the five questions below:
+
+- Why does the set-aside log hold 15 lines when the auditor asked about 14?
+- Which four set-aside rows should the auditor re-perform?
+- Would your evidence catch a real order set aside as a copy?
+- What do you change when the auditor reads "dropped" in your log?
+- What must the reconciliation still carry if the ERP team removes copies at source?
+
+The export is Kalpa Retail's file of Q1 and Q2 orders from the ERP, the enterprise resource planning
+system Finance books orders in, and it held 201 rows for 186 orders. A profile of it counted, for every
+field, the values present, the values that convert and the distinct values. The team's pass then
+applied the identity rule, one row kept for each order_id, the number the ERP issues once per order;
+converted the amounts, sending any that failed to a rejects log; decided each missing value and the
+largest Q2 order; and reconciled rows and rupees to the books, Finance's own record of Q1. Every row it
+did not keep went to a log with its reason. In Q1, 114 rows came in and 100 orders were kept, and Q1 on
+the clean file equals the books at Rs 1,90,00,000.
+
+A copy's twin is the other row of the same order. Chapter 3 found that two pairs of copies differ in a
+field while the others are identical, and that two Business rows carry Rs 19,67,560 of the Rs 19,98,210
+set aside in Q1; Kalpa's Business segment is its sales to companies, every order in lakhs. Chapter 2
+weighed a fuzzy match, which calls two rows one order when the customer and the amount match within 60
+days.
+
 Forty minutes in pairs. One of you drives the notebook `notebooks/C2_W01_D03_ex2_auditor_STUDENT.ipynb`;
 the other plays the auditor and asks the next question only when the check passes. Swap roles
-halfway. When the notebook's walk is done, the auditor has five more questions, below: answer each
-aloud before either of you posts.
+halfway. When the notebook's walk is done, answer each item below aloud before either of you posts.
+
+**What you post.** The notebook's five letters, then this brief's five, in this shape:
 
 ```
 Post exactly this shape: notebook xxxxx · brief xxxxx
@@ -16,7 +47,7 @@ Post exactly this shape: notebook xxxxx · brief xxxxx
 
 ---
 
-### Q1
+### Q1. Why does the set-aside log hold 15 lines when the auditor asked about 14?
 
 The auditor counts 15 lines in your set-aside log and asks why her question was about 14. What is
 the 15th line?
@@ -26,17 +57,17 @@ b) A Q2 copy, set aside by the same rule as the 14 copies in Q1
 c) The largest Q2 order, taken out of Q2 as an outlier
 d) The order with no status, which the pass could not place
 
-### Q2 (Design)
+### Q2. Which four set-aside rows should the auditor re-perform? (Design)
 
-The auditor will re-perform your work on four of the 15 set-aside rows and has an hour to do it.
-Which four test your rule hardest?
+The auditor will re-perform your work, repeating each step herself from the raw rows, on four of the
+15 set-aside rows, and she has an hour to do it. Which four test your rule hardest?
 
 a) Four drawn at random, so that no row is favoured over another
 b) The first four lines of the log, since the log runs in file order
 c) One row from each pair that differed, and the two Business rows
 d) The four largest by rupees, since the money is what she signs for
 
-### Q3 (Design)
+### Q3. Would your evidence catch a real order set aside as a copy? (Design)
 
 The auditor asks: if one of the 14 had been a real second order that the ERP numbered with a
 repeated id, what in your evidence would have shown it?
@@ -46,7 +77,7 @@ b) The rows would not tie, since a real order would be gone
 c) Nothing, since the order would share an id with a kept row
 d) The profile would show a sixteenth id on more than one row
 
-### Q4
+### Q4. What do you change when the auditor reads "dropped" in your log?
 
 The auditor reads the word "dropped" in your log. What do you change?
 
@@ -55,7 +86,7 @@ b) The count, since a dropped row should not appear in the log
 c) The format, into one summary line so that the log is shorter
 d) The word, to "set aside", with each row's reason shown beside
 
-### Q5 (Design)
+### Q5. What must the reconciliation still carry if the ERP team removes copies at source? (Design)
 
 The auditor suggests that next quarter the ERP team remove the copies before the export leaves the
 ERP. What must your reconciliation still carry?
