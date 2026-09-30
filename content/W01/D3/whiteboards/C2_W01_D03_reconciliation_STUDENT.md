@@ -1,7 +1,7 @@
 # The reconciliation, as it goes up on the board
 
-Week 1, Wednesday. Five drawings, in the order they go up, each drawn with the room before the
-screen shows the same thing. The last section is what the board holds when the day ends.
+Week 1, Wednesday. Seven drawings, in the order they go up, each drawn with the room before the
+screen shows the same thing. Each chapter adds one. The last section is what the board holds when the day ends.
 
 ## First drawing: two figures, and four ways an export could produce either
 
@@ -29,7 +29,7 @@ flowchart LR
     C -.-> L["<b>decisions log</b><br/>a reason per act"]
 ```
 
-This one stays up all day. Every round points back at one of its boxes.
+This one stays up all day. Every chapter points back at one of its boxes.
 
 ## Third drawing: the profile, three counts per field
 
@@ -37,12 +37,25 @@ This one stays up all day. Every round points back at one of its boxes.
 |---|---|---|---|
 | order_id | 201 | text | 186 |
 | amount | 201 | 200 | 161 |
-| status | 200 | text | 4 |
+| status | 200 | text | 3 |
 
-Circle the three counts that do not fit 201. Each is a question for a later rung, written beside the
+Drawn in chapter 1. Circle the three counts that do not fit 201. Each is a question for a later chapter, written beside the
 table and ticked off as it is answered.
 
-## Fourth drawing: what makes two rows one order
+## Fourth drawing: four keys, one file
+
+Drawn in chapter 2, as a table the room fills in before the notebook sizes it.
+
+| Key | Rows flagged | Real orders removed |
+|---|---|---|
+| Whole record, line included | 0 | none |
+| Whole record less the line | 13 | none |
+| order_id | 15 | none |
+| Fuzzy: customer and amount, 60 days | 15 | one, Rs 17,71,000 |
+
+Beside it: "same count, other rows".
+
+## Fifth drawing: which copy stays
 
 ```mermaid
 flowchart TB
@@ -51,10 +64,10 @@ flowchart TB
     K --> D["<b>valid, a field disagrees</b><br/>keep the first, log, ask the source"]
 ```
 
-Drawn after the dedupe that found nothing, beside the words "the file line is where a row sat, not
+Drawn in chapter 3, beside the words "the file line is where a row sat, not
 what the order is".
 
-## Fifth drawing: the bridge
+## Sixth drawing: the bridge
 
 ```mermaid
 flowchart LR
@@ -63,11 +76,28 @@ flowchart LR
     B -.->|"equals"| K["<b>the books</b>"]
 ```
 
-Under it, the two equations: rows 201 = 186 + 15, and rupees 2,09,98,210 less 19,98,210 = 1,90,00,000.
+Drawn in chapter 5. Under it, the two equations: rows 201 = 186 + 15, and rupees 2,09,98,210 less
+19,98,210 = 1,90,00,000. Beside it, Monday's tree recomputed as Q2's multiple of Q1: customers
+x1.000, orders per customer x0.860, revenue per order x1.144, revenue x0.984, with Tuesday's x1.000,
+x0.754, x1.180 and x0.890 written above and crossed through.
+
+## Seventh drawing: the replay
+
+Drawn in chapter 6, after lunch.
+
+```mermaid
+flowchart LR
+    R["<b>raw export</b><br/>201 rows"] --> M["<b>less the logged lines</b><br/>15"]
+    M --> C["<b>186 orders</b>"]
+    C -.->|"equals"| P["<b>the clean file</b>"]
+```
+
+Beside it: "a log is finished when a stranger can replay it".
 
 ## What is on the board when the day ends
 
 The four moves across the top; the profile table with its three circled counts, each ticked; the
-copy tree; the bridge with its two equations; and in the corner, Tuesday's two numbers crossed
-through and replaced: revenue -11.0% becomes -1.6%, and Retail-Plus -49.0% becomes -35.0%. Tomorrow's
+four keys; the copy tree; the bridge with its two equations; the replay; and in the corner, Tuesday's two numbers crossed
+through and replaced: revenue -11.0% becomes -1.6%, orders per customer x0.754 becomes x0.860, and
+Retail-Plus -49.0% becomes -35.0%. Tomorrow's
 question is written under them, unanswered: is -35.0% on 22 members real, or chance?
