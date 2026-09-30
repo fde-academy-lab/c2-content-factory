@@ -528,6 +528,14 @@ def glossary_for(path, limit=8, width=76):
     notes = list((path.parent.parent / "study-notes").glob(f"{stem.group(1)}_*.md"))
     if not notes:
         return []
+    # A day can carry more than one set of notes, such as the day's own notes and a domain
+    # dossier, and a glob lists them in whatever order the filesystem keeps. The sheet reads the
+    # notes whose topic shares a word with its own name, and otherwise the day's own notes file,
+    # so a rebuild prints the same strip on every machine.
+    def topic(p):
+        return set(re.findall(r"[a-z]+", p.stem[len(stem.group(0)):].lower())) - {
+            "student", "trainer", "internal"}
+    notes.sort(key=lambda p: (-len(topic(p) & topic(path)), "_notes_" not in p.name, p.name))
     text = notes[0].read_text(encoding="utf-8", errors="replace")
     block = re.search(r"^\|\s*Term\s*\|.*?\n(?:\|.*\n)+", text, re.M)
     if not block:
