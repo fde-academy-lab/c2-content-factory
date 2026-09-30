@@ -1,43 +1,48 @@
-# Self-check before you hand in Friday's take-home
+# Self-check: the fresh export
 
-Ten checks.
+Check each line against your rebuilt workbook before class. If a number differs, the difference is
+the lesson: find which step produced it before you look anything else up.
 
-## The rebuild
+## The grain
 
-1. Did you actually regenerate the data, or did you rebuild the sheet from the same CSV? Check the
-   file's modification time. This catches more people than it should.
+| Check | You should reach |
+|---|---|
+| Rows in the fresh raw export, and distinct order ids | 1,450 rows and 1,000 orders |
+| A Sum of order_amount over every row | Rs 39,40,62,440, which is the number your tree must not show |
+| Rows after Remove Duplicates on every column | 1,400, with the total still about Rs 39.40 crore |
+| Your tree's totals, each order counted once | Q1 Rs 10,00,00,000 and Q2 Rs 9,84,00,000, tied to the warehouse to the rupee |
 
-2. For every number that moved, can you name the cause in terms of what changed in the warehouse?
-   Not "the seed changed", which is true and useless. Which orders, which customers.
+## The tree
 
-3. For every number that did **not** move, can you say why it was stable? A figure that is stable
-   by design is a good finding; a figure that is stable because you rebuilt nothing is not.
+| Check | You should reach |
+|---|---|
+| Retail-Plus, Q1 | 94 customers, 2.29 orders per customer, Rs 6,14,080 |
+| Retail-Plus, Q2 | 85 customers, 1.65 orders per customer, Rs 4,29,740, down 30.0 percent |
+| Retail-Core, Q1 to Q2 | Rs 3,69,630 to Rs 3,75,750, up 1.7 percent, where Friday's file had it falling |
 
-4. Did any formula break rather than just returning a different number? A broken reference after a
-   rebuild is the most common way a deck fails on a Monday morning.
+## The customer table and the list
 
-## The sheet
+| Check | You should reach |
+|---|---|
+| The fresh customer table's totals | 311 customers, 994 orders, Rs 19,83,85,260; compare them with the warehouse yourself, and let your Checks tab say what that means |
+| Retail-Plus members in the table | 109 |
+| The protect list | Rank 1 is C-0189 at Rs 32,090; the cut-off at rank 50 is Rs 8,350; the fifty together spent Rs 7,44,920 |
+| The fifty-first member | Rs 8,180, so no tie sits across the boundary |
+| The list filtered to Mumbai, with SUBTOTAL(109) at the foot | 7 members, Rs 1,17,530 |
 
-5. Open your workbook and change one input cell. Does anything downstream move? If not, something
-   below it is a typed number wearing a formula's clothes.
+## The lookup and the card
 
-6. Is every input cell visually marked, and is every marked cell actually an input? Both
-   directions. A marked cell holding a formula is worse than an unmarked one.
+| Check | You should see |
+|---|---|
+| An id that is in the table, exact match | Its revenue and its place on the list |
+| An id that is not in the table, exact match | "not in the table" |
+| The same missing id, approximate match | A neighbour's row, with no warning, which is why the sheet uses the exact match |
+| The card, all segments | Q2, July to September 2026: Rs 9.84 crore, down 1.6 percent on Q1 (Rs 10.00 crore) |
+| The card, all except Business | Rs 8.41 lakh, down 16.5 percent on Rs 10.07 lakh; 0.9 percent of company revenue in Q2 |
 
-7. Does the first sheet say what the workbook was built from and when? One cell. If a colleague
-   opened it cold, would they know which export it came from?
+## Behaviours to confirm
 
-## The operating rule
-
-8. Read your three lines. Are they in your words? If any sentence could be lifted from the deck
-   verbatim, you have copied rather than decided.
-
-9. Your fourth line is a condition. What breaks it first in a real team? If your answer is
-   "carelessness", think harder: it is usually a deadline and a correction that only exists in one
-   place.
-
-## The paragraph
-
-10. Read your four sentences. Is the fourth one about a habit rather than an intention? "I will be
-    more careful" is an intention. "I will take the row count before any total, including when I
-    am certain" is a habit, because it is checkable.
+- Changing the list size to 40 changes the list, its foot and nothing else.
+- Changing the card's scope changes the number, the comparison, the share and the scope printed in the
+  sentence, together.
+- Counting each payment row instead of each order makes your Checks tab refuse to release anything.

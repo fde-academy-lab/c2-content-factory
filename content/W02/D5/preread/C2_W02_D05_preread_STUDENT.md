@@ -1,45 +1,46 @@
-# Before Friday: bring the export, and break a lookup
+# Before Monday: the same method, a business you have not seen
 
-Ten minutes.
+Ships tonight. Saturday comes first: the recap paper is pen and paper, with nothing to install and
+nothing to bring beyond a pen. This page is for Monday.
 
-## Bring this
+> Dr Priya Menon, COO of Kalpa Health, brings Meera's question to a diagnostics business that grew 5
+> percent against a plan of 18. Build 1 opens on Monday 19 October with the online project
+> introduction, and groups scope their Kalpa Health sub-problem.
 
-The customer table you built on Thursday, exported as a CSV. Tomorrow starts with it and a room
-that arrives without it loses twenty minutes.
+Five sub-problems wait, three groups each: the revenue tree for a lab; bookings that fell in two
+cities; invoices against collections; the no-show rate in one clinic, real or noise; and the
+free-home-collection campaign, cause or coincidence. Each one is this fortnight's method in a domain
+the room has never seen.
 
-## Break a lookup on purpose
+---
 
-Open any spreadsheet you have. Put a few ids in a column and some values beside them, then write a
-lookup that searches for an id you did not include.
+## The vocabulary gap
 
-Try it three ways, and write down what each returns:
+Kalpa Retail's words, and the question each one becomes on Monday. The right-hand column holds
+questions to ask, never answers: Kalpa Health's data is not in your hands yet.
 
-- with no fourth argument
-- with a fourth argument you wrote yourself
-- with an approximate match switched on
+| In Kalpa Retail | What it meant | The question to ask in Kalpa Health |
+|---|---|---|
+| Customer | A member or buyer with an id | Is the customer the patient, the doctor who referred them, or the company that pays? |
+| Order | One basket, one order id | Is an order a booking, a single test, or a visit that carries several tests? |
+| Payment | One row per payment against an order | Who pays: the patient, an insurer or a corporate account, and in how many parts? |
+| Segment | Business, Retail-Core, Retail-Plus, Student | What splits the business: walk-in against home collection, city, test type, payer? |
+| Grain | One row per customer, order or payment | What does one row of each export stand for, and what repeats on it? |
+| Control total | Monday's warehouse revenue | Which number does Finance at Kalpa Health already sign? |
 
-One of those three hands back a neighbouring row's data as though it were the answer. Find out
-which before tomorrow, and you will recognise it when a room meets it.
+## One thing to think about
 
-## Three words
+The word "collection" means two things in the Build 1 list. In "invoices against collections" it is
+money collected against invoices, Tuesday's booked-against-collected question. In "free home
+collection" it is a sample picked up from a patient's home. A group that reads one as the other
+builds the wrong tree. Decide, before Monday, how you would find out which one a column means.
 
-| Word | What it means here |
-|---|---|
-| Grain | What one row of a file means, which no file browser can show you |
-| Pivot | A summary built by dragging fields, only as honest as its source table |
-| Input cell | A cell a stakeholder is meant to change, with formulas below it |
+## The check for tonight
 
-## One to read, one to watch
+Open the three deliverables you built today and say, for each, what its grain is and what it ties
+to. If you cannot say it in one sentence per deliverable, reread round 1 in the study notes before
+Saturday.
 
-- Microsoft Support, "Create a PivotTable to analyze worksheet data":
-  <https://support.microsoft.com/en-us/office/create-a-pivottable-to-analyze-worksheet-data-a9a84538-bfe9-40a9-a8e9-f99134456576> (verified 13 Sep 2026)
-- Resagratia, "XLOOKUP Function and Pivot Tables":
-  <https://www.youtube.com/watch?v=OAd_K9RCBHo> (verified 13 Sep 2026)
+## The line worth carrying in
 
-## One question to arrive with
-
-Meera's chief of staff wants three things that open on a laptop with no login, and says the sheet
-must recalculate if a director changes an assumption in the room.
-
-Write one sentence on what could go wrong when a director has their hand on your keyboard. You
-will find out tomorrow whether you named the right risk.
+The method transfers and the grain does not: say what one row stands for before you count anything.

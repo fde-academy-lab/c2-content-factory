@@ -1,61 +1,94 @@
-# Friday's Kahoot: the last mile
+# Kahoot, Week 2 Friday
 
-Ungraded. Seven questions, and the last one closes the week.
+Eight items, ungraded, scored on correctness and speed together. Item 8 is the return question from
+Thursday, one level up.
 
-## Q1. Your pivot total is higher than the warehouse. First suspicion?
+Each item names what it tests, so an item dropped for time says what was lost.
 
-a) The table under it repeats some rows <- correct
-b) The pivot's aggregation is set to count
-c) A filter is excluding part of the data
-d) The warehouse figure is out of date now
+---
 
-## Q2. XLOOKUP returned a member for an id that does not exist. Which argument was wrong?
+## Q1. The pivot's grand total is higher than the warehouse's. What do you suspect first?
 
-a) The first, which named the wrong lookup value
-b) The second, which pointed at the wrong column
-c) The fifth, which asked for an approximate match <- correct
-d) The third, which returned the wrong return array
+*Tests: the grain under a pivot, checked before anything else.*
 
-## Q3. A front-page number without which three things gets misread?
+- The warehouse has not loaded the latest week of orders yet
+- The export repeats rows, so Sum counts orders twice  <- correct
+- The pivot is averaging where it should be adding
+- Somebody typed over the grand total cell by hand
 
-a) A title, a source and a date of extraction
-b) A denominator, a period and a comparison <- correct
-c) A chart, a caption and a trend line beside it
-d) A currency, a rounding rule and a footnote
+---
 
-## Q4. A director changes an assumption. What must be true for the recalculation to be honest?
+## Q2. A lookup returned a member for an id that does not exist. Which argument was wrong?
 
-a) The sheet was exported within the last week
-b) The workbook is protected against any editing
-c) Every result below the input is a formula <- correct
-d) The input cell is coloured and clearly marked
+*Tests: an approximate match hands back a neighbour, silently.*
 
-## Q5. Cleaning duplicate keys out of a feed belongs where?
+- The return column, which pointed at the wrong field
+- The lookup value, which was typed in lower case letters
+- The table range, which stopped one row too early
+- The match type: approximate where it had to be exact  <- correct
 
-a) Excel, using remove duplicates on the column
-b) Excel, since the feed arrives as a spreadsheet
-c) Wherever that week's deadline happens to allow
-d) pandas or the warehouse, wherever it lands <- correct
+---
 
-## Q6. Which of this week's steps must never happen in Excel?
+## Q3. A front-page number without which three things will be misread?
 
-a) Joining two tables and totalling it <- correct
-b) Showing one number beside its comparison
-c) Slicing a pivot while a director watches it
-d) Looking up a member by their customer id
+*Tests: the card carries its period, its comparison and its base.*
 
-## Q7. Return question, one level up
+- Its period, its comparison and its base  <- correct
+- Its colour, its font size and its icon
+- Its source, its owner and its refresh date
+- Its trend, its forecast and its target
 
-Yesterday the merge returned 1,120 rows from 1,000 customers. What happened, and which argument
-would have caught it?
+---
 
-a) Rows were dropped; `how="inner"` would have shown it
-b) Keys repeat on the right; `validate=` would refuse <- correct
-c) The index was reset; `ignore_index` would have helped
-d) A column name collided; `suffixes=` would have caught it
+## Q4. A director changes an assumption in the room. What must be true for the recalculation to be honest?
 
-## Trainer note
+*Tests: inputs are marked, and every other cell computes from the source.*
 
-Q6 is the one to sit on for a moment. Several answers are things you would happily do in Excel,
-and only one of them computes a number that should already exist elsewhere. Ask what makes the
-difference, and the answer is whether anyone could rebuild it.
+- The sheet was saved before the meeting started
+- The director types the new figure over the old one
+- It is an input, and every other cell is a formula  <- correct
+- The pivot is refreshed by hand after every change
+
+---
+
+## Q5. Anand's audited revenue, a one-off hypothesis, a director's what-if. Which tools, in order?
+
+*Tests: the operating rule, called fast.*
+
+- Excel, pandas, the warehouse
+- The warehouse, pandas, Excel  <- correct
+- pandas, the warehouse, Excel
+- The warehouse, Excel, pandas
+
+---
+
+## Q6. Which of the week's steps must never be done in Excel?
+
+*Tests: Excel presents and explores; it never cleans the source.*
+
+- Removing the double-paid rows from the export  <- correct
+- Slicing the tree by segment in the room
+- Looking up a member by id before a call
+- Drawing the front-page number's monthly trend
+
+---
+
+## Q7. A list is filtered to Mumbai and the foot still reads the whole list's total. What is at the foot?
+
+*Tests: SUM adds rows a filter hid; SUBTOTAL(109) does not.*
+
+- SUBTOTAL(109) over the revenue column
+- AVERAGE over the revenue column
+- COUNT over the member ids
+- SUM over the revenue column  <- correct
+
+---
+
+## Q8. Thursday's merge turned 1,000 customers into 1,120 rows. What happened, and which argument would have caught it?
+
+*Tests: the return question: a fan-out, made loud by validate.*
+
+- Some customers were dropped; how="outer" would keep them
+- The exposure feed repeats keys; validate="one_to_one" raises  <- correct
+- The segments were misspelt; on="segment" would repair the join
+- The index was reset; sort=True would restore the order
