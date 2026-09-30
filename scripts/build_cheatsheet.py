@@ -214,17 +214,20 @@ def run_mmdc(cmd, env, out, timeout):
         raise MermaidError(f"mermaid-cli wrote no picture: {' / '.join(said)}")
 
 
-def render_mermaid(code, fmt="svg"):
+def render_mermaid(code, fmt="svg", config=None):
     """Render one fence to an image and return its path.
 
     Returns None when mmdc is not installed, and raises MermaidError when it is installed and
     writes nothing, so a failed render is never mistaken for a finished page. Renders are cached
     by content hash and by format, so rebuilding a sheet re-renders only what changed and a week
     of sheets sharing a diagram renders it once. The labels go through svg_labels first, so what
-    the hash covers is what mmdc draws. A PNG renders at PNG_SCALE, and the scale is in its key.
+    the hash covers is what mmdc draws. A PNG renders at PNG_SCALE, and the scale is in its key. A
+    caller with its own palette, such as the Saturday paper, passes its mermaid config; the default
+    is the sheets' shared theme.
     """
     body = svg_labels(code.strip()) + "\n"
-    flags, config = mmdc_page(2400, MERMAID_CONFIG) if fmt == "png" else ([], MERMAID_CONFIG)
+    base = config or MERMAID_CONFIG
+    flags, config = mmdc_page(2400, base) if fmt == "png" else ([], base)
     tag = f"scale={PNG_SCALE} {' '.join(flags)}" if fmt == "png" else ""
     key = hashlib.sha256((body + fmt + config + tag).encode()).hexdigest()[:16]
     CACHE.mkdir(parents=True, exist_ok=True)

@@ -31,21 +31,31 @@ Three sources are laid on the bank before rendering:
                   moved to the untimed stretch page to make room for harder timed items, a move
                   the requester approved on 30 September 2026
       additions   new timed items, each carrying why, wrong and answer for the key, an `id` that
-                  parts name it by, and an optional `exhibit`; listed in the key as waiting for the
-                  tracker
+                  parts name it by, an optional `exhibit` and an optional `label`; listed in the key
+                  as waiting for the tracker
+      purpose     the paragraph under "What this paper is for" on the Word paper's first page, written
+                  for the week: its case, its stakeholders and what the paper finds out
+      company     the Rules table's Company row: the week's Kalpa company and the people the items
+                  name, as the diagnostic's first page names them
       exhibits    per scenario set number, a mermaid fence, a small table or a code block printed
                   once under the set's situation, drawn only from the situation's own numbers
       notes       per bank item number: why the key holds, what each wrong option catches
-                  ({letter: reason}), and the interview answer in one breath
+                  ({letter: reason}), the interview answer in one breath, and the item's `label`,
+                  the two or three words printed beside its level on the Word paper, such as
+                  "Predict the output" or "Spot the double count"
       stretch     untimed, unmarked written items for fast finishers, each with its answer
   An exhibit is a mapping with a caption and one of mermaid, table ({head, rows}) or code
   ({lang, text}); exhibits are lettered by part in the order they print, as Exhibit 2A, 2B.
   Write the file in block style: a comma inside an inline {a: ..., b: ...} mapping splits a
   reason in two without any error.
 
---docx renders every exhibit through mermaid-cli and writes the paper and the key as Word files
-through scripts/saturday_docx.js, in the layout of the requester's baseline diagnostic. The markdown
-stays the file the gates read, so --docx follows every change to it.
+--docx renders every exhibit through mermaid-cli in the diagnostic's palette and writes the paper
+and the key as Word files through scripts/saturday_docx.js, in the layout of the requester's
+baseline diagnostic: a first page with the purpose, the rules, step one (each part rated 1 to 4
+before any item is read), the paper at a glance and a pacing ribbon; open question blocks that never
+split across pages, with every exhibit bound to the first item that reads it; and an answer sheet on
+one page at the end. The key ends on a marking grid, the answer sheet with the key's boxes marked.
+The markdown stays the file the gates read, so --docx follows every change to it.
 scripts/sync_programme.py re-renders every week whose paper already exists, so a changed item or a
 new edit reaches a built Saturday with one sync; a new Saturday starts with this script.
 """
@@ -207,6 +217,7 @@ def _addition(a, n):
             "min": float(a.get("min", 0)), "key": str(a["key"]),
             "text": str(a["text"]).strip(), "anchor": a.get("anchor", ""), "edit": None,
             "added": True, "id": str(a.get("id") or f"new{n}"), "exhibit": a.get("exhibit"),
+            "label": a.get("label"),
             "note": {"why": a.get("why", ""), "wrong": a.get("wrong", {}),
                      "answer": a.get("answer", "")}}
 
@@ -802,20 +813,59 @@ def render_all(tracker=TRACKER, only=None, date_of=saturday_date, existing_only=
 
 
 # --------------------------------------------------------------------------- the Word files
-RULES = [
-    ["Time", "{minutes} minutes in one sitting. Each section gives its minutes as a guide, not a limit."],
-    ["Tools", "Pen and this paper only: no laptop, no phone, no notes and no assistant."],
-    ["Answers", "Each section says how: a word or a number on the line, T or F, one circled letter, "
-                "every correct letter, the working and the answer, or the letters in order. "
-                "Copy every answer to the answer sheet at the back."],
-    ["Afterwards", "Papers are swapped and marked against the key, then the discussion takes the items "
-                   "the room missed most. The paper is ungraded and ranks nobody; the room's scores "
-                   "by topic set Monday's revision."],
-]
-PURPOSE = ("Saying the week out loud is the interview skill itself. This paper finds which of the "
-           "week's decisions you can make cold, with no notes and no assistant, so Monday's practice "
-           "starts where each of us needs it. Every item is a Kalpa business question first and a "
-           "technique question second, which is the order interviewers use.")
+# The room sits the Word paper, so it follows the requester's baseline diagnostic: its palette, its
+# fonts, its open question blocks and its answer sheet. scripts/saturday_docx.js draws it; this
+# builds the spec it draws from. The markdown paper stays the file the gates read.
+
+# The diagnostic's own palette for the exhibits drawn by mermaid-cli, so a picture on the paper sits
+# in the same ink, bronze and warm grey as the page around it.
+PAPER_MERMAID = """{
+  "theme": "base",
+  "htmlLabels": false,
+  "themeVariables": {
+    "background": "#FFFFFF",
+    "primaryColor": "#F3F1EA", "primaryTextColor": "#1C1B16", "primaryBorderColor": "#B37A33",
+    "secondaryColor": "#F9F8F3", "secondaryTextColor": "#1C1B16", "secondaryBorderColor": "#D5D0C4",
+    "tertiaryColor": "#FFFFFF", "tertiaryTextColor": "#1C1B16", "tertiaryBorderColor": "#D5D0C4",
+    "lineColor": "#6B675E", "textColor": "#1C1B16", "mainBkg": "#F3F1EA", "nodeBorder": "#B37A33",
+    "clusterBkg": "#F9F8F3", "clusterBorder": "#D5D0C4", "edgeLabelBackground": "#FFFFFF",
+    "fontFamily": "Liberation Sans, Arial, DejaVu Sans, sans-serif", "fontSize": "16px"
+  },
+  "flowchart": {"htmlLabels": false, "curve": "linear", "padding": 6,
+                "nodeSpacing": 24, "rankSpacing": 28, "useMaxWidth": true}
+}"""
+
+# How each answer kind is labelled beside an item's level when the source file gives no label of
+# its own, and how the answer sheet names it.
+KIND_LABEL = {"one": "Choose one", "multi": "Choose every correct option", "tf": "True or false",
+              "line": "Complete it", "working": "Work it out", "order": "Put the steps in order"}
+KIND_SHEET = {"line": "Word or number", "working": "Final answer", "order": "Letters in order"}
+SCALE = ("1 = I have not used this; 2 = I can follow it when someone shows me; 3 = I can do it alone "
+         "on a small problem; 4 = I can find and fix mistakes in someone else's version")
+PURPOSE = ("This paper finds which of the week's decisions you can make cold, with no notes and no "
+           "assistant, so Monday's practice starts where each of us needs it. Every item is a Kalpa "
+           "business question first and a technique question second, which is the order "
+           "interviewers use.")
+
+
+def paper_header():
+    """The running header of every page, as the requester's diagnostic prints it."""
+    try:
+        facts = yaml.safe_load(FACTS.read_text(encoding="utf-8")) or {}
+        return str((facts.get("saturday_papers") or {}).get("header") or "Cohort 2")
+    except (OSError, ValueError, TypeError, AttributeError):
+        return "Cohort 2"
+
+
+def upper_key(key):
+    """A letter key as the Word files print it: 'a, b, d' becomes 'A, B, D'. Words, numbers and
+    true or false stay as the bank writes them."""
+    k = str(key).strip()
+    return k.upper() if re.fullmatch(r"[a-fA-F](\s*,\s*[a-fA-F])*", k) else k
+
+
+def tf_key(key):
+    return "T" if str(key).strip().lower() in ("t", "true") else "F"
 
 
 def exhibit_png(ex):
@@ -829,7 +879,7 @@ def exhibit_png(ex):
     from PIL import Image
     sys.path.insert(0, str(HERE))
     from build_cheatsheet import PNG_SCALE, render_mermaid
-    png = render_mermaid(str(ex["mermaid"]), "png")
+    png = render_mermaid(str(ex["mermaid"]), "png", config=PAPER_MERMAID)
     if not png:
         raise SystemExit("mermaid-cli is not installed, so the Word paper would lose its exhibits. "
                          "Install it with npm install -g @mermaid-js/mermaid-cli and build again.")
@@ -837,39 +887,74 @@ def exhibit_png(ex):
         w, h = (d / PNG_SCALE for d in img.size)
     # The PNG holds PNG_SCALE pixels per CSS pixel for sharpness; the page prints it at its
     # natural size, capped at the column's width.
-    scale = min(1.0, 610 / w)
+    scale = min(1.0, 620 / w)
     return {"path": str(png), "w": round(w * scale), "h": round(h * scale)}
-
-
-RULES_PARTS = [
-    ["Time", "{minutes} minutes in one sitting. Each part gives its minutes as a guide, not a limit."],
-    ["Formats", "Every item names its format beside its number: circle one letter, circle every correct "
-                "letter, write T or F, write the word or number, show the working, or write the letters "
-                "in order."],
-    ["Levels", "Every item names its level, easy, medium or hard, so you can plan your time. A hard item "
-               "is several steps on an exhibit, never an obscure fact."],
-    ["Answers", "A wrong answer costs nothing, so answer every item, and copy each answer to the answer "
-                "sheet at the back."],
-    ["Tools", "Pen and this paper only: no laptop, no phone, no notes and no assistant."],
-    ["Afterwards", "Papers are swapped and marked against the key, then the discussion takes the items "
-                   "the room missed most. The paper is ungraded and ranks nobody; the room's scores "
-                   "by topic set Monday's revision."],
-]
 
 
 def exhibit_block(ex, label=None, kind="exhibit", **extra):
     code = ex.get("code") or {}
     return dict({"kind": kind, "label": label or "", "image": exhibit_png(ex), "table": ex.get("table"),
                  "code": str(code.get("text", "")).rstrip("\n").split("\n") if code else [],
-                 "caption": ex.get("caption", "")}, **extra)
+                 "caption": " ".join(str(ex.get("caption", "")).split())}, **extra)
 
 
-def docx_sections_parts(printed, source):
+def item_label(item):
+    """The short label beside an item's number: the source file's own, or its answer kind."""
+    own = (item.get("note") or {}).get("label") or item.get("label")
+    return " ".join(str(own).split()) if own else KIND_LABEL[answer_kind(item)]
+
+
+def item_block(item):
+    stem, options, _ = parts(item)
+    kind = answer_kind(item)
+    return {"kind": "item", "q": item["q"], "level": item["level"], "label": item_label(item),
+            "lines": stem, "options": [[a.upper(), b] for a, b in options], "answer": kind,
+            "room": 1800 if kind == "working" else 0}
+
+
+def sheet_rows(printed, with_key=False):
+    """The answer sheet's three kinds of row: lettered items, true or false, and written answers."""
+    letters, tf, written = [], [], []
+    for i in printed:
+        _, options, _ = parts(i)
+        kind = answer_kind(i)
+        if kind in ("one", "multi"):
+            row = {"q": i["q"], "count": len(options), "multi": kind == "multi"}
+            if with_key:
+                row["key"] = [x.strip().upper() for x in str(i["key"]).split(",")]
+            letters.append(row)
+        elif kind == "tf":
+            row = {"q": i["q"]}
+            if with_key:
+                row["key"] = tf_key(i["key"])
+            tf.append(row)
+        else:
+            row = {"q": i["q"], "kind": kind, "kindLabel": KIND_SHEET[kind], "steps": len(options)}
+            if with_key:
+                row["key"] = upper_key(i["key"]) if kind == "order" else str(i["key"])
+            written.append(row)
+    width = max([r["count"] for r in letters] + [4])
+    return {"letters": letters, "tf": tf, "written": written, "letterColumns": list("ABCDEF"[:width])}
+
+
+def pacing(rows):
+    out, start = [], 0.0
+    for p, title, shows, run, mins, e, m, h in rows:
+        out.append({"part": p, "title": title, "minutes": f"{mins:g}", "start": f"{start:g}"})
+        start += mins
+    for o in out:
+        o["minutes"] = float(o["minutes"])
+    return out
+
+
+def docx_sections(printed, source):
+    """The paper's parts as blocks: each part's exhibits, each set's case, each item."""
     exhibits = {str(k): v for k, v in (source.get("exhibits") or {}).items()}
     labels = exhibit_plan(printed, source)
     shown = set_display(printed)
     sections, glance = [], []
-    for p, title, shows, run, mins, e, m, h in part_rows(printed, source):
+    rows = part_rows(printed, source)
+    for p, title, shows, run, mins, e, m, h in rows:
         part = source["parts"][p - 1]
         blocks = [exhibit_block(ex, labels[("part", p, idx)])
                   for idx, ex in enumerate(part.get("exhibits") or [])]
@@ -879,120 +964,169 @@ def docx_sections_parts(printed, source):
                                             kind="set", n=shown[number], situation=situation))
             if item.get("exhibit"):
                 blocks.append(exhibit_block(item["exhibit"], labels[("item", item["q"])]))
-            stem, options, answer = parts(item)
-            blocks.append({"kind": "item", "q": item["q"],
-                           "type": f"{item['level']}  ·  {FORMAT[answer_kind(item)]}", "lines": stem,
-                           "options": [list(o) for o in options], "answer": answer})
-        intro = f"What it shows: {shows}. {count(len(run))}, {span(run)}, about {mins:g} minutes."
-        sections.append({"letter": f"Part {p}", "title": title, "intro": intro,
+            blocks.append(item_block(item))
+        sections.append({"heading": f"Part {p}. {title}",
+                         "intro": f"{count(len(run))}, {span(run)}, about {mins:g} minutes. "
+                                  f"What it shows: {shows}.",
                          "situation": " ".join(str(part.get("intro") or "").split()), "blocks": blocks})
-        glance.append([f"{p}. {title}", shows, f"{span(run)} ({len(run)})", f"{mins:g}",
-                       str(e), str(m), str(h)])
-    rows = part_rows(printed, source)
-    glance.append(["Total", "", str(len(printed)), f"{sum(r[4] for r in rows):g}",
-                   *[str(sum(r[i] for r in rows)) for i in (5, 6, 7)]])
+        glance.append([str(p), title, f"{span(run)} ({len(run)})", shows, f"{mins:g}", str(e), str(m), str(h)])
+    tot = [sum(r[i] for r in rows) for i in (5, 6, 7)]
+    glance.append(["", "Total", str(len(printed)), "", f"{sum(r[4] for r in rows):g}", *map(str, tot)])
+    return sections, glance, rows
+
+
+def docx_sections_by_type(printed, source):
+    """The older layout, for a week with no parts: one section per item type, in the bank's order."""
+    exhibits = {str(k): v for k, v in (source.get("exhibits") or {}).items()}
+    sections, glance, letters = [], [], "ABCDEFGHIJ"
+    for k, (kind, run) in enumerate(groups(printed)):
+        blocks = []
+        for item, number, situation in sets_in(run):
+            if number:
+                blocks.append(exhibit_block(exhibits.get(number, {}), f"Exhibit {letters[k]}",
+                                            kind="set", n=number, situation=situation))
+            blocks.append(item_block(item))
+        mins = sum(i["min"] for i in run)
+        lv = {v: sum(1 for i in run if i["level"] == v) for v in LEVELS}
+        sections.append({"heading": f"Section {letters[k]}. {kind}",
+                         "intro": f"{count(len(run))}, {span(run)}, about {mins:g} minutes. {HOW.get(kind, '')}",
+                         "situation": "", "blocks": blocks})
+        glance.append([letters[k], kind, f"{span(run)} ({len(run)})", HOW.get(kind, ""), f"{mins:g}",
+                       str(lv["Easy"]), str(lv["Medium"]), str(lv["Hard"])])
     return sections, glance
 
 
 def docx_spec(paper, data, date, printed, source, minutes, notes, moved=()):
-    week, n = week_of(paper), len(printed)
-    exhibits = {str(k): v for k, v in (source.get("exhibits") or {}).items()}
-    sections, glance, letters = [], [], "ABCDEFGHIJ"
+    week, n, wk = week_of(paper), len(printed), int(paper[1:])
     in_parts = bool(source.get("parts"))
-    for k, (kind, run) in enumerate([] if in_parts else groups(printed)):
-        blocks = []
-        for item, number, situation in sets_in(run):
-            if number:
-                ex = exhibits.get(number, {})
-                blocks.append({"kind": "set", "n": number, "situation": situation,
-                               "image": exhibit_png(ex), "table": ex.get("table"),
-                               "caption": ex.get("caption", "")})
-            stem, options, answer = parts(item)
-            blocks.append({"kind": "item", "q": item["q"], "type": item["type"], "lines": stem,
-                           "options": [list(o) for o in options], "answer": answer})
-        mins = sum(i["min"] for i in run)
-        sections.append({"letter": letters[k], "title": kind,
-                         "intro": f"{count(len(run))}, {span(run)}, about {mins:g} minutes. "
-                                  f"{HOW.get(kind, '')}", "blocks": blocks})
-        glance.append([f"{letters[k]}. {kind}", HOW.get(kind, ""), span(run), f"{mins:g}"])
     if in_parts:
-        sections, glance = docx_sections_parts(printed, source)
-    rows = []
-    for i in printed:
-        _, options, answer = parts(i)
-        if i["type"] == "True or false":
-            rows.append({"q": i["q"], "kind": "tf"})
-        elif options and i["type"] != "Order the steps":
-            rows.append({"q": i["q"], "kind": "choice", "count": len(options)})
-        else:
-            rows.append({"q": i["q"], "kind": "line"})
+        sections, glance, rows = docx_sections(printed, source)
+        pace = pacing(rows)
+        areas = "; ".join(f"Part {p}, {t}" for p, t, *_ in rows)
+        part_titles = [f"Part {p}. {t}" for p, t, *_ in rows]
+    else:
+        sections, glance = docx_sections_by_type(printed, source)
+        pace, areas = [], "The sections below"
+        part_titles = [s["heading"] for s in sections]
+    name = f"Week {wk} Recap Paper"
+    header = f"{paper_header()}  |  {name}"
+    when = when_of(date, "").strip()
+    subtitle = (f"Cohort 2 | Week {wk}" + (f" | {when}" if when else "") +
+                f" | {minutes} minutes | {count(n)}" + (f" in {len(sections)} parts" if in_parts else "") +
+                " | pen and paper | ungraded")
+    timed = sum(i["min"] for i in printed)
+    company = " ".join(str(source.get("company") or "").split())
+    rules = [
+        ["Time", f"{minutes} minutes in one sitting for {count(n)}, which the blueprint paces at "
+                 f"{timed:g} minutes. Each part gives its minutes as a guide; move on when an item is "
+                 f"eating your time, and come back to it at the end."],
+        ["Tools", "Pen and this paper only: no laptop, no phone, no notes and no assistant. Rough "
+                  "working goes in the margins and in the working boxes."],
+        ["Answers", "Every answer goes on the answer sheet at the back, which is the page that is "
+                    "marked: one box for a lettered item, every correct box for a starred one, T or F "
+                    "for a statement, and the word, the number or the letters in order in the space. "
+                    "A wrong answer costs nothing, so answer every item."],
+        ["Levels", "Every item shows its level beside its number, easy, medium or hard. A hard item is "
+                   "several steps on an exhibit, never an obscure fact."],
+        ["Exhibits", "An exhibit is printed once, labelled by its part as Exhibit 2A, 2B, and every item "
+                     "that reads it follows it. Read code and queries as written: Python 3 and "
+                     "PostgreSQL unless the item says otherwise."],
+        ["Afterwards", "Papers are swapped and marked against the key, then the discussion takes the "
+                       "items the room missed most. The paper is ungraded and ranks nobody; the room's "
+                       "rates by part and by tag set Monday's revision."],
+    ]
+    if company:
+        rules.insert(5, ["Company", company])
     stretch = source.get("stretch") or []
-    title = f"Week {int(paper[1:])} recap paper"
-    meta = (f"Cohort 2  ·  {when_of(date, '  ·  ')}{minutes} minutes  ·  {n} items  ·  "
-            "pen and paper  ·  ungraded")
-    rules = RULES_PARTS if in_parts else RULES
-    stretch_blocks = [{"lines": [ln.strip() for ln in str(s["text"]).strip().split(chr(10)) if ln.strip()]}
-                      for s in stretch]
-    for item in moved:
+    stretch_items = [{"n": k, "lines": [ln.strip() for ln in str(s["text"]).strip().split("\n") if ln.strip()],
+                      "options": [], "short": False} for k, s in enumerate(stretch, 1)]
+    for k, item in enumerate(moved, len(stretch) + 1):
         stem, options, _ = parts(item)
-        stretch_blocks.append({"lines": stem + [f"({a})  {b}" for a, b in options], "short": True})
-    paper_spec = {"title": title, "meta": meta, "header": f"Cohort 2  ·  {title}", "purpose": PURPOSE,
-                  "rules": [[r, d.format(minutes=minutes)] for r, d in rules], "glance": glance,
-                  "glanceHead": (["Part", "What it shows", "Items", "Minutes", "Easy", "Medium", "Hard"]
-                                 if in_parts else ["Section", "What it asks of you", "Items", "Minutes"]),
-                  "sections": sections, "stretchTitle": STRETCH_TITLE,
-                  "stretchIntro": stretch_intro(len(stretch), len(moved)),
-                  "stretch": stretch_blocks,
-                  "sheet": {"n": n, "rows": rows,
-                            "note": "Fill in pen. Circle one letter per row, or every correct letter "
-                                    "where the item asks for more than one; write the others on the line."}}
+        stretch_items.append({"n": k, "lines": stem, "options": [[a.upper(), b] for a, b in options], "short": True})
+    sheet = dict(sheet_rows(printed), title="Answer sheet", n=n, parts=part_titles, scale=SCALE,
+                 note=(f"{name} | Cohort 2 | Week {wk}. Fill in pen. Mark one box per row, or every "
+                       "correct box for a starred item; if you change your mind, cross the old box fully "
+                       "and mark the new one. Write words and numbers clearly, one per space."))
+    paper_spec = {
+        "title": name, "subtitle": subtitle, "header": header,
+        "purpose": " ".join(str(source.get("purpose") or PURPOSE).split()),
+        "rules": rules,
+        "stepOne": {"intro": ("On the answer sheet, rate yourself from 1 to 4 on each part before you read "
+                              "any item. Rate yourself as you are today: the comparison between your rating "
+                              "and your score in each part is the most useful thing this paper produces "
+                              "for Monday."),
+                    "areas": areas, "scale": SCALE},
+        "glance": {"head": ["Part" if in_parts else "Section", "Title", "Items", "What it shows",
+                            "Minutes", "Easy", "Medium", "Hard"], "rows": glance},
+        "pacingNote": (f"Each band is as wide as its part's minutes; the timed items fill {timed:g} of "
+                       f"the {minutes} minutes, and the minute each part starts is under it."),
+        "pacing": pace, "minutes": minutes, "sections": sections,
+        "stretch": {"title": STRETCH_TITLE, "intro": stretch_intro(len(stretch), len(moved)),
+                    "items": stretch_items},
+        "sheet": sheet,
+    }
     reasons = []
     for i in printed:
         note = i["note"]
         if note.get("why") or note.get("wrong") or note.get("answer"):
-            reasons.append({"q": i["q"], "key": i["key"],
+            reasons.append({"q": i["q"], "key": upper_key(i["key"]),
                             "meta": f"{i['type']}, {i['level']}, {i['tag']}, {i['day']}",
                             "why": note.get("why", ""),
-                            "wrong": sorted([k, v] for k, v in (note.get("wrong") or {}).items()),
+                            "wrong": sorted([str(k).upper(), v] for k, v in (note.get("wrong") or {}).items()),
                             "answer": note.get("answer", ""), "anchor": i["anchor"]})
     tally = []
     for tag in TAGS:
         hit = [f"Q{i['q']}" for i in printed if i["tag"] == tag]
         tally.append(f"{tag} ({len(hit)}): {', '.join(hit) if hit else 'none'}")
-    for lv in ("Easy", "Medium", "Hard"):
+    for lv in LEVELS:
         hit = [f"Q{i['q']}" for i in printed if i["level"] == lv]
         tally.append(f"{lv} ({len(hit)}): {', '.join(hit)}")
+    if in_parts:
+        for p, title, *_ in rows:
+            hit = [f"Q{i['q']}" for i in printed if i["part"] == p]
+            tally.append(f"Part {p}, {title} ({len(hit)}): {', '.join(hit)}")
     added = [i for i in printed if i["added"]]
-    key_spec = {"title": f"{title}: key", "header": f"Cohort 2  ·  {title}  ·  key  ·  TRAINER",
-                "meta": f"TRAINER.  {when_of(date, '  ·  ')}{minutes} minutes  ·  {n} items",
-                "marking": [
-                    "Papers are swapped, so nobody checks their own.",
-                    f"The Academic TA reads the key out {'part by part' if in_parts else 'section by section'}, "
-                    "and the marker ticks or crosses each item on the answer sheet.",
-                    "An item is right when its answer matches the key: every correct letter and no "
-                    "other on a more-than-one item, the number on an applied maths item, and the whole "
-                    "sequence on an ordering item. No partial credit.",
-                    f"The marker writes the count of ticks as Items right, out of {n}, and hands the "
-                    "paper back.",
-                    "The TA tallies the misses by tag for Monday's remediation read, never a ranking "
-                    "and never read out by name."],
-                "rows": [[str(i["q"]), i["key"], i["type"], str(i.get("part") or ""), i["level"], i["tag"],
-                          i["day"], "new" if i["added"] else f"bank {i['no']}"] for i in printed],
-                "blueprint": (glance if in_parts else []),
-                "guessing": floor_sentence(printed) if in_parts else "",
-                "workbook": (f"Enter every paper in C2_{week}_SAT_item_analysis_TRAINER.xlsx, by seat and "
-                             "never by name: 1 for a tick, 0 for a cross and a blank for an item left "
-                             "empty. It orders the discussion from the most-missed item, flags any item "
-                             "to check (fewer than one in five right, or the bottom third beating the top "
-                             "third, this programme's own working rule), and gives each tag's rate for the "
-                             "room and for each seat.") if in_parts else "",
-                "reasons": reasons, "tally": tally,
-                "additions": [f"Q{i['q']} ({i['type']}, {i['level']}, {i['tag']}): "
-                              f"{next(iter(parts(i)[0]), '')}" for i in added],
-                "additionsNote": "These items come from the week's source file, not the tracker. "
-                                 "Accept one by adding it to the tracker's Saturday papers tab.",
-                "stretch": [str(s.get("answer", "")) for s in stretch]
-                           + [f"{i['key']} (bank {i['no']}, moved from the timed paper)" for i in moved]}
+    marking = [
+        "Papers are swapped, so nobody checks their own.",
+        f"The Academic TA reads the key out {'part by part' if in_parts else 'section by section'}, and the "
+        "marker ticks or crosses each row of the answer sheet against the marking grid at the back of this key.",
+        "An item is right when its answer matches the key: every correct box and no other on a starred "
+        "item, the number on a work-it-out item (the working belongs to the discussion), and the whole "
+        "sequence on an order item. The programme has set no partial-credit rule, so this key uses none.",
+        f"The marker writes the count of ticks as Items right, out of {n}, and hands the paper back.",
+        "The TA collects the answer sheets and tallies the misses by part and by tag, never a ranking and "
+        "never read out by name.",
+    ]
+    if in_parts:
+        marking.append(f"The TA enters every sheet in C2_{week}_SAT_item_analysis_TRAINER.xlsx by seat, never "
+                       "by name: 1 for a tick, 0 for a cross, a blank for an item left empty, and each part's "
+                       "rating from step one. It orders the discussion from the most-missed item, flags any "
+                       "item to check, and sets each part's ratings beside its right rate.")
+    key_spec = {
+        "title": f"{name}: key", "header": f"{header}  |  Key  |  TRAINER",
+        "meta": f"TRAINER | Cohort 2 | Week {wk}" + (f" | {when}" if when else "") + f" | {minutes} minutes | {count(n)}",
+        "marking": marking,
+        "blueprint": {"head": paper_spec["glance"]["head"], "rows": glance} if in_parts else None,
+        "guessing": floor_sentence(printed) if in_parts else "",
+        "itemReading": ("The workbook flags an item to check when fewer than one learner in five got it right, "
+                        "or when the bottom third of the room got it right more often than the top third. "
+                        f"Both are this programme's own working rule for a room of {seats()}. A flagged item "
+                        "is discussed as usual; the TA also sends it, with the room's rate, to the tracker's "
+                        "owner, because the fault may sit in the item rather than in the learners.") if in_parts else "",
+        "rows": [[str(i["q"]), upper_key(i["key"]), i["type"], str(i.get("part") or ""), i["level"], i["tag"],
+                  i["day"], "new" if i["added"] else f"bank {i['no']}"] for i in printed],
+        "reasons": reasons, "tally": tally,
+        "additions": [f"Q{i['q']} ({i['type']}, {i['level']}, {i['tag']}): {next(iter(parts(i)[0]), '')}"
+                      for i in added],
+        "additionsNote": "These items come from the week's source file, not the tracker. Accept one by "
+                         "adding it to the tracker's Saturday papers tab.",
+        "stretch": [str(s.get("answer", "")) for s in stretch]
+                   + [f"{upper_key(i['key'])} (bank {i['no']}, moved from the timed paper)" for i in moved],
+        "grid": dict(sheet_rows(printed, with_key=True), n=n,
+                     note=("The answer sheet with every box of the key marked, for the marker to lay "
+                           "beside each sheet. A starred item is right only when every marked box, and "
+                           "no other, is ticked.")),
+    }
     return {"paper": paper_spec, "key": key_spec}
 
 
@@ -1000,6 +1134,9 @@ def docx_spec(paper, data, date, printed, source, minutes, notes, moved=()):
 # Six seats marked on the first five items: seat 1 is the top of the room and seat 6 the bottom, Q2
 # is right once in six, and on Q3 the bottom third beats the top third. The manifest flips these in
 # and asserts both flags, the bands and the discussion order, which starts at Q2.
+# The same six seats rate Part 1 before the paper: seat 4 (3, and 2 of 5 right) and seat 6 (4, and
+# none right) rated it 3 or 4 and got under half of it right.
+DEMO_RATINGS = [3, 4, 2, 3, 1, 4]
 DEMO_MARKS = [[1, 1, 0, 1, 1], [1, 0, 0, 1, 1], [1, 0, 0, 1, 0],
               [1, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0]]
 
@@ -1167,15 +1304,69 @@ def write_item_analysis(week, printed, source):
             seat_sheet.cell(r, c).value = f'=IF({den}=0,"",SUMPRODUCT(({tagrow}={h})*({row_rng}=1))/{den})'
             seat_sheet.cell(r, c).number_format = "0%"
 
+    # Ratings: each seat's step-one rating of each part, 1 to 4, beside that seat's rate in the part,
+    # and for the room each part's mean rating, its right rate, and how many seats rated a part 3 or
+    # 4 and got under half of it right, which is where confidence ran ahead of the work.
+    rows_p = part_rows(printed, source)
+    rate = wb.create_sheet("Ratings")
+    rate["A1"] = "Step one: each part's rating beside its score"
+    rate["A1"].font = bold
+    rate["A2"] = "Type each seat's ratings, 1 to 4, from the answer sheet; the rates on the right are computed."
+    k_parts = len(rows_p)
+    rate.cell(4, 1, "Seat")
+    for j, (pn, ptitle, *_) in enumerate(rows_p):
+        rate.cell(3, 2 + j, pn)
+        rate.cell(4, 2 + j, f"Rating, part {pn}")
+        rate.cell(3, 3 + k_parts + j, pn)
+        rate.cell(4, 3 + k_parts + j, f"Right rate, part {pn}")
+    for c in range(1, 3 + 2 * k_parts):
+        if rate.cell(4, c).value:
+            rate.cell(4, c).font, rate.cell(4, c).fill = white, head_fill
+    partrow = f"Marks!$B$2:${last}$2"
+    for k in range(S):
+        r = first + k
+        rate[f"A{r}"] = k + 1
+        row_rng = f"Marks!$B${r}:${last}${r}"
+        for j in range(k_parts):
+            rate.cell(r, 2 + j).fill = input_fill
+            pc = f"{col(3 + k_parts + j)}$3"
+            den = f"SUMPRODUCT(({partrow}={pc})*ISNUMBER({row_rng}))"
+            cell_ = rate.cell(r, 3 + k_parts + j)
+            cell_.value = f'=IF({den}=0,"",SUMPRODUCT(({partrow}={pc})*({row_rng}=1))/{den})'
+            cell_.number_format = "0%"
+    sr = last_row + 2
+    rate[f"A{sr}"] = "The room"
+    rate[f"A{sr}"].font = bold
+    for c, h in enumerate(["Part", "Mean rating", "Right rate", "Rated 3 or 4, under half right"], 1):
+        cell_ = rate.cell(sr + 1, c, h)
+        cell_.font, cell_.fill = white, head_fill
+    for j, (pn, ptitle, *_) in enumerate(rows_p):
+        r = sr + 2 + j
+        rc, sc = col(2 + j), col(3 + k_parts + j)
+        rate[f"A{r}"] = f"Part {pn}. {ptitle}"
+        rate[f"B{r}"] = f'=IF(COUNT({rc}{first}:{rc}{last_row})=0,"",AVERAGE({rc}{first}:{rc}{last_row}))'
+        rate[f"B{r}"].number_format = "0.0"
+        tag_rows = f"Tags!$A$5:$A${4 + len(present) + len(rows_p)}"
+        tag_rates = f"Tags!$D$5:$D${4 + len(present) + len(rows_p)}"
+        rate[f"C{r}"] = f'=IFERROR(INDEX({tag_rates},MATCH({pn},{tag_rows},0)),"")'
+        rate[f"C{r}"].number_format = "0%"
+        rate[f"D{r}"] = (f"=SUMPRODUCT(({rc}{first}:{rc}{last_row}>=3)*ISNUMBER({sc}{first}:{sc}{last_row})"
+                         f"*({sc}{first}:{sc}{last_row}<0.5))")
+    rate.column_dimensions["A"].width = 44
+    rate.freeze_panes = "B5"
+    rating_verdict = f"D{sr + 2}"
+
     base = ROOT / "content" / week / "SAT" / "answer-key"
     base.mkdir(parents=True, exist_ok=True)
     xlsx = base / f"C2_{week}_SAT_item_analysis_TRAINER.xlsx"
     wb.save(xlsx)
     sets = [{"sheet": "Marks", "cell": f"{col(2 + j)}{first + k}", "value": v}
             for k, row in enumerate(DEMO_MARKS) for j, v in enumerate(row)]
+    sets += [{"sheet": "Ratings", "cell": f"B{first + k}", "value": v} for k, v in enumerate(DEMO_RATINGS)]
     manifest = {
         "workbook": xlsx.name,
-        "verdicts": [{"sheet": "Discussion", "cell": "B2", "expect": "No marks entered yet."}],
+        "verdicts": [{"sheet": "Discussion", "cell": "B2", "expect": "No marks entered yet."},
+                     {"sheet": "Ratings", "cell": rating_verdict, "expect": "0"}],
         "flips": [{"name": "six seats marked on the first five items",
                    "set": sets,
                    "verdicts": [
@@ -1185,7 +1376,8 @@ def write_item_analysis(week, printed, source):
                        {"sheet": "Items", "cell": "M7", "contains": "bottom third beat the top third"},
                        {"sheet": "Marks", "cell": f"{BAND}{first}", "expect": "top"},
                        {"sheet": "Marks", "cell": f"{BAND}{first + 5}", "expect": "bottom"},
-                       {"sheet": "Marks", "cell": f"{BAND}{first + 2}", "expect": "middle"}]}],
+                       {"sheet": "Marks", "cell": f"{BAND}{first + 2}", "expect": "middle"},
+                       {"sheet": "Ratings", "cell": rating_verdict, "expect": "2"}]}],
     }
     body = yaml.safe_dump(manifest, sort_keys=False, width=110, allow_unicode=True)
     (base / f"C2_{week}_SAT_item_analysis_recalc_INTERNAL.md").write_text(
@@ -1194,7 +1386,9 @@ def write_item_analysis(week, printed, source):
         "`scripts/xlsx_recalc.py`. As shipped, no marks are entered. The flip marks six seats on the "
         "first five items so that seat 1 tops the room and seat 6 sits at the bottom, Q2 is right once "
         "in six, and on Q3 the bottom third beats the top third; both flags, the bands and the "
-        "discussion order must follow.\n\n```yaml\n" + body + "```\n", encoding="utf-8")
+        "discussion order must follow. The same six seats rate Part 1 as 3, 4, 2, 3, 1 and 4, so two of "
+        "them (seats 4 and 6) rated it 3 or 4 and got under half of it right.\n\n```yaml\n" + body + "```\n",
+        encoding="utf-8")
     print(f"wrote {xlsx.relative_to(ROOT)}")
 
 
