@@ -56,13 +56,13 @@ This is the whole workflow in one paste. Everything the build session needs, and
 guess:
 
 ```
-Build the day pack for W03/D2.
+Build the day pack for W03/D3.
 
 ENVELOPE
   Audience: the cohort, in week three, after two weeks of Python and SQL.
   Slot: a teaching day of two blocks.
   Effort it can absorb: <what the learner can carry>
-  Before: D1 left them with <x>. After: D3 needs <y>.
+  Before: D1 left them with <x>. After: D4 needs <y>.
 
 SOURCES, locked. Use these rather than searching.
   <link>   written reference, checked 10 Sep 2026
@@ -77,8 +77,8 @@ SPINE, approved.
   Close: <the sentence the learner would send a stakeholder>
 
 Build in passes. Stop after each family and tell me what you built.
-Run python3 scripts/verify.py content/W03/D2 before you commit.
-Commit to branch w03-d2. Do not open the pull request.
+Run python3 scripts/verify.py content/W03/D3 before you commit.
+Commit to branch w03-d3. Do not open the pull request.
 ```
 
 **The last two lines matter more than they look.** "Stop after each family" makes the session
