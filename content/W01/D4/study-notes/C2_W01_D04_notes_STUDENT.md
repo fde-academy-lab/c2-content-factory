@@ -11,6 +11,7 @@ Meera Raghavan, CEO of Kalpa Retail, sent three questions before Monday's growth
 > honest answer is 'we do not know yet', say so and tell me what would tell us."
 
 The page is yours, and on Monday Marketing will defend its campaign against your reading of it.
+Kavya Nair, the team's senior analyst, reviews each chapter's answer before it goes to Meera.
 
 ---
 
@@ -137,8 +138,9 @@ fall, so no direction was fixed before the test, and both go in the note.
 
 Nothing. The plausible wrong sentence, "p = 0.03, so there is a 3% chance we are wrong about the
 drop", has Meera treat the fall as 97 percent certain, when every flip assumed nothing had changed.
-The check: of twenty invented segments where nothing changed, one came back at 0.003. The fix keeps
-the numbers and shrinks the claim: "If nothing had changed, a fall of Rs 1,110 per member or more
+The check: of twenty invented segments where nothing changed, one still came back at 0.003, so a
+small share turns up even where there is nothing to find. The fix keeps the numbers and shrinks the
+claim: "If nothing had changed, a fall of Rs 1,110 per member or more
 would turn up in about 3 of every 100 flips, and a move that large either way in about 6; the
 question came after the fall was seen, so we read it as borderline."
 
@@ -447,9 +449,10 @@ it has 9 of 9 cells missing.
 
 ### How does the Retail-Plus line survive an audit?
 
-With all four parts: a borderline fall, small against the company; Rs 24,420 a quarter, 0.19
-percent of the company, about 3 and 6 in 100 flips; the question asked after the fall was seen, the
-part a hurried analyst drops; and a half-tier test at Rs 5,500 if anyone acts.
+With all four parts: the claim of a borderline fall, small against the company; evidence of Rs
+24,420 a quarter, 0.19 percent of the company, about 3 and 6 in 100 flips; the caveat that the
+question came after the fall was seen, the part a hurried analyst drops; and the action, a half-tier
+test at Rs 5,500 if anyone acts.
 
 ### When is "not yet" an answer Meera can use?
 

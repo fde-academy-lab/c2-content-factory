@@ -1,24 +1,25 @@
 # Week 1 Thursday: Which of Meera's three numbers is real?
 
-Kalpa Retail's CEO asks before Monday's review: is the Retail-Plus fall real, is Student's 40 percent
-rise worth budget, and did the monsoon sale work?
+Kalpa Retail's CEO asks before Monday's growth review: is the Retail-Plus fall real, is Student's 40
+percent worth budget, and did the monsoon sale work?
 
 ## Panel 1: Which check does each of Meera's three questions need?
 
 ```mermaid
+%%{init: {"flowchart": {"wrappingWidth": 400}}}%%
 flowchart LR
-    Q1["<b>Is the drop real?</b><br/>a gap"] --> H1["<b>chance</b><br/>could flips or a shuffle make it?"]
-    Q2["<b>Move budget to Student?</b><br/>a rate"] --> H2["<b>the count</b><br/>how many customers behind it?"]
-    Q3["<b>Did the discount work?</b><br/>a rise after a campaign"] --> H3["<b>a fair comparison</b><br/>who got it, against whom?"]
-    H1 --> N["<b>one note</b><br/>claim, evidence,<br/>caveat, action"]
+    Q1["Is the drop real? a gap"] --> H1["chance: could flips or a shuffle make it?"]
+    Q2["Move budget to Student? a rate"] --> H2["the count: how many customers behind it?"]
+    Q3["Did the discount work? a rise"] --> H3["a fair comparison: who got it, against whom?"]
+    H1 --> N["one note: claim, evidence, caveat, action"]
     H2 --> N
     H3 --> N
 ```
 
-Meera Raghavan's three numbers are a fall per member in Retail-Plus, Kalpa's paid membership tier;
-Student's 40 percent rise in orders; and Marketing's 6 percent lift from the monsoon sale. A gap gets
-a chance reference that fits how the data was collected, a rate gets the count behind it, and a
-campaign gets a fair comparison. Every check ends as one line of her one-page note, which may say
+Meera Raghavan's three numbers are a fall per member in Retail-Plus, Kalpa's paid membership tier,
+a 40 percent rise in Student orders, and a 6 percent lift Marketing credits to the monsoon sale. A
+gap gets a chance reference that fits how the data was collected, a rate gets the count behind it,
+and a campaign gets a fair comparison. Every check ends as one line of the same note, which may say
 "not yet".
 
 **Crux:** A p-value is a share of chance-only worlds; it is never the chance the finding is wrong.

@@ -1,14 +1,14 @@
-# Recalculation manifest: Thursday's decision tool
+# Does Thursday's decision tool compute, and does each verdict move when its defect is fixed?
 
-INTERNAL. This drives `scripts/xlsx_recalc.py`, which forces LibreOffice to recompute the workbook
-and then applies each fix to prove the verdicts move.
+INTERNAL. `scripts/xlsx_recalc.py` reads this file, makes LibreOffice recompute the workbook, and
+then applies each fix to prove the verdicts move.
 
 The workbook ships with one planted formula defect per tab, so as shipped every verdict asks for
 its fix and the Export release reads "not ready". Each tab has the fix a learner makes and at least
-one more flip with inputs changed so the verdict moves to another branch: the Share tab shows its
-three readings (rare, borderline, the usual wobble), one under each direction choice, and the Count tab
-shows many orders from few customers staying a lead. The last flip applies all four fixes, which is
-the only state that releases the note.
+one more flip, with inputs changed, that moves the verdict to another branch. The Share tab shows its
+three readings (rare, borderline, the usual wobble), one under each direction choice, and the Count
+tab shows many orders from few customers staying a lead. The last flip applies all four fixes, the
+only state that releases the note.
 
 ```yaml
 workbook: C2_W01_D04_decision_tool_STUDENT.xlsx
