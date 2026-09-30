@@ -1,53 +1,61 @@
-# Pre-read for Tuesday: booked against collected
+# What will Anand ask on Tuesday, and what should you settle tonight?
 
-About twenty minutes tonight, after the take-home. Tuesday opens on this message.
+This pre-read takes about fifteen minutes tonight, with one check to run in your Codespace, and it
+asks you to learn no new tool before class.
+
+---
+
+## What does Anand ask on Tuesday?
+
+Anand Iyer, Kalpa Retail's finance controller, read today's Monday numbers and replied with a harder
+question:
 
 > "Booked revenue is not collected revenue. Some orders are paid in two instalments, some are
 > refunded, some were never paid at all. Show me, order by order, what we actually collected against
 > what we booked in Q2. If there is a gap, I want to know which orders and which channel."
+>
 > Anand Iyer, finance controller, Kalpa Retail
 
-Today every number came from one table, `orders`, plus one lookup to `customers` that could not
-change the row count, because each order has exactly one customer. Tomorrow's number needs a second
-table whose rows do not line up one to one with the orders, and that changes what a count and a sum
-mean.
+Today every number on his sheet was booked revenue; on Tuesday the money that arrived goes beside it.
+Q2 is July to September 2026, and Anand wants the answer for each order and for each channel, app, web
+and store.
 
 ---
 
-## The words you will meet, and the gap each one fills
+## Which words in Anand's message need a plain meaning before class?
 
-| Word | What it means | The question it answers tomorrow |
-|---|---|---|
-| Join | Lining up rows of two tables on a shared key, such as order_id | Which payments belong to which order? |
-| Key | The column two tables share, such as order_id in orders and in payments | What does the database match on? |
-| One-to-many | One row on one side can match several rows on the other | Can one order carry more than one payment? |
-| INNER JOIN | Keeps only the rows that found a match on both sides | What happens to an order nobody paid? |
-| LEFT JOIN | Keeps every row of the left table, matched or not, with NULLs where nothing matched | When a report must show every order, which table goes on the left? |
-| Anti-join | A LEFT JOIN kept only where the right side is NULL | Which orders have no payment at all? |
-| Row-count check | Rows before the join, rows after, and the difference explained | How do we know the join added or lost nothing? |
+Read each plain meaning, then write your own example in the last column tonight, one line each.
+Booked revenue and a key come straight from today; collected revenue and a payment row you will use
+from the first minutes of Tuesday.
+
+| Word | What it means, in plain words | Where you meet it | Your own example |
+|---|---|---|---|
+| Booked revenue | Every order at its amount, whatever happened to it afterwards | Today, every chapter | |
+| Collected revenue | The money that arrived for those orders | Tuesday's question | |
+| A payment row | One record of money received against an order: which order, how much and when | Tuesday | |
+| A key | The column whose value names one record, such as `order_id` for an order or `customer_id` for a customer | Today's lookup, and Tuesday | |
 
 ---
 
-## One thing to think about
+## What is one thing worth thinking about before class?
 
-Today's lookup to `customers` kept 1,000 rows as 1,000 rows. Write down, before class, what you
-expect the row count to be when 1,000 orders are joined to a payments table, and what would have to
-be true of the payments for the count to stay at exactly 1,000.
+Anand asked for the answer order by order, when one total for the quarter would be shorter to read.
+Write down, in two lines, what a single Q2 figure for collected revenue could not tell him, and who in
+Finance would need the difference. Bring your two lines to class; the room compares them before any
+query runs.
 
-## The check for tonight
+---
 
-Run this in VS Code against the warehouse and write the number down without looking anything up:
+## Does your Codespace still give today's Q2 booked revenue?
 
-```sql
-SELECT count(*) FROM payments;
-```
+Open `sql/C2_W02_D01_01_book_STUDENT.sql` in VS Code, select the block named `c1_book` and run it
+against the `kalpa` database. It should return two rows, and the Q2 row should read 462 orders and
+Rs 9,84,00,000, the booked side of Tuesday's comparison. If it does not run, or the numbers differ,
+tell the support TA before class, since Tuesday starts from that number.
 
-Tuesday's first question is what that number means next to 1,000 orders.
+---
 
-## The line worth carrying in
+## Which line do you carry into Tuesday?
 
-A join is done when its row count is explained, never when it runs.
-
-## Reading, ten minutes
-
-SQLBolt, Lesson 6, multi-table queries with joins, https://sqlbolt.com/lesson/select_queries_with_joins (verified 29 Sep 2026)
+Know the booked number before you meet the collected one: Rs 9,84,00,000 on 462 orders in Q2, the
+side of Anand's comparison that today already settled.
