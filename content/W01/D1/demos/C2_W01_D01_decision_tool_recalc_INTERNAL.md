@@ -18,7 +18,7 @@ verdicts:
   - {sheet: Lifts, cell: B18, expect: "Fix the new revenue before you quote any growth."}
   - {sheet: Channel, cell: B18, expect: "Fix the delivered column before you rank any channel."}
   - {sheet: Sales, cell: B15, contains: "still carries the cancelled orders"}
-  - {sheet: Lifts, cell: B16, contains: "disagree by Rs 5,448"}
+  - {sheet: Lifts, cell: B16, contains: "disagree by Rs 648"}
   - {sheet: Fraction, cell: B15, expect: "Fix the AOV before it values any order."}
   - {sheet: Fraction, cell: B13, contains: "Rs 5,44,803, which lands on no revenue"}
   - {sheet: Edge, cell: B15, expect: "Fix the lost count before the sentence calls anyone lost."}
@@ -44,7 +44,7 @@ flips:
   - name: the edge holds back the recent buyers
     set: [{sheet: Edge, cell: B11, value: "=B7-B9"}]
     verdicts:
-      - {sheet: Edge, cell: B15, expect: "7 came back, 7 had time and did not, and 9 bought too recently to judge, so at most 30 percent of customers look lost."}
+      - {sheet: Edge, cell: B15, expect: "7 came back, 7 are past the usual gap, and 9 bought too recently to judge, so at most 30 percent of customers look lost."}
   - name: customers counted by id
     set: [{sheet: Customers, cell: B11, value: "=SUM(B5:B8)"}]
     verdicts:
@@ -64,7 +64,7 @@ flips:
   - name: new revenue multiplies the branches
     set: [{sheet: Lifts, cell: B13, value: "=ROUND(B4*C6*C7*C8,0)"}]
     verdicts:
-      - {sheet: Lifts, cell: B18, expect: "Through the tree, revenue moves from Rs 5,44,810 to Rs 6,59,220, up 21.0 percent, which reaches the 15 percent plan; adding the lifts would have said Rs 6,53,772."}
+      - {sheet: Lifts, cell: B18, expect: "Through the tree, revenue moves from Rs 64,810 to Rs 78,420, up 21.0 percent, which reaches the 15 percent plan; adding the lifts would have said Rs 77,772."}
   - name: the fixed tree, running the 15 percent discount
     set: [{sheet: Lifts, cell: B13, value: "=ROUND(B4*C6*C7*C8,0)"}, {sheet: Lifts, cell: B6, value: 0}, {sheet: Lifts, cell: B8, value: -15}]
     verdicts:

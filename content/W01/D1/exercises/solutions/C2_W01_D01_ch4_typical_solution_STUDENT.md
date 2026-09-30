@@ -15,15 +15,15 @@ payback should use, and size how far each middle moves when one large order arri
 |---|---|---|---|
 | 1 | a | When 29 of 30 sit below the mean, something at the top is pulling it; one order is enough. | b is the reverse of the picture. c: the arithmetic is right; the choice of middle is the problem. d: an even spread would put about half on each side. |
 | 2 | d | An even count has two middles, and the median is halfway: (2,110 + 2,300) / 2 = Rs 2,205. | a and b take one of the two middles. c is the mean. |
-| 3 | c | A payback is a total over a customer's life, so it needs a mean, and the mean must come from the customers the spend targets, with bulk orders set aside: the consumer mean, about Rs 2,235 an order, on contribution. | a lets one bulk order set the value of every new customer. b describes the typical order well and cannot add up to a total over a year. d plans on the exception. |
-| 4 | b | The median moved least and needs no rule; a trimmed mean that drops one order each end only works while there is exactly one bulk order, so it matches the median once its rule drops every bulk order. | a reports the exception as the typical order. c throws away a real order by rule, and the bulk order is real revenue. d ignores the Rs 14,623 move the one large order caused. |
-| 5 | b | The median holds across definitions within Rs 145, so either is honest once named. | a and c are means that one order drags, and they swing by Rs 6,640 between definitions. d averages two dragged numbers. |
+| 3 | c | A payback is a total over a customer's life, so it needs a mean, and the mean must come from the customers the spend targets, with one-off large orders set aside: the everyday orders' mean, about Rs 2,235 of revenue an order, taken down to contribution. | a lets one one-off large order set the value of every new customer. b describes the typical order well and cannot add up to a total over a year. d plans on the exception. |
+| 4 | b | The median moved least and needs no rule; a trimmed mean that drops one order each end only works while there is exactly one one-off large order, so it matches the median once its rule drops every one-off large order. | a reports the exception as the typical order. c throws away a real order by rule, and the one-off large order is real revenue. d ignores the Rs 14,623 move the one large order caused. |
+| 5 | b | The median holds across definitions within Rs 105, so either is honest once named. | a and c are means that one order drags, and they swing by Rs 2,446 between definitions. d averages two dragged numbers. |
 
 ## The part worth arguing about
 
 Item 3. Many will pick b, since the chapter built the median. The median is the typical order;
 a payback adds a customer's orders over time, which only a mean can do, and the mean has to be the
-segment's, with the bulk order set aside.
+segment's, with the one-off large order set aside.
 
 **Kavya's review.** "Put the median in the sentence, say the mean is eight times higher, and say one
 order does it."

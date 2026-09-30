@@ -44,10 +44,10 @@ d) The deeper tree, splitting AOV into items, price and discounts
 
 ### Q4. Delivered revenue is Rs 5,20,790 on 21 delivered orders. What is the delivered AOV?
 
-a) Rs 24,800, delivered revenue over delivered orders
-b) Rs 25,943, booked revenue over delivered orders
-c) Rs 18,160, the booked AOV carried across
-d) Rs 22,643, delivered revenue over the 23 customers
+a) Rs 24,800
+b) Rs 25,943
+c) Rs 18,160
+d) Rs 22,643
 
 ### Q5. Design. Finance's revenue and the operations dashboard's order count are about to feed one fraction. Which step, taken before dividing, prevents the mixed AOV?
 

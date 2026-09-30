@@ -23,12 +23,12 @@ an app redesign. For each, name the branch it moves and what moving that branch 
 
 ```mermaid
 flowchart LR
-    R["<b>revenue</b>"] --> C["<b>customers</b><br/>costs marketing"]
-    R --> F["<b>orders per customer</b><br/>costs retention"]
+    R["<b>revenue</b>"] --> C["<b>customers</b>"]
+    R --> F["<b>orders per customer</b>"]
     R --> V["<b>revenue per order</b>"]
-    V --> B["<b>items per order</b><br/>costs merchandising"]
-    V --> P["<b>price per item</b><br/>risks volume"]
-    V --> D["<b>less discounts</b><br/>trades margin for quantity"]
+    V --> B["<b>items per order</b>"]
+    V --> P["<b>price per item</b>"]
+    V --> D["<b>less discounts</b>"]
 ```
 
 ### Q1. A 15 percent discount on everything, for a month: which branch does it move, and what does it cost?

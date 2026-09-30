@@ -371,30 +371,7 @@ Transition: open notebook 01.
 
 ---
 
-## S13. A TypeError stops the first sum: two minutes
-*One amount is stored as text, and int() is today's fix.*
-
-```text
-TypeError: unsupported operand type(s) for +=: 'int' and 'str'
-```
-
-```python
-booked += int(order["amount"])     # today's fix
-print(order)                       # the record the loop stopped on
-```
-
-**What breaks.** The running total is a number and one amount arrived as text; print the loop variable to find which record.
-
-```notes
-LIVE, 2 minutes, no more. Every learner runs the first loop in notebook 01 and it stops. Read the
-last line bottom up: the kind of error, the operation, the two types. Each learner prints the
-record on their own screen; do not read it out. Apply int() and move on. Wednesday asks why.
-Transition: the build proper.
-```
-
----
-
-## S14. Question: which reading comes out largest?
+## S13. Question: which reading comes out largest?
 *One loop keeps three sums: booked, not cancelled and delivered.*
 
 ```python
@@ -411,13 +388,17 @@ for order in ORDERS:
 
 ```notes
 LIVE, 2 minutes. Predict before running; take letters by hand. Most say c; some say a because
-"only delivered is real", which confuses the largest with the truest.
+"only delivered is real", which confuses the largest with the truest. When the room runs the
+notebook's first loop it stops on a TypeError, because one amount is stored as text. Give it two
+minutes, no more: read the last line bottom up (the kind of error, the operation, the two types),
+have each learner print the loop variable on their own screen without reading the record out,
+apply int() as the loop above does, and move on. Wednesday asks why.
 Transition: run it.
 ```
 
 ---
 
-## S15. Answer: booked, then not cancelled, then delivered
+## S14. Answer: booked, then not cancelled, then delivered
 *The three differ by Rs 24,020 across 9 orders.*
 
 ```mermaid
@@ -438,10 +419,10 @@ Transition: the one a hurried analyst sends.
 
 ---
 
-## S16. Wrong answer: sales of Rs 5,44,810 from all 30
+## S15. Wrong answer: sales of Rs 5,44,810 from all 30
 *The biggest number, sent without a definition, reaches the CEO first.*
 
-**The plausible wrong answer.** "Sales this quarter: Rs 5,44,810 on 30 orders."
+**The plausible wrong answer.** A colleague's first draft to Meera: "Sales this quarter: Rs 5,44,810 on 30 orders."
 
 ```stats
 value: Rs 5,44,810 | label: reported as sales | note: every order in the file
@@ -459,7 +440,7 @@ Transition: the check that catches it.
 
 ---
 
-## S17. Count by status before summing: all 4 are store
+## S16. Count by status before summing: all 4 are store
 *A count by channel and status shows where the cancellations sit.*
 
 | Channel | Delivered | Returned | Cancelled |
@@ -479,7 +460,7 @@ Transition: the fix, as a bridge.
 
 ---
 
-## S18. Fix: the definition beside the number
+## S17. Fix: the definition beside the number
 *A bridge walks from booked to delivered, so every rupee that leaves is named.*
 
 ```mermaid
@@ -499,7 +480,7 @@ Transition: the same numbers another way.
 
 ---
 
-## S19. A second route: sums by status, then combine
+## S18. A second route: sums by status, then combine
 *Rupees added under each status, then each reading built from the statuses.*
 
 ```python
@@ -520,7 +501,7 @@ Transition: Kavya's review.
 
 ---
 
-## S20. Chapter 1 puts one honest number on the tree
+## S19. Chapter 1 puts one honest number on the tree
 *The root now carries a total with its definition, and the branches are still empty.*
 
 ```mermaid
@@ -557,7 +538,7 @@ LIVE, 30 minutes: the need (3), the options (6), the build (4), the trap (9), th
 
 ---
 
-## S21. Meera needs the branches, each as a fraction
+## S20. Meera needs the branches, each as a fraction
 *Revenue is customers, times orders per customer, times average order value.*
 
 ```mermaid
@@ -583,7 +564,7 @@ Transition: a real company that reports its tree this way.
 
 ---
 
-## S22. Jio reports its revenue as a tree
+## S21. Jio reports its revenue as a tree
 *Subscribers times revenue per user: customers times what each one brings.*
 
 ```stats
@@ -602,7 +583,7 @@ Transition: which tree this file can fill.
 
 ---
 
-## S23. The file fills the three-branch tree
+## S22. The file fills the three-branch tree
 *Four trees a team could draw, sized by the fields each needs.*
 
 | Option | Needs | In this file? |
@@ -622,7 +603,7 @@ Transition: build B's first branch.
 
 ---
 
-## S24. AOV is Rs 18,160, and the tree multiplies back
+## S23. AOV is Rs 18,160, and the tree multiplies back
 *Orders times AOV lands exactly on booked revenue, because AOV was made from it.*
 
 ```stats
@@ -641,7 +622,7 @@ Transition: what goes wrong when two reports feed one fraction.
 
 ---
 
-## S25. Question: booked rupees over delivered orders?
+## S24. Question: booked rupees over delivered orders?
 *Finance reports booked revenue; the operations dashboard counts delivered orders.*
 
 **Question.** A hurried analyst divides Finance's Rs 5,44,810 by the dashboard's 21 delivered orders. The AOV is: a) Rs 18,160, b) Rs 24,800, c) Rs 25,943, or d) Rs 23,687?
@@ -664,10 +645,10 @@ Transition: the answer, and what it does to the tree.
 
 ---
 
-## S26. Answer: Rs 25,943, which matches no definition
+## S25. Answer: Rs 25,943, which matches no definition
 *Multiplied back on 30 orders it claims Rs 7,78,300 that nobody booked.*
 
-**The plausible wrong answer.** "Our average order is Rs 25,943."
+**The plausible wrong answer.** A colleague's note to marketing: "Our average order is Rs 25,943."
 
 ```stats
 value: Rs 25,943 | label: the mixed AOV | note: booked rupees / delivered orders
@@ -685,7 +666,7 @@ Transition: the one-line check.
 
 ---
 
-## S27. Check: AOV x the orders summed gives revenue
+## S26. Check: AOV x the orders summed gives revenue
 *On one definition the identity holds; on a mixed one it lands on nothing.*
 
 | Fraction | AOV | x the orders the revenue covers | Gives that revenue back? |
@@ -704,7 +685,7 @@ Transition: the same AOV another way.
 
 ---
 
-## S28. A second route: AOV is the mean of the amounts
+## S27. A second route: AOV is the mean of the amounts
 *Revenue over orders and the mean of the 30 amounts are one number.*
 
 ```python
@@ -723,7 +704,7 @@ Transition: Kavya's review.
 
 ---
 
-## S29. Chapter 2 names three branches the file lacks
+## S28. Chapter 2 names three branches the file lacks
 *Items, price and discounts are not in this extract, and saying so is part of the answer.*
 
 ```mermaid
@@ -737,7 +718,7 @@ flowchart LR
     class C,I unknown
 ```
 
-**Kavya's review.** "A branch you cannot divide is a label. You gave me each branch as a fraction and told me which three this file cannot fill."
+**Kavya's review.** "You gave me each branch as a numerator over a denominator and told me which three this file cannot fill, so I know which ones I can plan on."
 
 **In the interview.** [S] How would you increase sales for an online retailer?
 
@@ -759,7 +740,7 @@ LIVE, 30 minutes: the need (3), the options (5), the build (8), the trap (9), th
 
 ---
 
-## S30. If nobody comes back, acquisition is the branch
+## S29. If nobody comes back, acquisition is the branch
 *The customers branch is the one the Rs 12 crore buys, so it is the first leaf to get right.*
 
 **The client asks.** "Is acquisition even the branch that is short?"
@@ -778,7 +759,7 @@ Transition: a real retailer's customer count, and its denominator.
 
 ---
 
-## S31. Reliance counts 396 million registered customers
+## S30. Reliance counts 396 million registered customers
 *A registered customer is a denominator of its own, and which people you count is the question.*
 
 ```stats
@@ -796,7 +777,7 @@ Transition: four ways to count customers.
 
 ---
 
-## S32. A dictionary counts customers and repeats at once
+## S31. A dictionary counts customers and repeats at once
 *Four ways to count customers on 30 rows, and what each can answer.*
 
 | Option | Passes | Answers |
@@ -810,12 +791,12 @@ Transition: four ways to count customers.
 
 ```notes
 LIVE, 5 minutes. B is right when only the count is needed. The switch to SQL is Week 2's.
-Transition: the hurried count.
+Transition: build it.
 ```
 
 ---
 
-## S33. Question: of 23 customers, how many came back?
+## S32. Question: of 23 customers, how many came back?
 *A dictionary keyed by customer id counts each one's orders in one pass.*
 
 ```python
@@ -834,7 +815,7 @@ Transition: the answer.
 
 ---
 
-## S34. Answer: 7 came back, and 16 bought once
+## S33. Answer: 7 came back, and 16 bought once
 *Every branch is now measured, and the tree multiplies back to booked revenue.*
 
 ```stats
@@ -848,31 +829,12 @@ value: 7 | label: came back | note: 16 bought once
 ```notes
 LIVE, 5 minutes. Write 23 and 1.30 on the board tree. Note one repeat customer carries two
 segments because the segment sits on each order.
-Transition: the leaves on delivered orders.
+Transition: the count a colleague sent first.
 ```
 
 ---
 
-## D35. On delivered orders only 2 kept two orders
-*Every leaf moves with the definition, and repeat buyers move most.*
-
-| Definition | Orders | Customers | Per customer | Came back |
-|---|---|---|---|---|
-| Booked | 30 | 23 | 1.30 | 7 |
-| Not cancelled | 26 | 21 | 1.24 | 5 |
-| Delivered | 21 | 19 | 1.11 | 2 |
-
-Customers do return, and their second orders are the ones most often cancelled or sent back: frequency is a live branch that leaks.
-
-```notes
-SELF-STUDY, 3 minutes live if time allows. Notebook 03 section 3 has the loop; the escalated case
-this afternoon rebuilds the whole answer on delivered orders.
-Transition: the same rate by a second route.
-```
-
----
-
-## S36. Wrong answer: 30 customers, nobody comes back
+## S34. Wrong answer: 30 customers, nobody comes back
 *A colleague's first draft divided orders by the number of rows: 1.00 each.*
 
 **The plausible wrong answer.** "30 customers placed 30 orders: 1.00 each, so nobody comes back."
@@ -886,15 +848,15 @@ value: Rs 12 cr | label: what it justifies | note: acquisition as the only branc
 The division is correct and its denominator is wrong: a row is an order, and one customer can place several.
 
 ```notes
-LIVE, 4 minutes. Present it as the figure a colleague's first draft sent Meera before the room built the count;
-the room's job is to name the check that would have caught it. Present it as the case for the budget, made by a counting slip. Ask what would
-check it before the next slide.
+LIVE, 4 minutes. Present it as the figure a colleague's first draft sent Meera before the room built
+the count: the case for the budget, made by a counting slip. Ask what would check it before the
+next slide.
 Transition: the check.
 ```
 
 ---
 
-## S37. A set counts distinct ids: 23 customers
+## S35. A set counts distinct ids: 23 customers
 *The same column counted as a list and as a set gives 30 and 23.*
 
 ```mermaid
@@ -911,13 +873,14 @@ flowchart LR
 
 ```notes
 LIVE, 5 minutes. A set keeps each value once however often it is added. The fix: 30 / 23 = 1.30
-orders per customer, and frequency is a live branch.
-Transition: who came back.
+orders per customer, and frequency is a live branch. On delivered orders the same count gives 19
+customers, 1.11 each, and 2 who kept two; the escalated case this afternoon rebuilds on that.
+Transition: the same rate by a second route.
 ```
 
 ---
 
-## S38. A second route: the mean of the counts
+## S36. A second route: the mean of the counts
 *Orders per customer is also the average of the dictionary's values.*
 
 ```python
@@ -934,7 +897,7 @@ Transition: Kavya's review.
 
 ---
 
-## S39. Chapter 3 fills both customer branches
+## S37. Chapter 3 fills both customer branches
 *23 customers, 1.30 orders each, 7 came back, and the tree multiplies back.*
 
 ```mermaid
@@ -948,7 +911,7 @@ flowchart LR
     class A unknown
 ```
 
-**Kavya's review.** "The division was fine; the denominator was a guess. A count of people comes from their ids, and every rate you send upstairs names its denominator."
+**Kavya's review.** "Your first 30 was a count of rows, divided as if it were people. A count of people comes from their ids, and every rate you send upstairs names its denominator."
 
 **In the interview.** [F] Your extract shows 30 orders and 30 customers; what do you check before saying nobody comes back?
 
@@ -970,7 +933,7 @@ sort and the fix (10), the second route (4), Kavya's review (3). Notebook 04 is 
 
 ---
 
-## S40. A first order's worth decides the payback
+## S38. A first order's worth decides the payback
 *The payback case values each new customer by the order they will place.*
 
 **The client asks.** "What does a typical order look like?"
@@ -990,7 +953,7 @@ Transition: a real company's reported order value.
 
 ---
 
-## S41. Blinkit reports AOV, a mean, for totals
+## S39. Blinkit reports AOV, a mean, for totals
 *A reported average order value is the right number for totals across millions of orders.*
 
 ```stats
@@ -1008,7 +971,7 @@ Transition: four middles.
 
 ---
 
-## S42. Four middles, sized on one large order
+## S40. Four middles, sized on one large order
 *How far each moves when one invented Rs 90,000 order joins five invented small ones.*
 
 | Option | Moves with one large order | Right when |
@@ -1023,31 +986,30 @@ Transition: four middles.
 ```notes
 LIVE, 5 minutes. The invented set is five orders from Rs 1,900 to Rs 2,600 plus one of Rs 90,000;
 the notebook's sizing cell draws the three moves.
-Transition: marketing's slide.
+Transition: build the median.
 ```
 
 ---
 
-## S43. The build: the median is Rs 2,205
+## S41. The build: the median is Rs 2,205
 *Sort the 30 amounts and take halfway between the 15th and the 16th.*
 
 ```stats
 value: Rs 2,205 | label: median order | note: halfway between Rs 2,110 and Rs 2,300
 value: 8.2 | label: mean over median | note: one order does it
-value: Rs 2,060 | label: delivered median | note: the median barely moves
 ```
 
-**The rule.** Two middles this far apart are a finding in themselves; the next slide is what happens when the wrong one is sent.
+**The rule.** Two middles this far apart are a finding in themselves.
 
 ```notes
 LIVE, 5 minutes. Write Rs 2,205 on the board tree beside the pencilled Rs 18,160. The median runs
 Rs 2,205 booked, Rs 2,100 not cancelled, Rs 2,060 delivered; the mean runs Rs 18,160 to Rs 24,800.
-Transition: the median another way.
+Transition: the number marketing sent first.
 ```
 
 ---
 
-## S44. Wrong answer: a typical order is Rs 18,160
+## S42. Wrong answer: a typical order is Rs 18,160
 *The mean, as it appears on marketing's slide.*
 
 **The plausible wrong answer.** "A typical Kalpa order is Rs 18,160, and so is each new customer's first order."
@@ -1068,7 +1030,7 @@ Transition: see it.
 
 ---
 
-## S45. The check: 29 of 30 orders sit below the mean
+## S43. The check: 29 of 30 orders sit below the mean
 *Notebook 04 draws every amount as a dot; here, where they sit against the mean.*
 
 ```mermaid
@@ -1092,7 +1054,7 @@ Transition: the middle one order cannot drag.
 
 ---
 
-## S46. Fix: send the median, and say which order
+## S44. Fix: send the median, and say which order
 *The typical order is Rs 2,205, the mean stays for totals, and the top order gets its own line.*
 
 ```stats
@@ -1100,18 +1062,18 @@ value: Rs 2,205 | label: the typical order | note: the median, booked
 value: 8x | label: overstated | note: a typical order, credited at the mean
 ```
 
-**The rule.** Report the median for the typical order and the mean for the total, and say which order separates them. A payback needs a mean, from the segment the spend targets, with the bulk order set aside.
+**The rule.** Report the median for the typical order and the mean for the total, and say which order separates them. A payback needs a mean, from the segment the spend targets, with the one-off large order set aside.
 
 ```notes
 LIVE, 2 minutes. What changed: the typical order is Rs 2,205, and the slide's Rs 18,160 overstates it
 eightfold. The payback itself is rebuilt on the consumer segment's mean, which chapter 5 uses.
-Write Rs 2,205 on the board tree beside the pencilled Rs 18,160.
+Rub out the pencilled Rs 18,160 on the board tree and leave Rs 2,205.
 Transition: the median another way.
 ```
 
 ---
 
-## S47. A second route: statistics.median agrees
+## S45. A second route: statistics.median agrees
 *The library holds the even-count rule, and must match the hand-written middle.*
 
 ```python
@@ -1129,7 +1091,7 @@ Transition: Kavya's review, and the tree after the morning.
 
 ---
 
-## S48. The morning's tree points at frequency
+## S46. The morning's tree points at frequency
 *Every branch measured and named: 16 of 23 bought once, and a typical order is Rs 2,205.*
 
 ```mermaid

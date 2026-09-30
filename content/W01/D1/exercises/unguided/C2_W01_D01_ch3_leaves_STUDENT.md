@@ -41,12 +41,12 @@ b) COUNT(DISTINCT customer_id) in the warehouse, where the rows already live
 c) len() of the export, since a row count is the fastest count there is
 d) Sorting the ids in a spreadsheet by hand and counting where they change
 
-### Q4. On delivered orders only, 21 orders come from 19 customers and nobody kept three. How many customers kept two delivered orders?
+### Q4. On not-cancelled orders only, 26 orders come from 21 customers and nobody kept three. How many customers kept two not-cancelled orders?
 
 a) 7, the repeat buyers counted on all the booked orders
-b) 2, the delivered orders less the delivered customers
-c) 19, since every delivered customer counts as one
-d) 5, the repeat buyers on not-cancelled orders
+b) 5, the not-cancelled orders less their customers
+c) 21, since every one of these customers counts as one
+d) 26, one for each not-cancelled order in the file
 
 ### Q5. Design. Meera asks only "how many customers bought this quarter?" Which method fits, and when would you switch to the dictionary of counts?
 

@@ -15,7 +15,7 @@ identity: AOV times the orders the revenue was summed over must give that revenu
 | Item | Key | Why it holds | Why the others fail |
 |---|---|---|---|
 | 1 | c | Revenue and orders are both in the file, so AOV is Rs 5,44,810 / 30 = Rs 18,160. | a and d need list prices and items, which the file does not hold. b needs an item count per order, which it does not hold either. |
-| 2 | b | 30 x Rs 25,943 = Rs 7,78,300, 43 percent above what was booked, because the numerator keeps 9 orders' rupees the denominator dropped. | a would hold only for a booked-over-booked AOV. c would hold only for 21 x Rs 24,800. d: the identity holds for the mean, which is what AOV is. |
+| 2 | b | 30 x (Rs 5,44,810 / 21) = Rs 7,78,300, 43 percent above what was booked, because the numerator keeps 9 orders' rupees the denominator dropped. | a would hold only for a booked-over-booked AOV. c would hold only for 21 x Rs 24,800. d: the identity holds for the mean, which is what AOV is. |
 | 3 | d | Items and prices are what the deeper tree needs, and it shows which part of the basket moved. | a throws away the fields that answer "which part moved". b needs traffic data, not items. c hides customers, marketing's branch. |
 | 4 | a | Rs 5,20,790 / 21 = Rs 24,800, one definition top and bottom. | b is the chapter's trap. c is the booked figure on the wrong definition. d divides by customers, which is revenue per customer, a different branch. |
 | 5 | b | The mix happens because two reports count different things; asking first is the one-line prevention, and the identity is the one-line check. | a hides the gap without removing it. c picks a number by its size, not its meaning. d averages two honest numbers into one that matches nothing. |

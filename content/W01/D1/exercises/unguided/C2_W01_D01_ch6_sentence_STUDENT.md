@@ -47,7 +47,7 @@ b) Caveat, then the evidence, then the ask, then the branch
 c) Evidence, then the branch, then the caveat, then the ask
 d) The ask, then the branch, then the caveat, then the evidence
 
-### Q5. Design. The 45-day gap comes from only 7 customers. What would shrink the caveat most?
+### Q5. Design. Meera's caveat says the 45-day gap is uncertain. What would shrink that caveat most?
 
 a) Rounding the gap to 45 days instead of computing it each time
 b) A second and a third quarter, so the gap comes from many more customers

@@ -5,10 +5,10 @@ Kalpa Retail, Week 1 Monday. Revenue is a tree of metrics that multiply, every n
 ## Panel 1: The revenue tree, with Monday's numbers on it
 
 ```mermaid
-flowchart TB
-    R["<b>revenue</b> Rs 5,44,810"] --> C["<b>customers</b> 23"]
-    R --> F["<b>per customer</b> 1.30, open first"]
-    R --> A["<b>typical order</b> Rs 2,205"]
+flowchart LR
+    R["<b>revenue</b><br/>Rs 5,44,810"] -->|"="| C["<b>customers</b><br/>23"]
+    C -->|"x"| F["<b>per customer</b><br/>1.30<br/>open first"]
+    F -->|"x"| A["<b>order value</b><br/>Rs 18,160 mean<br/>Rs 2,205 typical"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class C,A known
@@ -63,7 +63,7 @@ flowchart TB
 |---|---|
 | Wrong number | Customers +10 percent and frequency +10 percent called 20 percent. |
 | Check | Recompute through the tree: 1.10 x 1.10 = 1.21. |
-| Fix | Rs 6,59,220, not Rs 6,53,772. On the 29 everyday orders the plan needs 3.3 customers or 4.35 orders: open frequency. |
+| Fix | Rs 78,420, not Rs 77,772. On the 29 everyday orders the plan needs 3.3 customers or 4.35 orders: open frequency. |
 
 **Crux:** Lifts multiply along the tree: two 10 percent lifts make 21 percent.
 
@@ -73,7 +73,7 @@ flowchart TB
 |---|---|
 | Wrong number | 16 of 23 bought once, so "70 percent are lost". |
 | Check | Median repeat gap 45 days; 9 of the 16 bought in the last 45. |
-| Fix | 7 came back, 7 had time and did not, 9 are too recent to judge. |
+| Fix | 7 came back, 7 are past the usual gap, 9 are too recent to judge. |
 
 **Crux:** A one-time buyer is not a lost customer until they have had time to come back.
 
@@ -81,4 +81,4 @@ flowchart TB
 
 "23 customers, 1.30 orders each, a typical order of Rs 2,205; 7 came back and 9 are too recent to judge, so open frequency first and hold the Rs 12 crore for Tuesday's two quarters."
 
-**Crux:** One window shows the shape of revenue; only two windows show which branch moved.
+**Crux:** The sentence names its definition, its branch and its caveat, and waits for a second quarter before the budget.

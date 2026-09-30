@@ -17,7 +17,7 @@ scale.
 | 1 | c | A set counts distinct ids, a dictionary keeps a count per id, the `&` of two sets keeps the ids both hold, and the row count is the order count. | a uses the row count for customers, the chapter's trap. b and d swap the set and the dictionary, which answer different questions. |
 | 2 | d | "Nobody comes back" says frequency is dead, so buying customers looks like the only way to grow, which is marketing's Rs 12 crore. | a is chapter 1's cancellations. b is chapter 4's question. c has nothing to do with the count. |
 | 3 | b | At 4 crore rows the data stays where it lives and the database counts it; Week 2 teaches it. | a works and is the wrong tool at that size. c is the trap at any size. d is impossible by hand. |
-| 4 | b | With nobody keeping three orders, 21 orders less 19 customers is 2 customers with two orders. | a and d are the booked and not-cancelled answers. c counts every customer. |
+| 4 | b | With nobody keeping three orders, 26 orders less 21 customers is 5 customers with two orders. | a is the booked answer. c counts every customer. d counts rows as customers, chapter 3's trap. |
 | 5 | d | A set answers "how many" in one line; the dictionary earns its extra line when the question becomes "how many came back". | a is the trap. b works and is more than the ask. c is error-prone and has nothing to do with size. |
 
 ## The part worth arguing about
@@ -25,7 +25,7 @@ scale.
 Item 4. The shortcut, orders less customers, holds only when nobody has three orders. The
 dictionary is the count to trust, and the stem says why the shortcut is safe here.
 
-**Kavya's review.** "The division was fine; the denominator was a guess. Count people by their ids."
+**Kavya's review.** "Your first 30 was a count of rows, divided as if it were people. Count people by their ids."
 
 ## Where the pattern lives in production
 

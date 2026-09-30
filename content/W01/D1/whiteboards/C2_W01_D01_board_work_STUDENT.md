@@ -70,7 +70,7 @@ It goes up in chapter 2, when the mixed AOV of Rs 25,943 is on the screen.
 
 ```mermaid
 flowchart LR
-    F["<b>Finance</b><br/>booked Rs 5,44,810"] --> X["<b>Rs 25,943</b><br/>x 30 = Rs 7,78,300<br/>lands on nothing"]
+    F["<b>Finance</b><br/>booked Rs 5,44,810"] --> X["<b>Rs 25,943</b><br/>x 30 = about Rs 7,78,300<br/>lands on nothing"]
     O["<b>dashboard</b><br/>21 delivered orders"] --> X
     B["<b>booked / booked</b><br/>Rs 18,160"] --> OK["<b>x orders lands<br/>on its revenue</b>"]
     D["<b>delivered / delivered</b><br/>Rs 24,800"] --> OK
@@ -132,9 +132,9 @@ It goes up in chapter 5, when marketing's "20 percent" is on the screen.
 
 ```mermaid
 flowchart LR
-    B["<b>today</b><br/>Rs 5,44,810"] --> C["<b>customers x 1.10</b><br/>Rs 5,99,291"]
-    C --> F["<b>frequency x 1.10</b><br/>Rs 6,59,220, +21%"]
-    B -.-> W["<b>added: +20%</b><br/>Rs 6,53,772"]
+    B["<b>everyday orders</b><br/>Rs 64,810"] --> C["<b>customers x 1.10</b><br/>Rs 71,291"]
+    C --> F["<b>frequency x 1.10</b><br/>Rs 78,420, +21%"]
+    B -.-> W["<b>added: +20%</b><br/>Rs 77,772"]
     B --> D["<b>15% off, quantity x 1.10</b><br/>0.85 x 1.10 = 0.935, a 6.5% fall"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
@@ -210,10 +210,10 @@ flowchart LR
 2. Marketing's Rs 12 crore stays written against the customers branch, marked as waiting for
    Tuesday's two quarters.
 3. The funnel of the four readings and the one-definition fraction sit in one corner.
-4. The window's edge, 7 back, 7 had time, 9 too recent, sits under the frequency branch.
+4. The window's edge, 7 back, 7 past the usual gap, 9 too recent, sits under the frequency branch.
 5. The two leaks from the channel split, web returns and store cancellations, sit beside the tree.
 6. The six crux lines run down the side, and the sentence that went to Meera sits under the tree:
    "On the 30 booked orders from 1 July to 26 September, 23 customers placed 1.30 orders each at a
-   typical order of Rs 2,205; 7 came back, 7 have had time and not returned, and 9 bought too
+   typical order of Rs 2,205; 7 came back, 7 are past the usual gap without a second order, and 9 bought too
    recently to judge, so I would open frequency before acquisition, and since one quarter cannot
    show which branch moved, hold the Rs 12 crore until Tuesday's two quarters."

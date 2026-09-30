@@ -242,7 +242,7 @@ put(ws, "C20", "Orders above the mean"); put(ws, "D20", '=COUNTIF(A18:A23,">"&D1
 # ---------------------------------------------------------------- Lifts
 ws = sheet(wb, "Lifts", "Do two lifts add or multiply?",
            "Revenue is customers times orders per customer times average order value, so lifts on its branches multiply.")
-put(ws, "A4", "Revenue today (Rs)", BOLD); put(ws, "B4", 544810, fill=INPUT, fmt="#,##0")
+put(ws, "A4", "Everyday revenue today, the 29 orders the plan is sized on (Rs)", BOLD); put(ws, "B4", 64810, fill=INPUT, fmt="#,##0")
 head(ws, 5, ["Branch", "Change, percent", "Multiplier"])
 for i, (b, v) in enumerate([("customers", 10), ("orders per customer", 10), ("average order value", 0)], 6):
     put(ws, f"A{i}", b)
@@ -279,7 +279,7 @@ for i, (label, v) in enumerate([("Customers", 23), ("Came back", 7), ("Bought on
                                 ("One-time buyers who bought inside the last gap", 9)], 5):
     put(ws, f"A{i}", label)
     put(ws, f"B{i}", v, fill=INPUT)
-put(ws, "A11", "Had time and did not come back", BOLD); put(ws, "B11", "=B7")
+put(ws, "A11", "Past the usual gap, no second order", BOLD); put(ws, "B11", "=B7")
 put(ws, "A12", "Share of customers who look lost, percent"); put(ws, "B12", "=ROUND(100*B11/B5,0)")
 put(ws, "A13", "The check", BOLD)
 put(ws, "B13", '=IF(AND(B11=B7,B9>0),"The count treats all "&B7&" one-time buyers as lost, although "&B9&'
@@ -288,7 +288,7 @@ put(ws, "B13", '=IF(AND(B11=B7,B9>0),"The count treats all "&B7&" one-time buyer
 long_cell(ws, "B13", 42)
 put(ws, "A15", "Verdict", VERDICT)
 put(ws, "B15", '=IF(AND(B11=B7,B9>0),"Fix the lost count before the sentence calls anyone lost.",B6&" came back, "&'
-               'B11&" had time and did not, and "&B9&" bought too recently to judge, so at most "&B12&'
+               'B11&" are past the usual gap, and "&B9&" bought too recently to judge, so at most "&B12&'
                '" percent of customers look lost.")', VERDICT, TINT, True)
 long_cell(ws, "B15", 48)
 put(ws, "A16", "Fixed, for the Export tab", NOTE); put(ws, "B16", "=IF(B11=B7-B9,1,0)")
@@ -369,7 +369,7 @@ verdicts:
   - {sheet: Lifts, cell: B18, expect: "Fix the new revenue before you quote any growth."}
   - {sheet: Channel, cell: B18, expect: "Fix the delivered column before you rank any channel."}
   - {sheet: Sales, cell: B15, contains: "still carries the cancelled orders"}
-  - {sheet: Lifts, cell: B16, contains: "disagree by Rs 5,448"}
+  - {sheet: Lifts, cell: B16, contains: "disagree by Rs 648"}
   - {sheet: Fraction, cell: B15, expect: "Fix the AOV before it values any order."}
   - {sheet: Fraction, cell: B13, contains: "Rs 5,44,803, which lands on no revenue"}
   - {sheet: Edge, cell: B15, expect: "Fix the lost count before the sentence calls anyone lost."}
@@ -395,7 +395,7 @@ flips:
   - name: the edge holds back the recent buyers
     set: [{sheet: Edge, cell: B11, value: "=B7-B9"}]
     verdicts:
-      - {sheet: Edge, cell: B15, expect: "7 came back, 7 had time and did not, and 9 bought too recently to judge, so at most 30 percent of customers look lost."}
+      - {sheet: Edge, cell: B15, expect: "7 came back, 7 are past the usual gap, and 9 bought too recently to judge, so at most 30 percent of customers look lost."}
   - name: customers counted by id
     set: [{sheet: Customers, cell: B11, value: "=SUM(B5:B8)"}]
     verdicts:
@@ -415,7 +415,7 @@ flips:
   - name: new revenue multiplies the branches
     set: [{sheet: Lifts, cell: B13, value: "=ROUND(B4*C6*C7*C8,0)"}]
     verdicts:
-      - {sheet: Lifts, cell: B18, expect: "Through the tree, revenue moves from Rs 5,44,810 to Rs 6,59,220, up 21.0 percent, which reaches the 15 percent plan; adding the lifts would have said Rs 6,53,772."}
+      - {sheet: Lifts, cell: B18, expect: "Through the tree, revenue moves from Rs 64,810 to Rs 78,420, up 21.0 percent, which reaches the 15 percent plan; adding the lifts would have said Rs 77,772."}
   - name: the fixed tree, running the 15 percent discount
     set: [{sheet: Lifts, cell: B13, value: "=ROUND(B4*C6*C7*C8,0)"}, {sheet: Lifts, cell: B6, value: 0}, {sheet: Lifts, cell: B8, value: -15}]
     verdicts:

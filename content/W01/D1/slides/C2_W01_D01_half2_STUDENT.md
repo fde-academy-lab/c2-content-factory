@@ -70,7 +70,7 @@ Transition: what the plan asks of each branch.
 | C. Order value | Rs 335 more on every order | Items and prices are not in the file. |
 | D. Price | Every price 15 percent higher, nobody leaving | None, and nothing sells above MRP. |
 
-**The rule.** B is the best fit: 4 or 5 of the 15 one-time buyers returning once at a typical order carries the plan, and a retention test costs a reminder to people already on the list.
+**The rule.** B is the best fit: 4 or 5 of the 15 one-time buyers returning once at the everyday mean of Rs 2,235 carries the plan, and a retention test costs a reminder to people already on the list.
 
 ```notes
 LIVE, 7 minutes. Say why the base is the 29: the order at the top of chapter 4's sort carries most
@@ -115,11 +115,11 @@ Transition: marketing answers with a bigger plan.
 ## S5. Wrong answer: two 10 percent lifts make 20
 *Marketing proposes funding both branches and adds the lifts.*
 
-**The plausible wrong answer.** "Fund acquisition and retention together: 10 percent more customers and 10 percent more orders each make 20 percent growth, Rs 6,53,772."
+**The plausible wrong answer.** "Fund acquisition and retention together: 10 percent more customers and 10 percent more orders each make 20 percent growth, Rs 77,772."
 
 ```stats
 value: 20% | label: the slide's growth | note: 10 plus 10
-value: Rs 6,53,772 | label: the slide's revenue | note: Rs 5,44,810 x 1.20
+value: Rs 77,772 | label: the slide's revenue | note: Rs 64,810 x 1.20, everyday orders
 ```
 
 The slide's arithmetic is the one most rooms do in their heads.
@@ -143,11 +143,11 @@ xychart-beta
     line [20, 40, 60]
 ```
 
-1.10 x 1.10 = 1.21: Rs 6,59,220, Rs 5,448 above the slide. The line is the added figure and the bars the multiplied one; the gap grows with the lifts.
+1.10 x 1.10 = 1.21: Rs 78,420, Rs 648 above the slide. The line is the added figure and the bars the multiplied one; the gap grows with the lifts.
 
 ```notes
-LIVE, 4 minutes. Work it on the board: Rs 5,44,810 x 1.10 = Rs 5,99,291; x 1.10 again =
-Rs 6,59,220. What it would mislead: a target sized by addition is missed by the lift on the lift.
+LIVE, 4 minutes. Work it on the board, on the 29 everyday orders: Rs 64,810 x 1.10 = Rs 71,291; x 1.10 again =
+Rs 78,420. What it would mislead: a target sized by addition is missed by the lift on the lift.
 The same rule prices a discount: 0.85 x 1.10 = 0.935, a 6.5 percent fall.
 Transition: the lift, part by part.
 ```
@@ -155,15 +155,15 @@ Transition: the lift, part by part.
 ---
 
 ## S7. A second route: the lift as four parts
-*The base, two lifts of Rs 54,481 each, and the lift on the lift of Rs 5,448.*
+*The base, two lifts of Rs 6,481 each, and the lift on the lift of Rs 648.*
 
 | Part | Rs |
 |---|---|
-| Booked, this quarter | 5,44,810 |
-| Customers up 10 percent | 54,481 |
-| Orders per customer up 10 percent | 54,481 |
-| The lift on the lift, 0.10 x 0.10 | 5,448 |
-| After both lifts | 6,59,220 |
+| Everyday orders, this quarter | 64,810 |
+| Customers up 10 percent | 6,481 |
+| Orders per customer up 10 percent | 6,481 |
+| The lift on the lift, 0.10 x 0.10 | 648 |
+| After both lifts | 78,420 |
 
 **The rule.** Multiply the factors for the total; build the parts when someone asks where the extra came from, since the lift on the lift shows as its own line.
 
@@ -193,14 +193,14 @@ flowchart LR
 **In the interview.** [D] Marketing wants budget for acquisition; what would you check before agreeing it is the right branch, and how would you say no?
 
 ```notes
-LIVE, 3 minutes. One learner answers aloud: count customers by id and repeat buyers, value a
-first order at the median, ask for the prior quarter; the no is a no for now with a date.
+LIVE, 3 minutes. One learner answers aloud: count customers by id and repeat buyers, price a
+new customer on the everyday orders' mean with the top order set aside, ask for the prior quarter; the no is a no for now with a date.
 Transition: chapter 6, the sentence.
 ```
 
 ---
 
-## SECTION 6: The sentence Meera acts on
+## SECTION 6: The sentence
 *One sentence she can sign against, and the one number in it most likely to be misread.*
 
 ```notes
@@ -319,7 +319,7 @@ Transition: the answer.
 ```stats
 value: 45 days | label: median repeat gap | note: from the 7 who came back
 value: 9 | label: too recent to judge | note: bought in the last 45 days
-value: 7 | label: had time, not back | note: at most 7 of 23 look lost
+value: 7 | label: past the usual gap | note: at most 7 of 23 look lost
 ```
 
 **The rule.** The answer is c. A one-time buyer is not a lost customer until they have had time to come back.
@@ -327,8 +327,9 @@ value: 7 | label: had time, not back | note: at most 7 of 23 look lost
 ```notes
 LIVE, 8 minutes. What 70 percent would mislead: retention looks like an emergency on a number
 marketing knocks down in one question. The check measures the usual gap from the customers who did
-return and holds back everyone who has not had that long. The fix: 7 came back, 7 had time and did
-not, 9 are too recent. The gap rests on 7 customers, so the sentence claims nothing beyond it.
+return and holds back everyone who has not had that long. The fix: 7 came back, 7 are past the usual
+gap, 9 are too recent. The gap rests on 7 customers, and an 88-day window only sees short gaps, so
+45 days is a floor and the sentence claims nothing beyond it.
 The same edge hides in returns rates, renewals and young cohorts: the dossier's returns trap.
 Transition: the sentence.
 ```
@@ -336,9 +337,9 @@ Transition: the sentence.
 ---
 
 ## S15. Fix: the sentence with the window's edge
-*The 16 becomes the split: 7 came back, 7 had time, 9 too recent.*
+*The 16 becomes the split: 7 came back, 7 past the usual gap, 9 too recent.*
 
-> "On the 30 booked orders from 1 July to 26 September, 23 customers placed 1.30 orders each at a typical order of Rs 2,205; 7 came back, 7 have had time and not returned, and 9 bought too recently to judge, so I would open frequency before acquisition, and since one quarter cannot show which branch moved, hold the Rs 12 crore until Tuesday's two quarters." The data and AI team, to Meera Raghavan
+> "On the 30 booked orders from 1 July to 26 September, 23 customers placed 1.30 orders each at a typical order of Rs 2,205; 7 came back, 7 are past the usual gap without a second order, and 9 bought too recently to judge, so I would open frequency before acquisition, and since one quarter cannot show which branch moved, hold the Rs 12 crore until Tuesday's two quarters." The data and AI team, to Meera Raghavan
 
 ```mermaid
 flowchart LR
@@ -397,7 +398,7 @@ LIVE, 3 minutes. One learner answers aloud. Then the escalated case: Anand pushe
 
 ---
 
-## SECTION A: The escalated case
+## SECTION A: Escalated case
 *Anand asks for the whole answer again on what was delivered, alone, in 35 minutes.*
 
 ```notes
@@ -434,7 +435,7 @@ Transition: 30 minutes alone.
 *Six letters and three numbers, one sentence, then the notebook's nine picks.*
 
 ```timeline
-label: Parts 1 and 2 | title: 12 minutes | body: The delivered leaves and the delivered median, which is one value since 21 is odd.
+label: Parts 1 and 2 | title: 12 minutes | body: The delivered leaves and the delivered median.
 label: Parts 3 and 4 | title: 12 minutes | body: The plan from frequency alone, the discount, and the window's edge.
 label: Part 5 | title: 6 minutes | body: The sentence, and one line on what moved and what held.
 ```
@@ -447,12 +448,12 @@ Transition: the room's wrong answers.
 
 ---
 
-## SECTION B: The room's wrong answers
+## SECTION B: Wrong answers
 *Six numbers that looked right this morning or in the case, each caught by one check.*
 
 ```notes
-LIVE, 15 minutes. Use the room's own numbers where they match; the slides carry the six every
-room produces. A 10-minute break follows.
+LIVE, 15 minutes: the question 3, the answer 12. Use the room's own numbers where they match; the
+slides carry the six every room produces. A 10-minute break follows.
 ```
 
 ---
@@ -488,11 +489,12 @@ Transition: the checks.
 | Rs 25,943 AOV | AOV x the 30 orders the revenue covers must give it back. | Rs 18,160 booked or Rs 24,800 delivered. |
 | 1.00 orders each | Compare rows with distinct ids: 30 against 23. | 1.30 orders each, 7 came back. |
 | Rs 18,160 typical | Count orders above the mean: 1 of 30. | The median, Rs 2,205. |
-| 20 percent growth | Recompute through the tree: 1.10 x 1.10. | 21 percent, Rs 6,59,220. |
-| 70 percent lost | Hold back buyers inside the 45-day gap. | 7 back, 7 had time, 9 too recent. |
+| 20 percent growth | Recompute through the tree: 1.10 x 1.10. | 21 percent, Rs 78,420. |
+| 70 percent lost | Hold back buyers inside the 45-day gap. | 7 back, 7 past the usual gap, 9 too recent. |
 
 ```notes
-LIVE, 8 minutes. The answer is d. Walk the rows in the order the room met them. Then the two the
+LIVE, 12 minutes. The answer is d. Walk the rows in the order the room met them. Then the escalated
+case's table from the day sheet, what moved and what held on delivered orders, and the two the
 escalated case adds: a median of 21 orders taken as the average of two middles, and "17 of 19
 lost" on delivered orders, which the same 45-day edge corrects to 7 too recent.
 Transition: a 10-minute break, then the second case.
@@ -500,36 +502,17 @@ Transition: a 10-minute break, then the second case.
 
 ---
 
-## D22. The escalated case's answer, on delivered orders
-*What moved and what held when Anand changed the definition.*
-
-| Part | Booked | Delivered | Held? |
-|---|---|---|---|
-| Orders per customer | 1.30 | 1.11 | It fell. |
-| Typical order | Rs 2,205 | Rs 2,060 | It held. |
-| One-time buyers | 16 of 23, 9 too recent | 17 of 19, 7 too recent | It held. |
-| Branch | Frequency | Frequency | It held. |
-
-The delivered view adds a leak to the note: customers come back, and their second orders are the ones cancelled or returned.
-
-```notes
-SELF-STUDY, 4 minutes live if the debrief has time. The keys are in the day sheet and the
-solutions, released at the close.
-```
-
----
-
-## SECTION C: The second case, in pairs
+## SECTION C: Second case
 *Twenty-five minutes in pairs: where revenue comes from, and whether one channel changes the branch.*
 
 ```notes
-LIVE, after the break, 25 minutes: 2 to brief on S23, 15 in pairs with no slides, then S24 to
-S27 as the debrief, about 8 minutes. Do not show S24 before the pairs work.
+LIVE, after the break, 25 minutes: 2 to brief on S22, 15 in pairs with no slides, then S23 to
+S26 as the debrief, about 8 minutes. Do not show S23 before the pairs work.
 ```
 
 ---
 
-## S23. Meera asks where revenue comes from
+## S22. Meera asks where revenue comes from
 *By customer type and by channel, on the same 30 orders.*
 
 **The client asks.** "Where does revenue come from, by customer type and channel?"
@@ -551,7 +534,7 @@ Transition: 15 minutes in pairs.
 
 ---
 
-## S24. Store brings 91.6 percent, so is growth store-led?
+## S23. Store brings 91.6 percent, so is growth store-led?
 *Booked revenue by channel on all 30 orders, the first chart most pairs draw.*
 
 ```mermaid
@@ -571,7 +554,7 @@ Transition: what the count shows.
 
 ---
 
-## S25. Answer: one order carries store's share
+## S24. Answer: one order carries store's share
 *On the 29 consumer orders store holds under a third, and 4 of its 9 were cancelled.*
 
 ```stats
@@ -590,7 +573,7 @@ Transition: the consumer channels, booked against delivered.
 
 ---
 
-## S26. On consumer orders, web leads and half comes back
+## S25. On consumer orders, web leads and half comes back
 *Booked against delivered for each channel, in Rs thousand.*
 
 ```mermaid
@@ -611,7 +594,7 @@ Transition: does this change the branch?
 
 ---
 
-## S27. Frequency stays first, with two leaks named
+## S26. Frequency stays first, with two leaks named
 *The channel view leaves the branch where it was and adds two leaks to the note.*
 
 ```mermaid
@@ -635,7 +618,7 @@ Transition: the interview drill.
 
 ---
 
-## SECTION D: The interview drill
+## SECTION D: Interview drill
 *Twenty minutes aloud in pairs: twelve questions from today, each answered in under a minute.*
 
 ```notes
@@ -646,7 +629,7 @@ Listen for a number with its definition in every answer.
 
 ---
 
-## S28. Four questions on sales, fractions and customers
+## S27. Four questions on sales, fractions and customers
 *In pairs: one asks, one answers aloud in under a minute, then swap.*
 
 | Tag | Question |
@@ -667,7 +650,7 @@ by a key; records are a list of dictionaries.
 
 ---
 
-## S29. Four questions on the typical order and the tree
+## S28. Four questions on the typical order and the tree
 *The same drill, on chapters 2, 4 and 5.*
 
 | Tag | Question |
@@ -681,15 +664,15 @@ by a key; records are a list of dictionaries.
 LIVE, 7 minutes. One breath each.
 Mean or median: the median for a typical order, because one large order drags the mean; the mean
 where a total must multiply back.
-Payback: a mean, because a payback is a total, taken from the segment the spend targets with bulk
-orders set aside; the median sits beside it as the typical order.
+Payback: a mean, because a payback is a total, taken from the segment the spend targets with one-off
+large orders set aside; the median sits beside it as the typical order.
 Grow 15 percent: which revenue and window, then what 15 percent asks of each branch alone.
 Two lifts: 1.10 x 1.10 = 1.21, so 21 percent; the gap grows with the lifts.
 ```
 
 ---
 
-## S30. Four questions on the branch and the sentence
+## S29. Four questions on the branch and the sentence
 *The drill's last four, where the answer is a recommendation with its evidence.*
 
 | Tag | Question |
@@ -703,9 +686,9 @@ Two lifts: 1.10 x 1.10 = 1.21, so 21 percent; the gap grows with the lifts.
 LIVE, 7 minutes. One breath each.
 Increase sales: draw the tree, measure each branch, open the one with room to move and the
 cheapest bill.
-Acquisition budget: repeat buyers and the median first order; frequency first, budget waits for
+Acquisition budget: repeat buyers, and a new customer priced on the everyday mean; frequency first, budget waits for
 two quarters.
-Seventy percent: bought once in this window is a fact about the window, and churn is a claim about the future; 9 of 16 bought inside the
+Seventy percent: the file shows who bought once, and churn depends on orders after the window closes; 9 of 16 bought inside the
 45-day gap.
 Nine rupees in ten: count the orders behind the share; one order carries it.
 ```
@@ -721,7 +704,7 @@ LIVE, 15 minutes: the Kahoot 9, the six lines 3, Tuesday's question 3.
 
 ---
 
-## S31. Kahoot: today's traps, played for speed
+## S30. Kahoot: today's traps, played for speed
 *The Kahoot is ungraded, and it shows which traps the room still falls for.*
 
 ```stats
@@ -738,7 +721,7 @@ Transition: six lines to keep.
 
 ---
 
-## S32. Six lines to carry out of Monday
+## S31. Six lines to carry out of Monday
 *Each line is a chapter's trap turned into a habit.*
 
 ```cards
@@ -758,7 +741,7 @@ Transition: Meera's reply.
 
 ---
 
-## S33. Tomorrow, Meera asks which branch moved
+## S32. Tomorrow, Meera asks which branch moved
 *Meera has read today's sentence, and her reply is Tuesday's work.*
 
 **The client asks.** "So revenue is customers, times how often they buy, times basket, times price. Now: which of those moved? Q2 was Rs 1.9 crore, Q1 was 2.1."

@@ -387,10 +387,10 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         </article>
 
         <article class="card exp">
-          <div class="part-label">Experiment D &middot; escalated case &middot; Kalpa totals</div>
+          <div class="part-label">Experiment D &middot; chapter 5 &middot; Kalpa totals</div>
           <h3 class="exp-title">Two 10 percent lifts called 20 percent</h3>
           <p><b>Situation.</b> Marketing's plan lifts customers by 10 percent and a loyalty scheme lifts orders per
-            customer by 10 percent. The slide says revenue grows 20 percent, to Rs 6,53,772.</p>
+            customer by 10 percent. The slide says revenue on the 29 everyday orders, Rs 64,810, grows 20 percent, to Rs 77,772.</p>
           <p><b>Hypothesis.</b> Through the tree the lifts multiply, so revenue grows 21 percent and lands higher than the
             slide says.</p>
           <p><b>Watch for.</b> The small green bar after the two lifts, which is the lift on the lift.</p>
@@ -401,7 +401,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
           </div>
           <div class="result" id="expDResult" hidden>
             <p><b>What happened.</b> <span id="expDWhat"></span></p>
-            <p><b>Why it matters.</b> Rs 5,448 is small on one quarter, and the same habit of adding percentages hides a
+            <p><b>Why it matters.</b> Rs 648 is small on one quarter of everyday orders, and the same habit of adding percentages hides a
               fall where one branch rises and another drops, which is where a plan goes wrong.</p>
             <p class="rule">Lifts multiply along the tree: two 10 percent lifts make 21 percent.</p>
           </div>
@@ -409,7 +409,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         </article>
 
         <article class="card exp">
-          <div class="part-label">Experiment E &middot; escalated case &middot; Kalpa totals</div>
+          <div class="part-label">Experiment E &middot; chapter 5 &middot; Kalpa totals</div>
           <h3 class="exp-title">A discount that sells more and earns less</h3>
           <p><b>Situation.</b> A 15 percent discount is proposed, and marketing expects it to lift quantity by 10 percent.
             The pitch says more orders means more revenue.</p>
@@ -1080,11 +1080,11 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     { t: "Chapter 3: count the leaves", r: 3, x: "Counting rows gives 30 customers and 1.00 orders each, which reads as nobody comes back. Counting distinct ids gives 23 customers and 1.30 orders each, with 7 who came back, so frequency is a live branch.",
       d: function () { return K.columns(["counted by rows", "counted by id"], [["customers", [30, 23]], ["came back", [0, 7]]], { title: "The same 30 orders, counted two ways" }); } },
     { t: "Chapter 4: which typical is honest?", r: 4, x: "The mean order is Rs 18,160 and the median Rs 2,205, and only 1 of the 30 orders sits above the mean. One order at the top of the sort drags the mean, and notebook 4's empty cell is where you find it.",
-      d: function () { return K.columns(["booked", "delivered"], [["mean", [18160, Math.round(520790 / 21)]], ["median", [2205, 2060]]], { fmt: R, title: "Mean against median, per definition of sales" }); } },
-    { t: "Chapter 5: which branch first?", r: 5, x: "On the 29 everyday orders the 15 percent plan needs 3.3 more customers or 4.35 more orders from the 22 already on file, and 15 of them bought once, so frequency is the cheaper branch to open first. Two 10 percent lifts make 21 percent through the tree, Rs 6,59,220, where adding says Rs 6,53,772.",
-      d: function () { return K.bridge(["today", 544810], [["customers +10%", 54481], ["frequency +10%", 54481], ["lift on the lift", 5448]], { lo: 500000, endLabel: "through the tree", title: "Two 10 percent lifts, multiplied" }); } },
-    { t: "Chapter 6: the sentence Meera acts on", r: 6, x: "Sixteen of 23 bought once, and it is tempting to call 70 percent lost. Returning customers took a median of 45 days, and 9 of the 16 bought inside the last 45, so 7 came back, 7 had time and did not, and 9 are too recent to judge. Open frequency first, and hold the Rs 12 crore until Tuesday's two quarters.",
-      d: function () { return K.columns(["came back", "once, had time", "once, too recent"], [["customers", [7, 7, 9]]], { lit: [2], title: "The 23 customers, with the window's edge" }); } },
+      d: function () { return K.columns(["booked", "not cancelled"], [["mean", [18160, 20606]], ["median", [2205, 2100]]], { fmt: R, title: "Mean against median, per definition of sales" }); } },
+    { t: "Chapter 5: which branch first?", r: 5, x: "On the 29 everyday orders the 15 percent plan needs 3.3 more customers or 4.35 more orders from the 22 already on file, and 15 of them bought once, so frequency is the cheaper branch to open first. Two 10 percent lifts make 21 percent through the tree, Rs 78,420, where adding says Rs 77,772.",
+      d: function () { return K.bridge(["everyday orders", 64810], [["customers +10%", 6481], ["frequency +10%", 6481], ["lift on the lift", 648]], { lo: 60000, endLabel: "through the tree", title: "Two 10 percent lifts on the everyday orders, multiplied" }); } },
+    { t: "Chapter 6: the sentence Meera acts on", r: 6, x: "Sixteen of 23 bought once, and it is tempting to call 70 percent lost. Returning customers took a median of 45 days, and 9 of the 16 bought inside the last 45, so 7 came back, 7 are past the usual gap without a second order, and 9 are too recent to judge. Open frequency first, and hold the Rs 12 crore until Tuesday's two quarters.",
+      d: function () { return K.columns(["came back", "once, past the gap", "once, too recent"], [["customers", [7, 7, 9]]], { lit: [2], title: "The 23 customers, with the window's edge" }); } },
     { t: "The escalated case: on delivered orders", r: 6, x: "On the 21 delivered orders, 19 customers kept 1.11 orders each and the median is Rs 2,060. Orders per customer fell; the typical order and the branch held, and the delivered view names the leak: second orders cancelled or returned.",
       d: function () { return K.driverTree(treeData("freq", { freq: "open first", cust: "hold until Tuesday" }, { cust: "unknown" }), { title: "Frequency first; acquisition waits for two windows" }); } },
     { t: "The second case: does a channel change it?", r: 6, x: "On consumer orders web leads booked with Rs 27,290, and half its orders came back. App delivered all 10 of its orders, Rs 18,600, and store delivered Rs 9,870 after 4 cancellations. Frequency first stands, and the note names two leaks.",
@@ -1123,8 +1123,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   function decision(L) {
     var d = L.d;
     if (state.count === "rows") return ["bad", "On this count all " + L.cust + " customers bought once, so acquisition looks like the only branch left and the Rs 12 crore looks justified. That reading rests on rows counted as customers, which is chapter 3's trap; count distinct ids before anyone signs."];
-    if (state.typ === "mean") return ["bad", "Frequency is live, with " + L.back + " of " + L.cust + " customers back, and the decision still leans that way. The acquisition payback on this setting values a first order at the mean, " + R(L.mean) + ", which one order drags; switch to the median before the Rs 12 crore case is priced."];
-    if (L.typ === null) return ["", "Frequency is live, with " + L.back + " of " + L.cust + " customers back. The median on the not-cancelled definition is left for you: sort the 26 amounts in notebook 3's level 4 and read the middle two, then come back and choose booked or delivered to see the full sentence."];
+    if (state.typ === "mean") return ["bad", "Frequency is live, with " + L.back + " of " + L.cust + " customers back, and the decision still leans that way. The acquisition payback on this setting values a first order at the mean, " + R(L.mean) + ", which one order drags; quote the median as the typical order, and build the payback on the everyday orders' mean."];
+    if (L.typ === null) return ["", "Frequency is live, with " + L.back + " of " + L.cust + " customers back. The median on the not-cancelled definition is left for you: sort the 26 amounts, or read notebook 04's second route, and take the middle two, then come back and choose booked or delivered to see the full sentence."];
     return ["good", "On the " + d.orders + " orders, " + d.name + ", " + L.cust + " customers placed " + L.opc.toFixed(2) + " orders each at a typical order of " + R(L.typ) + ", and " + L.once + " of them bought only once, so open frequency before acquisition. One window cannot show which branch moved, so hold the Rs 12 crore until Tuesday's two quarters."];
   }
   function sim() {
@@ -1319,18 +1319,18 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   $("expDRun").addEventListener("click", function () {
     dOn = !dOn;
     toggle(this, dOn, "Multiply the lifts", "Add the lifts instead");
-    K.draw("expDDraw", K.bridge(["today", 544810], dOn
-      ? [["customers +10%", 54481], ["frequency +10%", 54481], ["lift on the lift", 5448]]
-      : [["customers +10%", 54481], ["frequency +10%", 54481]],
-      { lo: 500000, endLabel: dOn ? "multiplied" : "added", title: dOn ? "The lifts through the tree" : "The lifts added, as the slide did" }));
+    K.draw("expDDraw", K.bridge(["everyday orders", 64810], dOn
+      ? [["customers +10%", 6481], ["frequency +10%", 6481], ["lift on the lift", 648]]
+      : [["customers +10%", 6481], ["frequency +10%", 6481]],
+      { lo: 60000, endLabel: dOn ? "multiplied" : "added", title: dOn ? "The lifts through the tree" : "The lifts added, as the slide did" }));
     reveal("expD", dOn
-      ? "Multiplied, 1.10 × 1.10 = 1.21, so revenue reaches Rs 6,59,220, 21 percent up and Rs 5,448 above the slide's Rs 6,53,772. The extra is the frequency lift applied to the new customers."
-      : "Added, the lifts give 20 percent and Rs 6,53,772, which leaves out the new customers' own extra orders.");
+      ? "Multiplied, 1.10 × 1.10 = 1.21, so revenue reaches Rs 78,420, 21 percent up and Rs 648 above the slide's Rs 77,772. The extra is the frequency lift applied to the new customers."
+      : "Added, the lifts give 20 percent and Rs 77,772, which leaves out the new customers' own extra orders.");
   });
   $("expDSeq").addEventListener("click", function () {
     openSeq("Experiment D, as a sequence", ["customers", "orders per customer", "revenue"], [
-      ["customers", "revenue", "times 1.10"], ["revenue", "revenue", "Rs 5,99,291"],
-      ["orders per customer", "revenue", "times 1.10 again"], ["revenue", "revenue", "Rs 6,59,220, 21 percent"]],
+      ["customers", "revenue", "times 1.10"], ["revenue", "revenue", "Rs 71,291"],
+      ["orders per customer", "revenue", "times 1.10 again"], ["revenue", "revenue", "Rs 78,420, 21 percent"]],
       "The second lift multiplies the result of the first, which is where the extra percent comes from.");
   });
 
@@ -1338,13 +1338,13 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   $("expERun").addEventListener("click", function () {
     eOn = !eOn;
     toggle(this, eOn, "Run the discount", "Take the discount off");
-    var price = -544810 * 0.15, qty = 544810 * 0.85 * 0.10, end = 544810 * 0.935;
+    var price = -64810 * 0.15, qty = 64810 * 0.85 * 0.10, end = 64810 * 0.935;
     K.draw("expEDraw", eOn
-      ? K.bridge(["today", 544810], [["price -15%", price], ["quantity +10%", qty]], { lo: 400000, endLabel: "after the discount", title: "15 percent off, 10 percent more quantity" })
-      : K.bridge(["today", 544810], [], { lo: 400000, endLabel: "no discount", title: "Revenue before the discount" }));
+      ? K.bridge(["everyday orders", 64810], [["price -15%", price], ["quantity +10%", qty]], { lo: 50000, endLabel: "after the discount", title: "15 percent off, 10 percent more quantity" })
+      : K.bridge(["everyday orders", 64810], [], { lo: 50000, endLabel: "no discount", title: "Everyday revenue before the discount" }));
     reveal("expE", eOn
-      ? "Revenue ends at 0.85 × 1.10 = 0.935 of today, " + R(end) + ", a fall of 6.5 percent or " + R(544810 - end) + ", with more orders shipped."
-      : "Without the discount revenue stays at Rs 5,44,810, and the question is whether any lift in quantity would pay for 15 percent off.");
+      ? "Revenue ends at 0.85 × 1.10 = 0.935 of today, " + R(end) + ", a fall of 6.5 percent or " + R(64810 - end) + ", with more orders shipped."
+      : "Without the discount everyday revenue stays at Rs 64,810, and the question is whether any lift in quantity would pay for 15 percent off.");
   });
   $("expESeq").addEventListener("click", function () {
     openSeq("Experiment E, as a sequence", ["price", "quantity", "revenue"], [

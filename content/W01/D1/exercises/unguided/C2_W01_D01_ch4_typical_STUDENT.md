@@ -36,24 +36,24 @@ d) Rs 2,205, halfway between the two middle amounts
 
 ### Q3. Design. Marketing's payback adds up what a new customer brings over their first year. Which number should it be built on, and what would change it?
 
-a) The booked mean, since every rupee of every order has to show up somewhere in a payback total
-b) The median of first orders, since that is the order a typical new customer places
-c) The targeted segment's mean, bulk orders set aside; a new target means a new segment
-d) The largest order, since the payback should be planned around the very best customers
+a) The booked mean, since every rupee counts in a total; a cleaner extract would change it
+b) The median of first orders, the typical order; a skewed segment would change it
+c) The targeted segment's mean, one-off orders aside; a new target would change it
+d) The largest order, the ceiling a customer can reach; a price cut would change it
 
 ### Q4. Design. One invented Rs 90,000 order joins five invented orders of Rs 1,900 to Rs 2,600: the mean moves Rs 14,623, the median Rs 50, the trimmed mean Rs 83. Which should the team report as the typical order, and when would the trimmed mean do as well?
 
 a) The mean, since the order that moved it most is the one the business most needs to see
-b) The median; the trimmed mean would do once its rule drops every bulk order, not just one
+b) The median; the trimmed mean would do once its rule drops every large order
 c) The trimmed mean always, since it throws away the two orders most likely to be errors
 d) Any of the three, since on five ordinary orders they all sit within Rs 100 of each other
 
-### Q5. On delivered orders the mean is Rs 24,800 and the median Rs 2,060; on booked orders, Rs 18,160 and Rs 2,205. Which figure should Meera plan the typical order on?
+### Q5. On not-cancelled orders the mean is Rs 20,606 and the median Rs 2,100; on booked orders, Rs 18,160 and Rs 2,205. Which figure should Meera plan the typical order on?
 
-a) Rs 24,800, the delivered mean, since delivered orders are the real ones that stayed sold
-b) About Rs 2,060 to Rs 2,205, the median, named with its definition
+a) Rs 20,606, the not-cancelled mean, since those orders at least stayed sold
+b) About Rs 2,100 to Rs 2,205, the median, named with its definition
 c) Rs 18,160, because the mean is the figure that multiplies back to revenue
-d) Rs 21,480, the average of the two means, so both definitions are represented
+d) Rs 19,383, the average of the two means, so both definitions are represented
 
 ---
 

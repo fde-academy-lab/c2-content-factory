@@ -62,12 +62,12 @@ b) The 20 everyday delivered orders, 3 more, since no offer moves the top order
 c) The 18 everyday delivered customers, 2.7 more people, since frequency is counted in people
 d) The 30 booked orders, 4.5 more, since the board set the plan on booked revenue last year
 
-### Q5. Design. Marketing proposes 15 percent off everything, expected to lift delivered orders 10 percent. Where does delivered revenue land?
+### Q5. Design. Marketing proposes 15 percent off everything, expected to lift orders 10 percent. On the 20 everyday delivered orders, Rs 40,790, where does revenue land?
 
-a) About Rs 4,86,940, which is 0.935 of today and a 6.5 percent fall
-b) About Rs 4,94,750, which is 0.95 of today, since 10 less 15 is minus 5
-c) About Rs 5,72,870, which is 1.10 of today, since the orders rose
-d) About Rs 5,98,910, which is 1.15 of today, since both changes help
+a) About Rs 38,140, a fall of 6.5 percent
+b) About Rs 38,750, a fall of 5.0 percent
+c) About Rs 44,870, a rise of 10.0 percent
+d) About Rs 46,910, a rise of 15 percent
 
 ---
 
@@ -79,15 +79,15 @@ Write the number.
 
 ### Q7. On delivered orders, which branch should Meera open first?
 
-a) Acquisition, since only 2 of the 19 delivered customers kept two orders
+a) Acquisition, since few delivered customers kept a second order at all
 b) Price per item, since a price rise moves delivered revenue fastest
 c) Order value, since the delivered mean rose to Rs 24,800
-d) Frequency, with second orders' returns and cancellations as its leak
+d) Frequency, with cancelled and returned repeat orders as its leak
 
 ### Q8. Which line tells Anand what moved and what held between booked and delivered?
 
 a) Everything held, so the definition never mattered to the answer
-b) Orders per customer fell to 1.11; the typical order and branch held
+b) Orders per customer fell; the typical order and the branch held
 c) The typical order doubled, so the branch moves to order value
 d) The branch moved to acquisition, since frequency fell on delivered orders
 

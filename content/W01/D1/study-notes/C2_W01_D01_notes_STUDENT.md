@@ -166,8 +166,8 @@ identity: AOV times the orders the revenue was summed over must give that revenu
 len(amounts)` and `statistics.fmean(amounts)` give the same Rs 18,160. Use the totals route when a
 report holds them and the rows route when you hold the rows.
 
-**Kavya's review.** "A branch you cannot divide is a label. When two reports feed one fraction, ask
-each what it counts before you divide."
+**Kavya's review.** "Write each branch as a numerator over a denominator. When two reports feed one
+fraction, ask each what it counts before you divide."
 
 ---
 
@@ -188,8 +188,8 @@ becomes one `COUNT(DISTINCT customer_id)` in the warehouse, which Week 2 teaches
 
 **The build.** The dictionary gives 16 customers who bought once and 7 who came back, and 23 x 1.30
 x Rs 18,160 = Rs 5,44,810. Every leaf moves with the definition. On delivered orders it is 21 orders
-from 19 customers, 1.11 each, and only 2 kept two orders: customers do return, and their second
-orders are the ones most often cancelled or sent back.
+from 19 customers, 1.11 each, and only 2 kept two orders: customers do return, and 4 of the 7
+second orders were cancelled or sent back, against 5 of the 23 first orders.
 
 **The trap.** A colleague's first draft: "30 customers placed 30 orders: 1.00 each, so nobody comes back." The division is
 correct and its denominator is wrong: a row is an order, and one customer can place several. It would
@@ -201,8 +201,8 @@ orders each.
 equals 30 / 23. The counts route also shows the spread, 16 at one and 7 at two, which the ratio
 hides.
 
-**Kavya's review.** "The division was fine; the denominator was a guess. A count of people comes
-from their ids."
+**Kavya's review.** "Your first 30 was a count of rows, divided as if it were people. A count of
+people comes from their ids."
 
 ---
 
@@ -246,8 +246,8 @@ order does it."
 **The need.** Every branch is measured, and marketing has proposed moving one of them. The plan is
 15 percent, and Meera wants the branch to open first and why not the others. Chapter 4 found one
 order carrying most of the booked total, and no retention offer or campaign repeats it, so the
-plan is sized on the other 29, the everyday consumer orders: Rs 64,810, and Rs 9,722 more. Flipkart launched Flipkart Black at Rs 1,499 a year in 2025, and
-Amazon offers Prime in India from Rs 399 to Rs 1,499 a year. Both pay existing customers to come back
+plan is sized on the other 29, the everyday consumer orders: Rs 64,810, and Rs 9,722 more.
+Flipkart launched Flipkart Black at Rs 1,499 a year in 2025, and Amazon offers Prime in India from Rs 399 to Rs 1,499 a year. Both pay existing customers to come back
 more often, a bet on the frequency branch by companies that could have spent the money on
 acquisition.
 
@@ -256,7 +256,7 @@ acquisition.
 | Branch | The plan needs | Evidence in this file |
 |---|---|---|
 | Customers | 3.3 more who buy like today's | None; one window cannot show customers falling |
-| Frequency | 4.35 more orders from the same 22, 4 or 5 of the 15 one-time buyers returning once | 7 already came back |
+| Frequency | 4.35 more orders from the same 22 at their mean of Rs 2,235, 4 or 5 of the 15 one-time buyers returning once | 7 already came back |
 | Order value | Rs 335 more on every order | Items and prices are not in the file |
 | Price | Every price 15 percent higher with nobody leaving | None; nothing sells above MRP |
 
@@ -265,15 +265,22 @@ already on the list costs little. The call would switch to acquisition if Tuesda
 showed customers falling while frequency held, or if a retained order cost more than an acquired
 customer.
 
+**The build.** Predict each line before it runs. The 29 everyday orders sum to Rs 64,810, so the
+plan's target is Rs 64,810 x 1.15, about Rs 74,532. They come from 22 customers at 1.32 orders
+each and a mean of Rs 2,235 an order. Holding two branches still, the third must carry the whole
+target alone: customers rise to 25.3, orders to 33.35, or the mean order to Rs 2,570. Every line
+multiplies back to the target through the tree, which is the check that the sizing used one
+definition throughout.
+
 **The trap.** Marketing answers with a bigger plan: "Fund both; 10 percent more customers and 10
-percent more orders each make 20 percent, Rs 6,53,772." The branches multiply, so the lifts multiply:
-1.10 x 1.10 = 1.21, which is Rs 6,59,220, Rs 5,448 above the slide. The gap grows with the lifts:
+percent more orders each make 20 percent, Rs 77,772 on the everyday orders." The branches
+multiply, so the lifts multiply: 1.10 x 1.10 = 1.21, which is Rs 78,420, Rs 648 above the slide. The gap grows with the lifts:
 two 30 percent lifts make 69 percent where addition says 60. The check is to recompute through the
 tree. The same rule prices a discount: 15 percent off with 10 percent more orders is 0.85 x 1.10 =
 0.935, a 6.5 percent fall. Orders must rise about 17.6 percent before the discount holds revenue.
 
-**The second route.** The total after both lifts is four parts: the base, Rs 54,481 for customers,
-Rs 54,481 for frequency, and Rs 5,448 for the lift on the lift. The parts land on the multiplied
+**The second route.** The total after both lifts is four parts: the base, Rs 6,481 for customers,
+Rs 6,481 for frequency, and Rs 648 for the lift on the lift. The parts land on the multiplied
 total. The parts route is the one to bring to marketing, because the lift on the lift has its own
 line.
 
@@ -287,8 +294,8 @@ then say what would make you pick another."
 **The need.** Meera will read one sentence and sign against it, and marketing will read the same
 sentence looking for its weakest number. The number at stake is the repeat picture. Klarna reported
 in February 2024 that its AI assistant handled two-thirds of customer-service chats in its first
-month. Fifteen months later its chief executive said the focus on cost had lowered quality. A first
-window's number is not the verdict.
+month. Fifteen months later its chief executive said the focus on cost had lowered quality, so the
+first month's number had been read as a result that time then changed.
 
 **The options.** There are four ways to hand her the answer, sized in her reading time:
 
@@ -306,16 +313,17 @@ the work. The first draft said "16 of them bought only once"; after the trap bel
 sentence reads:
 
 > "On the 30 booked orders from 1 July to 26 September, 23 customers placed 1.30 orders each at a
-> typical order of Rs 2,205; 7 came back, 7 have had time and not returned, and 9 bought too
+> typical order of Rs 2,205; 7 came back, 7 are past the usual gap without a second order, and 9 bought too
 > recently to judge, so I would open frequency before acquisition, and since one quarter cannot show
 > which branch moved, hold the Rs 12 crore until Tuesday's two quarters."
 
-**The trap.** "16 of 23 customers never came back: 70 percent of our customers are lost." Bought once
-in this window is a fact; lost is a claim about the future the window cannot see. The check asks the
+**The trap.** "16 of 23 customers never came back: 70 percent of our customers are lost." The file
+shows who bought once inside the window; whether they are lost depends on orders placed after it
+closes, which the file cannot show. The check asks the
 question marketing would ask: how long do customers usually take to come back? The 7 who did took a
 median of 45 days (11, 35, 43, 45, 46, 63 and 65). Of the 16 one-time buyers, 9 placed their order
 inside the last 45 days of the 88-day window, so they have not had a typical customer's time. The
-fix is that 7 came back, 7 had time and have not, and 9 are too recent to judge. Even the 45 days
+fix is that 7 came back, 7 are past the usual gap without a second order, and 9 are too recent to judge. Even the 45 days
 rests on 7 customers, so the sentence claims nothing beyond it.
 
 **The second route.** Give each one-time buyer a due date, their order date plus 45 days, and count
@@ -330,11 +338,11 @@ today's state; a due date is the day a reminder would go out.
 
 Anand pushes back: booked includes cancelled and returned orders, so do it again on delivered. On 21
 delivered orders, 19 customers kept 1.11 orders each and only 2 kept two. The typical order is Rs
-2,060; since 21 is odd, that is the single middle value, the 11th. The plan, sized on the 20 everyday delivered
+2,060. The plan, sized on the 20 everyday delivered
 orders, needs 3 more from frequency alone, and the discount still loses 6.5 percent. Of the 17
 one-time buyers, 7 bought inside the 45-day edge. Orders per customer fell, while the typical order,
-the window's edge and the branch held. The delivered view adds a leak to the note: customers come
-back, and their second orders are the ones cancelled or returned.
+the window's edge and the branch held. The delivered view adds a leak to the note: of the 7
+customers who came back, 4 lost that second order to a cancellation or a return.
 
 ## The second case: where revenue comes from by customer type and channel
 
@@ -422,8 +430,8 @@ usually a list of dictionaries, and for distinct values I use a set."
 
 **[D] Marketing wants budget for acquisition; what would you check before agreeing it is the right
 branch, and how would you say no?**
-"I put the budget on the tree: it moves customers, one branch of three. I check repeat buyers and the
-median first order on the same window, then ask for the prior quarter, since only two windows show
+"I put the budget on the tree: it moves customers, one branch of three. I check repeat buyers on the same window,
+price what a new customer brings on the everyday orders' mean with the one large order set aside, then ask for the prior quarter, since only two windows show
 which branch fell. On one quarter, 16 of 23 customers bought once and 7 came back. My no is a no for
 now with a date, and a cheaper first step: a frequency test that costs a reminder. If customers turn
 out to be the branch that fell, I back the budget."
@@ -448,21 +456,22 @@ since a customer who buys every four months looks one-time in a quarter."
 **[D] Which middle would you put in a payback model, and what would make you change it?**
 "A payback adds up what a customer brings over time, so it needs a mean, and the mean has to come
 from the customers the spend targets: the consumer segment's mean contribution per customer over the
-repeat window, with bulk and business orders set aside. The median is what I quote beside it as the
+repeat window, with one-off large orders set aside. The median is what I quote beside it as the
 typical order. If the spend targeted business buyers, I would switch segment, and the mean with it."
 
 **[F] A 10 percent lift in customers and a 10 percent lift in frequency make 20 percent growth; what
 is the right number, and when does it matter?**
-"Revenue is a product of its branches, so 1.10 x 1.10 = 1.21, 21 percent. On Rs 5,44,810 that is Rs
-6,59,220 against Rs 6,53,772. It matters when lifts are large, many or negative: two 30 percent lifts
+"Revenue is a product of its branches, so 1.10 x 1.10 = 1.21, 21 percent. On the Rs 64,810 of everyday orders that is Rs
+78,420 against Rs 77,772. It matters when lifts are large, many or negative: two 30 percent lifts
 make 69 percent, and 15 percent off with 10 percent more orders is a 6.5 percent fall."
 
 **[D] You have one quarter of orders and 70 percent of customers bought once; what do you tell the
 CEO?**
 "That 70 percent bought once in this window, which is a fact about the window; a churn rate is a claim about the future. I measure how
 long returning customers took, 45 days in the case I worked. Then I hold back everyone who bought
-inside that gap: 9 of the 16. So 7 came back, 7 had time and did not, 9 are too recent. I ask for the
-prior quarter before calling anyone lost."
+inside that gap: 9 of the 16. So 7 came back, 7 are past the usual gap, 9 are too recent, and since a
+one-quarter window only sees short gaps, 45 days is a floor. I ask for the prior quarter before calling
+anyone lost."
 
 **[D] One channel carries nine rupees in ten of revenue; does that change where the growth plan
 invests?**

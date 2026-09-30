@@ -24,7 +24,7 @@ flowchart LR
 ### Q1. Design. Chapter 4 found one order at the top of the sort carrying most of booked revenue. Which base should the 15 percent frequency sizing use, and what does it ask for?
 
 a) All 30 booked orders, 4.5 more from the 23 customers, since the board set the plan on booked revenue
-b) The 29 everyday orders, about 4.35 more at a typical value, since no offer repeats the top order
+b) The 29 everyday orders, about 4.35 more at their mean, since no offer repeats the top order
 c) The 21 delivered orders, 3.15 more, since only what stayed delivered counts as real growth
 d) The top order alone, one more like it, since it carries most of the revenue already
 
