@@ -1,4 +1,4 @@
-# Brief 5: The free home-collection campaign
+# Brief 5: The free at-home collection campaign
 
 **For:** the group allocated sub-problem 5
 **Client:** Dr Priya Menon, COO, Kalpa Health, and the marketing head
@@ -10,18 +10,18 @@ Kalpa Health and everyone in it are fictional.
 
 ## The question, as it was put
 
-> "Our free home-collection offer lifted bookings 9 percent. I want to offer it to every patient in all six cities. Can you confirm it worked?"
+> "Our free at-home collection offer lifted bookings 9 percent. I want to offer it to every patient in all six metros. Can you confirm it worked?"
 > The marketing head, Kalpa Health
 
 ## The decision it feeds
 
-Whether the free home-collection offer goes to every patient in all six cities, stays with the patients it reached, or stops. Every
+Whether the free at-home collection offer goes to every patient in all six metros, stays with the patients it reached, or stops. Every
 free collection costs Kalpa Health a phlebotomist's visit, so an offer extended on a lift it did not cause
 spends that money for nothing.
 
 ## The symptom, as the business sees it
 
-The marketing head's campaign report says patients offered free home collection booked 9 percent
+The marketing head's campaign report says patients offered free at-home collection booked 9 percent
 more than patients who were not offered it, over the weeks the offer ran.
 
 ## The files that bear on it
@@ -30,7 +30,7 @@ more than patients who were not offered it, over the weeks the offer ran.
 - `C2_W03_D01_bookings_legacy_STUDENT.csv`
 - `C2_W03_D01_bookings_newsys_STUDENT.csv`
 - `C2_W03_D01_patients_STUDENT.csv`
-- `C2_W03_D01_clinics_STUDENT.csv`
+- `C2_W03_D01_sites_STUDENT.csv`
 
 Every group holds all ten files, and you may use any of them. The ones above are where this question
 starts.
@@ -44,7 +44,7 @@ to answer each one from your own work.
 2. Would the offered patients have booked anyway? What in your analysis answers that?
 3. What else changed in the same weeks, and how did you rule it in or out?
 4. If marketing ran the offer again, how should it be run so the answer is clean?
-5. What should the marketing head do about the other cities, and what is the caveat?
+5. What should the marketing head do about the other metros, and what is the caveat?
 
 ## What your group ships
 

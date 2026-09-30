@@ -26,24 +26,24 @@ in her words before anyone hears the word "sub-problem". No tools, no method nam
 ---
 
 ## S1. A new client for the GCC team
-*Kalpa Health runs laboratories and walk-in clinics in six cities.*
+*Kalpa Health runs laboratories and patient service centres in six US metros.*
 
 ```cards
-icon: building-2 | eyebrow: The unit | title: Kalpa Health | body: Diagnostic laboratories and walk-in clinics in Bengaluru, Mumbai, Delhi, Chennai, Hyderabad and Pune: one laboratory and two clinics in each city.
+icon: building-2 | eyebrow: The unit | title: Kalpa Health | body: Diagnostic laboratories and patient service centres in Dallas, Phoenix, New York, Chicago, Atlanta and Philadelphia: one laboratory and two centres in each metro.
 icon: user-round | eyebrow: The client | title: Dr Priya Menon, COO | body: Runs the business day to day and presents to the board shortly. She asks the questions this week answers.
 icon: users | eyebrow: Your team | title: The GCC data and AI team | body: The same trainee engineers who answered Meera Raghavan. Dr Menon is your internal client for the week. | tone: dark
 ```
 
 ```stats
-value: 5% | label: test volumes, Q1 to Q2 | note: on Dr Menon's dashboard
+value: 5% | label: test volumes, Q2 to Q3 | note: on Dr Menon's dashboard
 value: 18% | label: the plan | note: what the board approved
-value: 6 | label: cities | note: 6 laboratories, 12 clinics
+value: 6 | label: metros | note: 6 laboratories, 12 centres
 value: 10 | label: files | note: exported by her data team
 ```
 
 ```notes
 LIVE, the Programme Head, 3 minutes. Kalpa Health is fictional, like every Kalpa unit; say it once.
-Q1 is April to June and Q2 is July to September, Kalpa Health's financial year. Ask the room which of
+Q2 is April to June and Q3 is July to September, the calendar quarters Kalpa Health reports in. Ask the room which of
 the four numbers they would want to check first, hear two answers, and move on without ruling on
 either.
 ```
@@ -58,10 +58,10 @@ either.
 | Who is asking | What they asked Dr Menon |
 |---|---|
 | The finance head | Where does our lab revenue come from, and which branch of it is short? |
-| The clinics' operations head | Bookings fell in two cities in Q2: how far, and why? |
-| The finance head | Invoices and collections disagree: which are unpaid, and can I trust the figure? |
-| The clinics' operations head | KH-HYD-03 has the worst no-show rate: is the clinic really worse? |
-| The marketing head | Our free home-collection offer lifted bookings 9 percent: did it work? |
+| The patient service centres' operations head | Bookings fell in two metros in Q3: how far, and why? |
+| The finance head | Claims and collections disagree: which are unpaid, and can I trust the figure? |
+| The patient service centres' operations head | KH-ATL-03 has the worst no-show rate: is the centre really worse? |
+| The marketing head | Our free at-home collection offer lifted bookings 9 percent: did it work? |
 
 ```notes
 LIVE, the Programme Head, 4 minutes. Read Dr Menon's line, then each row. These are her heads'
@@ -86,7 +86,7 @@ flowchart LR
     class A unknown
 ```
 
-**Question.** Between Meera's question and Dr Menon's, what changed? Answer as a letter: a) the method, since a laboratory business needs analytical techniques of its own; b) the vocabulary and the cost of an error, while the method holds; c) nothing at all, since bookings and invoices look like orders and payments; d) the tools, since a lab's data needs a new stack and a new language.
+**Question.** Between Meera's question and Dr Menon's, what changed? Answer as a letter: a) the method, since a laboratory business needs analytical techniques of its own; b) the vocabulary and the cost of an error, while the method holds; c) nothing at all, since bookings and claims look like orders and payments; d) the tools, since a lab's data needs a new stack and a new language.
 
 ```notes
 LIVE, the Programme Head, 3 minutes. One minute in pairs, then letters in the chat. Expect a and d
@@ -102,7 +102,7 @@ from learners who feel the domain is unfamiliar. Do not resolve it here; the ans
 |---|---|---|
 | The method | Tree, ladder, reconcile, fair comparison | The same four, unchanged |
 | The vocabulary | Orders, items, cancellations | Bookings, tests, no-shows, and words with no retail twin |
-| The cost of an error | A missed sale or a wasted budget | A patient's test, a clinic, a diagnosis |
+| The cost of an error | A missed sale or a wasted budget | A patient's test, a centre, a diagnosis |
 
 **Kavya's review.** A group that maps Kalpa Health onto the Week 1 method in its own words has done the transfer. A group that waits to be told the mapping has not.
 
@@ -133,11 +133,11 @@ ships. The allocation itself runs after the deck, in its own 30 minutes.
 *Every one is the Weeks 1 and 2 method in a domain you have never seen.*
 
 ```cards
-icon: indian-rupee | eyebrow: Sub-problem 1 | title: Revenue | body: Where lab revenue comes from, and which branch is short.
-icon: calendar-x | eyebrow: Sub-problem 2 | title: Bookings | body: Bookings fell in two cities in Q2: how far, and why.
-icon: receipt | eyebrow: Sub-problem 3 | title: Billing | body: Invoices and collections disagree: which are unpaid, and what is the true figure.
-icon: user-x | eyebrow: Sub-problem 4 | title: No-shows | body: One clinic's no-show rate looks worse: real or noise, and what a fair comparison needs.
-icon: truck | eyebrow: Sub-problem 5 | title: Campaign | body: Free home collection "lifted bookings 9 percent": cause or coincidence.
+icon: dollar-sign | eyebrow: Sub-problem 1 | title: Revenue | body: Where lab revenue comes from, and which branch is short.
+icon: calendar-x | eyebrow: Sub-problem 2 | title: Bookings | body: Bookings fell in two metros in Q3: how far, and why.
+icon: receipt | eyebrow: Sub-problem 3 | title: Billing | body: Claims and remittances disagree: which are unpaid, and what is the true figure.
+icon: user-x | eyebrow: Sub-problem 4 | title: No-shows | body: One centre's no-show rate looks worse: real or noise, and what a fair comparison needs.
+icon: truck | eyebrow: Sub-problem 5 | title: Campaign | body: Free at-home collection "lifted bookings 9 percent": cause or coincidence.
 ```
 
 ```notes
@@ -206,7 +206,7 @@ icon: life-buoy | eyebrow: When stuck | title: Log it, then ask | body: Write th
 ```notes
 LIVE, the Programme Head, 2 minutes. The rule protects the week: a build week that teaches turns
 into a teaching week with a project bolted on. A trainer or TA will answer a domain question (what
-a phlebotomist does, what a package is) and will not answer a method question with the method.
+a phlebotomist does, what a panel is) and will not answer a method question with the method.
 The TAs' reply to "which method do we use?" is a question back: which one did Meera's question need?
 ```
 

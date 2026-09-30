@@ -21,19 +21,19 @@ short, and the part that was keeps falling.
 
 ## The symptom, as the business sees it
 
-Dr Menon's dashboard shows test volumes up 5 percent from Q1 to Q2 against a plan of 18. Each head she
+Dr Menon's dashboard shows test volumes up 5 percent from Q2 to Q3 against a plan of 18. Each head she
 asks names a different cause and backs it with a different number, and nobody has yet shown her which
 of those causes the numbers support.
 
 ## The files that bear on it
 
-- `C2_W03_D01_invoices_STUDENT.csv`
+- `C2_W03_D01_claims_STUDENT.csv`
 - `C2_W03_D01_booking_tests_STUDENT.csv`
 - `C2_W03_D01_test_catalogue_STUDENT.csv`
 - `C2_W03_D01_bookings_legacy_STUDENT.csv`
 - `C2_W03_D01_bookings_newsys_STUDENT.csv`
 - `C2_W03_D01_patients_STUDENT.csv`
-- `C2_W03_D01_clinics_STUDENT.csv`
+- `C2_W03_D01_sites_STUDENT.csv`
 
 Every group holds all ten files, and you may use any of them. The ones above are where this question
 starts.
@@ -45,8 +45,8 @@ to answer each one from your own work.
 
 1. Which branch of Kalpa Health's revenue is short, and by how much against the plan?
 2. What did you count as one test, and why that and not something else?
-3. Which summary did you use for a typical invoice, and why that one?
-4. Does your Q1 and Q2 revenue match the billing export, row for row? Show where every row went.
+3. Which summary did you use for a typical claim, and why that one?
+4. Does your Q2 and Q3 revenue match the billing export, row for row? Show where every row went.
 5. Say your answer in one sentence Dr Menon can carry to the board, with its denominator and its caveat.
 
 ## What your group ships
