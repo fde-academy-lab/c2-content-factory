@@ -1,4 +1,4 @@
-# The rehearsal: a model answer for every Marketing push
+# What does a strong defender say to each Marketing push?
 
 **TRAINER ONLY.** The eleven pushes on the pair lists are the ones in
 `exercises/guided/C2_W01_D05_rehearsal_brief_STUDENT.md`, in its order, and the sharpest push is
@@ -7,6 +7,10 @@ defender says in one breath, with its number and the denominator the number stan
 what to say if Marketing pushes a second time. Every number comes from Thursday's note and its
 sources: `content/W01/D4/trainer/C2_W01_D04_day_sheet_TRAINER.md` (the day's numbers and the traps)
 and, for the rows set aside, `content/W01/D3/trainer/C2_W01_D03_day_sheet_TRAINER.md`.
+
+**Who needs the answer.** The trainer and the TAs, when a pair is stuck in round one and after
+Kavya's minute of review in round two: an answer read before the defender has tried teaches the room
+to wait for it.
 
 Use these in round two after Kavya's minute of review, and in round one only when a pair is stuck.
 Read the answer after the defender has tried, never before. A defender who reaches the same shape in
@@ -19,7 +23,7 @@ flowchart LR
     B --> T["offer the test<br/>what would change your mind, and when"]
 ```
 
-## The numbers every answer draws on
+## Which numbers does every answer draw on?
 
 | Measure | Value |
 |---|---|
@@ -32,7 +36,7 @@ flowchart LR
 | The retention offer | A Rs 11,000 offer pays only above a 45 percent recovery, so it is tested on half the tier |
 | The rows set aside on Wednesday | 14 Q1 rows that were second copies of orders already in the file, by the order_id rule, carrying Rs 19,98,210; with them set aside and the amount written as `twelve` repaired from its migration copy, the totals tie to Finance's books |
 
-## The sharpest push, modelled before round one
+## How is the sharpest push modelled before round one?
 
 The brief carries Marketing's sharpest push, the monsoon sale's Rs 3,395 against Rs 3,200, with the
 segment table and the answer the evidence supports, worked in full. Model it once, aloud, in the four
@@ -44,7 +48,7 @@ practises on pushes they have not seen answered.
 | "So the sale lost money?" | "At 15 percent off it needed 17.6 percent more volume to stand still, and inside each segment spend went down, so as designed it did not pay. Diwali with a random held-back slice in each segment tells us whether a different design does." |
 | "Half of them were members anyway. So what?" | "So the blend compares members with non-members. Inside Retail-Plus the 30 who got the sale spent Rs 4,850 against Rs 5,000 for the 40 who did not, and inside Retail-Core Rs 1,940 against Rs 2,000: 3.0 percent less in both." |
 
-## For pair one
+## How does a defender answer pair one's pushes?
 
 | The push | The answer in one breath | If Marketing pushes again |
 |---|---|---|
@@ -54,7 +58,7 @@ practises on pushes they have not seen answered.
 | "Your caveat says 'not yet'. Meera needs a decision on Monday. Which is it?" | "Three decisions for Monday: do not repeat the sale as designed, test a retention offer on half of Retail-Plus's 22 members, and hold Student's budget; 'not yet' covers only Student, which stands on 12 orders." | "Half the tier is a half-decision." "A Rs 11,000 offer pays only above a 45 percent recovery; testing it on 11 members tells us whether it clears that before we spend it on all 22." |
 | "What would change your mind?" | "For Retail-Plus, the retention test showing no recovery in the half that got the offer; for Student, thirty orders a quarter with the rise intact; for the sale, a Diwali held-back slice in each segment in which the exposed spend more." | "And if you are wrong about Retail-Plus?" "Then it is a Rs 24,420 a quarter mistake, 0.19 percent of revenue, and the half-tier test caps what we spend finding out." |
 
-## For pair two, harder
+## How does a defender answer pair two's harder pushes?
 
 | The push | The answer in one breath | If Marketing pushes again |
 |---|---|---|

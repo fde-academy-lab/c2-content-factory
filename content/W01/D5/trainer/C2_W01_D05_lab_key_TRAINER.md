@@ -1,9 +1,13 @@
-# Lab key: every number a correct run reaches, and every trap with its wrong number
+# What does a correct run of the lab reach, and what wrong number does each trap print?
 
 **TRAINER ONLY.** The data is `v3-lab`, **proposed for client zero v2.3** (tracker v7, 21 September
 2026) and not yet locked. Every number below is printed by
 `trainer/C2_W01_D05_lab_reference_TRAINER.ipynb`; if the lock changes the data, rerun that notebook
 and this page follows it.
+
+**Who needs the answer.** The trainer, who says this morning's numbers aloud at the debrief, and the
+TAs, who read a learner's screen during the lab and name each stall on the observation sheet. A
+number misremembered here becomes a wrong correction to a learner.
 
 Regenerate the data with:
 
@@ -11,15 +15,16 @@ Regenerate the data with:
 python3 data/generate_client_zero.py --version v3-lab --out content/W01/D5/data --stem C2_W01_D05
 ```
 
-## What is planted, and what the room should find
+## What is planted, and what should the room find?
 
-No learner file names any of these records or their values. The debrief's three chapter notebooks
-(`notebooks/C2_W01_D05_01_debrief_quarters_STUDENT.ipynb`, `02_debrief_values`,
-`03_debrief_segments`, named so a folder listing names no trap) run on this export after the lab
-clock stops: they print the control totals, the headlines and the consumer tree, and leave every
-planted count, value, form and place to an empty your-turn cell. The debrief deck and the study notes
-show each trap's mechanism on an invented export (`internal/C2_W01_D05_invented_export_INTERNAL.py`),
-labelled invented; the real values the trainer says aloud are in the day sheet's debrief table.
+No learner file names any of these records or their values, and no learner file carries a number
+computed from this export. The debrief deck, the study notes and the debrief's three chapter
+notebooks (`notebooks/C2_W01_D05_01_debrief_quarters_STUDENT.ipynb`, `02_debrief_values`,
+`03_debrief_segments`, named so a folder listing names no trap) show every trap on an invented export,
+built by `internal/C2_W01_D05_invented_export_INTERNAL.py` into
+`data/C2_W01_D05_invented_orders_STUDENT.csv` and labelled invented. The notebooks' empty your-turn
+cells run each step on this export once a learner types them after the lab; the values the trainer
+says aloud are in the day sheet's said-aloud table.
 
 | Planted | Where it sits | What a correct run does | If nobody finds it by the 65-minute mark |
 |---|---|---|---|
@@ -31,9 +36,9 @@ labelled invented; the real values the trainer says aloud are in the day sheet's
 The clean data's finding is a branch the week never showed: customers flat, frequency flat, and
 Retail-Core's revenue per order down 17.1 percent.
 
-## The numbers a correct run reaches
+## Which numbers does a correct run reach?
 
-### Profile
+### What does the profile show?
 
 | Field | Present | Convertible | Distinct |
 |---|---|---|---|
@@ -49,7 +54,7 @@ Retail-Core's revenue per order down 17.1 percent.
 Typical order on the rows that convert, repeats still in: median Rs 2,110 against a mean of
 Rs 52,057. On the clean data: median Rs 2,120, mean Rs 52,657.
 
-### Clean and reconcile
+### What do cleaning and the reconciliation reach?
 
 | Measure | Value |
 |---|---|
@@ -63,7 +68,7 @@ Rs 52,057. On the clean data: median Rs 2,120, mean Rs 52,657.
 | The bridge | Rs 1,07,23,890 summed as read, less Rs 13,35,410 of repeats, plus Rs 9,85,000 recovered from text, lands on Rs 1,03,73,480 |
 | The second route | The set-aside rows summed come to Rs 13,35,410 and the log's read-back value to Rs 9,85,000, each equal to its move in the bridge |
 
-### The tree, Q1 against Q2, clean
+### What does the clean tree show, Q1 against Q2?
 
 | Segment | Customers | Orders per customer | Revenue per order | Revenue | Orders |
 |---|---|---|---|---|---|
@@ -82,7 +87,7 @@ The fall is Rs 17,22,520, and Business carries Rs 17,10,000 of it (99.3 percent)
 orders; the corporate basket rose. Among consumers the one branch that moved is Retail-Core's
 revenue per order.
 
-### The test, and every route a correct run can take
+### Which routes can a correct run take to the test, and what does each give?
 
 The note's claim is about the same 30 Retail-Core customers in two quarters, so the fair test for it
 keeps each customer's own two quarters together and flips them at random: the paired test, with
@@ -112,7 +117,7 @@ and 0.006, and the between-segment design between 0.0145 and 0.0270.
 
 A learner who tests Business has met the too-few-orders trap; record it.
 
-### The note, as a correct run writes it
+### What does the note say when a correct run writes it?
 
 **Claim.** From Q1 to Q2 booked revenue fell 28.5 percent, from Rs 60,48,000 to Rs 43,25,480, and
 Rs 17,10,000 of the Rs 17,22,520 fall is two fewer corporate orders; among consumers the one branch
@@ -128,7 +133,7 @@ Q2 order's segment was restored from the customer's other orders.
 ask the corporate account owner why C-7304 did not reorder and why C-7300 ordered once where it had
 ordered twice.
 
-## The traps a hurried run falls into, each with its exact wrong number
+## Which traps does a hurried run fall into, and what exact wrong number does each print?
 
 | # | Trap | The wrong number, exactly | The right number | The decision it would have misled | The check that catches it |
 |---|---|---|---|---|---|
@@ -150,7 +155,7 @@ frequency rise that hides the basket fall. Trap 7 is the silence, never the hand
 who shuffled order amounts between segments has made trap 5's mistake, whatever file the code came
 from: name it as the mistake.
 
-## A syntax or runtime error on the way
+## Which runtime error does the file force, and how is it handled?
 
 `ValueError: invalid literal for int() with base 10: '9,85,000'` is what most learners meet first,
 and it is the only error the file forces. It gets its two minutes from the learner, never help from

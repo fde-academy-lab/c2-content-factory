@@ -1,4 +1,4 @@
-# The three timed design cases: model answers
+# What does a strong answer to each timed design case say?
 
 **TRAINER ONLY.** Read each model answer only after the two call-outs. Each is written as a strong
 0 to 3 year candidate would say it aloud in about two minutes. The prompts are in
@@ -6,7 +6,10 @@
 number marked illustrative there is invented for the case; the real-company facts were checked on 30
 September 2026, with their sources below and in the provenance.
 
-## The clock for each case, 13 minutes
+**Who needs the answer.** The trainer, who reads each model answer only after the two call-outs and
+shows the rehearsal deck's answer slide with it, and the TA who is asked where a size comes from.
+
+## How do each case's 13 minutes run?
 
 | Part | Minutes |
 |---|---|
@@ -18,7 +21,7 @@ September 2026, with their sources below and in the provenance.
 
 One minute at the start sets up the round, so the three cases fill the 40-minute slot.
 
-## Case 1: Meera's first read, two hours after the export lands
+## Case 1: what do you leave out when Meera wants a first read in two hours?
 
 **Tag.** [F] You have two hours and a raw export; what do you do first, and what do you skip?
 Descends from the Friday row's interview angle and Tuesday's [S] sales-drop question.
@@ -60,7 +63,7 @@ standalone revenue from operations Rs 16,218.79 crore against Rs 14,050.32 crore
 stores at 30 September 2025, figures provisional and subject to limited review; the quarter's results
 announced in a regulatory filing on 11 October 2025. Bajaj Broking, https://www.bajajbroking.in/share-market-news/dmart-q2-fy2025-26-results-revenue-at-rs-16218-79-crore (verified 30 Sep 2026); IndiaCSR, https://indiacsr.in/dmart-q2-fy26-results-revenue-rises-15-4-to-rs-16218-79-cr-store-count-at-432/ (verified 30 Sep 2026); the results filing on 11 October 2025, Business Today, 11 October 2025, https://www.businesstoday.in/markets/stocks/story/dmart-q2-results-avenue-supermarts-profit-rises-4-to-rs-685-crore-revenue-up-15-497833-2025-10-11 (verified 30 Sep 2026).
 
-## Case 2: zero rejects and a Rs 20 lakh gap, after the migration
+## Case 2: which check runs first when zero rejects meet a Rs 20 lakh gap?
 
 **Tag.** [S] Walk me through how you clean and check a dataset you have never seen. Descends from
 Wednesday's [S] "Finance and your dashboard disagree; what do you do?" and Saturday's [D] anchor on a
@@ -102,7 +105,7 @@ of the Slaughter and May review, and the move from Lloyds Banking Group's platfo
 Proteo4UK is the review's finding as The Register reports it, 19 November 2019,
 https://theregister.com/2019/11/19/tsb_slammed_for_big_bang_it_approach_behind_disastrous_migration (verified 30 Sep 2026).
 
-## Case 3: 42 percent on twelve visits
+## Case 3: can 5 of 12 visits beat 31 percent of 1,200?
 
 **Tag.** [D] A stakeholder attacks your caveat in front of the room; how do you hold it without
 overclaiming? Descends from Friday's [D] and Thursday's [F] "42 percent on 12 users against 31
@@ -161,7 +164,7 @@ new-checkout visits beside the rest already reach 0.80, because the larger side 
 precisely. So D is more evidence than C, 0.91 against 0.80, in a fortnight against half a week. The
 chance of 5 or more conversions in 12 visits at a true 31 percent is 0.303.
 
-## The interview questions of the day, in one breath each
+## How is each interview question answered in one breath?
 
 | Tag | Question | The answer in one breath |
 |---|---|---|
