@@ -100,4 +100,4 @@ chapter's own second-route slide, which stays in the notebook for self-study.
 | Finished with a correct run | Practice problem 4, then the stretch: rerun the whole method on the practice export in 45 minutes |
 
 Tell each learner their step privately during the rehearsal's round one, one learner at a time and
-never aloud or to a group.
+out of the others' hearing.

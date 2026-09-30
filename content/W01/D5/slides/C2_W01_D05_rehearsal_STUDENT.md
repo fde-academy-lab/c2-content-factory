@@ -191,8 +191,8 @@ In pair one each ten minutes runs: two minutes of the note read aloud, five of p
 ```notes
 LIVE, 50 minutes: S1 to S6 and S9 take eight, Marketing's sharpest push, modelled once at S7 with a
 TA, takes four, and the pairs take the other 38. The TAs walk the room. Each TA also uses this round to
-tell each of their learners, quietly and one at a time, the step the lab's observation sheet marked
-for them, never aloud and never to a group.
+tell each of their learners, one at a time and out of the others' hearing, the step the lab's
+observation sheet marked for them.
 ```
 
 ---
@@ -231,7 +231,7 @@ flowchart LR
 About a dozen people are called in fifty minutes, so everybody prepares as if they are next.
 
 ```notes
-LIVE, 50 minutes. Call names from a shuffled list, never by volunteering. The room's push comes
+LIVE, 50 minutes. Call names from a shuffled list and take no volunteers. The room's push comes
 from a learner who has not yet been called. Kavya's review is the trainer's one minute: what held,
 and the one change. This is the first round to cut if the day runs long.
 ```
@@ -378,7 +378,7 @@ value: 3 in 10 | label: chance alone | note: 5 or more of 12 at a true 31%
 
 ```notes
 LIVE, 2 minutes, after the call-outs. D gathers more evidence than C in four times the time; the
-arithmetic is in the trainer's key, for a TA asked, never for the room.
+arithmetic is in the trainer's key for a TA who is asked, and the room hears only the size.
 ```
 
 ---
