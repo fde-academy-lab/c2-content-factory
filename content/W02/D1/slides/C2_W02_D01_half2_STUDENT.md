@@ -4,7 +4,7 @@ Week 2, Day 1. Half two.
 
 Kicker: WEEK 2  ·  MONDAY  ·  HALF TWO
 Quote: My analyst will read every query line by line, without you beside him. Be ready to explain why each one is written the way it is.
-Who: Anand Iyer, CFO, Kalpa Retail, on the suite he wants every Monday
+Who: Anand Iyer, finance controller, Kalpa Retail, on the suite he wants every Monday
 
 ```notes
 LIVE, one minute. The afternoon is sixty minutes: the escalated case with its debrief (45), then
@@ -290,7 +290,7 @@ aloud and nothing else.
 ## S14. Tomorrow: booked is not collected
 *Anand's reply to the Monday suite, left open.*
 
-> "Booked revenue is not collected revenue. Some orders are paid in two instalments, some are refunded, some were never paid at all. Show me, order by order, what we actually collected against what we booked in Q2." Anand Iyer, CFO, Kalpa Retail
+> "Booked revenue is not collected revenue. Some orders are paid in two instalments, some are refunded, some were never paid at all. Show me, order by order, what we actually collected against what we booked in Q2." Anand Iyer, finance controller, Kalpa Retail
 
 ```mermaid
 flowchart LR
