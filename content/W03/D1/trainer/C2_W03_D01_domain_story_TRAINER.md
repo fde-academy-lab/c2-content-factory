@@ -11,7 +11,7 @@ Most of the room has never worked in a business role, and nobody in it has worke
 | **Stop before** | Any Build 1 answer. The story never draws Kalpa Health's volume tree, never says which metro, centre or payer moved, never says whether billed and collected agree, and never says whether the at-home collection offer worked. Those are the groups' to find. |
 | **Where it sits** | It opens Build 1 Monday, before the Programme Head's online introduction, in the place a teaching day gives the 20-minute ask; the Monday day sheet sets which minutes of the day it takes. |
 | **Hands over to** | Dr Priya Menon's ask, read as the story's last line, which the Programme Head's introduction then opens on. |
-| **Cut first** | Part 2 to its drawing and question, then part 6's real cases. Never cut part 3, the money, or part 5, the tree. |
+| **Cut first** | Part 2 to its drawing and question, then part 6's last two sentences, from "On the payers' side". Never cut part 3, the money, or part 5, the tree. |
 
 ```mermaid
 flowchart LR
@@ -67,23 +67,24 @@ Listen for: the draw, the courier and the testing stay where the patient is; the
 
 **Say.** "Kalpa Health tests US patients and bills US payers, and its revenue-cycle and analytics work runs from Kalpa's GCC here in Bengaluru. Two real companies have its shape at national scale. Quest Diagnostics reported $11.0 billion of revenue for 2025, processed about 244 million requisitions and runs about 2,400 patient service centres, many inside large retail stores. Labcorp reported $14.0 billion, with more than 2,200 centres.
 
-"The Bengaluru half has twins too. Optum India is what UnitedHealth Group calls its largest Global Capability Centre. Companies such as AGS Health and Access Healthcare do coding, billing and denial management for many US providers from Indian cities, Chennai, Hyderabad and Bengaluru among them. Kalpa's GCC is the first kind: one company's own team, and Kalpa Health is one of its clients."
+"The Bengaluru half has twins too. Optum India is what UnitedHealth Group calls its largest Global Capability Centre. Companies such as AGS Health and Access Healthcare do coding, billing and denial management for many US providers from Indian cities, Chennai, Hyderabad and Bengaluru among them. So there are two kinds of twin: a US health company's own centre in India, like Optum India, and a firm serving many providers, like AGS Health. Kalpa's GCC is the first kind: one company's own team, and Kalpa Health is one of its clients."
 
-**Draw: the group, five boxes.** The group at the top, Kalpa Health below it with its two halves, the GCC dotted to the side. The dossier's section 2 names the real twins.
+**Draw: the group, four boxes.** The group at the top, Kalpa Health below it, its US half under it and the GCC dotted to the side. The dossier's section 2 names the real twins.
 
 ```mermaid
 flowchart TB
     G["<b>Kalpa Group</b><br/>Singapore HQ"] --> H["<b>Kalpa Health</b><br/>US-facing"]
     H --> U["<b>in US cities</b><br/>centres, labs"]
-    H --> B["<b>in Bengaluru</b><br/>revenue cycle, data"]
-    B -.- C["<b>the GCC</b><br/>Kavya Nair and you"]
+    H -.- C["<b>the GCC, Bengaluru</b><br/>revenue cycle, data,<br/>Kavya Nair and you"]
     classDef unit fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef dark fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class H,U,B unit
+    class H,U unit
     class G,C dark
 ```
 
-**If the room asks** which US cities Kalpa Health is in: "US metro areas; the story does not name them, and the data will show you which."
+**If the room asks** which US cities Kalpa Health is in: "US metro areas; the story does not name them."
+
+**If the files the room opens are still in the India setting**, because the Build 1 data is being regenerated for the US setting: "These files were built before Kalpa Health moved to the US and are being regenerated. The method you apply is the same; read each rupee column as the lab's billed or collected money, and the payer words attach when the new files arrive." Say it only if the room notices.
 
 **If the room asks** whether Quest or Labcorp run billing from India: Quest's 10-K for 2025 names sites in Canada, Finland, Puerto Rico and Mexico and does not mention India. Labcorp's lists a leased Bangalore facility for its biopharma laboratory business, which is drug-development work, and does not describe billing there. Do not say either runs its revenue cycle from India.
 
@@ -91,7 +92,7 @@ flowchart TB
 
 ## Part 3: Where $100 of a lab's charges goes (10 minutes)
 
-**Say.** "James's claim said $180. Start with that number: gross charges, every test at the lab's own list price, the chargemaster. Almost nobody pays it. James's plan has a contract with the lab that sets a price for each test, the allowed amount, and for his two tests it was $60. The other $120 is a contractual adjustment. It is not a loss and not a discount anyone fought for; the lab signed a contract saying it would never collect it.
+**Say.** "James's claim said $180. Start with that number: gross charges, every test at the lab's own list price, the chargemaster. Almost nobody pays it. James's plan has a contract with the lab that sets a price for each test, the allowed amount, and for his two tests it was $60. The other $120 is a contractual adjustment. The lab agreed in its contract never to collect it, so nobody should count it as lost.
 
 "The $60 splits in two: the plan's share and the patient's. James had $400 of deductible left, so the plan paid nothing, and the 835 said so with a code: group PR, patient responsibility, reason code 1, deductible. James owes $60 and gets a statement.
 
@@ -99,7 +100,7 @@ flowchart TB
 
 **Ask the room.** "Of James's $180, how much reached the lab from his plan? Nothing, under $50, $50 to $150, or more than $150?" Take a show of hands for each, then reveal: nothing from the plan, and $60 is owed by James, who may pay in weeks or never. The rooms that guess high are the ones that most need this part.
 
-Likely wrong answer, from whoever reasons it out: "$180 less the cost of the tests." Correct it: the price list is where the claim starts and not what anyone pays; the contract sets $60, and the deductible moves all of it to James. Land it: in a US lab the payer and the plan year decide what a test earns, and the list price decides almost nothing.
+Likely wrong answer: "All $180 from the plan, since he is insured", or "most of it, say $150, and he pays a small copay." Correct it: the price list only starts the claim; the contract sets $60, and the deductible moves all of it to James. Land it: in a US lab the payer and the plan year decide what a test earns, and the list price decides almost nothing.
 
 **Draw: $100's journey, five boxes.** Top to bottom, writing each deduction on its arrow. It stays up for the day.
 
@@ -123,13 +124,13 @@ Then one sentence beside the drawing: a $1 leak from the $40 allowed is 2.5 perc
 
 ## Part 4: Who pays, and who asks (7 minutes)
 
-**Say.** "A US lab bills four kinds of payer. Health insurers, the commercial plans most Americans get through an employer, and the private plans that run Medicare Advantage. Government payers, traditional Medicare for people 65 and older, and Medicaid, run by each state for people with low incomes. Clients, the doctors, hospitals and employers the lab bills directly. And patients, for their deductibles, coinsurance and copays.
-
-"Then the people at Kalpa Health who want something from us. Dr Priya Menon, the COO, wants to know which part of the business is short. The revenue-cycle head wants to know which claims will be denied and which unpaid ones to chase first, and that team works from the GCC. The lab director watches turnaround time. Payer contracting wants to know whether each plan pays what its contract says. Finance wants our numbers to match its books, and compliance wants to know whether we need patient-level data at all. Kavya Nair checks everything before it leaves the team. The story names only Dr Menon among them."
+**Say.** "A US lab bills four kinds of payer. Health insurers, the commercial plans most Americans get through an employer, and the private plans that run Medicare Advantage. Government payers, traditional Medicare for people 65 and older, and Medicaid, run by each state for people with low incomes. Clients, the doctors, hospitals and employers the lab bills directly. And patients, for their deductibles, coinsurance and copays."
 
 **Ask the room.** "In 2025 Quest's patients were billed for 1 percent of its testing requisitions. What share of the money Quest was waiting to collect at year end do you think patients owed: about 1 percent, about 5, about 20, or about 50?"
 
 Listen for the reasons. Likely wrong answer: "About 1 percent, the same as their share of requisitions." Correct it: 20 percent, because every insured patient's deductible and coinsurance is billed to the patient too, and a patient's balance is small, arrives late and is paid last, so it piles up in the receivable. Land it: who pays decides how fast the money comes, and patients are the slowest payer a lab has.
+
+**Then say.** "Now the people at Kalpa Health who want something from us. Dr Priya Menon, the COO, wants to know which part of the business is short. The revenue-cycle head wants to know which claims will be denied and which unpaid ones to chase first, and that team works from the GCC. The lab director watches turnaround time. Payer contracting wants to know whether each plan pays what its contract says. Finance wants our numbers to match its books, and compliance wants to know whether we need patient-level data at all. Kavya Nair checks everything before it leaves the team. Among Kalpa Health's heads, the story names only Dr Menon."
 
 **Draw: who asks, six boxes.** The COO on the left, the functions in the middle, dashed for the unnamed heads, the GCC on the right, and a dotted arrow from every box to the GCC. The dossier's section 4 shows each function.
 
@@ -181,15 +182,15 @@ flowchart LR
     class G,K dark
 ```
 
-**Leave it on the board.** The groups will need the money half of their picture all week, and this is it; the volume half is theirs to draw.
+**Leave it on the board.** It is the picture of how a US lab's money arrives, and the volume half is the groups' to draw.
 
 ---
 
 ## Part 6: The rules, and from describing to acting (6 minutes)
 
-**Say.** "A US lab's data sits under rules. HIPAA's Privacy Rule protects health information that identifies a patient, PHI, held by labs, plans and clearinghouses. Use only the minimum a task needs. Data stops being PHI when an expert certifies it or when eighteen kinds of identifier come out, every date except the year among them. A company that handles PHI for a lab works under a written business associate agreement. And HIPAA itself has no rule keeping PHI inside the US: HHS says data may be stored abroad under such an agreement. The limits on offshore work come from contracts: the agreement, the plans' contracts, and some states' Medicaid contracts, such as Texas's, which forbids moving the state's data outside the US at all.
+**Say.** "A US lab's data sits under rules. HIPAA, the US health privacy law, protects health information that identifies a patient, which it calls PHI, held by labs, plans and clearinghouses. Use only the minimum a task needs. A company that handles PHI for a lab works under a written business associate agreement. And HIPAA itself has no rule keeping PHI inside the US: HHS, the US health department, says data may be stored abroad under such an agreement. The limits on offshore work come from contracts: the agreement, the plans' contracts, and some states' Medicaid contracts, such as Texas's, which forbids moving the state's data outside the US at all.
 
-"Then the ladder. Analytics describes and a person reads it. A model predicts and a person decides. A model recommends and a person approves. An agent acts within limits, and nobody checks before it takes effect. The further right, the more a wrong answer costs. On the payers' side, lawsuits allege that an algorithm was used to deny care to Medicare Advantage patients, and in February 2024 CMS told those plans that an algorithm may assist but the decision must rest on the individual patient."
+"Then the ladder. Analytics describes and a person reads it. A model predicts and a person decides. A model recommends and a person approves. An agent acts within limits, and nobody checks before it takes effect. The further right, the more a wrong answer costs. On the payers' side, lawsuits allege that an algorithm was used to deny care to Medicare Advantage patients, and in February 2024 CMS, the agency that runs Medicare, told those plans that an algorithm may assist while the decision rests on the individual patient."
 
 **Ask the room.** "Which of these should the team in Bengaluru do: read a patient's name to call a plan about a claim, train a denial model on de-identified claims, let an agent send an appeal with no person reading it, or accept a diagnosis code a model suggested to get a claim paid?"
 

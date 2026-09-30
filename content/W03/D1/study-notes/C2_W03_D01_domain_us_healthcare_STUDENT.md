@@ -12,7 +12,7 @@ About a 45 minute read · 6 diagrams and 28 tables
 
 ## 1. A day in the life of a US lab
 
-One weekday at one Kalpa Health patient service centre in a US metro area, at the laboratory its samples travel to, and at the GCC in Bengaluru introduces the roles and most of the numbers the rest of the dossier uses. The numbers are illustrative, chosen for easy arithmetic, except Dr Priya Menon's figures at the end, which are the story's own. The patient, James Carter, is as synthetic as every Kalpa Health record.
+One weekday at one Kalpa Health patient service centre in a US metro area, at the laboratory its samples travel to, and at the GCC in Bengaluru introduces the roles and most of the numbers the rest of the dossier uses. The numbers are illustrative, chosen for easy arithmetic, except Dr Priya Menon's figures at the end, which are the story's own. The patient, James Carter, 58, is as synthetic as every Kalpa Health record.
 
 ```mermaid
 flowchart LR
@@ -33,17 +33,17 @@ flowchart LR
 
 **The order comes first.** A week earlier James's doctor saw him for his diabetes and wrote an order, which a lab calls a **requisition**: a blood sugar test that shows his average over about three months, the HbA1c, and a cholesterol panel, a group of tests ordered and billed together. The requisition carries the reason for the tests as a diagnosis code, E11.9 for type 2 diabetes without complications, the doctor's identifier and James's insurance. Nothing about the tests is Kalpa Health's choice; a lab tests what a doctor orders.
 
-**At the front desk** of the patient service centre, the place where a lab draws blood, the registration clerk scans James's insurance card, and an electronic question to his health plan comes back in seconds: the plan is active, the lab is in its network, and James still has $400 of his yearly deductible to pay before the plan pays anything. The clerk tells him, before a needle is out, that today's tests may land on that deductible. An older patient behind him is on Medicare and has an order for a test that Medicare may not pay for with the reason his doctor gave; the clerk hands her a form to sign that says so, before the draw, so that the bill can go to her if Medicare refuses (section 7 names the form).
+**At the front desk** of the patient service centre, the place where a lab draws blood, the registration clerk scans James's insurance card and sends an electronic question to his health plan, and the answer comes back in seconds: the plan is active, the lab is in its network, which means the plan has a contract with the lab that sets its prices, and James still has $400 of his yearly deductible to pay before the plan pays anything. The clerk tells him, before a needle is out, that today's tests may land on that deductible. An older patient behind him is on Medicare, the federal health insurance for people 65 and older, and has an order for a test that Medicare may not pay for with the reason his doctor gave; the clerk hands her a form to sign that says so, before the draw, so that the bill can go to her if Medicare refuses (section 7 names the form).
 
 **In the draw room** a phlebotomist, the person trained to draw blood, fills two tubes and sticks a barcode on each. The barcode is the **accession number**, the key that ties each tube to James's requisition for the rest of its life. The centre draws blood from 90 patients in the day, and a mobile phlebotomist visits 8 patients at home who cannot travel.
 
-**At the laboratory** a courier brings the day's tubes in the evening. Machines called analysers run the tests overnight, a technologist checks the results that fall outside the usual range, and James's results are released to his doctor's system and his patient portal the next morning, 18 hours after they were drawn. That time, from the draw to the released result, is the lab's **turnaround time**, and it is what doctors notice first.
+**At the laboratory** a courier brings the day's tubes in the evening. Machines called analysers run the tests overnight, a technologist checks the results that fall outside the usual range, and James's results are released to his doctor's system and his patient portal the next morning, 18 hours after they were drawn. That time, from the draw to the released result, is the lab's **turnaround time**, and it is what doctors notice first. On the wall by the analysers hangs the lab's federal certificate, without which Medicare would not pay it for a single test.
 
 **In the billing system**, James's requisition becomes a claim. Each test gets its procedure code, the diagnosis code travels with it, and the price comes from the lab's own price list, the **chargemaster**: $180 of **gross charges** for the two tests. The claim leaves as an electronic file called an 837, through a **clearinghouse** that checks its format and forwards it to the plan. That day one of the centre's 90 claims bounces back from the clearinghouse within minutes because a member ID was typed with a digit missing. It was never seen by the plan, so it is a **rejection**, fixed and resent the same day.
 
 **Three weeks later** the plan's answer arrives as another electronic file, an 835, the **remittance**. Of James's $180, the plan's contract with Kalpa Health allows $60, the **allowed amount**; the other $120 is a **contractual adjustment** that the lab agreed never to collect. The plan pays nothing, because the $60 falls inside James's deductible, and a code on the remittance says so: the $60 is **patient responsibility**, and James gets a statement. On the same remittance another patient's claim is **denied**, with a code that says the plan's approval was needed before that test and was never asked for. That claim is now work.
 
-**At the GCC in Bengaluru**, where it is already the next day, Kalpa Health's revenue-cycle team picks up what the US day left. Coders check the claims that failed the billing system's checks. The accounts receivable team works claims still unpaid after 30 days, asking each plan where the money is. Kavya Nair's data and AI team refreshes the revenue-cycle dashboard from the day's claims and remittances, and none of them sees James's name, because the tables they query carry an identifier in its place (section 7 says why).
+**At the GCC in Bengaluru**, where it is already the next day, Kalpa Health's revenue-cycle team picks up what the US day left. Medical coders, the people who assign the procedure and diagnosis codes, check the claims that failed the billing system's checks. The accounts receivable team works claims still unpaid after 30 days, asking each plan where the money is. The data and AI team, where Kavya Nair is the senior analyst, refreshes the revenue-cycle dashboard from the day's claims and remittances, and none of them sees James's name, because the tables they query carry an identifier in its place (section 7 says why).
 
 **On Monday** the COO, Dr Priya Menon, reads one page: the business grew 5 percent against a plan of 18, and she wants to know which part of it is short. That is the question Build 1 answers.
 
@@ -51,7 +51,7 @@ flowchart LR
 
 ## 2. Which real company is Kalpa Health like
 
-If you have had a blood test in India, you probably paid at the counter or on an app, and the lab's bill ended there. In the US the same draw usually starts a conversation between three parties, the lab, the patient's health plan and the patient, which can take weeks to settle. The US spent $5.3 trillion on health care in 2024, $15,474 a person and 18.0 percent of its economy (CMS, National Health Expenditure fact sheet, updated 24 June 2026), and a great deal of the work inside that number is the paperwork of who owes whom.
+If you have had a blood test in India, you probably paid at the counter or on an app, and the lab's bill ended there. In the US the same draw usually starts a conversation between three parties, the lab, the patient's health plan and the patient, which can take weeks to settle. The US spent $5.3 trillion on health care in 2024, $15,474 a person and 18.0 percent of its economy (CMS, the Centers for Medicare & Medicaid Services, the federal agency that runs Medicare; National Health Expenditure fact sheet, updated 24 June 2026), and a great deal of the work inside that number is the paperwork of who owes whom.
 
 ```mermaid
 flowchart TB
@@ -68,7 +68,7 @@ flowchart TB
 
 ### The labs Kalpa Health resembles
 
-Kalpa Health is a diagnostics business serving the US market: its laboratories and patient service centres test US patients and bill US payers (client zero, section 1c). Two real companies have that shape at national scale.
+Kalpa Health is a diagnostics business serving the US market: its laboratories and patient service centres test US patients and bill US payers. Two real companies have that shape at national scale.
 
 **Quest Diagnostics** reported net revenues of $11,035 million for 2025, $10,785 million of them from diagnostic testing. It processed about 244 million test requisitions that year, and many of its about 2,400 patient service centres sit inside large retail stores (Quest Diagnostics, Form 10-K for 2025, filed 26 February 2026). Since November 2023 it has also sent phlebotomists to patients' homes, launching with 5,000 of them (Quest newsroom, 9 November 2023).
 
@@ -78,7 +78,7 @@ Both measure their testing business the same way: how many requisitions came in,
 
 ### The team you join, and its real twins
 
-Kalpa Health's analytics and revenue-cycle work runs from Kalpa's GCC in Bengaluru (client zero, section 1c). India has many teams doing that work for US health care, of two kinds.
+Kalpa Health's analytics and revenue-cycle work runs from Kalpa's GCC in Bengaluru. India has many teams doing that work for US health care, of two kinds.
 
 | Kind | Real examples, each as the company describes itself | What the work is |
 |---|---|---|
@@ -87,7 +87,7 @@ Kalpa Health's analytics and revenue-cycle work runs from Kalpa's GCC in Bengalu
 
 Kalpa's GCC is the first kind: one company's own centre, serving its units, with Kalpa Health among them. Your stakeholders run a business in US cities and judge you by whether their decision improved, and at Kalpa a senior on your own team, Kavya Nair, checks every number first.
 
-Quest and Labcorp are listed companies with thousands of centres. Kalpa Health is fictional, and the story fixes only its setting: dollars, US metro areas, payers, claims, denials and prior authorisation, Dr Priya Menon as COO, and synthetic records; every size in this dossier is illustrative.
+Quest and Labcorp are listed companies with thousands of centres. Kalpa Health is fictional: a US-facing lab business whose COO is Dr Priya Menon and whose records are synthetic, and every size given for it in this dossier is illustrative.
 
 ---
 
@@ -103,10 +103,10 @@ A US lab bills four kinds of payer, and Quest's own split shows how differently 
 |---|---|---|---|---|
 | Health insurers | Commercial plans, most bought through an employer, and the private plans that run Medicare Advantage and many Medicaid programmes | 43 percent | 39 percent | 27 percent |
 | Government payers | Traditional Medicare and Medicaid, paying from their own fee schedules | 17 percent | 16 percent | 8 percent |
-| Clients | Doctors, hospitals and employers the lab bills directly, who may bill onward | 37 percent | 31 percent | 43 percent |
+| Clients | Doctors, hospitals and employers the lab bills directly at a price agreed between them; a hospital that sends its patients' samples out pays the lab and bills the patient's plan itself | 37 percent | 31 percent | 43 percent |
 | Patients | Patients without coverage, and every insured patient's deductible, coinsurance and copay | 1 percent | 12 percent | 20 percent |
 
-Source: Quest Diagnostics, Form 10-K for 2025, which says the patient line includes coinsurance and deductibles. Read the last row twice: patients sent 1 percent of the requisitions billed to them and carried 20 percent of what Quest was waiting to collect, because a patient's balance is small, arrives late and is paid last.
+Source: Quest Diagnostics, Form 10-K for 2025, which says the patient line includes coinsurance and deductibles. Read the last row twice. Only 1 percent of requisitions were billed to patients alone, yet patients brought 12 percent of testing revenue, because every insured patient's deductible and coinsurance is billed to the patient as well. At year end they owed 20 percent of what Quest was waiting to collect, since a patient's balance comes in slowly and is often the last bill paid.
 
 Behind those payers: employment-based insurance covered 53.5 percent of Americans in 2025 and 7.9 percent had no coverage all year (US Census Bureau, 15 September 2026), and 55 percent of the Medicare beneficiaries able to choose were in a Medicare Advantage plan run by a private insurer in March 2026 (KFF, 5 June 2026). A lab's payer mix, the share of its tests each payer pays for, decides its prices more than its price list does.
 
@@ -152,36 +152,11 @@ So of every $100 a lab bills at list price, about $37 is revenue and about $5 is
 | Contribution if James pays | 15 | What the claim adds towards fixed costs |
 | Contribution if James never pays | minus 45 | The tests were performed and paid for by the lab alone |
 
-The same tests for a patient whose deductible was met would have brought most of the $60 from the plan within weeks, less any coinsurance or copay. For a patient on traditional Medicare they bring the fee schedule's price and, for most covered lab tests, nothing from the patient (section 7). Those prices are small: Medicare's fee schedule for the last quarter of 2026 pays between $7.77 and $13.39 for each of four routine blood-test codes, 85025, 80053, 83036 and 80061 (CMS, Clinical Laboratory Fee Schedule file for 2026, fourth quarter). The test is identical in all three cases, and the payer and the plan year decide what it earns.
+The same tests for a patient whose deductible was met would have brought most of the $60 from the plan within weeks, less any coinsurance or copay. For a patient on traditional Medicare they bring the fee schedule's price and, for most covered lab tests, nothing from the patient (section 7). Those prices are small: Medicare's fee schedule for the last quarter of 2026 pays between $7.77 and $13.39 for each of four routine blood-test codes, 85025, 80053, 83036 and 80061 (CMS, Clinical Laboratory Fee Schedule file for 2026, fourth quarter). James's two tests are the last two, so Medicare would have paid $9.71 plus $13.39, $23.10, against the $60 his commercial plan allows. The test is identical in all three cases, and the payer and the plan year decide what it earns.
 
-### The paperwork: codes and transactions
+### The paperwork, in brief
 
-A claim is a set of codes, and a lab gets paid only when every one is right. Five code sets and five electronic transactions carry James's tests from the order to the cash.
-
-| Code or transaction | What it says | Who keeps it |
-|---|---|---|
-| CPT | Which procedure was performed: each test or panel has a five-digit code, and the pathology and laboratory codes run from 80000 to 89999 (CMS, NCCI policy manual for 2026, chapter 10) | The American Medical Association, whose CPT Editorial Panel is appointed by the AMA Board of Trustees; the descriptions are the AMA's copyright (AMA, CPT overview) |
-| HCPCS Level II | Supplies, services and some tests that CPT does not cover, as one letter and four digits; CPT itself is HCPCS Level I | CMS, which publishes the files every quarter (CMS, HCPCS pages) |
-| ICD-10-CM | Why the test was ordered: the diagnosis. James's is E11.9, "Type 2 diabetes mellitus without complications" | The National Center for Health Statistics at CDC; each year's code set takes effect on 1 October, so the set in use from 1 October 2026 is the 2027 one (CDC; CMS ICD-10 page) |
-| NPI | Who ordered and who billed: "a unique 10-digit number used to identify health care providers" | CMS, through its provider registry, NPPES (CMS, NPI page) |
-| 270 and 271 | The eligibility question at the front desk and the plan's answer | X12, as HIPAA's adopted standard, version 5010 since 1 January 2012 (CMS, adopted standards) |
-| 278 | A request for a plan's review of a service, prior authorisation among them | X12 |
-| 837 | The claim itself, in its professional (837P) or institutional (837I) form | X12 |
-| 276 and 277 | "Where is my claim?" and the plan's answer | X12 |
-| 835 | The remittance: what was paid, adjusted or denied, claim by claim, with the reasons as codes | X12; Medicare sends every electronic remittance as an 835 in version 5010 (CMS) |
-
-**The reason codes on an 835.** Each dollar not paid carries a group code, which says who bears it, and a claim adjustment reason code, a CARC, which says why; remittance advice remark codes, RARCs, add detail. A committee under X12 maintains the CARCs and CMS maintains the RARCs, and X12 publishes both lists, updated three times a year (CMS, Claims Processing Manual, chapter 22). The four group codes are CO, a contractual obligation the lab absorbs; PR, patient responsibility; OA, other adjustments; and PI, a reduction the payer initiated. Six CARCs a lab sees every week, in X12's own words:
-
-| CARC | X12's description | What the lab does next |
-|---|---|---|
-| 1 | "Deductible Amount" | Bills the patient |
-| 2 | "Coinsurance Amount" | Bills the patient |
-| 16 | "Claim/service lacks information or has submission/billing error(s)." | Corrects the claim and sends it again |
-| 29 | "The time limit for filing has expired." | Writes it off, and asks why it went late |
-| 50 | "These are non-covered services because this is not deemed a 'medical necessity' by the payer." | Checks the diagnosis and the documentation, then appeals or bills the patient where an ABN was signed |
-| 197 | "Precertification/authorization/notification/pre-treatment absent." | Asks whether approval was needed and missed, and fixes the step that missed it |
-
-James's remittance carried group code PR with CARC 1: the $60 is his, and the reason is his deductible.
+A claim is a set of codes, and a lab is paid only when every one is right. A CPT code says which test was performed, an ICD-10-CM code says why it was ordered, the claim travels as an 837 and the payer's answer comes back as an 835, and on the 835 every dollar not paid carries a group code for who bears it and a reason code for why. James's remittance carried group code PR, patient responsibility, with reason code 1, deductible: the $60 is his. Section 6 ends with the full set of codes and files, and the reason codes a lab sees every week.
 
 ### Working capital: the wait for the money
 
@@ -209,22 +184,24 @@ flowchart LR
     class COO,GCC dark
 ```
 
-Solid arrows are reporting lines, and every dotted arrow is an ask that reaches the data team. The revenue-cycle work itself runs from the GCC too (client zero section 1c), so some of the people who ask sit a floor away from you in Bengaluru, and the people they answer to sit in the US.
+Solid arrows are reporting lines, and every dotted arrow is an ask that reaches the data team. The revenue-cycle work itself runs from the GCC too, so some of the people who ask sit a floor away from you in Bengaluru, and the people they answer to sit in the US.
 
-| Role | Owns | Asks the data team | What a wrong number costs them | At Kalpa Health |
-|---|---|---|---|---|
-| COO | Growth against plan, and where money and staff go | Which part of the business is short, and what do I do about it? | Staff and money moved to the wrong centres or the wrong payers | Dr Priya Menon |
-| Lab director | Test quality, the analysers, turnaround time, the lab's certificate (section 7) | Where is turnaround slipping, and how many samples will arrive tomorrow? | Late results that doctors notice, or a night shift staffed for the wrong volume | Not named |
-| Patient service operations | The centres, the phlebotomists and the home visits | Which centres are overloaded, and where should the next one open? | Queues in one centre and idle staff in the next | Not named |
-| Revenue cycle | Coding, claims, denials, appeals, the accounts receivable | Which claims will be denied, which denials are worth appealing, and which unpaid claims to chase first? | Money left uncollected, or claims chased past the payer's filing deadline | Not named; the team works from the GCC |
-| Payer contracting | The contracts that set each plan's allowed amounts | What does each plan really pay us for each test, against what the contract says? | A contract renewed at rates the plan quietly underpays | Not named |
-| Finance | The books, the monthly close, cash | Do your numbers match my books, and when does the cash arrive? | Revenue reported that never turns into cash | Not named |
-| Compliance, with the privacy and security officials | What data may be used, by whom, for what | Does this analysis need patient-level data at all, and who can see it? | A breach of patients' data, with fines and patients to notify | Not named |
-| Physician and client services | The doctors' practices that send orders | Which practices wait longest for their results, and what do they order most? | A practice lost to a faster lab without anyone noticing | Not named |
-| Data platform | The warehouse and its pipelines | Query it, do not export it; tell me before you break it. | One broken feed reaches every dashboard | The data platform lead |
-| Data and AI team | The analyses and models, and whether they are trusted | Show me the baseline, the evidence, and a second way to reach the number. | Trust, which one wrong number can lose | Kavya Nair, the senior analyst, and the trainees |
+| Role | Owns | Asks the data team | What a wrong number costs them |
+|---|---|---|---|
+| COO, Dr Priya Menon | Growth against plan, and where money and staff go | Which part of the business is short, and what do I do about it? | Staff and money moved to the wrong centres or the wrong payers |
+| Lab director | Test quality, the analysers, turnaround time, the lab's certificate (section 7) | Where is turnaround slipping, and how many samples will arrive tomorrow? | Late results that doctors notice, or a night shift staffed for the wrong volume |
+| Patient service operations | The centres, the phlebotomists and the home visits | Which centres are overloaded, and where should the next one open? | Queues in one centre and idle staff in the next |
+| Revenue cycle | Coding, claims, denials, appeals, the accounts receivable | Which claims will be denied, which denials are worth appealing, and which unpaid claims to chase first? | Money left uncollected, or claims chased past the payer's filing deadline |
+| Payer contracting | The contracts that set each plan's allowed amounts | What does each plan really pay us for each test, against what the contract says? | A contract renewed at rates the plan quietly underpays |
+| Finance | The books, the monthly close, cash | Do your numbers match my books, and when does the cash arrive? | Revenue reported that never turns into cash |
+| Compliance, with the privacy and security officials | What data may be used, by whom, for what | Does this analysis need patient-level data at all, and who can see it? | A breach of patients' data, with fines and patients to notify |
+| Physician and client services | The doctors' practices that send orders | Which practices wait longest for their results, and what do they order most? | A practice lost to a faster lab without anyone noticing |
+| Data platform | The warehouse and its pipelines | Query it, do not export it; tell me before you break it. | One broken feed reaches every dashboard |
+| Data and AI team | The analyses and models, and whether they are trusted | Show me the baseline, the evidence, and a second way to reach the number. | Trust, which one wrong number can lose |
 
-The tension that runs through a lab sits between the first rows and the last ones: operations is measured on tests performed and results out on time, the revenue cycle on dollars collected, and a test that was performed perfectly can still earn nothing if its claim went out wrong.
+Of these heads, the story names only Dr Priya Menon; Kavya Nair is your senior on the data team, and the data platform lead owns the warehouse.
+
+The tension that runs through a lab sits between lab operations and the revenue cycle: operations is measured on tests performed and results out on time, the revenue cycle on dollars collected, and a test that was performed perfectly can still earn nothing if its claim went out wrong.
 
 ---
 
@@ -232,7 +209,7 @@ The tension that runs through a lab sits between the first rows and the last one
 
 James's tests were charged at $180, allowed at $60 and owed by James. When a lab's cash falls short, each of those numbers is a suspect: the lab charged less, the plans allowed less, more claims were refused, or the money is still on its way, and a metric exists to say which.
 
-A lab earns when it performs a test and collects for it. How many tests it performs, and where, is a tree you have drawn before in Kalpa Retail's words, and Build 1 is where you draw it again in these. This section is the other half: what happens to a test's charge on its way to cash, which a retail tree never needed because a shopper pays at the till. Below, the ten metrics on the card come as a formula, a worked number, the trap that most often makes each lie, and who asks for it.
+A lab earns when it performs a test and collects for it. How many tests it performs, and where, is a tree you have drawn before in Kalpa Retail's words, and Build 1 is where you draw it again in these. This section is the other half: what happens to a test's charge on its way to cash, which a retail tree never needed because a shopper pays at the till. Below, ten metrics come as a formula, a worked number, the trap that most often makes each lie, and who asks for it.
 
 The picture to keep from this dossier is the tree below. Gross charges are what the lab bills at its own prices; the contracts take most of that away before anyone pays, and what is left, the allowed amount, splits between the payer and the patient. Denials and unpaid patient balances leak out before the money arrives, and two measures set the pace of the rest: how clean the claims are when they leave, and how long the money takes to come back.
 
@@ -318,7 +295,7 @@ For scale: insurers selling plans on HealthCare.gov denied 19 percent of in-netw
 |---|---|
 | Formula | Clean claim rate = claims that pass the billing system's edits with no manual intervention / claims entered for billing, counted before any claim leaves |
 | Worked | 10,560 of 12,000 passed every edit untouched, 88 percent |
-| The trap | Clean is not paid: the rate is counted before the claim leaves, so it says the lab's own checks found nothing, and the plan can still deny the claim; a clean claim rate near 100 percent can sit beside a rising denial rate |
+| The trap | A clean claim can still be denied: the rate is counted before the claim leaves, so it says the lab's own checks found nothing, and the plan can still deny the claim; a clean claim rate near 100 percent can sit beside a rising denial rate |
 | Who asks | The revenue cycle and the billing team |
 
 ### Days in accounts receivable
@@ -362,7 +339,7 @@ At the Monday revenue-cycle meeting the head of the accounts receivable team say
 | Medicaid | Health coverage for people with low incomes, run by each state with federal money | "Each state's Medicaid has its own rules, so check the state before the code." |
 | Requisition | The order for tests, from a doctor, with the patient, the tests and the reason | "No diagnosis code on the requisition means no clean claim." |
 | Accession number | The barcode that ties a sample to its requisition inside the lab | "Trace it by accession number; the patient's name never leaves the lab system." |
-| Panel | A group of tests ordered and billed together under one code | "The cholesterol panel is one line on the claim." |
+| Panel | A group of tests ordered and billed together under one code | "The doctor ordered the cholesterol panel, so the lab runs its tests under one code." |
 | Turnaround time | The time from the draw to the released result | "Turnaround slipped past 24 hours on Mondays, when the weekend's samples pile up." |
 | Chargemaster | The lab's own price list for every test it bills | "Nobody pays the chargemaster price; it is where the claim starts." |
 | Gross charges | The tests billed at chargemaster prices | "Gross charges rose because the price list did." |
@@ -381,6 +358,7 @@ At the Monday revenue-cycle meeting the head of the accounts receivable team say
 | Rejection | A claim sent back before the payer processed it, usually for a format error; it is fixed and sent again | "Rejections are cheap to fix and should be gone by lunch." |
 | Denial | A payer's decision, after processing, not to pay all or part of a claim | "Denials cost money to work, so find out why they happen before we hire more people." |
 | Remittance | The payer's answer: what was allowed, paid, adjusted or denied, and why | "Post the remittance before you call the plan; the answer may already be there." |
+| CARC | A claim adjustment reason code: the standard code on a remittance that says why a dollar was not paid | "Most of this plan's denials carry CARC 197, so fix the authorisation step first." |
 | Appeal | A request to the payer to reverse a denial, with evidence | "Appeal the necessity denials; the documentation is on file." |
 | Prior authorisation | A payer's approval, required before some services, that it will cover them | "The genetic panels need prior authorisation, and nobody asked for it." |
 | Medical necessity | A payer's test of whether a service is needed for the patient's condition | "The diagnosis code on the order did not support medical necessity for that test." |
@@ -390,6 +368,33 @@ At the Monday revenue-cycle meeting the head of the accounts receivable team say
 | Business associate | A company that handles PHI for a covered organisation under a written agreement | "An offshore coding vendor works as a business associate, inside the agreement's limits." |
 | Minimum necessary | The rule to use or share only the PHI a task needs | "The denial model needs the codes and the payer, not the patient's address." |
 
+### The codes and files a claim carries
+
+Four code sets and five kinds of electronic file carry James's tests from the order to the cash.
+
+| Code or transaction | What it says | Who keeps it |
+|---|---|---|
+| CPT | Which procedure was performed: each test or panel has a five-digit code, and the pathology and laboratory codes run from 80000 to 89999 (CMS, NCCI policy manual for 2026, chapter 10) | The American Medical Association, whose CPT Editorial Panel is appointed by the AMA Board of Trustees; the descriptions are the AMA's copyright (AMA, CPT overview) |
+| HCPCS Level II | Supplies, services and some tests that CPT does not cover, as one letter and four digits; CPT itself is HCPCS Level I | CMS, which publishes the files every quarter (CMS, HCPCS pages) |
+| ICD-10-CM | Why the test was ordered: the diagnosis. James's is E11.9, "Type 2 diabetes mellitus without complications" | The National Center for Health Statistics at CDC; each year's code set takes effect on 1 October, so the set in use from 1 October 2026 is the 2027 one (CDC; CMS ICD-10 page) |
+| NPI | Who ordered and who billed: "a unique 10-digit number used to identify health care providers" | CMS, through its provider registry, NPPES (CMS, NPI page) |
+| 270 and 271 | The eligibility question at the front desk and the plan's answer | X12, as HIPAA's adopted standard, version 5010 since 1 January 2012 (CMS, adopted standards) |
+| 278 | A request for a plan's review of a service, prior authorisation among them | X12 |
+| 837 | The claim itself, in its professional (837P) or institutional (837I) form | X12 |
+| 276 and 277 | "Where is my claim?" and the plan's answer | X12 |
+| 835 | The remittance: what was paid, adjusted or denied, claim by claim, with the reasons as codes | X12; Medicare sends every electronic remittance as an 835 in version 5010 (CMS) |
+
+**The reason codes on an 835.** Each dollar not paid carries a group code, which says who bears it, and a claim adjustment reason code, a CARC, which says why; remittance advice remark codes, RARCs, add detail. A committee under X12 maintains the CARCs and CMS maintains the RARCs, and X12 publishes both lists, updated three times a year (CMS, Claims Processing Manual, chapter 22). The four group codes are CO, a contractual obligation the lab absorbs; PR, patient responsibility; OA, other adjustments; and PI, a reduction the payer initiated. Six CARCs a lab sees every week, in X12's own words:
+
+| CARC | X12's description | What the lab does next |
+|---|---|---|
+| 1 | "Deductible Amount" | Bills the patient |
+| 2 | "Coinsurance Amount" | Bills the patient |
+| 16 | "Claim/service lacks information or has submission/billing error(s)." | Corrects the claim and sends it again |
+| 29 | "The time limit for filing has expired." | Writes it off, and asks why it went late |
+| 50 | "These are non-covered services because this is not deemed a 'medical necessity' by the payer." | Checks the diagnosis and the documentation, then appeals, or bills the patient where the patient signed Medicare's advance notice (section 7) |
+| 197 | "Precertification/authorization/notification/pre-treatment absent." | Asks whether approval was needed and missed, and fixes the step that missed it |
+
 ---
 
 ## 7. Compliance and the rules the data team works under
@@ -398,7 +403,7 @@ James's morning passed through most of the rules below: the lab's certificate on
 
 | Rule, and what it requires | What it means for an analyst or an AI system |
 |---|---|
-| **HIPAA's Privacy Rule.** It binds covered entities: health plans, clearinghouses, and providers that send health information electronically in the standard transactions (45 CFR 160.103). It protects identifiable health information they hold "in any form or media, whether electronic, paper, or oral", which is **protected health information**, PHI (HHS, Summary of the HIPAA Privacy Rule), and each covered entity designates a privacy official (45 CFR 164.530(a)). | A lab that bills electronically is a covered entity. A name on a claim, a date of service beside a ZIP code, a phone number in a note: each makes a row PHI. |
+| **HIPAA's Privacy Rule.** HIPAA is the US federal law on health data, and its rules sit in title 45 of the Code of Federal Regulations, cited as 45 CFR. The Privacy Rule binds covered entities: health plans, clearinghouses, and providers that send health information electronically in the standard transactions (45 CFR 160.103). It protects identifiable health information they hold "in any form or media, whether electronic, paper, or oral", which is **protected health information**, PHI (HHS, the Department of Health and Human Services, Summary of the HIPAA Privacy Rule), and each covered entity designates a privacy official (45 CFR 164.530(a)). | A lab that bills electronically is a covered entity. A name on a claim, a date of service beside a ZIP code, a phone number in a note: each makes a row PHI. |
 | **Minimum necessary.** Covered entities and business associates "must make reasonable efforts to limit protected health information to the minimum necessary to accomplish the intended purpose" (45 CFR 164.502(b)); disclosures to a provider for treatment are among the few exceptions. | A denial model needs the payer, the codes and the dates, and asking for the patient's address is a finding in an audit. |
 | **De-identification.** Data stops being PHI when an expert certifies a very small risk of identification, or when the eighteen kinds of identifier on the safe-harbour list are removed: every date element except the year, ZIP codes beyond their first three digits (and those too where the area has 20,000 people or fewer), and ages over 89, which become one group (45 CFR 164.514(b); HHS de-identification guidance). | Safe harbour removes the dates that turnaround time and days in AR are built from, so teams use expert-certified extracts or keep date work inside the US system (section 9). |
 | **Business associates.** A company that handles PHI for a covered entity, for claims processing, data analysis or billing among others, is a business associate, and so is its subcontractor (45 CFR 160.103). A written agreement sets what it may do with the data, binds it to the Security Rule, requires it to report breaches and passes the same terms down (45 CFR 164.504(e)), and since 2013 business associates are directly liable for Security Rule compliance (HHS, business associate fact sheet). | Whether an offshore centre is part of the covered entity's workforce or a business associate depends on how the companies are set up, which lawyers settle, and the story does not say how Kalpa's is. Work as if the agreement's limits bind every table you touch. |
@@ -406,8 +411,8 @@ James's morning passed through most of the rules below: the lab's certificate on
 | **CLIA.** CMS regulates testing on human specimens for diagnosis through the Clinical Laboratory Improvement Amendments, which cover about 320,000 laboratory entities, and a lab must be certified to be paid by Medicare or Medicaid (CMS, CLIA page, 9 September 2026). | Quality data, such as repeated tests and results outside range, is regulated evidence, and a model that changes how the lab works goes through the lab director. |
 | **Medical necessity and the ABN.** Medicare pays nothing for services "not reasonable and necessary for the diagnosis or treatment of illness or injury" (Social Security Act, section 1862(a)(1)(A)). A provider, an independent lab among them, that expects Medicare to refuse gives the patient an Advance Beneficiary Notice of Noncoverage, form CMS-R-131, which moves the potential cost to the patient (CMS, ABN page). Otherwise Medicare patients "usually pay nothing for Medicare-covered diagnostic laboratory tests" (Medicare.gov), which Medicare pays mostly from its Clinical Laboratory Fee Schedule (CMS). | The diagnosis code is what shows necessity. A person or a model who adds a diagnosis the doctor did not give, to get a claim paid, has made a false claim, whatever the accuracy score says. |
 | **Timely filing.** A Medicare claim must be filed within one calendar year of the date of service, with listed exceptions (42 CFR 424.44); commercial plans set their own limits by contract. | Whatever sorts a work queue, claims near their filing limit go first, since after it the money is gone. |
-| **Prior authorisation.** CMS's 2024 rule makes Medicare Advantage plans, Medicaid and CHIP programmes and their managed-care plans decide requests within 72 hours for urgent ones and 7 calendar days for standard ones, with a specific reason for each denial, generally from 1 January 2026, and electronic interfaces generally from 1 January 2027 (CMS fact sheet, CMS-0057-F, 17 January 2024). | Authorisation status becomes data a lab can check before the draw, and a denial comes back with a reason a model can learn from. |
-| **Algorithms in coverage decisions.** CMS told Medicare Advantage plans in February 2024 that an algorithm may assist a coverage decision, which must rest on the individual patient's circumstances (CMS memo, 6 February 2024). California's SB 1120, approved 28 September 2024, says such a tool "shall not deny, delay, or modify health care services based, in whole or in part, on medical necessity", a decision for a licensed physician or a competent licensed health care professional. | These bind payers, and the principle holds on the lab's side of the claim too: a model may rank, flag and draft, and a person decides anything that denies care or asserts a diagnosis. |
+| **Prior authorisation.** CMS's 2024 rule makes Medicare Advantage plans, Medicaid and the Children's Health Insurance Program (CHIP) and their managed-care plans decide requests within 72 hours for urgent ones and 7 calendar days for standard ones, with a specific reason for each denial, generally from 1 January 2026, and electronic interfaces generally from 1 January 2027 (CMS fact sheet, CMS-0057-F, 17 January 2024). | Authorisation status becomes data a lab can check before the draw, and a denial comes back with a reason a model can learn from. |
+| **Algorithms in coverage decisions.** CMS told Medicare Advantage plans in February 2024 that an algorithm may assist a coverage decision, which must rest on the individual patient's circumstances (CMS memo, 6 February 2024). California's SB 1120, approved 28 September 2024, says such a tool "shall not deny, delay, or modify health care services based, in whole or in part, on medical necessity", a decision for a licensed physician or a competent licensed health care professional. | These bind payers, and the principle holds on the lab's side of the claim too: a model may score claims and draft text, and a person decides anything that denies care or asserts a diagnosis. |
 
 ### What offshore work may touch
 
@@ -422,7 +427,7 @@ HIPAA has no rule that keeps PHI inside the US. Asked whether a covered entity o
 
 So whether the team in Bengaluru may see a table is answered by documents: the business associate agreement, the plans' contracts and the states' Medicaid contracts. The safe default is de-identified or synthetic data offshore, patient-level work inside the US system, and results that travel instead of rows.
 
-**Why a clearinghouse is everyone's risk.** On 21 February 2024 ransomware hit Change Healthcare, a UnitedHealth Group company whose network carries eligibility checks, claims and payments, 15 billion transactions a year by the American Hospital Association's count (AHA). UnitedHealth's chief executive told a Senate committee that the server attacked "did not have MFA on it" (CBS News, 1 May 2024), and on 31 July 2025 Change Healthcare told HHS that about 192.7 million individuals were affected (HHS, Change Healthcare FAQ). For a lab it meant claims that could not leave and remittances that did not arrive, so cash stopped while testing went on.
+**Why a clearinghouse is everyone's risk.** On 21 February 2024 ransomware hit Change Healthcare, a UnitedHealth Group company whose network carries eligibility checks, claims and payments, 15 billion transactions a year by the American Hospital Association's count (AHA). UnitedHealth's chief executive told a Senate committee that the server attacked "did not have MFA on it", meaning no second login check, (CBS News, 1 May 2024), and on 31 July 2025 Change Healthcare told HHS that about 192.7 million individuals were affected (HHS, Change Healthcare FAQ). For a lab it meant claims that could not leave and remittances that did not arrive, so cash stopped while testing went on.
 
 ---
 
@@ -445,16 +450,16 @@ flowchart LR
 |---|---|---|---|---|
 | Revenue-cycle reporting (describe) | Leaders decide weekly on denials, days in AR and collections, payer by payer | Governed SQL on claims and remittances, one definition per metric, the definitions of section 5 | Decisions taken on it, and no restatements | A contract renegotiated or a team hired on a wrong number |
 | Denial prediction (predict, then recommend) | A denied claim costs rework and sometimes the money, and most denials repeat a pattern | Score each claim before it leaves from its payer, codes, practice and the payer's recent answers; send the risky ones to a person | Denial rate and dollars recovered against the reviewers' time | Good claims held back and cash delayed, or bad ones sent anyway |
-| Coding assistance (recommend, with language models) | Orders arrive with free text and missing or vague codes, and certified coders are scarce | A model reads the order and suggests codes with the words it relied on; a coder accepts or changes each one | Coder minutes per claim, and the share of suggestions accepted on an audited sample | A code the documentation does not support, which is a false claim however it was produced |
+| Coding assistance (recommend, with language models) | Orders arrive with free text and missing or vague codes, and certified coders are scarce | A model reads the order and suggests codes with the words it relied on; a coder accepts or changes each one | Coder minutes per claim, and the share of suggestions accepted on an audited sample | A code the documentation does not support, which is a false claim whoever or whatever produced it |
 | Patient cost estimates (predict) | Patients who know their share before the draw pay more of it | The eligibility answer and the contract's allowed amount give the patient's share, test by test | Patient collections, and complaints about surprise bills | A promise the plan does not keep, and a patient who blames the lab |
 | Prior-authorisation agents (act, within limits) | Some tests need the plan's approval first, and asking by portal or phone takes staff hours | An agent reads the order, checks the plan's rules, fills the request with the documentation on file and tracks the answer; a person signs anything clinical | Share of requests filed before the draw, and authorisation denials | A request filed with the wrong documentation, or a test run without approval |
 | Claim-status agents (act, within limits) | The accounts receivable team spends its day asking plans where money is | An agent asks each plan's system or portal for the status of unpaid claims, records the answer and queues what needs a person | Claims checked per hour, and days in AR | A claim marked "in process" that was denied, found after its appeal window closed |
 | No-show prediction (predict) | Patients who book and do not come leave phlebotomists idle and the day's schedule uneven | Classify each booking's chance of being missed from its history, lead time and day; send reminders or offer the slot twice | Reminders sent against visits kept | Reminders nobody needed, or a double-booked slot with two patients in it |
 | Volume forecasting (predict) | Couriers, analysers and night shifts are booked before the samples arrive | Forecast each lab's daily samples from its history, weekday and holidays, baselines first | Error against last week's weekday, overtime hours | Samples waiting overnight, and turnaround time broken |
 
-**A claim-status agent, worked through (act).** Suppose, as an illustration, that the accounts receivable team in Bengaluru checks 3,000 unpaid claims a day and each check by portal or phone takes six minutes: 300 staff-hours a day. An agent that checks the status electronically and brings a person only the claims that need one could return most of those hours to appeals, which need judgement. Now suppose it misreads one payer's status code, and for a month records 400 denied claims a week as "in process". Each denial had an appeal window, and a claim that passes it is lost: at $150 a claim, 1,600 claims is $240,000 of revenue gone before anyone looks. The gain shows in days in AR and staff hours; the risk is measured by checking a sample of the agent's readings against the remittances every week, and the error on that sample decides whether it keeps running alone.
+**A claim-status agent, worked through (act).** Suppose, as an illustration, that the accounts receivable team in Bengaluru checks 3,000 unpaid claims a day and each check by portal or phone takes six minutes: 300 staff-hours a day. An agent that checks the status electronically and brings a person only the claims that need one could return most of those hours to appeals, which need judgement. Now suppose it misreads one payer's status code, and for a month records 400 denied claims a week as "in process". Each denial had an appeal window, and a claim that passes it is lost: at the month's average of $80 allowed a claim, 1,600 claims is $128,000 of revenue gone before anyone looks. The gain shows in days in AR and staff hours; the risk is measured by checking a sample of the agent's readings against the remittances every week, and the error on that sample decides whether it keeps running alone.
 
-Two real cases show why the right-hand end of the ladder is watched. Quest Diagnostics says it uses AI and automation among its efforts to reduce "denials and patient concessions", and has broadened AI in customer service (Form 10-K for 2025). On the payers' side, lawsuits allege that UnitedHealth's naviHealth unit used an algorithm, nH Predict, to deny post-acute care to Medicare Advantage patients; in February 2025 a federal judge let breach-of-contract and good-faith claims go forward (Skilled Nursing News, 14 February 2025). Those are allegations, and they are why CMS told plans that an algorithm may assist and the decision must rest on the patient (section 7). A model on either side of a claim is only as safe as the person and the limits around it.
+Two real cases show AI on each side of a claim. Quest Diagnostics says it uses AI and automation among its efforts to reduce "denials and patient concessions", and has broadened AI in customer service (Form 10-K for 2025). On the payers' side, lawsuits allege that UnitedHealth's naviHealth unit used an algorithm, nH Predict, to deny post-acute care to Medicare Advantage patients; in February 2025 a federal judge let breach-of-contract and good-faith claims go forward (Skilled Nursing News, 14 February 2025). Those are allegations, and they sit behind CMS's instruction to plans that an algorithm may assist while the decision rests on the patient (section 7).
 
 ---
 
@@ -476,8 +481,8 @@ The best fit for Kalpa Health is the edits first, built from the reason codes th
 
 | Option | How to size it |
 |---|---|
-| Oldest first | No model; the team's own habit; it chases small claims that will pay anyway and reaches some large ones too late |
-| Largest first | No model; recovers dollars quickly and ignores the claims nearest their filing limit |
+| Oldest first | It needs no model and is the team's habit, and it chases small claims that will pay anyway while reaching some large ones too late |
+| Largest first | It needs no model and recovers dollars quickly, and it ignores the claims nearest their filing limit |
 | Rank by expected recovery: the dollars at stake x the chance a call recovers them, raised for claims near their filing limit | A year of past follow-ups with their outcomes, and a week to build a first score |
 
 For Kalpa Health the ranked list fits best, because the team's hours are the limit and each call is worth a different amount; a claim within a few weeks of its filing limit goes to the top whatever its score, since after the limit it cannot be recovered at all. It changes if the queue is small enough to clear every week, when oldest first is simpler and loses nothing.
@@ -498,7 +503,7 @@ The lookup with a coder behind it is the best fit to start, since most orders re
 |---|---|
 | A flat estimate by test from last year's average patient payment | Minutes; wrong for anyone whose deductible is met or unmet |
 | The patient's plan from the eligibility answer, with the remaining deductible and coinsurance, applied to the contract's allowed amount for each test | An eligibility call per patient and the contract table per payer; right when the contract table is current |
-| The same, plus a model of how often each test on each plan is denied, stated as a range | The denial history of section 9's first problem; a range that patients find harder to read |
+| The same, plus a model of how often each test on each plan is denied, stated as a range | The denial history from the first problem above, and a range that patients find harder to read |
 
 For Kalpa Health the eligibility answer applied to the contract fits best, since it uses what the clerk already fetches at the desk and is right for the common case, with a line on the estimate that the plan decides the final amount. It changes if a large share of estimates miss by more than a few dollars, which points at a stale contract table before it points at the method.
 
@@ -533,8 +538,8 @@ Most learners have lived through something like the five scenes below, and each 
 | A home blood draw booked on an app in India: you pay at booking, a phlebotomist comes to the door, and the report arrives on your phone the next day | Turnaround time = draw to released result; in India the price at booking is most of the revenue, so there is no allowed amount and no claim | Routing phlebotomists between homes, and the contrast that makes the US different: the same draw in the US produces a claim, a wait and often a patient balance, because a payer stands between the lab and the money |
 | A friend in the US posts a hospital bill online: thousands of dollars charged, a large "adjustment", and a small amount owed | Gross charges, contractual adjustment = gross charges less allowed amount, patient responsibility = deductible + coinsurance + copay | Reading which number is money and which is a price list, and the estimate problem of section 9: telling a patient their share before the service |
 | A relative's planned surgery on a cashless health policy in India, where the hospital's insurance desk asks the insurer to approve it before admission | The US equivalent is prior authorisation; its measures are the share of requests decided in time and the share denied | An agent that assembles the request from the documents on file, and a rule that a person, never the agent, signs anything clinical |
-| An insurance claim, for a phone or a car, returned because one document was missing | Denial rate = claims denied on first answer / claims submitted; clean claim rate = claims that pass edits untouched / claims entered for billing | Denial prediction: most denials repeat a pattern that edits or a model can catch before the claim leaves |
-| A long wait on hold with a customer-care line to ask where a refund is | Days in AR = accounts receivable / average net revenue per day; cost to collect = revenue-cycle cost / cash collected | The accounts receivable team makes that call to payers every day, and a claim-status agent that asks electronically returns the hours to work that needs judgement |
+| An insurance claim, for a phone or a car, refused after assessment because the policy did not cover the damage | Denial rate = claims denied on first answer / claims submitted; clean claim rate = claims that pass edits untouched / claims entered for billing | Denial prediction: most denials repeat a pattern that edits or a model can catch before the claim leaves |
+| A long wait on hold with a customer-care line to ask where a refund is | Days in AR = accounts receivable / average net revenue per day | The accounts receivable team makes that call to payers every day, and a claim-status agent that asks electronically returns the hours to work that needs judgement |
 
 ---
 
