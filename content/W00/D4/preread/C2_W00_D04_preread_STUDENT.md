@@ -45,6 +45,19 @@ happened, which gets a better answer than a question about what usually happens.
 
 ---
 
+## The foundations guide, for the long weekend
+
+Three chapters of the foundations guide fit the weekend. Chapter 5 is the one closest to Saturday,
+since it is how an unfamiliar problem gets taken apart before anyone solves it.
+
+| Chapter | Reading | Hands-on |
+|---|---|---|
+| [Chapter 3, Numbers](../../D2/study-notes/C2_W00_D02_foundations_03_numbers_STUDENT.md) | 12 min | 60 min |
+| [Chapter 4, Language models](../../D2/study-notes/C2_W00_D02_foundations_04_language_models_STUDENT.md) | 11 min | 60 min |
+| [Chapter 5, Business problems and judgment](../../D2/study-notes/C2_W00_D02_foundations_05_business_problems_STUDENT.md) | 9 min | 60 min |
+
+---
+
 ## If you want more before Saturday
 
 The self-prep page lists the weekend's practice set, the mess project and four things to explore. The
