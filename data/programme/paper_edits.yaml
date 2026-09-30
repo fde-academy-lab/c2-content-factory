@@ -2,12 +2,18 @@
 #
 # The bank (docs/curriculum/source.xlsx, 'Saturday papers' tab) is the source of every item. An
 # edit here replaces one or more option texts of one item when the paper is rendered, and never
-# changes the stem or the key. Each edit exists because the item broke the house distractor rule
-# that the key is never the unique longest option, which a room learns to exploit by the third
-# paper; the replacement makes a distractor a sharper near-miss at the key's length.
+# changes the stem or which options are correct. An `order` edit relabels the options: order[i] is
+# the tracker's letter of the option printed at position i, and the key's letters move with them.
+# Most edits exist because the item broke the house distractor rule that the key is never the
+# unique longest option, which a room learns to exploit by the third paper, and the replacement
+# makes a distractor a sharper near-miss at the key's length; others replace an option no reader
+# would take, so the set tests something; an order edit moves a key off a letter every
+# more-than-one key shared, so ticking that letter stops scoring. Each edit's why says which.
 #
 # To accept an edit, copy its option text into the tracker's Item cell and sync: the sync then
-# reports the edit as folded and it can be deleted here. To reject one, delete it and sync, and the
+# reports the edit as folded and it can be deleted here. To accept an order edit, print the options
+# in the tracker in that order and give it the key the paper prints; from_key, the tracker's key the
+# order was written against, is how the sync then knows the edit is folded rather than laid twice. To reject one, delete it and sync, and the
 # paper goes back to the bank's wording (and fails the distractor audit on that item).
 #
 # status: proposed (awaiting the Programme Head) or accepted (agreed, not yet in the tracker).
@@ -15,25 +21,35 @@
 W1:
   17:
     status: proposed
-    why: The key (23 characters) was the only option phrased as a count; the two frequency branches now read the same way.
+    why: The key (23 characters) was the only option phrased as a count; the two frequency branches now read the same way. Option d, discounts, ran 9 characters against 33 for the longest; it now names the value of the discounts given, so the options run 23 to 33.
     options:
       a: the number of orders per customer
       b: the number of items per order
+      d: the value of the discounts given
   19:
     status: proposed
-    why: The key was the longest option; the miscalculation distractor now names a cause.
+    why: The key was the longest option, so the miscalculation distractor named a cause, which took it to 59 characters against 29 for option a. It now reads 50, and option a names the mean it sits beside at 42, so the options run 34 to 50.
     options:
-      b: The median has been miscalculated from an incomplete export.
+      a: Most orders sit close to the Rs 9,800 mean.
+      b: The median was miscalculated from a partial export.
   21:
     status: proposed
-    why: The key was one character longer than the next option.
+    why: The key was one character longer than the next option; option c, dropping Q2, was a choice nobody makes, so it now compares month by month, which keeps the short month. Option a ran 36 characters against 70 for option b; it now states the belief behind comparing the totals as they stand, at 72, so the options run 63 to 72.
     options:
+      a: Compare the two totals as they stand, since each is one calendar quarter.
       b: Add two weeks at the Q2 weekly average and report that total as actual.
+      c: Compare the quarters month by month, three months against three.
   22:
     status: proposed
     why: The key was the longest option; the print distractor now states the misconception in full.
     options:
       b: The total, because print both displays the value and sends it back to the caller.
+  27:
+    status: proposed
+    why: Options a and c ran 26 and 24 characters against 48 for option d. Each now carries the belief behind it, a at 50 and c at 51, so the options run 45 to 51 and the key is the shortest of them.
+    options:
+      a: Move budget to Student now, since it grows fastest.
+      c: Drop Student from the report as too small to matter.
   28:
     status: proposed
     why: The key was the longest option.
@@ -44,10 +60,47 @@ W1:
     why: The key was the longest option.
     options:
       a: Customers, because new buyers bring in revenue that did not exist in the business before.
+  30:
+    status: proposed
+    why: Option c, the colour of the chart, eliminated itself and left a three-way item; the previous quarter's value is a comparison a learner can take for part of the definition. At 33 characters it ran against 13 for option a; it now reads 22, so every option is 25 characters or fewer.
+    options:
+      c: its value last quarter
+  31:
+    status: proposed
+    why: The options ran 26 to 54 characters, and both ends were keyed options, so no distractor could balance the set. Option a, a keyed option, now names the weeks, 41 characters, with its meaning unchanged, so the options run 36 to 54. Every more-than-one key on the paper held a and b, so ticking both always scored. The options are relabelled d, a, b, c, so the wrong option prints at a and the same three stay correct.
+    order: dabc
+    from_key: "a, b, c"
+    options:
+      a: quarters holding unequal numbers of weeks
+  32:
+    status: proposed
+    why: Option d ran 33 characters against 12 for option a. It now reads 28, so every option is 28 characters or fewer, and typing into the export is the same act as typing into the source file. Every more-than-one key on the paper held a and b, so ticking both always scored. The options are relabelled a, d, b, c, so the wrong option prints at b and the same three stay correct.
+    order: adbc
+    from_key: "a, b, c"
+    options:
+      d: Type a value into the export.
+  33:
+    status: proposed
+    why: Option d, a p-value for a single field, eliminated itself; the value to fill in is the decision a learner can take for part of the profile.
+    options:
+      d: the value to fill in where one is missing
+  34:
+    status: proposed
+    why: Option d ran 17 characters against 51 for option a. It now carries the belief behind a deeper discount, at 49, so the options run 36 to 51. Every more-than-one key on the paper held a and b, so ticking both always scored. The options are relabelled d, a, b, c, so the wrong option prints at a and the same three stay correct.
+    order: dabc
+    from_key: "a, b, c"
+    options:
+      d: a deeper discount, so any effect is easier to see
+  35:
+    status: proposed
+    why: Every more-than-one key on the paper held a and b, so ticking both always scored. The options are relabelled a, c, b, d, so the wrong option prints at b and the same three stay correct.
+    order: acbd
+    from_key: "a, b, d"
   42:
     status: proposed
-    why: The key was one character longer than the next option.
+    why: The key was one character longer than the next option. Option a ran 8 characters against 48 for option b; it now carries the belief behind a growing drop, at 49, so the options run 34 to 49.
     options:
+      a: It grows, because removing rows takes revenue out.
       b: It stays the same, because duplicates cancel out.
   45:
     status: proposed
@@ -68,8 +121,9 @@ W2:
       c: The join kept the unpaid orders as extra rows.
   23:
     status: proposed
-    why: The key was the longest option; the distractor is now the full query with the aggregate in WHERE.
+    why: The key was the longest option; the distractor is now the full query with the aggregate in WHERE. Option b then ran 38 characters against 73, so it now sorts its distinct list too, and the options run 47 to 73.
     options:
+      b: SELECT DISTINCT order_id FROM payments ORDER BY order_id
       d: SELECT order_id FROM payments WHERE COUNT(order_id) > 1 GROUP BY order_id
   29:
     status: proposed
@@ -81,11 +135,52 @@ W2:
     why: The key was the longest option.
     options:
       c: Computing the source-of-truth revenue figure that Finance will check its own books against.
+  33:
+    status: proposed
+    why: Options ran 22 to 39 characters, with c at 23 and d at 22 against b at 39; c and d now say which clause can compare COUNT(*) with a number, and the options run 34 to 41. Every more-than-one key on the paper held a, and four of the seven were exactly a, b and c. The options are relabelled a, d, b, c, so the wrong option prints at b, the two WHERE statements sit together, and the same three stay correct.
+    order: adbc
+    from_key: "a, b, c"
+    options:
+      c: HAVING can compare COUNT(*) with a number.
+      d: WHERE can compare COUNT(*) with a number.
+  34:
+    status: proposed
+    why: The font was a nonsense option, so striking it left a, b and c, which is the whole key; the new distractor is a check that sounds like the other three and cannot catch a fan-out. Every more-than-one key on the paper held a, and four of the seven were exactly a, b and c. The options are relabelled d, a, b, c, so the wrong option prints at a and the same three stay correct.
+    order: dabc
+    from_key: "a, b, c"
+    options:
+      d: the number of channels before and after the join
+  35:
+    status: proposed
+    why: Every more-than-one key on the paper held a, and four of the seven were exactly a, b and c. The options are relabelled c, a, d, b, so the two wrong options print at a and c and the same two stay correct.
+    order: cadb
+    from_key: "a, b"
+  36:
+    status: proposed
+    why: Option b ran 25 characters against 60; it now names the quarter its total covers, and the options run 37 to 60.
+    options:
+      b: each segment's total revenue for the quarter
+  37:
+    status: proposed
+    why: Option b, part of the key, ran 37 characters against 63; it now says who ties, and the options run 40 to 63.
+    options:
+      b: RANK gives members who tie the same rank.
+  38:
+    status: proposed
+    why: Option a, part of the key, ran 35 characters against 60; it now says the join is on a key, and the options run 40 to 60.
+    options:
+      a: It is the pandas form of a SQL join on a key.
+  39:
+    status: proposed
+    why: Cell colour was a nonsense option, so striking it left a, b and c, which is the whole key; the new distractor is the precision a room reaches for when a number is misread.
+    options:
+      d: its exact figure
   42:
     status: proposed
-    why: The key was the longest option; the distractor keeps the table-qualified column the key uses.
+    why: The key was the longest option; the distractor keeps the table-qualified column the key uses. Option d ran 16 characters against 51; it is now the anti-join from the payments side, which finds payments with no order, and the options run 37 to 51.
     options:
       b: INNER JOIN, then WHERE payments.amount_paid IS NULL
+      d: RIGHT JOIN, then WHERE orders.order_id IS NULL
   47:
     status: proposed
     why: The key was the longest option.

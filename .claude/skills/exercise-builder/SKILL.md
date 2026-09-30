@@ -74,24 +74,62 @@ and then to the same blueprint:
 Size the paper from its slot with those minutes, not one a minute: the blueprint gives the ME1 and ME2
 weeks 60 minutes, a typical week 90 to 110 and the heaviest interview weeks 120, and the item counts
 follow from the mix. Grade each item easy, medium or hard (roughly a third easy and a fifth hard across
-the programme) and tag it `[S]`, `[F]`, `[SV]` or `[D]` with the roles it serves. Every item descends
-from an interview question the week's rows carry, named in the bank's anchor column.
+the programme) and tag it `[S]`, `[F]`, `[SV]` or `[D]` with the roles it serves. A hard item is several
+steps on an exhibit; an obscure fact never makes an item hard. Every item descends from an interview
+question the week's rows carry, named in the bank's anchor column.
 
-Three files, and only the first reaches a learner: the STUDENT paper, which prints the items and nothing
-else; the TRAINER key, which carries each item's key, level, tag, roles, day and anchor; and the TRAINER
-discussion guide, which runs the marking, takes the most-missed items first as an interview-answer
-discussion with random call-outs, and closes on the scores by tag for Monday's remediation read. The
+Three files, and only the first reaches a learner: the STUDENT paper, which prints the items in parts
+named for what each shows, with a blueprint on page one (items, minutes and the easy, medium and hard
+mix of every part) and each item's format and level beside its number; the TRAINER key, which carries
+each item's key, tag, roles, day, part and anchor, the blueprint and what guessing alone would score;
+and the TRAINER discussion guide, which runs the marking, takes the most-missed items first as an
+interview-answer discussion with random call-outs, and closes on the scores by tag for Monday's
+remediation read, which the Academic TA enters in the item-analysis workbook beside the key. The
 distractor rules above apply to every option set on the paper.
 
 The bank is the floor, never the ceiling. The week's source file,
-`content/W{ww}/SAT/internal/C2_W{ww}_SAT_paper_source_INTERNAL.yaml`, lays four things on it, and
-`scripts/build_saturday_paper.py`'s docstring gives the format: new timed items where the paper runs
-longer than the bank (each descending from the week's traps and anchors, in block-style YAML), an
-exhibit for every scenario set drawn only from the set's own numbers, the reasons for every item (why
-the key holds, why each wrong option fails, and the interview answer in one breath), and an untimed
-stretch page of written, interview-grade follow-ups. `python3 scripts/build_saturday_paper.py W{ww}
---docx` writes the paper and the key as Word files in the layout of the requester's baseline
-diagnostic, and the Word paper is what the room sits.
+`content/W{ww}/SAT/internal/C2_W{ww}_SAT_paper_source_INTERNAL.yaml`, lays five things on it, and
+`scripts/build_saturday_paper.py`'s docstring gives the format:
+
+- **Parts**, the printed order. Each part opens on a Kalpa situation in one or two sentences, with
+  lettered exhibits where the part or a set needs one. One part, "Read the code, read the data", puts
+  a few lines of the week's own notebook code or a small export on the page, and every wrong option is
+  a trap the week staged, named in the key. Every bank item prints in a part, except up to six recall
+  items (fill in the blank, true or false) that may move to the untimed stretch page to make room for
+  harder timed items; the builder refuses a part list that drops a bank item, splits a scenario set or
+  moves more than six.
+- **New timed items** where the paper runs longer than the bank, each descending from the week's traps
+  and anchors, in block-style YAML.
+- **An exhibit** for every scenario set, drawn only from the set's own numbers.
+- **The reasons** for every item: why the key holds, why each wrong option fails, and the interview
+  answer in one breath.
+- **An untimed stretch page** of written, interview-grade follow-ups.
+
+`python3 scripts/build_saturday_paper.py W{ww} --docx` writes the paper and the key as Word files in
+the format of the requester's baseline diagnostic (`content/W00/D2/paper/C2_W00_D02_diagnostic_STUDENT.docx`),
+and the Word paper is what the room sits: its palette, fonts and running header; a first page with
+what the paper is for, the rules, step one (each part rated 1 to 4 before any item is read), the
+paper at a glance and a pacing ribbon; open question blocks that never split, each exhibit bound to
+the first item that reads it; and a one-page answer sheet at the end, where each part's rating sits
+beside the box the marker fills with that part's score. The key ends on a marking grid.
+For a week with parts it also writes the item-analysis workbook, whose Ratings sheet sets each part's
+ratings beside its right rate. Three things in the source file make the Word paper specific rather
+than generic, and each is written for the week:
+
+- `purpose`, the paragraph under "What this paper is for": the week's case in its own terms, what the
+  paper finds out and how Monday uses it.
+- `company`, the Rules table's Company row: the Kalpa company and every person the items name, with
+  their role, as the week's own files give them.
+- a `label` for every item, two to five words beside its level that say what the item asks the
+  reader to do with what is in front of them ("Predict the output", "Spot the double count",
+  "Case: Kalpa Retail, Q1 against Q2"), never the key and never a hint at it.
+
+On a Saturday paper the options are of a length as well as of a precision: `scripts/distractor_audit.py`
+fails an item whose longest option runs past 30 characters while its shortest is under 60 percent of
+it, and the fix is an option edit in `data/programme/paper_edits.yaml`, never a stem or a key. The
+more-than-one keys spread too: with four or more such items, a letter inside every key fails the
+audit, since ticking it always scores, and the fix is an `order` edit with its `from_key`, which
+relabels the options and moves the key's letters with them.
 
 ## The solutions file
 

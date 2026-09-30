@@ -2,8 +2,74 @@
 # scripts/build_saturday_paper.py. Block style throughout, since a comma inside an inline mapping
 # splits a reason in two without any error.
 
+# The printed order. Bank items by number, the additions by id; every bank item is printed in a
+# part or moved to the stretch page, and a scenario set stays whole.
+parts:
+  - title: The week's rules, cold
+    shows: whether the week's definitions and rules are there without a notebook open
+    intro: >-
+      "Say it to me the way you will say it to her, because I will push the way Marketing will."
+      Kavya Nair, the senior analyst, starts with the week's rules, one line each, before any note
+      goes to Meera.
+    items: [6, 8, 9, 10, 12, 13, 14, 15, 16]
+  - title: Where did the revenue go
+    shows: whether you can break a revenue fall into its branches and choose the one to open first
+    intro: >-
+      "Are we losing customers, or are the ones we have buying less?" Meera Raghavan, the CEO, asks
+      it with Q2 revenue below Q1 and Marketing asking her for Rs 12 crore to acquire new customers.
+    items: [17, 18, 20, 21, 29, 30, 31, 36, 37, 38, 39, 51]
+  - title: Rows you can trust
+    shows: whether you clean a file with a reason for every change and reconcile it in rows and in rupees
+    intro: >-
+      "Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9." Anand Iyer, the finance
+      controller, wrote that back to all on Tuesday's finding, and the ERP export behind the
+      dashboard is the file on your desk.
+    items: [23, 24, 25, 28, 32, 33, 40, 41, 42, 52]
+  - title: Read the code, read the data
+    shows: whether you catch a wrong number in a line of Python or an export before it reaches a decision
+    intro: >-
+      "You gave me a number and told me what it counts." Kavya Nair, the senior analyst, now wants
+      the code and the export behind each number read line by line, before any of it reaches Meera.
+    items: [11, "new:whole-record-dedupe", "new:rows-not-rupees", "new:rows-as-customers",
+            "new:average-of-averages", "new:broken-slide", "new:blank-discount", 22,
+            "new:helper-summary", "new:first-copy"]
+  - title: Chance and a fair test
+    shows: whether you can say what a p-value means, when a gap is worth acting on and what a fair test of a cause needs
+    intro: >-
+      "Real, or the wobble we see every quarter? Should I move budget to Student? Did the discount
+      work?" Meera Raghavan, the CEO, wants all three answered before Monday's growth review.
+    items: [26, 27, 34, 35, 43, 44, 45]
+  - title: The numbers
+    shows: whether you can do the week's arithmetic by hand and show the working
+    intro: >-
+      "Before anything goes to Meera, rebuild the week from a raw export with no assistant and no
+      notes." Kavya Nair, the senior analyst, wants the working as well as the answer, on the lines
+      under each item.
+    items: [19, 46, 47, 48, 49, 50]
+
+# Recall items moved to the untimed stretch page to make room for harder timed items; the
+# requester approved the move on 30 September 2026. Their keys stay in the key's stretch section.
+stretch_bank: [1, 2, 3, 4, 5, 7]
+
+# The Word paper's first page: "What this paper is for", and the Rules table's Company row.
+purpose: >-
+  This week Meera Raghavan asked whether the Rs 12 crore Marketing wants for acquisition goes to the
+  branch of revenue that is actually short, Anand Iyer disputed the Q1 figure the ERP export put on
+  the dashboard, and Meera now has to decide whether the monsoon discount runs again at Diwali. This
+  paper puts those decisions in front of you once more, with no notebook, no notes and no assistant,
+  to find which of them you can make cold. The room's scores in each part, set beside the ratings
+  you give in step one, decide where Monday's revision starts. A wrong answer tells Monday more than
+  a blank one, so answer every item.
+company: >-
+  Every item is set inside Kalpa Retail, where you work as a trainee engineer in the data and AI
+  team of its Global Capability Centre. Meera Raghavan is its CEO, Anand Iyer its finance
+  controller and Kavya Nair a senior analyst in its data team; Marketing and Finance appear by
+  function, and every number an item needs is on the page.
+
 additions:
   - type: Scenario set
+    id: rows-as-customers
+    label: Count per customer
     level: Easy
     tag: "[S]"
     roles: BA, DS
@@ -29,6 +95,8 @@ additions:
       2.00 orders each, and the 1.00 on the slide would have sent Rs 12 crore to the wrong branch.
 
   - type: Scenario set
+    id: average-of-averages
+    label: Price the average order
     level: Medium
     tag: "[S]"
     roles: BA, DS
@@ -56,6 +124,8 @@ additions:
       slide.
 
   - type: Scenario set
+    id: broken-slide
+    label: Reply in the room
     level: Hard
     tag: "[D]"
     roles: BA, FDE
@@ -90,6 +160,8 @@ additions:
       on what each branch costs to move.
 
   - type: Scenario set
+    id: whole-record-dedupe
+    label: Choose the count to trust
     level: Medium
     tag: "[F]"
     roles: BA, DS
@@ -124,6 +196,8 @@ additions:
       re-send, so I key the check on the identity and log every repeat with its reason.
 
   - type: Scenario set
+    id: rows-not-rupees
+    label: Judge the reconciliation
     level: Hard
     tag: "[D]"
     roles: BA, FDE
@@ -155,6 +229,166 @@ additions:
     answer: >-
       I reconcile rows and then rupees; here the rows close and Rs 3.0 lakh does not, so I trace
       that gap row by row, usually to an amount coerced to zero, before any figure goes to Finance.
+
+  # Three code items for part 4, 2 minutes each, which takes the timed paper from 113.5 to 119.5
+  # minutes. Every exhibit is invented data run through code faithful to the week's notebooks, and
+  # its printed output is recorded in the provenance as the proof of the key.
+  - type: One correct option
+    id: blank-discount
+    label: Read the discount count
+    level: Medium
+    tag: "[S]"
+    roles: BA, DS
+    day: Tue
+    min: 2
+    key: d
+    anchor: How do you handle missing data?
+    exhibit:
+      caption: Five invented orders, and the loop that counts the ones with a discount.
+      code:
+        lang: python
+        text: |
+          orders = [{"order_id": "INV-1", "discount": 150},
+                    {"order_id": "INV-2", "discount": 0}, {"order_id": "INV-3"},
+                    {"order_id": "INV-4", "discount": 200}, {"order_id": "INV-5"}]
+          with_discount = 0
+          for order in orders:
+              if order.get("discount", 0) > 0:
+                  with_discount += 1
+          print(with_discount, "of", len(orders), "orders had a discount")
+    text: |
+      The discount field is optional in Kalpa's export. Marketing reads the line this prints as "three orders in five had no discount" and wants the offer extended to those three. What is the honest reading?
+      (a) Three in five had no discount, so the offer would reach customers who had none.
+      (b) Two of the three are unknown, and 2 in 5 remains the share to report.
+      (c) Two of the three are broken records, so they belong in the rejects log.
+      (d) Two of the three are unknown, so the share is 2 of the 3 recorded.
+    why: >-
+      The loop prints "2 of 5 orders had a discount". It counts an order only when its discount is
+      above zero, and .get hands back the default 0 for an order with no discount field, so the
+      three without are INV-2, which records a zero, and INV-3 and INV-5, which carry no discount
+      field at all. An optional field left blank is unknown: the share is 2 of the 3 orders that
+      record a discount, and across all five it lies between 40 and 80 percent.
+    wrong:
+      a: >-
+        The blank read as zero, the trap Tuesday's round 2 staged: .get's default turns two unknown
+        discounts into none, and Marketing extends the offer to orders that may already have had
+        one.
+      b: >-
+        Knows the two blanks are unknown and reports 2 in 5 anyway, which counts them as
+        undiscounted after all. It is Tuesday's round 2 trap in its quietest form; the share runs
+        over the orders that record a discount.
+      c: >-
+        Sends real orders to the rejects log for a blank optional field. Wednesday's log took rows
+        that broke a rule, such as an amount that would not convert, and Wednesday's round 3 kept a
+        record with a missing field and flagged it, because dropping it says the order never
+        happened.
+    answer: >-
+      A blank is unknown, never zero: I report the share over the orders that record the field, 2
+      of 3 here, say how many are blank, and give the range across all of them before anyone
+      extends an offer on it.
+
+  - type: One correct option
+    id: helper-summary
+    label: Trace the summary
+    level: Hard
+    tag: "[F]"
+    roles: BA, DS
+    day: Tue
+    min: 2
+    key: b
+    anchor: Why does a function that prints instead of returning break a pipeline?
+    exhibit:
+      caption: The helper and the summary line, run on two cities' invented figures.
+      code:
+        lang: python
+        text: |
+          def pct_change(before, after):
+              change = 100 * (after - before) / before
+              if abs(change) > 30:
+                  print(f"check by hand: {change:+.1f}%")
+              else:
+                  return round(change, 1)
+          changes = {"Pune": pct_change(1.60, 0.80), "Delhi": pct_change(1.50, 1.41)}
+          print({city: v for city, v in changes.items() if v and v < 0})
+    text: |
+      The analyst sends Meera the last line this prints as the cities where orders per customer fell from Q1 to Q2. What does that line give her, and why?
+      (a) Both cities, Pune down 50.0 percent and Delhi down 6.0, with Pune flagged for a check.
+      (b) Delhi alone, because Pune's change came back as None and the filter dropped it.
+      (c) Delhi alone, and rightly, since the check-by-hand line was a warning about Pune's data.
+      (d) Delhi alone, because Pune's change came back as zero, and zero is not a fall.
+    why: >-
+      Pune moves from 1.60 to 0.80, a change of -50.0 percent and beyond the helper's 30, so the
+      helper prints "check by hand: -50.0%" and hands back None. Delhi's -6.0 comes back as a
+      number. The filter keeps a value only when it is present and below zero, and None counts as
+      false, so the last line reads {'Delhi': -6.0} and tells Meera that the city which halved did
+      not fall at all.
+    wrong:
+      a: >-
+        Reads print as return, the trap Tuesday's escalated case staged: the helper shows -50.0% on
+        the screen and hands the caller None, so Pune never reaches the line.
+      c: >-
+        Takes the printed line for a warning about the data, which is how Tuesday's escalated case
+        let its summary stand. Pune's figures are sound; the helper printed the change instead of
+        returning it.
+      d: >-
+        Reads the missing return as zero, the belief behind Tuesday's round 2 blank read as zero.
+        Python has no numeric default: the helper hands back None, and the filter drops it because
+        None counts as false.
+    answer: >-
+      A helper that prints on one path hands back None on that path, and a filter drops None
+      without a word, so the summary lost the city that halved; my helpers return every change, and
+      a separate column flags the ones to check by hand.
+
+  - type: One correct option
+    id: first-copy
+    label: Predict the output
+    level: Hard
+    tag: "[F]"
+    roles: BA, FDE
+    day: Wed
+    min: 2
+    key: a
+    anchor: Everything read from a CSV is a string; what breaks and where do you convert?
+    exhibit:
+      caption: Four invented rows in file order, and the cleaning pass run on them.
+      code:
+        lang: python
+        text: |
+          rows = [("A", "2400"), ("B", "n/a"), ("B", "1800"), ("C", "3100")]
+          first = {}
+          for order_id, amount in rows:
+              first.setdefault(order_id, amount)
+          clean = [int(a) for a in first.values() if a != "n/a"]
+          print(len(rows), "rows:", len(clean), "clean,", len(rows) - len(clean),
+                "set aside; Rs", sum(clean))
+    text: |
+      Finance's books hold orders A, B and C at Rs 7,300 in all. This pass cleans four rows of the export, read in file order. What does it print?
+      (a) 4 rows: 2 clean, 2 set aside; Rs 5500
+      (b) 4 rows: 3 clean, 1 set aside; Rs 7300
+      (c) 4 rows: 3 clean, 1 set aside; Rs 5500
+      (d) 4 rows: 2 clean, 2 set aside; Rs 7300
+    why: >-
+      The dictionary keeps the first amount it meets for each order_id, since setdefault never
+      overwrites, so B keeps "n/a" and its readable copy, Rs 1,800, is passed over as a repeat. The
+      conversion step then drops "n/a", so order B leaves the clean file altogether. The pass counts
+      everything that is not clean as set aside, 4 less 2, so the rows add up by construction while
+      the total, Rs 5,500, is Rs 1,800 short of the books. It prints "4 rows: 2 clean, 2 set aside;
+      Rs 5500".
+    wrong:
+      b: >-
+        Keeps the copy that validates, which is the fix from Wednesday's round 3 and not what this
+        pass does: setdefault keeps the first copy it meets, and here that is the unreadable one.
+      c: >-
+        Keeps the unreadable amount as an order at Rs 0, the coercion Wednesday's round 1 staged.
+        This pass drops "n/a" at the conversion step, so B leaves the clean file instead of staying
+        at zero.
+      d: >-
+        Assumes the rupees close because the rows do, the trap Wednesday's round 3 staged: 4 = 2 + 2
+        holds by construction, and the total is still Rs 1,800 short of the books.
+    answer: >-
+      I convert every amount at the read and only then apply the identity rule, keeping the copy
+      that validates, and I reconcile rupees as well as rows, because here the rows close at 4 = 2
+      + 2 while Rs 1,800 of order B has vanished.
 
 exhibits:
   1:
@@ -263,6 +497,7 @@ notes:
       A run reconciles when input rows equal clean rows plus rejected rows, and then I check the
       rupees the same way, because counts can close while money does not.
   6:
+    label: Complete the definition
     why: >-
       The p-value counts the chance-only worlds, the shuffles, that produce a gap at least as large
       or extreme as the one seen.
@@ -289,6 +524,7 @@ notes:
       Claim, evidence, caveat, action: the caveat names the condition that would change my claim,
       and it is what keeps me credible when someone pushes.
   8:
+    label: Name the mechanism
     why: >-
       A confounder drives both the treatment and the outcome. Frequent buyers were likelier to get
       the discount and likelier to buy, so the discount's effect is tangled with theirs.
@@ -303,6 +539,7 @@ notes:
       Buying frequency is a confounder, because it drives both who got the discount and who bought,
       so I compare like with like inside it before I credit the discount.
   9:
+    label: Read a p-value claim
     why: >-
       False. The p-value is computed assuming chance alone and says how rare the gap would be in
       that world; it is not the probability that the finding is wrong.
@@ -314,6 +551,7 @@ notes:
       p = 0.03 means a gap this large turns up in about 3 percent of chance-only worlds; it is not a
       3 percent chance I am wrong, and not a 97 percent chance I am right.
   10:
+    label: Test a claim on averages
     why: >-
       True. One huge order moves the sum, and so the mean, while the middle value barely shifts.
     wrong:
@@ -324,6 +562,7 @@ notes:
       With a skewed order value I report the median as the typical order and the mean beside it,
       because the mean times the order count is revenue.
   11:
+    label: Predict the comparison
     why: >-
       False. In Python 3, comparing a string with an integer raises a TypeError, so the expression
       never evaluates to True or False at all.
@@ -335,6 +574,7 @@ notes:
       Values from a CSV are strings, and Python 3 refuses to compare a string with a number, so I
       convert once at the read and log what fails.
   12:
+    label: Judge a claim on significance
     why: >-
       True. A difference can be real, clearly beyond chance, and too small to pay for acting on it.
     wrong:
@@ -345,6 +585,7 @@ notes:
       Real and worth acting on are two different questions: the shuffle answers the first, and the
       size of the gap against the cost of acting answers the second.
   13:
+    label: Check a claim on duplicates
     why: >-
       True. Each duplicate row carries an amount, so removing it takes that amount out of the
       quarter's revenue.
@@ -356,6 +597,7 @@ notes:
       Duplicates inflate revenue, so removing them changes the quarter's total, and I reconcile
       rupees before and after to show by how much.
   14:
+    label: Compare two counts
     why: >-
       False. On 12 orders a single order moves the rate by more than 8 points; on 400 it moves it by
       a quarter of a point.
@@ -367,6 +609,7 @@ notes:
       A rate on 12 orders swings 8 points per order, so I report it with its count and treat it as a
       question to collect more data on, never a finding.
   15:
+    label: Test a causal claim
     why: >-
       False. After is not because of: the season, the customer mix or who received the discount can
       all produce the rise.
@@ -378,6 +621,7 @@ notes:
       Revenue rising after a discount shows order in time and nothing more; I need a comparable group
       without the discount, in the same window, before I credit it.
   16:
+    label: Judge an aggregate claim
     why: >-
       True. When the mix shifts toward a richer segment, the total can rise while every segment
       inside it falls.
@@ -389,6 +633,7 @@ notes:
       A total can rise while every segment falls, when the mix shifts, so I always split by segment
       before I trust an aggregate.
   17:
+    label: Rule out a branch
     why: >-
       With the customer count flat, customers cannot explain a revenue fall, so that branch is ruled
       out first.
@@ -405,6 +650,7 @@ notes:
       I rule out the branch the data says held, customers, and decompose what is left before I name
       any cause.
   18:
+    label: Place the Rs 12 crore
     why: >-
       Acquisition spend buys new customers, so it is a bet on the customer branch.
     wrong:
@@ -418,11 +664,13 @@ notes:
       Rs 12 crore for acquisition is a bet on the customer branch, so before agreeing I check
       whether that branch is the one that is short.
   19:
+    label: Read the two averages
     why: >-
       A mean seven times the median is the signature of a few very large orders pulling the sum up.
     wrong:
       a: >-
-        If most orders sat near Rs 9,800 the median would sit there too.
+        If most orders sat close to the Rs 9,800 mean, the median would sit there too, and it sits
+        at Rs 1,400.
       b: >-
         Blames the arithmetic before reading the shape. The gap is what a skewed order value looks
         like.
@@ -432,6 +680,7 @@ notes:
       A mean far above the median means a few large orders pull it up, so I report the median as
       typical and say which orders drive the mean.
   20:
+    label: Pick the first rung
     why: >-
       The first rung is confirming the drop is real: the same definitions, a complete export, and
       not a pipeline artefact.
@@ -446,20 +695,24 @@ notes:
       First I confirm the drop is real, then compare like with like, decompose, isolate and only
       then hypothesise.
   21:
+    label: Repair the comparison
     why: >-
       Unequal windows make totals unfair; revenue per week, or both quarters cut to the same weeks,
       compares like with like.
     wrong:
       a: >-
-        Two missing weeks alone leave Q2 about 15 percent short, whatever the business did.
+        A calendar label does not make two windows equal: Q2's two missing weeks alone leave it about
+        15 percent short, whatever the business did.
       b: >-
         An estimate reported as actual is a fabricated figure, even when the average behind it is fair.
       c: >-
-        Dropping the quarter drops the question Meera asked.
+        Months carry the same gap: Q2 is two weeks short, so one of its months is short too, and a
+        month-against-month comparison carries the unequal window into every line of it.
     answer: >-
       Before comparing quarters I match the windows, weeks, definitions and segments, and then
       compare revenue per week.
   22:
+    label: Predict what result holds
     why: >-
       A function without a return statement hands back None, whatever it printed.
     wrong:
@@ -473,6 +726,7 @@ notes:
       A helper that prints hands back None, so the caller silently loses the value; helpers return,
       and the caller prints.
   23:
+    label: Repair the crash
     why: >-
       The honest repair logs the row with its reason and continues, so the rejects log explains every
       row that left.
@@ -487,6 +741,7 @@ notes:
       I catch the failure, write the row and the reason to the rejects log, and continue, so an
       auditor can see every row I removed.
   24:
+    label: Decide what a duplicate is
     why: >-
       Whether two rows are the same order is decided by the identity rule written for an order.
     wrong:
@@ -500,6 +755,7 @@ notes:
       I write down what makes two records one order, usually the order_id, and apply that rule, not
       a whole-record match.
   25:
+    label: Read the run's report
     why: >-
       183 plus 14 is 197, so 3 rows are unaccounted for, and the run cannot be trusted until they are
       found.
@@ -515,6 +771,7 @@ notes:
       200 in, 183 clean and 14 rejected leaves 3 missing, so nothing is reported until I find the
       step that removed them without logging.
   26:
+    label: Read the shuffles
     why: >-
       Shuffles already reach 6 points, so chance makes gaps like 5 easily; the real gap is not
       surprising.
@@ -530,12 +787,14 @@ notes:
       When the shuffles regularly reach my gap, chance explains it, so I report it as not yet shown
       and say what data would settle it.
   27:
+    label: Advise Meera
     why: >-
       A rate on 12 orders swings more than 8 points on one order, so the 40 percent is a question,
       not a finding.
     wrong:
       a: >-
-        Moves budget on a rate that one order could reverse.
+        Fastest on the page is a rate on 12 orders, which one order can swing by more than 8 points,
+        so budget would move on a rate that one order could reverse.
       c: >-
         Dropping the segment throws away a lead that more data could confirm.
       d: >-
@@ -544,6 +803,7 @@ notes:
       I report the count with the rate: 40 percent on 12 orders is worth watching and collecting
       more on, and not yet worth budget.
   28:
+    label: Choose the first move
     why: >-
       Profile the export and reconcile counts and revenue against Finance, whose books are the
       reference for money.
@@ -558,6 +818,7 @@ notes:
       I profile the export for duplicates and windows, then reconcile counts and rupees against
       Finance line by line, and I never adjust my figure until it agrees.
   29:
+    label: Compare the levers
     why: >-
       Held equal, a 10 percent lift in any multiplicative branch lifts revenue 10 percent, so the
       choice turns on cost.
@@ -572,15 +833,18 @@ notes:
       On a multiplicative tree every branch lifted 10 percent adds the same revenue, so I choose by
       what each lift costs and what the data says has moved.
   30:
+    label: Define a rate
     why: >-
       A rate is defined by its numerator, its denominator and the window it covers.
     wrong:
       c: >-
-        Presentation, not definition; the chart's colour changes nothing about the number.
+        A previous value is a comparison, made once the rate is defined. The definition is the
+        numerator, the denominator and the window, and two rates compare only when all three match.
     answer: >-
       A rate is meaningless until its numerator, denominator and window are named, because each of
       them can change the number.
   31:
+    label: Find what fakes a drop
     why: >-
       Unequal windows, duplicates in the earlier quarter and a changed segment definition can each
       fake a drop.
@@ -591,34 +855,40 @@ notes:
       Before calling a drop real I check the windows, duplicates and definitions, since each can
       produce a drop that is not there.
   32:
+    label: Treat a missing value
     why: >-
       Drop, default and flag are all valid when the reason is written down.
     wrong:
       d: >-
-        Typing a value into the source file fabricates data and destroys the audit trail.
+        Typing a value into the export fabricates data and destroys the audit trail.
     answer: >-
       For each missing value I drop, fill a stated default or flag, and I write the reason, so the
       decision can be audited and reversed.
   33:
+    label: Define the profile
     why: >-
       A profile reports, per field, what is present, what converts to the expected type and how many
       distinct values there are.
     wrong:
       d: >-
-        A p-value belongs to a comparison between groups, not to a field.
+        Filling a gap is a decision, taken after the profile with a written reason. The profile only
+        reports what is there: present, convertible and distinct.
     answer: >-
       Before cleaning I profile each field for present, convertible and distinct values, because the
       profile tells me what to fix and in what order.
   34:
+    label: Design a fair test
     why: >-
       A fair test needs a like-for-like control, the same window and a comparable mix of segments.
     wrong:
       d: >-
-        A deeper discount changes the treatment; it does not make the test fair.
+        A deeper discount changes the treatment and may make an effect easier to see; the comparison
+        is exactly as unfair as before.
     answer: >-
       To know whether the discount worked I need a like-for-like group without it, in the same
       window and with the same mix, ideally chosen at random.
   35:
+    label: Check four p-value statements
     why: >-
       The p-value assumes chance alone, is small when the gap would be rare under chance, and is
       silent on size.
@@ -629,6 +899,7 @@ notes:
       The p-value assumes chance alone and says how rare my gap would be there; it is not the
       chance I am right, and it says nothing about size.
   36:
+    label: Compute a leaf
     why: >-
       2,160 orders over 1,000 customers is 2.16.
     wrong:
@@ -643,6 +914,7 @@ notes:
       Orders per customer is orders over distinct customers: 2,160 over 1,000 is 2.16, down from
       2.40.
   37:
+    label: Find the branch that moved
     why: >-
       Customers held at 1,000 and revenue per order held at Rs 2,000, so only orders per customer
       moved.
@@ -656,6 +928,7 @@ notes:
     answer: >-
       Decomposing, customers held and revenue per order held, so frequency is the branch that fell.
   38:
+    label: Test the decomposition
     why: >-
       True. Revenue per order is Rs 2,000 in both quarters, so the fall in orders explains the whole
       drop.
@@ -666,6 +939,7 @@ notes:
       The whole drop is frequency, because revenue per order is flat, and that is the branch I take
       to Meera.
   39:
+    label: Answer Marketing's claim
     why: >-
       Customers are flat and frequency fell 10 percent, so the data does not support acquisition as
       the fix.
@@ -680,6 +954,7 @@ notes:
       Customers are flat and frequency fell 10 percent, so I would put the money into the branch
       that moved and ask Marketing what acquisition would cost per rupee of revenue.
   40:
+    label: Count the clean rows
     why: >-
       214 less 14 duplicates less 3 rejects is 197.
     wrong:
@@ -690,6 +965,7 @@ notes:
     answer: >-
       214 in, 14 duplicates and 3 rejects out, 197 clean, and the log explains every one of the 17.
   41:
+    label: Size the rejects log
     why: >-
       Every removed row is logged, duplicates included: 14 plus 3 is 17.
     wrong:
@@ -701,11 +977,12 @@ notes:
     answer: >-
       The rejects log holds every removed row, 17 here, so input equals clean plus rejected.
   42:
+    label: Update the comparison
     why: >-
       Removing Q1's duplicates lowers Q1, so the gap to Q2 shrinks.
     wrong:
       a: >-
-        Lowering the earlier quarter can only narrow the fall.
+        The rows removed carry Q1's revenue, and lowering the earlier quarter can only narrow the fall.
       b: >-
         Duplicates in one quarter do not cancel against anything.
       d: >-
@@ -714,6 +991,7 @@ notes:
       Duplicates inflate the earlier quarter, so removing them shrinks the drop, and I recompute the
       tree before anyone reads the old figure.
   43:
+    label: Name the pattern
     why: >-
       A total that rises while every segment falls is a reversal driven by a shift in the mix.
     wrong:
@@ -727,6 +1005,7 @@ notes:
       A total rising while every segment falls is a mix effect, so I split by segment before I credit
       the campaign.
   44:
+    label: Judge frequency's role
     why: >-
       True. Frequency drives both who received the discount and how much they bought.
     wrong:
@@ -736,6 +1015,7 @@ notes:
       Frequency confounds the effect, since frequent buyers both got the discount and bought more,
       so I compare within frequency bands.
   45:
+    label: Advise on Diwali
     why: >-
       No segment improved and the lift is a mix effect, so repeating the design repeats a campaign
       that did not work.
@@ -750,6 +1030,7 @@ notes:
       I would not repeat it as designed: every segment fell and the lift is a mix effect, so the
       Diwali version should hold out a random control inside each segment.
   46:
+    label: Reason with numbers
     why: >-
       Revenue is price times quantity, so the factors multiply: 1.10 times 0.85 is 0.935, a fall of
       6.5 percent.
@@ -762,6 +1043,7 @@ notes:
       Multiply the factors, 1.10 times 0.85 is 0.935, so revenue falls 6.5 percent and the discount
       loses money unless volume rises more.
   47:
+    label: Compute median and mean
     why: >-
       The middle of five sorted values is Rs 1,400; the sum Rs 485,400 over 5 is Rs 97,080.
     wrong:
@@ -773,6 +1055,7 @@ notes:
       The median is Rs 1,400 and the mean Rs 97,080, so I report the median as typical and name the
       one order that drives the mean.
   48:
+    label: Size the change
     why: >-
       (1.9 less 2.1) over 2.1 is a fall of 9.5 percent, measured from the starting quarter.
     wrong:
@@ -783,6 +1066,7 @@ notes:
     answer: >-
       The change is measured from the starting value: 0.2 over 2.1 is a fall of 9.5 percent.
   49:
+    label: Read p off the shuffles
     why: >-
       140 of 5,000 shuffles reached the gap, so p is 0.028.
     wrong:
@@ -794,6 +1078,7 @@ notes:
       140 of 5,000 shuffles is 0.028, so a gap this large turns up in under 3 percent of chance-only
       worlds.
   50:
+    label: Build revenue from the tree
     why: >-
       50,000 times 2 times 3 times Rs 400 is Rs 12 crore, and Rs 1 crore of discounts leaves Rs 11
       crore.
@@ -805,6 +1090,7 @@ notes:
     answer: >-
       The tree multiplies out to Rs 12 crore, and less Rs 1 crore of discounts it is Rs 11 crore.
   51:
+    label: Order the ladder
     why: >-
       Confirm the drop is real, compare like with like, decompose, isolate, then hypothesise.
     wrong:
@@ -815,6 +1101,7 @@ notes:
     answer: >-
       Real, like with like, decompose, isolate, hypothesise: most people skip the second rung.
   52:
+    label: Order the cleaning pass
     why: >-
       Profile, decide each defect with a reason, reconcile, then recompute.
     wrong:

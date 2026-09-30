@@ -51,7 +51,9 @@ def _strip_fences(text):
     return "\n".join(out)
 
 
-STEM = re.compile(r"\?\s*$|^\s*(?:\*\*)?(?:Options|Which|Pick|Choose|Select)\b", re.I)
+# A stem asks: a question mark ending a sentence anywhere on the line (a stem often goes on,
+# "Which checks belong? Mark every correct option."), or a line that opens on the ask.
+STEM = re.compile(r"\?(?:\s|$)|^\s*(?:\*\*)?(?:Options|Which|Pick|Choose|Select)\b|\bMark every correct\b", re.I)
 
 
 def _clean(body):
@@ -185,6 +187,10 @@ def keys_from_solutions(path):
     return keys, None
 
 
+BALANCE_FLOOR = 30
+BALANCE_RATIO = 0.6
+
+
 def audit_file(path):
     text = path.read_text(encoding="utf-8", errors="replace")
     items = parse_items(text)
@@ -195,7 +201,20 @@ def audit_file(path):
     solution_keys, solution_file = ({}, None) if inline else keys_from_solutions(path)
 
     fails, key_positions, unaudited, multi_positions, keyed_labels = 0, [], [], [], []
+    multi_keys = []
+    # A Saturday recap paper is sat on paper by the whole room, so its options also have to be of a
+    # length: when the longest option runs past BALANCE_FLOOR characters, the shortest must reach
+    # BALANCE_RATIO of it. A lone short option is as much a tell as a lone long key.
+    balanced = path.name.endswith("_recap_paper_STUDENT.md")
     for label, opts in items:
+        if balanced:
+            lengths = [len(o[1]) for o in opts]
+            if max(lengths) > BALANCE_FLOOR and min(lengths) < BALANCE_RATIO * max(lengths):
+                print(f"FAIL  {path.name} item {label}: option lengths run {min(lengths)} to "
+                      f"{max(lengths)} characters, and on a Saturday paper the shortest must reach "
+                      f"{int(BALANCE_RATIO * 100)} percent of the longest. Reword the outlier in "
+                      f"data/programme/paper_edits.yaml.")
+                fails += 1
         key = None
         if inline:
             marked = [o for o in opts if o[2]]
@@ -219,6 +238,7 @@ def audit_file(path):
                 fails += 1
                 continue
             multi_positions += sorted(wanted)
+            multi_keys.append(wanted)
             continue
         elif label in solution_keys:
             wanted = solution_keys[label]
@@ -239,6 +259,17 @@ def audit_file(path):
             print(f"FAIL  {path.name} item {label}: the key is the longest option at "
                   f"{len(key[1])} characters against {sorted(len(o[1]) for o in opts)[-2]} for the "
                   f"next longest. Write the distractors at the key's precision.")
+            fails += 1
+
+    # On a Saturday paper, a letter inside every more-than-one key is a rule the room learns: tick
+    # it and score. With four or more such items, every letter must sit outside at least one key.
+    if balanced and len(multi_keys) >= 4:
+        always = sorted(set.intersection(*map(set, multi_keys)))
+        if always:
+            print(f"FAIL  {path.name}: every one of the {len(multi_keys)} more-than-one keys includes "
+                  f"{', '.join(always)}, so ticking {'it' if len(always) == 1 else 'them'} always scores. "
+                  f"Relabel with an order edit in "
+                  f"data/programme/paper_edits.yaml.")
             fails += 1
 
     if unaudited:
@@ -337,5 +368,7 @@ if __name__ == "__main__":
 #     One FAIL line naming both lengths, and exit 1.
 # An exercise with lettered options and no Answers line in its solutions file
 #     One FAIL line saying the items are unaudited, and exit 1.
+# A Saturday recap paper whose four or more more-than-one items are all keyed with a among the letters
+#     One FAIL line naming a, since ticking it always scores, and exit 1.
 # A file whose format line reads "Post one line: 1a 2c 3b 4d" while those are the real keys
 #     One FAIL line quoting the format line, and exit 1.
