@@ -283,7 +283,7 @@ def prove_reader_header():
     assert (len(ns["rows"]), len(clean), len(log)) == (200, 185, 15)     # the pass's own report closes
     assert all(r["order_id"] != "KR-02001" for r in clean + log)
     opts = options("reader-header")
-    assert opts[key].startswith(out + "; only a count of the file's own rows")
+    assert opts[key].startswith(out + "; a count of the file's own rows")
     assert opts["b"].startswith(out + "; the pass's own report")
     report("reader-header", key, f"prints '{out}'; the pass closes 200 = 185 + 15 and KR-02001 is in neither")
 
@@ -317,7 +317,7 @@ def prove_evidence_copy():
     assert sum(r["amount"] for r in ns["rows"]) == 3150 < sum(books.values()) == 4940
     key = ADDED["evidence-copy"]["key"]
     opts = options("evidence-copy")
-    assert opts[key].startswith(out + "; only a rupee total") and opts["b"].startswith("2 + 1 = 2")
+    assert opts[key].startswith(out + "; a rupee total") and opts["b"].startswith("2 + 1 = 2")
     report("evidence-copy", key, f"prints '{out}'; with copies of the dictionaries it prints 2 + 1 = 2; "
                                  f"rupees 3,150 against 4,940")
 

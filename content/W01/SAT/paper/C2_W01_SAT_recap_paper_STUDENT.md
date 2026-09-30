@@ -85,7 +85,7 @@ print(sales)
 
 #### Q2 · Hard · circle one letter · Predict the output and the call
 
-Every Kalpa order carries a status: delivered (it reached the customer), returned (it came back for a refund) or cancelled (it never left the shelf). Meera will fund one of two asks next quarter, the app team's new checkout or the store team's refit. Her rule is to back the channel whose orders brought in more on Monday, counting every order that was not cancelled. The analyst wrote this cell to settle it. What does it print, and which channel does her rule back?
+Every Kalpa order carries a status: delivered (it reached the customer), returned (it came back for a refund) or cancelled (it never left the shelf). Meera will fund one of two asks next quarter, the app team's new checkout or the store team's refit. Her rule is to back the channel whose consumer orders brought in more on Monday, counting every order that was not cancelled. The analyst wrote this cell to settle it. What does it print, and which channel does her rule back?
 
 a) {'app': 18600, 'web': 27290, 'store': 18920}; her rule backs the store.
 b) {'app': 18600, 'web': 27290, 'store': 9870}; her rule backs the app.
@@ -214,10 +214,10 @@ print(len(rows), rows[0]["order_id"])
 
 orders.csv opens on a line that names its columns, and 201 order rows follow it, the first two KR-02001 and KR-02002. The analyst's cleaning pass then runs on rows and reports its input as clean rows plus rejected rows. What does the cell print, and which check tells Anand whether every order in the file reached the pass?
 
-a) 201 KR-02001; only a count of the file's own rows, set against the pass's input, can tell him.
-b) 200 KR-02002; the pass's own report can tell him, since its input must equal clean plus rejected.
-c) 200 KR-02002; only a count of the file's own rows, set against the pass's input, can tell him.
-d) 201 KR-02001; the pass's own report can tell him, since its input must equal clean plus rejected.
+a) 201 KR-02001; a count of the file's own rows against the pass's input tells him, where the pass's report cannot.
+b) 200 KR-02002; the pass's own report tells him, since its input must equal clean plus rejected.
+c) 200 KR-02002; a count of the file's own rows against the pass's input tells him, where the pass's report cannot.
+d) 201 KR-02001; the pass's own report tells him, since its input must equal clean plus rejected.
 
 #### Q9 · Medium · circle one letter · Judge the comparison
 
@@ -244,10 +244,10 @@ print(len(rows), "+", len(rejects), "=", len(as_arrived), rejects)
 
 The auditor wants every amount the export sent that was not a number. So before the pass converts the amounts in place, the analyst keeps the export as it came, and afterwards lists the amounts in that copy that are not digits. Anand's books hold both orders at their true values. What does the cell print, and which check would show Anand that the value of order KR-02063 was lost?
 
-a) 2 + 0 = 2 []; only a rupee total set against Anand's books would show it.
+a) 2 + 0 = 2 []; a rupee total against Anand's books shows it, where the printed line cannot.
 b) 2 + 1 = 2 ['KR-02063']; the printed line shows it, since clean plus rejected must equal the input.
 c) 2 + 0 = 2 []; the printed line shows it, since clean plus rejected must equal the input.
-d) 2 + 1 = 2 ['KR-02063']; only a rupee total set against Anand's books would show it.
+d) 2 + 1 = 2 ['KR-02063']; a rupee total against Anand's books shows it, where the printed line cannot.
 
 **Exhibit 2D.** Five invented rows laid out as the export's are, and a pass meant to set aside every unreadable amount.
 
@@ -412,7 +412,7 @@ print(round(real_gap), p)
 
 #### Q19 · Hard · circle one letter · Predict the output and the call
 
-Thursday's ten cards held five members' Q1 spend and five other members' Q2 spend, and in class 21 of 1,000 shuffles reached the real gap of Rs 880, under Kavya's 0.05. An analyst reruns the test with the gap written as Q2 less Q1, the way a fall is usually shown. What does the cell print, and what should the note to Meera say about the fall?
+Thursday's ten cards held five members' Q1 spend and five other members' Q2 spend, and in class 21 of 1,000 shuffles reached the real gap of Rs 880, under Kavya's 0.05. An analyst reruns the test with the gap written as Q2 less Q1, the way a fall is usually shown. What does the cell print, and what should the analyst's note say about the fall?
 
 a) -880 0.021; the note still calls the fall real.
 b) -880 0.981; the note should now call the fall the wobble.

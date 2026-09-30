@@ -303,7 +303,7 @@ additions:
                   sales[o["channel"]] += int(o["amount"])
           print(sales)
     text: |-
-      Every Kalpa order carries a status: delivered (it reached the customer), returned (it came back for a refund) or cancelled (it never left the shelf). Meera will fund one of two asks next quarter, the app team's new checkout or the store team's refit. Her rule is to back the channel whose orders brought in more on Monday, counting every order that was not cancelled. The analyst wrote this cell to settle it. What does it print, and which channel does her rule back?
+      Every Kalpa order carries a status: delivered (it reached the customer), returned (it came back for a refund) or cancelled (it never left the shelf). Meera will fund one of two asks next quarter, the app team's new checkout or the store team's refit. Her rule is to back the channel whose consumer orders brought in more on Monday, counting every order that was not cancelled. The analyst wrote this cell to settle it. What does it print, and which channel does her rule back?
       (a) {'app': 18600, 'web': 27290, 'store': 18920}; her rule backs the store.
       (b) {'app': 18600, 'web': 27290, 'store': 9870}; her rule backs the app.
       (c) {'app': 18600, 'web': 27290, 'store': 18920}; her rule backs the app.
@@ -519,17 +519,17 @@ additions:
           print(len(rows), rows[0]["order_id"])
     text: |-
       orders.csv opens on a line that names its columns, and 201 order rows follow it, the first two KR-02001 and KR-02002. The analyst's cleaning pass then runs on rows and reports its input as clean rows plus rejected rows. What does the cell print, and which check tells Anand whether every order in the file reached the pass?
-      (a) 201 KR-02001; only a count of the file's own rows, set against the pass's input, can tell him.
-      (b) 200 KR-02002; the pass's own report can tell him, since its input must equal clean plus rejected.
-      (c) 200 KR-02002; only a count of the file's own rows, set against the pass's input, can tell him.
-      (d) 201 KR-02001; the pass's own report can tell him, since its input must equal clean plus rejected.
+      (a) 201 KR-02001; a count of the file's own rows against the pass's input tells him, where the pass's report cannot.
+      (b) 200 KR-02002; the pass's own report tells him, since its input must equal clean plus rejected.
+      (c) 200 KR-02002; a count of the file's own rows against the pass's input tells him, where the pass's report cannot.
+      (d) 201 KR-02001; the pass's own report tells him, since its input must equal clean plus rejected.
     why: >-
       csv.DictReader reads the header line itself, to name the fields, so the first next() hands back
       the first order, KR-02001, and the comment is wrong about what it skips. The list holds the other
       200 rows and starts at KR-02002. The pass counts what it was given, so its report closes on 200
       whatever happens, and the order lost at the read sits in neither the clean file nor the log.
-      Only a count taken from the file, 201 rows, set against the 200 the pass received shows the
-      loss: a reconciliation that starts one row short still closes.
+      A count taken from the file, 201 rows, set against the 200 the pass received shows the loss,
+      where the pass's own report cannot: a reconciliation that starts one row short still closes.
     wrong:
       a: >-
         What the analyst meant. The header is gone before next() runs, so the call takes a real order
@@ -602,18 +602,18 @@ additions:
           print(len(rows), "+", len(rejects), "=", len(as_arrived), rejects)
     text: |-
       The auditor wants every amount the export sent that was not a number. So before the pass converts the amounts in place, the analyst keeps the export as it came, and afterwards lists the amounts in that copy that are not digits. Anand's books hold both orders at their true values. What does the cell print, and which check would show Anand that the value of order KR-02063 was lost?
-      (a) 2 + 0 = 2 []; only a rupee total set against Anand's books would show it.
+      (a) 2 + 0 = 2 []; a rupee total against Anand's books shows it, where the printed line cannot.
       (b) 2 + 1 = 2 ['KR-02063']; the printed line shows it, since clean plus rejected must equal the input.
       (c) 2 + 0 = 2 []; the printed line shows it, since clean plus rejected must equal the input.
-      (d) 2 + 1 = 2 ['KR-02063']; only a rupee total set against Anand's books would show it.
+      (d) 2 + 1 = 2 ['KR-02063']; a rupee total against Anand's books shows it, where the printed line cannot.
     why: >-
       rows.copy() makes a new list whose two slots point at the same two dictionaries, a shallow copy,
       and the pass rewrites each dictionary's amount in place. By the time the rejects line reads
       as_arrived, KR-02063's amount is the integer 0, whose text is a digit, so the list comes back
       empty and the line prints 2 + 0 = 2 []. The pass has turned an unreadable amount into a Rs 0
       sale, Wednesday's round 1 trap, and the shallow copy has erased the evidence the check was meant
-      to read, so the rows reconcile by construction. Only the rupees can show it: the clean rows hold
-      Rs 3,150 where Anand's books hold both orders. With copies of the dictionaries, [dict(r) for r in
+      to read, so the rows reconcile by construction. The rupees show it where the rows cannot: the
+      clean rows hold Rs 3,150 where Anand's books hold both orders. With copies of the dictionaries, [dict(r) for r in
       rows], or the file itself, the line would print 2 + 1 = 2 and fail on sight.
     wrong:
       b: >-
@@ -906,7 +906,7 @@ additions:
           p = sum(1 for g in gaps if g >= real_gap) / len(gaps)
           print(round(real_gap), p)
     text: |-
-      Thursday's ten cards held five members' Q1 spend and five other members' Q2 spend, and in class 21 of 1,000 shuffles reached the real gap of Rs 880, under Kavya's 0.05. An analyst reruns the test with the gap written as Q2 less Q1, the way a fall is usually shown. What does the cell print, and what should the note to Meera say about the fall?
+      Thursday's ten cards held five members' Q1 spend and five other members' Q2 spend, and in class 21 of 1,000 shuffles reached the real gap of Rs 880, under Kavya's 0.05. An analyst reruns the test with the gap written as Q2 less Q1, the way a fall is usually shown. What does the cell print, and what should the analyst's note say about the fall?
       (a) -880 0.021; the note still calls the fall real.
       (b) -880 0.981; the note should now call the fall the wobble.
       (c) -880 0.021; the note should now call the fall the wobble.
