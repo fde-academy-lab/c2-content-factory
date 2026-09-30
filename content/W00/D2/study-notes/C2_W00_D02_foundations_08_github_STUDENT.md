@@ -312,6 +312,8 @@ are saved off the laptop; the profile README exists with three claims and three 
 to bottom in a Codespace; at least one Discussion reply is posted in the required form; the best
 repositories are pinned.
 
+**GUIDED PRACTICE.** A guided walkthrough walks this hands-on step by step inside its 60 minutes: you redraw the chapter's picture, predict before you run, trace one step by hand and break the chapter's trap on purpose, and the last step says what to copy into your repository. Start with [the guided walkthrough](../exercises/guided/C2_W00_D02_foundations_08_github_guided_STUDENT.md), and open [the worked solution](../exercises/solutions/C2_W00_D02_foundations_08_github_solution_STUDENT.md) once you have tried it. The walkthrough's README checker, [C2_W00_D02_foundations_08_readme_check_STUDENT.py](../exercises/guided/C2_W00_D02_foundations_08_readme_check_STUDENT.py), tells you when your README carries the five headings with a Result that proves the code ran. [All eight exercises](../exercises/C2_W00_D02_foundations_exercises_STUDENT.md) are listed together.
+
 ## Where this gets tested
 
 **Interview question.** "Show me something you built." Tested: whether the anatomy exists. Strong

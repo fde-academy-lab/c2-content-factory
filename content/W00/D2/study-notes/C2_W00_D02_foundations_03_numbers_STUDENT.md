@@ -257,6 +257,8 @@ Self-check: your three per-tier ratios multiply back to the tier's revenue per c
 figure for Q1 is 804 divided by 55,000; changing the Student customer count changes the overall
 figure but no tier's own ratios.
 
+**GUIDED PRACTICE.** A guided notebook walks this hands-on step by step inside its 60 minutes: you redraw the chapter's picture, predict before you run, trace one step by hand and break the chapter's trap on purpose, and the last step says what to copy into your repository. Start with [the guided notebook](../exercises/guided/C2_W00_D02_foundations_03_numbers_guided_STUDENT.ipynb), and open [the worked solution](../exercises/solutions/C2_W00_D02_foundations_03_numbers_solution_STUDENT.ipynb) once you have tried it. [All eight exercises](../exercises/C2_W00_D02_foundations_exercises_STUDENT.md) are listed together.
+
 ## Where this gets tested
 
 **Interview question.** "Conversion fell overall but rose in every segment. What happened?" Tested:
