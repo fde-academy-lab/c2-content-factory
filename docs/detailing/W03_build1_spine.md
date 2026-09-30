@@ -95,7 +95,8 @@ Build 1's rubrics are locked, settled by the requester, in session, on 29 Septem
 ## The data pack, and what is planted
 
 `data/generate_kalpa_health.py` writes ten CSV files into `content/W03/D1/data/`, deterministically,
-and `--contract` asserts every plant. All five days read the same files. The plants are TRAINER ONLY;
+and `--contract` asserts every plant. Every file is the export taken on Friday 16 October 2026, so no
+posting is dated after it. All five days read the same files. The plants are TRAINER ONLY;
 the numbers below are the generator's witness.
 
 | Sub-problem | What is planted | The numbers |
