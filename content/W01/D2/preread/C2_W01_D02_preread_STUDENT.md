@@ -14,7 +14,8 @@ to all:
 > "Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9. Until your numbers match ours,
 > Finance will not act on a drop measured from an ERP export. Send me a reconciliation."
 
-Every figure the team produced today started from the dashboard's export. Finance keeps its own
+The ERP is the company's system of record for orders and payments. Every figure the team produced
+today started from the dashboard's export. Finance keeps its own
 books, and until the two agree, Finance will not act on a drop measured from an export. Tomorrow you
 own the reconciliation: which Q1 figure is right, how you know, and whether today's finding still
 stands once the numbers match.
