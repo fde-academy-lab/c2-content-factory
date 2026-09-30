@@ -23,8 +23,9 @@ funds an offer that cannot pay back or waves away a fall that keeps draining the
 
 ## Which idea does this set test?
 
-Two calls, two measurements. A chance reference says whether a gap beats chance. Rupees against the
-whole company and against the cost of acting say whether it deserves money. The design items give
+A gap raises two calls, and each has its own measure. A chance reference says whether the gap beats
+chance, and rupees set against the whole company and against the cost of acting say whether it
+deserves money. The design items give
 new numbers and ask who gets the first test of an offer, what a range buys when its low end sits
 below the cost, and what a measured recovery rate does to the decision. The other items ask what a
 small share can and cannot say about size, how a review is ordered, and what a larger count does to a

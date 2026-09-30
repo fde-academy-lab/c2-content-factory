@@ -131,7 +131,8 @@ Item 6, option a. Pooling uses more numbers, and some pairs will trust it for th
 the same people counted twice: on this invented tier a member's Q1 and Q2 correlate at 0.95, so the
 pooled deal mixes a Rs 314 fall with gaps of several thousand rupees between members and reads the
 fall as ordinary. On Retail-Plus the correlation is 0.04, which is why pooling happened to land close
-there. The way the data was collected decides the test, whatever one file happens to show.
+there, and a test chosen because it landed close on one file fails on the next tier where heavy
+buyers stay heavy.
 
 ## Where does this show up at work?
 

@@ -14,25 +14,26 @@ lettered choices in five parts with a check after each part, and ends on your no
 
 Kalpa Retail sells through its app, its website and its stores, to four segments: Retail-Core and
 Retail-Plus, its two consumer tiers, of which Retail-Plus is the paid membership; Student; and
-Business, its sales to companies. Revenue here is the money Kalpa kept, as Monday defined it. The six
-chapters answered Meera's questions one at a time on these files, and this case asks you to rebuild
-the answers alone, choosing every step, and to write them up. Chapter 1 set a chance reference
-against the Retail-Plus fall and read its share both ways, chapter 2 sized the fall in rupees against
-the company and against a retention offer, chapter 3 counted what Student's rate stands on, chapter
-4 rebuilt Marketing's 6 percent and asked who got the sale, chapter 5 wrote the four-part note, and
-chapter 6 asked what else changed in August and priced a hold-back for Diwali.
+Business, its sales to companies. Revenue here is the money Kalpa kept, as Monday defined it. The
+six chapters answered Meera's questions one at a time on the day's three files, which the rules
+below list, and this case asks you to rebuild the answers alone, choosing every step, and to write
+them up. Chapter 1 set a chance reference against the Retail-Plus fall and read its share both ways,
+chapter 2 sized the fall in rupees against the company and against a retention offer, chapter 3
+counted what Student's rate stands on, chapter 4 rebuilt Marketing's 6 percent and asked who got the
+sale, chapter 5 wrote the four-part note, and chapter 6 asked what else changed in August and priced
+a hold-back for Diwali.
 
-A chance reference is a set of invented worlds in which nothing changed.
-The flip test builds them by letting a coin decide, for each pair of values, which one counts as the
-first; the label shuffle pools every value and deals it into two piles at random; a coin flip per
-order deals a count of orders between two quarters. The share is the fraction of those worlds that
-make a gap at least as large as the real one, counted for falls only or for a move that large in
-either direction. A retention offer is a payment or perk meant to win back members' spend, assumed
-here at Rs 500 a member a quarter. The rule of thumb from chapter 3 is to distrust a rate with fewer
-than thirty customers behind it. A blend is one average across segments mixed together, a group's mix
-is its make-up by segment, and a lift is how much more one group spent than another, as a share of
-the other's spend. A hold-back is a group that a coin keeps out of a sale, so the rest can be
-compared with it afterwards. The note has four parts: claim, evidence, caveat and action.
+A chance reference is a set of invented worlds in which nothing changed. The flip test builds them
+by letting a coin decide, for each pair of values, which one counts as the first; the label shuffle
+pools every value and deals it into two piles at random; a coin flip per order deals a count of
+orders between two quarters. The share is the fraction of those worlds that make a gap at least as
+large as the real one, counted for falls only or for a move that large in either direction. A
+retention offer is a payment or perk meant to win back members' spend, assumed here at Rs 500 a
+member a quarter. The rule of thumb from chapter 3 is to distrust a rate with fewer than thirty
+customers behind it. A blend is one average across segments mixed together, a group's mix is its
+make-up by segment, and a lift is how much more one group spent than another, as a share of the
+other's spend. A hold-back is a group that a coin keeps out of a sale, so the rest can be compared
+with it afterwards. The note has four parts: claim, evidence, caveat and action.
 
 **Who needs the answer.** Meera reads the page in two minutes before Monday's growth review, with the
 marketing lead in the room ready to defend the monsoon sale. A line without its base sends money the

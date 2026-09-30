@@ -8,7 +8,10 @@ The day answered three questions from Meera Raghavan, Kalpa Retail's CEO, for Mo
 review: is the fall in Retail-Plus, Kalpa's paid membership tier, real or the wobble every quarter
 shows; should budget follow the Student segment's 40 percent rise; and did Marketing's monsoon sale,
 15 percent off in August, lift revenue, or did those customers buy anyway? The answers went on one
-page, a note in four parts, that is allowed to say "not yet".
+page, a note in four parts, that is allowed to say "not yet". The flip test let a coin decide, for
+each member, which of the member's two quarters counts as Q1, many times over; the share of those
+chance-only worlds that make a gap as large as the real one is the day's p-value. A blend is one
+average over segments mixed together.
 
 **Who needs the answer.** The trainer, closing the day. Each item is one of the day's calls made in
 seconds, and an item most of the room misses is a line likely to reach Meera wrong on Monday, so it

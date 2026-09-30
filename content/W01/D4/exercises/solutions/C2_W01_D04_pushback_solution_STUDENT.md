@@ -77,16 +77,18 @@ customers is the unexposed group's make-up: three in five.
 - b, `count("yes", "Retail-Core") / count("yes")`: the exposed group's Retail-Core share.
 - c, `mix_no["Retail-Plus"]`: the unexposed Retail-Plus share, the other two in five.
 
-### Q4. What is the like-for-like comparison for exposed Retail-Plus?
+### Q4. Like for like, what does each segment's exposed average go against?
 
-A design item. The exposed Retail-Plus average, Rs 4,850, needs a comparison that is fair to it.
+A design item. The notebook's `like_for_like(s)` divides segment `s`'s exposed average by the line
+you choose, and Marketing's Rs 4,850 for exposed Retail-Plus needs a comparison that is fair to it.
 
-The key is a, `avg("Retail-Plus", "no")`. Like for like is exposed Retail-Plus against unexposed
-Retail-Plus, Rs 4,850 against Rs 5,000: 3.0 percent less.
+The key is a, `avg(s, "no")`. Like for like sets each segment's exposed customers against the same
+segment's unexposed customers: Retail-Plus Rs 4,850 against Rs 5,000, 3.0 percent less, and
+Retail-Core Rs 1,940 against Rs 2,000, 3.0 percent less.
 
 - b, `marketing_no`: Marketing's mixed group again.
-- c, `avg("Retail-Core", "no")`: sets one segment against another.
-- d, `avg("Retail-Plus", "yes")`: divides the group by itself.
+- c, `avg("Retail-Core", "no")`: sets every segment against Retail-Core's unexposed customers.
+- d, `avg(s, "yes")`: divides the group by itself.
 
 ### Q5. Which weights make the exposed group's average comparable with Marketing's Rs 3,200?
 

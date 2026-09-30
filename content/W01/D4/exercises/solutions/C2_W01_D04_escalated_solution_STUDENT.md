@@ -26,11 +26,11 @@ takes apart on Monday.
 
 ## Which idea does this case test?
 
-Every habit of the day at once, without a trainer choosing the step: a chance reference that fits
-the way the data was collected, read in both directions; a fall sized in rupees against the company
-and a fix's cost; a rate put beside its count; a campaign compared inside each segment, with the mix
-named; a hold-back drawn from the list the sale runs on; and a note of four parts that says "not yet"
-where the evidence does.
+The case tests every habit of the day at once, with no trainer choosing the step: a chance reference
+that fits the way the data was collected, read in both directions; a fall sized in rupees against the
+company and a fix's cost; a rate put beside its count; a campaign compared inside each segment, with
+the mix named; a hold-back drawn from the list the sale runs on; and a note of four parts that says
+"not yet" where the evidence does.
 
 ## Which numbers should you have reached, part by part?
 
@@ -104,7 +104,7 @@ The key is d, `company_q2`. Meera runs the company, so the fall is set against t
 
 - a, `sum(plus_q1)`: the tier's own Q1, which is the head of Retail-Plus's view.
 - b, `len(ORDERS)`: a count of orders, which cannot sit under rupees.
-- c, `delivered("Retail-Core", "Q2")`: another segment.
+- c, `revenue("Retail-Core", "Q2")`: another segment.
 
 ### Q6. Who gets the first test of the Rs 500 offer?
 

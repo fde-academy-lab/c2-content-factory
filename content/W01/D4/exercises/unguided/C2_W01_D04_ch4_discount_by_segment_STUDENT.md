@@ -14,10 +14,11 @@ Kalpa's paid membership tier, and reports that customers who got the sale spent 
 customers who did not. Chapter 4 rebuilt that 6 percent from the same tables and then asked who was
 in each group. A blend is one average taken over segments mixed together. A group's mix is its
 make-up by segment, such as the share of it who are Retail-Plus members. A lift is how much more one
-group spent than another, as a share of the other group's spend. Comparing inside each segment sets
-customers who got the sale against customers of the same segment who did not, and putting both
-groups on one mix recomputes each group's average as if both held the same share of each segment.
-Kavya Nair, the senior analyst on the team, reviews every line before it reaches Meera.
+group spent than another, as a share of the other group's spend. The customers who got a campaign
+are its exposed group, and the rest are the unexposed group. The split by segment compares exposed
+and unexposed customers inside each segment, and the one-mix route puts both groups on one mix,
+recomputing each group's average as if both held the same share of each segment. Kavya Nair, the
+senior analyst on the team, reviews every line before it reaches Meera.
 
 **Who needs the answer.** Meera signs off Diwali's sale, and the marketing lead wants the monsoon
 discount again at 15 percent off. A wrong yes gives 15 percent of the price to customers who would
@@ -57,9 +58,8 @@ d) Nothing yet, and wait for a randomly assigned email in the next quarter
 ### Q2. What lift does the blend report for a campaign whose exposed group is 60 percent premium?
 
 Inside each of two invented tiers, customers who got a campaign spent exactly what the others spent:
-Rs 6,000 in premium and Rs 2,000 in basic. The exposed group, the customers who got the campaign,
-was 60 percent premium, and the unexposed group 30 percent. What lift does the blend report, and
-what does the note say?
+Rs 6,000 in premium and Rs 2,000 in basic. The exposed group was 60 percent premium, and the
+unexposed group 30 percent. What lift does the blend report, and what does the note say?
 
 a) 37.5 percent, all of it from who got the campaign
 b) 37.5 percent, and the campaign should be credited with it

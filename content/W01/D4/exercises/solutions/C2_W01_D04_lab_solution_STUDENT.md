@@ -151,27 +151,31 @@ Rs 3,800. The definition moved the verdict and the count decided how far to trus
 
 - Marker 1 is c, `r["segment"] in ("Retail-Plus", "Retail-Core")`: the question is about the two
   consumer tiers. a, `r["segment"] != "Student"`, keeps Business, whose lakh-rupee orders would swamp
-  any basket comparison; b, `True`, keeps everyone; d names Business outright.
+  any basket comparison; b, `True`, keeps everyone; d,
+  `r["segment"] in ("Retail-Plus", "Retail-Core", "Business")`, names Business outright.
 - Marker 2 is a, `int(r["amount"])`: every amount in the file converts cleanly with `int()`,
   including the one stored as text, which was Monday's lesson. b, `r["amount"]`, leaves text in the
-  list, so the average stops with a `TypeError`; c zeroes every order that was not delivered, which
-  answers step 2's question in step 1 and keeps the cancelled orders in the count at zero; d,
+  list, so the average stops with a `TypeError`; c,
+  `int(r["amount"]) if r["status"] == "delivered" else 0`, zeroes every order that was not delivered,
+  which answers step 2's question in step 1 and keeps the cancelled orders in the count at zero; d,
   `len(str(r["amount"]))`, measures the length of the text.
 - Marker 3 is b, `sum(1 for g in gaps if g >= real) / len(gaps)`: a Retail-Plus lead at least as
-  large as the real one is a shuffled gap at or above it. a counts every shuffled gap at or below the
-  real lead, which is nearly every deal; c, `real / max(gaps)`, is a ratio with no count of worlds; d
-  asks for a gap twice as large.
+  large as the real one is a shuffled gap at or above it. a, `sum(1 for g in gaps if g <= real) / len(gaps)`,
+  counts every shuffled gap at or below the real lead, which is nearly every deal; c,
+  `real / max(gaps)`, is a ratio with no count of worlds; d,
+  `sum(1 for g in gaps if abs(g) >= abs(real) * 2) / len(gaps)`, asks for a gap twice as large.
 - Marker 4 is d, `r["status"] == "delivered"`: delivered orders are the money kept. a,
-  `r["status"] != "cancelled"`, keeps returns; b keeps returned and delivered orders, the same as a
-  on this file; c, `r["amount"] != ""`, keeps everything.
-- Marker 5 is b, `share_delivered`: the head of Retail-Plus asked about the money kept, so the share
-  is the delivered one, and with it the line says not yet. a, `share_booked`, is computed on a
-  definition nobody asked about; c, `1 - share_delivered`, is its complement, the share of deals with
-  a smaller lead; d, `min(share_booked, share_delivered)`, picks whichever share flatters the claim.
+  `r["status"] != "cancelled"`, keeps returns; b, `r["status"] == "returned" or r["status"] == "delivered"`,
+  keeps returned and delivered orders, the same as a on this file; c, `r["amount"] != ""`, keeps
+  everything.
+- Marker 5 is b, `share_kept`: the head of Retail-Plus asked about the money kept, so the share is
+  the one on the money kept, and with it the line says not yet. a, `share_booked`, is computed on a
+  definition nobody asked about; c, `1 - share_kept`, is its complement, the share of deals with a
+  smaller lead; d, `min(share_booked, share_kept)`, picks whichever share flatters the claim.
 
 ## What does a model note for problem 4 say?
 
-A model note, 98 words.
+A model note, 94 words.
 
 **Claim.** We cannot yet say that notifications lift orders.
 
