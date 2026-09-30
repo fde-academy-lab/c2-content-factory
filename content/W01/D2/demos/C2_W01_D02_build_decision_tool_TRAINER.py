@@ -106,7 +106,7 @@ assert (tot["Q1"]["rev"], tot["Q2"]["rev"], tile) == (21000000, 18700000, 155599
 wb = Workbook()
 start = wb.active
 start.title = "Start"
-start["A1"] = "Which branch moved: the decision tool"
+start["A1"] = "Which branch moved from Q1 to Q2, one decision at a time?"
 start["A1"].font = TITLE
 start.column_dimensions["A"].width = 120
 lines = [
@@ -123,7 +123,7 @@ for i, text in enumerate(lines, 3):
 
 # ---------------------------------------------------------------- Window
 ws = sheet(wb, "Window", "Is the drop real on matched windows?",
-           "Two quarters are compared only when they cover the same weeks, or as a rate per week.")
+           "Two quarters are compared only when they cover the same weeks, with any rate per week stated beside them.")
 head(ws, 4, ["Window", "Revenue (Rs)", "Weeks covered"])
 put(ws, "A5", "Q1, closed quarter"); put(ws, "B5", tot["Q1"]["rev"], fill=INPUT); put(ws, "C5", 13, fill=INPUT)
 put(ws, "A6", "Q2 dashboard tile, cut at 15 September"); put(ws, "B6", tile, fill=INPUT); put(ws, "C6", 11, fill=INPUT)
@@ -143,9 +143,9 @@ put(ws, "A18", "Verdict", VERDICT)
 put(ws, "B18", '=IF(ABS(B10*C6-B6)>=1,"Fix the weekly rate that divides by the wrong weeks before comparing anything.",'
                'IF(B13="closed quarters",IF(C7=C5,"Revenue "&' + moved("B14") + '&" between closed quarters of "&C5&'
                '" weeks each.","The closed quarters cover different weeks: compare a rate per week."),'
-               'IF(B13="rate per week","Per week, revenue "&' + moved("B16") + '&" on the cut window.",'
+               'IF(B13="rate per week","Per week, revenue "&' + moved("B16") + '&" on the cut window; the rate fixes the length, so send the same weeks of both beside it.",'
                'IF(C6<>C5,"Refuse the comparison: "&C6&" weeks against "&C5&" reads as "&TEXT(ABS(B15),"0.0")&'
-               '" percent; close the window or use a rate per week.","Revenue "&' + moved("B15") + '&" on matched weeks."))))',
+               '" percent; now that Q2 has closed, choose closed quarters, and while a quarter is open compare the same weeks of both with a rate per week beside them.","Revenue "&' + moved("B15") + '&" on matched weeks."))))',
     VERDICT, TINT, True)
 put(ws, "A19", "Fixed, for the Export tab", NOTE); put(ws, "B19", "=IF(ABS(B10*C6-B6)<1,1,0)")
 
@@ -205,7 +205,7 @@ put(ws, "A19", "Fixed, for the Export tab", NOTE)
 put(ws, "B19", "=IF(AND(ABS(B12*B6-B7)<0.5,ABS(C12*C6-C7)<0.5),1,0)")
 
 # ---------------------------------------------------------------- Rollup
-ws = sheet(wb, "Rollup", "Weighted or averaged?",
+ws = sheet(wb, "Rollup", "Should the segments be weighted or averaged?",
            "A company rate is rolled up with its weights: total orders over total customers, never the average of the segment rates.",
            widths=(30, 16, 16, 16, 16, 60))
 head(ws, 4, ["Segment", "Customers Q1", "Customers Q2", "Orders Q1", "Orders Q2", "Orders per customer, Q1 then Q2"])
@@ -233,8 +233,8 @@ put(ws, "A16", "Fixed, for the Export tab", NOTE)
 put(ws, "B16", "=IF(AND(ABS(B10*SUM(B5:B8)-SUM(D5:D8))<0.5,ABS(B11*SUM(C5:C8)-SUM(E5:E8))<0.5),1,0)")
 
 # ---------------------------------------------------------------- Segments
-ws = sheet(wb, "Segments", "Groups in against groups out",
-           "The change in orders per customer for every segment, with big moves flagged in their own column rather than dropped.",
+ws = sheet(wb, "Segments", "Does every group that goes in come back out?",
+           "The change in orders per customer for every segment, with big moves flagged in their own column and every segment kept.",
            widths=(30, 16, 16, 18, 22, 60))
 head(ws, 4, ["Segment", "Q1 orders per customer", "Q2 orders per customer", "Change, percent", "Flag"])
 for i in range(5, 9):
@@ -257,7 +257,7 @@ put(ws, "B16", '=IF(B10<>B11,"Fix the change formula that drops the big moves be
 put(ws, "A17", "Fixed, for the Export tab", NOTE); put(ws, "B17", "=IF(B10=B11,1,0)")
 
 # ---------------------------------------------------------------- Export
-ws = sheet(wb, "Export", "The brief, assembled",
+ws = sheet(wb, "Export", "Is the brief ready to go to Meera?",
            "Released only when every tab's check passes. Paste the brief into the note to Meera.", widths=(24, 120))
 put(ws, "A4", "Tabs fixed", BOLD); put(ws, "B4", "=Window!B19+Tree!B16+Discount!B19+Rollup!B16+Segments!B17")
 put(ws, "A5", "Release", VERDICT)
