@@ -2,7 +2,7 @@
 
 Answers: 1b 2a 3d 4c
 
-Kalpa Retail's export still holds values that are missing or cannot be read once one row per order is kept, and each needs a written decision that the analyst who works for Anand Iyer, the finance controller, can follow, since Operations reads the delivered share every week and Finance reads every rupee.
+Kalpa Retail's export of orders from the ERP, the enterprise resource planning system Finance books orders in, still holds values that are missing or cannot be read once one row per order is kept, and each needs a written decision that the analyst who works for Anand Iyer, the finance controller, can follow, since Operations reads the delivered share every week and Finance reads every rupee.
 
 Two of the four items are design items: 1 and 4.
 
@@ -18,7 +18,7 @@ The key is b, "Keep and flag them; report the share and the count unknown". 1,80
 
 ### Q2. What do 300 convertible amounts that start 0, 0, 0 tell you?
 
-A colleague's profile of a Kalpa export reports 300 of 300 amounts convertible, and the sorted amounts start `0, 0, 0, 410, 460`.
+A colleague's profile of a Kalpa export, its count of each field's present, convertible and distinct values, reports 300 of 300 amounts convertible, and the sorted amounts start `0, 0, 0, 410, 460`.
 
 The key is a, "Three amounts failed, and a helper turned each into 0". No Kalpa order is worth Rs 0, and a perfect convertible count beside three zeros is the fingerprint of a helper that turns failures into zero.
 
@@ -38,9 +38,9 @@ The key is d, "Try int(); on failure, log the value and its reason". isdigit rej
 
 ### Q4. What goes in the log for an amount that reads `fourteen`? (Design)
 
-On an invented export an amount reads `fourteen`, the JSON feed cut from the same extract, one pull of rows out of the ERP, reads `fourteen` too, and no other source holds the order.
+On an invented export an amount reads `fourteen`, the JSON feed cut from the same extract, one pull of rows out of the ERP, reads `fourteen` too, and no other source holds the order's booked value, the price it was charged.
 
-The key is c, "Reject it to the log, and ask the ERP team for the booked value". The feed witnesses what the extract held, never whether a value is right, so its agreement repairs nothing. With no independent source the order goes to the rejects log with its reason until the ERP team supplies the booked value, the price the order was charged.
+The key is c, "Reject it to the log, and ask the ERP team for the booked value". The feed witnesses what the extract held, never whether a value is right, so its agreement repairs nothing. With no independent source the order goes to the rejects log with its reason until the ERP team supplies the booked value.
 
 - a, "Repair it from the feed, since a second source agrees with it": the feed copied the defect from the same extract.
 - b, "Read the word as Rs 14, since the text is plain about the number": reading a word as a number is a guess, and Rs 14 sits far below any Kalpa order.

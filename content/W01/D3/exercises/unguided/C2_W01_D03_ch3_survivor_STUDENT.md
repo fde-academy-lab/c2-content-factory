@@ -6,6 +6,8 @@ Chapter 3 set, 4 items, about 12 minutes, after chapter 3. The books are Finance
 >
 > Anand Iyer, finance controller, Kalpa Retail
 
+The export was stitched from two extracts, two separate pulls of rows out of the ERP. Chapter 2 found that the order_id, the number the ERP issues once per order, decides when two rows are one order: 15 orders appear twice, 14 in Q1 and 1 in Q2, none three times. For 13 of those pairs the two copies are identical, and for 2 they disagree. A survivor rule picks which copy of a pair stays in the clean file, and every copy it does not keep is set aside to a log with its reason; a copy's twin is the other row of the same order. Kalpa's Business segment is its sales to companies, every order in lakhs, and Retail-Plus is its paid membership tier.
+
 **Who needs the answer.** Anand Iyer is the finance controller, and his analyst ties out to the rupee: she matches every figure to the books line by line, and a rupee's difference is a finding. If the copy kept for any order moves Q1 away from the books, the reconciliation she checks becomes a finding against the team, and on today's file keeping the wrong copy moved Q1 by Rs 1,790.
 
 **The questions on the way.**
@@ -14,8 +16,6 @@ Chapter 3 set, 4 items, about 12 minutes, after chapter 3. The books are Finance
 - What does keeping the first copy of every pair cost against the books?
 - Which survivor rule goes in the log once the ERP team explains the second extract?
 - Who hears first about the two Business rows set aside?
-
-The export was stitched from two extracts, two separate pulls of rows out of the ERP. Chapter 2 found that the order_id, the number the ERP issues once per order, decides when two rows are one order: 15 orders appear twice, 14 in Q1 and 1 in Q2, none three times. For 13 of those pairs the two copies are identical, and for 2 they disagree. A survivor rule picks which copy of a pair stays in the clean file, and every copy it does not keep is set aside to a log with its reason. Kalpa's Business segment is its sales to companies, every order in lakhs, and Retail-Plus is its paid membership tier.
 
 Every number in the items is invented unless the item says it comes from today's file, and the reasoning is the one you ran on Kalpa's export. An item marked Design asks you to combine two of the day's ideas, or to size the options yourself, before you choose.
 

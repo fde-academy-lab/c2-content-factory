@@ -6,7 +6,9 @@ Chapter 6 set, 4 items, about 12 minutes, after chapter 6. Anand Iyer is Kalpa R
 >
 > Anand Iyer, finance controller, Kalpa Retail
 
-**Who needs the answer.** Anand's analyst checks the logs tonight, and an auditor may ask next quarter why any row went. A log she cannot follow costs a week of questions, and a log that fails her tie-out, which matches every figure to the books, Finance's own record of Q1, line by line, costs the team her trust in everything else it sends.
+Chapter 5 proved today's Q1 with a bridge, a walk from one total to another, one cause to a step: Rs 2,09,98,210 as exported, less Rs 19,67,560 of copies of corporate orders and Rs 30,650 of copies of consumer orders, lands on the books, Finance's own record of Q1, at Rs 1,90,00,000. The identity rule is the rule that decides when two rows are one order. The pass writes four logs. The set-aside log holds every row the pass removed, with its reason and the line of its twin, the row of the same order that stayed; the rejects log holds every value that would not convert; the flags log holds every record kept with a question on it; and the decisions log holds each rule with the rows and rupees it moved. Control totals are a count and a sum computed at both ends of a transfer and compared, here rows and rupees.
+
+**Who needs the answer.** Anand's analyst checks the logs tonight, and an auditor may ask next quarter why any row went. A log she cannot follow costs a week of questions, and a log that fails her tie-out, which matches every figure to the books line by line, costs the team her trust in everything else it sends.
 
 **The questions on the way.**
 
@@ -14,8 +16,6 @@ Chapter 6 set, 4 items, about 12 minutes, after chapter 6. Anand Iyer is Kalpa R
 - In what order does the pass run for Anand's analyst?
 - Which hand-over fits the analyst's 20 minutes?
 - Which test shows the log is complete without trusting the code that wrote it?
-
-Chapter 5 proved today's Q1 with a bridge, a walk from one total to another, one cause to a step: Rs 2,09,98,210 as exported, less Rs 19,67,560 of copies of corporate orders and Rs 30,650 of copies of consumer orders, lands on the books at Rs 1,90,00,000. The pass writes four logs. The set-aside log holds every row the pass removed, with its reason and the line of its twin, the row of the same order that stayed; the rejects log holds every value that would not convert; the flags log holds every record kept with a question on it; and the decisions log holds each rule with the rows and rupees it moved. Control totals are a count and a sum computed at both ends of a transfer and compared, here rows and rupees.
 
 Every number in the items is invented unless the item says it comes from today's file, and the reasoning is the one you ran on Kalpa's export. An item marked Design asks you to combine two of the day's ideas, or to size the options yourself, before you choose.
 

@@ -8,9 +8,10 @@ Every exercise today puts Anand Iyer's question back to you. He is Kalpa Retail'
 The dashboard puts Q1 revenue at Rs 2.1 crore, and the books, Finance's own record of Q1, say Rs 1.9
 crore. The dashboard reads an export from the ERP, the enterprise resource planning system Finance
 books orders in, and the day cleans that export, reconciles it to the books and recomputes what the
-team reported from it on Tuesday. Each chapter's set follows the chapter of the same number, and the
-sets climb with the day. An item marked Design asks you to combine two of the day's ideas or to size
-the options yourself before you choose: 20 of today's 40 items.
+team reported from it on Tuesday. A profile, the first step, counts for every field the values present,
+the values that convert and the distinct values. Each chapter's set follows the chapter of the same
+number, and the sets climb with the day. An item marked Design asks you to combine two of the day's
+ideas or to size the options yourself before you choose: 20 of today's 40 items.
 
 ## Which file asks which question, and when do you take it?
 
@@ -23,7 +24,7 @@ the options yourself before you choose: 20 of today's 40 items.
 | After chapter 4 | `unguided/C2_W01_D03_ch4_missing_STUDENT.md` | What should the pass do with a value that is missing or cannot be read, so that no decision invents or deletes a fact? | Four letters; items 1 and 4 are design |
 | After chapter 5 | `unguided/C2_W01_D03_ch5_bridge_STUDENT.md` | Can we prove to Anand, one cause at a time, that his Rs 1.9 crore is right, and does Tuesday's finding survive the clean file? | Five letters; items 3 and 4 are design |
 | After chapter 6 | `unguided/C2_W01_D03_ch6_audit_STUDENT.md` | Can Anand's analyst audit every decision tonight and rebuild the clean file from the log alone? | Four letters; items 2, 3 and 4 are design |
-| The escalated case, alone | `unguided/C2_W01_D03_escalated_case_STUDENT.md` with `notebooks/C2_W01_D03_ex1_escalated_case_STUDENT.ipynb` | Can you clean the export alone and send Anand a reconciliation his analyst can audit? | Nine notebook letters and ten brief letters, then the note; items 3, 5, 6 and 8 are design |
+| The escalated case, alone | `unguided/C2_W01_D03_escalated_case_STUDENT.md` with `notebooks/C2_W01_D03_ex1_escalated_case_STUDENT.ipynb` | Can you run the whole pass alone and send Anand a reconciliation his analyst can audit? | Nine notebook letters and ten brief letters, then the note; items 3, 5, 6 and 8 are design |
 | The second case, in pairs | `unguided/C2_W01_D03_auditor_question_STUDENT.md` with `notebooks/C2_W01_D03_ex2_auditor_STUDENT.ipynb` | Why were 14 Q1 rows set aside, and how does the auditor know nothing else went? | Five notebook letters and five brief letters; items 2, 3 and 5 are design |
 | The practice lab, after the second block | `practice/C2_W01_D03_lab_STUDENT.md` | Would you trust the other files the ERP team sent? | Eleven letters in four groups |
 | Tonight | `../takehome/C2_W01_D03_brief_STUDENT.md` | Which Q1 total is right on a second export nobody has profiled? | Your notebook, your logs and the note |
@@ -34,7 +35,7 @@ the options yourself before you choose: 20 of today's 40 items.
 
 Every solution is in `solutions/`, released at the close of each block. Each opens on an answer line
 and gives, item by item, the question, the key with why it holds and why each other letter fails, so it
-reads with nothing else open. The two case notebooks have solution twins there as well, run with every
+reads with nothing else open. The two case notebooks have solution notebooks there as well, run with every
 placeholder filled.
 
 | Solution | The question it answers |
@@ -45,6 +46,6 @@ placeholder filled.
 | `solutions/C2_W01_D03_ch4_missing_solution_STUDENT.md` | Which answers hold in the chapter 4 set on values that are missing or cannot be read, and why? |
 | `solutions/C2_W01_D03_ch5_bridge_solution_STUDENT.md` | Which answers hold in the chapter 5 set on the proof of Anand's Rs 1.9 crore, and why? |
 | `solutions/C2_W01_D03_ch6_audit_solution_STUDENT.md` | Which answers hold in the chapter 6 set on the log Anand's analyst audits, and why? |
-| `solutions/C2_W01_D03_escalated_case_solution_STUDENT.md` | Which answers hold in the escalated case on cleaning the export alone, and why? |
+| `solutions/C2_W01_D03_escalated_case_solution_STUDENT.md` | Which answers hold in the escalated case on running the whole pass alone, and why? |
 | `solutions/C2_W01_D03_auditor_question_solution_STUDENT.md` | Which answers hold in the second case on the auditor's 14 rows, and why? |
 | `solutions/C2_W01_D03_lab_solution_STUDENT.md` | Which answers hold in the practice lab on the ERP team's other files, and why? |

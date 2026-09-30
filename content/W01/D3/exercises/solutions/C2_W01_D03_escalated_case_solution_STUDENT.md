@@ -1,24 +1,25 @@
-# Which answers hold in the escalated case on cleaning the export alone, and why?
+# Which answers hold in the escalated case on running the whole pass alone, and why?
 
 Answers: 1d 2b 3c 4c 5a 6d 7a 8c 9b 10a
 
 Alone, each learner cleans Kalpa Retail's export of Q1 and Q2 orders from the ERP, the enterprise
 resource planning system Finance books orders in, reconciles it to the books, Finance's own record of
-Q1 at Rs 1,90,00,000, recomputes Monday's revenue tree and writes the note that Anand Iyer, the
-finance controller, asked for.
+Q1 at Rs 1,90,00,000, recomputes Monday's revenue tree, revenue = customers x orders per customer x
+revenue per order, and writes the note that Anand Iyer, the finance controller, asked for.
 
-The notebook's own letters, in order, are in its solution twin,
+The notebook's own letters, in order, are in its solution notebook,
 `exercises/solutions/C2_W01_D03_ex1_escalated_case_solution_STUDENT.ipynb`: 1c 2a 3d 4c 5b 6d 7b 8a 9c.
 
 Four of the ten items are design items: 3, 5, 6 and 8.
 
 ## What does the escalated case test?
 
-It tests the whole pass, alone, in the order that makes each step safe: profile, the identity rule
-keeping the copy whose amount converts, conversion with a rejects log that stays empty on this file,
-the two flags on records kept with a question on them, rows and rupees reconciled to the books, Monday's tree recomputed, and the note in under
-120 words. The brief's items are the questions that arrive once the numbers land, so each asks for a
-judgement the notebook's code does not make for you.
+It tests the whole pass, alone, in the order that makes each step safe: the profile's three counts for
+every field, present, convertible and distinct; the identity rule, which decides when two rows are one
+order, keeping the copy whose amount converts; conversion with a rejects log that stays empty on this
+file; the two flags on records kept with a question on them; rows and rupees reconciled to the books;
+Monday's tree recomputed; and the note in under 120 words. The brief's items are the questions that
+arrive once the numbers land, so each asks for a judgement the notebook's code does not make for you.
 
 ## Part 1. What can you tell Anand from the profile and the feed?
 
@@ -30,7 +31,8 @@ every figure, matching it to the books line by line.
 
 The key is d, "The export counts some orders twice; the rupees follow the rule". 201 rows for 186 ids
 proves that some orders sit on more than one row. How many rupees they carry, and which figure is
-right, waits for the identity rule and the bridge.
+right, waits for the identity rule and the bridge, the walk from one total to the other one cause at a
+time.
 
 - a, "Your 1.9 crore is right; the export carries fifteen extra rows": calls the books right before a
   single row has been tied out.
@@ -41,8 +43,8 @@ right, waits for the identity rule and the bridge.
 
 ### Q2. Which sentence about the JSON feed can the note carry?
 
-The app's JSON feed, cut from the same extract as the CSV, yields 119 complete records and agrees with
-the CSV on 118 of their amounts; the 119th is unreadable in both.
+The app's JSON feed, cut from the same extract as the CSV, one pull of rows out of the ERP, yields 119
+complete records and agrees with the CSV on 118 of their amounts; the 119th is unreadable in both.
 
 The key is b, "The feed shows what the extract held; it cannot say a value is right". The feed was cut
 from the same extract, so it witnesses what the extract held, never whether a value is right.
@@ -78,8 +80,8 @@ The rule keeps the copy whose amount converts, then the first; of the 15 repeate
 identical copies and 2 have copies that differ.
 
 The key is c, "1, for the pair whose valid copies disagree". Thirteen pairs are identical, and one
-pair's unreadable copy has a readable twin, so the rule settles all fourteen. The pair whose valid
-copies disagree on a field leaves a fact only the source can settle.
+pair's unreadable copy has a readable twin, the other row of the same order, so the rule settles all
+fourteen. The pair whose valid copies disagree on a field leaves a fact only the source can settle.
 
 - a, "15, one for every repeated order": thirteen of those questions have nothing in them.
 - b, "2, one for each pair whose copies differ": the unreadable pair needs no question, since its twin
@@ -145,7 +147,7 @@ conversion afterwards had nothing to reject.
 
 The ERP team offers to re-send the Q1 export tomorrow with the copies removed at source.
 
-The key is c, "The whole pass: 100 orders, nothing set aside, Q1 on the books". A new export is a new
+The key is c, "Every step again: 100 orders, nothing set aside, Q1 on the books". A new export is a new
 file, and only the whole pass proves it: 100 Q1 orders on 100 rows, nothing set aside, and Q1 on the
 books. Any other result is a finding about the fix at source.
 
@@ -168,7 +170,8 @@ The key is b, "Orders per customer: x0.860 on the clean file against x0.754". Th
 orders, so orders per customer carries the correction, 1.449 to 1.246 against Tuesday's 1.65 to 1.25.
 Revenue per order moves from x1.180 to x1.144, a smaller shift, and customers stay at 69.
 
-- a, "Revenue per order: x1.144 on the clean file against x1.180": revenue per order moves, by less.
+- a, "Revenue per order: x1.144 on the clean file against x1.180": revenue per order moves by less, from
+  x1.180 to x1.144.
 - c, "Customers: the copies counted some of the 69 buyers twice": the copies repeated orders of the
   same 69 customers, so the customer count never moved.
 - d, "Orders per customer: x0.763 on the clean file against x0.754": x0.763 is the export as delivered

@@ -5,6 +5,12 @@
 >
 > Anand Iyer, finance controller, Kalpa Retail
 
+An extract is one pull of rows out of the ERP, the enterprise resource planning system Finance books
+orders in, and the migration is the Q1 move of the order data from one system to another. Today's
+export held 201 rows for 186 orders, and the day's pass set aside 15 copies and landed Q1 on the books,
+Finance's own record of Q1, at Rs 1,90,00,000. A profile counts, for every field, the values present, the
+values that convert and the distinct values.
+
 **Who needs the answer.** Anand Iyer, the finance controller, needs to know whether this second extract
 changes anything the team told him today. A total you have not reconciled, or a decision you made
 without writing it down, would put an unexplained figure in front of Finance a second time.
@@ -15,13 +21,10 @@ without writing it down, would put an unexplained figure in front of Finance a s
 - What does the note to Finance say, and in what order?
 - How does `csv.DictReader` turn each line of a CSV into a record?
 
-An extract is one pull of rows out of the ERP, the enterprise resource planning system Finance books
-orders in, and the migration is the Q1 move of the order data from one system to another. Today's
-export held 201 rows for 186 orders, and the day's pass set aside 15 copies and landed Q1 on the books,
-Finance's own record of Q1, at Rs 1,90,00,000. About two hours tonight. The file is
-`data/C2_W01_D03_takehome_STUDENT.csv`, and nobody has profiled it in class. Three of its five defects
-are kinds you met today, in new places and new amounts; two are kinds you have not met, so today's
-counts will not carry over, and the profile is how you find all five.
+About two hours tonight. The file is `data/C2_W01_D03_takehome_STUDENT.csv`, and nobody has profiled it
+in class. Three of its five defects are kinds you met today, in new places and new amounts; two are
+kinds you have not met, so today's counts will not carry over, and the profile is how you find all
+five.
 
 ## Part 1. What does a full pass find in the second extract?
 
@@ -31,10 +34,10 @@ In a fresh notebook, using the day's helper:
 
 1. Read the file and profile every field: present, convertible, distinct. Write one sentence per
    field on what its counts let you trust.
-2. Convert amounts with a rejects log. Every row that fails goes into the log with its line, field,
-   value and reason, and you read each logged row before deciding anything about it.
-3. Apply the identity rule, the rule that decides when two rows are one order, preferring the copy
-   that validates, and log a reason for every row set aside.
+2. Apply the identity rule, the rule that decides when two rows are one order, keeping the copy whose
+   amount converts (the first when both do), and log a reason for every row set aside.
+3. Convert the kept amounts with a rejects log. Every row that fails goes into the log with its line,
+   field, value and reason, and you read each logged row before deciding anything about it.
 4. For every value that converts but is still not an ordinary order, make the three-way decision,
    drop, default or keep and flag, and write the reason. At least one decision tonight has two
    defensible answers; choose one and say what the other would have given.

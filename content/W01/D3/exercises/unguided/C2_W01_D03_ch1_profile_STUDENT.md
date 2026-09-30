@@ -6,6 +6,8 @@ Chapter 1 set, 4 items, about 12 minutes, after chapter 1. The ERP is the enterp
 >
 > Anand Iyer, finance controller, Kalpa Retail
 
+Both of Anand's figures count booked value, every order at the price charged, whatever its status. Chapter 1 profiled the export before totalling anything: for every field it counted the values present, the values that convert to the type the field needs, and the distinct values. The profile found 201 rows for 186 distinct order ids and one amount that does not convert, and Q1 over the 200 amounts that do convert is Rs 2,09,98,210, so the dashboard's Rs 2.1 crore is honest arithmetic on this file. Kalpa's Business segment is its sales to companies, every order in lakhs.
+
 **Who needs the answer.** Anand Iyer, the finance controller, decides whether Finance acts at all on the drop the team reported on Tuesday, the fall from Q1 to Q2 measured on the export as delivered. Tonight his analyst ties out every figure: she matches each one to the books line by line, so a rupee's difference is a finding. A wrong count costs the most of the day, since every later number stands on it. A note that calls the dashboard right when it is not makes the analyst discount everything the team sends, and Marketing loses a month.
 
 **The questions on the way.**
@@ -14,8 +16,6 @@ Chapter 1 set, 4 items, about 12 minutes, after chapter 1. The ERP is the enterp
 - Which plan fits the 45 minutes before the analyst starts?
 - How many rows are copies, and how many amounts cannot be read?
 - Which route counts the distinct ids of 4 crore rows with 2 GB free?
-
-Both of Anand's figures count booked value, every order at the price charged, whatever its status. Chapter 1 profiled the export before totalling anything: for every field it counted the values present, the values that convert to the type the field needs, and the distinct values. The profile found 201 rows for 186 distinct order ids and one amount that does not convert, and Q1 over the 200 amounts that do convert is Rs 2,09,98,210, so the dashboard's Rs 2.1 crore is honest arithmetic on this file. Kalpa's Business segment is its sales to companies, every order in lakhs.
 
 Every number in the items is invented unless the item says it comes from today's file, and the reasoning is the one you ran on Kalpa's export. An item marked Design asks you to combine two of the day's ideas, or to size the options yourself, before you choose.
 

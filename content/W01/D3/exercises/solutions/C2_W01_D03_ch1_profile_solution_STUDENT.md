@@ -18,7 +18,7 @@ The key is c, "Hold it: no largest order sits below every Business order". A Q2 
 
 ### Q2. Which plan fits the 45 minutes before the analyst starts? (Design)
 
-A new export of 1.2 crore rows and 12 fields lands, the analyst starts in 45 minutes, and the team's profile reads about 20 lakh values a minute.
+A new export of 1.2 crore rows and 12 fields lands, the analyst starts in 45 minutes, and the team's profile, three counts for every field, reads about 20 lakh values a minute.
 
 The key is b, "Profile order_id and amount, then read the rows they flag". All 12 fields are 14.4 crore values, 72 minutes at 20 lakh a minute, past the deadline. order_id and amount are 2.4 crore values, 12 minutes, which leaves half an hour to read what they flag, and those two fields are where a repeated order or an unreadable amount would move Anand's figure.
 

@@ -14,7 +14,7 @@ The key is a, "The load stamp differs on every row, so no two rows matched". A l
 
 - b, "16 orders were lost in the load, and the ERP team must resend": all 300 rows are present, so nothing was lost.
 - c, "The dedupe is right, and the id count is off by 16 somewhere": the id count is the check, and it disagrees with the dedupe.
-- d, "16 rows carry a blank order_id, so the id count falls short": blank ids would show in the profile as order_id present on fewer than 300 rows, and the dedupe would still match nothing.
+- d, "16 rows carry a blank order_id, so the id count falls short": blank ids would show in the profile, the count of each field's present, convertible and distinct values, as order_id present on fewer than 300 rows, and the dedupe would still match nothing.
 
 ### Q2. Which match builds one customer table from two systems inside 2 hours? (Design)
 
@@ -34,7 +34,7 @@ The key is b, "Compare the two lists of flagged rows, line against line". Two ke
 
 - a, "Compare the two keys' counts again, quarter by quarter": counts by quarter can match while the rows differ.
 - c, "Rerun the fuzzy match with a 30-day window to confirm 22": a narrower window changes the count and cannot test whether the rows are the same.
-- d, "Check that both keys flag at least one Business order": says nothing about which rows either key flagged.
+- d, "Check that both keys flag at least one Business order": a check on one segment, Kalpa's sales to companies, says nothing about which rows either key flagged.
 
 ### Q4. Where does the fuzzy match leave revenue against the order_id key? (Design)
 

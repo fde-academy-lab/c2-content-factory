@@ -6,6 +6,8 @@ Chapter 5 set, 5 items, about 15 minutes, after chapter 5. Anand Iyer is Kalpa R
 >
 > Anand Iyer, finance controller, Kalpa Retail
 
+Chapters 1 to 4 built the clean file from the 201 rows of the export from the ERP, the enterprise resource planning system Finance books orders in: 186 orders kept, 15 rows set aside as copies by the identity rule, the rule that decides when two rows are one order, and one order kept with a flag on its missing status. Q1 on the clean file is Rs 1,90,00,000, against Rs 2,09,98,210 as exported. A bridge walks one total to another in steps, one cause to a step, each with its rupees. Orders per customer is one branch of Monday's revenue tree, revenue = customers x orders per customer x revenue per order, with each branch read as Q2's multiple of Q1, and on Tuesday the team read it as 1.65 in Q1 against 1.25 in Q2. Kalpa's Business segment is its sales to companies, every order in lakhs.
+
 **Who needs the answer.** Anand wants a proof his analyst can follow, and Marketing's rescue campaign for Retail-Plus waits on whether Tuesday's finding survives. A proof Finance cannot follow costs his trust, and a finding nobody recomputes sends Marketing after a fall of a size nobody checked.
 
 **The questions on the way.**
@@ -15,8 +17,6 @@ Chapter 5 set, 5 items, about 15 minutes, after chapter 5. Anand Iyer is Kalpa R
 - Which proof goes to Anand for the third quarter?
 - How has the gap Marketing's campaign aims to close changed?
 - What goes in the note when Marketing asks for Q2 without its largest order?
-
-Chapters 1 to 4 built the clean file from the 201 rows of the export from the ERP, the enterprise resource planning system Finance books orders in: 186 orders kept, 15 rows set aside as copies by the identity rule, the rule that decides when two rows are one order, and one order kept with a flag on its missing status. Q1 on the clean file is Rs 1,90,00,000, against Rs 2,09,98,210 as exported. A bridge walks one total to another in steps, one cause to a step, each with its rupees. Orders per customer is one branch of Monday's revenue tree, revenue = customers x orders per customer x revenue per order, with each branch read as Q2's multiple of Q1, and on Tuesday the team read it as 1.65 in Q1 against 1.25 in Q2. Kalpa's Business segment is its sales to companies, every order in lakhs.
 
 Every number in the items is invented unless the item says it comes from today's file, and the reasoning is the one you ran on Kalpa's export. An item marked Design asks you to combine two of the day's ideas, or to size the options yourself, before you choose.
 

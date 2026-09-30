@@ -3,14 +3,14 @@
 Answers: 1b 2c 3b 4c 5a 6a 7d 8b 9d 10a 11b
 
 Kavya Nair, the senior analyst on Kalpa Retail's data team, asked for the day's pass to be run on the
-other files the team behind the ERP, the enterprise resource planning system Finance books orders in,
-sent, and for a verdict on which of them the team can trust.
+other files sent by the team that runs the ERP, the enterprise resource planning system Finance books
+orders in, and for a verdict on which of them the team can trust.
 
 ## What does the lab test?
 
-It runs the day's pass on files nobody demonstrated: a profile read as evidence, a second source read
-for what it can witness, and a reconciliation in rows and rupees against a clean file you built
-yourself.
+It runs the day's pass on files nobody demonstrated: a profile, the three counts for every field, read
+as evidence, a second source read for what it can witness, and a reconciliation in rows and rupees
+against a clean file you built yourself.
 
 ## Problem 1. Which of two profile printouts of one export would you trust?
 
@@ -20,7 +20,8 @@ convertible, none at Rs 0 and 4 failures logged.
 
 ### Q1. Which printout goes to Anand's analyst?
 
-The analyst works for Anand Iyer, the finance controller, and ties out every figure she receives.
+The analyst works for Anand Iyer, the finance controller, and ties out every figure she receives,
+matching it to the books, Finance's own record of Q1, line by line.
 
 The key is b, "B, since its four failures are counted and named". B counts its failures and logs them,
 while A turned four failures into orders at Rs 0.
@@ -59,7 +60,7 @@ total, so A looks identical in rupees while hiding four orders.
 ## Problem 2. What does the vendor copy hold once you profile it?
 
 The vendor copy, `C2_W01_D03_vendor_STUDENT.csv`, which the ERP team says a vendor sent, copied from
-the start of the export, read with `read_orders()` and profiled with `profile()`.
+the start of the export, is read with `read_orders()` and profiled with `profile()`.
 
 ### Q4. How many rows and convertible amounts does the profile show?
 
@@ -79,7 +80,8 @@ The segment field holds one more distinct value than the export's own rows carry
 The key is a, "Print the rows whose amount fails, and read each one". Read the rows that fail before
 deciding anything, since the failed amount and the extra segment value sit on the same row.
 
-- b, "Add the extra segment to the tree as a new branch": a branch for a value nobody sold to is
+- b, "Add the extra segment to the tree as a new branch": Monday's revenue tree splits revenue into
+  customers x orders per customer x revenue per order, and a branch for a value nobody sold to is
   invented.
 - c, "Drop the segment field, since one of its values cannot be trusted": the field is sound on every
   other row.
@@ -97,8 +99,9 @@ The key is a, "Rs 81,890". The rows that convert total Rs 81,890.
 
 ## Problem 3. Does the app's JSON feed agree with the CSV, and what would that prove?
 
-The app's JSON feed, `C2_W01_D03_orders_STUDENT.json`, cut from the same extract as the CSV, one pull of
-rows out of the ERP, with each complete record compared against the CSV row on the same file line.
+The app's JSON feed, `C2_W01_D03_orders_STUDENT.json`, was cut from the same extract as the CSV, one
+pull of rows out of the ERP, and each complete record is compared with the CSV row on the same file
+line.
 
 ### Q7. How many feed records are complete, and how many match the CSV's amount text?
 
@@ -129,8 +132,8 @@ extract appears in both files.
 
 ## Problem 4. Does the vendor copy reconcile to your clean file in rows and in rupees?
 
-The vendor copy reconciled against the clean file from the escalated case, 186 orders, in rows and in
-rupees.
+The vendor copy is reconciled against the clean file from the escalated case, 186 orders, in rows and
+in rupees.
 
 ### Q9. What is the vendor copy's row reconciliation?
 

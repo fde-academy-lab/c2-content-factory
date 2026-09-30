@@ -6,7 +6,9 @@ Chapter 2 set, 4 items, about 12 minutes, after chapter 2. The file is Kalpa Ret
 >
 > Anand Iyer, finance controller, Kalpa Retail
 
-**Who needs the answer.** Anand Iyer, the finance controller, needs to know whether his books, Finance's own record of Q1 at Rs 1,90,00,000, are short or the export is high. A wrong answer either keeps Rs 20 lakh that was never earned or deletes real orders from his books, and every per-customer rate the team reported on Tuesday, such as orders per customer, moves with the same rows.
+Chapter 1 profiled the export, counting for every field the values present, the values that convert and the distinct values. It found 201 rows for 186 distinct values of order_id, the field that carries each order's number, and Q1 over the amounts that convert comes to Rs 2,09,98,210, Rs 19,98,210 above the books, Finance's own record of Q1 at Rs 1,90,00,000. The ERP team's note says the CSV was stitched from two extracts, two separate pulls of rows out of the ERP, during the migration, the Q1 move of the order data from one system to another. A dedupe is a step that removes the rows it judges to be copies of another row, and a fuzzy match calls two rows one order when the customer and the amount match within 60 days. Kalpa's Business segment is its sales to companies, every order in lakhs.
+
+**Who needs the answer.** Anand Iyer, the finance controller, needs to know whether his books are short or the export is high. A wrong answer either keeps Rs 20 lakh that was never earned or deletes real orders from his books, and every per-customer rate the team reported on Tuesday, such as orders per customer, moves with the same rows.
 
 **The questions on the way.**
 
@@ -14,8 +16,6 @@ Chapter 2 set, 4 items, about 12 minutes, after chapter 2. The file is Kalpa Ret
 - Which match builds one customer table from two systems inside 2 hours?
 - What does a reviewer still owe Anand when two keys agree on 22 rows?
 - Where does the fuzzy match leave revenue against the order_id key?
-
-Chapter 1 profiled the export, counting for every field the values present, the values that convert and the distinct values. It found 201 rows for 186 distinct values of order_id, the field that carries each order's number, and Q1 over the amounts that convert comes to Rs 2,09,98,210, Rs 19,98,210 above the books. The ERP team's note says the CSV was stitched from two extracts, two separate pulls of rows out of the ERP, during the migration, the Q1 move of the order data from one system to another. A dedupe is a step that removes the rows it judges to be copies of another row.
 
 Every number in the items is invented unless the item says it comes from today's file, and the reasoning is the one you ran on Kalpa's export. An item marked Design asks you to combine two of the day's ideas, or to size the options yourself, before you choose.
 

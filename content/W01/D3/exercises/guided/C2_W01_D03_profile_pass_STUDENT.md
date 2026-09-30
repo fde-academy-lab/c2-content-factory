@@ -4,10 +4,13 @@
 >
 > Anand Iyer, finance controller, Kalpa Retail
 
-**Who needs the answer.** Anand Iyer, the finance controller, will not weigh the dashboard's Rs 2.1
-crore for Q1 against the books, Finance's own record of Q1 at Rs 1,90,00,000, until the team says what
-the export holds. Tonight his analyst ties out every figure, matching it to the books line by line, and
-every later number in the day stands on these first counts.
+The export is `data/C2_W01_D03_orders_STUDENT.csv`, Kalpa Retail's Q1 and Q2 orders from the ERP, the
+enterprise resource planning system Finance books orders in. The dashboard reads the same export and
+puts Q1 at Rs 2.1 crore, and the books, Finance's own record of Q1, say Rs 1,90,00,000.
+
+**Who needs the answer.** Anand Iyer, the finance controller, will not weigh one figure against the
+other until the team says what the export holds. Tonight his analyst ties out every figure, matching it
+to the books line by line, and every later number in the day stands on these first counts.
 
 **The questions on the way.**
 
@@ -16,8 +19,6 @@ every later number in the day stands on these first counts.
 - What should the pass do with the one field that is missing on some rows?
 
 This is built on the screen during chapter 1, and you mirror it line for line in your own notebook.
-The export is `data/C2_W01_D03_orders_STUDENT.csv`, Kalpa Retail's Q1 and Q2 orders from the ERP, the
-enterprise resource planning system Finance books orders in, and the dashboard reads the same export.
 Copying is what this exercise asks of you, since every later step reuses the shape you type here.
 
 ## Step 1. What type does every value arrive as when the CSV is read?

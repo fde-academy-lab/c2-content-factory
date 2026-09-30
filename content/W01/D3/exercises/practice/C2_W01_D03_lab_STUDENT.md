@@ -5,10 +5,18 @@
 >
 > Kavya Nair, senior analyst, Kalpa Retail data team
 
+The ERP is the enterprise resource planning system Finance books orders in, and its team sent more than
+the orders CSV: a vendor copy of the export and the app's JSON feed, a second file cut from the same
+extract, one pull of rows out of the ERP. Today's pass cleaned the orders CSV from 201 rows to 186
+orders, one row per order, and landed Q1 on the books, Finance's own record of Q1, at Rs 1,90,00,000. A
+profile counts, for every field, the values present, the values that convert and the distinct values.
+Monday's revenue tree splits revenue into customers x orders per customer x revenue per order, with each
+branch read as Q2's multiple of Q1.
+
 **Who needs the answer.** Kavya Nair, the senior analyst on the team, who checks every number before it
 leaves, decides which of these files the team may use beside the orders export. A file trusted on sight
 can carry a defect into the next note to Anand Iyer, the finance controller, whose analyst ties out
-every figure by matching it to the books line by line. A file set aside unread loses a check the team
+every figure by matching it to the books line by line. A file thrown out unread loses a check the team
 could have run.
 
 **The questions on the way.**
@@ -17,14 +25,6 @@ could have run.
 - What does the vendor copy hold once you profile it?
 - Does the app's JSON feed agree with the CSV, and what would that prove?
 - Does the vendor copy reconcile to your clean file in rows and in rupees?
-
-The ERP is the enterprise resource planning system Finance books orders in, and its team sent more than
-the orders CSV: a vendor copy of the export and the app's JSON feed, a second file cut from the same
-extract, one pull of rows out of the ERP. Today's pass cleaned the orders CSV from 201 rows to 186
-orders, one row per order, and landed Q1 on the books, Finance's own record of Q1, at Rs 1,90,00,000. A
-profile counts, for every field, the values present, the values that convert and the distinct values.
-Monday's revenue tree splits revenue into customers x orders per customer x revenue per order, with each
-branch read as Q2's multiple of Q1.
 
 About an hour, in the TA-led lab after the second block. The four problems climb from judging two
 printouts to reconciling the vendor copy against your clean file. Work in a fresh notebook beside the

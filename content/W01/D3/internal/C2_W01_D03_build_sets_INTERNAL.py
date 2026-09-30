@@ -4,10 +4,10 @@ Run from the repository root:
     python3 content/W01/D3/internal/C2_W01_D03_build_sets_INTERNAL.py
 
 A set's title is its chapter's full question from the day's question ladder, word for word. Beneath
-it come the set's size and timing with the title's terms explained, the stakeholder's words, who
-needs the answer, the questions on the way (the items' own questions, in order), and what the earlier
-chapters found, with every term the items use explained and every number they build on printed, so
-the set is sat with nothing else open. Where an earlier finding is a planted record, the set restates
+it come the set's size and timing with the title's terms explained, the stakeholder's words, what the earlier
+chapters found, with every term the items use explained and every number they build on printed, who
+needs the answer, and the questions on the way (the items' own questions, in order), so the set is sat
+with nothing else open. Where an earlier finding is a planted record, the set restates
 the rule the room drew from it and leaves the record unnamed.
 
 Each item carries its heading, a short question naming the decision it practises without giving away its key;
@@ -108,7 +108,7 @@ SETS = [
                   "c": "reads under a tenth of a percent of the rows and says nothing about the rest.",
                   "d": "a total cannot say why it differs from the books."},
                  "A new export of 1.2 crore rows and 12 fields lands, the analyst starts in 45 minutes, and the "
-                 "team's profile reads about 20 lakh values a minute.",
+                 "team's profile, three counts for every field, reads about 20 lakh values a minute.",
                  "design"),
             item("How many rows are copies, and how many amounts cannot be read?",
                  "An invented export holds 250 rows, 238 distinct order ids and 247 amounts that convert. How "
@@ -150,17 +150,20 @@ SETS = [
                "on more than one row."),
         quote=("Which rows did the export count twice, and how do you know they are copies?",
                "Anand Iyer, finance controller, Kalpa Retail"),
-        who=("Anand Iyer, the finance controller, needs to know whether his books, Finance's own record of Q1 "
-             "at Rs 1,90,00,000, are short or the export is high. A wrong answer either keeps Rs 20 lakh that "
-             "was never earned or deletes real orders from his books, and every per-customer rate the team "
-             "reported on Tuesday, such as orders per customer, moves with the same rows."),
+        who=("Anand Iyer, the finance controller, needs to know whether his books are short or the export is "
+             "high. A wrong answer either keeps Rs 20 lakh that was never earned or deletes real orders from his "
+             "books, and every per-customer rate the team reported on Tuesday, such as orders per customer, moves "
+             "with the same rows."),
         so_far=("Chapter 1 profiled the export, counting for every field the values present, the values that "
                 "convert and the distinct values. It found 201 rows for 186 distinct values of order_id, the "
                 "field that carries each order's number, and Q1 over the amounts that convert comes to "
-                "Rs 2,09,98,210, Rs 19,98,210 above the books. The ERP team's note says the CSV was stitched "
+                "Rs 2,09,98,210, Rs 19,98,210 above the books, Finance's own record of Q1 at Rs 1,90,00,000. The "
+                "ERP team's note says the CSV was stitched "
                 "from two extracts, two separate pulls of rows out of the ERP, during the migration, the Q1 "
                 "move of the order data from one system to another. A dedupe is a step that removes the rows "
-                "it judges to be copies of another row."),
+                "it judges to be copies of another row, and a fuzzy match calls two rows one order when the "
+                "customer and the amount match within 60 days. Kalpa's Business segment is its sales to "
+                "companies, every order in lakhs."),
         scenario=("Kalpa Retail's export from the ERP, the enterprise resource planning system Finance books "
                   "orders in, holds 201 rows for 186 orders, and Anand Iyer, the finance controller, needs to "
                   "know which rows it counted twice before he believes either the export or the books, Finance's "
@@ -177,8 +180,9 @@ SETS = [
                  "match, and 300 rows against 284 ids says 16 rows repeat an order.",
                  {"b": "all 300 rows are present, so nothing was lost.",
                   "c": "the id count is the check, and it disagrees with the dedupe.",
-                  "d": "blank ids would show in the profile as order_id present on fewer than 300 rows, and the "
-                       "dedupe would still match nothing."},
+                  "d": "blank ids would show in the profile, the count of each field's present, convertible and "
+                       "distinct values, as order_id present on fewer than 300 rows, and the dedupe would still "
+                       "match nothing."},
                  "A dedupe of a 300-row export reports 0 duplicates, a count of distinct order ids returns 284, "
                  "and the pipeline stamps every row with the time it was loaded.",
                  "read"),
@@ -214,7 +218,8 @@ SETS = [
                  "themselves show which real orders one key removed and which copies it missed.",
                  {"a": "counts by quarter can match while the rows differ.",
                   "c": "a narrower window changes the count and cannot test whether the rows are the same.",
-                  "d": "says nothing about which rows either key flagged."},
+                  "d": "a check on one segment, Kalpa's sales to companies, says nothing about which rows either "
+                       "key flagged."},
                  "On an invented export the order_id key and a fuzzy match on customer and amount within 60 days "
                  "each flag 22 rows, and the reviewer is about to sign off because the counts agree.",
                  "read"),
@@ -255,7 +260,7 @@ SETS = [
                 "one order: 15 orders appear twice, 14 in Q1 and 1 in Q2, none three times. For 13 of those "
                 "pairs the two copies are identical, and for 2 they disagree. A survivor rule picks which copy "
                 "of a pair stays in the clean file, and every copy it does not keep is set aside to a log with "
-                "its reason. Kalpa's Business segment is its sales to companies, every order in lakhs, and "
+                "its reason; a copy's twin is the other row of the same order. Kalpa's Business segment is its sales to companies, every order in lakhs, and "
                 "Retail-Plus is its paid membership tier."),
         scenario=("When an order appears twice in Kalpa Retail's export from the ERP, the enterprise resource "
                   "planning system Finance books orders in, the team has to choose which copy stays, and Anand "
@@ -336,9 +341,10 @@ SETS = [
                   "invents or deletes a fact?"),
         topic="values that are missing or cannot be read",
         terms=("The pass is the day's cleaning run on Kalpa Retail's export of orders from the ERP, the "
-               "enterprise resource planning system Finance books orders in: it profiles the file, keeps one "
-               "row per order, converts the amounts, decides every defect in writing and reconciles to the "
-               "books, Finance's own record of Q1."),
+               "enterprise resource planning system Finance books orders in. It profiles the file, counting for "
+               "every field the values present, the values that convert and the distinct values; keeps one row "
+               "per order; converts the amounts; decides every defect in writing; and reconciles to the books, "
+               "Finance's own record of Q1."),
         quote=("Can my analyst follow every decision you made?", "Anand Iyer, finance controller, Kalpa Retail"),
         who=("Operations reads the share of orders delivered every week, and Finance reads every rupee, so a "
              "wrong call on a missing or unreadable value changes a number one of them reports. Tonight the "
@@ -349,7 +355,8 @@ SETS = [
                 "value, and the pass needs a written policy for any amount that does not convert. Revenue in "
                 "every figure is booked value, every order at the price charged, whatever its status. An extract "
                 "is one pull of rows out of the ERP."),
-        scenario=("Kalpa Retail's export still holds values that are missing or cannot be read once one row per "
+        scenario=("Kalpa Retail's export of orders from the ERP, the enterprise resource planning system Finance "
+                  "books orders in, still holds values that are missing or cannot be read once one row per "
                   "order is kept, and each needs a written decision that the analyst who works for Anand Iyer, "
                   "the finance controller, can follow, since Operations reads the delivered share every week and "
                   "Finance reads every rupee."),
@@ -383,8 +390,9 @@ SETS = [
                  {"b": "a free order would still carry a line and a reason.",
                   "c": "Kalpa's files book a cancelled order at its value.",
                   "d": "amounts are whole rupees, so nothing rounds to 0."},
-                 "A colleague's profile of a Kalpa export reports 300 of 300 amounts convertible, and the sorted "
-                 "amounts start `0, 0, 0, 410, 460`.",
+                 "A colleague's profile of a Kalpa export, its count of each field's present, convertible and "
+                 "distinct values, reports 300 of 300 amounts convertible, and the sorted amounts start "
+                 "`0, 0, 0, 410, 460`.",
                  "read"),
             item("Which change fixes a conversion that turns `1,150` into Rs 0?",
                  "A colleague converts amounts with `int(v) if v.isdigit() else 0`. On an invented export an "
@@ -413,12 +421,13 @@ SETS = [
                   "Coerce it to zero, so the pass finishes and the log stays short"], "c",
                  "The feed witnesses what the extract held, never whether a value is right, so its agreement "
                  "repairs nothing. With no independent source the order goes to the rejects log with its reason "
-                 "until the ERP team supplies the booked value, the price the order was charged.",
+                 "until the ERP team supplies the booked value.",
                  {"a": "the feed copied the defect from the same extract.",
                   "b": "reading a word as a number is a guess, and Rs 14 sits far below any Kalpa order.",
                   "d": "a zero is a false value, and it hides the defect from every later check."},
                  "On an invented export an amount reads `fourteen`, the JSON feed cut from the same extract, one "
-                 "pull of rows out of the ERP, reads `fourteen` too, and no other source holds the order.",
+                 "pull of rows out of the ERP, reads `fourteen` too, and no other source holds the order's booked "
+                 "value, the price it was charged.",
                  "design"),
         ]),
     dict(
@@ -544,11 +553,11 @@ SETS = [
                "Anand Iyer, finance controller, Kalpa Retail"),
         who=("Anand's analyst checks the logs tonight, and an auditor may ask next quarter why any row went. A "
              "log she cannot follow costs a week of questions, and a log that fails her tie-out, which matches "
-             "every figure to the books, Finance's own record of Q1, line by line, costs the team her trust in "
-             "everything else it sends."),
+             "every figure to the books line by line, costs the team her trust in everything else it sends."),
         so_far=("Chapter 5 proved today's Q1 with a bridge, a walk from one total to another, one cause to a "
                 "step: Rs 2,09,98,210 as exported, less Rs 19,67,560 of copies of corporate orders and Rs 30,650 "
-                "of copies of consumer orders, lands on the books at Rs 1,90,00,000. The pass writes four logs. "
+                "of copies of consumer orders, lands on the books, Finance's own record of Q1, at Rs 1,90,00,000. "
+                "The identity rule is the rule that decides when two rows are one order. The pass writes four logs. "
                 "The set-aside log holds every row the pass removed, with its reason and the line of its twin, "
                 "the row of the same order that stayed; the rejects log holds every value that would not "
                 "convert; the flags log holds every record kept with a question on it; and the decisions log "
@@ -584,7 +593,8 @@ SETS = [
                  {"b": "step 3 converts the kept amounts, and nothing is kept before the rule runs.",
                   "c": "the rows equation counts the rejected rows, which exist only after conversion.",
                   "d": "converts and reconciles before anything is kept."},
-                 "Four steps to order: 1 apply the identity rule, keeping the copy whose amount converts; 2 "
+                 "Four steps to order: 1 apply the identity rule, which decides when two rows are one order, "
+                 "keeping the copy whose amount converts; 2 "
                  "reconcile rupees to the books; 3 convert the kept amounts and log any that fail; 4 reconcile "
                  "rows, in equals kept plus set aside plus rejected.",
                  "design"),
@@ -657,11 +667,11 @@ def write():
         assert s["question"].endswith("?"), name
         stu = [f"# {s['question']}", "",
                f"Chapter {n} set, {k} items, about {3 * k} minutes, after chapter {n}. {s['terms']}", "",
-               f"> \"{s['quote'][0]}\"", ">", f"> {s['quote'][1]}", "",
+               f"> \"{s['quote'][0]}\"", ">", f"> {s['quote'][1]}", "", s["so_far"], "",
                f"**Who needs the answer.** {s['who']}", "",
                "**The questions on the way.**", ""]
         stu += [f"- {it['heading']}" for it in items]
-        stu += ["", s["so_far"], "", INVENTED, "",
+        stu += ["", INVENTED, "",
                 f"**What you post.** One line of {k} letters in item order, no spaces, in this shape:", "",
                 "```", "Post exactly this shape: " + "x" * k, "```", "", "---"]
         count = WORDS[len(design)] + f" of the {WORDS[k]} items are design items: "

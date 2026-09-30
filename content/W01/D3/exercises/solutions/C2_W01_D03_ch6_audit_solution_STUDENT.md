@@ -18,7 +18,7 @@ The key is c, "Find the set-aside row whose value its kept twin lacks". Rows pro
 
 ### Q2. In what order does the pass run for Anand's analyst? (Design)
 
-Four steps to order: 1 apply the identity rule, keeping the copy whose amount converts; 2 reconcile rupees to the books; 3 convert the kept amounts and log any that fail; 4 reconcile rows, in equals kept plus set aside plus rejected.
+Four steps to order: 1 apply the identity rule, which decides when two rows are one order, keeping the copy whose amount converts; 2 reconcile rupees to the books; 3 convert the kept amounts and log any that fail; 4 reconcile rows, in equals kept plus set aside plus rejected.
 
 The key is a, "1, 3, 4, 2". The rule has to see which copy converts, so it runs first and keeps a readable copy. Conversion then runs on what was kept, the rows equation needs the rejects count, and the rupee tie comes last, against the books.
 

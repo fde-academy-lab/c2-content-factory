@@ -1,10 +1,12 @@
 # What should the pass do with a value that is missing or cannot be read, so that no decision invents or deletes a fact?
 
-Chapter 4 set, 4 items, about 12 minutes, after chapter 4. The pass is the day's cleaning run on Kalpa Retail's export of orders from the ERP, the enterprise resource planning system Finance books orders in: it profiles the file, keeps one row per order, converts the amounts, decides every defect in writing and reconciles to the books, Finance's own record of Q1.
+Chapter 4 set, 4 items, about 12 minutes, after chapter 4. The pass is the day's cleaning run on Kalpa Retail's export of orders from the ERP, the enterprise resource planning system Finance books orders in. It profiles the file, counting for every field the values present, the values that convert and the distinct values; keeps one row per order; converts the amounts; decides every defect in writing; and reconciles to the books, Finance's own record of Q1.
 
 > "Can my analyst follow every decision you made?"
 >
 > Anand Iyer, finance controller, Kalpa Retail
+
+Chapter 3 kept one row for each of today's 186 orders and set 15 rows aside, and Q1 on the kept rows is Rs 1,90,00,000, the books to the rupee. Some kept orders still carry a field with no value, and the pass needs a written policy for any amount that does not convert. Revenue in every figure is booked value, every order at the price charged, whatever its status. An extract is one pull of rows out of the ERP.
 
 **Who needs the answer.** Operations reads the share of orders delivered every week, and Finance reads every rupee, so a wrong call on a missing or unreadable value changes a number one of them reports. Tonight the analyst who works for Anand Iyer, the finance controller, reads every choice in the log, and a choice she cannot follow costs the team her trust.
 
@@ -14,8 +16,6 @@ Chapter 4 set, 4 items, about 12 minutes, after chapter 4. The pass is the day's
 - What do 300 convertible amounts that start 0, 0, 0 tell you?
 - Which change fixes a conversion that turns `1,150` into Rs 0?
 - What goes in the log for an amount that reads `fourteen`?
-
-Chapter 3 kept one row for each of today's 186 orders and set 15 rows aside, and Q1 on the kept rows is Rs 1,90,00,000, the books to the rupee. Some kept orders still carry a field with no value, and the pass needs a written policy for any amount that does not convert. Revenue in every figure is booked value, every order at the price charged, whatever its status. An extract is one pull of rows out of the ERP.
 
 Every number in the items is invented unless the item says it comes from today's file, and the reasoning is the one you ran on Kalpa's export. An item marked Design asks you to combine two of the day's ideas, or to size the options yourself, before you choose.
 

@@ -1,16 +1,29 @@
-# Can you clean the export alone and send Anand a reconciliation his analyst can audit?
+# Can you run the whole pass alone and send Anand a reconciliation his analyst can audit?
 
 > "Send the reconciliation and the log before the day closes. My analyst checks it tonight, and she ties out to
 > the rupee."
 >
 > Anand Iyer, finance controller, Kalpa Retail
 
-**Who needs the answer.** Anand Iyer, the finance controller, decides tonight whether Finance accepts the
-team's Q1 figure. His analyst ties out every line of the reconciliation: she matches each figure to the
-books, Finance's own record of Q1 at Rs 1,90,00,000 to the rupee, so a rupee's difference is a finding.
-Marketing's rescue campaign for Retail-Plus, Kalpa's paid membership tier, waits on the recomputed
-numbers. A reconciliation she cannot follow becomes a finding against the team, and a number nobody
-recomputes leaves Marketing planning on Tuesday's reading.
+The export is `data/C2_W01_D03_orders_STUDENT.csv`, Kalpa Retail's Q1 and Q2 orders from the ERP, the
+enterprise resource planning system Finance books orders in, and the books are Finance's own record of
+Q1, Rs 1,90,00,000 to the rupee. To tie out is to match every figure to the books, line by line, so a
+rupee's difference is a finding. Revenue in every figure is booked value, every order at the price
+charged, whatever its status, and Retail-Plus is Kalpa's paid membership tier.
+
+A profile counts, for every field, the values present, the values that convert and the distinct
+values. The identity rule decides when two rows are one order and which copy stays, a copy's twin being
+the other row of the same order. The app's JSON feed is a second file cut from the same extract as the
+CSV, an extract being one pull of rows out of the ERP. Monday's revenue tree is revenue = customers x
+orders per customer x revenue per order, with each branch read as Q2's multiple of Q1, and on Tuesday
+the team read it on the export as delivered: customers x1.000, orders per customer x0.754, revenue per
+order x1.180 and revenue x0.890, down 11.0 percent.
+
+**Who needs the answer.** Anand Iyer, the finance controller, decides whether Finance accepts the
+team's Q1 figure, and his analyst ties out every line of the reconciliation tonight. Marketing's
+rescue campaign for Retail-Plus waits on the recomputed numbers. A reconciliation she cannot follow
+becomes a finding against the team, and a number nobody recomputes leaves Marketing planning on
+Tuesday's reading.
 
 **The questions on the way.**
 
@@ -20,20 +33,11 @@ recomputes leaves Marketing planning on Tuesday's reading.
 - Where did every row go, and what proves a re-sent export?
 - What does the clean file change in Monday's tree, and what does Anand read first?
 
-Fifty minutes, alone. The export is `data/C2_W01_D03_orders_STUDENT.csv`, Kalpa Retail's Q1 and Q2
-orders from the ERP, the enterprise resource planning system Finance books orders in, and you clean it
-with the day's pass in the notebook `notebooks/C2_W01_D03_ex1_escalated_case_STUDENT.ipynb`. A profile
-counts, for every field, the values present, the values that convert and the distinct values. This time
-you write the identity rule yourself, the rule that decides when two rows are one order and which copy
-stays, and you recompute Monday's revenue tree on the clean file. The tree is revenue = customers x
-orders per customer x revenue per order, with each branch read as Q2's multiple of Q1, and on Tuesday
-the team read it on the export as delivered: customers x1.000, orders per customer x0.754, revenue per
-order x1.180 and revenue x0.890, down 11.0 percent. Revenue in every figure is booked value, every order
-at the price charged, whatever its status. The app's JSON feed is a second file cut from the same
-extract as the CSV, an extract being one pull of rows out of the ERP.
-
-The ten items below are the questions Anand, his analyst and Marketing send once your numbers land, and
-a number an item calls the day's comes from your own run. Then write the note to Finance.
+Fifty minutes, alone. Clean the export with the day's pass in the notebook
+`notebooks/C2_W01_D03_ex1_escalated_case_STUDENT.ipynb`. This time you write the identity rule yourself
+and recompute Monday's tree on the clean file. The ten items below are the questions Anand, his analyst
+and Marketing send once your numbers land, and a number an item calls the day's comes from your own
+run. Then write the note to Finance.
 
 **What you post.** Three things, in this order: the notebook's nine letters; this brief's ten
 letters; the note to Finance in under 120 words, numbers first.
@@ -142,7 +146,7 @@ run on it, and what should it show?
 
 a) Nothing new, since today's bridge already explains the whole gap
 b) Only a row count, expecting 100 rows, since the rupees follow
-c) The whole pass: 100 orders, nothing set aside, Q1 on the books
+c) Every step again: 100 orders, nothing set aside, Q1 on the books
 d) Only the bridge, since copies were the one cause found today
 
 ## Part 5. What does the clean file change in Monday's tree, and what does Anand read first?

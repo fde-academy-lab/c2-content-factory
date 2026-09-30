@@ -4,7 +4,8 @@ The take-home runs the day's pass on a second extract, one pull of rows out of t
 resource planning system Finance books orders in. The ERP team found it from the migration, the Q1
 move of the order data from one system to another, and it holds Q1 only:
 `data/C2_W01_D03_takehome_STUDENT.csv`. Check your work against the tables below before you post it.
-Every number in them was computed from that file by the pass the take-home brief describes.
+Every number in them was computed from that file by the pass the take-home brief describes, which
+ends on the bridge, the walk from the file's total to the clean total one cause at a time.
 
 ## Part 1. Do your counts and totals match a correct pass?
 

@@ -5,6 +5,21 @@
 >
 > The internal auditor, Kalpa Retail finance
 
+The export is Kalpa Retail's file of Q1 and Q2 orders from the ERP, the enterprise resource planning
+system Finance books orders in, and it held 201 rows for 186 orders. A profile of it counted, for every
+field, the values present, the values that convert and the distinct values. The team's pass then
+applied the identity rule, one row kept for each order_id, the number the ERP issues once per order;
+converted the amounts, sending any that failed to a rejects log; decided each missing value and the
+largest Q2 order; and reconciled rows and rupees to the books, Finance's own record of Q1. Every row it
+did not keep went to the set-aside log with its reason. In Q1, 114 rows came in and 100 orders were
+kept, and Q1 on the clean file equals the books at Rs 1,90,00,000.
+
+A copy's twin is the other row of the same order. Chapter 3 found that two pairs of copies differ in a
+field while the others are identical, and that two Business rows carry Rs 19,67,560 of the Rs 19,98,210
+set aside in Q1; Kalpa's Business segment is its sales to companies, every order in lakhs. Chapter 2
+weighed a fuzzy match, which calls two rows one order when the customer and the amount match within 60
+days.
+
 **Who needs the answer.** The internal auditor decides whether Finance can rely on the team's
 reconciliation of Q1 and on the log behind it. A log she cannot follow costs a week of questions, and a
 log that fails her tie-out, which matches every figure to the books line by line, costs the team her
@@ -19,21 +34,6 @@ signs. She then asks the five questions below:
 - Would your evidence catch a real order set aside as a copy?
 - What do you change when the auditor reads "dropped" in your log?
 - What must the reconciliation still carry if the ERP team removes copies at source?
-
-The export is Kalpa Retail's file of Q1 and Q2 orders from the ERP, the enterprise resource planning
-system Finance books orders in, and it held 201 rows for 186 orders. A profile of it counted, for every
-field, the values present, the values that convert and the distinct values. The team's pass then
-applied the identity rule, one row kept for each order_id, the number the ERP issues once per order;
-converted the amounts, sending any that failed to a rejects log; decided each missing value and the
-largest Q2 order; and reconciled rows and rupees to the books, Finance's own record of Q1. Every row it
-did not keep went to a log with its reason. In Q1, 114 rows came in and 100 orders were kept, and Q1 on
-the clean file equals the books at Rs 1,90,00,000.
-
-A copy's twin is the other row of the same order. Chapter 3 found that two pairs of copies differ in a
-field while the others are identical, and that two Business rows carry Rs 19,67,560 of the Rs 19,98,210
-set aside in Q1; Kalpa's Business segment is its sales to companies, every order in lakhs. Chapter 2
-weighed a fuzzy match, which calls two rows one order when the customer and the amount match within 60
-days.
 
 Forty minutes in pairs. One of you drives the notebook `notebooks/C2_W01_D03_ex2_auditor_STUDENT.ipynb`;
 the other plays the auditor and asks the next question only when the check passes. Swap roles

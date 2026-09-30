@@ -7,7 +7,7 @@ export of orders out of the ERP, the enterprise resource planning system Finance
 how she can know nothing else went, and the team answers from its log and from its reconciliation to
 the books, Finance's own record of Q1 at Rs 1,90,00,000.
 
-The notebook's own letters, in order, are in its solution twin,
+The notebook's own letters, in order, are in its solution notebook,
 `exercises/solutions/C2_W01_D03_ex2_auditor_solution_STUDENT.ipynb`: 1c 2d 3b 4a 5c.
 
 Three of the five items are design items: 2, 3 and 5.
@@ -25,8 +25,9 @@ could have gone wrong, and what happens when the step moves to someone else.
 The auditor counts 15 lines in the set-aside log and asks why her question was about 14.
 
 The key is b, "A Q2 copy, set aside by the same rule as the 14 copies in Q1". The identity rule, one
-row kept per order_id, set aside 15 rows, 14 in Q1 and 1 in Q2. The unreadable copy is one of the 14,
-and the largest order and the missing status were kept and flagged.
+row kept per order_id, set aside 15 rows, 14 in Q1 and 1 in Q2, and named for each the twin that stayed,
+the other row of the same order. The unreadable copy is one of the 14, and the largest order and the
+missing status were kept and flagged.
 
 - a, "The unreadable amount, which the log keeps apart from the copies": the unreadable amount is one of
   the 14 Q1 copies, set aside with its twin named, and the rejects log is empty.
@@ -66,8 +67,9 @@ one cause at a time, would not close.
   in the rows equation.
 - c, "Nothing, since the order would share an id with a kept row": the rupee tie to the books would
   catch it.
-- d, "The profile would show a sixteenth id on more than one row": the repeated id is already one of the
-  15, so the count does not change.
+- d, "The profile would show a sixteenth id on more than one row": the profile, which counts each
+  field's present, convertible and distinct values, already sees the repeated id as one of the 15, so
+  its count does not change.
 
 ### Q4. What do you change when the auditor reads "dropped" in your log?
 

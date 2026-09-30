@@ -34,8 +34,8 @@ If a chapter slipped past you, rebuild it slowly on ten invented rows:
    order once at its readable amount; that total plays the books.
 2. Profile them: present, convertible, distinct, for `order_id` and `amount`. Check each count by
    hand before trusting the code.
-3. Apply the identity rule, keeping the copy whose amount converts, then convert the kept amounts with
-   a rejects log.
+3. Apply the identity rule, which decides when two rows are one order, keeping the copy whose amount
+   converts, then convert the kept amounts with a rejects log.
 4. Reconcile: rows in equal kept plus set aside plus rejected, and the rupees as read less the rupees
    set aside equal your hand total.
 5. Change one thing, keep the first copy instead, and watch which reconciliation breaks.
