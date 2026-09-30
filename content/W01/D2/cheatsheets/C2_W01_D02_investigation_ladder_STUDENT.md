@@ -7,9 +7,9 @@ closed quarters, Q1 against Q2, on booked orders as exported.
 ## Panel 1: The ladder beside the tree
 
 ```mermaid
-flowchart LR
+flowchart TB
     subgraph LAD["the ladder"]
-        direction TB
+        direction LR
         R1["1 is the drop real"] --> R2["2 which branch"]
         R2 --> R3["3 which segment"]
         R3 --> R4["4 mix or rate"]
@@ -63,8 +63,9 @@ orders against 51.
 order.get("discount", 0)   # a decision that looks like no decision
 ```
 
-Count the records that carry the field, average only where it is recorded, and bound the branch with
-the largest recorded value: Rs 150 on 86 orders is at most Rs 12,900 against a Rs 23,00,000 fall.
+Read as zero, a blank counts as "no discount", so 50.0 percent of Q2's orders seem to carry one. Split
+the rest into recorded zeros and blanks, report the share where recorded, 71.7 percent, with the range
+the blanks allow, and bound the branch: Rs 150 on 86 orders is at most Rs 12,900.
 
 **Crux:** Missing means unknown until someone chooses a default and writes down why.
 
