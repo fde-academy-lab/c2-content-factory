@@ -404,6 +404,11 @@ def groups(items):
     return out
 
 
+def count(n, noun="item"):
+    """'1 item', '12 items'."""
+    return f"{n} {noun}" if n == 1 else f"{n} {noun}s"
+
+
 def span(items):
     a, b = items[0]["q"], items[-1]["q"]
     return f"Q{a}" if a == b else f"Q{a} to Q{b}"
@@ -570,7 +575,7 @@ def render_paper_parts(paper, data, date, printed, source, minutes, moved):
     for p, title, shows, run, mins, e, m, h in rows:
         part = source["parts"][p - 1]
         out += ["---", "", f"## Part {p}. {title} ({span(run)})", "",
-                f"*What it shows: {shows}. {len(run)} items, about {mins:g} minutes.*", ""]
+                f"*What it shows: {shows}. {count(len(run))}, about {mins:g} minutes.*", ""]
         if part.get("intro"):
             out += [str(part["intro"]).strip(), ""]
         for idx, ex in enumerate(part.get("exhibits") or []):
@@ -736,9 +741,9 @@ def render_key(paper, data, date, notes, printed, source, minutes, moved=()):
     mine = [x for x in notes if x[0] == paper and x[2] == "applied"]
     if mine:
         out += ["", "## Option edits laid on the bank, waiting for the tracker", "",
-                "These options differ from the tracker's wording, because the bank's key was the "
-                "longest option. The stem and the key are the tracker's. Accept an edit by copying "
-                "it into the tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.",
+                "These options differ from the tracker's wording, each for the reason given beside "
+                "it. The stem and the key are the tracker's. Accept an edit by copying it into the "
+                "tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.",
                 ""]
         for _, no, _, why in mine:
             item = next(i for i in printed if i["no"] == int(no))
@@ -878,7 +883,7 @@ def docx_sections_parts(printed, source):
             blocks.append({"kind": "item", "q": item["q"],
                            "type": f"{item['level']}  ·  {FORMAT[answer_kind(item)]}", "lines": stem,
                            "options": [list(o) for o in options], "answer": answer})
-        intro = f"What it shows: {shows}. {len(run)} items, {span(run)}, about {mins:g} minutes."
+        intro = f"What it shows: {shows}. {count(len(run))}, {span(run)}, about {mins:g} minutes."
         sections.append({"letter": f"Part {p}", "title": title, "intro": intro,
                          "situation": " ".join(str(part.get("intro") or "").split()), "blocks": blocks})
         glance.append([f"{p}. {title}", shows, f"{span(run)} ({len(run)})", f"{mins:g}",
@@ -907,7 +912,7 @@ def docx_spec(paper, data, date, printed, source, minutes, notes, moved=()):
                            "options": [list(o) for o in options], "answer": answer})
         mins = sum(i["min"] for i in run)
         sections.append({"letter": letters[k], "title": kind,
-                         "intro": f"{len(run)} items, {span(run)}, about {mins:g} minutes. "
+                         "intro": f"{count(len(run))}, {span(run)}, about {mins:g} minutes. "
                                   f"{HOW.get(kind, '')}", "blocks": blocks})
         glance.append([f"{letters[k]}. {kind}", HOW.get(kind, ""), span(run), f"{mins:g}"])
     if in_parts:
