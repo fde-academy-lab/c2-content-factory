@@ -1,6 +1,6 @@
 # Chapter 5 set: the bridge to the books
 
-5 items, about 15 minutes, after chapter 5. Every number here is invented unless it says it is from today's file; the reasoning is the one you ran on Kalpa's export. Items marked Design ask for the best-fit approach, a sizing or the fact that would change it.
+5 items, about 15 minutes, after chapter 5. Every number here is invented unless it says it is from today's file; the reasoning is the one you ran on Kalpa's export. Items marked Design ask you to combine two of the day's ideas or to size the options yourself before you choose.
 
 Post one line, 5 letters in item order, no spaces:
 
@@ -10,47 +10,47 @@ Post exactly this shape: xxxxx
 
 ---
 
-### Q1 (Design)
+### Q1
 
-The largest Q2 order is 1.8 times the next, placed by a Business account that ordered in both quarters, with every field valid. What goes in the note to Anand?
+Q1 as exported is Rs 3,40,00,000. The rows set aside by the identity rule carry Rs 30,00,000, and the books say Rs 3,10,00,000. Which statement does the bridge support?
 
-a) Remove it, since an order that size distorts the quarter
-b) Cap it at the next largest order, to keep the shape
-c) Keep it, flag it, and show Q2 with and without it
-d) Move it to Q1, since the account ordered there too
+a) The export is right, and the books missed Rs 30 lakh of orders
+b) Neither is right until the rows are re-entered from source
+c) The books are right, and the copies explain most of the gap
+d) The books are right, and the copies account for every rupee
 
 ### Q2
 
-Q1 as exported is Rs 3,40,00,000. The rows set aside by the identity rule carry Rs 30,00,000. The books say Rs 3,10,00,000. Which statement does the bridge support?
+Tuesday's report said a segment's orders per customer fell 38 percent. On clean data the fall is 23 percent. What leads the note to the leadership group?
 
-a) The export is right, and the books missed Rs 30 lakh
-b) The books are right, and copies explain the whole gap
-c) Neither is right until every row is re-entered by hand
-d) The gap is too large for copies, so look for a date error
+a) The 38 percent, since leadership has already seen that figure
+b) The 23 percent, with why it moved from the 38 first reported
+c) Both figures side by side, with no view on which one stands
+d) The 23 percent alone, since the 38 was measured on bad data
 
-### Q3
+### Q3 (Design)
 
-Tuesday's report said a segment's orders per customer fell 40 percent. On clean data the fall is 25 percent. What leads the note?
+For Q3 the export and the books differ by Rs 8,40,000, and your logged moves explain Rs 7,90,000 of it. The warehouse keeps its own record of every Q3 order, loaded by a separate system and complete for the quarter. Which proof goes to Anand?
 
-a) The 40 percent, since leadership has seen it
-b) Both, in a footnote, since the story is the same
-c) Nothing, until Thursday proves the fall is real
-d) The smaller number, and why it changed
+a) The bridge as it stands, with Rs 50,000 in an unexplained line
+b) The warehouse record's total alone, since that source is complete
+c) Q3 rebuilt from the warehouse record, and the bridge as its check
+d) The bridge's Rs 7,90,000 now, and the Rs 50,000 at month end
 
-### Q4
+### Q4 (Design)
 
-A fence at three times the median would remove one Q2 order, turning a 2 percent dip into a 15 percent fall. Which reading goes to Marketing?
+Marketing sized a frequency campaign on Tuesday's reading of orders per customer, 1.65 in Q1 against 1.25 in Q2. Recomputed on the clean file, the day's numbers are 1.45 against 1.25. How has the gap the campaign aims to close changed?
 
-a) The 2 percent dip, with the order checked and flagged
-b) The 15 percent fall, since the fence is a standard rule
-c) Both readings, with the 15 percent one first
-d) The 15 percent fall, with the order named in a footnote
+a) It has halved, from 0.40 to 0.20 orders per customer
+b) It is unchanged, since Q2's 1.25 did not move at all
+c) It has gone, since clean revenue fell only 1.6 percent
+d) It shrank by an eighth, as 1.45 sits 12 percent under 1.65
 
-### Q5 (Design)
+### Q5
 
-A second export from the app holds 60 percent of Q1's orders and was cut from the same extract as the CSV. Which proof is the best fit for Anand?
+The largest Q2 order is 1.8 times the next, placed by a Business account that ordered in both quarters, with every field valid. Marketing asks for Q2 without it. What goes in the note?
 
-a) Rebuild Q1 from the app export and compare totals
-b) Take Finance's figure, since the books are audited
-c) A bridge to the books, move by move
-d) Average the two exports' totals and report that
+a) Q2 without it, since one order that size distorts the quarter
+b) Q2 with the order capped at the next largest, to keep the shape
+c) Q2 with it, flagged, and the figure without it shown beside
+d) Q2 without it, and a footnote that names the account

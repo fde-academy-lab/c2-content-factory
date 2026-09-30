@@ -1,16 +1,14 @@
 # Solution: chapter 2 set: the rows that repeat
 
-Answers: 1b 2c 3a 4d 5c 6d
+Answers: 1a 2c 3b 4d
 
-3 of 6 items are design items.
+2 of 4 items are design items.
 
 ## Item by item
 
 | Item | Key | Kind | Why it holds | Why the others fail |
 |---|---|---|---|---|
-| 1 | b | read | A load timestamp differs on every row, so a whole-record key never matches; 300 rows against 284 ids says 16 rows repeat an order. | a: nothing is lost, the rows are all present. c: the id count is the check. d: a blank id would lower the present count, which nobody reported. |
-| 2 | c | design | The ERP's own key is the identity: one order, one id. | a: two real orders on one day would merge. b: the timestamp makes every row unique. d: finds only exact copies and misses a copy that differs in one field. |
-| 3 | a | read | The key merges the two real orders, and one is set aside as a copy, so revenue falls by its amount. | b and d: the key is wrong for this business. c: a dedupe removes rows and never adds one. |
-| 4 | d | predict | Rows less distinct order ids: 150 minus 141 is 9. Convertible amounts are a separate count. | a: 150 less 148 is the failed amounts. b: 9 less 2 mixes the two counts. c: 9 plus 2 adds them. |
-| 5 | c | design | Neither id identifies a person across both systems, so the match rests on contact fields cleaned the same way, with a person reviewing the doubtful pairs. | a: C-1 in the app and C-1 in a store are different people. b: two systems never write a person identically. d: names repeat and are spelled many ways. |
-| 6 | d | design | 10,000 times 9,999 over 2 is 49,995,000, about 5 crore, which is why fuzzy matching is blocked by a field such as city first. | a: that is one lookup per row, a key's cost. b: far too few pairs. c: 100 crore is ten times every row against every row, not half of it. |
+| 1 | a | read | A load stamp differs on every row, so a whole-record key never matches; 300 rows against 284 ids says 16 rows repeat an order. | b: all 300 rows are present, so nothing was lost. c: the id count is the check, and it disagrees with the dedupe. d: blank ids would show in the profile as order_id present on fewer than 300 rows, and the dedupe would still match nothing. |
+| 2 | c | design | Neither id names one person across both systems, so the match rests on contact fields cleaned the same way. Every record against every other is 60,000 x 59,999 / 2, about 180 crore pairs, 360 minutes at 50 lakh a minute; within 6 cities of 10,000 it is about 30 crore pairs, 60 minutes, inside the window, with doubtful pairs sent to a person. | a: C-1 in the app and C-1 in a store are different people. b: the right fields, and 6 hours, three times the window. d: two systems rarely write one person's record identically, so real matches are missed. |
+| 3 | b | read | Two keys can flag the same number of rows and share fewer than all of them; only the rows themselves show which real orders one key removed and which copies it missed. | a: counts by quarter can match while the rows differ. c: a narrower window changes the count and never tests whether the rows are the same. d: says nothing about which rows either key flagged. |
+| 4 | d | design | The fuzzy match removes 4 real orders, Rs 10,00,000, and keeps 2 copies the id key removes, Rs 6,000, so its revenue sits Rs 10,00,000 less Rs 6,000 below: Rs 9,94,000. | a: counts the kept copies as a second loss, when they add rupees. b: counts only the copies and forgets the four real orders. c: forgets the two copies it keeps. |

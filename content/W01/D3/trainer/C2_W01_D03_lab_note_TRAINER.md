@@ -23,8 +23,8 @@ The set runs about an hour. Release the solution only when a learner has posted 
 - The JSON feed is the export's first 120 records written as a JSON array and cut inside the 120th
   record's order id, so `json.load` raises `JSONDecodeError: Unterminated string starting at: line
   1397 column 15`. The 119 complete records all carry the same amount text as their CSV rows, the
-  spelled-out amount included, which is why item 8 is about common origin and not cleanliness. One
-  of the 119 has no `status` key.
+  spelled-out amount included, which is why item 8's answer is that the feed witnesses what the
+  extract held, never whether a value is right. One of the 119 has no `status` key.
 
 ## If the room finishes early
 

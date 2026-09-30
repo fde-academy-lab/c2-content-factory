@@ -22,7 +22,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 - Mean, median and maximum of the field
 - Rows, columns and the file's size on disk
-- Present, convertible and distinct  <- correct
+- Present, convertible and distinct values  <- correct
 - Missing, duplicated and outlying values
 
 ---
@@ -42,7 +42,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 - Nothing, since zero adds nothing to the total
 - The evidence that an order's amount was unreadable  <- correct
-- Only the speed of the loop, since it now does more
+- Only accuracy in averages, since the totals are unchanged
 - The rows, since a zero row is dropped from the file
 
 ---
@@ -50,7 +50,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 ## Q5. Input 200, clean 183, rejected 14. Does it reconcile?
 *Tests: input equals clean plus rejected, as arithmetic.*
 
-- No, since 183 plus 14 is 197, 3 short  <- correct
+- No: 183 plus 14 is 197, so 3 rows are unaccounted for  <- correct
 - Yes, since 183 is more than nine tenths of the input
 - Yes, since the rejected rows are all listed in the log
 - No, since a clean file must hold all 200 rows
@@ -62,7 +62,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 - Ship it, since Rs 3,000 rounds away in a crore
 - Add a Rs 3,000 adjustment line to close the gap
-- Find the set-aside row that holds it  <- correct
+- Find the set-aside row that holds the Rs 3,000  <- correct
 - Ask Finance to lower their books by Rs 3,000
 
 ---
@@ -70,17 +70,17 @@ Each item names what it tests, so an item dropped for time says what was lost.
 ## Q7. A Rs 18 lakh Business order survives cleaning. Why?
 *Tests: large is not wrong; the record decides.*
 
-- Its record and its buyer both check out  <- correct
-- Removing it would make the quarter look too small
-- Bulk orders are never checked by a cleaning pass
-- It sits below three times the quarter's mean order
+- Its fields are valid and its buyer is a real account  <- correct
+- It sits inside the Business segment's usual range
+- Finance asked that every booked order stay in the file
+- It sits under three times the quarter's mean order
 
 ---
 
 ## Q8. Dashboard 2.1 crore, Finance 1.9. Which is right, and how do you prove it?
 *Tests: the bridge, one move per cause, backed by rows.*
 
-- The dashboard, since it reads every row the ERP exported
-- The average of the two, since both carry some error
-- Neither, until Finance re-enters every order by hand
+- The dashboard, since it reads every row the export holds
+- The books, since Finance's figures are audited
+- Neither, until both are rebuilt from the JSON feed
 - The books, once the bridge closes to them in rupees  <- correct

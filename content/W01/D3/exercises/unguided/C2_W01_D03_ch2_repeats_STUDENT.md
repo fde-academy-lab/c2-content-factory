@@ -1,65 +1,47 @@
 # Chapter 2 set: the rows that repeat
 
-6 items, about 18 minutes, after chapter 2. Every number here is invented unless it says it is from today's file; the reasoning is the one you ran on Kalpa's export. Items marked Design ask for the best-fit approach, a sizing or the fact that would change it.
+4 items, about 12 minutes, after chapter 2. Every number here is invented unless it says it is from today's file; the reasoning is the one you ran on Kalpa's export. Items marked Design ask you to combine two of the day's ideas or to size the options yourself before you choose.
 
-Post one line, 6 letters in item order, no spaces:
+Post one line, 4 letters in item order, no spaces:
 
 ```
-Post exactly this shape: xxxxxx
+Post exactly this shape: xxxx
 ```
 
 ---
 
 ### Q1
 
-A colleague's dedupe of a 300-row export reports 0 duplicates, and a count of distinct order ids returns 284. Each row carries a load timestamp added by the pipeline. What happened?
+A colleague's dedupe of a 300-row export reports 0 duplicates, and a count of distinct order ids returns 284. The pipeline stamps every row with the time it was loaded. What happened?
 
-a) Sixteen orders were lost in the load and need a resend
-b) The timestamp made every row unique, so no row matched
-c) The dedupe is right, and the id count is off by 16
-d) Sixteen rows carry blank order ids that the count skips
+a) The load stamp differs on every row, so no two rows matched
+b) 16 orders were lost in the load, and the ERP team must resend
+c) The dedupe is right, and the id count is off by 16 somewhere
+d) 16 rows carry a blank order_id, so the id count falls short
 
 ### Q2 (Design)
 
-Kalpa's ERP issues one order_id per order and never reuses it. Which key is the best fit for deduplicating Kalpa's orders?
+Meera wants one customer table from the app's 30,000 records and the stores' 30,000, each system numbering customers from C-1, spread evenly over 6 cities. The team's machine compares about 50 lakh pairs a minute, and the job must finish inside 2 hours. Which match fits?
 
-a) customer_id and order_date together
-b) Every field, the load timestamp included
-c) order_id, the key the ERP issues
-d) Every field except the load timestamp
+a) Each system's own customer id, one lookup a record
+b) Cleaned phone and email, every record against every other
+c) Cleaned phone and email, compared within each city
+d) Every field matching exactly, name and address too
 
 ### Q3
 
-An analyst dedupes Kalpa orders on customer_id and order_date. A loyal member places two real orders on the same day. What happens to revenue?
+On an invented export the order_id key flags 22 rows as copies, and a fuzzy match on customer and amount within 60 days also flags 22. The reviewer is about to sign off because the counts agree. Which check does the reviewer still owe Anand?
 
-a) It falls, since one real order is set aside as a copy
-b) It stays right, since the key still finds true copies
-c) It rises, since the key keeps both orders and a copy
-d) It stays right, since two orders a day never happen
+a) Compare the two keys' counts again, quarter by quarter
+b) Compare the two lists of flagged rows, line against line
+c) Rerun the fuzzy match with a 30-day window to confirm 22
+d) Check that both keys flag at least one Business order
 
-### Q4
+### Q4 (Design)
 
-An invented export holds 150 rows and 141 distinct order ids, and 148 of its amounts convert. How many rows sit beyond one per order?
+On an invented export the fuzzy match flags 40 rows and the order_id key flags 38; they share 36. The 4 rows only the fuzzy match flags are real orders averaging Rs 2,50,000, and the 2 rows only the order_id key flags are copies of Rs 3,000 each. Against the order_id key, where does the fuzzy match leave the quarter's revenue?
 
-a) 2
-b) 7
-c) 11
-d) 9
-
-### Q5 (Design)
-
-Kalpa's app and its stores each number customers from C-1 upwards, and Meera wants one customer table. Which identity rule is the best fit?
-
-a) The customer id, since each system issues one per person
-b) Every field, since only an exact copy is safe to merge
-c) Cleaned phone and email, doubtful pairs reviewed
-d) The customer's name, since it appears in both systems
-
-### Q6 (Design)
-
-A fuzzy key with no blocking compares every row with every other. About how many comparisons does it make on 10,000 rows?
-
-a) About 10,000
-b) About 1 lakh
-c) About 100 crore
-d) About 5 crore
+a) Rs 10,06,000 below the order_id key's figure
+b) Rs 6,000 above the order_id key's figure
+c) Rs 10,00,000 below the order_id key's figure
+d) Rs 9,94,000 below the order_id key's figure

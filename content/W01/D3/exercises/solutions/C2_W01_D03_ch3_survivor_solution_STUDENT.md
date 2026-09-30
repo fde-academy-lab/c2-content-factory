@@ -1,15 +1,14 @@
 # Solution: chapter 3 set: the copy that stays
 
-Answers: 1d 2a 3b 4c 5c
+Answers: 1a 2c 3d 4b
 
-3 of 5 items are design items.
+2 of 4 items are design items.
 
 ## Item by item
 
 | Item | Key | Kind | Why it holds | Why the others fail |
 |---|---|---|---|---|
-| 1 | d | design | The copy whose amount converts carries the order's value; keeping the first would keep one that cannot be summed. | a: first is no reason when the first is broken. b: Finance booked one order, not a choice. c: throwing both away loses Rs 1,900 of booked revenue. |
-| 2 | a | read | Both copies are valid and disagree on one field; no rule inside the file can say which date is true, so keep the first extract and log the question. | b: the order happened and is booked. c: one id is one order. d: later is a correction only if the ERP team says so. |
-| 3 | b | read | Two rows carry about 97 percent of the rupees, which is Anand's gap. | a: the Retail-Plus rows matter to Tuesday's finding, a second conversation. c: the auditor wants every row, rupees first. d: counting rows hides where the money sits. |
-| 4 | c | design | Only the unreadable-first pair moves rupees: the first copy cannot be summed, so its Rs 2,600 twin is lost. | a: misses the unreadable copy. b: counts the loss twice. d: the pairs are copies, so no order is lost by keeping one row. |
-| 5 | c | design | A rule is right for a reason about the source; a corrected re-run is that reason. | a: file position is where rows sit, not which is true. b: a tie can come from luck, as it does here. d: identical pairs give no reason to prefer either copy. |
+| 1 | a | read | The copy whose amount converts carries the order's value, and the log names the unreadable copy and the line of the row that stayed. | b: keeps a row that cannot be summed, so the quarter falls Rs 1,900 short. c: counts one order twice in the rows, and Finance booked one order. d: turns a failure into a sale for nothing. |
+| 2 | c | design | Only the unreadable-first pair moves rupees: the first copy adds nothing to the sum, so its Rs 2,600 twin is lost. The date pair keeps Rs 1,450 whichever copy stays. | a: misses that the kept copy cannot be summed. b: the date pair costs nothing, since both copies carry Rs 1,450. d: the twin is lost once, never twice. |
+| 3 | d | design | May's second copies carry the corrected prices, so they win in May; April and June were copied unchanged, so the day's rule still decides there, and it keeps a readable copy wherever one exists. | a: applies May's reason to months it does not cover. b: keeps May's uncorrected prices. c: a rupee tie on today's file is no reason to keep May's prices from before the fix. |
+| 4 | b | read | Two rows carry about 97 percent of the rupees, which is where Anand's gap sits; the eighteen Retail-Plus rows matter to a per-customer rate, a second conversation. | a: the Retail-Plus rows are Marketing's, and they carry Rs 30,000. c: the auditor wants every row, and the money decides which to show first. d: two rows move a count of orders very little. |

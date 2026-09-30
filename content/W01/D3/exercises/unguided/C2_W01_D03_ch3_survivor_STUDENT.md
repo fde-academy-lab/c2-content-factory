@@ -1,56 +1,47 @@
 # Chapter 3 set: the copy that stays
 
-5 items, about 15 minutes, after chapter 3. Every number here is invented unless it says it is from today's file; the reasoning is the one you ran on Kalpa's export. Items marked Design ask for the best-fit approach, a sizing or the fact that would change it.
+4 items, about 12 minutes, after chapter 3. An extract is one pull of rows out of the ERP, the enterprise resource planning system Finance books orders in. Every number here is invented unless it says it is from today's file; the reasoning is the one you ran on Kalpa's export. Items marked Design ask you to combine two of the day's ideas or to size the options yourself before you choose.
 
-Post one line, 5 letters in item order, no spaces:
+Post one line, 4 letters in item order, no spaces:
 
 ```
-Post exactly this shape: xxxxx
+Post exactly this shape: xxxx
 ```
 
 ---
 
-### Q1 (Design)
+### Q1
 
-Two rows share order_id KR-90012. The first reads amount `--` and the second reads `1900`, and every other field matches. Which row stays in the clean file?
+Two rows share order_id KR-90012. The first reads amount `--` and the second reads `1900`, and every other field matches. Which row stays in the clean file, and what does the log say?
 
-a) The first, since the first extract is the original
-b) Both, until Finance chooses between them
-c) Neither, since the pair contradicts itself
-d) The second, since its amount converts
+a) The second, whose amount converts; the first logged unreadable
+b) The first, as the original, with the second logged as its copy
+c) Both, flagged, until Finance says which amount it booked
+d) The first, with its amount set to 0 so that the sum runs
 
-### Q2
+### Q2 (Design)
 
-Two rows share order_id KR-90047. Both amounts convert to Rs 3,100; one is dated 21 August and the other 30 July. Which decision goes in the log?
+An invented export holds 40 repeated orders. In 38 pairs the copies are identical. In one pair the first copy's amount is unreadable and its twin reads Rs 2,600. In one pair the copies differ only on the date, both at Rs 1,450. What does keeping the first copy of every pair cost against the books?
 
-a) Keep the first extract's row and ask the ERP team
-b) Drop both rows, since the order cannot be dated
-c) Keep both rows, since the dates make them two orders
-d) Keep the later date, since later loads are corrections
+a) Rs 0, since every order still keeps one of its rows
+b) Rs 4,050, the unreadable pair and the pair with two dates
+c) Rs 2,600, the twin's value, which the first copy lacks
+d) Rs 5,200, since the lost twin's value counts twice in Q1
 
-### Q3
+### Q3 (Design)
 
-Twenty rows are set aside as copies. Two of them are Business orders carrying Rs 9,00,000 of the Rs 9,30,000 set aside, and eighteen are Retail-Plus orders. Which conversation needs the two Business rows first?
+The ERP team replies that the second extract re-ran May's orders after a pricing fix, and copied April's and June's unchanged. Which survivor rule goes in the log?
 
-a) Marketing's, since Retail-Plus is the segment they own
-b) Anand's, since those two rows carry most of the rupees
-c) The auditor's, since most of the rows are Retail-Plus
-d) Nobody's, since rows are rows and all twenty go together
+a) Last copy for every pair, since the second extract is the fix
+b) First copy for every pair, as the first extract is the original
+c) The copy that converts, then the first, everywhere: it tied Q1
+d) Last copy for May; elsewhere the copy that converts, then first
 
-### Q4 (Design)
+### Q4
 
-An export holds 40 repeated orders: 38 pairs are identical, one pair's first copy has an unreadable amount and a Rs 2,600 twin, and one pair differs only on the date. What does keeping the first copy cost against the books?
+Twenty rows are set aside as copies. Two are Business orders carrying Rs 9,00,000 of the Rs 9,30,000 set aside, and eighteen are Retail-Plus orders. Which conversation do the two Business rows belong to first?
 
-a) Rs 0
-b) Rs 5,200
-c) Rs 2,600
-d) 40 orders
-
-### Q5 (Design)
-
-Keeping the last copy lands Q1 on the books, and so does keeping the copy that validates. Which fact would make the last copy the right rule?
-
-a) The last copy's rows sit at the end of the file
-b) Q1 ties to the books under the last-copy rule
-c) The ERP team says the second extract was a fix
-d) Most pairs in the file are identical copies
+a) Marketing's, since Retail-Plus carries most of the rows set aside
+b) Anand's, since two rows carry nearly all of the rupees set aside
+c) The auditor's, since every row set aside needs its reason first
+d) Operations', since Business orders move the count of deliveries

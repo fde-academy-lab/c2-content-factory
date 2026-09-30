@@ -1,56 +1,47 @@
 # Chapter 6 set: the log the analyst audits
 
-5 items, about 15 minutes, after chapter 6. Every number here is invented unless it says it is from today's file; the reasoning is the one you ran on Kalpa's export. Items marked Design ask for the best-fit approach, a sizing or the fact that would change it.
+4 items, about 12 minutes, after chapter 6. Every number here is invented unless it says it is from today's file; the reasoning is the one you ran on Kalpa's export. Items marked Design ask you to combine two of the day's ideas or to size the options yourself before you choose.
 
-Post one line, 5 letters in item order, no spaces:
+Post one line, 4 letters in item order, no spaces:
 
 ```
-Post exactly this shape: xxxxx
+Post exactly this shape: xxxx
 ```
 
 ---
 
 ### Q1
 
-A pass reports 500 rows in, 470 kept and 30 set aside, and Q1 comes out Rs 2,100 below the books' Rs 3,20,00,000. What do you do next?
+A pass reports 500 rows in, 470 kept and 30 set aside, and its Q1 comes out Rs 2,100 below the books' Rs 3,20,00,000. What do you do next?
 
-a) Ship it, since the rows reconcile and the gap rounds away
-b) Add Rs 2,100 as an adjustment line so the rupees tie
-c) Find the set-aside row whose rupees a kept twin lacks
-d) Ask Finance whether their books are Rs 2,100 too high
+a) Ship it, since the rows reconcile and Rs 2,100 is a rounding error
+b) Add a Rs 2,100 adjustment line, labelled, so the rupees tie
+c) Find the set-aside row whose value its kept twin lacks
+d) Ask Finance whether its books carry Rs 2,100 too much
 
-### Q2
+### Q2 (Design)
 
-Q1 as exported is Rs 50,00,000, the rows set aside carry Rs 4,20,000, and the books say Rs 45,80,000. Does the rupee reconciliation hold, and what does it prove?
-
-a) Yes, and the clean total equals the books
-b) No, since Rs 4,20,000 is more than 8 percent of Q1
-c) Yes, and it proves no row vanished from the file
-d) No, since the rows have not been counted yet
-
-### Q3 (Design)
-
-Put the pass in order for Anand's analyst: 1 apply the identity rule, 2 reconcile rupees to the books, 3 test which amounts convert and log the failures, 4 reconcile rows. Which order holds?
+Put the pass in order for Anand's analyst: 1 apply the identity rule, keeping the copy whose amount converts; 2 reconcile rupees to the books; 3 convert the kept amounts and log any that fail; 4 reconcile rows, in equals kept plus set aside plus rejected. Which order holds?
 
 a) 1, 3, 4, 2
 b) 3, 1, 4, 2
 c) 1, 4, 3, 2
 d) 3, 4, 1, 2
 
+### Q3 (Design)
+
+Anand's analyst has 20 minutes tonight and reads a line in about 30 seconds. Your pass set aside 24 rows, flagged 4, made 5 decisions and ties 2 control totals, on a raw file of 900 rows and a clean file of 876. Which hand-over fits her 20 minutes?
+
+a) The clean file, to read against the raw one, line by line
+b) A full diff of the raw and clean files, a line per raw row
+c) The clean file, with one line saying 24 rows were set aside
+d) The set-aside, flags and decisions logs, with both totals
+
 ### Q4 (Design)
 
-Anand's analyst has an evening to check the pass. Which hand-over is the best fit?
+The analyst asks how she can know the log is complete without trusting the code that wrote it. Which test gives her that?
 
-a) The clean file alone, 186 rows to compare by hand
-b) A full diff of the raw and clean files, 201 lines
-c) The clean file and a line saying 15 rows set aside
-d) The logs, the decisions and both totals
-
-### Q5 (Design)
-
-How do you prove a log is complete without trusting the code that wrote it?
-
-a) Count the log's lines and compare with the rows removed
-b) Read every line of the log and check each reason
-c) Rebuild the clean file from the raw export and the log
-d) Rerun the pass and compare the two logs line by line
+a) Count the log's lines and compare them with the rows removed
+b) Rebuild the clean file from the raw export and the log alone
+c) Read every line of the log and check that each has a reason
+d) Rerun the pass and compare the new log with the old, line by line

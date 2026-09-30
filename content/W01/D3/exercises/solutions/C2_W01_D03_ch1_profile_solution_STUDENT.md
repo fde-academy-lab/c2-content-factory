@@ -1,16 +1,14 @@
 # Solution: chapter 1 set: what the ERP actually sent
 
-Answers: 1c 2a 3d 4b 5d 6c
+Answers: 1c 2b 3a 4d
 
-3 of 6 items are design items.
+2 of 4 items are design items.
 
 ## Item by item
 
 | Item | Key | Kind | Why it holds | Why the others fail |
 |---|---|---|---|---|
-| 1 | c | read | Text compares character by character, and 9 sorts above 4 and 1, so `max` returns "950". | a: nothing converts the text. b: max takes the largest, never the middle. d: max works on text, which is why the mistake is silent. |
-| 2 | a | design | North's two failed amounts are known and countable; South has 19 rows beyond one per order, which inflates any total. | b: converting cleanly says nothing about copies. c: a failure you can count is no reason to stop. d: equal row counts hide South's 19 extra rows. |
-| 3 | d | read | 180 rows hold 171 orders, so 9 rows repeat an order and add rupees that were never earned. | a: an optional discount does not move booked revenue. b: three channels is right for app, web and store. c: two orders can share an amount. |
-| 4 | b | match | An order is its order id, so distinct ids count orders; rows count lines, which include the migration's copies. | a: counts every copy as an order. c: counts readable amounts, which is a different question. d: counts rows whose fate is known. |
-| 5 | d | design | A profile reads every value in minutes and turns each defect into a count; reading rows only where it points keeps the work small. | a: the first thousand rows say nothing about the rest. b: a total cannot say why it differs. c: a sample of 1,000 has well under a one percent chance of meeting a single bad row. |
-| 6 | c | design | Each row has the same chance to be drawn, so the one bad row is in the sample 20 times in 200, 10 percent. | a and b: overstate what a small sample sees. d: nothing about 20 rows guarantees one particular row. |
+| 1 | c | read | A Q2 order at Rs 980 cannot be the largest when 21 Business orders start at Rs 2,10,000; `max()` compared the amounts as text, where 9 beats 2, so the note names a small order and the audit skips the money. | a: max() ranked the amounts by spelling, so reading every one did not help. b: the Business orders are Q2 orders in the same file, so the note still names the wrong one. d: the ERP holds the right value, and the fault is in how the colleague compared it. |
+| 2 | b | design | All 12 fields are 14.4 crore values, 72 minutes at 20 lakh a minute, past the deadline; order_id and amount are 2.4 crore values, 12 minutes, which leaves half an hour to read what they flag. The key and the money fields are where a repeat or an unreadable amount would move Anand's figure. | a: 72 minutes, so the analyst starts with nothing. c: reads under a tenth of a percent of the rows and says nothing about the rest. d: a total cannot say why it differs from the books. |
+| 3 | a | predict | 250 rows less 238 ids is 12 rows beyond one per order; 250 less 247 is 3 amounts that do not convert. | b: swaps the two counts. c: adds them into one. d: takes the 3 failures out of the 12, as if every failure were a copy. |
+| 4 | d | design | 4 crore ids at 100 bytes each is about 4 GB, twice the memory free, so any route that holds every id at once stops part way; a sort can run on disk and has to remember only the id before. | a: needs about 4 GB. b: needs at least as much as a set, since it keeps a count beside every id. c: scales a count that does not scale, since repeated ids can sit anywhere in the file. |
