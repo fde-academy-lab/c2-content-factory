@@ -67,7 +67,7 @@ b) The two totals, since the order counts already agree at 462
 c) Order by order on the shared order id, which names each order that differs
 d) None, since two sources with the same count of orders cannot disagree
 
-## Which leaf moved differently?
+## Do the leaves agree when the revenue does?
 
 Used at work whenever two reports agree on a headline and someone has to say whether they agree on
 the reasons.
@@ -83,7 +83,7 @@ The two sources below are invented. Both show revenue down 1.0 percent from Q1 t
 | B | Q1 | 400 | 160 | Rs 40,00,000 |
 | B | Q2 | 360 | 144 | Rs 39,60,000 |
 
-Which leaves disagree once each is read as a change?
+Which leaves tell a different story from Q1 to Q2 in the two sources?
 
 a) None, since both revenues fell by the same 1.0 percent from Q1 to Q2 in either source
 b) Revenue per order alone, since B's orders are four times A's in each of the quarters
