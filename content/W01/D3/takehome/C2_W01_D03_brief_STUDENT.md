@@ -5,8 +5,11 @@
 >
 > Anand Iyer, finance controller, Kalpa Retail
 
-About two hours tonight. The file is `data/C2_W01_D03_takehome_STUDENT.csv`. Nobody has profiled it
-in class, and its defects are not the ones you met today, so today's counts will not carry over.
+An extract is one pull of rows out of the ERP, the enterprise resource planning system Finance books
+orders in, and the migration is the Q1 move of the order data from one system to another. About two
+hours tonight. The file is `data/C2_W01_D03_takehome_STUDENT.csv`, and nobody has profiled it in class.
+Three of its five defects are kinds you met today, in new places and new amounts; two are kinds you
+have not met, so today's counts will not carry over, and the profile is how you find all five.
 
 ## Part 1. The full pass, about seventy minutes
 

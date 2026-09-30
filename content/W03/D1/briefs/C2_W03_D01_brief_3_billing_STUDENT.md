@@ -1,4 +1,4 @@
-# Brief 3: Invoices and collections disagree
+# Brief 3: Claims and remittances disagree
 
 **For:** the group allocated sub-problem 3
 **Client:** Dr Priya Menon, COO, Kalpa Health, and the finance head
@@ -10,7 +10,7 @@ Kalpa Health and everyone in it are fictional.
 
 ## The question, as it was put
 
-> "The invoices say one thing and the collections say another. Which invoices are unpaid, how much money is that, and can I trust the figure I report?"
+> "The claims say one thing and the collections say another. Which claims are unpaid, how much money is that, and can I trust the figure I report?"
 > The finance head, Kalpa Health
 
 ## The decision it feeds
@@ -21,13 +21,13 @@ under the finance head's name.
 
 ## The symptom, as the business sees it
 
-The billing export and the payment feed give different totals for the same two quarters, and the
-finance head cannot say which invoices make up the difference.
+The billing export and the posting system give different totals for the same two quarters, and the
+finance head cannot say which claims make up the difference.
 
 ## The files that bear on it
 
-- `C2_W03_D01_invoices_STUDENT.csv`
-- `C2_W03_D01_payments_STUDENT.csv`
+- `C2_W03_D01_claims_STUDENT.csv`
+- `C2_W03_D01_remittances_STUDENT.csv`
 - `C2_W03_D01_bookings_legacy_STUDENT.csv`
 - `C2_W03_D01_bookings_newsys_STUDENT.csv`
 - `C2_W03_D01_patients_STUDENT.csv`
@@ -40,9 +40,9 @@ starts.
 The panel reads your one-slide answer and then asks questions like these. Every member should be able
 to answer each one from your own work.
 
-1. How many invoices are fully paid, part paid and unpaid, and what is each group worth in rupees?
-2. How did you match a payment to its invoice, and how many payments matched?
-3. Where did every payment row go? Show rows in against rows matched, set aside and unexplained.
+1. How many claims are fully paid, part paid and unpaid, and what is each group worth in dollars?
+2. How did you match a posting to its claim, and how many postings matched?
+3. Where did every posting row go? Show rows in against rows matched, set aside and unexplained.
 4. Which collections figure should the finance head report, and which caveat travels with it?
 5. What would you ask the data team to change at the source, so the next close is easier?
 
@@ -67,7 +67,7 @@ against this rubric:
 | Criterion | Marks | What full marks look like |
 |---|---|---|
 | The question translated | 8 | Dr Menon's words are mapped to the right Weeks 1 and 2 method, with the metric defined and the decision it feeds named. |
-| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and rupees reconcile across files. |
+| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and dollars reconcile across files. |
 | The analysis | 10 | The tree, ladder or fair comparison reaches the branch that explains the symptom, on the right denominator, with a chance test where one is needed. |
 | The claim | 6 | One sentence carries its number, denominator, period and caveat, plus an action Dr Menon can take. |
 | Presentation and defence | 6 | The live demo runs cold, and every member answers a challenge on the caveat. |
