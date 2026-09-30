@@ -119,7 +119,7 @@ The full manifest with per-artifact specifications lives in `references/artifact
 | Practice lab set | STUDENT, with a TA note | 1, for the lab after the second block |
 | Tiered extras (stretch, recovery) | STUDENT | 1 pair, weekly build allowed |
 
-Saturday recap papers are weekly artifacts taken from the week's paper in the tracker's item bank (`docs/curriculum/Saturday_papers.md`): the STUDENT paper prints the items only, and the key, levels, tags and anchors go to TRAINER files. Build weeks swap this manifest for the build-week pack, and Week 0 days add the diagnostic papers and keys; all three variations are specified in the manifest reference.
+Saturday recap papers are weekly artifacts taken from the week's paper in the tracker's item bank (`docs/curriculum/Saturday_papers.md`): the STUDENT paper prints the items in parts with each item's format and level, and the key, tags, roles and anchors go to TRAINER files. Build weeks swap this manifest for the build-week pack, and Week 0 days add the diagnostic papers and keys; all three variations are specified in the manifest reference.
 
 ## The introduction pack, now in Week 0
 

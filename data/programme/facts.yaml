@@ -253,10 +253,16 @@ recut:
 saturday_papers:
   source: tracker, Saturday papers tab
   status: locked
-  format_revised_on: 2026-09-19
+  format_revised_on: 2026-09-30
   built: [W01, W02, W04, W05, W07, W08]
   to_build: [W10, W11, W13, W14]
-  rule: The student paper prints the Item column only; the key, level, tag, roles and anchor stay with the team.
+  # The requester set this rule on 30 September 2026, replacing the tracker's "Item column only":
+  # the paper prints in parts named for what each shows, with a blueprint on page one and the level
+  # beside every item, and up to six recall items may move to the untimed stretch page.
+  rule: The student paper prints the items in parts, each item with its format and level; the key, tag, roles and anchor stay with the team.
+  superseded:
+    rule: The student paper prints the Item column only; the key, level, tag, roles and anchor stay with the team.
+    replaced_on: 2026-09-30
   # The requester set two-hour papers on 29 September 2026; where the tracker's slot is shorter,
   # the paper runs this long and the extra minutes carry new items from the week's source file.
   paper_minutes: {W01: 120, W02: 120}
