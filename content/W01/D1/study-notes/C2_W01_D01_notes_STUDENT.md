@@ -26,8 +26,8 @@ About a 30 minute read · 2 figures and 3 tables
 
 ## Where does Monday sit in the week and in the programme?
 
-The retail story, six chapters on Kalpa's 30 orders and two cases were worked in full; the amount
-stored as text was only patched with `int()`, and Wednesday gives it a rule.
+Monday works the retail story, six chapters on Kalpa's 30 orders and two cases in full, and only
+patches the amount stored as text with `int()`; Wednesday gives that a rule.
 
 ```mermaid
 flowchart LR
@@ -90,8 +90,8 @@ section 2, on which real companies work the way Kalpa Retail does, names the oth
 ### How much of Rs 100 at the checkout does Kalpa keep?
 
 Gross merchandise value, GMV, is everything customers ordered at the prices charged. Net revenue, the
-smaller figure Finance reports as earned from the goods, differs from it, and what fills the gap is
-chapter 1's question. On the dossier's illustrative numbers Rs 100 of GMV becomes Rs 80 of net
+smaller figure Finance reports as earned from the goods, differs from it, and chapter 1 asks what
+fills the gap. On the dossier's illustrative numbers Rs 100 of GMV becomes Rs 80 of net
 revenue, then Rs 20 of gross margin after the cost of the goods, Rs 7.50 of contribution after
 per-order costs such as delivery, and Rs 2.50 of EBITDA (earnings before interest, tax, depreciation
 and amortisation) after fixed costs. DMart's profit after tax was 4.8 percent of its FY26 revenue
@@ -148,7 +148,7 @@ honest totals are normal, and one sent without its name measures the plan from a
 ### Which way of answering fits this file?
 
 Adding every amount takes a second and counts cancelled orders as sales. Summing by status touches the
-same 30 rows once and names every rupee between three readings, Finance's figure takes a day, and
+same 30 rows once and names every rupee between three readings. Finance's figure takes a day, and
 ticking by hand cannot scale. Summing by status fits a first look, unless Finance has already fixed
 the plan's definition.
 
@@ -228,8 +228,8 @@ and the fix is one definition per fraction: Rs 18,160 booked or Rs 24,800 delive
 
 ### Does the mean of the 30 amounts agree?
 
-It does: `statistics.fmean(amounts)` reaches the same Rs 18,160 from the rows, the route for rows in
-hand where the totals route suits a report.
+`statistics.fmean(amounts)` reaches the same Rs 18,160 from the rows, the route for rows in hand,
+where the totals route suits a report.
 
 ### Which branches does the file still lack?
 
@@ -246,8 +246,8 @@ Rs 24,800 delivered, each a fraction on one definition.
 
 ## Chapter 3: How many customers does Kalpa have, and how many came back for a second order?
 
-**Who needs the answer.** Meera, before deciding whether acquisition is the only way to grow. If
-nobody returns, the Rs 12 crore looks like the only lever, so a wrong count funds the wrong branch.
+**Who needs the answer.** Meera needs it before deciding whether acquisition is the only way to grow.
+If nobody returns, the Rs 12 crore looks like the only lever, so a wrong count funds the wrong branch.
 
 **The questions on the way.** Who needs the customer count, and what rides on it? How do we count
 customers when a row is an order? How many came back? What goes wrong if every row is counted as a
@@ -282,7 +282,7 @@ customers at 1.30 orders each.
 
 ### Does the mean of the counts agree?
 
-It does: (16 x 1 + 7 x 2) / 23 is the same 1.30, and the counts show the spread the ratio hides, 16
+(16 x 1 + 7 x 2) / 23 gives the same 1.30, and the counts show the spread the ratio hides, 16
 customers at one order and 7 at two.
 
 ### Which count goes on the tree's customer branch, and on which definition?
@@ -294,8 +294,8 @@ recounts it on the orders that stayed delivered.
 **Kavya's review.** "Your first 30 was a count of rows, divided as if it were people. A count of
 people comes from their ids."
 
-Kalpa's quarter has 23 customers, 7 of whom came back for a second order, 1.30 orders each, so
-frequency is alive.
+Kalpa's quarter has 23 customers at 1.30 orders each, and 7 of them came back for a second order,
+so repeat buying already happens.
 
 ---
 
@@ -339,8 +339,8 @@ mean for totals.
 
 ### Does Python's statistics.median agree?
 
-It does: `statistics.median` holds the even-count rule, the average of the two middles, and matches
-the hand-written middle on every definition.
+`statistics.median` applies the even-count rule, the average of the two middles, and matches the
+hand-written middle on every definition.
 
 ### What goes into the payback case?
 
@@ -431,7 +431,7 @@ due dates find the same 9 too-recent buyers? What does the sentence Meera signs 
 Meera reads it for the decision and its limit, marketing for the repeat picture. Klarna said in
 February 2024 that its AI assistant handled two-thirds of customer-service chats in its first month
 (Klarna press release, 27 February 2024), and fifteen months later its chief executive said the focus
-on cost had lowered quality (Fortune, 9 May 2025), so a first window's number is no verdict.
+on cost had lowered quality (Fortune, 9 May 2025), so one early window does not settle a question.
 
 ### Which form carries the decision?
 
@@ -470,16 +470,15 @@ the same 9, now dated for a reminder.
 
 **Kavya's review.** "Every number in it is one we can defend."
 
-That is the sentence Meera can sign: its evidence is 23 customers at 1.30 orders and a typical order of
-Rs 2,205, its branch frequency, its caveat the window's edge and one quarter, and its ask to hold the
-Rs 12 crore.
+The sentence's evidence is 23 customers at 1.30 orders and a typical order of Rs 2,205, its branch is
+frequency, its caveat is the window's edge and one quarter, and its ask is to hold the Rs 12 crore.
 
 ---
 
 ## Does the answer survive on the orders that stayed delivered?
 
-**Who needs the answer.** Anand, who counts only what stayed sold and puts numbers before the board;
-an answer that holds only on booked orders never reaches his books.
+**Who needs the answer.** Anand does, since he counts only what stayed sold and puts numbers before
+the board; an answer that holds only on booked orders never reaches his books.
 
 **The questions on the way.** How many customers kept a delivered order? What is the typical
 delivered order? What does the plan ask of frequency? How many delivered one-time buyers are too

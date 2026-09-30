@@ -2,7 +2,7 @@
 
 **Week 1, Monday · The domain before the data · Retail and e-commerce, and the real companies Kalpa resembles**
 
-The business you work inside for the next two weeks: which real companies Kalpa is like, how a rupee at the checkout becomes profit, who asks the data team for what, every metric as a formula with a worked number and the trap it hides, and the words a stakeholder meeting assumes you know.
+This is the business you work inside for the next two weeks: which real companies Kalpa is like, how a rupee at the checkout becomes profit, who asks the data team for what, every metric as a formula with a worked number and the trap it hides, and the words a stakeholder meeting assumes you know.
 
 About a 55 minute read · 6 diagrams and 32 tables
 
@@ -69,7 +69,7 @@ In one working day, then, goods travel from suppliers through the distribution c
 
 In one week a family in Pune can recharge two Jio phone numbers, order the month's groceries on JioMart and buy school shoes at a Reliance store, and every one of those rupees lands in the same group.
 
-**Who needs the answer.** Anand Iyer, the finance controller, and Meera Raghavan, whenever a Kalpa number is set beside a real company's. A store chain and an app that owns its stock book the full price of what they sell while a marketplace books only its fees, and each watches a different margin, so an analyst who benchmarks Kalpa's app against a marketplace, or its stores against an app, hands them a comparison that does not hold.
+**Who needs the answer.** Anand Iyer, the finance controller, and Meera Raghavan need it whenever a Kalpa number is set beside a real company's. A store chain and an app that owns its stock book the full price of what they sell while a marketplace books only its fees, and each watches a different margin, so an analyst who benchmarks Kalpa's app against a marketplace, or its stores against an app, hands them a comparison that does not hold.
 
 **The questions on the way.**
 
@@ -109,7 +109,7 @@ Kalpa Retail sells consumer goods through its app, its website and its stores ac
 
 ### What does a paid tier like Retail-Plus buy a retailer, and what does its head watch?
 
-Memberships are how retailers buy frequency. Paid tiers such as Amazon Prime, from Rs 399 to Rs 1,499 a year in India, typically carry faster delivery and early access to sales (About Amazon India), which remove the reason to wait and batch an order. The story does not list Retail-Plus's benefits, so these stand only as an illustration. Its head watches renewals, how often members order, and whether the fees cover what the benefits cost.
+Memberships are how retailers buy frequency. Paid tiers such as Amazon Prime, from Rs 399 to Rs 1,499 a year in India, typically carry faster delivery and early access to sales (About Amazon India), which remove the reason to wait and batch an order. The story does not list Retail-Plus's benefits, so these are only an illustration. Its head watches renewals, how often members order, and whether the fees cover what the benefits cost.
 
 ### Which real companies are Kalpa's other four units like, and when does each become your client?
 
@@ -121,9 +121,9 @@ Kalpa Group is built like Reliance or Tata, one group running several businesses
 
 ## 3. How does Kalpa Retail make money, and where does each rupee go?
 
-At the checkout the Saturday basket shows Rs 1,800: four items worth Rs 2,000 at their prices, less a Rs 200 promotional discount. Kalpa does not keep Rs 1,800, and where the money goes is the retail profit and loss statement, the P&L.
+At the checkout the Saturday basket shows Rs 1,800: four items worth Rs 2,000 at their prices, less a Rs 200 promotional discount. Kalpa does not keep Rs 1,800, and the retail profit and loss statement, the P&L, shows where the money goes.
 
-**Who needs the answer.** Anand Iyer, the finance controller, whose team walks the week's gross merchandise value down to net revenue and whose books the data team's dashboard has to agree with. Send him the value of everything ordered where his books carry what Kalpa earns, or a margin before each order's costs where he needs one after them, and he puts a figure in front of the board that he then has to restate.
+**Who needs the answer.** Anand Iyer, the finance controller, needs it: his team walks the week's gross merchandise value down to net revenue, and the data team's dashboard has to agree with his books. Send him the value of everything ordered where his books carry what Kalpa earns, or a margin before each order's costs where he needs one after them, and he puts a figure in front of the board that he then has to restate.
 
 **The questions on the way.**
 
@@ -136,7 +136,7 @@ At the checkout the Saturday basket shows Rs 1,800: four items worth Rs 2,000 at
 
 **Gross merchandise value (GMV)** is the value of everything customers ordered, at the prices charged, before cancellations and returns and with tax still inside, so a discount given at the checkout is already out of it. Andreessen Horowitz calls it gross merchandise volume, "the total sales dollar volume of merchandise transacting through the marketplace in a specific period" (a16z, "16 Startup Metrics", 2015). Companies differ on whether discounts or marketplace sellers' sales are included, so the first question about any GMV is what it includes.
 
-**Net revenue** is GMV less cancellations, returns and the GST collected for the government: what the business earns from the goods. Real retailers publish both: Reliance Retail reported gross revenue of Rs 90,408 crore and revenue from operations of Rs 79,745 crore for the same quarter, and the group's consolidated statement takes "GST Recovered", Rs 28,407 crore, off its value of sales to reach revenue from operations (RIL, 17 July 2026). Two correct numbers for one quarter is normal in retail.
+**Net revenue** is GMV less cancellations, returns and the GST collected for the government: what the business earns from the goods. Real retailers publish both: Reliance Retail reported gross revenue of Rs 90,408 crore and revenue from operations of Rs 79,745 crore for the same quarter, and the group's consolidated statement takes "GST Recovered", Rs 28,407 crore, off its value of sales to reach revenue from operations (RIL, 17 July 2026).
 
 Below, Rs 100 of GMV travels through an app business shaped like Kalpa's; the amounts are illustrative, and the order of the lines is every retailer's.
 
@@ -216,7 +216,7 @@ Kalpa Retail makes money on the margin between what it charges and what its good
 
 On Monday morning, before any analysis runs, several people at Kalpa Retail already want something from the data team, and each loses something different when a number is wrong.
 
-**Who needs the answer.** Kavya Nair, the senior analyst who checks every number before it leaves the team, and every trainee who sends one. A number sent without knowing who asked for it, or what they will decide with it, reaches a decision it was never built for, and the cost differs by role, from a figure restated in front of the board to a good store closed on a bad comparison.
+**Who needs the answer.** Kavya Nair, the senior analyst who checks every number before it leaves the team, needs it, and so does every trainee who sends one. A number sent without knowing who asked for it, or what they will decide with it, reaches a decision it was never built for, and the cost differs by role, from a figure restated in front of the board to a good store closed on a bad comparison.
 
 **The questions on the way.**
 
@@ -274,9 +274,9 @@ At Kalpa Retail, then, the CEO decides the growth plan and where money is spent,
 
 On Saturday the app counted 50,000 visitors, 2,000 orders and Rs 1,500 an order. If next Saturday's sales fall, each of those numbers is a suspect: fewer people came, fewer of them bought, or each spent less, and a metric exists to say which.
 
-**Who needs the answer.** Meera Raghavan and the heads of the functions in section 4, since each owns a branch of the metric tree below. When a number moves, each of them needs to know which branch moved it, and a metric worked out on the wrong base sends the fix to the wrong team, as the returns rate below shows.
+**Who needs the answer.** Meera Raghavan and the heads of the functions in section 4 need it, since each owns a branch of the metric tree below. When a number moves, each of them needs to know which branch moved it, and a metric worked out on the wrong base sends the fix to the wrong team, as the returns rate below shows.
 
-**The questions on the way.** First the tree, then the domain card's ten metrics, conversion, average order value, frequency, repeat rate, retention, lifetime value, acquisition cost and payback, gross margin, days of inventory and like-for-like growth, plus sell-through and returns, each as a formula, a worked number, the trap that most often makes it lie, and who asks for it:
+**The questions on the way.** The tree comes first, then the domain card's ten metrics, conversion, average order value, frequency, repeat rate, retention, lifetime value, acquisition cost and payback, gross margin, days of inventory and like-for-like growth, plus sell-through and returns, each with a formula, a worked number, the trap that most often makes it lie, and who asks for it:
 
 1. What is revenue made of, branch by branch?
 2. Of the people who visit, how many place an order?
@@ -434,7 +434,7 @@ The numbers that run Kalpa Retail hang off one tree: customers, orders per custo
 
 At Monday's trading meeting the category buyer for home care says: "The lights are at 62 percent sell-through and the category holds 45 days of inventory, so do we mark down now or wait for Diwali?" Anyone who has to ask what sell-through or days of inventory mean has lost the thread before the question arrives.
 
-**Who needs the answer.** The category buyer for home care, and every stakeholder at a meeting like that one, who use these words without stopping to define them. Mistake one word for another and the answer is a different number: net revenue given where GMV was asked for is the smaller figure, and a store's ABV set against the app's AOV compares two different baskets.
+**Who needs the answer.** The category buyer for home care needs it, and so does every stakeholder at a meeting like that one, since they use these words without stopping to define them. Mistake one word for another and the answer is a different number: net revenue given where GMV was asked for is the smaller figure, and a store's ABV set against the app's AOV compares two different baskets.
 
 **The questions on the way.**
 
@@ -444,7 +444,7 @@ At Monday's trading meeting the category buyer for home care says: "The lights a
 4. Which words describe getting an order to the door, and back?
 5. Which words describe customers over time, and what winning one costs?
 
-Each word below is defined in plain language and then used as someone at Kalpa would use it; the numbers in those sentences are illustrative.
+The numbers in the meeting lines are illustrative.
 
 ### Which words say what a sale is worth, from the price charged to the margin kept?
 
@@ -509,7 +509,7 @@ A stakeholder meeting at Kalpa Retail assumes these thirty words, from GMV to CL
 
 The Saturday basket met most of the rules below on its way to the door: the tax on its invoice, the MRP on the shampoo, the declarations on the product page, the consent behind the member's data and the token that stands in for the card.
 
-**Who needs the answer.** Anyone at Kalpa Retail who wants a model or an agent to touch customers' data, prices or complaints, and the analyst who builds it. Selling above MRP is an offence whatever a test would show, complaints run on a legal clock, and penalties under the data protection law run up to Rs 250 crore, so a rule missed when a model is designed becomes an offence or a penalty once it runs.
+**Who needs the answer.** Anyone at Kalpa Retail who wants a model or an agent to touch customers' data, prices or complaints needs it, and so does the analyst who builds it. Selling above MRP is an offence whatever a test would show, complaints run on a legal clock, and penalties under the data protection law run up to Rs 250 crore, so a rule missed when a model is designed becomes an offence or a penalty once it runs.
 
 **The questions on the way.**
 
@@ -517,8 +517,6 @@ The Saturday basket met most of the rules below on its way to the door: the tax 
 2. Which rules travel with a US retailer's customers to a team in Bengaluru?
 
 ### Which rules does a sale in India meet on its way to the door, and what does each ask of the data team?
-
-The table gives eight sets of rules, and its right-hand column is what an analyst or an AI system answers for.
 
 | Rule, and what it requires | What it means for an analyst or an AI system |
 |---|---|
@@ -554,7 +552,7 @@ flowchart LR
     class A bad
 ```
 
-**Who needs the answer.** Meera Raghavan, before she funds a model or an agent, and the head whose work it would take over, such as Farhan Sheikh, whose team answers two thousand tickets a day. Each needs to know what the technique saves, how that is measured and what one wrong answer costs once no person checks it, since a saving counted without its cost reaches the budget looking larger than it is.
+**Who needs the answer.** Meera Raghavan needs it before she funds a model or an agent, and so does the head whose work it would take over, such as Farhan Sheikh, whose team answers two thousand tickets a day. Each needs to know what the technique saves, how that is measured and what one wrong answer costs once no person checks it, since a saving counted without its cost reaches the budget looking larger than it is.
 
 **The questions on the way.**
 
@@ -584,7 +582,7 @@ Language models enter here, on the rungs where a model recommends and then acts.
 
 Two public cases show both ends of the ladder. Klarna's AI assistant handled two-thirds of its customer-service chats in its first month, the work of 700 full-time agents, and cut the time to resolve an errand from 11 minutes to under 2 (Klarna press release, 27 February 2024); fifteen months later its chief executive said the focus on cost had produced lower quality and that customers would always be able to reach a human (Fortune, 9 May 2025, from an interview with Bloomberg). When Air Canada's website chatbot described a bereavement-fare refund the airline did not offer, a Canadian tribunal held the airline responsible, since "it makes no difference whether the information comes from a static page or a chatbot" (Moffatt v. Air Canada, 2024 BCCRT 149, as reported by McCarthy Tétrault).
 
-Analytics, ML, NLP and agents pay for themselves at Kalpa Retail in nine places, from the Monday numbers and replenishment to search ranking, fraud, catalogue text and agents that act within limits, and each is measured on its own terms, from forecast error against a naive baseline to cases resolved without a person. The further right a technique acts, the more a wrong answer costs: in the illustration above, drafts that save 80 agent-hours a day pay out Rs 2,40,000 the policy never allowed, in one day, once a misstated return window is approved on 300 refund tickets. An agent that issues refunds is only as safe as its policy and its limits.
+Analytics, ML, NLP and agents pay for themselves at Kalpa Retail in nine places, from the Monday numbers and replenishment to search ranking, fraud, catalogue text and agents that act within limits, and each is measured on its own terms, from forecast error against a naive baseline to cases resolved without a person. The further right a technique acts, the more a wrong answer costs: in the illustration above, drafts that save 80 agent-hours a day pay out Rs 2,40,000 the policy never allowed, in one day, once a misstated return window is approved on 300 refund tickets.
 
 ---
 
@@ -592,7 +590,7 @@ Analytics, ML, NLP and agents pay for themselves at Kalpa Retail in nine places,
 
 On Saturday the category buyer for home care had 380 festive lights left of 1,000, with Diwali ahead, and more than one honest way to decide on a markdown. Most retail data problems look like that, with several defensible answers chosen by the rows each needs, its cost, its time and the accuracy it must reach.
 
-**Who needs the answer.** Kavya Nair, who asks for the baseline, the evidence and a second way to reach every number, and the head of whichever function asked. Each problem below has more than one defensible answer, and an option sized wrong either spends weeks on a model the data cannot support or ships a rule of thumb where the stakes needed more.
+**Who needs the answer.** Kavya Nair, who asks for the baseline, the evidence and a second way to reach every number, needs it, and so does the head of whichever function asked. Each problem below has more than one defensible answer, and an option sized wrong either spends weeks on a model the data cannot support or ships a rule of thumb where the stakes needed more.
 
 **The questions on the way.** The seven below reach every retail data team; their sizes are illustrative.
 
@@ -674,7 +672,7 @@ Kalpa should start with the exact match plus capture at the till, keeping the pr
 
 For Kalpa, spelling correction and a synonym list for the hundred queries that most often come back empty fit best, found in the search logs and tracked as the share of searches that end on an empty page. It changes once the empty searches are a long tail of one-off phrasings, where semantic matching pays for itself.
 
-For each of the seven, the fix is chosen by the rows it needs, its cost, its time and the accuracy it must reach. For Kalpa that is the projection line by line for markdowns, the stock records with the zero-sales rule and a monthly shelf audit for stock-outs, a baseline plus uplift at category level for promotion weeks, a score that picks which cash-on-delivery orders get a confirmation step, a handful of clusters on category mix for store ranges, an exact match plus capture at the till for customers, and spelling correction with a synonym list for empty searches. Each call names the fact that would change it.
+For each of the seven, the fix is chosen by the rows it needs, its cost, its time and the accuracy it must reach. For Kalpa that is the projection line by line for markdowns, the stock records with the zero-sales rule and a monthly shelf audit for stock-outs, a baseline plus uplift at category level for promotion weeks, a score that picks which cash-on-delivery orders get a confirmation step, a handful of clusters on category mix for store ranges, an exact match plus capture at the till for customers, and spelling correction with a synonym list for empty searches.
 
 ---
 
@@ -682,7 +680,7 @@ For each of the seven, the fix is chosen by the rows it needs, its cost, its tim
 
 Most learners have lived through the five scenes below, and each turns into metrics on the tree in section 5 and a data problem hidden in it.
 
-**Who needs the answer.** Whoever brings you a scene and expects a number back, such as the head of Retail-Plus with a month of renewals or the category buyer with a shelf that emptied by evening. Until the scene becomes a formula and the data problem inside it, any number sent back answers a different question from the one asked.
+**Who needs the answer.** Anyone who brings you a scene and expects a number back needs it, such as the head of Retail-Plus with a month of renewals or the category buyer with a shelf that emptied by evening. Until the scene becomes a formula and the data problem inside it, any number sent back answers a different question from the one asked.
 
 **The questions on the way.** Each row of the table answers three, in order:
 
@@ -706,7 +704,7 @@ Each everyday scene turns into a formula on the tree and a problem the data team
 
 Picture the first round for a retail analytics role at a GCC: before any code, the interviewer asks how a retailer makes money.
 
-**Who needs the answer.** You, in that first round, where the interviewer decides whether you can think inside a business before any code is written. An answer in general terms, with no GMV, no contribution and no stated base for a rate, tells them you have not worked inside one yet.
+**Who needs the answer.** You do, in that first round, where the interviewer decides whether you can think inside a business before any code is written. An answer in general terms, with no GMV, no contribution and no stated base for a rate, tells them you have not worked inside one yet.
 
 **The questions on the way.**
 
@@ -733,9 +731,9 @@ An interviewer for a retail analytics role asks questions like these ten: three 
 
 ## 12. Where do you read next, and what does each source add?
 
-With an evening to spare, start where a retailer explains itself to its investors and read on in this order; each source was checked on the date shown.
+With an evening to spare, start where a retailer explains itself to its investors and read on in this order.
 
-**Who needs the answer.** You, whenever a stakeholder or an interviewer quotes a real company's number or a rule and you need the source behind it. Most sources below are a company's or a regulator's own text, each dated, so a figure you repeat can be traced; one repeated from memory and wrong costs the trust that section 4 says one wrong number can lose.
+**Who needs the answer.** You do, whenever a stakeholder or an interviewer quotes a real company's number or a rule and you need the source behind it. Most sources below are a company's or a regulator's own text, each dated, so a figure you repeat can be traced; one repeated from memory and wrong costs the trust that section 4 says one wrong number can lose.
 
 **The questions on the way.**
 

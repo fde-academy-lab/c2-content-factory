@@ -4,7 +4,7 @@ Answers: 1a 2c 3d 4b 5a 6d 7b 8c 9a 10d 11b 12c 13a 14d 15b 16c 17b 18d 19a 20c 
 
 ## What does the lab test on files nobody has shown you?
 
-The lab runs the day's habits again on files nobody has shown you. A growth idea is placed by the
+A growth idea is placed by the
 branch it moves and priced by what moving that branch costs. Lifts multiply along the tree, so a
 discount needs more quantity than its cut just to stand still. Every leaf carries a numerator, a
 denominator and a reading of sales, and customers are counted by their id. The typical order is the
@@ -69,5 +69,5 @@ Tuesday."
 ## Where does this pattern show up at work?
 
 A first export from a new store, a new market or a new product is where these checks meet at once,
-because nobody has cleaned it and everybody wants a number from it. Analysts who run the four
-checks before they report are the ones whose first number survives the review.
+because nobody has cleaned it and everybody wants a number from it. An analyst who runs the four
+checks before reporting sends a first number that survives the review.

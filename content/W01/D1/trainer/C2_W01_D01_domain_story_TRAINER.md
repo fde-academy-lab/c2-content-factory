@@ -2,7 +2,7 @@
 
 **TRAINER ONLY.** Nothing on this page reaches a learner. It is the talk track for chapter 0 of Monday's morning deck, *How does retail earn?*: the 45-minute story on slides S2 to S10, which hands over to Meera Raghavan's ask on S11 and S12. The learner reads the same business at more depth in the dossier, `study-notes/C2_W01_D01_domain_retail_STUDENT.md`, and keeps its one-page summary, `cheatsheets/C2_W01_D01_retail_domain_card_STUDENT.pdf`, which goes out at the afternoon's close.
 
-**Who needs the answer.** Every trainee in the room, before Meera's ask reaches them. The day's case has them judge whether Rs 12 crore for new customers goes to the branch of sales that is short, in a business most of them have never worked in, and a trainee who cannot say what GMV, net revenue or contribution means, or who at Kalpa asks for which number, sends a figure its reader cannot act on.
+**Who needs the answer.** Every trainee in the room needs it before Meera's ask reaches them. The day's case has them judge whether Rs 12 crore for new customers goes to the branch of sales that is short, in a business most of them have never worked in, and a trainee who cannot say what GMV, net revenue or contribution means, or who at Kalpa asks for which number, sends a figure its reader cannot act on.
 
 **The questions on the way.** Ask each one aloud before its part answers it.
 
@@ -54,7 +54,7 @@ Eight minutes: one on slide S2, which reads the six part questions aloud, and se
 
 Listen for: the app knew the search, the cart, the address, the payment token, past orders and the return; the store knew the bill, and the phone number only if it was given. Likely wrong answer: "The shop, because the staff know me by now." Correct it: the staff may, but the shop's system keeps only the bill, and the number only if it was given, while the app keeps every search, cart and return. Land it in one sentence: the data team works where customers leave traces, and a store leaves far fewer than an app.
 
-**Draw: the value chain, six boxes.** Left to right, naming what each box measures as it goes up. The dossier's section 1, *What happens at Kalpa Retail in one working day, and who makes it happen?*, carries the fuller drawing.
+**Draw: the value chain, six boxes.** Name what each box measures as it goes up, left to right. The dossier's section 1, *What happens at Kalpa Retail in one working day, and who makes it happen?*, carries the fuller drawing.
 
 ```mermaid
 flowchart LR
@@ -87,7 +87,7 @@ Listen for: where you are through the day, which apps you open and when, how you
 
 "Kalpa Retail's stores work like DMart's or Reliance Retail's. Its app sells stock Kalpa owns, like DMart Ready or JioMart's grocery business. Flipkart and Amazon India work another way: they are marketplaces, and their sellers own the goods. Quick commerce, Blinkit, Zepto and Swiggy Instamart, delivers small baskets in minutes from dark stores. Retail-Plus is Kalpa's paid tier, a membership of the kind Amazon Prime is, though the story does not list what its members get."
 
-**Draw: the group, six boxes.** The group at the top, the units below it grouped by when each becomes the room's client, and the GCC under them with a dotted line to each. The dossier's section 2, *Which real companies work the way Kalpa Retail does, and what does each teach?*, names all five units and the real company each is like.
+**Draw: the group, six boxes.** Put the group at the top, the units below it grouped by when each becomes the room's client, and the GCC under them with a dotted line to each. The dossier's section 2, *Which real companies work the way Kalpa Retail does, and what does each teach?*, names all five units and the real company each is like.
 
 ```mermaid
 flowchart TB
@@ -120,11 +120,11 @@ Ten minutes, on slide S5.
 
 "Real retailers keep a thin slice too. DMart reported profit after tax of 4.8 percent of its revenue last financial year, about Rs 6.4 of every Rs 100 before tax, so a 5 percent price cut that sells nothing extra would take about three quarters of its profit."
 
-Then reveal the guess: on these illustrative numbers the basket keeps about Rs 50 as EBITDA, which is its Rs 150 of contribution less about Rs 100 towards the costs that do not change with one more order. The rooms that guess high are the rooms that most need this part. If a learner asks how the basket reaches Rs 150, say that the first step, from the Rs 1,800 charged to what Kalpa earns, is chapter 1's question, and the steps after it are the ones on the board.
+Then reveal the guess: on these illustrative numbers the basket keeps about Rs 50 as EBITDA, which is its Rs 150 of contribution less about Rs 100 towards the costs that do not change with one more order. Rooms that guess high need this part most. If a learner asks how the basket reaches Rs 150, say that the first step, from the Rs 1,800 charged to what Kalpa earns, is chapter 1's question, and the steps after it are the ones on the board.
 
 **If the room asks** what the Rs 20 between GMV and net revenue is made of: "Hold the question. It is the first one this morning, and chapter 1 answers it from Kalpa's own orders."
 
-**Draw: Rs 100's journey, five boxes.** Top to bottom, writing each step on its arrow, and write the first arrow as the open question it is. It stays up for the day.
+**Draw: Rs 100's journey, five boxes.** Write each step on its arrow, top to bottom, and the first arrow as the open question it is. It stays up for the day.
 
 ```mermaid
 flowchart TB
@@ -156,7 +156,7 @@ Six minutes, on slide S6.
 
 Listen for: a dashboard figure corrected before anyone acts on it can be undone; a figure the finance controller has already restated in front of the board, a budget the marketing lead has already spent, and a member who lapsed while the wrong ones were protected cannot. Likely wrong answer: "All of them: we send a corrected number." Correct it: a correction fixes the dashboard, and the decision taken on the wrong number stays taken. Land it: before a number leaves the team, know who asked for it and whether being wrong can be taken back.
 
-**Draw: who asks, six boxes, as slide S6 shows them.** The CEO on the left; finance, marketing and Retail-Plus in solid boxes in the middle, beside a dashed box for the other functions, where customer support sits until Farhan Sheikh arrives in Week 8; the GCC on the right, with a dotted arrow from every box to it, because every one of them asks. Say that the data platform lead sits beside the GCC. The dossier's section 4, *Who decides what at Kalpa Retail, and what does each of them ask the data team?*, shows every function with what it owns and what a wrong number costs it.
+**Draw: who asks, six boxes, as slide S6 shows them.** Put the CEO on the left; finance, marketing and Retail-Plus in solid boxes in the middle, beside a dashed box for the other functions, where customer support sits until Farhan Sheikh arrives in Week 8; the GCC on the right, with a dotted arrow from every box to it, because every one of them asks. Say that the data platform lead sits beside the GCC. The dossier's section 4, *Who decides what at Kalpa Retail, and what does each of them ask the data team?*, shows every function with what it owns and what a wrong number costs it.
 
 ```mermaid
 flowchart LR
@@ -203,7 +203,7 @@ Then read the formulas off the tree, one line each, pointing at the branch as yo
 
 Listen for: the marketing lead asks about customers, the new ones above all, and whether a campaign brought them, since acquisition is marketing's budget; the head of Retail-Plus asks how often members order and how many come back, since renewals are that tier's measure; Anand Iyer asks about gross margin and whether the numbers match his books, since he answers for the books. Likely wrong answer: "All three ask about revenue, since revenue is the number that matters." Correct it: revenue is Meera's number, and each of the three owns a branch of it, is judged on that branch and asks for it first. Land it: every number on the tree has a formula and an owner, and a number sent without knowing its owner reaches a decision it was never built for.
 
-**Draw: the metric tree, six boxes.** Revenue in the middle, the shelf above it, its three branches below and the leaks to its right. It is the board version of the tree in the dossier's section 5, *Which numbers run Kalpa Retail, and how is each one worked out?*, and on the card; it stays up for the day, and the day's case writes its numbers onto it.
+**Draw: the metric tree, six boxes.** Put revenue in the middle, the shelf above it, its three branches below and the leaks to its right. It is the board version of the tree in the dossier's section 5, *Which numbers run Kalpa Retail, and how is each one worked out?*, and on the card; it stays up for the day, and the day's case writes its numbers onto it.
 
 ```mermaid
 flowchart TB
@@ -236,9 +236,9 @@ The dossier's section 7, *Which rules bind Kalpa Retail's data, and what do they
 
 **Ask the room.** "Which of these would you let a system do with no person checking: send the Monday numbers, reorder detergent, refund the bedsheet, change a price?"
 
-Listen for the reasons as much as the choices: a detergent reorder inside limits is easy to undo, the bedsheet's refund is small but sets a precedent, the Monday numbers reach the CEO's decisions before anyone could catch a wrong one, and a price change touches MRP, consent and fairness rules at once. Likely wrong answer: "The Monday numbers, since they are only a report." Correct it: they are the riskiest of the four to send unchecked, because the CEO decides on them before anyone could catch a wrong one, and the detergent reorder inside limits is the safest. Land it: an agent is only as safe as its policy and the limits around it.
+Listen for the reasons as much as the choices: a detergent reorder inside limits is easy to undo, the bedsheet's refund is small but sets a precedent, the Monday numbers reach the CEO's decisions before anyone could catch a wrong one, and a price change touches MRP, consent and fairness rules at once. Likely wrong answer: "The Monday numbers, since they are only a report." Correct it: they are the riskiest of the four to send unchecked, because the CEO decides on them before anyone could catch a wrong one, and the detergent reorder inside limits is the safest. Land it: an agent is safe only within its policy and the limits set around it.
 
-**Draw: the ladder, four boxes.** Left to right, the last one in rose.
+**Draw: the ladder, four boxes.** Draw left to right, the last box in rose.
 
 ```mermaid
 flowchart LR

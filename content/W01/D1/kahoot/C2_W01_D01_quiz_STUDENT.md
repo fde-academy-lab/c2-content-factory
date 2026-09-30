@@ -1,8 +1,7 @@
 # Which of Monday's checks does the room still get wrong at speed?
 
-**Who needs the answer.** The trainer, who reads from the room's answers which of the day's wrong
-numbers still catch people before Tuesday builds on them, and each learner, who sees which check to
-redo tonight.
+**Who needs the answer.** The trainer reads from the room's answers which of the day's wrong numbers
+still catch people before Tuesday builds on them, and each learner sees which check to redo tonight.
 
 **The questions on the way.** Which branch explains a fall? How is a rate written? What does a
 fraction from two reports give? What does a gap between two middles say? What is a recent one-time

@@ -24,9 +24,9 @@ sales that is short?
 
 ### 0. How does a retailer like Kalpa make money, who asks the data team for which number, and how is each number worked out?
 
-The story, 45 minutes, with no laptop open. Its opener prints *How does retail earn* and its promise asks the full question
+The story, 45 minutes, with no laptop open. Its opener prints *How does retail earn* and its promise asks the full question.
 
-**Who needs the answer.** Every learner, because from chapter 1 on each chapter names the metric at
+**Who needs the answer.** Every learner needs it, because from chapter 1 on each chapter names the metric at
 stake, who asks for it and what a wrong number costs, and most of the room has never worked in a
 business role. A room that meets Meera's ask without the story hears arithmetic where she is asking
 about a business.
@@ -44,10 +44,10 @@ about a business.
 
 ### 1. Which of the file's totals should Meera call sales, and what does each one count?
 
-Chapter 1, 30 minutes, with notebook 01. Its opener prints *Which total is sales* and its promise asks the full question
+Chapter 1, 30 minutes, with notebook 01. Its opener prints *Which total is sales* and its promise asks the full question.
 
-**Who needs the answer.** Meera, who measures the 15 percent plan from this number, and Anand, whose
-books it must match. A wrong total sets the plan's base on demand that never became a sale.
+**Who needs the answer.** Meera measures the 15 percent plan from this number, and Anand's books
+must match it. A wrong total sets the plan's base on demand that never became a sale.
 
 **The questions on the way.**
 
@@ -62,9 +62,9 @@ books it must match. A wrong total sets the plan's base on demand that never bec
 
 ### 2. How does sales split into customers, orders per customer and order value, each a fraction on one definition?
 
-Chapter 2, 30 minutes, with notebook 02. Its opener prints *What is each branch* and its promise asks the full question
+Chapter 2, 30 minutes, with notebook 02. Its opener prints *What is each branch* and its promise asks the full question.
 
-**Who needs the answer.** Meera and the marketing lead, who will price the plan branch by branch. A
+**Who needs the answer.** Meera and the marketing lead will price the plan branch by branch. A
 fraction built from two definitions values every order at a figure no definition supports.
 
 **The questions on the way.**
@@ -80,9 +80,9 @@ fraction built from two definitions values every order at a figure no definition
 
 ### 3. How many customers does Kalpa have, and how many came back for a second order?
 
-Chapter 3, 30 minutes, with notebook 03. Its opener prints *Do customers come back* and its promise asks the full question
+Chapter 3, 30 minutes, with notebook 03. Its opener prints *Do customers come back* and its promise asks the full question.
 
-**Who needs the answer.** The marketing lead and Meera. If nobody comes back, acquisition looks like
+**Who needs the answer.** The marketing lead and Meera need it: if nobody comes back, acquisition looks like
 the only branch left and the Rs 12 crore looks justified.
 
 **The questions on the way.**
@@ -98,10 +98,10 @@ the only branch left and the Rs 12 crore looks justified.
 
 ### 4. What does a typical Kalpa order look like, stated so that one large order cannot move it?
 
-Chapter 4, 30 minutes, with notebook 04. Its opener prints *What is a typical order* and its promise asks the full question
+Chapter 4, 30 minutes, with notebook 04. Its opener prints *What is a typical order* and its promise asks the full question.
 
-**Who needs the answer.** The marketing lead, who values a new customer's first order in the
-payback case, and Anand, who warned that one business customer can move an average.
+**Who needs the answer.** The marketing lead values a new customer's first order with it in the
+payback case, and Anand has warned that one business customer can move an average.
 
 **The questions on the way.**
 
@@ -116,10 +116,10 @@ payback case, and Anand, who warned that one business customer can move an avera
 
 ### 5. Which branch should Meera open first to reach the 15 percent plan, and why not the others?
 
-Chapter 5, 30 minutes, the afternoon's first, with notebook 05. Its opener prints *Which branch first* and its promise asks the full question
+Chapter 5, 30 minutes, the afternoon's first, with notebook 05. Its opener prints *Which branch first* and its promise asks the full question.
 
-**Who needs the answer.** Meera, who is about to sign Rs 12 crore for one branch, and the marketing
-lead, whose budget it is. The wrong branch spends the money where the business is not short.
+**Who needs the answer.** Meera needs it before she signs Rs 12 crore for one branch, and so does the
+marketing lead, whose budget it is. The wrong branch spends the money where the business is not short.
 
 **The questions on the way.**
 
@@ -134,7 +134,7 @@ lead, whose budget it is. The wrong branch spends the money where the business i
 
 ### 6. What one sentence can Meera sign, with its evidence, its branch, its caveat and its ask?
 
-Chapter 6, 30 minutes, with notebook 06. Its opener prints *What will Meera sign* and its promise asks the full question
+Chapter 6, 30 minutes, with notebook 06. Its opener prints *What will Meera sign* and its promise asks the full question.
 
 **Who needs the answer.** Meera signs the sentence, Kavya reviews it first, and the marketing lead
 reads it looking for the weakest number. A sentence that says 70 percent of customers are lost either
@@ -156,8 +156,8 @@ panics the room or hands marketing an easy rebuttal.
 The escalated case, 35 minutes, each learner alone, with notebook ex1. Its opener reads *Escalated
 case*.
 
-**Who needs the answer.** Anand, who counts only what stayed sold and puts numbers in front of the
-board. An answer that holds on booked orders alone never reaches his books.
+**Who needs the answer.** Anand does, since he counts only what stayed sold and puts numbers in front
+of the board. An answer that holds on booked orders alone never reaches his books.
 
 **The questions on the way.**
 
@@ -174,8 +174,8 @@ board. An answer that holds on booked orders alone never reaches his books.
 
 The second case, 25 minutes, in pairs, with notebook ex2. Its opener reads *Second case*.
 
-**Who needs the answer.** Meera, who asked where revenue comes from, and anyone who would draft a
-channel plan from her answer. A plan led by one channel's headline share invests where her consumer
+**Who needs the answer.** Meera asked where revenue comes from, and anyone who drafts a channel plan
+from her answer needs it too. A plan led by one channel's headline share invests where her consumer
 segments do not buy.
 
 **The questions on the way.**
@@ -220,7 +220,7 @@ flowchart LR
     class S core
 ```
 
-Every chapter runs the same six steps, and the chapter opener's notes carry its minutes: the need (3),
+The chapter opener's notes carry each step's minutes: the need (3),
 the options sized (4 to 8), the build with each step predicted (4 to 8), the trap (7 to 12), the
 second route (3 to 5), and Kavya's review with the interview question (2 to 3).
 
@@ -236,8 +236,7 @@ second route (3 to 5), and Kavya's review with the interview question (2 to 3).
 | Chapter 4, What is a typical order? 30 | Section 04, S56 to S71, with D65 and D66 for self-study | Notebook 04; `unguided/C2_W01_D01_ch4_typical_STUDENT.md`; the companion's experiment C | Blinkit reports its AOV as a mean because it adds up to totals. Four middles are sized on the invented six-order set, only 1 of the 30 orders sits above the mean of Rs 18,160, each learner sorts in the empty cell on S67 and reads what sits at the top without reading any record aloud, and the median is Rs 2,205. | Never cut the sort on S67. |
 
 **What the story says, and what it never stages.** The story states each metric as a formula, with the
-question it answers and who asks it, and it teaches no trap under any numbers, Monday's included.
-It names GMV and net revenue and says the two differ, and it leaves the gap between them, Rs 20 on
+question it answers and who asks it. It names GMV and net revenue and says the two differ, and it leaves the gap between them, Rs 20 on
 every Rs 100 of GMV in the illustrative numbers, as the question chapter 1 opens: nobody walks
 cancellations, returns or GST off GMV in the story. No slide, drawing or aside in the 45 minutes shows
 a wrong way to compute a number, because the week stages each of those cold: Monday's cancelled
@@ -316,7 +315,7 @@ and move on. It never becomes a slide section or an exercise item.
 
 ## What is planted in the 30 orders, and what do you do if nobody finds it?
 
-The discovery is the lesson, and naming a plant spends it. No learner file names either plant, and
+The room is meant to find each plant, and naming one spends the lesson. No learner file names either plant, and
 you never name one to the room.
 
 | Planted | Where it is | What the room should do | If nobody finds it |
