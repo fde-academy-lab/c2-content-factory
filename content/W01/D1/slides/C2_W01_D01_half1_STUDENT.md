@@ -810,7 +810,7 @@ label: Question 1 | title: Why fractions | body: Who needs the branches, and why
 label: Question 2 | title: Which tree | body: Which tree can this file fill?
 label: Question 3 | title: Order value | body: What is the average order value?
 label: Question 4 | title: Two reports | body: What goes wrong when booked rupees are divided by delivered orders?
-label: Question 5 | title: The mean | body: Does the mean of the amounts agree?
+label: Question 5 | title: The mean | body: Does the mean of the 30 amounts give the same AOV?
 label: Question 6 | title: What is missing | body: Which branches does the file still lack?
 ```
 
@@ -1121,7 +1121,7 @@ Transition: the chapter's answers, one line each.
 2. **Which tree can this file fill?** Customers x orders per customer x AOV is the deepest tree it fills.
 3. **What is the average order value?** It is Rs 18,160, booked revenue over 30 orders.
 4. **What do booked rupees over delivered orders give?** They give Rs 25,943, which matches no definition and claims Rs 7,78,300.
-5. **Does the mean of the amounts agree?** The mean of the 30 amounts is the same Rs 18,160.
+5. **Does the mean of the 30 amounts give the same AOV?** It does: Rs 18,160.
 6. **Which branches does the file still lack?** It lacks items, price and discounts, so order value cannot be split yet.
 
 **Kavya's review.** "You gave me each branch as a numerator over a denominator and told me which three this file cannot fill, so I know which ones I can plan on. When two reports feed one fraction, ask each what it counts before you divide."
@@ -1159,7 +1159,7 @@ label: Question 1 | title: What rides on it | body: Who needs the customer count
 label: Question 2 | title: Rows and people | body: How do we count customers when a row is an order?
 label: Question 3 | title: Who came back | body: How many customers came back?
 label: Question 4 | title: Every row a customer | body: What goes wrong if every row is counted as a customer?
-label: Question 5 | title: The mean of counts | body: Does the mean of the counts agree?
+label: Question 5 | title: The mean of counts | body: Does the mean of the per-customer counts give the same rate?
 label: Question 6 | title: On the tree | body: Which count goes on the tree's customer branch, and on which definition?
 ```
 
@@ -1429,7 +1429,7 @@ Transition: the chapter's answers.
 2. **How do we count customers when a row is an order?** We count distinct customer ids, since one customer can place several orders.
 3. **How many customers came back?** 7 of 23 customers came back and 16 bought once, so they average 1.30 orders each.
 4. **What if every row is counted as a customer?** The draft's 30 at 1.00 each says nobody comes back, and the ids say 7 did.
-5. **Does the mean of the counts agree?** The mean of the 23 counts is also 1.30.
+5. **Does the mean of the per-customer counts give the same rate?** It does: the 23 counts average 1.30.
 6. **Which count goes on the tree's customer branch?** It takes 23 customers at 1.30 orders each, on booked orders from 1 July to 26 September.
 
 **Kavya's review.** "Your first 30 was a count of rows, divided as if it were people. A count of people comes from their ids, and every rate you send upstairs names its denominator."
@@ -1469,7 +1469,7 @@ label: Question 1 | title: What it prices | body: Who needs a typical order, and
 label: Question 2 | title: Which middle | body: Which middle value, the mean or the median, survives one large order?
 label: Question 3 | title: The median | body: What is the median order?
 label: Question 4 | title: Mean as typical | body: What goes wrong when the mean is sold as typical?
-label: Question 5 | title: The library | body: Does statistics.median agree?
+label: Question 5 | title: The library | body: Does Python's own median function give the same middle?
 label: Question 6 | title: The payback | body: What goes into the payback case?
 ```
 
@@ -1777,10 +1777,10 @@ Transition: the chapter's answers.
 *What does a typical Kalpa order look like, stated so that one large order cannot move it?*
 
 1. **What does a typical order price?** It prices each new customer's first order in marketing's payback.
-2. **Which middle survives one large order?** The median does, since it moves one place when a large order joins.
+2. **Which middle value survives one large order?** The median does, since it moves one place when a large order joins.
 3. **What is the median order?** It is Rs 2,205, halfway between Rs 2,110 and Rs 2,300.
 4. **What goes wrong when the mean is sold as typical?** Only 1 of the 30 orders sits above the Rs 18,160 mean.
-5. **Does statistics.median agree?** It gives Rs 2,205, and Rs 2,100 on the not-cancelled orders.
+5. **Does Python's own median function give the same middle?** It gives Rs 2,205, and Rs 2,100 on the not-cancelled orders.
 6. **What goes into the payback case?** A mean from the customers the spend targets goes in, with the median quoted as the typical order.
 
 **Kavya's review.** "Anand said no averages, and now you know why. Put the median in the sentence and say the mean is about eight times higher."

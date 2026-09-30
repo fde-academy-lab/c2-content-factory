@@ -1044,7 +1044,8 @@ print(len(ORDERS), "orders loaded, every amount a whole number")
         - What is the booked AOV? It is Rs 18,160, Rs 5,44,810 over 30 orders.
         - What goes wrong when booked rupees meet delivered orders? A mixed AOV of Rs 25,943 claims
           Rs 7,78,300 of revenue that nobody booked.
-        - Does the mean of the amounts agree? It does, at Rs 18,160 by every route.
+        - Does the mean of the 30 amounts give the same average order value? It does, at Rs 18,160 by
+          every route.
         - How does sales split? It splits into customers, orders per customer and order value, each a
           fraction on one definition, with three of order value's branches still missing from the file.
         """),
@@ -1342,10 +1343,10 @@ print(len(ORDERS), "orders,", kit.rupees(revenue), "booked")
 
         - How do we count customers when a row is an order? We count distinct ids, with a dictionary
           that also counts each customer's orders.
-        - How many came back? 7 of the 23 came back, and 16 bought once.
+        - How many customers came back for a second order? 7 of the 23 came back, and 16 bought once.
         - What goes wrong if every row is a customer? The draft reports 30 customers at 1.00 orders
           each and says nobody comes back.
-        - Does the mean of the counts agree? It does, at 1.30 by both routes.
+        - Does the mean of the per-customer counts give the same rate? It does, at 1.30 by both routes.
         - Which count goes on the customer branch? The branch takes 23 customers and 1.30 orders each,
           on booked orders, written with that definition.
         - Which channel did the repeat buyers come back through? All 7 came back through a different
@@ -1672,7 +1673,8 @@ print(len(amounts), "amounts; the mean, chapter 2's AOV, is", kit.rupees(mean))
           happened to fit this file.
         - What goes wrong when the mean is sold as typical? Rs 18,160 is eight times the median, and
           only 1 of the 30 orders sits above it.
-        - Does Python's median agree? It does, on booked and on not-cancelled orders.
+        - Does Python's own median function give the same middle? It does, on booked and on
+          not-cancelled orders.
         """),
         code("""
         kit.table(["What we now know", "The evidence"],
@@ -2279,13 +2281,14 @@ print(f"{len(ORDERS)} orders from {start} to {end}, {(end - start).days + 1} day
         quarter cannot show which branch moved, hold the Rs 12 crore until Tuesday's two quarters." The
         cell below builds it from the variables, so no number in it can drift from the work.
 
-        - Which form carries the decision? One sentence in four parts carries it, read in about twenty
-          seconds.
-        - What does the first draft say? It gives the evidence, the branch, the caveat and the ask, with
-          16 of 23 who bought once as its weakest number.
-        - How many of the 16 are really lost? At most 7 are, the ones past the median gap of 45 days,
+        - Which form carries the decision in the time Meera has? One sentence in four parts carries it,
+          read in about twenty seconds.
+        - What does the first draft of the sentence say? It gives the evidence, the branch, the caveat
+          and the ask, with 16 of 23 who bought once as its weakest number.
+        - How many of the 16 one-time buyers are really lost? At most 7 are, the ones past the median gap of 45 days,
           and 9 are too recent to judge.
-        - Does counting forward agree? It finds the same 9 customers.
+        - Does counting forward from each order find the same buyers too recent to judge? It finds the
+          same 9 customers.
         - What can Meera sign? She can sign the sentence above, with its evidence, its branch, its
           caveat and its ask.
         """),

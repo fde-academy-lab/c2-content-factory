@@ -54,7 +54,7 @@ must match it. A wrong total sets the plan's base on demand that never became a 
 | | Ask the room | Show once the room has answered |
 |---|---|---|
 | 1 | Who needs one number called sales, and what does a wrong one cost? | Meera measures her plan from it and Anand's books must match it, so a wrong total measures growth from orders that were cancelled. |
-| 2 | Which way of answering fits this file? | Summing by status with the bridge fits: one pass over 30 rows gives every reading and names each rupee between them, and Finance's books serve anything the board sees. |
+| 2 | Which way of totalling sales fits a first look at Kalpa's 30 orders? | Summing by status with the bridge fits: one pass over 30 rows gives every reading and names each rupee between them, and Finance's books serve anything the board sees. |
 | 3 | Which reading of sales comes out largest? | Booked comes out largest at Rs 5,44,810, then not cancelled at Rs 5,35,760 on 26 orders, then delivered at Rs 5,20,790 on 21. |
 | 4 | What goes wrong if all 30 orders are sent as sales? | Rs 5,44,810 goes out with the 4 cancelled store orders, Rs 9,050, inside it. |
 | 5 | Do sums by status reach the same totals? | They do: delivered Rs 5,20,790, returned Rs 14,970 and cancelled Rs 9,050 add back to Rs 5,44,810. |
@@ -75,7 +75,7 @@ fraction built from two definitions values every order at a figure no definition
 | 2 | Which tree can this file fill? | The file fills customers, orders per customer and average order value, and it holds no items, prices or discounts. |
 | 3 | What is the average order value? | Booked, it is Rs 18,160, which is Rs 5,44,810 over 30 orders; delivered, it is Rs 24,800. |
 | 4 | What goes wrong when booked rupees are divided by delivered orders? | The AOV reads Rs 25,943, and multiplied back over the 30 orders it claims Rs 7,78,300 that nobody booked. |
-| 5 | Does the mean of the amounts agree? | It does: the mean of the 30 amounts is Rs 18,160. |
+| 5 | Does the mean of the 30 amounts give the same Rs 18,160? | It does: the mean of the 30 amounts is Rs 18,160. |
 | 6 | Which branches does the file still lack? | Items per order, price per item and discounts are missing, and the answer names them as unknown. |
 
 ### 3. How many customers does Kalpa have, and how many came back for a second order?
@@ -91,9 +91,9 @@ the only branch left and the Rs 12 crore looks justified.
 |---|---|---|
 | 1 | Who needs the customer count, and what rides on it? | Marketing's case for Rs 12 crore rests on nobody coming back, so the count decides whether frequency is a branch at all. |
 | 2 | How do we count customers when a row is an order? | Count each customer id once, with a set of ids or a dictionary of each id's orders. |
-| 3 | How many customers came back? | 23 customers placed 1.30 orders each; 7 came back and 16 bought once. |
+| 3 | How many customers stand behind the 30 orders, and how many came back? | 23 customers placed 1.30 orders each; 7 came back and 16 bought once. |
 | 4 | What goes wrong if every row is counted as a customer? | The count reads 30 customers at 1.00 order each, which says nobody comes back. |
-| 5 | Does the mean of the counts agree? | It does: the dictionary's 23 counts average 1.30. |
+| 5 | Does the mean of each customer's order count give the same 1.30? | It does: the dictionary's 23 counts average 1.30. |
 | 6 | Which count goes on the tree's customer branch, and on which definition? | 23 customers at 1.30 orders each, written as booked orders from 1 July to 26 September; the delivered recount is the escalated case's first part, so no morning slide or notebook prints it. |
 
 ### 4. What does a typical Kalpa order look like, stated so that one large order cannot move it?
@@ -108,10 +108,10 @@ payback case, and Anand has warned that one business customer can move an averag
 | | Ask the room | Show once the room has answered |
 |---|---|---|
 | 1 | Who needs a typical order, and what does it price? | Marketing needs it to price a new customer's first order in the payback case for the Rs 12 crore. |
-| 2 | Which middle value, a mean or a median, survives one large order? | The median does: on the invented set of six orders, one large order moves the mean Rs 14,623 and the median Rs 50. |
+| 2 | Which middle value, the mean or the median, survives one large order? | The median does: on the invented set of six orders, one large order moves the mean Rs 14,623 and the median Rs 50. |
 | 3 | What is the median order? | It is Rs 2,205, halfway between the 15th and 16th sorted amounts, Rs 2,110 and Rs 2,300. |
 | 4 | What goes wrong when the mean is sold as typical? | Rs 18,160 goes to marketing as a typical first order, when only 1 of the 30 orders sits above it. |
-| 5 | Does statistics.median agree? | It does, at Rs 2,205. |
+| 5 | Does Python's statistics.median give the same Rs 2,205? | It does, at Rs 2,205. |
 | 6 | What goes into the payback case? | The median of Rs 2,205 goes in as the typical order, and the payback's total needs a mean over the segments the spend targets, which chapter 5 builds. |
 
 ### 5. Which branch should Meera open first to reach the 15 percent plan, and why not the others?
@@ -129,7 +129,7 @@ marketing lead, whose budget it is. The wrong branch spends the money where the 
 | 2 | What would each branch have to do alone? | Each would have to grow 15 percent alone: 15 percent more customers who buy like today's, 15 percent more orders from the same customers, or Rs 335 more per order, from Rs 2,235 to Rs 2,570. |
 | 3 | Which branch has evidence behind it? | Frequency has: 7 of the 23 customers already came back, and about three in ten of the consumer view's one-time buyers returning once would carry the plan. |
 | 4 | What goes wrong when two 10 percent lifts are called 20 percent? | The slide says Rs 77,772, when through the tree the lifts make 21 percent, Rs 78,420, which is Rs 648 more. |
-| 5 | Do the four parts land on the same total? | They do: Rs 64,810 plus Rs 6,481, Rs 6,481 and Rs 648 comes to Rs 78,420. |
+| 5 | Do Rs 64,810 and each lift's rupees add up to the same Rs 78,420? | They do: Rs 64,810 plus Rs 6,481, Rs 6,481 and Rs 648 comes to Rs 78,420. |
 | 6 | What would switch the call? | A second quarter showing customers falling while frequency held, or a retained order costing more than winning a new customer, would move the call to acquisition. |
 
 ### 6. What one sentence can Meera sign, with its evidence, its branch, its caveat and its ask?
@@ -145,10 +145,10 @@ panics the room or hands marketing an easy rebuttal.
 | | Ask the room | Show once the room has answered |
 |---|---|---|
 | 1 | Who reads the sentence, and what will they look for? | Meera reads it for the decision and its limit, and the marketing lead reads it for the weakest number. |
-| 2 | Which form carries the decision? | One sentence carries it, with the evidence, the branch, the caveat and the ask in about 20 seconds of reading; one number carries no decision, and a table leaves her to choose. |
-| 3 | What does the first draft say? | It says 23 customers placed 1.30 orders each at a typical order of Rs 2,205 and 16 bought only once, so open frequency first and hold the Rs 12 crore until Tuesday's two quarters. |
+| 2 | Which form of answer carries Meera's decision: a number, a table, a sentence or a dashboard? | One sentence carries it, with the evidence, the branch, the caveat and the ask in about 20 seconds of reading; one number carries no decision, and a table leaves her to choose. |
+| 3 | What does the first draft of the sentence to Meera say? | It says 23 customers placed 1.30 orders each at a typical order of Rs 2,205 and 16 bought only once, so open frequency first and hold the Rs 12 crore until Tuesday's two quarters. |
 | 4 | How many of the 16 one-time buyers are really lost? | At most 7 are: returning customers took a median of 45 days, and 9 of the 16 bought inside the last 45, so "70 percent lost" counts customers who have not yet had time to return. |
-| 5 | Do due dates find the same buyers? | They do: 9 of the 16 fall due for a second order after 26 September, the same 9 that the days since ordering found. |
+| 5 | Do due dates find the same 9 too-recent buyers? | They do: 9 of the 16 fall due for a second order after 26 September, the same 9 that the days since ordering found. |
 | 6 | What does the sentence Meera signs say? | "On the 30 booked orders from 1 July to 26 September, 23 customers placed 1.30 orders each at a typical order of Rs 2,205; 7 came back, 7 are past the usual gap without a second order, and 9 bought too recently to judge, so I would open frequency before acquisition, and since one quarter cannot show which branch moved, hold the Rs 12 crore until Tuesday's two quarters." |
 
 ### The escalated case: does frequency first survive on the orders that stayed delivered?

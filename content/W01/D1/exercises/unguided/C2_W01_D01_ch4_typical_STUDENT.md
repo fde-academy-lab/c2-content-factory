@@ -10,8 +10,8 @@ whether the budget is cheap, and Anand has already said how he will read the ans
 valued wrongly makes Rs 12 crore look cheaper or dearer than it is, and the payback with it.
 
 **The questions on the way.** What does the mean say about the orders? What is the middle order?
-Which number should a payback be built on? Which middle survives one large order? Does the typical
-order hold when the reading of sales changes?
+Which number should a payback be built on? Which middle value, the mean or the median, survives
+one large order? Does the typical order hold when the reading of sales changes?
 
 You work these five items alone, in the room's turn of chapter 4. Every item has one right answer,
 so decide it before you record the letter. Items marked **Design** ask for the best-fit approach, a
@@ -25,7 +25,7 @@ Post exactly this shape: xxxxx
 
 ---
 
-## What did chapters 1 to 3 find, and what are the middles?
+## What did chapters 1 to 3 find, and which middle values stand for the orders?
 
 Kalpa Retail grew revenue 4 percent last year against a plan of 15 percent, and marketing has asked
 for Rs 12 crore to win new customers. Chapter 1 read the 30 orders from 1 July to 26 September 2026

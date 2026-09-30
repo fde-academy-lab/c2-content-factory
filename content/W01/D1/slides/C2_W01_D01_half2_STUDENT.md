@@ -452,10 +452,10 @@ Transition: S17, the chapter's map.
 
 ```timeline
 label: Question 1 | title: The readers | body: Who reads the sentence, and what will they look for?
-label: Question 2 | title: The form | body: Which form carries the decision?
+label: Question 2 | title: The form | body: Which form carries the decision in the time Meera has?
 label: Question 3 | title: The draft | body: What does the team's first draft of Meera's sentence say?
 label: Question 4 | title: Lost? | body: How many of the 16 one-time buyers are really lost?
-label: Question 5 | title: Due dates | body: Do due dates find the same buyers?
+label: Question 5 | title: Due dates | body: Do due dates find the same buyers too recent to judge?
 label: Question 6 | title: The sentence | body: What does the sentence Meera signs say? | tone: dark
 ```
 
@@ -737,10 +737,10 @@ Transition: S30, Kavya's review.
 *What one sentence can Meera sign, with its evidence, its branch, its caveat and its ask?*
 
 1. **Who reads the sentence?** Meera reads it for the decision, and marketing for its weakest number.
-2. **Which form carries the decision?** One sentence does, in about 20 seconds, with its limit.
+2. **Which form carries the decision in the time Meera has?** One sentence does, in about 20 seconds, with its limit.
 3. **What does the team's first draft say?** It names 23 customers at 1.30 orders each, Rs 2,205 typical and 16 bought once.
 4. **How many of the 16 are really lost?** At most 7 are, since 9 bought inside the 45-day gap.
-5. **Do due dates find the same buyers?** They find the same 9.
+5. **Do due dates find the same buyers too recent to judge?** They find the same 9.
 6. **What does Meera sign?** She signs a sentence that splits the 16 into 7 past the gap and 9 too recent, and opens frequency.
 
 **Kavya's review.** "This is a sentence I would take into the room: what we know, what we would do, and what we need before spending Rs 12 crore, and every number in it is one we can defend."
