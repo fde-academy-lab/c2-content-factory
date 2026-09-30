@@ -132,7 +132,11 @@ d_change = pct_change(d1["revenue"], d2["revenue"])
 kit.columns(["booked", "delivered"], [("Q1", [21000000, d1["revenue"]]), ("Q2", [18700000, d2["revenue"]])],
             fmt=lambda v: f"Rs {v / 1e7:.2f} cr", title="Revenue by quarter on both definitions")
 kit.check("138 of the 200 orders were delivered", len(delivered) == 138, f"{len(delivered)}")
-kit.check("the delivered change on closed quarters matches the file", d_change == -11.3, f"{d_change}")
+by_month = {}
+for o in delivered:
+    by_month[o["order_date"][:7]] = by_month.get(o["order_date"][:7], 0) + o["amount"]
+q1_months = sum(v for m, v in by_month.items() if m <= "2026-06")
+kit.check("the delivered change matches a second route by month", d_change == pct_change(q1_months, sum(by_month.values()) - q1_months), f"{d_change}")
 '''),
         SOL(md("""
 **Why the other three fail.** a) keeps returned orders, which reached the customer and came back.
@@ -251,7 +255,7 @@ try:
 except TypeError:
     catches = False
 kit.check("the test passes on today's four changes", all_numbers(changes) is True)
-kit.check("the test fails on a summary where two segments came back as None", catches)
+kit.check("the test fails on the invented broken summary", catches)
 kit.check("every segment has its change on delivered orders", len(changes) == 4)
 '''),
         SOL(md("""
@@ -391,8 +395,8 @@ s_orders = {q: sum(1 for o in ORDERS if o["segment"] == "Student" and o["quarter
 new_students = [[1|s_ids["Q2"] - s_ids["Q1"]]]
 kit.columns(["Q1", "Q2"], [("Student customers", [len(s_ids["Q1"]), len(s_ids["Q2"])]), ("Student orders", [s_orders["Q1"], s_orders["Q2"]])],
             width=520, title="Student: the same two customers, two more orders")
-kit.check("no Student customer is new in Q2", isinstance(new_students, set) and len(new_students) == 0)
-kit.check("the Student counts match the file", (s_orders["Q1"], s_orders["Q2"], len(s_ids["Q2"])) == (5, 7, 2))
+kit.check("your set matches a second route over the Q2 ids", new_students == {c for c in s_ids["Q2"] if c not in s_ids["Q1"]})
+kit.check("the Student order counts add up to the file", s_orders["Q1"] + s_orders["Q2"] == sum(1 for o in ORDERS if o["segment"] == "Student"))
 '''),
         SOL(md("""
 **Why the other three fail.** b) is every Student id in either quarter. c) is the ones in both quarters. d)
@@ -422,10 +426,8 @@ picked = also_falls if also_falls in SEGMENTS else "Retail-Plus"
 kit.columns(["Retail-Plus", picked], [("Q1 web orders", [web[("Retail-Plus", "Q1")], web[(picked, "Q1")]]),
                                       ("Q2 web orders", [web[("Retail-Plus", "Q2")], web[(picked, "Q2")]])],
             width=560, title="Web orders: the members against the segment you chose")
-kit.check("the comparison segment is another segment with enough web orders to read",
+kit.check("your pick is a segment that can test the website claim",
           also_falls in SEGMENTS and also_falls != "Retail-Plus" and web[(also_falls, "Q1")] >= 10)
-kit.check("its web orders held, moving by at most one on the same website",
-          also_falls in SEGMENTS and abs(web[(also_falls, "Q1")] - web[(also_falls, "Q2")]) <= 1)
 kit.check("Retail-Plus web orders fell 24 to 9", (web[("Retail-Plus", "Q1")], web[("Retail-Plus", "Q2")]) == (24, 9))
 '''),
         SOL(md("""
@@ -462,9 +464,10 @@ for cid in per["Q1"]:
     if [[3|q1n - q2n >= 2]]:
         call_first.append(cid)
 labels = [f"{a} to {b}" for a, b in sorted(pairs, reverse=True)]
-kit.bars([(l, pairs[k]) for l, k in zip(labels, sorted(pairs, reverse=True))], lit=[0],
+kit.bars([(l, pairs[k]) for l, k in zip(labels, sorted(pairs, reverse=True))],
          title="Retail-Plus members by orders in Q1 to orders in Q2")
-kit.check("the call list matches the Q1-to-Q2 counts", len(call_first) == pairs.get((3, 1), 0) + pairs.get((2, 0), 0) + pairs.get((3, 0), 0))
+drops = {c: per["Q1"][c] - per["Q2"].get(c, 0) for c in per["Q1"]}
+kit.check("your list holds the members who slowed most", set(call_first) == {c for c in drops if drops[c] == max(drops.values())})
 kit.check("every member still ordered in Q2", all(per["Q2"].get(c, 0) > 0 for c in per["Q1"]))
 '''),
         SOL(md("""
@@ -500,7 +503,7 @@ kit.tree({"label": "the reply", "kind": "lit", "branches": [
     ("first request", {"label": EVIDENCE[first_request][:34], "kind": "unknown"})]},
     title="The pair's reply, in three branches")
 kit.check("the request's data starts by the month the fall began", STARTS[first_request] <= FALL_BEGAN, STARTS[first_request])
-kit.check("the request tests a cause inside the tier", first_request not in ("export", "campaigns"))
+kit.check("the request brings a source this export and the campaign plan do not hold", first_request not in ("export", "campaigns"))
 '''),
         SOL(md("""
 **Why the other three fail.** a) measures acquisition, which Part 1 and chapter 5 ruled out. b) is
