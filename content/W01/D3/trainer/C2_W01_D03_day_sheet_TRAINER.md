@@ -73,7 +73,7 @@ flowchart LR
 | 1 | Total and compare; scroll; sample 20; profile every field | Profile, then read the rows it flags; a file with no order key | A Counter over ids and the rejects log's length |
 | 2 | Whole record; record less line; order_id; a fuzzy match on customer and amount within 60 days | order_id; two systems issuing their own ids | Rows less distinct ids, per quarter |
 | 3 | First; last; the copy that validates; escalate all | The copy that validates, then the first; the ERP team calling the second extract a fix | A dict keyed by id over valid rows |
-| 4 | Status: drop, default, impute, flag. Amount: coerce, reject, read the word, repair from a copy | Flag; reject, repair only from an independent copy; a delivery system to ask, or a same-extract copy | The profile of the clean file against the logs |
+| 4 | Status: drop, default, impute, flag. Amount: coerce, reject, read the word, repair from a copy | Flag; reject, repair only from an independent copy; a delivery system to ask; an independent copy to repair from | The profile of the clean file against the logs |
 | 5 | Take the books; difference of totals; bridge by cause; rebuild from the feed | The bridge; a bridge that does not close | Bottom up: the kept orders summed |
 | 6 | Clean file alone; file and a count; logs and control totals; a full diff | Logs and totals; an external auditor re-deriving every row | Replay the log on the raw export |
 

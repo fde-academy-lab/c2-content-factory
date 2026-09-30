@@ -825,7 +825,7 @@ of items" were not verified and stay out.
 | c) Read the word | a guess | Rs 14 for "fourteen" |
 | d) Repair from a copy | Rs 0 | needs an independent copy |
 
-**The call.** Status: d. Amount: reject to the log, and repair only from an independent copy. What would switch them: a delivery system to ask, or a second export cut from the same extract.
+**The call.** Status: d. Amount: reject to the log, and repair only from an independent copy. What would switch them: a delivery system to ask turns the flag into a lookup; an independent copy turns the reject into a repair.
 
 ```notes
 LIVE, 5 minutes. The amount options: coerce to zero misses the books by Rs 1,790 and leaves a Rs 0

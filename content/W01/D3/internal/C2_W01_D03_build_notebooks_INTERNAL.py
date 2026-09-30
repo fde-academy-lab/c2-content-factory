@@ -1072,7 +1072,8 @@ def ch4():
         amount, b by default and d when an independent copy exists, which on this file it does: the
         identity rule already kept the twin that carries the value. **The facts that would change them:**
         for the status, a delivery system that can be asked, which turns the flag into a lookup; for the
-        amount, a second export from the same extract, which is a copy of the defect and no witness at all.
+        amount, an independent source carrying the value, which turns the reject into a repair. A second
+        export cut from the same extract never counts, since it copies the defect.
         '''),
 
         md('''
@@ -1276,7 +1277,7 @@ def ch5():
         setup_cell([READ, PROFILE, RULE, PASS],
                    'raw = read_orders()\nclean, set_aside, rejects, flags = clean_pass(raw)\n'
                    'print(len(clean), "orders;", len(set_aside), "set aside;", len(flags), "flagged")'),
-        mapcell(5, ["the options\\nhow to prove it", "1. the bridge\\n2.1 to 1.9, move by move",
+        mapcell(5, ["the options\\nhow to prove it", "1. the bridge\\nRs 2.1 crore to Rs 1.9 crore",
                     "2. Tuesday recomputed", "3. the trap\\nthe bulk order removed",
                     "4. the note to Finance", "a second route\\nbottom up"]),
         md('''

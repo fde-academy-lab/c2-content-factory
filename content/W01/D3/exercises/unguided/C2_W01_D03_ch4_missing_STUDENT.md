@@ -30,9 +30,9 @@ d) The profile is right, and zero is a valid Kalpa order
 
 ### Q3
 
-A colleague converts amounts with `int(v) if v.isdigit() else 0`. On an invented export, a refund of `-1150` comes out as Rs 0. Which change fixes the logic?
+A colleague converts amounts with `int(v) if v.isdigit() else 0`. On an invented export, an amount written `1,150` with a thousands separator comes out as Rs 0. Which change fixes the logic?
 
-a) Keep the isdigit test and footnote the refund
+a) Keep the isdigit test and footnote the order
 b) Replace the 0 with the segment's median amount
 c) Wrap int() in try and return 0 on any failure
 d) Try int(); log the value and its reason

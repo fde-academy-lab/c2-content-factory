@@ -255,8 +255,9 @@ Repairing it from an independent copy is exact.
 
 **The calls:** keep and flag the status; reject the amount to the log by default and repair it only
 from a source that could not have copied the error. **What would switch them:** a delivery system
-that can be asked, which turns the flag into a lookup; and a second export cut from the same
-extract, which is a copy of the defect and no witness at all.
+that can be asked, which turns the flag into a lookup; and an independent source carrying the value,
+which turns the reject into a repair. A second export cut from the same extract never counts, since it
+copies the defect.
 
 **The build.** Keep and flag leaves Q2 at Rs 1,87,00,000 and the delivered share at 66.3 percent, and
 writes one line in the flags log. For the discount, reading 55 blanks as zero pulls the average from
@@ -530,7 +531,7 @@ prove. If a bridge does not close, the gap is the finding, and it may sit in Fin
 | Identity rule | What makes two rows the same thing | Chapter 2; notebook 02 | order_id, the ERP's key |
 | Keep and flag | Keep a record whose value is unknown, marked, out of counts that need it | Chapter 4; notebook 04 | A Q2 order with no status |
 | Coercion | Turning a value that fails into a default; a claim, never a fix | Chapter 4; notebook 04 | An order at Rs 0 |
-| Fence | A cut-off above which values get called outliers; a question, never a verdict | Chapter 5; notebook 05 | Three times the median Q2 order |
+| Fence | A cut-off that marks a value to question, never to delete | Chapter 5; notebook 05 | Three times the median Q2 order |
 | Control totals | A count and a sum computed at both ends of a transfer and compared | Chapter 6; notebook 06 | 201 rows and Rs 2,09,98,210 in |
 | Revenue bridge | One total walked to another, one move per cause | Chapter 5; notebook 05 | Rs 2,09,98,210 to Rs 1,90,00,000 |
 | Duplicate | A second row for the same thing under the identity rule | Chapter 2; notebook 02 | 15 rows beyond one per order |

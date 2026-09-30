@@ -354,7 +354,7 @@ LIVE, 3 minutes. "Dropped" is the word to correct.
 ## S17. Question: which statement does the auditor sign?
 *Four statements, one supported by the evidence.*
 
-**Question.** As a letter? a) 14 Q1 rows were deleted as errors after the migration check; b) the dashboard was right all along, and the books are short; c) 14 Q1 rows are copies of kept orders, set aside by rule, and both totals tie; d) the 14 rows were outliers removed to keep Q1 in line with Q2.
+**Question.** As a letter? a) 14 Q1 rows were deleted as errors after the migration was checked; b) the dashboard was right all along, and the books are short; c) 14 Q1 rows are copies of kept orders, set aside by rule; both totals tie; d) the 14 rows were outliers removed to keep Q1 in line with Q2.
 
 ```mermaid
 flowchart LR
