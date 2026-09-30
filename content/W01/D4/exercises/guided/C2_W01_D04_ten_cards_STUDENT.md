@@ -1,6 +1,6 @@
 # Guided: ten cards, the first coded shuffle, and the Retail-Plus line
 
-Built with the trainer during round 1, on paper first and then in notebook 1. Keep this sheet; the
+Built with the trainer during chapter 1, on paper first and then in notebook 1. Keep this sheet; the
 table you fill in is the evidence for your first line to Meera.
 
 > **The client asks.** "Retail-Plus is down, smaller than first reported. Real, or the wobble we see
@@ -58,4 +58,4 @@ lets you conclude.
 about ______ of every 100 shuffles, so ___________________________."
 
 Read it to your partner. If your sentence contains the words "chance we are wrong" or "percent
-certain", rewrite it before the round closes.
+certain", rewrite it before chapter 1 closes.
