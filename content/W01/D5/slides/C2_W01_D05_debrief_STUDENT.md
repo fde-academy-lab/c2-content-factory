@@ -147,12 +147,12 @@ the decomposition, which is the right step on data you already trust.
 | Q1 | 83 | 83 | Rs 31,50,000 | Rs 40,00,000 |
 | Q2 | 92 | 84 | Rs 38,16,420 | Rs 26,00,000 |
 
-The answer is c. Q1 has the right count and the wrong rupees, and Q2 has too many rows and too many rupees, so the invented headline carries both errors.
+The answer is c. Both quarters miss Finance's books on the invented export, so the hurried headline cannot go to Meera.
 
 ```notes
 LIVE, 2 minutes. Open notebook 1 on the projector and type its first your-turn cell: it prints this
 morning's version of this table and this morning's hurried headline beside the books. Point at the
-two kinds of miss: a quarter with the right count and the wrong rupees is chapter 2's question.
+two quarters: each misses the books, and S10 asks what a count check alone would leave.
 ```
 
 ---
@@ -186,7 +186,7 @@ for a request to Finance and a join.
 ```mermaid
 flowchart LR
     A["<b>A. trust</b><br/>sees nothing"] --> B["<b>B. counts</b><br/>extra rows"]
-    B --> C["<b>C. counts and rupees</b><br/>extra rows and<br/>lost rupees"]
+    B --> C["<b>C. counts and rupees</b><br/>extra rows and<br/>any rupee gap"]
     C --> D["<b>D. the ledger</b><br/>every order,<br/>by id"]
     classDef bad fill:#FCE8EC,stroke:#C2185B,color:#1A0F5C
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
@@ -199,8 +199,8 @@ flowchart LR
 Each step to the right costs more and needs more from Finance, and C is the first that lands on the books.
 
 ```notes
-SELF-STUDY. The picture behind S8: a count check cannot see a value that went missing inside a row
-that is still there, and only the rupees can.
+SELF-STUDY. The picture behind S8: each check to the right sees what the one before it sees and one
+more kind of error, at more cost and with more that Finance must send.
 ```
 
 ---
@@ -439,7 +439,7 @@ def to_int_or_zero(v):
 
 ```stats
 value: 83 | label: Q1 orders | note: Finance: 83, invented
-value: 0 | label: rejects reported | note: the try swallowed every failure
+value: 0 | label: rejects reported | note: none reported, invented
 value: Rs 31,50,000 | label: Q1 as summed | note: every row kept, invented
 ```
 
@@ -451,19 +451,19 @@ your-turn cell prints this morning's counts and rejects.
 
 ---
 
-## S22. Question: what do Finance's rupee totals show?
-*Every order count lands and nothing was rejected: against Finance's rupees, what does the invented pass show?*
+## S22. Question: what does int() do with "850000.00"?
+*The zeroing pass meets the invented export's one unreadable amount, "850000.00": what happens to it?*
 
-**Question.** Choose one: a) both quarters land to the rupee; b) one quarter over, the other landing; c) one quarter short, the other landing; d) both quarters short by a few rupees of rounding.
+**Question.** Choose one: a) it returns 850000 and drops the paise, as int() does with a decimal number; b) it raises a ValueError, which the try turns into 0; c) it returns 850000.0, a float that sums correctly; d) it raises an error that stops the pass before the counts.
 
 ```notes
-LIVE, half a minute. Take letters. The popular wrong answer is a, and it is the answer the zeroing
-pass was built, by accident, to produce.
+LIVE, half a minute. Take letters. The popular wrong answer is a: int() cuts the paise off a
+decimal number, so people expect it to cut them off a decimal string too, and it refuses the string.
 ```
 
 ---
 
-## S23. Answer: Q1 is Rs 8,50,000 short, and Q2 lands
+## S23. Answer: a zero, so Q1 comes up Rs 8,50,000 short
 *What do the rupees say when every count lands?*
 
 ```mermaid
@@ -477,7 +477,7 @@ flowchart LR
     class C,D known
 ```
 
-The answer is c. With the invented base short by about a fifth, the note reports a fall of 17.5 percent where the books show 35.0.
+The answer is b. int() refuses the paise in "850000.00" and the try books the order at zero, so on the invented export Q1 comes up Rs 8,50,000 short, about a fifth, while Q2 lands, and the note reports a fall of 17.5 percent where the books show 35.0.
 
 ```notes
 LIVE, 1 and a half minutes. Type the gap your-turn cell in notebook 2: it prints which of this
@@ -795,9 +795,10 @@ a handful of orders costs a quarter.
 
 ```notes
 LIVE, 1 and a half minutes. Invented numbers. B hides that nearly all of the fall is the corporate
-book. D, run in notebook 3 after the lead's own test, finds the same lead at three times the minutes, and four tests at 0.05 carry about a one-in-five
-chance that one looks real by luck, so on another file D leads with a fluke. Type the option D
-your-turn cell in notebook 3 to run the four tests on this morning's file.
+book. D, run in notebook 3 after the lead's own test, finds the same lead at three times the
+minutes, and four tests at 0.05 carry about a one-in-five chance that one looks real by luck, so on
+another file D leads with a fluke. Say this morning's A, B and C aloud from the day sheet; C's test
+and D's four wait for S42.
 ```
 
 ---
@@ -856,8 +857,9 @@ value: 0.0107 | label: counted exactly | note: over all 65,536 ways to flip 16 m
 LIVE, 1 minute. The answer is b. The fall was found in the tree, so the note reports both
 directions. Read the p-value sentence aloud once, word for word, since Saturday's paper tests what it
 means: "In 1.1 percent of worlds where the quarter made no difference to each member's basket, chance
-produced a change this large, either way." Type the paired-test your-turn cell in notebook 3 with
-the segment each learner's lab tree named.
+produced a change this large, either way." Type notebook 3's option D your-turn cell, which runs
+one test per segment on this morning's file, then the paired-test your-turn cell with the segment
+each learner's lab tree named.
 ```
 
 ---
@@ -914,8 +916,10 @@ icon: shuffle | eyebrow: Pool the Q1 and Q2 figures and deal them | title: p = 0
 ```notes
 SELF-STUDY, in the depth section of notebook 3, unless more than a quarter of the room pooled the
 quarters or shuffled single orders; then run it for three minutes in place of S44. Both cards are
-2,000 runs on random.Random(7). The same cell shows single orders shuffled between Retail-Plus and
-Retail-Core at 0.0945, against 0.0385 with the label moving with the whole customer. The your-turn
+2,000 runs on random.Random(7), each world counted by its change in rupees per member. S42's 0.011
+counts the same flips by the percentage change in revenue per order, and a fall and a rise of the
+same percentage are different sizes in rupees, so the two counts differ; a note names its measure.
+The same cell shows single orders shuffled between Retail-Plus and Retail-Core at 0.0945, against 0.0385 with the label moving with the whole customer. The your-turn
 cell runs all four on this morning's file.
 ```
 
@@ -957,7 +961,7 @@ LIVE, half a minute. The note as it should read, on the invented export: booked 
 percent, Rs 40,00,000 to Rs 26,00,000; Rs 13,88,200 of it is the corporate book on five orders then
 two; among consumers Retail-Plus's revenue per order fell 15.0 percent with its members and their
 frequency unchanged, p = 0.011 with each member's quarters flipped; the corporate move is a
-question to its account owner.
+question to its account owner, and Student's rise on 10 orders then 14 waits for more orders.
 ```
 
 ---

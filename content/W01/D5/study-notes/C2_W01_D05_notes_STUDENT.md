@@ -400,8 +400,8 @@ account owner about why fewer orders came in, which costs a phone call.
 |---|---|---|---|---|
 | A. Biggest rupee move | corporate revenue -36.3% | 7 | 45% of coin-flip worlds | 5 |
 | B. The total, unsplit | revenue -35.0% | 167 | not asked | 2 |
-| C. Count before rate | Retail-Plus revenue per order -15.0%, Rs 14,400 | 64 | p = 0.011, each member's quarters flipped | 15 |
-| D. Test every segment | the smallest of four p-values | 7 to 72 | 0.011, and one of four under 0.05 | 45 |
+| C. Count before rate | Retail-Plus revenue per order -15.0%, Rs 14,400 | 64 | one test on each member's two quarters, run in the next section | 15 |
+| D. Test every segment | the smallest of four p-values | 7 to 72 | four tests, with about a one-in-five chance that one looks real by luck | 45 |
 
 **The best-fit call is C.** The Retail-Plus move is small in rupees and leads among consumers because
 it is the one move on enough orders to test, while the corporate rupees sit beside it in the claim as
@@ -444,7 +444,10 @@ broad.
 **The trap in the test itself: splitting what belongs together.** Pooling every member's Q1 and Q2
 revenue and dealing the quarter labels at random treats a member's own two quarters as two
 strangers, and on the invented export it reads the fall as chance, p = 0.222, where flipping each
-member's own quarters on the same measure gives 0.0025. Shuffling segment labels across single orders
+member's own quarters on the same measure, the change in rupees per member, gives 0.0025. The 0.011
+above counts the same flips by the percentage change in revenue per order; a fall and a rise of the
+same percentage are different sizes in rupees, so the two counts differ, and a note names the measure
+its test counted. Shuffling segment labels across single orders
 splits one customer's orders between the groups, and it reads the gap to Retail-Core as chance too,
 0.0945 against 0.0385. Here both hurried tests moved p up, because members differ in size far more
 than each member's own quarters differ; on a file where a customer's orders are alike, splitting them
@@ -522,8 +525,11 @@ more than six months lifted revenue 12 percent when tested, worth more than $100
 the US, and tripped a "too good to be true" alert before the analysis confirmed it (Kohavi and
 Thomke, Harvard Business Review, September to October 2017).
 
-In case 3, about 300 visits per checkout is the case's given size for telling 42 percent from 31;
-where that figure comes from is a later week's topic. What the room can compute today is the other
+In case 3, about 300 visits per checkout is the case's given size for telling 42 percent from 31 on
+an even split; with an uneven split the smaller side needs fewer, about 170 new-checkout visits beside
+two thousand or more on the current one, which is why waiting at 12 visits a week takes about 14
+weeks and the one-in-ten fortnight's 240 gather more evidence than the even split. Where these
+figures come from is a later week's topic. What the room can compute today is the other
 side of it: 5 conversions in 12 visits would still turn up in about 3 weeks of 10 if the new checkout
 were really no better than 31 percent.
 

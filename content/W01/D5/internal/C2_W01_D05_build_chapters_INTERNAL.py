@@ -259,7 +259,7 @@ def size_options(src, book):
             ("A. trust the pass", 0, 0, "nothing", "nothing", False, False),
             ("B. count check", 2, 1, "Finance's order counts", "rows beyond Finance's orders", True, False),
             ("C. counts and rupees, bridge", 15, 3, "Finance's rupee totals too",
-             "extra rows, and rupees the kept rows lost", True, True)]:
+             "extra rows, and any rupee gap to the books", True, True)]:
         t = quarter_totals(first_of_each(src) if dedupe else src, text_to_zero=not read)
         sent = change(t["Q1"][0], t["Q2"][0])
         out.append((name, minutes, cells, needs, sees, f"{sent:+.1f}%", round(abs(sent - books), 1)))
@@ -639,14 +639,14 @@ print(f"{len(once)} orders after one row per order id; the books say Q1 to Q2 {t
     The most natural line of Python in the week wraps the conversion in a `try` and sets a failure to
     zero, and it runs to the end without an error.
 
-    **Predict before you run.** The pass keeps one row per order and sets any value that will not
-    convert to zero. On the invented export, how many orders does Q1 report against Finance's 83, and
-    how many rejects?
+    **Predict before you run.** The pass keeps one row per order and sends every amount through
+    `int()` inside that `try`. The invented export's one unreadable amount is "850000.00". What does
+    `int("850000.00")` do there?
 
-    - a) 82 orders and 1 reject.
-    - b) 83 orders and 0 rejects.
-    - c) 83 orders and 1 reject.
-    - d) 81 orders and 2 rejects.
+    - a) It returns 850000 and drops the paise, as `int()` does with a decimal number.
+    - b) It raises a ValueError, which the `try` turns into 0.
+    - c) It returns 850000.0, a float that sums correctly.
+    - d) It raises an error that stops the pass before the counts.
     """),
     code('''
 def to_int_or_zero(v):
@@ -660,6 +660,10 @@ def zeroing_pass(src):
     return {q: [to_int_or_zero(r["amount"]) for r in src if r["quarter"] == q] for q in QUARTERS}
 
 
+try:
+    int("850000.00")
+except ValueError as err:
+    print("int() refuses it:", err)
 zeroed = zeroing_pass(once)
 kit.stats([(len(zeroed["Q1"]), "Q1 orders", f"Finance: {ctl('Q1')[1]}, invented"),
            (0, "rejects reported", "the try swallowed every failure"),
@@ -667,8 +671,9 @@ kit.stats([(len(zeroed["Q1"]), "Q1 orders", f"Finance: {ctl('Q1')[1]}, invented"
 kit.check("the zeroing pass lands on Finance's order counts", all(len(zeroed[q]) == ctl(q)[1] for q in QUARTERS))
 '''),
     mdj("""
-    **What happened.** The answer is b. Every order count lands and nothing is rejected, which is
-    exactly what a finished pass looks like.
+    **What happened.** The answer is b. `int()` refuses a string that carries paise, the `try` books
+    the order at zero, and every order count lands with nothing rejected, which is exactly what a
+    finished pass looks like.
 
     **Your turn, on this morning's file.** Run the same zeroing pass on the lab export. Type these
     lines into the empty cell below and run it; later your-turn cells use `lab` and `lab_once`, so run
@@ -688,8 +693,8 @@ kit.check("the zeroing pass lands on Finance's order counts", all(len(zeroed[q])
     **The plausible wrong answer.** "Q1 on 83 orders, zero rejects, counts reconciled; Q2 fell 17.5
     percent." Every word of it can be defended except the number the rate is built on.
 
-    **Predict before you run.** Against Finance's rupee totals, what does the zeroing pass show on the
-    invented export?
+    **Recall before you run.** Chapter 1 ran on this same invented export. Against Finance's rupee
+    totals, what does the zeroing pass show?
 
     - a) Both quarters land to the rupee.
     - b) One quarter over, the other landing.
@@ -1292,16 +1297,7 @@ kit.check("two segments rest on thirty or more orders, and the other two on fewe
     lead. And a second quarter of the same move in Business would turn a phone call into a trend worth
     testing.
 
-    **Your turn, on this morning's file.** Run option D's four tests on the lab file and read which
-    segment each option would lead with there. Type these lines into the empty cell below and run it:
-
-    ```python
-    for s in SEGS:
-        o, _, p = paired_test(lab_clean, s, basket=False)
-        print(f"{s}: revenue {o:+.1f}%, p = {p:.3f} with each customer's quarters flipped")
-    ```
     """),
-    empty(),
     mdj("""
     ## 4. Is the lead's fall more than chance on its members' own two quarters?
 
@@ -1353,8 +1349,8 @@ kit.check("the dark bars hold exactly the worlds counted as extreme",
 '''),
     mdj("""
     **What happened.** The answer is b. Only 22 of 2,000 flipped worlds show a change as large as the
-    invented Retail-Plus's, in either direction: p = 0.011, a share of chance-only worlds, never the
-    chance the finding is wrong. Counting every one of the 65,536 ways to flip sixteen members gives
+    invented Retail-Plus's, in either direction: p = 0.011, a share of chance-only worlds, which is
+    a different number from the chance the finding is wrong. Counting every one of the 65,536 ways to flip sixteen members gives
     0.0107, so 2,000 flips land close. Counted one way, a fall at least as large, it is 0.0015, the
     number a note would quote only if the fall had been predicted before the data was seen; it was found
     in the tree, so the note reports both directions.
@@ -1373,6 +1369,17 @@ kit.check("testing every segment turns up no second finding under 0.05", sum(1 f
     **What happened.** Only Retail-Plus comes in under 0.05, so D finds the same lead as C, at three
     times the minutes and with four chances of a fluke where C took one.
 
+    **Your turn, on this morning's file.** Run option D's four tests on the lab file and read which
+    segment each option would lead with there. Type these lines into the empty cell below and run it:
+
+    ```python
+    for s in SEGS:
+        o, _, p = paired_test(lab_clean, s, basket=False)
+        print(f"{s}: revenue {o:+.1f}%, p = {p:.3f} with each customer's quarters flipped")
+    ```
+    """),
+    empty(),
+    mdj("""
     **A different question needs a different test.** "Did Retail-Plus's basket move differently from
     Retail-Core's?" compares two groups of different customers. There the fair test shuffles the segment
     label across whole customers, each carrying all their orders with them, and asks how often a gap as
@@ -1421,8 +1428,8 @@ kit.check("both fair tests put the finding outside what chance usually does", p_
     the branch that moved is Retail-Plus's revenue per order, down 15.0 percent from Rs 3,000 to Rs
     2,550 with its 16 members and their frequency unchanged. Evidence: both quarters reconcile to
     Finance's control totals; with each member's two quarters flipped at random, a change this large in
-    either direction came up in 22 of 2,000 worlds, p = 0.011. Caveat: the corporate move rests on five
-    orders then two, too few to call a trend. Action: ask the corporate account owner why fewer
+    either direction came up in 22 of 2,000 worlds, p = 0.011. Caveat: the corporate book moved on five
+    orders then two and Student's on 10 then 14, too few to call a trend. Action: ask the corporate account owner why fewer
     corporate orders came in, and open Retail-Plus's basket (items per order and price per item) before
     any spend.
 
@@ -1561,7 +1568,11 @@ kit.check("splitting the pairs pushes both verdicts past 0.05 on the invented ex
     mdj("""
     **What happened.** On the invented export, flipping each member's two quarters puts the fall in
     revenue per member at p = 0.0025, and pooling the same figures and dealing them reads it as chance,
-    p = 0.222; shuffling the label across whole customers puts the gap to Retail-Core at 0.0385, and
+    p = 0.222. That 0.0025 counts each flipped world by its change in rupees per member, where level 4
+    counted the same flips by the percentage change in revenue per order and reached 0.011: a fall and
+    a rise of the same percentage are different sizes in rupees, so the two counts mark different worlds
+    as extreme, and a note names the measure its test counted. Shuffling the label across whole
+    customers puts the gap to Retail-Core at 0.0385, and
     shuffling single orders reads it as chance too, 0.0945, so the test that splits the pair reached the
     wrong verdict both times on the same data.
 
