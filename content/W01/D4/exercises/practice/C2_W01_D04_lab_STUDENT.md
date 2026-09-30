@@ -3,8 +3,8 @@
 About an hour in the TA-led practice lab. Four problems climbing in difficulty; the last combines the
 day. Work alone for problems 1 and 2, in pairs for 3 and 4. Everything invented is labelled so.
 
-Post the letters for problems 1 to 3 as one line, nine letters in order (problem 1 gives four,
-problem 2 gives three, problem 3's notebook gives five of its own, posted on a second line):
+Post the letters for problems 1 and 2 as one line, seven letters in order (problem 1 gives four and
+problem 2 gives three). Problem 3's notebook gives five letters of its own, posted on a second line:
 
 ```
 Post exactly this shape: xxxxxxx
