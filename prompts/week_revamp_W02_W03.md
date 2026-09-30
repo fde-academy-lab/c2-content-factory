@@ -1,9 +1,10 @@
 # The Week 2 and Week 3 revamp
 
-The requester scheduled this to start after Sunday 4 October 2026, 11 PM IST, once the account's weekly
-usage resets. It raises Week 2 (five teaching days) and Week 3 (Build 1 in Kalpa Health, now a
-US-facing business) to the chapter standard in full depth. The orchestrating session runs it, and the
-steps below are its order.
+The requester first scheduled this for after Sunday 4 October 2026, then on 30 September asked for it
+to run straight away, with every spawned session at the highest reasoning effort (`effortLevel` in
+`.claude/settings.json`). It raises Week 2 (five teaching days) and Week 3 (Build 1 in Kalpa Health,
+now a US-facing business) to the chapter standard in full depth. The orchestrating session runs it,
+and the steps below are its order.
 
 ## 1. Week 1 comes first
 
