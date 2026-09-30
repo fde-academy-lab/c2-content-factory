@@ -92,7 +92,7 @@ The requester set the Saturday at 300 minutes on 29 September 2026, and the pape
 | Marking | 20 | Papers swapped and marked against the key, read out by the Academic TA |
 | The solution discussion | 90 | The most-missed items first, then the week's anchors answered aloud as interview answers, with random call-outs |
 | The mock-interview round | 30 | In pairs, each learner asks the other two of the week's anchors and one follow-up from the stretch page, then they swap |
-| Doubts and the bridge | 20 | Week 1: the CFO wants the numbers from the warehouse every Monday. Week 2: Build 1 opens in Kalpa Health |
+| Doubts and the bridge | 20 | Week 1: the finance controller wants the numbers from the warehouse every Monday. Week 2: Build 1 opens in Kalpa Health |
 
 **The papers.** The tracker's bank is the floor. Week 1's bank fills 107 of the 120 minutes, so the
 week's source file adds about 13 minutes of new timed items: one or two new scenario sets built on

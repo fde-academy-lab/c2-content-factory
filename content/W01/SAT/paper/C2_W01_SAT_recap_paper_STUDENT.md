@@ -16,7 +16,7 @@ This week Meera Raghavan asked whether the Rs 12 crore Marketing wants for acqui
 - A wrong answer costs nothing, so answer every item on the line under it.
 - Pen and this paper only: no laptop, no phone, no notes and no assistant.
 - Afterwards the papers are swapped and marked against the key, and the discussion takes the items the room missed most. The paper is ungraded and ranks nobody; the room's rates by part and by tag set Monday's revision.
-- Every item is set inside Kalpa Retail, where you work as a trainee engineer in the data and AI team of its Global Capability Centre. Meera Raghavan is its CEO, Anand Iyer answers for Finance's books, and Kavya Nair is a senior analyst in its data team; Marketing and Finance appear by function, and every number an item needs is on the page.
+- Every item is set inside Kalpa Retail, where you work as a trainee engineer in the data and AI team of its Global Capability Centre. Meera Raghavan is its CEO, Anand Iyer its finance controller and Kavya Nair a senior analyst in its data team; Marketing and Finance appear by function, and every number an item needs is on the page.
 
 ## Step one, before Part 1
 
@@ -236,7 +236,7 @@ Order: ____________________
 
 *What it shows: whether you clean a file with a reason for every change and reconcile it in rows and in rupees. 10 items, about 23 minutes.*
 
-"Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9." Anand Iyer, who answers for Finance's books, wrote that back to all on Tuesday's finding, and the ERP export behind the dashboard is the file on your desk.
+"Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9." Anand Iyer, the finance controller, wrote that back to all on Tuesday's finding, and the ERP export behind the dashboard is the file on your desk.
 
 #### Q22 · Medium · circle one letter · Repair the crash
 

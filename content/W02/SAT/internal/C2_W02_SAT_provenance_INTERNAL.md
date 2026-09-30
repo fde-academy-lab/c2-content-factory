@@ -344,3 +344,11 @@ client zero v2.2 calls him the finance controller, and the tracker ranks higher.
 names him by his work, "Anand Iyer answers for Finance's books", which is true under either
 title, and the conflict is recorded as `anand-title` in `data/programme/facts.yaml` for the
 Programme Head to settle.
+
+## 30 September 2026, the requester's two decisions
+
+The requester accepted every option edit and relabelling in `data/programme/paper_edits.yaml`, so
+each now carries status accepted and applies until the tracker's Saturday papers tab carries it;
+the decision is `saturday-edits-w1-w2` in `data/programme/facts.yaml`. The requester also settled
+Anand Iyer's title as finance controller (decision `anand-finance-controller`), so the paper names
+him by that title again, where the entry above had left the title off.

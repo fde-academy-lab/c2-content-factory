@@ -21,7 +21,7 @@
 #
 # Roles only in this file. Never a person's name, because the repository is public.
 
-as_of: 2026-09-29
+as_of: 2026-09-30
 
 sources:
   tracker:
@@ -282,6 +282,16 @@ decisions:
     closes: the requester, on 29 September 2026
     text: Build 1's mini project, mock and GD rubrics are approved as drafted, with the mini project scored per group on 34 marks and per learner on 6, and the mock and GD scored per learner. Learners may see them, and Build 1's learner files may name the days of its graded events. Both sit in evaluation.rubrics.
     blocks: nothing
+  - id: anand-finance-controller
+    status: closed
+    closes: the requester, on 30 September 2026
+    text: Anand Iyer is Kalpa Retail's finance controller, as client zero v2.2 has him, in every pack and paper; where the tracker's Week 1 and Week 2 rows call him the CFO, this decision wins.
+    blocks: nothing
+  - id: saturday-edits-w1-w2
+    status: closed
+    closes: the requester, on 30 September 2026
+    text: Every option edit and relabelling that data/programme/paper_edits.yaml lays on the Week 1 and Week 2 Saturday papers is accepted, thirty in all; each applies until the tracker's Saturday papers tab carries it, and the sync then reports it folded.
+    blocks: nothing
   - id: rubrics-and-calendar
     status: open
     closes: the Programme Head
@@ -359,8 +369,8 @@ conflicts:
     working_rule: Week 0 packs follow the student sheet for the running order and the requester's diagnostic for Tuesday, and cite the tracker row for content only.
   - id: anand-title
     sources: [tracker, docs/07_Client_Zero.md]
-    text: The tracker's Week 1 and Week 2 rows and the Weeks 1 and 2 spine call Anand Iyer the CFO, while client zero v2.2's stakeholder table calls him the finance controller of Kalpa Retail. The built Week 1 files say finance controller and the Week 2 Monday files say CFO.
-    working_rule: Until the Programme Head names one title, a new student file names Anand by his work, the numbers in Finance's books, as both Saturday papers do; the files that carry a title change with the decision.
+    text: The tracker's Week 1 and Week 2 rows call Anand Iyer the CFO, while client zero v2.2's stakeholder table calls him the finance controller of Kalpa Retail.
+    working_rule: The requester settled it on 30 September 2026 in favour of finance controller (decision anand-finance-controller), so every pack and paper says finance controller and the tracker's rows are superseded on the title until its next version carries it.
   - id: journey-tokenization
     sources: [tracker, journey]
     text: The student journey lists tokenization under Week 8, while the re-cut moved it to the Week 7 Friday.
