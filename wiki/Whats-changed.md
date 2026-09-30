@@ -57,6 +57,7 @@ script or a gate. `content` changes what is taught.
 | 30 Sep 2026 | All thirty option edits and relabellings laid on the Week 1 and Week 2 Saturday papers were accepted, and each applies until the tracker's Saturday papers tab carries it. | `data/programme/paper_edits.yaml` | `content` |
 | 30 Sep 2026 | The week's Saturday recap paper, and no other learner file, may name a plant the room has already found in class, so the Week 1 Saturday paper keeps the two tracker items that name Week 1 Monday's plants. | `CLAUDE.md`, decision `plants-once-found` | `ruling` |
 | 30 Sep 2026 | The Week 2 Tuesday interview line asks what you do when the validation fails at the end of reporting day, where tracker v7 named a clock time. | `docs/curriculum/source.xlsx`, decision `reporting-day-line` | `content` |
+| 30 Sep 2026 | The Saturday recap papers became interview grade: the tracker's bank sets what is tested, any bank item may be reworded, folded into a deeper item or moved to the stretch page with its reason, about 60 percent of the timed items are hard, every part opens on a Kalpa scenario with a visual, and blanks, pairs and statements are answered from word banks, match tables and reasons. | `CLAUDE.md`, decision `saturday-interview-grade`, `.claude/skills/exercise-builder/SKILL.md` | `method` |
 
 ---
 

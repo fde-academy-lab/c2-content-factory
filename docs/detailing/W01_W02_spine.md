@@ -104,7 +104,12 @@ files add an exhibit for every scenario set, drawn only from the
 set's own numbers; the reasons for every item, which are why the key holds, why each wrong option
 fails and the interview answer in one breath; and an untimed stretch page of three or four written,
 interview-grade follow-ups. The builder and the source file's format are in
-`scripts/build_saturday_paper.py`.
+`scripts/build_saturday_paper.py`. Later on 30 September 2026 the requester raised both papers to
+interview grade: the bank now sets what is tested rather than what prints, so any bank item may be
+reworded, folded into a deeper item or moved to the stretch page with its reason; about 60 percent of
+the timed items are hard; every part opens on a Kalpa scenario with its nuance and a visual; Week 1
+leans on applied Python, data interpretation and the SQL Week 0 taught; and blanks come from word
+banks, pairs from match tables and statements are judged with their reasons.
 
 ## Checked on 29 September 2026
 

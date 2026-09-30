@@ -259,7 +259,8 @@ saturday_papers:
   to_build: [W10, W11, W13, W14]
   # The requester set this rule on 30 September 2026, replacing the tracker's "Item column only":
   # the paper prints in parts named for what each shows, with a blueprint on page one and the level
-  # beside every item, and up to six recall items may move to the untimed stretch page.
+  # beside every item, and up to six recall items may move to the untimed stretch page. Later the
+  # same day the requester raised the papers to interview grade (decision saturday-interview-grade).
   rule: The student paper prints the items in parts, each item with its format and level; the key, tag, roles and anchor stay with the team.
   superseded:
     rule: The student paper prints the Item column only; the key, level, tag, roles and anchor stay with the team.
@@ -302,6 +303,11 @@ decisions:
     status: closed
     closes: the requester, on 30 September 2026
     text: The Week 2 Tuesday interview line asks what you do when the validation fails at the end of reporting day, the wording the Tuesday pack teaches, where tracker v7 said 5 pm. The repository's copy of the tracker carries the change, and the master takes it at its next version.
+    blocks: nothing
+  - id: saturday-interview-grade
+    status: closed
+    closes: the requester, on 30 September 2026
+    text: The Saturday recap papers are interview grade. The tracker's bank sets what is tested, and the week's source file may reword, fold or move any bank item with its reason; about 60 percent of the timed items are hard; every part opens on a Kalpa scenario with its nuance and a visual; blanks are answered from word banks, pairs from match tables, and statements are judged with their reasons.
     blocks: nothing
   - id: rubrics-and-calendar
     status: open
