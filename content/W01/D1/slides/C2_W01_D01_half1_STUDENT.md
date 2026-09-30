@@ -819,8 +819,65 @@ Transition: the hurried count.
 
 ---
 
-## S33. Wrong answer: 30 customers, nobody comes back
-*Orders divided by the number of rows reads 1.00 orders per customer.*
+## S33. Question: of 23 customers, how many came back?
+*A dictionary keyed by customer id counts each one's orders in one pass.*
+
+```python
+counts = {}
+for order in ORDERS:
+    cid = order["customer_id"]
+    counts[cid] = counts.get(cid, 0) + 1
+```
+
+**Question.** How many of the 23 bought more than once: a) none, b) 7, c) 16, or d) 23?
+
+```notes
+LIVE, 2 minutes. Letters by hand. Some say 16, confusing one-time with repeat.
+Transition: the answer.
+```
+
+---
+
+## S34. Answer: 7 came back, and 16 bought once
+*Every branch is now measured, and the tree multiplies back to booked revenue.*
+
+```stats
+value: 23 | label: customers | note: distinct ids
+value: 1.30 | label: orders per customer | note: 30 / 23
+value: 7 | label: came back | note: 16 bought once
+```
+
+**The rule.** 23 x 1.30 x Rs 18,160 = Rs 5,44,810. The answer is b; here orders less customers equals repeat buyers only because nobody bought three times.
+
+```notes
+LIVE, 4 minutes. Write 23 and 1.30 on the board tree. Note one repeat customer carries two
+segments because the segment sits on each order.
+Transition: the leaves on delivered orders.
+```
+
+---
+
+## D35. On delivered orders only 2 kept two orders
+*Every leaf moves with the definition, and repeat buyers move most.*
+
+| Definition | Orders | Customers | Per customer | Came back |
+|---|---|---|---|---|
+| Booked | 30 | 23 | 1.30 | 7 |
+| Not cancelled | 26 | 21 | 1.24 | 5 |
+| Delivered | 21 | 19 | 1.11 | 2 |
+
+Customers do return, and their second orders are the ones most often cancelled or sent back: frequency is a live branch that leaks.
+
+```notes
+SELF-STUDY, 3 minutes live if time allows. Notebook 03 section 3 has the loop; the escalated case
+this afternoon rebuilds the whole answer on delivered orders.
+Transition: the same rate by a second route.
+```
+
+---
+
+## S36. Wrong answer: 30 customers, nobody comes back
+*A colleague's first draft divided orders by the number of rows: 1.00 each.*
 
 **The plausible wrong answer.** "30 customers placed 30 orders: 1.00 each, so nobody comes back."
 
@@ -840,7 +897,7 @@ Transition: the check.
 
 ---
 
-## S34. A set counts distinct ids: 23 customers
+## S37. A set counts distinct ids: 23 customers
 *The same column counted as a list and as a set gives 30 and 23.*
 
 ```mermaid
@@ -859,63 +916,6 @@ flowchart LR
 LIVE, 4 minutes. A set keeps each value once however often it is added. The fix: 30 / 23 = 1.30
 orders per customer, and frequency is a live branch.
 Transition: who came back.
-```
-
----
-
-## S35. Question: of 23 customers, how many came back?
-*A dictionary keyed by customer id counts each one's orders in one pass.*
-
-```python
-counts = {}
-for order in ORDERS:
-    cid = order["customer_id"]
-    counts[cid] = counts.get(cid, 0) + 1
-```
-
-**Question.** How many of the 23 bought more than once: a) none, b) 7, c) 16, or d) 23?
-
-```notes
-LIVE, 2 minutes. Letters by hand. Some say 16, confusing one-time with repeat.
-Transition: the answer.
-```
-
----
-
-## S36. Answer: 7 came back, and 16 bought once
-*Every branch is now measured, and the tree multiplies back to booked revenue.*
-
-```stats
-value: 23 | label: customers | note: distinct ids
-value: 1.30 | label: orders per customer | note: 30 / 23
-value: 7 | label: came back | note: 16 bought once
-```
-
-**The rule.** 23 x 1.30 x Rs 18,160 = Rs 5,44,810. The answer is b; here orders less customers equals repeat buyers only because nobody bought three times.
-
-```notes
-LIVE, 4 minutes. Write 23 and 1.30 on the board tree. Note one repeat customer carries two
-segments because the segment sits on each order.
-Transition: the leaves on delivered orders.
-```
-
----
-
-## D37. On delivered orders only 2 kept two orders
-*Every leaf moves with the definition, and repeat buyers move most.*
-
-| Definition | Orders | Customers | Per customer | Came back |
-|---|---|---|---|---|
-| Booked | 30 | 23 | 1.30 | 7 |
-| Not cancelled | 26 | 21 | 1.24 | 5 |
-| Delivered | 21 | 19 | 1.11 | 2 |
-
-Customers do return, and their second orders are the ones most often cancelled or sent back: frequency is a live branch that leaks.
-
-```notes
-SELF-STUDY, 3 minutes live if time allows. Notebook 03 section 3 has the loop; the escalated case
-this afternoon rebuilds the whole answer on delivered orders.
-Transition: the same rate by a second route.
 ```
 
 ---
@@ -1031,7 +1031,26 @@ Transition: marketing's slide.
 
 ---
 
-## S43. Wrong answer: a typical order is Rs 18,160
+## S43. The build: the median is Rs 2,205
+*Sort the 30 amounts and take halfway between the 15th and the 16th.*
+
+```stats
+value: Rs 2,205 | label: median order | note: halfway between Rs 2,110 and Rs 2,300
+value: 8.2 | label: mean over median | note: one order does it
+value: Rs 2,060 | label: delivered median | note: the median barely moves
+```
+
+**The rule.** Two middles this far apart are a finding in themselves; the next slide is what happens when the wrong one is sent.
+
+```notes
+LIVE, 4 minutes. Write Rs 2,205 on the board tree beside the pencilled Rs 18,160. The median runs
+Rs 2,205 booked, Rs 2,100 not cancelled, Rs 2,060 delivered; the mean runs Rs 18,160 to Rs 24,800.
+Transition: the median another way.
+```
+
+---
+
+## S44. Wrong answer: a typical order is Rs 18,160
 *The mean, as it appears on marketing's slide.*
 
 **The plausible wrong answer.** "A typical Kalpa order is Rs 18,160, and so is each new customer's first order."
@@ -1051,7 +1070,7 @@ Transition: see it.
 
 ---
 
-## S44. The check: 29 of 30 orders sit below the mean
+## S45. The check: 29 of 30 orders sit below the mean
 *Every amount drawn as a dot, on a scale where each step is ten times the last.*
 
 ```mermaid
@@ -1075,26 +1094,25 @@ Transition: the middle one order cannot drag.
 
 ---
 
-## S45. Fix: the median, Rs 2,205, is the typical order
-*Sort the 30 amounts and take halfway between the 15th and the 16th.*
+## S46. Fix: send the median, and say which order
+*The typical order is Rs 2,205, the mean stays for totals, and the top order gets its own line.*
 
 ```stats
-value: Rs 2,205 | label: median order | note: halfway between Rs 2,110 and Rs 2,300
-value: 8.2 | label: mean over median | note: one order does it
-value: Rs 2,060 | label: delivered median | note: the median barely moves
+value: Rs 2,205 | label: the typical order | note: the median, booked
+value: 8x | label: more orders | note: for the payback than the slide implied
 ```
 
 **The rule.** Report the median for the typical order and the mean for the total, and say which order separates them. A payback priced on Rs 2,205 needs about eight times as many orders as one priced on the mean.
 
 ```notes
-LIVE, 4 minutes. Write Rs 2,205 on the board tree beside the pencilled Rs 18,160. The median runs
-Rs 2,205 booked, Rs 2,100 not cancelled, Rs 2,060 delivered; the mean runs Rs 18,160 to Rs 24,800.
+LIVE, 2 minutes. What changed: the first order in the payback falls from Rs 18,160 to Rs 2,205.
+Write Rs 2,205 on the board tree beside the pencilled Rs 18,160.
 Transition: the median another way.
 ```
 
 ---
 
-## S46. A second route: statistics.median agrees
+## S47. A second route: statistics.median agrees
 *The library holds the even-count rule, and must match the hand-written middle.*
 
 ```python
@@ -1112,7 +1130,7 @@ Transition: Kavya's review, and the tree after the morning.
 
 ---
 
-## S47. The morning's tree points at frequency
+## S48. The morning's tree points at frequency
 *Every branch measured and named: 16 of 23 bought once, and a typical order is Rs 2,205.*
 
 ```mermaid

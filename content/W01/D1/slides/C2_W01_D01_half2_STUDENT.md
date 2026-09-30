@@ -263,7 +263,29 @@ Transition: the number most likely to be misread.
 
 ---
 
-## S12. Question: 16 of 23 bought once. How many lost?
+## S12. The build: the first draft of the sentence
+*Evidence with its window, the branch, the caveat and the ask, from the chapters' numbers.*
+
+> "On the 30 booked orders from 1 July to 26 September, 23 customers placed 1.30 orders each at a typical order of Rs 2,205, and 16 of them bought only once, so I would open frequency before acquisition, and since one quarter cannot show which branch moved, hold the Rs 12 crore until Tuesday's two quarters." The first draft
+
+```mermaid
+flowchart LR
+    A["<b>evidence</b><br/>with its window"] --> B["<b>branch</b><br/>frequency"] --> C["<b>caveat</b><br/>one quarter"] --> D["<b>ask</b><br/>hold the budget"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class A,B,C known
+    class D bet
+```
+
+```notes
+LIVE, 4 minutes. Notebook 06 builds the draft from variables so no number drifts from the work.
+Ask which number in it marketing will reach for first. Most say the 16.
+Transition: a colleague tightens the draft for the slide.
+```
+
+---
+
+## S13. Question: 16 of 23 bought once. How many lost?
 *One quarter of orders, and a number that reads like churn.*
 
 **Question.** What share of Kalpa's customers can you call lost: a) about 70 percent, 16 of 23; b) 30 percent, the ones who came back; c) none from this file alone, and some are too recent to judge; d) all the one-time buyers?
@@ -286,7 +308,7 @@ Transition: the answer.
 
 ---
 
-## S13. Answer: 9 of the 16 are too recent to judge
+## S14. Answer: 9 of the 16 are too recent to judge
 *Returning customers took a median of 45 days; 9 one-time buyers bought inside the last 45.*
 
 **The plausible wrong answer.** "16 of 23 never came back: 70 percent of our customers are lost."
@@ -310,8 +332,8 @@ Transition: the sentence.
 
 ---
 
-## S14. The sentence, built from the numbers
-*Evidence with its window, the branch, the caveat, and the ask, in that order.*
+## S15. Fix: the sentence with the window's edge
+*The 16 becomes the split: 7 came back, 7 had time, 9 too recent.*
 
 > "On the 30 booked orders from 1 July to 26 September, 23 customers placed 1.30 orders each at a typical order of Rs 2,205; 7 came back, 7 have had time and not returned, and 9 bought too recently to judge, so I would open frequency before acquisition, and since one quarter cannot show which branch moved, hold the Rs 12 crore until Tuesday's two quarters." The data and AI team, to Meera Raghavan
 
@@ -325,15 +347,14 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 6 minutes. Notebook 06 builds the sentence from variables so no number drifts from the work,
-and its checks assert each number is in it. Read it aloud once. It carries no "lost" and no
-percentage marketing can recompute.
+LIVE, 2 minutes. What changed: the 16 is replaced by the split, and the sentence carries no "lost"
+and no percentage marketing can recompute. Notebook 06's checks assert each number is in it.
 Transition: the same caveat another way.
 ```
 
 ---
 
-## S15. A second route: due dates give the same 9
+## S16. A second route: due dates give the same 9
 *Order date plus the typical gap, compared with the window's last day.*
 
 ```python
@@ -350,7 +371,7 @@ Transition: Kavya's review.
 
 ---
 
-## S16. Chapter 6 hands Meera a sentence she can sign
+## S17. Chapter 6 hands Meera a sentence she can sign
 *Every number defensible, the limit stated, the budget held with a date.*
 
 ```mermaid
@@ -377,13 +398,13 @@ LIVE, 3 minutes. One learner answers aloud. Then the escalated case: Anand pushe
 *Anand asks for the whole answer again on what was delivered, alone, in 35 minutes.*
 
 ```notes
-LIVE, 35 minutes: 3 to brief on S17 and S18, 30 alone with no slides. The support TA answers
+LIVE, 35 minutes: 3 to brief on S18 and S19, 30 alone with no slides. The support TA answers
 environment problems only. Collect wrong numbers while circulating for the debrief.
 ```
 
 ---
 
-## S17. Anand wants it on what stayed delivered
+## S18. Anand wants it on what stayed delivered
 *A recommendation that holds on one definition only is a coincidence.*
 
 **The client asks.** "Booked includes orders we cancelled and orders that came back. Do it again on what was delivered and stayed delivered, and tell me whether your answer survives." Anand Iyer, finance controller
@@ -405,7 +426,7 @@ Transition: 30 minutes alone.
 
 ---
 
-## S18. What to post, and what counts as done
+## S19. What to post, and what counts as done
 *Nine letters, the numbers each part asks for, and one sentence.*
 
 ```timeline
@@ -432,7 +453,7 @@ room produces. A 10-minute break follows.
 
 ---
 
-## S19. Which of these six numbers would you sign?
+## S20. Which of these six numbers would you sign?
 *Each came out of the file, and each is plausible on a first reading.*
 
 ```stats
@@ -454,7 +475,7 @@ Transition: the checks.
 
 ---
 
-## S20. Answer: none of the six survives its check
+## S21. Answer: none of the six survives its check
 *Each is caught by one check, and each fix changes what Meera would decide.*
 
 | The wrong number | The check that catches it | What to report |
@@ -475,7 +496,7 @@ Transition: a 10-minute break, then the second case.
 
 ---
 
-## D21. The escalated case's answer, on delivered orders
+## D22. The escalated case's answer, on delivered orders
 *What moved and what held when Anand changed the definition.*
 
 | Part | Booked | Delivered | Held? |
@@ -498,13 +519,13 @@ notebook, released at the close.
 *Twenty-five minutes in pairs: where revenue comes from, and whether one channel changes the branch.*
 
 ```notes
-LIVE, after the break, 25 minutes: 2 to brief on S22, 15 in pairs with no slides, then S23 to
-S26 as the debrief, about 8 minutes. Do not show S23 before the pairs work.
+LIVE, after the break, 25 minutes: 2 to brief on S23, 15 in pairs with no slides, then S24 to
+S27 as the debrief, about 8 minutes. Do not show S24 before the pairs work.
 ```
 
 ---
 
-## S22. Meera asks where revenue comes from
+## S23. Meera asks where revenue comes from
 *By customer type and by channel, on the same 30 orders.*
 
 **The client asks.** "Where does revenue come from, by customer type and channel?"
@@ -526,7 +547,7 @@ Transition: 15 minutes in pairs.
 
 ---
 
-## S23. Store brings 91.6 percent, so is growth store-led?
+## S24. Store brings 91.6 percent, so is growth store-led?
 *Booked revenue by channel on all 30 orders, the first chart most pairs draw.*
 
 ```mermaid
@@ -546,7 +567,7 @@ Transition: what the count shows.
 
 ---
 
-## S24. Answer: one order carries store's share
+## S25. Answer: one order carries store's share
 *On the 29 consumer orders store holds under a third, and 4 of its 9 were cancelled.*
 
 ```stats
@@ -565,7 +586,7 @@ Transition: the consumer channels, booked against delivered.
 
 ---
 
-## S25. On consumer orders, web leads and half comes back
+## S26. On consumer orders, web leads and half comes back
 *Booked against delivered for each channel, in Rs thousand.*
 
 ```mermaid
@@ -586,7 +607,7 @@ Transition: does this change the branch?
 
 ---
 
-## S26. Frequency stays first, with two leaks named
+## S27. Frequency stays first, with two leaks named
 *The channel view leaves the branch where it was and adds two leaks to the note.*
 
 ```mermaid
@@ -621,7 +642,7 @@ Listen for a number with its definition in every answer.
 
 ---
 
-## S27. Four questions on sales, fractions and customers
+## S28. Four questions on sales, fractions and customers
 *In pairs: one asks, one answers aloud in under a minute, then swap.*
 
 | Tag | Question |
@@ -642,7 +663,7 @@ by a key; records are a list of dictionaries.
 
 ---
 
-## S28. Four questions on the typical order and the tree
+## S29. Four questions on the typical order and the tree
 *The same drill, on chapters 2, 4 and 5.*
 
 | Tag | Question |
@@ -664,7 +685,7 @@ Two lifts: 1.10 x 1.10 = 1.21, so 21 percent; the gap grows with the lifts.
 
 ---
 
-## S29. Four questions on the branch and the sentence
+## S30. Four questions on the branch and the sentence
 *The drill's last four, where the answer is a recommendation with its evidence.*
 
 | Tag | Question |
@@ -696,7 +717,7 @@ LIVE, 15 minutes: the Kahoot 9, the six lines 3, Tuesday's question 3.
 
 ---
 
-## S30. Kahoot: today's traps, played for speed
+## S31. Kahoot: today's traps, played for speed
 *Ungraded: it shows what the day left in the room.*
 
 ```stats
@@ -713,7 +734,7 @@ Transition: six lines to keep.
 
 ---
 
-## S31. Six lines to carry out of Monday
+## S32. Six lines to carry out of Monday
 *Each line is a chapter's trap turned into a habit.*
 
 ```cards
@@ -733,7 +754,7 @@ Transition: Meera's reply.
 
 ---
 
-## S32. Tomorrow, Meera asks which branch moved
+## S33. Tomorrow, Meera asks which branch moved
 *Meera has read today's sentence, and her reply is Tuesday's work.*
 
 **The client asks.** "So revenue is customers, times how often they buy, times basket, times price. Now: which of those moved? Q2 was Rs 1.9 crore, Q1 was 2.1."

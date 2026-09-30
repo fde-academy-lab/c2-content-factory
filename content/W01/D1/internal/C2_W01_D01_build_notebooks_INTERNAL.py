@@ -390,6 +390,7 @@ def ch1():
         | Who asks | Meera Raghavan, CEO, and behind her Anand Iyer, the finance controller, whose books the number must match |
         | What a wrong number costs | A growth plan measured from demand that never became a sale, and a store baseline inflated by orders nobody kept |
         | A real company with the same question | Reliance Retail reported gross revenue of Rs 90,408 crore and revenue from operations of Rs 79,745 crore for the same quarter to June 2026, with GST recovered as the step between them (Reliance Industries media release, 17 July 2026). Two honest totals for one quarter is normal in retail. |
+        | In the dossier (`study-notes/C2_W01_D01_domain_retail_STUDENT.md`) | Section 3, how the business makes money: GMV walked to net revenue, and why two correct totals exist for one quarter |
 
         The story walked Rs 100 of GMV down to net revenue. This chapter does the same walk on Kalpa's
         own 30 orders, from 1 July to 26 September 2026, and settles which total earns the word
@@ -576,10 +577,6 @@ print(len(ORDERS), "orders loaded, dated", first_day, "to", last_day)
         kit.check("returned orders carry Rs 14,970", readings["not cancelled"] - readings["delivered"] == 14970)
         """),
         md("""
-        > **Kavya's review.** You found Rs 9,050 that was never a sale, and you found it by counting
-        > before adding. Which definition Meera plans on is her call; your job is to make sure she can
-        > see which one she is reading.
-
         ## A second route: sums by status, then combine
 
         The same three totals come out of a dictionary that adds rupees under each status, after which
@@ -603,6 +600,10 @@ print(len(ORDERS), "orders loaded, dated", first_day, "to", last_day)
         (a part-refund, say), since it needs no new `if`; the one-loop route is clearer when a reader
         must see each definition written out. At a million rows either becomes one `GROUP BY status`
         in SQL, which Week 2 teaches.
+
+        > **Kavya's review.** You found Rs 9,050 that was never a sale, and you found it by counting
+        > before adding. Which definition Meera plans on is her call; your job is to make sure she can
+        > see which one she is reading.
 
         ### In the interview
 
@@ -663,6 +664,7 @@ def ch2():
         | Who asks | Meera, for the tree; marketing, whose payback case values each new customer by the order they place |
         | What a wrong number costs | A tree built from two definitions multiplies to revenue nobody booked, and a budget is sized on it |
         | A real company with the same question | Reliance reported Jio's quarter as its branches: 533 million subscribers and revenue per user of Rs 215.6 a month (Reliance Industries media release, 17 July 2026). A telecom's tree is customers times revenue per customer, stated the way this chapter states Kalpa's. |
+        | In the dossier (`study-notes/C2_W01_D01_domain_retail_STUDENT.md`) | Section 5, the metrics as formulas: the metric tree, and AOV and basket size |
 
         Chapter 1 settled the readings of sales: Rs 5,44,810 booked on 30 orders, Rs 5,35,760 not
         cancelled on 26, Rs 5,20,790 delivered on 21. This chapter builds the tree on top of them.
@@ -798,9 +800,6 @@ print(len(ORDERS), "orders loaded, every amount a whole number")
         orders; delivered AOV is Rs 24,800 on 21 orders. The mixed Rs 25,943 goes nowhere. Each
         number goes out with its definition, and the tree multiplies back on each.
 
-        > **Kavya's review.** When two reports feed one fraction, ask each report what it counts before
-        > you divide. The identity check costs one line and would have caught this before Meera saw it.
-
         ## A second route: AOV as the mean of the amounts
 
         Revenue over orders is the mean of the 30 amounts, so a list and a mean must give the same
@@ -824,6 +823,9 @@ print(len(ORDERS), "orders loaded, every amount a whole number")
         report; the mean of the list is the route when you hold the rows. `statistics.fmean` saves a
         line and nothing else. The bigger switch is the one chapter 4 makes: when the question is
         "what is a typical order", the mean may be the wrong middle altogether.
+
+        > **Kavya's review.** When two reports feed one fraction, ask each report what it counts before
+        > you divide. The identity check costs one line and would have caught this before Meera saw it.
 
         ### In the interview
 
@@ -882,6 +884,7 @@ def ch3():
         | Who asks | Meera, for the budget; the head of Retail-Plus and the marketing lead, who own the two branches |
         | What a wrong number costs | "Nobody comes back" makes frequency look dead and Rs 12 crore look like the only way to grow |
         | A real company with the same question | Reliance Retail reported 396 million registered customers at 30 June 2026 (Reliance Industries media release, 17 July 2026). A registered customer is a denominator of its own: divide a quarter's orders by it and you get a different, smaller metric than orders per customer who ordered. Which people you count is the whole question. |
+        | In the dossier (`study-notes/C2_W01_D01_domain_retail_STUDENT.md`) | Section 5, frequency and repeat rate: the window decides the answer, and every registered customer is a different denominator |
 
         Chapter 2 built the tree and measured one branch: Rs 5,44,810 over 30 orders is an AOV of
         Rs 18,160. This chapter fills the two customer branches and checks the tree multiplies back.
@@ -895,8 +898,8 @@ for order in ORDERS:
 revenue = sum(order["amount"] for order in ORDERS)
 print(len(ORDERS), "orders,", kit.rupees(revenue), "booked")
 '''),
-        where(3, ["the options, sized", "the trap: rows counted as customers",
-                  "the build: a dictionary of orders per customer", "the leaves on delivered orders",
+        where(3, ["the options, sized", "the build: a dictionary of orders per customer",
+                  "the leaves on delivered orders", "the trap: rows counted as customers",
                   "the second route: the mean of the counts"]),
         md("""
         ## The options
@@ -925,46 +928,7 @@ print(len(ORDERS), "orders,", kit.rupees(revenue), "booked")
         kit.check("option A counts more customers than there are people", options[0][1] > options[1][1])
         """),
         md("""
-        ## 1. The trap: every row counted as a customer
-
-        **Predict before you run.** The hurried cell divides orders by the number of rows. What
-        orders-per-customer figure does it report?
-
-        - a) 1.30, the figure the tree needs.
-        - b) 0.77, because customers outnumber orders.
-        - c) 1.00, one order for every customer.
-        - d) 23.00, because the division runs the wrong way.
-
-        **The plausible wrong answer.**
-        """),
-        code("""
-        customers_hurried = len(ORDERS)
-        per_customer_hurried = len(ORDERS) / customers_hurried
-        print("Customers:", customers_hurried)
-        print(f"Orders per customer: {per_customer_hurried:.2f}, so nobody comes back")
-        kit.equation([f"orders per customer\\n{per_customer_hurried:.2f}", "=", "orders\\n30", "/",
-                      "rows, read as customers\\n30"], title="The hurried division: rows stand in for people")
-        """),
-        md("""
-        **Why it is wrong.** The answer is c. The division is correct and its denominator is wrong: a
-        row is an order, and one customer can place several. Reported to Meera, "1.00 orders per
-        customer, nobody comes back" says frequency is dead and the only way to grow is to buy
-        customers, which is marketing's case for Rs 12 crore made by a counting slip. The check compares
-        the ids in the list with the distinct ids.
-        """),
-        code("""
-        distinct = set(ids)
-        kit.bars([("rows (orders)", len(ids)), ("distinct customer ids", len(distinct))], lit=(1,),
-                 title="The same column counted two ways")
-        kit.check("the list holds one id per row", len(ids) == 30)
-        kit.check("the set holds 23 distinct customers", len(distinct) == 23, len(distinct))
-        """),
-        md("""
-        **The fix, and what changed.** Divide by distinct customers: 23, and 30 / 23 = 1.30 orders
-        each. Seven more orders than customers means somebody came back, so frequency is a live branch
-        and "nobody comes back" is gone from the case.
-
-        ## 2. The build: a dictionary counts orders per customer
+        ## 1. The build: a dictionary counts orders per customer
 
         A set says how many customers there are and forgets the rest. A dictionary keeps a count per
         id: the customer id is the key, the count of that customer's orders is the value.
@@ -1014,7 +978,7 @@ print(len(ORDERS), "orders,", kit.rupees(revenue), "booked")
         kit.check("customers x orders per customer x AOV = booked revenue", round(rebuilt) == revenue, kit.rupees(rebuilt))
         """),
         md("""
-        ## 3. The leaves move when the definition moves
+        ## 2. The leaves move when the definition moves
 
         Chapter 1 gave sales three readings, and every leaf inherits the choice. A customer whose only
         order was cancelled drops out of customers.
@@ -1057,8 +1021,48 @@ print(len(ORDERS), "orders,", kit.rupees(revenue), "booked")
         do return, and their second orders are the ones most often cancelled or sent back, so
         frequency is a live branch that leaks.
 
-        > **Kavya's review.** The division was fine; the denominator was a guess. Every rate you send
-        > upstairs carries the name of its denominator, and a count of people comes from their ids.
+        """),
+        md("""
+        ## 3. The trap: every row counted as a customer
+
+        The first draft a colleague sent Meera counted this leaf in one line, from the row count.
+
+        **Predict before you run.** The hurried cell divides orders by the number of rows. What
+        orders-per-customer figure does it report?
+
+        - a) 1.30, the figure the tree needs.
+        - b) 0.77, because customers outnumber orders.
+        - c) 1.00, one order for every customer.
+        - d) 23.00, because the division runs the wrong way.
+
+        **The plausible wrong answer.**
+        """),
+        code("""
+        customers_hurried = len(ORDERS)
+        per_customer_hurried = len(ORDERS) / customers_hurried
+        print("Customers:", customers_hurried)
+        print(f"Orders per customer: {per_customer_hurried:.2f}, so nobody comes back")
+        kit.equation([f"orders per customer\\n{per_customer_hurried:.2f}", "=", "orders\\n30", "/",
+                      "rows, read as customers\\n30"], title="The hurried division: rows stand in for people")
+        """),
+        md("""
+        **Why it is wrong.** The answer is c. The division is correct and its denominator is wrong: a
+        row is an order, and one customer can place several. Reported to Meera, "1.00 orders per
+        customer, nobody comes back" says frequency is dead and the only way to grow is to buy
+        customers, which is marketing's case for Rs 12 crore made by a counting slip. The check compares
+        the ids in the list with the distinct ids.
+        """),
+        code("""
+        distinct = set(ids)
+        kit.bars([("rows (orders)", len(ids)), ("distinct customer ids", len(distinct))], lit=(1,),
+                 title="The same column counted two ways")
+        kit.check("the list holds one id per row", len(ids) == 30)
+        kit.check("the set holds 23 distinct customers", len(distinct) == 23, len(distinct))
+        """),
+        md("""
+        **The fix, and what changed.** Divide by distinct customers, as the build did: 23, and 30 / 23
+        = 1.30 orders each. The draft's 1.00 goes nowhere, 7 customers are no longer invisible, and
+        "nobody comes back" is gone from the case for the Rs 12 crore.
 
         ## A second route: the mean of the counts
 
@@ -1078,6 +1082,9 @@ print(len(ORDERS), "orders,", kit.rupees(revenue), "booked")
         **When to switch.** The ratio route needs only two counts, which is what a report holds; the
         counts route needs the rows and also gives the spread, 16 customers at one and 7 at two, which
         the ratio hides. Use the counts whenever someone will ask "how many came back".
+
+        > **Kavya's review.** The division was fine; the denominator was a guess. Every rate you send upstairs carries the name
+        > of its denominator, and a count of people comes from their ids.
 
         ### In the interview
 
@@ -1160,6 +1167,7 @@ def ch4():
         | Who asks | Meera and the marketing lead for the payback; Anand Iyer, who has already warned against averages |
         | What a wrong number costs | A first order valued eight times too high makes Rs 12 crore look cheap and the payback look short |
         | A real company with the same question | Blinkit reported a net average order value of Rs 518 for the quarter to June 2026 (MediaNama on Eternal's results, 24 July 2026). A reported AOV is a mean, the right number for totals across millions of orders; it is the wrong one to describe one shopper's basket when a few very large orders sit in the same file. |
+        | In the dossier (`study-notes/C2_W01_D01_domain_retail_STUDENT.md`) | Section 5, average order value and basket size: the trap of an average across segments |
 
         Chapter 3 filled the customer branches: 23 customers, 1.30 orders each, 7 came back, and the
         tree multiplies back through an AOV of Rs 18,160. This chapter asks whether Rs 18,160
@@ -1174,8 +1182,8 @@ amounts = [int(order["amount"]) for order in ORDERS]
 mean = sum(amounts) / len(amounts)
 print(len(amounts), "amounts; the mean, chapter 2's AOV, is", kit.rupees(mean))
 '''),
-        where(4, ["the options, sized", "the trap: the mean sold as typical",
-                  "the build: sort, and take the middle", "the median under each definition",
+        where(4, ["the options, sized", "the build: sort, and take the middle",
+                  "the median under each definition", "the trap: the mean sold as typical",
                   "the second route: statistics.median"]),
         md("""
         ## The options
@@ -1212,7 +1220,66 @@ print(len(amounts), "amounts; the mean, chapter 2's AOV, is", kit.rupees(mean))
         kit.check("the invented mean moves by more than Rs 14,000", moves[0][1] > 14000)
         """),
         md("""
-        ## 1. The trap: the mean sold as the typical order
+        ## 1. The build: sort, and take the middle
+
+        The median has half the orders below it and half above. With 30 orders there are two middle
+        values, the 15th and 16th in size order, and the median is halfway between them.
+
+        **Predict before you run.** What is the median order?
+
+        - a) About Rs 2,200.
+        - b) Rs 18,160.
+        - c) Rs 9,080, half the mean.
+        - d) Rs 4,80,000 / 30.
+        """),
+        code("""
+        ranked = sorted(amounts)
+        median = (ranked[14] + ranked[15]) / 2
+        print("the two middle orders:", kit.rupees(ranked[14]), "and", kit.rupees(ranked[15]))
+        print("median:", kit.rupees(median), "| mean:", kit.rupees(mean), f"| the mean is {mean / median:.1f} times the median")
+        kit.bars([("mean, chapter 2's AOV", round(mean)), ("median, the middle order", round(median))],
+                 fmt=kit.rupees, lit=(1,), title="Two middles of the same 30 orders")
+        kit.check("the median is Rs 2,205", median == 2205)
+        kit.check("the mean is about eight times the median", 8 <= mean / median <= 8.5, f"{mean / median:.2f}")
+        """),
+        md("""
+        **What happened.** The answer is a: Rs 2,205, about one eighth of the mean. Two middles that far
+        apart are a finding in themselves; the trap below is what happens when the wrong one is sent.
+
+        ## 2. The median holds under every definition
+
+        **Predict before you run.** On delivered orders only, the mean rises. What does the median do?
+
+        - a) It rises by the same amount.
+        - b) It doubles.
+        - c) It becomes equal to the mean.
+        - d) It moves by less than Rs 200.
+        """),
+        code("""
+        definitions = {"booked": {"delivered", "returned", "cancelled"},
+                       "not cancelled": {"delivered", "returned"}, "delivered": {"delivered"}}
+        middles = {}
+        for name, keep in definitions.items():
+            kept = [int(o["amount"]) for o in ORDERS if o["status"] in keep]
+            middles[name] = {"orders": len(kept), "mean": sum(kept) / len(kept), "median": middle(kept)}
+        kit.table(["definition", "orders", "mean", "median"],
+                  [(k, v["orders"], kit.rupees(round(v["mean"])), kit.rupees(v["median"])) for k, v in middles.items()],
+                  caption="Both middles under each definition of sales")
+        kit.columns(list(middles), [("mean", [round(v["mean"]) for v in middles.values()]),
+                                    ("median", [v["median"] for v in middles.values()])],
+                    fmt=kit.rupees, title="The mean swings with the definition; the median barely moves")
+        spread = max(v["median"] for v in middles.values()) - min(v["median"] for v in middles.values())
+        kit.check("the medians stay within Rs 200 of each other", spread < 200, kit.rupees(spread))
+        kit.check("delivered median is Rs 2,060", middles["delivered"]["median"] == 2060)
+        """),
+        md("""
+        **What happened.** The answer is d: Rs 2,205 booked, Rs 2,100 not cancelled, Rs 2,060
+        delivered. The mean runs from Rs 18,160 to Rs 24,800 over the same three, because removing
+        ordinary orders leaves the same large order carrying a bigger share of a smaller count.
+
+        ## 3. The trap: the mean sold as the typical order
+
+        Marketing's slide values each new customer's first order at the average order value.
 
         **Predict before you run.** How many of the 30 orders are larger than the mean of Rs 18,160?
 
@@ -1247,33 +1314,6 @@ print(len(amounts), "amounts; the mean, chapter 2's AOV, is", kit.rupees(mean))
         **What happened.** The answer is b. The dots pile up below Rs 5,000 while the mean stands far to
         the right. The mean is correct arithmetic and a poor description of a Kalpa order.
 
-        ## 2. The build: sort, and take the middle
-
-        The median has half the orders below it and half above. With 30 orders there are two middle
-        values, the 15th and 16th in size order, and the median is halfway between them.
-
-        **Predict before you run.** What is the median order?
-
-        - a) About Rs 2,200.
-        - b) Rs 18,160.
-        - c) Rs 9,080, half the mean.
-        - d) Rs 4,80,000 / 30.
-        """),
-        code("""
-        ranked = sorted(amounts)
-        median = (ranked[14] + ranked[15]) / 2
-        print("the two middle orders:", kit.rupees(ranked[14]), "and", kit.rupees(ranked[15]))
-        print("median:", kit.rupees(median), "| mean:", kit.rupees(mean), f"| the mean is {mean / median:.1f} times the median")
-        kit.bars([("mean, as marketing used it", round(mean)), ("median, the typical order", round(median))],
-                 fmt=kit.rupees, lit=(1,), title="Two answers to 'what does a typical order look like?'")
-        kit.check("the median is Rs 2,205", median == 2205)
-        kit.check("the mean is about eight times the median", 8 <= mean / median <= 8.5, f"{mean / median:.2f}")
-        """),
-        md("""
-        **The fix, and what changed.** The answer is a. The typical order falls from Rs 18,160 to
-        Rs 2,205, about one eighth, so an acquisition plan has to earn back its cost over roughly eight
-        times as many orders as the mean suggested.
-
         **Your turn.** Find what sits at the top of the sort. Type these lines into the empty cell and
         run it, then say in one sentence what kind of order the largest one must be:
 
@@ -1298,39 +1338,10 @@ print(len(amounts), "amounts; the mean, chapter 2's AOV, is", kit.rupees(mean))
                   title="The six invented amounts, both middles marked")
         """),
         md("""
-        ## 3. The median holds under every definition
-
-        **Predict before you run.** On delivered orders only, the mean rises. What does the median do?
-
-        - a) It rises by the same amount.
-        - b) It doubles.
-        - c) It becomes equal to the mean.
-        - d) It moves by less than Rs 200.
-        """),
-        code("""
-        definitions = {"booked": {"delivered", "returned", "cancelled"},
-                       "not cancelled": {"delivered", "returned"}, "delivered": {"delivered"}}
-        middles = {}
-        for name, keep in definitions.items():
-            kept = [int(o["amount"]) for o in ORDERS if o["status"] in keep]
-            middles[name] = {"orders": len(kept), "mean": sum(kept) / len(kept), "median": middle(kept)}
-        kit.table(["definition", "orders", "mean", "median"],
-                  [(k, v["orders"], kit.rupees(round(v["mean"])), kit.rupees(v["median"])) for k, v in middles.items()],
-                  caption="Both middles under each definition of sales")
-        kit.columns(list(middles), [("mean", [round(v["mean"]) for v in middles.values()]),
-                                    ("median", [v["median"] for v in middles.values()])],
-                    fmt=kit.rupees, title="The mean swings with the definition; the median barely moves")
-        spread = max(v["median"] for v in middles.values()) - min(v["median"] for v in middles.values())
-        kit.check("the medians stay within Rs 200 of each other", spread < 200, kit.rupees(spread))
-        kit.check("delivered median is Rs 2,060", middles["delivered"]["median"] == 2060)
-        """),
-        md("""
-        **What happened.** The answer is d: Rs 2,205 booked, Rs 2,100 not cancelled, Rs 2,060
-        delivered. The mean runs from Rs 18,160 to Rs 24,800 over the same three, because removing
-        ordinary orders leaves the same large order carrying a bigger share of a smaller count.
-
-        > **Kavya's review.** Anand said "no averages" and you now know why. Put the median in the
-        > sentence, say the mean is eight times higher, and say one order does it.
+        **The fix, and what changed.** Report the build's median, Rs 2,205, as the typical order, with
+        the mean beside it for totals and the top order on its own line. The first order in the payback
+        falls from Rs 18,160 to Rs 2,205, about one eighth, so the Rs 12 crore has to earn back its cost
+        over roughly eight times as many orders as the slide suggested.
 
         ## A second route: `statistics.median`
 
@@ -1352,6 +1363,9 @@ print(len(amounts), "amounts; the mean, chapter 2's AOV, is", kit.rupees(mean))
         even count; after that `statistics.median` is the route, and in Week 2 it becomes
         `PERCENTILE_CONT(0.5)` in SQL and `.median()` in pandas. The switch that matters is between
         middles: the mean comes back whenever a total has to reconcile.
+
+        > **Kavya's review.** Anand said "no averages" and you now know why. Put the median in the sentence, say the mean
+        > is eight times higher, and say one order does it.
 
         ### In the interview
 
@@ -1426,6 +1440,7 @@ def ch5():
         | Who asks | Meera; the marketing lead, who owns acquisition; the head of Retail-Plus, who owns the members most likely to come back |
         | What a wrong number costs | Rs 12 crore placed on the branch that was fine, and a plan sized by adding lifts that multiply |
         | A real company with the same question | Retailers pay to move frequency directly: Flipkart launched Flipkart Black at Rs 1,499 a year in 2025, evolving it from its VIP programme (Flipkart Stories, 12 September 2025), and Amazon offers Prime in India from Rs 399 to Rs 1,499 a year (About Amazon India). A membership is a bet on the frequency branch, placed by companies that could have spent the same money on acquisition. |
+        | In the dossier (`study-notes/C2_W01_D01_domain_retail_STUDENT.md`) | Section 2, Retail-Plus, the paid tier, and section 5, customer acquisition cost and payback |
 
         Chapter 4 settled the typical order at Rs 2,205, the median. The tree now reads 23 customers,
         1.30 orders each, 16 of them bought once, and Rs 5,44,810 booked on 30 orders.
@@ -1562,9 +1577,6 @@ print(f"{customers} customers x {per_customer:.2f} orders x {kit.rupees(aov)} = 
         would say 60. The same rule prices a discount: 15 percent off with 10 percent more orders is
         0.85 x 1.10 = 0.935, a 6.5 percent fall that addition would call a 5 percent fall.
 
-        > **Kavya's review.** Recompute through the tree anything someone adds up. Then tell Meera the
-        > branch the evidence points at, frequency, and that the lifts multiply whichever she funds.
-
         ## A second route: the lift, part by part
 
         Revenue after both lifts is the base, plus the customer lift, plus the frequency lift, plus the
@@ -1583,6 +1595,9 @@ print(f"{customers} customers x {per_customer:.2f} orders x {kit.rupees(aov)} = 
         **When to switch.** Multiply the factors when you need the total; build the parts when someone
         asks where the extra came from, since the bridge shows the lift on the lift as its own bar. The
         parts route is the one that wins the argument with the slide.
+
+        > **Kavya's review.** Recompute through the tree anything someone adds up. Then tell Meera the
+        > branch the evidence points at, frequency, and that the lifts multiply whichever she funds.
 
         ### In the interview
 
@@ -1652,6 +1667,7 @@ def ch6():
         | Who asks | Meera, who signs; Kavya, who reviews it first; the marketing lead, who will attack it |
         | What a wrong number costs | A sentence that says "70 percent of customers are lost" either panics the room or hands marketing an easy rebuttal, and the team loses the trust the week depends on |
         | A real company with the same question | Klarna reported that its AI assistant handled two-thirds of customer-service chats in its first month (Klarna, 27 February 2024); fifteen months later its chief executive said the focus on cost had lowered quality (Fortune, 9 May 2025). A first window's number read as the verdict is the risk this chapter's caveat guards against. |
+        | In the dossier (`study-notes/C2_W01_D01_domain_retail_STUDENT.md`) | Section 5, retention and cohorts, and the returns rate's late window; section 8 tells Klarna's case in full |
 
         Chapter 5 chose frequency first: 16 of 23 customers bought once and 7 came back, and the
         lifts multiply. This chapter turns that into the sentence, and stress-tests the one number in
@@ -1673,8 +1689,8 @@ customers = len(by_customer)
 once_ids = [cid for cid, days in by_customer.items() if len(days) == 1]
 print(f"{len(ORDERS)} orders from {start} to {end}, {(end - start).days + 1} days; {customers} customers, {len(once_ids)} bought once")
 '''),
-        where(6, ["the options, sized: four ways to answer Meera", "the trap: one-time buyers read as lost",
-                  "the build: the sentence from the numbers", "the second route: due dates"]),
+        where(6, ["the options, sized: four ways to answer Meera", "the build: the first draft",
+                  "the trap: one-time buyers read as lost", "the second route: due dates"]),
         md("""
         ## The options
 
@@ -1699,7 +1715,43 @@ print(f"{len(ORDERS)} orders from {start} to {end}, {(end - start).days + 1} day
                   [n for n, t in reading if t <= 30 and n.startswith("C")] == ["C. one sentence"])
         """),
         md("""
-        ## 1. The trap: one-time buyers read as lost customers
+        ## 1. The build: the first draft of the sentence
+
+        Every number in the sentence comes from a variable, so the sentence cannot drift from the work.
+        The draft carries the evidence the chapters produced, in the four parts.
+
+        **Predict before you run.** Which part does the sentence put last?
+
+        - a) The evidence.
+        - b) What happens to the Rs 12 crore.
+        - c) The branch.
+        - d) The caveat.
+        """),
+        code("""
+        amounts = sorted(o["amount"] for o in ORDERS)
+        median = (amounts[14] + amounts[15]) / 2
+        per_customer = len(ORDERS) / customers
+        came_back = customers - len(once_ids)
+        draft = (f"On the {len(ORDERS)} booked orders from 1 July to 26 September, {customers} customers placed "
+                 f"{per_customer:.2f} orders each at a typical order of {kit.rupees(median)}, and {len(once_ids)} of "
+                 f"them bought only once, so I would open frequency before acquisition, and since one quarter cannot "
+                 f"show which branch moved, hold the Rs 12 crore until Tuesday's two quarters.")
+        print(draft)
+        kit.flow(["the evidence, with its window", "the branch: frequency", "the caveat: one quarter",
+                  "the ask: hold the budget"], kinds=["known", "lit", "unknown", "good"],
+                 title="The sentence's four parts, in order")
+        kit.check("the draft carries the customers, the rate and the typical order",
+                  str(customers) in draft and f"{per_customer:.2f}" in draft and kit.rupees(median) in draft)
+        kit.check("the draft ends on the budget", draft.rstrip(".").endswith("two quarters"))
+        """),
+        md("""
+        **What happened.** The answer is b. The order is the review's order: evidence first so Meera can
+        weigh it, the branch, the limit, and the ask she acts on. One number in the draft, the 16 who
+        bought once, is the one marketing will reach for.
+
+        ## 2. The trap: one-time buyers read as lost customers
+
+        A colleague tightens the draft for the slide, and the 16 becomes a percentage.
 
         **Predict before you run.** 16 of the 23 customers bought only once in the quarter. What share
         of Kalpa's customers can you say are lost?
@@ -1729,39 +1781,23 @@ print(f"{len(ORDERS)} orders from {start} to {end}, {(end - start).days + 1} day
         had_time = len(once_ids) - len(too_recent)
         kit.strip(gaps, markers=[("median gap", typical_gap, "bad")], lo=0, hi=90, fmt=lambda v: f"{v:g} days",
                   title="Days between a returning customer's first and second order")
-        kit.bars([("came back", customers - len(once_ids)), ("once, and had time", had_time),
+        kit.bars([("came back", came_back), ("once, and had time", had_time),
                   ("once, too recent to judge", len(too_recent))], lit=(2,),
                  title="The 23 customers, with the window's edge taken into account")
         kit.check("the median gap between two orders is 45 days", typical_gap == 45, gaps)
         kit.check("9 of the 16 one-time buyers bought within the last 45 days", len(too_recent) == 9)
         kit.check("7 came back, 7 had time and did not, 9 are too recent",
-                  (customers - len(once_ids), had_time, len(too_recent)) == (7, 7, 9))
+                  (came_back, had_time, len(too_recent)) == (7, 7, 9))
         """),
         md("""
         **The fix, and what changed.** The answer is c. The seven who came back took a median of 45 days
         to do it, and 9 of the 16 one-time buyers placed their order inside the last 45 days of the
         window, so they have not had a typical customer's time to return. What the file supports is
         7 came back, 7 had time and have not, and 9 are too recent to judge: the "70 percent lost"
-        becomes at most 7 of 23, and even those are a guess from 7 gaps. The gap itself rests on 7
-        customers, which is one more thing the sentence should not claim beyond.
-
-        ## 2. The build: the sentence from the numbers
-
-        Every number in the sentence comes from a variable, so the sentence cannot drift from the work.
-
-        **Predict before you run.** Which part does the sentence put last?
-
-        - a) The evidence.
-        - b) What happens to the Rs 12 crore.
-        - c) The branch.
-        - d) The caveat.
+        becomes at most 7 of 23, and even that rests on a gap measured from 7 customers. The sentence
+        replaces the 16 with the split.
         """),
         code("""
-        revenue = sum(o["amount"] for o in ORDERS)
-        amounts = sorted(o["amount"] for o in ORDERS)
-        median = (amounts[14] + amounts[15]) / 2
-        per_customer = len(ORDERS) / customers
-        came_back = customers - len(once_ids)
         sentence = (f"On the {len(ORDERS)} booked orders from 1 July to 26 September, {customers} customers placed "
                     f"{per_customer:.2f} orders each at a typical order of {kit.rupees(median)}; {came_back} came back, "
                     f"{had_time} have had time and not returned, and {len(too_recent)} bought too recently to judge, "
@@ -1769,26 +1805,11 @@ print(f"{len(ORDERS)} orders from {start} to {end}, {(end - start).days + 1} day
                     f"moved, hold the Rs 12 crore until Tuesday's two quarters.")
         print(sentence)
         print(len(sentence.split()), "words")
-        kit.flow(["the evidence, with its window", "the branch: frequency", "the caveat: one quarter",
-                  "the ask: hold the budget"], kinds=["known", "lit", "unknown", "good"],
-                 title="The sentence's four parts, in order")
-        """),
-        code("""
-        kit.check("the sentence carries the customers, the rate and the typical order",
-                  str(customers) in sentence and f"{per_customer:.2f}" in sentence and kit.rupees(median) in sentence)
         kit.check("the sentence splits the one-time buyers", str(len(too_recent)) in sentence and str(had_time) in sentence)
         kit.check("the sentence names what one quarter cannot show", "cannot show" in sentence)
-        kit.check("the sentence ends on the budget", sentence.rstrip(".").endswith("two quarters"))
+        kit.check("the sentence says nobody is lost", "lost" not in sentence)
         """),
         md("""
-        **What happened.** The answer is b. The order is the review's order: evidence first so Meera can
-        weigh it, the branch, the limit, and the ask she acts on. The sentence carries no "lost" and no
-        percentage marketing can recompute into a different story.
-
-        > **Kavya's review.** This is a sentence I would take into the room. It says what we know, what
-        > we would do, and what we would need before spending Rs 12 crore, and every number in it is
-        > one we can defend.
-
         ## A second route: due dates
 
         The same split comes from the other direction: give each one-time buyer a due date, their
@@ -1809,6 +1830,9 @@ print(f"{len(ORDERS)} orders from {start} to {end}, {(end - start).days + 1} day
         when you plan follow-ups, since a due date is the day a reminder would go out. Both need the
         gap; with more quarters the gap would come from hundreds of customers instead of 7, and the
         caveat would shrink.
+
+        > **Kavya's review.** This is a sentence I would take into the room. It says what we know, what we would do, and
+        > what we would need before spending Rs 12 crore, and every number in it is one we can defend.
 
         ### In the interview
 

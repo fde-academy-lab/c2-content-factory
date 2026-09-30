@@ -43,9 +43,9 @@ second route (3 to 4), and Kavya's review with the interview question (2 to 3).
 | Meera's ask, 5 | S7 and S8 | The metric tree already on the board | Four questions pulled out of one message, each with the chapter that answers it | Nothing |
 | Chapter 1: four readings of sales, 30 | Section 01, S9 to S20 | Notebook 01; `unguided/C2_W01_D01_ch1_four_readings_STUDENT.md` | Reliance's two totals; four options sized; the TypeError in two minutes; Rs 5,44,810 against Rs 5,35,760; the bridge; the second route agreeing | The second route to its assertion |
 | Chapter 2: the tree as metrics, 30 | Section 02, S21 to S29 | Notebook 02; `unguided/C2_W01_D01_ch2_tree_metrics_STUDENT.md` | Jio's tree; which tree the file fills; AOV Rs 18,160; the mixed AOV of Rs 25,943 caught by multiplying back | The second route |
-| Chapter 3: the leaves, counted, 30 | Section 03, S30 to S39 | Notebook 03; `unguided/C2_W01_D01_ch3_leaves_STUDENT.md` | Reliance's 396 million registered customers; 30 rows against 23 customers; 1.30 each; 7 came back | D37, the delivered leaves |
+| Chapter 3: the leaves, counted, 30 | Section 03, S30 to S39 | Notebook 03; `unguided/C2_W01_D01_ch3_leaves_STUDENT.md` | Reliance's 396 million registered customers; 30 rows against 23 customers; 1.30 each; 7 came back | D35, the delivered leaves |
 | Break, 10 | | | | |
-| Chapter 4: the typical order, 30 | Section 04, S40 to S47 | Notebook 04; `unguided/C2_W01_D01_ch4_typical_STUDENT.md`; the companion's typical-order experiment | Blinkit's reported AOV; four middles sized; 1 of 30 above the mean; each learner sorts in the empty cell and reads what sits at the top; the median of Rs 2,205 | Never cut the sort |
+| Chapter 4: the typical order, 30 | Section 04, S40 to S48 | Notebook 04; `unguided/C2_W01_D01_ch4_typical_STUDENT.md`; the companion's typical-order experiment | Blinkit's reported AOV; four middles sized; 1 of 30 above the mean; each learner sorts in the empty cell and reads what sits at the top; the median of Rs 2,205 | Never cut the sort |
 
 **Checkpoints, one learner each, under thirty seconds.** After chapter 1: which total goes in
 Meera's note, and what do you write beside it? After chapter 2: why does Rs 25,943 match nothing?
@@ -70,13 +70,13 @@ flowchart LR
 | Part | Slides | Beside it | What must land | If short of time |
 |---|---|---|---|---|
 | Chapter 5: which branch first, 30 | Afternoon deck, section 05, S1 to S8 | Notebook 05; `unguided/C2_W01_D01_ch5_branch_STUDENT.md` | Flipkart Black and Prime buying frequency; the plan needs 3.45 customers or 4.5 orders; frequency first and what would switch it; 20 percent against 21 | The second route |
-| Chapter 6: the sentence, 30 | Section 06, S9 to S16 | Notebook 06; `unguided/C2_W01_D01_ch6_sentence_STUDENT.md` | Klarna's first month; four answer formats sized; "70 percent lost" caught by the 45-day gap; the four-part sentence | Never cut the caveat |
-| The escalated case, 35 | Section A, S17 and S18 | `unguided/C2_W01_D01_escalated_case_STUDENT.md`; notebook ex1 | The whole answer on delivered orders, alone; the support TA answers environment problems only | Nothing; start on time |
-| The debrief, 15 | Section B, S19 and S20, D21 | The room's own wrong numbers, collected while circulating | Six wrong numbers, each with its check; what moved and what held on delivered | D21 |
+| Chapter 6: the sentence, 30 | Section 06, S9 to S17 | Notebook 06; `unguided/C2_W01_D01_ch6_sentence_STUDENT.md` | Klarna's first month; four answer formats sized; "70 percent lost" caught by the 45-day gap; the four-part sentence | Never cut the caveat |
+| The escalated case, 35 | Section A, S18 and S19 | `unguided/C2_W01_D01_escalated_case_STUDENT.md`; notebook ex1 | The whole answer on delivered orders, alone; the support TA answers environment problems only | Nothing; start on time |
+| The debrief, 15 | Section B, S20 and S21, D22 | The room's own wrong numbers, collected while circulating | Six wrong numbers, each with its check; what moved and what held on delivered | D22 |
 | Break, 10 | | | | |
-| The second case, 25 | Section C, S22 to S26 | `unguided/C2_W01_D01_second_case_STUDENT.md`; notebook ex2 | Store's 91.6 percent traced to one order; the consumer channels split by status; frequency stays first with two leaks | Pairs skip the customer-type table |
-| The interview drill, 20 | Section D, S27 to S29 | The twelve questions below | Each learner answers aloud in under a minute; a partner scores it against the one-breath answer | Eight questions |
-| Kahoot and Tuesday's ask, 15 | Section E, S30 to S32 | `kahoot/C2_W01_D01_quiz_STUDENT.md` | The six lines; Tuesday's question left open | The Kahoot to five items |
+| The second case, 25 | Section C, S23 to S27 | `unguided/C2_W01_D01_second_case_STUDENT.md`; notebook ex2 | Store's 91.6 percent traced to one order; the consumer channels split by status; frequency stays first with two leaks | Pairs skip the customer-type table |
+| The interview drill, 20 | Section D, S28 to S30 | The twelve questions below | Each learner answers aloud in under a minute; a partner scores it against the one-breath answer | Eight questions |
+| Kahoot and Tuesday's ask, 15 | Section E, S31 to S33 | `kahoot/C2_W01_D01_quiz_STUDENT.md` | The six lines; Tuesday's question left open | The Kahoot to five items |
 
 Release the chapter solutions and both case solutions at the close, never before.
 

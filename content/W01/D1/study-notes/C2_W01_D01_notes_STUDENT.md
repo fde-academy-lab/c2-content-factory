@@ -186,16 +186,16 @@ easy to miscount by hand. The best fit is the dictionary, since the number Meera
 is how many came back. A set is enough when only the count is asked. At millions of rows the count
 becomes one `COUNT(DISTINCT customer_id)` in the warehouse, which Week 2 teaches.
 
-**The trap.** "30 customers placed 30 orders: 1.00 each, so nobody comes back." The division is
-correct and its denominator is wrong: a row is an order, and one customer can place several. It would
-make frequency look dead and the Rs 12 crore look like the only way to grow. The check compares the
-length of the id list with the length of its set, 30 against 23. The fix is 23 customers at 1.30
-orders each.
-
 **The build.** The dictionary gives 16 customers who bought once and 7 who came back, and 23 x 1.30
 x Rs 18,160 = Rs 5,44,810. Every leaf moves with the definition. On delivered orders it is 21 orders
 from 19 customers, 1.11 each, and only 2 kept two orders: customers do return, and their second
 orders are the ones most often cancelled or sent back.
+
+**The trap.** A colleague's first draft: "30 customers placed 30 orders: 1.00 each, so nobody comes back." The division is
+correct and its denominator is wrong: a row is an order, and one customer can place several. It would
+make frequency look dead and the Rs 12 crore look like the only way to grow. The check compares the
+length of the id list with the length of its set, 30 against 23. The fix is 23 customers at 1.30
+orders each.
 
 **The second route.** Orders per customer is also the mean of the dictionary's values, and it
 equals 30 / 23. The counts route also shows the spread, 16 at one and 7 at two, which the ratio
@@ -223,14 +223,14 @@ customer type stays put within a type, and it needs the types. The best fit for 
 typical order look like" is the median, with the mean beside it for the total. If marketing prices
 the payback per customer type, the mean per type answers better.
 
-**The trap.** "A typical Kalpa order is Rs 18,160." Only 1 of the 30 orders sits above it, and the
-other 29 sit below. That count is the check, and sorting the amounts and reading the top shows why.
-Each learner does the sort in the notebook's empty cell and names the order they find.
-
 **The build.** Sorted, the 15th and 16th amounts are Rs 2,110 and Rs 2,300, so the median is Rs
 2,205, about one eighth of the mean. It holds under every definition: Rs 2,100 not cancelled, Rs
 2,060 delivered. The mean swings from Rs 18,160 to Rs 24,800 over the same three definitions. A
 payback priced on Rs 2,205 needs about eight times as many orders as one priced on the mean.
+
+**The trap.** "A typical Kalpa order is Rs 18,160." Only 1 of the 30 orders sits above it, and the
+other 29 sit below. That count is the check, and sorting the amounts and reading the top shows why.
+Each learner does the sort in the notebook's empty cell and names the order they find.
 
 **The second route.** `statistics.median` holds the even-count rule and agrees with the hand-written
 middle on every definition. Write it by hand once so the rule is yours, then use the library.
@@ -299,6 +299,15 @@ window's number is not the verdict.
 The best fit is the sentence. When the question turns weekly, as it does when her chief of staff asks
 for the leadership deck in Week 2, the dashboard earns its cost, with the sentence as its headline.
 
+**The build.** Every number in the sentence comes from a variable, so the sentence cannot drift from
+the work. The first draft said "16 of them bought only once"; after the trap below, the final
+sentence reads:
+
+> "On the 30 booked orders from 1 July to 26 September, 23 customers placed 1.30 orders each at a
+> typical order of Rs 2,205; 7 came back, 7 have had time and not returned, and 9 bought too
+> recently to judge, so I would open frequency before acquisition, and since one quarter cannot show
+> which branch moved, hold the Rs 12 crore until Tuesday's two quarters."
+
 **The trap.** "16 of 23 customers never came back: 70 percent of our customers are lost." Bought once
 in this window is a fact; lost is a claim about the future the window cannot see. The check asks the
 question marketing would ask: how long do customers usually take to come back? The 7 who did took a
@@ -306,14 +315,6 @@ median of 45 days (11, 35, 43, 45, 46, 63 and 65). Of the 16 one-time buyers, 9 
 inside the last 45 days of the 88-day window, so they have not had a typical customer's time. The
 fix is that 7 came back, 7 had time and have not, and 9 are too recent to judge. Even the 45 days
 rests on 7 customers, so the sentence claims nothing beyond it.
-
-**The build.** Every number in the sentence comes from a variable, so the sentence cannot drift from
-the work:
-
-> "On the 30 booked orders from 1 July to 26 September, 23 customers placed 1.30 orders each at a
-> typical order of Rs 2,205; 7 came back, 7 have had time and not returned, and 9 bought too
-> recently to judge, so I would open frequency before acquisition, and since one quarter cannot show
-> which branch moved, hold the Rs 12 crore until Tuesday's two quarters."
 
 **The second route.** Give each one-time buyer a due date, their order date plus 45 days, and count
 those due after the window ends. The count is the same 9 as the recency route. Recency reports
