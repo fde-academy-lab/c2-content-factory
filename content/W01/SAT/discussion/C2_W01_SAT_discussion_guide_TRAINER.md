@@ -104,11 +104,11 @@ sends the room looking for the fault, and the repair said aloud.
 | Q11, the reject loop | (a) or (c) ticked, or (e) | "Trace the loop on the board. Which row does it never test, and why do the counts still close?" | Removing from the list being walked skips the next row, KR-09053; walking a copy or building two new lists fixes it, and setting a bad amount to "0" only hides the row as a Rs 0 sale. |
 | Q12, the duplicate rules | Q1 Rs 2,890, the first copy kept, or Q2 Rs 11,120, the whole-row check | "What makes two rows one order, and which copy stays when one will not convert?" | One order_id is one order, and the copy that validates stays: Q1 is 2,890 plus 1,790, Rs 4,680, and Q2 is 3,700 plus 3,710, Rs 7,410. |
 | Q14 and Q15, Monday's number and Retail-Plus | Q14 a fall of 11.0 percent; Q15 (b), (c) or (d) | "What has the reconciliation changed since Tuesday, and which figures does it touch?" | The 14 copied Q1 rows, Rs 20,00,000, were never in the books, so revenue fell 1.6 percent. Retail-Plus falls 40 to 26, 35.0 percent a member, and the company 100 to 86: Retail-Plus carries all 14 lost orders. |
-| Q16, real or the wobble | (a), both tails, or (b), the fall per member written as the tier's | "Which direction does Kavya's rule count, and how many members share the fall?" | 145 of 5,000 shuffles, 0.029, counted in the direction of the fall, and Rs 1,110 for each of 22 members is Rs 24,420 a quarter. |
+| Q16, the Retail-Plus line | (a), the count in one direction read as a verdict, or (b), the fall per member written as the tier's | "When did Meera ask, and what does that do to a count in one direction? How many members share the fall?" | Meera asked after the fall was seen, so both counts go in: 145 of 5,000 flips one way, 0.029, and 286 either way, 0.057, which reads as borderline. Rs 1,110 for each of 22 members is Rs 24,420 a quarter, which is modest. |
 | Q17, per member or per buyer | (c), True, the fall among the members who still buy | "Who is missing from the per-buyer base in each quarter?" | Per member the fall is a third and per buyer a sixth, because 6 members had nothing delivered in Q2 against 2 in Q1; the tier includes the members who went quiet. |
-| Q19, the sign flip | (b), the printed 0.981 read as the wobble | "Which side of -880 does the >= count, and what did the class count?" | The count ran on the wrong side of the gap, so 0.981 says nothing about the fall; the class's 21 of 1,000, under 0.05, stands, and the note still calls the fall real. |
+| Q19, the sign flip | (b), the printed 0.992 read as chance | "Which side of -980 does the >= count, and what did the first run count?" | The count ran on the wrong side of the gap, so 0.992 says nothing about the fall; the first run's 13 of 1,000, and 29 either way, stay under 0.05, and the note still calls the fall real. |
 | Q20, the Student line | (c), 1,985 read as noise, or (d), the worlds with exactly 7 left out | "Which rows of the table are a rise of 40 percent or more, and what does a large share tell you?" | Seven or more of the 12 orders in Q2, 1,985 of 5,000 worlds: the data cannot tell a rise from luck, so no budget moves and Student stays a lead until more customers buy. |
-| Q21, the Diwali test | (a), the right groups compared on total revenue | "How large is each group, and what does a total compare?" | A random tenth held back inside every segment makes the groups alike, and only spend per customer compares a group nine times the size of the other. |
+| Q21, the Diwali test | (a), the right groups compared on total revenue | "How large is each group, and what does a total compare?" | A random fifth held back inside every segment makes the groups alike, and only spend per customer compares a group four times the size of the other. |
 | Q22, two averages of seven countries | (a), the right output with the weight a year carries | "How much of the first average does New Zealand's one counted year carry?" | Averaging the country averages gives one year a seventh of the weight, the vote of the United Kingdom's nineteen: -0.07, which rounds to the published -0.1, against 1.68 by year. |
 | Q27 and Q28, the delivery company's offer | Q27 a rise of Rs 32,500 or a fall of Rs 12,000; Q28 (d), a quarter | "Inside which tier did the offer group spend more? What does 25 percent off do to each order?" | Each tier spent less, Rs 30 and Rs 20 a customer, so the 500 spent Rs 12,500 less than they would have; at 25 percent off orders must rise by 1 over 0.75, a third, just to hold revenue. |
 | Q29 to Q31, the agent | Q29 (a), 'None' read as empty; Q30 (c), the cleared list; Q31 (c), a cap set from the mean | "What does str() make of None? What happens to a customer's second message? What does a typical conversation call?" | 'None' is four letters, so found holds 3; a shared list cleared after each call forgets second turns and mixes overlapping calls, so each conversation keeps its own under its id; the median is 4 calls, so the cap is 8 and saves Rs 38.80. |
@@ -128,8 +128,8 @@ Two items need their endings said aloud whatever the sheet shows. On Q26, the Bi
 move is to check the plumbing, and the case ended well: the checks passed, the lift was real, 12
 percent and more than 100 million US dollars a year, the best revenue idea in Bing's history. On
 Q20, name the thin base: all 12 Student orders came from 2 customers, so one customer's habits could
-make the whole rise, and more orders from the same two would settle nothing; the rule of thumb counts
-observations, and here the observations are the customers.
+make the whole rise, and more orders from the same two would settle nothing; Thursday's rule of thirty
+counts customers, and Student has two.
 
 ### The interview anchors, 50 minutes
 
@@ -164,8 +164,10 @@ off a count of rows. Those are the answers interviewers mark down.
 Five rungs, in this order: confirm the drop is real, which means each quarter's figure is complete
 and free of pipeline errors; compare like with like, which means the same weeks and the same
 definitions; decompose along the revenue tree; isolate the branch and the segment; then hypothesise
-and name the evidence that would settle it. Kalpa's own case on Tuesday lands on the fourth rung.
-On closed quarters booked revenue fell 11.0 percent, from Rs 2.10 crore to Rs 1.87 crore; the same
+and name the evidence that would settle it. Tuesday's deck climbs the same ladder in six chapters:
+the first two rungs share its first chapter, and it splits mix from rate between isolating and
+hypothesising, so a learner who names that split has it right. Kalpa's own case on Tuesday lands on
+the fourth rung. On closed quarters booked value fell 11.0 percent, from Rs 2.10 crore to Rs 1.87 crore; the same
 69 customers bought in both, orders per customer fell from 1.65 to 1.25, down 24.6 percent, and
 revenue per order rose 18.0 percent, mostly from the mix. The segment is Retail-Plus, whose orders
 per member fell from 2.32 to 1.18 on the file as exported. Wednesday then sent the case back to the
@@ -216,18 +218,20 @@ steps are written down.
 
 *Q16, Q18, Q19 and Stretch 2.*
 
-If chance alone were at work, a gap at least this large would turn up in about 3 percent of
-shuffles, so the gap would be rare under chance. It does not mean a 3 percent chance the finding is
-wrong, it does not mean a 97 percent chance it is real, and it says nothing about whether the gap is
-large enough to act on.
+If chance alone were at work, a gap at least this large would turn up in about 3 percent of the
+chance-only worlds, the flips or the shuffles, so the gap would be rare under chance. It is not a 3
+percent chance that the finding is wrong or a 97 percent chance that it is real, and it says nothing
+about whether the gap is large enough to act on.
 
 Take three definitions in a row without comment and write all three on the board. Then ask which
 one survives somebody saying "so there is a three percent chance we are wrong". Q16 and Q19 add the
-direction: the count runs the way the claim runs, so say which way you counted. Q16's fall is 145 of
-5,000 shuffles in the direction of the fall and 286 counted both ways, and Q19's p of 0.981 on a
-fall of Rs 880 is a sign that flipped in the code: it says nothing about the fall, and the call stays
-where the class's count put it. Stretch 2 is the follow-up on design: Kavya's shuffle swaps each
-member's own two quarters, because the same 22 members spent in both.
+direction. A count in one direction carries the reading alone only when the direction was fixed
+before the figures came in; Meera asked after the fall was seen, so Q16's line gives both counts,
+145 of 5,000 flips one way and 286 either way, 0.029 and 0.057, and reads as borderline. Q19's p of
+0.992 on a fall of Rs 980 is a sign that flipped in the code: it says nothing about the fall, and
+the call stays where the first run's counts put it. Stretch 2 is the follow-up on design: the same
+22 members spent in both quarters, so Kavya flips each member's own two quarters, where different
+customers, such as Q19's cards, have their quarter labels shuffled.
 
 #### 6. [F] Input 200, clean 183, rejected 14: does it reconcile, and what is the missing number?
 
@@ -284,13 +288,13 @@ not land in the log, the run was never checking anything.
 
 *Q15, Q16, Q17, Q20 and Stretch 2.*
 
-Claim: Retail-Plus really is spending less, and the fall is small against the company. Evidence:
-its 22 members delivered Rs 1,110 less each in Q2 than in Q1, and in Kavya's shuffle, which keeps
-each member's two quarters together, chance made a fall that large in 145 of 5,000 shuffles, p =
-0.029 counted in the direction of the fall; the fall is Rs 24,420 a quarter, 0.19 percent of
-delivered revenue. Caveat: counted both ways the share is 0.057, and nothing here measures why the
-members spent less. Action: test a retention offer on half of Retail-Plus before anything is rolled
-out.
+Claim: Retail-Plus is down by a borderline amount, and the fall is small against the company.
+Evidence: its 22 members delivered Rs 1,110 less each in Q2 than in Q1; flipping each member's own
+two quarters, chance made a fall that large in 145 of 5,000 flips, 0.029, and a move that large
+either way in 286, 0.057; the fall is Rs 24,420 a quarter, 0.19 percent of delivered revenue.
+Caveat: Meera asked after the fall was seen, so neither count carries the reading alone, and nothing
+here measures why the members spent less. Action: test a retention offer on half of Retail-Plus
+before anything is rolled out.
 
 Then defend the caveat against the room. Listen for a caveat that is a condition rather than a
 hedge: "this may not be accurate" is a hedge, while "nothing here measures why they spent less"

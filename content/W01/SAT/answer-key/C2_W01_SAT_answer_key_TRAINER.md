@@ -88,15 +88,15 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **Why it holds.** The test reads as (o["status"] == "delivered") or "returned", and a non-empty string counts as true, so every order passes, the cancelled ones included. The store's four cancelled orders, Rs 9,050, lift it to Rs 18,920, just above the app's Rs 18,600, and web's figure is right only because web had no cancellations. Meera's rule counts the orders that were not cancelled, which the table gives: the app's Rs 18,600 against the store's Rs 9,870, so her rule backs the app by almost two to one. Taken as printed, the cell would have funded the channel that lost four of its nine consumer orders to cancellation: Monday's round 1 trap, reached through a line that sounds right read aloud.
 
-- (a) Right output, misled call: the printed Rs 18,920 carries the store's four cancelled orders, which Meera's rule leaves out.
-- (b) The right call from the table, with the output the analyst meant. The line never compares the status with "returned", so every order passes.
+- (a) The cell does print this, and the call follows the print: the store's Rs 18,920 carries its four cancelled orders, which Meera's rule leaves out.
+- (b) The call is the one the table supports, beside the output the analyst meant to get; the line compares the status with "delivered" alone, so every order passes.
 - (d) Reads the cell as the analyst meant it and then misapplies the rule: Rs 9,870 is below the app's Rs 18,600.
 
-**In the interview.** An or joins two conditions, never two values, so I write status in ("delivered", "returned"); and before a figure settles a budget I check it against the counts by status, because here the cell would have funded the channel with four cancellations in nine.
+**In the interview.** An or joins two whole conditions, so I write status in ("delivered", "returned"); and before a figure settles a budget I check it against the counts by status, because here the cell would have funded the channel with four cancellations in nine.
 
 ### Q3, key Rs 2,060.
 
-**Why it holds.** Three decisions stand between Rs 18,160 and the answer. The model takes cancellations and returns off at their own rates, so the figure it needs is what an order is worth once it stands, and the 21 delivered orders are the population; counting the others again, at their amounts or at zero, would charge them twice. A typical first order needs the median, since the Rs 4,80,000 Business order is 92 percent of the delivered Rs 5,20,790 and lifts their mean to Rs 24,800, twelve times a typical order. The model covers business buyers, so that order stays in. The median of 21 sorted values is the 11th, Rs 2,060.
+**Why it holds.** The model takes cancellations and returns off at their own rates, so the figure it needs is what an order is worth once it stands, and the 21 delivered orders are the population; counting the others again, at their amounts or at zero, would charge them twice. A typical first order needs the median, since the Rs 4,80,000 Business order is 92 percent of the delivered Rs 5,20,790 and lifts their mean to Rs 24,800, twelve times a typical order. The model covers business buyers, so that order stays in. The median of 21 sorted values is the 11th, Rs 2,060.
 
 - (Rs 1,480) The median of all 30 with cancelled and returned orders at zero; the model's own rates take those off, so they would come off twice.
 - (Rs 18,160) The mean of all 30, which carries cancelled and refunded orders and sits eight times above a typical order because of one sale.
@@ -106,15 +106,15 @@ The workbook flags an item to check when fewer than one learner in five got it r
 - (Rs 2,205) The median of all 30, which counts orders Kalpa was never paid for or refunded.
 - (Rs 24,800) The right orders and the wrong statistic: one Business order lifts the delivered mean to twelve times the typical order.
 
-**In the interview.** For a typical first order I use the median of the orders that stand, Rs 2,060 on Monday's file, and I keep the Rs 4,80,000 order in with a flag, since the model covers business buyers; the mean stays for totals, never for the typical order.
+**In the interview.** For a typical first order I use the median of the orders that stand, Rs 2,060 on the first sample, and I keep the Rs 4,80,000 order in with a flag, since the model covers business buyers; the mean is for totals, and the typical order is the median.
 
 ### Q4, key d
 
 **Why it holds.** The counter n = 0 sits inside the segment loop, so it restarts for every segment, and orders_in[q] = n runs once per quarter, after that loop, when n holds only the last segment's count. Retail-Core is last, so the slide reads 38 orders then 36, a fall of 5.3 percent, where the company's rows fell from 114 to 86, 24.6 percent. Nothing raises an error. Tuesday's first rung is the check that catches it: the quarter counts must add back to the 200 rows in the file, and 38 plus 36 is 74.
 
-- (a) What the analyst meant. The total needs the counter set once per quarter, before the segment loop, or the segment counts kept and summed.
-- (b) Reads the first segment's count as the one that sticks. The counter restarts for each segment, so the last one, Retail-Core, is what remains.
-- (c) The opposite bug: a counter set once, before both loops, would carry Q1's 114 into Q2. Here it restarts for every segment.
+- (a) This is what the analyst meant to print; the total needs the counter set once per quarter, before the segment loop, or the segment counts kept and summed.
+- (b) Reads the first segment's count as the one that sticks, where the counter restarts for each segment and the last one, Retail-Core, is what remains.
+- (c) A counter set once, before both loops, would print this by carrying Q1's 114 into Q2; here the counter restarts for every segment.
 
 **In the interview.** A counter belongs at the level of the thing it counts, so a quarter's total is set once per quarter; and before a number reaches a slide I check that the parts add back to the file, because 38 and 36 from a 200-row export is the tell.
 
@@ -151,9 +151,9 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **Why it holds.** csv.DictReader reads the header line itself, to name the fields, so the first next() hands back the first order, KR-02001, and the comment is wrong about what it skips. The list holds the other 200 rows and starts at KR-02002. The pass counts what it was given, so its report closes on 200 whatever happens, and the order lost at the read sits in neither the clean file nor the log. A count taken from the file, 201 rows, set against the 200 the pass received shows the loss, where the pass's own report cannot: a reconciliation that starts one row short still closes.
 
-- (a) What the analyst meant. The header is gone before next() runs, so the call takes a real order with it.
-- (b) Right output, wrong check: a pass reconciles the rows it receives, so a row lost at the read leaves its report closed.
-- (d) Wrong twice: the call drops the first order, and the pass's report closes on whatever it was given.
+- (a) This is what the analyst meant; the reader has already used the header line before next() runs, so the call takes a real order with it.
+- (b) The output is right, and the pass's report cannot see the loss: a pass accounts only for the rows it receives, so a row lost at the read leaves its report closed.
+- (d) The call drops the first order, so the cell cannot print 201, and the pass's report closes on whatever it was given.
 
 **In the interview.** A DictReader has already used the header line, so an extra next() silently drops the first order; I count the file's rows before I clean anything and set that count against the pass's input, because a reconciliation that starts one row short still closes.
 
@@ -169,10 +169,10 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q10, key a
 
-**Why it holds.** rows.copy() makes a new list whose two slots point at the same two dictionaries, a shallow copy, and the pass rewrites each dictionary's amount in place. By the time the rejects line reads as_arrived, KR-02063's amount is the integer 0, whose text is a digit, so the list comes back empty and the line prints 2 + 0 = 2 []. The pass has turned an unreadable amount into a Rs 0 sale, Wednesday's round 1 trap, and the shallow copy has erased the evidence the check was meant to read, so the rows reconcile by construction. The rupees show it where the rows cannot: the clean rows hold Rs 3,150 where Anand's books hold both orders. With copies of the dictionaries, [dict(r) for r in rows], or the file itself, the line would print 2 + 1 = 2 and fail on sight.
+**Why it holds.** rows.copy() makes a new list whose two slots point at the same two dictionaries, a shallow copy, and the pass rewrites each dictionary's amount in place. By the time the rejects line reads as_arrived, KR-02063's amount is the integer 0, whose text is a digit, so the list comes back empty and the line prints 2 + 0 = 2 []. The pass has turned an unreadable amount into a Rs 0 sale, Wednesday's chapter 4 trap, and the shallow copy has erased the evidence the check was meant to read, so the rows reconcile by construction. The rupees show it where the rows cannot: the clean rows hold Rs 3,150 where Anand's books hold Rs 4,940 for the two orders. With copies of the dictionaries, [dict(r) for r in rows], or the file itself, the line would print 2 + 1 = 2 and fail on sight.
 
-- (b) What the analyst meant: a list copy copies references, never the dictionaries they point to, so the evidence changed with the pass.
-- (c) Right output, wrong check: the empty rejects list is what makes the line close, so the rows cannot show the loss.
+- (b) This is the line the analyst meant to get; a list copy copies the references and leaves the dictionaries shared, so the evidence changed with the pass.
+- (c) The printed line is right, and it cannot show the loss, since the empty rejects list is what makes it close.
 - (d) The line copies of the dictionaries would print; here the copy shares them, so the check reads 0 and finds nothing.
 
 **In the interview.** A list copy is shallow, so a pass that edits the dictionaries in place edits the evidence too, and a check run on that evidence can only agree with the pass; I keep the raw rows as the file or as copies of each dictionary, and I reconcile rupees against the books as well as rows.
@@ -183,17 +183,17 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 - (a) Swaps two lines and keeps the removal inside the loop, so the skip happens exactly as before.
 - (c) continue only ends the current turn of the loop; the skipped row was lost when the list shifted.
-- (e) Stops the skip by coercing the unreadable amount to zero, Wednesday's round 1 trap: the order stays clean at Rs 0, and the log never hears of it.
+- (e) Stops the skip by coercing the unreadable amount to zero, Wednesday's chapter 4 trap: the order stays clean at Rs 0, and nothing reaches the log.
 
 **In the interview.** I never remove from the list I am looping over; I build the clean list and the rejects list as two new lists, and I check that every input row landed in exactly one of them, reason attached.
 
 ### Q12, key Q1 Rs 4,680 and Q2 Rs 7,410.
 
-**Why it holds.** Under the identity rule one order_id is one order, so each of the three pairs keeps one row. KR-02006 is an exact repeat. KR-02151 was sent again with a new date, which a check on whole rows misses, and both copies carry Rs 3,710. KR-02063's first copy reads "twelve", and Wednesday's rule keeps the copy that validates, Rs 1,790, since keeping the first would throw away the order's value while the rows still reconcile. Q1 is 2,890 plus 1,790, Rs 4,680, and Q2 is 3,700 plus 3,710, Rs 7,410.
+**Why it holds.** Kalpa's system gives each order one order_id, so one order_id is one order and each of the three pairs keeps one row. KR-02006 is an exact repeat. KR-02151 was sent again with a new date, which a check on whole rows misses, and both copies carry Rs 3,710. KR-02063's first copy reads "twelve", which is no amount the books could hold, so the copy that validates stays, Rs 1,790, as Wednesday's rule has it; keeping the first would throw away the order's value while the rows still reconcile. Q1 is 2,890 plus 1,790, Rs 4,680, and Q2 is 3,700 plus 3,710, Rs 7,410.
 
 - (Q1 Rs 2,890 and Q2 Rs 7,410) Keeps the first copy of KR-02063, which will not convert, and sets aside the one that carries the value: the rows reconcile and Q1 is Rs 1,790 short.
-- (Q1 Rs 4,680 and Q2 Rs 11,120) A check on whole rows: it removes the exact repeat of KR-02006 and keeps both copies of KR-02151.
-- (Q1 Rs 7,570 and Q2 Rs 11,120) No duplicate rule at all: every readable row summed.
+- (Q1 Rs 4,680 and Q2 Rs 11,120) A check on whole rows removes the exact repeat of KR-02006 and keeps both copies of KR-02151.
+- (Q1 Rs 7,570 and Q2 Rs 11,120) Sums every readable row, with no rule for duplicates at all.
 - (Q2 Rs 3,700) Sends both copies of KR-02151 to the log, which loses a real order.
 
 **In the interview.** I write down what makes two rows one order, the order_id at Kalpa, and which copy stays when they differ, the one that validates, then recompute each quarter from the rows the rule keeps; a whole-row check misses every re-sent row, and keeping the first copy can lose an order's value while the counts still close.
@@ -209,48 +209,48 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q14, key A fall of 1.6 percent (down 1.6, or -1.6).
 
-**Why it holds.** Two corrections stand between the tile and the note. The tile set 11 weeks of Q2 against 13 of Q1, and the closed quarters fix the windows. Q1 as exported still held Rs 20,00,000 of copied rows, so reconciled Q1 is Rs 2,10,00,000 less Rs 20,00,000, Rs 1,90,00,000, the figure in Anand's books. The change is (1,87,00,000 less 1,90,00,000) over 1,90,00,000, a fall of 1.6 percent measured from the starting quarter.
+**Why it holds.** The tile set 11 weeks of Q2 against 13 of Q1, which the closed quarters fix. Q1 as exported still held Rs 20,00,000 of copied rows, so reconciled Q1 is Rs 2,10,00,000 less Rs 20,00,000, Rs 1,90,00,000, the figure in Anand's books. The change is (1,87,00,000 less 1,90,00,000) over 1,90,00,000, a fall of 1.6 percent measured from the starting quarter.
 
 - (A fall of 11.0 percent) Tuesday's honest number on Tuesday's data; the reconciliation took Rs 20,00,000 out of Q1.
 - (A fall of 12.4 percent) The tile's weekly rate against Q1's, which levels the windows and keeps the copies.
-- (A fall of 25.9 percent) The tile: 11 weeks of Q2 against 13 of Q1, and a Q1 still holding its copied rows.
+- (A fall of 25.9 percent) The tile's figure, 11 weeks of Q2 against 13 of Q1, with a Q1 still holding its copied rows.
 - (A fall of 9.5 percent) Sets the books' Rs 1.9 crore against the dashboard's Rs 2.1 crore, two readings of one quarter.
 
 **In the interview.** I report the fall on matched windows and reconciled data, 1.6 percent, and I say what changed since Tuesday's 11.0: Rs 20,00,000 of copied Q1 rows that Finance's books never held.
 
 ### Q15, key a
 
-**Why it holds.** As exported, Retail-Plus placed 14 + 24 + 13 = 51 orders in Q1 and 9 + 9 + 8 = 26 in Q2, the 49.0 percent fall Tuesday reported. May's 24 stands out against 14 and 13 either side, and the reconciliation explains it: 11 of those rows were copies. On the reconciled file Q1 holds 40 Retail-Plus orders, 1.82 a member, against 1.18, a fall of 35.0 percent. The company's orders fall from 100, once the 14 copies are out, to 86, a fall of 14, and Retail-Plus falls from 40 to 26, also 14: the tier carries the whole fall, and the other three segments net to nothing. The finding survives smaller, and it points harder at Retail-Plus than Tuesday's did.
+**Why it holds.** As exported, Retail-Plus placed 14 + 24 + 13 = 51 orders in Q1 and 9 + 9 + 8 = 26 in Q2, the 49.0 percent fall Tuesday reported. May's 24 stands out against 14 and 13 either side, and the reconciliation explains it: 11 of those rows were copies. On the reconciled file Q1 holds 40 Retail-Plus orders, 1.82 a member, against 1.18, a fall of 35.0 percent. The company's orders fall from 100, once the 14 copies are out, to 86, a fall of 14, and Retail-Plus falls from 40 to 26, also 14: the tier carries the whole fall, and the other three segments net to nothing. So the finding survives at a smaller rate and points at Retail-Plus more sharply than Tuesday's did.
 
 - (b) Sets the export's Retail-Plus fall, May's copies still in, beside the reconciled company.
 - (c) Reconciles Retail-Plus and leaves the company's copies in: Tuesday's 114 held 14 of them.
-- (d) The export as it came on both counts: 51 Retail-Plus orders and 114 in all still hold the copies.
+- (d) Takes the export as it came on both counts, where 51 Retail-Plus orders and 114 in all still hold the copies.
 
 **In the interview.** Tuesday's 49 percent rested on 11 copied May rows; on the reconciled file Retail-Plus orders per member fall 35.0 percent, and the tier's 14 lost orders are the company's whole fall, so the note reports the smaller rate and the sharper finding together.
 
 ### Q16, key c
 
-**Why it holds.** A fall is a positive gap, so the rule counts the last bar: 145 of 5,000 shuffles reach a fall of Rs 1,110 or more, a share of 0.029, under Kavya's 0.05, so the fall is real. The gap is per member, so across the tier it is Rs 1,110 for each of 22 members, Rs 24,420 a quarter, 0.19 percent of Kalpa's Q2 delivered revenue of Rs 1,28,64,680: real and modest. Counted both ways, 145 and 141, the share is 286 of 5,000, 0.057, which is a different test from the one Kavya fixed before she ran it. Keeping each member's two quarters together is what makes the shuffle fair here, since the same 22 members spent in both quarters.
+**Why it holds.** Meera asked after the fall was in the figures, so the direction of the test was chosen once the fall had been seen, and the line reports both counts: 145 of 5,000 flips reach a fall of Rs 1,110 or more, a share of 0.029, and 286, the two end bars together, reach a move that large either way, 0.057. One share sits under the team's 5 in 100 and the other over it, so the fall is borderline; had the direction been fixed before Q2 closed, 0.029 would carry the reading alone. The gap is per member, so across the tier it is Rs 1,110 for each of 22 members, Rs 24,420 a quarter, 0.19 percent of Kalpa's Q2 delivered revenue of Rs 1,28,64,680. Borderline and modest is Thursday's verdict on the same flips.
 
-- (a) Counts both tails, 145 and 141, where the rule fixed before the test counts falls only.
-- (b) The right share with the size per member, Rs 1,110, written as the whole tier's; 22 members make it Rs 24,420.
-- (d) Counts both tails, and writes the per-member gap as the tier's fall.
+- (a) Reads the count in one direction, 0.029, as a verdict; Meera asked after the fall was seen, so both counts go in the line, and together they read as borderline.
+- (b) Reports both counts and then writes the per-member gap, Rs 1,110, as the tier's fall, where 22 members make it Rs 24,420.
+- (d) Reads the one-direction count as a verdict, and writes the per-member gap as the tier's fall.
 
-**In the interview.** The fall is real by Kavya's rule, 145 of 5,000 shuffles, a p of 0.029, and modest, Rs 24,420 a quarter across 22 members; I say which direction I counted and that the rule was fixed before the test ran.
+**In the interview.** The fall is borderline, 145 of 5,000 flips one way and 286 either way, since Meera asked after she had seen it, and it is modest, Rs 24,420 a quarter across 22 members; when the direction is chosen after the data has come in, I report both counts.
 
 ### Q17, key a
 
 **Why it holds.** Per member the fall is Rs 1,110, 33.9 percent of Q1's Rs 3,279, about a third; per buyer it is Rs 625, 17.3 percent of Rs 3,607, about a sixth. The bases move under the figure: 2 members had nothing delivered in Q1 and 6 had nothing delivered in Q2, so the per-buyer figure drops the members who stopped buying from exactly the quarter in which they stopped. Meera's question is whether the tier is spending less, and the tier includes the members who went quiet: counting only buyers hides half the fall. It is the reasoning Abraham Wald applied to the aircraft that came back in the Second World War, whose missing hits were on the aircraft that did not (Mangel and Samaniego, Journal of the American Statistical Association, 1984).
 
 - (b) The two bases differ: 33.9 percent per member against 17.3 percent per buyer.
-- (c) Right fall, wrong question: the members who stopped buying are the finding, and the per-buyer base drops them.
-- (d) Right reason with the two falls swapped: per member it is 33.9 percent, per buyer 17.3.
+- (c) A sixth is the fall among the members who still buy, and the base that measures it drops the members who stopped buying, who are the finding.
+- (d) The reason holds and the two falls are swapped: per member it is 33.9 percent, per buyer 17.3.
 
 **In the interview.** Before I average I ask who is missing from the denominator; per member all 22 count, so the members who stopped buying show up as the fall they are, where the per-buyer figure hides half of it.
 
 ### Q18, key a, c, d
 
-**Why it holds.** The p-value assumes chance alone, is small when the gap would be rare under chance, and is silent on size. It is never the probability that the hypothesis is true, which is the same misreading as a 3 percent chance of being wrong.
+**Why it holds.** The p-value assumes chance alone, is small when the gap would be rare under chance, and is silent on size. It is not the probability that the hypothesis is true; reading it that way is the same mistake as calling p = 0.03 a 3 percent chance of being wrong.
 
 - (b) The probability that the hypothesis is true is exactly what the p-value does not compute.
 
@@ -258,39 +258,39 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q19, key d
 
-**Why it holds.** The real gap is now -880, a fall, while each shuffled gap is still pile one less pile two, spread evenly on both sides of zero. The count asks how many shuffles are at least -880, which is nearly all of them, 981 of 1,000. A p of 0.981 reads as chance making this fall 98 times in 100, but it counted the wrong side: in the direction of the fall, chance reaches a gap this large about 2 times in 100, as the class found, so the note still calls the fall real. The comparison has to run in the direction of the claim: count gaps at or below -880 with the gap written this way round, or write the real gap the way the shuffles are written.
+**Why it holds.** The real gap is now -980, a fall, while each shuffled gap is still pile one less pile two, spread evenly on both sides of zero. The count asks how many shuffles are at least -980, which is nearly all of them, 992 of 1,000. A p of 0.992 reads as chance making this fall 99 times in 100, but it counted the wrong side: in the direction of the fall, 13 of 1,000 shuffles reach a gap this large, and 29 counting either way, both under 5 in 100, so the note still calls the fall real. The comparison has to run in the direction of the claim: count gaps at or below -980 with the gap written this way round, or write the real gap the way the shuffles are written. The customers differ between the quarters, so shuffling the labels across whole customers is the fair test here, where the same members in both quarters would have their own two quarters flipped.
 
-- (a) The class's number, from a count of gaps at least +880. Written as Q2 less Q1, the gap is -880, and the same >= now counts nearly every shuffle.
-- (b) Right output, misled call: 0.981 counts the shuffles on the wrong side of the gap, so it says nothing about the fall.
-- (c) Keeps the class's count and then calls the fall the wobble, which a p of 0.021 under 0.05 does not allow.
+- (a) Gives the first run's share, from a count of gaps at least +980; written as Q2 less Q1 the gap is -980, and the same >= now counts nearly every shuffle.
+- (b) Takes the printed 0.992 at face value, but it counts the shuffles on the wrong side of the gap, so it says nothing about the fall.
+- (c) Keeps the first run's share and then calls the fall chance, which 13 of 1,000 does not allow.
 
 **In the interview.** A p-value counts the chance-only worlds at least as extreme as the real gap in the direction of the claim, so I write the real gap and the shuffled gaps the same way round; a p near 1 on a gap that looked large is the tell that a sign flipped, and the call waits for the recount.
 
 ### Q20, key b
 
-**Why it holds.** A rise of 40 percent or more means 7 or more of the 12 orders in Q2, since 7 against 5 is exactly 40 percent: 1,034 plus 595 plus 356 is 1,985 of 5,000 worlds, a share of 0.397, so chance alone makes a rise this size about 2 times in 5. That says the data cannot tell a real rise from luck, which is different from showing there is none, so the line moves no budget and names what would settle it. Thursday's rule counts observations, and with 2 customers behind all 12 orders the observations that matter are the customers: one customer's habits could make the whole rise, so more orders from the same two would settle nothing.
+**Why it holds.** A rise of 40 percent or more means 7 or more of the 12 orders in Q2, since 7 against 5 is exactly 40 percent: 1,034 plus 595 plus 356 is 1,985 of 5,000 worlds, a share of 0.397, so chance alone makes a rise this size about 2 times in 5. That says the data cannot tell a real rise from luck, which is different from showing there is none, so the line moves no budget and names what would settle it. Thursday's rule of thirty counts customers, and 2 customers stand behind all 12 orders: one customer's habits could make the whole rise, so more orders from the same two would settle nothing.
 
 - (a) Counts only the worlds with 8 or more Q2 orders, a rise of more than 40 percent, and reads a large share as proof that nothing happened.
-- (c) Right count, wrong reading: a large share says the data cannot tell, which is a reason to wait, never proof that the rise is noise.
-- (d) Right call, wrong count: 951 leaves out the worlds with exactly 7, the 40 percent itself.
+- (c) Counts the worlds correctly and misreads them: a large share says the data cannot tell, which is a reason to wait and no proof that the rise is noise.
+- (d) Makes the right call on a count that leaves out the worlds with exactly 7 Q2 orders, which are the 40 percent rise itself.
 
 **In the interview.** Student's rise is 7 orders against 5 from 2 customers, and a coin toss makes a rise that size in 1,985 of 5,000 worlds, so the honest line holds the budget, keeps Student as a lead and waits for more customers, with the count beside the rate.
 
 ### Q21, key c
 
-**Why it holds.** Two things have to hold at once. The groups must differ only by the offer and by chance, which a random hold-back inside every segment gives: the same season, the same mix, and customers who did not choose themselves. And the measure must carry its denominator: the offer group is about nine times the hold-back, so its total revenue is about nine times larger whatever the discount does, and only spend per customer compares the two. Thursday's fix for the monsoon sale and Tuesday's rule on rates meet in one plan.
+**Why it holds.** The groups must differ only by the offer and by chance, which a random hold-back inside every segment gives: the same season, the same mix, and customers who did not choose themselves. The measure must carry its denominator as well: the offer group is about four times the hold-back, so its total revenue is about four times larger whatever the discount does, and only spend per customer compares the two. The plan is Thursday's hold-back of one in five inside each segment, measured with Tuesday's rule that a rate names its base.
 
-- (a) The right groups and the wrong measure: nine customers in ten will outspend one in ten in total whatever the offer does.
-- (b) The right measure on the wrong groups: Retail-Plus against Retail-Core differs before any offer, since members spend more in any month.
-- (d) Wrong twice: two segments compared, and totals from groups of very different sizes.
+- (a) Holds back the right groups and compares totals, where four customers in five will outspend one in five whatever the offer does.
+- (b) Compares spend per customer between Retail-Plus and Retail-Core, two segments that differ before any offer, since members spend more in any month.
+- (d) Compares two segments that differ before any offer, and on totals from groups of very different sizes.
 
 **In the interview.** To learn what the discount does, I hold back a random slice inside each segment, agree the measure per customer and the window before it runs, and compare the two slices; anything else compares groups that were already different.
 
 ### Q22, key d
 
-**Why it holds.** The first average treats the seven country figures alike, so New Zealand's one counted year at -7.9 carries a seventh of the weight, as much as the United Kingdom's nineteen years at 2.4: -0.5 over 7 is -0.07, which rounds to the -0.1 Reinhart and Rogoff published. The second weights each country by its counted years, 119.3 over 71 country-years, which is 1.68, and there New Zealand's year carries a seventy-first. Herndon, Ash and Pollin (PERI Working Paper 322, April 2013, Table 3) give -0.1 for the spreadsheet as it stood and 1.7 once each of the same years counts; Reinhart and Rogoff defended equal weights, to keep one country's unusual episode from dominating. Either way the week's point stands: an average of averages carries its weights silently, and here the choice moves the answer by 1.7 points.
+**Why it holds.** The first average treats the seven country figures alike, so New Zealand's one counted year at -7.9 carries a seventh of the weight, as much as the United Kingdom's nineteen years at 2.4: -0.5 over 7 is -0.07, which rounds to the -0.1 Reinhart and Rogoff published. The second weights each country by its counted years, 119.3 over 71 country-years, which is 1.68, and there New Zealand's year carries a seventy-first. Herndon, Ash and Pollin (PERI Working Paper 322, April 2013, Table 3) give -0.1 for the spreadsheet as it stood and 1.7 once each of the same years counts; Reinhart and Rogoff defended equal weights, to keep one country's unusual episode from dominating. An average of averages carries its weights without saying so, and here the choice of weights moves the answer by 1.7 points.
 
-- (a) Right output, wrong weight: a seventy-first is New Zealand's share of the second average, which counts years.
+- (a) The output is right; a seventy-first is New Zealand's share of the second average, which counts years, and the question asks about the first.
 - (b) Swaps the two averages; the first printed is the one by country, where one year carries a seventh.
 - (c) Swaps the two averages and the weights: the first printed average is by country.
 
@@ -352,37 +352,37 @@ The workbook flags an item to check when fewer than one learner in five got it r
 **Why it holds.** Inside both tiers the offer group spent less, so last month's lift was who received the offer, and nothing in the table shows the offer adding spend. A deeper cut asks more: at 25 percent off every order brings in 0.75 of its price, so orders must rise by 1 over 0.75, a third, just to hold revenue, where a 20 percent cut needed a quarter. The honest advice is not to repeat it as it ran, and to test it on a random hold-back inside each tier first.
 
 - (a) Credits the blend the tier split contradicts, with the break-even of a 20 percent cut.
-- (c) Right break-even, wrong call: the blend's lift was the mix, and a deeper cut only raises the bar.
-- (d) Right call, wrong arithmetic: a quarter is the break-even for 20 percent off, and 25 percent needs 1 over 0.75, a third.
+- (c) A third is the right break-even, and the call ignores what it means: the blend's lift was the mix, and a deeper cut only raises the bar.
+- (d) The call is right and the arithmetic is a cut behind: a quarter is the break-even for 20 percent off, and 25 percent off needs 1 over 0.75, a third.
 
 **In the interview.** I would not repeat it as it ran: spend fell inside both tiers, so the lift was the mix, and at 25 percent off orders must rise by a third just to hold revenue; I would test it on a random hold-back inside each tier first.
 
 ### Q29, key c
 
-**Why it holds.** For a known order the function returns the status. For 1099 it prints a line to the console and runs off its end, so it hands back None, and str(None) is the four-letter text 'None': the model reads 'None' and may tell the customer it cannot find anything, or guess. The dashboard's test is whether the text is empty, and 'None' is not, so found holds 3 and the page shows every lookup found where one failed. Nothing raises an error at any step. The fix is to return the "not found" message the function now only prints, and to count a lookup as found on what it returned, never on whether some text came back: Tuesday's print-against-return trap, one layer further from anyone who would notice.
+**Why it holds.** For a known order the function returns the status. For 1099 it prints a line to the console and runs off its end, so it hands back None, and str(None) is the four-letter text 'None': the model reads 'None' and may tell the customer it cannot find anything, or guess. The dashboard's test is whether the text is empty, and 'None' is not, so found holds 3 and the page shows every lookup found where one failed. Nothing raises an error at any step. The fix is to return the "not found" message the function now only prints, and to count a lookup as found on what it returned, since some text always comes back: Tuesday's print-against-return trap, one layer further from anyone who would notice.
 
-- (a) Right text, wrong count: 'None' is a non-empty string, so it passes the test that None itself would fail.
+- (a) The model does read 'None', but as a non-empty string it passes the test that None itself would fail, so found holds 3.
 - (b) The printed line goes to the console; the caller receives the return value, and a non-empty message would count as found too.
-- (d) Right count for the wrong reason: the model never sees the printed line, only the returned None turned into text.
+- (d) found does hold 3, but the model sees only the returned None turned into text, and the printed line goes to the console.
 
-**In the interview.** A tool must return its result, because the agent passes on the return value and never the console; I test each tool on what it returns, the unknown cases included, and I count success on what came back, since the text 'None' passes any test for an empty string.
+**In the interview.** A tool must return its result, because the agent passes on the return value and the console reaches nobody; I test each tool on what it returns, the unknown cases included, and I count success on what came back, since the text 'None' passes any test for an empty string.
 
 ### Q30, key a
 
 **Why it holds.** A default value is built once, when Python defines the function, so every call that uses it appends to the same list. A's call sends 1 message and appends the reply; B's sends 3; C's appends its question and sends 5, two of them A's and two B's. Clearing the shared list after each call fails twice over: two conversations answered at the same time still share it mid-call, and a customer's second message arrives to an empty list that has forgotten the first. Each conversation's messages belong under its own id, passed in as its history on every turn.
 
 - (b) Counts the three questions and forgets the two replies, and the fix breaks both concurrent conversations and second messages.
-- (c) Right count, wrong fix: a list cleared after each call is still shared while calls overlap, and it forgets each customer's earlier turns.
-- (d) Right fix, wrong count: each call appends the reply as well as the question, so C's call sends 5.
+- (c) The count is right, and a list cleared after each call is still shared while calls overlap and forgets each customer's earlier turns.
+- (d) The fix is right, and the count misses the replies: each call appends the reply as well as the question, so C's call sends 5.
 
-**In the interview.** A mutable default is created once and shared by every call, so I never keep state in one; in an agent, a conversation's messages belong to that conversation, kept under its id and passed in on every turn.
+**In the interview.** A mutable default is created once and shared by every call, so I keep no state in one; in an agent, a conversation's messages belong to that conversation, kept under its id and passed in on every turn.
 
 ### Q31, key b
 
 **Why it holds.** Typical means the median. Sorted, the seven costs are 1.20, 1.20, 1.20, 1.60, 1.60, 2.00 and 42.00, so the typical cost is the fourth, Rs 1.60; the mean, Rs 7.26, is four and a half times a typical conversation and swings with every loop. The cap rests on the same choice: the typical conversation makes 4 calls, the median of 3, 3, 3, 4, 4, 5 and 105, so the cap is 8. Capped, C-07 would still have paid for 8 calls, Rs 3.20, so the cap saves Rs 42.00 less Rs 3.20, Rs 38.80. Set from the mean, 18.1 calls, the cap would sit at 36 and save only Rs 27.60, a limit the loop itself had inflated. C-07 is a real cost and stays in the log.
 
-- (a) Right saving, wrong typical: the mean moves with the one conversation that looped.
-- (c) Right typical cost, then a cap set from the mean, 18.1 calls, which the loop itself inflated.
+- (a) Rs 38.80 is the right saving, and Rs 7.26 is the mean, which moves with the one conversation that looped.
+- (c) Rs 1.60 is the typical cost, and Rs 27.60 comes from a cap set from the mean, 18.1 calls, which the loop itself inflated.
 - (d) The mean twice over: a typical cost and a cap that both carry C-07's 105 calls.
 
 **In the interview.** The typical cost is the median, Rs 1.60, with every run left in the log; a cap on model calls set from the median, 8, stops the next loop, and here it would have saved Rs 38.80 of the shift's Rs 50.80.
@@ -411,7 +411,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 - (600) Reads NULL as zero, 4,800 over 8; AVG leaves NULL rows out of both the sum and the count.
 
-**In the interview.** AVG averages the values present, so the calls that never finished vanish from it; I report the timeouts beside the average, never inside it.
+**In the interview.** AVG averages the values present, so the calls that never finished vanish from it; I report the timeouts as their own count beside the average.
 
 ### Q35, key a (0)
 
@@ -445,25 +445,25 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 These items come from the week's source file, not the tracker. Accept one by adding it to the tracker's Saturday papers tab and deleting it from the source file.
 
-- Q2 (One correct option, Hard, [F]): Every Kalpa order carries a status: delivered (it reached the customer), returned (it came back for a refund) or cancelled (it never left the shelf). Meera will fund one of two asks next quarter, the app team's new checkout or the store team's refit. Her rule is to back the channel whose consumer orders brought in more on Monday, counting every order that was not cancelled. The analyst wrote this cell to settle it. What does it print, and which channel does her rule back?
-- Q3 (Applied maths, Hard, [S]): Marketing's payback model asks how long a typical new customer takes to repay what it cost to win them. The model covers every new customer, business buyers included, and it takes cancellations and returns off at their own rates. For the value of a typical first order it uses Rs 18,160, the mean of Monday's 30 orders. What figure should it use? Give it in rupees.
+- Q2 (One correct option, Hard, [F]): Every Kalpa order carries a status: delivered (it reached the customer), returned (it came back for a refund) or cancelled (it never left the shelf). Meera will fund one of two asks next quarter, the app team's new checkout or the store team's refit. Her rule is to back the channel whose consumer orders in the sample brought in more, counting every order that was not cancelled. The analyst wrote this cell to settle it. What does it print, and which channel does her rule back?
+- Q3 (Applied maths, Hard, [S]): Marketing's payback model asks how long a typical new customer takes to repay what it cost to win them. The model covers every new customer, business buyers included, and it takes cancellations and returns off at their own rates. For the value of a typical first order it uses Rs 18,160, the mean of the sample's 30 orders. What figure should it use? Give it in rupees.
 - Q4 (One correct option, Medium, [S]): For Meera's first slide an analyst wants the orders in each quarter of Tuesday's export, and writes this cell. What does it print?
-- Q6 (One correct option, Hard, [D]): Tuesday's decomposition found the customer count flat at 69 in both quarters and orders per customer down from 1.65 to 1.25, so the note proposes bringing Retail-Plus members, who now buy less often, back to buying as often as they did in Q1 before any spend on acquisition. Marketing answers with its own estimates, in the table. Kavya compares the two routes on the revenue each brings in the next quarter for every rupee spent. Which one of these changes, on its own, would make acquisition the better use of the next rupee?
-- Q8 (One correct option, Hard, [F]): orders.csv opens on a line that names its columns, and 201 order rows follow it, the first two KR-02001 and KR-02002. The analyst's cleaning pass then runs on rows and reports its input as clean rows plus rejected rows. What does the cell print, and which check tells Anand whether every order in the file reached the pass?
-- Q9 (True or false, Medium, [SV]): Every amount csv.DictReader reads arrives as text, as the amount "4500" on Monday's order KR-01008 did. Statement: in Python 3, the comparison '4500' < '30000' evaluates to True. True or false, and why?
-- Q10 (One correct option, Hard, [D]): The auditor wants every amount the export sent that was not a number. So before the pass converts the amounts in place, the analyst keeps the export as it came, and afterwards lists the amounts in that copy that are not digits. Anand's books hold both orders at their true values. What does the cell print, and which check would show Anand that the value of order KR-02063 was lost?
-- Q11 (More than one correct, Hard, [F]): The pass prints 4 + 1 = 5, so its rows reconcile. Which rewrites set aside every unreadable row and keep every readable one? Mark every correct option.
-- Q12 (Applied maths, Hard, [F]): Anand's books hold each order once. How much revenue do these seven rows hold for each quarter once Wednesday's rules for duplicates have run? Give Q1 and Q2 in rupees.
+- Q6 (One correct option, Hard, [D]): Tuesday's split of the fall along the revenue tree found the customer count flat at 69 in both quarters and orders per customer down from 1.65 to 1.25, so the team's note to Meera proposes bringing Retail-Plus members, who now buy less often, back to buying as often as they did in Q1 before any spend on acquisition, the winning of new customers. Marketing answers with its own estimates, in the table. Kavya compares the two routes on the revenue each brings in the next quarter for every rupee spent. Which one of these changes, on its own, would make acquisition the better use of the next rupee?
+- Q8 (One correct option, Hard, [F]): orders.csv opens on a line that names its columns, and 201 order rows follow it, the first two KR-02001 and KR-02002. The analyst's cleaning pass, the step that sorts every row it is given into clean or rejected, then runs on rows and reports its input as clean rows plus rejected rows. What does the cell print, and which check tells Anand whether every order in the file reached the pass?
+- Q9 (True or false, Medium, [SV]): Every amount csv.DictReader reads arrives as text, as the amount "4500" on order KR-01008 in the first sample did. Statement: in Python 3, the comparison '4500' < '30000' evaluates to True. True or false, and why?
+- Q10 (One correct option, Hard, [D]): Finance's auditor wants every amount the export sent that was not a number. So before the pass converts the amounts in place, the analyst keeps the export as it came, and afterwards lists the amounts in that copy that are not digits. Anand's books hold both orders at their true values. What does the cell print, and which check would show Anand that the value of order KR-02063 was lost?
+- Q11 (More than one correct, Hard, [F]): The pass prints 4 + 1 = 5, so its rows reconcile: every row it was given is counted once, as kept or as rejected. Which rewrites set aside every unreadable row and keep every readable one? Mark every correct option.
+- Q12 (Applied maths, Hard, [F]): Kalpa's order system gives each order one order_id, and Anand's books hold each order once, at the amount it was booked for. How much revenue do these seven rows hold for each quarter once each order is counted once? Give Q1 and Q2 in rupees.
 - Q14 (Scenario set, Hard, [F]): Give the change in revenue from Q1 to Q2 that belongs in Meera's note on Monday, as a percentage to one decimal place.
-- Q15 (Scenario set, Hard, [S]): The chart and its table are Tuesday's count of Retail-Plus orders by month, as exported; Q1 is April to June and Q2 is July to September. Tuesday's file held 114 order rows in Q1 and 86 in Q2, and Retail-Plus had the same 22 members in both quarters. Of the 14 copied Q1 rows, 11 were Retail-Plus orders placed in May. On the reconciled file, what happened to Retail-Plus orders per member, and how much of the company's fall in orders does Retail-Plus carry?
-- Q16 (One correct option, Hard, [S]): Kavya's rule, fixed before the test: count the shuffles whose gap shows a fall at least as large as the real one, and call the fall real when fewer than 5 in 100 of them do. Which line answers Meera's first question?
-- Q17 (True or false, Hard, [S]): Kavya lays two versions of the Retail-Plus figure side by side. Per member, over all 22 members: Rs 3,279 in Q1 and Rs 2,169 in Q2. Per buyer, over the 20 members with a delivered order in Q1 and the 16 in Q2: Rs 3,607 and Rs 2,982. Statement: the per-buyer figure is the fairer read, since a member who bought nothing has no spend to average. True or false, and why?
-- Q19 (One correct option, Hard, [S]): Thursday's ten cards held five members' Q1 spend and five other members' Q2 spend, and in class 21 of 1,000 shuffles reached the real gap of Rs 880, under Kavya's 0.05. An analyst reruns the test with the gap written as Q2 less Q1, the way a fall is usually shown. What does the cell print, and what should the analyst's note say about the fall?
+- Q15 (Scenario set, Hard, [S]): The chart and its table are Tuesday's count of Retail-Plus orders by month, as exported; Q1 is April to June and Q2 is July to September. Tuesday's file held 114 order rows in Q1 and 86 in Q2, and Retail-Plus had the same 22 members in both quarters. Of the 14 copied Q1 rows, 11 were Retail-Plus orders placed in May. On the reconciled file, which keeps one row per order, what happened to Retail-Plus orders per member, and how much of the company's fall in orders does Retail-Plus carry?
+- Q16 (One correct option, Hard, [S]): Meera sent her question about Retail-Plus after Q2's figures had shown the fall. The team reads a fall as more than chance when fewer than 5 in 100 flips reach it. Which line answers her?
+- Q17 (True or false, Hard, [S]): Kavya lays two versions of Retail-Plus delivered spend side by side. Per member, over all 22 members: Rs 3,279 in Q1 and Rs 2,169 in Q2. Per buyer, over the 20 members with a delivered order in Q1 and the 16 in Q2: Rs 3,607 and Rs 2,982. Statement: the per-buyer figure is the fairer read, since a member who bought nothing has no spend to average. True or false, and why?
+- Q19 (One correct option, Hard, [S]): The web team asks whether buyers spent less after the website changed at the start of Q2. Ten invented cards hold the spend of five customers who bought in Q1 and five different customers who bought in Q2, so the test shuffles the quarter labels: shuffle_gaps pools the ten figures, deals five to each quarter at random and records the gap. The first run wrote the gap as Q1 less Q2, Rs 980, and 13 of 1,000 shuffles reached it, so the note called the fall real. An analyst reruns the cell with the gap written as Q2 less Q1, the way a fall is usually shown. What does the cell print, and what should the note say about the fall now?
 - Q20 (One correct option, Hard, [F]): Student went from 5 orders in Q1 to 7 in Q2, the 40 percent rise Meera asked about, and all 12 orders came from 2 customers. Which line goes into the one-page note?
-- Q21 (One correct option, Hard, [F]): Meera agrees to run the Diwali offer as a test, and Marketing will hold back about one customer in ten from whichever group it picks. Which plan lets the next note say whether the discount itself changed what customers spent?
+- Q21 (One correct option, Hard, [F]): Meera agrees to run the Diwali offer as a test: Marketing will hold back about one customer in five from whichever group it picks, keeping them out of the offer so that they can be compared with the rest. Which plan lets the next note say whether the discount itself changed what customers spent?
 - Q22 (Scenario set, Hard, [S]): What does the cell print, and how much of the first printed average's weight rests on New Zealand's single year?
 - Q23 (Scenario set, Medium, [F]): The working spreadsheet held its 20 countries in rows 30 to 49, but the formula for each average covered rows 30 to 44, which left out Australia, Austria, Belgium, Canada and Denmark; the authors accepted the error when it was found. Which check, run before publication, would have caught it?
-- Q24 (One correct option, Medium, [S]): NASA's Mars Climate Orbiter was lost on 23 September 1999 as it reached Mars. One team's ground software wrote the thrusters' impulse in pound-force seconds, while the interface specification, and the navigation software that read the file, used newton-seconds, so every firing's effect was understated by a factor of 4.45. Through the spring and summer of 1999, engineers raised concerns about differences between navigation solutions, but only informally. As the spacecraft approached Mars, solutions from Doppler data alone consistently placed it closer to the planet than the other solutions did, and the differences were not resolved (NASA Mishap Investigation Board, 1999). In this week's terms, what should have happened when the solutions disagreed?
+- Q24 (One correct option, Medium, [S]): NASA's Mars Climate Orbiter was lost on 23 September 1999 as it reached Mars. One team's ground software wrote the thrusters' impulse in pound-force seconds, while the interface specification, and the navigation software that read the file, used newton-seconds, so every firing's effect was understated by a factor of 4.45. Through the spring and summer of 1999, engineers raised concerns about differences between navigation solutions, the team's estimates of the spacecraft's path, but only informally. As the spacecraft approached Mars, solutions from Doppler data alone consistently placed it closer to the planet than the other solutions did, and the differences were not resolved (NASA Mishap Investigation Board, 1999). What should the team have done when the solutions disagreed?
 - Q25 (More than one correct, Medium, [F]): Google Flu Trends estimated flu activity in the United States from how often people searched for certain terms. Its builders tested 50 million search terms for those whose weekly volume best fit 1,152 data points of the CDC's figures (the Centers for Disease Control and Prevention, which counts doctor visits for flu-like illness), and weeded out terms such as high school basketball that fit well and had nothing to do with flu (Lazer and colleagues, Science, 2014). The paper gives two reasons such a term can fit. Which two does it give? Mark every correct option.
 - Q26 (One correct option, Medium, [S]): In 2012 an idea for changing how Bing displayed the headlines of its search ads had waited more than six months for a slot, until an engineer ran it as an A/B test, a controlled experiment that shows a change to a random share of users and compares them with the rest. Within hours the new version was producing abnormally high revenue, and a "too good to be true" alert fired (Kohavi and Thomke, Harvard Business Review, 2017). You are the analyst on call. What do you do first?
 - Q27 (Scenario set, Hard, [D]): On these figures, how much more or less did the 500 customers who got the offer spend last month than the same customers would have spent without it? Give it in rupees.
@@ -499,7 +499,7 @@ Each of these tracker items is not printed, because a deeper item on the paper t
 - Bank 17 (One correct option, Easy, Tue), folded into Q6: The budget item opens on the customer count flat at 69 in both quarters, which rules the customer branch out as the cause of the fall.
 - Bank 18 (One correct option, Easy, Mon), folded into Q6: The budget item weighs Marketing's acquisition route, a bet on the customer branch, against bringing members back to their Q1 buying.
 - Bank 19 (One correct option, Easy, Mon), folded into Q3: A mean far above its median is the gap this item asks about, and the first-order item asks which of the two a payback model should use, and on which orders.
-- Bank 21 (One correct option, Medium, Tue), folded into Q14: Monday's number starts from a tile that set 11 weeks of Q2 against 13 of Q1, and the key needs the windows matched.
+- Bank 21 (One correct option, Medium, Tue), folded into Q14: The note's number starts from a tile that set 11 weeks of Q2 against 13 of Q1, and the key needs the windows matched.
 - Bank 22 (One correct option, Easy, Tue), folded into Q29: The tool-print item asks what the caller holds after a function that prints and does not return, one layer further from anyone who would notice.
 - Bank 23 (One correct option, Medium, Wed), folded into Q11: The reject-loop item's correct fixes log every unreadable row and continue, and its wrong ones lose or coerce rows, the choice this item tests.
 - Bank 24 (One correct option, Medium, Wed), folded into Q12: The duplicate item applies the identity rule to seven rows, one exact repeat, one re-sent with a new date and one whose first copy will not convert; the tracker's options were ones no reader would take.
@@ -509,7 +509,7 @@ Each of these tracker items is not printed, because a deeper item on the paper t
 - Bank 28 (One correct option, Medium, Wed), folded into Q24: The orbiter item asks for the first move when two estimates that should agree do not, which is this item's dashboard against Finance's books.
 - Bank 29 (One correct option, Hard, Mon), folded into Q6: The budget item rests on the same arithmetic, that a 10 percent lift in any branch adds the same revenue, so the choice turns on what each costs.
 - Bank 30 (More than one correct, Easy, Tue), folded into Q15: The Retail-Plus rate needs its numerator (orders), its denominator (members) and its window (a quarter) before it can be recomputed.
-- Bank 31 (More than one correct, Medium, Tue), folded into Q14: Monday's number is the drop that unequal windows and Q1's copied rows made look larger than it was.
+- Bank 31 (More than one correct, Medium, Tue), folded into Q14: The note's number is the drop that unequal windows and Q1's copied rows made look larger than it was.
 - Bank 32 (More than one correct, Easy, Wed), folded into Q13: Bank 52's second step is deciding drop, default or flag for each defect with a written reason, the three treatments this item lists.
 - Bank 33 (More than one correct, Easy, Wed), folded into Q33: A profile's first count, the values present in a field, is what COUNT(column) returns, and the match item turns on present values against rows.
 - Bank 34 (More than one correct, Medium, Thu), folded into Q21: The Diwali design is the fair test, a random hold-back inside each segment compared per customer over the same weeks, which this item lists as parts.
@@ -519,14 +519,14 @@ Each of these tracker items is not printed, because a deeper item on the paper t
 - Bank 39 (Scenario set, Hard, Tue), folded into Q6: The budget item is Marketing's acquisition claim met with the decomposition and its own unit costs, and it asks what would change the call.
 - Bank 40 (Scenario set, Easy, Wed), folded into Q11: The reject-loop item counts clean and rejected rows against the input, the arithmetic of this item, on a pass whose count misleads.
 - Bank 41 (Scenario set, Medium, Wed), folded into Q11: The reject-loop item's correct fixes send every removed row to the log, which is why the log must hold every removed row.
-- Bank 42 (Scenario set, Hard, Wed), folded into Q14: Monday's number shrinks from an 11.0 to a 1.6 percent fall because copied rows inflated Q1, the effect this item asks about.
+- Bank 42 (Scenario set, Hard, Wed), folded into Q14: The note's number shrinks from an 11.0 to a 1.6 percent fall because copied rows inflated Q1, the effect this item asks about.
 - Bank 43 (Scenario set, Hard, Thu), folded into Q27: The offer item is the same reversal in figures, a blend that rose while each tier fell, and it asks the reader to compute the effect rather than name it.
 - Bank 44 (Scenario set, Medium, Thu), folded into Q27: The offer item's lift comes from who received the offer, members who spend more in any month, the factor behind both the offer and the spend.
 - Bank 45 (Scenario set, Hard, Thu), folded into Q28: The festival advice is this item's decision, whether to repeat an offer whose lift was the mix, with the break-even of a deeper cut beside it.
 - Bank 46 (Applied maths, Hard, Mon), folded into Q28: The festival advice multiplies the price factor by the orders to find the rise that holds revenue at 25 percent off, the arithmetic of this item one step further.
-- Bank 47 (Applied maths, Easy, Mon), folded into Q3: The first-order item asks for the median of orders that include the Rs 4,80,000 order, this item's arithmetic on Monday's own file, where the mean runs twelve times the median.
-- Bank 48 (Applied maths, Easy, Tue), folded into Q14: Monday's number is a percentage change measured from the starting quarter, the arithmetic of this item, on the reconciled quarters.
-- Bank 49 (Applied maths, Medium, Thu), folded into Q16: The Retail-Plus test reads a p-value as shuffles reaching the gap over all shuffles, 145 of 5,000, the arithmetic of this item.
+- Bank 47 (Applied maths, Easy, Mon), folded into Q3: The first-order item asks for the median of orders that include the Rs 4,80,000 order, this item's arithmetic on the week's first sample, where the mean runs twelve times the median.
+- Bank 48 (Applied maths, Easy, Tue), folded into Q14: The note's number is a percentage change measured from the starting quarter, the arithmetic of this item, on the reconciled quarters.
+- Bank 49 (Applied maths, Medium, Thu), folded into Q16: The Retail-Plus test reads a p-value as flips reaching the gap over all flips, 145 of 5,000, the arithmetic of this item.
 
 ## Option edits laid on the bank, waiting for the tracker
 

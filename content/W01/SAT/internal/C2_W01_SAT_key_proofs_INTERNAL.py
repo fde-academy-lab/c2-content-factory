@@ -491,7 +491,7 @@ def member_totals(segment, quarter):
 
 
 def flip_gaps(q1, q2, times, seed):
-    """Kavya's paired shuffle: each member keeps both quarters, and a coin decides whether they swap."""
+    """Kavya's flips: each member keeps both quarters, and a coin decides whether they swap."""
     random.seed(seed)
     diffs = [a - b for a, b in zip(q1, q2)]
     return [rupees(sum(x if random.random() < 0.5 else -x for x in diffs) / len(diffs))
@@ -514,10 +514,17 @@ def prove_plus_real():
     assert delivered_q2 == 12864680
     key = ADDED["plus-real"]["key"]
     opts = options("plus-real")
-    assert opts[key].startswith("Real: 145 of 5,000") and opts[key].endswith("Rs 24,420 a quarter across the tier.")
+    # Meera asked after the fall was seen, so both counts go in the line and together they read as
+    # borderline, Thursday's verdict; each half of the options prints twice.
+    assert 145 + 141 == 286 and 145 / 5000 < 0.05 < 286 / 5000
+    assert opts[key] == ("Borderline: 145 of 5,000 flips reach the fall, and 286 a move that large either "
+                         "way; Rs 24,420 a quarter across the tier.")
+    assert sum(1 for t in opts.values() if t.startswith("Borderline: 145")) == 2
     assert sum(1 for t in opts.values() if t.startswith("Real: 145")) == 2
-    assert "shows a fall at least as large as the real one" in ADDED["plus-real"]["text"]
-    report("plus-real", key, f"paired shuffle bars {bins}; 145 of 5,000 reach the fall, 0.029; both ways 0.057")
+    assert sum(1 for t in opts.values() if t.endswith("Rs 24,420 a quarter across the tier.")) == 2
+    assert "after Q2's figures had shown the fall" in ADDED["plus-real"]["text"]
+    report("plus-real", key, f"flip bars {bins}; 145 of 5,000 reach the fall, 0.029, and 286 either way, 0.057: "
+                             f"borderline")
 
 
 def prove_wald_kalpa():
@@ -553,16 +560,24 @@ def prove_bank_35():
 
 
 def prove_shuffle_sign():
-    out, _ = run_exhibit("shuffle-sign", {"random": random, "mean": mean})
+    out, _ = run_exhibit("shuffle-sign")
     key = ADDED["shuffle-sign"]["key"]
-    assert out == "-880 0.981", out
+    assert out == "-980 0.992", out
     assert options("shuffle-sign")[key] == f"{out}; the note still calls the fall real."
-    q1, q2 = [3400, 2900, 4100, 2500, 3800], [2200, 3100, 1900, 2700, 2400]
+    assert options("shuffle-sign")["b"] == f"{out}; the note should now call the fall chance."
+    q1, q2 = [3600, 4100, 3200, 4300, 3000], [3300, 2000, 2900, 2600, 2500]
+    code = ADDED["shuffle-sign"]["exhibit"]["code"]["text"]
+    assert f"q1 = {q1}" in code and f"q2 = {q2}" in code
+    assert round(mean(q1) - mean(q2)) == 980
     gaps = shuffle_gaps(q1, q2, 1000, 2026)
-    assert sum(1 for g in gaps if g >= 880) == 21 and sum(1 for g in gaps if g <= -880) == 24
-    assert round(sum(1 for g in gaps if abs(g) >= 880) / 1000, 2) == 0.04 and 21 / 1000 < 0.05
-    report("shuffle-sign", key, f"prints '{out}'; the class's count at +880 is 21 of 1,000, under 0.05, so the "
-                                f"call stays real")
+    assert sum(1 for g in gaps if g >= 980) == 13 and sum(1 for g in gaps if g <= -980) == 16
+    assert sum(1 for g in gaps if abs(g) >= 980) == 29 < 50                 # under 5 in 100 either way
+    assert options("shuffle-sign")["a"] == "-980 0.013; the note still calls the fall real."
+    assert "13 of 1,000 shuffles reached it" in ADDED["shuffle-sign"]["text"]
+    # The cards are invented, and neither list is Thursday's ten cards, which were five members' pairs.
+    assert sorted(q1) != [2500, 2900, 3400, 3800, 4100] and sorted(q2) != [1900, 2200, 2400, 2700, 3100]
+    report("shuffle-sign", key, f"prints '{out}'; the first run's count at +980 is 13 of 1,000, and 29 either "
+                                f"way, both under 0.05, so the call stays real")
 
 
 def prove_student_line():
@@ -584,8 +599,9 @@ def prove_student_line():
 def prove_diwali_test():
     opts = options("diwali-test")
     key = ADDED["diwali-test"]["key"]
-    assert "random tenth of each segment" in opts[key] and "spend per customer" in opts[key]
-    assert sum("random tenth of each segment" in t for t in opts.values()) == 2
+    assert "random fifth of each segment" in opts[key] and "spend per customer" in opts[key]
+    assert sum("random fifth of each segment" in t for t in opts.values()) == 2
+    assert "one customer in five" in ADDED["diwali-test"]["text"]           # Thursday's hold-back
     assert sum("spend per customer" in t for t in opts.values()) == 2
     report("diwali-test", key, "judgement key: a random hold-back inside each segment, compared per customer")
 
@@ -828,8 +844,11 @@ if __name__ == "__main__":
 #     Q1 Rs 4,680 and Q2 Rs 7,410; whole rows leave Q2 at Rs 11,120; first copies leave Q1 at Rs 2,890.
 # The reconciled file by quarter and segment
 #     Retail-Plus 40 to 26, -35.0 percent a member; the company 100 to 86, all 14 in Retail-Plus, option (a).
-# Kavya's paired shuffle of the 22 Retail-Plus members, seed 2026, gaps rounded to the rupee
-#     Bars 141, 766, 1,526, 1,683, 739 and 145; 145 of 5,000 reach the fall, 0.029, option (c).
+# Kavya's flips of the 22 Retail-Plus members' own two quarters, seed 2026, gaps rounded to the rupee
+#     Bars 141, 766, 1,526, 1,683, 739 and 145; 145 of 5,000 reach the fall, 0.029, and 286 either way,
+#     0.057: borderline, option (c).
+# The sign item's rerun, the label shuffle on ten invented cards, seed 2026
+#     Prints "-980 0.992", option (d); the first run counts 13 of 1,000 at +980 and 29 either way.
 # The Student coin tosses, seed 2026, 5,000 worlds of 12 orders
 #     Rows 918, 964, 1,133, 1,034, 595 and 356; 1,985 worlds hold 7 or more Q2 orders, option (b).
 # The debt-weights exhibit on the seven countries as the spreadsheet carried them
