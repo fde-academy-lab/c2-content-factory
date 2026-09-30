@@ -3,7 +3,7 @@
 **TRAINER ONLY.** One sheet per TA, one line per learner in that TA's rows. The data is `v3-lab`,
 proposed for client zero v2.3. Nothing on this sheet is a score, nothing is shown to the room, and
 no tally of it goes on a wall or a screen. It sets each learner's first stretch or remedial task and
-tells the trainer which two breaks follow the reconciliation in the debrief.
+tells the trainer which reserve slides, if any, the debrief's three chapters make room for.
 
 ## How to observe
 
@@ -22,10 +22,10 @@ The step a learner should have reached by each mark, if they keep the brief's pa
 | Mark | Expected step | Stall codes to watch for |
 |---|---|---|
 | 20 | Profile read; moving to clean | P1 computed a total before any profile; P2 profile has no distinct count; P3 the mean quoted as the typical order |
-| 50 | Cleaning done, log written | C1 no log rows; C2 text amount set to zero or skipped with no log line; C3 repeats not found; C4 empty segment left as a fifth group or dropped silently |
+| 50 | Cleaning done, log written | C1 no log rows; C2 text amount set to zero or skipped with no log line; C3 repeats not found; C4 empty segment dropped, or left in a blank group, with no log line (a flagged unknown with its log line is correct) |
 | 65 | Reconciled | R1 no count check; R2 a count check and no rupee check; R3 checks written and failing, and the learner moved on |
 | 90 | Tree built | D1 total only, no segments; D2 a rate without its order count; D3 frequency named as the branch on uncleaned rows |
-| 105 | Shuffle run | T1 orders shuffled instead of customers; T2 a test on Business; T3 p-value sentence says "chance we are wrong" |
+| 105 | Shuffle run | Code the unit from the shuffle cell, never the p on the screen. T1 segment labels shuffled across single orders, splitting each customer's orders; T1b a customer's two quarters pooled: each customer's Q1 and Q2 figures pooled and the quarter labels dealt, or the orders of both quarters pooled and the quarter label dealt across single orders; T2 a test on Business; T3 the p-value sentence says "chance we are wrong"; T4 a one-way p reported for a direction picked after looking |
 | 120 | Note written | N1 no caveat; N2 the corporate rate as the headline; N3 no action or no cost; N4 a mean order in the claim as the typical one |
 
 ## The sheet
@@ -58,25 +58,31 @@ The wrong numbers a hurried run prints, so a TA recognises each without reading 
 | Q2 down 14.6 percent | Repeats removed, text amount set to zero |
 | Q1 Rs 50,63,000 with 0 rejects | The pass that looks clean |
 | Retail-Core orders per customer 1.77 in Q2 | The tree read on the uncleaned rows |
-| p = 0.0755, or anything near 0.07 to 0.08 | Orders shuffled instead of customers |
+| Any p-value | Read the shuffle cell and code its unit, never the number. Labels moved with whole customers, or each customer's own two quarters flipped: a fair route, no stall. Labels shuffled across single orders: T1. Each customer's Q1 and Q2 figures pooled and dealt: T1b. A learner who ran a fair route reaches a number anywhere from 0.0005 to 0.043, and the lab key lists every route with its number |
 | Mean order about Rs 52,000 quoted as typical | The typical-order trap |
-| Retail-Plus Q2 34 orders and Rs 93,670, or a segment with a blank name | The empty segment dropped or bucketed |
-| Q2 down 28.5 percent, p between 0.013 and 0.027 | A correct run |
+| Segments that do not add back to the quarter, or a blank group with no log line; Retail-Plus Q2 read as 34 orders and Rs 93,670 with nothing said about the unknown order | The empty segment dropped or bucketed silently, C4. The same 34 orders and Rs 93,670 with the unknown named, flagged and reconciled is a correct run |
+| Q2 down 28.5 percent, and a shuffle cell that keeps each customer's orders together | A correct run, whatever its p |
 
 ## Over lunch: the tally for the debrief
 
-Count, across your rows, the learners with each of these five breaks at the snapshot, and give the
-five counts to the trainer before the afternoon starts.
+The debrief runs all three chapters whatever the tally says: the reconciliation skipped before lunch,
+the pass that looks clean and the headline on too few orders after it. The tally decides where the
+trainer lingers and which reserve slide replaces a chapter's self-study slide. Count, across your rows,
+the learners with each break at the snapshot, and give the counts to the trainer before the afternoon
+starts.
 
-| Break | Count from | Debrief slides |
-|---|---|---|
-| The pass that looks clean | C2 or R2 | Chapter 2, S7 to S10 |
-| The headline on too few orders | D2 or N2 | Chapter 3, S11 to S13 |
-| The wrong unit | T1 | Reserve D14 |
-| The typical order | P3 or N4 | Reserve D15 |
-| The empty segment | C4 | Reserve D16 and D17 |
+| Break | Count from | Debrief slides | If the count is more than a quarter of the room |
+|---|---|---|---|
+| The reconciliation skipped | R1, R2 or R3 | Chapter 1, S1 to S11 | Already the longest chapter; read two second-look lines instead of one |
+| The pass that looks clean | C2 or R2 | Chapter 2, S12 to S20 | Run S17's options cell slowly, then two learners name their own log line |
+| The wrong branch | D3 | D10 | Run D10 live for two minutes at the end of chapter 1 |
+| The empty segment | C4 | D19 | Run D19 live for two minutes in place of S20 |
+| The headline on too few orders | D2 or N2 | Chapter 3, S21 to S31 | Run S26's options cell slowly |
+| The wrong unit | T1 or T1b | D29 | Run D29 for three minutes in place of S28 |
+| The typical order | P3 or N4 | D30 | Run D30 for three minutes in place of S27's call-out |
 
-The trainer runs the two with the highest counts. A tie goes to the pass that looks clean.
+Chapter 2 and chapter 3 hold ten minutes each; a reserve slide that runs takes its minutes from the
+chapter's own second-route slide, which stays in the notebook for self-study.
 
 ## After the day: the first stretch and remedial tasks
 
