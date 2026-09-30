@@ -4,15 +4,15 @@
 
 The business you work inside for the next two weeks: which real companies Kalpa is like, how a rupee at the checkout becomes profit, who asks the data team for what, every metric as a formula with a worked number and the trap it hides, and the words a stakeholder meeting assumes you know.
 
-About a 40 minute read · 6 diagrams and 29 tables
+About a 40 minute read · 6 diagrams and 28 tables
 
-> Kalpa Group, its people and its numbers are fictional, and any resemblance to a real company is coincidental. The real companies named here are analogies: each fact about them was checked on 30 September 2026 against the source named beside it, and none of them is the model for Kalpa. A number marked illustrative is a round number chosen for easy arithmetic; it is neither Kalpa's data nor any real company's.
+> Kalpa Group, its people and its numbers are fictional. The real companies named here are analogies, each fact about them checked on 30 September 2026 against the source named beside it, and none of them is Kalpa's model. A number marked illustrative is a round number chosen for easy arithmetic, neither Kalpa's data nor any real company's.
 
 ---
 
 ## 1. A day in the life of a retailer
 
-This section follows one Saturday at one Kalpa Retail store and on Kalpa's app in the same city, and every role and number in the rest of the dossier appears here first. The numbers are illustrative, chosen for easy arithmetic, except the CEO's figures at the end and the support team's two thousand tickets a day, which are the story's own.
+One Saturday at one Kalpa Retail store and on Kalpa's app in the same city introduces every role and number the rest of the dossier uses. The numbers are illustrative, chosen for easy arithmetic, except the CEO's figures at the end and the support team's two thousand tickets a day, which are the story's own.
 
 ```mermaid
 flowchart LR
@@ -54,7 +54,7 @@ flowchart LR
 
 ## 2. Which real company is Kalpa like
 
-In one week a family in Pune can recharge two Jio phone numbers, order the month's groceries on JioMart and buy school shoes at a Reliance store, and every one of those rupees lands in the same group. For the quarter to 30 June 2026, Reliance Industries reported Jio with 533 million subscribers, and Reliance Retail with 20,169 stores and a JioMart app serving about 5,500 pin codes, beside its oil-to-chemicals business (Reliance Industries media release, 17 July 2026). The Tata group works the same way from a different history: founded in 1868, it runs 31 companies across ten verticals, including consumer and retail, financial services, and telecom and media, and Tata Sons is the principal investment holding company and promoter of the Tata companies, the shareholder that controls them (tata.com, business overview).
+In one week a family in Pune can recharge two Jio phone numbers, order the month's groceries on JioMart and buy school shoes at a Reliance store, and every one of those rupees lands in the same group. For the quarter to 30 June 2026, Reliance Industries reported Jio with 533 million subscribers, and Reliance Retail with 20,169 stores and a JioMart app serving about 5,500 pin codes, beside its oil-to-chemicals business (Reliance Industries media release, 17 July 2026). The Tata group works the same way from a different history: founded in 1868, it runs 31 companies across ten verticals, including consumer and retail, financial services, and telecom and media (tata.com, business overview).
 
 Kalpa Group is built like that: one group headquartered in Singapore with five business units, which share the Kalpa name and its largest engineering and data centre, in Bengaluru. Each unit is run and measured on its own numbers, so a metric that is right for Retail can mean nothing in Health, and each has a real-world twin, named below as an analogy.
 
@@ -78,15 +78,15 @@ A Global Capability Centre is a company's own team in another country, and the I
 
 ### Kalpa Retail, between the shelf and the screen
 
-Kalpa Retail sells consumer goods through its app, its website and its stores across India and South-East Asia. Its stores work like DMart's or Reliance Retail's, buying goods and selling them at a margin. Its app books the full price of what it sells and the cost of the goods, as a retailer that owns its stock does, which makes it like DMart Ready, the online grocery retail business of DMart's parent, with revenue of Rs 4,093 crore in the year to March 2026 (Upstox, 8 June 2026), and like JioMart's grocery business, whose digital orders made 13.4 percent of Reliance Retail's grocery sales to consumers in the quarter to June 2026 (RIL, 17 July 2026). Flipkart and Amazon India run the other model, a marketplace where sellers own the goods, and section 3 sets the three side by side.
+Kalpa Retail sells consumer goods through its app, its website and its stores across India and South-East Asia. Its stores work like DMart's or Reliance Retail's, buying goods and selling them at a margin. Its app books the full price of what it sells and the cost of the goods, as a retailer that owns its stock does, like DMart Ready, the online grocery retail business of DMart's parent, with revenue of Rs 4,093 crore in the year to March 2026 (Upstox, 8 June 2026), or JioMart's grocery business, whose orders count in Reliance Retail's own grocery sales (RIL, 17 July 2026). Flipkart and Amazon India are marketplaces, where sellers own the goods, and section 3 sets the three models side by side.
 
 ### Retail-Plus, the paid tier
 
-Memberships are how retailers buy frequency. Paid tiers such as Amazon Prime, from Rs 399 to Rs 1,499 a year in India, typically carry faster delivery and early access to sales events such as the Great Indian Festival (About Amazon India), and those benefits remove the reason to wait and batch an order. The story does not list Retail-Plus's benefits, so read these as illustration. Its head watches how many members renew, how often they order, and whether the fees cover what the benefits cost.
+Memberships are how retailers buy frequency. Paid tiers such as Amazon Prime, from Rs 399 to Rs 1,499 a year in India, typically carry faster delivery and early access to sales (About Amazon India), which remove the reason to wait and batch an order. The story does not list Retail-Plus's benefits, so these are illustration. Its head watches renewals, how often members order, and whether the fees cover what the benefits cost.
 
 ### The other four units, and when they become your client
 
-Kalpa's other units have twins too: Financial Services is like PhonePe in payments and Tata Capital in lending, where a wrong call on a loan costs very different amounts each way; Logistics is like Ekart, the Flipkart group's logistics arm, where every failed delivery has a price; Health is like Quest Diagnostics and Labcorp, with revenue-cycle firms such as Omega Healthcare, where an insurer stands between the patient and the bill; and Connect is like Jio, where subscribers and churn run the business. The programme prepares you for four domains, and each opens on its own story the day it arrives: retail and e-commerce today, US healthcare with Kalpa Health on Build 1 Monday, financial services from Week 5, and SaaS and enterprise AI from Week 8, as the GCC builds AI products for Kalpa's units and for US clients.
+Kalpa's other units have twins too: Financial Services is like PhonePe in payments and Tata Capital in lending, where a wrong loan decision costs very different amounts each way; Logistics is like Ekart, the Flipkart group's logistics arm, where every failed delivery has a price; Health is like Quest Diagnostics and Labcorp, with revenue-cycle firms such as Omega Healthcare, where an insurer stands between patient and bill; and Connect is like Jio, run on subscribers and churn. The programme prepares you for four domains, each opening on its own story: retail and e-commerce today, US healthcare with Kalpa Health on Build 1 Monday, financial services from Week 5, and SaaS and enterprise AI from Week 8, as the GCC builds AI products for Kalpa's units and for US clients.
 
 ---
 
@@ -96,9 +96,9 @@ At the checkout the Saturday basket shows Rs 1,800: four items worth Rs 2,000 at
 
 ### From GMV to EBITDA
 
-**Gross merchandise value (GMV)** is the value of everything customers ordered, at the prices charged, before cancellations and returns and with tax still inside. In this dossier a discount given at the checkout is already out of GMV, because GMV counts the price charged. Andreessen Horowitz calls the same measure gross merchandise volume, "the total sales dollar volume of merchandise transacting through the marketplace in a specific period" (a16z, "16 Startup Metrics", 2015). Companies differ on whether discounts or marketplace sellers' sales are included, so the first question about any GMV is what it includes.
+**Gross merchandise value (GMV)** is the value of everything customers ordered, at the prices charged, before cancellations and returns and with tax still inside, so a discount given at the checkout is already out of it. Andreessen Horowitz calls it gross merchandise volume, "the total sales dollar volume of merchandise transacting through the marketplace in a specific period" (a16z, "16 Startup Metrics", 2015). Companies differ on whether discounts or marketplace sellers' sales are included, so the first question about any GMV is what it includes.
 
-**Net revenue** is GMV less cancellations, returns and the GST the business collects for the government, which leaves what it earns from the goods. Real retailers publish both numbers: Reliance Retail reported gross revenue of Rs 90,408 crore and revenue from operations of Rs 79,745 crore for the same quarter, and Reliance's consolidated statement labels the step between the two as GST recovered (RIL, 17 July 2026). Two correct numbers for one quarter is normal in retail, which is why every number you send carries its definition.
+**Net revenue** is GMV less cancellations, returns and the GST collected for the government: what the business earns from the goods. Real retailers publish both: Reliance Retail reported gross revenue of Rs 90,408 crore and revenue from operations of Rs 79,745 crore for the same quarter, the step between them labelled GST recovered (RIL, 17 July 2026). Two correct numbers for one quarter is normal in retail, which is why every number you send carries its definition.
 
 Below, Rs 100 of GMV travels through an illustrative app business shaped like Kalpa's; the amounts are illustrative, and the order of the lines is every retailer's.
 
@@ -122,9 +122,9 @@ flowchart TB
     class O dark
 ```
 
-**Cost of goods sold (COGS)** is what Kalpa paid suppliers for the goods it sold, and **gross margin** is net revenue less COGS. Variable costs come with every order: picking and packing, last-mile delivery, the payment fee, handling returns, and the retention marketing that brings an existing customer back. Gross margin less variable costs is **contribution**, what each order adds towards the costs that do not change with one more order: stores and warehouses, technology, head office, and the budget that wins new customers, which section 5 divides by the customers it brings to get CAC. What remains is **EBITDA**, earnings before interest, tax, depreciation and amortisation, which is operating profit before depreciation and the margin retailers report.
+**Cost of goods sold (COGS)** is what Kalpa paid suppliers for the goods it sold, and **gross margin** is net revenue less COGS. Variable costs come with every order: picking and packing, last-mile delivery, the payment fee, handling returns, and the retention marketing that brings a customer back. Gross margin less variable costs is **contribution**, what each order adds towards the costs that do not change with one more order: stores and warehouses, technology, head office, and the budget that wins new customers, which section 5 turns into CAC. What remains is **EBITDA**, earnings before interest, tax, depreciation and amortisation: operating profit before depreciation, the margin retailers report.
 
-Real retailers keep a thin slice. DMart reported an EBITDA margin of 7.8 percent and a profit-after-tax margin of 4.8 percent on FY26 revenue of Rs 66,968 crore, standalone figures that count the company alone without its subsidiaries (DMart results release, 2 May 2026). Reliance Retail reported an EBITDA margin of 7.9 percent of revenue from operations in the quarter to June 2026, or 7.4 percent without its Rs 374 crore of investment income (RIL, 17 July 2026). DMart keeps Rs 4.80 of every Rs 100 of revenue after tax, about Rs 6.40 before it, so a 5 percent price cut that sells nothing extra takes Rs 5 of that Rs 6.40, about three quarters of the profit.
+Real retailers keep a thin slice. DMart reported an EBITDA margin of 7.8 percent and a profit-after-tax margin of 4.8 percent on FY26 revenue of Rs 66,968 crore, standalone figures for the company without its subsidiaries (DMart results release, 2 May 2026). Reliance Retail's EBITDA margin was 7.9 percent of revenue from operations in the quarter to June 2026, or 7.4 percent without Rs 374 crore of investment income (RIL, 17 July 2026). DMart keeps Rs 4.80 of every Rs 100 of revenue after tax, about Rs 6.40 before it, so a 5 percent price cut that sells nothing extra takes Rs 5 of that Rs 6.40, about three quarters of the profit.
 
 ### Contribution per order, on the Saturday basket
 
@@ -163,10 +163,10 @@ The cash conversion cycle is inventory days plus receivable days less payable da
 | Revenue booked | The full selling price, net of tax | The full selling price, net of tax | Only the commission and fees |
 | The margin that matters | Gross margin, then store costs | Gross margin, then delivery cost per order | The take rate: fees as a share of GMV |
 | Inventory risk | The retailer's | The retailer's | The sellers' |
-| Indian examples, checked | DMart, with 503 stores at 30 June 2026 (Business Standard, 11 July 2026); Reliance Retail, with 20,169 (RIL, 17 July 2026); Trent's Westside and Zudio | DMart Ready, in 11 cities at 30 June 2026 (Business Standard, 11 July 2026); JioMart's grocery business | Flipkart, majority-owned by Walmart since August 2018 and about 85 percent owned at 31 January 2024 (Walmart's Form 10-K, filed 13 March 2026); Amazon India, whose seller terms call amazon.in the Marketplace on which registered sellers sell (sell.amazon.in) |
+| Indian examples, checked | DMart, with 503 stores at 30 June 2026 (Business Standard, 11 July 2026); Reliance Retail, with 20,169 (RIL, 17 July 2026); Trent's Westside and Zudio | DMart Ready, in 11 cities at 30 June 2026 (Business Standard, 11 July 2026); JioMart's grocery business | Flipkart, majority-owned by Walmart since August 2018 and about 85 percent owned at 31 January 2024 (Walmart's Form 10-K, filed 13 March 2026); Amazon India, a marketplace by its own seller terms (sell.amazon.in) |
 | What its data team watches | Footfall, conversion, bill value, like-for-like growth, days of inventory | Conversion, order value, delivery cost per order, returns, days of inventory | GMV, the take rate, seller quality, returns |
 
-The marketplace column exists in India largely because of one rule. Since 1 February 2019, foreign direct investment has been permitted up to 100 percent in marketplace e-commerce and not in the inventory model, and a marketplace may not own or control the goods sold on it or influence their prices (DPIIT, Press Note 2 of 2018). A foreign-owned multi-brand e-commerce business selling to Indian consumers must therefore run as a marketplace, which is why Flipkart and Amazon India do. The rule has edges: a single-brand retailer may sell its own brand online, food made in India has a government-approval route (Consolidated FDI Policy 2020, paragraphs 5.2.15.3(2)(g) and 5.2.5.2), and since 3 September 2026 a foreign-owned marketplace may hold stock for export (Press Note 3 of 2026; EY India, 25 September 2026).
+The marketplace column exists in India largely because of one rule. Since 1 February 2019, foreign direct investment has been permitted up to 100 percent in marketplace e-commerce and not in the inventory model, and a marketplace may not own or control the goods sold on it or influence their prices (DPIIT, Press Note 2 of 2018). A foreign-owned multi-brand e-commerce business selling to Indian consumers must therefore run as a marketplace, which is why Flipkart and Amazon India do. The rule has edges: a single-brand retailer may sell its own brand online, and food made in India has a government-approval route (Consolidated FDI Policy 2020, paragraphs 5.2.15.3(2)(g) and 5.2.5.2).
 
 ---
 
@@ -217,9 +217,9 @@ The tension that runs through Weeks 1 and 2 sits in the middle of this table: ma
 
 ## 5. The metrics, as formulas
 
-On Saturday the app counted 50,000 visitors, 2,000 orders and Rs 1,500 an order. If next Saturday's sales fall, each of those numbers is a suspect: fewer people came, fewer of them bought, or each spent less, and a metric exists to say which. This section gives every metric on the domain card, which are conversion, average order value, frequency, repeat rate, retention, lifetime value, acquisition cost and payback, gross margin, days of inventory and like-for-like growth, plus sell-through and the returns rate, each as a formula with a worked number, the trap that most often makes it lie, and the person who asks for it.
+On Saturday the app counted 50,000 visitors, 2,000 orders and Rs 1,500 an order. If next Saturday's sales fall, each of those numbers is a suspect: fewer people came, fewer of them bought, or each spent less, and a metric exists to say which. Below, the domain card's ten metrics, conversion, average order value, frequency, repeat rate, retention, lifetime value, acquisition cost and payback, gross margin, days of inventory and like-for-like growth, plus sell-through and returns, each come as a formula, a worked number, the trap that most often makes it lie, and who asks for it.
 
-The picture to keep from this dossier is the metric tree below. Revenue is customers, times orders per customer, times items per order, times price per item, less discounts. The branches say how each part is won or lost. The dotted line above revenue is the precondition, since nothing sells that is not on the shelf, and the dotted line to its right runs through the leaks to the margin that decides whether the revenue was worth having.
+The picture to keep from this dossier is the metric tree below: revenue is customers, times orders per customer, times items per order, times price per item, less discounts, and each branch says how its part is won or lost. Above revenue sits the shelf, since nothing sells that is not on it, and to its right the leaks run to the margin that decides whether the revenue was worth having.
 
 ```mermaid
 flowchart TB
@@ -244,7 +244,7 @@ flowchart TB
 
 The tree's revenue is sales at the prices charged, before cancellations, returns and GST come out, which section 3 calls GMV; the leaks are where it becomes net revenue.
 
-Every worked number below is illustrative. Most come from section 1's Saturday or from the app's month and quarter in the same city: in the month, 40,000 customers placed 50,000 orders of four items each at Rs 450 an item before a 10 percent discount, 48,000 of those orders were delivered and 3,360 came back; in the quarter, 1,00,000 customers placed 1,50,000 orders and 30,000 of them ordered twice or more; and of January's 1,000 new customers, 380 ordered again in February, 300 in March and 260 in April. The store carries 5,000 products. The rest are introduced where they are used.
+Every worked number below is illustrative. Most come from section 1's Saturday or from the app's month and quarter in the same city: in the month, 40,000 customers placed 50,000 orders of four items each at Rs 450 an item before a 10 percent discount, and in the quarter 1,00,000 customers placed 1,50,000 orders. The rest are introduced where they are used.
 
 ### The revenue tree
 
@@ -252,7 +252,7 @@ Every worked number below is illustrative. Most come from section 1's Saturday o
 |---|---|
 | Formula | Revenue = customers x orders per customer x items per order x price per item, less discounts |
 | Worked | 40,000 x 1.25 x 4 x Rs 450 = Rs 9 crore; less 10 percent, Rs 8.1 crore |
-| The trap | Leaks that grow faster than sales: revenue up 10 percent while returns climb from 6 to 12 percent of it leaves what Kalpa keeps up 3 percent, since 100 less 6 is 94 and 110 less 13.2 is 96.8 (invented), so a growth figure says which side of the leaks it was measured on |
+| The trap | Leaks that grow faster than sales: revenue up 10 percent while returns climb from 6 to 12 percent of it leaves what Kalpa keeps up 3 percent, 94 becoming 96.8 on a base of 100 (invented), so a growth figure says which side of the leaks it was measured on |
 | Who asks | The CEO, first and always |
 
 ### Conversion and the funnel
@@ -270,7 +270,7 @@ Every worked number below is illustrative. Most come from section 1's Saturday o
 |---|---|
 | Formula | AOV = revenue / orders; basket size = items / orders |
 | Worked | Rs 30 lakh / 2,000 = Rs 1,500 with 4 items on the app; Rs 1,250 with 5 items at the store |
-| The trap | The app's AOV set against the store's ABV, its average bill value: the two divide different baskets, since an app order is a planned delivery and a store bill counts every quick trip for one item, so each compares only with its own history |
+| The trap | Setting the app's AOV against the store's ABV, its average bill value: an app order is a planned delivery and a store bill counts every quick trip for one item, so each compares only with its own history |
 | Who asks | Merchandising, marketing and finance |
 
 ### Frequency and repeat rate
@@ -305,7 +305,7 @@ Every worked number below is illustrative. Most come from section 1's Saturday o
 | | |
 |---|---|
 | Formula | CAC = acquisition spend / new customers it brought; payback months = CAC / monthly contribution per customer |
-| Worked | Rs 12 crore for 80,000 new customers (an illustrative count) is Rs 1,500; at Rs 75 of contribution a month, payback takes 20 of the 24 months a customer is expected to stay, so the CLV of Rs 1,800 clears the CAC by only Rs 300 |
+| Worked | Rs 12 crore for 80,000 new customers (an illustrative count) is Rs 1,500; at Rs 75 of contribution a month, payback takes 20 of the 24 months a customer stays, so the CLV of Rs 1,800 clears the CAC by only Rs 300 |
 | The trap | Blended CAC divides by every new customer, including those who came free, so it makes spend look cheaper than paid CAC does (a16z, 2015) |
 | Who asks | The CEO and the finance controller, before signing |
 
@@ -315,7 +315,7 @@ Every worked number below is illustrative. Most come from section 1's Saturday o
 |---|---|
 | Formula | Gross margin percent = (net revenue less COGS) / net revenue; contribution = gross margin less variable costs |
 | Worked | The Saturday basket: Rs 400 / Rs 1,600 = 25 percent; contribution Rs 150, or 9.4 percent |
-| The trap | Dividing margin by GMV: the basket's Rs 400 over its Rs 1,800 is 22 percent, about three points under the 25 it earns on net revenue, and with GST inside the base a tax change moves the margin while the business stands still |
+| The trap | Dividing margin by GMV: the basket's Rs 400 over Rs 1,800 is 22 percent, about three points under the 25 it earns on net revenue, and with GST in the base a tax change moves the margin while the business stands still |
 | Who asks | The finance controller and the category buyers |
 
 ### Inventory turns and days of inventory
@@ -341,7 +341,7 @@ Every worked number below is illustrative. Most come from section 1's Saturday o
 | | |
 |---|---|
 | Formula | Returned / delivered, in units, orders or rupees, on one stated basis |
-| Worked | 3,360 of 48,000 delivered orders came back in a month: 7 percent |
+| Worked | Of the month's 50,000 orders, 48,000 were delivered and 3,360 came back: 7 percent |
 | The trap | Returns arrive late, so this month looks clean and past months keep rising; two months compare only once both return windows close |
 | Who asks | Finance, the fashion category, support and logistics |
 
@@ -350,8 +350,8 @@ Every worked number below is illustrative. Most come from section 1's Saturday o
 | | |
 |---|---|
 | Formula | Sales of stores open throughout both periods / the same stores' sales in the earlier period, less 1; each company sets a minimum age for a store to count |
-| Worked | 100 stores went from Rs 500 crore to Rs 510 crore, up 2 percent, while 20 new stores added Rs 65 crore for 15 percent in all (invented). DMart counts stores two years and older, which grew 10.8 percent in the quarter to March 2026 (DMart, 2 May 2026), and Reliance Retail's grocery grew 7 percent like for like in the quarter to June 2026 (RIL, 17 July 2026). |
-| The trap | The calendar and the tax move sales while the stores stand still: Diwali fell on 20 and 21 October 2025, by state, and falls on 8 November 2026, so October against October compares the month that held the festival with a month before it, and GST on goods such as shampoo fell to 5 percent from 22 September 2025 (GST Council, 3 September 2025), so sales counted with the tax inside dip across that date for the same goods sold |
+| Worked | 100 stores went from Rs 500 crore to Rs 510 crore, up 2 percent, while 20 new stores added Rs 65 crore for 15 percent in all (invented). DMart's stores two years and older grew 10.8 percent in the quarter to March 2026 (DMart, 2 May 2026), and Reliance Retail's grocery 7 percent like for like in the quarter to June 2026 (RIL, 17 July 2026). |
+| The trap | The calendar and the tax move sales while the stores stand still: Diwali fell on 20 and 21 October 2025, by state, and falls on 8 November 2026, so October against October sets the festival month against a month before it, and GST on goods such as shampoo fell to 5 percent from 22 September 2025 (GST Council, 3 September 2025), so sales with tax inside dip across that date for the same goods |
 | Who asks | The CEO, store operations and investors |
 
 ---
@@ -380,7 +380,7 @@ At Monday's trading meeting the category buyer for home care says: "The lights a
 | Basket size | Items per order, also called units per transaction | "Bundles lifted basket size from four items to five." |
 | Dark store | A small neighbourhood warehouse that serves only online orders | "Quick commerce runs on dark stores a short ride from the customer." |
 | Last mile | The final leg of delivery, from the local hub to the door | "Our last-mile cost per order is what fast delivery really costs us." |
-| Cash on delivery | Paying the delivery person when the parcel arrives | "Check whether the parcels refused at the door are mostly COD before we change payment options." |
+| Cash on delivery | Paying the delivery person when the parcel arrives | "Check whether refused parcels are mostly COD before we change payment options." |
 | RTO | Return to origin: a parcel that goes back undelivered, often a refused COD order | "RTO costs us two trips and earns nothing." |
 | Fill rate | The share of an order a supplier actually delivered | "The supplier's fill rate fell to 90 percent, and that is our stock-out." |
 | Stock-out | A product that is not on the shelf when a customer wants it | "Stock-outs hide in sales data, because a missed sale leaves no row." |
@@ -401,16 +401,16 @@ The Saturday basket met most of the rules below on its way to the door: the tax 
 
 | Rule, and what it requires | What it means for an analyst or an AI system |
 |---|---|
-| **GST and the tax invoice.** An invoice shows the tax inside the price, and the place of supply when a sale crosses a state line, and small sales to buyers not registered for GST may be summed into one invoice at the close of the day (section 31 of the CGST Act and rule 46 of its rules). Invoices to registered businesses are also e-invoices once the seller's turnover passes Rs 5 crore, a marketplace collects tax at source on its sellers' sales, and most goods sit at 5 or 18 percent from 22 September 2025 (GST Council, 3 September 2025). | Every revenue column says whether GST is inside it, and finance reconciles to the invoices, where a day's small sales can share one, so an invoice count is no bill count. A comparison straddling 22 September 2025 mixes a tax change into a price change. |
-| **Legal Metrology (Packaged Commodities) Rules 2011.** Every pre-packaged item shows its maker, its MRP "inclusive of all taxes" and a consumer-care contact (rule 6), and its unit sale price from 1 April 2022 (SCC Online, 8 November 2021); nobody may sell above the retail sale price (rule 18(2)); since 1 January 2018 an e-commerce entity shows the same declarations, except the date of manufacture, on the product page. | A pricing model or agent is capped at MRP, because selling above it is an offence whatever a test would show, and model-written catalogue text keeps every declaration. |
-| **Consumer Protection (E-Commerce) Rules 2020** (G.S.R. 462(E), 23 July 2020). Complaints acknowledged within forty-eight hours and redressed within a month (4(5)); no cancellation charge unless the platform bears similar charges (4(8)); consent by explicit action, never a pre-ticked box (4(9)); no price manipulation and no discrimination between consumers of the same class (4(11)); a marketplace publishes the main parameters that rank goods and sellers, and their relative importance (5(3)(f)); sellers state the country of origin (6(5)(d)). | A support bot's turnaround is a legal clock. Different prices for similar customers need legal review first. A ranking model's main inputs and their weight are published to shoppers, so they must be ones the business can state. |
+| **GST and the tax invoice.** An invoice shows the tax inside the price and, on a sale across a state line, the place of supply, and small sales to buyers not registered for GST may share one invoice at the close of the day (CGST Act, section 31, and rule 46). Invoices to registered businesses are e-invoices once the seller's turnover passes Rs 5 crore, a marketplace collects tax at source on its sellers' sales, and most goods sit at 5 or 18 percent from 22 September 2025 (GST Council, 3 September 2025). | Every revenue column says whether GST is inside it, and finance reconciles to the invoices, where a day's small sales can share one, so an invoice count is no bill count. A comparison straddling 22 September 2025 mixes a tax change into a price change. |
+| **Legal Metrology (Packaged Commodities) Rules 2011.** Every pre-packaged item shows its maker, its MRP "inclusive of all taxes", a consumer-care contact (rule 6) and, from 1 April 2022, its unit sale price (SCC Online, 8 November 2021); nobody may sell above the retail sale price (rule 18(2)); and since 1 January 2018 an e-commerce product page shows the same declarations, except the date of manufacture. | A pricing model or agent is capped at MRP, because selling above it is an offence whatever a test would show, and model-written catalogue text keeps every declaration. |
+| **Consumer Protection (E-Commerce) Rules 2020** (G.S.R. 462(E), 23 July 2020). Complaints acknowledged within forty-eight hours and redressed within a month (4(5)); consent by explicit action, never a pre-ticked box (4(9)); no price manipulation and no discrimination between consumers of the same class (4(11)); a marketplace publishes the main parameters that rank goods and sellers, and their relative importance (5(3)(f)). | A support bot's turnaround is a legal clock. Different prices for similar customers need legal review first. A ranking model's main inputs and their weight are published to shoppers, so they must be ones the business can state. |
 | **Dark patterns guidelines**, issued by the Central Consumer Protection Authority on 30 November 2023 with 13 specified patterns (PIB, 8 December 2023), which the guidelines' Annexure 1 sets out, among them false urgency, basket sneaking, drip pricing, and bait and switch (SCC Online, 4 December 2023). | A test that wins by slipping an item into the basket or running a fake countdown is a dark pattern, and a model writing offers must not invent urgency. |
-| **Digital Personal Data Protection Act 2023 and Rules 2025.** The Rules were notified in the Gazette on 13 November 2025 (G.S.R. 846(E)), and most of their duties apply from 13 May 2027, eighteen months on: a consent notice naming the purpose, use only for lawful and specific purposes, prompt notice of a breach, verifiable parental consent for a child's data, and penalties under the Act of up to Rs 250 crore for failing to keep reasonable security safeguards (PIB explainer, 17 November 2025). | Data collected to deliver a parcel is not automatically free to train a model. Analysis tables carry member IDs in place of names and phone numbers, deletion requests reach every copy, and a single view of a customer needs a purpose. |
-| **RBI card-on-file tokenisation.** Only card issuers and networks may store the card number; merchants hold a token and may keep the last four digits and the issuer's name for reconciliation (RBI/2021-22/96, 7 September 2021; in force from 1 October 2022 after two extensions, BusinessToday, 24 June 2022). | No payments table holds a full card number; reconciliation joins on the token, or on the last four digits with the issuer. |
-| **PCI DSS**, the card industry's security standard for anyone who stores, processes or transmits card data; version 4.0.1, published 11 June 2024, has been the only supported version since 31 December 2024 (PCI Security Standards Council blog). | Card data stays out of analytics environments, logs and model inputs. |
+| **Digital Personal Data Protection Act 2023 and Rules 2025.** The Rules were notified in the Gazette on 13 November 2025 (G.S.R. 846(E)), and most of their duties apply from 13 May 2027: a consent notice naming the purpose, use only for lawful and specific purposes, prompt notice of a breach, verifiable parental consent for a child's data, and penalties under the Act of up to Rs 250 crore for failing to keep reasonable security safeguards (PIB explainer, 17 November 2025). | Data collected to deliver a parcel is not automatically free to train a model. Analysis tables carry member IDs in place of names and phone numbers, deletion requests reach every copy, and a single view of a customer needs a purpose. |
+| **RBI card-on-file tokenisation.** Only card issuers and networks may store the card number; merchants hold a token and may keep the last four digits and the issuer's name for reconciliation (RBI circular of 7 September 2021, in force from 1 October 2022; BusinessToday, 24 June 2022). | No payments table holds a full card number; reconciliation joins on the token, or on the last four digits with the issuer. |
+| **PCI DSS**, the card industry's security standard for anyone who stores, processes or transmits card data, now at version 4.0.1 of 11 June 2024 (PCI Security Standards Council blog). | Card data stays out of analytics environments, logs and model inputs. |
 | **FDI policy on e-commerce.** A foreign-owned multi-brand e-commerce business selling to Indian consumers runs as a marketplace (section 3). | A marketplace must not steer its sellers' prices, so a pricing model built there advises sellers. |
 
-**For a GCC serving a US retailer**, the customer's rights travel with the data. California's privacy law lets a resident learn what personal information a business holds, have it deleted or corrected, stop its sale or sharing (including through a global privacy control signal), and limit the use of sensitive personal information (California Attorney General, CCPA page); rules on automated decision-making technology took effect on 1 January 2026, with their duties for significant decisions from 1 January 2027 (CPPA, 23 September 2025). PCI DSS covers a US retailer's card data as it does in India, and a deletion request made in California has to reach the copy in a Bengaluru notebook.
+**For a GCC serving a US retailer**, the customer's rights travel with the data. California's privacy law lets a resident learn what personal information a business holds, have it deleted or corrected, stop its sale or sharing, and limit the use of sensitive information (California Attorney General, CCPA page), and its rules on automated decision-making, in force from 1 January 2026, reach significant decisions from 1 January 2027 (CPPA, 23 September 2025). A deletion request made in California has to reach the copy in a Bengaluru notebook.
 
 The table tells an analyst which questions go to the legal team before a model ships: which data, for which purpose, with whose consent, at what price, and ranked by what rule.
 
@@ -443,7 +443,7 @@ flowchart LR
 | Catalogue enrichment (recommend) | New products arrive with thin descriptions | Extract attributes from supplier sheets and photos and write consistent descriptions with a model, checked against the declarations | Search success, and "not as described" returns | An invented attribute that becomes a return |
 | Agents that act (act) | Replenishment, refunds and buyers' questions wait in queues | A replenishment agent drafts orders within limits; a support agent refunds when a case fits the policy; a merchandising copilot writes, runs and shows the query behind a buyer's question | Cases resolved without a person, reversals, time saved | An order outside limits, a refund the policy never allowed, a fluent answer on a wrong join |
 
-**Customer support, worked through (recommend, then act).** Language models enter the business here. Farhan Sheikh's team answers two thousand tickets a day. Suppose, as an illustration, that 1,200 of them ask where an order is or when a refund will land, and that a model which reads each ticket's intent, retrieves the policy and drafts the reply for an agent to approve saves four minutes on each: 1,200 times four minutes is 80 agent-hours a day, the work of ten eight-hour shifts. Now suppose the draft misstates the return window and agents approve it on 300 refund tickets a day at Rs 800 each: that is Rs 2,40,000 of refunds the policy never allowed, in one day, before anyone notices. The gain is measured in resolution time, repeat contacts and cost per resolved ticket and the risk in wrong refunds, so a person approves every draft until the error rate is known.
+**Customer support, worked through (recommend, then act).** Language models enter here. Farhan Sheikh's team answers two thousand tickets a day. Suppose, as an illustration, that 1,200 ask where an order is or when a refund will land, and a model that reads each ticket, retrieves the policy and drafts a reply for an agent to approve saves four minutes on each: 1,200 times four minutes is 80 agent-hours a day, ten eight-hour shifts. Now suppose the draft misstates the return window and agents approve it on 300 refund tickets a day at Rs 800 each: Rs 2,40,000 of refunds the policy never allowed, in one day, before anyone notices. The gain shows in resolution time, repeat contacts and cost per ticket and the risk in wrong refunds, so a person approves every draft until the error rate is known.
 
 Two public cases show both ends of the ladder. Klarna's AI assistant handled two-thirds of its customer-service chats in its first month, the work of 700 full-time agents, and cut the time to resolve an errand from 11 minutes to under 2 (Klarna press release, 27 February 2024); fifteen months later its chief executive said the focus on cost had produced lower quality and that customers would always be able to reach a human (Fortune, 9 May 2025, from an interview with Bloomberg). When Air Canada's website chatbot described a bereavement-fare refund the airline did not offer, a Canadian tribunal held the airline responsible, since "it makes no difference whether the information comes from a static page or a chatbot" (Moffatt v. Air Canada, 2024 BCCRT 149, as reported by McCarthy Tétrault). An agent that issues refunds is only as safe as its policy and its limits.
 
@@ -451,27 +451,27 @@ Two public cases show both ends of the ladder. Klarna's AI assistant handled two
 
 ## 9. The common technical problems, with their options
 
-On Saturday afternoon the category buyer for home care had 380 festive lights left of 1,000 after four weeks, with Diwali ahead, and more than one honest way to decide on a markdown. Most retail data problems look like that: several defensible answers, chosen by the rows each needs, what it costs, how long it takes and how accurate it must be. The seven below reach every retail data team, and their sizes are illustrative.
+On Saturday the category buyer for home care had 380 festive lights left of 1,000, with Diwali ahead, and more than one honest way to decide on a markdown. Most retail data problems look like that, with several defensible answers chosen by the rows each needs, its cost, its time and the accuracy it must reach. The seven below reach every retail data team; their sizes are illustrative.
 
 **When to mark down the festive lights.**
 
 | Option | How to size it |
 |---|---|
-| A rule of thumb: mark down when sell-through at a checkpoint falls below plan | Minutes a line; blind to how fast the weeks before a festival sell |
-| Project the weeks left from the rate so far and last year's festival lift, and mark down only the units the projection leaves unsold | An hour a line, on two years of weekly sales |
-| Estimate how demand responds to price from past markdowns, then simulate the depth and timing that earn the most margin on the stock | Needs dozens of past markdowns on similar lines, and weeks to build |
+| A rule of thumb: mark down when sell-through at a checkpoint falls below plan | Minutes a line; blind to how fast festival weeks sell |
+| Project the weeks left from the rate so far and last year's festival lift, and mark down only what the projection leaves unsold | An hour a line, on two years of weekly sales |
+| Estimate how demand responds to price from past markdowns, then simulate the depth and timing that earn the most margin | Dozens of past markdowns on similar lines, and weeks to build |
 
-The best fit for Kalpa is the projection, line by line, since one season of lights holds too few markdowns to estimate how demand responds to price. It changes once hundreds of seasonal lines are marked down each year, when the simulation pays for itself.
+The best fit for Kalpa is the projection, line by line, since one season of lights holds too few markdowns to estimate how demand responds to price. It changes once hundreds of seasonal lines are marked down each year and the simulation pays for itself.
 
 **Finding stock-outs in sales data.**
 
 | Option | How to size it |
 |---|---|
 | Flag runs of zero sales on products that normally sell every day | One query over the sales history; misses slow sellers |
-| Join the daily stock records and mark a product-store-day out when stock on hand was zero | 50 stores x 5,000 products x 365 days is about 9 crore rows a year; right only when the records match the shelf |
-| Estimate the sales lost on flagged days from what those days usually sell | Needs a forecast for each product and store, and days of work |
+| Join the daily stock records and mark a product-store-day out when stock on hand was zero | 50 stores x 5,000 products x 365 days, about 9 crore rows a year; right only when the records match the shelf |
+| Estimate the sales lost on flagged days from what those days usually sell | A forecast per product and store, and days of work |
 
-Kalpa is best served by the stock records with the zero-sales rule beside them, plus a monthly audit of a sample of shelves to measure how often the records call a product available while its shelf is empty. The answer changes if shrinkage runs high, since the records then drift from the shelf and the audits carry more of the weight.
+Kalpa is best served by the stock records with the zero-sales rule beside them, and a monthly audit of sample shelves to measure how often the records call a product available while its shelf is empty. The answer changes if shrinkage runs high, since the records then drift from the shelf and the audits carry more weight.
 
 **Forecasting a promotion week.**
 
@@ -481,27 +481,27 @@ Kalpa is best served by the stock records with the zero-sales rule beside them, 
 | A normal-week baseline plus the uplift of past promotions of similar depth | Days; tested on held-out past promotions |
 | A machine-learning model on product-store-day history with price, promotion and calendar features | 50 stores x 5,000 products x 730 days is about 18 crore rows, and weeks of work |
 
-For Kalpa a baseline plus uplift at category level fits best, split down to products, since each product has seen few comparable promotions, and the history it learns from needs its stock-out days flagged first or it learns that an empty shelf sold nothing. It changes once each product has years of similar promotions behind it. A stock-out and an overstock cost different amounts, so the error is judged in rupees.
+For Kalpa a baseline plus uplift at category level, split down to products, fits best, since each product has seen few comparable promotions, and its history needs its stock-out days flagged first or it learns that an empty shelf sold nothing. It changes once each product has years of similar promotions behind it. A stock-out and an overstock cost different amounts, so the error is judged in rupees.
 
 **Refusing risky cash-on-delivery orders before they become RTOs.**
 
 | Option | How to size it |
 |---|---|
-| Rules: no cash on delivery above an order value, or for accounts that refused a parcel before | Hours; blunt, and it turns away good customers with the bad |
-| Score each cash-on-delivery order's chance of refusal from the account's history, the address, its pin code's past refusals and the order itself | Months of delivered and refused orders as labels, and days to build |
-| Ask before dispatch: a message asking the customer to confirm, or a small reason to pay online, sent only to the riskiest orders | A message per risky order, and a day's delay for those who never answer |
+| Rules: no cash on delivery above an order value, or for accounts that refused a parcel before | Hours; blunt, and it turns good customers away with the bad |
+| Score each cash-on-delivery order's chance of refusal from the account's history, the address, the pin code's past refusals and the order | Months of delivered and refused orders as labels, and days to build |
+| Ask before dispatch: a message to confirm, or a small reason to pay online, for the riskiest orders only | A message per risky order, and a day's delay for those who never answer |
 
-The score fits Kalpa best when it chooses which orders get the confirmation step, since an RTO costs two trips and a good order turned away costs its contribution and perhaps the customer. It changes if the score would refuse orders outright, and a rule that falls on a whole pin code goes to the legal team first, because the e-commerce rules forbid discriminating between consumers of the same class or classifying them arbitrarily (rule 4(11), section 7).
+The score fits Kalpa best when it chooses which orders get the confirmation step, since an RTO costs two trips and a good order turned away costs its contribution and perhaps the customer. It changes if the score would refuse orders outright: a rule that falls on a whole pin code goes to the legal team first, because the e-commerce rules forbid discriminating between consumers of the same class or classifying them arbitrarily (rule 4(11), section 7).
 
 **Clustering stores for assortment.**
 
 | Option | How to size it |
 |---|---|
 | Group stores by rule: city, size and region | An hour; blind to what each store's customers buy |
-| Cluster stores on their category mix, each category's share of the store's sales | 50 stores x 40 categories is a table of 2,000 numbers that clusters in seconds; the work is choosing the categories and naming the clusters so buyers trust them |
-| Plan each store's range from its own product sales | 50 stores x 5,000 products; noisy for slow sellers, and fifty ranges for buyers to manage |
+| Cluster stores on their category mix, each category's share of the store's sales | 50 stores x 40 categories, 2,000 numbers that cluster in seconds; the work is choosing categories and naming clusters buyers trust |
+| Plan each store's range from its own product sales | 50 stores x 5,000 products; noisy for slow sellers, and fifty ranges to manage |
 
-A handful of clusters on the category mix suits Kalpa, named in the buyers' own words, with store-level exceptions for the fastest sellers. That changes if stores differ mostly in size, where size bands crossed with the clusters work better.
+A handful of clusters on the category mix suits Kalpa, named in the buyers' words, with store-level exceptions for the fastest sellers. That changes if stores differ mostly in size, where size bands crossed with the clusters work better.
 
 **Deduplicating customers across app and store.**
 
@@ -511,7 +511,7 @@ A handful of clusters on the category mix suits Kalpa, named in the buyers' own 
 | Probabilistic match on name, address and phone similarity, with a review queue | Comparisons grow with the square of the records, so candidates are grouped by pin code or phone first |
 | The member ID or phone number asked for at the till | Matches every record from now on and leaves the history as it was |
 
-Kalpa should start with the exact match plus capture at the till, and keep the probabilistic match for reviewed reporting. It changes when merged records trigger offers or credit, where a false merge of two people's histories and consents costs more than a missed one, and the data protection law's purpose rule applies to the join itself.
+Kalpa should start with the exact match plus capture at the till, keeping the probabilistic match for reviewed reporting. It changes when merged records trigger offers or credit: a false merge of two people's histories and consents then costs more than a missed one, and the data protection law's purpose rule applies to the join itself.
 
 **Attributing a sale to a campaign.**
 
@@ -566,7 +566,7 @@ Read these in order; each source was checked on the date shown.
 | 2 | Avenue Supermarts (DMart), results press release of 2 May 2026, https://api.dmartindia.com/corporate/content/file/v1/2/R2aWBiIpiuD39xgfm4wrqQKc1777723315/Press%20release%20dated%202nd%20May,%202026 (verified 30 Sep 2026) | 10 minutes | A store chain's margins, and growth measured on stores two years and older |
 | 3 | Andreessen Horowitz, "16 Startup Metrics", https://a16z.com/16-startup-metrics/ (verified 30 Sep 2026) | 20 minutes | GMV against revenue, blended against paid CAC, and retention by cohort |
 | 4 | DPIIT, Press Note 2 (2018 Series) on FDI in e-commerce, https://www.dpiit.gov.in/static/uploads/2025/07/2959b696766693441f5eb45d3eb49f97.pdf (verified 30 Sep 2026) | 15 minutes | The marketplace rule in the government's own text |
-| 5 | Consumer Protection (E-Commerce) Rules 2020, full text at IBC Laws, https://ibclaw.in/consumer-protection-e-commerce-rules-2020/ (verified 30 Sep 2026) | 20 minutes | What a platform owes a customer, including the duty to explain its ranking |
+| 5 | Consumer Protection (E-Commerce) Rules 2020, full text at IBC Laws, https://ibclaw.in/consumer-protection-e-commerce-rules-2020/ (verified 30 Sep 2026) | 20 minutes | What a platform owes a customer, including the duty to publish what ranks goods and sellers |
 | 6 | PIB explainer, "DPDP Rules, 2025 Notified", https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/nov/doc20251117695301.pdf (verified 30 Sep 2026) | 15 minutes | Consent, purpose, breach notice and penalties in plain language |
 | 7 | RBI circular on card-on-file tokenisation, 7 September 2021, https://rbi.org.in/Scripts/NotificationUser.aspx?Id=12159&Mode=0 (verified 30 Sep 2026) | 10 minutes | Why a payments table holds tokens and last four digits |
 | 8 | Klarna press release on its AI assistant, 27 February 2024, https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/ (verified 30 Sep 2026), then Fortune, 9 May 2025, https://fortune.com/2025/05/09/klarna-ai-humans-return-on-investment/ (verified 30 Sep 2026) | 15 minutes | A support agent's gain, and the cost found later |
