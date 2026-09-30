@@ -199,3 +199,78 @@ Proof run before the push: `python3 scripts/verify.py content/W01/D4 --execute`,
 decks rebuilt with `scripts/build_deck.py` and checked by `scripts/deck_check.py`, every changed
 notebook executed cold, and the tic scanner on every changed markdown file. Every one passed on
 30 September 2026: verify with `--execute` reported zero failures, with 116 notebook checks passing.
+
+## The v3 recheck, 30 September 2026
+
+The merged pack (pull request 201, commit bda418a) was rechecked to standard v3 (decisions
+`question-ladder`, `self-contained`, `humanizer` and `opus-max`) from the recheck prompt in
+`prompts/week_revamp_W02_W03.md`, section 1, on branch `w01-d4-v3`, restarted from main after a
+first session stopped at the usage limit without pushing. The fills: Week 1 Thursday, Thu 8 Oct
+2026; the later days' traps (Friday's traps in new places and a reconciliation skipped under time
+pressure; Week 2's fan-out, INNER join, whole-table ranking, LAG without PARTITION, doubling merge and
+double-counting pivot); and four specifics: keep the merged numbers and verdict exactly, keep the
+exposure table's one sentence without spreading it, fit the practice lab's core to about 60 minutes
+with the rest marked stretch and the TA note's cut order kept, and rebuild both decks on the cover's
+chapter strip from pull request 200.
+
+**Read first, in this order.** `CLAUDE.md`; `the-standard.md` (the question ladder, the self-contained
+rule, the decks); `.claude/skills/humanizer/SKILL.md`; the Thursday row of the spine and of the
+tracker; this provenance; and, for the form, the sibling rechecks in progress on `origin/w01-d3-v3`
+and `origin/w01-d5-v3` (their ladder slide after the cover, their "Answered in six questions" map
+slides, their question-titled afternoon sections and their notebooks' closing answer cells).
+
+**The ladder.** The day's question, in Meera's words: is the Retail-Plus fall real, is Student's 40
+percent worth budget, and did the monsoon sale work? The day sheet prints the whole ladder at its
+top, and every family carries it word for word.
+
+| Chapter, as its opener asks it | Its full question | Notebook | Deck | The spine's rung |
+|---|---|---|---|---|
+| 1. Real, or the wobble? | Is the Retail-Plus fall real, or the wobble Kalpa sees every quarter? | `01_real_or_wobble` | Morning, SECTION 1, S7 to S24 | A shuffle test on the Retail-Plus gap |
+| 2. Worth acting on? | The fall edges past chance: is it big enough, in rupees against what a fix costs, to act on? | `02_worth_acting_on` | Morning, SECTION 2, S25 to S38 | Real against worth acting on |
+| 3. How many behind 40%? | Student is up 40 percent, the fastest rise on the page: how many customers stand behind it, and should budget move there? | `03_count_behind_the_rate` | Morning, SECTION 3, S39 to S53 | 40 percent on twelve orders |
+| 4. Did the discount work? | Marketing says the monsoon sale lifted revenue 6 percent: did the discount work, or did those customers buy anyway? | `04_discount_by_segment` | Morning, SECTION 4, S54 to S66 | The monsoon discount split by segment |
+| 5. What goes on the page? | Three answers are in: what goes on Meera's one page, and when is "not yet" the honest answer? | `05_the_note` | Morning, SECTION 5, S67 to S79 | The one-page note that may say "not yet" |
+| 6. What would settle it? | Marketing wants the sale again for more of the base: who got it, what else changed, and what would settle it at Diwali? | `06_fair_comparison` | Afternoon, SECTION 6, S2 to S15 | The sixth chapter: who got it, who did not, what else changed |
+
+**What each family changed.**
+
+| Family | What the recheck did |
+|---|---|
+| Chapter notebooks | Each title is `# n. <full question>`; the first cell restates what the chapters before found, with the numbers, and gives Who needs the answer and the six questions on the way; the six sections are numbered question headings (the options section is question 1, the second route question 6); the interview and depth headings ask; a closing markdown cell answers each question in one line with its number, before `kit.check_summary()`. The real-company lines carry their sources and check dates inline. Only markdown, the map cell's labels and chapter 3's section references changed, so every printed output is identical to the merged notebooks' (checked stream by stream), and chapter 5's dashboard still counts 506 words |
+| Decks | Morning: the day's question and the six chapter questions on S1 after the cover; each SECTION title is the chapter's short question with the full question as its promise; a map slide per chapter ("Answered in six questions, ...") with Who needs the answer and a timeline; subtitles ask and titles answer throughout; a code slide or a code block per build step; the Retail-Plus flips (S19) and Student's coin-flip worlds (S49) drawn as results; closes that answer each smaller question beside Kavya's review. Afternoon: the morning's five answers on S1; chapter 6 in the same form; the case, debrief, second case, drill and close as question-titled sections, the close (S27) answering the day's question. Slides added per chapter: chapter 1 three (map, code, result), chapter 2 two (map, predict with code), chapter 3 three (map, predict with code, result), chapter 4 two (map, result), chapter 5 three (map, each number's partner, the audit's logic), chapter 6 three (recap, map, code), plus the ladder slide and a map for the second case. The morning deck runs to 86 slides and the afternoon deck to 37 |
+| Exercises, lab, take-home, Kahoot | Every title and item heading asks; each file carries its scenario, terms and the earlier chapters' findings; solution files give each item its own section with the stem, the key quoted and why each other letter fails; the pushback case's "moves" became parts; the case notebooks' checks and helpers stopped announcing keys (ex1's `revenue()` over the learner's `kept(o)`, ex2's `like_for_like(s)`, ex3's `share_kept` and `plus_k`, and ex1 part 3's check against the exact count of every deal); strawman distractors replaced with plausible wrong answers, every key unchanged |
+| Practice lab | The four problems are the core, about 60 minutes (10, 15, 20, 15); the chapter sets' remaining 26 items are the stretch; the TA note keeps the cut order |
+| Day sheet | The ladder at its top with the day's answer; every heading a question; the new slide numbers; the escalated and second cases' part questions in the ladder |
+
+**Numbers the recheck corrected (no key changed).** Chapter 1 set, item 6: "about Rs 310" became Rs
+314, and option a's "pooled 0.17" became 0.24, recomputed with `Random(21)` (fall 314.1; pooled 0.243
+and 0.488; flips 0.004 and 0.007; correlation 0.9525); its solution's "Rs 430" and "about 0.9"
+became Rs 314 and 0.95. Chapter 3 solution, item 2: the reasons for b (13 over 10) and c (4 over 11)
+now name the arithmetic each wrong letter does. The ex1 and ex3 marker 3 reasons for option a say it
+counts nearly every world. The ex3 close reads "five of eight cancelled or returned, averaging about
+Rs 3,800", checked against the sample. The lab's model note is 94 words counted without its part
+labels. Ex1 marker 6's option d carries its figure, Rs 1,025 apart. The chapter 4 set's Berkeley line
+follows the abstract, the chapter 6 set's eBay line the notebook's sourced wording, and the chapter 1
+set's Booking.com line this provenance's facts.
+
+**New figures drawn on slides, and how they were computed.** Morning S19: the 5,000 Retail-Plus flips
+(seed 2026) in bins of Rs 250 centred from -1,500 to 1,500, counts 26, 99, 205, 425, 585, 678, 854,
+773, 598, 388, 225, 98 and 30, with 16 outside the axis; 145 at or above Rs 1,110 and 286 either way,
+as in notebook 1. Morning S49: Student's orders dealt by coin 5,000 times (seed 2026): 1,882 worlds
+fell, 1,133 rose under 40 percent and 1,985 rose 40 percent or more (0.397); Retail-Core's 73 orders
+430 (0.086). Both recomputed from the notebook's own helpers on 30 September 2026. The morning
+deck's Retail-Core chart (S17) recomputed to the same counts as the merged slide.
+
+**Decisions this recheck made.**
+
+| Decision | Why |
+|---|---|
+| Map slides are titled "Answered in six questions, ..." | `scripts/deck_md_check.py` treats a SECTION heading ending in a question mark as a question slide and wants the next slide's title to start with "Answer"; the sibling rechecks use the same form, and a shared-tool change would let a map slide carry any title |
+| The code slides show the logic in short form | S16, S30, S48, S62 and S12 in the afternoon are the notebooks' steps cut to four or five lines; S48 leaves out the world with no Q1 orders, which its notes name, and S75's audit tests fewer words than notebook 5's, which the slide says |
+| The chapter questions are the day's own wording | The spine names the rungs; the ladder turns each into a plain question in the stakeholder's words, and the day's question joins Meera's three |
+| The afternoon deck opens on the morning's five answers | The self-contained rule: a learner who missed the morning follows chapter 6 from the afternoon deck alone |
+| No Student count appears on any slide or map | The map slides ask their questions without numbers; results appear only after the room's run (S19, S49 and S63 on); chapter 3's close states the rule the room drew, under thirty customers |
+
+**Tool versions for this recheck.** Python 3.11.15, nbclient 0.11.0, nbformat 5.11.1, scipy 1.17.1,
+python-pptx 1.0.2, mermaid-cli 12.0.0, LibreOffice 24.2.7.2 with Carlito installed in the session
+(`apt-get install fonts-crosextra-carlito`).
