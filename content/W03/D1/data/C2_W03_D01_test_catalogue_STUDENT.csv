@@ -1,17 +1,17 @@
-code,name,list_price,kind
-T-CBC,Complete blood count,350,test
-T-LIP,Lipid profile,600,test
-T-HBA,HbA1c,450,test
-T-THY,Thyroid profile,500,test
-T-LFT,Liver function test,650,test
-T-KFT,Kidney function test,700,test
-T-VTD,Vitamin D,1200,test
-T-B12,Vitamin B12,900,test
-T-URN,Urine routine,200,test
-T-FBS,Fasting blood sugar,120,test
-T-CRP,C-reactive protein,550,test
-T-ESR,Erythrocyte sedimentation rate,150,test
-PKG-FB,Full body checkup,2999,package
-PKG-DB,Diabetes care,1499,package
-PKG-SC,Senior citizen checkup,3499,package
-PKG-CORP,Corporate health check,1500,package
+code,name,list_price_usd,kind
+T-CBC,Complete blood count,45,test
+T-LIP,Cholesterol panel,75,test
+T-HBA,Hemoglobin A1c,60,test
+T-THY,Thyroid screen,95,test
+T-LFT,Liver health panel,70,test
+T-KFT,Kidney health panel,65,test
+T-VTD,Vitamin D,150,test
+T-B12,Vitamin B12,85,test
+T-URN,Urine test,30,test
+T-FBS,Fasting glucose,25,test
+T-CRP,Inflammation marker (CRP),55,test
+T-ESR,Sed rate (ESR),30,test
+PNL-WEL,Whole-body wellness panel,299,panel
+PNL-DB,Diabetes monitoring panel,149,panel
+PNL-AGE,Healthy aging panel,349,panel
+PNL-EMP,Employer wellness screening,150,panel
