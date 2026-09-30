@@ -96,7 +96,7 @@ rebuilds the 186 orders.
 | **Go as far as** | Everyone ships a cleaned file, the logs, reconciled rows and rupees, the bridge from 2.1 to 1.9, Tuesday recomputed and the note to Finance, and can say for each technique which options were weighed and why this one. |
 | **Stop before** | Statistics beyond counts and the median, imputation beyond a stated default, pandas. Say once that pandas and SQL re-run this pass in Week 2. |
 | **Comes later** | Thursday asks whether the clean Retail-Plus fall is real or chance. Week 2 re-expresses the pass in SQL and pandas. |
-| **Cut first** | `json.dump` in chapter 6 (show the read-back only, half two S9), then the JSON feed in chapter 1 (half one S19). Never the reconciliation, never the recompute, never a chapter's options slide. |
+| **Cut first** | `json.dump` in chapter 6 (show the read-back only, half two S9), then the JSON feed in chapter 1 (half one S19). Never cut the reconciliation, the recompute or a chapter's options slide. |
 
 ---
 

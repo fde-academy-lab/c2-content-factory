@@ -1,9 +1,11 @@
 # Provenance: Week 1 Day 3
 
 INTERNAL. Where every number, decision and link in the Wednesday pack came from. Built on
-29 September 2026 to the round standard and raised on 30 September 2026 to the chapter standard in
+29 September 2026 to the round standard, raised on 30 September 2026 to the chapter standard in
 `.claude/skills/day-pack-builder/references/the-standard.md` (decisions `chapter-standard` and
-`four-domains` in `data/programme/facts.yaml`).
+`four-domains` in `data/programme/facts.yaml`), merged in pull request 196, and rechecked the same day
+to standard v3 (decisions `question-ladder`, `self-contained`, `humanizer` and `opus-max`) from the
+recheck prompt in `prompts/week_revamp_W02_W03.md`, section 1, on branch `w01-d3-v3`.
 
 ## The sources
 
@@ -15,6 +17,9 @@ INTERNAL. Where every number, decision and link in the Wednesday pack came from.
 | `docs/programme/calendar.md` | Wed 07 Oct 2026, W01/D3, teaching, module M1, no faculty block |
 | `content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md` on branch `w01-domain-retail`, read with `git show` on 30 September 2026 | The domain story the pack links to; Anand's row in the org chart; GMV, every order at the price charged before cancellations and returns come out, which is what both of Anand's figures count |
 | `content/W01/D2/trainer/C2_W01_D02_day_sheet_TRAINER.md` | Tuesday's reported numbers: Retail-Plus 2.32 to 1.18, down 49.0 percent; the tree as Tuesday read it, customers x1.000, orders per customer 1.65 to 1.25 (x0.754), revenue per order x1.180, revenue x0.890 |
+| `.claude/skills/day-pack-builder/references/the-standard.md`, standard v3 of 30 September 2026 | The question ladder, every artifact standing on its own, decks carrying each chapter in full, and the humanizer's read on every prose file |
+| `prompts/week_revamp_W02_W03.md`, section 1, with the orchestrating session's fills | The recheck's five steps, the later days' traps to keep out, and three specifics: the review's two rulings stay with every file explaining its own terms, the notes do not grow past about 6,650 words, and the recomputed tree's numbers stay exactly as merged |
+| `.claude/skills/humanizer/SKILL.md` (blader/humanizer at 225a6f3, MIT) | The read in file mode over every prose file |
 
 ## The data
 
@@ -29,14 +34,17 @@ rows, and the take-home file the v2b sample.
 
 ## The chapters, and where each came from
 
-| Chapter | Notebook | Deck | The spine's rung |
+| Chapter, as its opener asks it | Notebook | Deck | The spine's rung |
 |---|---|---|---|
-| 1. What the ERP actually sent | `01_profile` | Half one, SECTION 1, S7 to S17 | The profile |
-| 2. The rows that repeat | `02_duplicates` | Half one, SECTION 2, S18 to S26 | The migration's duplicates |
-| 3. The copy that stays | `03_identity_rule` | Half one, SECTION 3, S27 to S37 | The identity rule |
-| 4. What is missing or malformed | `04_missing_malformed` | Half one, SECTION 4, S38 to S47 | Missing and malformed values |
-| 5. The bridge to the books | `05_bridge` | Half one, SECTION 5, S48 to S57 | The revenue bridge with Tuesday recomputed |
-| 6. The log the analyst audits | `06_audit_logs` | Half two, SECTION 6, S1 to S11 | The sixth chapter the brief names: the rejects and decisions logs Anand's analyst audits |
+| 1. What did the ERP send? | `01_profile` | Half one, SECTION 1, S7 to S21 | The profile |
+| 2. Which rows repeat? | `02_duplicates` | Half one, SECTION 2, S22 to S34 | The migration's duplicates |
+| 3. Which copy stays? | `03_identity_rule` | Half one, SECTION 3, S35 to S48 | The identity rule |
+| 4. Drop, fill or flag? | `04_missing_malformed` | Half one, SECTION 4, S49 to S63 | Missing and malformed values |
+| 5. Can we prove the 1.9? | `05_bridge` | Half one, SECTION 5, S64 to S78 | The revenue bridge with Tuesday recomputed |
+| 6. Can the analyst replay it? | `06_audit_logs` | Half two, SECTION 6, S2 to S15 | The sixth chapter the brief names: the rejects and decisions logs Anand's analyst audits |
+
+The full questions, who needs each answer and the six smaller questions per chapter are printed at
+the top of the day sheet, and every family carries them word for word.
 
 ## The plants, and where each is used
 

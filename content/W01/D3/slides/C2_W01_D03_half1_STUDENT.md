@@ -706,7 +706,7 @@ flowchart LR
 
 ```notes
 LIVE, 3 minutes. The decision it misleads: a reviewer comparing counts signs off a pass that removes
-a real Q2 order. Compare the rows, never only their number. Then a count that needs no dictionary.
+a real Q2 order, since equal counts can hide different rows. Then a count that needs no dictionary.
 ```
 
 ---
