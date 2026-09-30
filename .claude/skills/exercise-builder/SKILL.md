@@ -126,7 +126,10 @@ than generic, and each is written for the week:
 
 On a Saturday paper the options are of a length as well as of a precision: `scripts/distractor_audit.py`
 fails an item whose longest option runs past 30 characters while its shortest is under 60 percent of
-it, and the fix is an option edit in `data/programme/paper_edits.yaml`, never a stem or a key.
+it, and the fix is an option edit in `data/programme/paper_edits.yaml`, never a stem or a key. The
+more-than-one keys spread too: with four or more such items, a letter inside every key fails the
+audit, since ticking it always scores, and the fix is an `order` edit with its `from_key`, which
+relabels the options and moves the key's letters with them.
 
 ## The solutions file
 

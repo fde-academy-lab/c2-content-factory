@@ -313,3 +313,26 @@ enters the ratings by seat in the workbook's Ratings sheet with the ticks, and t
 of the 90-minute discussion set each part's mean rating beside its right rate and name the parts
 where confidence ran ahead of the work. The anchors round is 50 minutes, ten anchors at five
 minutes each, as the guide already paced it.
+
+## 30 September 2026, last: the more-than-one keys relabelled
+
+All seven more-than-one items came from the tracker with a in the key, and four of them keyed
+exactly a, b and c, so ticking a on every such item always scored. Three are relabelled with an
+`order` edit in `data/programme/paper_edits.yaml`, status proposed: the same options print, the
+same ones are correct, and the key's letters and the key file's reasons move with them. Each edit
+carries `from_key`, the tracker's key it was written against, so the sync reports it folded once
+the tracker prints the new order, rather than laying it twice. Bank 34's reworded option d, "the
+number of channels before and after the join", now prints at a.
+
+| Q (bank) | Tracker key | Printed as the tracker's | Printed key | Wrong options now at |
+|---|---|---|---|---|
+| Q14 (33) | a, b, c | a, d, b, c | a, c, d | b |
+| Q21 (34) | a, b, c | d, a, b, c | b, c, d | a |
+| Q22 (35) | a, b | c, a, d, b | b, d | a and c |
+
+Q32, Q33, Q44 and Q45 keep the tracker's order, so the eight wrong options sit at each letter
+twice and each letter sits in five of the seven keys. Q14's order also puts its two WHERE
+statements side by side, then its two HAVING statements. `scripts/distractor_audit.py` now fails a
+Saturday paper where one letter sits in every more-than-one key across four or more such items;
+the paper as it stood before this change fails it, and the relabelled paper passes, with the keys
+of all 30 option items at a 10, b 11, c 11 and d 11.

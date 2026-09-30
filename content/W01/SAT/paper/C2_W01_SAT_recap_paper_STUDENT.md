@@ -169,10 +169,10 @@ d) the time window it covers
 
 Which of these can make a quarter-on-quarter drop look real when it is not? Mark every correct option.
 
-a) quarters holding unequal numbers of weeks
-b) duplicated rows in the earlier quarter
-c) a segment definition that changed between the quarters
-d) reporting the median beside the mean
+a) reporting the median beside the mean
+b) quarters holding unequal numbers of weeks
+c) duplicated rows in the earlier quarter
+d) a segment definition that changed between the quarters
 
 ### Set 1
 
@@ -279,9 +279,9 @@ d) Profile the export for duplicates and reconcile counts and revenue against Fi
 Which are valid treatments for a missing value, each with a written reason? Mark every correct option.
 
 a) Drop the row.
-b) Fill a stated default.
-c) Keep the row and flag it.
-d) Type a value into the export.
+b) Type a value into the export.
+c) Fill a stated default.
+d) Keep the row and flag it.
 
 #### Q27 · Easy · circle every correct letter · Define the profile
 
@@ -519,18 +519,18 @@ d) The growth is proven because 40 percent is large.
 
 What does a fair test of 'did the discount work' need? Mark every correct option.
 
-a) a like-for-like group that did not get the discount
-b) the same time window for both groups
-c) a comparable mix of segments in both groups
-d) a deeper discount, so any effect is easier to see
+a) a deeper discount, so any effect is easier to see
+b) a like-for-like group that did not get the discount
+c) the same time window for both groups
+d) a comparable mix of segments in both groups
 
 #### Q45 · Hard · circle every correct letter · Check four p-value statements
 
 Which statements about the p-value are correct? Mark every correct option.
 
 a) It is computed on the assumption that chance alone is at work.
-b) A small value means the observed gap would be rare under chance alone.
-c) It is the probability that the hypothesis is true.
+b) It is the probability that the hypothesis is true.
+c) A small value means the observed gap would be rare under chance alone.
 d) It says nothing about whether the gap is large enough to matter.
 
 ### Set 5

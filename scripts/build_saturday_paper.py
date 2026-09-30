@@ -19,7 +19,9 @@ with its recalc manifest.
 
 Three sources are laid on the bank before rendering:
 
-  data/programme/paper_edits.yaml    rewords options of one item, never its stem or key
+  data/programme/paper_edits.yaml    rewords options of one item, or relabels them with `order`
+                                     so the key's letters move with its options; never its stem,
+                                     and never which options are correct
   data/programme/facts.yaml          saturday_papers.paper_minutes, where a paper runs longer than
                                      the tracker's slot
   content/W{ww}/SAT/internal/C2_W{ww}_SAT_paper_source_INTERNAL.yaml, the week's own additions:
@@ -137,9 +139,34 @@ def read_bank(path=TRACKER):
     return out
 
 
+def letters_of(key):
+    """'a, b, d' as ['a', 'b', 'd']; anything else as []."""
+    k = str(key or "").strip().lower()
+    return sorted(x.strip() for x in k.split(",")) if re.fullmatch(r"[a-f](\s*,\s*[a-f])*", k) else []
+
+
+def relabel(lines, order):
+    """Print an item's options in `order`: order[i] is the tracker's letter of the option printed at
+    position i. Returns the new lines and {tracker letter: printed letter}, or None when order is
+    not a reordering of the item's letters."""
+    found = [(k, m.group(1), m.group(2)) for k, ln in enumerate(lines) if (m := OPTION.match(ln.strip()))]
+    letters = [x[1] for x in found]
+    if sorted(order) != sorted(letters):
+        return None
+    text = {x[1]: x[2] for x in found}
+    lines = list(lines)
+    for (k, printed, _), was in zip(found, order):
+        lines[k] = f"({printed}) {text[was]}"
+    return lines, {was: printed for (_, printed, _), was in zip(found, order)}
+
+
 def apply_edits(bank, edits):
     """Lay the edits on the bank. Returns notes: (paper, no, state, why) with state applied, folded
-    (the tracker already carries the wording) or broken (the item or option does not exist)."""
+    (the tracker already carries the wording) or broken (the item or option does not exist).
+
+    An `order` edit relabels the options after any rewording: the key's letters, and the letters of
+    the source file's reasons for that item, move with the options, so the same options stay
+    correct under new letters."""
     notes = []
     for paper, by_no in (edits or {}).items():
         items = {i["no"]: i for i in bank.get(paper, {}).get("items", [])}
@@ -150,6 +177,22 @@ def apply_edits(bank, edits):
                 continue
             lines = item["text"].split("\n")
             changed, missing = False, []
+            order = re.sub(r"[^a-f]", "", str(edit.get("order") or "").lower())
+            if order:
+                # An order is written against the tracker's key at the time; once the tracker
+                # carries the relabelling, laying it again would scramble the options.
+                was, now = letters_of(edit.get("from_key")), letters_of(item["key"])
+                if not was:
+                    notes.append((paper, no, "broken", "an order edit needs from_key, the tracker's key "
+                                                       "it was written against"))
+                    continue
+                if now != was:
+                    folded = set(was) <= set(order) and now == sorted("abcdef"[order.index(x)] for x in was)
+                    notes.append((paper, no, "folded" if folded else "broken",
+                                  "the tracker already carries this order" if folded else
+                                  f"the tracker's key is now {', '.join(now)}, not the "
+                                  f"{', '.join(was)} this order was written against"))
+                    continue
             for letter, new in (edit.get("options") or {}).items():
                 idx = next((k for k, ln in enumerate(lines)
                             if (m := OPTION.match(ln.strip())) and m.group(1) == letter), None)
@@ -163,6 +206,18 @@ def apply_edits(bank, edits):
             if missing:
                 notes.append((paper, no, "broken", f"option {', '.join(missing)} not found"))
                 continue
+            if order:
+                done = relabel(lines, order)
+                if done is None:
+                    notes.append((paper, no, "broken", f"order {order} is not a reordering of the "
+                                                       f"item's options"))
+                    continue
+                lines, moves = done
+                if any(a != b for a, b in moves.items()):
+                    item["relabel"] = moves
+                    item["key"] = ", ".join(sorted(moves.get(x.strip(), x.strip())
+                                                   for x in item["key"].split(",")))
+                    changed = True
             item["text"] = "\n".join(lines)
             if changed:
                 item["edit"] = edit
@@ -222,6 +277,13 @@ def _addition(a, n):
                      "answer": a.get("answer", "")}}
 
 
+def relabelled(note, moves):
+    """A note whose wrong-option reasons follow an item's relabelled letters."""
+    if not moves or not note.get("wrong"):
+        return note
+    return dict(note, wrong={moves.get(str(k), str(k)): v for k, v in note["wrong"].items()})
+
+
 def assemble(data, source):
     """The items in printed order, each carrying q, its printed number, and part, its part number.
 
@@ -232,7 +294,7 @@ def assemble(data, source):
     bank = sorted((dict(i, added=False, exhibit=None) for i in data["items"]), key=lambda i: i["no"])
     notes = {str(k): v for k, v in (source.get("notes") or {}).items()}
     for item in bank:
-        item["note"] = notes.get(str(item["no"]), {})
+        item["note"] = relabelled(notes.get(str(item["no"]), {}), item.get("relabel"))
     added = [_addition(a, n) for n, a in enumerate(source.get("additions") or [], 1)]
     if source.get("parts"):
         printed = _by_parts(bank, added, source)
@@ -765,14 +827,21 @@ def render_key(paper, data, date, notes, printed, source, minutes, moved=()):
     mine = [x for x in notes if x[0] == paper and x[2] == "applied"]
     if mine:
         out += ["", "## Option edits laid on the bank, waiting for the tracker", "",
-                "These options differ from the tracker's wording, each for the reason given beside "
-                "it. The stem and the key are the tracker's. Accept an edit by copying it into the "
+                "These options differ from the tracker's wording or order, each for the reason given "
+                "beside it. The stem and the correct options are the tracker's; where the options are "
+                "relabelled, the key's letters move with them. Accept an edit by copying it into the "
                 "tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.",
                 ""]
         for _, no, _, why in mine:
             item = next(i for i in printed if i["no"] == int(no))
-            opts = ", ".join(sorted(item["edit"].get("options", {})))
-            out.append(f"- Q{item['q']} (bank {no}), option {opts} "
+            what = []
+            if item["edit"].get("options"):
+                what.append("option " + ", ".join(sorted(item["edit"]["options"])))
+            if item.get("relabel"):
+                back = {v: k for k, v in item["relabel"].items()}
+                what.append("options relabelled, printed " + ", ".join(
+                    f"{p} as the tracker's {back[p]}" for p in sorted(back)))
+            out.append(f"- Q{item['q']} (bank {no}), {'; '.join(what)} "
                        f"({item['edit'].get('status', 'proposed')}): {why}")
     stretch = source.get("stretch") or []
     if stretch or moved:
@@ -1493,13 +1562,15 @@ if __name__ == "__main__":
 # Test inputs and expected outcomes
 # --------------------------------
 # python3 scripts/build_saturday_paper.py W01
-#     With the W01 source file as committed on 30 September 2026: the paper prints 51 items in six
-#     parts, page one carrying the rules and the blueprint (113.5 timed minutes, 19 easy, 21 medium,
-#     11 hard), every item headed "Q<n> · <level> · <format>", scenario sets numbered 1 to 5 in the
-#     order they print, and a stretch page of four written items and six recall lines moved from
-#     the bank. The TRAINER key carries 51 rows with a Part column, the blueprint with its total
-#     row, the guessing floor (average 10.9 of 51; fewer than one guesser in twenty reaches 16) and
-#     the stretch answers, the moved items marked "moved from the timed paper".
+#     With the W01 source file and paper_edits.yaml as committed on 30 September 2026: the paper
+#     prints 54 items in six parts after its purpose, rules, company line and step one, with the
+#     blueprint at 119.5 timed minutes (19 easy, 22 medium, 13 hard), every item headed
+#     "Q<n> · <level> · <format> · <label>", scenario sets numbered 1 to 5 in the order they print,
+#     and a stretch page of four written items and six recall lines moved from the bank. The TRAINER
+#     key carries 54 rows with a Part column, the blueprint with its total row, the guessing floor
+#     (average 11.7 of 54; fewer than one guesser in twenty reaches 17), the stretch answers with the
+#     moved items marked "moved from the timed paper", and the option edits, Q16 among them printed
+#     with the tracker's d at a and keyed b, c, d.
 # python3 scripts/build_saturday_paper.py W01 --check     (straight after the line above)
 #     "2 file(s), 0 stale", exit 0.
 # python3 scripts/build_saturday_paper.py W01 --docx
@@ -1523,6 +1594,15 @@ if __name__ == "__main__":
 #     WARN: that edit is broken, option e not found; the item renders with the bank's wording.
 # The tracker updated with an edit's exact wording
 #     INFO: that edit is folded, and it can be deleted from paper_edits.yaml.
+# An order edit, order: dabc and from_key: "a, b, c", on an item the tracker keys a, b, c
+#     The option the tracker prints at d prints at a, the others move down one letter, the key
+#     prints b, c, d, and the source file's reason for wrong option d prints under a.
+# The same edit after the tracker reorders the options and keys the item b, c, d
+#     INFO: that edit is folded, and the options print in the tracker's order, relabelled once.
+# The same edit after the tracker keys the item a, b
+#     WARN: that edit is broken, the tracker's key is now a, b; the item prints as the tracker has it.
+# An order edit with no from_key
+#     WARN: that edit is broken, an order edit needs from_key.
 # python3 scripts/build_saturday_paper.py
 #     FAIL: name a week, as W01, or pass --all.
 # A week whose source file has no parts, or no source file at all

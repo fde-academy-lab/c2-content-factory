@@ -50,15 +50,15 @@ The workbook flags an item to check when fewer than one learner in five got it r
 | 11 | False | True or false | 1 | Easy | [F] | BA | Fri | 1 | bank 17 | Your pivot shows a different total from the warehouse; where do you look first? |
 | 12 | b | One correct option | 2 | Easy | [S] | BA, DS | Mon | 2 | bank 18 | Explain the logical order in which a SQL query executes. |
 | 13 | d | One correct option | 2 | Medium | [F] | BA, FDE | Mon | 2 | bank 20 | Why would you compute a KPI in the warehouse rather than in a notebook? |
-| 14 | a, b, c | More than one correct | 2 | Medium | [S] | BA, DS | Mon | 2.5 | bank 33 | WHERE against HAVING, one sentence each. |
+| 14 | a, c, d | More than one correct | 2 | Medium | [S] | BA, DS | Mon | 2.5 | bank 33 | WHERE against HAVING, one sentence each. |
 | 15 | 8 | Applied maths | 2 | Easy | [S] | BA, DS | Mon | 4 | bank 52 | Explain the logical order in which a SQL query executes. |
 | 16 | c, b, e, f, a, d | Order the steps | 2 | Medium | [S] | BA, DS | Mon | 2.5 | bank 57 | Explain the logical order in which a SQL query executes. |
 | 17 | c | One correct option | 3 | Easy | [S] | BA, DS | Tue | 2 | bank 21 | INNER against LEFT join: what does each drop or keep? |
 | 18 | d | One correct option | 3 | Medium | [S] | BA, DS | Tue | 2 | bank 22 | Your join grew the row count; name the cause and the check. |
 | 19 | a | One correct option | 3 | Medium | [F] | BA, DS | Tue | 2 | bank 23 | Revenue doubled after a join and every row looks fine; where do you look? |
 | 20 | d | One correct option | 3 | Hard | [D] | BA, DS, FDE | Tue | 2 | bank 24 | Revenue doubled after a join and every row looks fine; where do you look? |
-| 21 | a, b, c | More than one correct | 3 | Medium | [S] | BA, DS, FDE | Tue | 2.5 | bank 34 | Your join grew the row count; name the cause and the check. |
-| 22 | a, b | More than one correct | 3 | Hard | [F] | BA, DS | Tue | 2.5 | bank 35 | INNER against LEFT join: what does each drop or keep? |
+| 21 | b, c, d | More than one correct | 3 | Medium | [S] | BA, DS, FDE | Tue | 2.5 | bank 34 | Your join grew the row count; name the cause and the check. |
+| 22 | b, d | More than one correct | 3 | Hard | [F] | BA, DS | Tue | 2.5 | bank 35 | INNER against LEFT join: what does each drop or keep? |
 | 23 | 1,050 | Scenario set | 3 | Medium | [S] | BA, DS | Tue | 2.5 | bank 40 | Your join grew the row count; name the cause and the check. |
 | 24 | 1,020 | Scenario set | 3 | Medium | [S] | BA, DS | Tue | 2.5 | bank 41 | Your join grew the row count; name the cause and the check. |
 | 25 | a | Scenario set | 3 | Medium | [F] | BA, DS | Tue | 2.5 | bank 42 | Your join grew the row count; name the cause and the check. |
@@ -181,11 +181,11 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **In the interview.** A KPI Finance checks lives in the warehouse, because it reruns unchanged on the source and anyone can audit the query.
 
-### Q14, key a, b, c
+### Q14, key a, c, d
 
 **Why it holds.** WHERE filters rows before grouping, HAVING filters groups after aggregation, and HAVING can compare COUNT(*) with a number, as in HAVING COUNT(*) > 1.
 
-- (d) WHERE cannot compare COUNT(*) with anything: an aggregate in WHERE is an error, because WHERE runs before the groups exist.
+- (b) WHERE cannot compare COUNT(*) with anything: an aggregate in WHERE is an error, because WHERE runs before the groups exist.
 
 **In the interview.** WHERE filters rows before the aggregate, HAVING filters groups after it, and only HAVING can use COUNT.
 
@@ -241,20 +241,20 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **In the interview.** Count rows before and after the join, then count payments per order; the doubling lives in the join.
 
-### Q21, key a, b, c
+### Q21, key b, c, d
 
 **Why it holds.** The row count before and after, payments per order, and booked revenue before and after are the three checks that catch a fan-out.
 
-- (d) Every order stays in a LEFT JOIN, so the channels match before and after it whether or not the join fanned out. A check that cannot fail proves nothing, which is how the doubled total passed a row-by-row reading on Tuesday.
+- (a) Every order stays in a LEFT JOIN, so the channels match before and after it whether or not the join fanned out. A check that cannot fail proves nothing, which is how the doubled total passed a row-by-row reading on Tuesday.
 
 **In the interview.** Before a joined number leaves, compare the row count and the total before and after the join, and count rows per key.
 
-### Q22, key a, b
+### Q22, key b, d
 
 **Why it holds.** A FULL OUTER JOIN adds the rows with no partner on either side: orders with no payment and payments with no order.
 
-- (c) An order with one payment matches, so an INNER JOIN returns it too.
-- (d) An order with two payments matches twice and appears twice in an INNER JOIN as well.
+- (a) An order with one payment matches, so an INNER JOIN returns it too.
+- (c) An order with two payments matches twice and appears twice in an INNER JOIN as well.
 
 **In the interview.** A full outer join keeps the unmatched rows from both sides, which is how orphan payments show up.
 
@@ -564,15 +564,16 @@ These items come from the week's source file, not the tracker. Accept one by add
 
 ## Option edits laid on the bank, waiting for the tracker
 
-These options differ from the tracker's wording, each for the reason given beside it. The stem and the key are the tracker's. Accept an edit by copying it into the tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.
+These options differ from the tracker's wording or order, each for the reason given beside it. The stem and the correct options are the tracker's; where the options are relabelled, the key's letters move with them. Accept an edit by copying it into the tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.
 
 - Q55 (bank 19), option b (proposed): The key was the longest option.
 - Q18 (bank 22), option c (proposed): The key was the longest option; the new distractor is the fan-out misread in reverse.
 - Q19 (bank 23), option b, d (proposed): The key was the longest option; the distractor is now the full query with the aggregate in WHERE. Option b then ran 38 characters against 73, so it now sorts its distinct list too, and the options run 47 to 73.
 - Q40 (bank 29), option a (proposed): The key was the longest option.
 - Q43 (bank 32), option c (proposed): The key was the longest option.
-- Q14 (bank 33), option c, d (proposed): Options ran 22 to 39 characters, with c at 23 and d at 22 against b at 39; c and d now say which clause can compare COUNT(*) with a number, and the options run 34 to 41.
-- Q21 (bank 34), option d (proposed): The font was a nonsense option, so striking it left a, b and c, which is the whole key; the new distractor is a check that sounds like the other three and cannot catch a fan-out.
+- Q14 (bank 33), option c, d; options relabelled, printed a as the tracker's a, b as the tracker's d, c as the tracker's b, d as the tracker's c (proposed): Options ran 22 to 39 characters, with c at 23 and d at 22 against b at 39; c and d now say which clause can compare COUNT(*) with a number, and the options run 34 to 41. Every more-than-one key on the paper held a, and four of the seven were exactly a, b and c. The options are relabelled a, d, b, c, so the wrong option prints at b, the two WHERE statements sit together, and the same three stay correct.
+- Q21 (bank 34), option d; options relabelled, printed a as the tracker's d, b as the tracker's a, c as the tracker's b, d as the tracker's c (proposed): The font was a nonsense option, so striking it left a, b and c, which is the whole key; the new distractor is a check that sounds like the other three and cannot catch a fan-out. Every more-than-one key on the paper held a, and four of the seven were exactly a, b and c. The options are relabelled d, a, b, c, so the wrong option prints at a and the same three stay correct.
+- Q22 (bank 35), options relabelled, printed a as the tracker's c, b as the tracker's a, c as the tracker's d, d as the tracker's b (proposed): Every more-than-one key on the paper held a, and four of the seven were exactly a, b and c. The options are relabelled c, a, d, b, so the two wrong options print at a and c and the same two stay correct.
 - Q32 (bank 36), option b (proposed): Option b ran 25 characters against 60; it now names the quarter its total covers, and the options run 37 to 60.
 - Q33 (bank 37), option b (proposed): Option b, part of the key, ran 37 characters against 63; it now says who ties, and the options run 40 to 63.
 - Q44 (bank 38), option a (proposed): Option a, part of the key, ran 35 characters against 60; it now says the join is on a key, and the options run 40 to 60.

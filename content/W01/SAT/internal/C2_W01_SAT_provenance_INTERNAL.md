@@ -261,3 +261,25 @@ The Rules table's Company row reads: "Every item is set inside Kalpa Retail, whe
 give: Meera Raghavan, CEO, on the Monday, Tuesday and Thursday deck covers; Anand Iyer, finance
 controller, on Wednesday's; Kavya Nair, senior analyst in the Kalpa Retail data team, on Friday's;
 and the data and AI team of Kalpa's Global Capability Centre in the address lines of those covers.
+
+## 30 September 2026, last: the more-than-one keys relabelled
+
+All six more-than-one items came from the tracker keyed with a and b, so a learner who ticked a and
+b on every such item scored on all six without reading one. Four of them are relabelled with an
+`order` edit in `data/programme/paper_edits.yaml`, status proposed: the same options print, the
+same ones are correct, and the key's letters and the key file's reasons move with them. Each edit
+carries `from_key`, the tracker's key it was written against, so the sync reports it folded once
+the tracker prints the new order, rather than laying it twice.
+
+| Q (bank) | Tracker key | Printed as the tracker's | Printed key | Wrong option now at |
+|---|---|---|---|---|
+| Q16 (31) | a, b, c | d, a, b, c | b, c, d | a |
+| Q26 (32) | a, b, c | a, d, b, c | a, c, d | b |
+| Q44 (34) | a, b, c | d, a, b, c | b, c, d | a |
+| Q45 (35) | a, b, d | a, c, b, d | a, c, d | b |
+
+Q15 and Q27 keep the tracker's order, so the six wrong options sit at a twice, b twice, c once and
+d once, and each letter sits in four or five of the six keys. `scripts/distractor_audit.py` now
+fails a Saturday paper where one letter sits in every more-than-one key across four or more such
+items; the paper as it stood before this change fails it, and the relabelled paper passes, with the
+keys of all 31 option items at a 10, b 10, c 11 and d 12.

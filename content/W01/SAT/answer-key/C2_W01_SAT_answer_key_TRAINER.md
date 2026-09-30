@@ -52,7 +52,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 | 13 | d | One correct option | 2 | Medium | [F] | BA, DS | Tue | 2 | bank 21 | What has to match before a quarter-on-quarter comparison is fair? |
 | 14 | c | One correct option | 2 | Hard | [D] | BA, FDE | Mon | 2 | bank 29 | Marketing wants budget for acquisition; what would you check before agreeing it is the right branch? |
 | 15 | a, b, d | More than one correct | 2 | Easy | [S] | BA | Tue | 2.5 | bank 30 | A business says 'grow revenue 15 percent'; how do you turn that into questions data can answer? |
-| 16 | a, b, c | More than one correct | 2 | Medium | [S] | BA, DS | Tue | 2.5 | bank 31 | Sales dropped 15 percent last month; how would you investigate? |
+| 16 | b, c, d | More than one correct | 2 | Medium | [S] | BA, DS | Tue | 2.5 | bank 31 | Sales dropped 15 percent last month; how would you investigate? |
 | 17 | b | Scenario set | 2 | Easy | [S] | BA, DS | Tue | 2.5 | bank 36 | Sales dropped 15 percent last month; how would you investigate? |
 | 18 | b | Scenario set | 2 | Medium | [S] | BA, DS | Tue | 2.5 | bank 37 | Sales dropped 15 percent last month; how would you investigate? |
 | 19 | True | Scenario set | 2 | Medium | [F] | BA, DS | Tue | 2.5 | bank 38 | Sales dropped 15 percent last month; how would you investigate? |
@@ -62,7 +62,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 | 23 | b | One correct option | 3 | Medium | [F] | BA | Wed | 2 | bank 24 | How do you find duplicates, and what makes two records the same? |
 | 24 | a | One correct option | 3 | Medium | [F] | BA | Wed | 2 | bank 25 | Finance and your dashboard disagree; what do you do? |
 | 25 | d | One correct option | 3 | Medium | [S] | BA, FDE | Wed | 2 | bank 28 | Finance and your dashboard disagree; what do you do? |
-| 26 | a, b, c | More than one correct | 3 | Easy | [S] | BA, DS | Wed | 2.5 | bank 32 | How do you handle missing data? |
+| 26 | a, c, d | More than one correct | 3 | Easy | [S] | BA, DS | Wed | 2.5 | bank 32 | How do you handle missing data? |
 | 27 | a, b, c | More than one correct | 3 | Easy | [F] | BA | Wed | 2.5 | bank 33 | How do you handle missing data? |
 | 28 | 197 | Scenario set | 3 | Easy | [F] | BA | Wed | 2.5 | bank 40 | Finance and your dashboard disagree; what do you do? |
 | 29 | 17 | Scenario set | 3 | Medium | [F] | BA | Wed | 2.5 | bank 41 | Finance and your dashboard disagree; what do you do? |
@@ -80,8 +80,8 @@ The workbook flags an item to check when fewer than one learner in five got it r
 | 41 | a | One correct option | 4 | Hard | [F] | BA, FDE | Wed | 2 | new | Everything read from a CSV is a string; what breaks and where do you convert? |
 | 42 | c | One correct option | 5 | Hard | [S] | BA, DS | Thu | 2 | bank 26 | What does p = 0.03 mean, and not mean? |
 | 43 | b | One correct option | 5 | Easy | [F] | BA, DS | Thu | 2 | bank 27 | 42 percent on 12 users against 31 percent on 1,200; which do you trust? |
-| 44 | a, b, c | More than one correct | 5 | Medium | [F] | BA, DS | Thu | 2.5 | bank 34 | Revenue rose after a discount; did the campaign work, and what would you need to know? |
-| 45 | a, b, d | More than one correct | 5 | Hard | [S] | BA, DS | Thu | 2.5 | bank 35 | What does p = 0.03 mean, and not mean? |
+| 44 | b, c, d | More than one correct | 5 | Medium | [F] | BA, DS | Thu | 2.5 | bank 34 | Revenue rose after a discount; did the campaign work, and what would you need to know? |
+| 45 | a, c, d | More than one correct | 5 | Hard | [S] | BA, DS | Thu | 2.5 | bank 35 | What does p = 0.03 mean, and not mean? |
 | 46 | a | Scenario set | 5 | Hard | [D] | BA, DS, FDE | Thu | 2.5 | bank 43 | Revenue rose after a discount; did the campaign work, and what would you need to know? |
 | 47 | True | Scenario set | 5 | Medium | [F] | BA, DS, FDE | Thu | 2.5 | bank 44 | Revenue rose after a discount; did the campaign work, and what would you need to know? |
 | 48 | d | Scenario set | 5 | Hard | [D] | BA, DS, FDE | Thu | 2.5 | bank 45 | Revenue rose after a discount; did the campaign work, and what would you need to know? |
@@ -226,11 +226,11 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **In the interview.** A rate is meaningless until its numerator, denominator and window are named, because each of them can change the number.
 
-### Q16, key a, b, c
+### Q16, key b, c, d
 
 **Why it holds.** Unequal windows, duplicates in the earlier quarter and a changed segment definition can each fake a drop.
 
-- (d) Reporting the median beside the mean is honest practice and cannot fake a drop.
+- (a) Reporting the median beside the mean is honest practice and cannot fake a drop.
 
 **In the interview.** Before calling a drop real I check the windows, duplicates and definitions, since each can produce a drop that is not there.
 
@@ -321,11 +321,11 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **In the interview.** I profile the export for duplicates and windows, then reconcile counts and rupees against Finance line by line, and I never adjust my figure until it agrees.
 
-### Q26, key a, b, c
+### Q26, key a, c, d
 
 **Why it holds.** Drop, default and flag are all valid when the reason is written down.
 
-- (d) Typing a value into the export fabricates data and destroys the audit trail.
+- (b) Typing a value into the export fabricates data and destroys the audit trail.
 
 **In the interview.** For each missing value I drop, fill a stated default or flag, and I write the reason, so the decision can be audited and reversed.
 
@@ -490,19 +490,19 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **In the interview.** I report the count with the rate: 40 percent on 12 orders is worth watching and collecting more on, and not yet worth budget.
 
-### Q44, key a, b, c
+### Q44, key b, c, d
 
 **Why it holds.** A fair test needs a like-for-like control, the same window and a comparable mix of segments.
 
-- (d) A deeper discount changes the treatment and may make an effect easier to see; the comparison is exactly as unfair as before.
+- (a) A deeper discount changes the treatment and may make an effect easier to see; the comparison is exactly as unfair as before.
 
 **In the interview.** To know whether the discount worked I need a like-for-like group without it, in the same window and with the same mix, ideally chosen at random.
 
-### Q45, key a, b, d
+### Q45, key a, c, d
 
 **Why it holds.** The p-value assumes chance alone, is small when the gap would be rare under chance, and is silent on size.
 
-- (c) The probability that the hypothesis is true is exactly what the p-value does not compute.
+- (b) The probability that the hypothesis is true is exactly what the p-value does not compute.
 
 **In the interview.** The p-value assumes chance alone and says how rare my gap would be there; it is not the chance I am right, and it says nothing about size.
 
@@ -625,7 +625,7 @@ These items come from the week's source file, not the tracker. Accept one by add
 
 ## Option edits laid on the bank, waiting for the tracker
 
-These options differ from the tracker's wording, each for the reason given beside it. The stem and the key are the tracker's. Accept an edit by copying it into the tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.
+These options differ from the tracker's wording or order, each for the reason given beside it. The stem and the correct options are the tracker's; where the options are relabelled, the key's letters move with them. Accept an edit by copying it into the tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.
 
 - Q10 (bank 17), option a, b, d (proposed): The key (23 characters) was the only option phrased as a count; the two frequency branches now read the same way. Option d, discounts, ran 9 characters against 33 for the longest; it now names the value of the discounts given, so the options run 23 to 33.
 - Q49 (bank 19), option a, b (proposed): The key was the longest option, so the miscalculation distractor named a cause, which took it to 59 characters against 29 for option a. It now reads 50, and option a names the mean it sits beside at 42, so the options run 34 to 50.
@@ -635,10 +635,11 @@ These options differ from the tracker's wording, each for the reason given besid
 - Q25 (bank 28), option c (proposed): The key was the longest option.
 - Q14 (bank 29), option a (proposed): The key was the longest option.
 - Q15 (bank 30), option c (proposed): Option c, the colour of the chart, eliminated itself and left a three-way item; the previous quarter's value is a comparison a learner can take for part of the definition. At 33 characters it ran against 13 for option a; it now reads 22, so every option is 25 characters or fewer.
-- Q16 (bank 31), option a (proposed): The options ran 26 to 54 characters, and both ends were keyed options, so no distractor could balance the set. Option a, a keyed option, now names the weeks, 41 characters, with its meaning and its letter unchanged, so the options run 36 to 54.
-- Q26 (bank 32), option d (proposed): Option d ran 33 characters against 12 for option a. It now reads 28, so every option is 28 characters or fewer, and typing into the export is the same act as typing into the source file.
+- Q16 (bank 31), option a; options relabelled, printed a as the tracker's d, b as the tracker's a, c as the tracker's b, d as the tracker's c (proposed): The options ran 26 to 54 characters, and both ends were keyed options, so no distractor could balance the set. Option a, a keyed option, now names the weeks, 41 characters, with its meaning unchanged, so the options run 36 to 54. Every more-than-one key on the paper held a and b, so ticking both always scored. The options are relabelled d, a, b, c, so the wrong option prints at a and the same three stay correct.
+- Q26 (bank 32), option d; options relabelled, printed a as the tracker's a, b as the tracker's d, c as the tracker's b, d as the tracker's c (proposed): Option d ran 33 characters against 12 for option a. It now reads 28, so every option is 28 characters or fewer, and typing into the export is the same act as typing into the source file. Every more-than-one key on the paper held a and b, so ticking both always scored. The options are relabelled a, d, b, c, so the wrong option prints at b and the same three stay correct.
 - Q27 (bank 33), option d (proposed): Option d, a p-value for a single field, eliminated itself; the value to fill in is the decision a learner can take for part of the profile.
-- Q44 (bank 34), option d (proposed): Option d ran 17 characters against 51 for option a. It now carries the belief behind a deeper discount, at 49, so the options run 36 to 51.
+- Q44 (bank 34), option d; options relabelled, printed a as the tracker's d, b as the tracker's a, c as the tracker's b, d as the tracker's c (proposed): Option d ran 17 characters against 51 for option a. It now carries the belief behind a deeper discount, at 49, so the options run 36 to 51. Every more-than-one key on the paper held a and b, so ticking both always scored. The options are relabelled d, a, b, c, so the wrong option prints at a and the same three stay correct.
+- Q45 (bank 35), options relabelled, printed a as the tracker's a, b as the tracker's c, c as the tracker's b, d as the tracker's d (proposed): Every more-than-one key on the paper held a and b, so ticking both always scored. The options are relabelled a, c, b, d, so the wrong option prints at b and the same three stay correct.
 - Q30 (bank 42), option a, b (proposed): The key was one character longer than the next option. Option a ran 8 characters against 48 for option b; it now carries the belief behind a growing drop, at 49, so the options run 34 to 49.
 - Q48 (bank 45), option a (proposed): The key was the longest option.
 

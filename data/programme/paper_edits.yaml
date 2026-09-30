@@ -2,13 +2,18 @@
 #
 # The bank (docs/curriculum/source.xlsx, 'Saturday papers' tab) is the source of every item. An
 # edit here replaces one or more option texts of one item when the paper is rendered, and never
-# changes the stem or the key. Most edits exist because the item broke the house distractor rule
-# that the key is never the unique longest option, which a room learns to exploit by the third
-# paper, and the replacement makes a distractor a sharper near-miss at the key's length; others
-# replace an option no reader would take, so the set tests something. Each edit's why says which.
+# changes the stem or which options are correct. An `order` edit relabels the options: order[i] is
+# the tracker's letter of the option printed at position i, and the key's letters move with them.
+# Most edits exist because the item broke the house distractor rule that the key is never the
+# unique longest option, which a room learns to exploit by the third paper, and the replacement
+# makes a distractor a sharper near-miss at the key's length; others replace an option no reader
+# would take, so the set tests something; an order edit moves a key off a letter every
+# more-than-one key shared, so ticking that letter stops scoring. Each edit's why says which.
 #
 # To accept an edit, copy its option text into the tracker's Item cell and sync: the sync then
-# reports the edit as folded and it can be deleted here. To reject one, delete it and sync, and the
+# reports the edit as folded and it can be deleted here. To accept an order edit, print the options
+# in the tracker in that order and give it the key the paper prints; from_key, the tracker's key the
+# order was written against, is how the sync then knows the edit is folded rather than laid twice. To reject one, delete it and sync, and the
 # paper goes back to the bank's wording (and fails the distractor audit on that item).
 #
 # status: proposed (awaiting the Programme Head) or accepted (agreed, not yet in the tracker).
@@ -62,12 +67,16 @@ W1:
       c: its value last quarter
   31:
     status: proposed
-    why: The options ran 26 to 54 characters, and both ends were keyed options, so no distractor could balance the set. Option a, a keyed option, now names the weeks, 41 characters, with its meaning and its letter unchanged, so the options run 36 to 54.
+    why: The options ran 26 to 54 characters, and both ends were keyed options, so no distractor could balance the set. Option a, a keyed option, now names the weeks, 41 characters, with its meaning unchanged, so the options run 36 to 54. Every more-than-one key on the paper held a and b, so ticking both always scored. The options are relabelled d, a, b, c, so the wrong option prints at a and the same three stay correct.
+    order: dabc
+    from_key: "a, b, c"
     options:
       a: quarters holding unequal numbers of weeks
   32:
     status: proposed
-    why: Option d ran 33 characters against 12 for option a. It now reads 28, so every option is 28 characters or fewer, and typing into the export is the same act as typing into the source file.
+    why: Option d ran 33 characters against 12 for option a. It now reads 28, so every option is 28 characters or fewer, and typing into the export is the same act as typing into the source file. Every more-than-one key on the paper held a and b, so ticking both always scored. The options are relabelled a, d, b, c, so the wrong option prints at b and the same three stay correct.
+    order: adbc
+    from_key: "a, b, c"
     options:
       d: Type a value into the export.
   33:
@@ -77,9 +86,16 @@ W1:
       d: the value to fill in where one is missing
   34:
     status: proposed
-    why: Option d ran 17 characters against 51 for option a. It now carries the belief behind a deeper discount, at 49, so the options run 36 to 51.
+    why: Option d ran 17 characters against 51 for option a. It now carries the belief behind a deeper discount, at 49, so the options run 36 to 51. Every more-than-one key on the paper held a and b, so ticking both always scored. The options are relabelled d, a, b, c, so the wrong option prints at a and the same three stay correct.
+    order: dabc
+    from_key: "a, b, c"
     options:
       d: a deeper discount, so any effect is easier to see
+  35:
+    status: proposed
+    why: Every more-than-one key on the paper held a and b, so ticking both always scored. The options are relabelled a, c, b, d, so the wrong option prints at b and the same three stay correct.
+    order: acbd
+    from_key: "a, b, d"
   42:
     status: proposed
     why: The key was one character longer than the next option. Option a ran 8 characters against 48 for option b; it now carries the belief behind a growing drop, at 49, so the options run 34 to 49.
@@ -121,15 +137,24 @@ W2:
       c: Computing the source-of-truth revenue figure that Finance will check its own books against.
   33:
     status: proposed
-    why: Options ran 22 to 39 characters, with c at 23 and d at 22 against b at 39; c and d now say which clause can compare COUNT(*) with a number, and the options run 34 to 41.
+    why: Options ran 22 to 39 characters, with c at 23 and d at 22 against b at 39; c and d now say which clause can compare COUNT(*) with a number, and the options run 34 to 41. Every more-than-one key on the paper held a, and four of the seven were exactly a, b and c. The options are relabelled a, d, b, c, so the wrong option prints at b, the two WHERE statements sit together, and the same three stay correct.
+    order: adbc
+    from_key: "a, b, c"
     options:
       c: HAVING can compare COUNT(*) with a number.
       d: WHERE can compare COUNT(*) with a number.
   34:
     status: proposed
-    why: The font was a nonsense option, so striking it left a, b and c, which is the whole key; the new distractor is a check that sounds like the other three and cannot catch a fan-out.
+    why: The font was a nonsense option, so striking it left a, b and c, which is the whole key; the new distractor is a check that sounds like the other three and cannot catch a fan-out. Every more-than-one key on the paper held a, and four of the seven were exactly a, b and c. The options are relabelled d, a, b, c, so the wrong option prints at a and the same three stay correct.
+    order: dabc
+    from_key: "a, b, c"
     options:
       d: the number of channels before and after the join
+  35:
+    status: proposed
+    why: Every more-than-one key on the paper held a, and four of the seven were exactly a, b and c. The options are relabelled c, a, d, b, so the two wrong options print at a and c and the same two stay correct.
+    order: cadb
+    from_key: "a, b"
   36:
     status: proposed
     why: Option b ran 25 characters against 60; it now names the quarter its total covers, and the options run 37 to 60.

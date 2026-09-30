@@ -146,9 +146,9 @@ d) The query runs unchanged each week against the source, and every line can be 
 Which statements about WHERE and HAVING are correct? Mark every correct option.
 
 a) WHERE filters rows before grouping.
-b) HAVING filters groups after aggregation.
-c) HAVING can compare COUNT(*) with a number.
-d) WHERE can compare COUNT(*) with a number.
+b) WHERE can compare COUNT(*) with a number.
+c) HAVING filters groups after aggregation.
+d) HAVING can compare COUNT(*) with a number.
 
 #### Q15 · Easy · show the working, then the answer · Predict the row count
 
@@ -219,19 +219,19 @@ d) Compare the row count before and after the join, and count payments per order
 
 A LEFT JOIN from 1,000 orders to payments returns 1,050 rows. Which checks belong in the validation? Mark every correct option.
 
-a) the row count before and after the join
-b) payments per order, with GROUP BY and HAVING COUNT(*) > 1
-c) booked revenue before and after the join
-d) the number of channels before and after the join
+a) the number of channels before and after the join
+b) the row count before and after the join
+c) payments per order, with GROUP BY and HAVING COUNT(*) > 1
+d) booked revenue before and after the join
 
 #### Q22 · Hard · circle every correct letter · Compare two joins
 
 Which rows can appear in a FULL OUTER JOIN of orders and payments and never in an INNER JOIN? Mark every correct option.
 
-a) orders with no payment
-b) payments with no order
-c) orders with exactly one payment
-d) orders with two payments
+a) orders with exactly one payment
+b) orders with no payment
+c) orders with two payments
+d) payments with no order
 
 ### Set 1
 
