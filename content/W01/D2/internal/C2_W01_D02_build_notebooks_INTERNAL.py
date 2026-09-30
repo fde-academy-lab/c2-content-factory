@@ -1228,7 +1228,7 @@ small file, rows read on a large one.
 A range is set by two orders, the smallest and the largest, so one order can stretch it, as Business showed with a rise of about 73 percent; a median is set by the middle of the list, so it barely moves. Between the two, the middle
 half of the sorted values says how wide the ordinary orders sit. Try it on Business: sort each
 quarter's amounts, drop the lowest and highest quarter of the list, and take the range of what is
-left. Thursday asks whether differences of this size are more than noise.
+left. Whether differences of this size are real is Thursday's question.
 
 References for the chapter:
 

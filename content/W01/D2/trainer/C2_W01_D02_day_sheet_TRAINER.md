@@ -58,12 +58,9 @@ flowchart LR
 | Escalated case, 50 | SECTION 7, S11 to S12 | Brief `unguided/..._escalated_case`; notebook `ex1_escalated_case` (TODO twin) | The ladder on delivered orders; the customers branch moves and is fulfilment | Part 5 becomes homework |
 | Debrief, 15 | SECTION 8, S13 to S16 | Solution notebook `ex1` released at the end | The four wrong answers with their numbers | S15 to one sentence |
 | Break, 10 | | | | |
-| Second case, pairs, 40 | SECTION 9, S17 to S18 | Brief `unguided/..._second_case`; notebook `ex2_second_case` | Student is 2 ids; Retail-Core web held; the 7 members; the July change log first | Hear one pair, not two |
+| Second case, pairs, 40 | SECTION 9, S17 to S18 | Brief `unguided/..._second_case`; notebook `ex2_second_case` | The tier's leaves multiply to about 0.55, revenue down about 45 percent on 7 percent more per order; Retail-Core web held; the 7 members; the July change log first | Hear one pair, not two |
 | Interview drill, 20 | SECTION 10, S19 to S20 | The answers below | Twelve questions aloud in one breath each | Take 1, 5, 7, 11 and 12 |
 | Kahoot and tomorrow, 15 | SECTION 11, S21 to S23 | `kahoot/C2_W01_D02_quiz_STUDENT.md` | The sentence to Meera; the eight crux lines; Anand's question left open | Never cut S21 |
-
-The afternoon deck's chapter openers are numbered 6 to 11 by
-`internal/C2_W01_D02_patch_section_numbers_INTERNAL.py`; rerun it after any rebuild of half two.
 
 ---
 
@@ -72,11 +69,11 @@ The afternoon deck's chapter openers are numbered 6 to 11 by
 | Chapter | Options | The call, and what would switch it | Second route |
 |---|---|---|---|
 | 1 | Closed quarters; the same 11 weeks; per day; last year's Q2 | Closed quarters; Q2 open means same weeks; the season means last year | Revenue keyed by month adds to the same minus 11.0 |
-| 2 | Leaf percentages; bridge in tree order; bridge reversed; symmetric split; customer by customer | Bridge in tree order, stated; symmetric if rebuilt monthly | 28 lost orders times Rs 1,84,211 equals the frequency step |
+| 2 | Leaf percentages; bridge in tree order; bridge reversed; symmetric split; customer by customer | Bridge in tree order, stated; symmetric if rebuilt monthly | The symmetric split charges frequency Rs 55,88,480: the same branch, and Rs 4,30,585 of joint part |
 | 3 | Copy the loop per group; a function; one pass by key | Function; millions of rows and every group at once means one pass | One pass by key agrees with `tree_for` on all 8 groups |
-| 4 | Blended change; per-segment rates; mix and rate split; medians | The split; similar order sizes would make the table enough | Rate first: mix 72 percent, same Rs 33,231 total |
-| 5 | Counts; id overlap; customer by customer; the CRM | Overlap then per customer; split ids would need joining first | Company fall less Business equals the consumer bridge, Rs 70,280 |
-| 6 | Before and after; comparison segment; channel; app logs | A, B and C now, D requested; an earlier break date flips A | The pre-break pace carried forward gives the same 4.1 orders |
+| 4 | Blended change; per-segment rates; mix and rate split; medians | The split; similar order sizes would make the table enough | Two groups on an envelope: Business's share change times its gap, about Rs 23,000, 69 percent |
+| 5 | Counts; id overlap; customer by customer; the CRM | Overlap then per customer; split ids would need joining first | First and last order dates, without the quarter field: none new, none lost |
+| 6 | Before and after; comparison segment; channel; app logs | A, B and C now, D requested; an earlier break date flips A | The pace corrected by Retail-Core's own change across the break, 0.946: about 3.5 orders, inside the ceiling |
 
 ## The traps, each with its exact wrong number
 

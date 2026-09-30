@@ -40,7 +40,10 @@ edit it, so the take-home sample is made inside the day folder; see the change r
 | The discount field absent on a subset (32 of 114 Q1 records, 26 of 86 Q2) | Chapter 2's trap | The KeyError live; the room counts the blanks in an empty cell, and the check prints the counts |
 | Wednesday's 14 duplicated Q1 rows | Nothing today | Unmentioned in every STUDENT file; the day sheet warns the trainer, including that the second case's call list of 7 may change |
 
-The take-home file's own findings are named only in the day sheet and here, as before.
+The take-home file's own findings are named only in the day sheet and here. Since the review pass of
+30 Sep 2026 the self-check gives Q2's segment figures and the two customer counts as sums of the
+learner's own numbers, so it verifies without naming Retail-Core's lost customers or the flat
+frequency.
 
 ## Decisions that depart from a source
 
@@ -62,18 +65,24 @@ The take-home file's own findings are named only in the day sheet and here, as b
 4. **Chapter titles carry no question mark.** `scripts/deck_md_check.py` treats a SECTION heading
    ending in "?" as a question slide needing an answer slide, so the chapter titles drop it in the deck
    and the notebooks alike, and match word for word.
-5. **The afternoon deck's openers are renumbered 6 to 11** by `internal/C2_W01_D02_patch_section_numbers_INTERNAL.py`,
-   since `scripts/build_deck.py` numbers each deck's sections from 1.
+5. **The afternoon deck's openers print 06 to 11** from their own `## SECTION n:` headings, since the
+   merged `scripts/build_deck.py` (e971c72) takes the numeral from the heading; the internal patch
+   script that did it retired on 30 Sep 2026. The half-two cover's chapter strip still numbers its
+   chapters 01 to 05 by position, from `scripts/deck_layout.py`, requested below.
 6. **The segment finding.** It stays out of notebooks 01 to 03 and their outputs, the morning deck up
    to S37, the guided exercise and the chapter 1 to 3 sets; chapter 3's second route prints agreement
    and no segment's numbers. From chapter 4 it is named, after the room found it in its own cell, as
    the 29 September build did from the afternoon on.
-7. **Sizing in seconds.** Each notebook's sizing cell measures its options' time with `time.perf_counter`
-   and prints milliseconds, with no check on them, since timings vary run to run; on 200 rows the
-   pack says speed decides nothing and names rows read, places to edit and error instead.
+7. **Sizing on what separates the options.** On 200 rows speed decides nothing, so since 30 Sep 2026
+   no sizing table carries a column every option scores alike: chapter 1 dropped its timing column
+   for what each option leaves out, and chapters 2, 4 and 5 their rows-read columns for whether the
+   rupees add, whether one lakh-sized order can move the reading, and what each option assumes.
+   Chapter 3's caption still reports the function calls' milliseconds, with no check on them.
 8. **The rupee fall is attributed honestly**, as on 29 September: Business carries Rs 22,29,720 of the
    Rs 23,00,000 fall on three orders, and Retail-Plus is 93 percent of the consumer fall and 25 of 28
-   lost orders.
+   lost orders. Its caveat is lumpiness, three lakh-sized orders that one account's timing moves;
+   "too few to call a trend" was a sample-size argument, Thursday's lesson, and left every file on
+   30 Sep 2026.
 9. **The reorder complaint's date** is read back six weeks from the week of delivery, 25 August, and
    called an assumption wherever the timing test uses it; chapter 6's ceiling of about 4.1 orders
    rests on it.
@@ -82,10 +91,22 @@ The take-home file's own findings are named only in the day sheet and here, as b
     copy, function or key design question.
 11. **Kahoot.** The first-rung item returns (the row's plan) and a mix item joins; the discount item
     and the bridge-order item left, since chapter 2's set tests both.
-12. **The study notes run to about 6,300 words** against 4,000 to 5,000, counting tables and links:
-    six chapters as worked cases, two cases, fourteen interview answers. The interview answers and
-    "Where this shows up in the work" are where to cut.
+12. **The study notes run to about 6,600 words** against 4,000 to 5,000, counting tables and links:
+    six chapters as worked cases, two cases, fourteen interview answers. The review pass of 30 Sep 2026
+    added a clause for each business term and a sentence for each new second route, and cut two
+    tangential readings and a repeated clause; nothing was cut to reach a count.
 13. **The cheat sheet runs to a second page** for its glossary foot, within the two-page limit.
+14. **Each chapter's second route is an independent method** since 30 Sep 2026: chapter 1 by month
+    in the order date, chapter 2 the symmetric split, chapter 3 one pass by key, chapter 4 two groups
+    on an envelope (Business against everyone else, within 1 percent of the four-segment mix),
+    chapter 5 each customer's first and last order date, chapter 6 the pace corrected by Retail-Core's
+    own change across the break (0.946, about 3.5 orders, inside the ceiling of 4.1). The routes they
+    replace (28 lost orders times Q1's value, the rate-first order, the total less Business, the
+    pre-break pace carried forward) each re-derived the first route's identity and could not fail.
+15. **Chapter 6's ceiling rests on a baseline**, the tier's pace over the 55 days from 1 July to the
+    break. Over only the 37 days just before the break the pace was higher (15 orders) and the
+    ceiling would be 7.0; notebook 06's depth section asks the learner to find this and say which
+    baseline the memo names. The headline stays "at most about 4 orders", on the stated baseline.
 
 ## Invented, and recorded as invented
 
@@ -101,7 +122,8 @@ The take-home file's own findings are named only in the day sheet and here, as b
    offer in the take-home brief; the Rs 1,000, Rs 1,200 and Rs 40,000 in the recovery extra.
 
 6. Added on 30 Sep 2026: Marketing's price-rise quote in chapter 4, its three-part pushback in chapter 5
-   and its new deck in the second case (Student's 40 percent, the website claim); Meera's
+   and its new deck in the second case (the members' 7 percent more per order, which replaced
+   Student's 40 percent in the review pass, and the website claim); Meera's
    delivered-orders question in the escalated case; the tier's "who do I call first?". Every number
    each one carries is computed from the class file.
 
@@ -147,14 +169,14 @@ Added on 30 Sep 2026 for the chapter standard, each fetched and read that day un
 | https://nsearchives.nseindia.com/corporate/ZOMATO_28042026151721_SHLSigned.pdf | Chapter 2: Blinkit, Q4 FY26, 273.9 million orders, net average order value Rs 525, net order value Rs 14,386 crore | checked 30 Sep 2026, Eternal shareholders' letter of 28 Apr 2026, page 12 read from a render; the figures are net, and the pack says net |
 | https://stock.walmart.com/_assets/_921ff28c537145729fbc2553b7f43fac/walmart/db/938/9996/earnings_release/Earnings+Release+(FY27+Q2).pdf | Chapter 2: Walmart U.S. comparable sales ex fuel up 2.6 percent, transactions 1.5, average ticket 1.1, 13 weeks to 31 Jul 2026 | checked 30 Sep 2026, PDF text extracted |
 | https://www.sec.gov/Archives/edgar/data/909832/000090983225000093/costex9928-k92525.htm | Chapter 3: Costco renewal rates, 92.3 percent U.S. and Canada, 89.8 percent worldwide, Q4 FY2025 | checked 30 Sep 2026 |
-| https://doi.org/10.1126/science.187.4175.398 | Chapter 4: Bickel, Hammel and O'Connell, Science 187(4175), 398 to 404, 7 Feb 1975 | checked 30 Sep 2026 through the Crossref API; the publisher page returned 403 |
-| https://arxiv.org/html/2502.10161 | Chapter 4: the aggregate rates, 8,442 men at about 44.2 percent and 4,321 women at about 34.6 percent | checked 30 Sep 2026; a secondary source summarising the paper's table, so every artifact says "about" and "as a 2025 re-analysis summarises" |
+| https://doi.org/10.1126/science.187.4175.398 | Chapter 4: Bickel, Hammel and O'Connell, Science 187(4175), 398 to 404, 7 Feb 1975 | checked 30 Sep 2026 through the Crossref API; the publisher page returned 403. Removed from every STUDENT file on 30 Sep 2026: Berkeley is Simpson's reversal, which Thursday stages |
+| https://arxiv.org/html/2502.10161 | Chapter 4: the aggregate rates, 8,442 men at about 44.2 percent and 4,321 women at about 34.6 percent | checked 30 Sep 2026; removed with the Berkeley case on 30 Sep 2026 |
 | https://hbr.org/2014/10/the-value-of-keeping-the-right-customers | Chapter 5: 5 to 25 times; Reichheld's 5 percent retention, 25 to 95 percent profit | checked 30 Sep 2026, re-read |
 | https://investors.sonos.com/news-and-events/investor-news/latest-news/2024/Sonos-Reports-Third-Quarter-Fiscal-2024-Results/ | Chapter 6: the CEO ties the app's rollout to reduced fiscal 2024 guidance | checked 30 Sep 2026 |
 | https://www.sec.gov/Archives/edgar/data/1314727/000131472724000026/sono-20240928.htm | Chapter 6: short-term costs of up to $30 million to improve the app | checked 30 Sep 2026; the widely reported $100 million to $200 million revenue effect was not found on a primary page and is left out |
 | https://docs.python.org/3/tutorial/datastructures.html#sets | Chapter 5: sets | checked 30 Sep 2026 |
 | https://www.swiggy.com/corporate/wp-content/uploads/2025/10/Q2-FY2026-Shareholder-letter.pdf | Chapter 4: Instamart AOV Rs 697, up 14 percent in the quarter, attributed to non-grocery and large-pack mix, net AOV Rs 485; chapter 5: MTU up 34.0 percent to 22.9 million, frequency 4.53 to 4.10 | checked 30 Sep 2026, PDF text read |
-| https://arxiv.org/html/2502.10161 | Chapter 4: "the per-department admission rates did not differ significantly between the sexes"; women applied mostly to departments hard to get into | checked 30 Sep 2026 |
+| https://arxiv.org/html/2502.10161 | Chapter 4: "the per-department admission rates did not differ significantly between the sexes"; women applied mostly to departments hard to get into | checked 30 Sep 2026; removed with the Berkeley case on 30 Sep 2026 |
 
 ## Tool versions the outputs came from
 
@@ -181,12 +203,14 @@ mermaid-cli 12.0.0, WeasyPrint 70.0, Playwright 1.63.0 with the pre-installed Ch
 | 5. Pedagogy and language, sixth run | Fresh reviewer agent | The same question, with a hunt for answers stated in the twins' source | NO. Earlier fixes held and the chart titles were neutral. Should-fix: ex2's check labels and literals still telegraphed three keys (the call-list sum, "held" with a threshold, "no Student customer is new" with 5, 7, 2) and one label shared a key word. Minor: ex1's -11.3 literal, a TODO 5 label naming None, a bar highlight on the wrong group | Every twin check now compares the pick with a second route under a neutral label (the Q2 ids missing from Q1; the members who slowed most; delivered revenue by month; a segment that can test the website claim), literals removed, labels reworded, the highlight removed; a run with each correct and each wrong fill confirms right picks pass and wrong ones fail |
 | 5. Pedagogy and language, seventh run | Fresh reviewer agent | The same question, focused on the twins | NO. Everything outside the twins held, and the twins' titles, tree labels and second-route checks were neutral. Should-fix: ex2's Part 3 text and label said "slowed most", the answer's own reasoning; ex2's Part 4 check named the two wrong sources and its start dates ruled out a third; ex1's opening paraphrased the escalated Q2 key. Minor: two checks rebutted distractors | Part 3 reads "decide who goes first" with a second-route label; Part 4 checks the pick against a stored fingerprint of the key and that it names a listed source; ex1's opener and Kavya's line reworded in the exercise twin only; the two rebutting checks replaced or removed; a rerun with right and wrong fills confirms the checks still discriminate |
 | 5. Pedagogy and language, eighth run | Fresh reviewer agent | The same question | YES. The seventh run's fixes held, the twins no longer state or leave only a key, verify and the scrubber were clean. Minor: ex2 lacked the item signposts ex1 carries; ex1 TODO 7's check label named the rule; the Kahoot had doubled separators | All three minors fixed |
+| Orchestrator review, one pass | A review agent for the orchestrating session | The day's review against the standard as merged on 30 Sep 2026: spoilers of later days, exercises sat blind from the STUDENT files, the design share, token options and second routes, plants, consistency, and terms a learner new to business cannot follow | NO. Spoilers: the second case's Part 1 (Student up 40 percent on two customers, 12 orders) was Thursday's headline rate on a small base and its plant, and small-base framing sat in chapter 4 and 5 lines, the deck's S28, S43, S52, S53 and drill notes, and every "too few to call a trend"; Berkeley in chapter 4 was Thursday's Simpson reversal; chapter 5's outlier and noise options touched Wednesday and Thursday. Exercises: exhibits drew the keys of chapter 1 item 2 and chapter 5 item 1, two orderings keyed the listed order, chapter 3 item 2's stem announced item 1's key, strawman options (always, never, a Rs 150 threshold, a reserved name) left keys to elimination, and the escalated case's Part 3 and Part 4 headings named its keys. TODO checks: escalated TODO 3 and second-case TODOs 1 and 3 recomputed the key expression in the check. Design: 22 labelled, about 12 genuine. Second routes in chapters 2, 4, 5 and 6 re-derived the first route's identity; sizing tables carried columns every option scored alike (time, rows read). Plants: the take-home self-check named Retail-Core's 34 to 26 customers and the flat frequency. Consistency: the deck's 1,000x against several hundredfold. Terms: about a dozen business terms unexplained | Every item above fixed: the second case's Part 1 is now the tier's own tree against Marketing's 7 percent per order (0.545, about 45 percent down); Berkeley cut for Swiggy; the small-base lines reworded as lumpiness; 36 chapter items rewritten or retuned with computed sizings and plausible wrong answers, chapter 6 gaining a sixth; TODO checks read computed values in a later cell, and a probe with each wrong pick shows each fails; 25 design items across 47 case and chapter items plus the practice set, each argued in the review report; four second routes replaced by independent methods; sizing columns replaced by ones that separate; the self-check gives sums; 430x; one-clause glosses where each term first appears; both decks rebuilt with the merged builder, the afternoon opener printing 06; notebooks and case twins executed cold |
 
 ## Shared-tool changes requested
 
 1. `data/generate_client_zero.py`: a `v1b` take-home sample, so the day folder's workaround script can retire.
-2. `scripts/build_deck.py`: take a SECTION's numeral from its heading, on the opener and on the cover's chapter strip, (`## SECTION 6:`) when one is
-   given, so an afternoon deck can open on chapter 6 without the patch in `internal/`.
+2. `scripts/deck_layout.py`, `title_slide`: number the cover's chapter strip from each SECTION's own
+   heading, as `build_deck.py` now does for the openers (e971c72); the half-two cover still prints
+   01 to 05 for chapters 6 to 10, and the strip shows five of the six chapters.
 3. `scripts/deck_md_check.py`: skip the question-and-answer pairing for SECTION headings, so a chapter
    titled with its question ("Is the drop real?") can keep its question mark.
 4. `scripts/c2kit.py`, `strip()`: the marker loop still reassigns `left`, the chart's margin, so every

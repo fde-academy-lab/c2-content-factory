@@ -390,7 +390,7 @@ deliver orders and the teams that own the product, and acquisition still has not
 Business's larger delivered orders carrying the rate.
 
 **The second case** takes Marketing's new deck apart in pairs: the members' 7 percent more per order
-is one leaf, and the tier's leaves multiply to 1.000 times 0.510 times 1.070, 0.546, so its revenue
+is one leaf, and the tier's leaves multiply to 1.000 times 0.510 times 1.070, about 0.55, so its revenue
 fell about 45 percent; the web claim fails because Retail-Core's web orders held at 13 and 12 on the
 same website; and the tier's call list starts with the 7 members who went from three orders a quarter
 to one.

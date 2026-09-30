@@ -204,7 +204,8 @@ value: -25.9% | label: the headline | note: "revenue fell by a quarter"
 **The client asks.** If revenue fell by a quarter in one quarter, Marketing says, the acquisition budget cannot wait.
 
 ```notes
-LIVE, 2 minutes. The metric at stake is the change in booked revenue between two closed quarters.
+LIVE, 2 minutes. The metric at stake is the change in booked revenue, every order placed before
+any cancellation or return, between two closed quarters.
 Put the claim up exactly as Marketing would: 1,55,59,950 over 2,10,00,000 is 0.741, a fall of 25.9
 percent, and the division is right. Overstate the fall and crores move in a hurry; understate it
 and a leak runs another quarter. Ask whether anything is wrong; most of the room will not see it yet.
@@ -245,9 +246,9 @@ The link to Kalpa: Q2's tile had two fewer weeks than Q1.
 **The call.** A, because both quarters closed on 30 September at 13 weeks each. **What would change it:** Q2 still open means B; a question about the monsoon means D and a data request.
 
 ```notes
-LIVE, 5 minutes. Every option runs in well under a second on 200 rows, so speed decides nothing;
-what separates them is the question each answers. B reads 167 rows because it drops two weeks of
-each quarter. Write "A: closed quarters" on the board beside rung 1. The notebook's sizing cell
+LIVE, 5 minutes. What separates the options is the question each answers and what each leaves
+out: B reads 167 rows because it drops the last two weeks of each quarter, and D leaves out
+everything until last year's export arrives. Write "A: closed quarters" on the board beside rung 1. The notebook's sizing cell
 computes this table; run it now.
 ```
 
@@ -419,7 +420,8 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 3 minutes. The metric at stake is the rupees each branch carries. A wrong split sends crores to
+LIVE, 3 minutes. Merchandising is the team that picks the range and the pack sizes. The metric at
+stake is the rupees each branch carries. A wrong split sends crores to
 the wrong owner for a quarter. Remind the room that price and basket fold into revenue per order on
 this file.
 ```
@@ -430,9 +432,9 @@ this file.
 *Visits and basket, orders and order value: companies publish the split because investors ask Meera's question.*
 
 ```stats
-value: 273.9 m | label: Blinkit orders, Q4 FY26 | note: at a net average order value of Rs 525
+value: 273.9 m | label: Blinkit orders, Q4 FY26 | note: Rs 525 an order, after discounts
 value: Rs 14,386 cr | label: Blinkit net order value | note: orders times order value
-value: +1.5% / +1.1% | label: Walmart U.S. transactions / ticket | note: quarter to 31 July 2026
+value: +1.5% / +1.1% | label: Walmart U.S. transactions / ticket | note: ticket is spend per visit
 ```
 
 **The claim.** A quick-commerce app and the world's largest store chain both answer "more visits or bigger baskets?" every quarter.
@@ -460,8 +462,8 @@ percent, transactions 1.5, average ticket 1.1.
 **The call.** B, with its order written beside it: it adds exactly and a CEO can follow it. **What would change it:** a split Finance rebuilds monthly goes symmetric; "which customers?" goes to D, in chapter 5.
 
 ```notes
-LIVE, 5 minutes. All four read the same 200 rows in milliseconds. The spread between orders is
-about Rs 9.3 lakh, the part where two branches moved together; whichever goes second is charged for
+LIVE, 5 minutes. Only B and C put rupees on each branch that add to the fall, and only C is free of
+an order. The spread between orders is about Rs 9.3 lakh, the part where two branches moved together; whichever goes second is charged for
 it. The symmetric split follows Ang (2005), "The LMDI approach to decomposition analysis", Energy
 Policy, checked through Crossref 29 Sep 2026.
 ```
@@ -615,12 +617,12 @@ version). Interview [S]: a field is missing; do you fill it with zero?
 ---
 
 ## S27. A second route, and Kavya's review
-*Twenty-eight lost orders at Q1's Rs 1,84,211 each is the bridge's frequency step, to the rupee.*
+*A split that chooses no order at all puts the fall on the same branch the bridge did.*
 
 ```mermaid
 flowchart LR
-    A["<b>114 - 86</b><br/>28 lost orders"] --> B["<b>x Rs 1,84,211</b><br/>Q1 revenue<br/>per order"]
-    B --> C["<b>-Rs 51,57,895</b><br/>equals the<br/>bridge's step"]
+    A["<b>bridge, tree order</b><br/>frequency<br/>-Rs 51,57,895"] --> C["<b>the same branch</b><br/>carries the fall"]
+    B["<b>symmetric split</b><br/>frequency<br/>-Rs 55,88,480"] --> C
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class C known
 ```
@@ -630,8 +632,10 @@ flowchart LR
 **In the interview.** [F] How do you split a revenue change between customers, frequency and order value?
 
 ```notes
-LIVE, 2 minutes. When to switch: the direct count works only because customers did not move; the
-escalated case this afternoon meets a definition where they do. One breath for the interview: tree,
+LIVE, 2 minutes. The symmetric split shares the fall by logarithms and chooses no order, so it could
+have disagreed with the bridge; the Rs 4,30,585 between them is the part where frequency and order
+value moved together. When to switch: keep the bridge for Meera; go symmetric when two branches keep
+moving together and someone else rebuilds the split every month. One breath for the interview: tree,
 ratios multiply back, one leaf at a time in a fixed order, rupees add.
 ```
 
@@ -658,7 +662,7 @@ notebooks/C2_W01_D02_03_which_segment_STUDENT.ipynb. The break follows this chap
 | Retail-Core | Many small orders | Customers active |
 | Retail-Plus, the paid tier | Members' repeat buying | Orders per member |
 | Business | Few very large accounts | Order timing per account |
-| Student | Small baskets, few buyers | How many orders a figure rests on |
+| Student | Small discounted baskets | Discount per order |
 
 ```notes
 LIVE, 2 minutes. His renewals are the metric of his job, so orders per member is his number. A wrong
@@ -875,7 +879,7 @@ time and definitions change; a pass by key when the file is large and every grou
 *Revenue per order rose 18 percent, and Marketing reads a price signal into a blend.*
 
 ```notes
-LIVE. Chapter 4 runs 30 minutes after the break: 3 on the need, 3 on Berkeley, 4 on the options, 5 on
+LIVE. Chapter 4 runs 30 minutes after the break: 3 on the need, 3 on Swiggy, 4 on the options, 5 on
 the lost orders, 8 on the trap and the split, 5 on the second route, 2 on Kavya. Switch to
 notebooks/C2_W01_D02_04_mix_or_rate_STUDENT.ipynb. From here the segment the room found is named.
 ```
@@ -890,38 +894,38 @@ notebooks/C2_W01_D02_04_mix_or_rate_STUDENT.ipynb. From here the segment the roo
 ```stats
 value: +18.0% | label: revenue per order | note: all orders, blended
 value: 26 of 51 | label: Retail-Plus orders kept | note: the same 22 members
-value: 1,000x | label: order size, Business to consumer | note: lakhs against thousands
+value: 430x | label: order size, Business to consumer | note: lakhs against thousands, Q1
 ```
 
 ```notes
 LIVE, 4 minutes. Open by naming what the room found at the end of chapter 3: Retail-Plus, the same
-22 members, 51 orders to 26. The metric at stake is a blend across segments whose orders differ a
-several hundredfold. A wrong reading costs volume: a price rise on customers who never paid more.
+22 members, 51 orders to 26. The metric at stake is a blend across segments whose orders differ
+several hundredfold: a Q1 Business order averaged Rs 10,38,559 and a consumer order Rs 2,434. A wrong reading costs volume: a price rise on customers who never paid more.
 ```
 
 ---
 
-## S39. Berkeley 1973: a blend moved, the mix did it
-*University-wide admission rates differed by sex while department by department they did not differ significantly.*
+## S39. Swiggy: an order value that rose on its mix
+*Instamart's average order rose 14 percent in a quarter, and Swiggy put it down to what people bought.*
 
 ```mermaid
 flowchart LR
-    U["<b>whole university</b><br/>men about 44%<br/>women about 35%"] --> M["<b>the mix</b><br/>women applied to<br/>selective departments"]
-    M --> D["<b>each department</b><br/>no significant<br/>difference"]
+    U["<b>Instamart order value</b><br/>up 14 percent<br/>to Rs 697"] --> M["<b>the mix moved</b><br/>non-grocery and<br/>large packs"]
+    M --> D["<b>no price rise</b><br/>needed to explain it"]
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class U bad
     class D known
 ```
 
-**The claim.** When groups differ in rate and their shares move, a blended rate can move with no group moving. Swiggy said the same of Instamart's order value, up 14 percent in a quarter to Rs 697, as non-grocery categories took a larger share of gross order value.
+**The claim.** When groups differ in order size and their shares move, a blended order value can rise with no customer paying more for the same thing.
 
 ```notes
-LIVE, 3 minutes. Bickel, Hammel and O'Connell, Science 187, 398 to 404, 1975, citation checked
-through Crossref 30 Sep 2026; the 44.2 and 34.6 percent rates on 8,442 men and 4,321 women are as a
-2025 arXiv re-analysis (2502.10161) summarises the paper's table, so say "about"; the same summary
-gives the department-level finding. Swiggy, Q2 FY2026 shareholder letter, checked 30 Sep 2026:
-Instamart AOV Rs 697, up 14 percent in the quarter, attributed to non-grocery and large-pack mix.
+LIVE, 3 minutes. Swiggy, the food and grocery delivery app, Q2 FY2026 shareholder letter, checked 30
+Sep 2026: the average order value of Instamart, its quick-commerce store, Rs 697, up 14 percent in
+the quarter, put down to non-grocery categories and large packs taking a larger share of gross order
+value, the value of orders before discounts; net average order value after discounts Rs 485. The
+link to Kalpa: Business's lakh-sized orders took a larger share as small member orders left.
 ```
 
 ---
@@ -939,8 +943,8 @@ Instamart AOV Rs 697, up 14 percent in the quarter, attributed to non-grocery an
 **The call.** C, built on B's per-segment rates. **What would change it:** segments of similar order size would make mix negligible and B enough; a question about which products' prices moved needs order lines this file lacks.
 
 ```notes
-LIVE, 4 minutes. All four read the same 200 rows. The notebook's sizing cell shows only C
-attributes rupees to a cause. Write "C: mix and rate" beside rung 4.
+LIVE, 4 minutes. The notebook's sizing cell shows that only C puts rupees on a cause, and that only
+D is safe from one lakh-sized order. Write "C: mix and rate" beside rung 4.
 ```
 
 ---
@@ -1001,7 +1005,7 @@ leave.
 
 ```notes
 LIVE, 4 minutes. The chapter's trap. Say the decision it would have misled: a price rise on the tier
-whose orders already halved. Student's 14.8 percent rests on 12 orders.
+whose orders already halved.
 ```
 
 ---
@@ -1030,20 +1034,24 @@ more than nine tenths Business, driven by one large order, as chapter 3's range 
 ---
 
 ## S45. A second route, and Kavya's review
-*Move the rate first instead: the parts shift, both still add to Rs 33,231, and mix stays above two thirds.*
+*Two groups on the back of an envelope, Business and everyone else, put the same share on the mix.*
 
-| Order of the steps | Mix | Rate | Mix share |
+| Route | What it prices | Mix | Share of the rise |
 |---|---|---|---|
-| Mix first | Rs 22,902 | Rs 10,330 | 68.9% |
-| Rate first | Rs 24,028 | Rs 9,203 | 72.3% |
+| Four segments | Q2's mix at each segment's Q1 rate | Rs 22,902 | 68.9% |
+| Two groups | Business's share change times its gap | Rs 23,039 | 69.3% |
 
 **Kavya's review.** "Marketing looked at a blend and saw a price signal. You opened it and found 25 small orders missing. No consumer segment paid meaningfully more; the small orders disappeared, from the tier we are about to ask about."
 
 **In the interview.** [F] Revenue per order rose 18 percent while revenue fell; did prices go up?
 
 ```notes
-LIVE, 5 minutes. When to switch: report mix-first and say so; show both orders when they disagree
-about which part is larger. One breath for the interview: a blend, a mix split, a number for each part.
+LIVE, 5 minutes. The envelope: Business's share of orders rose from 17.5 to 19.8 percent, times the
+Rs 10,36,125 by which a Q1 Business order beat a consumer order, is about Rs 23,000. It uses no
+consumer rate, so it could have disagreed. When to switch: report the four-segment split, since it
+names each segment; the envelope is the check with no laptop, and it stops agreeing when the consumer
+segments' own shares move a lot against each other. One breath for the interview: a blend, a mix
+split, a number for each part.
 ```
 
 ---
@@ -1060,7 +1068,7 @@ customers who slowed, 10 on the summary-script trap, 5 on the consumer business 
 ---
 
 ## S46. Marketing: churn is hiding in a flat count
-*Rs 12 crore rests on one claim, that Kalpa loses customers and must replace them.*
+*Rs 12 crore rests on one claim: churn, customers who stop buying, which new ones must replace.*
 
 **The client asks.** "A flat count can hide churn replaced by new customers, which is why we need acquisition. And Retail-Plus is Rs 65,250 out of a Rs 23 lakh fall. Last quarter's summary script says Business fell most." (the marketing lead)
 
@@ -1112,8 +1120,8 @@ monthly transacting users up 34.0 percent to 22.9 million while frequency fell 4
 **The call.** B, then C: three numbers anyone can rerun, then who slowed. **What would change it:** one person holding two ids, store and app, would make the overlap invent churn, and the CRM would be needed to join them first.
 
 ```notes
-LIVE, 4 minutes. All run on the same 200 rows; D needs a second system to reconcile. Write "B, then
-C" beside rung 5.
+LIVE, 4 minutes. A, B and C read the export already open; D, Marketing's CRM, its customer
+database, is a second system whose ids must match the export's. Write "B, then C" beside rung 5.
 ```
 
 ---
@@ -1194,7 +1202,7 @@ flowchart LR
 
 ```notes
 LIVE, 3 minutes. The segment the script was written to flag, a 49 percent fall, is the one it
-silently lost. Student, up 40 percent on two customers, also vanished. Interview [F]: why does a
+silently lost. Student, which rose, also vanished. Interview [F]: why does a
 function that prints instead of returning break a pipeline?
 ```
 
@@ -1213,22 +1221,24 @@ function that prints instead of returning break a pipeline?
 **What changed.** "Business fell most, 15.0 percent" became "Retail-Plus fell 49.0 percent, 2.32 to 1.18 orders per member; Business 15.0 percent on three orders".
 
 ```notes
-LIVE, 3 minutes. Point at the flags: large moves are flagged, never dropped. Student's rise is two
-customers placing seven orders against five; the afternoon's second case returns to it.
+LIVE, 3 minutes. Point at the flags: large moves are flagged, never dropped. A flag asks for a look
+by hand and removes nothing from the table.
 ```
 
 ---
 
 ## S54. Too small? A second route, and Kavya's review
-*Retail-Plus is 93 percent of the consumer fall, reached by a bridge and by subtraction alike.*
+*Retail-Plus is 93 percent of the consumer fall, and the order dates alone find nobody lost or new.*
 
 ```mermaid
 flowchart LR
-    A["<b>company fall</b><br/>Rs 23,00,000"] --> B["<b>less Business</b><br/>Rs 22,29,720"]
-    B --> C["<b>consumer fall</b><br/>Rs 70,280"]
-    C --> D["<b>Retail-Plus</b><br/>Rs 65,250, 93%"]
+    A["<b>consumer fall</b><br/>Rs 70,280"] --> D["<b>Retail-Plus</b><br/>Rs 65,250, 93%"]
+    F["<b>first orders</b><br/>all in Q1"] --> N["<b>new in Q2: 0</b><br/>lost after Q1: 0"]
+    L["<b>last orders</b><br/>all in Q2"] --> N
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class D bad
+    class N known
 ```
 
 **Kavya's review.** "Three attacks, three checks anyone can rerun. And you nearly shipped a summary that lost the one segment that matters. Count what comes back from every helper you did not write."
@@ -1236,9 +1246,13 @@ flowchart LR
 **In the interview.** [D] Marketing insists the answer is acquisition and your data says frequency; how do you make the case in the room?
 
 ```notes
-LIVE, 5 minutes. The bridge by consumer segment and the subtraction agree at Rs 70,280. When to
-switch: subtraction is quicker and hides which consumer segment moved. The Business rupees rest on
-three lakh-sized orders out of twenty, too few to call a trend; say both findings side by side.
+LIVE, 5 minutes. The consumer business fell from Rs 2,28,820 to Rs 1,58,540, and Retail-Plus is
+Rs 65,250 of the Rs 70,280. The second route takes each customer's first and last order date: every
+first order falls in Q1 and every last order in Q2, so none new and none lost, from the dates alone
+and without the quarter field, which is why it could have disagreed with the overlap. When to switch:
+show Marketing the overlap; the dates add that new means new since 1 April. The Business rupees are
+three lakh-sized orders out of twenty, which one account's timing can move; say both findings side by
+side.
 One breath for [D]: test their claim in its own terms, show the overlap, show where the fall is, end
 on what would change my mind. Lunch follows.
 ```

@@ -429,7 +429,7 @@ added, which is Monday's two lifts called 20 percent turned round. c) is the one
 quoted. d) averages two ratios, which is no quantity in the tree.
 
 **The answer to Marketing.** The same 22 members spent 7.0 percent more per order and placed about
-half as many orders, 2.32 each to 1.18, so the tier's revenue fell to 0.546 of Q1, Rs 1,43,550 to
+half as many orders, 2.32 each to 1.18, so the tier's revenue fell to 0.545 of Q1, Rs 1,43,550 to
 Rs 78,300, about 45 percent down. One leaf that rose inside a tier whose orders halved says nothing
 about the tier's health.
 """)),
@@ -539,7 +539,7 @@ EVIDENCE = {
 #   d) "tier_log"
 first_request = [[4|"tier_log"]]
 kit.tree({"label": "the reply", "kind": "lit", "branches": [
-    ("to Marketing", {"label": f"tier revenue x {tier_share:.2f}\\nweb tested on {also_falls}", "kind": "known"}),
+    ("to Marketing", {"label": f"tier revenue x {tier_share:.3f}\\nweb tested on {also_falls}", "kind": "known"}),
     ("to the tier", {"label": f"call the {len(call_first)}\\nat the top of the list", "kind": "known"}),
     ("first request", {"label": EVIDENCE[first_request][:34], "kind": "unknown"})]},
     title="The pair's reply, in three branches")

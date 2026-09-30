@@ -49,7 +49,7 @@ wrong answer costs a quarter: blame the button for everything, fix it, and the t
 ---
 
 ## S2. Sonos tied an app rollout to its guidance
-*A loyal customer base, an app rollout that went wrong, and a company that put it into its guidance.*
+*A loyal customer base, an app rollout gone wrong, and a cut in guidance, the revenue promised to investors.*
 
 ```stats
 value: 2024 | label: redesigned app rolled out | note: the problems it caused
@@ -186,23 +186,25 @@ channel.
 
 ---
 
-## S9. A second route: the pace the tier had set
-*Carry the pre-break pace forward and count the shortfall after the break: the same 4.1 orders.*
+## S9. A second route: the pace, corrected
+*Take out what slowed Retail-Core across the same date, and the button's share shrinks to about 3.5.*
 
 ```mermaid
 flowchart LR
-    P["<b>pre-break pace</b><br/>18 in 55 days"] --> E["<b>expected after</b><br/>12.1 in 37 days"]
-    E --> A["<b>actual after</b><br/>8"]
-    A --> C["<b>ceiling</b><br/>4.1 orders<br/>both routes"]
+    P["<b>pre-break pace</b><br/>12.1 expected after"] --> R["<b>x 0.946</b><br/>Retail-Core's own<br/>change in pace"]
+    R --> E["<b>corrected</b><br/>11.5 expected"]
+    E --> C["<b>8 placed</b><br/>about 3.5 orders,<br/>inside the ceiling"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class C known
 ```
 
-**When to switch.** Write the rate route in the memo; draw the counting route, since a line bending away from its own pace is what a room can see.
+**When to switch.** Write the ceiling in the memo; bring the corrected route when someone argues for the season.
 
 ```notes
-LIVE, 2 minutes. The notebook draws the cumulative line against the pace and asserts the two routes
-agree.
+LIVE, 2 minutes. Retail-Core placed 22 orders in the 55 days before 25 August and 14 in the 37 after,
+a pace 0.946 of what it had been. Scale the tier's expected 12.1 by it: 11.5, against 8 placed, about
+3.5 orders. The route could have come out above the ceiling of 4.1 and lands below it, which is what
+a ceiling predicts. The notebook also draws section 2's cumulative line against the pre-break pace.
 ```
 
 ---
@@ -246,15 +248,15 @@ notebooks/C2_W01_D02_ex1_escalated_case_STUDENT.ipynb. The solution opens after 
 ---
 
 ## S11. Meera asks if the story survives delivery
-*The board pack reports what reached customers and stayed, and one branch that held this morning moves.*
+*The board pack, the numbers the board reads, counts only what reached customers and stayed.*
 
 **The client asks.** "The board pack reports revenue on orders that reached the customer and stayed there. Does your story survive on delivered orders? Which branch, which segment, and what would you bet on?"
 
 ```timeline
 label: Part 1 | title: Is the delivered drop real? | body: Filter to delivered orders; compare closed quarters.
-label: Part 2 | title: The tree on delivered | body: A bridge in the tree's order; one branch that held now moves.
-label: Part 3 | title: Are those lost customers? | body: Compare the delivered and the booked overlap.
-label: Part 4 | title: Four segments, rolled up | body: tree_for, the weighted roll-up, every group counted.
+label: Part 2 | title: The tree on delivered | body: A bridge in the tree's order, one leaf at a time.
+label: Part 3 | title: Are those lost customers? | body: Find out what the customers who left the count did in Q2.
+label: Part 4 | title: Four segments on delivered | body: tree_for per segment, the rate rolled up, every group counted.
 label: Part 5 | title: Mix or rate on delivered | body: The split, and the sentence to Meera. | tone: dark
 ```
 
@@ -367,7 +369,7 @@ flowchart LR
     class S known
 ```
 
-**Kavya's review.** "On delivered orders the story held: frequency, Retail-Plus at minus 42.6 percent per member, and the same two hypotheses. The branch that moved was fulfilment. Put the definition beside every number, and the solution is open now."
+**Kavya's review.** "On delivered orders the story held: frequency, Retail-Plus at minus 42.6 percent per member, and the same two hypotheses. The branch that moved was fulfilment, getting orders to customers intact. Put the definition beside every number, and the solution is open now."
 
 ```notes
 LIVE, 4 minutes, then the 10-minute break. Release the solution notebook.
@@ -390,7 +392,7 @@ notebooks/C2_W01_D02_ex2_second_case_STUDENT.ipynb.
 *One of each pair answers Marketing, the other the head of Retail-Plus, from the same file.*
 
 ```cards
-icon: megaphone | eyebrow: Claim 1 | title: Student rose 40 percent | body: "Our campus push worked, so acquisition works."
+icon: megaphone | eyebrow: Claim 1 | title: 7 percent more per order | body: "Members spend more each time, so the tier is healthy."
 icon: globe | eyebrow: Claim 2 | title: Web fell hardest | body: "Retail-Plus web orders fell 24 to 9, so it is the website team's problem."
 icon: phone | eyebrow: The tier | title: Who do I call first? | body: "Which of my members do I call first?" | tone: dark
 ```
@@ -409,7 +411,7 @@ request that settles most.
 
 | Claim | What it is made of | The reply |
 |---|---|---|
-| Student +40 percent | The same 2 customers, 5 orders to 7 | No new customer, and one order moves a rate on 2 customers by 20 percent |
+| 7 percent more per order | The same 22 members at about half the orders: 1.000 x 0.510 x 1.070, about 0.55 | Tier revenue fell about 45 percent; one leaf that rose is not the tier |
 | Web fell hardest | Retail-Core web held, 13 to 12, same website | A site-wide fault does not fit; members fell on every channel |
 | Who to call first | 7 members went from 3 orders to 1 | Call the 7, then the 11 who fell by one |
 
@@ -449,7 +451,8 @@ product screens, [SV] service-major screen opener, [D] differentiator.
 LIVE, 10 minutes.
 1. Confirm on matched windows, decompose into customers, orders per customer and revenue per order,
 isolate the segment, split mix from rate, then name a hypothesis with its evidence, timing first.
-2. Nobody can check it, compare it or know how many cases it rests on: 40 percent of five orders.
+2. Nobody can check it or compare it: orders per customer is 1.25 over 69 booked customers and 1.14
+over 50 delivered ones, so the denominator decides the number.
 3. The caller gets None, and the next step crashes or silently drops that group.
 4. Window length and dates, the definition, the population and the denominator; closed quarters, or
 the same weeks of each; the season needs last year.
@@ -498,7 +501,7 @@ LIVE. The close runs 15 minutes: Kahoot 8, the sentence and the lines 5, tomorro
 ## S21. The sentence that goes to Meera
 *A claim, its evidence, its caveat and the next step, in the order she needs them.*
 
-> "Revenue fell 11.0 percent between two closed quarters, Rs 2.10 crore to Rs 1.87 crore on the export as it stands. Customers held at 69, every one of them buying in both quarters, so acquisition is not the branch that moved; orders per customer fell from 1.65 to 1.25. In behaviour the fall sits in Retail-Plus, where the same 22 members placed 26 orders against 51, and revenue per order rose mainly because those small orders disappeared. In rupees most of it is three fewer Business orders, each worth lakhs and too few to call a trend. The fall began in July, before the reorder button broke, so the button explains at most about 4 orders; we are asking for the tier's July change log and the app's reorder logs." The data and AI team, to Meera Raghavan
+> "Revenue fell 11.0 percent between two closed quarters, Rs 2.10 crore to Rs 1.87 crore on the export as it stands. Customers held at 69, every one of them buying in both quarters, so acquisition is not the branch that moved; orders per customer fell from 1.65 to 1.25. In behaviour the fall sits in Retail-Plus, where the same 22 members placed 26 orders against 51, and revenue per order rose mainly because those small orders disappeared. In rupees most of it is three fewer Business orders, each worth lakhs, so one account's timing moves it by lakhs. The fall began in July, before the reorder button broke, so the button explains at most about 4 orders; we are asking for the tier's July change log and the app's reorder logs." The data and AI team, to Meera Raghavan
 
 ```notes
 LIVE, 2 minutes after the Kahoot. Read it aloud once, slowly. Ask one learner which part their own
