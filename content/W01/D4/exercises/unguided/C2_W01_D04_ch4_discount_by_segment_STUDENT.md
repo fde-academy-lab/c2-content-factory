@@ -1,10 +1,10 @@
 # Chapter 4 set: The discount, split by segment
 
 This set follows chapter 4: items 1 and 2 run live in the chapter's last three minutes, and the
-rest open the TA-led practice lab or are worked tonight, after the room has
-reproduced Marketing's lift and split it by segment. Six items, each a question Meera, the marketing
-lead or Kavya would ask. The segments, spends and lifts in items 3 and 5 are invented, so each tests
-the mechanism on numbers the notebook never used.
+rest open the TA-led practice lab or are worked tonight. Six items, each a question Meera, the
+marketing lead or Kavya would ask. The campaigns, segments and spends in items 1 to 5 are invented,
+so each tests the mechanism on numbers the notebook never used; item 6 uses the chapter's own
+result.
 
 Post one line, six letters in item order, no spaces:
 
@@ -16,63 +16,62 @@ Post exactly this shape: xxxxxx
 
 ### Q1
 
-Meera reads the marketing lead's report and asks, "Did the discount work, or did those customers buy
-anyway?" The exposed group is half Retail-Plus and the unexposed group is 40 percent Retail-Plus.
-Which of the four options answers her best?
+An invented loyalty email went to 200 customers, 70 percent of them premium, and not to 300 others,
+30 percent of them premium. Premium customers spend about three times as much. Which comparison do
+you run first, and what do you expect the blend to show?
 
-a) Before and after: the targeted segment in August against July
-b) Exposed against not exposed, blended, since it uses every customer in the file and so carries the most evidence
-c) Exposed against not exposed, inside each segment
-d) Wait for Diwali's figures before comparing anything
+a) The blend, and expect it to show the email's true effect
+b) Before and after for the emailed group, and expect a rise
+c) Inside each tier, and expect the blend to look better than the tiers
+d) Nothing yet, and wait for a randomly assigned email in the next quarter
 
 ### Q2
 
-Kavya says the blended comparison is unfair on this file. Which fact about how the sale was run
-would have made Marketing's blended comparison fair?
+Inside each of two invented tiers, customers who got a campaign spent exactly what the others spent:
+Rs 6,000 in premium and Rs 2,000 in basic. The exposed group was 60 percent premium and the
+unexposed group 30 percent. What lift does the blend report, and what does the note say?
 
-a) A group chosen by coin flip, so that both groups share one mix
-b) A deeper discount than 15 percent, large enough to swamp any difference in who got it
-c) A longer sale window than the fifteen days the monsoon sale ran
-d) A report that included every segment instead of the two that received the sale, so that nobody could say a segment was left out
+a) 37.5 percent, all of it from who got the campaign
+b) 37.5 percent, and the campaign should be credited with it
+c) 30 percent, the gap between the two premium shares
+d) Zero, and Marketing's arithmetic must hold a mistake
 
 ### Q3
 
-An invented campaign reached two segments. Inside each segment, customers who got it spent exactly
-what customers who did not spent: Rs 6,000 in the premium segment and Rs 2,000 in the basic one.
-The exposed group was 60 percent premium; the unexposed group was 30 percent premium. What lift does
-the blended comparison report?
+At Diwali, Marketing proposes 20 percent off and expects orders to rise 15 percent. What happens to
+revenue?
 
-a) Zero, since the campaign changed nothing inside either segment
-b) About 37.5 percent
-c) About 30 percent, the gap between the two groups' premium shares, which is what the blend is really measuring
-d) About 20 percent
+a) It rises about 15 percent, with the orders
+b) It falls about 8 percent, at four-fifths of the price
+c) It rises about 3 percent, the gap between the numbers
+d) It stands still, since the rise covers the discount
 
 ### Q4
 
-The marketing lead proposes 15 percent off again at Diwali. By Monday's rule, by how much must
-orders rise for revenue to stand still?
+An invented campaign shows a blended lift of 8 percent, while inside each of its two segments the
+customers who got it spent 2 percent less. What does the note to Meera report?
 
-a) 15 percent, the size of the discount
-b) 30 percent, twice the discount, since a sale must also pay for its own promotion and the orders it pulls forward
-c) 8.5 percent
-d) About 17.6 percent
+a) The blended 8 percent, because it covers every customer the campaign reached
+b) Both numbers side by side, for Meera to choose between
+c) The average of the three figures, to balance them
+d) The segments' 2 percent less, with the mix as the blend's reason
 
 ### Q5
 
-An invented campaign shows a blended lift of 8 percent, and inside each of its two segments the
-customers who got it spent 2 percent less. Which does the note to Meera report?
+Marketing offers to fix an unfair comparison by setting exposed against unexposed customers inside
+the same city. Does that remove the mix problem?
 
-a) The blended 8 percent, since it covers every customer the campaign reached
-b) Both numbers side by side, and let Meera choose the one she trusts
-c) The average of the three figures, which balances the blend against the segments fairly for everyone
-d) The segments' 2 percent less, naming the mix as the reason the blend rose
+a) Yes, because a city holds customers of one kind
+b) No: the mix is by segment, so split by segment or use a coin
+c) Yes, provided the cities are weighted by their own order counts
+d) No, because only a far larger sample could ever remove it
 
 ### Q6
 
-The split gives two numbers, one per segment. Putting both groups on one mix gives a single number
-that agrees with it. When should the note use the one-mix route instead of the split?
+Putting both groups on one mix gives the same 3 percent less as the split. What does that agreement
+check?
 
-a) When the answer must sit as one number on one line, or when there are too many segments to show
-b) Never, since the split is the fairer comparison and the one-mix figure hides the segments that the reader needs to see before any decision
-c) Only when the two segments disagree
-d) When the exposed group is larger than the unexposed group
+a) That the mix is the whole reason the blend rose
+b) That the four cells behind the split are free of errors
+c) That the sale had no effect inside any segment
+d) That a random hold-back would give the same answer

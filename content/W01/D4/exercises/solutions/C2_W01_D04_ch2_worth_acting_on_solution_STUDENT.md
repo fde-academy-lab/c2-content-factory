@@ -1,31 +1,32 @@
 # Solution: chapter 2 set, real and worth acting on
 
-Answers: 1b 2c 3d 4a 5b 6d
+Answers: 1a 2c 3c 4b 5d 6a
 
 ## The idea being tested
 
-Two calls, two measurements. The shuffle says whether a gap beats chance. Rupees against the whole
-company and against the cost of acting say whether it deserves money. The design items ask which
-sizing fits a budget decision, what the break-even is, which fact would let the cost decide alone,
-and what the range adds; the trap puts the share where the rupees belong.
+Two calls, two measurements. A chance reference says whether a gap beats chance. Rupees against the
+whole company and against the cost of acting say whether it deserves money. The design items give
+new numbers and ask for the break-even and the size against the company together, what a range
+buys when its low end sits below the cost, and what a measured recovery rate does to the decision;
+the trap puts the share where the rupees belong.
 
 ## Item by item
 
 | Item | Kind | Key | Why it holds | Why the others fail |
 |---|---|---|---|---|
-| 1 | design | b | Rs 1,000 times 30 members is Rs 30,000, and Rs 30,000 over Rs 1 crore is 0.3 percent. | a: the decimal moved one place. c: the company's quarter was the base asked for, and the decimal moved two places. d: divided by ten once too often. |
-| 2 | design | c | A budget line needs the fall in rupees beside the company's quarter and beside the fix's cost, with its break-even. | a: a share says how sure, never how big. b: a third of a small tier can be a tiny line in the company's quarter. d: the range is the second route and cannot price the fix without its cost. |
-| 3 | design | d | Rs 12,000 over Rs 30,000 is 40 percent: below that the offer loses revenue. | a and c: arithmetic slips, the second reading the cost in thousands as a percent. b: margin is a later question and the item asks for revenue. |
-| 4 | design | a | With a measured recovery rate, the offer's return is arithmetic and the range matters less. | b: a second seed moves the share, never the size of the recovery. c: a longer trend says nothing about what the offer wins back. d: more members narrow the range and still leave the recovery unknown. |
-| 5 | trap | b | Money sets the order of a growth review; the share says how far to trust each move. | a: the chapter's trap. c: a large share means the move could be the wobble, never that it did not happen. d: percentages flatter small segments. |
-| 6 | design | d | The range's low end sits far below Rs 500 a member, so the offer may not pay back; half the tier tests it at half the cost. | a: real is one call and worth the cost is another. b: the range supports a test, which is spending with a way to learn. c: the middle of the range hides its low end. |
+| 1 | design | a | Rs 800 times 40 is Rs 32,000; the offer costs Rs 12,000, which is 37.5 percent of the fall; Rs 32,000 over Rs 2 crore is 0.16 percent. | b: the company's share with the decimal moved one place. c: moved two places. d: the share the offer does not need to win back. |
+| 2 | concept | c | Significant and important are separate calls: the share says how surely the fall beats chance, and only the rupees against the company and the cost say how big it is. | a: reads the smallest share as the biggest money. b: a second seed moves the share, never the size. d: borderline is a reading of chance, and it never says the fall did not happen. |
+| 3 | design | c | The low end, Rs 150, sits below the Rs 400 cost, so a full rollout can lose money; a coin-chosen part of the tier tests the offer at part of the cost and leaves a comparison. | a: the middle of the range hides its low end. b: the range supports a test, which is spending with a way to learn. d: a break-even on the estimate ignores how small the fall could be. |
+| 4 | trap | b | The review orders by money and says beside each move how far chance could make it: A first, then B, then C. | a: the chapter's trap, surety read as size. c: a share above 0.05 means the move could be the wobble, never that it is unimportant. d: B and C are small and still worth a line each. |
+| 5 | design | d | Rs 50,000 over Rs 60,000 means the fix must win back 83 percent to pay for itself, and the measured rate is 70, so even at last year's rate it loses about Rs 8,000 a quarter. | a: a high rate still falls short of this fix's break-even. b: a measured rate is exactly what lets the break-even decide without a test. c: size and proof do not make a fix pay when its price is too high. |
+| 6 | predict | a | More orders narrow the wobble chance makes, so the share falls toward zero while the Rs 20 stays Rs 20: significance grows with the count, and size does not. | b: the gap is set at Rs 20 at every size. c: the gap does not dilute. d: more orders shrink the noise in an average. |
 
 ## The part worth arguing about
 
-Item 6, option c. The middle of the range does sit well above the offer's cost, and some pairs will
-fund the whole tier on it. The low end is the number that decides whether a full rollout can lose
-money, and here it can, which is why the answer is a test on half the tier with the other half as
-the comparison.
+Item 5, option b. A test on half the tier sounds careful, and after chapter 2 some pairs reach for
+it by habit. Here the measured rate already answers what a test would measure, and the arithmetic
+says the fix loses money even at that rate. The honest line is "not as priced": the fix needs a
+cheaper version, or a larger fall to address, before anyone tests it.
 
 ## Where the pattern lives in production
 

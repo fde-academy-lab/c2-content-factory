@@ -1,9 +1,9 @@
 # Chapter 1 set: Real, or the usual wobble
 
 This set follows chapter 1: items 1 and 2 run live in the chapter's last three minutes, and the
-rest open the TA-led practice lab or are worked tonight, after the room has run the
-Retail-Plus shuffle and the textbook test beside it. Six items, each a question Meera or Kavya would
-put to you. Every number comes from the chapter's own notebook, so none is invented.
+rest open the TA-led practice lab or are worked tonight. Six items, each a question Meera, Kavya or
+a Kalpa team would put to you. The numbers in items 1, 3, 4 and 6 are invented, so each tests the
+habit on numbers the notebook never used; items 2 and 5 use the chapter's own results.
 
 Post one line, six letters in item order, no spaces:
 
@@ -15,62 +15,65 @@ Post exactly this shape: xxxxxx
 
 ### Q1
 
-Meera wants to know before Monday whether the Retail-Plus fall is real, and she wants to see how
-the answer was made. The file holds 44 member totals, and eight of them are zero.
-Which of the four options fits her question best?
+Two requests reach Kavya on Monday. The store team wants to know whether 300 customers who used
+self-checkout in September spent more than 280 different customers who did not. The app team wants
+to know whether the same 45 members spent less in the month after an app update than in the month
+before. Which chance reference fits each request?
 
-a) Wait for Q3, since one more quarter settles the question beyond argument
-b) The textbook two-sample test, since one library call is the fastest way to a p-value
-c) The shuffle test, since it assumes no bell shape and can be shown with ten cards
-d) A bootstrap interval, since a range of plausible falls is always more informative than a share and Meera will want to budget from it
+a) Flip each member's pair for both requests, since both compare two stretches of spend
+b) Shuffle the labels for the store team, and flip each member's pair for the app team
+c) Shuffle the labels for both, since each request compares two groups of numbers
+d) Flip each pair for the store team, and shuffle the labels for the app team
 
 ### Q2
-
-Kavya says the shuffle was the right call for this file. Which fact about a future file would make
-the textbook test the standard route instead?
-
-a) Tens of thousands of well-behaved members a quarter, or a team standard that expects the formula
-b) More member totals at zero, since the formula handles a lumpy file better than the shuffle does
-c) Meera asking for the answer before Monday instead of by the end of the week
-d) A second seed that moves the shuffle's share in the third decimal place, which shows the shuffle cannot be trusted on its own
-
-### Q3
-
-The head of Retail-Core says her members spent Rs 110 less each in Q2 and asks whether to worry.
-Of 5,000 shuffles, 1,724 made a fall of Rs 110 or more. What do you tell her?
-
-a) Worry, since any fall in a paying segment belongs in Monday's review
-b) It sits inside the usual wobble: chance makes a fall that size about a third of the time
-c) The fall is real, since 1,724 shuffles is a large number of worlds
-d) Nothing yet, since a shuffle test needs ten thousand shuffles before anyone can read its share at all
-
-### Q4
 
 A draft note reads: "p = 0.03, so there is a 3 percent chance our Retail-Plus finding is wrong."
 Which verdict does Kavya give it?
 
 a) Defensible, because 0.03 sits below the 0.05 line that most analysts use
-b) Defensible if the shuffle used a fixed seed, since the share is then exact
-c) Wrong only in its wording: it should say a 97 percent chance of being right, which states the same idea positively
-d) Wrong: the share was counted in worlds where nothing changed, so it is not the chance of being wrong
+b) Defensible, if the flips used a fixed seed, since the share is then exact
+c) Wrong in its wording only: it should say a 97 percent chance of being right
+d) Wrong: the share was counted in worlds where nothing changed
+
+### Q3
+
+A GCC team compares the same 4,000 members' monthly spend before and after a price change. The
+4,000 differences look bell-shaped, and the team's dashboard reports the textbook paired test.
+Which route should the analyst run?
+
+a) The flips, because they assume less and can be shown with cards to anyone
+b) The pooled shuffle, because 8,000 totals give the most worlds to count
+c) The textbook paired test, which matches the flips at this size and is the standard
+d) Wait another month, because a single pair of months cannot settle a change in price
+
+### Q4
+
+Four invented members' Q1 less Q2 differences are Rs 900, Rs 300, Rs 600 and minus Rs 200, a real
+gap of Rs 400 per member. A coin per member gives 16 equally likely patterns. Counting falls only,
+in how many patterns is the gap at least Rs 400?
+
+a) 2 of 16
+b) 1 of 16
+c) 4 of 16
+d) 8 of 16
 
 ### Q5
 
-Kavya asks for a second route before the note goes to Meera. The textbook test returns 0.026 for
-Retail-Plus against the shuffle's 0.027, and both put Retail-Core near a third. What does the note
-do with the two results?
+Meera asked about Retail-Plus after the fall had been seen. The flips give 0.029 counting falls only
+and 0.057 counting either way. Which line goes in the note?
 
-a) Carry the shuffle's sentence, since two routes built on different ideas reach one verdict
-b) Report 0.0265, the average of the two routes, as the more accurate share
-c) Replace the shuffle with the textbook figure, since a formula is exact
-d) Hold the note until a third route breaks the tie, since the two routes disagree in the third decimal place and Meera will ask which one is right
+a) "Real: 0.029 is under the 0.05 line, so the fall is proved."
+b) "Noise: 0.057 is over the 0.05 line, so nothing happened."
+c) "Borderline: about 3 in 100 counting falls, 6 either way."
+d) "Real in one direction only, and noise in the other one."
 
 ### Q6
 
-An analyst reports that 0.973 of the Retail-Plus shuffles were "at least as extreme", having counted
-the shuffles whose gap was at or below the real one. What went wrong, and what should the note say?
+An invented tier of 30 members, where heavy buyers stay heavy, fell by about Rs 430 a member.
+Pooling the 60 totals gives a share of 0.17 counting falls; flipping each member's pair gives
+0.004. Which does the note report, and why do the two differ so much?
 
-a) Nothing went wrong: 0.973 means the drop is almost certainly real
-b) The seed was wrong, so the whole run has to be repeated with a different seed before anyone reads it
-c) The wrong tail was counted: falls at least as large are about 0.027 of the shuffles
-d) The share should be divided by the real gap before it is read
+a) The pooled 0.17, because it uses all 60 totals and not just 30 differences
+b) The flips' 0.004: pooling counts the gaps between members as chance
+c) The average of the two, since each route is right about half the question
+d) Neither, until a third route can break the tie between the two numbers

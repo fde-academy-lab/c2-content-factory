@@ -1,9 +1,9 @@
 # Chapter 5 set: The note that may say not yet
 
 This set follows chapter 5: items 1 and 2 run live in the chapter's last three minutes, and the
-rest open the TA-led practice lab or are worked tonight, after the room has audited the
-headline note and written the four-part note. Seven items, each a question Meera or Kavya would ask.
-The word count in item 5 is invented; every other figure comes from the morning's chapters.
+rest open the TA-led practice lab or are worked tonight. Seven items, each a question Meera, the CFO
+or Kavya would ask. The word counts in item 4 and the campaign in item 5 are invented; every other
+figure comes from the morning's chapters.
 
 Post one line, seven letters in item order, no spaces:
 
@@ -15,60 +15,61 @@ Post exactly this shape: xxxxxxx
 
 ### Q1
 
-Meera writes, "One page, two minutes. If the honest answer is 'we do not know yet', say so and tell
-me what would tell us." Which of the four options answers her best?
+The CFO asks for the same three answers every Monday for a quarter, each on the same bases. Which
+form do you set up, and what does each week's note carry?
 
-a) A yes or no per question, since that is the length she asked for
-b) The four-part note under 200 words: claim, evidence with its base, caveat, action with its cost
-c) The dashboard, since every number the chapters produced sits in one table she can scan
-d) A slide deck of ten slides for Monday, with one slide per question and a summary slide at the front for the two-minute read
+a) A fresh four-part note every week, rewritten from the numbers up
+b) A small dashboard with fixed bases, and a note on what moved
+c) A yes or no per question, since the bases never change
+d) A slide deck each Monday, one slide for each question
 
 ### Q2
 
-Kavya says the note is the right form this week. Which fact would make a small dashboard the better
-choice in future weeks?
-
-a) Meera asking for more detail on the Student segment
-b) A fourth question joining the three the note already answers
-c) A note that runs past 200 words, since a dashboard can hold any number of figures without growing longer to read
-d) A standing weekly review of the same three metrics, with fixed bases
-
-### Q3
-
 The headline note reads, "Student is up 40%." Which addition makes that line pass the audit?
 
-a) The count the rate stands on, how often chance makes the rise, and the count that would reopen it
-b) The rise in rupees as well as in percent, so that Meera can compare it with Retail-Plus's fall and with the other segments on one scale
+a) Its count in customers, how often chance makes it, and what reopens it
+b) The rise in rupees, so that Meera can set it beside the Retail-Plus fall
 c) The same rise for the other three segments, for context
 d) A stronger verb, such as "surged", to show the rise matters
 
-### Q4
+### Q3
 
 The marketing lead will read the discount line on Monday. Which version passes the audit?
 
-a) "The monsoon sale lifted revenue 6 percent; repeat it for Diwali."
-b) "The monsoon sale did not work, so Marketing should not run a Diwali sale at all this year, whatever the season brings and whatever the competition does in the same weeks."
-c) "Do not repeat it as designed: inside each segment, its customers spent about 3 percent less; at Diwali, hold back a random slice."
-d) "The monsoon sale's effect is unclear."
+a) "The monsoon sale lifted revenue 6 percent across everyone it reached, so repeat it for Diwali at the same 15 percent."
+b) "The monsoon sale lowered spend in both segments, so Marketing should run no sale of any kind at Diwali this year."
+c) "Not as designed: inside each segment its customers spent 3 percent less; hold back a random slice at Diwali."
+d) "The monsoon sale's effect is unclear from the data we have, so we will need more analysis before anyone decides."
+
+### Q4
+
+Your three lines run 90, 70 and 80 words, 240 in all, against Meera's ceiling of 200. Which cut
+keeps the note honest?
+
+a) Drop the caveat from each of the three lines, which saves about 40 words
+b) Send all 240 words, because the two minutes she set is only a guideline
+c) Drop the Student line, since all it says is not yet
+d) Cut each line's evidence to one number and its base; keep each caveat
 
 ### Q5
 
-Kavya asks for a second route on the note before it goes. A stranger pulls every figure out of an
-invented 170-word note and finds one that traces to no chapter's number. What does the team do?
+A colleague's note on an invented campaign says "repeat it", while its own split shows every
+segment fell, and every figure in it traces to a computed number. Which check catches the note
+before Meera reads it?
 
-a) Keep it, since one figure in ten is within the usual wobble of a written note
-b) Change it to the nearest figure a chapter did compute, since the two are probably the same number
-c) Drop the tracing step and read the note aloud instead
-d) Find where it came from, since a figure typed by hand is the likeliest to be wrong
+a) Tracing every figure back to the chapter number that made it
+b) Reading the note aloud to someone from outside the analytics team
+c) Applying the day's rules to its numbers and comparing decisions
+d) Counting the words against the 200-word ceiling
 
 ### Q6
 
 Meera replies, "Just give me yes or no on Student." What do you say?
 
-a) "Yes, since it is our fastest-growing segment and the rise is real arithmetic."
-b) "No, since a small segment can never be worth budget, at any rate of growth it grows, and the note already says as much to anyone who reads it."
-c) "Not yet: we watch Student until it carries thirty orders a quarter, and then I will bring you the answer."
-d) "It depends, and I will need another week of analysis before I can say anything."
+a) "Yes: it is our fastest-growing segment, and the rise is real arithmetic."
+b) "No: a segment this small is never worth any budget at all."
+c) "It depends, and I need another week of analysis first."
+d) "Not yet: we watch Student until more customers buy, thirty or more."
 
 ### Q7
 
@@ -76,6 +77,6 @@ Kavya hands you one line of the headline note, "Retail-Plus revenue fell 34%", a
 it before it goes to Meera. In which order do the four steps run?
 
 a) State the caveat, find the number, name its base, attach its count or chance
-b) Find the number, name its base, attach its count or chance, state the caveat that would flip it
+b) Find the number, name its base, attach its count or chance, state the caveat
 c) Name the base, state the caveat, find the number, attach its count or chance
-d) Attach the count or chance first, since a number with no chance reference cannot be read at all, then find the number, name its base and state the caveat
+d) Attach the count or chance, find the number, name its base, state the caveat
