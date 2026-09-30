@@ -25,7 +25,7 @@ flowchart TB
 | The paper | 120 min | Pen and paper, AI-free, no notes: 55 objective items in six parts, then the untimed stretch page for anyone who finishes early. |
 | Break | 20 min | Papers stay face down on the desks. |
 | Marking | 20 min | Papers swapped and marked against the key, read out by the Academic TA, and the ticks entered by seat in the item-analysis workbook. |
-| The solution discussion | 90 min | The most-missed items first (35 min), then the ten anchors answered aloud as interview answers with random call-outs (55 min). |
+| The solution discussion | 90 min | The most-missed items first (35 min), then the ten anchors answered aloud as interview answers with random call-outs (50 min), and the step-one ratings set against the work (5 min). |
 | The mock-interview round | 30 min | In pairs: each learner asks the other two anchors and one stretch follow-up, then they swap. |
 | Doubts and the bridge | 20 min | Open doubts, then Monday: Build 1 opens in Kalpa Health. |
 
@@ -35,8 +35,9 @@ Three hundred minutes in all, with no new content anywhere in them.
 
 ## The paper, 120 minutes
 
-Hand out the Word paper face down and start the time together. Laptops closed and phones away for
-the whole sitting. Announce the time left at 60 minutes and at 15 minutes. Anyone who finishes
+Hand out the Word paper face down and start the time together. Step one on the first page comes
+before any item: each learner rates the six parts from 1 to 4 on the answer sheet, as they are
+today. Laptops closed and phones away for the whole sitting. Announce the time left at 60 minutes and at 15 minutes. Anyone who finishes
 early turns to the stretch page, which is untimed and uncounted; its four follow-ups come back in
 the mock-interview round, so a learner who writes them now has rehearsed, and the six one-line
 recalls after them are the week's rules, moved off the timed paper.
@@ -51,11 +52,12 @@ recalls after them are the week's rules, moved off the timed paper.
 4. The key's rule settles the edge cases: every correct letter and no other on a more-than-one item,
    the number on an applied maths item, and the whole sequence on an ordering item. There is no
    partial credit, because the programme has set no rule for it.
-5. The Academic TA enters each paper's ticks by seat in
-   `answer-key/C2_W02_SAT_item_analysis_TRAINER.xlsx`: 1 for a tick, 0 for a cross and a blank for
-   an item left empty, and never a name. Its Discussion sheet gives the most-missed order the
-   discussion takes, and any item it flags goes to the tracker's owner with the room's rate, because
-   the fault may sit in the item rather than in the room.
+5. The Academic TA enters each paper by seat in
+   `answer-key/C2_W02_SAT_item_analysis_TRAINER.xlsx`, never by name: the ticks in the Marks
+   sheet, 1 for a tick, 0 for a cross and a blank for an item left empty, and the six step-one
+   ratings from the answer sheet in the Ratings sheet. Its Discussion sheet gives the most-missed
+   order the discussion takes, and any item it flags goes to the tracker's owner with the room's
+   rate, because the fault may sit in the item rather than in the room.
 
 Say once, at the start, that the marker decides nothing: reading somebody else's answer against the
 key is the exercise. The paper carries no marks and ranks nobody; the misses are counted by topic
@@ -81,7 +83,7 @@ section has the reason behind every wrong option.
 | 53 | A date filter on a LEFT join | Reading the WHERE as if it sat in ON, or counting O-1 once | The WHERE runs after the join and drops O-2 and the unpaid O-3, and O-1's two instalments repeat it: 2 rows and Rs 2,400. The date belongs in ON, and the payments go to one row per order before the join. |
 | 31 | A window that changes between runs | Blaming the cache or the database | Under a ROWS frame, ties in the window's ORDER BY leave the row order undefined, so the running total at the tied rows can differ between runs; Postgres's default RANGE frame gives tied rows one shared total instead. Either way, name a tiebreaker. |
 | 22 | What a full outer join adds | Ticking the orders with two payments | Only rows with no partner on the other side are new: orders with no payment and payments with no order. |
-| 32 | When GROUP BY runs out | Ticking total revenue per segment | A rank within a segment, the previous month beside this one, and a running total with every row kept all need a window; a total per segment does not. |
+| 32 | When GROUP BY runs out | Ticking each segment's total for the quarter | A rank within a segment, the previous month beside this one, and a running total with every row kept all need a window; a total per segment does not. |
 | 36 to 38 | Ties in a top-N | Assuming a top-N always returns N rows | DENSE_RANK three or less returns five members in set 2, RANK fifty or less ships 51 rows on a tie at fifty, and only ROW_NUMBER returns exactly N, by breaking the tie arbitrarily unless a tiebreaker is named. |
 | 49 | Where a fix belongs | Correcting the total in the pivot | The fix belongs in the merge: de-duplicate the exposure table on a stated rule and validate the keys, so the pivot is right without anyone typing over it. |
 | 54 | The reach that lost its unreached | Counting the three customers with no segment as a group of their own | groupby drops a missing key by default, so the code reports 2 reached and 2 bought where 5 were reached: group from the full list or pass dropna=False, and check that the groups add back to the rows. |
@@ -92,7 +94,7 @@ section has the reason behind every wrong option.
 When a learner connects set 1's numbers to Tuesday's warehouse, discuss what the room found on
 Tuesday and nothing more: the data's other contents stay unnamed.
 
-### The anchors aloud, 55 minutes
+### The anchors aloud, 50 minutes
 
 Ask each anchor as an interviewer would: name the person, then the question, then wait. Give sixty
 seconds. Ask the room for the one sentence that would make the answer stronger, and read the answer
@@ -203,6 +205,14 @@ Retail's revenue tree in a diagnostics business without first asking what a sale
 
 Call on somebody whose paper you have not read, so the call is genuinely cold, and when an answer is
 wrong, take the next answer from somebody else before correcting it, so the room does the work.
+
+### Ratings against the work, 5 minutes
+
+Close the discussion on the workbook's Ratings sheet. Its table for the room sets each part's mean
+step-one rating beside the part's right rate, and counts the seats that rated a part 3 or 4 and got
+under half of it right. Read out the parts where confidence ran ahead of the work, by part and never
+by seat, and say what that costs at work: a part rated high and answered badly is where a number
+would have shipped wrong from somebody sure it was right. Those parts open Monday's revision.
 
 ---
 
