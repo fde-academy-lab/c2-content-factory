@@ -49,7 +49,10 @@ Those letters are an illustration of the shape. Check that the illustration is n
 - Learner-facing only. Any reasoning, rationale, timing, locator or facilitation that sits in an exercise file moves to its solutions file.
 - Diagrams as Mermaid fenced blocks, so a learner reads them on GitHub with nothing installed.
 - Each exercise gains a hands-on part pointing at its TODO notebook and listing the letters to post.
-- The key is never the longest option, and key positions spread across a to d rather than clustering.
+- Length points neither way. The key is never the one option far longer than the rest, and across a
+  file it is sometimes the longest and sometimes the shortest, since a room that learns "the longest
+  is always wrong" eliminates as fast as one that learns "the longest is right". Key positions spread
+  across a to d rather than clustering.
 - The best wrong option is the plausible wrong number a hurried analyst produces: rows counted as customers, a total over unequal windows, a join that fanned out, an average that averaged averages.
 - A near-miss that is precise about the wrong grain is the best distractor. A nonsense option gives the answer away by elimination.
 - No format line, worked example or preamble contains the true answers.
@@ -116,16 +119,30 @@ The bank sets what is tested, and the paper sets the bar. The week's source file
   the blank and bare true or false give way to these. A bank whose keys run a, b, c down its items
   fails the build.
 - **The bar**: about 35 timed items in 120 minutes, about 60 percent hard, 35 medium and 5 easy. A
-  hard item needs two steps or two ideas at once, and its most tempting wrong option is the plausible
-  wrong number an analyst actually produces; no runtime error is ever the key. Code and queries sit
+  hard item makes the candidate combine at least two ideas on an exhibit, such as an idiom and the
+  business decision it changes, or take several dependent steps on it; its most tempting wrong
+  option is the plausible wrong number an analyst actually produces; and nothing else on the paper
+  answers it: no part opening that names the trap, no stem that flags it, no other item's key, no
+  stretch item, no option set whose options share the key's parts, and no stem that defines the
+  term it asks for. A single idiom, a single judgement or arithmetic the stem sets up is medium,
+  whatever it is labelled, and no runtime error is ever the key. Code and queries sit
   on Kalpa's own data and are asked the way strong AI and data teams interview: predict the output,
   find the silent bug, choose the right variant, name the check.
-- **An exhibit** for every scenario set, drawn only from the set's own numbers.
+- **An exhibit** for every scenario set, drawn only from the set's own numbers and agreeing with
+  every other number on the paper. A chart an item reads to an exact value prints its values as a
+  table beside it, since a mermaid bar carries no value labels on the Word page.
 - **The reasons** for every item: why the key holds, why each wrong option fails, and the interview
   answer in one breath.
 - **An untimed stretch page** of written, interview-grade follow-ups, plus any moved bank items.
 - **The proofs**: `content/W{ww}/SAT/internal/C2_W{ww}_SAT_key_proofs_INTERNAL.py` runs every code
   and SQL item cold and asserts every key.
+- **The blind sitting**: a fresh agent sits the paper from the student file alone, answers each item
+  before checking it, and reports its answers, the keys it can argue, the cues and leaks, and its
+  count of hard items. It judges difficulty for the room, trainees in the programme's early weeks,
+  as a strong interviewer would grade their answers, since an agent that knows every idiom finds
+  every single-idiom item easy. The first sittings of the raised Week 1 and Week 2 papers, on 30
+  September 2026, found 5 to 12 hard items where 21 were labelled, so the paper is done only when a
+  later sitting finds no arguable key, no cue and no leak, and its hard count reaches the bar.
 
 `python3 scripts/build_saturday_paper.py W{ww} --docx` writes the paper and the key as Word files in
 the format of the requester's baseline diagnostic (`content/W00/D2/paper/C2_W00_D02_diagnostic_STUDENT.docx`),
