@@ -23,9 +23,10 @@ when the rows run into crores.
 
 ## Which item is worth arguing about?
 
-Item 4. The shortcut, orders less customers, holds only when nobody placed three orders, which is why
-the stem says so. With one customer on three orders the subtraction counts that customer's two extra orders as
-two people, so the dictionary is the count to trust whenever the stem cannot promise it.
+Item 4. The shortcut, orders less customers, holds only when nobody placed three orders, which is
+why the stem says so. With one customer on three orders the subtraction counts that customer's two
+extra orders as two people, so the dictionary is the count to trust whenever the stem cannot promise
+it.
 
 **Kavya's review.** "Your first 30 was a count of rows, divided as if it were people. Count people by
 their ids."

@@ -8,13 +8,13 @@ it first, and the marketing lead reads it looking for its weakest number. A numb
 marketing can knock down with one question costs the team the trust the rest of the week depends on.
 
 **The questions on the way.** Which form carries the decision, and when would the form change? Which
-statement about the one-time buyers can go to Meera? Where else does the end of a window cut a count
-short? Does a second route give the same count of buyers too recent to judge? What would make the
-caveat smaller?
+statement about the one-time buyers can go to Meera? What should the team say about a returns report
+from a quarter's last days? Does a second route give the same count of buyers too recent to judge?
+What would make the caveat smaller?
 
-Five items, alone, in the room's turn of chapter 6. Every item has one right answer, so decide it
-before you record the letter. Items marked **Design** ask for the best-fit approach, a sizing, the
-fact that would switch the choice, or the second route that would confirm a number.
+You work these five items alone, in the room's turn of chapter 6. Every item has one right answer,
+so decide it before you record the letter. Items marked **Design** ask for the best-fit approach, a
+sizing, the fact that would switch the choice, or the second route that would confirm a number.
 
 Post one line, five letters in item order, no spaces:
 
@@ -49,17 +49,17 @@ the end:
 
 ## Which form carries the decision, and when would the form change?
 
-Analysts in every capability centre hand a leader a number, a table, a sentence or a dashboard, and
-they choose by what the reader must decide and how often the question comes back.
+Analysts in every capability centre choose each week whether a leader gets a number, a table, a
+sentence or a dashboard.
 
 Four forms, sized by this pack's estimate of the reader's time:
 
 | Form | Her reading time | The decision it carries | How it gets misread |
 |---|---|---|---|
-| A. One number: orders per customer, 1.30 | two seconds | none, so she has to supply it | as good or bad news with no benchmark |
-| B. The tree as a table of every leaf | a minute or more | none, so she draws the conclusion | she picks the number that suits the room |
-| C. One sentence in four parts | about twenty seconds | open frequency, and hold the budget | only if a number in it is misread |
-| D. A dashboard refreshed every week | weeks to build | whatever she happens to look at | a chart with no denominator beside it |
+| A. One number: orders per customer, 1.30 | two seconds | It carries none, so she has to supply it. | It reads as good or bad news with no benchmark. |
+| B. The tree as a table of every leaf | a minute or more | It carries none, so she draws the conclusion. | She picks the number that suits the room. |
+| C. One sentence in four parts | about twenty seconds | It says open frequency and hold the budget. | It is misread only if a number in it is misread. |
+| D. A dashboard refreshed every week | weeks to build | It carries whatever she happens to look at. | A chart can go out with no denominator beside it. |
 
 ### Q1. Design. Meera reads this answer once, before she decides on the Rs 12 crore, and from Week 2 her chief of staff wants the same numbers every Monday. Which form fits now, and what should replace it then?
 
@@ -72,8 +72,7 @@ d) A dashboard now, since it is needed anyway, with the sentence added once it i
 
 ## Which statement about the one-time buyers can go to Meera?
 
-Retention and CRM teams call a customer lost only after that customer has had the usual time to come
-back, because a count taken at the end of a window cannot see orders placed after it.
+Retention and CRM teams write about one-time buyers in every monthly review.
 
 ### Q2. A colleague tightens the first draft for the slide: "16 of 23 customers never came back: 70 percent of customers are lost." Using the gaps and the days above, which statement about the one-time buyers can go to Meera as written?
 
@@ -82,7 +81,7 @@ b) Retention is 30 percent a quarter, so seven in ten customers leave us
 c) 16 of 23 bought once, so frequency is the weakest branch to fund
 d) 16 of 23 bought once in this window, 9 of them too recently to judge
 
-### Q3. Kalpa's returns desk reports: "Of the web orders delivered in the last five days of the window, none has come back, so web's returns problem is fixed." Suppose returned web orders usually come back within fourteen days of delivery, a figure invented for this item. What should the team say?
+### Q3. Next quarter, Kalpa's returns desk reports: "Of the orders delivered in the last five days of the quarter, none has come back, so our returns problem is fixed." Suppose returned orders usually come back within fourteen days of delivery, a figure invented for this item. What should the team say?
 
 a) Too early, since those orders have had five of the usual fourteen days
 b) Fixed, since not one order delivered in those last five days came back

@@ -11,10 +11,10 @@ on the wrong branch before a single number is computed.
 customer written as a fraction? What does one Kalpa order hold? How many times does a loop over the
 file run, and which reading of sales does it add up?
 
-Built with the trainer, one step at a time, with your own Codespace open. Nothing here is graded.
-The trainer asks each item aloud, the room calls its letter, and the room's answer is tested on the
-board or in the notebook before anyone moves on. Every line in your notebook is there because you
-typed it.
+You build this with the trainer, one step at a time, with your own Codespace open. Nothing here is
+graded. The trainer asks each item aloud, the room calls its letter, and the room's answer is tested
+on the board or in the notebook before anyone moves on. Every line in your notebook is there because
+you typed it.
 
 ---
 
@@ -30,8 +30,8 @@ returned after delivery, or cancelled before the order left the shelf.
 
 ## Which branches multiply into revenue?
 
-Consultants, finance teams and product teams draw this tree before they touch any data, because it
-says which number each question needs.
+Consultants and finance teams draw this tree before they touch any data, because it says which
+number each question needs.
 
 Copy the tree from the board onto paper, with revenue on the left and what multiplies into it on the
 right.

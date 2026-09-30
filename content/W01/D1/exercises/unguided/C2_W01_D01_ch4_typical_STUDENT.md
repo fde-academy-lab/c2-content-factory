@@ -7,15 +7,15 @@
 **Who needs the answer.** Marketing's case for Rs 12 crore values every new customer by the orders
 that customer will place, so Meera needs to know what a typical order is worth before she judges
 whether the budget is cheap, and Anand has already said how he will read the answer. A first order
-valued far too high makes Rs 12 crore look cheap and the payback look short.
+valued wrongly makes Rs 12 crore look cheaper or dearer than it is, and the payback with it.
 
 **The questions on the way.** What does the mean say about the orders? What is the middle order?
 Which number should a payback be built on? Which middle survives one large order? Does the typical
 order hold when the reading of sales changes?
 
-Five items, alone, in the room's turn of chapter 4. Every item has one right answer, so decide it
-before you record the letter. Items marked **Design** ask for the best-fit approach, a sizing, the
-fact that would switch the choice, or the second route that would confirm a number.
+You work these five items alone, in the room's turn of chapter 4. Every item has one right answer,
+so decide it before you record the letter. Items marked **Design** ask for the best-fit approach, a
+sizing, the fact that would switch the choice, or the second route that would confirm a number.
 
 Post one line, five letters in item order, no spaces:
 
@@ -37,9 +37,9 @@ A middle is one number that stands for all the orders, and three are in play:
 
 | Middle | How it is worked out |
 |---|---|
-| The mean | The total of the amounts over their count, which is the average order value |
-| The median | The middle amount once the amounts are sorted; with an even count, halfway between the two middle amounts |
-| The trimmed mean | The mean of what is left after a rule drops the smallest and the largest orders |
+| The mean | It is the total of the amounts over their count, which is the average order value. |
+| The median | It is the middle amount once the amounts are sorted, or halfway between the two middle amounts when the count is even. |
+| The trimmed mean | It is the mean of what is left after a rule drops the smallest and the largest orders. |
 
 ```mermaid
 flowchart LR
@@ -55,8 +55,8 @@ what an order leaves after the cost of its goods and of delivering it.
 
 ## What does the mean say about Kalpa's orders, and what is the middle order?
 
-Analysts at every retailer report a typical basket beside the average, because the two part company
-whenever a few large orders sit among many small ones.
+Analysts at every retailer report a typical basket beside the average basket in their weekly
+numbers.
 
 ### Q1. The mean of the 30 orders is Rs 18,160, and only 1 of the 30 sits above it. What does that say about Kalpa's orders?
 
@@ -99,10 +99,10 @@ d) The trimmed mean always, since it moved almost as little as the median and is
 
 Finance asks whether a figure survives a change of definition before it goes into any plan.
 
-### Q5. Anand asks whether the typical order depends on the reading of sales. On not-cancelled orders the mean is Rs 20,606 and the median Rs 2,100; on booked orders they are Rs 18,160 and Rs 2,205. What should the team tell him?
+### Q5. Anand asks whether the typical order depends on the reading of sales. On not-cancelled orders the mean is Rs 20,606 and the median Rs 2,100. Set them beside the booked mean of Rs 18,160 and the booked median you found in Q2. What should the team tell him?
 
 a) Both middles move with the reading, so the typical order waits for Finance's definition
-b) The median moves Rs 105 and the mean Rs 2,446, so the median is the figure to plan on
+b) The median barely moves while the mean moves by thousands, so the median goes in the plan
 c) The mean moves less in percent than the median, so the mean is the steadier figure
 d) Neither moves enough to matter, so either middle can go into the plan as the typical order
 

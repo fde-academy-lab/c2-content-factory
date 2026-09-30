@@ -5,15 +5,15 @@
 > Meera Raghavan, CEO, Kalpa Retail
 
 **Who needs the answer.** Meera asked where revenue comes from, and anyone who drafts a channel plan
-from her answer depends on it. A plan led by one channel's headline share puts the budget where the
-customers the plan concerns may not be buying.
+from her answer depends on it. A channel plan read off the wrong share puts the budget in the wrong
+channel.
 
-**The questions on the way.** Where does booked revenue come from by channel, and what must be
-counted before a share becomes a plan? What share does store hold once the view keeps the three
-consumer segments? What does each channel keep once its rupees are split by status? Does the channel
-view change the branch? How many customers does one segment hold?
+**The questions on the way.** Where does booked revenue come from by channel, and what should happen
+before a share becomes a plan? What share does store hold once the view keeps the three consumer
+segments? What does each channel keep once its rupees are split by status? Does the channel view
+change the branch? How many customers does one segment hold?
 
-Twenty-five minutes, in pairs, on the same 30 orders. Work in
+You have twenty-five minutes, in pairs, on the same 30 orders. Work in
 `notebooks/C2_W01_D01_ex2_second_case_STUDENT.ipynb`, which splits revenue by channel, by customer
 type and by status. Argue each item with your partner before you record it. Items marked **Design**
 ask for the best-fit approach, a sizing, the fact that would switch the choice, or the second route
@@ -34,7 +34,7 @@ Post exactly this shape: xxxxxx
 
 The chapters answered Meera on the booked reading of Kalpa Retail's 30 orders from 1 July to 26
 September 2026: Rs 5,44,810 booked, 23 customers at 1.30 orders each, and frequency as the branch to
-open first. The escalated case found that the branch holds on the delivered orders too.
+open first. The escalated case then rebuilt that answer on Anand's delivered reading.
 
 Every order carries a channel, app, web or store, and a segment: Retail-Core, Retail-Plus, Student or
 Business. Meera's growth plan concerns the three consumer segments, Retail-Core, Retail-Plus and
@@ -63,9 +63,10 @@ flowchart LR
 
 ---
 
-## What must be counted before a channel's share becomes a plan?
+## What should happen before a channel's share becomes a plan?
 
-Sales operations and finance teams count the orders behind a share before any budget follows it.
+Sales operations and finance teams read channel shares in every monthly review before any budget
+follows them.
 
 ### Q11. The channel slide says: "Store brings 91.6 percent of revenue, so the growth plan should be store-led." What should the team do before anyone plans around that share?
 
@@ -78,7 +79,7 @@ d) Nothing more, since the channels' rupees add up to the booked total
 
 ## What share does store hold once the view keeps the three consumer segments?
 
-Analysts restate a share on the customers a plan concerns before anyone argues about which channel
+Planning teams read every share against a stated base before anyone argues about which channel
 leads.
 
 ### Q12. Design. Meera's growth plan concerns the three consumer segments, which book Rs 64,810 of the Rs 5,44,810. On which base should a channel plan read store's share, and what share does store hold there?
@@ -102,12 +103,12 @@ b) Web's lead grows once its cancelled orders are taken out of it
 c) Web kept everything it booked, so its lead holds on delivered orders too
 d) More than half of web's booked rupees came back as returns, Rs 14,970
 
-### Q14. In the consumer view, store books Rs 18,920. Which statement about those rupees holds?
+### Q14. In the consumer view, what does splitting store's booked rupees by status show?
 
-a) All of it was delivered, so store is the cleanest channel in the view
-b) Rs 9,050 was cancelled before it left, and Rs 9,870 was delivered
-c) Rs 14,970 came back as returns, the same leak that web shows
-d) Rs 9,870 was cancelled before it left, and Rs 9,050 was delivered
+a) Every rupee was delivered, so store is the cleanest channel in the view
+b) Close to half never left the shelf, since those orders were cancelled
+c) Close to half came back as returns after the orders were delivered
+d) A small part was cancelled and a small part returned, under a tenth each
 
 ---
 
@@ -116,7 +117,7 @@ d) Rs 9,870 was cancelled before it left, and Rs 9,050 was delivered
 A finding from a new cut of the data goes into the note only after the team checks whether it
 changes the decision already on the table.
 
-### Q15. Design. Three plans are on the table: store-led, on store's 91.6 percent of booked revenue; web-led, on web's lead in the consumer view; or frequency first, as the chapters and the escalated case found. Which does the evidence support, and what goes in the note?
+### Q15. Design. Three plans are on the table: store-led, on store's 91.6 percent of booked revenue; web-led, on web's lead in the consumer view; or frequency first, as the chapters found. Which does the evidence support, and what goes in the note?
 
 a) Frequency first, with the leaks the status split found named in the note
 b) Store-led, since store carries 91.6 percent of all booked revenue

@@ -5,17 +5,17 @@
 
 **Who needs the answer.** Meera decides whether Rs 12 crore goes to acquisition. The marketing lead
 owns that branch, and the head of Retail-Plus owns the members most likely to come back. The wrong
-branch spends the money where the business is not short, and a plan sized on the wrong base or with
-lifts added up misses its target.
+branch spends the money where the business is not short, and a plan sized wrongly misses its
+target.
 
 **The questions on the way.** Which base is the plan sized on, and what does a different base ask
 of the customers the plan reaches? What would each branch have to do alone, and which has evidence
 behind it? What do two lifts make together? What would switch the call, and which first test costs
 least?
 
-Five items, alone, in the room's turn of chapter 5. Every item has one right answer, so decide it
-before you record the letter. Items marked **Design** ask for the best-fit approach, a sizing, the
-fact that would switch the choice, or the second route that would confirm a number.
+You work these five items alone, in the room's turn of chapter 5. Every item has one right answer,
+so decide it before you record the letter. Items marked **Design** ask for the best-fit approach, a
+sizing, the fact that would switch the choice, or the second route that would confirm a number.
 
 Post one line, five letters in item order, no spaces:
 
@@ -75,10 +75,10 @@ On the consumer view, each branch alone would have to do this to reach the plan:
 
 | Branch moved alone | What it would have to do |
 |---|---|
-| Customers, the acquisition branch | 15 percent more customers who buy like today's, every one of them new to Kalpa |
-| Orders per customer, the frequency branch | 15 percent more orders from the same customers, about three in ten of the consumer one-time buyers returning once |
-| Order value | Rs 335 more on every order, the mean rising from Rs 2,235 to Rs 2,570 |
-| Price | Every price 15 percent higher, with nobody buying any less |
+| Customers, the acquisition branch | It would need 15 percent more customers who buy like today's, every one of them new to Kalpa. |
+| Orders per customer, the frequency branch | It would need 15 percent more orders from the same customers, about three in ten of the consumer one-time buyers returning once. |
+| Order value | It would need Rs 335 more on every order, the mean rising from Rs 2,235 to Rs 2,570. |
+| Price | It would need every price 15 percent higher, with nobody buying any less. |
 
 ### Q2. Design. Alone, any one of the four branches in the table could carry the plan. Which should Meera open first, on this quarter's evidence and cost?
 
@@ -91,7 +91,7 @@ d) Price, since 15 percent on every price needs no customer to change what they 
 
 ## What do two lifts make together?
 
-Plans that combine levers get recomputed through the tree before they reach a budget meeting.
+Plans that combine two levers are checked before they reach a budget meeting.
 
 ### Q3. Marketing's slide says a 10 percent lift in customers and a 10 percent lift in orders per customer make 20 percent growth, Rs 77,772 on the consumer view's Rs 64,810. What do the two lifts make through the tree?
 
@@ -107,14 +107,14 @@ d) 21 percent, Rs 78,420, since the second lift applies to the first
 A recommendation that names what would change it, and the cheapest way to test it, is one a leader
 can sign today and revisit next quarter.
 
-### Q4. Design. Which finding in Tuesday's second quarter would move the first branch from frequency to acquisition?
+### Q4. Design. Tuesday brings the quarter before this one. Which finding in it would show that acquisition is the branch that is short?
 
 a) Orders per customer fell between the quarters while customers held steady
 b) Customers fell between the quarters while orders per customer held steady
 c) The median order rose by a few hundred rupees between the quarters
 d) The share of cancelled orders fell between the quarters, in every channel
 
-### Q5. Design. Meera opens frequency first and wants a test before any budget moves. A reminder costs one message per buyer, a month of 15 percent off gives up Rs 15 of every Rs 100 sold, and loyalty points cost a share of every order, including orders that would have come anyway. Which first test costs least and acts on the frequency branch itself?
+### Q5. Design. Before any budget moves, Meera wants a cheap test of whether one-time buyers can be brought back for a second order. A reminder costs one message per buyer, a month of 15 percent off gives up Rs 15 of every Rs 100 sold, and loyalty points cost a share of every order, including orders that would have come anyway. Which test costs least and acts on that second order itself?
 
 a) A survey asking the one-time buyers why they have not ordered again
 b) A 15 percent discount on every order for a whole month

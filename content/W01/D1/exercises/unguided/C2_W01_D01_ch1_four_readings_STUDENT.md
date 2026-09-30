@@ -13,9 +13,9 @@ board? Which total can go on her slide as sales, and which checks run before it 
 Which change to a colleague's cell gives Anand his reading? Which route keeps working when the data
 gains a new status?
 
-Five items, alone, in the room's turn of chapter 1. Every item has one right answer, so decide it
-before you record the letter. Items marked **Design** ask for the best-fit approach, a sizing, the
-fact that would switch the choice, or the second route that would confirm a number.
+You work these five items alone, in the room's turn of chapter 1. Every item has one right answer,
+so decide it before you record the letter. Items marked **Design** ask for the best-fit approach, a
+sizing, the fact that would switch the choice, or the second route that would confirm a number.
 
 Post one line, five letters in item order, no spaces:
 
@@ -38,9 +38,9 @@ Three readings of sales come out of the same rows, and each keeps different orde
 
 | Reading | The orders it keeps | The question it answers |
 |---|---|---|
-| Booked | Every order placed | How much did customers ask for? |
-| Not cancelled | Booked, less the cancelled orders | How much left the shelf? |
-| Delivered | The orders that reached a customer and stayed | How much stayed sold? |
+| Booked | It keeps every order placed. | How much did customers ask for? |
+| Not cancelled | It keeps the booked orders less the cancelled ones. | How much left the shelf? |
+| Delivered | It keeps the orders that reached a customer and stayed. | How much stayed sold? |
 
 The walk between the readings names every rupee that separates one from the next:
 
@@ -67,16 +67,16 @@ rupee of difference.
 ## Which way of answering fits Meera's first look, and which fits the board?
 
 Analysts choose every week between computing a figure themselves and taking the one in Finance's
-books, and the choice turns on who will act on the number and how soon.
+books.
 
 Four ways a team could answer "what are our sales?", sized on this file:
 
 | Way | Rows touched | Time | What it risks on this file |
 |---|---|---|---|
-| A. Add every amount and send the total | 30 | under a second | one total, whatever each order's status |
-| B. Sum by status, and report each reading with the walk between them | 30, once | under a second | nothing, once the walk lands on the booked total |
-| C. Ask Finance for the figure in the books | none | a day or more | nothing, on Finance's own reading |
-| D. Tick the orders off by hand in a spreadsheet | 30 | about ten minutes | a typo in one of 30 cells |
+| A. Add every amount and send the total | 30 | under a second | It sends one total, whatever each order's status. |
+| B. Sum by status, and report each reading with the walk between them | 30, once | under a second | It risks nothing once the walk lands on the booked total. |
+| C. Ask Finance for the figure in the books | none | a day or more | It risks nothing on Finance's own reading. |
+| D. Tick the orders off by hand in a spreadsheet | 30 | about ten minutes | A typo can hide in any of the 30 cells. |
 
 ### Q1. Design. Meera wants a first look at sales this afternoon, and Anand will take a sales figure to the board next month. Which pairing of the four ways fits the two asks?
 
@@ -110,8 +110,8 @@ d) q, r, p, s
 
 ## Which change gives Anand his reading, and which route keeps working?
 
-Analysts inherit cells that print a number, and the first job is to say what the number counts. The
-route a team keeps is the one that survives the next change in the data.
+Analysts inherit cells that print a number, and their first job is to say what the number counts
+before they change a line of it.
 
 ### Q4. Anand asked for revenue on the orders that were not cancelled, and a colleague's cell printed 9050. Which one change gives him his number?
 

@@ -1,51 +1,61 @@
-# Kahoot, Week 1 Monday
+# Which of Monday's checks does the room still get wrong at speed?
 
-Eight items, ungraded, scored on correctness and speed together. There is no return question today,
-because Monday is the first teaching day of the week and there is no earlier day to return to.
+**Who needs the answer.** The trainer, who reads from the room's answers which of the day's wrong
+numbers still catch people before Tuesday builds on them, and each learner, who sees which check to
+redo tonight.
 
-Each item names what it tests, so an item dropped for time says what was lost. The items follow
-the day's chapters: Q1 the tree, Q8 chapter 1, Q3 chapter 2, Q2 and Q7 chapter 3, Q4 chapter 4, Q6
+**The questions on the way.** Which branch explains a fall? How is a rate written? What does a
+fraction from two reports give? What does a gap between two middles say? What is a recent one-time
+buyer? What does a discount do to revenue? Why would customers equal orders? What goes in the note as
+sales?
+
+The quiz has eight items, ungraded and scored on correctness and speed together. There is no return
+question today, because Monday is the first teaching day of the week and there is no earlier day to
+return to.
+
+Each item names what it tests, so an item dropped for time says what was lost. The items follow the
+day's chapters: Q1 the tree, Q8 chapter 1, Q3 chapter 2, Q2 and Q7 chapter 3, Q4 chapter 4, Q6
 chapter 5 and Q5 chapter 6.
 
 ---
 
 ## Q1. Kalpa's revenue fell while its number of customers rose. Which branch do you open first?
-*Tests: the tree's multiplication, read backwards from a result.*
+*Tests: reading the tree backwards from a result.*
 
-- Customers, since that is the one branch that visibly moved this whole quarter
-- Orders per customer or order value, one of which fell enough to offset them  <- correct
-- Price per item alone, since price is always the first suspect in a fall
+- Customers, since that is the one branch that visibly moved this quarter
+- Orders per customer or order value, one of which fell enough to offset it  <- correct
+- Acquisition spend, since more customers show the spend is working well
 - None yet, since revenue can fall for no clear reason in any given quarter
 
 ---
 
-## Q2. Orders per customer is what, divided by what?
-*Tests: a rate carries its denominator, and both sides share one window.*
+## Q2. Meera asks how often a Kalpa customer buys in the quarter. Which fraction answers her?
+*Tests: writing a rate as a numerator over a denominator.*
 
-- Customers divided by orders, in the same window
-- Orders divided by every customer ever on record
+- Distinct customers divided by orders, same window
+- Orders divided by every customer ever registered
 - Orders divided by distinct customers, same window  <- correct
-- Revenue divided by orders, which is the same rate
+- Revenue divided by orders, in the same window
 
 ---
 
-## Q3. Finance reports booked revenue and the dashboard counts delivered orders. What is booked revenue divided by delivered orders?
+## Q3. Finance reports booked revenue and the dashboard counts delivered orders. What does booked revenue divided by delivered orders give?
 *Tests: reading a fraction whose top and bottom come from two reports.*
 
 - The delivered AOV, since the orders counted are the delivered ones
 - The booked AOV, since the revenue counted is the booked total
-- A number that matches no definition of the business at all  <- correct
-- A safer AOV than either, since it is the larger of the two numbers
+- A figure above both AOVs, since its rupees keep orders its count dropped  <- correct
+- A fair AOV, since the rupees and the orders are both Kalpa's own numbers
 
 ---
 
-## Q4. The mean order is Rs 9,800 and the median order is Rs 1,400. What does that say about the orders?
-*Tests: a wide gap between the mean and the median is itself a finding.*
+## Q4. A shop's mean order is Rs 9,800 and its median order is Rs 1,400. What does that say about its orders?
+*Tests: reading the gap between the mean and the median.*
 
 - A few orders sit far above the rest  <- correct
-- Most orders sit close to Rs 9,800 each
-- The median was computed on the wrong column
-- The file must hold fewer than ten orders
+- Half the orders sit above Rs 9,800
+- The median came from the wrong column
+- Most orders sit close to Rs 9,800
 
 ---
 
@@ -60,22 +70,22 @@ chapter 5 and Q5 chapter 6.
 ---
 
 ## Q6. Fifteen percent off lifts quantity 10 percent. Did revenue rise or fall?
-*Tests: branches multiply, and a discount needs more volume than its cut.*
+*Tests: pricing a discount through the tree.*
 
 - Rise, to 1.10 of today, since the quantity sold is up 10 percent
-- Rise, by 25 percent, since both changes help the shopper
+- Flat, since the price cut and the quantity lift cancel out
 - Fall, by about 6.5 percent of today's revenue  <- correct
-- Fall by 5 percent, since 10 less 15 is minus 5
+- Fall, by 5 percent, since 10 less 15 is minus 5
 
 ---
 
-## Q7. A loop counted 30 customers in a file of 30 orders. What is the likeliest mistake?
-*Tests: telling a count of rows from a count of people.*
+## Q7. A colleague's loop counted 30 customers in a file of 30 orders. What is the likeliest mistake?
+*Tests: diagnosing a customer count that equals the order count.*
 
 - It counted rows, so a customer with two orders counts twice  <- correct
 - None, since each order in a file comes from its own customer
-- It skipped the cancelled orders, which belong to other customers
-- It counted the channels, since each order carries one channel
+- It used a set of ids, and a set keeps every repeated id
+- It skipped the cancelled orders, which belong to new customers
 
 ---
 
@@ -83,6 +93,6 @@ chapter 5 and Q5 chapter 6.
 *Tests: which total earns the word sales, and what goes beside it.*
 
 - Rs 90,000 as sales, since every order in the file was placed by a customer
-- The median order, since a total can be moved by one large order in the file
-- Nothing yet, since a total cannot be reported until the returns have come back
-- The total with its definition, cancelled orders taken out of "sales"  <- correct
+- The median order, since a few large orders can move a total in any file
+- Nothing yet, since a total cannot be reported until the returns come back
+- A total named with its reading, the 5 cancelled orders left out of it  <- correct

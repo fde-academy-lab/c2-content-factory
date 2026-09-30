@@ -5,16 +5,16 @@
 
 **Who needs the answer.** Meera needs the tree to see which branch of sales is short before she
 signs Rs 12 crore for new customers, and marketing's payback case values every new customer by the
-order that customer will place. A branch built from two reports prices every new customer wrongly,
-and the budget with them.
+order that customer will place. A branch measured badly misprices every new customer, and the
+budget with them.
 
 **The questions on the way.** Which tree can this file fill? What is an order worth on one reading
-of sales? What does a fraction built from two reports claim? Which check tells whether two numbers
+of sales? What should the team say about a colleague's AOV? Which check tells whether two numbers
 share a definition? Which data would deepen the tree?
 
-Five items, alone, in the room's turn of chapter 2. Every item has one right answer, so decide it
-before you record the letter. Items marked **Design** ask for the best-fit approach, a sizing, the
-fact that would switch the choice, or the second route that would confirm a number.
+You work these five items alone, in the room's turn of chapter 2. Every item has one right answer,
+so decide it before you record the letter. Items marked **Design** ask for the best-fit approach, a
+sizing, the fact that would switch the choice, or the second route that would confirm a number.
 
 Post one line, five letters in item order, no spaces:
 
@@ -57,8 +57,7 @@ counts delivered orders, because delivery is what operations runs.
 
 ## Which tree can this file fill today?
 
-Every analytics team handed a revenue question draws the tree first, and it fills only the branches
-its data can measure.
+Every analytics team handed a revenue question draws the tree before it opens the data.
 
 Four trees a team could draw, and what each needs:
 
@@ -80,8 +79,8 @@ d) A funnel from visits to orders, since it shows where shoppers drop out before
 
 ## What is an order worth, on one reading of sales?
 
-Finance and product teams publish every rate with its numerator and denominator on one definition,
-because a rate whose two halves come from different reports cannot be checked by anyone downstream.
+Finance and product teams publish every rate with its numerator and its denominator written beside
+it.
 
 ### Q2. Marketing's payback needs the value of an order that stayed delivered. Delivered revenue is Rs 5,20,790 on 21 delivered orders. What is the delivered AOV?
 
@@ -99,10 +98,10 @@ d) It is the booked AOV, since the rupees it divides are the booked ones, so it 
 
 ---
 
-## Which check catches a fraction built from two reports, and which data would deepen the tree?
+## Which check keeps a fraction honest, and which data would deepen the tree?
 
-Analysts who divide one team's number by another's run an identity check before the number travels,
-and they know which table they are still waiting for.
+Analysts who divide one team's number by another's check the result before it travels, and they
+know which table they are still waiting for.
 
 ### Q4. Design. Next quarter the payback team will divide Finance's revenue by an order count from the warehouse. Which check, run after dividing, tells them whether the two numbers share a definition?
 
@@ -111,7 +110,7 @@ b) The division is redone on a calculator to confirm the arithmetic
 c) AOV times the orders it was divided by must give the revenue back
 d) AOV times the orders the revenue was summed over must give it back
 
-### Q5. Design. Which new data would switch the team from the three-branch tree to the one that splits AOV into items, price and discounts?
+### Q5. Design. Which data would the team need before it could draw the tree that splits AOV into items, price and discounts?
 
 a) An order-items table with the items and list price on each order
 b) Footfall and app sessions for every day of the quarter, store by store

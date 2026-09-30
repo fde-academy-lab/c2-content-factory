@@ -15,11 +15,11 @@ Anand asks whether the answer holds on the orders that stayed sold. On the 21 de
 customers kept 1.11 orders each and only 2 kept two. The typical delivered order is Rs 2,060, the
 11th of the 21 sorted amounts, since an odd count has one middle. Sized on the consumer view's
 delivered revenue, Rs 40,790, the plan asks about Rs 6,119 more, to about Rs 46,909, and marketing's
-15 percent discount with 10 percent more orders would take the same Rs 40,790 to Rs 38,139, a
-fall of 6.5 percent. Of the 17 delivered one-time buyers, 7 ordered
-fewer than 45 days before 26 September. Orders per customer fell; the typical order, the window's
-edge and the branch held, and the delivered view adds a leak: of the 7 customers who came back on
-booked orders, 4 lost that second order to a cancellation or a return.
+15 percent discount with 10 percent more orders would take the same Rs 40,790 to Rs 38,139, a fall
+of 6.5 percent. Of the 17 delivered one-time buyers, 7 ordered fewer than 45 days before 26
+September. Orders per customer fell; the typical order, the window's edge and the branch held, and
+the delivered view adds a leak: of the 7 customers who came back on booked orders, 4 lost that
+second order to a cancellation or a return.
 
 ## Why is each answer right, and why does each other option fail?
 

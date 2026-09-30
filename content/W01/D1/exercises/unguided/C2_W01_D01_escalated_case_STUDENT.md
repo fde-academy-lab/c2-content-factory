@@ -14,11 +14,11 @@ delivered revenue, and where would marketing's discount leave it? How many deliv
 are too recent to judge, which branch holds, and what goes in the board's headline? What sentence
 goes to Meera?
 
-Thirty-five minutes, alone, with no hints. The five parts each climb from the one before, and the
-last ends on one sentence to Meera. Work in `notebooks/C2_W01_D01_ex1_escalated_case_STUDENT.ipynb`,
-which carries the same five parts as TODO cells on the 30 orders. Items marked **Design** ask for
-the best-fit approach, a sizing, the fact that would switch the choice, or the second route that
-would confirm a number.
+You have thirty-five minutes, alone and with no hints. The five parts each climb from the one
+before, and the last ends on one sentence to Meera. Work in
+`notebooks/C2_W01_D01_ex1_escalated_case_STUDENT.ipynb`, which carries the same five parts as TODO
+cells on the 30 orders. Items marked **Design** ask for the best-fit approach, a sizing, the fact
+that would switch the choice, or the second route that would confirm a number.
 
 The afternoon's items are numbered as one run: this brief holds items 1 to 10, and the second case
 continues from item 11.
@@ -40,12 +40,12 @@ orders from 1 July to 26 September 2026, an 88-day window:
 
 | Question | The answer on booked orders |
 |---|---|
-| Sales | Rs 5,44,810 booked on 30 orders |
-| The customer branches | 23 customers, 1.30 orders each; 7 came back and 16 bought once |
-| The typical order | The median, Rs 2,205, halfway between the two middle amounts of an even count |
-| The plan | Sized on the consumer view, the orders whose segment is one of the three consumer segments Meera's plan concerns (Retail-Core, Retail-Plus and Student): Rs 64,810 booked, so 15 percent is Rs 9,722 more |
-| The branch | Frequency first, since the customers exist and 7 already came back |
-| The window's edge | Returning customers took a median of 45 days between orders, so 9 of the 16 one-time buyers were too recent to judge |
+| Sales | Booked sales were Rs 5,44,810 on 30 orders. |
+| The customer branches | 23 customers placed 1.30 orders each; 7 came back and 16 bought once. |
+| The typical order | The median was Rs 2,205, halfway between the two middle amounts of an even count. |
+| The plan | The plan was sized on the consumer view, the orders whose segment is one of the three consumer segments Meera's plan concerns (Retail-Core, Retail-Plus and Student): Rs 64,810 booked, so 15 percent is Rs 9,722 more. |
+| The branch | Frequency came first, since the customers exist and 7 already came back. |
+| The window's edge | Returning customers took a median of 45 days between orders, so 9 of the 16 one-time buyers were too recent to judge. |
 
 Anand's reading keeps only the delivered orders, those that reached a customer and stayed: 21 of
 the 30 orders, Rs 5,20,790. The other 9 left the reading in two ways: 4 orders, Rs 9,050, were
@@ -90,8 +90,8 @@ d) sum(amounts) / 21, the total divided by the count
 
 ## What does the plan ask of delivered revenue, and where would a discount leave it?
 
-Finance resizes a plan on its own definition before it signs, and it prices every proposal through
-the tree before any money moves.
+Finance resizes a plan on its own definition before it signs, and it prices every proposal before
+any money moves.
 
 ### Q4. Design. Anand wants the 15 percent plan sized on what stayed delivered, and Meera's plan still concerns the three consumer segments. Which base should the plan use, and what does it ask for?
 
@@ -111,8 +111,7 @@ d) Rs 60,597, a fall of 6.5 percent
 
 ## Which branch holds on delivered orders, once the window's edge is counted?
 
-Retention teams count who has had time to come back before they call a branch dead, on every
-definition the business reports.
+Retention teams re-read the one-time buyers on every definition the business reports.
 
 ### Q6. Compute: of the delivered customers who kept only one order, how many placed it fewer than 45 days before 26 September, too recently to judge?
 
@@ -146,9 +145,9 @@ d) Delivered alone, since two readings of sales on one page confuse a board
 A recommendation rebuilt on a stricter definition goes back to the person who decides in the same
 four parts, with what moved and what held.
 
-### Q10. Write one sentence, under 70 words, in chapter 6's four parts on delivered orders: the evidence with its window and reading of sales, the branch, what one quarter cannot show, and what happens to the Rs 12 crore.
+### Q10. What one sentence, under 70 words, goes to Meera in chapter 6's four parts on delivered orders: the evidence with its window and reading of sales, the branch, what one quarter cannot show, and what happens to the Rs 12 crore?
 
-Paste it after your two lines.
+Write it, and paste it after your two lines.
 
 ---
 

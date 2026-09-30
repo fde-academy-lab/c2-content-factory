@@ -84,16 +84,16 @@ def story():
         # How does a retailer like Kalpa make money, who asks the data team for which number, and how is each number worked out?
 
         **Week 1, Monday, the story that opens the day (chapter 0 of 6).** Most of the room has shopped
-        in a store and on an app without seeing the business from behind the till. This notebook takes
-        one scene from the morning's story, a Retail-Plus member's Saturday basket at Kalpa Retail, and
-        works out the metrics a retail data team is asked for, each as a formula with a worked number.
-        Every number here is **invented**: they are the round illustrative numbers of the retail
-        dossier, chosen so the arithmetic stays easy, and none of them is Kalpa's data or a real
-        company's.
+        in a store and on an app without seeing the business from behind the till. One scene from the
+        morning's story, a Retail-Plus member's Saturday basket at Kalpa Retail, is enough to work out
+        the metrics a retail data team is asked for, each as a formula with a worked number.
+        Every number here is **invented**, taken from the round illustrative numbers of the retail
+        dossier so the arithmetic stays easy, and none of them is Kalpa's data or a real company's.
 
-        **Who needs the answer.** Everyone who asks the data team for a number. Meera Raghavan, the
-        CEO, asks for revenue and for the payback on marketing's Rs 12 crore. Anand Iyer, the finance
-        controller, asks for net revenue and margin. The marketing lead asks for conversion and the cost
+        **Who needs the answer.** Everyone who asks the data team for a number needs to know which
+        number they are asking for. Meera Raghavan, the CEO, asks for revenue and, before she signs any
+        acquisition budget, for how long it takes to pay back. Anand Iyer, the finance controller, asks
+        for net revenue and margin. The marketing lead asks for conversion and the cost
         of winning a customer, and the head of Retail-Plus, Kalpa's paid membership tier, asks for
         retention. A number worked out on a definition its reader did not ask for sends them to the
         wrong decision, so each formula below comes with the question it answers and the person who
@@ -114,12 +114,12 @@ def story():
         This is the day's first notebook, and chapter 1 then opens Kalpa's own 30 orders.
 
         > **Kavya's review.** Before I read any number, I read what it is divided by, over which
-        > window, and who asked for it. This notebook is where you practise saying all three.
+        > window, and who asked for it. Practise saying all three beside every formula below.
         """),
         md("""
         **Setup.** The first cell finds the shared helper, `c2kit`, by walking up from this folder
-        until it reaches `scripts/`. This notebook needs no data file, since its numbers are invented
-        and typed in.
+        until it reaches `scripts/`. No data file is needed, since every number below is invented and
+        typed in.
         """),
         code(SETUP + 'print("helper loaded; every number below is invented")'),
         where(0, ["1. Where does Rs 100 ordered go?", "2. What does one basket add?",
@@ -345,8 +345,8 @@ def story():
         Customer lifetime value (CLV), simply, is contribution per order, times orders a year, times
         years as a customer. Customer acquisition cost (CAC) is acquisition spend over the new customers
         it brought, and payback is CAC over the monthly contribution per customer. On invented numbers:
-        Rs 150 of contribution per order (section 2's basket), 6 orders a year, 2 years, and an
-        acquisition budget of Rs 12 crore that brings 80,000 new customers. The CEO and the finance
+        Rs 150 of contribution per order (section 2's basket), 6 orders a year, 2 years, and an invented
+        campaign of Rs 3 crore that brought 20,000 new customers. The CEO and the finance
         controller ask for the payback before they sign an acquisition budget, since it says how long
         the spend takes to come back.
 
@@ -361,7 +361,7 @@ def story():
         code("""
         per_order, per_year, years = 150, 6, 2                             # invented
         clv = per_order * per_year * years
-        cac = 12_00_00_000 / 80000
+        cac = 3_00_00_000 / 20000                                          # invented campaign, Rs 3 crore
         monthly = per_order * per_year / 12
         payback = cac / monthly
         kit.bars([("lifetime value, on contribution", clv), ("acquisition cost", cac)], fmt=kit.rupees,
@@ -395,8 +395,8 @@ def story():
         the cost of goods, over net revenue, and the finance controller asks for it. Like-for-like
         growth is the sales of the stores open throughout both periods over the same stores' sales in
         the earlier period, less 1, and the CEO and investors ask for it, since it says whether the
-        existing stores sell more. The cell works each one out on invented numbers: 45 days, 25 percent
-        and 2 percent.
+        existing stores sell more. On invented numbers the three come to 45 days, 25 percent and 2
+        percent.
         """),
         code("""
         inventory_days = 45_00_000 / 1_00_000      # invented: Rs 45 lakh of stock at cost, Rs 1 lakh of COGS a day
@@ -452,8 +452,9 @@ def story():
         - How many of January's new customers order again? Retention is 38 percent in February, 30 in
           March and 26 in April.
         - How long does a new customer take to pay back? Payback takes 20 months, on a CAC of Rs 1,500
-          and Rs 75 of contribution a month, and the card's last three formulas give 45 days of
-          inventory, a 25 percent gross margin and 2 percent like-for-like growth.
+          and Rs 75 of contribution a month.
+        - How are the card's last three formulas worked out? They give 45 days of inventory, a 25
+          percent gross margin and 2 percent like-for-like growth.
         """),
         code("""
         kit.table(["formula", "invented worked number", "who asks"],
@@ -506,10 +507,10 @@ def ch1():
         supports four readings of sales: the count of orders, the rupees booked on every order, the
         rupees not cancelled and the rupees delivered. Reliance Retail faces the same question in public:
         it reported gross revenue of Rs 90,408 crore and revenue from operations of Rs 79,745 crore for
-        the same quarter to June 2026, with GST recovered as the step between them (Reliance Industries
-        media release, 17 July 2026), so two honest totals for one quarter are normal in retail. Section
-        3 of the retail dossier, `study-notes/C2_W01_D01_domain_retail_STUDENT.md`, has the long
-        version.
+        the same quarter to June 2026, with the goods and services tax (GST) it recovered as the step
+        between them (Reliance Industries media release, 17 July 2026), so two honest totals for one
+        quarter are normal in retail. Section 3 of the retail dossier,
+        `study-notes/C2_W01_D01_domain_retail_STUDENT.md`, has the long version.
 
         The story notebook named gross merchandise value (GMV) and net revenue and said they differ: on
         its invented Rs 100 of GMV, net revenue was Rs 80, and the Rs 20 between them was left for this
@@ -543,12 +544,12 @@ print(len(ORDERS), "orders loaded, dated", first_day, "to", last_day)
         | Option | Rows touched | Time | Error on this file | When it is the right call |
         |---|---|---|---|---|
         | A. Add every amount and send the total | 30 | under a second | It counts every cancelled order as a sale. | It is right only with its name, booked, written beside it. |
-        | B. Sum by status and report booked, not cancelled and delivered, with the bridge between them | 30, once | under a second | None, once the bridge lands. | It fits a CEO's first look, before the plan's definition is known. |
-        | C. Ask Finance for the figure in the books | none | a day or more | None, on Finance's definition. | It fits when the number goes to the board and must match the books. |
-        | D. Tick orders off by hand in a spreadsheet | 30 | about ten minutes | A typo in one of 30 cells. | It never fits: it is slow at 30 rows and impossible at 30 lakh. |
+        | B. Sum by status and report booked, not cancelled and delivered, with the bridge between them | 30, once | under a second | It has none once the bridge lands. | It fits a CEO's first look, before the plan's definition is known. |
+        | C. Ask Finance for the figure in the books | none | a day or more | It has none on Finance's own definition. | It fits when the number goes to the board and must match the books. |
+        | D. Tick orders off by hand in a spreadsheet | 30 | about ten minutes | Any one of the 30 cells can carry a typo. | It never fits: it is slow at 30 rows and impossible at 30 lakh. |
 
-        The cell below sizes option A's error before any build: it counts the orders whose status says
-        they never became a sale.
+        Option A's error is sized first, by counting the orders whose status says they never became a
+        sale.
         """),
         code("""
         statuses = {}
@@ -590,7 +591,8 @@ print(len(ORDERS), "orders loaded, dated", first_day, "to", last_day)
         md("""
         The loop stopped, and its last line reads `TypeError: unsupported operand type(s) for +=:
         'int' and 'str'`: a whole number on the left, text on the right, and Python will not add text
-        to a number. One amount in the file is stored as text, which gets two minutes and no more.
+        to a number. One amount in the file is stored as text, and the error gets two minutes and no
+        more.
 
         **Your turn.** The loop stopped on a record, and `order` still holds it. Type these two lines
         into the empty cell below and say what is odd about the record:
@@ -740,8 +742,8 @@ print(len(ORDERS), "orders loaded, dated", first_day, "to", last_day)
         revenue and revenue from operations for the same quarter for the same reason."
 
         **[D] How would you decide between summing the file yourself and asking Finance for the
-        number?** "By who acts on it. For a first look I sum by status in one pass, which takes a second
-        and shows every reading. For anything that reaches the board I reconcile to Finance's figure,
+        number?** "It depends on who acts on it. For a first look I sum by status in one pass, which
+        takes a second and shows every reading. For anything that reaches the board I reconcile to Finance's figure,
         because a number that disagrees with the books loses the room whatever its logic."
         """),
         md("""
@@ -849,7 +851,8 @@ print(len(ORDERS), "orders loaded, every amount a whole number")
         | C. B, with AOV split into items x price, less discounts | items, list price, discount per order | no | It would tell her which part of the basket moved. |
         | D. A funnel, visits to orders | sessions or footfall | no | It would tell her where shoppers drop out before buying. |
 
-        The cell sizes each option on this file: the fields it needs against the fields the file holds.
+        Each option is sized on this file by setting the fields it needs against the fields the file
+        holds.
         """),
         code("""
         fields = set(ORDERS[0])
@@ -902,8 +905,9 @@ print(len(ORDERS), "orders loaded, every amount a whole number")
                 {"label": "price per item", "note": "not in file", "kind": "unknown"},
                 {"label": "less discounts", "note": "not in file", "kind": "unknown"}]}]},
             title="The revenue tree: what this file can and cannot measure")
-        kit.equation(["revenue\\n" + kit.rupees(orders * aov), "=", f"orders\\n{orders}", "x",
-                      "average order value\\n" + kit.rupees(aov)], title="The two-branch form, multiplied back")
+        kit.equation(["revenue\\n" + kit.rupees(round(orders * aov)), "=", f"orders\\n{orders}", "x",
+                      "average order value\\nRs 5,44,810 / 30, about " + kit.rupees(aov)],
+                     title="The two-branch form, multiplied back on the unrounded AOV")
         """),
         code("""
         kit.check("orders x AOV lands on booked revenue", round(orders * aov) == revenue, kit.rupees(orders * aov))
@@ -912,8 +916,9 @@ print(len(ORDERS), "orders loaded, every amount a whole number")
         kit.check("three branches of six are not in this file", len(missing) == 3, missing)
         """),
         md("""
-        **What happened.** The answer is a. Kalpa's booked AOV is Rs 5,44,810 over 30 orders, Rs 18,160,
-        and 30 x Rs 18,160 lands back on the booked total. That is the tree's strength and its limit:
+        **What happened.** The answer is a. Kalpa's booked AOV is Rs 5,44,810 over 30 orders, about
+        Rs 18,160, and 30 times the unrounded AOV, 30 x (Rs 5,44,810 / 30), lands back on the booked
+        total. That is the tree's strength and its limit:
         the product always lands on revenue, so a wrong leaf never shows in the total and shows only in
         the split. Whether Rs 18,160 describes an order anyone would recognise is chapter 4's question.
         """),
@@ -953,7 +958,8 @@ print(len(ORDERS), "orders loaded, every amount a whole number")
         rows = [("booked / booked", revenue, orders, orders),
                 ("delivered / delivered", delivered_revenue, delivered_orders, delivered_orders),
                 ("booked / delivered, the trap", revenue, delivered_orders, orders)]
-        kit.table(["numerator / denominator", "AOV", "x the orders the revenue covers", "lands on that revenue?"],
+        kit.table(["numerator / denominator", "AOV, rounded", "unrounded AOV x the orders the revenue covers",
+                   "lands on that revenue?"],
                   [(n, kit.rupees(round(r / o)), kit.rupees(round(base * r / o)),
                     "yes" if round(base * r / o) == r else "no, " + kit.rupees(round(base * r / o - r)) + " over")
                    for n, r, o, base in rows], caption="The identity check: AOV times the orders the revenue was summed over")
@@ -966,7 +972,8 @@ print(len(ORDERS), "orders loaded, every amount a whole number")
         """),
         md("""
         **What happened.** The answer is c: booked rupees over delivered orders gives Rs 25,943, which
-        matches no definition and multiplies back to Rs 7,78,300. The fix is one definition per
+        matches no definition and multiplies back to Rs 7,78,300, 30 x (Rs 5,44,810 / 21). The fix is one
+        definition per
         fraction: booked AOV is Rs 18,160 on 30 orders and delivered AOV is Rs 24,800 on 21 orders, each
         goes out with its definition, the tree multiplies back on each, and the mixed Rs 25,943 is
         dropped.
@@ -995,8 +1002,8 @@ print(len(ORDERS), "orders loaded, every amount a whole number")
         """),
         md("""
         **When to switch.** Revenue over orders is the route when the totals already exist in a report,
-        and the mean of the list is the route when you hold the rows. `statistics.fmean` saves a line
-        and nothing else. The bigger switch is the one chapter 4 makes: when the question is what a
+        and the mean of the list is the route when you hold the rows; `statistics.fmean` does the same
+        sum in one line. The bigger switch is the one chapter 4 makes: when the question is what a
         typical order looks like, the mean may be the wrong middle altogether.
 
         > **Kavya's review.** When two reports feed one fraction, ask each report what it counts before
@@ -1014,8 +1021,8 @@ print(len(ORDERS), "orders loaded, every amount a whole number")
         moves."
 
         **[F] A business says "grow revenue 15 percent"; how do you turn that into questions data can
-        answer?** "Fifteen percent of which revenue, over which window, against which base. Then I break
-        the target down the tree and ask what each branch would have to do alone, in customers, orders
+        answer?** "I ask fifteen percent of which revenue, over which window and against which base.
+        Then I break the target down the tree and ask what each branch would have to do alone, in customers, orders
         and rupees per order. Each is a fraction I can compute and each maps to a team that owns it."
         """),
         md("""
@@ -1043,7 +1050,7 @@ print(len(ORDERS), "orders loaded, every amount a whole number")
         """),
         code("""
         kit.table(["What we now know", "The evidence"],
-                  [("Each branch is a numerator over a denominator on one definition", "AOV = Rs 5,44,810 / 30 = Rs 18,160"),
+                  [("Each branch is a numerator over a denominator on one definition", "AOV = Rs 5,44,810 / 30, about Rs 18,160"),
                    ("Three branches are not in this file", "items, price and discounts"),
                    ("A fraction from two definitions matches nothing", "Rs 25,943 would claim Rs 7,78,300")],
                   caption="Chapter 2: what each branch is")
@@ -1080,7 +1087,7 @@ def ch3():
         2. How many customers came back for a second order?
         3. What goes wrong if every row is counted as a customer?
         4. Does the mean of the per-customer counts give the same rate?
-        5. What changes when only delivered orders count?
+        5. Which count goes on the tree's customer branch, and on which definition?
 
         The metric at stake is customers, and orders per customer: orders over distinct customers in
         the window. Reliance Retail reported 396 million registered customers at 30 June 2026 (Reliance
@@ -1089,10 +1096,9 @@ def ch3():
         ordered. Section 5 of the retail dossier, `study-notes/C2_W01_D01_domain_retail_STUDENT.md`,
         covers frequency and repeat rate.
 
-        Chapter 2 measured the first branch: booked revenue of Rs 5,44,810 over 30 orders is an AOV of
-        Rs 18,160. Chapter 1 had already set the readings beside it, with 21 of the 30 orders delivered
-        and staying delivered. This chapter fills the two customer branches and checks that the tree
-        multiplies back.
+        Chapter 2 measured the first branch on booked orders, the reading chapter 1 put at the top of the
+        tree: booked revenue of Rs 5,44,810 over 30 orders is an average order value (AOV) of about
+        Rs 18,160. This chapter fills the two customer branches and checks that the tree multiplies back.
 
         > **Kavya's review.** One person can leave several rows, so count people by their id and say in
         > the note how you counted them.
@@ -1109,7 +1115,7 @@ print(len(ORDERS), "orders,", kit.rupees(revenue), "booked")
 '''),
         where(3, ["How do we count customers?", "1. How many came back?",
                   "2. What if rows are customers?", "Does the mean of counts agree?",
-                  "3. What changes on delivered?"]),
+                  "Which count goes on the branch?"]),
         md("""
         ## How do we count customers when a row is an order?
 
@@ -1119,9 +1125,9 @@ print(len(ORDERS), "orders,", kit.rupees(revenue), "booked")
         | Option | Passes over the rows | What it answers | Error on this file |
         |---|---|---|---|
         | A. `len(ORDERS)`, the row count | none | how many orders | It counts a repeat customer once per order. |
-        | B. `len(set(ids))`, distinct ids | one | how many customers | None, though it says nothing about who came back. |
-        | C. A dictionary of orders per id | one | how many customers, how many orders each, who came back | None. |
-        | D. Sort the ids and count where they change | a sort and a pass | how many customers | None if done right, and it is easy to miscount by hand. |
+        | B. `len(set(ids))`, distinct ids | one | how many customers | It has none, though it says nothing about who came back. |
+        | C. A dictionary of orders per id | one | how many customers, how many orders each, who came back | It has none. |
+        | D. Sort the ids and count where they change | a sort and a pass | how many customers | It has none if done right, and it is easy to miscount by hand. |
         """),
         code("""
         ids = [order["customer_id"] for order in ORDERS]
@@ -1176,7 +1182,9 @@ print(len(ORDERS), "orders,", kit.rupees(revenue), "booked")
         would part the two, which is why the dictionary is the count to trust. One repeat customer is
         recorded as Retail-Core on one order and Retail-Plus on the other, since the segment is recorded
         on each order, so a count of customers per segment has to say which order's segment it used.
-        With every branch measured, the tree multiplies back:
+        With every branch measured, the tree multiplies back on the unrounded values: 23 x (30 / 23) x
+        (Rs 5,44,810 / 30) = Rs 5,44,810. Rounded to 1.30 and Rs 18,160 first, the same product reads
+        about Rs 5,42,984, so the check multiplies the values as computed, before any rounding.
         """),
         code("""
         aov = revenue / len(ORDERS)
@@ -1184,9 +1192,10 @@ print(len(ORDERS), "orders,", kit.rupees(revenue), "booked")
         kit.driver_tree({"label": "revenue", "note": kit.rupees(revenue) + " booked", "kind": "known", "children": [
             {"label": "customers", "note": f"{customers} distinct ids", "kind": "known"},
             {"label": "orders per customer", "note": f"{per_customer:.2f}; {repeat} came back", "kind": "good"},
-            {"label": "average order value", "note": kit.rupees(aov) + "; typical? chapter 4", "kind": "unknown"}]},
+            {"label": "average order value", "note": "about " + kit.rupees(aov) + "; typical? chapter 4", "kind": "unknown"}]},
             title="The tree with chapter 3's leaves filled in")
-        kit.check("customers x orders per customer x AOV = booked revenue", round(rebuilt) == revenue, kit.rupees(rebuilt))
+        kit.check("customers x orders per customer x AOV, unrounded, gives booked revenue", round(rebuilt) == revenue,
+                  kit.rupees(round(rebuilt)))
         """),
         md("""
         ## 2. What goes wrong if every row is counted as a customer?
@@ -1259,46 +1268,11 @@ print(len(ORDERS), "orders,", kit.rupees(revenue), "booked")
         > their ids.
         """),
         md("""
-        ## 3. What changes when only delivered orders count?
-
-        Anand's books keep what was delivered and stayed delivered, so the count he will check is the
-        one on the 21 delivered orders. The dictionary is rebuilt on those orders alone.
-
-        **Predict before you run.** On the 21 delivered orders, how many customers kept two delivered
-        orders?
-
-        - a) 7, the same as on booked orders.
-        - b) 2.
-        - c) None.
-        - d) 19.
-        """),
-        code("""
-        delivered = [o for o in ORDERS if o["status"] == "delivered"]
-        d_counts = {}
-        for order in delivered:
-            d_counts[order["customer_id"]] = d_counts.get(order["customer_id"], 0) + 1
-        d_customers = len(d_counts)
-        d_per = len(delivered) / d_customers
-        d_repeat = sum(1 for c in d_counts.values() if c > 1)
-        print(f"delivered: {len(delivered)} orders from {d_customers} customers, {d_per:.2f} each; {d_repeat} kept two")
-        kit.columns(["customers", "customers with two orders"],
-                    [("booked", [customers, repeat]), ("delivered", [d_customers, d_repeat])],
-                    title="The customer branches on booked and on delivered orders")
-        kit.check("delivered orders come from 19 customers", d_customers == 19, d_customers)
-        kit.check("2 customers kept two delivered orders", d_repeat == 2)
-        kit.check("the delivered counts add back to the delivered orders", sum(d_counts.values()) == len(delivered))
-        """),
-        md("""
-        **What happened.** The answer is b: on the 21 delivered orders, 19 customers kept 1.11 orders
-        each and only 2 kept two. Customers still come back on Anand's definition, and the drop from 7
-        to 2 says the repeat orders often did not stay sold, which the afternoon's cases take up.
-        """),
-        md("""
         ### How would you answer an interviewer who asks how you count customers?
 
         **[F] Your extract shows 30 orders and 30 customers; what do you check before saying nobody
-        comes back?** "Whether 30 customers means 30 distinct ids or 30 rows. I compare the length of
-        the id column with the length of its set; on Kalpa's quarter that is 30 against 23, so seven
+        comes back?** "I check whether 30 customers means 30 distinct ids or 30 rows. I compare the
+        length of the id column with the length of its set; on Kalpa's quarter that is 30 against 23, so seven
         orders came from people who had already bought. I would also check the window, since a customer
         who buys every four months looks one-time in one quarter, and whether one person can carry two
         ids."
@@ -1318,8 +1292,8 @@ print(len(ORDERS), "orders,", kit.rupees(revenue), "booked")
         ### Which channel did the 7 repeat buyers come back through?
 
         A set answers overlap questions: `&` keeps the ids two sets share and `|` the ids in either. A
-        frequency plan has to reach customers where they come back, so the cell asks which channels the
-        repeat buyers used. All 7 came back through a different channel from their first order; seven
+        frequency plan has to reach customers where they come back, so the question is which channels
+        the repeat buyers used. All 7 came back through a different channel from their first order; seven
         customers are too few to call that a pattern, and it does say a frequency plan built on one
         channel would miss how these customers return.
         """),
@@ -1358,11 +1332,13 @@ print(len(ORDERS), "orders,", kit.rupees(revenue), "booked")
         kit.check("on the invented three the two counts differ", extra_orders != came_back)
         """),
         md("""
-        ## Is frequency a branch Meera can grow without buying anyone new?
+        ## Which count goes on the tree's customer branch, and on which definition?
 
-        It is. Kalpa's 30 orders came from 23 customers, and 7 of them came back for a second order in
-        the quarter, 1.30 orders each; on delivered orders the same count is 19 customers at 1.11 each,
-        2 of whom kept two.
+        The customer branch takes 23 customers, the distinct customer ids behind the 30 booked orders
+        placed from 1 July to 26 September, and the frequency branch takes 1.30 orders per customer on
+        the same booked orders. Each number goes out with that definition beside it, since a count of
+        customers depends on which orders it is taken from. Frequency is a live branch: 7 of the 23 came
+        back for a second order, so Meera can grow it without buying anyone new.
 
         - How do we count customers when a row is an order? We count distinct ids, with a dictionary
           that also counts each customer's orders.
@@ -1370,15 +1346,23 @@ print(len(ORDERS), "orders,", kit.rupees(revenue), "booked")
         - What goes wrong if every row is a customer? The draft reports 30 customers at 1.00 orders
           each and says nobody comes back.
         - Does the mean of the counts agree? It does, at 1.30 by both routes.
-        - What changes on delivered orders? The count is 19 customers at 1.11 orders each, and 2 kept
-          two.
+        - Which count goes on the customer branch? The branch takes 23 customers and 1.30 orders each,
+          on booked orders, written with that definition.
+        - Which channel did the repeat buyers come back through? All 7 came back through a different
+          channel from their first order.
+        - When does orders less customers stop counting repeat buyers? It stops as soon as anyone
+          places a third order, as the invented three show: 2 extra orders from 1 customer who came
+          back.
         """),
         code("""
+        leaf = (f"customers: {customers} distinct customer ids behind the {len(ORDERS)} booked orders placed "
+                f"from 1 July to 26 September; orders per customer: {per_customer:.2f}, on the same booked orders")
+        print(leaf)
         kit.table(["What we now know", "The evidence"],
                   [("A row is an order, and customers are counted by id", "30 rows, 23 customers"),
                    ("Frequency is a live branch", "1.30 orders each; 7 of 23 came back"),
-                   ("The tree multiplies back", "23 x 1.30 x Rs 18,160 = Rs 5,44,810"),
-                   ("On delivered orders the branch thins", "19 customers, 1.11 each, 2 kept two")],
+                   ("The tree multiplies back on unrounded values", "23 x (30 / 23) x (Rs 5,44,810 / 30) = Rs 5,44,810"),
+                   ("The customer branch carries its definition", "23 customers, 1.30 orders each, on booked orders")],
                   caption="Chapter 3: do customers come back")
         kit.check_summary()
         print("Next: chapter 4 asks whether Rs 18,160 describes a typical Kalpa order.")
@@ -1421,7 +1405,7 @@ def ch4():
         `study-notes/C2_W01_D01_domain_retail_STUDENT.md`, covers average order value and basket size.
 
         Chapter 3 filled the customer branches: 23 customers placed 1.30 orders each, 7 came back, and
-        the tree multiplies back through chapter 2's AOV of Rs 18,160, booked revenue over orders. This
+        the tree multiplies back through chapter 2's AOV of about Rs 18,160, booked revenue over orders. This
         chapter asks whether Rs 18,160 describes an order anybody at Kalpa would recognise.
 
         > **Kavya's review.** When you tell Meera what a typical order is worth, tell her which middle
@@ -1446,12 +1430,12 @@ print(len(amounts), "amounts; the mean, chapter 2's AOV, is", kit.rupees(mean))
         A team could report four middles. The sizing says how far each moves when one **invented**
         Rs 90,000 order joins five invented orders of Rs 1,900 to Rs 2,600, which is the test Anand set.
 
-        | Option | Work on this file | Moves with one large order | Right call when |
+        | Option | Work on this file | How far one large order moves it | When it is the right call |
         |---|---|---|---|
-        | A. The mean, total over count | one sum | by every rupee of the large order | totals and forecasts must multiply back |
-        | B. The median, the middle of the sorted amounts | a sort of 30 | by one place in the sort | the question is what a typical order looks like |
-        | C. A trimmed mean, dropping the smallest and the largest order | a sort and a sum | little, if the rule trims enough | there is a stated rule for how many to drop |
-        | D. A mean per customer type | a grouping | none within a type | the types are known and each gets its own plan |
+        | A. The mean, total over count | one sum | It moves by every rupee of the large order. | It is right when totals and forecasts must multiply back. |
+        | B. The median, the middle of the sorted amounts | a sort of 30 | It moves by one place in the sort. | It is right when the question is what a typical order looks like. |
+        | C. A trimmed mean, dropping the smallest and the largest order | a sort and a sum | It moves little, if the rule trims enough. | It is right when there is a stated rule for how many to drop. |
+        | D. A mean per customer type | a grouping | It does not move within a type. | It is right when the types are known and each gets its own plan. |
         """),
         code("""
         invented = [1900, 2100, 2300, 2400, 2600]                  # invented orders, for the sizing only
@@ -1471,8 +1455,8 @@ print(len(amounts), "amounts; the mean, chapter 2's AOV, is", kit.rupees(mean))
         """),
         md("""
         **The best-fit call.** B, the median, survives: it moves Rs 50 when the invented Rs 90,000
-        order joins, where the mean moves more than Rs 14,000. Report it as the typical order with A
-        beside it for totals, since the gap between them is itself a finding. **What would change it:**
+        order joins, where the mean moves more than Rs 14,000. Report it as the typical order, with A
+        beside it for totals and the gap between the two stated. **What would change it:**
         if marketing prices the payback per customer type, D answers better; that grouping is the
         afternoon's second case.
         """),
@@ -1501,8 +1485,7 @@ print(len(amounts), "amounts; the mean, chapter 2's AOV, is", kit.rupees(mean))
         """),
         md("""
         **What happened.** The answer is a: the median Kalpa order is Rs 2,205, halfway between the 15th
-        and 16th orders, Rs 2,110 and Rs 2,300, and about one eighth of the mean, a gap wide enough to
-        report in its own right.
+        and 16th orders, Rs 2,110 and Rs 2,300. The mean of Rs 18,160 sits about eight times above it.
         """),
         md("""
         ## 2. Where does a trimmed mean of Kalpa's 30 orders land?
@@ -1557,8 +1540,8 @@ print(len(amounts), "amounts; the mean, chapter 2's AOV, is", kit.rupees(mean))
         """),
         md("""
         **Why it is wrong.** A typical order is one that most orders look like. If nearly every order
-        sits below the mean, something at the top is pulling the total, and the mean with it. Valued at
-        Rs 18,160, a new customer looks about eight times more valuable than the orders Kalpa usually
+        sits below the mean, something at the top is pulling the total, and the mean with it. Priced at
+        Rs 18,160, a new customer's order looks about eight times the size of the orders Kalpa usually
         takes, and Rs 12 crore looks cheap. The check counts the orders above the mean and draws every
         amount.
         """),
@@ -1631,8 +1614,8 @@ print(len(amounts), "amounts; the mean, chapter 2's AOV, is", kit.rupees(mean))
         md("""
         **When to switch.** Write the middle by hand once, so you know what the library does with an
         even count; after that `statistics.median` is the route, and in Week 2 it becomes
-        `PERCENTILE_CONT(0.5)` in SQL and `.median()` in pandas. The switch that matters is between
-        middles: the mean comes back whenever a total has to reconcile.
+        `PERCENTILE_CONT(0.5)` in SQL and `.median()` in pandas. The larger switch is between middles:
+        the mean comes back whenever a total has to reconcile.
 
         > **Kavya's review.** Anand said "no averages" and you now know why. Put the median in the
         > sentence, say the mean is eight times higher, and give the count of orders above it.
@@ -1640,16 +1623,16 @@ print(len(amounts), "amounts; the mean, chapter 2's AOV, is", kit.rupees(mean))
         md("""
         ### How would you answer an interviewer who asks for a typical order value?
 
-        **[S] Mean or median for order value, and why?** "The median when a few large orders can pull
-        the mean, which in retail is almost always, since occasional large buyers sit in the same file
-        as households. I report both with the count of orders above the mean, because the gap is itself
+        **[S] Mean or median for order value, and why?** "I use the median when a few large orders can
+        pull the mean, which in retail is almost always, since occasional large buyers sit in the same
+        file as households. I report both with the count of orders above the mean, because the gap is itself
         a finding: on Kalpa's quarter the mean was Rs 18,160, the median Rs 2,205, and only 1 of the 30
         orders sat above the mean. The mean keeps its job for totals, since mean times count gives
         revenue."
 
         **[S] The mean order is Rs 18,160 and the median Rs 2,205; what do you tell the business about
-        its orders?** "That a typical order is about Rs 2,205 and that very large orders lift the mean
-        to eight times that. I would sort the orders, look at the largest, and ask which customers they
+        its orders?** "I tell them that a typical order is about Rs 2,205 and that very large orders
+        lift the mean to eight times that. I would sort the orders, look at the largest, and ask which customers they
         come from, since a plan or a payback is built on the mean of the segments it targets, with the
         median quoted as the typical order."
 
@@ -1662,8 +1645,8 @@ print(len(amounts), "amounts; the mean, chapter 2's AOV, is", kit.rupees(mean))
         md("""
         ### How far does one order have to grow before the mean stops describing the file?
 
-        The cell grows one **invented** order from Rs 2,600 to Rs 90,000 beside the same five invented
-        orders. The median never passes Rs 2,500, while the mean follows the growing order all the way.
+        One **invented** order grows from Rs 2,600 to Rs 90,000 beside the same five invented orders.
+        The median never passes Rs 2,500, while the mean follows the growing order all the way.
         """),
         code("""
         sizes = [2600, 10000, 30000, 60000, 90000]                 # the invented large order, growing
@@ -1754,7 +1737,7 @@ def ch5():
         md("""
         **Setup.** The first cell finds the shared helper, loads the 30 orders from `../data/`, applies
         chapter 1's `int()` fix, and rebuilds the booked tree: customers by id, orders per customer and
-        AOV.
+        average order value (AOV).
         """),
         code(LOAD + '''
 for order in ORDERS:
@@ -1766,7 +1749,7 @@ for order in ORDERS:
 customers, orders = len(counts), len(ORDERS)
 per_customer, aov = orders / customers, revenue / orders
 once = sum(1 for c in counts.values() if c == 1)
-print(f"{customers} customers x {per_customer:.2f} orders x {kit.rupees(round(aov))} = {kit.rupees(round(customers * per_customer * aov))}")
+print(f"booked: {kit.rupees(revenue)} from {customers} customers, {per_customer:.2f} orders each, about {kit.rupees(round(aov))} an order")
 '''),
         where(5, ["Which orders is the plan on?", "What would each branch do alone?",
                   "1. Which branch has evidence?", "2. What if lifts are added?",
@@ -1817,15 +1800,14 @@ print(f"{customers} customers x {per_customer:.2f} orders x {kit.rupees(round(ao
         ## What would each branch have to do alone to reach the plan?
 
         Any one branch could carry the plan alone, and each asks something different of different
-        people. The table sets out who has to act; the sizing cell computes each branch's ask in rupees
-        and percentages.
+        people, set out below with each branch's ask sized in rupees and percentages.
 
         | Option | The branch moved alone | Who has to act | Evidence in this file |
         |---|---|---|---|
-        | A. Acquisition | customers | people Kalpa has never met | None: one window cannot show customers falling. |
-        | B. Frequency | orders per customer | customers already on file | Some customers already came back in the quarter. |
-        | C. Order value | rupees per order | every shopper, on every basket | Items and prices are not in this file. |
-        | D. Price | price per item | every shopper, with nobody leaving | None, and nothing sells above MRP. |
+        | A. Acquisition | customers | People Kalpa has never met have to start buying. | There is none, since one window cannot show customers falling. |
+        | B. Frequency | orders per customer | Customers already on file have to buy again. | Some customers already came back in the quarter. |
+        | C. Order value | rupees per order | Every shopper has to spend more on every basket. | Items and prices are not in this file. |
+        | D. Price | price per item | Every shopper has to pay more, and nobody may leave. | There is none, and nothing may sell above its printed maximum retail price. |
 
         **Predict before you run.** Once each branch is sized, which one does the evidence in this file
         favour?
@@ -1844,17 +1826,18 @@ print(f"{customers} customers x {per_customer:.2f} orders x {kit.rupees(round(ao
         c_per, c_aov = c_orders / c_cust, c_rev / c_orders
         need = {"customers": c_cust * 1.15, "orders": c_orders * 1.15, "aov": c_aov * 1.15}
         returning = (need["orders"] - c_orders) / c_once       # share of one-time buyers who must return once
+        in_ten = ["none", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
         kit.table(["option: the branch moved alone", "the plan needs", "in rupees and percentages", "evidence in this file"],
                   [("A. acquisition, customers", "15 percent more customers",
                     f"{kit.rupees(round(plan - c_rev))} of orders from people Kalpa has never met",
                     "none: one window cannot show customers falling"),
                    ("B. frequency, orders per customer", "15 percent more orders from the same customers",
-                    f"about {round(returning * 10)} in ten of the one-time buyers returning once",
+                    f"about {in_ten[round(returning * 10)]} in ten of the one-time buyers returning once",
                     f"{c_cust - c_once} customers already came back"),
                    ("C. order value", f"{kit.rupees(round(c_aov))} to {kit.rupees(round(need['aov']))}",
                     f"{kit.rupees(round(need['aov'] - c_aov))} more on every order", "items and prices are not in this file"),
                    ("D. price", "15 percent higher prices", "every price up, with nobody leaving",
-                    "none, and nothing sells above MRP")],
+                    "none, and nothing may sell above its printed maximum retail price")],
                   caption=f"The 15 percent plan on the consumer view: {kit.rupees(c_rev)} to {kit.rupees(int(plan + 0.5))}")
         kit.driver_tree({"label": "the plan", "note": f"{kit.rupees(c_rev)} to {kit.rupees(int(plan + 0.5))}",
                          "kind": "known", "children": [
@@ -1996,18 +1979,18 @@ print(f"{customers} customers x {per_customer:.2f} orders x {kit.rupees(round(ao
         **[D] Marketing wants budget for acquisition; what would you check before agreeing it is the
         right branch, and how would you say no?** "I would count customers by id and see how many came
         back, price what a new customer brings on the mean order of the segments the plan targets, and
-        ask for the quarter before this one to see whether customers actually fell. On Kalpa's quarter
+        ask for the quarter before this one to see whether customers fell. On Kalpa's quarter
         16 of 23 bought once and 7 came back, and the consumer view's mean order is Rs 2,235 against a
         booked mean of Rs 18,160. The no is a no for now, with a date: frequency is the cheaper branch
         to test, and if Tuesday's two quarters show customers fell, acquisition goes first."
 
         **[F] A 10 percent lift in customers and a 10 percent lift in frequency make 20 percent growth;
-        what is the right number, and when does it matter?** "21 percent, because branches multiply:
-        1.10 x 1.10 = 1.21. It matters when the lifts are large or many: two 30 percent lifts make 69
+        what is the right number, and when does it matter?** "The right number is 21 percent, because
+        branches multiply: 1.10 x 1.10 = 1.21. It matters when the lifts are large or many: two 30 percent lifts make 69
         percent where addition says 60, and a target sized by addition is missed by the difference."
 
         **[D] Which of four branches would you open first for a retailer, and what would make you
-        switch?** "The one the evidence says is short and that costs least to test. Here that is
+        switch?** "I open the one the evidence says is short and that costs least to test. Here that is
         frequency: the customers exist and a third already came back. I would switch to acquisition if a
         second window showed customers falling with frequency steady, or if retaining an order cost more
         than acquiring a customer."
@@ -2122,10 +2105,10 @@ print(f"{len(ORDERS)} orders from {start} to {end}, {(end - start).days + 1} day
 
         | Option | Her reading time | The decision it carries | How it gets misread |
         |---|---|---|---|
-        | A. One number: "orders per customer, 1.30" | two seconds | none; she has to supply it | as good or bad news with no benchmark |
-        | B. The tree as a table of every leaf | a minute or more | none; she draws the conclusion | she picks the number that suits the room |
-        | C. One sentence: evidence, branch, caveat, the ask | about twenty seconds | open frequency, hold the budget until Tuesday | only if a number in it is misread, which the trap below tests |
-        | D. A dashboard refreshed every week | weeks to build | whatever she looks at | a chart with no denominator |
+        | A. One number: "orders per customer, 1.30" | two seconds | It carries none, and she has to supply it. | She reads it as good or bad news with no benchmark. |
+        | B. The tree as a table of every leaf | a minute or more | It carries none, and she draws the conclusion. | She picks the number that suits the room. |
+        | C. One sentence: evidence, branch, caveat, the ask | about twenty seconds | It carries the call: open frequency and hold the budget until Tuesday. | It is misread only if a number in it is, which the trap below tests. |
+        | D. A dashboard refreshed every week | weeks to build | It carries whatever she looks at. | A chart with no denominator misleads her. |
         """),
         code("""
         reading = [("A. one number", 2), ("C. one sentence", 20), ("B. the tree as a table", 60)]
@@ -2262,8 +2245,8 @@ print(f"{len(ORDERS)} orders from {start} to {end}, {(end - start).days + 1} day
         ### How would you answer an interviewer who asks what one quarter says about lost customers?
 
         **[D] You have one quarter of orders and 70 percent of customers bought once; what do you tell
-        the CEO?** "That 70 percent bought once in this window, which is a fact, and that it is no churn
-        rate. Customers who came back took a median of 45 days, and 9 of the 16 one-time buyers bought
+        the CEO?** "I tell the CEO that 70 percent bought once in this window, which is a fact, and
+        that it is no churn rate. Customers who came back took a median of 45 days, and 9 of the 16 one-time buyers bought
         fewer than 45 days before the extract ends, so they have not had time. I would say 7 came back,
         7 are past the usual gap and 9 are too recent, and add that a one-quarter window only sees short
         gaps, so 45 days is a floor. Then I ask for the prior quarter before calling anyone lost."
@@ -2281,9 +2264,10 @@ print(f"{len(ORDERS)} orders from {start} to {end}, {(end - start).days + 1} day
         ### Where else does the window's edge cut a metric short?
 
         Any count of who has not done something yet is cut short at the end of the window: returns that
-        arrive late, renewals not yet due, a cohort one month old. The dossier's returns-rate trap is the
-        same edge. The fix is always to measure how long the thing usually takes and hold back judgement
-        on everyone who has not had that long.
+        arrive after the window closes, renewals not yet due, orders still in transit when the extract is
+        taken. The fix is always
+        to measure how long the thing usually takes and hold back judgement on everyone who has not had
+        that long.
         """),
         md("""
         ## What does the sentence Meera signs say?
@@ -2494,7 +2478,7 @@ print(len(ORDERS), "orders loaded; the extract ends on", end)
         kit.stats([(kit.rupees(round(mean_order)), "delivered mean", "every delivered amount / the delivered orders"),
                    (kit.rupees(median_order), "delivered median", "the middle of the sorted list"),
                    (f"{above} of {n}", "above the mean", "the rest sit below")])
-        kit.strip(amounts, markers=[("mean", mean_order, "bad"), ("median", median_order, "good")],
+        kit.strip(amounts, markers=[("mean", round(mean_order), "bad"), ("median", median_order, "good")],
                   title="The delivered amounts, with both middles")
         """),
         code("""
@@ -2555,8 +2539,8 @@ print(len(ORDERS), "orders loaded; the extract ends on", end)
         kit.bridge(("delivered consumer", kept_revenue),
                    [("price 15 percent lower", -round(kept_revenue * 0.15)),
                     ("orders +10 percent at the lower price", round(kept_revenue * 0.85 * 0.10))],
-                   end_label="after the discount", lit=(0,), lo=25000,
-                   title="The discount through the tree (the axis starts at Rs 25,000)")
+                   end_label="after the discount", lit=(0,), lo=20000,
+                   title="The discount through the tree (the axis starts at Rs 20,000)")
         """),
         code("""
         kit.check("frequency alone reaches the plan", abs(needed_orders * (kept_revenue / len(kept)) - plan) < 1)
@@ -3001,10 +2985,10 @@ print(len(ORDERS), "orders loaded, every amount a whole number; booked revenue",
         **Why not the others.** Option a is what web kept; c looks for returns in store, which has none;
         d is web's booked revenue less its returns, which is again what web kept.
 
-        **What happened.** Web booked Rs 27,290 and half its orders came back, Rs 14,970 returned,
-        leaving Rs 12,320 delivered. Store's consumer orders booked Rs 18,920, and its 4 cancelled
-        orders took Rs 9,050, leaving Rs 9,870 delivered. App booked Rs 18,600 and delivered all of it.
-        Consumer delivered revenue is Rs 40,790.
+        **What happened.** Web booked Rs 27,290, and Rs 14,970 of it, 54.9 percent, came back as
+        returns, leaving Rs 12,320 delivered. Store's consumer orders booked Rs 18,920, and its
+        cancellations took Rs 9,050, 47.8 percent, leaving Rs 9,870 delivered. App booked Rs 18,600 and
+        delivered all of it. Consumer delivered revenue is Rs 40,790.
         """),
         md("""
         ## Step 5. How much consumer revenue does each customer type bring?
@@ -3093,12 +3077,13 @@ print(len(ORDERS), "orders loaded, every amount a whole number; booked revenue",
         md("""
         SOLUTION ONLY
         **Why not the others.** Option b is the plausible wrong answer of step 1, a share that the
-        consumer view takes from 91.6 to 29.2 percent; c reads web's booked lead and ignores that half
-        its orders came back; d moves to the branch the file gave no reason to open first.
+        consumer view takes from 91.6 to 29.2 percent; c reads web's booked lead and ignores that more
+        than half of web's booked rupees came back; d moves to the branch the file gave no reason to
+        open first.
 
         **What happened.** The branch recommendation stands: open frequency first. The channel view adds
-        two leaks for the note, web returns (5 of web's 10 orders, Rs 14,970) and store cancellations (4
-        orders, Rs 9,050), and app is the clean channel, with all of its rupees delivered.
+        two leaks for the note, web returns of Rs 14,970 and store cancellations of Rs 9,050, and app is
+        the clean channel, with all of its Rs 18,600 delivered.
 
         > **Kavya's review.** Good: you counted the orders behind the share before you believed it. The
         > channel slide now carries two leaks with their numbers, and your sentence to Meera does not

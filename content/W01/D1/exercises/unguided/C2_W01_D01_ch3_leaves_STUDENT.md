@@ -5,17 +5,16 @@
 
 **Who needs the answer.** Meera needs the customer count before she funds acquisition, and the head
 of Retail-Plus and the marketing lead own the two customer branches the count fills. A wrong count
-moves the Rs 12 crore: if the repeat buyers vanish from it, buying new customers looks like the only
-way left to grow.
+moves the Rs 12 crore to whichever branch the count happens to flatter.
 
 **The questions on the way.** How do you count customers when every row is an order? What does a
-count of rows tell Meera? Where should the count run at the full export's scale? How many customers
-kept two orders on another reading of sales? When is a set of ids enough, and when does the team
-need a count per customer?
+colleague's orders-per-customer figure tell Meera? Where should the count run at the full export's
+scale? How many customers kept two orders on another reading of sales? When is a set of ids enough,
+and when does the team need a count per customer?
 
-Five items, alone, in the room's turn of chapter 3. Every item has one right answer, so decide it
-before you record the letter. Items marked **Design** ask for the best-fit approach, a sizing, the
-fact that would switch the choice, or the second route that would confirm a number.
+You work these five items alone, in the room's turn of chapter 3. Every item has one right answer,
+so decide it before you record the letter. Items marked **Design** ask for the best-fit approach, a
+sizing, the fact that would switch the choice, or the second route that would confirm a number.
 
 Post one line, five letters in item order, no spaces:
 
@@ -52,8 +51,7 @@ count per id. The `&` of two sets keeps the ids both sets hold.
 
 ## How do you count customers when every row is an order?
 
-Product and CRM teams count people by id before they quote any rate per customer, since one person
-can place many orders.
+Product and CRM teams quote a rate per customer in every weekly review.
 
 ### Q1. The head of Retail-Plus asks four things about the quarter: 1) how many customers bought, 2) how many orders each customer placed, 3) which customers bought on both the app and the web, 4) how many orders there are. The tools are p) `len(ORDERS)`, q) `len(set(ids))`, r) a dictionary of counts per id and s) the `&` of two sets of ids. Which matching answers all four?
 
@@ -73,8 +71,7 @@ d) 23.00, since the division runs the wrong way and the figure means nothing to 
 
 ## Where should the count run at Kalpa's full scale?
 
-Data teams choose where a count runs by the size of the data: a notebook for a sample, the warehouse
-for the full history.
+Data teams decide where each count runs before they write it.
 
 ### Q3. Design. Next year the full export holds 4 crore order rows in the warehouse. Pulling them into a notebook moves 4 crore rows before a loop starts, while a count in the warehouse sends back one number. Which way of counting customers fits?
 
@@ -87,8 +84,8 @@ d) Sorting the ids in a spreadsheet and counting the places where they change
 
 ## How many customers came back on another reading, and which tool fits the ask?
 
-Retention analysts recount repeat buyers whenever the reading of sales changes, and they pick the
-lightest tool that answers the question actually asked.
+Retention analysts recount repeat buyers whenever the reading of sales changes, and they pick a tool
+for each question they are asked.
 
 ### Q4. Anand counts customers only on orders that were not cancelled. On those, 26 orders come from 21 customers, and nobody placed three. How many of his customers kept two orders?
 
@@ -97,7 +94,7 @@ b) 7, the repeat buyers counted on all the booked orders
 c) 21, since every one of these customers counts as one
 d) 26, one for each not-cancelled order in the file
 
-### Q5. Design. Meera asks only "how many customers bought this quarter?" A set of ids answers in one line and one pass, and a dictionary of counts takes three lines and one pass. Which fits her ask, and what would make you switch?
+### Q5. Design. Meera asks only "how many customers bought this quarter?" Two tools could answer her: a set of ids, one line and one pass, or a dictionary of counts, three lines and one pass. Which fits her ask, and what would make you switch?
 
 a) The row count, and switch once the number looks too round to believe
 b) A dictionary always, since it is never slower than any other count
