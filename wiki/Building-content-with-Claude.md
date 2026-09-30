@@ -76,11 +76,11 @@ correct behaviour, not a malfunction.
 
 ## What a good first message looks like
 
-The worst opening is "build Week 3 Day 3". It gives the session nothing to check itself against.
+The worst opening is "build Week 4 Day 2". It gives the session nothing to check itself against.
 A good opening does four things:
 
 ```
-Build the day pack for W03/D3.
+Build the day pack for W04/D2.
 
 Envelope: who this is for, what slot it fills, how much of their
 effort it can absorb, what runs before it and what runs after.

@@ -36,7 +36,7 @@ because it looks finished.
 ## The one command
 
 ```bash
-python3 scripts/verify.py content/W03/D3
+python3 scripts/verify.py content/W04/D2
 ```
 
 That runs all six proofs. Run it on the **folder**, never on one file, because half the failures are
@@ -91,12 +91,12 @@ the room where the day was designed, it is not a trainer note.
 
 | Check | How to do it fast |
 |---|---|
-| Nothing loose at the day folder root | `ls content/W03/D3` should show only folders |
-| Every file has an audience suffix | `ls content/W03/D3/**/* \| grep -v -E '_(STUDENT\|TRAINER\|INTERNAL)\.'` |
-| No em-dash anywhere | `grep -rn '—' content/W03/D3` should be silent |
-| Rs, never the glyph | `grep -rn '₹' content/W03/D3` should be silent |
+| Nothing loose at the day folder root | `ls content/W04/D2` should show only folders |
+| Every file has an audience suffix | `ls content/W04/D2/**/* \| grep -v -E '_(STUDENT\|TRAINER\|INTERNAL)\.'` |
+| No em-dash anywhere | `grep -rn '—' content/W04/D2` should be silent |
+| Rs, never the glyph | `grep -rn '₹' content/W04/D2` should be silent |
 | The Kahoot pack exists | It is daily and ungraded, and it is the family most often skipped |
-| The board card moved | `python3 scripts/board_sync.py --status W03/D3 review-1` after the merge |
+| The board card moved | `python3 scripts/board_sync.py --status W04/D2 review-1` after the merge |
 
 ---
 

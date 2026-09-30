@@ -70,7 +70,7 @@ sources before the build starts.
 ## Naming and layout
 
 ```
-content/W03/D3/slides/C2_W03_D03_joins_STUDENT.pptx
+content/W04/D2/slides/C2_W04_D02_stakeholder_STUDENT.pptx
         │   │  │      │                  └── audience, never omitted
         │   │  │      └── week and day, two digits in the filename
         │   │  └── the subfolder that fits the artifact
@@ -83,7 +83,7 @@ content/W03/D3/slides/C2_W03_D03_joins_STUDENT.pptx
 | `C2_W{ww}_D{dd}_{topic}_{AUDIENCE}.{ext}`, or `C2_W{ww}_SAT_...` on a Saturday | A file that leaves the folder still says what it is |
 | `AUDIENCE` is `STUDENT`, `TRAINER` or `INTERNAL`, and is never omitted | An unlabelled file gets sent to the wrong person exactly once |
 | The topic half carries **only what the folder and the extension do not already say** | `slides/..._slides_deck.pptx` says slides three times |
-| **Nothing loose at the day folder root** | Every file lives in the subfolder that fits it. `ls content/W03/D3` should show only folders. |
+| **Nothing loose at the day folder root** | Every file lives in the subfolder that fits it. `ls content/W04/D2` should show only folders. |
 
 The full layout, including the different shapes a build day and a Saturday take, is in
 [`content/README.md`](https://github.com/fde-academy-lab/c2-content-factory/blob/main/content/README.md).
@@ -121,7 +121,7 @@ means the page shrinks to fit it. A diagram nobody can read is a decoration.
 ## The gate
 
 ```bash
-python3 scripts/verify.py content/W03/D3
+python3 scripts/verify.py content/W04/D2
 ```
 
 One command, six proofs, run on the folder rather than on a file. See

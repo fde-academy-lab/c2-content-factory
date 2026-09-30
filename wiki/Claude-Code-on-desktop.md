@@ -108,7 +108,7 @@ Each `--cloud` command starts an independent session, so three artifact families
 parallel when they genuinely do not depend on each other:
 
 ```bash
-claude --cloud "Rebuild the W03/D3 cheat sheet PDF and report every label under 5.2pt"
+claude --cloud "Rebuild the W04/D2 cheat sheet PDF and report every label under 5.2pt"
 claude --cloud "Run distractor_audit across content/W02 and fix every failure"
 ```
 
