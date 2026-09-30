@@ -32,7 +32,7 @@ live, so a changed warehouse fails a check rather than shipping a stale number.
 | Planted in v4 | Used today | Where it is named |
 |---|---|---|
 | The warehouse holds 1,000 orders where the extract held 186 (the generator's Monday witness) | Round 1, the book checked against Week 1 | The row's own scenario states "one thousand orders" to learners, so the count is in STUDENT files; the day sheet names it as the witness |
-| The bulk orders, KR-00667 and KR-00124 | Only if a learner sorts by amount | Day sheet only; no learner file lists the largest orders, and the typical-order slides quote the mean and median only |
+| The bulk orders, KR-00667 and KR-00124 | Only if a learner sorts by amount | Day sheet only; no learner file lists the largest orders' ids or amounts. Learner files say the mean is 79 times the median and still 66.5 times with the two largest set aside (block `r1_typical_rest`), which points at Business rather than at the two orders |
 | Instalments, gateway retries, unpaid orders, orphan payments | No | Day sheet only, marked "do not raise" |
 | The tie at the fiftieth Retail-Plus position, the three falling members | No | Day sheet only |
 | Duplicate exposure keys, the unused campaigns table | No; the schema read lists the tables without comment | Day sheet only |

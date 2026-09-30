@@ -40,7 +40,7 @@ flowchart LR
 | Part | Slides | Beside it | What must land | If short of time |
 |---|---|---|---|---|
 | The ask, 20 | Half one, S1 to S7 | The board: the Week 1 to SQL table and the seven-box run order | Anand's four questions separated; option a on S3; the run order drawn and left up | S7 to one sentence |
-| Round 1, 50 | S8 to S20 | `notebooks/C2_W02_D01_01_warehouse_STUDENT.ipynb`, `sql/C2_W02_D01_01_warehouse_STUDENT.sql`, `unguided/C2_W02_D01_row_count_STUDENT.md` | Everyone connected by S9; the rate carries over and the total does not; 1,000 against 301; Rs 3,900 against Rs 4,590 | S19's typing to five minutes |
+| Round 1, 50 | S8 to S20 | `notebooks/C2_W02_D01_01_warehouse_STUDENT.ipynb`, `sql/C2_W02_D01_01_warehouse_STUDENT.sql`, `unguided/C2_W02_D01_row_count_STUDENT.md` | Everyone connected by S9; every leaf against Week 1 (S12a), three agreeing and the customer leaves not; 1,000 against 301; Rs 3,900 against Rs 4,590 | S19's typing to five minutes |
 | Round 2, 50 | S21 to S30 | Notebook 02, `sql/C2_W02_D01_02_segments_STUDENT.sql`, `guided/C2_W02_D01_first_aggregate_STUDENT.md`, `unguided/C2_W02_D01_clause_order_STUDENT.md` | The groups add back to 1,000; the GROUP BY error in two minutes; 1 against 1.84 with the multiply-back check; HAVING flags Student Q1 | S29 becomes the round set's item 5 |
 | Round 3, 50 | S31 to S41 | Notebook 03, `sql/C2_W02_D01_03_quarters_STUDENT.sql`, `unguided/C2_W02_D01_quarters_STUDENT.md`, the companion's walk | Two CTEs read top to bottom; frequency is the largest branch; 15.5 against 29.4 with the 107, 91, 76 count | S32 first, then S40 to the table only |
 
@@ -100,12 +100,38 @@ Nothing in any learner file names any of them.
 
 | Planted in v4 | Where it is | What the room should do today | If nobody finds it |
 |---|---|---|---|
-| The warehouse holds the whole two-quarter book, 1,000 orders, where last week's extract held 186 | Every table | Run the Q1 and Q2 blocks, see totals five times Week 1's, and reconcile on the 1.6 percent fall | Ask what would make both totals right at once |
-| The bulk orders at the top of the book, carried from Week 1 | KR-00667, Rs 1,98,57,600, Q2; KR-00124, Rs 1,22,77,440, Q1; both Business | Meet them only if they sort by amount (S19's fast finishers); the mean at 80 times the median is the lead | Leave it; Week 1 taught it and today's suite reports the median |
+| The warehouse holds 1,000 orders where last week's file held 186 | Every table | Run the Q1 and Q2 blocks, see totals five times Week 1's, then set every leaf beside its Week 1 number (S12a) | Ask what would make both totals right at once, then ask which leaves should agree |
+| The bulk orders at the top of the book, carried from Week 1 | KR-00667, Rs 1,98,57,600, Q2; KR-00124, Rs 1,22,77,440, Q1; both Business | Meet them only if they sort by amount (S19's fast finishers). The mean is 79 times the median, and with both set aside it is still 66.5 times, because the other 186 Business orders average Rs 8,84,215; the gap is the segment, not the two orders | Leave it; Week 1 taught it and today's suite reports the median |
 | 400 large invoices paid in two instalments, and 50 orders posted twice by the gateway | payments | Nothing today; Tuesday's fan-out | Do not raise it, even when a learner runs `count(*)` on payments tonight |
 | 30 delivered orders never paid, and 8 payments whose order is not in the table | payments | Nothing today; Tuesday's anti-join | Do not raise it |
 | An exact Q2 revenue tie at the fiftieth Retail-Plus position; three members whose spend falls in each Q2 month | orders | Nothing today; Wednesday | Do not raise it. The row says the tie sits in the top ten; the generator places it at the fiftieth |
 | 6 duplicated customer keys in the exposure feed; the campaigns table present but unused | campaign_exposure, campaigns | Nothing until Thursday; the schema read lists both tables without comment | If asked, say the table's question arrives later this week |
+
+**Round 1, every leaf against Week 1.** Week 1's numbers are recomputed in notebook 01 from
+`content/W01/D4/data/C2_W01_D04_orders_STUDENT.csv`, the cleaned 186 orders behind the note Meera
+accepted, and the notebook checks they reproduce Week 1's 69 customers, Rs 1.90 and Rs 1.87 crore,
+and Retail-Plus 1.82 to 1.18 on 22 members.
+
+| Leaf | Week 1 file | Warehouse | Verdict |
+|---|---|---|---|
+| Book revenue | Rs 1,90,00,000 to Rs 1,87,00,000, 1.6% down | Rs 10,00,00,000 to Rs 9,84,00,000, 1.6% down | Agrees |
+| Book revenue per order | Rs 1,90,000 to Rs 2,17,442, 14.4% up | Rs 1,85,874 to Rs 2,12,987, 14.6% up | Agrees |
+| Book customers who bought | 69 to 69, flat | 244 to 227, 7.0% down | Differs by 7.0 points |
+| Book orders per customer | 1.45 to 1.25, 14.0% down | 2.20 to 2.04, 7.7% down | Differs by 6.3 points |
+| Retail-Plus customers | 22 to 22, flat | 91 to 76, 16.5% down | Differs by 16.5 points |
+| Retail-Plus orders per customer | 1.82 to 1.18, 35.0% down | 2.36 to 1.84, 22.0% down | Differs by 13.0 points |
+| Retail-Plus orders | 40 to 26, 35.0% down | 215 to 140, 34.9% down | Agrees |
+| Retail-Plus revenue per order | Rs 2,850 to Rs 3,012, 5.7% up | Rs 2,725 to Rs 2,953, 8.4% up | Differs by 2.7 points |
+| Retail-Plus revenue | Rs 1,14,000 to Rs 78,300, 31.3% down | Rs 5,85,770 to Rs 4,13,380, 29.4% down | Differs by 1.9 points |
+
+What the sources say about the differences, for the trainer only. Customers flat quarter on quarter
+is a v1 witness in `docs/07_Client_Zero.md` section 7, and v4's witness list does not carry it. The
+generator's comments say v4 keeps customers flat and that last week's rows were sampled from the
+book (`data/generate_client_zero.py`, the v4 block); what the code holds fixed is the pool of 340
+members, and each order draws its buyer from that pool at random, so buyers per quarter fall, and
+the two files share no order id and no customer id. Frequency differs because it divides by the
+customer count. Nothing in the sources explains the Retail-Plus order-value gap. In the room, say
+the numbers differ and the warehouse is the book of record; never say what was planted.
 
 If a learner asks whether the data is rigged, answer with the question back: "What would you check?"
 
@@ -128,7 +154,10 @@ If a learner asks whether the data is rigged, answer with the question back: "Wh
 | Retail-Plus | 91, 76 | 2.36, 1.84 | Rs 2,725, Rs 2,953 | 29.4 percent down |
 | Student | 15, 20 | 1.80, 1.90 | Rs 990, Rs 941 | 33.9 percent up |
 
-The typical order: mean Rs 1,98,400, median Rs 2,510. Business carries 99.1 percent of the rupees.
+The typical order: mean Rs 1,98,400, median Rs 2,510, 79 times; without the two largest orders,
+mean Rs 1,66,598 against median Rs 2,505, 66.5 times. Business carries 99.1 percent of the rupees,
+so it holds Rs 14,29,840 of the Rs 16,00,000 fall; Retail-Plus holds Rs 1,72,390 of it, and 75 of
+the book's 76 fewer orders.
 The Retail-Plus bridge, customers first: Rs 5,85,770, less Rs 96,555 for fewer customers, less
 Rs 1,07,784 for fewer orders each, plus Rs 31,949 for bigger orders, lands on Rs 4,13,380. The
 channels: web Rs 3,79,02,050 to Rs 2,36,61,000 (37.6 percent down) and store Rs 1,99,59,110 to
