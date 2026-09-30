@@ -16,7 +16,7 @@ to the books line by line? Five chapters this block and the sixth after lunch. T
 
 ---
 
-## S1. Six chapters, each asking what the last answer raised
+## S1. Six questions take us from the export to the books
 *Which Q1 figure is right, the dashboard's Rs 2.1 crore or the books' Rs 1.9 crore, and how do we know?*
 
 ```timeline
@@ -42,7 +42,7 @@ Chapter 6 runs after lunch. Leave the question up while you set the scene. Then 
 ```cards
 icon: landmark | eyebrow: Finance | title: Anand Iyer | body: The finance controller. His books say Rs 1.9 crore, and his analyst ties out every number: she matches it to the books, line by line. | tone: dark
 icon: database | eyebrow: The ERP team | title: The raw exports | body: The ERP is the enterprise resource planning system Finance books orders in. Its team sent a CSV stitched from two extracts, two pulls of rows, during Q1's migration to a new system, and the app's JSON feed.
-icon: megaphone | eyebrow: Marketing | title: The marketing lead | body: Impatient: if the drop is a data problem, a month is lost arguing about it.
+icon: megaphone | eyebrow: Marketing | title: The marketing lead | body: Marketing is impatient: if the drop is a data problem, a month is lost arguing about it.
 ```
 
 ```stats
@@ -82,7 +82,7 @@ since the thinking comes first. Then the question on the next slide.
 ---
 
 ## S4. Question: which branch would you check first?
-*Where could Rs 20 lakh between two honest figures come from?*
+*Where could Rs 20 lakh come from, and which branch do we check first?*
 
 ```mermaid
 flowchart LR
@@ -105,7 +105,7 @@ differs. The point is the list; the letter comes next. Then the answer.
 ---
 
 ## S5. Answer: rows first, because a count is cheapest
-*Where could Rs 20 lakh between two honest figures come from?*
+*Where could Rs 20 lakh come from, and which branch do we check first?*
 
 ```mermaid
 flowchart LR
@@ -151,7 +151,7 @@ written as you go and never reconstructed at the end. Tuesday skipped the first 
 ---
 
 ## SECTION 1: What did the ERP send?
-*What did the ERP actually send, and does the dashboard's Rs 2.1 crore follow from it?*
+*What did the ERP send, and does the dashboard's Rs 2.1 crore follow from it?*
 
 ```notes
 LIVE. Thirty minutes. Notebook C2_W01_D03_01_profile is the demonstration, and its six numbered
@@ -176,7 +176,8 @@ label: 6 | title: Do other methods agree? | body: The same counts, other code | 
 
 ```notes
 LIVE, 1 minute. Read the six questions. Each gets its answer before the next is asked, and the
-chapter's last slide answers all six in a line each. Then the need.
+chapter's last slide answers all six in a line each beside the review of Kavya Nair, the senior
+analyst who checks every number before it leaves the team. Then the need.
 ```
 
 ---
@@ -193,9 +194,9 @@ value: a month | label: a wrong number costs | note: Marketing waits, Finance di
 **The client asks.** "How many records did you receive, and how many can you use?"
 
 ```notes
-LIVE, 2 minutes. The cost of a wrong answer here is the largest of the day, because every later
-chapter is built on this count. If the note says the dashboard is right and it is not, the analyst
-finds it and discounts every later number the team sends. Then a retailer that skipped this step.
+LIVE, 2 minutes. If the note says the dashboard is right and it is not, the analyst finds it and
+discounts every later number the team sends, and Marketing's campaign waits a month on a finding
+Finance will not accept. Then a retailer that skipped this step.
 ```
 
 ---
@@ -209,13 +210,13 @@ value: ~$1 bn | label: first-year loss | note: CBC News
 value: ~30% | label: product data accurate | note: Salsify, citing Canadian Business
 ```
 
-**What breaks.** Target Canada launched in March 2013 on a new system loaded in a hurry. Data loaded during a system change is the kind that needs counting before anyone trusts it, and Kalpa's ERP export was stitched during a migration.
+**What breaks.** Target Canada launched in March 2013 on a new SAP system into which about 75,000 products were typed by hand, with no check to flag an entry error. Data loaded during a system change is the kind that needs counting before anyone trusts it, and Kalpa's ERP export was stitched during a migration.
 
 ```notes
 LIVE, 2 minutes. Sources checked 30 Sep 2026: CBC News, 15 January 2015; Salsify's summary of Joe
-Castaldo's Canadian Business investigation for the 30 percent figure, against 98 to 99 percent in the
-US. Say "about" and name the source aloud, since the 30 percent is a secondary summary. Then the
-options.
+Castaldo's Canadian Business investigation for the hand-typed products and the 30 percent figure,
+against 98 to 99 percent in the US. Say "about" and name the source aloud, since the 30 percent is a
+secondary summary. Then the options.
 ```
 
 ---
@@ -293,7 +294,7 @@ chose. Then the answer.
 | status | 200 | text | 3 |
 | discount | 143 | 143 | 4 |
 
-**The check.** Three counts do not fit 201 rows: order ids distinct on 186, amounts convertible on 200, status present on 200. Discount on 143 is Tuesday's optional field and expected.
+**The check.** Three counts do not fit 201 rows: order ids distinct on 186, amounts convertible on 200, status present on 200. Discount, an optional field, is present on 143, as expected.
 
 ```notes
 LIVE, 2 minutes. The answer is b. Do not explain the other three yet; name the chapter that answers
@@ -416,7 +417,7 @@ both of Anand's figures are honest: the question is what the extra rows are. The
 
 ```mermaid
 flowchart LR
-    X["<b>one extract</b><br/>from the ERP"] --> C["<b>the orders CSV</b><br/>201 rows"]
+    X["<b>the first extract</b><br/>from the ERP"] --> C["<b>the orders CSV</b><br/>201 rows, two extracts"]
     X --> J["<b>the JSON feed</b><br/>119 complete records"]
     C --> A["<b>where they agree</b><br/>what was exported"]
     J --> A
@@ -450,7 +451,7 @@ value: 186 = 186 | label: distinct ids | note: the profile and the sorted ids
 value: 1 = 1 | label: amounts that fail | note: the profile and a digit pattern
 ```
 
-**When to switch.** The profile for a first look; the sort and the pattern when the profile's own code is in doubt, since they share none of it.
+**When to switch.** The profile gives the first look, and the sort and the pattern take over when the profile's own code is in doubt, since they share none of it.
 
 ```notes
 LIVE, 2 minutes. A slip in convert() or in a set cannot move either count, which is what makes it a
@@ -467,19 +468,20 @@ second route. Then the chapter's answers.
 | 1. Which way, at what cost? | Profile every field: 2,010 values in under a second |
 | 2. What does the file hold? | Text; 186 ids, 200 amounts that convert, status on 200 |
 | 3. Which order is largest? | Rs 29,45,460 as a number, where text said Rs 970 |
-| 4. Does 2.1 crore follow? | Yes: Rs 2,09,98,210 over the 200 that convert |
-| 5. What can the feed tell? | What the extract held: 119 records, never a value's truth |
+| 4. Does 2.1 crore follow? | Yes: Rs 2,09,98,210, summed over what converts |
+| 5. What can the feed tell? | What the extract held, in 119 complete records |
 | 6. Do other methods agree? | Yes: 186 ids and one failure, by other code |
 
-**Kavya's review.** Kavya Nair, the senior analyst who checks every number before it leaves the team: "Before you total anything, tell me how many records you received, how many are complete, how many convert and how many are distinct."
+**Kavya's review.** "Before you total anything, tell me how many records you received, how many are complete, how many convert and how many are distinct."
 
 **In the interview.** [F] Everything read from a CSV is a string; what breaks and where do you convert?
 
 ```notes
-LIVE, 2 minutes. One breath for the interview: arithmetic, comparison and sorting break or silently
-lie on text; convert once at the boundary in one function that returns the value or the reason, and
-log the failures. The answer raises chapter 2's question: 201 rows for 186 orders, so which rows
-repeat? Then chapter 2.
+LIVE, 2 minutes. The tag marks how often screens ask it: [S] a staple asked everywhere, [F] frequent
+at global capability centres and product companies, [D] a differentiator. One breath for the
+interview: arithmetic, comparison and sorting break or silently lie on text; convert once at the
+boundary in one function that returns the value or the reason, and log the failures. The answer
+raises chapter 2's question: 201 rows for 186 orders, so which rows repeat? Then chapter 2.
 ```
 
 ---
@@ -509,7 +511,8 @@ label: 6 | title: Does a pairwise count agree? | body: Every row against the res
 ```
 
 ```notes
-LIVE, 1 minute. Read the six questions. Then what a wrong answer costs.
+LIVE, 1 minute. Read the six questions; a dedupe is the step that removes repeated rows. Then what a
+wrong answer costs.
 ```
 
 ---
@@ -958,8 +961,8 @@ flowchart LR
 
 ```notes
 LIVE, 2 minutes. The two pairs this pass misses cost Q1 nothing: one copy's amount cannot be read,
-so it adds nothing to the sum. The decision it misleads: a Q2 order count one too high in
-Retail-Plus, the segment Tuesday's finding is about. Then the fix.
+so it adds nothing to the sum, and the other pair sits in Q2. The decision it misleads: a Q2 order
+count one too high in Retail-Plus, the segment Tuesday's finding is about. Then the fix.
 ```
 
 ---
@@ -1004,7 +1007,10 @@ recomputes. Then a second route.
 *Does a dictionary keyed by id keep the same orders?*
 
 ```python
-valid = [r for r in raw if convert(r["amount"])[0] is not None]
+def ok(r):
+    value, why = convert(r["amount"])
+    return value is not None
+valid = [r for r in raw if ok(r)]
 by_id = {r["order_id"]: r for r in valid}
 len(by_id)                 # 186
 ```
@@ -1045,8 +1051,8 @@ answers.
 
 ```notes
 LIVE, 2 minutes. The answer raises chapter 4's question: the kept orders still carry a missing
-status, missing discounts, and next time an unreadable amount with no twin. Then the 10-minute
-break.
+status, missing discounts, and next time an unreadable amount with no twin, no other copy of the
+same order. Then the 10-minute break.
 ```
 
 ---
@@ -1081,7 +1087,7 @@ LIVE, 1 minute. Read the six questions. Then the values still open.
 
 ---
 
-## S50. One status, 55 discounts and a policy for bad amounts
+## S50. One status, 55 discounts missing; no amount fails
 *Which values are still missing or unreadable in the 186 kept orders?*
 
 ```cards
@@ -1233,7 +1239,7 @@ value: 55 | label: flagged | note: the count beside every figure
 **What changed.** The answer is c. The field stays blank, the count goes beside any discount figure, and revenue is untouched.
 
 ```notes
-LIVE, 2 minutes. Then the day's second spine trap.
+LIVE, 2 minutes. Then the day's second trap.
 ```
 
 ---
@@ -1295,7 +1301,7 @@ value: 0 | label: rejects after the rule | note: the twin carried the value
 value: 1 | label: failure in the export's profile | note: the truth about the export
 ```
 
-**What changed.** The identity rule keeps the copy whose amount converts, so the unreadable copy goes to the set-aside log with its twin named, and conversion after it rejects nothing. The Rs 0 order never exists.
+**What changed.** The identity rule keeps the copy whose amount converts, so the unreadable copy goes to the set-aside log with its twin named, and conversion after it rejects nothing, so no order reaches the clean file at Rs 0.
 
 ```notes
 LIVE, 2 minutes. The profile of the export still reports its one failure, which is the truth about
@@ -1314,7 +1320,7 @@ value: 1 | label: unreadable in the feed | note: the same text as the CSV
 value: Rs 1,386 | label: short, reading "fourteen" | note: an invented Rs 1,400 order
 ```
 
-**The rule.** The feed was cut from the same extract, so it witnesses what the extract held, never whether a value is right, and it can confirm and never repair. The CSV's second extract carried the value, and the identity rule already used it.
+**The rule.** The feed was cut from the same extract, so it witnesses what the extract held, never whether a value is right. The CSV's second extract carried the value, and the identity rule already used it.
 
 ```notes
 LIVE, 2 minutes. The invented pair INV-21 shows the other tempting repair: reading "fourteen" as 14
@@ -1396,7 +1402,7 @@ LIVE, 1 minute. Read the six questions. Then who is waiting.
 
 ---
 
-## S65. Anand wants the proof; Marketing wants Tuesday
+## S65. Anand needs proof; Marketing needs Tuesday rechecked
 *Who is waiting on this chapter, and for what?*
 
 ```stats
@@ -1460,8 +1466,6 @@ same unreadable amount and holds only 19 of Q2's 86 orders. Then predict the mov
 ```python
 q1_aside = [e for e in set_aside if e["quarter"] == "Q1"]
 rupees = lambda e: convert(e["amount"])[0] or 0      # 0 where unreadable
-corporate = -sum(rupees(e) for e in q1_aside if e["segment"] == "Business")
-consumer = -sum(rupees(e) for e in q1_aside if e["segment"] != "Business")
 ```
 
 **Question.** How many moves land the bridge on the books, as a letter? a) one, every copy in a single move; b) two, corporate copies and consumer copies; c) three, adding the unreadable amount; d) none, since 2.1 rounds close enough.
@@ -1475,6 +1479,11 @@ each with its segment. Take letters in chat, then show the bridge.
 
 ## S69. Answer: two moves walk Rs 2.1 crore to the books
 *Which moves walk Rs 2.1 crore down to the books?*
+
+```python
+corporate = -sum(rupees(e) for e in q1_aside if e["segment"] == "Business")   # -19,67,560
+consumer = -sum(rupees(e) for e in q1_aside if e["segment"] != "Business")    # -30,650
+```
 
 ```mermaid
 flowchart LR
@@ -1494,7 +1503,7 @@ Rs 30,650 move visible. Then Monday's tree, to test Tuesday's finding.
 
 ---
 
-## S70. Monday's tree splits revenue into three branches
+## S70. Tuesday's tree put the fall in orders per customer
 *How did Tuesday read the Q1 to Q2 change?*
 
 ```mermaid
@@ -1585,7 +1594,7 @@ flowchart LR
     class K bet
 ```
 
-**The check.** Ask whether anything about the record is wrong; its size alone proves nothing. A fence, a cut-off above which values get called outliers, at three times the median Q2 order flags all 17 Business orders, since the quarter mixes a Rs 2,000 basket with a corporate order.
+**The check.** Ask whether anything about the record is wrong, since a valid record at any size is revenue. A fence, a cut-off above which values get called outliers, at three times the median Q2 order flags all 17 Business orders, since the quarter mixes a Rs 2,000 basket with a corporate order.
 
 ```notes
 LIVE, 2 minutes. Kalpa's Business segment sells in bulk to corporate buyers, every order in lakhs,
@@ -1615,7 +1624,7 @@ shown both ways. Then the note.
 ## S76. The note leads with the answer: the 1.9 is right
 *What does the note to Anand say first?*
 
-> "Anand, your 1.9 crore is right. The ERP export counted fifteen orders twice, fourteen of them in Q1; copies of two corporate orders carry Rs 19,67,560 of the Rs 19,98,210 difference. Rows and rupees reconcile to your books. On clean data the drop is 1.6 percent against the 11 we reported, and the Retail-Plus fall is 35 percent against 49. It survives, smaller." The data and AI team at Kalpa's Global Capability Centre
+> "Anand, your 1.9 crore is right. The ERP export counted fifteen orders twice, fourteen of them in Q1; copies of two corporate orders carry Rs 19,67,560 of the Rs 19,98,210 difference. Rows and rupees reconcile to your books. On clean data the drop is 1.6 percent against the 11 we reported, and the Retail-Plus fall is 35 percent against 49, so the finding survives, smaller." The data and AI team at Kalpa's Global Capability Centre
 
 ```mermaid
 flowchart LR

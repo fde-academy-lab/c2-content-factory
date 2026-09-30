@@ -85,8 +85,8 @@ lines = [
     "Each tab carries one planted defect. Read the tab's check line first, find the cell, fix it, and watch the "
     "verdict change.",
     "The Export tab releases the note only when all four tabs pass their checks, so fixing one tab does not clear it.",
-    "Profile: what converts. Identity: what makes two rows one order. Tail: keep the large order. Reconcile: rows "
-    "and rupees.",
+    "The Profile tab counts what converts, the Identity tab says what makes two rows one order, the Largest tab "
+    "keeps a large order that is real, and the Reconcile tab ties rows and rupees to the books.",
 ]
 for i, text in enumerate(lines, 3):
     start.cell(row=i, column=1, value=text).alignment = WRAP
@@ -138,9 +138,10 @@ put(ws, "B20", '=IF(B17<>B14-B15,"Fix the key before counting duplicates.",'
                'for each row set aside.")', VERDICT, TINT, True)
 put(ws, "A21", "Fixed, for the Export tab", NOTE); put(ws, "B21", "=IF(ROUND(B17-(B14-B15),6)=0,1,0)")
 
-# ---------------------------------------------------------------- Tail
-ws = sheet(wb, "Tail", "Should the large order stay in revenue?",
-           "Eight invented Business orders. A fence flags the tail for checking; it never removes real revenue.")
+# ---------------------------------------------------------------- Largest
+ws = sheet(wb, "Largest", "Should the large order stay in revenue?",
+           "Eight invented Business orders. A fence flags the largest for a check of their records, and revenue "
+           "keeps every valid order.")
 head(ws, 4, ["Order amount (Rs)", "Above the fence"])
 for i, v in enumerate([310000, 420000, 450000, 520000, 610000, 700000, 880000, 1800000], 5):
     put(ws, f"A{i}", v, fill=INPUT)
@@ -155,7 +156,7 @@ put(ws, "D11", "The check", BOLD)
 put(ws, "E11", '=IF(E9=E8,"Every valid order stays in revenue.","Revenue reported leaves out orders above the '
                'fence: a fence flags, it never removes. Fix it first.")', wrap=True)
 put(ws, "D13", "Verdict", VERDICT)
-put(ws, "E13", '=IF(E9<>E8,"Fix the revenue that drops the tail before reporting it.",'
+put(ws, "E13", '=IF(E9<>E8,"Fix the revenue that drops the largest orders before reporting it.",'
                f'"Keep all "&COUNT(A5:A12)&" orders, "&{rs("E8")}&"; flag "&E10&" above the fence for a record '
                f'check, and show the total without "&IF(E10=1,"it","them")&" beside it.")', VERDICT, TINT, True)
 put(ws, "D14", "Fixed, for the Export tab", NOTE); put(ws, "E14", "=IF(E9=E8,1,0)")
@@ -182,14 +183,14 @@ put(ws, "B14", '=IF(ISNUMBER(SEARCH("rupees",B13)),1,0)')
 
 # ---------------------------------------------------------------- Export
 ws = sheet(wb, "Export", "Is the note to Anand ready to paste?",
-           "Released only when every tab's check passes. Paste it into the note to Anand.")
+           "The note below is released only when every tab's check passes, and then it pastes into the note to Anand.")
 ws.column_dimensions["B"].width = 110
-put(ws, "A4", "Tabs fixed", BOLD); put(ws, "B4", "=Profile!E12+Identity!B21+Tail!E14+Reconcile!B14")
+put(ws, "A4", "Tabs fixed", BOLD); put(ws, "B4", "=Profile!E12+Identity!B21+Largest!E14+Reconcile!B14")
 put(ws, "A5", "Release", VERDICT)
 put(ws, "B5", '=IF(B4=4,"Ready to paste into the note to Anand.","Not ready: "&(4-B4)&" of the four tabs still '
               'carry a defect to fix first.")', VERDICT, TINT, True)
 put(ws, "A7", "Paste-ready note", BOLD)
-put(ws, "B7", '=IF(B4=4,"Profile: "&Profile!E11&CHAR(10)&"Identity: "&Identity!B20&CHAR(10)&"Tail: "&Tail!E13&'
+put(ws, "B7", '=IF(B4=4,"Profile: "&Profile!E11&CHAR(10)&"Identity: "&Identity!B20&CHAR(10)&"Largest order: "&Largest!E13&'
               'CHAR(10)&"Reconcile: "&Reconcile!B13,"The note assembles once every tab passes its check.")', wrap=True)
 ws.row_dimensions[7].height = 100
 

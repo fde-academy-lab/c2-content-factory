@@ -31,9 +31,10 @@ The ERP is the enterprise resource planning system Finance books orders in; its 
 LIVE, 1 minute. A set-aside row is one removed from the clean file with a logged reason and the line
 of the row that stayed. The identity rule says what makes two rows one order, here the order_id; the
 rejects log lists every row whose value would not convert, with its line and reason; Retail-Plus is
-Kalpa's paid membership tier; the Business segment is Kalpa's sales to companies; and the bulk order
-is Q2's largest, a real Business order at Rs 29,45,460, kept and flagged. Everything on this slide was proved this morning, and the afternoon deck
-restates it so it stands alone. What is left is the analyst's question. Then chapter 6.
+Kalpa's paid membership tier; the Business segment is Kalpa's sales to companies; a twin is the
+other copy of the same order; and the bulk order is Q2's largest, a real Business order at Rs
+29,45,460, kept and flagged. Everything on this slide was proved this morning. What is left is the
+analyst's question. Then chapter 6.
 ```
 
 ---
@@ -81,8 +82,7 @@ value: a week | label: a log she cannot follow | note: of questions, and her tru
 
 ```notes
 LIVE, 2 minutes. Control totals tie the export to the clean file to the books, and every row that
-left has to trace to a rule. A log that ties in rows and misses in rupees costs the team her trust
-in everything else it sends. Then an auditor who could not trace a number.
+left has to trace to a rule. Then an auditor who could not trace a number.
 ```
 
 ---
@@ -245,7 +245,7 @@ flowchart LR
     class F,A,S bad
 ```
 
-**The check.** The books against the clean Q1, and a rejected order whose twin sits in the set-aside log with a value.
+**The check.** Compare the clean Q1 with the books, and look for a rejected order whose twin sits in the set-aside log with a value.
 
 ```notes
 LIVE, 2 minutes. A row reconciliation proves nothing vanished; it cannot prove the right rows
@@ -344,13 +344,13 @@ by segment; both totals tie and the log replays. Then the full pass, alone.
 *Can you run the whole pass alone on the same file and send Anand a reconciliation his analyst can audit tonight?*
 
 ```notes
-LIVE. Fifty minutes unguided. The notebook is ex1_escalated_case, a TODO twin with nine lettered
-choices; the brief with its ten items is in exercises/unguided.
+LIVE. Fifty minutes unguided. The notebook is ex1_escalated_case, with a blank to fill at each step
+and nine lettered choices in all; the brief with its ten items is in exercises/unguided.
 ```
 
 ---
 
-## S16. Answer it in five parts, with a log by tonight
+## S16. Answer: Anand needs five answers and a log tonight
 *What does Anand need from the full pass by tonight?*
 
 ```timeline
@@ -361,12 +361,13 @@ label: Part 4 | title: Where did every row go? | body: A rupee test that fails t
 label: Part 5 | title: What does Anand read first? | body: Monday's tree on the clean file, Tuesday's segment, the note | tone: dark
 ```
 
-**The client asks.** "Which figure is right, the proof in rows and in rupees, and every decision in a log my analyst can follow."
+**The client asks.** "Tell me which figure is right, with the proof in rows and in rupees and every decision in a log my analyst can follow."
 
 ```notes
-LIVE, 3 minutes. Nine notebook letters, ten brief letters, then the note in under 120 words. Watch
-for rows totalled before profiling, a first-copy rule, a rupee test that rounds, and a tree whose
-customers are rows. Then the checks.
+LIVE, 3 minutes. Monday's revenue tree is revenue = customers x orders per customer x revenue per
+order, each branch read as Q2's multiple of Q1. Nine notebook letters, ten brief letters, then the
+note in under 120 words. Watch for rows totalled before profiling, a first-copy rule, a rupee test
+that rounds, and a tree whose customers are rows. Then the checks.
 ```
 
 ---
@@ -374,17 +375,17 @@ customers are rows. Then the checks.
 ## D17. Four checks pass before your letters go in
 *Which checks must pass before you post your letters?*
 
-```stats
-value: rows | label: kept plus set aside | note: equal the rows the ERP sent
-value: Q1 | label: to the rupee | note: equal to the books after the rule
-value: the test | label: your rupee test | note: passes yours, fails the colleague's
-value: the tree | label: three branches | note: multiply back to revenue's change
-```
+| The check | It passes when |
+|---|---|
+| Rows | The rows kept plus the rows set aside equal the 201 rows the ERP sent. |
+| Q1 | Q1 on the kept rows equals the books, Rs 1,90,00,000, to the rupee. |
+| Your rupee test | It passes on your pass and fails on the colleague's, which kept the first copy. |
+| Monday's tree | Its three branches multiply back to revenue's change, Q2 over Q1. |
 
 ```notes
-SELF-STUDY, reference while working. Each check recomputes its step another way, so the numbers are
-the learner's to reach. A Q1 Rs 1,790 short kept the wrong copy; a Q2 Rs 29,45,460 light removed
-the bulk order. Both are debriefed next.
+SELF-STUDY, 2 minutes, a reference while working. Each check recomputes its step another way, so the
+numbers are the learner's to reach. A Q1 Rs 1,790 short kept the wrong copy; a Q2 Rs 29,45,460 light
+removed the bulk order. Both are debriefed next.
 ```
 
 ---
@@ -393,7 +394,8 @@ the bulk order. Both are debriefed next.
 *Which wrong numbers did the room produce, which step made each, and which check catches it?*
 
 ```notes
-LIVE. Put the most common wrong number on the screen first. Name no learner; name the step.
+LIVE. Fifteen minutes. Put the most common wrong number on the screen first. Name no learner; name
+the step.
 ```
 
 ---
@@ -447,7 +449,7 @@ question only when the check passes. Swap halfway.
 
 ---
 
-## S20. Answer it from the log, one question at a time
+## S20. Answer: why 14, which 14, then the rupees
 *What does the auditor ask, and in what order?*
 
 > "Your log says 14 Q1 rows were dropped. Why those 14, and how do I know nothing else went?" The internal auditor, Kalpa Retail finance
@@ -457,7 +459,7 @@ flowchart LR
     Q["<b>why 14 rows?</b>"] --> W["<b>which 14</b><br/>Q1 in less kept"]
     W --> T["<b>a twin for each</b>"]
     T --> R["<b>the rupees</b><br/>by segment"]
-    R --> S["<b>the signature</b><br/>both totals tie"]
+    R --> S["<b>the signature</b><br/>what she signs"]
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class S bet
 ```
@@ -512,7 +514,7 @@ answer should have used. Swap every three questions.
 
 ---
 
-## S23. Answer the row's five first: rule, number, check
+## S23. Answer: every screen asks these five first
 *Which five questions does every analytics screen ask of someone who has cleaned a file?*
 
 | Tag | Question |
@@ -547,7 +549,7 @@ the study notes and in each notebook's interview section. Then the follow-ups.
 
 ```notes
 LIVE, 10 minutes. The design questions want a choice, a sizing and the fact that would change it.
-The row's five and these seven are the day's 12, the same 12 the study notes answer. Then the
+These five and the seven follow-ups are the day's 12, the same 12 the study notes answer. Then the
 Kahoot and the close.
 ```
 
@@ -585,7 +587,7 @@ LIVE. Fifteen minutes: the Kahoot, then this chapter.
 
 ```mermaid
 flowchart LR
-    R["<b>which is right</b>"] --> P["<b>the proof</b>"] --> C["<b>what changed</b>"]
+    R["<b>which is right</b><br/>1.9"] --> P["<b>the proof</b><br/>rows and rupees"] --> C["<b>what changed</b><br/>1.6 and 35 percent"]
 ```
 
 ```notes
@@ -602,9 +604,9 @@ LIVE, 2 minutes. This answers the day's question. Read it aloud once. Then the s
 | 1 | Profile before you total: present, convertible, distinct, for every field. |
 | 2 | Say what makes two rows one order before you count duplicates. |
 | 3 | Keep the copy that validates, and log every row you set aside. |
-| 4 | A failure is logged, never turned into a number; large is not wrong. |
-| 5 | Reconcile twice, in rows and in rupees, to the books. |
-| 6 | Recompute what you reported, and say what changed, the smaller number first. |
+| 4 | A failure is logged, never turned into a number. |
+| 5 | Recompute what you reported, and say what changed, the smaller number first. |
+| 6 | Reconcile twice, in rows and in rupees, to the books, and hand over a log a stranger can replay. |
 
 ```notes
 LIVE, 3 minutes. One line per chapter, the lines the cheat sheet prints. Tonight's take-home tests
