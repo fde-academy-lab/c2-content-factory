@@ -28,7 +28,7 @@ while A turned four failures into orders at Rs 0.
 
 - a, "A, since every amount in it converts": a perfect convertible count beside four zeros is the
   coercion trap, a helper turning each failure into Rs 0.
-- c, "Either, since the rows and the ids agree across both": agreeing rows and ids say nothing about
+- c, "Either, since the rows and the ids agree across both": agreeing rows and ids cannot vouch for
   amounts.
 - d, "Neither, since both show copies in the export": copies are a reason to reconcile, and they count
   against neither printout.
@@ -51,7 +51,7 @@ The key is b, "A's zeros add nothing, which is how its total hides them". Adding
 total, so A looks identical in rupees while hiding four orders.
 
 - a, "The totals agree, so the two printouts are equally sound": four zeros leave a total unchanged, so
-  equal totals say nothing about which printout is sound.
+  equal totals cannot show which printout is sound.
 - c, "The four failures carried no rupees, so neither total is short": a failed amount can carry any
   value, and nobody has read these four.
 - d, "The four failed amounts must all sit in one quarter": nothing in either printout places them in a
@@ -112,7 +112,8 @@ The key is d, "119 and 119". 119 records are complete, and each carries the same
 CSV row.
 
 - a, "120 and 119": counts a record that is not complete.
-- b, "119 and 118": nothing differs among the complete records.
+- b, "119 and 118": 118 is how many feed amounts convert and match the clean file; as text, the one
+  that does not convert matches its CSV row too, so nothing differs among the complete records.
 - c, "120 and 120": counts a record that is not complete.
 
 ### Q8. What can the feed prove about the CSV's amounts?
@@ -120,13 +121,13 @@ CSV row.
 The feed and the CSV were cut from the same extract, and the complete records carry the same amount
 text as the CSV.
 
-The key is b, "What the extract held, and never whether a value is right". The feed was cut from the
+The key is b, "What the extract carried, with no proof any value is right". The feed was cut from the
 same extract, so it witnesses what the extract held, never whether a value is right: a flaw in the
 extract appears in both files.
 
 - a, "That they are right wherever the two files agree": both files can carry the same wrong value.
-- c, "That the CSV holds no copies among the rows the feed covers": agreement on amounts says nothing
-  about repeated ids.
+- c, "That the CSV holds no copies among the rows the feed covers": agreement on amounts cannot show
+  repeated ids.
 - d, "Nothing at all, since the feed is cut part way through": the complete records are real evidence
   of what was exported.
 

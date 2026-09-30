@@ -7,9 +7,9 @@
 
 An extract is one pull of rows out of the ERP, the enterprise resource planning system Finance books
 orders in, and the migration is the Q1 move of the order data from one system to another. Today's
-export held 201 rows for 186 orders, and the day's pass set aside 15 copies and landed Q1 on the books,
-Finance's own record of Q1, at Rs 1,90,00,000. A profile counts, for every field, the values present, the
-values that convert and the distinct values.
+export held 201 rows for 186 orders, and the day's pass set aside 15 copies and landed Q1 on the
+books, Finance's own record of Q1, at Rs 1,90,00,000. A profile counts, for every field, the values
+present, the values that convert and the distinct values.
 
 **Who needs the answer.** Anand Iyer, the finance controller, needs to know whether this second extract
 changes anything the team told him today. A total you have not reconciled, or a decision you made
@@ -30,7 +30,7 @@ five.
 
 About seventy minutes; used at work on every new extract before any figure from it is quoted.
 
-In a fresh notebook, using the day's helper:
+In a fresh notebook, using the day's helper, the `c2kit` module every notebook imports as `kit`:
 
 1. Read the file and profile every field: present, convertible, distinct. Write one sentence per
    field on what its counts let you trust.

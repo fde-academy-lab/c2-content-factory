@@ -5,7 +5,10 @@ Answers: 1d 2b 3c 4c 5a 6d 7a 8c 9b 10a
 Alone, each learner cleans Kalpa Retail's export of Q1 and Q2 orders from the ERP, the enterprise
 resource planning system Finance books orders in, reconciles it to the books, Finance's own record of
 Q1 at Rs 1,90,00,000, recomputes Monday's revenue tree, revenue = customers x orders per customer x
-revenue per order, and writes the note that Anand Iyer, the finance controller, asked for.
+revenue per order, and writes the note that Anand Iyer, the finance controller, asked for. The team's
+dashboard, reading the same export, puts Q1 at Rs 2.1 crore, Rs 20 lakh above the books, and Marketing
+asks whether Tuesday's fall in orders per customer for Retail-Plus, Kalpa's paid membership tier,
+survives the clean file.
 
 The notebook's own letters, in order, are in its solution notebook,
 `exercises/solutions/C2_W01_D03_ex1_escalated_case_solution_STUDENT.ipynb`: 1c 2a 3d 4c 5b 6d 7b 8a 9c.
@@ -17,9 +20,10 @@ Four of the ten items are design items: 3, 5, 6 and 8.
 It tests the whole pass, alone, in the order that makes each step safe: the profile's three counts for
 every field, present, convertible and distinct; the identity rule, which decides when two rows are one
 order, keeping the copy whose amount converts; conversion with a rejects log that stays empty on this
-file; the two flags on records kept with a question on them; rows and rupees reconciled to the books;
-Monday's tree recomputed; and the note in under 120 words. The brief's items are the questions that
-arrive once the numbers land, so each asks for a judgement the notebook's code does not make for you.
+file; the two flags, on the order with no status and on the largest Q2 order, records kept with a
+question on them; rows and rupees reconciled to the books; Monday's tree recomputed; and the note in
+under 120 words. The brief's items are the questions that arrive once the numbers land, so each asks
+for a judgement the notebook's code does not make for you.
 
 ## Part 1. What can you tell Anand from the profile and the feed?
 
@@ -29,7 +33,7 @@ The profile shows order_id distinct on 186 of 201 rows, amount convertible on 20
 on 200, and Anand asks for one line he can rely on before the pass goes further; his analyst ties out
 every figure, matching it to the books line by line.
 
-The key is d, "The export counts some orders twice; the rupees follow the rule". 201 rows for 186 ids
+The key is d, "The export counts some orders twice; the rupees wait on the rule". 201 rows for 186 ids
 proves that some orders sit on more than one row. How many rupees they carry, and which figure is
 right, waits for the identity rule and the bridge, the walk from one total to the other one cause at a
 time.
@@ -44,9 +48,10 @@ time.
 ### Q2. Which sentence about the JSON feed can the note carry?
 
 The app's JSON feed, cut from the same extract as the CSV, one pull of rows out of the ERP, yields 119
-complete records and agrees with the CSV on 118 of their amounts; the 119th is unreadable in both.
+complete records; 118 of their amounts convert and match the clean file, and the 119th is unreadable
+in the feed as it is in the CSV.
 
-The key is b, "The feed shows what the extract held; it cannot say a value is right". The feed was cut
+The key is b, "The feed repeats the CSV's extract, so it cannot vouch for any amount". The feed was cut
 from the same extract, so it witnesses what the extract held, never whether a value is right.
 
 - a, "The feed confirms the export's amounts for 118 of its orders": agreement with a copy of the same
@@ -150,7 +155,8 @@ books. Any other result is a finding about the fix at source.
 - a, "Nothing new, since today's bridge already explains the whole gap": today's bridge proves today's
   file, and tomorrow's is another file.
 - b, "Only a row count, expecting 100 rows, since the rupees follow": rows can tie while the rupees
-  miss, as chapter 6's colleague showed with 201 = 185 + 16 and Q1 Rs 1,790 short of the books.
+  miss, as a colleague who kept the first copy and then converted showed, with 201 = 185 + 16 and Q1
+  Rs 1,790 short of the books.
 - d, "Only the bridge, since copies were the one cause found today": a bridge on a file nobody
   profiled can close on the wrong rows.
 
@@ -181,8 +187,8 @@ The key is a, "Which figure is right; both reconciliations; what was flagged; wh
 downstream". Anand asked which figure is right, so that leads, then the proof, then the judgement
 calls, then what the change means for Tuesday's finding.
 
-- b, "What changed downstream; which figure is right; both reconciliations; what was flagged": opens on
-  Marketing's question before Anand's.
+- b, "What changed downstream; which figure is right; both reconciliations; what was flagged": opens
+  on what changed for Marketing's campaign before Anand's question.
 - c, "Both reconciliations; what was flagged; which figure is right; what changed downstream": makes
   Anand read the proof before the answer.
 - d, "What was flagged; both reconciliations; what changed downstream; which figure is right": leaves

@@ -136,7 +136,7 @@ d) 119 and 119
 What can a comparison of the feed with the CSV prove about the CSV's amounts?
 
 a) That they are right wherever the two files agree
-b) What the extract held, and never whether a value is right
+b) What the extract carried, with no proof any value is right
 c) That the CSV holds no copies among the rows the feed covers
 d) Nothing at all, since the feed is cut part way through
 

@@ -19,7 +19,7 @@ flowchart LR
 Yes, in rows and in rupees. In rows, 201 in equals 186 kept plus 15 set aside, each removed with a
 logged reason. In rupees, Q1 as exported less the rupees set aside equals the books to the rupee.
 
-**Crux:** Reconcile twice, in rows and in rupees, to the books.
+**Crux:** Reconcile twice, in rows and in rupees, to the books, and hand over a log a stranger can replay.
 
 ## Panel 2: In what order does the cleaning pass run?
 
@@ -47,21 +47,22 @@ def convert(value):
 Everything read from a CSV is text, so `"900" < "1200"` is False. A missing value is `""` in a CSV
 and an absent key in JSON.
 
-**Crux:** A failure is logged, never turned into a number; large is not wrong.
+**Crux:** A failure is logged, never turned into a number.
 
 ## Panel 4: When is a row a repeat, and which copy stays?
 
 | The pair | Keep | Log |
 |---|---|---|
 | Identical | The first | Second copy of the order |
-| One amount unreadable | The copy that validates | Its twin carries the value |
+| One amount unreadable | The copy that validates | The other copy carries the value |
 | Valid, a field disagrees | The first extract | The field, and a question for the source |
 
 Choose the key before counting: the whole record, which carries each row's line in the file, flags
 0 rows, the record less that line 13, order_id 15, and a fuzzy match on customer and amount within 60
 days 15, with one real Rs 17,71,000 order among them.
 
-**Crux:** Say what makes two rows one order before you count duplicates.
+**Crux:** Say what makes two rows one order before you count duplicates. Keep the copy that validates, and log
+every row you set aside.
 
 ## Panel 5: What happens to a missing value or a huge order?
 
@@ -74,8 +75,6 @@ days 15, with one real Rs 17,71,000 order among them.
 A large order is a question about its record: a real order at Rs 29,45,460 in the Business segment,
 Kalpa's sales to companies, stays, flagged, and Q2 is shown both ways. Repair a value only from a
 copy that could not share the error.
-
-**Crux:** Keep the copy that validates, and log every row you set aside.
 
 ## Panel 6: What catches each of the day's six wrong numbers?
 

@@ -28,7 +28,7 @@ do we know? *Answered at half two, S26:* Anand's 1.9 crore is right; fifteen ord
 twice, fourteen in Q1, and the bridge closes to his books in rows and rupees; revenue falls 1.6
 percent, not 11, and Retail-Plus 35 percent, not 49.
 
-**Chapter 1. What did the ERP send?** What did the ERP actually send, and does the dashboard's
+**Chapter 1. What did the ERP send?** What did the ERP send, and does the dashboard's
 Rs 2.1 crore follow from it? *Answer:* 201 rows for 186 orders, one unreadable amount, one missing
 status; Q1 over what converts is Rs 2,09,98,210, so 2.1 is honest arithmetic on this file.
 1. How could we learn what arrived, and what would each way cost on 201 rows? Profile every field: 2,010 values in under a second.
@@ -171,7 +171,7 @@ Every fact was checked on 30 September 2026; the provenance holds the URLs.
 |---|---|---|
 | 1 | Target Canada | Launched March 2013, almost a billion dollars lost in year one, announced in January 2015 it would close all 133 stores (CBC News); product data about 30 percent accurate (Salsify's summary of Canadian Business) |
 | 2 | Starbucks | 22 and 23 May 2009, about 7,800 stores, about a million customers billed twice and repaid (NBC News and AP) |
-| 3 | India's GST e-invoice portal | One invoice per supplier GSTIN, number, type and year; a repeat is rejected (GSTN FAQ 1.4); from 1 August 2023 for invoices to registered businesses from sellers above Rs 5 crore of aggregate turnover, some sectors exempt (Notification 10/2023; FAQ questions 9 and 17). Kalpa sells to its Business segment, never the other way round |
+| 3 | India's GST e-invoice portal | One invoice per supplier GSTIN, number, type and year; a repeat is rejected (GSTN FAQ 1.4); from 1 August 2023 for invoices to registered businesses from sellers above Rs 5 crore of aggregate turnover, some sectors exempt (Notification 10/2023; FAQ questions 9 and 17). Kalpa is the seller on those invoices and the Business segment's companies the buyers |
 | 4 | Amazon UK | Third-party sellers' items at 1p for about an hour on 12 December 2014 after a fault in their repricing tool; most orders cancelled (BBC News) |
 | 5 | Tesco | GBP 250 million first estimate, bridged to GBP 263 million, GBP 118 million of it in the first half (BBC News; Tesco interim results) |
 | 6 | Patisserie Valerie | GBP 94 million hole (BBC News); auditor fined GBP 4 million, reduced to GBP 2.34 million (FRC, 27 September 2021). Name no person. |
@@ -189,8 +189,7 @@ Every fact was checked on 30 September 2026; the provenance holds the URLs.
 | 5 | Q2 Rs 1,57,54,540; the drop 17.1 percent | Marketing funds a rescue; Finance rejects the pass | A Business order, a customer with orders in both quarters, every field valid | Keep and flag, show both: Q2 Rs 1,87,00,000, the drop 1.6 percent |
 | 6 | 201 = 185 + 16; Rs 20,00,000 set aside; Q1 rounds to 1.90 crore | A note that says "reconciled" and fails the rupee tie-out | Books less clean Q1 is Rs 1,790; a rejected order has a valued twin in the set-aside log | The rule first, then conversion: 201 = 186 + 15, the rejects log empty, Q1 equal to the books |
 
-Chapters 2, 4, 5 and 6 carry the spine's four traps. Chapters 1 and 3 carry traps this build added so
-every chapter has one; the provenance records both.
+Chapters 2, 4, 5 and 6 carry the four traps the week's spine lists; chapters 1 and 3 each carry one the spine does not list, so every chapter has a trap.
 
 Tuesday's dashboard read Q1 as Rs 2,10,00,000 because Tuesday's v1 file carried both copies of the
 unreadable order at a value; today's export has one copy unreadable, so Q1 as exported reads
@@ -260,7 +259,7 @@ Rs 80,53,330 with the refund flagged outside revenue, or Rs 80,50,930 netted.
 | Rupees set aside in Q1: corporate copies / consumer copies | Rs 19,67,560 / Rs 30,650 |
 | Revenue change Q1 to Q2: as Tuesday reported / clean | -11.0% / -1.6% |
 | Monday's tree, Q2 over Q1: as Tuesday read it / clean | customers x1.000 / x1.000; orders per customer x0.754 / x0.860 (1.449 to 1.246); revenue per order x1.180 / x1.144 (Rs 1,90,000 to Rs 2,17,442); revenue x0.890 / x0.984 (Rs 1,90,00,000 to Rs 1,87,00,000) |
-| Q1 and Q2 delivered share over orders with a status, for tomorrow's pre-read check | 67 of 100, 67.0% / 57 of 85, 67.1% |
+| Q1 and Q2 delivered share over all orders, the flagged order counted and not delivered, for tomorrow's pre-read check | 67 of 100, 67.0% / 57 of 86, 66.3% |
 | Retail-Plus orders per customer: Tuesday / clean | 2.32 to 1.18, -49.0% / 1.82 to 1.18, -35.0% |
 | Retail-Core orders per customer: Tuesday / clean | -5.3% / -2.7% (1.09 to 1.06) |
 | Q2 delivered share: keep and flag / default or impute / drop | 57 of 86, 66.3% / 58 of 86, 67.4% / 57 of 85, 67.1% |

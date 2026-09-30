@@ -7,8 +7,9 @@
 
 The export is `data/C2_W01_D03_orders_STUDENT.csv`, Kalpa Retail's Q1 and Q2 orders from the ERP, the
 enterprise resource planning system Finance books orders in, and the books are Finance's own record of
-Q1, Rs 1,90,00,000 to the rupee. To tie out is to match every figure to the books, line by line, so a
-rupee's difference is a finding. Revenue in every figure is booked value, every order at the price
+Q1, Rs 1,90,00,000 to the rupee. The team's dashboard, reading the same export, puts Q1 at Rs 2.1
+crore, Rs 20 lakh above the books. To tie out is to match every figure to the books, line by line, so
+a rupee's difference is a finding. Revenue in every figure is booked value, every order at the price
 charged, whatever its status, and Retail-Plus is Kalpa's paid membership tier.
 
 A profile counts, for every field, the values present, the values that convert and the distinct
@@ -61,15 +62,16 @@ defend at this point?
 a) Your 1.9 crore is right; the export carries fifteen extra rows.
 b) The export is clean apart from one amount and one missing status.
 c) The gap is fifteen orders at about Rs 1.3 lakh each, Rs 20 lakh.
-d) The export counts some orders twice; the rupees follow the rule.
+d) The export counts some orders twice; the rupees wait on the rule.
 
 ### Q2. Which sentence about the JSON feed can the note carry?
 
-The JSON feed yields 119 complete records and agrees with the CSV on 118 of their amounts; the 119th
-is unreadable in both. Which sentence about the feed can the note carry?
+The JSON feed yields 119 complete records. 118 of their amounts convert and match the clean file, and
+the 119th is unreadable in the feed as it is in the CSV. Which sentence about the feed can the note
+carry?
 
 a) The feed confirms the export's amounts for 118 of its orders.
-b) The feed shows what the extract held; it cannot say a value is right.
+b) The feed repeats the CSV's extract, so it cannot vouch for any amount.
 c) The feed covers 59 percent of the export, so it can stand in for it.
 d) The feed and the CSV disagree on one amount, so one of them is corrupt.
 

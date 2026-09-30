@@ -28,8 +28,9 @@ Release the solution only when a learner has posted all four groups.
 - The JSON feed is the export's first 120 records written as a JSON array and cut inside the 120th
   record's order id, so `json.load` raises `JSONDecodeError: Unterminated string starting at: line
   1397 column 15`. The 119 complete records all carry the same amount text as their CSV rows, the
-  spelled-out amount included, which is why item 8's answer is that the feed witnesses what the
-  extract held, never whether a value is right. One of the 119 has no `status` key.
+  spelled-out amount included, which is why item 8's answer is that the feed shows what the extract,
+  the pull of rows out of the ERP it was cut from, carried, with no proof any value is right. One of
+  the 119 has no `status` key.
 
 ## What if the room finishes early, or falls behind?
 

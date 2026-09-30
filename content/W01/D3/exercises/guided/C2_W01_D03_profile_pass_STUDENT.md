@@ -16,7 +16,7 @@ to the books line by line, and every later number in the day stands on these fir
 
 - What type does every value arrive as when the CSV is read?
 - How many amounts and statuses are present, convertible and distinct?
-- What should the pass do with the one field that is missing on some rows?
+- What should the pass do when one of the two fields you counted is missing on some rows?
 
 This is built on the screen during chapter 1, and you mirror it line for line in your own notebook.
 Copying is what this exercise asks of you, since every later step reuses the shape you type here.
@@ -49,15 +49,16 @@ convertible = [v for v in present if convert(v)[0] is not None]
 print("amount:", len(present), "present,", len(convertible), "convertible,", len(set(present)), "distinct")
 ```
 
-Repeat it for `status`, where convertible means one of the four statuses the business uses. Write
+Repeat it for `status`, where convertible means one of the three statuses the export uses:
+delivered, returned or cancelled. Write
 beside each count one sentence on what it lets you trust.
 
-## Step 3. What should the pass do with the one field that is missing on some rows?
+## Step 3. What should the pass do when one of the two fields you counted is missing on some rows?
 
 Used at work wherever a value is missing and someone else will audit the choice made about it.
 
-One field is missing on some rows. Name it, then fill in the three-way decision table in your
-notebook's markdown, one reason per line:
+Of the two fields you counted, one is missing on some rows. Name it, then fill in the three-way
+decision table in your notebook's markdown, one reason per line:
 
 | Decision | What it does to revenue | What it does to the delivered count | Choose it when |
 |---|---|---|---|

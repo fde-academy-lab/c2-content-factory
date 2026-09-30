@@ -14,20 +14,19 @@ largest Q2 order; and reconciled rows and rupees to the books, Finance's own rec
 did not keep went to the set-aside log with its reason. In Q1, 114 rows came in and 100 orders were
 kept, and Q1 on the clean file equals the books at Rs 1,90,00,000.
 
-A copy's twin is the other row of the same order. Chapter 3 found that two pairs of copies differ in a
-field while the others are identical, and that two Business rows carry Rs 19,67,560 of the Rs 19,98,210
-set aside in Q1; Kalpa's Business segment is its sales to companies, every order in lakhs. Chapter 2
-weighed a fuzzy match, which calls two rows one order when the customer and the amount match within 60
-days.
+A copy's twin is the other row of the same order. Chapter 3 found that two Business rows carry Rs
+19,67,560 of the Rs 19,98,210 set aside in Q1; Kalpa's Business segment is its sales to companies,
+every order in lakhs. Chapter 2 weighed a fuzzy match, which calls two rows one order when the
+customer and the amount match within 60 days.
 
 **Who needs the answer.** The internal auditor decides whether Finance can rely on the team's
 reconciliation of Q1 and on the log behind it. A log she cannot follow costs a week of questions, and a
 log that fails her tie-out, which matches every figure to the books line by line, costs the team her
 trust in everything else it sends.
 
-**The questions on the way.** The notebook walks her first question in five steps: which 14 rows, whether
-each one is a copy, which rows carry the rupees, why one copy was chosen over its twin, and what she
-signs. She then asks the five questions below:
+**The questions on the way.** The notebook walks her first question in five steps: which 14 rows,
+whether each one is a copy, which rows carry the rupees, why one copy was chosen over its twin, and
+what she signs. She then asks the five questions below:
 
 - Why does the set-aside log hold 15 lines when the auditor asked about 14?
 - Which four set-aside rows should the auditor re-perform?
@@ -79,10 +78,10 @@ d) The profile would show a sixteenth id on more than one row
 
 The auditor reads the word "dropped" in your log. What do you change?
 
-a) Nothing, since dropped and set aside mean the same to Finance
-b) The count, since a dropped row should not appear in the log
-c) The format, into one summary line so that the log is shorter
-d) The word, to "set aside", with each row's reason shown beside
+a) Only the word, since the decisions log already holds each reason
+b) Relabel all 14 lines 'removed as duplicates', one rule for all
+c) Leave the word, and add a line saying the rupees tie to the books
+d) Each line, to name the kept row it copies and why this one went
 
 ### Q5 (Design). What must the reconciliation still carry if the ERP team removes copies at source?
 The auditor suggests that next quarter the ERP team remove the copies before the export leaves the

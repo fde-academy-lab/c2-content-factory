@@ -1,10 +1,9 @@
-# Which Q1 figure is right, drawn on the board one question at a time?
+# How does the board show, drawing by drawing, which Q1 figure is right?
 
 Week 1, Wednesday. Seven drawings, in the order they go up, each drawn with the room before the
 screen shows the same thing, and each headed by the question it answers. Kalpa's dashboard reads Q1
 at Rs 2.1 crore from an orders CSV out of the ERP, the enterprise resource planning system Finance
-books orders in; the books, Finance's own record, say Rs 1.9 crore. The last section is what the
-board holds when the day ends.
+books orders in; the books, Finance's own record, say Rs 1.9 crore.
 
 ## How could an export read Rs 20 lakh above the books?
 
@@ -44,9 +43,9 @@ The third drawing: three counts per field, present, convertible and distinct.
 | amount | 201 | 200 | 161 |
 | status | 200 | text | 3 |
 
-Drawn in chapter 1. The three counts that do not fit 201 are order_id's 186 distinct, amount's 200
-convertible and status's 200 present; circle them. Each is a question for a later chapter, written
-beside the table and ticked off as it is answered.
+In chapter 1 the room circles the three counts that do not fit 201: order_id's 186 distinct, amount's
+200 convertible and status's 200 present. Each is a question for a later chapter, written beside the
+table and ticked off as it is answered.
 
 ## Which key says two rows are one order without removing a real one?
 
@@ -60,12 +59,12 @@ order_id is the answer: 15 rows, and no real order removed.
 | order_id | 15 | none |
 | Fuzzy: customer and amount, 60 days | 15 | one, Rs 17,71,000 |
 
-Beside it: "same count, other rows".
+Beside it goes the line "same count, other rows", and under the first two keys the line "the file line
+is where a row sat, never what the order is".
 
 ## When two rows share an order_id, which copy stays?
 
-The fifth drawing, made in chapter 3 beside the words "the file line is where a row sat, not what the
-order is".
+The fifth drawing, made in chapter 3, shows which copy stays in each kind of pair.
 
 ```mermaid
 flowchart TB
@@ -85,7 +84,7 @@ flowchart LR
     B -.->|"equals"| K["<b>the books</b>"]
 ```
 
-Drawn in chapter 5. Under it, the two equations: rows 201 = 186 + 15, and rupees 2,09,98,210 less
+It goes up in chapter 5 with two equations under it: rows 201 = 186 + 15, and rupees 2,09,98,210 less
 19,98,210 = 1,90,00,000. Beside it, Monday's tree recomputed as Q2's multiple of Q1: customers
 x1.000, orders per customer x0.860, revenue per order x1.144, revenue x0.984, with Tuesday's x1.000,
 x0.754, x1.180 and x0.890 written above and crossed through.
@@ -102,7 +101,7 @@ flowchart LR
     C -.->|"equals"| P["<b>the clean file</b>"]
 ```
 
-Beside it: "a log is finished when a stranger can replay it".
+Beside it goes the line "a log is finished when a stranger can replay it".
 
 ## What is on the board when the day ends?
 

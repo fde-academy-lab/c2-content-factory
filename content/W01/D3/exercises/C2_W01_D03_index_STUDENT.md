@@ -18,7 +18,7 @@ ideas or to size the options yourself before you choose: 20 of today's 40 items.
 | When | File | The question it asks | Answer as |
 |---|---|---|---|
 | Chapter 1, built together | `guided/C2_W01_D03_profile_pass_STUDENT.md` | How many records did the ERP send, and how many can you use? | Your notebook |
-| After chapter 1 | `unguided/C2_W01_D03_ch1_profile_STUDENT.md` | What did the ERP actually send, and does the dashboard's Rs 2.1 crore follow from it? | Four letters; items 2 and 4 are design |
+| After chapter 1 | `unguided/C2_W01_D03_ch1_profile_STUDENT.md` | What did the ERP send, and does the dashboard's Rs 2.1 crore follow from it? | Four letters; items 2 and 4 are design |
 | After chapter 2 | `unguided/C2_W01_D03_ch2_repeats_STUDENT.md` | The file holds 201 rows for 186 orders: which rows did the export count twice, and what makes two rows one order? | Four letters; items 2 and 4 are design |
 | After chapter 3 | `unguided/C2_W01_D03_ch3_survivor_STUDENT.md` | When an order appears twice, which copy stays, and does Q1 then land on the books? | Four letters; items 2 and 3 are design |
 | After chapter 4 | `unguided/C2_W01_D03_ch4_missing_STUDENT.md` | What should the pass do with a value that is missing or cannot be read, so that no decision invents or deletes a fact? | Four letters; items 1 and 4 are design |
@@ -40,7 +40,7 @@ placeholder filled.
 
 | Solution | The question it answers |
 |---|---|
-| `solutions/C2_W01_D03_ch1_profile_solution_STUDENT.md` | Which answers hold in the chapter 1 set on what the ERP actually sent, and why? |
+| `solutions/C2_W01_D03_ch1_profile_solution_STUDENT.md` | Which answers hold in the chapter 1 set on what the ERP sent, and why? |
 | `solutions/C2_W01_D03_ch2_repeats_solution_STUDENT.md` | Which answers hold in the chapter 2 set on the rows the export counted twice, and why? |
 | `solutions/C2_W01_D03_ch3_survivor_solution_STUDENT.md` | Which answers hold in the chapter 3 set on which copy stays, and why? |
 | `solutions/C2_W01_D03_ch4_missing_solution_STUDENT.md` | Which answers hold in the chapter 4 set on values that are missing or cannot be read, and why? |

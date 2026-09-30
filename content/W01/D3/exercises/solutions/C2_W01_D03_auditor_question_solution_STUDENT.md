@@ -47,7 +47,7 @@ which test neither.
 
 - a, "Four drawn at random, so that no row is favoured over another": 13 of the 15 are identical copies,
   so four drawn at random test mostly the easy case.
-- b, "The first four lines of the log, since the log runs in file order": file order says nothing about
+- b, "The first four lines of the log, since the log runs in file order": file order has no bearing on
   risk.
 - d, "The four largest by rupees, since the money is what she signs for": the largest rows test the
   money and leave the rule's choice between differing copies untested.
@@ -73,15 +73,16 @@ one cause at a time, would not close.
 
 The auditor reads the word "dropped" in the log.
 
-The key is d, "The word, to 'set aside', with each row's reason shown beside". "Set aside with a reason"
-is what happened, and each reason is in the log, while an auditor reads "dropped" as lost.
+The key is d, "Each line, to name the kept row it copies and why this one went". An auditor reads
+"dropped" as gone without a trace, so each line has to say which kept row the removed one copies and
+why it left the clean file, and then she can follow every one of the 14.
 
-- a, "Nothing, since dropped and set aside mean the same to Finance": to an auditor, dropped means gone
-  without a trace.
-- b, "The count, since a dropped row should not appear in the log": the log exists to show every row
-  that left.
-- c, "The format, into one summary line so that the log is shorter": a summary line hides the reasons
-  she asked for.
+- a, "Only the word, since the decisions log already holds each reason": the decisions log holds each
+  rule once, and the auditor needs each row's own reason and the row that stayed.
+- b, "Relabel all 14 lines 'removed as duplicates', one rule for all": a blanket label on all 14 still
+  hides which row stayed for each order and why.
+- c, "Leave the word, and add a line saying the rupees tie to the books": the rupee tie proves the
+  totals, and her question was why each row went.
 
 ### Q5 (Design). What must the reconciliation still carry if the ERP team removes copies at source?
 The auditor suggests that next quarter the ERP team remove the copies before the export leaves the ERP.
@@ -98,9 +99,9 @@ and the team's rows and rupees still tie to the books.
 
 ## Which letters does the notebook take?
 
-The notebook's five letters: 1c 2d 3b 4a 5c. The last check also runs your evidence on the pass
-chapter 6's colleague ran, which kept the first copy of every pair and came out Rs 1,790 short of the
-books, and the evidence has to fail there.
+The notebook's five letters: 1c 2d 3b 4a 5c. The last check also runs your evidence on a colleague's
+pass that kept the first copy of every pair and came out Rs 1,790 short of the books, and the evidence
+has to fail there.
 
 ## Why is item 3 worth arguing about?
 
