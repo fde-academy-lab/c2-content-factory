@@ -5,8 +5,8 @@
 >
 > Anand Iyer, finance controller, Kalpa Retail
 
-Sixty minutes, alone. Run the full pass on the ERP export, `data/C2_W01_D03_orders_STUDENT.csv`, in
-the notebook `notebooks/C2_W01_D03_hands_on_STUDENT.ipynb`, and answer the ten items below as you
+Fifty minutes, alone. Run the full pass on the ERP export, `data/C2_W01_D03_orders_STUDENT.csv`, in
+the notebook `notebooks/C2_W01_D03_ex1_escalated_case_STUDENT.ipynb`, and answer the ten items below as you
 reach each part. Then write the note to Finance.
 
 **What you post.** Three things, in this order: the notebook's eight letters; this brief's ten

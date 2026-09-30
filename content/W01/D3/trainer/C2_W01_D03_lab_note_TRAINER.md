@@ -10,7 +10,7 @@ The set runs about an hour. Release the solution only when a learner has posted 
 |---|---|---|---|
 | 1. Two printouts | 10 | Choosing printout A because "every amount converts" | "Can a Kalpa order be worth Rs 0?" |
 | 2. The vendor copy | 15 | Counting 39 rows because the file "should" hold 39 orders, or deleting the segment field | "Print every row whose amount does not convert, and read it." |
-| 3. The app's feed | 15 | Re-running `json.load` and stopping at the error | "Round 1 recovered the complete records one at a time; reuse that cell." |
+| 3. The app's feed | 15 | Re-running `json.load` and stopping at the error | "Chapter 1 recovered the complete records one at a time; reuse that cell." |
 | 4. Reconcile the vendor copy | 20 | Reconciling rows and forgetting rupees, or comparing the vendor total with the whole of Q1 | "Sum your clean file over the same 39 order ids." |
 
 ## What is in the files, so you are never caught out

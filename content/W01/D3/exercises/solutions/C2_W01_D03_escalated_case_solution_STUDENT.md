@@ -3,7 +3,7 @@
 Answers: 1b 2d 3a 4c 5b 6a 7d 8c 9a 10b
 
 The notebook's own letters, in order, are in its solution twin,
-`exercises/solutions/C2_W01_D03_hands_on_solution_STUDENT.ipynb`: 1b 2c 3d 4b 5a 6c 7b 8d.
+`exercises/solutions/C2_W01_D03_ex1_escalated_case_solution_STUDENT.ipynb`: 1b 2c 3d 4b 5a 6c 7b 8d.
 
 ## The idea being tested
 

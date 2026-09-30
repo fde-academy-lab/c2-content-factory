@@ -5,7 +5,7 @@
 >
 > The internal auditor, Kalpa Retail finance
 
-Forty-five minutes in pairs. One of you drives the notebook `notebooks/C2_W01_D03_ex2_auditor_STUDENT.ipynb`;
+Forty minutes in pairs. One of you drives the notebook `notebooks/C2_W01_D03_ex2_auditor_STUDENT.ipynb`;
 the other plays the auditor, asks the next question only when the check passes, and answers the five
 items below aloud before either of you posts. Swap roles halfway.
 
