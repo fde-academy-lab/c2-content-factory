@@ -236,8 +236,7 @@ function itemBlock(item, lead) {
   if (item.options.length) kids.push(...optionParas(item.options, item.answer === "order" || item.answer === "working"));
   if (item.answer === "working") {
     kids.push(spacer(60, true));
-    kids.push(workingBox(item.room || 1500));
-    kids.push(p([run("Write the final answer on the answer sheet.", { color: MUTED, size: TINY })], { spacing: { before: 40, after: 0 } }));
+    kids.push(workingBox(item.room || 1500, "Working. The final answer goes on the answer sheet."));
   } else if (item.answer === "order") {
     kids.push(p([run("Write the letters in order on the answer sheet.", { color: MUTED, size: TINY })], { spacing: { before: 40, after: 0 } }));
   }
