@@ -12,12 +12,8 @@ synthetic.
 
 ## Two things the data team already knows
 
-1. **Two cities changed booking systems in Q2.** Their bookings are recorded in the new booking system
-   (`bookings_newsys`) from the day each city moved. The clinics file carries each site's code in the new
-   system.
-2. **The payment feed keys invoices in its own format.** The `invoice_ref` column in `payments` is the
-   reference the payment gateway or the clinic cash desk recorded, and it is not always written the way
-   the billing export writes `invoice_no`.
+1. **Two cities changed booking systems in Q2.**
+2. **The payment feed has a different id format from the invoice export.**
 
 The team has not checked anything beyond these two. What else the files hold is yours to find.
 
@@ -56,7 +52,7 @@ The patient register. One row per patient.
 | `city` | text | The city the patient is registered in | `Bengaluru`, `Delhi` |
 | `age_band` | text | The patient's age band | `18-29`, `45-59`, `60+` |
 | `sex` | text | Sex as recorded at registration | `F`, `M` |
-| `corporate_account` | text | The corporate account that books this patient, where one does; empty otherwise | `CORP-0007` |
+| `corporate_account` | text | The corporate account that books this patient, where one does; empty otherwise | empty |
 
 ## clinics
 
@@ -138,7 +134,7 @@ The billing export. One invoice per completed booking, numbered in the financial
 | `city` | text | The city of the site that did the work | `Bengaluru`, `Hyderabad` |
 | `amount` | number, rupees | The invoice total | `470`, `2999`, `1550` |
 | `line_items` | number | How many lines the invoice carries | `1`, `3` |
-| `corporate_account` | text | The corporate account billed, where the invoice goes to one; empty otherwise | `CORP-0007` |
+| `corporate_account` | text | The corporate account billed, where the invoice goes to one; empty otherwise | empty |
 
 ## payments
 
