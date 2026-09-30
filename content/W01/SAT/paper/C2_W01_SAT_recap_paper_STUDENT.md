@@ -51,7 +51,7 @@ Kalpa Retail sells through its app, its website and its stores to four segments 
 **Exhibit 1A.** Kalpa's revenue tree, in which each branch is one of the numbers that make up revenue.
 
 ```mermaid
-flowchart LR
+flowchart TB
   R["Revenue"] --> C["Customers<br/>distinct buyers"]
   R --> F["Orders per customer<br/>orders over customers"]
   R --> I["Items per order<br/>items over orders"]
