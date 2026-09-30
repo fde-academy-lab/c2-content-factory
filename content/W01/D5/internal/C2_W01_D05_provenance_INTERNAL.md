@@ -2,8 +2,10 @@
 
 **INTERNAL.** Where every fact, number and decision in this pack came from. The lab data is
 `v3-lab`, **proposed for client zero v2.3** (tracker v7, 21 September 2026) and not yet locked.
-Raised to the chapter standard on 30 September 2026, then fixed the same day after the orchestrating
-session's review; the fix pass is logged at the end of this file.
+Raised to the chapter standard on 30 September 2026, fixed the same day after the orchestrating
+session's review, and rechecked the same day to standard v3 (decisions `question-ladder`,
+`self-contained`, `humanizer` and `opus-max`); the fix pass and the recheck are logged at the end of
+this file.
 
 ## Sources, in the order they bind
 
@@ -18,6 +20,7 @@ session's review; the fix pass is logged at the end of this file.
 | `docs/curriculum/Saturday_papers.md`, W1 paper | Saturday's format for the preview; no Kahoot item copies a paper item |
 | The requester's raise of 30 September 2026 (decisions `chapter-standard` and `four-domains` in `data/programme/facts.yaml`) and the session brief for this day | The lab brief opening on the business situation; the debrief as three chapters paired with notebooks; the timed cases as design cases at Kalpa with a real company each; Marketing's sharpest push; design items in the Kahoot and the practice set; the depth loop |
 | The orchestrating session's review of the raised pack, 30 September 2026 | Ruling 1: no learner file names a planted value, the debrief included. Ruling 2: the same members across two quarters are tested by flipping each member's own two quarters, and different customers by shuffling labels across whole customers; pooling paired data is the hurried mistake; both directions sit beside a verdict; the lab key lists every route with its number and verdict; nothing credits Thursday with Friday's design. Finding B2 (the lab's cost row), a should-fix list and a minor list. Each is logged with its fix at the end of this file |
+| The standard v3 recheck prompt, `prompts/week_revamp_W02_W03.md` section 1, with this day's fills, 30 September 2026 | Every heading a question with who needs the answer and the questions on the way; every file standing alone; the debrief deck carrying each chapter in full; the humanizer's read of every prose file; and four specifics: no number computed from the lab export in any STUDENT file (the three wrong headline rates and notebook 3's corporate fall named), the value reader's comment naming no number form, the shuffle ruling, the nine routes and the sign test at p = 0.043 kept as merged, and Friday's shape kept (the AI-free lab, the debrief, pairs defending the note) |
 | `data/programme/facts.yaml`, `saturday_papers.paper_minutes` | The Saturday paper at 120 minutes, which corrected a 110 on the rehearsal deck's S13 |
 | The retail and e-commerce dossier, `content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md` | Linked by path from the day sheet and the study notes, never copied. Its branch, `w01-domain-retail`, was absent at the start of the build and fetched later on 30 September 2026 (`git show origin/w01-domain-retail:<path>`); the pack's stakeholders, their questions and the DMart likeness agree with its sections 2 and 4, and the day sheet and notes point at its sections 4 and 5. Its one-page card was not yet on the branch |
 
@@ -45,30 +48,28 @@ contract passes with the v3-lab block added.
 
 | Plant | Lab file | Used in (TRAINER and INTERNAL only) | Learner files |
 |---|---|---|---|
-| A batch posted twice, 10 rows in Q2 | KR-07143 (7 August) and nine Retail-Core orders (2 to 10 September) | Lab key, day sheet (its debrief table says the numbers aloud), reference notebook, observation sheet | None of its count, rupees, dates or ids. The debrief deck and the notes show the mechanism on the invented export (8 rows, Rs 12,16,420, labelled invented); notebook 1 prints the control totals and the hurried headline, and the rows, their count and their rupees are its your-turn cells |
-| "9,85,000" stored as text | KR-07073 | Same | None of its value, form, quarter or id. The deck and the notes show the mechanism on the invented "850000.00"; notebook 2 prints that the rupees miss the control total in one quarter, unnamed, and the gap, the value and its row are your-turn cells |
-| Empty segment | KR-07146 | Same | None of its quarter, segment, amount or id. D19 and the notes show the mechanism on the invented export's Q1 Retail-Core order; notebook 2's level 4 is two your-turn cells |
-| Business on 6 then 4 orders | 5 corporate customers: C-7304 did not reorder and C-7300 ordered once where it had ordered twice | Same | None of its counts or accounts. S23 and S25 show the mechanism on the invented export (5 orders then 2); notebook 3 prints the corporate rate, -29.2 percent, and the fall it carries as the trap's wrong headline, says "fewer than thirty" wherever a count would stand, and leaves the counts and the coin-flip share to your-turn cells |
+| A batch posted twice, 10 rows in Q2 | KR-07143 (7 August) and nine Retail-Core orders (2 to 10 September) | Lab key, day sheet (its said-aloud table gives the numbers), reference notebook, observation sheet | None of its count, rupees, dates or ids. The debrief deck (S5 to S17), the notes and notebook 1 show the mechanism on the invented export (8 rows, Rs 12,16,420, labelled invented); the lab's rows, count and rupees appear only in notebook 1's empty your-turn cells |
+| "9,85,000" stored as text | KR-07073 | Same | None of its value, form, quarter or id. The deck (S21 to S27), the notes and notebook 2 show the mechanism on the invented "850000.00"; the lab's gap, value and row are notebook 2's your-turn cells, and the value reader's comment names no number form |
+| Empty segment | KR-07146 | Same | None of its quarter, segment, amount or id. D28, the notes and notebook 2's level 5 show the mechanism on the invented export's Q1 Retail-Core order; the lab's row is a your-turn cell |
+| Business on 6 then 4 orders | 5 corporate customers: C-7304 did not reorder and C-7300 ordered once where it had ordered twice | Same | None of its counts, accounts, rate or rupees. The deck (S34 to S38), the notes and notebook 3 show the mechanism on the invented export (5 orders then 2, -36.3 percent, Rs 13,88,200, 99.2 percent of the fall); the lab's counts, rate and coin-flip share are notebook 3's your-turn cells |
 
 The practice export's defects appear in its solution file, which opens only after the practice lab.
 
-**The debrief's chapter notebooks and the plants.** The raise asked for the debrief's options to be
-sized on the lab data, and the orchestrating review ruled that no learner file names a planted value,
-the debrief included. Both hold this way. The debrief deck and the study notes show every trap's
-mechanism on an invented export, built record by record by
-`internal/C2_W01_D05_invented_export_INTERNAL.py` and labelled invented on every slide and paragraph
-that uses it; the control totals, the consumer tree, the Retail-Core lead and its tests stay real, since
-none is a plant. The three chapter notebooks still size their options on the lab export, and their
-saved outputs print the control totals, the headline each option sends and the consumer tree; every
-planted count, value, form and place is an empty your-turn cell with the lines to type, so the number
-appears only on the screen of a learner who runs the cell after the lab. The notebooks were renamed
-`01_debrief_quarters`, `02_debrief_values` and `03_debrief_segments` so a folder listing names no trap,
-and the lab rules keep every other notebook in `notebooks/` closed during the lab. The trainer says the
-morning's real numbers aloud from the day sheet's debrief table, slide by slide. Two readings were made
-where the ruling left room, and the fix pass lists both: a trap's wrong headline rate (+11.8, -14.6 and
--29.2 percent) prints in the notebooks, as the standard's exact wrong number, while every count, value
-and place behind it stays in a your-turn cell; and the notebooks' `read_value` helper names four forms
-it reads (grouping commas, spaces, a Rs prefix, paise) without saying which one the lab file holds.
+**The debrief's chapter notebooks and the plants.** The fix pass after the orchestrating review sized
+the chapter notebooks' options on the lab export and printed four numbers computed from it: the three
+wrong headline rates (+11.8, -14.6 and -29.2 percent) and notebook 3's corporate fall (Rs 17,10,000,
+99.3 percent). The standard v3 recheck removed all of them, and with them every other number computed
+from the lab export, plant or not: the control totals, the consumer tree, the Retail-Core lead and its
+tests now sit only in TRAINER files. The three chapter notebooks load the invented export from `data/`,
+written by `internal/C2_W01_D05_invented_export_INTERNAL.py`, label it invented in every caption,
+print and paragraph that quotes it, stage each trap on it with its exact wrong number, and end every
+step on an empty your-turn cell whose markdown gives the lines that rerun the step on the lab file. The
+deck and the notes quote the same invented figures, so a learner meets one set of invented numbers in
+every file and the lab's only on their own screen after the lab. The notebooks keep the names
+`01_debrief_quarters`, `02_debrief_values` and `03_debrief_segments`, so a folder listing names no
+trap, and the lab rules keep every other notebook in `notebooks/` closed during the lab. The trainer
+says the morning's real numbers aloud from the day sheet's said-aloud table, slide by slide. The value
+reader's comment says it reads a value "in the forms this week's exports used" and names none of them.
 
 ## Decisions that depart from a source
 
@@ -81,12 +82,15 @@ it reads (grouping commas, spaces, a Rs prefix, paise) without saying which one 
 | The debrief splits across lunch, chapter 1 (20) before it and chapters 2 and 3 (10 each) after | The spine lists debrief 40 after the break | The morning block is 180 minutes, so 150 + 10 + 40 does not fit; the reconciliation, the break most rooms fall into, runs before lunch |
 | The debrief runs all three chapters every time, and the lunch tally chooses only which reserve slide replaces a self-study slide | The 29 September pack ran the reconciliation and then the two breaks the tally named | The raise sets three chapters, one per place most rooms break |
 | In the debrief, the room's wrong number comes before the options, in the deck and in all three notebooks | The standard's chapter order (need, options, build, trap) | A debrief replays where the room broke, so each chapter opens on the number the room sent and then sizes what the step should have been |
-| Each debrief chapter is one deck section and one STUDENT notebook, running on the lab export | The standard's teaching-day chapter of about 30 minutes | A lab day's debrief is 40 minutes in all; the notebooks carry the full chapter order (need, options and sizing, build in levels, trap, second route, review, interview, depth) for self-study, and the deck runs the live minutes |
+| Each debrief chapter is one deck section and one STUDENT notebook, running on the invented export with the lab file behind empty your-turn cells | The standard's teaching-day chapter of about 30 minutes | A lab day's debrief is 40 minutes in all; the notebooks carry the full chapter order (need, options and sizing, build in levels, trap, second route, review, interview, depth) for self-study, and the deck runs the live minutes |
 | The option sizings are on what separates the options: analyst minutes at the lab brief's pace, cells, what each needs from outside the file, what it can see, the headline it lets through and the points off the books; option D is run where the file allows it (chapter 3's four tests) and marked not run where it needs a ledger the lab lacks (chapter 1) | The standard asks for sizing in rows, minutes, rupees and error | The review found sizings that separated nothing, since every option computed in under a millisecond; the lab's own pace is the only sourced minute figure |
 | The three design cases carry illustrative numbers (about 2,000 orders, 50,000 rows, 12 and 1,200 checkout visits, 1,200 visits a week) | The lock carries no Q3 export, no migrated-ERP quarter and no checkout traffic for Kalpa | Setting the cases at Kalpa, as the raise asks, needed figures the lock does not hold; each is marked illustrative in the STUDENT file |
 | The Kahoot has eight items: three on the method (Q1, Q4, Q5), four design calls that take two ideas or a computed sizing (Q2, Q3, Q6, Q7) and Thursday's return (Q8) | The row's quiz plan (five plus the return) | The standard's eight and the review's call for at least a third genuine design items; the row's concepts stay tested, two of them inside the design calls Q2 and Q3 |
 | The practice set has sixteen items, nine of them design items (3, 4, 6, 8, 10, 11, 12, 13, 16), six of those with a sizing the learner computes, and item 15 a find-the-defect item | The 29 September set's eleven | The review's call for at least a third genuine design items; every problem ends on one, so each stalled step has its design item |
-| The debrief deck's trap slides and the notes' trap sections run on an invented export, labelled invented, and the trainer says the lab's numbers aloud from the day sheet | The raise: the debrief's options sized on the lab data | Ruling 1; the chapter notebooks keep the lab sizing behind your-turn cells |
+| The debrief deck, the notes and the three chapter notebooks run every trap, sizing and test on an invented export, labelled invented, and the trainer says the lab's numbers aloud from the day sheet | The raise: the debrief's options sized on the lab data | Ruling 1, then the recheck's first specific: no STUDENT file carries a number computed from the lab export; the lab's sizing is each notebook's your-turn cells |
+| In STUDENT files the lead is the invented Retail-Plus basket, tested with each member's two quarters flipped (p = 0.011) and by a sign test (13 of 16, p = 0.021), with pooling as trap 5b and single orders shuffled between segments as trap 5; the lab's Retail-Core lead, its paired test (p = 0.006), the nine routes and the sign test at p = 0.043 stay in the lab key, the reference run and the day sheet | The merged pack showed the Retail-Core lead and its tests in the deck, notebook 3 and the notes | The recheck's first specific removes them from learner files, and its third keeps the shuffle ruling, the nine routes and the sign test at 0.043 as merged, in the TRAINER files |
+| Kahoot Q7's key is Retail-Plus's basket | The merged Kahoot keyed the lab's lead segment | No item echoes the lab's finding, so the quiz tests the count-before-rate call without replaying the lab |
+| Each chapter map slide's title opens on "Answered in" | The standard: a map slide's title answers like any body slide | `scripts/deck_md_check.py` reads a SECTION title that ends in a question mark as a question slide and fails the deck unless the next title starts with "Answer"; the fix belongs in the shared tool and is named in the recheck's report |
 | The note's test flips each Retail-Core customer's own two quarters, reported both ways; the segment label shuffled across whole customers stays as the fair test of a different question; pooling a customer's two quarters (per customer or order by order) and shuffling single orders are traps 5b and 5 | The 29 September key, which tested the note with a label shuffle across customers, accepted the quarter label dealt across single orders, and credited Thursday with the design | Ruling 2 |
 | The three chapter notebooks are `01_debrief_quarters`, `02_debrief_values` and `03_debrief_segments` | The raise's names, which named each trap | Ruling 1: a folder listing names no trap |
 | The rehearsal defends Thursday's final note | The row says "the note" | Thursday's note is the one going to Monday's review, which is what the rehearsal rehearses |
@@ -97,21 +101,41 @@ it reads (grouping commas, spaces, a Rs prefix, paise) without saying which one 
 ## Invented
 
 **The invented export**, built record by record by `internal/C2_W01_D05_invented_export_INTERNAL.py`
-at seed 2020, which asserts every figure the deck and the notes quote. It carries the lab's four
-defect families in other places and sizes: 175 rows, 167 distinct orders, 130 distinct amounts;
-control totals Q1 Rs 40,00,000 on 83 orders and Q2 Rs 26,00,000 on 84, a fall of 35.0 percent; the
-hurried run Q1 Rs 31,50,000 and Q2 Rs 38,16,420 on 92 rows, up 21.2 percent and 56.2 points off; the
-count check alone down 17.5 percent, 17.5 points off; 8 repeated rows worth Rs 12,16,420, a corporate
-Rs 12,00,000 and seven Retail-Plus rows; one Q1 corporate amount stored as "850000.00", 21.3 percent
-of the quarter; the bridge Rs 69,66,420 less Rs 12,16,420 plus Rs 8,50,000 to Rs 66,00,000; one Q1
-Retail-Core order of Rs 2,350 with an empty segment, so Retail-Core reads Rs 73,250 and up 2.2
-percent on named rows, Rs 75,600 and down 1.0 percent restored; Retail-Plus frequency 2.00 to 2.44
-and revenue up 2.1 percent on the hurried rows, its basket Rs 3,000 to Rs 2,550, down 15.0 percent,
-clean; the corporate book down 36.3 percent on 5 orders then 2, Rs 13,88,200 of the Rs 14,00,000 fall
-(99.2 percent), with seven orders split at least as unevenly by coin flips in 0.453 of worlds;
-Retail-Plus's 16 members flipped 2,000 times on `random.Random(7)`, 20 as large either way, p = 0.010
-(0.0035 one way); the sign test on 13 against 3, 0.021; the pooled deal 0 of 2,000 and revenue per
-member flipped 9 of 2,000; the mean order Rs 39,521 and the median Rs 2,350.
+at seed 2020 and written to `data/C2_W01_D05_invented_orders_STUDENT.csv` and
+`data/C2_W01_D05_invented_control_STUDENT.csv`, which the three chapter notebooks load. The builder
+reads both files back and asserts every figure the deck, the notes and the notebooks quote. It carries
+the lab's four defect families in other places and sizes: 175 rows, 167 distinct orders, 130 distinct
+amounts; control totals Q1 Rs 40,00,000 on 83 orders and Q2 Rs 26,00,000 on 84, a fall of 35.0
+percent; the hurried run Q1 Rs 31,50,000 and Q2 Rs 38,16,420 on 92 rows, up 21.2 percent and 56.2
+points off; the count check alone down 17.5 percent, 17.5 points off; 8 repeated rows worth Rs
+12,16,420, a corporate Rs 12,00,000 and seven Retail-Plus rows; one Q1 corporate amount stored as
+"850000.00", 21.25 percent of the quarter; the bridge Rs 69,66,420 less Rs 12,16,420 plus Rs 8,50,000
+to Rs 66,00,000; value accounting 167 present, 166 convertible and 1 logged; one Q1 Retail-Core order
+of Rs 2,350 with an empty segment, so Retail-Core reads Rs 73,250 and up 2.2 percent on named rows, Rs
+75,600 and down 1.0 percent restored; Retail-Plus frequency 2.00 to 2.44 and revenue up 2.1 percent on
+the hurried rows, its basket Rs 3,000 to Rs 2,550, down 15.0 percent, Rs 14,400, clean; the corporate
+book down 36.3 percent on 5 orders then 2, Rs 13,88,200 of the Rs 14,00,000 fall (99.2 percent), with
+seven orders split at least as unevenly by coin flips in 0.453 of worlds; the mean order Rs 39,521 and
+the median Rs 2,350.
+
+Retail-Plus's 16 members place one, two or three orders a quarter, the same number in both quarters
+(four once, eight twice, four three times), dealt by `random.Random(36)` in Q1 and
+`random.Random(1036)` in Q2. On the clean data, each member's two quarters flipped 2,000 times on
+`random.Random(7)`: 22 as large either way, p = 0.011 (0.0015 one way); 0.0109 at 20,000 flips;
+exact over all 2^16 flip patterns 704 of 65,536, 0.0107; seeds 1 to 20 between 0.0065 and 0.0165.
+The sign test on 13 fell against 3 rose, 0.0213 both ways. Revenue per member Rs 6,000 to Rs 5,100:
+flipped 0.0025, pooled and dealt as strangers 0.222 (0.1125 one way). The quarter label dealt across
+Retail-Plus's 64 single orders, 0.003. Retail-Plus against Retail-Core, a gap of -14.0 points: the
+label across whole customers 0.0385, across single orders 0.0945. Option D, one flipped test per
+segment on revenue: Retail-Core -1.0 percent, 0.8275; Retail-Plus -15.0 percent, 0.011; Student +36.9
+percent, 0.06; Business -36.3 percent, 0.3705; the chance one of four tests at 0.05 looks real by luck,
+0.185.
+
+The member-dealing seed was checked by this recheck over seeds 0 to 39 (Q2 at seed plus 1,000) for
+the five properties chapter 3 needs: the paired test and the sign test under 0.05, the pooled deal
+over 0.05, and between segments the whole-customer shuffle under 0.05 with the single-order shuffle
+over it. Eighteen of the forty seeds have all five; seed 36 is one of them, and its figures are the
+ones above. None of these numbers is a Kalpa record or the lab's.
 
 **Elsewhere.** The Kahoot's exhibits (12,400 rows and 12,380 ids; Rs 50, 45 and 47 lakh; p = 0.04; the
 four moves in Q7) and the practice set's items on other exports (the 1,240-row profile, "4.5k", "TBC"
@@ -172,7 +196,11 @@ copy was installed in the session's scratch folder and put first on PATH for the
 September raise used the same arrangement: mermaid-cli 11.17.0 from the scratchpad first on PATH,
 fonts-crosextra-carlito installed, LibreOffice headless for the render check, python-pptx 1.0.2. The
 fix pass ran Python 3.11.15 with nbclient 0.11.0, python-pptx 1.0.2, LibreOffice 24.2.7.2 headless
-with Carlito, and mermaid-cli 11.17.0 on PATH at `/opt/node22/bin/mmdc`.
+with Carlito, and mermaid-cli 11.17.0 on PATH at `/opt/node22/bin/mmdc`. The standard v3 recheck ran
+Python 3.11.15 with nbclient 0.11.0, nbconvert 7.17.1, pandas 3.0.6, matplotlib 3.11.2 and
+python-pptx 1.0.2; LibreOffice 24.2.7.2 headless with fonts-crosextra-carlito 20230309-2 for the
+render check; and mermaid-cli 12.0.0, which `scripts/build_deck.py` now drives through the flags it
+detects, so no 11.x copy was needed.
 
 ## The depth loop
 
