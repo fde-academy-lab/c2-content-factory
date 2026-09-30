@@ -377,11 +377,11 @@ environment problems only. Collect the room's part 4 and part 5 answers for the 
 *What does the case ask for, part by part?*
 
 ```timeline
-label: Part 1 | title: Is it real? | body: Retail-Plus, 5,000 flips, seed 2026, counted both ways.
-label: Part 2 | title: Is it worth it? | body: The fall against the company's quarter, and a coin-chosen half-tier test.
-label: Part 3 | title: Can Student carry budget? | body: The rate with its count and its chance reference.
-label: Part 4 | title: Did the discount work? | body: Did the monsoon sale lift spend, and for whom?
-label: Part 5 | title: What does Meera read? | body: The hold-back sized on the platform's list, then the note under 200 words. | tone: dark
+label: Part 1 | title: More than the wobble? | body: The Retail-Plus fall, counted in both directions.
+label: Part 2 | title: How big, and who is tested? | body: The fall against the company's quarter, and the offer's first test.
+label: Part 3 | title: What stands behind 40%? | body: Student's orders, and how often chance makes the rise.
+label: Part 4 | title: Did the sale lift spend? | body: The monsoon sale, and for whom.
+label: Part 5 | title: What does the note say? | body: The Diwali hold-back sized, then the note under 200 words. | tone: dark
 ```
 
 ```notes
@@ -503,20 +503,20 @@ One partner plays Marketing for the last ten minutes.
 
 ---
 
-## S21. Answered in four moves, before Meera decides
-*Who needs this answer, and which moves lead to it?*
+## S21. Answered in four parts, before Meera decides
+*Who needs this answer, and which parts lead to it?*
 
 **Who needs the answer.** Meera hears both sides in the meeting. If Marketing's number wins the room, the sale runs again at Diwali on an unfair comparison; if the pair only says no, Marketing hears a verdict and nothing it can use.
 
 ```cards
-icon: repeat | eyebrow: Move 1 | title: Reproduce | body: Compute Rs 4,850 and Rs 3,200 from the platform's list.
-icon: search-check | eyebrow: Move 2 | title: Name the mismatch | body: Say which customers sit in each group, and what else differs.
-icon: columns-2 | eyebrow: Move 3 | title: Rebuild | body: Like for like, inside Retail-Plus, with the counts beside each average.
-icon: message-square | eyebrow: Move 4 | title: Hold the line | body: What the sale cost at list price, and the Diwali hold-back offered, in two sentences. | tone: dark
+icon: repeat | eyebrow: Part 1 | title: Reproduce | body: Make Rs 4,850 and Rs 3,200 appear from the platform's list.
+icon: search-check | eyebrow: Part 2 | title: Name the mismatch | body: Who sits in each of Marketing's two groups, and what else differs.
+icon: columns-2 | eyebrow: Part 3 | title: Rebuild | body: Like for like, with the customers behind each average.
+icon: message-square | eyebrow: Part 4 | title: Hold the line | body: What the exposed paid at list price, and what a Diwali hold-back costs, in two sentences. | tone: dark
 ```
 
 ```notes
-LIVE, 3 minutes. Move 4 is spoken before anything is written. The partner playing Marketing is
+LIVE, 3 minutes. Part 4 is spoken before anything is written. The partner playing Marketing is
 allowed to push once more, and the pair answers with chapter 6's design and its price. Then
 Marketing's rebuttal.
 ```
@@ -564,7 +564,7 @@ flowchart LR
 LIVE, 3 minutes, then the pairs work for the rest of the forty. The campaigns table records 15
 percent off. The platform's list does not say whether its August spend is before or after the
 discount; the pair sizes it both ways and lists the question for Marketing rather than assuming it.
-Notebook ex2, move 4, computes the 9.8 percent. Then the interview drill.
+Notebook ex2, part 4, computes the 9.8 percent. Then the interview drill.
 ```
 
 ---
