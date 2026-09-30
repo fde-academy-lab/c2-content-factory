@@ -2,14 +2,14 @@
 
 TRAINER. Rendered from the tracker's item bank and the week's source file by `scripts/build_saturday_paper.py`. Change an item in the tracker, an option in `data/programme/paper_edits.yaml` or anything in `content/W02/SAT/internal/C2_W02_SAT_paper_source_INTERNAL.yaml`, and rebuild; never edit this file by hand.
 
-Saturday 17 October 2026. A 120-minute paper holding 52 items at 113.5 minutes by the blueprint's pace: 8 easy, 34 medium and 10 hard.
+Saturday 17 October 2026. A 120-minute paper holding 55 items at 120 minutes by the blueprint's pace: 8 easy, 34 medium and 13 hard. 3 of them are new and not yet in the tracker.
 
 ## Marking
 
 1. Papers are swapped, so nobody checks their own.
 2. The Academic TA reads the key out part by part, and the marker writes a tick or a cross beside each item.
 3. An item is right when its answer matches the key: every correct letter and no other on a more-than-one item, the number on an applied maths item (the working belongs to the discussion), and the whole sequence on an ordering item. The programme has set no partial-credit rule, so this key uses none.
-4. The marker writes the count of ticks as Items right on the front, out of 52, and hands the paper back.
+4. The marker writes the count of ticks as Items right on the front, out of 55, and hands the paper back.
 5. The TA collects the papers and tallies the misses by tag, using the table below; that tally is Monday's remediation read. It is never a ranking and never read out by name.
 6. The TA enters every paper in `C2_W02_SAT_item_analysis_TRAINER.xlsx` beside this key, by seat and never by name: 1 for a tick, 0 for a cross and a blank for an item left empty. The workbook orders the discussion from the most-missed item, flags any item to check, and gives each tag's rate for the room and for each seat.
 
@@ -22,12 +22,12 @@ Saturday 17 October 2026. A 120-minute paper holding 52 items at 113.5 minutes b
 | 3. Joins that keep their rows | whether you read the row count before and after a join and catch a join that inflates a sum | Q17 to Q27 (11) | 27 | 1 | 8 | 2 |
 | 4. Windows: rank, lag and running totals | whether you can rank within a segment, compare a month with the one before it and keep a running total | Q28 to Q39 (12) | 31 | 1 | 5 | 6 |
 | 5. pandas and the last mile to Excel | whether you can merge, group and reshape without losing or doubling rows, and choose the tool for each job | Q40 to Q51 (12) | 29.5 | 0 | 11 | 1 |
-| 6. Read the code, read the data | whether you catch a wrong number in a query, a line of pandas or a small result before it reaches a decision | Q52 (1) | 2 | 0 | 1 | 0 |
-| Total | | 52 | 113.5 | 8 | 34 | 10 |
+| 6. Read the code, read the data | whether you catch a wrong number in a query or a few lines of pandas before it reaches a decision | Q52 to Q55 (4) | 8.5 | 0 | 1 | 3 |
+| Total | | 55 | 120 | 8 | 34 | 13 |
 
 ## What guessing alone would score
 
-A learner who guessed every item blind would average 10.6 of 52, since a written answer cannot be guessed from a list, and fewer than one guesser in twenty would reach 16. A score of 15 or below is therefore within reach of guessing alone, and the tally reads such a paper as a conversation to have on Monday, never as a result.
+A learner who guessed every item blind would average 11.4 of 55, since a written answer cannot be guessed from a list, and fewer than one guesser in twenty would reach 17. A score of 16 or below is therefore within reach of guessing alone, and the tally reads such a paper as a conversation to have on Monday, never as a result.
 
 ## Reading the items after marking
 
@@ -88,7 +88,10 @@ The workbook flags an item to check when fewer than one learner in five got it r
 | 49 | b | Scenario set | 5 | Hard | [D] | BA, DS, FDE | Thu | 2.5 | bank 51 | Your pivot shows a different total from the warehouse; where do you look first? |
 | 50 | 400 rows; 2.5 orders per customer. | Applied maths | 5 | Medium | [F] | BA, DS | Thu | 4 | bank 56 | groupby in the split-apply-combine sentence. |
 | 51 | b, c, a | Order the steps | 5 | Medium | [D] | BA, FDE | Fri | 2.5 | bank 58 | SQL, pandas or Excel: how do you choose? |
-| 52 | a | One correct option | 6 | Medium | [S] | BA, DS | Mon | 2 | bank 19 | Explain the logical order in which a SQL query executes. |
+| 52 | c | One correct option | 6 | Hard | [D] | BA, DS | Mon | 2 | new | A stakeholder's analyst must audit your query; what changes in how you write it, and what would you refuse to compute in a notebook? |
+| 53 | b | Scenario set | 6 | Hard | [S] | BA, DS, FDE | Tue | 2.5 | new | INNER against LEFT join: what does each drop or keep? |
+| 54 | d | One correct option | 6 | Hard | [S] | BA, DS | Thu | 2 | new | groupby in the split-apply-combine sentence. |
+| 55 | a | One correct option | 6 | Medium | [S] | BA, DS | Mon | 2 | bank 19 | Explain the logical order in which a SQL query executes. |
 
 ## Why each answer holds
 
@@ -194,7 +197,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q16, key c, b, e, f, a, d
 
-**Why it holds.** The logical order is FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY.
+**Why it holds.** The logical order is FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY. The common wrong answer is the order the clauses are typed, a, c, b, e, f, d, which puts SELECT first; the database cannot pick columns from rows it has not yet read, filtered and grouped.
 
 **In the interview.** FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, which is why aliases work only in ORDER BY.
 
@@ -242,7 +245,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **Why it holds.** The row count before and after, payments per order, and booked revenue before and after are the three checks that catch a fan-out.
 
-- (d) The font changes no number; it is the nonsense option that tests reading.
+- (d) Every order stays in a LEFT JOIN, so the channels match before and after it whether or not the join fanned out. A check that cannot fail proves nothing, which is how the doubled total passed a row-by-row reading on Tuesday.
 
 **In the interview.** Before a joined number leaves, compare the row count and the total before and after the join, and count rows per key.
 
@@ -441,7 +444,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **Why it holds.** A single number is read correctly only with its denominator, its period and its comparison.
 
-- (d) Colour styles the card and changes no reading of the number.
+- (d) An exact figure changes no reading: Rs 19,84,00,000 to the rupee reads as a doubled quarter exactly as Friday's card of Rs 19.84 crore did, because what was missing was the period.
 
 **In the interview.** One number needs its denominator, its period and a comparison, or the room fills them in wrongly.
 
@@ -485,11 +488,41 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q51, key b, c, a
 
-**Why it holds.** The warehouse computes the source of truth, pandas carries the analyst's iteration, and Excel presents it to the room.
+**Why it holds.** The warehouse computes the source of truth, pandas carries the analyst's iteration, and Excel presents it to the room. Any order that starts in pandas or Excel makes a copy the source of truth, which Friday's operating rule forbids: the number of record lives in the warehouse.
 
 **In the interview.** The number flows from the warehouse through pandas to Excel, and never back the other way.
 
-### Q52, key a
+### Q52, key c
+
+**Why it holds.** The CASE has no ELSE, so C3 and C4, who bought nothing in Q2, carry a NULL q2_spend where a zero was meant. AVG divides by the values it can see: avg_q1 is Rs 6,000 over four members and avg_q2 is C1's Rs 1,800 and C2's Rs 1,200 over two, so both come to 1,500 and the query reports spend per member as flat. Half the members stopped buying, and with COALESCE(..., 0) the honest Q2 figure is Rs 750, half of Q1. The check that catches it is count(*) beside count(q2_spend), 4 against 2. Run on PostgreSQL 16.13 on 30 September 2026, the query returns 1500 and 1500.
+
+- (a) The figure the head of Retail-Plus needed, and one this query never computes: it would need COALESCE(..., 0) to count the two members with no Q2 order as zero. Reading AVG as dividing by every member is Monday's round 3 trap, the member average that quietly left out the members who bought nothing in the quarter.
+- (b) Averages the three Q2 order rows, Rs 3,000 over three, at the order's grain, where the CTE first sums C1's two Q2 orders into one member. Rows read as customers is Monday's round 1 trap.
+- (d) Reads NULL as spreading through the aggregate. AVG skips NULLs, as Monday's round 3 showed on the invented values 100, NULL and 200, where AVG returned 150; only arithmetic such as q2_spend - q1_spend turns NULL.
+
+**In the interview.** AVG divides by the values it can see, so a CASE with no ELSE turns a member who bought nothing into a NULL that drops out of the denominator; I write the zero on purpose with COALESCE and put count(*) beside count(q2_spend), so the analyst auditing the query sees both denominators.
+
+### Q53, key b
+
+**Why it holds.** O-1's two instalments both fall inside the quarter, so the join gives O-1 two rows and SUM(o.amount) counts its Rs 1,200 twice. O-2's only payment is dated 1 October, so its joined row fails the WHERE. O-3 has no payment, so its paid_date is NULL, BETWEEN on a NULL is unknown, and WHERE drops that row too. Two rows remain, booked Rs 2,400, against three orders worth Rs 2,500: the report lost two orders and doubled the one it kept. Run on PostgreSQL 16.13 on 30 September 2026, the query returns 2 and 2400.
+
+- (a) Assumes one row per order, which holds only once payments are brought to one row per order; O-1 has two payment rows inside the quarter, so the join repeats it. The fan-out is Tuesday's round 1 trap.
+- (c) Keeps O-3 as if its NULL date passed the filter. A comparison with NULL is unknown and WHERE keeps only rows where it is true, which is how the LEFT JOIN with a date filter in Tuesday's round 3 emptied the unpaid list.
+- (d) Reads the WHERE as if it sat in the ON clause, where it would keep every order and leave NULL payments on O-2 and O-3. In WHERE it runs after the join and turns the LEFT JOIN into an INNER one, which is Tuesday's round 3 trap.
+
+**In the interview.** INNER keeps only the matched rows and LEFT keeps every left row with NULLs where nothing matched; both repeat a left row once per matching right row, and a WHERE on the right-hand table drops the NULL rows and turns the LEFT back into an INNER, so a filter on payments goes in ON and the payments go to one row per order before the join.
+
+### Q54, key d
+
+**Why it holds.** how='right' keeps every customer in reached, so t holds 5 rows, and validate passes because no key repeats. C5, C6 and C7 never ordered, so the merge gives them NaN for segment and for orders. groupby drops a missing key by default, so those three rows never reach a group: reached sums to 2 and bought to 2, and the slide reads 2 of 2 reached customers bought, 100 percent, where 2 of the 5 reached bought, 40 percent. Run on pandas 3.0.5 on 30 September 2026, the code prints 5 2 2.
+
+- (a) Reads the merge as an inner one, which would keep only C1 and C2. An inner merge is the default, and how='right' here keeps all five reached customers; Thursday's round 2 showed the default dropping every customer the sale did not reach.
+- (b) Reads how='right' as if it kept the left frame, the four buyers built from order rows. A frame built from order rows holds only the customers who ordered, which is why Thursday's round 1 built the table on the customer list; a right merge keeps every row of the right-hand frame, here the five reached.
+- (c) Counts the three customers with no segment as a group of their own, which is what groupby does only with dropna=False. The default drops a missing key: Thursday's round 2 trap, where reach read 100 percent conversion until dropna=False showed the missing group.
+
+**In the interview.** groupby splits the rows by a key, applies a computation to each group and combines one row per group, and a row whose key is missing belongs to no group, so the default drops it; after a merge that can leave a key empty I group from the full list or pass dropna=False, and check that the groups add back to the rows.
+
+### Q55, key a
 
 **Why it holds.** Every column in SELECT must either be grouped or aggregated, so segment either joins GROUP BY or sits inside an aggregate.
 
@@ -502,34 +535,44 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ## Items by tag, level, day and part, for the tally
 
-- [S] (27): Q2, Q4, Q6, Q7, Q8, Q12, Q14, Q15, Q16, Q17, Q18, Q21, Q23, Q24, Q27, Q28, Q29, Q30, Q32, Q34, Q35, Q40, Q42, Q43, Q45, Q48, Q52
+- [S] (29): Q2, Q4, Q6, Q7, Q8, Q12, Q14, Q15, Q16, Q17, Q18, Q21, Q23, Q24, Q27, Q28, Q29, Q30, Q32, Q34, Q35, Q40, Q42, Q43, Q45, Q48, Q53, Q54, Q55
 - [F] (19): Q1, Q3, Q5, Q9, Q10, Q11, Q13, Q19, Q22, Q25, Q26, Q31, Q36, Q39, Q41, Q44, Q46, Q47, Q50
 - [SV] (0): none
-- [D] (6): Q20, Q33, Q37, Q38, Q49, Q51
+- [D] (7): Q20, Q33, Q37, Q38, Q49, Q51, Q52
 - Easy (8): Q4, Q6, Q10, Q11, Q12, Q15, Q17, Q28
-- Medium (34): Q1, Q2, Q3, Q5, Q7, Q9, Q13, Q14, Q16, Q18, Q19, Q21, Q23, Q24, Q25, Q26, Q27, Q29, Q30, Q34, Q35, Q39, Q40, Q41, Q42, Q43, Q44, Q45, Q46, Q47, Q48, Q50, Q51, Q52
-- Hard (10): Q8, Q20, Q22, Q31, Q32, Q33, Q36, Q37, Q38, Q49
-- Mon (8): Q4, Q5, Q12, Q13, Q14, Q15, Q16, Q52
-- Tue (14): Q1, Q6, Q7, Q17, Q18, Q19, Q20, Q21, Q22, Q23, Q24, Q25, Q26, Q27
+- Medium (34): Q1, Q2, Q3, Q5, Q7, Q9, Q13, Q14, Q16, Q18, Q19, Q21, Q23, Q24, Q25, Q26, Q27, Q29, Q30, Q34, Q35, Q39, Q40, Q41, Q42, Q43, Q44, Q45, Q46, Q47, Q48, Q50, Q51, Q55
+- Hard (13): Q8, Q20, Q22, Q31, Q32, Q33, Q36, Q37, Q38, Q49, Q52, Q53, Q54
+- Mon (9): Q4, Q5, Q12, Q13, Q14, Q15, Q16, Q52, Q55
+- Tue (15): Q1, Q6, Q7, Q17, Q18, Q19, Q20, Q21, Q22, Q23, Q24, Q25, Q26, Q27, Q53
 - Wed (15): Q2, Q8, Q9, Q28, Q29, Q30, Q31, Q32, Q33, Q34, Q35, Q36, Q37, Q38, Q39
-- Thu (10): Q3, Q10, Q40, Q41, Q44, Q46, Q47, Q48, Q49, Q50
+- Thu (11): Q3, Q10, Q40, Q41, Q44, Q46, Q47, Q48, Q49, Q50, Q54
 - Fri (5): Q11, Q42, Q43, Q45, Q51
 - Part 1, The week's rules, cold (11): Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10, Q11
 - Part 2, Asking the warehouse (5): Q12, Q13, Q14, Q15, Q16
 - Part 3, Joins that keep their rows (11): Q17, Q18, Q19, Q20, Q21, Q22, Q23, Q24, Q25, Q26, Q27
 - Part 4, Windows: rank, lag and running totals (12): Q28, Q29, Q30, Q31, Q32, Q33, Q34, Q35, Q36, Q37, Q38, Q39
 - Part 5, pandas and the last mile to Excel (12): Q40, Q41, Q42, Q43, Q44, Q45, Q46, Q47, Q48, Q49, Q50, Q51
-- Part 6, Read the code, read the data (1): Q52
+- Part 6, Read the code, read the data (4): Q52, Q53, Q54, Q55
+
+## New items waiting for the tracker
+
+These items come from the week's source file, not the tracker. Accept one by adding it to the tracker's Saturday papers tab and deleting it from the source file.
+
+- Q52 (One correct option, Hard, [D]): The head of Retail-Plus asks whether spend per member fell from Q1 to Q2, and the analyst answers with the query above. What does it return, and what does it tell her?
+- Q53 (Scenario set, Hard, [S]): Anand wants every Q2 order beside what was collected on it within the quarter. Before the report goes to him, the analyst runs the query above to count its rows and their booked value. What does it return?
+- Q54 (One correct option, Hard, [S]): The marketing lead asks how many customers the monsoon sale reached and how many of them bought, and the analyst runs the code above. What does it print?
 
 ## Option edits laid on the bank, waiting for the tracker
 
 These options differ from the tracker's wording, because the bank's key was the longest option. The stem and the key are the tracker's. Accept an edit by copying it into the tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.
 
-- Q52 (bank 19), option b (proposed): The key was the longest option.
+- Q55 (bank 19), option b (proposed): The key was the longest option.
 - Q18 (bank 22), option c (proposed): The key was the longest option; the new distractor is the fan-out misread in reverse.
 - Q19 (bank 23), option d (proposed): The key was the longest option; the distractor is now the full query with the aggregate in WHERE.
 - Q40 (bank 29), option a (proposed): The key was the longest option.
 - Q43 (bank 32), option c (proposed): The key was the longest option.
+- Q21 (bank 34), option d (proposed): The font was a nonsense option, so striking it left a, b and c, which is the whole key; the new distractor is a check that sounds like the other three and cannot catch a fan-out.
+- Q45 (bank 39), option d (proposed): Cell colour was a nonsense option, so striking it left a, b and c, which is the whole key; the new distractor is the precision a room reaches for when a number is misread.
 - Q25 (bank 42), option b (proposed): The key was the longest option; the distractor keeps the table-qualified column the key uses.
 - Q37 (bank 47), option a (proposed): The key was the longest option.
 - Q49 (bank 51), option a (proposed): The key was the longest option.
