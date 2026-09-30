@@ -290,7 +290,7 @@ The link to Kalpa: Q2's tile had two fewer weeks than Q1. Then the four ways to 
 | C. Per day, closed quarters | 200 | -11.9% | Nothing; it spreads 91 and 92 days |
 | D. Same quarter last year | 0 | cannot run | Everything, until last year's rows arrive |
 
-**The call.** A, because both quarters closed on 30 September at 13 weeks each. **What would change it:** Q2 still open means B; a question about the monsoon means D and a data request.
+**The call.** A, because both quarters had closed by 30 September, at 13 weeks each. **What would change it:** Q2 still open means B; a question about the monsoon means D and a data request.
 
 ```notes
 LIVE, 3 minutes. What separates the options is the question each answers and what each leaves
@@ -1211,7 +1211,7 @@ collect two sentences read aloud without comment.
 | 5. What does the roll-up say? | Weighted, minus 24.6 percent; averaged, a false 6.0 |
 | 6. Does one pass agree? | Yes, for all eight groups |
 
-**Kavya's review.** "Two functions, eight groups, no copied loops. Say the segment on your screen with its denominator before anyone draws a conclusion from it."
+**Kavya's review.** "You wrote two functions for eight groups and copied no loops. Say the segment on your screen with its denominator before anyone draws a conclusion from it."
 
 **In the interview.** The design question: the same metrics for every segment and quarter; copy, function or group by key?
 
@@ -1850,7 +1850,7 @@ answer.
 | 5. Too small to matter? | No: 93 percent of the consumer fall |
 | 6. Do the dates agree? | Yes: first orders in Q1, last in Q2 |
 
-**Kavya's review.** "Three attacks, three checks anyone can rerun. And you nearly shipped a summary that lost the one segment that matters. Count what comes back from every helper you did not write."
+**Kavya's review.** "Marketing made three attacks and you answered each with a check anyone can rerun. You nearly shipped a summary that lost the one segment that matters, so count what comes back from every helper you did not write."
 
 **In the interview.** [D] Marketing insists the answer is acquisition and your data says frequency; how do you make the case in the room?
 

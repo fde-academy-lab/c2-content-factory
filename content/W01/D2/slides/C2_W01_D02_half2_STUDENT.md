@@ -364,7 +364,7 @@ request for all three. Then the chapter's answer.
 | 5. Only the app? | No: web, store and app all fell |
 | 6. Does a corrected pace agree? | Yes: about 3.5 orders, inside the ceiling |
 
-**Kavya's review.** "You gave the tier a number for his cause, a ceiling of about 4 orders, instead of a yes or a no. Say what you know, then what you are guessing, and stop."
+**Kavya's review.** "You gave the tier a number for his cause, a ceiling of about 4 orders, and named the data that would settle it. Say what you know, then what you are guessing, and stop."
 
 **In the interview.** [D] A stakeholder hands you a cause; how do you test it with the data you have and name the data you need?
 
