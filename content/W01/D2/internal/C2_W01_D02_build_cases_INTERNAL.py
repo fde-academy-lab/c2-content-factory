@@ -319,7 +319,7 @@ the split; it did not create a price signal in the consumer business.
 #   c) "all four segments"
 #   d) "Retail-Plus"
 lead = [[7|"Retail-Plus"]]
-kit.check("the lead segment is the largest per-member fall", lead in changes and lead == min(changes, key=changes.get))
+kit.check("your lead matches a second route over the segment changes", lead in changes and lead == min(changes, key=changes.get))
 kit.flow([f"drop real\\n{d_change}% delivered", f"branch\\nfrequency {kit.rupees(round(move_frequency))}",
           f"customers branch\\n{len(still_booked)} still booked", f"segment\\n{lead} {changes.get(lead, '?')}%", "two hypotheses\\nand their evidence"],
          kinds=["known", "bad", "unknown", "bad", "known"], title="The sentence to Meera, on delivered orders")
@@ -414,6 +414,8 @@ is a difference of counts, which is zero whether or not anyone is new.
 customer, so it says nothing for acquisition, and on two customers one more order moves the rate by 0.5 orders per customer, 20 percent.
 """)),
         md("""
+**Item 1 in your brief** goes in now, from what this part printed.
+
 ## Part 2. "Retail-Plus web orders fell hardest, so it is the website"
 
 A broken website hurts every customer who uses it. If the website were the cause, what would another
@@ -448,6 +450,8 @@ site-wide fault does not fit. Something hit members, on every channel: chapter 6
 the app fell too.
 """)),
         md("""
+**Item 2 in your brief** goes in now, from what this part printed.
+
 ## Part 3. "Which of my members do I call first?"
 
 Count each member's orders in Q1 and Q2, and decide who goes first.
@@ -488,7 +492,11 @@ call them first, and ask each whether they tried to reorder and what happened. E
 one order. Nobody stopped altogether, which fits a habit that broke more than a tier people left.
 """)),
         md("""
+**Item 3 in your brief** goes in now, from what this part printed.
+
 ## Part 4. The reply, and the one request that tests the most
+
+Item 4 in your brief goes in once this part has run.
 """),
         code('''
 EVIDENCE = {

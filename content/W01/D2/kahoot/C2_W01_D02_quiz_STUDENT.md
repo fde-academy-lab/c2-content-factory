@@ -17,8 +17,6 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
----
-
 ## Q2. Revenue per customer fell 8 percent. Which two numbers do you compute next?
 *Tests: revenue per customer splits into two branches, and both are needed.*
 
@@ -26,8 +24,6 @@ Each item names what it tests, so an item dropped for time says what was lost.
 - Revenue per order and discounts given, the price side
 - The mean and the median of revenue per customer
 - Orders per customer and revenue per order  <- correct
-
----
 
 ---
 
@@ -41,8 +37,6 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
----
-
 ## Q4. A segment's median order is Rs 1,200 and its range is Rs 80,000. What do you say about it?
 *Tests: a typical value and a spread describe a group together.*
 
@@ -50,8 +44,6 @@ Each item names what it tests, so an item dropped for time says what was lost.
 - Most orders sit near Rs 80,000, with a few small ones below
 - The typical order is about Rs 40,000, halfway up the range
 - The segment's figures must be wrong, since the gap is too wide
-
----
 
 ---
 
@@ -65,8 +57,6 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
----
-
 ## Q6. Revenue per order rose 18 percent, and no segment's own revenue per order rose that far. What happened?
 *Tests: a blended rate can move while no segment moves; split mix from rate.*
 
@@ -77,8 +67,6 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
----
-
 ## Q7. Customers held flat, and orders per customer fell in one segment only. Which hypothesis goes in the note?
 *Tests: a cause is a hypothesis with the evidence that would settle it.*
 
@@ -86,8 +74,6 @@ Each item names what it tests, so an item dropped for time says what was lost.
 - Prices rose across the company, so every customer bought less
 - The segment's buyers left, and new buyers replaced them
 - That segment's buyers slowed; timing and its data test why  <- correct
-
----
 
 ---
 
