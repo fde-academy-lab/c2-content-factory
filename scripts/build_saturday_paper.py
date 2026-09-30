@@ -552,9 +552,10 @@ def key_text(item, upper=False):
 
 def guess_chance(item):
     """The chance a blind guess gets the item right, as an exact fraction: 1/k on one of k options,
-    1/2 on true or false, 1/(2**k - 1) on a more-than-one item read as any non-empty choice, 1/k! on
-    an ordering of k steps, and 0 on a written answer, since a word or a number is not guessed from
-    a list."""
+    1/2 on a bare true or false, 1/(2**k - 1) on a more-than-one item read as any non-empty choice,
+    1/k! on an ordering of k steps, and 0 on a written answer, since a word or a number is not
+    guessed from a list. A true-or-false item judged with its reason prints lettered options and is
+    keyed by one letter, so it is guessed as one of k."""
     import math
     if item.get("bank_options"):
         return Fraction(1, len(item["bank_options"]))
@@ -562,7 +563,7 @@ def guess_chance(item):
     key = item["key"].strip().lower()
     if item["type"] == "Order the steps":
         return Fraction(1, math.factorial(len(options))) if options else Fraction(0)
-    if item["type"] == "True or false" or key in ("t", "f", "true", "false"):
+    if key in ("t", "f", "true", "false") or (item["type"] == "True or false" and not options):
         return Fraction(1, 2)
     if options and answer is None:
         k = len(options)
