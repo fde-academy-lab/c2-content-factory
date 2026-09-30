@@ -909,7 +909,9 @@ sum(amount) OVER (ORDER BY order_date, order_id) AS by_date_then_order
 ```notes
 LIVE, 5 minutes. Run block 6 and read the first and last rows of 22 July, the busiest day, with
 twelve orders. Rows of the same date are peers, so Postgres gives every one the day's closing
-total. Adding order_id makes each row its own step, and the same step on every run. Say the sixth
+total. Adding order_id makes each row its own step. If anyone writes the running total with a ROWS
+frame, tied rows are added in an order the database picks and a row's figure can change between
+runs; the same tiebreaker fixes it. Say the sixth
 idea: a running total needs an unambiguous order and a starting point that covers the whole period.
 Transition: the plan line.
 ```

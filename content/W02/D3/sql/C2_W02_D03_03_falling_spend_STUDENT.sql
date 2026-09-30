@@ -100,7 +100,8 @@ WHERE  month = DATE '2026-09-01'
 -- The question: how much had Q2 booked by each day?
 -- ORDER BY order_date alone leaves orders of the same day in no fixed order. Postgres then gives
 -- every order of that day the same running total, the day's closing figure. Adding order_id to
--- the order makes each row one step, and the same step on every run.
+-- the order makes each row one step. Written with a ROWS frame, tied rows would instead be added in
+-- an order the database picks, so a row's figure could change between runs; order_id fixes that too.
 -- The busiest day of the quarter, 22 July, carries twelve orders; read its rows.
 WITH running AS (
     SELECT order_date, order_id, amount,

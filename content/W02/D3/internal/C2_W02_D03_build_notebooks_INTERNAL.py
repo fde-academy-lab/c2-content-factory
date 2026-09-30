@@ -1049,7 +1049,9 @@ kit.line([r["order_id"][-3:] for r in day],
 **What happened.** The answer is b. With a date alone, the twelve orders of 22 July are peers, and
 Postgres gives every peer the running total at the end of the peer group, Rs 3,76,90,290, the day's
 closing figure. With `order_id` as a tiebreaker each row is one step, from Rs 3,45,16,000 after the
-first order of the day to Rs 3,76,90,290 after the last, and the same steps on every run.
+first order of the day to Rs 3,76,90,290 after the last. Written with a ROWS frame, tied rows would
+be added in an order the database picks, and a row's figure could change between runs; the same
+tiebreaker fixes that.
 """),
         code(r'''
 kit.check("22 July carries twelve Q2 orders", len(day) == 12)
@@ -1173,8 +1175,9 @@ list with its own name."
 **[F] What makes a running total deterministic, and how would you notice one that was not?** "An
 ORDER BY in the window that gives every row a unique place, which usually means adding a key like
 order_id after the date. With the date alone, rows on the same date are peers and all show the day's
-closing figure. I notice it when several rows share one running value, or when a row-level running
-total differs between two runs, and I check that the last value equals the plain sum."
+closing figure, and with a ROWS frame they are added in an order the database picks, so a row's
+value can differ between two runs. I notice it when several rows share one running value or a value
+moves between runs, and I check that the last value equals the plain sum."
 
 **[F] A dashboard says revenue to date is nine times the plan by week seven. What is the likely
 mistake?** "It is comparing a running total with one week's plan. Booked to date at week seven was

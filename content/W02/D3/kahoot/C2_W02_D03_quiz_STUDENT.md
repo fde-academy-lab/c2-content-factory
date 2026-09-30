@@ -37,7 +37,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q4. Which ORDER BY makes a running total over Q2 orders give the same steps on every run?
+## Q4. Which ORDER BY makes a running total over Q2 orders deterministic, one step per order?
 *Tests: a running total needs an order with no ties in it.*
 
 - ORDER BY order_date, since each order has a date

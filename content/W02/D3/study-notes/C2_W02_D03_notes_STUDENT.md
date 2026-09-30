@@ -16,7 +16,7 @@ trap and the check that caught it. Reading time: about 25 minutes.
    a cut-off, and defend your rule to the person who acts on the list.
 4. You can compare a member's month with the same member's previous month using LAG, and prove the
    previous row is the previous calendar month.
-5. You can build a running total that repeats exactly on every run, and check it closes on the
+5. You can build a deterministic running total, one step per order, and check it closes on the
    quarter's total.
 
 ---
@@ -287,8 +287,11 @@ the twelve orders of 22 July the same figure, Rs 3,76,90,290, which is the day's
 Rows that tie on the window's ORDER BY are peers, and by default the frame takes in the current row
 and all its peers, so every order of the day shows the whole day. Adding `order_id` as a tiebreaker
 gives each row its own step, from Rs 3,45,16,000 for the first order of the day to Rs 3,76,90,290
-for the last, and the same steps on every run. That is what "deterministic" means for a running
-total: an order in which no two rows share a place.
+for the last. That is what "deterministic" means for a running total: an order in which no two rows
+share a place. The default frame at least gives tied rows one shared figure on every run. A running
+total written with a ROWS frame, which many teams use and which this week leaves for later, adds tied
+rows one at a time in an order the database picks, so a row's figure can change between two runs with
+no new data, and the same tiebreaker fixes it.
 
 **IN THE FIELD.** The PostgreSQL 16 tutorial states the rule behind this: when ORDER BY is
 supplied, the frame is "all rows from the start of the partition up through the current row, plus
