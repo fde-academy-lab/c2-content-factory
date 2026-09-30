@@ -514,3 +514,208 @@ begins.
   week's book as well as the 28 repeats; Q8's reason gives both counts.
 - The session found the local Postgres stopped and its postgres role without the stated password; it
   started the cluster and set the stated password, which touches the environment and no file.
+
+## 30 September 2026, version 3 raised: what the blind sitting found and what changed
+
+A fresh sitter, who had not seen the key, sat version 3 the same day and found it short of the
+interview bar. This section records the findings as the orchestrating session relayed them, the
+decisions it recorded, and what changed on branch `w02-sat-v3`. The tables in the section above
+describe the version the sitter read; this section supersedes them where they differ.
+
+### The decisions the orchestrating session recorded
+
+- Folding the bank's Set 1 into the set on the week's own quarter is accepted, and is recorded as
+  decision `w2-set1-fold` on the integration branch. `data/programme/facts.yaml` is untouched here.
+- Folding bank 19 into Q2 is accepted.
+- Bank 28 and bank 23 are accepted as handled on this paper, and each goes to the tracker as an
+  issue on the bank item itself:
+  - **Tracker issue, bank 28.** The key says a running total changes between two runs because the
+    window's ORDER BY has ties. Under Postgres's default frame, RANGE with its peers, tied rows share
+    one running figure, so the result does not move between runs; a ROWS frame, or a ROW_NUMBER over
+    a tied order, is what can change from one run to the next. The item needs a stem that names the
+    frame, or a new key. Q34 tests the default frame on a tie.
+  - **Tracker issue, bank 23.** The key, HAVING count(*) > 1 grouped by order, lists every order
+    with two payment rows: on the week's book that is 216 orders, the 188 invoices paid in two
+    instalments as well as the 28 the gateway posted twice. Grouping by order and instalment lists
+    the 28. The stem asks for "the orders that were paid twice", which reads either way, so the stem
+    needs the instalment in it or the key needs the second column. Q8's left-out step is bank 23's key
+    written as a step, and its reason gives both counts.
+- The front matter's "write T or F" is being fixed in the builder on the integration branch, so this
+  branch leaves it.
+
+### What the sitting found
+
+| Kind | Finding |
+|---|---|
+| Difficulty | Twelve items were hard in fact: Q1, Q6, Q7, Q9, Q12, Q15, Q21, Q22, Q30, Q31, Q33, and Q34, which was labelled medium. Q5, Q8, Q10, Q11, Q13, Q16, Q20, Q27, Q28 and Q32 were each one judgement, a recall, or answered by a cue. |
+| Give-aways | Q8's pronouns gave the order of its steps; Q35's stem handed over its key; Q16 could be answered without its chart, and two of its options printed the same count; Q1, Q16 and Q28 built the key from halves of distractors; Q23 to Q26 shared words between prompts and techniques; Q14's key was its only option without a "because"; Q3's verb blank fitted two of the bank's five words. |
+| Leaks | Q13's key helped Q12; Q20's key confirmed Q19's a; Part 5's intro and Q26 carried Q5's key idea; Q11's b and d answered Q27; stretch items 1 and 2 echoed the keys of Q8 and Q13. |
+| Arguable keys | Q11 offered a day-level check under "run on every file"; Q25's exhibit said "each order once" beside a payment-level export; Q31's tiebreaker had no direction; Q20's fix failed only on a column the paper never printed; Q15's key also held for C-0185's June and July. |
+| Facts | Q27 said the error left five countries "out of one group", where the paper says it excludes them from the analysis and moves three of the four debt groups; Q22's present tense predated the 2020 renaming, which stretch 3 relied on; Q6 said views where TechCrunch's quotation says people; Q11 paraphrased The Register. |
+| Wording | Quarters called Q1 and Q2 on a paper whose items are Q1 to Q35; machine-sounding phrases in the purpose and the Part 6 intro; one option pattern, a claim and a reason after a semicolon, used throughout; "35 Business members"; Q13's phrasing; Q29 was one multiplication. |
+
+Later the same day the orchestrating session added two rules: an invented scenario names no real
+company, and an item labelled hard takes at least three dependent steps on an exhibit (compute,
+compare, then decide), cannot be answered by elimination or by a cue elsewhere on the paper, and
+prints its values as a table beside any bar chart that has to be read to an exact value.
+
+### What changed, item by item
+
+| Q | Before | After |
+|---|---|---|
+| 1 | One correct option, whose key joined the halves of two distractors | A worked answer: what the query prints, the true figures and the change, on the tree, with each quarter named by its months |
+| 3 | A verb blank that only "sort" and "guarantee" fitted | A stem edit, proposed in `data/programme/paper_edits.yaml`, whose blank takes a noun, so all five words fit it |
+| 5 | Hard: the fact that makes Excel the home, a what-if the room changes, which Part 5 and Q26 echoed | Medium: where a first look at a question belongs, a notebook that reads the warehouse, set against Anand's rule for the reported number |
+| 6 | Views, and a cast in the query | The people who played the video, as TechCrunch quotes Facebook; the seconds are decimals, so the query needs no cast that could cue Q1 |
+| 8 | Five steps whose pronouns gave the order | Six steps that each stand alone, one of which spoils the report (dropping every order with two payment rows); key e, f, b, c, a |
+| 10 | Three checks already marked as passing or failing | The report's figures by channel: the learner works out each gap, finds that web's alone fails, and decides what goes; the Part 2 intro no longer says Anand refuses an unreconciled figure |
+| 11 | Day-level checks under "run on every file"; options that answered Q27 | Three labs' files with four counts each, and five per-file checks worked on Lab B; key b, d; The Register quoted in its own words |
+| 13 | Hard, with a key that named the tie at fiftieth Q12 asks about | Medium: four rules by name, judged against the head of Retail-Plus's rule, which the Part 3 intro now states |
+| 14 | "35 Business members"; a key alone without "because"; options ending in full stops | Customers throughout, members only for Retail-Plus; four options in one form, proposed as an options edit |
+| 15 | Options built from the same two sets of members | The calls Marketing makes and the calls that say something untrue, worked from the months; the reason says "fell in both August and September" |
+| 16 | Weekly bars, the close given in the stem, two options with "six of its last seven" | Booked so far against plan so far, charted and tabled; the stem gives nothing; no option carries a count |
+| 20 | Where the fix belongs, with "validate still on" in the key | Which step keeps each customer's first exposure, on the feed sent newest first, with its three columns printed |
+| 22 | Present tense, no renaming, the key the only option with an action | Past tense, the 2020 renaming stated, every option pairing an output with an action; the code counts left_only |
+| 23 to 26 | Prompts and techniques shared words | No word shared between a prompt and a technique; Part 5's exhibit prints two rows of the payment-level export |
+| 27 | One correct option naming the check Q11 offered; "out of one group" | A worked answer on an illustrative sheet whose average stops at row 5; the paper's own words and its lines 30 to 44 |
+| 28 | One row | Three rows, one a falling rate; each option built on its own misreading |
+| 29 | Medium, one multiplication | Hard: three trips, the overcharge and its share of the commission charged |
+| 30 | Each option an output and a claim | Outputs alone, with the team's bar of 0.5 in the stem |
+| 31 | "newest date then run_id first"; "the same thing every morning" | "finished_on descending, then run_id descending"; one row per model; run ids issued in the order runs start |
+| 32 | WHERE, GROUP BY and HAVING on seven rows | A HAVING that counts only the rows WHERE kept, set against the lead's question |
+| 33 | Two of the four options without the review's conclusion | Every option gives the count and what the review concludes |
+| 34 | Medium | Hard, as the sitting found it |
+| 35 | The stem gave 2,100 distinct users | A week's visits log; the learner counts |
+| Stretch 1 and 2 | Echoed the keys of Q8 and Q13 | Collected revenue week by week; each member's share of the tier's revenue |
+| Part 6 | "a company such as Swiggy or Zomato" | "a food-delivery company", invented, with every number illustrative |
+| Purpose and intros | Phrases the sitting found machine-made | Plain sentences in the house voice |
+
+Q31 keeps dates for finished_on, where the orchestrating session suggested a timestamp: CLAUDE.md
+allows durations only and never clock times in lesson material. The exhibit states that run ids are
+issued in the order runs start, so ordering by finished_on descending, then run_id descending keeps
+the later of bot-b's two runs of 9 September.
+
+### The hard items, and the steps each takes
+
+| Q | The exhibit | The dependent steps |
+|---|---|---|
+| 1 | The Retail-Plus tree | Predict the integer division for each quarter (2 and 1); compute the true ratios (2.36 and 1.84); compute the change (a fall of about 22 percent) |
+| 6 | The two-average query | Evaluate the CASE for five viewers (3 counted); compute both averages (10.0 and 6.0); measure the overstatement on the defined base (about 67 percent) |
+| 7 | The join-count query and the payment rows | Size the LEFT JOIN from four kinds of order (678); count the distinct orders (462); take the unpaid orders' NULLs out of count(p.payment_id) (648) |
+| 8 | The payment rows | Tell the 188 instalments from the 28 repeats and leave step d out; put the de-duplication before the sum and the sum before the join; check, then send |
+| 9 | The date-filtered LEFT JOIN | Join the three orders' rows (O-1 twice); apply the WHERE, NULL dates included; count and sum what remains (2 rows, Rs 2,400) |
+| 10 | The report by channel | Work out three gaps; compare each with its unpaid list; decide what goes and what waits |
+| 11 | Three labs' counts | Work each of five checks on Lab B's counts; see which counts were taken after the cut; mark every check that fires |
+| 12 | Rows 46 to 53 | Rank through two ties under RANK, DENSE_RANK and ROW_NUMBER; count each list at 50 (51, 52 and 50) |
+| 15 | Four members' months | Find the rows LAG reads for each September; apply the flag (four members); check the months against the calendar and count the untrue calls (two) |
+| 16 | Booked and plan so far | Take booked less plan at seven points; follow the lead's rise and fall; choose the line that states the close and the trend |
+| 20 | The feed sent newest first | Read each repeated customer's two sends and their order; apply each of four steps; keep the one that leaves every first exposure |
+| 21 | The pivot and melt code | Average M1's two June orders; melt to four rows with a NaN; sum without the NaN |
+| 22 | The gene merge | Keep the lab's four rows; mark the two unmatched rows left_only; choose the action that fixes the source |
+| 27 | The sheet whose average stops at row 5 | Average rows 2 to 5 (-0.5); average all six (1.0); state the gap and its sign |
+| 28 | Three rows of rates | Compute the sheet's three changes; compute the three the modeller meant; compare, and say what half-size moves do to risk |
+| 29 | Three trips | Take each fare after tax and fees; compute the commission due; sum the overcharge (2.00 dollars) and set it against the 23.50 charged |
+| 30 | The scoring code | Fan the merge out to 7 rows; mark each row right or wrong; take the mean (0.43) |
+| 31 | Five evaluation runs | Find each model's latest run through the tie on 9 September; run each of four queries on the rows; keep the one that returns one repeatable row per model |
+| 32 | The replies query | Keep the low ratings in WHERE; count them per model and apply HAVING (bot-a 3); set the result against the lead's question |
+| 33 | The NOT IN query | Expand NOT IN against a list that holds a NULL; evaluate the unknown for each conversation; count (0) and read what the review concludes |
+| 34 | The running total | Find the peers on 22 September; take the frame's running sum for each call; read it call by call |
+
+### The paper now
+
+35 timed items in six parts, paced at 117 of the 120 minutes: 21 hard at 4 minutes, 12 medium at 2.5
+and 2 easy at 1.5, which is 60, 34 and 6 percent.
+
+| Part | Items | Minutes | Easy | Medium | Hard |
+|---|---|---|---|---|---|
+| 1. Anand's Monday numbers | Q1 to Q6 | 16 | 2 | 2 | 2 |
+| 2. Booked against collected | Q7 to Q11 | 20 | 0 | 0 | 5 |
+| 3. The protect list and the plan line | Q12 to Q16 | 17 | 0 | 2 | 3 |
+| 4. One row per customer | Q17 to Q22 | 19.5 | 0 | 3 | 3 |
+| 5. The last mile, and spreadsheets in public | Q23 to Q29 | 22 | 0 | 4 | 3 |
+| 6. Read the code, read the data: an AI team's tables | Q30 to Q35 | 22.5 | 0 | 1 | 5 |
+
+Formats: 16 one correct option; 7 scenario-set items in three sets, answered as one letter (Q7,
+Q12, Q13 and Q20), a number (Q17), a true or false with its reason as four options (Q18) and every
+correct letter (Q19); 1 more-than-one-correct item outside a set (Q11), whose key shares no letter
+with Q19's; 2 ordering items (Q2, and Q8 with one step to leave out); 2 word-bank items (Q3 and Q4);
+4 match rows (Q23 to Q26); 3 worked answers (Q1, Q27 and Q29).
+
+By what each item asks: 10 read code or a query (Q1, Q6, Q7, Q9, Q21, Q22, Q30, Q32, Q33 and Q34);
+15 are solution design, choosing the best fit, sizing, ordering the steps, matching jobs to
+techniques or deciding what goes (Q5, Q8, Q10 to Q14, Q17, Q19, Q20, Q23 to Q26 and Q31); the other
+10 read a table, a chart or a claim, work a spreadsheet, or recall a rule (Q2 to Q4, Q15, Q16, Q18,
+Q27 to Q29 and Q35). Twelve items are set outside Kalpa: six in public cases (Q6, Q11, Q22 and Q27 to
+Q29) and six at the invented food-delivery company (Q30 to Q35).
+
+`scripts/distractor_audit.py content/W02/SAT` passes with 23 option items read and keys at a 6, b 7,
+c 5, d 6 and e 1. The llm-tic-scrubber scanner reports the paper, the key and the discussion guide
+clean.
+
+### The facts checked again on 30 September 2026
+
+| Item | What the paper states now | Source |
+|---|---|---|
+| Q6 | Facebook defined the average duration of video viewed as total time spent watching divided by "the total number of people who have played the video", and calculated it over "only the number of people who have viewed a video for three or more seconds"; inflation of 60 to 80 percent over two years; billing not affected | TechCrunch, Devin Coldewey, 22 September 2016 |
+| Q11 | 15,841 cases between 25 September and 2 October 2020 not included; "some files containing positive test results exceeded the maximum file size" | GOV.UK, PHE statement, 4 October 2020 |
+| Q11 | Lab CSV files stored in the older .xls format, 65,536 rows a sheet; "records were simply left off and not counted when imported" | The Register, 5 October 2020 |
+| Q22 | In 2020 the HGNC renamed the genes whose symbols Excel turns into dates: MARCH1 became MARCHF1 and SEPT1 became SEPTIN1 | Bruford and colleagues, Nature Genetics, 2020, as before; a summary of the renaming read the same day |
+| Q27 | A coding error "entirely excludes five countries, Australia, Austria, Belgium, Canada, and Denmark, from the analysis"; footnote 5, "RR averaged cells in lines 30 to 44 instead of lines 30 to 49"; with other errors it took 0.3 points off the highest debt group, overstated the lowest by 0.1 and understated the second by 0.2 | Herndon, Ash and Pollin, PERI working paper 322, 15 April 2013, page 7, read from the PDF itself |
+
+The pages read for this pass, each checked on 30 September 2026:
+
+- TechCrunch: https://techcrunch.com/2016/09/22/facebook-miscalculation-significantly-inflated-average-video-view-times-for-years/ (checked 30 September 2026)
+- GOV.UK: https://www.gov.uk/government/news/phe-statement-on-delayed-reporting-of-covid-19-cases (checked 30 September 2026)
+- The Register: https://www.theregister.com/2020/10/05/excel_england_coronavirus_contact_error/ (checked 30 September 2026)
+- The PERI working paper, PDF: https://peri.umass.edu/wp-content/uploads/joomla/images/WP322.pdf (checked 30 September 2026)
+- Progress Educational Trust, on the renaming: https://www.progress.org.uk/human-genes-renamed-as-microsoft-excel-reads-them-as-dates/ (checked 30 September 2026)
+
+The section above lists the Reinhart and Rogoff lines as not verified, because the PERI PDF it tried
+returned 410 Gone; the PDF at the address above opened, and the lines are now quoted from footnote 5.
+
+### The Kalpa numbers added
+
+Recomputed on 30 September 2026 on PostgreSQL 16.13 and pandas 3.0.5 from the room's own files:
+
+- The quarters: 'Q1' holds orders from 1 April to 28 June 2026 and 'Q2' from 1 July to 28 September.
+- The report by channel for July to September: app booked Rs 4,25,90,270 and collected Rs 4,25,82,150
+  against an unpaid list of Rs 8,120; store Rs 3,21,48,730 and Rs 3,11,90,920 against Rs 9,57,810; web
+  Rs 2,36,61,000 and Rs 2,28,72,000 against Rs 7,89,000. Q10 prints web's collected Rs 21,750 lower,
+  marked illustrative, so that web's bridge alone fails.
+- Joining the de-duplicated payment rows before summing them returns 650 rows, the 462 orders plus
+  188 second instalments (Q8).
+- Business carries 99 percent of the quarter's revenue (Q14's reworded stem).
+- Booked so far and plan so far, in Rs crore, at the end of the weeks starting 6 July, 20 July, 3
+  August, 17 August, 31 August, 14 September and 28 September: 0.51, 4.22, 5.95, 6.87, 7.54, 9.12 and
+  9.84 against 0.76, 2.27, 3.78, 5.30, 6.81, 8.33 and 9.84 (Q16).
+- Friday's raw export carries each order's order_amount on every payment row; order KR-00028's two
+  rows read Rs 6,35,000 with Rs 3,81,000 and Rs 2,54,000 paid (Part 5's exhibit).
+- The exposure feed sent newest first puts C-0001's and C-0002's 11 August sends before their 3
+  August sends (Q20); every other value in Q20's exhibit is the feed's own.
+
+### The proof
+
+`content/W02/SAT/internal/C2_W02_SAT_key_proofs_INTERNAL.py` now also reads every table exhibit
+back from the source file and works it: the channel gaps, the five checks on Lab B, the calls and
+the untrue calls, the running totals behind the chart, the feed sent newest first under each of the
+four steps, the sheet's average, the three rates, the three trips and the visits log. Its run on 30
+September 2026 on PostgreSQL 16.13, pandas 3.0.5 and Python 3.11.15 printed 35 PASS lines, Q1 to Q35,
+and "RESULT: PASS (35 items proved)", and dropped its scratch schema.
+
+### The Word files
+
+Rebuilt with `python3 scripts/build_saturday_paper.py W02 --docx` and read page by page through
+LibreOffice on 30 September 2026: the paper runs to 21 pages and the key to 21. Every exhibit prints
+on the page of the item that reads it; the chart in Q16 prints with its table of values beneath it;
+the visits log prints across the page, so Q35 shares a page with Q33 and Q34; the stretch page holds
+the four written follow-ups; and the answer sheet is page 21 alone. Pages 7, 13 and 16 end a part
+between a third and a half full, because each part starts on a new page.
+
+### Open points for the orchestrating session
+
+- `python3 scripts/verify.py content/W02/SAT` passes with no failure. `python3
+  scripts/sync_programme.py --check` reports no Week 2 file stale and still reports Week 1's paper
+  and key as stale; they belong to the Week 1 session and were not touched here.
+- Three edits in `data/programme/paper_edits.yaml` are proposed and await the Programme Head: bank
+  2's stem, and bank 27's stem and options.
+- Bank 28 and bank 23 go to the tracker as the two issues written above.

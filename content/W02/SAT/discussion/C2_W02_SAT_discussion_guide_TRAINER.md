@@ -6,9 +6,9 @@ why each wrong option fails, the bank items folded into each item, and the answe
 page.
 
 SQL carries more interview weight than any other analyst skill, so this is the heaviest paper of
-the first month. It is also the first paper whose items leave Kalpa: six items take the week's traps
-to public cases, and Part 6 sets them in an AI team's tables. The afternoon turns what the paper
-found into answers each learner can say aloud.
+the first month. It is also the first paper whose items leave Kalpa: six items come from public
+cases, and Part 6 imagines the tables an AI team keeps. The afternoon turns what the paper found into
+answers each learner can say aloud.
 
 ---
 
@@ -41,9 +41,9 @@ Three hundred minutes in all, with no new content anywhere in them.
 Hand out the Word paper face down and start the time together. Step one on the first page comes
 before any item: each learner rates the six parts from 1 to 4 on the answer sheet, as they are
 today. Laptops closed and phones away for the whole sitting. Announce the time left at 60 minutes
-and at 15 minutes. Say once, before the start, that Parts 5 and 6 name real companies and public
-cases: every fact in them is on the page with its source, and Part 6's tables are illustrative, so
-nobody needs to know the companies to answer. Anyone who finishes early turns to the stretch page,
+and at 15 minutes. Say once, before the start, that six items name real organisations in public
+cases: every fact in them is on the page with its source, and Part 6's company and its tables are
+invented, so nobody needs to know the organisations to answer. Anyone who finishes early turns to the stretch page,
 which is untimed and uncounted; its four follow-ups come back in the mock-interview round, so a
 learner who writes them now has rehearsed.
 
@@ -57,8 +57,10 @@ learner who writes them now has rehearsed.
    so each learner reads their rating against their score part by part.
 4. The key's rule settles the edge cases: every correct letter and no other on a more-than-one item
    (Q11 and Q19), the letter on a word-bank or match item (Q3, Q4 and Q23 to Q26), the number on
-   Q17 and Q29 with the working left to the discussion, and the whole sequence on an ordering item
-   (Q2 and Q8). There is no partial credit, because the programme has set no rule for it.
+   Q17 and the numbers on the three worked items, Q1, Q27 and Q29, with the working left to the
+   discussion, and the whole sequence on an ordering item (Q2, and Q8, whose sequence has five
+   letters because one step is left out). There is no partial credit, because the programme has set
+   no rule for it.
 5. The Academic TA enters each paper by seat in
    `answer-key/C2_W02_SAT_item_analysis_TRAINER.xlsx`, never by name: the ticks in the Marks
    sheet, 1 for a tick, 0 for a cross and a blank for an item left empty, and the six step-one
@@ -87,18 +89,20 @@ looked right, then put the question below to the room before reading the repair.
 
 | Item | What it tests | The answer most papers will hold | Ask the room | The repair, said aloud |
 |---|---|---|---|---|
-| 12 | Counting what each tie rule ships | 51, 51 and 50, reading DENSE_RANK as RANK without the gap | "Read the dense ranks down Exhibit 3A. Where do they fail to climb?" | Two ties, not one: the tie at 48 compresses the dense numbers, so C-0259 reaches 50 and DENSE_RANK ships 52. RANK ships 51 and ROW_NUMBER 50. |
-| 15 | LAG across a missing month | C-0161 and C-0171 only, believing LAG steps back a calendar month | "For C-0185's September row, which row does LAG(spend, 1) read?" | LAG reads the previous row, which for C-0185 is July. All four are flagged; a calendar check keeps the two genuine falls, and a month with no order is no reading. |
+| 12 | Counting what each tie rule ships | 51, 51 and 50, reading DENSE_RANK as RANK without the gap | "Read the dense ranks down Exhibit 3A. Where do they fail to climb?" | There are two ties: the one at 48 compresses the dense numbers, so C-0259 reaches 50 and DENSE_RANK ships 52. RANK ships 51 and ROW_NUMBER 50. |
+| 15 | LAG across a missing month | 2 calls, both true, believing LAG steps back a calendar month | "For C-0185's September row, which row does LAG(spend, 1) read?" | LAG reads the previous row, July for C-0185, so all four members are flagged. C-0185 and C-0216 placed no order in August, so two of the four calls tell a member something untrue; a calendar check keeps the two genuine falls. |
+| 10 | What leaves when one channel's bridge fails | Holding store's collected, the largest gap, or every channel's | "Work out each channel's gap. Which one does its unpaid list fail to explain?" | App and store close to the rupee, and web's gap runs Rs 21,750 past its list. Booked goes for every channel, collected goes for app and store, and web's waits, with the Rs 21,750 named with an owner and a time. |
+| 8 | The order of a reconciliation, and the step that spoils it | Keeping step d, or summing before the repeats are dropped | "Of the 216 orders with two payment rows, how many are the gateway's repeats?" | Only 28; the other 188 are two instalments of one invoice, so step d throws away real cash. Drop the repeats by order and instalment, sum to one figure per order, join, check, then send: e, f, b, c, a. |
 | 9 | A date filter on a LEFT join | 3 rows or 4, reading the WHERE as if it sat in ON | "O-3 has no payment. What is its paid_date after the join, and what does BETWEEN do with it?" | The WHERE runs after the join and drops O-2 and O-3, and O-1's two instalments repeat it: 2 rows, Rs 2,400. The date belongs in ON, with payments at one row per order first. |
+| 16 | Reading a plan line | Well ahead of plan at the close | "At the last point, how far apart are the bar and the line?" | Both read Rs 9.84 crore at the close. The lead peaked at Rs 2.17 crore in early August and was given back, because six of the seven weeks from 10 August booked below the plan's Rs 75.69 lakh a week; the line carries the close and the trend. |
+| 20 | Which step keeps each customer's first exposure | Keeping each customer's first row as the file lists it | "Which date sits on C-0001's first row in Exhibit 4B?" | The file is newest first, so that row is the 11 August send. Sort by exposed_date from the earliest, then keep each customer's first row: 130 rows, and the merge returns 340 with spend on the book. |
+| 32 | A HAVING that follows a WHERE | bot-a 3 and bot-b 1, the lead's answer | "After WHERE runs, how many of bot-b's rows are left for HAVING to count?" | One: WHERE kept only the low ratings, so HAVING counts them and bot-b fails. The lead's question needs every reply counted in HAVING and the low ones counted with count(*) FILTER. |
 | 33 | NOT IN against a list that holds a NULL | 2, the answer NOT EXISTS gives | "Write out c1 NOT IN ('c2', 'c4', NULL) as three comparisons. What is the last one?" | c1 <> NULL is unknown, so the whole condition is unknown and every row drops: 0. The review would call a working assistant useless. Write the anti-join as NOT EXISTS or a LEFT JOIN with IS NULL. |
-| 8 | The order of a reconciliation | Summing the payments before dropping the repeats | "If you sum first, where do the gateway's repeats end up?" | Drop the repeats by order and instalment, sum to one row per order, join, check 462 rows and a gap equal to the unpaid list, then send. Summing first keeps Rs 20,750 in collected. |
-| 6 | A denominator that shrank, and the base of a percentage | 40 percent, dividing the gap by the reported figure | "Too high compared with what?" | The CASE with no ELSE leaves the short views out of count, so 30 seconds over 3 views reads 10.0 against 6.0 per view; the overstatement is measured on the true 6.0, about 67 percent, inside the 60 to 80 percent TechCrunch reported for Facebook in 2016. |
-| 19 | Which guard stops a double count | Ticking drop_duplicates() | "The six repeated rows differ in one column. Which one, and what does drop_duplicates() do with them?" | They differ in exposed_date, so drop_duplicates() keeps all 346. validate='one_to_one' raises MergeError and a row-count assert fails: those two stop the run. |
+| 1 | Integer division in a ratio | Halved, from 2 to 1 | "Multiply 1 by the 76 members. Does it give the 140 orders?" | Two integer counts divide as integers, so the query prints 2 and 1; the true 2.36 and 1.84 are a fall of about 22 percent. Cast one side to numeric and multiply back before the number leaves. |
+| 6 | A denominator that shrank, and the base of a percentage | 40 percent, dividing the gap by the calculated figure | "Too high compared with what?" | The CASE with no ELSE leaves the two short viewers out of count, so 30 seconds over 3 people reads 10.0 against the defined 6.0 over all 5; the overstatement is measured on 6.0, about 67 percent, inside the 60 to 80 percent TechCrunch reported in 2016. |
+| 31 | The latest row per key, repeatably | ROW_NUMBER on the date alone | "bot-b finished two runs on 9 September. Which one does your query keep tomorrow morning?" | ROW_NUMBER with the date alone picks one of the pair, so the board can show 0.86 one morning and 0.79 the next; ordering by finished_on descending, then run_id descending makes it repeatable. A GROUP BY with two max() calls invents a run. |
 | 34 | Peers in a running total | 400, 700, 1200 and 1400, one step per row | "Calls 2 and 3 share a day. Which rows does the frame include for call 2?" | With ORDER BY day alone, calls 2 and 3 are peers and both read the day's close, 1200. Add call_id to the window's ORDER BY and each call gets its own step. |
-| 31 | The latest row per key, repeatably | ROW_NUMBER on the date alone | "bot-b finished two runs on 9 September. Which one does your query keep tomorrow morning?" | ROW_NUMBER with the date alone picks one of the pair, so the board can show 0.86 one morning and 0.79 the next; the tiebreaker makes it repeatable. A GROUP BY with two max() calls invents a run. |
-| 16 | A total against a run rate | "On plan, and the run rate is on plan" | "How many of the seven bars clear the line?" | The quarter closed on plan, Rs 10 ahead, and six of the last seven weeks sat below the weekly plan; the front-page line carries both, with its period and its comparison. |
-| 10 | What leaves when a check fails late | Collected alone, with a footnote | "Which figure passed its checks, and which one rests on the check that failed?" | Booked passed both of its checks, so it goes; collected waits, and the Rs 21,750 goes out as a named open line with an owner and a time. |
-| 11 | Checks that see a truncation | Ticking the .xlsx format | "Would the newer format have told anyone on the day?" | It raises the limit and checks nothing. Only a count of each file's records against the rows loaded, and a control total from the labs, compare what arrived with what was loaded. |
+| 11 | Which count sees a truncation | Ticking a, rows loaded against the sheet | "When was the sheet's row count taken, before the cut or after it?" | After it, so the sheet and the load agree at 65,535. Only the lab's own count of records, 70,900, and a stop at the format's limit of 65,535 data rows see Lab B's 5,365 missing records. |
 
 When a learner connects Parts 2 to 4 to the week's warehouse, discuss what the room found in class
 (the repeats, the unpaid orders, the tie at fiftieth, the members who fell) and nothing beyond it;
@@ -119,8 +123,8 @@ each anchor descend from it.
 WHERE decides whether to keep one row, judged on that row alone, before any grouping exists. HAVING
 decides whether to keep a whole group, judged on the group, after the grouping has happened. Listen
 for the answer that says only "rows against aggregates": true, and it predicts nothing new, because
-the timing is the answer. Q32 is the proof: bot-c forms no group at all, because WHERE removed its
-rows before GROUP BY ran.
+the timing is the answer. Q32 is the proof: HAVING runs after WHERE, so it counts only the low
+ratings WHERE kept, and bot-b, with three replies in all, fails a test meant for its total.
 
 #### 2. [S] INNER against LEFT join: what does each drop or keep?
 
@@ -194,9 +198,10 @@ that stops short (Q27) fails the same check from the other side.
 
 The number travels in one direction: the warehouse computes the source of truth, pandas carries the
 analyst's iteration, and Excel presents it and lets a director explore. A number Finance audits
-belongs in the warehouse, because it runs the same way every Monday and anyone can audit the query.
-Defend one choice with a reason about who depends on the number, never with a preference for a
-tool, and name the second way that would catch a wrong formula (Q28).
+belongs in the warehouse, because it runs the same way every Monday and anyone can audit the query,
+and a first look at a question belongs in a notebook that reads the warehouse, since it reports
+nothing (Q5). Defend one choice with a reason about who depends on the number, never with a
+preference for a tool, and name the second way that would catch a wrong formula (Q28).
 
 #### 10. [D] Kalpa Health asks 'where does our growth come from'; say what stays the same in your method and what changes.
 
@@ -204,8 +209,8 @@ tool, and name the second way that would catch a wrong formula (Q28).
 
 What stays the same are habits: count before you total, name the denominator, say what one row
 means, reconcile against the owner's books, and ask who owns the number. The paper has already
-carried them outside Kalpa, to a video metric, a public-health dashboard, a gene list, a bank's risk
-model and an AI team's tables. What changes is the entity model, the vocabulary and the
+carried them outside Kalpa, to a video metric, a public-health dashboard, a gene list, an economics
+paper's spreadsheet, a bank's risk model, a ride's fare and an AI team's tables. What changes is the entity model, the vocabulary and the
 stakeholders. The failure to listen for is somebody reaching for Retail's revenue tree in a
 diagnostics business without first asking what a sale is there.
 
