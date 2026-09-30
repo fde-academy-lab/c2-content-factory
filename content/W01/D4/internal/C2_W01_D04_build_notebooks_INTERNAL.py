@@ -2030,8 +2030,9 @@ kit.check("the two lists hold different numbers of Retail-Plus customers", rp_li
 **What happened.** The answer is a. Fourteen held-back Retail-Plus customers at Rs 5,000 each and a
 6 percent lift is about Rs 4,200, the cost of the hold-back, and nothing if the lift is not real.
 
-**Two lists, met head-on.** The morning offered the retention test to "the whole tier" of 22, and
-this hold-back takes 14 of 70. Both are right, because they are different lists. The 22 are
+**Two lists, met head-on.** The morning priced the retention offer on "the whole tier" of 22 and
+tests it on a coin-chosen half of them, and this hold-back takes 14 of 70. Both are right, because
+they are different lists. The 22 are
 Finance's order file, where Retail-Plus members delivered about Rs 1,139 each in August; the 70 are
 the platform's list, where Retail-Plus customers who did not get the sale averaged Rs 5,000. The
 lists use different ids and different measures, delivered revenue per member in Finance's file and

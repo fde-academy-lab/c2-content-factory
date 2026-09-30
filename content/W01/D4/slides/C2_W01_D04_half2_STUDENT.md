@@ -234,14 +234,14 @@ flowchart LR
 **The cost of the hold-back.** Holding back 14 of the platform's 70 Retail-Plus customers at Marketing's own 6 percent lift forgoes about Rs 4,200, and nothing if the lift is not real. The retention test was sized on Finance's 22 members; each decision is sized on the list it acts on.
 
 ```notes
-LIVE, 4 minutes. Meet the two lists head-on. The morning offered the retention test to "the whole
-tier" of 22, and this hold-back takes 14 of 70. Both are right: the 22 are Finance's order file, where
-Retail-Plus members delivered about Rs 1,139 each in August; the 70 are the platform's list, where
-Retail-Plus customers who did not get the sale averaged Rs 5,000. Different ids and different
-measures, delivered revenue per member against the platform's average spend, so neither checks the
-other. Fourteen are too few to see a 6 percent lift; sizing a hold-back is power, which comes later.
-Chance decides who gets the sale, so the groups are alike in everything else on average, including
-who was going to buy anyway.
+LIVE, 4 minutes. Meet the two lists head-on. The morning priced the retention offer on "the whole
+tier" of 22 and tests it on half of them, and this hold-back takes 14 of 70. Both are right: the 22
+are Finance's order file, where Retail-Plus members delivered about Rs 1,139 each in August; the 70
+are the platform's list, where Retail-Plus customers who did not get the sale averaged Rs 5,000.
+Different ids and different measures, delivered revenue per member against the platform's average
+spend, so neither checks the other. Fourteen are too few to see a 6 percent lift; sizing a hold-back
+is power, which comes later. Chance decides who gets the sale, so the groups are alike in everything
+else on average, including who was going to buy anyway.
 ```
 
 ---
@@ -464,7 +464,7 @@ icon: message-square | eyebrow: Move 4 | title: Hold the line | body: What the s
 ```
 
 ```notes
-LIVE, 2 minutes. Move 4 is spoken, never written first. The partner playing Marketing is allowed to
+LIVE, 2 minutes. Move 4 is spoken before anything is written. The partner playing Marketing is allowed to
 push once more, and the pair answers with chapter 6's design and its price.
 ```
 

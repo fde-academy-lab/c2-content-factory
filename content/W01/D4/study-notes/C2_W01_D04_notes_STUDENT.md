@@ -1,20 +1,23 @@
 # Real, worth it, and caused
 
-**Week 1, Thursday. Study notes, read after the session.** A gap earns the word real only against
-the wobble chance makes, a real gap earns money only against what acting costs, a rate earns trust
-only from the count beneath it, and a campaign earns credit only against a fair comparison.
-Reading time: about 22 minutes.
+**Week 1, Thursday. Study notes, read after the session.** Monday morning, before the growth
+review, Meera Raghavan has three questions and two minutes: is the Retail-Plus fall real or the
+usual wobble, should budget follow Student's 40 percent, and did the monsoon sale work or did those
+customers buy anyway? Each question met its own check today: a chance reference that fits the way
+the data was collected, the count beneath a rate, and a fair comparison. The answers went onto one
+page that is allowed to say "not yet". Reading time: about 25 minutes.
 
 ---
 
 ## What you can now do
 
-1. You can run a shuffle test on two quarters, read its share as a p-value, and check the verdict
-   with the textbook test.
+1. You can choose the chance reference that fits the design (flip each member's own pair for the
+   same members measured twice, shuffle the labels for different customers), read its share one
+   way and either way, and check the verdict by a second route.
 2. You can size a real gap per member, for the segment, against the company and against the cost
    of a fix.
-3. You can count what a rate stands on, run a coin-flip reference on the count, and call a rate on
-   fewer than thirty observations a lead.
+3. You can count what a rate stands on, in customers as well as orders, run a coin-flip reference
+   on the count, and call a rate on fewer than thirty customers a lead.
 4. You can split a campaign's lift by segment and see why a blend rose while every segment fell.
 5. You can write Meera's note as claim, evidence, caveat and action, with "not yet" as a complete
    answer.
@@ -57,8 +60,8 @@ test needs to see a gap) arrive in later weeks.
 
 ```mermaid
 flowchart LR
-    Q1["<b>Is the drop real?</b><br/>a gap"] --> H1["<b>chance</b><br/>could shuffling make it?"]
-    Q2["<b>Move budget to Student?</b><br/>a rate"] --> H2["<b>the count</b><br/>how many behind it?"]
+    Q1["<b>Is the drop real?</b><br/>a gap"] --> H1["<b>chance</b><br/>could flips or a shuffle make it?"]
+    Q2["<b>Move budget to Student?</b><br/>a rate"] --> H2["<b>the count</b><br/>how many customers behind it?"]
     Q3["<b>Did the discount work?</b><br/>a rise after a campaign"] --> H3["<b>a fair comparison</b><br/>who got it, against whom?"]
     H1 --> N["<b>one note</b><br/>claim, evidence,<br/>caveat, action"]
     H2 --> N
@@ -87,39 +90,43 @@ change there is read against chance before anyone acts.
 
 | Option | Sized on this file | Call |
 |---|---|---|
-| A. Shuffle test | 44 member totals, 5,000 deals in under a second | Best fit |
-| B. Textbook test | One call, built for bell shapes; 8 of 44 totals are zero | Second route |
-| C. Bootstrap range | Answers how big, chapter 2's question | Later |
-| D. Wait for Q3 | One quarter; Monday passes unanswered | If A and B are unclear |
+| A. Flip each member's pair | 22 members, one Q1 less Q2 each; the share moves by 0.004 across five seeds | Best fit |
+| B. Pool and shuffle | 44 totals treated as 44 different people | The design for different customers |
+| C. Textbook paired test | One call on 22 differences, built for bell shapes; 8 of 44 totals are zero | Second route |
+| D. Wait for Q3 | One quarter; Monday passes unanswered | If A and C are unclear |
 
-Compute decides nothing at 44 totals; the lumpy file and a reader who can watch ten cards being
-dealt decide. The switch: tens of thousands of well-behaved members, where B is the house standard.
+The same 22 members sit in both quarters, so a coin per member, deciding which of its two quarters
+counts as Q1, keeps each member compared with themselves. Pooling the 44 totals counts the gaps
+between members as chance; here a member's Q1 barely predicts their Q2 (a correlation of 0.04), so
+the two land close, but where heavy buyers stay heavy, pooling overstates chance and can miss a real
+fall. The switch: different customers in each group, where the label shuffle is the design.
 
-**The build.** If the quarter made no difference, the labels are arbitrary, so dealing them at
-random builds a chance-only world. On ten invented cards with a real gap of Rs 880, 21 of 1,000
-shuffles reached it (0.021), against an exact 6 of 252 deals (0.024). Retail-Core's 34 members fell
-from Rs 1,509 to Rs 1,399, a gap of Rs 110 that 1,724 of 5,000 shuffles matched, a share of 0.345:
-the usual wobble. Retail-Plus's 22 members fell from Rs 3,279 to Rs 2,169, Rs 1,110 each, and only
-135 of 5,000 shuffles matched it, 0.027. Five other seeds give 0.026 to 0.029, and counting rises
-too gives 0.050.
+**The build.** On five invented members' cards with a real gap of Rs 880, 35 of 1,000 tosses
+reached it, against an exact 1 of the 32 ways five coins can land. Retail-Core's 34 members fell Rs
+110 each, a gap flips matched in 0.358 of 5,000 counting falls and 0.723 either way: the usual
+wobble. Retail-Plus's 22 members fell from Rs 3,279 to Rs 2,169, Rs 1,110 each; 145 of 5,000 flips
+made a fall that large (0.029) and 286 a move that large either way (0.057). Meera asked after the
+fall was seen, so no direction was fixed in advance, and both go in the note: borderline, and
+modest.
 
 **The trap.** "p = 0.03, so there is a 3% chance we are wrong about the drop." Meera would treat the
-fall as 97 percent certain. Every shuffle assumed nothing changed, so the share describes that
-world; the chance of being wrong depends on what the shuffle never saw. **The check:** of twenty
-invented segments where nothing changed, one came back at 0.005. **The fix:** "If nothing had
-changed between the quarters, a fall of Rs 1,110 per member or more would turn up in about 3 of
-every 100 shuffles, so we treat the Retail-Plus drop as real."
+fall as 97 percent certain, but every flip assumed nothing changed, so the share describes only that
+world. **The check:** of twenty invented segments where nothing changed, one came back at 0.003.
+**The fix:** "If nothing had changed between the quarters, a fall of Rs 1,110 per member or more
+would turn up in about 3 of every 100 flips, and a move that large either way in about 6; the
+question came after the fall was seen, so we read it as borderline."
 
-**The second route.** The textbook (Welch) test gives 0.026 for Retail-Plus and 0.350 for
-Retail-Core. Switch to it on large, well-behaved data; keep the shuffle for small or lumpy data or
-a reader who needs to see how.
+**The second route.** Counting all 4,194,304 coin patterns gives 0.027 one way and 0.055 either way,
+and the textbook paired test agrees. Switch to that one call when members run to thousands; keep
+the flips for small or lumpy data, or a reader who needs to see how the number was made.
 
 **ORIGIN.** Ronald Fisher's The Design of Experiments (1935) is an original reference for testing
 by rearranging labels (checked 29 Sep 2026).
 
-> **Kavya's review.** "Retail-Core's third is the baseline, Retail-Plus's 0.03 is the gap against
-> it, the textbook test agrees, and your sentence would still be true if the drop were a fluke. Now
-> tell me how much money it is."
+> **Kavya's review.** "Retail-Core's third is the wobble. Retail-Plus sits at about 3 in 100
+> counting falls and 6 in 100 either way, three routes that keep each member's pair agree, and you
+> said which direction you counted and why. Borderline is an honest answer. Now tell me how much
+> money it is."
 
 ---
 
@@ -132,42 +139,39 @@ offer that cannot pay back and the money is gone; ignore a growing fall and the 
 million dollars a year in the US (Kohavi and Thomke, HBR, 2017), while only about a third of
 Microsoft experiments designed to improve a key metric succeeded (Kohavi and colleagues, 2009).
 
-| Option | What it misses | Call |
+| Option | What it needs | Call |
 |---|---|---|
-| A. Rank by p-value | Size: a share says how sure, never how big | The trap |
-| B. Size against the segment | The company around it | Partial |
-| C. Size against the company and the cost | Nothing, if the cost is known | Best fit |
-| D. A bootstrap range | Nothing; it tests the range against the cost | Second route |
+| A. Break-even on the estimate | One pass over the orders, and a cost, assumed today | Best fit for Monday |
+| B. The low end of a range | 22 differences redrawn 5,000 times | Second route |
+| C. Test the offer on half the tier | Rs 5,500 and a quarter | Where the answer can lead |
+| D. A past offer's recovery rate | A measured rate, which Kalpa does not have | Cannot run today |
 
-The switch: a known recovery rate from an earlier offer, and then C alone decides.
+**The build.** Rs 1,110 times 22 members is Rs 24,420 a quarter, a third of the tier's Q1 money and
+0.19 percent of the company's Q2 delivered revenue of Rs 1,28,64,680. Business moved plus Rs
+6,18,460 between the quarters, which is where the company's money sits.
 
-**The build.** Rs 1,110 times 22 members is Rs 24,420 a quarter. The tier fell from Rs 72,130 to Rs
-47,710, a third of its money (33.9 percent). The company delivered Rs 1,22,73,410 in Q1 and Rs
-1,28,64,680 in Q2, so the fall is 0.19 percent of Q2. Between the quarters Retail-Core moved minus
-Rs 3,750, Student plus Rs 980 and Business plus Rs 6,18,460, which is where the company's money sits.
-
-**The trap.** Shares ranked Retail-Plus 0.027, Retail-Core 0.345, Business 0.555, and the draft
-wrote: "Retail-Plus is our biggest problem; fund its retention programme first." **The check** puts
-rupees beside every share, and an invented Rs 20 gap shows why: its share was 0.446 on 100 orders,
-0.292 on 1,000, 0.076 on 5,000 and 0.002 on 20,000. **The fix** is two sentences: the fall is real,
-and it is worth Rs 24,420 a quarter, 0.19 percent of the company.
-The harm in the draft is scale: a programme funded because a share was small, before anyone set
-the fall against the company or the offer's cost.
+**The trap.** A hurried draft ranked the segments by the share, counted either way (Retail-Plus
+0.057, Retail-Core 0.723, Business 0.910), and wrote: "Retail-Plus is the surest move of the
+quarter, so it opens the growth review: fund its retention programme first." **The check** puts
+rupees beside every share: by rupees moved, Business opens the review. An invented Rs 20 gap shows
+how far the columns part: its share was 0.43 on 100 orders and 0.002 on 20,000. **The fix** is two
+sentences: the fall is borderline against chance, about 3 in 100 flips one way and 6 either way, and
+it is worth Rs 24,420 a quarter, 0.19 percent of the company.
 
 **The cost.** An assumed offer at Rs 500 per member costs Rs 11,000 a quarter and must win back 45
-percent of the fall to break even. Winning back a quarter loses about Rs 4,895; three quarters gains
-about Rs 7,315. At an assumed 30 percent margin it needs 150 percent, so it cannot pay back.
+percent of the fall to break even; at an assumed 30 percent margin it needs 150 percent.
 
-**The second route.** Redrawing members 5,000 times puts an approximate 95 percent range for the fall at about Rs 40
-to Rs 2,192 per member (Rs 920 to Rs 48,220 a quarter), with 0.021 of redraws at or below zero. The
-range, called a confidence interval and built later, dips below the offer's Rs 500, so test on half
-the tier. Read a range whenever the decision has a cost to beat.
+**The second route.** Redrawing the members' own falls 5,000 times puts an approximate 95 percent
+range at about Rs 80 to Rs 2,160 per member, a confidence interval to be built properly later. Its
+low end sits far below the offer's Rs 500, so the fall is worth watching and not worth acting on
+alone; if the head of Retail-Plus acts, the offer goes to a coin-chosen half first.
 
 **WATCH OUT.** A list ranked by p-value has ranked certainty and called it importance.
 
-> **Kavya's review.** "Real, yes, by two routes. Worth Rs 24,420 a quarter, 0.19 percent of the company,
-> and a third of the tier. The range dips below the offer's cost, so offer it to half, hold back
-> half, and measure."
+> **Kavya's review.** "Borderline against chance by two routes, worth Rs 24,420 a quarter, 0.19
+> percent of the company and a third of the tier. The range's low end sits far below what the offer
+> costs, so this is a watch item. If the head of Retail-Plus wants to act, offer it to a coin-chosen
+> half and hold back the other half."
 
 **CALLBACK.** Week 1, Tuesday found Retail-Plus frequency was the branch that moved; today priced it.
 
@@ -183,39 +187,38 @@ over-represented among top performers. Howard Wainer found them at both tails: "
 of small schools" and "we found 12%". By 2001 the Foundation had given about 1.7 billion dollars to
 education projects (Wainer, "The Most Dangerous Equation", 2009).
 
-| Option | What it risks | Call |
+| Option | What it needs | Call |
 |---|---|---|
-| A. Trust the headline | Money moved on a rate a coin could make | The trap |
-| B. Coin-flip reference | Nothing, once the count is found | Best fit |
-| C. Under thirty is a lead | Blunt: careful, never how careful | The summary line |
-| D. Wait for thirty orders | Time, at the segment's pace | The action |
+| A. Trust the headline | Four segments and two quarters | The trap |
+| B. Coin flips on the count | The count behind the rate, found by you | Best fit |
+| C. The rule of thumb | The customers behind the rate, against thirty | The summary line |
+| D. Wait for thirty customers | How fast new customers arrive, sized once they are counted | The action |
 
-The switch: a cheap way to buy Student orders fast, such as a small paid test, turns D into a
-two-week experiment.
+The rule counts customers, because more orders from the same few customers add orders and no new
+evidence: thirty orders from three people are still three people's habits. The switch: a cheap way
+to reach more student customers fast, such as a small paid test, turns D into a two-week
+experiment.
 
 **The build.** For every 100 Q1 orders, Q2 brought Retail-Core 97, Retail-Plus 65, Business 94 and
 Student 140. As a leaderboard, Student wins.
 
 **The trap.** "Student is up 40 percent, the fastest on the page: move acquisition budget to
-Student." **The check** counts what the rate stands on: a count under thirty. On invented bases, one
-extra order moves a rate 10 points on 10 orders and 0.25 on 400. If nothing changed, each order
-lands in Q1 or Q2 on a coin flip; across 5,000 worlds, Student's orders made a 40 percent rise in
-0.397 of them. Retail-Core's 73 orders did it in 0.086, an invented 400 in under 0.002, and the
-chance falls below one in five by thirty orders. **The fix:** "Not yet: watch Student until it
-carries thirty orders a quarter before any budget moves."
+Student." **The check** counts what the rate stands on: a count of orders under thirty, from very
+few customers. On invented bases, one extra order moves a rate 10 points on 10 orders and 0.25 on
+400. If nothing changed, each order lands in Q1 or Q2 on a coin flip; across 5,000 worlds, Student's
+orders made a 40 percent rise in 0.397 of them. Retail-Core's 73 orders did it in 0.086 and an
+invented 400 in under 0.002. **The fix:** "Not yet: no budget moves until more customers buy,
+thirty or more behind the rise."
 
-**The interview version.** Where the true rate is 31 percent for everyone, invented groups of 12
-showed 42 percent or more 30.9 percent of the time, while groups of 1,200 landed between 27.7 and
-34.8 percent.
-
-**The second route.** Listing every possible deal gives an exact 0.387 against the flips' 0.397.
-Count every deal while the list is short; on a few dozen orders it runs into billions and the flips
-take over.
+**The second route.** Listing every possible deal gives an exact 0.387 against the flips' 0.397, and
+Student-sized handfuls of Retail-Core's own orders make the rise in 0.344, while handfuls of sixty
+almost never do. The swing belongs to small counts, whatever segment they come from.
 
 **WATCH OUT.** The largest percentage on a page most often sits on the smallest base.
 
-> **Kavya's review.** "Student's rise is real arithmetic on too few orders to act on. Count them,
-> say how often chance makes the rise, and give Meera the count that would reopen it."
+> **Kavya's review.** "Student's rise is real arithmetic on too few orders, from too few customers,
+> to act on. Count both, say how often chance makes the rise, and give Meera the number of customers
+> that would reopen it."
 
 **CALLBACK.** Monday's first rate carried its numerator and denominator; today the denominator's
 size held the rate back.
@@ -228,20 +231,26 @@ Meera, with the marketing lead's report open: "Did the discount work, or did tho
 anyway?" The Monsoon Sale gave 15 percent off from 5 to 19 August 2026, aimed at Retail-Plus, and
 at that discount orders must rise 17.6 percent just for revenue to stand still.
 
-**IN THE FIELD.** UC Berkeley's 1973 admissions took about 44 percent of 8,442 men and 35 percent of
-4,321 women, yet department by department the small bias favoured women (Bickel, Hammel and
-O'Connell, Science, 1975). Flipkart's Big Billion Days, 23 to 30 September 2022, passed one billion
-customer visits (Walmart, 2022), a number useful only once someone asks whose.
+**IN THE FIELD.** eBay's search-advertising experiments found new and infrequent users bought more
+after seeing an ad, while frequent users, whose buying the ads did not change, took most of the ad
+spend, so the average hid the split (Blake, Nosko and Tadelis, NBER Working Paper 20171). UC
+Berkeley's 1973 admissions took about 44 percent of 8,442 men and 35 percent of 4,321 women, yet
+department by department the small bias favoured women (Bickel, Hammel and O'Connell, Science,
+1975).
 
-| Option | What it risks | Call |
+| Option | What it assumes | Call |
 |---|---|---|
-| A. Before and after | Everything else that month changed | Chapter 6 |
-| B. Exposed against not, blended | Groups with different mixes | Marketing's |
-| C. Exposed against not, per segment | Differences inside a segment | Best fit |
-| D. Both groups on one mix | Nothing beyond C | Second route |
+| A. Before and after, a handful of orders a month | Nothing else changed that month | Chapter 6 |
+| B. Exposed against not, blended | The two groups hold the same mix | Marketing's |
+| C. Exposed against not, per segment | Who got it inside a segment was as good as random | Best fit |
+| D. Both groups on one mix | The mix is the whole story | Second route |
 
-It is 160 customers in four cells, and the mixes differ: 50 percent Retail-Plus among the exposed,
-40 among the rest. The switch: a group chosen at random, which makes B fair.
+**Where the exposure table comes from.** It is the campaign platform's August list: 160 Retail-Plus
+and Retail-Core customers under the platform's own ids, with one average August spend per group. It
+records who received the sale, whatever the sale was aimed at, which is why it holds Retail-Core
+customers although the campaigns table aimed the sale at Retail-Plus, and it cannot be matched to
+Finance's order file. Read it for who got the sale; the mixes differ, 50 percent Retail-Plus among
+the exposed and 40 among the rest.
 
 **The build.** Rebuild Marketing's number first: exposed customers spent Rs 3,395 in August against
 Rs 3,200, a lift of 6.1 percent.
@@ -259,16 +268,17 @@ more Retail-Plus members, who spend more whatever happens: Simpson's reversal, w
 confounder. **The fix:** "Do not repeat it as designed; if Diwali runs a sale, hold back a random
 slice of each segment."
 
-**The second route.** On the unexposed group's mix the exposed spend Rs 3,104 against Rs 3,200; on
-the exposed mix the unexposed spend Rs 3,500 against Rs 3,395. Both are 3.0 percent less. Use one
-mix when the answer must fit one line; show the split when the reader takes a table.
+**The second route.** On one mix the exposed spend Rs 3,104 against Rs 3,200, 3.0 percent less, and
+the other way round gives the same. This route reuses the split's four cells, so it cannot catch an
+error in them; what it checks is that the mix explains the whole 6.1 percent. The independent check
+comes from Finance's months in chapter 6.
 
 **ORIGIN.** Edward Simpson described the reversal in the Journal of the Royal Statistical Society,
 Series B, 1951 (checked 29 Sep 2026).
 
 > **Kavya's review.** "You rebuilt Marketing's number before disagreeing with it. The split says 3
-> percent less in both segments, one mix agrees, and the reason is who got the sale. Now tell me what
-> else changed in August."
+> percent less in both segments, one mix says the same by construction, and the reason is who got
+> the sale. Now tell me what else changed in August, because neither of them can see that."
 
 **CALLBACK.** Tuesday separated a change in mix from a change in rate; this is that split again.
 
@@ -296,30 +306,31 @@ and the note covers what moved.
 **The trap.** "Retail-Plus revenue fell 34%. Student is up 40%. The monsoon sale lifted revenue 6%.
 We recommend a retention offer for Retail-Plus, budget to Student, and the sale again for Diwali."
 Three true numbers lead to three wrong decisions. **The check** audits each line for a base, a
-count or chance, and a caveat: 9 of 9 cells are empty. **The fix**, about 170 words, is the model
-note from the escalated case:
+count or chance, and a caveat: 9 of 9 cells are empty. **The fix**, 190 words, is the model note
+from the escalated case:
 
-> **Claim.** Retail-Plus really is spending less, and it is small against the company; Student is
+> **Claim.** Retail-Plus is down by a borderline amount and small against the company; Student is
 > too thin to fund yet; the monsoon sale did not work as designed.
 >
-> **Evidence.** Retail-Plus members delivered Rs 1,110 less each in Q2; chance makes a fall that
-> large in about 3 of 100 shuffles. It is Rs 24,420 a quarter, 0.19 percent of delivered revenue.
-> Student's 40 percent rise stands on under thirty orders, and coin flips make it in four worlds of
-> ten. The sale's 6 percent is a blend: inside Retail-Plus and Retail-Core, exposed customers spent
-> 3 percent less.
+> **Evidence.** Retail-Plus members delivered Rs 1,110 less each in Q2; if nothing had changed, a
+> fall that large turns up in about 3 of 100 flips, and a move that large either way in about 6. It
+> is Rs 24,420 a quarter, 0.19 percent of delivered revenue. Student's 40 percent rise comes from
+> very few customers, and coin flips make it in four worlds of ten. The sale's 6 percent is a blend:
+> inside Retail-Plus and Retail-Core, exposed customers spent 3 percent less.
 >
-> **Caveat.** The group who got the sale was half Retail-Plus against 40 percent of the rest, and Retail-Plus
-> spends more anyway; the exposure table
-> gives one August figure per group, so we cannot see the spread.
+> **Caveat.** We asked after seeing the fall. The group who got the sale was half Retail-Plus
+> against 40 percent of the rest, and Retail-Plus spends more anyway; the platform's list gives one
+> August figure per group, so we cannot see the spread.
 >
-> **Action.** Test a retention offer on half of Retail-Plus; watch Student until thirty orders a
-> quarter; do not repeat the sale as designed, and hold back a random slice of each segment at
-> Diwali.
+> **Action.** Watch Retail-Plus, and if we act, test the offer on a coin-chosen half; watch Student
+> until more customers buy, thirty or more; do not repeat the sale as designed, and hold back a
+> random slice of each segment at Diwali.
 
 The caveat is the part a hurried analyst drops and the part a CEO keeps them for.
 
-**The second route.** Trace every figure in the note to a computed number: 10 of 10 traced. Trace by
-hand for a one-off; generate the note from the numbers when it repeats weekly.
+**The second route.** A note can quote correct numbers and still recommend the wrong thing, so apply
+the rule each chapter ended on to its numbers and compare decisions. The rules reach all three of
+the note's decisions: its actions follow from its evidence.
 
 > **Kavya's review.** "Three answers, each with its base, its caveat and a cost, and two say not yet
 > with what would change them. Marketing will push on the third on Monday."
@@ -345,35 +356,37 @@ natural search" (Blake, Nosko and Tadelis, NBER Working Paper 20171).
 
 The switch: a forgone lift running into lakhs makes B, on a long run of months, the working answer.
 
-**The build.** The sale was aimed at Retail-Plus and went to 30 Retail-Plus and 30 Retail-Core
-customers. A rule chose them, never a coin.
+**The build.** The campaigns table aimed the sale at Retail-Plus; the platform's list, which records
+who received it, shows 30 Retail-Plus and 30 Retail-Core customers. A rule chose them.
 
 **The trap.** "Retail-Plus delivered Rs 25,060 in August against Rs 9,280 in July, up 170%: the
 monsoon sale worked, so run it for more of the base at Diwali." **The check** asks what else
-changed: Retail-Core rose 73 percent over the same months (Rs 13,320 to Rs 23,090) with no sale
-aimed at it, and Retail-Plus fell 58 percent from May to June with no sale. **The fix** compares
-August's share of each quarter: 52.5 percent for Retail-Plus, 48.6 for Retail-Core, and dealing the
-segment labels at random makes a gap that large in about eight deals in ten. The months show no sign
-of the sale beyond a busy August for everyone. Retail-Core is an imperfect comparison, since
-Marketing's extract lists Retail-Core customers among those who got the sale; if it lifted both,
-similar Augusts would look the same, which is one more reason only a coin settles it.
+changed: Retail-Core rose 73 percent over the same months, Retail-Plus fell 58 percent from May to
+June with no sale, and July stands on 4 orders. **The fix** compares August's share of each
+segment's quarter: 52.5 percent for Retail-Plus, 48.6 for Retail-Core. Shuffling the segment labels
+makes a gap that large in about eight deals in ten either way, and four in ten in Marketing's
+direction. Retail-Core is an imperfect comparison, since the platform's list counts some of its
+customers among those who got the sale, which is one more reason only a coin settles it.
 
-**The design.** Before the sale, a coin holds back a random fifth inside each segment, 14 of 70
-Retail-Plus customers. At Marketing's own 6 percent that forgoes about Rs 4,200, the cost of the
-hold-back. Fourteen customers are too few to see a 6 percent lift, since spend swings far more than
-that between customers; how many a hold-back needs is power, a later week's topic.
+**The design.** Before the sale, a coin holds back a fifth inside each segment of the platform's
+list, 14 of its 70 Retail-Plus customers, forgoing about Rs 4,200 at Marketing's own 6 percent.
+Fourteen are too few to see a 6 percent lift; how many a hold-back needs is power, a later week's
+topic. The morning priced the retention offer on "the whole tier" of 22, Finance's members at about
+Rs 1,139 each in August, and tests it on half of them; the 70 are the platform's customers at Rs
+5,000. Different lists, ids and measures, so each decision is sized on the list it acts on.
 
-**The second route.** Chapter 4's split found 3.0 percent less in both segments. Both routes find no
-lift the sale can claim: the months show no sign, the split says 3 percent less. Use the months
-when no exposure table exists and the hold-back whenever the next campaign can still be designed.
+**The second route.** The same month-share test on Q1, when no sale ran, finds gaps of 4, 22 and 26
+points between the segments' monthly shares. Quiet months make gaps as large as August's and far
+larger, so August carries no sign of the sale. This route shares nothing with chapter 4's split, and
+the two agree: no lift the sale can claim.
 
-**At depth.** Option B is a difference in differences: Retail-Plus moved plus Rs 15,780, Retail-Core
-plus Rs 9,770, a difference of Rs 6,010 on 13 orders. It assumes the two segments move alike without
-the sale, and May to June says they do not (Retail-Plus fell 58 percent, Retail-Core rose 63). A
-lead, never an answer.
+**At depth.** Option B is a difference in differences: Retail-Plus rose Rs 6,010 more than
+Retail-Core on 13 orders, and May to June says the two segments do not move alike. It is a lead to
+follow up, and it settles nothing.
 
-> **Kavya's review.** "Who got it: a rule, never a coin. Two routes find no lift, and you priced the
-> hold-back and said what it cannot yet size. Take that to Marketing as an offer."
+> **Kavya's review.** "Who got it: a rule chose them. Who did not: a different mix. What else
+> changed: August, for everyone, and a quarter with no sale swings further. Two routes find no lift,
+> and you priced the hold-back on the list it acts on. Take that to Marketing as an offer."
 
 ---
 
@@ -410,14 +423,16 @@ Key: 1c 2b 3d 4c. A miss sends you back to the trap in chapter 1, 3, 4 or 6.
 ## Where this gets tested
 
 **[S] How do you know whether a change in a metric is significant?** "I build a reference for what
-chance alone does: pool the two periods, deal the labels at random thousands of times, and count
-how often the shuffled gap matches the real one. Retail-Core's came back one in three, Retail-Plus's
-about 3 in 100. Then I check the count and size it in money."
+chance alone does, fitted to how the data was collected: for the same members measured twice I flip
+each member's own pair thousands of times, and for different customers I shuffle the labels. Then I
+count how often chance matches the real gap, one way and either way. Retail-Core's came back seven
+in ten either way; Retail-Plus's about 3 in 100 one way and 6 either way, which is borderline. Then
+I check the count and size it in money."
 
 **[S] Explain a finding to a non-technical stakeholder.** "The decision first, in one sentence with
 one number and its base, then the evidence, the caveat that would change my view, and the action
 with its cost: Retail-Plus is spending about Rs 24,000 a quarter less, a fifth of one percent of the
-company, so test an offer on half the members."
+company, which is worth watching, and if we act, an offer goes to a coin-chosen half first."
 
 **[S] What does p = 0.03 mean, and not mean?** "If there were no real difference, a gap this large
 would turn up about 3 times in 100 by chance. It never means a 3 percent chance we are wrong, and it
@@ -433,35 +448,38 @@ untargeted segment over the same months; next time, a random hold-back agreed in
 
 **[D] The CEO wants a yes or no and the honest answer is 'not yet'; what do you say, and how do you
 hold the line when marketing pushes?** "Not yet, and here is what would tell us by when: a held-back
-slice of each segment at Diwali. I hold the line with evidence, never authority: their number
-reproduced, then the segments, and an invitation to find the flaw."
+slice of each segment at Diwali. I hold the line with evidence: their number reproduced, then the
+segments, and an invitation to find the flaw."
 
 **[F] A metric moved and the test says significant; how do you decide to act?** "Size it against
-the company and the cost: Rs 24,420 against an Rs 11,000 offer needs 45 percent back, and the range
-dips below the cost, so a held-back test comes before a rollout."
+the company and the cost: Rs 24,420 against an Rs 11,000 offer needs 45 percent back, and the
+range's low end sits far below the offer's cost, so it is worth watching and not worth acting on
+alone; a held-back test comes before any rollout."
 
 **[F] The campaign lifted overall but every segment fell; which do you report?** "The segments, with
 the mix named as why the blend rose."
 
 **[F] How would you set up Diwali so you can tell?** "A coin inside each segment holds back a fifth
-before the sale, with the measure fixed in advance; at the claimed lift it costs about Rs 4,200, and how many to hold
-back so a small lift shows is a power question for later."
+before the sale, with the measure and the direction fixed in advance; at the claimed lift it costs
+about Rs 4,200, and how many to hold back so a small lift shows is a power question for later."
 
 **[S] What is a confounder?** "Something that differs between groups and moves the outcome on its
 own: the sale went to more high-spending Retail-Plus members."
 
 **[D] Marketing says your split is cherry-picking.** "Segment was fixed before looking because it
-is how the sale was targeted, one mix agrees, and I will run any cut they name in advance."
+is how the sale was targeted, the months on another file agree, and I will run any cut they name
+in advance."
 
-**[D] Chapter 1: shuffle, textbook test or wait a quarter?** "The shuffle on a few dozen lumpy
-totals, checked by the textbook test, which becomes the default at scale; wait only if both are
-unclear."
+**[D] Chapter 1: flip, shuffle, textbook test or wait a quarter?** "Flip each member's pair, since
+the same 22 members sit in both quarters, checked by the textbook paired test, which becomes the
+default at scale; the label shuffle when the groups are different customers; wait only if both
+routes are unclear."
 
 **[D] Chapter 2: rank by p-value, by rupees, or by rupees against cost?** "Rupees against cost; a
 known recovery rate would let break-even decide alone."
 
-**[D] Chapter 3: trust the rise, test the count, or wait?** "Test the count; a cheap source of
-orders would turn waiting into an experiment."
+**[D] Chapter 3: trust the rise, test the count, or wait?** "Test the count, in customers as well as
+orders; a cheap way to reach more customers would turn waiting into an experiment."
 
 **[D] Chapter 4: before and after, blend, split or one mix?** "The split, with one mix as its one
 line; the blend only after a coin."
@@ -478,8 +496,8 @@ the change over many months when a hold-back is impossible, its assumption said 
 One line per chapter; the same six close the afternoon deck and head the cheat sheet, word for word.
 
 1. A p-value is a share of chance-only worlds; it is never the chance the finding is wrong.
-2. Real and worth acting on are two separate calls: the shuffle answers the first, rupees against cost answer the second.
-3. Count what a rate stands on before you repeat it; under thirty, it is a lead.
+2. Real and worth acting on are two separate calls: a chance reference answers the first, rupees against cost answer the second.
+3. Count what a rate stands on, in customers as well as orders, before you repeat it; under thirty customers, it is a lead.
 4. Split an aggregate by segment before you credit a campaign, and name who got it.
 5. The note is claim, evidence, caveat, action, and "not yet, and here is what would tell us" is a complete answer.
 6. A fair comparison asks who got it, who did not, and what else changed; only a coin makes the two groups alike.
@@ -497,14 +515,19 @@ defended aloud. In Week 2 a hold-back becomes a SQL query.
 
 | Term | What it means here | Where it appeared | Example |
 |---|---|---|---|
-| Label shuffle | Dealing labels at random to build a chance-only world | Chapter 1 | 21 of 1,000 at Rs 880 |
-| p-value | Share of chance-only worlds with a gap at least as large | Chapter 1 | 0.027 for Retail-Plus |
+| Flip test | A coin per member decides which of its two quarters counts as Q1 | Chapter 1 | 145 of 5,000 for Retail-Plus |
+| Label shuffle | Dealing group labels at random across different customers | Chapters 1 and 6 | 4,124 of 5,000 in August |
+| p-value | Share of chance-only worlds with a gap at least as large | Chapter 1 | 0.029 one way, 0.057 either way |
 | Break-even recovery | Share of a fall a fix must win back | Chapter 2 | 45 percent |
-| Confidence interval | The range of sizes the data supports | Chapter 2 | About Rs 40 to Rs 2,200 |
-| Lead | A rate on under thirty observations | Chapter 3 | Student's 40 percent |
+| Lead | A rate on under thirty customers | Chapter 3 | Student's 40 percent |
+| Mix | The share of each kind of customer inside a group | Chapter 4 | 50 against 40 percent Retail-Plus |
 | Confounder | Drives both who got a campaign and the outcome | Chapters 4 and 6 | Segment |
+| Held-back group | A random slice that does not get the campaign | Chapter 6 | 14 of the platform's 70 |
+| Confidence interval | The range of sizes the data supports | Chapter 2 | About Rs 80 to Rs 2,160 |
+| Blend | One average over groups mixed together | Chapter 4 | Rs 3,395 against Rs 3,200 |
+| Lift | How much more the exposed spent, as a share of the rest | Chapters 4 and 6 | Marketing's 6.1 percent |
 | Simpson's reversal | One way in every group, the other in the blend | Chapter 4 | Up 6.1, down 3.0 |
-| Held-back group | A random slice that does not get the campaign | Chapter 6 | 14 of 70 |
+| Placebo test | The same test on months with no campaign | Chapter 6 | Gaps of 4, 22 and 26 points |
 
 ---
 
@@ -512,7 +535,7 @@ defended aloud. In Week 2 a hold-back becomes a SQL query.
 
 | Order | What | Time | Why |
 |---|---|---|---|
-| 1 | Seeing Theory, https://seeing-theory.brown.edu/frequentist-inference/index.html (verified 29 Sep 2026) | 25 minutes | Today's shuffles, drawn |
+| 1 | Seeing Theory, https://seeing-theory.brown.edu/frequentist-inference/index.html (verified 29 Sep 2026) | 25 minutes | Chance references, drawn |
 | 2 | StatQuest, hypothesis testing and p-values, https://statquest.org/video_index.html (verified 29 Sep 2026) | 30 minutes | The p-value sentence, slowly |
 | 3 | Chapter 1: https://hbr.org/2020/03/building-a-culture-of-experimentation (checked 30 September 2026) | 20 minutes | Booking.com's tests |
 | 4 | Chapter 1: https://hbr.org/podcast/2019/09/at-booking-com-innovation-means-constant-failure (checked 30 September 2026) | One episode | Nine in ten wrong |
@@ -520,6 +543,6 @@ defended aloud. In Week 2 a hold-back becomes a SQL query.
 | 6 | Chapter 2: https://ai.stanford.edu/~ronnyk/ExPThinkWeek2009Public.pdf (checked 30 September 2026) | 30 minutes | A third succeed |
 | 7 | Chapter 3: https://assets.press.princeton.edu/chapters/s8863.pdf (checked 30 September 2026) | 30 minutes | Small counts swing |
 | 8 | Chapter 4: https://www.refsmmat.com/posts/2016-05-08-simpsons-paradox-berkeley.html (checked 30 September 2026) | 15 minutes | Berkeley's reversal |
-| 9 | Chapter 4: https://corporate.walmart.com/news/2022/10/25/ahead-of-the-u-s-holidays-indias-shoppers-and-sellers-go-big (checked 30 September 2026) | 5 minutes | Big Billion Days |
+| 9 | Chapter 4: https://www.nber.org/papers/w20171 (checked 30 September 2026) | 10 minutes, the abstract | eBay's split by customer |
 | 10 | Chapter 5: https://www.aboutamazon.com/news/company-news/2017-letter-to-shareholders (checked 30 September 2026) | 15 minutes | Memos over slides |
 | 11 | Chapter 6: https://www.nber.org/papers/w20171 (checked 30 September 2026) | 40 minutes | eBay's search test |
