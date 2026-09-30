@@ -25,7 +25,7 @@ The step a learner should have reached by each mark, if they keep the brief's pa
 | 50 | Cleaning done, log written | C1 no log rows; C2 text amount set to zero or skipped with no log line; C3 repeats not found; C4 empty segment dropped, or left in a blank group, with no log line (a flagged unknown with its log line is correct) |
 | 65 | Reconciled | R1 no count check; R2 a count check and no rupee check; R3 checks written and failing, and the learner moved on |
 | 90 | Tree built | D1 total only, no segments; D2 a rate without its order count; D3 frequency named as the branch on uncleaned rows |
-| 105 | Shuffle run | Code the unit from the shuffle cell, never the p on the screen. T1 segment labels shuffled across single orders, splitting each customer's orders; T1b each customer's Q1 and Q2 figures pooled and the quarter labels dealt, splitting each customer's pair; T2 a test on Business; T3 the p-value sentence says "chance we are wrong"; T4 a one-way p reported for a direction picked after looking |
+| 105 | Shuffle run | Code the unit from the shuffle cell, never the p on the screen. T1 segment labels shuffled across single orders, splitting each customer's orders; T1b a customer's two quarters pooled: each customer's Q1 and Q2 figures pooled and the quarter labels dealt, or the orders of both quarters pooled and the quarter label dealt across single orders; T2 a test on Business; T3 the p-value sentence says "chance we are wrong"; T4 a one-way p reported for a direction picked after looking |
 | 120 | Note written | N1 no caveat; N2 the corporate rate as the headline; N3 no action or no cost; N4 a mean order in the claim as the typical one |
 
 ## The sheet

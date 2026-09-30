@@ -402,6 +402,18 @@ for _ in range(2000):                       # the per-customer figures pooled an
 p_pooled = sum(1 for g in dealt if abs(g) >= abs(real) - 1e-9) / 2000
 p_pooled_one = sum(1 for g in dealt if g >= real - 1e-9) / 2000
 
+# Retail-Core's orders from both quarters pooled and the quarter label dealt across single orders.
+core_q1 = [r["amount"] for r in core if r["quarter"] == "Q1"]
+core_q2 = [r["amount"] for r in core if r["quarter"] == "Q2"]
+rng = random.Random(7)
+pool_orders, q_both, q_one = core_q1 + core_q2, 0, 0
+for _ in range(2000):
+    rng.shuffle(pool_orders)
+    g = change(sum(pool_orders[:len(core_q1)]) / len(core_q1), sum(pool_orders[len(core_q1):]) / len(core_q2))
+    q_both += abs(g) >= abs(observed) - 1e-9
+    q_one += g <= observed + 1e-9
+p_qorders, p_qorders_one = q_both / 2000, q_one / 2000
+
 fell = sum(1 for v in per_core.values() if sum(v["Q2"]) / len(v["Q2"]) < sum(v["Q1"]) / len(v["Q1"]))
 rose = sum(1 for v in per_core.values() if sum(v["Q2"]) / len(v["Q2"]) > sum(v["Q1"]) / len(v["Q1"]))
 p_sign = 2 * sum(math.comb(fell + rose, k) for k in range(min(fell, rose) + 1)) / 2 ** (fell + rose)
@@ -437,6 +449,8 @@ routes = [
      f"{p_others:.4f}", f"{p_others_one:.4f}"),
     ("per-customer revenue, Q1 and Q2 pooled and dealt", "did Retail-Core's customers spend less?",
      "pools paired data: trap 5b", f"{p_pooled:.4f}", f"{p_pooled_one:.4f}"),
+    (f"quarter label dealt across Retail-Core's {len(core)} single orders", "did Retail-Core's basket fall?",
+     "pools paired data order by order: trap 5b", f"{p_qorders:.4f}", f"{p_qorders_one:.4f}"),
     ("segment label across single orders", "did Core move differently from Plus?", "splits customers: trap 5",
      f"{ext_orders / 2000:.4f}", f"{ext_orders_one / 2000:.4f}"),
 ]
@@ -464,20 +478,28 @@ kit.check("the flagged-unknown handling reads Plus Q2 as 34 orders and Rs 93,670
     **The fifth trap: the wrong unit, in two forms.** Both hurried routes split what belongs together.
     Shuffling segment labels across single orders splits one customer's orders between the groups
     (trap 5); pooling each customer's Q1 and Q2 figures and dealing the quarter labels treats a
-    customer's own two quarters as strangers (trap 5b). Either can move p either way: most often a
-    broken pairing makes p too small, since correlated values count as extra evidence. Here both come
-    out larger than the fair tests, because each customer's own change from Q1 to Q2 is steadier than
-    the spread between customers, so a real fall reads as "could be chance". A learner who shuffled
-    order amounts between segments has made trap 5's mistake, whatever file the code came from.
+    customer's own two quarters as strangers (trap 5b), and so does dealing the quarter label across
+    Retail-Core's single orders from both quarters. Either can move p either way: most often a broken
+    pairing makes p too small, since correlated values count as extra evidence. Here the two pooled
+    and split routes come out larger than the fair tests, because each customer's own change from Q1
+    to Q2 is steadier than the spread between customers, so a real fall reads as "could be chance".
+    The quarter label dealt across single orders lands below the note's test on this file, so its
+    verdict agrees for the wrong reason: it treats the same 30 customers' orders in two quarters as
+    unrelated orders, and on another file the same code makes a chance gap look real. A learner who
+    shuffled order amounts between segments has made trap 5's mistake, whatever file the code came from.
     """),
     code('''
 kit.table(["the hurried route", "p, both ways", "the fair route on the same measure", "p, both ways"], [
     ("segment label across single orders", f"{ext_orders / 2000:.4f}", "segment label across whole customers",
      f"{p_plus:.4f}"),
     ("per-customer revenue pooled and dealt", f"{p_pooled:.4f}", "each customer's two quarters flipped",
-     f"{p_rev:.4f}")], caption="Each hurried route beside the fair one")
-kit.check("both hurried routes push the verdict past 0.05 where the fair ones stay below it",
+     f"{p_rev:.4f}"),
+    ("quarter label dealt across single orders", f"{p_qorders:.4f}", "each customer's two quarters flipped",
+     f"{p_paired:.4f}")], caption="Each hurried route beside the fair one")
+kit.check("splitting and pooling push the verdict past 0.05 where the fair routes stay below it",
           ext_orders / 2000 > 0.05 > p_plus and p_pooled > 0.05 > p_rev)
+kit.check("the quarter label dealt across single orders lands below the note's test, a verdict for the wrong reason",
+          p_qorders < p_paired < 0.05, f"{p_qorders:.4f} against {p_paired:.4f}")
 '''),
     md("""
     ## 6. The note, in four parts, as a correct run writes it

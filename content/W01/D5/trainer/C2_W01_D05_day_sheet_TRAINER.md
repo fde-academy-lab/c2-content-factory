@@ -111,7 +111,7 @@ Every number is printed by a notebook: the chapter notebooks for the debrief's t
 | The wrong branch | Retail-Core orders per customer +20.5 percent, revenue flat | Frequency flat, revenue per order -17.1 percent | Distinct ids per segment, reconcile before the tree |
 | The headline on ten orders | Corporate revenue -29.2 percent as the first line | 6 orders then 4, in the caveat | Count before rate |
 | The wrong unit: single orders shuffled | p = 0.0755 | p = 0.0195 across whole customers | Read the code: the label moves with the whole customer |
-| The wrong unit: paired data pooled | p = 0.0765 both ways, 0.0325 one way | p = 0.0015 with each customer's quarters flipped | Read the code: each customer's own two quarters stay together |
+| The wrong unit: paired data pooled | p = 0.0765 both ways, 0.0325 one way, on per-customer revenue; 0.0035 with the quarter label dealt across single orders, which agrees for the wrong reason | p = 0.0015 and 0.006 with each customer's quarters flipped | Read the code: each customer's own two quarters stay together |
 | The typical order | Mean Rs 52,057 on the rows as read (Rs 52,657 clean) | Median Rs 2,110 as read (Rs 2,120 clean) | Sort and read the top ten |
 | The empty segment dropped or bucketed silently | Segments one order and Rs 2,930 short, or a blank group nobody names; Retail-Plus Q2 34 orders, Rs 93,670, -1.6 percent, reported as falling | 35 orders, Rs 96,600, +1.5 percent restored; or 34 orders and Rs 93,670 with the unknown named, flagged and reconciled | Segments add back to the total |
 
