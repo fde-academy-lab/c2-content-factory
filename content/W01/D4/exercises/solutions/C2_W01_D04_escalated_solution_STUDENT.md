@@ -25,7 +25,7 @@ in about 3 of 100 shuffles. It is Rs 24,420 a quarter, 0.19 percent of delivered
 percent rise stands on under thirty orders, and coin flips make it in four worlds of ten. The sale's
 6 percent is a blend: inside Retail-Plus and Retail-Core, exposed customers spent 3 percent less.
 
-**Caveat.** The sale went mostly to Retail-Plus, who spend more anyway, and the exposure table gives
+**Caveat.** The group who got the sale was half Retail-Plus against 40 percent of the rest, and Retail-Plus spends more anyway, and the exposure table gives
 one August figure per group, so we cannot see the spread.
 
 **Action.** Test a retention offer on half of Retail-Plus; watch Student until thirty orders a

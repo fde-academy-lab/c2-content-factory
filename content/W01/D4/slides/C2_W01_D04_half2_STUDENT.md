@@ -190,15 +190,15 @@ orders swings by half on its own.
 ```stats
 value: 52.5% | label: Retail-Plus | note: August's share of its Q2, targeted
 value: 48.6% | label: Retail-Core | note: August's share of its Q2, not targeted
-value: 6 in 100 | label: chance | note: deals that give Retail-Plus's August that share
+value: 8 in 10 | label: chance | note: label shuffles that make a 4-point gap either way
 ```
 
-The 170 percent becomes an August four points busier than the untargeted segment's, a gap chance alone reaches often enough. The month file cannot separate the sale from a busy August.
+The 170 percent becomes an August four points busier than the untargeted segment's, a gap chance makes most of the time. The months show no sign of the sale beyond a busy August for everyone.
 
 ```notes
-LIVE, 3 minutes. The chance reference deals each of Retail-Plus's delivered Q2 orders to a month at
-random, 5,000 times, and asks how often August takes at least 52.5 percent of the quarter. About 6
-in 100: not rare. What changed: a 170 percent claim shrinks to "cannot tell from months".
+LIVE, 3 minutes. The chance reference pools both segments' delivered Q2 orders and deals the segment
+labels at random, 5,000 times, asking how often the two Augusts differ by four points or more either
+way. About 8 in 10: no sign. What changed: a 170 percent claim shrinks to "no sign in the months".
 ```
 
 ---
@@ -219,7 +219,7 @@ flowchart LR
     class C,M bet
 ```
 
-**The price of knowing.** Holding back 14 of 70 Retail-Plus customers at Marketing's own 6 percent lift forgoes about Rs 4,200, and nothing if the lift is not real.
+**The cost of the hold-back.** Holding back 14 of 70 Retail-Plus customers at Marketing's own 6 percent lift forgoes about Rs 4,200, and nothing if the lift is not real. Fourteen are too few to see a 6 percent lift; sizing the hold-back is a question of power, which comes later.
 
 ```notes
 LIVE, 4 minutes. Name it as a held-back group, or a holdout; experiment design proper comes later in
@@ -234,7 +234,7 @@ average, including who was going to buy anyway.
 
 | Route | What it finds | What it says |
 |---|---|---|
-| The months, beside Retail-Core | August's share 4 points higher, chance makes that about 6 in 100 | Cannot tell |
+| The months, beside Retail-Core | August's share 4 points higher, which the label shuffle makes about 8 times in 10 | No sign of the sale |
 | Inside each segment, chapter 4 | Got it spent 3.0 percent less, in both segments | No lift, and possibly a loss |
 
 **When to switch.** The months when no exposure table exists; the split when one does; the hold-back whenever the next campaign can still be designed.
@@ -254,14 +254,14 @@ action is the hold-back.
 flowchart LR
     W["<b>who got it</b><br/>a rule, never a coin"] --> N["<b>who did not</b><br/>a different mix"]
     N --> E["<b>what else changed</b><br/>August, for everyone"]
-    E --> T["<b>the offer</b><br/>a hold-back, Rs 4,200"]
+    E --> T["<b>the offer</b><br/>a random hold-back"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class W,N,E known
     class T bet
 ```
 
-**Kavya's review.** Two routes find no lift, and you priced the test that would settle it. Take that to Marketing as an offer, never as a verdict on their work.
+**Kavya's review.** Two routes find no lift, and you priced the hold-back and said what it cannot yet size. Take that to Marketing as an offer, never as a verdict on their work.
 
 **In the interview.** [F] How would you set up the Diwali campaign so you can tell whether it worked? [D] Before and after, the change beside the change, the split, or a hold-back: which would you defend to a CFO?
 

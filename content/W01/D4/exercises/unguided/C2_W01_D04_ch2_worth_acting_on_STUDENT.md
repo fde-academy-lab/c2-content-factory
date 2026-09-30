@@ -67,7 +67,7 @@ d) Rank by the percentage change, since percentages compare segments of differen
 
 ### Q6
 
-The bootstrap range for the Retail-Plus fall runs from about Rs 42 to Rs 2,200 per member, and the
+The bootstrap range for the Retail-Plus fall runs from about Rs 40 to Rs 2,200 per member, and the
 retention offer costs Rs 500 per member. What does the head of Retail-Plus get?
 
 a) The full offer for every member, since the whole range sits above zero and the fall is real

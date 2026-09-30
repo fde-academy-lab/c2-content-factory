@@ -90,7 +90,7 @@ sale did not work as designed, so test Diwali against a held-back group before r
 
 | Chapter | Options | Best-fit call, and what would change it | Second route |
 |---|---|---|---|
-| 1. Real, or the usual wobble | Shuffle, textbook test, bootstrap, wait | Shuffle: 44 lumpy totals, 6 of them zero, explainable with cards; switch to the textbook test on large well-behaved data | Textbook test: 0.026 against the shuffle's 0.027 |
+| 1. Real, or the usual wobble | Shuffle, textbook test, bootstrap, wait | Shuffle: 44 lumpy totals, 8 of them zero, explainable with cards; switch to the textbook test on large well-behaved data | Textbook test: 0.026 against the shuffle's 0.027 |
 | 2. Real, and worth acting on | Rank by share, against the tier, against company and cost, bootstrap range | Company and cost with a break-even; a known recovery rate would let it decide alone | Bootstrap: Rs 42 to Rs 2,192 a member, 0.021 at or below zero |
 | 3. The count behind 40 percent | Trust, coin flips on the count, rule of thumb, wait | Coin flips said with the rule; a cheap paid test for students would turn waiting into an experiment | Every deal counted exactly: 0.387 against the flips' 0.397 |
 | 4. The discount, split by segment | Before and after, blended, inside each segment, one mix | Inside each segment; a coin-chosen group would make the blend fair | One mix, both ways: 3.0 percent less |
@@ -104,11 +104,11 @@ sale did not work as designed, so test Diwali against a held-back group before r
 | Chapter | The plausible wrong answer, exactly | The decision it would mislead | The check that catches it | The fix and what it changes |
 |---|---|---|---|---|
 | 1 | "p = 0.03, so there is a 3% chance we are wrong about the drop." | Meera treats the fall as 97 percent certain | In which world was the share counted? Twenty invented no-change segments: one comes back at 0.005 | "If nothing had changed, a fall of Rs 1,110 per member or more would turn up in about 3 of every 100 shuffles." The number stays 0.027; the claim shrinks |
-| 2 | Ranked by share, Retail-Plus 0.027, Retail-Core 0.345, Business 0.555: "Retail-Plus is our biggest problem; fund its retention programme first." | A programme funded ahead of anything that matters in rupees | Rupees beside the share: Retail-Plus fell Rs 24,420, Business moved Rs 6,18,460; an invented Rs 20 gap goes from 0.446 to 0.002 on sample size alone | Two sentences, and a Rs 11,000 offer tested on half the tier since it pays only above 45 percent recovery |
+| 2 | Ranked by share, Retail-Plus 0.027, Retail-Core 0.345, Business 0.555: "Retail-Plus is our biggest problem; fund its retention programme first." | A programme funded because a share was small, before its scale or cost was asked; the harm is scale, since a ranking of falls by rupees would still put Retail-Plus first | Rupees beside the share: Retail-Plus fell Rs 24,420, 0.19 percent of the company's Q2, while Business rose Rs 6,18,460; an invented Rs 20 gap goes from 0.446 to 0.002 on sample size alone | Two sentences, and the Rs 500-a-member offer tested on half the tier (Rs 5,500 a quarter), since for all 22 (Rs 11,000) it pays only above 45 percent recovery |
 | 3 | "Student is up 40 percent, the fastest on the page: move acquisition budget to Student." | Budget moves to a segment whose rise is a coin flip | Count what the rate stands on (the empty cell); coin flips make the rise in 0.397 of worlds on Student's count, 0.086 on Retail-Core's | "Not yet: watch Student until it carries thirty orders a quarter." Budget moves nowhere |
 | 4 | "The discount worked: exposed customers spent Rs 3,395 against Rs 3,200, up 6.1%; repeat it for Diwali." | The sale repeated for Diwali at 15 percent off | Split by segment: Retail-Plus Rs 4,850 against Rs 5,000, Retail-Core Rs 1,940 against Rs 2,000, both 3.0 percent less; the exposed group is 50 percent Retail-Plus against 40 | "Do not repeat it as designed; hold back a random slice of each segment." One mix gives Rs 3,104 against Rs 3,200 |
 | 5 | "Retail-Plus revenue fell 34%. Student is up 40%. The monsoon sale lifted revenue 6%." with a retention offer, budget to Student and the sale again | Three wrong decisions from three true numbers | The audit: base, count or chance, caveat per line; nine of nine missing | The four-part note of about 170 words, every line passing the audit |
-| 6 | "Retail-Plus delivered Rs 25,060 in August against Rs 9,280 in July, up 170%: the monsoon sale worked, so run it for more of the base at Diwali." | The sale widened on a jump that belongs to the month | Retail-Core, not targeted, rose 73 percent the same month; Retail-Plus fell 58 percent May to June with no sale; July stands on 4 orders | August's share of the quarter: 52.5 against 48.6 percent, chance about 6 in 100; the hold-back at Diwali, about Rs 4,200 at Marketing's own lift |
+| 6 | "Retail-Plus delivered Rs 25,060 in August against Rs 9,280 in July, up 170%: the monsoon sale worked, so run it for more of the base at Diwali." | The sale widened on a jump that belongs to the month | Retail-Core, not targeted, rose 73 percent the same month; Retail-Plus fell 58 percent May to June with no sale; July stands on 4 orders | August's share of the quarter: 52.5 against 48.6 percent; a label shuffle makes the gap in about 8 deals in 10; the hold-back at Diwali, about Rs 4,200 at Marketing's own lift and too small to size a 6 percent lift |
 | Second case | "Exposed Retail-Plus members spent Rs 4,850, far above the Rs 3,200 our unexposed customers averaged." | Marketing wins the room with a correct number on an unfair comparison | Who sits in each group: 30 exposed Retail-Plus against 100 unexposed, 60 of them Retail-Core | Like for like, 3.0 percent less; plus Monday's rule, 17.6 percent more volume needed at 15 percent off |
 
 A syntax or runtime error met on the way gets two minutes and the last line of its trace: the usual
@@ -125,7 +125,7 @@ notes.
 
 | Chapter | Company | The fact used |
 |---|---|---|
-| 1 | Booking.com | About 25,000 tests a year and more than 1,000 at once; "wrong about nine out of ten times" (Thomke, HBR, 2020 and 2019) |
+| 1 | Booking.com | About 25,000 tests a year and more than 1,000 at once; about nine in ten experiments improve nothing (Thomke, HBR, 2020, and HBR podcast, 2019) |
 | 2 | Microsoft Bing | An ad-headline change lifted revenue 12 percent, over 100 million dollars a year in the US; about a third of experiments improved their metric |
 | 3 | The Gates Foundation, via Howard Wainer | Small schools over-represented at both tails; about 1.7 billion dollars to education projects by 2001 |
 | 4 | Flipkart; UC Berkeley | Big Billion Days 2022, 23 to 30 September, over a billion visits; Berkeley 1973, 44 against 35 percent admitted, reversing by department |
@@ -171,7 +171,7 @@ Rs 3,12,000 and Rs 2,05,000 (excluded by problem 3's first choice) and the amoun
 | Orders in the file | 186 across Q1 and Q2, 69 customers |
 | Retail-Core, delivered revenue per member | Q1 Rs 1,509, Q2 Rs 1,399, gap Rs 110; 1,724 of 5,000 shuffles, 0.345; textbook test 0.350 |
 | Retail-Plus, delivered revenue per member | Q1 Rs 3,279, Q2 Rs 2,169, gap Rs 1,110; 135 of 5,000 shuffles, 0.027; textbook test 0.026; both directions 0.050; seeds 1 to 5 give 0.026 to 0.029 |
-| Retail-Plus, bootstrap | Middle 95 percent Rs 42 to Rs 2,192 a member (Rs 920 to Rs 48,220 a quarter); 0.021 at or below zero |
+| Retail-Plus, bootstrap | Approximate 95 percent range Rs 42 to Rs 2,192 a member (low end seed-sensitive, say "about Rs 40") (Rs 920 to Rs 48,220 a quarter); 0.021 at or below zero |
 | Retail-Plus, segment | Q1 Rs 72,130, Q2 Rs 47,710, fall Rs 24,420, 33.9 percent of its Q1 |
 | Company delivered revenue | Q1 Rs 1,22,73,410, Q2 Rs 1,28,64,680; the Retail-Plus fall is 0.19 percent of Q2 |
 | Segment moves, Q1 to Q2, delivered | Retail-Core -Rs 3,750; Retail-Plus -Rs 24,420; Student +Rs 980; Business +Rs 6,18,460 |
@@ -179,11 +179,11 @@ Rs 3,12,000 and Rs 2,05,000 (excluded by problem 3's first choice) and the amoun
 | Orders, Q2 per 100 in Q1 | Retail-Core 97, Retail-Plus 65, Business 94, Student 140 |
 | Coin flips, 40 percent rise | Student's count 0.397, every deal counted 0.387; Retail-Core's 73 orders 0.086; invented 400 orders under 0.002 |
 | Ten cards | Real gap Rs 880; 21 of 1,000 shuffles; exact 6 of 252 deals, 0.024 |
-| Exposure table | 160 customers; exposed 60 (30 Retail-Plus at Rs 4,850, 30 Retail-Core at Rs 1,940); not exposed 100 (40 at Rs 5,000, 60 at Rs 2,000); one mix Rs 3,104 against Rs 3,200 and Rs 3,395 against Rs 3,500 |
+| Exposure table | Marketing's own extract, keyed separately from the order sample, so its 70 Retail-Plus customers do not reconcile with the 22 members, and each cell holds one figure, so the split has no chance reference; 160 customers; exposed 60 (30 Retail-Plus at Rs 4,850, 30 Retail-Core at Rs 1,940); not exposed 100 (40 at Rs 5,000, 60 at Rs 2,000); one mix Rs 3,104 against Rs 3,200 and Rs 3,395 against Rs 3,500 |
 | Campaign | Monsoon Sale, CMP-MONSOON-26, 15 percent off, 5 to 19 August, targeted at Retail-Plus; break-even volume 17.6 percent |
 | Months, delivered | Retail-Plus Apr to Sep: Rs 19,650, 36,840, 15,640, 9,280, 25,060, 13,370; Retail-Core: Rs 11,920, 15,000, 24,380, 13,320, 23,090, 11,140; July to August orders 4 to 9 and 6 to 12 |
-| August's share of Q2 | Retail-Plus 52.5 percent, Retail-Core 48.6 percent; chance 0.059; difference in differences Rs 6,010 |
-| Hold-back | 14 of 70 Retail-Plus customers; about Rs 4,200 forgone at Marketing's 6 percent |
+| August's share of Q2 | Retail-Plus 52.5 percent, Retail-Core 48.6 percent; segment-label shuffle makes a 4-point gap either way in 0.82 of deals; difference in differences Rs 6,010, and May to June breaks the parallel assumption (Retail-Plus -58, Retail-Core +63 percent) |
+| Hold-back | 14 of 70 Retail-Plus customers; about Rs 4,200 forgone at Marketing's 6 percent; too few to see a 6 percent lift, since spend per customer varies by more than its mean, and power is a later week |
 
 Every share above comes from `random.seed(2026)` on Python 3.11 and runs identically on every laptop.
 

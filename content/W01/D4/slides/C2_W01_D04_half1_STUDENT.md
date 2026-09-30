@@ -164,7 +164,7 @@ quarters. Write the measure on the board beside the tree.
 ```stats
 value: 25,000 | label: tests a year | note: Booking.com, as Stefan Thomke reported in HBR in 2020
 value: 1,000+ | label: running at once | note: at any point in time, the same source
-value: 9 in 10 | label: ideas that were wrong | note: Thomke's account on HBR's podcast, 2019
+value: 9 in 10 | label: experiments that fail | note: to improve anything, Thomke on HBR's podcast, 2019
 ```
 
 When most changes are noise, the first question about any move is how often chance alone makes one that size.
@@ -185,13 +185,13 @@ The 25,000 a year is Thomke's figure; say "about". The point: a company that tes
 | Option | What it touches | Time here | What it risks |
 |---|---|---|---|
 | A. Shuffle test | 44 totals, 5,000 deals | under a second | a few thousandths between seeds |
-| B. Textbook two-sample test | 44 totals, one call | instant | assumes bell-shaped totals; 6 of 44 are zero |
+| B. Textbook two-sample test | 44 totals, one call | instant | assumes bell-shaped totals; 8 of 44 are zero |
 | C. Bootstrap interval | 44 totals, 5,000 redraws | under a second | says how big more than how rare |
 | D. Wait for Q3 | 22 more member-quarters | one quarter | Monday passes with no answer |
 
 ```notes
 LIVE, 3 minutes. Compute decides nothing at 44 rows: every option is instant. What decides is the
-shape of the data and the reader. Six members bought nothing in one of the quarters, which is the
+shape of the data and the reader. Eight of the 44 totals are zero (six members bought nothing in Q2, two nothing in Q1), which is the
 lumpy shape a textbook formula assumes away. Notebook 1's sizing cell times each option live.
 ```
 
@@ -520,7 +520,7 @@ Checked 30 September 2026: https://ai.stanford.edu/~ronnyk/ExPThinkWeek2009Publi
 
 | Option | What it does | What it risks |
 |---|---|---|
-| A. Rank by p-value | Fix the smallest share first | Ranks a Rs 24,420 fall above a Rs 6 lakh move |
+| A. Rank by p-value | Fix the smallest share first | Reads the smallest share as the biggest money |
 | B. Against the segment | The fall as a share of the tier | A third of a small tier reads as a crisis |
 | C. Against company and cost | Rupees beside the quarter and the offer, with a break-even | Needs a cost; today's is assumed |
 | D. Bootstrap range | How small or large the fall could be | A stakeholder has to read a range |
@@ -588,7 +588,7 @@ xychart-beta
     line [0.446, 0.292, 0.076, 0.002]
 ```
 
-**The check.** Put the rupees beside the share: Retail-Plus fell Rs 24,420 in the quarter while Business moved Rs 6,18,460.
+**The check.** Put the rupees beside the share: Retail-Plus fell Rs 24,420 in the quarter, 0.19 percent of the company's Q2, while Business rose Rs 6,18,460.
 
 ```notes
 LIVE, 3 minutes. The orders are invented in notebook 2, level 3, and the gap is Rs 20 at every
@@ -680,7 +680,7 @@ to win back more than the whole fall. Say that revenue is not margin, once.
 
 ```mermaid
 flowchart LR
-    Z["<b>zero</b><br/>no fall at all"] --> L["<b>low end</b><br/>Rs 42 a member"]
+    Z["<b>zero</b><br/>no fall at all"] --> L["<b>low end</b><br/>about Rs 40 a member"]
     L --> O["<b>the offer</b><br/>Rs 500 a member"]
     O --> R["<b>the estimate</b><br/>Rs 1,110 a member"]
     R --> H["<b>high end</b><br/>Rs 2,192 a member"]
@@ -692,7 +692,7 @@ flowchart LR
     class O bet
 ```
 
-The range stays above zero, the same verdict as the shuffle, and the offer sits inside it. That range is a **confidence interval**; building one properly comes later.
+The approximate 95 percent range stays above zero, the same verdict as the shuffle, and the offer sits inside it. Such a range is a **confidence interval**; building one properly comes later.
 
 ```notes
 LIVE, 4 minutes. About 2 in 100 redraws land at or below zero, against the shuffle's 0.027: two
@@ -718,7 +718,7 @@ flowchart LR
     class K3 bet
 ```
 
-**Kavya's review.** Real, yes, by two routes. Worth Rs 24,420 a quarter, small against Business and a third of the tier. The range dips below what the offer costs, so offer it to half, hold back half, and measure. That is a watch item with a test attached, never a budget line.
+**Kavya's review.** Real, yes, by two routes. Worth Rs 24,420 a quarter, 0.19 percent of the company and a third of the tier. The range dips below what the offer costs, so offer it to half, hold back half, and measure. That is a watch item with a test attached, never a budget line.
 
 **In the interview.** [F] A metric moved and the test says significant; how do you decide whether the business should act? [D] Rank by p-value, by rupees, or by rupees against the cost: which goes to the budget meeting?
 
@@ -1333,7 +1333,7 @@ coin flips, who got the sale.
 label: Claim | title: Real, and small | body: Retail-Plus really is spending less, and it is small against the company.
 label: Evidence | title: With its base | body: Rs 1,110 less a member, Rs 24,420 a quarter, 0.19 percent of the company; about 3 in 100 shuffles.
 label: Caveat | title: What would change it | body: The size could be much smaller than Rs 1,110 a member, so an offer may not pay back.
-label: Action | title: With its cost | body: Test a Rs 11,000 offer on half the tier and hold back half. | tone: dark
+label: Action | title: With its cost | body: Test the Rs 500-a-member offer on half the tier, Rs 5,500 a quarter, and hold back the other half. | tone: dark
 ```
 
 ```notes

@@ -157,7 +157,7 @@ Kalpa's membership tier, the customers who buy most often (the domain dossier,
 what rides on it.** Meera, before Monday's growth review: a real fall opens a retention budget for
 the tier, and a wobble read as real spends that budget chasing noise. **Who else faces it.**
 Booking.com runs about 25,000 tests a year and, by the account of the Harvard researcher who
-studied it, its teams are wrong about nine times in ten, so every change there is read against
+studied it, about nine in ten of its experiments improve nothing, so every change there is read against
 what chance alone produces before anyone acts (the sources are in the study notes).
 
 Wednesday reconciled the quarters with Finance and left Retail-Plus standing, but smaller. This
@@ -220,7 +220,8 @@ kit.check("the three computed options each finish in under five seconds", max(t_
         md('''
 **The best-fit call for Meera's Monday: A, the shuffle test.** At 44 member totals every option
 runs in well under a second, so compute decides nothing. What decides is the file and the reader:
-six members bought nothing in one of the quarters, which is exactly the lumpy shape B's formula
+eight of the 44 member totals are zero (six members bought nothing in Q2 and two nothing in
+Q1), which is exactly the lumpy shape B's formula
 assumes away, and the shuffle can be explained to Meera with ten cards on a table. C comes in
 chapter 2, where the question becomes how big. D costs a quarter for a question the data can
 already answer.
@@ -426,7 +427,10 @@ difference", and for the refusal to call it the probability of being wrong.
 chance alone does. The simplest is a shuffle test: pool the values from the two periods, deal them
 back at random thousands of times, and see how often the shuffled gap is as large as the real one.
 If that share is small, the change is bigger than the usual wobble. Then I check the count behind it
-and size it in money, because significant only means larger than noise."
+and size it in money, because significant only means larger than noise." A sharp follow-up: the
+same 22 members sit in both quarters, so the data are paired. Flipping the sign of each member's own
+Q1 less Q2 difference is the paired shuffle, and it gives about the same share here (the extras sheet
+runs it), because a member's Q1 spend barely predicts their Q2 spend in this file.
 
 **[D] A shuffle test, a textbook test, or wait a quarter: which do you run for a CEO's Monday, and
 what would make you switch?** "On a few dozen customers with lumpy spend, the shuffle: it runs in a
@@ -513,7 +517,7 @@ company_q2 = sum(delivered(s, "Q2") for s in SEGMENTS)
 t_c = time.perf_counter() - t0
 t0 = time.perf_counter(); boot = bootstrap_gaps(plus_q1, plus_q2, 5000, seed=2026); t_d = time.perf_counter() - t0
 rows = [
-    ("A. Rank by p-value", "3 segments x 5,000 shuffles", "about a second", "ranks a Rs 24,420 fall above a Rs 6 lakh move"),
+    ("A. Rank by p-value", "3 segments x 5,000 shuffles", "about a second", "reads the smallest share as the biggest money"),
     ("B. Against the segment", "the tier's 2 quarters", "instant", "reads a third of the tier as a crisis"),
     ("C. Against company and cost", f"{len(ORDERS)} orders, one pass", f"{t_c * 1000:.1f} ms", "needs a cost; today's is assumed"),
     ("D. Bootstrap range", "44 member totals x 5,000 redraws", f"{t_d:.2f} s", "a stakeholder has to read a range"),
@@ -601,8 +605,9 @@ print(f"Draft: '{ranked[0][0]} is our biggest problem; fund its retention progra
 '''),
         md('''
 **Why it is wrong.** The share says how surely a move beats chance. It never says how big the move
-is, and the draft ranked by the wrong column: a retention programme would be funded ahead of
-anything that matters in rupees. **The check** puts the rupees beside the share, and an invented
+is, and the draft ranked by the wrong column: a retention programme would be funded because a share
+was small, before anyone asked how much money the fall is against the company or what fixing it
+costs. **The check** puts the rupees beside the share, and an invented
 example shows why the two columns can disagree so far: with enough orders, even a trivial gap beats
 chance.
 '''),
@@ -619,8 +624,8 @@ for n in sizes:
 kit.line([f"{n:,}" for n in sizes], [("share, Rs 20 gap", shares, "bad")], fmt=lambda v: f"{v:.3f}",
          title="Invented: the same Rs 20 gap tested on more and more orders a quarter")
 print(dict(zip(sizes, shares)))
-kit.check("the smallest share and the biggest money are different segments",
-          ranked[0][0] != max(ranked, key=lambda r: abs(r[2]))[0])
+kit.check("the segment with the smallest share moved under half of one percent of the company's Q2",
+          abs(dict((s, m) for s, _, m in ranked)[ranked[0][0]]) / company_q2 < 0.005)
 kit.check("an invented Rs 20 gap goes from chance-sized to significant on sample size alone",
           shares[0] > 0.2 and shares[-1] < 0.01, f"{shares}")
 '''),
@@ -628,7 +633,9 @@ kit.check("an invented Rs 20 gap goes from chance-sized to significant on sample
 **The fix.** Two sentences where the draft had one, and any ranking done by money: "The
 Retail-Plus fall is larger than the usual wobble. It is worth Rs 24,420 a quarter, 0.19 percent of
 the company's delivered revenue, while Business moved Rs 6,18,460 the same quarter." What changed:
-the ranking. By share Retail-Plus came first; by rupees it sits far behind Business.
+the size. By share Retail-Plus looked like the biggest problem; in rupees its fall is 0.19 percent of
+the company's quarter, a twenty-fifth of the rise Business delivered, and the programme has to
+justify itself against Rs 24,420 a quarter and the offer's cost, never against a share.
 
 ## 4. Against the cost: the retention offer priced
 
@@ -679,14 +686,15 @@ kit.strip(boot[:200], markers=[("zero", 0, "bad"), ("offer per member", offer_pe
 print(f"middle 95 percent: Rs {low:,.0f} to Rs {high:,.0f} per member, "
       f"or {kit.rupees(low * 22)} to {kit.rupees(high * 22)} a quarter; share at or below zero {at_or_below_zero:.3f}")
 kit.check("the bootstrap range stays above zero, the same verdict as the shuffle", low > 0, f"{low:,.0f}")
-kit.check("the bootstrap and the shuffle agree on how rare no fall is, within a hundredth",
+kit.check("consistency: the share of redraws at or below zero sits near the shuffle's share",
           abs(at_or_below_zero - 0.027) < 0.01, f"{at_or_below_zero:.3f}")
 kit.check("the range dips below the offer's Rs 500 per member", low < offer_per_member < high)
 '''),
         md('''
-**What happened.** The answer is b. The range runs from about Rs 42 to Rs 2,200 per member, so the
-fall is real by a second route (about 2 in 100 redraws land at or below zero, against the
-shuffle's 0.027), and it could be as small as about Rs 900 a quarter for the tier. The offer's Rs 500
+**What happened.** The answer is b. This approximate 95 percent range runs from about Rs 40 to Rs
+2,200 per member (its low end moves by a few tens of rupees with the seed), so the fall is real by a
+second route: the range stays above zero, and about 2 in 100 redraws land at or below zero, a
+consistency check beside the shuffle's 0.027 rather than a second p-value, and it could be as small as about Rs 900 a quarter for the tier. The offer's Rs 500
 per member sits inside the range, which is the arithmetic behind "test it on half the members
 first". **When to switch.** Use the range whenever the decision has a cost to beat; the share alone
 is enough only when the question is "real or not".
@@ -794,19 +802,19 @@ student_orders = sum(1 for o in ORDERS if o["segment"] == "Student")
 flips = flip_rises(student_orders, 5000, seed=2026)
 t_b = time.perf_counter() - t0
 pace = orders_in("Student", "Q2")
-quarters_to_thirty = -(-30 // max(pace, 1))
+below_thirty = pace < 30
 rows = [
     ("A. Trust the headline", "4 segments x 2 quarters", "instant", "budget follows a coin"),
     ("B. Coin-flip reference", "the segment's orders x 5,000", f"{t_b:.2f} s", "none once the count is known"),
     ("C. Rule of thumb", "one count", "instant", "says careful, never how careful"),
-    ("D. Wait for thirty a quarter", "one more count a quarter", "thirty orders take several quarters to gather", "the chance to invest early"),
+    ("D. Wait for thirty a quarter", "one more count a quarter", "today's pace is far below thirty", "the chance to invest early"),
 ]
 kit.table(["Option", "What it touches", "Cost on this file", "What it risks"], rows,
           caption="The options sized on Kalpa's file")
 kit.flow(["A. trust\\nthe rate", "B. chance on\\nthe count", "C. the rule\\nof thumb", "D. wait for\\nthirty"], lit=1,
          title="The best-fit call for Monday is B, with C as its one-line summary")
 kit.check("the coin-flip reference runs in under five seconds", t_b < 5)
-kit.check("gathering thirty Student orders takes more than two quarters at today's pace", quarters_to_thirty > 2)
+kit.check("Student places far fewer than thirty orders a quarter today, so waiting is long", below_thirty)
 '''),
         md('''
 **The best-fit call: B, said with C.** The coin flips tell Meera how often chance alone makes her
@@ -819,7 +827,7 @@ becomes a two-week experiment.
         md('''
 ## 1. The headline: every segment's orders, Q2 against Q1
 
-Meera's 40 percent is about orders. Put every segment on the same footing: Q2 orders for every 100
+Meera's 40 percent is about orders placed, whatever their status. Put every segment on the same footing: Q2 orders for every 100
 orders in Q1.
 
 **Predict before you run.** Which segment shows the biggest rise? a) Business, since it carries the
@@ -1051,7 +1059,11 @@ Berkeley's 1973 graduate admissions: 44 percent of men and 35 percent of women w
 overall, and department by department the small bias ran in favour of women.
 
 Chapters 1 to 3 answered Meera's first two questions. This chapter opens the campaigns table and
-the exposure table, and adds `spend` and `group` to the toolkit.
+the exposure table, and adds `spend` and `group` to the toolkit. The exposure table is Marketing's
+own campaign extract of 160 customers, listed separately from the order sample the morning used, so
+its customers and totals do not reconcile with the orders file; it records one August figure per
+group of customers, so it can show who got the sale and how the mix differs, and it cannot say how
+much spend varies from customer to customer.
 '''),
         md('**Setup.** The toolkit so far, plus the two campaign tables and two new helpers.'),
         setup(T1, T2, T3, T4, extra='''
@@ -1441,8 +1453,8 @@ plus_line = {
                  f"{NUMBERS['fall'] / NUMBERS['company']:.2%} of the company's quarter; if nothing had changed, "
                  f"a fall that large turns up in about {round(NUMBERS['share'] * 100)} in 100 shuffles."),
     "caveat": "The size could be much smaller than Rs 1,110 a member, so an offer may not pay back.",
-    "action": (f"Test a {kit.rupees(NUMBERS['offer'])} offer on half the tier and hold back half, "
-               f"rather than funding it for all."),
+    "action": (f"Test the Rs 500-a-member offer on half the tier, {kit.rupees(NUMBERS['offer'] // 2)} a quarter, "
+               f"and hold back the other half, rather than funding it for all."),
 }
 kit.flow([f"{k}\\n{len(v.split())} words" for k, v in plus_line.items()], lit=2,
          title="The Retail-Plus line in four parts, with the caveat lit")
@@ -1498,7 +1510,7 @@ Read the note as a stranger would. Pull every number out of the text and trace e
 import re
 
 found = re.findall(r"Rs [\\d,]+|\\d+\\.\\d+%|\\d+ percent|\\d+ in 100|\\d+%", note)
-known = {kit.rupees(NUMBERS["fall"]), kit.rupees(NUMBERS["offer"]), "Rs 1,110",
+known = {kit.rupees(NUMBERS["fall"]), kit.rupees(NUMBERS["offer"] // 2), "Rs 500", "Rs 1,110",
          f"{NUMBERS['fall'] / NUMBERS['company']:.2%}", f"{NUMBERS['student_rise']} percent",
          f"{round(NUMBERS['share'] * 100)} in 100", f"{round(NUMBERS['student_chance'] * 100)} in 100",
          f"{abs(NUMBERS['within']):.0%}", f"{NUMBERS['blend']:.0%}"}
@@ -1705,32 +1717,42 @@ aimed at it, and Retail-Plus fell 58 percent from May to June with no sale at al
 on a few orders swings by half on its own, and August was a big month for both segments.
 
 **The fix.** Compare like with like in time as well: take August's share of each segment's
-quarter, and ask how often chance alone gives August that share of Retail-Plus's quarter, dealing
-each of its delivered Q2 orders to a month at random.
+quarter, then ask how often chance alone makes a gap that large between the two segments, dealing
+the segment labels at random across both segments' delivered Q2 orders.
 '''),
         code('''
 aug_share_rp = rp[4] / sum(rp[3:])
 aug_share_core = core[4] / sum(core[3:])
-amounts = [int(o["amount"]) for m in MONTHS[3:] for o in month_orders("Retail-Plus", m)]
+pool = ([("Retail-Plus", int(o["amount"]), o["order_date"][:7]) for m in MONTHS[3:] for o in month_orders("Retail-Plus", m)]
+        + [("Retail-Core", int(o["amount"]), o["order_date"][:7]) for m in MONTHS[3:] for o in month_orders("Retail-Core", m)])
+n_plus = sum(1 for p in pool if p[0] == "Retail-Plus")
+real_gap = aug_share_rp - aug_share_core
+
+
+def aug_share(rows):
+    return sum(a for a, m in rows if m == "2026-08") / sum(a for a, _ in rows)
+
+
 random.seed(2026)
 chance = []
+orders = [(a, m) for _, a, m in pool]
 for _ in range(5000):
-    in_aug = sum(a for a in amounts if random.random() < 1 / 3)
-    chance.append(in_aug / sum(amounts))
-chance_share = sum(1 for c in chance if c >= aug_share_rp) / len(chance)
-kit.strip(chance[:200], markers=[("Retail-Plus", aug_share_rp, "bad"), ("Retail-Core", aug_share_core, "plain")],
-          lo=0, hi=1, fmt=lambda v: f"{v:.0%}", title="August's share of the quarter in 200 chance-only deals, with both segments' real shares marked")
-print(f"August's share of Q2: Retail-Plus {aug_share_rp:.1%}, Retail-Core {aug_share_core:.1%}; "
-      f"chance gives Retail-Plus that share or more in {chance_share:.3f} of deals")
+    random.shuffle(orders)                        # deal the segment labels at random
+    chance.append(aug_share(orders[:n_plus]) - aug_share(orders[n_plus:]))
+chance_share = sum(1 for c in chance if abs(c) >= abs(real_gap)) / len(chance)
+kit.strip(chance[:200], markers=[("real gap", real_gap, "bad")], lo=-0.5, hi=0.5, fmt=lambda v: f"{v:+.0%}",
+          title="Targeted less untargeted August share, in 200 deals of the segment labels, with the real gap marked")
+print(f"August's share of Q2: Retail-Plus {aug_share_rp:.1%}, Retail-Core {aug_share_core:.1%}, a gap of "
+      f"{100 * real_gap:.1f} points; shuffling the segment labels makes a gap that large either way in {chance_share:.2f} of deals")
 kit.check("August's share is within a few points for the targeted and the untargeted segment",
           abs(aug_share_rp - aug_share_core) < 0.06, f"{aug_share_rp:.1%} against {aug_share_core:.1%}")
-kit.check("chance gives Retail-Plus that August share in more than 1 deal in 20", chance_share > 0.05, f"{chance_share:.3f}")
+kit.check("chance makes a gap that large often, so the months show no sale effect", chance_share > 0.2, f"{chance_share:.2f}")
 '''),
         md('''
 What changed: the jump of 170 percent becomes an August that took 52 percent of Retail-Plus's
-quarter against 49 percent of Retail-Core's, about four points apart, and chance alone gives
-Retail-Plus's August a share that large in about 6 deals in 100. The month file cannot separate the
-sale from a busy August.
+quarter against 49 percent of Retail-Core's, about four points apart, and shuffling the segment
+labels makes a gap that large in about eight deals in ten. The month file shows no sign of the sale
+beyond a busy August for everyone.
 
 ## 4. The design: a hold-back at Diwali
 
@@ -1756,7 +1778,10 @@ kit.check("the hold-back forgoes under Rs 10,000 even at Marketing's own lift", 
 '''),
         md('''
 **What happened.** The answer is a. Fourteen held-back Retail-Plus customers at Rs 5,000 each and a 6
-percent lift is about Rs 4,200, the whole price of knowing, and nothing if the lift is not real.
+percent lift is about Rs 4,200, the cost of the hold-back, and nothing if the lift is not real.
+Fourteen customers are too few to measure a lift as small as 6 percent, since spend swings far more
+than that from customer to customer; how many a hold-back needs is a question of power, which comes
+in a later week, and the honest design holds back a random slice of every segment the sale reaches.
 
 ## A second route: the split from chapter 4
 
@@ -1773,22 +1798,22 @@ kit.columns(["months: August share gap, points", "split: Retail-Plus, percent", 
             [("the two routes", [round(100 * month_gap, 1), round(100 * split["Retail-Plus"], 1), round(100 * split["Retail-Core"], 1)])],
             fmt=lambda v: f"{v:+.1f}", width=660, title="Two routes to one verdict: no lift the sale can claim")
 print(f"months: August took {100 * month_gap:+.1f} points more of Retail-Plus's quarter than of Retail-Core's, "
-      f"and chance gives Retail-Plus that August share in about {round(chance_share * 100)} deals in 100; "
+      f"a gap the label shuffle makes in about {round(chance_share * 100)} deals in 100; "
       f"split: " + ", ".join(f"{s} {v:+.1%}" for s, v in split.items()))
 kit.check("the split finds the exposed spending less in both segments", all(v < 0 for v in split.values()))
-kit.check("the months find no gap chance does not make", chance_share > 0.05)
+kit.check("the months find no gap chance does not make", chance_share > 0.2)
 '''),
         md('''
-**What happened.** The answer is a, with an honest difference. The months say "cannot tell": an
-August share four points above the untargeted segment's, which chance gives Retail-Plus about 6
-times in 100. The split says "3 percent less in both segments". Neither shows the lift Marketing claimed, and neither is a fair comparison, because
+**What happened.** The answer is a, with an honest difference. The months say "no sign": an
+August share four points above the untargeted segment's, a gap the label shuffle makes about eight
+times in ten. The split says "3 percent less in both segments". Neither shows the lift Marketing claimed, and neither is a fair comparison, because
 nobody tossed a coin. That is why the line to Meera stays "do not repeat it as designed" and the
 action is the hold-back. **When to switch.** Use the change beside the change when months of data
 exist and no hold-back was run; use the split when an exposure table exists; run the hold-back
 whenever the next campaign can still be designed.
 
 > **Kavya's review.** "Who got it: a rule, never a coin. Who did not: a different mix. What else
-> changed: August, for everyone. Two routes find no lift, and you priced the test that would settle
+> changed: August, for everyone. Two routes find no lift, and you priced the hold-back that would settle
 > it at about Rs 4,200. Take that to Marketing as an offer, never as a verdict on their work."
 
 ### In the interview
@@ -1803,7 +1828,8 @@ comparison where the customers who would have bought anyway are in both groups."
 a coin per customer inside each segment holds back about one in five. Agree the measure and the
 window in advance, run the sale for the rest, then compare spend per customer inside each segment
 and test the gap against chance. At Marketing's own claimed lift the hold-back costs a few thousand
-rupees, which is the price of knowing."
+rupees, and the size of the hold-back is set by how small a lift we need to see, which is a later
+week's question."
 
 **[S] What is a confounder? Give an example from a campaign.** "Something that differs between the
 groups and moves the outcome on its own. Here the sale went to a group with more high-spending
@@ -1831,7 +1857,9 @@ kit.check("the difference rests on fewer than thirty orders in the targeted segm
 '''),
         md('''
 It says Retail-Plus rose about Rs 6,000 more than Retail-Core, on 13 orders across the two months,
-from a segment whose months swing by half with no sale running. That is a lead, never an answer,
+from a segment whose months swing by half with no sale running. The route assumes the two segments
+move alike without the sale, and the months before it say they do not: from May to June Retail-Plus
+fell 58 percent while Retail-Core rose 63 percent. That is a lead, never an answer,
 and it points the same way as everything else in this chapter: run the hold-back.
 '''),
         code('''

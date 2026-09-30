@@ -82,13 +82,13 @@ Retail-Plus member per quarter. A real fall opens a retention budget; a wobble r
 it chasing noise.
 
 **IN THE FIELD.** Booking.com runs about 25,000 tests a year and more than 1,000 at once (Thomke,
-HBR, 2020), and its teams are "wrong about nine out of ten times" (HBR podcast, 2019), so every
+HBR, 2020), and, by Thomke's account, about nine in ten of its experiments improve nothing (HBR podcast, 2019), so every
 change there is read against chance before anyone acts.
 
 | Option | Sized on this file | Call |
 |---|---|---|
 | A. Shuffle test | 44 member totals, 5,000 deals in under a second | Best fit |
-| B. Textbook test | One call, built for bell shapes; 6 of 44 totals are zero | Second route |
+| B. Textbook test | One call, built for bell shapes; 8 of 44 totals are zero | Second route |
 | C. Bootstrap range | Answers how big, chapter 2's question | Later |
 | D. Wait for Q3 | One quarter; Monday passes unanswered | If A and B are unclear |
 
@@ -150,13 +150,15 @@ Rs 3,750, Student plus Rs 980 and Business plus Rs 6,18,460, twenty-five times t
 wrote: "Retail-Plus is our biggest problem; fund its retention programme first." **The check** puts
 rupees beside every share, and an invented Rs 20 gap shows why: its share was 0.446 on 100 orders,
 0.292 on 1,000, 0.076 on 5,000 and 0.002 on 20,000. **The fix** is two sentences: the fall is real,
-and it is worth Rs 24,420 a quarter, 0.19 percent of the company, while Business moved Rs 6,18,460.
+and it is worth Rs 24,420 a quarter, 0.19 percent of the company, while Business rose Rs 6,18,460.
+The harm in the draft is scale: a programme funded because a share was small, before anyone set
+the fall against the company or the offer's cost.
 
 **The cost.** An assumed offer at Rs 500 per member costs Rs 11,000 a quarter and must win back 45
 percent of the fall to break even. Winning back a quarter loses about Rs 4,895; three quarters gains
 about Rs 7,315. At an assumed 30 percent margin it needs 150 percent, so it cannot pay back.
 
-**The second route.** Redrawing members 5,000 times puts the middle 95 percent of the fall at Rs 42
+**The second route.** Redrawing members 5,000 times puts an approximate 95 percent range for the fall at about Rs 40
 to Rs 2,192 per member (Rs 920 to Rs 48,220 a quarter), with 0.021 of redraws at or below zero. The
 range, called a confidence interval and built later, dips below the offer's Rs 500, so test on half
 the tier. Read a range whenever the decision has a cost to beat.
@@ -306,7 +308,8 @@ note from the escalated case:
 > ten. The sale's 6 percent is a blend: inside Retail-Plus and Retail-Core, exposed customers spent
 > 3 percent less.
 >
-> **Caveat.** The sale went mostly to Retail-Plus, who spend more anyway, and the exposure table
+> **Caveat.** The group who got the sale was half Retail-Plus against 40 percent of the rest, and Retail-Plus
+> spends more anyway; the exposure table
 > gives one August figure per group, so we cannot see the spread.
 >
 > **Action.** Test a retention offer on half of Retail-Plus; watch Student until thirty orders a
@@ -349,22 +352,26 @@ customers. A rule chose them, never a coin.
 monsoon sale worked, so run it for more of the base at Diwali." **The check** asks what else
 changed: Retail-Core rose 73 percent over the same months (Rs 13,320 to Rs 23,090) with no sale
 aimed at it, and Retail-Plus fell 58 percent from May to June with no sale. **The fix** compares
-August's share of each quarter: 52.5 percent for Retail-Plus, 48.6 for Retail-Core, and chance gives
-Retail-Plus that share in 0.059 of deals. The months cannot separate the sale from a busy August.
+August's share of each quarter: 52.5 percent for Retail-Plus, 48.6 for Retail-Core, and dealing the
+segment labels at random makes a gap that large in about eight deals in ten. The months show no sign
+of the sale beyond a busy August for everyone.
 
 **The design.** Before the sale, a coin holds back a random fifth inside each segment, 14 of 70
-Retail-Plus customers. At Marketing's own 6 percent that forgoes about Rs 4,200, the price of
-knowing.
+Retail-Plus customers. At Marketing's own 6 percent that forgoes about Rs 4,200, the cost of the
+hold-back. Fourteen customers are too few to see a 6 percent lift, since spend swings far more than
+that between customers; how many a hold-back needs is power, a later week's topic.
 
 **The second route.** Chapter 4's split found 3.0 percent less in both segments. Both routes find no
-lift the sale can claim: the months say cannot tell, the split says 3 percent less. Use the months
+lift the sale can claim: the months show no sign, the split says 3 percent less. Use the months
 when no exposure table exists and the hold-back whenever the next campaign can still be designed.
 
 **At depth.** Option B is a difference in differences: Retail-Plus moved plus Rs 15,780, Retail-Core
-plus Rs 9,770, a difference of Rs 6,010 on 13 orders. A lead, never an answer.
+plus Rs 9,770, a difference of Rs 6,010 on 13 orders. It assumes the two segments move alike without
+the sale, and May to June says they do not (Retail-Plus fell 58 percent, Retail-Core rose 63). A
+lead, never an answer.
 
 > **Kavya's review.** "Who got it: a rule, never a coin. Two routes find no lift, and you priced the
-> test that would settle it at about Rs 4,200. Take that to Marketing as an offer."
+> hold-back and said what it cannot yet size. Take that to Marketing as an offer."
 
 ---
 
@@ -435,7 +442,8 @@ dips below the cost, so a held-back test comes before a rollout."
 the mix named as why the blend rose."
 
 **[F] How would you set up Diwali so you can tell?** "A coin inside each segment holds back a fifth
-before the sale, with the measure fixed in advance; at the claimed lift it costs about Rs 4,200."
+before the sale, with the measure fixed in advance; at the claimed lift it costs about Rs 4,200, and how many to hold
+back so a small lift shows is a power question for later."
 
 **[S] What is a confounder?** "Something that differs between groups and moves the outcome on its
 own: the sale went to more high-spending Retail-Plus members."
@@ -490,7 +498,7 @@ defended aloud. In Week 2 a hold-back becomes a SQL query.
 | Label shuffle | Dealing labels at random to build a chance-only world | Chapter 1 | 21 of 1,000 at Rs 880 |
 | p-value | Share of chance-only worlds with a gap at least as large | Chapter 1 | 0.027 for Retail-Plus |
 | Break-even recovery | Share of a fall a fix must win back | Chapter 2 | 45 percent |
-| Confidence interval | The range of sizes the data supports | Chapter 2 | Rs 42 to Rs 2,192 |
+| Confidence interval | The range of sizes the data supports | Chapter 2 | About Rs 40 to Rs 2,200 |
 | Lead | A rate on under thirty observations | Chapter 3 | Student's 40 percent |
 | Confounder | Drives both who got a campaign and the outcome | Chapters 4 and 6 | Segment |
 | Simpson's reversal | One way in every group, the other in the blend | Chapter 4 | Up 6.1, down 3.0 |
