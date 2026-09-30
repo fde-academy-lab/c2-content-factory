@@ -425,14 +425,34 @@ lab tonight. Then the close.
 *What did the day answer, and what does Anand ask next?*
 
 ```notes
-LIVE. Ten minutes: the crux lines (1), the Kahoot (8) and tomorrow's question (1). The self-study
+LIVE. Ten minutes: the day's answer (1), the crux lines (1), the Kahoot (7) and tomorrow's
+question (1). The self-study
 slides after the Kahoot carry the interview drill, the second case and the day's wrong numbers for
 the lab and the take-home.
 ```
 
 ---
 
-## S18. Answer: six lines worth keeping, one per chapter
+## S18. Answer: yes: down 1.6%, Retail-Plus, and it reruns
+*Can the warehouse itself give Anand the Monday numbers, every segment, every week?*
+
+```stats
+value: 1.6% | label: the book's fall | note: Rs 10.00 crore to Rs 9.84 crore
+value: 29.4% | label: Retail-Plus's fall | note: 16.5% fewer members, each 22.0% less often
+value: 7.0% | label: fewer customers | note: the caveat against last week's extract
+value: 7 | label: fingerprint numbers | note: so a rerun says whether the book moved
+```
+
+Yes. Every number on Anand's sheet is a named query on the book, every count says what it counts, every ratio multiplies back, and every run repeats.
+
+```notes
+LIVE, 1 minute. Ask two learners to read their own sentence to Anand before this slide: the
+full message is S14's. Then the six lines worth keeping.
+```
+
+---
+
+## S19. Six lines worth keeping, one per chapter
 *Which line does each chapter leave the Monday suite with?*
 
 ```timeline
@@ -451,7 +471,7 @@ that caught one of the day's plausible wrong numbers. Then the Kahoot.
 
 ---
 
-## S19. The Kahoot: eight items, none of them graded
+## S20. The Kahoot: eight items, none of them graded
 *Which of the day's decisions can the room make in twenty seconds each?*
 
 ```stats
@@ -470,7 +490,7 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 8 minutes. The pack is kahoot/C2_W02_D01_quiz_STUDENT.md. After each item, one learner says
+LIVE, 7 minutes. The pack is kahoot/C2_W02_D01_quiz_STUDENT.md. After each item, one learner says
 why the key holds. The last item returns to Week 1 Thursday: the discount's 6 percent lift was a
 mix effect, and the room says in one line what a fair comparison would need. Then tomorrow's
 question.
@@ -478,7 +498,7 @@ question.
 
 ---
 
-## D20. The interview drill, for the lab: ten questions
+## D21. The interview drill, for the lab: ten questions
 *Which interview questions does today equip you to answer, and how are they tagged?*
 
 | Tag | The question |
@@ -505,7 +525,7 @@ would make you switch.
 
 ---
 
-## D21. The second case, for the take-home: the channels
+## D22. The second case, for the take-home: the channels
 *Which channel is losing Kalpa's consumers, once the Business orders are read apart?*
 
 **The client asks.** "The same numbers for every channel: app, web and store. Marketing says the store is booming and the web is collapsing, and wants the budget moved. Is that what the book says?"
@@ -531,7 +551,7 @@ Anand naming the channel losing its consumers fastest, with its number.
 
 ---
 
-## D22. The day's wrong numbers, each with its check
+## D23. The day's wrong numbers, each with its check
 *Which plausible wrong numbers did the day stage, and what caught each?*
 
 | Chapter | The plausible wrong number | The check that caught it |
@@ -550,7 +570,7 @@ the class can take each row back to its chapter's slides and notebook.
 
 ---
 
-## S23. Tomorrow: booked against collected, left open
+## S24. Tomorrow: booked against collected, left open
 *Anand asks the next question: what does the book say about the money itself?*
 
 > "Booked revenue is not collected revenue. Show me, order by order, what we actually collected against what we booked in Q2."
