@@ -309,6 +309,11 @@ decisions:
     closes: the requester, on 30 September 2026
     text: The Saturday recap papers are interview grade. The tracker's bank sets what is tested, and the week's source file may reword, fold or move any bank item with its reason; about 60 percent of the timed items are hard; every part opens on a Kalpa scenario with its nuance and a visual; blanks are answered from word banks, pairs from match tables, and statements are judged with their reasons.
     blocks: nothing
+  - id: saturday-real-cases
+    status: closed
+    closes: the requester, on 30 September 2026
+    text: The Saturday recap papers may set items at named, real companies and in public case studies, used directly or as inspiration, alongside Kalpa's own case. Every real fact or figure a paper prints is checked against a primary or reputable source whose URL and date sit in the provenance; a figure that cannot be checked appears only in a hypothetical marked as illustrative, and a named company in a hypothetical reads as one.
+    blocks: nothing
   - id: rubrics-and-calendar
     status: open
     closes: the Programme Head

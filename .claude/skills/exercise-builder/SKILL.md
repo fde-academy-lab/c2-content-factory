@@ -91,8 +91,12 @@ The bank sets what is tested, and the paper sets the bar. The week's source file
 `content/W{ww}/SAT/internal/C2_W{ww}_SAT_paper_source_INTERNAL.yaml`, lays these on it, and
 `scripts/build_saturday_paper.py`'s docstring gives the format:
 
-- **Parts**, the printed order. Each part opens on a Kalpa scenario in a stakeholder's words: the
-  decision riding on the answer, the nuance a sharp analyst notices (a shifted definition, a built-in
+- **Parts**, the printed order. Each part opens on a scenario in a stakeholder's words, set in Kalpa
+  where it continues the week's case, or at a named company or in a public case study where that is
+  more relatable (decision `saturday-real-cases`): every real fact or figure is checked against a
+  primary or reputable source, with its URL and date in the provenance and its name in the key and
+  in the exhibit's caption, and a figure that cannot be checked appears only in a hypothetical marked
+  as illustrative. The scenario carries the decision riding on the answer, the nuance a sharp analyst notices (a shifted definition, a built-in
   assumption, a competing ask, a number that is right but answers the wrong question) and a visual of
   it, a mermaid diagram, an `xychart-beta` chart or a small table. Its items climb: read the code or
   the data, catch the trap, make the call, say it to the stakeholder. About a third of the paper is
