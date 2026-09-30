@@ -20,7 +20,9 @@ import os
 import pathlib
 import random
 import re
+import shutil
 import sys
+import tempfile
 from decimal import ROUND_HALF_UP, Decimal
 
 import yaml
@@ -127,12 +129,13 @@ def pct(x):
 
 
 # ------------------------------------------------------------------------------ Part 1
-def prove_bank_47():
-    values = [800, 1200, 1400, 2000, 480000]
-    assert sorted(values)[2] == 1400 and sum(values) / 5 == 97080
-    assert "4,80,000" in TEXT_OF[47] and "480,000" not in TEXT_OF[47]
-    assert _bank["W1"]["items"][46]["key"] == KEY_OF[47] == "Median Rs 1,400; mean Rs 97,080."
-    report(47, "1,400; 97,080", "the third of five sorted values; 4,85,400 over 5 is 97,080")
+def prove_bank_50():
+    customers, frequency, items, price, discounts = 50000, 2, 3, 400, 1_00_00_000
+    before = customers * frequency * items * price
+    assert before == 12_00_00_000 and before - discounts == 11_00_00_000          # Rs 12 crore, Rs 11 crore
+    assert customers * frequency * price - discounts == 3_00_00_000               # items left out
+    assert _bank["W1"]["items"][49]["key"] == KEY_OF[50] == "Rs 11 crore (Rs 12 crore before discounts)."
+    report(50, "Rs 11 crore", "50,000 x 2 x 3 x Rs 400 is Rs 12 crore; less Rs 1 crore of discounts")
 
 
 def status_table():
@@ -144,17 +147,29 @@ def status_table():
 
 
 def prove_sales_net():
-    out, _ = run_exhibit("sales-net", {"ORDERS": V0})
+    consumer = [o for o in V0 if o["segment"] != "Business"]
+    assert len(consumer) == 29 and len(V0) - len(consumer) == 1
+    out, _ = run_exhibit("sales-net", {"CONSUMER_ORDERS": consumer})
+    assert out == "{'app': 18600, 'web': 27290, 'store': 18920}", out
+    cells = {}
+    for o in consumer:
+        n, rs = cells.get((o["channel"], o["status"]), (0, 0))
+        cells[(o["channel"], o["status"])] = (n + 1, rs + int(o["amount"]))
+    for channel, *by_status in table("sales-net"):
+        for status, cell in zip(("delivered", "returned", "cancelled"), by_status):
+            want = cells.get((channel, status))
+            shown = None if cell == "none" else tuple(int(num(x)) for x in
+                                                      re.match(r"(\d+) orders?, Rs ([\d,]+)", cell).groups())
+            assert shown == want, (channel, status, cell, want)
+    stood = {ch: sum(int(o["amount"]) for o in consumer if o["channel"] == ch and o["status"] != "cancelled")
+             for ch in ("app", "web", "store")}
+    assert stood == {"app": 18600, "web": 27290, "store": 9870}
+    assert stood["app"] > stood["store"] and 18920 > stood["app"]      # the printed store figure flips it
     key = ADDED["sales-net"]["key"]
-    status = status_table()
-    assert status == {"delivered": (21, 520790), "returned": (5, 14970), "cancelled": (4, 9050)}
-    assert {r[0]: (int(r[1]), int(num(r[2]))) for r in table("sales-net")} == status
-    assert out == "30 orders, Rs 544810", out
-    meera = [o for o in V0 if o["status"] in ("delivered", "returned")]
-    gap = 544810 - sum(int(o["amount"]) for o in meera)
-    assert (len(meera), gap) == (26, 9050)
-    assert options("sales-net")[key] == f"{out}, which is Rs 9,050 above Meera's figure."
-    report("sales-net", key, f"prints '{out}'; Meera's delivered and returned are 26 orders, Rs 5,35,760")
+    opts = options("sales-net")
+    assert opts[key] == f"{out}; her rule backs the app."
+    assert opts["a"] == f"{out}; her rule backs the store."
+    report("sales-net", key, f"prints {out}; on orders not cancelled the app's Rs 18,600 beats the store's Rs 9,870")
 
 
 def prove_first_order():
@@ -174,22 +189,35 @@ def prove_first_order():
     paid_or_refunded = sorted(d + by["returned"])
     assert (paid_or_refunded[12] + paid_or_refunded[13]) / 2 == 2100
     assert (d[9] + d[10]) / 2 == 2040 and d[11] == 2090          # the bulk order deleted; one place late
+    zeros = sorted(d + [0] * (len(by["returned"]) + len(by["cancelled"])))
+    assert (zeros[14] + zeros[15]) / 2 == 1480                     # cancelled and returned counted as zero
+    stem = ADDED["first-order"]["text"]
+    assert "business buyers included" in stem and "their own rates" in stem and "stays paid for" not in stem
     report("first-order", "Rs 2,060", "median of the 21 delivered orders, the 11th; mean 24,800, all-30 median 2,205")
 
 
 def prove_quarter_counter():
     out, _ = run_exhibit("quarter-counter", {"ORDERS": V1})
     key = ADDED["quarter-counter"]["key"]
-    assert out == options("quarter-counter")[key] == "{'Q1': 5, 'Q2': 7} +40.0%", out
+    assert out == options("quarter-counter")[key] == "{'Q1': 38, 'Q2': 36} -5.3%", out
     by = {}
     for o in V1:
         by[(o["quarter"], o["segment"])] = by.get((o["quarter"], o["segment"]), 0) + 1
-    rows = {r[0]: (int(r[1]), int(r[2])) for r in table("quarter-counter")}
-    for seg in ("Retail-Core", "Retail-Plus", "Business", "Student"):
-        assert rows[seg] == (by[("Q1", seg)], by[("Q2", seg)])
-    assert rows["all"] == (114, 86) and len(V1) == 200
+    rows = [(r[0], int(r[1]), int(r[2])) for r in table("quarter-counter")]
+    order = ["Student", "Retail-Plus", "Business", "Retail-Core"]
+    assert [r[0] for r in rows[:4]] == order and f"SEGMENTS = {order}".replace("'", '"') in \
+        ADDED["quarter-counter"]["exhibit"]["code"]["text"]
+    for seg, n1, n2 in rows[:4]:
+        assert (n1, n2) == (by[("Q1", seg)], by[("Q2", seg)])
+    assert rows[4] == ("all", 114, 86) and len(V1) == 200
+    once = ADDED["quarter-counter"]["exhibit"]["code"]["text"].replace(
+        "orders_in = {}\n", "orders_in = {}\nn = 0\n").replace("        n = 0\n", "")
+    buf = io.StringIO()
+    with contextlib.redirect_stdout(buf):
+        exec(compile(once, "counter-once", "exec"), {"ORDERS": V1})
+    assert buf.getvalue().strip() == options("quarter-counter")["c"] == "{'Q1': 114, 'Q2': 200} +75.4%"
     assert options("quarter-counter")["a"] == "{'Q1': 114, 'Q2': 86} -24.6%"
-    report("quarter-counter", key, f"prints '{out}': the counter holds Student's count; the file says 114 and 86")
+    report("quarter-counter", key, f"prints '{out}': the counter holds Retail-Core's count; the file says 114 and 86")
 
 
 def prove_bank_20():
@@ -200,10 +228,13 @@ def prove_bank_20():
 def prove_budget_flip():
     ids = {q: {o["customer_id"] for o in V1 if o["quarter"] == q} for q in ("Q1", "Q2")}
     orders = {q: sum(1 for o in V1 if o["quarter"] == q) for q in ("Q1", "Q2")}
-    assert len(ids["Q1"]) == len(ids["Q2"]) == 69 and ids["Q1"] == ids["Q2"]
+    assert len(ids["Q1"]) == len(ids["Q2"]) == 69
     assert (round(orders["Q1"] / 69, 2), round(orders["Q2"] / 69, 2)) == (1.65, 1.25)
+    members = {q: {o["customer_id"] for o in V1 if o["quarter"] == q and o["segment"] == "Retail-Plus"}
+               for q in ("Q1", "Q2")}
+    assert len(members["Q1"]) == len(members["Q2"]) == 22        # nobody lapsed: members buy less often
     est = {r[0]: (num(r[1].replace("Rs ", "")), num(r[2].replace("Rs ", ""))) for r in table("budget-flip")}
-    new, back = est["A new customer"], est["A lapsed member won back"]
+    new, back = est["A new customer won"], est["A member brought back to Q1's buying"]
     ratio = lambda cost_rev: cost_rev[1] / cost_rev[0]
     assert (ratio(new), ratio(back)) == (2.0, 2.5)
     changes = {"a": ((new[0], 2800), back), "b": ((1000, new[1]), back),
@@ -213,13 +244,15 @@ def prove_budget_flip():
     assert flips == {key} == {"c"}, flips
     assert [round(ratio(changes[k][0 if k in "ab" else 1]), 2) for k in "abcd"] == [2.33, 2.4, 1.88, 2.17]
     assert back[1] / ratio(new) == 750
-    report("budget-flip", key, "Rs 2.00 a rupee against Rs 2.50; only a Rs 800 win-back, Rs 1.88, flips it")
+    report("budget-flip", key, "Rs 2.00 a rupee against Rs 2.50; only a Rs 800 route back, Rs 1.88, flips it")
 
 
 def prove_bank_51():
     assert _bank["W1"]["items"][50]["key"] == KEY_OF[51] == "b, d, e, a, c"
-    assert "each rung resting on the one before it" in TEXT_OF[51]
-    report(51, "b, d, e, a, c", "tracker key: real, like with like, decompose, isolate, hypothesise")
+    assert "Confirm that the drop is real" in TEXT_OF[20] and "Confirm that the drop is real" not in TEXT_OF[51]
+    assert "(b) Check each quarter's figure on its own" in TEXT_OF[51]
+    assert "(d) Set the two checked figures side by side" in TEXT_OF[51]
+    report(51, "b, d, e, a, c", "tracker key: checked, like with like, decompose, isolate, hypothesise")
 
 
 # ------------------------------------------------------------------------------ Part 2
@@ -240,15 +273,18 @@ def identity_rule(rows):
 
 
 def prove_reader_header():
-    out, _ = run_exhibit("reader-header", cwd=D3)
+    with tempfile.TemporaryDirectory() as tmp:            # the file as the stem names it
+        shutil.copy(D3 / "C2_W01_D03_orders_STUDENT.csv", pathlib.Path(tmp) / "orders.csv")
+        out, ns = run_exhibit("reader-header", cwd=tmp)
     key = ADDED["reader-header"]["key"]
     assert out == "200 KR-02002", out
     assert len(V2_ROWS) == 201 and [r["order_id"] for r in V2_ROWS[:2]] == ["KR-02001", "KR-02002"]
-    assert V2_ROWS[0]["amount"] == "2200" and V2_ROWS[0]["quarter"] == "Q1"
-    clean, log = identity_rule(V2_ROWS[1:])
-    assert (len(clean), len(log)) == (185, 15)
+    clean, log = identity_rule(ns["rows"])
+    assert (len(ns["rows"]), len(clean), len(log)) == (200, 185, 15)     # the pass's own report closes
     assert all(r["order_id"] != "KR-02001" for r in clean + log)
-    assert options("reader-header")[key].startswith(out + ";")
+    opts = options("reader-header")
+    assert opts[key].startswith(out + "; only a count of the file's own rows")
+    assert opts["b"].startswith(out + "; the pass's own report")
     report("reader-header", key, f"prints '{out}'; the pass closes 200 = 185 + 15 and KR-02001 is in neither")
 
 
@@ -263,19 +299,27 @@ def prove_text_compare():
 
 
 def prove_evidence_copy():
-    _, ns = run_exhibit("evidence-copy")
-    assert len(ns["as_arrived"]) == 2 and len(ns["rows"]) == 3
-    assert ns["as_arrived"][0]["amount"] == 0 and ns["as_arrived"][0] is ns["rows"][0]
-    fresh = [{"order_id": "KR-02063", "amount": "twelve"}, {"order_id": "KR-02064", "amount": "3150"}]
-    deep = [dict(r) for r in fresh]
-    for r in fresh:
-        r["amount"] = int(r["amount"]) if r["amount"].isdigit() else 0
-    assert deep[0]["amount"] == "twelve"
+    out, ns = run_exhibit("evidence-copy")
+    assert out == "2 + 0 = 2 []", out
+    assert ns["as_arrived"][0] is ns["rows"][0] and ns["as_arrived"][0]["amount"] == 0
+    code = ADDED["evidence-copy"]["exhibit"]["code"]["text"]
+    deep_code = code.replace("rows.copy()", "[dict(r) for r in rows]")
+    assert deep_code != code
+    buf = io.StringIO()
+    with contextlib.redirect_stdout(buf):
+        exec(compile(deep_code, "evidence-deep", "exec"), {})
+    assert buf.getvalue().strip() == "2 + 1 = 2 ['KR-02063']"
     csv_rows = [(r["order_id"], r["amount"]) for r in V2_ROWS if r["order_id"] in ("KR-02063", "KR-02064")]
     assert ("KR-02063", "twelve") in csv_rows and ("KR-02064", "3150") in csv_rows
+    books = {r["order_id"]: int(r["amount"]) for r in identity_rule(V2_ROWS)[0]
+             if r["order_id"] in ("KR-02063", "KR-02064")}
+    assert books == {"KR-02063": 1790, "KR-02064": 3150}
+    assert sum(r["amount"] for r in ns["rows"]) == 3150 < sum(books.values()) == 4940
     key = ADDED["evidence-copy"]["key"]
-    assert options("evidence-copy")[key].startswith("False: it keeps two rows")
-    report("evidence-copy", key, "as_arrived keeps 2 rows and its first amount is now 0; rows holds 3")
+    opts = options("evidence-copy")
+    assert opts[key].startswith(out + "; only a rupee total") and opts["b"].startswith("2 + 1 = 2")
+    report("evidence-copy", key, f"prints '{out}'; with copies of the dictionaries it prints 2 + 1 = 2; "
+                                 f"rupees 3,150 against 4,940")
 
 
 def prove_reject_loop():
@@ -337,29 +381,42 @@ def prove_reject_loop():
 
 def prove_dup_rule():
     fields = ("order_id", "customer_id", "order_date", "amount", "quarter")
-    shown = [dict(zip(fields, (r[1], r[2], r[3], str(int(num(r[4]))), r[5]))) for r in table("dup-rule")]
-    for s in shown:                                     # every printed row is a row of the export
-        assert any(all(v[f] == s[f] for f in fields) for v in V2_ROWS), s
+    shown = [dict(zip(fields, (r[1], r[2], r[3], r[4].replace(",", ""), r[5]))) for r in table("dup-rule")]
     full = []
-    for s in shown:
-        full.append(next(v for v in V2_ROWS if all(v[f] == s[f] for f in fields)))
+    for s in shown:                                     # each printed row is a row of the export, in order
+        match = [i for i, v in enumerate(V2_ROWS) if all(v[f] == s[f] for f in fields)]
+        assert match, s
+        full.append(match)
+    lines = [m[0] if len(m) == 1 else None for m in full]
+    # the two exact copies of KR-02006 match both lines; assign them in file order
+    kr02006 = [i for i, v in enumerate(V2_ROWS) if v["order_id"] == "KR-02006"]
+    k = iter(kr02006)
+    lines = [next(k) if ln is None else ln for ln in lines]
+    assert lines == sorted(lines) and len(set(lines)) == 7
+    rows = [V2_ROWS[i] for i in lines]
+    for oid in {r["order_id"] for r in rows}:          # the unshown columns match within an order_id
+        rs = [r for r in rows if r["order_id"] == oid]
+        for f in ("segment", "channel", "city", "status", "discount"):
+            assert len({r[f] for r in rs}) == 1, (oid, f)
+
+    def totals(kept):
+        return {q: sum(int(r["amount"]) for r in kept if r["quarter"] == q and r["amount"].isdigit())
+                for q in ("Q1", "Q2")}
+
+    kept, log = identity_rule(rows)
     whole = []
-    for r in full:
+    for r in rows:
         if r not in whole:
             whole.append(r)
-    assert len(full) - len(whole) == 1                  # the whole-row check finds one repeat
-    by_id = {}
-    for r in full:
-        by_id.setdefault(r["order_id"], []).append(r)
-    for rs in by_id.values():                           # the unshown columns match within an order_id
-        for f in ("segment", "channel", "city", "status", "discount"):
-            assert len({r[f] for r in rs}) == 1
-    kept, log = identity_rule(full)
-    q2 = lambda rows: sum(int(r["amount"]) for r in rows if r["quarter"] == "Q2")
-    assert (q2(kept), q2(whole), len(log)) == (10930, 14640, 2)
-    assert q2(kept) - 3710 == 7220 and q2(kept) + 2890 == 13820
-    assert ADDED["dup-rule"]["key"] == "Rs 10,930."
-    report("dup-rule", "Rs 10,930", "identity rule keeps 3 Q2 orders; the whole-row check leaves Rs 14,640")
+    first = list({r["order_id"]: r for r in reversed(rows)}.values())      # the first copy of each
+    assert len(rows) - len(whole) == 1                                     # the whole-row check finds one
+    assert totals(kept) == {"Q1": 4680, "Q2": 7410} and len(log) == 3
+    assert totals(whole) == {"Q1": 4680, "Q2": 11120}
+    assert totals(first) == {"Q1": 2890, "Q2": 7410}
+    assert totals(rows) == {"Q1": 7570, "Q2": 11120}
+    assert ADDED["dup-rule"]["key"] == "Q1 Rs 4,680 and Q2 Rs 7,410."
+    report("dup-rule", "4,680; 7,410", "one row per order_id, the copy that converts; whole rows leave Q2 at "
+                                       "Rs 11,120, first copies leave Q1 at Rs 2,890")
 
 
 def prove_monday_number():
@@ -380,7 +437,8 @@ def prove_monday_number():
     assert clean_q == {"Q1": q1 - copies, "Q2": q2} == {"Q1": 19000000, "Q2": 18700000}
     assert sum(1 for r in log if r["quarter"] == "Q1") == 14
     assert pct((clean_q["Q2"] - clean_q["Q1"]) / clean_q["Q1"]) == -1.6 and pct((1.9 - 2.1) / 2.1) == -9.5
-    assert ADDED["monday-number"]["key"] == "A fall of 1.6 percent."
+    assert ADDED["monday-number"]["key"].startswith("A fall of 1.6 percent")
+    assert "found Tuesday's Q2 clean at Rs 1,87,00,000" in ADDED["monday-number"]["text"]
     report("monday-number", "1.6 fall", "tile -25.9, weekly -12.4, closed -11.0; Q1 less Rs 20,00,000 of copies gives -1.6")
 
 
@@ -395,21 +453,31 @@ def prove_plus_clean():
     clean, log = identity_rule(V2_ROWS)
     may_copies = [r for r in log if r["segment"] == "Retail-Plus" and r["order_date"][:7] == "2026-05"
                   and r["quarter"] == "Q1"]
-    assert len(may_copies) == 11
-    plus = {q: sum(1 for r in clean if r["segment"] == "Retail-Plus" and r["quarter"] == q) for q in ("Q1", "Q2")}
+    assert len(may_copies) == 11 and sum(1 for r in log if r["quarter"] == "Q1") == 14
+    count = lambda rows, q, seg=None: sum(1 for r in rows if r["quarter"] == q and (seg is None or r["segment"] == seg))
+    plus = {q: count(clean, q, "Retail-Plus") for q in ("Q1", "Q2")}
     members = {q: len({r["customer_id"] for r in clean if r["segment"] == "Retail-Plus" and r["quarter"] == q})
                for q in ("Q1", "Q2")}
     assert plus == {"Q1": 40, "Q2": 26} and members == {"Q1": 22, "Q2": 22}
     assert (round(40 / 22, 2), round(26 / 22, 2)) == (1.82, 1.18)
-    assert pct(26 / 40 - 1) == -35.0 and pct(26 / 51 - 1) == -49.0 and pct(26 / 37 - 1) == -29.7
-    assert ADDED["plus-clean"]["key"] == "A fall of 35.0 percent."
-    report("plus-clean", "35.0 fall", "51 less 11 May copies is 40 in Q1, 26 in Q2, 22 members: 1.82 to 1.18")
+    assert pct(26 / 40 - 1) == -35.0 and pct(26 / 51 - 1) == -49.0
+    company = {q: count(clean, q) for q in ("Q1", "Q2")}
+    exported = {q: count(V1, q) for q in ("Q1", "Q2")}
+    assert company == {"Q1": 100, "Q2": 86} and exported == {"Q1": 114, "Q2": 86}
+    assert plus["Q1"] - plus["Q2"] == company["Q1"] - company["Q2"] == 14      # the tier carries all of it
+    assert count(V1, "Q1", "Retail-Plus") - count(V1, "Q2", "Retail-Plus") == 25 and 114 - 86 == 28
+    key = ADDED["plus-clean"]["key"]
+    assert options("plus-clean")[key] == ("Orders per member fall 35.0 percent, and Retail-Plus carries all 14 "
+                                          "of the company's 14 lost orders.")
+    report("plus-clean", key, "Retail-Plus 40 to 26 over 22 members is -35.0; the company falls 100 to 86, "
+                              "all 14 in Retail-Plus")
 
 
 def prove_bank_52():
     assert _bank["W1"]["items"][51]["key"] == KEY_OF[52] == "b, d, a, c"
-    assert "nothing is computed from the clean file" in TEXT_OF[52]
-    report(52, "b, d, a, c", "tracker key: profile, decide, reconcile, recompute")
+    assert "(c) Recompute the revenue tree on the clean data, and send it to Anand." in TEXT_OF[52]
+    assert "nothing is computed from the clean file" not in TEXT_OF[52]
+    report(52, "b, d, a, c", "tracker key: profile, decide, reconcile, recompute and send")
 
 
 # ------------------------------------------------------------------------------ Part 3
@@ -445,8 +513,27 @@ def prove_plus_real():
     delivered_q2 = sum(int(o["amount"]) for o in V3 if o["quarter"] == "Q2" and o["status"] == "delivered")
     assert delivered_q2 == 12864680
     key = ADDED["plus-real"]["key"]
-    assert "145 of 5,000" in options("plus-real")[key] and "24,420" in options("plus-real")[key]
+    opts = options("plus-real")
+    assert opts[key].startswith("Real: 145 of 5,000") and opts[key].endswith("Rs 24,420 a quarter across the tier.")
+    assert sum(1 for t in opts.values() if t.startswith("Real: 145")) == 2
+    assert "shows a fall at least as large as the real one" in ADDED["plus-real"]["text"]
     report("plus-real", key, f"paired shuffle bars {bins}; 145 of 5,000 reach the fall, 0.029; both ways 0.057")
+
+
+def prove_wald_kalpa():
+    p1, p2 = member_totals("Retail-Plus", "Q1"), member_totals("Retail-Plus", "Q2")
+    b1, b2 = [v for v in p1 if v], [v for v in p2 if v]
+    assert (rupees(mean(p1)), rupees(mean(p2)), len(p1)) == (3279, 2169, 22)
+    assert (rupees(mean(b1)), rupees(mean(b2)), len(b1), len(b2)) == (3607, 2982, 20, 16)
+    assert rupees(mean(p1) - mean(p2)) == 1110 and rupees(mean(b1) - mean(b2)) == 625
+    assert pct(mean(p2) / mean(p1) - 1) == -33.9 and pct(mean(b2) / mean(b1) - 1) == -17.3
+    assert (sum(1 for a in p1 if not a), sum(1 for b in p2 if not b)) == (2, 6)
+    assert sum(1 for a, b in zip(p1, p2) if not a and not b) == 0
+    key = ADDED["wald-kalpa"]["key"]
+    assert options("wald-kalpa")[key].startswith("False: per buyer it falls a sixth and per member a third; "
+                                                  "6 members had nothing delivered in Q2, against 2 in Q1")
+    report("wald-kalpa", key, "per member falls Rs 1,110 (33.9 percent); per buyer Rs 625 (17.3); bases 22, "
+                              "then 20 and 16")
 
 
 def shuffle_gaps(q1, q2, times, seed):
@@ -468,12 +555,14 @@ def prove_bank_35():
 def prove_shuffle_sign():
     out, _ = run_exhibit("shuffle-sign", {"random": random, "mean": mean})
     key = ADDED["shuffle-sign"]["key"]
-    assert out == options("shuffle-sign")[key] == "-880 0.981", out
+    assert out == "-880 0.981", out
+    assert options("shuffle-sign")[key] == f"{out}; the note still calls the fall real."
     q1, q2 = [3400, 2900, 4100, 2500, 3800], [2200, 3100, 1900, 2700, 2400]
     gaps = shuffle_gaps(q1, q2, 1000, 2026)
     assert sum(1 for g in gaps if g >= 880) == 21 and sum(1 for g in gaps if g <= -880) == 24
-    assert round(sum(1 for g in gaps if abs(g) >= 880) / 1000, 2) == 0.04
-    report("shuffle-sign", key, f"prints '{out}'; the class's count at +880 is 21, and at or below -880 is 24")
+    assert round(sum(1 for g in gaps if abs(g) >= 880) / 1000, 2) == 0.04 and 21 / 1000 < 0.05
+    report("shuffle-sign", key, f"prints '{out}'; the class's count at +880 is 21 of 1,000, under 0.05, so the "
+                                f"call stays real")
 
 
 def prove_student_line():
@@ -488,14 +577,17 @@ def prove_student_line():
     assert rise40 == sum(1 for k in q2s if k >= 7) == 1985 and round(1985 / 5000, 3) == 0.397
     assert sum(1 for k in q2s if k >= 8) == 951 and q2s.count(7) == 1034
     key = ADDED["student-line"]["key"]
-    assert "1,985 of 5,000" in options("student-line")[key] and "Hold" in options("student-line")[key]
+    assert "1,985 of 5,000" in options("student-line")[key] and "a lead" in options("student-line")[key]
     report("student-line", key, "12 orders (5 then 7) from 2 customers; 7 or more in Q2 in 1,985 of 5,000 worlds")
 
 
 def prove_diwali_test():
     opts = options("diwali-test")
-    assert all("random" in text for text in opts.values())
-    report("diwali-test", ADDED["diwali-test"]["key"], "judgement key: a random hold-back inside each segment")
+    key = ADDED["diwali-test"]["key"]
+    assert "random tenth of each segment" in opts[key] and "spend per customer" in opts[key]
+    assert sum("random tenth of each segment" in t for t in opts.values()) == 2
+    assert sum("spend per customer" in t for t in opts.values()) == 2
+    report("diwali-test", key, "judgement key: a random hold-back inside each segment, compared per customer")
 
 
 # ------------------------------------------------------------------------------ Part 4
@@ -503,7 +595,7 @@ def prove_debt_weights():
     out, ns = run_exhibit("debt-weights")
     key = ADDED["debt-weights"]["key"]
     assert out == "71 -0.07 1.68", out
-    assert options("debt-weights")[key].startswith(out + ":")
+    assert options("debt-weights")[key] == f"{out}; New Zealand's single year carries a seventh of that weight."
     table_data = {r[0]: (int(r[1]), float(r[2])) for r in table(set_no=5)}
     assert ns["above_90"] == table_data
     growth = [g for n, g in table_data.values()]
@@ -511,6 +603,8 @@ def prove_debt_weights():
     with_nz_as_sheet = [g if g != -7.9 else -7.6 for g in growth]
     assert round(sum(with_nz_as_sheet) / 7, 1) == 0.0        # HAP Table 3 without the transcription
     assert round(sum(n * g for n, g in table_data.values()) / 71, 1) == 1.7
+    assert len(table_data) == 7 and sum(n for n, g in table_data.values()) == 71     # a seventh against a 71st
+    assert "PERI Working Paper 322, April 2013" in SOURCE["exhibits"][5]["caption"]
     report("debt-weights", key, f"prints '{out}'; -0.07 rounds to the published -0.1; HAP Table 3 gives 1.7")
 
 
@@ -532,20 +626,6 @@ def prove_bing_alert():
     report("bing-alert", ADDED["bing-alert"]["key"], "judgement key from Kohavi and Thomke, 2017; the lift was real")
 
 
-def prove_wald_buyers():
-    p1, p2 = member_totals("Retail-Plus", "Q1"), member_totals("Retail-Plus", "Q2")
-    b1, b2 = [v for v in p1 if v], [v for v in p2 if v]
-    assert (rupees(mean(p1)), rupees(mean(p2)), len(p1)) == (3279, 2169, 22)
-    assert (rupees(mean(b1)), rupees(mean(b2)), len(b1), len(b2)) == (3607, 2982, 20, 16)
-    assert rupees(mean(p1) - mean(p2)) == 1110 and rupees(mean(b1) - mean(b2)) == 625
-    assert pct(mean(p2) / mean(p1) - 1) == -33.9 and pct(mean(b2) / mean(b1) - 1) == -17.3
-    stopped = sum(1 for a, b in zip(p1, p2) if a and not b)
-    assert stopped == 6 and sum(1 for a in p1 if not a) == 2
-    key = ADDED["wald-buyers"]["key"]
-    assert "6 members stopped buying" in options("wald-buyers")[key]
-    report("wald-buyers", key, "per member falls Rs 1,110 (33.9 percent); per buyer Rs 625 (17.3); 6 stopped")
-
-
 # ------------------------------------------------------------------------------ Part 5
 def prove_sale_mix():
     rows = {r[0]: (int(num(r[1])), int(num(r[2]))) for r in table(set_no=6)}
@@ -555,20 +635,25 @@ def prove_sale_mix():
     none = (m_n[0] * m_n[1] + r_n[0] * r_n[1]) / (m_n[0] + r_n[0])
     assert (offer, none) == (1025, 960) == (rows["All with the offer"][1], rows["All without it"][1])
     assert pct(offer / none - 1) == 6.8
+    effect = m_o[0] * (m_o[1] - m_n[1]) + r_o[0] * (r_o[1] - r_n[1])
+    assert effect == -12500
+    assert (offer - none) * (m_o[0] + r_o[0]) == 32500                       # the blend
     share = m_n[0] / (m_n[0] + r_n[0])
     at_none_mix = share * m_o[1] + (1 - share) * r_o[1]
-    assert math.isclose(at_none_mix, 936) and pct(at_none_mix / none - 1) == -2.5
-    assert pct(m_o[1] / m_n[1] - 1) == -2.0 and pct(r_o[1] / r_n[1] - 1) == -3.3
-    assert pct(offer / (0.5 * m_n[1] + 0.5 * r_n[1]) - 1) == -2.4
+    assert math.isclose((at_none_mix - none) * 500, -12000)                  # the other group's mix
+    assert m_o[0] * (m_o[1] - m_n[1]) == -7500 and r_o[0] * (r_o[1] - r_n[1]) == -5000
     assert "bar [1470, 1500, 580, 600, 1025, 960]" in SOURCE["exhibits"][6]["mermaid"]
-    assert ADDED["sale-mix"]["key"] == "A fall of 2.5 percent."
-    report("sale-mix", "2.5 fall", "blend +6.8; at the no-offer mix 0.4 x 1,470 + 0.6 x 580 = 936, -2.5 against 960")
+    assert ADDED["sale-mix"]["key"].startswith("A fall of Rs 12,500")
+    report("sale-mix", "Rs 12,500 fall", "250 x -30 + 250 x -20 = -12,500 tier against tier; the blend says "
+                                         "+32,500")
 
 
 def prove_sale_advice():
     assert math.isclose(1 / 0.75, 4 / 3) and math.isclose(1 / 0.8, 1.25)
     key = ADDED["sale-advice"]["key"]
-    assert "rise by a third" in options("sale-advice")[key] and "by a quarter" in options("sale-advice")["b"]
+    opts = options("sale-advice")
+    assert opts[key].startswith("Do not send it as it ran") and "rise by a third" in opts[key]
+    assert sum("a third" in t for t in opts.values()) == 2 and sum(t.startswith("Do not") for t in opts.values()) == 2
     assert 1470 < 1500 and 580 < 600 and round(1470 / 580, 1) == 2.5
     report("sale-advice", key, "at 25 percent off orders must rise by 1 over 0.75, a third; each tier fell")
 
@@ -576,9 +661,10 @@ def prove_sale_advice():
 def prove_tool_print():
     out, ns = run_exhibit("tool-print")
     assert out == "order 1099: not found" and ns["results"] == ["out for delivery", "None", "delivered"]
+    assert ns["found"] == 3 and sum(1 for r in [ns["results"][0], None, ns["results"][2]] if r) == 2
     key = ADDED["tool-print"]["key"]
-    assert options("tool-print")[key].startswith("'out for delivery', 'None', 'delivered'; return")
-    report("tool-print", key, "the model reads 'out for delivery', 'None', 'delivered'; no error is raised")
+    assert options("tool-print")[key] == "'None', and found holds 3 of the 3 lookups."
+    report("tool-print", key, "the model reads 'None' for 1099; 'None' is non-empty, so found holds 3")
 
 
 def prove_agent_history():
@@ -588,25 +674,33 @@ def prove_agent_history():
         sent.append(len(history))
         return f"reply {len(sent)}"
 
-    _, ns = run_exhibit("agent-history", {"call_model": call_model})
+    run_exhibit("agent-history", {"call_model": call_model})
     assert sent == [1, 3, 5], sent
 
-    fixed = []
+    def cleared(turns):
+        """The default list, cleared at the end of every call, with calls taken in turn."""
+        shared, seen = [], []
+        for convo, message in turns:
+            shared.append((convo, message))
+            seen.append((convo, list(shared)))
+            shared.clear()
+        return seen
 
-    def run_agent(message, history=None):
-        if history is None:
-            history = []
-        history.append({"role": "user", "content": message})
-        fixed.append(len(history))
-        history.append({"role": "assistant", "content": "ok"})
-        return "ok"
+    def keyed(turns):
+        """Each conversation's messages kept under its id and passed in."""
+        store, seen = {}, []
+        for convo, message in turns:
+            store.setdefault(convo, []).append((convo, message))
+            seen.append((convo, list(store[convo])))
+            store[convo].append((convo, "reply"))
+        return seen
 
-    for m in ("Where is order 1042?", "Please cancel order 2210", "Is my refund done?"):
-        run_agent(m)
-    assert fixed == [1, 1, 1]
+    turns = [("A", "Where is order 1042?"), ("B", "Please cancel order 2210"), ("A", "It says delivered")]
+    assert len(cleared(turns)[2][1]) == 1                       # A's second turn has forgotten its first
+    assert len(keyed(turns)[2][1]) == 3 and all(c == "A" for c, _ in keyed(turns)[2][1])
     key = ADDED["agent-history"]["key"]
-    assert options("agent-history")[key].startswith("5; default history to None")
-    report("agent-history", key, "the three calls send 1, 3 and 5 messages; with None as default each sends 1")
+    assert options("agent-history")[key].startswith("5; keep each conversation's messages under its conversation id")
+    report("agent-history", key, "the three calls send 1, 3 and 5 messages; a cleared list forgets a second turn")
 
 
 def prove_agent_cost():
@@ -614,15 +708,19 @@ def prove_agent_cost():
     calls = [int(r[1]) for r in rows]
     costs = [num(r[2]) for r in rows]
     assert all(math.isclose(c * 0.40, x) for c, x in zip(calls, costs))
-    s = sorted(costs)
-    assert s[3] == 1.6 and f"{mean(costs):.2f}" == "7.26" and math.isclose(sum(costs), 50.8)
-    normal = sorted(costs[:6])
-    assert (normal[2] + normal[3]) / 2 == 1.4
-    saving = costs[6] - 5 * 0.40
-    assert math.isclose(saving, 40.0)
+    assert sorted(costs)[3] == 1.6 and f"{mean(costs):.2f}" == "7.26" and math.isclose(sum(costs), 50.8)
+    typical_calls = sorted(calls)[3]
+    assert typical_calls == 4 and round(mean(calls), 1) == 18.1
+
+    def saved(cap):
+        return round(sum(max(0, c - cap) for c in calls) * 0.40, 2)
+
+    assert saved(2 * typical_calls) == 38.80 and saved(int(2 * mean(calls))) == 27.60
+    assert int(2 * mean(calls)) == 36
     key = ADDED["agent-cost"]["key"]
-    assert options("agent-cost")[key] == "Rs 1.60, the median of all seven; the cap would have saved Rs 40.00."
-    report("agent-cost", key, "median Rs 1.60, mean Rs 7.26; capped at 5 calls C-07 costs Rs 2.00, saving Rs 40.00")
+    assert options("agent-cost")[key] == "Rs 1.60 is the typical cost, and the cap would have saved Rs 38.80."
+    report("agent-cost", key, "median cost Rs 1.60; median calls 4, so a cap of 8 saves Rs 38.80; from the mean, "
+                              "Rs 27.60")
 
 
 def prove_sql():
@@ -692,12 +790,12 @@ def prove_sql():
 def main():
     print(f"Week 1 Saturday paper: {len(PRINTED)} timed items. Each line gives the printed Q, the item, "
           f"its key and what proves it.")
-    for step in (prove_bank_47, prove_sales_net, prove_first_order, prove_quarter_counter, prove_bank_20,
+    for step in (prove_bank_50, prove_sales_net, prove_first_order, prove_quarter_counter, prove_bank_20,
                  prove_budget_flip, prove_bank_51, prove_reader_header, prove_text_compare,
                  prove_evidence_copy, prove_reject_loop, prove_dup_rule, prove_monday_number,
-                 prove_plus_clean, prove_bank_52, prove_plus_real, prove_bank_35, prove_shuffle_sign,
-                 prove_student_line, prove_diwali_test, prove_debt_weights, prove_debt_rows,
-                 prove_wald_buyers, prove_orbiter_units, prove_flu_fit, prove_bing_alert, prove_sale_mix,
+                 prove_plus_clean, prove_bank_52, prove_plus_real, prove_wald_kalpa, prove_bank_35,
+                 prove_shuffle_sign, prove_student_line, prove_diwali_test, prove_debt_weights,
+                 prove_debt_rows, prove_orbiter_units, prove_flu_fit, prove_bing_alert, prove_sale_mix,
                  prove_sale_advice, prove_tool_print, prove_agent_history, prove_agent_cost, prove_sql):
         step()
     missing = [i for i in PRINTED if (i["id"] if i["added"] else i["no"]) not in proved]
@@ -714,28 +812,34 @@ if __name__ == "__main__":
 # --------------------------------
 # python3 content/W01/SAT/internal/C2_W01_SAT_key_proofs_INTERNAL.py, with Postgres running
 #     One line per timed item, 35 in all, then "PROVED: all 35 timed items ...; 21 are hard.", exit 0.
-# The sales-net exhibit run on Monday's 30 orders
-#     Prints "30 orders, Rs 544810", option (b): Rs 9,050 above Meera's 26 orders and Rs 5,35,760.
+# The sales-net exhibit run on Monday's 29 consumer orders
+#     Prints the store at 18920 with its cancelled orders; on orders not cancelled the app leads, option (c).
 # The first-order table checked against Monday's 30 orders
-#     The 11th of the 21 sorted delivered amounts is Rs 2,060, the key; the all-30 median is Rs 2,205.
+#     The 11th of the 21 sorted delivered amounts is Rs 2,060, the key; with zeros the median is Rs 1,480.
+# The quarter-counter exhibit on Tuesday's 200 rows, and the same cell with the counter set once
+#     Prints {'Q1': 38, 'Q2': 36} -5.3%, option (d); the counter set once prints option (c).
 # The budget-flip estimates, each change applied alone
-#     Only option (c), a Rs 800 win-back at Rs 1.88 a rupee, falls below acquisition's Rs 2.00.
-# The reader-header exhibit run in content/W01/D3/data, then the identity rule on the rows it kept
+#     Only option (c), a Rs 800 route back at Rs 1.88 a rupee, falls below acquisition's Rs 2.00.
+# The reader-header exhibit run on a copy of the export named orders.csv
 #     Prints "200 KR-02002"; the pass closes 200 = 185 + 15 and KR-02001 is in neither file.
-# The evidence-copy exhibit
-#     as_arrived keeps 2 rows, its first amount is 0, and rows holds 3; option (c).
-# The dup-rule rows matched to the export and put through the identity rule
-#     Rs 10,930 of Q2 revenue is left; the whole-row check leaves Rs 14,640.
+# The evidence-copy exhibit, and the same cell with copies of the dictionaries
+#     Prints "2 + 0 = 2 []", option (a); with copies it prints "2 + 1 = 2 ['KR-02063']".
+# The dup-rule rows matched line by line to the export and put through the identity rule
+#     Q1 Rs 4,680 and Q2 Rs 7,410; whole rows leave Q2 at Rs 11,120; first copies leave Q1 at Rs 2,890.
+# The reconciled file by quarter and segment
+#     Retail-Plus 40 to 26, -35.0 percent a member; the company 100 to 86, all 14 in Retail-Plus, option (a).
 # Kavya's paired shuffle of the 22 Retail-Plus members, seed 2026, gaps rounded to the rupee
-#     Bars 141, 766, 1,526, 1,683, 739 and 145; 145 of 5,000 reach the fall, 0.029, option (a).
+#     Bars 141, 766, 1,526, 1,683, 739 and 145; 145 of 5,000 reach the fall, 0.029, option (c).
 # The Student coin tosses, seed 2026, 5,000 worlds of 12 orders
 #     Rows 918, 964, 1,133, 1,034, 595 and 356; 1,985 worlds hold 7 or more Q2 orders, option (b).
 # The debt-weights exhibit on the seven countries as the spreadsheet carried them
-#     Prints "71 -0.07 1.68", option (a); -0.07 rounds to the published -0.1.
+#     Prints "71 -0.07 1.68", option (d); one year of seven carries a seventh of the first average.
 # The offer table
-#     Offer Rs 1,025 against Rs 960, +6.8 percent; at the no-offer mix Rs 936, a fall of 2.5 percent.
+#     Rs 12,500 less tier against tier; the blend says Rs 32,500 more.
 # The tool-print and agent-history exhibits
-#     The model reads 'out for delivery', 'None', 'delivered'; the three calls send 1, 3 and 5 messages.
+#     The model reads 'None' and found holds 3; the three calls send 1, 3 and 5 messages.
+# The cost table
+#     Median Rs 1.60; median calls 4, a cap of 8 saves Rs 38.80; a cap of 36 from the mean saves Rs 27.60.
 # The failing-tools query on a call-level log built from the exhibit's counts
 #     Returns order_status 34 and refund 38; status = 'error' alone returns refund 35.
 # The three match queries on the eight-call table
