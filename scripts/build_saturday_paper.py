@@ -471,6 +471,8 @@ def render_item(item, in_parts=False):
     head = f"#### Q{item['q']}"
     if in_parts:
         head += f" · {item['level']} · {FORMAT[answer_kind(item)]}"
+        if own_label(item):
+            head += f" · {own_label(item)}"
     block = [head, ""] + stem
     if options:
         block.append("")
@@ -574,8 +576,16 @@ def render_paper_parts(paper, data, date, printed, source, minutes, moved):
            f"no assistant, no notes", "",
            "Name: ____________________    Marked by: ____________________    "
            f"Items right: ____ of {n}", "",
+           "## What this paper is for", "", " ".join(str(source.get("purpose") or PURPOSE).split()), "",
            "## How this paper works", ""]
-    out += [f"- {r.format(minutes=minutes)}" for r in RULES_MD] + [""]
+    out += [f"- {r.format(minutes=minutes)}" for r in RULES_MD]
+    if source.get("company"):
+        out.append(f"- {' '.join(str(source['company']).split())}")
+    out += ["", "## Step one, before Part 1", "",
+            "Before you read any item, rate yourself from 1 to 4 on each part in the table below, as "
+            "you are today. The comparison between your rating and your score in each part is the most "
+            "useful thing this paper produces for Monday.", ""]
+    out += [f"- {a}: {b}" for a, b in scale_steps()] + [""]
     out += ["## The paper at a glance", "",
             "| Part | What it shows | Items | Minutes | Easy | Medium | Hard |",
             "|---|---|---|---|---|---|---|"]
@@ -840,12 +850,20 @@ PAPER_MERMAID = """{
 KIND_LABEL = {"one": "Choose one", "multi": "Choose every correct option", "tf": "True or false",
               "line": "Complete it", "working": "Work it out", "order": "Put the steps in order"}
 KIND_SHEET = {"line": "Word or number", "working": "Final answer", "order": "Letters in order"}
+# How an item with its own label is answered, printed after the label on the item's line.
+KIND_HOW = {"one": "one letter", "multi": "every correct letter", "tf": "T or F",
+            "line": "a word or number", "working": "show the working", "order": "letters in order"}
 SCALE = ("1 = I have not used this; 2 = I can follow it when someone shows me; 3 = I can do it alone "
          "on a small problem; 4 = I can find and fix mistakes in someone else's version")
 PURPOSE = ("This paper finds which of the week's decisions you can make cold, with no notes and no "
            "assistant, so Monday's practice starts where each of us needs it. Every item is a Kalpa "
            "business question first and a technique question second, which is the order "
            "interviewers use.")
+
+
+def scale_steps():
+    """SCALE as [number, words] pairs for the paper's four rating boxes."""
+    return [[a.strip(), b.strip()] for a, b in (x.split("=", 1) for x in SCALE.split(";"))]
 
 
 def paper_header():
@@ -898,16 +916,21 @@ def exhibit_block(ex, label=None, kind="exhibit", **extra):
                  "caption": " ".join(str(ex.get("caption", "")).split())}, **extra)
 
 
+def own_label(item):
+    own = (item.get("note") or {}).get("label") or item.get("label")
+    return " ".join(str(own).split()) if own else ""
+
+
 def item_label(item):
     """The short label beside an item's number: the source file's own, or its answer kind."""
-    own = (item.get("note") or {}).get("label") or item.get("label")
-    return " ".join(str(own).split()) if own else KIND_LABEL[answer_kind(item)]
+    return own_label(item) or KIND_LABEL[answer_kind(item)]
 
 
 def item_block(item):
     stem, options, _ = parts(item)
     kind = answer_kind(item)
     return {"kind": "item", "q": item["q"], "level": item["level"], "label": item_label(item),
+            "how": KIND_HOW[kind] if own_label(item) else "",
             "lines": stem, "options": [[a.upper(), b] for a, b in options], "answer": kind,
             "room": 1500 if kind == "working" else 0}
 
@@ -1002,18 +1025,19 @@ def docx_spec(paper, data, date, printed, source, minutes, notes, moved=()):
     if in_parts:
         sections, glance, rows = docx_sections(printed, source)
         pace = pacing(rows)
-        areas = "; ".join(f"Part {p}, {t}" for p, t, *_ in rows)
+        areas = (f"One rating for each of the {len(rows)} parts in the table below, in the boxes on "
+                 f"the answer sheet.")
         part_titles = [f"Part {p}. {t}" for p, t, *_ in rows]
     else:
         sections, glance = docx_sections_by_type(printed, source)
-        pace, areas = [], "The sections below"
+        pace, areas = [], "One rating for each section below, in the boxes on the answer sheet."
         part_titles = [s["heading"] for s in sections]
     name = f"Week {wk} Recap Paper"
     header = f"{paper_header()}  |  {name}"
     when = when_of(date, "").strip()
     subtitle = (f"Cohort 2 | Week {wk}" + (f" | {when}" if when else "") +
                 f" | {minutes} minutes | {count(n)}" + (f" in {len(sections)} parts" if in_parts else "") +
-                " | pen and paper | ungraded")
+                " | ungraded")
     timed = sum(i["min"] for i in printed)
     company = " ".join(str(source.get("company") or "").split())
     rules = [
@@ -1055,7 +1079,7 @@ def docx_spec(paper, data, date, printed, source, minutes, notes, moved=()):
                               "any item. Rate yourself as you are today: the comparison between your rating "
                               "and your score in each part is the most useful thing this paper produces "
                               "for Monday."),
-                    "areas": areas, "scale": SCALE},
+                    "areas": areas, "scale": SCALE, "steps": scale_steps()},
         "glance": {"head": ["Part" if in_parts else "Section", "Title", "Items", "What it shows",
                             "Minutes", "Easy", "Medium", "Hard"], "rows": glance},
         "pacingNote": (f"Each band is as wide as its part's minutes; the timed items fill {timed:g} of "

@@ -210,12 +210,28 @@ function pacingRibbon(pacing) {
     borders: tableBorders(none()), rows: [band, marks] });
 }
 
+/* Step one's scale as four numbered boxes, shaded from light to bronze as the claim grows. */
+function scaleStrip(steps) {
+  const fills = [HEADFILL, TINT, "E2C9A3", BRONZE];
+  const w = Math.floor(CONTENT / steps.length);
+  const row = new TableRow({ cantSplit: true, children: steps.map((st, i) => cell([
+    p([new TextRun({ text: st[0], font: SERIF, size: 36, color: i === 3 ? WHITE : BRONZE })],
+      { alignment: AlignmentType.CENTER, keepNext: true, spacing: { after: 20, line: 240 } }),
+    p([run(st[1], { size: SMALL, color: i === 3 ? WHITE : INK })],
+      { alignment: AlignmentType.CENTER, spacing: { after: 0, line: 252 } })],
+    w, { fill: fills[i % fills.length], borders: box(WHITE), valign: VerticalAlign.TOP,
+         margins: { top: 80, bottom: 100, left: 120, right: 120 } })) });
+  return new Table({ width: { size: w * steps.length, type: WidthType.DXA },
+    columnWidths: steps.map(() => w), borders: tableBorders(none()), rows: [row] });
+}
+
 /* ------------------------------------------------------------------ the paper's blocks */
-function labelLine(q, level, label) {
-  return p([run("Q" + q, { bold: true, color: BRONZE, size: 22 }),
-            run("   " + level, { bold: true, color: MUTED, size: SMALL }),
-            run("  ·  " + label, { color: MUTED, size: SMALL })],
-           { keepNext: true, spacing: { before: 60, after: 60, line: 276 } });
+function labelLine(q, level, label, how) {
+  const kids = [run("Q" + q, { bold: true, color: BRONZE, size: 22 }),
+                run("   " + level, { bold: true, color: MUTED, size: SMALL }),
+                run("  ·  " + label, { color: MUTED, size: SMALL })];
+  if (how) kids.push(run("  ·  " + how, { italics: true, color: MUTED, size: SMALL }));
+  return p(kids, { keepNext: true, spacing: { before: 60, after: 60, line: 276 } });
 }
 function optionParas(options, lastKeeps) {
   return options.map((o, i) => p([run(o[0] + ".  ", { bold: true, size: OPTION }), run(o[1], { size: OPTION })],
@@ -231,7 +247,7 @@ function workingBox(height, label) {
            { valign: VerticalAlign.TOP, margins: { top: 60, bottom: 60, left: 120, right: 120 } })] })] });
 }
 function itemBlock(item, lead) {
-  const kids = (lead || []).concat([labelLine(item.q, item.level, item.label)]);
+  const kids = (lead || []).concat([labelLine(item.q, item.level, item.label, item.how)]);
   item.lines.forEach((l) => kids.push(p([run(l)], { keepNext: true, spacing: { after: 80, line: 276 } })));
   if (item.options.length) kids.push(...optionParas(item.options, item.answer === "order" || item.answer === "working"));
   if (item.answer === "working") {
@@ -410,8 +426,9 @@ function paperDoc(s) {
     title(s.title), subtitle(s.subtitle), bronzeRule(),
     h2("What this paper is for", 0), p([run(s.purpose)], { spacing: { after: 120, line: 276 } }),
     h2("Rules"), rulesTable(s.rules),
-    h2("Step one, before Part 1"), p([run(s.stepOne.intro)], { spacing: { after: 100, line: 276 } }),
-    grid(["Area", "Scale"], [[s.stepOne.areas, s.stepOne.scale]], [4200, CONTENT - 4200]),
+    h2("Step one, before Part 1"), p([run(s.stepOne.intro)], { keepNext: true, spacing: { after: 100, line: 276 } }),
+    scaleStrip(s.stepOne.steps),
+    muted(s.stepOne.areas, { keepNext: false, spacing: { before: 60, after: 80 } }),
     h2("The paper at a glance"), glanceTable(s.glance),
     h2("Pacing"), muted(s.pacingNote, { spacing: { after: 80 } }), pacingRibbon(s.pacing),
   ];
@@ -419,11 +436,14 @@ function paperDoc(s) {
     kids.push(partHeading(sec.heading));
     kids.push(muted(sec.intro));
     if (sec.situation) kids.push(p([run(sec.situation)], { keepNext: true, spacing: { after: 140, line: 276 } }));
-    let lead = [];
+    let lead = [], first = true;
     sec.blocks.forEach((b) => {
       if (b.kind === "set") lead = lead.concat(caseParas(b));
       else if (b.kind === "exhibit") lead = lead.concat(leadParas(b));
-      else { kids.push(itemBlock(b, lead)); kids.push(spacer(120)); lead = []; }
+      else {
+        if (!first) kids.push(spacer(120));
+        kids.push(itemBlock(b, lead)); lead = []; first = false;
+      }
     });
     kids.push(...lead);
   });
@@ -432,7 +452,7 @@ function paperDoc(s) {
       border: { bottom: { style: BorderStyle.SINGLE, size: 6, color: BRONZE, space: 4 } },
       children: [new TextRun({ text: s.stretch.title, font: SERIF, size: 30, color: BRONZE })] }));
     kids.push(muted(s.stretch.intro));
-    s.stretch.items.forEach((it) => {
+    s.stretch.items.forEach((it, i) => {
       const inner = [p([run("Stretch " + it.n, { bold: true, color: BRONZE, size: 22 }),
                         run(it.short ? "   Recall  ·  one line" : "   Written  ·  the answer you would say aloud",
                             { color: MUTED, size: SMALL })],
@@ -441,7 +461,8 @@ function paperDoc(s) {
       if (it.options && it.options.length) inner.push(...optionParas(it.options, true));
       inner.push(it.short ? p([run("Answer:  ", { color: MUTED }), run("_".repeat(40), { color: MUTED })], { spacing: { before: 60 } })
                           : workingBox(1700, "Your answer"));
-      kids.push(block(inner)); kids.push(spacer(140));
+      if (i) kids.push(spacer(140));
+      kids.push(block(inner));
     });
   }
   kids.push(...answerSheet(s.sheet));
