@@ -11,32 +11,40 @@
 # or take several dependent steps that nothing else on the paper takes for them.
 
 parts:
-  - title: Where the revenue went
+  - title: "Where did Kalpa's revenue go between the first quarter and the second?"
     shows: whether you can read revenue from orders and say what would change a budget call
     intro: >-
-      Kalpa Retail sells through its app, its website and its stores. Its customers fall into four
-      segments: Retail-Core, Student, Business (its corporate buyers) and Retail-Plus, a
-      paid-membership tier whose members pay a fee to belong. Marketing wants Rs 12 crore to acquire
-      new customers, and Meera Raghavan, the CEO, will not sign until the data answers her: "Is
-      acquisition even the branch that is short?"
+      Kalpa Retail sells through its app, its website and its stores to four segments of customers:
+      Retail-Core, Student, Business (its corporate buyers) and Retail-Plus, a membership tier whose
+      members pay a fee to belong. Revenue here means booked value, which retail calls GMV (gross
+      merchandise value): every order at the price charged, before cancellations and returns come
+      out. Q1 is April to June and Q2 is July to September, and revenue fell from Q1 to Q2.
+      Marketing wants Rs 12 crore to win new customers. Meera Raghavan, the CEO, needs to know which
+      branch of the revenue tree below fell before she signs, since money spent on a branch that held
+      is money lost: "Is acquisition even the branch that is short?" When a sales figure drops, the
+      team works through the sales-drop investigation ladder, five checks called rungs that are always
+      climbed in the same order.
     exhibits:
-      - caption: Kalpa's revenue tree, as Monday drew it.
+      - caption: Kalpa's revenue tree, in which each branch is one of the numbers that make up revenue.
         mermaid: |
           flowchart LR
             R["Revenue"] --> C["Customers<br/>distinct buyers"]
             R --> F["Orders per customer<br/>orders over customers"]
             R --> I["Items per order<br/>items over orders"]
-            R --> P["Price per item<br/>rupees over items"]
+            R --> P["Price per item<br/>rupees before discounts<br/>over items"]
             R --> D["Less discounts<br/>rupees given back"]
     items: [50, "new:sales-net", "new:first-order", "new:quarter-counter", 20, "new:budget-flip", 51]
-  - title: Which Q1 figure is right
-    shows: whether you read an export as an auditor will and close its rows and its rupees
+  - title: "Did Kalpa book Rs 2.1 crore in the first quarter, or Rs 1.9 crore?"
+    shows: whether you can check an export the way an auditor would, row by row and rupee by rupee
     intro: >-
-      Kalpa's dashboard reads an ERP export, a copy of the orders taken out of the company's order
-      system, while Finance's books, which Anand Iyer signs, record the revenue Kalpa reports. Anand
-      replied to all on Tuesday's finding: "Your dashboard says Q1 was Rs 2.1 crore. Our books say
-      1.9." The ERP team adds that Wednesday's export, orders.csv, was stitched together from two
-      extracts, and it holds 201 rows.
+      Kalpa's dashboard reads an ERP export: a copy of the orders taken out of the enterprise resource
+      planning system that Finance books orders in. Anand Iyer, the finance controller, signs
+      Finance's books, and both his figure and the dashboard's count booked value. Anand replied to all
+      on Tuesday's finding: "Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9. Until your
+      numbers match ours, Finance will not act on a drop measured from an ERP export." Meera needs the
+      right Q1 as well, since the fall she asked about is measured from it. The ERP team adds that
+      Wednesday's export, orders.csv, was stitched together from two extracts and holds 201 rows.
+      Profiling a field means counting how many of its values are present, missing and malformed.
     exhibits:
       - caption: Where the two Q1 figures come from.
         mermaid: |
@@ -48,27 +56,32 @@ parts:
             D -.-|"Rs 20 lakh apart"| B
     items: ["new:reader-header", "new:text-compare", "new:evidence-copy", "new:reject-loop",
             "new:dup-rule", 52, "new:monday-number", "new:plus-clean"]
-  - title: Real, or the wobble
-    shows: whether you can say what a shuffle, a count and a fair test let you tell Meera
+  - title: "Is the Retail-Plus fall more than chance, and what should Meera's note say?"
+    shows: whether you can say what a chance test, a count and a fair comparison let you tell Meera
     intro: >-
       Meera has set the growth review for Monday and sent three questions. "One: Retail-Plus is
       down. Real, or the wobble we see every quarter? Two: Student is up 40 percent; should I move
       budget there? Three: Marketing says the monsoon sale lifted revenue 6 percent and wants to
-      repeat it at Diwali." Her constraint: "One page, two minutes."
+      repeat it at Diwali." Her constraint: "One page, two minutes." The page decides three spends
+      at the review: a retention offer for Retail-Plus, budget for Student and a second run of the
+      sale.
     exhibits:
       - caption: >-
-          Kavya's test of the Retail-Plus fall. Each of 5,000 shuffles keeps every member's two
-          quarters together and tosses a coin for each of the 22 members: heads swaps that member's
-          Q1 and Q2 spend. The gap is the members' average Q1 spend less their average Q2 spend,
-          rounded to the rupee, so a fall is a positive gap; the real gap is Rs 1,110.
+          Kavya's test of the Retail-Plus fall, on each member's delivered spend: the rupees of the
+          member's delivered orders in the quarter. If the quarter made no difference to what a
+          member spent, each member's two figures could have come in either order, so each of 5,000
+          flips tosses a coin for each of the 22 members, and heads swaps that member's Q1 and Q2
+          spend. The gap is the members' average Q1 spend less their average Q2 spend, rounded to the
+          rupee, so a fall is a positive gap; the real gap is Rs 1,110. The share of flips whose gap
+          is at least as large as the real one is the test's p-value.
         mermaid: |
           xychart-beta
-            title "Retail-Plus: 5,000 shuffled gaps"
+            title "Retail-Plus: 5,000 flipped gaps"
             x-axis "Gap per member, Rs" ["-1,110 or less", "-1,109 to -555", "-554 to -1", "0 to 554", "555 to 1,109", "1,110 or more"]
-            y-axis "Shuffles" 0 --> 1800
+            y-axis "Flips" 0 --> 1800
             bar [141, 766, 1526, 1683, 739, 145]
         table:
-          head: ["Gap per member, Rs", "Shuffles"]
+          head: ["Gap per member, Rs", "Flips"]
           rows:
             - ["-1,110 or less", "141"]
             - ["-1,109 to -555", "766"]
@@ -78,15 +91,16 @@ parts:
             - ["1,110 or more", "145"]
     items: ["new:plus-real", "new:wald-kalpa", 35, "new:shuffle-sign", "new:student-line",
             "new:diwali-test"]
-  - title: The same traps, in public
-    shows: whether you spot the week's traps in public cases and name the check for each
+  - title: "Which check would have caught the misleading number in five public cases?"
+    shows: whether you can spot the week's mistakes in public cases and name the check for each
     intro: >-
       Kavya runs a reading group for the team's trainees on Friday afternoons: each week one public
-      case in which a number misled capable people, with its source on the table. Every case in this
-      part is on the public record, with its source named beside it, and every number an item needs
-      is on the page.
+      case in which a number misled capable people, or nearly did, with its source on the table. In
+      each case the people about to act on the number needed a check first, and each item asks for
+      that check or for the first move. Every case is on the public record, and its source is named
+      beside it.
     items: ["new:debt-weights", "new:debt-rows", "new:orbiter-units", "new:flu-fit", "new:bing-alert"]
-  - title: An offer, an agent and its logs
+  - title: "Did a delivery company's offer raise spending, and are its AI agent's numbers right?"
     shows: whether you can judge an offer's lift and read an agent's code, log and bill
     intro: >-
       Suppose you join the data and AI team of a food-delivery company. The company, its customers,
@@ -95,8 +109,9 @@ parts:
       AI agent: for each customer conversation a large language model reads the message, may ask for
       a tool (an order's status, a refund within a limit, a hand-off to a person) and writes the
       reply. Every model call is billed and writes one row to a log table. The head of customer
-      support owns two numbers: the cost per conversation, and the share of conversations the agent
-      resolves without a person.
+      support owns two numbers, the cost per conversation and the share of conversations the agent
+      resolves without a person, and sets the agent's budget and limits by them. The marketing lead
+      needs to know what an offer did before sending it again.
     items: ["new:sale-mix", "new:sale-advice", "new:tool-print", "new:agent-history", "new:agent-cost",
             "new:sql-failing", "new:sql-count", "new:sql-avg", "new:sql-rate"]
 

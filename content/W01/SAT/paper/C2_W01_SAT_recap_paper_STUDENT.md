@@ -33,29 +33,29 @@ Your ratings: Part 1 ___ · Part 2 ___ · Part 3 ___ · Part 4 ___ · Part 5 ___
 
 | Part | What it shows | Items | Minutes | Easy | Medium | Hard |
 |---|---|---|---|---|---|---|
-| 1. Where the revenue went | whether you can read revenue from orders and say what would change a budget call | Q1 to Q7 (7) | 21 | 1 | 3 | 3 |
-| 2. Which Q1 figure is right | whether you read an export as an auditor will and close its rows and its rupees | Q8 to Q15 (8) | 29 | 0 | 2 | 6 |
-| 3. Real, or the wobble | whether you can say what a shuffle, a count and a fair test let you tell Meera | Q16 to Q21 (6) | 22.5 | 0 | 1 | 5 |
-| 4. The same traps, in public | whether you spot the week's traps in public cases and name the check for each | Q22 to Q26 (5) | 14 | 0 | 4 | 1 |
-| 5. An offer, an agent and its logs | whether you can judge an offer's lift and read an agent's code, log and bill | Q27 to Q35 (9) | 31.5 | 0 | 3 | 6 |
+| 1. Where did Kalpa's revenue go between the first quarter and the second? | whether you can read revenue from orders and say what would change a budget call | Q1 to Q7 (7) | 21 | 1 | 3 | 3 |
+| 2. Did Kalpa book Rs 2.1 crore in the first quarter, or Rs 1.9 crore? | whether you can check an export the way an auditor would, row by row and rupee by rupee | Q8 to Q15 (8) | 29 | 0 | 2 | 6 |
+| 3. Is the Retail-Plus fall more than chance, and what should Meera's note say? | whether you can say what a chance test, a count and a fair comparison let you tell Meera | Q16 to Q21 (6) | 22.5 | 0 | 1 | 5 |
+| 4. Which check would have caught the misleading number in five public cases? | whether you can spot the week's mistakes in public cases and name the check for each | Q22 to Q26 (5) | 14 | 0 | 4 | 1 |
+| 5. Did a delivery company's offer raise spending, and are its AI agent's numbers right? | whether you can judge an offer's lift and read an agent's code, log and bill | Q27 to Q35 (9) | 31.5 | 0 | 3 | 6 |
 | Total | | 35 | 118 | 1 | 13 | 21 |
 
 ---
 
-## Part 1. Where the revenue went (Q1 to Q7)
+## Part 1. Where did Kalpa's revenue go between the first quarter and the second? (Q1 to Q7)
 
 *What it shows: whether you can read revenue from orders and say what would change a budget call. 7 items, about 21 minutes.*
 
-Kalpa Retail sells through its app, its website and its stores. Its customers fall into four segments: Retail-Core, Student, Business (its corporate buyers) and Retail-Plus, a paid-membership tier whose members pay a fee to belong. Marketing wants Rs 12 crore to acquire new customers, and Meera Raghavan, the CEO, will not sign until the data answers her: "Is acquisition even the branch that is short?"
+Kalpa Retail sells through its app, its website and its stores to four segments of customers: Retail-Core, Student, Business (its corporate buyers) and Retail-Plus, a membership tier whose members pay a fee to belong. Revenue here means booked value, which retail calls GMV (gross merchandise value): every order at the price charged, before cancellations and returns come out. Q1 is April to June and Q2 is July to September, and revenue fell from Q1 to Q2. Marketing wants Rs 12 crore to win new customers. Meera Raghavan, the CEO, needs to know which branch of the revenue tree below fell before she signs, since money spent on a branch that held is money lost: "Is acquisition even the branch that is short?" When a sales figure drops, the team works through the sales-drop investigation ladder, five checks called rungs that are always climbed in the same order.
 
-**Exhibit 1A.** Kalpa's revenue tree, as Monday drew it.
+**Exhibit 1A.** Kalpa's revenue tree, in which each branch is one of the numbers that make up revenue.
 
 ```mermaid
 flowchart LR
   R["Revenue"] --> C["Customers<br/>distinct buyers"]
   R --> F["Orders per customer<br/>orders over customers"]
   R --> I["Items per order<br/>items over orders"]
-  R --> P["Price per item<br/>rupees over items"]
+  R --> P["Price per item<br/>rupees before discounts<br/>over items"]
   R --> D["Less discounts<br/>rupees given back"]
 ```
 
@@ -182,11 +182,11 @@ Order: ____________________
 
 ---
 
-## Part 2. Which Q1 figure is right (Q8 to Q15)
+## Part 2. Did Kalpa book Rs 2.1 crore in the first quarter, or Rs 1.9 crore? (Q8 to Q15)
 
-*What it shows: whether you read an export as an auditor will and close its rows and its rupees. 8 items, about 29 minutes.*
+*What it shows: whether you can check an export the way an auditor would, row by row and rupee by rupee. 8 items, about 29 minutes.*
 
-Kalpa's dashboard reads an ERP export, a copy of the orders taken out of the company's order system, while Finance's books, which Anand Iyer signs, record the revenue Kalpa reports. Anand replied to all on Tuesday's finding: "Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9." The ERP team adds that Wednesday's export, orders.csv, was stitched together from two extracts, and it holds 201 rows.
+Kalpa's dashboard reads an ERP export: a copy of the orders taken out of the enterprise resource planning system that Finance books orders in. Anand Iyer, the finance controller, signs Finance's books, and both his figure and the dashboard's count booked value. Anand replied to all on Tuesday's finding: "Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9. Until your numbers match ours, Finance will not act on a drop measured from an ERP export." Meera needs the right Q1 as well, since the fall she asked about is measured from it. The ERP team adds that Wednesday's export, orders.csv, was stitched together from two extracts and holds 201 rows. Profiling a field means counting how many of its values are present, missing and malformed.
 
 **Exhibit 2A.** Where the two Q1 figures come from.
 
@@ -338,23 +338,23 @@ d) Orders per member fall 49.0 percent, and Retail-Plus carries 25 of the compan
 
 ---
 
-## Part 3. Real, or the wobble (Q16 to Q21)
+## Part 3. Is the Retail-Plus fall more than chance, and what should Meera's note say? (Q16 to Q21)
 
-*What it shows: whether you can say what a shuffle, a count and a fair test let you tell Meera. 6 items, about 22.5 minutes.*
+*What it shows: whether you can say what a chance test, a count and a fair comparison let you tell Meera. 6 items, about 22.5 minutes.*
 
-Meera has set the growth review for Monday and sent three questions. "One: Retail-Plus is down. Real, or the wobble we see every quarter? Two: Student is up 40 percent; should I move budget there? Three: Marketing says the monsoon sale lifted revenue 6 percent and wants to repeat it at Diwali." Her constraint: "One page, two minutes."
+Meera has set the growth review for Monday and sent three questions. "One: Retail-Plus is down. Real, or the wobble we see every quarter? Two: Student is up 40 percent; should I move budget there? Three: Marketing says the monsoon sale lifted revenue 6 percent and wants to repeat it at Diwali." Her constraint: "One page, two minutes." The page decides three spends at the review: a retention offer for Retail-Plus, budget for Student and a second run of the sale.
 
-**Exhibit 3A.** Kavya's test of the Retail-Plus fall. Each of 5,000 shuffles keeps every member's two quarters together and tosses a coin for each of the 22 members: heads swaps that member's Q1 and Q2 spend. The gap is the members' average Q1 spend less their average Q2 spend, rounded to the rupee, so a fall is a positive gap; the real gap is Rs 1,110.
+**Exhibit 3A.** Kavya's test of the Retail-Plus fall, on each member's delivered spend: the rupees of the member's delivered orders in the quarter. If the quarter made no difference to what a member spent, each member's two figures could have come in either order, so each of 5,000 flips tosses a coin for each of the 22 members, and heads swaps that member's Q1 and Q2 spend. The gap is the members' average Q1 spend less their average Q2 spend, rounded to the rupee, so a fall is a positive gap; the real gap is Rs 1,110. The share of flips whose gap is at least as large as the real one is the test's p-value.
 
 ```mermaid
 xychart-beta
-  title "Retail-Plus: 5,000 shuffled gaps"
+  title "Retail-Plus: 5,000 flipped gaps"
   x-axis "Gap per member, Rs" ["-1,110 or less", "-1,109 to -555", "-554 to -1", "0 to 554", "555 to 1,109", "1,110 or more"]
-  y-axis "Shuffles" 0 --> 1800
+  y-axis "Flips" 0 --> 1800
   bar [141, 766, 1526, 1683, 739, 145]
 ```
 
-| Gap per member, Rs | Shuffles |
+| Gap per member, Rs | Flips |
 |---|---|
 | -1,110 or less | 141 |
 | -1,109 to -555 | 766 |
@@ -450,11 +450,11 @@ d) Offer it to all of Retail-Plus, hold back a random tenth of Retail-Core, and 
 
 ---
 
-## Part 4. The same traps, in public (Q22 to Q26)
+## Part 4. Which check would have caught the misleading number in five public cases? (Q22 to Q26)
 
-*What it shows: whether you spot the week's traps in public cases and name the check for each. 5 items, about 14 minutes.*
+*What it shows: whether you can spot the week's mistakes in public cases and name the check for each. 5 items, about 14 minutes.*
 
-Kavya runs a reading group for the team's trainees on Friday afternoons: each week one public case in which a number misled capable people, with its source on the table. Every case in this part is on the public record, with its source named beside it, and every number an item needs is on the page.
+Kavya runs a reading group for the team's trainees on Friday afternoons: each week one public case in which a number misled capable people, or nearly did, with its source on the table. In each case the people about to act on the number needed a check first, and each item asks for that check or for the first move. Every case is on the public record, and its source is named beside it.
 
 ### Set 2
 
@@ -532,11 +532,11 @@ d) Leave the test running for a quarter, until the lift settles near normal resu
 
 ---
 
-## Part 5. An offer, an agent and its logs (Q27 to Q35)
+## Part 5. Did a delivery company's offer raise spending, and are its AI agent's numbers right? (Q27 to Q35)
 
 *What it shows: whether you can judge an offer's lift and read an agent's code, log and bill. 9 items, about 31.5 minutes.*
 
-Suppose you join the data and AI team of a food-delivery company. The company, its customers, its agent, its logs and every number in this part are illustrative. Members pay a monthly fee for the company's membership, and everyone else is a regular customer. The support team runs an AI agent: for each customer conversation a large language model reads the message, may ask for a tool (an order's status, a refund within a limit, a hand-off to a person) and writes the reply. Every model call is billed and writes one row to a log table. The head of customer support owns two numbers: the cost per conversation, and the share of conversations the agent resolves without a person.
+Suppose you join the data and AI team of a food-delivery company. The company, its customers, its agent, its logs and every number in this part are illustrative. Members pay a monthly fee for the company's membership, and everyone else is a regular customer. The support team runs an AI agent: for each customer conversation a large language model reads the message, may ask for a tool (an order's status, a refund within a limit, a hand-off to a person) and writes the reply. Every model call is billed and writes one row to a log table. The head of customer support owns two numbers, the cost per conversation and the share of conversations the agent resolves without a person, and sets the agent's budget and limits by them. The marketing lead needs to know what an offer did before sending it again.
 
 ### Set 3
 

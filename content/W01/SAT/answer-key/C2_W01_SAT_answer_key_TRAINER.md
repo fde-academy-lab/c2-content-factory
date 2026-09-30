@@ -17,11 +17,11 @@ Saturday 10 October 2026. A 120-minute paper holding 35 items at 118 minutes by 
 
 | Part | What it shows | Items | Minutes | Easy | Medium | Hard |
 |---|---|---|---|---|---|---|
-| 1. Where the revenue went | whether you can read revenue from orders and say what would change a budget call | Q1 to Q7 (7) | 21 | 1 | 3 | 3 |
-| 2. Which Q1 figure is right | whether you read an export as an auditor will and close its rows and its rupees | Q8 to Q15 (8) | 29 | 0 | 2 | 6 |
-| 3. Real, or the wobble | whether you can say what a shuffle, a count and a fair test let you tell Meera | Q16 to Q21 (6) | 22.5 | 0 | 1 | 5 |
-| 4. The same traps, in public | whether you spot the week's traps in public cases and name the check for each | Q22 to Q26 (5) | 14 | 0 | 4 | 1 |
-| 5. An offer, an agent and its logs | whether you can judge an offer's lift and read an agent's code, log and bill | Q27 to Q35 (9) | 31.5 | 0 | 3 | 6 |
+| 1. Where did Kalpa's revenue go between the first quarter and the second? | whether you can read revenue from orders and say what would change a budget call | Q1 to Q7 (7) | 21 | 1 | 3 | 3 |
+| 2. Did Kalpa book Rs 2.1 crore in the first quarter, or Rs 1.9 crore? | whether you can check an export the way an auditor would, row by row and rupee by rupee | Q8 to Q15 (8) | 29 | 0 | 2 | 6 |
+| 3. Is the Retail-Plus fall more than chance, and what should Meera's note say? | whether you can say what a chance test, a count and a fair comparison let you tell Meera | Q16 to Q21 (6) | 22.5 | 0 | 1 | 5 |
+| 4. Which check would have caught the misleading number in five public cases? | whether you can spot the week's mistakes in public cases and name the check for each | Q22 to Q26 (5) | 14 | 0 | 4 | 1 |
+| 5. Did a delivery company's offer raise spending, and are its AI agent's numbers right? | whether you can judge an offer's lift and read an agent's code, log and bill | Q27 to Q35 (9) | 31.5 | 0 | 3 | 6 |
 | Total | | 35 | 118 | 1 | 13 | 21 |
 
 ## What guessing alone would score
@@ -435,11 +435,11 @@ The workbook flags an item to check when fewer than one learner in five got it r
 - Tue (9): Q4, Q5, Q6, Q7, Q14, Q22, Q29, Q30, Q35
 - Wed (11): Q8, Q10, Q11, Q12, Q13, Q15, Q23, Q24, Q32, Q33, Q34
 - Thu (10): Q16, Q17, Q18, Q19, Q20, Q21, Q25, Q26, Q27, Q28
-- Part 1, Where the revenue went (7): Q1, Q2, Q3, Q4, Q5, Q6, Q7
-- Part 2, Which Q1 figure is right (8): Q8, Q9, Q10, Q11, Q12, Q13, Q14, Q15
-- Part 3, Real, or the wobble (6): Q16, Q17, Q18, Q19, Q20, Q21
-- Part 4, The same traps, in public (5): Q22, Q23, Q24, Q25, Q26
-- Part 5, An offer, an agent and its logs (9): Q27, Q28, Q29, Q30, Q31, Q32, Q33, Q34, Q35
+- Part 1, Where did Kalpa's revenue go between the first quarter and the second? (7): Q1, Q2, Q3, Q4, Q5, Q6, Q7
+- Part 2, Did Kalpa book Rs 2.1 crore in the first quarter, or Rs 1.9 crore? (8): Q8, Q9, Q10, Q11, Q12, Q13, Q14, Q15
+- Part 3, Is the Retail-Plus fall more than chance, and what should Meera's note say? (6): Q16, Q17, Q18, Q19, Q20, Q21
+- Part 4, Which check would have caught the misleading number in five public cases? (5): Q22, Q23, Q24, Q25, Q26
+- Part 5, Did a delivery company's offer raise spending, and are its AI agent's numbers right? (9): Q27, Q28, Q29, Q30, Q31, Q32, Q33, Q34, Q35
 
 ## New items waiting for the tracker
 
