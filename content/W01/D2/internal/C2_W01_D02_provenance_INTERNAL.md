@@ -138,8 +138,10 @@ frequency.
     with their answers and numbers, and the afternoon's section questions; the decks, notebooks, notes,
     day sheet, board work and exercise sets copy it word for word. The notebook builders refuse to
     build when a title or numbered heading drifts from it.
-17. **The decks grew to carry each chapter in full.** The morning deck runs 88 slides (59 before),
-    the afternoon 37 (29 before): after the cover a slide asks the day's question and lists the six
+17. **The decks grew to carry each chapter in full.** Counting covers and chapter openers, the
+    morning deck runs 88 slides (60 as merged) and the afternoon 37 (30 as merged). The morning added 1 slide
+    to the ask and 6, 4, 5, 7 and 5 to chapters 1 to 5; the afternoon added a recap slide, 5 to chapter
+    6 and 1 to the debrief: after the cover a slide asks the day's question and lists the six
     chapter questions; each chapter adds its map, the thinking as a picture, the code in one block and
     a predict pair where it lacked them, and closes on a table answering its six questions beside
     Kavya's review. Slide minutes still sum to 20 for the ask, 30 per chapter, and 50, 15, 40, 20 and
