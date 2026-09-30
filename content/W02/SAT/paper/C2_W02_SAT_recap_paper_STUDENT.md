@@ -521,7 +521,7 @@ Order: ____________________
 
 ## Part 6. Read the code, read the data (Q52)
 
-*What it shows: whether you catch a wrong number in a query, a line of pandas or a small result before it reaches a decision. 1 items, about 2 minutes.*
+*What it shows: whether you catch a wrong number in a query, a line of pandas or a small result before it reaches a decision. 1 item, about 2 minutes.*
 
 Each item puts a query, a line of pandas or a small result in front of you. Read it the way the database or an auditor would, and say what it really gives.
 

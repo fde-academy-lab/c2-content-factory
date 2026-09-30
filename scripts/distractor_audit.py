@@ -187,6 +187,10 @@ def keys_from_solutions(path):
     return keys, None
 
 
+BALANCE_FLOOR = 30
+BALANCE_RATIO = 0.6
+
+
 def audit_file(path):
     text = path.read_text(encoding="utf-8", errors="replace")
     items = parse_items(text)
@@ -197,7 +201,19 @@ def audit_file(path):
     solution_keys, solution_file = ({}, None) if inline else keys_from_solutions(path)
 
     fails, key_positions, unaudited, multi_positions, keyed_labels = 0, [], [], [], []
+    # A Saturday recap paper is sat on paper by the whole room, so its options also have to be of a
+    # length: when the longest option runs past BALANCE_FLOOR characters, the shortest must reach
+    # BALANCE_RATIO of it. A lone short option is as much a tell as a lone long key.
+    balanced = path.name.endswith("_recap_paper_STUDENT.md")
     for label, opts in items:
+        if balanced:
+            lengths = [len(o[1]) for o in opts]
+            if max(lengths) > BALANCE_FLOOR and min(lengths) < BALANCE_RATIO * max(lengths):
+                print(f"FAIL  {path.name} item {label}: option lengths run {min(lengths)} to "
+                      f"{max(lengths)} characters, and on a Saturday paper the shortest must reach "
+                      f"{int(BALANCE_RATIO * 100)} percent of the longest. Reword the outlier in "
+                      f"data/programme/paper_edits.yaml.")
+                fails += 1
         key = None
         if inline:
             marked = [o for o in opts if o[2]]
