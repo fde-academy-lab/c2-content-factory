@@ -39,5 +39,5 @@ customer has to say which customers it divides by.
 
 ## What does notebook 03 confirm?
 
-Notebook 03 prints 23 customers, 1.30 orders each and 7 who came back on the booked orders, and 2
-who kept two on the delivered orders.
+Notebook 03 prints 23 customers, 1.30 orders each and 7 who came back on the booked orders. Its set
+cell, run on the 26 orders that were not cancelled, gives Q4's 21 customers and 5 who came back.

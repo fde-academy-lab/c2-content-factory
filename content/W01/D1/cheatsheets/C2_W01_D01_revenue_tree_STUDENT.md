@@ -53,7 +53,7 @@ flowchart LR
 |---|---|
 | Wrong number | A first order is valued at the mean, Rs 18,160. |
 | Check | Orders above the mean: 1 of 30. |
-| Fix | The median, Rs 2,205 booked or Rs 2,060 delivered; the mean stays for totals. |
+| Fix | The median, Rs 2,205 booked, is the typical order; the mean stays for totals. |
 
 **Crux:** Report the median when one order can move the mean, and say why.
 

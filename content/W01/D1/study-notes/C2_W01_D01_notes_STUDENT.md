@@ -453,8 +453,8 @@ A colleague tightens it for a slide: "16 of 23 customers never came back: 70 per
 are lost." Being lost depends on orders after the window closes, which the file cannot show. The check
 asks how long customers take to return: the 7 who did took a median of 45 days (11, 35, 43, 45, 46, 63
 and 65), and 9 of the 16 ordered fewer than 45 days before the 88-day window closed. The fix is 7 came
-back, 7 are past the usual gap and 9 are too recent to judge, and since the gap rests on 7 customers
-in one quarter, 45 days is a floor.
+back, 7 are past the usual gap and 9 are too recent to judge, and since an 88-day window cannot see
+a return slower than 88 days, 45 days is a floor.
 
 ### Do due dates find the same 9 too-recent buyers?
 

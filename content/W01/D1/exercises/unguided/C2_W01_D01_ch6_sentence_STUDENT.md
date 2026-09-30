@@ -102,9 +102,9 @@ b) Due dates in the last 45 days, and it is better for measuring the gap itself
 c) Due dates after 26 September, and it is better for timing each reminder
 d) Due dates after 26 September, and it is better for the sentence Meera reads
 
-### Q5. Design. The caveat rests on a gap measured from 7 returning customers in one 88-day window. What would shrink that caveat most?
+### Q5. Design. The caveat rests on a gap measured inside one 88-day window, which cannot see a return slower than 88 days. What would shrink that caveat most?
 
-a) A second and a third quarter, so the gap comes from many more customers
+a) A second and a third quarter, so slower returns come into view
 b) Rounding the gap to 45 days instead of computing it each time
 c) Leaving the too-recent buyers out of the extract before any counting
 d) Using the mean gap in place of the median, since the mean uses every gap

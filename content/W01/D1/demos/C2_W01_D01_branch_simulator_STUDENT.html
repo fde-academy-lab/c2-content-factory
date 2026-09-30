@@ -1018,8 +1018,10 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   var BOOKED = 544810;
   var DEFS = {
     booked: { name: "booked", orders: 30, rev: 544810, cust: 23, back: 7, once: 16, median: 2205 },
-    nc: { name: "not cancelled", orders: 26, rev: 535760, cust: 21, back: 5, once: 16, median: null },
-    del: { name: "delivered", orders: 21, rev: 520790, cust: 19, back: 2, once: 17, median: 2060 }
+    /* Off the booked definition the customer leaves and the median are the learner's to count, since the
+       chapter 3 set and the escalated case ask for them. */
+    nc: { name: "not cancelled", orders: 26, rev: 535760, cust: null, back: null, once: null, median: null },
+    del: { name: "delivered", orders: 21, rev: 520790, cust: null, back: null, once: null, median: null }
   };
   var CONSUMER = {
     channels: ["app", "web", "store"],
@@ -1096,8 +1098,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
       d: function () { return K.bridge(["consumer view", 64810], [["customers +10%", 6481], ["frequency +10%", 6481], ["lift on the lift", 648]], { lo: 60000, endLabel: "through the tree", title: "Two 10 percent lifts on the consumer view, multiplied" }); } },
     { t: "Chapter 6: what will Meera sign?", r: 6, x: "Sixteen of 23 bought once, and it is tempting to call 70 percent lost. Returning customers took a median of 45 days, and 9 of the 16 bought inside the last 45, so 7 came back, 7 are past the usual gap without a second order, and 9 are too recent to judge. Open frequency first, and hold the Rs 12 crore until Tuesday's two quarters.",
       d: function () { return K.columns(["came back", "once, past the gap", "once, too recent"], [["customers", [7, 7, 9]]], { lit: [2], title: "The 23 customers, with the window's edge" }); } },
-    { t: "Escalated case: does the answer survive on delivered orders?", r: 6, x: "On the 21 delivered orders, 19 customers kept 1.11 orders each and the median is Rs 2,060. Orders per customer fell; the typical order and the branch held, and the delivered view names the leak: second orders cancelled or returned.",
-      d: function () { return K.driverTree(treeData("freq", { freq: "open first", cust: "hold until Tuesday" }, { cust: "unknown" }), { title: "Frequency first; acquisition waits for two windows" }); } },
+    { t: "Escalated case: does frequency first survive on delivered orders?", r: 6, x: "The case rebuilds the customer leaves, the typical order and the plan on the 21 delivered orders, the reading Anand's books keep, and asks which numbers move and whether the call on booked orders still holds. Its numbers are yours to compute in the escalated case's notebook.",
+      d: function () { return K.driverTree(treeData("freq", { freq: "booked: open first", cust: "booked: hold" }, { cust: "unknown" }), { title: "The call on booked orders, which the case retests on delivered" }); } },
     { t: "Second case: does a channel change the branch?", r: 6, x: "Store brings 91.6 percent of all booked revenue, and once the view keeps the three consumer segments its share falls to 29.2 percent. There web leads booked with Rs 27,290, of which Rs 14,970 came back, app delivered all of its Rs 18,600, and store delivered Rs 9,870 after Rs 9,050 of cancellations. Frequency first stands, and the note names two leaks.",
       d: function () { return K.columns(CONSUMER.channels, [["booked", CONSUMER.bookedRs], ["delivered", CONSUMER.deliveredRs]], { fmt: R, title: "The consumer segments by channel, booked against delivered" }); } }
   ];
@@ -1127,43 +1129,46 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     var d = DEFS[state.def];
     var cust = state.count === "rows" ? d.orders : d.cust;
     var back = state.count === "rows" ? 0 : d.back;
-    var mean = d.rev / d.orders;
-    return { d: d, cust: cust, back: back, once: cust - back, opc: d.orders / cust, mean: mean,
-             typ: state.typ === "mean" ? mean : d.median };
+    var mean = d.rev / d.orders, known = cust !== null;
+    return { d: d, cust: cust, back: back, once: known ? cust - back : null, opc: known ? d.orders / cust : null,
+             mean: mean, typ: state.typ === "mean" ? mean : d.median, known: known };
   }
   function decision(L) {
     var d = L.d;
     if (state.count === "rows") return ["bad", "On this count all " + L.cust + " customers bought once, so acquisition looks like the only branch left and the Rs 12 crore looks justified. That reading rests on rows counted as customers, which is chapter 3's trap; count distinct ids before anyone signs."];
+    if (!L.known) return ["", "On the " + d.orders + " " + d.name + " orders the customers, how many came back, the orders each and the median are yours to count, the way chapters 3 and 4 counted the booked orders. Choose booked to see the full sentence."];
     if (state.typ === "mean") return ["bad", "Frequency is live, with " + L.back + " of " + L.cust + " customers back, and the decision still leans that way. The acquisition payback on this setting values a first order at the mean, " + R(L.mean) + ", and only one order in the file sits above it; quote the median as the typical order, and build the payback's total on the mean of the consumer segments the spend targets, Rs 2,235 on booked orders."];
-    if (L.typ === null) return ["", "Frequency is live, with " + L.back + " of " + L.cust + " customers back. The median on the not-cancelled definition is left for you: sort the 26 amounts, or read notebook 04's second route, and take the middle two, then come back and choose booked or delivered to see the full sentence."];
     return ["good", "On the " + d.orders + " orders, " + d.name + ", " + L.cust + " customers placed " + L.opc.toFixed(2) + " orders each at a typical order of " + R(L.typ) + ", and " + L.once + " of them bought only once, so open frequency before acquisition. One window cannot show which branch moved, so hold the Rs 12 crore until Tuesday's two quarters."];
   }
   function sim() {
     var L = leaves(), d = L.d;
     $("sSales").textContent = R(d.rev);
     $("sSalesD").textContent = d.name + ", on " + d.orders + " orders";
-    $("sCust").textContent = String(L.cust);
-    $("sCustD").textContent = state.count === "rows" ? "one per row, which is one per order" : L.back + " came back, " + L.once + " bought once";
-    $("sOpc").textContent = L.opc.toFixed(2);
-    $("sOpcD").textContent = d.orders + " orders over " + L.cust + " customers";
+    $("sCust").textContent = L.known ? String(L.cust) : "yours to count";
+    $("sCustD").textContent = state.count === "rows" ? "one per row, which is one per order" :
+      (L.known ? L.back + " came back, " + L.once + " bought once" : "count distinct ids on the " + d.orders + " orders");
+    $("sOpc").textContent = L.known ? L.opc.toFixed(2) : "yours to find";
+    $("sOpcD").textContent = d.orders + " orders over " + (L.known ? L.cust + " customers" : "the customers you count");
     $("sTyp").textContent = L.typ === null ? "yours to find" : R(L.typ);
     $("sTypD").textContent = state.typ === "mean" ? "the mean, which one order can drag" :
-      (L.typ === null ? "sort the 26 amounts in notebook 04" : "the median, the middle order");
-    $("sIdentity").textContent = L.cust + " customers × " + L.opc.toFixed(4) + " orders each × " + R(L.mean) +
-      " per order = " + R(L.cust * L.opc * L.mean);
+      (L.typ === null ? "sort the " + d.orders + " amounts and take the middle" : "the median, the middle order");
+    $("sIdentity").textContent = L.known
+      ? L.cust + " customers × " + L.opc.toFixed(4) + " orders each × " + R(L.mean) + " per order = " + R(L.cust * L.opc * L.mean)
+      : d.orders + " orders × " + R(L.mean) + " per order = " + R(d.orders * L.mean) + ", and the customers cancel out of the product";
     var moves = [];
     if (state.def !== "booked") moves.push(["cancelled", -9050]);
     if (state.def === "del") moves.push(["returned", -14970]);
     K.draw("simBridge", K.bridge(["booked", BOOKED], moves, { lo: 500000, endLabel: d.name,
       title: "From booked to " + d.name + ", 1 July to 26 September" }));
-    K.draw("simLeaves", K.columns(["customers", "came back", "bought once"], [[state.count === "rows" ? "by rows" : "by id", [L.cust, L.back, L.once]]],
-      { title: "The customer leaves, " + d.name + ", counted " + (state.count === "rows" ? "by rows" : "by id") }));
-    var keys = ["booked", "del"];
-    K.draw("simTypical", K.columns(["booked", "delivered"], [["mean", keys.map(function (k) { return DEFS[k].rev / DEFS[k].orders; })],
-      ["median", keys.map(function (k) { return DEFS[k].median; })]],
-      { fmt: R, lit: [keys.indexOf(state.def)], width: 520,
-        title: state.def === "nc" ? "Mean against median; the not-cancelled median is yours to compute in notebook 04"
-                                  : "Mean against median; the bold label is the definition you chose" }));
+    K.draw("simLeaves", L.known
+      ? K.columns(["customers", "came back", "bought once"], [[state.count === "rows" ? "by rows" : "by id", [L.cust, L.back, L.once]]],
+          { title: "The customer leaves, " + d.name + ", counted " + (state.count === "rows" ? "by rows" : "by id") })
+      : K.columns(["booked", d.name], [["orders", [DEFS.booked.orders, d.orders]]],
+          { lit: [1], title: "Orders, booked against " + d.name + "; the customers on these are yours to count" }));
+    K.draw("simTypical", K.columns(["booked"], [["mean", [DEFS.booked.rev / DEFS.booked.orders]], ["median", [DEFS.booked.median]]],
+      { fmt: R, lit: state.def === "booked" ? [0] : [], width: 520,
+        title: state.def === "booked" ? "Mean against median on booked orders, the definition you chose"
+                                      : "Booked mean against median; on " + d.name + " orders both are yours to compute" }));
     var v = decision(L);
     $("simDecision").className = "strip" + (v[0] ? " " + v[0] : "");
     $("simDecisionText").textContent = v[1];
@@ -1172,7 +1177,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   var SAID = {
     defBooked: ["def", "booked", "Sales is now every booked order, cancellations and returns included, so the definition has to be named beside Rs 5,44,810."],
     defNc: ["def", "nc", "Sales is now booked less the 4 cancelled orders: Rs 9,050 and 4 orders come out, all from store."],
-    defDel: ["def", "del", "Sales is now delivered only: the 5 returned web orders leave too, and 19 customers remain."],
+    defDel: ["def", "del", "Sales is now delivered only: the 5 returned web orders leave too, and the customers left are yours to count."],
     cntId: ["count", "id", "Customers are now counted by distinct id, so each person appears once however many orders they placed."],
     cntRows: ["count", "rows", "Customers are now counted by rows, so every order looks like a new person and nobody seems to come back."],
     typMedian: ["typ", "median", "The typical order is now the median, the middle of the sorted orders."],

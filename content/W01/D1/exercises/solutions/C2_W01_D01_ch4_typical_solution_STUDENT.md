@@ -41,5 +41,4 @@ large ones, the same mean describes almost none of them.
 ## What does notebook 04 confirm?
 
 Notebook 04 prints the median of Rs 2,205, the mean at 8.2 times the median, the count of orders on
-each side of the mean, and the median on the not-cancelled and delivered readings, Rs 2,100 and
-Rs 2,060.
+each side of the mean, and the median on the not-cancelled reading, Rs 2,100.

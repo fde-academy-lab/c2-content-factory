@@ -1293,9 +1293,8 @@ print(len(ORDERS), "orders,", kit.rupees(revenue), "booked")
 
         A set answers overlap questions: `&` keeps the ids two sets share and `|` the ids in either. A
         frequency plan has to reach customers where they come back, so the question is which channels
-        the repeat buyers used. All 7 came back through a different channel from their first order; seven
-        customers are too few to call that a pattern, and it does say a frequency plan built on one
-        channel would miss how these customers return.
+        the repeat buyers used. All 7 came back through a different channel from their first order, so a
+        frequency plan built on one channel would have missed every one of these returns.
         """),
         code("""
         by_channel = {"app": set(), "web": set(), "store": set()}
@@ -2206,8 +2205,8 @@ print(f"{len(ORDERS)} orders from {start} to {end}, {(end - start).days + 1} day
         usual gap. The 7 who came back took a median of 45 days, and 9 of the 16 one-time buyers ordered
         fewer than 45 days before the window ends, so they have not had a typical customer's time to
         return. The file supports 7 came back, 7 past the usual gap without a second order, and 9 too
-        recent to judge, so "70 percent lost" becomes at most 7 of 23, and even that rests on a gap
-        measured from 7 customers. The window also cuts the gap short: a customer who took 100 days to
+        recent to judge, so "70 percent lost" becomes at most 7 of 23. The window also cuts the gap
+        short: a customer who took 100 days to
         return could not show up in 88, so 45 days is a floor, and more of the 16 may still be on their
         way back. The sentence replaces the 16 with the split.
         """),
@@ -2234,8 +2233,8 @@ print(f"{len(ORDERS)} orders from {start} to {end}, {(end - start).days + 1} day
         md("""
         **When to switch.** Recency is the route when you report today's state; due dates are the route
         when you plan follow-ups, since a due date is the day a reminder would go out. Both need the
-        gap, and with more quarters the gap would come from hundreds of customers instead of 7 and the
-        caveat would shrink.
+        gap, and a second quarter would show which of the 9 came back and would see returns slower than
+        88 days, so the caveat would shrink.
 
         > **Kavya's review.** This is a sentence I would take into the room. It says what we know, what
         > we would do, and what we would need before spending Rs 12 crore, and every number in it is one

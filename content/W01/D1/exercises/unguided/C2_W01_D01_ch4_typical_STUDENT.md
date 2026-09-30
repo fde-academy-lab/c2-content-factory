@@ -111,7 +111,7 @@ d) Neither moves enough to matter, so either middle can go into the plan as the 
 ## How do you check your letters against the notebook?
 
 `notebooks/C2_W01_D01_04_the_typical_order_STUDENT.ipynb` sizes the three middles on the invented
-orders and prints the median under each reading of sales. Check Q2, Q4 and Q5 against it, and change
+orders and prints the median on the booked and not-cancelled readings. Check Q2, Q4 and Q5 against it, and change
 a letter only if your reasoning changes with it.
 
 **In the interview.** [S] Mean or median for order value, and why?

@@ -708,7 +708,7 @@ flowchart LR
 ```notes
 LIVE, 3 minutes. The notebook asserts both routes find the same customers. When to switch: count the
 days since the order to report today's state, and use due dates to plan follow-ups, since a due date
-is the day a reminder would go out. A second quarter measures the gap on more customers, and the
+is the day a reminder would go out. A second quarter shows which of the 9 came back, and the
 caveat shrinks.
 Transition: D29 is self-study, so go to S30, Kavya's review.
 ```
@@ -847,7 +847,7 @@ Transition: S34, the checks.
 
 | The wrong number | The check that catches it | What to report |
 |---|---|---|
-| Rs 5,44,810 as sales | Count orders by status before summing. | Rs 5,35,760, named as not cancelled, goes in the note. |
+| Rs 5,44,810 as sales | Count orders by status before summing. | Each total goes out named, with the bridge: Rs 9,050 cancelled, Rs 14,970 returned. |
 | Rs 25,943 AOV | AOV x the 30 orders the revenue covers must give it back. | Rs 18,160 booked or Rs 24,800 delivered, each named, is the AOV. |
 | 1.00 orders each | Compare rows with distinct ids: 30 against 23. | Kalpa has 1.30 orders per customer, and 7 came back. |
 | Rs 18,160 typical | Count orders above the mean: 1 of 30. | The median, Rs 2,205, is the typical order. |

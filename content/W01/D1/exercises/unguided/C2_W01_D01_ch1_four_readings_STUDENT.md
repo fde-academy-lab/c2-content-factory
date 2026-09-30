@@ -130,7 +130,7 @@ b) Change "cancelled" to "delivered", so only the delivered orders are summed
 c) Change "cancelled" to "returned" and == to !=, so returned orders are skipped
 d) Change == to != and "cancelled" to "delivered", so undelivered orders are summed
 
-### Q5. Design. Next month Kalpa adds a fifth status, "part-refunded". Which way of computing the readings shows the new status the first time it appears, with no new code?
+### Q5. Design. Next month Kalpa adds a fourth status, "part-refunded". Which way of computing the readings shows the new status the first time it appears, with no new code?
 
 a) One loop with an if per reading, since each reading is written out in full
 b) Sums by status, since the new status arrives as its own line in the walk

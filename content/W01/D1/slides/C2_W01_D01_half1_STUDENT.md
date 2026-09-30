@@ -763,7 +763,7 @@ Transition: the chapter's answers, one line each.
 
 ---
 
-## S26. Meera gets Rs 5,35,760, named net of cancellations
+## S26. Each total goes to Meera named, and booked heads the tree
 *Which of the file's totals should Meera call sales, and what does each one count?*
 
 | Question | Answer |
@@ -773,7 +773,7 @@ Transition: the chapter's answers, one line each.
 | Which reading is largest? | Booked is Rs 5,44,810, then not cancelled Rs 5,35,760, then delivered Rs 5,20,790. |
 | All 30 as sales? | That total counts 4 cancelled store orders, Rs 9,050 that was never sold. |
 | Sums by status? | They reach the same three totals to the rupee. |
-| The tree's root? | It carries Rs 5,35,760 net of cancellations, with delivered beside it. |
+| The tree's root? | Booked, Rs 5,44,810 on 30 orders, named, since chapters 2 to 6 build on the same 30 orders. |
 
 **Kavya's review.** "You found Rs 9,050 that was never a sale by counting before adding. Which definition Meera plans on is her call; your job is to make sure she can see which one she is reading."
 

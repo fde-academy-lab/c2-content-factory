@@ -105,9 +105,10 @@ d) A set of ids, and switch to counts when someone asks who came back
 
 ## How do you check your letters against the notebook?
 
-`notebooks/C2_W01_D01_03_the_leaves_counted_STUDENT.ipynb` counts the customers under all three
-readings of sales, and its set, dictionary and `&` cells are the tools of Q1. Check Q1 and Q4 against
-it, and change a letter only if your reasoning changes with it.
+`notebooks/C2_W01_D01_03_the_leaves_counted_STUDENT.ipynb` counts the customers on the booked
+orders, and its set, dictionary and `&` cells are the tools of Q1. Check Q1 against it, run its set
+cell on the 26 orders that were not cancelled for Q4, and change a letter only if your reasoning
+changes with it.
 
 **In the interview.** [F] Your extract shows 30 orders and 30 customers; what do you check before
 saying nobody comes back?

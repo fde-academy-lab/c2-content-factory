@@ -151,7 +151,7 @@ panics the room or hands marketing an easy rebuttal.
 | 5 | Do due dates find the same buyers? | They do: 9 of the 16 fall due for a second order after 26 September, the same 9 that the days since ordering found. |
 | 6 | What does the sentence Meera signs say? | "On the 30 booked orders from 1 July to 26 September, 23 customers placed 1.30 orders each at a typical order of Rs 2,205; 7 came back, 7 are past the usual gap without a second order, and 9 bought too recently to judge, so I would open frequency before acquisition, and since one quarter cannot show which branch moved, hold the Rs 12 crore until Tuesday's two quarters." |
 
-### A. Does the answer survive on the orders that stayed delivered?
+### The escalated case: does frequency first survive on the orders that stayed delivered?
 
 The escalated case, 35 minutes, each learner alone, with notebook ex1. Its opener reads *Escalated
 case*.
@@ -170,7 +170,7 @@ of the board. An answer that holds on booked orders alone never reaches his book
 | 5 | How many of the 17 delivered one-time buyers are too recent to judge? | 7 of them bought fewer than 45 days before 26 September. |
 | 6 | What moved and what held between booked and delivered? | Orders per customer fell from 1.30 to 1.11; the typical order, the window's edge and the branch held; and 4 of the 7 returning customers lost that second order to a cancellation or a return. |
 
-### C. Where does revenue come from, by customer type and channel, and does it change the branch?
+### The second case: where does revenue come from, by customer type and channel, and does it change the branch?
 
 The second case, 25 minutes, in pairs, with notebook ex2. Its opener reads *Second case*.
 
@@ -229,11 +229,11 @@ second route (3 to 5), and Kavya's review with the interview question (2 to 3).
 | The day's question, 1 | Morning deck, cover and S1 | The nine short questions on screen | Meera's question is read once and the nine short questions in order, and nothing is answered yet. | Cut nothing. |
 | The retail story, 45 | Section 00, S2 to S10, with D8 and D9 for self-study | `trainer/C2_W01_D01_domain_story_TRAINER.md`; board drawings 1 to 6; notebook 00 for self-study | Kalpa keeps a thin slice: Rs 100 of GMV is Rs 80 of net revenue and Rs 2.50 of EBITDA, and the Rs 20 between GMV and net revenue waits for chapter 1. Each learner can name who at Kalpa asks for which number and place a metric on the tree as a formula. | Shrink part 4 to its drawing, then part 6 to its question. |
 | Meera's ask, 4 | S11 and S12 | The metric tree, already on the board | Meera's one message holds four questions, and the room can say which chapter answers each. | Cut nothing. |
-| Chapter 1, Which total is sales? 30 | Section 01, S13 to S26 | Notebook 01; `unguided/C2_W01_D01_ch1_four_readings_STUDENT.md` | Reliance publishes two totals for one quarter, so every total carries its definition. Summing by status is the best fit on 30 rows, and the TypeError gets its two minutes from S16's notes if it happens. Booked Rs 5,44,810 carries the 4 cancelled store orders, not cancelled is Rs 5,35,760, delivered Rs 5,20,790, and the sums by status agree. | Cut the second route to its one assertion. |
+| Chapter 1, Which total is sales? 30 | Section 01, S13 to S26 | Notebook 01; `unguided/C2_W01_D01_ch1_four_readings_STUDENT.md` | Reliance publishes two totals for one quarter, so every total carries its definition. Summing by status is the best fit on 30 rows, and the TypeError gets its two minutes from S18's notes if it happens. Booked Rs 5,44,810 carries the 4 cancelled store orders, not cancelled is Rs 5,35,760, delivered Rs 5,20,790, and the sums by status agree. | Cut the second route to its one assertion. |
 | Chapter 2, What is each branch? 30 | Section 02, S27 to S41 | Notebook 02; `unguided/C2_W01_D01_ch2_tree_metrics_STUDENT.md` | Jio reports revenue as a tree. The file fills three branches, and the AOV is Rs 18,160 booked. The mixed AOV of Rs 25,943 is caught by multiplying back, and items, price and discounts stay named as not in the file. | Cut the second route. |
-| Chapter 3, Do customers come back? 30 | Section 03, S42 to S55 | Notebook 03; `unguided/C2_W01_D01_ch3_leaves_STUDENT.md` | Reliance counts 396 million registered customers, a count of people. The 30 rows hold 23 customers at 1.30 orders each, 7 of whom came back, and rows counted as customers read 1.00 and "nobody comes back". | Cut D53, the delivered count, first. |
+| Chapter 3, Do customers come back? 30 | Section 03, S42 to S55 | Notebook 03; `unguided/C2_W01_D01_ch3_leaves_STUDENT.md` | Reliance counts 396 million registered customers, a count of people. The 30 rows hold 23 customers at 1.30 orders each, 7 of whom came back, and rows counted as customers read 1.00 and "nobody comes back". | Cut S54, the second route, first. |
 | Break, 10 | | | | |
-| Chapter 4, What is a typical order? 30 | Section 04, S56 to S71, with D65 and D66 for self-study | Notebook 04; `unguided/C2_W01_D01_ch4_typical_STUDENT.md`; the companion's experiment C | Blinkit reports its AOV as a mean because it adds up to totals. Four middles are sized on the invented six-order set, only 1 of the 30 orders sits above the mean of Rs 18,160, each learner sorts in the empty cell on S67 and reads what sits at the top without reading any record aloud, and the median is Rs 2,205. | Never cut the sort on S67. |
+| Chapter 4, What is a typical order? 30 | Section 04, S56 to S71, with D65 and D66 for self-study | Notebook 04; `unguided/C2_W01_D01_ch4_typical_STUDENT.md`; the companion's experiment C | Blinkit reports its AOV as a mean because it adds up to totals. Four middles are sized on the invented six-order set, only 1 of the 30 orders sits above the mean of Rs 18,160, each learner sorts in the empty cell on S68 and reads what sits at the top without reading any record aloud, and the median is Rs 2,205. | Never cut the sort on S68. |
 
 **What the story says, and what it never stages.** The story states each metric as a formula, with the
 question it answers and who asks it. It names GMV and net revenue and says the two differ, and it leaves the gap between them, Rs 20 on
@@ -453,7 +453,7 @@ who stalled on chapter 3 take its recovery task.
 | Early finishers | `demos/C2_W01_D01_decision_tool_STUDENT.xlsx` hides one formula defect per tab. |
 | The room's turn in each chapter | `exercises/unguided/` holds one scenario set per chapter. |
 | The afternoon | `exercises/unguided/C2_W01_D01_escalated_case_STUDENT.md` and `_second_case_` run with their notebooks. |
-| Close | `kahoot/C2_W01_D01_quiz_STUDENT.md` |
+| Close | `kahoot/C2_W01_D01_quiz_STUDENT.md`, then the revenue-tree sheet, `cheatsheets/C2_W01_D01_revenue_tree_STUDENT.pdf`, handed out with the domain card once the cases are done. |
 | The lab | `exercises/practice/` |
 | Tonight | `takehome/` for the second sample, and `preread/` for Tuesday. |
 
