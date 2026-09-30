@@ -588,7 +588,7 @@ xychart-beta
     line [0.446, 0.292, 0.076, 0.002]
 ```
 
-**The check.** Put the rupees beside the share: Retail-Plus fell Rs 24,420 in the quarter, 0.19 percent of the company's Q2, while Business rose Rs 6,18,460.
+**The check.** Put the rupees beside the share: Retail-Plus fell Rs 24,420 in the quarter, 0.19 percent of the company's Q2, and an invented Rs 20 gap reaches 0.002 on enough orders.
 
 ```notes
 LIVE, 3 minutes. The orders are invented in notebook 2, level 3, and the gap is Rs 20 at every

@@ -80,7 +80,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 ## Q8. Wednesday's cleaning shrank the Retail-Plus drop. Does the drop survive, and how do you know?
 *Tests: the return question from Wednesday, answered with today's test.*
 
-- No: once the duplicates went, the drop was only noise
+- No: once the file was cleaned, the drop was only noise
 - Yes, since a drop that appears in two different files one day apart must be real
 - Nobody can know until the next quarter's numbers arrive
 - Yes: on the cleaned file it beats the usual wobble in a shuffle test  <- correct

@@ -582,8 +582,8 @@ kit.check("the Retail-Plus fall is under half of one percent of the company's Q2
 '''),
         md('''
 **What happened.** The answer is c. The company delivered Rs 1,28,64,680 in Q2, and the
-Retail-Plus fall is 0.19 percent of it. Business rose by Rs 6,18,460 in the same quarter, twenty-five
-times the Retail-Plus fall. The fall is real and small against the company; both are true, and the
+Retail-Plus fall is 0.19 percent of it, less than one rupee in five hundred. The fall is real and
+small against the company; both are true, and the
 note needs both.
 
 ## 3. The plausible wrong answer
@@ -632,9 +632,8 @@ kit.check("an invented Rs 20 gap goes from chance-sized to significant on sample
         md('''
 **The fix.** Two sentences where the draft had one, and any ranking done by money: "The
 Retail-Plus fall is larger than the usual wobble. It is worth Rs 24,420 a quarter, 0.19 percent of
-the company's delivered revenue, while Business moved Rs 6,18,460 the same quarter." What changed:
-the size. By share Retail-Plus looked like the biggest problem; in rupees its fall is 0.19 percent of
-the company's quarter, a twenty-fifth of the rise Business delivered, and the programme has to
+the company's delivered revenue." What changed: the size. By share Retail-Plus looked like the
+biggest problem; in rupees its fall is 0.19 percent of the company's quarter, and the programme has to
 justify itself against Rs 24,420 a quarter and the offer's cost, never against a share.
 
 ## 4. Against the cost: the retention offer priced
@@ -699,9 +698,10 @@ per member sits inside the range, which is the arithmetic behind "test it on hal
 first". **When to switch.** Use the range whenever the decision has a cost to beat; the share alone
 is enough only when the question is "real or not".
 
-> **Kavya's review.** "Real, yes, by two routes. Worth Rs 24,420 a quarter, small against Business
-> and a third of the tier. The range dips below what the offer costs, so do not fund it for all 22:
-> offer it to half, hold back half, and measure. That is a watch item with a test attached, never a
+> **Kavya's review.** "Real, yes, by two routes. Worth Rs 24,420 a quarter, 0.19 percent of the
+> company and a third of the tier. The range dips below what the offer costs, so do not fund it for all 22:
+> offer it to half, hold back half, and measure, knowing that eleven members a side will show only a
+large recovery. That is a watch item with a test attached, never a
 > budget line."
 
 ### In the interview
@@ -1712,8 +1712,8 @@ kit.check("Retail-Plus swung by more than half between two months with no sale",
 kit.check("July's Retail-Plus figure stands on fewer than ten orders", len(plus_jul) < 10, f"{len(plus_jul)}")
 '''),
         md('''
-**What happened.** The answer is c. Retail-Core rose 73 percent from July to August with no sale
-aimed at it, and Retail-Plus fell 58 percent from May to June with no sale at all. A month's revenue
+**What happened.** The answer is c. Retail-Core rose 73 percent from July to August although the
+sale was aimed elsewhere, and Retail-Plus fell 58 percent from May to June with no sale at all. A month's revenue
 on a few orders swings by half on its own, and August was a big month for both segments.
 
 **The fix.** Compare like with like in time as well: take August's share of each segment's
@@ -1746,13 +1746,16 @@ print(f"August's share of Q2: Retail-Plus {aug_share_rp:.1%}, Retail-Core {aug_s
       f"{100 * real_gap:.1f} points; shuffling the segment labels makes a gap that large either way in {chance_share:.2f} of deals")
 kit.check("August's share is within a few points for the targeted and the untargeted segment",
           abs(aug_share_rp - aug_share_core) < 0.06, f"{aug_share_rp:.1%} against {aug_share_core:.1%}")
-kit.check("chance makes a gap that large often, so the months show no sale effect", chance_share > 0.2, f"{chance_share:.2f}")
+kit.check("chance makes a gap that large often, so the months show no sign of the sale", chance_share > 0.2, f"{chance_share:.2f}")
 '''),
         md('''
 What changed: the jump of 170 percent becomes an August that took 52 percent of Retail-Plus's
 quarter against 49 percent of Retail-Core's, about four points apart, and shuffling the segment
 labels makes a gap that large in about eight deals in ten. The month file shows no sign of the sale
-beyond a busy August for everyone.
+beyond a busy August for everyone. One more caveat keeps this honest: Retail-Core is the segment the
+sale was not aimed at, yet step 1 showed Marketing's extract listing Retail-Core customers among
+those who got it. If the sale lifted both segments, similar Augusts would look like this too, so
+Retail-Core is an imperfect comparison, which is one more reason only a coin can settle it.
 
 ## 4. The design: a hold-back at Diwali
 

@@ -16,7 +16,7 @@ Post exactly this shape: xxxxxx
 ### Q1
 
 Meera wants to know before Monday whether the Retail-Plus fall is real, and she wants to see how
-the answer was made. The file holds 44 member totals, and six of them are zero in one quarter.
+the answer was made. The file holds 44 member totals, and eight of them are zero.
 Which of the four options fits her question best?
 
 a) Wait for Q3, since one more quarter settles the question beyond argument

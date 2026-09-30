@@ -144,13 +144,13 @@ The switch: a known recovery rate from an earlier offer, and then C alone decide
 **The build.** Rs 1,110 times 22 members is Rs 24,420 a quarter. The tier fell from Rs 72,130 to Rs
 47,710, a third of its money (33.9 percent). The company delivered Rs 1,22,73,410 in Q1 and Rs
 1,28,64,680 in Q2, so the fall is 0.19 percent of Q2. Between the quarters Retail-Core moved minus
-Rs 3,750, Student plus Rs 980 and Business plus Rs 6,18,460, twenty-five times the Retail-Plus fall.
+Rs 3,750, Student plus Rs 980 and Business plus Rs 6,18,460, which is where the company's money sits.
 
 **The trap.** Shares ranked Retail-Plus 0.027, Retail-Core 0.345, Business 0.555, and the draft
 wrote: "Retail-Plus is our biggest problem; fund its retention programme first." **The check** puts
 rupees beside every share, and an invented Rs 20 gap shows why: its share was 0.446 on 100 orders,
 0.292 on 1,000, 0.076 on 5,000 and 0.002 on 20,000. **The fix** is two sentences: the fall is real,
-and it is worth Rs 24,420 a quarter, 0.19 percent of the company, while Business rose Rs 6,18,460.
+and it is worth Rs 24,420 a quarter, 0.19 percent of the company.
 The harm in the draft is scale: a programme funded because a share was small, before anyone set
 the fall against the company or the offer's cost.
 
@@ -165,7 +165,7 @@ the tier. Read a range whenever the decision has a cost to beat.
 
 **WATCH OUT.** A list ranked by p-value has ranked certainty and called it importance.
 
-> **Kavya's review.** "Real, yes, by two routes. Worth Rs 24,420 a quarter, small against Business
+> **Kavya's review.** "Real, yes, by two routes. Worth Rs 24,420 a quarter, 0.19 percent of the company,
 > and a third of the tier. The range dips below the offer's cost, so offer it to half, hold back
 > half, and measure."
 
@@ -354,7 +354,9 @@ changed: Retail-Core rose 73 percent over the same months (Rs 13,320 to Rs 23,09
 aimed at it, and Retail-Plus fell 58 percent from May to June with no sale. **The fix** compares
 August's share of each quarter: 52.5 percent for Retail-Plus, 48.6 for Retail-Core, and dealing the
 segment labels at random makes a gap that large in about eight deals in ten. The months show no sign
-of the sale beyond a busy August for everyone.
+of the sale beyond a busy August for everyone. Retail-Core is an imperfect comparison, since
+Marketing's extract lists Retail-Core customers among those who got the sale; if it lifted both,
+similar Augusts would look the same, which is one more reason only a coin settles it.
 
 **The design.** Before the sale, a coin holds back a random fifth inside each segment, 14 of 70
 Retail-Plus customers. At Marketing's own 6 percent that forgoes about Rs 4,200, the cost of the

@@ -173,9 +173,9 @@ many orders July's figure stands on. Take two answers.
 | Delivered, Rs | Apr | May | Jun | Jul | Aug | Sep |
 |---|---|---|---|---|---|---|
 | Retail-Plus, targeted | 19,650 | 36,840 | 15,640 | 9,280 | 25,060 | 13,370 |
-| Retail-Core, not targeted | 11,920 | 15,000 | 24,380 | 13,320 | 23,090 | 11,140 |
+| Retail-Core, not aimed at | 11,920 | 15,000 | 24,380 | 13,320 | 23,090 | 11,140 |
 
-**The check.** Retail-Core, the segment the sale was not aimed at, rose 73 percent from July to August. Retail-Plus fell 58 percent from May to June with no sale running. July's Retail-Plus figure stands on 4 delivered orders.
+**The check.** Retail-Core, the segment the sale was not aimed at (though the extract shows it reached some Retail-Core customers), rose 73 percent from July to August. Retail-Plus fell 58 percent from May to June with no sale running. July's Retail-Plus figure stands on 4 delivered orders.
 
 ```notes
 LIVE, 4 minutes. Notebook 6, level 3, draws these two rows as lines. Point at May to June: a fall of more than half, no campaign anywhere. A month's revenue on a few
@@ -189,7 +189,7 @@ orders swings by half on its own.
 
 ```stats
 value: 52.5% | label: Retail-Plus | note: August's share of its Q2, targeted
-value: 48.6% | label: Retail-Core | note: August's share of its Q2, not targeted
+value: 48.6% | label: Retail-Core | note: August's share of its Q2, not aimed at
 value: 8 in 10 | label: chance | note: label shuffles that make a 4-point gap either way
 ```
 
@@ -234,7 +234,7 @@ average, including who was going to buy anyway.
 
 | Route | What it finds | What it says |
 |---|---|---|
-| The months, beside Retail-Core | August's share 4 points higher, which the label shuffle makes about 8 times in 10 | No sign of the sale |
+| The months, beside Retail-Core | August's share 4 points higher, which the label shuffle makes about 8 times in 10 | No sign; Retail-Core was partly reached, so it is an imperfect comparison |
 | Inside each segment, chapter 4 | Got it spent 3.0 percent less, in both segments | No lift, and possibly a loss |
 
 **When to switch.** The months when no exposure table exists; the split when one does; the hold-back whenever the next campaign can still be designed.
