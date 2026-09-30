@@ -357,6 +357,10 @@ conflicts:
     sources: [tracker, journey]
     text: The Week 0 tab (21 September) and the student Week 0 sheet (27 September) give different running orders. The tab runs four diagnostic papers of 60, 45, 30 and 30 minutes on Tuesday and puts the project talks on Saturday beside an industry leader session; the student sheet runs one paper of about two hours on Tuesday, moves the introductions to Wednesday afternoon, and gives Saturday to a session with a working forward deployed engineer. On 28 September 2026 the requester's own diagnostic replaced both papers, as one Google Form of forty questions in about 90 minutes.
     working_rule: Week 0 packs follow the student sheet for the running order and the requester's diagnostic for Tuesday, and cite the tracker row for content only.
+  - id: anand-title
+    sources: [tracker, docs/07_Client_Zero.md]
+    text: The tracker's Week 1 and Week 2 rows and the Weeks 1 and 2 spine call Anand Iyer the CFO, while client zero v2.2's stakeholder table calls him the finance controller of Kalpa Retail. The built Week 1 files say finance controller and the Week 2 Monday files say CFO.
+    working_rule: Until the Programme Head names one title, a new student file names Anand by his work, the numbers in Finance's books, as both Saturday papers do; the files that carry a title change with the decision.
   - id: journey-tokenization
     sources: [tracker, journey]
     text: The student journey lists tokenization under Week 8, while the re-cut moved it to the Week 7 Friday.
