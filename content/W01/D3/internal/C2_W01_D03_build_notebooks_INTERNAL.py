@@ -457,7 +457,7 @@ def ch1():
         Python offers two styles for a conversion. Look before you leap checks first, as `value.isdigit()`
         does, and rejects `"-2400"`, a valid integer. Easier to ask forgiveness tries the conversion and
         handles the exception, as `convert()` does, so the rule for a valid amount lives in one place.
-        Real Python compares the two (https://realpython.com/python-lbyl-vs-eafp/, checked 30 Sep 2026).
+        Real Python compares the two (https://realpython.com/python-lbyl-vs-eafp/, verified 03 Sep 2026).
         '''),
         code('''
         kit.table(["What chapter 1 established", "The number"],

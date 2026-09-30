@@ -159,7 +159,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   <p class="quote">&ldquo;Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9. Until your numbers match ours,
     Finance will not act on a drop measured from an ERP export.&rdquo;</p>
   <p class="who">Anand Iyer, finance controller, Kalpa Retail</p>
-  <p class="promise">This page makes the day's decisions move. Walk the reconciliation one rung at a time, then set
+  <p class="promise">This page makes the day's decisions move. Walk the reconciliation one chapter at a time, then set
     each cleaning decision yourself and watch Q1, Q2, the bridge and the verdict to Anand change. The simulator's
     numbers are totals computed in advance from the day's export for every combination of decisions; the page holds
     no record from it. The four experiments run on invented records, and each says so.</p>
@@ -179,8 +179,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   <main>
     <section class="part" id="walk">
       <p class="eyebrow">01 &middot; The guided walk</p>
-      <h2>From the dashboard's figure to the books, one rung at a time</h2>
-      <p class="lede">Each step lights the rung the reconciliation is on and redraws Q1 with the decisions made so far.
+      <h2>From the dashboard's figure to the books, one chapter at a time</h2>
+      <p class="lede">Each step lights the chapter the reconciliation is on and redraws Q1 with the decisions made so far.
         The totals come from the day's export.</p>
       <div class="card"><div class="holder" id="walkMap"></div></div>
       <div class="walk" style="margin-top:16px">
@@ -901,25 +901,28 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   }
 
   /* ---------------------------------------------------------------- the walk */
-  var RUNGS = ["the profile", "the copies", "the identity rule", "missing and malformed", "the bridge"];
+  var RUNGS = ["1. what the ERP sent", "2. the rows that repeat", "3. the copy that stays",
+               "4. missing or malformed", "5. the bridge", "6. the log"];
   var WALK = [
     { t: "Two figures, one quarter", lit: null, d: { amt: "zero", key: "line", pref: "first", bulk: "keep", status: "flag" },
-      x: "The dashboard reads Q1 from the ERP export and gets about Rs 2.1 crore. Finance's books say Rs 1.9 crore. Both are honest arithmetic on something; the walk finds what." },
+      x: "The dashboard reads Q1 from the ERP export and gets about Rs 2.1 crore. Finance's books say Rs 1.9 crore. Both are honest arithmetic on something; the walk finds what, one chapter at a time." },
     { t: "Profile, and log the failure", lit: 0, d: { amt: "log", key: "line", pref: "first", bulk: "keep", status: "flag" },
-      x: "The profile counts 201 rows and 186 distinct order ids, and one amount that will not convert. Logging it instead of zeroing it leaves Q1 at Rs 2,09,98,210 and removes the order worth Rs 0." },
-    { t: "A dedupe that finds nothing", lit: 1, d: { amt: "log", key: "line", pref: "first", bulk: "keep", status: "flag" },
-      x: "With the file line in every record, a whole-record dedupe reports zero duplicates and Q1 does not move. The 15-row gap between rows and order ids says the key is wrong." },
-    { t: "The identity rule, the copy that validates", lit: 2, d: { amt: "log", key: "order_id", pref: "validates", bulk: "keep", status: "flag" },
-      x: "One row per order_id, keeping the copy whose fields validate. Fifteen rows are set aside and Q1 lands on Rs 1,90,00,000, the books." },
+      x: "The profile counts 201 rows and 186 distinct order ids, and one amount that will not convert. Logging it instead of zeroing it leaves Q1 at Rs 2,09,98,210, the dashboard's figure, honestly labelled." },
+    { t: "The rows that repeat", lit: 1, d: { amt: "log", key: "order_id", pref: "first", bulk: "keep", status: "flag" },
+      x: "With the file line in every record, a whole-record dedupe finds nothing. Keyed on order_id, 15 orders appear twice. Keeping the first copy of each lands Q1 close to the books, and chapter 3 asks why it is not exact." },
+    { t: "The copy that stays", lit: 2, d: { amt: "log", key: "order_id", pref: "validates", bulk: "keep", status: "flag" },
+      x: "Keeping the copy whose amount converts, then the first, sets 15 rows aside and lands Q1 on Rs 1,90,00,000, the books to the rupee." },
     { t: "Keep what is real, flag what is unknown", lit: 3, d: { amt: "log", key: "order_id", pref: "validates", bulk: "keep", status: "flag" },
-      x: "The order with no status is kept and flagged, and the largest Q2 order, a Business account with orders in both quarters, is kept and shown both ways. Q2 stays at Rs 1,87,00,000." },
-    { t: "Reconciled in rows and rupees", lit: 4, d: { amt: "log", key: "order_id", pref: "validates", bulk: "keep", status: "flag" },
-      x: "201 rows in equals 186 kept plus 15 set aside, and Q1 as exported less the set-aside rupees equals the books to the rupee. On clean data the drop is 1.6 percent and Retail-Plus frequency falls 35.0 percent." }
+      x: "The order with no status is kept and flagged, and an amount that fails is rejected to the log, never zeroed. Q2 stays at Rs 1,87,00,000." },
+    { t: "The bridge, and Tuesday recomputed", lit: 4, d: { amt: "log", key: "order_id", pref: "validates", bulk: "keep", status: "flag" },
+      x: "Q1 as exported less the corporate and consumer copies equals the books. The largest Q2 order, a real Business account, stays. On clean data the drop is 1.6 percent and Retail-Plus frequency falls 35.0 percent." },
+    { t: "A log the analyst can replay", lit: 5, d: { amt: "log", key: "order_id", pref: "validates", bulk: "keep", status: "flag" },
+      x: "201 rows in equals 186 kept plus 15 set aside, the rupees tie to the books, and the raw export less the logged lines rebuilds the clean file." }
   ];
   var walkAt = 0;
   function showWalk() {
     var w = WALK[walkAt], o = outcome(w.d);
-    K.draw("walkMap", K.flow(RUNGS, w.lit === null ? -1 : w.lit, { title: "The five rungs; the lit one is this step's" }));
+    K.draw("walkMap", K.flow(RUNGS, w.lit === null ? -1 : w.lit, { title: "The six chapters; the lit one is this step's" }));
     bridgeFor(o, "walkChart", "Q1 in rupees, from the export to this step's pass");
     $("walkStep").textContent = "Step " + walkAt + " of " + (WALK.length - 1);
     $("walkTitle").textContent = w.t;

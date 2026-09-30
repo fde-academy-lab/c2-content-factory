@@ -545,8 +545,7 @@ icon: circle-help | eyebrow: Chapter 3 | title: Open | body: Which copy of each 
 
 ```notes
 LIVE, 2 minutes. One breath: the business's identity rule first, rows against distinct keys, and
-weigh the copies in money. Then the 10-minute break before chapter 3 if the clock says so; the day
-sheet places it before chapter 4.
+weigh the copies in money. Then chapter 3.
 ```
 
 ---

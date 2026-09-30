@@ -1,7 +1,7 @@
 # Kahoot, Week 1 Wednesday
 
 Eight items, ungraded, scored on correctness and speed together. The first item returns to Tuesday;
-the rest climb the day's five rungs. Every number is invented unless the item says it is the day's.
+the rest climb the day's six chapters. Every number is invented unless the item says it is the day's.
 
 Each item names what it tests, so an item dropped for time says what was lost.
 
