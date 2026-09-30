@@ -81,6 +81,16 @@ W2:
     why: The key was the longest option.
     options:
       c: Computing the source-of-truth revenue figure that Finance will check its own books against.
+  34:
+    status: proposed
+    why: The font was a nonsense option, so striking it left a, b and c, which is the whole key; the new distractor is a check that sounds like the other three and cannot catch a fan-out.
+    options:
+      d: the number of channels before and after the join
+  39:
+    status: proposed
+    why: Cell colour was a nonsense option, so striking it left a, b and c, which is the whole key; the new distractor is the precision a room reaches for when a number is misread.
+    options:
+      d: its exact figure
   42:
     status: proposed
     why: The key was the longest option; the distractor keeps the table-qualified column the key uses.
