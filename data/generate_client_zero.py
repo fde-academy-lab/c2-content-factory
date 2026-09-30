@@ -6,6 +6,7 @@ learners hold byte-identical files.
 
     python3 data/generate_client_zero.py --list
     python3 data/generate_client_zero.py --version v0 --out content/W01/D1/data --stem C2_W01_D01
+    python3 data/generate_client_zero.py --version v3-lab --out content/W01/D5/data --stem C2_W01_D05
     python3 data/generate_client_zero.py --all
     python3 data/generate_client_zero.py --contract
 
@@ -86,6 +87,16 @@ WITNESSES = {
         ("the Retail-Plus gap is real but modest", "W1 Thu, statistically real against worth acting on"),
         ("the monsoon sale lifts the aggregate 6 percent while every segment falls",
          "W1 Thu, the confounder and Simpson's reversal in one table"),
+    ],
+    "v3-lab": [
+        ("PROPOSED FOR v2.3: a September batch posted twice, 9 Retail-Core rows and 1 corporate row",
+         "W1 Fri lab, the reconciliation skipped under time pressure"),
+        ('PROPOSED FOR v2.3: one corporate amount stored as the text "9,85,000"',
+         "W1 Fri lab, the pass that coerces to zero and reports no rejects"),
+        ("PROPOSED FOR v2.3: one Q2 order with an empty segment",
+         "W1 Fri lab, segments that do not sum to the total"),
+        ("PROPOSED FOR v2.3: Business on six orders then four",
+         "W1 Fri lab, the headline on too few orders"),
     ],
     "v4": [
         ("the warehouse holds 1,000 orders where last week's extract held 186",
@@ -736,6 +747,184 @@ def _v4_exports(tables):
     return rows, raw, missing
 
 
+# --------------------------------------------------------------------------- v3-lab, Week 1 Friday
+# PROPOSED FOR CLIENT ZERO v2.3 (tracker v7, 21 September 2026, not yet locked). A fresh
+# two-quarter export for the AI-free lab, drawn from the same seed family with new customer and
+# order keys, so nothing a learner computed on Tuesday to Thursday can be reused. It carries the
+# week's four defect families in places the week never showed them:
+#   duplicated rows      a September batch posted twice, in Q2 (Wednesday's sat in Q1), nine
+#                        Retail-Core orders and one corporate order
+#   amount as text       a corporate amount written with Indian digit grouping, "9,85,000", in Q1
+#                        (Monday's was "4500" and Wednesday's the word "twelve")
+#   missing field        one Q2 order with an empty segment (Wednesday's missing field was status)
+#   too few orders       Business, six orders then four (Thursday's thin segment was Student)
+# The clean data's finding is a different branch from the week's: customers flat, frequency flat,
+# and Retail-Core's basket down about 17 percent. A run that skips the reconciliation against the
+# control totals reads Q2 as growth and Retail-Core as flat, which is the trap the day debriefs.
+LAB_SEED = SEED + 30
+LAB_PLAN = {
+    "Q1": {"Retail-Core": 44, "Retail-Plus": 34, "Student": 14, "Business": 6},
+    "Q2": {"Retail-Core": 44, "Retail-Plus": 35, "Student": 16, "Business": 4},
+}
+LAB_TOTALS = {
+    "Q1": {"Retail-Core": 90200, "Retail-Plus": 95200, "Student": 12600},
+    "Q2": {"Retail-Core": 74800, "Retail-Plus": 96600, "Student": 14080},
+}
+LAB_BUSINESS = {
+    "Q1": [840000, 1260000, 985000, 720000, 1145000, 900000],
+    "Q2": [940000, 1320000, 860000, 1020000],
+}
+LAB_BANDS = {
+    ("Q1", "Retail-Core"): (1200, 2900), ("Q2", "Retail-Core"): (950, 2450),
+    ("Q1", "Retail-Plus"): (1800, 3800), ("Q2", "Retail-Plus"): (1800, 3800),
+    ("Q1", "Student"): (500, 1300), ("Q2", "Student"): (500, 1300),
+}
+LAB_CUSTOMERS = {"Retail-Core": (7000, 30), "Retail-Plus": (7100, 20),
+                 "Student": (7200, 12), "Business": (7300, 5)}
+LAB_TEXT_AMOUNT = "9,85,000"
+LAB_DUPLICATES = 10
+LAB_SHUFFLES = 2000
+LAB_SHUFFLE_SEED = 7
+
+
+def _lab_amounts(rng, n, band, total):
+    """n amounts inside band, in steps of Rs 10, landing exactly on total."""
+    low, high = band
+    vals = [rng.randrange(low, high + 1, 10) for _ in range(n)]
+    step = 10 if total > sum(vals) else -10
+    i = 0
+    while sum(vals) != total:
+        j = i % n
+        if low <= vals[j] + step <= high:
+            vals[j] += step
+        i += 1
+        if i > 200000:
+            sys.exit(f"FAIL  cannot land {n} amounts in {band} on Rs {total:,}")
+    return vals
+
+
+def _lab_orders(seed, plan, totals, business, customers, id_base):
+    """The clean distinct orders of one lab export, sorted as an ERP writes them: by date."""
+    rng = random.Random(seed)
+    rows = []
+    for quarter in ("Q1", "Q2"):
+        for seg in ("Retail-Core", "Retail-Plus", "Student", "Business"):
+            n = plan[quarter][seg]
+            if seg == "Business":
+                amounts = list(business[quarter])
+            else:
+                amounts = _lab_amounts(rng, n, LAB_BANDS[(quarter, seg)], totals[quarter][seg])
+            base, pool = customers[seg]
+            for i in range(n):
+                rows.append({
+                    "customer_id": _customer_id(base + (i % pool)),
+                    "segment": seg,
+                    "channel": CHANNELS[(i + len(rows)) % 3],
+                    "city": CITIES[(i * 5 + len(rows)) % len(CITIES)],
+                    "order_date": _date(rng, quarter, i),
+                    "quarter": quarter,
+                    "amount": amounts[i],
+                })
+    rows.sort(key=lambda r: (r["order_date"], r["segment"], r["customer_id"]))
+    out = []
+    for n, r in enumerate(rows, start=1):
+        out.append({"order_id": _order_id(id_base + n), **r})
+    return out
+
+
+def build_v3_lab_clean():
+    return _lab_orders(LAB_SEED, LAB_PLAN, LAB_TOTALS, LAB_BUSINESS, LAB_CUSTOMERS, 7000)
+
+
+def build_v3_lab():
+    """The lab export as it arrives: the clean orders plus the four defect families."""
+    clean = build_v3_lab_clean()
+    rows = [dict(r) for r in clean]
+    # The corporate amount written the way a person types it in India.
+    text = next(r for r in rows if r["quarter"] == "Q1" and r["amount"] == 985000)
+    text["amount"] = LAB_TEXT_AMOUNT
+    # One Q2 Retail-Plus order lost its segment in the export; the customer's other orders keep it.
+    plus_q2 = [r for r in rows if r["quarter"] == "Q2" and r["segment"] == "Retail-Plus"]
+    plus_q2[len(plus_q2) // 2]["segment"] = ""
+    # A September batch posted twice: nine Retail-Core orders and the largest corporate order.
+    sept_core = [r for r in rows if r["order_date"][5:7] == "09" and r["segment"] == "Retail-Core"]
+    batch = sept_core[:9] + [r for r in rows if r["amount"] == 1320000]
+    batch.sort(key=lambda r: r["order_id"])
+    at = max(rows.index(r) for r in batch) + 1
+    return rows[:at] + [dict(r) for r in batch] + rows[at:]
+
+
+def lab_control(clean):
+    """Finance's control totals for the export: distinct orders and booked rupees per quarter."""
+    out = []
+    for q in ("Q1", "Q2"):
+        rs = [r for r in clean if r["quarter"] == q]
+        out.append({"quarter": q, "orders": len(rs), "amount_rs": sum(r["amount"] for r in rs)})
+    return out
+
+
+# The practice export, for the lab that follows the day. Smaller, with the same four families in
+# yet other places, so a learner reruns the step they stalled on without knowing the answer:
+# four duplicated Q1 Retail-Plus rows, an amount carrying its currency ("Rs 2,450"), one order with
+# no customer_id, and Student on five orders.
+PRACTICE_PLAN = {
+    "Q1": {"Retail-Core": 18, "Retail-Plus": 16, "Student": 2, "Business": 3},
+    "Q2": {"Retail-Core": 18, "Retail-Plus": 12, "Student": 3, "Business": 3},
+}
+PRACTICE_TOTALS = {
+    "Q1": {"Retail-Core": 37800, "Retail-Plus": 46400, "Student": 1800},
+    "Q2": {"Retail-Core": 37440, "Retail-Plus": 34200, "Student": 2700},
+}
+PRACTICE_BUSINESS = {"Q1": [610000, 880000, 745000], "Q2": [700000, 910000, 655000]}
+PRACTICE_CUSTOMERS = {"Retail-Core": (7500, 12), "Retail-Plus": (7600, 8),
+                      "Student": (7700, 4), "Business": (7800, 3)}
+
+
+def build_v3_lab_practice_clean():
+    return _lab_orders(LAB_SEED + 1, PRACTICE_PLAN, PRACTICE_TOTALS, PRACTICE_BUSINESS,
+                       PRACTICE_CUSTOMERS, 8000)
+
+
+def build_v3_lab_practice():
+    rows = [dict(r) for r in build_v3_lab_practice_clean()]
+    plus_q1 = [r for r in rows if r["quarter"] == "Q1" and r["segment"] == "Retail-Plus"]
+    text = plus_q1[2]
+    text["amount"] = f"Rs {text['amount']:,}"
+    core_q2 = [r for r in rows if r["quarter"] == "Q2" and r["segment"] == "Retail-Core"]
+    core_q2[4]["customer_id"] = ""
+    dupes = [dict(r) for r in plus_q1[5:9]]
+    at = rows.index(plus_q1[9])
+    return rows[:at] + dupes + rows[at:]
+
+
+def lab_shuffle(clean, shuffles=LAB_SHUFFLES, seed=LAB_SHUFFLE_SEED):
+    """Thursday's test, rerun: the gap between Retail-Core's and Retail-Plus's change in revenue per
+    order, Q1 to Q2, with segment labels shuffled across customers. Returns (observed, extreme)."""
+    def aov_change(rs):
+        a = [r["amount"] for r in rs if r["quarter"] == "Q1"]
+        b = [r["amount"] for r in rs if r["quarter"] == "Q2"]
+        return 100 * ((sum(b) / len(b)) / (sum(a) / len(a)) - 1)
+
+    core = [r for r in clean if r["segment"] == "Retail-Core"]
+    plus = [r for r in clean if r["segment"] == "Retail-Plus"]
+    observed = aov_change(core) - aov_change(plus)
+    by_customer = {}
+    for r in core + plus:
+        by_customer.setdefault(r["customer_id"], []).append(r)
+    members = sorted(by_customer)
+    n_core = len({r["customer_id"] for r in core})
+    rng = random.Random(seed)
+    extreme = 0
+    for _ in range(shuffles):
+        m = members[:]
+        rng.shuffle(m)
+        a = [r for c in m[:n_core] for r in by_customer[c]]
+        b = [r for c in m[n_core:] for r in by_customer[c]]
+        if abs(aov_change(a) - aov_change(b)) >= abs(observed):
+            extreme += 1
+    return observed, extreme
+
+
 def _py_literal(name, rows):
     lines = [f"# Kalpa Retail, generated by data/generate_client_zero.py. Do not edit by hand.",
              f"{name} = ["]
@@ -816,6 +1005,20 @@ def write(version, out_dir, stem):
         m = out / f"{stem}_campaigns_STUDENT.csv"
         _write_csv(m, CAMPAIGN_MASTER)
         written.append(m)
+
+    elif version == "v3-lab":
+        p = out / f"{stem}_lab_orders_STUDENT.csv"
+        _write_csv(p, build_v3_lab())
+        written.append(p)
+        c = out / f"{stem}_lab_control_STUDENT.csv"
+        _write_csv(c, lab_control(build_v3_lab_clean()))
+        written.append(c)
+        q = out / f"{stem}_practice_orders_STUDENT.csv"
+        _write_csv(q, build_v3_lab_practice())
+        written.append(q)
+        k = out / f"{stem}_practice_control_STUDENT.csv"
+        _write_csv(k, lab_control(build_v3_lab_practice_clean()))
+        written.append(k)
 
     elif version == "v4":
         tables = build_v4()
@@ -987,6 +1190,62 @@ def contract():
             print(f"  FAIL  {seg} has to fall when the aggregate rises")
             fails += 1
 
+    print("v3-lab, Friday's AI-free lab (proposed for client zero v2.3)")
+    lab = build_v3_lab()
+    lab_clean = build_v3_lab_clean()
+    lab_ids = [r["order_id"] for r in lab]
+    want("v3-lab rows as exported", len(lab), len(lab_clean) + LAB_DUPLICATES)
+    want("v3-lab duplicated rows", len(lab_ids) - len(set(lab_ids)), LAB_DUPLICATES)
+    want("v3-lab distinct orders", len(set(lab_ids)), 197)
+    ctl = {c["quarter"]: c for c in lab_control(lab_clean)}
+    want("v3-lab Q1 control total", ctl["Q1"]["amount_rs"], 6048000)
+    want("v3-lab Q2 control total", ctl["Q2"]["amount_rs"], 4325480)
+    ok = (sum(1 for r in lab if isinstance(r["amount"], str)) == 1
+          and sum(1 for r in lab if r["segment"] == "") == 1)
+    print(f"  {'PASS' if ok else 'FAIL'}  v3-lab one amount stored as text and one empty segment")
+    fails += 0 if ok else 1
+    for q, n in (("Q1", 6), ("Q2", 4)):
+        want(f"v3-lab Business orders in {q}",
+             sum(1 for r in lab_clean if r["quarter"] == q and r["segment"] == "Business"), n)
+    dup_q = {r["quarter"] for r in lab if lab_ids.count(r["order_id"]) > 1}
+    ok = dup_q == {"Q2"}
+    print(f"  {'PASS' if ok else 'FAIL'}  v3-lab every duplicate sits in Q2, where Wednesday's sat in Q1")
+    fails += 0 if ok else 1
+
+    def core_tree(rows, q):
+        rs = [r for r in rows if r["quarter"] == q and r["segment"] == "Retail-Core"]
+        custs = len({r["customer_id"] for r in rs})
+        return custs, len(rs) / custs, sum(int(r["amount"]) for r in rs) / len(rs)
+
+    c1, f1, b1 = core_tree(lab_clean, "Q1")
+    c2, f2, b2 = core_tree(lab_clean, "Q2")
+    basket = 100 * (b2 / b1 - 1)
+    print(f"  INFO  Retail-Core clean: customers {c1} then {c2}, orders per customer {f1:.2f} then "
+          f"{f2:.2f}, revenue per order Rs {b1:,.0f} then Rs {b2:,.0f}, {basket:+.1f}%")
+    ok = c1 == c2 and abs(f2 - f1) < 0.01 and -20 < basket < -14
+    print(f"  {'PASS' if ok else 'FAIL'}  v3-lab the branch that moved is Retail-Core's basket")
+    fails += 0 if ok else 1
+    hurried_q1 = sum(r["amount"] for r in lab if r["quarter"] == "Q1" and not isinstance(r["amount"], str))
+    hurried_q2 = sum(r["amount"] for r in lab if r["quarter"] == "Q2")
+    hurried = 100 * (hurried_q2 / hurried_q1 - 1)
+    honest = 100 * (ctl["Q2"]["amount_rs"] / ctl["Q1"]["amount_rs"] - 1)
+    print(f"  INFO  Q1 to Q2: {honest:+.1f}% reconciled, {hurried:+.1f}% on a pass that skips the "
+          f"text amount and keeps the duplicates")
+    ok = honest < -20 and hurried > 0
+    print(f"  {'PASS' if ok else 'FAIL'}  v3-lab the hurried pass reads growth where the books show a fall")
+    fails += 0 if ok else 1
+    observed, extreme = lab_shuffle(lab_clean)
+    print(f"  INFO  shuffle: gap {observed:+.1f} points, {extreme} of {LAB_SHUFFLES} as extreme, "
+          f"p = {extreme / LAB_SHUFFLES:.4f}")
+    ok = extreme / LAB_SHUFFLES < 0.05
+    print(f"  {'PASS' if ok else 'FAIL'}  v3-lab the basket gap is one chance rarely produces")
+    fails += 0 if ok else 1
+    prac = build_v3_lab_practice()
+    pids = [r["order_id"] for r in prac]
+    want("v3-lab practice duplicated rows", len(pids) - len(set(pids)), 4)
+    want("v3-lab practice Student orders",
+         sum(1 for r in build_v3_lab_practice_clean() if r["segment"] == "Student"), 5)
+
     print()
     # ---------------------------------------------------------------- v4, the Week 2 warehouse
     from collections import Counter
@@ -1063,6 +1322,7 @@ TARGETS = {
     "v1": ("content/W01/D2/data", "C2_W01_D02"),
     "v2": ("content/W01/D3/data", "C2_W01_D03"),
     "v3": ("content/W01/D4/data", "C2_W01_D04"),
+    "v3-lab": ("content/W01/D5/data", "C2_W01_D05"),
     "v4": ("content/W02/D1/data", "C2_W02_D01"),
 }
 
