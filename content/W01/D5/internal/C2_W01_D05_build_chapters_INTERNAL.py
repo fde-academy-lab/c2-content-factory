@@ -718,8 +718,8 @@ kit.columns(["Q1, named rows", "Q1, order restored", "Q2"], [("Retail-Core, inve
 '''),
     md("""
     **Your turn.** Do this file's named segments add back to each quarter, in orders and in rupees?
-    Predict first: a) yes; b) in orders, not in rupees; c) no, one quarter is short by an order; d) no,
-    both quarters are short by several. Then type these lines into the empty cell below and run it:
+    Predict first: a) yes, in orders and in rupees; b) in orders, never in rupees; c) no, one quarter
+    falls short; d) no, both quarters fall short. Then type these lines into the empty cell below and run it:
 
     ```python
     SEGS = ("Retail-Core", "Retail-Plus", "Student", "Business")
