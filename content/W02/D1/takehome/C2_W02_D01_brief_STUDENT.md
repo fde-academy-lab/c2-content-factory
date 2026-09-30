@@ -6,8 +6,9 @@ ten minutes from memory, and Part 4 is the practice the row sets for tonight.
 
 Tomorrow opens by running one learner's Part 1 file unchanged on the projector.
 
-> "The fall sits in Retail-Plus. Fine. Which cities? My regional heads will ask before I have
-> finished the sentence." Anand's analyst, replying to the Monday suite
+> "Business moved the rupees and Retail-Plus lost the orders. Fine. Where in Retail-Plus, city by
+> city? My regional heads will ask before I have finished the sentence." Anand's analyst, replying
+> to the Monday suite
 
 ---
 
@@ -62,8 +63,8 @@ different answer if its `ORDER BY` were removed, and why.
 ## What makes this hard to shortcut
 
 Part 1 runs on Kalpa's warehouse, which no assistant has seen, and its numbers either match the
-self-check or they do not. Part 1's last sentence is a defended choice with a threshold: half the city
-cells hold fewer than 30 orders, and a note that ignores that shows it. Part 2's queries are yours
+self-check or they do not. Part 1's last sentence is a defended choice with a threshold: the city
+cells are small, and a note that never counts their orders shows it. Part 2's queries are yours
 and are run unchanged in front of the room, and Part 4 asks about a specific exercise on a named
 page.
 

@@ -22,7 +22,7 @@ mean.
 | Key | The column two tables share, such as order_id in orders and in payments | What does the database match on? |
 | One-to-many | One row on one side can match several rows on the other | Can one order carry more than one payment? |
 | INNER JOIN | Keeps only the rows that found a match on both sides | What happens to an order nobody paid? |
-| LEFT JOIN | Keeps every row of the left table, matched or not, with NULLs where nothing matched | How do we keep the unpaid orders on the report? |
+| LEFT JOIN | Keeps every row of the left table, matched or not, with NULLs where nothing matched | When a report must show every order, which table goes on the left? |
 | Anti-join | A LEFT JOIN kept only where the right side is NULL | Which orders have no payment at all? |
 | Row-count check | Rows before the join, rows after, and the difference explained | How do we know the join added or lost nothing? |
 

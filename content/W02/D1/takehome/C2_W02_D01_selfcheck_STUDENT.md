@@ -17,12 +17,13 @@ Check each number alone. If yours differs, the first place to look is in the col
 
 ## Part 1, the reasoning to check
 
-- Your largest-fall city fell mostly through frequency. If your sentence says it lost buyers, compare
-  its buyers in the two quarters before you send it.
-- The city with the second-largest fall moved the other way on frequency: its orders per buyer rose
-  slightly. Say which branch carries its fall.
-- Six of the twelve city-quarters hold fewer than 30 orders, so a city split read as a finding
-  overstates what the book can show. Say which threshold you used and what it allows you to claim.
+- Your sentence names the branch behind your largest-fall city. Before you send it, put that city's
+  buyers, orders per buyer and revenue per order side by side for both quarters, and check that the
+  branch you named is the one that moved furthest.
+- Do the same for the city with the second-largest fall, and name its branch from its own numbers
+  rather than from the first city's.
+- Your threshold sentence quotes the count of thin city-quarters from your own `HAVING` query and
+  says what that count allows you to claim about a city split.
 
 ## Parts 2 to 4, the checks
 
