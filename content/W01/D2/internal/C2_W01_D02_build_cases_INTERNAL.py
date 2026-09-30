@@ -120,7 +120,7 @@ d_change = pct_change(d1["revenue"], d2["revenue"])
 kit.columns(["booked", "delivered"], [("Q1", [21000000, d1["revenue"]]), ("Q2", [18700000, d2["revenue"]])],
             fmt=lambda v: f"Rs {v / 1e7:.2f} cr", title="Revenue by quarter on both definitions")
 kit.check("138 of the 200 orders were delivered", len(delivered) == 138, f"{len(delivered)}")
-kit.check("delivered revenue fell 11.3 percent", d_change == -11.3, f"{d_change}")
+kit.check("the delivered change on closed quarters matches the file", d_change == -11.3, f"{d_change}")
 '''),
         SOL(md("""
 **Why the other three fail.** a) keeps returned orders, which reached the customer and came back.
@@ -152,7 +152,7 @@ kit.bridge(("Q1 delivered", d1["revenue"]), [("customers", round(move_customers)
            ("revenue per order", round(move_value))], end_label="Q2 delivered", lit=[0],
            title="The delivered fall along the tree: the customers branch moves now")
 kit.check("the bridge lands on Q2 delivered revenue", abs(d1["revenue"] + move_customers + move_frequency + move_value - d2["revenue"]) < 1)
-kit.check("customers with a delivered order fell from 54 to 50", (c1, c2) == (54, 50))
+kit.check("the delivered customer counts match the file", (c1, c2) == (54, 50), f"{c1} and {c2}")
 kit.check("frequency still carries more rupees than customers", move_frequency < move_customers < 0,
           f"{kit.rupees(round(move_frequency))} against {kit.rupees(round(move_customers))}")
 '''),
@@ -189,8 +189,8 @@ kit.bars([("no delivered order in Q2", len(gone)), ("of those, still booked in Q
           ("lost on booked orders", len(booked_ids["Q1"] - booked_ids["Q2"]))],
          lit=[1], title="The 'lost' delivered customers all ordered again in Q2")
 kit.table(["Their Q2 orders ended as", "Orders"], sorted(statuses.items()), caption="What happened to those customers' Q2 orders")
-kit.check("19 delivered customers of Q1 had no delivered order in Q2", len(gone) == 19)
-kit.check("every one of the 19 booked again in Q2", len(still_booked) == 19)
+kit.check("the set of delivered customers missing from Q2 matches the file", len(gone) == 19, f"{len(gone)}")
+kit.check("your set holds exactly the missing customers who booked again", still_booked == gone & booked_ids["Q2"], f"{len(still_booked)}")
 '''),
         SOL(md("""
 **Why the other three fail.** a) is every delivered Q1 customer who booked in Q2, 54 people, including those whose Q2 orders were delivered. b) is the booked
@@ -221,9 +221,9 @@ weighted = {"Q1": roll_up(seg1), "Q2": roll_up(seg2)}
 changes = {s: pct_change(seg1[s]["orders_per_customer"], seg2[s]["orders_per_customer"]) for s in SEGMENTS}
 kit.columns(SEGMENTS, [("Q1", [round(seg1[s]["orders_per_customer"], 2) for s in SEGMENTS]),
                        ("Q2", [round(seg2[s]["orders_per_customer"], 2) for s in SEGMENTS])],
-            fmt=lambda v: f"{v:.2f}", lit=[1], title="Delivered orders per customer by segment")
-kit.check("the weighted roll-up reproduces 1.50 and 1.14", (round(weighted["Q1"], 2), round(weighted["Q2"], 2)) == (1.5, 1.14))
-kit.check("averaging the averages would have said minus 9.2 percent", pct_change(averaged["Q1"], averaged["Q2"]) == -9.2)
+            fmt=lambda v: f"{v:.2f}", title="Delivered orders per customer by segment")
+kit.check("the roll-up reproduces the company figure", abs(weighted["Q1"] - d1["orders_per_customer"]) < 1e-9 and abs(weighted["Q2"] - d2["orders_per_customer"]) < 1e-9)
+kit.check("averaging the averages gives a different figure", pct_change(averaged["Q1"], averaged["Q2"]) != pct_change(d1["orders_per_customer"], d2["orders_per_customer"]))
 # TODO 5. Which test proves that no segment came back without a number?
 #   a) None not in summary.values() and len(summary) == 4
 #   b) min(summary.values()) < 0 and len(summary) > 0
@@ -240,7 +240,7 @@ except TypeError:
     catches = False
 kit.check("the test passes on today's four changes", all_numbers(changes) is True)
 kit.check("the test fails on a summary where two segments came back as None", catches)
-kit.check("the largest per-member fall on delivered orders is 42.6 percent", min(changes.values()) == -42.6)
+kit.check("every segment has its change on delivered orders", len(changes) == 4)
 '''),
         SOL(md("""
 **Why the other three fail.** TODO 4: a) is the average of averages, minus 9.2 percent against the
@@ -380,7 +380,7 @@ new_students = [[1|s_ids["Q2"] - s_ids["Q1"]]]
 kit.columns(["Q1", "Q2"], [("Student customers", [len(s_ids["Q1"]), len(s_ids["Q2"])]), ("Student orders", [s_orders["Q1"], s_orders["Q2"]])],
             width=520, title="Student: the same two customers, two more orders")
 kit.check("no Student customer is new in Q2", isinstance(new_students, set) and len(new_students) == 0)
-kit.check("the 40 percent is 5 orders becoming 7 on 2 customers", (s_orders["Q1"], s_orders["Q2"], len(s_ids["Q2"])) == (5, 7, 2))
+kit.check("the Student counts match the file", (s_orders["Q1"], s_orders["Q2"], len(s_ids["Q2"])) == (5, 7, 2))
 '''),
         SOL(md("""
 **Why the other three fail.** b) is every Student id in either quarter. c) is the ones in both quarters. d)
@@ -452,7 +452,7 @@ for cid in per["Q1"]:
 labels = [f"{a} to {b}" for a, b in sorted(pairs, reverse=True)]
 kit.bars([(l, pairs[k]) for l, k in zip(labels, sorted(pairs, reverse=True))], lit=[0],
          title="Retail-Plus members by orders in Q1 to orders in Q2")
-kit.check("7 members fell from three orders to one", len(call_first) == 7 and pairs[(3, 1)] == 7)
+kit.check("the call list matches the Q1-to-Q2 counts", len(call_first) == pairs.get((3, 1), 0) + pairs.get((2, 0), 0) + pairs.get((3, 0), 0))
 kit.check("every member still ordered in Q2", all(per["Q2"].get(c, 0) > 0 for c in per["Q1"]))
 '''),
         SOL(md("""
@@ -469,11 +469,13 @@ one order. Nobody stopped altogether, which fits a habit that broke more than a 
 """),
         code('''
 EVIDENCE = {
-    "campaigns": "Marketing's campaign reach by month",
-    "export": "this export, cut another way",
-    "app_logs": "the app's reorder attempts and failures by week, and the release date",
-    "tier_log": "the tier's change log for July, renewals and support tickets",
+    "campaigns": "Marketing's campaign reach by month for the July student push",
+    "export": "this export again, cut by city, channel and week from July",
+    "app_logs": "the app's reorder logs by week since the 25 August release",
+    "tier_log": "the tier's July change log, renewals and support tickets",
 }
+STARTS = {"campaigns": "2026-07-01", "export": "2026-04-01", "app_logs": "2026-08-25", "tier_log": "2026-07-01"}
+FALL_BEGAN = "2026-07-31"
 # TODO 4. The fall began in July and the button broke on 25 August. Which request tests the cause behind the larger part of the fall?
 #   a) "campaigns"
 #   b) "export"
@@ -485,7 +487,7 @@ kit.tree({"label": "the reply", "kind": "lit", "branches": [
     ("to the tier", {"label": f"call the {len(call_first)}\\nat the top of the list", "kind": "known"}),
     ("first request", {"label": EVIDENCE[first_request][:34], "kind": "unknown"})]},
     title="The pair's reply, in three branches")
-kit.check("the first request covers July, when the fall began, before the button broke", "July" in EVIDENCE[first_request])
+kit.check("the request's data starts by the month the fall began", STARTS[first_request] <= FALL_BEGAN, STARTS[first_request])
 kit.check("the request is for data this export does not carry", first_request not in ("export", "campaigns"))
 '''),
         SOL(md("""

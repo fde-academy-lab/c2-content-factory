@@ -1757,7 +1757,6 @@ is listening for the assumption under the test.
 
 Try it: invent five orders where one customer shops in the store as `C-9001` and in the app as
 `C-9002`, and show that the overlap reports one lost and one new customer who is the same person.
-Wednesday's reconciliation meets identity rules on the real file.
 
 References for the chapter:
 

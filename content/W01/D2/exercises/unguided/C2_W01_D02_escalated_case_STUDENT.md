@@ -63,7 +63,7 @@ Compare the delivered overlap with the booked overlap from chapter 5.
 a) Customers who ordered in Q2 and had those orders cancelled or returned
 b) Customers Kalpa lost, replaced by fifteen new ones who joined in Q2
 c) Business accounts whose large orders are still waiting to be delivered
-d) Duplicate ids from the store and the app for the same fifteen people
+d) Customers whose Q1 orders were delivered late and counted in Q2 instead
 
 ---
 

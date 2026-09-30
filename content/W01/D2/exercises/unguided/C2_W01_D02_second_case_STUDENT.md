@@ -66,6 +66,6 @@ d) Every one of the 22 members at once, since all of them slowed
 ### Q4. (design) The fall began in July and the button broke on 25 August. Which request tests the cause behind the larger part of the fall?
 
 a) The tier's July change log, renewals and support tickets
-b) The app's reorder logs by week and the release that broke them
-c) Marketing's campaign reach by month for the student push
-d) This export again, cut by city, channel and week together
+b) The app's reorder logs by week since the 25 August release
+c) Marketing's campaign reach by month for the July student push
+d) This export again, cut by city, channel and week from July
