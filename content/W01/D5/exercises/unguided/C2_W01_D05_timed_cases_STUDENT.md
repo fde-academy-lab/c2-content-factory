@@ -18,27 +18,31 @@ and nobody has checked it. Finance will close the quarter's books after the revi
 
 **The real company it is like.** DMart (Avenue Supermarts) published its July to September 2025
 standalone revenue, Rs 16,218.79 crore across 432 stores, as a business update on 3 October 2025,
-with the figures stated as provisional and subject to limited review; the board approved the
-quarter's results on 11 October. A first read that goes out before the books close is normal. What
-matters is what it has been checked against.
+with the figures stated as provisional and subject to limited review, and reported the quarter's
+results in a regulatory filing on 11 October 2025 (Business Today, 11 October 2025). A first read
+that goes out before the books close is normal. What matters is what it has been checked against.
+
+Every plan below fits inside the two hours and leaves out one step. Size each from the lab's pace:
+profile 20 minutes, clean with a log 30, reconcile to the ERP's own control totals 15, decompose 25,
+one shuffle test 15, the four-part note 15.
 
 ```mermaid
 flowchart TB
-    Q["<b>two hours, a raw export</b><br/>which plan?"] --> A["<b>A. sum and chart</b><br/>about 10 min"]
-    Q --> C["<b>C. profile, clean,<br/>reconcile, decompose</b><br/>about 90 min"]
-    Q --> B["<b>B. the whole method</b><br/>about 120 min"]
-    Q --> D["<b>D. wait for the close</b><br/>days"]
+    Q["<b>two hours, a raw export</b><br/>which step do you leave out?"] --> A["<b>A.</b> no reconciliation"]
+    Q --> B["<b>B.</b> no test"]
+    Q --> C["<b>C.</b> the tree for one segment only"]
+    Q --> D["<b>D.</b> no profile"]
 ```
 
-| Option | What it does | Minutes, at the lab's pace |
-|---|---|---|
-| A | Sum the export by segment and send the chart | About 10 |
-| B | The week's method end to end: profile, clean with a log, reconcile, decompose, one shuffle test, the four-part note | About 120 |
-| C | Profile, clean with a log, reconcile to the ERP's own control totals, decompose; the note is marked provisional and runs no test | About 90 |
-| D | Tell Meera the number comes after Finance closes the books | Days |
+| Option | What it does |
+|---|---|
+| A | Profile, clean with a log, decompose, one shuffle test on the biggest segment gap, and the note |
+| B | Profile, clean with a log, reconcile, decompose, and the note marked provisional, with no test |
+| C | Profile, clean with a log, reconcile, one shuffle test on one segment's gap, and the note on that segment |
+| D | Clean with a log, reconcile, decompose, one shuffle test, and the note, with no profile first |
 
-Your paper: the option you choose and the minutes it leaves you; the one step you will not drop
-at any point on the clock, and why; the fact about the export that would make you switch, and to what.
+Your paper: the option you choose and the minutes each plan costs; the one step you will not drop at
+any point on the clock, and why; the fact about the export that would make you switch, and to what.
 
 ## Case 2: zero rejects and a Rs 20 lakh gap, after the migration
 
@@ -48,10 +52,13 @@ The first full quarter out of the migrated ERP is about 50,000 rows (illustrativ
 pass reports zero rejects. The dashboard built on it shows the quarter Rs 20 lakh above Anand
 Iyer's books, and Anand wants to know by tomorrow which number Meera should see.
 
-**The real company it is like.** TSB, the UK bank, moved its customers' records from Lloyds Banking
-Group's platform to its owner Sabadell's Proteo4UK platform in April 2018. The independent review
-found 1.9 million customers unable to view their accounts, and in December 2022 the FCA and the PRA
-fined TSB a total of £48.65 million. A new system's output is the first thing to reconcile.
+**The real company it is like, loosely.** TSB, the UK bank, moved its customers' records from Lloyds
+Banking Group's platform to its owner Sabadell's Proteo4UK platform in April 2018. The Register,
+reporting the independent review in November 2019, said the move left 1.9 million customers unable
+to view their accounts, and in December 2022 the FCA and the PRA fined TSB a total of £48.65 million.
+The likeness is loose: TSB's customers were locked out of a new platform, where this case is a
+quarter's total trusted before it was reconciled. What carries over is that a new system's output is
+the first thing to check.
 
 | Check | What it catches | Cost on 50,000 rows |
 |---|---|---|

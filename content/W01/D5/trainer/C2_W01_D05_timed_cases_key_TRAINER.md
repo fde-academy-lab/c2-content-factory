@@ -23,35 +23,42 @@ One minute at the start sets up the round, so the three cases fill the 40-minute
 **Tag.** [F] You have two hours and a raw export; what do you do first, and what do you skip?
 Descends from the Friday row's interview angle and Tuesday's [S] sales-drop question.
 
-**The best fit.** C, about 90 of the 120 minutes, which leaves 30 for the note and a buffer.
+**The best fit.** B: profile, clean, reconcile, decompose and the note marked provisional, 105 of
+the 120 minutes, with no test.
 
-**The sizing.** The lab's pace: profile 20, clean with a log 30, reconcile 15, decompose 25, so C is
-90; B adds the shuffle test (15) and the note (15), which fills the two hours only if nothing on the
-file breaks. A takes 10 minutes and this morning a pass of that kind reported Q2 up 11.8 percent where
-the books said down 28.5. D is right on the numbers and misses the meeting.
+**The sizing.** At the lab's pace A costs 20 + 30 + 25 + 15 + 15 = 105 minutes, B 20 + 30 + 15 + 25 +
+15 = 105, C 20 + 30 + 15 + 15 + 15 = 95 and D 30 + 15 + 25 + 15 + 15 = 100, so every plan fits the
+clock and the choice is which step to leave out. A leaves out the reconciliation, the one step that
+can flip the sign of the first line: on this morning's lab export (proposed for client zero v2.3) a
+pass of that kind reported Q2 up 11.8 percent where the books said down 28.5. C answers one segment
+where Meera asked for all of them. D cleans a file nobody has profiled, so it cleans only the defects
+someone already expected. B leaves out the test, which matters only when Meera is about to act on a
+gap between segments, and the provisional label says what was not done.
 
-**What would switch it.** No control total from the ERP: reconcile rows against distinct ids and
-state the first read as unreconciled in the caveat, or move to D for anything Meera will spend on. A
-segment gap Meera is going to act on: B, so the note can say whether chance produces it, and the
-decomposition is cut to the segment in question. A file of millions of rows: the same method in the
-warehouse, which is Week 2.
+**What would switch it.** A segment gap Meera is going to act on: B with the test on that gap, the
+tree trimmed to find the minutes, or C if she named the segment herself. No control total from the
+ERP: B still, with the first line saying the read is unreconciled and the ids-against-rows and
+every-value checks named. A file of millions of rows: the same method in the warehouse, which is
+Week 2.
 
-**The model answer.** "I would run C: profile, clean with a log, reconcile, decompose, about ninety
-minutes, and send the note marked provisional with no test. The step I never drop is the
-reconciliation, because this morning's lab showed a skipped one can flip the sign of the headline,
-and it costs fifteen minutes. I skip the shuffle test unless Meera is about to act on a gap between
-segments; then I cut the decomposition to that gap and run the test. If there is no control total to
-reconcile to, I say so in the first line. DMart does something similar every quarter: its revenue
-goes out days after the quarter ends, marked provisional, before the board signs the results."
+**The model answer.** "Every plan here costs about a hundred minutes, so I choose by the step each
+leaves out. I would run B: profile, clean with a log, reconcile, decompose, and send the note marked
+provisional with no test. The step I never drop is the reconciliation, because a skipped one can flip
+the sign of the headline, and it costs fifteen minutes. I leave out the test because Meera is not yet
+acting on a gap between segments; if she were, I would trim the tree and test that gap. If there is
+no control total to reconcile to, I say so in the first line. DMart does something similar every
+quarter: its revenue goes out days after the quarter ends, marked provisional, before the results
+are filed."
 
 **What separates the answers.** The weak answer opens with a chart. The good one profiles first. The
-strong one sizes the options against the two hours, names the reconciliation as the step never
-dropped with its reason, and names the fact that would switch the plan.
+strong one sizes all four plans, sees that the clock does not choose between them, names the
+reconciliation as the step never dropped with its reason, and names the fact that would switch the
+plan.
 
 **The real company.** Avenue Supermarts (DMart), Q2 FY26 business update released 3 October 2025:
 standalone revenue from operations Rs 16,218.79 crore against Rs 14,050.32 crore a year earlier, 432
-stores at 30 September 2025, figures provisional and subject to limited review; results approved by
-the board on 11 October 2025. Bajaj Broking, https://www.bajajbroking.in/share-market-news/dmart-q2-fy2025-26-results-revenue-at-rs-16218-79-crore (verified 30 Sep 2026); IndiaCSR, https://indiacsr.in/dmart-q2-fy26-results-revenue-rises-15-4-to-rs-16218-79-cr-store-count-at-432/ (verified 30 Sep 2026).
+stores at 30 September 2025, figures provisional and subject to limited review; the quarter's results
+announced in a regulatory filing on 11 October 2025. Bajaj Broking, https://www.bajajbroking.in/share-market-news/dmart-q2-fy2025-26-results-revenue-at-rs-16218-79-crore (verified 30 Sep 2026); IndiaCSR, https://indiacsr.in/dmart-q2-fy26-results-revenue-rises-15-4-to-rs-16218-79-cr-store-count-at-432/ (verified 30 Sep 2026); the results filing on 11 October 2025, Business Today, 11 October 2025, https://www.businesstoday.in/markets/stocks/story/dmart-q2-results-avenue-supermarts-profit-rises-4-to-rs-685-crore-revenue-up-15-497833-2025-10-11 (verified 30 Sep 2026).
 
 ## Case 2: zero rejects and a Rs 20 lakh gap, after the migration
 
@@ -79,18 +86,20 @@ not read, because a try that sets them to zero hides them from the reject count.
 a rupee bridge by month against Finance, about half an hour, which tells me whether those two
 explained the whole Rs 20 lakh. Only the month the bridge cannot close gets matched order by order.
 Tonight I tell Anand that his number is the reference, that I have a gap I can size but not yet fully
-explain, and when I will come back. TSB is the reminder of what trusting a migrated system's output
-costs: 1.9 million customers could not see their accounts."
+explain, and when I will come back. TSB is a loose reminder of what trusting a migrated system costs:
+by The Register's report of the review, 1.9 million customers could not see their accounts."
 
 **What separates the answers.** The weak answer defends the dashboard. The good one checks for
 duplicates. The strong one orders the checks by cost against what each catches, stops where the
 bridge closes, and treats Finance's figure as the reference until then.
 
-**The real company.** TSB: the FCA and PRA fined TSB £48,650,000 in total on 20 December 2022 for the
-April 2018 migration to a new IT platform, which affected a significant proportion of its 5.2 million
-customers. FCA, https://www.fca.org.uk/news/press-releases/tsb-fined-48m-operational-resilience-failings (verified 30 Sep 2026). The 1.9 million customers unable to view their accounts and the move from
-Lloyds Banking Group's platform to Sabadell's Proteo4UK come from the Slaughter and May review as
-reported by The Register, 19 November 2019,
+**The real company, a loose likeness.** TSB's customers were locked out of a new platform, where
+case 2 is a total trusted before it was reconciled; what carries over is checking a new system's
+output first. The FCA and PRA fined TSB £48,650,000 in total on 20 December 2022 for the April 2018
+migration to a new IT platform, which affected a significant proportion of its 5.2 million
+customers. FCA, https://www.fca.org.uk/news/press-releases/tsb-fined-48m-operational-resilience-failings (verified 30 Sep 2026). The 1.9 million customers unable to view their accounts is The Register's own wording in its report
+of the Slaughter and May review, and the move from Lloyds Banking Group's platform to Sabadell's
+Proteo4UK is the review's finding as The Register reports it, 19 November 2019,
 https://theregister.com/2019/11/19/tsb_slammed_for_big_bang_it_approach_behind_disastrous_migration (verified 30 Sep 2026).
 
 ## Case 3: 42 percent on twelve visits
@@ -99,24 +108,23 @@ https://theregister.com/2019/11/19/tsb_slammed_for_big_bang_it_approach_behind_d
 overclaiming? Descends from Friday's [D] and Thursday's [F] "42 percent on 12 users against 31
 percent on 1,200".
 
-**The best fit.** C, a split test until each checkout has about 300 visits, about half a week. D is
-as good on evidence and four times slower; it is the choice when a worse checkout costs money.
+**The best fit.** C, a half-and-half split until each checkout has about 300 visits, the case's
+given size, which takes about half a week. D gathers more evidence than C, by the TA block's
+arithmetic below, and takes four times as long, so it is the choice when a worse checkout costs
+money.
 
-**The sizing.** To tell 42 percent from 31 percent with the conventional 5 percent false-alarm rate
-and an 80 percent chance of seeing a real difference, an equal split needs about 300 visits per
-checkout (the standard two-proportion sample-size formula gives 299.5). At about 1,200 visits a week, a
-half split reaches 300 each in roughly three and a half days. An unequal split needs fewer visits on
-the smaller side, because the larger side is measured so precisely: D, one visit in ten for a
-fortnight, puts about 240 visits on the new checkout beside about 2,160 on the current one, which gives
-about a 91 percent chance of seeing a real difference, and about 170 new-checkout visits would already
-reach 80 percent. So D is enough; it costs a fortnight where C costs half a week. B, at about 12 pilot
-visits a week beside 1,200 on the current checkout, reaches 80 percent in about 14 weeks. And A bets on
-5 conversions: if the new checkout were really at 31 percent, 5 or more of 12 would still happen in
-about 3 weeks of 10.
+**The sizing.** About 300 visits per checkout is the case's given size for a fair comparison of the
+two rates, and the room takes it as given: where it comes from is a later week's topic, Thursday's
+row puts it out of scope, and the arithmetic sits in the TA block below. At about 1,200 visits a week
+a half split reaches 300 each in roughly three and a half days. D, one visit in ten for a fortnight,
+puts about 240 visits on the new checkout beside about 2,160 on the current one, and the TA block
+shows that is more evidence than C gathers, in four times the time. B, at about 12 pilot visits a
+week beside 1,200 on the current checkout, takes about 14 weeks. And A bets on 5 conversions: if the
+new checkout were really at 31 percent, 5 or more of 12 would still happen in about 3 weeks of 10.
 
 **What would switch it.** A new checkout that could lose money if it is worse (a payment step
-that fails): D, one visit in ten for a fortnight, which limits the exposure and still gives about a
-91 percent chance of seeing a real difference. Traffic of a dozen visits a week, as Student's
+that fails): D, one visit in ten for a fortnight, which limits the exposure and still gathers more
+evidence than C. Traffic of a dozen visits a week, as Student's
 orders were on Thursday: no test settles it within a quarter, so decide on the cost of being wrong and
 how easily it can be reversed. A change that is free to reverse within a day: ship it behind a switch
 and measure it as it runs, which is C by another name.
@@ -143,11 +151,15 @@ Thomke, "The Surprising Power of Online Experiments", Harvard Business Review, S
 article says the result tripped an alert and analysis confirmed it; it does not say the test was re-run,
 so the model answer says "checked", never "re-run".
 
-**The arithmetic, for a TA asked.** Sample size per arm for an equal split, n = (1.96 x sqrt(2 x 0.365
-x 0.635) + 0.8416 x sqrt(0.31 x 0.69 + 0.42 x 0.58))² / 0.11² = 299.5. For an unequal split the power
+**The arithmetic, for a TA asked, never for the room.** The given size comes from statistical power:
+to tell 42 percent from 31 at the conventional 5 percent false-alarm rate with an 80 percent chance of
+seeing a real difference, an equal split needs n = (1.96 x sqrt(2 x 0.365 x 0.635) + 0.8416 x
+sqrt(0.31 x 0.69 + 0.42 x 0.58))² / 0.11² = 299.5 visits per checkout. For an unequal split the power
 is the normal probability of 0.11 / sqrt(0.31 x 0.69 / n1 + 0.42 x 0.58 / n2) less 1.96: about 0.80 at
-300 and 300, 0.91 at 2,160 and 240, and 0.82 after 14 weeks at 1,200 and 12 a week. The chance of 5 or
-more conversions in 12 visits at a true 31 percent is 0.303.
+300 and 300, 0.91 at 2,160 and 240 (D), and 0.82 after 14 weeks at 1,200 and 12 a week (B); about 170
+new-checkout visits beside the rest already reach 0.80, because the larger side is measured so
+precisely. So D is more evidence than C, 0.91 against 0.80, in a fortnight against half a week. The
+chance of 5 or more conversions in 12 visits at a true 31 percent is 0.303.
 
 ## The interview questions of the day, in one breath each
 
