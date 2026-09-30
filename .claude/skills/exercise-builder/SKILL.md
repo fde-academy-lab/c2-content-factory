@@ -17,6 +17,8 @@ Where a day has two or three unguided exercises, transpose the same devices acro
 
 **Every stem is a business question on Kalpa data.** An item asks which decision a number supports, which of several plausible outputs is wrong and why, what a query or a groupby returns on the day's data, or which fix restores the right number. No item tests syntax alone: an item a learner could answer by knowing the language but not the business teaches the wrong thing for the screens this programme prepares for.
 
+**At least a third of a day's items are design items.** A design item puts two to four ways of answering a problem in front of the learner, sized in the stem or an exhibit, and asks which fits and why, what a sizing comes to, which fact would switch the choice, or which second route would confirm the number. These are the items that separate an analyst who can run the code from one a GCC hands a problem to, and they are the design question every interview loop in the programme's target companies asks.
+
 ## What keeps its existing kind
 
 Two exercise kinds are resistance patterns rather than selection devices, and they are not converted:
@@ -87,23 +89,43 @@ interview-answer discussion with random call-outs, and closes on the scores by t
 remediation read, which the Academic TA enters in the item-analysis workbook beside the key. The
 distractor rules above apply to every option set on the paper.
 
-The bank is the floor, never the ceiling. The week's source file,
-`content/W{ww}/SAT/internal/C2_W{ww}_SAT_paper_source_INTERNAL.yaml`, lays five things on it, and
+The bank sets what is tested, and the paper sets the bar. The week's source file,
+`content/W{ww}/SAT/internal/C2_W{ww}_SAT_paper_source_INTERNAL.yaml`, lays these on it, and
 `scripts/build_saturday_paper.py`'s docstring gives the format:
 
-- **Parts**, the printed order. Each part opens on a Kalpa situation in one or two sentences, with
-  lettered exhibits where the part or a set needs one. One part, "Read the code, read the data", puts
-  a few lines of the week's own notebook code or a small export on the page, and every wrong option is
-  a trap the week staged, named in the key. Every bank item prints in a part, except up to six recall
-  items (fill in the blank, true or false) that may move to the untimed stretch page to make room for
-  harder timed items; the builder refuses a part list that drops a bank item, splits a scenario set or
-  moves more than six.
-- **New timed items** where the paper runs longer than the bank, each descending from the week's traps
-  and anchors, in block-style YAML.
+- **Parts**, the printed order. Each part opens on a scenario in a stakeholder's words, set in Kalpa
+  where it continues the week's case, or at a named company or in a public case study where that is
+  more relatable (decision `saturday-real-cases`): every real fact or figure is checked against a
+  primary or reputable source, with its URL and date in the provenance and its name in the key and
+  in the exhibit's caption, and a figure that cannot be checked appears only in a hypothetical marked
+  as illustrative. The scenario carries the decision riding on the answer, the nuance a sharp analyst notices (a shifted definition, a built-in
+  assumption, a competing ask, a number that is right but answers the wrong question) and a visual of
+  it, a mermaid diagram, an `xychart-beta` chart or a small table. Its items climb: read the code or
+  the data, catch the trap, make the call, say it to the stakeholder. About a third of the paper is
+  judgement a senior would make.
+- **The fate of every bank item**: printed, printed reworded (a `stem`, `situation` or option edit
+  in `data/programme/paper_edits.yaml`, each with its status and reason, the key unchanged), folded
+  into a deeper printed item (`folded`, with its reason) or moved to the untimed stretch page
+  (`stretch_bank`). Every concept in the bank stays tested. The builder refuses a bank item with no
+  fate, a fold into an item that does not print, and a scenario set that splits or loses its
+  situation.
+- **Formats that test reasoning**: one correct option; more than one correct; true or false with the
+  reason (four options, two "True, because" and two "False, because"); a word bank for every blank
+  (`banks`, style words, at least two spare words, each used once); a match table for pairs
+  (`banks`, style match, at least two spare options); order the steps; applied maths. Plain fill in
+  the blank and bare true or false give way to these. A bank whose keys run a, b, c down its items
+  fails the build.
+- **The bar**: about 35 timed items in 120 minutes, about 60 percent hard, 35 medium and 5 easy. A
+  hard item needs two steps or two ideas at once, and its most tempting wrong option is the plausible
+  wrong number an analyst actually produces; no runtime error is ever the key. Code and queries sit
+  on Kalpa's own data and are asked the way strong AI and data teams interview: predict the output,
+  find the silent bug, choose the right variant, name the check.
 - **An exhibit** for every scenario set, drawn only from the set's own numbers.
 - **The reasons** for every item: why the key holds, why each wrong option fails, and the interview
   answer in one breath.
-- **An untimed stretch page** of written, interview-grade follow-ups.
+- **An untimed stretch page** of written, interview-grade follow-ups, plus any moved bank items.
+- **The proofs**: `content/W{ww}/SAT/internal/C2_W{ww}_SAT_key_proofs_INTERNAL.py` runs every code
+  and SQL item cold and asserts every key.
 
 `python3 scripts/build_saturday_paper.py W{ww} --docx` writes the paper and the key as Word files in
 the format of the requester's baseline diagnostic (`content/W00/D2/paper/C2_W00_D02_diagnostic_STUDENT.docx`),
@@ -126,7 +148,8 @@ than generic, and each is written for the week:
 
 On a Saturday paper the options are of a length as well as of a precision: `scripts/distractor_audit.py`
 fails an item whose longest option runs past 30 characters while its shortest is under 60 percent of
-it, and the fix is an option edit in `data/programme/paper_edits.yaml`, never a stem or a key. The
+it, and the fix is an option edit in `data/programme/paper_edits.yaml`, never a change to which
+option is correct. The
 more-than-one keys spread too: with four or more such items, a letter inside every key fails the
 audit, since ticking it always scores, and the fix is an `order` edit with its `from_key`, which
 relabels the options and moves the key's letters with them.
@@ -144,6 +167,7 @@ The solutions file is the only place the rationale lives. A solutions file is al
 
 - [ ] Item count matches the drop point's minutes at about one a minute, and the arithmetic was stated in the reply.
 - [ ] The devices vary across the file and transpose across the day's exercises by layer.
+- [ ] At least a third of the day's items are design items: the best-fit approach, a sizing, the fact that would switch it, or the second route.
 - [ ] Every item is answerable as a letter, and the format line's letters are not the key.
 - [ ] Nothing in the exercise file addresses the trainer.
 - [ ] Every diagram is a Mermaid fence.

@@ -282,6 +282,54 @@ function caseParas(b) {
 function leadParas(b) {
   return kept(() => exhibitParas(b).concat([spacer(140, true)]));
 }
+/* A word bank: its label, its instruction and its lettered words in a shaded grid of three columns,
+   bound to the first item that answers from it. */
+function bankParas(b) {
+  return kept(() => {
+    const cols = 3, w = Math.floor(CONTENT / cols), rows = [];
+    for (let r = 0; r < Math.ceil(b.options.length / cols); r++) {
+      rows.push(new TableRow({ cantSplit: true, children: Array.from({ length: cols }, (_, c) => {
+        const o = b.options[r * cols + c];
+        return cell(o ? [p([run(o[0] + "   ", { bold: true, color: BRONZE, size: OPTION }), run(o[1], { size: OPTION })],
+                         { keepNext: true, spacing: { after: 0, line: 252 } })] : [p("")], w,
+                    { fill: BEIGE, borders: box(WHITE), margins: { top: 60, bottom: 60, left: 140, right: 100 } });
+      }) }));
+    }
+    return [p([run(b.label, { bold: true, color: BRONZE, size: NOTE }),
+               run("   " + b.instruction, { italics: true, color: MUTED, size: SMALL })],
+              { keepNext: true, spacing: { before: 80, after: 80, line: 264 } }),
+            new Table({ width: { size: w * cols, type: WidthType.DXA }, columnWidths: Array(cols).fill(w),
+                        borders: tableBorders(line(WHITE)), rows: rows }),
+            spacer(140, true)];
+  });
+}
+/* A match table: every item of its bank in one block that never splits, the numbered items on the
+   left with their levels and the lettered options on the right. */
+function matchBlock(b, lead) {
+  const qw = 900, pw = 3900, gap = 200, lw = 520, ow = CONTENT - qw - pw - gap - lw;
+  const n = Math.max(b.rows.length, b.options.length);
+  const head = new TableRow({ tableHeader: true, cantSplit: true, children: [
+    cell([p([run("Item", { bold: true, size: SMALL })], { spacing: { after: 0 } })], qw + pw, { fill: HEADFILL }),
+    cell([p("")], gap, { borders: noBox() }),
+    cell([p([run("Match", { bold: true, size: SMALL })], { spacing: { after: 0 } })], lw + ow, { fill: HEADFILL })] });
+  const body = Array.from({ length: n }, (_, k) => {
+    const r = b.rows[k], o = b.options[k];
+    return new TableRow({ cantSplit: true, children: [
+      cell(r ? [p([run("Q" + r[0], { bold: true, color: BRONZE, size: SMALL })], { spacing: { after: 0 } }),
+                p([run(r[1], { color: MUTED, size: TINY })], { spacing: { after: 0 } })] : [p("")], qw),
+      cell(r ? [p([run(r[2], { size: OPTION })], { spacing: { after: 0, line: 252 } })] : [p("")], pw),
+      cell([p("")], gap, { borders: noBox() }),
+      cell(o ? [p([run(o[0], { bold: true, color: BRONZE, size: OPTION })], { alignment: AlignmentType.CENTER, spacing: { after: 0 } })] : [p("")], lw),
+      cell(o ? [p([run(o[1], { size: OPTION })], { spacing: { after: 0, line: 252 } })] : [p("")], ow)] });
+  });
+  const table = new Table({ width: { size: CONTENT, type: WidthType.DXA }, columnWidths: [qw, pw, gap, lw, ow],
+    borders: tableBorders(line(RULE)), rows: [head].concat(body) });
+  const labelLine = p([run(b.label, { bold: true, color: BRONZE, size: NOTE }),
+                       run("   " + b.instruction, { italics: true, color: MUTED, size: SMALL })],
+                      { keepNext: true, spacing: { before: 60, after: 80, line: 264 } });
+  return block((lead || []).concat([labelLine, table,
+    p([run("Write each letter on the answer sheet.", { color: MUTED, size: TINY })], { spacing: { before: 40, after: 0 } })]));
+}
 
 /* ------------------------------------------------------------------ the answer sheet */
 function sheetCell(text, width, o) {
@@ -402,7 +450,7 @@ function answerGrids(sheet, key) {
     }
   }
   if (sheet.written.length) {
-    out.push(h2(key ? "The written answers" : "Words, numbers and orders: one answer per space", 140));
+    out.push(h2(key ? "The written answers" : "Letters, words, numbers and orders: one answer per space", 140));
     const halves = splitInto(sheet.written, 2).filter((c) => c.length);
     const w = Math.floor((CONTENT - 300 * (halves.length - 1)) / halves.length);
     out.push(columns(halves.map((h) => writtenTable(h, key, w)), halves.map(() => w)));
@@ -443,9 +491,10 @@ function paperDoc(s) {
     sec.blocks.forEach((b) => {
       if (b.kind === "set") lead = lead.concat(caseParas(b));
       else if (b.kind === "exhibit") lead = lead.concat(leadParas(b));
+      else if (b.kind === "bank") lead = lead.concat(bankParas(b));
       else {
         if (!first) kids.push(spacer(120));
-        kids.push(itemBlock(b, lead)); lead = []; first = false;
+        kids.push(b.kind === "match" ? matchBlock(b, lead) : itemBlock(b, lead)); lead = []; first = false;
       }
     });
     kids.push(...lead);
@@ -507,6 +556,11 @@ function keyDoc(k) {
     kids.push(h2("New items waiting for the tracker"));
     kids.push(p([run(k.additionsNote)]));
     k.additions.forEach((a) => kids.push(new Paragraph({ numbering: { reference: "bullets", level: 0 }, spacing: { after: 40 }, children: [run(a)] })));
+  }
+  if (k.folded && k.folded.length) {
+    kids.push(h2("Bank items folded into deeper items"));
+    kids.push(p([run(k.foldedNote)]));
+    k.folded.forEach((a) => kids.push(new Paragraph({ numbering: { reference: "bullets", level: 0 }, spacing: { after: 40 }, children: [run(a)] })));
   }
   if (k.stretch.length) {
     kids.push(h2("The stretch page"));

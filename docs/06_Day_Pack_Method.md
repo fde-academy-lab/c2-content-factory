@@ -28,7 +28,7 @@ Cognitive load is the design constraint throughout: at most four new ideas per t
 | # | Artifact | Audience | Count | Core rule |
 |---|---|---|---|---|
 | 1 | Deck | STUDENT-visible | 1, or a half-one and half-two pair | Split only when the day carries two distinct arcs, never to hide an over-full day. Visual, thin, spiral-ordered, crux line on the last card. |
-| 2 | Demo notebooks | STUDENT | 1 or more | Rich teaching documents: idea, diagram, demo, output, deliberate failure with exact trace, fix, plus an industry example and an interview question at each milestone. Progressive variations, one new element per section (the agent-loop ladder is the canonical shape: by hand, one tool, many tools, one turn, many turns). Runs cold in a fresh Codespace. |
+| 2 | Chapter notebooks | STUDENT | About 6, one per deck chapter | Each opens on the chapter's need and its options sized on the data, builds the best-fit way and closes on a second route, and each builds on the one before. Rich teaching documents: idea, diagram, demo, output, deliberate failure with exact trace, fix, plus an industry example and an interview question at each milestone. Progressive variations, one new element per section (the agent-loop ladder is the canonical shape: by hand, one tool, many tools, one turn, many turns). Runs cold in a fresh Codespace. |
 | 3 | Activity | STUDENT | 0 or 1 | Only when the topic has a decision, a comparison or a hidden state. Single-file HTML (no storage, no API key) or an Excel template with dropdowns. Toggle-driven, minimal typing, ends in a screenshot-worthy state, doubles as a takeaway decision tool. |
 | 4 | Guided + unguided exercises | STUDENT | Few | Think-heavy, type-light: selection, prediction, repair, short computation. Unguided runs in a break or the second half; solution at close. |
 | 5 | Solutions | STUDENT | 1 per exercise | Unguided solutions at close; take-home solutions open the next session, which begins by walking one. |
@@ -60,7 +60,7 @@ Exploration links follow the standing verification rule: fetched on the day they
 1. **Read the row.** All fifteen columns of the day's curriculum row, starting with the business scenario and the thinking it trains, then the Structure tab and the client-zero dataset version the row names. A missing row, an empty scenario column, or an undated link means the build stops and names the gap.
 2. **Envelope and continuity**, stated in chat.
 3. **The spine, one screen, for approval**: the scenario in one line and the thinking it trains, the deck decision, section lists, the mental-model arc in one sentence, the failures with their exact error text, the activity toggle, the take-home shape, and the interview questions the day equips. Nothing downstream is built before approval.
-4. **Build passes**, one artifact family per pass: decks; notebooks; activity; exercises with solutions; take-home with spine; quiz; study notes, cheat sheet and pre-read.
+4. **Build passes**, one artifact family per pass: decks; notebooks; activity; exercises with solutions; take-home with spine; quiz; study notes, cheat sheet and pre-read. Then the five-pass depth loop in `.claude/skills/day-pack-builder/references/the-standard.md`, whose last two passes are fresh reviewers.
 5. **Verification**: idea caps, cold runs, segment-order parity, link dates, the shortcut test, the distractor audit, audience tags, the banned-word and em-dash scans, and the plants check, which is that no student-facing file names anything planted in the data.
 6. **Ship** into the day folder's subfolders, named `C2_W{ww}_D{dd}_{topic}_{AUDIENCE}.{ext}`, or `C2_W{ww}_SAT_{topic}_{AUDIENCE}.{ext}` on a Saturday. The layout is in `content/README.md` and the verifier fails a file that sits in the wrong folder.
 
@@ -78,6 +78,7 @@ The opening day ships the introduction pack: the client-zero narrative deck (the
 6. Cheat sheets move from one-per-module-close to zero-to-many per day as earned.
 7. The daily Neo MCQ pool is removed; Kahoot is the sole daily check and it is ungraded.
 8. The Saturday recap paper joins as the weekly artifact on regular weeks.
+9. Raised on 30 September 2026: a day runs in about six chapters, each one deck chapter paired with one notebook; each chapter puts the problem, its options and their sizing before the code and closes on a second route; a new domain opens on its dossier and story; and every pack runs the five-pass depth loop.
 9. Exercise volume is capped by session minutes rather than by the manifest, with think-heavy, type-light answers.
 10. A day folder is a set of subfolders by artifact type rather than a flat list of files, Saturday moves out of the numbered days into `SAT/`, and a day with no session gets no folder at all. `content/README.md` is the layout's home and `scripts/verify.py` enforces it.
 

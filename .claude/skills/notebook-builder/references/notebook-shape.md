@@ -94,7 +94,7 @@ The final cell prints `check_summary()` and one sentence on what the next notebo
 
 ## Sizing
 
-A round notebook climbs four levels of one business question in 24 to 36 cells. Under 24 and the question has not been climbed; over 36 and it is two notebooks, split by level so each sits beside one part of the deck. Markdown outnumbers code where the concept needs it, and a wall of text is as banned as a wall of code.
+A chapter notebook climbs three or four levels of one business question in 20 to 36 cells, after its options table and sizing cell and before its second route. Under 20 and the question has not been climbed; over 36 and it is two chapters, split by level, each with its own deck chapter. Markdown outnumbers code where the concept needs it, and a wall of text is as banned as a wall of code.
 
 ## The four things that make a notebook fail review
 

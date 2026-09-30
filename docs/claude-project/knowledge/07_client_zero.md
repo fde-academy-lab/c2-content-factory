@@ -66,6 +66,22 @@ Every pack carries three recurring beats:
 Every locked fact above and below is unchanged: the company, the five units, the people, the
 threads, the ladder, the entity model and the datasets. The GCC is as fictional as Kalpa.
 
+## 1c. Kalpa Health serves the US (addendum, 30 September 2026)
+
+The requester repositioned Kalpa Health on 30 September 2026 so that the programme's US healthcare
+domain has a home (decisions `four-domains` and addendum `health-us-facing` in
+`data/programme/facts.yaml`). Kalpa Health is a diagnostics and revenue-cycle business serving the US
+market: its laboratories and patient service centres test US patients and bill US payers, and its
+analytics and revenue-cycle work runs from Kalpa's GCC in Bengaluru, the way the Indian centres of
+US health systems, laboratories and revenue-cycle firms work.
+
+What stays: Dr Priya Menon is its COO, and Build 1 keeps its growth question and its five
+sub-problems. What changes: the money is in dollars, the geography is US metro areas, and the room's
+vocabulary gains the payer, the claim, the denial and prior authorisation, which the US healthcare
+dossier teaches on Build 1 Monday. Every Kalpa Health record is synthetic, so no protected health
+information exists anywhere in the repository. The Build 1 generator and the Week 3 packs are
+revised to this setting; until they are, they carry the India setting of v2.2.
+
 ## 2. The principle behind every day
 
 Each teaching day opens on a business question in a stakeholder's words, trains the thinking an analyst uses to break that question down before any tool is touched, and only then teaches the technique that produces the answer. The technique exists because the question demands it. A day whose notebook runs but whose thinking is missing teaches code rather than analysis, and that is the failure the 10 September review named.
@@ -125,7 +141,7 @@ Week 1 is fixed to the day because it is being built now. Weeks 2 to 9 are fixed
 
 ### Build 1, Kalpa Health, sub-problem seeds
 
-Dr Priya Menon's diagnostics business grew 5 percent against a plan of 18. Five sub-problems, three groups each: the revenue tree for a lab; bookings fell in two cities; invoices against collections; the no-show rate in one clinic, real or noise; the free-home-collection campaign, cause or coincidence. Each is the Week 1 and 2 method in a domain the room has never seen.
+Dr Priya Menon's diagnostics business grew 5 percent against a plan of 18 (in the US setting of section 1c from 30 September 2026). Five sub-problems, three groups each: the revenue tree for a lab; bookings fell in two cities; invoices against collections; the no-show rate in one clinic, real or noise; the free-home-collection campaign, cause or coincidence. Each is the Week 1 and 2 method in a domain the room has never seen.
 
 ### Week 4, day by day (Dussehra Tuesday off)
 

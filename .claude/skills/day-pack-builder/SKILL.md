@@ -88,26 +88,27 @@ Binding rules while building:
 
 - At most four new ideas per two hours of teaching, counted as decision sentences, so a 180-minute block holds six and the day twelve; depth comes from climbing each idea through harder cases, never from adding ideas past the cap. If the row's ideas exceed it, the row is wrong and the build stops.
 - Application before theory: the working thing and its output first, the name last.
-- Every round stages a trap: a plausible wrong number or output, shown exactly, with the decision it would have misled, the check that catches it and the fix. A syntax or runtime error is met when it happens and gets two minutes; it never takes a trap slot.
+- Every chapter stages a trap: a plausible wrong number or output, shown exactly, with the decision it would have misled, the check that catches it and the fix. A syntax or runtime error is met when it happens and gets two minutes; it never takes a trap slot.
 - Cognitive load is the design constraint: think trainer, psychologist and storyteller at once, and cut breadth before cutting the worked example.
 - Durations only, never clock times; role labels only, never trainer names, in anything a student sees.
 
 ## The gates
 
 1. **Envelope and continuity.** From the row: the business scenario in one line, what the room already knows, what today must not repeat, what comes later, and which thread of the three (Growth, Trust, Cost and risk) this day advances. One short block, stated to the requester.
-2. **The spine, for approval.** Where `docs/detailing/` holds an approved spine for the week, it is this gate for every day it covers: state the envelope, then build from it without stopping. Otherwise, one screen: the scenario and the thinking it trains, the five rungs, the three rounds and the afternoon's two cases, section list per artifact, the day's mental-model arc in one sentence, the traps with their exact wrong numbers, the activity choice with its toggle, the take-home shape, and the interview questions the day equips. Stop and wait. Nothing downstream is built before the spine is approved.
-3. **Build passes**, one artifact family per pass, in this order: deck(s); notebooks; activity; exercises plus solutions; take-home plus self-check spine; Kahoot pack; study notes, cheat sheet and pre-read. Each pass is a separate generation because mixing them flattens all of them.
+2. **The spine, for approval.** Where `docs/detailing/` holds an approved spine for the week, it is this gate for every day it covers: state the envelope, then build from it without stopping. Otherwise, one screen: the scenario and the thinking it trains, the domain beat (the story on a domain's first day, the metric at stake after it), the six or so chapters with each one's question, options, sizing and second route, the afternoon's two cases, section list per artifact, the day's mental-model arc in one sentence, the traps with their exact wrong numbers, the activity choice with its toggle, the take-home shape, and the interview questions the day equips. Stop and wait. Nothing downstream is built before the spine is approved.
+3. **Build passes**, one artifact family per pass, in this order: deck(s); notebooks; activity; exercises plus solutions; take-home plus self-check spine; Kahoot pack; study notes, cheat sheet and pre-read. Each pass is a separate generation because mixing them flattens all of them. Then the depth loop in `references/the-standard.md`: the domain pass and the problem-first pass by the builder, then the rigor pass and the pedagogy-and-language pass by fresh reviewer agents, each logged in the provenance.
 4. **Verification.** Run the checklist at the end of this file and report results, including what failed and was fixed.
 5. **Ship.** Folders and file names per the naming rule below, audience tags mandatory, files presented together.
 
 ## The artifact set
 
-The full manifest with per-artifact specifications lives in `references/artifact-manifest.md`. Read it before pass 1 on any new day. `references/the-standard.md` sets the bar, the 360-minute day and the volume each family ships, and names `content/W01/D1` as the model for form; read it before each build pass. The short form:
+The full manifest with per-artifact specifications lives in `references/artifact-manifest.md`. Read it before pass 1 on any new day. `references/the-standard.md` sets the bar, the 360-minute day, the chapter and the volume each family ships, and names `content/W01/D1` as the model for form; read it before each build pass. On a domain's first day, `references/domain-dossier.md` sets the dossier, its card and the story that opens the day. The short form:
 
 | Artifact | Audience | Count per day |
 |---|---|---|
 | Deck | STUDENT-visible, trainer-driven | 2: the morning deck (half one) and the afternoon deck (half two) |
-| Demo notebooks | STUDENT | 1 or more, rich, progressive |
+| Chapter notebooks | STUDENT | About 6, one per deck chapter, each building on the one before, plus the two case notebooks |
+| Domain dossier, card and story | STUDENT, and TRAINER for the story | On a domain's first day only |
 | Activity | STUDENT | 0 or 1 |
 | Guided + unguided exercises | STUDENT | few, think-heavy |
 | Solutions | STUDENT, timed release | one per exercise |
@@ -136,9 +137,9 @@ Orientation moved to Week 0 Monday on the 21 September calendar. The Programme H
 4. The interview questions from column 12 appear in the pack as questions, with their tags, and the
    answers written here are not copied back into the curriculum row.
 5. Idea count per block within the cap, counted as decision sentences.
-6. Every round's trap shows the exact wrong number or output and the decision it would have misled, and the demonstration reproduces it; no trap is a syntax error.
+6. Every chapter's trap shows the exact wrong number or output and the decision it would have misled, and the demonstration reproduces it; no trap is a syntax error.
 7. Demo notebooks run cold in a fresh Codespace, top to bottom.
-8. Deck, notebooks and exercises follow the same segment order.
+8. Deck chapters and notebooks pair one to one by number and title, and the exercises follow the same order.
 9. Every link was verified on the day it entered an artifact and carries that date; unverified slots say "to be found".
 10. The take-home fails the shortcut test: pasting it into a chat assistant does not produce the deliverable (see the manifest for the resistance patterns).
 11. No trainer names, marks, weights or clock times in any STUDENT artifact; Kalpa's fictional stakeholders are named on purpose and are not covered by that rule. Rs, never the currency glyph; no em-dashes; the banned-word scan passes.
@@ -148,6 +149,9 @@ Orientation moved to Week 0 Monday on the 21 September calendar. The Programme H
 15. The trainer day sheet names its module and, on a faculty day, carries the IITGN block, both as sync
     blocks, and `python3 scripts/sync_programme.py --check` passes.
 16. No STUDENT file states a proposed or open fact, and a tentative one carries the word tentative.
+17. Every chapter lays out its options with a sizing and the best-fit call before its code, names the fact that would change the call, and closes on a second route; at least a third of the day's exercise items are design items.
+18. Every chapter names the metric at stake, who asks for it, what a wrong number costs and a real company that faces the same question, with each real fact sourced and dated; on a domain's first day the dossier, card and story ship.
+19. The provenance logs the five passes of the depth loop, the last two by fresh reviewers, and what each changed.
 17. The verify run's output is in the reply before the pack is called done.
 
 ## File naming
