@@ -51,8 +51,8 @@ flowchart TB
 | Trap | The check |
 |---|---|
 | Denominator shifted | One session rule; cohort's starting size |
-| Mixed segments | The median beside the mean |
-| Unequal windows | Month against month |
+| Margin on GMV | Divide margin by net revenue |
+| Missed sales | Count empty shelf-days; a stock-out leaves no row |
 | Late returns | Wait for the return window to close |
 | New stores | Quote like-for-like |
 | Blended CAC | Count only customers the spend brought |
