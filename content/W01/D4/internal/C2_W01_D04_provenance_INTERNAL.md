@@ -305,3 +305,40 @@ cf1f1d6 and be8cc6d (decks rebuilt).
 | Part 3's question read "look like like for like"; the afternoon deck gave Marketing's role ten minutes against the brief's eight | Part 3 asks "Compared like for like, how do exposed and unexposed customers differ, and how many stand behind each?" in the brief, ex2, its solution and the day sheet, and the deck's map card gives it in short form as it does parts 1 and 2; the role is played for the pairs' last six minutes everywhere, once the second review fitted the case inside its forty |
 | The workbook's bold row labels are statements, and the Count tab used "lead" unexplained (optional) | The Count tab's heading asks its question and its first line defines a lead; the row labels stay, because they name input and check cells the recalc manifest pins |
 | The pre-read gives Friday's lab about two hours against the spine's 150 minutes | Kept: main's Friday day sheet gives the lab 120 minutes, and that is the session the room will sit |
+
+**The second review, on what other files repeat.** A second fresh read-only reviewer checked only
+the changes after the first review (`ea20f97` to `5151395`) to methods, keys and numbers that other
+files repeat: notebook 5's dashboard, the second case's four cells and part 4, every key, the practice
+lab's core, the four reworded sixth questions, chapter 1's five-seed range, the merged figures and
+sentences, and plants in the changed STUDENT lines. It recomputed the second case from the exposure
+file, recounted the dashboard at 506, found every key identical at `ea20f97`, HEAD and main, and ran
+the case builder's `--verify` on a scratch copy. It returned one blocking finding and six minor ones,
+fixed in c5ed6a6.
+
+| Finding | What changed |
+|---|---|
+| Blocking: notebook 5 recounted chapters 1 to 4's saved output whenever they sat beside it, which in a Codespace is always, and chapter 3 ships two empty cells the room fills and runs on S47, so whatever they print moves the count; with the expected answers the reviewer's recount read 531, and the check would have failed in class | Notebook 5 states 506 as the count the pack shipped with; the builder holds `DASHBOARD_WORDS`, writes it into the cell, and recounts the four saved notebooks before it builds notebook 5, stopping if the count has moved |
+| Morning S32's note gave Retail-Core Rs 47,600 | Rs 47,550, from the orders file: Rs 51,300 in Q1 less the Rs 3,750 fall |
+| Notebook 4's map labelled question 6 "One mix, the same answer?" where the deck says "On one mix, still apart?" | The notebook's label follows the deck |
+| Chapter 3's sixth question asked whether the routes "give the flips' share" and every file answered yes, though the handfuls give 0.344 against 0.397; "every split" and "every deal" named the same thing | The question asks for the flips' reading, "Do an exact count of every way the orders could split between the quarters, and real Retail-Core orders, give the flips' reading?", and each answer says every route finds chance making such a rise a third of the time or more on a count this small; "deal" is the chapter's one noun, as its exercise items, cheat sheet and chapter 6 already use it |
+| Afternoon S21's note had the pair answer with "chapter 6's design and its price", which priced Retail-Plus alone, where part 4 prices both segments | The note says the design is priced on this list for both segments, as part 4 asks, and gives no figure before the pairs work it |
+| The second case's slides ran on top of the brief's forty minutes of parts, eight minutes over on main and eleven once S23a arrived | Four minutes on S21 and S22, thirty-four in pairs at 6, 7, 10 and 11 minutes with S23 opening part 4, and two on S23a after the replies; the role is played for the pairs' last six minutes; the brief, ex2, the deck's notes and the day sheet agree |
+| Three provenance lines overstated: the cheat sheet quotes none of the sixth questions, the fix pass's ruling row lacked the verdict's comma, and the deck's part 3 card is a short form | Corrected in this file |
+
+**The proof, 30 September 2026, on the pack as committed after c5ed6a6.**
+
+- `python3 scripts/verify.py content/W01/D4 --execute`: exit 0, "RESULT: PASS (0 failures)", with no
+  FAIL or WARN line. 59 files named and filed for a teaching day; the six chapter notebooks and the
+  three case solutions cold-run clean, the three TODO twins left out by design; 12 notebooks with 116
+  checks passing; 8 option files audited; the workbook's 6 verdicts computed and 12 decisions
+  flipped; 37 companion controls clicked, 0 inert, 0 console errors; the decks' markdown at 86 and 37
+  slides with 27 and 12 diagrams; 125 built slides with 0 overflowing boxes.
+- `python3 scripts/build_companion.py content/W01/D4 --check`: the library is current.
+  `python3 scripts/sync_programme.py --check`: every output is current.
+- The case builder's `--verify` on ex1, ex2 and ex3: every key runs with no failing check, and every
+  wrong option is caught, ex3's option 2b by its intended TypeError.
+- The tic scanner, run file by file since it reads only its first argument: clean on the 34 markdown
+  files, both decks, the builders, the twelve notebooks' text and the companion page's text.
+- Both decks rebuilt from their markdown, rendered through LibreOffice and looked at slide by slide,
+  87 and 38 slides.
+- The six chapter notebooks print exactly what the merged notebooks on main print, stream by stream.
