@@ -699,17 +699,12 @@ answers any subset; one pass by key when the file is large and every group is ne
 means eight edits and one forgotten. Weak: "a function, because it is cleaner", with no cost named.
 
 **12. [D] A stakeholder hands you a cause; how do you test it with the data you have and name the data
-you need?** Tested: hypothesis discipline. Strong: restate the cause as a hypothesis, test what the
-file can test, which is timing against the fall and whether the channel the cause lives in fell first
-and alone, cap it with a ceiling that names its baseline, and then name the data that would settle it,
-such as event logs and release dates. Weak: accepting or rejecting the cause on instinct.
-
-**13. [D] The design question: which test of a cause do you run first, and when do you stop?**
-Tested: an order with a reason and a stopping rule. Strong: timing first because it is cheap and can
-rule a cause out; then a comparison group and the channel the cause predicts; stop when the export can
-only cap the cause, here at about 4 orders on the 55-day baseline and 7.0 on the 37 days before the
-break, and request the data that settles it. Weak: running every test at once, or waiting for the
-logs before running any.
+you need?** Tested: hypothesis discipline, with an order of tests and a point to stop. Strong: restate
+the cause as a hypothesis and test what the file can test, timing first because it is cheap and can
+rule a cause out, then a comparison group and whether the channel the cause lives in fell first and
+alone; stop when the export can only cap the cause, here at about 4 orders on the 55-day baseline and
+7.0 on the 37 days before the break, and name the data that would settle it, such as event logs and
+release dates. Weak: accepting or rejecting the cause on instinct, or running every test at once.
 
 ---
 

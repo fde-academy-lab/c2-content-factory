@@ -46,14 +46,16 @@ value: Rs 1.9 cr | label: Q2, July to September | note: as Meera remembers it
 value: Rs 12 cr | label: waiting on the answer | note: Marketing's acquisition ask
 ```
 
-Kalpa Retail India's financial year opens in April, so Q1 is April to June and Q2 is July to September of 2026-27.
+Kalpa Retail's financial year opens in April, so Q1 is April to June and Q2 is July to September of 2026-27.
 
 ```notes
 LIVE, 3 minutes. Read the message aloud. Meera says Monday's tree back to us. Her figures are
 rounded and from memory; the file gives exact ones. The retail story behind her words, how a store
 chain earns and who owns which lever, is in Monday's domain dossier; point at it, do not retell it.
-Ask which number worries her most. The Rs 12 crore: it is about to be spent on an unchecked branch.
-Then the three people waiting on the answer.
+Kalpa Retail sells to four kinds of customer through its app, its website and its stores:
+Retail-Core's many small orders, Retail-Plus members' repeat buying, Business's few lakh-sized accounts
+and Student's small discounted baskets. Ask which number worries her most. The Rs 12 crore: it is
+about to be spent on an unchecked branch. Then the three people waiting on the answer.
 ```
 
 ---
@@ -67,12 +69,11 @@ icon: crown | eyebrow: The paid tier | title: The head of Retail-Plus | body: Ow
 icon: megaphone | eyebrow: Acquisition | title: The marketing lead | body: Owns new customers. Has a slide showing revenue falling by a quarter, and an answer already: more customers. | tone: dark
 ```
 
-**Your role.** The team works for the number, and each voice gets the same one. A branch that moved hands the problem to the person who owns that lever; a branch that stayed flat takes a budget off the table.
+The team works for the number, and each voice gets the same one. A branch that moved hands the problem to the person who owns that lever; a branch that stayed flat takes a budget off the table. Kavya Nair, the team's senior analyst, reviews every number before it leaves.
 
 ```notes
 LIVE, 2 minutes. Name the incentive behind each voice without judging it. Marketing is paid to
-acquire, so it reads every fall as an acquisition problem; that is how the role is paid and says
-nothing about good faith. The head of Retail-Plus wants a verdict on his tier; he gets a number in
+acquire, so it reads every fall as an acquisition problem. The head of Retail-Plus wants a verdict on his tier; he gets a number in
 chapter 3 and a test of his cause in chapter 6. Anand Iyer, Finance, is listening too. Then what
 each branch costs to move.
 ```
@@ -100,7 +101,7 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 2 minutes. The cost list is the curriculum row's own. Its use today: if the fall sits in
+LIVE, 2 minutes. The cost list's use today: if the fall sits in
 frequency, a cheaper lever is on the table and the Rs 12 crore is aimed at the wrong branch. That is
 why every chapter puts rupees on a branch. Chapter 5 brings the published estimates of acquisition
 against retention cost. Then a question before any number.
@@ -130,7 +131,7 @@ the system as well as in the arithmetic. Keep every answer; the next slide place
 
 ---
 
-## S6. Answer: a fake drop has an address in the pipeline
+## S6. Answer: at four hops, from the checkout to the tile
 *Where between a checkout and a dashboard could a fall appear that the business never had?*
 
 ```mermaid
@@ -146,7 +147,7 @@ flowchart LR
     class F1,F2,F3,F4 bad
 ```
 
-**The rule.** Find the hop a number came through before you explain it. Today's traps live at these addresses: the window, the empty field, the roll-up and the helper.
+**The rule.** Find the hop a number came through before you explain it. Today's traps sit at these hops: the window, the empty field, the roll-up and the helper.
 
 ```notes
 LIVE, 2 minutes. Place the room's answers on the four hops. Chapter 1 is the export and the tile;
@@ -180,7 +181,7 @@ questions, verified 29 Sep 2026. Then the rule every chapter uses to check itsel
 
 ---
 
-## S8. Branch changes multiply, so they never simply add
+## S8. Branch changes multiply into the change in revenue
 *How do the tree's branches combine into the change in revenue?*
 
 ```mermaid
@@ -269,7 +270,7 @@ icon: calendar | eyebrow: United States | title: Target | body: Comparable sales
 icon: ruler | eyebrow: The convention | title: NRF 4-5-4 calendar | body: Comparable months hold the same number of weeks and weekends, so a quarter is 13 whole weeks.
 ```
 
-**The claim.** Two windows of different length never compare as totals; the retail industry built its calendars around that.
+**The rule.** Two windows of different length never compare as totals, and retail calendars are built around that.
 
 ```notes
 LIVE, 2 minutes. Sources, all checked 30 Sep 2026: Avenue Supermarts investor presentation filed
@@ -287,7 +288,7 @@ The link to Kalpa: Q2's tile had two fewer weeks than Q1. Then the four ways to 
 |---|---|---|---|
 | A. Closed quarters as totals | 200 | -11.0% | Nothing, once both quarters have closed |
 | B. The same 11 weeks of each | 167 | -17.0% | The last two weeks of each quarter |
-| C. Per day, closed quarters | 200 | -11.9% | Nothing; it spreads 91 and 92 days |
+| C. A rate per day or per week | 200 | -11.9% per day | Where the weeks sit, once a quarter is cut |
 | D. Same quarter last year | 0 | cannot run | Everything, until last year's rows arrive |
 
 **The call.** A, because both quarters had closed by 30 September, at 13 weeks each. **What would change it:** Q2 still open means B; a question about the monsoon means D and a data request.
@@ -301,15 +302,15 @@ The notebook's first section computes this table; run it now. Then the picture b
 
 ---
 
-## S13. Two totals compare only when four things match
+## S13. Match window, definition, population, denominator
 *What has to match before two quarters' totals can be compared?*
 
 ```mermaid
 flowchart LR
-    W["<b>the window</b><br/>same length,<br/>both closed"] --> F["<b>a fair<br/>comparison</b>"]
-    D["<b>the definition</b><br/>booked on<br/>both sides"] --> F
-    P["<b>the population</b><br/>the same<br/>customers"] --> F
-    N["<b>the denominator</b><br/>beside every<br/>rate"] --> F
+    W["<b>the window</b><br/>same length, closed"] --> F["<b>a fair comparison</b>"]
+    D["<b>the definition</b><br/>booked on both sides"] --> F
+    P["<b>the population</b><br/>the same customers"] --> F
+    N["<b>the denominator</b><br/>beside every rate"] --> F
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class F bet
 ```
@@ -329,6 +330,7 @@ totals each quarter.
 *How does one pass over the orders total each quarter?*
 
 ```python
+# ORDERS: the export, one dictionary per booked order
 revenue = {}     # quarter -> rupees booked
 orders = {}      # quarter -> number of orders
 for order in ORDERS:
@@ -396,8 +398,8 @@ half the fall on Marketing's slide. Then the number Marketing sent, computed the
 
 ```mermaid
 flowchart LR
-    A["<b>Q1</b><br/>13 weeks<br/>Rs 2,10,00,000"] --> W["<b>-25.9%</b><br/>a crisis"]
-    B["<b>Q2 tile</b><br/>11 weeks<br/>Rs 1,55,59,950"] --> W
+    A["<b>Q1</b><br/>13 weeks<br/>Rs 2.10 cr"] --> W["<b>-25.9%</b><br/>a crisis"]
+    B["<b>Q2 tile</b><br/>11 weeks<br/>Rs 1.56 cr"] --> W
     W --> D["<b>release</b><br/>Rs 12 crore<br/>now"]
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     class W,D bad
@@ -406,8 +408,8 @@ flowchart LR
 **What breaks.** The arithmetic is right and the reading is wrong: a 25.9 percent crisis rushes the Rs 12 crore acquisition budget out of the door.
 
 ```notes
-LIVE, 2 minutes. This is the chapter's trap, and it is a plausible wrong number with correct
-arithmetic. Say the business cost out loud: a crisis read rushes the acquisition budget. The check
+LIVE, 2 minutes. The chapter's trap: correct arithmetic on unequal windows, Rs 1,55,59,950 against
+Rs 2,10,00,000. Say the business cost out loud: a crisis read rushes the acquisition budget. The check
 is cheap and nobody runs it, because a tile shows a number without its window. Then the question
 that exposes it.
 ```
@@ -419,8 +421,8 @@ that exposes it.
 
 ```mermaid
 flowchart TB
-    Q1["<b>Q1, closed</b><br/>1 April to 30 June<br/>weeks: ?"]
-    Q2["<b>Q2, the tile</b><br/>1 July to 15 September<br/>weeks: ?"]
+    Q1["<b>Q1, closed</b><br/>1 Apr to 30 Jun<br/>weeks: ?"]
+    Q2["<b>Q2, the tile</b><br/>1 Jul to 15 Sep<br/>weeks: ?"]
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
     class Q1,Q2 unknown
 ```
@@ -443,11 +445,11 @@ xychart-beta
     title "Revenue to date by week of quarter, Rs lakh"
     x-axis "Week of quarter; the tile stops at week 11" [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
     y-axis "Rs lakh" 0 --> 230
-    line "Q1" [37.7, 42.0, 64.9, 84.8, 107.2, 110.9, 138.6, 152.7, 152.8, 152.9, 187.5, 209.9, 210.0 "Q1 210.0"]
-    line "Q2" [23.5, 43.0, 46.0, 61.2, 67.6, 119.4, 133.8, 142.2, 142.3, 142.3, 155.6 "tile stops, 155.6", 172.2, 187.0 "Q2 187.0"]
+    line "Q1" [37.7, 42.0, 64.9, 84.8, 107.2, 110.9, 138.6, 152.7, 152.8, 152.9, 187.5, 209.9, 210.0]
+    line "Q2" [23.5, 43.0, 46.0, 61.2, 67.6, 119.4, 133.8, 142.2, 142.3, 142.3, 155.6, 172.2, 187.0]
 ```
 
-**Why it is wrong.** The tile stopped on 15 September, so it holds 11 weeks of trading against 13. **The check:** the first and last order date of each window, and the weeks between them.
+**Why it is wrong.** The tile stopped on 15 September at Rs 155.6 lakh, week 11, so it holds 11 weeks of trading against 13; Q2 closed at Rs 187.0 lakh and Q1 at Rs 210.0 lakh. **The check:** the first and last order date of each window, and the weeks between them.
 
 ```notes
 LIVE, 2 minutes. The answer is b: Q1 is 13 weeks and 91 days, the tile 11 weeks. The line that
@@ -458,12 +460,12 @@ without a large order barely move. Then the fix.
 
 ---
 
-## S20. The fix: closed quarters, and the fall halves
+## S20. The fix: closed quarters cut the fall to 11.0 percent
 *What changes when both sides cover the same thirteen weeks?*
 
 ```mermaid
 flowchart LR
-    A["<b>Q1</b><br/>Rs 2,10,00,000"] --> B["<b>first 11 weeks of Q2</b><br/>-Rs 54,40,050"]
+    A["<b>Q1</b><br/>Rs 2,10,00,000"] --> B["<b>the tile, 11 weeks,<br/>against Q1</b><br/>-Rs 54,40,050"]
     B --> C["<b>last 2 weeks of Q2</b><br/>+Rs 31,40,050"]
     C --> D["<b>Q2 closed</b><br/>Rs 1,87,00,000<br/>-11.0%"]
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
@@ -476,7 +478,7 @@ flowchart LR
 
 ```notes
 LIVE, 3 minutes. The bridge walks Marketing's gap to the closed quarter: the two weeks the tile
-never saw carried Rs 31,40,050. Nothing was lost; it had not been counted yet. Then what a rate
+never saw carried Rs 31,40,050, orders booked after the tile was read. Then what a rate
 adds when the windows cannot match.
 ```
 
@@ -542,8 +544,10 @@ Then the chapter's answer.
 **In the interview.** [F] What has to match before a quarter-on-quarter comparison is fair? And the design question: Q2 is still open; which comparison do you send?
 
 ```notes
-LIVE, 1 minute. One breath: window length and dates, the definition, the population, the
-denominator, and the export's completeness. The design answer: the same weeks of both, with a rate
+LIVE, 1 minute. The interview tags: [S] a staple asked everywhere, [F] frequent in GCC and product
+screens, [SV] a service-major screen opener, [D] a differentiator. One breath: window length and
+dates, the definition, the population and the denominator, on an export pulled after the later
+period closed. The design answer: the same weeks of both, with a rate
 per week beside it, switching to closed quarters at the close. One comparison is still missing,
 last year's Q2, which only the season question needs. Transition: the drop is real, so which
 branch moved?
@@ -579,7 +583,8 @@ label: 6 | title: Does the symmetric split agree? | body: A second route, with n
 
 ```notes
 LIVE, 1 minute. Read the six questions. The fifth opens Meera's fourth branch, price, where
-Marketing's monsoon plan lives. Then the owners.
+Marketing's monsoon plan lives: extending its monsoon discount to the orders that seem to go without
+one. Then the owners.
 ```
 
 ---
@@ -616,7 +621,7 @@ value: Rs 14,386 cr | label: Blinkit net order value | note: orders times order 
 value: +1.5% / +1.1% | label: Walmart U.S. transactions / ticket | note: ticket is spend per visit
 ```
 
-**The claim.** A quick-commerce app and the world's largest store chain both answer "more visits or bigger baskets?" every quarter.
+A quick-commerce app and the world's largest store chain both answer "more visits or bigger baskets?" every quarter.
 
 ```notes
 LIVE, 2 minutes. Sources checked 30 Sep 2026: Eternal shareholders' letter of 28 April 2026, Blinkit
@@ -627,7 +632,7 @@ percent, transactions 1.5, average ticket 1.1. Then four ways to split Kalpa's f
 
 ---
 
-## S27. A bridge in the tree's order fits, with its order
+## S27. A bridge in the tree's order, with the order stated
 *Which of four ways should split the fall between the branches?*
 
 | Option | Frequency is charged | Depends on order? |
@@ -678,6 +683,7 @@ counted.
 *How does the code count each customer once?*
 
 ```python
+# by_quarter: each quarter's list of orders, from chapter 1's accumulator
 orders_by_customer = {"Q1": {}, "Q2": {}}   # quarter -> {customer_id: orders}
 for q in by_quarter:
     for order in by_quarter[q]:
@@ -760,14 +766,14 @@ Marketing's monsoon plan lives there.
 
 ---
 
-## S33. Three ways past a KeyError each decide something
+## S33. Each way past the KeyError decides what a blank means
 *What does the KeyError on "discount" say, and what does each way past it decide?*
 
 ```text
 KeyError: 'discount'
 ```
 
-| Way past it | Python's name for it | The decision it makes quietly |
+| Way past it | Python's name for it | The decision it makes without saying so |
 |---|---|---|
 | `if "discount" in order:` | Look before you leap | Orders without it are skipped |
 | `try:` ... `except KeyError:` | Easier to ask forgiveness | Whatever the except branch does |
@@ -775,8 +781,8 @@ KeyError: 'discount'
 
 ```notes
 LIVE, 2 minutes, and no more. Read the last line of the trace: it names the key. The Python glossary
-names the first two styles LBYL and EAFP (docs.python.org glossary, verified 29 Sep 2026). The error
-is not the trap; what the third way decides is. Then the number it produces.
+names the first two styles LBYL and EAFP (docs.python.org glossary, verified 29 Sep 2026). The trap
+is what the third way decides: a blank becomes zero rupees. Then the number it produces.
 ```
 
 ---
@@ -787,7 +793,7 @@ is not the trap; what the third way decides is. Then the number it produces.
 ```mermaid
 flowchart LR
     A["<b>43 of 86</b><br/>Q2 orders"] --> B["<b>50.0%</b><br/>with a<br/>discount"]
-    B --> C["<b>half</b><br/>went<br/>without"] --> D["<b>extend</b><br/>to the<br/>other half"]
+    B --> C["<b>half</b><br/>went<br/>without"] --> D["<b>Marketing extends</b><br/>the monsoon<br/>discount"]
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     class A,B,C,D bad
 ```
@@ -846,7 +852,7 @@ order.
 
 ---
 
-## S37. The symmetric split charges frequency Rs 55,88,480
+## S37. Symmetric split: Rs 55,88,480 on the same branch
 *Does a split that chooses no order put the fall on the same branch?*
 
 ```mermaid
@@ -952,11 +958,11 @@ value: 92.3% | label: U.S. and Canada | note: membership renewal rate, fiscal 20
 value: 89.8% | label: worldwide | note: the same measure, all regions
 ```
 
-**The claim.** A membership business reports its rate by segment because the blend can hide the one that slips.
+Costco reports the rate by region beside the worldwide figure, because a blend can hide the region that slips.
 
 ```notes
 LIVE, 1 minute. Source: Costco fourth quarter fiscal 2025 results filed with the SEC (exhibit 99),
-checked 30 Sep 2026. The link: the head of Retail-Plus needs his tier's rate, never the company's.
+checked 30 Sep 2026. The link: the head of Retail-Plus needs his tier's own rate, beside the company's.
 Then three ways to get eight groups' numbers.
 ```
 
@@ -1014,7 +1020,7 @@ the function itself.
 
 ---
 
-## S44. tree_for is a metric definition, written once
+## S44. tree_for, written once and tested on chapter 2
 *How is tree_for written, and how do we know it is right?*
 
 ```python
@@ -1029,7 +1035,7 @@ def tree_for(rows):
             "revenue_per_order": revenue / len(rows)}
 ```
 
-**Test it where the answer is known.** A new function earns trust by reproducing a number proved another way, so it runs first on all of each quarter.
+**The check.** A new function earns trust by reproducing a number proved another way, so it runs first on all of each quarter, where chapter 2 already found 1.65 and 1.25.
 
 ```notes
 LIVE, 2 minutes. Build it line by line: def, the parameter, the body, return. The seen dictionary is
@@ -1084,7 +1090,7 @@ value: 38 to 36 | label: orders | note: 1.12 to 1.06 per customer, -5.3%
 value: Rs 2,325 to Rs 2,080 | label: median order | note: the typical order
 ```
 
-**The claim.** Retail-Core slipped a little, far short of the company's 24.6 percent.
+Retail-Core slipped a little, far short of the company's 24.6 percent.
 
 ```notes
 LIVE, 2 minutes. describe is Monday's median by hand, inside a function, with the odd and even case:
@@ -1150,10 +1156,11 @@ xychart-beta
     bar [-1, -1, 1.65, 1.25]
 ```
 
-**What breaks.** Averaged, the segments say 1.94 to 1.82, minus 6.0 percent: "frequency is not the branch, so Marketing may be right", and the Rs 12 crore goes back on the table. **The check:** a roll-up must reproduce 1.65 and 1.25.
+**What breaks.** Averaged, the segments say 1.94 to 1.82, minus 6.0 percent on the unrounded figures: "frequency is not the branch, so Marketing may be right", and the Rs 12 crore goes back on the table. **The check:** a roll-up must reproduce 1.65 and 1.25.
 
 ```notes
-LIVE, 3 minutes. The chapter's trap: correct arithmetic, wrong question. Only the averages and the
+LIVE, 3 minutes. The chapter's trap: the arithmetic is right and answers a different question. The
+unrounded averages are 1.9385 and 1.8215. Only the averages and the
 weighted figures appear; no per-segment rows are shown. Then the fix.
 ```
 
@@ -1207,7 +1214,7 @@ collect two sentences read aloud without comment.
 | 1. Copy, function or one pass? | A function: 21 lines and one place to edit |
 | 2. Does tree_for agree? | Yes: 1.65 and 1.25 on 69 customers |
 | 3. How did Retail-Core move? | 1.12 to 1.06, minus 5.3 percent |
-| 4. What did Business do? | The median held; one order stretched the range |
+| 4. What did Business do? | Median minus 3.2 percent; range up 72.6 percent on one Rs 29,45,460 order |
 | 5. What does the roll-up say? | Weighted, minus 24.6 percent; averaged, a false 6.0 |
 | 6. Does one pass agree? | Yes, for all eight groups |
 
@@ -1247,7 +1254,7 @@ label: 2 | title: Whose orders were lost? | body: The 28 orders, by segment
 label: 3 | title: Did any segment rise 18%? | body: Each segment's own rate
 label: 4 | title: Price or mix? | body: Marketing's reading, tested
 label: 5 | title: What is the rate part? | body: Segment by segment
-label: 6 | title: Does the envelope agree? | body: A second route, two groups | tone: dark
+label: 6 | title: Does a two-group split agree? | body: Business against everyone else | tone: dark
 ```
 
 ```notes
@@ -1290,7 +1297,7 @@ flowchart LR
     class D known
 ```
 
-**The claim.** When groups differ in order size and their shares move, a blended order value can rise with no customer paying more for the same thing.
+**The rule.** When groups differ in order size and their shares move, a blended order value can rise with no customer paying more for the same thing.
 
 ```notes
 LIVE, 2 minutes. Swiggy, the food and grocery delivery app, Q2 FY2026 shareholder letter, checked 30
@@ -1306,18 +1313,17 @@ four readings of Kalpa's rise.
 ## S57. Split into mix and rate: the only reading that adds
 *Which of four readings can put rupees on "customers paid more" and on "the mix changed"?*
 
-| Option | What it can say |
-|---|---|
-| A. Read the blended change | The size of the rise, nothing about why |
-| B. Each segment's own revenue per order | Whether any segment paid more |
-| C. Split into mix and rate | Rupees from each, adding to Rs 33,231 |
-| D. Each segment's median order | The typical order, and no rupees |
+| Option | Rupees of the Rs 33,231 it explains | Can one lakh-sized order move it? | What it leaves open |
+|---|---|---|---|
+| A. Read the blended change | None: it is the rise | Yes | Why it rose |
+| B. Each segment's own revenue per order | None: a direction per segment | Yes, inside Business | How the segments add up |
+| C. Split into mix and rate | All of it, split in two | The rate part, yes | Which prices moved, if any |
+| D. Each segment's median order | None: the typical order | No | The rupees |
 
 **The call.** C, built on B's per-segment rates. **What would change it:** segments of similar order size would make mix negligible and B enough; a question about which products' prices moved needs order lines this file lacks.
 
 ```notes
-LIVE, 3 minutes. The notebook's first section shows that only C puts rupees on a cause, and that
-only D is safe from one lakh-sized order. Write "C: mix and rate" beside rung 4. Then the picture of
+LIVE, 3 minutes. Only C puts rupees on a cause, and only D is safe from one lakh-sized order. Write "C: mix and rate" beside rung 4. Then the picture of
 a blend.
 ```
 
@@ -1379,7 +1385,7 @@ flowchart LR
     class P bad
 ```
 
-**The claim.** The orders that vanished were about three thousand rupees each, which already hints at why the average order grew.
+The orders that vanished were about three thousand rupees each, which already hints at why the average order grew.
 
 ```notes
 LIVE, 2 minutes. The answer is c. Ask the room what happens to an average when its smallest items
@@ -1436,7 +1442,7 @@ flowchart LR
     class A,B,C bad
 ```
 
-**Why it is wrong.** A blend rises whenever small orders fall away, and no segment's own figure rose 18 percent. **The check** is the table of each segment's own rate.
+**Why it is wrong.** A blend rises whenever small orders fall away, and no segment's own figure rose 18 percent. **The check.** Each segment's own revenue per order, where the largest rise is Student's 14.8 percent.
 
 ```notes
 LIVE, 2 minutes. The chapter's trap. Say the decision it would have misled: a price rise on the tier
@@ -1480,7 +1486,7 @@ flowchart LR
     class R known
 ```
 
-**What changed.** At Q2's mix and Q1's rates revenue per order would already be Rs 2,07,112. "Customers pay 18 percent more, raise prices" became "the mix explains Rs 22,902 of the Rs 33,231 rise", and the price rise loses its evidence.
+**What changed.** At Q2's mix and Q1's rates revenue per order would already be Rs 2,07,112. "Customers pay 18 percent more, raise prices" became "the mix explains Rs 22,902 of the Rs 33,231 rise", which leaves the price rise without the evidence it rested on.
 
 ```notes
 LIVE, 3 minutes. Retail-Plus fell from 44.7 to 30.2 percent of orders. Then what the Rs 10,330 of
@@ -1498,7 +1504,7 @@ value: Rs 60 | label: Retail-Plus | note: Rs 2,815 to Rs 3,012 an order
 value: Rs 12 and -Rs 43 | label: Student and Retail-Core | note: a hundred rupees or less
 ```
 
-**The claim.** Business's lakh-sized orders carry almost all of the rate part, driven by one large order, as chapter 3's range showed; the consumer segments' own prices moved by a few hundred rupees at most.
+Business's lakh-sized orders carry almost all of the rate part, driven by one large order, as chapter 3's range showed; the consumer segments' own revenue per order moved by a few hundred rupees at most.
 
 ```notes
 LIVE, 2 minutes. Each segment's rate part is its share of Q2's orders times the change in its own
@@ -1508,7 +1514,7 @@ revenue per order; the four add back to Rs 10,330. Then a check a senior can run
 ---
 
 ## S67. Two groups on an envelope give 69.3 percent
-*Do two groups, Business and everyone else, put the same share on the mix?*
+*Does a back-of-envelope split, Business against everyone else, put the same share of the rise on the mix?*
 
 | Route | What it prices | Mix | Share of the rise |
 |---|---|---|---|
@@ -1535,7 +1541,7 @@ consumer rate, so it could have disagreed. Then the chapter's answer.
 | 3. Did any segment rise 18%? | No; Student's 14.8 was the most |
 | 4. Price or mix? | Mix: Rs 22,902 of the Rs 33,231 rise |
 | 5. What is the rate part? | Business, Rs 10,302 of Rs 10,330 |
-| 6. Does the envelope agree? | Yes: 69.3 against 68.9 percent |
+| 6. Does a two-group split agree? | Yes: 69.3 against 68.9 percent |
 
 **Kavya's review.** "Marketing looked at a blend and saw a price signal. You opened it and found 25 small orders missing. No consumer segment paid meaningfully more; the small orders disappeared, from the tier we are about to ask about."
 
@@ -1603,7 +1609,7 @@ say about the two levers.
 ---
 
 ## S71. Keeping a customer costs a fraction of winning one
-*What do published studies say about acquisition against retention?*
+*What do published figures say about keeping customers, and can a count and a frequency move apart?*
 
 ```stats
 value: 5 to 25x | label: acquisition against retention | note: cost, by study and industry
@@ -1611,12 +1617,12 @@ value: 25 to 95% | label: profit lift | note: from a 5 percent rise in retention
 value: +34% / 4.53 to 4.10 | label: Swiggy users / orders per user | note: quarter to Sep 2025
 ```
 
-**The claim.** If the fall is frequency among customers Kalpa already has, the cheaper lever is on the table; the reply asks Finance for Kalpa's own acquisition cost before comparing rupees.
+If the fall is frequency among customers Kalpa already has, the cheaper lever is on the table; the reply asks Finance for Kalpa's own acquisition cost before comparing rupees.
 
 ```notes
 LIVE, 2 minutes. Amy Gallo, "The Value of Keeping the Right Customers", Harvard Business Review,
 29 October 2014, checked 30 Sep 2026; the retention figure is Frederick Reichheld of Bain, quoted
-there. Estimates across industries: say so. Swiggy, Q2 FY2026 shareholder letter, checked 30 Sep 2026:
+there. They are estimates across industries and say nothing about Kalpa's own costs: say so. Swiggy, Q2 FY2026 shareholder letter, checked 30 Sep 2026:
 monthly transacting users up 34.0 percent to 22.9 million while frequency fell 4.53 to 4.10, a
 growing count beside a falling frequency, which new users alone could produce, so the two are read
 apart. Then four tests of Marketing's claim.
@@ -1624,15 +1630,15 @@ apart. Then four tests of Marketing's claim.
 
 ---
 
-## S72. The id overlap, then each customer, answers it
+## S72. Id overlap, then each customer, tests the churn claim
 *Which of four tests can see customers lost and customers new?*
 
-| Option | Sees lost | Sees new | Sees who slowed |
+| Option | Output to read | Sees lost and new? | What it assumes |
 |---|---|---|---|
-| A. Compare the counts | no | no | no |
-| B. The id overlap, as sets | yes | yes | no |
-| C. Customer by customer | yes | yes | yes |
-| D. Marketing's CRM sign-ups | no | yes | no |
+| A. Compare the counts | 2 numbers | No | Nothing: a count is net |
+| B. The id overlap, as sets | 3 numbers | Yes | One id per person |
+| C. Customer by customer | 69 rows | Yes, and who slowed | One id per person |
+| D. Marketing's CRM sign-ups | Sign-ups by month | New only | The CRM and the export share their ids |
 
 **The call.** B, then C: three numbers anyone can rerun, then who slowed. **What would change it:** one person holding two ids, store and app, would make the overlap invent churn, and the CRM would be needed to join them first.
 
@@ -1678,7 +1684,7 @@ lost = ids["Q1"] - ids["Q2"]    # bought in Q1 only
 new = ids["Q2"] - ids["Q1"]     # bought in Q2 only
 ```
 
-**The rule.** A set holds each id once, `&` keeps what both sets share and `-` keeps what the first has and the second lacks.
+**The rule.** A set holds each id once; the & operator keeps what both sets share, and the minus operator keeps what the first set has and the second lacks.
 
 ```notes
 LIVE, 2 minutes. Sets are chapter 2's dictionary of ids without the counts. Source for the
@@ -1715,7 +1721,7 @@ value: 23 | label: customers who slowed | note: 44 ordered as often as before
 value: 18 | label: of them in Retail-Plus | note: 7 fell by two orders
 ```
 
-**The claim.** The flat count hides no churn; the fall is people Kalpa already has, buying less often, and most of them are members.
+The flat count hides no churn: the fall is people Kalpa already has, buying less often, and most of them are members.
 
 ```notes
 LIVE, 3 minutes. The answer is c. Option C, customer by customer, gives the second and third numbers.
@@ -1804,7 +1810,7 @@ flowchart LR
     class T unknown
 ```
 
-**The claim.** In the consumer business, Retail-Plus is the fall. The Business rupees are three lakh-sized orders out of twenty, which one account's timing can move, so both findings go to Meera side by side.
+In the consumer business, Retail-Plus is Rs 65,250 of the Rs 70,280 fall. The Business rupees are three lakh-sized orders out of twenty, which one account's timing can move, so both findings go to Meera side by side.
 
 ```notes
 LIVE, 3 minutes. The consumer business fell from Rs 2,28,820 to Rs 1,58,540, and Retail-Plus is
