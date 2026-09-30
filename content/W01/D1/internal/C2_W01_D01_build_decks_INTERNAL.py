@@ -1,10 +1,11 @@
 """Build Monday's two decks with scripts/build_deck.py, printing each chapter opener's own number.
 
-build_deck.py numbers chapter openers by their position in the deck, so the afternoon deck would
-print chapter 5 as 01. Monday pairs each deck chapter with the notebook of the same number, so this
-wrapper keeps build_deck.py's whole build and changes one thing: the numeral on a chapter opener is
-the one written in its heading, on the opener and in the cover's list of chapters. `## SECTION 5: ...` prints 05; `## SECTION A: ...` prints A, which
-the afternoon's case blocks use since they have no chapter notebook.
+build_deck.py prints the number written in a numeric heading, and numbers a lettered opener by its
+place in the file, so `## SECTION A: ...` in the afternoon deck would print a number. Monday pairs each
+deck chapter with the notebook of the same number and marks the afternoon's case blocks with letters,
+so this wrapper keeps build_deck.py's whole build and changes one thing: the k-th chapter opener
+prints the k-th mark written in the headings, on the opener and in the cover's list of chapters.
+`## SECTION 5: ...` prints 05; `## SECTION A: ...` prints A.
 
 Run from the repository root:
     python3 content/W01/D1/internal/C2_W01_D01_build_decks_INTERNAL.py
@@ -32,10 +33,12 @@ def build(name, footer):
     src = SLIDES / name
     marks = numerals(src.read_text())
     original = deck_layout.section_slide
+    seen = []
 
     def section_slide(slide, prs, number, *rest):
         original(slide, prs, number, *rest)
-        want = marks[number - 1]
+        want = marks[len(seen)]
+        seen.append(want)
         for shape in slide.shapes:
             if shape.has_text_frame and shape.text_frame.text == f"{number:02d}":
                 shape.text_frame.paragraphs[0].runs[0].text = want

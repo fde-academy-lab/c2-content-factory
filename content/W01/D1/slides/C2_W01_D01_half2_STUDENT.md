@@ -46,7 +46,7 @@ Transition: section 05, which branch Meera opens first.
 
 ---
 
-## SECTION 5: Which branch first?
+## SECTION 5: Which branch first
 *Which branch should Meera open first to reach the 15 percent plan, and why not the others?*
 
 ```notes
@@ -375,6 +375,8 @@ flowchart LR
 
 The base, two lifts of Rs 6,481 and the lift on the lift of Rs 648, which is 0.10 x 0.10 of the base, land where the multiplication did; the slide's Rs 77,772 stops one part short.
 
+**The rule.** Multiply the factors when you need the total, and build the parts when someone asks where the extra came from, since the lift on the lift shows as its own line.
+
 ```notes
 LIVE, 2 minutes. Notebook 05 draws this as a bridge and asserts it lands on the multiplied total.
 When to switch: multiply the factors for the total, and build the parts when someone asks where the
@@ -431,7 +433,7 @@ Transition: section 06, the sentence Meera signs.
 
 ---
 
-## SECTION 6: What will Meera sign?
+## SECTION 6: What will Meera sign
 *What one sentence can Meera sign, with its evidence, its branch, its caveat and its ask?*
 
 ```notes
@@ -663,8 +665,8 @@ Transition: S27, the fix in the sentence Meera signs.
 flowchart LR
     T["<b>23 customers</b>"] --> B["<b>came back</b><br/>7"]
     T --> O["<b>bought once</b><br/>16"]
-    O --> P["<b>past the 45-day gap</b><br/>7, may be lost"]
-    O --> R["<b>too recent to judge</b><br/>9, under 45 days"]
+    O --> P["<b>past the gap</b><br/>7, may be lost"]
+    O --> R["<b>too recent</b><br/>9, inside<br/>45 days"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
@@ -808,7 +810,7 @@ Transition: section B, the room's wrong answers.
 
 ---
 
-## SECTION B: Which numbers hold?
+## SECTION B: Which hold up
 *Which of the day's six plausible numbers would you sign, and which check catches each?*
 
 ```notes
@@ -891,7 +893,7 @@ label: Step 6 | title: The branch | body: Decide whether the channel view moves 
 In pairs, 15 minutes, in the second case brief and its notebook; argue each item before you record it.
 
 ```notes
-LIVE, 2 minutes to brief, then 15 minutes in pairs with no slides. The pairs split by channel and by
+LIVE, 17 minutes: 2 to brief, then 15 in pairs with no slides. The pairs split by channel and by
 status themselves. Segment is recorded on each order, so one repeat customer appears under two
 customer types; watch for pairs who count customers per type and add the counts.
 Transition: after 15 minutes, S36.
@@ -931,8 +933,6 @@ xychart-beta
 ```
 
 Once the view keeps the three consumer segments Meera's plan concerns, store's share falls from 91.6 to 29.2 percent, Rs 18,920 of Rs 64,810, so its headline share came from outside those segments; web leads with Rs 27,290.
-
-**In the interview.** [D] One channel carries nine rupees in ten of revenue; does that change where the growth plan invests?
 
 ```notes
 LIVE, 2 minutes. Booked revenue still counts every order; the consumer view answers the narrower
@@ -980,15 +980,18 @@ flowchart LR
 
 **Kavya's review.** "Count the orders behind a share before you show it, and keep the segments the plan is about. Split each channel by status, and the 91.6 percent headline leaves the branch where it was and adds two leaks to the note."
 
+**In the interview.** [D] One channel carries nine rupees in ten of revenue; does that change where the growth plan invests?
+
 ```notes
 LIVE, 2 minutes. The leaks sit between booked and delivered on every branch; Tuesday tests whether
-either grew.
+either grew. One pair answers the interview question aloud: count the orders behind the share, keep
+the segments the plan concerns, and say that the branch stays with two leaks named.
 Transition: section D, the interview drill.
 ```
 
 ---
 
-## SECTION D: Can you answer aloud?
+## SECTION D: Can you say it
 *Can you answer the day's twelve interview questions aloud, each in under a minute, with its number?*
 
 ```notes
@@ -1072,7 +1075,7 @@ Transition: section E, the close.
 
 ---
 
-## SECTION E: What do we keep?
+## SECTION E: What stays
 *What do we keep from Monday, what does Meera hear, and what will she ask next?*
 
 ```notes
@@ -1090,6 +1093,8 @@ value: 8 | label: items | note: one per chapter, the tree, a second on customers
 value: 0 | label: scores recorded | note: ungraded, every day
 value: 1 | label: return question | note: from today, in Tuesday's Kahoot
 ```
+
+Each item replays one of today's traps in a new setting, so a wrong tap shows which check has not stuck yet.
 
 ```notes
 LIVE, 8 minutes. Run kahoot/C2_W01_D01_quiz_STUDENT.md. Pause on any item below 60 percent correct
