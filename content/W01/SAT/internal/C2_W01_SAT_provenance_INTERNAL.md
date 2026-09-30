@@ -185,3 +185,79 @@ its text, and the quarters named Q1 and Q2 were left as they were. The map, from
 The marking gains the step where the Academic TA enters each paper by seat in the item-analysis
 workbook, the most-missed discussion follows its Discussion sheet, and the candidate table and the
 anchors gain Q38, Q40 and Q41.
+
+## 30 September 2026, later: the Word paper in the diagnostic's format
+
+The requester asked for the Saturday paper's Word version to follow the format of the baseline
+diagnostic, `content/W00/D2/paper/C2_W00_D02_diagnostic_STUDENT.docx`, with an answer sheet to print
+at the end, wording that is never generic, no bias in option length or quality and no surface-level
+items. The orchestrating session's builder draws that format from commit f7dff4f: a first page with
+the purpose, the rules with a Company row, step one's ratings of each part from 1 to 4 before any
+item is read, the paper at a glance and a pacing ribbon; open question blocks labelled beside the
+level, each exhibit and set case bound to the first item that reads it; an answer sheet on one page;
+and a key that ends on a marking grid. The item-analysis workbook gains a Ratings sheet.
+
+Rendered with LibreOffice on 30 September 2026, the Word paper runs to 17 pages and the key to 17.
+Every exhibit and set case prints with its first question, the answer sheet fits page 17, and the
+labels, tables, code panels and pacing ribbon read cleanly. Q54 prints alone on page 14: Part 6's
+five working boxes need slightly more than pages 12 and 13 hold, so one item spills in any order.
+
+### Labels
+
+Every printed item carries a label of two to five words saying what it asks the reader to do with
+what is in front of them, in the manner of the diagnostic's own labels. No label states or leans
+toward a key, and no two neighbours share one. Bank items carry theirs in the source file's notes,
+and the eight additions in their own entries.
+
+| Q | Label | Q | Label | Q | Label |
+|---|---|---|---|---|---|
+| Q1 | Complete the definition | Q19 | Test the decomposition | Q37 | Reply in the room |
+| Q2 | Name the mechanism | Q20 | Answer Marketing's claim | Q38 | Read the discount count |
+| Q3 | Read a p-value claim | Q21 | Order the ladder | Q39 | Predict what result holds |
+| Q4 | Test a claim on averages | Q22 | Repair the crash | Q40 | Trace the summary |
+| Q5 | Judge a claim on significance | Q23 | Decide what a duplicate is | Q41 | Predict the output |
+| Q6 | Check a claim on duplicates | Q24 | Read the run's report | Q42 | Read the shuffles |
+| Q7 | Compare two counts | Q25 | Choose the first move | Q43 | Advise Meera |
+| Q8 | Test a causal claim | Q26 | Treat a missing value | Q44 | Design a fair test |
+| Q9 | Judge an aggregate claim | Q27 | Define the profile | Q45 | Check four p-value statements |
+| Q10 | Rule out a branch | Q28 | Count the clean rows | Q46 | Name the pattern |
+| Q11 | Place the Rs 12 crore | Q29 | Size the rejects log | Q47 | Judge frequency's role |
+| Q12 | Pick the first rung | Q30 | Update the comparison | Q48 | Advise on Diwali |
+| Q13 | Repair the comparison | Q31 | Order the cleaning pass | Q49 | Read the two averages |
+| Q14 | Compare the levers | Q32 | Predict the comparison | Q50 | Reason with numbers |
+| Q15 | Define a rate | Q33 | Choose the count to trust | Q51 | Compute median and mean |
+| Q16 | Find what fakes a drop | Q34 | Judge the reconciliation | Q52 | Size the change |
+| Q17 | Compute a leaf | Q35 | Count per customer | Q53 | Read p off the shuffles |
+| Q18 | Find the branch that moved | Q36 | Price the average order | Q54 | Build revenue from the tree |
+
+### Option lengths
+
+The audit now fails a Saturday item whose options run past 30 characters when the shortest is under
+60 percent of the longest, and nine items did. Each fix is proposed in the W1 block of
+`data/programme/paper_edits.yaml`, with the lengths before and after in its reason, and the key's
+notes answer the new wording. Stems and keys stay as the bank has them. On Q16 both ends of the
+range were keyed options, so no distractor could balance the set, and keyed option a was reworded
+with its meaning and its letter unchanged. Lengths are the audit's own, in characters.
+
+| Q | Bank | Option | Was | Now | Item's options, before | After |
+|---|---|---|---|---|---|---|
+| Q10 | 17 | d | discounts (9) | the value of the discounts given (32) | 9 to 33 | 23 to 33 |
+| Q13 | 21 | a | Compare the two totals as they stand. (36) | Compare the two totals as they stand, since each is one calendar quarter. (72) | 36 to 70 | 63 to 72 |
+| Q15 | 30 | c | its value in the previous quarter (33) | its value last quarter (22) | 13 to 33 | 13 to 25 |
+| Q16 | 31 | a (keyed) | quarters of unequal length (26) | quarters holding unequal numbers of weeks (41) | 26 to 54 | 36 to 54 |
+| Q26 | 32 | d | Type a value into the source file. (33) | Type a value into the export. (28) | 12 to 33 | 12 to 28 |
+| Q30 | 42 | a | It grows. (8) | It grows, because removing rows takes revenue out. (49) | 8 to 48 | 34 to 49 |
+| Q43 | 27 | a | Move budget to Student now. (26) | Move budget to Student now, since it grows fastest. (50) | 24 to 48 | 45 to 51 |
+| Q43 | 27 | c | Drop the Student segment. (24) | Drop Student from the report as too small to matter. (51) | 24 to 48 | 45 to 51 |
+| Q44 | 34 | d | a deeper discount (17) | a deeper discount, so any effect is easier to see (49) | 17 to 51 | 36 to 51 |
+| Q49 | 19 | a | Most orders sit near Rs 9,800. (29) | Most orders sit close to the Rs 9,800 mean. (42) | 29 to 59 | 34 to 50 |
+| Q49 | 19 | b | The median has been miscalculated from an incomplete export. (59) | The median was miscalculated from a partial export. (50) | 29 to 59 | 34 to 50 |
+
+### Purpose and company
+
+The first page's "What this paper is for" reads: "This week Meera Raghavan asked whether the Rs 12 crore Marketing wants for acquisition goes to the branch of revenue that is actually short, Anand Iyer disputed the Q1 figure the ERP export put on the dashboard, and Meera now has to decide whether the monsoon discount runs again at Diwali. This paper puts those decisions in front of you once more, with no notebook, no notes and no assistant, to find which of them you can make cold. The room's scores in each part, set beside the ratings you give in step one, decide where Monday's revision starts. A wrong answer tells Monday more than a blank one, so answer every item."
+
+The Rules table's Company row reads: "Every item is set inside Kalpa Retail, where you work as a trainee engineer in the data and AI team of its Global Capability Centre. Meera Raghavan is its CEO, Anand Iyer its finance controller and Kavya Nair a senior analyst in its data team; Marketing and Finance appear by function, and every number an item needs is on the page." Every name and role in it is one the week's own files
+give: Meera Raghavan, CEO, on the Monday, Tuesday and Thursday deck covers; Anand Iyer, finance
+controller, on Wednesday's; Kavya Nair, senior analyst in the Kalpa Retail data team, on Friday's;
+and the data and AI team of Kalpa's Global Capability Centre in the address lines of those covers.
