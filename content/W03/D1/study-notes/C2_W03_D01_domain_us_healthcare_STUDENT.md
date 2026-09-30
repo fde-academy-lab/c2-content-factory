@@ -4,7 +4,7 @@
 
 The business you work inside for Build 1, from a blood test in a US city to the cash it brings, the people who ask the data team for numbers, and the rules on what an analyst in Bengaluru may see.
 
-About a 35 minute read · 5 diagrams and 24 tables
+About a 40 minute read · 5 diagrams and 34 tables
 
 > Kalpa Health, its people and its patients are fictional, and every Kalpa Health record is synthetic, so no real patient's information exists in the programme. Real companies appear as analogies, each fact checked on 30 September 2026 against the source beside it. A number marked illustrative is neither Kalpa Health's data nor any real company's.
 
@@ -41,7 +41,7 @@ James's doctor wrote an order, which a lab calls a **requisition**, for an HbA1c
 
 ### What does the front desk check before the draw?
 
-The clerk sends James's health plan an electronic **eligibility check**, and the answer comes back in seconds: the plan is active, and Kalpa Health is in its network, so a contract between plan and lab sets the prices. James met his yearly deductible in the spring, so he owes 20 percent of whatever the plan allows. The patient behind him is on traditional Medicare, the federal insurance for people 65 and older, and her order includes a test Medicare may not pay for with the reason given; she signs a notice before the draw so that the bill can go to her if Medicare refuses (section 7).
+The clerk sends James's health plan an electronic **eligibility check**: the plan is active, and Kalpa Health is in its network, so a contract between plan and lab sets the prices. James met his yearly deductible in the spring, so he owes 20 percent of whatever the plan allows. The patient behind him is on traditional Medicare, the federal insurance for people 65 and older, and her order includes a test Medicare may not pay for with the reason given; she signs a notice before the draw so that the bill can go to her if Medicare refuses (section 7).
 
 ### What happens to the tubes?
 
@@ -57,7 +57,7 @@ A few weeks later the plan answers with an 835, the **remittance**. Of James's $
 
 ### What does the team in Bengaluru do with the day?
 
-At Kalpa's GCC in Bengaluru, Kalpa Health's revenue-cycle team picks up what the US day left. The **revenue cycle** is the work of turning a test into cash: coding, billing, posting the payers' answers, fixing denials and chasing unpaid claims. Coders fix claims that failed the billing system's checks, the accounts receivable team asks plans about claims unpaid after 30 days, and the data and AI team, where Kavya Nair is the senior analyst, refreshes the dashboard, whose tables carry no names. Coders see patients' details because their work needs them, under the limits of section 7.
+At Kalpa's GCC in Bengaluru, Kalpa Health's revenue-cycle team picks up what the US day left. The **revenue cycle** is the work of turning a test into cash: coding, billing, posting the payers' answers, fixing denials and chasing unpaid claims. Coders fix claims that failed the billing system's checks, the accounts receivable team asks plans about claims unpaid after 30 days, and the data and AI team, where Kavya Nair is the senior analyst, refreshes the dashboard; each team works under the limits in section 7.
 
 On Monday Dr Priya Menon, the COO, reads one page: test volumes grew 5 percent from calendar Q2 (April to June) to Q3 (July to September) of 2026 against a plan of 18, and she wants to know which branch of the business is short. That is the question Build 1 answers.
 
@@ -82,7 +82,7 @@ If you have had a blood test in India, you probably paid at the counter or on an
 
 ### What does a lab's annual report say about who pays?
 
-Quest defines the requisition as the form that travels with the specimens, "indicating the test(s) to be performed and the party to be billed for the test(s)" (10-K for 2025), and the party billed is often not the patient. Requisitions billed to patients alone were 1 percent of Quest's volume, yet patients brought 12 percent of its revenue and owed 20 percent of its receivables at year end, because insured patients' deductibles and coinsurance are billed to the patients while Quest counts those requisitions under insurers.
+Quest defines the requisition as the form that travels with the specimens, "indicating the test(s) to be performed and the party to be billed for the test(s)" (10-K for 2025), and the party billed is often not the patient.
 
 ### Which teams in India already do this work for US health care?
 
@@ -93,13 +93,13 @@ Quest defines the requisition as the form that travels with the specimens, "indi
 
 Kalpa's GCC is the first kind: one company's own centre, with Kalpa Health among the units it serves.
 
-The benchmark to carry is Quest's: 1 percent of requisitions billed to patients alone against 12 percent of revenue owed by patients, the gap between who orders a test and who pays for it.
+The benchmark to carry is Quest's: requisitions billed to patients alone were 1 percent of its volume, yet patients brought 12 percent of its revenue and owed 20 percent of its receivables at year end, because insured patients' deductibles and coinsurance are billed to the patients while Quest counts those requisitions under insurers.
 
 ---
 
 ## 3. How does a US lab make money, and where does each dollar go?
 
-James's tests went out at $135 and brought $70.20, of which $56.16 came from his plan. Where the rest went is the lab's profit and loss statement, the P&L, and it starts with who pays.
+James's tests went out at $135 and brought $70.20. Where the rest went is the lab's profit and loss statement, the P&L, and it starts with who pays.
 
 **Who needs the answer.** Kalpa Health's finance head, who reports the quarter to Dr Menon and the board. A lab bills far more than it collects, so a team that reports charges as revenue can more than double the business on paper, and finance cannot match the figure to its books.
 
@@ -348,7 +348,7 @@ On the illustrative month the ten read $2,000,000 billed, $900,000 allowed, $840
 
 ## 6. Which words will you hear in a revenue-cycle meeting, and what do they mean?
 
-At the Monday revenue-cycle meeting the accounts receivable head says: "Days in AR are up to 52, the denials on the new plan are mostly authorisation, and a filing limit is coming on the oldest batch, so do we appeal or rebill?" Anyone who has to ask what a filing limit is has lost the thread.
+At the Monday revenue-cycle meeting the accounts receivable head asks: "Days in AR are up to 52, the denials on the new plan are mostly authorisation, and a filing limit is coming on the oldest batch, so do we appeal or rebill?"
 
 **Who needs the answer.** A trainee in the first week: the revenue-cycle team uses these words without defining them, and a trainee who mixes up a rejection and a denial sends a fix to the wrong team. The numbers in the sentences are illustrative.
 
@@ -362,14 +362,13 @@ At the Monday revenue-cycle meeting the accounts receivable head says: "Days in 
 | In network | The plan has a contract with the lab that sets its prices | "We are in network with our three large commercial plans." |
 | Deductible | What a patient pays each plan year before the plan pays | "Most January balances are deductibles." |
 | Coinsurance and copay | The patient's share after the deductible, a percentage or a fixed sum | "Twenty percent of $70.20 is $14.04 from the patient." |
-| Self-pay | A patient paying the lab directly, with no plan billed | "Self-pay patients pay at the desk, so there is no claim to chase." |
 
 ### What happens to a sample on its way to a result?
 
 | Term | Meaning | In a sentence |
 |---|---|---|
 | Requisition | A doctor's order: patient, tests and reason | "No diagnosis code on the requisition means no clean claim." |
-| Accession number | The barcode tying a sample to its requisition | "Trace it by accession number; the name stays in the lab system." |
+| Accession number | The barcode tying a sample to its requisition | "Trace the tube by its accession number, which is as much PHI as the name." |
 | Panel | Tests a doctor orders by one name | "The doctor ordered the cholesterol panel by name." |
 | Turnaround time | Draw to released result | "Turnaround slipped past 24 hours on Mondays." |
 
@@ -406,13 +405,12 @@ At the Monday revenue-cycle meeting the accounts receivable head says: "Days in 
 
 ### Which codes and files does a claim carry?
 
-| Code or file | What it says | Who keeps it |
-|---|---|---|
-| CPT | Which procedure was performed, in five digits; lab codes run from 80000 to 89999 (CMS, NCCI policy manual for 2026, chapter 10) | The American Medical Association (AMA, CPT overview) |
-| ICD-10-CM | Why the test was ordered; James's E11.9 is "Type 2 diabetes mellitus without complications" | CDC's National Center for Health Statistics, with each year's set in force from 1 October (CDC; CMS ICD-10 page) |
-| NPI | "a unique 10-digit number used to identify health care providers" | CMS, through NPPES (CMS, NPI page) |
-| 270 and 271, 278, 276 and 277 | The eligibility question and answer; a request for review, prior authorisation among them; "where is my claim?" and its answer | X12, HIPAA's adopted standard, version 5010 since 1 January 2012 (CMS, adopted standards) |
-| 837 and 835 | The claim, and the remittance with the reasons as codes | X12 |
+| Code or file | What it says |
+|---|---|
+| CPT | Which procedure was performed, in five digits kept by the American Medical Association; lab codes run from 80000 to 89999 (CMS, NCCI policy manual for 2026, chapter 10) |
+| ICD-10-CM | Why the test was ordered; James's E11.9 is "Type 2 diabetes mellitus without complications", and each year's code set takes effect on 1 October (CDC; CMS ICD-10 page) |
+| NPI | "a unique 10-digit number used to identify health care providers" (CMS, NPI page) |
+| 270 and 271, 278, 276 and 277, 837, 835 | The eligibility question and answer, a request for review, "where is my claim?" and its answer, the claim, and the remittance: X12 files, HIPAA's adopted standard, version 5010 since 1 January 2012 (CMS, adopted standards) |
 
 ### Which reason codes explain a dollar the payer did not pay?
 
@@ -428,54 +426,54 @@ On an 835 each unpaid dollar carries a group code, saying who bears it, and a **
 | duplicate claim | 18, "Exact duplicate claim/service" | Confirms the first claim is being paid, and closes the second |
 | timely filing | 29, "The time limit for filing has expired." | Writes it off, and asks why it went late |
 
-Twenty-five words in five groups, the codes and files a claim carries, four group codes and seven denial categories are enough to follow a revenue-cycle meeting.
+Twenty-four words in five groups, the codes and files a claim carries, four group codes and seven denial categories are enough to follow a revenue-cycle meeting.
 
 ---
 
 ## 7. Which rules bind a US lab's data, and what do they forbid an analyst or an AI system?
 
-James's morning passed through most of the rules below: the lab's federal certificate, the Medicare notice the patient behind him signed, the codes on his claim, and the identifier that stands in for his name in Bengaluru.
+James's morning passed through most of the rules below: the lab's federal certificate, the Medicare notice the patient behind him signed, the codes on his claim, and the claim number that stands in for his name in Bengaluru, which the law still counts as identifying him.
 
-**Who needs the answer.** Kalpa Health's compliance head and privacy official, who answer for every table that leaves the lab, and you, before you ask for a single extract. A breach means notices to every person affected and to the federal regulator, and a diagnosis code added to get a claim paid is a false claim, whoever or whatever added it.
+**Who needs the answer.** Kalpa Health's compliance head and privacy official, who answer for every table that leaves the lab, and every analyst before the first extract. A breach means notices to each person affected and to HHS, the federal Department of Health and Human Services, and a diagnosis code added to get a claim paid is a false claim, whoever or whatever added it.
 
 **The questions on the way.** Which data is protected, and how much may a task use? How does data stop being protected? What binds a company that handles it for the lab? What follows a breach? Which rules decide whether a test is paid? What may the team in Bengaluru touch?
 
 ### Which rules decide who may see a patient's data?
 
-HIPAA is the US federal law on health data; its rules sit in title 45 of the Code of Federal Regulations, cited as 45 CFR.
+HIPAA is the US federal law whose rules govern health data held by health plans, clearinghouses, most providers and the companies working for them; the rules sit in title 45 of the Code of Federal Regulations, cited as 45 CFR.
 
 | Rule, and what it requires | What it means for an analyst or an AI system |
 |---|---|
-| **The Privacy Rule** binds covered entities: health plans, clearinghouses, and providers that send health information electronically in the standard transactions (45 CFR 160.103). It protects identifiable health information they hold "in any form or media, whether electronic, paper, or oral", **protected health information**, PHI (HHS, the Department of Health and Human Services, Summary of the HIPAA Privacy Rule). | A lab that bills electronically is a covered entity. A name on a claim, or a service date beside a ZIP code, makes a row PHI. |
-| **Minimum necessary.** When a covered entity or business associate uses, discloses or requests PHI, it "must make reasonable efforts to limit protected health information to the minimum necessary to accomplish the intended purpose of the use, disclosure, or request" (45 CFR 164.502(b)(1)). Six cases are exempt, among them disclosures to a provider for treatment, to the patient, and under the patient's authorisation (164.502(b)(2)). | A denial model's purpose needs the payer, the codes and the dates; the patient's address falls outside it. |
-| **De-identification.** De-identified data is not PHI, by one of two methods (45 CFR 164.514(b)). Expert determination: a qualified expert finds the risk "very small" that the data could identify a person, and documents how. Safe harbor: eighteen kinds of identifier are removed, among them every date element except the year, ZIP codes beyond the first three digits (and those too where the three-digit area holds 20,000 people or fewer), and ages over 89, which become one group; and the covered entity has no actual knowledge that what is left could identify the person. | Safe harbor removes the dates that turnaround and days in AR are built from, so date work uses an expert-certified extract or stays where the PHI sits. |
-| **Business associates.** A person or company that handles PHI on a covered entity's behalf, for claims processing, data analysis or billing among other functions, is a business associate, and so is its subcontractor handling the same PHI (45 CFR 160.103). A written agreement must set its permitted uses, require Security Rule safeguards, require it to report breaches, bind its subcontractors to the same restrictions, and return or destroy the PHI at the end where feasible (45 CFR 164.504(e)). Business associates are directly liable for some violations, Security Rule failures among them (HHS, direct liability fact sheet). | Whether an offshore centre counts as the covered entity's workforce or as a business associate depends on how the companies are set up, which lawyers settle; work as if the agreement's limits bind every table you touch. |
-| **Security and breach notice.** The Security Rule requires administrative, physical and technical safeguards, with a risk analysis (45 CFR 164.308 to 164.312). After a breach of unsecured PHI, each person affected is told without unreasonable delay and within 60 calendar days of discovery; HHS is told; and prominent media too when more than 500 residents of a state or jurisdiction are affected (45 CFR 164.404 to 164.408). | Access by role, logged queries, and no PHI on laptops, in chat tools or in an outside AI service without an agreement. |
+| **The Privacy Rule** binds covered entities: health plans, clearinghouses, and providers that send health information electronically in the standard transactions (45 CFR 160.103). It protects identifiable health information they hold "in any form or media, whether electronic, paper, or oral", **protected health information**, PHI (HHS, Summary of the HIPAA Privacy Rule). | A lab that bills electronically is a covered entity. A row with the name removed stays PHI while it carries a service date, a ZIP code, or a claim, member or accession number. |
+| **Minimum necessary.** A covered entity or business associate that uses, discloses or requests PHI "must make reasonable efforts to limit protected health information to the minimum necessary to accomplish the intended purpose of the use, disclosure, or request" (45 CFR 164.502(b)), with six exempt cases such as disclosures for treatment, and a covered entity limits each role to the categories of PHI it needs (164.514(d)). | A denial model's purpose needs the payer, the codes and the dates, so a request for the patient's address fails the test unless the task needs it. |
+| **De-identification.** De-identified data is not PHI, by one of two methods (45 CFR 164.514(b)). Expert determination: a qualified expert finds the risk "very small" that the data could identify a person, alone or with other reasonably available information, and documents the methods. Safe harbor: eighteen kinds of identifier of the patient and of relatives, employers and household members are removed, among them names, all geography smaller than a state except a three-digit ZIP whose area holds more than 20,000 people, every element but the year of a date tied to the patient, ages over 89 (grouped as 90 or older) and any other unique number or code; and the covered entity has no actual knowledge that what is left could identify the person. | Safe harbor keeps only the year of a draw or a result, which leaves nothing to build turnaround or days in AR from, so date work uses an expert-certified extract or stays where the PHI sits. |
+| **Business associates.** Anyone outside the workforce who handles PHI for a covered entity's regulated work, claims processing, data analysis and billing among it, is a business associate, and so is a subcontractor handling that PHI on its behalf (45 CFR 160.103). A written agreement must set the permitted uses, require Security Rule safeguards, require reports of misuse, security incidents and breaches, bind subcontractors to the same restrictions, and return or destroy the PHI at the end where feasible (164.504(e), 164.314(a)). HHS can act against a business associate directly for ten listed failures, among them Security Rule failures, impermissible uses and disclosures, and ignoring minimum necessary (HHS, direct liability fact sheet). | Whether an offshore centre counts as the covered entity's workforce or as a business associate depends on how the companies are set up, which lawyers settle; work as if the agreement's limits bind every table you touch. |
+| **Security and breach notice.** The Security Rule requires administrative, physical and technical safeguards and a risk analysis (45 CFR 164.308 to 164.312). After a breach of unsecured PHI, each person affected is told without unreasonable delay and within 60 calendar days of discovery; HHS is told at the same time when 500 or more people are affected and once a year for smaller breaches; and prominent media are told when more than 500 residents of a state are affected (164.404 to 164.408). | PHI only on approved, secured systems, and never in a chat tool or outside AI service without a business associate agreement. |
 
 ### Which rules decide whether a test is paid?
 
 | Rule, and what it requires | What it means for an analyst or an AI system |
 |---|---|
-| **CLIA.** CMS regulates laboratory testing on human specimens through the Clinical Laboratory Improvement Amendments, and a lab must be certified to be paid by Medicare or Medicaid (CMS, CLIA page). | Quality data is regulated evidence, and a model that changes how the lab works goes through the lab director. |
-| **Medical necessity and the advance notice.** Medicare pays nothing for services "not reasonable and necessary for the diagnosis or treatment of illness or injury" (Social Security Act, section 1862(a)(1)(A)). A provider that expects Medicare to refuse gives the patient an Advance Beneficiary Notice of Noncoverage, form CMS-R-131, so the patient can choose, and pays if Medicare refuses (CMS, ABN page). | The diagnosis code shows necessity, and adding one the doctor did not give, to get paid, makes a false claim. |
+| **CLIA.** Under the Clinical Laboratory Improvement Amendments "all laboratories must be properly certified to receive Medicare or Medicaid payments" (CMS, CLIA page), and the lab director answers for the lab's overall operation (42 CFR 493.1445). | A model that changes how the lab works goes through the lab director. |
+| **Medical necessity and the advance notice.** Medicare pays nothing for services "not reasonable and necessary for the diagnosis or treatment of illness or injury" (Social Security Act, section 1862(a)(1)(A)). A provider, an independent lab among them, that expects Medicare to refuse a service gives the patient an Advance Beneficiary Notice of Noncoverage, form CMS-R-131, which transfers the potential cost to the patient (CMS, ABN page). | The diagnosis code is how the claim states necessity, and the doctor's records have to back it; a code the doctor did not give, added to get paid, makes the claim false. |
 | **Timely filing.** A Medicare claim must be filed within one calendar year of the date of service, with listed exceptions (42 CFR 424.44); commercial plans set their limits by contract. | Claims near their limit go first in any work queue. |
 | **Prior authorisation.** CMS's 2024 rule makes Medicare Advantage plans, Medicaid and CHIP (the Children's Health Insurance Program) and their managed-care plans decide requests within 72 hours for urgent ones and 7 calendar days for standard ones, with a specific reason for each denial, generally from 1 January 2026 (CMS fact sheet on CMS-0057-F, 17 January 2024). | A denial comes back with a stated reason a model can learn from. |
-| **Algorithms in coverage decisions.** CMS told Medicare Advantage plans in February 2024 that an algorithm may assist a coverage decision, which must rest on the individual patient's circumstances (CMS memo, 6 February 2024). | This binds payers; on the lab's side, a person decides anything that denies care or asserts a diagnosis. |
+| **Algorithms in coverage decisions.** CMS told Medicare Advantage plans in February 2024 that an algorithm may assist a coverage decision, which must rest on the individual patient's circumstances (CMS memo, 6 February 2024). | This binds payers; the programme holds the lab's side to the same line, so a person decides anything that denies care or asserts a diagnosis. |
 
 ### What may the team in Bengaluru touch?
 
-HIPAA has no rule that keeps PHI inside the US. Asked whether a covered entity or business associate may use a cloud provider that stores electronic PHI outside the US, HHS answers "Yes, provided the covered entity (or business associate) enters into a business associate agreement", and places the location in the risk analysis (HHS, cloud computing guidance). The limits on offshore work come from agreements and contracts.
+HIPAA has no rule that keeps PHI inside the US. Asked whether a covered entity or business associate may use a cloud provider that stores electronic PHI outside the US, HHS answers "Yes, provided the covered entity (or business associate) enters into a business associate agreement (BAA) with the CSP and otherwise complies with the applicable requirements of the HIPAA Rules", notes that the rules "do not include requirements specific to" such data held abroad, and places the location in the risk analysis (HHS, cloud computing guidance). The limits on offshore work come from agreements, contracts and programme rules.
 
 | Where the limit comes from | What it says |
 |---|---|
 | The business associate agreement | What the offshore team may do with PHI and which safeguards it keeps, with its subcontractors bound to the same restrictions |
-| Medicare Advantage and Part D plans | The plan gives CMS information and an attestation for each offshore subcontractor that "receives, processes, transfers, handles, stores, or accesses" beneficiaries' PHI (CMS, Part C application); a requirement on the plan, passed to vendors by contract |
-| State Medicaid contracts, Texas for example | The state's confidential information may not be "moved outside the United States by any means (physical or electronic) at any time, for any period of time, for any reason", and nobody outside the US may have remote access; the terms bind the managed-care plan and its subcontractors (Texas HHSC, Managed Care Uniform Terms and Conditions). Kalpa Health bills Medicaid in Texas and five other states |
-| India's Digital Personal Data Protection Act 2023 | Most of the Act does not apply to personal data of people outside India processed in India under a contract with a person outside India; the duty to keep reasonable security safeguards and the responsibility for processing done on one's behalf still apply (section 17(1)(d), with sections 8(1) and 8(5)) |
+| Medicare Advantage and Part D | A Medicare Advantage plan gives CMS information and an attestation for each offshore subcontractor that "receives, processes, transfers, handles, stores, or accesses Medicare beneficiary PHI" (CMS, Part C application for 2027, section 3.17), and a Part D sponsor names which of its contractors are offshore (CMS, Part D application for 2027) |
+| State Medicaid contracts, Texas for example | Unless the state approves in writing, a Medicaid managed-care plan and "all Subcontractors, vendors, agents, and service Providers" perform all services under the contract, laboratory services and customer support among them, inside the US; none may let the state's confidential information "be moved outside the United States by any means (physical or electronic) at any time, for any period of time, for any reason", or allow remote access to it from outside the US (Texas HHSC, Managed Care Uniform Terms and Conditions, section 4.10). Kalpa Health bills Medicaid in Texas, so what these terms leave its Bengaluru team is written in its contracts with the Texas plans |
+| India's Digital Personal Data Protection Act 2023 | For personal data of people outside India processed in India under a contract with a person outside India, Chapter II (except sections 8(1) and 8(5)), Chapter III and section 16 do not apply (section 17(1)(d)); the responsibility for processing done on one's behalf, 8(1), and the duty to keep reasonable security safeguards, 8(5), remain. The date these sections take effect was not verified |
 
-A cautious team keeps offshore analysis on de-identified or synthetic data wherever the task allows, and leaves patient-level work to the people whose role and agreement cover it. The risk is real: ransomware hit Change Healthcare, a UnitedHealth Group company whose network carries eligibility checks, claims and payments, on 21 February 2024, and on 31 July 2025 it told HHS that about 192.7 million individuals were affected (HHS, Change Healthcare FAQ). Labs could not send claims or receive remittances, so cash stopped while testing went on.
+A cautious team keeps offshore analysis on de-identified or synthetic data wherever the task allows, and leaves patient-level work to the people whose role and agreement cover it. Ransomware showed why on 21 February 2024, when it hit Change Healthcare, a UnitedHealth Group company whose network, by the American Hospital Association's count, processes 15 billion health care transactions a year, eligibility checks, claims and payments among them (AHA); on 31 July 2025 Change Healthcare told HHS that about 192.7 million individuals were affected (HHS, Change Healthcare FAQ).
 
-So what the team in Bengaluru may touch is settled by documents: HIPAA sets the minimum necessary standard, two de-identification methods with eighteen identifiers in the second, and a 60-day ceiling on breach notice, and the agreement and the plans' and states' contracts decide where PHI may go.
+What the team in Bengaluru may touch is settled by documents: HIPAA requires the minimum necessary, allows two ways to de-identify, eighteen identifiers in the second, and caps breach notice at 60 days, while the agreement and the payers' and states' contracts decide where PHI may go.
 
 ---
 
@@ -504,13 +502,13 @@ flowchart LR
 
 ### Where does each technique earn, and how is its value measured?
 
-| Where it earns, and its rung | How it works, in outline | Value measured by | What it costs when wrong |
-|---|---|---|---|
-| Revenue-cycle reporting (describe) | Governed SQL on claims and remittances, one definition per metric | Decisions taken on it, and no restatements | A team hired on a wrong number |
-| Denial prediction (predict, then recommend) | Score each claim before it leaves from its payer, codes, ordering practice and the payer's recent answers; send the risky ones to a person | Denials avoided and dollars recovered, against reviewers' time | Good claims held and cash delayed, or bad ones sent |
-| Coding assistance (recommend, with a language model) | A model reads the order's free text and suggests codes with the words it relied on; a certified coder accepts or changes each | Coder minutes per claim, and suggestions accepted on an audited sample | A code the documentation does not support, a false claim whoever produced it |
-| Prior-authorisation agents (act, within limits) | An agent checks the plan's rules, files the request with the documentation on file and tracks the answer; a person signs anything clinical | Requests filed before the draw | A test run without approval |
-| Claim-status agents (act, within limits) | An agent asks each plan's system for the status of unpaid claims and queues what needs a person | Claims checked per hour, and days in AR | A denied claim recorded as in process |
+| Where it earns, and its rung | The problem, and why this technique | How it works, in outline | Value measured by | What it costs when wrong |
+|---|---|---|---|---|
+| Revenue-cycle reporting (describe) | Leaders decide weekly on denials and cash, and need one number per question | Governed SQL on claims and remittances, one definition per metric | Decisions taken on it, and no restatements | A team hired on a wrong number |
+| Denial prediction (predict, then recommend) | A denied claim costs rework, and a payer's past answers predict its next ones | Score each claim before it leaves; send the risky ones to a person | Denials avoided and dollars recovered, against reviewers' time | Good claims held, or bad ones sent |
+| Coding assistance (recommend, with a language model) | Orders arrive as free text, and each takes a certified coder's time | The model suggests codes with the words it relied on; a coder accepts or changes each | Coder minutes per claim, and suggestions accepted on an audited sample | A code the documentation does not support, which is a false claim |
+| Prior-authorisation agents (act, within limits) | Asking plans for approval by portal or phone takes staff hours | The agent checks the plan's rules, files the request with the documentation on file and tracks it; a person signs anything clinical | Requests filed before the draw | A test run without approval |
+| Claim-status agents (act, within limits) | The accounts receivable team spends its day asking plans where money is | The agent asks each plan's system for the status of unpaid claims and queues what needs a person | Claims checked per hour, and days in AR | A denied claim recorded as in process |
 
 ### What does a claim-status agent save, and what can it lose?
 
@@ -518,7 +516,7 @@ Suppose, as an illustration, that an accounts receivable team checks 3,000 unpai
 
 ### What do real companies say about AI on each side of a claim?
 
-Quest Diagnostics says it uses AI and automation among its efforts to reduce "denials and patient concessions", and has broadened AI in customer service (Form 10-K for 2025). On the payers' side, lawsuits allege that UnitedHealth's naviHealth unit used an algorithm, nH Predict, to deny post-acute care to Medicare Advantage patients; in February 2025 a federal judge let breach-of-contract and good-faith claims go forward (Skilled Nursing News, 14 February 2025). Those are allegations.
+Quest Diagnostics says it started or widened its use of AI and automation in several areas in 2025, names reducing "denials and patient concessions" among its other areas of focus, and continues to broaden AI in customer service (Form 10-K for 2025). On the payers' side, lawsuits allege that UnitedHealth's naviHealth unit used an algorithm, nH Predict, to deny post-acute care to Medicare Advantage patients; in February 2025 a federal judge let breach-of-contract and good-faith claims go forward (Skilled Nursing News, 14 February 2025). Those are allegations.
 
 Each technique earns where a decision repeats thousands of times, and the illustration puts both sides in numbers: 300 staff-hours a day returned, or $144,000 lost in four weeks if nobody checks the agent.
 
@@ -540,7 +538,7 @@ On a weekday the revenue-cycle team in Bengaluru has more unpaid claims than peo
 | A model scoring each claim from its payer, tests, codes and the payer's recent answers | A year of claims, about 120,000 rows, and weeks to build; it finds unwritten patterns and cannot say why a claim is risky |
 | Edits for the certain failures, the model routing doubtful claims to a person | Both costs, plus a reviewer's time |
 
-Edits come first, built from the reason codes that cost the most dollars, since each is cheap and explains itself; the model joins once the edits stop moving the denial rate. That changes if payers rewrite their rules every quarter, when a model retrained monthly keeps up and hand-written edits fall behind.
+Edits come first, built from the costliest reason codes, since each is cheap and explains itself, and the model joins once edits stop moving the denial rate. That changes if payers rewrite their rules every quarter, when a model retrained monthly keeps up.
 
 ### Which unpaid claims should the team chase first?
 
@@ -579,7 +577,7 @@ The eligibility answer applied to the contract fits, since the clerk already fet
 | An expert-certified extract with dates shifted or kept | Weeks and a fee per design; re-certified when the extract changes |
 | A synthetic copy with the tables' shape and statistics | A generator checked against the real data; fit for teaching, never for reporting |
 
-Use the expert's extract where dates matter, safe harbor for the rest, and synthetic data for building and training, which is what the programme's Kalpa Health files are. That changes with the business associate agreement: if it bars patient-level data offshore, the analysis moves to the data and only results travel.
+Use the expert's extract where dates matter, safe harbor for the rest, and synthetic data for building and training, as the programme's Kalpa Health files are. That changes if the business associate agreement bars patient-level data offshore: then the analysis moves to the data and only results travel.
 
 ### How many samples will the lab receive tomorrow?
 
@@ -605,7 +603,7 @@ Most learners have lived through something like the five scenes below.
 
 | The scene | Its metrics and formulas | The data and AI problem in it |
 |---|---|---|
-| A home blood draw booked on an app in India, paid at booking | Turnaround time = draw to released result; the price at booking is the revenue | Routing phlebotomists, and the US contrast: there the same draw produces a claim and a wait |
+| A home blood draw booked on an app in India, paid at booking | Turnaround time = draw to released result | Routing phlebotomists; in the US the same draw also produces a claim and a wait |
 | A friend's US hospital bill: thousands charged, a large "adjustment", a small amount owed | Contractual adjustment = gross charges less allowed | Telling a patient their share before the service |
 | A relative's planned surgery on a cashless policy in India, approved before admission | Prior authorisation: requests decided in time / requests filed | An agent assembling the request, with a person signing anything clinical |
 | A phone or car insurance claim refused after assessment | Denial rate = claims denied on first answer / claims submitted | Edits or a model that catch a likely denial before the claim leaves |
@@ -647,11 +645,11 @@ With an evening to spare, start where a lab explains itself to its investors.
 | Order | What | Time | What it adds |
 |---|---|---|---|
 | 1 | Quest Diagnostics, Form 10-K for 2025, https://www.sec.gov/Archives/edgar/data/1022079/000102207926000015/dgx-20251231.htm (verified 30 Sep 2026) | 40 minutes | Requisitions, payers, price concessions and days sales outstanding in a lab's own words |
-| 2 | HFMA, "Healthcare Revenue Cycle Management (RCM): What It Is and How It Works", https://www.hfma.org/reference/revenue-cycle-management/ (verified 30 Sep 2026) | 15 minutes | The revenue cycle end to end |
+| 2 | HFMA, "Healthcare Revenue Cycle Management (RCM): What It Is and How It Works", https://www.hfma.org/reference/revenue-cycle-management/ (verified 30 Sep 2026) | 15 minutes | The cycle end to end |
 | 3 | AAPC, "Revenue cycle challenges and opportunities", a video of 7 minutes 59 seconds after a free sign-up, https://www.aapc.com/video/revenue-cycle-challenges-and-opportunities (verified 30 Sep 2026) | 8 minutes | Posting, collections, denials and appeals, from the coders' professional body |
 | 4 | X12, claim adjustment reason codes, https://x12.org/codes/claim-adjustment-reason-codes (verified 30 Sep 2026) | 15 minutes | Every reason a dollar goes unpaid, in the standard's words |
 | 5 | HHS, "Summary of the HIPAA Privacy Rule", https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html (verified 30 Sep 2026) | 20 minutes | Who is covered and what PHI is |
 | 6 | HHS, guidance on de-identification, https://www.hhs.gov/hipaa/for-professionals/special-topics/de-identification/index.html (verified 30 Sep 2026) | 25 minutes | The two methods and the eighteen identifiers |
 | 7 | HHS, guidance on cloud computing, https://www.hhs.gov/hipaa/for-professionals/special-topics/health-information-technology/cloud-computing/index.html (verified 30 Sep 2026) | 10 minutes | The question on servers outside the US |
-| 8 | CMS, fact sheet on CMS-0057-F, https://www.cms.gov/newsroom/fact-sheets/cms-interoperability-and-prior-authorization-final-rule-cms-0057-f (verified 30 Sep 2026) | 10 minutes | What payers owe providers on prior authorisation from 2026 |
+| 8 | CMS, fact sheet on CMS-0057-F, https://www.cms.gov/newsroom/fact-sheets/cms-interoperability-prior-authorization-final-rule-cms-0057-f (verified 30 Sep 2026) | 10 minutes | What payers owe providers on prior authorisation from 2026 |
 | 9 | KFF, "Claims Denials and Appeals in ACA Marketplace Plans in 2024", https://www.kff.org/patient-consumer-protections/claims-denials-and-appeals-in-aca-marketplace-plans-in-2024/ (verified 30 Sep 2026) | 15 minutes | How often, and how differently, insurers deny |

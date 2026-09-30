@@ -85,11 +85,11 @@ flowchart LR
 
 | Rule | What it requires |
 |---|---|
-| **HIPAA Privacy** | Identifiable rows are PHI |
+| **HIPAA Privacy** | A row is PHI until de-identified |
 | **Minimum necessary** | Only what the purpose needs |
-| **De-identification** | Expert finding, or 18 identifiers out |
+| **De-identification** | Expert finding, or 18 identifiers out with no known way back |
 | **Business associate** | Works inside the written agreement |
-| **Breach notice** | Within 60 days of discovery |
+| **Breach notice** | Without unreasonable delay; 60 days at most |
 | **Medical necessity** | Never add a diagnosis to get paid |
 | **Timely filing** | Medicare: one year from service |
 | **Offshore** | No HIPAA border; contracts decide |
