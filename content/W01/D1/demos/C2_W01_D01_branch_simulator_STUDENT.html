@@ -161,22 +161,22 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 <header class="hero">
   <span class="kicker">Week 1 &middot; Monday &middot; Companion</span>
   <h1>Which branch does Meera open first?</h1>
-  <p class="quote">&ldquo;Before I sign anything, I want to understand our own sales. What is &lsquo;sales&rsquo; made of?
-    Where does revenue come from, by customer type and channel? Is acquisition even the branch that is short?&rdquo;</p>
+  <p class="quote">"Before I sign anything, I want to understand our own sales. What is 'sales' made of?
+    Where does revenue come from, by customer type and channel? Is acquisition even the branch that is short?"</p>
   <p class="who">Meera Raghavan, CEO, Kalpa Retail, to the data and AI team at Kalpa's Global Capability Centre.
-    Anand Iyer, finance controller, adds: &ldquo;No averages. One business customer can move an average.&rdquo;</p>
+    Anand Iyer, finance controller, adds: "No averages. One business customer can move an average."</p>
   <p class="promise">Kalpa Retail grew revenue 4 percent last year against a plan of 15, and marketing asks for Rs 12 crore
-    to acquire new customers. This page is a simulator for the one decision the day builds towards: which branch of the
-    revenue tree Meera opens first, and whether the Rs 12 crore case holds. Change one assumption at a time and watch the
-    number and the decision move. The Kalpa figures here are totals from the day's 30 orders, 1 July to 26 September 2026;
-    anything else is invented to show a mechanism and says so.</p>
+    to acquire new customers. The decision the day builds towards is which branch of the revenue tree Meera opens first,
+    and whether the Rs 12 crore case holds; change one assumption at a time and watch the number and the decision move.
+    The Kalpa figures are totals from the day's 30 orders, 1 July to 26 September 2026, and every other figure is
+    labelled invented where it appears.</p>
 </header>
 
 <div class="page">
   <nav class="rail" aria-label="Sections">
     <div class="label">On this page</div>
     <a href="#walk" data-part="walk"><span class="n">01</span>The walk</a>
-    <a href="#sim" data-part="sim"><span class="n">02</span>The three assumptions</a>
+    <a href="#sim" data-part="sim"><span class="n">02</span>The three choices</a>
     <a href="#lifts" data-part="lifts"><span class="n">03</span>Lifts on the tree</a>
     <a href="#channels" data-part="channels"><span class="n">04</span>Channels</a>
     <a href="#experiments" data-part="experiments"><span class="n">05</span>Six experiments</a>
@@ -188,18 +188,18 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   <main>
     <section class="part" id="walk">
       <p class="eyebrow">01 &middot; The guided walk</p>
-      <h2>From Meera's ask to the sentence she gets</h2>
-      <p class="lede">The walk runs the day in order: the ask, the thinking, the three rounds, the escalated case and the
-        second case. Each step redraws the picture and moves the meter, which counts the rungs climbed.</p>
+      <h2>How does Meera's ask become the sentence she signs?</h2>
+      <p class="lede">The walk runs the day in order: the ask, the six chapters, the escalated case and the second
+        case. Each step redraws the picture and moves the meter, which counts the chapters climbed.</p>
       <div class="card"><div class="holder" id="walkDraw"></div></div>
       <div class="walk" style="margin-top:16px">
         <div class="card narration" aria-live="polite">
-          <div class="step" id="walkStep">Step 0 of 7</div>
-          <h3 id="walkTitle">The ask</h3>
+          <div class="step" id="walkStep">Step 0 of 8</div>
+          <h3 id="walkTitle">Is acquisition even the branch that is short?</h3>
           <p id="walkText"></p>
           <div class="meter">
             <div class="bar"><div class="fill" id="walkFill"></div></div>
-            <div class="legend"><span>no rung yet</span><span id="walkRungs">0 of 5 rungs climbed</span><span>five rungs</span></div>
+            <div class="legend"><span>no chapter yet</span><span id="walkRungs">0 of 6 chapters climbed</span><span>six chapters</span></div>
           </div>
           <div class="row">
             <button class="btn primary" id="walkNext" type="button">Next</button>
@@ -212,7 +212,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
     <section class="part" id="sim">
       <p class="eyebrow">02 &middot; The simulator</p>
-      <h2>Three assumptions, one number, one decision</h2>
+      <h2>Which three choices move the numbers Meera sees, and her decision?</h2>
       <p class="lede">Every number Meera sees rests on three choices an analyst makes before the arithmetic: which orders
         count as sales, what counts as a customer, and which average stands for a typical order. Change one and watch the
         leaves, the pictures and the decision at the bottom of this section redraw.</p>
@@ -254,13 +254,13 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         <div class="card"><div class="holder" id="simLeaves"></div></div>
       </div>
       <div class="card" style="margin-top:16px"><div class="holder" id="simTypical"></div></div>
-      <div class="strip" id="simDecision" style="margin-top:16px"><b class="tag">The decision, redrawn</b><span
+      <div class="strip" id="simDecision" style="margin-top:16px"><b class="tag">The decision on these choices</b><span
         id="simDecisionText"></span></div>
     </section>
 
     <section class="part" id="lifts">
-      <p class="eyebrow">03 &middot; The calculator, for the escalated case</p>
-      <h2>Lifts on the tree multiply</h2>
+      <p class="eyebrow">03 &middot; The calculator, for chapter 5 and the escalated case</p>
+      <h2>Do lifts on two branches add up, or multiply?</h2>
       <p class="lede">Revenue is customers times orders per customer times average order value, so a lift on one branch
         multiplies the lift on another. Move the three branches and compare what adding the lifts says with what the tree
         says. The starting revenue follows the definition of sales you chose above.</p>
@@ -291,18 +291,19 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
     <section class="part" id="channels">
       <p class="eyebrow">04 &middot; The channel view, for the second case</p>
-      <h2>Booked against delivered, on consumer orders</h2>
-      <p class="lede">Consumer orders are the 29 orders outside the Business segment, which leaves out the order your round 3
-        sort put at the top. Each channel is drawn twice: what was booked, and what was delivered.</p>
+      <h2>How much does each channel book and keep in the three consumer segments?</h2>
+      <p class="lede">Meera's growth plan concerns the three consumer segments, Retail-Core, Retail-Plus and Student, so this
+        view keeps the orders whose segment is one of those three. Each channel is drawn twice: what was booked, and what
+        was delivered and stayed with the customer.</p>
       <div class="grid2">
         <div class="card"><div class="holder" id="chDraw"></div></div>
         <div class="card">
-          <div class="group"><p class="q">Measure</p>
+          <div class="group"><p class="q">Which measure do the bars show?</p>
             <div class="row" style="margin-top:4px">
               <button class="btn" id="chRs" type="button" aria-pressed="true">Rupees</button>
-              <button class="btn" id="chN" type="button" aria-pressed="false">Orders</button>
+              <button class="btn" id="chN" type="button" aria-pressed="false">Percent kept</button>
             </div></div>
-          <div class="group"><p class="q">Read one channel</p>
+          <div class="group"><p class="q">Which channel do you want to read?</p>
             <div class="row" style="margin-top:4px">
               <button class="btn" id="chApp" type="button" aria-pressed="false">App</button>
               <button class="btn" id="chWeb" type="button" aria-pressed="false">Web</button>
@@ -315,14 +316,14 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
     <section class="part" id="experiments">
       <p class="eyebrow">05 &middot; Experiment cards</p>
-      <h2>Six experiments, one change each</h2>
+      <h2>What does each of the day's traps do to the number, one change at a time?</h2>
       <p class="lede">Each card is one of the day's traps: a plausible wrong number and the decision it would mislead. Read
         the situation and the hypothesis, decide what you expect, then run. Cards A, B, D, E and F use the day's totals;
         card C uses invented orders and says so.</p>
       <div class="grid2">
         <article class="card exp">
-          <div class="part-label">Experiment A &middot; round 1 &middot; Kalpa totals</div>
-          <h3 class="exp-title">Cancelled orders counted as sales</h3>
+          <div class="part-label">Experiment A &middot; chapter 1 &middot; Kalpa totals</div>
+          <h3 class="exp-title">What happens to sales when the cancelled orders come out?</h3>
           <p><b>Situation.</b> The first total anyone computes on the 30 orders is Rs 5,44,810, and it is about to go into
             Meera's note as sales. Four of the 30 orders were cancelled.</p>
           <p><b>Hypothesis.</b> Taking the cancelled orders out lowers sales by their Rs 9,050 and removes four orders, all
@@ -337,14 +338,14 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
             <p><b>What happened.</b> <span id="expAWhat"></span></p>
             <p><b>Why it matters.</b> A cancelled order never became a sale. All four are store orders, so store's order
               count is overstated by 4 in 10, and the growth baseline includes demand that never arrived.</p>
-            <p class="rule">Name the definition before the number: booked, not cancelled, or delivered.</p>
+            <p class="rule">Name the definition before the number: booked, "not cancelled", or delivered.</p>
           </div>
           <p class="waiting" id="expAWait">What happened appears here after the run.</p>
         </article>
 
         <article class="card exp">
-          <div class="part-label">Experiment B &middot; round 2 &middot; Kalpa totals</div>
-          <h3 class="exp-title">Rows counted as customers</h3>
+          <div class="part-label">Experiment B &middot; chapter 3 &middot; Kalpa totals</div>
+          <h3 class="exp-title">How many customers are there once each id counts once?</h3>
           <p><b>Situation.</b> The extract has 30 rows, and a hurried count reports 30 customers, so orders per customer
             reads 30 / 30 = 1.00 and marketing says nobody comes back.</p>
           <p><b>Hypothesis.</b> Counting each customer id once gives fewer customers than rows, and some customers turn out
@@ -365,11 +366,11 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         </article>
 
         <article class="card exp">
-          <div class="part-label">Experiment C &middot; round 3 &middot; invented orders</div>
-          <h3 class="exp-title">One large order and the mean</h3>
+          <div class="part-label">Experiment C &middot; chapter 4 &middot; invented orders</div>
+          <h3 class="exp-title">How far can one large order move the mean and the median?</h3>
           <p><b>Situation.</b> Five invented orders sit between Rs 1,900 and Rs 2,600. An invented order of Rs 90,000 then
             joins them as a sixth, which is the shape Anand warned about.</p>
-          <p><b>Hypothesis.</b> The mean jumps to several times its old value, and the median moves by only a few rupees.</p>
+          <p><b>Hypothesis.</b> The mean jumps to several times its old value, and the median barely moves.</p>
           <p><b>Watch for.</b> The rose mean line leaving the pile of dots, and whether the green median line moves at all.</p>
           <div class="holder" id="expCDraw"><p class="note">The strip appears here after the run.</p></div>
           <div class="row">
@@ -387,10 +388,10 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         </article>
 
         <article class="card exp">
-          <div class="part-label">Experiment D &middot; escalated case &middot; Kalpa totals</div>
-          <h3 class="exp-title">Two 10 percent lifts called 20 percent</h3>
+          <div class="part-label">Experiment D &middot; chapter 5 &middot; Kalpa totals</div>
+          <h3 class="exp-title">Do two 10 percent lifts make 20 percent?</h3>
           <p><b>Situation.</b> Marketing's plan lifts customers by 10 percent and a loyalty scheme lifts orders per
-            customer by 10 percent. The slide says revenue grows 20 percent, to Rs 6,53,772.</p>
+            customer by 10 percent. The slide says revenue in the three consumer segments, Rs 64,810, grows 20 percent, to Rs 77,772.</p>
           <p><b>Hypothesis.</b> Through the tree the lifts multiply, so revenue grows 21 percent and lands higher than the
             slide says.</p>
           <p><b>Watch for.</b> The small green bar after the two lifts, which is the lift on the lift.</p>
@@ -401,16 +402,16 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
           </div>
           <div class="result" id="expDResult" hidden>
             <p><b>What happened.</b> <span id="expDWhat"></span></p>
-            <p><b>Why it matters.</b> Rs 5,448 is small on one quarter, and the same habit of adding percentages hides a
-              fall where one branch rises and another drops, which is where a plan goes wrong.</p>
+            <p><b>Why it matters.</b> Rs 648 is small on one quarter of consumer revenue, and the gap grows with the lifts
+              themselves, so a plan sized by adding percentages misses by more the larger the lifts it counts on.</p>
             <p class="rule">Lifts multiply along the tree: two 10 percent lifts make 21 percent.</p>
           </div>
           <p class="waiting" id="expDWait">What happened appears here after the run.</p>
         </article>
 
         <article class="card exp">
-          <div class="part-label">Experiment E &middot; escalated case &middot; Kalpa totals</div>
-          <h3 class="exp-title">A discount that sells more and earns less</h3>
+          <div class="part-label">Experiment E &middot; chapter 5 &middot; Kalpa totals</div>
+          <h3 class="exp-title">Can a discount sell more and still earn less?</h3>
           <p><b>Situation.</b> A 15 percent discount is proposed, and marketing expects it to lift quantity by 10 percent.
             The pitch says more orders means more revenue.</p>
           <p><b>Hypothesis.</b> Price falls by 15 percent and quantity rises by 10, so revenue ends at 0.85 times 1.10 of
@@ -425,29 +426,30 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
             <p><b>What happened.</b> <span id="expEWhat"></span></p>
             <p><b>Why it matters.</b> A discount trades margin for quantity, and it pays only when quantity rises by more than
               the price falls; at 15 percent off, quantity has to rise by about 17.6 percent just to stand still.</p>
-            <p class="rule">Recompute revenue through the tree, never by adding the percentages.</p>
+            <p class="rule">Recompute revenue through the tree, multiplying the percentages.</p>
           </div>
           <p class="waiting" id="expEWait">What happened appears here after the run.</p>
         </article>
 
         <article class="card exp">
           <div class="part-label">Experiment F &middot; second case &middot; Kalpa totals</div>
-          <h3 class="exp-title">Store brings 91.6 percent of revenue</h3>
+          <h3 class="exp-title">Does store's 91.6 percent of revenue hold in the three consumer segments?</h3>
           <p><b>Situation.</b> By channel, store carries 91.6 percent of booked revenue on 10 of the 30 orders, and a draft
             says the growth plan should be store-led.</p>
-          <p><b>Hypothesis.</b> One order carries store's share, so on consumer orders alone the three channels sit much
-            closer together.</p>
-          <p><b>Watch for.</b> Store's dark bar against its light one, and which channel leads once consumer orders stand
-            alone.</p>
+          <p><b>Hypothesis.</b> Meera's plan concerns the three consumer segments, and once the view keeps only those
+            segments the three channels sit much closer together than the headline says.</p>
+          <p><b>Watch for.</b> Store's dark bar against its light one, and which channel leads once the view keeps the
+            consumer segments.</p>
           <div class="holder" id="expFDraw"><p class="note">The shares appear here after the run.</p></div>
           <div class="row">
-            <button class="btn" id="expFRun" type="button" aria-pressed="false">Look at consumer orders only</button>
+            <button class="btn" id="expFRun" type="button" aria-pressed="false">Keep the three consumer segments</button>
             <button class="btn" id="expFSeq" type="button">Show the sequence</button>
           </div>
           <div class="result" id="expFResult" hidden>
             <p><b>What happened.</b> <span id="expFWhat"></span></p>
-            <p><b>Why it matters.</b> A store-led plan would invest behind one order. On consumer orders the leaks matter
-              more: half of web's orders came back and 4 of store's 9 were cancelled, while app delivered all 10.</p>
+            <p><b>Why it matters.</b> A store-led plan would invest behind revenue from outside the segments the plan
+              concerns. Inside them the leaks matter more: Rs 14,970 of web's Rs 27,290 came back, and Rs 9,050 of store's
+              Rs 18,920 was cancelled, while app delivered all of its Rs 18,600.</p>
             <p class="rule">Count the orders behind a share before the share decides anything.</p>
           </div>
           <p class="waiting" id="expFWait">What happened appears here after the run.</p>
@@ -457,8 +459,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
 
     <section class="part" id="decision">
       <p class="eyebrow">06 &middot; The decision card</p>
-      <h2>Which branch does Meera open first?</h2>
-      <p class="lede">Three answers reach Meera's desk. Pick the one you would defend on Thursday and read Kavya's review of
+      <h2>Which of the three answers on Meera's desk would you send?</h2>
+      <p class="lede">Pick the answer you would defend on Thursday and read Kavya's review of
         it. The tree lights the branch you picked.</p>
       <div class="card"><div class="holder" id="decTree"></div></div>
       <div class="card" style="margin-top:16px">
@@ -469,54 +471,59 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         </div>
         <div class="strip" id="decWhy"><b class="tag">Kavya's review</b><span id="decWhyText">Pick an answer above and
           Kavya reviews it the way she would before it reaches Meera.</span></div>
-        <div class="strip good"><b class="tag">Kavya's review of the note that goes</b>&ldquo;On the 30 orders from 1 July
-          to 26 September, 23 customers placed 1.30 orders each at a typical order of Rs 2,205, and 16 of them bought only
-          once, so I would open frequency before acquisition; this one window cannot show which branch moved, so hold the
-          Rs 12 crore until Tuesday's two quarters.&rdquo; That is the sentence. It names the definition, counts customers
-          by id, uses the median, and says what one window cannot show.</div>
+        <div class="strip good"><b class="tag">Kavya's review of the note that goes</b>"On the 30 booked orders from
+          1 July to 26 September, 23 customers placed 1.30 orders each at a typical order of Rs 2,205; 7 came back, 7 are
+          past the usual gap without a second order, and 9 bought too recently to judge, so I would open frequency before
+          acquisition, and since one quarter cannot show which branch moved, hold the Rs 12 crore until Tuesday's two
+          quarters." That is the sentence to send. It names the definition, counts customers by id, uses the median,
+          splits the one-time buyers at the window's edge and says what one quarter cannot show.</div>
       </div>
     </section>
 
     <section class="part" id="glossary">
       <p class="eyebrow">07 &middot; Glossary</p>
-      <h2>The day's words, and where each first mattered</h2>
+      <h2>Which words does the day use, and where did each first matter?</h2>
       <div class="card">
         <dl class="gloss">
-          <dt>Revenue tree</dt><dd>Revenue drawn as customers times orders per customer times average order value, with
-            average order value as items per order times price per item, less discounts.<span class="where">The thinking
-            drawn before round 1.</span></dd>
-          <dt>Branch</dt><dd>One box of the tree, a metric the business can move at its own cost: acquisition costs
-            marketing, frequency costs retention, basket costs merchandising.<span class="where">The thinking; round 1,
-            level 4.</span></dd>
-          <dt>Numerator and denominator</dt><dd>The top and the bottom of every rate, said out loud before it is
-            computed.<span class="where">Round 1, level 3.</span></dd>
-          <dt>Booked</dt><dd>Every order placed in the window, whatever happened to it afterwards.<span class="where">Round
-            1, level 1.</span></dd>
-          <dt>Not cancelled</dt><dd>Booked orders less the ones cancelled before they shipped.<span class="where">Round 1,
-            the trap.</span></dd>
-          <dt>Delivered</dt><dd>Orders that reached the customer and stayed there, so returns and cancellations are both
-            out.<span class="where">Round 1, the fix; round 2, level 4.</span></dd>
-          <dt>Distinct customer</dt><dd>A customer id counted once however many rows it appears on; in Python, the length
-            of a set of ids.<span class="where">Round 2, the trap and its fix.</span></dd>
-          <dt>Orders per customer</dt><dd>Orders divided by distinct customers, the frequency branch of the tree.<span
-            class="where">Round 2, level 3.</span></dd>
-          <dt>Repeat customer</dt><dd>A customer who placed more than one order in the window.<span class="where">Round 2,
-            level 3.</span></dd>
-          <dt>Mean</dt><dd>The total spread evenly over the count; it multiplies back to the total, and one large order can
-            drag it.<span class="where">Round 3, level 1.</span></dd>
-          <dt>Median</dt><dd>The middle of the sorted list, or the average of the two middles when the count is even, which
-            one large order cannot drag.<span class="where">Round 3, level 3.</span></dd>
-          <dt>Compounding</dt><dd>Lifts on branches that multiply, so each lift also applies to the other's gain.<span
-            class="where">The escalated case.</span></dd>
-          <dt>Window</dt><dd>The dates a number covers; one window shows the shape of revenue, and two windows show which
-            branch moved.<span class="where">The escalated case; Tuesday's question.</span></dd>
-          <dt>Channel share</dt><dd>One channel's revenue over all revenue, read only after counting the orders behind
-            it.<span class="where">The second case.</span></dd>
-          <dt>Consumer orders</dt><dd>The orders outside the Business segment, 29 of the 30 in the day's file.<span
-            class="where">The second case.</span></dd>
+          <dt>Revenue tree</dt><dd>The tree draws revenue as customers times orders per customer times average order value,
+            and average order value splits into items per order times price per item, less discounts.<span class="where">The thinking
+            drawn in the story, before chapter 1.</span></dd>
+          <dt>Branch</dt><dd>A branch is one box of the tree, a metric the business can move at its own cost: acquisition
+            costs marketing, frequency costs retention, and basket costs merchandising.<span class="where">The story; chapter 5.</span></dd>
+          <dt>Numerator and denominator</dt><dd>They are the top and the bottom of every rate, and both are said out loud
+            before the rate is computed.<span class="where">Chapter 2.</span></dd>
+          <dt>Booked</dt><dd>Booked counts every order placed in the window, whatever happened to it afterwards.<span class="where">Chapter
+            1.</span></dd>
+          <dt>Not cancelled</dt><dd>Not cancelled keeps the booked orders less the ones cancelled before they shipped.<span class="where">Chapter 1,
+            the fix.</span></dd>
+          <dt>Delivered</dt><dd>Delivered keeps the orders that reached the customer and stayed there, so returns and
+            cancellations are both out.<span class="where">Chapter 1, the fix; the escalated case.</span></dd>
+          <dt>Distinct customer</dt><dd>A distinct customer is an id counted once however many rows it appears on, and in
+            Python the count is the length of a set of ids.<span class="where">Chapter 3, the trap and its fix.</span></dd>
+          <dt>Orders per customer</dt><dd>Orders per customer divides orders by distinct customers, and it is the frequency
+            branch of the tree.<span
+            class="where">Chapter 3.</span></dd>
+          <dt>Repeat customer</dt><dd>A repeat customer placed more than one order in the window.<span class="where">Chapter 3,
+            the build.</span></dd>
+          <dt>Mean</dt><dd>The mean spreads the total evenly over the count; it multiplies back to the total, and one large
+            order can drag it.<span class="where">Chapter 4.</span></dd>
+          <dt>Median</dt><dd>The median is the middle of the sorted list, or the average of the two middles when the count is
+            even, and one large order cannot drag it.<span class="where">Chapter 4, the fix.</span></dd>
+          <dt>Compounding</dt><dd>Lifts on the branches multiply, so each lift also applies to the other's gain.<span
+            class="where">Chapter 5.</span></dd>
+          <dt>Window</dt><dd>A window is the dates a number covers; one window shows the shape of revenue, and two windows
+            show which branch moved.<span class="where">Chapter 6, the window's edge; Tuesday's question.</span></dd>
+          <dt>Usual gap</dt><dd>The usual gap is the median number of days returning customers took between a first and a
+            second order, 45 in the day's file, so a one-time buyer who ordered inside the last 45 days is too recent to call
+            lost.<span class="where">Chapter 6, the trap and its fix.</span></dd>
+          <dt>Channel share</dt><dd>A channel's share is its revenue over all revenue, read only after counting the orders
+            behind it.<span class="where">The second case.</span></dd>
+          <dt>Consumer view</dt><dd>The consumer view keeps the orders whose segment is Retail-Core, Retail-Plus or Student,
+            the three consumer segments Meera's growth plan concerns, and your own code counts how many orders it keeps.<span
+            class="where">Chapter 5; the second case.</span></dd>
         </dl>
       </div>
-      <p class="foot">Week 1, Monday. The same five decisions live in the workbook beside this page,
+      <p class="foot">Week 1, Monday. The day's seven decisions live in the workbook beside this page,
         C2_W01_D01_decision_tool_STUDENT.xlsx, which is the version to keep: each tab hides one formula defect to find
         first, and its Export tab assembles the brief to Meera. Kalpa Retail and everyone in it are fictional. The Kalpa
         figures are totals of the day's 30 orders; card C's orders are invented. The page stores nothing and calls no
@@ -1005,19 +1012,24 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   function $(id) { return document.getElementById(id); }
   function pct(x, d) { return (Math.round(x * Math.pow(10, d || 1)) / Math.pow(10, d || 1)).toFixed(d || 1); }
   function sign(v) { return (v >= 0 ? "+" : "") + v + "%"; }
+  function pctShort(x) { var s = pct(x); return s.slice(-2) === ".0" ? s.slice(0, -2) : s; }
 
   /* ---------------------------------------------------------------- the day's totals */
   var BOOKED = 544810;
   var DEFS = {
     booked: { name: "booked", orders: 30, rev: 544810, cust: 23, back: 7, once: 16, median: 2205 },
-    nc: { name: "not cancelled", orders: 26, rev: 535760, cust: 21, back: 5, once: 16, median: null },
-    del: { name: "delivered", orders: 21, rev: 520790, cust: 19, back: 2, once: 17, median: 2060 }
+    /* Off the booked definition the customer leaves and the median are the learner's to count, since the
+       chapter 3 set and the escalated case ask for them. */
+    nc: { name: "not cancelled", orders: 26, rev: 535760, cust: null, back: null, once: null, median: null },
+    del: { name: "delivered", orders: 21, rev: 520790, cust: null, back: null, once: null, median: null }
   };
   var CONSUMER = {
     channels: ["app", "web", "store"],
-    bookedRs: [18600, 27290, 18920], deliveredRs: [18600, 12320, 9870],
-    bookedN: [10, 10, 9], deliveredN: [10, 5, 5]
+    bookedRs: [18600, 27290, 18920], deliveredRs: [18600, 12320, 9870]
   };
+  function total(a) { return a.reduce(function (s, x) { return s + x; }, 0); }
+  var CON_BOOKED = total(CONSUMER.bookedRs), CON_KEPT = total(CONSUMER.deliveredRs);
+  var KEPT = CONSUMER.deliveredRs.map(function (v, i) { return 100 * v / CONSUMER.bookedRs[i]; });
   var state = { def: "booked", count: "id", typ: "median" };
 
   /* ---------------------------------------------------------------- the rail */
@@ -1068,26 +1080,28 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   }
 
   /* ---------------------------------------------------------------- the walk */
-  var RUNGS = ["Which total is sales, and which branches make it?", "Each branch as a metric with its denominator",
-               "Count the leaves: customers and orders per customer", "Which typical order is honest?",
-               "Which branch does Meera open first?"];
+  var RUNGS = ["Chapter 1: which total is sales?", "Chapter 2: what is each branch?",
+               "Chapter 3: do customers come back?", "Chapter 4: what is a typical order?",
+               "Chapter 5: which branch first?", "Chapter 6: what will Meera sign?"];
   var WALK = [
-    { t: "The ask", r: 0, x: "Revenue grew 4 percent against a plan of 15, and marketing wants Rs 12 crore for new customers. Meera wants to know what sales is made of and whether acquisition is even the branch that is short, and Anand wants no averages that one business customer can move.",
-      d: function () { return K.driverTree(treeData("rev"), { title: "Revenue is a tree; Meera asks which branch is short" }); } },
-    { t: "The thinking, before any tool", r: 0, x: "Revenue is customers times orders per customer times average order value, and each branch costs something different to move. Marketing's Rs 12 crore is a bet on the first branch, customers, so the question is whether that branch is the one that is short.",
-      d: function () { return K.driverTree(treeData("cust", { cust: "the Rs 12 crore bet" }), { title: "Marketing's budget sits on one branch" }); } },
-    { t: "Round 1: which total is sales?", r: 2, x: "All 30 orders add to Rs 5,44,810, and 4 of them were cancelled and 5 returned. Not cancelled is Rs 5,35,760 on 26 orders and delivered is Rs 5,20,790 on 21, so the definition travels beside the number.",
+    { t: "Is acquisition even the branch that is short?", r: 0, x: "Revenue grew 4 percent against a plan of 15, and marketing wants Rs 12 crore for new customers. Meera wants to know what sales is made of and whether acquisition is even the branch that is short, and Anand wants no averages that one business customer can move.",
+      d: function () { return K.driverTree(treeData("cust", { cust: "the Rs 12 crore bet" }), { title: "Revenue is a tree; marketing's budget sits on one branch" }); } },
+    { t: "Chapter 1: which total is sales?", r: 1, x: "All 30 orders add to Rs 5,44,810, and 4 of them were cancelled and 5 returned. Not cancelled is Rs 5,35,760 on 26 orders and delivered is Rs 5,20,790 on 21, so the definition travels beside the number.",
       d: function () { return K.bridge(["booked", 544810], [["cancelled", -9050], ["returned", -14970]], { lo: 500000, endLabel: "delivered", title: "Booked to delivered, 1 July to 26 September" }); } },
-    { t: "Round 2: count the leaves", r: 3, x: "Counting rows gives 30 customers and 1.00 orders each, which reads as nobody comes back. Counting distinct ids gives 23 customers and 1.30 orders each, with 7 who came back, so frequency is a live branch.",
+    { t: "Chapter 2: what is each branch?", r: 2, x: "AOV is revenue over orders on one definition: Rs 18,160 booked, Rs 24,800 delivered. Booked rupees over delivered orders gives Rs 25,943, which multiplies back over the 30 orders to Rs 7,78,300 that nobody booked.",
+      d: function () { return K.columns(["booked / booked", "delivered / delivered", "booked / delivered"], [["AOV", [18160, 24800, 25943]]], { fmt: R, lit: [2], title: "Three AOVs; only the mixed one matches no definition" }); } },
+    { t: "Chapter 3: do customers come back?", r: 3, x: "Counting rows gives 30 customers and 1.00 orders each, which reads as nobody comes back. Counting distinct ids gives 23 customers and 1.30 orders each, with 7 who came back, so frequency is a live branch.",
       d: function () { return K.columns(["counted by rows", "counted by id"], [["customers", [30, 23]], ["came back", [0, 7]]], { title: "The same 30 orders, counted two ways" }); } },
-    { t: "Round 3: which typical is honest?", r: 4, x: "The mean order is Rs 18,160 and the median Rs 2,205, and only 1 of the 30 orders sits above the mean. One order at the top of the sort drags the mean, and notebook 3's empty cell is where you find it.",
-      d: function () { return K.columns(["booked", "delivered"], [["mean", [18160, Math.round(520790 / 21)]], ["median", [2205, 2060]]], { fmt: R, title: "Mean against median, per definition of sales" }); } },
-    { t: "The escalated case: which branch first?", r: 5, x: "Two 10 percent lifts on customers and frequency make 21 percent through the tree, Rs 6,59,220, where adding says Rs 6,53,772. Sixteen of the 23 customers bought once in the quarter, so frequency is the cheaper branch to open first.",
-      d: function () { return K.bridge(["today", 544810], [["customers +10%", 54481], ["frequency +10%", 54481], ["lift on the lift", 5448]], { lo: 500000, endLabel: "through the tree", title: "Two 10 percent lifts, multiplied" }); } },
-    { t: "The second case: does a channel change it?", r: 5, x: "On consumer orders web leads booked with Rs 27,290, and half its orders came back. App delivered all 10 of its orders, Rs 18,600, and store delivered Rs 9,870 after 4 cancellations. Frequency first stands, and the note names two leaks.",
-      d: function () { return K.columns(CONSUMER.channels, [["booked", CONSUMER.bookedRs], ["delivered", CONSUMER.deliveredRs]], { fmt: R, title: "Consumer orders by channel, booked against delivered" }); } },
-    { t: "The sentence to Meera", r: 5, x: "On the 30 orders from 1 July to 26 September, 23 customers placed 1.30 orders each at a typical order of Rs 2,205, and 16 of them bought only once, so open frequency before acquisition. One window cannot show which branch moved, so the Rs 12 crore waits for Tuesday's two quarters.",
-      d: function () { return K.driverTree(treeData("freq", { freq: "open first", cust: "hold until Tuesday" }, { cust: "unknown" }), { title: "Frequency first; acquisition waits for two windows" }); } }
+    { t: "Chapter 4: what is a typical order?", r: 4, x: "The mean order is Rs 18,160 and the median Rs 2,205, and only 1 of the 30 orders sits above the mean. Your own sort in notebook 04's empty cell shows which order that is and what kind of order it must be, and the median goes to marketing as the typical order.",
+      d: function () { return K.columns(["booked", "not cancelled"], [["mean", [18160, 20606]], ["median", [2205, 2100]]], { fmt: R, title: "Mean against median, per definition of sales" }); } },
+    { t: "Chapter 5: which branch first?", r: 5, x: "Meera's plan concerns the three consumer segments, where booked revenue is Rs 64,810, so 15 percent is Rs 9,722 more: 15 percent more customers who buy like today's, 15 percent more orders from the same customers, or Rs 335 more per order. About three in ten of the view's one-time buyers returning once would carry it, so frequency is the cheaper branch to open first. Two 10 percent lifts make 21 percent through the tree, Rs 78,420, where adding says Rs 77,772.",
+      d: function () { return K.bridge(["consumer view", 64810], [["customers +10%", 6481], ["frequency +10%", 6481], ["lift on the lift", 648]], { lo: 60000, endLabel: "through the tree", title: "Two 10 percent lifts on the consumer view, multiplied" }); } },
+    { t: "Chapter 6: what will Meera sign?", r: 6, x: "Sixteen of 23 bought once, which a hurried draft calls 70 percent lost. Returning customers took a median of 45 days, and 9 of the 16 bought inside the last 45, so 7 came back, 7 are past the usual gap without a second order, and 9 are too recent to judge. Open frequency first, and hold the Rs 12 crore until Tuesday's two quarters.",
+      d: function () { return K.columns(["came back", "once, past the gap", "once, too recent"], [["customers", [7, 7, 9]]], { lit: [2], title: "The 23 customers, with the window's edge" }); } },
+    { t: "Escalated case: does frequency first survive on delivered orders?", r: 6, x: "The case rebuilds the customer leaves, the typical order and the plan on the 21 delivered orders, the reading Anand's books keep, and asks which numbers move and whether the call on booked orders still holds. Its numbers are yours to compute in the escalated case's notebook.",
+      d: function () { return K.driverTree(treeData("freq", { freq: "booked: open first", cust: "booked: hold" }, { cust: "unknown" }), { title: "The call on booked orders, which the case retests on delivered" }); } },
+    { t: "Second case: does a channel change the branch?", r: 6, x: "Store brings 91.6 percent of all booked revenue, and once the view keeps the three consumer segments its share falls to 29.2 percent. There web leads booked with Rs 27,290, of which Rs 14,970 came back, app delivered all of its Rs 18,600, and store delivered Rs 9,870 after Rs 9,050 of cancellations. Frequency first stands, and the note names two leaks.",
+      d: function () { return K.columns(CONSUMER.channels, [["booked", CONSUMER.bookedRs], ["delivered", CONSUMER.deliveredRs]], { fmt: R, title: "The consumer segments by channel, booked against delivered" }); } }
   ];
   var walkAt = 0;
   function showWalk(extra) {
@@ -1096,8 +1110,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     $("walkStep").textContent = "Step " + walkAt + " of " + (WALK.length - 1) + (extra || "");
     $("walkTitle").textContent = w.t;
     $("walkText").textContent = w.x;
-    $("walkFill").style.width = (100 * w.r / 5) + "%";
-    $("walkRungs").textContent = w.r + " of 5 rungs climbed";
+    $("walkFill").style.width = (100 * w.r / 6) + "%";
+    $("walkRungs").textContent = w.r + " of 6 chapters climbed";
     $("walkNext").textContent = walkAt === WALK.length - 1 ? "Back to the start" : "Next";
   }
   $("walkNext").addEventListener("click", function () { walkAt = (walkAt + 1) % WALK.length; showWalk(); });
@@ -1105,8 +1119,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   $("walkMeter").addEventListener("click", function () {
     var r = WALK[walkAt].r;
     openPop("What the meter counts", K.ladder(RUNGS, r ? r - 1 : -1, { width: 420 }),
-      "The meter counts the day's five rungs, each a harder business question on the same 30 orders. At this step " + r +
-      " of 5 are climbed, and the lit rung is the latest one.");
+      "The meter counts the day's six chapters, each a harder business question on the same 30 orders. At this step " + r +
+      " of 6 are climbed, and the lit rung is the latest one.");
   });
   showWalk();
 
@@ -1115,43 +1129,46 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     var d = DEFS[state.def];
     var cust = state.count === "rows" ? d.orders : d.cust;
     var back = state.count === "rows" ? 0 : d.back;
-    var mean = d.rev / d.orders;
-    return { d: d, cust: cust, back: back, once: cust - back, opc: d.orders / cust, mean: mean,
-             typ: state.typ === "mean" ? mean : d.median };
+    var mean = d.rev / d.orders, known = cust !== null;
+    return { d: d, cust: cust, back: back, once: known ? cust - back : null, opc: known ? d.orders / cust : null,
+             mean: mean, typ: state.typ === "mean" ? mean : d.median, known: known };
   }
   function decision(L) {
     var d = L.d;
-    if (state.count === "rows") return ["bad", "On this count all " + L.cust + " customers bought once, so acquisition looks like the only branch left and the Rs 12 crore looks justified. That reading rests on rows counted as customers, which is round 2's trap; count distinct ids before anyone signs."];
-    if (state.typ === "mean") return ["bad", "Frequency is live, with " + L.back + " of " + L.cust + " customers back, and the decision still leans that way. The acquisition payback on this setting values a first order at the mean, " + R(L.mean) + ", which one order drags; switch to the median before the Rs 12 crore case is priced."];
-    if (L.typ === null) return ["", "Frequency is live, with " + L.back + " of " + L.cust + " customers back. The median on the not-cancelled definition is left for you: sort the 26 amounts in notebook 3's level 4 and read the middle two, then come back and choose booked or delivered to see the full sentence."];
+    if (state.count === "rows") return ["bad", "On this count all " + L.cust + " customers bought once, so acquisition looks like the only branch left and the Rs 12 crore looks justified. That reading rests on rows counted as customers, which is chapter 3's trap; count distinct ids before anyone signs."];
+    if (!L.known) return ["", "On the " + d.orders + " " + d.name + " orders the customers, how many came back, the orders each and the median are yours to count, the way chapters 3 and 4 counted the booked orders. Choose booked to see the full sentence."];
+    if (state.typ === "mean") return ["bad", "Frequency is live, with " + L.back + " of " + L.cust + " customers back, and the decision still leans that way. The acquisition payback on this setting values a first order at the mean, " + R(L.mean) + ", and only one order in the file sits above it; quote the median as the typical order, and build the payback's total on the mean of the consumer segments the spend targets, Rs 2,235 on booked orders."];
     return ["good", "On the " + d.orders + " orders, " + d.name + ", " + L.cust + " customers placed " + L.opc.toFixed(2) + " orders each at a typical order of " + R(L.typ) + ", and " + L.once + " of them bought only once, so open frequency before acquisition. One window cannot show which branch moved, so hold the Rs 12 crore until Tuesday's two quarters."];
   }
   function sim() {
     var L = leaves(), d = L.d;
     $("sSales").textContent = R(d.rev);
     $("sSalesD").textContent = d.name + ", on " + d.orders + " orders";
-    $("sCust").textContent = String(L.cust);
-    $("sCustD").textContent = state.count === "rows" ? "one per row, which is one per order" : L.back + " came back, " + L.once + " bought once";
-    $("sOpc").textContent = L.opc.toFixed(2);
-    $("sOpcD").textContent = d.orders + " orders over " + L.cust + " customers";
+    $("sCust").textContent = L.known ? String(L.cust) : "yours to count";
+    $("sCustD").textContent = state.count === "rows" ? "one per row, which is one per order" :
+      (L.known ? L.back + " came back, " + L.once + " bought once" : "count distinct ids on the " + d.orders + " orders");
+    $("sOpc").textContent = L.known ? L.opc.toFixed(2) : "yours to find";
+    $("sOpcD").textContent = d.orders + " orders over " + (L.known ? L.cust + " customers" : "the customers you count");
     $("sTyp").textContent = L.typ === null ? "yours to find" : R(L.typ);
     $("sTypD").textContent = state.typ === "mean" ? "the mean, which one order can drag" :
-      (L.typ === null ? "sort the 26 amounts in notebook 3" : "the median, the middle order");
-    $("sIdentity").textContent = L.cust + " customers × " + L.opc.toFixed(4) + " orders each × " + R(L.mean) +
-      " per order = " + R(L.cust * L.opc * L.mean);
+      (L.typ === null ? "sort the " + d.orders + " amounts and take the middle" : "the median, the middle order");
+    $("sIdentity").textContent = L.known
+      ? L.cust + " customers × (" + d.orders + " / " + L.cust + ") orders each × (" + R(d.rev) + " / " + d.orders + ") per order = " + R(d.rev)
+      : d.orders + " orders × (" + R(d.rev) + " / " + d.orders + ") per order = " + R(d.rev) + ", and the customers cancel out of the product";
     var moves = [];
     if (state.def !== "booked") moves.push(["cancelled", -9050]);
     if (state.def === "del") moves.push(["returned", -14970]);
     K.draw("simBridge", K.bridge(["booked", BOOKED], moves, { lo: 500000, endLabel: d.name,
       title: "From booked to " + d.name + ", 1 July to 26 September" }));
-    K.draw("simLeaves", K.columns(["customers", "came back", "bought once"], [[state.count === "rows" ? "by rows" : "by id", [L.cust, L.back, L.once]]],
-      { title: "The customer leaves, " + d.name + ", counted " + (state.count === "rows" ? "by rows" : "by id") }));
-    var keys = ["booked", "del"];
-    K.draw("simTypical", K.columns(["booked", "delivered"], [["mean", keys.map(function (k) { return DEFS[k].rev / DEFS[k].orders; })],
-      ["median", keys.map(function (k) { return DEFS[k].median; })]],
-      { fmt: R, lit: [keys.indexOf(state.def)], width: 520,
-        title: state.def === "nc" ? "Mean against median; the not-cancelled median is yours to compute in notebook 3"
-                                  : "Mean against median; the bold label is the definition you chose" }));
+    K.draw("simLeaves", L.known
+      ? K.columns(["customers", "came back", "bought once"], [[state.count === "rows" ? "by rows" : "by id", [L.cust, L.back, L.once]]],
+          { title: "The customer leaves, " + d.name + ", counted " + (state.count === "rows" ? "by rows" : "by id") })
+      : K.columns(["booked", d.name], [["orders", [DEFS.booked.orders, d.orders]]],
+          { lit: [1], title: "Orders, booked against " + d.name + "; the customers on these are yours to count" }));
+    K.draw("simTypical", K.columns(["booked"], [["mean", [DEFS.booked.rev / DEFS.booked.orders]], ["median", [DEFS.booked.median]]],
+      { fmt: R, lit: state.def === "booked" ? [0] : [], width: 520,
+        title: state.def === "booked" ? "Mean against median on booked orders, the definition you chose"
+                                      : "Booked mean against median; on " + d.name + " orders the median is yours to find" }));
     var v = decision(L);
     $("simDecision").className = "strip" + (v[0] ? " " + v[0] : "");
     $("simDecisionText").textContent = v[1];
@@ -1160,7 +1177,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   var SAID = {
     defBooked: ["def", "booked", "Sales is now every booked order, cancellations and returns included, so the definition has to be named beside Rs 5,44,810."],
     defNc: ["def", "nc", "Sales is now booked less the 4 cancelled orders: Rs 9,050 and 4 orders come out, all from store."],
-    defDel: ["def", "del", "Sales is now delivered only: the 5 returned web orders leave too, and 19 customers remain."],
+    defDel: ["def", "del", "Sales is now delivered only: the 5 returned web orders leave too, and the customers left are yours to count."],
     cntId: ["count", "id", "Customers are now counted by distinct id, so each person appears once however many orders they placed."],
     cntRows: ["count", "rows", "Customers are now counted by rows, so every order looks like a new person and nobody seems to come back."],
     typMedian: ["typ", "median", "The typical order is now the median, the middle of the sorted orders."],
@@ -1209,16 +1226,18 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   /* ---------------------------------------------------------------- the channels */
   var chMeasure = "rs", chLit = -1;
   var CH_SAY = [
-    "App booked Rs 18,600 on 10 consumer orders and delivered all 10, so it is the one clean channel: nothing cancelled and nothing came back.",
-    "Web booked the most on consumer orders, Rs 27,290, and delivered Rs 12,320, because 5 of its 10 orders came back, Rs 14,970. Returns are the leak to name.",
-    "Store booked Rs 18,920 on 9 consumer orders and delivered Rs 9,870 on 5, because 4 were cancelled, Rs 9,050. Cancellations are the leak to name, and they say nothing yet about which branch is short."
+    "App booked Rs 18,600 in the consumer segments and delivered all of it, so it is the one clean channel: nothing was cancelled and nothing came back.",
+    "Web booked the most in the consumer segments, Rs 27,290, and delivered Rs 12,320, because Rs 14,970 came back as returns, more than half of what it booked. Returns are the leak to name.",
+    "Store booked Rs 18,920 in the consumer segments and delivered Rs 9,870, because Rs 9,050 was cancelled, nearly half of what it booked. Cancellations are the leak to name, and they say nothing yet about which branch is short."
   ];
   function channels() {
     var rs = chMeasure === "rs";
-    K.draw("chDraw", K.columns(CONSUMER.channels,
-      [["booked", rs ? CONSUMER.bookedRs : CONSUMER.bookedN], ["delivered", rs ? CONSUMER.deliveredRs : CONSUMER.deliveredN]],
-      { fmt: rs ? R : undefined, lit: chLit >= 0 ? [chLit] : [], width: 460,
-        title: rs ? "Consumer orders, rupees booked and delivered" : "Consumer orders, orders booked and delivered" }));
+    K.draw("chDraw", rs
+      ? K.columns(CONSUMER.channels, [["booked", CONSUMER.bookedRs], ["delivered", CONSUMER.deliveredRs]],
+          { fmt: R, lit: chLit >= 0 ? [chLit] : [], width: 460, title: "The consumer segments, rupees booked and delivered" })
+      : K.columns(CONSUMER.channels, [["booked", [100, 100, 100]], ["kept", KEPT]],
+          { fmt: function (v) { return pctShort(v) + "%"; }, lit: chLit >= 0 ? [chLit] : [], width: 460,
+            title: "The consumer segments, percent of booked rupees delivered and kept" }));
   }
   function chSet(which, value, say) {
     if (which === "m") {
@@ -1232,8 +1251,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     $("chSaid").textContent = say;
     channels();
   }
-  $("chRs").addEventListener("click", function () { chSet("m", "rs", "The bars show rupees: Rs 64,810 booked on consumer orders and Rs 40,790 delivered."); });
-  $("chN").addEventListener("click", function () { chSet("m", "n", "The bars show orders: 29 consumer orders booked and 20 delivered, so 9 never stayed with the customer."); });
+  $("chRs").addEventListener("click", function () { chSet("m", "rs", "The bars show rupees: " + R(CON_BOOKED) + " booked in the three consumer segments and " + R(CON_KEPT) + " delivered and kept."); });
+  $("chN").addEventListener("click", function () { chSet("m", "n", "The bars show how much of each channel's booked rupees was delivered and kept: app " + pctShort(KEPT[0]) + " percent, web " + pctShort(KEPT[1]) + " percent and store " + pctShort(KEPT[2]) + " percent, and " + pctShort(100 * CON_KEPT / CON_BOOKED) + " percent across the three segments."); });
   $("chApp").addEventListener("click", function () { chSet("c", 0, CH_SAY[0]); });
   $("chWeb").addEventListener("click", function () { chSet("c", 1, CH_SAY[1]); });
   $("chStore").addEventListener("click", function () { chSet("c", 2, CH_SAY[2]); });
@@ -1318,18 +1337,18 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   $("expDRun").addEventListener("click", function () {
     dOn = !dOn;
     toggle(this, dOn, "Multiply the lifts", "Add the lifts instead");
-    K.draw("expDDraw", K.bridge(["today", 544810], dOn
-      ? [["customers +10%", 54481], ["frequency +10%", 54481], ["lift on the lift", 5448]]
-      : [["customers +10%", 54481], ["frequency +10%", 54481]],
-      { lo: 500000, endLabel: dOn ? "multiplied" : "added", title: dOn ? "The lifts through the tree" : "The lifts added, as the slide did" }));
+    K.draw("expDDraw", K.bridge(["consumer view", 64810], dOn
+      ? [["customers +10%", 6481], ["frequency +10%", 6481], ["lift on the lift", 648]]
+      : [["customers +10%", 6481], ["frequency +10%", 6481]],
+      { lo: 60000, endLabel: dOn ? "multiplied" : "added", title: dOn ? "The lifts through the tree" : "The lifts added, as the slide did" }));
     reveal("expD", dOn
-      ? "Multiplied, 1.10 × 1.10 = 1.21, so revenue reaches Rs 6,59,220, 21 percent up and Rs 5,448 above the slide's Rs 6,53,772. The extra is the frequency lift applied to the new customers."
-      : "Added, the lifts give 20 percent and Rs 6,53,772, which leaves out the new customers' own extra orders.");
+      ? "Multiplied, 1.10 × 1.10 = 1.21, so revenue reaches Rs 78,420, 21 percent up and Rs 648 above the slide's Rs 77,772. The extra is the frequency lift applied to the new customers."
+      : "Added, the lifts give 20 percent and Rs 77,772, which leaves out the new customers' own extra orders.");
   });
   $("expDSeq").addEventListener("click", function () {
     openSeq("Experiment D, as a sequence", ["customers", "orders per customer", "revenue"], [
-      ["customers", "revenue", "times 1.10"], ["revenue", "revenue", "Rs 5,99,291"],
-      ["orders per customer", "revenue", "times 1.10 again"], ["revenue", "revenue", "Rs 6,59,220, 21 percent"]],
+      ["customers", "revenue", "times 1.10"], ["revenue", "revenue", "Rs 71,291"],
+      ["orders per customer", "revenue", "times 1.10 again"], ["revenue", "revenue", "Rs 78,420, 21 percent"]],
       "The second lift multiplies the result of the first, which is where the extra percent comes from.");
   });
 
@@ -1337,48 +1356,48 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   $("expERun").addEventListener("click", function () {
     eOn = !eOn;
     toggle(this, eOn, "Run the discount", "Take the discount off");
-    var price = -544810 * 0.15, qty = 544810 * 0.85 * 0.10, end = 544810 * 0.935;
+    var price = -64810 * 0.15, qty = 64810 * 0.85 * 0.10, end = 64810 * 0.935;
     K.draw("expEDraw", eOn
-      ? K.bridge(["today", 544810], [["price -15%", price], ["quantity +10%", qty]], { lo: 400000, endLabel: "after the discount", title: "15 percent off, 10 percent more quantity" })
-      : K.bridge(["today", 544810], [], { lo: 400000, endLabel: "no discount", title: "Revenue before the discount" }));
+      ? K.bridge(["consumer view", 64810], [["price -15%", price], ["quantity +10%", qty]], { lo: 50000, endLabel: "after the discount", title: "15 percent off, 10 percent more quantity" })
+      : K.bridge(["consumer view", 64810], [], { lo: 50000, endLabel: "no discount", title: "Consumer revenue before the discount" }));
     reveal("expE", eOn
-      ? "Revenue ends at 0.85 × 1.10 = 0.935 of today, " + R(end) + ", a fall of 6.5 percent or " + R(544810 - end) + ", with more orders shipped."
-      : "Without the discount revenue stays at Rs 5,44,810, and the question is whether any lift in quantity would pay for 15 percent off.");
+      ? "Revenue ends at 0.85 × 1.10 = 0.935 of today, " + R(end) + ", a fall of 6.5 percent or " + R(64810 - end) + ", with more orders shipped."
+      : "Without the discount consumer revenue stays at Rs 64,810, and the question is whether any lift in quantity would pay for 15 percent off.");
   });
   $("expESeq").addEventListener("click", function () {
     openSeq("Experiment E, as a sequence", ["price", "quantity", "revenue"], [
       ["price", "revenue", "times 0.85"], ["quantity", "revenue", "times 1.10"],
       ["revenue", "revenue", "0.935 of today: down 6.5 percent"],
       ["quantity", "revenue", "standing still needs about 17.6 percent"]],
-      "The discount and the quantity lift multiply, so the lift has to beat the price cut rather than match it.");
+      "The discount and the quantity lift multiply, so standing still needs a lift of about 17.6 percent, more than the 15 percent cut.");
   });
 
   var fOn = false;
   var SHARE_ALL = [3.414, 5.009, 91.577];   // share of booked revenue, all 30 orders
-  var SHARE_CON = CONSUMER.bookedRs.map(function (v) { return 100 * v / 64810; });
+  var SHARE_CON = CONSUMER.bookedRs.map(function (v) { return 100 * v / CON_BOOKED; });
   $("expFRun").addEventListener("click", function () {
     fOn = !fOn;
-    toggle(this, fOn, "Look at consumer orders only", "Look at all orders again");
+    toggle(this, fOn, "Keep the three consumer segments", "Look at all orders again");
     var fmt = function (v) { return pct(v) + "%"; };
-    K.draw("expFDraw", K.columns(CONSUMER.channels, fOn ? [["all orders", SHARE_ALL], ["consumer orders", SHARE_CON]] : [["all orders", SHARE_ALL]],
-      { fmt: fmt, lit: [2], width: 460, title: fOn ? "Share of booked revenue, all orders against consumer orders" : "Share of booked revenue, all orders" }));
+    K.draw("expFDraw", K.columns(CONSUMER.channels, fOn ? [["all orders", SHARE_ALL], ["consumer view", SHARE_CON]] : [["all orders", SHARE_ALL]],
+      { fmt: fmt, lit: [2], width: 460, title: fOn ? "Share of booked revenue, all orders against the consumer view" : "Share of booked revenue, all orders" }));
     reveal("expF", fOn
-      ? "On consumer orders store's share falls from 91.6 to 29.2 percent, Rs 18,920 of Rs 64,810, and web leads with 42.1 percent, Rs 27,290. Store's headline share rested on one order."
+      ? "Once the view keeps the three consumer segments Meera's plan concerns, store's share falls from 91.6 to 29.2 percent, Rs 18,920 of Rs 64,810, and web leads with 42.1 percent, Rs 27,290, so store's headline share came from outside those segments."
       : "On all orders store carries 91.6 percent of booked revenue, and app and web look like rounding errors beside it.");
   });
   $("expFSeq").addEventListener("click", function () {
-    openSeq("Experiment F, as a sequence", ["all orders", "consumer orders", "the plan"], [
-      ["all orders", "the plan", "store 91.6 percent: store-led?"], ["all orders", "consumer orders", "count the orders behind each share"],
-      ["consumer orders", "consumer orders", "store Rs 18,920 of Rs 64,810"], ["consumer orders", "consumer orders", "split each channel by status"],
-      ["consumer orders", "the plan", "web returns and store cancellations"], ["the plan", "the plan", "frequency first stands"]],
-      "The share was a fact about one order; the channel view adds two leaks to name and leaves the branch decision where it was.");
+    openSeq("Experiment F, as a sequence", ["all orders", "the consumer view", "the plan"], [
+      ["all orders", "the plan", "store 91.6 percent: store-led?"], ["all orders", "the consumer view", "keep the three consumer segments"],
+      ["the consumer view", "the consumer view", "store Rs 18,920 of Rs 64,810"], ["the consumer view", "the consumer view", "split each channel by status"],
+      ["the consumer view", "the plan", "web returns and store cancellations"], ["the plan", "the plan", "frequency first stands"]],
+      "The headline share came from outside the segments the plan concerns; the channel view adds two leaks to name and leaves the branch decision where it was.");
   });
 
   /* ---------------------------------------------------------------- the decision */
   var DEC = {
-    decAcq: ["acq", "bad", "Signing now bets Rs 12 crore on a branch nobody has shown to be short. The 30 rows looked like 30 one-time customers, but 23 distinct customers placed 1.30 orders each and 7 came back, and a first order is worth about Rs 2,205, the median, rather than the mean's Rs 18,160. Hold it until Tuesday's two quarters show which branch moved."],
+    decAcq: ["acq", "bad", "Signing now bets Rs 12 crore on a branch nobody has shown to be short. The 30 rows looked like 30 one-time customers; counted by id they are 23 customers at 1.30 orders each, 7 of whom came back, and a typical first order is worth about Rs 2,205, the median, where the mean says Rs 18,160. Hold the money until Tuesday's two quarters show which branch moved."],
     decFreq: ["freq", "good", "This is the one I would send. Sixteen of the 23 customers bought once in the quarter, so frequency is the cheaper branch to test, and the note says plainly that one window shows the shape of revenue while only two windows show which branch moved."],
-    decStore: ["store", "bad", "Store's 91.6 percent of booked revenue rests on one order. On consumer orders store has Rs 18,920 of Rs 64,810 and lost 4 of its 9 orders to cancellation. Name the two leaks, web returns and store cancellations, and keep the branch decision on frequency."]
+    decStore: ["store", "bad", "Store's 91.6 percent of booked revenue comes from outside the three consumer segments Meera's plan concerns. Inside them store has Rs 18,920 of Rs 64,810, 29.2 percent, and Rs 9,050 of it was cancelled. Name the two leaks, web returns and store cancellations, and keep the branch decision on frequency."]
   };
   function drawDec(pick) {
     function k(which, good) { return pick === which ? (good ? "good" : "bad") : "plain"; }
