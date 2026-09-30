@@ -27,9 +27,10 @@ W1:
       b: The median has been miscalculated from an incomplete export.
   21:
     status: proposed
-    why: The key was one character longer than the next option.
+    why: The key was one character longer than the next option; option c, dropping Q2, was a choice nobody makes, so it now compares month by month, which keeps the short month.
     options:
       b: Add two weeks at the Q2 weekly average and report that total as actual.
+      c: Compare the quarters month by month, three months against three.
   22:
     status: proposed
     why: The key was the longest option; the print distractor now states the misconception in full.
@@ -45,6 +46,16 @@ W1:
     why: The key was the longest option.
     options:
       a: Customers, because new buyers bring in revenue that did not exist in the business before.
+  30:
+    status: proposed
+    why: Option c, the colour of the chart, eliminated itself and left a three-way item; the previous quarter's value is a comparison a learner can take for part of the definition.
+    options:
+      c: its value in the previous quarter
+  33:
+    status: proposed
+    why: Option d, a p-value for a single field, eliminated itself; the value to fill in is the decision a learner can take for part of the profile.
+    options:
+      d: the value to fill in where one is missing
   42:
     status: proposed
     why: The key was one character longer than the next option.

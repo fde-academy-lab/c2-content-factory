@@ -204,7 +204,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 - (a) Two missing weeks alone leave Q2 about 15 percent short, whatever the business did.
 - (b) An estimate reported as actual is a fabricated figure, even when the average behind it is fair.
-- (c) Dropping the quarter drops the question Meera asked.
+- (c) Months carry the same gap: Q2 is two weeks short, so one of its months is short too, and a month-against-month comparison carries the unequal window into every line of it.
 
 **In the interview.** Before comparing quarters I match the windows, weeks, definitions and segments, and then compare revenue per week.
 
@@ -222,7 +222,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **Why it holds.** A rate is defined by its numerator, its denominator and the window it covers.
 
-- (c) Presentation, not definition; the chart's colour changes nothing about the number.
+- (c) A previous value is a comparison, made once the rate is defined. The definition is the numerator, the denominator and the window, and two rates compare only when all three match.
 
 **In the interview.** A rate is meaningless until its numerator, denominator and window are named, because each of them can change the number.
 
@@ -333,7 +333,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **Why it holds.** A profile reports, per field, what is present, what converts to the expected type and how many distinct values there are.
 
-- (d) A p-value belongs to a comparison between groups, not to a field.
+- (d) Filling a gap is a decision, taken after the profile with a written reason. The profile only reports what is there: present, convertible and distinct.
 
 **In the interview.** Before cleaning I profile each field for present, convertible and distinct values, because the profile tells me what to fix and in what order.
 
@@ -629,10 +629,12 @@ These options differ from the tracker's wording, each for the reason given besid
 
 - Q10 (bank 17), option a, b (proposed): The key (23 characters) was the only option phrased as a count; the two frequency branches now read the same way.
 - Q49 (bank 19), option b (proposed): The key was the longest option; the miscalculation distractor now names a cause.
-- Q13 (bank 21), option b (proposed): The key was one character longer than the next option.
+- Q13 (bank 21), option b, c (proposed): The key was one character longer than the next option; option c, dropping Q2, was a choice nobody makes, so it now compares month by month, which keeps the short month.
 - Q39 (bank 22), option b (proposed): The key was the longest option; the print distractor now states the misconception in full.
 - Q25 (bank 28), option c (proposed): The key was the longest option.
 - Q14 (bank 29), option a (proposed): The key was the longest option.
+- Q15 (bank 30), option c (proposed): Option c, the colour of the chart, eliminated itself and left a three-way item; the previous quarter's value is a comparison a learner can take for part of the definition.
+- Q27 (bank 33), option d (proposed): Option d, a p-value for a single field, eliminated itself; the value to fill in is the decision a learner can take for part of the profile.
 - Q30 (bank 42), option b (proposed): The key was one character longer than the next option.
 - Q48 (bank 45), option a (proposed): The key was the longest option.
 

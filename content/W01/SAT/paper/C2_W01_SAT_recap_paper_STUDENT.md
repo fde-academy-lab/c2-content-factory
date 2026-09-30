@@ -128,7 +128,7 @@ Q1 holds 13 weeks of orders and Q2 holds 11. What makes the revenue comparison f
 
 a) Compare the two totals as they stand.
 b) Add two weeks at the Q2 weekly average and report that total as actual.
-c) Drop Q2 from the analysis.
+c) Compare the quarters month by month, three months against three.
 d) Compare revenue per week, or cut both quarters to the same weeks.
 
 #### Q14 · Hard · circle one letter
@@ -146,7 +146,7 @@ Which of these belong in a complete definition of a rate? Mark every correct opt
 
 a) its numerator
 b) its denominator
-c) the colour of its chart
+c) its value in the previous quarter
 d) the time window it covers
 
 #### Q16 · Medium · circle every correct letter
@@ -274,7 +274,7 @@ What does a field profile report for each field? Mark every correct option.
 a) how many values are present
 b) how many values convert to the expected type
 c) how many distinct values there are
-d) the p-value of the field
+d) the value to fill in where one is missing
 
 ### Set 2
 

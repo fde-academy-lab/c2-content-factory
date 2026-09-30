@@ -666,7 +666,8 @@ notes:
       b: >-
         An estimate reported as actual is a fabricated figure, even when the average behind it is fair.
       c: >-
-        Dropping the quarter drops the question Meera asked.
+        Months carry the same gap: Q2 is two weeks short, so one of its months is short too, and a
+        month-against-month comparison carries the unequal window into every line of it.
     answer: >-
       Before comparing quarters I match the windows, weeks, definitions and segments, and then
       compare revenue per week.
@@ -787,7 +788,8 @@ notes:
       A rate is defined by its numerator, its denominator and the window it covers.
     wrong:
       c: >-
-        Presentation, not definition; the chart's colour changes nothing about the number.
+        A previous value is a comparison, made once the rate is defined. The definition is the
+        numerator, the denominator and the window, and two rates compare only when all three match.
     answer: >-
       A rate is meaningless until its numerator, denominator and window are named, because each of
       them can change the number.
@@ -816,7 +818,8 @@ notes:
       distinct values there are.
     wrong:
       d: >-
-        A p-value belongs to a comparison between groups, not to a field.
+        Filling a gap is a decision, taken after the profile with a written reason. The profile only
+        reports what is there: present, convertible and distinct.
     answer: >-
       Before cleaning I profile each field for present, convertible and distinct values, because the
       profile tells me what to fix and in what order.
