@@ -13,8 +13,8 @@ tool opens. The note on the right stays on the board all day.
 
 ```mermaid
 flowchart LR
-    Q1["<b>Is the drop real?</b><br/>a gap"] --> H1["<b>chance</b><br/>could shuffling make it?"]
-    Q2["<b>Move budget to Student?</b><br/>a rate"] --> H2["<b>the count</b><br/>how many orders behind it?"]
+    Q1["<b>Is the drop real?</b><br/>a gap"] --> H1["<b>chance</b><br/>could flips or a shuffle make it?"]
+    Q2["<b>Move budget to Student?</b><br/>a rate"] --> H2["<b>the count</b><br/>how many customers behind it?"]
     Q3["<b>Did the discount work?</b><br/>a rise after a campaign"] --> H3["<b>a fair comparison</b><br/>who got it, against whom?"]
     H1 --> N["<b>one note</b><br/>claim, evidence,<br/>caveat, action"]
     H2 --> N
@@ -34,26 +34,28 @@ flowchart TB
     B --> C["<b>test it</b><br/>chance-only worlds,<br/>count the big gaps"]
 ```
 
-Under it, the four options in a row, each with what it costs on 44 member totals: the shuffle (under
-a second, the call), the textbook test (one line, the second route), the bootstrap (chapter 2), and
-waiting for Q3 (a quarter). The switch fact goes under the textbook test: thousands of well-behaved
-rows.
+Under it, the four options in a row, each with what separates it on the same 22 members measured
+twice: flip each member's pair (the call), pool the 44 totals and shuffle (the design for different
+customers), the textbook paired test (one line, the second route), and waiting for Q3 (a quarter).
+The switch facts go under the shuffle, different customers in each group, and under the textbook
+test, thousands of well-behaved members.
 
 ---
 
-## Third drawing, chapter 1: the shuffle, with the room's cards
+## Third drawing, chapter 1: the flips, with the room's cards
 
-The ten invented cards go up as two columns, Q1 and Q2, with the real gap of Rs 880 under them. Each
-pair's ten shuffled gaps go up in a row beside their names. The room counts how many reached Rs 880,
-and the trainer writes the computer's answer under it: 21 of 1,000.
+The five invented members' cards go up in rows, each member's Q1 card beside its Q2 card, with the
+real gap of Rs 880 under them. Each pair's ten tosses of five coins go up in a row beside their
+names. The room counts how many reached Rs 880, and the trainer writes the computer's answer under
+it: 35 of 1,000, and the exact count, 1 of the 32 ways five coins can land.
 
 ```mermaid
 flowchart LR
-    A["<b>real labels</b><br/>real gap"] --> B["<b>shuffle</b>"] --> C["<b>recompute</b>"] --> D["<b>repeat</b>"] --> E["<b>count the share</b><br/>at least as large"]
+    A["<b>each member's pair</b><br/>real gap"] --> B["<b>a coin per member</b><br/>keep or swap"] --> C["<b>recompute</b>"] --> D["<b>repeat</b>"] --> E["<b>count the share</b><br/>one way and either way"]
 ```
 
 Under it, the sentence in the form the room will use all day: "If nothing had changed, a gap this
-large turns up in about ___ of every 100 shuffles."
+large turns up in about ___ of every 100 flips, and a gap that large either way in about ___."
 
 ---
 
@@ -77,16 +79,17 @@ the fall and priced the offer, and writes the break-even beside it.
 
 ## Fifth drawing, chapter 3: the count behind a rate
 
-A column of four counts, 10, 30, 100 and 400 orders, with how far one order moves a rate at each: 10
-points, 3.3, 1 and 0.25. The line at thirty is drawn across the column and labelled "lead above,
-finding below".
+A column of four counts, 10, 30, 100 and 400, with how far one more moves a rate at each: 10
+points, 3.3, 1 and 0.25. The line at thirty customers is drawn across the column and labelled "lead
+above, worth testing below", and beside it goes the reason the line counts customers: thirty orders
+from three customers are still three customers' habits.
 
 ---
 
 ## Sixth drawing, chapter 4: who got it
 
 Two boxes for the monsoon sale, exposed and not exposed, each split into Retail-Plus and Retail-Core.
-The room fills in each box's mix and each cell's spend from its own run in chapter 4, never before.
+The room fills in each box's mix and each cell's spend only after its own run in chapter 4.
 
 ```mermaid
 flowchart LR
@@ -130,5 +133,6 @@ flowchart TB
 ## What is on the board when the day ends
 
 The first drawing, with a tick or "not yet" beside each question in the room's own words; the four
-options under the shuffle with the call ringed; the sentence form; the quadrant with Retail-Plus
-placed; the line at thirty; the mix boxes filled; the audited note; and the hold-back for Diwali. Photograph it before the room clears: it is Friday's rehearsal script.
+options under the flips with the call ringed; the sentence form; the quadrant with Retail-Plus placed;
+the line at thirty customers; the mix boxes filled; the audited note; and the hold-back for Diwali.
+Photograph it before the room clears: it is Friday's rehearsal script.

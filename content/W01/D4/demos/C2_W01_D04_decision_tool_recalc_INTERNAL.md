@@ -5,8 +5,8 @@ and then applies each fix to prove the verdicts move.
 
 The workbook ships with one planted formula defect per tab, so as shipped every verdict asks for
 its fix and the Export release reads "not ready". Each tab has the fix a learner makes and at least
-one more flip with inputs changed so the verdict moves to another branch: the Share tab runs its
-three readings (rare, borderline, the usual wobble) under each direction choice, and the Count tab
+one more flip with inputs changed so the verdict moves to another branch: the Share tab shows its
+three readings (rare, borderline, the usual wobble), one under each direction choice, and the Count tab
 shows many orders from few customers staying a lead. The last flip applies all four fixes, which is
 the only state that releases the note.
 
