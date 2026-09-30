@@ -98,13 +98,13 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **Why it holds.** The model takes cancellations and returns off at their own rates, so the figure it needs is what an order is worth once it stands, and the 21 delivered orders are the population; counting the others again, at their amounts or at zero, would charge them twice. A typical first order needs the median, since the Rs 4,80,000 Business order is 92 percent of the delivered Rs 5,20,790 and lifts their mean to Rs 24,800, twelve times a typical order. The model covers business buyers, so that order stays in. The median of 21 sorted values is the 11th, Rs 2,060.
 
-- (Rs 1,480) The median of all 30 with cancelled and returned orders at zero; the model's own rates take those off, so they would come off twice.
-- (Rs 18,160) The mean of all 30, which carries cancelled and refunded orders and sits eight times above a typical order because of one sale.
-- (Rs 2,040) The median once the Business order is deleted, which removes a real sale from a model that covers business buyers.
-- (Rs 2,090) The 12th value, one place past the middle of 21.
-- (Rs 2,100) The median of the 26 orders delivered or returned, which counts refunded orders as standing when the model's return rate already takes them off.
-- (Rs 2,205) The median of all 30, which counts orders Kalpa was never paid for or refunded.
-- (Rs 24,800) The right orders and the wrong statistic: one Business order lifts the delivered mean to twelve times the typical order.
+- (Rs 1,480) This is the median of all 30 with cancelled and returned orders at zero, and the model's own rates already take those off, so they would come off twice.
+- (Rs 18,160) This is the mean of all 30, which carries cancelled and refunded orders and sits eight times above a typical order because of one sale.
+- (Rs 2,040) This is the median once the Business order is deleted, which removes a real sale from a model that covers business buyers.
+- (Rs 2,090) This is the 12th value, one place past the middle of 21.
+- (Rs 2,100) This is the median of the 26 orders delivered or returned, which counts refunded orders as standing when the model's return rate already takes them off.
+- (Rs 2,205) This is the median of all 30, which counts orders Kalpa was never paid for or refunded.
+- (Rs 24,800) Takes the right orders and the mean of them, which one Business order lifts to twelve times the typical order.
 
 **In the interview.** For a typical first order I use the median of the orders that stand, Rs 2,060 on the first sample, and I keep the Rs 4,80,000 order in with a flag, since the model covers business buyers; the mean is for totals, and the typical order is the median.
 
@@ -145,7 +145,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 - (d, b, e, a, c) Sets the two quarters side by side before either figure is known to be complete.
 - (e, b, d, a, c) Decomposes before either figure is checked.
 
-**In the interview.** Checked, like with like, decompose, isolate, hypothesise: most people skip the second rung.
+**In the interview.** I check each figure, set the two side by side on like terms, decompose, isolate and only then hypothesise, and the rung most people skip is the second.
 
 ### Q8, key c
 
@@ -200,20 +200,20 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q13, key b, d, a, c
 
-**Why it holds.** Profile, decide each defect with a reason, reconcile, then recompute and send: a figure that leaves before its rows and rupees tie out is one Finance can overturn.
+**Why it holds.** The pass profiles each field, decides each defect with a reason, reconciles, and only then recomputes and sends: a figure that leaves before its rows and rupees tie out is one Finance can overturn.
 
 - (b, d, c, a) Recomputes and sends before reconciling, so the figure may rest on missing rows.
 - (d, b, a, c) Decides fixes before profiling, so the decisions are guesses.
 
-**In the interview.** Profile, decide, reconcile, recompute: the reconciliation comes before any number leaves.
+**In the interview.** I profile, decide, reconcile and only then recompute, because the reconciliation comes before any number leaves.
 
 ### Q14, key A fall of 1.6 percent (down 1.6, or -1.6).
 
 **Why it holds.** The tile set 11 weeks of Q2 against 13 of Q1, which the closed quarters fix. Q1 as exported still held Rs 20,00,000 of copied rows, so reconciled Q1 is Rs 2,10,00,000 less Rs 20,00,000, Rs 1,90,00,000, the figure in Anand's books. The change is (1,87,00,000 less 1,90,00,000) over 1,90,00,000, a fall of 1.6 percent measured from the starting quarter.
 
-- (A fall of 11.0 percent) Tuesday's honest number on Tuesday's data; the reconciliation took Rs 20,00,000 out of Q1.
-- (A fall of 12.4 percent) The tile's weekly rate against Q1's, which levels the windows and keeps the copies.
-- (A fall of 25.9 percent) The tile's figure, 11 weeks of Q2 against 13 of Q1, with a Q1 still holding its copied rows.
+- (A fall of 11.0 percent) This was Tuesday's honest number on Tuesday's data, and the reconciliation has since taken Rs 20,00,000 out of Q1.
+- (A fall of 12.4 percent) This is the tile's weekly rate against Q1's, which levels the windows and keeps the copies.
+- (A fall of 25.9 percent) This is the tile's figure, 11 weeks of Q2 against 13 of Q1, with a Q1 still holding its copied rows.
 - (A fall of 9.5 percent) Sets the books' Rs 1.9 crore against the dashboard's Rs 2.1 crore, two readings of one quarter.
 
 **In the interview.** I report the fall on matched windows and reconciled data, 1.6 percent, and I say what changed since Tuesday's 11.0: Rs 20,00,000 of copied Q1 rows that Finance's books never held.
@@ -328,10 +328,10 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q26, key b
 
-**Why it holds.** The ladder's first rung applies to good news too: confirm the change is real before acting on it. Such alerts usually signal a bug, the article says, so the first checks are the plumbing: revenue logged the same way in both groups, users split as planned, nothing broken in either version. In Bing's case the alert was no bug: the checks passed, and the analysis showed revenue up 12 percent, more than 100 million US dollars a year in the United States alone, without hurting key user-experience metrics, the best revenue idea in Bing's history.
+**Why it holds.** The ladder's first rung applies to good news too: confirm the change is real before acting on it. Such alerts usually signal a bug, the article says, so the first checks are the plumbing: revenue logged the same way in both groups, users split as planned, nothing broken in either version. In Bing's case the alert was no bug: the checks passed, and the analysis showed revenue up 12 percent, more than 100 million US dollars a year in the United States alone, without hurting the main user-experience metrics, the best revenue idea in Bing's history.
 
 - (a) Acts on a number nobody has confirmed; if the lift were a logging bug, every user would get the bug.
-- (c) The reflex that kills the best ideas: the checks are cheap, and here they showed the lift was real.
+- (c) Discards the test before the cheap checks have run, and here those checks showed the lift was real.
 - (d) A quarter's wait checks nothing that a look at the logging and the split would not check within the hour.
 
 **In the interview.** A result that looks too good gets the same first rung as a drop that looks too bad: I confirm the logging and the split before I believe it, then size the lift and check the guardrail metrics before anyone ships it.
@@ -341,9 +341,9 @@ The workbook flags an item to check when fewer than one learner in five got it r
 **Why it holds.** Inside each tier the offer group spent less: members Rs 1,470 against Rs 1,500, Rs 30 less each, and regular customers Rs 580 against Rs 600, Rs 20 less each. The 500 were 250 of each, so they spent 250 times 30 plus 250 times 20, Rs 12,500, less than the same customers would have without the offer, with each tier's customers who did not get it standing in for them. The blend says the opposite, Rs 65 more each or Rs 32,500 in all, because half the offer group were members against four in ten of the rest, and members spend more in any month: the lift was the mix of who received the offer.
 
 - (A fall of Rs 12,000) Sets the offer group at the other group's mix, four members in ten, where the 500 were half members.
-- (A fall of Rs 5,000) Regular customers alone, 250 of them at Rs 20 less each.
-- (A fall of Rs 7,500) Members alone, 250 of them at Rs 30 less each.
-- (A rise of Rs 32,500) The blend as it came, Rs 65 more each, with half the offer group members against four in ten of the rest.
+- (A fall of Rs 5,000) This counts the regular customers alone, 250 of them at Rs 20 less each.
+- (A fall of Rs 7,500) This counts the members alone, 250 of them at Rs 30 less each.
+- (A rise of Rs 32,500) This is the blend as it came, Rs 65 more each, with half the offer group members against four in ten of the rest.
 
 **In the interview.** A total can rise while every tier falls when the mix shifts, so I set each customer against customers of the same tier before I credit an offer; here the 500 spent Rs 12,500 less than they would have.
 
@@ -383,7 +383,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 - (a) Rs 38.80 is the right saving, and Rs 7.26 is the mean, which moves with the one conversation that looped.
 - (c) Rs 1.60 is the typical cost, and Rs 27.60 comes from a cap set from the mean, 18.1 calls, which the loop itself inflated.
-- (d) The mean twice over: a typical cost and a cap that both carry C-07's 105 calls.
+- (d) Uses the mean twice, for the typical cost and for the cap, and both carry C-07's 105 calls.
 
 **In the interview.** The typical cost is the median, Rs 1.60, with every run left in the log; a cap on model calls set from the median, 8, stops the next loop, and here it would have saved Rs 38.80 of the shift's Rs 50.80.
 
@@ -403,7 +403,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 - (8) COUNT(*) counts rows; COUNT(latency_ms) counts values, and two of them are NULL.
 
-**In the interview.** COUNT(*) counts rows and COUNT(column) counts values, so a NULL-heavy column undercounts quietly; I say which one a dashboard shows.
+**In the interview.** COUNT(*) counts rows and COUNT(column) counts values, so a column full of NULLs undercounts with no warning; I say which one a dashboard shows.
 
 ### Q34, key f (800)
 
@@ -417,7 +417,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **Why it holds.** Both counts are integers, and PostgreSQL divides an integer by an integer as integers, so 3 over 8 returns 0 and the dashboard shows a failure rate of 0 percent. Multiplying by 1.0 first, or casting one side, returns 0.375.
 
-- (0.375) The true share, which needs a decimal division; an integer over an integer drops the fraction.
+- (0.375) This is the true share, which needs a decimal division, and an integer over an integer drops the fraction.
 
 **In the interview.** PostgreSQL divides integers as integers, so every rate gets a 1.0 or a cast before the division, and I check a rate of exactly 0 against its counts.
 

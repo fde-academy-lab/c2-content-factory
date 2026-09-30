@@ -46,7 +46,7 @@ Your ratings: Part 1 ___ · Part 2 ___ · Part 3 ___ · Part 4 ___ · Part 5 ___
 
 *What it shows: whether you can read revenue from orders and say what would change a budget call. 7 items, about 21 minutes.*
 
-Kalpa Retail sells through its app, its website and its stores to four segments of customers: Retail-Core, Student, Business (its corporate buyers) and Retail-Plus, a membership tier whose members pay a fee to belong. Revenue here means booked value, which retail calls GMV (gross merchandise value): every order at the price charged, before cancellations and returns come out. Q1 is April to June and Q2 is July to September, and revenue fell from Q1 to Q2. Marketing wants Rs 12 crore to win new customers. Meera Raghavan, the CEO, needs to know which branch of the revenue tree below fell before she signs, since money spent on a branch that held is money lost: "Is acquisition even the branch that is short?" When a sales figure drops, the team works through the sales-drop investigation ladder, five checks called rungs that are always climbed in the same order.
+Kalpa Retail sells through its app, its website and its stores to four segments of customers: Retail-Core, Student, Business (its corporate buyers) and Retail-Plus, a membership tier whose members pay a fee to belong. Revenue here means booked value, which retail calls GMV (gross merchandise value): every order at the price charged, before cancellations and returns come out. Q1 is April to June and Q2 is July to September, and revenue fell from Q1 to Q2. Marketing wants Rs 12 crore to win new customers. Meera Raghavan, the CEO, needs to know which branch of the revenue tree below fell before she signs, since Rs 12 crore spent on a branch that held is wasted: "Is acquisition even the branch that is short?" When a sales figure drops, the team works through the sales-drop investigation ladder, five checks called rungs that are always climbed in the same order.
 
 **Exhibit 1A.** Kalpa's revenue tree, in which each branch is one of the numbers that make up revenue.
 
@@ -305,7 +305,7 @@ Order: ____________________
 
 ### Set 1
 
-**Situation.** Meera's inbox holds three messages about the change in revenue from Q1 to Q2. Wednesday's, from Kavya: the reconciliation found Tuesday's Q2 clean at Rs 1,87,00,000, and found that 14 of Q1's rows in Tuesday's file were copies of other Q1 orders, worth Rs 20,00,000 together. Tuesday's note: the two closed quarters in Tuesday's file, each complete at 13 weeks, Rs 2,10,00,000 and Rs 1,87,00,000, down 11.0 percent. Tuesday's first dashboard tile, built from an extract taken on 15 September, when Q2 had run 11 of its 13 weeks: that part of Q2, Rs 1,55,59,950, against all of Q1, Rs 2,10,00,000, down 25.9 percent.
+**Situation.** Meera's inbox holds three messages about the change in revenue from Q1 to Q2. Kavya's, sent on Wednesday, says the reconciliation found Tuesday's Q2 clean at Rs 1,87,00,000, and found that 14 of Q1's rows in Tuesday's file were copies of other Q1 orders, worth Rs 20,00,000 together. Tuesday's note compared the two closed quarters in Tuesday's file, each complete at 13 weeks: Rs 2,10,00,000 against Rs 1,87,00,000, down 11.0 percent. Tuesday's first dashboard tile was built from an extract taken on 15 September, when Q2 had run 11 of its 13 weeks, and it set that part of Q2, Rs 1,55,59,950, against all of Q1, Rs 2,10,00,000, down 25.9 percent.
 
 **Exhibit 2F.** Retail-Plus orders by month, as Tuesday's export held them.
 

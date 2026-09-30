@@ -20,8 +20,8 @@ parts:
       merchandise value): every order at the price charged, before cancellations and returns come
       out. Q1 is April to June and Q2 is July to September, and revenue fell from Q1 to Q2.
       Marketing wants Rs 12 crore to win new customers. Meera Raghavan, the CEO, needs to know which
-      branch of the revenue tree below fell before she signs, since money spent on a branch that held
-      is money lost: "Is acquisition even the branch that is short?" When a sales figure drops, the
+      branch of the revenue tree below fell before she signs, since Rs 12 crore spent on a branch that
+      held is wasted: "Is acquisition even the branch that is short?" When a sales figure drops, the
       team works through the sales-drop investigation ladder, five checks called rungs that are always
       climbed in the same order.
     exhibits:
@@ -380,24 +380,24 @@ additions:
       in. The median of 21 sorted values is the 11th, Rs 2,060.
     wrong:
       "Rs 18,160": >-
-        The mean of all 30, which carries cancelled and refunded orders and sits eight times above a
-        typical order because of one sale.
+        This is the mean of all 30, which carries cancelled and refunded orders and sits eight times
+        above a typical order because of one sale.
       "Rs 24,800": >-
-        The right orders and the wrong statistic: one Business order lifts the delivered mean to twelve
-        times the typical order.
+        Takes the right orders and the mean of them, which one Business order lifts to twelve times the
+        typical order.
       "Rs 2,205": >-
-        The median of all 30, which counts orders Kalpa was never paid for or refunded.
+        This is the median of all 30, which counts orders Kalpa was never paid for or refunded.
       "Rs 2,100": >-
-        The median of the 26 orders delivered or returned, which counts refunded orders as standing
-        when the model's return rate already takes them off.
+        This is the median of the 26 orders delivered or returned, which counts refunded orders as
+        standing when the model's return rate already takes them off.
       "Rs 1,480": >-
-        The median of all 30 with cancelled and returned orders at zero; the model's own rates take
-        those off, so they would come off twice.
+        This is the median of all 30 with cancelled and returned orders at zero, and the model's own
+        rates already take those off, so they would come off twice.
       "Rs 2,040": >-
-        The median once the Business order is deleted, which removes a real sale from a model that
-        covers business buyers.
+        This is the median once the Business order is deleted, which removes a real sale from a model
+        that covers business buyers.
       "Rs 2,090": >-
-        The 12th value, one place past the middle of 21.
+        This is the 12th value, one place past the middle of 21.
     answer: >-
       For a typical first order I use the median of the orders that stand, Rs 2,060 on the first sample,
       and I keep the Rs 4,80,000 order in with a flag, since the model covers business buyers; the
@@ -756,7 +756,7 @@ additions:
     key: A fall of 1.6 percent (down 1.6, or -1.6).
     anchor: What has to match before a quarter-on-quarter comparison is fair?
     text: |-
-      SET 4. SITUATION: Meera's inbox holds three messages about the change in revenue from Q1 to Q2. Wednesday's, from Kavya: the reconciliation found Tuesday's Q2 clean at Rs 1,87,00,000, and found that 14 of Q1's rows in Tuesday's file were copies of other Q1 orders, worth Rs 20,00,000 together. Tuesday's note: the two closed quarters in Tuesday's file, each complete at 13 weeks, Rs 2,10,00,000 and Rs 1,87,00,000, down 11.0 percent. Tuesday's first dashboard tile, built from an extract taken on 15 September, when Q2 had run 11 of its 13 weeks: that part of Q2, Rs 1,55,59,950, against all of Q1, Rs 2,10,00,000, down 25.9 percent.
+      SET 4. SITUATION: Meera's inbox holds three messages about the change in revenue from Q1 to Q2. Kavya's, sent on Wednesday, says the reconciliation found Tuesday's Q2 clean at Rs 1,87,00,000, and found that 14 of Q1's rows in Tuesday's file were copies of other Q1 orders, worth Rs 20,00,000 together. Tuesday's note compared the two closed quarters in Tuesday's file, each complete at 13 weeks: Rs 2,10,00,000 against Rs 1,87,00,000, down 11.0 percent. Tuesday's first dashboard tile was built from an extract taken on 15 September, when Q2 had run 11 of its 13 weeks, and it set that part of Q2, Rs 1,55,59,950, against all of Q1, Rs 2,10,00,000, down 25.9 percent.
       Give the change in revenue from Q1 to Q2 that belongs in Meera's note on Monday, as a percentage to one decimal place.
     why: >-
       The tile set 11 weeks of Q2 against 13 of Q1, which the closed quarters fix. Q1 as exported still
@@ -766,11 +766,13 @@ additions:
       the starting quarter.
     wrong:
       "A fall of 25.9 percent": >-
-        The tile's figure, 11 weeks of Q2 against 13 of Q1, with a Q1 still holding its copied rows.
+        This is the tile's figure, 11 weeks of Q2 against 13 of Q1, with a Q1 still holding its copied
+        rows.
       "A fall of 12.4 percent": >-
-        The tile's weekly rate against Q1's, which levels the windows and keeps the copies.
+        This is the tile's weekly rate against Q1's, which levels the windows and keeps the copies.
       "A fall of 11.0 percent": >-
-        Tuesday's honest number on Tuesday's data; the reconciliation took Rs 20,00,000 out of Q1.
+        This was Tuesday's honest number on Tuesday's data, and the reconciliation has since taken
+        Rs 20,00,000 out of Q1.
       "A fall of 9.5 percent": >-
         Sets the books' Rs 1.9 crore against the dashboard's Rs 2.1 crore, two readings of one quarter.
     answer: >-
@@ -1236,14 +1238,14 @@ additions:
       Such alerts usually signal a bug, the article says, so the first checks are the plumbing: revenue
       logged the same way in both groups, users split as planned, nothing broken in either version. In
       Bing's case the alert was no bug: the checks passed, and the analysis showed revenue up 12
-      percent, more than 100 million US dollars a year in the United States alone, without hurting key
+      percent, more than 100 million US dollars a year in the United States alone, without hurting the main
       user-experience metrics, the best revenue idea in Bing's history.
     wrong:
       a: >-
         Acts on a number nobody has confirmed; if the lift were a logging bug, every user would get the
         bug.
       c: >-
-        The reflex that kills the best ideas: the checks are cheap, and here they showed the lift was
+        Discards the test before the cheap checks have run, and here those checks showed the lift was
         real.
       d: >-
         A quarter's wait checks nothing that a look at the logging and the split would not check within
@@ -1277,15 +1279,15 @@ additions:
       received the offer.
     wrong:
       "A rise of Rs 32,500": >-
-        The blend as it came, Rs 65 more each, with half the offer group members against four in ten of
-        the rest.
+        This is the blend as it came, Rs 65 more each, with half the offer group members against four in
+        ten of the rest.
       "A fall of Rs 12,000": >-
         Sets the offer group at the other group's mix, four members in ten, where the 500 were half
         members.
       "A fall of Rs 7,500": >-
-        Members alone, 250 of them at Rs 30 less each.
+        This counts the members alone, 250 of them at Rs 30 less each.
       "A fall of Rs 5,000": >-
-        Regular customers alone, 250 of them at Rs 20 less each.
+        This counts the regular customers alone, 250 of them at Rs 20 less each.
     answer: >-
       A total can rise while every tier falls when the mix shifts, so I set each customer against
       customers of the same tier before I credit an offer; here the 500 spent Rs 12,500 less than they
@@ -1485,7 +1487,7 @@ additions:
         Rs 1.60 is the typical cost, and Rs 27.60 comes from a cap set from the mean, 18.1 calls, which
         the loop itself inflated.
       d: >-
-        The mean twice over: a typical cost and a cap that both carry C-07's 105 calls.
+        Uses the mean twice, for the typical cost and for the cap, and both carry C-07's 105 calls.
     answer: >-
       The typical cost is the median, Rs 1.60, with every run left in the log; a cap on model calls set
       from the median, 8, stops the next loop, and here it would have saved Rs 38.80 of the shift's
@@ -1588,8 +1590,8 @@ additions:
       "8": >-
         COUNT(*) counts rows; COUNT(latency_ms) counts values, and two of them are NULL.
     answer: >-
-      COUNT(*) counts rows and COUNT(column) counts values, so a NULL-heavy column undercounts quietly; I
-      say which one a dashboard shows.
+      COUNT(*) counts rows and COUNT(column) counts values, so a column full of NULLs undercounts with no
+      warning; I say which one a dashboard shows.
 
   - id: sql-avg
     type: Match the following
@@ -1635,7 +1637,8 @@ additions:
       one side, returns 0.375.
     wrong:
       "0.375": >-
-        The true share, which needs a decimal division; an integer over an integer drops the fraction.
+        This is the true share, which needs a decimal division, and an integer over an integer drops the
+        fraction.
     answer: >-
       PostgreSQL divides integers as integers, so every rate gets a 1.0 or a cast before the division,
       and I check a rate of exactly 0 against its counts.
@@ -1748,19 +1751,22 @@ notes:
       "d, b, e, a, c": >-
         Sets the two quarters side by side before either figure is known to be complete.
     answer: >-
-      Checked, like with like, decompose, isolate, hypothesise: most people skip the second rung.
+      I check each figure, set the two side by side on like terms, decompose, isolate and only then
+      hypothesise, and the rung most people skip is the second.
   52:
     label: Order the cleaning pass
     why: >-
-      Profile, decide each defect with a reason, reconcile, then recompute and send: a figure that
-      leaves before its rows and rupees tie out is one Finance can overturn.
+      The pass profiles each field, decides each defect with a reason, reconciles, and only then
+      recomputes and sends: a figure that leaves before its rows and rupees tie out is one Finance can
+      overturn.
     wrong:
       "b, d, c, a": >-
         Recomputes and sends before reconciling, so the figure may rest on missing rows.
       "d, b, a, c": >-
         Decides fixes before profiling, so the decisions are guesses.
     answer: >-
-      Profile, decide, reconcile, recompute: the reconciliation comes before any number leaves.
+      I profile, decide, reconcile and only then recompute, because the reconciliation comes before any
+      number leaves.
 
 stretch:
   - text: |
