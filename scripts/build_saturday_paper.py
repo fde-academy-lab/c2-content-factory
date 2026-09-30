@@ -1909,15 +1909,13 @@ if __name__ == "__main__":
 # Test inputs and expected outcomes
 # --------------------------------
 # python3 scripts/build_saturday_paper.py W01
-#     With the W01 source file and paper_edits.yaml as committed on 30 September 2026: the paper
-#     prints 54 items in six parts after its purpose, rules, company line and step one, with the
-#     blueprint at 119.5 timed minutes (19 easy, 22 medium, 13 hard), every item headed
-#     "Q<n> · <level> · <format> · <label>", scenario sets numbered 1 to 5 in the order they print,
-#     and a stretch page of four written items and six recall lines moved from the bank. The TRAINER
-#     key carries 54 rows with a Part column, the blueprint with its total row, the guessing floor
-#     (average 11.7 of 54; fewer than one guesser in twenty reaches 17), the stretch answers with the
-#     moved items marked "moved from the timed paper", and the option edits, Q16 among them printed
-#     with the tracker's d at a and keyed b, c, d.
+#     With the W01 source file and paper_edits.yaml as merged on 30 September 2026 (the raised,
+#     interview-grade paper): 35 timed items in five parts after its purpose, rules, company line
+#     and step one, at 118 timed minutes (1 easy, 13 medium, 21 hard), every item headed
+#     "Q<n> · <level> · <format> · <label>", five bank items printed, the other 47 folded into the
+#     items that test them, and a stretch page of written follow-ups. The TRAINER key prints the
+#     guessing floor (average 6.2 of 35), the folds with their reasons, and the edits laid on the
+#     bank that wait for the tracker.
 # python3 scripts/build_saturday_paper.py W01 --check     (straight after the line above)
 #     "2 file(s), 0 stale", exit 0.
 # python3 scripts/build_saturday_paper.py W01 --docx
