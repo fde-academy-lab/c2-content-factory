@@ -296,7 +296,7 @@ decisions:
   - id: plants-once-found
     status: closed
     closes: the requester, on 30 September 2026
-    text: A planted value may be named to learners once the room has found it in class, so the Week 1 Saturday paper keeps Q32 and Q51, two tracker items that name values planted in the Week 1 Monday dataset; before its lesson, a plant stays unnamed in every learner file.
+    text: Only the week's Saturday recap paper may name a planted value, and only one the room has already found in class, so the Week 1 Saturday paper keeps Q32 and Q51, two tracker items that name values planted in the Week 1 Monday dataset; every other learner file names no plant.
     blocks: nothing
   - id: reporting-day-line
     status: closed

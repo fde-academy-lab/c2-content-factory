@@ -55,7 +55,7 @@ script or a gate. `content` changes what is taught.
 | 30 Sep 2026 | The Saturday recap paper prints in parts named for what each shows, with each item's format and level beside it and up to six recall items on an untimed stretch page, and the room sits a Word paper in the Week 0 diagnostic's format with its answer sheet at the back. | `CLAUDE.md`, `.claude/skills/exercise-builder/SKILL.md` | `method` |
 | 30 Sep 2026 | Anand Iyer is Kalpa Retail's finance controller in every pack and paper, where the tracker's Week 1 and Week 2 rows called him the CFO. | `data/programme/facts.yaml`, decision `anand-finance-controller` | `ruling` |
 | 30 Sep 2026 | All thirty option edits and relabellings laid on the Week 1 and Week 2 Saturday papers were accepted, and each applies until the tracker's Saturday papers tab carries it. | `data/programme/paper_edits.yaml` | `content` |
-| 30 Sep 2026 | A plant may be named to learners once the room has found it in class, so the Week 1 Saturday paper keeps the two tracker items that name Week 1 Monday's plants. | `CLAUDE.md`, decision `plants-once-found` | `ruling` |
+| 30 Sep 2026 | The week's Saturday recap paper, and no other learner file, may name a plant the room has already found in class, so the Week 1 Saturday paper keeps the two tracker items that name Week 1 Monday's plants. | `CLAUDE.md`, decision `plants-once-found` | `ruling` |
 | 30 Sep 2026 | The Week 2 Tuesday interview line asks what you do when the validation fails at the end of reporting day, where tracker v7 named a clock time. | `docs/curriculum/source.xlsx`, decision `reporting-day-line` | `content` |
 
 ---
