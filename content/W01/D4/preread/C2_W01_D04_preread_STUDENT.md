@@ -1,7 +1,6 @@
 # What will Friday's lab and rehearsal ask of you, and how do you get ready tonight?
 
-Ships tonight. Fifteen minutes of reading and one check to run, and nothing new to learn: Friday
-adds no idea.
+This takes fifteen minutes tonight and ends on one check to run. Friday adds no new idea.
 
 ---
 
@@ -26,9 +25,8 @@ flowchart LR
     P["<b>profile</b>"] --> C["<b>clean</b><br/>with reasons"] --> R["<b>reconcile</b>"] --> T["<b>the tree</b><br/>which branch"] --> G["<b>test the gap</b>"] --> N["<b>the note</b><br/>said aloud"]
 ```
 
-These are the week's steps in the order the lab runs them: Wednesday's cleaning, then Monday's
-revenue tree and Tuesday's branch that moved, then today's test and note. The lab finds out which of
-them are yours when the notebook is closed.
+These are the week's steps in the order the lab runs them, with your notes closed: Wednesday's
+cleaning, then Monday's revenue tree and Tuesday's branch that moved, then today's test and note.
 
 ---
 
@@ -61,10 +59,10 @@ question that would expose it; you will be asked something close to it.
 
 ---
 
-## Does today's first notebook run cold in your Codespace?
+## Does today's first notebook run top to bottom in a fresh Codespace?
 
-Open a Codespace and run `notebooks/C2_W01_D04_01_real_or_wobble_STUDENT.ipynb`, today's chapter 1
-notebook, with Restart and Run All. If it does not reach the last cell with every check passing,
+Open a fresh Codespace and run `notebooks/C2_W01_D04_01_real_or_wobble_STUDENT.ipynb`, today's
+chapter 1 notebook, with Restart and Run All. If it does not reach the last cell with every check passing,
 tell the support TA before the lab opens, because during the timed part nobody will help you debug
 the environment.
 
@@ -72,5 +70,5 @@ the environment.
 
 ## Which line do you carry into Friday?
 
-A method is yours when you can run it cold on a file you have never seen, in the same order every
-time, and say what it found in two minutes to someone who disagrees.
+A method is yours when you can run it without notes or an assistant on a file you have never seen,
+in the same order every time, and say what it found in two minutes to someone who disagrees.

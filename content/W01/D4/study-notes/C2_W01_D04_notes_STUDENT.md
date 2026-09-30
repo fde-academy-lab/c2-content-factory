@@ -32,8 +32,9 @@ Kavya Nair, the team's senior analyst, reviews each chapter's answer before it g
 **What the session covered.** Six chapters on one Kalpa case, each worked in full: whether the
 Retail-Plus fall is real, whether it is worth acting on, what count stands behind Student's 40
 percent, whether the monsoon discount worked inside each segment, what goes on Meera's page, and
-what comparison would be fair at Diwali. Four ideas were only named: the textbook test's formula,
-building a confidence interval, power, and difference in differences.
+what comparison would be fair at Diwali. Four ideas were only named, and arrive in later weeks: the
+textbook test's formula, building a confidence interval, power (how many members a test needs to
+see a gap), and difference in differences.
 
 Monday settled delivered revenue, the rupees on orders whose status is delivered, as the money Kalpa
 keeps; Tuesday found the fall in Retail-Plus, Kalpa's paid membership tier; Wednesday tied the order
@@ -51,17 +52,12 @@ flowchart LR
     class H today
 ```
 
-This week map is the programme's own construction.
-
 **The outcome tie.** Friday's growth-review rehearsal, where you defend a one-page note aloud to a
 partner playing Marketing, runs on today's checks and today's note.
 
-**What was left out.** The formulas, building a confidence interval and power (how many members a
-test needs to see a gap) arrive in later weeks.
-
 ---
 
-## Which picture should you be able to redraw?
+## Which one drawing sorts Meera's three questions into their three checks?
 
 ```mermaid
 flowchart LR
@@ -96,7 +92,7 @@ as a wobble lets the tier drain. The metric is delivered revenue per Retail-Plus
 3. What does the usual wobble look like on Retail-Core?
 4. How often does chance alone make a fall as large as Retail-Plus's?
 5. What does the share say about the chance that the finding is wrong?
-6. Do the textbook paired test and an exact count agree?
+6. Do the textbook paired test and an exact count of every coin pattern give the flips' reading?
 
 **IN THE FIELD.** Booking.com runs about 25,000 tests a year and more than 1,000 at once (Thomke,
 HBR, 2020), and by Thomke's account about nine in ten of its experiments improve nothing (HBR
@@ -144,11 +140,11 @@ claim: "If nothing had changed, a fall of Rs 1,110 per member or more
 would turn up in about 3 of every 100 flips, and a move that large either way in about 6; the
 question came after the fall was seen, so we read it as borderline."
 
-### Do the textbook paired test and an exact count agree?
+### Do the textbook paired test and an exact count of every coin pattern give the flips' reading?
 
 Yes. Listing all 4,194,304 ways the 22 coins can land gives 0.027 one way and 0.055 either way, and
-the textbook paired test gives 0.0275 and 0.055; that one library call takes over when members run
-to thousands.
+the textbook paired test gives 0.0275 and 0.055, beside the flips' 0.029 and 0.057: the same
+borderline reading. That one library call takes over when members run to thousands.
 
 **ORIGIN.** Ronald Fisher's The Design of Experiments (1935) is an original reference for testing by
 rearranging labels (checked 29 Sep 2026).
@@ -211,7 +207,7 @@ review, up Rs 6,18,460, and an invented Rs 20 gap shows why a share cannot rank:
 on 100 orders to 0.002 on 20,000. The fix is two sentences: borderline against chance, and worth Rs
 24,420 a quarter, 0.19 percent of the company.
 
-**WATCH OUT.** A list ranked by p-value has ranked certainty and called it importance.
+**WATCH OUT.** A list ranked by p-value puts the surest gap first, which can be the smallest in rupees.
 
 ### What must a Rs 500 retention offer win back to pay for itself?
 
@@ -232,8 +228,8 @@ redraws at or below zero. Its low end sits far below the offer's Rs 500.
 **CALLBACK.** Week 1, Tuesday found that Retail-Plus orders per customer were the branch that moved;
 today priced the fall.
 
-Worth watching, and not worth acting on alone. If anyone acts, a coin-chosen half of the tier gets
-the offer first, Rs 5,500 a quarter, and eleven a side can show only a large recovery.
+The fall is worth watching, and not worth acting on alone. If anyone acts, a coin-chosen half of
+the tier gets the offer first, Rs 5,500 a quarter, and eleven a side can show only a large recovery.
 
 ---
 
@@ -249,7 +245,7 @@ chance made sends a quarter's spend to a segment that may be flat next quarter.
 3. Should acquisition budget move to the fastest riser?
 4. How often does chance alone make a 40 percent rise on Student's count?
 5. Which do you trust, 42 percent on 12 users or 31 percent on 1,200?
-6. Do an exact count of every deal, and real handfuls, agree?
+6. Do an exact count of every split between the quarters, and real Retail-Core orders, give the flips' share?
 
 **IN THE FIELD.** The Gates Foundation backed small schools partly because they were
 over-represented among top performers; among the best, Howard Wainer wrote, "we would expect 3% of
@@ -294,11 +290,11 @@ invented 400.
 The 31 percent, as the estimate. One user of 12 moves the rate 8.3 points, and a true 31 percent
 reads 42 or more in about a third of groups of 12.
 
-### Do an exact count of every deal, and real handfuls, agree?
+### Do an exact count of every split between the quarters, and real Retail-Core orders, give the flips' share?
 
-Yes. Listing every way the orders could be dealt to the two quarters gives an exact 0.387 against
-the flips' 0.397. Handfuls of Retail-Core's own orders, drawn at Student's size, make the rise in
-0.344, while handfuls of sixty almost never do.
+Yes. Counting every way the orders could split between the two quarters gives an exact 0.387
+against the flips' 0.397. Handfuls of Retail-Core's own orders, drawn at Student's size, make the
+rise in 0.344, while handfuls of sixty almost never do.
 
 **WATCH OUT.** The largest percentage on a page most often sits on the smallest base.
 
@@ -325,7 +321,7 @@ have bought anyway, at Diwali's scale.
 3. Should the reproduced lift send the sale to Diwali?
 4. What does the comparison show inside each segment?
 5. What does the note tell Meera about the discount?
-6. Does one mix for both groups give the same answer, and what can it check?
+6. Put on the same segment mix, do the two groups still differ, and what can that check catch?
 
 **IN THE FIELD.** In eBay's search-advertising experiments, new and infrequent users bought more
 after seeing an ad, while frequent users, whose buying the ads did not change, took most of the ad
@@ -337,14 +333,12 @@ favoured women (Bickel, Hammel and O'Connell, Science, 1975).
 
 The Monsoon Sale gave 15 percent off from 5 to 19 August 2026, aimed at Retail-Plus, and at that
 discount orders must rise 17.6 percent just for revenue to stand still. Customers who got it are
-called exposed.
-
-**Where the exposure table comes from.** It is the campaign platform's August list: 160 Retail-Plus
-and Retail-Core customers under the platform's own ids, with one average August spend per group. It
-records who received the sale, whatever the sale was aimed at, which is why it holds Retail-Core
-customers although the campaigns table aimed the sale at Retail-Plus, and it cannot be matched to
-Finance's order file. Read it for who got the sale; the mixes differ, 50 percent Retail-Plus among
-the exposed and 40 among the rest.
+called exposed, and the exposure table says who they were. It is the campaign platform's August
+list: 160 Retail-Plus and Retail-Core customers under the platform's own ids, with one average
+August spend per group. It records who received the sale, whatever the sale was aimed at, which is
+why it holds Retail-Core customers although the campaigns table aimed the sale at Retail-Plus, and
+it cannot be matched to Finance's order file. Read it for who got the sale; the mixes differ, 50
+percent Retail-Plus among the exposed and 40 among the rest.
 
 | Option | What it assumes | Call |
 |---|---|---|
@@ -385,11 +379,12 @@ segment is the confounder, a difference between the groups that moves the outcom
 
 Do not repeat it as designed, and if Diwali runs a sale, hold back a random slice of each segment.
 
-### Does one mix for both groups give the same answer, and what can it check?
+### Put on the same segment mix, do the two groups still differ, and what can that check catch?
 
-Yes. On the not-exposed group's mix the exposed spend Rs 3,104 against Rs 3,200, and the other way
-round Rs 3,395 against Rs 3,500: 3.0 percent less both ways. The route reuses the split's four
-cells, so it confirms that the mix explains the whole 6.1 percent and cannot catch an error in them.
+Yes, and the lift turns into a fall. On the not-exposed group's mix the exposed spend Rs 3,104
+against Rs 3,200, and the other way round Rs 3,395 against Rs 3,500: 3.0 percent less both ways.
+The check catches a blend whose rise comes from the mix, since it shows the mix explains the whole
+6.1 percent. It reuses the split's four cells, so it cannot catch an error in them.
 
 **ORIGIN.** Edward Simpson described the reversal in the Journal of the Royal Statistical Society,
 Series B, 1951 (checked 29 Sep 2026).
@@ -501,7 +496,7 @@ Monday. A sale widened on a jump that belongs to the month multiplies the margin
 3. Does August against July show the sale worked?
 4. What else changed in August?
 5. How would a hold-back at Diwali be designed and priced?
-6. Does the same test on months with no sale agree?
+6. Does the month-share test, run on Q1's months with no sale, find gaps as large as August's?
 
 **IN THE FIELD.** eBay's paid search test found brand-keyword ads had "no measurable short-term
 benefits", since "almost all of the forgone click traffic and attributed sales were captured by
@@ -547,16 +542,16 @@ to see a 6 percent lift, and how many a hold-back needs is power, a later week's
 offer was priced on Finance's 22 members, about Rs 1,139 each in August, and the 70 are the
 platform's customers at Rs 5,000, so each decision is sized on the list it acts on.
 
-### Does the same test on months with no sale agree?
+### Does the month-share test, run on Q1's months with no sale, find gaps as large as August's?
 
-Yes. On Q1, when no sale ran, the same test finds gaps of 4, 22 and 26 points between the segments'
-monthly shares, so August's 4 carries no sign of the sale, and this placebo test shares nothing with
-chapter 4's split. Option B, a difference in differences, has Retail-Plus rising Rs 6,010 more than
+Yes, and larger. On Q1, when no sale ran, the test finds gaps of 4, 22 and 26 points between the
+segments' monthly shares against August's 4, so August carries no sign of the sale, and this placebo
+test shares nothing with chapter 4's split. Option B, a difference in differences, has Retail-Plus rising Rs 6,010 more than
 Retail-Core from July to August on 13 orders, but May to June shows the two do not move alike, so
 it stays a lead.
 
-> **Kavya's review.** "Who got it: a rule chose them. Who did not: a different mix. What else
-> changed: August, for everyone. You priced the hold-back on the list it acts on; take it to
+> **Kavya's review.** "A rule chose who got the sale, the customers who did not are a different mix,
+> and August was busy for everyone. You priced the hold-back on the list it acts on, so take it to
 > Marketing as an offer."
 
 Nothing in the files shows a lift the sale can claim. Hold back a random fifth of each segment at
@@ -577,9 +572,9 @@ Diwali and compare inside each segment.
 
 Pick a letter, then check the key.
 
-1. A shuffle test returns 0.04. Which is right? a) there is a 4 percent chance that the fall in
-   spending is not real; b) the fall is 96 percent certain; c) with no change, this fall turns up
-   in about 4 of 100 shuffles; d) the fall is 4 percent of revenue.
+1. A flip test on the same members' two quarters returns 0.04. Which is right? a) there is a 4
+   percent chance that the fall in spending is not real; b) the fall is 96 percent certain; c) with
+   no change, this fall turns up in about 4 of 100 flips; d) the fall is 4 percent of revenue.
 2. A rate rose 50 percent on eight orders. What does the note say? a) move budget now, since 50
    percent is the largest rise on the page; b) a lead, and the count that would make it a finding;
    c) nothing; d) the rate is wrong.
@@ -598,8 +593,7 @@ Key: 1c 2b 3d 4c. A miss sends you back to the trap in chapter 1, 3, 4 or 6.
 
 The tags are this programme's own calibration for 0 to 3 year Indian-market candidates: [S] a
 staple asked everywhere, [F] frequent in GCC and product screens, [D] a differentiator. Each
-chapter's first question is its design question, answered in the chapter; chapter 1's closes this
-list.
+chapter's first question is its design question, answered in the chapter.
 
 **[S] How do you know whether a change in a metric is significant?** "I build a chance reference
 that fits how the data was collected, flipping each member's own pair for the same members measured
@@ -609,8 +603,8 @@ check the count and size it in money." A weak answer names a test and a 0.05 cut
 
 **[S] Explain a finding to a non-technical stakeholder.** "The decision first, with one number and
 its base, then the evidence, the caveat that would change my view, and the action with its cost:
-Retail-Plus spends about Rs 24,000 a quarter less, a fifth of one percent of the company, so we watch
-it, and any offer goes to a coin-chosen half first."
+Retail-Plus spends Rs 24,420 a quarter less, 0.19 percent of the company, so we watch it, and any
+offer goes to a coin-chosen half first."
 
 **[S] What does p = 0.03 mean, and not mean?** "If there were no real difference, a gap this large
 would turn up about 3 times in 100 by chance. It is never the chance we are wrong, and it says

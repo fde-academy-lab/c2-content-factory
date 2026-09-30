@@ -1,11 +1,10 @@
 # Which drawings go up on the board, in order, to answer Meera's three questions?
 
-The board work for Week 1, Thursday, in the order it goes up. Meera Raghavan, CEO of Kalpa Retail,
-asks three things before Monday's growth review: is the fall in Retail-Plus, Kalpa's paid
-membership tier, real or the wobble every quarter shows; should budget follow Student's 40 percent
-rise; and did the monsoon sale, a 15 percent discount aimed at Retail-Plus in August, really lift
-revenue 6 percent? The answers go on one page she reads in two minutes. The deck, the notebooks,
-the companion page and the cheat sheet use these same drawings.
+Meera Raghavan, CEO of Kalpa Retail, asks three things before Monday's growth review: is the fall
+in Retail-Plus, Kalpa's paid membership tier, real or the wobble every quarter shows; should budget
+follow Student's 40 percent rise; and did the monsoon sale, a 15 percent discount aimed at
+Retail-Plus in August, really lift revenue 6 percent? The answers go on one page she reads in two
+minutes.
 
 ---
 
@@ -13,7 +12,8 @@ the companion page and the cheat sheet use these same drawings.
 
 Meera's three questions go up on the left, and the room names the check each one needs before any
 tool opens. The note on the right stays on the board all day, and it has four parts: the claim, the
-evidence with its base, the caveat that would change the claim, and the action with its cost.
+evidence with its base, the caveat that would change the claim, and the action with its cost. Later
+the note is audited: every line is checked for a base, a count or chance, and a caveat.
 
 ```mermaid
 flowchart LR

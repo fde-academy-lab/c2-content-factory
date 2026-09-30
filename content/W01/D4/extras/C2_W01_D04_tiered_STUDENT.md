@@ -20,9 +20,9 @@ asks one more question before it goes to Meera.
 **The questions on the way.**
 
 1. What do the two chance references do?
-2. What do you build, and what do you fill in?
-3. Why do the two routes part here, and which would you report?
-4. Did your build land on the right numbers?
+2. How do you build the invented 30-member tier, and which shares go in the table?
+3. Why do the flips and the pooled shuffle part here, and which would you report?
+4. Do the 30-member tier's fall, four shares and correlation match the check?
 
 ### What do the two chance references do?
 
@@ -33,7 +33,7 @@ back into two groups at random, so the gaps between members count as chance. On 
 file, 22 members measured in Q1 and Q2, the flips gave 0.029 counting falls and the pooled shuffle
 0.027, because a member's Q1 barely predicts their Q2 there (a correlation of 0.04).
 
-### What do you build, and what do you fill in?
+### How do you build the invented 30-member tier, and which shares go in the table?
 
 An invented tier of 30 members, each keeping a spending level of their own across both quarters,
 with every member's Q2 set Rs 400 lower on average. Paste this into a new notebook cell and run it:
@@ -76,19 +76,19 @@ member's Q1 predicts their Q2 with `statistics.correlation(q1, q2)`.
 | The flips' two shares | Your numbers |
 | The pooled shuffle's two shares | Your numbers |
 | How well Q1 predicts Q2, here and on Kalpa's file (0.04) | Two numbers |
-| Why the two routes part here and land close on Kalpa's file | One sentence in business terms |
+| Why the flips and pooling part here and land close on Kalpa's file | One sentence in business terms |
 | Which you would report, and why | One sentence |
 
-### Why do the two routes part here, and which would you report?
+### Why do the flips and the pooled shuffle part here, and which would you report?
 
 Pooling treats the 60 totals as 60 different people, so the gaps between members count as chance.
 Where heavy buyers stay heavy those gaps are large, and pooling overstates how often chance makes
 the fall, which is how it can miss a real one. On Kalpa's file a member's Q1 barely predicts their
-Q2, so the two routes land close there, and the design still picks the flips. The skill is letting
+Q2, so the flips and pooling land close there, and the design still picks the flips. The skill is letting
 the way the data was collected choose the chance reference before any share comes back, so the flips'
 share is the one to report.
 
-### Did your build land on the right numbers?
+### Do the 30-member tier's fall, four shares and correlation match the check?
 
 The tier's real fall comes out at about Rs 314 a member. Counting falls, the flips give about 0.004
 and the pooled shuffle about 0.24; either way, about 0.007 and 0.49. A member's Q1 predicts their Q2

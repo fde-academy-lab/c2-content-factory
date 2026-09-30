@@ -179,7 +179,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     paid membership tier, real or the wobble every quarter shows; should budget follow Student's 40 percent rise; and did
     the monsoon sale work? Here you move the numbers behind those answers. Walk the flip test on five members' cards, run
     the flip machine with your own fall, crowd and cost, try four experiments that each change one thing, and draft the
-    note. Every number on the page is computed here or invented for an experiment, and each section says which.</p>
+    note. Kavya Nair, the team's senior analyst, gives her review in the strips marked with her name. Every number
+    on the page is computed here or invented for an experiment, and each section says which.</p>
 </header>
 
 <div class="page">
@@ -287,17 +288,17 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
         <article class="card exp" id="expA">
           <div class="part-label">Experiment A &middot; invented sentences</div>
           <h3 class="card-title">Which of four sentences about a share of 0.03 are defensible?</h3>
-          <p><b>Situation.</b> An invented drop between two quarters gives a share of 0.03 from 2,000 shuffles counting
-            drops only, and 0.06 counting a move that large either way. Four analysts each write one sentence about
-            it.</p>
+          <p><b>Situation.</b> An invented drop between two quarters, for the same members measured in both, gives a
+            share of 0.03 from 2,000 flips of each member's pair counting drops only, and 0.06 counting a move that
+            large either way. Four analysts each write one sentence about it.</p>
           <p><b>Hypothesis.</b> Two of the sentences describe the share as a share of chance-only worlds, and two turn it
             into the chance that the finding is wrong.</p>
-          <p><b>Watch for.</b> Which sentences start from &ldquo;if nothing had changed&rdquo;, and which quietly swap the
-            question.</p>
+          <p><b>Watch for.</b> Which sentences start from &ldquo;if nothing had changed&rdquo;, and which answer a
+            different question.</p>
           <ol class="claims" id="expAList">
             <li>There is a 3 percent chance the drop happened by chance.<span class="judge"></span></li>
             <li>If nothing had changed between the quarters, a drop this large turns up in about 3 of every 100
-              shuffles.<span class="judge"></span></li>
+              flips.<span class="judge"></span></li>
             <li>We are 97 percent sure the drop is real.<span class="judge"></span></li>
             <li>The drop is borderline against the usual wobble, about 3 in 100 one way and 6 either way, and its size
               in rupees is a separate question.<span class="judge"></span></li>
@@ -493,9 +494,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
             and the action says what data would settle it.<span class="where">Morning, chapter 5; notebook C2_W01_D04_05.</span></dd>
         </dl>
       </div>
-      <p class="foot">Week 1, Thursday. Kalpa Retail and everyone in it are fictional. Every number on this page is
-        computed here or invented for the experiment, and each says which; the page stores nothing and calls no
-        network.</p>
+      <p class="foot">Week 1, Thursday. Kalpa Retail and everyone in it are fictional. The page stores nothing and
+        calls no network.</p>
     </section>
   </main>
 </div>
@@ -1321,13 +1321,13 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
       span.textContent = judged ? JUDGE[i][1] : "";
     });
     reveal("expA", judged
-      ? "Sentences 2 and 4 are defensible and sentences 1 and 3 are wrong. The two wrong ones each swap the question: they answer how likely the finding is, which a shuffle cannot tell."
+      ? "Sentences 2 and 4 are defensible and sentences 1 and 3 are wrong. The two wrong ones each swap the question: they answer how likely the finding is, which the flips cannot tell."
       : "The judgements are hidden again. Read the four sentences once more and decide before you judge them a second time.");
   });
   $("expASeq").addEventListener("click", function () {
-    openSeq("Experiment A, as a sequence", ["the question", "the shuffles", "the sentence"], [
-      ["the question", "the shuffles", "suppose nothing changed"], ["the shuffles", "the shuffles", "2,000 relabelled worlds"],
-      ["the shuffles", "the sentence", "60 of 2,000 reach the drop"], ["the shuffles", "the shuffles", "a share of 0.03, 3 in 100 worlds"],
+    openSeq("Experiment A, as a sequence", ["the question", "the flips", "the sentence"], [
+      ["the question", "the flips", "suppose nothing changed"], ["the flips", "the flips", "2,000 flipped worlds"],
+      ["the flips", "the sentence", "60 of 2,000 reach the drop"], ["the flips", "the flips", "a share of 0.03, 3 in 100 worlds"],
       ["the sentence", "the question", "never: chance the finding is wrong"]],
       "The share is computed inside a world where nothing changed, so it can only describe that world.");
   });

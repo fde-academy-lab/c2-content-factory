@@ -98,7 +98,7 @@ start["A8"].font = BOLD
 tabs = [
     "Share: how often does chance alone make a fall this large, and which sentence says so honestly?",
     "Size: is a fall that beats chance worth more than the fix costs?",
-    "Count: is a rate that rose a lead, or worth testing, once you count its customers?",
+    "Count: is a rate that rose worth testing, or only worth watching, once you count its customers?",
     "Mix: did the campaign raise spend inside each group, or only in the blend?",
     "Export: is every tab fixed, and what does the note to Meera say?",
 ]
@@ -175,10 +175,11 @@ put(ws, "B17", '=IF(ABS(B11/B6-B5)>=0.005,"Fix the segment fall formula before s
 put(ws, "A18", "Fixed, for the Export tab", NOTE); put(ws, "B18", "=IF(ABS(B11/B6-B5)<0.005,1,0)")
 
 # ---------------------------------------------------------------- Count
-ws = sheet(wb, "Count", "Is a rate that rose a lead, or worth testing, once you count its customers?",
+ws = sheet(wb, "Count", "Is a rate that rose worth testing, or only worth watching, once you count its customers?",
            "A rate that jumps by 40 percent can stand on a handful of orders from a handful of customers. Count "
            "both first; the rule of thumb counts customers, since more orders from the same few customers add no "
-           "new evidence. The numbers are invented; change them.")
+           "new evidence, and a rate on fewer than thirty customers is a lead, one to watch until more customers "
+           "buy. The numbers are invented; change them.")
 head(ws, 4, ["Input", "Value"])
 put(ws, "A5", "Orders in the earlier quarter"); put(ws, "B5", 8, fill=INPUT)
 put(ws, "A6", "Orders in the later quarter"); put(ws, "B6", 14, fill=INPUT)
