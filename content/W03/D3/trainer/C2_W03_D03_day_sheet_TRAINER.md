@@ -57,7 +57,7 @@ no test.
 Take a break of about ten minutes inside each build stretch at a point that suits the room. Build
 time absorbs it.
 
-**The groups.** The handover plans 35 learners in nine groups of four, while the tracker's
+**The groups.** The handover plans 35 learners in nine groups, eight of four and one of three, while the tracker's
 build-week anatomy asks for fifteen groups, three per sub-problem. The Programme Head allocated
 groups to sub-problems on Monday; run today on whatever Monday settled. Every part of the day works
 per group, so the count changes only how long the checkpoint and the close take.

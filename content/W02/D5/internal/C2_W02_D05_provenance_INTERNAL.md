@@ -74,7 +74,8 @@ C-0170 and C-0169 appear only in `trainer/`, in this file and in the INTERNAL re
 | Microsoft Support, VLOOKUP: https://support.microsoft.com/en-us/office/vlookup-function-0bbc8083-26fe-4963-8ab8-93a18ad188a1 | verified 29 September 2026 | range_lookup defaults to approximate match when omitted |
 | Microsoft Support, SUBTOTAL: https://support.microsoft.com/en-us/office/subtotal-function-7b027003-f060-4ade-9040-e478765b9939 | verified 29 September 2026 | 109 ignores rows hidden by hand; 9 includes them; filtered rows are excluded by both |
 | Exponent, data analyst interview questions: https://www.tryexponent.com/blog/top-data-analyst-interview-questions | verified 13 Sep 2026 on the row; not re-fetched | Interview calibration |
-| A video on pivots and lookups | to be found | The row supplies none and none was verified in this session |
+| Chandoo on YouTube, Complete Excel Tutorial for Data Analysis in 4 Hours (with FREE Files): https://www.youtube.com/watch?v=7QNgqq154gE | verified 30 September 2026: YouTube's oEmbed endpoint returns the title "Complete Excel Tutorial for Data Analysis in 4 Hours (with FREE Files)" and the author "Chandoo" | The study notes' Go deeper entry 6, the video on pivots and lookups. Its chapter list and running time were not read, because YouTube answered the watch page with its automated-traffic check, so the notes give the length as the title's four hours |
+| Chandoo.org, FREE 4 Hours Complete Excel Course: https://chandoo.org/wp/complete-excel-course-free/ | verified 30 September 2026 | The author's own page for the video, which links it as the four-hour course video and lists the lookup functions VLOOKUP, INDEX+MATCH and XLOOKUP and the pivot table topics (creating, sorting and filtering, slicers and timelines, grouping) among what the course teaches; entry 6's description rests on this page |
 
 ## Checked in this session, and not verified in Excel
 

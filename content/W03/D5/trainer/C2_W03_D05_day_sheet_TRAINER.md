@@ -22,9 +22,10 @@ Posts to <!-- sync:module:W03/D5 -->Module 1: Foundations of AI and Data<!-- /sy
 | The Academic TA | Hosts the online GD room, collects both streams' notes, records the freeze hashes. |
 | The Programme Head | Draws the GD order at the opening and Saturday's presentation order at the close. |
 
-Nine groups of four from 35 learners is the Programme Head's stated plan (`data/programme/facts.yaml`,
-cohort, status stated); the tracker's build anatomy plans fifteen. If the Programme Head runs more
-groups, the roster stretches as the last section says.
+Nine groups from 35 learners, eight of four and one of three, is the Programme Head's stated plan
+(`data/programme/facts.yaml`, cohort, status stated), and Thursday's roster and Saturday's sheets seat
+it the same way; the tracker's build anatomy plans fifteen. If the Programme Head runs more groups,
+the roster stretches as the last section says.
 
 ## The day, in durations
 

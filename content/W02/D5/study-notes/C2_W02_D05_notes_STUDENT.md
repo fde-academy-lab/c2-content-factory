@@ -478,7 +478,7 @@ types over the source.
 | 3 | Microsoft Support, VLOOKUP function, https://support.microsoft.com/en-us/office/vlookup-function-0bbc8083-26fe-4963-8ab8-93a18ad188a1 (verified 29 September 2026) | 10 minutes | It documents the default that handed C-0195 a neighbour's row. |
 | 4 | Microsoft Support, SUBTOTAL function, https://support.microsoft.com/en-us/office/subtotal-function-7b027003-f060-4ade-9040-e478765b9939 (verified 29 September 2026) | 5 minutes | It says which hidden rows 9 and 109 each leave out. |
 | 5 | Exponent, data analyst interview questions, https://www.tryexponent.com/blog/top-data-analyst-interview-questions (verified 13 Sep 2026) | 25 minutes | Its dashboard that disagrees with Finance is round 1 asked in an interview. |
-| 6 | A video that builds a PivotTable, an exact lookup and a SUBTOTAL foot on one sheet: to be found. | | The slot stays empty until one is verified. |
+| 6 | Chandoo on YouTube, Complete Excel Tutorial for Data Analysis in 4 Hours (with FREE Files), https://www.youtube.com/watch?v=7QNgqq154gE (verified 30 September 2026) | About 4 hours in all | Its pivot table part and its lookup part, which covers VLOOKUP, INDEX and MATCH, and XLOOKUP, teach the tools of rounds 1 and 2, so watch those two parts first. |
 
 To practise, the deck pack in `demos/` is the reference build of the three deliverables, the
 decision tool beside it hides one formula defect in each of five tabs, and the last-mile page
