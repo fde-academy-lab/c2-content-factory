@@ -22,7 +22,7 @@ Transition: one Saturday at Kalpa Retail.
 LIVE, 45 minutes in six parts, then 5 minutes for Meera's ask. The talk track is
 trainer/C2_W01_D01_domain_story_TRAINER.md, and it holds what to say, the question per part and
 the facts you may quote with their sources. Six drawings go on the board, one per part, and stay
-up all day. Hand out the domain card at the close of part 6.
+up all day. The domain card goes out at the end of the day, after the room has met the traps.
 ```
 
 ---
@@ -182,15 +182,16 @@ flowchart TB
     class R,S bet
 ```
 
-**The rule.** Every metric is a numerator over a denominator in a window, and the three traps that fool most analysts are all about the bottom half of that fraction.
+**The rule.** Every metric is a numerator over a denominator in a window, and a rate means nothing until you say what it is compared with.
 
 ```notes
 LIVE, 9 minutes. Part 5 of the talk track, the other part never to cut. Say the three traps with
-their illustrative numbers: retention of 300 over 380 is 79 percent and divides by survivors;
-ten Rs 1,600 orders and one Rs 40,000 order have a mean of about Rs 5,091 and a median of
-Rs 1,600; total growth of 15 percent is 2 percent like for like.
-Ask: the app's AOV rose 10 percent this month; good news? Collect three reasons it might not be.
-Land it: say the denominator and the window before the number.
+their illustrative numbers: retention of 300 over 380 is 79 percent and divides by survivors; the
+pressure cookers ran out on Saturday, so Sunday's file shows no sales and no row says anyone asked;
+total growth of 15 percent is 2 percent like for like.
+Ask: the festive lights have sold 62 percent in four weeks with Diwali ahead; good news or bad?
+Collect three things to check first. Land it: a rate means nothing until you say what it is
+compared with, and over which window.
 Draw the metric tree and leave it on the board all day; the case writes its numbers onto it.
 Transition: from describing to acting.
 ```
@@ -224,7 +225,7 @@ first month in 2024, and fifteen months later its chief executive said the cost 
 quality; a tribunal held Air Canada responsible for what its chatbot said.
 Ask: which would you let a system do with no person checking: send the Monday numbers, reorder
 detergent, refund the bedsheet, change a price? Listen for the reasons.
-Hand out the domain card now.
+Keep the domain card back until the close.
 Transition: the business in one line, and the question its CEO asked us.
 ```
 

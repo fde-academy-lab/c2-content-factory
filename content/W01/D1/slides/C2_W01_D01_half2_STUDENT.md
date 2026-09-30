@@ -771,6 +771,7 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 3 minutes. Read Meera's reply and stop; Tuesday's file settles it. Remind the room of the
-take-home and the pre-read, and that the practice lab follows with the TA.
+LIVE, 3 minutes. Read Meera's reply and stop; Tuesday's file settles it. Hand out the domain card
+now, one per learner. Remind the room of the take-home and the pre-read, and that the practice lab
+follows with the TA.
 ```

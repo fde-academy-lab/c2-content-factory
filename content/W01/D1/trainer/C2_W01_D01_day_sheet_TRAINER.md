@@ -235,7 +235,7 @@ stalled on chapter 3 take its recovery task.
 
 | Moment | File |
 |---|---|
-| The story | `trainer/C2_W01_D01_domain_story_TRAINER.md`, with the domain card printed for each learner and the dossier for reading after |
+| The story | `trainer/C2_W01_D01_domain_story_TRAINER.md`; the domain card is printed for each learner and handed out at the close, after the traps, and the dossier is for reading after |
 | Teaching | `slides/C2_W01_D01_half1_STUDENT.pptx` (the story and chapters 1 to 4) and `slides/C2_W01_D01_half2_STUDENT.pptx` (chapters 5 and 6 and the cases), speaker notes on every slide |
 | The board | `whiteboards/C2_W01_D01_board_work_STUDENT.md`, the drawings in the order they go up |
 | Live demonstration | `notebooks/C2_W01_D01_00_retail_story_STUDENT.ipynb` for self-study, then `_01_` to `_06_`, one per chapter |

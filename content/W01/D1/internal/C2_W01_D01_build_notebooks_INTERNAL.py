@@ -215,18 +215,19 @@ def story():
         things. An app update that starts new sessions sooner cuts conversion over sessions with no
         change in buyers, which is a denominator that shifted, the first trap on the card.
 
-        ## 4. Revenue is a tree of multiplied branches
+        ## 4. Revenue is a tree, and the leaks come off it
 
         For the invented month, 40,000 customers placed 1.25 orders each, of four items, at Rs 450 an
-        item, before a 10 percent discount. The tree multiplies them.
+        item, before a 10 percent discount. The tree multiplies them. Returns and cancellations then
+        leak out of what the tree produced, and the leaks can grow faster than the revenue.
 
-        **Predict before you run.** Next month customers rise 20 percent and each customer orders a
-        sixth less often. What happens to revenue?
+        **Predict before you run.** Next month revenue rises 10 percent while returns climb from 6 to
+        12 percent of it. How much more does Kalpa keep?
 
-        - a) It rises about 3 percent, 20 less 16.7.
-        - b) It falls, because frequency is worth more than customers.
-        - c) It stays exactly flat.
-        - d) It rises 20 percent, since customers lead the tree.
+        - a) 10 percent more, since revenue rose 10 percent.
+        - b) About 3 percent more.
+        - c) 4 percent more, 10 less the 6 points of extra returns.
+        - d) Less than before.
         """),
         code("""
         month = {"customers": 40000, "orders per customer": 1.25, "items per order": 4,
@@ -239,14 +240,18 @@ def story():
             {"label": "orders per customer", "note": "1.25", "kind": "known"},
             {"label": "order value", "note": "4 items x Rs 450, less 10%", "kind": "known"}]},
             title="Invented: one month's revenue tree")
-        next_month = revenue * 1.20 * (5 / 6)
-        print(f"this month {kit.rupees(revenue)}; customers +20% and frequency x 5/6: {kit.rupees(next_month)}")
+        kept_before = 100 * (1 - 0.06)                                          # invented index
+        kept_after = 110 * (1 - 0.12)
+        kit.columns(["this month", "next month"], [("revenue, index", [100, 110]), ("kept after returns", [kept_before, kept_after])],
+                    fmt=lambda v: f"{v:g}", title="Invented: revenue up 10, kept up about 3")
+        print(f"kept: {kept_before:g} then {kept_after:g}, up {kept_after / kept_before - 1:.1%}")
         kit.check("the tree multiplies to Rs 8.1 crore", round(revenue) == 81000000, kit.rupees(revenue))
-        kit.check("opposite moves can leave the total flat", round(next_month) == round(revenue))
+        kit.check("what Kalpa keeps rises about 3 percent", round(kept_after / kept_before - 1, 2) == 0.03)
         """),
         md("""
-        **What happened.** The answer is c: 1.2 x 5/6 = 1. A flat total can hide two branches moving
-        hard in opposite directions, which is why an analyst reads the branches before the root.
+        **What happened.** The answer is b: 100 less 6 is 94, and 110 less 13.2 is 96.8, up about 3
+        percent. A growth figure has to say which side of the leaks it was measured on, which is the
+        question chapter 1 asks of Kalpa's own orders.
 
         ## 5. Retention divides by the cohort, never by the survivors
 
@@ -311,28 +316,27 @@ def story():
 
         ### The card's other three formulas
 
-        Inventory days, gross margin across two categories, and like-for-like growth each carry a
-        trap the card names. The cell computes all three on invented numbers.
+        Inventory days, gross margin, and like-for-like growth each carry a trap the card names. The
+        cell computes all three on invented numbers.
         """),
         code("""
         inventory_days = 45_00_000 / 1_00_000                                  # invented
-        staples, fashion = (90_00_000, 0.10), (10_00_000, 0.40)                 # invented
-        averaged = (staples[1] + fashion[1]) / 2
-        earned = (staples[0] * staples[1] + fashion[0] * fashion[1]) / (staples[0] + fashion[0])
+        margin, net, gmv = 400, 1600, 1800                                      # the invented basket
+        on_net, on_gmv = margin / net, margin / gmv
         total_growth = (510 + 65) / 500 - 1                                     # invented, Rs crore
         like_for_like = 510 / 500 - 1
         kit.table(["metric", "formula", "invented result", "the trap"],
                   [("inventory days", "stock at cost / COGS per day", f"{inventory_days:.0f} days",
                     "stock at selling price inflates the days"),
-                   ("gross margin, two categories", "sum of margin / sum of revenue", f"{earned:.0%}",
-                    f"averaging the two percentages reads {averaged:.0%}"),
+                   ("gross margin", "(net revenue less COGS) / net revenue", f"{on_net:.0%}",
+                    f"divided by GMV it reads {on_gmv:.0%}, and GST moves it"),
                    ("like-for-like growth", "both-year stores' sales / last year's, less 1",
                     f"{like_for_like:.0%}", f"total growth with 20 new stores reads {total_growth:.0%}")],
                   caption="Invented numbers for the card's last three formulas")
-        kit.columns(["gross margin", "growth"], [("the trap", [averaged * 100, total_growth * 100]),
-                                                 ("the right number", [earned * 100, like_for_like * 100])],
+        kit.columns(["gross margin", "growth"], [("the trap", [on_gmv * 100, total_growth * 100]),
+                                                 ("the right number", [on_net * 100, like_for_like * 100])],
                     fmt=lambda v: f"{v:.0f}%", title="Invented: the trap against the right number")
-        kit.check("the business earns 13 percent, not the 25 percent average", round(earned, 2) == 0.13)
+        kit.check("margin on net revenue is 25 percent, on GMV 22", (round(on_net, 2), round(on_gmv, 2)) == (0.25, 0.22))
         kit.check("like-for-like growth is 2 percent against 15 total", (round(like_for_like, 2), round(total_growth, 2)) == (0.02, 0.15))
         """),
         md("""
@@ -358,7 +362,7 @@ def story():
                   [("net revenue = GMV less cancellations, returns, GST", "Rs 80 of Rs 100", "the finance controller"),
                    ("contribution = gross margin less per-order costs", "Rs 150 on Rs 1,800", "the finance controller"),
                    ("conversion = orders / visits, same window", "2.5% of sessions", "marketing"),
-                   ("revenue = customers x orders per customer x order value", "Rs 8.1 crore", "the CEO"),
+                   ("revenue = customers x orders per customer x order value", "Rs 8.1 crore; kept up 3% on 10%", "the CEO"),
                    ("retention = cohort buyers in month k / cohort size", "30% in March", "the head of Retail-Plus"),
                    ("payback = CAC / monthly contribution per customer", "20 months", "the CEO, before signing")],
                   caption="The story's formulas; every number invented")
