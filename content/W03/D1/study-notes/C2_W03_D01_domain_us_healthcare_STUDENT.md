@@ -4,7 +4,7 @@
 
 The business you work inside for Build 1: how a blood test in a US city becomes a claim, a payment and a line in a profit and loss statement, who pays for it, who at Kalpa Health asks the data team for what, every revenue-cycle metric as a formula with a worked number and the trap it hides, the words a stakeholder meeting assumes you know, and the rules that decide what an analyst in Bengaluru may see.
 
-About a 40 minute read · 6 diagrams and 25 tables
+About a 45 minute read · 6 diagrams and 28 tables
 
 > Kalpa Group, Kalpa Health, its people, its patients and its numbers are fictional, and every Kalpa Health record is synthetic, so no real patient's information exists anywhere in the programme. The real companies named here are analogies, each fact about them checked on 30 September 2026 against the source named beside it, and none of them is Kalpa's model. A number marked illustrative is a round number chosen for easy arithmetic, neither Kalpa's data nor any real company's.
 
