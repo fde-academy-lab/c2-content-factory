@@ -194,3 +194,9 @@ note made neutral; item 7 asks what the note says with no control total; item 12
 shuffle unit; item 1's option c made quarter-neutral; every flagged line restated positively,
 including the chapter 2 review in the deck and notebook 2 and the "promising, still to be proven"
 label.
+
+**Round five.** Pass 5 PASSED, with three recommendations, all applied: S5 no longer states S15's
+key, the chapter 3 promise became a question so it no longer states S24's key, and three contrast
+lines in the notebooks and one pivot line on S21 and S23 were restated. Kept as a known point: the
+chapter titles name where the room broke, so chapter 1's title sits beside S4's question by design;
+items 1 and 4 of the practice set share a method and stay answerable on their own.

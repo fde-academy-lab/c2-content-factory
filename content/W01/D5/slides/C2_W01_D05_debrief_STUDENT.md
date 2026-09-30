@@ -103,7 +103,7 @@ is the decomposition, which is the right step on data you already trust.
 | Q1 | 98 | 98 | Rs 50,63,000 | Rs 60,48,000 |
 | Q2 | 109 | 99 | Rs 56,60,890 | Rs 43,25,480 |
 
-Q1 lands on orders and misses on rupees; Q2 misses on both. Two different errors, and the headline carries them both.
+Two different errors, and the headline carries them both.
 
 ```notes
 LIVE, 2 minutes. The answer is c. Open notebook 1 on the projector and run its first level. Point
@@ -424,7 +424,7 @@ outside the file and tells you where, where the rupee check tells you how much.
 ---
 
 ## SECTION 3: The headline on too few orders
-*A rate on a handful of orders cannot lead a note until its count is said.*
+*What can ten orders carry in the note's first line?*
 
 ```notes
 LIVE, after lunch. Ten minutes. Notebook 3, C2_W01_D05_03_headline_on_few_orders_STUDENT.ipynb, on
@@ -434,7 +434,7 @@ the projector from S23.
 ---
 
 ## S21. Choosing which right number leads the note
-*The data now ties to the books; the question is which finding Meera reads first.*
+*The data ties to the books. Which finding does Meera read first?*
 
 ```stats
 value: Rs 17,22,520 | label: the fall | note: Q1 to Q2, reconciled
@@ -480,7 +480,7 @@ value: Rs 17,10,000 | label: the fall it carries | note: 99.3% of the quarter's
 
 ```notes
 LIVE, 2 minutes. Read it as the headline "corporate is declining; we recommend a retention plan".
-The number is correct; the question is what ten orders can carry.
+The number is correct. What can ten orders carry?
 ```
 
 ---

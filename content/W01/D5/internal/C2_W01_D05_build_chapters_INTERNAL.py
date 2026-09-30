@@ -206,8 +206,7 @@ kit.check("only options C and D land on the books", [round(s[6], 1) for s in siz
     md("""
     **The best-fit call.** C. It costs about fifteen minutes of an analyst's two hours, needs only the
     control file that came with the export, and lands on the books to the rupee; the computer's share
-    of the cost is under a millisecond for all four, so the choice is about minutes of thought, never
-    about compute. B is the option most people who did check stopped at, and it still leaves the
+    of the cost is under a millisecond for all four, so the choice turns on minutes of thought. B is the option most people who did check stopped at, and it still leaves the
     headline about 14 points off. D names every order that differs, which C cannot, and costs a request
     to Finance and most of the afternoon.
 
@@ -596,8 +595,8 @@ kit.check("C passes both checks", opt_rows[2][4] == opt_rows[2][5] == "passes")
 
     **What would change the call.** Text that cannot be read without a guess moves the call to D: a
     value written as a word, a decimal whose unit is unclear (lakh or crore), a currency that is not the
-    file's. A row that is not an order at all, a test transaction, moves it to B. In every case the log
-    line and the reconciliation carry the decision, and zero never does.
+    file's. A row that is not an order at all, a test transaction, moves it to B. In every case the decision
+    lives in a log line and shows in the reconciliation.
     """),
     code('''
 kit.vflow(["a value that will not convert",
@@ -897,7 +896,7 @@ kit.columns(["as even as 5 and 5", "at least as uneven as 6 and 4"], [("share of
 kit.check("chance alone gives a split this uneven in most worlds", p_split > 0.5, f"{p_split:.3f}")
 '''),
     md("""
-    **The fix, and what it changes.** The corporate fall goes into the note as counts, never as a rate:
+    **The fix, and what it changes.** The corporate fall goes into the note as counts:
     "Rs 17,10,000 of the fall is two fewer corporate orders, six in Q1 and four in Q2." Its action is a
     question to whoever owns those accounts (which two did not reorder, and why), which costs a phone call.
     The lead moves to the branch that moved on enough orders to read.
