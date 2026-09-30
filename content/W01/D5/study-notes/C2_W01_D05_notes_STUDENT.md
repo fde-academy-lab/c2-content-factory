@@ -475,7 +475,7 @@ bounds and offers a test, so the room hears the caveat as part of the claim.
 
 ---
 
-## Which approach fits each design case, sized how, and what would switch it?
+## Which approach fits each design case, sized how, and what would make you switch?
 
 **Who needs the answer.** An interviewer asking the design question, and behind each case a Kalpa
 stakeholder who acts on the call. The numbers marked illustrative in the cases are set for the case
