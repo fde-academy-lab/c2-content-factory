@@ -299,7 +299,7 @@ rows = [("A. closed quarters", n1 + n2, f"{option_a:.1f}%", "+0.0 points", "noth
         ("B. same 11 weeks", m1 + m2, f"{option_b:.1f}%", f"{option_b - option_a:+.1f} points",
          f"the last two weeks of each quarter, {left_out} orders"),
         ("C. per day, closed", n1 + n2, f"{option_c:.1f}%", f"{option_c - option_a:+.1f} points",
-         "nothing; it spreads each total over 91 and 92 days"),
+         "where the weeks sit, once a quarter is cut; nothing on closed quarters"),
         ("D. same quarter last year", 0, "cannot run", "no last-year rows", "everything, until last year's export arrives")]
 kit.table(["Option", "Rows read", "Answer", "Gap from A", "What it leaves out"], rows,
           caption="Four ways to size the fall, on the export as it stands")

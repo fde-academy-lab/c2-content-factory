@@ -555,7 +555,8 @@ is not the branch that moved; orders per customer fell from 1.65 to 1.25. In beh
 in Retail-Plus, where the same 22 members placed 26 orders against 51, and revenue per order rose
 mainly because those small orders disappeared. In rupees most of the fall is three fewer Business
 orders, each worth lakhs, so one account's timing moves it by lakhs. The fall began in July, before the
-button broke, and hit every channel, so the button explains at most about 4 orders. Two hypotheses
+button broke, and hit every channel, so the button explains at most about 4 orders on the tier's
+pace over the 55 days before the break. Two hypotheses
 remain: the button deepened the fall after 25 August, settled by the reorder logs by week and the
 release date; and something changed for members in July, settled by the tier's change log, renewals
 and support tickets. Last year's Q2 by segment rules the season in or out."

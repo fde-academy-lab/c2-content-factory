@@ -145,7 +145,7 @@ put(ws, "B18", '=IF(ABS(B10*C6-B6)>=1,"Fix the weekly rate that divides by the w
                '" weeks each.","The closed quarters cover different weeks: compare a rate per week."),'
                'IF(B13="rate per week","Per week, revenue "&' + moved("B16") + '&" on the cut window; the rate fixes the length, so send the same weeks of both beside it.",'
                'IF(C6<>C5,"Refuse the comparison: "&C6&" weeks against "&C5&" reads as "&TEXT(ABS(B15),"0.0")&'
-               '" percent; compare the same weeks of both, with a rate per week beside them.","Revenue "&' + moved("B15") + '&" on matched weeks."))))',
+               '" percent; now that Q2 has closed, choose closed quarters, and while a quarter is open compare the same weeks of both with a rate per week beside them.","Revenue "&' + moved("B15") + '&" on matched weeks."))))',
     VERDICT, TINT, True)
 put(ws, "A19", "Fixed, for the Export tab", NOTE); put(ws, "B19", "=IF(ABS(B10*C6-B6)<1,1,0)")
 

@@ -641,10 +641,10 @@ is; end on what would change my mind.
 |---|---|
 | [F] | 7. Revenue per order rose 18 percent while revenue fell; did prices go up? |
 | [S] | 8. A field is missing on some records; do you fill it with zero? |
-| [F] | 9. You have orders per customer for four segments; why can't you average them? |
-| [SV] | 10. The customer count is flat; does that prove no customers were lost? |
-| [D] | 11. The same metrics are needed for every segment and quarter: copy, function or group by key? |
-| [D] | 12. A stakeholder hands you a cause; how do you test it and name the data you need? |
+| [F] | 9. You have orders per customer for four segments; why can't you average them for the company figure? |
+| [SV] | 10. The customer count is flat quarter on quarter; does that prove no customers were lost? |
+| [D] | 11. The design question: the same metrics are needed for every segment and quarter; do you copy the code, write a function or group by a key? |
+| [D] | 12. A stakeholder hands you a cause; how do you test it with the data you have and name the data you need? |
 
 ```notes
 LIVE, 10 minutes.

@@ -25,7 +25,7 @@ flips:
   - name: the tile's weekly rate divides by its own weeks
     set: [{sheet: Window, cell: B10, value: "=B6/C6"}]
     verdicts:
-      - {sheet: Window, cell: B18, expect: "Refuse the comparison: 11 weeks against 13 reads as 25.9 percent; compare the same weeks of both, with a rate per week beside them."}
+      - {sheet: Window, cell: B18, expect: "Refuse the comparison: 11 weeks against 13 reads as 25.9 percent; now that Q2 has closed, choose closed quarters, and while a quarter is open compare the same weeks of both with a rate per week beside them."}
       - {sheet: Export, cell: B5, contains: "4 of the five"}
   - name: the fixed window, compared as closed quarters
     set: [{sheet: Window, cell: B10, value: "=B6/C6"}, {sheet: Window, cell: B13, value: "closed quarters"}]

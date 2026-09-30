@@ -28,7 +28,7 @@ question settled before the next. The last item returns to Monday, one level up.
 ---
 
 ## Q3. With 13 weeks of orders in Q1 and 11 in Q2, which comparison is fair?
-*Tests: while a quarter is still open, the fair comparison is the same weeks of both quarters, with a rate per week beside them.*
+*Tests: while a quarter is still open, the fair comparison is the same weeks of both quarters, with a rate per week beside them, since a rate alone fixes the length and leaves the position.*
 
 - The same 11 weeks of each quarter, with a rate per week beside them  <- correct
 - The two totals as they stand, since both windows are called quarters

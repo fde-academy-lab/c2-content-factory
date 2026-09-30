@@ -30,7 +30,7 @@ the fall sits in Retail-Plus, where the same 22 members placed 26 orders against
 | Q1 against Q2 cut at 15 Sep | Down 25.9 percent | First and last dates show 13 weeks against 11. |
 | Closed quarters, 13 weeks each | Down 11.0 percent | It is fair once Q2 has closed. |
 | Same 11 weeks, Q2 still open | Down 17.0 percent | Matched weeks while a quarter is open. |
-| Per week on the cut window | Down 12.4 percent | A rate, said with its window. |
+| Per week on the cut window | Down 12.4 percent | It fixes the length and leaves the position, so it goes beside the same weeks. |
 | Second route, by month | Down 11.0 percent | The dates agree with the quarter field. |
 
 **Crux:** A rate without its denominator is a rumour.

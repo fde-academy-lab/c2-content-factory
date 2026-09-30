@@ -1013,7 +1013,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   var WINDOWS = {
     closed: { a: 21000000, b: 18700000, la: "Q1, 13 weeks", lb: "Q2, 13 weeks", weeks: "13 weeks against 13", fair: true },
     cut: { a: 21000000, b: 15559950, la: "Q1, 13 weeks", lb: "Q2 tile, 11 weeks", weeks: "11 weeks against 13", fair: false },
-    week: { a: 1615385, b: 1414541, la: "Q1, a week", lb: "Q2 to 15 Sep, a week", weeks: "a rate per week", fair: true,
+    week: { a: 1615385, b: 1414541, la: "Q1, a week", lb: "Q2 to 15 Sep, a week", weeks: "a rate per week", fair: false,
             note: "A rate per week fixes the length and leaves the position: send the same weeks of both beside it while Q2 is open." },
     same: { a: 18751440, b: 15559950, la: "Q1, first 11 weeks", lb: "Q2, first 11 weeks", weeks: "11 weeks against 11", fair: true }
   };
@@ -1215,13 +1215,14 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     var box = $("simSentence"), wrong = [];
     box.textContent = "";
     if (s.win === "closed") para(box, "Revenue fell " + words(change) + " between two closed quarters of 13 weeks each, " + K.rupees(w.a) + " to " + K.rupees(w.b) + ".");
-    else if (s.win === "week") para(box, "Per week, revenue fell " + words(change) + ", " + K.rupees(w.a) + " a week in Q1 against " + K.rupees(w.b) + " a week in Q2 up to 15 September.");
+    else if (s.win === "week") { para(box, "Per week, revenue fell " + words(change) + ", " + K.rupees(w.a) + " a week in Q1 against " + K.rupees(w.b) + " a week in Q2 up to 15 September; the rate fixes the length of the windows and still sets Q2's first 11 weeks against all of Q1.", true);
+           wrong.push("a 12.4 percent fall sent as the quarter's result when it covers only Q2's first 11 weeks"); }
     else if (s.win === "same") para(box, "Over the same first 11 weeks of each quarter revenue fell " + words(change) + "; now that Q2 has closed, the closed quarters are the comparison, and they say 11.0 percent.");
     else { para(box, "Revenue fell " + words(change) + ", " + K.rupees(w.a) + " against " + K.rupees(w.b) + ", on a Q2 window of 11 weeks set against Q1's 13.", true);
            wrong.push("a crisis read that rushes the Rs 12 crore acquisition budget"); }
     para(box, "Customers held at 69, and every one of them bought in both quarters, so the customer branch did not move.");
     if (s.roll === "weighted") para(box, "Orders per customer fell from 1.65 to 1.25, " + words(fchange) + ", so frequency is the branch that moved.");
-    else { para(box, "Orders per customer fell only " + words(fchange) + ", 1.94 to 1.82, which reads as if frequency is not the branch either.", true);
+    else { para(box, "Orders per customer fell only " + words(fchange) + " on the unrounded figures, shown rounded as 1.94 to 1.82, which reads as if frequency is not the branch either.", true);
            wrong.push("a frequency fall of 6.0 percent that leaves Marketing's story standing"); }
     if (s.disc === "zero") { para(box, "Half of Q2's orders, 50.0 percent, carry a discount, which reads as half the orders going without one.", true);
            wrong.push("extending the monsoon discount to an \"other half\" of orders that the record does not show"); }
@@ -1342,8 +1343,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   toggler("expC", ["Weight by customers", "Average the averages again"],
     function (on) { K.draw("expCChart", rollupChart(on ? "weighted" : "averaged")); },
     function (on) { return on
-      ? "Weighted by customers, orders per customer fell from " + f2(weighted(0)) + " to " + f2(weighted(1)) + ", " + p1(pct(weighted(0), weighted(1))) + ", which reproduces chapter 2. The average of averages had said " + f2(averaged(0)) + " to " + f2(averaged(1)) + ", " + p1(pct(averaged(0), averaged(1))) + "."
-      : "The average of the four segment figures reads " + f2(averaged(0)) + " to " + f2(averaged(1)) + ", " + p1(pct(averaged(0), averaged(1))) + ", and it does not match the company totals of 1.65 and 1.25."; });
+      ? "Weighted by customers, orders per customer fell from " + f2(weighted(0)) + " to " + f2(weighted(1)) + ", " + p1(pct(weighted(0), weighted(1))) + ", which reproduces chapter 2. The average of averages had said " + f2(averaged(0)) + " to " + f2(averaged(1)) + ", " + p1(pct(averaged(0), averaged(1))) + " on the unrounded figures."
+      : "The average of the four segment figures reads " + f2(averaged(0)) + " to " + f2(averaged(1)) + ", " + p1(pct(averaged(0), averaged(1))) + " on the unrounded figures, and it does not match the company totals of 1.65 and 1.25."; });
   $("expCSeq").addEventListener("click", function () {
     openSeq("Experiment C, as a sequence", ["the segments", "the roll-up", "the check"], [
       ["the segments", "the roll-up", "four figures, each counted once"], ["the roll-up", "the check", "1.94 to 1.82"],

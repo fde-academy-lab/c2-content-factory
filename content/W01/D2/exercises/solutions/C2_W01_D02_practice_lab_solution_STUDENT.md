@@ -192,8 +192,9 @@ Business orders." It gives both halves of the finding, each with its numbers.
 
 The memo's fourth line states the cause the way Kavya, the team's senior analyst, would sign it off.
 
-The key is c, "Two causes stay open, the reorder feature, settled by its logs, and a July change, by
-the tier's log." It names two hypotheses, each with the data that would settle it.
+The key is c, "The cause is still open between the reorder feature and a July change, each settled by
+its own log." It names two hypotheses, each with the data that would settle it: the app's reorder
+logs for the feature and the tier's change log for July.
 
 - a, "The cause is the broken reorder feature, as the head of Retail-Plus has reported from his
   members.": it states a hypothesis as a fact.

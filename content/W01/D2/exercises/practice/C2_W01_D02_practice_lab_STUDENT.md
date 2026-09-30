@@ -209,5 +209,5 @@ Which fourth line does that?
 
 a) "The cause is the broken reorder feature, as the head of Retail-Plus has reported from his members."
 b) "The cause cannot be known from an order file, so the memo leaves the question of cause to others."
-c) "Two causes stay open, the reorder feature, settled by its logs, and a July change, by the tier's log."
+c) "The cause is still open between the reorder feature and a July change, each settled by its own log."
 d) "The cause is a market-wide slowdown in July, which explains why every channel fell in the same months."
