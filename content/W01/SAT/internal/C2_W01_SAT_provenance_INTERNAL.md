@@ -2,7 +2,9 @@
 
 INTERNAL. Where every part of the Week 1 Saturday pack came from, which items are waiting for the
 tracker, and the decisions taken while building it. Checked on 29 September 2026; the section dated
-30 September 2026 at the end records the paper in parts and what was added to it.
+30 September 2026 records the paper in parts and what was added to it, and the section headed
+"30 September 2026, v3" at the end records the paper as it now prints, which supersedes the item
+numbers, counts and sources of every section before it.
 
 ## Sources
 
@@ -308,3 +310,240 @@ may name a plant the room has already found in class, which it has by Saturday (
 `plants-once-found` in `data/programme/facts.yaml`). Q12 and Q21
 both stay as well: Q21 asks for the five rungs of the investigation ladder in order, so it holds
 Q12's answer, the first rung, and the requester chose to leave both tracker items as they are.
+
+## 30 September 2026, v3: the paper raised to interview grade
+
+On 30 September 2026 the requester asked for Saturday papers of interview grade, with rich
+scenarios, proper diagrams, word banks or match tables in place of plain blanks, applied Python,
+data interpretation and some SQL, and approved the plan that the bank sets the topics and the paper
+sets the bar, at about 60 percent hard. Later the same day the requester added real companies and
+public case studies, and asked that solving outweigh reading code. This section records the paper as
+it now prints. It replaces the 54-item paper in six parts described above, so every Q number, count
+and source line in the earlier sections belongs to an earlier paper.
+
+### The paper as it prints
+
+36 timed items in five parts, 119.5 minutes at the blueprint's pace against the 120-minute slot,
+with 2 easy, 13 medium and 21 hard items, which is 5.6, 36.1 and 58.3 percent by count. Parts 1 to
+3 are Kalpa's week, Part 4 is the week's traps in public cases, and Part 5 is a hypothetical support
+agent at a food-delivery company such as Swiggy, with every number illustrative. Every part opens on
+a visual: the revenue tree, the two Q1 figures' flow, the 5,000-shuffle chart, the debt table and the
+agent's loop; each of the three scenario sets carries a chart or a table.
+
+| Part | Items | Minutes | Easy | Medium | Hard |
+|---|---|---|---|---|---|
+| 1. Where the revenue went | Q1 to Q8 | 25.5 | 2 | 1 | 5 |
+| 2. Which Q1 figure is right | Q9 to Q16 | 27.5 | 0 | 3 | 5 |
+| 3. Real, worth it, and caused | Q17 to Q22 | 22.5 | 0 | 1 | 5 |
+| 4. The same traps, in public | Q23 to Q28 | 21 | 0 | 2 | 4 |
+| 5. The agent's bill and its logs | Q29 to Q36 | 23 | 0 | 6 | 2 |
+
+| Q | Source | Format | Level | Min | Day | The trap it stages |
+|---|---|---|---|---|---|---|
+| Q1 | bank 47 | Applied maths | Easy | 1.5 | Mon | the mean read as the typical order when one bulk order drives it |
+| Q2 | new: sales-net | One correct option | Hard | 4 | Mon | a status test written as == "delivered" or "returned", true for every order, so cancellations count as sales |
+| Q3 | new: payback-typical | One correct option | Hard | 4 | Mon | the mean of Rs 18,160 priced as the typical first order |
+| Q4 | bank 46 | Applied maths | Hard | 4 | Mon | two percentages added where the tree's factors multiply |
+| Q5 | new: quarter-counter | One correct option | Hard | 4 | Tue | a counter reset inside the segment loop, so each quarter keeps Student's count |
+| Q6 | bank 20 | One correct option | Easy | 1.5 | Tue | a hypothesis before the drop is confirmed |
+| Q7 | new: budget-fact | One correct option | Hard | 4 | Tue | a branch chosen before the cost of moving each branch is known |
+| Q8 | bank 51 | Order the steps | Medium | 2.5 | Tue | the like-with-like rung skipped |
+| Q9 | new: reader-header | One correct option | Hard | 4 | Wed | an extra next() on a DictReader, which drops the first order |
+| Q10 | bank 11 | True or false, plain | Medium | 2.5 | Mon | text compared as text, so '4500' sorts after '30000' without an error |
+| Q11 | new: evidence-copy | True or false, with the reason | Hard | 4 | Wed | a shallow copy that shares the dictionaries the pass rewrites |
+| Q12 | new: reject-loop | More than one correct | Hard | 4 | Wed | rows removed from the list being walked, so a row is skipped while the counts still close |
+| Q13 | bank 24 | One correct option | Medium | 2.5 | Wed | a whole-row check that misses a re-sent order carrying a new date |
+| Q14 | new: monday-number | Scenario set | Hard | 4 | Tue | the tile's mismatched windows, and the duplicated Q1 still in the export |
+| Q15 | new: plus-clean | Scenario set | Hard | 4 | Wed | a rate on the export with May's 11 copied rows still in Q1 |
+| Q16 | bank 52 | Order the steps | Medium | 2.5 | Wed | recomputing before reconciling |
+| Q17 | bank 35 | More than one correct | Hard | 4 | Thu | the p-value read as the chance the hypothesis is true |
+| Q18 | new: shuffle-sign | One correct option | Hard | 4 | Thu | a count run against the direction of the claim, so a real fall reads as p = 0.981 |
+| Q19 | new: student-line | One correct option | Hard | 4 | Thu | a p above 0.05 read as proof that nothing happened |
+| Q20 | bank 43 | Scenario set | Hard | 4 | Thu | a blended rise credited to the campaign while each segment fell |
+| Q21 | bank 45 | Scenario set | Hard | 4 | Thu | a campaign repeated on a mix effect |
+| Q22 | new: diwali-test | Scenario set | Medium | 2.5 | Thu | a comparison of groups that differed before the offer |
+| Q23 | new: debt-weights | Scenario set | Hard | 4 | Tue | an average of averages that gives one year the weight of nineteen |
+| Q24 | new: debt-rows | Scenario set | Medium | 2.5 | Wed | a formula that covered 15 of 20 rows without an error |
+| Q25 | new: orbiter-units | One correct option | Medium | 2.5 | Wed | one of two disagreeing figures averaged or trusted before the gap is explained |
+| Q26 | new: flu-fit | More than one correct | Hard | 4 | Thu | a proxy that tracks the season, and a fit found among millions of tries |
+| Q27 | new: bing-alert | One correct option | Hard | 4 | Thu | a result too good to be true shipped or discarded before the plumbing is checked |
+| Q28 | new: wald-buyers | True or false, with the reason | Hard | 4 | Thu | a per-buyer denominator that drops the members who stopped buying |
+| Q29 | new: tool-print | One correct option | Hard | 4 | Tue | a tool that prints instead of returning, so the model reads 'None' |
+| Q30 | new: agent-history | One correct option | Medium | 2.5 | Tue | a mutable default argument that carries one customer's history into another's call |
+| Q31 | new: agent-cost | One correct option | Hard | 4 | Mon | a mean driven by one looping conversation, or the loop deleted from the bill |
+| Q32 | new: sql-where | Word bank | Medium | 2.5 | Wed | a row filter placed after grouping |
+| Q33 | new: sql-having | Word bank | Medium | 2.5 | Thu | a test on a count placed before grouping, or a LIMIT read as a floor |
+| Q34 | new: sql-count | Match the following | Medium | 2.5 | Wed | COUNT(column) read as a count of rows |
+| Q35 | new: sql-avg | Match the following | Medium | 2.5 | Wed | AVG read as counting a NULL as zero |
+| Q36 | new: sql-rate | Match the following | Medium | 2.5 | Tue | an integer division that returns 0 |
+
+### Formats and their counts
+
+| Format | Items | Count |
+|---|---|---|
+| One correct option | Q2, Q3, Q5, Q6, Q7, Q9, Q13, Q18, Q19, Q25, Q27, Q29, Q30, Q31 | 14 |
+| Scenario set, in three sets | Set 1: Q14 and Q15; Set 2: Q20 to Q22; Set 3: Q23 and Q24 | 7 |
+| More than one correct | Q12, Q17, Q26 | 3 |
+| Match the following, one table of six values | Q34 to Q36 | 3 |
+| True or false, with the reason | Q11, Q28 | 2 |
+| Word bank, one bank of six SQL words | Q32, Q33 | 2 |
+| Applied maths | Q1, Q4 | 2 |
+| Order the steps | Q8, Q16 | 2 |
+| True or false, plain | Q10 | 1 |
+
+The three more-than-one keys are b and d, a, c and d, and b and e, so no letter sits in all three.
+Across the 25 option items the keys sit at a 6 times, b 8, c 7, d 7 and e once. Q15 is a set item
+answered with a number. The word bank leaves four of its six words unused, and the match table
+three of its six values.
+
+### The fate of every bank item
+
+Ten bank items print; the other 42 fold into a printed item that tests the same concept; none moves
+to the stretch page. The six recall items the earlier re-cut had moved to the stretch page, bank 1, 2,
+3, 4, 5 and 7, fold into timed items, and the stretch page now holds four written follow-ups. Each
+fold's reason is in the source file's `folded` block and prints in the key under "Bank items folded
+into deeper items".
+
+| Bank | Printed as | What changed on the paper |
+|---|---|---|
+| 47 | Q1 | Paced at 1.5 minutes, an easy item's pace, where the tracker gives 4 |
+| 46 | Q4 | Nothing |
+| 20 | Q6 | Paced at 1.5 minutes where the tracker gives 2; it prints before bank 51, as the requester asked |
+| 51 | Q8 | Nothing |
+| 11 | Q10 | Stem reworded, status proposed; paced at 2.5 minutes where the tracker gives 1 |
+| 24 | Q13 | Stem and options a, c and d reworded, status proposed; paced at 2.5 minutes where the tracker gives 2 |
+| 52 | Q16 | Nothing |
+| 35 | Q17 | The accepted order edit; paced at 4 minutes where the tracker gives 2.5 |
+| 43 | Q20 | Situation reworded on the week's own numbers, status proposed; paced at 4 minutes where the tracker gives 2.5 |
+| 45 | Q21 | The accepted option edit; paced at 4 minutes where the tracker gives 2.5 |
+
+| Bank | Tracker type and level | Folded into |
+|---|---|---|
+| 1 | Fill in the blank, Easy | Q4 (bank 46) |
+| 2 | Fill in the blank, Easy | Q15 (new: plus-clean) |
+| 3 | Fill in the blank, Easy | Q29 (new: tool-print) |
+| 4 | Fill in the blank, Easy | Q10 (bank 11) |
+| 5 | Fill in the blank, Easy | Q12 (new: reject-loop) |
+| 6 | Fill in the blank, Medium | Q18 (new: shuffle-sign) |
+| 7 | Fill in the blank, Easy | Q19 (new: student-line) |
+| 8 | Fill in the blank, Medium | Q26 (new: flu-fit) |
+| 9 | True or false, Medium | Q17 (bank 35) |
+| 10 | True or false, Easy | Q3 (new: payback-typical) |
+| 12 | True or false, Easy | Q17 (bank 35) |
+| 13 | True or false, Easy | Q14 (new: monday-number) |
+| 14 | True or false, Easy | Q19 (new: student-line) |
+| 15 | True or false, Easy | Q22 (new: diwali-test) |
+| 16 | True or false, Hard | Q20 (bank 43) |
+| 17 | One correct option, Easy | Q7 (new: budget-fact) |
+| 18 | One correct option, Easy | Q7 (new: budget-fact) |
+| 19 | One correct option, Easy | Q3 (new: payback-typical) |
+| 21 | One correct option, Medium | Q14 (new: monday-number) |
+| 22 | One correct option, Easy | Q29 (new: tool-print) |
+| 23 | One correct option, Medium | Q12 (new: reject-loop) |
+| 25 | One correct option, Medium | Q12 (new: reject-loop) |
+| 26 | One correct option, Hard | Q19 (new: student-line) |
+| 27 | One correct option, Easy | Q19 (new: student-line) |
+| 28 | One correct option, Medium | Q25 (new: orbiter-units) |
+| 29 | One correct option, Hard | Q7 (new: budget-fact) |
+| 30 | More than one correct, Easy | Q15 (new: plus-clean) |
+| 31 | More than one correct, Medium | Q14 (new: monday-number) |
+| 32 | More than one correct, Easy | Q16 (bank 52) |
+| 33 | More than one correct, Easy | Q34 (new: sql-count) |
+| 34 | More than one correct, Medium | Q22 (new: diwali-test) |
+| 36 | Scenario set, Easy | Q15 (new: plus-clean) |
+| 37 | Scenario set, Medium | Q7 (new: budget-fact) |
+| 38 | Scenario set, Medium | Q7 (new: budget-fact) |
+| 39 | Scenario set, Hard | Q7 (new: budget-fact) |
+| 40 | Scenario set, Easy | Q12 (new: reject-loop) |
+| 41 | Scenario set, Medium | Q12 (new: reject-loop) |
+| 42 | Scenario set, Hard | Q14 (new: monday-number) |
+| 44 | Scenario set, Medium | Q20 (bank 43) |
+| 48 | Applied maths, Easy | Q14 (new: monday-number) |
+| 49 | Applied maths, Medium | Q18 (new: shuffle-sign) |
+| 50 | Applied maths, Medium | Q4 (bank 46) |
+
+The three new ledger entries sit under W1 in `data/programme/paper_edits.yaml`, each with its
+reason; every entry already there is kept as it was.
+
+### Public cases and their sources
+
+Every fact Part 4 states was read in its source on 30 September 2026. The paper names each source
+by author, publication and year beside the case, without a link; the key's reasons name the same
+source where they cite it. Part 5 names Swiggy only as an example of a food-delivery company and
+states nothing about its agents, logs or costs.
+
+| Items | Case | Source | Link | Read |
+|---|---|---|---|---|
+| Q23, Q24 | The above-90 average and its spreadsheet | Herndon, Ash and Pollin, "Does High Public Debt Consistently Stifle Economic Growth? A Critique of Reinhart and Rogoff", PERI Working Paper 322, April 2013: Table 2 (the seven countries, their years and growth), Table 3 (0.0, 1.7 and -0.1) and note 5 (lines 30 to 44 in place of 30 to 49) | https://peri.umass.edu/wp-content/uploads/joomla/images/WP322.pdf | checked 30 Sep 2026 |
+| Q23, Q24 | Reinhart and Rogoff's reply | The Harvard Crimson, "After Error is Revealed, Professor Pair Defends Core Conclusions", 24 April 2013: the error acknowledged, equal weighting by country defended | https://www.thecrimson.com/article/2013/4/24/rogoff-error-defense/ | checked 30 Sep 2026 |
+| Q25 | Mars Climate Orbiter | NASA, Mars Climate Orbiter Mishap Investigation Board Phase I Report, 10 November 1999: the root cause, the factor of 4.45, the discrepancies reported informally and not resolved, the planned 226 km and the estimated 57 km | https://llis.nasa.gov/llis_lib/pdf/1009464main1_0641-mr.pdf | checked 30 Sep 2026 |
+| Q26 | Google Flu Trends | Lazer, Kennedy, King and Vespignani, "The Parable of Google Flu: Traps in Big Data Analysis", Science 343, 14 March 2014: 50 million terms against 1,152 data points, high school basketball, "part flu detector, part winter detector", the 2009 pandemic missed, and 100 of 108 weeks too high from August 2011 | https://gking.harvard.edu/files/gking/files/0314policyforumff.pdf | checked 30 Sep 2026 |
+| Q27 | Bing's ad headlines | Kohavi and Thomke, "The Surprising Power of Online Experiments", Harvard Business Review, September to October 2017: the idea's six-month wait, the "too good to be true" alert, revenue up 12 percent and more than 100 million US dollars a year in the United States | https://hbr.org/2017/09/the-surprising-power-of-online-experiments | checked 30 Sep 2026 |
+| Q28 | Wald's returning aircraft | Mangel and Samaniego, "Abraham Wald's Work on Aircraft Survivability", Journal of the American Statistical Association 79 (386), June 1984: Wald's vulnerability estimates from the damage on surviving aircraft, at the Statistical Research Group at Columbia University | https://jhanley.biostat.mcgill.ca/bios601/CandH-ch0102/WaldAircraft.pdf | checked 30 Sep 2026 |
+| Part 5 | Swiggy as a food-delivery company | Swiggy, About Us: the company's food delivery business, launched in 2014 | https://www.swiggy.com/corporate/ | checked 30 Sep 2026 |
+
+### The proof run
+
+`content/W01/SAT/internal/C2_W01_SAT_key_proofs_INTERNAL.py` settles every timed key. It executes
+each code exhibit as the source file stores it, on the week's own data files where the item names
+them, runs the five SQL items in a scratch schema it creates and drops on the local Postgres, and
+recomputes every arithmetic key. The run of 30 September 2026, on Python 3.11.15, psycopg2 2.9.13 and
+PostgreSQL 16.13, printed:
+
+```
+Week 1 Saturday paper: 36 timed items. Each line gives the printed Q, the item, its key and what proves it.
+  Q1  bank 47            key 1,400; 97,080 median of five sorted values is the third; 4,85,400 over 5 is 97,080
+  Q2  sales-net          key c            prints '30 orders, Rs 544810'; net of cancellations is 26 orders, Rs 5,35,760
+  Q3  payback-typical    key b            mean 18,160, median 2,205, bulk order 88 percent, other 29 average 2,235, delivered mean 24,800
+  Q4  bank 46            key -6.5 percent 1.10 x 0.85 = 0.935; break-even volume at 15 percent off is 17.6 percent
+  Q5  quarter-counter    key d            prints '{'Q1': 5, 'Q2': 7} +40.0%': the counter holds Student's count; the file says 114 and 86
+  Q6  bank 20            key a            tracker key: the first rung is confirming the drop is real
+  Q7  budget-fact        key d            same 69 customers; orders per customer 1.65 to 1.25; revenue per order +18.0 percent
+  Q8  bank 51            key b, d, e, a, c tracker key: real, like with like, decompose, isolate, hypothesise
+  Q9  reader-header      key b            prints '200 KR-02002': next() consumed KR-02001, a Q1 order of Rs 2,200
+ Q10  bank 11            key False        '4500' < '30000' is False, silently; the tracker's '4500' > 3000 raises TypeError
+ Q11  evidence-copy      key c            as_arrived[0]['amount'] is 0 after the pass; the list is new, the dictionaries shared
+ Q12  reject-loop        key b, d         prints '4 + 1 = 5' with KR-09053 kept; only (b) and (d) set aside both bad rows
+ Q13  bank 24            key b            KR-02151: two Q2 rows at Rs 3,710 dated 2 August and 25 September; whole rows differ
+ Q14  monday-number      key d            tile -25.9, per week -12.4, closed -11.0, reconciled -1.6 (Q1 Rs 1,90,00,000 after 14 rows, Rs 19,98,210)
+ Q15  plus-clean         key 35.0 fall    51 less 11 May copies is 40 in Q1, 26 in Q2, 22 members: 1.82 to 1.18
+ Q16  bank 52            key b, d, a, c   tracker key: profile, decide, reconcile, recompute
+      exhibit 3A                          bars [117, 728, 1620, 1679, 721, 135], 135 of 5,000 at or beyond Rs 1,110
+ Q17  bank 35            key a, c, d      tracker a, b, d relabelled a, c, d by the accepted order edit
+ Q18  shuffle-sign       key c            prints '-880 0.981'; the class's count at +880 is 21, and at or below -880 is 24
+ Q19  student-line       key b            12 orders (5 then 7) from 2 customers; coin-flip share 0.397
+ Q20  bank 43            key a            sale Rs 3,395 against Rs 3,200 (+6.1); inside each segment -3.0 percent
+ Q21  bank 45            key d            at the other group's 40/60 mix the sale group averages Rs 3,104 against Rs 3,200
+ Q22  diwali-test        key c            judgement key: a random hold-out inside each segment; no computation
+ Q23  debt-weights       key a            prints '71 -0.03 1.68'; HAP Table 3 gives 0.0 and 1.7, and -0.1 with -7.9
+ Q24  debt-rows          key a            rows 30 to 44 hold 15 of the sheet's 20 countries: 5 left out
+ Q25  orbiter-units      key c            1 lbf = 4.448 N, the report's factor of 4.45; judgement key
+ Q26  flu-fit            key b, e         judgement key from Lazer and colleagues, 2014; no computation
+ Q27  bing-alert         key b            judgement key from Kohavi and Thomke, 2017; no computation
+ Q28  wald-buyers        key c            per member falls Rs 1,110 (33.9 percent); per buyer Rs 625 (17.3)
+ Q29  tool-print         key b            the tool prints 'SW-1042: out for delivery' and the model reads 'None'
+ Q30  agent-history      key a            B's call sends A's two messages first; with None as default it sends one
+ Q31  agent-cost         key d            mean Rs 7.37, median Rs 1.60; C-07 is 81 percent of Rs 51.60
+ Q32  sql-where          key WHERE        the filled query returns [('refund', 35)]; HAVING on status fails
+ Q33  sql-having         key HAVING       WHERE COUNT(*) >= 30 fails in Postgres; HAVING applies the floor of 30
+ Q34  sql-count          key 6            Postgres returns 6 for: SELECT COUNT(latency_ms) FROM calls;
+ Q35  sql-avg            key 800          Postgres returns 800.0000000000000000 for: SELECT AVG(latency_ms) FROM calls;
+ Q36  sql-rate           key 0            Postgres returns 0 for: SELECT COUNT(*) FILTER (WHERE status <> 'ok') / COUNT(*) FROM calls;
+PROVED: all 36 timed items have a key that code, SQL, arithmetic or the tracker settles.
+```
+
+### The checks
+
+`scripts/distractor_audit.py` passes the paper with no failure, the llm-tic-scrubber scanner finds
+the paper, the key, the discussion guide and this file clean, `scripts/build_saturday_paper.py W01
+--check` finds nothing stale, `scripts/xlsx_recalc.py` passes the item-analysis workbook, and
+`scripts/verify.py content/W01/SAT` passes with no failure and no warning. The Word paper renders to 18 pages and the key to 19; every page was read at
+60 dpi, every exhibit prints with its item, and the answer sheet fits one page.
+
+### The discussion guide
+
+Rewritten for this paper, with the 300-minute shape and every block's timing unchanged. The
+most-missed round predicts the likeliest misses among the new items, each with the wrong answer it
+tempts, the question to ask the room and the repair; the anchors round keeps the tracker's ten
+anchors, each pointed at the items and stretch follow-ups that descend from it; the mock-interview
+table gives every anchor twice and sets each follow-up beside an anchor it extends.
