@@ -19,22 +19,32 @@ with its recalc manifest.
 
 Three sources are laid on the bank before rendering:
 
-  data/programme/paper_edits.yaml    rewords options of one item, or relabels them with `order`
-                                     so the key's letters move with its options; never its stem,
-                                     and never which options are correct
+  data/programme/paper_edits.yaml    rewords one item's options, or relabels them with `order` so
+                                     the key's letters move with its options, or rewords its stem
+                                     (`stem`) or a set's situation (`situation`), each with its own
+                                     status and reason; never which options are correct
   data/programme/facts.yaml          saturday_papers.paper_minutes, where a paper runs longer than
                                      the tracker's slot
   content/W{ww}/SAT/internal/C2_W{ww}_SAT_paper_source_INTERNAL.yaml, the week's own additions:
       parts       the printed order: a list of parts, each with a title, `shows` (what the part
                   shows about the learner), an optional intro and optional `exhibits`, and `items`,
                   which name bank items by number and additions as new:<id>; every bank item sits
-                  in one part or in stretch_bank, and a scenario set stays whole and in order
-      stretch_bank  at most six bank items of the recall types (fill in the blank, true or false)
-                  moved to the untimed stretch page to make room for harder timed items, a move
-                  the requester approved on 30 September 2026
+                  in one part, in stretch_bank or in folded, since the bank sets what is tested, and
+                  a scenario set stays whole and in order
+      stretch_bank  bank items of any type moved to the untimed stretch page
+      folded      {bank number: {into, why}}: a bank item that does not print because the printed
+                  item `into` names (new:<id> or a bank number) tests its concept, for the reason why;
+                  the requester approved folding and moving on 30 September 2026
+      banks       {id: {style, options, instruction}}: a lettered list shared by the items that
+                  answer from it, printed once above the first of them. style words is a word bank
+                  for blanks; style match is a two-column match table whose rows are the items. A
+                  bank's items print one after another in one part, it offers at least two options
+                  no item uses, no option keys two items, and its keys never run a, b, c down the
+                  items
       additions   new timed items, each carrying why, wrong and answer for the key, an `id` that
-                  parts name it by, an optional `exhibit` and an optional `label`; listed in the key
-                  as waiting for the tracker
+                  parts name it by, an optional `exhibit`, an optional `label` and, for a word-bank
+                  or match item, `bank` (its key is a letter or the option's text); listed in the
+                  key as waiting for the tracker
       purpose     the paragraph under "What this paper is for" on the Word paper's first page, written
                   for the week: its case, its stakeholders and what the paper finds out
       company     the Rules table's Company row: the week's Kalpa company and the people the items
@@ -44,7 +54,9 @@ Three sources are laid on the bank before rendering:
       notes       per bank item number: why the key holds, what each wrong option catches
                   ({letter: reason}), the interview answer in one breath, and the item's `label`,
                   the two or three words printed beside its level on the Word paper, such as
-                  "Predict the output" or "Spot the double count"
+                  "Predict the output" or "Spot the double count"; and, where the paper asks more
+                  of an item than the tracker records, `level` and `min`, and `bank` for a fill in
+                  the blank answered from a word bank (its tracker key must be one of the options)
       stretch     untimed, unmarked written items for fast finishers, each with its answer
   An exhibit is a mapping with a caption and one of mermaid, table ({head, rows}) or code
   ({lang, text}); exhibits are lettered by part in the order they print, as Exhibit 2A, 2B.
@@ -160,6 +172,55 @@ def relabel(lines, order):
     return lines, {was: printed for (_, printed, _), was in zip(found, order)}
 
 
+def split_text(text):
+    """(set line or None, stem lines, option lines) of an item's text, blank lines dropped."""
+    set_line, stem, opts = None, [], []
+    for ln in text.split("\n"):
+        s = ln.strip()
+        if not s:
+            continue
+        if set_line is None and not stem and not opts and (SET_START.match(s) or SET_CONT.match(s)):
+            set_line = s
+        elif OPTION.match(s):
+            opts.append(s)
+        else:
+            stem.append(s)
+    return set_line, stem, opts
+
+
+def _words(lines):
+    return " ".join(" ".join(lines).split())
+
+
+def lay_text_edit(item, part, field):
+    """Lay a stem or a situation edit on one item and return (state, why). A stem edit replaces the
+    lines between a set's SET line and the options; a situation edit replaces the text after
+    SITUATION on the line that opens a set. Either keeps the key, since a rewording that changes the
+    answer is a new item."""
+    if isinstance(part, str):
+        part = {"text": part}
+    text = str(part.get("text") or "").strip()
+    why = str(part.get("why") or "").strip()
+    if not text:
+        return "broken", f"a {field} edit needs text"
+    set_line, stem, opts = split_text(item["text"])
+    if field == "stem":
+        new = [ln.strip() for ln in text.split("\n") if ln.strip()]
+        if _words(stem) == _words(new):
+            return "folded", "the tracker already carries this stem"
+        stem = new
+    else:
+        m = SET_START.match(set_line or "")
+        if not m:
+            return "broken", "a situation edit needs the item that opens a scenario set"
+        if _words([m.group(2)]) == _words([text]):
+            return "folded", "the tracker already carries this situation"
+        set_line = f"SET {m.group(1)}. SITUATION: {_words([text])}"
+    item["text"] = "\n".join(([set_line] if set_line else []) + stem + opts)
+    item[f"{field}_edit"] = {"status": str(part.get("status") or "proposed"), "why": why}
+    return "applied", f"{field}: {why}"
+
+
 def apply_edits(bank, edits):
     """Lay the edits on the bank. Returns notes: (paper, no, state, why) with state applied, folded
     (the tracker already carries the wording) or broken (the item or option does not exist).
@@ -174,6 +235,11 @@ def apply_edits(bank, edits):
             item = items.get(int(no))
             if not item:
                 notes.append((paper, no, "broken", "no such item in the bank"))
+                continue
+            for field in ("situation", "stem"):
+                if edit.get(field):
+                    notes.append((paper, no) + lay_text_edit(item, edit[field], field))
+            if not (edit.get("options") or edit.get("order")):
                 continue
             lines = item["text"].split("\n")
             changed, missing = False, []
@@ -254,8 +320,6 @@ def paper_minutes(week, slot):
         return slot
 
 
-RECALL_TYPES = ("Fill in the blank", "True or false")
-MAX_MOVED = 6
 SET_ANY = re.compile(r"^SET (\d+)[.,]")
 LEVELS = ("Easy", "Medium", "Hard")
 
@@ -272,7 +336,7 @@ def _addition(a, n):
             "min": float(a.get("min", 0)), "key": str(a["key"]),
             "text": str(a["text"]).strip(), "anchor": a.get("anchor", ""), "edit": None,
             "added": True, "id": str(a.get("id") or f"new{n}"), "exhibit": a.get("exhibit"),
-            "label": a.get("label"),
+            "label": a.get("label"), "bank": str(a["bank"]) if a.get("bank") else None,
             "note": {"why": a.get("why", ""), "wrong": a.get("wrong", {}),
                      "answer": a.get("answer", "")}}
 
@@ -282,6 +346,24 @@ def relabelled(note, moves):
     if not moves or not note.get("wrong"):
         return note
     return dict(note, wrong={moves.get(str(k), str(k)): v for k, v in note["wrong"].items()})
+
+
+def lay_note_overrides(item, note):
+    """The paper's own level, pace and word bank for a bank item, where the source file's note sets
+    them; the tracker's values are kept as level_was and min_was for the key."""
+    if note.get("level"):
+        lv = str(note["level"]).strip().capitalize()
+        if lv not in LEVELS:
+            raise SystemExit(f"FAIL  bank item {item['no']}: level {note['level']} is not Easy, Medium "
+                             f"or Hard")
+        if lv != item["level"]:
+            item["level_was"], item["level"] = item["level"], lv
+    if note.get("min") is not None:
+        m = float(note["min"])
+        if m != item["min"]:
+            item["min_was"], item["min"] = item["min"], m
+    if note.get("bank"):
+        item["bank"] = str(note["bank"])
 
 
 def assemble(data, source):
@@ -294,7 +376,9 @@ def assemble(data, source):
     bank = sorted((dict(i, added=False, exhibit=None) for i in data["items"]), key=lambda i: i["no"])
     notes = {str(k): v for k, v in (source.get("notes") or {}).items()}
     for item in bank:
-        item["note"] = relabelled(notes.get(str(item["no"]), {}), item.get("relabel"))
+        note = notes.get(str(item["no"]), {})
+        item["note"] = relabelled(note, item.get("relabel"))
+        lay_note_overrides(item, note)
     added = [_addition(a, n) for n, a in enumerate(source.get("additions") or [], 1)]
     if source.get("parts"):
         printed = _by_parts(bank, added, source)
@@ -308,6 +392,7 @@ def assemble(data, source):
             item["part"] = None
     for q, item in enumerate(printed, 1):
         item["q"] = q
+    bind_banks(printed, source)
     return printed
 
 
@@ -315,6 +400,7 @@ def _by_parts(bank, added, source):
     by_no = {i["no"]: i for i in bank}
     by_id = {a["id"]: a for a in added}
     moved = {int(n) for n in source.get("stretch_bank") or []}
+    folded = {int(k): v or {} for k, v in (source.get("folded") or {}).items()}
     printed, seen = [], set()
     for p, part in enumerate(source["parts"], 1):
         if not part.get("items"):
@@ -329,25 +415,38 @@ def _by_parts(bank, added, source):
                 raise SystemExit(f"FAIL  part {p} names {ref}, which is neither a bank number nor "
                                  f"an addition's id")
             key = ref if ref.startswith("new:") else int(ref)
-            if key in seen or (isinstance(key, int) and key in moved):
+            if key in seen or (isinstance(key, int) and (key in moved or key in folded)):
                 raise SystemExit(f"FAIL  {ref} is placed twice: in part {p} and elsewhere")
             seen.add(key)
             item["part"] = p
             printed.append(item)
-    missing = [i["no"] for i in bank if i["no"] not in seen and i["no"] not in moved]
+    strays = sorted(n for n in set(moved) | set(folded) if n not in by_no)
+    if strays:
+        raise SystemExit(f"FAIL  stretch_bank or folded names bank items {strays}, which are not in the "
+                         f"week's bank")
+    both = sorted(set(moved) & set(folded))
+    if both:
+        raise SystemExit(f"FAIL  bank items {both} are both folded and moved to the stretch page")
+    missing = [i["no"] for i in bank if i["no"] not in seen and i["no"] not in moved
+               and i["no"] not in folded]
     if missing:
-        raise SystemExit(f"FAIL  bank items {missing} sit in no part and not in stretch_bank; every "
-                         f"bank item is printed or moved, since the bank is the floor")
+        raise SystemExit(f"FAIL  bank items {missing} are printed nowhere: place each in a part, fold it "
+                         f"into a deeper item or move it to stretch_bank, since every concept in the "
+                         f"bank is tested")
     unused = [a["id"] for a in added if f"new:{a['id']}" not in seen]
     if unused:
         raise SystemExit(f"FAIL  additions {unused} are named by no part")
-    if len(moved) > MAX_MOVED:
-        raise SystemExit(f"FAIL  {len(moved)} bank items moved to the stretch page, and at most "
-                         f"{MAX_MOVED} may move")
-    wrong_kind = [n for n in sorted(moved) if by_no[n]["type"] not in RECALL_TYPES]
-    if wrong_kind:
-        raise SystemExit(f"FAIL  bank items {wrong_kind} are not recall items, and only fill in the "
-                         f"blank and true or false items may move to the stretch page")
+    for no, f in sorted(folded.items()):
+        into = str(f.get("into", "")).strip()
+        target = (by_id.get(into[4:]) if into.startswith("new:")
+                  else by_no.get(int(into)) if into.isdigit() else None)
+        placed = f"new:{into[4:]}" in seen if into.startswith("new:") else into.isdigit() and int(into) in seen
+        if target is None or not placed:
+            raise SystemExit(f"FAIL  bank item {no} is folded into {into or 'nothing'}, which is not a "
+                             f"printed item; name a printed addition as new:<id> or a printed bank number")
+        if not str(f.get("why", "")).strip():
+            raise SystemExit(f"FAIL  bank item {no} is folded with no reason; say which part of the "
+                             f"deeper item tests its concept")
     # A scenario set prints whole, in one part and in the bank's order, under one situation.
     sets = {}
     for pos, item in enumerate(printed):
@@ -377,12 +476,88 @@ def moved_items(data, source):
     return out
 
 
+BANK_STYLES = ("words", "match")
+BANK_NAME = {"words": "Word bank", "match": "Match table"}
+BANK_INSTRUCTION = {
+    "words": ("Write the letter of the word or phrase that completes each statement. Each is used "
+              "once at most, and some are not used."),
+    "match": ("Write the letter from the right-hand column that matches each numbered item. Each "
+              "letter is used once at most, and some are not used."),
+}
+LETTERS = "abcdefghijklmnopqrstuvwxyz"
+
+
+def bind_banks(printed, source):
+    """Give every word-bank and match item its bank: the options, the label printed above them, and
+    the key as a letter. A bank's items print one after another in one part, it offers at least two
+    options more than it has items, and no option is the key of two items."""
+    banks = source.get("banks") or {}
+    users = {}
+    for pos, item in enumerate(printed):
+        if item.get("bank"):
+            if item["bank"] not in banks:
+                raise SystemExit(f"FAIL  Q{item['q']} answers from bank {item['bank']}, which the "
+                                 f"source file does not define under banks")
+            users.setdefault(item["bank"], []).append((pos, item))
+    numbered = {style: 0 for style in BANK_STYLES}
+    for bid, run in users.items():
+        spec = banks[bid] or {}
+        style = str(spec.get("style") or "words").strip().lower()
+        if style not in BANK_STYLES:
+            raise SystemExit(f"FAIL  bank {bid} has style {style}; use words or match")
+        options = [" ".join(str(o).split()) for o in spec.get("options") or []]
+        if len(options) > len(LETTERS):
+            raise SystemExit(f"FAIL  bank {bid} offers {len(options)} options, more than the alphabet")
+        if len(options) < len(run) + 2:
+            raise SystemExit(f"FAIL  bank {bid} offers {len(options)} options for {len(run)} items; a "
+                             f"bank carries at least two options no item uses")
+        positions = [pos for pos, _ in run]
+        if positions != list(range(positions[0], positions[0] + len(run))):
+            raise SystemExit(f"FAIL  the items of bank {bid} must print one after another")
+        if len({item.get("part") for _, item in run}) > 1:
+            raise SystemExit(f"FAIL  bank {bid} spans two parts")
+        numbered[style] += 1
+        label = f"{BANK_NAME[style]} {numbered[style]}"
+        lettered = list(zip(LETTERS, options))
+        instruction = " ".join(str(spec.get("instruction") or BANK_INSTRUCTION[style]).split())
+        used = set()
+        for k, (_, item) in enumerate(run):
+            key = " ".join(str(item["key"]).split())
+            # A tracker key can carry its variants in brackets, "str (a string)"; the bank offers the
+            # word before them.
+            heads = [key.lower(), key.split(" (")[0].strip().lower()]
+            letter = key.lower() if re.fullmatch(r"[A-Za-z]", key) and key.lower() in LETTERS[:len(options)] \
+                else next((l for l, o in lettered if o.lower() in heads), None)
+            if letter is None:
+                raise SystemExit(f"FAIL  Q{item['q']}'s key {key} is none of bank {bid}'s options")
+            if letter in used:
+                raise SystemExit(f"FAIL  bank {bid} uses option {letter} as the key of two items; each "
+                                 f"option is used once at most")
+            used.add(letter)
+            item.update({"key": letter, "bank_word": dict(lettered)[letter], "bank_style": style,
+                         "bank_label": label, "bank_options": lettered, "bank_first": k == 0,
+                         "bank_instruction": instruction, "bank_items": [i for _, i in run]})
+        # Keys that run down the items as a, b, c are read off the page, not worked out.
+        steps = [LETTERS.index(i["key"]) for _, i in run]
+        if len(steps) >= 3 and all(b - a == 1 for a, b in zip(steps, steps[1:])):
+            raise SystemExit(f"FAIL  bank {bid}'s keys run {', '.join(i['key'] for _, i in run)} down its "
+                             f"items; order its options so the keys do not follow the items")
+
+
+def key_text(item, upper=False):
+    """The key as the key file prints it: a word-bank or match key carries its word."""
+    key = upper_key(item["key"]) if upper else str(item["key"])
+    return f"{key} ({item['bank_word']})" if item.get("bank_word") else key
+
+
 def guess_chance(item):
     """The chance a blind guess gets the item right, as an exact fraction: 1/k on one of k options,
     1/2 on true or false, 1/(2**k - 1) on a more-than-one item read as any non-empty choice, 1/k! on
     an ordering of k steps, and 0 on a written answer, since a word or a number is not guessed from
     a list."""
     import math
+    if item.get("bank_options"):
+        return Fraction(1, len(item["bank_options"]))
     _, options, answer = parts(item)
     key = item["key"].strip().lower()
     if item["type"] == "Order the steps":
@@ -512,11 +687,14 @@ def parts(item):
 
 FORMAT = {"one": "circle one letter", "multi": "circle every correct letter", "tf": "write T or F",
           "line": "write the word or number", "working": "show the working, then the answer",
-          "order": "write the letters in order"}
+          "order": "write the letters in order", "bank": "write the letter from the word bank",
+          "match": "write the matching letter"}
 
 
 def answer_kind(item):
     """How the learner answers the item: one of the FORMAT keys."""
+    if item.get("bank_style"):
+        return "bank" if item["bank_style"] == "words" else "match"
     _, options, answer = parts(item)
     key = item["key"].strip().lower()
     if answer in ("working", "order"):
@@ -532,7 +710,9 @@ def render_item(item, in_parts=False):
     stem, options, answer = parts(item)
     head = f"#### Q{item['q']}"
     if in_parts:
-        head += f" · {item['level']} · {FORMAT[answer_kind(item)]}"
+        how = (f"write the letter from {item['bank_label']}" if item.get("bank_style") == "words"
+               else FORMAT[answer_kind(item)])
+        head += f" · {item['level']} · {how}"
         if own_label(item):
             head += f" · {own_label(item)}"
     block = [head, ""] + stem
@@ -546,6 +726,25 @@ def render_item(item, in_parts=False):
     elif answer == "line":
         block += ["", "Answer: ____________________"]
     return block + [""]
+
+
+def bank_md(item):
+    """A word bank or a match table in the markdown paper, printed once above its first item."""
+    out = [f"**{item['bank_label']}.** {item['bank_instruction']}", ""]
+    if item["bank_style"] == "words":
+        out += ["| Letter | Word or phrase |", "|---|---|"]
+        out += [f"| {letter} | {text} |" for letter, text in item["bank_options"]] + [""]
+        return out
+    rows = item["bank_items"]
+    out += ["| Item | To match | Letter | Match |", "|---|---|---|---|"]
+    for k in range(max(len(rows), len(item["bank_options"]))):
+        left = rows[k] if k < len(rows) else None
+        right = item["bank_options"][k] if k < len(item["bank_options"]) else ("", "")
+        q = f"Q{left['q']} ({left['level']})" if left else ""
+        prompt = _words(parts(left)[0]) if left else ""
+        out.append(f"| {q} | {prompt} | {right[0]} | {right[1]} |")
+    out += ["", "Answers: " + "    ".join(f"Q{i['q']} ____" for i in rows), ""]
+    return out
 
 
 def exhibit_md(ex, label=None):
@@ -597,9 +796,9 @@ STRETCH_INTRO = ("For anyone who finishes early. Nothing here is counted; each i
                  "interviewer asks after your first answer, so write the answer you would say.")
 
 
-def stretch_intro(written, recalled):
+def stretch_intro(written, recalled, recall_only=True):
     """The stretch page's opening line, naming which items are written answers and which are the
-    recall lines moved from the timed paper."""
+    items moved from the timed paper."""
     if not recalled:
         return STRETCH_INTRO
     last = written + recalled
@@ -609,14 +808,33 @@ def stretch_intro(written, recalled):
         head = f"Stretch 1 to {written}" if written > 1 else "Stretch 1"
         text += (f" {head} {'are' if written > 1 else 'is'} the kind an interviewer asks after your "
                  f"first answer, so write the answer you would say.")
+    if not recall_only:
+        return text + (f" {lines} {'are quick checks' if recalled > 1 else 'is a quick check'} on the "
+                       f"week's material, answered on the line.")
     return text + (f" {lines} {'are one-line recalls' if recalled > 1 else 'is a one-line recall'} of "
                    f"the week's rules, answered on the line.")
+
+
+RECALL_TYPES = ("Fill in the blank", "True or false")
+
+
+def bank_phrase(printed, where):
+    """The words a rule spends on word banks and match tables, only on a paper that prints one."""
+    if not any(i.get("bank_style") for i in printed):
+        return ""
+    return {"rules": "write a letter from a word bank or a match table, ",
+            "marking": "the letter on a word-bank or match item, ",
+            "answers": "the letter for a word-bank or match item, "}[where]
+
+
+def recall_only(moved):
+    return all(i["type"] in RECALL_TYPES for i in moved)
 
 
 RULES_MD = [
     "{minutes} minutes in one sitting. Each part gives its minutes as a guide, not a limit.",
     "Every item names its format beside its number: circle one letter, circle every correct letter, "
-    "write T or F, write the word or number, show the working, or write the letters in order.",
+    "write T or F, {bank}write the word or number, show the working, or write the letters in order.",
     "Every item also names its level, easy, medium or hard, so you can plan your time. A hard item is "
     "several steps on an exhibit, never an obscure fact.",
     "A wrong answer costs nothing, so answer every item on the line under it.",
@@ -640,7 +858,7 @@ def render_paper_parts(paper, data, date, printed, source, minutes, moved):
            f"Items right: ____ of {n}", "",
            "## What this paper is for", "", " ".join(str(source.get("purpose") or PURPOSE).split()), "",
            "## How this paper works", ""]
-    out += [f"- {r.format(minutes=minutes)}" for r in RULES_MD]
+    out += [f"- {r.format(minutes=minutes, bank=bank_phrase(printed, 'rules'))}" for r in RULES_MD]
     if source.get("company"):
         out.append(f"- {' '.join(str(source['company']).split())}")
     out += ["", "## Step one, before Part 1", "",
@@ -671,10 +889,14 @@ def render_paper_parts(paper, data, date, printed, source, minutes, moved):
                     out += exhibit_md(exhibits[number], labels[("set", number)])
             if item.get("exhibit"):
                 out += exhibit_md(item["exhibit"], labels[("item", item["q"])])
+            if item.get("bank_first"):
+                out += bank_md(item)
+            if item.get("bank_style") == "match":
+                continue
             out += render_item(item, in_parts=True)
     stretch = source.get("stretch") or []
     if stretch or moved:
-        out += ["---", "", f"## {STRETCH_TITLE}", "", stretch_intro(len(stretch), len(moved)), ""]
+        out += ["---", "", f"## {STRETCH_TITLE}", "", stretch_intro(len(stretch), len(moved), recall_only(moved)), ""]
         for i, s in enumerate(stretch, 1):
             out += [f"### Stretch {i}", "", str(s["text"]).strip(), ""]
         for i, item in enumerate(moved, len(stretch) + 1):
@@ -739,7 +961,8 @@ def render_key(paper, data, date, notes, printed, source, minutes, moved=()):
            "`scripts/build_saturday_paper.py`. Change an item in the tracker, an option in "
            "`data/programme/paper_edits.yaml` or anything in "
            f"`content/{week_of(paper)}/SAT/internal/C2_{week_of(paper)}_SAT_paper_source_INTERNAL.yaml`, "
-           "and rebuild; never edit this file by hand.", "",
+           "and rebuild; never edit this file by hand. A stem, a situation or an option can be reworded "
+           "in `data/programme/paper_edits.yaml`.", "",
            f"{when_of(date, '. ')}A {minutes}-minute paper holding {n} items at {pace:g} minutes by "
            f"the blueprint's pace: {levels['Easy']} easy, {levels['Medium']} medium and "
            f"{levels['Hard']} hard."
@@ -749,9 +972,9 @@ def render_key(paper, data, date, notes, printed, source, minutes, moved=()):
            f"2. The Academic TA reads the key out {'part by part' if source.get('parts') else 'section by section'}, "
            "and the marker writes a tick or a cross beside each item.",
            "3. An item is right when its answer matches the key: every correct letter and no other "
-           "on a more-than-one item, the number on an applied maths item (the working belongs to the "
-           "discussion), and the whole sequence on an ordering item. The programme has set no "
-           "partial-credit rule, so this key uses none.",
+           f"on a more-than-one item, {bank_phrase(printed, 'marking')}the number on an applied "
+           "maths item (the working belongs to the discussion), and the whole sequence on an ordering "
+           "item. The programme has set no partial-credit rule, so this key uses none.",
            (f"4. The marker writes each part's ticks beside its rating on the answer sheet, and their "
             f"total as Items right, out of {n}, then hands the paper back." if source.get("parts") else
             f"4. The marker writes the count of ticks as Items right on the front, out of {n}, and "
@@ -786,14 +1009,14 @@ def render_key(paper, data, date, notes, printed, source, minutes, moved=()):
     for i in printed:
         src = "new" if i["added"] else f"bank {i['no']}"
         part = i.get("part") or ""
-        out.append(f"| {i['q']} | {cell(i['key'])} | {i['type']} | {part} | {i['level']} | {i['tag']} | "
+        out.append(f"| {i['q']} | {cell(key_text(i))} | {i['type']} | {part} | {i['level']} | {i['tag']} | "
                    f"{cell(i['roles'])} | {i['day']} | {i['min']:g} | {src} | {cell(i['anchor'])} |")
     reasoned = [i for i in printed if i["note"].get("why") or i["note"].get("wrong")]
     if reasoned:
         out += ["", "## Why each answer holds", ""]
         for i in reasoned:
             note = i["note"]
-            out += [f"### Q{i['q']}, key {i['key']}", ""]
+            out += [f"### Q{i['q']}, key {key_text(i)}", ""]
             if note.get("why"):
                 out += [f"**Why it holds.** {note['why']}", ""]
             for letter, why in sorted((note.get("wrong") or {}).items()):
@@ -824,25 +1047,7 @@ def render_key(paper, data, date, notes, printed, source, minutes, moved=()):
         for i in added:
             first = next((s for s in parts(i)[0]), "")
             out.append(f"- Q{i['q']} ({i['type']}, {i['level']}, {i['tag']}): {first}")
-    mine = [x for x in notes if x[0] == paper and x[2] == "applied"]
-    if mine:
-        out += ["", "## Option edits laid on the bank, waiting for the tracker", "",
-                "These options differ from the tracker's wording or order, each for the reason given "
-                "beside it. The stem and the correct options are the tracker's; where the options are "
-                "relabelled, the key's letters move with them. Accept an edit by copying it into the "
-                "tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.",
-                ""]
-        for _, no, _, why in mine:
-            item = next(i for i in printed if i["no"] == int(no))
-            what = []
-            if item["edit"].get("options"):
-                what.append("option " + ", ".join(sorted(item["edit"]["options"])))
-            if item.get("relabel"):
-                back = {v: k for k, v in item["relabel"].items()}
-                what.append("options relabelled, printed " + ", ".join(
-                    f"{p} as the tracker's {back[p]}" for p in sorted(back)))
-            out.append(f"- Q{item['q']} (bank {no}), {'; '.join(what)} "
-                       f"({item['edit'].get('status', 'proposed')}): {why}")
+    out += bank_changes_md(data, source, printed, moved)
     stretch = source.get("stretch") or []
     if stretch or moved:
         out += ["", "## The stretch page", ""]
@@ -853,6 +1058,79 @@ def render_key(paper, data, date, notes, printed, source, minutes, moved=()):
             out.append(f"- Stretch {k} (bank {item['no']}, {item['type'].lower()}, moved from the timed "
                        f"paper): {item['key']}" + (f". {why}" if why else ""))
     return "\n".join(out).rstrip() + "\n"
+
+
+def placement(data, source, printed, moved):
+    """{bank number: where the paper uses it}: its Q, its stretch line, or the Q it is folded into."""
+    where = {i["no"]: f"Q{i['q']}" for i in printed if not i["added"]}
+    written = len(source.get("stretch") or [])
+    where.update({i["no"]: f"stretch {k}" for k, i in enumerate(moved, written + 1)})
+    by_id = {i.get("id"): i for i in printed if i["added"]}
+    for no, f in (source.get("folded") or {}).items():
+        into = str((f or {}).get("into", "")).strip()
+        target = by_id.get(into[4:]) if into.startswith("new:") else next(
+            (i for i in printed if not i["added"] and str(i["no"]) == into), None)
+        where[int(no)] = f"folded into Q{target['q']}" if target else "folded"
+    return where
+
+
+def bank_changes_md(data, source, printed, moved):
+    """The key's record of everything the paper changed on the tracker's bank: folds, rewordings,
+    option edits and relabellings, and the levels and paces the paper sets itself."""
+    out, where = [], placement(data, source, printed, moved)
+    bank = {i["no"]: i for i in data["items"]}
+    folded = sorted((int(k), v or {}) for k, v in (source.get("folded") or {}).items())
+    if folded:
+        out += ["", "## Bank items folded into deeper items", "",
+                "Each of these tracker items is not printed, because a deeper item on the paper tests "
+                "the same concept. Accept a fold by recording it in the tracker; reject it by deleting "
+                "it from `folded` in the week's source file.", ""]
+        for no, f in folded:
+            it = bank[no]
+            out.append(f"- Bank {no} ({it['type']}, {it['level']}, {it['day']}), {where[no]}: "
+                       f"{' '.join(str(f.get('why', '')).split())}")
+    reworded = [i for no, i in sorted(bank.items()) if i.get("stem_edit") or i.get("situation_edit")]
+    if reworded:
+        out += ["", "## Stems and situations reworded on the bank, waiting for the tracker", "",
+                "These items print with a stem or a situation the tracker does not carry, each for the "
+                "reason given; the key is the tracker's. Accept one by copying the wording into the "
+                "tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.", ""]
+        for i in reworded:
+            for field in ("situation", "stem"):
+                e = i.get(f"{field}_edit")
+                if e:
+                    out.append(f"- Bank {i['no']}, {where.get(i['no'], 'not placed')}, {field} "
+                               f"({e['status']}): {e['why']}")
+    edited = [i for no, i in sorted(bank.items()) if i.get("edit")]
+    if edited:
+        out += ["", "## Option edits laid on the bank, waiting for the tracker", "",
+                "These options differ from the tracker's wording or order, each for the reason given "
+                "beside it. The correct options are the tracker's; where the options are relabelled, the "
+                "key's letters move with them. Accept an edit by copying it into the tracker; reject it "
+                "by deleting it from `data/programme/paper_edits.yaml`.", ""]
+        for item in edited:
+            what = []
+            if item["edit"].get("options"):
+                what.append("option " + ", ".join(sorted(item["edit"]["options"])))
+            if item.get("relabel"):
+                back = {v: k for k, v in item["relabel"].items()}
+                what.append("options relabelled, printed " + ", ".join(
+                    f"{p} as the tracker's {back[p]}" for p in sorted(back)))
+            out.append(f"- Bank {item['no']}, {where.get(item['no'], 'not placed')}, {'; '.join(what)} "
+                       f"({item['edit'].get('status', 'proposed')}): {item['edit'].get('why', '')}")
+    paced = [i for i in printed if not i["added"] and (i.get("level_was") or i.get("min_was") is not None)]
+    if paced:
+        out += ["", "## Levels and paces the paper sets", "",
+                "The tracker's level or minutes for these items differ from what the paper, as reworded, "
+                "asks of the room.", ""]
+        for i in paced:
+            bits = []
+            if i.get("level_was"):
+                bits.append(f"level {i['level']}, where the tracker says {i['level_was']}")
+            if i.get("min_was") is not None:
+                bits.append(f"{i['min']:g} minutes, where the tracker says {i['min_was']:g}")
+            out.append(f"- Q{i['q']} (bank {i['no']}): {'; '.join(bits)}")
+    return out
 
 
 def targets(week):
@@ -911,20 +1189,30 @@ PAPER_MERMAID = """{
     "tertiaryColor": "#FFFFFF", "tertiaryTextColor": "#1C1B16", "tertiaryBorderColor": "#D5D0C4",
     "lineColor": "#6B675E", "textColor": "#1C1B16", "mainBkg": "#F3F1EA", "nodeBorder": "#B37A33",
     "clusterBkg": "#F9F8F3", "clusterBorder": "#D5D0C4", "edgeLabelBackground": "#FFFFFF",
-    "fontFamily": "Liberation Sans, Arial, DejaVu Sans, sans-serif", "fontSize": "16px"
+    "fontFamily": "Liberation Sans, Arial, DejaVu Sans, sans-serif", "fontSize": "16px",
+    "xyChart": {"backgroundColor": "#FFFFFF", "titleColor": "#1C1B16",
+                "xAxisLabelColor": "#1C1B16", "xAxisTitleColor": "#1C1B16",
+                "xAxisTickColor": "#6B675E", "xAxisLineColor": "#6B675E",
+                "yAxisLabelColor": "#1C1B16", "yAxisTitleColor": "#1C1B16",
+                "yAxisTickColor": "#6B675E", "yAxisLineColor": "#6B675E",
+                "plotColorPalette": "#B37A33, #1C1B16, #6B675E, #D5D0C4"}
   },
   "flowchart": {"htmlLabels": false, "curve": "linear", "padding": 6,
-                "nodeSpacing": 24, "rankSpacing": 28, "useMaxWidth": true}
+                "nodeSpacing": 24, "rankSpacing": 28, "useMaxWidth": true},
+  "xyChart": {"width": 640, "height": 300, "titleFontSize": 18}
 }"""
 
 # How each answer kind is labelled beside an item's level when the source file gives no label of
 # its own, and how the answer sheet names it.
 KIND_LABEL = {"one": "Choose one", "multi": "Choose every correct option", "tf": "True or false",
-              "line": "Complete it", "working": "Work it out", "order": "Put the steps in order"}
-KIND_SHEET = {"line": "Word or number", "working": "Final answer", "order": "Letters in order"}
+              "line": "Complete it", "working": "Work it out", "order": "Put the steps in order",
+              "bank": "Complete it from the word bank", "match": "Match it"}
+KIND_SHEET = {"line": "Word or number", "working": "Final answer", "order": "Letters in order",
+              "bank": "Letter", "match": "Letter"}
 # How an item with its own label is answered, printed after the label on the item's line.
 KIND_HOW = {"one": "one letter", "multi": "every correct letter", "tf": "T or F",
-            "line": "a word or number", "working": "show the working", "order": "letters in order"}
+            "line": "a word or number", "working": "show the working", "order": "letters in order",
+            "bank": "a letter from the word bank", "match": "the matching letter"}
 SCALE = ("1 = I have not used this; 2 = I can follow it when someone shows me; 3 = I can do it alone "
          "on a small problem; 4 = I can find and fix mistakes in someone else's version")
 PURPOSE = ("This paper finds which of the week's decisions you can make cold, with no notes and no "
@@ -995,16 +1283,32 @@ def own_label(item):
 
 def item_label(item):
     """The short label beside an item's number: the source file's own, or its answer kind."""
+    if not own_label(item) and item.get("bank_style") == "words":
+        return f"Complete it from {item['bank_label']}"
     return own_label(item) or KIND_LABEL[answer_kind(item)]
 
 
 def item_block(item):
     stem, options, _ = parts(item)
     kind = answer_kind(item)
+    how = f"a letter from {item['bank_label']}" if kind == "bank" else KIND_HOW[kind]
     return {"kind": "item", "q": item["q"], "level": item["level"], "label": item_label(item),
-            "how": KIND_HOW[kind] if own_label(item) else "",
+            "how": how if own_label(item) else "",
             "lines": stem, "options": [[a.upper(), b] for a, b in options], "answer": kind,
             "room": 1500 if kind == "working" else 0}
+
+
+def bank_block(item):
+    """A word bank for the Word paper: printed once, bound to the first item that answers from it."""
+    return {"kind": "bank", "label": item["bank_label"], "instruction": item["bank_instruction"],
+            "options": [[letter.upper(), text] for letter, text in item["bank_options"]]}
+
+
+def match_block(item):
+    """A match table for the Word paper: one block that carries every item of its bank."""
+    return {"kind": "match", "label": item["bank_label"], "instruction": item["bank_instruction"],
+            "rows": [[str(i["q"]), i["level"], _words(parts(i)[0]), own_label(i)] for i in item["bank_items"]],
+            "options": [[letter.upper(), text] for letter, text in item["bank_options"]]}
 
 
 def sheet_rows(printed, with_key=False):
@@ -1026,7 +1330,7 @@ def sheet_rows(printed, with_key=False):
         else:
             row = {"q": i["q"], "kind": kind, "kindLabel": KIND_SHEET[kind], "steps": len(options)}
             if with_key:
-                row["key"] = upper_key(i["key"]) if kind == "order" else str(i["key"])
+                row["key"] = upper_key(i["key"]) if kind in ("order", "bank", "match") else str(i["key"])
             written.append(row)
     width = max([r["count"] for r in letters] + [4])
     return {"letters": letters, "tf": tf, "written": written, "letterColumns": list("ABCDEF"[:width])}
@@ -1059,6 +1363,12 @@ def docx_sections(printed, source):
                                             kind="set", n=shown[number], situation=situation))
             if item.get("exhibit"):
                 blocks.append(exhibit_block(item["exhibit"], labels[("item", item["q"])]))
+            if item.get("bank_style") == "match":
+                if item.get("bank_first"):
+                    blocks.append(match_block(item))
+                continue
+            if item.get("bank_first"):
+                blocks.append(bank_block(item))
             blocks.append(item_block(item))
         sections.append({"heading": f"Part {p}. {title}",
                          "intro": f"{count(len(run))}, {span(run)}, about {mins:g} minutes. "
@@ -1120,8 +1430,8 @@ def docx_spec(paper, data, date, printed, source, minutes, notes, moved=()):
                   "working goes in the margins and in the working boxes."],
         ["Answers", "Every answer goes on the answer sheet at the back, which is the page that is "
                     "marked: one box for a lettered item, every correct box for a starred one, T or F "
-                    "for a statement, and the word, the number or the letters in order in the space. "
-                    "A wrong answer costs nothing, so answer every item."],
+                    f"for a statement, {bank_phrase(printed, 'answers')}and the number or the "
+                    "letters in order in the space. A wrong answer costs nothing, so answer every item."],
         ["Levels", "Every item shows its level beside its number, easy, medium or hard. A hard item is "
                    "several steps on an exhibit, never an obscure fact."],
         ["Exhibits", "An exhibit is printed once, labelled by its part as Exhibit 2A, 2B, and every item "
@@ -1158,7 +1468,7 @@ def docx_spec(paper, data, date, printed, source, minutes, notes, moved=()):
         "pacingNote": (f"Each band is as wide as its part's minutes; the timed items fill {timed:g} of "
                        f"the {minutes} minutes, and the minute each part starts is under it."),
         "pacing": pace, "minutes": minutes, "sections": sections,
-        "stretch": {"title": STRETCH_TITLE, "intro": stretch_intro(len(stretch), len(moved)),
+        "stretch": {"title": STRETCH_TITLE, "intro": stretch_intro(len(stretch), len(moved), recall_only(moved)),
                     "items": stretch_items},
         "sheet": sheet,
     }
@@ -1166,7 +1476,7 @@ def docx_spec(paper, data, date, printed, source, minutes, notes, moved=()):
     for i in printed:
         note = i["note"]
         if note.get("why") or note.get("wrong") or note.get("answer"):
-            reasons.append({"q": i["q"], "key": upper_key(i["key"]),
+            reasons.append({"q": i["q"], "key": key_text(i, upper=True),
                             "meta": f"{i['type']}, {i['level']}, {i['tag']}, {i['day']}",
                             "why": note.get("why", ""),
                             "wrong": sorted([str(k).upper(), v] for k, v in (note.get("wrong") or {}).items()),
@@ -1188,8 +1498,9 @@ def docx_spec(paper, data, date, printed, source, minutes, notes, moved=()):
         f"The Academic TA reads the key out {'part by part' if in_parts else 'section by section'}, and the "
         "marker ticks or crosses each row of the answer sheet against the marking grid at the back of this key.",
         "An item is right when its answer matches the key: every correct box and no other on a starred "
-        "item, the number on a work-it-out item (the working belongs to the discussion), and the whole "
-        "sequence on an order item. The programme has set no partial-credit rule, so this key uses none.",
+        f"item, {bank_phrase(printed, 'marking')}the number on a work-it-out item (the working "
+        "belongs to the discussion), and the whole sequence on an order item. The programme has set no "
+        "partial-credit rule, so this key uses none.",
         (f"The marker writes each part's ticks in its box beside the learner's rating, and their total as "
          f"Items right, out of {n}, then hands the paper back, so each learner reads their rating against "
          f"their score part by part." if in_parts else
@@ -1213,13 +1524,17 @@ def docx_spec(paper, data, date, printed, source, minutes, notes, moved=()):
                         f"Both are this programme's own working rule for a room of {seats()}. A flagged item "
                         "is discussed as usual; the TA also sends it, with the room's rate, to the tracker's "
                         "owner, because the fault may sit in the item rather than in the learners.") if in_parts else "",
-        "rows": [[str(i["q"]), upper_key(i["key"]), i["type"], str(i.get("part") or ""), i["level"], i["tag"],
+        "rows": [[str(i["q"]), key_text(i, upper=True), i["type"], str(i.get("part") or ""), i["level"], i["tag"],
                   i["day"], "new" if i["added"] else f"bank {i['no']}"] for i in printed],
         "reasons": reasons, "tally": tally,
         "additions": [f"Q{i['q']} ({i['type']}, {i['level']}, {i['tag']}): {next(iter(parts(i)[0]), '')}"
                       for i in added],
         "additionsNote": "These items come from the week's source file, not the tracker. Accept one by "
                          "adding it to the tracker's Saturday papers tab.",
+        "folded": [line[2:] for line in bank_changes_md(data, source, printed, moved)
+                   if line.startswith("- Bank ") and "folded into" in line],
+        "foldedNote": "These tracker items are not printed, because a deeper item on the paper tests the "
+                      "same concept.",
         "stretch": [str(s.get("answer", "")) for s in stretch]
                    + [f"{upper_key(i['key'])} (bank {i['no']}, moved from the timed paper)" for i in moved],
         "grid": dict(sheet_rows(printed, with_key=True), n=n,
@@ -1578,12 +1893,31 @@ if __name__ == "__main__":
 #     answer-key/C2_W01_SAT_item_analysis_TRAINER.xlsx with its recalc manifest beside it;
 #     python3 scripts/xlsx_recalc.py content/W01/SAT then reports 1 verdict computed and 1 decision
 #     flipped and re-asserted, PASS.
-# W01's parts with bank item 17 deleted from part 2
-#     FAIL: bank items [17] sit in no part and not in stretch_bank.
-# W01's stretch_bank with 7 swapped for 17 (and 7 placed in part 1)
-#     FAIL: bank items [17] are not recall items; only fill in the blank and true or false move.
-# W01's stretch_bank with a seventh number added
-#     FAIL: 7 bank items moved to the stretch page, and at most 6 may move.
+# W01's parts with bank item 17 deleted from part 2, and 17 neither moved nor folded
+#     FAIL: bank items [17] are printed nowhere: place each in a part, fold it into a deeper item
+#     or move it to stretch_bank.
+# folded: {17: {into: "new:nothing", why: ...}}
+#     FAIL: bank item 17 is folded into new:nothing, which is not a printed item.
+# folded: {17: {into: "36"}} with no why
+#     FAIL: bank item 17 is folded with no reason.
+# stretch_bank holding seven items, two of them one-correct items
+#     Builds: the stretch page carries all seven, and its opening line calls Stretch 5 to 11 quick
+#     checks on the week's material.
+# banks: {t1: {style: words, options: [customers, caveat, orders, evidence, segments, claim]}},
+# with notes 2 and 7 set to bank t1
+#     The paper prints Word bank 1 once above Q1, Q1 and Q2 print their blanks, the key reads
+#     "a (customers)" and "b (caveat)", and the answer sheet asks each for a letter.
+# The same bank with only three options
+#     FAIL: bank t1 offers 3 options for 2 items; a bank carries at least two options no item uses.
+# A match bank whose three keys, in item order, are a, b and c
+#     FAIL: bank m1's keys run a, b, c down its items.
+# paper_edits.yaml W1 18 with stem: {status: proposed, why: ..., text: ...}
+#     Q printed with the new stem and the tracker's key; the key lists it under stems and
+#     situations reworded, with its status.
+# A situation edit on an item that does not open a set
+#     WARN: that edit is broken, a situation edit needs the item that opens a scenario set.
+# notes 36 with level: Hard and min: 3
+#     The item prints as hard at 3 minutes, and the key lists what the tracker says.
 # W01's part 2 with bank item 37 moved to the end of the part
 #     FAIL: scenario set 1 is split: its items must print together.
 # A part naming new:nothing

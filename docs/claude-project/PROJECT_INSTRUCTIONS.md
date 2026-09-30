@@ -53,6 +53,10 @@ lists the conflict and the working rule; follow the rule and name it.
 ## House rules for anything written here
 
 - The business scenario leads; a plan that opens on a topic title is not built from the row.
+- The domain comes before the case and the problem before the code: a new domain opens on its
+  story from its dossier, and every chapter sizes two to four answers and makes the best-fit call
+  before any code, then reaches its number a second way. A day runs in about six chapters, each a
+  deck chapter paired with a notebook.
 - What is planted in a dataset is never named to a learner. The one exception is the week's Saturday recap paper, which may name a plant the room has already found in class.
 - Durations only, never clock times. Role labels only, never people's names; Kalpa's fictional
   stakeholders are the one exception.

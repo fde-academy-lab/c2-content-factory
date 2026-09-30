@@ -236,6 +236,11 @@ client_zero:
       decided_on: 2026-09-28
       by: the requester
       text: "Kalpa's Bengaluru engineering and data centre is Kalpa's Global Capability Centre, the cohort are trainee engineers in its data and AI team, and every pack carries three recurring beats: the client's ask, Kavya Nair's review and the interview question. It adds a name and a framing to v2.2 and invalidates nothing."
+    - id: health-us-facing
+      status: locked
+      decided_on: 2026-09-30
+      by: the requester
+      text: "Kalpa Health serves the US market: a diagnostics and revenue-cycle business whose laboratories and patient service centres test US patients and bill US payers, with its analytics and revenue-cycle work run from Kalpa's GCC in Bengaluru, the way the Indian centres of US health systems, laboratories and revenue-cycle firms work. Dr Priya Menon stays its COO and Build 1 keeps its growth question and its five sub-problems, now in dollars across US metro areas, with the payer, the claim, the denial and prior authorisation in the room's vocabulary. Every Kalpa Health record is synthetic, so no protected health information exists in the repository. The Build 1 generator and the Week 3 packs are revised to it; until then they carry the India setting of v2.2."
 
 recut:
   status: open
@@ -259,7 +264,8 @@ saturday_papers:
   to_build: [W10, W11, W13, W14]
   # The requester set this rule on 30 September 2026, replacing the tracker's "Item column only":
   # the paper prints in parts named for what each shows, with a blueprint on page one and the level
-  # beside every item, and up to six recall items may move to the untimed stretch page.
+  # beside every item, and up to six recall items may move to the untimed stretch page. Later the
+  # same day the requester raised the papers to interview grade (decision saturday-interview-grade).
   rule: The student paper prints the items in parts, each item with its format and level; the key, tag, roles and anchor stay with the team.
   superseded:
     rule: The student paper prints the Item column only; the key, level, tag, roles and anchor stay with the team.
@@ -302,6 +308,26 @@ decisions:
     status: closed
     closes: the requester, on 30 September 2026
     text: The Week 2 Tuesday interview line asks what you do when the validation fails at the end of reporting day, the wording the Tuesday pack teaches, where tracker v7 said 5 pm. The repository's copy of the tracker carries the change, and the master takes it at its next version.
+    blocks: nothing
+  - id: saturday-interview-grade
+    status: closed
+    closes: the requester, on 30 September 2026
+    text: The Saturday recap papers are interview grade. The tracker's bank sets what is tested, and the week's source file may reword, fold or move any bank item with its reason; about 60 percent of the timed items are hard; every part opens on a Kalpa scenario with its nuance and a visual; blanks are answered from word banks, pairs from match tables, and statements are judged with their reasons.
+    blocks: nothing
+  - id: saturday-real-cases
+    status: closed
+    closes: the requester, on 30 September 2026
+    text: The Saturday recap papers may set items at named, real companies and in public case studies, used directly or as inspiration, alongside Kalpa's own case. Every real fact or figure a paper prints is checked against a primary or reputable source whose URL and date sit in the provenance; a figure that cannot be checked appears only in a hypothetical marked as illustrative, and a named company in a hypothetical reads as one.
+    blocks: nothing
+  - id: four-domains
+    status: closed
+    closes: the requester, on 30 September 2026
+    text: The programme prepares learners for four domains, and each enters on its story from a domain dossier the first day it appears, with its one-page card and the trainer's talk track. Retail and e-commerce enter on Week 1 Monday (Kalpa Retail; the dossier is content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md). US healthcare enters on Build 1 Monday (Kalpa Health, repositioned as a US-facing business, addendum health-us-facing). Financial services enter in Week 5, where the lending question arrives, and carry Build 2 (Kalpa Financial Services). SaaS and enterprise AI enter in Week 8, as the GCC building AI products, an enterprise brain among them, for Kalpa's units and for US clients. Connect and Logistics get their story when a build first enters them. In every domain, each chapter names a real company that faces the same question, as a likeness with every fact checked and dated, and Kalpa stays the case.
+    blocks: nothing
+  - id: chapter-standard
+    status: closed
+    closes: the requester, on 30 September 2026
+    text: Every teaching day is rebuilt to the raised standard in .claude/skills/day-pack-builder/references/the-standard.md. The day runs in about six chapters, each one deck chapter paired with one notebook that builds on the one before it; each chapter states the problem and lays out two to four ways to answer it, sized, with the best-fit call and the fact that would change it, before any code, and closes by reaching the same answer a second way; at least a third of a day's exercise items are design items; and every pack runs a five-pass depth loop whose last two passes are fresh reviewers. Weeks 1 and 2 are rebuilt first, Week 1 all at once.
     blocks: nothing
   - id: rubrics-and-calendar
     status: open

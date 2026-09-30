@@ -1,6 +1,6 @@
 # Week 2 recap paper: key
 
-TRAINER. Rendered from the tracker's item bank and the week's source file by `scripts/build_saturday_paper.py`. Change an item in the tracker, an option in `data/programme/paper_edits.yaml` or anything in `content/W02/SAT/internal/C2_W02_SAT_paper_source_INTERNAL.yaml`, and rebuild; never edit this file by hand.
+TRAINER. Rendered from the tracker's item bank and the week's source file by `scripts/build_saturday_paper.py`. Change an item in the tracker, an option in `data/programme/paper_edits.yaml` or anything in `content/W02/SAT/internal/C2_W02_SAT_paper_source_INTERNAL.yaml`, and rebuild; never edit this file by hand. A stem, a situation or an option can be reworded in `data/programme/paper_edits.yaml`.
 
 Saturday 17 October 2026. A 120-minute paper holding 55 items at 120 minutes by the blueprint's pace: 8 easy, 34 medium and 13 hard. 3 of them are new and not yet in the tracker.
 
@@ -564,23 +564,23 @@ These items come from the week's source file, not the tracker. Accept one by add
 
 ## Option edits laid on the bank, waiting for the tracker
 
-These options differ from the tracker's wording or order, each for the reason given beside it. The stem and the correct options are the tracker's; where the options are relabelled, the key's letters move with them. Accept an edit by copying it into the tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.
+These options differ from the tracker's wording or order, each for the reason given beside it. The correct options are the tracker's; where the options are relabelled, the key's letters move with them. Accept an edit by copying it into the tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.
 
-- Q55 (bank 19), option b (accepted): The key was the longest option.
-- Q18 (bank 22), option c (accepted): The key was the longest option; the new distractor is the fan-out misread in reverse.
-- Q19 (bank 23), option b, d (accepted): The key was the longest option; the distractor is now the full query with the aggregate in WHERE. Option b then ran 38 characters against 73, so it now sorts its distinct list too, and the options run 47 to 73.
-- Q40 (bank 29), option a (accepted): The key was the longest option.
-- Q43 (bank 32), option c (accepted): The key was the longest option.
-- Q14 (bank 33), option c, d; options relabelled, printed a as the tracker's a, b as the tracker's d, c as the tracker's b, d as the tracker's c (accepted): Options ran 22 to 39 characters, with c at 23 and d at 22 against b at 39; c and d now say which clause can compare COUNT(*) with a number, and the options run 34 to 41. Every more-than-one key on the paper held a, and four of the seven were exactly a, b and c. The options are relabelled a, d, b, c, so the wrong option prints at b, the two WHERE statements sit together, and the same three stay correct.
-- Q21 (bank 34), option d; options relabelled, printed a as the tracker's d, b as the tracker's a, c as the tracker's b, d as the tracker's c (accepted): The font was a nonsense option, so striking it left a, b and c, which is the whole key; the new distractor is a check that sounds like the other three and cannot catch a fan-out. Every more-than-one key on the paper held a, and four of the seven were exactly a, b and c. The options are relabelled d, a, b, c, so the wrong option prints at a and the same three stay correct.
-- Q22 (bank 35), options relabelled, printed a as the tracker's c, b as the tracker's a, c as the tracker's d, d as the tracker's b (accepted): Every more-than-one key on the paper held a, and four of the seven were exactly a, b and c. The options are relabelled c, a, d, b, so the two wrong options print at a and c and the same two stay correct.
-- Q32 (bank 36), option b (accepted): Option b ran 25 characters against 60; it now names the quarter its total covers, and the options run 37 to 60.
-- Q33 (bank 37), option b (accepted): Option b, part of the key, ran 37 characters against 63; it now says who ties, and the options run 40 to 63.
-- Q44 (bank 38), option a (accepted): Option a, part of the key, ran 35 characters against 60; it now says the join is on a key, and the options run 40 to 60.
-- Q45 (bank 39), option d (accepted): Cell colour was a nonsense option, so striking it left a, b and c, which is the whole key; the new distractor is the precision a room reaches for when a number is misread.
-- Q25 (bank 42), option b, d (accepted): The key was the longest option; the distractor keeps the table-qualified column the key uses. Option d ran 16 characters against 51; it is now the anti-join from the payments side, which finds payments with no order, and the options run 37 to 51.
-- Q37 (bank 47), option a (accepted): The key was the longest option.
-- Q49 (bank 51), option a (accepted): The key was the longest option.
+- Bank 19, Q55, option b (accepted): The key was the longest option.
+- Bank 22, Q18, option c (accepted): The key was the longest option; the new distractor is the fan-out misread in reverse.
+- Bank 23, Q19, option b, d (accepted): The key was the longest option; the distractor is now the full query with the aggregate in WHERE. Option b then ran 38 characters against 73, so it now sorts its distinct list too, and the options run 47 to 73.
+- Bank 29, Q40, option a (accepted): The key was the longest option.
+- Bank 32, Q43, option c (accepted): The key was the longest option.
+- Bank 33, Q14, option c, d; options relabelled, printed a as the tracker's a, b as the tracker's d, c as the tracker's b, d as the tracker's c (accepted): Options ran 22 to 39 characters, with c at 23 and d at 22 against b at 39; c and d now say which clause can compare COUNT(*) with a number, and the options run 34 to 41. Every more-than-one key on the paper held a, and four of the seven were exactly a, b and c. The options are relabelled a, d, b, c, so the wrong option prints at b, the two WHERE statements sit together, and the same three stay correct.
+- Bank 34, Q21, option d; options relabelled, printed a as the tracker's d, b as the tracker's a, c as the tracker's b, d as the tracker's c (accepted): The font was a nonsense option, so striking it left a, b and c, which is the whole key; the new distractor is a check that sounds like the other three and cannot catch a fan-out. Every more-than-one key on the paper held a, and four of the seven were exactly a, b and c. The options are relabelled d, a, b, c, so the wrong option prints at a and the same three stay correct.
+- Bank 35, Q22, options relabelled, printed a as the tracker's c, b as the tracker's a, c as the tracker's d, d as the tracker's b (accepted): Every more-than-one key on the paper held a, and four of the seven were exactly a, b and c. The options are relabelled c, a, d, b, so the two wrong options print at a and c and the same two stay correct.
+- Bank 36, Q32, option b (accepted): Option b ran 25 characters against 60; it now names the quarter its total covers, and the options run 37 to 60.
+- Bank 37, Q33, option b (accepted): Option b, part of the key, ran 37 characters against 63; it now says who ties, and the options run 40 to 63.
+- Bank 38, Q44, option a (accepted): Option a, part of the key, ran 35 characters against 60; it now says the join is on a key, and the options run 40 to 60.
+- Bank 39, Q45, option d (accepted): Cell colour was a nonsense option, so striking it left a, b and c, which is the whole key; the new distractor is the precision a room reaches for when a number is misread.
+- Bank 42, Q25, option b, d (accepted): The key was the longest option; the distractor keeps the table-qualified column the key uses. Option d ran 16 characters against 51; it is now the anti-join from the payments side, which finds payments with no order, and the options run 37 to 51.
+- Bank 47, Q37, option a (accepted): The key was the longest option.
+- Bank 51, Q49, option a (accepted): The key was the longest option.
 
 ## The stretch page
 

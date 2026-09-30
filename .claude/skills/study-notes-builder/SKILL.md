@@ -94,7 +94,7 @@ then reads for content instead of re-orienting.
 | 2 | What you can now do | Five to seven capability sentences | 150 words |
 | 3 | Where this sits | What this session covered, the terrain figure, the placement table, the coverage line, the outcome tie, what was left out | 300 words, 1 figure |
 | 4 | The picture to remember | One diagram the learner should be able to redraw | 100 words, 1 figure |
-| 5 | The sections | Four to six concepts, each on the unit shape | the bulk |
+| 5 | The sections | One per chapter of the day, about six, each a worked case on the unit shape with its options, sizing, trap and second route | the bulk |
 | 6 | Where this shows up in the work | Three situations where this decides something with a cost attached | 350 words |
 | 7 | Try this yourself | The challenge and its self-check | 400 words |
 | 8 | Where this gets tested | Four to six questions with model answers | 500 words |

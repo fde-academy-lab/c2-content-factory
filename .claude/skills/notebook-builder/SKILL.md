@@ -26,7 +26,11 @@ The helper reads its palette from `scripts/brand.py`, as the decks and cheat she
 
 ## The shape of a teaching notebook
 
-**Opening.** A title cell naming the topic, the notebook's place in the day and the one-line promise. A setup cell importing the helper and loading the data, with the import documented in the markdown cell above it. Then a MAP code cell rendering two diagrams side by side, the day's notebook ladder with this one lit and a flow of what this notebook adds.
+**One notebook per chapter, and each builds on the last.** A day runs in about six chapters, and each chapter is one deck chapter and one notebook, numbered and titled alike. The notebooks grow the way a first agent does: a simple loop by hand, then one tool, then several tools, then the loop, then memory, then all of it together. Each notebook adds one decision to what the one before it established and says so in its first cell, and it goes deep on that one decision rather than touching six. Splitting a topic this way loses nothing: a chapter notebook of 20 to 36 cells carries more detail on its one step than a single day notebook ever held.
+
+**The problem comes before the code.** After the opening, a `## The options` section lays out the two to four ways a team could answer the chapter's question, a sizing cell computes each one's cost on this data (rows touched, seconds, rupees, error), and a markdown cell makes the best-fit call and names the fact that would change it. Only then is the chosen way built. Near the end, `## A second route` reaches the same number another way and a check asserts the two agree. The code is the last mile of the chapter.
+
+**Opening.** A title cell naming the topic, the chapter's number and place in the day, the stakeholder's question, the metric at stake and who asks for it, what a wrong number costs them, the real company that faces the same question, and the one-line promise. A setup cell importing the helper and loading the data, with the import documented in the markdown cell above it. Then a MAP code cell rendering two diagrams side by side, the day's notebook ladder with this one lit and a flow of what this notebook adds.
 
 **Per section, in this order.**
 

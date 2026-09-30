@@ -26,6 +26,16 @@ yours.
   per order, times price per item, less discounts. A learner who can state that tree, pick the branch
   the data points at and defend the choice has done data analysis, whatever the tool was.
 - The day closes on what the learner would actually send the stakeholder, with its caveat.
+- The problem comes before the code, and the code is its last mile. Each chapter of a day lays out
+  two to four ways a team could answer the question, sizes them in rows, minutes, rupees and error,
+  makes the best-fit call, names the fact that would change it, builds the chosen way and reaches the
+  same number a second way. The requester set this on 30 September 2026: interviews and clients pay
+  for a sized solution and its alternatives, and a learner who only writes the code has done the
+  cheapest part of the job.
+- The domain comes before the case. Most of the room has never worked in a business role, so a new
+  domain opens on its story: how the business makes money, who decides, its metrics as formulas, its
+  language and compliance, and why analytics, ML, NLP and agents are needed there
+  (`.claude/skills/day-pack-builder/references/domain-dossier.md`).
 - The same business question gets a harder answer with a stronger tool as the programme runs, which
   is how a learner comes to see analysis, machine learning, deep learning and generative AI as
   successive answers to one problem rather than as separate subjects.
@@ -63,6 +73,12 @@ One fictional company, one domain, one entity model, established on Day 1 and ca
   into that unit: Build 1 in Kalpa Health, Build 2 in Kalpa Financial Services, Build 3 in Kalpa
   Connect. That rotation is deliberate training for the interview question the review quoted: "you are
   in a health company now, tell me how you would apply this to our data."
+- Real companies enter as likenesses in the same domain, never as a second case. Each chapter names a
+  real company that faces the chapter's question (a store chain or a quick-commerce app beside Kalpa
+  Retail's revenue question, a US lab chain beside Kalpa Health's denials), with every fact checked and
+  dated, so a learner can picture the problem; the data, the stakeholders and the numbers stay Kalpa's,
+  and the domain changes only where the rotation above changes it. Set by the requester on 30
+  September 2026 (decision `four-domains` in `data/programme/facts.yaml`).
 - Kalpa's stakeholders are named and fictional, and a trainer says them from memory. Naming a
   fictional CEO is the opposite of naming a trainer, which never happens in a student file.
 

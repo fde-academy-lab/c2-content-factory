@@ -110,7 +110,7 @@ Build the Saturday pack for Cohort 2, Week {WW}, Saturday {DATE}.
 
 Source of truth: the week's paper in docs/curriculum/Saturday_papers.md (the tracker's item bank), the Saturday row in docs/curriculum/{WEEK_FILE}, docs/curriculum/Structure.md, and docs/06_Day_Pack_Method.md. Follow the Saturday section of .claude/skills/exercise-builder/SKILL.md. Saturday is not a teaching day, so build only these:
 
-1. The recap paper: pen and paper, AI-free and objective, the bank's items in parts named for what each shows, each item with its format and level beside it, and up to six recall items moved to the untimed stretch page. It is swapped and marked against the key.
+1. The recap paper: pen and paper, AI-free and objective, interview grade, in parts named for what each shows, each opening on a Kalpa scenario with a visual and each item with its format and level beside it. The bank sets what is tested: any bank item may be reworded, folded into a deeper item or moved to the untimed stretch page, with its reason; about 60 percent of the timed items are hard; blanks come from word banks, pairs from match tables and statements are judged with their reasons. It is swapped and marked against the key.
 2. The key: per item, the key, level, tag, roles, day and the interview anchor it descends from, so a peer can mark in seconds.
 3. The discussion guide for the Academic TA: marking against the key, the most-missed items first as an interview-answer discussion with random call-outs, and the scores by tag that feed Monday's remediation read.
 

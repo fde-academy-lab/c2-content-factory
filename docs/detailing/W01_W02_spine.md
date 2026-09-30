@@ -6,10 +6,23 @@ without stopping at a spine of its own. Where this page and a curriculum row dif
 wins; everything it leaves unchanged, the row still carries, including the scenario, the data
 version, the plants, the interview anchors and the references.
 
+Raised by the requester on 30 September 2026 (decisions `chapter-standard` and `four-domains`): each
+day's rungs below become its chapters, the day runs to the standard's grid, Week 1 Monday opens on
+the retail and e-commerce story, and every pack runs the five-pass depth loop. The cases, the rungs'
+questions and the traps below stand.
+
 ## The rule every day follows
 
-Each day is one Kalpa case climbed in five rungs, each rung a harder business question. Python, SQL,
-pandas or Excel is the calculator. Every staged failure is a trap: a plausible wrong number with a
+Each day is one Kalpa case climbed in about six chapters, each a harder business question, and each
+chapter pairs one deck chapter with one notebook that builds on the one before it. The five rungs
+each day lists below are the chapters' questions: a rung that carries two decisions becomes two
+chapters, and the sixth is the rung's hardest form or the decision the case ends on. Every chapter
+states the problem, lays out two to four ways to answer it with their sizing and the best-fit call,
+builds the chosen way and reaches the same number a second way, and it names the metric at stake,
+who asks for it, what a wrong number costs and a real company that faces the same question. Week 1
+Monday opens on the retail and e-commerce story from the domain dossier
+(`content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md`), and every later day links to it
+rather than re-telling it. Python, SQL, pandas or Excel is the calculator. Every staged failure is a trap: a plausible wrong number with a
 business consequence, shown exactly, then the check that catches it and the fix. A syntax or runtime
 error is met when it happens and gets two minutes and the last line of its trace, never a chapter.
 
@@ -19,16 +32,21 @@ Clock times live in `data/programme/facts.yaml`; lesson material carries duratio
 
 | Block | Minutes | What runs |
 |---|---|---|
-| Morning | 180 | The client's ask and the thinking drawn on the board (20); round 1 (50); round 2 (50); a break (10); round 3 (50) |
-| Afternoon | 180 | The escalated case, unguided (60); the debrief of the room's wrong answers (15); a break (10); the second case, in pairs (45); the interview drill aloud (30); the Kahoot and tomorrow's ask (20) |
+| Morning | 180 | The client's ask and the thinking drawn on the board (20); chapters 1 to 5 of about 30 each; a break (10) before chapter 4 |
+| Afternoon | 180 | Chapter 6 (30); the escalated case, unguided (50); the debrief of the room's wrong answers (15); a break (10); the second case, in pairs (40); the interview drill aloud, the design question among it (20); the Kahoot and tomorrow's ask (15) |
 | After | The lab's length | The TA-led practice lab, which the pack supplies with a practice set and its solutions |
 
-A round is 50 minutes: the question and its picture, the trainer's demonstration on Kalpa data, the
-trap and its wrong number, the room running a harder variant, and Kavya's review.
+A chapter is about 30 minutes live: the need and who asks, the options with their sizing and the
+best-fit call, the build on Kalpa data with each step predicted before it runs, the trap and its
+wrong number, the second route, and Kavya's review. Week 1 Monday's domain story takes 45 minutes in
+place of the 20-minute ask, chapter 5 moves to the afternoon, and the afternoon's case blocks give
+up the difference, as the day sheet shows.
 
 **Week 2's faculty days (Monday to Wednesday, tentative).** The trainer keeps the morning block and
-the first 60 minutes of the afternoon, which carry the escalated case (45) and the Kahoot (15); the
-IITGN block takes the last 120 minutes, after the day's applied core, as `facts.yaml` places it.
+the first 60 minutes of the afternoon, which carry chapter 6 (30), the escalated case's first two
+parts (20) and the Kahoot (10); the rest of the escalated case, the second case and the interview
+drill move to the practice lab and the take-home. The IITGN block takes the last 120 minutes, after
+the day's applied core, as `facts.yaml` places it.
 
 **Week 1 Friday.** The lab day keeps the row's shape in the longer day: the AI-free lab (150), a
 break (10), the lab debrief (40), the growth-review rehearsal in two rounds (100), a timed round of
@@ -44,7 +62,7 @@ The targets, and the form each family takes, are in
 
 Traps marked * were added by this spine; the others come from the rows.
 
-| Day | The case and its five rungs | The traps, each a plausible wrong number |
+| Day | The case and its rungs, which become its chapters | The traps, each a plausible wrong number |
 |---|---|---|
 | Mon | Is acquisition even the short branch? The rungs climb from four readings of "sales", to the revenue tree as metrics, to the leaves counted on 30 orders, to the typical order, to which branch Meera opens first. | Rows counted as customers, 30 instead of 23, so orders per customer reads 1.00 and "nobody comes back"*; cancelled orders counted as sales*; the mean of Rs 18,160 sold as the typical order when the median is Rs 2,205; two 10 percent lifts called 20 percent*. |
 | Tue | Which branch moved from Q1 to Q2? The rungs run from whether the drop is real, to the tree decomposed, to the segment split, to mix against rate, to the hypothesis Marketing will attack. | Quarters of unequal length compared as totals; an average of segment averages*; a missing discount read as zero; a helper that returns nothing, so a segment drops out of the comparison unnoticed. |
@@ -56,7 +74,7 @@ Traps marked * were added by this spine; the others come from the rows.
 
 The IITGN faculty blocks on Monday to Wednesday are tentative, and each takes 120 minutes of the day.
 
-| Day | The case and its five rungs | The traps, each a plausible wrong number |
+| Day | The case and its rungs, which become its chapters | The traps, each a plausible wrong number |
 |---|---|---|
 | Mon | Anand's Monday numbers, straight from the warehouse. The rungs run from Week 1's leaves re-answered in SQL and checked against Week 1, to per segment and quarter, to two quarters as CTEs, to the suite Anand's analyst audits. | Orders per customer returning 1 because Postgres divides integers*; COUNT(*) counting order rows as customers*; AVG skipping NULLs without saying so*; LIMIT without ORDER BY giving two learners two answers. |
 | Tue | Booked against collected, without lying. The rungs run from two tiny tables, to the naive join, to the row-count check and the revenue bridge, to the unpaid and double-paid lists, to the report by channel Anand signs. | A join fan-out that doubles collected revenue while every row looks right; an INNER join that hides unpaid orders*; a WHERE on the payments side that quietly turns the LEFT join into an INNER one*. |
@@ -104,7 +122,12 @@ files add an exhibit for every scenario set, drawn only from the
 set's own numbers; the reasons for every item, which are why the key holds, why each wrong option
 fails and the interview answer in one breath; and an untimed stretch page of three or four written,
 interview-grade follow-ups. The builder and the source file's format are in
-`scripts/build_saturday_paper.py`.
+`scripts/build_saturday_paper.py`. Later on 30 September 2026 the requester raised both papers to
+interview grade: the bank now sets what is tested rather than what prints, so any bank item may be
+reworded, folded into a deeper item or moved to the stretch page with its reason; about 60 percent of
+the timed items are hard; every part opens on a Kalpa scenario with its nuance and a visual; Week 1
+leans on applied Python, data interpretation and the SQL Week 0 taught; and blanks come from word
+banks, pairs from match tables and statements are judged with their reasons.
 
 ## Checked on 29 September 2026
 
