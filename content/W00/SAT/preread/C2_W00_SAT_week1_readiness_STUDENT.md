@@ -44,6 +44,21 @@ These come from the orientation, and they hold from the first day.
 | Attendance | Recorded in every session, with a minimum of 90 percent over the programme as a whole |
 | Submissions | Exercises and projects go on GitHub Discussions and the LMS by the stated deadline |
 
+## Your foundations
+
+The foundations guide is the long version of the diagnostic, and its mini projects are the
+portfolio's first repositories. [The map](../../D2/study-notes/C2_W00_D02_foundations_00_map_STUDENT.md) lists the
+diagnostic questions each chapter revisits, so a low section on your baseline card points you to its
+chapter. [The path](../../D2/study-notes/C2_W00_D02_foundations_10_path_STUDENT.md) lays the six mini projects out as a
+week. Three chapters cover what the diagnostic did not test: pandas and Excel arrive in Week 2, and
+GitHub carries your work and your submissions from the first day.
+
+| Chapter | Reading | Hands-on |
+|---|---|---|
+| [Chapter 6, pandas](../../D2/study-notes/C2_W00_D02_foundations_06_pandas_STUDENT.md) | 7 min | 90 min |
+| [Chapter 7, Excel](../../D2/study-notes/C2_W00_D02_foundations_07_excel_STUDENT.md) | 5 min | 45 min |
+| [Chapter 8, GitHub](../../D2/study-notes/C2_W00_D02_foundations_08_github_STUDENT.md) | 13 min | 60 min |
+
 ## Bring on Monday
 
 Your laptop, charged, with the codespace opened once over the weekend, and Monday's pre-read read.
