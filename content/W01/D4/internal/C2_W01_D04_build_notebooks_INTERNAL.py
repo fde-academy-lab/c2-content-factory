@@ -184,7 +184,7 @@ read as a wobble lets the tier drain.
 3. What does the usual wobble look like on Retail-Core?
 4. How often does chance alone make a fall as large as Retail-Plus's?
 5. What does the share say about the chance that the finding is wrong?
-6. Do the textbook paired test and an exact count agree?
+6. Do the textbook paired test and an exact count of every coin pattern give the flips' reading?
 
 **The metric at stake.** Delivered revenue per Retail-Plus member per quarter: the money kept from
 each member's delivered orders, with cancelled and returned orders left out, as Monday settled.
@@ -446,7 +446,7 @@ kit.check("the fixed sentence carries two shares, since both directions were cou
 What changed: the numbers are the same 0.029 and 0.057, and the claim shrank from "97 percent
 certain" to "borderline", which is as far as the evidence goes.
 
-## 6. Do the textbook paired test and an exact count agree?
+## 6. Do the textbook paired test and an exact count of every coin pattern give the flips' reading?
 
 Option C, run now as the cross-check, beside the exact count of every one of the 4,194,304 ways 22
 coins can land. The library call is the paired test a statistics course teaches first; its formula
@@ -510,6 +510,8 @@ sheet shows one. **When to switch.** Use the textbook paired call when the membe
 thousands and a team standard expects it; keep the flips when the members are few or the totals
 lumpy, or when the person reading the answer needs to see how it was made.
 
+Kavya Nair, the team's senior analyst, reads every answer before it leaves the team.
+
 > **Kavya's review.** "Retail-Core's third is the wobble. Retail-Plus sits at about 3 in 100
 > counting falls and 6 in 100 either way, three routes that keep each member's pair agree, and you
 > said which direction you counted and why. Borderline is an honest answer. Now tell me how much
@@ -546,8 +548,8 @@ both routes came back unclear, because then more data is the only thing that hel
 The chapter counted both directions because the question arrived after the fall was seen. Had
 Meera asked before Q2 closed, "is Retail-Plus falling?", counting falls only would have been
 decided before the test, and 0.029 would carry the reading alone. The rule the glossary keeps: the
-direction is decided before the test is run. The flips move a little with the seed, in both
-directions, and the reading never does.
+direction is decided before the test is run. Across five other seeds the flips give 0.026 to 0.030
+counting falls and 0.051 to 0.059 either way, and every seed reads borderline.
 '''),
         code('''
 seeds = (1, 2, 3, 4, 5)
@@ -572,7 +574,8 @@ kit.check("across five seeds, either way stays between 0.050 and 0.060", all(0.0
    fall that large, and 286 (0.057) a move that large either way.
 5. Nothing: the share was counted in worlds where nothing changed, and one of twenty invented
    no-change segments came back at 0.003.
-6. Yes: counting every one of the 4,194,304 coin patterns gives 0.027 and 0.055, and the textbook
+6. Yes, the same borderline reading: counting every one of the 4,194,304 coin patterns gives 0.027
+   and 0.055, and the textbook
    paired test 0.0275 and 0.055.
 
 The fall is borderline. It sits well outside Retail-Core's wobble and at the edge of what chance
@@ -623,7 +626,7 @@ for the tier and set beside the company's quarter and the cost of a fix.
 by 12 percent, more than 100 million dollars a year in the United States alone (Kohavi and Thomke,
 Harvard Business Review, 2017), while the company's own researchers found that only about a third
 of experiments built to improve a metric did improve it (Kohavi and colleagues, 2009; both checked
-30 September 2026). Size in money, beside the share, told the one change from the rest.
+30 September 2026).
 '''),
         md('**Setup.** The toolkit from chapter 1, plus the two new helpers.'),
         setup(T1, T2, extra='''
@@ -854,6 +857,8 @@ tier. The offer's Rs 500 per member sits far above that low end, which is the ar
 way is the offer on a coin-chosen half. **When to switch.** Read the range whenever the decision has
 a cost to beat; the share alone is enough only when the question is "real or not".
 
+Kavya Nair, the team's senior analyst, reads every answer before it leaves the team.
+
 > **Kavya's review.** "Borderline against chance by two routes, worth Rs 24,420 a quarter, 0.19
 > percent of the company and a third of the tier. The range's low end sits far below what the offer
 > costs, so this is a watch item. If the head of Retail-Plus wants to act, offer it to a coin-chosen
@@ -872,8 +877,8 @@ a held-back group rather than a rollout."
 **[S] Explain a finding to a non-technical stakeholder.** "I lead with the decision the finding
 supports, in one sentence, with one number and its denominator. Then the evidence, the caveat that
 would change my view, and the action with what it costs. For example: Retail-Plus is spending less
-by a borderline amount, about Rs 24,000 a quarter, which is a third of the tier and a fifth of one
-percent of the company; an offer pays only if it wins back 45 percent, so we watch it, and if we act
+by a borderline amount, Rs 24,420 a quarter, which is a third of the tier and 0.19 percent of the
+company; an offer pays only if it wins back 45 percent, so we watch it, and if we act
 we test on half the members first."
 
 **[D] Break-even, a range, a test on half the tier, or a past offer's recovery rate: which do you
@@ -932,7 +937,7 @@ def chapter3():
 **Week 1, Thursday. Chapter 3 of 6.** Chapters 1 and 2 answered Meera's first question: the
 Retail-Plus fall of Rs 1,110 a member is borderline against chance (0.029 of flips counting falls,
 0.057 either way) and worth Rs 24,420 a quarter, 0.19 percent of the company, so it is worth
-watching and not worth acting on alone. Meera's second question is about a rise, the biggest on the
+watching, and not worth acting on alone. Meera's second question is about a rise, the biggest on the
 page. This chapter adds `orders_in` and `flip_rises`, a chance reference built for a count.
 
 > **The client asks.** "Student is up 40 percent; should I move budget there?"
@@ -949,7 +954,7 @@ segment. A rise that chance made sends a quarter's spend to a segment that may b
 3. Should acquisition budget move to the fastest riser?
 4. How often does chance alone make a 40 percent rise on Student's count?
 5. Which do you trust, 42 percent on 12 users or 31 percent on 1,200?
-6. Do an exact count of every deal, and real handfuls, agree?
+6. Do an exact count of every split between the quarters, and real Retail-Core orders, give the flips' share?
 
 **The metric at stake.** Orders placed per quarter in the Student segment, Q2 against Q1, whatever
 their status, since Meera's 40 percent counts orders placed.
@@ -1171,7 +1176,7 @@ kit.check("on 1,200 users it never reaches 42 percent", max(large_rates) < 5 / 1
 percent of groups of twelve, while groups of 1,200 all land between about 28 and 35 percent. One
 user out of twelve is 8.3 points; one out of 1,200 is under a tenth of a point.
 
-## 6. Do an exact count of every deal, and real handfuls, agree?
+## 6. Do an exact count of every split between the quarters, and real Retail-Core orders, give the flips' share?
 
 The coin flips sampled 5,000 worlds. Two checks follow. The first recounts the same coin model
 exactly: with a count this small, every possible way of dealing the orders to the two quarters can
@@ -1230,9 +1235,11 @@ segment they come from, so the verdict holds: chance makes Meera's headline abou
 ten. **When to switch.** Count every deal while the count is small enough to list; on a few dozen
 orders the list runs into the billions, and the flips are the only practical route.
 
+Kavya Nair, the team's senior analyst, reads every answer before it leaves the team.
+
 > **Kavya's review.** "Student's rise is real arithmetic on too few orders, from too few customers,
 > to act on. Count both, say how often chance makes the rise, and give Meera the number of customers
-> that would reopen it. That is a complete answer, and it costs nothing to be right later."
+> that would reopen it. Waiting for thirty customers costs Kalpa nothing but time."
 
 ### In the interview: which rate do you trust, and would you move the budget?
 
@@ -1250,7 +1257,7 @@ experiment, and I would propose that."
 
 ### Depth: why does the rule of thumb say thirty, and count customers?
 
-Thirty is a habit, and no law: it is roughly where a count of independent observations stops
+Thirty is a rule of thumb: it is roughly where a count of independent observations stops
 swinging wildly from one extra. Orders from the same customer are not independent, since a customer
 who orders once tends to order again, so the observations that count are customers: thirty orders
 from three customers are three observations. The curve below is the coin-flip chance of a 40 percent
@@ -1279,7 +1286,7 @@ kit.check("the chance falls below one in five by thirty independent buyers", cur
    count, against 0.086 on Retail-Core's 73 orders and under 0.002 on an invented 400.
 5. The 31 percent, as the estimate: one user of 12 moves the rate 8.3 points, and a true 31 percent
    reads 42 or more in about a third of groups of 12.
-6. Yes: counting every deal gives 0.387 against the flips' 0.397, and Student-sized handfuls of
+6. Yes: counting every split exactly gives 0.387 against the flips' 0.397, and Student-sized handfuls of
    Retail-Core's own orders show the rise in 0.344 of draws.
 
 Not yet. No budget moves until more customers buy, thirty or more behind the rise.
@@ -1299,7 +1306,7 @@ def chapter4():
 
 **Week 1, Thursday. Chapter 4 of 6.** Chapters 1 to 3 answered Meera's first two questions. The
 Retail-Plus fall of Rs 1,110 a member is borderline (0.029 of flips counting falls, 0.057 either
-way) and worth Rs 24,420 a quarter, so it is worth watching and not worth acting on alone. Student's
+way) and worth Rs 24,420 a quarter, so it is worth watching, and not worth acting on alone. Student's
 40 percent rise stands on under thirty customers, and coin flips make it in about four worlds in
 ten, so no budget moves yet. This chapter opens the campaigns table and the exposure table, and
 adds `spend` and `group` to the toolkit.
@@ -1321,7 +1328,7 @@ customers who would have bought anyway, at Diwali's scale.
 3. Should the reproduced lift send the sale to Diwali?
 4. What does the comparison show inside each segment?
 5. What does the note tell Meera about the discount?
-6. Does one mix for both groups give the same answer, and what can it check?
+6. Put on the same segment mix, do the two groups still differ, and what can that check catch?
 
 **The metric at stake.** August spend per customer, for customers who got the sale against
 customers who did not. Monday's rule applies: at 15 percent off, orders must rise about 17.6
@@ -1335,7 +1342,7 @@ of a blend reversing is UC Berkeley's 1973 graduate admissions: 44 percent of me
 women were admitted overall, and department by department the small bias ran in favour of women
 (Bickel, Hammel and O'Connell, Science, 1975, as quoted by Alex Reinhart, checked 30 September 2026).
 
-**Where the exposure table comes from.** The exposure table is the campaign platform's August
+The exposure table is the campaign platform's August
 list: the 160 Retail-Plus and Retail-Core customers the platform held, under the platform's own
 customer ids, with one average August spend for each group. It records who received the sale,
 whatever the sale was aimed at, which is why it counts Retail-Core customers among them although the
@@ -1484,7 +1491,7 @@ members. Do not repeat it as designed; if Diwali runs a sale, hold back a random
 segment so the comparison is fair." What changed: the decision, from repeat to redesign. The reason
 is the mix of customers; Marketing's arithmetic was right.
 
-## 6. Does one mix for both groups give the same answer, and what can it check?
+## 6. Put on the same segment mix, do the two groups still differ, and what can that check catch?
 
 Put the exposed group's segment averages into the unexposed group's mix, and the other way round.
 This route reuses the four cells the split used, so it cannot disagree with the split and cannot
@@ -1519,6 +1526,8 @@ must be if the mix is the whole story: the 6.1 percent is gone once both groups 
 when the answer has to be one number on one line of the note, or when there are too many segments to
 show.
 
+Kavya Nair, the team's senior analyst, reads every answer before it leaves the team.
+
 > **Kavya's review.** "You rebuilt Marketing's number before disagreeing with it, which is what
 > keeps Monday civil. The split says 3 percent less in both segments, one mix says the same by
 > construction, and the reason is who got the sale. Now tell me what else changed in August,
@@ -1544,8 +1553,8 @@ customers. The blend becomes fair only when a coin decided who got the campaign.
 
 ### Depth: how big a shift in mix does it take to turn the blend?
 
-Keep the segment averages fixed and move only the share of Retail-Plus members in the exposed
-group. The blend's lift is invented from there, since only the mix changes.
+Keep the segment averages at their real values and move only the share of Retail-Plus members in the
+exposed group: each lift below is computed from the real cells, and only the mix is invented.
 '''),
         code('''
 shares = [0.40, 0.45, 0.50, 0.55, 0.60]
@@ -1570,8 +1579,8 @@ kit.check("with the same mix as the unexposed group the blend shows the segments
    Retail-Core Rs 1,940 against Rs 2,000: 3.0 percent less in both, while the group who got it was
    50 percent Retail-Plus against 40.
 5. Do not repeat it as designed; if Diwali runs a sale, hold back a random slice of each segment.
-6. Yes, 3.0 percent less both ways round; it confirms the mix explains the whole 6.1 percent, and it
-   cannot catch an error in the four cells it reuses.
+6. Yes, by 3.0 percent less both ways round, as the split said; it confirms the mix explains the
+   whole 6.1 percent, and it cannot catch an error in the four cells it reuses.
 
 Not as designed. Inside each segment the customers who got the sale spent 3 percent less, and the
 blend rose because the group who got it held more Retail-Plus members, who spend more anyway.
@@ -1612,9 +1621,12 @@ def chapter5():
         md('''
 # 5. Three answers are in: what goes on Meera's one page, and when is "not yet" the honest answer?
 
-**Week 1, Thursday. Chapter 5 of 6.** Chapters 1 to 4 each left a number. The Retail-Plus fall of
-Rs 1,110 a member is borderline (0.029 of flips counting falls, 0.057 either way) and worth Rs 24,420
-a quarter, 0.19 percent of the company, so it is worth watching and not worth acting on alone.
+**Week 1, Thursday. Chapter 5 of 6.** Chapters 1 to 4 each left a number. Chapter 1 tossed a coin per
+Retail-Plus member 5,000 times, each toss deciding which of the member's two quarters counts as Q1,
+to build worlds where nothing changed; the share of those worlds with a fall as large as the real
+Rs 1,110 a member was 0.029 counting falls and 0.057 either way, which reads as borderline. Chapter 2
+priced the fall at Rs 24,420 a quarter, 0.19 percent of the company, against an assumed retention
+offer of Rs 500 a member a quarter, so it is worth watching, and not worth acting on alone.
 Student's 40 percent rise stands on under thirty customers, and coin flips make it in about four
 worlds in ten. The monsoon sale's 6.1 percent is a blend: inside each segment the customers who got
 it spent 3 percent less. This chapter adds no statistics. It gathers those numbers into one
@@ -1662,8 +1674,9 @@ print(len(NUMBERS), "numbers gathered from chapters 1 to 4")
         md('''
 ## 1. Which of four ways to answer Meera in writing fits two minutes?
 
-Four ways a team could answer Meera in writing. The sizing cell counts what each asks her to read
-and what each carries.
+Four ways a team could answer Meera in writing. The sizing cell counts the words each asks her to
+read and what each carries. The dashboard is everything chapters 1 to 4's notebooks print, 506
+words, and the cell recounts it whenever those notebooks sit beside this one.
 
 | Option | What it is | What it risks |
 |---|---|---|
@@ -1676,15 +1689,17 @@ and what each carries.
 import json
 
 option_a = "Retail-Plus: yes, it is down. Student: yes, move budget. Discount: yes, it worked."
-printed = []                                             # the dashboard: everything chapters 1 to 4 printed
-for path in sorted(pathlib.Path.cwd().glob("C2_W01_D04_0[1-4]_*_STUDENT.ipynb")):
-    for cell in json.loads(path.read_text())["cells"]:
-        for out in cell.get("outputs", []):
-            printed.append("".join(out.get("text", "")))
-option_b = " ".join(printed)
+DASHBOARD_WORDS = 506                                    # every word chapters 1 to 4 print, counted when the pack was built
+siblings = sorted(pathlib.Path.cwd().glob("C2_W01_D04_0[1-4]_*_STUDENT.ipynb"))
+if len(siblings) == 4:                                   # beside its sibling notebooks, recount the dashboard
+    printed = ["".join(out.get("text", "")) for p in siblings for cell in json.loads(p.read_text())["cells"]
+               for out in cell.get("outputs", [])]
+    recount = len(" ".join(printed).split())
+    kit.check("the dashboard recounts to 506 words from chapters 1 to 4's printed output",
+              recount == DASHBOARD_WORDS, f"{recount} words")
 option_c_limit = 200
 rows = [("A. Yes or no", len(option_a.split()), "none", "every caveat"),
-        ("B. Dashboard", len(option_b.split()), "all of them, unsorted", "the decision"),
+        ("B. Dashboard", DASHBOARD_WORDS, "all of them, unsorted", "the decision"),
         ("C. Four-part note", option_c_limit, "each claim's", "only length"),
         ("D. Slide deck", "ten slides", "what the slides draw", "a meeting to present")]
 kit.table(["Option", "Words", "Bases carried", "What it loses"], rows,
@@ -1882,9 +1897,11 @@ decisions, so the note's actions follow from its evidence and from nothing else.
 Apply the rules by hand for a one-off note; write them as code, as this cell does, when the same
 note is produced every week, because a rule in code cannot drift toward the answer someone wants.
 
+Kavya Nair, the team's senior analyst, reads every answer before it leaves the team.
+
 > **Kavya's review.** "Three answers, each with its base, its caveat and a cost, and two of them say
-> not yet with the thing that would change them. Marketing will push on the third on Monday; the
-> next chapter is the ground you will stand on."
+> not yet with the thing that would change them. Marketing will push on the third on Monday, and
+> chapter 6 checks what else changed in August."
 
 ### In the interview: the CEO wants a yes or no, and the honest answer is not yet; what do you say?
 
@@ -1906,8 +1923,7 @@ what moved."
 
 ### Depth: which fact would flip each line of the note?
 
-A note is stronger when it says, per line, what would change it. The table is the caveat column
-made explicit.
+A note is stronger when it says, per line, what would change it.
 '''),
         code('''
 flips_table = [("Retail-Plus", "borderline, small, watch it", "a second quarter with a larger fall, or a recovery rate from a past offer"),
@@ -1971,7 +1987,7 @@ Monday. A sale widened on a jump that belongs to the month multiplies the margin
 3. Does August against July show the sale worked?
 4. What else changed in August?
 5. How would a hold-back at Diwali be designed and priced?
-6. Does the same test on months with no sale agree?
+6. Does the month-share test, run on Q1's months with no sale, find gaps as large as August's?
 
 **The metric at stake.** Revenue from the targeted segment in the sale month, and the question
 under it: what would these customers have spent without the sale? A sale at 15 percent off either
@@ -2162,10 +2178,10 @@ What changed: the jump of 170 percent becomes an August that took 52 percent of 
 quarter against 49 percent of Retail-Core's, about four points apart, and shuffling the segment
 labels makes a gap that large either way in about eight deals in ten, and a gap that large in
 Marketing's direction in about four in ten. The month file shows no sign of the sale beyond a busy
-August for everyone. One more caveat keeps this honest: Retail-Core is the segment the sale was not
+August for everyone. Retail-Core is also an imperfect comparison: it is the segment the sale was not
 aimed at, yet section 2 showed the platform's list counting Retail-Core customers among those who got
-it. If the sale lifted both segments, similar Augusts would look like this too, so Retail-Core is an
-imperfect comparison, which is one more reason only a coin can settle it.
+it. If the sale lifted both segments, similar Augusts would look like this too, which is one more
+reason only a coin can settle it.
 
 ## 5. How would a hold-back at Diwali be designed and priced?
 
@@ -2201,7 +2217,7 @@ kit.check("the two lists hold different numbers of Retail-Plus customers", rp_li
 **What happened.** The answer is a. Fourteen held-back Retail-Plus customers at Rs 5,000 each and a
 6 percent lift is about Rs 4,200, the cost of the hold-back, and nothing if the lift is not real.
 
-**Two lists, met head-on.** The morning priced the retention offer on "the whole tier" of 22 and
+The two lists meet head-on here. The morning priced the retention offer on "the whole tier" of 22 and
 tests it on a coin-chosen half of them, and this hold-back takes 14 of 70. Both are right, because
 they are different lists. The 22 are
 Finance's order file, where Retail-Plus members delivered about Rs 1,139 each in August; the 70 are
@@ -2215,7 +2231,7 @@ Fourteen customers are too few to measure a lift as small as 6 percent, since sp
 than that from customer to customer; how many a hold-back needs is a question of power, which comes
 in a later week, and the honest design holds back a random slice of every segment the sale reaches.
 
-## 6. Does the same test on months with no sale agree?
+## 6. Does the month-share test, run on Q1's months with no sale, find gaps as large as August's?
 
 Section 4 read August's four points against shuffled labels. A placebo checks the reading from outside
 it: run the same month-share test on the three months of Q1, when no sale ran. If months with no sale
@@ -2252,8 +2268,10 @@ switch.** Use the change beside the change when months of data exist and no hold
 the split when an exposure list exists; run the hold-back whenever the next campaign can still be
 designed.
 
-> **Kavya's review.** "Who got it: a rule chose them. Who did not: a different mix. What else
-> changed: August, for everyone, and a quarter with no sale swings further. Two routes find no lift,
+Kavya Nair, the team's senior analyst, reads every answer before it leaves the team.
+
+> **Kavya's review.** "A rule chose who got the sale, the rest hold a different mix, and August was
+> busy for everyone, while a quarter with no sale swings further. Two routes find no lift,
 > and you priced the hold-back at about Rs 4,200 on the list it acts on. Take that to Marketing as an
 > offer, and keep any verdict on their work out of it."
 
@@ -2284,11 +2302,11 @@ the customers who would have bought anyway from the comparison. I would settle f
 beside the change on a long run of months when a hold-back is impossible, and say its assumption
 aloud: that both segments would have moved alike."
 
-### Depth: what is the change beside the change called, and why can it not settle this?
+### Depth: what do analysts call Retail-Plus's change less Retail-Core's, and why can it not settle whether the sale worked?
 
 Analysts call option B a difference in differences: the targeted segment's change less the
-untargeted segment's change over the same window. Here it is in rupees, and why it cannot settle
-this question.
+untargeted segment's change over the same window. Below it is in rupees, beside the months that
+show why it cannot settle whether the sale worked.
 '''),
         code('''
 did = (rp[4] - rp[3]) - (core[4] - core[3])
@@ -2320,7 +2338,7 @@ the same way as everything else in this chapter: run the hold-back.
 5. A coin holds back one in five inside each segment before the sale: 14 of the platform's 70
    Retail-Plus customers, forgoing about Rs 4,200 at Marketing's own 6 percent, too few to see a
    lift that small.
-6. Yes: Q1's months, with no sale, show gaps of 4, 22 and 26 points, so August's 4 carries no sign
+6. Yes, and larger: Q1's months, with no sale, show gaps of 4, 22 and 26 points, so August's 4 carries no sign
    of the sale.
 
 Nothing in the files shows a lift the sale can claim. Hold back a random fifth of each segment at
