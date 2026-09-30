@@ -27,7 +27,7 @@ Saturday 10 October 2026. A 120-minute paper holding 51 items at 113.5 minutes b
 
 ## What guessing alone would score
 
-A learner who guessed every item blind would average 10.9 of 51, since a written answer cannot be guessed from a list, and fewer than one guesser in twenty would reach 16. A score of 15 or below is therefore within reach of guessing alone, and the tally reads such a paper as a conversation to have on Monday, never as a result.
+A learner who guessed every item blind would average 11.0 of 51, since a written answer cannot be guessed from a list, and fewer than one guesser in twenty would reach 16. A score of 15 or below is therefore within reach of guessing alone, and the tally reads such a paper as a conversation to have on Monday, never as a result.
 
 ## Reading the items after marking
 
