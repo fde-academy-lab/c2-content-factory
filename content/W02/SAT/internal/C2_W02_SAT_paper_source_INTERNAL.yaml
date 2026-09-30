@@ -2,23 +2,21 @@
 # scripts/build_saturday_paper.py. Block style throughout, so a comma never splits a reason.
 #
 # The bank sets the topics and this file sets the bar (the requester's plan of 30 September 2026,
-# raised the same day after a blind sitting). Four bank items print: two answered from a word
-# bank, one with a reworded stem and options, and one as the tracker has it. Fifty-four fold into
-# deeper items that test their concepts, each with its reason under `folded`. Thirty-one new items
-# carry the rest. Every Kalpa number was computed on the week's warehouse and files, and every
-# public-case fact was checked against its source on 30 September 2026; the provenance record
-# lists both, and internal/C2_W02_SAT_key_proofs_INTERNAL.py asserts every key.
+# raised twice the same day after two blind sittings). Three bank items print: two answered from a
+# word bank and one with a reworded stem and options. Fifty-five fold into deeper items that test
+# their concepts, each with its reason under `folded`. Thirty new items carry the rest. Every Kalpa
+# number was computed on the week's warehouse and files, and every public-case fact was checked
+# against its source on 30 September 2026; the provenance record lists both, and
+# internal/C2_W02_SAT_key_proofs_INTERNAL.py asserts every key.
 
 # The Word paper's first page: "What this paper is for", and the Company row of its Rules table.
 purpose: >-
   This week you computed Anand's Monday numbers in the warehouse, set booked revenue against the
   cash actually collected, drew up Marketing's protect list, built the customer table in pandas and
   carried it to the leadership deck in Excel. This paper finds which of those decisions you can make
-  cold, with no notes and no assistant: sizing a join before it runs, choosing the rank the business
-  asked for, deciding what leaves when a check fails, and reading a query or a few lines of pandas
-  before anyone acts on what it returns. Some items come from public cases at well-known
-  organisations, and the last part reads the tables an AI team keeps. The room's scores by part,
-  set beside the ratings you give in step one, tell Monday's session where to start.
+  cold, with no notes and no assistant, on the week's own tables, on public cases from well-known
+  organisations and on the tables an AI team keeps. The room's scores by part, set beside the
+  ratings you give in step one, tell Monday's session where to start.
 company: >-
   Parts 1 to 4 and the workbook in Part 5 are set inside Kalpa Retail, the fictional company of
   Weeks 1 and 2: Anand Iyer is its finance controller, Kavya Nair its senior analyst and Meera
@@ -54,7 +52,7 @@ banks:
 # The printed order. Bank items by number, the additions by id.
 parts:
   - title: Anand's Monday numbers
-    shows: whether you read a query the way the database runs it, and place each piece of work where it belongs
+    shows: how you work with the numbers Anand's Monday sheet reports
     intro: >-
       Anand Iyer, Kalpa Retail's finance controller, keeps the books every revenue figure has to match.
       Every Monday he wants revenue, orders and customers for each segment, the groups Kalpa sells to
@@ -63,48 +61,43 @@ parts:
       notebooks, no exports, nothing a person can mistype." The warehouse is the company's central
       Postgres database, and his analyst audits every query line by line. It stores Kalpa's first
       quarter, April to June, as quarter 'Q1' and its second, July to September, as 'Q2'.
-    items: ["new:int-div", 57, 2, 3, "new:first-look", "new:facebook"]
+    items: ["new:int-div", 2, 3, "new:avg-spend", "new:tool-choice", "new:facebook"]
   - title: Booked against collected
-    shows: whether you size a join before it runs, order the steps of a reconciliation, and decide what leaves when a check fails
+    shows: how you set the cash collected against the revenue booked
     intro: >-
       Booked revenue is the value of the orders customers placed; collected revenue is the cash that
-      actually arrived for them. The two differ when an order is never paid, when a large invoice is
-      paid in two instalments (two payments against one order), or when the payment gateway records
-      one payment twice. Anand asks: "Show me, order by order, what we actually collected against
-      what we booked from July to September. If there is a gap, I want to know which orders and which
-      channel." A reconciliation is the written account of every rupee between the two figures.
+      actually arrived for them. Anand asks: "Show me, order by order, what we actually collected
+      against what we booked from July to September. If there is a gap, I want to know which orders
+      and which channel." A reconciliation is the written account of every rupee between the two
+      figures.
     items: ["new:join-counts", "new:report-steps", "new:where-on-payments", "new:reporting-day", "new:phe-checks"]
   - title: The protect list and the plan line
-    shows: whether you rank within a segment by the rule the business set, and read a monthly flag and a plan line before anyone acts
+    shows: how you build Marketing's protect list and read the quarter against its plan
     intro: >-
       Retail-Plus is Kalpa's paid-membership tier, and Marketing will offer a retention benefit to the
       members it most wants to keep: "Give us the top fifty customers in each segment by revenue for
       July to September, and flag anyone whose monthly spend has fallen for two months running." That
-      list is the protect list. The head of Retail-Plus sets one rule for it: "If two members spent the
-      same, rank them the same. Keep every member who spent at least as much as the fiftieth, and
-      nobody who spent less." Meera also wants the quarter's revenue to build up week by week against the plan
-      line, the revenue the growth plan expects by the end of each week.
-    items: ["new:rows-shipped", "new:tie-rule", 27, "new:lag-gap", "new:run-rate"]
+      list is the protect list. Meera also wants to see the quarter's revenue build up week by week
+      against the plan line, the revenue the growth plan expects by the end of each week.
+    items: ["new:rows-shipped", 27, "new:share-window", "new:lag-gap", "new:run-rate"]
   - title: One row per customer
-    shows: whether you size a merge, place the guard that stops a double count, and read a pivot that averages or a key that changed on its way in
+    shows: how you build Marketing's customer table in pandas
     intro: >-
       Marketing chooses who gets which offer from one table with one row per customer: recency (days
       since the last order), frequency (orders placed) and monetary value (rupees spent), with the
       customer's segment and whether the monsoon sale reached them. The data platform lead: "The
       warehouse queries are fine for Finance, but Marketing's analysts live in Python. Build them the
       table in pandas, from the warehouse, and make it refreshable in one run." It is rebuilt every
-      Monday, and Kavya Nair, the senior analyst, reviews it before it leaves the team: "Show me the
-      evidence, and do it a second way."
-    items: ["new:merge-rows", "new:pivot-total", "new:stop-line", "new:first-touch", "new:months-view", "new:genes"]
+      Monday, and Kavya Nair, the senior analyst, reviews it before it leaves the team.
+    items: ["new:merge-guard", "new:first-touch", "new:months-view", "new:genes"]
   - title: The last mile, and spreadsheets in public
-    shows: whether you match each workbook job to the technique that does it, and work a spreadsheet error through before the room sees it
+    shows: how you build the workbook for Monday's review, and read spreadsheets from public cases
     intro: >-
       Meera's chief of staff builds the deck for Monday's growth review and works only in Excel: "The
       revenue tree by segment for both quarters, the top-fifty protect list with a lookup so I can
       find any member by member code, and one number on the front page with its trend. If a director
       changes an assumption in the room, the sheet must recalculate in front of them." Excel is where
-      analysis meets its audience, so an error made here reaches the room directly, as it has at
-      larger organisations than Kalpa.
+      the week's analysis meets its audience.
     exhibits:
       - mermaid: |-
           flowchart LR
@@ -126,13 +119,13 @@ parts:
           per payment, with the order's booked amount, order_amount, repeated on each.
     items: ["new:fix-lookup", "new:fix-foot", "new:fix-tree", "new:fix-whatif", "new:range-check", "new:var-formula", "new:gross-fare"]
   - title: "Read the code, read the data: an AI team's tables"
-    shows: whether you catch the week's traps in the tables an AI team keeps, from evaluation runs to an assistant's logs
+    shows: how you read the tables an AI team keeps, and the numbers it acts on
     intro: >-
-      The same mistakes turn up well beyond retail. Suppose a food-delivery company runs a support
-      assistant, a chatbot that answers customers and hands hard cases to a person. Its AI team scores
-      each model version on a fixed set of test tickets, which is an evaluation run; it collects
-      customers' ratings of the replies; and it logs every conversation, every handoff to a person and
-      every visit. The tables and every number below are illustrative.
+      Suppose a food-delivery company runs a support assistant, a chatbot that answers customers and
+      hands hard cases to a person. Its AI team scores each model version on a fixed set of test
+      tickets, which is an evaluation run; it collects customers' ratings of the replies; and it logs
+      every conversation, every handoff to a person, every call to the model and every visit. The
+      tables and every number below are illustrative.
     exhibits:
       - table:
           head:
@@ -170,17 +163,17 @@ folded:
     into: "27"
     why: Bank 27's key is a rank computed within PARTITION BY segment, so the clause that restarts a window for each segment is the item's answer.
   8:
-    into: "new:stop-line"
+    into: "new:merge-guard"
     why: The guard the item keys is validate='one_to_one', and its reason names the MergeError it raises.
   9:
     into: "new:months-view"
     why: The code melts the wide view back to one row per member and month, and predicting its row count needs the rule that melt lengthens.
   10:
-    into: "57"
-    why: Ordering all six clauses tests where SELECT sits against WHERE.
+    into: "new:low-ratings"
+    why: The item's reason gives the logical order in full, with SELECT after WHERE, GROUP BY and HAVING, and the query runs in it.
   11:
     into: "new:low-ratings"
-    why: The item's reason says why the group filter sits in HAVING and never in WHERE, and its wrong option b is the reading in which HAVING sees every reply.
+    why: The item's reason says why the group filter sits in HAVING and never in WHERE, and its wrong option a is the reading in which HAVING sees every reply.
   12:
     into: "new:where-on-payments"
     why: The WHERE on the payments table turns the LEFT JOIN into an INNER one and drops the unpaid order without a word, which is the statement bank 12 tested.
@@ -197,20 +190,20 @@ folded:
     into: "new:months-view"
     why: The pivot groups the orders by member and month and returns one cell per group, and predicting that cell is predicting what groupby returns.
   17:
-    into: "new:pivot-total"
-    why: The item asks whether a pivot on a table with repeated rows reports the true total, on the week's own numbers.
+    into: "new:fix-tree"
+    why: The match row is a total taken on an export whose orders repeat, and its reason gives the doubled total a plain sum reports.
   18:
-    into: "57"
-    why: Ordering all six clauses tests which one the database runs first.
+    into: "new:low-ratings"
+    why: The logical order the item's reason gives starts with FROM, the clause bank 18 asks for.
   19:
-    into: "57"
-    why: A syntax error is never an item (CLAUDE.md); the rule behind this one, that SELECT runs after GROUP BY and so sees only grouped columns and aggregates, is the order Q2 tests.
+    into: "new:low-ratings"
+    why: A syntax error is never an item (CLAUDE.md); the rule behind this one, that SELECT runs after GROUP BY and so sees only grouped columns and aggregates, is in the item's reason.
   20:
-    into: "new:first-look"
-    why: The item's reason gives why the reported number lives in the warehouse, rerunning unchanged on the source and read line by line, and the item asks where the work that reports nothing belongs.
+    into: "new:tool-choice"
+    why: The item's reason gives why the reported number lives in the warehouse, rerunning unchanged on the source and read line by line, and the item asks where work that is none of those numbers belongs.
   21:
     into: "new:join-counts"
-    why: The item's third count, count(p.payment_id), is the matched rows an INNER JOIN would keep.
+    why: The item's second count, count(p.payment_id), is the matched rows an INNER JOIN would keep.
   22:
     into: "new:join-counts"
     why: The item sizes exactly how a LEFT JOIN from orders to payments grows past the orders it started from.
@@ -233,7 +226,7 @@ folded:
     into: "new:months-view"
     why: The item's reason walks pivot_table as split, apply and combine, with the default mean as the apply step.
   30:
-    into: "new:merge-rows"
+    into: "new:merge-guard"
     why: The item sizes a merge that grew because keys repeat on the right, on the week's own feed.
   31:
     into: "new:fix-lookup"
@@ -254,20 +247,20 @@ folded:
     into: "27"
     why: Top three per segment is one of the questions only a window answers, and the lag and running-total items test the other two.
   37:
-    into: "new:tie-rule"
+    into: "new:rows-shipped"
     why: The item applies bank 37's claims about RANK and ROW_NUMBER to the head of Retail-Plus's rule on the week's real tie.
   38:
-    into: "new:stop-line"
-    why: The item tests what merge does to rows, what validate= does and why the row count is still worth checking.
+    into: "new:merge-guard"
+    why: The item tests what merge does to rows and the guard that stops a repeated key, and its reason says why a row count is still worth checking.
   39:
     into: "new:run-rate"
-    why: The front-page line must carry its period and its comparison; every option states both, and only the key's match the figures.
+    why: The front-page line must carry its period and its comparison; the stem gives the close against plan, and the options differ on the path that led there.
   40:
     into: "new:join-counts"
     why: The same LEFT JOIN count on the week's own quarter, with instalments as well as repeats.
   41:
     into: "new:join-counts"
-    why: The matched rows are the INNER JOIN's count, the item's third number.
+    why: The matched rows are the INNER JOIN's count, the item's second number.
   42:
     into: "new:not-in"
     why: The unpaid list is the anti-join; the item tests the pattern that fails and names the ones that work.
@@ -284,20 +277,20 @@ folded:
     into: "new:rows-shipped"
     why: The item counts what a DENSE_RANK cut keeps.
   47:
-    into: "new:tie-rule"
+    into: "new:rows-shipped"
     why: ROW_NUMBER with a member-id tiebreaker is option b, and its reason names the cost, a member who spent as much as the fiftieth dropped by an id nobody chose.
   48:
-    into: "new:merge-rows"
+    into: "new:merge-guard"
     why: The same merge count on the week's own feed.
   49:
-    into: "new:stop-line"
-    why: validate='one_to_one' is one of the two guards the item keys.
+    into: "new:merge-guard"
+    why: validate='one_to_one' is the guard the item keys.
   50:
-    into: "new:pivot-total"
-    why: The same claim about the pivot's total, on the week's numbers.
+    into: "new:merge-guard"
+    why: The item's rows are the pivot's rows, and its reason gives the total they produce, Rs 45,800 over the book.
   51:
     into: "new:first-touch"
-    why: Bank 51's fix, de-duplicating the exposure feed on a stated rule, is the item, which asks which step applies the rule of one exposure per customer, the first by date.
+    why: Bank 51's fix, de-duplicating the exposure feed on a stated rule, is the step the item traces, on a feed that arrives out of date order, and the item's answer line gives the sort that applies the rule of one exposure per customer, the first by date.
   52:
     into: "new:low-ratings"
     why: Predicting the query needs the groups GROUP BY forms from the rows WHERE keeps, one per model with a low rating, before HAVING filters them.
@@ -313,8 +306,11 @@ folded:
   56:
     into: "new:int-div"
     why: Orders per member is the same ratio of two counts, and the trap is the same integer division.
+  57:
+    into: "new:low-ratings"
+    why: Ordering the six clauses is tested by use, since the item's query runs WHERE, GROUP BY and HAVING in their logical order, and its reason gives the whole order; printed beside the item, the ordering drill would hand over the step it tests.
   58:
-    into: "new:first-look"
+    into: "new:tool-choice"
     why: The item places a piece of work among the warehouse, a notebook and a workbook, and its reason gives the one direction a number travels, from the warehouse through pandas to Excel.
 
 notes:
@@ -351,8 +347,9 @@ notes:
       A rank computed within PARTITION BY segment keeps every customer and restarts for each segment;
       the outer query keeps the rows ranked three or better. The window has to be filtered outside,
       because WHERE runs before any window is computed. The whole-table list in the stem is
-      Wednesday's round 1 trap: 35 Business customers, 11 Retail-Plus members, 4 Retail-Core
-      customers and no Student, since Business carries 99 percent of the quarter's revenue.
+      Wednesday's round 1 trap: all 35 Business customers who ordered, since the smallest of their
+      spends, Rs 2,25,000, is ten times the largest retail spend, then 11 Retail-Plus members and 4
+      Retail-Core customers, and no Student.
     wrong:
       a: >-
         GROUP BY collapses each segment to one row, so the customers are gone before LIMIT runs, and
@@ -365,18 +362,6 @@ notes:
     answer: >-
       Top N per group is a window: rank inside PARTITION BY the group in a CTE, keep rank N or better
       outside it, and name the tie rule.
-  57:
-    label: "Order the clauses"
-    why: >-
-      The logical order is FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY: rows are read, filtered,
-      grouped, and the groups filtered, before anything is selected or sorted. The common wrong
-      answer is the order the clauses are typed, a, c, b, e, f, d, which puts SELECT first; the
-      database cannot pick columns from rows it has not yet read, filtered and grouped. The same
-      order explains why a SELECT alias works in ORDER BY and fails in WHERE, and why SELECT can name
-      only grouped columns and aggregates.
-    answer: >-
-      FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, and most of the errors a query can raise follow
-      from it.
 
 additions:
   # ---------------------------------------------------------------- Part 1, Monday
@@ -389,7 +374,8 @@ additions:
     roles: BA, DS
     day: Mon
     key: >-
-      It prints 2 and 1. The true figures are 2.36 and 1.84, a fall of about 22 percent.
+      It prints 2 and 1. The note should say orders per member fell about 22 percent, from 2.36 to
+      1.84.
     anchor: >-
       A stakeholder's analyst must audit your query; what changes in how you write it, and what
       would you refuse to compute in a notebook?
@@ -404,11 +390,11 @@ additions:
           R --> V["Revenue per order<br/>Apr to Jun: Rs 2,725<br/>Jul to Sep: Rs 2,953"]
           F --- O["Orders placed<br/>Apr to Jun: 215<br/>Jul to Sep: 140"]
     text: |-
-      Anand's analyst fills the missing leaf with SELECT quarter, count(*) / count(DISTINCT customer_id) FROM rp_orders GROUP BY quarter, where rp_orders holds the Retail-Plus orders above. What does the query print for each quarter, what are the true figures, and how did orders per member change from the first quarter to the second? Show the working.
+      Anand's analyst fills the missing leaf with SELECT quarter, count(*) / count(DISTINCT customer_id) FROM rp_orders GROUP BY quarter, where rp_orders holds the Retail-Plus orders above, and drafts a note to the head of Retail-Plus from what it returns. What does the query print for each quarter, and what should the note say orders per member did from the first quarter to the second? Show the working.
     why: >-
       count(*) and count(DISTINCT customer_id) are both integers, so Postgres divides integers and
       drops the fraction: 215 / 91 prints 2 for April to June, and 140 / 76 prints 1 for July to
-      September. The true figures are 2.36 and 1.84, and 1.84 against 2.36 is a fall of about 22
+      September. Orders per member were 2.36 and 1.84, and 1.84 against 2.36 is a fall of about 22
       percent; accept 21 to 22 percent, or about a fifth. A note that quotes the printed 2 and 1 says
       orders per member halved, which is Monday's round 2 trap. The fix is count(*)::numeric, and the
       check is to multiply back: 1 times 76 members is 76, against 140 orders. Run on PostgreSQL 16.13
@@ -416,35 +402,86 @@ additions:
     answer: >-
       Orders per member is a ratio of two counts, and Postgres divides two integers as integers, so I
       cast one side to numeric and multiply back by the denominator before the number leaves.
-  - id: first-look
-    label: "Place the first look"
+  - id: avg-spend
+    label: "Predict the average"
+    type: One correct option
+    level: Medium
+    min: 2.5
+    tag: "[F]"
+    roles: BA, DS
+    day: Mon
+    key: c
+    anchor: >-
+      A stakeholder's analyst must audit your query; what changes in how you write it, and what
+      would you refuse to compute in a notebook?
+    exhibit:
+      caption: >-
+        The analyst's query for the head of Retail-Plus.
+      code:
+        lang: sql
+        text: |-
+          WITH member_step AS (
+              SELECT c.customer_id, sum(o.amount) AS spend
+              FROM   customers c
+              LEFT   JOIN orders o
+                     ON o.customer_id = c.customer_id AND o.quarter = 'Q2'
+              WHERE  c.segment = 'Retail-Plus'
+              GROUP  BY c.customer_id)
+          SELECT round(avg(spend)) AS avg_spend
+          FROM   member_step;
+    text: |-
+      Retail-Plus has 120 members on its books, and from July to September 76 of them ordered, spending Rs 4,13,380 between them. The head of Retail-Plus asks for the average spend per member on the books, and the analyst runs the query above. What does it print?
+      (a) An error, since avg cannot read a spend that is NULL
+      (b) 3445, the average over all 120 members on the books
+      (c) 5439, the average over the 76 members who ordered
+      (d) NULL, since one missing spend leaves the whole average empty
+    why: >-
+      A member with no order in the quarter joins no order row, so sum(o.amount) for that member runs
+      over nothing and returns NULL, for 44 of the 120 members; avg skips NULLs, so it divides Rs
+      4,13,380 by the 76 members who ordered and prints 5439. The head asked for the average over all
+      120 on the books, Rs 3,445, which needs coalesce(sum(o.amount), 0) in the member step. Monday's
+      rule is to say who is in every average. Run on PostgreSQL 16.13 on the week's warehouse on 30
+      September 2026.
+    wrong:
+      a: >-
+        avg reads NULLs without complaint and leaves them out; nothing in the query raises an error.
+      b: >-
+        The figure the head asked for, which the query prints only if the member step turns a member
+        with no order into 0 with coalesce; as written, those members carry NULL and avg skips them.
+      d: >-
+        An aggregate skips NULLs; only arithmetic such as spend + NULL returns NULL.
+    answer: >-
+      AVG skips NULLs, so an average over a LEFT JOIN is an average over the rows that matched unless I
+      coalesce the missing ones to zero, and I say who is in every average.
+  - id: tool-choice
+    label: "Choose where it runs"
     type: One correct option
     level: Medium
     min: 2.5
     tag: "[D]"
     roles: BA, DS
     day: Mon
-    key: b
+    key: a
     anchor: >-
       Why would you compute a KPI in the warehouse rather than in a notebook?
     text: |-
       On Monday afternoon the head of Retail-Plus asks the analyst for a chart of orders per member, week by week across both quarters, to see how the figure moved before anyone decides what to report. With Anand's rule in mind, where should that work happen?
-      (a) In the Monday suite as a saved query, since Anand's rule covers every number anyone looks at
-      (b) In a notebook that reads the warehouse, since a first look reports no number to anyone
-      (c) In a workbook built from Monday's export, since weekly charts are what Excel does best
-      (d) Nowhere yet, since a chart of a figure Finance has not defined will mislead its readers
+      (a) In a notebook that reads the warehouse, since this chart is none of the Monday figures the rule governs
+      (b) In the Monday suite as a saved query, since Anand's rule covers every number that anyone at Kalpa looks at
+      (c) In a workbook built from Monday's export, since a weekly chart is what Excel does best for a tier's head
+      (d) Nowhere yet, since a chart of a figure Finance has not defined will mislead whoever reads it
     why: >-
-      Anand's rule is about the reported number, which comes from a saved query that reruns unchanged
-      on the book every Monday and can be read line by line. A first look at a question reports
-      nothing: charts, tests and the first reading of a question belong in a notebook, and a notebook
-      that reads the warehouse works on the same book as the suite. The one direction a number
-      travels is from the warehouse, through pandas for the analyst's iteration, to Excel for the
-      room; once the head of Retail-Plus decides what to report, that number becomes a query in the
-      suite.
+      Anand's rule names the figures he wants every Monday, revenue, orders and customers by segment
+      and channel, and asks for them from the warehouse with no notebooks and no exports. A weekly
+      chart of orders per member for the head of Retail-Plus is none of those figures: it is
+      exploration, and exploration belongs in a notebook, which should read the warehouse so that it
+      works on the same book as the suite. The one direction a number travels is from the warehouse,
+      through pandas for the analyst's iteration, to Excel for the room; once the head decides what to
+      report, that figure becomes a query in the suite.
     wrong:
-      a: >-
-        Stretches the rule past its purpose: it governs the numbers Finance receives, and a suite that
-        holds every exploratory chart stops being a list an analyst can audit.
+      b: >-
+        Stretches the rule past its words: it covers the figures Anand files each Monday, and a suite
+        that holds every exploratory chart stops being a list an analyst can audit.
       c: >-
         An export is stale the day it lands and a workbook can be typed over, which is what Anand's
         rule rules out; Excel is where a finished number meets the room.
@@ -479,11 +516,11 @@ additions:
                  round(sum(seconds) / count(*), 1)                                AS defined
           FROM viewers;
     text: |-
-      In 2016 Facebook told advertisers that it had defined the average duration of video viewed as the total time spent watching a video divided by the number of people who played it, and had calculated it by dividing by only the people who watched for three seconds or more (TechCrunch, 2016). The query above rebuilds both on five illustrative viewers. What does it return, and by how much does the calculated average overstate the defined one?
-      (a) It returns 10.0 and 6.0, so the calculated average is about 40 percent too high
-      (b) It returns 9.0 and 6.0, so the calculated average is 50 percent too high
-      (c) It returns 6.0 and 6.0, so the two versions agree on these five viewers
-      (d) It returns 10.0 and 6.0, so the calculated average is about 67 percent too high
+      In 2016 Facebook told advertisers that it had defined the average duration of video viewed as the total time spent watching a video divided by the number of people who played it, and had calculated it by dividing by only the people who watched for three seconds or more (TechCrunch, 2016). The query above rebuilds both on five illustrative viewers. By how much does the calculated average overstate the defined one?
+      (a) About 40 percent
+      (b) 50 percent
+      (c) Not at all; the two agree
+      (d) About 67 percent
     why: >-
       The CASE has no ELSE, so it returns NULL for the two viewers under three seconds, and count
       skips NULLs: the calculated average divides all 30 seconds by 3 people, 10.0, where the defined
@@ -497,8 +534,8 @@ additions:
         Divides the gap by the wrong base: 4.0 over the calculated 10.0 is 40 percent, and an
         overstatement is measured against the true figure, the defined 6.0.
       b: >-
-        Averages the three long viewers alone, (14 + 9 + 4) / 3 = 9.0; the numerator stayed all the
-        time watched, the short viewers' 3 seconds included.
+        Averages the three long viewers alone, (14 + 9 + 4) / 3 = 9.0 against 6.0; the numerator
+        stayed all the time watched, the short viewers' 3 seconds included.
       c: >-
         count(CASE WHEN ... THEN 1 END) counts only the non-NULL results, and a CASE with no ELSE
         returns NULL for the viewers it does not match; Monday's round 3 trap in another form.
@@ -515,7 +552,7 @@ additions:
     tag: "[F]"
     roles: BA, DS
     day: Tue
-    key: b
+    key: a
     anchor: >-
       Your LEFT join grew the row count and revenue doubled; name the cause and the check.
     exhibit:
@@ -524,33 +561,32 @@ additions:
       code:
         lang: sql
         text: |-
-          SELECT count(*)                   AS rows_out,
-                 count(DISTINCT o.order_id) AS orders,
-                 count(p.payment_id)        AS payment_rows
+          SELECT count(*)            AS rows_out,
+                 count(p.payment_id) AS payment_rows
           FROM   orders o
           LEFT   JOIN payments p ON p.order_id = o.order_id
           WHERE  o.quarter = 'Q2';
     text: |-
       SET 4. SITUATION: The quarter from July to September, stored as quarter 'Q2', holds 462 orders booked at Rs 9,84,00,000. In the payments feed, 216 of them have one payment row; 188 have two rows, instalments 1 and 2 of one invoice; 28 have two identical rows, because the gateway posted instalment 1 twice; and 30 delivered orders have no payment row at all. Eight further payment rows carry an order_id that no order has.
       Before the report goes to Anand, the analyst sizes the join by hand. What will the query above return?
-      (a) 462, 462 and 432
-      (b) 678, 462 and 648
-      (c) 678, 462 and 678
-      (d) 686, 470 and 656
+      (a) 678 and 648
+      (b) 462 and 432
+      (c) 650 and 620
+      (d) 686 and 656
     why: >-
       A LEFT JOIN writes one row per matching payment row and keeps an order with none as one row of
-      NULLs: 216 + 2 times 188 + 2 times 28 + 30 = 678 rows. count(DISTINCT o.order_id) counts the 462
-      orders, and count(p.payment_id) skips the 30 unpaid orders' NULLs, 678 minus 30 = 648, which is
-      also what an INNER JOIN would return. The eight payments with no order never meet an order, so
-      they are in none of the counts. Run on PostgreSQL 16.13 on the week's warehouse on 30 September
-      2026.
+      NULLs: 216 + 2 times 188 + 2 times 28 + 30 = 678 rows. count(p.payment_id) skips the 30 unpaid
+      orders' NULLs where count(*) counts them, so it reads 678 minus 30 = 648, which is also what an
+      INNER JOIN would return. The gateway's identical rows join twice like any other rows, and the
+      eight payments with no order never meet an order. Run on PostgreSQL 16.13 on the week's
+      warehouse on 30 September 2026.
     wrong:
-      a: >-
-        Reads the join as keeping one row per order, and payment rows as one per paid order (462 minus
-        30 = 432); a join repeats an order once per matching row, which is Tuesday's round 1 fan-out.
+      b: >-
+        Reads the join as one row per order, and payment rows as one per paid order; a join repeats an
+        order once per matching row, which is Tuesday's round 1 fan-out.
       c: >-
-        count(p.payment_id) skips NULLs, and only count(*) counts the 30 unpaid orders' rows; reading
-        count(column) as count(*) is Monday's round 1 trap inside a join.
+        Assumes the join keeps the gateway's two identical rows once; a join matches rows by key,
+        identical or not, so both repeat the order.
       d: >-
         Counts the eight payments with no order as if they had joined; a LEFT JOIN from orders keeps
         only rows that start from an order, and only a FULL OUTER JOIN brings in the payments whose
@@ -575,8 +611,8 @@ additions:
       SET 4, continued.
       Five of these six steps make Anand's collected-revenue report, and one would spoil it. Leave that step out, and write the other five in the order they must run.
       (a) Send booked, collected and the gap to Anand, channel by channel
-      (b) LEFT JOIN the quarter's 462 orders to the payments on order_id
-      (c) Check that the join returned 462 rows and that the gap equals the unpaid orders' booked value
+      (b) LEFT JOIN the quarter's 462 orders to each order's collected figure
+      (c) Check that the result has one row for each of the 462 orders, and that each channel's gap equals its unpaid orders' booked value
       (d) Drop every order that has two payment rows, since those are the gateway's double posts
       (e) Keep one payment row for each order and instalment number
       (f) Sum the payment rows to one collected figure for each order
@@ -585,12 +621,10 @@ additions:
       one invoice, and dropping them throws away real cash along with the 28 repeats. On the same
       book, HAVING count(*) > 1 by order lists 216 orders, and by order and instalment it lists the
       28 repeats. The repeats go first (e), because a sum taken before them keeps the Rs 20,750 the
-      gateway posted twice. The payment rows go to one figure per order (f) before the join (b),
-      because only then does the join return one row per order: joined first, the rows come out at
-      650, the 462 orders plus 188 second instalments, and booked counts twice for every instalment
-      order. The checks (c) come before anything is sent (a), and on Kalpa's book they read 462 rows
-      and a gap of Rs 17,54,930, the unpaid orders' booked value exactly. Run on PostgreSQL 16.13 on
-      the week's warehouse on 30 September 2026.
+      gateway posted twice. The payment rows go to one collected figure per order (f), which is what
+      the join (b) reads, so the result keeps one row per order; the checks (c) come before anything is
+      sent (a), and on Kalpa's book they read 462 rows and a gap of Rs 17,54,930, the unpaid orders'
+      booked value exactly. Run on PostgreSQL 16.13 on the week's warehouse on 30 September 2026.
     answer: >-
       De-duplicate at the grain that defines a repeat, aggregate to the join's grain, join, prove the
       row count and the gap, then send.
@@ -652,8 +686,8 @@ additions:
   - id: reporting-day
     label: "Decide what leaves tonight"
     type: One correct option
-    level: Hard
-    min: 4
+    level: Medium
+    min: 3.5
     tag: "[D]"
     roles: BA, FDE
     day: Tue
@@ -664,8 +698,8 @@ additions:
     exhibit:
       caption: >-
         Suppose these are the report's figures by channel at the end of a later reporting day; the
-        figures are illustrative. Rows out of the join, 462, and booked, Rs 9,84,00,000, both match
-        their sources.
+        figures are illustrative. The report's row count and its booked total both match their
+        sources.
       table:
         head:
           - Channel
@@ -677,7 +711,7 @@ additions:
           - [Store, "3,21,48,730", "3,11,90,920", "9,57,810"]
           - [Web, "2,36,61,000", "2,28,50,250", "7,89,000"]
     text: |-
-      It is the end of the reporting day, and Anand expects the report tonight. In each channel the gap, booked less collected, should equal the unpaid orders' booked value. What do you send?
+      It is the end of the reporting day, and Anand expects the report tonight. His rule for a late failure is to send what reconciles and hold what does not, and in each channel the gap, booked less collected, should equal the unpaid orders' booked value. What do you send?
       (a) Booked and collected for every channel, with any unexplained gap added to that channel's unpaid list
       (b) Booked for every channel, collected for app and web, and store's collected held back
       (c) Booked for every channel, collected for app and store, and web's collected held back
@@ -685,10 +719,10 @@ additions:
     why: >-
       The gaps are app Rs 8,120 and store Rs 9,57,810, each equal to its unpaid list to the rupee, and
       web Rs 8,10,750, which exceeds its list's Rs 7,89,000 by Rs 21,750 that nobody has explained.
-      Booked passed its checks, so it goes for every channel; app's and store's collected reconcile,
+      Booked matches its source, so it goes for every channel; app's and store's collected reconcile,
       so they go; web's collected waits, with the Rs 21,750 named as an open line with an owner and a
-      time. The Tuesday pack's rule is to send what reconciles with its definition and name the line
-      that does not close. The figures are illustrative: on Kalpa's own book, web's gap equals its
+      time. That is the rule in the stem, applied channel by channel, and the Tuesday pack's answer to
+      a check that fails late. The figures are illustrative: on Kalpa's own book, web's gap equals its
       unpaid list at Rs 7,89,000.
     wrong:
       a: >-
@@ -698,8 +732,8 @@ additions:
         Store has the largest gap, and its gap equals its unpaid list to the rupee; the channel whose
         bridge fails is web, by Rs 21,750.
       d: >-
-        Holds back two collected figures that reconcile to the rupee; Anand loses app's and store's
-        collected over a doubt that concerns web alone.
+        Holds back two collected figures that reconcile to the rupee, which the rule sends; Anand loses
+        app's and store's collected over a doubt that concerns web alone.
     answer: >-
       Before a joined number reaches Finance I check rows in against rows out, the total against its
       source and the gap against a named list; when one fails at the end of the reporting day, what
@@ -713,7 +747,7 @@ additions:
     tag: "[D]"
     roles: BA, DS, FDE
     day: Tue
-    key: b, d
+    key: c, e
     anchor: >-
       Design the validation you run before a joined number reaches Finance, and say what you do when
       it fails at the end of reporting day.
@@ -735,10 +769,10 @@ additions:
     text: |-
       In October 2020 Public Health England found that 15,841 positive COVID-19 cases from 25 September to 2 October had been left out of the daily figures, because some files had exceeded the maximum size the load could take (GOV.UK, 2020). The labs' CSV files had been converted to the older .xls format, and records past its limit were "simply left off and not counted when imported" (The Register, 2020). Which of these checks, run on every file, would have stopped Lab B's file on the day in the table? Mark every correct option.
       (a) Compare rows loaded with data rows in the .xls sheet, and stop the file when they differ
-      (b) Compare rows loaded with records in the lab's CSV, and stop the file when they differ
-      (c) Remove duplicate rows from each file before it is loaded, so that no case counts twice
-      (d) Stop any file whose sheet holds exactly 65,535 data rows, the most the format allows
-      (e) Stop any file whose rows loaded fall below that lab's rows loaded the day before
+      (b) Remove duplicate rows from each file before it is loaded, so that no case counts twice
+      (c) Compare rows loaded with records in the lab's CSV, and stop the file when they differ
+      (d) Stop any file whose rows loaded fall below that lab's rows loaded the day before
+      (e) Stop any file whose sheet holds exactly 65,535 data rows, the most the format allows
     why: >-
       Lab B's file lost 5,365 records in the conversion, 70,900 in the CSV against 65,535 rows in the
       sheet. Comparing rows loaded with the lab's own count of records sees the loss, and a sheet at
@@ -754,9 +788,9 @@ additions:
       a: >-
         Rows loaded and data rows in the sheet were both counted after the conversion cut the file, so
         they agree at 65,535 and the check passes.
-      c: >-
+      b: >-
         De-duplication removes rows; it cannot find rows that were never loaded.
-      e: >-
+      d: >-
         Lab B loaded 65,535 rows against 61,020 the day before, so a check for a fall stays quiet while
         5,365 records go missing; a day-on-day check sees only a loss larger than the day's growth.
     answer: >-
@@ -765,66 +799,49 @@ additions:
       the cliff.
   # ---------------------------------------------------------------- Part 3, Wednesday
   - id: rows-shipped
-    label: "Count what each rule ships"
-    type: Scenario set
+    label: "Apply the head's rule"
+    type: One correct option
     level: Hard
     min: 4
-    tag: "[S]"
-    roles: BA, DS
-    day: Wed
-    key: a
-    anchor: >-
-      RANK, DENSE_RANK and ROW_NUMBER on a tie.
-    text: |-
-      SET 5. SITUATION: Retail-Plus had 76 members who ordered from July to September. Sorted by their revenue for the quarter, highest first, the top 45 each spent a different amount, all above Rs 3,600, and rows 46 to 53 are in the table. The protect list keeps the members numbered 50 or better.
-      The analyst computes RANK(), DENSE_RANK() and ROW_NUMBER() over the quarter's revenue, highest first, and keeps the members numbered 50 or better under each. How many members does each keep?
-      (a) 51, 52 and 50
-      (b) 51, 51 and 50
-      (c) 50, 51 and 50
-      (d) 52, 51 and 50
-    why: >-
-      RANK gives C-0185 and C-0242 the shared rank 50 and C-0259 rank 52, so 51 members hold a rank
-      of 50 or better. DENSE_RANK leaves no gaps, so the tie at 48 (C-0189 and C-0206) makes C-0185
-      and C-0242 dense rank 49 and C-0259 dense rank 50: 52 members. ROW_NUMBER numbers every row
-      once: 50. Run on PostgreSQL 16.13 on the week's warehouse on 30 September 2026.
-    wrong:
-      b: >-
-        Sees one tie at the line and reads DENSE_RANK as RANK without the gap; the second tie, at 48,
-        compresses the dense numbers so that C-0259 reaches 50. That is Wednesday's trap, where "ties
-        rank the same" quietly shipped 52.
-      c: >-
-        Reads RANK as capping the list at fifty; RANK gives both tied members 50 and keeps both.
-      d: >-
-        Swaps the two functions: RANK leaves a gap after each tie, and DENSE_RANK does not.
-    answer: >-
-      ROW_NUMBER gives every row its own number and breaks ties arbitrarily, RANK shares a rank and
-      skips the next, and DENSE_RANK shares without a gap; on a top-N list, RANK can ship more than N
-      and DENSE_RANK more still, so I count what each rule ships before choosing.
-  - id: tie-rule
-    label: "Follow the head's rule"
-    type: Scenario set
-    level: Medium
-    min: 2.5
     tag: "[D]"
     roles: BA, DS
     day: Wed
-    key: c
+    key: d
     anchor: >-
       The business says 'ties rank the same'; which function, and how many rows might the top-N report
       ship?
+    exhibit:
+      caption: >-
+        Retail-Plus members in rows 46 to 53 when sorted by the quarter's revenue, highest first, with
+        tied members in order of their ids.
+      table:
+        head:
+          - Row, highest revenue first
+          - Member
+          - Revenue, July to September, Rs
+        rows:
+          - ["46", C-0162, "3,600"]
+          - ["47", C-0264, "3,540"]
+          - ["48", C-0189, "3,480"]
+          - ["49", C-0206, "3,480"]
+          - ["50", C-0185, "3,350"]
+          - ["51", C-0242, "3,350"]
+          - ["52", C-0259, "3,200"]
+          - ["53", C-0252, "3,150"]
     text: |-
-      SET 5, continued.
-      Which list follows the rule the head of Retail-Plus set?
-      (a) DENSE_RANK, keeping every member ranked 50 or better
-      (b) ROW_NUMBER with member id as tiebreaker, keeping rows 1 to 50
-      (c) RANK, keeping every member ranked 50 or better
-      (d) ROW_NUMBER on revenue alone, keeping rows 1 to 50
+      Retail-Plus had 76 members who ordered from July to September. Sorted by their revenue for the quarter, highest first, the top 45 each spent a different amount, all above Rs 3,600, and rows 46 to 53 are in the table. The head of Retail-Plus sets the rule for the protect list: "If two members spent the same, rank them the same. Keep every member who spent at least as much as the fiftieth, and nobody who spent less." Which ranking gives that list, and how many members does it keep?
+      (a) DENSE_RANK, keeping every member ranked 50 or better: 52 members
+      (b) ROW_NUMBER with member id as tiebreaker, keeping rows 1 to 50: 50 members
+      (c) Whole ties only, cutting before any tie that crosses the fiftieth place: 49 members
+      (d) RANK, keeping every member ranked 50 or better: 51 members
     why: >-
-      The rule has two parts: members who spent the same share a rank, and the list keeps every member
-      who spent at least as much as the fiftieth and nobody who spent less. RANK does both: C-0185 and C-0242
-      share rank 50 on Rs 3,350 and C-0259, on Rs 3,200, falls to 52. DENSE_RANK shares ranks too, and
-      because it never skips, the earlier tie at 48 lifts C-0259 to dense rank 50. The note to
-      Marketing gives the list's length and the tie that sets it.
+      RANK gives C-0185 and C-0242 the shared rank 50 and C-0259 rank 52, so 51 members hold a rank
+      of 50 or better, and they are exactly the members who spent at least Rs 3,350, the fiftieth
+      member's spend. DENSE_RANK leaves no gaps, so the tie at 48 (C-0189 and C-0206) lifts C-0185 and
+      C-0242 to dense rank 49 and C-0259, on Rs 3,200, to 50: 52 members, one of whom spent less than
+      the fiftieth. ROW_NUMBER numbers every row once and drops C-0242, who spent as much as the
+      fiftieth. The note to Marketing gives the list's length and the tie that sets it. Run on
+      PostgreSQL 16.13 on the week's warehouse on 30 September 2026.
     wrong:
       a: >-
         Shares ranks, and then keeps C-0259, who spent Rs 3,200, less than both members at the
@@ -834,13 +851,47 @@ additions:
         Keeps exactly fifty, the same every Monday, by dropping C-0242, who spent exactly what the
         fiftieth did, on an id nobody chose on purpose; if the budget demands fifty, the tiebreaker is
         a decision the head of Retail-Plus owns.
-      d: >-
-        Gives members who spent the same different numbers and lets the database choose which of
-        C-0185 and C-0242 stays, so the list can change between two runs.
+      c: >-
+        Leaves out C-0185 and C-0242, who both spent as much as the fiftieth; the rule keeps them.
     answer: >-
       When the business says ties rank the same, I use RANK and state the list's length and its reason
       in the same line, because the list can ship more than N; if the budget demands exactly N, the
       tiebreaker becomes a decision someone owns.
+  - id: share-window
+    label: "Choose the share query"
+    type: One correct option
+    level: Medium
+    min: 2.5
+    tag: "[S]"
+    roles: BA, DS
+    day: Wed
+    key: a
+    anchor: >-
+      Top-3 per group: GROUP BY or a window, and why?
+    text: |-
+      Marketing wants each Retail-Plus member's spend beside the member's share of the tier's spend for July to September. The table member_step holds one row per member who ordered, with the columns customer_id and spend. Which query gives each member's share?
+      (a) SELECT customer_id, spend, spend / sum(spend) OVER () FROM member_step
+      (b) SELECT customer_id, spend, spend / sum(spend) FROM member_step GROUP BY customer_id, spend
+      (c) SELECT customer_id, spend, spend / sum(spend) OVER (ORDER BY spend DESC) FROM member_step
+      (d) SELECT customer_id, spend, spend / sum(spend) OVER (PARTITION BY customer_id) FROM member_step
+    why: >-
+      OVER () puts the tier's total on every row without collapsing the rows, so each member's spend
+      divides by Rs 4,13,380 and the shares add to 1. Grouping by member makes each sum the member's
+      own spend, and so does a partition by member, so both return a share of 1 for everyone; an
+      ORDER BY inside the window turns the sum into a running total, so the top spender's share reads 1
+      and each later share divides by a larger part of the total. Run on PostgreSQL 16.13 on the
+      week's warehouse on 30 September 2026.
+    wrong:
+      b: >-
+        GROUP BY customer_id makes sum(spend) each member's own spend, so every share reads 1.
+      c: >-
+        An ORDER BY inside the window makes the sum a running total, so the top spender divides by
+        their own spend and every share after it by a different part of the total.
+      d: >-
+        A partition by member sums each member's own row, so every share reads 1.
+    answer: >-
+      A share of the total is the row's value over sum() OVER (), a window with no partition and no
+      order, which keeps every row and puts the total beside it.
   - id: lag-gap
     label: "Run the falling flag"
     type: One correct option
@@ -849,13 +900,12 @@ additions:
     tag: "[F]"
     roles: BA, DS
     day: Wed
-    key: c
+    key: b
     anchor: >-
       How would you find customers whose spend fell two months in a row?
     exhibit:
       caption: >-
-        Four Retail-Plus members' monthly spend in rupees; a blank month had no order, so member_month
-        has no row for it.
+        Four Retail-Plus members' monthly spend in rupees, from the warehouse's orders.
       table:
         head:
           - Member
@@ -871,31 +921,32 @@ additions:
           - [C-0185, "3,880", "6,990", "2,690", "1,900", "", "1,450"]
           - [C-0216, "", "6,440", "", "4,300", "", "2,540"]
     text: |-
-      The falling flag reads member_month, one row per member per month with an order. It takes prev1 = LAG(spend, 1) and prev2 = LAG(spend, 2), each partitioned by member and ordered by month, and flags a member whose September spend is below prev1 while prev1 is below prev2. Marketing will call every member the flag names and say that their spend fell in both August and September. How many calls does Marketing make, and how many of them say something untrue?
-      (a) 2 calls, and both of them true
-      (b) 3 calls, and one of them untrue
-      (c) 4 calls, and two of them untrue
-      (d) 4 calls, and all of them true
+      The falling flag reads member_month, which sums each member's orders by calendar month. It takes prev1 = LAG(spend, 1) and prev2 = LAG(spend, 2), each partitioned by member and ordered by month, and flags a member whose September spend is below prev1 while prev1 is below prev2. Marketing will call every member the flag names and say that their spend fell in both August and September. How many calls does Marketing make, and how many of them say something untrue?
+      (a) 2 calls, none of them untrue
+      (b) 4 calls, two of them untrue
+      (c) 3 calls, one of them untrue
+      (d) 1 call, and it is true
     why: >-
-      LAG reads the previous row in the partition, never the previous calendar month. C-0161 and
-      C-0171 fell from July to August and again from August to September, so both are flagged, and
-      rightly. C-0185's September is compared with July (1,450 below 1,900) and July with June (1,900
-      below 2,690), and C-0216's September with July and July with May (2,540 below 4,300, below
-      6,440), so both are flagged too, although neither ordered in August: two calls tell a member
-      their spend fell in August and September when there was no August reading at all. A calendar
-      check, that the two rows LAG reads are August and July, keeps the two genuine falls. Run on
-      PostgreSQL 16.13 on the week's warehouse on 30 September 2026.
+      member_month has a row only for a month with an order, and LAG reads the previous row in the
+      partition, never the previous calendar month. C-0161 and C-0171 fell from July to August and
+      again from August to September, so both are flagged, and rightly. C-0185's September is compared
+      with July (1,450 below 1,900) and July with June (1,900 below 2,690), and C-0216's September with
+      July and July with May (2,540 below 4,300, below 6,440), so both are flagged too, although neither
+      ordered in August: two of the four calls tell a member their spend fell in August and September
+      when there was no August reading at all. A calendar check, that the two rows LAG reads are August
+      and July, keeps the two genuine falls. Run on PostgreSQL 16.13 on the week's warehouse on 30
+      September 2026.
     wrong:
       a: >-
         Assumes LAG steps back one calendar month, so C-0185 and C-0216 would meet an empty August and
         drop out; LAG returns whatever row came before in the window's order, and both are flagged.
-      b: >-
+      c: >-
         Assumes LAG(spend, 2) returns NULL for C-0216; it has rows for May, July and September, so on
         its September row LAG(spend, 2) returns May's 6,440. LAG returns NULL only on a member's first
         rows, and a comparison with that NULL flags nobody.
       d: >-
-        Reads the query's output as the business answer; a member with no August order has no August
-        reading, and C-0216 is the member in Wednesday's case who said he was on holiday.
+        Assumes any member with a month missing before September drops out of the flag; LAG reads
+        rows, so C-0161's empty May and June do not matter, and nor do the others' gaps.
     answer: >-
       One row per customer per month, LAG 1 and LAG 2 partitioned by customer and ordered by month, a
       check that the lagged rows really are the previous two calendar months, and a flag where each
@@ -908,155 +959,103 @@ additions:
     tag: "[D]"
     roles: BA, FDE
     day: Wed
-    key: a
+    key: c
     anchor: >-
       How do you present one number so it is not misread?
     exhibit:
       caption: >-
-        Revenue booked so far in the quarter against the plan so far, at the end of every other week:
-        the bars are booked, the line is plan, and the table gives both.
+        Revenue booked so far in the quarter against the plan so far, at the end of every other week
+        and at the close: the bars are booked, the line is plan, and the table gives both.
       mermaid: |-
         xychart-beta
           title "Booked so far against plan so far, Rs crore"
-          x-axis "Week starting" ["6 Jul", "20 Jul", "3 Aug", "17 Aug", "31 Aug", "14 Sep", "28 Sep"]
+          x-axis "Up to" ["12 Jul", "26 Jul", "9 Aug", "23 Aug", "6 Sep", "20 Sep", "Close, 30 Sep"]
           y-axis "Rs crore" 0 --> 10
           bar [0.51, 4.22, 5.95, 6.87, 7.54, 9.12, 9.84]
           line [0.76, 2.27, 3.78, 5.30, 6.81, 8.33, 9.84]
       table:
         head:
-          - Week starting
-          - 6 Jul
-          - 20 Jul
-          - 3 Aug
-          - 17 Aug
-          - 31 Aug
-          - 14 Sep
-          - 28 Sep
+          - Up to
+          - 12 Jul
+          - 26 Jul
+          - 9 Aug
+          - 23 Aug
+          - 6 Sep
+          - 20 Sep
+          - Close, 30 Sep
         rows:
           - [Booked so far, "0.51", "4.22", "5.95", "6.87", "7.54", "9.12", "9.84"]
           - [Plan so far, "0.76", "2.27", "3.78", "5.30", "6.81", "8.33", "9.84"]
     text: |-
-      Meera's chief of staff wants one line about the plan for Monday's front page, and the figures above are all there is. Which line do they support?
-      (a) Level with plan at the close, having given back the lead it built in July
-      (b) Well ahead of plan at the close, keeping most of the lead it built in July
-      (c) Behind plan from mid-August on, after a strong start in the first weeks of July
-      (d) Within a few lakh of plan all quarter, with no lead or shortfall worth a line
+      The quarter closed at Rs 9,84,00,000 against a plan of Rs 9,83,99,990. Meera's chief of staff wants one line for Monday's front page on how it got there, and the figures above are all there is. Which line do they support?
+      (a) Furthest ahead by 26 July, by about Rs 2.0 crore, and back to level with the plan by 6 September
+      (b) Behind the plan from mid-August until the last fortnight, after two strong fortnights in July
+      (c) Furthest ahead by 9 August, by about Rs 2.2 crore, and about Rs 0.8 crore ahead on 20 September
+      (d) Further ahead at every point until 20 September, and level with plan only at the close
     why: >-
       Booked less plan at the seven points reads -0.25, +1.95, +2.17, +1.57, +0.73, +0.79 and 0.00
       crore: behind after the first week, well ahead once the week of 13 July booked Rs 2.66 crore,
-      furthest ahead at the start of August, and level at the close, Rs 9,84,00,000 against a plan of
-      Rs 9,83,99,990. The weekly rate did the giving back: six of the seven full weeks from 10 August
-      booked below the plan's Rs 75.69 lakh a week. A front-page line carries its period and its
-      comparison, so a director reads the close and the trend together. The figures are the week's own
-      running total against plan_line, recomputed on PostgreSQL 16.13 on 30 September 2026.
-    wrong:
-      b: >-
-        The lead peaked at Rs 2.17 crore at the start of August and was gone by the close, where booked
-        and plan both read Rs 9.84 crore.
-      c: >-
-        Booked stayed above plan at every point after the first week; the quarter gave back its lead
-        and never fell behind.
-      d: >-
-        At its widest the lead was Rs 2.17 crore, more than a fifth of the quarter's plan, which is a
-        lead worth a line.
-    answer: >-
-      One number goes out with its period, its base and its comparison, here the quarter's close
-      against plan and the trend that brought it there, so it is read the way it was meant.
-  # ---------------------------------------------------------------- Part 4, Thursday
-  - id: merge-rows
-    label: "Size the merge"
-    type: Scenario set
-    level: Medium
-    min: 2.5
-    tag: "[F]"
-    roles: BA, DS
-    day: Thu
-    key: "346"
-    anchor: >-
-      merge against join: what is the same and what differs?
-    text: |-
-      SET 6. SITUATION: The customer table has 340 rows, one per customer, and its spend column adds up to the book's Rs 19,84,00,000 for both quarters. The monsoon sale's exposure feed, which lists the customers the sale reached, holds 136 rows for 130 customers, because six customers were sent a second time on 11 August. The analyst merges the feed onto the table with how='left' and sends the result to Excel, where a pivot sums spend.
-      How many rows does the merged table hold?
-    why: >-
-      A left merge keeps every customer and writes one row per matching feed row: 334 customers match
-      once or not at all, and the 6 sent twice match two rows each, so 334 + 12 = 346. Run on pandas
-      3.0.5 on the week's files on 30 September 2026.
-    answer: >-
-      A merge grows the left table only when a key repeats on the right, and each repeat adds a row.
-  - id: pivot-total
-    label: "Judge the claim"
-    type: Scenario set
-    level: Medium
-    min: 2.5
-    tag: "[F]"
-    roles: BA, DS, FDE
-    day: Thu
-    key: d
-    anchor: >-
-      A pivot's total disagrees with the warehouse; where do you look first?
-    text: |-
-      SET 6, continued.
-      The analyst tells Marketing: "The pivot's grand total will equal the book's Rs 19,84,00,000." True or false, and why?
-      (a) True, because a left merge keeps the 340 customers and adds no spend
-      (b) True, because the pivot sums spend by customer_id, so each counts once
-      (c) False, because the 210 customers the sale never reached drop out
-      (d) False, because the six customers sent twice sit on two rows each
-    why: >-
-      Each of the six repeated customers sits on two rows carrying the same spend, so the pivot adds
-      their spend twice: Rs 19,84,45,800, Rs 45,800 above the book. Run on pandas 3.0.5 on 30
-      September 2026.
+      furthest ahead in the fortnight to 9 August, still Rs 0.79 crore ahead on 20 September, and level
+      at the close, Rs 10 over a plan of Rs 9,83,99,990. The weekly rate did the giving back: six of
+      the seven full weeks from 10 August booked below the plan's Rs 75.69 lakh a week. A front-page
+      line carries its period and its comparison, so a director reads the close and the path together.
+      The figures are the week's own running total against plan_line, recomputed on PostgreSQL 16.13
+      on 30 September 2026.
     wrong:
       a: >-
-        A left merge keeps each left row once only when the right key is unique; the six repeated keys
-        add six rows, each carrying spend.
+        The lead was Rs 1.95 crore on 26 July and grew to Rs 2.17 crore by 9 August, and on 6 September
+        it still stood at Rs 0.73 crore.
       b: >-
-        A pivot sums rows, and grouping by customer_id adds the repeated rows into one larger cell; it
-        does not de-duplicate them.
-      c: >-
-        A left merge keeps the customers the sale never reached, with NaN in the feed's columns; they
-        stay, with their spend.
+        Reads the fortnights' bookings as the position: booked so far stayed above plan at every point
+        after the first week, although several fortnights booked less than the plan's pace.
+      d: >-
+        The lead fell after 9 August, from Rs 2.17 crore to Rs 0.73 crore by 6 September.
     answer: >-
-      A pivot is only as honest as the table under it: a merge that repeated rows makes a larger total
-      out of rows that each look right.
-  - id: stop-line
-    label: "Place the guards"
+      One number goes out with its period, its base and its comparison, here the quarter's close
+      against plan and the path that brought it there, so it is read the way it was meant.
+  # ---------------------------------------------------------------- Part 4, Thursday
+  - id: merge-guard
+    label: "Size the merge"
     type: Scenario set
-    level: Medium
-    min: 2.5
+    level: Hard
+    min: 4
     tag: "[F]"
     roles: BA, DS, FDE
     day: Thu
-    key: a, e
+    key: a
     anchor: >-
       Which merge argument raises on duplicate keys, and which error?
     text: |-
-      SET 6, continued.
-      Which of these, added to Monday's refresh, would have stopped the run before the pivot was built? Mark every correct option.
-      (a) validate='one_to_one' on the merge itself, so a repeated key stops it
-      (b) drop_duplicates() on the merged table, before it goes to Excel
-      (c) indicator=True on the merge, with the rows then counted by _merge
-      (d) how='inner' in place of how='left', so only reached customers remain
-      (e) an assert that the merged table has as many rows as the customer table
+      SET 6. SITUATION: The customer table has 340 rows, one per customer, and its spend column adds up to the book's Rs 19,84,00,000 for both quarters. The monsoon sale's exposure feed, which lists the customers the sale reached, holds 136 rows for 130 customers. The analyst merges the feed onto the table with how='left' and sends the result to Excel, where a pivot sums spend.
+      How many rows does the merged table hold, and what should Monday's refresh carry before the pivot is built?
+      (a) 346 rows, and validate='one_to_one' on the merge, which raises a MergeError
+      (b) 340 rows, and nothing more, since a left merge keeps the customer table's rows
+      (c) 352 rows, and drop_duplicates() on the merged table to take out the extra rows
+      (d) 136 rows, and indicator=True on the merge to flag the rows before the pivot
     why: >-
-      validate='one_to_one' checks that the key is unique on both sides and raises pandas'
-      MergeError ("Merge keys are not unique in right dataset; not a one-to-one merge") before a
-      merged table exists; the row-count assert stops the run because 346 is not 340. Checked on
-      pandas 3.0.5 on 30 September 2026.
+      A left merge keeps every customer and writes one row per matching feed row; the feed has 136 rows
+      for 130 customers, so six of its rows repeat a customer already there, and each adds a row: 340 +
+      6 = 346 (six customers were sent twice, on 3 and 11 August). validate='one_to_one' checks that
+      the key is unique on both sides and raises pandas' MergeError ("Merge keys are not unique in right
+      dataset; not a one-to-one merge") before a merged table exists; an assert on the row count would
+      stop the run too. Unguarded, the pivot reads Rs 19,84,45,800, Rs 45,800 over the book. Run on
+      pandas 3.0.5 on the week's files on 30 September 2026.
     wrong:
       b: >-
-        The six repeated rows differ in exposed_date (3 and 11 August), so no row is an exact
-        duplicate and all 346 stay; this is Friday's Remove Duplicates trap in pandas.
+        A left merge keeps each customer once only when the right key is unique; the six repeated rows
+        add six rows, and the pivot reads Rs 45,800 over the book.
       c: >-
-        indicator labels each row both, left_only or right_only; the repeated customers are labelled
-        both, twice, and nothing stops.
+        Counts each repeated customer's two rows as extra, where only the second is; and
+        drop_duplicates() stops nothing, since the repeated rows differ in exposed_date and survive it.
       d: >-
-        An inner merge keeps 136 rows, still with the six customers twice, and drops the 210 the sale
-        never reached.
+        An inner merge would keep 136 rows; a left merge keeps all 340 customers. indicator labels each
+        row both or left_only, and stops nothing.
     answer: >-
-      validate= states the relationship a merge must have and raises MergeError the moment the keys
-      break it, and a row-count check says the same thing in numbers; both belong in the refresh.
+      A merge grows the left table only when a key repeats on the right; validate= states the
+      relationship it must keep and raises MergeError the moment the keys break it, and a row-count
+      check says the same thing in numbers.
   - id: first-touch
-    label: "Apply the rule"
+    label: "Trace the first exposure"
     type: Scenario set
     level: Hard
     min: 4
@@ -1068,8 +1067,8 @@ additions:
       A pivot's total disagrees with the warehouse; where do you look first?
     exhibit:
       caption: >-
-        Suppose next Monday the campaign tool sends the same feed newest first; these are its rows for
-        three customers, in the feed's three columns and in the order it sends them.
+        Next Monday's feed from the campaign tool, its rows for three customers in the order it sends
+        them, and the step the refresh now runs on the feed before the merge.
       table:
         head:
           - customer_id
@@ -1081,34 +1080,41 @@ additions:
           - [C-0001, CMP-MONSOON-26, "2026-08-03"]
           - [C-0002, CMP-MONSOON-26, "2026-08-03"]
           - [C-0012, CMP-MONSOON-26, "2026-08-03"]
+      code:
+        lang: python
+        text: |-
+          first = feed.drop_duplicates(subset="customer_id")
     text: |-
       SET 6, continued.
-      Marketing's rule is one exposure per customer, the first by date. Which step applies it, so that the table sent to Excel has one row per customer carrying each customer's first exposure?
-      (a) Drop the rows that repeat in every column, which removes each customer's second send
-      (b) Keep each customer's first row as the file lists it, which is that customer's first send
-      (c) Merge first, then drop merged rows whose customer_id repeats, keeping the first of each
-      (d) Sort by exposed_date from the earliest, then keep each customer's first row
+      Marketing's rule is one exposure per customer, the first by date, and the sale's report credits the sale with every order a customer places from that exposure on. Which exposure does the step above keep for C-0001, and what does the report make of C-0001's orders?
+      (a) The 3 August send, so each order C-0001 placed from then on is credited to the sale
+      (b) Both sends, since they differ in exposed_date, so C-0001's orders after its second send count twice
+      (c) Neither send, since the step drops every customer the feed repeats, so none of C-0001's orders count
+      (d) The 11 August send, so the orders C-0001 placed in the eight days before it go uncredited
     why: >-
-      The two sends differ in exposed_date, so they do not repeat in every column, and the file is
-      newest first, so each repeated customer's first row as listed is the 11 August send. Sorting by
-      exposed_date from the earliest and then keeping each customer's first row leaves 3 August for
-      C-0001 and C-0002 and C-0012's one row: 130 rows, one per customer, and the merge returns 340
-      rows with spend on the book. Run on pandas 3.0.5 on the week's feed, sent newest first, on 30
-      September 2026.
+      drop_duplicates with subset='customer_id' compares the customer id alone and, by its default
+      keep='first', keeps each customer's first row in the order the file lists it. The tool lists each
+      customer's 11 August send before its 3 August one, so C-0001 keeps 11 August, its second
+      exposure, and the report credits the sale only from then on: orders placed from 3 to 10 August,
+      after the real first exposure, go uncredited. On the week's book that is C-0001's order of 6
+      August, Rs 1,200. Sorting by exposed_date from the earliest before the same step keeps 3 August
+      for C-0001 and C-0002 and C-0012's one row: 130 rows, one per customer, and the merge returns 340
+      rows with spend on the book. Run on pandas 3.0.5 on the exhibit's rows and on the week's feed
+      sent in the same order, on 30 September 2026.
     wrong:
       a: >-
-        The two sends differ in exposed_date, 3 and 11 August, so no row repeats in every column and
-        all 136 stay.
+        Reads first as earliest; the step keeps the first row in the order the file lists it, and the
+        tool lists C-0001's 11 August send first.
       b: >-
-        The file is newest first, so each repeated customer's first row as listed is the 11 August
-        send, the second exposure.
+        Reads the step as dropping only rows that repeat in every column; subset='customer_id' compares
+        the customer id alone, so one row per customer stays.
       c: >-
-        The merge keeps each customer's feed rows in the file's order, so keeping the first merged row
-        keeps 11 August; the table has one row per customer and the wrong exposure on two of them.
+        Reads the default as keep=False, which drops every repeated customer; the default is
+        keep='first', which keeps one row for each.
     answer: >-
-      Fix the error where it was made, at the feed, with a rule the business agrees and a sort that
-      makes first mean first by date, and keep the guard on so next week's feed fails loudly instead
-      of quietly.
+      A rule stated by date is applied by date: sort by exposed_date from the earliest, then keep each
+      customer's first row, because a file's order is whatever the sender chose, and keep the guard on
+      so next week's feed fails loudly instead of quietly.
   - id: months-view
     label: "Predict the months view"
     type: One correct option
@@ -1122,41 +1128,42 @@ additions:
       pivot against melt: which widens and which lengthens?
     exhibit:
       caption: >-
-        The analyst's months view for the head of Retail-Plus, on four illustrative orders.
+        The analyst's months view for the head of Retail-Plus, on five illustrative orders.
       code:
         lang: python
         text: |-
           import pandas as pd
           plus = pd.DataFrame({
-              "member": ["M1", "M1", "M1", "M2"],
-              "month":  ["Jun", "Jun", "Jul", "Jun"],
-              "amount": [3000, 1000, 2400, 1800]})
+              "member": ["M1", "M1", "M1", "M2", "M2"],
+              "month":  ["Jun", "Jun", "Jul", "Jun", "Jun"],
+              "amount": [3000, 1000, 2400, 1800, 600]})
           wide = plus.pivot_table(index="member", columns="month", values="amount")
           long = wide.reset_index().melt(id_vars="member", value_name="amount")
           print(wide.loc["M1", "Jun"], len(long), long["amount"].sum())
     text: |-
       The head of Retail-Plus wants one row per member and one column per month, to read who is drifting, and a long copy of the same view for a trend chart. What does the code above print?
-      (a) 4000.0 4 8200.0
-      (b) 2000.0 4 6200.0
-      (c) 2000.0 3 6200.0
-      (d) 4000.0 3 8200.0
+      (a) 4000.0 5 8800.0
+      (b) 2000.0 4 5600.0
+      (c) 3000.0 3 7200.0
+      (d) 4000.0 3 8800.0
     why: >-
       pivot_table splits the orders by member and month, applies its default aggfunc, which is the
       mean, and combines one cell per group, so M1's two June orders print as their average, 2000.0,
-      where M1 spent 4,000. melt turns the 2 by 2 view back into 4 rows, one per member and month,
-      including M2's empty July, and sum skips that NaN: 2,000 + 2,400 + 1,800 = 6200.0 against 8,200
-      of orders. The check is the grand total against the orders, and the fix is aggfunc='sum' with
-      fill_value=0; on Kalpa's Retail-Plus months the default read a fall of 18 percent where the
-      orders fell 29. Run on pandas 3.0.5 on 30 September 2026.
+      where M1 spent 4,000, and M2's June reads 1,200. melt turns the 2 by 2 view into 4 rows, one per
+      member and month, including M2's empty July, and sum skips that NaN: 2,000 + 2,400 + 1,200 =
+      5600.0 against 8,800 of orders. The check is the grand total against the orders, and the fix is
+      aggfunc='sum' with fill_value=0; on Kalpa's Retail-Plus months the default read a fall of 18
+      percent where the orders fell 29. Run on pandas 3.0.5 on 30 September 2026.
     wrong:
       a: >-
-        Assumes the pivot adds; it averages unless aggfunc says otherwise, which is Thursday's round 3
-        trap.
+        Assumes the pivot adds, and that melt hands back the five orders; the pivot averages unless
+        aggfunc says otherwise, and melt returns one row per member and month.
       c: >-
-        Drops the empty cell in melt; melt keeps every member and month, NaN included, which is why
-        the long table has 4 rows.
+        Assumes the pivot keeps each cell's first order, and that melt drops the empty cell; the pivot
+        averages, and melt keeps every member and month, NaN included.
       d: >-
-        Both misreadings at once.
+        Assumes the pivot adds and melt drops the empty cell, the two misreadings of Thursday's round 3
+        trap together.
     answer: >-
       pivot_table widens a column's values into columns and averages unless told to sum; melt
       lengthens it back into rows; I write aggfunc= every time and tie the grand total to the source.
@@ -1168,50 +1175,51 @@ additions:
     tag: "[D]"
     roles: BA, DS
     day: Thu
-    key: a
+    key: b
     anchor: >-
       SQL, pandas or Excel: how do you choose?
     exhibit:
       caption: >-
-        A lab's gene list after a trip through Excel, with illustrative values; the conversions are
-        the ones Ziemann and colleagues documented (Genome Biology, 2016).
+        A lab's gene list after a trip through Excel, and the lab's reference table of gene panels; the
+        values are illustrative (Genome Biology, 2016).
       code:
         lang: python
         text: |-
           import pandas as pd
           lab = pd.DataFrame({"symbol": ["TP53", "2-Sep", "BRCA1", "1-Mar"],
                               "fold_change": [2.1, 0.4, 1.8, 3.2]})
-          ref = pd.DataFrame({"symbol": ["TP53", "SEPT2", "BRCA1", "MARCH1", "EGFR"],
-                              "panel": ["A", "B", "A", "C", "B"]})
-          m = lab.merge(ref, on="symbol", how="left", indicator=True)
-          print(len(m), (m["_merge"] == "left_only").sum())
+          ref = pd.DataFrame({"symbol": ["TP53", "TP53", "SEPT2", "BRCA1", "MARCH1"],
+                              "panel": ["A", "D", "B", "A", "C"]})
+          m = lab.merge(ref, on="symbol", how="left")
+          print(len(m), m["panel"].notna().sum())
     text: |-
-      Gene symbols are the short names genes go by in papers and databases, and before 2020 two of them were SEPT2 and MARCH1. Ziemann and colleagues found that Excel's default settings turned such symbols into dates, SEPT2 into 2-Sep and MARCH1 into 1-Mar, and that about a fifth of genomics papers with Excel gene lists carried such errors (Genome Biology, 2016). In 2020 the body that names human genes renamed the genes Excel turned into dates, so that MARCH1 became MARCHF1 and SEPT1 became SEPTIN1 (Nature Genetics, 2020). The code above merges a lab's list onto a reference table from before the renaming. What does it print, and what should the analyst do?
-      (a) 4 2: two genes lost their annotation, so the list goes back to the lab
-      (b) 4 0: pandas reads 2-Sep and 1-Mar back as symbols, so the analysis goes ahead
-      (c) 5 2: the merge brought in EGFR unmatched, so the analyst drops that extra row
-      (d) 2 0: the merge kept only the matched genes, so the analyst adds the two back
+      Gene symbols are the short names genes go by in papers and databases. Ziemann and colleagues found that Excel's default settings turn some symbols into dates, and that about a fifth of genomics papers with Excel gene lists carried such errors (Genome Biology, 2016). The code above merges a lab's list, after a trip through Excel, onto the lab's reference table of panels. What does it print?
+      (a) 4 4
+      (b) 5 3
+      (c) 7 5
+      (d) 4 2
     why: >-
-      A left merge keeps all 4 of the lab's rows; '2-Sep' and '1-Mar' match no symbol, so indicator
-      marks them left_only: 2. Nothing raises, and two genes lose their annotation without a word.
-      The fix belongs at the source, a list the lab keeps as text, and the naming body later fixed the
-      source every reader shares: in 2020 the HGNC renamed the genes whose symbols Excel turned into
-      dates, so SEPT1 became SEPTIN1 and MARCH1 became MARCHF1 (Bruford and colleagues, Nature
-      Genetics, 2020). Both papers checked on 30 September 2026; the code run on pandas 3.0.5 the same
-      day.
+      The reference table holds one row per gene and panel, and TP53 sits on two panels, so the left
+      merge writes TP53 twice: 5 rows from the lab's 4. '2-Sep' and '1-Mar' are SEPT2 and MARCH1 after
+      Excel turned them into dates, so they match no symbol and keep a NaN panel: 3 rows carry a panel.
+      Nothing raises. The lab's list goes back for the two symbols, fixed at their source, and the
+      analyst decides at which grain a gene with two panels is counted before any total is taken.
+      Ziemann, Eren and El-Osta, Genome Biology, 2016, checked on 30 September 2026; the code run on
+      pandas 3.0.5 the same day.
     wrong:
-      b: >-
-        pandas reads the text it is given; '2-Sep' stays the string '2-Sep', and no parser turns it back
-        into a gene symbol, so the analysis would go ahead on two unannotated genes.
-      c: >-
-        A left merge never adds reference rows that nothing matched; how='right' or how='outer' would,
-        and such a row would be marked right_only, never left_only.
+      a: >-
+        Assumes pandas reads 2-Sep and 1-Mar back as gene symbols and that a left merge keeps one row
+        per lab gene; the dates stay text that matches nothing, and TP53's two panels give it two rows.
       d: >-
-        A left merge keeps every left row, matched or not; how='inner' would keep 2, and the two genes
-        it dropped would still need the lab, not an analyst's guess.
+        Sees the two dates match nothing, and misses the fan-out: TP53 sits on two panels, so the left
+        merge writes it twice.
+      c: >-
+        Adds the reference rows nothing matched, SEPT2 and MARCH1, as an outer merge would; a left merge
+        keeps only the lab's rows and their matches.
     answer: >-
-      A key that changed on its way in never matches and never raises, so after every merge I count the
-      matches with indicator=True, and I fix the key at its source rather than in the analysis.
+      After every merge I check two things: the row count against the left table, because a key that
+      repeats on the right fans the rows out, and the matches with indicator=True, because a key that
+      changed on its way in never matches and never raises.
   # ---------------------------------------------------------------- Part 5, Friday
   - id: fix-lookup
     label: "Match: find a member"
@@ -1269,15 +1277,15 @@ additions:
     anchor: >-
       A pivot's total disagrees with the warehouse; where do you look first?
     text: |-
-      Revenue by segment from Friday's export, in which an invoice paid in two instalments appears twice
+      Booked revenue by segment from Friday's export, in which an invoice paid in two instalments appears twice
     why: >-
       Friday's export repeats each order's booked amount on every payment row, so an order paid in two
-      instalments carries its order_amount twice. Flagging the first row of each order, with
-      =IF(COUNTIF($A$2:A2,A2)=1,1,0) filled down, and summing order_amount over the flagged rows with
-      SUMIFS counts each order once: on Friday that took the raw export's Rs 39.41 crore back to the
-      warehouse's Rs 19.84 crore. The spare beside it, Remove Duplicates across every column, removes
-      only identical rows, and an instalment order's two rows differ in paid_amount, so 1,400 rows
-      stayed and the total still doubled.
+      instalments carries its order_amount twice, and a plain sum or pivot doubles it. Flagging the
+      first row of each order, with =IF(COUNTIF($A$2:A2,A2)=1,1,0) filled down, and summing
+      order_amount over the flagged rows with SUMIFS counts each order once: on Friday that took the
+      raw export's Rs 39.41 crore back to the warehouse's Rs 19.84 crore. The spare beside it, Remove
+      Duplicates across every column, removes only identical rows, and an instalment order's two rows
+      differ in paid_amount, so 1,400 rows stayed and the total still doubled.
     answer: >-
       The fix names the grain: one row per order, counted once, before any total is taken.
   - id: fix-whatif
@@ -1304,7 +1312,7 @@ additions:
       Yes to the question, as a labelled scenario beside the actual; no to the edit, and a drift check
       ties the sheet to the warehouse on every refresh.
   - id: range-check
-    label: "Reproduce the average"
+    label: "Reproduce the comparison"
     type: Applied maths
     level: Hard
     min: 4
@@ -1312,60 +1320,62 @@ additions:
     roles: BA, DS, FDE
     day: Fri
     key: >-
-      B8 returns -0.5; the six rows average 1.0; the formula understates growth by 1.5 points and
-      turns growth into a fall.
+      The sheet reports -0.5 against 1.5, a gap of 2 points; B8 stops at row 5, and over all six
+      countries both columns average 1.5, so the gap disappears.
     anchor: >-
       Your pivot shows a different total from the warehouse; where do you look first?
     exhibit:
       caption: >-
-        An illustrative sheet with the same kind of error; column B is each country's average growth,
-        in percent, in one debt group.
+        An illustrative sheet that sets growth in high-debt years against growth in other years for
+        six countries, in percent.
       table:
         head:
           - Row
           - "A: Country"
-          - "B: Growth, percent"
+          - "B: High-debt years"
+          - "C: Other years"
         rows:
-          - ["2", Country 1, "-1.0"]
-          - ["3", Country 2, "1.0"]
-          - ["4", Country 3, "-3.0"]
-          - ["5", Country 4, "1.0"]
-          - ["6", Country 5, "5.0"]
-          - ["7", Country 6, "3.0"]
-          - ["8", Average, "=AVERAGE(B2:B5)"]
+          - ["2", Country 1, "-1.0", "2.0"]
+          - ["3", Country 2, "1.0", "1.0"]
+          - ["4", Country 3, "-3.0", "2.0"]
+          - ["5", Country 4, "1.0", "1.0"]
+          - ["6", Country 5, "6.0", "2.0"]
+          - ["7", Country 6, "5.0", "1.0"]
+          - ["8", Average, "=AVERAGE(B2:B5)", "=AVERAGE(C2:C7)"]
     text: |-
-      In 2013 Herndon, Ash and Pollin rebuilt an influential 2010 paper by Reinhart and Rogoff from the authors' own working spreadsheet. They reported that a coding error "entirely excludes five countries, Australia, Austria, Belgium, Canada, and Denmark, from the analysis", because the averages covered lines 30 to 44 of the sheet instead of lines 30 to 49 (PERI working paper 322, 2013). The sheet above makes the same kind of error. What does B8 return, what should it return, and what does the error do to the reading of growth? Show the working.
+      In 2013 Herndon, Ash and Pollin rebuilt an influential 2010 paper by Reinhart and Rogoff from the authors' own working spreadsheet, and found that the paper's average growth for countries with public debt over 90 percent of GDP, published as -0.1 percent, was 2.2 percent when properly calculated (PERI working paper 322, 2013). The illustrative sheet above goes to a review today. What does it report for the two columns, what do the six countries' figures give, and does its comparison hold? Show the working.
     why: >-
-      B8 averages rows 2 to 5 alone: (-1.0 + 1.0 - 3.0 + 1.0) / 4 = -0.5. The six countries average
-      (-1.0 + 1.0 - 3.0 + 1.0 + 5.0 + 3.0) / 6 = 1.0, so the formula understates the average by 1.5
-      percentage points and reports a fall where the group grew. In the paper, the coding error,
-      compounded with other errors, took 0.3 percentage points off the published average for the
-      highest debt group, overstated the lowest group by 0.1 and understated the second by 0.2; the
-      replicators' corrected average for the highest group, 2.2 percent against the published -0.1,
-      also corrects two other choices, so the range alone is not the whole gap (PERI working paper
-      322, April 2013, page 7, checked on 30 September 2026). The check that catches a range such as
-      B2:B5 is a count of the rows each range covers against the rows in the table, run on every
-      refresh; a Protect tab whose formulas stop at row 301 would miss every customer an export adds
-      past the first 300.
+      B8 averages rows 2 to 5 alone, (-1.0 + 1.0 - 3.0 + 1.0) / 4 = -0.5, while C8 covers all six
+      rows, 9.0 / 6 = 1.5, so the sheet reports growth 2 points lower in high-debt years. Over all six
+      countries the high-debt column averages (-1.0 + 1.0 - 3.0 + 1.0 + 6.0 + 5.0) / 6 = 1.5, the same
+      as the other years, so the gap disappears. In the paper the averages covered lines 30 to 44 of the
+      sheet instead of lines 30 to 49 (footnote 5), and the error, compounded with other errors, took
+      0.3 percentage points off the published average for the highest debt group, overstated the
+      lowest group by 0.1 and understated the second by 0.2; the replicators' corrected average for
+      the highest group, 2.2 percent against the published -0.1, also corrects two other choices, so the
+      range alone is not the whole gap (PERI working paper 322, April 2013, page 7, checked on 30
+      September 2026). The check that catches a range such as B2:B5 is a count of the rows each range
+      covers against the rows in the table, run on every refresh.
     answer: >-
       Every total in a workbook ties to a control total from the source on each refresh, and every
       range is checked against the rows it should cover, because a range that stops short fails
       without a sound.
   - id: var-formula
-    label: "Check the formula"
-    type: One correct option
+    label: "Work the risk figure"
+    type: Applied maths
     level: Hard
     min: 4
     tag: "[D]"
     roles: BA, DS, FDE
     day: Fri
-    key: b
+    key: >-
+      Column D halves every change, 0.130 against 0.261, so the value at risk should read 140 million
+      dollars, 20 million over the limit.
     anchor: >-
       Same question, three tools: how do you choose, and defend one choice?
     exhibit:
       caption: >-
-        Illustrative rates; the formula's mistake is the one JPMorgan's task force reported
-        (JPMorgan Chase, 2013).
+        Illustrative rates and the sheet's formula for a day's change (JPMorgan Chase, 2013).
       table:
         head:
           - Row
@@ -1377,35 +1387,24 @@ additions:
           - ["3", "3.00", "2.40", "=(C3-B3)/(B3+C3)"]
           - ["4", "1.50", "1.80", "=(C4-B4)/(B4+C4)"]
     text: |-
-      JPMorgan's task force on the 2012 losses in its Chief Investment Office reported that a value-at-risk model, an estimate of how much a trading book can lose on a bad day, ran through Excel spreadsheets filled by copying and pasting, and that one step divided a change in rates by the sum of the old and new rates where the modeller meant their average (JPMorgan Chase, 2013). Work out column D for the three rows and the change the modeller meant. What does the sheet do to the model's picture of risk?
-      (a) Every change comes out twice its size, so the model braces for moves that never come
-      (b) Every change comes out at half its size, so the model understates how far rates move
-      (c) Only the falling rate in row 3 comes out wrong, because the formula assumes a rise
-      (d) No change comes out wrong, because dividing by the sum is an accepted way to scale
+      JPMorgan's task force on the 2012 losses in its Chief Investment Office reported on a value-at-risk model, an estimate of how much a trading book can lose on a bad day, that ran through Excel spreadsheets filled by copying and pasting (JPMorgan Chase, 2013). Suppose the model's documentation defines a day's change as the difference between the new and old rates divided by their average, and that its value at risk moves in step with the size of those changes. The sheet above reports a value at risk of 70 million dollars against the desk's limit of 120 million dollars; both figures are illustrative. What value at risk should the sheet have reported, and is the desk inside its limit? Show the working.
     why: >-
       Column D reads 0.60 / 4.60 = 0.130, -0.60 / 5.40 = -0.111 and 0.30 / 3.30 = 0.091; divided by
-      the average instead, the changes are 0.261, -0.222 and 0.182. The sum is twice the average, so
-      every change, rising or falling, comes out at half its size, and a model fed half-size moves
-      reports less risk than the book carries: the report describes the effect as "muting volatility
-      by a factor of two". A second way to the same number, by hand on one row or in a second tool,
-      catches it: Kavya's review and Thursday's three-tool check. Quoted from the Report of JPMorgan
-      Chase and Co. Management Task Force Regarding 2012 CIO Losses, 16 January 2013, pages 123 and
-      128, checked on 30 September 2026.
-    wrong:
-      a: >-
-        Dividing by the sum, which is twice the average, makes each change smaller; a change twice as
-        large would need a divisor of half the average.
-      c: >-
-        The falling rate comes out at half its size like the others, -0.111 against -0.222; the error
-        does not depend on the direction of the move.
-      d: >-
-        Dividing by the sum departs from the relative change the modeller meant, and on these rows it
-        halves every change the model reads.
+      the average, as the documentation defines it, the changes are 0.261, -0.222 and 0.182. The sum
+      of the two rates is twice their average, so every change, rising or falling, comes out at half
+      its size, and a value at risk that moves with the changes is half what it should be: 70 million
+      dollars should read 140 million, 20 million over the 120 million limit. The task force wrote that
+      the error "likely had the effect of muting volatility by a factor of two and of lowering the
+      VaR". A second way to the
+      same number, by hand on one row or in a second tool, catches it: Kavya's review and Thursday's
+      three-tool check. Quoted from the Report of JPMorgan Chase and Co. Management Task Force
+      Regarding 2012 CIO Losses, 16 January 2013, pages 123 and 128, checked on 30 September 2026; the
+      value at risk and the limit here are illustrative.
     answer: >-
-      A number that decides risk gets a second, independent calculation before it is trusted, because a
-      formula can be wrong in every row at once.
+      A number that decides risk gets a second, independent calculation against its written definition
+      before it is trusted, because a formula can be wrong in every row at once.
   - id: gross-fare
-    label: "Size the overcharge"
+    label: "Size the commission"
     type: Applied maths
     level: Hard
     min: 4
@@ -1417,27 +1416,28 @@ additions:
       How do you present one number so it is not misread?
     exhibit:
       caption: >-
-        Three illustrative trips and the commission charged on each at 25 percent of the gross fare
-        (CBS News, 2017).
+        Three illustrative trips and the commission charged on each.
       table:
         head:
           - Trip
           - Gross fare, dollars
-          - Sales tax and fees, dollars
+          - Taxes and fees, dollars
           - Commission charged, dollars
         rows:
           - ["1", "30.00", "2.40", "7.50"]
           - ["2", "20.00", "1.60", "5.00"]
           - ["3", "44.00", "4.00", "11.00"]
     text: |-
-      In 2017 Uber said it had been taking its commission from New York City drivers on the gross fare, before sales tax and other fees were deducted, where it should have used the fare after them, and that it would repay affected drivers about 900 dollars each on average (CBS News, 2017). The commission rate on these trips is 25 percent. How much commission did the three trips overcharge the driver, and what share of the commission charged is that? Show the working.
+      In 2017 Uber told New York City drivers that it had been taking too much commission from them, and that each affected driver would get a refund of about 900 dollars, interest included (CBS News, 2017). Suppose the drivers' terms set the commission at 25 percent of the fare after taxes and fees. How much commission did the three trips above overcharge the driver, and what share of the commission charged is that? Show the working.
     why: >-
-      The fares after tax and fees are 27.60, 18.40 and 40.00 dollars, so the commission due is 6.90,
-      4.60 and 10.00 against 7.50, 5.00 and 11.00 charged: 0.60 + 0.40 + 1.00 = 2.00 dollars, which is
-      also 25 percent of the 8.00 dollars of tax and fees. Against the 23.50 dollars charged that is
-      8.5 percent, a share that repeats on every trip across tens of thousands of drivers, which is
-      why a percentage's base is part of its definition. CBS News, 24 May 2017, checked on 30
-      September 2026; the fares and the rate here are illustrative.
+      The commission charged is 25 percent of the gross fare on every trip, 7.50, 5.00 and 11.00. The
+      fares after taxes and fees are 27.60, 18.40 and 40.00 dollars, so the commission due is 6.90,
+      4.60 and 10.00: 0.60 + 0.40 + 1.00 = 2.00 dollars over, which is also 25 percent of the 8.00
+      dollars of taxes and fees. Against the 23.50 dollars charged that is 8.5 percent, and every trip
+      that carries taxes and fees is overcharged the same way, which is why a percentage's base is part
+      of its definition. CBS News, 24 May 2017, reported that Uber had calculated its driver commissions "based
+      on gross fares, before any taxes and fees were deducted"; checked on 30 September 2026. The fares
+      and the rate here are illustrative.
     answer: >-
       A percentage is defined only with its base, so before any rate is applied I write down what it
       is a percentage of.
@@ -1466,28 +1466,30 @@ additions:
                                  "label": ["refund", "late", "late", "late", "refund",
                                            "late", "refund"]})
           m = preds.merge(labels, on="ticket")
-          print(len(m), round((m["pred"] == m["label"]).mean(), 2))
+          print(round((m["pred"] == m["label"]).mean(), 2))
     text: |-
-      The team scores a model that sorts support tickets into refund, late and other against labels from an annotation vendor, and ships a model only if it scores 0.5 or better. The vendor re-sent a batch, so two tickets carry their label twice. What does the code above print?
-      (a) 5 0.6
-      (b) 7 0.6
-      (c) 7 0.43
-      (d) 7 0.71
+      The team scores a model that sorts support tickets into refund, late and other against labels from an annotation vendor, and ships a model only if it scores 0.5 or better. What does the code above print, and what happens to the model?
+      (a) 0.6, so the model clears the 0.5 bar and ships this week
+      (b) 0.71, so the model clears the bar with room to spare and ships
+      (c) 0.43, so the model falls short of the bar and is held back
+      (d) A MergeError, since two tickets repeat in the labels, so the model waits
     why: >-
-      A merge writes one row per matching label, so T3 and T5 appear twice: 7 rows. Both are tickets
-      the model got wrong, so the mean counts 3 correct rows of 7, 0.43, against 3 correct tickets of
-      5, 0.6: the model fails the 0.5 bar on a score that counts its two misses twice. It is the
-      fan-out of Tuesday's payments and Thursday's exposure feed, and the checks are the same: rows
-      before and after, or validate='one_to_one'. Run on pandas 3.0.5 on 30 September 2026.
+      The labels hold T3 and T5 twice, so the merge writes one row per matching label and returns 7
+      rows. T3 and T5 are both tickets the model got wrong, so the mean counts 3 correct rows of 7,
+      0.43, against 3 correct tickets of 5, 0.6: the model fails the 0.5 bar on a score that counts its
+      two misses twice. It is the fan-out of Tuesday's payments and Thursday's exposure feed, and the
+      checks are the same: rows before and after, or validate='one_to_one'. Run on pandas 3.0.5 on 30
+      September 2026.
     wrong:
       a: >-
-        A merge repeats a left row once per matching right row; it keeps one row per ticket only when
-        the labels are unique.
+        The accuracy on the five tickets, which the code prints only if the labels hold one row per
+        ticket; a merge repeats a left row once per matching right row.
       b: >-
-        The repeated labels match their tickets, but the rows they repeat are misses, so the extra rows
-        move the mean.
+        Counts the repeated rows as correct; they repeat T3 and T5, which the model got wrong, so they
+        pull the mean down.
       d: >-
-        A repeat raises a score only when it repeats correct rows; here it repeats the two misses.
+        Assumes a merge refuses repeated keys; pandas raises MergeError only when validate is set, and
+        without it writes one row per matching label and prints a number.
     answer: >-
       An evaluation metric is a mean over one row per test case, so I size the join before scoring and
       validate that the labels are unique per case.
@@ -1499,13 +1501,12 @@ additions:
     tag: "[S]"
     roles: DS
     day: Wed
-    key: d
+    key: a
     anchor: >-
       RANK, DENSE_RANK and ROW_NUMBER on a tie.
     exhibit:
       caption: >-
-        The table eval_runs: the team's evaluation runs, illustrative. Run ids are issued in the order
-        runs start.
+        The table eval_runs: the team's evaluation runs, illustrative.
       table:
         head:
           - model
@@ -1513,36 +1514,38 @@ additions:
           - finished_on
           - accuracy
         rows:
-          - [bot-a, r1, 1 September, "0.81"]
-          - [bot-a, r2, 8 September, "0.78"]
-          - [bot-b, r3, 2 September, "0.84"]
-          - [bot-b, r4, 9 September, "0.86"]
-          - [bot-b, r5, 9 September, "0.79"]
+          - [bot-a, "7", 1 September, "0.81"]
+          - [bot-b, "8", 2 September, "0.84"]
+          - [bot-a, "9", 8 September, "0.78"]
+          - [bot-b, "10", 9 September, "0.86"]
+          - [bot-b, "11", 9 September, "0.74"]
     text: |-
-      The leaderboard must show one row per model, its latest run and that run's accuracy, and must show the same row every morning. Two of bot-b's runs finished on 9 September. Which query does that?
-      (a) GROUP BY model, keeping max(finished_on) beside max(accuracy), each taken over all of that model's runs
-      (b) ROW_NUMBER partitioned by model and ordered by finished_on descending, keeping row 1 for each model
-      (c) RANK partitioned by model and ordered by finished_on descending, keeping every row that ranks 1 for its model
-      (d) ROW_NUMBER partitioned by model, ordered by finished_on descending, then run_id descending, keeping row 1
+      The team promotes bot-b over bot-a if bot-b's latest run scores higher than bot-a's latest. Runs are numbered in the order they start, and of two runs that finish on the same day, the one that started later counts as the latest. Which query gives the team the right call, and what is the call?
+      (a) ROW_NUMBER partitioned by model, by finished_on descending, then run_id descending, keeping row 1: bot-b's latest scores 0.74, so bot-a stays
+      (b) ROW_NUMBER partitioned by model, by finished_on descending, then run_id ascending, keeping row 1: bot-b's latest scores 0.86, so bot-b is promoted
+      (c) GROUP BY model with max(finished_on) and max(accuracy): bot-b's latest reads 0.86, so bot-b is promoted
+      (d) RANK partitioned by model, by finished_on descending, keeping rank 1: bot-b's latest scores 0.86, so bot-b is promoted
     why: >-
-      ROW_NUMBER partitioned by model and ordered by finished_on descending, then run_id descending,
-      filtered to row 1 outside the window, returns bot-a's r2 (0.78) and bot-b's r5 (0.79) every time,
-      and r5 is the later run because run ids follow the order runs start. With the date alone, bot-b's
-      two runs of 9 September tie and the database picks one, so the leaderboard can show 0.86 one
-      morning and 0.79 the next. Run on PostgreSQL 16.13 on 30 September 2026.
+      Partitioned by model and ordered by finished_on descending, then run_id descending, ROW_NUMBER
+      puts run 11 first for bot-b, the later of its two runs of 9 September, at 0.74, and run 9 first
+      for bot-a, at 0.78, so bot-a stays, every time the query runs. run_id is a number, so 11 sorts
+      above 10; stored as text, '11' would sort below '9'. Run on PostgreSQL 16.13 on 30 September
+      2026.
     wrong:
-      a: >-
-        Each max() is taken on its own, so bot-a shows 8 September beside 0.81, a pairing no run
-        produced: its latest date with its best score.
       b: >-
-        The right shape, but the tie on 9 September leaves the pick to the database; Wednesday's lesson
-        on ties in a window's order.
+        Ascending run_id picks run 10, the earlier of the two runs of 9 September, and promotes bot-b on
+        a run the rule says is not its latest.
       c: >-
-        RANK gives r4 and r5 the same rank 1, so bot-b shows two rows, the same two every morning, where
-        the leaderboard wants one.
+        Each max() is taken on its own, so bot-b shows its best score beside its latest date, a pairing
+        no single run produced.
+      d: >-
+        RANK gives runs 10 and 11 the same rank 1, so bot-b comes back as two rows and the query names
+        no latest run; reading 0.86 off the first of them promotes bot-b on a run the rule says is not
+        its latest.
     answer: >-
       The latest row per key is ROW_NUMBER partitioned by the key, ordered newest first with a
-      tiebreaker that makes the order unique, kept at 1 in an outer query.
+      tiebreaker that makes the order unique and follows the business's own definition of latest, kept
+      at 1 in an outer query.
   - id: low-ratings
     label: "Predict the rows"
     type: One correct option
@@ -1551,7 +1554,7 @@ additions:
     tag: "[S]"
     roles: DS
     day: Mon
-    key: a
+    key: d
     anchor: >-
       WHERE against HAVING, one sentence each.
     exhibit:
@@ -1570,25 +1573,27 @@ additions:
           GROUP BY model
           HAVING count(*) >= 3;
     text: |-
-      Customers rate each reply from 1 to 5. The team lead asks for every model with at least three replies this week, beside how many of its replies were rated 2 or below. What does the query above return?
-      (a) bot-a 3 alone, which misses bot-b and its three replies
-      (b) bot-a 3 and bot-b 1, the two models the lead asked about
-      (c) bot-a 4 and bot-b 3, the replies each model had in total
-      (d) bot-a 3, bot-b 1 and bot-c 1, a row for every model
+      Customers rate each reply from 1 to 5. The team lead asks for every model with at least three replies this week, beside how many of its replies were rated 2 or below, and will retrain every model on the list. What does the query above return, and which models are retrained?
+      (a) bot-a and bot-b, each beside its count of low ratings, so the lead retrains both
+      (b) bot-a and bot-b, each beside its count of all its replies, so the lead retrains both
+      (c) bot-a, bot-b and bot-c, each beside its low ratings, so the lead retrains all three
+      (d) bot-a alone, beside its 3 low ratings, so the lead retrains bot-a
     why: >-
-      WHERE runs first and keeps the five low ratings: three for bot-a, one for bot-b and one for
-      bot-c. GROUP BY forms its groups from those rows alone, so count(*) counts low ratings, and
-      HAVING count(*) >= 3 keeps bot-a with 3. The lead asked for the models with at least three
-      replies in all, bot-a with 4 and bot-b with 3, so the query drops bot-b: its HAVING tests the
-      wrong count. With no WHERE, counting every reply in HAVING and the low ones with count(*) FILTER
-      (WHERE rating <= 2) returns bot-a 3 and bot-b 1. Run on PostgreSQL 16.13 on 30 September 2026.
+      The logical order is FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, and because SELECT runs
+      after GROUP BY it can name only the grouping column and aggregates, here model and count(*).
+      WHERE runs first and keeps the five low ratings: three for bot-a, one for bot-b and one for bot-c. GROUP BY forms its groups
+      from those rows alone, so count(*) counts low ratings, and HAVING count(*) >= 3 keeps bot-a with
+      3. The lead asked for the models with at least three replies in all, bot-a with 4 and bot-b with
+      3, so bot-b goes unretrained: the HAVING tests the wrong count. With no WHERE, counting every
+      reply in HAVING and the low ones with count(*) FILTER (WHERE rating <= 2) returns bot-a 3 and
+      bot-b 1. Run on PostgreSQL 16.13 on 30 September 2026.
     wrong:
-      b: >-
+      a: >-
         Reads HAVING as judging all of each model's replies; it runs after WHERE, so it sees only the
         low ratings, and bot-b's one fails the test.
-      c: >-
+      b: >-
         Counts every reply, as if WHERE had never run; count(*) counts the rows that survive WHERE.
-      d: >-
+      c: >-
         Ignores HAVING; bot-b and bot-c each have one low rating, and HAVING keeps only groups of three
         or more.
     answer: >-
@@ -1603,7 +1608,7 @@ additions:
     tag: "[F]"
     roles: DS, FDE
     day: Tue
-    key: c
+    key: b
     anchor: >-
       How do you find orders with no payment?
     exhibit:
@@ -1618,21 +1623,21 @@ additions:
           FROM conversations
           WHERE conversation_id NOT IN (SELECT conversation_id FROM handoffs);
     text: |-
-      The weekly review reads how many conversations the assistant resolved without a person. This week the handoff log gained a row whose conversation_id is NULL. What does the query above return, and what will the review conclude?
-      (a) 2, counting c1 and c3, so the review sees half the conversations resolved
-      (b) 3, counting the NULL row as one more, so the review sees three of four resolved
-      (c) 0, so the review concludes the assistant resolved nothing on its own
-      (d) An error, so the review gets no figure until someone removes the NULL row
+      The weekly review reads how many of the four conversations the assistant resolved without a person, and the product lead cuts the assistant's budget if that is under 40 percent. What does the query above return, and what happens to the budget?
+      (a) 2, half the conversations, so the budget stays
+      (b) 0, none of the conversations, so the budget is cut
+      (c) 3, three of the four, so the budget stays
+      (d) An error, so no figure reaches the review and the budget waits
     why: >-
-      For c1, NOT IN asks c1 <> 'c2' AND c1 <> 'c4' AND c1 <> NULL; the last comparison is unknown, so
-      the whole condition is unknown and WHERE drops the row. Every conversation fails the same way,
-      so the count is 0 and the review reads a working assistant as useless. NOT EXISTS, or a LEFT
-      JOIN kept where the handoff key IS NULL, returns 2. Run on PostgreSQL 16.13 on 30 September
-      2026.
+      The handoff log holds a row whose conversation_id is NULL. For c1, NOT IN asks c1 <> 'c2' AND c1
+      <> 'c4' AND c1 <> NULL; the last comparison is unknown, so the whole condition is unknown and
+      WHERE drops the row. Every conversation fails the same way, so the count is 0, and the lead cuts
+      the budget of an assistant that resolved two of four, half. NOT EXISTS, or a LEFT JOIN kept where
+      the handoff key IS NULL, returns 2. Run on PostgreSQL 16.13 on 30 September 2026.
     wrong:
       a: >-
         The answer NOT EXISTS gives; NOT IN against a list that holds a NULL can never be true.
-      b: >-
+      c: >-
         The NULL sits in the subquery's list, never in the outer table, so it cannot add a
         conversation.
       d: >-
@@ -1642,7 +1647,7 @@ additions:
       Rows with no match are an anti-join, which I write as NOT EXISTS or as a LEFT JOIN kept where
       the right key IS NULL, never as NOT IN against a column that can hold a NULL.
   - id: token-peers
-    label: "Predict the running total"
+    label: "Find the first routed call"
     type: One correct option
     level: Hard
     min: 4
@@ -1665,29 +1670,31 @@ additions:
           FROM calls
           ORDER BY call_id;
     text: |-
-      The model's bill is charged per token, so the finance partner wants tokens used so far, call by call, to watch the bill build up. What does tokens_so_far read for calls 1 to 4?
-      (a) 400, 1200, 1200 and 1400
-      (b) 400, 700, 1200 and 1400
-      (c) 1400, 1400, 1400 and 1400
-      (d) 400, 900, 1200 and 1400
+      The model's bill is charged per token, so the finance partner routes every call to a cheaper model once tokens_so_far, read from the query above, passes 1,000. Which call is the first one routed to the cheaper model?
+      (a) Call 2
+      (b) Call 3
+      (c) Call 4
+      (d) None of them
     why: >-
       With an ORDER BY and no frame, the window runs from the first row to the current row and its
       peers, the rows that tie on the ORDER BY. Calls 2 and 3 share 22 September, so both read the
-      day's closing figure, 1200, and neither shows its own step. Adding call_id to the window's ORDER
-      BY gives each call its own step. Run on PostgreSQL 16.13 on 30 September 2026.
+      day's closing figure, 1200, and call 2 is routed although the total stood at 700 after it.
+      Adding call_id to the window's ORDER BY gives each call its own step and routes call 3. Run on
+      PostgreSQL 16.13 on 30 September 2026.
     wrong:
       b: >-
-        The one-step-per-row reading, which needs a unique ORDER BY such as day then call_id; with the
-        date alone the two calls are peers.
+        The one-step-per-row reading, 400, 700, 1,200, which needs a unique ORDER BY such as day then
+        call_id; with the date alone calls 2 and 3 are peers and share one figure.
       c: >-
-        The whole-table total on every row, which is what sum(tokens) OVER () gives with no ORDER BY;
-        with an ORDER BY, the frame stops at the current row and its peers.
+        Reads each row as adding up only the days before its own, 0, 400, 400, 1,200; the default
+        frame includes the current row and its peers, and a frame that stopped earlier would be written
+        out.
       d: >-
-        Assumes the database breaks the tie with call 3 first; peers are never split, they share one
-        figure.
+        Reads the window as partitioned by day; with ORDER BY day and no PARTITION BY, the total runs
+        across the days and reaches 1,200 on 22 September.
     answer: >-
       A running total is deterministic only when its ORDER BY is unique; rows that tie are peers and
-      share one cumulative figure, so I add a tiebreaker such as the id.
+      share one cumulative figure, so I add a tiebreaker such as the id before anyone acts on it.
   - id: weekly-users
     label: "Count the week's users"
     type: One correct option
@@ -1751,29 +1758,11 @@ exhibits:
         P["8 payment rows:<br/>no order matches"]
     caption: >-
       The quarter's orders by their payment rows, as the situation describes them.
-  "5":
-    table:
-      head:
-        - Row, highest revenue first
-        - Member
-        - Revenue, July to September, Rs
-      rows:
-        - ["46", C-0162, "3,600"]
-        - ["47", C-0264, "3,540"]
-        - ["48", C-0189, "3,480"]
-        - ["49", C-0206, "3,480"]
-        - ["50", C-0185, "3,350"]
-        - ["51", C-0242, "3,350"]
-        - ["52", C-0259, "3,200"]
-        - ["53", C-0252, "3,150"]
-    caption: >-
-      Retail-Plus members in rows 46 to 53 when sorted by the quarter's revenue, highest first, with
-      tied members in order of their ids.
   "6":
     mermaid: |-
       flowchart LR
         T["Customer table:<br/>340 rows, one per customer"] --> M["Left merge<br/>on customer_id"]
-        F["Exposure feed: 136 rows,<br/>130 customers, 6 sent twice"] --> M
+        F["Exposure feed:<br/>136 rows, 130 customers"] --> M
         M --> X["Excel pivot:<br/>sum of spend"]
     caption: >-
       Monday's refresh, as the situation describes it.
@@ -1789,18 +1778,19 @@ stretch:
       booked and collected is then timing as well as unpaid orders, and the report says so beside the
       weekly figures.
   - text: |-
-      Marketing wants each Retail-Plus member's share of the tier's revenue beside the member's own revenue, in one query and without a join. What would you write, and how would you check it?
+      The head of Retail-Plus asks whether members who ordered in both quarters spent more in the second. How would you build that comparison, and what would you say about members who ordered in only one quarter?
     answer: >-
-      The member's revenue divided by sum(revenue) OVER (), the tier's total on every row, taken in
-      numeric and rounded on purpose; the check is that the shares add to 1, and that the total on
-      every row equals the tier's revenue from the Monday suite.
+      One row per member with each quarter's spend, kept only where both quarters have an order, then
+      the change member by member and in total, with the count of such members beside it. Members who
+      ordered in one quarter only answer a different question, about who lapsed and who arrived, so
+      they go in their own line and never into the average change.
   - text: |-
-      Explain the gene-name case to a product manager in two sentences: why did the fix go into the gene names, and what would you still check in every file you receive?
+      In 2020 the body that names human genes renamed every gene whose symbol Excel turned into a date. Explain to a product manager in two sentences why the fix went into the gene names, and what you would still check in every file you receive.
     answer: >-
-      Excel turned some gene symbols into dates in about a fifth of papers with Excel gene lists, so
-      the naming body renamed the genes it could not protect any other way, fixing the error at the
-      source every reader shares. I would still count, after every merge, how many keys found a match,
-      because a key changed on its way in never raises an error.
+      Excel changed gene symbols in about a fifth of papers with Excel gene lists, and no reader could
+      protect every copy, so the naming body renamed the genes and fixed the error at the source every
+      reader shares. I would still count, after every merge, the rows against the left table and the
+      keys that found a match, because a key changed on its way in never raises an error.
   - text: |-
       A director says the front page should read Rs 19.84 crore because "that is the real number". Answer in two sentences.
     answer: >-
