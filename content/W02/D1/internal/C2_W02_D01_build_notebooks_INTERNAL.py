@@ -1034,6 +1034,16 @@ def ch3():
         segment too, or put the segment inside an aggregate such as `min(c.segment)`. The first is the
         one the question asks for.
 
+        The order a query runs in is the day's one picture. It is written SELECT, FROM, WHERE, GROUP
+        BY, HAVING, ORDER BY, LIMIT, and it runs as the arrows below show, so SELECT sees groups that
+        already exist.
+        """),
+        code(r'''
+            kit.flow(["FROM\nthe table and\nthe lookup", "WHERE\nkeep rows", "GROUP BY\nform groups",
+                      "HAVING\nkeep groups", "SELECT\npick and compute", "ORDER BY\nsort", "LIMIT\ncut"],
+                     lit=4, title="The order a query runs in: SELECT comes fifth")
+            '''),
+        md("""
         **Predict before you run.** With `GROUP BY c.segment, o.quarter`, how many rows come back?
 
         - a) 2, one per quarter.
