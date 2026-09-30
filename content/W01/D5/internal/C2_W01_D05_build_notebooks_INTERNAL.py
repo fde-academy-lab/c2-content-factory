@@ -452,7 +452,7 @@ band = []
 for seed in range(1, 21):
     band.append(paired(core, seed=seed)[1])
 band_plus = [label_shuffle(core, plus, seed=seed)[1] for seed in range(1, 21)]
-print(f"Twenty other seeds at 2,000: the note's test from {min(band):.4f} to {max(band):.4f}; "
+print(f"Seeds 1 to 20 at 2,000: the note's test from {min(band):.4f} to {max(band):.4f}; "
       f"Core against Plus from {min(band_plus):.4f} to {max(band_plus):.4f}")
 kit.check("every fair route puts the finding below 0.05", max(p_paired, p_rev, p_sign, p_plus, p_unknown, p_others) < 0.05,
           f"the largest is {max(p_paired, p_rev, p_sign, p_plus, p_unknown, p_others):.4f}")
@@ -467,8 +467,8 @@ kit.check("the flagged-unknown handling reads Plus Q2 as 34 orders and Rs 93,670
     customer's own two quarters as strangers (trap 5b). Either can move p either way: most often a
     broken pairing makes p too small, since correlated values count as extra evidence. Here both come
     out larger than the fair tests, because each customer's own change from Q1 to Q2 is steadier than
-    the spread between customers, so a real fall reads as "could be chance". Thursday's practice lab
-    shuffled order amounts between segments; that is the mistake trap 5 names, never the method.
+    the spread between customers, so a real fall reads as "could be chance". A learner who shuffled
+    order amounts between segments has made trap 5's mistake, whatever file the code came from.
     """),
     code('''
 kit.table(["the hurried route", "p, both ways", "the fair route on the same measure", "p, both ways"], [
@@ -663,7 +663,7 @@ def freq_order_only(seg):
 
 
 gap3 = freq_order_only("Retail-Plus") - freq_order_only("Retail-Core")
-rows_p.append(("kept as an order, customer uncounted (item 3)", f"{gap3:+.1f} pts", "no customer to shuffle", ""))
+rows_p.append(("kept as an order, customer uncounted (item 4)", f"{gap3:+.1f} pts", "no customer to shuffle", ""))
 kit.table(["the order with no customer_id", "gap in frequency change", "p on seed 7", "p on seeds 1 to 3"], rows_p,
           caption="The practice lead's shuffle test, by the handling of one order")
 kit.check("the verdict turns on the handling: one p sits at the edge of 0.05, the other well below it",
