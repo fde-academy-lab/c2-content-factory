@@ -19,7 +19,7 @@ is taught; the afternoon is practice with a hostile listener.
 
 ```notes
 LIVE. Round one is fifty minutes in pairs, round two is fifty minutes of call-outs to the room.
-If time is short, round two is the first thing cut, never round one.
+If time is short, cut round two first and keep round one whole.
 ```
 
 ---
@@ -295,7 +295,7 @@ wrong answer most people picked, and move on.
 icon: pencil | eyebrow: The paper | title: 120 minutes | body: Blanks from a word bank, pairs from a match table, statements judged with their reason, scenario sets, applied maths and ordering.
 icon: repeat | eyebrow: Marking | title: Swapped | body: Papers change hands and are marked against the key, read out by the Academic TA.
 icon: messages-square | eyebrow: Discussion | title: Aloud | body: The most-missed items first, then the week's interview questions as interview answers.
-icon: circle-slash | eyebrow: Status | title: Ungraded | body: A performance indicator for you and the team, never a ranking.
+icon: circle-slash | eyebrow: Status | title: Ungraded | body: A performance indicator for you and the team, with no ranking.
 ```
 
 ```notes

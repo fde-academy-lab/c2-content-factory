@@ -18,7 +18,7 @@ export's own; no slide names a row.
 ---
 
 ## SECTION 1: The reconciliation, skipped
-*The step with no new number in it is the one a clock removes first, and it is the one Finance reads.*
+*The step with no new number in it goes first when the clock runs, and Finance reads it first.*
 
 ```notes
 LIVE. Twenty minutes, before lunch. Notebook 1, C2_W01_D05_01_reconciliation_skipped_STUDENT.ipynb,
@@ -28,7 +28,7 @@ second-look line from the lab notebook.
 
 ---
 
-## S1. Anand acts only on a number that ties to his
+## S1. Anand reads the note before Meera does
 *The metric is booked revenue per quarter, and the note's first line is its Q1 to Q2 change.*
 
 ```stats
@@ -246,8 +246,8 @@ the projector from S14.
 
 ---
 
-## S12. The base of every rate is Q1's rupees
-*Anand's analyst audits the note, and their first question is always the rupees.*
+## S12. Anand's analyst audits the note first
+*The Q1 total is the base every Q1 to Q2 rate divides by.*
 
 ```stats
 value: Q1 booked | label: the metric | note: the base every Q1 to Q2 rate divides by
@@ -296,7 +296,7 @@ def to_int_or_zero(v):
 ```stats
 value: 98 | label: Q1 orders | note: Finance: 98
 value: 0 | label: rejects reported | note: the try swallowed every failure
-value: Rs 50,63,000 | label: Q1 as summed | note: the base of every rate
+value: Rs 50,63,000 | label: Q1 as summed | note: every row kept
 ```
 
 ```notes
@@ -360,7 +360,7 @@ but B fails the count check, so B's gap is visible and A's is not.
 
 ---
 
-## S18. Three honest answers, and zero is none of them
+## S18. Three honest answers to a value that fails
 *Every branch leaves a log line and a number in the reconciliation.*
 
 ```mermaid
@@ -414,7 +414,7 @@ flowchart LR
     class G known
 ```
 
-**Kavya's review.** A count check proves the rows are there. Only a rupee check proves the values survived. Zero is a claim that the order was worth nothing, so never let a try make it for you.
+**Kavya's review.** A count check proves the rows are there. Only a rupee check proves the values survived. Setting a value to zero claims the order was worth nothing, so that decision belongs in the log with a reason.
 
 ```notes
 LIVE, 1 minute. On a file with no control total, this is the check you still have: it needs nothing

@@ -70,7 +70,7 @@ overclaiming?*
 
 Kalpa's app team tried a redesigned checkout for a week: 5 of 12 visits converted, 42 percent. The
 current checkout converted 31 percent of 1,200 visits in the same week (illustrative). Your note says
-"promising, not proven". In the review, the product head says: "Forty-two beats thirty-one. Your
+"promising, still to be proven". In the review, the product head says: "Forty-two beats thirty-one. Your
 caveat is costing us a week. Ship it to everyone."
 
 **The real company it is like.** At Microsoft's Bing, an idea for showing ad headlines sat unbuilt

@@ -481,7 +481,7 @@ def to_int_or_zero(v):
 zeroed = {q: [to_int_or_zero(r["amount"]) for r in once if r["quarter"] == q] for q in QUARTERS}
 kit.stats([(len(zeroed["Q1"]), "Q1 orders", f"Finance: {ctl('Q1')[1]}"),
            (0, "rejects reported", "the try swallowed every failure"),
-           (kit.rupees(sum(zeroed["Q1"])), "Q1 as summed", "the base of every rate")])
+           (kit.rupees(sum(zeroed["Q1"])), "Q1 as summed", "every row kept")])
 kit.check("the zeroing pass lands on Finance's order counts", all(len(zeroed[q]) == ctl(q)[1] for q in QUARTERS))
 '''),
     md("""
@@ -605,7 +605,7 @@ kit.vflow(["a value that will not convert",
            "yes: convert, keep and flag it (C)",
            "no, and the row matters: hold it and ask the owner (D)",
            "no, and it is not an order: drop it with a reason (B)"], lit=2,
-          title="Three honest answers, and zero is none of them")
+          title="Three honest answers to a value that will not convert")
 '''),
     md("""
     **Your turn.** Find the row the bridge points at and read its value yourself. Type these lines into
@@ -726,7 +726,8 @@ kit.check("the logged values add up to the gap the rupee check found", sum(logge
     total, the value accounting is the check you still have.
 
     > **Kavya's review.** A count check proves the rows are there. Only a rupee check proves the values
-    > survived. Zero is a claim that the order was worth nothing, so never let a `try` make it for you.
+    > survived. Setting a value to zero claims the order was worth nothing, so that decision belongs in
+    > the log with a reason.
 
     ### In the interview
 

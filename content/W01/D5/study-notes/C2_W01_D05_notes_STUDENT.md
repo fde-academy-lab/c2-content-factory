@@ -264,7 +264,7 @@ halves the fall the note reports: nobody argues with the direction, so nobody ac
 a risk spreadsheet that "divided by their sum instead of their average", which "likely had the effect
 of muting volatility by a factor of two and of lowering the VaR" (the task force report of January
 2013, as quoted by The Baseline Scenario, 9 February 2013). The losses came to $6.2 billion (FCA, 19
-September 2013). The sheet never crashed; it produced a plausible number every day.
+September 2013). The sheet ran without an error and produced a plausible number every day.
 
 **The trap.** A `try` that sets a failure to zero reports **Q1 Rs 50,63,000 on 98 orders, zero
 rejects**, and every order count lands on Finance's. The rupee check shows Q1 Rs 9,85,000 short, 16.3

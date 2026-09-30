@@ -32,7 +32,7 @@ How does your profile tell you whether any rows repeat an order already in the f
 
 a) Each row is compared with the row directly above it
 b) Rows less distinct order ids, a repeat per extra
-c) Rows with a Q1 date are counted, then counted again
+c) Rows from each week are counted, then compared
 d) Rows whose amount or customer looks odd are counted
 
 ### Item 2
@@ -88,10 +88,10 @@ d) Every value present, summed as it came or logged as read
 
 ### Item 7
 
-Next week the practice export arrives with no control totals for Q2. Which check do you still run,
-and what does the note then say about Q2?
+Next week the practice export arrives with no control totals for Q2. What does the note then say
+about Q2, and on what checks?
 
-a) Every value summed or logged; Q2 called unreconciled
+a) Q2 called unreconciled, with the checks that did run named
 b) No check, since a reconciliation needs a total from outside
 c) Q2's median order against Q1's, and the note says it held
 d) Q1's control total applied to both quarters, as the nearest
@@ -142,7 +142,7 @@ You have fifteen minutes for one shuffle test before the note. Which gap earns i
 
 a) The smallest segment's large percentage rise, on its few orders
 b) The total's small rise, since it rests on every order in the file
-c) The branch your tree says moved, shuffled by customer
+c) The branch your tree says moved, on enough orders
 d) All four segments at once, leading with the smallest p-value
 
 ---

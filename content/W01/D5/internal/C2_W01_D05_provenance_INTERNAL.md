@@ -185,3 +185,12 @@ for "the branch that moved"; item 6 rewritten as the second-route design item (v
 item 17 answers nothing else, and item 17 set on last month's export; S15's key shortened, S12's and
 S1's client lines no longer state the key; the lab S7 lines, the rehearsal and notes caveat line and
 notebook 1's depth line rewritten. The design share is now eight of seventeen.
+
+**Round four.** Pass 4 PASSED: every number, sizing, trap and p-value statement held, and the notebooks
+ran cold. Pass 5 FAILED on cues between keys (S12's subtitle giving S15's key, a regression from round
+three; item 7's key echoing item 6's; item 12's key answering item 11) and ten contrast or aphorism
+lines, with S1's title and item 1's option c as optional points. Fixed: S12 and S1 retitled and S14's
+note made neutral; item 7 asks what the note says with no control total; item 12's key drops the
+shuffle unit; item 1's option c made quarter-neutral; every flagged line restated positively,
+including the chapter 2 review in the deck and notebook 2 and the "promising, still to be proven"
+label.

@@ -11,7 +11,7 @@ Posts to <!-- sync:module:W01/D5 -->Module 1: Foundations of AI and Data<!-- /sy
 | **Go as far as** | Every learner hands in a lab notebook and a note, and defends Thursday's note once. |
 | **Stop before** | Any new technique and any SQL; Week 2 opens that on Monday. Pandas stays closed. |
 | **Comes later** | Saturday's paper tests the week on paper; Monday moves the same method into the warehouse. |
-| **Cut first** | The rehearsal's second round of call-outs. Never the observed lab, never round one. |
+| **Cut first** | The rehearsal's second round of call-outs. The observed lab and round one always run in full. |
 
 **The domain.** Kalpa Retail is the room's first business. Its story (how it makes money, who
 decides what, its metrics as formulas) is the retail and e-commerce dossier,
