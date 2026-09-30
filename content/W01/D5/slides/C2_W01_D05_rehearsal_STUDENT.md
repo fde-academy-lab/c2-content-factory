@@ -7,7 +7,7 @@ Quote: Then say it to me the way you will say it to her, because I will push the
 Who: Kavya Nair, senior analyst, Kalpa Retail data team, to the trainees at Kalpa's Global Capability Centre
 
 ```notes
-LIVE, one minute. The afternoon, after the debrief's second half: the rehearsal in two rounds (100
+LIVE, inside S1's half minute. The afternoon, after the debrief's second half: the rehearsal in two rounds (100
 minutes), three timed design cases (40), and the Kahoot with Saturday's preview (20). Nothing new
 is taught; the afternoon is practice with a hostile listener.
 ```
@@ -15,12 +15,12 @@ is taught; the afternoon is practice with a hostile listener.
 ---
 
 ## S1. Three questions for the afternoon
-*Does your note hold when Marketing pushes, and what do you do when the clock runs?*
+*Does your note hold when Marketing pushes, which approach fits each case, and what is yours now?*
 
 ```timeline
-label: Section 1 | title: Does the note hold? | body: Thursday's note, defended in pairs and then to the room.
-label: Section 2 | title: Which approach fits? | body: Three timed design cases, answered aloud.
-label: Section 3 | title: What is yours now? | body: The Kahoot, Saturday's paper and tonight's rerun. | tone: dark
+label: Section 1 | title: Does the note hold? | body: You defend Thursday's note in pairs, then to the room.
+label: Section 2 | title: Which approach fits? | body: You answer three timed design cases aloud.
+label: Section 3 | title: What is yours now? | body: The Kahoot, Saturday's paper and tonight's rerun close the week. | tone: dark
 ```
 
 ```notes
@@ -40,17 +40,17 @@ time is short, cut round two first and keep round one whole.
 ---
 
 ## S2. Answered in six questions, over two rounds
-*Who needs this answer, and which smaller questions lead to it?*
+*Who needs the note to hold, and which six questions test it?*
 
 **Who needs the answer.** Meera, at Monday's growth review with Marketing in the room: a caveat that folds under a push sends her budget after a number that has not earned it, and one that overclaims loses the room.
 
 ```timeline
-label: Question 1 | title: Who hears the note? | body: Four people, four weaknesses.
-label: Question 2 | title: How do two minutes fit? | body: Four parts, one order.
-label: Question 3 | title: What will Marketing push? | body: Fair questions with motives.
-label: Question 4 | title: How do you hold a caveat? | body: Restate, bound, offer the test.
-label: Question 5 | title: How do the rounds run? | body: Pairs, then the room.
-label: Question 6 | title: What does a partner write? | body: Four answers, no score. | tone: dark
+label: Question 1 | title: Who hears the note? | body: Each of four listens for one weakness.
+label: Question 2 | title: How do two minutes fit? | body: Four parts run in one fixed order.
+label: Question 3 | title: What will Marketing push? | body: Each push is a fair question with a motive.
+label: Question 4 | title: How do you hold a caveat? | body: Restate it, bound it, and offer the test.
+label: Question 5 | title: How do the rounds run? | body: You defend in pairs, then to the room.
+label: Question 6 | title: What does a partner write? | body: The card holds four answers and no score. | tone: dark
 ```
 
 ```notes
@@ -63,16 +63,16 @@ LIVE, half a minute. Read who needs the answer and the six questions.
 *Who hears the note on Monday, and what does each listen for?*
 
 ```cards
-icon: crown | eyebrow: CEO | title: Meera Raghavan | body: One page, two minutes, and what to do. She acts on the first line.
-icon: megaphone | eyebrow: Owns campaigns | title: The marketing lead | body: Defends the monsoon sale and the acquisition budget against your reading.
-icon: calculator | eyebrow: Finance | title: Anand Iyer | body: Checks that every number matches the books and can be audited.
-icon: badge-check | eyebrow: Paid tier | title: The head of Retail-Plus | body: Wants to know whether the paid tier is slipping and whom to protect first.
+icon: crown | eyebrow: CEO | title: Meera Raghavan | body: She wants one page in two minutes that says what to do, and she acts on its first line.
+icon: megaphone | eyebrow: Owns campaigns | title: The marketing lead | body: The lead defends the monsoon sale and the acquisition budget against your reading.
+icon: calculator | eyebrow: Finance | title: Anand Iyer | body: He checks that every number matches the books and can be audited.
+icon: badge-check | eyebrow: Paid tier | title: The head of Retail-Plus | body: He wants to know whether the paid tier is slipping and whom to protect first.
 ```
 
 **The client asks.** How do you know, what did you leave out, and what would change your mind? These are the questions every interviewer asks about a project too.
 
 ```notes
-LIVE, 2 minutes. Name the four and the one thing each listens for. The note being rehearsed is the
+LIVE, 1 minute. Name the four and the one thing each listens for. The note being rehearsed is the
 final version of Thursday's one-page note: Meera's three questions, the Retail-Plus gap, the Student
 rise and the monsoon sale, each as claim, evidence, caveat and action, which is what goes to
 Monday's review.
@@ -84,10 +84,10 @@ Monday's review.
 *How do two minutes carry the note's four parts?*
 
 ```timeline
-label: 30 seconds | title: Claim | body: One sentence, with the number and what it is out of.
-label: 40 seconds | title: Evidence | body: What you computed, on how many, and how you checked it.
-label: 30 seconds | title: Caveat | body: The thing that would change the claim, said before anyone finds it.
-label: 20 seconds | title: Action | body: What to do, what it costs, and what would tell us more.
+label: 30 seconds | title: Claim | body: One sentence carries the number and what it is out of.
+label: 40 seconds | title: Evidence | body: Say what you computed, on how many, and how you checked it.
+label: 30 seconds | title: Caveat | body: Name what would change the claim before anyone finds it.
+label: 20 seconds | title: Action | body: Close on what to do, what it costs, and what would tell us more.
 ```
 
 **Kavya's review.** Say the caveat before Marketing finds it, so the room hears it as part of the claim.
@@ -104,7 +104,7 @@ the evidence; the fix is one number fewer at the same pace.
 
 ```mermaid
 flowchart LR
-    A["<b>the sale lifted</b><br/><b>spend 6%</b><br/>what more do you want?"] --> N["<b>your note</b>"]
+    A["<b>the sale</b><br/><b>lifted spend</b><br/>what more do you want?"] --> N["<b>your note</b>"]
     B["<b>we asked for</b><br/><b>Rs 12 crore</b><br/>for new customers"] --> N
     C["<b>Student is up 40%</b><br/>why not move budget?"] --> N
     D["<b>you dropped rows</b><br/>whose, and who said so?"] --> N
@@ -119,8 +119,8 @@ Every push is a fair question with a motive behind it, so the answer is to the q
 ```notes
 LIVE, 2 minutes. Read the four pushes in a fair Marketing voice. The partner playing Marketing is
 doing the defender a favour, and the room should hear that before round one starts. The first push
-is the sharpest: the brief answers it in full, and after S7 a TA reads Marketing's lines while you
-model the answer once, in four minutes. It is on neither pair list.
+is the sharpest: the brief answers it in full on invented figures, and at S7 a TA reads Marketing's
+lines while you model the answer once, in four minutes. It is on neither pair list.
 ```
 
 ---
@@ -147,12 +147,12 @@ the rise noise when you only know it is uncertain); the three moves sit between 
 
 ---
 
-## S7. The sharpest push agrees with the numbers first
+## S7. The answer that holds agrees with the numbers first
 *How do you answer a push whose every number is true?*
 
 ```mermaid
 flowchart LR
-    P["<b>the push</b><br/>the sale's customers<br/>spent 6.1% more"] --> R["<b>restate</b><br/>right, and the average<br/>blends who got the sale"]
+    P["<b>the push, invented</b><br/>the sale's customers<br/>spent 4.8% more"] --> R["<b>restate</b><br/>right, and the average<br/>blends who got the sale"]
     R --> B["<b>bound</b><br/>compare like with like,<br/>inside each segment"]
     B --> T["<b>offer the test</b><br/>Diwali, a slice of each<br/>segment held back"]
     classDef bad fill:#FCE8EC,stroke:#C2185B,color:#1A0F5C
@@ -161,12 +161,15 @@ flowchart LR
     class R,B,T known
 ```
 
-Folding loses the finding and overclaiming loses the room; the answer that holds agrees with Marketing's arithmetic and then shows who the blend was made of.
+On invented figures, the blend rises 4.8 percent because half the sale's customers were members who spend more anyway, against 35 percent of the rest, while inside each segment the sale's customers spent 5.0 percent less.
 
 ```notes
-LIVE, 4 minutes: the modelled push. A TA reads Marketing's lines from the rehearsal brief, the
-monsoon sale's two averages, and you answer once in the three moves, using the segment table the
-brief prints. The brief carries the answer in full; this slide is its shape.
+LIVE, 4 minutes: the modelled push. A TA reads Marketing's lines from the rehearsal brief, whose
+invented averages are Rs 3,040 for the 60 customers who got the sale against Rs 2,900 for the 100
+who did not, and you answer once in the three moves from the brief's invented segment table:
+members Rs 3,990 against Rs 4,200 and Retail-Core Rs 2,090 against Rs 2,200, 5.0 percent less in
+each. Say once that the figures are invented and that each defender's note carries Thursday's real
+ones, which the same answer fits. The brief carries the answer in full; this slide is its shape.
 ```
 
 ---
@@ -186,8 +189,8 @@ flowchart LR
 In pair one each ten minutes runs: two minutes of the note read aloud, five of pushes and answers, three for the partner to fill the feedback card. Pair two takes nine: two, four and three.
 
 ```notes
-LIVE, 50 minutes: S1 to S6 and S9 take eight, Marketing's sharpest push, modelled once with a TA,
-takes four, and the pairs take the other 38. The TAs walk the room. Each TA also uses this round to
+LIVE, 50 minutes: S1 to S6 and S9 take eight, Marketing's sharpest push, modelled once at S7 with a
+TA, takes four, and the pairs take the other 38. The TAs walk the room. Each TA also uses this round to
 tell each of their learners, quietly and one at a time, the step the lab's observation sheet marked
 for them, never aloud and never to a group.
 ```
@@ -199,9 +202,9 @@ for them, never aloud and never to a group.
 
 ```cards
 icon: hash | eyebrow: 1 | title: The claim | body: Quote the number and what it was out of, as you heard it.
-icon: shield | eyebrow: 2 | title: The caveat | body: Said before the push, after it, or not at all?
+icon: shield | eyebrow: 2 | title: The caveat | body: Was it said before the push, after it, or not at all?
 icon: swords | eyebrow: 3 | title: The hardest push | body: Which one landed, and what answer would have held it?
-icon: scissors | eyebrow: 4 | title: Keep and cut | body: One sentence to keep, one to cut.
+icon: scissors | eyebrow: 4 | title: Keep and cut | body: Name one sentence to keep and one to cut.
 ```
 
 The card is `exercises/guided/C2_W01_D05_feedback_card_STUDENT.md`, one per defence; the defender keeps it.
@@ -246,18 +249,18 @@ two call-outs.
 ---
 
 ## S11. Answered in three cases, thirteen minutes each
-*Who needs this answer, and which cases lead to it?*
+*Who acts on the approach you pick, and which three cases test it?*
 
 **Who needs the answer.** An interviewer asking the design question, and behind each case a Kalpa stakeholder who acts on the call: Meera, Anand and the product head.
 
 ```timeline
-label: Case 1 | title: What do you leave out? | body: Meera's first read in two hours.
-label: Case 2 | title: Which check runs first? | body: Zero rejects and a Rs 20 lakh gap.
-label: Case 3 | title: Can 12 visits beat 1,200? | body: 42 percent on twelve visits. | tone: dark
+label: Case 1 | title: What do you leave out? | body: Meera wants a first read in two hours.
+label: Case 2 | title: Which check runs first? | body: Zero rejects meet a Rs 20 lakh gap.
+label: Case 3 | title: Can 5 of 12 beat 31 percent? | body: The product head wants to ship on 42 percent. | tone: dark
 ```
 
 ```notes
-LIVE, 1 minute. Read who needs the answer and the three cases.
+LIVE, half a minute. Read who needs the answer and the three cases.
 ```
 
 ---
@@ -266,16 +269,16 @@ LIVE, 1 minute. Read who needs the answer and the three cases.
 *How does a timed design case run?*
 
 ```timeline
-label: 1 minute | title: Read | body: The case, its options and the real company it is like.
-label: 3 minutes | title: Think | body: On paper: which option fits, sized how, and what would switch it.
-label: 4 minutes | title: Answer aloud | body: Two minutes each, to your partner.
-label: 5 minutes | title: Two call-outs | body: Two answers to the room, then the model answer.
+label: 1 minute | title: Read | body: Read the case, its options and the real company it is like.
+label: 3 minutes | title: Think | body: On paper, pick an option, size it, and name what would switch it.
+label: 4 minutes | title: Answer aloud | body: Each of you answers your partner for two minutes.
+label: 5 minutes | title: Two call-outs | body: Two answers go to the room, then the model answer.
 ```
 
 **In the interview.** A design question is scored on three things said in order: the option you choose, its size in minutes, rupees or visits, and the fact that would move you to another.
 
 ```notes
-LIVE, 1 minute. The prompts are in exercises/unguided/C2_W01_D05_timed_cases_STUDENT.md. The model
+LIVE, half a minute. The prompts are in exercises/unguided/C2_W01_D05_timed_cases_STUDENT.md. The model
 answers, their sizing and the real-company sources are in trainer/C2_W01_D05_timed_cases_key_TRAINER.md;
 read the model after the call-outs.
 ```
@@ -285,7 +288,7 @@ read the model after the call-outs.
 ## S13. Question: which step do you leave out?
 *Meera wants a first read on Q3 in two hours, from a raw export of about 2,000 orders: which plan?*
 
-**Question.** Each plan fits the clock at the lab's pace. Choose one: a) no reconciliation; b) no test, the note marked provisional; c) the tree and a test for one segment only; d) no profile, straight to cleaning.
+**Question.** Each plan fits the clock at the lab's pace. Choose one: a) no reconciliation; b) no test, the note marked provisional; c) no tree: one segment's gap tested, with the note on that segment; d) no profile, straight to cleaning.
 
 **In the interview.** [F] You have two hours and a raw export; what do you do first, and what do you skip? DMart is the likeness: its July to September 2025 revenue went out as a provisional update eight days before it filed the results.
 
@@ -297,14 +300,14 @@ that would switch the plan. The 2,000 orders are illustrative.
 
 ---
 
-## S14. Answer: leave out the test, never the reconciliation
+## S14. Answer: keep the reconciliation, leave out the test
 *Which plan fits, what does each cost, and what would switch it?*
 
 | Plan | Minutes at the lab's pace | What it leaves out |
 |---|---|---|
 | A | 105 | The reconciliation, the step that can flip the first line's sign |
 | B | 105 | The test; the note says provisional |
-| C | 95 | Every segment but one |
+| C | 95 | The tree: one segment's gap is tested with no decomposition |
 | D | 100 | The profile, so it cleans only the defects someone expected |
 
 **The rule.** B, because every plan fits the clock and the call is which step to leave out. When Meera will act on one segment's gap, add the test on that gap and trim the tree to find the minutes, or take C if she named the segment herself. With no control total, B still holds, and the first line says the read is unreconciled.
@@ -318,9 +321,9 @@ LIVE, 2 minutes, after the call-outs. The model answer in full is in the trainer
 ## S15. Question: which check runs first on the gap?
 *The migrated ERP's first quarter shows zero rejects and a dashboard Rs 20 lakh above Anand's books: which check runs first?*
 
-**Question.** About 50,000 rows. Choose the order: a) the ledger match first, since it names every order; b) ids against rows and the value accounting, then a monthly bridge; c) the monthly bridge first, then ids against rows; d) the dashboard's own query, since it ran for years.
+**Question.** About 50,000 rows. Choose the order: a) the ledger match first, since it names every order; b) ids against rows and the value accounting, then a monthly bridge; c) the monthly bridge first, then ids against rows once the gap is sized; d) the dashboard's own query first, since the dashboard has run for years.
 
-**In the interview.** [S] Walk me through how you clean and check a dataset you have never seen. TSB is a loose likeness: a new platform whose output was trusted before it was checked.
+**In the interview.** [S] Walk me through how you clean and check a dataset you have never seen. TSB is a loose likeness: its customers were locked out of a new platform, where this case is a total trusted before it was reconciled.
 
 ```notes
 LIVE, 13 minutes. Listen for the checks ordered by cost against what each catches, for a stopping
@@ -351,7 +354,7 @@ LIVE, 2 minutes, after the call-outs.
 ## S17. Question: can 5 of 12 visits beat 31 percent?
 *A redesigned checkout converted 5 of 12 visits; the current one converted 31 percent of 1,200. Ship it tomorrow?*
 
-**Question.** Choose one: a) ship to everyone now; b) keep the pilot small and wait, at about 12 visits a week; c) split the traffic in half until each checkout has about 300 visits; d) one visit in ten to the new checkout for a fortnight.
+**Question.** Choose one: a) ship to everyone now, on the 42 percent; b) keep the pilot small and wait for more weeks, at about 12 visits a week; c) split the traffic in half until each checkout has about 300 visits; d) one visit in ten to the new checkout for a fortnight, as a cautious rollout.
 
 **In the interview.** [D] A stakeholder attacks your caveat in front of the room; how do you hold it without overclaiming? Bing is the likeness: a 12 percent revenue lift checked before anyone believed it.
 
@@ -390,15 +393,15 @@ LIVE. Twenty minutes: the Kahoot, Saturday previewed, the crux lines, tonight's 
 ---
 
 ## S19. Answered in four questions, in twenty minutes
-*Who needs this answer, and which smaller questions lead to it?*
+*Who will test the week's lines, and which four questions lead to tonight's rerun?*
 
 **Who needs the answer.** You, before Saturday's paper and Monday's review: the lines you carry out of the week are the ones Marketing and an interviewer will test.
 
 ```timeline
-label: Question 1 | title: Did the method stick? | body: The Kahoot, eight items.
-label: Question 2 | title: What does Saturday ask? | body: The paper's format.
-label: Question 3 | title: Which lines carry over? | body: Five, one per step.
-label: Question 4 | title: What do you rerun? | body: Tonight's three tasks. | tone: dark
+label: Question 1 | title: Did the method stick? | body: The Kahoot tests it in eight items.
+label: Question 2 | title: What does Saturday ask? | body: You hear the paper's format and marking.
+label: Question 3 | title: Which lines carry over? | body: Five lines, one per step, close the week.
+label: Question 4 | title: What do you rerun? | body: Tonight has three tasks, and one is a rerun. | tone: dark
 ```
 
 ```notes
@@ -418,7 +421,7 @@ flowchart LR
     class X known
 ```
 
-Three items on the method, four design calls and Thursday's return question, ungraded.
+The Kahoot is ungraded: three items on the method, four design calls and Thursday's return question.
 
 ```notes
 LIVE, 8 minutes. Run kahoot/C2_W01_D05_quiz_STUDENT.md. After each item, one sentence on the wrong
@@ -431,10 +434,10 @@ answer most people picked, and move on.
 *What does Saturday's paper ask, and how is it marked?*
 
 ```cards
-icon: pencil | eyebrow: The paper | title: 120 minutes | body: Blanks from a word bank, pairs from a match table, statements judged with their reason, scenario sets, applied maths and ordering.
+icon: pencil | eyebrow: The paper | title: 120 minutes | body: It mixes blanks from a word bank, pairs from a match table, statements judged with their reason, scenario sets, applied maths and ordering.
 icon: repeat | eyebrow: Marking | title: Swapped | body: Papers change hands and are marked against the key, read out by the Academic TA.
-icon: messages-square | eyebrow: Discussion | title: Aloud | body: The most-missed items first, then the week's interview questions as interview answers.
-icon: circle-slash | eyebrow: Status | title: Ungraded | body: A performance indicator for you and the team, with no ranking.
+icon: messages-square | eyebrow: Discussion | title: Aloud | body: The most-missed items are discussed first, then the week's interview questions are answered aloud.
+icon: circle-slash | eyebrow: Status | title: Ungraded | body: It is a performance indicator for you and the team, with no ranking.
 ```
 
 ```notes
@@ -464,14 +467,14 @@ light; everybody broke one.
 *What do you do tonight, and what does Saturday ask you to bring?*
 
 ```timeline
-label: FIX | title: Rerun your step | body: The step the TA marked, on the practice export, with one line on what you will do differently.
-label: RECAP | title: From memory | body: The note's four parts and the p-value sentence; both are on Saturday's paper.
+label: FIX | title: Rerun your step | body: Run the step the TA marked on the practice export, and write one line on what you will change.
+label: RECAP | title: From memory | body: Write the note's four parts and the p-value sentence; both are on Saturday's paper.
 label: SETUP | title: Sunday evening | body: Week 2 works in a live Postgres connection from VS Code; the setup steps arrive on Sunday.
 ```
 
-**Kavya's review.** On Monday, Meera hears a note from someone who rebuilt every number in it alone this morning and reconciled it to Anand's books.
+**Kavya's review.** You have the method when its six steps, from the profile to the note, run in order under a clock and the note's caveat comes before the push, and tonight you rerun the one step the lab showed you do not own yet. On Monday, Meera hears Thursday's note from someone who ran the whole method alone this morning and held it against Marketing's pushes this afternoon.
 
 ```notes
-LIVE, 4 minutes. Close on the three tasks. The practice set is in exercises/practice/ and the TAs
+LIVE, 3 and a half minutes. Close on the three tasks. The practice set is in exercises/practice/ and the TAs
 run the practice lab from it after this block.
 ```
