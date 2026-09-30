@@ -9,7 +9,7 @@ Most of the room has never worked in a business role, and nobody in it has worke
 | **Start from** | Nothing about US healthcare. Assume the room has had a blood test in India, paid at a counter or on an app, and knows nothing of insurers paying labs. |
 | **Go as far as** | Every learner can say what gross charges, the allowed amount, a contractual adjustment, patient responsibility and net revenue are, place a revenue-cycle metric on the tree with its divisor, tell a rejection from a denial, and say what an offshore team may touch and why that answer lives in contracts. |
 | **Stop before** | Any Build 1 answer. The story never draws Kalpa Health's volume tree, never says which metro, centre or payer moved, never says whether billed and collected agree, and never says whether the at-home collection offer worked. Those are the groups' to find. |
-| **Where it sits** | It opens Build 1 Monday, before the Programme Head's online introduction, in the place a teaching day gives the 20-minute ask; the Monday day sheet sets which minutes of the day it takes. |
+| **Where it sits** | It opens Build 1 Monday, before the Programme Head's online introduction, in the place a teaching day gives the 20-minute ask. That placement is proposed: the approved Build 1 spine has no slot for the story, so the Monday day sheet has to set its minutes. |
 | **Hands over to** | Dr Priya Menon's ask, read as the story's last line, which the Programme Head's introduction then opens on. |
 | **Cut first** | Part 2 to its drawing and question, then part 6's last two sentences, from "On the payers' side". Never cut part 3, the money, or part 5, the tree. |
 
@@ -63,7 +63,7 @@ flowchart LR
 
 **Ask the room first.** "A US lab has to draw blood in the US. Which of its work could sit in Bengaluru, and which could never?"
 
-Listen for: the draw, the courier and the testing stay where the patient is; the coding, the billing, the follow-up on unpaid claims and the analysis are information work that can move. Likely wrong answer: "All of it could move, since it is cheaper here." Correct it: a sample has to be drawn and tested within hours near the patient, and a lab needs a US certificate to be paid by Medicare; what moves is the paperwork and the analysis, and even that moves only inside what the contracts allow, which part 6 comes back to. Land it: the GCC does the half of a lab's work that is made of data.
+Listen for: the draw, the courier and the testing stay where the patient is; the coding, the billing, the follow-up on unpaid claims and the analysis are information work that can move. Likely wrong answer: "All of it could move, since it is cheaper here." Correct it: a sample has to be drawn near the patient and tested in a certified US lab, and a lab needs a US certificate to be paid by Medicare; what moves is the paperwork and the analysis, and even that moves only inside what the contracts allow, which part 6 comes back to. Land it: the GCC does the half of a lab's work that is made of data.
 
 **Say.** "Kalpa Health tests US patients and bills US payers, and its revenue-cycle and analytics work runs from Kalpa's GCC here in Bengaluru. Two real companies have its shape at national scale. Quest Diagnostics reported $11.0 billion of revenue for 2025, processed about 244 million requisitions and runs about 2,400 patient service centres, many inside large retail stores. Labcorp reported $14.0 billion, with more than 2,200 centres.
 
@@ -109,7 +109,7 @@ flowchart TB
     G["<b>gross charges</b><br/>$100"] -->|"less 60 contractual"| A["<b>allowed</b><br/>$40"]
     A -->|"less 3 never collected"| N["<b>net revenue</b><br/>$37"]
     N -->|"less 25 cost of the tests"| M["<b>gross profit</b><br/>$12"]
-    M -->|"less 6.50 billing, sales, admin"| O["<b>operating income</b><br/>$5.50"]
+    M -->|"less 6.50 billing, sales, tech, admin"| O["<b>operating income</b><br/>$5.50"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef dark fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class G,A,N,M known
@@ -126,13 +126,13 @@ Then one sentence beside the drawing: a $1 leak from the $40 allowed is 2.5 perc
 
 **Say.** "A US lab bills four kinds of payer. Health insurers, the commercial plans most Americans get through an employer, and the private plans that run Medicare Advantage. Government payers, traditional Medicare for people 65 and older, and Medicaid, run by each state for people with low incomes. Clients, the doctors, hospitals and employers the lab bills directly. And patients, for their deductibles, coinsurance and copays."
 
-**Ask the room.** "In 2025 Quest's patients were billed for 1 percent of its testing requisitions. What share of the money Quest was waiting to collect at year end do you think patients owed: about 1 percent, about 5, about 20, or about 50?"
+**Ask the room.** "In 2025 requisitions billed only to patients, such as uninsured ones, were 1 percent of all Quest's requisitions. What share of the money Quest was waiting to collect at year end do you think patients owed: about 1 percent, about 5, about 20, or about 50?"
 
-Listen for the reasons. Likely wrong answer: "About 1 percent, the same as their share of requisitions." Correct it: 20 percent, because every insured patient's deductible and coinsurance is billed to the patient too, and a patient's balance is small, arrives late and is paid last, so it piles up in the receivable. Land it: who pays decides how fast the money comes, and patients are the slowest payer a lab has.
+Listen for the reasons. Likely wrong answer: "About 1 percent, the same as their share of requisitions." Correct it: 20 percent, because every insured patient's deductible and coinsurance is billed to the patient too, though Quest counts those requisitions under insurers, and a patient's balance is small, arrives late and is paid last, so it piles up in the receivable. Land it: who pays decides how fast the money comes, and patients are the slowest payer a lab has.
 
 **Then say.** "Now the people at Kalpa Health who want something from us. Dr Priya Menon, the COO, wants to know which part of the business is short. The revenue-cycle head wants to know which claims will be denied and which unpaid ones to chase first, and that team works from the GCC. The lab director watches turnaround time. Payer contracting wants to know whether each plan pays what its contract says. Finance wants our numbers to match its books, and compliance wants to know whether we need patient-level data at all. Kavya Nair checks everything before it leaves the team. Among Kalpa Health's heads, the story names only Dr Menon."
 
-**Draw: who asks, six boxes.** The COO on the left, the functions in the middle, dashed for the unnamed heads, the GCC on the right, and a dotted arrow from every box to the GCC. The dossier's section 4 shows each function.
+**Draw: who asks, six boxes.** The COO on the left, the functions in the middle, dashed for the unnamed heads, the GCC on the right, and a dotted arrow from every function to the GCC. The dossier's section 4 shows each function.
 
 ```mermaid
 flowchart LR
@@ -221,12 +221,12 @@ Each was checked on 30 September 2026. The URLs are in `internal/C2_W03_D01_doma
 |---|---|
 | Quest had net revenues of $11,035 million in 2025, processed about 244 million requisitions, had about 2,400 patient service centres, many in large retail stores, and nearly 57,000 employees | Quest Diagnostics, Form 10-K for 2025, filed 26 February 2026 |
 | Quest's 2025 operating income was $1,556 million, 14.1 percent of net revenues, with cost of services at 66.8 percent and selling, general and administrative costs at 17.8 percent; days sales outstanding were 48 at the end of 2025 and 2024 | Quest 10-K for 2025 |
-| Patients were 1 percent of Quest's testing volume, 12 percent of its testing revenue and 20 percent of its receivables; insurers were 43, 39 and 27 percent | Quest 10-K for 2025 |
+| Requisitions billed to patients alone were 1 percent of Quest's total volume, patients 12 percent of revenue and 20 percent of receivables, since insured patients' deductibles and coinsurance count as patient revenue while their requisitions count under insurers; insurers were 43, 39 and 27 percent | Quest 10-K for 2025 |
 | Quest's 10-K for 2025 names sites in Canada, Finland, Puerto Rico and Mexico and does not mention India | Quest 10-K for 2025 |
-| Labcorp had revenue of $13,951.7 million in 2025, $10,876.5 million from diagnostics, more than 2,200 patient service centres and more than 7,000 in-office phlebotomists, and lists a leased biopharma laboratory facility in Bangalore | Labcorp Holdings, Form 10-K for 2025, filed 24 February 2026 |
-| Quest launched at-home collection in November 2023 with 5,000 mobile phlebotomists | Quest newsroom, 9 November 2023 |
+| Labcorp had revenue of $13,951.7 million in 2025, $10,876.5 million from diagnostics, more than 2,200 patient service centres and more than 7,000 phlebotomists in customers' offices and facilities, and lists a leased biopharma laboratory facility in Bangalore | Labcorp Holdings, Form 10-K for 2025, filed 24 February 2026 |
+| Quest launched at-home collection in November 2023 on a network of 5,000 mobile phlebotomists | Quest newsroom, 9 November 2023 |
 | Optum India is UnitedHealth Group's largest Global Capability Centre | UnitedHealth Group careers, India |
-| AGS Health reports more than 15,000 revenue-cycle staff and Indian centres including Chennai, Hyderabad and Bengaluru | agshealth.com, company page |
+| AGS Health reports more than 15,000 revenue-cycle staff worldwide and Indian centres including Chennai, Hyderabad and Bengaluru | agshealth.com, company page |
 | The US spent $5.3 trillion on health care in 2024, $15,474 a person, 18.0 percent of GDP | CMS, National Health Expenditure fact sheet |
 | Medicare patients usually pay nothing for Medicare-covered diagnostic lab tests; Medicare's 2026 fourth-quarter fee schedule pays $7.77, $10.56, $9.71 and $13.39 for codes 85025, 80053, 83036 and 80061 | Medicare.gov; CMS Clinical Laboratory Fee Schedule file |
 | HealthCare.gov insurers denied 19 percent of in-network claims in 2024, from 3 to 36 percent by insurer | KFF, 24 March 2026 |

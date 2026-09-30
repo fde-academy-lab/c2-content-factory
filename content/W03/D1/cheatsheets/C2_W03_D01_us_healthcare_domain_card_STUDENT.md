@@ -31,7 +31,7 @@ flowchart LR
 | Metric | Formula |
 |---|---|
 | Gross charges | Tests billed x list price |
-| Allowed amount | Payer's share + patient's share |
+| Allowed amount | Payer's share + patient responsibility |
 | Contractual adjustment | Gross charges less allowed |
 | Net revenue | Gross charges less contractual adjustments less what will never be collected |
 | Patient responsibility | Deductible + coinsurance + copay |
@@ -64,7 +64,7 @@ flowchart LR
 | **Medicaid** | State cover for low incomes |
 | **Requisition** | The doctor's order for tests |
 | **Accession number** | Barcode tying sample to order |
-| **Panel** | Tests billed under one code |
+| **Panel** | Tests ordered by one name |
 | **Chargemaster** | The lab's own price list |
 | **Deductible** | Paid by the patient before the plan pays, each plan year |
 | **CPT** | The AMA's procedure codes |
@@ -74,7 +74,7 @@ flowchart LR
 | **Clearinghouse** | Checks and routes claims |
 | **Rejection** | Bounced before the payer saw it |
 | **Denial** | The payer's refusal to pay |
-| **CARC** | The 835 code saying why a dollar went unpaid |
+| **CARC** | The 835 code saying why a dollar was adjusted |
 | **Prior authorisation** | Payer approval before a service |
 | **Medical necessity** | The payer's test that the diagnosis justifies it |
 | **Timely filing limit** | The deadline to submit a claim |
@@ -101,6 +101,6 @@ flowchart LR
 | Contractual adjustments | 60 | 40 **allowed** |
 | Denials upheld, balances unpaid | 3 | 37 **net revenue** |
 | Cost of the tests | 25 | 12 **gross profit** |
-| Billing, sales, technology | 6.50 | 5.50 **operating income** |
+| Billing, sales, technology, admin | 6.50 | 5.50 **operating income** |
 
 **Crux:** On these illustrative numbers a $1 leak from the $40 allowed is 2.5 percent of it and 18 percent of the lab's operating income.
