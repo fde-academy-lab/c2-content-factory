@@ -86,7 +86,7 @@ sign this morning, without naming anyone; the TA tally already knows, and the ro
 ## S4. Question: what do you check before sending it?
 *The export came with Finance's control totals, and a note that says nothing else.*
 
-**Question.** Choose one: a) the median order, in case one large order moved the total; b) the p-value of the Q1 to Q2 change; c) rows against Finance's order counts, and each quarter's rupees against its control total; d) the segment split, to see which segment grew.
+**Question.** Choose one: a) the median order, in case one large order moved the total on its own; b) the p-value of the Q1 to Q2 change, with 2,000 shuffles on customers; c) orders and rupees per quarter against Finance's control totals; d) the segment split, to see which of the four segments grew the most.
 
 ```notes
 LIVE, 2 minutes. Take letters. Option a is Monday's instinct and a good one on a different day; d
@@ -165,7 +165,7 @@ icon: circle-alert | eyebrow: Counts checked | title: Q2 fell 14.6% | body: The 
 icon: circle-check | eyebrow: Counts and rupees | title: Q2 fell 28.5% | body: Rs 17,22,520 to explain, and the tree says where.
 ```
 
-**In the interview.** [F] You have two hours and a raw export; what do you do first, and what do you skip? Never the reconciliation: it is fifteen minutes, and it is the step that can flip the sign.
+**In the interview.** [F] You have two hours and a raw export; what do you do first, and what do you skip?
 
 ```notes
 LIVE, 2 minutes. The error changed the sign, so it changed the decision itself. Ask one
@@ -218,13 +218,13 @@ more than a quarter of notes named a frequency branch.
 ---
 
 ## S11. Why the clock removes this step first
-*It produces no new number, so it feels like the step that can wait.*
+*Fifteen of ninety minutes, and its only output is a yes or a no, so it feels like the step that can wait.*
 
 ```bar
-label: Profile | value: 20 | caption: a new picture of the file
-label: Clean | value: 30 | caption: a smaller, tidier file
-label: Reconcile | value: 15 | caption: no new number, only a yes or a no
-label: Decompose | value: 25 | caption: the finding
+label: Profile | value: 20
+label: Clean | value: 30
+label: Reconcile | value: 15
+label: Decompose | value: 25
 ```
 
 **Kavya's review.** A number that has not been reconciled can point the wrong way, and this morning it did. Put the two checks in a cell before the first number you plan to send.
@@ -351,7 +351,7 @@ leave it for the room.
 | C. Read, convert, keep and flag | 3 | 1 | passes | passes | -28.5% |
 | D. Hold and ask the owner | a wait | 1 | fails | fails | provisional |
 
-**The rule.** C, when the value can be read without guessing, as digits with an Indian ledger's grouping commas can. D when it cannot: a word, a unit that could be lakh or crore. B when the row is not an order. A never, because it is the one that hides.
+**The rule.** C, when the value can be read without guessing, as digits with an Indian ledger's grouping commas can. D when it cannot: a word, a unit that could be lakh or crore. B when the row is not an order. A is the one option that hides its gap.
 
 ```notes
 LIVE, 3 minutes. Run the options cell. Land the contrast between A and B: the same wrong headline,
@@ -488,7 +488,7 @@ The number is correct; the question is what ten orders can carry.
 ## S24. Question: how does it enter the note?
 *Meera reads the first line and acts on it.*
 
-**Question.** Choose one: a) as the headline trend, since it is the largest move in rupees; b) as the headline, with a p-value beside it; c) left out, since ten orders are too few to matter; d) as counts, two fewer corporate orders, with the account owner asked which two, and the lead given to the branch that moved on enough orders.
+**Question.** Choose one: a) as the headline trend, since it is the largest move in rupees on the page; b) as the headline, with a shuffle test's p-value printed beside the rate; c) left out of the note, since ten orders are too few to matter to anyone; d) as counts, two fewer corporate orders, with a question to their owner.
 
 ```notes
 LIVE, 1 minute. Take letters. Option c is the overcorrection: Rs 17,10,000 is real money and Meera
@@ -543,7 +543,7 @@ four tests at 0.05, and the chance at least one looks real by luck is about 19 p
 ```stats
 value: -15.6 pts | label: basket gap | note: Retail-Core against Retail-Plus
 value: 39 of 2,000 | label: shuffles as large | note: random.Random(7)
-value: p = 0.0195 | label: a share of | note: chance-only worlds, never the chance of being wrong
+value: p = 0.0195 | label: a share of chance-only worlds | note: never the chance of being wrong
 ```
 
 **In the interview.** [S] Tell me about an analysis you did: what did you find, and how sure are you? The claim with its count, the check that it ties to the books, the test on the right unit, and the caveat.
@@ -567,7 +567,7 @@ flowchart LR
     class F,V known
 ```
 
-**Kavya's review.** Say the count before the rate, every time. "Six orders, then four" is honest; "down 29 percent" alone is a headline.
+**Kavya's review.** Say the count before the rate, every time: "six orders, then four", and then the percentage.
 
 ```notes
 The rule to say: the shuffle says whether the gap is bigger than chance, the customer count says
@@ -604,7 +604,7 @@ value: Rs 2,120 | label: median order, clean | note: the typical one
 value: 25 times | label: the gap | note: mean over median
 ```
 
-**The rule.** Describe a file with its median and say what sits above it. The mean belongs in anything that has to reconcile, never in a sentence about a typical order.
+**The rule.** Describe a file with its median and say what sits above it. Keep the mean for anything that has to reconcile.
 
 ```notes
 SELF-STUDY unless the tally shows notes quoting a mean as the typical order; then three minutes.

@@ -190,7 +190,7 @@ flowchart LR
     class X bad
 ```
 
-Write the line under your note in a new markdown cell. It does not change what you handed in; it is what you will say at the debrief.
+Write the line under your note in a new markdown cell. What you handed in stays as it was, and this line is what you will say at the debrief.
 
 ```notes
 LIVE, 20 minutes. The TAs copy each learner's output folder at the 120-minute mark before anyone

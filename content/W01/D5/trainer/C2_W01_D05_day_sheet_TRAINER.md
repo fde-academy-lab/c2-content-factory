@@ -165,10 +165,12 @@ observation sheet marked.
 | 3, the tree and the test | They read Retail-Plus frequency on the uncleaned rows and report -40 percent | "How many distinct orders does Retail-Plus hold in Q1?" |
 | 4, the note | They lead with the flat total, or with Student's 50 percent on five orders | "What is the smallest number of orders any rate in your claim rests on?" |
 
-Items 4, 7, 10, 11, 12, 15 and 16 are design items, seven of sixteen, and item 16 is the ordering
-item. The practice lead's test sits at p = 0.047 with the order that has no customer_id kept as its
-own customer and 0.011 with it left out (reference notebook, practice section); a learner who reaches
-either should say which handling they chose, and the note calls the first borderline. A learner who stalled at a step answers that problem's design item aloud to the TA before
+Items 4, 7, 10, 11, 12, 15 and 16 are design items, seven of seventeen; item 16 is the ordering item
+and item 17, on problem 4's last page, is the find-the-defect item on a zeroing try. The practice lead's test sits at p = 0.047 with the order that has no customer_id kept as its
+own customer and 0.011 with the order left out of the file entirely; item 3's handling (kept as an
+order, customer uncounted) moves the gap to about -34 points and leaves the shuffle no customer to
+move (reference notebook, practice section). A learner should say which handling they chose, and the
+note calls the first borderline. A learner who stalled at a step answers that problem's design item aloud to the TA before
 the rerun, so the choice of approach is said before the code is typed.
 
 The practice numbers: 79 rows, 75 distinct orders, 4 repeated Q1 Retail-Plus rows, one amount "Rs

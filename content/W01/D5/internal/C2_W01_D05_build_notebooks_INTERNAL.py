@@ -430,8 +430,10 @@ kit.check("the practice export reconciles to its control totals",
     md("""
     **The practice lead, tested.** Retail-Plus's fall in orders per member against Retail-Core's, with
     the segment label shuffled across customers, 2,000 times on `random.Random(7)`. The verdict depends
-    on the practice export's order with no customer_id (a Retail-Core order in Q2), so the test runs
-    both ways: that order kept as a customer of its own, and left out of the customer count.
+    on the practice export's order with no customer_id (a Retail-Core order in Q2). The test runs two
+    ways that give the order a customer or none: kept as a customer of its own, and left out of the
+    file entirely. Item 3's handling, kept as an order with its customer uncounted, moves the observed
+    gap too, but its order has no customer to shuffle, so its row shows the gap only.
     """),
     code('''
 def freq_change(rs):
@@ -472,15 +474,29 @@ def practice_p(keep_blank, seed=7):
     return obs, hits / 2000
 
 
-rows_p = []
+rows_p, pvals = [], []
 for keep in (True, False):
     obs, pv = practice_p(keep)
+    pvals.append(pv)
     band = [practice_p(keep, sd)[1] for sd in (1, 2, 3)]
-    rows_p.append(("kept as its own customer" if keep else "left out of the count", f"{obs:+.1f} pts", f"{pv:.4f}",
-                   f"{min(band):.4f} to {max(band):.4f}"))
+    rows_p.append(("kept as its own customer" if keep else "left out of the file entirely", f"{obs:+.1f} pts",
+                   f"{pv:.4f}", f"{min(band):.4f} to {max(band):.4f}"))
+
+
+def freq_order_only(seg):
+    out = []
+    for q in ("Q1", "Q2"):
+        sub = [r for r in pclean if r["quarter"] == q and r["segment"] == seg]
+        out.append(len(sub) / len({r["customer_id"] for r in sub if r["customer_id"]}))
+    return change(out[0], out[1])
+
+
+gap3 = freq_order_only("Retail-Plus") - freq_order_only("Retail-Core")
+rows_p.append(("kept as an order, customer uncounted (item 3)", f"{gap3:+.1f} pts", "no customer to shuffle", ""))
 kit.table(["the order with no customer_id", "gap in frequency change", "p on seed 7", "p on seeds 1 to 3"], rows_p,
-          caption="The practice lead's shuffle test, both ways")
-kit.check("the practice test runs both ways", len(rows_p) == 2)
+          caption="The practice lead's shuffle test, by the handling of one order")
+kit.check("the verdict turns on the handling: one p sits at the edge of 0.05, the other well below it",
+          0.04 < pvals[0] < 0.06 and pvals[1] < 0.02, f"{pvals[0]:.4f} and {pvals[1]:.4f}")
 '''),
     code("kit.check_summary()"),
 ]
@@ -506,7 +522,7 @@ LAB = [
     log, and the note.
 
     Every `__TODO__` is yours. The six sections follow the week's order, and the minutes beside each
-    are a pace, not a limit.
+    are a pace.
     """),
     code(SETUP + '''
 import csv

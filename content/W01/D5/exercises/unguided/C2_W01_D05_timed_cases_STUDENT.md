@@ -38,7 +38,7 @@ flowchart TB
 | D | Tell Meera the number comes after Finance closes the books | Days |
 
 Your paper: the option you choose and the minutes it leaves you; the one step you will not drop
-however late it gets, and why; the fact about the export that would make you switch, and to what.
+at any point on the clock, and why; the fact about the export that would make you switch, and to what.
 
 ## Case 2: zero rejects and a Rs 20 lakh gap, after the migration
 
@@ -51,7 +51,7 @@ Iyer's books, and Anand wants to know by tomorrow which number Meera should see.
 **The real company it is like.** TSB, the UK bank, moved its customers' records from Lloyds Banking
 Group's platform to its owner Sabadell's Proteo4UK platform in April 2018. The independent review
 found 1.9 million customers unable to view their accounts, and in December 2022 the FCA and the PRA
-fined TSB a total of £48.65 million. A new system's output is the one to reconcile first, never last.
+fined TSB a total of £48.65 million. A new system's output is the first thing to reconcile.
 
 | Check | What it catches | Cost on 50,000 rows |
 |---|---|---|

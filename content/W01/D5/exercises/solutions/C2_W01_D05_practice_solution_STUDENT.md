@@ -1,6 +1,6 @@
 # Solution: the practice lab
 
-Answers: 1b 2c 3b 4d 5a 6d 7a 8b 9c 10c 11b 12c 13a 14d 15a 16d
+Answers: 1b 2c 3b 4d 5a 6d 7a 8b 9c 10c 11b 12c 13a 14d 15a 16d 17d
 
 Hands-on numbers from a correct rerun: 4 rows rejected, Q2 revenue Rs 23,39,340, Retail-Plus's
 distinct orders in Q2 12.
@@ -18,7 +18,7 @@ down 25 percent. Student moves from 2 orders to 3.
 
 ## Item by item
 
-Items 4, 7, 10, 11, 12, 15 and 16 are design items, seven of sixteen. Item 16 is also the set's ordering item.
+Items 4, 7, 10, 11, 12, 15 and 16 are design items, seven of seventeen. Item 16 is the set's ordering item and item 17 its find-the-defect item.
 
 | Item | Key | Why it holds | Why the others fail |
 |---|---|---|---|
@@ -38,6 +38,7 @@ Items 4, 7, 10, 11, 12, 15 and 16 are design items, seven of sixteen. Item 16 is
 | 14 | d | It restates the claim with its count (8 members here, all still ordering), bounds it, and offers the test that settles chance. | a folds. b overclaims what a p-value does. c changes the subject to the total. |
 | 15 | a | The claim rests on the gap being larger than chance produces, so a rerun that puts it inside the chance spread moves it to the caveat. Design item: the fact that would switch the call. | b is about the total, which never carried the claim. c is about a different segment. d is disagreement, which the evidence answers rather than obeys. |
 | 16 | d | The profile first, then the check that needs nothing outside the file, then the request for a control total, which runs while the decomposition does. Design item: the order under a clock with no reference. | a reads the tree before anyone knows the file is sound. b quotes a number before the profile. c spends the two hours waiting. |
+| 17 | d | Line 8 turns a value the code cannot read into zero, keeps its row and writes nothing to a log, so counts reconcile while rupees fall short, which is chapter 2's trap. | a starts an accumulator correctly. b is Wednesday's identity rule and keeps one row per order. c is where the failure happens, which is right to catch; the defect is what the except does with it. |
 
 ## The part worth arguing about
 
@@ -49,7 +50,9 @@ and still has no reason for it.
 The same decision moves the test behind the note's lead. Shuffling the segment label across customers,
 2,000 times on `random.Random(7)`, Retail-Plus's fall in orders per member against Retail-Core's comes
 out at p = 0.047 with the unknown order kept as a customer of its own (0.046 to 0.058 on seeds 1 to
-3), and at p = 0.011 with it left out of the customer count. The first sits on the edge of 0.05, so
+3), and at p = 0.011 with the order left out of the file entirely. Item 3's handling, the order kept
+in revenue with its customer uncounted, widens the observed gap to about -34 points, and it gives the
+shuffle no customer to move, so the note reports the test under the first handling and says so. The first sits on the edge of 0.05, so
 the honest note leads with the fall, says the test is borderline, and names the unknown order in the
 caveat as the decision the verdict turns on. That is item 15's fact in practice: a rerun that puts the
 gap inside chance moves the claim to the caveat.

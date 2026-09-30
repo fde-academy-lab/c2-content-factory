@@ -62,4 +62,4 @@ an unfinished note with a true caveat is worth more than a finished one without 
 
 You get twenty minutes for a second look. Compare the two quarter totals you used against the
 control totals, and write one line under your note in a new cell: what you checked, or what moved
-and by how much. It does not change what you handed in; it is what you bring to the debrief.
+and by how much. What you handed in stays as it was, and this line is what you bring to the debrief.

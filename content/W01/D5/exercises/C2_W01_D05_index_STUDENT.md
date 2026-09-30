@@ -9,6 +9,6 @@ The lab is the day's exercise; everything after it is practice with a listener.
 | Afternoon, round one in pairs | `guided/C2_W01_D05_rehearsal_brief_STUDENT.md` | Thursday's note defended against a partner playing Marketing | Nothing; you keep the feedback cards |
 | Afternoon, after each defence | `guided/C2_W01_D05_feedback_card_STUDENT.md` | Four questions, no score | The card, to the defender |
 | Afternoon, 40 minutes | `unguided/C2_W01_D05_timed_cases_STUDENT.md` | Three design cases set at Kalpa, each asking which approach fits, sized how, and what would switch it | Nothing; the answers are spoken |
-| The practice lab, after the day | `practice/C2_W01_D05_practice_STUDENT.md` | Rerun the step where you stalled, on the practice export; the last item of each problem is a design item | Fifteen letters in one line, and three numbers |
+| The practice lab, after the day | `practice/C2_W01_D05_practice_STUDENT.md` | Rerun the step where you stalled, on the practice export; the last item of each problem is a design item | Seventeen letters in one line, and three numbers |
 
 The practice solution opens at the end of the practice lab, in `solutions/`.

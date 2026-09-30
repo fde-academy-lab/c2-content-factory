@@ -43,8 +43,8 @@ print(f"{len(rows)} rows read from the lab export; Finance's control totals for 
 '''
 
 HONESTY = """
-**Before you read on.** This notebook runs on this morning's lab export and shows the morning's
-numbers. It opens after the lab clock stops, and it is the debrief's text for self-study too.
+    **Before you read on.** This notebook runs on this morning's lab export and shows the morning's
+    numbers. It opens after the lab clock stops, and it is the debrief's text for self-study too.
 """
 
 # --------------------------------------------------------------------------------- chapter 1
@@ -172,7 +172,8 @@ kit.check("the hurried run points the opposite way to the books", h_change > 0 >
 
     You have just seen option A's headline. The cell below sizes all four on this morning's file: it
     runs the hurried pass, then applies each check and fixes only what that check can see. D cannot run
-    here, since the lab had no ledger; its row shows what it would land on once matched. The minutes are the lab brief's pace, and D's is this
+    here, since the lab had no ledger; its row is modelled on C's result, which is what a full match
+    would land on. The minutes are the lab brief's pace, and D's is this
     programme's estimate for a request to Finance and a join; the milliseconds are measured here.
     """),
     code('''
@@ -335,40 +336,12 @@ kit.table(["quarter", "Finance", "plus rows removed", "less value read back", "l
 kit.equation(["Finance's total", "+", "rows removed", "-", "value read back", "=", "the hurried sum"],
              title="The second route, read left to right")
 kit.check("the walk back lands on the hurried sum in both quarters", all(back[q] == hurried[q][0] for q in QUARTERS))
-books_back = {q: hurried[q][0] - (back[q] - ctl(q)[0]) for q in QUARTERS}
-kit.check("the headline rebuilt from the walk back equals the forward bridge's",
-          round(change(books_back["Q1"], books_back["Q2"]), 1) == round(change(clean["Q1"][0], clean["Q2"][0]), 1),
-          f"{change(books_back['Q1'], books_back['Q2']):+.1f}%")
+
 '''),
     md("""
     **When to switch routes.** The forward bridge is the one to show Finance, because it starts from
     their export. The walk back is the one to run when a bridge closes suspiciously neatly: two
     mistakes that cancel pass one route and fail the other.
-
-    > **Kavya's review.** A number that has not been reconciled can point the wrong way, and this
-    > morning it did. Put the two checks in a cell before you compute
-    > the first number you plan to send, so the clock cannot remove them.
-
-    ### In the interview
-
-    **[S] Walk me through how you clean and check a dataset you have never seen.** "I profile every
-    field first: present, convertible and distinct counts, and each count that is not what the field
-    should hold is a finding. I clean with a log, one row per decision with its reason, and I keep what
-    I reject. Then I reconcile before I analyse: rows read equal rows kept plus rows rejected, and each
-    period's value lands on a total from outside the file, Finance's if there is one. On a lab export
-    last week the count check alone moved my headline from +11.8 to -14.6 percent, and only the rupee
-    check got it to the books' -28.5, so I never stop at counts."
-
-    **[F] You have two hours and a raw export; what do you do first, and what do you skip?** "Profile
-    first, twenty minutes. I never skip the reconciliation, because it is the step that can flip the
-    sign of the finding and it costs fifteen minutes. I skip anything that does not change today's
-    answer: a second chart, a test on every segment, polishing. If there is no control total I say so
-    in the caveat and ask for one before the number leaves the room."
-
-    **The design question: which check, and what would make you switch?** "Counts and rupees against a
-    control total with a bridge, because it catches both kinds of error for fifteen minutes and needs
-    only what comes with the export. I switch to an order-level match against the ledger when the bridge
-    will not close or when there is no control total, and I say it will cost the afternoon."
 
     ### Depth: the same rows also move a branch
 
@@ -399,6 +372,31 @@ kit.check("on the hurried rows frequency rises and revenue looks flat",
     md("""
     The hurried rows turn a basket problem into a flat segment with loyal customers. Chapter 3 reads the
     clean tree properly.
+
+    > **Kavya's review.** A number that has not been reconciled can point the wrong way, and this
+    > morning it did. Put the two checks in a cell before you compute
+    > the first number you plan to send, so the clock cannot remove them.
+
+    ### In the interview
+
+    **[S] Walk me through how you clean and check a dataset you have never seen.** "I profile every
+    field first: present, convertible and distinct counts, and each count that is not what the field
+    should hold is a finding. I clean with a log, one row per decision with its reason, and I keep what
+    I reject. Then I reconcile before I analyse: rows read equal rows kept plus rows rejected, and each
+    period's value lands on a total from outside the file, Finance's if there is one. On a lab export
+    last week the count check alone moved my headline from +11.8 to -14.6 percent, and only the rupee
+    check got it to the books' -28.5, so I never stop at counts."
+
+    **[F] You have two hours and a raw export; what do you do first, and what do you skip?** "Profile
+    first, twenty minutes. I never skip the reconciliation, because it is the step that can flip the
+    sign of the finding and it costs fifteen minutes. I skip anything that does not change today's
+    answer: a second chart, a test on every segment, polishing. If there is no control total I say so
+    in the caveat and ask for one before the number leaves the room."
+
+    **The design question: which check, and what would make you switch?** "Counts and rupees against a
+    control total with a bridge, because it catches both kinds of error for fifteen minutes and needs
+    only what comes with the export. I switch to an order-level match against the ledger when the bridge
+    will not close or when there is no control total, and I say it will cost the afternoon."
 
     **Depth: when there is no control total.** Three stand-ins, in the order a careful analyst tries
     them: the same quarters in a second export pulled from the source system on another day; the

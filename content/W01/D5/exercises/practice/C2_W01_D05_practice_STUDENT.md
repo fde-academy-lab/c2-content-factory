@@ -13,16 +13,16 @@ your TA marked; the four problems below climb from the profile to the note, so s
 that holds your step and carry on from there. About an hour in all.
 
 Answer each item with one letter, in order, and post the letters as one line. The last item of each
-problem is a design item: which approach fits, sized how, and what would switch it. Item 16 closes the
-set by asking for the order of the method itself.
+problem is a design item: which approach fits, sized how, and what would switch it. Item 16 asks for the order of
+the method itself, and item 17 asks you to find the defect in a snippet.
 
 ```
-Post one line in this shape: 1x 2x 3x 4x 5x 6x 7x 8x 9x 10x 11x 12x 13x 14x 15x 16x
+Post one line in this shape: 1x 2x 3x 4x 5x 6x 7x 8x 9x 10x 11x 12x 13x 14x 15x 16x 17x
 ```
 
 ---
 
-## Problem 1: the profile and the decisions (about 15 minutes)
+## Problem 1: the profile and the decisions
 
 Run the profile and the cleaning pass on the practice export before you answer.
 
@@ -37,7 +37,7 @@ d) Rows whose amount or customer looks odd are counted
 
 ### Item 2
 
-Suppose an amount will not convert to a number, and you can read it without guessing. What goes in the decisions log?
+On a supplier's export last month, an amount would not convert to a number, and it could be read without guessing. What went in the decisions log?
 
 a) Set it to 0 so the quarter still sums, and move on
 b) Drop the row, since a value that fails is unusable
@@ -46,12 +46,12 @@ d) Replace it with the segment's median order, with no note
 
 ### Item 3
 
-Suppose an order carries no customer_id, and Anand's analyst will audit the customer count. What do you do?
+On another team's export, an order carried no customer_id, and Anand's analyst would audit the customer count. What was right?
 
 a) Drop the order, so every remaining row is complete
 b) Keep it in revenue, flag it, state customers both ways
 c) Count the empty id as one more customer, since it is an order
-d) Give it to the Retail-Core customer with the most orders
+d) Give it to the busiest customer in its segment
 
 ### Item 4
 
@@ -65,7 +65,7 @@ d) Distinct order ids against rows, one cell at either size
 
 ---
 
-## Problem 2: the reconciliation (about 10 minutes)
+## Problem 2: the reconciliation
 
 ### Item 5
 
@@ -78,7 +78,7 @@ d) Every cleaning decision was right, in rows and in rupees
 
 ### Item 6
 
-A colleague's Q1 lands on Finance's order count and falls short of its rupee total, with zero rejects reported. Which cause fits all three facts?
+A colleague's quarter lands on Finance's order count and falls short of its rupee total, with zero rejects reported. Which cause fits all three facts?
 
 a) A repeated row that was kept in the quarter
 b) An order dropped without a word in the log
@@ -97,7 +97,7 @@ d) Q1's control total applied to both quarters, as the nearest
 
 ---
 
-## Problem 3: the tree and the test (about 20 minutes)
+## Problem 3: the tree and the test
 
 ### Item 8
 
@@ -112,10 +112,10 @@ d) None of them, since the total held
 
 Kavya asks for Retail-Plus orders per customer, Q1 to Q2, on the clean data. What is the change?
 
-a) -40.0%, counting Q1 rows as they arrived
-b) -1.7%, the change in revenue per order
-c) -25.0%, counting distinct Q1 orders
-d) +33.3%, measured from Q2 back to Q1
+a) -40.0%
+b) -1.7%
+c) -25.0%
+d) +33.3%
 
 ### Item 10
 
@@ -128,7 +128,7 @@ d) Leave it out of the note, since a small segment cannot matter
 
 ### Item 11
 
-You test whether Retail-Plus's fall in frequency differs from Retail-Core's by more than chance. What do you shuffle?
+You test whether the branch your tree names moved differently in one segment than in another. What do you shuffle?
 
 a) The orders, one at a time, across the two segments
 b) The segment label, across whole customers
@@ -146,7 +146,7 @@ d) All four segments at once, leading with the smallest p-value
 
 ---
 
-## Problem 4: the note (about 15 minutes)
+## Problem 4: the note
 
 ### Item 13
 
@@ -164,7 +164,7 @@ Marketing pushes on the note: "The tier is tiny. Why should Meera care?" Which a
 a) "You are right, so I will take the tier out of the note before Monday's review."
 b) "Its size does not matter, because the p-value settles the question either way."
 c) "The members matter less than the total, and the total held all quarter."
-d) "Every member is still here, ordering less; the test says if it is chance."
+d) "Here is its count and its move; the test says whether it is chance."
 
 ### Item 15
 
@@ -184,6 +184,31 @@ a) Decompose, then profile, then one shuffle test, then the note
 b) Sum and chart it, then profile, then reconcile what you can
 c) Ask Finance for totals, wait for them, then profile and decompose
 d) Profile, account for values, ask Finance for totals, decompose
+
+### Item 17
+
+A colleague's cleaning cell for the practice export is below. One line makes a pass that looks clean
+while it is short in rupees.
+
+```python
+kept, total = {}, 0                      # line 1
+for r in rows:
+    if r["order_id"] in kept:            # line 3
+        continue
+    try:
+        amount = int(r["amount"])        # line 6
+    except ValueError:
+        amount = 0                       # line 8
+    kept[r["order_id"]] = amount
+    total += amount                      # line 10
+```
+
+Which line is it?
+
+a) Line 1, since the total starts at zero before any order is read
+b) Line 3, since it skips a row whose order id is already kept
+c) Line 6, since int() fails on a value with grouping commas
+d) Line 8, a value it cannot read becomes zero, with no log
 
 ---
 

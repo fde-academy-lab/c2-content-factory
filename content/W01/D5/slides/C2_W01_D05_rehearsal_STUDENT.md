@@ -58,7 +58,7 @@ label: 20 seconds | title: Action | body: What to do, what it costs, and what wo
 
 ```notes
 LIVE, 2 minutes. The timings add to two minutes. A learner who runs long almost always ran long in
-the evidence; the fix is one number fewer, never a faster voice.
+the evidence; the fix is one number fewer at the same pace.
 ```
 
 ---
@@ -306,7 +306,7 @@ preread/ and ships tonight.
 ---
 
 ## S14. The lines to carry out of the week
-*The same five lines close the study notes, word for word.*
+*Five lines, one per step the week made yours.*
 
 1. Reconcile counts and rupees to a control total before you quote a total.
 2. A zero-reject pass on a file you know is dirty is the first thing to investigate.

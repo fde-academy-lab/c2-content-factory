@@ -51,9 +51,7 @@ dropped with its reason, and names the fact that would switch the plan.
 **The real company.** Avenue Supermarts (DMart), Q2 FY26 business update released 3 October 2025:
 standalone revenue from operations Rs 16,218.79 crore against Rs 14,050.32 crore a year earlier, 432
 stores at 30 September 2025, figures provisional and subject to limited review; results approved by
-the board on 11 October 2025. Bajaj Broking, https://www.bajajbroking.in/share-market-news/dmart-q2-fy2025-26-results-revenue-at-rs-16218-79-crore
-(verified 30 Sep 2026); IndiaCSR, https://indiacsr.in/dmart-q2-fy26-results-revenue-rises-15-4-to-rs-16218-79-cr-store-count-at-432/
-(verified 30 Sep 2026).
+the board on 11 October 2025. Bajaj Broking, https://www.bajajbroking.in/share-market-news/dmart-q2-fy2025-26-results-revenue-at-rs-16218-79-crore (verified 30 Sep 2026); IndiaCSR, https://indiacsr.in/dmart-q2-fy26-results-revenue-rises-15-4-to-rs-16218-79-cr-store-count-at-432/ (verified 30 Sep 2026).
 
 ## Case 2: zero rejects and a Rs 20 lakh gap, after the migration
 
@@ -90,12 +88,10 @@ bridge closes, and treats Finance's figure as the reference until then.
 
 **The real company.** TSB: the FCA and PRA fined TSB £48,650,000 in total on 20 December 2022 for the
 April 2018 migration to a new IT platform, which affected a significant proportion of its 5.2 million
-customers. FCA, https://www.fca.org.uk/news/press-releases/tsb-fined-48m-operational-resilience-failings
-(verified 30 Sep 2026). The 1.9 million customers unable to view their accounts and the move from
+customers. FCA, https://www.fca.org.uk/news/press-releases/tsb-fined-48m-operational-resilience-failings (verified 30 Sep 2026). The 1.9 million customers unable to view their accounts and the move from
 Lloyds Banking Group's platform to Sabadell's Proteo4UK come from the Slaughter and May review as
 reported by The Register, 19 November 2019,
-https://theregister.com/2019/11/19/tsb_slammed_for_big_bang_it_approach_behind_disastrous_migration
-(verified 30 Sep 2026).
+https://theregister.com/2019/11/19/tsb_slammed_for_big_bang_it_approach_behind_disastrous_migration (verified 30 Sep 2026).
 
 ## Case 3: 42 percent on twelve visits
 
