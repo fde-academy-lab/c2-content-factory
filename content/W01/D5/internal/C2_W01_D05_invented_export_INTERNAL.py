@@ -120,7 +120,8 @@ def main():
     out = []
     say = out.append
     say(f"profile: rows {len(rows)}, distinct ids {len({r['order_id'] for r in rows})}, amount convertible "
-        f"{sum(1 for r in rows if isinstance(r['amount'], int))}, segment present {sum(1 for r in rows if r['segment'])}")
+        f"{sum(1 for r in rows if isinstance(r['amount'], int))}, amount distinct {len({str(r['amount']) for r in rows})}, "
+        f"segment present {sum(1 for r in rows if r['segment'])}")
     say(f"control: Q1 Rs {ctl['Q1'][0]:,} on {ctl['Q1'][1]}, Q2 Rs {ctl['Q2'][0]:,} on {ctl['Q2'][1]}, {truth:+.1f}%")
     say(f"hurried: Q1 Rs {hurried['Q1'][0]:,} on {hurried['Q1'][1]} rows, Q2 Rs {hurried['Q2'][0]:,} on "
         f"{hurried['Q2'][1]} rows, {h:+.1f}%, points off {abs(h - truth):.1f}")
@@ -217,6 +218,16 @@ def main():
     mid = (amts[len(amts) // 2] + amts[(len(amts) - 1) // 2]) / 2
     say(f"typical order, clean: mean Rs {sum(amts) / len(amts):,.0f}, median Rs {mid:,.0f}")
     print("\n".join(out))
+    # Every figure the deck and the notes quote, asserted, so a change to this file cannot drift from them.
+    assert (len(rows), len({r["order_id"] for r in rows}), len({str(r["amount"]) for r in rows})) == (175, 167, 130)
+    assert (hurried["Q1"][0], hurried["Q2"][0], hurried["Q2"][1]) == (3150000, 3816420, 92)
+    assert (round(h, 1), round(c, 1), round(truth, 1)) == (21.2, -17.5, -35.0)
+    assert (repeats, as_read, blank["amount"]) == (1216420, 6966420, 2350)
+    assert (core_named, round(change(core_named, core_q2), 1)) == (73250, 2.2)
+    assert (round(ph2[2], 2), round(change(ph1[4], ph2[4]), 1)) == (2.44, 2.1)
+    assert (biz, round(100 * biz / fall, 1), round(1 - even, 3)) == (1388200, 99.2, 0.453)
+    assert (both, round(one / 2000, 4), fell, rose, round(sign_p, 3)) == (20, 0.0035, 13, 3, 0.021)
+    assert (hits_both, flips_both, round(sum(amts) / len(amts)), mid) == (0, 9, 39521, 2350)
 
 
 if __name__ == "__main__":
