@@ -589,7 +589,7 @@ These items come from the week's source file, not the tracker. Accept one by add
 
 ## Option edits laid on the bank, waiting for the tracker
 
-These options differ from the tracker's wording, because the bank's key was the longest option. The stem and the key are the tracker's. Accept an edit by copying it into the tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.
+These options differ from the tracker's wording, each for the reason given beside it. The stem and the key are the tracker's. Accept an edit by copying it into the tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.
 
 - Q10 (bank 17), option a, b (proposed): The key (23 characters) was the only option phrased as a count; the two frequency branches now read the same way.
 - Q46 (bank 19), option b (proposed): The key was the longest option; the miscalculation distractor now names a cause.
