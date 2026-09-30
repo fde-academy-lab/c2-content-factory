@@ -136,7 +136,7 @@ flowchart TB
 
 Below net revenue the P&L looks like any other business. **Cost of services** is what performing the tests costs: the draw, the courier, the reagents, the analysers, the lab staff and the buildings. What is left is **gross profit**, and after selling, general and administrative costs, billing and technology among them, **operating income**. Quest reported cost of services of 66.8 percent of net revenues in 2025, selling, general and administrative costs of 17.8 percent, and an operating income of 14.1 percent, $1,556 million (10-K for 2025). The illustration's $5.50 of $37 is 14.9 percent.
 
-So of every $100 a lab bills at list price, about $37 is revenue and about $5 is operating income. A one-point rise in the denial rate costs little against $100 of charges and a great deal against $5.50 of profit.
+So of every $100 a lab bills at list price, about $37 is revenue and about $5 is operating income. A $1 leak from the $40 allowed, a denial upheld or a balance unpaid, is 2.5 percent of the allowed amount and 18 percent of the operating income.
 
 ### One claim, from charge to contribution
 
@@ -234,24 +234,24 @@ James's tests were charged at $180, allowed at $60 and owed by James. When a lab
 
 A lab earns when it performs a test and collects for it. How many tests it performs, and where, is a tree you have drawn before in Kalpa Retail's words, and Build 1 is where you draw it again in these. This section is the other half: what happens to a test's charge on its way to cash, which a retail tree never needed because a shopper pays at the till. Below, the ten metrics on the card come as a formula, a worked number, the trap that most often makes each lie, and who asks for it.
 
-The picture to keep from this dossier is the tree below. Gross charges are what the lab bills at its own prices; the contracts take most of that away before anyone pays, and what is left, the allowed amount, splits between the payer and the patient. Denials and unpaid patient balances leak out before the money arrives, and two measures watch the pipe itself: how clean the claims are when they leave, and how long the money takes to come back.
+The picture to keep from this dossier is the tree below. Gross charges are what the lab bills at its own prices; the contracts take most of that away before anyone pays, and what is left, the allowed amount, splits between the payer and the patient. Denials and unpaid patient balances leak out before the money arrives, and two measures set the pace of the rest: how clean the claims are when they leave, and how long the money takes to come back.
 
 ```mermaid
-flowchart TB
-    G["<b>gross charges</b><br/>tests at list price"] --> A["<b>allowed amount</b><br/>what the contract permits"]
-    G -.-> C["<b>contractual adjustment</b><br/>never billed to anyone"]
+flowchart LR
+    G["<b>gross</b><br/><b>charges</b>"] --> A["<b>allowed</b><br/><b>amount</b>"]
+    G -.-> C["<b>contractual</b><br/><b>adjustment</b>"]
     A --> P["<b>payer's share</b>"]
-    A --> R["<b>patient responsibility</b><br/>deductible, coinsurance, copay"]
-    P & R --> K["<b>cash collected</b><br/>net collection rate"]
-    P -.-> D["<b>leaks</b><br/>denials not overturned,<br/>balances never paid"]
+    A --> R["<b>patient's share</b>"]
+    P --> K["<b>cash</b><br/>pace: clean<br/>claims, days in AR"]
+    R --> K
+    P -.-> D["<b>leaks</b><br/>denials, unpaid"]
     R -.-> D
-    Q["<b>the pipe</b><br/>clean claim rate,<br/>days in AR"] -.-> K
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     classDef dark fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class A,P,R known
     class C,D bad
-    class G,K,Q dark
+    class G,K dark
 ```
 
 Every worked number below is illustrative, from one month at one Kalpa Health laboratory: 12,000 claims went out carrying $2,400,000 of gross charges, the plans' contracts allowed $960,000 of it, and the lab expects to collect $888,000 in the end.
