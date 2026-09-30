@@ -16,7 +16,7 @@ flowchart TB
     A --> P["<b>price per item</b>"]
     A --> D["<b>less discounts</b>"]
     L -.-> M["<b>gross margin</b><br/>then contribution"]
-    S["<b>on the shelf</b><br/>stock days, sell-through,<br/>stock-outs"] -.-> R
+    S["<b>on the shelf</b><br/>days of inventory,<br/>sell-through, stock-outs"] -.-> R
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     classDef dark fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -26,6 +26,8 @@ flowchart TB
 ```
 
 **Revenue = customers x orders per customer x items per order x price per item, less discounts.** Stock on the shelf decides whether any of it can happen, and cancellations and returns leak out before the margin is counted.
+
+The tree's revenue is GMV: sales at the prices charged, before the leaks and GST come out. Net revenue is what is left once they have.
 
 **Crux:** Every retail number is a branch of revenue or a leak from it, so say its denominator and its window before the number.
 
@@ -39,10 +41,10 @@ flowchart TB
 | Repeat rate | Buyers with 2+ orders / all buyers |
 | Retention | Cohort buyers in month k / cohort size |
 | CLV | Contribution per order x orders a year x years |
-| CAC payback | CAC / monthly contribution per customer |
+| CAC and payback | CAC = acquisition spend / new customers; payback = CAC / monthly contribution |
 | Gross margin | (Net revenue less COGS) / net revenue |
-| Inventory days | Stock at cost / COGS per day |
-| Same-store growth | Both-year stores' sales / last year's, less 1 |
+| Days of inventory | Average stock at cost / COGS per day |
+| Like-for-like growth | Stores open all of both periods: sales / the same stores' sales last period, less 1 |
 
 **Crux:** Compare rates only on the same denominator and window.
 
@@ -81,7 +83,7 @@ flowchart TB
 | **RTO** | A parcel sent back undelivered |
 | **Fill rate** | Share of an order a supplier delivered |
 | **Sell-through** | Units sold / units received |
-| **Like-for-like** | Growth on stores open in both periods |
+| **Like-for-like** | Growth on stores open throughout both periods |
 | **Cohort** | Customers grouped by first purchase |
 
 ## Panel 5: The rules a retail data team works under
@@ -90,23 +92,23 @@ flowchart TB
 |---|---|
 | **GST** | Says whether GST is inside each revenue column |
 | **Legal Metrology** | Never prices above MRP |
-| **E-commerce 2020** | Explicit consent, explained ranking, 48-hour replies |
+| **E-commerce 2020** | Explicit consent; ranking parameters shown; complaints acknowledged in 48 hours, redressed in a month |
 | **Dark patterns** | No false urgency, basket sneaking or drip pricing |
 | **DPDP** | A stated purpose for every use of personal data |
 | **RBI tokens** | Tokens and last four digits, never card numbers |
 | **PCI DSS** | Card data stays out of analytics |
-| **FDI** | Foreign-owned e-commerce runs as a marketplace |
+| **FDI** | Foreign-owned multi-brand e-commerce selling in India runs as a marketplace |
 | **CCPA, for US** | Requests to know, delete, correct, opt out |
 
 ## Panel 6: Where Rs 100 of GMV goes
 
 | Line | Left, Rs |
 |---|---|
-| **GMV**: ordered, at the price charged | 100 |
-| Less cancellations and returns | 90 kept |
-| Less GST, collected for the state | 80 **net revenue** |
-| Less the cost of the goods | 20 **gross margin** |
-| Less delivery, returns, fees, marketing | 7.5 **contribution** |
-| Less stores, warehouses, tech, head office | 2.5 **operating profit** |
+| **GMV**, at the prices charged | 100 |
+| Less cancellations, returns | 90 kept |
+| Less GST, for the state | 80 **net revenue** |
+| Less cost of the goods | 20 **gross margin** |
+| Less per-order costs | 7.5 **contribution** |
+| Less fixed costs, acquisition | 2.5 **EBITDA** |
 
-**Crux:** A marketplace earns its fees; its GMV is its sellers' sales.
+**Crux:** Owning the stock leaves about Rs 2.50 of every Rs 100 ordered, so one leak or one price cut can decide the year.
