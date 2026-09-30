@@ -61,7 +61,7 @@ icon: megaphone | eyebrow: Acquisition | title: The marketing lead | body: Owns 
 
 ```notes
 LIVE, 3 minutes. Name the incentive behind each voice without judging it. Marketing is paid to
-acquire, so it reads every fall as an acquisition problem; that is structure, not bad faith. The
+acquire, so it reads every fall as an acquisition problem; that is how the role is paid, and it says nothing about good faith. The
 head of Retail-Plus wants a verdict on his tier; do not give him one this morning, his question
 returns after lunch. Anand Iyer, Finance, is listening too: he will ask whether our numbers match
 his books, and tomorrow he will.
@@ -84,7 +84,7 @@ his books, and tomorrow he will.
 ```notes
 LIVE, 4 minutes. The cost list is the curriculum row's own: acquisition costs marketing, frequency
 costs retention, basket costs merchandising, price risks volume, discounts trade margin for
-quantity. The HBR figures are published estimates across industries, not Kalpa's numbers; say so.
+quantity. The HBR figures are published estimates across industries, and Kalpa has none of its own yet; say so.
 Their use today: if the fall sits in frequency, the cheaper lever is on the table and the Rs 12
 crore is aimed at the wrong branch. That is why the decomposition matters in rupees.
 Source: HBR, "The Value of Keeping the Right Customers", Amy Gallo, 29 Oct 2014.
@@ -109,7 +109,7 @@ flowchart LR
 ```notes
 LIVE, 4 minutes. Two minutes in pairs, then collect answers on the board. Expect "different lengths
 of time", "different definition of sales", "missing values", "one huge order". Push for places in
-the system, not only in the arithmetic: where the data is written, moved and summarised. Keep every
+the system as well as in the arithmetic: where the data is written, moved and summarised. Keep every
 answer; the next slide places them on the map.
 ```
 
@@ -137,8 +137,8 @@ flowchart LR
 LIVE, 3 minutes. Place the room's answers on the four hops. The fifth way, a few very large orders,
 is not a system fault at all: it is the business being lumpy, and it returns in rounds 1 and 3.
 Round 1 is the export and the tile; round 2 is the order system's empty field; round 3 is the
-dashboard's roll-up. Engineers in a GCC are asked this constantly: the drop was a pipeline, not a
-market. Checking the pipeline first is the cheapest investigation there is.
+dashboard's roll-up. Engineers in a GCC are asked this constantly: the drop sat in a
+pipeline while the market held. Checking the pipeline first is the cheapest investigation there is.
 ```
 
 ---
@@ -293,12 +293,13 @@ in weeks is the one a rate per week needs.
 *The two totals never measured the same stretch of time, and the cumulative lines show where the tile stopped.*
 
 ```mermaid
+%%{init: {"xyChart": {"showLegend": true}}}%%
 xychart-beta
     title "Revenue to date by week of quarter, Rs lakh"
-    x-axis "Week of quarter" [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-    y-axis "Rs lakh" 0 --> 220
-    line [37.7, 42.0, 64.9, 84.8, 107.2, 110.9, 138.6, 152.7, 152.8, 152.9, 187.5, 209.9, 210.0]
-    line [23.5, 43.0, 46.0, 61.2, 67.6, 119.4, 133.8, 142.2, 142.3, 142.3, 155.6, 172.2, 187.0]
+    x-axis "Week of quarter; the tile stops at week 11" [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+    y-axis "Rs lakh" 0 --> 230
+    line "Q1" [37.7, 42.0, 64.9, 84.8, 107.2, 110.9, 138.6, 152.7, 152.8, 152.9, 187.5, 209.9, 210.0 "Q1 210.0"]
+    line "Q2" [23.5, 43.0, 46.0, 61.2, 67.6, 119.4, 133.8, 142.2, 142.3, 142.3, 155.6 "tile stops, 155.6", 172.2, 187.0 "Q2 187.0"]
 ```
 
 The line that ends at Rs 210.0 lakh is Q1. The other is Q2: Rs 155.6 lakh at week 11, which is the tile, and Rs 187.0 lakh at the close.
@@ -674,7 +675,7 @@ flowchart LR
 
 ```notes
 LIVE, 3 minutes. The head of Retail-Plus asked whether his tier is slipping, and Meera asked
-whether it is everyone. This table is a lens, not an answer: it says which number to read first for
+whether it is everyone. This table is a lens that points the question: it says which number to read first for
 each kind of customer. A paid tier is sold on repeat buying, so its health shows in frequency before
 it shows in the member count. Eight trees are needed, four segments by two quarters; ask how many
 times the room wants to paste round 2's code.
@@ -783,7 +784,7 @@ Business are the two segments demonstrated; do not run Retail-Plus or Student on
 
 ---
 
-## S32. Answer: one order moved the range, not the middle
+## S32. Answer: one order stretched the range; the middle held
 *A typical Business order barely changed; one large order stretched the extremes.*
 
 | Business | Median | Middle half | Range | Mean |
@@ -807,11 +808,13 @@ median Rs 2,325 to Rs 2,080, with a flat spread.
 *Averaging the four segments' orders per customer gives a softer story and a different decision.*
 
 ```mermaid
+%%{init: {"xyChart": {"showDataLabel": true, "showDataLabelOutsideBar": true}, "themeVariables": {"xyChart": {"plotColorPalette": "#D63A6A, #1F8A5B"}}}}%%
 xychart-beta
-    title "Orders per customer, two ways to roll up"
+    title "Averaged in pink, the wrong roll-up; weighted in green"
     x-axis ["Averaged Q1", "Averaged Q2", "Weighted Q1", "Weighted Q2"]
     y-axis "Orders per customer" 0 --> 2.2
     bar [1.94, 1.82, 1.65, 1.25]
+    bar [-1, -1, 1.65, 1.25]
 ```
 
 **What breaks.** Averaged, the four segments say 1.94 to 1.82, a fall of 6.0 percent: "frequency is not the branch, so Marketing may be right after all", and the Rs 12 crore goes back on the table.
