@@ -2,10 +2,13 @@
 
 **TRAINER ONLY.** Led by the Academic TA. The paper the room sits is the Word file in `paper/`; the
 key in `answer-key/` carries every item's key, tag, level, day, interview anchor, why the key holds,
-why each wrong option fails, and the answers to the stretch page.
+why each wrong option fails, the bank items folded into each item, and the answers to the stretch
+page.
 
 SQL carries more interview weight than any other analyst skill, so this is the heaviest paper of
-the first month. The afternoon turns what the paper found into answers each learner can say aloud.
+the first month. It is also the first paper whose items leave Kalpa: six items take the week's traps
+to public cases, and Part 6 sets them in an AI team's tables. The afternoon turns what the paper
+found into answers each learner can say aloud.
 
 ---
 
@@ -22,7 +25,7 @@ flowchart TB
 
 | Block | Duration | What happens |
 |---|---|---|
-| The paper | 120 min | Pen and paper, AI-free, no notes: 55 objective items in six parts, then the untimed stretch page for anyone who finishes early. |
+| The paper | 120 min | Pen and paper, AI-free, no notes: 35 items in six parts, paced at 117 minutes, then the untimed stretch page for anyone who finishes early. |
 | Break | 20 min | Papers stay face down on the desks. |
 | Marking | 20 min | Papers swapped and marked against the key, read out by the Academic TA, and the ticks entered by seat in the item-analysis workbook. |
 | The solution discussion | 90 min | The most-missed items first (35 min), then the ten anchors answered aloud as interview answers with random call-outs (50 min), and the step-one ratings set against the work (5 min). |
@@ -37,22 +40,25 @@ Three hundred minutes in all, with no new content anywhere in them.
 
 Hand out the Word paper face down and start the time together. Step one on the first page comes
 before any item: each learner rates the six parts from 1 to 4 on the answer sheet, as they are
-today. Laptops closed and phones away for the whole sitting. Announce the time left at 60 minutes and at 15 minutes. Anyone who finishes
-early turns to the stretch page, which is untimed and uncounted; its four follow-ups come back in
-the mock-interview round, so a learner who writes them now has rehearsed, and the six one-line
-recalls after them are the week's rules, moved off the timed paper.
+today. Laptops closed and phones away for the whole sitting. Announce the time left at 60 minutes
+and at 15 minutes. Say once, before the start, that Parts 5 and 6 name real companies and public
+cases: every fact in them is on the page with its source, and Part 6's tables are illustrative, so
+nobody needs to know the companies to answer. Anyone who finishes early turns to the stretch page,
+which is untimed and uncounted; its four follow-ups come back in the mock-interview round, so a
+learner who writes them now has rehearsed.
 
 ## Marking, 20 minutes
 
 1. Papers swap along the row, so nobody checks their own paper.
-2. Read the key part by part from the key file: letters in runs of five, words and numbers one at a
-   time, and each ordering item's sequence slowly, twice.
+2. Read the key part by part from the key file: letters in runs of five, the word-bank and match
+   letters one at a time, numbers one at a time, and each ordering item's sequence slowly, twice.
 3. The marker ticks or crosses each item on the answer sheet, writes each part's ticks in the box
-   beside that part's rating and their total as Items right, out of 55, and hands the paper back,
+   beside that part's rating and their total as Items right, out of 35, and hands the paper back,
    so each learner reads their rating against their score part by part.
-4. The key's rule settles the edge cases: every correct letter and no other on a more-than-one item,
-   the number on an applied maths item, and the whole sequence on an ordering item. There is no
-   partial credit, because the programme has set no rule for it.
+4. The key's rule settles the edge cases: every correct letter and no other on a more-than-one item
+   (Q11 and Q19), the letter on a word-bank or match item (Q3, Q4 and Q23 to Q26), the number on
+   Q17 and Q29 with the working left to the discussion, and the whole sequence on an ordering item
+   (Q2 and Q8). There is no partial credit, because the programme has set no rule for it.
 5. The Academic TA enters each paper by seat in
    `answer-key/C2_W02_SAT_item_analysis_TRAINER.xlsx`, never by name: the ticks in the Marks
    sheet, 1 for a tick, 0 for a cross and a blank for an item left empty, and the six step-one
@@ -71,29 +77,33 @@ only so that Monday's session knows what to revisit.
 ### Most-missed first, 35 minutes
 
 Take the order from the workbook's Discussion sheet: the five most-missed items, from the top. The
-candidate list below says what each likely miss tests and the repair to listen for; an item outside
-it that the sheet ranks higher takes its place. If the entry is not finished when the discussion
-opens, read the list instead, ask for hands, and write the counts on the board. For each item, ask
-"a cross on item 20?", call one person who crossed it to say what they wrote and why it looked
-right, then ask the room for the repair before reading it. The key file's "Why each answer holds"
-section has the reason behind every wrong option.
+candidate list below says what each likely miss tests, the wrong answer most papers will hold, the
+question to put to the room before anyone reads the key, and the repair to listen for; an item
+outside it that the sheet ranks higher takes its place. If the entry is not finished when the
+discussion opens, read the list instead, ask for hands, and write the counts on the board. For each
+item, ask "a cross on item 12?", call one person who crossed it to say what they wrote and why it
+looked right, then put the question below to the room before reading the repair. The key file's
+"Why each answer holds" section has the reason behind every wrong option.
 
-| Item | What it tests | The trap most papers fall into | The repair, said aloud |
-|---|---|---|---|
-| 20 and 27 | The join that multiplied money | Checking the rows, which all look fine | Compare the row count before and after the join first: fifty retried payments of Rs 2,000 turn Rs 20 lakh collected into a sum of Rs 21 lakh. |
-| 53 | A date filter on a LEFT join | Reading the WHERE as if it sat in ON, or counting O-1 once | The WHERE runs after the join and drops O-2 and the unpaid O-3, and O-1's two instalments repeat it: 2 rows and Rs 2,400. The date belongs in ON, and the payments go to one row per order before the join. |
-| 31 | A window that changes between runs | Blaming the cache or the database | Under a ROWS frame, ties in the window's ORDER BY leave the row order undefined, so the running total at the tied rows can differ between runs; Postgres's default RANGE frame gives tied rows one shared total instead. Either way, name a tiebreaker. |
-| 22 | What a full outer join adds | Ticking the orders with two payments | Only rows with no partner on the other side are new: orders with no payment and payments with no order. |
-| 32 | When GROUP BY runs out | Ticking each segment's total for the quarter | A rank within a segment, the previous month beside this one, and a running total with every row kept all need a window; a total per segment does not. |
-| 36 to 38 | Ties in a top-N | Assuming a top-N always returns N rows | DENSE_RANK three or less returns five members in set 2, RANK fifty or less ships 51 rows on a tie at fifty, and only ROW_NUMBER returns exactly N, by breaking the tie arbitrarily unless a tiebreaker is named. |
-| 49 | Where a fix belongs | Correcting the total in the pivot | The fix belongs in the merge: de-duplicate the exposure table on a stated rule and validate the keys, so the pivot is right without anyone typing over it. |
-| 54 | The reach that lost its unreached | Counting the three customers with no segment as a group of their own | groupby drops a missing key by default, so the code reports 2 reached and 2 bought where 5 were reached: group from the full list or pass dropna=False, and check that the groups add back to the rows. |
-| 16 | Logical order | Writing the clauses in the order they are typed | FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, which is why an alias works in ORDER BY and fails in WHERE. |
-| 2 and 50 | NULL and integers | Writing 0 for LAG's first month, or 2 for the mean frequency | LAG has no previous row to read, so it returns NULL; 1,000 orders over 400 customers is 2.5, and Postgres returns 2 only when it divides two integers. |
-| 52 | The average that skipped members | Picking 750, as if AVG counted a member with no Q2 order as zero | The CASE with no ELSE leaves NULL for the two members who bought nothing in Q2, and AVG divides by the values it can see, so the query reports Rs 1,500 flat where the honest figure is Rs 750. Write the zero with COALESCE, and put count(*) beside count(q2_spend). |
+| Item | What it tests | The answer most papers will hold | Ask the room | The repair, said aloud |
+|---|---|---|---|---|
+| 12 | Counting what each tie rule ships | 51, 51 and 50, reading DENSE_RANK as RANK without the gap | "Read the dense ranks down Exhibit 3A. Where do they fail to climb?" | Two ties, not one: the tie at 48 compresses the dense numbers, so C-0259 reaches 50 and DENSE_RANK ships 52. RANK ships 51 and ROW_NUMBER 50. |
+| 15 | LAG across a missing month | C-0161 and C-0171 only, believing LAG steps back a calendar month | "For C-0185's September row, which row does LAG(spend, 1) read?" | LAG reads the previous row, which for C-0185 is July. All four are flagged; a calendar check keeps the two genuine falls, and a month with no order is no reading. |
+| 9 | A date filter on a LEFT join | 3 rows or 4, reading the WHERE as if it sat in ON | "O-3 has no payment. What is its paid_date after the join, and what does BETWEEN do with it?" | The WHERE runs after the join and drops O-2 and O-3, and O-1's two instalments repeat it: 2 rows, Rs 2,400. The date belongs in ON, with payments at one row per order first. |
+| 33 | NOT IN against a list that holds a NULL | 2, the answer NOT EXISTS gives | "Write out c1 NOT IN ('c2', 'c4', NULL) as three comparisons. What is the last one?" | c1 <> NULL is unknown, so the whole condition is unknown and every row drops: 0. The review would call a working assistant useless. Write the anti-join as NOT EXISTS or a LEFT JOIN with IS NULL. |
+| 8 | The order of a reconciliation | Summing the payments before dropping the repeats | "If you sum first, where do the gateway's repeats end up?" | Drop the repeats by order and instalment, sum to one row per order, join, check 462 rows and a gap equal to the unpaid list, then send. Summing first keeps Rs 20,750 in collected. |
+| 6 | A denominator that shrank, and the base of a percentage | 40 percent, dividing the gap by the reported figure | "Too high compared with what?" | The CASE with no ELSE leaves the short views out of count, so 30 seconds over 3 views reads 10.0 against 6.0 per view; the overstatement is measured on the true 6.0, about 67 percent, inside the 60 to 80 percent TechCrunch reported for Facebook in 2016. |
+| 19 | Which guard stops a double count | Ticking drop_duplicates() | "The six repeated rows differ in one column. Which one, and what does drop_duplicates() do with them?" | They differ in exposed_date, so drop_duplicates() keeps all 346. validate='one_to_one' raises MergeError and a row-count assert fails: those two stop the run. |
+| 34 | Peers in a running total | 400, 700, 1200 and 1400, one step per row | "Calls 2 and 3 share a day. Which rows does the frame include for call 2?" | With ORDER BY day alone, calls 2 and 3 are peers and both read the day's close, 1200. Add call_id to the window's ORDER BY and each call gets its own step. |
+| 31 | The latest row per key, repeatably | ROW_NUMBER on the date alone | "bot-b finished two runs on 9 September. Which one does your query keep tomorrow morning?" | ROW_NUMBER with the date alone picks one of the pair, so the board can show 0.86 one morning and 0.79 the next; the tiebreaker makes it repeatable. A GROUP BY with two max() calls invents a run. |
+| 16 | A total against a run rate | "On plan, and the run rate is on plan" | "How many of the seven bars clear the line?" | The quarter closed on plan, Rs 10 ahead, and six of the last seven weeks sat below the weekly plan; the front-page line carries both, with its period and its comparison. |
+| 10 | What leaves when a check fails late | Collected alone, with a footnote | "Which figure passed its checks, and which one rests on the check that failed?" | Booked passed both of its checks, so it goes; collected waits, and the Rs 21,750 goes out as a named open line with an owner and a time. |
+| 11 | Checks that see a truncation | Ticking the .xlsx format | "Would the newer format have told anyone on the day?" | It raises the limit and checks nothing. Only a count of each file's records against the rows loaded, and a control total from the labs, compare what arrived with what was loaded. |
 
-When a learner connects set 1's numbers to Tuesday's warehouse, discuss what the room found on
-Tuesday and nothing more: the data's other contents stay unnamed.
+When a learner connects Parts 2 to 4 to the week's warehouse, discuss what the room found in class
+(the repeats, the unpaid orders, the tie at fiftieth, the members who fell) and nothing beyond it;
+the paper names those because the room has already found them. When a learner asks about the real
+companies, keep to what each item's source reports and do not add to it.
 
 ### The anchors aloud, 50 minutes
 
@@ -104,96 +114,100 @@ each anchor descend from it.
 
 #### 1. [S] WHERE against HAVING, one sentence each.
 
-*Items 5 and 14, and Stretch 5.*
+*Items 2 and 32.*
 
 WHERE decides whether to keep one row, judged on that row alone, before any grouping exists. HAVING
 decides whether to keep a whole group, judged on the group, after the grouping has happened. Listen
 for the answer that says only "rows against aggregates": true, and it predicts nothing new, because
-the timing is the answer.
+the timing is the answer. Q32 is the proof: bot-c forms no group at all, because WHERE removed its
+rows before GROUP BY ran.
 
 #### 2. [S] INNER against LEFT join: what does each drop or keep?
 
-*Items 6, 17, 22 and 53, and Stretch 8.*
+*Items 7, 9 and 33.*
 
 An inner join keeps only the rows that find a partner, so an order with no payment disappears. A
 left join keeps every row of the left table and fills the missing side with NULLs, so the unpaid
 order stays, which is how Anand's unpaid orders are found: left join, then keep the rows where the
 payment's key is NULL. Both can multiply rows, because each keeps every matching pair. The follow-up
-to ask: what happens to that left join when a WHERE on the payments table is added? (Stretch 2.)
+to ask: what happens to that left join when a WHERE on the payments table is added? (Q9.)
 
 #### 3. [S] RANK, DENSE_RANK and ROW_NUMBER on a tie.
 
-*Items 8, 28, 29 and 34 to 38.*
+*Items 12, 13, 31 and 34.*
 
 On a tie, RANK gives the tied rows the same rank and skips the next ones (1, 2, 2, 4), DENSE_RANK
 gives the same rank without a gap (1, 2, 2, 3), and ROW_NUMBER gives every row its own number and
-breaks the tie arbitrarily. The strong answer adds the business consequence: a top-50 report by RANK
-can ship 51 names, and one by ROW_NUMBER can hand two analysts two different lists from the same data
-unless a tiebreaker is named.
+breaks the tie arbitrarily. The strong answer adds the business consequence: the Retail-Plus list
+ships 51 under RANK, 52 under DENSE_RANK and 50 under ROW_NUMBER, and a ROW_NUMBER with no
+tiebreaker can hand two mornings two different leaderboards (Q31).
 
 #### 4. [S] groupby in the split-apply-combine sentence.
 
-*Items 10, 40, 50 and 54.*
+*Items 21 and 30.*
 
 groupby splits the rows by a key, applies a computation to each group, and combines the results into
-one row per group: 1,000 orders belonging to 400 customers become a 400-row table, with a mean
-frequency of 2.5 orders per customer. The follow-up to ask: the same ratio in SQL printed 2; why?
-(Stretch 1.)
+one row per group. pivot_table is the same sentence with two keys, and its default apply step is the
+mean, which is why M1's two June orders print as 2000.0 in Q21. The follow-up to ask: which rows
+never reach a group at all? (A row whose key is missing, which is the dropna default.)
 
 #### 5. [F] Your LEFT join grew the row count and revenue doubled; name the cause and the check.
 
-*Items 7, 18 to 21 and 23 to 27.*
+*Items 7, 8 and 30.*
 
-The cause is a key that repeats on the right side: some orders have more than one payment row, so
-each of those orders appears once per payment and its amount is counted again. Neither table has to
-hold a duplicate row for this to happen. The check is the row count before and after the join, then
-a count of payment rows per order. Push until somebody says the duplication happened in the join,
-then ask what that means for every row-level check: all of them pass.
+The cause is a key that repeats on the right side: an order paid in two instalments, or a payment the
+gateway posted twice, appears once per payment row, and its amount is counted again. Neither table
+has to hold a duplicate row for this to happen. The check is the row count before and after the
+join, then a count of payment rows per order, and the fix aggregates the many side to the join's
+grain first. Push until somebody says the duplication happened in the join, then ask what it does to
+an evaluation metric (Q30): the model's two misses count twice.
 
 #### 6. [F] Top-3 per segment: GROUP BY or a window, and why?
 
-*Items 30 and 32, and Stretch 9.*
+*Item 14.*
 
 A window. GROUP BY collapses each segment to one row, so the members inside it are gone; a window
 function ranks each member within its segment and keeps every row, and the top three are the rows
-with rank three or less, with the tie rule chosen on purpose.
+with rank three or less, filtered outside the window, with the tie rule chosen on purpose.
 
 #### 7. [F] Which merge argument raises on duplicate keys, and which error?
 
-*Items 3, 41, 44 and 47.*
+*Items 17, 19, 20 and 22.*
 
 validate, set to the relationship the merge must have, such as 'one_to_one' or 'many_to_one'. When
 the keys break it, pandas raises MergeError: "Merge keys are not unique in right dataset; not a
-one-to-one merge", before any number is produced. The error arrives at the merge, instead of a wrong
-total arriving at the leadership deck.
+one-to-one merge", before any number is produced. The follow-up to ask: what catches a key that
+changed on its way in and so matches nothing? (indicator=True and a count of the matches, Q22.)
 
 #### 8. [F] A pivot's total disagrees with the warehouse; where do you look first?
 
-*Items 11 and 46 to 49.*
+*Items 18, 24, 25 and 27.*
 
-Upstream of the pivot, at the merge that built its table: compare the row counts and look for
-repeated keys. In set 3, 60 customers appear twice in the exposure table, so the merged table holds
-1,060 rows and the pivot sums their revenue twice. The pivot did nothing wrong with the file it was
-handed; the fix is in the merge. The follow-up to ask: what if the pivot is below the warehouse
-instead? (Stretch 4, the pivot that averages.)
+Upstream of the pivot, at the table it sums: compare the row count with the count of keys, then the
+total with the warehouse's control total. In Set 3 six customers sit on two rows each, so the pivot
+reads Rs 45,800 over the book; on Friday the raw export repeated every instalment order. A range
+that stops short (Q27) fails the same check from the other side.
 
 #### 9. [D] Same question, three tools: how do you choose, and defend one choice?
 
-*Items 13, 42, 43 and 51.*
+*Items 5, 26 and 28.*
 
 The number travels in one direction: the warehouse computes the source of truth, pandas carries the
-analyst's iteration, and Excel presents it and lets a director explore. A KPI Finance will check
+analyst's iteration, and Excel presents it and lets a director explore. A number Finance audits
 belongs in the warehouse, because it runs the same way every Monday and anyone can audit the query.
-Defend one choice with a reason about who depends on the number, never with a preference for a tool.
+Defend one choice with a reason about who depends on the number, never with a preference for a
+tool, and name the second way that would catch a wrong formula (Q28).
 
 #### 10. [D] Kalpa Health asks 'where does our growth come from'; say what stays the same in your method and what changes.
 
-*No paper item; this anchor opens the bridge.*
+*No paper item; Parts 5 and 6 rehearse it, and this anchor opens the bridge.*
 
 What stays the same are habits: count before you total, name the denominator, say what one row
-means, reconcile against the owner's books, and ask who owns the number. What changes is the entity
-model, the vocabulary and the stakeholders. The failure to listen for is somebody reaching for
-Retail's revenue tree in a diagnostics business without first asking what a sale is there.
+means, reconcile against the owner's books, and ask who owns the number. The paper has already
+carried them outside Kalpa, to a video metric, a public-health dashboard, a gene list, a bank's risk
+model and an AI team's tables. What changes is the entity model, the vocabulary and the
+stakeholders. The failure to listen for is somebody reaching for Retail's revenue tree in a
+diagnostics business without first asking what a sale is there.
 
 ### Running random call-outs without losing the room
 

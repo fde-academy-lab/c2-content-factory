@@ -105,7 +105,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q5, key a
 
-**Why it holds.** Excel's job is the last mile: presenting a number and letting people explore it. A number that becomes a what-if for the room, with nothing filed from it, has become that job. Every other option is a reason to keep the number in the warehouse, where it reruns unchanged on the source and every step can be audited; Friday's operating rule says the same.
+**Why it holds.** Excel's job is the last mile: presenting a number and letting people explore it. A number that becomes a what-if for the room, with nothing filed from it, has become that job. Every other option is a reason to keep the number in the warehouse, where it reruns unchanged on the source and every step can be audited. Friday's operating rule says the same, and gives the one direction a number travels: the warehouse computes it, pandas carries the analyst's iteration, and Excel presents it to the room, never the other way.
 
 - (b) A workbook fed by an export is staler than the warehouse, never fresher; a number needed early on Monday is a scheduling question for the warehouse query.
 - (c) Line-by-line audit is the reason the number lives in the warehouse: a query can be read step by step, and a typed-over cell leaves no trail.
@@ -500,6 +500,7 @@ Each of these tracker items is not printed, because a deeper item on the paper t
 - Bank 54 (Applied maths, Hard, Wed), folded into Q12: RANK ships 51 and ROW_NUMBER 50 on the week's tie at fiftieth.
 - Bank 55 (Applied maths, Medium, Wed), folded into Q15: The item runs the falling flag with LAG on four members, two of them with a missing month.
 - Bank 56 (Applied maths, Medium, Thu), folded into Q1: Orders per member is the same ratio of two counts, and the trap is the same integer division.
+- Bank 58 (Order the steps, Medium, Fri), folded into Q5: The item places one number in the warehouse, an export or a workbook, and its reason gives the one direction a number travels, from the warehouse through pandas to Excel.
 
 ## Stems and situations reworded on the bank, waiting for the tracker
 
@@ -541,4 +542,3 @@ The tracker's level or minutes for these items differ from what the paper, as re
 - Stretch 2: All three take rank 49, so every one of them holds a rank of 50 or better and the list ships 51 members. The note says so in one line: 51 members, because three tie at forty-ninth, and names the three.
 - Stretch 3: Excel turned some gene symbols into dates in about a fifth of papers with Excel gene lists, so the naming body renamed the genes it could not protect any other way, fixing the error at the source every reader shares. I would still count, after every merge, how many keys found a match, because a key changed on its way in never raises an error.
 - Stretch 4: Rs 19.84 crore is real and covers two quarters, so a director reads it as a quarter that doubled. The page reads: Q2, July to September, Rs 9.84 crore, down 1.6 percent on Q1's Rs 10.00 crore.
-- Stretch 5 (bank 58, order the steps, moved from the timed paper): b, c, a. The warehouse computes the source of truth, pandas carries the analyst's iteration, and Excel presents it to the room. Any order that starts in pandas or Excel makes a copy the source of truth, which Friday's operating rule forbids.

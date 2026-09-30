@@ -352,3 +352,165 @@ each now carries status accepted and applies until the tracker's Saturday papers
 the decision is `saturday-edits-w1-w2` in `data/programme/facts.yaml`. The requester also settled
 Anand Iyer's title as finance controller (decision `anand-finance-controller`), so the paper names
 him by that title again, where the entry above had left the title off.
+
+## 30 September 2026, version 3: the paper raised to interview grade
+
+The sections above describe the 55-item paper. This section records its replacement, built on
+branch `w02-sat-v3` from main after the Saturday builder gained folds, stem and situation edits,
+word banks and match tables (commit 2ee47f7 on `claude/vigilant-cannon-ukpbs2`).
+
+### What decided it
+
+| Source | What it settled |
+|---|---|
+| The requester's plan, 30 September 2026 | The bank sets the topics and the paper sets the bar: every bank concept stays tested, and a bank item may be reworded, folded into a deeper item or moved to the stretch page, with a reason; about 35 timed items in 112 to 120 minutes; about 5 percent easy, 35 medium and 60 hard; word banks and match tables in place of plain blanks. |
+| The requester's direction on real cases, relayed the same day | Kalpa where an item continues the week's class cases; real companies and public cases for a third to a half of the items, every fact checked against a source, hypotheticals marked as illustrative. |
+| The requester's direction on solution design, relayed the same day | Code-reading items at about a third; solution design (best fit, sizing, ordering, matching, the fact that changes a choice) at a third or more; every scenario opening on how the business works, with each domain term explained at first use. |
+| `docs/curriculum/W2_Data_manipulation.md`, `docs/detailing/W01_W02_spine.md` and the five Week 2 day sheets | The cases, the quotations, the traps and every Kalpa number the paper continues. |
+| `data/programme/facts.yaml`, decisions `plants-once-found`, `anand-finance-controller` and `reporting-day-line` | The paper may name what the room found in class; Anand Iyer is the finance controller; the Tuesday [D] line reads "fails at the end of reporting day". |
+
+### The paper
+
+35 timed items in six parts, paced at 117 of the 120 minutes (21 hard at 4 minutes, 12 medium at 2.5
+and 2 easy at 1.5): 60 percent hard, 34 percent medium and 6 percent easy.
+
+| Part | Items | Minutes | Easy | Medium | Hard | Setting |
+|---|---|---|---|---|---|---|
+| 1. Anand's Monday numbers | Q1 to Q6 | 17.5 | 2 | 1 | 3 | Kalpa, with Facebook's 2016 metric (Q6) |
+| 2. Booked against collected | Q7 to Q11 | 20 | 0 | 0 | 5 | Kalpa, with Public Health England, 2020 (Q11) |
+| 3. The protect list and the plan line | Q12 to Q16 | 18.5 | 0 | 1 | 4 | Kalpa |
+| 4. One row per customer | Q17 to Q22 | 19.5 | 0 | 3 | 3 | Kalpa, with the gene-name case (Q22) |
+| 5. The last mile, and spreadsheets in public | Q23 to Q29 | 20.5 | 0 | 5 | 2 | Kalpa's workbook, with Reinhart and Rogoff (Q27), JPMorgan (Q28) and Uber (Q29) |
+| 6. Read the code, read the data: an AI team's tables | Q30 to Q35 | 21 | 0 | 2 | 4 | A food-delivery company such as Swiggy or Zomato, illustrative |
+
+Formats: 18 one correct option; 7 scenario-set items in three sets (Set 1, Q7 and Q8; Set 2, Q12 and
+Q13; Set 3, Q17 to Q20), answered as one letter (Q7, Q12, Q13 and Q20), a number (Q17), a true or
+false with its reason as four options (Q18) and every correct letter (Q19); 2 more-than-one-correct
+items in all (Q11 and Q19), whose keys share no letter; 2 ordering items (Q2 and Q8, the second
+inside Set 1); 2 word-bank items (Q3 and Q4, Word bank 1, five words for two blanks); 4 match rows
+(Q23 to Q26, Match table 1, six techniques for four jobs); 1 applied maths item (Q29). No plain
+blank and no bare true or false prints.
+
+By what each item asks: 11 read code or a query (Q1, Q6, Q9, Q15, Q21, Q22, Q30 to Q34); 18 are
+solution design, choosing the best fit, sizing, ordering the steps, matching jobs to techniques or
+naming the fact that changes a choice (Q5, Q7, Q8, Q10 to Q14, Q17, Q19, Q20, Q23 to Q29); the other 6
+read a chart or a claim or recall a rule (Q2 to Q4, Q16, Q18, Q35). 12 items are set in public cases or
+at a named company (Q6, Q11, Q22, Q27 to Q35).
+
+`scripts/distractor_audit.py content/W02/SAT` passes with 25 option items read and keys at a 7, b 6,
+c 6, d 7 and e 1. The llm-tic-scrubber scanner reports the paper, the key and this guide clean.
+
+### The fate of every bank item
+
+Printed, 4: bank 2 and bank 3 from Word bank 1 (Q3 and Q4, paced at 1.5 minutes where the tracker
+says 1), bank 27 with the stem proposed in `data/programme/paper_edits.yaml` (Q14, paced at 2.5
+where the tracker says 2), and bank 57 as the tracker has it (Q2). Moved to the stretch page: none.
+Folded into a deeper printed item, 54, each with its reason in the source file's `folded` block and
+in the key:
+
+| Printed item | Bank items folded into it |
+|---|---|
+| Q1 int-div | 56 |
+| Q2 (bank 57) | 10, 18, 19 |
+| Q5 monday-fact | 20, 32, 58 |
+| Q7 join-counts | 4, 13, 21, 22, 24, 35, 40, 41 |
+| Q8 report-steps | 23, 43, 53 |
+| Q9 where-on-payments | 12 |
+| Q10 reporting-day | 34 |
+| Q12 rows-shipped | 14, 25, 26, 44, 45, 46, 54 |
+| Q13 tie-rule | 37, 47 |
+| Q14 (bank 27) | 7, 15, 36 |
+| Q15 lag-gap | 6, 55 |
+| Q16 run-rate | 39 |
+| Q17 merge-rows | 30, 48 |
+| Q18 pivot-total | 17, 50 |
+| Q19 stop-line | 8, 38, 49 |
+| Q20 first-touch | 51 |
+| Q21 months-view | 9, 16, 29 |
+| Q23 fix-lookup | 31 |
+| Q32 low-ratings | 1, 11, 33, 52 |
+| Q33 not-in | 5, 42 |
+| Q34 token-peers | 28 |
+
+Bank 58 first moved to the stretch page; the Word paper then printed it alone on a page of its own,
+so it was folded into Q5, whose reason gives the order a number travels.
+
+### The Kalpa numbers
+
+Every Kalpa number on the paper was recomputed on 30 September 2026 from the room's own files: the
+warehouse (`content/W02/D1/data/C2_W02_D01_warehouse_v4_STUDENT.sql`) loaded into a scratch schema on
+PostgreSQL 16.13, Thursday's exposure feed (`content/W02/D4/data/C2_W02_D04_exposure_STUDENT.csv`)
+and Friday's two exports (`content/W02/D5/data/`), on pandas 3.0.5. They match the day sheets: the
+Retail-Plus leaf (215 and 140 orders, 91 and 76 members); the LIMIT sample (Rs 3,900, then Rs 4,590
+after the reload); Q2's payment rows (216, 188, 28 and 30, with 8 orphans) and the join's 678, 462 and
+648; collected Rs 9,66,45,070 and the gap of Rs 17,54,930; the Retail-Plus boundary (ties at Rs 3,480
+and Rs 3,350; 51, 52 and 50 shipped); the four members' months and the falling flag; the weekly booked
+revenue against the plan line; the merge's 346 rows and Rs 45,800; the lookup's C-0194 for C-0195;
+Mumbai's Rs 1,56,790 against Rs 7,14,890; and the raw export's 1,450 rows. The paper names only what
+the room found in class (decision `plants-once-found`).
+
+### The public cases, checked on 30 September 2026
+
+| Item | What the paper states | Source |
+|---|---|---|
+| Q6 | Facebook's average duration of video viewed divided total time by views of 3 seconds or more; an overstatement of 60 to 80 percent over two years; billing not affected | TechCrunch, 22 September 2016, citing The Wall Street Journal |
+| Q11 | 15,841 cases between 25 September and 2 October 2020 left out because files exceeded the maximum size; lab CSV files converted to .xls, 65,536 rows a sheet, records past the cut-off left off | GOV.UK, PHE statement, 4 October 2020, updated 5 October; The Register, 5 October 2020 |
+| Q22 | Excel turns SEPT2 into 2-Sep and MARCH1 into 1-Mar; about a fifth of papers with Excel gene lists carried such errors (704 of 3,597) | Ziemann, Eren and El-Osta, Genome Biology 17:177, 2016 |
+| Q22 | HGNC changed every symbol Excel converts to a date: SEPT1 is now SEPTIN1 and MARCH1 is now MARCHF1 | Bruford and colleagues, Nature Genetics 52(8), 2020, Box 3 |
+| Q27 | An average in the spreadsheet stopped short of the data and left out Australia, Austria, Belgium, Canada and Denmark; 2.2 percent against the published -0.1 for the over-90-percent group, a figure that also corrects two other choices | Herndon, Ash and Pollin, PERI working paper 322, April 2013; Retraction Watch, 18 April 2013; The Conversation, 22 April 2013 |
+| Q28 | The model ran through Excel spreadsheets filled by copying and pasting (page 123); a step divided by the sum of the old and new rates where the modeller meant their average, "muting volatility by a factor of two" (page 128) | Report of JPMorgan Chase and Co. Management Task Force Regarding 2012 CIO Losses, 16 January 2013 |
+| Q29 | Uber took its New York commission on the gross fare, before taxes and fees, and repaid about 900 dollars a driver on average | CBS News, 24 May 2017 |
+
+The pages read, each checked on 30 September 2026:
+
+- TechCrunch: https://techcrunch.com/2016/09/22/facebook-miscalculation-significantly-inflated-average-video-view-times-for-years/ (checked 30 September 2026)
+- GOV.UK: https://www.gov.uk/government/news/phe-statement-on-delayed-reporting-of-covid-19-cases (checked 30 September 2026)
+- The Register: https://www.theregister.com/2020/10/05/excel_england_coronavirus_contact_error/ (checked 30 September 2026)
+- Genome Biology, via PubMed Central: https://pmc.ncbi.nlm.nih.gov/articles/PMC4994289/ (checked 30 September 2026)
+- Nature Genetics, via PubMed Central: https://pmc.ncbi.nlm.nih.gov/articles/PMC7494048/ (checked 30 September 2026)
+- PERI, the working paper's page: https://peri.umass.edu/publication/does-high-public-debt-consistently-stifle-economic-growth-a-critique-of-reinhart-and-rogoff/ (checked 30 September 2026)
+- RePEc, the working paper's abstract: https://ideas.repec.org/p/uma/periwp/wp322.html (checked 30 September 2026)
+- Retraction Watch: https://retractionwatch.com/2013/04/18/influential-reinhart-rogoff-economics-paper-suffers-database-error/ (checked 30 September 2026)
+- The Conversation: https://theconversation.com/the-reinhart-rogoff-error-or-how-not-to-excel-at-economics-13646 (checked 30 September 2026)
+- The JPMorgan report, in Yale's YPFS library: https://ypfsresourcelibrary.blob.core.windows.net/fcic/YPFS/JPMorgan%20Management%20Task%20Force%20Regarding%202012%20CIO%20Losses%201-16-13.pdf (checked 30 September 2026)
+- CBS News: https://www.cbsnews.com/news/uber-drivers-underpaid-in-new-york-city-for-years/ (checked 30 September 2026)
+
+What could not be verified in the session, and so does not print: the spreadsheet rows of the
+Reinhart and Rogoff average (secondary sources give rows 30 to 44 against 30 to 49; the PERI PDF
+returned 410 Gone), the BBC's account of the PHE templates (the BBC and The Guardian refused the
+session's fetcher, so The Register carries that detail), and a commission rate for Uber (Q29's 25
+percent, fare and tax are marked illustrative). Every number in Part 6 and in the Facebook, JPMorgan
+and Uber exhibits is illustrative and says so on the page.
+
+### The proof
+
+`content/W02/SAT/internal/C2_W02_SAT_key_proofs_INTERNAL.py` runs cold from the repository root: it
+creates the schema `w02_sat_proof`, loads the warehouse, runs every code exhibit as the source file
+prints it, recomputes every Kalpa number, asserts every key letter against the source file and the
+text of every keyed option, reasons the Excel items in comments with their arithmetic asserted on
+Friday's exports, and drops the schema. Its run on 30 September 2026 on PostgreSQL 16.13, pandas
+3.0.5 and Python 3.11.15 printed 35 PASS lines, Q1 to Q35, and "RESULT: PASS (35 items proved)".
+
+### The Word files
+
+Built with `python3 scripts/build_saturday_paper.py W02 --docx` and rendered through LibreOffice on
+30 September 2026: the paper runs to 20 pages and the key to 20. Every exhibit prints on the page of
+the item that reads it, the two charts print in bronze and ink with titled axes, the stretch page
+holds the four written follow-ups, and the answer sheet is page 20 alone. Pages 7, 9, 10 and 18 end
+between 40 and 60 percent full, where the next exhibit and its item are kept together or a part
+begins.
+
+### Open points for the orchestrating session
+
+- `python3 scripts/sync_programme.py --check` reports Week 1's paper and key as stale: the merged
+  builder renders them differently. They belong to the Week 1 session and were not touched here.
+- The requester decided on 29 September 2026 to keep bank set 1 unchanged. Version 3 folds it into
+  a set on the week's own Q2 book, which carries the instalment orders the bank's set leaves out; the
+  decision predates the plan of 30 September, so it needs the requester's confirmation.
+- Bank 28's key, ties in the window's ORDER BY, holds under a ROWS frame; under Postgres's default
+  frame tied rows share one running total, so the result itself does not move between runs. Q34
+  tests the default frame directly.
+- Bank 23's key, HAVING count(*) > 1 by order, lists the 188 invoices paid in two instalments on the
+  week's book as well as the 28 repeats; Q8's reason gives both counts.
+- The session found the local Postgres stopped and its postgres role without the stated password; it
+  started the cluster and set the stated password, which touches the environment and no file.

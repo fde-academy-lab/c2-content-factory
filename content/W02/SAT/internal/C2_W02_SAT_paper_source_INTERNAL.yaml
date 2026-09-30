@@ -3,8 +3,8 @@
 #
 # The bank sets the topics and this file sets the bar (the requester's plan of 30 September 2026).
 # Four bank items print: two answered from a word bank, one with a reworded stem and one as the
-# tracker has it. Fifty-three fold into deeper items that test their concepts, each with its
-# reason under `folded`, and one moves to the stretch page. Thirty-one new items carry the rest.
+# tracker has it. Fifty-four fold into deeper items that test their concepts, each with its
+# reason under `folded`. Thirty-one new items carry the rest.
 # Every Kalpa number was computed on the week's warehouse and files, and every public-case fact
 # was checked against its source on 30 September 2026; the provenance record lists both, and
 # internal/C2_W02_SAT_key_proofs_INTERNAL.py asserts every key.
@@ -125,20 +125,22 @@ parts:
       which is an evaluation run; it collects customers' ratings of the replies; and it logs every
       conversation and every handoff to a person. The tables and every number below are illustrative.
     exhibits:
-      - mermaid: |-
-          flowchart LR
-            E["eval_runs:<br/>model, run, date, accuracy"]
-            P["predictions:<br/>ticket, pred"] --- L["labels:<br/>ticket, label"]
-            R["replies:<br/>reply, model, rating"]
-            C["conversations"] --- H["handoffs:<br/>conversation_id"]
-            K["calls:<br/>call, day, tokens"]
+      - table:
+          head:
+            - Table
+            - One row per
+            - Columns
+          rows:
+            - [predictions, test ticket, "ticket, pred"]
+            - [labels, label from the annotation vendor, "ticket, label"]
+            - [eval_runs, evaluation run, "model, run_id, finished_on, accuracy"]
+            - [replies, reply to a customer, "reply_id, model, rating"]
+            - [conversations, conversation, conversation_id]
+            - [handoffs, handoff to a person, conversation_id]
+            - [calls, call to the model, "call_id, day, tokens"]
         caption: >-
           The assistant team's tables, as this part imagines them.
     items: ["new:eval-fanout", "new:latest-run", "new:low-ratings", "new:not-in", "new:token-peers", "new:weekly-users"]
-
-# Moved to the untimed stretch page: its order prints unchanged, and its concept is the operating
-# rule the Monday item on where a number lives also tests.
-stretch_bank: [58]
 
 # Bank items that do not print because a deeper printed item tests their concept.
 folded:
@@ -301,6 +303,9 @@ folded:
   56:
     into: "new:int-div"
     why: Orders per member is the same ratio of two counts, and the trap is the same integer division.
+  58:
+    into: "new:monday-fact"
+    why: The item places one number in the warehouse, an export or a workbook, and its reason gives the one direction a number travels, from the warehouse through pandas to Excel.
 
 notes:
   2:
@@ -359,11 +364,6 @@ notes:
     answer: >-
       FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, and most of the errors a query can raise follow
       from it.
-  58:
-    why: >-
-      The warehouse computes the source of truth, pandas carries the analyst's iteration, and Excel
-      presents it to the room. Any order that starts in pandas or Excel makes a copy the source of
-      truth, which Friday's operating rule forbids.
 
 additions:
   # ---------------------------------------------------------------- Part 1, Monday
@@ -436,7 +436,9 @@ additions:
       Excel's job is the last mile: presenting a number and letting people explore it. A number that
       becomes a what-if for the room, with nothing filed from it, has become that job. Every other
       option is a reason to keep the number in the warehouse, where it reruns unchanged on the source
-      and every step can be audited; Friday's operating rule says the same.
+      and every step can be audited. Friday's operating rule says the same, and gives the one
+      direction a number travels: the warehouse computes it, pandas carries the analyst's iteration,
+      and Excel presents it to the room, never the other way.
     wrong:
       b: >-
         A workbook fed by an export is staler than the warehouse, never fresher; a number needed early

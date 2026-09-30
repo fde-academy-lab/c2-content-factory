@@ -507,14 +507,15 @@ Kavya Nair: "AI teams interview on the same traps, on their own tables." Suppose
 
 **Exhibit 6A.** The assistant team's tables, as this part imagines them.
 
-```mermaid
-flowchart LR
-  E["eval_runs:<br/>model, run, date, accuracy"]
-  P["predictions:<br/>ticket, pred"] --- L["labels:<br/>ticket, label"]
-  R["replies:<br/>reply, model, rating"]
-  C["conversations"] --- H["handoffs:<br/>conversation_id"]
-  K["calls:<br/>call, day, tokens"]
-```
+| Table | One row per | Columns |
+|---|---|---|
+| predictions | test ticket | ticket, pred |
+| labels | label from the annotation vendor | ticket, label |
+| eval_runs | evaluation run | model, run_id, finished_on, accuracy |
+| replies | reply to a customer | reply_id, model, rating |
+| conversations | conversation | conversation_id |
+| handoffs | handoff to a person | conversation_id |
+| calls | call to the model | call_id, day, tokens |
 
 **Exhibit 6B.** The team's scoring code, on five illustrative test tickets.
 
@@ -642,7 +643,7 @@ d) 2,100, since someone active on several days counts once
 
 ## Stretch: untimed, and not marked
 
-For anyone who finishes early. Nothing here is counted. Stretch 1 to 4 are the kind an interviewer asks after your first answer, so write the answer you would say. Stretch 5 is a quick check on the week's material, answered on the line.
+For anyone who finishes early. Nothing here is counted; each item is the kind an interviewer asks after your first answer, so write the answer you would say.
 
 ### Stretch 1
 
@@ -659,13 +660,3 @@ Explain the gene-name case to a product manager in two sentences: why did the fi
 ### Stretch 4
 
 A director says the front page should read Rs 19.84 crore because "that is the real number". Answer in two sentences.
-
-### Stretch 5
-
-Put the week's tools in the order a number travels to the leadership deck.
-
-a) Excel presents it and lets a director explore.
-b) The warehouse computes the source of truth.
-c) pandas carries the analyst's iteration.
-
-Answer: ____________________
