@@ -10,6 +10,11 @@ Writers make the correct option precise and let the wrong ones stay vague, so le
 
 The fix is to write the wrong options at the same precision as the key. If the key needs a qualifier, give the distractors qualifiers too.
 
+The opposite tell is as quick to learn. A file whose key is never the longest option, because every
+distractor was padded to stay ahead of it, teaches the room to cross out the longest option first.
+The Week 1 Thursday review of 30 September 2026 found the longest option wrong in 45 items out of
+45. Across a file, let the key be the longest option in some items and the shortest in others.
+
 Failing:
 
 ```
