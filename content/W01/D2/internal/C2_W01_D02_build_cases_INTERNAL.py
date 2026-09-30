@@ -28,6 +28,14 @@ NEUTRAL = {
 }
 
 
+NEUTRAL_MD = {
+    "This case climbs the same ladder alone, on a harder definition, where one\nbranch that held in the morning moves.":
+        "This case climbs the same ladder alone, on a harder definition.",
+    "Change the definition and rerun every rung. If a branch that held starts to move, find out what it\n> is made of before anyone else names it.":
+        "Change the definition and rerun every rung; say what moved and what you\n> would check next.",
+}
+
+
 class SOL:
     def __init__(self, cell):
         self.cell = cell
@@ -52,6 +60,8 @@ def twin(cells, solution):
                           "This is the exercise twin: each placeholder is a lettered choice in the comment above it. "
                           "Run it from the top; it stops at the first placeholder you have not filled, which is intended.",
                           c.source, flags=re.S))
+            for claim, plain in NEUTRAL_MD.items():
+                c = md(c.source.replace(claim, plain))
             c = md(re.sub(r"\*\*Item (\d) in your brief\.?\*\*.*?(?=\n\n|$)",
                           lambda m: f"**Item {m.group(1)} in your brief** goes in now, from what this part printed.",
                           c.source, flags=re.S))
@@ -169,8 +179,6 @@ kit.bridge(("Q1 delivered", d1["revenue"]), [("customers", round(move_customers)
            title="The delivered fall along the tree: the customers branch moves now")
 kit.check("the bridge lands on Q2 delivered revenue", abs(d1["revenue"] + move_customers + move_frequency + move_value - d2["revenue"]) < 1)
 kit.check("the delivered customer counts match the file", (c1, c2) == (54, 50), f"{c1} and {c2}")
-kit.check("frequency still carries more rupees than customers", move_frequency < move_customers < 0,
-          f"{kit.rupees(round(move_frequency))} against {kit.rupees(round(move_customers))}")
 '''),
         SOL(md("""
 **Why the other three fail.** b) is the frequency step. c) prices the lost customers at Q2's leaves,
@@ -442,7 +450,7 @@ the app fell too.
         md("""
 ## Part 3. "Which of my members do I call first?"
 
-Count each member's orders in Q1 and Q2, and put the members who slowed most at the top of the list.
+Count each member's orders in Q1 and Q2, and decide who goes first.
 """),
         code('''
 per = {q: {} for q in ("Q1", "Q2")}
@@ -467,8 +475,8 @@ labels = [f"{a} to {b}" for a, b in sorted(pairs, reverse=True)]
 kit.bars([(l, pairs[k]) for l, k in zip(labels, sorted(pairs, reverse=True))],
          title="Retail-Plus members by orders in Q1 to orders in Q2")
 drops = {c: per["Q1"][c] - per["Q2"].get(c, 0) for c in per["Q1"]}
-kit.check("your list holds the members who slowed most", set(call_first) == {c for c in drops if drops[c] == max(drops.values())})
-kit.check("every member still ordered in Q2", all(per["Q2"].get(c, 0) > 0 for c in per["Q1"]))
+kit.check("your list matches a second route over the per-member counts", set(call_first) == {c for c in drops if drops[c] == max(drops.values())})
+kit.check("the per-member counts add back to the tier's orders", sum(per["Q1"].values()) + sum(per["Q2"].values()) == sum(1 for o in ORDERS if o["segment"] == "Retail-Plus"))
 '''),
         SOL(md("""
 **Why the other three fail.** a) selects nobody, since every member ordered in Q2. c) selects the
@@ -489,8 +497,6 @@ EVIDENCE = {
     "app_logs": "the app's reorder logs by week since the 25 August release",
     "tier_log": "the tier's July change log, renewals and support tickets",
 }
-STARTS = {"campaigns": "2026-07-01", "export": "2026-04-01", "app_logs": "2026-08-25", "tier_log": "2026-07-01"}
-FALL_BEGAN = "2026-07-31"
 # TODO 4. The fall began in July and the button broke on 25 August. Which request tests the cause behind the larger part of the fall?
 #   a) "campaigns"
 #   b) "export"
@@ -502,8 +508,9 @@ kit.tree({"label": "the reply", "kind": "lit", "branches": [
     ("to the tier", {"label": f"call the {len(call_first)}\\nat the top of the list", "kind": "known"}),
     ("first request", {"label": EVIDENCE[first_request][:34], "kind": "unknown"})]},
     title="The pair's reply, in three branches")
-kit.check("the request's data starts by the month the fall began", STARTS[first_request] <= FALL_BEGAN, STARTS[first_request])
-kit.check("the request brings a source this export and the campaign plan do not hold", first_request not in ("export", "campaigns"))
+import hashlib
+kit.check("your pick matches the key, stored as a fingerprint", hashlib.sha256(first_request.encode()).hexdigest()[:10] == "a49850fe17")
+kit.check("your pick names one of the four sources", first_request in EVIDENCE)
 '''),
         SOL(md("""
 **Why the other three fail.** a) measures acquisition, which Part 1 and chapter 5 ruled out. b) is
