@@ -633,7 +633,7 @@ value: $100M+ | label: a year, US alone | note: Kohavi and Thomke, HBR, 2017
 value: 1 in 3 | label: experiments that helped | note: Kohavi and others, Microsoft, 2009
 ```
 
-A test that says "real" starts the question, and the rupees beside the cost finish it.
+A test that says "real" tells you the gap beats chance; the rupees beside the cost tell you whether to act.
 
 ```notes
 LIVE, 1 minute. Sources: HBR, "The Surprising Power of Online Experiments" (2017) for the 12
