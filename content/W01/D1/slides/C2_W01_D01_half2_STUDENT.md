@@ -46,7 +46,7 @@ Transition: section 05, which branch Meera opens first.
 
 ---
 
-## SECTION 5: Which branch first
+## SECTION 5: Which branch first?
 *Which branch should Meera open first to reach the 15 percent plan, and why not the others?*
 
 ```notes
@@ -432,7 +432,7 @@ Transition: section 06, the sentence Meera signs.
 
 ---
 
-## SECTION 6: What will Meera sign
+## SECTION 6: What will Meera sign?
 *What one sentence can Meera sign, with its evidence, its branch, its caveat and its ask?*
 
 ```notes
@@ -757,7 +757,7 @@ Transition: section A, Anand pushes back.
 
 ---
 
-## SECTION A: Does the branch survive
+## SECTION A: Does the branch survive?
 *Does frequency first survive on the orders that stayed delivered?*
 
 ```notes
@@ -809,7 +809,7 @@ Transition: section B, the room's wrong answers.
 
 ---
 
-## SECTION B: Which numbers hold up
+## SECTION B: Which numbers hold up?
 *Which of the day's six plausible numbers would you sign, and which check catches each?*
 
 ```notes
@@ -864,7 +864,7 @@ Transition: a 10-minute break, then section C, the second case.
 
 ---
 
-## SECTION C: Where does revenue come from
+## SECTION C: Where does revenue come from?
 *Where does revenue come from, by customer type and channel, and does it change the branch?*
 
 ```notes
@@ -996,7 +996,7 @@ Transition: section D, the interview drill.
 
 ---
 
-## SECTION D: Can you answer the interviewer
+## SECTION D: Can you answer the interviewer?
 *Can you answer the day's twelve interview questions aloud, each in under a minute, with its number?*
 
 ```notes
@@ -1080,7 +1080,7 @@ Transition: section E, the close.
 
 ---
 
-## SECTION E: What does Meera hear
+## SECTION E: What does Meera hear?
 *What do we keep from Monday, what does Meera hear, and what will she ask next?*
 
 ```notes

@@ -50,7 +50,7 @@ Transition: before any data, the business, starting with how a retailer earns.
 
 ---
 
-## SECTION 0: How does retail earn
+## SECTION 0: How does retail earn?
 *How does a retailer like Kalpa make money, who asks the data team for which number, and how is each number worked out?*
 
 ```notes
@@ -432,7 +432,7 @@ Transition: chapter 1, which total is sales.
 
 ---
 
-## SECTION 1: Which total is sales
+## SECTION 1: Which total is sales?
 *Which of the file's totals should Meera call sales, and what does each one count?*
 
 ```notes
@@ -787,7 +787,7 @@ Transition: chapter 2, what each branch of the tree is.
 
 ---
 
-## SECTION 2: What is each branch
+## SECTION 2: What is each branch?
 *How does sales split into customers, orders per customer and order value, each a fraction on one definition?*
 
 ```notes
@@ -1136,7 +1136,7 @@ Transition: chapter 3, the customer branches counted.
 
 ---
 
-## SECTION 3: Do customers come back
+## SECTION 3: Do customers come back?
 *How many customers does Kalpa have, and how many came back for a second order?*
 
 ```notes
@@ -1445,7 +1445,7 @@ Transition: a 10-minute break, then chapter 4.
 
 ---
 
-## SECTION 4: What is a typical order
+## SECTION 4: What is a typical order?
 *What does a typical Kalpa order look like, stated so that one large order cannot move it?*
 
 ```notes

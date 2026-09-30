@@ -24,7 +24,7 @@ sales that is short?
 
 ### 0. How does a retailer like Kalpa make money, who asks the data team for which number, and how is each number worked out?
 
-The story, 45 minutes, with no laptop open. Its opener prints *How does retail earn* and its promise asks the full question.
+The story, 45 minutes, with no laptop open. Its opener prints *How does retail earn?* and its promise asks the full question.
 
 **Who needs the answer.** Every learner needs it, because from chapter 1 on each chapter names the metric at
 stake, who asks for it and what a wrong number costs, and most of the room has never worked in a
@@ -44,7 +44,7 @@ about a business.
 
 ### 1. Which of the file's totals should Meera call sales, and what does each one count?
 
-Chapter 1, 30 minutes, with notebook 01. Its opener prints *Which total is sales* and its promise asks the full question.
+Chapter 1, 30 minutes, with notebook 01. Its opener prints *Which total is sales?* and its promise asks the full question.
 
 **Who needs the answer.** Meera measures the 15 percent plan from this number, and Anand's books
 must match it. A wrong total sets the plan's base on demand that never became a sale.
@@ -62,7 +62,7 @@ must match it. A wrong total sets the plan's base on demand that never became a 
 
 ### 2. How does sales split into customers, orders per customer and order value, each a fraction on one definition?
 
-Chapter 2, 30 minutes, with notebook 02. Its opener prints *What is each branch* and its promise asks the full question.
+Chapter 2, 30 minutes, with notebook 02. Its opener prints *What is each branch?* and its promise asks the full question.
 
 **Who needs the answer.** Meera and the marketing lead will price the plan branch by branch. A
 fraction built from two definitions values every order at a figure no definition supports.
@@ -80,7 +80,7 @@ fraction built from two definitions values every order at a figure no definition
 
 ### 3. How many customers does Kalpa have, and how many came back for a second order?
 
-Chapter 3, 30 minutes, with notebook 03. Its opener prints *Do customers come back* and its promise asks the full question.
+Chapter 3, 30 minutes, with notebook 03. Its opener prints *Do customers come back?* and its promise asks the full question.
 
 **Who needs the answer.** The marketing lead and Meera need it: if nobody comes back, acquisition looks like
 the only branch left and the Rs 12 crore looks justified.
@@ -98,7 +98,7 @@ the only branch left and the Rs 12 crore looks justified.
 
 ### 4. What does a typical Kalpa order look like, stated so that one large order cannot move it?
 
-Chapter 4, 30 minutes, with notebook 04. Its opener prints *What is a typical order* and its promise asks the full question.
+Chapter 4, 30 minutes, with notebook 04. Its opener prints *What is a typical order?* and its promise asks the full question.
 
 **Who needs the answer.** The marketing lead values a new customer's first order with it in the
 payback case, and Anand has warned that one business customer can move an average.
@@ -116,7 +116,7 @@ payback case, and Anand has warned that one business customer can move an averag
 
 ### 5. Which branch should Meera open first to reach the 15 percent plan, and why not the others?
 
-Chapter 5, 30 minutes, the afternoon's first, with notebook 05. Its opener prints *Which branch first* and its promise asks the full question.
+Chapter 5, 30 minutes, the afternoon's first, with notebook 05. Its opener prints *Which branch first?* and its promise asks the full question.
 
 **Who needs the answer.** Meera needs it before she signs Rs 12 crore for one branch, and so does the
 marketing lead, whose budget it is. The wrong branch spends the money where the business is not short.
@@ -134,7 +134,7 @@ marketing lead, whose budget it is. The wrong branch spends the money where the 
 
 ### 6. What one sentence can Meera sign, with its evidence, its branch, its caveat and its ask?
 
-Chapter 6, 30 minutes, with notebook 06. Its opener prints *What will Meera sign* and its promise asks the full question.
+Chapter 6, 30 minutes, with notebook 06. Its opener prints *What will Meera sign?* and its promise asks the full question.
 
 **Who needs the answer.** Meera signs the sentence, Kavya reviews it first, and the marketing lead
 reads it looking for the weakest number. A sentence that says 70 percent of customers are lost either
@@ -153,7 +153,7 @@ panics the room or hands marketing an easy rebuttal.
 
 ### The escalated case: does frequency first survive on the orders that stayed delivered?
 
-The escalated case, 35 minutes, each learner alone, with notebook ex1. Its opener prints *Does the branch survive* and its promise asks the full question.
+The escalated case, 35 minutes, each learner alone, with notebook ex1. Its opener prints *Does the branch survive?* and its promise asks the full question.
 
 **Who needs the answer.** Anand does, since he counts only what stayed sold and puts numbers in front
 of the board. An answer that holds on booked orders alone never reaches his books.
@@ -171,7 +171,7 @@ of the board. An answer that holds on booked orders alone never reaches his book
 
 ### The second case: where does revenue come from, by customer type and channel, and does it change the branch?
 
-The second case, 25 minutes, in pairs, with notebook ex2. Its opener prints *Where does revenue come from* and its promise asks the full question.
+The second case, 25 minutes, in pairs, with notebook ex2. Its opener prints *Where does revenue come from?* and its promise asks the full question.
 
 **Who needs the answer.** Meera asked where revenue comes from, and anyone who drafts a channel plan
 from her answer needs it too. A plan led by one channel's headline share invests where her consumer

@@ -129,13 +129,13 @@ each chapter opener's own numeral (see decision 1).
     size the plan on the three consumer segments Meera's plan concerns (decision 9) and say why.
     The two-lifts trap is shown on the same base, since it is multiplication and holds on any base.
 
-13. **Chapter openers print their question without its question mark.** Standard v3 makes an
-    opener's title the chapter's short question, and `scripts/deck_md_check.py` fails any slide
-    whose title ends in "?" unless an "Answer" slide follows, which it applies to SECTION openers
-    too, while v3 puts the map slide after each opener. The pack keeps the gate green: each
-    `## SECTION n:` title is the short question worded as a question without its mark, and the
-    italic promise on the same slide carries the full question with it. The shared tool needs to
-    exempt SECTION openers from the question-answer pairing, after which the marks come back.
+13. **Chapter openers print their question with its question mark.** Standard v3 makes an
+    opener's title the chapter's short question, and the map slide follows the opener. The pack
+    first dropped the marks, because `scripts/deck_md_check.py` applied its question-and-answer
+    pairing to SECTION openers too. The shared tool now exempts an opener (pull request #205,
+    30 September 2026), since the whole chapter answers it and closes on it, so every
+    `## SECTION n:` title and the day sheet's lines that quote it carry the mark again, and both
+    decks were rebuilt.
 
 14. **The story teaches no trap.** The orchestrating session ruled on 30 September 2026 that the
     domain story (the morning deck's SECTION 0, notebook 00 and the talk track) teaches no Week 1
