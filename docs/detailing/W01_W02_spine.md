@@ -97,7 +97,10 @@ The requester set the Saturday at 300 minutes on 29 September 2026, and the pape
 **The papers.** The tracker's bank is the floor. Week 1's bank fills 107 of the 120 minutes, so the
 week's source file adds about 13 minutes of new timed items: one or two new scenario sets built on
 the week's traps in this spine, at the blueprint's pace. Week 2's bank fills 119.5 minutes and needs
-no timed additions. Both source files add an exhibit for every scenario set, drawn only from the
+no timed additions. On 30 September 2026 the requester re-cut both papers into parts, each with a
+"Read the code, read the data" part, and moved six recall items from each to the stretch page, so
+both source files now carry new timed items on short exhibits of the week's own code. Both source
+files add an exhibit for every scenario set, drawn only from the
 set's own numbers; the reasons for every item, which are why the key holds, why each wrong option
 fails and the interview answer in one breath; and an untimed stretch page of three or four written,
 interview-grade follow-ups. The builder and the source file's format are in

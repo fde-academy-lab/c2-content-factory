@@ -542,12 +542,12 @@ SELECT round(avg(q1_spend)) AS avg_q1, round(avg(q2_spend)) AS avg_q2 FROM membe
 
 #### Q52 · Hard · circle one letter
 
-The head of Retail-Plus asks whether spend per member fell from Q1 to Q2, and the analyst answers with the query above. What does it return, and what does it tell her?
+The head of Retail-Plus asks whether spend per member fell from Q1 to Q2, and the analyst answers with the query above. What does the query return, and how will she read it?
 
-a) 1,500 and 750, so spend per member halved
-b) 1,500 and 1,000, so spend per member fell by a third
-c) 1,500 and 1,500, so spend per member held flat
-d) 1,500 and NULL, so Q2 has no average to report
+a) 1,500 and 750, which reads as spend per member halved
+b) 1,500 and 1,000, which reads as spend per member down by a third
+c) 1,500 and 1,500, which reads as flat spend per member
+d) 1,500 and NULL, which reads as no Q2 figure at all
 
 **Exhibit 6B.** The analyst's query, with three Q2 orders and their payment rows written into it.
 

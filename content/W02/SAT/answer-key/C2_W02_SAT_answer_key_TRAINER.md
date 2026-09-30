@@ -558,13 +558,13 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 These items come from the week's source file, not the tracker. Accept one by adding it to the tracker's Saturday papers tab and deleting it from the source file.
 
-- Q52 (One correct option, Hard, [D]): The head of Retail-Plus asks whether spend per member fell from Q1 to Q2, and the analyst answers with the query above. What does it return, and what does it tell her?
+- Q52 (One correct option, Hard, [D]): The head of Retail-Plus asks whether spend per member fell from Q1 to Q2, and the analyst answers with the query above. What does the query return, and how will she read it?
 - Q53 (Scenario set, Hard, [S]): Anand wants every Q2 order beside what was collected on it within the quarter. Before the report goes to him, the analyst runs the query above to count its rows and their booked value. What does it return?
 - Q54 (One correct option, Hard, [S]): The marketing lead asks how many customers the monsoon sale reached and how many of them bought, and the analyst runs the code above. What does it print?
 
 ## Option edits laid on the bank, waiting for the tracker
 
-These options differ from the tracker's wording, because the bank's key was the longest option. The stem and the key are the tracker's. Accept an edit by copying it into the tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.
+These options differ from the tracker's wording, each for the reason given beside it. The stem and the key are the tracker's. Accept an edit by copying it into the tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.
 
 - Q55 (bank 19), option b (proposed): The key was the longest option.
 - Q18 (bank 22), option c (proposed): The key was the longest option; the new distractor is the fan-out misread in reverse.
