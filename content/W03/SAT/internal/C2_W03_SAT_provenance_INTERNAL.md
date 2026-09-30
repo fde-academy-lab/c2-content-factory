@@ -26,7 +26,7 @@ No URL enters this day's files.
 | The spine says | The files hold | What this pack does |
 |---|---|---|
 | The offer ran in three cities | Offers in all six cities: about half the patients in Bengaluru, Hyderabad and Mumbai, about a fifth in Delhi, Chennai and Pune | The question bank describes the files, and gives Delhi's positive split (23.5 percent, 316 offered) as the caveat challenge |
-| The old export repeats 180 rows from a mid-quarter re-export | 180 repeated booking identifiers dated 1 June to 26 September; 145 identical on every field, the rest differing only in `updated_at` | The question bank quotes the files' dates and makes no claim about when the re-export ran |
+| The old export repeats 180 rows from a mid-quarter re-export | 180 repeated booking identifiers dated 1 June to 26 September; 145 identical on every field and 35 not: 30 differ in `updated_at`, one of them in `channel` as well, and 5 differ only in `channel`, so six differ in `channel` and in each of the six one copy leaves it blank | The question bank quotes the files' dates and makes no claim about when the re-export ran |
 | The generator's witness counts 60 text amounts | 35 invoice amounts carry a comma in the file | The question bank quotes 35, which is what a group reading the CSV finds |
 
 ## Decisions taken in this session
