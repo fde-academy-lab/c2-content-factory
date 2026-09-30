@@ -76,31 +76,41 @@ def choice(ws, ref, options):
 wb = Workbook()
 start = wb.active
 start.title = "Start"
-start["A1"] = "Before the growth review: the decision tool"
+start["A1"] = "Which four decisions stand between Meera's three questions and her note?"
 start["A1"].font = TITLE
 start.column_dimensions["A"].width = 110
 lines = [
-    "Kalpa Retail, Week 1, Thursday. Meera asks three things before Monday's growth review: is the Retail-Plus "
-    "drop real or the usual wobble, should budget follow a segment that is up 40 percent, and did the monsoon "
-    "discount work. Four decisions answer her, one tab each, and an Export tab assembles the note.",
-    "Yellow cells are inputs; every other number and sentence is a live formula. Every number here is invented, "
-    "so change it and watch the verdict move.",
+    "Kalpa Retail, Week 1, Thursday. Meera Raghavan, the CEO, asks three things before Monday's growth review: is "
+    "the fall in Retail-Plus, Kalpa's paid membership tier, real or the usual wobble; should budget follow a "
+    "segment that is up 40 percent; and did the monsoon discount work? Four decisions answer her, one tab each, "
+    "and an Export tab assembles the note.",
+    "Yellow cells are inputs, and every other number and sentence is a live formula. Every number here is "
+    "invented, so change it and watch the verdict move.",
     "Each tab carries one planted defect in one formula. Read the tab's check line first, find the cell, fix it, "
     "and watch the verdict change.",
     "The Export tab releases the paste-ready note only when all four tabs pass their checks, so fixing one tab "
     "does not clear it.",
-    "Share: what a share says, in both directions. Size: whether a real gap is worth acting on. Count: whether a "
-    "rate is a lead or worth testing, counted in customers. Mix: whether the campaign worked once the segments are "
-    "split.",
-    "The note to Meera runs claim, evidence, caveat, action, and each verdict is written to sit inside it.",
 ]
 for i, text in enumerate(lines, 3):
     start.cell(row=i, column=1, value=text).alignment = WRAP
+start["A8"] = "Which question does each tab answer?"
+start["A8"].font = BOLD
+tabs = [
+    "Share: how often does chance alone make a fall this large, and which sentence says so honestly?",
+    "Size: is a fall that beats chance worth more than the fix costs?",
+    "Count: is a rate that rose worth testing, or only worth watching, once you count its customers?",
+    "Mix: did the campaign raise spend inside each group, or only in the blend?",
+    "Export: is every tab fixed, and what does the note to Meera say?",
+]
+for i, text in enumerate(tabs, 9):
+    start.cell(row=i, column=1, value=text).alignment = WRAP
+start["A15"] = "The note to Meera runs claim, evidence, caveat, action, and each verdict is written to sit inside it."
+start["A15"].alignment = WRAP
 
 # ---------------------------------------------------------------- Share
-ws = sheet(wb, "Share", "What does the share say?",
+ws = sheet(wb, "Share", "How often does chance alone make a fall this large, and which sentence says so honestly?",
            "Flip each member's pair many times (or shuffle the labels, for different customers) and count how often "
-           "chance alone makes a gap this large, one way and either way. The numbers are invented, change them.")
+           "chance alone makes a gap this large, one way and either way. The numbers are invented; change them.")
 head(ws, 4, ["Input", "Value"])
 put(ws, "A5", "Flips run"); put(ws, "B5", 5000, fill=INPUT)
 put(ws, "A6", "Flips with a fall at least as large as the real one"); put(ws, "B6", 210, fill=INPUT)
@@ -138,9 +148,9 @@ put(ws, "B20", '=IF(ABS(B12-B6/B5)>=0.0000001,"Fix the share formula before read
 put(ws, "A21", "Fixed, for the Export tab", NOTE); put(ws, "B21", "=IF(ABS(B12-B6/B5)<0.0000001,1,0)")
 
 # ---------------------------------------------------------------- Size
-ws = sheet(wb, "Size", "Is it worth acting on?",
+ws = sheet(wb, "Size", "Is a fall that beats chance worth more than the fix costs?",
            "Real and worth acting on are two separate calls. Size the fall in rupees against the cost of the fix. "
-           "The numbers are invented, change them.")
+           "The numbers are invented; change them.")
 head(ws, 4, ["Input", "Value"])
 put(ws, "A5", "Gap per member in the quarter (Rs)"); put(ws, "B5", 160, fill=INPUT)
 put(ws, "A6", "Members in the segment"); put(ws, "B6", 7000, fill=INPUT)
@@ -165,10 +175,11 @@ put(ws, "B17", '=IF(ABS(B11/B6-B5)>=0.005,"Fix the segment fall formula before s
 put(ws, "A18", "Fixed, for the Export tab", NOTE); put(ws, "B18", "=IF(ABS(B11/B6-B5)<0.005,1,0)")
 
 # ---------------------------------------------------------------- Count
-ws = sheet(wb, "Count", "Is the rate a lead, or worth testing?",
+ws = sheet(wb, "Count", "Is a rate that rose worth testing, or only worth watching, once you count its customers?",
            "A rate that jumps by 40 percent can stand on a handful of orders from a handful of customers. Count "
            "both first; the rule of thumb counts customers, since more orders from the same few customers add no "
-           "new evidence. The numbers are invented, change them.")
+           "new evidence, and a rate on fewer than thirty customers is a lead, one to watch until more customers "
+           "buy. The numbers are invented; change them.")
 head(ws, 4, ["Input", "Value"])
 put(ws, "A5", "Orders in the earlier quarter"); put(ws, "B5", 8, fill=INPUT)
 put(ws, "A6", "Orders in the later quarter"); put(ws, "B6", 14, fill=INPUT)
@@ -191,9 +202,10 @@ put(ws, "B15", '=IF(B12<>IF(B7<30,"lead","worth testing"),"Fix the threshold tes
 put(ws, "A16", "Fixed, for the Export tab", NOTE); put(ws, "B16", '=IF(B12=IF(B7<30,"lead","worth testing"),1,0)')
 
 # ---------------------------------------------------------------- Mix
-ws = sheet(wb, "Mix", "Did the campaign work?",
-           "Split the aggregate by segment before crediting a campaign. Two invented groups, spend per customer "
-           "in the quarter; change them.")
+ws = sheet(wb, "Mix", "Did the campaign raise spend inside each group, or only in the blend?",
+           "The blend is one average over both groups mixed together, so a campaign that reached more big spenders "
+           "can raise it while every group spends less. Split by group before crediting the campaign. The spend "
+           "per customer in the quarter is invented; change it.")
 head(ws, 4, ["Segment", "Not exposed (Rs)", "Exposed (Rs)", "Change (Rs)"])
 put(ws, "A5", "big spenders"); put(ws, "B5", 5000, fill=INPUT); put(ws, "C5", 4700, fill=INPUT)
 put(ws, "D5", "=C5-B5")
@@ -222,9 +234,9 @@ put(ws, "A19", "Fixed, for the Export tab", NOTE)
 put(ws, "B19", "=IF(ABS(B14-(B8/100*C5+(1-B8/100)*C6))<0.005,1,0)")
 
 # ---------------------------------------------------------------- Export
-ws = sheet(wb, "Export", "The note, assembled",
-           "Released only when every tab's check passes. Paste the lines into the note to Meera as claim, "
-           "evidence, caveat and action.")
+ws = sheet(wb, "Export", "Is every tab fixed, and what does the note to Meera say?",
+           "The note is released only when every tab's check passes. Paste its lines into the note to Meera as "
+           "claim, evidence, caveat and action.")
 ws.column_dimensions["B"].width = 110
 put(ws, "A4", "Tabs fixed", BOLD); put(ws, "B4", "=Share!B21+Size!B18+Count!B16+Mix!B19")
 put(ws, "A5", "Release", VERDICT)

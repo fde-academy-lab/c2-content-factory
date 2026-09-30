@@ -1,37 +1,41 @@
-# Real, worth it, and caused?
+# Week 1 Thursday: Which of Meera's three numbers is real?
 
-Kalpa Retail, Week 1 Thursday. Three questions from Meera, six chapters, three checks before any
-number reaches her note, and one page that may say "not yet".
+Kalpa Retail's CEO asks before Monday's growth review: is the Retail-Plus fall real, is Student's 40
+percent worth budget, and did the monsoon sale work?
 
-## Panel 1: Three questions, three checks, one note
+## Panel 1: Which check does each of Meera's three questions need?
 
 ```mermaid
-flowchart TB
-    Q1["<b>Is the drop real?</b> a gap"] --> H1["<b>chance</b>: could flips or a shuffle make it?"]
-    Q2["<b>Move budget to Student?</b> a rate"] --> H2["<b>the count</b>: how many customers behind it?"]
-    Q3["<b>Did the discount work?</b> a rise"] --> H3["<b>a fair comparison</b>: who got it, against whom?"]
-    H1 --> N["<b>one note</b>: claim, evidence, caveat, action"]
+%%{init: {"flowchart": {"wrappingWidth": 400}}}%%
+flowchart LR
+    Q1["Is the drop real? a gap"] --> H1["chance: could flips or a shuffle make it?"]
+    Q2["Move budget to Student? a rate"] --> H2["the count: how many customers behind it?"]
+    Q3["Did the discount work? a rise"] --> H3["a fair comparison: who got it, against whom?"]
+    H1 --> N["one note: claim, evidence, caveat, action"]
     H2 --> N
     H3 --> N
 ```
 
-A gap gets a chance reference that fits its design, a rate gets its count, and a campaign gets a
-fair comparison. Every check ends as one line of the same note.
+Meera Raghavan's three numbers are a fall per member in Retail-Plus, Kalpa's paid membership tier,
+a 40 percent rise in Student orders, and a 6 percent lift Marketing credits to the monsoon sale. A
+gap gets a chance reference that fits how the data was collected, a rate gets the count behind it,
+and a campaign gets a fair comparison. Each check ends as one line of the note, which Kavya Nair,
+the team's senior analyst, reviews before Meera sees it.
 
 **Crux:** A p-value is a share of chance-only worlds; it is never the chance the finding is wrong.
 
-## Panel 2: Choosing the route, chapter by chapter
+## Panel 2: Which method fits each of the day's six questions?
 
-| Question | Best fit here | Second route | Switch when |
+| Question | Best fit here | Second check | Switch when |
 |---|---|---|---|
-| Real or wobble? | Flip each member's pair | Exact count; textbook paired test | Different customers: shuffle labels |
-| Worth acting on? | Rupees against company and cost | Bootstrap on members' differences | A known recovery rate |
+| Real or wobble? | Flip each member's pair | Exact count; paired test | Different customers |
+| Worth acting on? | Rupees against company and cost | Members' own falls, redrawn | A known recovery rate |
 | Trust a rate? | Coin flips on its count | Every deal counted | A cheap way to reach customers |
-| Did a discount work? | Split inside each segment | One mix: does the mix explain it? | Groups chosen by a coin |
+| Did a discount work? | Split inside each segment | Both groups on one mix | Groups chosen by a coin |
 | What goes to the CEO? | Four-part note, under 200 words | The day's rules, applied again | The same review every week |
-| Did the sale cause it? | Random hold-back, next time | The test on months with no sale | A hold-back is refused |
+| Did the sale cause it? | Random hold-back, next time | Months with no sale | A hold-back is refused |
 
-## Panel 3: Flip or shuffle, and the sentence it supports
+## Panel 3: Flip or shuffle, and what does the share let you say?
 
 The same members measured twice: flip each member's own pair. Different customers in each group:
 shuffle the group labels.
@@ -49,16 +53,16 @@ either = sum(abs(g) >= abs(real) for g in gaps) / 5000
 | "A 3 percent chance we are wrong." | "If nothing had changed, a fall this large turns up in about 3 of 100 flips, 6 either way." |
 | "p = 0.72 proves nothing changed." | "The gap sits inside the usual wobble." |
 
-## Panel 4: Real, then worth it
+## Panel 4: Is a gap that beats chance worth acting on?
 
 A small share says a gap beats chance and nothing about its size: with enough orders even Rs 20
-comes back significant. Size it against the company's quarter, then against the cost: the offer
-pays only if it wins back more of the fall than it costs, 45 percent here. A range that dips below
-the cost means test on part of the group first.
+comes back significant. Size it against the company's quarter, then against the cost: an assumed
+Rs 11,000 offer on a Rs 24,420 fall pays only above 45 percent recovery. If the range dips below the
+cost, test on part of the group first.
 
 **Crux:** Real and worth acting on are two separate calls: a chance reference answers the first, rupees against cost answer the second.
 
-## Panel 5: The count behind a rate
+## Panel 5: When is a rate too thin to act on?
 
 | Behind the rate | One more moves it by |
 |---|---|
@@ -68,28 +72,28 @@ the cost means test on part of the group first.
 | 400 | 0.25 points |
 
 Count the customers as well as the orders: thirty orders from three customers are three customers'
-habits. Flip a coin per order, thousands of times, and see how often chance alone makes the rise.
+habits. A rate on fewer than thirty customers is a lead, one to watch until more customers buy. Flip
+a coin per order, thousands of times, and see how often chance alone makes the rise.
 
 **Crux:** Count what a rate stands on, in customers as well as orders, before you repeat it; under thirty customers, it is a lead.
 
-## Panel 6: Who got it, against whom
+## Panel 6: How can an average rise while every segment falls?
 
-A blend can rise while every segment falls, when the group that got the campaign holds more of the
-segment that spends more anyway. Compare inside each segment, state the mix of the two groups, and
-put both groups on one mix for a one-line answer. At 15 percent off, volume must rise 17.6 percent
-just for revenue to stand still.
+The blend, one average over both segments mixed together, rises when the group that got the
+campaign holds more of the segment that spends more anyway. Compare inside each segment, state the
+two groups' mix, and put both on one mix for a one-line answer. At 15 percent off, volume must rise 17.6 percent for revenue to stand still.
 
 **Crux:** Split an aggregate by segment before you credit a campaign, and name who got it.
 
-## Panel 7: The note to Meera
+## Panel 7: What must each line of Meera's note carry?
 
 Claim: one sentence she can act on. Evidence: the number with its base and its count. Caveat: what
-would change the claim. Action: what to do next and what it costs. Audit each line: a base, a count
-or chance, a caveat.
+would change the claim. Action: what to do next and what it costs. Each line must carry a base, a
+count or chance, and a caveat.
 
 **Crux:** The note is claim, evidence, caveat, action, and "not yet, and here is what would tell us" is a complete answer.
 
-## Panel 8: The fair comparison
+## Panel 8: What makes a campaign comparison fair?
 
 Before and after credits the campaign with the month. Put an untargeted segment beside it, count
 the orders under each month, run the same test on months with no sale, and decide the next
