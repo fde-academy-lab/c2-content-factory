@@ -54,7 +54,7 @@ label: 30 seconds | title: Caveat | body: The thing that would change the claim,
 label: 20 seconds | title: Action | body: What to do, what it costs, and what would tell us more.
 ```
 
-**Kavya's review.** The caveat said first is a sign of control. The same caveat dragged out of you by Marketing reads as a retreat.
+**Kavya's review.** Say the caveat before Marketing finds it, so the room hears it as part of the claim.
 
 ```notes
 LIVE, 2 minutes. The timings add to two minutes. A learner who runs long almost always ran long in

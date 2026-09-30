@@ -37,20 +37,20 @@ d) Rows whose amount or customer looks odd are counted
 
 ### Item 2
 
-On a supplier's export last month, an amount would not convert to a number, and it could be read without guessing. What went in the decisions log?
+On a supplier's export last month, one amount arrived as the text "4.5k" and the supplier's other amounts are whole rupees. What went in the decisions log?
 
 a) Set it to 0 so the quarter still sums, and move on
 b) Drop the row, since a value that fails is unusable
-c) Read it without guessing, convert, keep and flag it
+c) Read it as 4,500, convert, keep and flag it
 d) Replace it with the segment's median order, with no note
 
 ### Item 3
 
-On another team's export, an order carried no customer_id, and Anand's analyst would audit the customer count. What was right?
+On another team's export, an order's customer_id read "UNKNOWN", and Anand's analyst would audit the customer count. What was right?
 
 a) Drop the order, so every remaining row is complete
 b) Keep it in revenue, flag it, state customers both ways
-c) Count the empty id as one more customer, since it is an order
+c) Count "UNKNOWN" as one more customer, since it is an order
 d) Give it to the busiest customer in its segment
 
 ### Item 4
@@ -78,12 +78,13 @@ d) Every cleaning decision was right, in rows and in rupees
 
 ### Item 6
 
-A colleague's quarter lands on Finance's order count and falls short of its rupee total, with zero rejects reported. Which cause fits all three facts?
+Your rupee check shows a quarter short of its control total while every count lands. Which second
+route finds where the gap sits using nothing outside the file?
 
-a) A repeated row that was kept in the quarter
-b) An order dropped without a word in the log
-c) An order dated just outside the quarter's end
-d) A value that would not convert, set to zero
+a) A shuffle test on the quarter's orders, 2,000 runs on customers
+b) The median order of each quarter, compared with last quarter's
+c) The rows re-sorted by date, to see which week looks thinnest
+d) Every value present, summed as it came or logged as read
 
 ### Item 7
 
@@ -110,7 +111,7 @@ d) None of them, since the total held
 
 ### Item 9
 
-Kavya asks for Retail-Plus orders per customer, Q1 to Q2, on the clean data. What is the change?
+Kavya asks for the change in the Retail-Plus branch that moved, Q1 to Q2, on the clean data. What is it?
 
 a) -40.0%
 b) -1.7%
@@ -164,13 +165,13 @@ Marketing pushes on the note: "The tier is tiny. Why should Meera care?" Which a
 a) "You are right, so I will take the tier out of the note before Monday's review."
 b) "Its size does not matter, because the p-value settles the question either way."
 c) "The members matter less than the total, and the total held all quarter."
-d) "Here is its count and its move; the test says whether it is chance."
+d) "Here is its count and its move, and how often chance alone makes it."
 
 ### Item 15
 
 Meera asks what would move Retail-Plus out of your claim and into the caveat. Which fact would?
 
-a) A rerun of the shuffle placing the gap inside chance
+a) Next quarter's orders putting the gap inside chance
 b) The total rising again in Q3, so the tier matters less now
 c) Student growing faster than Retail-Plus next quarter too
 d) Marketing disagreeing with the finding in Monday's review
@@ -187,7 +188,7 @@ d) Profile, account for values, ask Finance for totals, decompose
 
 ### Item 17
 
-A colleague's cleaning cell for the practice export is below. One line makes a pass that looks clean
+A colleague's cleaning cell for last month's export is below. One line makes a pass that looks clean
 while it is short in rupees.
 
 ```python

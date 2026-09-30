@@ -105,13 +105,13 @@ open today, and the reason is that code written for Wednesday's file assumes Wed
 ---
 
 ## S5. The rules of the lab
-*The lab finds out what you own; it does not rank anybody.*
+*The lab shows each person which steps they own, and ranks nobody.*
 
 ```cards
 icon: bot-off | eyebrow: Rule 1 | title: No assistant | body: No chat model, no autocomplete that writes code, no search for code.
 icon: book-x | eyebrow: Rule 2 | title: Notes closed | body: No earlier notebook, deck or cheat sheet open on any screen.
 icon: timer | eyebrow: Rule 3 | title: 120 minutes | body: The clock runs once; save as you go and hand in what you have.
-icon: eye | eyebrow: Rule 4 | title: Observed, never scored | body: A TA notes where each person is at each mark; nothing goes on a wall.
+icon: eye | eyebrow: Rule 4 | title: Observed, with no score | body: A TA notes where each person is at each mark; nothing goes on a wall.
 ```
 
 **The rule.** Python's own documentation, reached from the notebook with `help()`, is allowed, because an analyst on the job has it too.

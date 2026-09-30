@@ -345,7 +345,7 @@ kit.check("the walk back lands on the hurried sum in both quarters", all(back[q]
 
     ### Depth: the same rows also move a branch
 
-    Rows Finance does not hold do not only inflate a total. If they sit in one segment, they
+    Rows Finance does not hold inflate a total, and they can move a branch as well. If they sit in one segment, they
     manufacture a rise in orders per customer where nothing changed. Run the tree on the hurried rows
     and on the clean ones for the segment with the most consumer orders and compare the frequency branch.
     """),

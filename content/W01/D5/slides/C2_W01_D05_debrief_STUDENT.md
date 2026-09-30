@@ -37,7 +37,7 @@ value: Q1 to Q2 | label: the metric | note: booked revenue, the note's first lin
 value: the sign | label: what a wrong number costs | note: a falling quarter reported as a rising one
 ```
 
-**The client asks.** Does the data you cleaned still add up to what Finance booked, before anyone reads a branch of the tree?
+**The client asks.** Can the number in your note go to Meera as it stands?
 
 ```notes
 LIVE, 2 minutes. Say who asks and why it matters to them: Anand returns any figure that does not tie
@@ -255,7 +255,7 @@ value: the analyst | label: who asks | note: Anand's auditor, then Meera
 value: half | label: what a wrong base costs | note: the fall reported at half its size
 ```
 
-**The client asks.** Your pass reports zero rejects and every count lands. Show me the rupees.
+**The client asks.** Your pass reports zero rejects and every count lands. Is it finished?
 
 ```notes
 LIVE, 1 minute. A base that is short by one large order halves the fall the note reports. Nobody
@@ -309,7 +309,7 @@ and every count lands. Nobody in the room should feel caught.
 ## S15. Question: the rows reconcile, so what is left?
 *Input equals kept plus rejected, and the order counts match Finance's.*
 
-**Question.** Choose one: a) nothing, since every row is accounted for; b) the rupees, each quarter against its control total; c) the median, since one large order may have gone; d) the dates, since the quarter may be cut wrong.
+**Question.** Choose one: a) nothing, since every row is accounted for; b) the rupees against each control total; c) the median, since one large order may have gone; d) the dates, since the quarter may be cut wrong.
 
 ```notes
 LIVE, 1 minute. Take letters. The popular wrong answer is a, and it is the answer the zeroing pass

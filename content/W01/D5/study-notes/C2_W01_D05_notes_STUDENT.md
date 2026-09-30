@@ -361,8 +361,8 @@ Three moves keep a claim the size the data supports. Restating with the denomina
 what the number is out of. Bounding says what the data can and cannot show, in one sentence each.
 Offering the test turns the caveat into a plan with a size and a date. The two failures sit either
 side: folding drops the caveat to end the argument, and overclaiming calls the uncertainty a
-certainty in the other direction. The caveat said before anyone asks reads as control; the same
-caveat dragged out by a push reads as a retreat.
+certainty in the other direction. Say the caveat before anyone asks, so the room hears it as part
+of the claim.
 
 ---
 
@@ -410,7 +410,7 @@ I compute anything.
 I give it in the four parts. The claim with its number and denominator: for example, that one
 segment's revenue per order fell 12.5 percent on 35 orders a quarter while its customers and their
 frequency held. The evidence: the data reconciled to Finance's totals, and a shuffle on customers put
-the gap at p = 0.015. How sure: sure it is not chance at the usual bar, not sure of the cause, which
+the gap at p = 0.015. How sure: below the usual 0.05 bar, and the cause is still open, which
 is what I would test next. And the action I recommended, with its cost.
 
 **[F] You have two hours and a raw export; what do you do first, and what do you skip?**

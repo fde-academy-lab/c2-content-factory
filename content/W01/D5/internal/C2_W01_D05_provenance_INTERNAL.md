@@ -78,7 +78,7 @@ are the only place the lab data could not be replaced without losing the sizing 
 | The option sizings use the lab brief's pace for analyst minutes and label option D's minutes as an estimate; compute is measured in the notebook | The standard asks for sizing in rows, minutes, rupees and error | The lab's own pace is the only sourced minute figure; the measured compute (under a millisecond) is shown so the room sees the choice is about thought, never compute |
 | The three design cases carry illustrative numbers (about 2,000 orders, 50,000 rows, 12 and 1,200 checkout visits, 1,200 visits a week) | The lock carries no Q3 export, no migrated-ERP quarter and no checkout traffic for Kalpa | Setting the cases at Kalpa, as the raise asks, needed figures the lock does not hold; each is marked illustrative in the STUDENT file |
 | The Kahoot has eight items: the row's five, two design items and the return | The row's quiz plan (five plus the return) | The standard's eight and the raise's third of items as design items; Q2 was rewritten from "which check catches a duplicate" into the design call "which check first", so the row's concept stays tested |
-| The practice set has seventeen items, seven of them design items (4, 7, 10, 11, 12, 15, 16), item 16 an ordering item and item 17 a find-the-defect item | The 29 September set's eleven | The raise asks for at least a third design items, covering the step where a learner stalled; at least one per problem, so each stalled step has its design item |
+| The practice set has seventeen items, eight of them design items (4, 6, 7, 10, 11, 12, 15, 16), item 16 an ordering item and item 17 a find-the-defect item | The 29 September set's eleven | The raise asks for at least a third design items, covering the step where a learner stalled; at least one per problem, so each stalled step has its design item |
 | The rehearsal defends Thursday's final note | The row says "the note" | Thursday's note is the one going to Monday's review, which is what the rehearsal rehearses |
 | Three decks named lab, debrief, rehearsal, where the standard names half1 and half2 | The standard | A lab day takes its week spine's shape; three decks follow the three moments a trainer switches files |
 | No companion page, decision workbook, cheat sheet, take-home, whiteboard, tiered extras or per-chapter scenario sets | The standard's teaching-day volume | The raise for this day lists what it adds, and none of these is on it; the lab adds no idea, the chapter notebooks carry a predict item at every level, and the practice set carries the row's FIX task |
@@ -169,3 +169,19 @@ builder's indentation, so every opener renders as prose; items 2 and 3 set on ot
 order; item 17 added as a find-the-defect item; S4 and S24 keys shortened; every contrast line
 rewritten; S11's captions dropped and their meaning moved into its subtitle; S14's subtitle and S27's
 label fixed; the timed cases' links dated on the URL line.
+
+**Round three.** Pass 4 FAILED on wording only: practice item 14's key said the test "says whether it
+is chance"; item 15 let a rerun on another seed decide the claim, where p near 0.05 wobbles by about
+0.005 at 2,000 shuffles; the notes' "sure it is not chance at the usual bar". Fixed: item 14's key now
+says how often chance alone makes the gap; item 15's key is a test on new orders, and the solution and
+the TA note say to run 20,000 shuffles before calling a p this close to 0.05; the notes say "below the
+usual 0.05 bar". Stands: the reviewer put the one-in-ten split's 80 percent point at about 175
+new-checkout visits; the key's own unpooled formula gives 0.802 at 170, so "about 170" stays. Pass 5
+FAILED on practice items 2 and 3, whose solution rows answered them with this export's values, item 2's
+stem repeating its key, items cueing each other (9 into 8, 17 into 6), debrief S15's key the longest
+option with S12's quote giving it away (and S1 giving S4's), and four contrast lines. Fixed: items 2
+and 3 set on other exports with other surfaces ("4.5k", "UNKNOWN") and solved generically; item 9 asks
+for "the branch that moved"; item 6 rewritten as the second-route design item (value accounting), so
+item 17 answers nothing else, and item 17 set on last month's export; S15's key shortened, S12's and
+S1's client lines no longer state the key; the lab S7 lines, the rehearsal and notes caveat line and
+notebook 1's depth line rewritten. The design share is now eight of seventeen.
