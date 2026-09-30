@@ -29,6 +29,7 @@ sources:
     title: C2 IITGN Curriculum Tracker v7
     dated: 2026-09-21
     class: INTERNAL
+    note: One local edit, made on 30 September 2026 at the requester's instruction (decision reporting-day-line) to cell L5 of the W2 tab, the Week 2 Tuesday interview line. The master takes it before it next replaces this copy.
   faculty:
     path: docs/faculty/source.xlsx
     title: C2 IITGN Faculty Sessions, version 2
@@ -291,6 +292,16 @@ decisions:
     status: closed
     closes: the requester, on 30 September 2026
     text: Every option edit and relabelling that data/programme/paper_edits.yaml lays on the Week 1 and Week 2 Saturday papers is accepted, thirty in all; each applies until the tracker's Saturday papers tab carries it, and the sync then reports it folded.
+    blocks: nothing
+  - id: plants-once-found
+    status: closed
+    closes: the requester, on 30 September 2026
+    text: A planted value may be named to learners once the room has found it in class, so the Week 1 Saturday paper keeps Q32 and Q51, two tracker items that name values planted in the Week 1 Monday dataset; before its lesson, a plant stays unnamed in every learner file.
+    blocks: nothing
+  - id: reporting-day-line
+    status: closed
+    closes: the requester, on 30 September 2026
+    text: The Week 2 Tuesday interview line asks what you do when the validation fails at the end of reporting day, the wording the Tuesday pack teaches, where tracker v7 said 5 pm. The repository's copy of the tracker carries the change, and the master takes it at its next version.
     blocks: nothing
   - id: rubrics-and-calendar
     status: open

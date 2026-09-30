@@ -299,3 +299,11 @@ each now carries status accepted and applies until the tracker's Saturday papers
 the decision is `saturday-edits-w1-w2` in `data/programme/facts.yaml`. The requester also settled
 Anand Iyer's title as finance controller (decision `anand-finance-controller`), so the paper names
 him by that title again, where the entry above had left the title off.
+
+## 30 September 2026, the requester's rulings on the open items
+
+Q32 and Q51 print as the tracker wrote them. Each names a value planted in the Week 1 Monday
+dataset, and the requester ruled that a plant may be named once the room has found it in class,
+which it has by Saturday (decision `plants-once-found` in `data/programme/facts.yaml`). Q12 and Q21
+both stay as well: Q21 asks for the five rungs of the investigation ladder in order, so it holds
+Q12's answer, the first rung, and the requester chose to leave both tracker items as they are.

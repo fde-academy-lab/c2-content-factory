@@ -52,6 +52,11 @@ script or a gate. `content` changes what is taught.
 | 27 Sep 2026 | Every movable fact now lives in `data/programme/facts.yaml` with a status, and `python3 scripts/sync_programme.py` regenerates everything that follows from it, from the exports to the board's calendar; a workflow runs it on every branch and checks it on every pull request. | `CLAUDE.md`, `scripts/sync_programme.py` | `tooling` |
 | 27 Sep 2026 | The board follows the new calendar: Week 0 and Weeks 10 to 20 joined it, and seven cards moved in place where a holiday and a working day swapped weekdays. | [The content board](https://github.com/fde-academy-lab/c2-content-factory/blob/main/docs/agents/content-board.md) | `tooling` |
 | 27 Sep 2026 | Nine skills were imported from five upstream repositories for visual direction, the analytical lens of study notes, brainstorming before the spine, verification before done, and public pages. | [`docs/skills-imported.md`](https://github.com/fde-academy-lab/c2-content-factory/blob/main/docs/skills-imported.md) | `method` |
+| 30 Sep 2026 | The Saturday recap paper prints in parts named for what each shows, with each item's format and level beside it and up to six recall items on an untimed stretch page, and the room sits a Word paper in the Week 0 diagnostic's format with its answer sheet at the back. | `CLAUDE.md`, `.claude/skills/exercise-builder/SKILL.md` | `method` |
+| 30 Sep 2026 | Anand Iyer is Kalpa Retail's finance controller in every pack and paper, where the tracker's Week 1 and Week 2 rows called him the CFO. | `data/programme/facts.yaml`, decision `anand-finance-controller` | `ruling` |
+| 30 Sep 2026 | All thirty option edits and relabellings laid on the Week 1 and Week 2 Saturday papers were accepted, and each applies until the tracker's Saturday papers tab carries it. | `data/programme/paper_edits.yaml` | `content` |
+| 30 Sep 2026 | A plant may be named to learners once the room has found it in class, so the Week 1 Saturday paper keeps the two tracker items that name Week 1 Monday's plants. | `CLAUDE.md`, decision `plants-once-found` | `ruling` |
+| 30 Sep 2026 | The Week 2 Tuesday interview line asks what you do when the validation fails at the end of reporting day, where tracker v7 named a clock time. | `docs/curriculum/source.xlsx`, decision `reporting-day-line` | `content` |
 
 ---
 

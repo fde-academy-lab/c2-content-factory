@@ -53,7 +53,7 @@ lists the conflict and the working rule; follow the rule and name it.
 ## House rules for anything written here
 
 - The business scenario leads; a plan that opens on a topic title is not built from the row.
-- What is planted in a dataset is never named to a learner.
+- What is planted in a dataset is never named to a learner before the room has found it in class.
 - Durations only, never clock times. Role labels only, never people's names; Kalpa's fictional
   stakeholders are the one exception.
 - Rs, never the currency glyph. No em-dashes. Full connected sentences. None of these words:
