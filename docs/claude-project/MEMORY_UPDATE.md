@@ -20,6 +20,14 @@ Remember:
   the same number a second way; code is the last mile. At least a third of a day's exercise items
   are design items, and every pack runs a five-pass depth loop whose last two passes are fresh
   reviewers. Weeks 1 and 2 are being rebuilt to it.
+- The standard was raised again the same day. Every heading in the programme's material is a plain,
+  specific question its section answers, with who needs the answer and the smaller questions on the
+  way beneath it, and each section closes on its answer with its number (the question ladder); on a
+  slide the italic subtitle asks and the action title answers. Every deck, notebook, exercise file,
+  case brief, take-home and Saturday paper is understood with nothing else open. Decks carry each
+  chapter in full in the notebook's rhythm. Every prose file passes the humanizer skill's read as well
+  as the tic scanner, so no wording reads as a language model's. Weeks 1 to 3 are built or rechecked
+  to it, and the work runs on the latest Opus model at its highest effort.
 - The programme prepares learners for four domains: retail and e-commerce (Kalpa Retail, Weeks 1
   and 2), US healthcare (Kalpa Health, Build 1), financial services (Week 5 and Build 2) and SaaS and
   enterprise AI (from Week 8, the GCC building AI products, an enterprise brain among them). Each
@@ -34,7 +42,8 @@ Remember:
   percent of the timed items are hard, each part opens on a scenario with a visual, blanks are
   answered from word banks and pairs from match tables, and items may be set at real companies or
   in public case studies with every figure sourced. Only the week's Saturday paper may name a planted
-  value, and only one the room has already found in class.
+  value, and only one the room has already found in class; an afternoon file on the day the room finds
+  it is no exception.
 - The calendar moved a week and is locked: Week 0 is the in-person baseline week, 28 September to
   3 October 2026, with no marks; teaching Week 1 starts on Monday 5 October; Week 20 closes on
   Saturday 20 February 2027. Holidays: Gandhi Jayanti (Friday 2 October, Week 0), Dussehra (Tuesday
@@ -78,6 +87,8 @@ Forget or correct:
 - A teaching day of three 50-minute rounds with one notebook per round.
 - Kalpa Health as a chain of labs and clinics in six Indian cities, and Anand Iyer as the CFO.
 - Plain fill-in-the-blank items on a Saturday paper, and a Saturday paper set only inside Kalpa.
+- Headings that are topic labels, such as "Customer lifetime value, simply", and files that send the
+  reader to another file for something needed to follow them.
 - Week 1 starting on 28 September, Gandhi Jayanti falling in Week 1, and Week 1 having no Friday.
 - ME3 in Week 15, and any exam marks of 50, 100 and 150.
 - The short-answer Saturday test, a Friday test, and a daily Neo question pool.
