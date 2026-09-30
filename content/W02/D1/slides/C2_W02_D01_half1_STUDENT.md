@@ -1587,7 +1587,7 @@ xychart-beta
     line [40, 150, 120, 30]
 ```
 
-**The check.** A count of customers who bought can never exceed the customers who exist: the added line runs over the members in every segment (the line marks the members). A customer who bought in both quarters sits in the Q1 row and in the Q2 row, so adding the rows counts them twice.
+**The check.** A count of customers who bought can never exceed the customers who exist: the added line runs over the members in every segment, which the line shows. A customer who bought in both quarters sits in the Q1 row and in the Q2 row, so adding the rows counts them twice.
 
 ```notes
 LIVE, 3 minutes. Business 71 of 40, Retail-Core 198 of 150, Retail-Plus 167 of 120, Student 35 of

@@ -456,7 +456,7 @@ that caught one of the day's plausible wrong numbers. Then the Kahoot.
 
 ```stats
 value: 8 | label: items | note: seven on today, one returning from Week 1 Thursday
-value: 0 | label: marks | note: the Kahoot is daily and ungraded
+value: 0 | label: grades | note: the Kahoot is daily and ungraded
 value: 20 s | label: per item | note: then the reason, aloud
 ```
 
