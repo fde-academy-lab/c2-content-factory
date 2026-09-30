@@ -1,8 +1,8 @@
-# Domain card: US healthcare at Kalpa Health
+# Domain card: How does a US lab turn a test into cash, and what may its data team see?
 
-Kalpa Health, Build 1. The charge-to-cash tree, ten metrics as formulas, twenty words a revenue-cycle meeting assumes, and the rules a US lab's data team works under. Kalpa Health is fictional, its records are synthetic, and its numbers here are illustrative.
+Kalpa Health, Build 1: six US metros, four kinds of payer (commercial, Medicare, Medicaid, self-pay). Fictional, with synthetic records; illustrative numbers are neither its data nor any real company's.
 
-## Panel 1: From a test's charge to cash
+## Panel 1: How does a test's charge become cash?
 
 ```mermaid
 flowchart LR
@@ -22,40 +22,41 @@ flowchart LR
     class G,K dark
 ```
 
-**Allowed amount = payer's share + patient responsibility.** Contracts take most of the list price away before anyone pays, denials and unpaid balances leak out of what is left, and the clean claim rate and days in AR set the pace of the rest. Panel 6 walks $100 of charges down to operating income, and panel 3 names the traps.
+**Allowed = payer's share + patient's share.** James's tests: $135 charged, $64.80 written off under contract, $70.20 allowed, $56.16 from the plan, $14.04 from James.
 
 **Crux:** Place every revenue-cycle number on this tree, as a charge, an allowed dollar, a leak or the pace of cash, before explaining a change in it.
 
-## Panel 2: The ten metrics, as formulas
+## Panel 2: How is each revenue-cycle number worked out?
 
 | Metric | Formula |
 |---|---|
 | Gross charges | Tests billed x list price |
 | Allowed amount | Payer's share + patient responsibility |
 | Contractual adjustment | Gross charges less allowed |
-| Net revenue | Gross charges less contractual adjustments less what will never be collected |
+| Net revenue | Charges less contractual adjustments less what will never be collected |
 | Patient responsibility | Deductible + coinsurance + copay |
-| Denial rate | Denied at first answer / submitted |
+| Initial denial rate | Denied at first answer / submitted |
 | Clean claim rate | Passed every edit untouched / entered |
 | Days in AR | Receivable / net revenue per day |
-| Net collection rate | Payments / (gross charges less contractual adjustments) |
+| Net collection rate | Payments / allowed, once the window closes |
 | Turnaround time | Draw to released result, median |
 
 **Crux:** Say the divisor, and whether it counts claims or dollars.
 
-## Panel 3: Traps that make a lab's number lie
+## Panel 3: Which checks stop a lab's number from lying?
 
 | Trap | The check |
 |---|---|
-| List-price rise read as growth | Track allowed dollars |
-| Last month's allowed holds only fast payers | Compare once slow payers answer |
-| Denials by count against dollars | State the basis |
+| A price-list rise read as growth | Track allowed dollars |
+| Last year's allowed share, this year's claims | Check this year's remittances |
+| Contractual and unpaid in one line | Report them apart |
+| Denials by count heard as dollars | State the basis |
 | Days in AR cut by write-offs | Read write-offs beside it |
-| Collections over gross charges | Divide by allowed |
+| Collections read before the window closes | Wait for the window |
 
 **Crux:** Run each check before the number leaves the team.
 
-## Panel 4: Twenty words to say fluently
+## Panel 4: Which twenty words does a revenue-cycle meeting assume?
 
 | Word | What it means |
 |---|---|
@@ -66,10 +67,10 @@ flowchart LR
 | **Accession number** | Barcode tying sample to order |
 | **Panel** | Tests ordered by one name |
 | **Chargemaster** | The lab's own price list |
-| **Deductible** | Paid by the patient before the plan pays, each plan year |
+| **Deductible** | Paid by the patient each plan year before the plan pays |
+| **Coinsurance** | The patient's percentage after the deductible |
 | **CPT** | The AMA's procedure codes |
 | **ICD-10-CM** | Diagnosis codes: why it was ordered |
-| **NPI** | A provider's ten-digit number |
 | **837, 835** | The claim, and the remittance |
 | **Clearinghouse** | Checks and routes claims |
 | **Rejection** | Bounced before the payer saw it |
@@ -80,27 +81,27 @@ flowchart LR
 | **Timely filing limit** | The deadline to submit a claim |
 | **PHI** | Health data that identifies a patient |
 
-## Panel 5: The rules a US lab's data team works under
+## Panel 5: Which rules bind a US lab's data team?
 
-| Rule | What the data team does |
+| Rule | What it requires |
 |---|---|
-| **HIPAA Privacy** | Treats identifiable rows as PHI |
-| **Minimum necessary** | Asks only for the columns needed |
-| **De-identification** | Expert-certified, or 18 identifiers out |
-| **Business associate** | Works inside the agreement |
-| **Security, breach** | Role-based access; notice within 60 days |
-| **Medical necessity, ABN** | Never adds a diagnosis to get paid |
-| **Timely filing** | Claims nearest the limit first; Medicare one year |
-| **Offshore** | Follows the agreement and contracts |
+| **HIPAA Privacy** | Identifiable rows are PHI |
+| **Minimum necessary** | Only what the purpose needs |
+| **De-identification** | Expert finding, or 18 identifiers out |
+| **Business associate** | Works inside the written agreement |
+| **Breach notice** | Within 60 days of discovery |
+| **Medical necessity** | Never add a diagnosis to get paid |
+| **Timely filing** | Medicare: one year from service |
+| **Offshore** | No HIPAA border; contracts decide |
 
-## Panel 6: Where $100 of gross charges goes
+## Panel 6: Where does $100 of a lab's charges go?
 
-| Line | Less, $ | Left, $ |
+| Line, illustrative | Less, $ | Left, $ |
 |---|---|---|
 | **Gross charges** | | 100 |
-| Contractual adjustments | 60 | 40 **allowed** |
-| Denials upheld, balances unpaid | 3 | 37 **net revenue** |
-| Cost of the tests | 25 | 12 **gross profit** |
-| Billing, sales, technology, admin | 6.50 | 5.50 **operating income** |
+| Contractual adjustments | 55 | 45 **allowed** |
+| Denials upheld, balances unpaid | 3 | 42 **net revenue** |
+| Cost of the tests | 28 | 14 **gross profit** |
+| Billing, sales, technology, admin | 8 | 6 **operating income** |
 
-**Crux:** On these illustrative numbers a $1 leak from the $40 allowed is 2.5 percent of it and 18 percent of the lab's operating income.
+**Crux:** A $1 leak from the $45 allowed is 2.2 percent of it and a sixth of the lab's operating income.
