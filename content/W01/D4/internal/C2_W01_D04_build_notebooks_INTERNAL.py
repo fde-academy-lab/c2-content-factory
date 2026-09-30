@@ -1221,9 +1221,9 @@ customers who did not. **Who asks and what rides on it.** The marketing lead own
 wants it repeated at 15 percent off; Meera signs the Diwali budget. Monday's rule applies: at 15
 percent off, orders must rise about 17.6 percent just for revenue to stand still, so a sale that
 did not lift spend gives margin away. **Who else faces it.** eBay measured its search ads in large
-controlled experiments and split the result by customer: new and infrequent users bought more after
-seeing an ad, while frequent users, whose buying the ads did not change, took most of the ad spend,
-so the average return was negative (Blake, Nosko and Tadelis, NBER working paper 20171). The classic
+controlled experiments and split the result by customer (Blake, Nosko and Tadelis, NBER working
+paper 20171). New and infrequent users bought more after seeing an ad; frequent users, whose buying
+the ads did not change, took most of the ad spend, so the average return was negative. The classic
 public case of a blend reversing is UC Berkeley's 1973 graduate admissions: 44 percent of men and 35
 percent of women were admitted overall, and department by department the small bias ran in favour
 of women.
