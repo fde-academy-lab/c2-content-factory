@@ -56,7 +56,7 @@ The tree counts revenue as GMV, and panel 6 walks it down to net revenue and on 
 | Dividing by survivors | Divide by the cohort's starting size |
 | Margin on GMV | Divide margin by net revenue |
 | Missed sales | Count empty shelf-days; a stock-out leaves no row |
-| Late returns | Wait for the return window to close |
+| RTO counted as returns | Count only delivered orders that came back |
 | New stores | Quote like-for-like |
 | Blended CAC | Count only customers the spend brought |
 

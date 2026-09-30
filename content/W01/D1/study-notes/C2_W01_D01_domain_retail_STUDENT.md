@@ -290,7 +290,7 @@ Every worked number below is illustrative. Most come from section 1's Saturday o
 |---|---|
 | Formula | Retention in month k = the cohort's buyers in month k / the cohort's starting size |
 | Worked | January's 1,000 new customers: 380 ordered in February, 300 in March and 260 in April, which is 38, 30 and 26 percent |
-| The trap | Dividing by survivors: 300 over 380 is 79 percent and measures something else. A one-month-old cohort never compares with a six-month-old one. |
+| The trap | Dividing by survivors: 300 over 380 is 79 percent and is the share of February's buyers who came back in March; retention divides by the 1,000 who started. |
 | Who asks | The head of Retail-Plus and marketing |
 
 ### Customer lifetime value, simply
@@ -344,7 +344,7 @@ Every worked number below is illustrative. Most come from section 1's Saturday o
 |---|---|
 | Formula | Returned / delivered, in units, orders or rupees, on one stated basis |
 | Worked | Of the month's 50,000 orders, 48,000 were delivered and 3,360 came back: 7 percent |
-| The trap | Returns arrive late, so this month looks clean while earlier months keep rising, and a month's rate is final only once its return window has closed |
+| The trap | A parcel refused at the door comes back as RTO without ever being delivered. Counted among the returns while the divisor is delivered orders, it puts in the top what the bottom leaves out, the rate rises, and the fix goes to the product team when the cause is cash on delivery and the address |
 | Who asks | Finance, the fashion category, support and logistics |
 
 ### Same-store sales, or like-for-like growth
