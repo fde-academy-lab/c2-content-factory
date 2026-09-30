@@ -175,7 +175,7 @@ finds it and discounts every later number the team sends.
 
 ---
 
-## S8. Target Canada trusted data nobody had profiled
+## S8. Target Canada's new system ran on bad data
 *It launched in March 2013, and in January 2015 announced it would close all 133 stores.*
 
 ```stats
@@ -799,7 +799,7 @@ value: about an hour | label: the window | note: a Friday evening
 value: most | label: orders cancelled | note: once Amazon spotted it
 ```
 
-**What breaks.** A value that falls to a default is still treated as real by everything downstream. A coerced zero in a report does the same.
+**What breaks.** A wrong value that nothing questioned sold real stock. A coerced zero in a report is treated as real in the same way.
 
 ```notes
 LIVE, 2 minutes. Source: BBC News, 15 December 2014, checked 30 Sep 2026. Counts beyond "hundreds
@@ -995,7 +995,7 @@ LIVE, 3 minutes. A rescue campaign for Retail-Plus is waiting on the second numb
 
 ---
 
-## S49. Tesco bridged its gap from GBP 250m to 263m
+## S49. Tesco's gap grew from GBP 250m to 263m
 *In 2014 a retailer's own figure was wrong, and the investigation split it by period.*
 
 ```stats

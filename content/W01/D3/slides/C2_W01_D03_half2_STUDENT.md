@@ -64,15 +64,15 @@ criminal case against individuals is unresolved, so name no person and say nobod
 
 | Option | Lines | Ties rows | Ties rupees | Replayable |
 |---|---|---|---|---|
-| a) The clean file, read against the raw | 387 | no | no | no |
+| a) The clean file, read against the raw | 387 | by hand | no | no |
 | b) The file and a count | 1 | yes | no | no |
-| c) Logs and control totals | 23 | yes | yes | yes |
+| c) Logs and control totals | 24 | yes | yes | yes |
 | d) A full diff | 201 | yes | by hand | no |
 
 **The call.** c. What would switch it: an external auditor who must re-derive every row, and then d goes beside c.
 
 ```notes
-LIVE, 5 minutes. 23 lines: 15 set-aside rows, 1 flag, 5 decisions, 2 control totals, and an empty
+LIVE, 5 minutes. 24 lines: 15 set-aside rows, 2 flags (the status and the bulk order), 5 decisions, 2 control totals, and an empty
 rejects log. Options a and d cost over an hour and still say nothing about why.
 ```
 
@@ -120,7 +120,7 @@ LIVE, 2 minutes. Letters in chat.
 
 ```stats
 value: -Rs 19,98,210 | label: the identity rule | note: 15 rows
-value: Rs 0 | label: the other four | note: 57 rows flagged or kept
+value: Rs 0 | label: the other four | note: 58 rows flagged or kept
 ```
 
 **What changed.** The answer is a. The logs are written with csv.DictWriter and json.dump, then read back and compared, because a log that lives only in a notebook reaches nobody.

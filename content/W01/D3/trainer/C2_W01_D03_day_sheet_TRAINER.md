@@ -180,7 +180,7 @@ Rs 80,53,330 with the refund flagged outside revenue, or Rs 80,50,930 netted.
 | Fuzzy match: rows flagged / shared with order_id / real rupees removed / pairs compared | 15 / 14 / Rs 17,71,000 / 20,100 |
 | Sampling 20 of 201 rows: chance to draw both copies of a pair / the bad amount | 13% / 10% |
 | JSON feed: complete records / Q1 among them / amounts agreeing with clean | 119 / 100 / 118 |
-| Hand-over lines: logs and totals / full diff / clean file read against the raw | 23 / 201 / 387 |
+| Hand-over lines: logs and totals / full diff / clean file read against the raw | 24 / 201 / 387 |
 | Smallest real order; smallest Business order | Rs 680; Rs 2,03,060 |
 
 ---

@@ -173,7 +173,7 @@ SETS = [
         ("Anand's analyst has an evening to check the pass. Which hand-over is the best fit?",
          ["The clean file alone, 186 rows to compare by hand", "A full diff of the raw and clean files, 201 lines",
           "The clean file and a line saying 15 rows set aside", "The logs, the decisions and both totals"], "d",
-         "About 23 lines tie both totals and let her replay the pass; the other hand-overs either take hours or prove only the rows.",
+         "About 24 lines tie both totals and let her replay the pass; the other hand-overs either take hours or prove only the rows.",
          "a: no reasons and hours of comparison. b: shows what went, never why. c: ties the rows and nothing else.", "design"),
         ("How do you prove a log is complete without trusting the code that wrote it?",
          ["Count the log's lines and compare with the rows removed", "Read every line of the log and check each reason",

@@ -236,7 +236,7 @@ week. Fifty-five kept orders have no discount. And the pass needs a policy for a
 not convert, because the next export will carry one with no twin. On 12 December 2014 a repricing
 tool set hundreds of Amazon UK items to 1p for about an hour, and Amazon said most orders were
 cancelled once the error was spotted (BBC News, 15 December 2014, checked 30 September 2026): a value
-that fell to a default was treated as real by everything downstream.
+that nothing questioned sold real stock.
 
 **The options for the missing status, sized on Q2.**
 
@@ -289,7 +289,7 @@ shows them.
 **The need.** Anand asked which Q1 figure is right and how the team knows. Marketing asks whether
 Tuesday's finding survives, because a rescue campaign for Retail-Plus is waiting on it. In 2014
 Tesco said it had overstated half-year profit guidance by about GBP 250 million, mainly by
-recognising supplier income early; its investigation then bridged the figure to GBP 263 million,
+recognising supplier income early; its investigation then confirmed the figure at GBP 263 million,
 split by period, GBP 118 million of it in the first half (BBC News, 22 September 2014; Tesco interim
 results, 23 October 2014; both checked 30 September 2026). A retailer's own number was wrong, and
 the fix was a bridge: how much, from which period, for what cause.
@@ -353,9 +353,9 @@ GBP 2.34 million, for missing red flags across three years of audits (BBC News, 
 
 | Hand-over | Lines | Ties rows | Ties rupees | Replayable |
 |---|---|---|---|---|
-| The clean file alone, read against the 201 raw rows | 387 | no | no | no |
+| The clean file alone, read against the 201 raw rows | 387 | by hand | no | no |
 | The file and a count | 1 | yes | no | no |
-| Logs, decisions and control totals | 23 | yes | yes | yes |
+| Logs, decisions and control totals | 24 | yes | yes | yes |
 | A full diff | 201 | yes | only by hand | no |
 
 **The call:** the logs with the control totals, about twelve minutes of reading. **What would switch
@@ -454,7 +454,7 @@ anything that was reported from the wrong number." Weak answer: "Finance is alwa
 what the business says makes two records one thing. For an order it is the id the system issues. I
 count rows against distinct keys, keep one row per key by a stated preference, usually the copy whose
 fields validate, and log every row set aside with its reason. Then I weigh them in money as well as
-rows, because two rows can carry more than a hundred." Weak answer: "drop_duplicates()."
+rows, because two rows can carry more rupees than a hundred others: two corporate copies carried Rs 19,67,560 of Rs 19,98,210 today." Weak answer: "drop_duplicates()."
 
 **[F] Everything read from a CSV is a string; what breaks and where do you convert?** "Arithmetic,
 comparison and sorting all break or silently do the wrong thing: `'900' < '1200'` is False and `max`
@@ -475,7 +475,8 @@ load timestamp, a surrogate key or a line number."
 **[S] The largest order is 1.66 times the next. Do you remove it?** "I check the record before its size.
 A valid id, a real account with other orders and fields that convert make it revenue. I keep it, flag
 it, and show the result with and without it. Today, removing it would have turned a 1.6 percent dip
-into a 17.1 percent fall."
+into a 17.1 percent fall. For a model trained on the data I might cap or transform a long tail, and
+any fence I use sits inside one segment."
 
 **[F] Your row counts reconcile. Are you done?** "No. Rows prove nothing vanished; rupees prove the
 right rows stayed. Today a pass reconciled 201 rows and was Rs 1,790 short of the books, because it
@@ -503,7 +504,7 @@ would itself be a finding to put in front of Finance's analyst, with the rows an
 **[D] Design. Order id, whole record or fuzzy, for customers from two apps?** "Neither app's id
 identifies a person across both, and two systems rarely write a record identically, so the id and the
 whole record are out. I would clean phone and email the same way on both sides and match on those,
-block by city so each record is compared only within its own city, which across six cities cuts the pairs to about a sixth, and send every match nobody has confirmed to
+block by city so each record is compared only within its own city, which across six cities cuts the pairs to about a sixth at the cost of never comparing a person whose two records carry different cities, and send every match nobody has confirmed to
 a person. On Kalpa's orders a fuzzy match on customer and amount within 60 days flagged as many rows as the order id
 and merged a real Rs 17,71,000 order, which is why I would not trust it unreviewed. What would switch
 me back to a key is one customer id issued by one system."
@@ -531,7 +532,7 @@ prove. If a bridge does not close, the gap is the finding, and it may sit in Fin
 | Identity rule | What makes two rows the same thing | Chapter 2; notebook 02 | order_id, the ERP's key |
 | Keep and flag | Keep a record whose value is unknown, marked, out of counts that need it | Chapter 4; notebook 04 | A Q2 order with no status |
 | Coercion | Turning a value that fails into a default; a claim, never a fix | Chapter 4; notebook 04 | An order at Rs 0 |
-| Fence | A cut-off that marks a value to question, never to delete | Chapter 5; notebook 05 | Three times the median Q2 order |
+| Fence | A cut-off that flags a value to question, never to delete | Chapter 5; notebook 05 | Three times the median Q2 order |
 | Control totals | A count and a sum computed at both ends of a transfer and compared | Chapter 6; notebook 06 | 201 rows and Rs 2,09,98,210 in |
 | Revenue bridge | One total walked to another, one move per cause | Chapter 5; notebook 05 | Rs 2,09,98,210 to Rs 1,90,00,000 |
 | Duplicate | A second row for the same thing under the identity rule | Chapter 2; notebook 02 | 15 rows beyond one per order |

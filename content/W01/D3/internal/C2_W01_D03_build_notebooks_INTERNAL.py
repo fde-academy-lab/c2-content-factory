@@ -108,6 +108,10 @@ def clean_pass(raw):
             flags.append({"line": r["line"], "order_id": r["order_id"], "field": "status",
                           "decision": "keep and flag", "why": "booked revenue; its fate is unknown"})
         clean.append(dict(r, amount=value))
+    q2 = [r for r in clean if r["quarter"] == "Q2"]
+    top = max(q2, key=lambda r: r["amount"])
+    flags.append({"line": top["line"], "order_id": top["order_id"], "field": "amount",
+                  "decision": "keep and flag", "why": "the largest Q2 order, a real Business account; shown both ways"})
     return clean, set_aside, rejects, flags
 
 def per_customer(rows, quarter, segment):
@@ -1509,8 +1513,8 @@ def ch5():
         the ledger usually carries several kinds of move: timing (an order booked on the last day of one
         month and invoiced on the first of the next), definition (returns netted in one system and not the
         other), and error (copies, typos). Each kind gets its own column, and a bridge that closes only
-        after an "other" column has not closed. Tesco's GBP 263 million was bridged by period for the same
-        reason: a reader needs to see which kind of move each rupee is.
+        after an "other" column has not closed. Tesco split its GBP 263 million by period, so a reader could
+        see when each part arose; a bridge by kind of move does the same for why.
         '''),
         code('''
         kit.check_summary()
@@ -1551,7 +1555,7 @@ def ch6():
         '''),
         code('''
         per_line = 30    # seconds an analyst spends on one line of a log or a diff: an illustrative assumption
-        sizing = [("a) clean file read against raw", 201 + 186, "no", "no", "no"),
+        sizing = [("a) clean file read against raw", 201 + 186, "by hand", "no", "no"),
                   ("b) file and a count", 1, "yes", "no", "no"),
                   ("c) logs and control totals", len(set_aside) + len(rejects) + len(flags) + 5 + 2, "yes", "yes", "yes"),
                   ("d) a full diff", 201, "yes", "by hand", "no")]
@@ -1561,7 +1565,7 @@ def ch6():
                  lit=(2,), title="Minutes of reading, at an illustrative 30 seconds a line")
         '''),
         md('''
-        **The best-fit call: c.** Twenty-three lines, both totals tied, and a pass the analyst can re-run.
+        **The best-fit call: c.** Twenty-four lines, both totals tied, and a pass the analyst can re-run.
         Option b is the fastest read and proves the least; a and d cost over an hour and still say nothing
         about why. **The fact that would change it:** an analyst who must re-derive every row independently,
         as an external auditor sometimes must; then d goes alongside c, never in place of it.
@@ -1578,7 +1582,7 @@ def ch6():
         decisions = [
             {"decision": "one row per order_id, the copy that validates stays", "rows": len(set_aside), "q1_rupees": -q1_aside},
             {"decision": "an amount that does not convert is rejected, never zeroed", "rows": len(rejects), "q1_rupees": 0},
-            {"decision": "a missing status is kept and flagged", "rows": len(flags), "q1_rupees": 0},
+            {"decision": "a missing status is kept and flagged", "rows": sum(1 for f in flags if f["field"] == "status"), "q1_rupees": 0},
             {"decision": "a missing discount stays unknown, never zero", "rows": sum(1 for r in clean if r["discount"] == ""), "q1_rupees": 0},
             {"decision": "the largest Q2 order is kept and flagged", "rows": 1, "q1_rupees": 0},
         ]
@@ -2092,11 +2096,11 @@ COMPANY = {
                     "30 Sep 2026), which includes a seller like Kalpa's Business segment."),
     "COMPANY_CH4": ("On the evening of Friday 12 December 2014 a repricing tool used by Amazon UK sellers set "
                     "hundreds of items to 1p for about an hour; Amazon said most orders were cancelled once the error "
-                    "was spotted (BBC News, 15 December 2014, checked 30 Sep 2026). A value that fell to a default "
-                    "sold real stock, which is what a coerced zero does to a report."),
+                    "was spotted (BBC News, 15 December 2014, checked 30 Sep 2026). A wrong value that nothing "
+                    "questioned sold real stock, which is what a coerced zero does in a report."),
     "COMPANY_CH5": ("In September 2014 Tesco said it had overstated its half-year profit guidance by about "
                     "GBP 250 million, mainly by recognising supplier income early. Its own investigation then "
-                    "bridged the figure to GBP 263 million, split by period: GBP 118 million in the first half, "
+                    "confirmed the figure at GBP 263 million, split by period: GBP 118 million in the first half, "
                     "about GBP 70 million in 2013/14 and about GBP 75 million before (BBC News, 22 September 2014; "
                     "Tesco interim results, 23 October 2014; both checked 30 Sep 2026). The question was Anand's: "
                     "which figure is right, and what is the gap made of."),
