@@ -24,20 +24,20 @@ folded into it.
 
 ---
 
-## One worked example, from the trainer's Delhi slice
+## One worked example, from the trainer's New York slice
 
 This is the claim from this morning's parallel build. It answers a question none of the five briefs
 asks, so treat it as a model of shape.
 
-| Part | Delhi, Q1 against Q2 |
+| Part | New York, Q2 against Q3 |
 |---|---|
-| **Claim** | Delhi's invoiced revenue rose 5.4 percent, from Rs 15,56,455 on 977 invoices in Q1 to Rs 16,39,775 on 1,055 in Q2, because it raised more invoices at a slightly lower mean. |
-| **Evidence** | 2,128 rows of the old export reduced to 2,095 bookings by one identity rule; the 2,032 completed ones matched one to one to 2,032 invoices; revenue split into 78 more invoices (plus Rs 1,24,262) and a mean Rs 39 lower (minus Rs 40,942). |
-| **Caveat** | This is invoiced revenue, which is not the same as money collected, and Q2 is one day longer than Q1: per day, revenue rose 4.2 percent. Why the mean invoice fell is not yet known. |
-| **Action** | Treat Delhi as growing modestly on volume, and open the branch below the invoice before deciding whether the lower mean is a price, a mix or a fee question. |
+| **Claim** | New York's billed revenue rose 5.5 percent, from $174,910 on 977 claims in Q2 to $184,485 on 1,055 in Q3, because it billed more claims at a slightly lower mean. |
+| **Evidence** | 2,128 rows of the old export reduced to 2,095 bookings by one identity rule; the 2,032 completed ones matched one to one to 2,032 claims; billed revenue split into 78 more claims (plus $13,964) and a mean $4.16 lower (minus $4,389). |
+| **Caveat** | This is billed revenue, which is not the same as money collected, and Q3 is one day longer than Q2: per day, billed revenue rose 4.3 percent. Why the mean claim fell is not yet known. |
+| **Action** | Treat New York as growing modestly on volume, and open the branch below the claim before deciding whether the lower mean is a price, a mix or a fee question. |
 
-The claim carries two denominators (invoices in each quarter), the period (Q1 against Q2) and the
-reason (more invoices, lower mean). The number alone, "Delhi up 5.4 percent", would not survive one
+The claim carries two denominators (claims in each quarter), the period (Q2 against Q3) and the
+reason (more claims, lower mean). The number alone, "New York up 5.5 percent", would not survive one
 question from the finance head.
 
 ---
@@ -50,7 +50,7 @@ always a smaller claim.
 | Test | The question to put to your sentence |
 |---|---|
 | **1. It reproduces** | Does one notebook or SQL file, run cold from the raw files, print every number in the sentence? |
-| **2. It names what it counts** | For every number: bookings, invoices, tests, patients, visits or rupees, and counted after which identity rule? |
+| **2. It names what it counts** | For every number: bookings, claims, tests, patients, visits or dollars, and counted after which identity rule? |
 | **3. It carries its denominators** | Does every rate show its base, both sides of any comparison, in counts someone can check? |
 | **4. The windows match** | Are the two periods the same length and the same kind? If not, is that said, or is the rate per day? |
 | **5. It says what it can't** | Is there one caveat, on its own line, that names what would change the claim, and would Kavya Nair accept it as the real risk? |
@@ -73,7 +73,7 @@ claim" row scores, and the six tests above are the checks behind its full-marks 
 | Criterion | Marks | What full marks look like |
 |---|---|---|
 | The question translated | 8 | Dr Menon's words are mapped to the right Weeks 1 and 2 method, with the metric defined and the decision it feeds named. |
-| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and rupees reconcile across files. |
+| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and dollars reconcile across files. |
 | The analysis | 10 | The tree, ladder or fair comparison reaches the branch that explains the symptom, on the right denominator, with a chance test where one is needed. |
 | The claim | 6 | One sentence carries its number, denominator, period and caveat, plus an action Dr Menon can take. |
 | Presentation and defence | 6 | The live demo runs cold, and every member answers a challenge on the caveat. |

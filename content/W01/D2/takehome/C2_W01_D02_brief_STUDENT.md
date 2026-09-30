@@ -17,7 +17,8 @@ with a message attached:
 > assume: customers buying less often. We would like the Retail-Plus win-back offer extended to our
 > region by Friday." (the regional operations head)
 
-Meera forwards it to you with one line:
+The win-back offer is a discount aimed at members who have started to order less. Meera forwards
+the message to you with one line:
 
 > "Before I say yes to anything, tell me whether this region is the same story or a different one.
 > One page. I will read the first line and the numbers, and Anand will check every number against

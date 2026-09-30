@@ -7,82 +7,275 @@ Quote: Send the reconciliation and the log before the day closes. My analyst che
 Who: Anand Iyer, finance controller, Kalpa Retail
 
 ```notes
-LIVE, one minute. The afternoon runs the whole pass alone, then answers an auditor from the log,
-then drills the day's interview questions aloud. Nothing new is taught after lunch.
+LIVE, one minute. Chapter 6 first, then the full pass alone, the debrief of the room's wrong
+answers, the auditor in pairs, the interview drill and the close.
 ```
 
 ---
 
-## SECTION 1: The escalated case
-*The full pass, alone: every rung of the morning, on the same file, with nobody driving.*
+## SECTION 6: The log the analyst audits
+*A log is finished when a stranger can replay it.*
 
 ```notes
-LIVE. Sixty minutes unguided, then fifteen minutes debriefing the wrong answers the room produced.
-The notebook is hands_on, a TODO twin with eight lettered choices.
+LIVE. Thirty minutes. Notebook C2_W01_D03_06_audit_logs is the demonstration.
 ```
 
 ---
 
-## S1. Anand's deadline, and what goes with it
+## S1. The need: control totals and a reason per row
+*The analyst checks tonight; an auditor may ask next quarter.*
+
+```stats
+value: rows and rupees | label: the metric | note: control totals: counts and sums at both ends
+value: the analyst | label: who asks | note: for Anand
+value: a week | label: a log she cannot follow | note: of questions, and her trust
+```
+
+**The client asks.** "Can my analyst follow every decision you made, and rebuild your file from it?"
+
+```notes
+LIVE, 3 minutes. A log that ties in rows and misses in rupees costs the team her trust in
+everything else it sends.
+```
+
+---
+
+## S2. Patisserie Valerie's auditor missed the red flags
+*A UK cafe chain's accounting hole reached GBP 94m; the auditor was fined.*
+
+```stats
+value: GBP 94m | label: the hole | note: administrators, March 2019
+value: GBP 4m | label: FRC fine | note: reduced to GBP 2.34m
+value: 3 years | label: of audits | note: sanctioned in September 2021
+```
+
+**What breaks.** An auditor who cannot trace a number to its rows signs off on it anyway, and pays for it later.
+
+```notes
+LIVE, 2 minutes. Sources checked 30 Sep 2026: BBC News, 15 March 2019; FRC, 27 September 2021.
+Name no person.
+```
+
+---
+
+## S3. Four hand-overs, sized for the analyst
+*Lines to read at an illustrative 30 seconds a line.*
+
+| Option | Lines | Ties rows | Ties rupees | Replayable |
+|---|---|---|---|---|
+| a) The clean file, read against the raw | 387 | by hand | no | no |
+| b) The file and a count | 1 | yes | no | no |
+| c) Logs and control totals | 24 | yes | yes | yes |
+| d) A full diff | 201 | yes | by hand | no |
+
+**The call.** c. What would switch it: an external auditor who must re-derive every row, and then d goes beside c.
+
+```notes
+LIVE, 5 minutes. 24 lines: 15 set-aside rows, 2 flags (the status and the bulk order), 5 decisions, 2 control totals, and an empty
+rejects log. Options a and d cost over an hour and still say nothing about why.
+```
+
+---
+
+## S4. What the logs carry
+*Three logs and two totals, written as the pass runs.*
+
+```mermaid
+flowchart LR
+    P["<b>clean_pass()</b>"] --> S["<b>set-aside log</b><br/>line, key, reason, kept line"]
+    P --> F["<b>flags log</b><br/>field, decision, why"]
+    P --> D["<b>decisions log</b><br/>rule, rows, rupees"]
+    S --> T["<b>control totals</b><br/>rows and rupees"]
+    D --> T
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class T bet
+```
+
+```notes
+LIVE, 2 minutes. The decisions log has five lines; only the identity rule moves Q1 rupees, all
+Rs 19,98,210, and every other decision still gets its line.
+```
+
+---
+
+## S5. Question: which decision moves the most rupees?
+*Five decisions in the log, one line each.*
+
+```mermaid
+flowchart LR
+    D["<b>five decisions</b>"] --> Q{"<b>which moves<br/>Q1 most?</b>"}
+```
+
+**Question.** As a letter? a) the identity rule; b) the missing status; c) the bulk order; d) the missing discount.
+
+```notes
+LIVE, 2 minutes. Letters in chat.
+```
+
+---
+
+## S6. Answer: the identity rule moves all of it
+*Four decisions move no Q1 rupees, and each still gets a line.*
+
+```stats
+value: -Rs 19,98,210 | label: the identity rule | note: 15 rows
+value: Rs 0 | label: the other four | note: 58 rows flagged or kept
+```
+
+**What changed.** The answer is a. The logs are written with csv.DictWriter and json.dump, then read back and compared, because a log that lives only in a notebook reaches nobody.
+
+```notes
+LIVE, 3 minutes. In the notebook, read_orders() would overwrite the log's own line column, so the
+log is read back with a plain DictReader. Point that out if a learner trips on it.
+```
+
+---
+
+## S7. The plausible wrong answer: a perfect-looking log
+*A colleague removed repeated ids first, keeping the first copy, then converted.*
+
+```stats
+value: 201 = 185 + 16 | label: rows reconcile | note: in equals kept plus logged
+value: Rs 20,00,000 | label: Q1 set aside | note: Anand's gap, to the lakh
+value: Rs 1.90 crore | label: Q1 clean | note: as the note rounds it
+```
+
+```notes
+LIVE, 3 minutes, notebook 06, section 3. Ask whether the room would send this. Round Rs 20 lakh
+set aside feels like proof.
+```
+
+---
+
+## S8. Why it is wrong: rows tie, rupees do not
+*Rs 1,790 short of the books: the valued copy set aside, the unreadable one rejected.*
+
+```mermaid
+flowchart LR
+    F["<b>first copy kept</b><br/>unreadable"] --> R["<b>rejected</b>"]
+    F --> A["<b>twin set aside</b><br/>carried the value"]
+    R --> S["<b>Q1 Rs 1,790 short</b>"]
+    A --> S
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    class F,A,S bad
+```
+
+**The check.** The books against the clean Q1, and a rejected order whose twin sits in the set-aside log with a value.
+
+```notes
+LIVE, 3 minutes. A row reconciliation proves nothing vanished; it cannot prove the right rows
+stayed. The colleague's bridge closes on its own file and misses the books.
+```
+
+---
+
+## S9. The fix, and the auditor's 14
+*The rule first, then conversion; every Q1 row set aside has a kept twin.*
+
+```stats
+value: 114 = 100 + 14 | label: Q1 rows | note: in, kept, set aside
+value: 14 of 14 | label: with a kept twin | note: same order_id
+value: Rs 0 | label: against the books | note: Q1 clean
+```
+
+**What changed.** The Rs 1,790 order is back; the unreadable copy sits in the set-aside log with its twin named, so the rejects log is empty; and "set aside with a reason" replaces "dropped".
+
+```notes
+LIVE, 3 minutes. The second case after the break walks this in pairs.
+```
+
+---
+
+## S10. A second route: replay the log
+*The raw export less the logged lines rebuilds the clean file exactly.*
+
+```mermaid
+flowchart LR
+    R["<b>raw export</b><br/>201 rows"] --> M["<b>less the logged lines</b><br/>15"]
+    M --> C["<b>186 orders</b><br/>same ids, same amounts"]
+    C --> E["<b>equal to<br/>clean_pass()</b>"]
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class E bet
+```
+
+**When to switch.** Control totals are the quick test; the replay is for an auditor who trusts nothing, and it runs before any log leaves the team.
+
+```notes
+LIVE, 2 minutes. Notebook 06 asserts the replay equals the clean file.
+```
+
+---
+
+## S11. Kavya's review of chapter 6
+*Rows and rupees both tie, a reason on every line, the twin named for every copy.*
+
+**Kavya's review.** A log is finished when a stranger can replay it.
+
+**In the interview.** [D] An auditor asks why you dropped 14 rows; walk them through it.
+
+```cards
+icon: list-checks | eyebrow: Chapter 6 | title: Established | body: Logs that tie in rows and rupees and replay to the clean file.
+icon: circle-help | eyebrow: The escalated case | title: Next | body: The whole pass, alone. | tone: dark
+```
+
+```notes
+LIVE, 2 minutes. One breath: set aside with a reason, never dropped; the rule, the twin, the rupees by segment,
+both totals tie and the log replays.
+```
+
+---
+
+## SECTION 7: The escalated case
+*The full pass, alone: every chapter, on the same file, with nobody driving.*
+
+```notes
+LIVE. Fifty minutes unguided. The notebook is ex1_escalated_case, a TODO twin with eight lettered
+choices; the brief is in exercises/unguided.
+```
+
+---
+
+## S12. Anand's deadline, and what goes with it
 *Five parts, one file, and a log that has to stand up tonight.*
 
 ```timeline
-label: Part 1 | title: Read and profile | body: Rows, distinct orders, and the three counts for every field.
-label: Part 2 | title: Convert with a log | body: Every amount that fails, set aside with its line and reason.
-label: Part 3 | title: The identity rule | body: One row per order, and the copy that validates stays.
-label: Part 4 | title: Two decisions | body: The missing status and the largest order, each with a reason.
-label: Part 5 | title: Reconcile and recompute | body: Rows and rupees to the books, the bridge, Tuesday recomputed, the note. | tone: dark
+label: Part 1 | title: Read and profile | body: Rows against orders, and the amount that will not convert.
+label: Part 2 | title: The identity rule, built | body: Yours this time: the key, and when a later copy takes the place of the kept one.
+label: Part 3 | title: Convert and decide | body: The rejects log, then the missing status and the largest order.
+label: Part 4 | title: Reconcile | body: Rows and rupees, a rupee test that fails the colleague's pass, the bridge.
+label: Part 5 | title: The tree and the note | body: Monday's tree on the clean file, Tuesday's segment, the note. | tone: dark
 ```
 
 **The client asks.** "Which figure is right, the proof in rows and in rupees, and every decision in a log my analyst can follow."
 
 ```notes
-LIVE, 3 minutes. The brief is in exercises/unguided as the case brief, and the notebook is
-notebooks/hands_on. Answers are eight letters plus the note in under 120 words.
+LIVE, 3 minutes. Nine notebook letters, ten brief letters, then the note in under 120 words. Watch
+for rows totalled before profiling, a first-copy rule, a rupee test that rounds, and a tree whose
+customers are rows.
 ```
 
 ---
 
-## S2. What a finished pass hands over
-*Four artifacts, each answering one of the morning's four readers.*
-
-```mermaid
-flowchart LR
-    F["<b>the ERP export</b><br/>201 rows"] --> C["<b>clean file</b><br/>186 orders"]
-    F --> L["<b>decisions log</b><br/>a reason per act"]
-    C --> B["<b>the bridge</b><br/>rows and rupees"]
-    L --> B
-    B --> N["<b>the note</b><br/>under 120 words"]
-    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class N bet
-```
-
-```notes
-LIVE, 2 minutes. Then 55 minutes of work. Circulate and watch for three things: rows totalled before
-profiling, a first-copy dedupe, and a bridge that closes to 1.9 only after rounding.
-```
-
----
-
-## S3. The checks you post with your letters
+## D13. The checks you post with your letters
 *Every check in the notebook passes before the letters go into chat.*
 
 ```stats
-value: 186 + 15 | label: rows | note: kept and set aside, of 201
-value: Rs 1,90,00,000 | label: Q1 clean | note: the books, to the rupee
-value: Rs 1,87,00,000 | label: Q2 clean | note: every real order kept
-value: -35.0% | label: Retail-Plus | note: orders per customer, clean
+value: rows | label: kept plus set aside | note: equal the rows the ERP sent
+value: Q1 | label: to the rupee | note: equal to the books after the rule
+value: the test | label: your rupee test | note: passes yours, fails the colleague's
+value: the tree | label: three branches | note: multiply back to revenue's change
 ```
 
 ```notes
-SELF-STUDY, reference while working. A learner whose Q1 reads Rs 1,89,98,210 kept the wrong copy;
-one whose Q2 reads Rs 1,57,54,540 removed the bulk order. Both are debriefed next.
+SELF-STUDY, reference while working. Each check recomputes its step another way, so the numbers are
+the learner's to reach. A Q1 Rs 1,790 short kept the wrong copy; a Q2 Rs 29,45,460 light removed
+the bulk order. Both are debriefed next.
 ```
 
 ---
 
-## SECTION 2: The room's wrong answers
-*Fifteen minutes on the numbers the room actually produced, each traced to the step that made it.*
+## SECTION 8: The room's wrong answers
+*Every wrong number traced to the step that made it and the check that catches it.*
 
 ```notes
 LIVE. Put the most common wrong number on the screen first. Name no learner; name the step.
@@ -90,78 +283,78 @@ LIVE. Put the most common wrong number on the screen first. Name no learner; nam
 
 ---
 
-## S4. Four wrong numbers, four steps
-*Every wrong Q1 or Q2 the room produces comes from one of four steps.*
+## S14. Six wrong numbers, six steps
+*Every wrong figure the room produces comes from one of the day's traps.*
 
-| The number on the screen | The step that made it | The check that catches it |
+| The number on the screen | The step that made it | The check |
 |---|---|---|
-| Q1 Rs 2,09,98,210, "every amount converts" | Failures coerced to zero | A Kalpa order worth Rs 0 |
-| Q1 Rs 2,09,98,210, "zero duplicates" | A whole-record dedupe with the line attached | 201 rows against 186 order ids |
-| Q2 Rs 1,57,54,540, "a 17 percent drop" | The real bulk order fenced out | A known Business account, every field valid |
-| Q1 Rs 1,89,98,210, "reconciled" | Keep the first copy, then convert | Rs 1,790 short of the books |
+| Largest Q2 order Rs 970 | Sorting amounts as text | Below every Business order |
+| 0 duplicates | The line in the whole-record key | 201 rows, 186 ids |
+| 188 orders, Q2 Rs 1,87,03,710 | Record less line; Q1 tied, so stop | Rows against ids |
+| 201 of 201 convert | Failures coerced to zero | An order worth Rs 0 |
+| Q2 Rs 1,57,54,540, -17.1% | The bulk order fenced out | A real Business account |
+| 201 = 185 + 16, Rs 20,00,000 set aside | Keep first, then convert | Rs 1,790 short of the books |
 
 ```notes
-LIVE, 8 minutes. Walk the table row by row. For each, ask one pair that produced it to say which
-line of code made it. The point is that each wrong number was plausible and one check away.
+LIVE, 10 minutes. For each, ask a pair that produced it which line of code made it. Each wrong
+number was plausible and one check away.
 ```
 
 ---
 
-## S5. The one most rooms miss
-*The pass that reconciles in rows and still misses the books.*
+## S15. The one most rooms miss
+*Rounding is where reconciliations go to hide.*
 
 ```mermaid
 flowchart LR
-    R["<b>201 = 185 + 16</b><br/>rows reconcile"] --> Q["<b>Q1 Rs 1,89,98,210</b><br/>reads as 1.9"]
+    R["<b>rows reconcile</b>"] --> Q["<b>Q1 reads 1.9</b><br/>when rounded"]
     Q --> A["<b>the analyst ties out</b><br/>Rs 1,790 short"]
     A --> T["<b>trust in the log</b><br/>gone"]
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     class Q,A,T bad
 ```
 
-**Kavya's review.** Rounding is where reconciliations go to hide. Compare to the rupee, then round for the note.
+**The rule.** Compare to the rupee, then round for the note.
 
 ```notes
-LIVE, 5 minutes. If nobody in the room produced this one, show it from the morning's round 3. Then
-the 10-minute break.
+LIVE, 5 minutes. If nobody produced it, show it from chapter 6. Then the 10-minute break.
 ```
 
 ---
 
-## SECTION 3: The second case, in pairs
+## SECTION 9: The second case, in pairs
 *The auditor asks why 14 rows were dropped, and the answer comes from the log.*
 
 ```notes
-LIVE. Forty-five minutes in pairs: one drives the notebook ex2_auditor, the other plays the auditor
-and asks the next question only when the check passes. Swap halfway.
+LIVE. Forty minutes in pairs: one drives ex2_auditor, the other plays the auditor and asks the next
+question only when the check passes. Swap halfway.
 ```
 
 ---
 
-## S6. The auditor's question
-*"Your log says 14 Q1 rows were dropped. Why those 14, and how do I know nothing else went with them?"*
+## S16. The auditor's question
+*"Your log says 14 Q1 rows were dropped. Why those 14, and how do I know nothing else went?"*
 
 ```mermaid
 flowchart LR
-    Q["<b>why 14 rows?</b>"] --> W["<b>which 14</b><br/>Q1 rows in less orders kept"]
-    W --> T["<b>a twin for each</b><br/>the same order_id stayed"]
+    Q["<b>why 14 rows?</b>"] --> W["<b>which 14</b><br/>Q1 in less kept"]
+    W --> T["<b>a twin for each</b>"]
     T --> R["<b>the rupees</b><br/>by segment"]
-    R --> S["<b>the signature</b><br/>rows and rupees reconcile"]
+    R --> S["<b>the signature</b><br/>both totals tie"]
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class S bet
 ```
 
 ```notes
-LIVE, 3 minutes. The auditor's words are deliberate: "dropped" is the word to correct. Rows were
-set aside with reasons, and the log shows each one.
+LIVE, 3 minutes. "Dropped" is the word to correct.
 ```
 
 ---
 
-## S7. Question: which statement does the auditor sign?
+## S17. Question: which statement does the auditor sign?
 *Four statements, one supported by the evidence.*
 
-**Question.** Which statement does the evidence support, as a letter? a) 14 Q1 rows were deleted as errors; b) the dashboard was right and the books are short; c) 14 Q1 rows are second copies set aside by the order_id rule, and rows and rupees reconcile; d) the 14 rows were outliers.
+**Question.** As a letter? a) 14 Q1 rows were deleted as errors after the migration was checked; b) the dashboard was right all along, and the books are short; c) 14 Q1 rows are copies of kept orders, set aside; both totals tie; d) the 14 rows were outliers removed to keep Q1 in line with Q2.
 
 ```mermaid
 flowchart LR
@@ -169,12 +362,12 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 2 minutes, after pairs finish question 5 in the notebook.
+LIVE, 2 minutes, after pairs finish question 5.
 ```
 
 ---
 
-## S8. Answer: copies set aside, both reconciliations hold
+## S18. Answer: copies set aside, both totals tie
 *The statement names the rule, the evidence and both reconciliations.*
 
 ```stats
@@ -183,26 +376,25 @@ value: 14 of 14 | label: with a kept twin | note: same order_id
 value: Rs 19,98,210 | label: set-aside rupees | note: 98% in two corporate rows
 ```
 
-**Kavya's review.** "Dropped" is the auditor's word; "set aside with a reason" is yours. Say it the second way, then show the log.
+**The rule.** "Dropped" is the auditor's word; "set aside with a reason" is yours.
 
 ```notes
-LIVE, 3 minutes. The answer is c. Option a says deleted and errors; they were neither. Option d
-confuses copies with outliers, which were a separate decision.
+LIVE, 3 minutes. The answer is c.
 ```
 
 ---
 
-## SECTION 4: The interview drill
-*Twelve questions aloud, each in under ninety seconds, from the day's own numbers.*
+## SECTION 10: The interview drill
+*The day's 12 questions aloud, five design questions among them, each in under ninety seconds.*
 
 ```notes
-LIVE. Thirty minutes. Pairs: one asks, one answers aloud, the asker times it and names the one
-number the answer should have used. Swap every three questions.
+LIVE. Twenty minutes. Pairs: one asks, one answers, the asker times it and names the one number
+the answer should have used. Swap every three questions.
 ```
 
 ---
 
-## S9. The row's five, asked everywhere
+## S19. The row's five, asked everywhere
 *The questions analytics screens ask of anyone who has cleaned a file.*
 
 | Tag | Question |
@@ -214,47 +406,45 @@ number the answer should have used. Swap every three questions.
 | [D] | An auditor asks why you dropped 14 rows; walk them through it. |
 
 ```notes
-LIVE, 15 minutes. The shape of every answer is on the slide: the rule, today's number, the check.
-Tags: [S] staple, [F] frequent in GCC and product screens, [SV] service-major opener, [D]
-differentiator. The full answers are in the study notes.
+LIVE, 10 minutes. The shape of every answer: the rule, today's number, the check. Full answers in
+the study notes and the notebooks' In the interview sections.
 ```
 
 ---
 
-## S10. Seven follow-ups, the way an interviewer pushes
-*Each follow-up is the trap from a round, asked as a case.*
+## S20. Seven follow-ups, five of them design
+*Each is a chapter's trap or its options, asked as a case.*
 
 | Tag | Question |
 |---|---|
-| [F] | A dedupe returns zero duplicates. Do you believe it? |
-| [S] | The largest order is 1.66 times the next. Do you remove it? |
 | [F] | Your row counts reconcile. Are you done? |
-| [F] | A JSON file fails to parse at a named line. What do you do? |
-| [SV] | Walk me through how you clean a file you have never seen. |
-| [D] | Cleaning shrank the finding you reported yesterday. What do you tell the stakeholder? |
-| [D] | How do you know Finance's number is the right one, and not yours? |
+| [S] | The largest order is 1.66 times the next. Do you remove it? |
+| [D] | Design: 2 crore rows. Profile everything, or sample? |
+| [D] | Design: order id, whole record or fuzzy, for customers from two apps? |
+| [D] | Design: two copies disagree. First, last, or the copy that validates? |
+| [D] | Design: coerce, reject or repair a malformed amount? |
+| [D] | Design: prove a figure with a bridge, or rebuild it from a second source? |
 
 ```notes
-LIVE, 15 minutes. The last question is the sharpest: the answer is that nobody's number is right
-by rank; the bridge closes to the books because every move is backed by rows, and if it had not
-closed, the gap would be a question for Finance.
+LIVE, 10 minutes. The design questions want a choice, a sizing and the fact that would change it.
+The row's five and these seven are the day's 12, the same 12 the study notes answer.
 ```
 
 ---
 
-## SECTION 5: The close
+## SECTION 11: The close
 *The sentence to Anand, the lines worth keeping, and tomorrow's question.*
 
 ```notes
-LIVE. Twenty minutes: the Kahoot, then this chapter.
+LIVE. Fifteen minutes: the Kahoot, then this chapter.
 ```
 
 ---
 
-## S11. The sentence to Anand
+## S21. The sentence to Anand
 *Which figure is right, the proof, and what changed downstream.*
 
-> "Your 1.9 crore is right: the export counted fifteen rows twice, and the bridge from 2.1 closes to your books in rows and in rupees. On clean data the drop is 1.6 percent and the Retail-Plus fall is 35 percent, smaller than we reported." The GCC data and AI team
+> "Your 1.9 crore is right: the export counted fifteen orders twice, and the bridge from 2.1 closes to your books in rows and in rupees. On clean data the drop is 1.6 percent and the Retail-Plus fall is 35 percent, smaller than we reported." The GCC data and AI team
 
 ```mermaid
 flowchart LR
@@ -262,31 +452,31 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 2 minutes. Read it aloud once. It is the short form of the note every learner wrote.
+LIVE, 2 minutes. Read it aloud once.
 ```
 
 ---
 
-## S12. The six lines worth keeping
+## S22. The six lines worth keeping
 *The cheat sheet prints these word for word.*
 
 | | The line |
 |---|---|
 | 1 | Profile before you total: present, convertible, distinct, for every field. |
-| 2 | A failure is counted and logged, never turned into a number. |
-| 3 | Say what makes two rows one order before you count duplicates. |
-| 4 | Large is not wrong: check the record, keep it, and show it both ways. |
+| 2 | Say what makes two rows one order before you count duplicates. |
+| 3 | Keep the copy that validates, and log every row you set aside. |
+| 4 | A failure is logged, never turned into a number; large is not wrong. |
 | 5 | Reconcile twice, in rows and in rupees, to the books. |
 | 6 | Recompute what you reported, and say what changed, the smaller number first. |
 
 ```notes
-LIVE, 3 minutes. Have the room read them aloud once. Tonight's take-home tests every line on an
-export nobody in the room has seen.
+LIVE, 3 minutes. One line per chapter. Tonight's take-home tests every line on an export nobody
+in the room has seen.
 ```
 
 ---
 
-## S13. Tomorrow's question, left open
+## S23. Tomorrow's question, left open
 *The Retail-Plus fall survived cleaning. Is it real, or the wobble every quarter shows?*
 
 **The client asks.** "Retail-Plus is down, smaller than first reported. Real, or the wobble we see every quarter?" Meera Raghavan, CEO, Kalpa Retail
@@ -299,13 +489,12 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 2 minutes. Do not answer it. Thursday builds the chance reference with a shuffle. The
-pre-read ships tonight.
+LIVE, 2 minutes. Do not answer it. Thursday builds the chance reference with a shuffle.
 ```
 
 ---
 
-## D14. Depth: the reconciliation in other trades
+## D24. Depth: the reconciliation in other trades
 *The same two checks run wherever money moves between systems.*
 
 | Where | Rows | Money |
@@ -315,6 +504,6 @@ pre-read ships tonight.
 | Warehouse load against the source | Row counts per table | Control totals per column |
 
 ```notes
-SELF-STUDY, 3 minutes. Week 2 Tuesday meets the gateway case, where one order carries two payment
-rows and the rupees double.
+SELF-STUDY, 3 minutes. Each trade runs the same two checks: rows prove nothing vanished, and money
+proves the right rows stayed.
 ```

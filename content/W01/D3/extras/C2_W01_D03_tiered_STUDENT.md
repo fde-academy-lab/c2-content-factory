@@ -1,6 +1,6 @@
 # Extras: one to stretch, one to recover
 
-Use the stretch if the day's pass felt comfortable, and the recovery if any round left you unsure.
+Use the stretch if the day's pass felt comfortable, and the recovery if any chapter left you unsure.
 Neither is required, and neither is marked.
 
 ## Stretch: a reconciliation that fails on purpose
@@ -20,7 +20,7 @@ put in front of Finance's analyst, without blaming anyone.
 
 ## Recovery: the pass, one step at a time
 
-If a round slipped past you, rebuild it slowly on ten invented rows you type yourself:
+If a chapter slipped past you, rebuild it slowly on ten invented rows you type yourself:
 
 1. Write ten orders as dictionaries of text, with two copies of one order and one amount written as
    `"n/a"`.
@@ -31,5 +31,5 @@ If a round slipped past you, rebuild it slowly on ten invented rows you type you
    equal your clean total.
 5. Change one thing, keep the first copy instead, and watch which reconciliation breaks.
 
-When all five run and you can say why step 5 breaks the rupees and not the rows, the day's three
-rounds are yours.
+When all five run and you can say why step 5 breaks the rupees and not the rows, the day's six
+chapters are yours.

@@ -23,8 +23,11 @@ flowchart LR
     D --> B["<b>the bridge</b><br/>Monday's warehouse"]
 ```
 
-The paper is objective: fill in the blank, true or false, one correct option, more than one correct
-option, scenario sets, applied maths with the working shown, and putting steps in order. It is
+The paper is objective and runs two hours: blanks answered from a word bank, pairs from a match
+table, statements judged true or false with their reason, one correct option, more than one correct
+option, scenario sets, applied maths with the working shown, and putting steps in order. Most items
+are hard, because they are written the way an interview asks: a situation, the number on the table,
+and the call you would make. It is
 ungraded. Papers are swapped and marked against the key, then the most-missed questions and the
 week's interview questions are discussed aloud, with names called at random.
 

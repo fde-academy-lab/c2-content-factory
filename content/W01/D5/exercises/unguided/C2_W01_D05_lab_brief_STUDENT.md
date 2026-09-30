@@ -1,8 +1,23 @@
 # The AI-free lab: the week, rebuilt alone
 
+## The situation
+
 Kavya Nair, senior analyst, Kalpa Retail data team: "The growth review is on Monday, and Marketing
 will be in the room. Before anything goes to Meera, rebuild the week from a raw export with no
 assistant and no notes."
+
+Meera Raghavan, Kalpa Retail's CEO, decides on Monday where the next quarter's effort goes, with
+Marketing's Rs 12 crore request to win new customers on the table. Anand Iyer, the finance
+controller, reads every number before she does, and his rule has not changed since Wednesday:
+"Until your numbers match ours, Finance will not act on a drop measured from an ERP export." An ERP
+export is a file pulled from Kalpa's ERP, the enterprise system where its orders and its books are
+recorded.
+
+| | |
+|---|---|
+| **The metric at stake** | Booked revenue per quarter, the rupees of the orders recorded as sales in that quarter; its change from Q1 to Q2; and the branch of the revenue tree (customers, orders per customer, revenue per order) that moved it, segment by segment |
+| **Who asks** | Meera, who acts on the note's first line; Anand, who checks that line against his control totals first; Marketing, who will attack any rate that rests on too little |
+| **What a wrong number costs** | A first line that does not tie to Anand's books is sent back; a misread branch sends Monday's effort to the wrong team; a rate on too few orders loses the room at Marketing's first question. |
 
 ## Kavya's question for the lab
 
@@ -21,8 +36,8 @@ to Meera."
 ## The rules
 
 - No assistant of any kind: no chat model, no code completion that writes code, no search for code.
-- Notes closed: no earlier notebook, deck, cheat sheet or study note open on any screen. Python's
-  own `help()` is allowed.
+- Notes closed: no other notebook in `notebooks/` open, and no deck, cheat sheet or study note open
+  on any screen. Python's own `help()` is allowed.
 - 120 minutes on the clock, one pass. Save as you go. Your output folder is copied at the
   120-minute mark, and that copy is what is observed.
 - A TA records, at intervals, the step each person is on. Nothing is scored, nothing is ranked and
@@ -49,4 +64,4 @@ an unfinished note with a true caveat is worth more than a finished one without 
 
 You get twenty minutes for a second look. Compare the two quarter totals you used against the
 control totals, and write one line under your note in a new cell: what you checked, or what moved
-and by how much. It does not change what you handed in; it is what you bring to the debrief.
+and by how much. What you handed in stays as it was, and this line is what you bring to the debrief.
