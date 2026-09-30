@@ -102,15 +102,17 @@ frequency.
    rests on it.
 10. **Interview questions 6 to 12 and the two design questions** are this pack's construction, tagged
     with the row's legend; question 11 changed on 30 Sep 2026 from rupees against behaviour to the
-    copy, function or key design question.
+    copy, function or key design question. The notes, the drill (half two S26 and S27) and the day
+    sheet carry the same twelve, in the same order.
 11. **Kahoot.** The first-rung item returns (the row's plan) and a mix item joins; the discount item
     and the bridge-order item left, since chapter 2's set tests both.
-12. **The study notes run to about 8,100 words** against 4,000 to 5,000, counting tables and links:
-    six chapters as worked cases, two cases, fourteen interview answers. The review pass of 30 Sep 2026
-    added a clause for each business term and a sentence for each new second route, and cut two
-    tangential readings and a repeated clause. The v3 recheck added about 1,500: each chapter's who
-    needs the answer, its six questions listed and asked again as subheadings, and a closing answer
-    with its number. Nothing was cut to reach a count.
+12. **The study notes run to about 8,500 words** by `wc -w` against 4,000 to 5,000, counting tables,
+    code and links: six chapters as worked cases, two cases, twelve interview answers. The review pass
+    of 30 Sep 2026 added a clause for each business term and a sentence for each new second route, and
+    cut two tangential readings and a repeated clause. The v3 recheck took them from 6,581 as merged:
+    each chapter's who needs the answer, its six questions listed and asked again as subheadings, a
+    closing answer with its number, the interview answers the drill asks, and a last section answering
+    the day's question. Nothing was cut to reach a count.
 13. **The cheat sheet runs to a second page** for its glossary foot, within the two-page limit.
 14. **Each chapter's second route is an independent method** since 30 Sep 2026: chapter 1 by month
     in the order date, chapter 2 the symmetric split, chapter 3 one pass by key, chapter 4 two groups
@@ -125,11 +127,11 @@ frequency.
     is 7.0; both recomputed from the class file on 30 Sep 2026. Since the v3 recheck every place the
     headline appears says so and says the call holds either way, far below the 25 orders claimed:
     half two's S12 (the fix, with both baselines in its table) and its notes, S16's close and notes,
-    S28's notes, the study notes, the day sheet (its ladder, trap table and a note on the baseline),
-    the cheat sheet's panel 8, the board work and the companion's walk. Notebook 06 states only the
-    55-day ceiling at its fix and in its memo claim, and keeps its depth exercise, which asks the
-    learner to find the 37-day figure. The headline stays "at most about 4 orders", on the stated
-    baseline.
+    S28's memo and its notes, the study notes (chapter 6, interview answer 12 and the closing answer),
+    the day sheet (its ladder, trap table and a note on the baseline), the cheat sheet's panel 8, the
+    board work and the companion's walk. Notebook 06 states only the 55-day ceiling at its fix and in
+    its memo claim, and keeps its depth exercise, which asks the learner to find the 37-day figure. The
+    headline stays "at most about 4 orders", on the stated baseline.
 
 16. **The question ladder was fixed before any file changed**, in one scratch file holding the day's
     question, each chapter's short and full question, who needs the answer, the six smaller questions
@@ -146,6 +148,14 @@ frequency.
     29 September ("Round 2; notebook 02", and "the escalated case; notebook 04" for the summary
     helper, which chapter 5 teaches); each entry now names its chapter and notebook, and the walk,
     headings and ladder labels ask the chapters' questions.
+19. **One rule for a rate per week**, since the fresh review of 30 Sep 2026 found the pack split on
+    it: the Kahoot, the notes' self-test, the workbook and the companion treated a rate per week on
+    the cut window as fair, while the chapter 1 set, the practice lab and the TA note called it
+    incomplete. The rule: a rate per week fixes the length of the windows and leaves their position,
+    so while Q2 is open the same weeks of both quarters go out with the rate beside them, and once both
+    close the closed quarters are compared. Every file that states or keys on it now says so, and no
+    key letter moved; the Kahoot's third item keys the same weeks with the rate beside them, and its
+    distractor that scaled Q2 by 11 over 13 now scales it up by 13 over 11, the rate alone.
 
 ## Invented, and recorded as invented
 
@@ -245,6 +255,7 @@ recheck of 30 Sep 2026 ran on the same versions, with Carlito installed again in
 | 5. Pedagogy and language, eighth run | Fresh reviewer agent | The same question | YES. The seventh run's fixes held, the twins no longer state or leave only a key, verify and the scrubber were clean. Minor: ex2 lacked the item signposts ex1 carries; ex1 TODO 7's check label named the rule; the Kahoot had doubled separators | All three minors fixed |
 | Orchestrator review, one pass | A review agent for the orchestrating session | The day's review against the standard as merged on 30 Sep 2026: spoilers of later days, exercises sat blind from the STUDENT files, the design share, token options and second routes, plants, consistency, and terms a learner new to business cannot follow | NO. Spoilers: the second case's Part 1 (Student up 40 percent on two customers, 12 orders) was Thursday's headline rate on a small base and its plant, and small-base framing sat in chapter 4 and 5 lines, the deck's S28, S43, S52, S53 and drill notes, and every "too few to call a trend"; Berkeley in chapter 4 was Thursday's Simpson reversal; chapter 5's outlier and noise options touched Wednesday and Thursday. Exercises: exhibits drew the keys of chapter 1 item 2 and chapter 5 item 1, two orderings keyed the listed order, chapter 3 item 2's stem announced item 1's key, strawman options (always, never, a Rs 150 threshold, a reserved name) left keys to elimination, and the escalated case's Part 3 and Part 4 headings named its keys. TODO checks: escalated TODO 3 and second-case TODOs 1 and 3 recomputed the key expression in the check. Design: 22 labelled, about 12 genuine. Second routes in chapters 2, 4, 5 and 6 re-derived the first route's identity; sizing tables carried columns every option scored alike (time, rows read). Plants: the take-home self-check named Retail-Core's 34 to 26 customers and the flat frequency. Consistency: the deck's 1,000x against several hundredfold. Terms: about a dozen business terms unexplained | Every item above fixed: the second case's Part 1 is now the tier's own tree against Marketing's 7 percent per order (0.545, about 45 percent down); Berkeley cut for Swiggy; the small-base lines reworded as lumpiness; 36 chapter items rewritten or retuned with computed sizings and plausible wrong answers, chapter 6 gaining a sixth, and a second blind reading removing every later stem or option that announced an earlier key; TODO checks read computed values in a later cell, and a probe with each wrong pick shows each fails; 25 design items, 19 of the 36 chapter items, 2 of the escalated case's 6, 3 of the second case's 4 and 1 of the practice set's 12, each argued in the review report; four second routes replaced by independent methods; sizing columns replaced by ones that separate; the self-check gives sums; 430x; one-clause glosses where each term first appears; both decks rebuilt with the merged builder, the afternoon opener printing 06; notebooks and case twins executed cold |
 | v3 recheck, the builder's five steps | The builder, with a notebook agent and an exercise agent (`model: opus`), from the ladder fixed first | Is every heading a question in the ladder's words; does every file stand alone; does each deck chapter carry its opener, map and 10 to 14 slides in the notebook's rhythm; does every prose file pass the humanizer's read; and does every repeated number, trap, key, plant and link hold? | Headings were labels in every family ("The need", "The options", "Panel 4: Missing is unknown", "First drawing"); the decks lacked the day-question slide, a map per chapter, the thinking as a picture, a code block and a predict pair in most chapters, and their subtitles made statements where the standard asks questions; notebooks named their levels as findings and opened without who needs the answer; the companion's glossary and walk still pointed at the retired rounds and sent "groups in, groups out" to notebook 04; the practice lab's picture drew item 1's key; chapter 3 item 6, chapter 5 item 2 and the escalated case's part 3 intro announced another item's key; the pre-read promised one check and gave two; three Kavya reviews in the decks and notebooks stacked fragments or staged a contrast; a deck call said both quarters closed on 30 September; the exercise builder carried the banned words and dash literals that failed verify | Every heading rewritten as the ladder's question, with who needs the answer and the questions on the way under each chapter heading and a closing answer with its number; the decks rebuilt at 88 and 37 slides and read slide by slide; the notebooks rebuilt and run cold with no computation, check, key or option changed; the companion's glossary, walk, headings and ladder labels point at chapters; the lab's picture shows its four problems; the three stems reworded with every key unchanged (all ten Answers lines and the Kahoot's keys match main); the pre-read, the reviews and the call corrected; the builder reads the banned words from verify.py. Chapter 6's ceiling stated on both baselines wherever the headline appears (decision 15). Proof: verify.py --execute PASS with 0 failures and every notebook cold-run clean, build_companion --check and sync_programme --check current, the tic scanner clean on all 35 markdown files, and a sweep of every STUDENT file finds no later day's trap and no Wednesday plant |
+| v3 recheck, the fresh review | A fresh read-only reviewer agent (`model: opus`) | The prompt's four reads: headings only on every file; three files drawn at random and read alone (the morning deck, the chapter 3 solution and the afternoon deck); every one of the 125 rendered slides; and every humanizer pattern | NO, with nothing blocking. Headings failed in five places: the debrief slides answered their own subtitles with the wrong reading, the season answer was unqualified, half one S6's title was figurative, the notes had no section answering the day's question, and the companion's chapter 4 and 5 steps carried each other's text. Read alone, the files never introduced Kavya, explained the interview tags once, used three names on code slides they never defined, left chapters 4 and 5's sizing in the notebook, and named Monday's tree, Anand and `describe` unexplained in the chapter 3 solution. The slides had no overflow; S19's point labels printed near 7 pt and S20's bridge box misread its number. The humanizer found one contrast, clipped negatives, sayings, a sentence about the document repeated across six notebooks, and bold labels outside the house beats. Beyond those: notebook 02 gave away the escalated case's numbers, eight keys could be spotted by punctuation, the notes' self-test keyed the longest option in five of six items, the notes carried fourteen interview questions against the drill's twelve, and the pack split on whether a rate per week on the cut window is fair | Every should-fix and nearly every minor finding fixed: the debrief subtitles ask for the wrong reading; the season is answered as "not one that hit everyone" wherever it appears; the notes end on the day's answer; Kavya is introduced at her first review in each deck and notebook; the tag legend sits at the first tagged question in each file; the code slides define their names; chapters 4 and 5 size their options on the slide; S19's values moved into its text and S20's box names the tile against Q1; the humanizer finds were rewritten; notebook 02 answers on invented numbers; options were reworded so no key stands out by punctuation, every letter kept, with a guard in the exercise builder; the self-test's distractors were lengthened; the notes carry the drill's twelve questions; and one rule governs a rate per week (decision 19). Kept, with reasons: S1's subtitle stays the day's question, the standard's form for the day-question slide; the crux "A rate without its denominator is a rumour." stays, since it is the curriculum row's own wording and the eight crux lines repeat word for word; the notes' non-chapter sections carry no beats, since the standard asks for them under the notes' chapter headings; guided checkpoint 3's "Sixty-nine" stays, since chapter 2 has shown the count before step 2 runs; tick labels near 8 pt, S60's row of six boxes, half two S29's spacing and the close tables at 9 pt stay, since each renders legibly and none overflows. Both decks were rebuilt and every changed slide looked at again |
 
 ## Shared-tool changes requested
 
@@ -262,3 +273,7 @@ recheck of 30 Sep 2026 ran on the same versions, with Carlito installed again in
    briefs ending `case` can read each other's keys; this pack's two case briefs now carry different
    key strings and the audit passed, which suggests the matcher already reads the full topic.
 6. `content/W01/D1`'s workbook Start tab says "planted defect" in a STUDENT file (carried from 29 Sep).
+7. `scripts/distractor_audit.py`: flag a key that alone carries, or alone lacks, a semicolon, a colon
+   or a bracket. The fresh review found eight keys a learner could spot that way while the audit
+   passed; this pack's exercise builder now refuses them (`lone_marks`), and the check belongs in the
+   shared audit so every day gets it.
