@@ -15,14 +15,15 @@ Post exactly this shape: xxxxxx
 
 ### Q1
 
-An invented tier of 40 members fell Rs 800 each in a quarter when the company delivered Rs 2 crore.
-A retention offer would cost Rs 300 a member. What share of the fall must the offer win back to pay
-for itself in revenue, and how big is the fall against the company?
+An invented tier of 40 members fell Rs 800 each in a quarter, and a retention offer costs Rs 300 a
+member, so it must win back 37.5 percent of the fall to pay for itself. Nobody has measured a
+recovery, and the head of the tier agrees to test the offer on half the tier first. Which half gets
+it?
 
-a) 37.5 percent, and 0.16 percent of the company
-b) 37.5 percent, and 1.6 percent of the company
-c) 37.5 percent, and 16 percent of the company
-d) 62.5 percent, and 0.16 percent of the company
+a) A coin-chosen 20, so the two halves start alike
+b) The 20 who fell most, since they have the most to win back
+c) The 20 with the lowest customer ids, which is close to random
+d) The 20 who spent most last quarter, since they matter most
 
 ### Q2
 

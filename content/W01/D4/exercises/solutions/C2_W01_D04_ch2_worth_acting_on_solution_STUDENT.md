@@ -6,15 +6,15 @@ Answers: 1a 2c 3c 4b 5d 6a
 
 Two calls, two measurements. A chance reference says whether a gap beats chance. Rupees against the
 whole company and against the cost of acting say whether it deserves money. The design items give
-new numbers and ask for the break-even and the size against the company together, what a range
-buys when its low end sits below the cost, and what a measured recovery rate does to the decision;
-the trap puts the share where the rupees belong.
+new numbers and ask who gets the first test of an offer, what a range buys when its low end sits
+below the cost, and what a measured recovery rate does to the decision; the trap puts the share
+where the rupees belong.
 
 ## Item by item
 
 | Item | Kind | Key | Why it holds | Why the others fail |
 |---|---|---|---|---|
-| 1 | design | a | Rs 800 times 40 is Rs 32,000; the offer costs Rs 12,000, which is 37.5 percent of the fall; Rs 32,000 over Rs 2 crore is 0.16 percent. | b: the company's share with the decimal moved one place. c: moved two places. d: the share the offer does not need to win back. |
+| 1 | design | a | A coin makes the two halves alike before the offer, so any gap after it belongs to the offer; the test costs Rs 6,000 and leaves 20 members to compare with. | b: the members who fell most tend to drift back toward their own average whatever the offer does, so the offer would be credited with the drift. c: ids follow whatever order the system gave them, which can track when members joined and how they spend. d: the heaviest spenders differ from the rest before the offer, so the comparison starts unfair. |
 | 2 | concept | c | Significant and important are separate calls: the share says how surely the fall beats chance, and only the rupees against the company and the cost say how big it is. | a: reads the smallest share as the biggest money. b: a second seed moves the share and leaves the size where it was. d: borderline is a reading of chance, and it never says the fall did not happen. |
 | 3 | design | c | The low end, Rs 150, sits below the Rs 400 cost, so a full rollout can lose money; a coin-chosen part of the tier tests the offer at part of the cost and leaves a comparison. | a: the middle of the range hides its low end. b: the range supports a test, which is spending with a way to learn. d: a break-even on the estimate ignores how small the fall could be. |
 | 4 | trap | b | The review orders by money and says beside each move how far chance could make it: A first, then B, then C. | a: the chapter's trap, surety read as size. c: a share above 0.05 means the move could be the wobble, which says nothing about whether it matters. d: B and C are small and still worth a line each. |

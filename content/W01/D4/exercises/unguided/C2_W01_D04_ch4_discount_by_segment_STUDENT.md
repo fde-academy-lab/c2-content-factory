@@ -38,13 +38,13 @@ d) Zero, and Marketing's arithmetic must hold a mistake
 
 ### Q3
 
-At Diwali, Marketing proposes 20 percent off and expects orders to rise 15 percent. What happens to
-revenue?
+At Diwali, Marketing proposes 20 percent off and expects orders to rise 15 percent. Which plan do
+you put to Meera?
 
-a) It rises about 15 percent, with the orders
-b) It falls about 8 percent, at four-fifths of the price
-c) It rises about 3 percent, the gap between the numbers
-d) It stands still, since the rise covers the discount
+a) Run it for everyone, since 15 percent more orders is a clear lift
+b) Hold back a random slice; repeat it only if orders rise over 25 percent
+c) Run it, then set Diwali's revenue against the monsoon month's
+d) Cut the discount to 10 percent, since a smaller discount always earns more
 
 ### Q4
 
@@ -58,13 +58,13 @@ d) The segments' 2 percent less, with the mix as the blend's reason
 
 ### Q5
 
-Marketing offers to fix an unfair comparison by setting exposed against unexposed customers inside
-the same city. Does that remove the mix problem?
+Marketing wants the next campaign's readout to be fair and offers four set-ups for comparing
+customers who got it with customers who did not. Which one removes the mix problem?
 
-a) Yes, because a city holds customers of one kind
-b) No: the mix is by segment, so split by segment or use a coin
-c) Yes, provided the cities are weighted by their own order counts
-d) No, because only a far larger sample could ever remove it
+a) Exposed against unexposed customers inside the same city
+b) Inside each segment, or with a coin deciding who gets the campaign
+c) Cities weighted by their order counts, then blended into one comparison
+d) The same comparison as before, run on a sample ten times the size
 
 ### Q6
 
