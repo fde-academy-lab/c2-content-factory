@@ -477,7 +477,7 @@ second route. Then the chapter's answers.
 **In the interview.** [F] Everything read from a CSV is a string; what breaks and where do you convert?
 
 ```notes
-LIVE, 2 minutes. The tag marks how often screens ask it: [S] a staple asked everywhere, [F] frequent
+LIVE, 2 minutes. The tag says how often screens ask it: [S] a staple asked everywhere, [F] frequent
 at global capability centres and product companies, [D] a differentiator. One breath for the
 interview: arithmetic, comparison and sorting break or silently lie on text; convert once at the
 boundary in one function that returns the value or the reason, and log the failures. The answer

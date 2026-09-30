@@ -20,6 +20,7 @@ recheck prompt in `prompts/week_revamp_W02_W03.md`, section 1, on branch `w01-d3
 | `.claude/skills/day-pack-builder/references/the-standard.md`, standard v3 of 30 September 2026 | The question ladder, every artifact standing on its own, decks carrying each chapter in full, and the humanizer's read on every prose file |
 | `prompts/week_revamp_W02_W03.md`, section 1, with the orchestrating session's fills | The recheck's five steps, the later days' traps to keep out, and three specifics: the review's two rulings stay with every file explaining its own terms, the notes do not grow past about 6,650 words, and the recomputed tree's numbers stay exactly as merged |
 | `.claude/skills/humanizer/SKILL.md` (blader/humanizer at 225a6f3, MIT) | The read in file mode over every prose file |
+| `scripts/build_deck.py` and `scripts/deck_layout.py` from pull request 200, merged into this branch from main on 30 September 2026 | The cover's chapter strip, which numbers each chapter from its SECTION heading, so the afternoon cover lists 06 to 11 |
 
 ## The data
 
@@ -100,7 +101,8 @@ or its line. The existing 29 September build already showed Rs 1,790 this way.
     in half two is followed by a slide opening on "Answer". The shared change to ask for is an
     exemption for SECTION headings in that rule. This replaces the 30 September decision that chapter
     titles were statements.
-11. **The study notes run to about 6,650 words, about 5,550 outside the tables,** against the
+11. **The study notes run to about 6,650 words, about 5,550 outside the tables** (6,659 and 5,641 by the
+    count that gave the merged notes 6,664 and 5,557, code fences excluded, after the v3 recheck), against the
     standard's 4,000 to 5,000, because six chapters as worked cases with options and sizing, the
     recomputed tree and twelve full interview answers do not fit the lower figure without cutting
     what the standard requires.
@@ -154,6 +156,36 @@ or its line. The existing 29 September build already showed Rs 1,790 this way.
     it in a clause where it first appears, the cheat sheet and the afternoon deck included, and each
     file says who Anand, his analyst and Kavya Nair are where it needs them.
 
+25. **The six lines worth keeping are one per chapter.** The review found line 4 carrying chapter 5's
+    lesson and no line for chapter 6, so line 4 is "A failure is logged, never turned into a number.",
+    line 5 is the recompute line and line 6 is "Reconcile twice, in rows and in rupees, to the books, and
+    hand over a log a stranger can replay." The notes, half two S27 and the cheat sheet print them word
+    for word; on the sheet lines 2 and 3 share panel 4's crux, panel 5 has none, and every crux sits
+    under the panel of its chapter.
+26. **Tonight's pre-read check uses chapter 4's keep and flag.** The delivered share is counted over
+    all of a quarter's orders with the flagged order counted and not delivered, 67 of 100 in Q1 and 57
+    of 86 in Q2, 66.3 percent, where the fix pass had used 57 of 85, which chapter 4 prints as the drop
+    option's share. Thursday's pack does not use the share, so nothing downstream moves.
+27. **The afternoon deck closes on the answer, the six lines and tomorrow's question.** The self-study
+    slide on where else money is reconciled moved ahead of the close as D25, and the close runs S26 to
+    S28; the slides after each question-titled opener keep the gate's "Answer" (decision 10) and now
+    answer their subtitles.
+28. **A design item's tag sits before its question**, `Q2 (Design). Which ...?`, so every heading ends
+    on its question mark; the set builder writes it and the two briefs follow.
+29. **The notes' glossary lists first the six words the cheat sheet uses**, since the sheet's foot prints
+    the glossary's first rows under "The words on this sheet"; its booked value row no longer names GMV,
+    so the notes say it once, in prose.
+30. **The escalated twin's TODO 4 logs a replaced copy neutrally**, "replaced by a later copy of the
+    same order", so the branch under the placeholder no longer names its condition, and the check that
+    filtered on the old reason became "where both copies of an order convert, the first copy stays",
+    which still catches option d. Every option of every TODO in both twins was run again (decision 18's
+    proof): 14 keys pass clean and all 42 wrong options fail at least one check.
+31. **Notebook 05's segment table leaves out the Student segment**, whose +40 percent on two customers
+    is Thursday's case; the chart already left it out.
+32. **Chapter 1's question drops "actually"** in every file that prints it, the humanizer's stock word.
+33. **The workbook's Tail tab is Largest**, since "tail" was never explained, and its start and export
+    lines are sentences; the recalc manifest follows.
+
 ## Invented, and recorded as invented
 
 - Every record in the mechanism cells: INV-01 to INV-03 (chapter 2; INV-01 moved from Rs 2,400 to
@@ -182,6 +214,7 @@ figures used are the ones it confirmed.
 |---|---|---|
 | 1 | Target Canada launched March 2013, lost almost $1 billion in year one, and announced on 15 January 2015 it would close all 133 stores | https://www.cbc.ca/news/business/target-closes-all-133-stores-in-canada-gets-creditor-protection-1.2901618 (checked 30 Sep 2026) |
 | 1 | Product data about 30 percent accurate against 98 to 99 percent in the US, attributed to Castaldo's Canadian Business article | https://www.salsify.com/blog/product-content-lesson-target-canada-collapse-taught-us (checked 30 Sep 2026; a secondary summary, since the Canadian Business page returned 403) |
+| 1 | Merchandisers entered about 75,000 products into SAP by hand, and the SAP system had nothing to alert users to a data entry error (half one S9, replacing "loaded in a hurry", which no source carried) | The same Salsify summary (checked again 30 Sep 2026 in the v3 recheck) |
 | 2 | Starbucks billed some card customers twice on 22 and 23 May 2009, at about 7,800 company-owned stores in the US and Canada, and repaid about one million customers | https://www.nbcnews.com/id/wbna31208561 (checked 30 Sep 2026) |
 | 3 | The IRP rejects an invoice already reported under the same supplier GSTIN, invoice number, document type and financial year, the combination also used to generate the IRN, a 64-character hash (FAQ questions 64 and 65) | https://www.gstn.org.in/assets/mainDashboard/Pdf/GST%20e-invoice%20System%20-%20FAQs%20-%20Version%201.4%20Dt.%2030-3-2021.pdf (checked 30 Sep 2026, and again in the fix pass the same day) |
 | 3 | E-invoicing covers supplies to registered persons (B2B), SEZ supplies and exports, never B2C (FAQ questions 9 and 10); exempt: SEZ units, insurers, banks and NBFCs, goods transport agencies, passenger transport, multiplex cinemas and OIDAR (FAQ question 17) | The same FAQ PDF (checked 30 Sep 2026 in the fix pass) |
@@ -191,6 +224,7 @@ figures used are the ones it confirmed.
 | 5 | Confirmed as GBP 263 million: GBP 118 million first half, about GBP 70 million 2013/14, about GBP 75 million before | https://www.tescoplc.com/media/hm2hnfbe/interim_2014-15_results_statement.pdf (checked 30 Sep 2026) |
 | 6 | Patisserie Valerie's hole put at GBP 94 million, March 2019 | https://www.bbc.co.uk/news/business-47591082 (checked 30 Sep 2026) |
 | 6 | FRC fined the auditor GBP 4 million, reduced to GBP 2.34 million, for three years of audits, 27 September 2021 | https://www.frc.org.uk/news-and-events/news/2021/09/sanctions-against-grant-thornton-uk-llp-and-david-newstead/ (checked 30 Sep 2026) |
+| 6 | The FRC names "missed red flags, a failure to obtain sufficient audit evidence and a failure to stand back and question information provided by management", the basis of "missing red flags" in half two S4, the notes and notebook 06 | The same FRC page (checked again 30 Sep 2026 in the v3 recheck) |
 
 Left out as unverified: a count of Amazon items or sellers affected; Target Canada's total loss
 beyond CBC's figures; any retailer's own statement on deduplicating by order id; any statement about
@@ -297,3 +331,20 @@ slides and sections of an earlier build and defined the rejects log as the set-a
   content/W01/D3 --check` and `python3 scripts/sync_programme.py --check` pass; their output is in the
   session report.
 
+
+## The v3 recheck, 30 September 2026
+
+The recheck ran in two sessions on branch `w01-d3-v3`. The first stopped at the account's usage limit
+after ten commits: the decks' markdown in full depth, the companion and workbook, the lab note, the
+notebooks, the exercise family, and the notes and cheat sheet part way. The second merged main, which
+carries pull request 200's deck builder, finished the reading family, rebuilt both decks, ran the
+recheck and both reviews, and fixed what they found.
+
+| Pass | Who | What it asked | What it found | What changed |
+|---|---|---|---|---|
+| A. The question ladder | The builder | Is every heading in every STUDENT and TRAINER file a plain question its section answers, with who needs the answer and the questions on the way under every chapter-level heading? | Statement headings throughout the merged pack; design items' headings ending on their tag | Every heading asks its question, from the day sheet's printed ladder to the workbook's tab titles; the tag sits before the question (decision 28) |
+| B. Standing alone | The builder | Can each deck, notebook, exercise file, brief, solution and the take-home be followed with nothing else open? | Terms used before they were explained, among them the afternoon deck's identity rule, rejects log, Retail-Plus, Business segment and bulk order, GCC in both notes to Anand, and the cheat sheet's file line; the notes' reading list citing an error the notes never introduced | Each term explained where the file first uses it; the notes restore the three errors met in passing |
+| C. Decks in full | The builder | Does each chapter run its opener, map and about 10 to 14 slides in the notebook's rhythm, and does the afternoon deck close on the answer, the crux lines and tomorrow's question? | Chapters of 9 to 11 slides; the self-study slide after tomorrow's question | Chapter 1 from 11 slides to 15, chapter 2 from 9 to 13, 3 from 11 to 14, 4 from 10 to 15, 5 from 10 to 15, 6 from 11 to 14, plus the afternoon's restating slide; D25 moved ahead of the close (decision 27) |
+| D. The humanizer's read | The builder | Does every prose file read as a person wrote it, with the notebooks' markdown changed through their builder? | Negative tails in deck notes and the day sheet; sweeping claims in the notes' work section; a closer restating its paragraph; one-line captions on the board | Each rewritten as a plain statement or cut; the tic scanner clean on every markdown file, the notebooks' markdown, the companion's text and both built decks |
+| E. The recheck | The builder | Do repeated numbers match, does every trap show its exact wrong number, does any STUDENT file name a plant or teach a later day's trap, do keys pass the audit, is every link dated? | The set-aside share written as about 98, 98 and 98.5 percent; the board's "on 22 members" leaning on Thursday's small-base trap; no plant named; every link dated; every key matching across the day sheet, lab note, solutions and notebook builder | 98.5 percent everywhere; the board asks whether the fall is real without the member count |
+| F. The v3 review | A fresh reviewer agent, read-only, once | The headings-only read on every file, three files opened alone (the chapter 3 set, the chapter 1 set and the escalated solution, drawn with a seeded random sample), every rendered slide, and every humanizer pattern left | Nothing blocking: no plant named, no later trap taught, no key wrong, no slide overflowing. Eleven should-fix findings: the pre-read's delivered share on a second definition; six lines that did not map to the chapters; four statuses where the export has three; a JSON feed called text; cues in the escalated twin's TODOs 4 to 6; the auditor brief's slogan key and strawmen; build-side words on learner slides; D17's words in stats slots; notebook 02's blocking sized "in the thousands"; S68's code answering its own question; gaps in the three files read alone. Eighteen minor findings on headings, glosses, keys echoing slogans, Kavya's long strip, S19's picture, S47's wrapped code, S26's empty boxes, stats words, a missed pair spent a chapter early, Thursday's Student row in notebook 05, glossary columns, notebook 03's question count, two unsourced phrasings, missing minutes and the humanizer's residue | Every finding fixed (decisions 25 to 33 record those that depart from a source); "missed red flags" confirmed on the FRC's page and "loaded in a hurry" replaced by the Salsify summary's own facts; the escalated twin's options run again |
