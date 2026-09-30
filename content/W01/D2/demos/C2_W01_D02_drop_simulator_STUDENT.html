@@ -194,8 +194,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   <main>
     <section class="part" id="walk">
       <p class="eyebrow">01 &middot; The guided walk</p>
-      <h2>Five rungs from the drop to the cause</h2>
-      <p class="lede">Each step lights one rung of the ladder and draws the number that answers it. The walk uses the
+      <h2>Six chapters from the drop to the cause</h2>
+      <p class="lede">Each step lights one chapter of the ladder and draws the number that answers it. The walk uses the
         closed quarters as exported: Q1 is 1 April to 30 June and Q2 is 1 July to 30 September, 13 weeks each.</p>
       <div class="grid2">
         <div class="card"><div class="holder" id="walkChart"></div></div>
@@ -1021,8 +1021,8 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   var PLUS_MONTHS = [14, 24, 13, 9, 9, 8], CORE_MONTHS = [13, 12, 13, 12, 12, 12];
   var MONTHS = ["Apr", "May", "Jun", "Jul", "Aug", "Sep"];
   var PLUS_CHANNEL = { names: ["web", "store", "app"], q1: [24, 14, 13], q2: [9, 9, 8] };
-  var RUNGS = ["Is the drop real?\nlike with like", "Which branch?\nthe tree", "Which segment?\nthe split",
-               "Mix or rate?\nrupees and orders", "Which cause?\nhypothesis and evidence"];
+  var RUNGS = ["Is the drop real\nwindows", "Which branch\nthe tree", "Which segment\nthe split",
+               "Mix or rate\nthe blend", "Marketing's hypothesis\nthe helper", "The memo\nthe evidence"];
 
   function opc(s, q) { return s.orders[q] / s.cust[q]; }
   function weighted(q) { return Q.orders[q] / Q.cust[q]; }
@@ -1139,32 +1139,32 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     { t: "The ask", lit: null, big: "Rs 2.10 crore to Rs 1.87 crore", cap: "booked revenue, Q1 then Q2",
       chart: function () { return windowLine("closed", "Cumulative revenue through each quarter"); },
       x: "Meera wants to know which branch of the tree moved: fewer customers, or the same customers buying less. Marketing says the answer is more customers and wants the acquisition budget. The ladder answers in a fixed order, starting with whether the drop is real." },
-    { t: "Rung 1: the number in Marketing's deck", lit: 0, big: p1(pct(WINDOWS.cut.a, WINDOWS.cut.b)), cap: "the Q2 tile cut at 15 September against the whole of Q1", bad: true,
+    { t: "Chapter 1: the number in Marketing's deck", lit: 0, big: p1(pct(WINDOWS.cut.a, WINDOWS.cut.b)), cap: "the Q2 tile cut at 15 September against the whole of Q1", bad: true,
       chart: function () { return windowLine("cut", "The Q2 tile stops at week 11"); },
       x: "The Q2 dashboard tile was exported on 15 September, so it covers 11 weeks against Q1's 13. Set beside each other as totals, they read as a fall of a quarter, which is the crisis read that rushes the budget. The first and last order dates of each window are the check." },
-    { t: "Rung 1: like with like", lit: 0, big: p1(pct(Q.rev[0], Q.rev[1])), cap: "closed quarters, 13 weeks each; per week on the cut window " + p1(pct(WINDOWS.week.a, WINDOWS.week.b)),
+    { t: "Chapter 1: like with like", lit: 0, big: p1(pct(Q.rev[0], Q.rev[1])), cap: "closed quarters, 13 weeks each; per week on the cut window " + p1(pct(WINDOWS.week.a, WINDOWS.week.b)),
       chart: function () { return windowBridge("cut"); },
       x: "Compared as closed quarters, revenue fell 11.0 percent, Rs 23,00,000. As a rate per week on the cut window it fell 12.4 percent. The remaining Rs 31,40,050 of the tile's gap was the two weeks it left out, so the drop is real and about a tenth, and it now needs explaining." },
-    { t: "Rung 2: the tree, decomposed", lit: 1, big: f2(weighted(0)) + " to " + f2(weighted(1)), cap: "orders per customer; customers held at 69",
+    { t: "Chapter 2: the tree, decomposed", lit: 1, big: f2(weighted(0)) + " to " + f2(weighted(1)), cap: "orders per customer; customers held at 69",
       chart: function () { return windowBridge("closed"); },
       x: "Customers held at 69 in both quarters, so the customer branch moved by Rs 0. Orders per customer fell from 1.65 to 1.25, which took Rs 51,57,895 off, and revenue per order rose 18.0 percent, which put Rs 28,57,895 back. The ratios 1.000 times 0.754 times 1.180 multiply to 0.890, the revenue ratio." },
-    { t: "Rung 2: the discount branch", lit: 1, big: pc1(DISC.recShare[1]), cap: "Q2 orders with a discount, where the field is recorded",
+    { t: "Chapter 2: the discount branch", lit: 1, big: pc1(DISC.recShare[1]), cap: "Q2 orders with a discount, where the field is recorded",
       chart: function () { return discountChart("recorded"); },
       x: "Some orders carry no discount field. Read as zero, 50.0 percent of Q2's orders carry a discount, which says half went without. Over the orders that record the field it is 71.7 percent, and with the blanks unknown the share lies between 50.0 and 80.2 percent. Either way the branch is at most Rs 12,900 a quarter against a Rs 23,00,000 fall." },
-    { t: "Rung 3: the segment split", lit: 2, big: p1(ch["Retail-Plus"]), cap: "orders per customer in Retail-Plus, the same 22 members",
+    { t: "Chapter 3: the segment split", lit: 2, big: p1(ch["Retail-Plus"]), cap: "orders per customer in Retail-Plus, the same 22 members",
       chart: function () { return rollupChart("weighted"); },
-      x: "The same function run on each segment shows where frequency fell: Retail-Plus from 2.32 to 1.18 orders per member, while Retail-Core moved 5.3 percent and Student rose. The company figure is weighted by customers, 1.65 to 1.25, and it reproduces rung 2. Averaging the four segment figures gives 1.94 to 1.82, which does not." },
-    { t: "Rung 4: the rupees", lit: 3, big: Math.round(shareOf("rev", "Business").share) + " percent", cap: "of the rupee fall sits in Business, on three fewer orders out of twenty",
-      chart: function () { return measureBridge("rupees", 620); },
-      x: "In rupees, Business carries Rs 22,29,720 of the Rs 23,00,000 fall, because each of its orders is worth lakhs. Three fewer Business orders out of twenty is too few to call a trend today. Revenue per order rose mainly because small Retail-Plus orders disappeared from the mix, and nobody paid more." },
-    { t: "Rung 4: the orders", lit: 3, big: shareOf("orders", "Retail-Plus").amount + " of " + (Q.orders[0] - Q.orders[1]), cap: "lost orders sit in Retail-Plus",
+      x: "The same function run on each segment shows where frequency fell: Retail-Plus from 2.32 to 1.18 orders per member, while Retail-Core moved 5.3 percent and Student rose. The company figure is weighted by customers, 1.65 to 1.25, and it reproduces chapter 2. Averaging the four segment figures gives 1.94 to 1.82, which does not." },
+    { t: "Chapter 4: the orders", lit: 3, big: shareOf("orders", "Retail-Plus").amount + " of " + (Q.orders[0] - Q.orders[1]), cap: "lost orders sit in Retail-Plus",
       chart: function () { return measureBridge("orders", 620); },
       x: "In orders, Retail-Plus carries 25 of the 28 lost orders. Every member still bought in Q2; the members who ordered three times in Q1 now order once. A helper that printed its big moves and returned nothing would have dropped exactly this segment from the summary." },
-    { t: "Rung 5: the hypothesis and its timing", lit: 4, big: "July", cap: "the month the Retail-Plus fall began",
+    { t: "Chapter 5: the rupees", lit: 4, big: Math.round(shareOf("rev", "Business").share) + " percent", cap: "of the rupee fall sits in Business, on three fewer orders out of twenty",
+      chart: function () { return measureBridge("rupees", 620); },
+      x: "In rupees, Business carries Rs 22,29,720 of the Rs 23,00,000 fall, because each of its orders is worth lakhs. Three fewer Business orders out of twenty is too few to call a trend today. Revenue per order rose mainly because small Retail-Plus orders disappeared from the mix, and nobody paid more." },
+    { t: "Chapter 6: the hypothesis and its timing", lit: 5, big: "July", cap: "the month the Retail-Plus fall began",
       chart: function () { return K.line(MONTHS, [["Retail-Plus orders", PLUS_MONTHS, "bad"], ["Retail-Core orders", CORE_MONTHS, "plan"]], { width: 620, title: "Orders by month; Retail-Core is the comparison" }); },
-      x: "The complaint dates the broken reorder feature six weeks back from this week, which is late August. Retail-Plus orders were already down in July, before the break, so the break cannot be the whole story. Retail-Core stayed flat across the six months, so the fall is particular to the paid tier." },
+      x: "The complaint dates the broken reorder feature six weeks back from this week, which is late August. Retail-Plus orders were already down in July, before the break, so the break cannot be the whole story: at the pace the tier had already fallen to, the button explains at most about 4 orders. Retail-Core stayed flat across the six months, so the fall is particular to the paid tier." },
     { t: "Kavya's review", lit: null, big: "Frequency, not acquisition", cap: "the branch that moved, stated as a finding with its hypothesis beside it",
-      chart: function () { return K.flow(RUNGS.map(function (r) { return r.split("\n")[0]; }), null, { width: 112, kinds: ["good", "good", "good", "good", "unknown"] }); },
+      chart: function () { return K.flow(RUNGS.map(function (r) { return r.split("\n")[0]; }), null, { width: 96, kinds: ["good", "good", "good", "good", "good", "unknown"] }); },
       x: "Tell Meera that customers held at 69 and every one bought in both quarters, so acquisition is not the branch that moved. Orders per customer fell from 1.65 to 1.25; in behaviour the fall is Retail-Plus, and in rupees it is three Business orders that tomorrow's reconciliation checks before anyone acts. The reorder feature is a hypothesis, and the app's reorder logs would settle it." }
   ];
   var walkAt = 0;
@@ -1252,9 +1252,9 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     setState("stHelper", h.names.length + " segments in, " + h.none + " came back None.", s.help === "returns");
     setState("stMeasure", s.meas === "rupees" ? "Rupees point at Business; show orders beside them." : "Orders point at Retail-Plus; show rupees beside them.", true);
 
-    K.draw("simFlow", K.flow(RUNGS, null, { width: 150, title: "Where this reading holds and where it breaks",
+    K.draw("simFlow", K.flow(RUNGS, null, { width: 124, title: "Where this reading holds and where it breaks",
       kinds: [w.fair ? "good" : "bad", (s.disc === "zero" ? "bad" : "good"), (s.roll === "weighted" ? "good" : "bad"),
-              (s.help === "returns" ? "good" : "bad"), wrong.length ? "unknown" : "known"] }));
+              "known", (s.help === "returns" ? "good" : "bad"), wrong.length ? "unknown" : "known"] }));
     K.draw("simWindow", windowBridge(s.win));
     K.draw("simDiscount", discountChart(s.disc));
     $("simDiscountNote").textContent = s.disc === "zero" ? "Read as zero, every order with no field counts as an order that went without a discount." :
@@ -1341,7 +1341,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
   toggler("expC", ["Weight by customers", "Average the averages again"],
     function (on) { K.draw("expCChart", rollupChart(on ? "weighted" : "averaged")); },
     function (on) { return on
-      ? "Weighted by customers, orders per customer fell from " + f2(weighted(0)) + " to " + f2(weighted(1)) + ", " + p1(pct(weighted(0), weighted(1))) + ", which reproduces round 2. The average of averages had said " + f2(averaged(0)) + " to " + f2(averaged(1)) + ", " + p1(pct(averaged(0), averaged(1))) + "."
+      ? "Weighted by customers, orders per customer fell from " + f2(weighted(0)) + " to " + f2(weighted(1)) + ", " + p1(pct(weighted(0), weighted(1))) + ", which reproduces chapter 2. The average of averages had said " + f2(averaged(0)) + " to " + f2(averaged(1)) + ", " + p1(pct(averaged(0), averaged(1))) + "."
       : "The average of the four segment figures reads " + f2(averaged(0)) + " to " + f2(averaged(1)) + ", " + p1(pct(averaged(0), averaged(1))) + ", and it does not match the company totals of 1.65 and 1.25."; });
   $("expCSeq").addEventListener("click", function () {
     openSeq("Experiment C, as a sequence", ["the segments", "the roll-up", "the check"], [

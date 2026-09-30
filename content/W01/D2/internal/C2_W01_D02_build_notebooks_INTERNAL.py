@@ -1032,8 +1032,7 @@ kit.table(["Retail-Core", "Orders", "Customers", "Orders per customer", "Median"
             kit.rupees(core_shape[q]["max"]), kit.rupees(core_shape[q]["range"])) for q in ("Q1", "Q2")],
           caption=f"Retail-Core orders per customer moved {core_change:.1f} percent")
 kit.strip(core_amounts["Q2"], lo=0, hi=3500,
-          markers=[("Q1 median", core_shape["Q1"]["median"], "plain"), ("Q2 median", core_shape["Q2"]["median"], "good")],
-          title="Retail-Core, Q2 orders on one axis, with both quarters' medians")
+          title=f'Retail-Core, Q2 orders on one axis; median {kit.rupees(core_shape["Q2"]["median"])}, against {kit.rupees(core_shape["Q1"]["median"])} in Q1')
 kit.check("Retail-Core customers held at 34", core["Q1"]["customers"] == core["Q2"]["customers"] == 34)
 kit.check("Retail-Core orders per customer fell 5.3 percent", round(core_change, 1) == -5.3, f"{core_change:.2f}")
 '''),
@@ -1466,7 +1465,7 @@ newspaper would print.
 
 References for the chapter:
 
-- Bickel, Hammel and O'Connell, "Sex Bias in Graduate Admissions: Data from Berkeley", Science 187 (4175), 398 to 404, 1975: https://doi.org/10.1126/science.187.4175.398 (verified through Crossref 30 Sep 2026)
+- Bickel, Hammel and O'Connell, "Sex Bias in Graduate Admissions: Data from Berkeley", Science 187 (4175), 398 to 404, 1975: https://doi.org/10.1126/science.187.4175.398 (verified 30 Sep 2026 through Crossref)
 - Khan Academy, summarizing quantitative data: https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data (verified 29 Sep 2026)
 """),
         code("""
