@@ -60,7 +60,7 @@ Transition: S2, the chapter's map.
 ---
 
 ## S2. Meera needs the branch before Rs 12 crore moves
-*Who needs this chapter's answer, and which questions lead to it?*
+*Who needs to know which branch Meera opens first, and which questions lead there?*
 
 **Who needs the answer.** Meera Raghavan, who must choose the branch the Rs 12 crore goes to before she signs; a wrong choice spends the budget on a branch that was fine.
 
@@ -69,7 +69,7 @@ label: Question 1 | title: The base | body: Who needs the branch, and which base
 label: Question 2 | title: One branch | body: What would each branch have to do alone?
 label: Question 3 | title: Evidence | body: Which branch has evidence behind it?
 label: Question 4 | title: Two lifts | body: What goes wrong when two 10 percent lifts are called 20 percent?
-label: Question 5 | title: Four parts | body: Do the four parts land on the same total?
+label: Question 5 | title: Four parts | body: Do the four parts land on the multiplied total?
 label: Question 6 | title: The switch | body: What would switch the call? | tone: dark
 ```
 
@@ -140,7 +140,7 @@ flowchart TB
     RC["<b>Retail-Core</b><br/>Rs 32,650"] --> V["<b>consumer view</b><br/>Rs 64,810"]
     RP["<b>Retail-Plus</b><br/>Rs 27,320"] --> V
     ST["<b>Student</b><br/>Rs 4,840"] --> V
-    V -->|"x 1.15"| P["<b>the plan</b><br/>about<br/>Rs 74,532,<br/>Rs 9,722 more"]
+    V --> P["<b>the plan, x 1.15</b><br/>about Rs 74,532,<br/>Rs 9,722 more"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class RC,RP,ST,V known
@@ -324,8 +324,8 @@ xychart-beta
     title "Two lifts, added against multiplied, percent"
     x-axis ["two 10% lifts", "two 20% lifts", "two 30% lifts"]
     y-axis "Growth, percent" 0 --> 70
-    bar [21, 44, 69]
-    line [20, 40, 60]
+    bar "multiplied" [21, 44, 69]
+    line "added" [20, 40, 60]
 ```
 
 **Why it is wrong.** The second lift applies to a customer base already 10 percent larger. Through the tree, 1.10 x 1.10 = 1.21, so the consumer view reaches Rs 78,420, Rs 648 above the slide; the bars are multiplied, the line is added, and the gap grows with the lifts.
@@ -359,7 +359,7 @@ Transition: S14, the same total built from its parts.
 ---
 
 ## S14. A second route: four parts land on Rs 78,420
-*Do the four parts land on the same total?*
+*Do the four parts land on the multiplied total of Rs 78,420?*
 
 ```mermaid
 flowchart LR
@@ -394,8 +394,8 @@ xychart-beta
     title "Revenue index after 15 percent off, by the lift in orders"
     x-axis ["+0%", "+5%", "+10%", "+15%", "+20%", "+25%"]
     y-axis "Revenue index, before = 100" 80 --> 110
-    line [100, 100, 100, 100, 100, 100]
-    line [85, 89.3, 93.5, 97.8, 102, 106.3]
+    line "before the discount" [100, 100, 100, 100, 100, 100]
+    line "after 15 percent off" [85, 89.3, 93.5, 97.8, 102, 106.3]
 ```
 
 Revenue after the discount is 0.85 x (1 + the lift), which reaches 100 only when the lift is 1 / 0.85 less one, about 17.6 percent; holding margin needs more.
@@ -410,13 +410,13 @@ Transition: S16, Kavya's review.
 ---
 
 ## S16. Chapter 5 opens frequency and names its switch
-*What did each of the chapter's six questions find?*
+*Which branch should Meera open first to reach the 15 percent plan, and why not the others?*
 
 1. **Which base is the plan sized on?** It is sized on the consumer view, whose Rs 64,810 needs Rs 9,722 more.
 2. **What would each branch have to do alone?** Each would have to rise the whole 15 percent.
 3. **Which branch has evidence behind it?** Frequency has, since 7 of 23 customers came back.
 4. **Do two 10 percent lifts make 20 percent?** They make 21 percent, Rs 78,420 against Rs 77,772.
-5. **Do the four parts land on the same total?** They do, on Rs 78,420.
+5. **Do the four parts land on the multiplied total?** They do, on Rs 78,420.
 6. **What would switch the call?** Customers falling in a second quarter would, or a retained order costing more than a new one.
 
 **Kavya's review.** "Pick the branch the evidence points at and the one that costs least to test, then say what would make you pick another. And recompute anything someone adds up."
@@ -446,14 +446,14 @@ Transition: S17, the chapter's map.
 ---
 
 ## S17. Meera signs one sentence, and marketing tests it
-*Who needs this chapter's answer, and which questions lead to it?*
+*Who needs the sentence Meera signs, and which questions lead to it?*
 
 **Who needs the answer.** Meera, who signs one sentence before the Rs 12 crore moves, and the marketing lead, who will look for the number in it that can be recomputed into another story.
 
 ```timeline
 label: Question 1 | title: The readers | body: Who reads the sentence, and what will they look for?
 label: Question 2 | title: The form | body: Which form carries the decision?
-label: Question 3 | title: The draft | body: What does the first draft say?
+label: Question 3 | title: The draft | body: What does the team's first draft of Meera's sentence say?
 label: Question 4 | title: Lost? | body: How many of the 16 one-time buyers are really lost?
 label: Question 5 | title: Due dates | body: Do due dates find the same buyers?
 label: Question 6 | title: The sentence | body: What does the sentence Meera signs say? | tone: dark
@@ -490,9 +490,11 @@ Transition: S19, a real company's first window.
 *What happened when a company's first window was read as the verdict?*
 
 ```timeline
-label: February 2024 | title: Two-thirds of chats | body: Klarna reported its AI assistant handled two-thirds of customer-service chats in its first month (Klarna, 27 February 2024).
-label: May 2025 | title: Quality, fifteen months on | body: Its chief executive said the focus on cost had lowered quality, and customers would always be able to reach a human (Fortune, 9 May 2025). | tone: dark
+label: February 2024 | title: Two-thirds of chats | body: Klarna, 27 February 2024
+label: May 2025 | title: Quality, fifteen months on | body: Fortune, 9 May 2025 | tone: dark
 ```
+
+Klarna reported that its AI assistant handled two-thirds of customer-service chats in its first month, and fifteen months later its chief executive said the focus on cost had lowered quality and that customers would always be able to reach a human.
 
 Meera's sentence carries a caveat so that one window's number is not taken as the verdict.
 
@@ -530,10 +532,8 @@ Transition: S21, predict the order of the sentence's parts.
 
 ```mermaid
 flowchart LR
-    E["<b>evidence</b><br/>with its window"]
-    B["<b>branch</b><br/>frequency"]
-    C["<b>caveat</b><br/>what one quarter<br/>cannot show"]
-    A["<b>ask</b><br/>the Rs 12 crore"]
+    A["<b>ask</b><br/>the Rs 12 crore"] ~~~ B["<b>branch</b><br/>frequency"]
+    C["<b>caveat</b><br/>what one quarter<br/>cannot show"] ~~~ E["<b>evidence</b><br/>with its window"]
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
     class E,B,C,A unknown
 ```
@@ -570,7 +570,7 @@ Transition: S23, the first draft built from the chapters' numbers.
 ---
 
 ## S23. The draft: 23 customers, 1.30 each, 16 bought once
-*What does the first draft say?*
+*What does the team's first draft of Meera's sentence say?*
 
 ```python
 draft = (f"On the {len(ORDERS)} booked orders from 1 July to 26 September, {customers} customers "
@@ -719,8 +719,8 @@ Transition: D29 is self-study, so go to S30, Kavya's review.
 *Where else does the end of a window cut a count short?*
 
 ```cards
-icon: undo-2 | eyebrow: Returns | title: A returns rate on last week's orders | body: Returns arrive days after delivery, so the newest orders look cleaner than they are.
-icon: calendar-clock | eyebrow: Renewals | title: Members not yet due to renew | body: A member whose renewal falls after the extract ends has not lapsed, whatever the file shows.
+icon: undo-2 | eyebrow: Returns | title: Returns arrive days after delivery, so a returns rate on last week's orders looks cleaner than it is
+icon: calendar-clock | eyebrow: Renewals | title: A member whose renewal falls after the extract ends has not lapsed, whatever the file shows
 ```
 
 The fix is the same each time: measure how long the thing usually takes, and hold back judgement on everyone who has not had that long.
@@ -734,11 +734,11 @@ Transition: S30, Kavya's review.
 ---
 
 ## S30. Chapter 6 hands Meera a sentence she can sign
-*What did each of the chapter's six questions find?*
+*What one sentence can Meera sign, with its evidence, its branch, its caveat and its ask?*
 
 1. **Who reads the sentence?** Meera reads it for the decision, and marketing for its weakest number.
 2. **Which form carries the decision?** One sentence does, in about 20 seconds, with its limit.
-3. **What does the first draft say?** It names 23 customers at 1.30 orders each, Rs 2,205 typical and 16 bought once.
+3. **What does the team's first draft say?** It names 23 customers at 1.30 orders each, Rs 2,205 typical and 16 bought once.
 4. **How many of the 16 are really lost?** At most 7 are, since 9 bought inside the 45-day gap.
 5. **Do due dates find the same buyers?** They find the same 9.
 6. **What does Meera sign?** She signs a sentence that splits the 16 into 7 past the gap and 9 too recent, and opens frequency.
@@ -757,8 +757,8 @@ Transition: section A, Anand pushes back.
 
 ---
 
-## SECTION A: Escalated case
-*Does the answer survive on the orders that stayed delivered?*
+## SECTION A: Does the branch survive
+*Does frequency first survive on the orders that stayed delivered?*
 
 ```notes
 LIVE, 35 minutes: 5 to brief on S31 and S32, then 30 alone with S32 on screen. The support TA
@@ -773,13 +773,13 @@ Transition: S31, Anand's ask.
 
 **The client asks.** "Booked includes orders we cancelled and orders that came back. Do it again on what was delivered and stayed delivered, and tell me whether your answer survives." Anand Iyer, finance controller
 
-```cards
-icon: package-check | eyebrow: Part 1 | title: The delivered leaves | body: Count orders, customers by id and orders per customer on delivered orders.
-icon: ruler | eyebrow: Part 2 | title: The typical delivered order | body: Find the mean, the median of an odd count and the orders above the mean.
-icon: calculator | eyebrow: Part 3 | title: The plan and the discount | body: Size the 15 percent plan on delivered revenue, and price a discount through the tree.
-icon: git-branch | eyebrow: Part 4 | title: The branch, with the window's edge | body: Hold back one-time buyers too recent to judge, then pick the branch and the headline.
-icon: message-square | eyebrow: Part 5 | title: The sentence | body: Write chapter 6's four parts on delivered orders, with what held. | tone: dark
-```
+**Who needs the answer.** Anand, before the board sees the answer: one that fails on delivered gets restated.
+
+1. **The delivered leaves.** Count orders, customers by id and orders per customer on delivered orders.
+2. **The typical delivered order.** Find the mean, the median of an odd count and the orders above the mean.
+3. **The plan and the discount.** Size the plan on delivered revenue and price the discount through the tree.
+4. **The branch.** Hold back one-time buyers too recent to judge, then pick the branch and the headline.
+5. **The sentence.** Write chapter 6's four parts on delivered orders, with what held.
 
 ```notes
 LIVE, 5 minutes. The brief is exercises/unguided/C2_W01_D01_escalated_case_STUDENT.md and the
@@ -809,7 +809,7 @@ Transition: section B, the room's wrong answers.
 
 ---
 
-## SECTION B: Which hold up
+## SECTION B: Which numbers hold up
 *Which of the day's six plausible numbers would you sign, and which check catches each?*
 
 ```notes
@@ -864,7 +864,7 @@ Transition: a 10-minute break, then section C, the second case.
 
 ---
 
-## SECTION C: Second case
+## SECTION C: Where does revenue come from
 *Where does revenue come from, by customer type and channel, and does it change the branch?*
 
 ```notes
@@ -880,6 +880,8 @@ Transition: S35, Meera's second question.
 
 **The client asks.** "Where does revenue come from, by customer type and channel? The store team says they carry the business. Should the growth plan be store-led?"
 
+**Who needs the answer.** Meera, before she makes the plan store-led: a misread share funds the wrong channel.
+
 ```timeline
 label: Step 1 | title: By channel | body: Find each channel's share of booked revenue.
 label: Step 2 | title: Behind a share | body: Count the orders by status in each channel.
@@ -889,10 +891,10 @@ label: Step 5 | title: By type | body: Add up revenue for each consumer segment.
 label: Step 6 | title: The branch | body: Decide whether the channel view moves it. | tone: dark
 ```
 
-In pairs, 15 minutes, in the second case brief and its notebook; argue each item before you record it.
-
 ```notes
-LIVE, 17 minutes: 2 to brief, then 15 in pairs with no slides. The pairs split by channel and by
+LIVE, 17 minutes: 2 to brief, then 15 in pairs with no slides. Say the format aloud: in pairs, 15
+minutes, in the second case brief and its notebook, arguing each item before recording it. The
+pairs split by channel and by
 status themselves. Segment is recorded on each order, so one repeat customer appears under two
 customer types; watch for pairs who count customers per type and add the counts.
 Transition: after 15 minutes, S36.
@@ -905,10 +907,10 @@ Transition: after 15 minutes, S36.
 
 ```mermaid
 xychart-beta
-    title "Share of booked revenue by channel, all 30 orders, percent"
+    title "Share of booked revenue by channel, percent"
     x-axis ["Store", "Web", "App"]
     y-axis "Percent" 0 --> 100
-    bar [91.6, 5.0, 3.4]
+    bar "all 30 orders" [91.6, 5.0, 3.4]
 ```
 
 Choose one: a) yes, store carries nine rupees in ten; b) not yet, count the orders behind each share first; c) yes, and taking out the cancelled store orders changes little; d) no, app and web hold twenty of the thirty orders.
@@ -925,13 +927,13 @@ Transition: S37, the answer.
 
 ```mermaid
 xychart-beta
-    title "Share of the consumer view's booked revenue by channel, percent"
+    title "Share of booked revenue by channel, percent"
     x-axis ["Web", "Store", "App"]
     y-axis "Percent" 0 --> 100
-    bar [42.1, 29.2, 28.7]
+    bar "three consumer segments" [42.1, 29.2, 28.7]
 ```
 
-Once the view keeps the three consumer segments Meera's plan concerns, store's share falls from 91.6 to 29.2 percent, Rs 18,920 of Rs 64,810, so its headline share came from outside those segments; web leads with Rs 27,290.
+Store's share falls from 91.6 to 29.2 percent once the view keeps the three consumer segments Meera's plan concerns, so its headline share came from outside those segments: store holds Rs 18,920 of the view's Rs 64,810, and web leads with Rs 27,290.
 
 ```notes
 LIVE, 2 minutes. Remind the room that booked revenue still counts every order and the consumer view
@@ -942,7 +944,7 @@ Transition: S38, the consumer channels split by status.
 
 ---
 
-## S38. Web books the most, and more than half came back
+## S38. Web books the most, and more than half is returned
 *What does splitting each channel by status add?*
 
 ```mermaid
@@ -953,7 +955,7 @@ xychart-beta
     bar [18.6, 18.6, 27.3, 12.3, 18.9, 9.9]
 ```
 
-Web booked Rs 27,290, and Rs 14,970 of it came back as returns. Store kept Rs 9,870 after Rs 9,050 of cancellations, and app kept every rupee of its Rs 18,600.
+Web booked Rs 27,290, and customers returned Rs 14,970 of it. Store kept Rs 9,870 after Rs 9,050 of cancellations, and app kept every rupee of its Rs 18,600.
 
 ```notes
 LIVE, 2 minutes. Ask which channel a finance controller would call the healthiest, and why it is app
@@ -977,6 +979,10 @@ flowchart LR
     class W,S bad
 ```
 
+The branch stays where chapter 5 put it.
+
+The note gains two leaks, and Tuesday tests whether either grew.
+
 **Kavya's review.** "Count the orders behind a share before you show it, and keep the segments the plan is about. Split each channel by status, and the 91.6 percent headline leaves the branch where it was and adds two leaks to the note."
 
 **In the interview.** [D] One channel carries nine rupees in ten of revenue; does that change where the growth plan invests?
@@ -990,7 +996,7 @@ Transition: section D, the interview drill.
 
 ---
 
-## SECTION D: Can you say it
+## SECTION D: Can you answer the interviewer
 *Can you answer the day's twelve interview questions aloud, each in under a minute, with its number?*
 
 ```notes
@@ -1074,7 +1080,7 @@ Transition: section E, the close.
 
 ---
 
-## SECTION E: What stays
+## SECTION E: What does Meera hear
 *What do we keep from Monday, what does Meera hear, and what will she ask next?*
 
 ```notes

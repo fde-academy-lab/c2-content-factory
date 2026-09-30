@@ -93,7 +93,7 @@ Transition: one Saturday at a Kalpa Retail store and on its app.
 
 ---
 
-## S3. A Saturday runs from the shelf to Monday's page
+## S3. A Saturday runs from suppliers to the returns desk
 *What happens on one Saturday at a Kalpa store and on its app?*
 
 ```mermaid
@@ -217,16 +217,16 @@ Transition: who asks the data team for which number.
 
 ---
 
-## S6. Six people already want a number from us
+## S6. Four people already want a number from us
 *Who asks the data team for which number, and what does a wrong one cost them?*
 
 ```mermaid
 flowchart LR
-    CEO["<b>CEO</b><br/>Meera Raghavan"] --> FIN["<b>Finance</b><br/>Anand Iyer"]
-    CEO --> MKT["<b>Marketing</b><br/>the marketing lead"]
+    CEO["<b>CEO</b><br/>Meera"] --> FIN["<b>Finance</b><br/>Anand Iyer"]
+    CEO --> MKT["<b>Marketing</b><br/>its lead"]
     CEO --> RP["<b>Retail-Plus</b><br/>its head"]
-    CEO --> OTH["<b>the other functions</b><br/>buying, pricing, supply,<br/>stores, support"]
-    FIN & MKT & RP & OTH -.-> GCC["<b>Kalpa's GCC</b><br/>Kavya Nair and you"]
+    CEO --> OTH["<b>other functions</b><br/>buying, pricing,<br/>supply, stores,<br/>support"]
+    FIN & MKT & RP & OTH -.-> GCC["<b>Kalpa's GCC</b><br/>Kavya and you"]
     CEO -.-> GCC
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
@@ -248,8 +248,8 @@ LIVE, 6 minutes, part 4 of the talk track. Name the six boxes: Meera Raghavan; A
 finance controller; the marketing lead; the head of Retail-Plus; the other functions, which are
 category buying, pricing, supply chain, store operations and customer support, where Farhan Sheikh
 arrives in Week 8 with two thousand tickets a day; and Kavya Nair with us in the GCC, who checks
-everything before it leaves the team. The data platform lead sits beside the GCC and wants the
-warehouse queried, never exported.
+everything before it leaves the team. The data platform lead sits beside the GCC and requires
+every analysis to run as a query inside the warehouse, so the data stays where it is governed.
 Ask: if one of our numbers is wrong, whose mistake can we undo next week, and whose can we not?
 Watch for "all of them, we send a correction": a correction fixes the dashboard, and the decision
 taken on the wrong number stays taken.
@@ -453,7 +453,7 @@ Transition: who needs the answer, and the six questions on the way.
 
 ```timeline
 label: Question 1 | title: Who needs it | body: Who needs one number called sales, and what does a wrong one cost?
-label: Question 2 | title: Four ways | body: Which way of answering fits this file?
+label: Question 2 | title: Four ways | body: Which way of answering fits a file of 30 orders?
 label: Question 3 | title: Three sums | body: Which reading of sales comes out largest?
 label: Question 4 | title: All 30 as sales | body: What goes wrong if all 30 orders are sent as sales?
 label: Question 5 | title: By status | body: Do sums by status reach the same totals?
@@ -524,7 +524,7 @@ Transition: four ways the team could answer Meera.
 ---
 
 ## S16. Summing by status fits: one pass, every reading
-*Which way of answering fits this file?*
+*Which way of answering fits a file of 30 orders?*
 
 | Option | Rows | Time | Error on this file |
 |---|---|---|---|
@@ -763,24 +763,22 @@ Transition: the chapter's answers, one line each.
 
 ---
 
-## S26. Each total goes to Meera named, and booked heads the tree
+## S26. Each total goes to Meera named; booked heads the tree
 *Which of the file's totals should Meera call sales, and what does each one count?*
 
-| Question | Answer |
-|---|---|
-| Who needs sales? | Meera needs it for the plan's base, and Anand needs it to match his books. |
-| Which way fits? | One pass that sums by status, with a bridge, fits this file. |
-| Which reading is largest? | Booked is Rs 5,44,810, then not cancelled Rs 5,35,760, then delivered Rs 5,20,790. |
-| All 30 as sales? | That total counts 4 cancelled store orders, Rs 9,050 that was never sold. |
-| Sums by status? | They reach the same three totals to the rupee. |
-| The tree's root? | Booked, Rs 5,44,810 on 30 orders, named, since chapters 2 to 6 build on the same 30 orders. |
+1. **Who needs one number called sales?** Meera needs it for the plan's base, and Anand needs it to match his books.
+2. **Which way fits a file of 30 orders?** One pass that sums by status, with a bridge between the totals, fits it.
+3. **Which reading of sales comes out largest?** Booked is Rs 5,44,810, then not cancelled Rs 5,35,760, then delivered Rs 5,20,790.
+4. **What if all 30 orders go out as sales?** The total counts 4 cancelled store orders, Rs 9,050 that was never sold.
+5. **Do sums by status reach the same totals?** They reach all three to the rupee.
+6. **Which number goes on the tree's root?** Booked sales of Rs 5,44,810 on 30 orders go there, named, since chapters 2 to 6 build on them.
 
 **Kavya's review.** "You found Rs 9,050 that was never a sale by counting before adding. Which definition Meera plans on is her call; your job is to make sure she can see which one she is reading."
 
 **In the interview.** [F] What counts as "sales": booked, net of cancellations, or delivered, and which do you give a CEO?
 
 ```notes
-LIVE, 3 minutes. Read the six answers down the table. Kavya Nair is the team's senior analyst, and
+LIVE, 3 minutes. Read the six answers in order. Kavya Nair is the team's senior analyst, and
 her review closes every chapter. One learner answers the interview question aloud in under a
 minute: name the readings, say what each answers, choose one for the decision and state the others
 beside it.
@@ -900,8 +898,8 @@ Transition: the tree the file can fill, drawn beside what it cannot.
 ```mermaid
 flowchart TB
     R["<b>revenue</b><br/>Rs 5,44,810 booked"] --> C["<b>customers</b><br/>chapter 3"]
-    R --> F["<b>orders per customer</b><br/>chapter 3"]
     R --> A["<b>average order value</b><br/>revenue / orders"]
+    R --> F["<b>orders per customer</b><br/>chapter 3"]
     A --> I["<b>items per order</b><br/>not in file"]
     A --> P["<b>price per item</b><br/>not in file"]
     A --> D["<b>less discounts</b><br/>not in file"]
@@ -1119,14 +1117,12 @@ Transition: the chapter's answers, one line each.
 ## S41. Each branch is a fraction; AOV is Rs 18,160 booked
 *How does sales split into customers, orders per customer and order value, each a fraction on one definition?*
 
-| Question | Answer |
-|---|---|
-| Why fractions? | Each branch is a numerator over a denominator, so the branches multiply back to revenue. |
-| Which tree? | Customers x orders per customer x AOV is the deepest tree this file fills. |
-| The AOV? | It is Rs 18,160, booked revenue over 30 orders. |
-| Booked over delivered? | It gives Rs 25,943, which matches no definition and claims Rs 7,78,300. |
-| Does the mean agree? | The mean of the 30 amounts is the same Rs 18,160. |
-| What is missing? | Items, price and discounts are missing, so order value cannot be split yet. |
+1. **Why must each branch be a fraction?** Each is a numerator over a denominator, so the branches multiply back to revenue.
+2. **Which tree can this file fill?** Customers x orders per customer x AOV is the deepest tree it fills.
+3. **What is the average order value?** It is Rs 18,160, booked revenue over 30 orders.
+4. **What do booked rupees over delivered orders give?** They give Rs 25,943, which matches no definition and claims Rs 7,78,300.
+5. **Does the mean of the amounts agree?** The mean of the 30 amounts is the same Rs 18,160.
+6. **Which branches does the file still lack?** It lacks items, price and discounts, so order value cannot be split yet.
 
 **Kavya's review.** "You gave me each branch as a numerator over a denominator and told me which three this file cannot fill, so I know which ones I can plan on. When two reports feed one fraction, ask each what it counts before you divide."
 
@@ -1400,7 +1396,7 @@ value: 1.30 | label: orders per customer | note: 30 / 23
 value: 7 | label: came back | note: 16 bought once
 ```
 
-The draft's 1.00 goes nowhere, 7 returning customers are visible again, and "nobody comes back" leaves the case for the Rs 12 crore.
+Dividing the 30 orders by 23 distinct customers gives 1.30 orders each and shows the 7 customers who came back, which takes "nobody comes back" out of the case for the Rs 12 crore.
 
 ```notes
 LIVE, 2 minutes. What changed, in customers: 7 people the draft could not see.
@@ -1429,14 +1425,12 @@ Transition: the chapter's answers.
 ## S55. Kalpa has 23 customers, and 7 came back
 *How many customers does Kalpa have, and how many came back for a second order?*
 
-| Question | Answer |
-|---|---|
-| What rides on the count? | It decides whether acquisition is the only branch before Meera signs Rs 12 crore. |
-| How are customers counted? | A row is an order, so customers are counted by distinct id. |
-| How many came back? | 7 of 23 customers came back and 16 bought once, 1.30 orders each. |
-| Every row a customer? | The draft's 30 at 1.00 each says nobody comes back, and the ids say 7 did. |
-| Does the mean agree? | The mean of the 23 counts is also 1.30. |
-| Which count goes on the tree? | 23 customers at 1.30 orders each, written as booked orders from 1 July to 26 September. |
+1. **What rides on the customer count?** It decides whether acquisition is the only branch before Meera signs Rs 12 crore.
+2. **How do we count customers when a row is an order?** We count distinct customer ids, since one customer can place several orders.
+3. **How many customers came back?** 7 of 23 customers came back and 16 bought once, so they average 1.30 orders each.
+4. **What if every row is counted as a customer?** The draft's 30 at 1.00 each says nobody comes back, and the ids say 7 did.
+5. **Does the mean of the counts agree?** The mean of the 23 counts is also 1.30.
+6. **Which count goes on the tree's customer branch?** It takes 23 customers at 1.30 orders each, on booked orders from 1 July to 26 September.
 
 **Kavya's review.** "Your first 30 was a count of rows, divided as if it were people. A count of people comes from their ids, and every rate you send upstairs names its denominator."
 
@@ -1472,7 +1466,7 @@ Transition: who needs a typical order, and the six questions on the way.
 
 ```timeline
 label: Question 1 | title: What it prices | body: Who needs a typical order, and what does it price?
-label: Question 2 | title: Which middle | body: Which middle survives one large order?
+label: Question 2 | title: Which middle | body: Which middle value, the mean or the median, survives one large order?
 label: Question 3 | title: The median | body: What is the median order?
 label: Question 4 | title: Mean as typical | body: What goes wrong when the mean is sold as typical?
 label: Question 5 | title: The library | body: Does statistics.median agree?
@@ -1526,7 +1520,7 @@ Transition: four middles a team could report.
 ---
 
 ## S59. The median barely moves when one large order joins
-*Which middle survives one large order?*
+*Which middle value, the mean or the median, survives one large order?*
 
 | Option | Moves when one large order joins | Right call when |
 |---|---|---|
@@ -1557,8 +1551,8 @@ xychart-beta
     title "Invented orders: the mean jumps, the median barely moves"
     x-axis ["five invented orders", "plus one of Rs 90,000"]
     y-axis "Rs" 0 --> 18000
-    line [2260, 16883]
-    line [2300, 2350]
+    line "mean" [2260, 16883]
+    line "median" [2300, 2350]
 ```
 
 On five invented orders of Rs 1,900 to Rs 2,600 the mean is Rs 2,260 and the median Rs 2,300. Add one invented order of Rs 90,000 and the mean jumps to Rs 16,883, since it shares that order's rupees across every order, while the median, which only asks which order sits in the middle, moves to Rs 2,350.
@@ -1782,14 +1776,12 @@ Transition: the chapter's answers.
 ## S71. A typical Kalpa order is Rs 2,205, the median
 *What does a typical Kalpa order look like, stated so that one large order cannot move it?*
 
-| Question | Answer |
-|---|---|
-| What does it price? | It prices each new customer's first order in marketing's payback. |
-| Which middle survives? | The median survives, since it moves one place when a large order joins. |
-| What is the median? | It is Rs 2,205, halfway between Rs 2,110 and Rs 2,300. |
-| The mean as typical? | Only 1 of the 30 orders sits above the Rs 18,160 mean. |
-| Does the library agree? | statistics.median gives Rs 2,205, and Rs 2,100 on the not-cancelled orders. |
-| What goes into the payback? | It takes a mean from the customers the spend targets, with the median quoted as the typical order. |
+1. **What does a typical order price?** It prices each new customer's first order in marketing's payback.
+2. **Which middle survives one large order?** The median does, since it moves one place when a large order joins.
+3. **What is the median order?** It is Rs 2,205, halfway between Rs 2,110 and Rs 2,300.
+4. **What goes wrong when the mean is sold as typical?** Only 1 of the 30 orders sits above the Rs 18,160 mean.
+5. **Does statistics.median agree?** It gives Rs 2,205, and Rs 2,100 on the not-cancelled orders.
+6. **What goes into the payback case?** A mean from the customers the spend targets goes in, with the median quoted as the typical order.
 
 **Kavya's review.** "Anand said no averages, and now you know why. Put the median in the sentence and say the mean is about eight times higher."
 
