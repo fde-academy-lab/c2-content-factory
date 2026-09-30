@@ -172,7 +172,7 @@ The marketplace column exists in India largely because of one rule. Since 1 Febr
 
 ## 4. Who decides what: the org chart and who asks
 
-On Monday morning, before any analysis runs, several people at Kalpa Retail already want something from the data team, and each loses something different when a number is wrong. The chart shows the usual shape of an Indian omnichannel retailer, drawn for orientation: the story fixes Kalpa's people, not every reporting line.
+On Monday morning, before any analysis runs, several people at Kalpa Retail already want something from the data team, and each loses something different when a number is wrong. The chart shows the usual shape of an Indian omnichannel retailer, drawn for orientation, since the story fixes Kalpa's people and leaves most reporting lines open.
 
 ```mermaid
 flowchart LR
@@ -184,7 +184,8 @@ flowchart LR
     CEO --> SC["<b>Supply chain</b>"]
     CEO --> OPS["<b>Store operations</b>"]
     CEO --> CS["<b>Customer support</b><br/>Farhan Sheikh"]
-    CEO -.->|asks| GCC["<b>Kalpa's GCC</b><br/>Kavya Nair and you"]
+    FIN & CAT & PRI & MKT & RP & SC & OPS & CS -.-> GCC["<b>Kalpa's GCC</b><br/>Kavya Nair and you"]
+    CEO -.-> GCC
     GCC -.- DP["<b>Data platform</b><br/>its lead, the warehouse"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
@@ -194,11 +195,11 @@ flowchart LR
     class CEO,GCC,DP dark
 ```
 
-Solid boxes have a named person in the story; dashed ones are real functions whose heads the story has not named, so a pack refers to them by role.
+Solid boxes are the people the story introduces, by name or by role; dashed boxes are real functions whose heads it has not introduced. Solid arrows are reporting lines, and every dotted arrow is an ask that reaches the data team.
 
 | Role | Owns | Asks the data team | What a wrong number costs them | At Kalpa |
 |---|---|---|---|---|
-| CEO | The growth plan and where money is spent | Where does growth come from, and where is it leaking? | A budget placed on the wrong branch of the business | Meera Raghavan, whose chief of staff asks for the leadership deck's numbers in Week 2 |
+| CEO | The growth plan and where money is spent | Where does growth come from, and where is it leaking? | A budget placed on the wrong part of the business | Meera Raghavan, whose chief of staff asks for the leadership deck's numbers in Week 2 |
 | Finance controller | The books, the monthly close, the audit | Do your numbers match my books, and can my analyst audit how you got them? | A figure restated in front of the board | Anand Iyer |
 | Category and buying | Which products to carry, from whom, on what terms | Which lines to drop, and how much to buy for the festive season? | Dead stock that ties up cash, or empty shelves in the busiest weeks | Not named |
 | Merchandising and pricing | Prices, promotions, markdowns, shelf layout | Did the promotion pay for itself? | Margin given to customers who would have paid full price | Not named |
@@ -210,7 +211,7 @@ Solid boxes have a named person in the story; dashed ones are real functions who
 | Data platform | The warehouse and its pipelines | Query it, do not export it; tell me before you break it. | One broken pipeline feeds every dashboard | The data platform lead |
 | Data and AI team | The analyses and models, and whether they are trusted | Show me the baseline, the evidence, and a second way to reach the number. | Trust, which one wrong number can lose | Kavya Nair, the senior analyst, and the trainees |
 
-The tension that runs through Weeks 1 and 2 sits in the middle of this table: marketing is measured on acquisition, finance on whether the books agree, and the data team is often the one saying that the branch someone owns is not the branch that moved.
+The tension that runs through Weeks 1 and 2 sits in the middle of this table: marketing is measured on acquisition, finance on whether the books agree, and the data team is often the one saying that the number someone owns is not the one that moved.
 
 ---
 
@@ -357,7 +358,7 @@ Every worked number below is illustrative. Most come from section 1's Saturday o
 
 ## 6. The domain language
 
-A stakeholder meeting assumes these words. Each is defined in plain language and then used as someone at Kalpa would use it; the numbers in those sentences are illustrative.
+At Monday's trading meeting the category buyer for home care says: "The lights are at 62 percent sell-through and the category holds 45 days of inventory, so do we mark down now or wait for Diwali?" Anyone who has to ask what sell-through or days of inventory mean has lost the thread before the question arrives. Each word below is defined in plain language and then used as someone at Kalpa would use it; the numbers in those sentences are illustrative.
 
 | Term | In plain words | Said in a meeting |
 |---|---|---|
@@ -417,7 +418,7 @@ None of this makes an analyst a lawyer. It says which questions go to the legal 
 
 ## 8. Where analytics, ML, NLP and agents earn their keep
 
-On Saturday a person made every decision. Each technique below takes over part of one, and the further right it sits on this ladder, the less a person checks before it takes effect, so the more a wrong answer costs.
+On Saturday a person made every decision. Each technique below takes over part of one, and each row names its rung on this ladder: the further right, the less a person checks before the decision takes effect, so the more a wrong answer costs.
 
 ```mermaid
 flowchart LR
@@ -432,16 +433,17 @@ flowchart LR
 
 | Where it earns | The problem, and why the technique | How it works, in outline | Value measured by | What it costs when wrong |
 |---|---|---|---|---|
-| Descriptive analytics: the Monday numbers | Leaders decide weekly on what happened, by branch | Governed SQL on the warehouse, one definition per metric | Decisions taken on it, and no restatements | A board decision on a wrong number |
-| Demand forecasting and replenishment | Stock must reach the store before the customer, across thousands of products | Forecast each product's daily sales per store from history, calendar, price and promotions, baselines first; order the forecast plus safety stock for the lead time | Error against a naive baseline, stock-outs, days of inventory | Cash tied in stock that ends in markdowns, or empty shelves |
-| Pricing and markdowns | The price that clears a line at the best margin | Estimate how demand responds to price from past changes, then simulate markdown paths | Margin against held-out stores or products | Margin given to customers who would have paid; above MRP, an offence |
-| Assortment | Which products each store carries in limited space | Group stores by what their customers buy; measure what each product adds against what it takes from its neighbours | Sales and margin per metre of shelf | Delisting the product that brings a customer in |
-| Recommendations and search ranking | A shopper cannot see thousands of products, so the order shown decides what is found | Learn from purchases and clicks which items go together, and rank by predicted relevance and chance of purchase. Amazon's Rufus, a generative-AI shopping assistant trained on its catalogue and the web, has been open to all its India customers since November 2024 (About Amazon India, 20 November 2024). | Incremental margin in a holdout test, rather than clicks | Items shoppers do not want or cannot get, and a ranking the platform cannot explain |
-| Churn and retention scores | Knowing which members will lapse before they do | Classify each customer's chance of not ordering in the next ninety days from recency, frequency, spend and service history | Members kept per rupee of offer, against an untreated group | An offer to someone who was never leaving |
-| Fraud and returns abuse | Stolen payments and return schemes hide among honest orders | Rules for the obvious, then anomaly and classification models on payments, accounts, devices and returns | Losses prevented against good customers blocked | A real customer turned away, or a fraudster paid, at very different costs |
-| Customer support at scale, where NLP and GenAI enter | Two thousand tickets a day, most of them repetitive | Classify each ticket's intent, retrieve the policy, draft a reply for a person to approve, route the rest | Resolution time, repeat contacts, satisfaction, cost per resolved ticket | A confident wrong answer about a refund, repeated at scale |
-| Catalogue enrichment | New products arrive with thin descriptions | Extract attributes from supplier sheets and photos and write consistent descriptions with a model, checked against the declarations | Search success, and "not as described" returns | An invented attribute that becomes a return |
-| Agents that act | Replenishment, refunds and buyers' questions wait in queues | A replenishment agent drafts orders within limits; a support agent refunds when a case fits the policy; a merchandising copilot writes, runs and shows the query behind a buyer's question | Cases resolved without a person, reversals, time saved | An order outside limits, a refund the policy never allowed, a fluent answer on a wrong join |
+| Descriptive analytics: the Monday numbers (describe) | Leaders decide weekly on what happened, branch by branch of the tree | Governed SQL on the warehouse, one definition per metric | Decisions taken on it, and no restatements | A board decision on a wrong number |
+| Demand forecasting and replenishment (predict, then recommend) | Stock must reach the store before the customer, across thousands of products | Forecast each product's daily sales per store from history, calendar, price and promotions, baselines first; order the forecast plus safety stock for the lead time | Error against a naive baseline, stock-outs, days of inventory | Cash tied in stock that ends in markdowns, or empty shelves |
+| Pricing and markdowns (recommend) | The price that clears a line at the best margin | Estimate how demand responds to price from past changes, then simulate markdown paths | Margin against a held-out group, stores or products kept on the old price for comparison | Margin given to customers who would have paid; above MRP, an offence |
+| Assortment (describe, then recommend) | Which products each store carries in limited space | Group stores by what their customers buy; measure what each product adds against what it takes from its neighbours | Sales and margin per metre of shelf | Delisting the product that brings a customer in |
+| Recommendations and search ranking (predict, then act) | A shopper cannot see thousands of products, so the order shown decides what is found | Learn from purchases and clicks which items go together, and rank by predicted relevance and chance of purchase | Incremental margin in a holdout test, where a random group of shoppers keeps the old ranking | Items shoppers do not want or cannot get, and a ranking whose main parameters the platform cannot state |
+| Churn and retention scores (predict) | Knowing which members will lapse before they do | Classify each customer's chance of not ordering in the next ninety days from recency, frequency, spend and service history | Members kept per rupee of offer, against a held-out group that got none | An offer to someone who was never leaving |
+| Fraud and returns abuse (predict, then act) | Stolen payments and return schemes hide among honest orders | Rules for the obvious, then anomaly and classification models on payments, accounts, devices and returns | Losses prevented against good customers blocked | A real customer turned away, or a fraudster paid, at very different costs |
+| Catalogue enrichment (recommend) | New products arrive with thin descriptions | Extract attributes from supplier sheets and photos and write consistent descriptions with a model, checked against the declarations | Search success, and "not as described" returns | An invented attribute that becomes a return |
+| Agents that act (act) | Replenishment, refunds and buyers' questions wait in queues | A replenishment agent drafts orders within limits; a support agent refunds when a case fits the policy; a merchandising copilot writes, runs and shows the query behind a buyer's question | Cases resolved without a person, reversals, time saved | An order outside limits, a refund the policy never allowed, a fluent answer on a wrong join |
+
+**Customer support, worked through (recommend, then act).** Language models enter the business here. Farhan Sheikh's team answers two thousand tickets a day. Suppose, as an illustration, that 1,200 of them ask where an order is or when a refund will land, and that a model which reads each ticket's intent, retrieves the policy and drafts the reply for an agent to approve saves four minutes on each: 1,200 times four minutes is 80 agent-hours a day, the work of ten eight-hour shifts. Now suppose the draft misstates the return window and agents approve it on 300 refund tickets a day at Rs 800 each: that is Rs 2,40,000 of refunds the policy never allowed, in one day, before anyone notices. The gain is measured in resolution time, repeat contacts and cost per resolved ticket and the risk in wrong refunds, so a person approves every draft until the error rate is known.
 
 Two public cases show both ends of the ladder. Klarna's AI assistant handled two-thirds of its customer-service chats in its first month, the work of 700 full-time agents, and cut the time to resolve an errand from 11 minutes to under 2 (Klarna press release, 27 February 2024); fifteen months later its chief executive said the focus on cost had produced lower quality and that customers would always be able to reach a human (Fortune, 9 May 2025, from an interview with Bloomberg). When Air Canada's website chatbot described a bereavement-fare refund the airline did not offer, a Canadian tribunal held the airline responsible, since "it makes no difference whether the information comes from a static page or a chatbot" (Moffatt v. Air Canada, 2024 BCCRT 149, as reported by McCarthy Tétrault). An agent that issues refunds is only as safe as its policy and its limits.
 
@@ -525,7 +527,7 @@ For Kalpa a holdout fits any campaign that argues for budget, and last touch fit
 
 ## 10. Relatable examples, converted
 
-Five scenes most learners have lived through, each turned into its metrics and the problem hidden in it.
+Most learners have lived through the five scenes below, and each turns into metrics on the tree in section 5 and a data problem hidden in it.
 
 | The scene | Its metrics and formulas | The data and AI problem hidden in it |
 |---|---|---|
@@ -556,7 +558,7 @@ Tags: [S] staple, asked everywhere; [F] frequent in GCC and product screens; [D]
 
 ## 12. Go deeper
 
-A reading path, in order, each source checked on the date shown.
+Read these in order; each source was checked on the date shown.
 
 | Order | What | Time | Why this one |
 |---|---|---|---|
