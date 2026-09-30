@@ -58,9 +58,7 @@ slice's numbers.
 | Departure | Reason |
 |---|---|
 | The parallel build splits Delhi by clinic, never by channel | The campaign file offers the free collection to 316 Delhi patients, and home-collection invoices in Delhi rise from 97 to 160 at a lower mean. A channel split would point at sub-problem 5. |
-| The spine says the offer ran in three cities; the campaign file carries offers in all six | That is what the files hold (Delhi 316, Chennai 215, Pune 208). In Delhi, offered patients book 23.5 percent more than the rest. The checkpoint guide and day sheet tell the trainer how to handle a group that finds it. The orchestrating session should decide whether the spine or the generator changes. |
-| The witness's `text_amounts: 60` against 35 comma-written amounts in the file | 60 amounts were written as text, but 25 of them are under Rs 1,000 and print with no comma, so a learner sees 35. The pack quotes 35 and 4 (Delhi). |
-| The spine's "48,235 tests performed behind 22,152 invoice lines" | 48,235 counts tests on every non-corporate booking, cancelled ones included. On completed bookings, which are the ones invoiced, it is 46,867. The checkpoint guide gives both. |
+| The offer outside the three campaign cities | The files carry offers in all six cities (Delhi 316, Chennai 215, Pune 208). The spine and the generator's docstring now say so, and the witness reports the other cities' gaps as chance; Delhi's 23.5 percent is a random draw at a permutation p of about 0.03. The checkpoint guide and day sheet treat it as a false positive. |
 | The rubrics were drafted and awaiting approval when the brief was written; the requester approved them on 29 September 2026 (main, #151) | The day sheet and the headline sheet carry the mini project's rubric through `sync:rubric:W03/mini-project`, and the day sheet names the mock and GD days, which facts.yaml now allows for Build 1. |
 | The pack carries no deck | The brief's artifact table names none. The close uses the presentation format from the Saturday pack. |
 

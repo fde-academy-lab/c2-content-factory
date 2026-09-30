@@ -152,7 +152,8 @@ if __name__ == "__main__":
     assert out["sp3 double posts and rupees, refund rupees"][0] == 229
     assert out["sp3 unpaid invoices and rupees, collected, invoiced, raw column sum"][0] == 398
     assert out["sp1 invoice lines, tests on completed bookings, tests on all"][0] == 22152
-    assert out["sp1 invoice lines, tests on completed bookings, tests on all"][2] == 48235
+    assert out["sp1 invoice lines, tests on completed bookings, tests on all"][1:] == (46867, 48235)
+    assert out["sp1 invoices, distinct, comma amounts, coerced total"][2] == 35
     assert out["sp4 small all, others all, small scheduled, others scheduled"][2] == (10, 50)
     assert abs(out["sp5 lift overall and by city"][0] - 0.0900) < 0.0005
     print("PASS  every quoted number recomputed, and the spine's witness holds where the pack quotes it")
