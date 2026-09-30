@@ -16,7 +16,7 @@ The key is a, "The load stamp differs on every row, so no two rows matched". A l
 - c, "The dedupe is right, and the id count is off by 16 somewhere": the id count is the check, and it disagrees with the dedupe.
 - d, "16 rows carry a blank order_id, so the id count falls short": blank ids would show in the profile, the count of each field's present, convertible and distinct values, as order_id present on fewer than 300 rows, and the dedupe would still match nothing.
 
-### Q2. Which match builds one customer table from two systems inside 2 hours? (Design)
+### Q2 (Design). Which match builds one customer table from two systems inside 2 hours?
 
 Meera Raghavan, Kalpa Retail's CEO, wants one customer table from 30,000 app records and 30,000 store records, each system numbering customers from C-1, over 6 cities, with the machine comparing about 50 lakh pairs a minute and 2 hours to finish.
 
@@ -36,7 +36,7 @@ The key is b, "Compare the two lists of flagged rows, line against line". Two ke
 - c, "Rerun the fuzzy match with a 30-day window to confirm 22": a narrower window changes the count and cannot test whether the rows are the same.
 - d, "Check that both keys flag at least one Business order": a check on one segment, Kalpa's sales to companies, says nothing about which rows either key flagged.
 
-### Q4. Where does the fuzzy match leave revenue against the order_id key? (Design)
+### Q4 (Design). Where does the fuzzy match leave revenue against the order_id key?
 
 The fuzzy match flags 40 rows and the order_id key 38, sharing 36; the 4 only the fuzzy match flags are real orders averaging Rs 2,50,000, and the 2 only the order_id key flags are copies of Rs 3,000 each.
 

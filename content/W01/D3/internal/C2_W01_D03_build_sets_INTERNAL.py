@@ -687,7 +687,8 @@ def write():
             assert it["heading"].endswith("?"), (name, i + 1)
             assert not heading_points(it), (name, i + 1, heading_points(it))
             assert set(it["others"]) == set(LETTERS) - {key}, (name, i + 1)
-            head = f"### Q{i + 1}. {it['heading']}" + (" (Design)" if it["kind"] == "design" else "")
+            # The tag sits before the question, so every heading ends on its question mark.
+            head = f"### Q{i + 1}" + (" (Design)" if it["kind"] == "design" else "") + f". {it['heading']}"
             stu += ["", head, "", it["stem"], ""]
             stu += [f"{l}) {o}" for l, o in zip(LETTERS, opts)]
             sol += ["", head, "", it["short"], "",

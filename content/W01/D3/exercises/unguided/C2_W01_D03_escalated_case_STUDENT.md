@@ -77,8 +77,7 @@ d) The feed and the CSV disagree on one amount, so one of them is corrupt.
 
 Used at work wherever two extracts or two systems can send the same order twice.
 
-### Q3. Which identity rule fits once two systems number their own orders? (Design)
-
+### Q3 (Design). Which identity rule fits once two systems number their own orders?
 From next month the export stitches the app's orders and the stores' orders, and each system numbers
 its orders from KR-00001. In a test month, 312 order ids appear in both systems. Which identity rule
 goes in the log, and what would today's rule cost?
@@ -103,8 +102,7 @@ d) 0, since the rule settles every pair itself
 
 Used at work in every month-end close, when one order or one format does not fit last month's rules.
 
-### Q5. What goes in the note about a large order the business says will not recur? (Design)
-
+### Q5 (Design). What goes in the note about a large order the business says will not recur?
 The head of Kalpa's Business segment, its sales to companies, says the largest Q2 order, the day's
 Rs 29,45,460, was a one-off event order that will not recur. Anand wants Q2 as booked, and Marketing
 wants a base for planning Q3. What goes in the note?
@@ -114,8 +112,7 @@ b) Q2 without the order, since it will not recur and would mislead
 c) Q2 with it, and the Q3 plan built from Q2 as booked, order and all
 d) Q2 with the order capped at the next largest, for both readers
 
-### Q6. Which change to convert() fits amounts with paise and separators? (Design)
-
+### Q6 (Design). Which change to convert() fits amounts with paise and separators?
 Next month about 40 percent of amounts will carry paise, `2310.50`, and a few a thousands separator,
 `1,150`. The day's `convert()` accepts whole numbers only. Which change fits, judged by what each
 leaves out of revenue?
@@ -139,8 +136,7 @@ b) Into the clean file as text, since conversion skips kept rows
 c) Nowhere, since the rule converted it while it compared copies
 d) Out of the pass, since profile() drops a row once it fails
 
-### Q8. What do you run on a Q1 export re-sent with the copies removed? (Design)
-
+### Q8 (Design). What do you run on a Q1 export re-sent with the copies removed?
 The ERP team offers to re-send the Q1 export tomorrow with the copies removed at source. What do you
 run on it, and what should it show?
 

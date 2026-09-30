@@ -16,7 +16,7 @@ The key is c, "Hold it: no largest order sits below every Business order". A Q2 
 - b, "Send it, adding that Business orders are counted apart": the Business orders are Q2 orders in the same file, so the note still names the wrong one.
 - d, "Hold it until the ERP team confirms Rs 980 is the true value": the ERP holds the right value, and the fault is in how the colleague compared it.
 
-### Q2. Which plan fits the 45 minutes before the analyst starts? (Design)
+### Q2 (Design). Which plan fits the 45 minutes before the analyst starts?
 
 A new export of 1.2 crore rows and 12 fields lands, the analyst starts in 45 minutes, and the team's profile, three counts for every field, reads about 20 lakh values a minute.
 
@@ -36,7 +36,7 @@ The key is a, "12 copies and 3 unreadable amounts". 250 rows less 238 ids is 12 
 - c, "15 copies and no unreadable amounts": adds the two counts into one.
 - d, "9 copies and 3 unreadable amounts": takes the 3 failures out of the 12, as if every failure were a copy.
 
-### Q4. Which route counts the distinct ids of 4 crore rows with 2 GB free? (Design)
+### Q4 (Design). Which route counts the distinct ids of 4 crore rows with 2 GB free?
 
 Next quarter's export will hold 4 crore rows, a Python set takes about 100 bytes an id, and the laptop left running overnight has 2 GB free.
 

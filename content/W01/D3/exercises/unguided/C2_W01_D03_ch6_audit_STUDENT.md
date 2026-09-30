@@ -36,7 +36,7 @@ b) Add a Rs 2,100 adjustment line, labelled, so the rupees tie
 c) Find the set-aside row whose value its kept twin lacks
 d) Ask Finance whether its books carry Rs 2,100 too much
 
-### Q2. In what order does the pass run for Anand's analyst? (Design)
+### Q2 (Design). In what order does the pass run for Anand's analyst?
 
 Put the pass in order for Anand's analyst: 1 apply the identity rule, keeping the copy whose amount converts; 2 reconcile rupees to the books; 3 convert the kept amounts and log any that fail; 4 reconcile rows, in equals kept plus set aside plus rejected. Which order holds?
 
@@ -45,7 +45,7 @@ b) 3, 1, 4, 2
 c) 1, 4, 3, 2
 d) 3, 4, 1, 2
 
-### Q3. Which hand-over fits the analyst's 20 minutes? (Design)
+### Q3 (Design). Which hand-over fits the analyst's 20 minutes?
 
 Anand's analyst has 20 minutes tonight and reads a line in about 30 seconds. Your pass set aside 24 rows, flagged 4, made 5 decisions and ties 2 control totals, on a raw file of 900 rows and a clean file of 876. Which hand-over fits her 20 minutes?
 
@@ -54,7 +54,7 @@ b) A full diff of the raw and clean files, a line per raw row
 c) The clean file, with one line saying 24 rows were set aside
 d) The set-aside, flags and decisions logs, with both totals
 
-### Q4. Which test shows the log is complete without trusting the code that wrote it? (Design)
+### Q4 (Design). Which test shows the log is complete without trusting the code that wrote it?
 
 The analyst asks how she can know the log is complete without trusting the code that wrote it. Which test gives her that?
 

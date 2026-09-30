@@ -36,7 +36,7 @@ b) Send it, adding that Business orders are counted apart
 c) Hold it: no largest order sits below every Business order
 d) Hold it until the ERP team confirms Rs 980 is the true value
 
-### Q2. Which plan fits the 45 minutes before the analyst starts? (Design)
+### Q2 (Design). Which plan fits the 45 minutes before the analyst starts?
 
 A new export of 1.2 crore rows and 12 fields lands, and Anand's analyst starts work in 45 minutes. The team's profile reads about 20 lakh values a minute. Which plan fits the 45 minutes?
 
@@ -54,7 +54,7 @@ b) 3 copies and 12 unreadable amounts
 c) 15 copies and no unreadable amounts
 d) 9 copies and 3 unreadable amounts
 
-### Q4. Which route counts the distinct ids of 4 crore rows with 2 GB free? (Design)
+### Q4 (Design). Which route counts the distinct ids of 4 crore rows with 2 GB free?
 
 Next quarter's export will hold 4 crore rows. A Python set of order ids takes about 100 bytes an id, and the laptop the team leaves running overnight has 2 GB free. Which route counts the distinct order ids?
 

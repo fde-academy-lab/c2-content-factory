@@ -57,8 +57,7 @@ b) A Q2 copy, set aside by the same rule as the 14 copies in Q1
 c) The largest Q2 order, taken out of Q2 as an outlier
 d) The order with no status, which the pass could not place
 
-### Q2. Which four set-aside rows should the auditor re-perform? (Design)
-
+### Q2 (Design). Which four set-aside rows should the auditor re-perform?
 The auditor will re-perform your work, repeating each step herself from the raw rows, on four of the
 15 set-aside rows, and she has an hour to do it. Which four test your rule hardest?
 
@@ -67,8 +66,7 @@ b) The first four lines of the log, since the log runs in file order
 c) One row from each pair that differed, and the two Business rows
 d) The four largest by rupees, since the money is what she signs for
 
-### Q3. Would your evidence catch a real order set aside as a copy? (Design)
-
+### Q3 (Design). Would your evidence catch a real order set aside as a copy?
 The auditor asks: if one of the 14 had been a real second order that the ERP numbered with a
 repeated id, what in your evidence would have shown it?
 
@@ -86,8 +84,7 @@ b) The count, since a dropped row should not appear in the log
 c) The format, into one summary line so that the log is shorter
 d) The word, to "set aside", with each row's reason shown beside
 
-### Q5. What must the reconciliation still carry if the ERP team removes copies at source? (Design)
-
+### Q5 (Design). What must the reconciliation still carry if the ERP team removes copies at source?
 The auditor suggests that next quarter the ERP team remove the copies before the export leaves the
 ERP. What must your reconciliation still carry?
 

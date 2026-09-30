@@ -16,7 +16,7 @@ The key is c, "Find the set-aside row whose value its kept twin lacks". Rows pro
 - b, "Add a Rs 2,100 adjustment line, labelled, so the rupees tie": an adjustment closes the gap without a cause.
 - d, "Ask Finance whether its books carry Rs 2,100 too much": the books are the reference until a row proves otherwise.
 
-### Q2. In what order does the pass run for Anand's analyst? (Design)
+### Q2 (Design). In what order does the pass run for Anand's analyst?
 
 Four steps to order: 1 apply the identity rule, which decides when two rows are one order, keeping the copy whose amount converts; 2 reconcile rupees to the books; 3 convert the kept amounts and log any that fail; 4 reconcile rows, in equals kept plus set aside plus rejected.
 
@@ -26,7 +26,7 @@ The key is a, "1, 3, 4, 2". The rule has to see which copy converts, so it runs 
 - c, "1, 4, 3, 2": the rows equation counts the rejected rows, which exist only after conversion.
 - d, "3, 4, 1, 2": converts and reconciles before anything is kept.
 
-### Q3. Which hand-over fits the analyst's 20 minutes? (Design)
+### Q3 (Design). Which hand-over fits the analyst's 20 minutes?
 
 The analyst has 20 minutes and reads a line in about 30 seconds; the pass set aside 24 rows, flagged 4, made 5 decisions and ties 2 control totals, a count and a sum compared at both ends, on a raw file of 900 rows and a clean file of 876.
 
@@ -36,7 +36,7 @@ The key is d, "The set-aside, flags and decisions logs, with both totals". 24 + 
 - b, "A full diff of the raw and clean files, a line per raw row": 7 and a half hours, showing what went with no reason beside it.
 - c, "The clean file, with one line saying 24 rows were set aside": one line, which ties the rows and nothing else.
 
-### Q4. Which test shows the log is complete without trusting the code that wrote it? (Design)
+### Q4 (Design). Which test shows the log is complete without trusting the code that wrote it?
 
 The analyst asks how she can know the log is complete without trusting the code that wrote it.
 

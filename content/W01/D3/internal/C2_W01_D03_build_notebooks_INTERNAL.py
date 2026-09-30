@@ -1144,7 +1144,7 @@ def ch3():
         kit.check("Retail-Plus carries the most rows removed", rows_removed[1] == max(rows_removed), f"{rows_removed[1]} of {len(q1_aside)}")
         '''),
         md('''
-        **What happened.** The answer is c. Two Business rows carry Rs 19,67,560 of Rs 19,98,210, about 98
+        **What happened.** The answer is c. Two Business rows carry Rs 19,67,560 of Rs 19,98,210, 98.5
         percent, and eleven Retail-Plus rows carry Rs 27,760. The split settles two different questions.
         Anand's gap is two corporate orders counted twice. Tuesday's finding, that orders per customer in
         Retail-Plus fell 49 percent from Q1 to Q2, is a different matter:
@@ -2653,7 +2653,7 @@ AUDIT_WHY = {
        "copy whose amount is unreadable; b matches any customer with more than one order; c tests where a row sits, "
        "and one of the 14 sits early in the file.",
     3: "b. One line per segment, rows and rupees side by side, shows two rows from the Business segment, Kalpa's sales "
-       "to companies, carrying about 98 percent of the money. a hides where the money sits; c drops the rows the "
+       "to companies, carrying 98.5 percent of the money. a hides where the money sits; c drops the rows the "
        "auditor asked about; d divides by Q2, the wrong quarter.",
     4: "a. The line names the row that stayed and the fields the copies disagree on, so the auditor can follow the "
        "choice. b says nothing about which copy stayed; c invents an amount nobody booked; d says both rows went, which "

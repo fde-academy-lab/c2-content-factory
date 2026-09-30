@@ -39,7 +39,7 @@ time.
 - b, "The export is clean apart from one amount and one missing status": ignores the 15 rows beyond
   one per order.
 - c, "The gap is fifteen orders at about Rs 1.3 lakh each, Rs 20 lakh": spreads the gap evenly over
-  the extra rows, when two of them carry 98 percent of it.
+  the extra rows, when two of them carry 98.5 percent of it.
 
 ### Q2. Which sentence about the JSON feed can the note carry?
 
@@ -58,8 +58,7 @@ from the same extract, so it witnesses what the extract held, never whether a va
 
 ## Part 2. How does the identity rule treat repeated orders, today and next month?
 
-### Q3. Which identity rule fits once two systems number their own orders? (Design)
-
+### Q3 (Design). Which identity rule fits once two systems number their own orders?
 From next month the export stitches the app's and the stores' orders, each system numbering from
 KR-00001, and in a test month 312 order ids appear in both systems.
 
@@ -91,8 +90,7 @@ fourteen. The pair whose valid copies disagree on a field leaves a fact only the
 
 ## Part 3. How do you decide on an unusual order and on amounts in new formats?
 
-### Q5. What goes in the note about a large order the business says will not recur? (Design)
-
+### Q5 (Design). What goes in the note about a large order the business says will not recur?
 The head of the Business segment, Kalpa's sales to companies, says the largest Q2 order, Rs 29,45,460,
 was a one-off; Anand wants Q2 as booked, every order at the price charged, and Marketing wants a base
 for planning Q3.
@@ -109,8 +107,7 @@ saying which is which.
 - d, "Q2 with the order capped at the next largest, for both readers": writes an amount nobody booked
   into both numbers.
 
-### Q6. Which change to convert() fits amounts with paise and separators? (Design)
-
+### Q6 (Design). Which change to convert() fits amounts with paise and separators?
 Next month about 40 percent of amounts will carry paise, `2310.50`, and a few a thousands separator,
 `1,150`, while the day's `convert()` accepts whole numbers only.
 
@@ -143,8 +140,7 @@ conversion afterwards had nothing to reject.
 - d, "Out of the pass, since profile() drops a row once it fails": profile() counts values and removes
   nothing.
 
-### Q8. What do you run on a Q1 export re-sent with the copies removed? (Design)
-
+### Q8 (Design). What do you run on a Q1 export re-sent with the copies removed?
 The ERP team offers to re-send the Q1 export tomorrow with the copies removed at source.
 
 The key is c, "Every step again: 100 orders, nothing set aside, Q1 on the books". A new export is a new

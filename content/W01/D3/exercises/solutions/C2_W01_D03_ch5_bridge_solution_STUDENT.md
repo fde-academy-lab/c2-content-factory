@@ -26,7 +26,7 @@ The key is b, "The 23 percent, with why it moved from the 38 first reported". Th
 - c, "Both figures side by side, with no view on which one stands": leaves the reader to pick, which is the analyst's job.
 - d, "The 23 percent alone, since the 38 was measured on bad data": drops the change, and whoever remembers the 38 will ask.
 
-### Q3. Which proof goes to Anand for the third quarter? (Design)
+### Q3 (Design). Which proof goes to Anand for the third quarter?
 
 For Q3 the export and the books differ by Rs 8,40,000, the logged moves explain Rs 7,90,000, and a warehouse record of every Q3 order, loaded by a separate system, is complete for the quarter.
 
@@ -36,7 +36,7 @@ The key is c, "Q3 rebuilt from the warehouse record, and the bridge as its check
 - b, "The warehouse record's total alone, since that source is complete": a total with no bridge says which number is right and gives no reason.
 - d, "The bridge's Rs 7,90,000 now, and the Rs 50,000 at month end": sends a proof known to be incomplete.
 
-### Q4. How has the gap Marketing's campaign aims to close changed? (Design)
+### Q4 (Design). How has the gap Marketing's campaign aims to close changed?
 
 Marketing sized a frequency campaign on Tuesday's 1.65 against 1.25 orders per customer, and the clean file reads 1.45 against 1.25.
 

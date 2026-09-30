@@ -36,7 +36,7 @@ b) The first, as the original, with the second logged as its copy
 c) Both, flagged, until Finance says which amount it booked
 d) The first, with its amount set to 0 so that the sum runs
 
-### Q2. What does keeping the first copy of every pair cost against the books? (Design)
+### Q2 (Design). What does keeping the first copy of every pair cost against the books?
 
 An invented export holds 40 repeated orders. In 38 pairs the copies are identical. In one pair the first copy's amount is unreadable and its twin reads Rs 2,600. In one pair the copies differ only on the date, both at Rs 1,450. What does keeping the first copy of every pair cost against the books?
 
@@ -45,7 +45,7 @@ b) Rs 4,050, the unreadable pair and the pair with two dates
 c) Rs 2,600, the twin's value, which the first copy lacks
 d) Rs 5,200, since the lost twin's value counts twice in Q1
 
-### Q3. Which survivor rule goes in the log once the ERP team explains the second extract? (Design)
+### Q3 (Design). Which survivor rule goes in the log once the ERP team explains the second extract?
 
 The ERP team replies that the second extract re-ran May's orders after a pricing fix, and copied April's and June's unchanged. Which survivor rule goes in the log?
 

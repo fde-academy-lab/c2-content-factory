@@ -27,7 +27,7 @@ Post exactly this shape: xxxx
 
 ---
 
-### Q1. Which plan for 1,800 orders with no status fits the weekly report? (Design)
+### Q1 (Design). Which plan for 1,800 orders with no status fits the weekly report?
 
 Next month about 1,800 of 60,000 orders will arrive with no status. Operations can look an order up in the courier's system at about 2 minutes an order, and the delivered share goes out every Monday. Which plan fits the weekly report?
 
@@ -54,7 +54,7 @@ b) Replace the 0 with the segment's median amount
 c) Wrap int() in try and return 0 on any failure
 d) Try int(); on failure, log the value and its reason
 
-### Q4. What goes in the log for an amount that reads `fourteen`? (Design)
+### Q4 (Design). What goes in the log for an amount that reads `fourteen`?
 
 On an invented export, an amount in the CSV reads `fourteen`. The JSON feed, cut from the same extract, reads `fourteen` for that order too, and no other source holds it. What goes in the log tonight?
 

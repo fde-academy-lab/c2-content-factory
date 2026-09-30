@@ -46,7 +46,7 @@ b) The 23 percent, with why it moved from the 38 first reported
 c) Both figures side by side, with no view on which one stands
 d) The 23 percent alone, since the 38 was measured on bad data
 
-### Q3. Which proof goes to Anand for the third quarter? (Design)
+### Q3 (Design). Which proof goes to Anand for the third quarter?
 
 For Q3 the export and the books differ by Rs 8,40,000, and your logged moves explain Rs 7,90,000 of it. The warehouse keeps its own record of every Q3 order, loaded by a separate system and complete for the quarter. Which proof goes to Anand?
 
@@ -55,7 +55,7 @@ b) The warehouse record's total alone, since that source is complete
 c) Q3 rebuilt from the warehouse record, and the bridge as its check
 d) The bridge's Rs 7,90,000 now, and the Rs 50,000 at month end
 
-### Q4. How has the gap Marketing's campaign aims to close changed? (Design)
+### Q4 (Design). How has the gap Marketing's campaign aims to close changed?
 
 Marketing sized a frequency campaign on Tuesday's reading of orders per customer, 1.65 in Q1 against 1.25 in Q2. Recomputed on the clean file, the day's numbers are 1.45 against 1.25. How has the gap the campaign aims to close changed?
 

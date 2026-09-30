@@ -36,13 +36,12 @@ missing status were kept and flagged.
 - d, "The order with no status, which the pass could not place": the order with no status was kept and
   flagged.
 
-### Q2. Which four set-aside rows should the auditor re-perform? (Design)
-
+### Q2 (Design). Which four set-aside rows should the auditor re-perform?
 The auditor will repeat the work herself on four of the 15 set-aside rows, with an hour to do it, and
 wants the four that test the rule hardest.
 
 The key is c, "One row from each pair that differed, and the two Business rows". The rule made a choice
-only where copies differed, and the two Business rows, Kalpa's sales to companies, carry about 98
+only where copies differed, and the two Business rows, Kalpa's sales to companies, carry 98.5
 percent of the rupees, so those four test the choice and the money. 13 of the 15 are identical copies,
 which test neither.
 
@@ -53,8 +52,7 @@ which test neither.
 - d, "The four largest by rupees, since the money is what she signs for": the largest rows test the
   money and leave the rule's choice between differing copies untested.
 
-### Q3. Would your evidence catch a real order set aside as a copy? (Design)
-
+### Q3 (Design). Would your evidence catch a real order set aside as a copy?
 If one of the 14 had been a real second order that the ERP numbered with a repeated id, what in the
 evidence would have shown it?
 
@@ -85,8 +83,7 @@ is what happened, and each reason is in the log, while an auditor reads "dropped
 - c, "The format, into one summary line so that the log is shorter": a summary line hides the reasons
   she asked for.
 
-### Q5. What must the reconciliation still carry if the ERP team removes copies at source? (Design)
-
+### Q5 (Design). What must the reconciliation still carry if the ERP team removes copies at source?
 The auditor suggests that next quarter the ERP team remove the copies before the export leaves the ERP.
 
 The key is c, "The ERP team's own log of rows removed, and both totals tied". Moving the step upstream

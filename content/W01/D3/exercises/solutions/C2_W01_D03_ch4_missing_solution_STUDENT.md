@@ -6,7 +6,7 @@ Kalpa Retail's export of orders from the ERP, the enterprise resource planning s
 
 Two of the four items are design items: 1 and 4.
 
-### Q1. Which plan for 1,800 orders with no status fits the weekly report? (Design)
+### Q1 (Design). Which plan for 1,800 orders with no status fits the weekly report?
 
 Next month about 1,800 of 60,000 orders will arrive with no status, a lookup in the courier's system takes about 2 minutes an order, and the delivered share goes out every Monday.
 
@@ -36,7 +36,7 @@ The key is d, "Try int(); on failure, log the value and its reason". isdigit rej
 - b, "Replace the 0 with the segment's median amount": invents an amount nobody booked.
 - c, "Wrap int() in try and return 0 on any failure": still turns a failure into a zero, more quietly.
 
-### Q4. What goes in the log for an amount that reads `fourteen`? (Design)
+### Q4 (Design). What goes in the log for an amount that reads `fourteen`?
 
 On an invented export an amount reads `fourteen`, the JSON feed cut from the same extract, one pull of rows out of the ERP, reads `fourteen` too, and no other source holds the order's booked value, the price it was charged.
 
