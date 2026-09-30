@@ -13,7 +13,7 @@ the chapter standard (decisions `chapter-standard` and `four-domains`), from the
 | `docs/programme/calendar.md` | Tue 06 Oct 2026, teaching day, Module 1, no faculty block |
 | `docs/07_Client_Zero.md` v2.2 with the 28 Sep 2026 GCC addendum | The stakeholders, Kavya's review, the v1 data description; Anand's books count booked revenue net of the migration's duplicates (Wednesday), which is why the escalated case puts the delivered question in Meera's mouth |
 | `content/W01/D1` | The form of every family |
-| The retail dossier, `content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md` | Linked by path from the notes, the day sheet and notebook 01; the branch `w01-domain-retail` was not yet pushed when this session fetched it twice on 30 Sep 2026, so the pack links the path without quoting it |
+| The retail dossier, `content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md` | Linked by path from the notes, the day sheet and notebook 01; the branch `w01-domain-retail` was fetched on 30 Sep 2026 after two earlier fetches found it absent; the pack links its sections 2, 4 and 5 by path and copies nothing; its DMart (10.8 percent, quarter to March 2026) and Blinkit (Rs 518, quarter to June 2026) figures cover other periods than this pack's (8.1 percent FY26; Rs 525, Q4 FY26), and both are labelled with their periods |
 
 ## The data
 

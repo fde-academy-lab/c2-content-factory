@@ -6,7 +6,7 @@ Posts to <!-- sync:module:W01/D2 -->Module 1: Foundations of AI and Data<!-- /sy
 
 | | |
 |---|---|
-| **Start from** | Monday's tree and leaf counts, and the retail story in Monday's dossier (`content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md`); point at it, do not retell it. Open on Meera's reply, the Retail-Plus head's forwarded complaint and Marketing's claim, before any code. |
+| **Start from** | Monday's tree and leaf counts, and the retail story in Monday's dossier (`content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md`, sections 2, 4 and 5, with its card in `content/W01/D1/cheatsheets/`); point at it, do not retell it. Open on Meera's reply, the Retail-Plus head's forwarded complaint and Marketing's claim, before any code. |
 | **Go as far as** | Everyone names the branch and the segment with numbers, says what the rupee fall and the behaviour fall each are, and states the reorder cause as a hypothesis with its ceiling and the evidence that would settle it. |
 | **Stop before** | Files (Wednesday), any test of whether a difference is real (Thursday), comprehensions and modules. When a learner asks "is 49 percent significant?", write it on the parking board for Thursday. |
 | **Comes later** | Tomorrow's reconciliation changes tonight's numbers. Promise it once, at the close, and do not explain why. |

@@ -30,7 +30,10 @@ them, picks one, and reaches the same number a second way. Reading time: about 3
 **The business behind the numbers.** Kalpa Retail is the first business most of the room has worked
 in. How a retailer earns, who owns which lever and why periods are compared like with like is told in
 Monday's domain dossier, `content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md`, and these
-notes lean on it rather than retelling it.
+notes lean on it rather than retelling it. Today uses four of its parts: section 2 on Retail-Plus, the
+paid tier, and why memberships buy frequency; section 5's revenue tree, average order value (whose
+trap is today's chapter 4) and frequency; section 5's same-store sales, which is chapter 1's matched
+windows; and section 4 on who asks for which number.
 
 ```mermaid
 flowchart LR
