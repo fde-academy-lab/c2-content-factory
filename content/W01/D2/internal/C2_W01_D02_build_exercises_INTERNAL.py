@@ -26,6 +26,7 @@ heading or stem is not a question, whose heading carries a word that only one op
 stem does not carry it too, or whose text carries a dash, the rupee glyph or a banned word.
 """
 import collections
+import importlib.util
 import pathlib
 import re
 
@@ -37,8 +38,12 @@ NUMBER_WORDS = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six"}
 STOP = {"which", "what", "when", "where", "does", "that", "this", "with", "from", "into", "have", "they",
         "their", "them", "then", "than", "your", "each", "every", "will", "would", "should", "about",
         "after", "before", "only", "still", "since", "once", "some", "there"}
-BANNED = ["Additionally", "Moreover", "However", "Hence", "Thus", "Nonetheless", "Furthermore",
-          "Accordingly", "Indeed", "Dynamic", "comprehensive", "robust", "holistic", "seamless", "delve"]
+
+# The house's banned words come from the gate itself, so this file never carries them as text.
+_GATE = importlib.util.spec_from_file_location("verify", DAY.parents[2] / "scripts" / "verify.py")
+_verify = importlib.util.module_from_spec(_GATE)
+_GATE.loader.exec_module(_verify)
+BANNED = [w for w in _verify.BANNED if " " not in w]
 
 # The answer strings merged on 30 September 2026. A change here is a change of key, which the
 # provenance must record before this table moves.
@@ -908,8 +913,8 @@ def lone_longest(opts, key):
 
 def clean(text, where):
     """Refuse a dash, the rupee glyph or a banned word anywhere a learner reads."""
-    assert "—" not in text and "–" not in text, (where, "dash")
-    assert "₹" not in text, (where, "rupee glyph")
+    assert "\u2014" not in text and "\u2013" not in text, (where, "dash")
+    assert "\u20b9" not in text, (where, "rupee glyph")
     for b in BANNED:
         flags = re.IGNORECASE if b[0].islower() else 0
         assert not re.search(r"\b" + b + r"\b", text, flags), (where, b)

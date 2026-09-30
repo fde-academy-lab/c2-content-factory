@@ -1,13 +1,15 @@
-# Kahoot, Week 1 Tuesday
+# Can you make seven of Tuesday's calls and one of Monday's at speed?
 
-Eight items, ungraded, scored on correctness and speed together. The last item returns to Monday,
-one level up.
+Eight items, ungraded, scored on correctness and speed together. Every item comes from the day's
+case: Kalpa Retail's booked revenue, every order placed before any cancellation or return, fell from
+Q1 to Q2, and the day climbed the investigation one rung at a time, each rung a question settled
+before the next. The last item returns to Monday, one level up.
 
 Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q1. Sales fell. Which rung of the ladder comes first?
+## Q1. When sales fall, which rung of the investigation comes first?
 *Tests: a drop is confirmed on matched windows before anyone explains it.*
 
 - Split the fall by segment to find where it sits
@@ -17,7 +19,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q2. Revenue per customer fell 8 percent. Which two numbers do you compute next?
+## Q2. Revenue per customer fell 8 percent: which two numbers do you compute next?
 *Tests: revenue per customer splits into two branches, and both are needed.*
 
 - Customers and revenue, since the rate is built from both
@@ -27,7 +29,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q3. Q1 has 13 weeks of orders and Q2 has 11. Which comparison is fair?
+## Q3. With 13 weeks of orders in Q1 and 11 in Q2, which comparison is fair?
 *Tests: a comparison across periods needs matched windows or a rate.*
 
 - A rate per week, or the same 11 weeks of each quarter  <- correct
@@ -37,7 +39,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q4. A segment's median order is Rs 1,200 and its range is Rs 80,000. What do you say about it?
+## Q4. What do you say about a segment whose median order is Rs 1,200 and whose range is Rs 80,000?
 *Tests: a typical value and a spread describe a group together.*
 
 - Most orders are small; a few large ones stretch the range  <- correct
@@ -47,7 +49,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q5. After `result = revenue_for(seg)`, result holds None although the total printed. What went wrong?
+## Q5. Why does `result = revenue_for(seg)` hold None when the total printed?
 *Tests: a function that prints hands back None, and the table built on it breaks.*
 
 - The segment had no orders, so the total was zero
@@ -57,7 +59,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q6. Revenue per order rose 18 percent, and no segment's own revenue per order rose that far. What happened?
+## Q6. Revenue per order rose 18 percent while no segment's own rose that far: what happened?
 *Tests: a blended rate can move while no segment moves; split mix from rate.*
 
 - Customers in every segment paid about 18 percent more
@@ -67,7 +69,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q7. Customers held flat, and orders per customer fell in one segment only. Which hypothesis goes in the note?
+## Q7. Customers held flat and one segment's orders per customer fell: which hypothesis goes in the note?
 *Tests: a cause is a hypothesis with the evidence that would settle it.*
 
 - Marketing lost customers, so the acquisition budget is the fix
@@ -77,7 +79,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q8. Return to Monday. The mean order doubled and the median did not move. What is your first check?
+## Q8. Back to Monday: the mean order doubled and the median held, so what is your first check?
 *Tests: a mean pulled away from the median points at a few extreme values.*
 
 - Recompute the median, since it should have doubled as well
