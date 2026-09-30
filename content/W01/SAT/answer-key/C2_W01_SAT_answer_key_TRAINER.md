@@ -202,7 +202,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **Why it holds.** Unequal windows make totals unfair; revenue per week, or both quarters cut to the same weeks, compares like with like.
 
-- (a) Two missing weeks alone leave Q2 about 15 percent short, whatever the business did.
+- (a) A calendar label does not make two windows equal: Q2's two missing weeks alone leave it about 15 percent short, whatever the business did.
 - (b) An estimate reported as actual is a fabricated figure, even when the average behind it is fair.
 - (c) Months carry the same gap: Q2 is two weeks short, so one of its months is short too, and a month-against-month comparison carries the unequal window into every line of it.
 
@@ -325,7 +325,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **Why it holds.** Drop, default and flag are all valid when the reason is written down.
 
-- (d) Typing a value into the source file fabricates data and destroys the audit trail.
+- (d) Typing a value into the export fabricates data and destroys the audit trail.
 
 **In the interview.** For each missing value I drop, fill a stated default or flag, and I write the reason, so the decision can be audited and reversed.
 
@@ -359,7 +359,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **Why it holds.** Removing Q1's duplicates lowers Q1, so the gap to Q2 shrinks.
 
-- (a) Lowering the earlier quarter can only narrow the fall.
+- (a) The rows removed carry Q1's revenue, and lowering the earlier quarter can only narrow the fall.
 - (b) Duplicates in one quarter do not cancel against anything.
 - (d) Whether it becomes a rise depends on the amounts, so "in every case" is false.
 
@@ -484,7 +484,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **Why it holds.** A rate on 12 orders swings more than 8 points on one order, so the 40 percent is a question, not a finding.
 
-- (a) Moves budget on a rate that one order could reverse.
+- (a) Fastest on the page is a rate on 12 orders, which one order can swing by more than 8 points, so budget would move on a rate that one order could reverse.
 - (c) Dropping the segment throws away a lead that more data could confirm.
 - (d) A large rate on a tiny count is exactly the one to distrust.
 
@@ -494,7 +494,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **Why it holds.** A fair test needs a like-for-like control, the same window and a comparable mix of segments.
 
-- (d) A deeper discount changes the treatment; it does not make the test fair.
+- (d) A deeper discount changes the treatment and may make an effect easier to see; the comparison is exactly as unfair as before.
 
 **In the interview.** To know whether the discount worked I need a like-for-like group without it, in the same window and with the same mix, ideally chosen at random.
 
@@ -538,7 +538,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **Why it holds.** A mean seven times the median is the signature of a few very large orders pulling the sum up.
 
-- (a) If most orders sat near Rs 9,800 the median would sit there too.
+- (a) If most orders sat close to the Rs 9,800 mean, the median would sit there too, and it sits at Rs 1,400.
 - (b) Blames the arithmetic before reading the shape. The gap is what a skewed order value looks like.
 - (c) Half the orders sit above the median, Rs 1,400, not above the mean.
 
@@ -627,15 +627,19 @@ These items come from the week's source file, not the tracker. Accept one by add
 
 These options differ from the tracker's wording, each for the reason given beside it. The stem and the key are the tracker's. Accept an edit by copying it into the tracker; reject it by deleting it from `data/programme/paper_edits.yaml`.
 
-- Q10 (bank 17), option a, b (proposed): The key (23 characters) was the only option phrased as a count; the two frequency branches now read the same way.
-- Q49 (bank 19), option b (proposed): The key was the longest option; the miscalculation distractor now names a cause.
-- Q13 (bank 21), option b, c (proposed): The key was one character longer than the next option; option c, dropping Q2, was a choice nobody makes, so it now compares month by month, which keeps the short month.
+- Q10 (bank 17), option a, b, d (proposed): The key (23 characters) was the only option phrased as a count; the two frequency branches now read the same way. Option d, discounts, ran 9 characters against 33 for the longest; it now names the value of the discounts given, so the options run 23 to 33.
+- Q49 (bank 19), option a, b (proposed): The key was the longest option, so the miscalculation distractor named a cause, which took it to 59 characters against 29 for option a. It now reads 50, and option a names the mean it sits beside at 42, so the options run 34 to 50.
+- Q13 (bank 21), option a, b, c (proposed): The key was one character longer than the next option; option c, dropping Q2, was a choice nobody makes, so it now compares month by month, which keeps the short month. Option a ran 36 characters against 70 for option b; it now states the belief behind comparing the totals as they stand, at 72, so the options run 63 to 72.
 - Q39 (bank 22), option b (proposed): The key was the longest option; the print distractor now states the misconception in full.
+- Q43 (bank 27), option a, c (proposed): Options a and c ran 26 and 24 characters against 48 for option d. Each now carries the belief behind it, a at 50 and c at 51, so the options run 45 to 51 and the key is the shortest of them.
 - Q25 (bank 28), option c (proposed): The key was the longest option.
 - Q14 (bank 29), option a (proposed): The key was the longest option.
-- Q15 (bank 30), option c (proposed): Option c, the colour of the chart, eliminated itself and left a three-way item; the previous quarter's value is a comparison a learner can take for part of the definition.
+- Q15 (bank 30), option c (proposed): Option c, the colour of the chart, eliminated itself and left a three-way item; the previous quarter's value is a comparison a learner can take for part of the definition. At 33 characters it ran against 13 for option a; it now reads 22, so every option is 25 characters or fewer.
+- Q16 (bank 31), option a (proposed): The options ran 26 to 54 characters, and both ends were keyed options, so no distractor could balance the set. Option a, a keyed option, now names the weeks, 41 characters, with its meaning and its letter unchanged, so the options run 36 to 54.
+- Q26 (bank 32), option d (proposed): Option d ran 33 characters against 12 for option a. It now reads 27, so every option is 27 characters or fewer, and typing into the export is the same act as typing into the source file.
 - Q27 (bank 33), option d (proposed): Option d, a p-value for a single field, eliminated itself; the value to fill in is the decision a learner can take for part of the profile.
-- Q30 (bank 42), option b (proposed): The key was one character longer than the next option.
+- Q44 (bank 34), option d (proposed): Option d ran 17 characters against 51 for option a. It now carries the belief behind a deeper discount, at 49, so the options run 36 to 51.
+- Q30 (bank 42), option a, b (proposed): The key was one character longer than the next option. Option a ran 8 characters against 48 for option b; it now carries the belief behind a growing drop, at 49, so the options run 34 to 49.
 - Q48 (bank 45), option a (proposed): The key was the longest option.
 
 ## The stretch page

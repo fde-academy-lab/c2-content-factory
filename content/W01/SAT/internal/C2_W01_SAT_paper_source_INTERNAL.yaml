@@ -633,7 +633,8 @@ notes:
       A mean seven times the median is the signature of a few very large orders pulling the sum up.
     wrong:
       a: >-
-        If most orders sat near Rs 9,800 the median would sit there too.
+        If most orders sat close to the Rs 9,800 mean, the median would sit there too, and it sits
+        at Rs 1,400.
       b: >-
         Blames the arithmetic before reading the shape. The gap is what a skewed order value looks
         like.
@@ -662,7 +663,8 @@ notes:
       compares like with like.
     wrong:
       a: >-
-        Two missing weeks alone leave Q2 about 15 percent short, whatever the business did.
+        A calendar label does not make two windows equal: Q2's two missing weeks alone leave it about
+        15 percent short, whatever the business did.
       b: >-
         An estimate reported as actual is a fabricated figure, even when the average behind it is fair.
       c: >-
@@ -747,7 +749,8 @@ notes:
       not a finding.
     wrong:
       a: >-
-        Moves budget on a rate that one order could reverse.
+        Fastest on the page is a rate on 12 orders, which one order can swing by more than 8 points,
+        so budget would move on a rate that one order could reverse.
       c: >-
         Dropping the segment throws away a lead that more data could confirm.
       d: >-
@@ -808,7 +811,7 @@ notes:
       Drop, default and flag are all valid when the reason is written down.
     wrong:
       d: >-
-        Typing a value into the source file fabricates data and destroys the audit trail.
+        Typing a value into the export fabricates data and destroys the audit trail.
     answer: >-
       For each missing value I drop, fill a stated default or flag, and I write the reason, so the
       decision can be audited and reversed.
@@ -828,7 +831,8 @@ notes:
       A fair test needs a like-for-like control, the same window and a comparable mix of segments.
     wrong:
       d: >-
-        A deeper discount changes the treatment; it does not make the test fair.
+        A deeper discount changes the treatment and may make an effect easier to see; the comparison
+        is exactly as unfair as before.
     answer: >-
       To know whether the discount worked I need a like-for-like group without it, in the same
       window and with the same mix, ideally chosen at random.
@@ -919,7 +923,7 @@ notes:
       Removing Q1's duplicates lowers Q1, so the gap to Q2 shrinks.
     wrong:
       a: >-
-        Lowering the earlier quarter can only narrow the fall.
+        The rows removed carry Q1's revenue, and lowering the earlier quarter can only narrow the fall.
       b: >-
         Duplicates in one quarter do not cancel against anything.
       d: >-

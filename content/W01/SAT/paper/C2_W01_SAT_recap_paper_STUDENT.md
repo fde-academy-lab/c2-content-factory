@@ -102,7 +102,7 @@ Revenue fell from Q1 to Q2 while the customer count stayed flat. Which branch of
 a) the number of orders per customer
 b) the number of items per order
 c) the number of customers
-d) discounts
+d) the value of the discounts given
 
 #### Q11 · Easy · circle one letter
 
@@ -126,7 +126,7 @@ d) Isolate the segment that moved.
 
 Q1 holds 13 weeks of orders and Q2 holds 11. What makes the revenue comparison fair?
 
-a) Compare the two totals as they stand.
+a) Compare the two totals as they stand, since each is one calendar quarter.
 b) Add two weeks at the Q2 weekly average and report that total as actual.
 c) Compare the quarters month by month, three months against three.
 d) Compare revenue per week, or cut both quarters to the same weeks.
@@ -146,14 +146,14 @@ Which of these belong in a complete definition of a rate? Mark every correct opt
 
 a) its numerator
 b) its denominator
-c) its value in the previous quarter
+c) its value last quarter
 d) the time window it covers
 
 #### Q16 · Medium · circle every correct letter
 
 Which of these can make a quarter-on-quarter drop look real when it is not? Mark every correct option.
 
-a) quarters of unequal length
+a) quarters holding unequal numbers of weeks
 b) duplicated rows in the earlier quarter
 c) a segment definition that changed between the quarters
 d) reporting the median beside the mean
@@ -265,7 +265,7 @@ Which are valid treatments for a missing value, each with a written reason? Mark
 a) Drop the row.
 b) Fill a stated default.
 c) Keep the row and flag it.
-d) Type a value into the source file.
+d) Type a value into the export.
 
 #### Q27 · Easy · circle every correct letter
 
@@ -305,7 +305,7 @@ Answer: ____________________
 
 All 14 duplicates sat in Q1. What happens to the Q1 to Q2 drop once they are removed?
 
-a) It grows.
+a) It grows, because removing rows takes revenue out.
 b) It stays the same, because duplicates cancel out.
 c) It shrinks, because Q1 was inflated.
 d) It turns into a rise in every case.
@@ -494,9 +494,9 @@ d) The shuffle should be repeated until the real gap looks rare enough to report
 
 The Student segment grew 40 percent on 12 orders. What do you tell Meera?
 
-a) Move budget to Student now.
+a) Move budget to Student now, since it grows fastest.
 b) The rate rests on too few orders to trust yet.
-c) Drop the Student segment.
+c) Drop Student from the report as too small to matter.
 d) The growth is proven because 40 percent is large.
 
 #### Q44 · Medium · circle every correct letter
@@ -506,7 +506,7 @@ What does a fair test of 'did the discount work' need? Mark every correct option
 a) a like-for-like group that did not get the discount
 b) the same time window for both groups
 c) a comparable mix of segments in both groups
-d) a deeper discount
+d) a deeper discount, so any effect is easier to see
 
 #### Q45 · Hard · circle every correct letter
 
@@ -565,8 +565,8 @@ d) Do not repeat it as designed: no segment improved, and the lift is a mix effe
 
 Order values show a mean of Rs 9,800 and a median of Rs 1,400. What is the likeliest explanation?
 
-a) Most orders sit near Rs 9,800.
-b) The median has been miscalculated from an incomplete export.
+a) Most orders sit close to the Rs 9,800 mean.
+b) The median was miscalculated from a partial export.
 c) Half the orders are above Rs 9,800.
 d) A few very large orders pull the mean up.
 

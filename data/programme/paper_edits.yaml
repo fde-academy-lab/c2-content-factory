@@ -16,19 +16,22 @@
 W1:
   17:
     status: proposed
-    why: The key (23 characters) was the only option phrased as a count; the two frequency branches now read the same way.
+    why: The key (23 characters) was the only option phrased as a count; the two frequency branches now read the same way. Option d, discounts, ran 9 characters against 33 for the longest; it now names the value of the discounts given, so the options run 23 to 33.
     options:
       a: the number of orders per customer
       b: the number of items per order
+      d: the value of the discounts given
   19:
     status: proposed
-    why: The key was the longest option; the miscalculation distractor now names a cause.
+    why: The key was the longest option, so the miscalculation distractor named a cause, which took it to 59 characters against 29 for option a. It now reads 50, and option a names the mean it sits beside at 42, so the options run 34 to 50.
     options:
-      b: The median has been miscalculated from an incomplete export.
+      a: Most orders sit close to the Rs 9,800 mean.
+      b: The median was miscalculated from a partial export.
   21:
     status: proposed
-    why: The key was one character longer than the next option; option c, dropping Q2, was a choice nobody makes, so it now compares month by month, which keeps the short month.
+    why: The key was one character longer than the next option; option c, dropping Q2, was a choice nobody makes, so it now compares month by month, which keeps the short month. Option a ran 36 characters against 70 for option b; it now states the belief behind comparing the totals as they stand, at 72, so the options run 63 to 72.
     options:
+      a: Compare the two totals as they stand, since each is one calendar quarter.
       b: Add two weeks at the Q2 weekly average and report that total as actual.
       c: Compare the quarters month by month, three months against three.
   22:
@@ -36,6 +39,12 @@ W1:
     why: The key was the longest option; the print distractor now states the misconception in full.
     options:
       b: The total, because print both displays the value and sends it back to the caller.
+  27:
+    status: proposed
+    why: Options a and c ran 26 and 24 characters against 48 for option d. Each now carries the belief behind it, a at 50 and c at 51, so the options run 45 to 51 and the key is the shortest of them.
+    options:
+      a: Move budget to Student now, since it grows fastest.
+      c: Drop Student from the report as too small to matter.
   28:
     status: proposed
     why: The key was the longest option.
@@ -48,18 +57,34 @@ W1:
       a: Customers, because new buyers bring in revenue that did not exist in the business before.
   30:
     status: proposed
-    why: Option c, the colour of the chart, eliminated itself and left a three-way item; the previous quarter's value is a comparison a learner can take for part of the definition.
+    why: Option c, the colour of the chart, eliminated itself and left a three-way item; the previous quarter's value is a comparison a learner can take for part of the definition. At 33 characters it ran against 13 for option a; it now reads 22, so every option is 25 characters or fewer.
     options:
-      c: its value in the previous quarter
+      c: its value last quarter
+  31:
+    status: proposed
+    why: The options ran 26 to 54 characters, and both ends were keyed options, so no distractor could balance the set. Option a, a keyed option, now names the weeks, 41 characters, with its meaning and its letter unchanged, so the options run 36 to 54.
+    options:
+      a: quarters holding unequal numbers of weeks
+  32:
+    status: proposed
+    why: Option d ran 33 characters against 12 for option a. It now reads 27, so every option is 27 characters or fewer, and typing into the export is the same act as typing into the source file.
+    options:
+      d: Type a value into the export.
   33:
     status: proposed
     why: Option d, a p-value for a single field, eliminated itself; the value to fill in is the decision a learner can take for part of the profile.
     options:
       d: the value to fill in where one is missing
+  34:
+    status: proposed
+    why: Option d ran 17 characters against 51 for option a. It now carries the belief behind a deeper discount, at 49, so the options run 36 to 51.
+    options:
+      d: a deeper discount, so any effect is easier to see
   42:
     status: proposed
-    why: The key was one character longer than the next option.
+    why: The key was one character longer than the next option. Option a ran 8 characters against 48 for option b; it now carries the belief behind a growing drop, at 49, so the options run 34 to 49.
     options:
+      a: It grows, because removing rows takes revenue out.
       b: It stays the same, because duplicates cancel out.
   45:
     status: proposed
