@@ -351,11 +351,11 @@ choices; the brief with its ten items is in exercises/unguided.
 *What does Anand need from the full pass by tonight?*
 
 ```timeline
-label: Part 1 | title: How many orders arrived? | body: Rows against orders, and the amount that will not convert
-label: Part 2 | title: Which copy stays? | body: Yours this time: the key, and when a later copy takes the kept one's place
-label: Part 3 | title: What happens to each defect? | body: The rejects log, the missing status and the largest order
-label: Part 4 | title: Do rows and rupees tie? | body: A rupee test that fails the colleague's pass, then the bridge
-label: Part 5 | title: What changed for Tuesday? | body: Monday's tree on the clean file, Tuesday's segment, the note | tone: dark
+label: Part 1 | title: What can you tell Anand yet? | body: Rows against orders, and the amount that will not convert
+label: Part 2 | title: How are repeats treated? | body: Yours this time: the key, and when a later copy takes the kept one's place
+label: Part 3 | title: How is each odd case decided? | body: The rejects log, the missing status and the largest order
+label: Part 4 | title: Where did every row go? | body: A rupee test that fails the colleague's pass, then the bridge
+label: Part 5 | title: What does Anand read first? | body: Monday's tree on the clean file, Tuesday's segment, the note | tone: dark
 ```
 
 **The client asks.** "Which figure is right, the proof in rows and in rupees, and every decision in a log my analyst can follow."

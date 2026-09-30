@@ -13,10 +13,10 @@ Release the solution only when a learner has posted all four groups.
 
 | Problem | Minutes | Where learners stall | The one hint to give |
 |---|---|---|---|
-| 1. Which of two printouts would you send? | 10 | Choosing printout A because "every amount converts" | "Can a Kalpa order be worth Rs 0?" |
-| 2. What does the vendor copy hold? | 15 | Counting 39 rows because the file "should" hold 39 orders, or deleting the segment field | "Print every row whose amount does not convert, and read it." |
-| 3. What can the app's feed witness? | 15 | Re-running `json.load` and stopping at the error | "Chapter 1 recovered the complete records one at a time; reuse that cell." |
-| 4. Does the vendor copy reconcile with your clean file? | 20 | Reconciling rows and forgetting rupees, or comparing the vendor total with the whole of Q1 | "Sum your clean file over the same 39 order ids." |
+| 1. Which of two profile printouts of one export would you trust? | 10 | Choosing printout A because "every amount converts" | "Can a Kalpa order be worth Rs 0?" |
+| 2. What does the vendor copy hold once you profile it? | 15 | Counting 39 rows because the file "should" hold 39 orders, or deleting the segment field | "Print every row whose amount does not convert, and read it." |
+| 3. Does the app's JSON feed agree with the CSV, and what would that prove? | 15 | Re-running `json.load` and stopping at the error | "Chapter 1 recovered the complete records one at a time; reuse that cell." |
+| 4. Does the vendor copy reconcile to your clean file in rows and in rupees? | 20 | Reconciling rows and forgetting rupees, or comparing the vendor total with the whole of Q1 | "Sum your clean file over the same 39 order ids." |
 
 ## What do the lab's files hold, so that no question catches you out?
 
