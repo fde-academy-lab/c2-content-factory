@@ -140,7 +140,7 @@ flowchart LR
     class R bet
 ```
 
-Today's file is Wednesday's cleaned two quarters of orders, plus the Student segment's own orders and the campaigns table. Retail-Plus is Kalpa's paid membership tier, and delivered revenue, the money kept once cancelled and returned orders are left out, is the measure all day.
+Today's file is Wednesday's cleaned two quarters of orders, plus the Student segment's own orders and the campaigns table. Retail-Plus is Kalpa's paid membership tier, and delivered revenue, the money kept once cancelled and returned orders are left out, is the measure all day. Kavya Nair, the team's senior analyst, reviews each chapter's answer before it reaches Meera.
 
 ```notes
 LIVE, 3 minutes. Name what not to redo: nobody re-cleans the file, and nobody re-derives the tree.
@@ -164,8 +164,8 @@ its fix (5), the second route (1), and the close (1). Notebook 1 runs beside it.
 
 ---
 
-## S7. Answered in six questions, before Monday's review
-*Who needs this answer, and which questions lead to it?*
+## S7. Answering it for Meera's budget call on Monday
+*Who needs to know whether the Retail-Plus fall is real, and which six questions lead there?*
 
 **Who needs the answer.** Meera decides at Monday's growth review whether the Retail-Plus tier's fall gets a budget of its own. A wobble read as a real fall funds a fix for nothing, and a real fall read as a wobble lets the tier drain.
 
@@ -186,7 +186,7 @@ chapter's last slide answers all six in a line each. Then the need.
 ---
 
 ## S8. The measure: revenue per member, the same 22 twice
-*Who asks, what is measured, and what does a wrong call cost?*
+*What does Meera's first question measure, and on whom?*
 
 ```cards
 icon: user | eyebrow: Who asks | title: Meera, the CEO | body: She decides on Monday whether the tier's fall gets a budget of its own.
@@ -332,15 +332,11 @@ row of gaps.
 ## S14. Question: is a gap of Rs 880 surprising?
 *None of the room's ten tosses reached Rs 880: what do you say?*
 
-```mermaid
-xychart-beta
-    title "Ten tosses: gaps in rupees, real gap 880"
-    x-axis ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
-    y-axis "Gap, Rs" -800 --> 1000
-    bar [-40, -480, -440, -360, -240, -440, 160, -40, 480, -640]
-```
+| Toss | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Gap, Rs | -40 | -480 | -440 | -360 | -240 | -440 | 160 | -40 | 480 | -640 |
 
-**Question.** None of the ten tosses reached Rs 880. What do you say? a) the gap is real, since no toss reached it; b) chance never makes 880, so it is a finding; c) ten tosses are too few to say, so run many more; d) nothing, since tossing destroys the data.
+**Question.** The real gap is Rs 880, and none of the ten tosses reached it. What do you say? a) the gap is real, since no toss reached it; b) chance never makes 880, so it is a finding; c) ten tosses are too few to say, so run many more; d) nothing, since tossing destroys the data.
 
 ```notes
 LIVE, 1 minute. These ten gaps are the first ten a seeded computer toss produced, a fair stand-in
@@ -350,7 +346,7 @@ almost nothing about a share. Then the answer.
 
 ---
 
-## S15. Answer: ten tosses cannot measure a share
+## S15. Answer: 35 in 1,000 tosses, exactly 1 of 32 patterns
 *How often do coin tosses on five members' cards make a gap of Rs 880?*
 
 ```stats
@@ -386,7 +382,7 @@ The last line counts the worlds with a gap at least as large as the real one, wh
 ```notes
 LIVE, 1 minute. Read each line against the cards: the differences, a coin per member, the average,
 the count. The notebook's helper is flip_gaps, with random.seed(2026) so every laptop gets the same
-coins. A NameError from an unrun cell gets Restart and Run All and two minutes, no more. Then an
+coins. A NameError from an unrun cell gets Restart and Run All and at most two minutes. Then an
 ordinary quarter.
 ```
 
@@ -397,7 +393,7 @@ ordinary quarter.
 
 ```mermaid
 xychart-beta
-    title "Retail-Core, 5,000 flips per member; real gap Rs 110"
+    title "Retail-Core: 5,000 chance-only worlds; real Rs 110 mid-pile"
     x-axis ["-1000", "-800", "-600", "-400", "-200", "0", "200", "400", "600", "800", "1000"]
     y-axis "Flips" 0 --> 1500
     bar [5, 45, 210, 597, 1031, 1261, 1017, 564, 223, 40, 7]
@@ -438,7 +434,7 @@ numbers belong to the room, and the next slides work on them. Then the answer.
 
 ```mermaid
 xychart-beta
-    title "Retail-Plus, 5,000 flips per member; real gap Rs 1,110"
+    title "Retail-Plus: 5,000 chance-only worlds; real Rs 1,110 in the tail"
     x-axis ["-1500", "-1250", "-1000", "-750", "-500", "-250", "0", "250", "500", "750", "1000", "1250", "1500"]
     y-axis "Flips" 0 --> 900
     bar [26, 99, 205, 425, 585, 678, 854, 773, 598, 388, 225, 98, 30]
@@ -488,6 +484,8 @@ xychart-beta
 
 **The check.** Every flip assumed the quarter made no difference. One no-change segment came back at 0.003: its note would say "a 0.3 percent chance we are wrong", and it would be wrong for certain.
 
+**In the interview.** [S] What does p = 0.03 mean, and not mean? [S] How do you know whether a change in a metric is significant?
+
 ```notes
 LIVE, 2 minutes. These are notebook 1's twenty invented segments with nothing changed, the shares
 its run produced. Segment 8 comes back at 0.003. Ask of any p-value sentence: in which world was
@@ -518,7 +516,7 @@ Each pair rewrites its first draft in the right-hand form. Then a second route.
 ---
 
 ## S23. Every pattern and the paired test agree: 0.027
-*Do the textbook paired test and an exact count reach the same reading?*
+*Do the textbook paired test and an exact count of every coin pattern give the flips' reading?*
 
 ```mermaid
 xychart-beta
@@ -555,8 +553,6 @@ chapter's answer.
 
 **Kavya's review.** Retail-Core's third is the wobble. Retail-Plus sits at about 3 in 100 counting falls and 6 in 100 either way, three routes that keep each member's pair agree, and you said which direction you counted and why. Borderline is an honest answer. Now tell me how much money it is.
 
-**In the interview.** [S] What does p = 0.03 mean, and not mean? [S] How do you know whether a change in a metric is significant?
-
 ```notes
 LIVE, 1 minute. Kavya Nair is the team's senior analyst, who checks every number before it leaves.
 The design question for the drill: four ways to ask whether a fall is real, which would you run for
@@ -578,8 +574,8 @@ route (3), and the close (1). Notebook 2 runs beside it.
 
 ---
 
-## S25. Answered in six questions, before the budget line
-*Who needs this answer, and which questions lead to it?*
+## S25. Answering it for the retention budget request
+*Who needs to know whether the fall is worth acting on, and which six questions lead there?*
 
 **Who needs the answer.** The head of Retail-Plus wants a retention budget, and Meera weighs it against every other line in the quarter. A wrong call funds an offer that cannot pay back, or ignores a fall that keeps draining the tier.
 
@@ -624,7 +620,7 @@ decided.
 
 ---
 
-## S27. Microsoft Bing: the size in money decided
+## S27. Bing: one headline change was worth $100M a year
 *Has a real company told one change from the rest by its size in money?*
 
 ```stats
@@ -667,7 +663,7 @@ Rs 100 with the seed, which is what "rough" means here. Then the picture of the 
 
 ---
 
-## S29. Real and worth acting on are two separate axes
+## S29. Only a real gap that is large in rupees earns budget
 *Where can a finding land once it is sized, and which box earns a budget line?*
 
 ```mermaid
@@ -732,20 +728,18 @@ company on one chart.
 ## S32. Against the company, the fall is 0.19 percent of Q2
 *How big is the fall against the company's quarter?*
 
-```mermaid
-xychart-beta
-    title "Delivered revenue in Q2, the three consumer segments, Rs thousand"
-    x-axis ["Retail-Plus", "Retail-Core", "Student"]
-    y-axis "Rs thousand" 0 --> 50
-    bar [47.7, 47.6, 5.0]
+```stats
+value: Rs 24,420 | label: the fall | note: a quarter, the Retail-Plus tier
+value: Rs 1,28,64,680 | label: the company's Q2 | note: delivered revenue, every segment
+value: 0.19% | label: of the quarter | note: the fall against the company
 ```
 
-Business delivered Rs 1,27,64,460 in the same quarter, about 268 times Retail-Plus, so on this axis its bar would stand 268 times as tall. The company's Q2 was Rs 1,28,64,680.
+Business, Kalpa's sales to companies, delivered Rs 1,27,64,460 of that quarter, about 268 times Retail-Plus, so every consumer segment's move is small against the company.
 
 ```notes
-LIVE, 2 minutes. The chart draws the consumer segments alone so their bars stand in proportion;
-with Business on one axis all three would sit on the floor. Business is Kalpa's sales to companies,
-every order in lakhs. Then the draft that ranks the review.
+LIVE, 2 minutes. Retail-Plus delivered Rs 47,710 in Q2, Retail-Core Rs 47,600 and Student about
+Rs 5,000, against Business's Rs 1,27,64,460: every Business order is in lakhs. Then the draft that
+ranks the review.
 ```
 
 ---
@@ -772,18 +766,20 @@ cannot rank the review.
 
 ---
 
-## S34. Why it is wrong: big samples make tiny gaps rare
+## S34. Why it is wrong: at 20,000 orders, Rs 20 beats chance
 *Why can a small share sit on a tiny gap, and which order does money give?*
 
 ```mermaid
 xychart-beta
-    title "Invented: the same Rs 20 gap, tested on more orders"
-    x-axis ["100", "1,000", "5,000", "20,000"]
+    title "Invented: the same Rs 20 gap, on 100 to 20,000 orders"
+    x-axis ["100", "1k", "5k", "20k"]
     y-axis "Share" 0 --> 0.5
     line [0.430, 0.268, 0.066, 0.002]
 ```
 
 **The check.** Order the same three segments by money: Business moved Rs 6,18,460, Retail-Plus Rs 24,420, Retail-Core Rs 3,750. The review opens on Business, and Retail-Plus's fall is judged on its own terms, against the company's quarter and the offer's cost.
+
+**In the interview.** [F] A metric moved and the test says significant; how do you decide whether the business should act?
 
 ```notes
 LIVE, 4 minutes. The orders are invented in notebook 2: two quarters of different orders, the
@@ -817,12 +813,10 @@ work it on paper before running the notebook's offer section. Then the answer.
 ## S36. Answer: about 45 percent, before margin
 *What must a Rs 500 retention offer win back to pay for itself?*
 
-```mermaid
-xychart-beta
-    title "Revenue won back less the offer's cost, Rs a quarter"
-    x-axis ["wins back a quarter", "wins back 45 percent", "wins back three quarters"]
-    y-axis "Net, Rs" -6000 --> 8000
-    bar [-4895, 0, 7315]
+```stats
+value: -Rs 4,895 | label: wins back a quarter | note: revenue won back less the offer's cost
+value: Rs 0 | label: wins back 45 percent | note: the break-even
+value: +Rs 7,315 | label: wins back three quarters | note: a quarter's net gain
 ```
 
 The answer is b. Rs 11,000 a quarter against a Rs 24,420 fall means winning back almost half, and the decision rests on a recovery rate nobody has measured.
@@ -836,7 +830,7 @@ small the fall could really be.
 ---
 
 ## S37. A second route: the fall could be as small as Rs 80
-*How small could the fall really be, and does even that clear the offer?*
+*How small could the fall really be?*
 
 ```mermaid
 flowchart LR
@@ -876,13 +870,10 @@ long: say the name and the verdict only. Then the chapter's answer.
 | 5. What must the offer win back? | 45 percent: Rs 11,000 against Rs 24,420 |
 | 6. How small could it be? | About Rs 80 a member, far below Rs 500 |
 
-**Kavya's review.** Borderline by two routes, worth Rs 24,420 a quarter and 0.19 percent of the company. The range's low end sits far below the offer's cost, so watch it; to act, offer it to a coin-chosen half and hold back the rest.
-
-**In the interview.** [F] The test says significant; should the business act?
+**Kavya's review.** Borderline against chance by two routes, worth Rs 24,420 a quarter, 0.19 percent of the company and a third of the tier. The range's low end sits far below the offer's cost, so this is a watch item; if the head of Retail-Plus wants to act, offer it to a coin-chosen half and hold back the rest.
 
 ```notes
-LIVE, 1 minute. The interview line in full: a metric moved and the test says significant; how do
-you decide whether the business should act? The half-tier test costs Rs 5,500 a quarter; eleven members a side can show only a
+LIVE, 1 minute. The half-tier test costs Rs 5,500 a quarter; eleven members a side can show only a
 large recovery, and how many a test needs is power, a later week. The design question for the
 drill: break-even, a range, a test on half, or a past offer's rate, which goes to the budget
 meeting? Then chapter 3: Meera's second question is about a rise, the biggest on the page.
@@ -901,8 +892,8 @@ pair (3), the second route (2), and the close (1). Notebook 3 runs beside it.
 
 ---
 
-## S39. Answered in six questions, before budget moves
-*Who needs this answer, and which questions lead to it?*
+## S39. Answering it before any budget moves to Student
+*Who needs to know what stands behind Student's 40 percent, and which six questions lead there?*
 
 **Who needs the answer.** Meera decides whether acquisition budget follows the fastest-growing segment. A rise that chance made sends a quarter's spend to a segment that may be flat next quarter.
 
@@ -923,7 +914,7 @@ worth watching, and not worth acting on alone. Then her second.
 ---
 
 ## S40. Student rose 40 percent, and budget may follow it
-*Who asks, what rides on the answer, and what would a wrong call cost?*
+*What is Meera deciding about Student, and on which number?*
 
 **The client asks.** "Student is up 40 percent; should I move budget there?" Meera Raghavan
 
@@ -941,7 +932,7 @@ Then a funder that learned what small groups do.
 
 ---
 
-## S41. Small schools topped the charts, and the bottom
+## S41. Gates backed small schools, found at both ends
 *Has a real funder paid for trusting a small group's rate?*
 
 ```stats
@@ -983,8 +974,27 @@ the count is found. Then the leaderboard a hurried draft reads.
 
 ---
 
-## S43. The plausible wrong answer: fund the fastest riser
-*Which segment rose fastest, and should acquisition budget follow it?*
+## S43. Student alone rose: 140 orders for every 100
+*Which segment's orders rose fastest from Q1 to Q2?*
+
+```mermaid
+xychart-beta
+    title "Q2 orders for every 100 in Q1, by segment"
+    x-axis ["Retail-Core", "Retail-Plus", "Business", "Student"]
+    y-axis "Q2 orders per 100 in Q1" 0 --> 160
+    bar [97, 65, 94, 140]
+```
+
+Student is the only segment above 100: its orders rose 40 percent, while Retail-Core read 97, Business 94 and Retail-Plus 65. Meera's 40 percent counts orders placed, whatever their status.
+
+```notes
+LIVE, 1 minute. Read it as a leaderboard, the way a hurried draft will. Then the draft.
+```
+
+---
+
+## S43a. The plausible wrong answer: fund the fastest riser
+*Should acquisition budget move to the fastest riser?*
 
 ```mermaid
 flowchart LR
@@ -997,7 +1007,7 @@ flowchart LR
 **What breaks.** "Student is up 40 percent, the fastest on the page: move acquisition budget to Student." A rate travels without its count, and the budget follows the rate.
 
 ```notes
-LIVE, 2 minutes. Student is the only segment above 100. The rate is correct arithmetic. What is
+LIVE, 1 minute. The rate is correct arithmetic. What is
 wrong is repeating it without the count, the same mistake as Monday's number without its
 definition. Then the check that comes first.
 ```
@@ -1049,7 +1059,7 @@ LIVE, 2 minutes. Do not say Student's count. The room counts it, orders and cust
 
 ---
 
-## S46. Why it is wrong: small counts swing by chance
+## S46. Why it is wrong: on ten buyers, 38 in 100 by chance
 *How far can chance alone swing a rate on a small count?*
 
 ```mermaid
@@ -1138,14 +1148,6 @@ version of the same question.
 
 **Question.** Which answer earns the offer? a) 42 percent, since it is higher; b) 31 percent, since 1,200 is more; c) 31 percent as the estimate, 42 percent as a lead to measure further; d) neither, since they cannot be compared.
 
-```mermaid
-flowchart LR
-    S["<b>42 percent</b><br/>on 12 users"] --> Q{"<b>which do<br/>you trust?</b>"}
-    L["<b>31 percent</b><br/>on 1,200 users"] --> Q
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    class S,L known
-```
-
 ```notes
 LIVE, 2 minutes. Letters, then one learner answers aloud in thirty seconds. Listen for the count,
 the swing, and what they would do next. Then the answer.
@@ -1153,7 +1155,7 @@ the swing, and what they would do next. Then the answer.
 
 ---
 
-## S51. Answer: trust the count, and keep the lead
+## S51. Answer: 31 on 1,200 is the estimate, 42 a lead
 *Which do you trust, 42 percent on 12 users or 31 percent on 1,200?*
 
 | | 42 percent on 12 | 31 percent on 1,200 |
@@ -1172,8 +1174,8 @@ route to the Student share.
 
 ---
 
-## S52. A second route: every deal, and real handfuls
-*Do an exact count of every deal, and real handfuls from another segment, agree?*
+## S52. Every split gives 0.387; real handfuls give 0.344
+*Do an exact count of every split between the quarters, and real Retail-Core orders, give the flips' share?*
 
 ```stats
 value: 0.397 | label: coin flips | note: 5,000 sampled worlds
@@ -1204,9 +1206,7 @@ number of deals or the size of a handful, which would give the count away. Then 
 | 5. 42 on 12, or 31 on 1,200? | 31 as the estimate; 42 as a lead to measure |
 | 6. Do other routes agree? | Yes: every deal 0.387, real handfuls 0.344 |
 
-**Kavya's review.** Student's rise is real arithmetic on too few orders, from too few customers, to act on. Count both, say how often chance makes the rise, and give Meera the number of customers that would reopen it. That is a complete answer, and it costs nothing to be right later.
-
-**In the interview.** [F] 42 percent on 12 users against 31 percent on 1,200; which do you trust?
+**Kavya's review.** Student's rise is real arithmetic on too few orders, from too few customers, to act on. Count both, say how often chance makes the rise, and give Meera the number of customers that would reopen it. Waiting for thirty customers costs Kalpa nothing but time.
 
 ```notes
 LIVE, 1 minute. The line for the note: "Not yet: we watch Student until more customers buy, thirty
@@ -1228,8 +1228,8 @@ number reproduced (4), the trap (2), why a blend can mislead (4), the room's spl
 
 ---
 
-## S54. Answered in six questions, before Diwali is booked
-*Who needs this answer, and which questions lead to it?*
+## S54. Answering it before Diwali's sale is booked
+*Who needs to know whether the discount worked, and which six questions lead there?*
 
 **Who needs the answer.** Meera signs the Diwali budget, and the marketing lead, who owns the campaign, wants it repeated at 15 percent off. A wrong yes gives 15 percent of the price to customers who would have bought anyway, at Diwali's scale.
 
@@ -1239,7 +1239,7 @@ label: 2 | title: Does the 6 percent rebuild? | body: Marketing's number, reprod
 label: 3 | title: Repeat it for Diwali? | body: The plausible wrong answer
 label: 4 | title: Inside each segment? | body: The split, by the room
 label: 5 | title: What does the note say? | body: The line to Meera
-label: 6 | title: One mix, the same answer? | body: What it can and cannot check | tone: dark
+label: 6 | title: On one mix, still apart? | body: What that check can catch | tone: dark
 ```
 
 ```notes
@@ -1250,7 +1250,7 @@ fall is borderline and worth watching, and Student is not yet. Then her third.
 ---
 
 ## S55. Marketing claims 6 percent, and wants it for Diwali
-*What did the sale do, what does Marketing claim, and what would a repeat cost?*
+*What does Marketing claim for the monsoon sale, and what does it want?*
 
 **The client asks.** "Did the discount work, or did those customers buy anyway?" Meera Raghavan, with the marketing lead's report open
 
@@ -1289,7 +1289,7 @@ the room finds it. Then the four ways to answer.
 
 ---
 
-## S57. Split inside each segment; one mix as its line
+## S57. Split inside each segment, then say it as one number
 *Which of four ways to answer "did the discount work?" can the files support?*
 
 | Option | What it compares | What it risks |
@@ -1314,13 +1314,10 @@ group. A returns in chapter 6. Then Marketing's own number, rebuilt.
 
 ```mermaid
 flowchart LR
-    E["<b>the platform's list</b><br/>160 customers,<br/>got it or not"] --> A["<b>everyone who got it</b><br/>August spend<br/>per customer"]
-    E --> B["<b>everyone who did not</b><br/>August spend<br/>per customer"]
-    A --> L["<b>the lift</b><br/>?"]
-    B --> L
+    E["<b>the platform's list</b><br/>160 customers"] --> A["<b>got it, did not</b><br/>August spend each"] --> L["<b>the lift</b><br/>?"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
-    class E,A,B known
+    class E,A known
     class L unknown
 ```
 
@@ -1370,7 +1367,7 @@ flowchart LR
     class C,D bad
 ```
 
-**What breaks.** "The discount worked: exposed customers spent Rs 3,395 against Rs 3,200, up 6.1%; repeat it for Diwali." A correct number on a comparison nobody checked.
+**What breaks.** "The discount worked: exposed customers spent Rs 3,395 against Rs 3,200, up 6.1%; repeat it for Diwali." The number is right; nobody asked who is in each group.
 
 ```notes
 LIVE, 2 minutes. Ask what would have to be true of the two groups for this sentence to hold. Take
@@ -1399,7 +1396,7 @@ Do not state Kalpa's split: the room runs it next. Then the room's split.
 ---
 
 ## S62. Your turn: the same comparison inside each segment
-*What does the comparison show inside Retail-Plus and inside Retail-Core?*
+*What does the comparison show inside each segment?*
 
 ```python
 for s in ["Retail-Plus", "Retail-Core"]:
@@ -1448,6 +1445,8 @@ thing that differs between the groups and moves the outcome on its own. Then the
 
 **The rule.** Split a campaign's lift by segment, and name who got it, before the lift goes in a note.
 
+**In the interview.** [F] Revenue rose after a discount; did the campaign work, and what would you need to know?
+
 ```notes
 LIVE, 2 minutes. What changed: the decision, from repeat to redesign, and the reason is a mix of
 customers; Marketing's arithmetic was right. Then a second route, and what it can check.
@@ -1456,7 +1455,7 @@ customers; Marketing's arithmetic was right. Then a second route, and what it ca
 ---
 
 ## S65. One mix gives 3.0 percent less both ways
-*Does one mix for both groups give the same answer, and what can it check?*
+*Put on the same segment mix, do the two groups still differ, and what can that check catch?*
 
 ```mermaid
 flowchart LR
@@ -1490,11 +1489,9 @@ independent check, from Finance's months, comes in chapter 6. Then the chapter's
 | 3. Repeat it for Diwali? | Not before asking who is in each group |
 | 4. Inside each segment? | 3.0 percent less in both segments |
 | 5. What does the note say? | Do not repeat as designed; hold back at Diwali |
-| 6. One mix, the same answer? | Yes, 3.0 percent less both ways, by construction |
+| 6. On one mix, still apart? | Yes, 3.0 percent less both ways, by construction |
 
 **Kavya's review.** You rebuilt Marketing's number before disagreeing with it. The split says 3 percent less in both segments, one mix says the same by construction, and the reason is who got the sale. Now tell me what else changed in August, because neither can see that.
-
-**In the interview.** [F] Revenue rose after a discount; did the campaign work, and what would you need to know?
 
 ```notes
 LIVE, 1 minute. The follow-up for the drill: the campaign lifted revenue overall but every segment
@@ -1515,8 +1512,8 @@ partner (2), the trap and the audit (6), the Retail-Plus line built together (6)
 
 ---
 
-## S67. Answered in six questions, before the page goes
-*Who needs this answer, and which questions lead to it?*
+## S67. Answering it for Meera's two minutes on Monday
+*Who needs the one-page note, and which six questions lead to it?*
 
 **Who needs the answer.** Meera reads the page in two minutes before Monday's growth review, where Marketing will defend its campaign against it. A line that loses its base sends money the wrong way, and a line that hedges everything gives her nothing to decide.
 
@@ -1637,7 +1634,7 @@ percent are chapters 3 and 4's traps, back in a note. Then the audit that catche
 
 ---
 
-## S73. The check: the headline note fails nine of nine
+## S73. The check: no line has a base, a count or a caveat
 *Which three questions does every line of a note have to pass?*
 
 | Line | A base? | A count or chance? | A caveat? |
@@ -1657,7 +1654,7 @@ got the sale. Then the first line, built together.
 ---
 
 ## S74. The fix: the Retail-Plus line, in four parts
-*How does the Retail-Plus line survive the audit?*
+*How does the Retail-Plus line survive an audit?*
 
 ```timeline
 label: Claim | title: Borderline, and small | body: Retail-Plus is spending less by a borderline amount, and it is small against the company.
@@ -1674,7 +1671,7 @@ Student and discount lines are the room's. Then the audit's logic.
 
 ---
 
-## S75. The audit is three yes-or-no tests per line
+## S75. The audit asks each line for base, count, caveat
 *What does the audit check in each line, as logic?*
 
 ```python
@@ -1688,14 +1685,14 @@ def audit(line):
 The notebook's version looks for more words of each kind; the idea is three tests a reader can run by eye on any line.
 
 ```notes
-LIVE, 1 minute. A test that runs on every line cannot be talked round. The Retail-Plus line passes
+LIVE, 1 minute. The same three tests run on every line, whoever wrote it. The Retail-Plus line passes
 all three. Then the two lines that say not yet.
 ```
 
 ---
 
 ## S76. Question: when is "not yet" an answer?
-*The Student line and the discount line both carry a verdict that is no yes: what makes it usable?*
+*The Student line and the discount line both say "not yet": what makes that usable?*
 
 ```mermaid
 flowchart LR
@@ -1727,6 +1724,8 @@ LIVE, 2 minutes. Take letters; most rooms pick a, so hold it until the answer sl
 
 The answer is b. The full note, all three lines, runs to 193 words, and each of its 11 figures traces to a number a chapter computed.
 
+**In the interview.** [D] The CEO wants a yes or no and the honest answer is "not yet"; what do you say, and how do you hold the line when marketing pushes?
+
 ```notes
 LIVE, 2 minutes. Notebook 5 writes both lines, audits the whole note and traces every figure:
 every line passes all three questions, and 11 of 11 figures trace. Then a second route to the
@@ -1736,11 +1735,11 @@ note's decisions.
 ---
 
 ## S78. A second route: the day's rules reach all three
-*Do the note's decisions follow from its numbers alone?*
+*Do the note's decisions follow from its numbers?*
 
 ```mermaid
 flowchart LR
-    T["<b>the numbers</b><br/>from chapters 1 to 4"] --> F["<b>each chapter's rule</b><br/>range below cost, under<br/>thirty customers, blend<br/>up while segments fall"]
+    T["<b>the numbers</b><br/>from chapters 1 to 4"] --> F["<b>each chapter's rule</b><br/>applied to its numbers"]
     F --> M["<b>the decisions</b><br/>reached mechanically"]
     M --> R["<b>three of three</b><br/>match the note"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
@@ -1752,8 +1751,9 @@ flowchart LR
 **When to switch.** Apply the rules by hand for a one-off note; write them as code when the same note comes every week, because a rule in code cannot drift toward the answer someone wants.
 
 ```notes
-LIVE, 3 minutes. A note whose action does not follow from its own numbers would pass every figure
-check and fail here. Notebook 5's second route applies chapter 2's, 3's and 4's rules to the
+LIVE, 3 minutes. The three rules: the range's low end below the offer's cost, fewer than thirty
+customers behind the rise, and a blend up while every segment falls. A note whose action does not
+follow from its own numbers would pass every figure check and fail here. Notebook 5's second route applies chapter 2's, 3's and 4's rules to the
 numbers and reaches the note's three decisions. Then the chapter's answer.
 ```
 
@@ -1771,9 +1771,7 @@ numbers and reaches the note's three decisions. Then the chapter's answer.
 | 5. When is not yet an answer? | When it names what would make it a yes |
 | 6. Do the decisions follow? | Yes: the rules reach 3 of 3; 11 of 11 figures trace |
 
-**Kavya's review.** Three answers, each with its base, its caveat and a cost, and two of them say not yet with the thing that would change them. Marketing will push on the third on Monday; this afternoon is the ground you will stand on.
-
-**In the interview.** [D] The CEO wants a yes or no and the honest answer is "not yet"; what do you say, and how do you hold the line when marketing pushes?
+**Kavya's review.** Three answers, each with its base, its caveat and a cost, and two of them say not yet with the thing that would change them. Marketing will push on the third on Monday, and chapter 6 checks what else changed in August.
 
 ```notes
 LIVE, 1 minute. The morning ends here. The afternoon opens on chapter 6: who got the discount, who

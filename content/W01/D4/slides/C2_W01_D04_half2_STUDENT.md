@@ -15,7 +15,7 @@ Kahoot. Then what the morning settled.
 
 ---
 
-## S1. The morning answered five questions on one page
+## S1. Borderline, watch it, not yet, and not as designed
 *What did the morning settle, and what does Marketing's reply now ask?*
 
 | Chapter | Its question | The answer |
@@ -26,11 +26,11 @@ Kahoot. Then what the morning settled.
 | 4 | Did the discount work? | Not as designed: 3 percent less inside each segment |
 | 5 | What goes on the page? | A four-part note of 193 words |
 
-Marketing's reply asks chapter 6's question: who got the sale, what else changed, and what would settle it at Diwali?
+Kavya Nair, the team's senior analyst, reviewed each answer before it reached Meera. Marketing's reply asks chapter 6's question: who got the sale, what else changed, and what would settle it at Diwali?
 
 ```notes
-LIVE, 2 minutes. Read the five answers down the right-hand column; a learner who missed the morning
-has the day so far on this slide. Retail-Plus is Kalpa's paid membership tier. The monsoon sale gave 15 percent off from 5 to 19 August, aimed at Retail-Plus.
+LIVE, 2 minutes. Read the five answers down the right-hand column. Retail-Plus is Kalpa's paid
+membership tier. The monsoon sale gave 15 percent off from 5 to 19 August, aimed at Retail-Plus.
 Then chapter 6.
 ```
 
@@ -47,8 +47,8 @@ hold-back designed (4), the second route (2), and the close (1). Notebook 6 runs
 
 ---
 
-## S2. Answered in six questions, before Diwali's plan
-*Who needs this answer, and which questions lead to it?*
+## S2. Answering it before Meera signs Diwali's plan
+*Who needs to know what would settle the sale at Diwali, and which six questions lead there?*
 
 **Who needs the answer.** Meera signs the Diwali plan, and Marketing will defend its campaign on Monday. A sale widened on a jump that belongs to the month multiplies the margin it gives away.
 
@@ -69,7 +69,7 @@ chapter's last slide answers all six. Then Marketing's ask.
 ---
 
 ## S3. Marketing wants the sale again, for more of the base
-*What does Marketing ask, and what would a wrong yes cost?*
+*What does Marketing want for Diwali?*
 
 **The client asks.** "Diwali is five weeks away. I want the monsoon sale again, and I want it for more of the base." The marketing lead, Kalpa Retail
 
@@ -131,8 +131,8 @@ Finance's file. Then the call.
 
 ---
 
-## S6. C today and D for Diwali, unless lakhs are at stake
-*Why the hold-back, and what fact would switch the call?*
+## S6. The split today; a Diwali hold-back unless lakhs ride
+*Why does Diwali get a hold-back, and what fact would switch the call?*
 
 ```mermaid
 flowchart LR
@@ -224,7 +224,7 @@ many orders July's figure stands on. Take two answers. Then what else changed.
 ---
 
 ## S10. Why it is wrong: August moved for everyone
-*What else changed between July and August, and what does a month stand on?*
+*Why does August against July mislead, and what does a month stand on?*
 
 | Delivered, Rs | Apr | May | Jun | Jul | Aug | Sep |
 |---|---|---|---|---|---|---|
@@ -241,8 +241,8 @@ like-for-like comparison.
 
 ---
 
-## S11. The fix: August's share, read against chance
-*Compared like with like in time, what else changed in August?*
+## S11. August was busy for both segments, 4 points apart
+*What else changed in August?*
 
 ```stats
 value: 52.5% | label: Retail-Plus | note: August's share of its Q2, targeted
@@ -299,7 +299,9 @@ flowchart LR
     class C,M bet
 ```
 
-**The cost of the hold-back.** Holding back 14 of the platform's 70 Retail-Plus customers at Marketing's own 6 percent lift forgoes about Rs 4,200, and nothing if the lift is not real. The retention test was sized on Finance's 22 members; each decision is sized on the list it acts on.
+Holding back 14 of the platform's 70 Retail-Plus customers at Marketing's own 6 percent lift forgoes about Rs 4,200, and nothing if the lift is not real. The retention test was sized on Finance's 22 members; each decision is sized on the list it acts on.
+
+**In the interview.** [F] How would you set up the Diwali campaign so you can tell whether it worked?
 
 ```notes
 LIVE, 4 minutes. Meet the two lists head-on. The morning priced the retention offer on "the whole
@@ -315,17 +317,17 @@ else on average, including who was going to buy anyway. Then a second route.
 ---
 
 ## S14. Quiet months make gaps of 4, 22 and 26 points
-*Does the same test on months with no sale agree?*
+*Does the month-share test, run on Q1's months with no sale, find gaps as large as August's?*
 
 ```mermaid
 xychart-beta
-    title "Gap between the segments' shares of their quarter, points"
+    title "Size of the gap between the segments' shares, points"
     x-axis ["Apr, no sale", "May, no sale", "Jun, no sale", "Aug, the sale"]
     y-axis "Points" 0 --> 30
     bar [4.0, 21.8, 25.8, 4.0]
 ```
 
-Months with no sale make gaps as large as August's and far larger, so August's four points carry no sign of the sale. **When to switch.** The months when no exposure list exists; the split when one does; the hold-back whenever the next campaign can still be designed.
+Months with no sale make gaps as large as August's and far larger (June's is -25.8 points, drawn by its size), so August's four points carry no sign of the sale. **When to switch.** The months when no exposure list exists; the split when one does; the hold-back whenever the next campaign can still be designed.
 
 ```notes
 LIVE, 2 minutes. Notebook 6's second route, a placebo: the same month-share test on a different
@@ -351,8 +353,6 @@ chapter's answer.
 | 6. Do quiet months agree? | Yes: gaps of 4, 22 and 26 points with no sale |
 
 **Kavya's review.** Two routes find no lift, and a quarter with no sale swings further than August. You priced the hold-back on the list it acts on; take it to Marketing as an offer.
-
-**In the interview.** [F] How would you set up the Diwali campaign so you can tell whether it worked?
 
 ```notes
 LIVE, 1 minute. Kavya keeps any verdict on Marketing's work out of it: the test is a way forward.
@@ -454,17 +454,14 @@ Then the discount line.
 ## S19. Question: which discount line survives review?
 *Which of four drafts of the note's third line goes to Meera?*
 
-```mermaid
-flowchart LR
-    Q["<b>did the discount work?</b>"] --> A["a"]
-    Q --> B["b"]
-    Q --> C["c"]
-    Q --> D["d"]
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    class Q known
-```
+| Draft | The note's third line |
+|---|---|
+| a | "Revenue per customer rose 6.1 percent, so repeat it for Diwali." |
+| b | "It reached a group with more Retail-Plus members, and inside each segment the customers who got it spent less, so do not repeat it as designed and hold back a random slice at Diwali." |
+| c | "The data is mixed, so more analysis is needed before anyone can say anything." |
+| d | "The discount lost money, so end every discount from Monday." |
 
-**Question.** Which line goes to Meera? a) "Revenue per customer rose 6.1 percent, so repeat it for Diwali"; b) "It reached a group with more Retail-Plus members, and inside each segment the customers who got it spent less, so do not repeat it as designed and hold back a random slice at Diwali"; c) "The data is mixed, so more analysis is needed before anyone can say anything"; d) "The discount lost money, so end every discount from Monday."
+**Question.** Which of the four drafts goes to Meera?
 
 ```notes
 LIVE, 3 minutes. Letters. Option c sounds careful and gives Meera nothing to act on. Option d
@@ -498,13 +495,13 @@ where Marketing pushes back with a new number.
 ```notes
 LIVE. Ten-minute break before this chapter, then forty minutes in pairs. Pairs work from
 exercises/unguided/C2_W01_D04_pushback_STUDENT.md and notebooks/C2_W01_D04_ex2_second_case_STUDENT.ipynb.
-One partner plays Marketing for the last ten minutes.
+One partner plays Marketing for the last eight minutes.
 ```
 
 ---
 
-## S21. Answered in four parts, before Meera decides
-*Who needs this answer, and which parts lead to it?*
+## S21. Answering Marketing in four parts, in front of Meera
+*Who needs a fair reply to Marketing, and which four parts lead to it?*
 
 **Who needs the answer.** Meera hears both sides in the meeting. If Marketing's number wins the room, the sale runs again at Diwali on an unfair comparison; if the pair only says no, Marketing hears a verdict and nothing it can use.
 
@@ -544,7 +541,31 @@ Then what the discount cost.
 
 ---
 
-## S23. At list price, the exposed paid about 10 percent less
+## S23. Question: what did the exposed pay at list price?
+*If the list's August spend is counted at list price, what did each exposed customer pay Kalpa?*
+
+```mermaid
+flowchart LR
+    D["<b>the platform's list</b><br/>Rs 3,395 against<br/>Rs 3,200"] --> P["<b>if counted at list price</b><br/>the exposed paid<br/>85 percent of it"]
+    P --> V["<b>paid to Kalpa</b><br/>?"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class D,P known
+    class V unknown
+```
+
+**Question.** If the list's spend is at list price, what did each exposed customer pay Kalpa, against the Rs 3,200 the rest spent? Work it in part 4 before the next slide.
+
+```notes
+LIVE, 3 minutes, then the pairs work for the rest of the forty. The campaigns table records 15
+percent off. The platform's list does not say whether its August spend is before or after the
+discount; the pair sizes it both ways and lists the question for Marketing rather than assuming it.
+Show the next slide only after the pairs have spoken their replies.
+```
+
+---
+
+## S23a. Answer: about Rs 2,886, some 10 percent less paid
 *What did 15 percent off cost Kalpa, read at list price?*
 
 ```mermaid
@@ -561,10 +582,8 @@ flowchart LR
 **Kavya's review.** Even a real lift has to clear the discount's cost: at 15 percent off, Monday's rule asks for about 17.6 percent more volume just to stand still. Ask Marketing which way the list counts before anyone argues.
 
 ```notes
-LIVE, 3 minutes, then the pairs work for the rest of the forty. The campaigns table records 15
-percent off. The platform's list does not say whether its August spend is before or after the
-discount; the pair sizes it both ways and lists the question for Marketing rather than assuming it.
-Notebook ex2, part 4, computes the 9.8 percent. Then the interview drill.
+LIVE, 2 minutes, after the replies. Notebook ex2, part 4, computes the 9.8 percent: 85 percent of
+Rs 3,395 is about Rs 2,886, against Rs 3,200. Then the interview drill.
 ```
 
 ---
@@ -579,7 +598,7 @@ parts. Swap every question. The model answers are in the study notes and the day
 
 ---
 
-## S24. Answer the six staples first, sixty seconds each
+## S24. Answer the six core questions first, a minute each
 *Which six questions does every analytics screen ask about today's work?*
 
 | Tag | Question |
@@ -591,14 +610,7 @@ parts. Swap every question. The model answers are in the study notes and the day
 | [F] | Revenue rose after a discount; did the campaign work, and what would you need to know? |
 | [D] | The CEO wants a yes or no and the honest answer is "not yet"; what do you say, and how do you hold the line when marketing pushes? |
 
-```mermaid
-flowchart LR
-    S["<b>[S]</b> staple"] --> F["<b>[F]</b> frequent"] --> D["<b>[D]</b> differentiator"]
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class S,F known
-    class D bet
-```
+The tags: [S] a staple asked everywhere, [F] frequent in GCC and product screens, [D] a differentiator.
 
 ```notes
 LIVE, 8 minutes. About a minute and a half per question including the swap. Listen for p-value
@@ -632,12 +644,12 @@ chance-only tests reaches 0.05 by itself. Then how an answer is scored.
 ## S26. Score each answer on the note's four parts
 *How is a sixty-second answer scored?*
 
-```bar
-label: Claim | value: 15 | caption: one sentence, first
-label: Evidence | value: 20 | caption: a number with its count
-label: Caveat | value: 15 | caption: what would change it
-label: Action | value: 10 | caption: what to do next
-```
+| Part | Seconds | What the asker listens for |
+|---|---|---|
+| Claim | 15 | One sentence, first |
+| Evidence | 20 | A number with its count |
+| Caveat | 15 | What would change it |
+| Action | 10 | What to do next |
 
 The seconds are a guide for sixty in total: the evidence gets the most, and the claim comes first.
 
@@ -663,7 +675,7 @@ question (2).
 
 | Meera's question | The answer, with its number |
 |---|---|
-| Is the Retail-Plus fall real? | Borderline, 0.029 and 0.057; worth watching, not acting on alone |
+| Is the Retail-Plus fall real? | Borderline, 0.029 and 0.057; worth watching, and not worth acting on alone |
 | Is Student's 40 percent worth budget? | Not yet: too few customers, and chance makes it 4 times in 10 |
 | Did the monsoon sale work? | Not as designed: 3 percent less in each segment; hold back at Diwali |
 
@@ -690,7 +702,7 @@ six lines worth keeping.
 | 6 | A fair comparison asks who got it, who did not, and what else changed; only a coin makes the two groups alike. |
 
 ```notes
-LIVE, 2 minutes. The same six close the study notes and head the cheat sheet, word for word. Have
+LIVE, 2 minutes. The same six close the study notes and appear on the cheat sheet, word for word. Have
 the room read line 1 aloud together. Line 5 is the one Saturday's paper asks for from memory. Then
 the Kahoot.
 ```
@@ -717,7 +729,8 @@ Then Friday's question.
 ## S30. Friday rebuilds the week alone, then defends it
 *What does Kavya ask of tomorrow, and can you do it without help?*
 
-**The client asks.** "Before anything goes to Meera, rebuild the week from a raw export with no assistant and no notes. Then say it to me the way you will say it to her, because I will push the way Marketing will." Kavya Nair, senior analyst
+> "Before anything goes to Meera, rebuild the week from a raw export with no assistant and no notes. Then say it to me the way you will say it to her, because I will push the way Marketing will."
+> Kavya Nair, senior analyst
 
 ```mermaid
 flowchart LR
