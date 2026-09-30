@@ -1,6 +1,6 @@
 # The escalated case: the reconciliation Anand can audit
 
-> "Send the reconciliation and the log by five. My analyst checks it tonight, and she ties out to
+> "Send the reconciliation and the log before the day closes. My analyst checks it tonight, and she ties out to
 > the rupee."
 >
 > Anand Iyer, finance controller, Kalpa Retail

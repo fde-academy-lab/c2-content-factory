@@ -3,7 +3,7 @@
 Week 1, Day 3. Half two.
 
 Kicker: WEEK 1  ·  WEDNESDAY  ·  HALF TWO
-Quote: Send the reconciliation and the log by five. My analyst checks it tonight.
+Quote: Send the reconciliation and the log before the day closes. My analyst checks it tonight.
 Who: Anand Iyer, finance controller, Kalpa Retail
 
 ```notes
