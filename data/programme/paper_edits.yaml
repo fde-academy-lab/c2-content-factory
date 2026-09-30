@@ -19,6 +19,12 @@
 # status: proposed (awaiting the Programme Head) or accepted (agreed, not yet in the tracker).
 
 W1:
+  11:
+    stem:
+      status: proposed
+      why: The tracker's comparison of text with a number raises a TypeError, which makes a runtime error the point of the item; the reworded comparison of two texts returns a silent wrong answer, keeps the key False and keeps the "4500" the room found on Monday.
+      text: |-
+        Every amount csv.DictReader reads arrives as text, as the amount "4500" on Monday's order KR-01008 did. True or false: in Python 3, the comparison '4500' < '30000' evaluates to True.
   17:
     status: accepted
     why: The key (23 characters) was the only option phrased as a count; the two frequency branches now read the same way. Option d, discounts, ran 9 characters against 33 for the longest; it now names the value of the discounts given, so the options run 23 to 33.
@@ -44,6 +50,18 @@ W1:
     why: The key was the longest option; the print distractor now states the misconception in full.
     options:
       b: The total, because print both displays the value and sends it back to the caller.
+  24:
+    status: proposed
+    why: Three options were ones no reader would take once the pair is on the page, the file's size, its format and how large the amounts are, so the item tested one idea against nothing. The new options are the three rules a hurried analyst actually applies, whole rows, the dates and the amounts; the key, the identity rule, is unchanged. The options run 44 to 62 characters.
+    stem:
+      status: proposed
+      why: The tracker's stem describes the pair in general; the reworded stem puts Wednesday's own near-duplicate on the page, order KR-02151 with its two dates, which the room found in class, so the item is the trap it names.
+      text: |-
+        Order KR-02151 appears twice in Wednesday's export. Both copies are Q2 orders of Rs 3,710, one dated 25 September and one 2 August, so a check that compares whole rows reports no duplicate. What decides whether the two rows are one order?
+    options:
+      a: whether the two rows match in every field, the dates included
+      c: which of the two dates falls inside the quarter being reported
+      d: whether the two amounts differ by more than a rounding error
   27:
     status: accepted
     why: Options a and c ran 26 and 24 characters against 48 for option d. Each now carries the belief behind it, a at 50 and c at 51, so the options run 45 to 51 and the key is the shortest of them.
@@ -102,6 +120,11 @@ W1:
     options:
       a: It grows, because removing rows takes revenue out.
       b: It stays the same, because duplicates cancel out.
+  43:
+    situation:
+      status: proposed
+      why: The situation now carries the week's own numbers from Thursday's exposure table, the sale, its dates and the blended lift, so the set's chart can show the split and the key's reasons can cite it; the pattern the item asks about, and its key, are unchanged.
+      text: Marketing's monsoon sale, aimed at Retail-Plus, Kalpa's paid-membership tier, took 15 percent off from 5 to 19 August and reached 60 customers, 30 Retail-Plus members and 30 Retail-Core customers. In August those 60 spent Rs 3,395 each and the 100 who did not get the sale spent Rs 3,200, a lift of 6.1 percent, which is Marketing's case for repeating it at Diwali. The chart splits the same customers by segment. Retail-Plus members buy more often and spend more than Retail-Core customers in any month.
   45:
     status: accepted
     why: The key was the longest option.
