@@ -284,10 +284,10 @@ d) 52, 51 and 50
 
 Which list meets the head of Retail-Plus's ask, and what does the note to Marketing say?
 
-a) DENSE_RANK: 52 members, since it ranks ties the same and leaves no gaps
-b) ROW_NUMBER by member id: 50 members, dropping C-0242 because its id sorts later
-c) Whole ties only: 49 members, leaving both tied members off the list
-d) RANK: 51 members, saying that C-0185 and C-0242 tie at fiftieth on Rs 3,350
+a) DENSE_RANK, since it ranks tied members the same and leaves no gaps in the list
+b) ROW_NUMBER by member id, dropping C-0242 because its id sorts after C-0185
+c) Whole ties only, leaving both members tied at the line off the list
+d) RANK, with a note naming C-0185 and C-0242 as tied at fiftieth on Rs 3,350
 
 #### Q14 · Medium · circle one letter · Choose the approach
 
