@@ -85,7 +85,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 - Marketing lost customers, so the acquisition budget is the fix
 - Prices rose across the company, so every customer bought less
 - The segment's buyers left, and new buyers replaced them
-- That segment's buyers changed; timing and its data test why  <- correct
+- That segment's buyers slowed; timing and its data test why  <- correct
 
 ---
 

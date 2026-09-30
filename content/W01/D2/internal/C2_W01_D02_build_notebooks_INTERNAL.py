@@ -831,8 +831,7 @@ for the multiplicative check and for rupees in place of percentages that do not 
 
 **[S] Why is a rate without a denominator meaningless?** "Because a rate is a count divided by
 something over a window, and changing either of the other two changes the number. Orders per
-customer of 1.25 means one thing over 69 customers in a quarter and another over 50 customers with a
-delivered order. When someone quotes a rate, I ask what was counted, what it was divided by and over
+customer of 1.25 over 69 customers on booked orders becomes 1.14 over 50 customers with a delivered order. When someone quotes a rate, I ask what was counted, what it was divided by and over
 which dates." The interviewer is listening for all three parts.
 
 **[S] A field is missing on some records; do you fill it with zero?** "Only if zero is what missing
@@ -1765,7 +1764,7 @@ References for the chapter:
 """),
         code("""
 kit.check_summary()
-print("Next: chapter 6, the head of Retail-Plus hands us a cause, and the memo says what would settle it.")"""),
+print("Next: chapter 6, the head of Retail-Plus hands us a cause, and the memo says what would test it.")"""),
     ]
     build(NB / "C2_W01_D02_05_marketings_hypothesis_STUDENT.ipynb", cells)
 

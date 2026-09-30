@@ -211,10 +211,10 @@ seg1 = {s: tree_for([o for o in dq["Q1"] if o["segment"] == s]) for s in SEGMENT
 seg2 = {s: tree_for([o for o in dq["Q2"] if o["segment"] == s]) for s in SEGMENTS}
 averaged = {q: sum(t["orders_per_customer"] for t in seg.values()) / 4 for q, seg in (("Q1", seg1), ("Q2", seg2))}
 # TODO 4. Which roll-up gives the company's delivered orders per customer from the segments?
-#   a) the sum of the four segments' orders per customer, divided by 4
-#   b) total customers across segments, divided by total orders
-#   c) the median of the four segments' orders per customer
-#   d) total orders across segments, divided by total customers
+#   a) sum(t["orders_per_customer"] for t in seg.values()) / 4
+#   b) sum(t["customers"] for t in seg.values()) / sum(t["orders"] for t in seg.values())
+#   c) sorted(t["orders_per_customer"] for t in seg.values())[2]
+#   d) sum(t["orders"] for t in seg.values()) / sum(t["customers"] for t in seg.values())
 def roll_up(seg):
     return [[4|sum(t["orders"] for t in seg.values()) / sum(t["customers"] for t in seg.values())]]
 weighted = {"Q1": roll_up(seg1), "Q2": roll_up(seg2)}
@@ -295,10 +295,10 @@ the split; it did not create a price signal in the consumer business.
 #   c) "all four segments"
 #   d) "Retail-Plus"
 lead = [[7|"Retail-Plus"]]
+kit.check("the lead segment is the largest per-member fall", lead in changes and lead == min(changes, key=changes.get))
 kit.flow([f"drop real\\n{d_change}% delivered", f"branch\\nfrequency {kit.rupees(round(move_frequency))}",
-          f"customers branch\\n{len(still_booked)} still booked", f"segment\\n{lead} {changes[lead]}%", "two hypotheses\\nand their evidence"],
+          f"customers branch\\n{len(still_booked)} still booked", f"segment\\n{lead} {changes.get(lead, '?')}%", "two hypotheses\\nand their evidence"],
          kinds=["known", "bad", "unknown", "bad", "known"], title="The sentence to Meera, on delivered orders")
-kit.check("the lead segment is the largest per-member fall", lead == min(changes, key=changes.get))
 '''),
         SOL(md("""
 **Why the other three fail.** a) is the rupee finding on three lumpy orders. b) rose. c) spreads a
