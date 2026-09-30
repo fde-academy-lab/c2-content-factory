@@ -9,3 +9,6 @@ content/**/output/
 # Claude Code agent worktrees live here and are never committed.
 .claude/worktrees/
 dist/
+
+# Personal Claude Code settings for one workspace, such as a session's permission rules.
+.claude/settings.local.json
