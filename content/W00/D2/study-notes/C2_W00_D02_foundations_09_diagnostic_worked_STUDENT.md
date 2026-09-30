@@ -639,3 +639,459 @@ GROUP BY t.category;
 2. T1 has two tags, so each of T1's two calls appears twice after the ticket_tags join; the extra 0.32 is exactly T1's calls counted once more.
 3. The question never uses tags, so the join to ticket_tags is the defect; remove it and the totals are refund 0.62 and delivery 0.04.
 4. SUM(DISTINCT) would also merge the two genuine 0.30 costs; SELECT DISTINCT acts after the SUM; LEFT JOIN changes nothing about duplication.
+
+## Section C. Numbers and reasoning, Q21 to Q28
+
+Numbers and reasoning, Q21 to Q28. Every item is a rung on [Chapter 3](C2_W00_D02_foundations_03_numbers_STUDENT.md)'s ladder.
+
+<a id="q21"></a>
+
+### Q21 of 40. Reason with numbers: ratios of percentage changes
+
+Kalpa Retail revenue fell 12 percent from Q1 to Q2 while the order count rose 5 percent. Which statement about the average order value must be true?
+
+| Option | Text | Verdict |
+|---|---|---|
+| A | It fell by about 7 percent | Percentage changes divide; subtracting 5 from 12 is the common wrong move. |
+| B | It fell by about 12 percent | It ignores the 5 percent rise in orders, which spreads the smaller revenue over more orders. |
+| C | It cannot be determined without the number of customers | Average order value is revenue over orders; customers do not enter the definition. |
+| D | It fell by about 16 percent | **Correct.** Average order value is revenue divided by orders: 0.88 / 1.05 is about 0.84, a fall of roughly 16 percent. Percentage changes divide; they do not subtract. |
+
+**Answer.** D.
+
+**Step by step.**
+
+1. Average order value is revenue divided by orders, so its change is the ratio of the two changes.
+2. Revenue index 0.88, orders index 1.05: 0.88 / 1.05 is about 0.84.
+3. That is a fall of about 16 percent; subtracting the percentages gives 7, which is wrong.
+4. The customer count is not needed, since the definition involves only revenue and orders.
+
+<a id="q22"></a>
+
+### Q22 of 40. Reason with numbers: median against mean under one extreme value
+
+Five Plus customers spent Rs 300, 350, 400, 450 and 9,000 this quarter. Meera wants one number on her slide for 'what a typical Plus customer spends'. Which number, and why?
+
+| Option | Text | Verdict |
+|---|---|---|
+| A | 400, the median, since one bulk buyer drags the mean above the other four | **Correct.** Four of the five customers spent 300 to 450; the mean of 2,100 describes none of them. The median, 400, is what 'typical' means here. |
+| B | 2,100, the mean, since it is the only number that uses every value | The mean is dragged to 2,100 by one buyer and describes none of the five. |
+| C | 300 to 9,000, the range, since any single number would mislead the board | A range refuses the choice the slide needs. |
+| D | 1,250, the midpoint between the mean and the median, as a compromise | The midpoint of the mean and the median is not a statistic; it has no meaning. |
+
+**Answer.** A.
+
+**Step by step.**
+
+1. Sort the values: 300, 350, 400, 450, 9,000. Four of five sit in a narrow band; one is far away.
+2. The mean, 2,100, is pulled toward the outlier and describes nobody.
+3. The median, 400, is the middle value and describes the typical customer, which is what the slide asks for.
+4. The range avoids the decision; the midpoint of mean and median is not a statistic anyone uses.
+
+<a id="q23"></a>
+
+### Q23 of 40. Reason with numbers: compare rates, not counts
+
+A monsoon discount email went to 20,000 customers and produced 400 orders. A plain email went to 5,000 customers and produced 150 orders. Which group responded better?
+
+| Option | Text | Verdict |
+|---|---|---|
+| A | The discount group, since 400 orders is more than double 150 | Counts from groups of different sizes cannot be compared; 400 of 20,000 is the lower rate. |
+| B | The plain-email group, since 3 percent beats 2 percent | **Correct.** Compare rates, not counts: 150 / 5,000 is 3 percent and 400 / 20,000 is 2 percent. The plain email did better per person reached. |
+| C | They are level once the group sizes are allowed for | Allowing for size is exactly what shows they are not level: 2 percent against 3 percent. |
+| D | It cannot be judged without the revenue per order | Revenue per order answers a different question from response. |
+
+**Answer.** B.
+
+**Step by step.**
+
+1. Turn counts into rates: discount group 400 / 20,000 = 2 percent; plain group 150 / 5,000 = 3 percent.
+2. The plain email produced more orders per person reached, so it responded better.
+3. Four hundred beats 150 only as a count, and the groups differ four to one in size.
+4. Revenue per order answers a different question; response rate is what was asked.
+
+<a id="q24"></a>
+
+### Q24 of 40. Two statements: percentage changes do not add
+
+Statement I: A number that rises 10 percent and then falls 10 percent is back where it started.
+
+Statement II: A number that falls 50 percent needs a rise of 100 percent to recover.
+
+| Option | Text | Verdict |
+|---|---|---|
+| A | Only I is true | Statement I is false: 1.10 times 0.90 is 0.99. |
+| B | Both are true | Statement I is false, so both cannot be true. |
+| C | Only II is true | **Correct.** 1.10 x 0.90 = 0.99, so Statement I is false. Halving needs a doubling to recover, so Statement II is true. |
+| D | Neither is true | Statement II is true: halving needs a doubling to recover. |
+
+**Answer.** C.
+
+**Step by step.**
+
+1. Statement I: 1.10 times 0.90 is 0.99, so a 10 percent rise then fall lands 1 percent below the start; false.
+2. Statement II: after a 50 percent fall the value is 0.5 of the start; returning needs a factor of 2, which is a 100 percent rise; true.
+3. Only II is true.
+
+<a id="q25"></a>
+
+### Q25 of 40. Reason with numbers: small counts move for no reason
+
+A clinic with 50 bookings a week saw its no-show rate go from 10 percent to 14 percent this week. What is the fairest reading?
+
+| Option | Text | Verdict |
+|---|---|---|
+| A | Two extra no-shows out of 50 sits inside normal week-to-week noise; watch a few more weeks | **Correct.** The rate moved from 5 no-shows to 7 out of 50. A change of two events sits well inside week-to-week noise for a count that small; several more weeks are needed before it means anything. |
+| B | A rise from 10 to 14 percent is a 40 percent jump in the rate, which needs action this week | The 40 percent is a relative change on two events out of fifty; it is arithmetic on noise. |
+| C | The rate has been miscalculated, since 7 out of 50 is 12 percent and not 14 | 7 out of 50 is 14 percent; the arithmetic in the option is wrong. |
+| D | Nothing can be said either way until a proper significance test has been run | The size of the count already says this is within noise; no test is needed to say so. |
+
+**Answer.** A.
+
+**Step by step.**
+
+1. Convert the percentages to events: 10 percent of 50 is 5 no-shows; 14 percent of 50 is 7.
+2. A change of two events on a base of fifty sits inside ordinary week-to-week variation for a count that small.
+3. The relative jump of 40 percent is arithmetic on that noise; the arithmetic in option C is simply wrong; refusing to say anything until a test runs ignores what the numbers already show.
+4. The fair reading is to watch several more weeks before acting.
+
+<a id="q26"></a>
+
+### Q26 of 40. Reason with numbers: base rates: precision from recall and prevalence
+
+A fraud model flags 5 percent of all transactions. It catches 90 percent of the transactions that are actually fraudulent, and fraud is 1 percent of all transactions. Of the flagged transactions, roughly what share are actually fraud?
+
+| Option | Text | Verdict |
+|---|---|---|
+| A | About 90 percent | 90 percent is recall, the share of fraud caught; it says nothing about the share of flags that are fraud. |
+| B | About 5 percent | 5 percent is the flag rate, an input, not the precision. |
+| C | About 1 percent | 1 percent is the base rate, an input, not the precision. |
+| D | About 18 percent | **Correct.** Of 1,000 transactions, 10 are fraud and the model catches 9 of them, while it flags 50 in total. So 9 of 50 flagged transactions, about 18 percent, are fraud. Catching 90 percent of fraud (recall) is not the same as 90 percent of flags being fraud (precision). |
+
+**Answer.** D.
+
+**Step by step.**
+
+1. Take 1,000 transactions. Fraud is 1 percent: 10 cases. The model catches 90 percent: 9 flagged fraud cases.
+2. The model flags 5 percent of everything: 50 flags in total, so 41 of the flags are not fraud.
+3. Precision is 9 / 50, about 18 percent: of the flagged transactions, roughly one in five is fraud.
+4. 90 percent is recall, the share of fraud caught, and the other numbers are inputs, not the answer.
+
+<a id="q27"></a>
+
+### Q27 of 40. Reason with numbers: mix shift can reverse a total
+
+Overall conversion fell from 5 percent to 4 percent, yet conversion rose in every single city. How can both be true?
+
+| Option | Text | Verdict |
+|---|---|---|
+| A | They cannot both be true, since the total is just the cities added up; one figure must be wrong | Both can be true; the total is a weighted average, and the weights changed. |
+| B | The mix shifted toward cities with lower conversion, so the total fell as each city rose | **Correct.** The overall rate is a weighted average of the city rates. If more customers now come from low-conversion cities, the total can fall while every city improves. This is a mix shift. |
+| C | Rounding in the city figures hides small falls that only show up in the total | Rounding cannot reverse the direction of every city at once. |
+| D | Seasonality moves the total without moving any single city's own figure | The total is made of the cities; nothing can move it without moving them. |
+
+**Answer.** B.
+
+**Step by step.**
+
+1. The overall rate is a weighted average of the city rates, weighted by how many customers came from each city.
+2. If the share of customers from low-converting cities grew, the total can fall while every city's own rate rises.
+3. Rounding cannot reverse a direction in every city, and seasonality that moved the total would show in the cities too.
+4. The mix shifted; the question to ask is where the traffic went.
+
+<a id="q28"></a>
+
+### Q28 of 40. Estimate: token economics, multi-step estimate
+
+Farhan plans one LLM call per support ticket. Suppose the model bills Rs 40 per million input tokens and Rs 160 per million output tokens, and a call uses about 1,200 input tokens and 200 output tokens. At 1,000 tickets a day for 30 days, the monthly bill is closest to
+
+| Option | Text | Verdict |
+|---|---|---|
+| A | Rs 1,440 | Rs 1,440 is the input tokens alone; output tokens cost Rs 960 more. |
+| B | Rs 6,720 | Rs 6,720 applies the Rs 160 output price to all 42 million tokens. |
+| C | Rs 2,400 | **Correct.** Input: 1,000 x 1,200 x 30 = 36 million tokens, Rs 1,440 at Rs 40 per million. Output: 6 million tokens, Rs 960 at Rs 160 per million. Total Rs 2,400 a month. |
+| D | Rs 24,000 | Rs 24,000 is a decimal slip: the token counts are in millions and the prices are per million. |
+
+**Answer.** C.
+
+**Step by step.**
+
+1. Input tokens: 1,000 tickets x 1,200 tokens x 30 days = 36 million; at Rs 40 per million that is Rs 1,440.
+2. Output tokens: 1,000 x 200 x 30 = 6 million; at Rs 160 per million that is Rs 960.
+3. Total Rs 2,400 a month.
+4. Rs 1,440 forgets the output; Rs 6,720 applies the output price to every token; Rs 24,000 slips a decimal.
+
+## Section D. Case and scenarios, Q29 to Q34
+
+Case and scenarios, Q29 to Q34. The case table is repeated once below; Q33 and Q34 are the language-model scenarios from [Chapter 4](C2_W00_D02_foundations_04_language_models_STUDENT.md).
+
+<a id="q29"></a>
+
+### Q29 of 40. Case: Kalpa Retail, Q1 against Q2: which branch moved
+
+Meera Raghavan, CEO of Kalpa Retail, has one question for the analytics team: revenue fell from Q1 to Q2, where did it go? Kavya Nair pulled the table below. Use it for Q29 to Q32. Revenue is in Rs lakh.
+
+| Tier | Q1 customers | Q1 orders | Q1 revenue | Q2 customers | Q2 orders | Q2 revenue |
+|---|---|---|---|---|---|---|
+| Plus | 10,000 | 30,000 | 360 | 10,000 | 27,000 | 324 |
+| Basic | 40,000 | 60,000 | 420 | 44,000 | 64,000 | 400 |
+| Student | 5,000 | 6,000 | 24 | 8,000 | 9,000 | 36 |
+| Total | 55,000 | 96,000 | 804 | 62,000 | 100,000 | 760 |
+
+Which line best explains most of the fall?
+
+| Option | Text | Verdict |
+|---|---|---|
+| A | Plus customers ordered less often at the same order value; that tier carries most of the fall | **Correct.** Plus revenue fell 36 lakh (orders down 10 percent at an unchanged Rs 1,200 per order), Basic fell 20 lakh, Student rose 12 lakh. Plus alone explains most of the net 44 lakh fall. |
+| B | Basic customers paid less per order than in Q1; that tier carries most of the fall | Basic's lower order value cost 20 lakh; Plus cost 36 and carries most of the fall. |
+| C | Student growth pulled spending away from the Plus tier, which is why Plus orders fell by a tenth | The table shows no link between Student growth and Plus orders; it is a story, not a finding. |
+| D | Fewer customers overall placed orders in Q2, which lowered revenue across every tier | Customers rose from 55,000 to 62,000; fewer customers is contradicted by the table. |
+
+**Answer.** A.
+
+**Step by step.**
+
+1. Read the deltas first: Plus 360 to 324 is a fall of 36 lakh; Basic 420 to 400 is 20; Student 24 to 36 is a rise of 12; net 44 down.
+2. Plus carries most of the fall. Inside Plus, customers are flat at 10,000, orders fell 30,000 to 27,000, and revenue per order stayed at Rs 1,200.
+3. So Plus customers ordered less often at the same order value.
+4. Basic's lower order value is real but smaller; the customer count rose overall; nothing links Student growth to the Plus fall.
+
+<a id="q30"></a>
+
+### Q30 of 40. Case: Kalpa Retail, Q1 against Q2: test a hypothesis against the table
+
+Kavya's first hypothesis is that Plus customers are downgrading to Basic. What does the table say about it?
+
+| Option | Text | Verdict |
+|---|---|---|
+| A | It supports it, since Basic gained 4,000 customers | Basic gaining customers is consistent with new sign-ups; it does not show where they came from. |
+| B | It supports it, since the Basic order value fell | Basic's order value says nothing about Plus customers moving. |
+| C | It weakens it, since the Plus customer count did not fall | **Correct.** Plus customers were 10,000 in both quarters. If Plus customers had moved to Basic, the Plus count would have dropped. The table weakens the hypothesis. |
+| D | It cannot be judged without customer-level churn data from both quarters | The table already carries the test: the Plus customer count did not fall. |
+
+**Answer.** C.
+
+**Step by step.**
+
+1. If Plus customers moved to Basic, the Plus customer count would fall unless upgrades replaced them exactly.
+2. The table shows Plus at 10,000 in both quarters, so the count did not fall.
+3. That weakens the hypothesis with evidence already on the page; the Basic rise is consistent with new customers, not with downgrades.
+4. Churn data would refine it, but the table already gives a verdict.
+
+<a id="q31"></a>
+
+### Q31 of 40. Case: Kalpa Retail, Q1 against Q2: the fair comparison
+
+A monsoon discount was given to some Basic customers in Q2. Meera asks whether it caused the rise in Basic orders. Which comparison is the fairest one available?
+
+| Option | Text | Verdict |
+|---|---|---|
+| A | Basic Q2 orders against Basic Q1 orders, since the before-and-after is the change in question | Before and after mixes the discount with season, festivals and trading days. |
+| B | Discounted Basic customers against non-discounted Basic customers, same weeks | **Correct.** The fair comparison holds everything else constant: same tier, same weeks, the discount as the only difference. Before-and-after and cross-tier comparisons mix the discount with every other change. |
+| C | Basic Q2 orders against Plus Q2 orders, since Plus had no discount | Plus is a different tier with different behaviour; the comparison varies the wrong thing. |
+| D | Basic Q2 revenue against the plan line, since the plan assumed no discount | A plan line is a target, not a comparison group. |
+
+**Answer.** B.
+
+**Step by step.**
+
+1. A fair comparison varies only the thing being tested and holds everything else still.
+2. Basic Q2 against Basic Q1 varies the discount together with season, festivals and trading days; Basic against Plus varies the tier; revenue against plan compares with a target, not a group.
+3. Discounted Basic customers against non-discounted Basic customers over the same weeks isolates the discount.
+4. That is the fairest comparison the data allows.
+
+<a id="q32"></a>
+
+### Q32 of 40. Case: Kalpa Retail, Q1 against Q2: like-with-like windows before presenting
+
+Before you put the Plus finding in front of Meera, which check protects the finding most?
+
+| Option | Text | Verdict |
+|---|---|---|
+| A | Ask for the Plus tier's marketing budget for Q2 and compare it with Q1's | A budget explains a fall; it does not test whether the fall is real. |
+| B | Re-add the six revenue figures in a spreadsheet to confirm that the totals match the table exactly | Re-adding the sums checks arithmetic, not the claim. |
+| C | Compute the Plus tier's share of total revenue in each quarter and compare | The share of revenue re-describes the same numbers and protects nothing. |
+| D | Check that Q1 and Q2 have the same trading days and that no festival sat in one quarter only | **Correct.** A quarter with fewer trading days, or a festival that sat in Q1 only, can create the whole fall on its own. Checking the window protects the finding; the other options describe or re-add the same numbers. |
+
+**Answer.** D.
+
+**Step by step.**
+
+1. A finding about a fall between two quarters rests on the quarters being comparable.
+2. If Q1 and Q2 differ in trading days, or a festival sat in one only, the entire fall can be an artefact of the window.
+3. Re-adding the sums checks arithmetic, not the claim; the budget explains rather than tests; the revenue share re-describes the same numbers.
+4. Check the window first; it costs one calendar lookup.
+
+<a id="q33"></a>
+
+### Q33 of 40. Scenario: LLM intuition: sampling variance and an under-specified prompt
+
+Farhan's team uses an LLM to label each support ticket as refund, delivery or other. The prompt says only 'Label this ticket'. Sending the same ticket twice gives refund once and delivery the second time. Which explanation and first fix fit best?
+
+| Option | Text | Verdict |
+|---|---|---|
+| A | Sampling above zero temperature varies the reply, and the prompt never names the labels; lower it and list the three labels with an example each | **Correct.** Sampling with a temperature above zero makes replies vary, and a prompt that never lists the allowed labels leaves the model to invent them. Lower the temperature and give the label set with an example each. API calls carry no memory of each other unless the history is sent. |
+| B | The model remembers the first call and changed its mind on the second; clear its conversation history before every call so each starts fresh | Calls carry no memory unless the history is sent; the model cannot change its mind between calls. |
+| C | The ticket text must contain a typo or odd formatting that confuses the model; clean the data before calling again and re-check | The same text was sent twice; a typo would produce the same wrong answer twice, not two answers. |
+| D | The model is too small for a three-way classification; switch to the largest model available and re-run the whole batch | A larger model still samples above zero temperature and still needs the label set. |
+
+**Answer.** A.
+
+**Step by step.**
+
+1. Two things in the setup can produce different labels: sampling above zero temperature, which picks from the scores rather than always the top one, and a prompt that never names the allowed labels, which leaves the model to invent the set.
+2. A call carries no memory of an earlier call, so the model cannot have changed its mind; a typo does not explain two different answers to identical text; a larger model still samples.
+3. The first fix is the prompt: list the three labels with an example each and ask for the label alone; the second is a lower temperature.
+4. Then validate every reply against the allowed set.
+
+<a id="q34"></a>
+
+### Q34 of 40. Scenario: LLM intuition: a small hand-labelled set is the fastest trust check
+
+Kavya's prompt asks a model to rate the sentiment of each customer review from 1 to 5. On 200 reviews the ratings look plausible. Which check tells her fastest whether the ratings can be trusted?
+
+| Option | Text | Verdict |
+|---|---|---|
+| A | Ask the model to add a confidence score to each rating and keep the high ones | A confidence score is more model output; it cannot check the model. |
+| B | Hand-rate a random 30 reviews herself and compare with the model's ratings | **Correct.** Ratings that look plausible are not evidence. Hand-rating a random sample and comparing gives a measured agreement rate within an hour; confidence scores and a second model only add more unverified output. |
+| C | Run the prompt through a second model and average the two ratings for each review | Two models agreeing measures agreement, not accuracy. |
+| D | Add 'be accurate and careful' to the prompt and re-run the whole batch | Changing the prompt changes the input; it measures nothing. |
+
+**Answer.** B.
+
+**Step by step.**
+
+1. Plausible output is not evidence; the question is how to produce a number that says how often the ratings are right.
+2. Hand-rate a random sample of 30, compare with the model's ratings, and compute agreement, overall and per rating.
+3. Confidence scores are more model output; a second model agreeing is two opinions, not a measurement; adding words to the prompt changes the input without measuring anything.
+4. Thirty items take under an hour and give a rate you can defend.
+
+## Section E. Judgment calls, Q35 to Q40
+
+Judgment calls, Q35 to Q40. Each situation has a best action and a worst action, and the reasoning names both.
+
+<a id="q35"></a>
+
+### Q35 of 40. Best and worst
+
+You sent Anand Iyer, the Finance Controller, the quarterly revenue figure yesterday. This morning you find your query counted returned orders as sales, so the figure is about 4 percent too high, and it is already in a board deck. Mark the best action and the worst action.
+
+| Option | Text | Verdict |
+|---|---|---|
+| A | Fix the query so next month's figure is right and say nothing about this one, since 4 percent sits inside normal variance | **Worst.** Saying nothing about a known error in a board figure is the one action that destroys trust when it surfaces later, and it always surfaces. |
+| B | Ask a peer to re-run your query and send a correction only once they confirm the error is real | Asking a peer to re-run the query delays a correction you already have; the error is known. |
+| C | Send Anand the corrected figure now, with the cause and size of the error | **Best.** Sending the correction yourself, now, with the cause and the size, is the only option that protects the board figure and your credibility at once. |
+| D | Tell your reporting manager and let them decide whether Finance needs to hear about it | Passing the decision upward delays it and makes someone else responsible for your number. |
+
+**Answer.** Best C, worst A.
+
+**Step by step.**
+
+1. The figure is already in a board deck, so every hour of delay raises the cost of the correction.
+2. Best: send Anand the corrected figure now, with the cause and the size, before anyone else finds it.
+3. Worst: saying nothing because the error is small treats a known error in a board figure as acceptable; it will surface, and then the question is why you did not say.
+
+<a id="q36"></a>
+
+### Q36 of 40. Best and worst
+
+During an ungraded exercise you got the answer from an AI assistant and submitted it without understanding it. The trainer asks you to explain your approach to the room. Mark the best action and the worst action.
+
+| Option | Text | Verdict |
+|---|---|---|
+| A | Ask the trainer to come back to you once you have had time to study the answer properly | Asking for time is honest but avoids the question; the room learns nothing and neither do you. |
+| B | Say you used an AI assistant, then walk through what you do and do not yet understand | **Best.** Naming the tool and what you do not yet understand is the honest answer and the one that gets you help on the spot. |
+| C | Ask the person next to you, who solved it without help, to explain the approach instead | Handing the explanation to a neighbour avoids the question and shows the room what you did not do. |
+| D | Present the answer as your own reasoning and improvise wherever the logic is unclear to you | **Worst.** Presenting borrowed reasoning as your own compounds the gap and is found out within minutes of the first question. |
+
+**Answer.** Best B, worst D.
+
+**Step by step.**
+
+1. The question in the room is about your understanding, and the only durable answer is an honest one.
+2. Best: say you used an assistant, then walk through what you do and do not yet understand; that is how you get help on the spot.
+3. Worst: presenting borrowed reasoning as your own is discovered by the first follow-up question and costs more than the gap it hides.
+
+<a id="q37"></a>
+
+### Q37 of 40. Best and worst
+
+During your group's presentation a group-mate says, in front of the panel, that your chart is misleading. Mark the best action and the worst action.
+
+| Option | Text | Verdict |
+|---|---|---|
+| A | Say nothing now, since the panel is watching, and fix the chart after the presentation | Staying silent leaves the panel with the doubt and the chart uncorrected. |
+| B | Point out that their own section had errors too, so the panel hears both sides | **Worst.** Retaliating in front of the panel damages both of you and answers nothing about the chart. |
+| C | Defend the chart, since you checked the numbers twice before the presentation | Defending before hearing the specific point closes the conversation that could fix the chart. |
+| D | Ask what specifically misleads and offer to fix it before the presentation moves on | **Best.** Asking what specifically misleads, in front of the panel, turns criticism into a fix and shows the panel how you work. |
+
+**Answer.** Best D, worst B.
+
+**Step by step.**
+
+1. Criticism in front of a panel is uncomfortable and also useful, if you treat it as a fix.
+2. Best: ask what specifically misleads and offer to fix it before the presentation moves on.
+3. Worst: retaliating with your group-mate's errors damages both of you and answers nothing about the chart.
+
+<a id="q38"></a>
+
+### Q38 of 40. Best and worst
+
+A take-home is due tonight. Your notebook runs, but the answer to the last question is wrong and you know why; the fix needs two more hours. Mark the best action and the worst action.
+
+| Option | Text | Verdict |
+|---|---|---|
+| A | Submit on time with a note saying which part is wrong, why, and when the fix follows | **Best.** Submitting on time with a note that names the wrong part, the cause and the fix date keeps both the deadline and your credibility. |
+| B | Message the TA that you will submit tomorrow with the fix included, since correctness matters more | Missing the deadline is acceptable when necessary, but here a note would have kept both the deadline and the truth. |
+| C | Submit as it is and say nothing, since the notebook runs and the deadline is what counts | **Worst.** Knowingly submitting a wrong answer as right is exactly the failure the note would have prevented. |
+| D | Submit only the parts that are right and quietly drop the last question from the notebook | Dropping the question hides the gap instead of naming it. |
+
+**Answer.** Best A, worst C.
+
+**Step by step.**
+
+1. Two things matter: the deadline and the truth about the last answer.
+2. Best: submit on time with a note naming the wrong part, why it is wrong and when the fix follows; the reader loses nothing.
+3. Worst: submitting silently because the notebook runs presents a known wrong answer as right.
+
+<a id="q39"></a>
+
+### Q39 of 40. Best and worst
+
+You have spent 90 minutes stuck on an environment error while the session moves on without you. Mark the best action and the worst action.
+
+| Option | Text | Verdict |
+|---|---|---|
+| A | Ask the person next to you to do the setup on your machine so you can catch up with the session | Someone else fixing your setup solves today and teaches nothing; you will meet the same error alone. |
+| B | Wait until the end of the day and email a screenshot of the error to the TA | Waiting until the end of the day loses the whole session. |
+| C | Post the exact error text in the Discussions thread and continue with the parts that need no setup | **Best.** Posting the exact error text is the fastest route to a fix, and working on the parts that need no environment keeps the day productive. |
+| D | Keep trying alone, since asking now would show the room you cannot handle the basics | **Worst.** Ninety minutes alone is already too long; asking early is the habit the programme depends on. |
+
+**Answer.** Best C, worst D.
+
+**Step by step.**
+
+1. Ninety minutes alone on an environment error is already the mistake; the session has moved on.
+2. Best: post the exact error text where the TAs will see it and keep working on the parts that do not need the environment.
+3. Worst: continuing alone to avoid looking weak loses the day and teaches nothing.
+
+<a id="q40"></a>
+
+### Q40 of 40. Best and worst
+
+Anand says your analysis 'cannot be right' because it contradicts his experience, and asks you to change the conclusion before the meeting. Mark the best action and the worst action.
+
+| Option | Text | Verdict |
+|---|---|---|
+| A | Change the conclusion; he has run Finance for years and knows the business better than the data | **Worst.** Changing a conclusion because of pushback abandons the evidence and makes the analysis worthless to everyone, including him. |
+| B | Walk him through the path from raw table to final number and ask which step he doubts | **Best.** Walking through the path from raw table to number lets him point at the step he doubts, which is either a real error or the end of the disagreement. |
+| C | Tell him the numbers do not lie and keep the conclusion exactly as it is | Holding the finding is right; closing the conversation with 'the numbers do not lie' loses the chance to find a real error. |
+| D | Escalate to Meera at once so she can decide between his experience and your analysis | Escalating skips the conversation that would settle it and turns a data question into a dispute. |
+
+**Answer.** Best B, worst A.
+
+**Step by step.**
+
+1. Pushback from an experienced stakeholder is information, not an instruction.
+2. Best: walk him through the path from raw table to final number and ask which step he doubts; either a real error surfaces or the disagreement ends.
+3. Worst: changing the conclusion because he pushed abandons the evidence and makes the analysis worthless to everyone, including him.
