@@ -44,37 +44,46 @@ spent without the sale? Nobody can observe it directly, which is why the compari
 
 ---
 
-## S2. eBay's ads went to people who would buy anyway
+## S2. eBay tested its ads in controlled experiments
 *A controlled test showed that most of what the ads were credited with arrived without them.*
 
 ```cards
 icon: search | eyebrow: Brand-name ads | title: No measurable benefit | body: When eBay stopped them in a test, almost all of the lost clicks arrived through ordinary search results instead.
-icon: users | eyebrow: Other search ads | title: Frequent buyers took most | body: The customers who saw most of the ads would have bought anyway, so the average return was negative. | tone: dark
+icon: scale | eyebrow: Controlled against usual | title: A fraction of the credit | body: Because search clicks and purchases go together, the returns a controlled test found were a fraction of what the usual readings had credited. | tone: dark
 ```
 
 Blake, Nosko and Tadelis, NBER Working Paper 20171. The lesson travels: a campaign is credited with sales it did not cause unless someone asks who would have bought anyway.
 
 ```notes
 LIVE, 1 minute. Source, checked 30 September 2026: https://www.nber.org/papers/w20171. Quotes from
-the paper: "brand-keyword ads have no measurable short-term benefits"; "almost all of the forgone
-click traffic and attributed sales were captured by natural search".
+the abstract: "brand-keyword ads have no measurable short-term benefits"; "returns from paid search
+are a fraction of conventional non-experimental estimates". The same paper's split by customer type
+was chapter 4's company case.
 ```
 
 ---
 
 ## S3. Four ways to ask "did the sale cause it"
-*Each compares two things, and each assumes something about what else was going on.*
+*Each compares two things on one of two files, and each assumes something about what else happened.*
 
 | Option | What it stands on | What it assumes |
 |---|---|---|
-| A. Before and after | 13 Retail-Plus orders, July and August | Nothing else changed between the months |
-| B. The change beside the change | 31 orders, Retail-Plus and Retail-Core | Both segments would have moved alike |
-| C. Inside each segment | 160 customers, chapter 4 | Who got it was as good as random inside a segment |
-| D. A random hold-back at Diwali | a fifth of 70 Retail-Plus customers | Nothing: a coin decides |
+| A. Before and after | Finance's file: 13 Retail-Plus orders, July and August | Nothing else changed between the months |
+| B. The change beside the change | Finance's file: 31 orders, Retail-Plus and Retail-Core | Both segments would have moved alike |
+| C. Inside each segment | The platform's list: 160 customers, chapter 4 | Who got it was as good as random inside a segment |
+| D. A random hold-back at Diwali | The platform's list: a fifth of its 70 Retail-Plus customers | Nothing: a coin decides |
+
+The platform's list records who received the sale, under its own ids, and cannot be matched to Finance's order file, so each option stands on the file that can answer it.
 
 ```notes
 LIVE, 3 minutes. Notebook 6's sizing cell counts what each option stands on. A and B stand on a
-handful of orders a month, and chapter 3 already said what a handful is worth.
+handful of orders a month, and chapter 3 already said what a handful is worth. Say the list in full
+once: the campaign platform's August list of 160 Retail-Plus and Retail-Core customers, under the
+platform's own customer ids, with one average August spend for each group, recording who received
+the sale whatever it was aimed at. It cannot be matched to Finance's order file, whose 22
+Retail-Plus members and discount column carry no record of the sale. So it answers who got the sale
+and how the groups differ, and it sizes the Diwali hold-back; the retention offer was sized on
+Finance's file.
 ```
 
 ---
@@ -104,12 +113,12 @@ LIVE, 2 minutes. D is cheap here, which the design slide prices. Leave the board
 ---
 
 ## S5. Question: who got the monsoon sale?
-*The campaigns table says who it was aimed at; the exposure table says who received it.*
+*The campaigns table says whom it was aimed at; the platform's list records who received it.*
 
 ```mermaid
 flowchart LR
     T["<b>campaigns table</b><br/>target: Retail-Plus"] --> Q["<b>received by</b><br/>?"]
-    E["<b>exposure table</b><br/>60 customers got it"] --> Q
+    E["<b>the platform's list</b><br/>60 customers got it"] --> Q
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
     class T,E known
@@ -119,7 +128,8 @@ flowchart LR
 **Question.** Of the customers who got the sale, the share who are Retail-Plus members is: a) all of them, since it targeted Retail-Plus; b) about half; c) about a tenth; d) none.
 
 ```notes
-LIVE, 1 minute. Predict, then notebook 6, level 1.
+LIVE, 1 minute. Predict, then notebook 6, level 1. The campaigns table is the plan; the platform's
+list is what was sent, so where they disagree the list is the one to trust for who got the sale.
 ```
 
 ---
@@ -135,7 +145,7 @@ xychart-beta
     bar [30, 30]
 ```
 
-The answer is b. Whatever rule chose them, it was a rule and never a coin, and a rule can pick the customers who were going to buy anyway.
+The answer is b. Whatever chose them was a rule, and a rule can pick the customers who were going to buy anyway.
 
 ```notes
 LIVE, 2 minutes. That is the first of the three questions answered: the groups were chosen. Ask
@@ -175,40 +185,42 @@ many orders July's figure stands on. Take two answers.
 | Retail-Plus, targeted | 19,650 | 36,840 | 15,640 | 9,280 | 25,060 | 13,370 |
 | Retail-Core, not aimed at | 11,920 | 15,000 | 24,380 | 13,320 | 23,090 | 11,140 |
 
-**The check.** Retail-Core, the segment the sale was not aimed at (though the extract shows it reached some Retail-Core customers), rose 73 percent from July to August. Retail-Plus fell 58 percent from May to June with no sale running. July's Retail-Plus figure stands on 4 delivered orders.
+**The check.** Retail-Core, the segment the sale was not aimed at (though the platform's list shows it reached some Retail-Core customers), rose 73 percent from July to August. Retail-Plus fell 58 percent from May to June with no sale running. July's Retail-Plus figure stands on 4 delivered orders.
 
 ```notes
-LIVE, 4 minutes. Notebook 6, level 3, draws these two rows as lines. Point at May to June: a fall of more than half, no campaign anywhere. A month's revenue on a few
-orders swings by half on its own.
+LIVE, 4 minutes. Notebook 6, level 3, draws these two rows as lines. Point at May to June: a fall of
+more than half, no campaign anywhere. A month's revenue on a few orders swings by half on its own.
 ```
 
 ---
 
 ## S9. The fix: August's share, against chance
-*Compare like with like in time: August's share of each segment's quarter, and how often chance makes it.*
+*Compare like with like in time: August's share of each segment's quarter, both directions counted.*
 
 ```stats
 value: 52.5% | label: Retail-Plus | note: August's share of its Q2, targeted
 value: 48.6% | label: Retail-Core | note: August's share of its Q2, not aimed at
-value: 8 in 10 | label: chance | note: label shuffles that make a 4-point gap either way
+value: 8 in 10 | label: either way | note: label shuffles making a 4-point gap; 4 in 10 in Marketing's direction
 ```
 
-The 170 percent becomes an August four points busier than the untargeted segment's, a gap chance makes most of the time. The months show no sign of the sale beyond a busy August for everyone.
+The 170 percent becomes an August four points busier than the untargeted segment's, a gap chance makes about eight times in ten either way, and four in ten in the direction Marketing's claim points. The months show no sign of the sale beyond a busy August for everyone.
 
 ```notes
-LIVE, 3 minutes. The chance reference pools both segments' delivered Q2 orders and deals the segment
-labels at random, 5,000 times, asking how often the two Augusts differ by four points or more either
-way. About 8 in 10: no sign. What changed: a 170 percent claim shrinks to "no sign in the months".
+LIVE, 3 minutes. These are different customers in each segment, so the chance reference shuffles the
+segment labels across both segments' delivered Q2 orders, 5,000 times. As in chapter 1, both
+directions are reported, since neither was fixed before August was seen: 0.82 either way, 0.40 for a
+Retail-Plus share that much higher. What changed: a 170 percent claim shrinks to "no sign in the
+months".
 ```
 
 ---
 
 ## S10. The design: a hold-back at Diwali
-*Decide before the sale, inside each segment, with a coin, and agree the measure in advance.*
+*Decide before the sale, inside each segment of the platform's list, with a coin, the measure agreed.*
 
 ```mermaid
 flowchart LR
-    L["<b>before Diwali</b><br/>each segment's<br/>customers"] --> C{"<b>a coin</b>"}
+    L["<b>before Diwali</b><br/>each segment's<br/>customers on the list"] --> C{"<b>a coin</b>"}
     C -->|"one in five"| H["<b>held back</b>"]
     C -->|"the rest"| S["<b>the sale</b>"]
     H --> M["<b>after</b><br/>compare inside<br/>each segment"]
@@ -219,40 +231,50 @@ flowchart LR
     class C,M bet
 ```
 
-**The cost of the hold-back.** Holding back 14 of 70 Retail-Plus customers at Marketing's own 6 percent lift forgoes about Rs 4,200, and nothing if the lift is not real. Fourteen are too few to see a 6 percent lift; sizing the hold-back is a question of power, which comes later.
+**The cost of the hold-back.** Holding back 14 of the platform's 70 Retail-Plus customers at Marketing's own 6 percent lift forgoes about Rs 4,200, and nothing if the lift is not real. The retention test was sized on Finance's 22 members; each decision is sized on the list it acts on.
 
 ```notes
-LIVE, 4 minutes. Name it as a held-back group, or a holdout; experiment design proper comes later in
-the programme. Chance decides who gets the sale, so the groups are alike in everything else on
-average, including who was going to buy anyway.
+LIVE, 4 minutes. Meet the two lists head-on. The morning offered the retention test to "the whole
+tier" of 22, and this hold-back takes 14 of 70. Both are right: the 22 are Finance's order file, where
+Retail-Plus members delivered about Rs 1,139 each in August; the 70 are the platform's list, where
+Retail-Plus customers who did not get the sale averaged Rs 5,000. Different ids and different
+measures, delivered revenue per member against the platform's average spend, so neither checks the
+other. Fourteen are too few to see a 6 percent lift; sizing a hold-back is power, which comes later.
+Chance decides who gets the sale, so the groups are alike in everything else on average, including
+who was going to buy anyway.
 ```
 
 ---
 
-## S11. A second route: chapter 4's split agrees
-*A different table and a different idea reach the same verdict, with an honest difference.*
+## S11. A second route: the same test, no sale
+*Run August's test on the three months of Q1, when no sale ran, and see what an ordinary month does.*
 
-| Route | What it finds | What it says |
-|---|---|---|
-| The months, beside Retail-Core | August's share 4 points higher, which the label shuffle makes about 8 times in 10 | No sign; Retail-Core was partly reached, so it is an imperfect comparison |
-| Inside each segment, chapter 4 | Got it spent 3.0 percent less, in both segments | No lift, and possibly a loss |
+```mermaid
+xychart-beta
+    title "Gap between the segments' shares of their quarter, points"
+    x-axis ["Apr, no sale", "May, no sale", "Jun, no sale", "Aug, the sale"]
+    y-axis "Points" 0 --> 30
+    bar [4.0, 21.8, 25.8, 4.0]
+```
 
-**When to switch.** The months when no exposure table exists; the split when one does; the hold-back whenever the next campaign can still be designed.
+Months with no sale make gaps as large as August's and far larger, so August's four points carry no sign of the sale. **When to switch.** The months when no exposure list exists; the split when one does; the hold-back whenever the next campaign can still be designed.
 
 ```notes
-LIVE, 2 minutes. Neither route shows the lift Marketing claimed, and neither is a fair comparison,
-because nobody tossed a coin. That is why the line stays "do not repeat it as designed" and the
-action is the hold-back.
+LIVE, 2 minutes. Notebook 6's second route, a placebo: the same month-share test on a different
+quarter of Finance's file, sharing nothing with chapter 4's split. Shuffled labels make May's and
+June's gaps in about 15 and 7 deals in 100 counting either way. Chapter 4's split found 3 percent
+less in both segments; neither route shows the lift Marketing claimed, and neither is a fair
+comparison, because nobody tossed a coin. That is why the action is the hold-back.
 ```
 
 ---
 
 ## S12. Kavya's review of chapter 6
-*A senior offers the test as a way forward, never as a verdict on Marketing's work.*
+*A senior offers the test as a way forward, and keeps any verdict on Marketing's work out of it.*
 
 ```mermaid
 flowchart LR
-    W["<b>who got it</b><br/>a rule, never a coin"] --> N["<b>who did not</b><br/>a different mix"]
+    W["<b>who got it</b><br/>a rule chose them"] --> N["<b>who did not</b><br/>a different mix"]
     N --> E["<b>what else changed</b><br/>August, for everyone"]
     E --> T["<b>the offer</b><br/>a random hold-back"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
@@ -261,7 +283,7 @@ flowchart LR
     class T bet
 ```
 
-**Kavya's review.** Two routes find no lift, and you priced the hold-back and said what it cannot yet size. Take that to Marketing as an offer, never as a verdict on their work.
+**Kavya's review.** Two routes find no lift, and a quarter with no sale swings further than August. You priced the hold-back at about Rs 4,200 on the list it acts on and said what it cannot yet size. Take that to Marketing as an offer.
 
 **In the interview.** [F] How would you set up the Diwali campaign so you can tell whether it worked? [D] Before and after, the change beside the change, the split, or a hold-back: which would you defend to a CFO?
 
@@ -287,16 +309,17 @@ environment problems only. Collect the room's part 4 and part 5 answers for the 
 *Everything the chapters built, alone and against the clock, ending in the note Meera reads.*
 
 ```timeline
-label: Part 1 | title: Real? | body: Retail-Plus, 5,000 shuffles, seed 2026, and the p-value sentence.
-label: Part 2 | title: Worth it? | body: The fall in rupees against the company's quarter.
+label: Part 1 | title: Real? | body: Retail-Plus, 5,000 flips, seed 2026, counted both ways.
+label: Part 2 | title: Worth it? | body: The fall against the company's quarter, and a coin-chosen half-tier test.
 label: Part 3 | title: Student | body: The rate with its count and its chance reference.
-label: Part 4 | title: The discount | body: Did the monsoon sale lift revenue, and for whom?
-label: Part 5 | title: The note | body: Claim, evidence, caveat, action for all three questions, under 200 words. | tone: dark
+label: Part 4 | title: The discount | body: Did the monsoon sale lift spend, and for whom?
+label: Part 5 | title: Diwali and the note | body: The hold-back sized on the platform's list, then the note under 200 words. | tone: dark
 ```
 
 ```notes
 LIVE, 2 minutes. Read the five parts. Say that the case repeats the chapters on purpose, alone and
-fast, with twelve choices to make in the notebook and a note to write at the end. Start the clock.
+fast, with twelve choices to make in the notebook and a note to write at the end. Each check cell
+compares the learner's numbers with the numbers they should reach. Start the clock.
 ```
 
 ---
@@ -337,9 +360,9 @@ note lines. Run the wrong answers in order of how many made them.
 
 | Wrong line | Why it fails | The line that replaces it |
 |---|---|---|
-| "A 3 percent chance we are wrong." | The share was counted in chance-only worlds. | "A fall this large turns up in about 3 of every 100 shuffles." |
+| "A 3 percent chance we are wrong." | The share was counted in chance-only worlds. | "A fall this large turns up in about 3 of every 100 flips, 6 either way." |
 | "Retail-Plus fell 34 percent." | A third of a tier that is under one percent of the company. | "Rs 24,420 a quarter, 0.19 percent of the company." |
-| "Student is the growth story." | The rate stands on a handful of orders. | "Not yet: no budget moves until thirty orders a quarter." |
+| "Student is the growth story." | The rate stands on a handful of orders from few customers. | "Not yet: no budget moves until more customers buy." |
 | "The discount lifted spend 6 percent." | The blend compares two different mixes. | "Inside each segment, the customers who got it spent less." |
 
 ```mermaid
@@ -434,10 +457,10 @@ the comparison: one segment's exposed members against everyone unexposed. Let th
 *Reproduce Marketing's number, find what it compares, rebuild it fairly, and hold the line politely.*
 
 ```cards
-icon: repeat | eyebrow: Move 1 | title: Reproduce | body: Compute Rs 4,850 and Rs 3,200 from the exposure table.
+icon: repeat | eyebrow: Move 1 | title: Reproduce | body: Compute Rs 4,850 and Rs 3,200 from the platform's list.
 icon: search-check | eyebrow: Move 2 | title: Name the mismatch | body: Say which customers sit in each group, and what else differs.
 icon: columns-2 | eyebrow: Move 3 | title: Rebuild | body: Like for like, inside Retail-Plus, with the counts beside each average.
-icon: message-square | eyebrow: Move 4 | title: Hold the line | body: One reply to Marketing, in two sentences, with the Diwali hold-back offered. | tone: dark
+icon: message-square | eyebrow: Move 4 | title: Hold the line | body: What the sale cost at list price, and the Diwali hold-back offered, in two sentences. | tone: dark
 ```
 
 ```notes
@@ -447,26 +470,26 @@ push once more, and the pair answers with chapter 6's design and its price.
 
 ---
 
-## S20. Monday's rule returns: what 15 percent off costs
-*A discount of 15 percent needs 17.6 percent more volume just to stand still.*
+## S20. What 15 percent off cost, at list price
+*Marketing's own blend, read at list price, shows the exposed paying Kalpa less per customer.*
 
 ```mermaid
 flowchart LR
-    D["<b>discount</b><br/>15 percent off"] --> P["<b>price kept</b><br/>0.85 of each rupee"]
-    P --> V["<b>volume to stand still</b><br/>1 / 0.85 = 1.176"]
-    V --> R["<b>17.6 percent more</b><br/>before any gain"]
+    D["<b>the platform's list</b><br/>Rs 3,395 against<br/>Rs 3,200"] --> P["<b>if counted at list price</b><br/>the exposed paid<br/>85 percent of it"]
+    P --> V["<b>paid to Kalpa</b><br/>about Rs 2,886<br/>against Rs 3,200"]
+    V --> R["<b>about 10 percent<br/>less paid</b>"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class D,P,V known
     class R bet
 ```
 
-**Kavya's review.** Even a real lift has to clear the discount's cost. Ask Marketing for the volume lift, and set it against 17.6 percent.
+**Kavya's review.** Even a real lift has to clear the discount's cost: at 15 percent off, Monday's rule asks for about 17.6 percent more volume just to stand still. Ask Marketing which way the list counts before anyone argues.
 
 ```notes
-LIVE, 3 minutes. The campaigns table records 15 percent off; the break-even is Monday's companion
-experiment C. The exposure table does not say whether August revenue is before or after the
-discount, and the pair should list that as a question for Marketing rather than assume it.
+LIVE, 3 minutes. The campaigns table records 15 percent off. The platform's list does not say
+whether its August spend is before or after the discount; the pair sizes it both ways and lists the
+question for Marketing rather than assuming it. Notebook ex2, move 4, computes the 9.8 percent.
 ```
 
 ---
@@ -518,13 +541,14 @@ sentences that talk about the real world; stop the pair and ask which world the 
 | [F] | The campaign lifted revenue overall but every segment fell; how is that possible, and which do you report? |
 | [S] | What is a confounder? Give an example from a campaign. |
 | [D] | Marketing says your segment split is cherry-picking; how do you respond? |
-| [D] | Design: a shuffle test, a textbook test, a bootstrap range or wait a quarter; which do you choose for Monday, sized how, and what would switch it? |
+| [D] | Design: flip each pair, pool and shuffle, the textbook paired test, or wait a quarter; which for Monday, sized how, and what would switch it? |
 | [D] | You tested twenty segments and one came back at p = 0.03; what do you say? |
 
 ```notes
 LIVE, 8 minutes. The design question is the one the day added: the answer names the option, sizes
-it on this file, and names the fact that would switch it. The last one is recognition only: one in
-twenty chance-only tests reaches 0.05 by itself.
+it on this file, and names the fact that would switch it, including the design of the data (the same
+customers twice, or different customers). The last one is recognition only: about one in twenty
+chance-only tests reaches 0.05 by itself.
 ```
 
 ---
@@ -590,8 +614,8 @@ sheet; read it only after three learners have read theirs.
 | # | The line |
 |---|---|
 | 1 | A p-value is a share of chance-only worlds; it is never the chance the finding is wrong. |
-| 2 | Real and worth acting on are two separate calls: the shuffle answers the first, rupees against cost answer the second. |
-| 3 | Count what a rate stands on before you repeat it; under thirty, it is a lead. |
+| 2 | Real and worth acting on are two separate calls: a chance reference answers the first, rupees against cost answer the second. |
+| 3 | Count what a rate stands on, in customers as well as orders, before you repeat it; under thirty customers, it is a lead. |
 | 4 | Split an aggregate by segment before you credit a campaign, and name who got it. |
 | 5 | The note is claim, evidence, caveat, action, and "not yet, and here is what would tell us" is a complete answer. |
 | 6 | A fair comparison asks who got it, who did not, and what else changed; only a coin makes the two groups alike. |
@@ -622,7 +646,7 @@ seconds each: the p-value read as the chance of being wrong, and significance re
 ## S27. Friday's question, left open
 *Tomorrow the week is rebuilt without an assistant, on a file nobody has seen.*
 
-**The client asks.** "Can you do all of this again, alone, on a fresh export, and defend it to Marketing's face?" Meera Raghavan
+**The client asks.** "Before anything goes to Meera, rebuild the week from a raw export with no assistant and no notes. Then say it to me the way you will say it to her, because I will push the way Marketing will." Kavya Nair, senior analyst
 
 ```mermaid
 flowchart LR
@@ -634,6 +658,8 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 2 minutes. Do not preview the lab's file or its defects. Say tonight's take-home and the
-pre-read, and that the note is read aloud to someone outside the programme before Friday.
+LIVE, 2 minutes. Kavya takes Friday, as the pre-read tells the room. Do not preview the lab's file or
+its defects. Say tonight's take-home and the pre-read, and that the note is read aloud to someone
+outside the programme before Friday.
 ```
+
