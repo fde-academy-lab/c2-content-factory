@@ -106,8 +106,26 @@ The bank is the floor, never the ceiling. The week's source file,
 - **An untimed stretch page** of written, interview-grade follow-ups.
 
 `python3 scripts/build_saturday_paper.py W{ww} --docx` writes the paper and the key as Word files in
-the layout of the requester's baseline diagnostic, and the Word paper is what the room sits; for a week
-with parts it also writes the item-analysis workbook and its recalc manifest.
+the format of the requester's baseline diagnostic (`content/W00/D2/paper/C2_W00_D02_diagnostic_STUDENT.docx`),
+and the Word paper is what the room sits: its palette, fonts and running header; a first page with
+what the paper is for, the rules, step one (each part rated 1 to 4 before any item is read), the
+paper at a glance and a pacing ribbon; open question blocks that never split, each exhibit bound to
+the first item that reads it; and a one-page answer sheet at the end. The key ends on a marking grid.
+For a week with parts it also writes the item-analysis workbook, whose Ratings sheet sets each part's
+ratings beside its right rate. Three things in the source file make the Word paper specific rather
+than generic, and each is written for the week:
+
+- `purpose`, the paragraph under "What this paper is for": the week's case in its own terms, what the
+  paper finds out and how Monday uses it.
+- `company`, the Rules table's Company row: the Kalpa company and every person the items name, with
+  their role, as the week's own files give them.
+- a `label` for every item, two to five words beside its level that say what the item asks the
+  reader to do with what is in front of them ("Predict the output", "Spot the double count",
+  "Case: Kalpa Retail, Q1 against Q2"), never the key and never a hint at it.
+
+On a Saturday paper the options are of a length as well as of a precision: `scripts/distractor_audit.py`
+fails an item whose longest option runs past 30 characters while its shortest is under 60 percent of
+it, and the fix is an option edit in `data/programme/paper_edits.yaml`, never a stem or a key.
 
 ## The solutions file
 
