@@ -94,4 +94,4 @@ dropped for time leaves that chapter's check unasked.
 - Rs 90,000 as sales, since every order in the file was placed by a customer
 - The median order, since a few large orders can move a total in any file
 - Nothing yet, since a total cannot be reported until the returns come back
-- A total named with its reading, the 5 cancelled orders left out of it  <- correct
+- A total named with its reading, the 5 cancelled orders shown beside it  <- correct

@@ -58,7 +58,7 @@ must match it. A wrong total sets the plan's base on demand that never became a 
 | 3 | Which reading of sales comes out largest? | Booked comes out largest at Rs 5,44,810, then not cancelled at Rs 5,35,760 on 26 orders, then delivered at Rs 5,20,790 on 21. |
 | 4 | What goes wrong if all 30 orders are sent as sales? | Rs 5,44,810 goes out with the 4 cancelled store orders, Rs 9,050, inside it. |
 | 5 | Do sums by status reach the same totals? | They do: delivered Rs 5,20,790, returned Rs 14,970 and cancelled Rs 9,050 add back to Rs 5,44,810. |
-| 6 | Which number goes on the tree's root? | The total on the definition Meera plans on goes on the root, with that definition written beside it and the bridge to the other two. |
+| 6 | Which number goes on the tree's root? | Booked, Rs 5,44,810 on 30 orders, goes on the root, named, since chapters 2 to 6 build on the same 30 orders, with the other two totals and the bridge beside it; the total the plan uses is Meera's call with Finance. |
 
 ### 2. How does sales split into customers, orders per customer and order value, each a fraction on one definition?
 
@@ -298,7 +298,7 @@ delivered orders. After the second case, ask whether one channel changes the rec
 
 | Chapter | The wrong number | The decision it would mislead | The check that catches it | The fix |
 |---|---|---|---|---|
-| 1 | Sales go out as Rs 5,44,810, the sum of all 30 orders with the cancelled ones inside. | The growth baseline counts demand that never became a sale, and store's orders are overstated by 4 in 10. | Count orders by channel and status before summing: 21 delivered, 5 returned and 4 cancelled, all 4 in store. | Report not cancelled, Rs 5,35,760 on 26 orders, or delivered, Rs 5,20,790 on 21, with the definition written beside the number. |
+| 1 | Sales go out as Rs 5,44,810, the sum of all 30 orders with the cancelled ones inside. | The growth baseline counts demand that never became a sale, and store's orders are overstated by 4 in 10. | Count orders by channel and status before summing: 21 delivered, 5 returned and 4 cancelled, all 4 in store. | Each total goes out named, with the bridge: Rs 9,050 cancelled and Rs 14,970 returned between booked Rs 5,44,810 and delivered Rs 5,20,790. |
 | 2 | The AOV reads Rs 25,943, booked rupees over delivered orders. | The payback values each new order at a figure no definition supports, and multiplied back over the 30 orders it claims Rs 7,78,300. | AOV times the orders the revenue was summed over must give the revenue back, and 30 x (Rs 5,44,810 / 21) gives Rs 7,78,300. | Keep one definition per fraction: Rs 18,160 booked, Rs 24,800 delivered. |
 | 3 | The file shows 30 customers, so orders per customer reads 1.00 and "nobody comes back". | Frequency looks dead and the Rs 12 crore looks like the only way to grow. | `len(ORDERS)` against `len(set(ids))` gives 30 against 23. | Report 23 customers at 1.30 orders each, 7 of whom came back. |
 | 4 | A typical order of Rs 18,160, the mean, goes to marketing. | Marketing values a first order at Rs 18,160 and sizes the payback on it. | Count the orders above the mean, 1 of 30, and let each learner's sort show which one it is. | Quote the median of Rs 2,205, about one eighth of the mean, as the typical order; the payback's total uses the consumer view's mean of Rs 2,235. |

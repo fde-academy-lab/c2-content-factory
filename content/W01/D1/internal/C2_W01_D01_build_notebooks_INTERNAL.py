@@ -1294,7 +1294,8 @@ print(len(ORDERS), "orders,", kit.rupees(revenue), "booked")
         A set answers overlap questions: `&` keeps the ids two sets share and `|` the ids in either. A
         frequency plan has to reach customers where they come back, so the question is which channels
         the repeat buyers used. All 7 came back through a different channel from their first order, so a
-        frequency plan built on one channel would have missed every one of these returns.
+        plan that reached each customer only through the channel of their first order would have missed
+        every one of these returns.
         """),
         code("""
         by_channel = {"app": set(), "web": set(), "store": set()}

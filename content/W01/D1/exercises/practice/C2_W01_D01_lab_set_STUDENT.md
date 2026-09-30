@@ -28,8 +28,8 @@ Post exactly this shape: xxxxxxx / xxxx / xxxx / xxxxxx
 
 ## Which branch does each growth idea move, and what does moving it cost?
 
-Meera's marketing list holds these five ideas, and placing each on the branch it moves shows which
-of them would compete for the same customers. Allow about 15 minutes.
+Meera's marketing list holds these five ideas, and each has to be placed on the branch it moves
+before any of them is costed. Allow about 15 minutes.
 
 Five initiatives are on marketing's list: a discount, a new store, a loyalty card, a price rise and
 an app redesign. Revenue is customers, times orders per customer, times revenue per order, and

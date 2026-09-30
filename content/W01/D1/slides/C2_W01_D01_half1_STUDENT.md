@@ -719,12 +719,12 @@ flowchart LR
     class B,N,D known
 ```
 
-The sentence for Meera names the definition first: "Sales this quarter, net of cancellations, were Rs 5,35,760 on 26 orders; Rs 9,050 on 4 store orders was cancelled."
+A named total reads: "Sales this quarter, net of cancellations, were Rs 5,35,760 on 26 orders; Rs 9,050 on 4 store orders was cancelled."
 
 ```notes
 LIVE, 2 minutes. What changed: Rs 9,050 and 4 store orders leave sales, and store's kept orders fall
-from the 10 the draft implied to 6. Write both totals on the root of the board tree, each with its
-definition.
+from the 10 the draft implied to 6. Write booked on the root of the board tree, named, with the
+other two totals and the bridge beside it.
 Transition: the same three totals by a second route.
 ```
 
@@ -1396,7 +1396,7 @@ value: 1.30 | label: orders per customer | note: 30 / 23
 value: 7 | label: came back | note: 16 bought once
 ```
 
-Dividing the 30 orders by 23 distinct customers gives 1.30 orders each and shows the 7 customers who came back, which takes "nobody comes back" out of the case for the Rs 12 crore.
+Dividing the 30 orders by 23 distinct customers gives 1.30 orders each, and the counts per id show the 7 who came back, which takes "nobody comes back" out of the case for the Rs 12 crore.
 
 ```notes
 LIVE, 2 minutes. What changed, in customers: 7 people the draft could not see.

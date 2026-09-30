@@ -89,7 +89,7 @@ d) Sorting the ids in a spreadsheet and counting the places where they change
 Anand counts customers on his own reading of sales and Meera asks her own question about them, so
 each count at Kalpa starts from who is asking.
 
-### Q4. Anand counts customers only on orders that were not cancelled. On those, 26 orders come from 21 customers, and nobody placed three. How many of his customers kept two orders?
+### Q4. Anand asks for the customer count on the orders that were not cancelled. On those, 26 orders come from 21 customers, and nobody placed three. How many of his customers kept two orders?
 
 a) 5, the not-cancelled orders less their customers
 b) 7, the repeat buyers counted on all the booked orders

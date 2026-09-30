@@ -6,7 +6,7 @@ Kalpa Retail, Week 1 Monday. Before Meera Raghavan signs Rs 12 crore for new cus
 
 ```mermaid
 flowchart LR
-    R["<b>revenue</b><br/>Rs 5,44,810"] -->|"="| C["<b>customers</b><br/>23"]
+    R["<b>revenue</b><br/>Rs 5,44,810 booked"] -->|"="| C["<b>customers</b><br/>23"]
     C -->|"x"| F["<b>per customer</b><br/>1.30<br/>open first"]
     F -->|"x"| A["<b>order value</b><br/>Rs 18,160 mean<br/>Rs 2,205 typical"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
@@ -23,7 +23,7 @@ flowchart LR
 |---|---|
 | Wrong number | Rs 5,44,810 is called sales, with 4 cancelled store orders inside it. |
 | Check | Count by status first: 21 delivered, 5 returned, 4 cancelled. |
-| Fix | Not cancelled is Rs 5,35,760 on 26 orders; delivered is Rs 5,20,790 on 21. |
+| Fix | Each total named, with the bridge: booked Rs 5,44,810, less Rs 9,050 cancelled, less Rs 14,970 returned. |
 
 **Crux:** Name the definition before the number: booked, "not cancelled", or delivered.
 

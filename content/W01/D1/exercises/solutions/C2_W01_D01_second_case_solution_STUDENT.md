@@ -50,10 +50,9 @@ they are."
 ## Where does a share read on the wrong base show up at work?
 
 At Kalpa it arrived as the store team's claim that it carries the business, and a store-led plan
-would have followed a share that came from outside the segments Meera's plan concerns. A regional
-revenue split or a ranking of marketplace sellers can mislead the same way when a few large accounts
-set the share, so a share goes to a planner with the base it was read on, with and without its
-largest accounts, and at Kalpa with each channel's split by status beside it.
+would have followed a share that came from outside the segments Meera's plan concerns. A share
+goes to a planner with the base it was read on, and at Kalpa with each channel's split by status
+beside it.
 
 ## What are the second case notebook's seven picks?
 

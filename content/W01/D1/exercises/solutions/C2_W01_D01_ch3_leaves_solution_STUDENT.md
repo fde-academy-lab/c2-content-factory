@@ -6,7 +6,7 @@ Before Meera Raghavan, Kalpa Retail's CEO, signs Rs 12 crore to acquire new cust
 customers are the short branch. The file is Kalpa's 30 orders from 1 July to 26 September 2026, one row
 per order, and a customer is one customer id; orders per customer is orders over distinct customers in
 the same window. The head of Retail-Plus, Kalpa's paid membership tier, asks how many bought and how
-often, and Anand Iyer, the finance controller, counts customers only on the 26 orders not cancelled.
+often, and Anand Iyer, the finance controller, asks for the count on the 26 orders not cancelled.
 
 ## What does the set test about counting Kalpa's customers?
 

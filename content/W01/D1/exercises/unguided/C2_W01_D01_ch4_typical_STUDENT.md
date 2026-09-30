@@ -98,8 +98,8 @@ d) The trimmed mean always, since it moved almost as little as the median and is
 
 ## Does the typical order hold when the reading of sales changes?
 
-Anand's books use a different reading of sales from the chapters, so he asks whether the typical
-order moves with it before the number goes into Meera's plan.
+Anand asks whether the typical order moves with the reading of sales before the number goes into
+Meera's plan.
 
 ### Q5. Anand asks whether the typical order depends on the reading of sales. On not-cancelled orders the mean is Rs 20,606 and the median Rs 2,100. Set them beside the booked mean of Rs 18,160 and the booked median you found in Q2. What should the team tell him?
 

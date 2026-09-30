@@ -79,8 +79,8 @@ d) Nothing more, since the channels' rupees add up to the booked total
 
 ## What share does store hold once the view keeps the three consumer segments?
 
-Whoever drafts Kalpa's channel plan states the base each share is read on, since the same channel
-can lead on one base and trail on another.
+Whoever drafts Kalpa's channel plan states the base each share is read on before it reaches
+Meera.
 
 ### Q12. Design. Meera's growth plan concerns the three consumer segments, which book Rs 64,810 of the Rs 5,44,810. On which base should a channel plan read store's share, and what share does store hold there?
 
