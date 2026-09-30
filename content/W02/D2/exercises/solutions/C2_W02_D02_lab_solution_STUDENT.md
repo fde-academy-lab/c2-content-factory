@@ -1,15 +1,15 @@
-# Solution: joins that tell the truth
+# Solution: do the day's joins still tell the truth on refunds?
 
 Answers: 1b 2d 3a 4c 5a 6b 7c 8d 9a 10c 11b
 
-## The idea being tested
+## What does the lab test?
 
 The lab moves the day's three habits to a table the day never used: count rows before trusting a
 join, keep every condition on the right-hand table in the ON clause, and bring the right-hand table to
 the left-hand table's grain before summing. Problem 4 then runs the whole escalated case on Q1, where
 the numbers are yours to find.
 
-## Item by item
+## Why does each key hold, item by item?
 
 | Item | Key | Why it holds | Why the others fail |
 |---|---|---|---|
@@ -50,7 +50,7 @@ A WHERE inside the CTE is safe, because it filters the refunds before the join, 
 still keeps every order. The ON clause version, `LEFT JOIN lab_refunds r ON r.order_id = o.order_id
 AND r.refund_date BETWEEN ...`, fixes the lost orders and still needs the per-order sum for W-3.
 
-## Problem 4, the approach and the invariants
+## How should problem 4 be approached, and what must hold?
 
 The queries below are the escalated case moved to Q1. They give no Q1 numbers here, because the
 numbers are what you run for; your own output must satisfy every invariant under them.
@@ -170,14 +170,14 @@ The invariants your Q1 output must satisfy:
 Whatever the gap turns out to be for Q1, the sentence to Anand gives it with its explanation, and a
 gap of any size is reported with the check that proves it.
 
-## The part worth arguing about
+## Which part is worth arguing about?
 
 The stretch question. Net of refunds is the money Kalpa kept, which is what Anand ultimately wants;
 collected is the money that arrived, which is what his question this morning asked. The report he
 signs can carry both columns if each is named, and a refund must never be subtracted from booked
 instead, or the gap would no longer be the unpaid list.
 
-## Where the pattern lives in production
+## Where does this pattern live in production?
 
 Refund rates, return rates and chargeback rates are all a rate over a joined table, and each goes
 wrong in these two ways. Marketplaces report refund rate against orders placed in the period and

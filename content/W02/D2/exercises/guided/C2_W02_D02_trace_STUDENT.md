@@ -1,6 +1,6 @@
-# Guided: two tiny tables, traced by hand before any query runs
+# Which rows does each join keep on two tiny tables, traced by hand before any query runs?
 
-Built with the trainer in round 1, on the board and on your paper at the same time. The two tables
+Built with the trainer in chapter 1, on the board and on your paper at the same time. The two tables
 below are invented: five orders and seven payment rows, small enough to hold in your head, and
 shaped like the Kalpa feed Anand's question runs on. Nothing here is graded.
 
@@ -13,7 +13,7 @@ check what you wrote.
 
 ---
 
-## The two tables (invented)
+## What do the two invented tables hold?
 
 `tiny_orders`, one row per order:
 
@@ -50,7 +50,9 @@ flowchart LR
 
 ---
 
-## Part 1. Name the grain, one sentence each
+## Part 1. What does one row of each table stand for?
+
+At work, this is the first sentence you write about any table before you join it.
 
 Write, beside each table on your paper, what one row is. Then write whether `order_id` can repeat
 in it, and which rows prove it.
@@ -62,7 +64,9 @@ in it, and which rows prove it.
 
 ---
 
-## Part 2. The INNER join, written by hand
+## Part 2. Which rows does the INNER join return?
+
+At work, this is how you predict a join's output before trusting it.
 
 Write every row the INNER join returns, in order_id order. Leave the query closed.
 
@@ -87,7 +91,9 @@ never appears.
 
 ---
 
-## Part 3. The LEFT join, written by hand
+## Part 3. Which rows does the LEFT join add?
+
+At work, this is the join a question about every booked order needs.
 
 Now keep every order, paid or not. Write the rows, with `NULL` wherever the right side has nothing.
 
@@ -112,21 +118,27 @@ Under the table, write the row count and one sentence on what the LEFT join adde
 
 ---
 
-## Part 4. RIGHT and FULL, named
+## Part 4. Which extra rows do RIGHT and FULL keep?
+
+At work, these answer the questions that start from the other table.
 
 The trainer names these two and does not trace them in full. Write one sentence for each: which
 extra row appears, and which question about Kalpa's feed that row answers.
 
 ---
 
-## Part 5. Check what you wrote
+## Part 5. Did the query return what you wrote?
 
-Now run steps 1 to 6 of `sql/C2_W02_D02_01_tiny_tables_STUDENT.sql`. Tick every row you wrote
+At work, this is the habit of checking a prediction against the result, row by row.
+
+Now run the queries in `sql/C2_W02_D02_01_what_a_join_keeps_STUDENT.sql`, which builds the same two tables and runs each join. Tick every row you wrote
 correctly and circle every row you missed or invented. A circled row is the lesson, so keep it.
 
 ---
 
-## Part 6. Four quick picks, from your paper
+## Part 6. Can you answer four picks from your paper alone?
+
+At work, these are the row counts an interviewer asks you to predict aloud.
 
 Post one line, four letters in item order, no spaces, in this shape:
 

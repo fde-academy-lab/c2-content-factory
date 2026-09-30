@@ -1,6 +1,10 @@
-# Practice lab: joins that tell the truth
+# Do the day's joins still tell the truth on refunds, and on a quarter the day never touched?
 
-About 60 minutes, run by your TA after the day's teaching blocks. Four problems, climbing. The first
+About 60 minutes of this set, run by your TA after the day's teaching blocks. On a faculty day the
+lab opens on the escalated case's parts 3 to 5 (`unguided/C2_W02_D02_escalated_STUDENT.md`), then
+runs this set's problems 1 to 3, the second case in pairs (`unguided/C2_W02_D02_second_case_STUDENT.md`)
+and the interview drill aloud; problem 4 and whatever is left go home with the take-home. Four
+problems here, climbing. The first
 three run on small invented tables written for this lab; the fourth runs on the warehouse, on a
 quarter the day never touched. Work alone first, then compare with a neighbour before the TA walks
 the answers.
@@ -17,7 +21,7 @@ Post exactly this shape: xxxxxxxxxxx
 
 ---
 
-## The lab's invented tables
+## Which tables does the lab run on?
 
 The returns desk has sent six Q1 web orders and the refund rows raised against order ids in their
 range. Every number here is invented for the lab.
@@ -62,7 +66,9 @@ INSERT INTO lab_refunds VALUES
 
 ---
 
-## Problem 1. Predict four row counts, about 10 minutes
+## Problem 1. How many rows does each join return on the refund tables?
+
+About 10 minutes. At work, this is the row count you predict aloud before trusting any join.
 
 Write your four numbers on paper before you run anything. Then run the four joins and mark each
 prediction right or wrong, with the row that surprised you.
@@ -97,7 +103,9 @@ d) 5, one row per refund, the larger table's count
 
 ---
 
-## Problem 2. Match five business questions to the join, about 10 minutes
+## Problem 2. Which join answers each of five business questions?
+
+About 10 minutes. At work, this is choosing the join from the question, before any SQL is typed.
 
 Items 5 to 9 share the same four options, and an option may answer more than one item.
 
@@ -138,7 +146,9 @@ d) FULL JOIN, both sides' orphans
 
 ---
 
-## Problem 3. The refund rate that came out low, about 15 minutes
+## Problem 3. Why did the refund rate come out low?
+
+About 15 minutes. At work, this is reading a plausible rate back to the rows that made it.
 
 Anand wants the Q1 refund rate on these web orders: refunded value over booked value. A teammate
 sends this, and reports 16.3 percent:
@@ -176,7 +186,9 @@ chose. Put the reconciliation above it as a comment block: orders in, rows out, 
 
 ---
 
-## Problem 4. Booked against collected for Q1, about 25 minutes
+## Problem 4. What did Q1 collect against what it booked, and how do you prove it?
+
+About 25 minutes. At work, this is the month-end report rerun on a period nobody checked for you.
 
 The day's escalated case ran on Q2. Anand now asks for the same report on Q1, the quarter the day
 never touched: "Show me, by channel, what we booked in Q1 and what we collected against it, and

@@ -1,15 +1,15 @@
-# Solution: two tiny tables, traced by hand
+# Solution: which rows does each join keep on two tiny tables?
 
 Answers: 1c 2a 3b 4d
 
-## The idea being tested
+## What does the trace test?
 
 A join is a question about the rows that do not match, and its row count is decided by the grain of
 each table before any number is summed. On paper, with five orders and seven payment rows, a learner
 can see every row a join keeps, drops and repeats, which is what makes the warehouse's 678 rows
 readable an hour later.
 
-## The traced tables
+## What should your traced tables show?
 
 Part 1, the grain. `tiny_orders` is one row per order, and order_id never repeats in it.
 `tiny_payments` is one row per payment posting, and order_id repeats: T-2 carries P-2 and P-3 (two
@@ -38,7 +38,7 @@ answers "which payments does no order claim?", the question for the platform lea
 returns 8 rows: the six matched rows, T-4 and P-7, which answers "what fails to match on either
 side?" before a feed is repaired.
 
-## Item by item
+## Why does each key hold, item by item?
 
 | Item | Key | Why it holds | Why the others fail |
 |---|---|---|---|
@@ -47,14 +47,14 @@ side?" before a feed is repaired.
 | 3 | b | The LEFT join keeps T-4 with NULL on the payment side, which reads as booked and never paid. | a: dropping T-4 is what the INNER join does. c: a NULL is no amount at all until COALESCE turns it into a zero. d: T-4 has no payment row to make a second row from. |
 | 4 | d | RIGHT keeps every payment row, and FULL keeps every row on both sides, so both show P-7. | a: LEFT keeps every order, and P-7 has no order. b: INNER keeps only matched pairs. c: FULL shows it, and RIGHT shows it too. |
 
-## The part worth arguing about
+## Which part is worth arguing about?
 
 Part 1, T-3. Some of the room will call T-3 an instalment order because it has two rows. The two
 rows carry the same instalment number, the same amount and the same day, and that is what makes them
-one payment posted twice. The difference between T-2 and T-3 is the whole of round 3, and it is
+one payment posted twice. The difference between T-2 and T-3 is the whole of chapter 4's double-paid list, and it is
 worth writing on the board now, unresolved.
 
-## Where the pattern lives in production
+## Where does this pattern live in production?
 
 Every payments reconciliation in a retailer, a lender or a marketplace starts from this trace: a
 ledger of orders at one grain, a feed of postings at another, and a join whose row count has to be

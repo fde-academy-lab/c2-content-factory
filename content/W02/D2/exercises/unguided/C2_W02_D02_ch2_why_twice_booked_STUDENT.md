@@ -1,0 +1,113 @@
+# Why does the first join report nearly twice the bookings, and how do we attach payments so that nothing counts twice?
+
+The chapter 2 set. Items 1 and 2 close the chapter live; the rest open the TA-led practice lab or are
+worked tonight. Six items on an invented week at a smaller shop, so none of its numbers comes from
+Kalpa's warehouse.
+
+> **The client asks.** "Booked revenue is not collected revenue. Some orders are paid in two
+> instalments, some are refunded, some were never paid at all. Show me, order by order, what we
+> actually collected against what we booked."
+>
+> Anand Iyer, finance controller, Kalpa Retail
+
+## What do you need to know before the items?
+
+**Who needs the answer.** Anand, who would read a collected figure far above his books as collections
+running ahead and stand his collections team down, and you, since the way you attach payments here
+carries every later number.
+
+- **Booked** is every order at its amount; **collected** is the cash that arrived, each payment
+  counted once; collected can never honestly exceed booked.
+- `FILTER (WHERE ...)` restricts one aggregate to the rows that meet a condition.
+- A **CTE**, `WITH name AS (...)`, is a named subquery the main query reads.
+
+The invented week:
+
+| What the orders were | Orders | Payment rows each |
+|---|---|---|
+| Paid once, in full | 255 | 1 |
+| Paid in two instalments | 120 | 2 |
+| Paid once, and that payment posted twice by a gateway retry | 10 | 2 |
+| Never paid | 15 | 0 |
+| **All orders** | **400** | |
+
+The 400 orders book Rs 20,00,000 in all.
+
+Post one line, six letters in item order, no spaces:
+
+```
+Post exactly this shape: xxxxxx
+```
+
+---
+
+### Q1. How many rows does the first join return for the week?
+
+`orders o LEFT JOIN payments p ON p.order_id = o.order_id`, on the whole week. How many rows come back?
+
+a) 400, since a LEFT JOIN keeps each order exactly once
+b) 515, one row for each payment row
+c) 530: every payment row, plus one per unpaid order
+d) 545: every order plus every payment row
+
+### Q2. Why can every row be right while the total is wrong?
+
+The draft sums `o.amount` over that join, `FILTER (WHERE p.payment_id IS NOT NULL)`, and reports collected well above Rs 20,00,000. Every row on it is a real order beside a real payment. Why is the total wrong?
+
+a) the sum runs at the payment's grain: each amount repeats per row
+b) FILTER counts the unpaid orders as paid, each at its booked amount
+c) the LEFT JOIN adds NULL rows, and sum() counts each as an order
+d) the feed stores each amount twice, once for every instalment
+
+### Q3. Which of four fixes should the week's report use?
+
+Four ways a team could stop the double count on this week:
+
+| Option | How it works | What it does on this week |
+|---|---|---|
+| A | Bring payments to one row per order in a CTE, then LEFT JOIN | 400 rows, Rs 20,00,000 booked, a payment-row count kept per order |
+| B | `sum(DISTINCT o.amount)` after the join | one sum; 160 of the 400 orders share their amount with another order |
+| C | Keep the first posting of each order and instalment, with a tool taught later | still two rows for each two-instalment order |
+| D | Ask the platform lead to fix the feed | weeks of work, and this week stays as posted |
+
+Which fix gives Anand an honest booked figure and keeps the repeats visible for a double-paid list?
+
+a) B, since DISTINCT removes every repeat, whatever caused it
+b) C, since it removes the retries and the second instalments
+c) A: one row per order, and the count of payment rows kept
+d) D, since only a repaired feed can ever be trusted
+
+### Q4. How much booking does DISTINCT lose?
+
+In the invented week, 160 of the 400 orders share their amount with at least one other order, across 60 distinct amounts. How many orders' amounts does `sum(DISTINCT o.amount)` leave out of booked?
+
+a) 60, one for each amount that repeats
+b) 100: all but one per shared amount
+c) 160, every order that shares an amount
+d) none, since DISTINCT keeps every order
+
+### Q5. Which fact would make a DISTINCT before the join exact?
+
+Which fact about the feed would let a DISTINCT, taken on the payments before any join, remove exactly the retries and nothing else?
+
+a) the orders table held exactly one row for every single order id
+b) each row carried the gateway's reference, repeated on a retry
+c) the payments table carried an index on its order_id column
+d) each retry were posted a day after the payment it repeats
+
+### Q6. Which check proves the fixed join added and lost nothing?
+
+The fixed join returns 400 rows. Which second check proves that it neither added nor lost anything?
+
+a) the fixed join returns as many rows as the payments table holds
+b) the join's booked equals the first draft's collected, halved
+c) the fixed query runs cold, top to bottom, with no error
+d) each table summed alone equals the join's booked and posted
+
+---
+
+## Where does this skill come back?
+
+In chapter 3, which asks whether the fixed report still holds every order, and in the escalated case,
+where you choose the grain of the payments CTE on Kalpa's own Q2. The notebook for this chapter is
+`notebooks/C2_W02_D02_02_why_twice_booked_STUDENT.ipynb`.
