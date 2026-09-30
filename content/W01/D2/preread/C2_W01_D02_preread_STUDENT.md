@@ -11,8 +11,8 @@ vocabulary.
 Today's finding reaches the leadership group, and Anand Iyer, Kalpa's finance controller, replies
 to all:
 
-> "Your dashboard says Rs 2.1 crore for Q1 and my books say 1.9. Reconcile before anyone acts on
-> tonight's numbers."
+> "Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9. Until your numbers match ours,
+> Finance will not act on a drop measured from an ERP export. Send me a reconciliation."
 
 Every figure the team produced today started from the dashboard's export. Finance keeps its own
 books, and until the two agree, Finance will not act on a drop measured from an export. Tomorrow you

@@ -163,5 +163,6 @@ that answers Marketing: all 69 Q2 customers bought in Q1. Rung 5 gets its tick.
 3. The segment split with Retail-Plus circled, and the rupee view beside it: Business is Rs
    22,29,720 of the fall, resting on three orders.
 4. The two hypotheses, each with the data that would settle it.
-5. Tomorrow's question, left open in the corner, in Anand Iyer's words: "Your dashboard says Rs 2.1
-   crore for Q1 and my books say 1.9. Reconcile before anyone acts on tonight's numbers."
+5. Tomorrow's question, left open in the corner, in Anand Iyer's words: "Your dashboard says Q1 was
+   Rs 2.1 crore. Our books say 1.9. Until your numbers match ours, Finance will not act on a drop
+   measured from an ERP export. Send me a reconciliation."

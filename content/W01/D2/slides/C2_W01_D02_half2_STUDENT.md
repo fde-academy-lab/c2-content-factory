@@ -572,7 +572,7 @@ ladder: lines 1 and 2 prove the drop, 3 and 4 decompose it, 5 and 6 keep the rol
 ## S23. Tomorrow, Anand questions tonight's numbers
 *Finance's books and the dashboard disagree about Q1, and the answer waits for Wednesday.*
 
-> "Your dashboard says Rs 2.1 crore for Q1 and my books say 1.9. Reconcile before anyone acts on tonight's numbers." Anand Iyer, finance controller, Kalpa Retail
+> "Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9. Until your numbers match ours, Finance will not act on a drop measured from an ERP export. Send me a reconciliation." Anand Iyer, finance controller, Kalpa Retail
 
 ```mermaid
 flowchart LR
