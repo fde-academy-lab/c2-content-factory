@@ -495,7 +495,8 @@ notes:
       GROUP BY order_id with HAVING COUNT(*) > 1 returns every order with more than one payment row.
     wrong:
       b: >-
-        DISTINCT lists every paid order once and hides the duplicates it was meant to find.
+        DISTINCT lists every paid order once, and the ORDER BY only sorts that list, so the
+        duplicates it was meant to find are hidden.
       c: >-
         Sorting puts the duplicates next to each other and still returns every order.
       d: >-
@@ -641,11 +642,12 @@ notes:
   33:
     label: "Four statements"
     why: >-
-      WHERE filters rows before grouping, HAVING filters groups after aggregation, and HAVING can use
-      COUNT(*).
+      WHERE filters rows before grouping, HAVING filters groups after aggregation, and HAVING can
+      compare COUNT(*) with a number, as in HAVING COUNT(*) > 1.
     wrong:
       d: >-
-        An aggregate in WHERE is an error, because WHERE runs before the groups exist.
+        WHERE cannot compare COUNT(*) with anything: an aggregate in WHERE is an error, because
+        WHERE runs before the groups exist.
     answer: >-
       WHERE filters rows before the aggregate, HAVING filters groups after it, and only HAVING can
       use COUNT.
@@ -682,7 +684,7 @@ notes:
       kept all need a value computed across rows while each row stays.
     wrong:
       b: >-
-        Total revenue per segment is one aggregate per group, which GROUP BY answers alone.
+        A segment's total for the quarter is one aggregate per group, which GROUP BY answers alone.
     answer: >-
       Use a window when the answer needs other rows while every row stays; use GROUP BY when one row
       per group is the answer.
@@ -748,7 +750,9 @@ notes:
       c: >-
         This lists the double-paid orders, a different list.
       d: >-
-        Sorting by payment time finds nothing; it only orders the rows.
+        A RIGHT JOIN with IS NULL on the orders side is the anti-join from the other side: it lists
+        the payments whose order is missing, as step A7 of Tuesday's round 3 did, and never an
+        unpaid order.
     answer: >-
       Left join, then keep the rows whose payment key IS NULL.
   43:
