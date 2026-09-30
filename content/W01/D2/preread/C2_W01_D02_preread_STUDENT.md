@@ -1,12 +1,12 @@
 # Before tomorrow: can we trust the numbers?
 
-Ships tonight. Fifteen minutes of reading and one check to run. Tomorrow opens on a reply from
+This ships tonight: fifteen minutes of reading and two checks to run. Tomorrow opens on a reply from
 Finance to today's finding, and a room that has read this starts on the problem instead of the
 vocabulary.
 
 ---
 
-## What tomorrow is about
+## What will Finance ask tomorrow, and why?
 
 Today's finding reaches the leadership group, and Anand Iyer, Kalpa's finance controller, replies
 to all:
@@ -15,8 +15,7 @@ to all:
 > Finance will not act on a drop measured from an ERP export. Send me a reconciliation."
 
 The ERP is the company's system of record for orders and payments. Every figure the team produced
-today started from the dashboard's export. Finance keeps its own
-books, and until the two agree, Finance will not act on a drop measured from an export. Tomorrow you
+today started from the dashboard's export. Finance keeps its own books, and until the two agree, Finance will not act on a drop measured from an export. Tomorrow you
 own the reconciliation: which Q1 figure is right, how you know, and whether today's finding still
 stands once the numbers match.
 
@@ -31,7 +30,7 @@ flowchart LR
 
 ---
 
-## The words you will hear tomorrow
+## Which words will you hear tomorrow, and what do they mean to you?
 
 Fill these in from memory tonight. Tomorrow's first minutes assume you can.
 
@@ -48,7 +47,7 @@ If you cannot fill one in, that is the one to listen for.
 
 ---
 
-## One thing to think about before you arrive
+## What would you need to see before you chose between two totals?
 
 Two people looked at the same quarter and got two different totals, and neither of them is lying.
 Before anyone argues about which number is right, each of them has to be able to say exactly which
@@ -59,20 +58,20 @@ which of Anand's two figures is right. Bring the sentence; you will be asked for
 
 ---
 
-## The check for tonight
+## What should you check tonight before you arrive?
 
-Nothing to install. Two checks, both under five minutes.
+There is nothing to install, and both checks take under five minutes.
 
 1. Open your Codespace and run Restart and Run All on each of today's notebooks. Each one ends on a
-   green PASS line with 0 failed. If one does not, post its last error before the session rather
-   than at the start of it.
+   green PASS line with 0 failed. If one does not, post its last error in the cohort channel tonight,
+   so the session does not open on it.
 2. Open the Explorer panel in VS Code and find the `data` folder of today's pack. Tomorrow the
    orders arrive as files rather than as a list inside a Python file, so knowing where a data file
    sits in your Codespace saves the first ten minutes.
 
 ---
 
-## The line worth carrying in
+## Which line is worth carrying in?
 
 > A number that goes to Finance has to be the same data Finance holds, and the proof is a
 > reconciliation: every record that came in is either counted or set aside with a written reason.
