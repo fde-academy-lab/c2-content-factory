@@ -261,7 +261,7 @@ The worked numbers come from section 1's illustrative Saturday, month and quarte
 |---|---|
 | Formula | Revenue = customers x orders per customer x items per order x price per item, less discounts |
 | Worked | 40,000 x 1.25 x 4 x Rs 450 = Rs 9 crore; less 10 percent, Rs 8.1 crore |
-| The trap | A flat total can hide opposite moves: 20 percent more customers each ordering a sixth less leaves revenue unchanged, since 1.2 x 5/6 = 1 |
+| The trap | Leaks that grow faster than sales: revenue up 10 percent while returns climb from 6 to 12 percent of it leaves what Kalpa keeps up 3 percent, since 100 less 6 is 94 and 110 less 13.2 is 96.8 (invented), so a growth figure says which side of the leaks it was measured on |
 | Who asks | The CEO, first and always |
 
 ### Conversion and the funnel
@@ -279,7 +279,7 @@ The worked numbers come from section 1's illustrative Saturday, month and quarte
 |---|---|
 | Formula | AOV = revenue / orders; basket size = items / orders |
 | Worked | Rs 32 lakh / 2,000 = Rs 1,600 with 4 items on the app; Rs 1,250 with 5 items at the store |
-| The trap | An average across segments: ten household orders of Rs 1,600 and one office order of Rs 40,000 (invented) have a mean of Rs 5,091 and a median of Rs 1,600. AOV also rises when small orders stop, with nobody spending more. |
+| The trap | The app's AOV set against the store's ABV, its average bill value: the two divide different baskets, since an app order is a planned delivery and a store bill counts every quick trip for one item, so each compares only with its own history |
 | Who asks | Merchandising, marketing and finance |
 
 ### Frequency and repeat rate
@@ -324,7 +324,7 @@ The worked numbers come from section 1's illustrative Saturday, month and quarte
 |---|---|
 | Formula | Gross margin percent = (net revenue less COGS) / net revenue; contribution = gross margin less variable costs |
 | Worked | The Saturday basket: Rs 400 / Rs 1,600 = 25 percent; contribution Rs 150, or 9.4 percent |
-| The trap | Averaging percentages: staples at 10 percent on Rs 90 lakh and fashion at 40 percent on Rs 10 lakh (invented) average 25 percent, while the business earns 13 |
+| The trap | Dividing margin by GMV: the basket's Rs 400 over its Rs 1,800 is 22 percent, about three points under the 25 it earns on net revenue, and with GST inside the base a tax change moves the margin while the business stands still |
 | Who asks | The finance controller and the category buyers |
 
 ### Inventory turns and days of inventory
@@ -459,27 +459,27 @@ Two public cases show both ends of the ladder. Klarna's AI assistant handled two
 
 ## 9. The common technical problems, with their options
 
-Seven problems reach every retail data team, each with more than one honest answer chosen by rows, cost, time and accuracy. Sizes are illustrative.
+On Saturday afternoon the category buyer for home care had 380 festive lights left of 1,000 after four weeks, with Diwali ahead, and more than one honest way to decide on a markdown. Most retail data problems look like that: several defensible answers, chosen by the rows each needs, what it costs, how long it takes and how accurate it must be. The seven below reach every retail data team, and their sizes are illustrative.
 
-**Two revenue numbers that disagree**, the dashboard's and the finance controller's, for one quarter.
-
-| Option | How to size it |
-|---|---|
-| Bridge the two: start from finance's figure and explain each difference, from definition and timing to duplicates, tax and cancellations | A day on a quarter's orders; exact once it balances |
-| One governed definition in the warehouse that every dashboard reads | Weeks of platform work; prevents the next disagreement |
-| Both numbers shown, each with its definition | An hour; honest, and leaves the argument open |
-
-Best fit for Kalpa: the bridge, since finance will not act until the numbers match, then the governed definition. It changes if the gap sits inside rounding and timing, where the labelled pair is enough.
-
-**A metric that moved for a boring reason.**
+**When to mark down the festive lights.**
 
 | Option | How to size it |
 |---|---|
-| Align the calendar: same weekdays, festival-aligned weeks, tax changes marked | Minutes |
-| Check the plumbing: a tracking change, late data, a dashboard's changed definition | An hour with the platform team |
-| Check the mix: channel, segment, new against old stores | An hour of queries |
+| A rule of thumb: mark down when sell-through at a checkpoint falls below plan | Minutes a line; blind to how fast the weeks before a festival sell |
+| Project the weeks left from the rate so far and last year's festival lift, and mark down only the units the projection leaves unsold | An hour a line, on two years of weekly sales |
+| Estimate how demand responds to price from past markdowns, then simulate the depth and timing that earn the most margin on the stock | Needs dozens of past markdowns on similar lines, and weeks to build |
 
-Best fit: all three, cheapest first, before any hypothesis about customers. It changes if the move sits inside the usual week-to-week variation, which needs no explanation.
+The best fit for Kalpa is the projection, line by line, since one season of lights holds too few markdowns to estimate how demand responds to price. It changes once hundreds of seasonal lines are marked down each year, when the simulation pays for itself.
+
+**Finding stock-outs in sales data.**
+
+| Option | How to size it |
+|---|---|
+| Flag runs of zero sales on products that normally sell every day | One query over the sales history; misses slow sellers |
+| Join the daily stock records and mark a product-store-day out when stock on hand was zero | 50 stores x 5,000 products x 365 days is about 9 crore rows a year; right only when the records match the shelf |
+| Estimate the sales lost on flagged days from what those days usually sell | Needs a forecast for each product and store, and days of work |
+
+Kalpa is best served by the stock records with the zero-sales rule beside them, plus a monthly audit of a sample of shelves to measure how often the records call a product available while its shelf is empty. The answer changes if shrinkage runs high, since the records then drift from the shelf and the audits carry more of the weight.
 
 **Forecasting a promotion week.**
 
@@ -489,7 +489,27 @@ Best fit: all three, cheapest first, before any hypothesis about customers. It c
 | A normal-week baseline plus the uplift of past promotions of similar depth | Days; tested on held-out past promotions |
 | A machine-learning model on product-store-day history with price, promotion and calendar features | 50 stores x 5,000 products x 730 days is about 18 crore rows, and weeks of work |
 
-Best fit: baseline plus uplift at category level, split down to products, since each product has seen few comparable promotions. It changes with years of similar promotions per product. A stock-out and an overstock cost different amounts, so the error is judged in rupees.
+For Kalpa a baseline plus uplift at category level fits best, split down to products, since each product has seen few comparable promotions, and the history it learns from needs its stock-out days flagged first or it learns that an empty shelf sold nothing. It changes once each product has years of similar promotions behind it. A stock-out and an overstock cost different amounts, so the error is judged in rupees.
+
+**Refusing risky cash-on-delivery orders before they become RTOs.**
+
+| Option | How to size it |
+|---|---|
+| Rules: no cash on delivery above an order value, or for accounts that refused a parcel before | Hours; blunt, and it turns away good customers with the bad |
+| Score each cash-on-delivery order's chance of refusal from the account's history, the address, its pin code's past refusals and the order itself | Months of delivered and refused orders as labels, and days to build |
+| Ask before dispatch: a message asking the customer to confirm, or a small reason to pay online, sent only to the riskiest orders | A message per risky order, and a day's delay for those who never answer |
+
+The score fits Kalpa best when it chooses which orders get the confirmation step, since an RTO costs two trips and a good order turned away costs its contribution and perhaps the customer. It changes if the score would refuse orders outright, and a rule that falls on a whole pin code goes to the legal team first, because the e-commerce rules forbid discriminating between consumers of the same class or classifying them arbitrarily (rule 4(11), section 7).
+
+**Clustering stores for assortment.**
+
+| Option | How to size it |
+|---|---|
+| Group stores by rule: city, size and region | An hour; blind to what each store's customers buy |
+| Cluster stores on their category mix, each category's share of the store's sales | 50 stores x 40 categories is a table of 2,000 numbers that clusters in seconds; the work is choosing the categories and naming the clusters so buyers trust them |
+| Plan each store's range from its own product sales | 50 stores x 5,000 products; noisy for slow sellers, and fifty ranges for buyers to manage |
+
+A handful of clusters on the category mix suits Kalpa, named in the buyers' own words, with store-level exceptions for the fastest sellers. That changes if stores differ mostly in size, where size bands crossed with the clusters work better.
 
 **Deduplicating customers across app and store.**
 
@@ -497,9 +517,9 @@ Best fit: baseline plus uplift at category level, split down to products, since 
 |---|---|
 | Exact match on a verified phone number or email | Cheap; misses customers who gave neither at the till |
 | Probabilistic match on name, address and phone similarity, with a review queue | Comparisons grow with the square of the records, so candidates are grouped by pin code or phone first |
-| The member ID or phone number asked for at the till | Fixes the future, not the past |
+| The member ID or phone number asked for at the till | Matches every record from now on and leaves the history as it was |
 
-Best fit: the exact match plus capture at the till, with the probabilistic match only for reviewed reporting. It changes when merged records trigger offers or credit, where a false merge of two people's histories and consents costs more than a missed one, and the data protection law's purpose rule applies to the join itself.
+Kalpa should start with the exact match plus capture at the till, and keep the probabilistic match for reviewed reporting. It changes when merged records trigger offers or credit, where a false merge of two people's histories and consents costs more than a missed one, and the data protection law's purpose rule applies to the join itself.
 
 **Attributing a sale to a campaign.**
 
@@ -509,28 +529,7 @@ Best fit: the exact match plus capture at the till, with the probabilistic match
 | Rules that split credit across the first, last or every touch | Free; still says who touched it |
 | An incrementality test that holds out a random group of customers or cities | Costs the holdout's sales; says what the campaign added |
 
-Best fit: a holdout for any campaign that argues for budget, and last touch for daily reporting, labelled as such. It changes if nobody can be withheld, where matched cities before and after are the fallback.
-
-**Measuring a discount's effect fairly.**
-
-| Option | How to size it |
-|---|---|
-| Discount weeks against the weeks before | Free, and confounded by the season |
-| Customers who used the discount against those who did not | Free, and biased, since takers differ from non-takers |
-| A randomised holdout that does not get the offer | Costs the offer's reach in the holdout; the cleanest answer |
-| Similar stores or cities with and without it, before and after | Needs comparable groups and a stated caveat |
-
-Best fit: a randomised holdout for the next campaign, and a matched comparison with its caveat for one already run. It changes if the discount must reach every member, where a launch staggered by city creates the comparison.
-
-**Answering "why did revenue fall".**
-
-| Option | How to size it |
-|---|---|
-| The investigation ladder by hand: is the fall real, is the comparison like for like, which branch moved, in which segment, which hypothesis the next data would settle | A day and a handful of queries |
-| An automated drill-down ranking the dimensions that contributed most | Fast, and noisy without the ladder's discipline |
-| An experiment or natural comparison testing the lead hypothesis | Weeks, before money moves |
-
-Best fit: the ladder every time, the tool once the question recurs weekly, the test before a budget changes. It changes if the fall sits inside normal variation, where the answer stops at the first rung.
+For Kalpa a holdout fits any campaign that argues for budget, and last touch fits daily reporting, labelled as such. It changes if nobody can be withheld, where matched cities before and after are the fallback.
 
 ---
 
@@ -543,7 +542,7 @@ Five scenes most learners have lived through, each turned into its metrics and t
 | A DMart-style weekend rush: queues at every till, trolleys full, the favourite brand of rice gone by evening | Conversion = bills / footfall; bill value = sales / bills; items per bill; stock-outs by hour | Forecasting footfall by hour to open tills and refill fast movers, and a denominator trap: a family of four is four through the door and one bill |
 | A delivery promised in minutes from a dark store nearby | Orders per dark store per day; average order value, Rs 518 at Blinkit in the quarter to June 2026 (MediaNama); delivery cost per order; contribution per order | Placing each product in the right dark store by forecast, and a speed promise weighed against riders' safety: in January 2026, after a government intervention, Blinkit dropped the "10-minute" promise from its branding and the other platforms agreed to follow (All India Radio News, 13 January 2026) |
 | A festive sale, such as Flipkart's Big Billion Days or Amazon's Great Indian Festival, with early access for members | GMV; discount depth; sell-through; returns that arrive weeks later; sales pulled forward from the weeks after | Separating sales the event added from sales it only moved earlier, and forecasting its demand from few comparable events |
-| A membership renewal: the reminder that Retail-Plus renews next week | Renewal rate = members renewing / members due; orders per member against orders per non-member; fee revenue against delivery given away | The customers who join are often those who already buy the most, so comparing members with non-members can overstate what the membership caused; a churn score decides who gets a renewal offer |
+| A membership renewal: the reminder that Retail-Plus renews next week | Renewal rate = members who renew / members due to renew that month; orders per member per month; fee revenue against what the tier's benefits cost | Predicting who will not renew in time to act, with a churn score from each member's recent orders, returns and support contacts, judged by how many of the members it flags do lapse |
 | A return: the Saturday basket's bedsheet goes back because the colour differs from the picture | Returns rate = returned / delivered; reverse-logistics cost; the order's contribution after the refund | "Not as described" returns trace back to catalogue data, abuse hides among honest returns, and a refund agent must act within the policy |
 
 ---

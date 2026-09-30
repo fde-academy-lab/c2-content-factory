@@ -20,7 +20,7 @@ flowchart LR
     class C,E core
 ```
 
-**Before the room arrives.** The board is clean. The trainer has read the dossier's sections 1 to 5 and the facts table at the end of this page, since a learner will ask about a real company and the answer has to be the checked one. The card is printed, one per learner, and handed out at the close of part 6.
+**Before the room arrives.** The board is clean. The trainer has read the dossier's sections 1 to 5 and the facts table at the end of this page, since a learner will ask about a real company and the answer has to be the checked one. The card is printed, one per learner, and handed out at the end of the day, after the room has met the day's traps in the case.
 
 **What never gets said.** The story does not preview anything the week's data is built for the room to find: the Monday file's largest order, the export's duplicates, which tier or branch moved, or what the monsoon sale did. The illustrative numbers are never called Kalpa's data. Kalpa is never described as modelled on a real company; say "Kalpa is fictional, and these are real companies that look like parts of it."
 
@@ -164,15 +164,15 @@ flowchart LR
 
 ## Part 5: The metric tree, and three traps (9 minutes)
 
-**Say.** "Every retail number hangs off one tree. Revenue is customers, times orders per customer, times items per order, times price per item, less discounts. Customers are new or returning; new ones cost acquisition, returning ones are retention. Stock on the shelf decides whether any of it can happen, and cancellations and returns leak out before we count the margin. Every metric is a numerator over a denominator in a window, and the three traps that fool most analysts are all about the bottom half of that fraction."
+**Say.** "Every retail number hangs off one tree. Revenue is customers, times orders per customer, times items per order, times price per item, less discounts. Customers are new or returning; new ones cost acquisition, returning ones are retention. Stock on the shelf decides whether any of it can happen, and cancellations and returns leak out before we count the margin. Every metric is a numerator over a denominator in a window, and each of these three traps hides in one of the three."
 
 Then the three traps, each with one illustrative example, spoken rather than drawn.
 
 - A denominator that shifted: "January's cohort had 1,000 new customers, 380 of them ordered in February and 300 in March. March's retention is 30 percent. Someone who divides 300 by 380 reports 79 percent and has divided by the survivors."
-- An average across segments: "Ten household orders of Rs 1,600 and one office order of Rs 40,000 have a mean of about Rs 5,091 and a median of Rs 1,600. Which one describes a typical order?" These are invented numbers; do not connect them to Kalpa's file.
+- A missed sale leaves no row: "The pressure cookers ran out on Saturday afternoon. Sunday's file shows no sales of them, and no row says anyone asked for one. A forecast trained on that file learns that nobody buys a pressure cooker on a Sunday."
 - Growth that is not like for like: "Last year 100 stores sold Rs 500 crore. This year the same 100 sold Rs 510 crore and 20 new stores added Rs 65 crore. Total growth is 15 percent and like-for-like growth is 2 percent. DMart reports its growth on stores two years and older for exactly this reason."
 
-**Ask the room.** "The app's average order value rose 10 percent this month. Good news?" Collect three reasons it might not be: small orders stopped after a minimum for free delivery, a few large orders pulled the mean, prices rose and fewer items went in each basket. Land it: say the denominator and the window before the number.
+**Ask the room.** "The festive lights have sold 62 percent of their stock in four weeks, with Diwali still ahead. Good news or bad?" Collect three things to check before answering: what the same lights had sold a year ago at the same distance from Diwali, how many selling weeks are left and how fast the festival weeks sell, and whether any of the four weeks had an empty shelf, since a stock-out caps what could sell. Land it: a rate means nothing until you say what it is compared with, and over which window.
 
 **Draw: the metric tree.** Revenue in the middle of the top line, its three branches below, the shelf above it and the leaks to its right. This is the same drawing as the dossier and the card, and the day's case writes its numbers onto it.
 
@@ -224,7 +224,7 @@ flowchart LR
     class A bad
 ```
 
-**Hand over.** Give out the card, then say the line that opens the case: "That is the business. On Monday its CEO read one page: revenue grew 4 percent against a plan of 15, marketing wants Rs 12 crore, and she asked us one question before she signs anything." Meera's ask begins.
+**Hand over.** Say the line that opens the case: "That is the business. On Monday its CEO read one page: revenue grew 4 percent against a plan of 15, marketing wants Rs 12 crore, and she asked us one question before she signs anything." Meera's ask begins.
 
 ---
 
