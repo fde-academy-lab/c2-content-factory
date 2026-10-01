@@ -1,86 +1,107 @@
-# Kahoot, Week 2 Thursday
+# Can you make the day's eight calls in seconds, from what groupby does to how many rows a top fifty ships?
 
-Eight items, ungraded, scored on correctness and speed together. The last item returns to
-Wednesday, one level up.
+Eight items, ungraded, scored on correctness and speed together. Seven are today's, and the last is
+the return question from Wednesday, one level up. Item 2 uses Kalpa's own four segments and two
+quarters; the 1,000 customers and 1,120 rows in item 6 are invented.
 
-Each item names what it tests, so an item dropped for time says what was lost.
+The day built Kalpa Retail's growth team one table, one row per customer, refreshed every Monday from
+the warehouse in pandas: recency, frequency and spend for each of the 340 customers on the list,
+whether the monsoon sale reached them, and the flags the growth team acts on. On the way it attached
+the sale's feed to the customer list, read Retail-Plus's spend month by month, asked one question in
+three tools, and built a refresh the growth team can leave to run. A merge is pandas' join of two
+tables on a key column.
+
+**Who needs the answer.** The trainer, closing the day. Each item is one of the day's calls made in
+seconds, and an item most of the room misses is the one to say again before the room leaves.
+
+**The questions on the way.**
+
+- What does `groupby` do to the orders when the table wants one row per customer?
+- What shape does `agg` give with two measures on four segments and two quarters?
+- Which merge argument raises on repeated keys, and with which error?
+- Which of `pivot` and `melt` widens a table, and which lengthens it?
+- Where does Finance's Monday number live?
+- Why did a left merge of 1,000 customers return 1,120 rows?
+- What does `pivot_table` put in a cell when no `aggfunc` is given?
+- Wednesday's business wants ties ranked the same: which function, and how many rows might a top fifty
+  ship?
 
 ---
 
-## Q1. groupby in one sentence: split, apply, combine on what?
+## Q1. What does `groupby` do to the orders when the table wants one row per customer?
 *Tests: the split-apply-combine sentence, said about the Monday table.*
 
-- Split the customers by segment, apply a sort, combine into one list
-- Split the orders by customer, apply the measures, combine one row each  <- correct
-- Split the table by column, apply a dtype to each, combine the columns back
-- Split the orders by date, apply a filter, combine into one month
+- Splits the customers by segment, sorts each, and combines one list
+- Splits the orders by customer, applies the measures, one row each  <- correct
+- Sorts the orders by customer and keeps each customer's first order
+- Gives every order its customer's totals and keeps all 1,000 rows
 
 ---
 
-## Q2. agg with two measures on 4 segments and 2 quarters: what shape?
-*Tests: two group keys give one row per pair, and each named measure is a column.*
+## Q2. What shape does `agg` give with two measures on four segments and two quarters?
+*Tests: two group keys give one row per pair that exists, and each named measure is a column.*
 
 - 4 rows by 2 columns, one row per segment
 - 2 rows by 8 columns, one row per quarter
-- 8 rows by 2 columns  <- correct
-- 1,000 rows by 2 columns, one row per order
+- 8 rows by 2 columns, one per segment and quarter  <- correct
+- 1,000 rows by 2 columns, one row for every order
 
 ---
 
 ## Q3. Which merge argument raises on repeated keys, and with which error?
-*Tests: validate= is the row-count check made loud.*
+*Tests: `validate="one_to_one"` stops the merge with a `MergeError` when either side repeats a key, so no wrong table is built.*
 
-- `how="inner"`, raising KeyError on the repeated key
-- `indicator=True`, raising ValueError on the repeated key
-- `on=`, raising TypeError when a key appears twice
-- `validate="one_to_one"`, raising MergeError  <- correct
-
----
-
-## Q4. pivot against melt: which widens and which lengthens?
-*Tests: the reshape changes the question a table answers.*
-
-- pivot widens and melt lengthens  <- correct
-- pivot lengthens and melt widens
-- both widen, and melt also sorts
-- both lengthen, and pivot also sums
+- `validate="one_to_many"`, raising a `MergeError` when the feed repeats a key
+- `how="left"`, raising a `MergeError` when the feed repeats a key
+- `validate="many_to_many"`, raising a `KeyError` on the repeated key
+- `validate="one_to_one"`, raising a `MergeError` on the repeated key  <- correct
 
 ---
 
-## Q5. Finance's Monday number: plain Python, SQL or pandas?
-*Tests: the number lives where the people who audit it can rerun it.*
+## Q4. Which of `pivot` and `melt` widens a table, and which lengthens it?
+*Tests: a reshape changes the question a table answers, a comparison or a trend.*
 
-- pandas, because it is the fastest way to compute it
-- SQL, because Finance can rerun it at the source  <- correct
-- plain Python, because every step can be read
-- Any of them, since all three give the same number
-
----
-
-## Q6. 1,000 customers in, 1,120 rows out of a left merge. What happened?
-*Tests: a left merge multiplies rows when the right side repeats keys.*
-
-- 120 new customers arrived in the feed overnight
-- The left merge added the feed's unmatched rows
-- Some customers appear more than once in the feed  <- correct
-- pandas duplicated rows at random during the merge
+- `pivot` widens and `melt` lengthens  <- correct
+- `pivot` lengthens and `melt` widens
+- Both widen, and `melt` also sorts the rows
+- Both lengthen, and `pivot` also sums the cells
 
 ---
 
-## Q7. pivot_table with no aggfunc on member spend: each cell is what?
-*Tests: the default aggfunc is the mean, which hides how often members bought.*
+## Q5. Where does Finance's Monday number live?
+*Tests: a number lives where the people who rerun it can run it.*
+
+- pandas, since it computes the number fastest on this data
+- SQL, a query Finance reruns in the warehouse each Monday  <- correct
+- Plain Python, since every step of a loop can be read
+- Any of the three, since all of them give the same number
+
+---
+
+## Q6. Why did a left merge of 1,000 customers return 1,120 rows?
+*Tests: a left merge copies a row once for every match the right side holds.*
+
+- Each customer with no match in the feed gained an empty row
+- The left merge added the feed's unmatched rows to the table
+- Some customers appear more than once in the campaign feed  <- correct
+- The merge had no validate, which pandas needs to keep one row per key
+
+---
+
+## Q7. What does `pivot_table` put in a cell when no `aggfunc` is given?
+*Tests: the default is the mean, which hides how often members bought.*
 
 - The member's total spend in that month
 - The member's average order in that month  <- correct
 - The number of orders the member placed that month
-- The member's largest order in that month
+- The member's largest single order in that month
 
 ---
 
-## Q8. Return to Wednesday: ties must rank the same. Which function, and how many rows might "the top fifty" ship?
-*Tests: RANK gives tied members the same rank, so a tie at the boundary ships more than fifty.*
+## Q8. Wednesday's business wants ties ranked the same: which function, and how many rows might a top fifty ship?
+*Tests: Wednesday's tie rule, answered from what the function does at the boundary.*
 
-- ROW_NUMBER, and exactly fifty rows every time
-- DENSE_RANK, and fewer than fifty rows when there are ties
-- NTILE, and fifty rows split across the ties evenly
-- RANK, and more than fifty when the fiftieth place is tied  <- correct
+- `ROW_NUMBER`, and exactly fifty rows every time
+- `DENSE_RANK`, and fewer than fifty rows when two members tie
+- `NTILE`, and fifty rows split evenly across the ties
+- `RANK`, and more than fifty when members tie at the boundary  <- correct
