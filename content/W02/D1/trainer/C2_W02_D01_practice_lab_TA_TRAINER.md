@@ -20,8 +20,8 @@ room home without the returns suite and the drill, the two parts nothing else in
 - What does a finished lab look like?
 - What if the warehouse will not connect?
 
-Keys: the escalated case, `1b 2c 3a 4d 5a 6c 7d 8b 9b 10a 11d 12c 13b 14d 15a`, of which parts 3 to 5
-are items 6, 7 and 13, then 8 and 14, then 9, 10 and 15; the practice set, `bdcaadbcdab` for items 1 to
+Keys: the escalated case, `1b 2c 3a 4d 5a 6c 7d 8b 9b 10a 11b 12c 13b 14d 15a`, of which parts 3 to 5
+are items 6, 7 and 13, then 8 and 14, then 9, 10 and 15; the practice set, `bdcaadbcdcb` for items 1 to
 11. The reasons for every letter are in `exercises/solutions/C2_W02_D01_escalated_case_solution_STUDENT.md`
 and `exercises/solutions/C2_W02_D01_lab_solution_STUDENT.md`; the executed notebook is
 `exercises/solutions/C2_W02_D01_ex1_escalated_case_solution_STUDENT.ipynb`.
@@ -67,7 +67,7 @@ Cut in this order, and stop as soon as the lab fits.
 | Escalated, marker 6 | They pick `avg(q2_spend)` because it reads as the average | "Who is inside Q2's average, and who is inside Q1's? Count them before you choose." |
 | Escalated, item 13 | They keep the morning's line that frequency led the fall | "Of the three delivered ratios, which is smallest?" |
 | Escalated, marker 8 | They predict 56, adding the two quarter counts because orders and rupees added | "Can one customer sit in both quarter rows?" |
-| Escalated, item 15 | They choose the book less the cancelled rupees, which never touches the filter | "Which statuses does that route leave in, and what does it print against the faulty Rs 17,26,46,250?" |
+| Escalated, item 15 | They choose the book less the returned rupees, which never touches the filter | "Which statuses does that route leave in, and what does it print against the faulty Rs 16,03,44,040?" |
 | Problem 1, item 3 | They count half-year orders and answer 3 | "Which rows reach the groups at all?" |
 | Problem 1, item 4 | They add 244 and 227 | "Can one customer appear in both quarters' lists?" |
 | Problem 2, item 6 | They say HAVING waits for SELECT's names | "Which clause runs last, and so which clause can use the names SELECT gives?" |

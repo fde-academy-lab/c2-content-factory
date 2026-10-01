@@ -41,7 +41,7 @@ slide lists its smaller questions, and its last slide answers them.
 | Chapter 4 | Which branch of each segment's tree moved, and how much less did each Retail-Plus member spend? | Nested subqueries, named steps or temporary tables? How did customers, frequency and order value move in each segment? How much less did each Retail-Plus member spend? Does revenue over the members who bought, counted on their own, give the same levels? |
 | Chapter 5 | Do the suite's numbers add up the way Anand's analyst will add them? | How should the suite produce its half-year column? Do the segments add back to the book in each quarter? How many Retail-Plus customers bought in the half-year? Does the overlap between the two quarters explain the gap? |
 | Chapter 6 | Will next Monday's run give Anand's analyst the same answer from the same book? | How can a run show that it computed the same thing as last week's? What fingerprint does this Monday's run leave? Which five orders will the analyst trace against the ERP? Does a count with no sort confirm the five? What does the Monday suite tell Anand? |
-| The escalated case | Does the Monday suite hold on Finance's definition, the orders that were delivered? | What does the book say on Finance's definition? Which segment's frequency fell on delivered orders, and which groups are too thin? Which branch of Retail-Plus's tree moved furthest, and how much less did each member spend? Does the suite add up the way the analyst will add it? Will the analyst's rerun draw the same sample, and what does the run print beside it? |
+| The escalated case | Does the Monday suite hold on Finance's definition of revenue? | What does the book say on Finance's definition? Which segment's frequency fell on delivered orders, and which groups are too thin? Which branch of Retail-Plus's tree moved furthest, and how much less did each member spend? Does the suite add up the way the analyst will add it? Will the analyst's rerun draw the same sample, and what does the run print beside it? |
 | The second case, take-home | Is the store booming and the web collapsing, as Marketing says? | What do the channel totals say from Q1 to Q2? Which orders make up each channel's total? How did each channel's consumers move, branch by branch? Which line goes on Anand's channel sheet? |
 | The close | Can the warehouse itself give Anand the Monday numbers, every segment, every week? | Which line does each chapter leave the Monday suite with? What does Anand ask next? |
 
@@ -122,17 +122,19 @@ moves out of the afternoon.** The escalated case's parts 3 to 5, the debrief of 
 answers and the interview drill run in the TA-led practice lab; the second case runs in the
 take-home, in pairs or alone. The TA's note is `trainer/C2_W02_D01_practice_lab_TA_TRAINER.md`.
 
-**Which letters are keys?** The chapter sets: chapter 1 `cadbd`, chapter 2 `bcdab`, chapter 3
-`bdacb`, chapter 4 `acadcb`, chapter 5 `cabdc`, chapter 6 `cbcdba`. The escalated case
-`bcadacdbbadcbda` (items 1 to 10 are the notebook's markers, 11 to 15 the brief's own, one per part:
-four design items and, in part 3, a reading of the two trees); the second case `dacbbdcaab` (1 to 7
-the markers, 8 to 10 the brief's own). The guided build `adcbd`; the practice lab `bdcaadbcdab`. The
-Kahoot, in order: d, b, a, c, a, d, c, b. Reasons for every letter, and each item's kind, are in
+**Which letters are keys?** The chapter sets: chapter 1 `cadbd`, chapter 2 `bcaab`, chapter 3
+`bdacb`, chapter 4 `acadcd`, chapter 5 `cabdc`, chapter 6 `cbcdba`. The escalated case
+`bcadacdbbabcbda` (items 1 to 10 are the notebook's markers, 11 to 15 the brief's own, one per part:
+four design items and, in part 3, a reading of the two trees); the second case `dacbbdccab` (1 to 7
+the markers, 8 to 10 the brief's own). The guided build `adcad`; the practice lab `bdcaadbcdcb`. The
+Kahoot, in order: d, b, a, c, a, b, c, b. Reasons for every letter, and each item's kind, are in
 `exercises/solutions/`. Of the 73 lettered items, 26 are design items: three in each of chapters 1,
 2, 4, 5 and 6, two in chapter 3, four in the escalated case, four in the second case and one in the
 lab. Expect the room to split on chapter 2's
 item 5 (the customer bridge built from each customer's history) and the escalated case's item 14
-(the fact that would let two quarter counts be added); take those two first in the lab's debrief.
+(the fact that would let two quarter counts be added); their solutions argue both. The lab's debrief
+takes the escalated case's wrong letters in the order the TA's note sets: item 5 b, item 13 a, item
+2 a, then item 15 c.
 
 ---
 

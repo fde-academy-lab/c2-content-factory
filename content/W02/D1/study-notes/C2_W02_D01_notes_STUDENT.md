@@ -188,7 +188,7 @@ Airbnb Tech Blog, "How Airbnb achieved metric consistency at scale", 30 April 20
 | A. The two totals | 4 numbers, which catch a different fall and nothing else |
 | B. Every leaf as a change | 20 numbers, which catch any branch that moved differently |
 | C. Order by order, on the id | 186 lookups and 0 found, since the sources share no id |
-| D. Last week's notebook on an export | 1,340 rows exported, which the platform lead ruled out |
+| D. Last week's notebook on an export | 1,340 rows exported, the 1,000 orders and the 340 customers, since last week's file carried each order's segment and city; the platform lead ruled exports out |
 
 The call is B, because a change survives a five-fold difference in size. Shared order ids would
 switch it to C.
@@ -549,11 +549,11 @@ It will, once every audit sample is ordered on a unique key and the fingerprint 
 ## What do the escalated case and the second case ask?
 
 **The escalated case** asks whether the suite holds on Finance's definition: "Finance counts the
-orders that reached the customer and stayed there. Run me the same suite on delivered orders, and
-tell me whether the story changes." Delivered means the order reached the customer and was not
-returned or cancelled. Its five parts climb the chapters, from the delivered book and each segment's
-frequency to Retail-Plus's branches, the tie-outs and a run that repeats; parts 1 and 2 ran in the
-afternoon and parts 3 to 5 run in the practice lab. Every number changes on the new definition.
+orders that reached the customer and stayed there. Run me the same suite on that definition, and
+tell me whether the story changes." Its five parts climb the chapters, from the book on Finance's
+definition and each segment's frequency to Retail-Plus's branches, the tie-outs and a run that
+repeats; parts 1 and 2 ran in the afternoon and parts 3 to 5 run in the practice lab. Every number
+changes on the new definition.
 
 **The second case** asks whether the store is booming and the web collapsing, as Marketing says.
 Marketing read the channel totals and wants budget moved from the web to the stores, and Anand wants

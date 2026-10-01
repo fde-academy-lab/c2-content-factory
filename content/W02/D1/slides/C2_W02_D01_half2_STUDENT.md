@@ -369,8 +369,8 @@ sample. Then the case the room runs alone.
 
 ---
 
-## SECTION 7: Delivered orders only?
-*Does the Monday suite hold on Finance's definition, the orders that were delivered?*
+## SECTION 7: Finance's definition?
+*Does the Monday suite hold on Finance's definition of revenue?*
 
 ```notes
 LIVE. Twenty minutes in the afternoon for parts 1 and 2, alone, in
@@ -384,11 +384,11 @@ after the day.
 ## S16. Answer it in five parts: two now, three in the lab
 *Which parts does the case ask for, and which runs where?*
 
-> "Finance counts the orders that reached the customer and stayed there. Run me the same suite on delivered orders, and tell me whether the story changes."
+> "Finance counts the orders that reached the customer and stayed there. Run me the same suite on that definition, and tell me whether the story changes."
 > Anand Iyer, finance controller, Kalpa Retail
 
 ```timeline
-label: Part 1 | title: The delivered book | body: Orders, customers and rupees per quarter, on Finance's definition. This afternoon.
+label: Part 1 | title: On Finance's definition | body: Orders, customers and rupees per quarter. This afternoon.
 label: Part 2 | title: Each segment's frequency | body: Orders per customer per segment, and the groups too thin to quote. This afternoon.
 label: Part 3 | title: Branches and spend | body: Retail-Plus's branches and spend per member. In the lab.
 label: Part 4 | title: The tie-outs | body: Segments against the book, the half-year counted once. In the lab.
@@ -396,8 +396,8 @@ label: Part 5 | title: The run that repeats | body: An ordered sample and the de
 ```
 
 ```notes
-LIVE, 3 minutes. Read Anand's words aloud. Delivered means the order reached the customer and was
-not returned or cancelled; on the book 653 of the 1,000 orders are delivered. Nothing from the
+LIVE, 3 minutes. Read Anand's words aloud, and leave the definition's filter to the room: part 1's
+first marker asks which orders it keeps. Nothing from the
 morning can be copied: every number changes on the new definition, and each part climbs one
 chapter's method. Post fifteen letters and three numbers when the case is done. Then the rules the
 brief holds the room to.
@@ -405,11 +405,11 @@ brief holds the room to.
 
 ---
 
-## S17. Delivered only, named counts, numeric, ordered
-*Which rules does the delivered suite have to keep, whatever the numbers turn out to be?*
+## S17. One stated filter, named counts, numeric, ordered
+*Which rules does the suite keep on Finance's definition, whatever the numbers turn out to be?*
 
 ```cards
-icon: filter | eyebrow: The definition | title: Delivered only | body: A filter on the order's status keeps orders that reached the customer and stayed.
+icon: filter | eyebrow: The definition | title: One filter, stated first | body: One filter keeps only the orders that reached the customer and stayed there.
 icon: users | eyebrow: The counts | title: Named for what they count | body: Orders are rows; customers are counted once each.
 icon: divide | eyebrow: The ratios | title: Divided in numeric | body: Every ratio keeps its decimals and multiplies back to its orders.
 icon: list-ordered | eyebrow: The run | title: Ordered and fingerprinted | body: The sample orders on a unique key, and the delivered book's fingerprint prints beside it. | tone: dark
@@ -487,8 +487,8 @@ Kalpa sells through its app, its website and its stores, to Business buyers whos
 SELF-STUDY, 2 minutes to read. The case runs in the take-home, in pairs or alone:
 notebooks/C2_W02_D01_ex2_second_case_STUDENT.ipynb with the brief
 exercises/unguided/C2_W02_D01_second_case_STUDENT.md. Ten letters, the notebook's seven markers and
-three of the brief's own, and one line for Anand naming the channel losing its consumers fastest,
-with its number.
+three of the brief's own, and the line for Anand's channel sheet about Marketing's request, with the
+number it rests on.
 ```
 
 ---

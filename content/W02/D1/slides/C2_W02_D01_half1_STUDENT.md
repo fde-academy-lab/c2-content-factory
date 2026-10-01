@@ -624,7 +624,7 @@ written. The study notes' reading list carries the link and its check date. Then
 | A. The two totals | 4 numbers | A different fall, and nothing else |
 | B. Every leaf, as a change Q1 to Q2 | 20 numbers | Any branch that moved differently |
 | C. Order by order, on the order id | 186 lookups, 0 found | Nothing: the sources share no order or customer id |
-| D. Last week's notebook on an export | 1,340 rows exported | Ruled out by the platform lead |
+| D. Last week's notebook on an export | 1,340 rows exported: 1,000 orders and 340 customers | Ruled out by the platform lead |
 
 **The call.** B: a change survives a five-fold difference in size. **What would change it:** shared order ids would let C prove or disprove every order, and C would win.
 
@@ -1467,7 +1467,7 @@ Over the same 107 members, a Retail-Plus member spent Rs 5,474 in Q1 and Rs 3,86
 LIVE, 3 minutes. A member who bought nothing in a quarter spent Rs 0 in it, so the query says so
 with coalesce, and both averages cover the same people. Two segments flip from a rise to a fall.
 Student rises on 24 customers, a group chapter 3 flagged as too thin for a rate. Then a second route
-with a different set of members.
+that never averages: revenue over the same 107, counted in a step of their own.
 ```
 
 ---
