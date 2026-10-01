@@ -1,86 +1,107 @@
-# Kahoot, Week 2 Monday
+# Can you make the day's eight calls about the Monday suite in twenty seconds each?
 
-Eight items, ungraded, scored on correctness and speed together. Six follow the day, one returns to
-Week 1 Thursday one level up, and one closes on the suite.
+Eight items, ungraded, scored on correctness and speed together. Seven are today's, and the last is
+the return question from Week 1 Thursday. Each item names what it tests, so an item dropped for time
+says what was lost.
 
-Each item names what it tests, so an item dropped for time says what was lost.
+Today Anand Iyer, Kalpa Retail's finance controller, asked for the Monday numbers from the warehouse
+itself: Kalpa's Postgres database, where the orders table holds one row per order and the customers
+table one row per customer, with the customer's segment, one of four: Business, Retail-Core,
+Retail-Plus and Student. The team rebuilt Week 1's revenue tree (customers who bought, times orders
+per customer, times revenue per order) as queries his analyst can rerun and audit. Q1 is April to June 2026 and Q2 is July to September 2026.
+
+**Who needs the answer.** The trainer, closing the day, and every learner writing tonight's
+queries. Each item is one of the day's calls made in seconds, and an item most of the room misses is
+a line likely to reach Anand's analyst wrong next Monday, so it is the one to say again before the
+room leaves.
+
+**The questions on the way.**
+
+- Which clause does the database run first, WHERE or SELECT?
+- Anand wants only the segment-quarters with at least 30 customers; which clause keeps them?
+- How many rows does GROUP BY segment, quarter return on today's book?
+- What does LIMIT 5 without ORDER BY hand the analyst?
+- In a query with two named steps, what can the second step read?
+- How do you count the customers who bought in each quarter, in one line?
+- Retail-Plus placed 140 orders from 76 customers; what is its orders per customer?
+- Week 1's monsoon sale showed a 6 percent lift that came from which customers got the discount; what would a fair comparison need?
 
 ---
 
-## Q1. A query holds WHERE status = 'delivered' and a SELECT with sum(amount). Which of the two runs first?
-*Tests: the logical order, FROM then WHERE then the rest, with SELECT late.*
+## Q1. Which clause does the database run first, WHERE or SELECT?
+*Tests: the logical order a query runs in, written one way and run another.*
 
 - SELECT, since it is written first in the query
-- WHERE, since rows are kept before columns are computed  <- correct
-- Both at once, since the database runs a query as a whole
-- It depends on which clause is longer in the query text
+- They run together, as one step over each row
+- Whichever the planner chooses, so the order cannot be known
+- WHERE, since rows are kept before columns are picked  <- correct
 
 ---
 
-## Q2. Anand wants only segments with more than 5 orders, and WHERE count(*) > 5 is refused. What does the query need instead?
-*Tests: WHERE tests rows before groups exist; HAVING tests groups after.*
+## Q2. Anand wants only the segment-quarters with at least 30 customers on his sheet; which clause keeps them?
+*Tests: WHERE against HAVING, and why WHERE cannot test a count.*
 
-- A subquery that counts the orders first, then a WHERE
-- An ORDER BY count(*) with LIMIT 5 on the result
-- HAVING count(*) > 5, after the GROUP BY  <- correct
-- A cast of count(*) to numeric inside the WHERE
-
----
-
-## Q3. Four segments ordered in both quarters. How many rows does GROUP BY segment, quarter return?
-*Tests: one row per group that exists, predicted before the run.*
-
-- 8  <- correct
-- 4
-- 2
-- 1,000
+- WHERE count(DISTINCT customer_id) >= 30
+- HAVING count(DISTINCT customer_id) >= 30  <- correct
+- ORDER BY the count and LIMIT to the groups at the top
+- A CASE in SELECT that prints the thin groups' counts as zero
 
 ---
 
-## Q4. A query ends in LIMIT 5 with no ORDER BY. Which five rows come back?
-*Tests: a table has no order, so an unordered limit promises nothing.*
+## Q3. On today's book, how many rows does GROUP BY c.segment, o.quarter return for orders, customers and rupees?
+*Tests: predicting a result's grain before running it: four segments times two quarters.*
 
-- The five with the smallest primary key
-- The five most recently inserted rows
-- Five rows picked at random, fresh on every run
-- Whichever five the database reaches first  <- correct
-
----
-
-## Q5. WITH a AS (...), b AS (...) SELECT ... What can block b read?
-*Tests: a CTE is a named step, and a later step reads every earlier one.*
-
-- Only the tables, never block a
-- Block a and every table  <- correct
-- Only block a, and no tables
-- Nothing until the final SELECT runs
+- 8, one row for each segment in a quarter  <- correct
+- 2, one row for each quarter of the book
+- 4, one row for each of the four segments
+- 1,000, one row for every order on the book
 
 ---
 
-## Q6. Week 1 counted how many orders carried a discount, with a loop and an if. What is that in one SQL line?
-*Tests: count(column) counts the rows where the column has a value.*
+## Q4. The analyst's audit sample is five delivered Q2 app orders, pulled with LIMIT 5 and no ORDER BY; which five does it return?
+*Tests: what the database guarantees about row order: nothing without ORDER BY.*
 
-- SELECT count(*) FROM orders;
-- SELECT count(*) FROM orders WHERE discount = 0;
-- SELECT avg(discount) FROM orders;
-- SELECT count(discount) FROM orders;  <- correct
-
----
-
-## Q7. Week 1 Thursday: the monsoon discount's 6 percent lift was a mix effect. What would a fair comparison need?
-*Tests: the return question, one level up: compare like with like before reading a lift.*
-
-- Treated against untreated orders within each segment  <- correct
-- A larger discount, so that the lift clears the noise
-- The same comparison over a longer window of dates
-- More treated orders, until the lift is significant
+- The five with the smallest order ids, as on the first run
+- The five most recent orders, since new rows come first
+- Whichever five it reaches first, and a rerun can differ  <- correct
+- Five chosen at random, so every run draws a new sample
 
 ---
 
-## Q8. In Postgres, what does SELECT 140 / 76 print?
-*Tests: integers divide as integers, the trap behind a frequency that halves overnight.*
+## Q5. A query opens WITH q1 AS (Q1's leaves per segment), q2 AS (a step that reads q1); what can the step q2 read?
+*Tests: reading named steps from the top down: each step sees the tables and the steps above it.*
 
-- 1.84
-- 1.8421052631578947
-- 1  <- correct
-- 2
+- The warehouse's tables and q1, the step above it  <- correct
+- Only the warehouse's tables, never another step
+- Only q1, since a step can read nothing else
+- Every step in the query, including the steps below it
+
+---
+
+## Q6. Last week's Python loop counted the customers present in each quarter; which SQL line does the same?
+*Tests: counting customers who bought, each once, against counting order rows.*
+
+- count(*) AS customers with GROUP BY quarter
+- count(DISTINCT customer_id) with GROUP BY quarter  <- correct
+- count(customer_id), which skips missing ids, per quarter
+- count(DISTINCT order_id) with GROUP BY quarter
+
+---
+
+## Q7. Retail-Plus placed 140 orders from 76 customers in Q2; which orders per customer goes on Anand's sheet?
+*Tests: integer division, and dividing by the customers who placed the orders.*
+
+- 1, as count(*) divided by the distinct count prints it
+- 2, the nearest whole number of orders
+- 1.84, from 140 orders over 76 customers in numeric  <- correct
+- 1.17, orders over the tier's 120 members
+
+---
+
+## Q8. Week 1 Thursday: the monsoon sale's 6 percent lift came from which customers got the discount; what would a fair comparison need?
+*Tests: the return question from Week 1 Thursday, one level up: a comparison fair on mix.*
+
+- The exposed against everyone else, over a longer window
+- Like for like: each segment apart, or a held-back group  <- correct
+- The same customers' sale month against the month before
+- The lift set against the 17.6 percent it must clear

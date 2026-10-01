@@ -1,306 +1,612 @@
-# The Monday suite
+# Will next Monday's run give the analyst the same answer?
 
-Week 2, Day 1. Half two.
+Week 2, Day 1. Afternoon.
 
-Kicker: WEEK 2  ·  MONDAY  ·  HALF TWO
-Quote: My analyst will read every query line by line, without you beside him. Be ready to explain why each one is written the way it is.
-Who: Anand Iyer, finance controller, Kalpa Retail, on the suite he wants every Monday
+Kicker: WEEK 2  ·  MONDAY  ·  AFTERNOON
+Quote: Every Monday I rerun your suite and trace five delivered app orders against the ERP. If my rerun differs from yours, I need to know whether the book changed or your query did.
+Who: Anand's analyst, finance, Kalpa Retail, to the data and AI team at Kalpa's Global Capability Centre
 
 ```notes
-LIVE, one minute. The afternoon is sixty minutes: the escalated case with its debrief (45), then
-the Kahoot and tomorrow's ask (15). After it the tentative IITGN block runs; say that once, with
-the word tentative, and nothing about its content. There is no second case today.
+LIVE, one minute. Read the analyst's words aloud. The morning built every number on Anand's
+Monday sheet; the afternoon asks whether the suite repeats, then hands the room a case to run
+alone. The trainer's part of the afternoon is 60 minutes: chapter 6 (30), the escalated case's
+first two parts (20) and the Kahoot (10). Then what the morning established.
 ```
 
 ---
 
-## SECTION 1: The case
-*Six queries that reproduce Week 1's tree by segment and quarter, written for an auditor.*
+## S1. Down 1.6%: Retail-Plus carried it, and the sums tie
+*What did the morning's five chapters establish, with their numbers?*
+
+| Chapter | What it answered |
+|---|---|
+| 1. What does the book say? | Rs 10,00,00,000 on 538 orders in Q1 and Rs 9,84,00,000 on 462 in Q2; 244 then 227 customers who bought |
+| 2. Same story as Week 1? | Revenue agrees; customers fell 7.0% on the book where last week's extract showed them flat |
+| 3. Which segment moved? | Retail-Plus, down 29.4%, with orders per customer 2.36 then 1.84 |
+| 4. Which branch moved? | Frequency, 0.780 of Q1; each Retail-Plus member spent 29.4% less |
+| 5. Does the suite add up? | Segments add to the book; 107 Retail-Plus customers in the half-year, not 167 |
 
 ```notes
-LIVE. Forty-five minutes in all: the brief (5), the room builds alone (30), the debrief of wrong
-answers (10). No hints during the build; the support TA answers environment problems only.
+LIVE, 2 minutes. Read the five answers as one story: the book fell 1.6 percent, Retail-Plus
+carries the fall in orders, and every count, ratio and average on the sheet says what it counts.
+Q1 is April to June 2026 and Q2 is July to September 2026; revenue is booked revenue, every order
+at its amount. Then chapter 6.
 ```
 
 ---
 
-## S1. The suite the analyst reruns every Monday
-*One file, six queries, one comment line above each.*
-
-```stats
-value: 6 | label: queries | note: sql/C2_W02_D01_04_monday_suite_STUDENT.sql
-value: 8 | label: rows | note: four segments, two quarters
-value: 30 | label: minutes | note: alone, no hints
-value: 10 | label: letters | note: posted from the hands-on notebook
-```
-
-**The client asks.** "I want these numbers every Monday, for every segment and channel, computed from the warehouse itself."
+## SECTION 6: Same answer next week?
+*Will next Monday's run give Anand's analyst the same answer from the same book?*
 
 ```notes
-LIVE, 2 minutes. The suite file holds six comment lines and no SQL. The hands-on notebook,
-notebooks/C2_W02_D01_hands_on_STUDENT.ipynb, runs the same suite with ten lettered choices; a
-learner may work in either, and posts the ten letters at the end.
+LIVE. Thirty minutes: the need and the company (3), the options and the call (5), the fingerprint
+and the reload (5), the trap, its check and its fix (9, never cut), the second route (3), the
+sentence to Anand (3) and the close (2). Notebook 6 and sql/C2_W02_D01_06_same_answer_STUDENT.sql
+run beside it.
 ```
 
 ---
 
-## S2. The brief, in five parts
-*Each part is one rung of the morning, put to work.*
+## S2. Anand's analyst, tracing five orders against the ERP
+*Who reruns the suite every Monday, and which five questions lead to an answer the rerun repeats?*
+
+**Who needs the answer.** Anand's analyst reruns the suite every Monday and checks five orders against the ERP, the system Finance books orders in. A rerun that disagrees with the team's run on a sample that should be identical, even by a few hundred rupees, makes every number in the suite suspect, because nobody can say whether the book moved or the query did.
 
 ```timeline
-label: Part A | title: The book | body: Orders and revenue per quarter, with the change against Q1.
-label: Part B | title: Customers | body: Who bought in each quarter, against the members on the book.
-label: Part C | title: The leaves | body: Customers, orders per customer and revenue per order, per segment and quarter.
-label: Part D | title: The typical order | body: The median beside the mean, and the cells too thin for a rate.
-label: Part E | title: What moved | body: Two CTEs, one row per segment, and the sentence to Anand. | tone: dark
+label: 1 | title: How does a run prove itself? | body: Four ways to tell two runs apart
+label: 2 | title: What does it leave behind? | body: This Monday's fingerprint
+label: 3 | title: Which five orders? | body: The audit sample the analyst traces
+label: 4 | title: A count with no sort? | body: Candidates up to the sample's last id
+label: 5 | title: What does Anand hear? | body: The day's answer in one message | tone: dark
 ```
 
-The brief is `exercises/unguided/C2_W02_D01_monday_suite_brief_STUDENT.md`.
-
 ```notes
-LIVE, 2 minutes. Walk the parts once; do not show any SQL.
+LIVE, 1 minute. Read the five questions. Then the need.
 ```
 
 ---
 
-## S3. The five rules the analyst audits against
-*A number that breaks one of these does not reach Anand.*
+## S3. The need: a rerun that matches to the rupee
+*What does the analyst check each Monday, and what does a rerun that differs by a few hundred rupees cost?*
 
-| Rule | What it rules out |
-|---|---|
-| Revenue means booked revenue, and the comment says so | A total with no definition |
-| A customer is counted once | count(*) read as customers |
-| Every ratio is divided in numeric and rounded on purpose | 140 / 76 printed as 1 |
-| Every list has an ORDER BY on a unique key | Two runs, two answers |
-| A step that feeds another step is a named CTE | A query nobody can read top to bottom |
+```cards
+icon: user | eyebrow: Who asks | title: Anand's analyst | body: Reruns the suite every Monday and traces five delivered Q2 app orders against the ERP.
+icon: fingerprint | eyebrow: The metric | title: The run itself | body: What the book held when the suite ran, and which orders the sample drew.
+icon: triangle-alert | eyebrow: A rerun that differs costs | title: Every number doubted | body: Nobody can say whether the book moved or the query did, so nothing on the sheet is signed. | tone: dark
+```
 
 ```notes
-LIVE, 1 minute. These five rules are the morning's traps turned into a checklist. Start the 30
-minutes of building when this slide goes up.
+LIVE, 2 minutes. The ERP is the enterprise system where Finance books every order; the analyst
+traces a sample of warehouse orders back to it to prove the warehouse matches the books. Q2 is July
+to September 2026. Then a company that checks every run before anyone reads it.
 ```
 
 ---
 
-## S4. The suite as the analyst reads it
-*Six queries in the order of the tree, each checkable against the one before.*
+## S4. Netflix's 2017 pattern: audit each run, then publish
+*Has a real data team built its runs to prove themselves before they are published?*
 
 ```mermaid
 flowchart LR
-    A["<b>1. the book</b><br/>adds to 1,000 orders"] --> B["<b>2. customers</b><br/>244 and 227"] --> C["<b>3. the leaves</b><br/>eight rows"]
-    C --> D["<b>4. typical order</b><br/>median beside mean"] --> E["<b>5. thin cells</b><br/>HAVING"] --> F["<b>6. what moved</b><br/>two CTEs"]
+    W["<b>write</b><br/>the run's new data,<br/>to an audit table"] --> A["<b>audit</b><br/>row count, missing values,<br/>against earlier runs"]
+    A -->|"passes"| P["<b>publish</b><br/>readers see it"]
+    A -.->|"a check set<br/>to fail"| S["<b>stopped</b><br/>before anyone reads it"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    class F known
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class W,A known
+    class P bet
+    class S bad
 ```
 
-**Kavya's review.** Each query checks the one before it: the leaves add back to the book, and the change in query 6 matches the revenue in query 3.
+Netflix's data engineering team called the pattern write, audit, publish: each run is written to an audit table, checked against the runs before it, and published only when the checks set to fail it pass.
 
 ```notes
-SELF-STUDY during the build, left on screen. The numbers in the boxes are checks a learner can
-compare against without being given an answer.
+LIVE, 1 minute. Michelle Ufford's talk "Whoops, The Numbers Are Wrong! Scaling Data Quality @
+Netflix" at DataWorks Summit, San Jose, 13 June 2017. One of its slides sets a new batch of 17,240
+rows with 17,240 missing values beside the previous day's 16,135 rows with 21: every value of the
+column was missing. In the talk's rules the row-count checks fail the job and the missing-value
+check only warns, so that batch raised a warning; say it that way. The study notes' reading list
+carries the link and its check date. Then four ways a Kalpa run could prove itself.
 ```
 
 ---
 
-## SECTION 2: The debrief
-*The wrong answers the room gave, each with the number it produced and the check that caught it.*
+## S5. A fingerprint: 7 numbers, and read access is enough
+*How can a run show that it computed the same thing as last week's?*
+
+| Option | Stored with each run | Access it needs | What it can tell apart |
+|---|---|---|---|
+| A. Rerun and compare by eye | Nothing | Read | Whatever someone happens to notice |
+| B. A fingerprint block that runs with the suite | 7 numbers about the book | Read | A changed book from a changed query |
+| C. Snapshot each Monday's outputs into a table | 18 rows a Monday | Write, to a schema the team owns | What changed in any output, row by row |
+| D. Write, audit, publish | A staging table per run | Write, and a scheduler | A bad run, stopped before anyone reads it |
+
+**The call.** B, with an ORDER BY on a unique column in every list: the team has read access, which rules out C and D, and B answers the analyst's first question.
 
 ```notes
-LIVE. Ten minutes. Read the room's letters as they arrive in chat and pick the two most-missed
-markers. Run this chapter from those, never from a lecture.
+LIVE, 3 minutes. The fingerprint reads each table once: orders gives its rows, its rupees, its
+distinct customers and its latest date, and customers gives its rows, its distinct customers and
+its latest joining date, seven numbers in all, since customers carries no rupees. If next
+Monday's fingerprint matches this one, the book has not changed, so any difference in the numbers
+is the query's. Then what would switch the call.
 ```
 
 ---
 
-## S5. Question: which line ships a wrong number?
-*Three lines a learner posted from the suite. Each runs without an error.*
+## S6. A schema of the team's own would switch it to D
+*What fact would move the call away from a fingerprint?*
+
+```mermaid
+flowchart LR
+    Q["<b>a run that repeats</b><br/>read access only"] --> B["<b>B. a fingerprint</b><br/>and ORDER BY<br/>on a unique key"]
+    B -.->|"a schema the team<br/>can write to"| D["<b>D. write, audit,<br/>publish</b>"]
+    Q -.->|"nobody notices<br/>the same thing twice"| A["<b>A. by eye</b>"]
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class B bet
+    class D unknown
+    class A bad
+```
+
+**The fact that would change the call.** Once the platform lead grants a schema the team can write to, D runs the audit before the numbers are released, which beats finding the problem after Anand has read them.
+
+```notes
+LIVE, 2 minutes. C costs little here, 18 output rows a Monday (2 for the book, 8 segment-quarters,
+4 branch rows and 4 half-years), and it needs the same write access D does, so the switch is to D, the pattern that stops a bad run. Then this Monday's
+fingerprint.
+```
+
+---
+
+## S7. Question: does a reload move the fingerprint?
+*Overnight the warehouse reloads two order rows with the values they already hold: does the fingerprint change?*
 
 ```sql
--- line a
-count(*) / count(DISTINCT o.customer_id) AS orders_per_customer
--- line b
-sum(o.amount) / count(*) AS revenue_per_order
--- line c
-round(count(*)::numeric / count(DISTINCT o.customer_id), 2) AS orders_per_customer
+SELECT 'orders' AS table_name, count(*) AS rows, sum(amount) AS rupees,
+       count(DISTINCT customer_id) AS distinct_customers,
+       max(order_date) AS latest_date
+FROM   orders
+UNION ALL
+SELECT 'customers', count(*), NULL, count(DISTINCT customer_id), max(joined_date)
+FROM   customers;
 ```
 
-**Question.** Which line puts a wrong number on Anand's sheet? a) Line a; b) line b; c) line c; d) none of them.
+**Question.** Does the fingerprint change? a) yes, two rows were written, so the row count moves; b) yes, the rupees move, since the rows were rewritten; c) no, the rows, the rupees and the customers are all the same; d) it cannot be read during a reload.
 
 ```notes
-LIVE, 2 minutes. Letters in chat. Most rooms split between a and d.
+LIVE, 1 minute. UNION ALL stacks the two tables' rows into one result, one row per table. The
+notebook runs the reload inside a transaction and rolls it back, so the warehouse is left as it
+was. Letters, then the answer.
 ```
 
 ---
 
-## S6. Answer: line a, and it reads Retail-Plus as 1
-*Integer division again; line b is right because amount is numeric.*
+## S8. Answer: no: 1,000 rows, Rs 19.84 crore, 301 buyers
+*What fingerprint does this Monday's run leave?*
 
-```mermaid
-xychart-beta
-    title "Retail-Plus orders per customer, Q2"
-    x-axis ["line a, integers", "line c, numeric"]
-    y-axis "orders per customer" 0 --> 2
-    bar [1, 1.84]
+```stats
+value: 1,000 | label: order rows | note: before and after the reload
+value: Rs 19.84 cr | label: rupees on the book | note: Rs 19,84,00,000, Q1 and Q2 together
+value: 301 | label: distinct customers | note: who bought in either quarter
+value: 340 | label: customer rows | note: customers on the customer table
 ```
 
-Line b divides a numeric sum by an integer count, so Postgres keeps the fraction. The difference is the type of the numerator, and nothing on the grid shows it.
+The answer is c. The reload rewrote two rows with their own values, so whatever differs between two runs after it cannot be the book.
 
 ```notes
-LIVE, 2 minutes. The answer is a. Ask how a learner would know b is safe: check the column type,
-numeric(12,2), from round 1's schema read.
+LIVE, 2 minutes. The latest order date is 28 September 2026 and the latest joining date on the
+customer table is 25 December 2025; both sit in the fingerprint and both held. Print the
+fingerprint at the top of every Monday's run: it is the first thing the analyst compares. Then
+the audit sample.
 ```
 
 ---
 
-## S7. The four wrong numbers of the day
-*Each one looks like a finished result, and each one flips a decision.*
+## S9. Question: which five orders does LIMIT 5 return?
+*The analyst traces five delivered Q2 app orders: which five does the quickest query return?*
 
-| The hurried query | The wrong number | The check | The honest number |
+```sql
+SELECT order_id, amount FROM orders
+WHERE  quarter = 'Q2' AND channel = 'app' AND status = 'delivered'
+LIMIT  5;
+```
+
+**Question.** With no ORDER BY, which five rows come back? a) the five with the smallest order ids; b) the five most recent orders; c) whichever five the database reaches first, which can change between runs; d) five chosen at random on every run.
+
+```notes
+LIVE, 1 minute. Letters. Expect a, because on a small, freshly loaded table the first rows often
+are the smallest ids, and the first run seems to confirm it. Then both runs side by side.
+```
+
+---
+
+## S10. Answer: Rs 690 apart, the plausible wrong answer
+*What happens when the analyst reruns the same query after the reload?*
+
+| Your run on Monday | Amount | The analyst's rerun | Amount |
 |---|---|---|---|
-| count(*) as customers | 1,000 customers, 1.00 orders each | count three ways | 301 customers, 3.32 orders each |
-| LIMIT 5, no ORDER BY | Rs 3,900 audited, Rs 4,590 rerun | rerun after a reload | the same five, every run |
-| count / count in integers | Retail-Plus 2 to 1, halved | multiply back | 2.36 to 1.84, 22% down |
-| avg over NULLs | spend per member 15.5% down | count(*) against count(x) | 29.4% down |
+| KR-00542 | Rs 790 | KR-00545 | Rs 680 |
+| KR-00544 | Rs 960 | KR-00546 | Rs 500 |
+| KR-00545 | Rs 680 | KR-00547 | Rs 970 |
+| KR-00546 | Rs 500 | KR-00549 | Rs 970 |
+| KR-00547 | Rs 970 | KR-00553 | Rs 1,470 |
+| **Total** | **Rs 3,900** | **Total** | **Rs 4,590** |
+
+**What breaks.** The audit reports a Rs 690 disagreement on a sample that should be identical, and every other number in the suite comes under question. The answer is c.
 
 ```notes
-LIVE, 3 minutes. Read one row per trap, wrong number first. This table is the day on one slide,
-and it returns word for word in the study notes.
+LIVE, 2 minutes. This is the plausible wrong answer: the query ran, returned five delivered Q2 app
+orders, and looked right both times. Two of the five differ between the runs, and nothing in the
+book changed. Then why.
 ```
 
 ---
 
-## S8. What the suite says: two questions, two answers
-*Query 6 in percent, and query 3's revenue turned into rupees.*
-
-| Segment | Customers | Frequency | Order value | Revenue | Rupees moved |
-|---|---|---|---|---|---|
-| Business | 2.8% down | 3.5% down | 5.1% up | 1.4% down | Rs 14,29,840 down |
-| Retail-Core | 5.9% down | 3.0% up | 1.2% up | 1.8% down | Rs 6,820 down |
-| Retail-Plus | 16.5% down | 22.0% down | 8.4% up | 29.4% down | Rs 1,72,390 down |
-| Student | 33.3% up | 5.6% up | 4.9% down | 33.9% up | Rs 9,050 up |
-
-```notes
-LIVE, 2 minutes. Ask two questions and take an answer to each. Where did the rupees fall?
-Business: it carries 99.1 percent of revenue, so its 1.4 percent dip is Rs 14,29,840 of the
-Rs 16,00,000 fall. Where did the orders and the frequency fall? Retail-Plus: it lost 75 of the
-book's 76 fewer orders, and its frequency fell furthest, which is Week 1's lever at warehouse
-scale. Student grows on 27 and 38 orders, so its row carries the thin-cell warning.
-```
-
----
-
-## S9. The sentence to Anand
-*Claim, evidence, caveat and next step, in four sentences he can check.*
+## S11. Why it is wrong: a table has no order to keep
+*Why did the same query on the same book draw a different five?*
 
 ```mermaid
 flowchart LR
-    C["<b>claim</b>"] --> E["<b>evidence</b>"] --> V["<b>caveat</b>"] --> N["<b>next step</b>"]
+    A["<b>LIMIT 5</b><br/>no ORDER BY"] --> B["<b>rows as the<br/>database reaches them</b>"]
+    B --> C["<b>a reload rewrites<br/>two rows</b><br/>new versions, new places"]
+    C --> D["<b>a different five</b><br/>Rs 690 apart"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    class A,B,C known
+    class D bad
 ```
 
-**The claim.** Booked revenue fell 1.6 percent from Q1 to Q2, Rs 16,00,000, the same rate last week's file showed.
-
-**The evidence.** The rupees fell in Business, which carries 99.1 percent of revenue and lost Rs 14,29,840 on a 1.4 percent dip. The orders fell in Retail-Plus: it lost 75 of the book's 76 fewer orders, its members ordered less often, 2.36 to 1.84 per quarter, and fewer bought at all, 91 to 76.
-
-**The caveat.** This is booked revenue; Student's Q1 rate rests on 27 orders; the warehouse counts different customers from last week's file and is the book of record. **The next step.** Collected revenue, tomorrow.
+**The check.** The fingerprint said the book did not change; the samples say the five did. Without ORDER BY, Postgres returns rows "in an unspecified order", and LIMIT returns "an unpredictable subset of the query's rows".
 
 ```notes
-LIVE, 1 minute. Read it aloud. Ask for the one number the analyst would check first: the 1.6
-percent against query 1. Then ask why the evidence has two halves: rupees and orders are different
-questions, and here they have different answers.
+LIVE, 3 minutes. The PostgreSQL documentation on sorting: the order "will depend on the scan and
+join plan types and the order on disk, but it must not be relied on". Postgres writes a rewritten
+row as a new version in a new place, so after the reload the first five rows the database reaches
+are a different five. The room's sixty Codespaces hold identical data and will often draw the same
+five, which is exactly why the habit survives until the first reload. Then the fix.
 ```
 
 ---
 
-## SECTION 3: The close
-*The crux lines, the Kahoot, and tomorrow's question left open.*
+## S12. The fix: ORDER BY order_id draws the same five
+*Which five orders will the analyst trace against the ERP?*
+
+```sql
+SELECT order_id, amount FROM orders
+WHERE  quarter = 'Q2' AND channel = 'app' AND status = 'delivered'
+ORDER  BY order_id
+LIMIT  5;
+```
+
+```stats
+value: KR-00542 to KR-00547 | label: the five | note: 542, 544, 545, 546 and 547
+value: Rs 3,900 | label: before the reload | note: the same five
+value: Rs 3,900 | label: after the reload | note: the same five
+```
 
 ```notes
-LIVE. Fifteen minutes: the crux lines (2), the Kahoot (10), tomorrow's ask (3).
+LIVE, 2 minutes. order_id is the table's key, a column no two rows share, so the order is unique
+and every run draws the same five. Then the same five, confirmed a second way.
 ```
 
 ---
 
-## S10. Four lines to carry out of the room
-*The same four lines are on the cheat sheet, word for word.*
+## S13. A second route: 5 up to KR-00547, 7 for the rerun
+*Are the five the first five by order id, confirmed by a count that never sorts?*
+
+```mermaid
+flowchart LR
+    A["<b>the 94 candidates</b><br/>every delivered<br/>Q2 app order"] --> B["<b>count those at or<br/>below a sample's<br/>last id</b>"]
+    B --> C["<b>the ordered five</b><br/>up to KR-00547:<br/>5, Rs 3,900"]
+    B --> D["<b>the unordered rerun</b><br/>up to KR-00553:<br/>7, two skipped"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class A,B known
+    class C bet
+    class D bad
+```
+
+If a sample is the first five by order id, exactly five candidates sit at or below its last id. The ordered five pass with Rs 3,900, their own total; the rerun's five fail, since KR-00542 and KR-00544 sit below KR-00553.
+
+```notes
+LIVE, 3 minutes. The query is a count with a range, no ORDER BY and no LIMIT, so it can disagree
+with the ordered query, which a rerun of that query never could. 80 of the 94 candidates are under
+Rs 5,000, and the sampled five average Rs 780; the other 14 are large Business orders. When to
+switch: for a sample of hundreds, count the candidates below each id on the list. Then what the
+suite now tells Anand.
+```
+
+---
+
+## S14. To Anand: down 1.6%, and Retail-Plus carries the fall
+*What does the Monday suite tell Anand?*
+
+> "Anand, the Monday suite now runs on the warehouse itself. Booked revenue fell 1.6 percent, from Rs 10.00 crore to Rs 9.84 crore, and Retail-Plus carries the fall in orders: its revenue is down 29.4 percent because 16.5 percent fewer members bought and each ordered 22.0 percent less often, while each order was worth 8.4 percent more. The counts are named for what they count and printed beside every ratio, and each run prints the book's fingerprint, so a rerun on the same book gives the same answer. One caveat: last week's extract showed customers flat, and the full book shows 7.0 percent fewer customers in Q2."
+
+```mermaid
+flowchart LR
+    B["<b>the book</b><br/>down 1.6%"] --> S["<b>the segment</b><br/>Retail-Plus<br/>down 29.4%"] --> R["<b>the branches</b><br/>customers -16.5%,<br/>frequency -22.0%,<br/>order value +8.4%"] --> A["<b>the audit</b><br/>sums tie out;<br/>runs repeat"] --> C["<b>the caveat</b><br/>customers fell 7.0%"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class B,S,R,A known
+    class C bet
+```
+
+```notes
+LIVE, 3 minutes. Read the message aloud once, then ask the room which sentence Anand's analyst
+checks first. The three branches multiply back: 0.835 times 0.780 times 1.084 is 0.706, the tier's
+29.4 percent fall. The caveat says where the book and last week's note part company. Then the
+chapter's answer.
+```
+
+---
+
+## S15. Yes, once every list is ordered and fingerprinted
+*So will next Monday's run give Anand's analyst the same answer from the same book?*
+
+| The question on the way | The answer |
+|---|---|
+| 1. How does a run prove itself? | A fingerprint block, 7 numbers, and ORDER BY on a unique key |
+| 2. What does it leave behind? | 1,000 orders, Rs 19,84,00,000, 301 customers; unchanged by the reload |
+| 3. Which five orders? | KR-00542 to KR-00547, Rs 3,900; unordered, a rerun drew Rs 4,590 |
+| 4. A count with no sort? | 5 up to KR-00547, worth Rs 3,900; 7 up to the rerun's last id |
+| 5. What does Anand hear? | Down 1.6%, Retail-Plus carries it, and every rerun repeats |
+
+**Kavya's review.** Order every audit sample on a column no two rows share, and print the book's fingerprint beside the numbers, so a difference next Monday says whether the book moved or the query did.
+
+**In the interview.** [F] What does LIMIT without ORDER BY return? [F] Your KPI moved 30 percent overnight and the data did not change; what do you suspect?
+
+```notes
+LIVE, 2 minutes. The overnight answer in one breath: check the book's fingerprint first; if rows
+and rupees are the same, check the run's parameters (the date window, the time zone) and what it
+depends on (a view, a deploy, a cached result), then today's suspects: a definition that changed,
+a denominator that shifted, integer division, and an unordered LIMIT when the number comes from a
+sample. Then the case the room runs alone.
+```
+
+---
+
+## SECTION 7: Finance's definition?
+*Does the Monday suite hold on Finance's definition of revenue?*
+
+```notes
+LIVE. Twenty minutes in the afternoon for parts 1 and 2, alone, in
+notebooks/C2_W02_D01_ex1_escalated_case_STUDENT.ipynb with the brief
+exercises/unguided/C2_W02_D01_escalated_case_STUDENT.md. Parts 3 to 5 run in the practice lab
+after the day.
+```
+
+---
+
+## S16. Answer it in five parts: two now, three in the lab
+*Which parts does the case ask for, and which runs where?*
+
+> "Finance counts the orders that reached the customer and stayed there. Run me the same suite on that definition, and tell me whether the story changes."
+> Anand Iyer, finance controller, Kalpa Retail
+
+```timeline
+label: Part 1 | title: On Finance's definition | body: Orders, customers and rupees per quarter. This afternoon.
+label: Part 2 | title: Each segment's frequency | body: Orders per customer per segment, and the groups too thin to quote. This afternoon.
+label: Part 3 | title: Branches and spend | body: Retail-Plus's branches and spend per member. In the lab.
+label: Part 4 | title: The tie-outs | body: Segments against the book, the half-year counted once. In the lab.
+label: Part 5 | title: The run that repeats | body: A sample the rerun draws again, and the book's fingerprint. In the lab. | tone: dark
+```
+
+```notes
+LIVE, 3 minutes. Read Anand's words aloud, and leave the definition's filter to the room: part 1's
+first marker asks which orders it keeps. Nothing from the
+morning can be copied: every number changes on the new definition, and each part climbs one
+chapter's method. Post fifteen letters and three numbers when the case is done. Then the rules the
+brief holds the room to.
+```
+
+---
+
+## S17. Four rules hold the case to the morning's habits
+*Which rules does the suite keep on Finance's definition, whatever the numbers turn out to be?*
 
 ```cards
-icon: hash | eyebrow: Line 1 | title: Count what you mean | body: COUNT(DISTINCT customer_id) counts people; count(*) counts rows.
-icon: divide | eyebrow: Line 2 | title: Divide in numeric and round on purpose | body: Integers divide as integers.
-icon: sigma | eyebrow: Line 3 | title: Name who is averaged | body: AVG skips NULLs, so say whether a NULL means zero.
-icon: list-ordered | eyebrow: Line 4 | title: Order every list on a unique key | body: A table has no order. | tone: dark
+icon: filter | eyebrow: The definition | title: One filter, stated first | body: One filter keeps only the orders that reached the customer and stayed there.
+icon: users | eyebrow: The counts | title: Named for what they count | body: Every count's name says what it counts, so no reader takes orders for customers.
+icon: divide | eyebrow: The ratios | title: Ratios that hold | body: Every ratio multiplies back to its orders, with its two counts printed beside it.
+icon: list-ordered | eyebrow: The run | title: Repeated and fingerprinted | body: The sample comes back the same on the analyst's rerun, and the book's fingerprint prints beside it. | tone: dark
 ```
 
 ```notes
-LIVE, 2 minutes. Read the four lines aloud, slowly.
+LIVE, 17 minutes of work after this slide: parts 1 and 2 alone, in the notebook. Walk the room.
+Where a learner stalls on part 1, ask which clause runs first and what it keeps; on part 2, ask
+what 2 times 26 gives back. Do not give letters. At the end of the 20 minutes, collect part 1's
+revenue change and part 2's thinnest segment-quarter on the board, and say parts 3 to 5 run in the
+lab tonight. Then the close.
 ```
 
 ---
 
-## S11. The interview questions the day equips
-*Tagged as the row tags them; the full answers are in the study notes.*
+## D18. Interview drill, questions 1 to 7: counts and clauses
+*Which interview questions on counts, clauses and averages does today equip you to answer?*
 
-| Tag | Question |
+| Tag | The question |
 |---|---|
+| [S] | Explain the logical order in which a SQL query runs. |
 | [S] | WHERE against HAVING, one sentence each. |
-| [S] | Explain the logical order in which a SQL query executes. |
+| [F] | What do count(*), count(customer_id) and count(DISTINCT customer_id) each count? |
 | [F] | Why would you compute a KPI in the warehouse rather than in a notebook? |
-| [F] | What does LIMIT without ORDER BY return? |
-| [D] | A stakeholder's analyst must audit your query; what changes in how you write it? |
-| [F] | Your orders-per-customer column reads 1 for a segment; what do you check first? |
+| [F] | Your total matches last week's; is your analysis the same? |
+| [F] | Orders per customer reads 1 for a segment; what do you check first? |
+| [F] | An average moved but the total did not, or moved differently; how? |
 
 ```notes
-SELF-STUDY tonight, 20 minutes aloud. The full list of eleven, with answers, is in the study notes
-and the day sheet. The last row is a case-style follow-up this pack adds to the row's anchors.
+SELF-STUDY, 2 minutes to read. Tags: [S] asked everywhere, [F] frequent in GCC and product
+screens, [D] a differentiator. The drill runs aloud in the practice lab, sixty seconds per answer,
+in pairs, in this order, and the study notes carry the full answer to every question. Then
+questions 8 to 13.
 ```
 
 ---
 
-## D12. The case-style follow-ups
-*Five more questions an interviewer asks once the anchors are answered.*
+## D18a. Interview drill, questions 8 to 13: runs and audits
+*Which interview questions on steps, windows, runs and audits does today equip you to answer?*
 
-| Tag | Follow-up |
+| Tag | The question |
 |---|---|
-| [F] | Your KPI dropped 30 percent overnight and the data did not change; what in the query do you suspect? |
-| [F] | An average moved, but the total did not; how can that happen? |
-| [S] | COUNT(*), COUNT(column) and COUNT(DISTINCT column): what does each count? |
-| [D] | Two analysts report different customer counts for the same quarter; how do you settle it? |
 | [F] | When would you use a CTE instead of a subquery? |
+| [F] | Why can you not add two quarters' customer counts to get the half-year's? |
+| [F] | What does LIMIT without ORDER BY return? |
+| [F] | Your KPI moved 30 percent overnight and the data did not change; what do you suspect? |
+| [D] | Two analysts report different customer counts for one quarter; how do you settle it? |
+| [D] | An analyst must audit your query: what changes in how you write it, and what would you refuse to compute in a notebook? |
 
 ```notes
-SELF-STUDY. Answered in full in the study notes, section "In the interview".
+SELF-STUDY, 2 minutes to read. The design question comes last in the drill: four ways to produce
+one of today's numbers, which would you choose, sized how, and what would make you switch.
 ```
 
 ---
 
-## S13. The Kahoot: eight items, ungraded
-*Six from today, one from Week 1 Thursday, one on the suite.*
+## D19. The second case, for the take-home: the channels
+*Is the store booming and the web collapsing, as Marketing says?*
 
-```cards
-icon: list-ordered | eyebrow: Items 1 to 3 | title: The order and the filters | body: What runs first, why WHERE count(*) fails, how many rows a GROUP BY returns.
-icon: shuffle | eyebrow: Items 4 to 6 | title: The traps | body: LIMIT without ORDER BY, what a CTE can see, one presence counter in one line.
-icon: rotate-ccw | eyebrow: Items 7 and 8 | title: The return | body: The discount's mix effect one level up, and the integer ratio. | tone: dark
-```
-
-```notes
-LIVE, 10 minutes. kahoot/C2_W02_D01_quiz_STUDENT.md. Ungraded; read the most-missed item's reason
-aloud and nothing else.
-```
-
----
-
-## S14. Tomorrow: booked is not collected
-*Anand's reply to the Monday suite, left open.*
-
-> "Booked revenue is not collected revenue. Some orders are paid in two instalments, some are refunded, some were never paid at all. Show me, order by order, what we actually collected against what we booked in Q2." Anand Iyer, finance controller, Kalpa Retail
+> "The same numbers for every channel: app, web and store. Marketing says the store is booming and the web is collapsing, and wants the budget moved. Is that what the book says?"
+> Anand Iyer, finance controller, Kalpa Retail
 
 ```mermaid
 flowchart LR
-    O["<b>orders</b><br/>what we booked"] --- Q{"<b>?</b>"} --- P["<b>payments</b><br/>what we collected"]
+    T["<b>the channel totals</b><br/>store up 61.1%,<br/>web down 37.6%"] --> M["<b>Marketing's reading</b><br/>move the budget<br/>to the stores"] --> Q["<b>what the book says?</b>"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class T,M known
+    class Q unknown
+```
+
+Kalpa sells through its app, its website and its stores, to Business buyers whose orders are worth lakhs of rupees or more and to consumers whose orders are worth hundreds or a few thousand.
+
+```notes
+SELF-STUDY, 2 minutes to read. The case runs in the take-home, in pairs or alone:
+notebooks/C2_W02_D01_ex2_second_case_STUDENT.ipynb with the brief
+exercises/unguided/C2_W02_D01_second_case_STUDENT.md. Ten letters, the notebook's seven markers and
+three of the brief's own, and the line for Anand's channel sheet about Marketing's request, with the
+number it rests on.
+```
+
+---
+
+## D20. The day's wrong numbers, each with its check
+*Which plausible wrong numbers did the day stage, and what caught each?*
+
+| Chapter | The plausible wrong number | The check that caught it |
+|---|---|---|
+| 1 | 538 and 462 customers, 1.00 order each | The orders table counted two ways: 1,000 rows, 301 buyers, beside 340 on the customer table |
+| 2 | Customers held flat, as last week said | Who bought in both quarters: 69 of 69 against 170 of 301 |
+| 3 | Retail-Plus frequency 2 then 1, "halved" | Multiply back: 1 times 76 is 76, where the orders are 140 |
+| 4 | Each member spent 15.5% less | Who is inside each average: 107, 91 and 76 |
+| 5 | 167 Retail-Plus customers in the half-year | Buyers against members: 167 of a tier of 120 |
+| 6 | Rs 3,900 against a rerun's Rs 4,590 | The fingerprint held while the sample moved |
+
+```notes
+SELF-STUDY, 3 minutes to read. The debrief of wrong answers runs in the practice lab after the day,
+since the afternoon's last 120 minutes go to the IITGN faculty block, which is tentative. A learner
+who missed the class can take each row back to its chapter's slides and notebook.
+```
+
+---
+
+## SECTION 8: What do we tell Anand?
+*What did the day answer, and what does Anand ask next?*
+
+```notes
+LIVE. Ten minutes: the day's answer (1), the six lines (1), the Kahoot (7) and tomorrow's question
+(1). The self-study slides before this section carry the interview drill, the second case and the
+day's wrong numbers for the lab and the take-home.
+```
+
+---
+
+## S21. Yes: down 1.6%, Retail-Plus carries it, it reruns
+*Can the warehouse itself give Anand the Monday numbers, every segment, every week?*
+
+```stats
+value: 1.6% | label: the book's fall | note: Rs 10.00 crore to Rs 9.84 crore
+value: 29.4% | label: Retail-Plus's fall | note: fewer members, less often, larger orders
+value: 7.0% | label: fewer customers | note: the caveat against last week's extract
+value: 7 | label: fingerprint numbers | note: so a rerun says whether the book moved
+```
+
+> "Booked revenue fell 1.6 percent, and Retail-Plus carries the fall: 29.4 percent, as 16.5 percent fewer members bought, each 22.0 percent less often, each order 8.4 percent larger. Each run prints the book's fingerprint, so a rerun on the same book gives the same answer."
+> The day's answer to Anand, from S14
+
+```notes
+LIVE, 1 minute. Ask two learners to read their own sentence to Anand before this slide; the full
+message, with its caveat, is S14's. Then the six lines worth keeping.
+```
+
+---
+
+## S22. Six lines worth keeping, one per chapter
+*Which line does each chapter leave the Monday suite with?*
+
+| Chapter | The line |
+|---|---|
+| 1. Counts | A count says what it counts: order rows are count(*), customers are count(DISTINCT customer_id). |
+| 2. Sources | A matching total is one leaf matching, so compare every leaf as a change. |
+| 3. Ratios | Divide in numeric, round on purpose, and keep the counts beside the ratio. |
+| 4. Averages | An average names who is inside it, so write the zero on purpose. |
+| 5. Sums | Orders and rupees add across quarters; customers are counted again from the orders. |
+| 6. Runs | Order every audit sample on a column no two rows share, and print the book's fingerprint beside the numbers. |
+
+```notes
+LIVE, 1 minute. Read the six lines; the cheat sheet prints them word for word. Each is the check
+that caught one of the day's plausible wrong numbers. Then the Kahoot.
+```
+
+---
+
+## S23. Kahoot: run order, HAVING, grain, LIMIT, CTEs, ratios
+*Which of the day's decisions can the room make in twenty seconds each?*
+
+```stats
+value: 8 | label: items | note: seven on today, one returning from Week 1 Thursday
+value: 0 | label: grades | note: the Kahoot is daily and ungraded
+value: 20 s | label: per item | note: then the reason, aloud
+```
+
+```mermaid
+flowchart LR
+    Q["<b>seven items</b><br/>clause order, WHERE or HAVING,<br/>a row count, LIMIT, a CTE,<br/>a count, a ratio"] --> R["<b>the return question</b><br/>Week 1 Thursday's<br/>discount, one level up"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class Q known
+    class R bet
+```
+
+```notes
+LIVE, 7 minutes. The pack is kahoot/C2_W02_D01_quiz_STUDENT.md. After each item, one learner says
+why the key holds. The last item returns to Week 1 Thursday: the discount's 6 percent lift came
+from which customers got it, and the room says in one line what a fair comparison would need. Then
+tomorrow's question.
+```
+
+---
+
+## S24. Tomorrow: booked against collected, left open
+*Anand asks the next question: what does the book say about the money itself?*
+
+> "Booked revenue is not collected revenue. Show me, order by order, what we actually collected against what we booked in Q2."
+> Anand Iyer, finance controller, Kalpa Retail, the question he sends back
+
+```mermaid
+flowchart LR
+    B["<b>booked in Q2</b><br/>Rs 9,84,00,000<br/>on 462 orders"] --> Q["<b>collected?</b>"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class B known
     class Q unknown
 ```
 
 ```notes
-LIVE, 3 minutes. Read Anand's reply and leave the question mark on screen. Do not explain joins.
-The pre-read ships tonight. Then the room moves to the tentative IITGN block, and after the day
-the TA-led practice lab runs from exercises/practice/.
+LIVE, 1 minute. Leave the question open. Tonight's pre-read opens on Anand's message. Then the
+practice lab after the day, and before it the IITGN faculty session, which is tentative and runs
+120 minutes on a topic of its own.
 ```

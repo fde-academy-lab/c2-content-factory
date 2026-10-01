@@ -1,50 +1,249 @@
-# Solution: practice lab, the Monday tree by channel
+# Which answers hold in the practice lab on row counts, running order and the returns suite, and why?
 
-Answers: 1b 2d 3a 4c 5b 6d 7c 8b 9c 10a 11d
+Answers: 1b 2d 3c 4a 5a 6d 7b 8c 9d 10c 11b
 
-## The idea being tested
+The practice lab set asked for three habits on questions the chapters never ran: predict a query's
+row count before running it, say the order the database works through a query, defend one placement
+and match each request to the piece that answers it, and build a short suite for a new stakeholder,
+the head of customer service, that ties out and draws the same sample twice. One of the eleven items
+is a design item, item 10, the rebuild from each customer's history; the suite itself is the
+problem's design work, and a model suite is below.
 
-A grouped query returns one row per group that exists after `WHERE`, and `HAVING` then removes
-groups. A channel is a column on the order, so the channel tree needs no lookup until the question
-asks whether a move is consumer or Business. Every column of someone else's query is checked before
-any of it is trusted, because a query with one wrong column usually has two.
+**Who needs the answer.** You do, when you check your eleven letters and your suite at the end of the
+lab. Anand's analyst will read any suite the team ships the way the TA reads yours tonight:
+definition first, then the tie-out, then the sample.
 
-## Item by item
+**The questions on the way.**
 
-| Item | Key | Why it holds | Why the others fail |
-|---|---|---|---|
-| 1 | b | Two quarters, so two groups. | a forgets the grouping. c counts channels. d is the table's rows, before grouping. |
-| 2 | d | Four segments times two quarters, all present. | a and b group by one column. c ignores the grouping. |
-| 3 | a | Only Student in Q1, with 27 orders, sits under 30. | b: 27 is under 30. c keeps every group. d guesses the consumer segments. |
-| 4 | c | Three channels times three statuses, all present in Q2 above Rs 5,000: nine rows. | a counts channels only. b counts two statuses. d assumes four statuses. |
-| 5 | b | FROM, WHERE, GROUP BY, HAVING, ORDER BY. | a filters rows after grouping. c starts before any table is named. d filters groups before they exist. |
-| 6 | d | `HAVING` tests an aggregate, and an aggregate is computed per group, so the groups must exist first. | a: the written order is a convention of the language, the logical order is the reason. b: HAVING does not need sorted rows. c: HAVING can test aggregates that SELECT never shows. |
-| 7 | c | `sum(amount) / count(*)` divides a numeric sum by a count, so the fraction survives; it only needs rounding for the reader. | a is `count(*)`, order rows. b is integer division and reads 1 everywhere. d: one column is right. |
-| 8 | b | `count(*)` counts rows, and a row is an order: 153 app orders in Q2, from 124 customers. | a is `count(DISTINCT customer_id)`, 124. c and d need columns the query never reads. |
-| 9 | c | Web fell from Rs 3,79,02,050 to Rs 2,36,61,000, a fall of Rs 1,42,41,050, or 37.6 percent. | a: app rose 1.1 percent. b: store rose 61.1 percent. d: web fell. |
-| 10 | a | Web's Business orders fell Rs 1,42,19,000 and its consumer orders Rs 22,050: the Business part is 99.8 percent of the fall. | b: consumer orders did fall in every channel, and they are a sliver of the rupees. c: the split is nowhere near even. d: `lab_channel_split` tells it with one lookup line. |
-| 11 | d | Store's Business orders rose by almost as much as web's fell, so the channel moves are Business orders changing channel; consumer orders fell in every channel, most in the app, 24.1 percent. | a and b read a Business shift as a channel's health. c drops a split that matters for consumer frequency. |
+- Which idea does the lab test: knowing a query's shape before it runs, then building a suite that ties out and repeats?
+- Why does each of the eleven keys hold, from the nine channel-status rows to the ordered sample?
+- What does a model returns suite print, and how does a TA read it?
+- Why is option b in item 6, HAVING waiting for SELECT's names, worth arguing about?
+- Where does problem 3 come back in today's interview drill?
 
-## The channel tree, as a model
+## Which idea does the lab test: knowing a query's shape before it runs, then building a suite that ties out and repeats?
 
-| Channel | Q1 revenue | Q2 revenue | Change | Orders per customer, Q1 then Q2 |
-|---|---|---|---|---|
-| app | Rs 4,21,38,840 | Rs 4,25,90,270 | 1.1 percent up | 1.44 then 1.23 |
-| store | Rs 1,99,59,110 | Rs 3,21,48,730 | 61.1 percent up | 1.29 then 1.31 |
-| web | Rs 3,79,02,050 | Rs 2,36,61,000 | 37.6 percent down | 1.39 then 1.33 |
+Every query has a shape that can be known before it runs: how many groups it forms, which rows reach
+them, and which groups survive. The first two problems ask for that shape. The third asks for the whole
+day on a new definition, returned orders: the definition stated once, counts that name what they count,
+a tie-out on the columns that add, a half-year counted from the orders, and a sample ordered on the
+order id, beside a fingerprint.
 
-Block `lab_channel_tree` in `sql/C2_W02_D01_05_lab_STUDENT.sql` is the model query. A learner's
-version that differs in column names and agrees on every number is right.
+## Why does each of the eleven keys hold, from the nine channel-status rows to the ordered sample?
 
-## The part worth arguing about
+### Q1. How many rows does the Q2 channel and status query return?
 
-Item 11. Some pairs want to write that web is in trouble, because 37.6 percent is the biggest move
-on the sheet. The split shows almost all of it is Business orders, a few large invoices placed
-through a different channel from one quarter to the next. A channel sheet built on rupees alone is
-a Business sheet in disguise, which is why Anand's analyst will want orders per customer beside it.
+Kind: predict the output. The key is b, 9: three channels times three statuses, all present in Q2.
 
-## Where the pattern lives in production
+- a, 3: one row per channel, as if the query grouped by channel alone.
+- c, 6: three channels times two quarters, the answer for a query grouped by channel and quarter with
+  no WHERE line.
+- d, 18: channel, status and quarter together, the answer if the WHERE were removed and the quarter
+  grouped.
 
-Channel attribution reports in retail are dominated by a few large accounts whenever B2B and
-consumer orders share a table, and the standard guard is the same split: every channel number
-reported twice, with and without the large accounts.
+### Q2. How many segment-quarters clear a bar of 90 customers?
+
+Kind: predict the output from the table. The key is d, 3: Retail-Core in Q1 (102) and Q2 (96) and
+Retail-Plus in Q1 (91). Retail-Plus in Q2 has 76.
+
+- a, 4: counts Retail-Plus Q2 as well, which sits at 76.
+- b, 2: keeps only Retail-Core, missing Retail-Plus Q1's 91.
+- c, 8: every segment-quarter, as if the HAVING line were not there.
+
+### Q3. How many segments placed more than 100 orders in Q2?
+
+Kind: predict the output from the table. The key is c, 2: in Q2, Retail-Core placed 193 orders and
+Retail-Plus 140, while Business placed 91 and Student 38.
+
+- a, 4: every segment, as if HAVING did nothing.
+- b, 3: counts each segment's half-year orders (Business 188, Retail-Core 392, Retail-Plus 355), which
+  is the answer with the WHERE line ignored.
+- d, 1: keeps only Retail-Core, as if 140 were under the bar.
+
+### Q4. How many customers does the half-year list hold?
+
+Kind: predict the output. The key is a, 301: DISTINCT keeps each customer once across both quarters.
+
+- b, 471: Q1's 244 added to Q2's 227, which counts the 170 customers who bought in both quarters
+  twice.
+- c, 1,000: one row per order, which is what the query returns without DISTINCT.
+- d, 340: every customer on the customers table, including the 39 who bought nothing in either
+  quarter.
+
+### Q5. In which order does the database work through the five clauses after FROM and the lookup?
+
+Kind: order the steps. The key is a, "WHERE, GROUP BY, HAVING, SELECT, ORDER BY": rows are filtered,
+grouped, groups are filtered, the result is computed, and the result is sorted.
+
+- b, "SELECT, WHERE, GROUP BY, HAVING, ORDER BY": the SELECT's counts cannot exist before the groups.
+- c, "WHERE, GROUP BY, SELECT, HAVING, ORDER BY": HAVING comes before SELECT, which is why HAVING
+  repeats `count(DISTINCT o.customer_id)` rather than using the name customers.
+- d, "GROUP BY, WHERE, HAVING, SELECT, ORDER BY": grouping first would group the web and store orders
+  the WHERE is meant to remove.
+
+### Q6. Why does WHERE run before GROUP BY while HAVING runs after it?
+
+Kind: defend a placement. The key is d, "WHERE judges single rows before groups exist; HAVING judges a
+group's count once groups form". The app filter is a fact about each order, so it acts before the
+groups; the bar of 30 is a fact about a group, so it waits for them.
+
+- a, "WHERE is written first, and the database runs the clauses in the order they are written": the
+  written order starts with SELECT, which runs fifth.
+- b, "HAVING needs the names SELECT gives the columns, so it has to wait for SELECT to finish": HAVING
+  runs before SELECT, and in Postgres it cannot use SELECT's names; ORDER BY can, because it runs
+  after.
+- c, "HAVING and WHERE filter in the same way, and HAVING runs later only to save the database work":
+  they filter different things, rows against groups, which is why moving one into the other's place
+  changes the answer or fails.
+
+### Q7. Which piece of a query answers each of the service head's four requests about returns?
+
+Kind: match each question to its method. The key is b, "1Q 2P 3R 4S". Keeping channels by how many
+customers returned is a test on a group's count, so it is HAVING; keeping the returned orders is a
+test on each row, so it is WHERE; different customers are a distinct count; returned orders are rows,
+so `count(*)` counts them.
+
+- a, "1P 2Q 3R 4S": swaps WHERE and HAVING, and WHERE cannot test a count because no group exists
+  when it runs.
+- c, "1Q 2P 3S 4R": swaps the two counts, so the customers line would count every returned order and
+  the orders line would count each customer once.
+- d, "1P 2Q 3S 4R": makes both swaps at once.
+
+### Q8. Which channel's returned orders rose from Q1 to Q2?
+
+Kind: read the output. The key is c, store: 25 returned orders in Q1 and 29 in Q2.
+
+- a, app: 42 then 29, a fall.
+- b, web: 30 then 29, a fall.
+- d, "none, since every channel's returns fell": the store's rose.
+
+### Q9. Which tie-out holds on the returns suite in Q1?
+
+Kind: choose the check. The key is d, "The channels' orders add to the Q1 row's 97; their customers add
+to 90 against its 78". The orders, 42, 25 and 30, and the rupees, Rs 84,11,410, Rs 17,76,150 and
+Rs 92,18,920, add to the quarter's 97 and Rs 1,94,06,480. The customers, 39, 24 and 27, add to 90,
+because a customer who returned through two channels sits in both rows, so the sheet carries a note
+under the customer column.
+
+- a, "The channels' orders and customers both add to the Q1 row, 97 orders and 90 customers": the Q1
+  row counts 78 customers, each once.
+- b, "The channels' customers add to the Q1 row's 78, and their orders to its 97": 39, 24 and 27 add to
+  90.
+- c, "Neither adds, since each channel's returns are counted in a group of their own": orders and
+  rupees add, since every returned order sits in exactly one channel.
+
+### Q10. Which rebuild from each customer's history confirms the half-year count of customers who returned an order?
+
+Kind: a design item, the independent second route, assembled from three history counts and checked
+against both quarter rows. The key is c, "24 plus 54 plus 52 is 130, and 24 plus 54 and 24 plus 52
+rebuild your quarter rows". Every customer who returned an order sits in exactly one of the three
+histories, so they add to the half-year, 130, the same as the count from the orders. The same groups
+rebuild each quarter: 24 plus 54 is Q1's 78 and 24 plus 52 is Q2's 76. A wrong count on either side
+would break one of the three ties.
+
+- a, "The 184 returned orders, one customer for each, so the half-year holds 184 customers": counts
+  orders, and some customers returned more than one.
+- b, "54 plus 52 is 106, the customers who returned in one quarter only, so 106 in all": leaves out
+  the 24 who returned in both quarters, who are customers of the half-year too.
+- d, "24 plus 54 for Q1 and 24 plus 52 for Q2, added together, which gives 154 customers": adds the
+  two quarter rows, which counts the 24 who returned in both quarters twice.
+
+### Q11. Which ordering and printout make the service team's sample auditable?
+
+Kind: choose the fix and its check. The key is b, "`ORDER BY order_id LIMIT 5`, with the returned
+book's rows, rupees and customers printed beside it". No two orders share an id, so the five are fixed:
+KR-00540, KR-00548, KR-00556, KR-00565 and KR-00567, Rs 4,110 in all. The fingerprint, 184 rows,
+Rs 3,80,55,960 and 130 customers, says whether the returned book moved between two runs.
+
+- a, "`LIMIT 5` alone, with the returned book's rows, rupees and customers printed beside it": the
+  fingerprint is right and the sample can still change on a rerun, since nothing fixes which five.
+- c, "`ORDER BY order_id LIMIT 5`, with the time the run took printed beside it": the sample repeats,
+  and the time says nothing about the book.
+- d, "`ORDER BY channel LIMIT 5`, with the returned book's row count printed beside it, and nothing
+  else": the channel is a column many returned orders share, so it does not fix which five come back,
+  and a row count misses a corrected amount.
+
+## What does a model returns suite print, and how does a TA read it?
+
+One version that answers every part, run on the warehouse. Each query states the definition on its
+first step and names what each count counts.
+
+```sql
+-- The returns suite, part 1: orders, customers who returned and rupees per channel and quarter.
+WITH returned AS (
+    -- The definition, stated once: an order whose status is returned.
+    SELECT order_id, customer_id, quarter, channel, amount
+    FROM   orders
+    WHERE  status = 'returned'
+),
+per_channel AS (
+    -- One row per channel and quarter; each customer is counted once within a row.
+    SELECT channel, quarter,
+           count(*)                    AS orders,
+           count(DISTINCT customer_id) AS customers,
+           sum(amount)                 AS rupees
+    FROM   returned
+    GROUP  BY channel, quarter
+)
+SELECT * FROM per_channel ORDER BY quarter, channel;
+
+-- Part 2: the same measures for each quarter across all channels, for the tie-out.
+WITH returned AS (
+    SELECT order_id, customer_id, quarter, channel, amount
+    FROM   orders
+    WHERE  status = 'returned'
+)
+SELECT quarter,
+       count(*)                    AS orders,
+       count(DISTINCT customer_id) AS customers,
+       sum(amount)                 AS rupees
+FROM   returned
+GROUP  BY quarter
+ORDER  BY quarter;
+
+-- Part 3: the half-year, counted from the orders.
+SELECT count(DISTINCT customer_id) AS customers_half_year
+FROM   orders
+WHERE  status = 'returned';
+
+-- Part 4: five returned Q2 orders, ordered on a column no two rows share.
+SELECT order_id, channel, amount
+FROM   orders
+WHERE  status = 'returned' AND quarter = 'Q2'
+ORDER  BY order_id
+LIMIT  5;
+
+-- Part 5: the returned book's fingerprint, printed beside the sample.
+SELECT count(*) AS rows, sum(amount) AS rupees, count(DISTINCT customer_id) AS customers
+FROM   orders
+WHERE  status = 'returned';
+```
+
+| What the suite prints | Q1 | Q2 |
+|---|---|---|
+| app: orders, customers who returned, rupees | 42, 39, Rs 84,11,410 | 29, 28, Rs 66,02,830 |
+| store: orders, customers who returned, rupees | 25, 24, Rs 17,76,150 | 29, 28, Rs 69,23,060 |
+| web: orders, customers who returned, rupees | 30, 27, Rs 92,18,920 | 29, 27, Rs 51,23,590 |
+| All channels: orders, customers who returned, rupees | 97, 78, Rs 1,94,06,480 | 87, 76, Rs 1,86,49,480 |
+
+The half-year holds 130 customers who returned an order. Chapter 5's `GROUPING SETS` would print the
+channel rows and the quarter rows from one query, which is the better build once the suite settles;
+two queries sharing one definition are fine for a first suite.
+
+A TA reading your suite checks four things, in this order: the definition sits in one place, the
+customer counts are distinct counts named for what they count, the channel rows tie out on orders and
+rupees with a note on customers, and the sample is ordered on the order id beside a fingerprint.
+
+## Why is option b in item 6, HAVING waiting for SELECT's names, worth arguing about?
+
+Many learners have seen `ORDER BY revenue` use a name SELECT gave, and conclude that every later
+clause can. HAVING cannot in Postgres, because it runs before SELECT, while ORDER BY runs after it.
+The argument is worth having because it is the fastest way to remember the order: whatever can see
+SELECT's names ran after SELECT.
+
+## Where does problem 3 come back in today's interview drill?
+
+The drill asks two of problem 3's questions aloud: what changes in how you write a query once an
+analyst must audit it, and what `LIMIT` without `ORDER BY` returns. Problem 3 is both answers built:
+the definition stated once in a named step, counts that say what they count, a tie-out on the columns
+that add, and a sample ordered on the order id beside a fingerprint.

@@ -1,7 +1,5 @@
 -- Kalpa Retail warehouse, the two-quarter book Anand asks for every Monday.
--- Built by data/generate_client_zero.py. Load with: psql -f data/warehouse_v4.sql
--- payments carries no foreign key on purpose: the feed holds payments whose order never arrived.
--- campaign_exposure carries no primary key on purpose: the second feed re-sent some customers.
+-- Written by data/generate_client_zero.py --version v4, and loaded by: bash .devcontainer/load_warehouse.sh
 DROP TABLE IF EXISTS campaign_exposure, plan_line, refunds, payments, orders, campaigns, customers;
 
 CREATE TABLE customers (
