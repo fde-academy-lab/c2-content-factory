@@ -1164,10 +1164,14 @@ and Q12 follow their new wording, and the text-sort check left with the claim it
 
 - `data/programme/paper_edits.yaml`, bank 27's stem: "is ten times the largest retail spend"
   should read "is more than ten times", since Rs 2,25,000 against Rs 21,740 is 10.35. The key's
-  reason says so already, and the proof's check of the stem's wording changes with it.
+  reason says so already, and the proof's check of the stem's wording changes with it. Settled by
+  the orchestrating session on 1 October 2026: the stem reads "more than ten times", the paper,
+  the key and the workbook were rebuilt with mermaid-cli 11.17.0 (23 and 25 pages), and the key
+  proofs pass on all 33 items against the reloaded warehouse. The edit stays proposed, as before.
 - mermaid-cli: the environment holds 12.0.0 where `setup.sh` installs @11. A session that builds
   this paper with 12 gets 24 pages, so either the environment returns to 11 or the Saturday
-  builder's diagrams are measured again under 12.
+  builder's diagrams are measured again under 12. Settled the same day: the papers are built with
+  11, the major version `setup.sh` pins, and 12 is not used for any committed file.
 - Q25 repeats the Reinhart and Rogoff case that the Week 1 paper's Part 4 used, where the stopped
   range was spelled out. Another public case of a range that stops short would test the same skill
   cold; that choice sits with the requester, since this pass keeps the items.

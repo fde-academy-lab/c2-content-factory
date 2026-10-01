@@ -285,7 +285,7 @@ d) RANK, keeping every member whose rank is 50 or better: 51 members
 
 #### Q13 · Medium · circle one letter · Choose the approach
 
-Marketing's first protect list sorted every customer by revenue for July to September and kept the top fifty: all 35 Business customers who ordered, because the smallest of their spends is ten times the largest retail spend, then 11 Retail-Plus members and 4 Retail-Core customers, and no Student. For a pilot, Marketing now wants the top three customers in each segment. Which approach answers it?
+Marketing's first protect list sorted every customer by revenue for July to September and kept the top fifty: all 35 Business customers who ordered, because the smallest of their spends is more than ten times the largest retail spend, then 11 Retail-Plus members and 4 Retail-Core customers, and no Student. For a pilot, Marketing now wants the top three customers in each segment. Which approach answers it?
 
 a) GROUP BY segment with LIMIT 3, which applies the limit to each group in turn
 b) A rank within PARTITION BY segment, which an outer query keeps at 3 or better
