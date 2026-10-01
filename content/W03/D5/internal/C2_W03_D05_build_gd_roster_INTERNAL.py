@@ -282,8 +282,24 @@ def manifest():
     (OUT / MANIFEST).write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def store_values(path):
+    """Recalculate through LibreOffice with the xlsx skill's recalc.py, so every formula also carries
+    its computed value for a reader that does not recalculate. Skipped, and said so, when LibreOffice
+    or the script is missing; the workbook still computes when it is opened."""
+    import shutil
+    import subprocess
+    import sys
+    script = ROOT / ".claude" / "skills" / "xlsx" / "scripts" / "recalc.py"
+    if not script.exists() or not (shutil.which("soffice") or shutil.which("libreoffice")):
+        print("values not stored: LibreOffice or the xlsx skill's recalc.py is missing")
+        return
+    r = subprocess.run([sys.executable, str(script), str(path), "60"], capture_output=True, text=True)
+    print("values stored" if '"status": "success"' in r.stdout else f"recalc reported: {r.stdout.strip()[:200]}")
+
+
 if __name__ == "__main__":
     build()
+    store_values(OUT / BOOK)
     manifest()
     print(f"wrote {OUT / BOOK} and {OUT / MANIFEST}")
 

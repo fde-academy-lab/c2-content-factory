@@ -171,7 +171,7 @@ group sits which slot.
 **The questions on the way.** What does the rubric reward at every level? What does a harder card
 change?
 
-The rubric scores the moves, never the card. A level 1 group earns full marks under Uses evidence by
+The rubric scores the moves a learner makes, whatever card the group drew. A level 1 group earns full marks under Uses evidence by
 defending its position with the break-even it computed; a level 5 group earns the same by defending
 its order of moves with the weeks of cash or the clause it read. A level 5 card has no clean answer,
 so Lands a conclusion is met by a recommendation with its main risk, even where the group names a

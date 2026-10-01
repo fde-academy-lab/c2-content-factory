@@ -78,6 +78,9 @@ def build():
         8: (f"The Scores sheet holds {sum(n for _, n in SEATS)} seats, one per learner: eight groups "
             "of four and G9 of three, as Thursday's roster and Saturday's sheets seat the cohort. "
             "Relabel the seats if Monday's allocation put the group of three elsewhere."),
+        9: ("The rubric scores the moves a learner makes, whatever card the group drew, so the same move "
+            "earns the same marks on a level 5 card as on a level 1 card. What full marks look like on each card is in "
+            "gd/C2_W03_D05_gd_prompts_TRAINER.md, one block per card."),
     }
     for row, text in lines.items():
         put(rm, f"A{row}", text)
@@ -202,7 +205,23 @@ def manifest(total, last):
     (OUT / MANIFEST).write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def store_values(path):
+    """Recalculate through LibreOffice with the xlsx skill's recalc.py, so every formula also carries
+    its computed value for a reader that does not recalculate. Skipped, and said so, when LibreOffice
+    or the script is missing; the workbook still computes when it is opened."""
+    import shutil
+    import subprocess
+    import sys
+    script = ROOT / ".claude" / "skills" / "xlsx" / "scripts" / "recalc.py"
+    if not script.exists() or not (shutil.which("soffice") or shutil.which("libreoffice")):
+        print("values not stored: LibreOffice or the xlsx skill's recalc.py is missing")
+        return
+    r = subprocess.run([sys.executable, str(script), str(path), "60"], capture_output=True, text=True)
+    print("values stored" if '"status": "success"' in r.stdout else f"recalc reported: {r.stdout.strip()[:200]}")
+
+
 if __name__ == "__main__":
     t, end = build()
+    store_values(OUT / BOOK)
     manifest(t, end)
     print(f"wrote {OUT / BOOK} ({end - 2} seats) and {OUT / MANIFEST}")
