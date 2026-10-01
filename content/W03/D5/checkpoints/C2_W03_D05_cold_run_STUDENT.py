@@ -2,18 +2,21 @@
 
     python3 C2_W03_D05_cold_run_STUDENT.py --notebook analysis.ipynb --slide slide_numbers.txt --data data
 
-What it does, in order:
+Does someone who was not in your group get your slide's numbers from the raw files, with nothing
+run by hand? The script answers that question in four steps:
 
 1. Checks the ten raw Kalpa Health files in --data against the checksums of the files the data team
-   dropped, so a raw file edited by hand is caught before the panel catches it. Pass --reference with
-   the folder of the files as published if the pack was re-issued after this script was written.
+   exported on Friday 16 October 2026, so a raw file edited by hand, or saved again from Excel, is
+   caught before the panel catches it. Pass --reference with the folder of the files as published
+   if the pack was re-issued after this script was written.
 2. Runs the notebook top to bottom in a fresh kernel with jupyter nbconvert, from the notebook's own
    folder, and times the run.
 3. Reads every printed output of the executed notebook and looks for each number in --slide, one
    number per line, written exactly as the slide shows it. Anything after a | on a line is your label.
-   Commas, "$", "percent" and "%" are ignored in the comparison, so "$180,000" on the slide
-   matches 180000 or 180,000 printed by the notebook. A number the notebook computes and never
-   prints does not count, so print every slide number in the slide's own format.
+   Commas, "$", "percent" and "%" are ignored in the comparison, so "$12,345" on the slide
+   matches 12345 or 12,345 printed by the notebook, and "12.5 percent" matches 12.5%. A number the
+   notebook computes and never prints does not count, so print every slide number in the slide's
+   own format.
 4. Prints one line to paste into the cold-run log in the demo checklist.
 
 It exits 0 only when the files match, the run is clean and every slide number was found.
@@ -24,6 +27,7 @@ import hashlib
 import json
 import pathlib
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -69,7 +73,6 @@ def check_raw(data_dir, reference_dir=None):
 def normalise(text):
     """Drop the decorations a slide and a print() disagree on, and keep the digits."""
     text = text.replace(",", "").replace("$", "")
-    text = re.sub(r"\bRs\.?\s*", "", text)
     text = re.sub(r"\s*(percent|%)", "", text)
     return text
 
@@ -100,13 +103,18 @@ def printed_text(executed_nb):
 
 
 def found(number, text):
-    pattern = r"(?<![\d.])" + re.escape(number) + r"(?![\d])"
+    """The number standing alone: 12.5 is not found inside 112.5, 12.55 or 12.5.1."""
+    pattern = r"(?<![\d.])" + re.escape(number) + r"(?!\d|\.\d)"
     return re.search(pattern, text) is not None
 
 
 def run_cold(notebook, timeout):
     """Execute the notebook in a fresh kernel from its own folder; return (ok, seconds, executed, error)."""
     nb = pathlib.Path(notebook).resolve()
+    if not nb.exists():
+        return False, 0.0, None, f"no notebook at {nb}"
+    if shutil.which("jupyter") is None:
+        return False, 0.0, None, "jupyter is not installed here; add jupyter and nbconvert to requirements.txt"
     out_dir = pathlib.Path(tempfile.mkdtemp(prefix="cold_run_"))
     executed = out_dir / nb.name
     start = time.time()
@@ -172,16 +180,24 @@ if __name__ == "__main__":
 
 # Test inputs and expected outcomes
 # ---------------------------------
-# A notebook that reads the ten untouched files and prints 1,250 and 25.4, with a slide file holding
-#     $1,250 | example label
-#     25.4 percent | example label
+# Each case below was run on 1 October 2026 against content/W03/D1/data with a small notebook that
+# reads the patient register and prints "6,700 patients" and "25.4 percent aged 65 and over".
+# A slide file holding
+#     6,700 | patients on the register
+#     25.4 percent | aged 65 and over
 #   prints PASS for the raw files, the run and both numbers, and exits 0.
 # The same run with a slide file that also holds "99.9 percent", which the notebook never prints,
-#   prints FAIL for that line only and exits 1.
-# The same run after one raw CSV was saved again from Excel (so its bytes changed)
-#   prints FAIL "raw file changed since the data team dropped it: <name>" and exits 1.
+#   prints FAIL for that line only, logs "99.9 percent not printed", and exits 1.
+# The same run after one raw CSV gained a single extra byte (as saving it again from Excel does)
+#   prints FAIL "raw file changed since the data team dropped it: <name>" and exits 1; with
+#   --reference pointing at that same folder it passes, since the reference is now the folder given.
 # A notebook whose third cell raises an error
 #   prints FAIL "the notebook stopped after N minutes: <the last error line>", checks no numbers,
 #   and exits 1.
 # --data pointing at a folder with nine of the ten files
 #   prints FAIL "raw file missing: <name>" for the tenth and exits 1.
+# A machine with no jupyter on the PATH
+#   prints FAIL "the notebook stopped after 0.0 minutes: jupyter is not installed here; add jupyter
+#   and nbconvert to requirements.txt" and exits 1.
+# A slide number of 12.5 against a notebook that prints only 112.5 or 12.55 is not found, and
+#   against one that prints 12.5% it is found.
