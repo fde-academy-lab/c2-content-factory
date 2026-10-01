@@ -73,29 +73,29 @@ def choice(ws, ref, options):
 wb = Workbook()
 start = wb.active
 start.title = "Start"
-start["A1"] = "Which Q1 figure is right: the decision tool"
+start["A1"] = "Which four cleaning decisions get the export to the books?"
 start["A1"].font = TITLE
 start.column_dimensions["A"].width = 110
 lines = [
-    "Kalpa Retail, Week 1, Wednesday. Four cleaning decisions the day taught, one tab each, and an Export tab "
-    "that assembles the note to Anand.",
+    "Kalpa Retail, Week 1, Wednesday. Anand Iyer, the finance controller, acts only on a figure that matches his "
+    "books to the rupee, and his analyst ties out every figure, matching it to the books line by line. Four "
+    "cleaning decisions the day taught get an export there, one tab each, and an Export tab assembles the note.",
     "Yellow cells are inputs; every other number and sentence is a live formula. Every record here is invented, "
     "so the tool works on any export you paste in.",
     "Each tab carries one planted defect. Read the tab's check line first, find the cell, fix it, and watch the "
     "verdict change.",
     "The Export tab releases the note only when all four tabs pass their checks, so fixing one tab does not clear it.",
-    "Profile: what converts. Identity: what makes two rows one order. Tail: keep the large order. Reconcile: rows "
-    "and rupees.",
+    "The Profile tab counts what converts, the Identity tab says what makes two rows one order, the Largest tab "
+    "keeps a large order that is real, and the Reconcile tab ties rows and rupees to the books.",
 ]
 for i, text in enumerate(lines, 3):
     start.cell(row=i, column=1, value=text).alignment = WRAP
 
 # ---------------------------------------------------------------- Profile
 ws = sheet(wb, "Profile", "What converts, and what fails?",
-           "Ten invented amounts as the file holds them, as text. A failure is counted and logged, never turned into "
-           "a number.")
+           "Ten invented amounts as the file holds them, as text. A failure is logged, never turned into a number.")
 head(ws, 4, ["Amount as text", "Converted", "", "Count", "Value"])
-for i, v in enumerate(["2400", "1300", "n/a", "3100", "1800", "2600", "950", "4100", "1750", "2200"], 5):
+for i, v in enumerate(["2500", "1300", "n/a", "3100", "1800", "2600", "950", "4100", "1750", "2200"], 5):
     put(ws, f"A{i}", v, fill=INPUT)
     put(ws, f"B{i}", f'=IFERROR(VALUE(A{i}),"")')
 put(ws, "D5", "Present"); put(ws, "E5", "=COUNTA(A5:A14)")
@@ -115,7 +115,7 @@ put(ws, "D12", "Fixed, for the Export tab", NOTE); put(ws, "E12", "=IF(E6+E7=E5,
 ws = sheet(wb, "Identity", "What makes two rows one order?",
            "Eight invented rows, each carrying the file line it came from. The key decides what counts as a duplicate.")
 head(ws, 4, ["order_id", "Amount", "Date", "Line", "Key used"])
-rows = [("INV-01", 2400, "2026-05-03", 2), ("INV-02", 1300, "2026-05-09", 3), ("INV-01", 2400, "2026-05-03", 4),
+rows = [("INV-01", 2500, "2026-05-03", 2), ("INV-02", 1300, "2026-05-09", 3), ("INV-01", 2500, "2026-05-03", 4),
         ("INV-03", 450000, "2026-06-11", 5), ("INV-04", 3100, "2026-06-20", 6), ("INV-03", 450000, "2026-06-11", 7),
         ("INV-05", 1800, "2026-08-21", 8), ("INV-05", 1800, "2026-07-30", 9)]
 for i, (a, b, c, d) in enumerate(rows, 5):
@@ -137,9 +137,10 @@ put(ws, "B20", '=IF(B17<>B14-B15,"Fix the key before counting duplicates.",'
                'for each row set aside.")', VERDICT, TINT, True)
 put(ws, "A21", "Fixed, for the Export tab", NOTE); put(ws, "B21", "=IF(ROUND(B17-(B14-B15),6)=0,1,0)")
 
-# ---------------------------------------------------------------- Tail
-ws = sheet(wb, "Tail", "Keep the large order?",
-           "Eight invented Business orders. A fence flags the tail for checking; it never removes real revenue.")
+# ---------------------------------------------------------------- Largest
+ws = sheet(wb, "Largest", "Should the large order stay in revenue?",
+           "Eight invented Business orders. A fence flags the largest for a check of their records, and revenue "
+           "keeps every valid order.")
 head(ws, 4, ["Order amount (Rs)", "Above the fence"])
 for i, v in enumerate([310000, 420000, 450000, 520000, 610000, 700000, 880000, 1800000], 5):
     put(ws, f"A{i}", v, fill=INPUT)
@@ -154,13 +155,13 @@ put(ws, "D11", "The check", BOLD)
 put(ws, "E11", '=IF(E9=E8,"Every valid order stays in revenue.","Revenue reported leaves out orders above the '
                'fence: a fence flags, it never removes. Fix it first.")', wrap=True)
 put(ws, "D13", "Verdict", VERDICT)
-put(ws, "E13", '=IF(E9<>E8,"Fix the revenue that drops the tail before reporting it.",'
+put(ws, "E13", '=IF(E9<>E8,"Fix the revenue that drops the largest orders before reporting it.",'
                f'"Keep all "&COUNT(A5:A12)&" orders, "&{rs("E8")}&"; flag "&E10&" above the fence for a record '
                f'check, and show the total without "&IF(E10=1,"it","them")&" beside it.")', VERDICT, TINT, True)
 put(ws, "D14", "Fixed, for the Export tab", NOTE); put(ws, "E14", "=IF(E9=E8,1,0)")
 
 # ---------------------------------------------------------------- Reconcile
-ws = sheet(wb, "Reconcile", "Rows and rupees, to the books",
+ws = sheet(wb, "Reconcile", "Do rows and rupees both tie to the books?",
            "Four invented rows; one pair shares an id, and the first copy's amount will not convert. The books say "
            "Rs 9,600.")
 head(ws, 4, ["", "Value"])
@@ -180,15 +181,15 @@ put(ws, "A14", "Fixed, for the Export tab", NOTE)
 put(ws, "B14", '=IF(ISNUMBER(SEARCH("rupees",B13)),1,0)')
 
 # ---------------------------------------------------------------- Export
-ws = sheet(wb, "Export", "The note, assembled",
-           "Released only when every tab's check passes. Paste it into the note to Anand.")
+ws = sheet(wb, "Export", "Is the note to Anand ready to paste?",
+           "The note below is released only when every tab's check passes, and then it pastes into the note to Anand.")
 ws.column_dimensions["B"].width = 110
-put(ws, "A4", "Tabs fixed", BOLD); put(ws, "B4", "=Profile!E12+Identity!B21+Tail!E14+Reconcile!B14")
+put(ws, "A4", "Tabs fixed", BOLD); put(ws, "B4", "=Profile!E12+Identity!B21+Largest!E14+Reconcile!B14")
 put(ws, "A5", "Release", VERDICT)
 put(ws, "B5", '=IF(B4=4,"Ready to paste into the note to Anand.","Not ready: "&(4-B4)&" of the four tabs still '
               'carry a defect to fix first.")', VERDICT, TINT, True)
 put(ws, "A7", "Paste-ready note", BOLD)
-put(ws, "B7", '=IF(B4=4,"Profile: "&Profile!E11&CHAR(10)&"Identity: "&Identity!B20&CHAR(10)&"Tail: "&Tail!E13&'
+put(ws, "B7", '=IF(B4=4,"Profile: "&Profile!E11&CHAR(10)&"Identity: "&Identity!B20&CHAR(10)&"Largest order: "&Largest!E13&'
               'CHAR(10)&"Reconcile: "&Reconcile!B13,"The note assembles once every tab passes its check.")', wrap=True)
 ws.row_dimensions[7].height = 100
 

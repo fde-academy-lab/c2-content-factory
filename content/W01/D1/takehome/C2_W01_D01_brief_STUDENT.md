@@ -1,47 +1,71 @@
-# Take-home: a tree you can watch, and a file nobody explained
+# Which branch would you examine first for a business you can watch, and does the day's method hold on a second Kalpa file?
 
 > "By Thursday I want a recommendation on which branch we examine first, and I will ask why you did
 > not pick the others."
 > Meera Raghavan, CEO, Kalpa Retail
 
-Three parts, about two hours in all. Part 1 is the day's thinking on a business nobody has written
-about, and it is the part an interviewer will ask you to talk through. Part 2 is the day's method on
-a second sample of Kalpa orders you have not seen. Part 3 is twenty minutes of reading with one
-specific thing to cite. Tuesday opens by walking one learner's Part 1 in front of the room.
+**Who needs the answer.** Meera wants a recommendation by Thursday and will ask why the other
+branches were not picked, and Tuesday's session opens by walking one learner's Part 1 in front of the
+room. A tree that cannot defend its first branch, or a number computed on the wrong rows, does not
+survive either.
+
+**The questions on the way.** What does the revenue tree look like for a business you can stand in
+front of, and which branch would you open first there? Do customers, orders per customer and the
+typical order come out right on a second Kalpa sample? What does the profitability framework do that
+today's tree does, or leaves out?
+
+The take-home has three parts and takes about two hours in all. Part 1 is the day's thinking on a
+business nobody has written about, and it is the part an interviewer will ask you to talk through.
+Part 2 is the day's method on a second sample of Kalpa orders you have not seen. Part 3 is twenty
+minutes of reading with one specific thing to cite.
 
 ---
 
-## Part 1. Build: the revenue tree for a business you know, about an hour
+## What does the revenue tree look like for a business you know, and which branch would you open first?
+
+Meera wants the same thing from the team by Thursday, a tree with one branch defended, and an
+interviewer will ask you to talk this part through. Allow about an hour.
 
 Pick a business you can stand in front of this week: the canteen, a kirana store near where you
-live, or an app you use most days. A company you have only read about does not count.
+live, or an app you use most days. A company you have only read about does not count. Revenue is
+customers, times how often each buys, times what each purchase is worth, and each branch is a
+numerator over a denominator in one window.
 
 - Draw its revenue tree on paper, with every branch in that business's own words. A canteen does
   not have "orders per customer"; it has how many times a week the same person eats there.
 - Beside each branch, write the metric as a numerator over a denominator, with the window.
-- Beside each branch, write what moving it would cost the owner in the owner's terms, such as "a
-  board outside the gate" or "staying open an hour later", and never "marketing spend".
+- Beside each branch, write what moving it would cost the owner, named as the thing the owner would
+  pay for, such as "a board outside the gate" or "staying open an hour later".
 - Name the branch you believe moves most for that business, and defend it with a threshold: "I would
   open this branch first if at least N of every 10 regulars come fewer than M times a week", with
   your N and M, and say what you would open instead if the threshold failed.
 - Name the one number you would have to ask the owner for, because you cannot see it from outside.
 
-One page: the drawing, the table, and two sentences.
+Hand in one page with the drawing, the table and two sentences.
 
 ---
 
-## Part 2. Extend: two tree nodes on a second sample, about forty minutes
+## Do the day's numbers come out right on a second Kalpa sample?
+
+Meera's Thursday recommendation will rest on numbers the team computes from files that arrive with
+nobody to explain them, as this second sample does. Allow about forty minutes.
 
 A second sample of Kalpa Retail orders sits in `data/C2_W01_D01_takehome_STUDENT.py`. It has the same
-fields as today's file and none of the same numbers, so nothing from class can be pasted across.
+fields as today's file, the order id, customer id, segment, channel, order date, amount and status,
+and none of the same numbers, so nothing from class can be pasted across. The three readings of sales
+are booked (every order placed), not cancelled (booked less the cancelled orders) and delivered (the
+orders that reached a customer and stayed). A customer is a distinct customer id, and orders per
+customer is orders over distinct customers on the same reading. The typical order is a middle: the
+mean is the total over the count, and the median is the middle of the sorted amounts, halfway
+between the two middle amounts when the count is even.
 
-- Start a new notebook beside the day's notebooks, copy in the setup cell from round 1's notebook,
+- Start a new notebook beside the day's notebooks, copy in the setup cell from chapter 1's notebook,
   and point the loader at `C2_W01_D01_takehome_STUDENT.py`.
-- Compute two tree nodes, customers and orders per customer, on each of the three definitions of
-  sales: booked, not cancelled and delivered. Write each as a numerator over a denominator in a
-  markdown cell before the code cell that computes it.
+- Compute two tree nodes, customers and orders per customer, on each of the three readings of sales.
+  Write each as a numerator over a denominator in a markdown cell before the code cell that computes
+  it.
 - Compute the typical order on booked and on delivered orders, and say in one markdown line which
-  average you chose and why.
+  middle you chose and why.
 - Write one sentence on what surprised you in this file, with the number that surprised you.
 
 Two pieces of process evidence go in the same notebook. The first is the output of every check the
@@ -53,7 +77,11 @@ Run the notebook from a fresh kernel, top to bottom, before you call it done. Th
 
 ---
 
-## Part 3. Read: the profitability framework, about twenty minutes
+## What does the profitability framework add to today's tree, or leave out?
+
+Today's staple interview question, how you would increase sales for an online retailer, can be
+answered from either the tree or the framework, so where they differ is part of your answer. Allow
+about twenty minutes.
 
 MConsultingPrep, the profitability framework: https://mconsultingprep.com/profitability-case-framework (verified 29 Sep 2026)
 
@@ -63,10 +91,10 @@ second says whether that thing would change the tree you drew in Part 1, and how
 
 ---
 
-## What to bring on Tuesday
+## What do you bring to Tuesday's session?
 
 | Part | What to bring |
 |---|---|
-| 1 | The page: the tree in the business's words, the table, the branch with its threshold, and the number you would ask for |
-| 2 | The notebook, run from a fresh kernel, with its check outputs, the "What stopped me" cell and your sentence on what surprised you |
-| 3 | Your two lines, the first citing a heading from the page |
+| 1 | Bring the page with the tree in the business's words, the table, the branch with its threshold and the number you would ask for. |
+| 2 | Bring the notebook, run from a fresh kernel, with its check outputs, the "What stopped me" cell and your sentence on what surprised you. |
+| 3 | Bring your two lines, the first citing a heading from the page. |

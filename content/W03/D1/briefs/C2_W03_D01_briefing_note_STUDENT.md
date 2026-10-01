@@ -2,7 +2,7 @@
 
 **From:** Dr Priya Menon, COO, Kalpa Health
 **To:** the data and AI team, Kalpa's Global Capability Centre, Bengaluru
-**Re:** Q2 volumes, and five questions my team cannot answer
+**Re:** Q3 volumes, and five questions my team cannot answer
 
 Kalpa Health and everyone in it are fictional. Any resemblance to a real company is coincidental.
 
@@ -10,15 +10,15 @@ Kalpa Health and everyone in it are fictional. Any resemblance to a real company
 
 ## What I am looking at
 
-My dashboard shows test volumes up 5 percent from Q1 to Q2. The plan the board approved for the year
+My dashboard shows test volumes up 5 percent from Q2 to Q3. The plan the board approved for the year
 asks for 18. I present to the board shortly, and I cannot tell them which branch of the business is
 short, because every head I ask gives me a different reason and a different number.
 
-We run diagnostic laboratories and walk-in clinics in six cities: Bengaluru, Mumbai, Delhi, Chennai,
-Hyderabad and Pune. Each city has one laboratory and two walk-in clinics. Patients book tests or
-packages by walking in, on the app, by phone, or for collection at home, and our corporate accounts
-book health checks for their staff. Our financial year runs April to March, so Q1 is April to June
-and Q2 is July to September 2026.
+We run diagnostic laboratories and patient service centres in six US metros: Dallas, Phoenix, New
+York, Chicago, Atlanta and Philadelphia. Each metro has one laboratory and two patient service
+centres. Patients book tests or panels by walking in, online, by phone, or for collection at home,
+and our employer accounts book wellness screenings for their staff. We report in calendar quarters,
+so Q2 is April to June and Q3 is July to September 2026.
 
 > "I do not need a dashboard. I need to know where the 13 points went, and what to do next."
 > Dr Priya Menon
@@ -30,10 +30,10 @@ Each of my heads has raised a question with me. I have written each one the way 
 | # | Who is asking | What they asked me |
 |---|---|---|
 | 1 | The finance head | "The board will ask me where the plan's growth went. Where does our lab revenue actually come from, and which branch of it is short?" |
-| 2 | The clinics' operations head | "Bookings fell in two of our cities in Q2. Before I send a field team or cut staff there, I need to know how far they fell, and why." |
-| 3 | The finance head | "The invoices say one thing and the collections say another. Which invoices are unpaid, how much money is that, and can I trust the figure I report?" |
-| 4 | The clinics' operations head | "KH-HYD-03, one of our Hyderabad walk-in clinics, has the worst no-show rate on my monthly report. I am being asked to add a receptionist there or close it. Is the clinic really worse?" |
-| 5 | The marketing head | "Our free home-collection offer lifted bookings 9 percent. I want to offer it to every patient in all six cities. Can you confirm it worked?" |
+| 2 | The patient service centres' operations head | "Bookings fell in two of our metros in Q3. Before I send a field team or cut staff there, I need to know how far they fell, and why." |
+| 3 | The finance head | "The claims say one thing and the collections say another. Which claims are unpaid, how much money is that, and can I trust the figure I report?" |
+| 4 | The patient service centres' operations head | "KH-ATL-03, one of our Atlanta patient service centres, has the worst no-show rate on my monthly report. I am being asked to add a receptionist there or close it. Is the centre really worse?" |
+| 5 | The marketing head | "Our free at-home collection offer lifted bookings 9 percent. I want to offer it to every patient in all six metros. Can you confirm it worked?" |
 
 I want one answer per question: a sentence I can carry into the board meeting, the evidence behind it,
 what would change it, and what you would have me do.
@@ -42,21 +42,21 @@ what would change it, and what you would have me do.
 
 Ten files, exported as each system gives them. My data team has written up every file and column in
 the data dictionary (`C2_W03_D01_data_dictionary_STUDENT.md`). They have told me two things they
-already know, and they are in the dictionary too: two cities changed booking systems in Q2, and the
-payment feed has a different id format from the invoice export.
+already know, and they are in the dictionary too: two metros changed booking systems in Q3, and the
+posting system has a different id format from the claims export.
 
 | File | The system it comes from |
 |---|---|
 | `C2_W03_D01_patients_STUDENT.csv` | The patient register |
-| `C2_W03_D01_clinics_STUDENT.csv` | The site list, laboratories and walk-in clinics |
-| `C2_W03_D01_test_catalogue_STUDENT.csv` | The test and package price list |
-| `C2_W03_D01_bookings_legacy_STUDENT.csv` | The booking system we have used since before Q1 |
+| `C2_W03_D01_sites_STUDENT.csv` | The site list, laboratories and patient service centres |
+| `C2_W03_D01_test_catalogue_STUDENT.csv` | The test and panel price list |
+| `C2_W03_D01_bookings_legacy_STUDENT.csv` | The booking system we have used since before Q2 |
 | `C2_W03_D01_bookings_newsys_STUDENT.csv` | The new booking system |
-| `C2_W03_D01_booking_tests_STUDENT.csv` | The tests and packages on each booking |
-| `C2_W03_D01_invoices_STUDENT.csv` | The billing export |
-| `C2_W03_D01_payments_STUDENT.csv` | The payment feed: the gateway and the clinics' cash desks |
-| `C2_W03_D01_appointments_STUDENT.csv` | The walk-in clinics' visit register, Q2 |
-| `C2_W03_D01_campaign_STUDENT.csv` | The free home-collection offer: who was offered it, and who took it up |
+| `C2_W03_D01_booking_tests_STUDENT.csv` | The tests and panels on each booking |
+| `C2_W03_D01_claims_STUDENT.csv` | The billing export |
+| `C2_W03_D01_remittances_STUDENT.csv` | The posting system: payers' remittances and the centres' cash desks |
+| `C2_W03_D01_appointments_STUDENT.csv` | The patient service centres' visit register, Q3 |
+| `C2_W03_D01_campaign_STUDENT.csv` | The free at-home collection offer: who was offered it, and who took it up |
 
 They are in `data/` beside this pack, and every group holds the same files.
 
@@ -80,7 +80,7 @@ you already know answers it. That is Monday's work, in the translation worksheet
 | Criterion | Marks | What full marks look like |
 |---|---|---|
 | The question translated | 8 | Dr Menon's words are mapped to the right Weeks 1 and 2 method, with the metric defined and the decision it feeds named. |
-| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and rupees reconcile across files. |
+| The data made trustworthy | 10 | The data is profiled before it is touched, every cleaning call is in the decisions log with its reason, and counts and dollars reconcile across files. |
 | The analysis | 10 | The tree, ladder or fair comparison reaches the branch that explains the symptom, on the right denominator, with a chance test where one is needed. |
 | The claim | 6 | One sentence carries its number, denominator, period and caveat, plus an action Dr Menon can take. |
 | Presentation and defence | 6 | The live demo runs cold, and every member answers a challenge on the caveat. |

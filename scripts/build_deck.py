@@ -23,7 +23,8 @@ scripts/brand.py). What a source can ask for:
 
     ## SECTION 1: The ask                a chapter opener: numeral, name, the chapter pills; the
                                          numeral is the one written, so an afternoon deck that
-                                         opens on SECTION 6 prints 06
+                                         opens on SECTION 6 prints 06, on its opener and in the
+                                         cover's chapter strip
     *A CEO asks what sales are made of.* its first italic line is the chapter's promise
 
     ## S3. An action title               a content slide
@@ -66,7 +67,7 @@ from pptx.enum.text import PP_ALIGN
 from pptx.util import Emu, Inches, Pt
 
 import brand
-from build_cheatsheet import MERMAID_CONFIG, MermaidError, mmdc_page, run_mmdc, svg_labels
+from build_cheatsheet import MERMAID_CONFIG, MermaidError, mmdc_page, mmdc_version, run_mmdc, svg_labels
 from deck_layout import (ACC, BG, BOLD, INK, LINE, MUTED, NIGHT, TINT, WHITE, MARGIN, WIDTH,
                          BODY_TOP, BODY_BOTTOM, RULE_Y, SLIDE_W, SLIDE_H, CALLOUT, CRUMB, NUMBERED,
                          QUOTE, SLIDE_ID, BEATS, add_runs, background, bar, bar_height, breadcrumb,
@@ -336,15 +337,15 @@ def render_mermaid(lines, width_in=None):
     is the drawing they find again on the cheat sheet and in the notebook. Without it mermaid
     paints its own lavender onto a slide that is not lavender.
 
-    The scale from render_scale is part of the cache key, so a render made at another scale is
-    never picked up again. The scale alone sets the picture's pixels: at scale one a drawing 809
+    The scale from render_scale and the mermaid-cli version are part of the cache key, so a render
+    made at another scale or by another version is never picked up again. The scale alone sets the picture's pixels: at scale one a drawing 809
     CSS pixels wide came out 810 pixels wide on a 2600 pixel page. The labels go through the
     cheat sheet's svg_labels, so bold prints as bold and a > survives, as they do on the sheet.
     """
     code = svg_labels("\n".join(lines).strip()) + "\n"
     scale = render_scale(lines, width_in)
     flags, config_text = mmdc_page(2600, MERMAID_CONFIG)
-    key = hashlib.sha256((code + config_text + " ".join(flags) + f"scale={scale}")
+    key = hashlib.sha256((code + config_text + " ".join(flags) + f"scale={scale}" + mmdc_version())
                          .encode()).hexdigest()[:16]
     CACHE.mkdir(parents=True, exist_ok=True)
     png = CACHE / f"{key}.png"
@@ -862,13 +863,18 @@ def build(src, out, footer):
     slides = parse(md)
     meta = deck_meta(md, pathlib.Path(src).stem)
     prepare_icons(slides)
-    chapters = [chapter_name(t) for t, _ in slides if t.upper().startswith("SECTION")]
+    sections = [t for t, _ in slides if t.upper().startswith("SECTION")]
+    chapters = [chapter_name(t) for t in sections]
+    numbers = []
+    for i, t in enumerate(sections):
+        sec = SECTION_TITLE.match(t)
+        numbers.append(int(sec.group(1)) if sec and sec.group(1) else i + 1)
     total = len(slides) + (1 if meta["cover"] else 0)
     shrunk, cramped = 0, []
     offset = 0
     if meta["cover"]:
         cover = prs.slides.add_slide(prs.slide_layouts[6])
-        title_slide(cover, prs, meta, chapters, total)
+        title_slide(cover, prs, meta, chapters, total, numbers)
         set_notes(cover, meta.get("cover_notes", ""))
         offset = 1
     current = None

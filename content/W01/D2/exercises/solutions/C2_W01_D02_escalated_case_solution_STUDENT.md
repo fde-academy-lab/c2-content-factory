@@ -1,64 +1,125 @@
-# Solution: the escalated case, mix against rate
+# Solution: Does the story survive when revenue counts only the orders that reached customers and stayed?
 
-Answers: 1c 2a 3d 4b 5c 6d
+Answers: 1b 2c 3a 4d 5a 6c
 
-## The idea being tested
+The executed notebook is `solutions/C2_W01_D02_ex1_escalated_case_solution_STUDENT.ipynb`, and its
+lettered TODOs run b a c d a b d. Two of the six items are design items: 2 and 6.
 
-A fall can sit in one place in behaviour and another place in rupees, and both are true at once.
-An overall rate is a weighted blend of the segments' rates, so it moves when the mix of orders
-moves even if no segment's rate changes. And a helper that returns nothing on some inputs drops
-those inputs from every table built on it, which is why the groups in and the groups out are
-counted every time.
+Meera Raghavan, Kalpa Retail's CEO, asked whether the morning's story survives on delivered orders,
+the board pack's definition: only the orders whose status is delivered, the ones that reached the
+customer and were not sent back. On booked orders, every order placed before any cancellation or
+return, the morning found revenue down 11.0 percent, the same 69 customers in both quarters, orders
+per customer down from 1.65 to 1.25 and furthest down in Retail-Plus, the paid membership tier, and
+about 69 percent of the rise in revenue per order coming from the mix of segments.
 
-## The numbers, by segment (Q1 then Q2)
+## What does the escalated case test?
 
-| Segment | Customers | Orders | Orders per customer | Revenue | Revenue per order |
-|---|---|---|---|---|---|
-| Retail-Core | 34, 34 | 38, 36 | 1.12, 1.06 (down 5.3 percent) | Rs 80,460, Rs 72,510 | Rs 2,117, Rs 2,014 |
-| Retail-Plus | 22, 22 | 51, 26 | 2.32, 1.18 (down 49.0 percent) | Rs 1,43,550, Rs 78,300 | Rs 2,815, Rs 3,012 |
-| Business | 11, 11 | 20, 17 | 1.82, 1.55 (down 15.0 percent) | Rs 2,07,71,180, Rs 1,85,41,460 | Rs 10,38,559, Rs 10,90,674 |
-| Student | 2, 2 | 5, 7 | 2.50, 3.50 (up 40.0 percent) | Rs 4,810, Rs 7,730 | Rs 962, Rs 1,104 |
+It is the morning's ladder, climbed alone on a harder definition. The drop, the branch and the
+segment all survive. The one thing that moves is the customers branch, and it turns out to be
+cancellations and returns: every customer who dropped out of the delivered count booked again in Q2
+and had those orders cancelled or returned, so nobody was lost.
 
-The orders bridge from 114 to 86: Retail-Core less 2, Retail-Plus less 25, Business less 3, Student
-plus 2. The rupee bridge from Rs 2,10,00,000 to Rs 1,87,00,000: Business less Rs 22,29,720, Retail-Plus
-less Rs 65,250, Retail-Core less Rs 7,950, Student plus Rs 2,920. The three consumer segments fell from
-Rs 2,28,820 to Rs 1,58,540, a fall of 30.7 percent, and Retail-Plus is Rs 65,250 of that Rs 70,280.
+## Part 1. Is the delivered drop real?
 
-Mix against rate: at Q2's order mix and Q1's revenue per order in each segment, revenue per order
-would have been Rs 2,07,112. The mix explains Rs 22,902 of the Rs 33,231 rise, about 69 percent, and
-the change within segments explains Rs 10,330. Order shares moved from Retail-Core 33.3, Retail-Plus
-44.7, Business 17.5 and Student 4.4 percent to 41.9, 30.2, 19.8 and 8.1 percent.
+### Q1. Which figure answers Meera on delivered revenue?
 
-In Retail-Plus, 3 members ordered once in Q1, 9 twice and 10 three times; in Q2, 18 ordered once, 4
-twice and none three times. Every member still bought, and the members who ordered three times now
-order once.
+The notebook keeps the delivered orders and compares the two closed quarters of 13 weeks each.
 
-## Item by item
+The key is b, "Down 11.3 percent, since closed delivered quarters differ by Rs 16,40,290". The two
+quarters hold 138 delivered orders between them, and Rs 16,40,290 less on two closed quarters of 13
+weeks is a fall of 11.3 percent.
 
-| Item | Key | Why it holds | Why the others fail |
-|---|---|---|---|
-| 1 | c | The orders bridge puts 25 of the 28 lost orders in Retail-Plus, and its 22 members are the same in both quarters. | a reads rupee size as the answer to a question about orders. b: the loss is concentrated in one segment. d: Retail-Core lost two orders, and customer count does not set the company's frequency. |
-| 2 | a | Business is Rs 22,29,720 of the Rs 23,00,000 fall, about 97 percent, from 20 orders to 17; in behaviour, Retail-Plus halved. Both hold, and three orders are too few to call a trend today. | b drops the behavioural finding. c: Retail-Plus orders are small, so halving them is Rs 65,250. d: the bridges answer different questions and agree with each other. |
-| 3 | d | Q2's order mix at Q1's values gives Rs 2,07,112, so mix is Rs 22,902 of the Rs 33,231 rise, about 69 percent. Revenue per order rose mainly because small Retail-Plus orders disappeared, with no one paying more. | a: Retail-Core's revenue per order fell. b has the split backwards. c: holding one factor at Q1's value is exactly how the two are separated. |
-| 4 | b | The helper prints and returns None when a change exceeds 30 percent, so Retail-Plus (down 49.0) and Student (up 40.0) returned None and the filter dropped them. Four segments went in and two came back as None. With the helper fixed, the falls table holds three rows against the broken two, so the bug dropped one fall, Retail-Plus; Student rose, and the filter leaves it out either way. The fix returns the change every time and flags a large one in a separate column. | a: rounding to one decimal hides nothing here. c: the printed lines are the two largest moves, with no segment name beside them. d: moving the threshold moves the bug to other data. |
-| 5 | c | It carries the fall, the flat customer count, the segment with its numbers and the rupee story, and it claims no cause. | a turns three orders into a trend and a cause. b is the marketing lead's reading, which Part 3 overturns. d: the fall is concentrated, which is the finding. |
-| 6 | d | Mix explains 68.9 percent moved first and 72.3 percent moved second. The part where mix and rate moved together goes to whichever moves second, so the split shifts by three points and the answer does not: revenue per order rose mainly because small orders disappeared. Say which order you used. | a and b make a convention into a rule. c: both figures are exact; they differ only in who is charged for the overlap. |
+- a, "Down 25.9 percent, since the Q2 tile holds 11 weeks of delivered orders against 13": 25.9 is
+  the morning's booked window trap, and the closed delivered quarters both hold 13 weeks.
+- c, "Down 11.0 percent, since the definition changes no total that matters to Meera": 11.0 is the
+  booked figure.
+- d, "No fall at all, since returns for Q2 are still arriving and will lift its total": late returns
+  can only lower Q2's delivered total, never lift it.
 
-## The part worth arguing about
+## Part 2. Which branch moves on delivered orders?
 
-Item 2. Some of the room will want one answer to "where is the fall". The honest answer has two
-parts and says which comes first: in behaviour it is Retail-Plus, where the same members buy half as
-often, which is a pattern across 22 people; in rupees it is three Business orders, each worth lakhs,
-which Wednesday's reconciliation and Thursday's test check before anyone acts on it.
+### Q2. Which check runs before anyone names the customers branch? (Design)
 
-## Where the pattern lives in production
+Customers with a delivered order fell from 54 to 50, and the bridge charges that branch Rs 10,74,442.
 
-Mix against rate is how finance teams explain a margin that moved while no product's margin did,
-and how product teams explain an average order value that rose while sales fell. A helper that
-returns None on some inputs is one of the most common silent failures in analytics code: the table
-looks complete, and the rows it lost were the interesting ones.
+The key is c, "The delivered ids against the booked ids; a leaver who never booked in Q2 is churn". A
+branch that held on booked orders and moves on delivered ones is made of whatever the new definition
+drops, so the check sets the customers who left the delivered count against those who still booked.
+Churn would show as a leaver with no Q2 order at all.
 
-## Hands-on picks
+- a, "The CRM's sign-ups by month; a Q2 campaign would make it acquisition": sign-ups count new
+  customers only, and the question is who left.
+- b, "The bridge in the other order; a smaller customers step would make it an artefact": the order
+  of the bridge moves the size of a step, never what the step is made of.
+- d, "The tree per segment; a fall inside one segment would make it that segment's churn": a tree per
+  segment still counts delivered customers, which is the number that needs explaining.
 
-The executed solution, `exercises/solutions/C2_W01_D02_04_escalated_case_solution_STUDENT.ipynb`,
-carries the picks for every `TODO` in the notebook, each with the check it passes.
+## Part 3. Are those lost customers?
+
+### Q3. What happened to the customers who dropped out of the delivered count in Q2?
+
+Nineteen of Q1's delivered customers have no delivered order in Q2.
+
+The key is a, "Customers who ordered in Q2 and had those orders cancelled or returned". The customers
+delivered to in Q1 and not in Q2, set against the customers who booked in Q2, hold all 19, and their
+Q2 orders were 10 cancelled and 10 returned.
+
+- b, "Customers Kalpa lost, replaced by fifteen new ones who joined in Q2": the booked overlap is 69
+  in both quarters, none only in Q1 and none only in Q2.
+- c, "Business accounts whose large orders are still waiting to be delivered": the 19 span segments,
+  and their Q2 orders ended cancelled or returned.
+- d, "Customers whose Q1 orders were delivered late and counted in Q2 instead": every order sits in
+  the quarter of its order date, so no delivery moves an order between quarters.
+
+## Part 4. Which segment moves on delivered orders?
+
+### Q4. How did orders per customer move on delivered orders?
+
+The notebook runs `tree_for` on each segment's delivered orders and rolls the rate up to the company.
+
+The key is d, "Weighted it fell from 1.50 to 1.14, and Retail-Plus fell furthest at 42.6 percent". 81
+delivered orders over 54 customers is 1.50 and 57 over 50 is 1.14, and Retail-Plus went from 1.85 to
+1.06 orders per member.
+
+- a, "Averaged over the four segments it fell 9.2 percent, so frequency matters less here": it
+  averages the segments' averages again, so a two-customer segment counts as much as a large one.
+- b, "Business fell furthest, 11.6 percent, since its orders are the largest": Business fell 11.6
+  percent, less than Retail-Plus.
+- c, "Every segment fell by about the same share, so no segment stands out": Retail-Plus fell nearly
+  four times as far as the next segment.
+
+## Part 5. Is the delivered rise mix or rate?
+
+### Q5. What does a mix share of 44 percent mean for the consumer business?
+
+On delivered orders the mix explains 44 percent of the rise in revenue per order, Rs 1,79,074 to
+Rs 2,25,696, against 69 percent on booked orders.
+
+The key is a, "Little, since the rate part is Business's larger orders, not consumer prices".
+Business's delivered orders grew from Rs 10,24,651 to Rs 11,60,405 each on average, while the
+consumer segments moved by about a hundred rupees at most.
+
+- b, "Consumer prices rose, since the rate part now carries most of the rise": the rate part is
+  Business.
+- c, "The split failed, since mix and rate should not change with the definition used": the split
+  depends on the orders it is run on, and delivered orders are a different set.
+- d, "Delivered orders are unreliable, so the booked split should be used on its own": both
+  definitions are valid, and they answer different questions.
+
+## Stretch. How do you report two definitions next month?
+
+### Q6. What goes in next month's report, and what would change it? (Design)
+
+Meera will see both definitions again next month, booked and delivered.
+
+The key is c, "Both side by side and labelled, moving to delivered alone once returns settle". Two
+definitions answer two questions, and the newest quarter's delivered figure still moves as returns
+post. Once they settle, delivered alone matches the board.
+
+- a, "Delivered alone, since it is the board's number, whatever the booked figure says": it drops the
+  definition the morning's work used, with no bridge between the two.
+- b, "Booked alone, since it closes first and never moves after the quarter": it ignores the board's
+  definition.
+- d, "Delivered alone, with last quarter's booked figures restated as delivered": it reports
+  delivered alone while the newest quarter's returns are still posting, and drops the booked view
+  Meera has already seen.

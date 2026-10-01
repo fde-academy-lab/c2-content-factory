@@ -1,11 +1,17 @@
-# Self-check: know you are right before anybody reads it
+# How do you know your take-home is right before anybody reads it?
 
-Every checkpoint is something you can verify alone. If one does not match, the hint beside it names
-the likeliest reason. All the numbers are on `data/C2_W01_D01_takehome_STUDENT.py`.
+**Who needs the answer.** You do, tonight, before Tuesday's session walks one learner's work in
+front of the room: every checkpoint below is something you can verify alone.
+
+**The questions on the way.** Do your Part 2 numbers match the second sample's? Does your Part 1 tree
+pass its own review? Do your Part 3 lines cite the page?
+
+If a checkpoint does not match, the hint beside it names the likeliest reason. All the numbers come
+from `data/C2_W01_D01_takehome_STUDENT.py`.
 
 ---
 
-## Part 2, the numbers
+## Do your Part 2 numbers match the second sample's?
 
 | # | Checkpoint | What you should see | If it does not match |
 |---|---|---|---|
@@ -20,12 +26,13 @@ the likeliest reason. All the numbers are on `data/C2_W01_D01_takehome_STUDENT.p
 | 9 | The median order, booked | Rs 2,765 | Rs 2,730 or Rs 2,800 means you took one middle order of an even count; average the two |
 | 10 | The median order, delivered | Rs 2,450 | Rs 2,765 is the booked median; filter to delivered orders first |
 
-When all ten match, count how many orders sit above the booked mean, sort the amounts, and read the
-top of the sorted list. Put what you find into your sentence on what surprised you, with its number.
+When all ten match, set checkpoints 8 and 9 side by side. In your sentence on what surprised you,
+say what the distance between the booked mean and the booked median tells you about this sample's
+orders, with both numbers, and what you would ask Kalpa before quoting either one.
 
 ---
 
-## Part 1, the tree you built
+## Does your Part 1 tree pass its own review?
 
 Read your page back and answer each question yes or no. Two noes means rewrite it.
 
@@ -33,11 +40,11 @@ Read your page back and answer each question yes or no. Two noes means rewrite i
 - Could somebody who has never seen that business tell what it sells from your table?
 - Is the cost of moving each branch written in the owner's terms?
 - Does your threshold name two numbers, and does it say what you would open if it failed?
-- Is the number you would ask for one the owner would actually know?
+- Is the number you would ask for one the owner would know?
 
 ---
 
-## Part 3, the two lines
+## Do your Part 3 lines cite the page?
 
 Your first line names a heading from the page and one specific thing under it. If the line could
 have been written without opening the page, it is not yet a citation. Your second line says what

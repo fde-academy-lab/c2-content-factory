@@ -1,76 +1,58 @@
-# Solution: which branch does Meera open first?
+# Which answers show whether frequency first survives on the delivered orders?
 
-Answers: 3b 4d 6a 7c 8b 9d 10a
+Answers: 3c 4b 5a 7d 8b 9a
 
-The three numbers: item 1 is 16 customers, item 2 is 1.24 orders per customer, item 5 is Rs 5,448.
+The three numbers: item 1 is 19 customers, item 2 is 1.11 orders per customer, and item 6 is 7
+customers. The notebook's nine TODO picks are `cbdcaabbc`.
+
+On Kalpa Retail's 30 booked orders, 1 July to 26 September 2026, the chapters told Meera Raghavan, the
+CEO, to open frequency first and hold marketing's Rs 12 crore: 23 customers at 1.30 orders each, 7
+back, 9 of 16 one-time buyers too recent to judge and a typical Rs 2,205 order. Anand Iyer, the finance
+controller, counts only delivered orders. The consumer view is the three segments her plan concerns,
+Rs 64,810 booked, and the window's edge is its last 45 days, the median gap between orders of those 7.
 
 The executed notebook beside this file,
 `exercises/solutions/C2_W01_D01_ex1_escalated_case_solution_STUDENT.ipynb`, computes every number
 here from the 30 orders.
 
-## The idea being tested
+## What does the case test about the orders that stayed delivered?
 
-The morning answered three questions with three checks. This case puts them together and adds the
-one that decides the budget: branches multiply. Marketing adds a 10 percent lift in customers to a
-10 percent lift in frequency and calls it 20 percent; the tree multiplies them, 1.10 times 1.10 is
-1.21, so the right figure is 21 percent, Rs 6,59,220 on Rs 5,44,810 against Rs 6,53,772 at 20
-percent, Rs 5,448 apart. The same arithmetic turns a 15 percent discount that lifts quantity 10
-percent into a 6.5 percent fall, because 0.85 times 1.10 is 0.935. The branch to open first is
-frequency, since 16 of 23 customers bought once in the quarter. One window shows the shape of
-revenue, and only two windows show which branch moved, so the Rs 12 crore is held until Tuesday's
-Q1 against Q2.
+Anand asks whether frequency first holds on the orders that stayed sold. On the 21 delivered orders, 19
+customers kept 1.11 orders each and only 2 kept two. The typical delivered order is Rs 2,060, the
+11th of the 21 sorted amounts, since an odd count has one middle. Sized on the consumer view's
+delivered revenue, Rs 40,790, the plan asks about Rs 6,119 more, to about Rs 46,909, and marketing's
+15 percent discount with 10 percent more orders would take the same Rs 40,790 to Rs 38,139, a fall
+of 6.5 percent. Of the 17 delivered one-time buyers, 7 ordered fewer than 45 days before 26
+September. Orders per customer fell; the typical order, the window's edge and the branch held, and
+the delivered view adds a leak: of the 7 customers who came back on booked orders, 4 lost that
+second order to a cancellation or a return.
 
-## Item by item
+## Why is each answer right, and why does each other option fail?
 
-| Item | Key | Why it holds | Why the others fail |
-|---|---|---|---|
-| 1 | 16 | 23 customers less the 7 who bought twice leaves 16 who bought once. | 7 is the repeat count; 23 is every customer; 30 counts rows. |
-| 2 | 1.24 | 26 not-cancelled orders over the 21 distinct customers on them. | 1.30 is the booked rate; 1.11 is delivered; 26 over 23 is 1.13, which mixes two definitions. |
-| 3 | b | The median, Rs 2,205, is what a typical order is worth, and the sentence says why the mean is set aside. | a is the trap from round 3. c gives the delivered median a booked label. d hands Meera two numbers and no answer. |
-| 4 | d | Branches multiply: 1.10 times 1.10 is 1.21, and 1.21 times Rs 5,44,810 is Rs 6,59,220. | a is marketing's addition. b drops one lift for no reason. c is arithmetic with no basis. |
-| 5 | Rs 5,448 | Rs 6,59,220 less Rs 6,53,772 is Rs 5,448. | Rs 54,481 is a full 10 percent; any figure above it has added a lift twice. |
-| 6 | a | Price at 0.85 and quantity at 1.10 multiply to 0.935; 0.935 times Rs 5,44,810 is about Rs 5,09,400, a 6.5 percent fall. | b adds percentages that multiply. c ignores the lower price. d counts the discount as a lift. |
-| 7 | c | 16 of 23 customers bought once in the quarter, so repeat buying is the branch with the most room and the cheapest to test. | a names the branch with a budget attached, which is the reason it needs checking. b: price was never measured today and risks volume. d: the typical order is a level, and with one window there is nothing to say it is short. |
-| 8 | b | The answer names what one window cannot show and when the evidence arrives, which makes it a hold rather than a refusal. | a refuses with no evidence against acquisition. c: the file is enough to show the shape, so waiting a year gives up what is known. d turns a question of evidence into a contest between teams. |
-| 9 | d | A change needs two windows; one quarter shows the shape of revenue and cannot show which branch moved. | a, b and c are all answered inside this window, and the morning answered each. |
-| 10 | a | The definition first, then the leaves, then the typical order, then the branch, then the limit: each part rests on the one before it. | b leads with the recommendation before the numbers that support it. c puts the typical order before the leaves and the limit before the branch. d gives leaves before saying which "sales" they are on. |
+| Item | Key | The question in one line | Why the key holds | Why each other option fails |
+|---|---|---|---|---|
+| 1 | 19 | How many distinct customers stand behind the 21 delivered orders? | The 21 delivered orders carry 19 distinct customer ids. | 21 counts orders as customers; 23 is the booked customer count. |
+| 2 | 1.11 | What is orders per customer on the delivered reading? | 21 / 19 = 1.11. | 1.30 is the booked rate; 21 / 23 = 0.91 divides delivered orders by booked customers, two readings in one fraction. |
+| 3 | c | Which expression is the median of 21 sorted delivered amounts? | An odd count has one middle, the 11th value, which sits at index 10 in a list counted from zero: Rs 2,060. | a: halfway between two middles is the even-count rule, chapter 4's case, applied to an odd count. b: index 11 is the 12th value, one past the middle. d: the total over the count is the mean. |
+| 4 | b | Which base should the 15 percent plan use on Anand's delivered reading, and what does it ask? | The plan concerns the three consumer segments and Anand counts what stayed delivered, so the base is the consumer view's delivered revenue: Rs 40,790 x 1.15 is about Rs 46,909, Rs 6,119 more. | a: all delivered revenue includes the segments the plan does not concern, and would ask the consumer segments for Rs 78,119 on top of Rs 40,790. c: the booked consumer view is chapter 5's base, and Anand asked for delivered. d: booked revenue leaves Anand's definition and the plan's segments at once. |
+| 5 | a | Where would 15 percent off with 10 percent more orders leave revenue on the Q4 base? | Price and quantity multiply: Rs 40,790 x 0.85 x 1.10 = Rs 40,790 x 0.935 = Rs 38,139, a fall of 6.5 percent. | b: Rs 61,570 applies the added-up 5 percent fall to the booked consumer view. c: Rs 38,751 is the right base with the percentages added, 10 less 15. d: Rs 60,597 multiplies correctly on the booked consumer view, the wrong base for Anand. |
+| 6 | 7 | How many delivered one-time buyers ordered fewer than 45 days before the end? | Of the 17 delivered customers who kept one order, 7 ordered fewer than 45 days before 26 September. | 9 is the booked count; 17 is every delivered one-time buyer. |
+| 7 | d | Which branch should Meera open first on delivered orders? | The customers exist and some return: on booked orders 7 came back, and 4 of those lost the second order to a cancellation or a return, a leak on the frequency branch that the delivered view makes visible. | a: a lost second order is a leak on customers Kalpa already has, and buying new customers does not mend it. b: the rate fell from 1.30 to 1.11, so the branch holds for a different reason. c: Rs 24,800 is the delivered mean, twelve times the delivered median of Rs 2,060, so it describes almost no delivered order, as chapter 4 found for the booked mean. |
+| 8 | b | Which line says what moved and what held between booked and delivered? | Orders per customer fell from 1.30 to 1.11, the median moved Rs 145, from Rs 2,205 to Rs 2,060, and the branch did not move. | a: the rate fell, so something moved. c: the typical order fell slightly. d: a leak on repeat orders is still the frequency branch. |
+| 9 | a | Which reading goes in the headline of the note Anand reads at the board, and what goes beside it? | The board reads Finance's books, which count what stayed sold, and the walk beside it shows every rupee of the Rs 24,020 between the readings. | b: the board's books count delivered, so a booked headline starts an argument the note cannot win. c: a reading chosen because it sits in the middle answers no one's question. d: without booked and the walk, nobody can see where the Rs 24,020 went. |
+| 10 | a sentence | What one sentence goes to Meera on delivered orders? | "On the 21 delivered orders from 1 July to 26 September, 19 customers kept 1.11 orders each at a typical Rs 2,060, and 17 kept one, 7 too recent to judge, so frequency is still the branch to open first, with returns and cancellations on repeat orders as its leak; one quarter cannot show which branch moved, so hold the Rs 12 crore until Tuesday's two quarters." | A sentence that says "17 of 19 lost" repeats chapter 6's wrong number, and one without its reading of sales repeats chapter 1's. |
 
-## The sentence to Meera
+## Which item is worth arguing about?
 
-A sentence that meets the brief reads close to this: "On the 30 orders from 1 July to 26
-September, 23 customers placed 1.30 orders each at a typical order of Rs 2,205, and 16 of them
-bought only once, so I would open frequency before acquisition; this one window cannot show which
-branch moved, so hold the Rs 12 crore until Tuesday's two quarters."
+Item 7. A room may argue that 2 of 19 is so low that frequency is hopeless and acquisition wins.
+The 7 who came back on booked orders show the customers do return, and 4 of them lost that second
+order to a cancellation or a return. A leak on customers Kalpa already has is mended on the frequency
+branch, by fixing what went wrong with the second order, and buying new customers leaves it open.
 
-Read yours against four tests: it names the window, it carries the median rather than the mean, it
-names a branch, and it says what it cannot yet show.
+**Kavya's review.** "You rebuilt it on Anand's definition and said what moved and what held. That is
+the answer that survives the board."
 
-## The part worth arguing about
+## What does the executed solution notebook confirm?
 
-Item 8, option a. Some learners will want to kill the budget outright, and the numbers do make
-acquisition look like the weaker bet. One window cannot prove that the customer count did not fall;
-it can only show that frequency has room. The honest move is to hold, name the test, and name the
-day it runs. A "no" with a date on it survives the marketing lead's reply; a "no" without one
-starts an argument.
-
-**Kavya's review.** "Two lifts of 10 percent are 21 percent, and the Rs 5,448 is small here. At
-Kalpa's scale, the same slip in a plan is a crore. Recompute through the tree every time."
-
-## Where the pattern lives in production
-
-Driver-tree planning is how finance and growth teams set targets: a plan for revenue is written as
-a plan for each driver, and the drivers are multiplied back. The additive slip is common in planning
-decks, and the discount arithmetic is the first question in most pricing reviews. Consulting case
-interviews test the same move as the profitability framework.
-
-## Hands-on
-
-The twelve TODO picks in `notebooks/C2_W01_D01_ex1_escalated_case_STUDENT.ipynb`, in order, are
-c b d d c d a c b b a d. The executed solution notebook named above carries the filled line for each,
-and its checks all print PASS.
-
-## The afternoon in one line
-
-For the debrief, both cases together:
-
-Answer key: 3b 4d 6a 7c 8b 9d 10a 11c 12a 13d 14b 15a 16b
+Every check in the solution notebook passes, including that the branch picked is frequency and that
+frequency alone reaches the plan on the consumer view's delivered revenue.

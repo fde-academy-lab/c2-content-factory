@@ -19,6 +19,8 @@ the bug.**
 | **"Rs", never the currency glyph** | The glyph renders inconsistently across the fonts the decks and PDFs use, and a broken glyph in a printed sheet cannot be fixed after the print. |
 | **No "not X, but Y" constructions** | It is a rhythm rather than an argument. Say the thing you mean. |
 | **Banned words** | Listed below, each because it adds length without adding information |
+| **Every heading is a question its section answers**, with who needs the answer and the smaller questions on the way beneath it | A label such as "Customer lifetime value, simply" names a topic and says nothing about why anyone is reading it. A question says what the reader will be able to answer, and a file's headings read alone tell its argument. |
+| **Every prose file passes the humanizer skill's read**, as well as the tic scanner | A reader who spots machine phrasing stops trusting the content. The scanner catches the tics a script can find; the humanizer's read, from `.claude/skills/humanizer`, catches the patterns only a full read finds. |
 
 The banned list, in full: *Additionally, Moreover, However, Hence, Thus, Nonetheless, Furthermore,
 Accordingly, Indeed, Dynamic, comprehensive, robust, holistic, seamless*, and *leverage* used as a
@@ -48,7 +50,8 @@ flowchart TB
 | Durations, never clock times | Sessions move. A pack with clock times in it goes stale the first time a schedule shifts, and it goes stale silently. |
 | Role labels, never trainer names in STUDENT files | Trainers change between cohorts, and a name in a student file is a promise nobody made. |
 | No marks or weights anywhere until the Structure tab locks them | Two weighting models are in circulation and neither is signed off. A number stated in an artifact becomes the number people believe. |
-| No rationale inside an artifact | Design rationale, sizing arithmetic, learning objectives and facilitation notes belong in the chat reply or the trainer file. Inside a document, "you" means the end reader. |
+| No rationale inside an artifact | Design rationale, sizing arithmetic and facilitation notes belong in the chat reply or the trainer file. Inside a document, "you" means the end reader. The questions a section answers, and who needs the answers, are written to the learner and stay in the file. |
+| Nothing that needs another file open | Learners open one file at a time, often on GitHub or a phone. A deck, notebook, exercise or paper that sends them elsewhere for something it needs stops them there, so each carries its scenario, its terms and its numbers. |
 
 ---
 

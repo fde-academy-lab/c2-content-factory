@@ -4,7 +4,7 @@ Handed out when the round opens. Three minutes to read, eighteen to reach a posi
 
 ## Dr Menon's ask
 
-> "A health insurer offers a cashless tie-up. Its members get Kalpa tests at 25 percent off, it pays us 60 days after each claim, and it wants every clinic's report turnaround and no-show figures each month. The insurer says we get 40 percent more volume; the marketing head says a tie-up like this elsewhere brought 20. The finance head says we will be carrying the insurer's cash. The clinics' operations head says the monthly figures will be used against us. I sign or I walk, this week."
+> "A health insurer offers a cashless tie-up. Its members get Kalpa tests at 25 percent off, it pays us 60 days after each claim, and it wants every centre's report turnaround and no-show figures each month. The insurer says we get 40 percent more volume; the marketing head says a tie-up like this elsewhere brought 20. The finance head says we will be carrying the insurer's cash. The patient service centres' operations head says the monthly figures will be used against us. I sign or I walk, this week."
 
 ## What your group owes Dr Menon when the discussion closes
 
@@ -23,7 +23,7 @@ Handed out when the round opens. Three minutes to read, eighteen to reach a posi
 | Kalpa's current patients who already hold this insurer's policy | 20 percent | This prompt's assumption (the finance head) |
 | When the insurer pays | 60 days after the claim | This prompt's assumption (the insurer's offer) |
 | What money tied up costs Kalpa | 12 percent a year | This prompt's assumption (the finance head) |
-| Figures the insurer wants each month | report turnaround and no-show rate, clinic by clinic | This prompt's assumption (the insurer's offer) |
+| Figures the insurer wants each month | report turnaround and no-show rate, centre by centre | This prompt's assumption (the insurer's offer) |
 
 Rows marked **this prompt's assumption** are the prompt's own and do not come from Kalpa Health's files. Argue with them if you think they are wrong, and say what you would use instead.
 
@@ -31,4 +31,4 @@ Rows marked **this prompt's assumption** are the prompt's own and do not come fr
 
 - **The marketing head:** "Forty percent is the insurer selling. Twenty is what happened to the chain that signed."
 - **The finance head:** "Every existing patient who holds that policy now pays us a quarter less."
-- **The clinics' operations head:** "Once they have our clinic-level numbers, next year's discount is thirty-five."
+- **The patient service centres' operations head:** "Once they have our centre-level numbers, next year's discount is thirty-five."
