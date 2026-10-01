@@ -82,8 +82,9 @@ every such order on the Business side and every consumer's order on the other, t
 188 orders carry the Business label, the Business segment's own, and the app's Business side matches
 the sales ledger's Rs 4,17,78,440 and Rs 4,23,16,600.
 
-- b, "The customer's own segment name, four labels in each channel": keeps the four segments apart, so
-  each channel has four kinds where the question asks for two.
+- b, "The customer's own segment name, four labels in each channel": its Business label is right, and
+  it keeps the three consumer segments apart, so each channel has four kinds where the item asks for
+  two labels and no more.
 - c, "Business where the order is worth more than Rs 5,00,000, and consumer where it is not": labels by
   order size, and on this book it files the 50 Business orders worth Rs 2,09,000 to Rs 4,94,000 as
   consumer orders, so only 138 orders carry the Business label against the segment's 188.

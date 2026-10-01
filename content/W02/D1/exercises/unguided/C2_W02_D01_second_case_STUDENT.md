@@ -92,9 +92,9 @@ Marker 2 in the notebook.
 
 ### Q2. Which label puts every Business order, and no consumer order, on the Business side, next quarter as well?
 
-The notebook labels every order as Business or consumer and groups by the label, and next quarter's
-sheet will run the same label on new orders. Which label puts every Business order, and no consumer
-order, on the Business side, next quarter as well as this one?
+The notebook labels every order either Business or consumer, two labels and no more, and groups by
+the label, and next quarter's sheet will run the same label on new orders. Which label puts every
+Business order, and no consumer order, on the Business side, next quarter as well as this one?
 
 a) Business where the customer's segment is Business, consumer for the other three
 b) The customer's own segment name, four labels in each channel
