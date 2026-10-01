@@ -23,7 +23,7 @@ debrief, the two parts nothing else in the day repeats.
 - What does a finished lab look like?
 - What if the warehouse will not connect?
 
-Keys: the escalated case, `1c 2b 3b 4a 5a 6c 7b 8b 9c 10b 11d 12a 13d 14c 15d`, of which parts 3 to 5
+Keys: the escalated case, `1c 2b 3b 4a 5a 6c 7b 8b 9c 10b 11d 12b 13d 14c 15d`, of which parts 3 to 5
 are items 5, 6 and 13, then 7, 8 and 14, then 9, 10 and 15; the practice set, `cbdabcadbc` for items 1
 to 10; the second case, which goes home with the take-home, `ababaabdcd`. The reasons for every letter
 are in `exercises/solutions/C2_W02_D03_escalated_case_solution_STUDENT.md`,

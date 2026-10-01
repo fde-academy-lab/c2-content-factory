@@ -291,7 +291,7 @@ Every letter line posts as one string in item order, no spaces. The day holds 70
 | Chapter 4 set | cbdab | 1, 4 and 5 |
 | Chapter 5 set | acbdb | 1 and 5 |
 | Chapter 6 set | dacbd | 1, 4 and 5 |
-| Escalated case | cbbaacbbcbdadcd, that is 1c 2b 3b 4a 5a 6c 7b 8b 9c 10b 11d 12a 13d 14c 15d | 11 to 15 |
+| Escalated case | cbbaacbbcbdbdcd, that is 1c 2b 3b 4a 5a 6c 7b 8b 9c 10b 11d 12b 13d 14c 15d | 11 to 15 |
 | Practice lab | cbdabcadbc | 5 and 10 |
 | Second case | ababaabdcd | 8 to 10 |
 | Kahoot | b, d, a, c, b, a, d, c | None; it is ungraded |

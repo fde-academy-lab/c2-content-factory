@@ -90,7 +90,7 @@ planted ids and values (`FORBIDDEN`) and stops the build if any saved output pri
 |---|---|---|---|
 | Morning, SECTION 1, S7 to S20 | `01_top_fifty` | Which fifty members spent the most in Q2? | The fifty biggest Q2 orders sent as the top fifty members: 50 rows naming 28 members, all Business |
 | Morning, SECTION 2, S21 to S34 | `02_each_segment` | Which fifty members lead each of the four segments? | The whole book numbered once and split by segment: Business 35, Retail-Core 4, Retail-Plus 11, Student 0 |
-| Morning, SECTION 3, S35 to S48 | `03_tie_rule` | When two members spent the same at the line, how many does a list ship, and which rule did the head of Retail-Plus ask for? | DENSE_RANK's Retail-Core top fifty shipped as 52 members, two of them past the line with no tie at it |
+| Morning, SECTION 3, S35 to S48 | `03_tie_rule` | When two members tie at fiftieth place, how many does a list ship, and which rule did the head of Retail-Plus ask for? | DENSE_RANK's Retail-Core top fifty shipped as 52 members, two of them past the line with no tie at it |
 | Morning, SECTION 4, S49 to S61 | `04_falling_spend` | Whose monthly spend fell two months running? | LAG with no PARTITION BY flags 20 members, 4 of them compared with another member's month |
 | Morning, SECTION 5, S62 to S76 | `05_against_plan` | Has Q2 revenue kept pace with the plan line week by week, and where did it stand at mid-quarter? | The plan-first join closes at Rs 9,68,60,180, reported as Rs 15,39,810 short of plan |
 | Afternoon, SECTION 6, S2 to S16 | `06_call_first` | Which listed members does Marketing call first, and does each flag hold up when a member says they were on holiday? | Chapter 4's 16 flags shipped as calls, 7 of them reading a skipped month as last month |
@@ -181,6 +181,30 @@ parts, the close with the day's answer and the Kahoot, and self-study slides for
 19. **The escalated case's monthly table carries the segment.** Marker 3's option a, PARTITION BY
     segment, would otherwise stop with an error, and an error is never an exercise item; with the
     segment on every row, the option runs and its check counts more than 700 rows that cross members.
+20. **Chapter 1's live pair is items 2 and 3.** Item 1 now sizes the four per-segment builds, and its
+    key prints 155 rows, which chapter 2's S30 asks the room to predict. Items 1, 4 and 5 run in the
+    practice lab or tonight, after chapter 2; every other set keeps items 1 and 2 live.
+21. **A key ties for the longest option in about a quarter of items.** The rigor reviewer asked for
+    the key to be the lone longest option in about a quarter of items, so length points neither way;
+    `scripts/distractor_audit.py` fails any item whose key is the lone longest, and CLAUDE.md requires
+    the audit to pass, so the key ties exactly for the longest in about a quarter of each file's items
+    and is never the lone longest or the lone shortest.
+22. **"The line" means the cut-off, defined where each file first uses it.** The pedagogy reviewer
+    found the word in three senses: the cut-off of a list, the plan line and a line of code. Every
+    file that uses the cut-off defines it at first use as the last place a list keeps, fiftieth on a
+    top fifty, and the plan line keeps its full name.
+23. **The running total's interview answer names two failures.** Ordered by date alone under
+    PostgreSQL's default frame, a running total repeats on every run and gives peers one figure; with
+    a ROWS frame over the date alone, tied rows can come in a different order on each run. The order
+    id after the date fixes both. The row's word "deterministic" stays in the [F] question.
+24. **Chapter 4 switches to a lookup per row.** A self-join that matches each September to the same
+    member's rows dated one and two months earlier keeps 9 members on this book, which is chapter 6's
+    calendar answer, so the build that reproduces LAG's 16 without window functions is a correlated
+    subquery for each member's previous month with an order.
+25. **The overlap of flags and lists is stated without a place.** The 16 flagged members all sit on a
+    protect list, and two of them sit in their list's last three places: C-0054 at Retail-Core's 48th
+    and C-0185 at Retail-Plus's 50th, the planted tie. STUDENT files say "two of them in the last three
+    places of their list", which names neither the plant nor its place.
 
 ---
 
@@ -190,9 +214,9 @@ parts, the close with the day's answer and the Kahoot, and self-study slides for
    marketing lead's Monday message (the escalated case) and the frequency ask (the second case), each
    written in the row's voice for this pack.
 2. The six invented members A to F (Rs 7,500, 7,500, 6,000, 5,200, 5,200 and 4,100), which show the
-   three functions side by side, and the invented top four with a tie at fourth (Rs 9,100, 8,800,
-   8,200, 7,400, 7,400 and 6,900), which ships 4, 5, 5 and 3. Both are labelled invented wherever
-   they appear.
+   three functions side by side and whose own top four ships 4, 5, 6 and 3 on the cheat sheet, and
+   the invented top four with a tie at fourth (Rs 9,100, 8,800, 8,200, 7,400, 7,400 and 6,900),
+   which ships 4, 5, 5 and 3. Both are labelled invented wherever they appear.
 3. The members on the companion page, `demos/C2_W02_D03_tie_STUDENT.html`, labelled invented there.
 4. The take-home's three-way Retail-Core tie, added to the second sample by the builder.
 5. The members and amounts in Kahoot items 1, 5 and 7, labelled invented in the quiz.
@@ -201,6 +225,18 @@ parts, the close with the day's answer and the Kahoot, and self-study slides for
 7. The invented members of the chapter sets, the guided build and the practice lab (letters such as
    A to F, P to R and R to X, and ids such as V-01 to V-08, X-01 and Y-01 that the warehouse does
    not hold), each labelled invented where it appears.
+8. The chapter sets' numbers added in passes 4 and 5, each recomputed on the warehouse on 1 October
+   2026. Chapter 1: fifty orders per segment ship 188 rows (50, 50, 50 and Student's 38) naming 131
+   members, fifty members or every buyer per segment ship 155, and four glued queries read 4 x 462 =
+   1,848 order rows; the fifty biggest Q2 orders carry Rs 7,90,08,600, 80.3 percent of Q2, and leave
+   off a Business member on Rs 15,91,000, above the Rs 11,27,000 of the smallest member they name.
+   Chapter 2: ten per city and segment ship 171 rows, ten per city alone 60, and 24 queries read 24 x
+   462 = 11,088 order rows; one sorted query over Retail-Core and Student with LIMIT 70 returns 65 and
+   5. Chapter 3: on Retail-Core a top thirty-one ships 31, 32, 32 and 30 under ROW_NUMBER, RANK,
+   DENSE_RANK and whole ties only, and a top forty 40, 40, 42 and 40. Chapters 4 to 6: 84 of Q2's 92
+   calendar days carry an order; the 16 flagged members hold 68 member-months; 50 of the 118 members
+   with a September order also ordered in August; a calendar self-join reads 118 September, 122
+   August and 119 July rows, 359 in all; 27 members bought in July and August and not in September.
 
 ---
 
@@ -272,4 +308,4 @@ installed in the session's scratch space on 1 October 2026.
 | 2. Domain | Could a learner who has never worked in a business say, for every chapter, who asks, why the metric matters, what a wrong number costs and which real company faces the same question? | Every chapter names its stakeholder, metric, cost and company with a dated source. Chapters 3, 5 and 6 named no section of the retail dossier, and chapter 1 sent the reader to section 4 for what a paid tier buys, which section 2 holds. | Each chapter notebook's metric paragraph names its dossier section: sections 2 and 4, 4, 4, 5, 4 and 5, and 8 (a wrong retention flag spends offers on the wrong members). |
 | 3. Problem first | Does every technique answer a stated problem, with two to four options sized, a best-fit call and the fact that would switch it, and is the code its last mile? | Every chapter sizes its options in rows, reads, pairs or lookups (462, 1,848, 16,617, 752, 1,504, 6,006, 1,806), makes its call, names the switch and reaches the same answer a second, independent way. Chapter 2 stages its trap before its build, and chapter 6 runs its second route before the call list. | Kept, with the reasons recorded as decision 18. |
 | Humanizer read, decks, notebook script, day sheet, lab note, SQL comments | Which of the humanizer's patterns survive? | 22 edits on the morning deck, 17 on the afternoon's, about 58 in the notebook script's markdown, 7 on the day sheet, 6 on the lab note and 4 in SQL comments: lines with no verb under **Who needs the answer.**, closers and slogans, a staged run-up, "every analyst" and "most people" lines, "actually", and "he" for members and unnamed stakeholders. A line claiming half the buyers hold three quarters of the rupees "in both" segments was false for Retail-Plus, 50 of 76 buyers. Deck notes and the day sheet cited notebook 03's "section 4" and "section 5", which the notebook numbers steps 2 and 3. | Rewritten in place, the false line cut, the step numbers fixed; notebooks re-executed cold, decks rebuilt on mermaid-cli 11.17.0 and every slide rendered through LibreOffice with Carlito and looked at. |
-| Humanizer read, reading and exercise files | Which of the humanizer's patterns survive in the notes, the sheet, the board work, the extras, every exercise and solution file, the take-home, the Kahoot and the companion page? | 28 of 30 files edited, the pre-read and self-check clean: lines with no verb under **Who needs the answer.** ("You, planning the day."), forty subjectless "Used at work whenever" lines, fragment openers, sayings ("a fall is a fall", "RANK's rule is older than any database", which its own 2021 example did not support), closers, unsourced "every interview" lines, and he, him or she for members, the head of Retail-Plus and Kavya. The companion page sent the Retail-Plus run to notebook 02 and dated its figures 29 September; the afternoon cover's quote dropped C-0216; the notes linked a tutorial address that redirects twice. | Rewritten in place with every heading, number, option and key unchanged except the five pronoun phrases; the companion points at notebook 03 and dates its figures 1 October 2026, after its two real figures (Rs 9,600 and Rs 9,630) were checked again; the cover quote carries C-0216; the notes link https://neon.com/postgresql/window-function; the sheet rebuilt, one page. Distractor audit, tic scan, html sweep and deck check pass. |
+| Humanizer read, reading and exercise files | Which of the humanizer's patterns survive in the notes, the sheet, the board work, the extras, every exercise and solution file, the take-home, the Kahoot and the companion page? | 28 of 30 files edited, the pre-read and self-check clean: lines with no verb under **Who needs the answer.** ("You, planning the day."), forty subjectless "Used at work whenever" lines, fragment openers, sayings ("a fall is a fall", "RANK's rule is older than any database", which its own 2021 example did not support), closers, unsourced "every interview" lines, and he, him or she for members, the head of Retail-Plus and Kavya. The companion page sent the Retail-Plus run to notebook 02 and dated its figures 29 September; the afternoon cover's quote dropped C-0216; the notes linked a tutorial address that redirects twice. | Rewritten in place with every heading, number, option and key unchanged except the five pronoun phrases; the companion points at notebook 03 and dates its figures 1 October 2026, after its two real figures (Rs 9,600 and Rs 9,630) were checked again; the cover quote carries C-0216; the notes link https://neon.com/postgresql/window-function (checked 1 October 2026); the sheet rebuilt, one page. Distractor audit, tic scan, html sweep and deck check pass. |

@@ -527,7 +527,7 @@ Each one asks for a judgment the day's numbers support: the count a tie rule shi
 order, and the running total that has to close on the quarter's own total.
 
 ```notes
-SELF-STUDY, the last five minutes of the practice lab's drill. [D] marks a differentiator. The
+SELF-STUDY, the last five minutes of the practice lab's drill. [D] is the tag for a differentiator. The
 answers in one breath: RANK, and the report can ship more than N when a tie straddles the line, so it
 states the count; DENSE_RANK can ship more even with no tie at the line; ROW_NUMBER always ships N and
 hides the tie. A month with no order is no reading, so it breaks the run; a zero would read a quiet
