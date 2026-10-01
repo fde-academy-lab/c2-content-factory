@@ -91,6 +91,8 @@ B["repeated_last_date"] = legacy_raw[legacy_raw.booking_id.duplicated()].booking
 B["repeated_pairs_identical"] = int(legacy_raw.duplicated().sum())
 B["repeated_pairs_differing_in_updated_at"] = int((copies.updated_at.nunique() > 1).sum())
 B["repeated_pairs_differing_in_channel"] = int((copies.channel.nunique() > 1).sum())
+B["repeated_pairs_differing_in_both"] = int(((copies.updated_at.nunique() > 1)
+                                            & (copies.channel.nunique() > 1)).sum())
 B["legacy_rows_with_no_channel"] = int((legacy_raw.channel == "").sum())
 B["newsys_rows"] = len(newsys)
 B["newsys_Chicago"] = int((newsys.metro == "Chicago").sum())
@@ -153,13 +155,16 @@ W["q3_mean_claim"] = by_q.mean()["Q3"]
 W["q3_mean_without_contract"] = retail_claims[retail_claims.q == "Q3"].amt.mean()
 W["q3_median_claim"] = by_q.median()["Q3"]
 B["q2_median_claim"] = by_q.median()["Q2"]
+B["second_largest_claim"] = claims.amt.nlargest(2).iloc[-1]
 B["q2_mean_claim"] = by_q.mean()["Q2"]
 B["q2_claims"] = int(by_q.size()["Q2"])
 B["q3_retail_claims"] = int((retail_claims.q == "Q3").sum())
 B["retail_claims_change"] = B["q3_retail_claims"] / B["q2_claims"] - 1
 B["billed_per_retail_claim_change"] = W["q3_mean_without_contract"] / B["q2_mean_claim"] - 1
 W["text_amounts"] = int((~claims.billed_amount.str.fullmatch(r"\d+")).sum())
-B["largest_text_amount"] = claims[~claims.billed_amount.str.fullmatch(r"\d+")].amt.max()
+text = claims[~claims.billed_amount.str.fullmatch(r"\d+")]
+B["text_amount_dollars"] = text.amt.sum()
+B["text_amounts_Q2"], B["text_amounts_Q3"] = int((text.q == "Q2").sum()), int((text.q == "Q3").sum())
 W["claim_lines_non_employer"] = int(retail_claims.line_items.astype(int).sum())
 non_emp_tests = test_lines[test_lines.panel_code != "PNL-EMP"]
 W["tests_booked_non_employer"] = len(non_emp_tests)
@@ -255,6 +260,7 @@ B["denied_claims_with_no_posting"] = int((~denied.claim_id.isin(posted)).sum())
 for cat, n in denied.denial_category.value_counts().items():
     B[f"denials_{cat}"] = int(n)
 B["paid_raw_sum"] = round(float(post.paid.sum()), 2)
+B["paid_on_payment_postings"] = round(float(pay.paid.sum()), 2)
 W["paid_net_of_double_posts"] = round(B["paid_raw_sum"] - W["double_posted_dollars"], 2)
 W["billed_all"] = claims.amt.sum()
 B["paid_share_of_billed"] = W["paid_net_of_double_posts"] / W["billed_all"]
@@ -367,6 +373,8 @@ for _ in range(10000):
     shuffler.shuffle(shuffled)
     as_large += abs(ny_lift(shuffled)) >= abs(observed)
 B["new_york_permutation_p_two_sided"] = as_large / 10000
+# If the offer did nothing anywhere, the chance that at least one of six metros reaches p of 0.03.
+B["six_metros_one_at_0_03"] = 1 - (1 - 0.03) ** len(METROS)
 took = dict(zip(camp.patient_id[camp.took_up == "Y"], camp.offered_on[camp.took_up == "Y"]))
 home = rb[(rb.channel == "at-home") & rb.patient_id.isin(took)]
 used = home[(home.booking_date >= home.patient_id.map(took)) & (home.booking_date <= OFFER[1])]
@@ -452,8 +460,11 @@ BANK = {
     "offered_share_New York": 0.211, "visits_to_detect_gap": 712, "billed_change_commercial": 0.130,
     "billed_change_Medicare": 0.060, "billed_change_Medicaid": 0.016, "billed_change_self-pay": -0.022,
     "switch_Q2_old_rows_with_repeats": 1450, "switch_Q3_old_rows_with_repeats": 1099,
+    "repeated_pairs_differing_in_both": 1, "text_amount_dollars": 10559, "text_amounts_Q2": 32,
+    "text_amounts_Q3": 28, "paid_on_payment_postings": 829181.06, "second_largest_claim": 420,
+    "six_metros_one_at_0_03": 0.17,
 }
-LOOSE = {"tail_probability": 0.006, "new_york_permutation_p_two_sided": 0.006,
+LOOSE = {"six_metros_one_at_0_03": 0.006, "tail_probability": 0.006, "new_york_permutation_p_two_sided": 0.006,
          "tail_probability_per_booking": 0.006, "tail_probability_all_visits": 0.00006}
 
 fails = 0
