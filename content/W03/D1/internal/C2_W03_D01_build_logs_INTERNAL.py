@@ -65,7 +65,8 @@ def challenges():
     wb = Workbook()
     log = wb.active
     log.title = "Log"
-    title(log, "Challenges log", "One row every time the group is stuck. Fill the yellow cells; "
+    title(log, "Where did the group get stuck, and what did it decide?",
+          "One row every time the group is stuck. Fill the yellow cells; "
           "the grey columns and the Summary sheet compute themselves.")
     head = ["#", "Day", "Opened (date)", "Sub-problem", "What stopped us", "Where it showed "
             "(file, column or step)", "What we tried", "What we decided, and why", "Status",
@@ -99,7 +100,8 @@ def challenges():
                                 "resolved once it has, with the date in the next column", "GCC")
 
     summ = wb.create_sheet("Summary")
-    title(summ, "Where the group stands", "Every value on this sheet is a formula over the Log sheet.")
+    title(summ, "How many challenges are still open, and which one goes to the checkpoint?",
+          "Every value on this sheet is a formula over the Log sheet.")
     rng = lambda col: f"Log!{col}{first}:{col}{last}"
     rows = [
         ("Entries logged", f"=COUNTA({rng('E')})"),
@@ -124,8 +126,8 @@ def challenges():
     widths(summ, {"A": 46, "B": 60})
 
     ex = wb.create_sheet("Example")
-    title(ex, "Entry one, as another group might write it",
-          "Copy the shape, not the words. Your entry one is about your own first stop.")
+    title(ex, "What does a good entry one look like?",
+          "Another group's entry one. Copy its shape; your entry is about your own first stop.")
     for c, h in enumerate(head, 1):
         ex.cell(row=4, column=c, value=h)
     style_header(ex, 4, len(head))
@@ -157,7 +159,7 @@ def challenges():
         "Summary counts the log for you and says what to take to the next checkpoint.",
         "A challenge that needed a cleaning or matching decision also goes in the decisions log.",
     ]
-    how["A1"] = "How to use this log"
+    how["A1"] = "How do you fill this log?"
     how["A1"].font = Font(name=FONT, bold=True, size=14, color=INK)
     for i, t in enumerate(lines, 3):
         how.cell(row=i, column=1, value=f"{i - 2}. {t}").font = Font(name=FONT)
@@ -179,7 +181,8 @@ def decisions():
     wb = Workbook()
     log = wb.active
     log.title = "Log"
-    title(log, "Decisions log", "The Week 1 Wednesday shape, one row per decision, plus the file "
+    title(log, "Which rows did the group change, remove or keep on purpose, and why?",
+          "The Week 1 Wednesday shape, one row per decision, plus the file "
           "and the kind of decision so the Reconcile sheet can count rows out.")
     head = ["#", "Day", "File", "Field", "Issue", "Rows", "Decision", "Kind", "Reason"]
     for c, h in enumerate(head, 1):
@@ -207,7 +210,7 @@ def decisions():
                                 "or filled.", "GCC")
 
     rec = wb.create_sheet("Reconcile")
-    title(rec, "Input equals clean plus removed, file by file",
+    title(rec, "Do rows in equal clean rows plus rows removed, file by file?",
           "Rows in are counted from the files. Type the rows in your clean output; the rest is "
           "computed from the Log sheet.")
     head2 = ["File", "Rows in", "Rows removed (from the log)", "Rows in your clean output",
@@ -246,34 +249,35 @@ def decisions():
     widths(rec, {"A": 20, "B": 14, "C": 16, "D": 16, "E": 14, "F": 52})
 
     ex = wb.create_sheet("Example")
-    title(ex, "Rows from the Week 1 Wednesday log, in Kalpa Retail",
-          "The shape you already know. Your rows are about Kalpa Health's files.")
+    title(ex, "What does one row of a decisions log hold, column by column?",
+          "One invented row in the Week 1 Wednesday shape, then what each column takes. Your rows "
+          "are about Kalpa Health's files.")
     head3 = ["Field", "Issue", "Rows", "Decision", "Reason"]
     for c, h in enumerate(head3, 1):
         ex.cell(row=4, column=c, value=h)
     style_header(ex, 4, len(head3))
-    rows = [
-        ("order_id", "Repeated", 15, "Keep one row per order: the first copy, or the copy that "
-         "validates where one copy's amount will not convert",
-         "201 rows for 186 orders, and 14 of the 15 extra rows sit in Q1, the migration's quarter"),
-        ("amount", "Will not convert, on one copy of a repeated order", 1,
-         "Set aside with the duplicates; its twin, whose amount converts, stays",
-         "Keeping the first copy would keep the one that cannot be summed, and Q1 would sit "
-         "Rs 1,790 short of the books"),
-        ("status", "Empty", 1, "Keep and flag",
-         "It happened and its fate is unknown: dropping it would remove a booked order from Q2, "
-         "and a default would invent a delivery or a cancellation"),
-        ("amount", "Largest Q2 order, 1.66 times the next", 1, "Keep and flag, shown both ways",
-         "Large is not wrong: a Business-segment account with orders in both quarters, every "
-         "field valid"),
+    invented = ("status", "Empty", 1, "Keep and flag",
+                "The visit happened and its outcome is unknown: dropping the row would remove a real "
+                "booking, and a default would invent an outcome")
+    for c, v in enumerate(invented, 1):
+        ex.cell(row=5, column=c, value=v)
+        body(ex.cell(row=5, column=c))
+    ex["A7"] = "What each column takes"
+    ex["A7"].font = Font(name=FONT, bold=True, color=INK)
+    guide = [
+        ("Field", "The column the decision is about, as the file names it"),
+        ("Issue", "What you saw, in a few words another group could check"),
+        ("Rows", "How many rows the decision touches, counted from the file and never estimated"),
+        ("Decision", "Keep, keep and flag, remove, or change, and how"),
+        ("Reason", "Why, in a sentence an auditor would accept; a reason that restates the issue is "
+                   "not a reason, and a kept row belongs in the log too"),
     ]
-    for r, vals in enumerate(rows, 5):
-        for c, v in enumerate(vals, 1):
-            ex.cell(row=r, column=c, value=v)
-            body(ex.cell(row=r, column=c))
-    ex["A11"] = ("A reason that restates the issue is not a reason. The kept row is the one an "
-                 "auditor asks about, so it goes in the log too.")
-    ex["A11"].font = Font(name=FONT, italic=True)
+    for r, (col, what) in enumerate(guide, 8):
+        ex.cell(row=r, column=1, value=col)
+        ex.cell(row=r, column=2, value=what)
+        body(ex.cell(row=r, column=1), bold=True)
+        body(ex.cell(row=r, column=2))
+        ex.merge_cells(start_row=r, start_column=2, end_row=r, end_column=5)
     widths(ex, {"A": 14, "B": 22, "C": 8, "D": 26, "E": 70})
 
     how = wb.create_sheet("How to use")
@@ -286,7 +290,7 @@ def decisions():
         "before anyone acts on a number built from that file.",
         "Your notebook or SQL must reproduce every count in this log from the raw files.",
     ]
-    how["A1"] = "How to use this log"
+    how["A1"] = "How do you fill this log?"
     how["A1"].font = Font(name=FONT, bold=True, size=14, color=INK)
     for i, t in enumerate(lines, 3):
         how.cell(row=i, column=1, value=f"{i - 2}. {t}").font = Font(name=FONT)
