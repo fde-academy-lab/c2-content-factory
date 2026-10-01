@@ -140,9 +140,8 @@ whose `line` is `component` for each test inside it, priced at zero.
 
 ### What does each claim bill, and to whom?
 
-A claim is the bill Kalpa Health sends to whoever pays for a completed booking: list prices, plus a
-collection fee where a phlebotomist drew the blood at home and the fee was charged. The payer
-answers with a remittance, which the posting system records.
+A claim is the bill Kalpa Health sends to whoever pays for a completed booking, at list prices, plus any collection fee for a home draw. The
+payer answers with a remittance, which the posting system records.
 
 | Column | Type | What it carries |
 |---|---|---|
@@ -189,7 +188,7 @@ a row of its own against the claim it is for.
 | `kind` | text | `scheduled` for a slot booked ahead, `walk-in` for a patient who came without one |
 | `attended` | Y or N | `Y` if the patient was seen, `N` if not |
 
-### Whom did marketing send the at-home offer to, and who used it?
+### Whom did marketing send the at-home offer to, and who accepted it?
 
 The offer was a free collection at home: a phlebotomist visits the patient and draws the sample
 there, with the visit's fee waived.

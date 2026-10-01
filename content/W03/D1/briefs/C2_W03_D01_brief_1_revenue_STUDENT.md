@@ -82,13 +82,13 @@ What are a booking, a test and a panel? What is a branch of a revenue tree?
 | Booking | One patient's visit to have one or more tests or panels done | `bookings_legacy`, `bookings_newsys` |
 | Test | One laboratory test, such as a complete blood count or vitamin D | `test_catalogue`, `booking_tests` |
 | Panel | Several tests ordered and priced under one name, such as the diabetes monitoring panel; its price is its own, below the sum of its tests' prices | `test_catalogue`, `booking_tests` |
-| Claim | The bill Kalpa Health sends to a payer for a completed booking, at list prices, with a collection fee where a phlebotomist drew the blood at home | `claims` |
+| Claim | The bill Kalpa Health sends to a payer for a completed booking, at list prices, plus any collection fee for a home draw | `claims` |
 | Payer | Whoever pays a claim: a commercial plan, Medicare, Medicaid or the patient (self-pay) | `claims.payer_type`, `claims.payer_id` |
 | Billed revenue, or gross charges | The dollars on the claims: list prices, plus any collection fee | `claims.billed_amount` |
 | Allowed amount | What a payer's contract permits for a claim, payer's and patient's shares together; it is usually well below the billed amount, and the difference is written off under the contract | `remittances.allowed_amount` |
 | Branch | One part of a revenue tree: a count or a ratio whose change from Q2 to Q3 shows how much of revenue's growth it carries | Built by your group |
 
-Billed revenue is what Kalpa Health charges at list price, and the money that arrives is a smaller
+Billed revenue is what Kalpa Health charges, at list prices, plus any collection fee for a home draw, and the money that arrives is a smaller
 figure set by the payers' contracts. Both are honest numbers for different decisions, so your group
 says which one each branch is measured in. The board's 18 percent is a plan for test volumes; with
 prices and the mix of tests unchanged, billed revenue would grow about as fast as volumes, so the
@@ -137,7 +137,7 @@ checked number.
 |---|---|---|---|---|---|
 | A. Total the billed dollars | Sums the billed dollars on the claims for Q2 and for Q3 and compares their growth with the plan | 11,356 claims | About 1 | Says whether billed dollars grew and never which branch is short, and dollars are not the volume the plan counts | Week 1 Monday: which total is sales, and what each total counts |
 | B. Split the dollars by payer and by single test against panel | Totals billed dollars for each payer type and for single tests against panels, in each quarter | 11,356 claims and 51,456 booking lines | About 3 | Shows where the dollars sit; a change in the mix reads like a change in volume unless both quarters are split on the same definitions | Week 1 Tuesday: which segment moved, and did customers pay more or did the mix change; Week 2 Thursday: grouping in pandas |
-| C. Build a revenue tree | Splits billed revenue into a product of counts and ratios the group defines, for Q2 and for Q3, and finds the branch whose change explains most of the shortfall | All seven files, about 81,000 rows | About 6 | Is only as right as each box's definition, and every box must be counted the same way in both quarters and in every file | Week 1 Monday: the revenue tree, every branch a count over a denominator; Week 2 Monday: the tree as queries |
+| C. Build a revenue tree | Splits billed revenue into a product of counts and ratios the group defines, for Q2 and for Q3, and finds the branch whose change explains most of the shortfall | All seven files, about 81,000 rows | About 6 | Is only as right as each box's definition, and every box must be counted the same way in both quarters | Week 1 Monday: the revenue tree, every branch a count over a denominator; Week 2 Monday: the tree as queries |
 | D. Rebuild Dr Menon's 5 percent first, then the tree | Reproduces her dashboard's figure from the files before walking the tree, so the tree starts from the number she quotes | As C | About 7 | Costs an hour more than C, and reproduces the dashboard's own way of counting, right or wrong, until the group writes its own beside it | Week 1 Tuesday: confirm the number before explaining it; Week 1 Monday: which total, and what it counts |
 
 Which way leads, and which one checks it, is your group's call. Make it in Part 2 of the translation
@@ -174,7 +174,7 @@ to answer each one from your own work.
 
 | Criterion | Marks | Full marks on this question look like |
 |---|---|---|
-| The question translated | 8 | "Revenue" and "test volumes" are each defined in a line, saying what is counted, from which file and in which quarters, and the decision the answer feeds, where the recovery effort goes, is named |
+| The question translated | 8 | "Revenue" and "test volumes" are each defined in a line, saying what is counted and in which quarters, and the decision the answer feeds, where the recovery effort goes, is named |
 | The data made trustworthy | 10 | Every file the tree uses is profiled first; every row removed, converted or kept on purpose is in the decisions log with its reason; the tree's numbers reconcile to the files they come from, quarter by quarter |
 | The analysis | 10 | The tree runs from billed revenue down to the branch whose change explains most of the shortfall, every box a count over a stated denominator and both quarters counted the same way |
 | The claim | 6 | One sentence names the branch, how much of the shortfall it explains, on which denominator, for Q2 to Q3, with its caveat and one action Dr Menon can take |

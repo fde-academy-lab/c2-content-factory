@@ -486,7 +486,7 @@ icon: database | eyebrow: It starts from | title: Seven files | body: Claims, bo
 
 ```notes
 LIVE, the Programme Head, 90 seconds. Read the finance head's words. Billed revenue is the dollars
-on the claims at list price, which differs from the money collected, so the group says which one it
+on the claims, at list prices plus any collection fee for a home draw, which differs from the money collected, so the group says which one it
 means. Do not say which method fits; that is the group's work today.
 Transition: the files behind it.
 ```
@@ -771,7 +771,7 @@ flowchart LR
     class R,C,F,A,I,P known
 ```
 
-Revenue = customers x orders per customer x order value, and order value splits into items per order and price per item. Every branch is a count over a denominator, and the branch that falls furthest short of the plan is where the question points.
+Revenue = customers x orders per customer x order value, and order value splits into items per order and price per item. Every branch is a count over a denominator, and the branch whose change explains most of the shortfall is where the question points.
 
 ```notes
 SELF-STUDY, 1 minute. Week 1 Monday, Kalpa Retail: revenue as customers times orders per customer

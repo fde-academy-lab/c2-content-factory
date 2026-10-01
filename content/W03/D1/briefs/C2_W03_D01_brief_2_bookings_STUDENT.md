@@ -85,14 +85,14 @@ patient book? What do a metro and a site mean here? What is a field team for?
 | Field team | Operations staff sent to a metro to find out on the ground what is happening, at a cost in time and travel | Not in the files |
 
 A fall is a change from Q2 to Q3 in a count your group defines, in writing, before anything is
-counted: what one booking is, which bookings count, and which files they are counted from.
+counted: what one booking is and which bookings count.
 
 ---
 
 ## Which files hold the answer, and how big is each?
 
-**Who needs the answer.** Your group, to plan its time. A recount of the two booking files takes about two hours; a full
-ladder down to sites, channels and patients takes most of Wednesday.
+**Who needs the answer.** Your group, to plan its time. A recount of the two booking files takes about two hours, and a
+full ladder takes most of Wednesday.
 
 **The questions on the way.** Which files does the bookings question start from? How many rows does
 each hold, and what is one row?
@@ -102,7 +102,7 @@ each hold, and what is one row?
 | `bookings_legacy` | One booking in the booking system in use since before Q2 | 11,729 | Bookings by metro, site, channel, status and date |
 | `bookings_newsys` | One booking in the new booking system | 153 | Bookings in the new system's own codes |
 | `sites` | One laboratory or patient service centre | 18 | Each site's metro, and its code in each booking system |
-| `patients` | One registered patient | 6,700 | Patients per metro, to split bookings into patients and visits each |
+| `patients` | One registered patient | 6,700 | Patients per metro, with their age band and payer |
 | `booking_tests` | One test, panel, or test inside a panel, on a booking | 51,456 | What each booking was for |
 | `claims` | One claim, the bill for one completed booking | 11,356 | A second count of completed bookings, by metro and service date |
 
@@ -152,7 +152,7 @@ criterion of the mini project, for this question?
 The panel reads your one-slide answer, then asks questions like these. Every member should be able
 to answer each one from your own work.
 
-1. Which two metros fell, and how far did bookings fall in each, from which files?
+1. Which two metros fell, and how far did bookings fall in each, on what count?
 2. How many bookings did you count in each quarter, and how does that count reconcile to the rows you
    were given?
 3. What did you check before you started explaining the fall?

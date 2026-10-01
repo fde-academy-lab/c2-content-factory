@@ -86,7 +86,7 @@ plan paid $56.16 and the patient owed $14.04.
 
 | Word | What it means at Kalpa Health | Where it lives in the files |
 |---|---|---|
-| Claim | The bill for one completed booking, sent to its payer at list prices, with a collection fee where a phlebotomist drew the blood at home | `claims` |
+| Claim | The bill for one completed booking, sent to its payer at list prices, plus any collection fee for a home draw | `claims` |
 | Remittance | The payer's answer to a claim: what it allows, pays and refuses, and what the patient owes; a remittance that arrives as an electronic file is an ERA | `remittances` |
 | Posting | One row the posting system records against a claim: money received, a denial, or money taken back | `remittances.posting` |
 | Allowed amount | What the payer's contract permits for the claim, its share and the patient's together | `remittances.allowed_amount` |
