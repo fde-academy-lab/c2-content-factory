@@ -2504,8 +2504,12 @@ def case():
             '''),
         code(r'''
             TODO ONLY
-            kit.bars([(s, round(100 * v, 1)) for s, v in shares if v is not None],
-                     title="The share of each segment's Q2 revenue its list carries, percent", fmt=lambda v: f"{v:.1f}%")
+            drawn = [(s, round(100 * v, 1)) for s, v in shares if v is not None]
+            if drawn:
+                kit.bars(drawn, title="The share of each segment's Q2 revenue its list carries, percent",
+                         fmt=lambda v: f"{v:.1f}%")
+            else:
+                print("No share to draw: this choice gives no fraction for any segment.")
             '''),
         code(r'''
             SOLUTION ONLY

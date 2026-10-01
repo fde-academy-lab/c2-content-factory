@@ -7,38 +7,57 @@ departs from a source.
 
 ## The sources
 
-The pack is built from the Wednesday 14 October 2026 row of `docs/curriculum/W2_Data_manipulation.md`
-(tracker v7), read in column order from the business scenario through the thinking, the agenda, the
-trainer notes, the client-zero column, the exercises, the after-class tasks, the interview angle,
-the resources and the Kahoot plan, and including the violet column for the IITGN faculty session
-W2-3, which is tentative. The week's approved spine, `docs/detailing/W01_W02_spine.md`, approved by
-the requester on 29 September 2026, sets the case, the five rungs, the four traps and the faculty-day
-shape, and it wins over the row where they differ. The lock came from `data/programme/facts.yaml`
-(the campus day of 29 September 2026, and the faculty block's tentative status and its placement
-after the day's applied core), the W02/D3 line of `docs/programme/calendar.md` (Wed 14 Oct, a
-teaching day, Module 1, faculty block W2-3 tentative) and `docs/07_Client_Zero.md` at v2.2, locked
-13 September 2026, for the stakeholders and the v4 row of the dataset ladder. The form follows
-`.claude/skills/day-pack-builder/references/the-standard.md`, whose model pack is `content/W01/D1`.
+Raised on 1 October 2026 to standard v3, from, in this order:
+
+- The requester's day prompt, `prompts/week_revamp_W02_W03.md` section 3, with the Week 2 Wednesday
+  fills: the six chapters (top fifty overall, per segment, the tie at fifty, falling spend with LAG,
+  the running total against plan, and the protect list Marketing acts on), the four traps, the
+  options to weigh (ROW_NUMBER, RANK and DENSE_RANK against the business rule; a calendar against
+  LAG), queries shipped as `.sql` files in `sql/`, and the faculty-day shape.
+- `docs/detailing/W01_W02_spine.md`, approved on 29 September 2026 and raised on 30 September 2026,
+  for the case, the rungs, the traps and the faculty-day paragraph.
+- `.claude/skills/day-pack-builder/references/the-standard.md` at standard v3 (decisions
+  `chapter-standard`, `four-domains`, `question-ladder`, `self-contained`, `humanizer` and
+  `opus-max` in `data/programme/facts.yaml`), whose model pack is `content/W01/D1`.
+- The Wednesday 14 October 2026 row of `docs/curriculum/W2_Data_manipulation.md` (tracker v7), read in
+  column order, with the violet column for the IITGN faculty session W2-3, which is tentative.
+- The W02/D3 line of `docs/programme/calendar.md`: Wed 14 Oct 2026, a teaching day, Module 1, faculty
+  block W2-3 tentative. The day sheet carries both through the `sync:module:W02/D3` and
+  `sync:faculty-day:W02/D3` blocks, filled by `scripts/sync_programme.py`.
+- `docs/07_Client_Zero.md` at v2.2, locked 13 September 2026, for the stakeholders and the v4 row of
+  the dataset ladder.
+- The retail dossier, `content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md`, for the
+  segments, the membership tier and the plan line's place in Meera's quarter.
+
+The 29 September build of this pack, in three 50-minute rounds, supplied the take-home's second
+sample and its generator, the companion page and the plan line's trap. Everything else was rebuilt.
 
 ---
 
 ## The data
 
-The warehouse is the v4 file that Monday's pack ships, `content/W02/D1/data/C2_W02_D01_warehouse_v4_STUDENT.sql`,
-written by `data/generate_client_zero.py` and loaded into the database `kalpa` by the Codespace's
-own script. Nothing in it is hand-edited.
+The warehouse is the v4 file Monday's pack ships,
+`content/W02/D1/data/C2_W02_D01_warehouse_v4_STUDENT.sql`, written by `data/generate_client_zero.py`
+and loaded into the database `kalpa` by the Codespace's own script. Nothing in it is hand-edited.
+On 1 October 2026 the loaded tables held orders 1,000, customers 340, payments 1,428, refunds 12,
+campaign_exposure 136 and plan_line 13.
 
 ```
 python3 data/generate_client_zero.py --version v4 --out content/W02/D1/data --stem C2_W02_D01
 bash .devcontainer/load_warehouse.sh
 ```
 
-The take-home's second sample is written by `content/W02/D3/internal/C2_W02_D03_takehome_data_INTERNAL.py`,
-which imports the generator, sets its seed to 20261014 and reruns `build_v4`, then adds one tie of
-its own. It writes `content/W02/D3/data/C2_W02_D03_takehome_STUDENT.sql`, which loads into its own
-schema, `takehome`, and leaves the warehouse the day used untouched. On 29 September 2026 the rows
-loaded in the running database were compared with the file's COPY block for orders and matched
-exactly.
+Every query the pack shows lives in one of the six chapter files in `sql/`, under a `-- name:` line,
+and the notebooks read their blocks from those files, so a notebook and its `.sql` file cannot
+disagree. All six files ran against PostgreSQL 16.14 on 1 October 2026; the one block that errors on
+purpose, `c2_where_error`, prints `ERROR:  window functions are not allowed in WHERE`.
+
+The take-home's second sample is written by `internal/C2_W02_D03_takehome_data_INTERNAL.py`, which
+imports the generator, sets its seed to 20261014, its own quarter totals (Rs 9,61,20,000 and
+Rs 9,23,60,000), 454 Q2 orders and a plan line of Rs 72,40,000 a week, reruns `build_v4`, and adds one
+three-way tie. It loads into its own schema, `takehome`, and leaves the day's warehouse untouched.
+The file was regenerated on 1 October 2026 and is byte-identical to the 29 September file (md5
+0e19d6d71ebac061c1f844993a8d0fe2); every self-check value was recomputed on it the same day.
 
 ```
 python3 content/W02/D3/internal/C2_W02_D03_takehome_data_INTERNAL.py
@@ -49,119 +68,161 @@ psql -d kalpa -f content/W02/D3/data/C2_W02_D03_takehome_STUDENT.sql
 
 ## The plants, and where each is used
 
-Every plant appears by name only in `trainer/` and here.
+Every plant appears by name only in `trainer/` and here. The notebook script keeps a list of the
+planted ids and values (`FORBIDDEN`) and stops the build if any saved output prints one.
 
 | Planted | Where it is used |
 |---|---|
-| The exact Q2 tie at fiftieth in Retail-Plus, C-0242 and C-0185 on Rs 3,350 (warehouse v4) | Round 2, where the room runs the Retail-Plus variant of section 3 of `sql/C2_W02_D03_02_protect_list_STUDENT.sql` and the empty your-turn cell of notebook 02; the escalated case, Part 1; the afternoon debrief, which after the case shows only the four counts the room's own files returned and asks each learner to read the last position in their own file; the released solutions, which carry the count with its reason. The study notes teach the tie rule and its check on the invented list and on Retail-Core, and name no segment as carrying a tie at fiftieth |
-| The natural tie at 48th in Retail-Plus, C-0189 and C-0206 on Rs 3,480, which nobody planted and which makes DENSE_RANK ship 52 | Round 2's boundary read, positions 44 to 54, and the day sheet's plant table |
-| Three Retail-Plus members whose spend fell in each Q2 month, C-0161, C-0171 and C-0175 (warehouse v4) | Round 3, block 5 of `sql/C2_W02_D03_03_falling_spend_STUDENT.sql` and the empty your-turn cell of notebook 03; the escalated case, Part 2; the debrief, inside the nine flagged, with no split by segment |
-| The plan line as a small table, 13 weeks from 6 July at Rs 75,69,230 | Round 3, block 7; the escalated case, Parts 3 and 4, where the plan-first join drops the week of 29 June |
-| The take-home's three-way Retail-Core tie at positions 19 to 21, C-0017, C-0033 and C-0144 on Rs 5,170, added by the builder | The take-home, Part 1, and Thursday's walk-through from the day sheet |
-| The take-home's falling ladder, C-0154, C-0165 and C-0170, which the generator places under the new seed | The take-home's whole-book flag counts, 21, 13 and 6 |
-| The take-home's tie at fiftieth in Retail-Plus, C-0175 and C-0247 on Rs 3,680, which the generator's own tie step places under any seed and the builder's docstring does not mention | Nowhere in the brief; the day sheet names it in case a learner meets it in Part 2 |
+| The exact Q2 tie at fiftieth in Retail-Plus, C-0185 and C-0242 on Rs 3,350, so RANK ships 51, ROW_NUMBER 50, DENSE_RANK 52 and whole ties only 49 | Chapter 3's your-turn, an empty cell in notebook 03 and morning slide S46, where each learner runs Retail-Plus and reads its own count; the escalated case, part 1, whose solution prints Business, Retail-Core and Student and leaves Retail-Plus to the learner's own run; the day sheet's debrief. No STUDENT file, solution included, prints a Retail-Plus count or a total that reveals it (decision 6). |
+| The natural tie at 48th in Retail-Plus, C-0189 and C-0206 on Rs 3,480, which nobody planted and which pushes DENSE_RANK to 52 | The day sheet's plant table, for the trainer reading a learner's boundary rows. |
+| Three Retail-Plus members whose spend fell in each Q2 month, C-0161, C-0171 and C-0175 | Inside chapter 4's 16 and chapter 6's 9, which no STUDENT file splits by segment or lists; the nine are printed only in an empty your-turn cell (block `c6_call_list`); the escalated case, part 2. |
+| The plan line as a small table, 13 weeks from Monday 6 July at Rs 75,69,230 | Chapter 5, where the plan-first join drops the 25 orders of 1 to 5 July; the escalated case, part 4. |
+| The bulk Business order KR-00667 (Rs 1,98,57,600), Monday's plant | Nowhere by name. Business's lists hold every Business buyer, so no file needs the order. |
+| The take-home's three-way Retail-Core tie at places 19 to 21, C-0017, C-0033 and C-0144 on Rs 5,170, added by the builder | The take-home, sections 2 and 3, and the self-check's 20, 21, 22 and 18. |
+| The take-home's falling ladder, C-0154, C-0165 and C-0170, which the generator places under the new seed | The take-home's flag counts, 21, 13 and 6. |
+| The take-home's tie at fiftieth in Retail-Plus, C-0175 and C-0247 on Rs 3,680, from the generator's own tie step | Nowhere in the brief; the day sheet names it in case a learner meets it. |
+
+---
+
+## The build: six chapters
+
+| Deck section | Notebook and `.sql` file | Chapter question | Trap and its exact wrong number |
+|---|---|---|---|
+| Morning, SECTION 1, S7 to S20 | `01_top_fifty` | Which fifty members spent the most in Q2? | The fifty biggest Q2 orders sent as the top fifty members: 50 rows naming 28 members, all Business |
+| Morning, SECTION 2, S21 to S34 | `02_each_segment` | Which fifty members lead each of the four segments? | The whole book numbered once and split by segment: Business 35, Retail-Core 4, Retail-Plus 11, Student 0 |
+| Morning, SECTION 3, S35 to S48 | `03_tie_rule` | When two members spent the same at the line, how many does a list ship, and which rule did the head of Retail-Plus ask for? | DENSE_RANK's Retail-Core top fifty shipped as 52 members, two of them past the line with no tie at it |
+| Morning, SECTION 4, S49 to S61 | `04_falling_spend` | Whose monthly spend fell two months running? | LAG with no PARTITION BY flags 20 members, 4 of them compared with another member's month |
+| Morning, SECTION 5, S62 to S76 | `05_against_plan` | Has Q2 revenue kept pace with the plan line week by week, and where did it stand at mid-quarter? | The plan-first join closes at Rs 9,68,60,180, reported as Rs 15,39,810 short of plan |
+| Afternoon, SECTION 6, S2 to S16 | `06_call_first` | Which listed members does Marketing call first, and does each flag hold up when a member says he was on holiday? | Chapter 4's 16 flags shipped as calls, 7 of them reading a skipped month as last month |
+
+The notebooks are written by `internal/C2_W02_D03_build_notebooks_INTERNAL.py` and executed cold in
+their own folder by `scripts/nb_make.py`; the same script writes the two case twins
+(`ex1_escalated_case`, `ex2_second_case`) and their executed solutions. The decks are built by
+`scripts/build_deck.py` from the markdown in `slides/`.
 
 ---
 
 ## Decisions that depart from a source
 
-1. **Q2 revenue is booked revenue in every status.** Monday's suite defines Q2 at Rs 9,84,00,000 on
-   that basis, and the day starts from Monday's definition. The tie at fiftieth exists only on that
-   definition, so every artifact that shows a number says which definition it uses.
-2. **The day takes the faculty-day shape of the spine, which replaces the row's agenda.** The row's
-   agenda runs 215 minutes as one arc (10, 40, 45, 45, 55 and 20). The spine keeps the morning's
-   180 minutes as the ask and three rounds, and gives the trainer the first 60 minutes of the
-   afternoon for the escalated case with its debrief (45) and the Kahoot with Thursday's ask (15),
-   before the IITGN block's 120. There is no second case and no afternoon interview drill on a
-   faculty day, and the interview questions live in the notebooks, the study notes and the day sheet.
-3. **The traps are the spine's four and the case's one.** The whole-table ranking, LAG without a
-   partition and the skipped month read as a fall were added by the spine; the tie that ships 49 or
-   51 rows is the row's. The plan-first join that drops the week of 29 June is this pack's, and it is
-   the case's trap.
-4. **The running total's fix reads the actual at each plan week's last day.** The plan line starts
-   on Monday 6 July while Q2 starts on Wednesday 1 July, so a plan-first join on date_trunc('week')
-   drops the 25 orders of 1 to 5 July (Rs 15,39,820). The fix accumulates both sides and reads the
-   booked-to-date at week_start + 6, which closes on Rs 9,84,00,000.
-5. **"PostgreSQL Exercises, window functions category, first three" becomes three named pages.**
-   The site has no separate window functions category; its window questions sit in the Aggregation
-   category. The first three there are countmembers, nummembers and fachours4, and the take-home
-   names them with their check dates.
-6. **The take-home builds its sample by rerunning build_v4 under a new seed and new totals.** The
-   generator has no seed flag, so the builder imports it and sets `SEED`, the two quarter totals
-   (Rs 9,61,20,000 and Rs 9,23,60,000) and a Q2 order plan of 454 orders before calling `build_v4`,
-   then sets its own plan line of Rs 72,40,000 a week. The first sample reused the warehouse's Q2
-   total, its 462 Q2 orders and its plan line, so its close matched the class answer to the rupee;
-   the review of 29 September 2026 caught it, and no headline number now matches. It then adds a
-   three-way tie across Retail-Core positions 19 to 21, and takes the added rupees off Q2's last
-   Business order so the quarter still lands on Rs 9,23,60,000.
-7. **The take-home's ask is Marketing's, on Retail-Core, with the head of Retail-Plus's tie rule.**
-   `docs/07_Client_Zero.md` has no head of Retail-Core, so the brief does not invent one.
-8. **No decision workbook ships today.** The standard's volume table does not require one, and the
-   day's decision, the tie rule, moves on the companion page.
-9. **Monday's row says v4 carries exact amount ties in the top ten for today's RANK demonstration.**
-   Neither the order amounts nor the Q2 member totals in v4 tie in the top ten; the tie the row and
-   `docs/07` name for today sits at fiftieth in Retail-Plus, and the pack follows today's row. The
-   mechanism is shown on six invented members instead.
-10. **Kahoot Q5 tests ROW_NUMBER's arbitrary cut at a tie, in place of the row's window-in-WHERE
-    item.** The row's Kahoot plan lists "a window function inside WHERE; why refused and the fix".
-    The requester's brief for this build says that error gets two minutes when it happens and never
-    an exercise item, and the requester outranks the row, so the error stays a two-minute aside in
-    Round 1 and the Kahoot slot tests a list that changes between runs because ROW_NUMBER cut a tie
-    with no tiebreaker. The interview question on the error stays, since it is the row's anchor.
-11. **The study notes run to about 4,400 words of prose.** The standard asks for about 4,000; the
-    count is 5,272 with code, Mermaid and tables, and the twelve full interview answers carry most of
-    the difference.
+1. **Chapter 1's trap is this pack's.** The spine lists four traps for Wednesday and the standard asks
+   one per chapter. Chapter 1 stages the fifty biggest orders sent as the top fifty members (50 rows,
+   28 members), the row's question GROUP BY answers before a window is needed, and Monday's "rows
+   counted as customers" one level up.
+2. **Chapter 3 meets the tie twice.** The spine's "a tie that ships 49 or 51 rows" is the planted
+   Retail-Plus tie, which the room finds in its own run, so the chapter cannot stage it with its
+   number. The chapter shows the four rules on an invented top four (4, 5, 5 and 3), and its trap on
+   real data is DENSE_RANK's 52 in Retail-Core, where nobody ties at the line. The row's "Never cut
+   the tie demonstration" is kept by the your-turn on Retail-Plus.
+3. **Chapter 5's trap moved from the case.** The 29 September build staged the plan-first join in the
+   escalated case. It is chapter 5's trap now, since it is the running total's own wrong number, and
+   the case reuses the fix as a marker.
+4. **Chapter 6 is the protect list Marketing acts on.** The fill names it; the spine's rungs stop at
+   the running total. Its trap is the spine's "a skipped month counted as a fall", met on chapter 4's
+   16 (7 of them across a gap), with the calendar against LAG as its options.
+5. **A second case exists on a faculty day.** The spine's afternoon table says none on a faculty day;
+   the requester's fill moves the second case to the practice lab and the take-home. It asks whether
+   Retail-Core's list should rank by orders, which the row's "Retail-Plus frequency is the problem"
+   raises, and it runs in the take-home, forty minutes in pairs or alone.
+6. **The Retail-Plus count is printed in no STUDENT file, solutions included.** The row says the room
+   meets the tie in its own output. The escalated case's solution prints the other three segments and
+   leaves Retail-Plus to the learner's run, and the day's answer on afternoon S19 says "the count your
+   own run gave". Morning S46, the your-turn, withholds its answer for the same reason, so it carries
+   no Answer slide and is titled as a statement.
+7. **The escalated case climbs past the chapters.** Its five parts reuse the chapters' methods on
+   harder asks: each segment's list with its count, the members rung first, the share of each
+   segment's revenue the lists carry (100, 76.1, the learner's own Retail-Plus share and 100), Q2
+   against plan by total and by weekly run rate, and the lines for Meera and Marketing. Parts 1 and 2
+   run in the trainer's afternoon (20 minutes); parts 3 to 5, its debrief and the interview drill run
+   in the TA-led practice lab.
+8. **The day's afternoon follows the fill.** The trainer keeps 60 minutes: chapter 6 (30), the
+   escalated case's first two parts (20) and the Kahoot (10). The IITGN block W2-3 takes the last 120
+   minutes, tentative, and every STUDENT file that mentions it carries the word tentative.
+9. **The window function in WHERE is a two-minute aside, never an item.** The row's "what the data
+   reveals" and its Kahoot Q5 name the error. The requester's rule says a syntax or runtime error gets
+   two minutes when it happens and never a trap slot, a chapter or an exercise item, and the requester
+   outranks the row. The error lives in chapter 2's aside (block `c2_where_error`) and the [F]
+   interview question stays, since it is the row's anchor. Kahoot Q5 tests ROW_NUMBER's cut at a tie.
+10. **Monday's row says v4 carries exact amount ties in the top ten for today's RANK demonstration.**
+    Neither the order amounts nor the Q2 member totals in v4 tie in the top ten; the tie the row and
+    `docs/07` name for today sits at fiftieth in Retail-Plus, and the pack follows today's row. The
+    mechanism is shown on six invented members.
+11. **Q2 revenue is booked revenue in every status.** Monday's suite defines Q2 at Rs 9,84,00,000 on
+    that basis, and the tie at fiftieth exists only on that definition, so every file that shows a
+    revenue figure says which definition it uses.
+12. **"PostgreSQL Exercises, window functions category, first three" becomes three named pages.** The
+    site has no separate window functions category; its window questions sit in the Aggregation
+    category. The first three there are countmembers, nummembers and fachours4.
+13. **Chapter 4's company is American.** No Indian company's own page on a customer's falling
+    activity could be verified on 1 October 2026: the Medium-hosted engineering blogs of Swiggy,
+    Flipkart, Razorpay and Meesho refused the session, and Airtel's integrated report names churn
+    prediction without a signal read against a customer's own history. Square's "Lapsed" group stands.
+14. **The take-home's ask is Marketing's, on Retail-Core, with the head of Retail-Plus's tie rule.**
+    `docs/07_Client_Zero.md` has no head of Retail-Core, so the brief invents none.
 
 ---
 
 ## Invented, and recorded as invented
 
-1. The six invented members A to F of Round 2 (Rs 7,500, 7,500, 6,000, 5,200, 5,200 and 4,100),
-   which show the three functions side by side, and the invented top four with a tie at fourth
-   (Rs 9,100, 8,800, 8,200, 7,400, 7,400 and 6,900), which shows four rules shipping 4, 5, 5 and 3
-   rows. Both sit in `sql/C2_W02_D03_02_protect_list_STUDENT.sql`, notebook 02 and the deck, labelled
-   invented wherever they appear.
-2. The members on the companion page, `demos/C2_W02_D03_tie_STUDENT.html`, which are invented for the
-   simulator and labelled so on the page.
-3. The take-home's three-way Retail-Core tie, added to the second sample by the builder.
-4. Marketing's escalated-case message in `sql/C2_W02_D03_04_marketing_case_STUDENT.sql` and the
-   take-home's ask, both written in the row's voice for this pack.
-5. The trap values in the quizzes and exercises, which avoid the planted amounts and member ids.
+1. The quotes beyond the row's two: the head of Retail-Plus on C-0216's August (chapter 6), the
+   marketing lead's Monday message (the escalated case) and the frequency ask (the second case), each
+   written in the row's voice for this pack.
+2. The six invented members A to F (Rs 7,500, 7,500, 6,000, 5,200, 5,200 and 4,100), which show the
+   three functions side by side, and the invented top four with a tie at fourth (Rs 9,100, 8,800,
+   8,200, 7,400, 7,400 and 6,900), which ships 4, 5, 5 and 3. Both are labelled invented wherever
+   they appear.
+3. The members on the companion page, `demos/C2_W02_D03_tie_STUDENT.html`, labelled invented there.
+4. The take-home's three-way Retail-Core tie, added to the second sample by the builder.
+5. The members and amounts in Kahoot items 1, 5 and 7, labelled invented in the quiz.
+6. Each chapter's sizing in rows read (1,848, 16,617, 1,504, 6,006 and 1,806) is this pack's
+   arithmetic on the warehouse, shown with its working.
 
 ---
 
-## Sources, with the date each was checked
+## The real company in each chapter
 
-| Link | Role | Checked |
-|---|---|---|
-| https://www.postgresql.org/docs/16/tutorial-window.html | PostgreSQL 16, Tutorial 3.5, Window Functions | verified 29 Sep 2026, returned 200 |
-| https://www.postgresql.org/docs/16/functions-window.html | PostgreSQL 16, 9.22 Window Functions, the list of row_number, rank, dense_rank, lag and lead | verified 29 Sep 2026 |
-| https://www.postgresqltutorial.com/postgresql-window-function/ | postgresqltutorial.com, the window functions page | verified 29 Sep 2026 |
-| https://www.youtube.com/watch?v=Ww71knvhQ-s | techTFQ, "SQL Window Function, How to write SQL Query using RANK, DENSE RANK, LEAD/LAG" | checked 29 Sep 2026 through YouTube's oEmbed endpoint, which returned the title and channel; the watch page refused the automated request, so the running time was not checked |
-| https://pgexercises.com/ | PostgreSQL Exercises; no separate window functions category, the window questions sit in Aggregation | verified 29 Sep 2026 |
-| https://pgexercises.com/questions/aggregates/countmembers.html | The first window question, a total count on every row | verified 29 Sep 2026 |
-| https://pgexercises.com/questions/aggregates/nummembers.html | The second, a numbered list of members | verified 29 Sep 2026 |
-| https://pgexercises.com/questions/aggregates/fachours4.html | The third, the facility with the most slots with every tied result output | verified 29 Sep 2026 |
-| https://sqlbolt.com/ | SQLBolt, for anyone still shaky on joins | verified 29 Sep 2026 |
-| https://www.pgtutorial.com/ | pgtutorial.com, clause syntax cross-checks | verified 29 Sep 2026 |
+Each fact was fetched on 1 October 2026; quotes are copied from the fetched text.
 
-The row carried pgexercises.com, postgresqltutorial.com, pgtutorial.com and sqlbolt.com as verified
-05 Sep 2026; each was re-checked on 29 September 2026 before it entered this pack.
+| Chapter | Fact | Link | Checked |
+|---|---|---|---|
+| 1 | Starbucks Rewards members made 59 percent of money tendered at US company-operated stores in Q3 FY26, and 35.8 million US members were active in the 90 days to 28 June 2026 | https://s203.q4cdn.com/326826266/files/doc_financials/2026/q3/Q3-FY26-Digital-IR-Dashboard.pdf | checked 1 Oct 2026, 200 |
+| 1 | Q3 FY26 is the 13 weeks ended 28 June 2026 | https://www.sec.gov/Archives/edgar/data/829224/000082922426000129/sbux-06282026xearningsrele.htm | checked 1 Oct 2026, 200 |
+| 2 | Amazon's overall Best Sellers Rank "doesn't always indicate how well an item is selling in relation to similar items", so Amazon keeps category and subcategory lists | https://www.amazon.com/gp/help/customer/display.html?nodeId=GGGMZK378RQPATDJ | checked 1 Oct 2026, 200 |
+| 2 | One product can hold a different rank in each category it sits in | https://sell.amazon.com/blog/amazon-best-sellers-rank | checked 1 Oct 2026, 200 |
+| 2 | JEE Advanced 2026 keeps category rank lists beside the common rank list; the OBC-NCL rank 1 held CRL 3 and the GEN-EWS rank 1 held CRL 6 | https://jeeadv.ac.in/documents/Result2026PressRelease.pdf and https://jeeadv.ac.in/documents/IBEnglish_2026.pdf | checked 1 Oct 2026, 200 |
+| 3 | American Airlines ranks upgrade requests by status tier, type of upgrade and Loyalty Points in the last 12 months, then booking code and the time of the request | https://www.aa.com/web/i18n/aadvantage-program/answers-support/upgrades-for-status-members.html | checked 1 Oct 2026, 200 with a Safari user agent |
+| 3 | Tokyo 2020 men's high jump final, 1 August 2021: Barshim and Tamberi placed 1 and 1 on 2.37 m and Nedasekau placed 3, with no silver | https://worldathletics.org/competitions/olympic-games/the-xxxii-olympic-games-athletics-7132391/results/men/high-jump/final/result | checked 1 Oct 2026, 200 |
+| 4 | Square's "Lapsed" group holds "customers who were regulars, but haven't visited in the last six weeks"; a regular visited three times in six months | https://squareup.com/help/us/en/article/6245-manage-customer-groups-and-filters | checked 1 Oct 2026, 200 |
+| 5 | Target cut its Q2 2022 operating margin guidance to around 2 percent on 7 June 2022, from a range centred on Q1's 5.3 percent, and closed the quarter at 1.2 percent | https://corporate.target.com/getmedia/c217afb7-0af0-4956-8179-abfabd71ddd5/Target-Corporation-Announces-Updated-2022-Plan-Focused-on-Inventory-Optimization.pdf, https://www.sec.gov/Archives/edgar/data/27419/000002741922000011/a2022q1ex-99.htm and https://www.sec.gov/Archives/edgar/data/27419/000002741922000023/a2022q2ex-99.htm | checked 1 Oct 2026, 200 |
+| 6 | Shopify Engineering: "Far too often businesses define churn as no purchases after N days" (Cam Davidson-Pilon, 14 November 2017) | https://shopify.engineering/how-shopify-merchants-can-measure-retention | checked 1 Oct 2026, 200 |
+| 6 | Marriott extended elite status earned in 2019 until February 2022 (14 April 2020) | https://www.sec.gov/Archives/edgar/data/1048286/000162828020004943/mar-2020covidx19ex991.htm | checked 1 Oct 2026, 200 |
+| 6 | Hilton extended status to 31 March 2022 for Silver, Gold and Diamond members set to downgrade in 2020 or 2021 (27 October 2020) | https://stories.hilton.com/releases/hilton-honors-adds-flexibility-value-for-members | checked 1 Oct 2026, 200 |
+| 2, 4 | MySQL first shipped window functions in 8.0.2 (17 July 2017), and 8.0.11 (19 April 2018) is the first GA release of 8.0 | https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-2.html and https://dev.mysql.com/blog-archive/whats-new-in-mysql-8-0-generally-available/ | checked 1 Oct 2026 |
+
+Not verified, and so not in any file: a live "Best Sellers Rank" line on an amazon.in product page
+(bot interstitial), the phrase "updated hourly", the World Athletics rule edition in force in August
+2021, Marriott's first announcement of 8 April 2020, and Hilton's first extension of March 2020.
 
 ---
 
-## Tool versions
+## The row's references, with the date each was checked
 
-Every number and output in the pack came from PostgreSQL 16.13, Python 3.11, pandas 3.0.6,
-psycopg2 2.9.13, SQLAlchemy 2.1.1 and nbclient 0.11.0, checked on 29 September 2026. The runtime
-error quoted in the day sheet and the decks, `ERROR:  window functions are not allowed in WHERE`, was
-produced by running the query on PostgreSQL 16.13, which prints two spaces after the colon.
+<!-- LINKS: completed once the reading family's files are final -->
 
-The decks were built with mermaid-cli 12.0.0 in the build container. That version no longer takes
-`-w`, which `scripts/build_deck.py` passes, so every diagram would fall back to monospace text. A
-first build dropped the flag through a PATH shim, which leaves mmdc an 800 pixel page and drew the
-one fence wider than that, the WHERE aside at 936 CSS pixels, at 784. Both decks were then rebuilt
-with the builder fix in its own pull request (the page set with `--size 2600` and useMaxWidth off),
-which draws every fence at its own width, and the rendered slides were checked through LibreOffice
-with Carlito installed. The cheat sheet's diagram renders as SVG, a path that never passes `-w`,
-and its PDF was checked by eye.
+---
+
+## Tools the numbers and outputs came from
+
+PostgreSQL 16.14 for every query and error text; Python 3.11.15, pandas 3.0.6, psycopg2 2.9.13,
+SQLAlchemy 2.1.1, nbformat 5.11.1 and nbclient 0.11.0 for every notebook output; python-pptx 1.0.2
+through `scripts/build_deck.py` for the decks; LibreOffice 24.2.7.2 with Carlito for the render
+check. The first deck builds drew their mermaid with the container's mermaid-cli 12.0.0; the shipped
+decks and the cheat sheet are drawn by mermaid-cli 11.17.0, the major version `setup.sh` pins,
+installed in the session's scratch space on 1 October 2026.
+
+---
+
+## The depth loop
+
+| Pass | Asked | Found | Changed |
+|---|---|---|---|
+| 1. Draft | Is every chapter built from the row, the spine and the fill, in the chapter order? | The spine's five rungs and the fill's sixth became six chapters; each notebook runs need, options with sizing and the call, build with each step predicted, trap, second route and Kavya's review, and each deck section follows it in 13 to 15 slides. | Nothing further. |
