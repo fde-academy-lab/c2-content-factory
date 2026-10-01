@@ -100,6 +100,9 @@ B["newsys_Philadelphia"] = int((newsys.metro == "Philadelphia").sum())
 B["newsys_first_date"] = newsys.created.min()
 B["newsys_last_date"] = newsys.created.max()
 B["switch_metros_last_old_export_date"] = legacy[legacy.metro.isin(SWITCH)].booking_date.max()
+# The caveat check a group can run: does any booking sit in both systems, by id or by patient and date?
+B["ids_in_both_systems"] = len(set(new.booking_id) & set(legacy.booking_id))
+B["patient_and_date_in_both_systems"] = len(new.merge(legacy, on=["patient_id", "booking_date"]))
 
 # ---- The headline: four readings of "test volumes", every one without the employer contract ----
 lines = load("booking_tests")
@@ -462,7 +465,7 @@ BANK = {
     "switch_Q2_old_rows_with_repeats": 1450, "switch_Q3_old_rows_with_repeats": 1099,
     "repeated_pairs_differing_in_both": 1, "text_amount_dollars": 10559, "text_amounts_Q2": 32,
     "text_amounts_Q3": 28, "paid_on_payment_postings": 829181.06, "second_largest_claim": 420,
-    "six_metros_one_at_0_03": 0.17,
+    "six_metros_one_at_0_03": 0.17, "ids_in_both_systems": 0, "patient_and_date_in_both_systems": 0,
 }
 LOOSE = {"six_metros_one_at_0_03": 0.006, "tail_probability": 0.006, "new_york_permutation_p_two_sided": 0.006,
          "tail_probability_per_booking": 0.006, "tail_probability_all_visits": 0.00006}
