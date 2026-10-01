@@ -43,11 +43,11 @@ each system says one row is, and the data team has not checked that the files ke
 | `booking_tests` | The booking systems' line table | One test, one panel, or one test inside a panel, on a booking | 51,456 | The bookings in both booking files |
 | `claims` | The billing system | One claim, the bill for one completed booking | 11,356 | Services dated 1 April to 30 September 2026 |
 | `remittances` | The posting system | One posting: money received, a denial, or money taken back | 11,343 | Postings recorded from 2 April to 16 October 2026 |
-| `appointments` | The patient service centres' visit register | One entry in a centre's visit register | 7,133 | Visits dated 1 July to 30 September 2026, Q3 only |
+| `appointments` | The patient service centres' visit register | One visit a booking brought to a centre: a walk-in, a kept slot or a missed one | 3,685 | Visits dated 1 July to 30 September 2026, Q3 only |
 | `campaign` | Marketing's offer list | One patient sent the free at-home collection offer | 2,381 | Offers sent from 15 July to 4 August 2026 |
 
 Laboratories keep no visit register, so `appointments` covers the twelve patient service centres
-only.
+only, and a collection at home never visits a centre, so it has no row there.
 
 ---
 
@@ -104,7 +104,7 @@ which is not the sum of its tests' prices.
 | `patient_id` | text | The patient, as the register writes the id |
 | `site_code` | text | The site that took the booking |
 | `metro` | text | The site's metro area |
-| `booking_date` | date | The day the booking was made |
+| `booking_date` | date | The day the booking was for: the visit to the site, or the collection at home |
 | `channel` | text | How the patient booked: walking in, online, by phone, or for a collection at home |
 | `status` | text | Whether the booking was completed or cancelled |
 | `updated_at` | date and time | When the row was last changed |
@@ -119,7 +119,7 @@ The new system writes its own ids, its own site codes and its own channel and st
 | `patient` | text | The patient's register number, as the new system writes it |
 | `site` | text | The site, in the new system's codes; the site list's `new_system_code` column carries the same codes |
 | `metro` | text | The site's metro area |
-| `created` | date | The day the booking was made |
+| `created` | date | The day the booking was for |
 | `channel` | text | How the patient booked, in the new system's codes for walking in, online, by phone and a collection at home |
 | `state` | text | Whether the booking was completed or cancelled, in the new system's codes |
 
@@ -183,10 +183,14 @@ a row of its own against the claim it is for.
 | Column | Type | What it carries |
 |---|---|---|
 | `appointment_id` | text | The visit's id in the register |
+| `booking_id` | text | The booking that brought the patient, in whichever booking system holds it |
 | `site_code` | text | The patient service centre |
 | `visit_date` | date | The day of the visit, or of the booked slot |
 | `kind` | text | `scheduled` for a slot booked ahead, `walk-in` for a patient who came without one |
 | `attended` | Y or N | `Y` if the patient was seen, `N` if not |
+
+A patient who missed a booked slot and was rebooked has two rows under the same booking id: the
+missed slot, and the later visit, whose day is the booking's date in the booking system.
 
 ### Whom did marketing send the at-home offer to, and who accepted it?
 
@@ -234,7 +238,7 @@ in one finds its partner in the other is not something the data team has checked
 |---|---|---|
 | A patient | `patients.patient_id` | `bookings_legacy.patient_id`, `bookings_newsys.patient`, `campaign.patient_id` |
 | A site | `sites.site_code`, and `sites.new_system_code` for the new system | `bookings_legacy.site_code`, `appointments.site_code`, and `bookings_newsys.site` |
-| A booking | `bookings_legacy.booking_id` and `bookings_newsys.bkg_ref` | `booking_tests.booking_id`, `claims.booking_id` |
+| A booking | `bookings_legacy.booking_id` and `bookings_newsys.bkg_ref` | `booking_tests.booking_id`, `claims.booking_id`, `appointments.booking_id` |
 | A claim | `claims.claim_id` | `remittances.claim_ref` |
 | A test or panel | `test_catalogue.code` | `booking_tests.test_code`, `booking_tests.panel_code` |
 | A payer | `claims.payer_id` | `remittances.payer_id` |

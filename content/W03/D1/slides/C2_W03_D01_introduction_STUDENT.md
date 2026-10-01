@@ -627,12 +627,12 @@ Transition: the files behind it.
 
 ---
 
-## D23. No-shows reads 7,133 visits at twelve centres
+## D23. No-shows reads 3,685 visits at twelve centres
 *Which files does the no-show question start from, and how big is each?*
 
 ```mermaid
 flowchart LR
-    A["<b>the visit register</b><br/>7,133 Q3 visits"] --> Q["<b>is KH-ATL-03<br/>really worse?</b>"]
+    A["<b>the visit register</b><br/>3,685 Q3 visits"] --> Q["<b>is KH-ATL-03<br/>really worse?</b>"]
     S["<b>the site list</b><br/>18 sites"] --> Q
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef dark fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
