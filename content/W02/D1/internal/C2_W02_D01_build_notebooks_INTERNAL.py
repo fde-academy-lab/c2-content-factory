@@ -630,7 +630,7 @@ print(len(w1_rows), "rows read from last week's extract,", W1_FILE.name)
             sizing = [("A. the two totals", "4 numbers", "a different fall only"),
                       ("B. every leaf, as a change", "20 numbers", "any branch that moved"),
                       ("C. order by order", f"{len(w1_rows)} lookups, {shared_orders} found", "nothing: no shared ids"),
-                      ("D. rerun on an export", "1,340 rows exported", "ruled out by the platform lead")]
+                      ("D. rerun on an export", "1,340 rows exported: 1,000 orders and 340 customers", "ruled out by the platform lead")]
             kit.table(["option", "what it touches here", "what it can catch here"], sizing,
                       caption="The four ways sized on these two sources")
             kit.stats([(str(shared_orders), "order ids shared", f"the extract's {len(w1_rows)} against the book's {len(wh_orders):,}"),
@@ -2039,7 +2039,7 @@ def ch6():
         1. How can a run show that it computed the same thing as last week's?
         2. What fingerprint does this Monday's run leave?
         3. Which five orders will the analyst trace against the ERP?
-        4. Does a sort in Python pick the same five?
+        4. Does a count with no sort confirm the five?
         5. What does the Monday suite tell Anand?
 
         **The metric at stake.** The run itself: the book's fingerprint (row counts, rupees and distinct
@@ -2061,7 +2061,7 @@ def ch6():
         setup_note("06_same_answer"),
         setup("06_same_answer"),
         where(6, ["the options\nfour ways a run proves itself", "the fingerprint\nwhat the book holds",
-                  "the sample\nfive orders to trace", "a second route\nPython's own sort",
+                  "the sample\nfive orders to trace", "a second route\na count with no sort",
                   "the sentence\nwhat Anand hears"]),
         md("""
         ## 1. The options: how can a run show that it computed the same thing as last week's?
@@ -2245,7 +2245,7 @@ def ch6():
         and KR-00547 before and after the reload, Rs 3,900 both times. The analyst now traces the orders
         you traced.
 
-        ## 4. A second route: are they the first five by order id, counted without a sort?
+        ## 4. A second route: does a count with no sort confirm the five?
 
         The first route asked the database to sort and cut. The second route never sorts and never cuts:
         it counts the delivered Q2 app orders whose id sits at or below the last id on a sample. If the
@@ -2388,26 +2388,57 @@ def rows(query):
 print("connected:", kit.sql("select version()")[0]["version"].split(",")[0])
 '''
 
+# The escalated case's own helpers: the reference counts its checks compare against, and the two
+# rolled-back rewrites part 5 runs, kept here so no check cell sits beside a marker spelling its rule.
+ESCALATED_SETUP = CASE_SETUP + r'''
+def kept_outside(filter_sql):
+    """How many orders a filter keeps that were cancelled before they reached the customer, or sent back."""
+    return rows(f"SELECT count(*) AS n FROM orders {filter_sql} AND status IN ('cancelled', 'returned')")[0]["n"]
+
+def under_bar(per_group, bar=30):
+    """The segment-quarters whose customers, counted once each, fall under Kavya's bar."""
+    return {k for k, r in per_group.items() if r["customers"] < bar}
+
+def inside_rewrite(statement, query):
+    """A query's rows inside a rewrite of the book that is rolled back, so the warehouse never changes."""
+    conn = kit.connect()
+    try:
+        kit.sql(statement, conn=conn)
+        return [{k: num(v) for k, v in r.items()} for r in kit.sql(query, conn=conn)]
+    finally:
+        conn.rollback()
+        conn.close()
+
+def after_reload(filter_sql, query):
+    """The query again during the overnight reload, which rewrites two rows with the values they hold."""
+    return inside_rewrite("UPDATE orders SET status = status WHERE order_id IN (SELECT order_id FROM orders "
+                          f"{filter_sql} AND quarter = 'Q2' AND channel = 'web' ORDER BY order_id LIMIT 2)", query)
+
+def after_correction(filter_sql, query):
+    """The query again on a book where one kept order's amount was corrected by Rs 100."""
+    return inside_rewrite("UPDATE orders SET amount = amount + 100 WHERE order_id = "
+                          f"(SELECT min(order_id) FROM orders {filter_sql})", query)
+'''
+
 
 def case():
-    """The escalated case: the Monday suite on Finance's definition, delivered orders only."""
+    """The escalated case: the Monday suite on Finance's definition of revenue."""
     cells = [
         md("""
-        # Does the Monday suite hold on Finance's definition, the orders that were delivered?
+        # Does the Monday suite hold on Finance's definition of revenue?
 
         **Week 2, Monday. The escalated case, alone, in five parts.** Parts 1 and 2 run in the
         afternoon session; parts 3 to 5 run in the practice lab.
 
         > "Finance counts the orders that reached the customer and stayed there. Run me the same suite
-        > on delivered orders, and tell me whether the story changes."
+        > on that definition, and tell me whether the story changes."
         > Anand Iyer, finance controller, Kalpa Retail
 
         **The situation.** The chapters built the Monday suite on booked revenue, every order at its
         amount whatever its status: Rs 10,00,00,000 in Q1 (April to June 2026) and Rs 9,84,00,000 in Q2
         (July to September 2026), 244 then 227 customers who bought, and Retail-Plus carrying the fall
-        with its revenue down 29.4 percent. Finance's definition counts only delivered orders; a
-        cancelled or returned order is not revenue on it. This notebook reruns the suite on that
-        definition. Its numbers are new, so nothing from the chapters can be copied.
+        with its revenue down 29.4 percent. This notebook reruns the suite on Finance's definition. Its
+        numbers are new, so nothing from the chapters can be copied.
 
         **The data.** The Kalpa warehouse, as in the chapters: `orders` (1,000 rows: order id, customer
         id, date, quarter, channel, amount, status) and `customers` (340 rows, one per customer, with
@@ -2429,12 +2460,12 @@ def case():
         **This is the solution.** Every marker is filled with its key and the notebook runs clean from the
         top; the reasons for each key are at the end.
         """),
-        code(CASE_SETUP),
+        code(ESCALATED_SETUP),
         code(r'''
             kit.side_by_side(
-                kit.ladder(["The book on delivered orders", "Each segment's frequency", "The branches and spend per member",
+                kit.ladder(["The book on Finance's definition", "Each segment's frequency", "The branches and spend per member",
                             "The tie-outs", "The run that repeats"], lit=0, show=False),
-                kit.flow(["booked: every status", "delivered: Finance's definition"], kinds=["plain", "lit"], show=False),
+                kit.flow(["booked: every order", "Finance's: reached and stayed"], kinds=["plain", "lit"], show=False),
             )
             '''),
         md("""
@@ -2455,7 +2486,7 @@ def case():
             # TODO 2. Which expression counts the customers who took delivery in a quarter, each once?
             #   a) count(*), since each delivered row belongs to a customer who took delivery
             #   b) count(customer_id), since it counts the customer column rather than the rows
-            #   c) count(DISTINCT customer_id), one per customer id however many rows carry it
+            #   c) count(DISTINCT customer_id), since each customer id stands for one customer
             #   d) sum(1), since adding one per delivered order counts everyone who received one
             CUSTOMERS = {"a": "count(*)", "b": "count(customer_id)", "c": "count(DISTINCT customer_id)",
                          "d": "sum(1)"}[__TODO2__]
@@ -2468,9 +2499,9 @@ def case():
                         title="The delivered book, per quarter")
             '''),
         code(r'''
-            leftover = rows(f"SELECT count(*) AS n FROM orders {FILTER} AND status <> 'delivered'")[0]["n"]
+            leftover = kept_outside(FILTER)
             kit.check("every order the filter keeps reached the customer and stayed there", leftover == 0,
-                      f"{leftover} kept with another status")
+                      f"{leftover} kept that did not")
             kit.check("customers are fewer than orders in each quarter",
                       all(book[q]["customers"] < book[q]["orders"] for q in ("Q1", "Q2")))
             kit.check("no quarter shows more customers than the 340 on the book",
@@ -2522,7 +2553,7 @@ def case():
             '''),
         code(r'''
             # TODO 5. Which clause, after the grouping, lists the segment-quarters Kavya flags as too thin?
-            #   a) HAVING count(DISTINCT o.customer_id) < 30, since the bar is on customers per group
+            #   a) HAVING count(DISTINCT o.customer_id) < 30, since HAVING tests a group once formed
             #   b) HAVING count(*) < 30, since a thin group is one with few orders
             #   c) HAVING count(DISTINCT o.customer_id) <= 30, since a group on exactly 30 is thin too
             #   d) HAVING count(o.customer_id) < 30, since it counts the customer column
@@ -2533,9 +2564,9 @@ def case():
             thin = rows(thin_sql)
             show(thin, "The segment-quarters to flag")
             flagged = {(r["segment"], r["quarter"]) for r in thin}
-            under_bar = {k for k, r in by.items() if r["customers"] < 30}
-            kit.check("the flagged groups are exactly the groups under Kavya's bar", flagged == under_bar,
-                      f"{len(flagged)} flagged against {len(under_bar)} under the bar")
+            bar = under_bar(by)
+            kit.check("the flagged groups are exactly the groups under Kavya's bar", flagged == bar,
+                      f"{len(flagged)} flagged against {len(bar)} under the bar")
             '''),
         md("""
         ## Part 3. Which branch of Retail-Plus's tree moved furthest, and how much less did each member spend?
@@ -2663,11 +2694,11 @@ def case():
         """),
         code(r'''
             # TODO 9. Which ordering makes the five delivered Q2 web orders the same five on every run?
-            #   a) ORDER BY customer_id
+            #   a) ORDER BY random()
             #   b) ORDER BY order_id
             #   c) no ORDER BY, only LIMIT 5
             #   d) ORDER BY quarter
-            ORDERING = {"a": "ORDER BY customer_id", "b": "ORDER BY order_id", "c": "", "d": "ORDER BY quarter"}[__TODO9__]
+            ORDERING = {"a": "ORDER BY random()", "b": "ORDER BY order_id", "c": "", "d": "ORDER BY quarter"}[__TODO9__]
 
             # TODO 10. What should the fingerprint printed beside the delivered suite hold?
             #   a) The delivered book's rows, rupees and distinct customers, three numbers
@@ -2679,42 +2710,23 @@ def case():
                       "d": "count(*) AS rows, max(order_date) AS latest_order"}[__TODO10__]
 
             sample_sql = f"""SELECT order_id, amount FROM orders
-            WHERE quarter = 'Q2' AND channel = 'web' AND status = 'delivered' {ORDERING} LIMIT 5"""
+            {FILTER} AND quarter = 'Q2' AND channel = 'web' {ORDERING} LIMIT 5"""
             first = rows(sample_sql)
-            conn = kit.connect()
-            try:
-                kit.sql("UPDATE orders SET status = status WHERE order_id IN "
-                        "(SELECT order_id FROM orders WHERE quarter = 'Q2' AND channel = 'web' AND status = 'delivered' "
-                        "ORDER BY order_id LIMIT 2)", conn=conn)
-                second = [{k: num(v) for k, v in r.items()} for r in kit.sql(sample_sql, conn=conn)]
-            finally:
-                conn.rollback()
-                conn.close()
-            finger = rows(f"SELECT {FINGER} FROM orders {FILTER}")[0]
-            conn = kit.connect()
-            try:
-                kit.sql("UPDATE orders SET amount = amount + 100 WHERE order_id = "
-                        "(SELECT min(order_id) FROM orders WHERE status = 'delivered')", conn=conn)
-                corrected = [{k: num(v) for k, v in r.items()} for r in kit.sql(f"SELECT {FINGER} FROM orders {FILTER}", conn=conn)][0]
-            finally:
-                conn.rollback()
-                conn.close()
-            column = ORDERING.replace("ORDER BY", "").strip()
-            spread = rows(f"""SELECT count(*) AS candidates, count(DISTINCT {column or "1"}) AS values
-                FROM orders WHERE quarter = 'Q2' AND channel = 'web' AND status = 'delivered'""")[0]
+            second = after_reload(FILTER, sample_sql)
+            finger_sql = f"SELECT {FINGER} FROM orders {FILTER}"
+            finger = rows(finger_sql)[0]
+            corrected = after_correction(FILTER, finger_sql)[0]
             show(first, "The sample on this run", money=("amount",))
             show([finger], "The delivered book's fingerprint", money=("rupees",))
             kit.bars([("this run", sum(r["amount"] for r in first)), ("the rerun after a reload", sum(r["amount"] for r in second))],
                      fmt=kit.rupees, title="The sample's total on two runs")
             '''),
         code(r'''
-            kit.check("the ordering column takes a different value on every candidate",
-                      bool(column) and spread["values"] == spread["candidates"],
-                      f"{spread['values'] if column else 'no'} values over {spread['candidates']} candidates")
-            kit.check("the rerun after a reload draws the same five", [r["order_id"] for r in first] == [r["order_id"] for r in second])
+            kit.check("the rerun after a reload draws the same five", [r["order_id"] for r in first] == [r["order_id"] for r in second],
+                      f"{len({r['order_id'] for r in first} & {r['order_id'] for r in second})} of the five in both runs")
             kit.check("the fingerprint's rows equal the delivered book's orders",
                       finger.get("rows") == book["Q1"]["orders"] + book["Q2"]["orders"])
-            kit.check("the fingerprint moves when one delivered amount is corrected by Rs 100", corrected != finger)
+            kit.check("the fingerprint changes when one order in the book is corrected", corrected != finger)
             '''),
         md("""
         **Post your answer.** Ten letters, in the order of the markers, as one line, and beside them the
@@ -2740,10 +2752,10 @@ def case():
         average; a and c add or average, and b counts distinct amounts, so two members who spent the same
         count once. 8 b: 30 plus 26 less the 20 in both is 36; a counts the 20 twice, c leaves out the 6
         who took delivery only in Q2, and d counts only the Q1 customers who did not come back. 9 b orders
-        on the table's key, which takes a different value on each of the 93 candidates; a orders on the
-        customer id, and the 93 candidates belong to only 76 customers, c is the unordered sample, and d
-        orders on a value every candidate shares. 10 a is the fingerprint; b, c and d stay put when an
-        amount is corrected, since none of them carries the rupees.
+        on the order id, the table's key, so the same five come back after the reload; a draws a new
+        random five on every run, c is the unordered sample, and d sorts on the quarter, which is Q2 for
+        every candidate, so it leaves them as unordered as c. 10 a is the fingerprint; b, c and d stay
+        put when an amount is corrected, since none of them carries the rupees.
         """))
     twin(NB / "C2_W02_D01_ex1_escalated_case_STUDENT.ipynb",
          SOL / "C2_W02_D01_ex1_escalated_case_solution_STUDENT.ipynb", cells, answers)
@@ -2751,6 +2763,15 @@ def case():
 
 
 # ----------------------------------------------------------------------------------- the second case
+# The second case's reference count, kept here so the check under marker 2 does not spell the label.
+SECOND_SETUP = CASE_SETUP + r'''
+def business_orders():
+    """The orders the Business segment's own customers placed, the count the Business side must hold."""
+    return rows("SELECT count(*) AS n FROM orders o JOIN customers c USING (customer_id) "
+                "WHERE c.segment = 'Business'")[0]["n"]
+'''
+
+
 def second():
     """The second case: the same tree by channel, and which channel is losing Kalpa's consumers."""
     cells = [
@@ -2765,10 +2786,10 @@ def second():
 
         **The situation.** Kalpa sells through three channels: its app, its website and its stores.
         Booked revenue, every order at its amount, was Rs 10,00,00,000 in Q1 (April to June 2026) and
-        Rs 9,84,00,000 in Q2 (July to September 2026). Business, the corporate segment, places orders
-        worth lakhs each, while the other three segments, Retail-Core, Retail-Plus and Student, are
-        Kalpa's consumers, whose orders are worth hundreds or a few thousand rupees. Marketing read the
-        channel totals and wants budget moved from the web to the stores.
+        Rs 9,84,00,000 in Q2 (July to September 2026). Business, the corporate segment, buys for
+        companies, and its orders are worth lakhs each; Kalpa's consumers buy for themselves, and their
+        orders are worth hundreds or a few thousand rupees. Marketing read the channel totals and wants
+        budget moved from the web to the stores.
 
         """),
         md("""
@@ -2784,7 +2805,7 @@ def second():
         **This is the solution.** Every marker is filled with its key and the notebook runs clean from the
         top; the reasons for each key are at the end.
         """),
-        code(CASE_SETUP),
+        code(SECOND_SETUP),
         code(r'''
             kit.side_by_side(
                 kit.ladder(["The channel totals", "What makes up each total", "The consumers' tree per channel",
@@ -2835,7 +2856,7 @@ def second():
         businesses, and each is read on its own before the total is.
         """),
         code(r'''
-            # TODO 2. Which label splits each channel's orders into Business and consumer the way Anand's segments do?
+            # TODO 2. Which label keeps every Business order on the Business side, next quarter as well as this one?
             #   a) Business where the customer's segment is Business, consumer for the other three
             #   b) The customer's own segment name, four labels in each channel
             #   c) Business where the order is worth more than Rs 5,00,000, and consumer where it is not
@@ -2856,10 +2877,9 @@ def second():
                 kit.columns(channels, [(q, [biz.get((c, q), 0) / 1e5 for c in channels]) for q in ("Q1", "Q2")],
                             title="Business revenue per channel, Rs lakh: where the large orders went", fmt=lambda v: f"{v:,.0f}")
             kit.check("every order is labelled one of two kinds", len(kinds) == 2, ", ".join(sorted(kinds)))
-            business_orders = rows("SELECT count(*) AS n FROM orders o JOIN customers c USING (customer_id) "
-                                   "WHERE c.segment = 'Business'")[0]["n"]
+            expected = business_orders()
             labelled = sum(r["orders"] for r in split if r["kind"] == "Business")
-            kit.check(f"the Business-labelled orders number {business_orders}", labelled == business_orders,
+            kit.check(f"the Business side holds all {expected} Business orders", labelled == expected,
                       f"{labelled} labelled Business")
             kit.check("the two kinds add back to each channel's total",
                       all(sum(r["revenue"] for r in split if r["channel"] == c and r["quarter"] == q) == t[(c, q)]["revenue"]
@@ -2875,7 +2895,7 @@ def second():
             # TODO 3. Which expression counts each channel's consumers, each once?
             #   a) count(*), since each consumer order row belongs to a consumer
             #   b) sum(1), since adding one per order reaches everyone who bought
-            #   c) count(DISTINCT o.customer_id), one per consumer however many rows
+            #   c) count(DISTINCT o.customer_id), since an id stands for one consumer
             #   d) count(o.customer_id), since it counts the customer column rather than rows
             CUST = {"a": "count(*)", "b": "sum(1)", "c": "count(DISTINCT o.customer_id)",
                     "d": "count(o.customer_id)"}[__TODO3__]
@@ -2939,15 +2959,21 @@ def second():
             REASON = {"a": "consumers", "b": "rupees", "c": "service", "d": "chance"}[__TODO7__]
             '''),
         code(r'''
+            fell = [c for c in channels if change[c] < 0]
+            kit.check("your answer names a channel exactly when some channel's consumer revenue fell",
+                      (WORST is None) == (not fell), f"{len(fell)} of {len(channels)} channels fell")
             kit.check("no channel lost a larger share of its consumer revenue than the one named",
-                      WORST is not None and all(change[WORST] <= v for v in change.values()))
+                      WORST is None or all(change[WORST] <= v for v in change.values()),
+                      f"{WORST or 'none'} named; the largest fall was {min(change.values()):+.1f}%")
             moved = 1 if change["store"] > 0.05 else -1 if change["store"] < -0.05 else 0
             kit.check("the store line reads the store's consumers in the direction they moved",
                       LINE == ("consumers", moved), f"the store's consumer revenue moved {change['store']:+.1f}%")
+            print("Marker 7 asks for a fact the book does not record, why a buyer chose a channel, so no check "
+                  "settles it here; the solution file gives the reason for its key.")
             '''),
         md("""
-        **Post your answer.** Seven letters, in the order of the markers, and one line for Anand that
-        names the channel losing its consumers fastest, with its number.
+        **Post your answer.** Seven letters, in the order of the markers, and the line you would put on
+        Anand's channel sheet about Marketing's request, with the number it rests on.
         """),
         code("kit.check_summary()"),
     ]
@@ -2956,12 +2982,15 @@ def second():
         SOLUTION ONLY
         **Why each key holds.** 1 d gives one line per channel and quarter; a and b lose a dimension, so
         each line merges two quarters or three channels, and c splits every line three ways by status,
-        18 lines. 2 a labels by segment; b keeps four segments, c labels by size and calls the 50
-        Business orders worth Rs 2,09,000 to Rs 4,94,000 consumer orders, so 138 orders carry the
-        Business label instead of 188, and d labels Retail-Plus's 355 orders Business as well. 3 c counts
-        each consumer once; a, b and d count orders. 4 b divides in `numeric`; a and c divide integers
-        and d divides the wrong way round. 5 b: app consumer revenue fell 24.1 percent, against 18.8 for
-        the store and 7.4 for the web; d is what the store total suggests if Business is left in. 6 d
+        18 lines. 2 a labels by the customer's segment, so an order a Business customer places lands on
+        the Business side whatever its size, this quarter and next; b keeps four segments, c labels by
+        size and calls the 50 Business orders worth Rs 2,09,000 to Rs 4,94,000 consumer orders, so 138
+        orders carry the Business label instead of 188, and d labels Retail-Plus's 355 orders Business as
+        well. 3 c counts each consumer once; a, b and d count orders. 4 b divides in `numeric`; a and c
+        divide integers and d divides the wrong way round. 5 b: app consumer revenue fell 24.1 percent,
+        against 18.8 for the store and 7.4 for the web; a is the web, whose total fell furthest on
+        Business orders while its consumers fell least, c is the store, and d says no channel lost
+        consumer revenue when all three did. 6 d
         reads the store's consumers in the direction they moved and names why the total rose; a is
         Marketing's reading of the total, b and c are wrong on the direction. 7 c: only if Business chose
         a channel for that channel's own service would the channel's total say something about the
