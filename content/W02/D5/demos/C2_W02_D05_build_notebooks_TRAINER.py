@@ -191,7 +191,7 @@ kit.bars([("a) PivotTable", 8), ("b) SUMIFS grid", grid), ("b) with a city split
 **The best-fit call: a, the PivotTable, with each leaf computed beside it from the pivot's sums.** The
 first thing a director does in the room is re-slice (by city, by segment), and only the pivot answers
 a question nobody built in advance. Its leaves sit beside it as two ratios of its own sums, so they
-move when it moves. **The fact that would change it:** a director who changes an assumption rather
+move when it moves. **The fact that would change it.** A director who changes an assumption rather
 than a slice. A PivotTable recalculates only when someone presses Refresh, while a SUMIFS grid
 recalculates at once, so the numbers a director's input feeds go in formulas. Chapter 6 builds those.
 '''),
@@ -351,7 +351,7 @@ kit.check("the averaged leaf fails the multiply-back by more than a crore", rebu
 formula beside the pivot or as a calculated field. Microsoft's page on PivotTable calculations says
 "Formulas for calculated fields operate on the sum of the underlying data for any fields in the
 formula" (Microsoft Support, Calculate values in a PivotTable, checked 30 September 2026), which is
-exactly the ratio of sums. **What changed:** Business revenue per order falls from Rs 11,66,786 to
+exactly the ratio of sums. **What changed.** Business revenue per order falls from Rs 11,66,786 to
 Rs 10,45,740, and the tree multiplies back to Rs 19,65,99,040 to the rupee. The consumer segments
 barely move (Retail-Core Rs 1,884 against Rs 1,886, Retail-Plus Rs 2,810 against Rs 2,801), because
 their members' baskets are alike; the averaged leaf is wrong everywhere and badly wrong where
@@ -595,7 +595,7 @@ kit.stats([(crore(hurried.Q1.sum()), "Q1, as the pivot shows it", "the warehouse
             "Retail-Core, Q1 to Q2", "the pivot calls it growing")])
 '''),
         md('''
-**What happened: the plausible wrong answer.** The answer is c. The pivot reads Rs 19,94,36,150 for
+**The plausible wrong answer.** The answer is c. The pivot reads Rs 19,94,36,150 for
 Q1 and Rs 19,46,59,340 for Q2, Rs 39,40,95,490 in all, and says Retail-Core grew 1.0 percent. Nothing
 is red and every row is a real row of the export. The deck would carry Rs 19.47 crore for Q2, nearly
 twice Finance's Rs 9.84 crore, and call Retail-Core the healthy segment the growth plan can leave
@@ -664,7 +664,7 @@ kit.check("Retail-Core falls once each order counts once", once.loc["Retail-Core
           f"{change(once.loc['Retail-Core', 'Q1'], once.loc['Retail-Core', 'Q2']):+.1f}%")'''),
         md('''
 **What happened.** The answer is a. Counted once per order, Q1 is Rs 10,00,00,000 and Q2 is
-Rs 9,84,00,000, down 1.6 percent. **What changed:** the grand total falls by Rs 19,56,95,490 to the
+Rs 9,84,00,000, down 1.6 percent. **What changed.** The grand total falls by Rs 19,56,95,490 to the
 warehouse's figure, and Retail-Core turns from a 1.0 percent rise into a 1.8 percent fall, Rs 3,73,070
 to Rs 3,66,250. Most of the excess was instalment orders, which are the largest invoices; the 50
 gateway copies are small consumer orders worth Rs 37,750.
@@ -886,7 +886,7 @@ kit.matrix(["a) VLOOKUP as typed", "b) VLOOKUP exact", "c) INDEX and MATCH", "d)
 the member asked for, say so when the id is missing, and survive a re-sorted list. Microsoft's page
 says XLOOKUP "is not available in Excel 2016 and Excel 2019" (Microsoft Support, XLOOKUP function,
 checked 30 September 2026), and LibreOffice 24.2 shows #NAME? for it, so a file that travels uses
-INDEX and MATCH. **The fact that would change it:** the Excel version on the chief of staff's laptop.
+INDEX and MATCH. **The fact that would change it.** The Excel version on the chief of staff's laptop.
 Option b is honest and ugly: a director reads #N/A as a broken sheet.
 '''),
         md('''
@@ -960,7 +960,7 @@ kit.flow(["C-0193\\nRs 1,580", f"{got_id}\\n{kit.rupees(got_rev)}", "C-0195\\nno
          title="An approximate match settles on the largest id not above the one asked for")
 '''),
         md('''
-**What happened: the plausible wrong answer.** The answer is c. The sheet returns C-0194's revenue,
+**The plausible wrong answer.** The answer is c. The sheet returns C-0194's revenue,
 Rs 16,740, a member at rank 15 on the protect list, and nothing on the screen is red. Microsoft's page
 says of the fourth argument, `range_lookup`: "If you don't specify anything, the default value will
 always be TRUE or approximate match" (Microsoft Support, VLOOKUP function, checked 30 September 2026),
@@ -969,7 +969,7 @@ Support, Look up values with VLOOKUP, INDEX, or MATCH, checked 30 September 2026
 
 **Why it is wrong.** The chief of staff tells a director that C-0195 is one of Kalpa's best members and
 spent Rs 16,740, and a retention offer goes to someone who placed no order between April and September. Nobody asks why
-the id was missing, because the sheet never said it was. **The check that catches it:** test every
+the id was missing, because the sheet never said it was. **The check that catches it.** Test every
 lookup with an id you know is missing, and print the id returned beside the id asked for.
 '''),
         code('''
@@ -1008,7 +1008,7 @@ kit.check("the exact lookup says when an id is missing", isinstance(find("C-0195
 kit.check("the exact lookup finds a member who is there", find("C-0152") == 25840)
 '''),
         md('''
-**What happened.** The answer is b. **What changed:** C-0195's line moves from "rank 15, Rs 16,740" to
+**What happened.** The answer is b. **What changed.** C-0195's line moves from "rank 15, Rs 16,740" to
 "not in the table", which is the answer that makes somebody check the export. For members who are in
 the table the two lookups agree, which is why a lookup tested only on present ids looks fine.
 
@@ -1192,7 +1192,7 @@ kit.bars([(k, len(v.split())) for k, v in cards.items()], lit=(3,),
 '''),
         md('''
 **The best-fit call: d.** About fifty words and one small line chart, read in the two minutes a
-director gives the front page, and nothing left to memory. **The fact that would change it:** a board that
+director gives the front page, and nothing left to memory. **The fact that would change it.** A board that
 reviews every month against the plan line, where the comparison on the card becomes the plan and not
 the previous quarter.
 '''),
@@ -1217,12 +1217,12 @@ kit.columns(["Q1", "the card, read as Q2", "Q2"], [("revenue", [100_000_000, hal
 kit.check("the card's number is the two quarters added", half_year == int(seg_q["Q1"].sum() + seg_q["Q2"].sum()))
 '''),
         md('''
-**What happened: the plausible wrong answer.** The answer is b. Read against Q1's Rs 10.00 crore, a
+**The plausible wrong answer.** The answer is b. Read against Q1's Rs 10.00 crore, a
 bare Rs 19.84 crore looks like revenue up 98.4 percent in a quarter when it fell 1.6 percent. The number
-is right and its period is missing, so the reader supplies one. **Why it is wrong:** a director carries
+is right and its period is missing, so the reader supplies one. **Why it is wrong.** A director carries
 that growth into the meeting's decisions, and the minutes record a boom that never happened. **The check
 that catches it:** read the card aloud and ask which months, and against what; a card that cannot
-answer is not ready. **The fix:** the period and the comparison on the card itself.
+answer is not ready. **The fix.** The period and the comparison on the card itself.
 '''),
         md('''
 ## 2. What does the card say with its period, comparison and base?
@@ -1273,12 +1273,12 @@ kit.check("the drafted percentage is right on its own base", abs(rp["change"] + 
 kit.check("Retail-Plus is under half a percent of Q2 revenue", rp["share"] < 0.5, f"{rp['share']:.2f} percent")
 '''),
         md('''
-**What happened: the plausible wrong answer.** The answer is b. Read without its base, "down 29.4
+**The plausible wrong answer.** The answer is b. Read without its base, "down 29.4
 percent" sounds like the business collapsing, and the meeting argues about a panic instead of about
 members who order less often. It is 29.4 percent of Rs 5.86 lakh: a fall of Rs 1.72 lakh on a Rs 10.00
 crore quarter, where Retail-Plus is 0.4 percent of revenue. A second slip makes it worse: divide the
-same change by Q2 instead of Q1 and it reads 41.7 percent. **The check:** the rupee base and the share
-beside every percentage, and the change divided by the earlier period. **The fix:** "Retail-Plus, Q2:
+same change by Q2 instead of Q1 and it reads 41.7 percent. **The check that catches it.** The rupee base and the share
+beside every percentage, and the change divided by the earlier period. **The fix.** "Retail-Plus, Q2:
 Rs 4.13 lakh, down 29.4 percent on Q1 (Rs 5.86 lakh); 0.4 percent of company revenue."
 '''),
         md('''
@@ -1521,7 +1521,7 @@ kit.columns(["app", "store", "web"], [("booked", [int(by_channel[c]) for c in ["
             fmt=money, title="By channel, the lookup says every channel collected about 60 percent")
 '''),
         md('''
-**What happened: the plausible wrong answer.** The answer is b. The lookup says Rs 11,83,81,974
+**The plausible wrong answer.** The answer is b. The lookup says Rs 11,83,81,974
 collected against Rs 19,84,00,000 booked, Rs 8.00 crore outstanding, 40.3 percent. Every formula is an
 exact match and every row looks right. On that figure Anand's collections team
 chases Rs 8 crore from accounts that have paid, most of them corporate buyers, and the board pack
@@ -1534,7 +1534,7 @@ reports a cash problem Kalpa does not have.
 payment, and 450 orders sit on two rows: 400 paid in two instalments, whose second payment the lookup
 never reads, and 50 that the gateway posted twice, whose two rows are the same payment. **The check
 that catches it:** count the rows each order has, and read any order with two rows before trusting its
-first. **The fix:** add every payment once. In the sheet that is `=SUMIFS(G:G, A:A, A2)` over the rows
+first. **The fix.** Add every payment once. In the sheet that is `=SUMIFS(G:G, A:A, A2)` over the rows
 left once the gateway's exact copies are gone; in the warehouse it is Tuesday's join, one row per
 payment.
 
@@ -1559,7 +1559,7 @@ kit.check("every payment added once leaves collected within 1 percent of booked"
         md('''
 **What happened.** The answer is b. Every payment added once gives Rs 19,66,45,070 collected,
 Rs 17,54,930 short of booked, 0.9 percent, which is exactly Tuesday's list of orders nobody has paid
-for. **What changed:** Rs 7,82,63,096 of "outstanding" money disappears, the second instalments of 400
+for. **What changed.** Rs 7,82,63,096 of "outstanding" money disappears, the second instalments of 400
 orders, and the 50 gateway copies count once, as the payments they are. The join belongs where Tuesday
 did it, in the warehouse, and a SUMIFS in the sheet is only a check against it.
 '''),
@@ -1833,10 +1833,10 @@ kit.check("SUM under the filter still adds all fifty rows", foot_sum == int(prot
 kit.check("the eleven on screen are a small part of it", on_screen < foot_sum / 4, kit.rupees(on_screen))
 '''),
         md('''
-**What happened: the plausible wrong answer.** The answer is b. The foot still reads Rs 7,14,890, the
-whole list, while the eleven Mumbai members on screen spent Rs 1,56,790. **Why it is wrong:** the head
+**The plausible wrong answer.** The answer is b. The foot still reads Rs 7,14,890, the
+whole list, while the eleven Mumbai members on screen spent Rs 1,56,790. **Why it is wrong.** The head
 of Retail-Plus is told the Mumbai members on the list spent Rs 7.15 lakh, and a Mumbai retention budget
-sized on that is 4.6 times too big. SUM adds every row in its range, hidden or not. **The check that catches it:** count
+sized on that is 4.6 times too big. SUM adds every row in its range, hidden or not. **The check that catches it.** Count
 the rows on screen beside the rows the total adds; if the two differ, the total is adding rows nobody can
 see.
 '''),
@@ -1877,9 +1877,9 @@ kit.check("only SUBTOTAL(109) drops rows hidden by hand",
 '''),
         md('''
 **What happened.** The answer is b. SUM and SUBTOTAL(9) both keep adding Delhi's hand-hidden rows;
-SUBTOTAL(109) drops them, and drops Mumbai's filtered-out rows too. **The fix:** the foot is
+SUBTOTAL(109) drops them, and drops Mumbai's filtered-out rows too. **The fix.** The foot is
 `=SUBTOTAL(109, E2:E51)` with `=SUBTOTAL(103, A2:A51)` beside it, and the list's label says which rows it
-adds. **What changed:** Mumbai's foot moves from Rs 7,14,890 to Rs 1,56,790, and the count beside it reads
+adds. **What changed.** Mumbai's foot moves from Rs 7,14,890 to Rs 1,56,790, and the count beside it reads
 11 of 50. On LibreOffice 24.2.7.2, SUM over three rows with one hidden by hand gave 60 and SUBTOTAL(109)
 gave 40, the same rule.
 '''),
@@ -2085,9 +2085,10 @@ exports.
 EX1_STEPS = [
     ('''## Part 1. Does your tree for both quarters tie to the warehouse to the rupee?
 
-**Where this is used at work:** every tree a director sees has to reproduce the number Finance owns
-before anyone slices it, and its leaves count customers, orders and rupees for each segment and
-quarter.''',
+Used at work on every tree a director sees, which has to reproduce the number Finance owns before anyone
+slices it.
+
+Its leaves count customers, orders and rupees for each segment and quarter.''',
      '''# TODO 1. Which line leaves exactly one row per order?
 #   a) orders = raw.drop_duplicates()
 #   b) orders = raw.drop_duplicates("customer_id")
@@ -2118,9 +2119,11 @@ kit.check("your Retail-Plus customer counts match the warehouse's",
      "TODO 1: a keeps the 400 instalment orders twice, since their two rows differ in paid_amount; b keeps one order per customer; d drops the unpaid orders and keeps every repeat. TODO 2: a and d count rows, so a customer with three orders counts three times; c counts orders."),
     ('''## Part 2. Does your protect list hold the right fifty, and does your lookup say when an id is missing?
 
-**Where this is used at work:** a list a manager acts on, and a lookup a director types into, are read
-aloud in rooms where nobody can see the formula. The list comes from the customer table, one row per
-customer who ordered, since that is the table the chief of staff refreshes.''',
+Used at work wherever a list a manager acts on, or a lookup a director types into, is read aloud in a
+room where nobody can see the formula.
+
+The list comes from the customer table, one row per customer who ordered, since that is the table the
+chief of staff refreshes.''',
      '''plus = table[table["segment"] == "Retail-Plus"]
 
 # TODO 3. Which line gives the fifty Retail-Plus members with the highest revenue?
@@ -2147,7 +2150,8 @@ kit.check("your lookup answers C-0195, who placed no orders, with a sentence and
      "TODO 3: a ranks every segment together, so 39 Business buyers take most of the places; b keeps the fifty lowest; c keeps the first fifty rows in id order, which is no ranking. TODO 4: b is an approximate match, returning the member just below a missing id, which is VLOOKUP with its fourth argument left out; c returns the first member for every id; d answers a missing id with 0, which reads as a member who spent nothing."),
     ('''## Part 3. Does your front-page card carry its period, its comparison and its base, for any scope a director picks?
 
-**Where this is used at work:** the front page is read in two minutes by people who read nothing else.
+Used at work on every front page, read in two minutes by people who read nothing else.
+
 The card's scope (all segments, all except Business, Retail-Plus) is the input a director changes.''',
      '''seg_q = orders.pivot_table(index="segment", columns="quarter", values="order_amount", aggfunc="sum")
 SCOPES = {"All segments": SEGMENTS, "All except Business": ["Retail-Core", "Retail-Plus", "Student"], "Retail-Plus": ["Retail-Plus"]}
@@ -2180,8 +2184,9 @@ kit.check("your shares put all segments at the whole of Q2, and Retail-Plus wher
      "TODO 5: a divides by the current quarter, which reads Retail-Plus at 41.7 percent where it fell 29.4; b is a share of the two quarters together; c is a ratio of about 98 that a card would misprint as a percentage. TODO 6: b shares out the scope's own two quarters; c is the change's share, not the scope's; d is the ratio again."),
     ('''## Part 4. What ships on Monday, and what, if anything, is held?
 
-**Where this is used at work:** a release note says what a stakeholder can rely on and what waits, and
-why. The tree was checked in part 1; the protect list was built from the customer table, a different
+Used at work in every release note, which says what a stakeholder can rely on, what waits, and why.
+
+The tree was checked in part 1; the protect list was built from the customer table, a different
 export.''',
      '''once = raw.drop_duplicates("order_id")
 # TODO 7. Which comparison says whether the list's source table ties?
@@ -2214,7 +2219,8 @@ kit.check("your rule gives the right release on three invented sets of checks", 
      "TODO 7: a, b and d each read True on this table, so the list would ship on a source nobody compared with anything outside it. a counts rows against a number the table itself gave; b compares the list with itself; d compares a half-year with a quarter. TODO 8: a ships every part when two checks pass, whatever sits behind each part; c holds every part when one check fails; d ships everything, which confuses recalculating with being right."),
     ('''## Part 5. Do your numbers agree when reached a second way?
 
-**Where this is used at work:** a number that matters is reached twice, by routes that could disagree.
+Used at work on every number that matters, which is reached twice by routes that could disagree.
+
 Here the warehouse is the second route twice: its own query for the two quarters, and its revenue for the
 list's Mumbai members against the foot a filtered list shows.''',
      '''visible = protect["city"] == "Mumbai"
@@ -2250,8 +2256,10 @@ EX1_KEY = "cbdadacbba"
 EX2_STEPS = [
     ('''## Step 1. What does the card show after the director's figure goes into the cell?
 
-**Where this is used at work:** directors edit sheets in meetings, and the card on the projector is
-what the room acts on. The director types Rs 5,00,000 over Retail-Plus's Q2 cell.''',
+Used at work whenever a director edits a sheet in a meeting while the card on the projector is what the
+room acts on.
+
+The director types Rs 5,00,000 over Retail-Plus's Q2 cell.''',
      '''sheet = orders.groupby(["segment", "quarter"])["order_amount"].sum().unstack()   # the tree, as exported
 export_q1, export_q2 = int(sheet.loc["Retail-Plus", "Q1"]), int(sheet.loc["Retail-Plus", "Q2"])
 typed_q2 = 500000
@@ -2272,8 +2280,9 @@ kit.check("it moved by exactly what the typed figure added, on the Q1 base",
      "b is the card before the edit; the sheet reads the cell, not the export. c measures the typed figure against the export's Q2. d is a ratio of the two Q2 figures, which no card prints."),
     ('''## Step 2. Which comparison catches the edit?
 
-**Where this is used at work:** a check on the Checks tab runs every time the sheet recalculates, and it
-has to stay quiet on a clean sheet and fire on an edited one.''',
+Used at work on every Checks tab, whose checks run every time the sheet recalculates.
+
+A check has to stay quiet on a clean sheet and fire on an edited one.''',
      '''wq = {r["quarter"]: r["revenue"] for r in warehouse("SELECT quarter, sum(amount) AS revenue FROM orders GROUP BY quarter")}
 # TODO 2. Which comparison catches a figure typed into the sheet?
 #   a) drift = lambda s: len(s) - 4
@@ -2291,8 +2300,10 @@ kit.check("your check fires on the edited sheet", drift(edited) != 0, kit.rupees
      "a counts segments, which an edit never changes; b looks at the quarter nobody touched; d is the sheet's own fall from Q1 to Q2, the trend the card reports, so it is never zero on a clean sheet and compares nothing with the warehouse."),
     ('''## Step 3. Which cells does the typed-over check flag?
 
-**Where this is used at work:** on screen a typed figure looks exactly like a formula's result, so the
-check has to look at what each cell holds. The model below has one yellow input, B1, which a director may
+Used at work wherever a typed figure could pass for a formula's result on screen, so the check looks at
+what each cell holds.
+
+The model below has one yellow input, B1, which a director may
 change, and two cells that read the export.''',
      '''import openpyxl
 
@@ -2325,8 +2336,10 @@ kit.check("your rule flags the one cell typed over", flagged(edited_ws) == ["B3"
      "a flags every number, so it flags the yellow input on a sheet nobody has touched; c compares with one saved copy, so it flags the director's honest change to B1; d flags the inputs, which are the cells a director is allowed to change."),
     ('''## Step 4. What does Monday's refresh do to the typed figure?
 
-**Where this is used at work:** every Monday the chief of staff refreshes the sheet from the week's
-export before anyone opens it, and the director's figure is still sitting in Retail-Plus's Q2 cell.''',
+Used at work every Monday, when the chief of staff refreshes the sheet from the week's export before
+anyone opens it.
+
+The director's figure is still sitting in Retail-Plus's Q2 cell.''',
      '''# TODO 4. Which line is Monday's refresh?
 #   a) refreshed = edited.copy()
 #   b) refreshed = edited.fillna(0)
@@ -2341,9 +2354,10 @@ kit.check("the typed figure left no trace after your refresh", int(refreshed.loc
      "a and b keep the typed figure, which is the drift the rule exists to stop; c keeps the edited value wherever the two differ, which is exactly the typed cell."),
     ('''## Step 5. Where does the director's assumption go?
 
-**Where this is used at work:** the director's question is fair: what would the card say if
-Retail-Plus came back to Rs 5,00,000? The answer has to reach the director in the room and leave the
-number Finance signs where it is.''',
+Used at work whenever a director asks a what-if in a review and the file must still match Finance
+afterwards.
+
+The director's question is fair: what would the card say if Retail-Plus came back to Rs 5,00,000?''',
      '''scenario_input = 500000                       # the yellow input cell
 # TODO 5. Which card answers the director and keeps the number Finance signs?
 #   a) card = {"actual": change(export_q1, export_q2), "director's scenario": change(export_q1, scenario_input)}
