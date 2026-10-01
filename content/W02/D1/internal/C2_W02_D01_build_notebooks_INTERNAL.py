@@ -146,6 +146,17 @@ def ch1():
         **Week 2, Monday. Chapter 1 of 6.** The day climbs one case, Anand's Monday numbers straight
         from the warehouse, and this is its first chapter.
 
+        **The case.** The cohort are trainee engineers in the data and AI team at Kalpa's Global
+        Capability Centre, and Kalpa Retail is their internal client. Anand Iyer, its finance
+        controller, signs a Monday sheet of the revenue tree for every segment, and his analyst reruns
+        every query behind it before reading a number. Meera Raghavan, Kalpa Retail's CEO, sets budgets
+        from the sheet. Kavya Nair, the team's senior analyst, reviews each chapter's answer before it
+        leaves the team. The book is Kalpa Retail's record of every order Finance stands behind; it
+        lives in the warehouse, Kalpa's Postgres database, which holds the orders for Q1 (April to June
+        2026) and Q2 (July to September 2026). Booked revenue counts every order at its amount, whatever
+        its status. Last week every number, the books' Rs 1.90 crore for Q1 among them, described the
+        186-order extract the team was handed; from today the book of record is the warehouse.
+
         > "I want these numbers every Monday, for every segment and channel, computed from the
         > warehouse itself. No notebooks, no exports, nothing a person can mistype. Our data team will
         > give you read access to Postgres."
@@ -181,8 +192,8 @@ def ch1():
         losses found that a risk model "operated through a series of Excel spreadsheets, which had to
         be completed manually, by a process of copying and pasting data from one spreadsheet to
         another" (the task force's report of 16 January 2013, page 124). By 30 June 2012 those losses
-        had grown to about $5.8 billion (page 7). A number that a person moves by hand can be moved
-        wrongly, and Anand's rule keeps Kalpa's book away from that.
+        had grown to about $5.8 billion (page 7). Anand's rule takes that copying step out of the
+        Monday sheet.
         """),
         setup_note("01_book"),
         setup("01_book"),
@@ -192,7 +203,7 @@ def ch1():
                   "the customers\nwhich count is a customer",
                   "a second route\nthe raw rows in Python"]),
         md("""
-        ## The options: where could the Monday numbers be computed, and what does each way cost?
+        ## 1. The options: where could the Monday numbers be computed, and what does each way cost?
 
         Three ways a team could put Anand's numbers on the Monday sheet. They differ in what moves each
         Monday, in whether Anand's analyst can rerun exactly what the team ran, and in what
@@ -245,10 +256,9 @@ def ch1():
             kit.check("the query moves one row per quarter", query_rows == 2, f"{query_rows} rows")
             '''),
         md("""
-        ## 1. What does the warehouse hold, and where does each leaf of the tree live?
+        ## 2. What does the warehouse hold, and where does each leaf of the tree live?
 
-        A new source is read before it is used. Last week's file was one table of orders. The
-        warehouse keeps each kind of record in its own table, and a number you cannot trace to a table
+        Last week's file was one table of orders. The warehouse keeps each kind of record in its own table, and a number you cannot trace to a table
         and a column is a number the analyst cannot audit.
 
         **Predict before you run.** How many tables does the warehouse hold?
@@ -282,7 +292,7 @@ def ch1():
         looks up its customer's segment. Every leaf of today's tree comes from `orders`, and the count
         of customers Kalpa holds comes from `customers`.
 
-        ## 2. How many orders and rupees did each quarter book?
+        ## 3. How many orders and rupees did each quarter book?
 
         Week 1's extract said Rs 1,90,00,000 for Q1 and Rs 1,87,00,000 for Q2. The warehouse is the
         whole book of the two quarters, so its totals are the ones Anand's sheet will carry.
@@ -321,7 +331,7 @@ def ch1():
                       f"{q2['revenue_per_order']} x {q2['orders']}")
             '''),
         md("""
-        ## 3. How many customers bought in each quarter?
+        ## 4. How many customers bought in each quarter?
 
         The next leaf is customers, then orders per customer. A hurried analyst asks the table for its
         customers the quickest way:
@@ -353,17 +363,17 @@ def ch1():
         Rs 12 crore on new customers comes back.
 
         **Why it is wrong.** `count(*)` counts rows, and a row of `orders` is an order. The label
-        `AS customers` is a promise the query does not keep, because the database prints whatever name
-        it is given. The answer is c.
+        `AS customers` names the column and changes nothing the query counts, since the database prints
+        whatever name it is given. The answer is c.
 
         **The check that exposes it.** Count the same table three ways, each count named for what it
         counts, and set the customer table's own count beside them.
         """),
         code(r'''
             three = {k: int(v) for k, v in run("c1_three_counts", "One table, counted two ways")[0].items()}
-            members =int(run("c1_members", "The customer table's own count")[0]["members_on_the_book"])
+            members = int(run("c1_members", "The customer table's own count")[0]["customers_on_the_table"])
             kit.bars([("order rows, count(*)", three["order_rows"]),
-                      ("members on the book", members),
+                      ("on the customer table", members),
                       ("customers who bought", three["customers_who_bought"])],
                      title="Three counts, three questions: only one is the tree's customers", lit=(2,))
             '''),
@@ -372,7 +382,7 @@ def ch1():
                       three["order_rows"] != three["customers_who_bought"],
                       f"{three['order_rows']:,} rows, {three['customers_who_bought']} customers")
             kit.check("301 customers bought across the two quarters", three["customers_who_bought"] == 301)
-            kit.check("39 members on the book bought nothing in either quarter",
+            kit.check("39 customers on the customer table bought nothing in either quarter",
                       members - three["customers_who_bought"] == 39, f"{members} less {three['customers_who_bought']}")
             '''),
         md("""
@@ -395,7 +405,7 @@ def ch1():
         and 462. The fix takes 294 customers who do not exist out of Q1 and 235 out of Q2, and orders
         per customer moves from 1.00 to 2.20 in Q1 and 2.04 in Q2: customers do come back, and the
         frequency branch is on the sheet again. The customer table's 340 answers a different question,
-        how many members Kalpa holds, and 39 of them bought nothing in either quarter.
+        how many customers Kalpa holds, and 39 of them bought nothing in either quarter.
         """),
         code(r'''
             kit.check("244 customers bought in Q1 and 227 in Q2",
@@ -406,7 +416,7 @@ def ch1():
                       (hurried["Q1"] - fixed["Q1"]["customers"], hurried["Q2"] - fixed["Q2"]["customers"]) == (294, 235))
             '''),
         md("""
-        ## A second route: do the raw rows, counted in Python, give the same leaves?
+        ## 5. A second route: do the raw rows, counted in Python, give the same leaves?
 
         The second route answers the same three leaves without SQL's `count` and `sum`: it pulls every
         order row into Python and counts with a set of customer ids and a running sum. It is option A
@@ -505,7 +515,7 @@ def ch1():
         view's value and its cost: it protects Anand's number, and it makes the platform team ask
         before changing anything the Monday numbers depend on.
 
-        ## What did this chapter answer?
+        ## So how many orders, rupees and customers did each quarter book?
 
         1. **Where should the Monday numbers be computed?** In a `.sql` file queried every Monday: two
            rows reach the screen where an export copies 1,340, the analyst reruns the same file on the
@@ -532,6 +542,16 @@ def ch2():
 
         **Week 2, Monday. Chapter 2 of 6.** Chapter 1 counted the book's first leaves; this chapter
         sets every leaf beside the ones last week's note was built on.
+
+        **The case.** The cohort are trainee engineers in the data and AI team at Kalpa's Global
+        Capability Centre, and Kalpa Retail is their internal client. Anand Iyer, its finance
+        controller, signs a Monday sheet of the revenue tree for every segment, and his analyst reruns
+        every query behind it before reading a number. Meera Raghavan, Kalpa Retail's CEO, sets budgets
+        from the sheet. Kavya Nair, the team's senior analyst, reviews each chapter's answer before it
+        leaves the team. The book is Kalpa Retail's record of every order Finance stands behind; it
+        lives in the warehouse, Kalpa's Postgres database, which holds the orders for Q1 (April to June
+        2026) and Q2 (July to September 2026). Booked revenue counts every order at its amount, whatever
+        its status. Last week's extract, 186 cleaned orders, is the file Meera's decision rested on.
 
         > "Before your numbers go in my book, show me they match the ones you gave Meera."
         > Anand Iyer, finance controller, Kalpa Retail
@@ -564,8 +584,7 @@ def ch2():
         earlier, when the chief executive asked which city had the most bookings in the previous week,
         "Data Science and Finance would sometimes provide diverging answers using slightly different
         tables, metric definitions, and business logic" (The Airbnb Tech Blog, "How Airbnb achieved
-        metric consistency at scale", 30 April 2021). Two sources that answer one question differently
-        are settled leaf by leaf before either reaches a decision maker.
+        metric consistency at scale", 30 April 2021).
         """),
         setup_note("02_same_story"),
         setup("02_same_story", r'''
@@ -578,7 +597,7 @@ print(len(w1_rows), "rows read from last week's extract,", W1_FILE.name)
                   "every leaf\nas a change", "the customer leaf\nthe one that moved",
                   "a second route\nthe customer bridge", "Anand's sheet\nthe line for Meera"]),
         md("""
-        ## The options: how can two sources of different sizes be compared fairly?
+        ## 1. The options: how can two sources of different sizes be compared fairly?
 
         The extract held 186 orders and the warehouse holds 1,000, so their totals were never going to
         match. Four ways a team could compare them:
@@ -628,7 +647,7 @@ print(len(w1_rows), "rows read from last week's extract,", W1_FILE.name)
             kit.check("the sources share no customer id", shared_customers == 0)
             '''),
         md("""
-        ## 1. Does last week's file still give last week's numbers?
+        ## 2. Does last week's file still give last week's numbers?
 
         Before last week's leaves are compared with anything, they are recomputed from last week's own
         file, so both columns of the comparison come from a computation rather than from memory.
@@ -670,7 +689,7 @@ print(len(w1_rows), "rows read from last week's extract,", W1_FILE.name)
         The file reproduces last week's numbers, so the comparison below starts from what Meera was
         told, recomputed.
 
-        ## 2. Which leaves agree once each is read as a change from Q1 to Q2?
+        ## 3. Which leaves agree once each is read as a change from Q1 to Q2?
 
         The book's own leaves come from one query, and each leaf is read as Q2 over Q1 in both sources.
 
@@ -724,7 +743,7 @@ print(len(w1_rows), "rows read from last week's extract,", W1_FILE.name)
                       f"{gap['orders per customer']:+.1f}")
             '''),
         md("""
-        ## 3. Did the customer leaf agree?
+        ## 4. Did the customer leaf agree?
 
         A hurried analyst stops at the totals: both sources fall 1.6 percent, so "the warehouse
         confirms last week", and Anand's sheet carries last week's branch story unchanged.
@@ -753,8 +772,7 @@ print(len(w1_rows), "rows read from last week's extract,", W1_FILE.name)
 
         **Why it is wrong.** Two trees can multiply to the same total with different branches. The
         extract's revenue ratio is 1.000 for customers times 0.860 for frequency times 1.144 for order
-        value, and the book's is 0.930 times 0.923 times 1.146; both come to 0.984. A matching total is
-        one leaf matching. The answer is b.
+        value, and the book's is 0.930 times 0.923 times 1.146; both come to 0.984. The answer is b.
 
         **The check that exposes it.** Count, in each source, how many customers bought in both
         quarters.
@@ -790,7 +808,7 @@ print(len(w1_rows), "rows read from last week's extract,", W1_FILE.name)
         the extract's 69 customers bought in both quarters, so its customer count could not fall; the
         book holds 131 customers who bought in only one of them.
 
-        ## A second route: where did the book's 17 fewer Q2 customers come from?
+        ## 5. A second route: where did the book's 17 fewer Q2 customers come from?
 
         The first route subtracted two distinct counts, 244 less 227. The second route builds the same
         change from each customer's own history: Q1's customers, less the ones who bought in Q1 and not
@@ -822,7 +840,7 @@ print(len(w1_rows), "rows read from last week's extract,", W1_FILE.name)
         bought in Q2 who had not bought in Q1: 244 less 74 plus 57 is 227, the same number the first
         route reached by subtracting two counts. The net fall of 17 hides 131 customers moving.
 
-        ## 4. What goes on Anand's sheet about last week's note?
+        ## 6. What goes on Anand's sheet about last week's note?
 
         Meera's decision rested on the extract's story: customers held, and each ordered 14.0 percent
         less often. The sheet now carries the book, and it has to say what that means for her.
@@ -845,7 +863,7 @@ print(len(w1_rows), "rows read from last week's extract,", W1_FILE.name)
             kit.table(["what this chapter established", "the evidence"],
                       [("revenue, orders and revenue per order agree with last week", "within half a point each"),
                        ("the customer leaf does not", "flat in the extract, 244 to 227 in the book"),
-                       ("the extract held only two-quarter customers", "69 of 69, against 170 of 301 in the book")],
+                       ("the extract held only customers who bought in both quarters", "69 of 69, against 170 of 301 in the book")],
                       caption="The comparison, in three lines")
             '''),
         md("""
@@ -883,7 +901,7 @@ print(len(w1_rows), "rows read from last week's extract,", W1_FILE.name)
         product: here 1.000 times 0.860 times 1.144 and 0.930 times 0.923 times 1.146 both give 0.984.
         Check every leaf as a change before saying two sources tell the same story.
 
-        ### Depth: what can an extract that holds only two-quarter customers never show?
+        ### Depth: what can an extract of customers who bought in both quarters never show?
 
         A customer who stopped buying after Q1, or started in Q2, has orders in one quarter only. An
         extract drawn from customers present in both quarters leaves every such customer out, so its
@@ -892,7 +910,7 @@ print(len(w1_rows), "rows read from last week's extract,", W1_FILE.name)
         somewhere else, count how many of its customers appear in both windows, and compare it with the
         book before a branch built on customers goes anywhere.
 
-        ## What did this chapter answer?
+        ## So does the warehouse tell the same story as last week's file?
 
         1. **How can two sources of different sizes be compared fairly?** Every leaf as a change from
            Q1 to Q2, since the sources differ five times in size and share no order or customer id.
@@ -922,6 +940,16 @@ def ch3():
 
         **Week 2, Monday. Chapter 3 of 6.** Chapters 1 and 2 answered the tree for the whole book;
         this chapter answers it for each segment.
+
+        **The case.** The cohort are trainee engineers in the data and AI team at Kalpa's Global
+        Capability Centre, and Kalpa Retail is their internal client. Anand Iyer, its finance
+        controller, signs a Monday sheet of the revenue tree for every segment, and his analyst reruns
+        every query behind it before reading a number. Meera Raghavan, Kalpa Retail's CEO, sets budgets
+        from the sheet. Kavya Nair, the team's senior analyst, reviews each chapter's answer before it
+        leaves the team. The book is Kalpa Retail's record of every order Finance stands behind; it
+        lives in the warehouse, Kalpa's Postgres database, which holds the orders for Q1 (April to June
+        2026) and Q2 (July to September 2026). Booked revenue counts every order at its amount, whatever
+        its status.
 
         > "I want these numbers every Monday, for every segment and channel."
         > Anand Iyer, finance controller, Kalpa Retail
@@ -955,8 +983,8 @@ def ch3():
         Rs 31,120 crore in the quarter to 30 June 2026, and in the same letter that food delivery grew
         a little over 20 percent (Rs 10,769 crore), quick commerce 86 percent (Rs 17,132 crore) and
         going-out 60 percent (Rs 3,218 crore) (Eternal, shareholders' letter for Q1 FY27, 22 July 2026).
-        The group's 54 percent is three different stories, and the letter tells each one. Kalpa's 1.6
-        percent is four.
+        Kalpa's 1.6 percent fall is the sum of four segments' changes, and this chapter puts each on its
+        own row.
         """),
         setup_note("03_which_segment"),
         setup("03_which_segment"),
@@ -964,7 +992,7 @@ def ch3():
                   "the thin groups\nHAVING", "orders per customer\nthe division",
                   "a second route\neach customer's own count"]),
         md("""
-        ## The options: one query per segment, one grouped query, or pandas?
+        ## 1. The options: one query per segment, one grouped query, or pandas?
 
         Four ways a team could put every segment's leaves on Anand's sheet. They differ in how many
         queries someone has to keep correct, in the rows each moves, and in what happens the day Kalpa
@@ -1016,7 +1044,7 @@ def ch3():
             kit.check("option A returns one row per quarter", len(one) == 2)
             '''),
         md("""
-        ## 1. How many orders, customers and rupees did each segment book in each quarter?
+        ## 2. How many orders, customers and rupees did each segment book in each quarter?
 
         The first try selects the segment and groups only by the quarter. Postgres refuses it, and the
         refusal is worth two minutes of reading.
@@ -1085,7 +1113,7 @@ def ch3():
                       round(pct(by[("Retail-Plus", "Q1")]["revenue"], by[("Retail-Plus", "Q2")]["revenue"]), 1) == -29.4)
             '''),
         md("""
-        ## 2. Which segment-quarters hold too few customers to quote a rate on?
+        ## 3. Which segment-quarters hold too few customers to quote a rate on?
 
         Kavya's rule from Week 1 holds here: a rate built on fewer than 30 customers moves a long way
         when one customer changes, so it goes on the sheet flagged. The test is on a group, the
@@ -1116,7 +1144,7 @@ def ch3():
             kit.check("both flags are Student", {r["segment"] for r in thin} == {"Student"})
             '''),
         md("""
-        ## 3. How often did each segment's customers order?
+        ## 4. How often did each segment's customers order?
 
         Orders per customer is orders divided by customers, so the quickest query divides the two
         counts it already has:
@@ -1204,7 +1232,7 @@ def ch3():
         branch that fell is Retail-Plus's, as last week's note said, and on the book it fell 22.0
         percent.
 
-        ## A second route: does the average of each customer's own order count agree?
+        ## 5. A second route: does the average of each customer's own order count agree?
 
         The first route divided two counts. The second route never divides counts: it asks the
         warehouse for each customer's own number of orders in each quarter, one row per customer and
@@ -1247,8 +1275,7 @@ def ch3():
         right once it was done in `numeric`.
 
         > **Kavya's review.** Divide in numeric and round on purpose, and keep the counts beside every
-        > ratio, so anyone reading the sheet can multiply it back. A ratio that cannot be multiplied
-        > back to its orders is a number nobody should sign.
+        > ratio, so anyone reading the sheet can multiply it back.
 
         ### In the interview: what do you check when a ratio looks wrong, and what do WHERE and HAVING each do?
 
@@ -1272,10 +1299,9 @@ def ch3():
         A spreadsheet stores every number as a floating-point value, so 140 / 76 gives 1.84 whatever
         you typed. Postgres keeps the type of each value, and an operation on two integers returns an
         integer, which is why `215 / 91` is 2 and `215::numeric / 91` is 2.3626. Other databases differ:
-        some return a decimal from the same division. The habit that survives every database is the
-        same: say the type you want, and multiply the result back.
+        some return a decimal from the same division.
 
-        ## What did this chapter answer?
+        ## So which segment carried the fall, and how often did its customers order?
 
         1. **One query per segment, one grouped query, or pandas?** One `GROUP BY c.segment,
            o.quarter`: one query, eight rows, and a new segment appears by itself.
@@ -1304,6 +1330,18 @@ def ch4():
         **Week 2, Monday. Chapter 4 of 6.** Chapter 3 put each segment's leaves on their own rows;
         this chapter sets Q1 beside Q2 for every branch in one query, and prices the fall per member.
 
+        **The case.** The cohort are trainee engineers in the data and AI team at Kalpa's Global
+        Capability Centre, and Kalpa Retail is their internal client. Anand Iyer, its finance
+        controller, signs a Monday sheet of the revenue tree for every segment, and his analyst reruns
+        every query behind it before reading a number. Meera Raghavan, Kalpa Retail's CEO, sets budgets
+        from the sheet. Kavya Nair, the team's senior analyst, reviews each chapter's answer before it
+        leaves the team. The book is Kalpa Retail's record of every order Finance stands behind; it
+        lives in the warehouse, Kalpa's Postgres database, which holds the orders for Q1 (April to June
+        2026) and Q2 (July to September 2026). Booked revenue counts every order at its amount, whatever
+        its status. Kalpa sells to four segments: Business (corporate buyers), Retail-Core
+        (everyday shoppers), Retail-Plus (the paid membership tier, whose customers are its members)
+        and Student.
+
         > "How much less is each of my members spending, and is it fewer members buying or each one
         > buying less?"
         > The head of Retail-Plus, Kalpa Retail
@@ -1311,7 +1349,7 @@ def ch4():
         **Who needs the answer.** Anand's analyst wants the quarter comparison as one query that reads
         from top to bottom, and the head of Retail-Plus decides how hard to work to keep the tier's
         members. An average that quietly leaves out the members who stopped buying says the tier's
-        spend per member fell 15.5 percent when it fell 29.4, and says Retail-Core and Business members
+        spend per member fell 15.5 percent when it fell 29.4, and says Retail-Core and Business customers
         spent more when they spent less. The tier would get a light touch while it lost nearly a third
         of its spend.
 
@@ -1322,20 +1360,21 @@ def ch4():
         4. Does a member count taken from the customer table give the same change?
 
         **The metric at stake.** Each branch of the tree as a ratio, Q2 over Q1: customers who bought,
-        orders per customer and revenue per order, which multiply to revenue. And spend per member, the
-        rupees a member spent in a quarter, averaged over the tier's members. Revenue is booked
-        revenue; Q1 is April to June 2026 and Q2 is July to September 2026.
+        orders per customer and revenue per order, which multiply to revenue. And spend per member: the
+        rupees a Retail-Plus member spent in a quarter, averaged over the members who bought in either
+        quarter, so Q1 and Q2 are averaged over the same people. Revenue is booked revenue.
 
         **What chapter 3 found.** Retail-Plus lost 75 of the book's 76 fewer orders and 29.4 percent of
         its revenue, from Rs 5,85,770 to Rs 4,13,380, and its members' orders per customer fell from
-        2.36 to 1.84 once the division was done in `numeric`. Business carries most of the rupees and
-        fell 1.4 percent.
+        2.36 to 1.84 once the division was done in `numeric`, Postgres's exact decimal type, which
+        keeps the fraction that a division of two whole numbers drops. Business carries most of the
+        rupees and fell 1.4 percent.
 
         **A real company with the same question.** GitLab's data team publishes the SQL style guide it
         writes to: "Prefer CTEs over sub-queries as CTEs make SQL more readable ...", each CTE should
         "perform a single, logical unit of work", and a calculation should carry "a brief description
-        of what's going on" (GitLab handbook, SQL Style Guide, checked 30 September 2026). A team whose
-        queries are read by other people writes them as named steps. The guide also calls CTEs more
+        of what's going on" (GitLab handbook, SQL Style Guide, checked 30 September 2026). The guide
+        also calls CTEs more
         performant on GitLab's own warehouse; on Postgres the reason to name steps is the reader.
         """),
         setup_note("04_which_branch"),
@@ -1343,7 +1382,7 @@ def ch4():
         where(4, ["the options\nsubquery, CTE or temporary table", "each branch\nQ2 over Q1 per segment",
                   "spend per member\nwho is inside the average", "a second route\nthe tier's own count"]),
         md("""
-        ## The options: nested subqueries, named steps or temporary tables?
+        ## 1. The options: nested subqueries, named steps or temporary tables?
 
         The comparison needs the same leaves computed twice, once per quarter, and then set side by
         side. Three ways to write it:
@@ -1353,6 +1392,9 @@ def ch4():
         | A. Nested subqueries, each quarter inside the main query | From the innermost bracket outwards | None | The one statement |
         | B. CTEs, `WITH book AS (...), q1 AS (...), q2 AS (...)`, each a named step | From the top down, one step at a time, each with its comment | None: Postgres works each step out while the query runs | The one statement |
         | C. Temporary tables, one `CREATE TEMP TABLE` per step | Several statements, run in order | One temporary table per step, for the session | Every statement, in the same session, in order |
+
+        A session is one connection to the warehouse, from the moment it opens until it closes; a
+        notebook's kernel and a VS Code query tab each hold their own.
 
         **Predict before you run.** Option C writes the Q1 leaves into a temporary table. The analyst
         opens a new session and reads it. What happens?
@@ -1398,7 +1440,7 @@ def ch4():
             kit.check("the nested version returns one row per segment", len(nested) == 4)
             '''),
         md("""
-        ## 1. How did customers, frequency and order value move in each segment?
+        ## 2. How did customers, frequency and order value move in each segment?
 
         The CTE version names four steps: `book` looks up each order's segment, `q1` and `q2` compute
         each quarter's leaves per segment, and the last step divides Q2 by Q1 for each branch. The tree
@@ -1438,11 +1480,12 @@ def ch4():
             kit.check("Retail-Plus revenue is 0.706 of Q1", p["revenue_ratio"] == 0.706)
             '''),
         md("""
-        ## 2. How much less did each Retail-Plus member spend?
+        ## 3. How much less did each Retail-Plus member spend?
 
         The head of Retail-Plus asks for one number per quarter: the average member's spend. A hurried
         analyst builds one row per member with a `CASE` per quarter, `sum(CASE WHEN o.quarter = 'Q1'
-        THEN o.amount END)`, and averages each column.
+        THEN o.amount END)`, and averages each column. `CASE WHEN ... THEN ... END` picks a value row by
+        row: here the order's amount when the order falls in Q1.
 
         **Predict before you run.** How does the average member's spend move from Q1 to Q2?
 
@@ -1462,7 +1505,7 @@ def ch4():
             '''),
         md("""
         **The plausible wrong answer.** A Retail-Plus member spent Rs 6,437 in Q1 and Rs 5,439 in Q2,
-        down 15.5 percent, and Retail-Core and Business members each spent more in Q2 than in Q1. The
+        down 15.5 percent, and Retail-Core and Business customers each spent more in Q2 than in Q1. The
         head of Retail-Plus reads a modest dip and plans a light touch, and the sheet says two segments
         grew per member.
 
@@ -1527,15 +1570,16 @@ def ch4():
         to down 1.8, and Business from up 1.4 to down 1.4. Only Student rose, by 33.9 percent, on 24
         members, which chapter 3 flagged as too few for a rate.
 
-        ## A second route: does a member count taken from the customer table give the same change?
+        ## 4. A second route: does a member count taken from the customer table give the same change?
 
         The first route averaged one row per member built from the orders. The second never averages:
         it divides each quarter's Retail-Plus revenue by the tier's members on the customer table,
-        bought or not, counted in a subquery. Its base is 120 members where the first route's was 107,
-        so its levels differ, and if both are fair its change must match.
+        bought or not, counted in a subquery, which gives revenue per tier member. Its base is 120
+        members where the first route's was 107, so its levels differ, and if both are fair its change
+        must match.
 
-        **Predict before you run.** Over the tier's members on the customer table, how does spend per
-        member move?
+        **Predict before you run.** Over the tier's members on the customer table, how does revenue per
+        tier member move?
 
         - a) Down 15.5 percent.
         - b) Down 29.4 percent.
@@ -1545,23 +1589,23 @@ def ch4():
         code(r'''
             tier = {r["quarter"]: {k: num(v) for k, v in r.items()}
                     for r in run("c4_per_member_of_the_tier", "Retail-Plus revenue over every member of the tier",
-                                 money=("revenue", "spend_per_member"))}
+                                 money=("revenue", "revenue_per_tier_member"))}
             kit.line(["Q1", "Q2"],
                      [("over the 107 who bought, Rs 0 said", [fixed["q1_average"], fixed["q2_average"]], "good"),
-                      ("over the tier's 120 members", [tier["Q1"]["spend_per_member"], tier["Q2"]["spend_per_member"]], "lit"),
+                      ("over the tier's 120 members", [tier["Q1"]["revenue_per_tier_member"], tier["Q2"]["revenue_per_tier_member"]], "lit"),
                       ("the hurried average", [hurried["q1_average"], hurried["q2_average"]], "bad")],
                      fmt=lambda v: kit.rupees(v), title="Two fair bases fall together; the hurried average falls half as far")
             '''),
         code(r'''
-            route2 = pct(tier["Q1"]["spend_per_member"], tier["Q2"]["spend_per_member"])
-            kit.check("the tier holds 120 members", tier["Q1"]["members_on_the_book"] == 120)
+            route2 = pct(tier["Q1"]["revenue_per_tier_member"], tier["Q2"]["revenue_per_tier_member"])
+            kit.check("the tier holds 120 members", tier["Q1"]["members_in_the_tier"] == 120)
             kit.check("the second route falls 29.4 percent, as the fixed average does", round(route2, 1) == -29.4, f"{route2:.1f}%")
             kit.check("the product of the branches gives the same fall",
                       round(100 * (p["customers_ratio"] * p["frequency_ratio"] * p["order_value_ratio"] - 1), 1) == -29.4)
             '''),
         md("""
-        **What happened.** The answer is b. Over the tier's 120 members, spend per member went from
-        Rs 4,881 to Rs 3,445, down 29.4 percent: the same change as the fixed average over 107 members,
+        **What happened.** The answer is b. Over the tier's 120 members, revenue per tier member went
+        from Rs 4,881 to Rs 3,445, down 29.4 percent: the same change as the fixed average over 107 members,
         and the same as the product of the three branches. Any fixed group of members gives the same
         change; only an average whose members change between quarters gives a different one.
 
@@ -1590,9 +1634,9 @@ def ch4():
         16 documentation, aggregate functions). A missing value can mean zero, unknown or not
         applicable, and SQL cannot tell which, so the query has to say. For spend, a member who bought
         nothing spent Rs 0. For a rating, a member who gave none has no rating, and an average that
-        skips them is right. The habit is the same: decide what the missing value means, and write it.
+        skips them is right.
 
-        ## What did this chapter answer?
+        ## So which branch moved, and how much less did each Retail-Plus member spend?
 
         1. **Nested subqueries, named steps or temporary tables?** Named steps, CTEs: one statement the
            analyst reads from the top and reruns anywhere; a temporary table disappeared in a new
@@ -1601,8 +1645,8 @@ def ch4():
            revenue per order 1.084, which multiply to 0.706: frequency fell furthest, 22.0 percent.
         3. **How much less did each Retail-Plus member spend?** Rs 5,474 then Rs 3,863 over the same 107
            members, down 29.4 percent; the average that skipped missing quarters said 15.5 percent.
-        4. **Does the customer table's count agree?** Yes: Rs 4,881 then Rs 3,445 over the tier's 120
-           members, down 29.4 percent, the same change.
+        4. **Does the customer table's count agree?** Yes: revenue per tier member went from Rs 4,881 to
+           Rs 3,445 over the tier's 120 members, down 29.4 percent, the same change.
 
         Chapter 5 adds the suite's numbers up the way Anand's analyst will.
         """),
@@ -1618,6 +1662,18 @@ def ch5():
 
         **Week 2, Monday. Chapter 5 of 6.** Chapters 1 to 4 built every number the Monday suite
         reports; this chapter adds them up the way an auditor does, before the auditor does.
+
+        **The case.** The cohort are trainee engineers in the data and AI team at Kalpa's Global
+        Capability Centre, and Kalpa Retail is their internal client. Anand Iyer, its finance
+        controller, signs a Monday sheet of the revenue tree for every segment, and his analyst reruns
+        every query behind it before reading a number. Meera Raghavan, Kalpa Retail's CEO, sets budgets
+        from the sheet. Kavya Nair, the team's senior analyst, reviews each chapter's answer before it
+        leaves the team. The book is Kalpa Retail's record of every order Finance stands behind; it
+        lives in the warehouse, Kalpa's Postgres database, which holds the orders for Q1 (April to June
+        2026) and Q2 (July to September 2026). Booked revenue counts every order at its amount, whatever
+        its status. Kalpa sells to four segments: Business (corporate buyers), Retail-Core
+        (everyday shoppers), Retail-Plus (the paid membership tier, whose customers are its members)
+        and Student.
 
         > "My analyst will add your rows before reading a single query. If they do not add up, the
         > suite does not reach me."
@@ -1656,7 +1712,7 @@ def ch5():
         where(5, ["the options\nfour ways to a half-year column", "the segments\nadded back to the book",
                   "the half-year\ncustomers, added and counted", "a second route\nthe overlap"]),
         md("""
-        ## The options: how should the suite produce its half-year column?
+        ## 1. The options: how should the suite produce its half-year column?
 
         Anand's sheet shows Q1, Q2 and the half-year for every segment. The quarter rows already exist,
         so there is more than one way to reach the half-year:
@@ -1705,7 +1761,7 @@ def ch5():
             kit.check("option B reads every order", order_rows == 1000)
             '''),
         md("""
-        ## 1. Do the segments add back to the book in each quarter?
+        ## 2. Do the segments add back to the book in each quarter?
 
         The first tie-out adds the four segment rows of each quarter and sets the sums beside the book's
         own totals from chapter 1.
@@ -1738,7 +1794,7 @@ def ch5():
         227). Customers add across segments because a customer belongs to one segment, so no customer
         sits in two of the rows being added.
 
-        ## 2. How many Retail-Plus customers bought in the half-year?
+        ## 3. How many Retail-Plus customers bought in the half-year?
 
         A hurried analyst builds the half-year the cheap way, option A: the quarter rows are already in a
         step, so a last step sums each segment's two rows.
@@ -1772,18 +1828,18 @@ def ch5():
         share, such as segments. The answer the query gave was c.
 
         **The check that exposes it.** A count of customers who bought can never exceed the customers
-        who exist. Set the half-year line beside each segment's members on the customer table.
+        who exist. Set the half-year line beside each segment's customers on the customer table.
         """),
         code(r'''
-            members = {r["segment"]: int(r["members_on_the_book"])
-                       for r in run("c5_members", "Members per segment on the customer table")}
+            members = {r["segment"]: int(r["customers_on_the_table"])
+                       for r in run("c5_members", "Customers per segment on the customer table")}
             segs = list(members)
             kit.columns(segs, [("half-year, added", [added[s]["customers"] for s in segs]),
-                               ("members on the book", [members[s] for s in segs])],
-                        title="The added half-year exceeds the members in every segment", lit=(2,))
+                               ("on the customer table", [members[s] for s in segs])],
+                        title="The added half-year exceeds the customer table in every segment", lit=(2,))
             '''),
         code(r'''
-            kit.check("the added count exceeds the members in every segment",
+            kit.check("the added count exceeds the customer table's count in every segment",
                       all(added[s]["customers"] > members[s] for s in segs),
                       ", ".join(f"{s} {added[s]['customers']} of {members[s]}" for s in segs))
             kit.check("Retail-Plus shows 167 customers from a tier of 120", (p["customers"], members["Retail-Plus"]) == (167, 120))
@@ -1797,7 +1853,7 @@ def ch5():
         code(r'''
             half = {r["segment"]: {k: num(v) for k, v in r.items()}
                     for r in run("c5_half_year", "The fix: the half-year counted from the orders", money=("revenue",))}
-            kit.table(["segment", "added", "counted", "counted twice", "members on the book"],
+            kit.table(["segment", "added", "counted", "counted twice", "on the customer table"],
                       [(s, added[s]["customers"], half[s]["customers"], added[s]["customers"] - half[s]["customers"], members[s])
                        for s in segs], caption="What the fix changed, segment by segment")
             hp = half["Retail-Plus"]
@@ -1811,13 +1867,13 @@ def ch5():
             kit.check("every counted half-year fits inside its members", all(half[s]["customers"] <= members[s] for s in segs))
             '''),
         md("""
-        **What happened.** Retail-Plus had 107 customers in the half-year, not 167: 60 customers were
-        counted twice. The book had 301, not 471, the same 301 that chapter 1 counted over both quarters.
-        Revenue per Retail-Plus customer over the half-year is Rs 9,338, not Rs 5,983. And 13 of the
-        tier's 120 members bought nothing in either quarter, which the added line could never have
-        shown.
+        **What happened.** Counted from the orders, Retail-Plus had 107 customers in the half-year
+        where the added line said 167, because 60 customers sat in both quarter rows. The book had 301,
+        the same 301 that chapter 1 counted over both quarters, and revenue per Retail-Plus customer
+        over the half-year was Rs 9,338. And 13 of the tier's 120 members bought nothing in either
+        quarter, which the added line could never have shown.
 
-        ## A second route: does the overlap between the two quarters explain the gap?
+        ## 4. A second route: does the overlap between the two quarters explain the gap?
 
         The fix counted the half-year directly. The second route builds it from the quarters and the
         overlap: customers in Q1, plus customers in Q2, less the customers who bought in both, since
@@ -1887,7 +1943,7 @@ def ch5():
                       all(half_rows[s] == half[s]["customers"] for s in segs))
             '''),
         md("""
-        ## What did this chapter answer?
+        ## So does the suite add up the way the analyst will add it?
 
         1. **How should the suite produce its half-year column?** Counted from the orders with the
            quarters' own definition, option B; `GROUPING SETS` returns every window in one query when
@@ -1915,6 +1971,18 @@ def ch6():
 
         **Week 2, Monday. Chapter 6 of 6.** Chapters 1 to 5 built the Monday suite and made it add up;
         this chapter makes it repeat.
+
+        **The case.** The cohort are trainee engineers in the data and AI team at Kalpa's Global
+        Capability Centre, and Kalpa Retail is their internal client. Anand Iyer, its finance
+        controller, signs a Monday sheet of the revenue tree for every segment, and his analyst reruns
+        every query behind it before reading a number. Meera Raghavan, Kalpa Retail's CEO, sets budgets
+        from the sheet. Kavya Nair, the team's senior analyst, reviews each chapter's answer before it
+        leaves the team. The book is Kalpa Retail's record of every order Finance stands behind; it
+        lives in the warehouse, Kalpa's Postgres database, which holds the orders for Q1 (April to June
+        2026) and Q2 (July to September 2026). Booked revenue counts every order at its amount, whatever
+        its status. Kalpa sells to four segments: Business (corporate buyers), Retail-Core
+        (everyday shoppers), Retail-Plus (the paid membership tier, whose customers are its members)
+        and Student.
 
         > "Every Monday I rerun your suite and trace five delivered app orders against the ERP. If my
         > rerun differs from yours, I need to know whether the book changed or your query did."
@@ -1946,8 +2014,7 @@ def ch6():
         checked against the runs before it on measures such as its row count and its count of missing
         values, and published only when the checks set to fail the job pass, while a check set to warn
         raises an alert (Michelle Ufford, "Whoops, The Numbers Are Wrong! Scaling Data Quality @
-        Netflix", DataWorks Summit, San Jose, 13 June 2017). A number that is published every week
-        checks itself against last week before anyone reads it.
+        Netflix", DataWorks Summit, San Jose, 13 June 2017).
         """),
         setup_note("06_same_answer"),
         setup("06_same_answer"),
@@ -1955,7 +2022,7 @@ def ch6():
                   "the sample\nfive orders to trace", "a second route\nPython's own sort",
                   "the sentence\nwhat Anand hears"]),
         md("""
-        ## The options: how can a run show that it computed the same thing as last week's?
+        ## 1. The options: how can a run show that it computed the same thing as last week's?
 
         Next Monday the analyst reruns the suite. Four ways a team could make a difference between the
         two runs explain itself:
@@ -2007,7 +2074,7 @@ def ch6():
                       (orders_fp["rows"], num(orders_fp["rupees"]), orders_fp["distinct_customers"]) == (1000, 198400000, 301))
             '''),
         md("""
-        ## 1. What fingerprint does this Monday's run leave?
+        ## 2. What fingerprint does this Monday's run leave?
 
         The fingerprint reads each table once: its rows, its rupees, its distinct customers and its
         latest date. Printed at the top of each Monday's run, it is the first thing the analyst compares.
@@ -2050,7 +2117,7 @@ def ch6():
         book holds the same 1,000 orders, the same Rs 19,84,00,000 and the same 301 customers. Whatever
         differs between the two runs after this reload cannot be the book.
 
-        ## 2. Which five orders will the analyst trace against the ERP?
+        ## 3. Which five orders will the analyst trace against the ERP?
 
         The analyst traces five delivered Q2 app orders. The quickest query asks for five:
 
@@ -2129,7 +2196,7 @@ def ch6():
         and KR-00547 before and after the reload, Rs 3,900 both times. The analyst now traces the orders
         you traced.
 
-        ## A second route: does a sort in Python pick the same five?
+        ## 4. A second route: does a sort in Python pick the same five?
 
         The first route asked the database to sort and cut. The second route asks it for every
         delivered Q2 app order, in whatever order it reaches them, and sorts them in Python before
@@ -2166,7 +2233,7 @@ def ch6():
         and the marker at their average, Rs 780; the other 14 are Business orders worth lakhs, off this
         scale.
 
-        ## 3. What does the Monday suite tell Anand?
+        ## 5. What does the Monday suite tell Anand?
 
         The day's answer is one message, with its evidence and its caveat, that Anand can forward
         without rewriting.
@@ -2190,14 +2257,15 @@ def ch6():
         **The sentence to Anand.** "Anand, the Monday suite now runs on the warehouse itself. Booked
         revenue fell 1.6 percent, from Rs 10.00 crore to Rs 9.84 crore, and Retail-Plus carries the fall
         in orders: its revenue is down 29.4 percent because 16.5 percent fewer members bought and each
-        ordered 22.0 percent less often. Every count says what it counts, every ratio multiplies back,
-        and each run prints the book's fingerprint, so a rerun on the same book gives the same answer.
+        ordered 22.0 percent less often. The counts are named for what they count and printed beside
+        every ratio, and each run prints the book's fingerprint, so a rerun on the same book gives the
+        same answer.
         One caveat: last week's extract showed customers flat, and the full book shows 7.0 percent fewer
         customers in Q2."
 
-        > **Kavya's review.** A run that cannot be repeated cannot be audited. Order every list on a
-        > column no two rows share, and print the book's fingerprint beside the numbers, so a difference
-        > next Monday says whether the book moved or the query did.
+        > **Kavya's review.** Order every list on a column no two rows share, and print the book's
+        > fingerprint beside the numbers, so a difference next Monday says whether the book moved or
+        > the query did.
 
         ### In the interview: what does LIMIT without ORDER BY return, and what do you suspect when a number moves overnight?
 
@@ -2222,7 +2290,7 @@ def ch6():
         a number built on it. Kalpa's warehouse holds no missing value in any column today, which is
         exactly what the fingerprint would prove each Monday.
 
-        ## What did this chapter answer?
+        ## So will next Monday's run give the analyst the same answer?
 
         1. **How can a run show it computed the same thing?** A fingerprint block that runs with the
            suite and prints seven numbers about the book, with an `ORDER BY` on a unique column in every
@@ -2500,8 +2568,8 @@ def case():
             members = {r["segment"]: r["members"] for r in rows(
                 "SELECT segment, count(*) AS members FROM customers GROUP BY segment ORDER BY segment")}
             kit.columns(sorted(half), [("half-year customers", [half[s] for s in sorted(half)]),
-                                       ("members on the book", [members[s] for s in sorted(half)])],
-                        title="The half-year beside the members each segment holds")
+                                       ("on the customer table", [members[s] for s in sorted(half)])],
+                        title="The half-year beside the customers each segment holds")
             '''),
         code(r'''
             both = {r["segment"]: r["both"] for r in rows(f"""
@@ -2515,8 +2583,9 @@ def case():
         md("""
         ## Part 5. Will the analyst's rerun draw the same sample, and what does the run print beside it?
 
-        Where this is used at work: an audit sample that cannot be drawn twice cannot be audited, and a
-        fingerprint is what tells a changed book from a changed query.
+        Where this is used at work: whenever an auditor traces a sample of orders and reruns the query
+        the next week, the sample has to come back the same, and the fingerprint tells a changed book
+        from a changed query.
         """),
         code(r'''
             # TODO 9. Which ordering makes the five delivered Q2 web orders the same five on every run?

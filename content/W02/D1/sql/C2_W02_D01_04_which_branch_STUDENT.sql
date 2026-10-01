@@ -9,7 +9,7 @@
 -- is looked up from the customer with JOIN customers USING (customer_id); joins are Tuesday's topic.
 
 -- name: c4_nested
--- Option 1, nested subqueries: the Q1 and Q2 leaves per segment, read from the inside out.
+-- Option A, nested subqueries: the Q1 and Q2 leaves per segment, read from the inside out.
 SELECT q1.segment,
        q1.customers AS q1_customers, q2.customers AS q2_customers,
        q1.orders    AS q1_orders,    q2.orders    AS q2_orders,
@@ -28,7 +28,7 @@ JOIN   (SELECT c.segment, count(DISTINCT o.customer_id) AS customers,
 ORDER  BY q1.segment;
 
 -- name: c4_branches
--- Option 2, named steps: the same comparison as three CTEs, read from the top down.
+-- Option B, named steps: four steps, three CTEs and the final SELECT, read from the top down.
 WITH book AS (      -- step 1: each order with its customer's segment
     SELECT o.order_id, o.customer_id, o.quarter, o.amount, c.segment
     FROM   orders o
@@ -59,7 +59,7 @@ JOIN   q2 USING (segment)
 ORDER  BY segment;
 
 -- name: c4_temp_step
--- Option 3, a temporary table: the Q1 leaves written into a table that lives only for this session.
+-- Option C, a temporary table: the Q1 leaves written into a table that lives only for this session.
 CREATE TEMP TABLE q1_leaves AS
 SELECT c.segment, count(DISTINCT o.customer_id) AS customers,
        count(*) AS orders, sum(o.amount) AS revenue
@@ -140,7 +140,7 @@ WITH member_spend AS (
     GROUP  BY c.segment, o.customer_id
 )
 SELECT segment,
-       count(*)                          AS members,
+       count(*)                          AS customers,
        round(avg(q1_spend))              AS q1_skipping,
        round(avg(q2_spend))              AS q2_skipping,
        round(avg(coalesce(q1_spend, 0))) AS q1_with_zero,
@@ -150,13 +150,13 @@ GROUP  BY segment
 ORDER  BY segment;
 
 -- name: c4_per_member_of_the_tier
--- The second route: Retail-Plus revenue in each quarter over every member on the tier's book,
--- bought or not. The count of members comes from the customer table, in a subquery.
+-- The second route, revenue per tier member: Retail-Plus revenue in each quarter over every member
+-- of the tier on the customer table, bought or not. The count comes from the customer table, in a subquery.
 SELECT o.quarter,
        sum(o.amount)                                                     AS revenue,
-       (SELECT count(*) FROM customers WHERE segment = 'Retail-Plus')    AS members_on_the_book,
+       (SELECT count(*) FROM customers WHERE segment = 'Retail-Plus')    AS members_in_the_tier,
        round(sum(o.amount)
-             / (SELECT count(*) FROM customers WHERE segment = 'Retail-Plus')) AS spend_per_member
+             / (SELECT count(*) FROM customers WHERE segment = 'Retail-Plus')) AS revenue_per_tier_member
 FROM   orders o
 JOIN   customers c USING (customer_id)
 WHERE  c.segment = 'Retail-Plus'

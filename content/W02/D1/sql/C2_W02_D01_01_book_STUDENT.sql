@@ -60,7 +60,7 @@ FROM   orders;
 
 -- name: c1_members
 -- The question: how many customers does Kalpa hold on its customer table, bought or not?
-SELECT count(*) AS members_on_the_book
+SELECT count(*) AS customers_on_the_table
 FROM   customers;
 
 -- name: c1_customers

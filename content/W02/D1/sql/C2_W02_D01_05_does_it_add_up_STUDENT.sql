@@ -65,8 +65,8 @@ GROUP  BY segment
 ORDER  BY segment;
 
 -- name: c5_members
--- The check: how many members does each segment hold on the customer table, bought or not?
-SELECT segment, count(*) AS members_on_the_book
+-- The check: how many customers does each segment hold on the customer table, bought or not?
+SELECT segment, count(*) AS customers_on_the_table
 FROM   customers
 GROUP  BY segment
 ORDER  BY segment;

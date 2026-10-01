@@ -10,7 +10,7 @@
 -- Q1 is April to June 2026 and Q2 is July to September 2026. Revenue is booked revenue.
 
 -- name: c3_one_segment
--- Option 1, one query per segment: the Retail-Plus leaves for each quarter.
+-- Option A, one query per segment: the Retail-Plus leaves for each quarter.
 SELECT o.quarter,
        count(*)                      AS orders,
        count(DISTINCT o.customer_id) AS customers,
