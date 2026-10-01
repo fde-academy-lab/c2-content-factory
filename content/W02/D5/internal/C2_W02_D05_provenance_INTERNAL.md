@@ -83,6 +83,8 @@ the escalated case were looked at and draw every dot at its value.
 | A regional team's sheet, including C-0888, a Chennai filter, Rs 4.10 crore against Rs 2.05 crore and a segment from Rs 4.00 lakh to Rs 3.20 lakh | The practice lab, problem 4 |
 | The app-channel export of the recovery drill (13 rows, 10 orders) | The extras' recovery |
 | The director's Rs 5,00,000 | The second case, as the director's stated assumption |
+| A three-cell model of the tree's Retail-Plus row with a yellow input B1, changed honestly from Rs 5,00,000 to Rs 4,50,000 | The second case, step 3, to test the typed-over rule |
+| Three sets of checks (tree, source and lookup passing or failing) with the release each should give | The escalated case, part 4's check on the learner's release rule |
 | Eight experiment cards on invented records: A, three orders worth Rs 7,000 on five payment rows; B, three corporate buyers worth Rs 30,00,000 on 12 orders; C, members C-0401 to C-0409 with C-0405 missing; D, a segment falling from Rs 500 to Rs 400; E, three orders booked at Rs 10,000, Rs 20,000 and Rs 6,000; F, eight members worth Rs 60,000, three of them in Mumbai worth Rs 25,500 (C-0501 to C-0508); G, five records worth Rs 11,000 against a control total; H, a two-cell sheet of Rs 500 and Rs 400 | The companion page, each card labelled invented |
 | Members C-0401 to C-0409 (C-0405 returning C-0404 under an approximate match), members C-0501 to C-0508 under a Mumbai filter, nine payment rows for six orders, and a collected column that takes the first payment only | The decision tool's Lookup, Director, Quarters and Rule tabs, each labelled invented; its Tree tab reads the real Business rows and its Card tab Retail-Plus's real quarters |
 
