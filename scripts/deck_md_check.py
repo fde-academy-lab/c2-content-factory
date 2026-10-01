@@ -29,7 +29,8 @@ belongs: what to ask the room, what to hold back, what to cut.
 
 A question slide is a heading ending in a question mark, a heading beginning `Question`, or a body
 holding a line that starts `**Question.**`. Its answer slide's heading, once the number is
-stripped, starts with `Answer`.
+stripped, starts with `Answer`. A SECTION opener is exempt: it asks its chapter's question, and
+the whole chapter is the answer, closing on it, so the slide after the opener is the chapter's map.
 """
 import pathlib
 import re
@@ -153,7 +154,7 @@ def check_deck(path):
 
         is_question = (bare.rstrip().endswith("?") or QUESTION_BODY.search(joined)
                        or re.match(r"^Question\b", bare, re.I))
-        if is_question:
+        if is_question and not section:
             nxt = STRIP_NUM.sub("", titles[n]) if n < len(titles) else ""
             if not nxt.lower().startswith("answer"):
                 print(f"FAIL  {path.name} slide {n}: '{bare[:44]}' asks a question and the next "

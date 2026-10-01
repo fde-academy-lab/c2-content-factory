@@ -1,59 +1,66 @@
-# Solution: does one channel change the recommendation?
+# Which answers show whether the channel view changes the branch Meera opens first?
 
 Answers: 11c 12a 13d 14b 15a 16b
+
+Meera Raghavan, Kalpa Retail's CEO, asked where revenue comes from by customer type and channel, and
+the store team says it carries the business. The file is Kalpa's 30 orders from 1 July to 26 September
+2026, each with a channel, a segment and a status: delivered, returned after delivery or cancelled
+before it left the shelf. The chapters found 23 customers at 1.30 orders each and chose frequency
+first, and the consumer view keeps the three consumer segments her plan concerns, Rs 64,810 booked.
 
 The executed notebook beside this file,
 `exercises/solutions/C2_W01_D01_ex2_second_case_solution_STUDENT.ipynb`, computes every number here
 from the 30 orders.
 
-## The idea being tested
+## What does the case test about revenue by channel and customer type?
 
-"Store brings 91.6 percent of revenue" is true on booked rupees and misleading as a basis for a
-plan, because one order carries it: the order your round 3 sort put at the top is a store order.
-The check is the count of orders behind each share, then the share recomputed on the other 29
-orders, then each channel split by status. On those 29 orders, Rs 64,810 in all, store holds
-Rs 18,920, 29 percent, and 4 of its 9 orders were cancelled. Web leads on booked rupees with
-Rs 27,290, and half its orders came back: 5 returned, Rs 14,970. App is clean, 10 of 10 delivered,
-Rs 18,600. The branch recommendation, frequency first, stands, and the channel view adds two leaks
-to name in the note: web returns and store cancellations.
+"Store brings 91.6 percent of revenue" is true of booked rupees, Rs 4,98,920 of Rs 5,44,810, and
+misleading as the basis for a plan. The check is the count of orders behind each share, then the
+share restated on the customers the plan concerns, then each channel split by status. Once the view
+keeps the three consumer segments Meera's plan concerns, Retail-Core, Retail-Plus and Student, store's
+share falls from 91.6 to 29.2 percent, Rs 18,920 of Rs 64,810, so store's headline share came from
+outside those segments. Web leads the consumer view with Rs 27,290, 42.1 percent, and more than half
+of it came back: Rs 14,970 returned against Rs 12,320 delivered. App holds Rs 18,600, 28.7 percent,
+all of it delivered. Store's Rs 18,920 splits into Rs 9,050 cancelled and Rs 9,870 delivered. The
+branch, frequency first, stands, and the channel view adds two leaks to name in the note: web returns
+and store cancellations.
 
-## Item by item
+## Why is each key right, and why does each other option fail?
 
-| Item | Key | Why it holds | Why the others fail |
-|---|---|---|---|
-| 11 | c | Store's 91.6 percent is mostly one order, so its share describes that order and says little about store's customers. | a moves the share the wrong way for the wrong reason; delivered orders make it about 94 percent, which is the same order again. b swaps rupees for orders without saying so. d accepts a total the morning taught you to question. |
-| 12 | a | Store's other 9 orders total Rs 18,920, and Rs 18,920 over Rs 64,810 is 29 percent. | b keeps the order the question set aside. c divides delivered rupees by booked rupees, two definitions in one ratio. d is a share of orders, and the question asked for revenue. |
-| 13 | d | Web's 10 orders split 5 delivered, Rs 12,320, and 5 returned, Rs 14,970, so more than half of its booked rupees came back. | a: web delivered only Rs 12,320, less than app's Rs 18,600. b: web had no cancelled orders. c: half of web's orders were returned. |
-| 14 | b | Store's 9 orders on this base split 4 cancelled, Rs 9,050, and 5 delivered, Rs 9,870. | a: 4 were cancelled. c: store had no returns; the returns sit on web. d: 5 of the 9 were delivered. |
-| 15 | a | The branch question was answered by customers and frequency, and no channel number changes those; the channel view adds two leaks the note should name. | b is the trap, a share carried by one order. c reads web's booked lead without its returns. d throws away two findings Meera can act on. |
-| 16 | b | The 10 Retail-Plus orders carry 8 distinct ids, and one of those customers also bought as Retail-Core, since segment is recorded on the order. | a counts orders as customers, round 2's trap on a new split. c is every customer in the file. d divides revenue by a typical order, which estimates orders, and then calls them customers. |
+| Item | Key | The question in one line | Why the key holds | Why each other option fails |
+|---|---|---|---|---|
+| 11 | c | What should the team do before anyone plans around store's 91.6 percent? | A share of rupees says nothing about how many orders make it: store's 10 orders, a third of the file, carry nine rupees in ten, so the team counts and looks inside them before a plan follows. | a: on delivered orders store's share rises to about 94 percent, the same rupees again, so the question is unchanged. b: a share of orders swaps rupees for orders without saying why, and it hides what the rupees are made of. d: rupees that add up describe the total, and they say nothing about what drives store's part of it. |
+| 12 | a | On which base should a channel plan read store's share, and what share does store hold there? | The plan concerns the three consumer segments, so the channel plan reads shares on the consumer view, where store holds Rs 18,920 of Rs 64,810, 29.2 percent. | b: all 30 orders keep the rupees from outside the segments the plan concerns. c: Rs 9,870 is store's delivered consumer rupees over booked consumer rupees, two readings in one ratio. d: a share of orders answers a different question from a share of revenue. |
+| 13 | d | What does splitting web's Rs 27,290 in the consumer view by status add? | Web's rupees split into Rs 12,320 delivered and Rs 14,970 returned, so more than half of what web booked came back. | a: web delivered Rs 12,320, less than app's Rs 18,600, so its lead does not hold on delivered orders. b: web had no cancelled orders. c: web's returns are Rs 14,970. |
+| 14 | b | What does splitting store's booked rupees in the consumer view by status show? | Store's Rs 18,920 in the consumer view splits into Rs 9,050 cancelled before the orders left the shelf and Rs 9,870 delivered, so close to half, 47.8 percent, never left. | a: Rs 9,050 of it was cancelled. c: store had no returns, and every return sits on web. d: the cancelled part is close to half, far above a tenth, and there were no returns. |
+| 15 | a | Which plan does the evidence support, and what goes in the note? | The branch question was answered by the customers and how often they return, and no channel number changes that; the status split adds two leaks the note should name, web returns and store cancellations. | b: store's share of all booked revenue came from outside the segments the plan concerns. c: web's booked lead in the consumer view is its most leaky rupee, since more than half came back. d: the two leaks are findings Meera can act on, and leaving them out wastes them. |
+| 16 | b | How many Retail-Plus customers bought in the quarter, given the segment's 10 orders? | The 10 Retail-Plus orders carry 8 distinct customer ids, and one of those customers also bought as Retail-Core, since the segment is recorded on each order. | a: 10 counts orders as customers, chapter 3's wrong number on a new split. c: 23 is every customer in the file. d: revenue over a typical order estimates orders, and then calls them customers. |
 
-## The part worth arguing about
+## Which item is worth arguing about?
 
-Item 15. Pairs who found the web returns will want the note to lead with them, because they are
-the most striking number in the split. They belong in the note, second. Meera asked which branch to
-open, and the returns are a leak inside revenue per order on one channel, which does not change the
-branch. A note that leads with the most striking finding over the asked-for one reads as a changed
-subject.
+Item 15. Pairs who found the web returns will want the note to lead with them, since they are the
+most striking number in the split. They belong in the note, second. Meera asked which branch to
+open, and the returns are a leak inside one channel's revenue, which leaves the branch where it was.
+A note that opens on the web returns makes Meera read past a leak to reach the branch she asked
+about.
 
-**Kavya's review.** "Every share has a count behind it. Say how many orders make the share before
-anyone plans around it."
+**Kavya's review.** "Before anyone plans around a share, say how many orders make it and whose orders
+they are."
 
-## Where the pattern lives in production
+## Where does a share read on the wrong base show up at work?
 
-Channel mix reviews in retail, marketplace seller rankings and regional revenue splits all carry
-the same risk: one large account or one large order sets a share, and a plan follows the share.
-Sales operations teams report shares with and without their top accounts for exactly this reason,
-and a returns rate by channel is a standard line in any e-commerce operating review.
+At Kalpa it arrived as the store team's claim that it carries the business, and a store-led plan
+would have followed a share that came from outside the segments Meera's plan concerns. A share
+goes to a planner with the base it was read on, and at Kalpa with each channel's split by status
+beside it.
 
-## Hands-on
+## What are the second case notebook's seven picks?
 
 The seven TODO picks in `notebooks/C2_W01_D01_ex2_second_case_STUDENT.ipynb`, in order, are
 c b d a b c a. The executed solution notebook named above carries the filled line for each, and its
 checks all print PASS.
 
-## The afternoon in one line
+## What is the whole afternoon's key, for the debrief?
 
-For the debrief, both cases together:
-
-Answer key: 3b 4d 6a 7c 8b 9d 10a 11c 12a 13d 14b 15a 16b
+Answer key: 3c 4b 5a 7d 8b 9a 11c 12a 13d 14b 15a 16b; the numbers are item 1, 19 customers; item 2,
+1.11 orders each; item 6, 7 customers.

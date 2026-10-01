@@ -1,9 +1,7 @@
-# Kahoot, Week 1 Wednesday
+# Kahoot, Week 1 Wednesday: can you answer the day's eight questions against the clock?
 
 Eight items, ungraded, scored on correctness and speed together. The first item returns to Tuesday;
 the rest climb the day's six chapters. Every number is invented unless the item says it is the day's.
-
-Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
@@ -27,12 +25,12 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q3. A dedupe says 0 duplicates; distinct ids say 186 of 200. What happened?
+## Q3. A dedupe says 0 duplicates; distinct ids say 172 of 186 rows. What happened?
 *Tests: the whole-record key that makes every row unique.*
 
-- 14 orders are missing from the export and need a resend
+- 14 orders never arrived and need a resend
 - The id count is wrong, since the dedupe checked every field
-- Fourteen rows have a blank order_id the count skipped
+- Fourteen rows have a blank order_id, and the dedupe removed them
 - The dedupe compared a field that differs on every row  <- correct
 
 ---
@@ -57,7 +55,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q6. The rows reconcile, and Q1 is Rs 3,000 short of the books. Next step?
+## Q6. The rows reconcile, and Q1 is Rs 3,000 short of the books. What is the next step?
 *Tests: reconcile twice, in rows and in rupees.*
 
 - Ship it, since Rs 3,000 rounds away in a crore
@@ -68,7 +66,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 ---
 
 ## Q7. A Rs 18 lakh Business order survives cleaning. Why?
-*Tests: large is not wrong; the record decides.*
+*Tests: a large order stays when its record is valid.*
 
 - Its fields are valid and its buyer is a real account  <- correct
 - It sits inside the Business segment's usual range
@@ -77,7 +75,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q8. Dashboard 2.1 crore, Finance 1.9. Which is right, and how do you prove it?
+## Q8. The day's own figures: dashboard 2.1 crore, Finance 1.9. Which is right, and how do you prove it?
 *Tests: the bridge, one move per cause, backed by rows.*
 
 - The dashboard, since it reads every row the export holds

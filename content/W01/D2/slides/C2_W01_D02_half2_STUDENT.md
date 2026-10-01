@@ -1,4 +1,4 @@
-# The cause on trial
+# Did the reorder button do it?
 
 Week 1, Day 2. Half two.
 
@@ -7,28 +7,70 @@ Quote: It is the broken reorder button. One of my members says it has been broke
 Who: The head of Retail-Plus, Kalpa's paid membership tier
 
 ```notes
-LIVE, inside chapter 6's first minutes. The morning climbed five chapters: the drop is real at 11.0 percent, the branch is
-orders per customer, the segment is Retail-Plus, the rise in order value is mostly mix, and
-Marketing's churn claim fails the overlap. The afternoon opens on chapter 6, the cause the head of
-Retail-Plus hands us, then the escalated case, the debrief, the second case, the drill and the close.
+LIVE, inside chapter 6's first minute. The afternoon opens on chapter 6, the cause the head of
+Retail-Plus hands us, then the escalated case, the debrief, the second case, the drill and the
+close. The next slide carries what the morning settled.
 ```
 
 ---
 
-## SECTION 6: The memo and its evidence
-*Chapter 6. The tier hands us a cause and Meera wants one page: what we know, what we guess, and what would settle it.*
+## S1. The morning found the branch, the tier and the mix
+*What did the morning settle, and what is still open?*
+
+| Chapter | The question | The answer |
+|---|---|---|
+| 1 | Is the drop real? | Yes: minus 11.0 percent, Rs 23,00,000, on two closed quarters |
+| 2 | Which branch moved? | Orders per customer, 1.65 to 1.25, while customers held at 69 |
+| 3 | Which segment moved? | Retail-Plus: the same 22 members, 51 orders to 26 |
+| 4 | Did customers pay more? | No: 69 percent of the rise in revenue per order is mix |
+| 5 | Were customers lost? | None lost, none new; 23 slowed, 18 of them members |
+| 6 | Did the button do it? | Still open, and the afternoon's first chapter |
+
+Kavya Nair, the team's senior analyst, reviews every chapter's answer before it reaches Meera.
 
 ```notes
-LIVE. Chapter 6 runs 30 minutes: 5 on the need and Sonos, 4 on the options, 4 on the monthly line, 8
-on the trap and its ceiling, 5 on the season, the channel and the second route, 4 on the memo and
-Kavya's review. Open notebooks/C2_W01_D02_06_the_memo_STUDENT.ipynb. The chapter opener is numbered 6 on
-purpose; it continues the morning's five.
+LIVE, 1 minute. Read the five answers in one breath each. Revenue here is booked revenue, every
+order placed before any cancellation or return. The Business rupees, three fewer lakh-sized orders,
+sit beside the Retail-Plus behaviour in every sentence to Meera. Then chapter 6.
 ```
 
 ---
 
-## S1. The tier blames the button; Meera wants a page
-*Engineering's priority and the story Meera tells the board both ride on whether the button explains the fall.*
+## SECTION 6: Did the button do it?
+*How much of the Retail-Plus fall can the broken reorder button explain, and what evidence goes in Meera's memo?*
+
+```notes
+LIVE. Chapter 6 runs 30 minutes with the cover and the recap: 1 on the map, 3 on the need and Sonos,
+5 on the options and the picture, 2 on count_by, 3 on the monthly line, 7 on the trap, its window
+and the ceiling, 3 on the season and the channel, 2 on the second route, 3 on the memo and the
+close. Open notebooks/C2_W01_D02_06_the_memo_STUDENT.ipynb.
+```
+
+---
+
+## S2. Answered in six questions, before the memo goes
+*Who needs this answer, and which smaller questions lead to it?*
+
+**Who needs the answer.** The head of Retail-Plus and engineering decide what to fix first, and Meera decides what the board hears as the cause. Blame the button for everything and the tier keeps falling for a reason nobody looked for; dismiss it and members keep failing to reorder.
+
+```timeline
+label: 1 | title: Which tests, in what order? | body: Four tests of a cause
+label: 2 | title: When did orders drop? | body: Retail-Plus, month by month
+label: 3 | title: How many did it cost? | body: The hurried memo, tested
+label: 4 | title: A season for everyone? | body: A segment the button cannot touch
+label: 5 | title: Only the app? | body: The channel the cause predicts
+label: 6 | title: Does a corrected pace agree? | body: A second route | tone: dark
+```
+
+```notes
+LIVE, 1 minute. Read the six questions. The memo that closes the chapter answers the chapter's own
+question. Then the cause the tier hands us.
+```
+
+---
+
+## S3. The tier blames the button; Meera wants a page
+*What does the tier claim, and what does Meera need on one page?*
 
 **The client asks.** "Which branch, which segment, and what you would bet on. Tell me what you know and what you are guessing." (Meera Raghavan)
 
@@ -41,15 +83,16 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 3 minutes. The metric at stake is Retail-Plus orders per week before and after the break. Six
+LIVE, 2 minutes. The metric at stake is Retail-Plus orders per week before and after the break. Six
 weeks back from the week of 6 October is 25 August; say it is the complaint taken at its word. A
 wrong answer costs a quarter: blame the button for everything, fix it, and the tier keeps falling.
+Then a company that put a broken app into its numbers.
 ```
 
 ---
 
-## S2. Sonos tied an app rollout to its guidance
-*A loyal customer base, an app rollout gone wrong, and a cut in guidance, the revenue promised to investors.*
+## S4. Sonos tied an app rollout to its guidance
+*Has a real company put a broken app into its numbers?*
 
 ```stats
 value: 2024 | label: redesigned app rolled out | note: the problems it caused
@@ -57,19 +100,19 @@ value: FY2024 | label: guidance reduced | note: the CEO tied it to the app's rol
 value: up to $30 m | label: short-term cost to fix | note: set out in the annual report
 ```
 
-**The claim.** A company can put a broken app into its numbers, and the head of Retail-Plus is asking whether his tier is the same story.
+A company can put a broken app into its numbers, and the head of Retail-Plus is asking whether his tier is the same story. Guidance is the revenue a company tells investors to expect.
 
 ```notes
-LIVE, 2 minutes. Sources checked 30 Sep 2026: Sonos third quarter fiscal 2024 results (the chief
+LIVE, 1 minute. Sources checked 30 Sep 2026: Sonos third quarter fiscal 2024 results (the chief
 executive's statement that the app's rollout required a reduced fiscal 2024 guidance) and the fiscal
-2024 annual report on Form 10-K (short-term costs of up to $30 million). No revenue figure for the
-app's effect was verified on a primary page, so none is quoted.
+2024 annual report on Form 10-K (short-term costs of up to $30 million). Quote no revenue figure for
+the app's effect; no primary page gives one. Then four ways to test a cause.
 ```
 
 ---
 
-## S3. Four tests of a cause, and the call
-*Run the cheap tests in order, timing first, and request the one that settles it.*
+## S5. Timing first, then a segment and the channel
+*Which of four tests of a cause run today, and in which order?*
 
 | Option | Reads | Can rule out |
 |---|---|---|
@@ -81,14 +124,64 @@ app's effect was verified on a primary page, so none is quoted.
 **The call.** A, B and C now, D requested today. **What would change it:** if the break turned out to be in June, A's verdict flips, and D's release date is how we would learn it.
 
 ```notes
-LIVE, 4 minutes. A cause cannot come after its effect, so timing leads. Each of A to C reads the
-export already open in milliseconds; D is days away.
+LIVE, 3 minutes. A cause cannot come after its effect, so timing leads. Each of A to C reads the
+export already open in milliseconds; D is days away. Then what the button predicts.
 ```
 
 ---
 
-## S4. Question: when did the tier drop below Q1?
-*Retail-Plus orders by month, with Retail-Core beside it for comparison.*
+## S6. A cause predicts when, where and whom it hits
+*What does a broken reorder button predict that the export can test?*
+
+```mermaid
+flowchart LR
+    B["<b>the button broke</b><br/>about 25 August"] --> T["<b>when</b><br/>the fall starts<br/>after 25 August"]
+    B --> W["<b>where</b><br/>app orders fall,<br/>web and store hold"]
+    B --> M["<b>whom</b><br/>members fall,<br/>Retail-Core holds"]
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class B bet
+    class T,W,M unknown
+```
+
+**The rule.** Restate the cause as a mechanism and test each thing it predicts, timing first, since a cause cannot come after its effect.
+
+```notes
+LIVE, 2 minutes. Draw the three predictions on the board and leave the boxes empty; the next slides
+fill them. Then the function that counts by any key.
+```
+
+---
+
+## S7. count_by grows chapter 1's accumulator to any key
+*How do we count orders by month, or by channel, with one function?*
+
+```python
+# plus: every Retail-Plus order in both quarters
+def count_by(rows, key):
+    """Count the rows under whatever key(row) returns."""
+    counts = {}
+    for row in rows:
+        k = key(row)
+        counts[k] = counts.get(k, 0) + 1
+    return counts
+
+plus_month = count_by(plus, lambda o: o["order_date"][:7])     # "2026-07"
+plus_channel = count_by(plus, lambda o: o["channel"])          # "app", "web", "store"
+```
+
+**The rule.** The key is handed in as a small function, so the same counter answers "by month" and "by channel" without a second loop.
+
+```notes
+LIVE, 2 minutes. lambda o: o["channel"] is a one-line function with no name, handed in as the key.
+The dictionary and .get with a default of 0 are chapter 2's; the default is right here for the same
+reason: a month not seen yet has no orders so far. Then the prediction.
+```
+
+---
+
+## S8. Question: when did the tier drop below Q1?
+*Retail-Plus orders by month, with Retail-Core beside it: when did the tier fall below every Q1 month?*
 
 ```mermaid
 flowchart LR
@@ -101,35 +194,36 @@ flowchart LR
 **Question.** a) September, after the break; b) August, when it broke; c) July, before it broke; d) never.
 
 ```notes
-LIVE, 2 minutes. Take letters, then run the monthly cell with count_by, chapter 1's accumulator grown
-into a function that takes any key.
+LIVE, 1 minute. Take letters, then run the monthly cell with count_by.
 ```
 
 ---
 
-## S5. Answer: July, weeks before the button broke
-*Retail-Plus stepped down in July while Retail-Core held level through the same months.*
+## S9. Answer: July, weeks before the button broke
+*Retail-Plus orders by month, with Retail-Core beside it: when did the tier fall below every Q1 month?*
 
 ```mermaid
 %%{init: {"xyChart": {"showLegend": true}}}%%
 xychart-beta
     title "Orders by month"
-    x-axis ["Apr", "May", "Jun", "Jul", "Aug", "Sep"]
+    x-axis ["Apr", "May", "Jun", "Jul", "Aug (break)", "Sep"]
     y-axis "Orders" 0 --> 26
     line "Retail-Plus" [14, 24, 13, 9, 9, 8]
     line "Retail-Core" [13, 12, 13, 12, 12, 12]
 ```
 
-The line that falls from 13 to 9 in July is Retail-Plus; the level line is Retail-Core.
+**The check.** July's 9 Retail-Plus orders sit below every Q1 month, whose lowest was 13, while Retail-Core held level. The answer is c.
 
 ```notes
-LIVE, 2 minutes. The answer is c. The button may still matter; it cannot be the whole story. Keep to the Q2 months.
+LIVE, 2 minutes. The line that falls from 13 to 9 in July is Retail-Plus; the level line is
+Retail-Core. The button may still matter; it cannot be the whole story. Keep to the Q2 months. Then
+the memo a hurried analyst would write anyway.
 ```
 
 ---
 
-## S6. The plausible wrong answer: the button cost 25
-*The hurried memo charges the button with the tier's whole quarter.*
+## S10. The plausible wrong answer: the button cost 25
+*What does a hurried memo charge the button with?*
 
 ```stats
 value: 25 | label: orders the button "cost" | note: 51 in Q1 less 26 in Q2
@@ -140,14 +234,14 @@ value: 0 | label: days checked before the break | note: the missing check
 **What breaks.** Engineering is told the fix recovers 25 orders a quarter; it ships, recovers a handful, and the tier's real problem has had another quarter to run.
 
 ```notes
-LIVE, 3 minutes. The chapter's trap. The comparison spans the whole quarter, so it charges the button
-with about eight weeks of orders lost before it broke.
+LIVE, 2 minutes. The chapter's trap. The comparison spans the whole quarter, so it charges the button
+with about eight weeks of orders lost before it broke. Then why it is wrong.
 ```
 
 ---
 
-## S7. Why it is wrong, and the ceiling: about 4
-*Split Q2 at the break and give each side its window; the rate had fallen by more than a third already.*
+## S11. Why it is wrong: the pace fell before the break
+*What happens to the tier's pace when Q2 is split at the break?*
 
 | Window | Days | Orders | Per week |
 |---|---|---|---|
@@ -155,39 +249,64 @@ with about eight weeks of orders lost before it broke.
 | Q2, 1 Jul to 24 Aug | 55 | 18 | 2.29 |
 | Q2, 25 Aug to 30 Sep | 37 | 8 | 1.51 |
 
-**The fix.** At the pre-break pace, 37 days would have carried about 12.1 orders; the tier placed 8. The button explains at most about 4 orders, about Rs 12,400, and that is a ceiling.
+**Why it is wrong.** The tier's pace had fallen by more than a third before the button broke, so the whole-quarter comparison charges the button with orders lost in July and August. **The check.** Chapter 1's lesson: a rate with its window.
 
 ```notes
-LIVE, 5 minutes. The check is chapter 1's lesson: a rate with its window. What changed: "the button
-cost 25 orders" became "at most about 4; the rest needs another cause". Engineering still fixes it;
-the memo stops promising it fixes the tier.
+LIVE, 2 minutes. Split Q2 at the break and give each side its window. Point at the middle row: 2.29
+orders a week against Q1's 3.92, before anything broke. Then the ceiling.
 ```
 
 ---
 
-## S8. The season and the channel, both tested
-*A season that hit everyone would move Retail-Core; an app-only cause would leave the web and store alone.*
+## S12. The fix: a ceiling of about 4, far below 25
+*How many orders can the button have cost, and on which baseline?*
+
+| Pace before the break | Orders | Expected in the 37 days after | Placed | Button's ceiling |
+|---|---|---|---|---|
+| 55 days, 1 Jul to 24 Aug | 18 | 12.1 | 8 | about 4, about Rs 12,400 at Rs 3,012 an order |
+| 37 days, 19 Jul to 24 Aug | 15 | 15.0 | 8 | 7.0 |
+| The hurried memo | | | | 25 |
+
+**What changed.** "The button cost 25 orders" became "at most about 4 on the tier's pace over the 55 days before the break, and 7.0 on the 37 days just before it". Either way the ceiling sits far below 25, so the call holds: the rest needs another cause, and the memo names the baseline it used.
+
+```notes
+LIVE, 3 minutes. At the pre-break pace of 18 orders in 55 days, the 37 days after the break would
+have carried about 12.1 orders; the tier placed 8, so the button explains at most about 4.1 orders,
+about Rs 12,400 at Q2's Retail-Plus revenue per order. It is a ceiling, since anything else that kept
+worsening would claim part of it. The ceiling rests on its baseline: over only the 37 days just
+before the break, a window as long as the one after it, the tier placed 15 orders, and the ceiling
+would be 7.0. The memo keeps the headline of about 4 on the stated 55-day baseline and says so;
+either figure is far below the 25 the hurried memo charges. Engineering still fixes the button; the
+memo stops promising it fixes the tier. Notebook 06's depth section asks learners to rerun this.
+Then two rival causes.
+```
+
+---
+
+## S13. A season for everyone and an app-only fault both fail
+*Could a season that hit everyone, or an app-only fault, explain the fall instead?*
 
 ```mermaid
 %%{init: {"xyChart": {"showDataLabel": true}}}%%
 xychart-beta
-    title "Retail-Plus orders by channel"
+    title "Retail-Plus orders by channel; Retail-Core kept 95 percent"
     x-axis ["web Q1", "web Q2", "store Q1", "store Q2", "app Q1", "app Q2"]
     y-axis "Orders" 0 --> 26
     bar [24, 9, 14, 9, 13, 8]
 ```
 
-**What it says.** Retail-Core kept 95 percent of its Q1 orders and Retail-Plus 51, so an across-the-board season does not fit; every channel fell, so an app-only cause does not fit. A season that hit members harder still fits, and last year's Q2 by segment settles it.
+Retail-Core kept 95 percent of its Q1 orders and Retail-Plus 51, so a season that hit every customer does not fit; every channel fell, so an app-only cause does not fit. A season that hit members harder still fits, and last year's Q2 by segment tests it.
 
 ```notes
-LIVE, 3 minutes. Two predictions tested, two rivals capped. Something touched members in every
-channel.
+LIVE, 3 minutes. Both predictions fail, so both rival causes are capped. July opens the monsoon quarter, so a
+seasonal dip would also begin in July, which is why the comparison segment matters. Something
+touched members in every channel. Then a second route to the button's share.
 ```
 
 ---
 
-## S9. A second route: the pace, corrected
-*Take out what slowed Retail-Core across the same date, and the button's share shrinks to about 3.5.*
+## S14. Corrected by Retail-Core, the button gets about 3.5
+*Does the pace corrected by Retail-Core's own change stay inside the ceiling?*
 
 ```mermaid
 flowchart LR
@@ -198,24 +317,25 @@ flowchart LR
     class C known
 ```
 
-**When to switch.** Write the ceiling in the memo; bring the corrected route when someone argues for the season.
+**When to switch.** Write the ceiling in the memo, since it assumes nothing about any other segment; bring the corrected route when someone argues for the season.
 
 ```notes
 LIVE, 2 minutes. Retail-Core placed 22 orders in the 55 days before 25 August and 14 in the 37 after,
 a pace 0.946 of what it had been. Scale the tier's expected 12.1 by it: 11.5, against 8 placed, about
 3.5 orders. The route could have come out above the ceiling of 4.1 and lands below it, which is what
-a ceiling predicts. The notebook also draws section 2's cumulative line against the pre-break pace.
+a ceiling predicts. The notebook also draws the tier's cumulative Q2 orders against the pre-break
+pace. Then the memo.
 ```
 
 ---
 
-## S10. The memo: what we know, what we are guessing
-*The claim, two hypotheses with the evidence that settles each, and a rival.*
+## S15. Two hypotheses, each with the data that settles it
+*What goes in Meera's memo, and what settles each hypothesis?*
 
 ```mermaid
 flowchart TB
-    F["<b>Retail-Plus</b><br/>same 22 members<br/>51 orders to 26"] --> H1["<b>H1</b><br/>the button, from 25 Aug<br/>at most about 4 orders"]
-    F --> H2["<b>H2</b><br/>a change for members<br/>in July"]
+    F["<b>Retail-Plus</b><br/>22 members, 51 orders to 26"] --> H1["<b>H1</b> the button, from 25 Aug<br/>at most about 4 orders"]
+    F --> H2["<b>H2</b> a change for<br/>members in July"]
     H1 --> E1["reorder logs by week<br/>the release date"]
     H2 --> E2["tier change log<br/>renewals, tickets"]
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
@@ -224,20 +344,44 @@ flowchart TB
     class E1,E2 known
 ```
 
-**Kavya's review.** "You gave the tier a number for his cause, a ceiling of about 4 orders, instead of a yes or a no. Say what you know, then what you are guessing, and stop."
-
-**In the interview.** [D] A stakeholder hands you a cause; how do you test it with the data you have and name the data you need?
+**The rule.** What we know comes first and what we are guessing second, and each guess carries the data that would settle it. The rival, a monsoon dip that hit members harder, goes on the same request as last year's Q2 by segment.
 
 ```notes
-LIVE, 4 minutes. The rival, a monsoon dip that hit members harder, goes on the same data request as
-last year's Q2 by segment. One breath: restate as a hypothesis, test timing, then the comparison and
-the channel, cap it, and name the data that settles it.
+LIVE, 2 minutes. Neither cause is proved or disproved by this export; each is a hypothesis settled
+by data Kalpa holds elsewhere. The memo's claim, which the notebook prints in full, ends on the
+request for all three. Then the chapter's answer.
 ```
 
 ---
 
-## SECTION 7: The escalated case
-*The whole ladder again, alone, on the orders that reached customers.*
+## S16. At most about 4 orders: the fall began in July
+*Did the button do it, and what did each question on the way answer?*
+
+| Question | Answer |
+|---|---|
+| 1. Which tests, in what order? | Timing, a segment, the channel; the logs requested |
+| 2. When did orders drop? | July, weeks before the 25 August break |
+| 3. How many did it cost? | At most about 4 orders; 7.0 on the shorter baseline |
+| 4. A season for everyone? | No: Retail-Core kept 95 percent; a members-only dip stays open |
+| 5. Only the app? | No: web, store and app all fell |
+| 6. Does a corrected pace agree? | Yes: about 3.5 orders, inside the ceiling |
+
+**Kavya's review.** "You gave the tier's head a number for his cause, a ceiling of about 4 orders, and named the data that would settle it. Say what you know, then what you are guessing, and stop."
+
+**In the interview.** [D] A stakeholder hands you a cause; how do you test it with the data you have and name the data you need?
+
+```notes
+LIVE, 1 minute. The interview tags: [S] a staple asked everywhere, [F] frequent in GCC and product
+screens, [SV] a service-major screen opener, [D] a differentiator. One breath: restate as a
+hypothesis, test timing, then the comparison and the channel, cap it, and name the data that
+settles it. The ceiling's baseline goes in the same breath:
+about 4 on the 55 days before the break, 7.0 on the 37 just before it, both far below 25.
+```
+
+---
+
+## SECTION 7: Does it survive delivery?
+*Does the story survive when revenue counts only the orders that reached customers and stayed?*
 
 ```notes
 LIVE. The escalated case runs 50 minutes, unguided. Hand out
@@ -247,29 +391,29 @@ notebooks/C2_W01_D02_ex1_escalated_case_STUDENT.ipynb. The solution opens after 
 
 ---
 
-## S11. Meera asks if the story survives delivery
-*The board pack, the numbers the board reads, counts only what reached customers and stayed.*
+## S17. Answer it in five parts, on delivered orders
+*What does Meera ask about delivered orders, and in what order do you answer it?*
 
 **The client asks.** "The board pack reports revenue on orders that reached the customer and stayed there. Does your story survive on delivered orders? Which branch, which segment, and what would you bet on?"
 
 ```timeline
 label: Part 1 | title: Is the delivered drop real? | body: Filter to delivered orders; compare closed quarters.
-label: Part 2 | title: The tree on delivered | body: A bridge in the tree's order, one leaf at a time.
+label: Part 2 | title: Which branch moves? | body: A bridge in the tree's order, one leaf at a time.
 label: Part 3 | title: Are those lost customers? | body: Find out what the customers who left the count did in Q2.
-label: Part 4 | title: Four segments on delivered | body: tree_for per segment, the rate rolled up, every group counted.
-label: Part 5 | title: Mix or rate on delivered | body: The split, and the sentence to Meera. | tone: dark
+label: Part 4 | title: Which segment moves? | body: tree_for per segment, the rate rolled up, every group counted.
+label: Part 5 | title: Mix or rate? | body: The split, and the sentence to Meera. | tone: dark
 ```
 
 ```notes
-LIVE, 3 minutes to brief, then 47 of silent work. Walk the room from minute 10. The trap in part 3 is
-the escalated one: customers with a delivered order fell from 54 to 50, and Marketing would read that
-as churn. Do not hint at it.
+LIVE, 3 minutes to brief, then 47 of silent work. The board pack is the set of numbers the board
+reads. Walk the room from minute 10. The trap in part 3 is the escalated one: customers with a
+delivered order fell from 54 to 50, and Marketing would read that as churn. Do not hint at it.
 ```
 
 ---
 
-## S12. What goes in, and what comes back
-*Five parts, seven lettered choices in the notebook, and one line of letters posted at the end.*
+## S18. You hand in seven checked picks and one sentence
+*What do you hand in, and how do you know each choice holds?*
 
 ```stats
 value: 5 | label: parts | note: one item each in the brief
@@ -280,14 +424,14 @@ value: 1 | label: sentence to Meera | note: branch, segment, hypotheses
 **The rule.** Every number carries its definition: say "delivered" beside each one, and "booked" beside anything from this morning.
 
 ```notes
-LIVE, inside the 3-minute brief, before work starts. Remind the room that the notebook stops at the first placeholder
-until it is filled, which is intended.
+LIVE, inside the 3-minute brief, before work starts. Remind the room that the notebook stops at the
+first placeholder until it is filled, which is intended.
 ```
 
 ---
 
-## SECTION 8: The debrief of wrong answers
-*The four wrong answers the room is most likely to have reached, with their exact numbers.*
+## SECTION 8: Where did we go wrong?
+*Which wrong answers did the room reach on delivered orders, and which check catches each?*
 
 ```notes
 LIVE. The debrief runs 15 minutes, before the break. Put each wrong answer up, ask who reached it,
@@ -297,8 +441,31 @@ exercises/solutions/ at the end.
 
 ---
 
-## S13. Wrong answer 1: customers fell, Marketing wins
-*On delivered orders customers fell from 54 to 50 and the bridge charges them Rs 10,74,442.*
+## S19. Answer: four wrong answers, four morning checks
+*Which wrong answers do most rooms reach on delivered orders, and what catches each?*
+
+```mermaid
+flowchart LR
+    W1["<b>customers fell</b><br/>54 to 50"] --> C5["<b>chapter 5</b><br/>the id overlap"]
+    W2["<b>frequency fell 9.2%</b><br/>four rates averaged"] --> C3["<b>chapter 3</b><br/>total over total"]
+    W3["<b>mix is 44%</b><br/>so prices rose"] --> C4["<b>chapter 4</b><br/>each segment's own rate"]
+    W4["<b>revenue fell 11%</b><br/>which revenue?"] --> C1["<b>chapter 1</b><br/>the definition beside it"]
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class W1,W2,W3,W4 bad
+    class C1,C3,C4,C5 known
+```
+
+**The rule.** Each wrong answer is a morning trap in a new place, and the morning's check catches it.
+
+```notes
+LIVE, 2 minutes. Ask for hands on each box before the detail slides. Then the first.
+```
+
+---
+
+## S20. Wrong answer 1: customers fell, Marketing wins
+*What does the room conclude from 54 to 50 delivered customers?*
 
 ```mermaid
 flowchart LR
@@ -314,25 +481,27 @@ flowchart LR
 **The check.** The booked overlap is 69, 0 and 0. The branch that moved is cancellations and returns, to be split by reason, and acquisition still has nothing to replace.
 
 ```notes
-LIVE, 4 minutes. Ask who wrote "customers fell 7.4 percent" in part 2 and stopped there. The part 3
-set, (delivered Q1 minus delivered Q2) and booked Q2, finds all 19 still ordering.
+LIVE, 3 minutes. On delivered orders the bridge charges the customers branch Rs 10,74,442. Ask who
+wrote "customers fell 7.4 percent" in part 2 and stopped there. The part 3 set, (delivered Q1 minus
+delivered Q2) and booked Q2, finds all 19 still ordering.
 ```
 
 ---
 
-## S14. Wrong answer 2: delivered frequency fell 9.2%
-*The average of four delivered segment rates says minus 9.2 percent; the weighted figure says minus 24.0.*
+## S21. Wrong answer 2: delivered frequency fell 9.2%
+*How far did delivered frequency fall if the four segments' rates are averaged?*
 
 ```mermaid
-%%{init: {"xyChart": {"showDataLabel": true, "showDataLabelOutsideBar": true}}}%%
+%%{init: {"xyChart": {"showDataLabel": true, "showDataLabelOutsideBar": true}, "themeVariables": {"xyChart": {"plotColorPalette": "#D63A6A, #1F8A5B"}}}}%%
 xychart-beta
-    title "Delivered orders per customer, Q1 and Q2"
+    title "Delivered: averaged in pink, the wrong roll-up; weighted in green"
     x-axis ["averaged Q1", "averaged Q2", "weighted Q1", "weighted Q2"]
     y-axis "Orders per customer" 0 --> 2
     bar [1.63, 1.48, 1.50, 1.14]
+    bar [-1, -1, 1.50, 1.14]
 ```
 
-**The check.** The roll-up must reproduce 81 orders over 54 customers and 57 over 50: 1.50 and 1.14.
+**The check.** The roll-up must reproduce 81 orders over 54 customers and 57 over 50: 1.50 and 1.14, minus 24.0 percent, where the average of four segment rates says minus 9.2.
 
 ```notes
 LIVE, 3 minutes. The morning's trap in a new place. Anyone who averaged has the reason on the board
@@ -341,8 +510,8 @@ from chapter 3.
 
 ---
 
-## S15. Wrong answer 3: mix is 44%, so prices rose
-*On delivered orders the mix explains 44 percent of the rise, and some read the rest as a price rise.*
+## S22. Wrong answer 3: mix is 44%, so prices rose
+*What does the room conclude from a 44 percent mix share on delivered orders?*
 
 | Definition | Revenue per order rise | Mix share | Rate carried by |
 |---|---|---|---|
@@ -352,14 +521,14 @@ from chapter 3.
 **The check.** The rate part is Business's lakh-sized orders; the consumer segments' own delivered order values moved by about a hundred rupees at most, so there is still no consumer price signal.
 
 ```notes
-LIVE, 4 minutes. The definition moved the split without creating a price rise anyone paid. Ask a
+LIVE, 3 minutes. The definition moved the split without creating a price rise anyone paid. Ask a
 learner to read Retail-Plus delivered revenue per order: Rs 2,748 to Rs 2,806.
 ```
 
 ---
 
-## S16. Wrong answer 4: a sentence with no definition
-*"Revenue fell 11 percent" is true on both definitions, at 11.0 and 11.3, and says neither.*
+## S23. Wrong answer 4: a sentence with no definition
+*What does "revenue fell 11 percent" leave out?*
 
 ```mermaid
 flowchart LR
@@ -369,16 +538,17 @@ flowchart LR
     class S known
 ```
 
-**Kavya's review.** "On delivered orders the story held: frequency, Retail-Plus at minus 42.6 percent per member, and the same two hypotheses. The branch that moved was fulfilment, getting orders to customers intact. Put the definition beside every number, and the solution is open now."
+**Kavya's review.** "On delivered orders the story held: frequency carries the most rupees, Retail-Plus falls 42.6 percent per member, and the same two hypotheses stand. The customers branch that moved there is cancellations and returns, to be split by reason. Put the definition beside every number; the solution is open now."
 
 ```notes
-LIVE, 4 minutes, then the 10-minute break. Release the solution notebook.
+LIVE, 4 minutes, then the 10-minute break. "Revenue fell 11 percent" is true on both definitions, at
+11.0 and 11.3, and says neither. Release the solution notebook.
 ```
 
 ---
 
-## SECTION 9: The second case
-*In pairs: Marketing's new deck, and the tier asks who to call first.*
+## SECTION 9: Is the tier healthy?
+*Marketing's new deck says members spend 7 percent more per order and the web fell hardest: does either claim hold, and whom does the tier call first?*
 
 ```notes
 LIVE. The second case runs 40 minutes in pairs: 3 to brief, 30 to work, 7 to hear two replies. Hand
@@ -388,8 +558,8 @@ notebooks/C2_W01_D02_ex2_second_case_STUDENT.ipynb.
 
 ---
 
-## S17. Marketing's new deck, and the tier's call list
-*One of each pair answers Marketing, the other the head of Retail-Plus, from the same file.*
+## S24. Answer it in pairs: two claims and a call list
+*What do Marketing and the tier each claim, from the same file?*
 
 ```cards
 icon: megaphone | eyebrow: Claim 1 | title: 7 percent more per order | body: "Members spend more each time, so the tier is healthy."
@@ -400,32 +570,33 @@ icon: phone | eyebrow: The tier | title: Who do I call first? | body: "Which of 
 **The rule.** Find what each number is made of before you agree or disagree.
 
 ```notes
-LIVE, 3 minutes to brief. Pairs split the roles, then write one reply together, with the one data
-request that settles most.
+LIVE, 3 minutes to brief. Pairs split the roles, one answering Marketing and one the head of
+Retail-Plus, then write one reply together, with the one data request that tests the most.
 ```
 
 ---
 
-## S18. What the pairs should reach
-*Each claim, taken apart, and the call list with its size.*
+## S25. Tier revenue fell about 45 percent: call 7 first
+*What does each claim come to, and whom does the tier call first?*
 
 | Claim | What it is made of | The reply |
 |---|---|---|
-| 7 percent more per order | The same 22 members at about half the orders: 1.000 x 0.510 x 1.070, about 0.55 | Tier revenue fell about 45 percent; one leaf that rose is not the tier |
+| 7 percent more per order | The same 22 members at about half the orders: 1.000 x 0.510 x 1.070, about 0.55 | Tier revenue still fell about 45 percent, whatever one leaf did |
 | Web fell hardest | Retail-Core web held, 13 to 12, same website | A site-wide fault does not fit; members fell on every channel |
 | Who to call first | 7 members went from 3 orders to 1 | Call the 7, then the 11 who fell by one |
 
-**The one request.** The tier's July change log, renewals and support tickets, since the fall began in July; the reorder logs second.
+The one request that tests the most is the tier's July change log, renewals and support tickets, since the fall began in July; the reorder logs come second.
 
 ```notes
-LIVE, 7 minutes after the work. Hear two pairs' replies. Say that every member still ordered, which
-fits a broken habit more than a tier people left.
+LIVE, 7 minutes after the work. Hear two pairs' replies. The tier's Q2 revenue over its Q1 revenue,
+counted directly, is 0.545; the rounded leaves multiply to about 0.55. Say that every member still
+ordered, which fits a broken habit more than a tier people left.
 ```
 
 ---
 
-## SECTION 10: The interview drill
-*Twelve questions asked aloud, one breath each, the design question among them.*
+## SECTION 10: Can you say it aloud?
+*Can you answer the day's twelve interview questions in one breath each, the design questions among them?*
 
 ```notes
 LIVE. The drill runs 20 minutes. Ask each question aloud to a named learner, give one breath, then
@@ -435,8 +606,8 @@ product screens, [SV] service-major screen opener, [D] differentiator.
 
 ---
 
-## S19. Questions 1 to 6: the ladder and the tree
-*The row's anchors and the decomposition questions, where a plausible number is waiting.*
+## S26. Answer: the six every screen asks about a sales drop
+*Which six questions does every analytics screen ask about a sales drop?*
 
 | Tag | Question |
 |---|---|
@@ -463,17 +634,17 @@ is; end on what would change my mind.
 
 ---
 
-## S20. Questions 7 to 12: weights, churn and design
-*The case-style follow-ups and the design questions that separate candidates.*
+## S27. Six follow-ups on weights, churn and design
+*Which follow-ups push a candidate past the first answer?*
 
 | Tag | Question |
 |---|---|
 | [F] | 7. Revenue per order rose 18 percent while revenue fell; did prices go up? |
 | [S] | 8. A field is missing on some records; do you fill it with zero? |
-| [F] | 9. You have orders per customer for four segments; why can't you average them? |
-| [SV] | 10. The customer count is flat; does that prove no customers were lost? |
-| [D] | 11. The same metrics are needed for every segment and quarter: copy, function or group by key? |
-| [D] | 12. A stakeholder hands you a cause; how do you test it and name the data you need? |
+| [F] | 9. You have orders per customer for four segments; why can't you average them for the company figure? |
+| [SV] | 10. The customer count is flat quarter on quarter; does that prove no customers were lost? |
+| [D] | 11. The design question: the same metrics are needed for every segment and quarter; do you copy the code, write a function or group by a key? |
+| [D] | 12. A stakeholder hands you a cause; how do you test it with the data you have and name the data you need? |
 
 ```notes
 LIVE, 10 minutes.
@@ -483,14 +654,14 @@ LIVE, 10 minutes.
 10. No: compare ids, lost and new; here 69, 0 and 0.
 11. A function when groups are asked one at a time and definitions change; one pass by key when the
 file is large and every group is needed at once.
-12. Timing first, then a comparison group, then the channel it predicts; cap it; request the data
-that settles it.
+12. Timing first, then a comparison group, then the channel it predicts; cap it, naming the
+baseline; request the data that settles it.
 ```
 
 ---
 
-## SECTION 11: The close
-*The Kahoot, the sentence to Meera, the eight lines to keep, and tomorrow's question.*
+## SECTION 11: So which branch moved?
+*So which branch moved from Q1 to Q2, and what goes to Meera tonight?*
 
 ```notes
 LIVE. The close runs 15 minutes: Kahoot 8, the sentence and the lines 5, tomorrow's question 2.
@@ -498,21 +669,23 @@ LIVE. The close runs 15 minutes: Kahoot 8, the sentence and the lines 5, tomorro
 
 ---
 
-## S21. The sentence that goes to Meera
-*A claim, its evidence, its caveat and the next step, in the order she needs them.*
+## S28. Answer: the same customers bought less often
+*Which branch moved from Q1 to Q2, and what does Meera read tonight?*
 
-> "Revenue fell 11.0 percent between two closed quarters, Rs 2.10 crore to Rs 1.87 crore on the export as it stands. Customers held at 69, every one of them buying in both quarters, so acquisition is not the branch that moved; orders per customer fell from 1.65 to 1.25. In behaviour the fall sits in Retail-Plus, where the same 22 members placed 26 orders against 51, and revenue per order rose mainly because those small orders disappeared. In rupees most of it is three fewer Business orders, each worth lakhs, so one account's timing moves it by lakhs. The fall began in July, before the reorder button broke, so the button explains at most about 4 orders; we are asking for the tier's July change log and the app's reorder logs." The data and AI team, to Meera Raghavan
+> "Revenue fell 11.0 percent between two closed quarters, Rs 2.10 crore to Rs 1.87 crore on the export as it stands. Customers held at 69, every one of them buying in both quarters, so acquisition is not the branch that moved; orders per customer fell from 1.65 to 1.25. In behaviour the fall sits in Retail-Plus, where the same 22 members placed 26 orders against 51, and revenue per order rose mainly because those small orders disappeared. In rupees most of it is three fewer Business orders, each worth lakhs, so one account's timing moves it by lakhs. The fall began in July, before the reorder button broke, so the button explains at most about 4 orders on the 55 days before the break, or 7.0 on the 37 days just before it; we are asking for the tier's July change log and the app's reorder logs." The data and AI team, to Meera Raghavan
 
 ```notes
-LIVE, 2 minutes after the Kahoot. Read it aloud once, slowly. Ask one learner which part their own
-sentence missed; most miss the ceiling or the data to ask for. The Kahoot pack is
+LIVE, 2 minutes after the Kahoot. Read it aloud once, slowly. The memo names both baselines, the
+tier's pace over the 55 days before the break and over the 37 days just before it, and either way
+the ceiling is far below the 25 a hurried memo charges. Ask one learner which part their own sentence
+missed; most miss the ceiling or the data to ask for. The Kahoot pack is
 kahoot/C2_W01_D02_quiz_STUDENT.md, eight items, ungraded.
 ```
 
 ---
 
-## S22. Eight lines to keep
-*The day's rules, word for word as the cheat sheet prints them.*
+## S29. Eight lines to keep, word for word
+*Which rules from today are worth keeping word for word?*
 
 1. Confirm the drop on matched windows before you explain it.
 2. A rate without its denominator is a rumour.
@@ -534,8 +707,8 @@ LIVE, 3 minutes. Read the eight lines aloud with the room. The chain maps them o
 
 ---
 
-## S23. Tomorrow, Anand questions tonight's numbers
-*Finance's books and the dashboard disagree about Q1, and the answer waits for Wednesday.*
+## S30. Tomorrow, Anand questions tonight's numbers
+*Which Q1 figure is right, the dashboard's Rs 2.1 crore or Finance's Rs 1.9 crore?*
 
 > "Your dashboard says Q1 was Rs 2.1 crore. Our books say 1.9. Until your numbers match ours, Finance will not act on a drop measured from an ERP export. Send me a reconciliation." Anand Iyer, finance controller, Kalpa Retail
 

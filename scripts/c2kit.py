@@ -677,18 +677,34 @@ def strip(values, markers=(), title="", show=True, lo=0, hi=None, fmt=None, widt
     """Every value as a dot on one axis, with the mean, the median or any line you name.
 
     markers is a list of (label, value, kind) where kind is "bad" or "good" or "plain". Dots that
-    would overlap stack upward, so thirty values that sit close together show as a pile. lit is
-    a list of indexes whose dots are drawn dark.
+    would overlap stack upward, so thirty values that sit close together show as a pile. A pile
+    taller than the chart makes the chart taller, up to about twice its height, and past that the
+    dots shrink and pack closer, so every value stays on the page however many share a place. lit
+    is a list of indexes whose dots are drawn dark.
     """
     fmt = fmt or rupees
     hi = hi if hi is not None else _nice_ceil(max(values) * 1.04)
-    left, right, axis_y = 40, width - 40, 150
+    left, right = 40, width - 40
     span = (hi - lo) or 1
 
     def px(v):
         return left + (right - left) * (v - lo) / span
 
-    body, bins = [], {}
+    # Stack first, so the chart knows how tall its tallest pile is before it draws the axis.
+    bins, placed = {}, []
+    for v in values:
+        x = px(v)
+        key = round(x / 11)
+        level = bins.get(key, 0)
+        bins[key] = level + 1
+        placed.append((x, level))
+    top_level = max((level for _, level in placed), default=0)
+    room_top = 58                      # below the markers' labels
+    axis_y = min(260, max(150, room_top + 9 + 11 * top_level))
+    step = min(11.0, (axis_y - 9 - room_top) / top_level) if top_level else 11.0
+    radius = 5.0 if step >= 10 else max(1.5, round(step * 0.45, 1))
+
+    body = []
     body.append(f'<line x1="{left}" y1="{axis_y}" x2="{right}" y2="{axis_y}" stroke="{MUTED}" '
                 f'stroke-width="1"/>')
     for i in range(5):
@@ -704,23 +720,25 @@ def strip(values, markers=(), title="", show=True, lo=0, hi=None, fmt=None, widt
         x = px(v)
         c = colours.get(kind, ACCENT)
         # Two lines close together would print their labels over each other, so the lower one of a
-        # close pair reads leftward from its line.
+        # close pair reads leftward from its line; a label that would run off either edge of the
+        # chart reads toward the middle instead.
         prev = px(markers[n - 1][1]) if n else None
-        left = n > 0 and abs(x - prev) < 150 and x <= prev
+        leftward = n > 0 and abs(x - prev) < 150 and x <= prev
+        text_w = 7.2 * len(f"{label} {fmt(v)}")
+        if not leftward and x + 5 + text_w > width - 8:
+            leftward = True
+        elif leftward and x - 5 - text_w < 8:
+            leftward = False
         body.append(f'<line x1="{x:.0f}" y1="{34 + 16 * (n % 2)}" x2="{x:.0f}" y2="{axis_y}" '
                     f'stroke="{c}" stroke-width="1.6" stroke-dasharray="5 4"/>'
-                    f'<text x="{x - 5 if left else x + 5:.0f}" y="{30 + 16 * (n % 2)}" fill="{c}" '
-                    f'text-anchor="{"end" if left else "start"}" '
+                    f'<text x="{x - 5 if leftward else x + 5:.0f}" y="{30 + 16 * (n % 2)}" fill="{c}" '
+                    f'text-anchor="{"end" if leftward else "start"}" '
                     f'font-family="{FONT}" font-size="12.5" font-weight="700">'
                     f'{_html.escape(label)} {_html.escape(fmt(v))}</text>')
-    for i, v in enumerate(values):
-        x = px(v)
-        key = round(x / 11)
-        level = bins.get(key, 0)
-        bins[key] = level + 1
-        y = axis_y - 9 - level * 11
+    for i, (x, level) in enumerate(placed):
+        y = axis_y - 9 - level * step
         fill = INK if i in lit else ACCENT
-        body.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="5" fill="{fill}" fill-opacity="0.8" '
+        body.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{radius:g}" fill="{fill}" fill-opacity="0.8" '
                     f'stroke="{WHITE}" stroke-width="1"/>')
     return _emit(_svg(width, axis_y + 34 + (22 if title else 0), "".join(body), title), show)
 

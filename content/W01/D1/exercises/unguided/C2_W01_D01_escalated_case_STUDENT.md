@@ -1,128 +1,163 @@
-# The escalated case: which branch does Meera open first?
+# Does frequency first survive on the orders that stayed delivered?
 
-> "Marketing wants Rs 12 crore to acquire new customers. By Thursday I want your recommendation on
-> which branch of revenue we examine first, and I will ask why you did not pick the others."
-> Meera Raghavan, CEO, Kalpa Retail
+> "Booked includes orders we cancelled and orders that came back. Do it again on what was delivered
+> and stayed delivered, and tell me whether your answer survives."
+> Anand Iyer, finance controller, Kalpa Retail
 
-Sixty minutes, alone, with no hints. The brief runs in five parts, each a harder question than the
-last, and ends on one sentence to Meera. Work in
+**Who needs the answer.** Anand counts only what stayed sold, and his numbers are the ones that reach
+the board. Meera needs to know before Thursday whether the branch she opens first changes on his
+definition. An answer that holds on booked orders alone never reaches his books.
+
+**The questions on the way.** How many customers stand behind the delivered orders, and how many
+orders does each keep? What is the typical delivered order? What does the 15 percent plan ask of
+delivered revenue, and where would marketing's discount leave it? How many delivered one-time buyers
+are too recent to judge, which branch holds, and what goes in the board's headline? What sentence
+goes to Meera?
+
+You have thirty-five minutes, alone and with no hints. The five parts each climb from the one
+before, and the last ends on one sentence to Meera. Work in
 `notebooks/C2_W01_D01_ex1_escalated_case_STUDENT.ipynb`, which carries the same five parts as TODO
-cells on the 30 orders from 1 July to 26 September.
+cells on the 30 orders. Items marked **Design** ask for the best-fit approach, a sizing, the fact
+that would switch the choice, or the second route that would confirm a number.
 
 The afternoon's items are numbered as one run: this brief holds items 1 to 10, and the second case
 continues from item 11.
 
-Post two lines. The first carries the seven lettered items (3, 4, 6, 7, 8, 9, 10) in order, no
-spaces. The second carries the three numbers (items 1, 2 and 5), separated by spaces.
+Post two lines. The first carries the six lettered items (3, 4, 5, 7, 8, 9) in order, no spaces.
+The second carries the three numbers (items 1, 2 and 6), separated by spaces.
 
 ```
-Post exactly this shape: xxxxxxx
+Post exactly this shape: xxxxxx
 Then this shape: n n n
 ```
 
+---
+
+## What did the chapters find on booked orders, and what changes on delivered?
+
+The six chapters answered Meera, Kalpa Retail's CEO, on the booked reading of Kalpa Retail's 30
+orders from 1 July to 26 September 2026, an 88-day window:
+
+| Question | The answer on booked orders |
+|---|---|
+| Sales | Booked sales were Rs 5,44,810 on 30 orders. |
+| The customer branches | 23 customers placed 1.30 orders each; 7 came back and 16 bought once. |
+| The typical order | The median was Rs 2,205, halfway between the two middle amounts of an even count. |
+| The plan | The plan was sized on the consumer view, the orders whose segment is one of the three consumer segments Meera's plan concerns (Retail-Core, Retail-Plus and Student): Rs 64,810 booked, so 15 percent is Rs 9,722 more. |
+| The branch | Frequency came first, since the customers exist and 7 already came back. |
+| The window's edge | Returning customers took a median of 45 days between orders, so 9 of the 16 one-time buyers were too recent to judge. |
+
+Anand's reading keeps only the delivered orders, those that reached a customer and stayed: 21 of
+the 30 orders, Rs 5,20,790. The other 9 left the reading in two ways: 4 orders, Rs 9,050, were
+cancelled before they left the shelf, and 5, Rs 14,970, were returned after delivery.
+
 ```mermaid
 flowchart LR
-    R["<b>revenue</b><br/>Rs 5,44,810 booked"] --> C["<b>customers</b>"]
-    R --> F["<b>orders per customer</b>"]
-    R --> V["<b>revenue per order</b>"]
-    C -. "lift 10 percent" .-> X["<b>new revenue</b><br/>?"]
-    F -. "lift 10 percent" .-> X
+    B["<b>booked</b><br/>30 orders, the chapters"] --> D["<b>delivered</b><br/>21 orders, this case"]
+    D --> L["<b>leaves</b>"] --> T["<b>typical order</b>"] --> P["<b>plan</b>"] --> R["<b>branch</b>"] --> S["<b>sentence</b>"]
 ```
 
 ---
 
-## Part 1. What sales is made of: the leaves
+## How many customers stand behind the delivered orders, and how many orders does each keep?
 
-### Q1. Compute: how many of the 23 customers bought only once in the quarter?
+Anand recounts the customer branches on the delivered orders before any customer figure goes to
+Kalpa's board, because his books count only what stayed sold.
+
+### Q1. Compute: how many distinct customers stand behind the 21 delivered orders?
 
 Write the number.
 
-### Q2. Compute: on the not-cancelled definition (26 orders), what is orders per customer, to two decimals?
+### Q2. Compute: what is orders per customer on the delivered reading, to two decimals?
 
 Write the number.
 
 ---
 
-## Part 2. The typical order
+## What is the typical delivered order?
 
-### Q3. Which sentence about the typical order belongs in the note to Meera?
+Marketing prices a new customer's first order from the typical order, so when Anand moves the
+reading to delivered, the typical order is recomputed on the delivered amounts and says which orders
+it describes.
 
-a) Rs 18,160, the mean, since it is the only figure that uses every rupee
-b) Rs 2,205, the median, since one order lifts the mean about eightfold
-c) Rs 2,060, the median of all 30 booked orders in the quarter
-d) Somewhere between Rs 2,205 and Rs 18,160, so the note gives both
+### Q3. Anand's typical delivered order is the median of the 21 delivered amounts, sorted from smallest to largest into a list called amounts. Which expression gives it?
 
----
-
-## Part 3. What a lift is worth
-
-### Q4. Marketing says a 10 percent lift in customers and a 10 percent lift in orders per customer make 20 percent growth, Rs 6,53,772 on booked revenue. What is the right number?
-
-a) 20 percent, Rs 6,53,772, since the two lifts add together
-b) 10 percent, Rs 5,99,291, since only one branch can move at once
-c) 11 percent, Rs 6,04,739, the larger lift and a tenth of the other
-d) 21 percent, Rs 6,59,220, since the two branches multiply
-
-### Q5. Compute: by how many rupees does marketing's 20 percent figure fall short of the right one?
-
-Write the number, rounded to the rupee.
-
-### Q6. Marketing's second idea is 15 percent off everything, expected to lift quantity 10 percent. Where does booked revenue land?
-
-a) About Rs 5,09,400, which is 0.935 of today and a 6.5 percent fall
-b) About Rs 5,17,570, which is 0.95 of today, since 10 less 15 is minus 5
-c) About Rs 5,99,290, which is 1.10 of today, since the volume rose
-d) About Rs 6,26,530, which is 1.15 of today, since both changes help
+a) (amounts[9] + amounts[10]) / 2, halfway between two middles
+b) amounts[11], the value one place above the middle of the list
+c) amounts[10], the single middle value of an odd count
+d) sum(amounts) / 21, the total divided by the count
 
 ---
 
-## Part 4. The branch to open first
+## What does the plan ask of delivered revenue, and where would a discount leave it?
 
-### Q7. Which branch should Meera open first?
+Anand sizes Meera's 15 percent plan on what stayed delivered before the board sees it, and he prices
+marketing's discount on the same base before any money moves.
 
-a) Acquisition, since marketing already has a plan and a budget for it
-b) Price per item, since a price rise moves revenue fastest of all
-c) Frequency, since most customers bought only once in the quarter
-d) Basket size, since the typical order of Rs 2,205 is small
+### Q4. Design. Anand wants the 15 percent plan sized on what stayed delivered, and Meera's plan still concerns the three consumer segments. Which base should the plan use, and what does it ask for?
 
-### Q8. The marketing lead asks why the Rs 12 crore should wait. Which answer holds up in the room?
+a) All delivered revenue, Rs 5,20,790: about Rs 78,119 more, since every delivered rupee counts
+b) The consumer view's delivered revenue, Rs 40,790: about Rs 6,119 more, to about Rs 46,909
+c) The consumer view's booked revenue, Rs 64,810: about Rs 9,722 more, as chapter 5 sized it
+d) All booked revenue, Rs 5,44,810: about Rs 81,722 more, since the board reads the booked total
 
-a) Acquisition is the wrong branch, so the budget should be cut to zero this week
-b) One quarter shows the shape of revenue; Tuesday's two quarters show the move
-c) The file is too small to say anything, so the decision waits a full year
-d) Frequency matters more than acquisition, so marketing is simply wrong
+### Q5. Design. Marketing proposes 15 percent off everything and expects orders to rise 10 percent. On the base you chose in Q4, where would revenue land?
 
----
-
-## Part 5. What one window cannot show
-
-### Q9. What can this one window, 1 July to 26 September, not show?
-
-a) How many distinct customers bought in the quarter
-b) The typical order value in the quarter
-c) How booked revenue splits across the channels
-d) Which branch moved against the quarter before
-
-### Q10. The note to Meera has five parts: p) the branch to open first, q) the definition of sales, r) what one window cannot show, s) the leaves, t) the typical order. In which order does she read them?
-
-a) q, s, t, p, r
-b) p, q, s, t, r
-c) q, t, s, r, p
-d) s, q, t, p, r
+a) Rs 38,139, a fall of 6.5 percent
+b) Rs 61,570, a fall of 5 percent
+c) Rs 38,751, a fall of 5 percent
+d) Rs 60,597, a fall of 6.5 percent
 
 ---
 
-## The sentence to Meera
+## Which branch holds on delivered orders, once the window's edge is counted?
 
-Write one sentence, under 60 words, that gives the window, the customers, orders per customer, the
-typical order, the branch you would open first and what you would hold until Tuesday. Paste it after
-your two lines.
+The head of Retail-Plus owns the members who return, so he needs the one-time buyers, and the recent
+ones among them, counted on the reading Anand's books use.
 
-## Hands-on
+### Q6. Compute: of the delivered customers who kept only one order, how many placed it fewer than 45 days before 26 September, too recently to judge?
 
-Each of the notebook's twelve TODO cells carries a lettered choice above its placeholder. Post your
-twelve picks as one more line after your sentence, in TODO order, and run the notebook top to bottom: every check should
-print PASS before you post.
+Write the number.
+
+### Q7. On delivered orders, which branch should Meera open first?
+
+a) Acquisition, since few delivered customers kept a second order at all
+b) Frequency, since the delivered rate stays close to the booked 1.30
+c) Order value, since the delivered mean order rose to Rs 24,800
+d) Frequency, with the cancelled and returned repeat orders as its leak
+
+### Q8. Which line tells Anand what moved and what held between booked and delivered?
+
+a) Everything held, so the reading of sales never mattered to the answer
+b) Orders per customer fell; the typical order and the branch held
+c) The typical order doubled, so the branch moves to order value
+d) The branch moved to acquisition, since frequency fell on delivered orders
+
+### Q9. Design. Anand will read the note at the board, where booked is Rs 5,44,810 and delivered Rs 5,20,790, Rs 24,020 apart. Which reading of sales goes in its headline, and what goes beside it?
+
+a) Delivered, as his books count what stayed sold, with booked and the walk beside it
+b) Booked, since the chapters and the plan were sized on it, with delivered in a note
+c) Not cancelled, since it sits between the other two and splits the difference
+d) Delivered alone, since two readings of sales on one page confuse a board
+
+---
+
+## What sentence goes to Meera on delivered orders?
+
+This sentence reaches Meera before she decides on the Rs 12 crore, and Anand checks it against his
+books, so it carries chapter 6's four parts and says what moved and what held.
+
+### Q10. What one sentence, under 70 words, goes to Meera in chapter 6's four parts on delivered orders: the evidence with its window and reading of sales, the branch, what one quarter cannot show, and what happens to the Rs 12 crore?
+
+Write it, and paste it after your two lines.
+
+---
+
+## How do the notebook's picks go into your post?
+
+Each of the notebook's nine TODO cells carries a lettered choice above its placeholder. Post your
+nine picks as one more line after your sentence, in TODO order, and run the notebook top to bottom:
+every check should print PASS before you post.
 
 **In the interview.** [D] Marketing wants budget for acquisition; what would you check before
 agreeing it is the right branch, and how would you say no?

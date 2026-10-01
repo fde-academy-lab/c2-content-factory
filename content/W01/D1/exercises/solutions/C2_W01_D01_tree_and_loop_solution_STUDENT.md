@@ -1,48 +1,55 @@
-# Solution: the tree on the board, then orders and revenue in one loop
+# Which letters answer the guided walk through the tree and the first loop?
 
 Answers: 1c 2a 3b 4d
 
-## The idea being tested
+Kalpa Retail's revenue grew 4 percent last year against a 15 percent plan, and marketing has asked
+Meera Raghavan, the CEO, for Rs 12 crore to acquire new customers, so she asks what sales is made of.
+The file holds Kalpa's 30 orders from 1 July to 26 September 2026, each a record of seven fields, among
+them the customer id, the amount and the status: delivered, returned after delivery or cancelled before
+it left the shelf. Booked revenue counts every order placed, whatever its status.
 
-The tree comes before the code. Revenue is customers times orders per customer times revenue per
+## What does the walk test about the tree and the first loop?
+
+The tree comes before the code: revenue is customers times orders per customer times revenue per
 order, and revenue per order is items per order times price per item, less discounts. Each branch
-is a metric with a numerator and a denominator, and each costs something different to move.
-Marketing's Rs 12 crore is a bet on the first branch. The loop is the calculator that fills two of
-the numbers: it runs once per row, and a row is an order, so it counts orders and sums booked
-revenue.
+is a metric with a numerator and a denominator, and each costs something different to move, so
+marketing's Rs 12 crore is a bet on the first branch. The loop is the calculator that fills two of
+the numbers: it runs once per row, a row is an order, and with no test on the status it counts
+every order and adds up booked revenue.
 
-## The table, filled
+## What goes in the table of numerators and denominators?
 
 | Branch | Numerator | Denominator | Today's number |
 |---|---|---|---|
-| Customers | Distinct customer ids | None, since it is a count | Round 2 counts it |
-| Orders per customer | Orders | Distinct customers, same window | Round 2 counts it |
-| Revenue per order | Revenue | Orders, same window | Round 3 asks which "typical" is honest |
-| Items per order | Items | Orders | Not in this file, which has no line items |
-| Price per item | Revenue before discounts | Items | Not in this file |
+| Customers | Distinct customer ids | It has none, since it is a count. | Chapter 3 counts it. |
+| Orders per customer | Orders | Distinct customers in the same window | Chapter 3 counts it. |
+| Revenue per order | Revenue | Orders in the same window | Chapter 2 measures it, and chapter 4 asks which middle is typical. |
+| Items per order | Items | Orders | It is not in this file, which has no order lines. |
+| Price per item | Revenue before discounts | Items | It is not in this file either. |
 
-## Item by item
+## Why is each key right, and why does each other option fail?
 
-| Item | Key | Why it holds | Why the others fail |
-|---|---|---|---|
-| 1 | c | Acquisition buys people who were not buying, and that is the customers branch. | a: new buyers add orders through the customers branch, and orders per customer is how often each buyer returns. b: price is set by the business, and acquisition does not move it. d: a first-order coupon is a cost of acquiring, and the branch it moves is still customers. |
-| 2 | a | Orders over distinct customers, with both counted in the same window. | b is the rate upside down. c divides orders by rows, which are orders, so it always gives 1. d is revenue per order, a different branch. |
-| 3 | b | A loop over the list runs once per element, and each element is one order: 30 times. | a counts customers, which the loop does not know about. c and d filter by status, which this loop does not do. |
-| 4 | d | The loop adds every order with no condition on status, so the total is booked revenue, Rs 5,44,810. | a, b and c each need a condition on status that the loop does not have; round 1 adds it. |
+| Item | Key | The question in one line | Why the key holds | Why each other option fails |
+|---|---|---|---|---|
+| 1 | c | Which branch is marketing's Rs 12 crore for new customers a bet on? | Acquisition buys people who were not buying, and that is the customers branch. | a: new buyers add orders through the customers branch, and orders per customer is how often each buyer returns. b: price is set by the business, and acquisition does not move it. d: a first-order coupon is a cost of acquiring, and the branch it is meant to move is still customers. |
+| 2 | a | Which fraction answers how often a customer comes back within the quarter? | It divides orders by distinct customers, both counted in the same window. | b is the rate upside down. c divides by people who registered and never bought in the window, so the rate shrinks for reasons that have nothing to do with coming back. d is revenue per order, a different branch. |
+| 3 | b | How many times does the loop's body run on Kalpa's file? | A loop over the list runs once per element, and each element is one order: 30 times. | a: the fields sit inside each record, and the loop walks records. c: the channel is a field the loop reads, and it does not group by it. d: the body runs once for each element, never once for the list. |
+| 4 | d | Which reading of sales is the total from a loop that adds every order? | The loop adds every order with no test on its status, so the total is booked revenue, Rs 5,44,810. | a, b and c each need a test on the status that the loop does not have; chapter 1 adds it. |
 
-## The part worth arguing about
+## Which item is worth arguing about?
 
 Item 1, option d. Some will argue that an acquisition offer is a discount, and a first-order coupon
 does sit on the discounts branch. What the Rs 12 crore buys is customers, and the coupon is one way
 of paying for them. Placing a spend on the branch it is meant to move, and its cost on the branch
-the cost lands on, is the habit the whole day uses.
+where the cost lands, is the habit the whole day uses.
 
 **Kavya's review.** "Draw the tree before you open the notebook. If you cannot say which branch a
 number fills, you do not yet know why you are computing it."
 
-## Where the pattern lives in production
+## Where do the revenue tree and the counting loop show up at work?
 
-Metric trees, driver trees and the profitability framework are the same drawing under three names.
-Product teams keep one on the wall for their north-star metric, finance teams build plans from one,
-and consulting interviews open with one. The loop with a counter and an accumulator is the shape
-under every SQL COUNT and SUM the programme reaches in Week 2.
+Metric trees, driver trees and the profitability framework are the same drawing under three names,
+and Road to Offer's guide to driver trees and MConsultingPrep's profitability framework, both checked
+29 Sep 2026, each walk through it. At Kalpa the tree carries marketing's Rs 12 crore on its customers
+branch, and Tuesday asks which of its branches moved between two quarters. The loop's counter and
+running total are the shape under the SQL COUNT and SUM the programme reaches in Week 2.

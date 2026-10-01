@@ -53,9 +53,9 @@ renumber script is gone.
 
 | Plant | Where the room meets it | Kept out of |
 |---|---|---|
-| Student holds exactly 12 orders (5 then 7, from 2 customers) | Notebook 03, the empty your-turn cell; ex1 part 3 computes it into a variable and never prints it | Every slide, exercise stem, the Kahoot, the companion page and the study notes |
-| The Retail-Plus gap is borderline and modest | Notebook 01, section 3 (145 of 5,000 flips counting falls, 0.029; 286 either way, 0.057), after a predict prompt; notebook 02 (Rs 24,420, 0.19 percent) | Slides show the share only from the room's run onward (S16 on), after the room has computed it |
-| The monsoon sale lifts the blend 6.1 percent while each segment falls 3.0 percent | Notebook 04, section 3, after a predict prompt; ex1 part 4 and ex2 apply it | The morning slides show an invented two-store reversal (S51) before the room's split (S52); the Kalpa cells appear only on S54, after the run |
+| Student holds exactly 12 orders (5 then 7, from 2 customers) | Notebook 03, the empty your-turn cell in section 3 (morning S47 sends the room there); ex1 part 3 computes it into a variable and never prints it | Every slide, exercise stem, the Kahoot, the companion page and the study notes; where a file needs the finding, it states the rule the room drew (under thirty customers, so a lead) |
+| The Retail-Plus gap is borderline and modest | Notebook 01, section 4 (145 of 5,000 flips counting falls, 0.029; 286 either way, 0.057), after a predict prompt; notebook 02 (Rs 24,420, 0.19 percent) | Slides show the share only from the room's run onward (morning S19 on), after the room has computed it; the chapter 1 map slide (S7) asks the question without a number |
+| The monsoon sale lifts the blend 6.1 percent while each segment falls 3.0 percent | Notebook 04, section 4, after a predict prompt; ex1 part 4 and ex2 apply it | The morning slides show an invented two-store reversal (S61) before the room's split (S62); the Kalpa cells appear only from S63, after the run |
 | Take-home plants: header row as body line 45, -2,400 on KR-02018, 12/05/2026 on KR-02030, empty status on KR-02052, six duplicated ids | The take-home | Named only in the day sheet; the self-check gives numbers and generic decisions |
 
 ## Decisions that depart from a source
@@ -72,7 +72,7 @@ renumber script is gone.
 | Chapter 6 opens the orders file by month (July against August) and designs the hold-back | The row names no month comparison | The spine's sixth chapter is "who got it, who did not, and what else changed"; the orders file carries the months, and the before-and-after trap is the plausible readout a marketing team writes |
 | The textbook paired test runs as one scipy call (`ttest_rel`) in chapter 1's second route, beside the exact count of all 4,194,304 coin patterns; the pooled shuffle and Welch's test appear as the unpaired numbers | The row's stop-before names the t-test family | It appears only as a second route, one library call with no formula, named and deferred; scipy ships with scikit-learn in the Codespace's setup |
 | The bootstrap range resamples the members' own Q1 less Q2 differences and is drawn and named a confidence interval in chapter 2 | The row names the interval at recognition depth and stops before its construction | The resampling loop is the same idea as the flips; its construction proper stays later |
-| Each chapter set's items 1 and 2 run live, and the remaining 26 items open the practice lab, planned at about 85 minutes with a cut order in the TA note | The standard lists the volume without a slot, and facts.yaml gives the lab no length | Thirty-minute chapters cannot hold a ten-minute set; the lab and the evening take the rest |
+| Each chapter set's items 1 and 2 run live; the lab's four problems are its core at about 60 minutes (10, 15, 20 and 15), and the sets' remaining 26 items are its stretch, for early finishers and tonight, with the TA note's cut order kept | The standard asks for about an hour of work, and facts.yaml gives the lab no length; the merged pack planned about 85 minutes | Thirty-minute chapters cannot hold a ten-minute set, and the requester's recheck fill of 30 September 2026 set the core at about an hour with the rest marked stretch; the cut order still sends the stretch home first, chapters 1 to 3's items before 4 to 6's, then shrinks problems 1 and 2, and never cuts problems 3 and 4 |
 | The rule of thumb counts customers: thirty or more customers behind a rate | The row says "under thirty" | More orders from the same few customers add no new evidence, and Student's 12 orders come from 2 customers; the Week 1 Saturday paper's key says "until more customers buy" (coordinator, 30 September 2026). Stated in customers in the note, S39, notebook 03's depth, the workbook's Count tab, the sets and the notes |
 | Chapter 2's trap orders the review by rupees moved, which puts Business first, while the fix sizes the fall only against the company and the offer's cost | Pass 4 removed every Business comparison from the fall's sizing | The fix-pass review asked for the trap's ranking to differ from the fix. The ranking now carries the scale point (by money, Business opens the review), and the fix says Business's rise does not shrink the fall, which is judged against the company's quarter and the offer's cost |
 | The exposure table is read as a separate population: the campaign platform's August list | `docs/07_Client_Zero.md` v2.2 names the exposure table without saying where it comes from | Its ids (C-6000 to C-6159) never meet the order file's (C-2000 to C-5003), so the pack says what it is wherever it is read (fix-pass ruling 3) and sizes each decision on the list it acts on: the offer on Finance's 22 members, the hold-back on the platform's 70 |
@@ -118,7 +118,7 @@ renumber script is gone.
 | Seeing Theory, frequentist inference: https://seeing-theory.brown.edu/frequentist-inference/index.html | Checked 29 Sep 2026, HTTP 200, title "Seeing Theory - Frequentist Inference" | Take-home, study notes |
 | StatQuest video index: https://statquest.org/video_index.html | Checked 29 Sep 2026, HTTP 200, both named videos listed | Study notes |
 
-| Booking.com, 25,000 tests a year: https://hbr.org/2020/03/building-a-culture-of-experimentation | Checked 30 Sep 2026, loads as a paywalled preview carrying the quoted sentence | Chapter 1: notebook, deck S7, notes |
+| Booking.com, 25,000 tests a year: https://hbr.org/2020/03/building-a-culture-of-experimentation | Checked 30 Sep 2026, loads as a paywalled preview carrying the quoted sentence | Chapter 1: notebook, morning deck S9, notes |
 | Booking.com, over 1,000 concurrent and about nine in ten experiments improving nothing: https://hbr.org/podcast/2019/09/at-booking-com-innovation-means-constant-failure | Checked 30 Sep 2026, transcript loads | Chapter 1 |
 | Bing, 12 percent and over 100 million dollars: https://hbr.org/2017/09/the-surprising-power-of-online-experiments | Checked 30 Sep 2026, paywalled preview carries the sentence | Chapter 2 |
 | Microsoft, about a third of experiments improve their metric: https://ai.stanford.edu/~ronnyk/ExPThinkWeek2009Public.pdf | Checked 30 Sep 2026, PDF | Chapter 2 |
@@ -174,7 +174,7 @@ Week 1 Saturday paper's review added two points. Each is logged with what change
 | Item | What it asked | What changed |
 |---|---|---|
 | Ruling 1, the paired design | Retail-Plus compares the same 22 members' Q1 and Q2, so the chance reference flips each member's pair | `flip_gaps` replaces the pooled shuffle in chapters 1, 2, 5 and the escalated case: 145 of 5,000 flips counting falls (0.029), 286 either way (0.057); Retail-Core 0.358 and 0.723. Chapter 1's options size the flips, the pooled shuffle (kept and rejected), the textbook paired test and waiting; its second route counts all 4,194,304 coin patterns (0.027 and 0.055) beside `ttest_rel` (0.0275 and 0.055, t = 2.03 on 21 degrees of freedom), with the pooled shuffle (0.027 and 0.050) and Welch (0.0265 and 0.053) as the unpaired numbers. Chapter 2's bootstrap resamples the members' own differences (Rs 81 to Rs 2,164, 0.016 at or below zero). The companion's walk tosses a coin per member, and its flip machine draws each member's two quarters together beside a pooled shuffle, with a slider for how much members differ. The extras stretch shows the two part on an invented tier where heavy buyers stay heavy (this file's correlation is 0.04). The cheat sheet's panel 3 shows both designs. The pooled label shuffle stays in chapter 6, practice problem 3 and the take-home. Every recurring count moved: S15 to S20, the notes, the day sheet, the escalated case's checks and chapter 1's item 6 |
-| Ruling 2, both directions and a borderline verdict | Report both directions beside every verdict; read the fall as borderline and modest; at Rs 24,420 a quarter, worth watching and not worth acting on alone; drop the hard 0.05 checks; one convention | Every verdict now carries 0.029 and 0.057 (or "about 3 in 100, 6 either way"); notebook 01's checks assert the shares against the seeded counts, and its sentence reads borderline because the question came after the fall; the companion's experiments A and B lost their 0.05 line and its machine reads a direction chosen before the run against bands the page states; the workbook's Share tab reads both directions against a reading agreed before the test; chapters 1 and 6 both report the two directions for the same reason, stated in each |
+| Ruling 2, both directions and a borderline verdict | Report both directions beside every verdict; read the fall as borderline and modest; at Rs 24,420 a quarter, worth watching, and not worth acting on alone; drop the hard 0.05 checks; one convention | Every verdict now carries 0.029 and 0.057 (or "about 3 in 100, 6 either way"); notebook 01's checks assert the shares against the seeded counts, and its sentence reads borderline because the question came after the fall; the companion's experiments A and B lost their 0.05 line and its machine reads a direction chosen before the run against bands the page states; the workbook's Share tab reads both directions against a reading agreed before the test; chapters 1 and 6 both report the two directions for the same reason, stated in each |
 | Ruling 3, the exposure table's population | Say what the exposure table is wherever it is read; settle the 22 against 70 and Rs 5,000 against about Rs 1,139 head-on | One sentence, the campaign platform's August list under its own ids that cannot be matched to Finance's order file, now opens S48, notebook 04, the escalated case's part 4, notebook 06, half2 S3 and S10, and the notes' chapter 4; notebook 04 no longer calls it an order sample; notebook 06, S10, the notes and the day sheet meet the two lists head-on (the offer priced on "the whole tier" of 22 and tested on half; the hold-back 14 of 70); logged in the invented list for a v2.3 note |
 | S3, case checks | The case notebooks' checks printed their keys | The case builder writes each check in a later cell that tests the computed value against the number it should reach, and no check reads a key or a line of text; `--verify` swaps every wrong option in and a check fails for each, except ex3's TODO 2 option b, which crashes with Monday's TypeError on purpose |
 | S4, cues and lengths | Later stems announced earlier keys; chapter 1's item 5 leaked; chapter 6's item 7 sat on the diagonal; the longest option was always wrong | All six sets rewritten: no stem gives away another item's key, chapter 6's match item keys off the diagonal (A3, B4, C1, D2), and across the 38 chapter items the key is tied longest seven times, shortest or tied shortest seven times and in the middle 24 times; the lab and the Kahoot rebalanced the same way; the distractor audit passes on all eight option files |
@@ -199,3 +199,146 @@ Proof run before the push: `python3 scripts/verify.py content/W01/D4 --execute`,
 decks rebuilt with `scripts/build_deck.py` and checked by `scripts/deck_check.py`, every changed
 notebook executed cold, and the tic scanner on every changed markdown file. Every one passed on
 30 September 2026: verify with `--execute` reported zero failures, with 116 notebook checks passing.
+
+## The v3 recheck, 30 September 2026
+
+The merged pack (pull request 201, commit bda418a) was rechecked to standard v3 (decisions
+`question-ladder`, `self-contained`, `humanizer` and `opus-max`) from the recheck prompt in
+`prompts/week_revamp_W02_W03.md`, section 1, on branch `w01-d4-v3`, restarted from main after a
+first session stopped at the usage limit without pushing. The fills: Week 1 Thursday, Thu 8 Oct
+2026; the later days' traps (Friday's traps in new places and a reconciliation skipped under time
+pressure; Week 2's fan-out, INNER join, whole-table ranking, LAG without PARTITION, doubling merge and
+double-counting pivot); and four specifics: keep the merged numbers and verdict exactly, keep the
+exposure table's one sentence without spreading it, fit the practice lab's core to about 60 minutes
+with the rest marked stretch and the TA note's cut order kept, and rebuild both decks on the cover's
+chapter strip from pull request 200.
+
+**Read first, in this order.** `CLAUDE.md`; `the-standard.md` (the question ladder, the self-contained
+rule, the decks); `.claude/skills/humanizer/SKILL.md`; the Thursday row of the spine and of the
+tracker; this provenance; and, for the form, the sibling rechecks in progress on `origin/w01-d3-v3`
+and `origin/w01-d5-v3` (their ladder slide after the cover, their "Answered in six questions" map
+slides, their question-titled afternoon sections and their notebooks' closing answer cells).
+
+**The ladder.** The day's question, in Meera's words: is the Retail-Plus fall real, is Student's 40
+percent worth budget, and did the monsoon sale work? The day sheet prints the whole ladder at its
+top, and every family carries it word for word.
+
+| Chapter, as its opener asks it | Its full question | Notebook | Deck | The spine's rung |
+|---|---|---|---|---|
+| 1. Real, or the wobble? | Is the Retail-Plus fall real, or the wobble Kalpa sees every quarter? | `01_real_or_wobble` | Morning, SECTION 1, S7 to S24 | A shuffle test on the Retail-Plus gap |
+| 2. Worth acting on? | The fall edges past chance: is it big enough, in rupees against what a fix costs, to act on? | `02_worth_acting_on` | Morning, SECTION 2, S25 to S38 | Real against worth acting on |
+| 3. How many behind 40%? | Student is up 40 percent, the fastest rise on the page: how many customers stand behind it, and should budget move there? | `03_count_behind_the_rate` | Morning, SECTION 3, S39 to S53 | 40 percent on twelve orders |
+| 4. Did the discount work? | Marketing says the monsoon sale lifted revenue 6 percent: did the discount work, or did those customers buy anyway? | `04_discount_by_segment` | Morning, SECTION 4, S54 to S66 | The monsoon discount split by segment |
+| 5. What goes on the page? | Three answers are in: what goes on Meera's one page, and when is "not yet" the honest answer? | `05_the_note` | Morning, SECTION 5, S67 to S79 | The one-page note that may say "not yet" |
+| 6. What would settle it? | Marketing wants the sale again for more of the base: who got it, what else changed, and what would settle it at Diwali? | `06_fair_comparison` | Afternoon, SECTION 6, S2 to S15 | The sixth chapter: who got it, who did not, what else changed |
+
+**What each family changed.**
+
+| Family | What the recheck did |
+|---|---|
+| Chapter notebooks | Each title is `# n. <full question>`; the first cell restates what the chapters before found, with the numbers, and gives Who needs the answer and the six questions on the way; the six sections are numbered question headings (the options section is question 1, the second route question 6); the interview and depth headings ask; a closing markdown cell answers each question in one line with its number, before `kit.check_summary()`. The real-company lines carry their sources and check dates inline. Only markdown, the map cell's labels and chapter 3's section references changed, so every printed output is identical to the merged notebooks' (checked stream by stream), and chapter 5's dashboard still counts 506 words |
+| Decks | Morning: the day's question and the six chapter questions on S1 after the cover; each SECTION title is the chapter's short question with the full question as its promise; a map slide per chapter, titled "Answering it ..." for its reader, with Who needs the answer and a timeline of the six questions; subtitles ask and titles answer throughout; a code slide or a code block per build step; the Retail-Plus flips (S19) and Student's coin-flip worlds (S49) drawn as results; closes that answer each smaller question beside Kavya's review. Afternoon: the morning's five answers on S1; chapter 6 in the same form; the case, debrief, second case, drill and close as question-titled sections, the close (S27) answering the day's question. Body slides added per chapter against main: chapter 1 three (map, code, result), chapter 2 two (map, predict with code), chapter 3 four (map, predict with code, result, and the trap on its own slide after the headline, S43a), chapter 4 two (map, result), chapter 5 three (map, each number's partner, the audit's logic), chapter 6 two (map, code), plus the ladder slide after the morning cover, the morning's answers opening the afternoon (S1), and the list-price answer on its own slide in the second case (S23a), whose first slide is now its map. The morning deck carries 81 body slides against 66 on main, and the afternoon 31 against 27 |
+| Exercises, lab, take-home, Kahoot | Every title and item heading asks; each file carries its scenario, terms and the earlier chapters' findings; solution files give each item its own section with the stem, the key quoted and why each other letter fails; the pushback case's "moves" became parts; the case notebooks' checks and helpers stopped announcing keys (ex1's `revenue()` over the learner's `kept(o)`, ex2's `like_for_like(s)`, ex3's `share_kept` and `plus_k`, and ex1 part 3's check against the exact count of every deal); strawman distractors replaced with plausible wrong answers, every key unchanged |
+| Practice lab | The four problems are the core, about 60 minutes (10, 15, 20, 15); the chapter sets' remaining 26 items are the stretch; the TA note keeps the cut order |
+| Day sheet | The ladder at its top with the day's answer; every heading a question; the new slide numbers; the escalated and second cases' part questions in the ladder |
+| Study notes | The title is the day's question; each chapter is `## Chapter n.` with its full question, Who needs the answer, its six questions and a `###` subsection for each, word for word with the ladder (checked by script), closing on its answer; the last section answers the day's question with the model sentence to Meera; Meera's message, Kavya and every term are introduced where first used; Student's count appears only as "fewer than thirty customers"; the unsupported line "In Week 2 a hold-back becomes a SQL query" is gone. About 5,300 words of prose against 4,550 before, the growth being the ladder's questions and answers |
+| Cheat sheet | Every panel heading asks; the crux lines stay word for word; panel 1 names Meera's three numbers. The anchor is now the notes' and deck's left-to-right picture with a per-diagram `wrappingWidth` so labels stay on one line: with the old top-to-bottom anchor, `scripts/build_cheatsheet.py` sized labels near its 5.2-point floor and dropped the vocabulary strip from the PDF while reporting one page, which the merged sheet also did |
+| Board work, pre-read, extras | Question headings throughout; the pre-read opens on Kavya's terms for Friday and teaches none of Friday's traps; the extras' stretch carries `flip_gaps` and `shuffle_gaps` so it runs alone, and states the heavy-buyer tier's numbers as rerun (Rs 314; 0.004 and 0.007; 0.24 and 0.49; 0.95); the recovery drill points to notebook 1's sections by their questions |
+| Companion page and workbook | The page's title, headings, walk steps and experiment cards ask their questions, its behaviour and library blocks unchanged; each workbook tab's A1 asks its question and the start tab lists them (sheet names cannot hold a question mark), with no input, check or verdict cell moved, so the recalc manifest's cells stand |
+
+**Numbers the recheck corrected (no key changed).** Chapter 1 set, item 6: "about Rs 310" became Rs
+314, and option a's "pooled 0.17" became 0.24, recomputed with `Random(21)` (fall 314.1; pooled 0.243
+and 0.488; flips 0.004 and 0.007; correlation 0.9525); its solution's "Rs 430" and "about 0.9"
+became Rs 314 and 0.95. Chapter 3 solution, item 2: the reasons for b (13 over 10) and c (4 over 11)
+now name the arithmetic each wrong letter does. The ex1 and ex3 marker 3 reasons for option a say it
+counts nearly every world. The ex3 close reads "five of eight cancelled or returned, averaging about
+Rs 3,800", checked against the sample. The lab's model note is 94 words counted without its part
+labels. Ex1 marker 6's option d carries its figure, Rs 1,025 apart. The chapter 4 set's Berkeley line
+follows the abstract, the chapter 6 set's eBay line the notebook's sourced wording, and the chapter 1
+set's Booking.com line this provenance's facts.
+
+**New figures drawn on slides, and how they were computed.** Morning S19: the 5,000 Retail-Plus flips
+(seed 2026) in bins of Rs 250 centred from -1,500 to 1,500, counts 26, 99, 205, 425, 585, 678, 854,
+773, 598, 388, 225, 98 and 30, with 16 outside the axis; 145 at or above Rs 1,110 and 286 either way,
+as in notebook 1. Morning S49: Student's orders dealt by coin 5,000 times (seed 2026): 1,882 worlds
+fell, 1,133 rose under 40 percent and 1,985 rose 40 percent or more (0.397); Retail-Core's 73 orders
+430 (0.086). Both recomputed from the notebook's own helpers on 30 September 2026. The morning
+deck's Retail-Core chart (S17) recomputed to the same counts as the merged slide.
+
+**Decisions this recheck made.**
+
+| Decision | Why |
+|---|---|
+| Map slides are titled "Answering it ...", naming who the answer is for | `scripts/deck_md_check.py` treats a SECTION heading ending in a question mark as a question slide and wants the next slide's title to start with "Answer"; the first review asked each map slide to name its reader, and a shared-tool change would let a map slide carry any title |
+| The code slides show the logic in short form | S16, S30, S48, S62 and S12 in the afternoon are the notebooks' steps cut to four or five lines; S48 leaves out the world with no Q1 orders, which its notes name, and S75's audit tests fewer words than notebook 5's, which the slide says |
+| The chapter questions are the day's own wording | The spine names the rungs; the ladder turns each into a plain question in the stakeholder's words, and the day's question joins Meera's three |
+| The afternoon deck opens on the morning's five answers | The self-contained rule: a learner who missed the morning follows chapter 6 from the afternoon deck alone |
+| No Student count appears on any slide or map | The map slides ask their questions without numbers; results appear only after the room's run (S19, S49 and S63 on); chapter 3's close states the rule the room drew, under thirty customers |
+
+**Tool versions for this recheck.** Python 3.11.15, nbclient 0.11.0, nbformat 5.11.1, scipy 1.17.1,
+python-pptx 1.0.2, mermaid-cli 12.0.0, LibreOffice 24.2.7.2 with Carlito installed in the session
+(`apt-get install fonts-crosextra-carlito`).
+
+**The first review, and what each finding changed.** One fresh read-only reviewer read the pack at
+e9d6c11: every heading in order, three files opened alone (the pushback brief, the practice lab set
+and notebook 5, drawn at random), all 123 rendered slides, the humanizer's patterns in every prose
+file, the four specifics, the plants and the later days' traps. It returned 40 findings, six of them
+major, and found no plant named and no later day's trap taught. The fixes are in 9b8c78f
+(notebooks), 79459a7 (decks and day sheet), ef580ab (reading family), 4ce6f28 (exercise family),
+cf1f1d6 and be8cc6d (decks rebuilt).
+
+| Finding | What changed |
+|---|---|
+| Major: afternoon S23 gave the second case's part 4 answer before the pairs worked it | S23 asks the question with the answer box empty; S23a gives about Rs 2,886 and some 10 percent less paid, shown only after the pairs' replies, as the day sheet says |
+| Major: the pushback brief carried no exhibit | The brief prints the four cells with customers and spend, one line per marker saying what it asks, and part 4's pricing basis: Marketing's own 6 percent on the unexposed averages, Rs 300 per held-back Retail-Plus customer and Rs 120 per Retail-Core customer; ex2's part 4 says the same |
+| Major: notebook 5's dashboard counted its sibling notebooks' saved outputs, so alone it counted 0 words | The dashboard is a stated 506 words, counted when the pack was built; the cell recounts it and checks the count whenever the four sibling notebooks sit beside it |
+| Major: morning S14 and S36 drew bars up from a negative axis floor, so a loss looked like a gain | S14 is a table of the ten tosses against the real Rs 880; S36 prints the offer's net at a quarter, 45 percent and three quarters won back as figures |
+| Major: the exposure sentence had spread to four files that did not carry it at bda418a | Removed from the chapter 6 set, the escalated brief and the ex2 notebook and its solution, and from ex1's first cell, which had gained it too; the escalated solution's paraphrase went. The sentence now sits only in the files that carried it on main |
+| Four sixth questions leaned on "agree" or on a metaphor | Chapters 1, 3, 4 and 6 now name what the second route is checked against, word for word in the notebooks, the decks' subtitles, the notes and the day sheet's ladder; chapter 3's asks for the flips' reading, since its exact count gives 0.387 and its real handfuls 0.344 against the flips' 0.397 |
+| Deck subtitles drifted from the ladder; the map slides shared one generic subtitle; titles did not answer with their number | Every smaller question is a subtitle word for word and every full question sits on its SECTION slide (checked by script); each map slide asks who needs its chapter's answer; fifteen titles now carry their number or name their thing |
+| Generic headings, and terms used before the file explained them | The solutions, briefs, take-home, extras and notes name their idea or item in each heading; the lab title, cheat sheet panels, pre-read, board work, notebook 6's depth heading and the solution openings define their terms first |
+| Kavya was never introduced | Every notebook introduces her before her first review, the decks on a slide (morning S6, afternoon S1), the cheat sheet and the companion page where she first appears |
+| Crowded closes and slides; pictures that carried nothing | The interview strips moved off the chapter closes to a slide inside each chapter (morning S22, S36, S50, S64 and S77, afternoon S13); the four empty letter boxes (afternoon S19) became the drafts as a table, the tag legend (S24) a line, the seconds (S26) a table, and Kavya's words (S30) a quote; morning S50, left with no picture once its restating diagram went, shows the two rates as figures |
+| About 30 humanizer patterns | Sayings, one-line closers, contrasts, rows of fragments, staged run-ups, decorative bold labels and remarks about the document were rewritten or cut in the notebooks, decks, notes, pre-read, board work, companion page, solutions, chapter sets, index and Kahoot |
+| The verdict's comma dropped in four places; chapter 2's interview answer rounded Rs 24,420 | "worth watching, and not worth acting on alone" word for word everywhere; Rs 24,420 and 0.19 percent exactly |
+| The companion page and the notes' self-check showed the pooled shuffle for a quarter-to-quarter fall | Both flip the same members' pairs; the pooled shuffle stays only where the customers differ |
+| Part 3's question read "look like like for like"; the afternoon deck gave Marketing's role ten minutes against the brief's eight | Part 3 asks "Compared like for like, how do exposed and unexposed customers differ, and how many stand behind each?" in the brief, ex2, its solution and the day sheet, and the deck's map card gives it in short form as it does parts 1 and 2; the role is played for the pairs' last six minutes everywhere, once the second review fitted the case inside its forty |
+| The workbook's bold row labels are statements, and the Count tab used "lead" unexplained (optional) | The Count tab's heading asks its question and its first line defines a lead; the row labels stay, because they name input and check cells the recalc manifest pins |
+| The pre-read gives Friday's lab about two hours against the spine's 150 minutes | Kept: main's Friday day sheet gives the lab 120 minutes, and that is the session the room will sit |
+
+**The second review, on what other files repeat.** A second fresh read-only reviewer checked only
+the changes after the first review (`ea20f97` to `5151395`) to methods, keys and numbers that other
+files repeat: notebook 5's dashboard, the second case's four cells and part 4, every key, the practice
+lab's core, the four reworded sixth questions, chapter 1's five-seed range, the merged figures and
+sentences, and plants in the changed STUDENT lines. It recomputed the second case from the exposure
+file, recounted the dashboard at 506, found every key identical at `ea20f97`, HEAD and main, and ran
+the case builder's `--verify` on a scratch copy. It returned one blocking finding and six minor ones,
+fixed in c5ed6a6.
+
+| Finding | What changed |
+|---|---|
+| Blocking: notebook 5 recounted chapters 1 to 4's saved output whenever they sat beside it, which in a Codespace is always, and chapter 3 ships two empty cells the room fills and runs on S47, so whatever they print moves the count; with the expected answers the reviewer's recount read 531, and the check would have failed in class | Notebook 5 states 506 as the count the pack shipped with; the builder holds `DASHBOARD_WORDS`, writes it into the cell, and recounts the four saved notebooks before it builds notebook 5, stopping if the count has moved |
+| Morning S32's note gave Retail-Core Rs 47,600 | Rs 47,550, from the orders file: Rs 51,300 in Q1 less the Rs 3,750 fall |
+| Notebook 4's map labelled question 6 "One mix, the same answer?" where the deck says "On one mix, still apart?" | The notebook's label follows the deck |
+| Chapter 3's sixth question asked whether the routes "give the flips' share" and every file answered yes, though the handfuls give 0.344 against 0.397; "every split" and "every deal" named the same thing | The question asks for the flips' reading, "Do an exact count of every way the orders could split between the quarters, and real Retail-Core orders, give the flips' reading?", and each answer says every route finds chance making such a rise a third of the time or more on a count this small; "deal" is the chapter's one noun, as its exercise items, cheat sheet and chapter 6 already use it |
+| Afternoon S21's note had the pair answer with "chapter 6's design and its price", which priced Retail-Plus alone, where part 4 prices both segments | The note says the design is priced on this list for both segments, as part 4 asks, and gives no figure before the pairs work it |
+| The second case's slides ran on top of the brief's forty minutes of parts, eight minutes over on main and eleven once S23a arrived | Four minutes on S21 and S22, thirty-four in pairs at 6, 7, 10 and 11 minutes with S23 opening part 4, and two on S23a after the replies; the role is played for the pairs' last six minutes; the brief, ex2, the deck's notes and the day sheet agree |
+| Three provenance lines overstated: the cheat sheet quotes none of the sixth questions, the fix pass's ruling row lacked the verdict's comma, and the deck's part 3 card is a short form | Corrected in this file |
+
+**The proof, 30 September 2026, on the pack as committed after c5ed6a6.**
+
+- `python3 scripts/verify.py content/W01/D4 --execute`: exit 0, "RESULT: PASS (0 failures)", with no
+  FAIL or WARN line. 59 files named and filed for a teaching day; the six chapter notebooks and the
+  three case solutions cold-run clean, the three TODO twins left out by design; 12 notebooks with 116
+  checks passing; 8 option files audited; the workbook's 6 verdicts computed and 12 decisions
+  flipped; 37 companion controls clicked, 0 inert, 0 console errors; the decks' markdown at 86 and 37
+  slides with 27 and 12 diagrams; 125 built slides with 0 overflowing boxes.
+- `python3 scripts/build_companion.py content/W01/D4 --check`: the library is current.
+  `python3 scripts/sync_programme.py --check`: every output is current.
+- The case builder's `--verify` on ex1, ex2 and ex3: every key runs with no failing check, and every
+  wrong option is caught, ex3's option 2b by its intended TypeError.
+- The tic scanner, run file by file since it reads only its first argument: clean on the 34 markdown
+  files, both decks, the builders, the twelve notebooks' text and the companion page's text.
+- Both decks rebuilt from their markdown, rendered through LibreOffice and looked at slide by slide,
+  87 and 38 slides.
+- The six chapter notebooks print exactly what the merged notebooks on main print, stream by stream.
