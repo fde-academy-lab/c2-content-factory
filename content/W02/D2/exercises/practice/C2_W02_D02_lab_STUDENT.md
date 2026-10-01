@@ -1,9 +1,14 @@
-# Practice lab: joins that tell the truth
+# Do the day's joins still tell the truth on refunds, and on a quarter the day never touched?
 
-About 60 minutes, run by your TA after the day's teaching blocks. Four problems, climbing. The first
-three run on small invented tables written for this lab; the fourth runs on the warehouse, on a
-quarter the day never touched. Work alone first, then compare with a neighbour before the TA walks
-the answers.
+Your TA runs about 60 minutes of this set after the day's teaching blocks.
+Today the tentative faculty block takes the afternoon's last 120 minutes, so the lab opens on the
+escalated case's parts 3 to 5 (`unguided/C2_W02_D02_escalated_STUDENT.md`), then runs this set's
+problems 1 to 3, the second case in pairs (`unguided/C2_W02_D02_second_case_STUDENT.md`) and the
+interview drill aloud; problem 4 and whatever is left go home with the take-home. The set has four
+problems, and they climb in difficulty. The first three run on small invented tables written for this
+lab; the fourth runs on the warehouse, on a quarter the day never touched. Work alone first, then
+compare with a neighbour before the TA walks the answers. An item marked Design asks you to size
+competing fixes and choose one.
 
 The question over the whole lab is the one Anand asked in the morning, turned to a new corner of the
 book: what did we book, what happened to it afterwards, and how do you know the number is not
@@ -17,7 +22,7 @@ Post exactly this shape: xxxxxxxxxxx
 
 ---
 
-## The lab's invented tables
+## Which tables does the lab run on?
 
 The returns desk has sent six Q1 web orders and the refund rows raised against order ids in their
 range. Every number here is invented for the lab.
@@ -62,7 +67,9 @@ INSERT INTO lab_refunds VALUES
 
 ---
 
-## Problem 1. Predict four row counts, about 10 minutes
+## Problem 1. How many rows does each join return on the refund tables?
+
+Allow about 10 minutes. Before you trust any join at work, you predict its row count aloud.
 
 Write your four numbers on paper before you run anything. Then run the four joins and mark each
 prediction right or wrong, with the row that surprised you.
@@ -97,7 +104,9 @@ d) 5, one row per refund, the larger table's count
 
 ---
 
-## Problem 2. Match five business questions to the join, about 10 minutes
+## Problem 2. Which join answers each of five business questions?
+
+Allow about 10 minutes. At work you choose the join from the question, before any SQL is typed.
 
 Items 5 to 9 share the same four options, and an option may answer more than one item.
 
@@ -115,7 +124,7 @@ b) LEFT JOIN, every order kept
 c) Anti-join, unmatched orders
 d) FULL JOIN, both sides' orphans
 
-### Q7. Kavya asks: "Which Q1 web orders have no refund at all, so we can sample them for the satisfaction survey?" Which join answers it?
+### Q7. Kavya Nair, the team's senior analyst, asks: "Which Q1 web orders have no refund at all, so we can sample them for the satisfaction survey?" Which join answers it?
 
 a) INNER JOIN, matched pairs only
 b) LEFT JOIN, every order kept
@@ -138,7 +147,9 @@ d) FULL JOIN, both sides' orphans
 
 ---
 
-## Problem 3. The refund rate that came out low, about 15 minutes
+## Problem 3. Is 16.3 percent the right Q1 refund rate for these six orders?
+
+Allow about 15 minutes. At work, even a plausible rate gets read back to the rows that made it.
 
 Anand wants the Q1 refund rate on these web orders: refunded value over booked value. A teammate
 sends this, and reports 16.3 percent:
@@ -150,33 +161,36 @@ SELECT count(*) AS rows_out,
        round(100.0 * -sum(r.amount) / sum(o.amount), 1) AS refund_rate
 FROM lab_orders o
 LEFT JOIN lab_refunds r ON r.order_id = o.order_id
-WHERE r.refund_date BETWEEN '2026-04-01' AND '2026-06-28';
+WHERE r.refund_date BETWEEN '2026-04-01' AND '2026-06-30';
 ```
 
 | rows_out | booked | refunded | refund_rate |
 |---|---|---|---|
 | 4 | 1,15,900 | 18,900 | 16.3 |
 
-### Q10. What is wrong with the booked figure of 1,15,900, which is what the rate divides by?
+### Q10. Which orders make up the booked figure of 1,15,900 that the rate divides by?
 
-a) Nothing, since 1,15,900 is what the orders table holds
-b) The WHERE drops the unrefunded orders, and nothing more
-c) The WHERE drops unrefunded orders, and W-3 counts twice
-d) W-3 counts twice, and every order is otherwise present
+a) all six orders, each of them counted once
+b) the three refunded orders, each counted once
+c) the refunded orders, with W-3 counted twice
+d) all six orders, with W-3 counted twice
 
-### Q11. With both faults fixed, what is the honest Q1 refund rate on these orders?
+### Q11. What Q1 refund rate should Anand be given for these six orders? (Design)
 
-a) 15.3 percent, once the date filter moves into the ON clause
-b) 25.0 percent, 18,900 refunded over 75,600 booked
-c) 16.3 percent, since the refunded total never changed
-d) 26.2 percent, counting the W-7 refund in the total
+a) 15.3 percent, 18,900 over 1,23,600
+b) 25.0 percent, 18,900 over 75,600
+c) 16.3 percent, 18,900 over 1,15,900
+d) 26.2 percent, 19,800 over 75,600
 
-Then write the corrected query yourself, so that it returns six rows, booked 75,600 and the rate you
-chose. Put the reconciliation above it as a comment block: orders in, rows out, and the difference.
+Then write the corrected query yourself and check that it returns the rate you chose. Put the
+reconciliation above it as a comment block: orders in, rows out, and the difference.
 
 ---
 
-## Problem 4. Booked against collected for Q1, about 25 minutes
+## Problem 4. What did Q1 collect against what it booked, and how do you prove it?
+
+Allow about 25 minutes. At work this is the month-end report, rerun on a period nobody checked for
+you.
 
 The day's escalated case ran on Q2. Anand now asks for the same report on Q1, the quarter the day
 never touched: "Show me, by channel, what we booked in Q1 and what we collected against it, and
@@ -189,8 +203,8 @@ On the warehouse, write and run:
    written above the query before you run it.
 3. The Q1 unpaid list and the Q1 double-paid list, each with its count and value by channel.
 4. The report by channel with three checks that return true: rows out equals rows in, booked minus
-   collected equals the unpaid total, and collected plus the surplus posted twice equals what the
-   feed posted against Q1 orders.
+   collected equals the unpaid total plus anything paid short, and collected plus the surplus posted
+   twice equals what the feed posted against Q1 orders.
 5. One sentence to Anand that gives the Q1 collected number and says how you know it is honest.
 
 Stretch, if you finish early: the refunds table holds refunds raised against Q1 orders. Add refunded

@@ -1,37 +1,38 @@
-# Booked against collected, as it goes up on the board
+# What goes up on the board on Week 2 Tuesday, drawing by drawing?
 
-The board work for Week 2, Tuesday, in the order it is drawn. The deck, the notebooks, the companion
-page and the cheat sheet carry the same bridge, so the drawing a learner copies here is the one they
-meet everywhere else today. Every number on the tiny tables is invented.
+Every number on the tiny tables is invented, and the bridge drawn here is the one the deck, the
+notebooks, the companion page and the cheat sheet carry.
 
 ---
 
-## First drawing: Anand's two words, and the grain under each table
+## What are Anand's two words, and what is one row under each?
 
 `BOOKED` goes on the left of the board and `COLLECTED` on the right, with a gap between them and
-Anand's question written in it: **which orders, and which channel?**
-
-Under each word goes the table it comes from and what one row of that table stands for.
+Anand's question written in it: **which orders, and which channel?** Under each word goes the table it
+comes from and what one row of that table stands for.
 
 ```mermaid
 flowchart LR
-    O["<b>orders</b><br/>one row per order"] -->|"order_id"| P["<b>payments</b><br/>one row per payment event"]
-    P -.-> Q["<b>can order_id repeat here?</b><br/>instalments, retries"]
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    O["<b>orders</b><br/>one row per order"] -->|"paid once"| M1["<b>one match</b><br/>one row out"]
+    O -->|"two payment rows"| M2["<b>two matches</b><br/>two rows out"]
+    O -->|"never paid"| M0["<b>no match</b><br/>kept or dropped?"]
+    P["<b>payments</b><br/>one row per payment"] -->|"its order is missing"| X["<b>a payment alone</b><br/>kept or dropped?"]
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
-    class O,P known
-    class Q unknown
+    class M2 bad
+    class M0,X unknown
 ```
 
 The platform lead's remark goes beside the payments box in the room's words: the feed sometimes
-double-posts when the gateway retries.
+double-posts when the gateway retries. The four reconciliation lines go in a box in the corner and
+stay up all day: rows in, rows out, the difference named, then the number.
 
 ---
 
-## Second drawing: the two tiny tables, traced by hand
+## Which payment belongs to which order on the two tiny tables?
 
-Five invented orders on the left and seven invented payments on the right, with a line drawn from each
-payment to the order it names. The room calls out each line before it is drawn.
+Chapter 1. Five invented orders on the left and seven invented payments on the right, with a line
+drawn from each payment to the order it names. The room calls out each line before it is drawn.
 
 ```mermaid
 flowchart LR
@@ -53,31 +54,30 @@ The pink boxes are the three awkward rows: T-4 has no line, P-7 has no order, an
 
 ---
 
-## Third drawing: four joins, four answers about the unmatched rows
+## What does each join do with the rows that find no partner?
 
-The room predicts each count before the trainer writes it.
+Chapter 1. The room predicts each count before the trainer writes it.
 
 | Join | What happens to T-4 and P-7 | Rows |
 |---|---|---|
-| INNER | Both vanish, and T-2 and T-3 each appear twice. | 6 |
-| LEFT | T-4 stays with NULLs, and P-7 vanishes. | 7 |
-| RIGHT | P-7 stays with NULLs, and T-4 vanishes. | 7 |
-| FULL OUTER | Both stay. | 8 |
+| INNER | Both vanish, and T-2 and T-3 each appear twice | 6 |
+| LEFT | T-4 stays with NULLs, and P-7 vanishes | 7 |
+| RIGHT | P-7 stays with NULLs, and T-4 vanishes | 7 |
+| FULL OUTER | Both stay | 8 |
 
-Under the table, the first crux line: every join answers a question about the rows that do not
-match; choose the join by that question.
+Under the table: start from the table whose every row must survive, which for Anand is `orders`.
 
 ---
 
-## Fourth drawing: the fan-out
+## Why does the first draft collect nearly twice the bookings?
 
-Drawn after the room has seen Rs 19,29,04,410 on the screen against Rs 9,84,00,000 booked.
+Chapter 2, drawn after the room has seen Rs 19,29,04,410 on the screen against Rs 9,84,00,000 booked.
 
 ```mermaid
 flowchart LR
     I["<b>462 Q2 orders</b><br/>Rs 9,84,00,000 booked"] --> J["<b>LEFT JOIN payments</b>"]
     J --> R["<b>678 rows</b><br/>216 orders appear twice"]
-    R --> S["<b>SUM(o.amount)</b><br/>order value counted per payment"]
+    R --> S["<b>sum(o.amount)</b><br/>order value counted<br/>per payment row"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     class I known
@@ -85,27 +85,36 @@ flowchart LR
 ```
 
 Beside it, the fix in one line: bring payments to one row per order first, then join, and 462 rows
-come back out.
+come back out. The word fan-out goes on the "two matches" arrow of the first drawing.
 
 ---
 
-## Fifth drawing: rows in, rows out, and the reconciliation
+## Which moves carry booked to what the feed posted?
 
-Four lines go up in a box, and stay up for the rest of the day:
+Chapter 3. The reconciliation box is filled for Q2, 462 rows in and 462 out, and the plain JOIN trap
+on the tiny tables goes beside it: 4 orders, booked 5,000, posted 6,500, a gap of minus 1,500, and a
+line under "4 against 5". Then the bridge.
 
-1. Rows in: every Q2 order, from `orders` alone.
-2. Rows out: one row per order after the join, equal to rows in.
-3. Booked after the join equals booked from `orders`.
-4. Booked minus collected equals the booked value of the unpaid list.
-
-Beside the box, the INNER trap on the tiny tables: 4 orders, booked 5,000, collected 6,500, a gap of
-minus 1,500, and a line under "4 against 5".
+```mermaid
+flowchart LR
+    B["<b>booked</b><br/>5,800"] --> U["<b>less never paid</b><br/>800, T-4"]
+    U --> S["<b>less paid short</b><br/>0"]
+    S --> C["<b>collected</b><br/>5,000"]
+    C --> R["<b>plus posted twice</b><br/>1,500, T-3"]
+    R --> P["<b>posted in the feed</b><br/>6,500"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class B,P known
+    class U,S,R bad
+    class C bet
+```
 
 ---
 
-## Sixth drawing: WHERE against ON
+## What does a condition on the payments table do in WHERE and in ON?
 
-Two versions of the same LEFT JOIN, side by side, with T-4's row traced through each.
+Chapter 4. Two versions of the same LEFT JOIN, side by side, with T-4's row traced through each.
 
 ```mermaid
 flowchart LR
@@ -122,35 +131,54 @@ payment's key.
 
 ---
 
-## Seventh drawing: a retry against an instalment
+## How is a retry different from an instalment?
 
-T-2 and T-3 go up side by side, each with its two payment rows and the instalment numbers circled:
-T-2 reads 1 and 2, and T-3 reads 1 and 1. "More than one row" catches both; "the same instalment
-twice" catches only T-3.
+Chapter 4. T-2 and T-3 go up side by side, each with its two payment rows and the instalment numbers
+circled: T-2 reads 1 and 2, and T-3 reads 1 and 1. "More than one row" catches both; "the same
+instalment twice" catches only T-3.
 
 ---
 
-## What is on the board when the day ends
+## Is the gap column right, and which check proves it?
 
-The bridge, drawn once on the tiny tables and copied into every notebook:
+Chapter 5. T-4's row, traced through the hurried gap.
 
 ```mermaid
 flowchart LR
-    B["<b>booked</b><br/>5,800"] --> U["<b>less never paid</b><br/>800, T-4"]
-    U --> C["<b>collected</b><br/>5,000"]
-    C --> R["<b>plus posted twice</b><br/>1,500, T-3"]
-    R --> P["<b>posted in the feed</b><br/>6,500"]
+    T["<b>T-4</b><br/>booked 800"] --> C["<b>collected</b><br/>NULL, never paid"]
+    C --> G["<b>booked - collected</b><br/>NULL"]
+    G --> S["<b>sum()</b><br/>skips it"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
-    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class B,P known
-    class U,R bad
-    class C bet
+    class T known
+    class C,G,S bad
 ```
 
-1. The grain of each table, written under its name.
+Beside it: `sum(booked - coalesce(collected, 0))`, with the coalesce circled around `collected`.
+
+---
+
+## Which checks stop the day's wrong reports?
+
+Chapter 6. A grid goes up with the day's five wrong pages as rows and the two suites as columns: the
+plausibility suite lets through the two that hide T-4, the quarter in WHERE and the summed gap, and
+the tie-back suite stops all five. Under it, the
+reporting-day rule in one line: booked leaves with the open line named, and collected is held.
+
+---
+
+## What is on the board when the day ends?
+
+1. The first drawing, with the fan-out marked on its "two matches" arrow and LEFT on its "never paid"
+   arrow.
 2. The four joins and their row counts on the tiny tables.
-3. The reconciliation box, four lines, with Q2's 462 rows in and out.
-4. The bridge above, with an empty copy beside it for Kalpa's Q2, whose two middle moves each learner
-   fills in from their own run.
-5. The five crux lines, written along the bottom edge.
+3. The reconciliation box, with Q2's 462 rows in and out.
+4. The bridge on the tiny tables, with an empty copy beside it for Kalpa's Q2, whose middle moves each
+   learner fills in from their own run.
+5. The six lines worth keeping, along the bottom edge:
+   - A join is done when its row count is explained: rows in, rows out, the difference named.
+   - Start from the table whose every row must survive, and name its grain.
+   - Bring the many side to the grain of the question before you join.
+   - In a LEFT JOIN, a condition on the right-hand table goes in ON.
+   - Two payment rows are not a double payment: a retry is one order and instalment, twice.
+   - A check is worth its power to fail: tie every figure back to one table alone.

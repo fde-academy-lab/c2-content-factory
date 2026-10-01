@@ -1,29 +1,175 @@
-# Solution: joins that tell the truth
+# Solution: do the day's joins still tell the truth on refunds?
 
 Answers: 1b 2d 3a 4c 5a 6b 7c 8d 9a 10c 11b
 
-## The idea being tested
+## What does the lab test?
 
 The lab moves the day's three habits to a table the day never used: count rows before trusting a
 join, keep every condition on the right-hand table in the ON clause, and bring the right-hand table to
-the left-hand table's grain before summing. Problem 4 then runs the whole escalated case on Q1, where
-the numbers are yours to find.
+the left-hand table's grain before summing. Item 11 is the design item: each of its rates is what one
+way of fixing the teammate's query returns, so choosing it means sizing the fixes against each other.
+Problem 4 then runs the whole escalated case on Q1, where the numbers are yours to find.
 
-## Item by item
+## What did the lab give you to work from?
 
-| Item | Key | Why it holds | Why the others fail |
+The returns desk has sent six Q1 web orders and the refund rows raised against order ids in their
+range. Every number here is invented for the lab.
+
+`lab_orders` (invented):
+
+| order_id | channel | amount |
+|---|---|---|
+| W-1 | web | 3,200 |
+| W-2 | web | 12,500 |
+| W-3 | web | 48,000 |
+| W-4 | web | 1,900 |
+| W-5 | web | 7,400 |
+| W-6 | web | 2,600 |
+
+`lab_refunds` (invented; refunds are stored as negative amounts, as the warehouse stores them):
+
+| refund_id | order_id | refund_date | amount | reason |
+|---|---|---|---|---|
+| R-1 | W-2 | 2026-04-18 | -1,500 | damaged |
+| R-2 | W-3 | 2026-04-22 | -6,000 | wrong item |
+| R-3 | W-3 | 2026-05-06 | -4,000 | damaged |
+| R-4 | W-5 | 2026-05-10 | -7,400 | returned in full |
+| R-5 | W-7 | 2026-04-03 | -900 | damaged |
+
+To load them, paste this into a psql session; they are TEMP tables and vanish when you disconnect.
+
+```sql
+CREATE TEMP TABLE lab_orders (order_id text PRIMARY KEY, channel text, amount numeric(12, 2));
+CREATE TEMP TABLE lab_refunds (refund_id text PRIMARY KEY, order_id text, refund_date date,
+                               amount numeric(12, 2), reason text);
+INSERT INTO lab_orders VALUES
+    ('W-1', 'web', 3200), ('W-2', 'web', 12500), ('W-3', 'web', 48000),
+    ('W-4', 'web', 1900), ('W-5', 'web', 7400), ('W-6', 'web', 2600);
+INSERT INTO lab_refunds VALUES
+    ('R-1', 'W-2', '2026-04-18', -1500, 'damaged'),
+    ('R-2', 'W-3', '2026-04-22', -6000, 'wrong item'),
+    ('R-3', 'W-3', '2026-05-06', -4000, 'damaged'),
+    ('R-4', 'W-5', '2026-05-10', -7400, 'returned in full'),
+    ('R-5', 'W-7', '2026-04-03', -900, 'damaged');
+```
+
+## Why does each key hold, item by item?
+
+#### Problem 1. How many rows does each join return on the refund tables?
+
+Write your four numbers on paper before you run anything. Then run the four joins and mark each
+prediction right or wrong, with the row that surprised you.
+
+### Q1. How many rows does `lab_orders JOIN lab_refunds ON order_id` return?
+
+The key is b, "4, one row per refund that finds its order". R-1 to R-4 each find an order and R-5 does not, so four rows.
+
+- a, "6, one row for each order the desk sent": counts orders.
+- c, "3, one row for each order that was refunded": counts refunded orders and forgets that W-3 has two refunds.
+- d, "5, one row for each refund row on the list": counts R-5, whose order W-7 is not in the extract.
+
+### Q2. How many rows does the LEFT join from orders to refunds return?
+
+The key is d, "7, four matched rows and three unrefunded". The four matched rows, plus W-1, W-4 and W-6 with NULL refund columns, make seven.
+
+- a, "6, since a LEFT join keeps each order once": a LEFT join keeps each order at least once, and W-3 twice.
+- b, "5, the same as the refund rows on the list": the refund count is the RIGHT join's number.
+- c, "9, the six orders and three refunded ones": adds a count of refunded orders that no join produces.
+
+### Q3. How many rows does the RIGHT join from orders to refunds return?
+
+The key is a, "5, every refund row once, as ids are unique". Each refund matches at most one order, because order_id is unique in lab_orders, so every refund row appears once: five.
+
+- b, "4, since a refund with no order is dropped": a RIGHT join keeps R-5 with NULL order columns.
+- c, "7, the matched rows and the unrefunded orders": the unrefunded orders belong to the LEFT join.
+- d, "6, one row for each order the desk sent over": counts orders, the wrong side.
+
+### Q4. How many rows does the FULL join return?
+
+The key is c, "8, the LEFT join's rows and the refund for W-7". The LEFT join's seven rows plus R-5 make eight.
+
+- a, "11, the six orders and the five refunds added": adds the two tables' row counts.
+- b, "7, the same as the LEFT join and no more": misses R-5.
+- d, "5, one row per refund, the larger table's count": counts refunds and loses the unrefunded orders.
+
+#### Problem 2. Which join answers each of five business questions?
+
+Items 5 to 9 share the same four options, and an option may answer more than one item.
+
+### Q5. The returns desk asks: "For the orders that were refunded, what was the average refund per order?" Which join answers it?
+
+The key is a, "INNER JOIN, matched pairs only". An average per refunded order is a question about matched rows only, so INNER is the honest join, with refunds summed per order first.
+
+- b, "LEFT JOIN, every order kept": brings in unrefunded orders, which the question excludes.
+- c, "Anti-join, unmatched orders": returns only unrefunded orders.
+- d, "FULL JOIN, both sides' orphans": adds R-5, which has no order to average over.
+
+### Q6. Anand asks: "For every Q1 web order, booked and refunded, whether it was refunded or not?" Which join answers it?
+
+The key is b, "LEFT JOIN, every order kept". Every order, refunded or not, is the LEFT join, with refunds summed per order first.
+
+- a, "INNER JOIN, matched pairs only": drops the unrefunded orders from booked.
+- c, "Anti-join, unmatched orders": returns only unrefunded orders.
+- d, "FULL JOIN, both sides' orphans": adds refunds with no order to a report about orders.
+
+### Q7. Kavya Nair, the team's senior analyst, asks: "Which Q1 web orders have no refund at all, so we can sample them for the satisfaction survey?" Which join answers it?
+
+The key is c, "Anti-join, unmatched orders". "No refund at all" is the anti-join: LEFT JOIN, then keep the rows where the refund key IS NULL.
+
+- a, "INNER JOIN, matched pairs only": drops exactly the orders asked for.
+- b, "LEFT JOIN, every order kept": returns every order and leaves the reader to spot the NULLs.
+- d, "FULL JOIN, both sides' orphans": adds R-5, which is a refund and cannot be surveyed.
+
+### Q8. The auditor asks: "Which orders and which refunds fail to find each other, on either side?" Which join answers it?
+
+The key is d, "FULL JOIN, both sides' orphans". "On either side" is the FULL join: unrefunded orders and the refund for W-7 in one result.
+
+- a, "INNER JOIN, matched pairs only": drops both kinds of break.
+- b, "LEFT JOIN, every order kept": misses R-5.
+- c, "Anti-join, unmatched orders": misses R-5 and drops the matched rows.
+
+### Q9. The returns desk asks: "Which refund reasons came up on refunded orders, and how often?" Which join answers it?
+
+The key is a, "INNER JOIN, matched pairs only". Reasons exist only on refund rows that match an order, so the INNER join answers it.
+
+- b, "LEFT JOIN, every order kept": adds orders with a NULL reason.
+- c, "Anti-join, unmatched orders": returns orders with no reason at all.
+- d, "FULL JOIN, both sides' orphans": adds R-5, a reason on an order the desk did not send.
+
+#### Problem 3. Is 16.3 percent the right Q1 refund rate for these six orders?
+
+Anand wants the Q1 refund rate on these web orders: refunded value over booked value. A teammate
+sends this, and reports 16.3 percent:
+
+```sql
+SELECT count(*) AS rows_out,
+       sum(o.amount) AS booked,
+       -sum(r.amount) AS refunded,
+       round(100.0 * -sum(r.amount) / sum(o.amount), 1) AS refund_rate
+FROM lab_orders o
+LEFT JOIN lab_refunds r ON r.order_id = o.order_id
+WHERE r.refund_date BETWEEN '2026-04-01' AND '2026-06-30';
+```
+
+| rows_out | booked | refunded | refund_rate |
 |---|---|---|---|
-| 1 | b | R-1 to R-4 each find an order and R-5 does not, so four rows. | a: counts orders. c: counts refunded orders and forgets that W-3 has two refunds. d: counts R-5, whose order W-7 is not in the extract. |
-| 2 | d | The four matched rows, plus W-1, W-4 and W-6 with NULL refund columns, make seven. | a: a LEFT join keeps each order at least once, and W-3 twice. b: the refund count is the RIGHT join's number. c: adds a count of refunded orders that no join produces. |
-| 3 | a | Each refund matches at most one order, because order_id is unique in lab_orders, so every refund row appears once: five. | b: a RIGHT join keeps R-5 with NULL order columns. c: the unrefunded orders belong to the LEFT join. d: counts orders, the wrong side. |
-| 4 | c | The LEFT join's seven rows plus R-5 make eight. | a: adds the two tables' row counts. b: misses R-5. d: counts refunds and loses the unrefunded orders. |
-| 5 | a | An average per refunded order is a question about matched rows only, so INNER is the honest join, with refunds summed per order first. | b: brings in unrefunded orders, which the question excludes. c: returns only unrefunded orders. d: adds R-5, which has no order to average over. |
-| 6 | b | Every order, refunded or not, is the LEFT join, with refunds summed per order first. | a: drops the unrefunded orders from booked. c: returns only unrefunded orders. d: adds refunds with no order to a report about orders. |
-| 7 | c | "No refund at all" is the anti-join: LEFT JOIN, then keep the rows where the refund key IS NULL. | a: drops exactly the orders asked for. b: returns every order and leaves the reader to spot the NULLs. d: adds R-5, which is a refund and cannot be surveyed. |
-| 8 | d | "On either side" is the FULL join: unrefunded orders and the refund for W-7 in one result. | a: drops both kinds of break. b: misses R-5. c: misses R-5 and drops the matched rows. |
-| 9 | a | Reasons exist only on refund rows that match an order, so the INNER join answers it. | b: adds orders with a NULL reason. c: returns orders with no reason at all. d: adds R-5, a reason on an order the desk did not send. |
-| 10 | c | The WHERE on refund_date removes every order whose refund columns are NULL, which is W-1, W-4 and W-6, and W-3's two refunds put its 48,000 into booked twice. | a: the orders table holds 75,600. b: misses the repeated W-3. d: misses the three dropped orders. |
-| 11 | b | Refunds summed per order in the window, joined in with a LEFT join: 18,900 refunded over 75,600 booked is 25.0 percent. | a: moving the filter into ON restores the three orders and leaves W-3 doubled, so booked is 1,23,600. c: the refunded total was right all along, and the denominator was the fault. d: R-5 belongs to an order outside this book, so it cannot sit in this rate. |
+| 4 | 1,15,900 | 18,900 | 16.3 |
+
+### Q10. Which orders make up the booked figure of 1,15,900 that the rate divides by?
+
+The key is c, "the refunded orders, with W-3 counted twice". The WHERE on refund_date removes every order whose refund columns are NULL, which is W-1, W-4 and W-6, and W-3's two refunds put its 48,000 into booked twice: 12,500 + 48,000 + 48,000 + 7,400 is 1,15,900.
+
+- a, "all six orders, each of them counted once": the six orders once each book 3,200 + 12,500 + 48,000 + 1,900 + 7,400 + 2,600, which is 75,600, the figure the rate should divide by.
+- b, "the three refunded orders, each counted once": 12,500 + 48,000 + 7,400 is 67,900, which sees the dropped orders and misses W-3 written twice.
+- d, "all six orders, with W-3 counted twice": 75,600 + 48,000 is 1,23,600, which sees W-3 twice and misses the three dropped orders.
+
+### Q11. What Q1 refund rate should Anand be given for these six orders? (Design)
+
+The key is b, "25.0 percent, 18,900 over 75,600". The numerator is the four refunds on the desk's orders, 1,500 + 6,000 + 4,000 + 7,400, which is 18,900, and the denominator is the six orders counted once each, 75,600. Refunds summed per order in the window and joined with a LEFT join give exactly that: 18,900 over 75,600 is 25.0 percent.
+
+- a, "15.3 percent, 18,900 over 1,23,600": moves the date filter into ON, which restores the three dropped orders and leaves W-3 doubled, so the denominator is 1,23,600.
+- c, "16.3 percent, 18,900 over 1,15,900": the teammate's rate; the refunded total was right all along, and the denominator is the fault.
+- d, "26.2 percent, 19,800 over 75,600": adds R-5's 900 to the refunds, and R-5 belongs to W-7, an order outside this book, so it cannot sit in this rate.
 
 The corrected query for problem 3:
 
@@ -35,7 +181,7 @@ The corrected query for problem 3:
 WITH refunded_per_order AS (
     SELECT order_id, -sum(amount) AS refunded
     FROM lab_refunds
-    WHERE refund_date BETWEEN '2026-04-01' AND '2026-06-28'
+    WHERE refund_date BETWEEN '2026-04-01' AND '2026-06-30'
     GROUP BY order_id
 )
 SELECT count(*) AS rows_out,
@@ -50,7 +196,7 @@ A WHERE inside the CTE is safe, because it filters the refunds before the join, 
 still keeps every order. The ON clause version, `LEFT JOIN lab_refunds r ON r.order_id = o.order_id
 AND r.refund_date BETWEEN ...`, fixes the lost orders and still needs the per-order sum for W-3.
 
-## Problem 4, the approach and the invariants
+## How should problem 4 be approached, and what must hold?
 
 The queries below are the escalated case moved to Q1. They give no Q1 numbers here, because the
 numbers are what you run for; your own output must satisfy every invariant under them.
@@ -162,7 +308,7 @@ The invariants your Q1 output must satisfy:
 |---|---|
 | Rows out equals the Q1 order count from query 1 | Payments were brought to one row per order before the join, so nothing repeats |
 | Booked after the join equals booked from query 1, per channel | The same, in rupees |
-| Booked minus collected equals the unpaid list's booked total, per channel | With retries removed, the only reason an order's collected differs from its booked is that nothing arrived |
+| Booked minus collected equals the unpaid list's booked total, per channel | The gap is the never-paid orders plus what the orders paid short still owe, so it equals the unpaid list alone only when no order is paid short; if this check reads false, look for an order paid in part before you suspect the join |
 | Collected plus the surplus on the double-paid list equals the feed's total against Q1 orders | Every posting against a Q1 order is either counted once in collected or named as a surplus |
 | The double-paid list is shorter than `GROUP BY order_id HAVING COUNT(*) > 1` | The shorter list holds retries only; the longer one also holds every two-instalment order |
 | In the stretch, the refunds step joins at order grain | An order refunded twice would otherwise repeat in the join, as W-3 did in problem 3 |
@@ -170,14 +316,14 @@ The invariants your Q1 output must satisfy:
 Whatever the gap turns out to be for Q1, the sentence to Anand gives it with its explanation, and a
 gap of any size is reported with the check that proves it.
 
-## The part worth arguing about
+## Which part is worth arguing about?
 
-The stretch question. Net of refunds is the money Kalpa kept, which is what Anand ultimately wants;
-collected is the money that arrived, which is what his question this morning asked. The report he
-signs can carry both columns if each is named, and a refund must never be subtracted from booked
-instead, or the gap would no longer be the unpaid list.
+In the stretch question, net of refunds is the money Kalpa kept, which is what Anand ultimately
+wants; collected is the money that arrived, which is what his question this morning asked. The
+report he signs can carry both columns if each is named, and a refund must never be subtracted from
+booked instead, or the gap would no longer be the unpaid list.
 
-## Where the pattern lives in production
+## Where does this pattern live in production?
 
 Refund rates, return rates and chargeback rates are all a rate over a joined table, and each goes
 wrong in these two ways. Marketplaces report refund rate against orders placed in the period and

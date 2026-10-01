@@ -1,10 +1,9 @@
-# Kahoot, Week 2 Tuesday
+# Which of Tuesday's ideas held, in eight timed questions?
 
 Eight items, ungraded, scored on correctness and speed together. Item 7 reaches back to Monday, one
 level up: Monday separated WHERE from HAVING on one table, and today the same two clauses sit on
 either side of a join.
 
-Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
@@ -19,14 +18,14 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
-## Q2. 1,000 orders LEFT JOIN payments, where 50 orders have two payments and every other order has one. How many rows come back?
+## Q2. An invented shop: 800 orders LEFT JOIN payments, where 70 orders have two payment rows and every other order has one. How many rows come back?
 
 *Tests: a key that repeats on one side multiplies the other side's rows.*
 
-- 1,000, since a LEFT join keeps each order once
-- 2,000, since the two-payment orders double it all
-- 1,050, one extra row for each two-payment order  <- correct
-- 950, since the fifty repeated orders collapse
+- 800, since a LEFT join keeps each order once
+- 1,600, since the two-payment orders double it all
+- 870, one extra row for each two-payment order  <- correct
+- 940, two extra rows for each two-payment order
 
 ---
 
@@ -91,5 +90,5 @@ Each item names what it tests, so an item dropped for time says what was lost.
 
 - They stay, since the join was written as a LEFT one
 - They vanish, since a NULL date fails the WHERE  <- correct
-- They stay, with the date filled in as today's
+- They stay, and only the June payments drop out
 - They raise an error, since NULL cannot be compared

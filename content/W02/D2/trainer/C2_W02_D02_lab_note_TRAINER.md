@@ -1,4 +1,4 @@
-# Practice lab note, Week 2 Tuesday (for the TA)
+# Where does the Week 2 Tuesday practice lab stall, and what does the TA say?
 
 The lab is `exercises/practice/C2_W02_D02_lab_STUDENT.md`, about 60 minutes of work, and its
 solution is `exercises/solutions/C2_W02_D02_lab_solution_STUDENT.md`. Release the solution when the
@@ -8,16 +8,30 @@ pasted across; problem 4 runs on the warehouse's Q1, which the day never touched
 
 The answer string is `1b 2d 3a 4c 5a 6b 7c 8d 9a 10c 11b`.
 
-## Where learners stall, and the one hint for each
+## In what order does the lab run on a faculty day?
+
+The trainer's hour ends on the Kahoot and the tentative IITGN block W2-2 follows, so the lab carries
+what the afternoon could not. Run it in this order and stop where the time runs out; what is left
+goes home with the take-home.
+
+| Order | What runs | Minutes | Files |
+|---|---|---|---|
+| 1 | The escalated case, parts 3 to 5, alone, then the debrief of the most common wrong letters | 30, then 10 | `exercises/unguided/C2_W02_D02_escalated_STUDENT.md`, notebook ex1 |
+| 2 | This set's problems 1 to 3 | 35 | `exercises/practice/C2_W02_D02_lab_STUDENT.md` |
+| 3 | The second case, in pairs | 40 | `exercises/unguided/C2_W02_D02_second_case_STUDENT.md`, notebook ex2 |
+| 4 | The interview drill, aloud in pairs, sixty seconds an answer | 20 | the afternoon deck's slides D3 and D4 |
+| 5 | Problem 4 on the warehouse | 25, or tonight | the lab set |
+
+## Where do learners stall, and what is the one hint for each?
 
 | Problem | Where the room stalls | The one hint |
 |---|---|---|
 | 1. Four row counts | Q2: they answer 6 for the LEFT join, because "LEFT keeps each order once". Q3: they answer 4, forgetting that a RIGHT join keeps R-5. | "Put your finger on W-3 and count how many rows it makes, then do the same for R-5." |
 | 2. Match five questions | Q5 and Q9: they reach for LEFT because it feels safer, when the question is about refunded orders only. | "Read the question again and ask: does an order with no refund belong in the answer?" |
-| 3. The refund rate | Q10: most see one fault. Those who see the lost orders miss W-3 doubling, and those who see W-3 miss the lost orders. Q11: the 15.3 percent distractor catches everyone who fixed only the ON clause. | "Run it with SELECT * in place of the sums, and read the rows before the totals." |
+| 3. The refund rate | Q10: most sum all six orders, or the refunded three once, and never notice W-3 twice in 1,15,900. Q11: the 15.3 percent distractor catches everyone who fixed only the ON clause and kept W-3 doubled; 26.2 percent catches those who also counted R-5, the refund with no order. | "Run it with SELECT * in place of the sums, and read the rows before the totals." |
 | 4. Q1 on the warehouse | The first query they write is `GROUP BY order_id HAVING COUNT(*) > 1`, which returns 234 Q1 orders, and some start writing a double-paid list from it. The second stall is the gap: Q1's gap is zero on every channel, and learners assume their query is broken. | "What makes a retry a retry, in columns?" For the zero gap: "Run the unpaid list. If it is empty, what must the gap be?" |
 
-## The Q1 numbers, for the TA only
+## Which Q1 numbers should problem 4 reach?
 
 These are the numbers a correct problem 4 produces. Do not read them to the room; let each learner's
 checks read true first.
@@ -39,8 +53,8 @@ empty unpaid list and a gap-equals-unpaid check reading true has understood the 
 reports "fully collected" from the posted total, which runs Rs 17,000 above booked, has made the
 morning's mistake in the other direction. Ask the room which of the two sentences they would sign.
 
-## Checked
+## When were the lab's numbers checked?
 
 Every query in the lab and its solution was run against the v4 warehouse on PostgreSQL 16.13 on
-29 Sep 2026, and the invented tables' counts and rates (4, 7, 5 and 8 rows; 16.3, 15.3 and 25.0
-percent) were checked in the same session.
+29 Sep 2026 and again on PostgreSQL 16.14 on 1 Oct 2026, and the invented tables' counts and rates
+(4, 7, 5 and 8 rows; 16.3, 15.3 and 25.0 percent) and every Q1 figure above held both times.
