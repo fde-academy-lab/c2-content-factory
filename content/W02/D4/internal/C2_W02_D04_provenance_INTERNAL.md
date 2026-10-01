@@ -54,6 +54,8 @@
 - The escalated case's two broken copies in step 5's check: one customer's id written over another
   customer's row, and recency counted to 21 September 2026; and step 2's table with one reached
   customer removed. Each exists so that only the right letter passes its check.
+- The Kahoot's item 6: a left merge of 1,000 customers that returns 1,120 rows; the Kahoot says so
+  beside the item.
 - The chief of staff's words in the pre-read and on the last slide are Friday's row, quoted.
 
 ## Which decisions depart from a source, and why?
@@ -74,7 +76,8 @@
 | The guided set is a carve the room mirrors, not a lettered set | The exercise-builder skill keeps a guided carve in its kind |
 | The practice lab gives asks an owner among plain Python, SQL and pandas only | Friday's lab sets warehouse, pandas or Excel for eight asks; Excel stays out today |
 | The pre-read drops the front-page number's denominator and period, the lookup's not-found framing and the operating rule | Each pre-empts a Friday trap or chapter |
-| The study notes run to about 7,600 words | The Week 1 models run to about 6,800; each chapter carries its options, sizing, trap and second route, and the interview answers are in full |
+| The study notes run to about 7,300 words of prose, 8,500 with their tables and code, over the standard's 4,000 to 5,000 | The model pack's notes run to 6,900 words of prose and Week 1 Tuesday's to 7,200; each chapter carries its options, sizing, trap and second route, and the interview answers are in full. The depth loop's fixes added about 550 words (the data's age, the guards' two kinds, Week 1's numbers); cutting to the standard's length would drop the second routes or the answers, a call for the requester |
+| The practice lab's problem 4 compares members who bought in Q1: 33 of the 44 reached, 75 percent, against 34 of the 47 others, 72 percent | Pass 4 found the model sentence compared 33 of 60 with 34 of 60, where 13 of the 120 members never ordered and 16 more bought only in Q2, so neither group could spend less in Q2 |
 | The cheat sheet drops a numbers panel to fit one landscape page | Every number on it already sat in panels 1, 5 and 7 |
 | Twelve interview questions in the notes: the row's five and eight case-style follow-ups, tagged | The standard's ten to twelve plus one |
 

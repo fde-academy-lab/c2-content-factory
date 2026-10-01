@@ -13,6 +13,7 @@ placed in it, at the prices charged, added up; Q1 is April to June 2026 and Q2 i
 September. A long table holds one row per member per month that has orders. A wide table holds one
 row per member and one column per month, and `pivot_table` builds it by turning the values of one
 column into columns and putting one number in each cell; `melt` folds a wide table back into long.
+A table's cells count every column, the member's id among them.
 
 Chapter 3 found that Retail-Plus's 107 members who ordered bought in 266 member-months, and that the
 tier took Rs 5,85,770 in Q1 and Rs 4,13,380 in Q2, a fall of 29.4 percent, or Rs 1,72,390. A query
@@ -29,7 +30,7 @@ members.
 - What goes back to an analyst whose months view adds up to less than its orders?
 - Which shape should carry the tier's twelve-month trend next year, sized on its rows and empty cells?
 - What shape is the tier's pivot with months as the index and members as the columns?
-- Which fact would move the months view from pandas into the warehouse?
+- Which plan answers Finance's weekly months and the head's afternoon question together?
 
 Every member, order and number in items 1, 2 and 3 is invented.
 
@@ -52,10 +53,10 @@ orders.pivot_table(index="member", columns="month", values="amount")
 
 with no other argument, then adds up April's column. What does the sum give?
 
-a) Rs 8,000
-b) Rs 6,000
-c) Rs 3,000
-d) Rs 2,667
+a) It gives Rs 8,000.
+b) It gives Rs 6,000.
+c) It gives Rs 3,000.
+d) It gives Rs 2,667.
 
 ### Q2. What goes back to an analyst whose months view adds up to less than its orders?
 
@@ -64,10 +65,10 @@ column per month. Its Q1 columns add up to Rs 3,10,000 and its Q2 columns to Rs 
 6.5 percent. The orders the view was built from total Rs 8,40,000. What goes back to the analyst
 before anyone reads a month?
 
-a) Ship it, since the fall of 6.5 percent comes from the view's own columns
-b) Rebuild it with `fill_value=0`, since the empty months pulled the sums down
-c) Rs 2,40,000 of orders is missing, so the index must have dropped members
-d) Its cells are not totals: Rs 6,00,000 against Rs 8,40,000; name the aggfunc
+a) Ship it, since the fall of 6.5 percent comes from the view's own columns.
+b) Rebuild it with `fill_value=0`, since the empty months pulled the sums down.
+c) Rs 2,40,000 of orders is missing, so the index must have dropped members.
+d) The cells add up to Rs 6,00,000 of Rs 8,40,000, so name the aggfunc.
 
 ### Q3. Which shape should carry the tier's twelve-month trend next year, sized on its rows and empty cells?
 
@@ -75,10 +76,10 @@ Invented projection: next year the tier has 150 members who order, in about 540 
 across 12 months. The head of Retail-Plus wants one slide: the tier's spend month by month, as a
 line. Which shape fits, and what does it hold?
 
-a) The wide table: 1,800 cells, 1,260 of them empty, read along each member's row
-b) A query per month: 12 columns written by hand, and a 13th month is an edit
-c) The long table: 540 rows, none empty, one total a month by `groupby`
-d) The pivot indexed by order: a row per order and 12 columns, nearly all empty
+a) The wide table fits, at 150 rows by 13 columns, 1,950 cells, 1,260 of them empty, read along a row.
+b) A query per month fits, with 12 columns written by hand, so a 13th month is an edit.
+c) The long table fits, at 540 rows by 3 columns, 1,620 cells, none empty, one total a month by `groupby`.
+d) The pivot indexed by order fits, with a row per order and 12 columns, nearly all of them empty.
 
 ### Q4. What shape is the tier's pivot with months as the index and members as the columns?
 
@@ -89,18 +90,19 @@ What shape does this call return, as rows by columns?
 plus.pivot_table(index="month", columns="customer_id", values="amount", aggfunc="sum")
 ```
 
-a) 6 by 107
-b) 107 by 6
-c) 355 by 6
-d) 6 by 355
+a) It returns 6 rows by 107 columns.
+b) It returns 107 rows by 6 columns.
+c) It returns 355 rows by 6 columns.
+d) It returns 6 rows by 355 columns.
 
-### Q5. Which fact would move the months view from pandas into the warehouse?
+### Q5. Which plan answers Finance's weekly months and the head's afternoon question together?
 
-Chapter 3 built the months view in pandas, the long and wide tables together. Which of these facts
-would move it into the warehouse as a query, with a table of months in place of hand-written
-columns?
+Next month two asks arrive on the same day. Finance wants Retail-Plus's spend month by month every
+Monday, beside its revenue query, and Anand Iyer, the finance controller, has an analyst who reruns
+it from the warehouse. The head of Retail-Plus wants to try three ways of ranking the members whose
+spend fell, this afternoon, before the growth review. Which plan fits both?
 
-a) The head of Retail-Plus asks for October once its orders arrive
-b) Finance asks to rerun the view every Monday beside its revenue query
-c) The tier grows from 120 members to 400, so the wide table gets longer
-d) Members place several orders a month, so each cell needs a sum
+a) Both stay in pandas, and the notebook with its long and wide tables goes to Finance each Monday.
+b) Finance gets one query grouped by month, and the head's three tries run in pandas on the tables.
+c) Finance gets a query per month, typed by hand, and the head's three tries run in pandas.
+d) Both move to the warehouse, as Finance's query and a new query for each of the head's tries.

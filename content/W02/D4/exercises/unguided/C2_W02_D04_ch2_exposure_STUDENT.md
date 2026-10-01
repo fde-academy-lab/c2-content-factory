@@ -33,9 +33,10 @@ the gap surfaces the day Finance ties the table back to the warehouse.
 - How many rows does each of four merges of the table and the first-touch feed return?
 - Which way should attach the app team's push feed, sized on what a repeat would cost?
 - In which order does Monday's attach step run, so a repeat never reaches the table?
-- Which route reaches the reached customers' spend without sharing the merge's code?
+- Which route confirms the monsoon sale's reached spend once the feed carries two campaigns?
 
-Every customer, feed and number in items 1 and 3 is invented.
+Every customer, feed and number in items 1 and 3 is invented, and so is the Navratri campaign in
+item 5.
 
 **What you post.** One line of five letters in item order, no spaces, in this shape:
 
@@ -61,10 +62,10 @@ The Diwali email's feed arrives as four rows, in this order: C-8101, C-8102, C-8
 analyst runs `small.merge(feed, on="customer_id", how="left")` and adds up `spend` over the rows
 whose feed date is filled. What does the slide say the reached customers spent?
 
-a) Rs 19,500
-b) Rs 25,000
-c) Rs 26,000
-d) Rs 31,500
+a) The slide says Rs 19,500.
+b) The slide says Rs 25,000.
+c) The slide says Rs 26,000.
+d) The slide says Rs 31,500.
 
 ### Q2. How many rows does each of four merges of the table and the first-touch feed return?
 
@@ -73,10 +74,10 @@ holds 130 customers, one row each, and every one of them is on the customer list
 rows do `table.merge(first_touch, on="customer_id")`, then the same merge with `how="left"`,
 `how="outer"` and `how="right"`, return?
 
-a) 340, 340, 470 and 130
-b) 130, 340, 340 and 130
-c) 130, 340, 470 and 130
-d) 340, 340, 340 and 340
+a) They return 340, 340, 470 and 130 rows.
+b) They return 130, 340, 340 and 130 rows.
+c) They return 130, 340, 470 and 130 rows.
+d) They return 340, 340, 340 and 340 rows.
 
 ### Q3. Which way should attach the app team's push feed, sized on what a repeat would cost?
 
@@ -85,10 +86,10 @@ naming 1,900 customers, because 100 were sent twice. The stores team wants one a
 how many of its 12,000 loyalty customers the push reached, city by city. A typical reached
 customer's spend is Rs 5,100. Which way fits the ask, and what does it cost?
 
-a) A plain left merge: 12,100 rows, Rs 5.1 lakh counted twice in any spend sum
-b) A merge counted before and after: 12,100 rows, the excess found afterwards
-c) The first-touch rule and a validated merge: 12,000 rows and a date rule unused
-d) The `isin` flag: 12,000 rows, nothing counted twice, and no rule to choose
+a) A plain left merge fits, at 12,100 rows and Rs 5.1 lakh counted twice in any spend sum.
+b) A merge counted before and after fits, at 12,100 rows, with the excess found afterwards.
+c) The first-touch rule and a validated merge fit, at 12,000 rows and a date rule unused.
+d) The `isin` flag fits, at 12,000 rows, with nothing counted twice and no rule to choose.
 
 ### Q4. In which order does Monday's attach step run, so a repeat never reaches the table?
 
@@ -101,17 +102,21 @@ Four steps, numbered:
 
 Which order runs them?
 
-a) 3, 2, 1, 4
-b) 2, 3, 1, 4
-c) 1, 3, 2, 4
-d) 3, 1, 2, 4
+a) The order is 3, 2, 1, 4.
+b) The order is 2, 3, 1, 4.
+c) The order is 1, 3, 2, 4.
+d) The order is 3, 1, 2, 4.
 
-### Q5. Which route reaches the reached customers' spend without sharing the merge's code?
+### Q5. Which route confirms the monsoon sale's reached spend once the feed carries two campaigns?
 
-Kavya wants the marketing lead's Rs 8,78,980 confirmed by a route that would disagree if the rule or
-the merge had gone wrong. Which route qualifies?
+Invented: from its next file, the campaign platform sends every campaign Kalpa runs in one feed, the
+monsoon sale's rows beside a Navratri email's, each row carrying its `campaign_id`. Some customers
+appear under both campaigns, and some appear twice under one. The warehouse loads the same file as
+its own copy of the feed, `campaign_exposure`. Kavya wants the monsoon sale's Rs 8,78,980 confirmed
+by a route that shares no code with the rule or the merge and would disagree if either had gone
+wrong. Which route qualifies?
 
-a) Sum `spend` over `merged["reached"]` again, after rerunning the merge
-b) A plain inner merge of the table and the raw feed, with spend summed
-c) A SQL sum of the orders of customers `IN` the feed's warehouse table
-d) Total spend less the unreached customers' spend, from the merged table
+a) Sum, in SQL, the orders of customers `IN` the warehouse's copy of the feed.
+b) Join the orders to the feed's monsoon rows in SQL, and sum the amounts.
+c) Sum, in SQL, the orders of customers `IN` the feed's monsoon rows.
+d) Sum, in SQL, the monsoon customers' orders placed on or after the day the sale reached them.

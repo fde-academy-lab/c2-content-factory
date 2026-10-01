@@ -34,10 +34,10 @@ offer.
 - Which way should compute the numbers when the orders run to crores, and what does it move?
 - What does the average orders per customer read before anyone fills the gaps?
 - What does a teammate's fix print with the order-built table on the left of the merge?
-- Which count could disagree with the pandas table if the table were wrong?
-- Which fact, if it became true next quarter, would move the three numbers into the warehouse?
+- Which count could the growth team's lead run herself to confirm the 39 before the nudge goes out?
+- Which way should build the table once a dashboard on the warehouse is its only reader?
 
-Every number about next year in items 1 and 5 is invented.
+Every number about next year in item 1 is invented.
 
 **What you post.** One line of five letters in item order, no spaces, in this shape:
 
@@ -54,10 +54,10 @@ whom 6 lakh have ordered. The growth team still wants the three numbers for ever
 Monday, merged onto the customer list in pandas. Which way should compute the numbers, and how many
 order-side rows does it move out of the warehouse each Monday?
 
-a) pandas `groupby`: 2 crore rows, since the later steps need the orders
-b) Week 1's loop: 9 lakh rows, one for each customer on the list
-c) SQL `GROUP BY`: 6 lakh rows, one per customer who ordered
-d) pandas `groupby`: 6 lakh rows, one for each group it returns
+a) pandas `groupby` should compute them, moving 2 crore rows, since the later steps need the orders.
+b) SQL `GROUP BY` should compute them, moving 2 crore rows, since the warehouse reads every order.
+c) SQL `GROUP BY` should compute them, moving 6 lakh rows, one per customer who ordered.
+d) pandas `groupby` should compute them, moving 6 lakh rows, one for each group it returns.
 
 ### Q2. What does the average orders per customer read before anyone fills the gaps?
 
@@ -71,10 +71,10 @@ half["frequency"].mean()
 `customers` holds all 340 customers, `rfm` the 301 who ordered, and the warehouse holds 1,000
 orders. What does the second line print, and over which customers is it an average?
 
-a) 2.94, over all 340 customers on the list
-b) 3.32, over the 301 who ordered, since `mean` skips the gaps
-c) `nan`, since one missing frequency leaves the column's mean missing
-d) 3.32, over all 340 customers on the list
+a) It prints 2.94, an average over all 340 customers on the list.
+b) It prints 3.32, an average over the 301 who ordered, since `mean` skips the gaps.
+c) It prints `nan`, since one missing frequency leaves the whole column's mean missing.
+d) It prints 3.32, an average over all 340 customers on the list.
 
 ### Q3. What does a teammate's fix print with the order-built table on the left of the merge?
 
@@ -88,27 +88,30 @@ print(len(table), (table["frequency"] == 0).sum())
 
 What does the last line print?
 
-a) 340 39: the merge keeps every customer on either side
-b) It stops with a `MergeError`, since 39 customers find no match
-c) 340 0: the 39 come back, and a missing count is never 0
-d) 301 0: the left side keeps only the customers who ordered
+a) It prints 340 39, since the merge keeps every customer on either side.
+b) It stops with a `MergeError`, since 39 customers find no match on the left.
+c) It prints 340 0, since the 39 come back and a missing count is never 0.
+d) It prints 301 0, since the left side holds only the customers who ordered.
 
-### Q4. Which count could disagree with the pandas table if the table were wrong?
+### Q4. Which count could the growth team's lead run herself to confirm the 39 before the nudge goes out?
 
-Before the first-order nudge goes to the 39, Kavya wants their count confirmed by a route that shares
-no code with the pandas table. Which route qualifies?
+From next Monday the growth team's lead signs off the first-order nudge herself. She works in SQL in
+the warehouse, never opens a notebook, and wants a count that would disagree with the pandas table's
+39 if the table were wrong. Which route qualifies?
 
-a) A SQL count of listed customers with no row at all in `orders`
-b) `340 - len(rfm)`, the list less the rows the groupby returned
-c) `(table["frequency"] == 0).sum()`, rerun after a restart
-d) `(table["spend"] == 0).sum()`, zero spend in place of zero orders
+a) Group the orders by customer in the warehouse, and count the groups whose `count(*)` is 0.
+b) Count, in the warehouse, the listed customers who have no row in `orders`.
+c) Left-join the list to the orders, group by customer, and count those whose `count(*)` is 0.
+d) Fetch every order's customer id, and check the list against them in a Python loop.
 
-### Q5. Which fact, if it became true next quarter, would move the three numbers into the warehouse?
+### Q5. Which way should build the table once a dashboard on the warehouse is its only reader?
 
-Chapter 1 chose pandas `groupby` to compute the three numbers. Which of these facts would move that
-step to a SQL `GROUP BY` in the warehouse, with pandas merging its answer onto the list?
+Next quarter a dashboard that the data platform lead builds on the warehouse becomes the growth
+team's only view of the table. It reads every number straight from Postgres whenever someone opens
+it, and the sale flag and the months view move into it too. The orders stay at about 500 a quarter,
+as they are now. Which way should build the table's three numbers then?
 
-a) The customer list grows to 4 lakh, and the list is read each Monday
-b) The orders table grows to 3 crore rows, too many to move each Monday
-c) The growth team asks for a fourth number, the first order's date
-d) The monsoon sale's feed has to be merged onto the table every Monday
+a) pandas `groupby` should stay, since 500 orders a quarter move in a fraction of a second.
+b) A SQL `GROUP BY` on the orders should build them, sending one row per customer who ordered.
+c) A SQL query from the customer list, with a `LEFT JOIN` to the orders, should build them.
+d) pandas `groupby` should stay, with its table written into the warehouse every Monday.
