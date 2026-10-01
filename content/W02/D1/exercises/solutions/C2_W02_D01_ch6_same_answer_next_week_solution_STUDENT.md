@@ -116,8 +116,8 @@ The key is b, "Fetch all 19 candidates, sort them by order id in Python and take
 sort happens outside the database, on every candidate, so the five it keeps depend only on the order
 ids. It moves 19 rows to confirm five, which is cheap at this size.
 
-- a, "Rerun the same ordered query twice more and check that all three fives agree": the same query
-  relies on the same ordering, so it repeats rather than confirms.
+- a, "Rerun the service head's query twice more and check that all three fives agree": the same
+  query relies on the same database ordering, so it repeats rather than confirms.
 - c, "Fetch five rows with LIMIT 5 and sort those five by order id in Python": sorts whichever five
   came back, so an unspecified five comes out neatly sorted.
 - d, "Fetch all 19 candidates and keep the first five in the order the database sends them": moves

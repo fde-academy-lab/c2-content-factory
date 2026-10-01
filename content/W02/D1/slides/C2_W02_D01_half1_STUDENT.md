@@ -179,8 +179,8 @@ Revenue is customers who bought, times orders per customer, times revenue per or
 ```notes
 LIVE, 3 minutes. Recall the tree from Week 1 Monday; the retail dossier
 (content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md, section 5) has the long version.
-Booked revenue means every order at its amount, whatever its status; Finance's delivered-only
-definition is the escalated case's question this afternoon. Every leaf comes from the orders
+Booked revenue means every order at its amount, whatever its status; Finance's own definition of
+revenue is the escalated case's question this afternoon. Every leaf comes from the orders
 table, and the segment lives on the customer, which chapter 3 needs. Then chapter 1.
 ```
 

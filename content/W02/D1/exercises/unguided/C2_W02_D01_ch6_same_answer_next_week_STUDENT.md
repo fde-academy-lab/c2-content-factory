@@ -122,7 +122,7 @@ On the book there are 19 cancelled Q2 store orders, and the service head's sampl
 smallest order ids. Kavya Nair, the team's senior analyst, wants those five confirmed by a route that
 does not rely on the database's ordering. Which route does that, sized in rows?
 
-a) Rerun the same ordered query twice more and check that all three fives agree
+a) Rerun the service head's query twice more and check that all three fives agree
 b) Fetch all 19 candidates, sort them by order id in Python and take the first five
 c) Fetch five rows with LIMIT 5 and sort those five by order id in Python
 d) Fetch all 19 candidates and keep the first five in the order the database sends them

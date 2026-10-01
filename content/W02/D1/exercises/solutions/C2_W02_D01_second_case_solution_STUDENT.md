@@ -58,28 +58,29 @@ quarter, whose revenue adds back to the book in each quarter.
 
 ### Q8. Which analysis answers Marketing's question, sized in rows?
 
-Kind: a design item, the best-fit analysis with its size. The key is c, "Twelve rows, each channel's
-Business and consumer orders apart per quarter, read as changes". Business's orders are worth lakhs and
-the consumers' hundreds, so a channel's total moves wherever a few corporate orders land; reading the
-two kinds apart is what tells Anand whether the channel's own customers grew. Three channels, two kinds
-of order and two quarters make twelve rows, and reading each as a change shows which part of each
-channel moved.
+Kind: a design item, the best-fit analysis with its size. The key is c, "Twelve rows: each channel's
+Business and consumer orders per quarter, as changes". Business's orders are worth lakhs and the
+consumers' hundreds, so a channel's total moves wherever a few corporate orders land; reading the two
+kinds apart is what tells Anand whether the channel's own customers grew. Three channels, two kinds of
+order and two quarters make twelve rows, and reading each as a change shows which part of each channel
+moved.
 
-- a, "The six channel totals, since the budget follows a channel's revenue": the totals are what
-  Marketing already read, and a few corporate orders dominate them.
-- b, "Three rows, each channel's half-year revenue, since two quarters of movement cancel out": a
-  half-year hides the change the question is about.
-- d, "All 1,000 order rows exported, so Marketing can rebuild any total it likes in its own
-  spreadsheet": moves the whole book out to answer a question twelve rows answer, which Anand ruled
-  out.
+- a, "Twenty-four rows: each channel's four segments per quarter, read as changes": it answers the
+  question too, with twice the rows; Marketing's reading turns on Business against everyone else, so
+  splitting the consumers three ways adds twelve rows the answer does not need.
+- b, "Eighteen rows: each channel's delivered, returned and cancelled orders per quarter": splits each
+  channel by status, so every line still carries its share of the large corporate orders.
+- d, "Six rows: the channel totals per quarter, since the budget follows a channel's revenue": the
+  totals are what Marketing already read, and a few corporate orders dominate them.
 
-### Q2. Which label keeps every Business order on the Business side, next quarter as well as this one?
+### Q2. Which label puts every Business order, and no consumer order, on the Business side, next quarter as well?
 
 Kind: choose the definition. The key is a, "Business where the customer's segment is Business,
 consumer for the other three". A Business order is an order a corporate buyer places, whatever its
 size, and the segment lives on the customer, so a label that follows the customer's segment files
-every such order on the Business side this quarter and next; 188 orders carry the Business label, the
-Business segment's own.
+every such order on the Business side and every consumer's order on the other, this quarter and next;
+188 orders carry the Business label, the Business segment's own, and the app's Business side matches
+the sales ledger's Rs 4,17,78,440 and Rs 4,23,16,600.
 
 - b, "The customer's own segment name, four labels in each channel": keeps the four segments apart, so
   each channel has four kinds where the question asks for two.
@@ -189,8 +190,9 @@ no consumer order reaches Rs 5,000. The line drawn at Rs 5,00,000 is not the seg
 files 50 Business orders worth Rs 2,09,000 to Rs 4,94,000 as consumer orders. The app's consumer
 revenue would then read Rs 18,91,400 in Q1 and Rs 36,76,670 in Q2, up 94.4 percent, and the store's
 would read Rs 35,53,110 then Rs 17,28,730, down 51.3 percent: the app would look like the channel
-winning consumers, when its consumers fell fastest. The notebook's check catches it, 138 orders under
-the Business label against the segment's 188. A label that follows the customer's segment means the
+winning consumers, when its consumers fell fastest. The notebook's check catches it: the app's
+Business side reads Rs 4,02,47,440 and Rs 3,89,13,600 against the sales ledger's Rs 4,17,78,440 and
+Rs 4,23,16,600, and 138 orders carry the Business label against the segment's 188. A label that follows the customer's segment means the
 same thing whatever the orders look like next quarter.
 
 ## Where does a listed company report its business buyers apart from its consumers?

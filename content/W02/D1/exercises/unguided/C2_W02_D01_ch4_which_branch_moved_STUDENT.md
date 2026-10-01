@@ -158,6 +158,6 @@ members on the customers table, and 13 of them bought nothing in either quarter.
 the levels?
 
 a) Each quarter's revenue over the tier's 120 members: Rs 4,881 then Rs 3,445
-b) Each quarter's revenue over the 107 rows of the fix's own step: Rs 5,474 then Rs 3,863
+b) Each quarter's rupees in the fix's step over the step's own 107 rows: Rs 5,474 then Rs 3,863
 c) Each quarter's revenue over that quarter's own 91 and 76 buyers: Rs 6,437 then Rs 5,439
 d) Each quarter's revenue over 120 less the 13 who bought nothing: Rs 5,474 then Rs 3,863

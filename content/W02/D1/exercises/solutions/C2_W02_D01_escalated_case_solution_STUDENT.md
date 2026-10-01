@@ -1,12 +1,14 @@
-# Which answers hold in the escalated case on the Monday suite over delivered orders, and why?
+# Which answers hold in the escalated case on the Monday suite over Finance's book, and why?
 
 Answers: 1b 2c 3a 4d 5a 6c 7d 8b 9b 10a 11b 12c 13b 14d 15a
 
 Anand Iyer, Kalpa Retail's finance controller, signs revenue on Finance's definition, the orders that
 reached the customer and stayed there, and he asked for the Monday suite on that definition and
-whether the story changes. The case asks each learner to rebuild the suite alone in five parts: items
-1 to 10 are the ten markers of `notebooks/C2_W02_D01_ex1_escalated_case_STUDENT.ipynb`, and items 11
-to 15 are the brief's own, one per part. The executed solution,
+whether the story changes. Those orders, Finance's book, are the ones whose status is delivered: a
+cancelled order never reached the customer, and a returned one did not stay. The case asks each
+learner to rebuild the suite alone in five parts: items 1 to 10 are the ten markers of
+`notebooks/C2_W02_D01_ex1_escalated_case_STUDENT.ipynb`, and items 11 to 15 are the brief's own, one
+per part. The executed solution,
 `C2_W02_D01_ex1_escalated_case_solution_STUDENT.ipynb` in this folder, runs every marker. Four of the
 fifteen items are design items: 11, 12, 14 and 15.
 
@@ -59,36 +61,36 @@ keeps 653 orders.
 - d, `WHERE status <> 'returned'`: keeps the 163 cancelled orders, which never reached the customer,
   816 orders in all.
 
-### Q2. Which expression counts the customers who took delivery in a quarter, each once?
+### Q2. Which expression counts a quarter's customers in Finance's book, each once?
 
-Kind: choose the count. The key is c, "`count(DISTINCT customer_id)`, since each customer id stands for
-one customer". It counts each id once however many rows carry it: 205 in Q1 and 173 in Q2, where the
+Kind: choose the count. The key is c, "`count(DISTINCT customer_id)`, since every customer id stands
+for one customer". It counts each id once however many rows carry it: 205 in Q1 and 173 in Q2, where the
 delivered orders number 355 and 298.
 
-- a, "`count(*)`, since each delivered row belongs to a customer who took delivery": counts rows, 355
-  and 298, so a customer with three deliveries counts three times.
+- a, "`count(*)`, since each row in Finance's book belongs to a customer Finance counts": counts rows,
+  355 and 298, so a customer with three orders counts three times.
 - b, "`count(customer_id)`, since it counts the customer column rather than the rows": counts the rows
   whose customer id is filled in, which is every row again.
-- d, "`sum(1)`, since adding one per delivered order counts everyone who received one": adds one per
-  row, the same 355 and 298.
+- d, "`sum(1)`, since adding one per order in Finance's book reaches every customer in it": adds one
+  per row, the same 355 and 298.
 
-### Q11. How should the sheet set delivered revenue beside booked revenue, sized in queries and rows?
+### Q11. How should the sheet set Finance's revenue beside booked revenue, sized in queries and rows?
 
 Kind: a design item, the best-fit way sized in queries and rows. The key is b, "One query grouped by
-quarter, booked and delivered revenue as two columns of the same 2 rows". One query puts
+quarter, booked and Finance's revenue as two columns of the same 2 rows". One query puts
 Rs 10,00,00,000 beside Rs 6,80,25,200 for Q1 and Rs 9,84,00,000 beside Rs 6,65,65,090 for Q2, on the
 same row, for example with `sum(amount)` and `sum(CASE WHEN status = 'delivered' THEN amount END)`, so
 the reader compares the two definitions without moving between results.
 
 - a, "Two queries, one per definition, whose two results of 2 rows the analyst lines up by hand":
   right numbers, and the lining up by hand is the step Anand ruled out.
-- c, "The delivered query alone, 2 rows, since delivered revenue is the only one Finance signs": Anand
-  asked whether the story changes, which needs the booked number beside it.
+- c, "The query on Finance's book alone, 2 rows, since Finance's revenue is the only one Finance
+  signs": Anand asked whether the story changes, which needs the booked number beside it.
 - d, "One query grouped by quarter and status, 6 rows, which the analyst adds up into the two
   definitions": the delivered rows are there, and booked revenue has to be added by hand from three
   rows per quarter.
 
-### Q3. How many rows will the delivered segment query return?
+### Q3. How many rows will the segment query on Finance's book return?
 
 Kind: predict the output. The key is a, "8, one for each segment in each quarter". Grouping by segment
 and quarter makes one group for each pair that has rows, and every segment took delivery in both
@@ -96,7 +98,7 @@ quarters, so four segments times two quarters gives 8.
 
 - b, "4, one for each segment over both quarters": the answer for a query grouped by segment alone.
 - c, "2, one for each quarter over all segments": the answer for a query grouped by quarter alone.
-- d, "653, one for each delivered order": the rows before grouping; grouping returns one row per
+- d, "One for each order the filter keeps": the 653 rows before grouping; grouping returns one row per
   group.
 
 ### Q4. Which orders-per-customer figure survives the analyst's multiply-back check?
@@ -166,10 +168,10 @@ is written in, both averages cover all 93.
 - c, `avg(q1_spend)` and `avg(q2_spend)`: the averages themselves, with nothing to say whom they
   cover.
 
-### Q13. Does the story change for Retail-Plus on delivered orders?
+### Q13. Does the story change for Retail-Plus in Finance's book?
 
-Kind: read the two trees side by side. The key is b, "It shifts: on delivered orders fewer members
-buying is the larger fall, 0.740 against 0.835". On booked orders, members ordering less often led
+Kind: read the two trees side by side. The key is b, "It shifts: in Finance's book fewer members
+buying is now the larger fall, 0.740 against 0.835". On booked orders, members ordering less often led
 (orders per customer 0.780 against customers 0.835); on delivered orders, 26.0 percent fewer members
 took delivery and each did so 16.5 percent less often, and revenue fell 35.2 percent. The line to Anand
 says the story shifts toward members who stopped taking delivery.
@@ -181,7 +183,7 @@ says the story shifts toward members who stopped taking delivery.
 - d, "It reverses: revenue per order rose on both, so Retail-Plus is spending more where it counts":
   a larger basket on fewer members and fewer orders still leaves revenue down by a third.
 
-### Q8. How many Business customers took delivery in the half-year?
+### Q8. How many Business customers does Finance's book hold in the half-year?
 
 Kind: predict the number. The key is b, "36, each of the customers counted once". The 20 who took
 delivery in both quarters sit in both counts, so the half-year is 30 plus 26 less 20, which is 36, the
@@ -195,8 +197,8 @@ number the count from the orders prints.
 
 ### Q14. Which fact would let the analyst add Business's two quarter counts for its half-year?
 
-Kind: a design item, the fact that would switch the method. The key is d, "No Business customer took
-delivery in both quarters, so none sits in both". Adding double-counts exactly the customers in both
+Kind: a design item, the fact that would switch the method. The key is d, "No Business customer has an
+order in Finance's book in both quarters". Adding double-counts exactly the customers in both
 quarters, so with none the sum would be exact. On the book, 20 Business customers took delivery in
 both, so 30 plus 26 gives 56 where the half-year is 36.
 
@@ -207,28 +209,29 @@ both, so 30 plus 26 gives 56 where the half-year is 36.
 - c, "The analyst needs only Business's orders and rupees for the half-year line": orders and rupees
   add anyway, so this avoids the question and leaves the customer count unanswered.
 
-### Q9. Which ordering makes the five delivered Q2 web orders the same five on every run?
+### Q9. Which way of writing the sample makes its five Q2 web orders the same five on every run?
 
-Kind: choose the fix. The key is b, `ORDER BY order_id`. No two orders share an id, so the five are
-fixed by the ids alone: KR-00539, KR-00541, KR-00550, KR-00551 and KR-00552, Rs 5,870, before and
-after the reload.
+Kind: choose the fix. The key is b, "`ORDER BY order_id`, then `LIMIT 5`". The sort comes before the
+cut, and no two orders share an id, so the five are fixed by the ids alone: KR-00539, KR-00541,
+KR-00550, KR-00551 and KR-00552, Rs 5,870, before and after the reload.
 
-- a, `ORDER BY random()`: draws a new five on every run, so the analyst's rerun traces orders yours
-  never saw.
+- a, "`LIMIT 5` first, then `ORDER BY order_id` in an outer query": the cut comes first, so the five
+  are whichever the database reached first, now printed in order; after the reload four of them come
+  back and one does not.
 - c, "no ORDER BY, only `LIMIT 5`": returns whichever five the database reaches first, which a reload
   can change.
-- d, `ORDER BY quarter`: every candidate is in Q2, so this orders nothing and the five come back as
-  unordered as c.
+- d, "`ORDER BY quarter`, then `LIMIT 5`": every candidate is in Q2, so this orders nothing and the
+  five come back as unordered as c.
 
-### Q10. What should the fingerprint printed beside the delivered suite hold?
+### Q10. What should the fingerprint printed beside the suite on Finance's book hold?
 
-Kind: choose the check. The key is a, "The delivered book's rows, rupees and distinct customers, three
-numbers": 653 rows, Rs 13,45,90,290 and 268 customers. If next Monday's delivered numbers differ and
+Kind: choose the check. The key is a, "The rows, rupees and distinct customers of Finance's book, three
+numbers": 653 rows, Rs 13,45,90,290 and 268 customers. If next Monday's numbers differ and
 these three do not, the query moved; if these moved, the book did.
 
 - b, "The count of order rows alone, the one number every reload changes": a rewrite with the same
   values changes no count, and a corrected amount changes the rupees while the rows stay put.
-- c, "The delivered book's rows and distinct customers, the suite's own two counts": an amount
+- c, "The rows and distinct customers of Finance's book, the suite's own two counts": an amount
   corrected overnight leaves both counts where they were, and moves every revenue line on the sheet.
 - d, "The row count and the latest order date, so a late order shows up": catches a late order and
   misses a corrected amount for the same reason as c.
@@ -236,9 +239,10 @@ these three do not, the query moved; if these moved, the book did.
 ### Q15. Which route would catch a filter that let the cancelled orders in?
 
 Kind: a design item, the independent second route, worked out from the amounts in the stem. The key is
-a, "The book's rupees less the returned rupees and less the cancelled rupees". Rs 19,84,00,000 less
-Rs 3,80,55,960 less Rs 2,57,53,750 is Rs 13,45,90,290, which sits Rs 2,57,53,750 below the faulty
-Rs 16,03,44,040, exactly the cancelled rupees the filter let in.
+a, "The book's rupees less those of every order Finance's definition leaves out". The definition
+leaves out the returned and the cancelled orders, and Rs 19,84,00,000 less Rs 3,80,55,960 less
+Rs 2,57,53,750 is Rs 13,45,90,290, which sits Rs 2,57,53,750 below the faulty Rs 16,03,44,040,
+exactly the cancelled rupees the filter let in.
 
 - b, "Part 1's two quarters of revenue added, through the same filter": Rs 8,05,93,520 plus
   Rs 7,97,50,520 is Rs 16,03,44,040, the faulty number again, since it shares the fault.

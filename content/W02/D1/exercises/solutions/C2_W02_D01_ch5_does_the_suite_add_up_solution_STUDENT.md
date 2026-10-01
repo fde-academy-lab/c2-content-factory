@@ -124,8 +124,9 @@ tie-out.
   Q2's 121": the 204 is right, and the second half is not. A Q1 customer bought in Q1 only or in both,
   so 83 plus 45 gives back Q1's 128, and 76 plus 45 gives back Q2's 121; leaving the quarters
   unchecked gives up the tie-outs that would catch a wrong filter.
-- d, "128 plus 121 less twice the 45 is 159, since the 45 sit in both of the two quarter counts": the
-  45 are counted twice in 249 and belong once in the half-year, so they come off once, not twice.
+- d, "128 plus 121 less twice the 45 is 159, so the half-year should read 159, not 204": the
+  arithmetic is right, and 159 is the customers who bought in one quarter only, 83 plus 76; the 45 who
+  bought in both belong in the half-year once, so they come off once, not twice, and 204 stands.
 
 ## Why is option d in item 3, holding the channel lines back, worth arguing about?
 

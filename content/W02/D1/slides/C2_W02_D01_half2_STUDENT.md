@@ -392,7 +392,7 @@ label: Part 1 | title: On Finance's definition | body: Orders, customers and rup
 label: Part 2 | title: Each segment's frequency | body: Orders per customer per segment, and the groups too thin to quote. This afternoon.
 label: Part 3 | title: Branches and spend | body: Retail-Plus's branches and spend per member. In the lab.
 label: Part 4 | title: The tie-outs | body: Segments against the book, the half-year counted once. In the lab.
-label: Part 5 | title: The run that repeats | body: An ordered sample and the delivered book's fingerprint. In the lab. | tone: dark
+label: Part 5 | title: The run that repeats | body: A sample the rerun draws again, and the book's fingerprint. In the lab. | tone: dark
 ```
 
 ```notes
@@ -405,14 +405,14 @@ brief holds the room to.
 
 ---
 
-## S17. One stated filter, named counts, numeric, ordered
+## S17. Four rules hold the case to the morning's habits
 *Which rules does the suite keep on Finance's definition, whatever the numbers turn out to be?*
 
 ```cards
 icon: filter | eyebrow: The definition | title: One filter, stated first | body: One filter keeps only the orders that reached the customer and stayed there.
-icon: users | eyebrow: The counts | title: Named for what they count | body: Orders are rows; customers are counted once each.
-icon: divide | eyebrow: The ratios | title: Divided in numeric | body: Every ratio keeps its decimals and multiplies back to its orders.
-icon: list-ordered | eyebrow: The run | title: Ordered and fingerprinted | body: The sample orders on a unique key, and the delivered book's fingerprint prints beside it. | tone: dark
+icon: users | eyebrow: The counts | title: Named for what they count | body: Every count's name says what it counts, so no reader takes orders for customers.
+icon: divide | eyebrow: The ratios | title: Ratios that hold | body: Every ratio multiplies back to its orders, with its two counts printed beside it.
+icon: list-ordered | eyebrow: The run | title: Repeated and fingerprinted | body: The sample comes back the same on the analyst's rerun, and the book's fingerprint prints beside it. | tone: dark
 ```
 
 ```notes

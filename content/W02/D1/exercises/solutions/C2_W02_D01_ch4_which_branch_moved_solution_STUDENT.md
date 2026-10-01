@@ -136,10 +136,10 @@ to the rupee.
 - a, "Each quarter's revenue over the tier's 120 members: Rs 4,881 then Rs 3,445": revenue per tier
   member, a fair measure of a different group, since it counts the 13 who bought nothing; its change is
   the same 29.4 percent, and its levels cannot confirm the fix's.
-- b, "Each quarter's revenue over the 107 rows of the fix's own step: Rs 5,474 then Rs 3,863": the
-  right numbers today, read off a count the fix supplies. Had the step been built over all 120 members,
-  the fix would print Rs 4,881 and this route would print Rs 4,881 too, so it cannot catch a step with
-  the wrong members in it.
+- b, "Each quarter's rupees in the fix's step over the step's own 107 rows: Rs 5,474 then Rs 3,863":
+  the right numbers today, and the fix's own average written as a division, since its rupees and its
+  rows both come from the step. Whatever members the step held, this route prints what the fix prints:
+  built over all 120 members, both would read Rs 4,881.
 - c, "Each quarter's revenue over that quarter's own 91 and 76 buyers: Rs 6,437 then Rs 5,439": the
   plain average again, each quarter over its own buyers, which leaves out whoever stopped.
 
