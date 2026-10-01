@@ -98,9 +98,9 @@ once = raw.drop_duplicates("order_id")
 first_row = raw.groupby("order_id").cumcount() == 0
 ch5 = {"booked": int(once["order_amount"].sum()),
        "lookup": int(once["paid_amount"].sum()),
-       "every": int(raw["paid_amount"].sum()),
+       "every": int(raw.drop_duplicates()["paid_amount"].sum()),   # each payment once: a gateway copy is one payment posted twice
        "secondInst": int(raw.loc[~first_row & (raw["paid_amount"] != raw["order_amount"]), "paid_amount"].sum()),
-       "secondCopy": int(raw.loc[~first_row & (raw["paid_amount"] == raw["order_amount"]), "paid_amount"].sum()),
+       "unpaid": int(once.loc[once["paid_amount"] == 0, "order_amount"].sum()),
        "twoRow": int((raw.groupby("order_id").size() > 1).sum()),
        "paymentRows": 1428}
 
@@ -123,14 +123,15 @@ assert lookups["C-0195"]["approx"][0] == "C-0194" and lookups["C-0195"]["approx"
 assert lookups["C-0195"]["exact"] is None and lookups["C-0195"]["count"] == 0
 mumbai = protect[protect["city"] == "Mumbai"]
 assert len(mumbai) == 11 and int(mumbai["revenue"].sum()) == 156_790
-assert ch5["lookup"] == 118_381_974 and ch5["every"] == 196_682_820
-assert ch5["secondInst"] + ch5["secondCopy"] == 78_300_846 and ch5["twoRow"] == 450
+assert ch5["lookup"] == 118_381_974 and ch5["every"] == 196_645_070
+assert ch5["lookup"] + ch5["secondInst"] == ch5["every"] and ch5["secondInst"] == 78_263_096 and ch5["twoRow"] == 450
+assert ch5["booked"] - ch5["every"] == ch5["unpaid"] == 1_754_930
 # The figures the experiment cards quote as text, derived from the ones above.
 rp1, rp2 = t1["Retail-Plus"]["Q1"]["revenue"], t1["Retail-Plus"]["Q2"]["revenue"]
 assert round((rp1 - rp2) / rp2 * 100, 1) == 41.7 and rp1 - rp2 == 172_390 and round((rp1 - rp2) / rp1 * 100, 1) == 29.4
 assert round(714_890 / 156_790, 1) == 4.6 and round((219_355_841 - 196_599_040) / 1e7, 2) == 2.28
-assert round((ch5["booked"] - ch5["lookup"]) / ch5["booked"] * 100, 1) == 40.3 and ch5["booked"] - ch5["every"] == 1_717_180
-assert round((ch5["secondInst"] + ch5["secondCopy"]) / 1e7, 2) == 7.83
+assert round((ch5["booked"] - ch5["lookup"]) / ch5["booked"] * 100, 1) == 40.3 and ch5["booked"] - ch5["every"] == 1_754_930
+assert round(ch5["secondInst"] / 1e7, 2) == 7.83
 
 data = {"segments": SEGMENTS, "cities": CITIES, "warehouse": WAREHOUSE, "ch1": ch1, "tree": tree,
         "monthly": monthly, "counts": counts, "lookups": lookups, "ch5": ch5,
@@ -414,7 +415,7 @@ PAGE = r"""<!doctype html>
           <div class="group"><p class="q">How is collected computed for each order?</p>
             <div class="row">
               <button class="btn" id="colLookup" type="button" aria-pressed="false">A lookup fetches the order's paid amount</button>
-              <button class="btn" id="colSum" type="button" aria-pressed="true">Every payment for the order is added</button>
+              <button class="btn" id="colSum" type="button" aria-pressed="true">Every payment for the order is added once</button>
             </div></div>
           <div class="group"><p class="q">Which export does the workbook hold?</p>
             <div class="row">
@@ -423,7 +424,7 @@ PAGE = r"""<!doctype html>
             </div></div>
           <div class="group"><p class="q">Which of the week's steps do you place?</p>
             <select id="step" aria-label="Which of the week's steps you place"></select></div>
-          <p class="said" id="c5Said">Collected opens with every payment added, on today's export.</p>
+          <p class="said" id="c5Said">Collected opens with every payment added once, on today's export.</p>
         </div>
         <div class="card">
           <div class="stats">
@@ -623,8 +624,9 @@ PAGE = r"""<!doctype html>
           <div class="result" id="expEResult" hidden>
             <p><b>What happened.</b> <span id="expEWhat"></span></p>
             <p><b>Why it matters.</b> On Friday's export the lookup reports Rs 11,83,81,974 collected and Rs 8.00 crore
-              outstanding, 40.3 percent of booked; adding every payment leaves Rs 17,17,180 short, 0.9 percent, and
-              Anand's team would have chased Rs 7.83 crore that customers had already paid.</p>
+              outstanding, 40.3 percent of booked; adding every payment once leaves Rs 17,54,930 short, 0.9 percent,
+              exactly the orders nobody has paid for, and Anand's team would have chased Rs 7.83 crore that customers
+              had already paid.</p>
             <p class="rule">Where one order meets several payments, add them; the join lives in the warehouse, and a SUMIFS
               in the sheet only checks it.</p>
           </div>
@@ -713,8 +715,8 @@ PAGE = r"""<!doctype html>
           <button class="btn" id="decYellow" type="button" aria-pressed="false">Yellow inputs, formulas and a Checks tab</button>
           <button class="btn" id="decCopy" type="button" aria-pressed="false">A copy for each director</button>
         </div>
-        <div class="strip" id="decWhy"><b class="tag">Kavya's review</b><span id="decWhyText">Pick an answer above and
-          Kavya reviews it the way she would before the file reaches the chief of staff.</span></div>
+        <div class="strip" id="decWhy"><b class="tag">Kavya's review</b><span id="decWhyText">Pick an answer above to see
+          Kavya's review of it, the review the file gets before it reaches the chief of staff.</span></div>
         <div class="strip good"><b class="tag">Kavya's review of the file that goes</b>"Give the room a sheet it can
           change and cannot break silently: inputs in yellow, every other cell a formula, SUBTOTAL at every foot, and a
           Checks tab whose release holds whatever does not tie. A director who filters, sorts or asks a what-if should see
@@ -771,14 +773,15 @@ PAGE = r"""<!doctype html>
             fell from 0.99 percent in Q1 to 0.83 percent in Q2, 0.16 points, which is a 16 percent fall in the
             share.<span class="where">Chapter 4, depth.</span></dd>
           <dt>Booked and collected</dt><dd>Booked is the value of the orders; collected is the money received against them,
-            which needs every payment of every order added.<span class="where">Chapter 5.</span></dd>
+            which needs every payment of every order added once.<span class="where">Chapter 5.</span></dd>
           <dt>Join</dt><dd>A join matches each order with its payments; where one order meets several payments, a lookup
             takes the first and a sum takes them all.<span class="where">Chapter 5, the trap.</span></dd>
           <dt>Operating rule</dt><dd>The warehouse owns the number and every join, dedupe and rank Finance relies on; pandas
             owns the analyst's iteration until Finance relies on it; the workbook owns the last mile on an export that
             ties, and nobody types over the source.<span class="where">Chapter 5.</span></dd>
-          <dt>Drift check</dt><dd>On every refresh the workbook's control totals, orders and booked revenue per quarter, are
-            compared with the warehouse's, and a mismatch holds the deck until someone knows why.<span class="where">Chapter
+          <dt>Drift check</dt><dd>Every time the workbook recalculates, its Checks tab compares the sheet's orders and
+            booked revenue per quarter with the warehouse's control totals, which travel on a small tab beside each
+            export, and a mismatch holds the deck until someone knows why.<span class="where">Chapter
             5, question 6.</span></dd>
           <dt>Yellow input</dt><dd>A yellow cell holds an assumption a director may change, and every other cell holds a
             formula that reads it.<span class="where">Chapter 6.</span></dd>
@@ -963,12 +966,12 @@ PAGE = r"""<!doctype html>
       } },
     { t: "Which of the week's steps belong in the workbook, which must never be done there, and how do the two stay in step?",
       x: "Tuesday's booked against collected must never be done in the sheet: a lookup that fetches each order's paid amount takes the first payment of the " +
-         C5.twoRow + " two-row orders and reports " + R(C5.lookup) + " collected, " + money(C5.booked - C5.lookup) + " outstanding. Adding every payment gives " +
+         C5.twoRow + " two-row orders and reports " + R(C5.lookup) + " collected, " + money(C5.booked - C5.lookup) + " outstanding. Adding every payment once gives " +
          R(C5.every) + ", " + R(C5.booked - C5.every) + " short, " + pct((C5.booked - C5.every) / C5.booked * 100) +
-         " percent. The warehouse owns every join, dedupe and rank, pandas the analyst's iteration and the workbook the last mile, with a drift check on every refresh.",
+         " percent, exactly the orders nobody has paid for. The warehouse owns every join, dedupe and rank, pandas the analyst's iteration and the workbook the last mile, with a drift check live on the Checks tab.",
       d: function () {
-        return K.bridge(["collected, by lookup", C5.lookup], [["second instalments of 400 orders", C5.secondInst], ["second posts of 50 gateway copies", C5.secondCopy]],
-          { fmt: money, endLabel: "collected, every payment", lit: [0], title: "What the lookup left out of collected" });
+        return K.bridge(["collected, by lookup", C5.lookup], [["second instalments of 400 orders", C5.secondInst]],
+          { fmt: money, endLabel: "collected, every payment once", lit: [0], title: "What the lookup left out of collected" });
       } },
     { t: "When a director takes the workbook in the room, what can they break, and which checks catch it before anyone reads a wrong number?",
       x: "Filtered to Mumbai, a foot written as SUM still reads " + R(PROTECT_SUM) + " while the " + MUMBAI.length + " members on screen spent " + R(MUMBAI_SUM) +
@@ -1258,21 +1261,21 @@ PAGE = r"""<!doctype html>
     ["Wednesday's top fifty with a tie rule", 0, "Finance and Marketing both rely on the rank, so it lives where it can be rerun and audited."],
     ["Thursday's customer table", 1, "It is the analyst's weekly iteration, and it stays in pandas until Finance relies on it."],
     ["Friday's pivot, lookup and card", 2, "Presenting, slicing and looking up on an export that ties is the workbook's last mile."],
-    ["A director's what-if in the room", 2, "An assumption goes in a labelled yellow input beside the actual, never over it."]
+    ["A director's what-if in the room", 2, "An assumption goes in a labelled yellow input, and the actual keeps its formula."]
   ];
   STEPS.forEach(function (s, i) { var o = document.createElement("option"); o.value = String(i); o.textContent = s[0]; $("step").appendChild(o); });
   function ch5() {
     var coll = S.collect === "every" ? C5.every : C5.lookup, short = C5.booked - coll;
     $("c5Booked").textContent = money(C5.booked);
     $("c5Coll").textContent = money(coll);
-    $("c5CollD").textContent = S.collect === "every" ? R(C5.every) + ", every payment added" : R(C5.lookup) + ", one payment per order";
+    $("c5CollD").textContent = S.collect === "every" ? R(C5.every) + ", every payment added once" : R(C5.lookup) + ", one payment per order";
     $("c5Short").textContent = money(short);
     $("c5ShortD").textContent = R(short) + ", " + pct(short / C5.booked * 100) + " percent of booked";
     $("c5Two").textContent = String(C5.twoRow);
-    var moves5 = [[S.collect === "every" ? "not collected" : "outstanding, says the lookup", -short]];
+    var moves5 = [[S.collect === "every" ? "orders nobody has paid for" : "outstanding, says the lookup", -short]];
     K.draw("c5Bridge", K.bridge(["booked", C5.booked], moves5, { fmt: money, lo: floorOf(C5.booked, moves5), lit: S.collect === "every" ? [] : [0],
-      endLabel: S.collect === "every" ? "collected, every payment" : "collected, by lookup",
-      title: S.collect === "every" ? "Booked against collected, every payment added" : "Booked against collected, one payment per order by lookup" }));
+      endLabel: S.collect === "every" ? "collected, every payment once" : "collected, by lookup",
+      title: S.collect === "every" ? "Booked against collected, every payment added once" : "Booked against collected, one payment per order by lookup" }));
     var k = S.exp + ":once", w = D.warehouse, t2 = scopeQ("All segments", "Q2", "revenue", k), o2 = scopeQ("All segments", "Q2", "orders", k);
     var t1 = scopeQ("All segments", "Q1", "revenue", k), o1 = scopeQ("All segments", "Q1", "orders", k);
     var ok = t1 === w.Q1.revenue && o1 === w.Q1.orders && t2 === w.Q2.revenue && o2 === w.Q2.orders;
@@ -1292,7 +1295,7 @@ PAGE = r"""<!doctype html>
   Object.keys(COLIDS).forEach(function (id) {
     $(id).addEventListener("click", function () {
       S.collect = COLIDS[id]; press(Object.keys(COLIDS), id);
-      $("c5Said").textContent = S.collect === "every" ? "Collected now adds every payment of each order, as SUMIFS or the warehouse's join does."
+      $("c5Said").textContent = S.collect === "every" ? "Collected now adds every payment of each order once, as SUMIFS over the export's distinct rows or the warehouse's join does."
         : "Collected now comes from a lookup that stops at the first payment row of each order.";
       ch5();
     });
