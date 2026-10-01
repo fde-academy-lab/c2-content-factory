@@ -699,14 +699,14 @@ value: 0 | label: grades | note: a performance indicator only
 
 ```mermaid
 flowchart LR
-    T["<b>Thursday</b><br/>1,000 customers in, 1,120 rows out"] --> F["<b>Friday</b><br/>the pivot, the lookup, the card, the rule"]
+    T["<b>Thursday's Kahoot, invented</b><br/>1,000 customers in, 1,120 rows out"] --> F["<b>Friday</b><br/>the pivot, the lookup, the card, the rule"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     class F known
 ```
 
 ```notes
-LIVE, 9 minutes. Run kahoot/C2_W02_D05_quiz_STUDENT.md. The return question is Thursday's merge one level
-up.
+LIVE, 9 minutes. Run kahoot/C2_W02_D05_quiz_STUDENT.md. The return question is the merge from Thursday's
+Kahoot, on its invented numbers, one level up.
 Transition: what comes next, and which question is left open?
 ```
 

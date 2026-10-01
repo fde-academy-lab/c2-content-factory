@@ -40,8 +40,8 @@ staff's ask, and a rung skipped is a part of Monday's file you will build withou
 | The escalated case, alone, 50 minutes | `unguided/C2_W02_D05_escalated_STUDENT.md` with `notebooks/C2_W02_D05_ex1_escalated_case_STUDENT.ipynb` | Can you build Monday's file alone in fifty minutes and say, part by part, what it can be trusted for? | Ten letters, then two sentences; items 6, 7, 8 and 10 are design |
 | The second case, in pairs, 40 minutes | `unguided/C2_W02_D05_director_STUDENT.md` with `notebooks/C2_W02_D05_ex2_second_case_STUDENT.ipynb` | A director wants five lakh typed into Q2: can the sheet show the director's number and still be the one Finance signs? | Five letters, then three lines; items 2 and 5 are design |
 | The TA-led practice lab, after the afternoon block | `practice/C2_W02_D05_lab_STUDENT.md` | Can you place eight asks with their tool, read three front-page cards, predict a pivot and repair a sheet you did not build, in an hour? | Eighteen letters |
-| Tonight | `../takehome/C2_W02_D05_brief_STUDENT.md` | Can you rebuild Monday's three deliverables from a fresh export, and find out why any number moved? | A workbook, a release note and the self-check |
-| Tonight, before you post | `../takehome/C2_W02_D05_selfcheck_STUDENT.md` | Does your take-home reach the numbers a careful pass on the fresh export reaches? | Your own numbers against its tables |
+| Tonight | `../takehome/C2_W02_D05_brief_STUDENT.md` | Can you rebuild Monday's three deliverables from a rehearsal copy of the exports, and say why every number that moved, moved? | A workbook, a release note and the self-check |
+| Tonight, before you post | `../takehome/C2_W02_D05_selfcheck_STUDENT.md` | Does your rebuilt workbook reach the numbers a careful pass on the rehearsal copy reaches? | Your own numbers against its tables |
 
 Across the day that is 36 chapter items, 10 in the escalated case and 5 in the second case, 51 in all,
 of which 22 are design items.

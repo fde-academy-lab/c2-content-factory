@@ -1,7 +1,8 @@
 # Can you make Friday's eight calls in seconds, from a pivot that reads too high to Thursday's merge that grew?
 
 Eight items, ungraded, scored on correctness and speed together. Seven are today's, and the last is
-the return question from Thursday, one level up.
+the return question from Thursday, one level up; its 1,000 customers and 1,120 rows are the invented
+numbers of Thursday's Kahoot.
 
 The day built the three things Meera's chief of staff opens on Monday without a login: the revenue
 tree by segment for both quarters, the protect list of fifty Retail-Plus members with a lookup by id,
@@ -24,7 +25,7 @@ is the one to say again before the room leaves.
 - Which tool owns each of five asks, in order?
 - Which of the week's steps must never be done in Excel?
 - A filtered list still shows the whole list's total; what sits at its foot?
-- Thursday's merge turned 1,000 customers into 1,120 rows; what happened, and what would have caught it?
+- In Thursday's Kahoot a merge turned 1,000 customers into 1,120 rows; what happened, and what would have caught it?
 
 ---
 
@@ -99,7 +100,7 @@ director's what-if; counting each order once for Finance; a member lookup on a l
 
 ---
 
-## Q8. Thursday's merge turned 1,000 customers into 1,120 rows; what happened, and what would have caught it?
+## Q8. In Thursday's Kahoot a merge turned 1,000 customers into 1,120 rows; what happened, and what would have caught it?
 *Tests: the return question from Thursday: a fan-out made loud by validate.*
 
 - Some customers dropped out; how="outer" would have kept them
