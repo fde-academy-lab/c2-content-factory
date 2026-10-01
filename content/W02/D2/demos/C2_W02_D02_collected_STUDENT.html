@@ -1526,7 +1526,7 @@ dl.gloss dd .where{display:block;color:var(--muted);font-size:13px}
     { r: 0, view: "join", s: S("LEFT", "raw", "none", "pay"), lit: 2, t: "Which join keeps every booked order?",
       x: "The LEFT JOIN with orders first: seven rows, and T-4 comes back with NULL on every payment column, which is exactly the row Anand is asking about. T-2 and T-3 still appear twice, since LEFT decides what happens to the rows that do not match and leaves the repeats alone." },
     { r: 0, view: "join", s: S("RIGHT", "raw", "none", "pay"), lit: 2, t: "What does the RIGHT join keep that LEFT drops?",
-      x: "Seven rows again, and a different seven: T-4 is gone, and P-7 arrives with NULL where its order should be. That is an orphan, a payment against an order id the orders table does not hold, and it is the platform lead's question, not Anand's." },
+      x: "Seven rows again, and a different seven: T-4 is gone, and P-7 arrives with NULL where its order should be. That is an orphan, a payment against an order id the orders table does not hold, and it belongs to the platform lead's question, since Anand asked about orders." },
     { r: 0, view: "join", s: S("FULL", "raw", "none", "pay"), lit: 2, t: "What does the FULL join keep?",
       x: "Eight rows: the six matches, T-4 with no payment and P-7 with no order. Anand's question is about every booked order, so it starts from orders. Kavya closes chapter 1: “" + KAVYA_CH[0] + "”" },
     { r: 1, view: "join", s: S("INNER", "raw", "none", "order"), lit: 4, t: "Why does the first draft read Rs 8,500 against Rs 5,800?",
