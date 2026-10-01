@@ -7,7 +7,8 @@ with the workbook.
 
 As shipped, the tree and the front page tie to the warehouse and the release holds the protect list,
 because the customer table is one member short: C-0170, a Retail-Plus member with 6 orders and
-Rs 21,740, rank 5 if present, named here and in the day sheet only. The flips reproduce the day's
+Rs 21,740, rank 5 if present, named here and in the day sheet only. The Checks tab says the table does
+not match and prints neither the gap nor the id, which the room computes in chapter 3. The flips reproduce the day's
 traps in the workbook: a count per payment row, a restated control total, an approximate lookup on a
 missing id (C-0195, and the plant itself, which hands back C-0169 at rank 50), a SUM at the foot, a
 figure typed over a formula, and the scope and voucher changes a director asks for.
@@ -27,7 +28,7 @@ verdicts:
   - {sheet: FrontPage, cell: B18, expect: "In rupees the largest fall is Business's Rs 14.30 lakh, out of a net fall of Rs 16.00 lakh, and the steepest fall is Retail-Plus, down 29.4 percent."}
   - {sheet: Checks, cell: B5, expect: "PASS"}
   - {sheet: Checks, cell: B6, expect: "HOLD"}
-  - {sheet: Checks, cell: C6, expect: "The customer table is Rs 21,740 and 6 orders short of the warehouse, so the protect list may be missing a member."}
+  - {sheet: Checks, cell: C6, expect: "The customer table's orders and revenue do not match the warehouse's two quarters, so the protect list waits until the table reconciles."}
   - {sheet: Checks, cell: B7, expect: "PASS"}
   - {sheet: Checks, cell: C7, expect: "The lookup says C-0195, an id the table does not hold, is not in the table."}
   - {sheet: Checks, cell: B8, expect: "PASS"}
@@ -47,7 +48,6 @@ flips:
     set: [{sheet: Tree, cell: D6, value: 98500000}]
     verdicts:
       - {sheet: Tree, cell: C20, expect: "Do not send: the tree does not tie to the warehouse's control totals. Find what differs before anyone slices it."}
-      - {sheet: Checks, cell: C6, expect: "The customer table is Rs 1.22 lakh and 6 orders short of the warehouse, so the protect list may be missing a member."}
       - {sheet: Checks, cell: B5, expect: "HOLD"}
   - name: the chief of staff looks up C-0195 with an approximate match
     set: [{sheet: Protect, cell: C4, value: "C-0195"}, {sheet: Protect, cell: C5, value: "approximate"}]
