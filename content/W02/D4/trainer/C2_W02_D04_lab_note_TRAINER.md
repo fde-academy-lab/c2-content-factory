@@ -56,14 +56,18 @@ Cut in this order, and stop as soon as the lab fits.
 | 3 | Step 2: the merge from the list leaves the 39 customers' channel counts missing, and `idxmax` stops with `ValueError: Encountered all NA values` | "What count does a customer with no orders have in each channel? Say it in code before `idxmax` runs." |
 | 3 | Step 5: nobody expects `idxmax` to answer for a row of zeros | "Run it on one customer who never ordered and read what it returns." |
 | 4 | Step 1: the feed's merge raises `MergeError` | "The feed broke its promise. Which of the growth team's rules handles a customer it names twice?" |
-| 4 | The line: pairs write that the sale made reached members spend less, or more | "Does the table say why anyone spent less? Put the two counts side by side and say only what they show." |
+| 4 | Step 3: pairs give 33 of 60 against 34 of 60 | "Could a member who bought nothing in Q1 spend less in Q2? Count each group out of the members who could." |
+| 4 | The line: pairs write that the sale made reached members spend less, or more | "Does the table say why anyone spent less? Put the two counts side by side, each with its base, and say only what they show." |
 | Stretch | The design items: learners pick the most thorough-sounding option and miss the fact in the stem | "What does the stem say about who reruns it, or how big it is? Cross out every option that ignores it." |
 
 ## What does a finished lab look like?
 
 Nine letters for problems 1 and 2; for problem 3, the counts 340, 1,000, 98, 39 and 137 and a tie
-rule in one sentence; for problem 4, 120 rows, Rs 9,99,150, 60 reached, 33 of 60 and 34 of 60, a
-smallest recency of 0, and one line that names both groups and claims no cause. Read two pairs' lines
+rule in one sentence; for problem 4, 120 rows, Rs 9,99,150, 60 reached, 33 of the 44 reached members
+who bought in Q1 against 34 of the 47 others, a smallest recency of 0, and one line that names both
+groups with their bases and claims no cause. A pair that reports 33 of 60 against 34 of 60 has
+counted 29 members who bought nothing in Q1, 13 who never ordered and 16 who ordered only in Q2, none
+of whom can spend less, and on that base the comparison points the other way. Read two pairs' lines
 aloud before the lab closes and ask the room which one Kavya would send back.
 
 ## What if the notebook will not run?

@@ -1,4 +1,4 @@
-# Which extra fits you tonight: the recovery drill that rebuilds the table in four moves, or the stretch that grows it up?
+# Which extra fits you tonight: rebuilding the table in four checked moves, or adding a channel flag, a run log and a SQL twin?
 
 Both are optional and neither is graded. Pick the one that matches where you finished the escalated
 case: with a check still failing, take the recovery; with every check passing, take the stretch.
@@ -15,8 +15,9 @@ from a customer's last order to the table's as-of date, the last date the data c
 
 This one is for you if the escalated case ended with a check you could not make pass.
 
-**Who needs the answer.** You, before Friday, which starts from the table this builds. A table you
-rebuilt slowly and understand is worth more than one you copied and cannot defend.
+**Who needs the answer.** You, before Friday, which starts from the table this builds. Rebuild it one
+checked move at a time, so that when Friday builds on it you can say which move made each of its
+numbers.
 
 **The questions on the way.**
 
@@ -46,7 +47,8 @@ whole numbers. Count the customers with a frequency of 0: 39.
 
 Compute `AS_OF = orders["order_date"].max()` and recency from it, and check that the smallest recency
 is 0. Then count the 60-day win-back list both ways, from `AS_OF` and from `pd.Timestamp("2026-10-19")`,
-and say in one sentence to the growth team why the second list is 55 customers longer.
+and say in one sentence to the growth team why the second list is 55 customers longer and what the 21
+days between the two dates say about the data's age.
 
 When all four pass, rerun the escalated notebook from a fresh kernel.
 

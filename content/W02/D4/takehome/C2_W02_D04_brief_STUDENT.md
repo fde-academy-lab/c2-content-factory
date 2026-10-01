@@ -14,13 +14,13 @@ open it only after your own notebook runs top to bottom.
 
 The data platform lead owns Kalpa Retail's warehouse. A staging snapshot is a copy of the business's
 data kept apart from the live warehouse, so a job can be tried on it before it runs for real. Some of
-your answers from class carry over and most do not. The checks that tie the table to its sources come
-out as they did in class: 340 customers in the same four segments, 1,000 orders worth Rs 19,84,00,000
-up to 28 September 2026, a smallest recency of 0, and the same count of orders in each segment and
-quarter, so Retail-Plus still has 215 orders in Q1 and 140 in Q2. Every answer about particular
-customers comes out differently: who never ordered, whom the sale reached and how many of them bought,
-the win-back lists, Retail-Plus orders per member, and each tier's change in spend from Q1 to Q2, so
-a table that matches class on the totals tells you nothing yet about its rows.
+your answers from class carry over and most do not. These come out as they did in class: 340
+customers in the same four segments, 1,000 orders worth Rs 19,84,00,000 up to 28 September 2026, a
+smallest recency of 0, and the same count of orders in each segment and quarter, so Retail-Plus still
+has 215 orders in Q1 and 140 in Q2. Every answer about particular customers comes out differently: who
+never ordered, whom the sale reached and how many of them bought, the win-back lists, Retail-Plus
+orders per member, and each tier's change in spend from Q1 to Q2, so a table that matches class on the
+totals tells you nothing yet about its rows.
 
 This snapshot holds three CSV files in this day's `data/` folder, with no Postgres of their own:
 

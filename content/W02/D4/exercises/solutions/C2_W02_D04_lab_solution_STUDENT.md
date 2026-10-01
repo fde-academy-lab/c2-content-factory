@@ -11,8 +11,8 @@ senior analyst, reviews every table and tool choice. Problems 3 and 4 have no le
 are below.
 
 **Who needs the answer.** You and the TA, at the end of the lab. A shape you could not predict is a
-table you would have trusted without reading, and a column that guesses without saying so sends an
-offer down a channel nobody chose.
+table you would have trusted without reading, and a column that guesses without saying so sends a
+customer's offer by a channel picked by the order of the table's columns.
 
 **The questions on the way.**
 
@@ -42,7 +42,8 @@ customers live in six cities.
 ### Q2. How many rows does a count per customer and quarter return?
 
 The key is a, "471 rows, one per customer and quarter that has orders". A group exists only for a
-pair that appears in the rows, so a customer who ordered in one quarter has one row.
+pair that appears in the rows, so a customer who ordered in one quarter has one row: 244 customers
+ordered in Q1 and 227 in Q2, and 244 plus 227 is 471.
 
 - b, "602 rows, the 301 customers who ordered times 2 quarters": assumes every customer ordered in
   both quarters.
@@ -99,8 +100,8 @@ needs to see one customer's last order, the two dates it was counted to, and the
 
 - a, "SQL, two queries whose counts differ by 55, run one after the other": shows the two totals and
   hides the step that differs.
-- c, "pandas, two chained calls on the table with both counts shown": the counts are there, and the
-  chain hides the dates each was counted to.
+- c, "pandas, the refresh run again, with its four guards printing PASS": a pass says the table
+  keeps its checks, and it never shows the 166, the dates or the step where the two counts part.
 - d, "SQL, one query with the two counts in two columns": the same totals in one place.
 
 ### Q8. Which tool should hold the monthly revenue by segment that Finance reconciles against its books?
@@ -152,15 +153,23 @@ channel. Any rule works if it is written down; a tie broken by the columns' alph
 | Rows | 120, every Retail-Plus member on the list |
 | Spend | Rs 9,99,150: Q1 Rs 5,85,770 and Q2 Rs 4,13,380, matching the warehouse |
 | Reached by the sale | 60, once each under the growth team's rule |
-| Reached members who spent less in Q2 than in Q1 | 33 of 60 |
-| Members the sale did not reach who spent less in Q2 | 34 of 60 |
+| Members who never ordered | 13, 9 of them reached and 4 not, none of whom can spend less in Q2 |
+| Reached members who bought in Q1, and those of them who spent less in Q2 | 44, of whom 33 spent less, 75 percent |
+| Members not reached who bought in Q1, and those of them who spent less in Q2 | 47, of whom 34 spent less, 72 percent |
 | Smallest recency | 0 days, counted to 28 September 2026 |
 | Members lapsed on the 60-day line | 47 |
 
-A line that holds: "Of the 60 members the monsoon sale reached, 33 spent less in Q2 than in Q1; of
-the 60 it did not reach, 34 did. The table records whom the sale reached, and whether it changed
-what they spent needs a fair comparison, which a group held out of the next sale would give." The
-line names both groups, keeps the counts beside each other, and makes no claim about cause.
+A line that holds: "Of the 44 members the monsoon sale reached who bought in Q1, 33 spent less in
+Q2, 75 percent; of the 47 it did not reach who bought in Q1, 34 did, 72 percent. The table records
+whom the sale reached, and whether it changed what they spent needs a fair comparison, which a group
+held out of the next sale would give."
+
+A member who bought nothing in Q1 cannot spend less in Q2, so the base is the members who bought in Q1.
+The base decides which group looks worse. Over all 60 in each group, the reached members fall less
+often, 33 of 60 against 34 of 60; over the members who ordered at all, more often, 33 of 51 against
+34 of 56; and over the Q1 buyers, more often again, 75 percent against 72. A gap of under five points
+that changes direction with the base says nothing about what the sale did, which is why the line
+claims no cause.
 
 ## Why is option d in item 9, a permanent table for 40 ids, the wrong answer worth arguing about?
 

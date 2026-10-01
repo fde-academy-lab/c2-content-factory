@@ -3,8 +3,8 @@
 The growth team at Kalpa Retail wants one table, one row per customer, refreshed every Monday: how
 recently each customer bought, how often, how much, their segment, whether the monsoon sale reached
 them, and the flags it acts on, built in pandas from the warehouse. The warehouse holds 1,000 orders
-from April to September 2026 and a customer list of 340 customers. The drawings below go up in the
-order the day draws them, and each one answers the question above it.
+from April to September 2026 and a customer list of 340 customers. The day's question is whether the
+growth team can act on that table every Monday without checking it first.
 
 ---
 
@@ -41,9 +41,10 @@ flowchart LR
 
 ## What does one line of `groupby` do to 1,000 order rows?
 
-Week 1's loop, written once: split the orders into one group per customer, apply the latest date, a
-count and a sum to each group, combine one row per customer. Beside it goes the arithmetic that sends
-the room back to the first drawing: 340 on the list, 301 who ordered, 39 that `groupby` never saw.
+It is Week 1's loop written once: split the orders into one group per customer, apply the latest
+date, a count and a sum to each group, and combine one row per customer. Beside it goes the arithmetic
+that sends the room back to the first drawing: 340 on the list, 301 who ordered, 39 that `groupby`
+never saw.
 
 ```mermaid
 flowchart LR
@@ -66,7 +67,7 @@ flowchart LR
     C["<b>customer list</b><br/>340"] --> H{"<b>built from orders</b>"}
     H --> K["<b>301 rows</b><br/>who ordered"]
     H --> M["<b>39 absent</b><br/>no orders, no row"]
-    M --> N["<b>merged back</b><br/>count missing, not 0"]
+    M --> N["<b>merged back</b><br/>a missing count is never 0"]
 ```
 
 ---
@@ -74,8 +75,8 @@ flowchart LR
 ## Which customers does each merge keep, and what does `validate` promise?
 
 Tuesday's four joins go up again in pandas' words, with the default ringed: `merge` with no `how` is
-an inner join. Under it, `validate="one_to_one"`: each key at most once on each side, or the merge
-stops with a `MergeError` before any table exists.
+an inner join. Under it goes `validate="one_to_one"`, which promises each key at most once on each side
+and stops the merge with a `MergeError`, before any table exists, when the data breaks that promise.
 
 | SQL, Tuesday | pandas, today | What survives |
 |---|---|---|
@@ -100,13 +101,13 @@ flowchart LR
 
 ---
 
-## Long or wide, and what does `pivot_table` put in each cell?
+## Should Retail-Plus's months be read long or wide, and what does `pivot_table` put in each cell?
 
 The long table, one row per member and month with orders, 266 rows for Retail-Plus, goes up on the
-left; the wide table, one row per member and one column per month, 107 by 6, on the right. Between
-them, `pivot_table` with its `aggfunc` written out. Under them, the two falls: 18 percent with the
-default mean, 29.4 percent with `aggfunc="sum"`, Rs 5,85,770 to Rs 4,13,380. The check in a box: the
-grand total equals the orders.
+left; the wide table, one row per member and one column per month, 107 members by 6 months, on the
+right. Between them goes `pivot_table` with its `aggfunc` written out, and under them the two falls,
+18 percent with the default mean and 29.4 percent with `aggfunc="sum"`, from Rs 5,85,770 to Rs 4,13,380.
+The check goes in a box: the grand total equals the orders.
 
 ```mermaid
 flowchart LR
@@ -118,7 +119,7 @@ flowchart LR
 
 ## Why did three tools disagree about who bought, and what made them agree?
 
-The marketing lead's share: reached customers who bought. Plain Python filed 23 reached customers
+The marketing lead's share is the reached customers who bought. Plain Python filed 23 reached customers
 under `None`, SQL put them in a `NULL` group, and pandas dropped them and said 100 percent. Taking the
 segment from the customer list made all three say 107 of 130, 82 percent.
 
@@ -133,10 +134,10 @@ flowchart LR
 
 ## Which size separates the three tools for Finance's eight numbers?
 
-Two columns go up side by side. Rows returned: 8, 8 and 8, a tie. Rows moved out of the warehouse:
-SQL 8, pandas 1,340, plain Python 1,000. Under them, the note's owners: SQL for Finance's revenue,
-pandas for the growth team's table and the months view, plain Python for the auditor's one-off, and
-one refusal, a pandas notebook for Finance's numbers.
+Two columns go up side by side. The rows each route returns are 8, 8 and 8, a tie; the rows each
+moves out of the warehouse are SQL 8, pandas 1,340 and plain Python 1,000. Under them go the note's
+owners: SQL for Finance's revenue, pandas for the growth team's table and the months view, plain Python
+for the auditor's one-off, and one refusal, a pandas notebook for Finance's numbers.
 
 ```mermaid
 flowchart LR
@@ -150,8 +151,11 @@ flowchart LR
 ## What does the refresh do every Monday, and when does it refuse to ship?
 
 A line from 28 September to 19 October goes up first, with "21 days, no new data" on it: counted to
-the run day, the win-back list holds 166; counted to the data's last date, 111. Then the refresh as one
-function, with its four guards each against a number the warehouse gives on its own.
+the run day, the win-back list holds 166; counted to the data's last date, 111. The 21 days stay on the
+board as the data's age, which goes to the growth team beside the table. Then the refresh as one
+function, with its four guards: two compare the table with counts the warehouse gives on its own query,
+the rows against the customer list and the spend against the warehouse's total, and two check the
+table's own shape, one row per customer and a smallest recency of 0.
 
 ```mermaid
 flowchart LR
