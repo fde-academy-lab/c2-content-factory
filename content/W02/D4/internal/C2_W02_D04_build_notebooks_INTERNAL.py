@@ -297,7 +297,7 @@ def ch1():
         customer from 1 to 5 on "the days from a customer's most recent purchase (recency), the total
         number of orders (frequency), and the total amount spent (monetary value)", and they keep the
         customers with no orders yet in a group of their own, Prospects, instead of leaving them off
-        (Shopify Help Center, Customers reports, checked 30 Sep 2026).
+        (Shopify Help Center, Customers reports, checked 1 Oct 2026).
         ''', "Monday rebuilt Week 1's revenue tree from the Kalpa warehouse: 1,000 orders over two "
              "quarters and Rs 19,84,00,000 at the prices charged. Tuesday and Wednesday worked at the "
              "grain of an order and of a customer's month. This chapter starts the growth team's table "
@@ -672,9 +672,9 @@ def ch2():
         advertiser can send one purchase twice, once from the Meta Pixel in the shopper's browser and
         once from its own server through the Conversions API. Meta's documentation says an advertiser
         with that setup "must set up a deduplication method" so the ad system can tell distinct events
-        from overlapping ones, and Meta treats two copies as one only when their ID and name match and
-        they arrive within 48 hours of the first (Meta for Developers, Handling Duplicate Pixel and
-        Conversions API Events, checked 30 Sep 2026).
+        from overlapping ones. Under the method Meta recommends, when the same event ID and event name
+        reach the same Pixel within 48 hours, Meta keeps the first copy and discards the rest (Meta for
+        Developers, Handling Duplicate Pixel and Conversions API Events, checked 1 Oct 2026).
         ''', "Chapter 1 built the growth team's table from the warehouse: 340 customers, one row each, "
              "with the last order date, the count of orders and spend, which adds back to Rs 19,84,00,000; "
              "39 customers never ordered. This chapter attaches a second source to it, the campaign "
@@ -1042,8 +1042,8 @@ def ch3():
         chapter has to keep apart. On the call for its fourth quarter of fiscal 2026, its chief
         financial officer reported that "traffic or shopping frequency increased 3.3% worldwide" and
         that "our average transaction or ticket was up 5.9% worldwide": how often members shop, and
-        what each trip is worth, as two numbers (Costco Q4 fiscal 2026 earnings call transcript, The
-        Globe and Mail, 24 Sep 2026, checked 30 Sep 2026). The same call put the renewal rate in the
+        what each trip is worth, as two numbers (Costco's earnings call and the supplemental information
+        it filed with the SEC, both 24 Sep 2026, checked 1 Oct 2026). The same call put the renewal rate in the
         US and Canada at 92.3 percent, the number the head of a paid tier watches first.
         ''', "Chapter 2 put the monsoon sale on the growth team's table: 130 customers reached, one row "
              "each, and the table still 340 rows and Rs 19,84,00,000. Week 1 found that Retail-Plus "
@@ -1371,7 +1371,7 @@ def ch4():
         dashboards while the Pricing Engineering team built its own completed-trips metric from a
         Cassandra table for real-time services, and it names the goal Uber set: a metric and its
         business logic in "a strictly ONE to ONE mapping" (Uber Blog, The Journey Towards Metric
-        Standardization, 12 January 2021, checked 30 Sep 2026).
+        Standardization, 12 January 2021, checked 1 Oct 2026).
         ''', "Chapter 2 found that the monsoon sale reached 130 customers, all in Retail-Core and "
              "Retail-Plus, and chapter 3 found the Retail-Plus tier's spend down 29.4 percent from Q1 "
              "to Q2. This chapter answers the marketing lead's next question in three tools and makes "
@@ -1639,7 +1639,7 @@ def ch4():
 
         It does not. The pandas documentation's comparison with SQL warns that if both key columns hold
         rows whose key is missing, pandas matches those rows to each other, "different from usual SQL
-        join behaviour" (pandas 3.0.6 documentation, Comparison with SQL, checked 30 Sep 2026). SQL
+        join behaviour" (pandas 3.0.6 documentation, Comparison with SQL, checked 1 Oct 2026). SQL
         never matches `NULL` to `NULL`. The records below are invented to show it.
         '''),
         code('''
@@ -1709,7 +1709,7 @@ def ch5():
         Platform says that "multiple stakeholders come up with different ways to calculate the same
         metric arriving at slightly different results", and that the platform now "serves as the single
         source of truth for all business metrics at Linkedin" (LinkedIn Engineering, Unified Metrics
-        Platform, checked 30 Sep 2026).
+        Platform, checked 1 Oct 2026).
         ''', "Chapter 4 found that plain Python, SQL and pandas agree, 130 reached and 107 bought, once "
              "they share one definition of a customer's segment. This chapter decides where each of the "
              "day's recurring numbers should live, starting with Finance's."),
@@ -2025,12 +2025,13 @@ def ch6():
         recency in days. A customer who never ordered has nothing to win back and belongs on chapter
         1's first-order list instead. The 60-day line is the growth team's.
         ''', '''
-        England's public health agency ran a daily refresh that dropped rows without an error. Test
-        results were "automatically fetched in CSV format" from commercial laboratories and stored in
-        the older .XLS format, "that limited the number of rows to 65,536 per spreadsheet", and "15,841
-        cases between 25 September and 2 October were not included in the reported daily COVID-19
-        cases" (The Register, 5 October 2020, checked 30 Sep 2026). A count of rows in against rows out
-        on every run would have stopped it on the first day.
+        England's public health agency ran a daily refresh that dropped rows without an error. Its own
+        statement said "15,841 cases between 25 September and 2 October were not included in the
+        reported daily COVID-19 cases" (Public Health England, 4 October 2020). The Register reported
+        the cause: test results were "automatically fetched in CSV format" from commercial laboratories
+        and stored in the older .XLS format, "that limited the number of rows to 65,536 per
+        spreadsheet" (The Register, 5 October 2020; both checked 1 Oct 2026). A count of rows in
+        against rows out on every run would have stopped it on the first day.
         ''', "Chapter 5 gave Finance's number to SQL and the growth team's table to pandas, reading from "
              "the warehouse, and the table reconciles with Finance's query in every segment. This chapter "
              "makes the table rebuild itself every Monday and stop when a check fails."),
@@ -2360,7 +2361,7 @@ def twin(cells, answers, why, solution):
     cells is a list of (kind, text, step) where kind is md or code; answers maps n to the code
     that fills __TODOn__; why maps a step number to the markdown that follows its code cell.
     """
-    out = []
+    out, explained = [], set()
     for kind, text, step in cells:
         if kind == "md":
             text = textwrap.dedent(text).strip("\n")
@@ -2377,8 +2378,9 @@ def twin(cells, answers, why, solution):
             for n in sorted(answers, reverse=True):          # __TODO10__ before __TODO1__
                 src = src.replace(f"__TODO{n}__", answers[n])
         out.append(code(src))
-        if solution and step in why:
-            out.append(md(why[step]))
+        if solution and step in why and step not in explained and "__TODO" in textwrap.dedent(text):
+            out.append(md(why[step]))                    # once per step, after the cell it explains
+            explained.add(step)
     return out
 
 
@@ -2390,10 +2392,10 @@ def escalated(solution):
 
         **Week 2, Thursday. The escalated case, unguided, 50 minutes.** The brief is
         `exercises/unguided/C2_W02_D04_escalated_case_STUDENT.md`, and this notebook is where its five
-        parts run. Each step carries one or two lettered choices written as comments above a
-        `__TODOn__` placeholder: replace the placeholder with the code of the option you choose and run
-        the step's check. Run as shipped, the notebook stops at `__TODO1__` with a `NameError`, which is
-        how it is meant to start.
+        parts run. Each step carries lettered choices written as comments above a `__TODOn__`
+        placeholder: replace the placeholder with the code of the option you choose and run the step's
+        check. Run as shipped, the notebook stops at `__TODO1__` with a `NameError`, which is how it is
+        meant to start.
 
         > **The client asks.** "One table, one row per customer, refreshed every Monday: how recently,
         > how often, how much, the segment, whether the monsoon sale reached them, and the two flags we
@@ -2401,37 +2403,40 @@ def escalated(solution):
         >
         > The growth team, Kalpa Retail
 
-        **What the morning established, in one line each.** The customer list is the table's spine,
-        and a customer with no orders gets a frequency and spend of 0. A merge is a join, and
-        `validate="one_to_one"` stops it if a customer repeats. A feed that sends a customer twice is
-        handled by a rule, one row per customer, the first date the sale reached them. `pivot_table`
-        needs its `aggfunc` said out loud. Recency is counted to the data's own last date. The table
-        ships only when every guard passes.
+        **The data.** Kalpa Retail's warehouse holds 1,000 orders placed between April and September
+        2026, Q1 (April to June) and Q2 (July to September), worth Rs 19,84,00,000 at the prices
+        charged, and a customer list of 340 customers in four segments: Retail-Core and Retail-Plus,
+        the two consumer tiers, of which Retail-Plus is the paid membership; Student; and Business,
+        Kalpa's sales to companies. The campaign platform's feed lists the customers the monsoon sale
+        reached in August 2026, with the date it reached each one. Spend is the value of a customer's
+        orders at the prices charged, whatever became of each order afterwards.
 
-        **The two flags.** *Lapsed:* no order in the 60 days to the table's as-of date; a customer who
-        never ordered is not lapsed, since there is nothing to win back. *Falling:* Wednesday's rule,
-        spend lower in August than in July and lower again in September than in August, each reading a
-        real calendar month after the one before, so a month with no order breaks the run.
+        **The growth team's rules.** One row per customer on the list. A customer the feed names more
+        than once was reached once, on the first date the feed gives. *Lapsed:* no order in the 60
+        days to the table's as-of date, which step 3 asks you to choose; a customer who never ordered
+        is not lapsed, since there is nothing to win back, and gets the first-order nudge instead. *Falling:* Wednesday's rule, spend lower in August than in July and lower again in
+        September than in August, each reading a real calendar month after the one before, so a month
+        with no order breaks the run.
 
         > **Kavya's review.** "It ships when the checks pass, not when it runs. Post your letters and
         > the four numbers the last cell prints."
         """, 0),
-        ("md", "**Setup.** The warehouse read, the campaign platform's feed, and the data's last date "
-               "under a name the steps use.", 0),
+        ("md", "**Setup.** The next cell reads the orders and the customer list from the warehouse and "
+               "the campaign platform's feed from the day's `data/` folder.", 0),
         ("code", LOAD + FEED, 0),
         ("code", """
         kit.side_by_side(
-            kit.ladder(["the spine and three numbers", "the exposure, validated", "the two flags",
-                        "one reshaped view", "one run, with guards"], show=False),
-            kit.vflow(["the warehouse and the feed", "one table, 340 rows", "a slide, and a CSV for Friday"],
+            kit.ladder(["every customer, three numbers", "the sale, one row each", "the two flags",
+                        "one view for a slide", "one run, with guards"], show=False),
+            kit.vflow(["the warehouse and the feed", "one table, one row per customer", "a slide, and a CSV for Friday"],
                       title="Five steps, each with its checks", show=False),
         )
         """, 0),
         ("md", """
         ## Step 1. Does the table hold every customer, with the three numbers each?
 
-        Where it is used at work: every table a growth team acts on starts from the list of the people
-        it acts on, never from their transactions.
+        Where it is used at work: every table a growth team acts on is a list of the people it acts on,
+        and a person missing from it gets nothing.
         """, 0),
         ("code", """
         rfm = (orders.groupby("customer_id")
@@ -2439,7 +2444,7 @@ def escalated(solution):
                           spend=("amount", "sum"))
                      .reset_index())
 
-        # TODO 1. Which frame is the spine of a table that must hold every customer?
+        # TODO 1. Which frame should the table start from?
         #   a) orders
         #   b) rfm
         #   c) customers
@@ -2461,13 +2466,13 @@ def escalated(solution):
         kit.check("frequency is a whole number with no gaps", table["frequency"].dtype == "int64")
         """, 1),
         ("md", """
-        ## Step 2. Which customers did the sale reach, one row each?
+        ## Step 2. Which customers did the sale reach, one row each, and does a second count agree?
 
         Where it is used at work: any feed from another team's system is checked against the promise
         it makes before it is joined to a table other people act on.
         """, 0),
         ("code", """
-        # TODO 3. Which argument keeps one row per customer, their first exposure?
+        # TODO 3. After sorting by date, which argument applies the growth team's rule for a customer the feed names twice?
         #   a) keep="last"
         #   b) keep=False
         #   c) keep="first"
@@ -2475,20 +2480,26 @@ def escalated(solution):
         first_touch = (exposure.sort_values("exposed_date")
                                .drop_duplicates("customer_id", __TODO3__)[["customer_id", "exposed_date"]])
 
-        # TODO 4. Which promise guards a table that must stay one row per customer?
+        # TODO 4. Which validate value should the merge carry?
         #   a) "one_to_many"
         #   b) "many_to_many"
         #   c) None
         #   d) "one_to_one"
         table = table.merge(first_touch, on="customer_id", how="left", validate=__TODO4__)
         table = table.assign(reached=table["exposed_date"].notna())
+
+        # TODO 5. Which count, sharing no code with the rule or the merge, should equal the reached flags?
+        #   a) len(first_touch)
+        #   b) int(table["exposed_date"].notna().sum())
+        #   c) exposure["customer_id"].nunique()
+        #   d) len(exposure)
+        second_count = __TODO5__
         print(f"{len(table)} rows after the merge")
         """, 2),
         ("code", """
         kit.check("still one row per customer after the merge", len(table) == in_list and table["customer_id"].is_unique)
         kit.check("spend did not move in the merge", table["spend"].sum() == orders["amount"].sum())
-        kit.check("every customer the feed names is marked reached, once",
-                  int(table["reached"].sum()) == exposure["customer_id"].nunique())
+        kit.check("the second count agrees with the reached flags", int(second_count) == int(table["reached"].sum()))
         reach = table.groupby("segment")["reached"].sum().astype(int)
         kit.columns(reach.index.tolist(), [("reached by the sale", reach.tolist())],
                     title="Reached customers per segment, one row each")
@@ -2500,41 +2511,41 @@ def escalated(solution):
         stopped and one for customers who are slowing, and each has to mean the same thing every week.
         """, 0),
         ("code", """
-        # TODO 5. Recency is counted to which date?
+        # TODO 6. Which date is the table's as-of date, the date recency is counted to?
         #   a) pd.Timestamp.today()
         #   b) orders["order_date"].max()
         #   c) orders["order_date"].min()
         #   d) pd.Timestamp.today().normalize()
-        AS_OF = __TODO5__
+        AS_OF = __TODO6__
         table = table.assign(as_of=AS_OF, recency_days=(AS_OF - table["last_order"]).dt.days)
 
-        # TODO 6. Which condition flags a lapsed customer?
+        # TODO 7. Which condition flags a lapsed customer?
         #   a) table["recency_days"] > 60
         #   b) table["frequency"] == 0
         #   c) table["recency_days"].isna()
         #   d) (pd.Timestamp.today() - table["last_order"]).dt.days > 60
-        table = table.assign(lapsed=__TODO6__)
+        table = table.assign(lapsed=__TODO7__)
 
         monthly = (orders.assign(month_num=orders["order_date"].dt.year * 12 + orders["order_date"].dt.month)
                          .groupby(["customer_id", "month_num"], as_index=False)["amount"].sum()
                          .rename(columns={"amount": "spend"})
                          .sort_values(["customer_id", "month_num"]))
         g = monthly.groupby("customer_id")
-        # TODO 7. The spend of the same customer's previous reading is:
+        # TODO 8. Which expression gives each row's previous monthly reading?
         #   a) monthly["spend"].shift(1)
         #   b) monthly.groupby("customer_id")["spend"].shift(1)
         #   c) monthly.groupby("month_num")["spend"].shift(1)
         #   d) monthly.groupby(["customer_id", "month_num"])["spend"].shift(1)
-        monthly = monthly.assign(spend_1=__TODO7__, spend_2=g["spend"].shift(2),
+        monthly = monthly.assign(spend_1=__TODO8__, spend_2=g["spend"].shift(2),
                                  month_num_2=g["month_num"].shift(2))
         SEPTEMBER = 2026 * 12 + 9
 
-        # TODO 8. Which test keeps a fall only when the two readings before September are July and August?
-        #   a) monthly["month_num"] - monthly["month_num_2"] == 2
+        # TODO 9. Which test keeps a fall only when the two readings before September are July and August?
+        #   a) monthly["month_num"] - monthly["month_num_2"] >= 2
         #   b) monthly["month_num_2"].notna()
-        #   c) monthly["month_num"] - monthly["month_num_2"] >= 2
-        #   d) monthly["month_num"] - monthly["month_num_2"] <= 3
-        real_months = __TODO8__
+        #   c) monthly["month_num"] - monthly["month_num_2"] <= 3
+        #   d) monthly["month_num"] - monthly["month_num_2"] == 2
+        real_months = __TODO9__
         falling = monthly[(monthly["month_num"] == SEPTEMBER) & real_months
                           & (monthly["spend"] < monthly["spend_1"]) & (monthly["spend_1"] < monthly["spend_2"])]
         table = table.assign(falling=table["customer_id"].isin(falling["customer_id"]))
@@ -2549,24 +2560,24 @@ def escalated(solution):
                   set(table.loc[table["falling"], "customer_id"]) == wednesday)
         kit.check("both flags are booleans", table["lapsed"].dtype == bool and table["falling"].dtype == bool)
         lap = table.groupby("segment")["lapsed"].sum().astype(int)
-        kit.columns(lap.index.tolist(), [("lapsed, as of the data's last date", lap.tolist())],
+        kit.columns(lap.index.tolist(), [("lapsed, as of the table's as-of date", lap.tolist())],
                     title="The win-back list per segment")
         """, 3),
         ("md", """
         ## Step 4. How does spend move month by month in each segment?
 
         Where it is used at work: the slide a growth review opens on is a trend by segment, and the
-        trend is only as right as the aggregation behind each point.
+        trend is only as right as the number behind each point.
         """, 0),
         ("code", """
         seg_orders = (orders.merge(customers, on="customer_id", how="left", validate="many_to_one")
                             .assign(month=orders["order_date"].dt.to_period("M").astype(str)))
-        # TODO 9. Which call puts months on the rows, one column per segment, and adds the orders in each cell?
+        # TODO 10. Which call builds the slide's view, months down the side and one column per segment?
         #   a) seg_orders.pivot_table(index="segment", columns="month", values="amount", aggfunc="sum")
         #   b) seg_orders.pivot_table(index="month", columns="segment", values="amount", aggfunc="sum")
         #   c) seg_orders.pivot_table(index="month", columns="segment", values="amount")
         #   d) seg_orders.pivot_table(index="month", columns="segment", values="amount", aggfunc="count")
-        view = __TODO9__
+        view = __TODO10__
         print("view shape:", view.shape)
         """, 4),
         ("code", """
@@ -2584,20 +2595,20 @@ def escalated(solution):
         """, 0),
         ("code", """
         def guard(t):
-            # TODO 10. Which guard stops a table that has stopped being one row per customer?
+            # TODO 11. Which guard stops a table that has stopped being one row per customer?
             #   a) t["customer_id"].is_unique
             #   b) len(t) > 0
             #   c) t["spend"].sum() > 0
             #   d) t["customer_id"].notna().all()
-            assert __TODO10__, "the customer table is no longer one row per customer"
+            assert __TODO11__, "the customer table is no longer one row per customer"
             assert len(t) == in_list, "the table no longer holds every customer on the list"
             assert t["spend"].sum() == orders["amount"].sum(), "spend no longer adds to the warehouse"
-            # TODO 11. Which guard catches recency counted to the wrong date?
-            #   a) t["recency_days"].min() == 0
-            #   b) t["recency_days"].max() <= 180
-            #   c) t["recency_days"].notna().all()
-            #   d) t["as_of"].nunique() == 1
-            assert __TODO11__, "recency was not counted to the data's last date"
+            # TODO 12. Which guard catches recency counted to the wrong date?
+            #   a) t["recency_days"].max() <= 180
+            #   b) t["recency_days"].notna().all()
+            #   c) t["as_of"].nunique() == 1
+            #   d) t["recency_days"].min() == 0
+            assert __TODO12__, "recency was not counted to the table's as-of date"
             return t
 
         run_1 = guard(table.copy())
@@ -2613,52 +2624,92 @@ def escalated(solution):
         out = pathlib.Path("output"); out.mkdir(exist_ok=True)
         run_1.to_csv(out / "C2_W02_D04_customer_table_STUDENT.csv", index=False)
         kit.stats([(len(run_1), "customers", "one row each"), (kit.rupees(run_1["spend"].sum()), "spend", "adds to the warehouse"),
-                   (int(run_1["reached"].sum()), "reached by the sale", "first exposure per customer"),
-                   (int(run_1["lapsed"].sum()), "on the win-back list", "as of the data's last date")])
+                   (int(run_1["reached"].sum()), "reached by the sale", "once each"),
+                   (int(run_1["lapsed"].sum()), "on the win-back list", "as of the table's as-of date")])
         kit.flow(["warehouse + feed", "the table, guarded", "output/ CSV\\nfor Friday"], lit=1,
                  title="The Monday table, one guarded run")
-        kit.check_summary()
         """, 5),
         ("md", """
-        **Post:** your eleven letters in order, and the four numbers above. The CSV in `output/` is
+        **The last question: what changes when the orders run to crores?** Next year the orders table
+        may hold 5 crore rows, too many to read into pandas every Monday, while the growth team still
+        wants the same three numbers for every customer who ordered. Step 1 would then read a
+        query's answer in place of the orders.
+        """, 0),
+        ("code", """
+        # TODO 13. Which query should step 1 read instead, so the three numbers still arrive?
+        #   a) "SELECT customer_id, order_date, amount FROM orders"
+        #   b) "SELECT customer_id, max(order_date) AS last_order, count(*) AS frequency, sum(amount) AS spend FROM orders GROUP BY customer_id"
+        #   c) "SELECT customer_id, order_date, amount FROM orders WHERE order_date >= DATE '2026-07-01'"
+        #   d) "SELECT customer_id, count(*) AS frequency FROM orders GROUP BY customer_id"
+        at_scale = pd.read_sql(__TODO13__, ENG)
+        print(len(at_scale), "rows came back from the warehouse")
+        """, 6),
+        ("code", """
+        both = rfm.merge(at_scale, on="customer_id", how="outer", suffixes=("", "_sql"), indicator=True)
+        same = (len(at_scale) == len(rfm) and (both["_merge"] == "both").all()
+                and {"last_order", "frequency", "spend"} <= set(at_scale.columns)
+                and (both["frequency"] == both["frequency_sql"]).all()
+                and (both["spend"] == both["spend_sql"].astype(float)).all()
+                and (both["last_order"] == pd.to_datetime(both["last_order_sql"])).all())
+        kit.check("the warehouse's answer gives every ordering customer step 1's three numbers", same)
+        kit.check("it sends one row per customer who ordered, whatever the orders' size", len(at_scale) == len(rfm))
+        kit.check_summary()
+        """, 6),
+        ("md", """
+        **Post:** your thirteen letters in order, and the four numbers above. The CSV in `output/` is
         what you bring to Friday.
         """, 0),
     ]
     subs = {"WINBACK": q("c6", 1), "FALLING_LIST": q("c6", 2).replace("SELECT count(*) AS falling", "SELECT customer_id")}
     cells = [(k, _fill(textwrap.dedent(t), subs), s) for k, t, s in cells]
     answers = {1: "customers", 2: 'table["frequency"].fillna(0).astype("int64")', 3: 'keep="first"',
-               4: '"one_to_one"', 5: 'orders["order_date"].max()', 6: 'table["recency_days"] > 60',
-               7: 'monthly.groupby("customer_id")["spend"].shift(1)',
-               8: 'monthly["month_num"] - monthly["month_num_2"] == 2',
-               9: 'seg_orders.pivot_table(index="month", columns="segment", values="amount", aggfunc="sum")',
-               10: 't["customer_id"].is_unique', 11: 't["recency_days"].min() == 0'}
+               4: '"one_to_one"', 5: 'exposure["customer_id"].nunique()', 6: 'orders["order_date"].max()',
+               7: 'table["recency_days"] > 60',
+               8: 'monthly.groupby("customer_id")["spend"].shift(1)',
+               9: 'monthly["month_num"] - monthly["month_num_2"] == 2',
+               10: 'seg_orders.pivot_table(index="month", columns="segment", values="amount", aggfunc="sum")',
+               11: 't["customer_id"].is_unique', 12: 't["recency_days"].min() == 0',
+               13: '"SELECT customer_id, max(order_date) AS last_order, count(*) AS frequency, sum(amount) AS spend FROM orders GROUP BY customer_id"'}
     why = {
         1: "**Keys 1c and 2b.** 1a gives one row per order and 1b holds only the 301 customers who "
            "ordered; 1d holds only the customers the sale reached. 2a leaves 39 missing counts, which "
            "a filter for 0 never finds; 2c invents orders for customers who placed none; 2d removes "
            "nothing from the table's rows, since `assign` lines the shorter column up by index and "
            "leaves the gaps missing.",
-        2: "**Keys 3c and 4d.** 3a keeps a later date wherever a customer repeats; 3b drops every copy "
-           "of a repeated customer, so they read as never reached; 3d renumbers the rows and removes "
-           "nothing. 4d is the only promise that the table stays one row per customer: 4c checks "
-           "nothing, 4a allows repeats on the feed's side and 4b allows anything.",
-        3: "**Keys 5b, 6a, 7b and 8a.** 5a and 5d count to the day the notebook runs, so every customer "
-           "looks staler than the data says and the list grows each Monday; 5c counts from April. 6b "
-           "and 6c flag the customers who never ordered, who belong on the first-order list; 6d is "
-           "the wall-clock count again. 7a reads the previous row even when it belongs to another "
-           "customer, Wednesday's LAG without PARTITION; 7c compares different customers in the same "
-           "month; 7d puts each customer-month in a group of its own, so there is no previous row. 8a "
+        2: "**Keys 3c, 4d and 5c.** 3a keeps a later date wherever a customer repeats; 3b drops every "
+           "copy of a repeated customer, so they read as never reached; 3d renumbers the rows and "
+           "removes nothing. 4d is the only promise that the table stays one row per customer: 4c "
+           "checks nothing, 4a allows repeats on the feed's side and 4b allows anything. 5c counts the "
+           "distinct customers in the raw feed with no sort, no rule and no merge, so a wrong `keep` or "
+           "a merge that lost someone makes it disagree with the flags. 5a counts the rows the rule "
+           "kept, so it shares the rule: with `keep=False` it would shrink with the flags and still "
+           "agree. 5b reads the merged table's own column, which is the flags again. 5d counts the "
+           "feed's rows, one for every time the platform sent a customer, so it disagrees with a "
+           "correct table.",
+        3: "**Keys 6b, 7a, 8b and 9d.** 6a and 6d count to the day the notebook runs, so every "
+           "customer looks staler than the data says and the list grows each Monday; 6c counts from "
+           "April. 7b and 7c flag the customers who never ordered, who belong on the first-order list; "
+           "7d is the wall-clock count again. 8a reads the previous row even when it belongs to another "
+           "customer, Wednesday's LAG without PARTITION; 8c compares different customers in the same "
+           "month; 8d puts each customer-month in a group of its own, so there is no previous row. 9d "
            "holds because the months are distinct and sorted: if the reading two back is exactly two "
-           "months back, the one between is the month in between. 8b counts a skipped month as a "
-           "fall, Wednesday's holiday member; 8c allows a gap; 8d allows one missing month.",
-        4: "**Key 9b.** 9a puts segments on the rows when the slide wants months; 9c averages the "
-           "orders in each cell, which is `pivot_table`'s default; 9d counts orders instead of adding "
-           "their value.",
-        5: "**Keys 10a and 11a.** 10b and 10c pass on a table whose rows have doubled, and 10d passes "
-           "on repeated ids, since a repeated id is not a missing one. 11b passes on a table counted "
-           "to the wrong day as long as nobody is older than 180 days; 11c fails on every honest run, "
-           "because customers who never ordered have no recency; 11d passes whatever single date was "
+           "months back, the one between is the month in between. 9b counts a skipped month as a "
+           "fall, Wednesday's holiday member; 9a allows a gap; 9c allows one missing month.",
+        4: "**Key 10b.** 10a puts segments on the rows when the slide wants months; 10c averages the "
+           "orders in each cell, which is `pivot_table`'s default, so each point is a typical order "
+           "and the view falls short of the warehouse; 10d counts orders instead of adding their value.",
+        5: "**Keys 11a and 12d.** 11b and 11c pass on a table whose rows have doubled, and 11d passes "
+           "on repeated ids, since a repeated id is not a missing one. 12a passes on a table counted "
+           "to the wrong day as long as nobody is older than 180 days; 12b fails on every honest run, "
+           "because customers who never ordered have no recency; 12c passes whatever single date was "
            "used.",
+        6: "**Key 13b.** The warehouse groups the orders and sends one row per customer who ordered, "
+           "301 today and the same 301 or so however many crores of orders sit behind them, so the "
+           "pandas table reads that answer and merges it onto the list as before. 13a still sends every "
+           "order, only with fewer columns; 13c sends only Q2's orders, so every number covers half the "
+           "period; 13d sends the count and drops the last order date and spend. The check compares the "
+           "query's answer with step 1's `groupby` customer by customer, so it is also a second route "
+           "to the three numbers.",
     }
     return twin(cells, answers, why, solution)
 
@@ -2686,9 +2737,11 @@ def second_case(solution):
         > Kavya Nair, senior analyst, Kalpa Retail data team
 
         The question all three tools answer is the branch of Week 1's revenue tree that moved:
-        **Retail-Plus orders per member, Q1 against Q2**, where a member counts in a quarter if they
-        ordered in it. Orders per member is orders divided by the members who ordered, the retail
-        dossier's frequency.
+        **Retail-Plus orders per member, Q1 against Q2**, where Q1 is April to June 2026 and Q2 is July
+        to September. Retail-Plus is Kalpa Retail's paid membership tier, and a member counts in a
+        quarter if they ordered in it. Orders per member is a quarter's orders divided by the members
+        who ordered in that quarter, the retail dossier's frequency. Finance, under Anand Iyer, reruns
+        its own numbers every Monday from the warehouse, Kalpa's Postgres database.
         """, 0),
         ("code", SETUP + "import pandas as pd\nENG = kit.engine()\nprint(\"connected to\", kit.WAREHOUSE[\"dbname\"])\n", 0),
         ("code", """
@@ -2701,36 +2754,39 @@ def second_case(solution):
         ("md", """
         ## Step 1. What does plain Python count, one row at a time?
 
-        The rows arrive as a list of dictionaries, the shape of Week 1's orders.
+        The rows arrive as a list of dictionaries, the shape of Week 1's orders: one per Retail-Plus
+        order, with its customer and its quarter.
         """, 0),
         ("code", """
         rows = kit.sql('''SELECT o.order_id, o.customer_id, o.quarter FROM orders o
                           JOIN customers c ON c.customer_id = o.customer_id
                           WHERE c.segment = 'Retail-Plus' ''')
         orders_n = {"Q1": 0, "Q2": 0}
-        # TODO 1. What holds each quarter's members, so a member who orders twice counts once?
-        #   a) list()
-        #   b) 0
-        #   c) set()
-        #   d) dict()
-        seen = {"Q1": __TODO1__, "Q2": __TODO1__}
+        ids = {"Q1": [], "Q2": []}
         for r in rows:
             orders_n[r["quarter"]] += 1
-            seen[r["quarter"]].add(r["customer_id"])
-        py = {qq: orders_n[qq] / len(seen[qq]) for qq in ("Q1", "Q2")}
+            ids[r["quarter"]].append(r["customer_id"])
+
+        # TODO 1. How many members ordered in each quarter?
+        #   a) {qq: len(ids[qq]) for qq in ids}
+        #   b) {qq: len(set(ids[qq])) for qq in ids}
+        #   c) {qq: len(set(ids["Q1"]) | set(ids["Q2"])) for qq in ids}
+        #   d) {qq: len(set(ids["Q1"]) & set(ids["Q2"])) for qq in ids}
+        members_n = __TODO1__
+        py = {qq: orders_n[qq] / members_n[qq] for qq in ("Q1", "Q2")}
         print("plain Python:", {qq: round(v, 3) for qq, v in py.items()})
         """, 1),
         ("code", """
         kit.check("plain Python counts every Retail-Plus order", sum(orders_n.values()) == len(rows))
-        kit.check("each quarter's members are fewer than its orders", all(len(seen[qq]) < orders_n[qq] for qq in seen))
+        kit.check("each quarter's members are fewer than its orders", all(members_n[qq] < orders_n[qq] for qq in orders_n))
         kit.table(["quarter", "orders", "members", "orders per member"],
-                  [(qq, orders_n[qq], len(seen[qq]), f"{py[qq]:.3f}") for qq in ("Q1", "Q2")], caption="Plain Python")
+                  [(qq, orders_n[qq], members_n[qq], f"{py[qq]:.3f}") for qq in ("Q1", "Q2")], caption="Plain Python")
         """, 1),
         ("md", """
         ## Step 2. Does SQL, where the data lives, give the same number?
         """, 0),
         ("code", """
-        # TODO 2. Which expression gives orders per member without Monday's integer-division trap?
+        # TODO 2. Which expression gives orders per member, to three places?
         #   a) orders / members
         #   b) orders::numeric / members
         #   c) members::numeric / orders
@@ -2738,7 +2794,7 @@ def second_case(solution):
         # TODO 3. Which line keeps only Retail-Plus?
         #   a) WHERE c.segment = 'Retail-Plus'
         #   b) HAVING c.segment = 'Retail-Plus'
-        #   c) ORDER BY c.segment
+        #   c) WHERE c.segment LIKE 'Retail%'
         #   d) WHERE c.segment <> 'Business'
         SQL = '''WITH q AS (SELECT o.quarter, count(*) AS orders, count(DISTINCT o.customer_id) AS members
                             FROM orders o JOIN customers c ON c.customer_id = o.customer_id
@@ -2762,7 +2818,7 @@ def second_case(solution):
                             JOIN customers c ON c.customer_id = o.customer_id''', ENG)
         rp = df[df["segment"] == "Retail-Plus"]
         orders_pd = rp.groupby("quarter")["order_id"].count()
-        # TODO 4. Which method counts each quarter's members once each?
+        # TODO 4. Which method gives each quarter's members?
         #   a) count
         #   b) size
         #   c) value_counts
@@ -2780,20 +2836,27 @@ def second_case(solution):
                     fmt=lambda v: f"{v:.3f}", title="Retail-Plus orders per member: three tools, one number")
         """, 3),
         ("md", """
-        ## Step 4. Which tool would you sign for each job, sized on what each route moved?
+        ## Step 4. Which tool would you sign for each job, and which size tells the three apart?
 
         The three agree, so the choice is about who has to trust, rerun or audit the number, and about
-        what each route cost. The cell counts the rows each route moved out of the warehouse.
+        what each route cost to reach it. A size that gives all three the same score separates nothing.
         """, 0),
         ("code", """
-        moved = [("plain Python", len(rows)), ("SQL", len(sql_rows)), ("pandas", len(df))]
-        kit.bars(moved, title="Rows each route moved out of the warehouse for the same two numbers")
-        # TODO 5. Where should a number Finance reruns every Monday be computed?
+        # TODO 5. Which size tells the three routes apart, listed as plain Python, SQL, pandas?
+        #   a) [len(py), len(sq), len(pn)]                      the rows in each answer
+        #   b) [sum(orders_n.values()), sum(r["orders"] for r in sql_rows), int(orders_pd.sum())]
+        #                                                       the orders each route counted
+        #   c) [len(rows), len(sql_rows), len(rp)]              the rows each route held after keeping Retail-Plus
+        #   d) [len(rows), len(sql_rows), len(df)]              the rows each route fetched from the warehouse
+        size = dict(zip(["plain Python", "SQL", "pandas"], __TODO5__))
+        kit.bars(list(size.items()), title="The size you chose, route by route, for the same two numbers")
+
+        # TODO 6. Where should a number Finance reruns every Monday be computed?
         #   a) "a pandas notebook on the analyst's machine"
         #   b) "a plain Python loop"
         #   c) "a SQL query in the warehouse"
         #   d) "a CSV export refreshed every Monday"
-        finance_home = __TODO5__
+        finance_home = __TODO6__
         kit.matrix(["plain Python", "SQL", "pandas"], ["explain line by line", "rerun where the data lives", "iterate on a question"],
                    [["best: every step visible", "no: runs on a copy", "slow to change"],
                     ["reads as one statement", "best: Finance reruns it", "a new query each time"],
@@ -2803,7 +2866,8 @@ def second_case(solution):
         ("code", """
         kit.check("the three tools agree on both quarters",
                   all(abs(py[qq] - pn[qq]) < 1e-9 and abs(py[qq] - sq[qq]) < 0.001 for qq in ("Q1", "Q2")))
-        kit.check("SQL moved the fewest rows", min(moved, key=lambda m: m[1])[0] == "SQL")
+        kit.check("the size you chose tells the three routes apart", len(set(size.values())) == 3)
+        kit.check("on that size, SQL is the smallest", min(size, key=size.get) == "SQL")
         kit.check("a home was chosen for Finance's number", isinstance(finance_home, str) and len(finance_home) > 0)
         fall = pn["Q2"] / pn["Q1"] - 1
         kit.bridge(("Q1, orders per member", round(pn["Q1"], 3)), [("the change", round(pn["Q2"] - pn["Q1"], 3))],
@@ -2812,27 +2876,36 @@ def second_case(solution):
         kit.check_summary()
         """, 4),
         ("md", """
-        **Post:** your five letters, and your tool-choice note in the brief's format: one line per tool
-        with the job it owns and the rows it moved, and the tool you would refuse for Finance's numbers,
-        with the reason.
+        **Post:** your six letters, and your tool-choice note in the brief's format: one line per tool
+        with the job it owns and the rows it fetched, and the tool you would refuse for Finance's
+        numbers, with the reason.
         """, 0),
     ]
-    answers = {1: "set()", 2: "orders::numeric / members", 3: "WHERE c.segment = 'Retail-Plus'",
-               4: "nunique", 5: '"a SQL query in the warehouse"'}
+    answers = {1: "{qq: len(set(ids[qq])) for qq in ids}", 2: "orders::numeric / members",
+               3: "WHERE c.segment = 'Retail-Plus'", 4: "nunique",
+               5: "[len(rows), len(sql_rows), len(df)]", 6: '"a SQL query in the warehouse"'}
     why = {
-        1: "**Key 1c.** A list (a) and a dictionary (d) have no `.add`, and a list would also keep a "
-           "member once per order; 0 (b) is a number, not a container. Only a set keeps each member "
-           "once however many times they order.",
-        2: "**Keys 2b and 3a.** 2a is Monday's trap: Postgres divides two whole numbers and returns "
-           "2 and 1. 2c turns the rate upside down. 2d divides by all 340 customers on the list, every "
+        1: "**Key 1b.** 1a counts every order as a member, so orders per member reads 1.000 in both "
+           "quarters: rows counted as customers, Week 1 Monday's trap. 1c divides both quarters by the "
+           "107 members who ordered in either quarter, and 1d by the 60 who ordered in both, so each "
+           "rate stands on members who did not order in that quarter; SQL, which counts each quarter's "
+           "members on their own, disagrees with both in the next step.",
+        2: "**Keys 2b and 3a.** 2a is Monday's trap: Postgres divides two whole numbers and returns 2 "
+           "and 1. 2c turns the rate upside down. 2d divides by all 340 customers on the list, every "
            "segment, whoever ordered. 3b fails, because `HAVING` filters groups and the segment is not "
-           "one of them; 3c only sorts; 3d keeps Retail-Core and the Students as well.",
+           "one of them; 3c keeps Retail-Core as well, since `LIKE 'Retail%'` matches both consumer "
+           "tiers; 3d keeps Retail-Core and the Students.",
         3: "**Key 4d.** `count` (a) and `size` (b) count rows, which are orders, so the rate reads "
            "1.000; `value_counts` (c) returns one count per member, a Series the division cannot line "
            "up with the quarters.",
-        4: "**Key 5c.** Finance's number lives where Finance can rerun and audit it, in the warehouse, "
-           "as a query that moves only its answer. A notebook (a) and a loop (b) run on a copy on one "
-           "machine; an export (d) is a copy that ages from the moment it is written.",
+        4: "**Keys 5d and 6c.** 5d counts the rows each route fetched from the warehouse: plain Python "
+           "355, SQL 2 and pandas 1,000, since pandas read every order before keeping Retail-Plus. 5a "
+           "gives 2, 2 and 2, the answers themselves, which tie; 5b gives 355 three times, the orders "
+           "every route counted; 5c gives 355, 2 and 355, the rows pandas kept after its filter, which "
+           "hides the 645 other orders it fetched. Finance's number lives where Finance can rerun and "
+           "audit it, in the warehouse, as a query that sends only its answer (6c). A notebook (6a) and "
+           "a loop (6b) run on a copy on one machine; an export (6d) is a copy that ages from the "
+           "moment it is written.",
     }
     return twin(cells, answers, why, solution)
 

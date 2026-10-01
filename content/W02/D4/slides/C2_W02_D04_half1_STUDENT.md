@@ -190,18 +190,18 @@ code. Business is 40 accounts and 99.1 percent of spend, so spend must be read b
 
 ```stats
 value: 1 to 5 | label: per number | note: recency, frequency, monetary
-value: 11 | label: RFM groups | note: from Champions to Dormant
-value: Prospects | label: no orders yet | note: kept as a group of their own
+value: 11 | label: RFM groups | note: from Champions to Prospects
+value: Prospects | label: no orders yet | note: one of the 11, never left off
 ```
 
 **What breaks.** A table that drops customers with no orders cannot put anyone in Shopify's Prospects group, and the offer written for them has nobody to go to.
 
 ```notes
-LIVE, 2 minutes. Source: Shopify Help Center, Customers reports, checked 30 Sep 2026: "RFM analysis
+LIVE, 2 minutes. Source: Shopify Help Center, Customers reports, checked 1 Oct 2026: "RFM analysis
 applies a 3-digit score to each customer ... the days from a customer's most recent purchase
 (recency), the total number of orders (frequency), and the total amount spent (monetary value)", and
-Prospects are "Customers with no orders yet". Say it aloud: a platform that serves millions of shops
-keeps the non-buyers on the table.
+Prospects, "Customers with no orders yet", are one of its 11 groups. Say it aloud: a platform that
+serves millions of shops keeps the non-buyers on the table.
 ```
 
 ---
@@ -515,8 +515,9 @@ value: 48 hours | label: the window | note: after the first event arrives
 
 ```notes
 LIVE, 2 minutes. Source: Meta for Developers, Handling Duplicate Pixel and Conversions API Events,
-checked 30 Sep 2026: an advertiser sending events both ways "must set up a deduplication method";
-Meta treats two events as one when ID and name match, within 48 hours of the first.
+checked 1 Oct 2026: an advertiser sending events both ways "must set up a deduplication method".
+Under the recommended method, when the same event ID and event name reach the same Pixel within 48
+hours, Meta keeps the first and discards the rest: a first-touch rule, like today's.
 ```
 
 ---
@@ -790,10 +791,11 @@ value: 92.3% | label: renewal rate | note: US and Canada
 **What breaks.** A single average of the trip hides how often members come, and how often is the lever Week 1 found moving in Retail-Plus.
 
 ```notes
-LIVE, 2 minutes. Source: Costco Q4 fiscal 2026 earnings call, 24 Sep 2026, transcript on The Globe
-and Mail, checked 30 Sep 2026: the chief financial officer reported "traffic or shopping frequency
-increased 3.3% worldwide" and "our average transaction or ticket was up 5.9% worldwide". A paid
-membership business reports the two numbers separately for a reason.
+LIVE, 2 minutes. Sources, checked 1 Oct 2026: Costco's fourth-quarter fiscal 2026 supplemental
+information, filed with the SEC on 24 Sep 2026, and the earnings call that day, where the chief
+financial officer reported "traffic or shopping frequency increased 3.3% worldwide" and "our average
+transaction or ticket was up 5.9% worldwide". A paid membership business reports the two numbers
+separately for a reason.
 ```
 
 ---
@@ -1089,7 +1091,7 @@ flowchart LR
 
 ```notes
 LIVE, 2 minutes. Source: Uber Blog, "The Journey Towards Metric Standardization", 12 January 2021,
-checked 30 Sep 2026: Operations computed completed trips as a Presto/Hive SQL for daily dashboards
+checked 1 Oct 2026: Operations computed completed trips as a Presto/Hive SQL for daily dashboards
 while Pricing Engineering built its own from a Cassandra table; the goal became "a strictly ONE to
 ONE mapping" between a metric and its business logic.
 ```
@@ -1323,7 +1325,7 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 2 minutes. Source: LinkedIn Engineering, Unified Metrics Platform, checked 30 Sep 2026:
+LIVE, 2 minutes. Source: LinkedIn Engineering, Unified Metrics Platform, checked 1 Oct 2026:
 "Multiple stakeholders come up with different ways to calculate the same metric arriving at slightly
 different results"; the platform "serves as the single source of truth for all business metrics at
 Linkedin".

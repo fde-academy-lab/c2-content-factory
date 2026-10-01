@@ -77,10 +77,11 @@ value: CSV files | label: fetched automatically | note: from commercial laborato
 **What breaks.** A refresh that never counts rows in against rows out loses them without a sound, and a week of decisions rests on the short number.
 
 ```notes
-LIVE, 2 minutes. Source: The Register, 5 October 2020, checked 30 Sep 2026: results "automatically
-fetched in CSV format" from commercial labs, stored in the older .XLS format "that limited the number
-of rows to 65,536 per spreadsheet", and "15,841 cases between 25 September and 2 October were not
-included". A row count on every run would have stopped it on day one.
+LIVE, 2 minutes. Sources, checked 1 Oct 2026: Public Health England's statement of 4 October 2020,
+"15,841 cases between 25 September and 2 October were not included in the reported daily COVID-19
+cases"; and The Register, 5 October 2020, on the cause: results "automatically fetched in CSV format"
+from commercial labs were stored in the older .XLS format "that limited the number of rows to 65,536
+per spreadsheet". A row count on every run would have stopped it on day one.
 ```
 
 ---
@@ -370,12 +371,12 @@ and the notebook notebooks/C2_W02_D04_ex1_escalated_case_STUDENT.ipynb.
 
 ---
 
-## S17. Answering it alone: five parts, eleven letters
+## S17. Answering it alone: five parts, thirteen letters
 *What does the escalated case ask, part by part?*
 
 ```timeline
 label: Part 1 | title: Every customer, three numbers | body: The spine and the aggregates
-label: Part 2 | title: The sale, one row each | body: The first exposure, validated
+label: Part 2 | title: The sale, one row each | body: The feed attached, and counted a second way
 label: Part 3 | title: The two flags | body: Lapsed, and Wednesday's falling rule in pandas
 label: Part 4 | title: One view for a slide | body: Spend by month and segment
 label: Part 5 | title: One guarded run | body: Two runs, one table, a CSV for Friday | tone: dark
@@ -383,7 +384,7 @@ label: Part 5 | title: One guarded run | body: Two runs, one table, a CSV for Fr
 
 ```notes
 LIVE, 2 minutes. The notebook stops at __TODO1__ with a NameError by design: replace each
-placeholder with the option chosen and run the step's checks. Post eleven letters and the four
+placeholder with the option chosen and run the step's checks. Post thirteen letters and the four
 numbers the last cell prints.
 ```
 

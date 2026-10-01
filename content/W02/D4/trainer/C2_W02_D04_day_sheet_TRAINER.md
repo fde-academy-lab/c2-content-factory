@@ -89,7 +89,7 @@ flowchart LR
 | Part | Slides, half two | Beside it | What must land | If short of time |
 |---|---|---|---|---|
 | Chapter 6, 30 | S1 to S16 | Notebook 06; `unguided/C2_W02_D04_ch6_refresh_STUDENT.md` | Two inputs; 166 counted to 19 October against 111 counted to 28 September; the smallest recency is 0; each guard made to fire; two runs equal; SQL counts 111 | S3 to a sentence; the depth section (the falling flag) self-study |
-| Escalated case, 50 | S17 to S18 | `unguided/C2_W02_D04_escalated_case_STUDENT.md`, `notebooks/C2_W02_D04_ex1_escalated_case_STUDENT.ipynb` | Eleven letters and the four numbers: 340, Rs 19,84,00,000, 130, 111 | Part 5 (the guarded run) to the take-home |
+| Escalated case, 50 | S17 to S18 | `unguided/C2_W02_D04_escalated_case_STUDENT.md`, `notebooks/C2_W02_D04_ex1_escalated_case_STUDENT.ipynb` | Thirteen letters and the four numbers: 340, Rs 19,84,00,000, 130, 111 | Part 5 (the guarded run) to the take-home |
 | Debrief, 15 | S19 to S20 | The room's wrong numbers, collected on the board during the case | Each wrong output traced to its check; the three counts for one dataset, 154, 166 and 111 | S20 to a sentence |
 | Break, 10 | | | | |
 | Second case, 40 | S21 to S23 | `unguided/C2_W02_D04_second_case_STUDENT.md`, `notebooks/C2_W02_D04_ex2_second_case_STUDENT.ipynb` | The room writes the SQL first; 2.363 to 1.842 in all three tools; rows moved 355, 2 and 1,000; the note with one refusal | The brief's extra items to the lab |
