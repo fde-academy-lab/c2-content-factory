@@ -2327,7 +2327,7 @@ def ch6():
         One caveat: last week's extract showed customers flat, and the full book shows 7.0 percent fewer
         customers in Q2."
 
-        > **Kavya's review.** Order every list on a column no two rows share, and print the book's
+        > **Kavya's review.** Order every audit sample on a column no two rows share, and print the book's
         > fingerprint beside the numbers, so a difference next Monday says whether the book moved or
         > the query did.
 

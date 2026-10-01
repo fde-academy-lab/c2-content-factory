@@ -16,7 +16,7 @@ question and its six chapters.
 
 ---
 
-## S1. Six chapters, each asking what the last answer raised
+## S1. Six questions, from the book to a run that repeats
 *Can the warehouse itself give Anand the Monday numbers, every segment, every week?*
 
 ```timeline
@@ -48,9 +48,9 @@ Then Anand's message in full.
 ```stats
 value: 1.6% | label: last week's fall | note: booked revenue, Q1 to Q2, on the extract
 value: 1,000 | label: orders in the warehouse | note: as the platform lead describes it
-value: 0 | label: exports allowed | note: query it, do not export it
-value: 1 | label: analyst who audits | note: every line of every query
 ```
+
+Anand allows no exports, and his analyst audits every line of every query. Kavya Nair, the team's senior analyst, reviews each chapter's answer before it leaves the team.
 
 ```notes
 LIVE, 4 minutes. Read both messages aloud. Anand Iyer is Kalpa Retail's finance controller: he
@@ -97,11 +97,11 @@ practical, and hold the answer until every pair has a letter. Then the answer.
 | c) Paste output by hand | Ruled out | A typed value leaves no trace an auditor can follow. |
 | d) Move all analysis into SQL | Too far | Charts, tests and exploration stay in Python, reading the warehouse. |
 
-The answer is a. The query is what the team hands over, and the notebook is where the team thinks.
+The answer is a. The number on Anand's sheet comes from the saved query; the notebook reads the warehouse for charts and checks.
 
 ```notes
 LIVE, 2 minutes. Option d sounds disciplined and throws away every chart the week needs; option b
-is how most teams start and why most Monday numbers drift. This is the first half of the interview
+leaves a copy that starts to age the day it lands. This is the first half of the interview
 answer to "why compute a KPI in the warehouse", which chapter 1 finishes with a number. Then which
 of last week's steps become one line.
 ```
@@ -120,7 +120,7 @@ of last week's steps become one line.
 | Keep only some groups | HAVING count(...) < 30 | Chapter 3 |
 | Two quarters side by side | a named step per quarter, WITH ... AS | Chapter 4 |
 
-The room knows every right answer from Week 1, so today's attention goes to the language and to what each line guarantees.
+Each line gives a Week 1 answer you already know, now computed where the book lives.
 
 ```notes
 LIVE, 3 minutes. Say each pair aloud. The last one, two quarters side by side, is chapter 4's
@@ -143,7 +143,7 @@ flowchart LR
     class S bet
 ```
 
-Written as SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY, LIMIT; run as the arrows show. Most of today's refusals and wrong numbers are explained by this order.
+Written as SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY, LIMIT; run as the arrows show. The GROUP BY refusal, the choice between WHERE and HAVING, and an unsorted LIMIT all follow from this order.
 
 ```notes
 LIVE, 4 minutes, never cut. Draw it on the board and leave it up all day. Walk one query through
@@ -156,7 +156,7 @@ decides how to get it. Then the tree Anand's sheet carries.
 
 ---
 
-## S7. The tree Anand's sheet carries, leaf by leaf
+## S7. Every leaf from orders; the segment from customers
 *Which numbers does the Monday sheet carry, and which table holds each?*
 
 ```mermaid
@@ -174,7 +174,7 @@ flowchart TB
     class R bet
 ```
 
-Revenue is customers who bought, times orders per customer, times revenue per order: Week 1 Monday's tree, now read from two tables.
+Revenue is customers who bought, times orders per customer, times revenue per order: Week 1 Monday's tree, now read from two tables. Revenue here is booked revenue, every order at its amount whatever its status, and the book is Kalpa Retail's record of every order Finance stands behind, kept in the warehouse. Last week's numbers, the books' Rs 1.90 crore for Q1 among them, described the 186-order extract the team was handed.
 
 ```notes
 LIVE, 3 minutes. Recall the tree from Week 1 Monday; the retail dossier
@@ -192,14 +192,14 @@ table, and the segment lives on the customer, which chapter 3 needs. Then chapte
 ```notes
 LIVE. Thirty minutes: the need and the company (3), the options and the call (5), the schema
 read and the first query live (6), the quarter totals (4), the trap and its fix (8, never cut),
-the second route (2) and the close (2). Notebook 1 and sql/C2_W02_D01_01_book_STUDENT.sql run
+the second route (2) and the close (2), with a predict before the schema read and inside the trap. Notebook 1 and sql/C2_W02_D01_01_book_STUDENT.sql run
 beside it.
 ```
 
 ---
 
-## S8. Answered in five questions, before the sheet goes out
-*Who needs this answer, and which questions lead to it?*
+## S8. Anand signs them; his analyst reruns every line
+*Who signs each quarter's orders, rupees and customers, and which five questions lead there?*
 
 **Who needs the answer.** Anand puts these numbers on the Monday sheet and his analyst audits every line. A customer count that is really a count of orders says nobody ever buys twice, which reopens the Rs 12 crore acquisition request that Meera, Kalpa Retail's CEO, parked last week.
 
@@ -219,7 +219,7 @@ chapter's last slide answers all five in a line each. Then the need.
 ---
 
 ## S9. The need: the tree's leaves, counted on the book
-*Who asks, what is measured, and what does a wrong count cost?*
+*Who signs the quarter counts, and what does a customer count that is really orders cost?*
 
 ```cards
 icon: user | eyebrow: Who asks | title: Anand and his analyst | body: The finance controller signs the Monday sheet; his analyst reruns every query behind it.
@@ -244,36 +244,36 @@ numbers moved by hand.
 
 ```stats
 value: $5.8 billion | label: losses for the year | note: through 30 June 2012, the report's page 7
-value: 132 pages | label: the task force's report | note: 16 January 2013
 ```
 
-A number a person moves by hand can be moved wrongly, and Anand's rule keeps Kalpa's book away from that.
+Anand's rule takes that copying step out of the Monday sheet.
 
 ```notes
 LIVE, 1 minute. The London Whale losses. The quote is about the chief investment office's new
 value-at-risk model, the number that told management how much the trading book could lose;
 hand-moved inputs were among the problems the task force found. Do not claim the spreadsheet caused the loss; say it was one of
-the control failures the report names. Source and check date are in the day's provenance. Then
-the three places the Monday numbers could be computed.
+the control failures the report names. The study notes' reading list carries the link and its check date. Then the three places the Monday
+numbers could be computed.
 ```
 
 ---
 
-## S11. A .sql file sends 2 rows where an export sends 1,340
+## S11. A .sql file sends 2 rows where an export sends 1,000
 *Where could the Monday numbers be computed, and what does each way cost?*
 
 | Option | What leaves the warehouse each Monday | Can the analyst rerun it? | When a column is renamed |
 |---|---|---|---|
-| A. Export the tables and compute in pandas | 1,340 rows: all 1,000 orders and 340 customers | Only on the copy, which may no longer match the book | An old export keeps answering from old data |
+| A. Export the tables and compute in pandas | 1,000 rows: every order, since the totals read only orders | Only on the copy, which may no longer match the book | An old export keeps answering from old data |
 | B. Query the warehouse from a .sql file | 2 rows, one per quarter | Yes: the same file on the same book | The query stops with an error naming the column |
 | C. Save the query as a view in the warehouse | 2 rows, one per quarter | Yes: one line reads the view | The view follows the rename and blocks a drop |
 
 **The call.** B: the team has read access only, and a .sql file reruns exactly on the book.
 
 ```notes
-LIVE, 3 minutes. Sized on this warehouse in notebook 1: the export copies both tables the tree
-needs, 1,340 rows, before Python adds anything; the query and the view return two rows. The copy
-is also a second version of the book, and the analyst cannot tell whether it still matches the
+LIVE, 3 minutes. Sized on this warehouse in notebook 1: the quarter totals read only the orders
+table, so the export copies all 1,000 order rows before Python adds anything; the query and the
+view return two rows. The segment lines in chapter 3 also need the customers table, and their
+export would copy 1,340 rows against 8. The copy is also a second version of the book, and the analyst cannot tell whether it still matches the
 first. A view needs the right to create objects in the warehouse, which read access does not
 give. The notebook reads the same .sql file, so the team thinks in the notebook and reports from
 the query. Then what would switch the call.
@@ -308,7 +308,28 @@ and its cost. Then the first query: what the warehouse holds.
 
 ---
 
-## S13. Seven tables, and today's tree needs two
+## S12a. Question: how many tables does the warehouse hold?
+*Last week's file was one table of orders: how many tables does the warehouse keep?*
+
+```mermaid
+flowchart LR
+    F["<b>last week</b><br/>one file of orders"] --> W["<b>the warehouse</b><br/>how many tables?"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class F known
+    class W unknown
+```
+
+**Question.** How many tables does the warehouse hold? a) one, the orders; b) two, the orders and the customers; c) seven; d) it cannot be known without asking the data team.
+
+```notes
+LIVE, 1 minute. Letters first. Most say two, because the tree needs two; a few say d. Then run the
+catalogue query.
+```
+
+---
+
+## S13. Answer: seven tables, and today's tree needs two
 *What does the warehouse hold, and where does each leaf of the tree live?*
 
 ```mermaid
@@ -328,10 +349,10 @@ WHERE  table_schema = 'public'
 GROUP  BY table_name ORDER BY table_name;
 ```
 
-An order carries order_id, customer_id, order_date, quarter, channel, amount and status. The segment is not on the order: it lives on the customer.
+The answer is c. An order carries order_id, customer_id, order_date, quarter, channel, amount and status. The segment is not on the order: it lives on the customer.
 
 ```notes
-LIVE, 6 minutes. First contact: open sql/C2_W02_D01_01_book_STUDENT.sql in VS Code, connect with
+LIVE, 5 minutes. First contact: open sql/C2_W02_D01_01_book_STUDENT.sql in VS Code, connect with
 the PostgreSQL extension to the kalpa database, select the block and run it. information_schema is
 the catalogue every Postgres database keeps about itself, so nobody had to be asked. amount is
 stored as numeric, so sum can add it. If a connection fails, two minutes and the last line of the
@@ -405,23 +426,43 @@ buy once. Ask what the query actually counted before showing why.
 
 ---
 
-## S17. Why it is wrong: count(*) counts order rows
-*What does count(*) count, whatever the column is called?*
+## S16a. Question: what did count(*) AS customers count?
+*The column says customers: what did the query actually count?*
+
+```mermaid
+flowchart LR
+    Q["<b>count(*) AS customers</b><br/>538 in Q1"] --> W["<b>what was counted?</b>"]
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class Q bad
+    class W unknown
+```
+
+**Question.** What did the query count? a) the customers who bought in each quarter; b) the customers on Kalpa's customer table; c) the order rows in each quarter; d) the customers who bought more than once.
+
+```notes
+LIVE, 1 minute. Letters. Expect a from anyone who trusts the label. Then the answer and the check.
+```
+
+---
+
+## S17. Answer: c, order rows, whatever the column is called
+*Why is the 538 wrong, and which check catches it?*
 
 ```mermaid
 xychart-beta
-    title "One table, three counts, three questions"
-    x-axis ["order rows", "members", "buyers"]
+    title "Orders counted two ways, beside the customer table"
+    x-axis ["order rows", "customer table", "buyers"]
     y-axis "Count" 0 --> 1100
     bar [1000, 340, 301]
 ```
 
-**The check.** Count three ways, each named for what it counts: 1,000 order rows, 340 members on the customer table, and 301 buyers, the customers who bought across both quarters. `AS customers` is a label, and the database prints whatever name it is given.
+**The check.** Count the orders table two ways and set the customer table's own count beside them, each named for what it counts: 1,000 order rows and 301 buyers, the customers who bought across both quarters, beside 340 customers on the customer table. The answer is c: `AS customers` is a label, and the database prints whatever name it is given.
 
 ```notes
-LIVE, 3 minutes. count(*) counts rows, and a row of orders is an order. 39 of the 340 members
+LIVE, 2 minutes. count(*) counts rows, and a row of orders is an order. 39 of the 340 customers
 bought nothing in either quarter, so the customer table answers a different question: how many
-members Kalpa holds. Only count(DISTINCT customer_id) on the orders answers the tree's question.
+customers Kalpa holds. Only count(DISTINCT customer_id) on the orders answers the tree's question.
 Then the fix per quarter.
 ```
 
@@ -463,6 +504,8 @@ three leaves, reached a second way.
 
 The second route pulls every order row into Python and counts with a set of customer ids and a running sum, with no SQL count or sum anywhere. It agrees on every leaf, after moving 1,000 rows where the query moved two.
 
+**In the interview.** [F] Why would you compute a KPI in the warehouse rather than in a notebook? [F] What do count(*), count(customer_id) and count(DISTINCT customer_id) each count?
+
 ```notes
 LIVE, 2 minutes. This is option A from the sizing, done once, so it also shows what an export
 costs. A Python set keeps each id once, the way count(DISTINCT ...) does. When to switch: pandas
@@ -477,7 +520,7 @@ the query. Then the chapter's answer.
 
 | The question on the way | The answer |
 |---|---|
-| 1. Where to compute? | A .sql file: 2 rows back against an export's 1,340 |
+| 1. Where to compute? | A .sql file: 2 rows back against an export's 1,000 |
 | 2. What does it hold? | Seven tables; orders and customers carry today's tree |
 | 3. What did it book? | Rs 10,00,00,000 on 538, then Rs 9,84,00,000 on 462 |
 | 4. How many customers? | 244, then 227; count(*) said 538 and 462 |
@@ -485,12 +528,10 @@ the query. Then the chapter's answer.
 
 **Kavya's review.** Every count says what it counts, in its name and in the comment above it. Customers on Anand's sheet are customers who bought in the quarter, each counted once, and a count named customers that counts rows is the first thing an auditor finds.
 
-**In the interview.** [F] Why would you compute a KPI in the warehouse rather than in a notebook? [F] What do count(*), count(customer_id) and count(DISTINCT customer_id) each count?
-
 ```notes
 LIVE, 2 minutes. Kavya Nair is the team's senior analyst, who checks every number before it
 leaves. The interview answer in one breath: the warehouse holds the one copy everyone reads, a
-query reruns on it, and on this book an export moves 1,340 rows to answer what two rows answer.
+query reruns on it, and on this book an export moves 1,000 rows to answer what two rows answer.
 The chapter 1 set (exercises/unguided/C2_W02_D01_ch1_what_the_book_says_STUDENT.md) runs its
 first two items now if the chapter ran to time. Then chapter 2: the total matched last week's, so
 does everything else?
@@ -510,8 +551,8 @@ run beside it.
 
 ---
 
-## S21. Answered in six questions, before Anand signs
-*Who needs this answer, and which questions lead to it?*
+## S21. Anand signs it, and a parked Rs 12 crore rests on it
+*Who needs to know whether the book tells last week's story, and which six questions lead there?*
 
 **Who needs the answer.** Anand wants to know which story the sheet signs for, and Meera parked a Rs 12 crore acquisition request on last week's finding that customers held steady while each ordered less often. If the book tells a different story and nobody says so, that decision stays parked on a number the warehouse does not support.
 
@@ -531,7 +572,7 @@ LIVE, 1 minute. Read the six questions. Then the need.
 ---
 
 ## S22. The need: the story the sheet signs for
-*Who asks, what is compared, and what does a wrong story cost?*
+*Whose decision rests on last week's story, and what does a story the book does not tell cost?*
 
 ```cards
 icon: user | eyebrow: Who asks | title: Anand, then Meera | body: Anand signs the sheet; Meera's parked decision rests on last week's branch story.
@@ -570,10 +611,7 @@ flowchart LR
 
 ```notes
 LIVE, 1 minute. The question in the post was the chief executive's, years before the post was
-written. Two sources that answer one
-question differently are settled leaf by leaf, with the definitions side by side, before either
-reaches a decision maker. Source and check date are in the day's provenance. Then four ways to
-compare Kalpa's two sources.
+written. The study notes' reading list carries the link and its check date. Then four ways to compare Kalpa's two sources.
 ```
 
 ---
@@ -712,10 +750,29 @@ like confirmation. Then why it is wrong, and the count that exposes it.
 
 ```notes
 LIVE, 4 minutes. Each ratio is Q2 over Q1. A total is a product of branches, and different
-branches can multiply to the same product, so a matching total is one leaf matching. The fix: the
-sheet carries the book's own leaves, 244 to 227 customers, down 7.0 percent, and orders per
-customer down 7.7 percent. 131 of the book's 301 customers bought in only one quarter. Then the
-same change reached a second way.
+branches can multiply to the same product, so the totals can agree while the branches differ.
+Then the fix.
+```
+
+---
+
+## S30a. The fix: 244 to 227 customers, down 7.0%
+*What does Anand's sheet carry once it reads the book's own leaves?*
+
+| Leaf on Anand's sheet | The hurried sheet, copied from last week | The book |
+|---|---|---|
+| Customers who bought | 0.0% | -7.0% |
+| Orders per customer | -14.0% | -7.7% |
+
+The sheet carries the book's leaves: 244 customers bought in Q1 and 227 in Q2, 7.0 percent fewer, and each ordered 7.7 percent less often. 131 of the book's 301 customers bought in only one quarter, which an extract of customers who bought in both could never show.
+
+**In the interview.** [D] Two analysts report different customer counts for one quarter; how do you settle it?
+
+```notes
+LIVE, 2 minutes. The fix changes two lines of the sheet and leaves the revenue line as it was. The
+interview answer in one breath: put the two definitions side by side before the two numbers,
+recompute both from the source of record, agree which definition answers the question, and store
+that query. Then the same change reached a second way.
 ```
 
 ---
@@ -737,7 +794,7 @@ flowchart LR
     class D bet
 ```
 
-The first route subtracted two distinct counts. This one builds the change from each customer's own history, one row per customer filtered with HAVING, and lands on the same 227. The net fall of 17 hides 131 customers moving.
+The first route subtracted two distinct counts. This one builds the change from each customer's own history, one row per customer filtered with HAVING, and lands on the same 227. The histories tie out each quarter: 170 who bought in both plus 74 who stopped is 244, and 170 plus 57 who arrived is 227. The net fall of 17 hides 131 customers moving.
 
 ```notes
 LIVE, 4 minutes. The query behind the 74: one row per customer, kept when the customer's latest
@@ -785,14 +842,10 @@ show the error mattered. Then the answer.
 
 **Kavya's review.** When two sources disagree, say which one is the book and put the difference in the line under the number.
 
-**In the interview.** [D] Two analysts report different customer counts for one quarter; how do you settle it?
-
 ```notes
 LIVE, 2 minutes. The answer is b: it names both falling branches and why the extract could not
 show the first. Option c goes further than one chapter's evidence, and d leaves Meera deciding on a
-story the book does not tell. The interview answer in one breath: put the two definitions side by
-side before the two numbers, recompute both from the source of record, agree which definition
-answers the question, and store that query. The follow-up, [F] "your total matches last week's;
+story the book does not tell. The interview follow-up, [F] "your total matches last week's;
 is your analysis the same?", is answered by slide S30's two trees. Kavya's longer version: set every
 leaf beside its twin before you say two sources agree. Then chapter 3: which segment carries each
 branch?
@@ -804,16 +857,16 @@ branch?
 *Which segment carried the fall from Q1 to Q2, and how often did its customers order?*
 
 ```notes
-LIVE. Thirty minutes: the need and the company (3), the options and the call (4), the GROUP BY
+LIVE. Thirty minutes: the need and the company (4), the options and the call (4), the GROUP BY
 error (2), the eight rows (5), the thin groups with HAVING (4), the trap and its fix (8, never
-cut), the second route (2) and the close (2). Notebook 3 and
+cut), the second route (2) and the close (1). Notebook 3 and
 sql/C2_W02_D01_03_which_segment_STUDENT.sql run beside it. The break follows this chapter.
 ```
 
 ---
 
-## S34. Answered in five questions, before the budget moves
-*Who needs this answer, and which questions lead to it?*
+## S34. The head of Retail-Plus, who sets the retention budget
+*Who reads the segment lines, and which five questions find the segment that moved?*
 
 **Who needs the answer.** Anand's sheet carries one line per segment, and the head of Retail-Plus, who owns the paid membership tier, reads that line to decide which members the team works to keep. A wrong frequency sends the retention budget to the wrong segment.
 
@@ -832,7 +885,7 @@ LIVE, 1 minute. Read the five questions. Then the need.
 ---
 
 ## S35. The need: one line per segment, and a budget
-*Who asks, what is measured, and what does a wrong line cost?*
+*Who reads Retail-Plus's line, and what does a wrong frequency cost the retention budget?*
 
 ```cards
 icon: user | eyebrow: Who asks | title: The head of Retail-Plus | body: Reads the tier's line on Anand's sheet and decides whom the team works to keep.
@@ -862,13 +915,14 @@ xychart-beta
     bar [54, 20, 86, 60]
 ```
 
-Eternal, the company behind Zomato and Blinkit, grew its consumer businesses' net order value 54 percent in the quarter to 30 June 2026, and its letter told each business's number on its own. Kalpa's 1.6 percent is four stories.
+Eternal's letter gave its consumer businesses' 54 percent and each business's own growth; Kalpa's 1.6 percent sums four segments.
 
 ```notes
 LIVE, 1 minute. Net order value is the value of orders placed through the platforms. Eternal's
 shareholders' letter for Q1 FY27 (22 July 2026) gives the group's 54 percent beside food delivery
-at a little over 20 percent, quick commerce at 86 and going-out at 60. Source and check date are
-in the day's provenance. Then four ways to put every segment on the sheet.
+at a little over 20 percent, quick commerce at 86 and going-out at 60; Eternal is the company behind
+Zomato and Blinkit, and the quarter ran to 30 June 2026. The study notes' reading list carries the link and its check date. Then four ways to put
+every segment on the sheet.
 ```
 
 ---
@@ -894,7 +948,7 @@ Postgres refuses.
 
 ---
 
-## S38. The GROUP BY error, read in two minutes
+## S38. One row per quarter cannot print four segments
 *Why does Postgres refuse to print a segment it was not told to group by?*
 
 ```sql
@@ -965,7 +1019,27 @@ thin to quote a rate on.
 
 ---
 
-## S41. HAVING flags Student: 15 and 20 customers
+## S40a. Question: which groups hold under 30 customers?
+*Kavya flags any rate that stands on fewer than 30 customers: which segment-quarters does she flag?*
+
+```mermaid
+flowchart LR
+    E["<b>8 groups</b><br/>a segment<br/>in a quarter"] --> H["<b>HAVING</b><br/>distinct<br/>customers<br/>under 30"] --> F["<b>flagged?</b>"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class E,H known
+    class F unknown
+```
+
+**Question.** Which segment-quarters have fewer than 30 customers? a) none; b) Student in both quarters; c) Student in Q1 only; d) Student and Business in both quarters.
+
+```notes
+LIVE, 1 minute. Letters. The eight rows are still on the board from the last slide. Then run it.
+```
+
+---
+
+## S41. Answer: HAVING flags Student, 15 and 20 customers
 *Which segment-quarters hold too few customers to quote a rate on?*
 
 ```sql
@@ -977,16 +1051,18 @@ HAVING count(DISTINCT o.customer_id) < 30;
 
 ```mermaid
 flowchart LR
-    W["<b>WHERE</b><br/>tests one order,<br/>before groups exist"] --> G["<b>GROUP BY</b><br/>one group per<br/>segment and quarter"] --> H["<b>HAVING</b><br/>tests each group:<br/>fewer than 30?"]
+    W["<b>WHERE</b><br/>would test one order,<br/>before groups exist"] -.-> G["<b>GROUP BY</b><br/>one group per<br/>segment and quarter"] --> H["<b>HAVING</b><br/>tests each group:<br/>fewer than 30?"]
     H --> R["<b>Student Q1: 15<br/>Student Q2: 20</b><br/>flagged"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
     classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class W,G,H known
+    class G,H known
+    class W unknown
     class R bet
 ```
 
 ```notes
-LIVE, 4 minutes. Kavya's rule from Week 1: a rate built on fewer than 30 customers moves a long way
+LIVE, 3 minutes. The answer is b. Kavya's rule from Week 1: a rate built on fewer than 30 customers moves a long way
 when one customer changes, so it goes on the sheet with a flag. The test is on a group, so it sits
 in HAVING, which runs after the groups exist; WHERE runs before them and tests one order at a
 time. Student's 33.9 percent rise goes on the sheet flagged. Business, with 36 and 35, clears the
@@ -1013,7 +1089,7 @@ LIVE, 1 minute. Letters. Most say a, because a calculator would. Then run it.
 
 ---
 
-## S43. Answer: 2 then 1, so the sheet says "halved"
+## S43. Answer: 2 then 1, the plausible wrong answer
 *What does the integer answer tell the head of Retail-Plus to do?*
 
 | Segment | Q1 | Q2 | What the sheet would say |
@@ -1048,7 +1124,7 @@ number a reader might accept as "about two", and the decisions it drives are bot
 LIVE, 3 minutes. The PostgreSQL documentation, mathematical functions: "for integral types,
 division truncates the result towards zero", so 5 / 2 is 2. sum(amount) / count(*) in chapter 1 kept
 its decimals because amount is stored as numeric. A spreadsheet stores every number as a
-decimal, so 140 / 76 gives 1.84 whatever you typed, which is why the habit from Excel misleads
+floating-point value, so 140 / 76 gives 1.84 whatever you typed, which is why the habit from Excel misleads
 here. Then the fix.
 ```
 
@@ -1074,7 +1150,7 @@ round(count(*)::numeric
 LIVE, 2 minutes. Cast one side to numeric, round on purpose to two places, and keep orders and
 customers in the same row so anyone can multiply the ratio back. Retail-Plus fell 22.0 percent
 where the integer query said 50, and Retail-Core rose 3.0 where it said 100; Student's 5.6 sits
-on a flagged group. Each change is computed from the counts before rounding. Then a second route that never divides two counts.
+on a flagged group. Each change is computed from the counts before rounding. Then a second route that averages each customer's own count in Python, from a different query.
 ```
 
 ---
@@ -1095,10 +1171,13 @@ flowchart LR
 
 If the division is right, the average of the individual counts must equal it, and in all eight segment-quarters it does, to two places.
 
+**In the interview.** [F] Orders per customer reads 1 for a segment; what do you check first? [S] WHERE against HAVING, one sentence each. [S] Explain the logical order in which a SQL query runs.
+
 ```notes
 LIVE, 2 minutes. The second route asks the warehouse for each customer's own number of orders
-(471 rows, one per customer and quarter) and averages them in Python, so it cannot share the first
-route's division. When to switch: the per-customer rows are what you want when the next question
+(471 rows, one per customer and quarter) and averages them in Python: a sum of counts over a number
+of customers, both from a different query, divided with Python's true division, so it cannot share
+the first route's integer division. When to switch: the per-customer rows are what you want when the next question
 is about the spread of customers, such as how many ordered once. Then the chapter's answer.
 ```
 
@@ -1115,12 +1194,10 @@ is about the spread of customers, such as how many ordered once. Then the chapte
 | 4. How often? | Retail-Plus 2.36 then 1.84, down 22.0%; integers said 2 then 1 |
 | 5. Another way? | Each customer's own count averages to the same eight ratios |
 
-**Kavya's review.** Divide in numeric and round on purpose. Keep the counts beside every ratio, so anyone reading the sheet can multiply it back: a ratio that does not multiply back to its orders is a number nobody should sign.
-
-**In the interview.** [F] Orders per customer reads 1 for a segment; what do you check first? [S] WHERE against HAVING, one sentence each. [S] Explain the logical order in which a SQL query runs.
+**Kavya's review.** Divide in numeric and round on purpose, and keep the counts beside every ratio, so anyone reading the sheet can multiply it back.
 
 ```notes
-LIVE, 2 minutes. WHERE against HAVING in one breath: WHERE keeps or drops rows before any group is
+LIVE, 1 minute. WHERE against HAVING in one breath: WHERE keeps or drops rows before any group is
 formed, so it can test one order; HAVING keeps or drops groups after they are formed, so it can
 test count(DISTINCT customer_id) < 30. The chapter 3 set runs its first two items now if time
 allows. Then the break, ten minutes. After it, chapter 4: which branch of each segment's tree
@@ -1133,15 +1210,15 @@ moved?
 *Which branch of each segment's tree moved, and how much less did each Retail-Plus member spend?*
 
 ```notes
-LIVE. Thirty minutes: the need and the company (3), the options and the call (5), the CTE
-comparison (6), the branches (4), the trap, its check and its fix (9, never cut), the second route
-(2) and the close (1). Notebook 4 and sql/C2_W02_D01_04_which_branch_STUDENT.sql run beside it.
+LIVE. Thirty minutes: the need and the company (4), the options and the call (3), the named
+steps (5), the branches (4), the trap, its check and its fix (10, never cut), the second route
+(3) and the close (1). Notebook 4 and sql/C2_W02_D01_04_which_branch_STUDENT.sql run beside it.
 ```
 
 ---
 
-## S48. Answered in four questions, before the tier's plan
-*Who needs this answer, and which questions lead to it?*
+## S48. The tier's head, deciding how hard to keep members
+*Who needs each branch and the spend per member, and which four questions lead there?*
 
 **Who needs the answer.** Anand's analyst wants the quarter comparison as one query that reads from top to bottom, and the head of Retail-Plus decides how hard to work to keep the tier's members. An average that quietly leaves out members who stopped buying says the tier's spend per member fell 15.5 percent when it fell 29.4.
 
@@ -1149,7 +1226,7 @@ comparison (6), the branches (4), the trap, its check and its fix (9, never cut)
 label: 1 | title: Which way to write it? | body: Subqueries, named steps or temporary tables
 label: 2 | title: Which branch moved? | body: Customers, frequency, order value
 label: 3 | title: How much less each? | body: Spend per Retail-Plus member
-label: 4 | title: Another count agree? | body: Members from the customer table | tone: dark
+label: 4 | title: Same levels another way? | body: Revenue over the buyers, counted apart | tone: dark
 ```
 
 ```notes
@@ -1159,14 +1236,14 @@ LIVE, 1 minute. Read the four questions. Then the need, in the head of Retail-Pl
 ---
 
 ## S49. The need: how much less each member spent
-*Who asks, what is measured, and what does a wrong average cost?*
+*Who sets the tier's plan, and what does an average that hides the members who stopped cost?*
 
 > "How much less is each of my members spending, and is it fewer members buying or each one buying less?"
 > The head of Retail-Plus, Kalpa Retail
 
 ```cards
 icon: user | eyebrow: Who asks | title: The head of Retail-Plus | body: Sets how hard the team works to keep the tier's members next quarter.
-icon: chart-line | eyebrow: The metric | title: Spend per member | body: The rupees a member spent in a quarter, averaged over the tier's members.
+icon: chart-line | eyebrow: The metric | title: Spend per member | body: The rupees a Retail-Plus member spent in a quarter, averaged over the members who bought in either quarter.
 icon: triangle-alert | eyebrow: A wrong average costs | title: A light touch | body: A modest dip gets a light plan while the tier loses nearly a third of its spend. | tone: dark
 ```
 
@@ -1179,7 +1256,7 @@ writes them.
 
 ---
 
-## S50. GitLab writes every query as named steps
+## S50. GitLab's style guide: prefer named steps to subqueries
 *How does a real data team keep a query readable for the people who audit it?*
 
 > "Prefer CTEs over sub-queries as CTEs make SQL more readable ..."
@@ -1194,29 +1271,32 @@ icon: message-square | eyebrow: The habit | title: Say what it does | body: A ca
 LIVE, 1 minute. A CTE, a common table expression, is a named step written with WITH: the query
 reads as a list of steps, each with a name and a one-line comment, and the last step reads the
 ones above it. GitLab publishes the style guide its data team writes to; the sentence goes on
-to call CTEs more performant, which is about GitLab's own warehouse, so on Postgres the reason to
-name steps is the reader. Source and check date are in the day's provenance. Then three ways to write the comparison.
+to call CTEs more performant, a claim the guide makes with no test beside it; on Postgres the
+reason to name steps is the reader. The same guide says not to use USING in joins because it
+"produces inaccurate results in Snowflake"; on Postgres USING is exact, and today's lookup line
+uses it. The study notes' reading list carries the link and its check date. Then three ways to write the comparison.
 ```
 
 ---
 
-## S51. Named steps read top down and rerun anywhere
+## S51. Named steps: one statement, one edit per rename
 *Nested subqueries, named steps or temporary tables: which suits an audited suite?*
 
-| Option | How the analyst reads it | Rows written into the warehouse | A rerun in a new session |
-|---|---|---|---|
-| A. Nested subqueries | From the innermost bracket outwards | 0 | Works |
-| B. Named steps, WITH ... AS | From the top down, one named step at a time | 0 | Works |
-| C. Temporary tables | Several statements, run in order | 4, for the session | UndefinedTable: the table is gone |
+| Option | How the analyst reads it | Rows written | A rerun in a new session | Edits if segment is renamed |
+|---|---|---|---|---|
+| A. Nested subqueries | From the innermost bracket outwards | 0 | Works | 4 |
+| B. Named steps, WITH ... AS | From the top down, one named step at a time | 0 | Works | 1 |
+| C. Temporary tables, one per quarter | Three statements, run in order | 8, for the session | UndefinedTable: the table is gone | 4 |
 
-**The call.** B. **What would change it:** a step that many queries reuse over millions of rows in one long session is cheaper as a temporary table, computed once; that is a performance choice for the platform team, and Anand's suite is nowhere near it.
+**The call.** B: one statement that reruns anywhere, read top down, and a renamed column costs one edit. **What would change it:** a step that many queries reuse over millions of rows in one long session is cheaper as a temporary table, computed once; that is a performance choice for the platform team, and Anand's suite is nowhere near it.
 
 ```notes
-LIVE, 3 minutes. Notebook 4 runs option C: in the session that made it, the temporary table holds
-four rows, one per segment; a new session, which is what the analyst opens, finds no such table.
-Postgres drops a temporary table when its session ends. A and B are single statements, so the
-analyst reruns exactly what the team ran; B also reads in the order the work happens. Then the
-comparison as named steps.
+LIVE, 3 minutes. Notebook 4 runs option C: in the session that made it, the Q1 temporary table
+holds four rows, one per segment, so two quarters write 8; a new session, which is what the analyst
+opens, finds no such table. Postgres drops a temporary table when its session ends. A and B are
+single statements, so the analyst reruns exactly what the team ran; B also reads in the order the
+work happens. The edits are counted in the query text: c.segment appears four times in A, once in
+B's book step, and twice in each of C's two tables. Then the comparison as named steps.
 ```
 
 ---
@@ -1249,11 +1329,10 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 6 minutes. Read it top down with the room: book, then q1 and q2, each reading book, then the
+LIVE, 5 minutes. Read it top down with the room: book, then q1 and q2, each reading book, then the
 last step dividing Q2 by Q1 for each branch. q2 is q1 with 'Q2' in the WHERE. The last step sets
-the two quarters side by side on the segment, which is the row's "two CTEs matched on segment";
-each segment has one row in each, so nothing multiplies. Postgres works each step out once per
-run and writes nothing into the warehouse. Then the prediction.
+the two quarters side by side on the segment, which is the row's "two CTEs matched on segment".
+Postgres works each step out once per run and writes nothing into the warehouse. Then the prediction.
 ```
 
 ---
@@ -1300,8 +1379,8 @@ fell furthest; fewer members buying comes second. Then the head of Retail-Plus's
 
 ---
 
-## S55. The plausible wrong answer: members spent 15.5% less
-*What does the quickest average of member spend tell the head of Retail-Plus?*
+## S54a. Question: how did the average member's spend move?
+*One row per member with a CASE per quarter, then avg of each column: how does Retail-Plus spend per member move from Q1 to Q2?*
 
 ```sql
 -- one row per Retail-Plus member:
@@ -1313,13 +1392,25 @@ sum(CASE WHEN o.quarter = 'Q2'
 avg(q1_spend), avg(q2_spend)
 ```
 
+**Question.** How does the average member's spend move? a) down about 15 percent; b) down about 29 percent, as revenue did; c) up, since revenue per order rose; d) it cannot be averaged, since some members have no Q2 orders.
+
+```notes
+LIVE, 1 minute. CASE WHEN ... THEN ... END picks a value row by row: here the order's amount when
+the order falls in that quarter. Letters, then run it.
+```
+
+---
+
+## S55. Answer: down 15.5%, the plausible wrong answer
+*What does the quickest average of member spend tell the head of Retail-Plus?*
+
 ```stats
 value: Rs 6,437 | label: Q1 average member | note: the quick query
 value: Rs 5,439 | label: Q2 average member | note: down 15.5%
-value: +4.3% | label: Retail-Core | note: the same query says members spent more
+value: +4.3% | label: Retail-Core | note: the same query says its customers spent more
 ```
 
-**What breaks.** The head of Retail-Plus reads a modest dip and plans a light touch, and the sheet says Retail-Core and Business members each spent more in Q2.
+**What breaks.** The answer is a, and it is wrong. The head of Retail-Plus reads a modest dip and plans a light touch, and the sheet says Retail-Core and Business customers each spent more in Q2.
 
 ```notes
 LIVE, 3 minutes. The full query is block c4_member_spend_hurried in notebook 4's SQL file: one
@@ -1368,35 +1459,58 @@ coalesce(sum(CASE WHEN o.quarter = 'Q2' THEN o.amount END), 0)
 | Business | +1.4% | -1.4% |
 | Retail-Core | +4.3% | -1.8% |
 | Retail-Plus | -15.5% | -29.4% |
-| Student | +0.4% | +33.9%, on 24 members |
+| Student | +0.4% | +33.9%, on 24 customers |
 
 Over the same 107 members, a Retail-Plus member spent Rs 5,474 in Q1 and Rs 3,863 in Q2: down 29.4 percent, nearly twice the quick 15.5.
 
 ```notes
 LIVE, 3 minutes. A member who bought nothing in a quarter spent Rs 0 in it, so the query says so
 with coalesce, and both averages cover the same people. Two segments flip from a rise to a fall.
-Student rises on 24 members, a group chapter 3 flagged as too thin for a rate. Then a second route
+Student rises on 24 customers, a group chapter 3 flagged as too thin for a rate. Then a second route
 with a different set of members.
 ```
 
 ---
 
-## S58. A second route: over 120 members, the same 29.4%
-*Does a member count taken from the customer table give the same change?*
+## S57a. Question: what does revenue over the buyers give?
+*Count the members who bought in either quarter in a step of their own, then divide each quarter's Retail-Plus revenue by that count: what comes out?*
 
-```stats
-value: 120 | label: members on the tier's book | note: counted from the customer table
-value: Rs 4,881 | label: Q1 spend per member | note: Rs 5,85,770 over 120
-value: Rs 3,445 | label: Q2 spend per member | note: Rs 4,13,380 over 120, down 29.4%
+```mermaid
+flowchart LR
+    R["<b>Retail-Plus revenue</b><br/>each quarter"] --> D["<b>divided by the buyers</b><br/>counted once each,<br/>in their own step"] --> T["<b>revenue per<br/>member?</b>"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class R,D known
+    class T unknown
 ```
 
-This route never averages: it divides each quarter's Retail-Plus revenue by every member on the tier's book, bought or not, counted in a subquery. Its levels differ from the 107-member route; its change is the same, because both keep one fixed group of members.
+**Question.** Retail-Plus booked Rs 5,85,770 in Q1 and Rs 4,13,380 in Q2. What does each quarter's revenue per member come to? a) Rs 6,437 then Rs 5,439, the hurried levels; b) Rs 5,474 then Rs 3,863, the fix's own levels; c) Rs 4,881 then Rs 3,445; d) it cannot be computed without averaging one row per member.
 
 ```notes
-LIVE, 2 minutes. Any fixed group of members gives the same change; only an average whose members
-change between quarters gives a different one. When to switch: the tier's 120 is the right base
-when the head of Retail-Plus asks about the whole tier, including members who never bought; the
-107 is right for members who bought in the half-year. Then the chapter's answer.
+LIVE, 1 minute. This route never builds a row per member and never averages, so it can disagree
+with the fix. Letters, then run it.
+```
+
+---
+
+## S58. Answer: b, the fix's own levels by a second route
+*Does revenue over the members who bought, counted on their own, give the same levels?*
+
+```stats
+value: 107 | label: members who bought | note: counted once each from the orders
+value: Rs 5,474 | label: Q1 revenue per member | note: Rs 5,85,770 over 107
+value: Rs 3,863 | label: Q2 revenue per member | note: Rs 4,13,380 over 107, down 29.4%
+```
+
+The answer is b. This route never builds a row per member and never averages, so a step that dropped or doubled a member would leave it apart from the fix. Over the tier's 120 members on the customer table the change is the same 29.4 percent at Rs 4,881 then Rs 3,445: a fixed base keeps the revenue ratio, so only the level says which base the reader is reading.
+
+**In the interview.** [F] An average moved but the total did not, or moved differently; how? [F] When would you use a CTE instead of a subquery?
+
+```notes
+LIVE, 2 minutes. The route's own count, 107, matches the fix's step, and its levels match to the
+rupee. When to switch: the tier's 120 is the right base when the head of Retail-Plus asks about the
+whole tier, including the 13 members who bought nothing in either quarter; the 107 is right for
+the members who bought in the half-year. Then the chapter's answer.
 ```
 
 ---
@@ -1409,11 +1523,9 @@ when the head of Retail-Plus asks about the whole tier, including members who ne
 | 1. Which way to write it? | Named steps: read top down, one statement, rerun anywhere |
 | 2. Which branch moved? | Retail-Plus frequency, 0.780; customers 0.835; order value 1.084 |
 | 3. How much less each? | Rs 5,474 to Rs 3,863 over 107 members; the quick average said 15.5% |
-| 4. Another count agree? | Rs 4,881 to Rs 3,445 over 120 members: the same 29.4% |
+| 4. Same levels another way? | Revenue over the 107 counted apart: Rs 5,474 then Rs 3,863 |
 
 **Kavya's review.** Write the count of members beside every average, so the reader sees that Q1 and Q2 are over the same people, and put the zero in on purpose where a member bought nothing.
-
-**In the interview.** [F] An average moved but the total did not, or moved differently; how? [F] When would you use a CTE instead of a subquery?
 
 ```notes
 LIVE, 1 minute. The average answer in one breath: the denominator changed. avg counts only the
@@ -1436,8 +1548,8 @@ tie-out (5), the trap, its check and its fix (10, never cut), the second route (
 
 ---
 
-## S60. Answered in four questions, before the analyst adds
-*Who needs this answer, and which questions lead to it?*
+## S60. Anand's analyst, who adds every column first
+*Who adds the suite before reading it, and which four questions lead there?*
 
 **Who needs the answer.** Anand's analyst adds before reading any query: the segments against the book, the two quarters against the half-year. A half-year line showing more Retail-Plus customers than the tier has members fails the audit on sight, and every other number in the suite is doubted with it.
 
@@ -1455,7 +1567,7 @@ LIVE, 1 minute. Read the four questions. Then the need, in Anand's words.
 ---
 
 ## S61. The need: sums the analyst checks before reading
-*Who asks, what is measured, and what does a sum that fails cost?*
+*Who adds the suite first, and what does one impossible line cost the rest of it?*
 
 > "My analyst will add your rows before reading a single query. If they do not add up, the suite does not reach me."
 > Anand Iyer, finance controller, Kalpa Retail
@@ -1487,8 +1599,8 @@ Meta's annual report counts a person who opened any of its apps that day once, "
 
 ```notes
 LIVE, 1 minute. Meta Platforms, Form 10-K for 2025: a daily active person is a logged-in user who
-visited at least one of the family's products that day. Source and check date are in the day's
-provenance. Then four ways to produce the half-year column.
+visited at least one of the family's products that day. The study notes' reading list carries the link and its check date. Then four ways to
+produce the half-year column.
 ```
 
 ---
@@ -1578,16 +1690,14 @@ know. Then the check.
 ## S67. Why it is wrong: 167 buyers in a tier of 120
 *Which check shows the added line cannot be true?*
 
-```mermaid
-xychart-beta
-    title "Half-year customers, added, against members on the book"
-    x-axis ["Business", "Retail-Core", "Retail-Plus", "Student"]
-    y-axis "Customers" 0 --> 220
-    bar [71, 198, 167, 35]
-    line [40, 150, 120, 30]
-```
+| Segment | Half-year customers, the two quarters added | Customers on the customer table |
+|---|---|---|
+| Business | 71 | 40 |
+| Retail-Core | 198 | 150 |
+| Retail-Plus | 167 | 120 |
+| Student | 35 | 30 |
 
-**The check.** A count of customers who bought can never exceed the customers who exist: the added line runs over the members in every segment, which the line shows. A customer who bought in both quarters sits in the Q1 row and in the Q2 row, so adding the rows counts them twice.
+**The check.** A count of customers who bought can never exceed the customers who exist, and in every segment the added count tops the customer table: Retail-Plus shows 167 buyers in a tier of 120. A customer who bought in both quarters sits in the Q1 row and in the Q2 row, so adding the rows counts them twice.
 
 ```notes
 LIVE, 3 minutes. Business 71 of 40, Retail-Core 198 of 150, Retail-Plus 167 of 120, Student 35 of
@@ -1607,7 +1717,7 @@ FROM   orders o JOIN customers c USING (customer_id)
 GROUP  BY c.segment ORDER BY c.segment;
 ```
 
-| Segment | Added | Counted | Counted twice | Members on the book |
+| Segment | Added | Counted | Counted twice | On the customer table |
 |---|---|---|---|---|
 | Business | 71 | 39 | 32 | 40 |
 | Retail-Core | 198 | 131 | 67 | 150 |
@@ -1659,6 +1769,8 @@ bought in. Letters first.
 
 The answer is c. In every segment the customers counted twice are exactly the customers who bought in both quarters.
 
+**In the interview.** [F] Why can you not add two quarters' customer counts to get the half-year's? [D] A stakeholder's analyst must audit your query; what changes in how you write it, and what would you refuse to compute in a notebook?
+
 ```notes
 LIVE, 3 minutes. This route never counts the half-year directly; it counts each customer's
 quarters and subtracts the overlap, so it cannot share the direct count's mistake. The same holds
@@ -1680,8 +1792,6 @@ chapter's answer.
 | 4. Does the overlap explain it? | Yes: 60 bought in both; 91 plus 76 less 60 is 107 |
 
 **Kavya's review.** Before you add a column, ask whether one customer can sit in two of its rows. Orders and rupees add. People add only across groups they cannot share, so a half-year of customers is counted from the orders, never added from the quarters.
-
-**In the interview.** [F] Why can you not add two quarters' customer counts to get the half-year's? [D] A stakeholder's analyst must audit your query; what changes in how you write it, and what would you refuse to compute in a notebook?
 
 ```notes
 LIVE, 3 minutes. The design question in one breath: each number gets a named step and a comment
