@@ -12,7 +12,8 @@ tonight.
 
 **Who needs the answer.** Anand chases the orders that make the gap, and his analyst reads the
 reconciliation above the number before the number itself. A report that drops an order and keeps a
-repeated payment can show a gap of zero, and nobody chases a zero.
+repeated payment can show a surplus, or a gap that looks closed, and nobody chases an order on a page
+that reads fully collected.
 
 **The questions on the way.**
 

@@ -112,5 +112,5 @@ d) the unpaid list lost 1,500 of app and web orders
 ## Where does this skill come back?
 
 It comes back in chapter 6, where "the gap equals booked less collected" and "the gap equals the
-unpaid list's total" become two of the checks that run every Monday. The notebook for this chapter is
+never-paid and paid-short lists" become two of the checks that run every Monday. The notebook for this chapter is
 `notebooks/C2_W02_D02_05_what_anand_signs_STUDENT.ipynb`.

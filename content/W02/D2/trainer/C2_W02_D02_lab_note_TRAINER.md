@@ -28,7 +28,7 @@ goes home with the take-home.
 |---|---|---|
 | 1. Four row counts | Q2: they answer 6 for the LEFT join, because "LEFT keeps each order once". Q3: they answer 4, forgetting that a RIGHT join keeps R-5. | "Put your finger on W-3 and count how many rows it makes, then do the same for R-5." |
 | 2. Match five questions | Q5 and Q9: they reach for LEFT because it feels safer, when the question is about refunded orders only. | "Read the question again and ask: does an order with no refund belong in the answer?" |
-| 3. The refund rate | Q10: most see one fault. Those who see the lost orders miss W-3 doubling, and those who see W-3 miss the lost orders. Q11: the 15.3 percent distractor catches everyone who fixed only the ON clause. | "Run it with SELECT * in place of the sums, and read the rows before the totals." |
+| 3. The refund rate | Q10: most sum all six orders, or the refunded three once, and never notice W-3 twice in 1,15,900. Q11: the 15.3 percent distractor catches everyone who fixed only the ON clause and kept W-3 doubled; 26.2 percent catches those who also counted R-5, the refund with no order. | "Run it with SELECT * in place of the sums, and read the rows before the totals." |
 | 4. Q1 on the warehouse | The first query they write is `GROUP BY order_id HAVING COUNT(*) > 1`, which returns 234 Q1 orders, and some start writing a double-paid list from it. The second stall is the gap: Q1's gap is zero on every channel, and learners assume their query is broken. | "What makes a retry a retry, in columns?" For the zero gap: "Run the unpaid list. If it is empty, what must the gap be?" |
 
 ## Which Q1 numbers should problem 4 reach?

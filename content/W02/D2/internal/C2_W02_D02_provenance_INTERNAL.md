@@ -150,7 +150,10 @@ wherever they appear; each chapter set's own tables (A-, Q-, U-, V-, W- and repo
 companion's larger sample of twelve orders; the practice lab's six web orders and five refunds; the
 take-home book in its own schema; the Kahoot's 800-order shop; the five wrong pages chapter 6 writes on
 the tiny tables; the escalated case's instalment posted three times at Rs 1,500, which tests the
-surplus expression. Every Kalpa person is fictional, as `docs/07_Client_Zero.md` sets them.
+surplus expression; the chapter 2 set's booked by row type (Rs 12,40,000, Rs 6,30,000, Rs 40,000 and
+Rs 90,000); the chapter 3 set's four checks and the proofs' minutes (1, 10 and 15); the chapter 5
+set's full quarter (1,500 orders, bars of 24, 6 and 15, a sheet of about 60 lines) and its later
+month's gaps; and the chapter 6 set's book of ten orders and its reports X, Y and Z. Every Kalpa person is fictional, as `docs/07_Client_Zero.md` sets them.
 
 ## Links, each checked on 1 October 2026
 

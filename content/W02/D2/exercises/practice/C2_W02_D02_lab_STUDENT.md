@@ -202,8 +202,8 @@ On the warehouse, write and run:
    written above the query before you run it.
 3. The Q1 unpaid list and the Q1 double-paid list, each with its count and value by channel.
 4. The report by channel with three checks that return true: rows out equals rows in, booked minus
-   collected equals the unpaid total, and collected plus the surplus posted twice equals what the
-   feed posted against Q1 orders.
+   collected equals the unpaid total plus anything paid short, and collected plus the surplus posted
+   twice equals what the feed posted against Q1 orders.
 5. One sentence to Anand that gives the Q1 collected number and says how you know it is honest.
 
 Stretch, if you finish early: the refunds table holds refunds raised against Q1 orders. Add refunded

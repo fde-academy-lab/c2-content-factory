@@ -18,7 +18,8 @@ from what each compares and what it costs, which is an ordering item.
 
 **Who needs the answer.** Anand chases the orders that make the gap, and his analyst reads the
 reconciliation above the number before the number itself. A report that drops an order and keeps a
-repeated payment can show a gap of zero, and nobody chases a zero.
+repeated payment can show a surplus, or a gap that looks closed, and nobody chases an order on a page
+that reads fully collected.
 
 - **Booked** is every order at its amount. **Collected** counts each order and instalment once.
   **Posted** is every payment row the feed holds, repeats included.
@@ -133,5 +134,5 @@ fee inside it (Stripe documentation, checked 1 Oct 2026). Public Health England 
 COVID-19 cases out of the daily figures reported between 25 September and 2 October 2020 (GOV.UK,
 4 October 2020): the results were pulled into Excel templates in the old XLS format, each result took
 several rows of its roughly 65,000, so a template held about 1,400 cases and later cases were left off
-(BBC News, 5 October 2020; both checked 1 Oct 2026). No row that arrived was wrong, and a count of rows
-sent against rows loaded would have caught the loss.
+(BBC News, 5 October 2020; both checked 1 Oct 2026). No row that arrived was wrong; the loss sat in the
+rows that never loaded, which is what a count of rows sent against rows loaded measures.
