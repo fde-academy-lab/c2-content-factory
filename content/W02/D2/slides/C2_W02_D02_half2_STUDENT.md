@@ -97,7 +97,7 @@ label: 25 June 2020 | title: Insolvency | body: Wirecard filed for insolvency.
 label: 2016 to 2018 | title: The check that could not fail | body: EY had not checked directly with Singapore's OCBC Bank and relied on documents and screenshots from a trustee and from Wirecard itself, the FT reported. | tone: dark
 ```
 
-A check that reads a company's own records back to it cannot fail.
+A check built only on documents the company supplies can confirm only what the company says.
 
 ```notes
 LIVE, 2 minutes. Sources: BBC News, 18, 22 and 25 June 2020; the FT's report republished by the
@@ -511,7 +511,7 @@ instalment posted twice; the platform lead fixes the feed, so the audit covers b
 
 ---
 
-## D3. The interview drill: six questions every screen asks
+## D3. The interview drill: six questions, aloud in pairs
 *Which interview questions does this day equip, and how is each tagged?*
 
 | Tag | The question |
@@ -527,7 +527,19 @@ Tags: [S] a staple asked everywhere; [F] frequent in GCC and product screens; [D
 
 ```notes
 SELF-STUDY, 20 minutes in the lab, aloud in pairs: sixty seconds per answer, the partner times it.
-The full answers are in each chapter notebook's "In the interview" section and in the study notes.
+Each answer in one breath, in the table's order. INNER keeps only matched rows; LEFT keeps every
+left row with NULLs where nothing matched; both repeat a left row once per matching right row. A
+row count grows when the join key repeats on the other table: count rows before and after, count that
+table's rows per key, and bring it to the key's grain before the join. Orders with no payment come
+from a LEFT JOIN that keeps the rows whose payment key IS NULL, or from NOT EXISTS, with the list's
+booked total checked against its bar; never NOT IN, which returns nothing once the subquery holds a
+NULL. When revenue doubles and every row looks fine, look at the grain: every row is real and the
+sum runs per payment, so bring the many side to one row per order and recompute each table alone.
+The validation design is counts, tie-backs to each table alone, one independent recomputation and a
+test of the suite on known wrong reports; when a check fails late on reporting day, booked leaves
+with the open line named and collected is held. An INNER join is honest when the unmatched rows are
+outside the question by definition, such as days to the first payment for paid orders, and the
+report says so.
 ```
 
 ---
@@ -547,6 +559,17 @@ The full answers are in each chapter notebook's "In the interview" section and i
 ```notes
 SELF-STUDY. The design question is the [D] rows: which approach, sized how, and what would make you
 switch. A strong answer names the check, the number it compares and the wrong report it stops.
+Each answer in one breath, in the table's order. A condition on the right-hand table goes in ON; in
+WHERE it runs after the join, drops the NULL rows and turns the LEFT JOIN into an INNER one.
+HAVING COUNT(*) > 1 by order finds every order with more than one payment row, legitimate
+instalments included; a retry is one order and instalment posted twice. A joined total is reconciled
+by recomputing it from the source table alone and naming every rupee of difference as a move with
+its list. Two errors that cancel are found by counting first and then splitting the difference into
+moves with definitions, so each error gets its own bar. A gap that looks too small is sized by
+channel and by order, since a small total can be one large invoice, and by age, since an old unpaid
+order is overdue; the cost of chasing is set against the cash, and the large, old orders go first.
+The one check to keep is orders on the report against orders in the table: it reads no rupee and
+catches a fan-out and a dropped order alike.
 ```
 
 ---

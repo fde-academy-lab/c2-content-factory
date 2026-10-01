@@ -124,8 +124,8 @@ two. Anand named one reason, instalments; the platform lead named another, a ret
 
 Four options, run on the five invented orders and seven payments: INNER returns 6 rows and puts 4 of
 the 5 orders on the statement; LEFT, orders first, returns 7 and all 5; RIGHT returns 7 and 4, keeping
-P-7; FULL returns 8 and all 5, keeping both orphans. Every option runs in a few milliseconds, so speed
-decides nothing, and the rows each keeps decide everything. The call is the LEFT JOIN with orders
+P-7; FULL returns 8 and all 5, keeping both orphans. Every option runs in a few milliseconds, so the
+rows each one keeps decide the call. The call is the LEFT JOIN with orders
 first, the only option that keeps every booked order and nothing that is not an order. The fact that
 would change it: a question about every payment the feed holds, which is the platform lead's in the
 second case, starts from `payments`; a question about both sides at once is FULL.
@@ -168,8 +168,8 @@ two tables, summed alone, agree?
 
 Every one of Q2's ten largest orders carries two payment rows, instalments 1 and 2: Kalpa settles its
 large business invoices in two parts. KR-00595, a business order from the store channel, is booked at
-Rs 4,01,000 and paid in instalments of Rs 2,40,600 and Rs 1,60,400. Two real payments, two rows, one
-order.
+Rs 4,01,000 and paid in instalments of Rs 2,40,600 and Rs 1,60,400, which makes two real payments in
+two rows for one order.
 
 ### What does a first draft of collected report for Q2?
 
@@ -195,8 +195,9 @@ cannot exceed bookings.
 | C. A window dedupe of repeated postings, Wednesday's tool | still inflated, since every two-instalment order keeps two rows |
 | D. Fix the feed | no change to the quarter Anand asked about |
 
-A and B each take a few milliseconds, so the choice is about what each gets wrong. The call is A: one
-row per order, booked exact, and a count of payment rows kept, so a repeat stays visible for chapter 4.
+A and B each take a few milliseconds, so the choice is about what each gets wrong. The call is A,
+because it keeps one row per order, keeps booked exact and keeps a count of payment rows, so a repeat
+stays visible for chapter 4.
 The fact that would change it: a feed carrying the gateway's own reference on every row, repeated on a
 retry, would let a DISTINCT on that reference remove retries exactly; a question per payment, such as
 matching each bank statement line, would make the payment the right grain.
@@ -236,8 +237,8 @@ order, the statement travels as an appendix.
 
 ### What does a first draft with a plain JOIN report?
 
-After chapter 2's fix a row of `orders` meets at most one row of payments, so the report can only lose
-rows, never gain them; on Kalpa's Q2 it keeps 462 of 462. The trap is the shortest thing to type:
+After chapter 2's fix a row of `orders` meets at most one row of payments, so the report holds at most
+one row per order; on Kalpa's Q2 it keeps 462 of 462. The trap is the shortest thing to type:
 `JOIN`, which in SQL means INNER JOIN. On the invented tables it reports 4 orders, booked 5,000,
 posted 6,500 and a gap of minus 1,500: fully collected, with a surplus. Two errors cancel into a
 comfortable number: T-4 dropped out with its 800, and T-3's repeat put 1,500 inside posted. The check
@@ -285,7 +286,7 @@ LEFT JOIN that keeps only the misses, `WHERE p.order_id IS NULL`; NOT EXISTS; NO
 four take a few milliseconds and agree on Kalpa's Q2 today, so what separates them is what each
 assumes. NOT IN is the one to avoid: `x NOT IN (a, b, NULL)` is never true, so one NULL order id in the
 feed makes it return no rows at all, without an error. The call is the LEFT JOIN, because the unpaid
-list is literally the report's own rows with nothing on the payments side, with every column Anand
+list is the report's own rows with nothing on the payments side, with every column Anand
 wants beside each order. On the invented tables it returns T-4 alone, 800, the never-paid bar exactly.
 
 ### What happens to that list when "paid in Q2" goes into WHERE?
@@ -371,8 +372,8 @@ leaves is the last question.
 
 ## Chapter 6. Which checks must pass before the collected number leaves the team, and what does Anand get when one fails at the end of reporting day?
 
-**Who needs the answer.** Kavya Nair, the team's senior analyst, who reviews every number before it leaves the team; Anand, who forwards
-it; and you, who sign it. A validation that cannot fail puts a PASS stamp on a wrong number, and a
+**Who needs the answer.** Kavya Nair, the team's senior analyst, who reviews every number before it
+leaves the team; Anand, who forwards it; and you, who sign it. A validation that cannot fail puts a PASS stamp on a wrong number, and a
 stamped wrong number is harder to withdraw than an unstamped one.
 
 **The questions on the way.** Do the hurried checks pass a report that hides an unpaid order? Which

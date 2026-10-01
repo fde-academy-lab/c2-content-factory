@@ -262,7 +262,7 @@ sheet carries them with blank rows to fill.
 | C. RIGHT JOIN, payments kept | 7 | 4 of 5 | dropped | kept |
 | D. FULL OUTER JOIN | 8 | 5 of 5 | kept | kept |
 
-**Sized.** Every option runs in under 3 milliseconds on these tables, so speed separates nothing; the rows each one keeps separate everything. All four list T-2 and T-3 twice.
+**Sized.** Every option runs in under 3 milliseconds on these tables, so the rows each one keeps decide the call. All four list T-2 and T-3 twice.
 
 ```notes
 LIVE, 3 minutes. The sizing cell in notebook 1 measures each option: rows out, how many of the five
@@ -419,7 +419,7 @@ they add back. Take letters.
 | RIGHT | dropped | kept, order side NULL | 7 |
 | FULL | kept | kept | 8 |
 
-The answer is b. **The check.** LEFT adds exactly one row to INNER, RIGHT exactly one, FULL both. Every join repeats T-2 and T-3, because the repeat comes from the key and never from the join type.
+The answer is b. **The check.** LEFT adds exactly one row to INNER, RIGHT exactly one, FULL both. Every join repeats T-2 and T-3, because the repeat comes from the key, whatever the join type.
 
 ```notes
 LIVE, 3 minutes. NULL is SQL's mark for "no value here", and it is how an outer join shows the side
@@ -667,8 +667,8 @@ The answer is b. Kalpa settles its large business invoices in two parts, as Anan
 
 ```notes
 LIVE, 2 minutes. KR-00595 is a typical business order from the store channel, booked at Rs 4,01,000
-and paid in two instalments that add back to it. Two real payments, two rows, one order. An order
-that owns two payment rows comes out of a join twice.
+and paid in two instalments that add back to it: two real payments in two rows for one order. An
+order that owns two payment rows comes out of a join twice.
 ```
 
 ---
@@ -1323,7 +1323,7 @@ flowchart TB
 **The fact that would change the call.** An analyst who reads the list as SQL would find B closest to "the orders for which no payment exists", and a feed change that allowed a NULL order id would make C unsafe even where it works today.
 
 ```notes
-LIVE, 2 minutes. The unpaid list is literally the report's rows with nothing on the payments side,
+LIVE, 2 minutes. The unpaid list is the report's own rows with nothing on the payments side,
 and it carries the channel, the date and the amount beside each order.
 ```
 
@@ -1450,7 +1450,7 @@ WHERE p.order_id IS NULL;
 | in WHERE | 6 | none |
 | in ON | 7 | T-4, 800 |
 
-**What changed.** One line's position, and with it the whole list. ON decides which payment rows count as a match, before the join; WHERE decides which joined rows survive, after it.
+**What changed.** Moving one line changed the whole list. ON decides which payment rows count as a match, before the join; WHERE decides which joined rows survive, after it.
 
 ```notes
 LIVE, 3 minutes. The PostgreSQL manual says a restriction in ON is processed before the join and a
@@ -1496,8 +1496,8 @@ value: 2,300 | label: surplus it claims, invented | note: against a posted-twice
 The answer is b. **Why it is wrong.** Two payment rows can be two instalments or one payment posted twice, and a count of rows cannot tell them apart. **The check.** The list's surplus must equal the posted-twice bar, and on the invented tables it claims 2,300 against 1,500.
 
 ```notes
-LIVE, 3 minutes. This is the day's second trap in this chapter: the row's own method, used on this
-data, is a plausible wrong list. A note to reverse the second payment on all 216 would reverse real
+LIVE, 3 minutes. This is the chapter's second trap: the curriculum's own method, used on this data,
+is a plausible wrong list. A note to reverse the second payment on all 216 would reverse real
 second instalments on Kalpa's largest business invoices and put a call to every corporate buyer who
 paid on time. On the invented tables T-2's second row is its second instalment, real cash; T-3's is
 the retry.

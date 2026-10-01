@@ -110,7 +110,7 @@ the keys, the reasons and the checks, and never a planted figure.
 | 6 | Three plausibility checks | 3 of 3 pass the plain JOIN report; 4 of 5 wrong reports get through | the suite passes Kalpa's plain JOIN page too | A PASS stamp on a wrong number | Tie-back checks against the two tables | Five tie-back checks, each seen to fail |
 
 The WHERE-against-ON behaviour and every Kalpa number above were rechecked on PostgreSQL 16.14 on
-30 September 2026. Run the Kalpa versions of the chapter 3, 4 and 5 traps live from the chapter's sql
+30 September 2026 and again on 1 October 2026. Run the Kalpa versions of the chapter 3, 4 and 5 traps live from the chapter's sql
 file; the STUDENT files show them exactly only on the invented tables and leave the Kalpa counts to
 each learner's empty cell.
 

@@ -56,5 +56,5 @@ morning's mistake in the other direction. Ask the room which of the two sentence
 ## When were the lab's numbers checked?
 
 Every query in the lab and its solution was run against the v4 warehouse on PostgreSQL 16.13 on
-29 Sep 2026, and the invented tables' counts and rates (4, 7, 5 and 8 rows; 16.3, 15.3 and 25.0
-percent) were checked in the same session.
+29 Sep 2026 and again on PostgreSQL 16.14 on 1 Oct 2026, and the invented tables' counts and rates
+(4, 7, 5 and 8 rows; 16.3, 15.3 and 25.0 percent) and every Q1 figure above held both times.
