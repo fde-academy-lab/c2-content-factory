@@ -1,13 +1,13 @@
 # Week 2 Saturday: the discussion guide
 
-**TRAINER ONLY.** Led by the Academic TA. The paper the room sits is the Word file in `paper/`; the
+**TRAINER ONLY.** The Academic TA leads the day. The paper the room sits is the Word file in `paper/`; the
 key in `answer-key/` carries every item's key, tag, level, day, interview anchor, why the key holds,
 why each wrong option fails, the bank items folded into each item, and the answers to the stretch
 page.
 
 Most of this paper reads SQL and pandas on Kalpa's own tables, the week's warehouse, payments feed,
-customer table and exports. It is also the first paper whose items leave Kalpa: six items come from
-public cases, and Part 6 imagines the tables an AI team keeps. The afternoon turns what the paper
+customer table and exports. Like Week 1's paper, it also leaves Kalpa: six items come from public
+cases, and Part 6 imagines the tables an AI team keeps. The afternoon turns what the paper
 found into answers each learner can say aloud.
 
 ---
@@ -67,9 +67,9 @@ mock-interview round, so a learner who writes them now has rehearsed.
    order the discussion takes, and any item it flags goes to the tracker's owner with the room's
    rate, because the fault may sit in the item rather than in the room.
 
-Say once, at the start, that the marker decides nothing: reading somebody else's answer against the
-key is the exercise. The paper carries no marks and ranks nobody; the misses are counted by topic
-only so that Monday's session knows what to revisit.
+Say once, at the start, that the key decides every tick, and reading somebody else's answer against
+it is the exercise. The misses are counted by topic only so that Monday's session knows what to
+revisit.
 
 ---
 
@@ -88,15 +88,15 @@ looked right, then put the question below to the room before reading the repair.
 
 | Item | What most papers get wrong | Ask the room | The repair, said aloud |
 |---|---|---|---|
-| Q12, the head's tie rule | Most mark (a), DENSE_RANK with 52, taking "I want them ranked the same" as the whole rule. | "Under DENSE_RANK, which member reaches rank 50, and what did that member spend?" | There are two ties: the one at place 48 compresses the dense numbers, so C-0259, on Rs 3,200, reaches dense rank 50 though it spent less than the fiftieth. RANK keeps the 51 members who spent at least Rs 3,350, the count each learner ran for the head on Wednesday, and ROW_NUMBER drops C-0242, who spent as much as the fiftieth. |
-| Q15, LAG across a missing month | Most mark (a), 2 calls and none untrue, believing LAG steps back one calendar month. | "For C-0185's September row, which row does LAG(spend, 1) read?" | LAG reads the previous row, July for C-0185, so all four members are flagged. C-0185 and C-0216 placed no order in August, so two of the four calls tell a member something untrue; a calendar check keeps the two genuine falls. |
-| Q28, a fan-out inside an evaluation | Most mark (a), 0.6, the accuracy on five tickets, which ships the model. | "How many rows does the merge return, and which tickets are on two of them?" | Seven: T3 and T5 carry two labels each and the model got both wrong, so the mean is 3 of 7, 0.43, and a model right on 3 of 5 is held back. Count rows before and after, or merge with validate='many_to_one'. |
+| Q12, the head's tie rule | Most mark (a), DENSE_RANK with 51, taking "I want them ranked the same" as the whole rule. | "Under DENSE_RANK, which member reaches rank 50, and what did that member spend?" | There are two ties: the one at place 48 compresses the dense numbers, so C-0259, on Rs 3,200, reaches dense rank 50 though it spent less than the fiftieth, and a DENSE_RANK cut keeps 52. RANK keeps the 51 members who spent at least Rs 3,350, the count each learner ran for the head on Wednesday, and ROW_NUMBER drops C-0242, who spent as much as the fiftieth. |
+| Q15, LAG across a missing month | Most mark (a), 2 calls and none untrue, believing LAG steps back one calendar month. | "For C-0185's September row, which row does LAG(spend, 1) read?" | member_month has no row for a month with no order, and LAG reads the previous row, July for C-0185, so all four members are flagged. C-0185 and C-0216 placed no order in August, so two of the four calls tell a member something untrue; a calendar check keeps the two genuine falls. |
+| Q28, a fan-out inside an evaluation | Most mark (a), 0.6, the accuracy on five tickets, which ships the model. | "How many rows does the merge return, and which tickets are on two of them?" | Seven: T3 and T5 carry two labels each and the model got both wrong, so the mean is 3 of 7, 0.43, and a model right on 3 of 5 is held back. Count rows before and after, or merge with validate='one_to_one'. |
 | Q29, the latest run on the business's own tiebreak | Most mark (b) or (d), either of which promotes bot-b on 0.86. | "Runs are numbered in the order they start. Which of bot-b's two 9 September runs started later?" | Run 11, at 0.74, so bot-b's latest is below bot-a's 0.78 and bot-a stays. Ascending run_id picks run 10, and RANK returns both runs of 9 September; ROW_NUMBER by finished_on descending, then run_id descending, keeps the one the rule names. |
-| Q32, peers in a running total | Most mark (b), call 3, reading one step per row. | "Calls 2 and 3 share a day. Which rows does the frame include for call 2?" | With ORDER BY day alone, calls 2 and 3 are peers and both read the day's close, 1200, so call 2 is routed although the total stood at 700 after it. Add call_id to the window's ORDER BY and each call gets its own step. |
+| Q32, peers in a running total | Most mark (b), call 3, reading one step per row. | "Calls 2 and 3 share a day. Which rows does the frame include for call 2?" | With ORDER BY day alone, calls 2 and 3 are peers and both read the day's close, 1,200, so call 2 is routed although the total stood at 700 after it. Add call_id to the window's ORDER BY and each call gets its own step. |
 | Q18, the exposure drop_duplicates keeps | Most mark (a), the 3 August send, reading first as earliest. | "Which date sits on C-0001's first row in Exhibit 4B?" | The step keeps the first row as the file lists it, and the tool sent 11 August first, so C-0001's order of 6 August goes uncredited to the sale. Sort by exposed_date from the earliest, then keep each customer's first row. |
 | Q30, a HAVING that follows a WHERE | Most mark (a), bot-a and bot-b beside their low counts, which is the list the lead asked for. | "After WHERE runs, how many of bot-b's rows are left for HAVING to count?" | One: WHERE kept only the low ratings, so HAVING counts them and bot-b fails, and a model the lead asked for goes unretrained. The lead's question needs every reply counted in HAVING and the low ones counted with count(*) FILTER. |
 | Q31, NOT IN against a list that holds a NULL | Most mark (a), 2, the answer NOT EXISTS gives, so the budget stays. | "Write out c1 NOT IN ('c2', 'c4', NULL) as three comparisons. What is the last one?" | c1 <> NULL is unknown, so the whole condition is unknown and every row drops: 0, and the product lead cuts the budget of an assistant that resolved half its conversations. Write the anti-join as NOT EXISTS or a LEFT JOIN with IS NULL. |
-| Q8, the report's steps and the one that spoils it | Most keep step d, or sum the payment rows before the retries are dropped. | "Of the 216 orders with two payment rows, how many are gateway retries?" | Only 28; the other 188 are two instalments of one invoice, so step d throws away real cash. Drop each retry's second row by order and instalment, sum to one figure per order, join, check, then send: e, f, b, c, a. |
+| Q8, the report's steps and the one that spoils it | Most keep step d, or sum the payment rows before the retries are dropped. | "Which of the orders with two payment rows are gateway retries, and how do you tell them from instalments?" | The 28 whose two rows share an instalment number and differ only in payment_id; the other 188 are instalments 1 and 2 of one invoice, so step d throws away real cash. Drop each retry's second row by order and instalment, sum to one figure per order, join, check, then send: e, f, b, c, a. |
 | Q9, a date filter on a LEFT JOIN | Most mark (d), 4 rows, reading the WHERE as if it sat in ON, or (c), keeping O-3 on its NULL date. | "O-3 has no payment. What is its paid_date after the join, and what does BETWEEN do with it?" | The WHERE runs after the join and drops O-2 and O-3, and O-1's two instalments repeat it: 2 rows, Rs 2,400. The date belongs in ON, with payments at one row per order first. |
 | Q16, the quarter's path against its plan | Most mark (a), furthest ahead in the week of 20 July, or (b), reading each fortnight's bookings as the position. | "Subtract plan to date from booked to date at each reading. Where is the gap largest, and what is it in the week of 14 September?" | Read from the table, the lead is -0.25, 1.95, 2.17, 1.57, 0.73, 0.79 and 0.00 crore: furthest ahead in the week of 3 August, about Rs 0.8 crore ahead in the week of 14 September, and level at the close, because six of the seven full weeks from 10 August booked below the plan's Rs 75,69,230 a week. |
 | Q17, the merge's rows and the guard that stops them | Most mark (b), 340 rows, since a left merge keeps the customer table's rows. | "How many rows does each of the six repeated customers bring out of the merge?" | Two each, so 346 rows, and the pivot reads Rs 45,800 over the book. validate='one_to_one' raises a MergeError before any number moves; drop_duplicates() finds nothing to drop, because the two sends differ in exposed_date. |
@@ -115,8 +115,8 @@ add to it.
 
 Ask each anchor as an interviewer would: name the person, then the question, then wait. Give sixty
 seconds. Ask the room for the one sentence that would make the answer stronger, and read the answer
-below only if nobody gets there. Five minutes an anchor, with the bridge anchor last. The items under
-each anchor descend from it.
+below only if nobody gets there. Each anchor takes five minutes, and the bridge anchor comes last.
+The items under each anchor descend from it.
 
 #### 1. [S] WHERE against HAVING, one sentence each.
 
@@ -160,8 +160,8 @@ groupby splits the rows by a key, applies a computation to each group, and combi
 one row per group. pivot_table is the same sentence with two keys, and its default apply step is the
 mean, which is why M1's two June orders print as 2000.0 in Q19. A window is the other half of the
 sentence: it computes over a group and keeps every row, which is how each member's share sits beside
-the member in Q14. The follow-up to ask: which rows never reach a group at all? (A row whose key is
-missing, which is the dropna default.)
+the member in Q14. The follow-up to ask: which rows never reach a group at all? (Rows whose key is
+missing, since groupby drops them by default.)
 
 #### 5. [F] Your LEFT join grew the row count and revenue doubled; name the cause and the check.
 
@@ -190,7 +190,8 @@ the rows ranked three or better, filtered outside the window, with the tie rule 
 The argument is validate, set to the relationship the merge must have, such as 'one_to_one' or
 'many_to_one'. When the keys break it, pandas raises MergeError, "Merge keys are not unique in right
 dataset; not a one-to-one merge", before any number is produced. The follow-up to ask: what catches a key that
-changed on its way in and so matches nothing? (indicator=True and a count of the matches, Q20.)
+changed on its way in and so matches nothing? The answer is indicator=True with a count of the
+matches, as in Q20.
 
 #### 8. [F] A pivot's total disagrees with the warehouse; where do you look first?
 
@@ -208,7 +209,8 @@ arrived (Q18) passes the count and fails the business's rule.
 
 The week's rule gives each tool its job: the warehouse owns the number and every join, dedupe and
 rank Finance relies on, pandas owns the analyst's iteration, and the workbook owns the last mile,
-where a director explores what the warehouse computed. A number Finance audits
+presenting, slicing, looking up and taking labelled what-ifs on an export that ties. A number
+Finance audits
 belongs in the warehouse, because it runs the same way every Monday and anyone can audit the query,
 and a chart that is none of the Monday figures, such as orders per member week by week, is
 exploration and belongs in a notebook that reads the warehouse (Q5). Defend one choice with a reason
@@ -231,12 +233,12 @@ there.
 
 | Do | Do not |
 |---|---|
-| Name the person, then the question, then wait | Ask the room and take the first hand |
-| Give sixty seconds, and let the silence run | Rescue somebody at fifteen seconds |
-| Take a wrong answer, write it on the board, and ask the room to repair it | Correct it yourself |
-| Come back to the same person later with an easier one | Leave somebody who struggled sitting with it |
+| Name the person, then the question, then wait. | Ask the room and take the first hand. |
+| Give sixty seconds, and let the silence run. | Rescue somebody at fifteen seconds. |
+| Take a wrong answer, write it on the board, and ask the room to repair it. | Correct it yourself. |
+| Come back to the same person later with an easier one. | Leave somebody who struggled sitting with it. |
 
-Call on somebody whose paper you have not read, so the call is genuinely cold, and when an answer is
+Call on somebody whose paper you have not read, so the call is cold, and when an answer is
 wrong, take the next answer from somebody else before correcting it, so the room does the work.
 
 ### Ratings against the work, 5 minutes
