@@ -118,9 +118,9 @@ d) With no ORDER BY the database returned an unspecified five, and the overnight
 
 ### Q5. Which route confirms the five cancelled store orders without trusting the database's ordering?
 
-The service head's query now ends `ORDER BY order_id LIMIT 5`. On the book there are 19 cancelled Q2
-store orders. Kavya Nair, the team's senior analyst, wants the five confirmed by a route that does not
-rely on the database's ordering. Which route does that, sized in rows?
+On the book there are 19 cancelled Q2 store orders, and the service head's sample is the five with the
+smallest order ids. Kavya Nair, the team's senior analyst, wants those five confirmed by a route that
+does not rely on the database's ordering. Which route does that, sized in rows?
 
 a) Rerun the same ordered query twice more and check that all three fives agree
 b) Fetch all 19 candidates, sort them by order id in Python and take the first five

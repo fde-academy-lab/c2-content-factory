@@ -41,7 +41,7 @@ leaves some members out tells her the tier is holding up when it is not.
 - Which branch pulled Business's revenue down most, and does its row check itself?
 - What do two averages return on five invented members' Q2 spend?
 - What explains a sheet that says Retail-Core customers spent more each while Retail-Core's revenue fell?
-- What does a route that never averages give for Retail-Plus spend per member?
+- Which route that never averages could confirm Retail-Plus spend per member?
 
 **What you post.** One line of six letters in item order, no spaces, in this shape:
 
@@ -87,7 +87,7 @@ many must change in each version, and which way fits?
 a) Named steps: 1 place against the nested version's 4, and each one reruns whole in a fresh session
 b) Nested subqueries: 2 places, one per subquery, against named steps' 4, so nested is easier to keep
 c) Named steps: 4 places, since every later step names the segment, against the nested version's 2
-d) Temporary tables: 1 place, in the first table, and the analyst can rerun them in a fresh session
+d) Temporary tables: 1 place, in the first table, and nothing to rebuild when the analyst opens a fresh session
 
 ### Q2. How many times is a shared step computed each Monday, and when does a temporary table fit?
 
@@ -148,16 +148,16 @@ d) Customers who joined in Q2 spent more than the rest and pulled Q2's average u
 Used at work whenever a per-member number needs a second route that reaches the same level by a
 different query.
 
-### Q6. What does a route that never averages give for Retail-Plus spend per member?
+### Q6. Which route that never averages could confirm Retail-Plus spend per member?
 
-The fix in chapter 4 averaged one row per member, with Rs 0 written on purpose for a quarter with no
-order, and printed Rs 5,474 then Rs 3,863. Kavya Nair, the team's senior analyst, wants those levels
-confirmed by a route that never averages: each quarter's Retail-Plus revenue divided by the members who
-bought in either quarter. Retail-Plus booked Rs 5,85,770 in Q1 and Rs 4,13,380 in Q2; the tier holds
-120 members on the customers table, and 13 of them bought nothing in either quarter. What does the
-route give?
+The fix in chapter 4 averaged a step of 107 rows, one per member, with Rs 0 written on purpose for a
+quarter with no order, and printed Rs 5,474 then Rs 3,863. Kavya Nair, the team's senior analyst, wants
+those levels confirmed by a route that never averages and could disagree with the fix if the fix's step
+held the wrong members. Retail-Plus booked Rs 5,85,770 in Q1 and Rs 4,13,380 in Q2; the tier holds 120
+members on the customers table, and 13 of them bought nothing in either quarter. Which route confirms
+the levels?
 
-a) Rs 4,881 then Rs 3,445, over the tier's 120 members
-b) Rs 5,474 then Rs 3,863, over the 107 who bought, the fix's own levels
-c) Rs 6,437 then Rs 5,439, each quarter's revenue over that quarter's 91 and 76 buyers
-d) Rs 1,723 then Rs 1,216, each quarter's revenue over all 340 customers on the customer table
+a) Each quarter's revenue over the tier's 120 members: Rs 4,881 then Rs 3,445
+b) Each quarter's revenue over the 107 rows of the fix's own step: Rs 5,474 then Rs 3,863
+c) Each quarter's revenue over that quarter's own 91 and 76 buyers: Rs 6,437 then Rs 5,439
+d) Each quarter's revenue over 120 less the 13 who bought nothing: Rs 5,474 then Rs 3,863

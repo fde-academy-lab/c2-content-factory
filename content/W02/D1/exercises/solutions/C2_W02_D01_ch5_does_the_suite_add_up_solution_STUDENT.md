@@ -120,8 +120,10 @@ tie-out.
 
 - a, "128 plus 121 is 249, so the half-year query undercounts the store's customers by 45": adding the
   quarters counts the 45 who bought in both twice, so 249 is the overcount, not the query.
-- b, "83 plus 76 is 159, since the 45 in both quarters were already counted in Q1's 83": the 83 are
-  the customers who bought in Q1 only, so the 45 sit in none of the two numbers added.
+- b, "83 plus 76 plus 45 is 204, so the half-year holds, though the three cannot rebuild Q1's 128 or
+  Q2's 121": the 204 is right, and the second half is not. A Q1 customer bought in Q1 only or in both,
+  so 83 plus 45 gives back Q1's 128, and 76 plus 45 gives back Q2's 121; leaving the quarters
+  unchecked gives up the tie-outs that would catch a wrong filter.
 - d, "128 plus 121 less twice the 45 is 159, since the 45 sit in both of the two quarter counts": the
   45 are counted twice in 249 and belong once in the half-year, so they come off once, not twice.
 

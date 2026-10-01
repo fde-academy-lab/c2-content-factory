@@ -1,4 +1,4 @@
-# Does the Monday suite hold on Finance's definition, the orders that were delivered?
+# Does the Monday suite hold on Finance's definition of revenue?
 
 The escalated case, alone, in five parts. Parts 1 and 2 run in the afternoon, 20 minutes; parts 3 to
 5 run in the practice lab. You work in `notebooks/C2_W02_D01_ex1_escalated_case_STUDENT.ipynb`, and
@@ -8,16 +8,15 @@ are this brief's own, one at the end of each part, answered here: four design it
 a reading of the two definitions' trees side by side.
 
 > "Finance counts the orders that reached the customer and stayed there. Run me the same suite on
-> delivered orders, and tell me whether the story changes."
+> that definition, and tell me whether the story changes."
 >
 > Anand Iyer, finance controller, Kalpa Retail
 
 The chapters built the Monday suite on booked revenue, every order at its amount whatever its status:
 Rs 10,00,00,000 in Q1 (April to June 2026) and Rs 9,84,00,000 in Q2 (July to September 2026), 244
 then 227 customers who bought, and Retail-Plus, Kalpa's paid membership tier, carrying the fall with
-its revenue down 29.4 percent. Finance's definition counts only delivered orders, the orders whose
-status is delivered; a cancelled or returned order is not revenue on it. This case reruns the suite on
-that definition, so its numbers are new and nothing from the chapters can be copied.
+its revenue down 29.4 percent. This case reruns the suite on Finance's definition, so its numbers
+are new and nothing from the chapters can be copied.
 
 The book is Kalpa's Postgres warehouse. The segment lives on the customers table, and each order looks
 it up with one line, `JOIN customers c USING (customer_id)`, which finds the order's one customer and
@@ -50,9 +49,9 @@ changed query. The ERP is the system Finance books orders in.
 | Retail-Plus, the paid membership tier | 120 |
 | Student | 30 |
 
-**Who needs the answer.** Anand signs delivered revenue, and the head of Retail-Plus is deciding, on
-the booked story, how hard to work to keep members. If the story changes on Finance's definition and
-the sheet does not say so, her retention plan rests on orders that were returned or cancelled.
+**Who needs the answer.** Anand signs revenue on Finance's definition, and the head of Retail-Plus is
+deciding, on the booked story, how hard to work to keep members. If the story changes on Finance's
+definition and the sheet does not say so, her retention plan rests on revenue Finance does not count.
 
 **The questions on the way.**
 
@@ -98,7 +97,7 @@ counts them?
 
 a) `count(*)`, since each delivered row belongs to a customer who took delivery
 b) `count(customer_id)`, since it counts the customer column rather than the rows
-c) `count(DISTINCT customer_id)`, one per customer id however many rows carry it
+c) `count(DISTINCT customer_id)`, since each customer id stands for one customer
 d) `sum(1)`, since adding one per delivered order counts everyone who received one
 
 ### Q11. How should the sheet set delivered revenue beside booked revenue, sized in queries and rows?
@@ -107,9 +106,9 @@ Anand asked whether the story changes, so his sheet will carry booked and delive
 quarter side by side. Which way fits, sized in queries and rows?
 
 a) Two queries, one per definition, whose two results of 2 rows the analyst lines up by hand
-b) One query grouped by quarter and status, 6 rows, which the analyst adds up into the two definitions
+b) One query grouped by quarter, booked and delivered revenue as two columns of the same 2 rows
 c) The delivered query alone, 2 rows, since delivered revenue is the only one Finance signs
-d) One query grouped by quarter, booked and delivered revenue as two columns of the same 2 rows
+d) One query grouped by quarter and status, 6 rows, which the analyst adds up into the two definitions
 
 ## Part 2. Which segment's frequency fell on delivered orders, and which groups are too thin?
 
@@ -144,7 +143,7 @@ d) `round(count(*)::numeric / count(DISTINCT o.customer_id), 2)`
 Kavya flags any rate that stands on fewer than 30 customers. Which clause, after the grouping, lists
 the segment-quarters to flag?
 
-a) `HAVING count(DISTINCT o.customer_id) < 30`, since the bar is on customers per group
+a) `HAVING count(DISTINCT o.customer_id) < 30`, since HAVING tests a group once formed
 b) `HAVING count(*) < 30`, since a thin group is one with few orders
 c) `HAVING count(DISTINCT o.customer_id) <= 30`, since a group on exactly 30 is thin too
 d) `HAVING count(o.customer_id) < 30`, since it counts the customer column
@@ -242,7 +241,7 @@ overnight reload, which rewrites rows of the book with the values they already h
 Which ordering, placed before `LIMIT 5`, makes the analyst's five delivered Q2 web orders the same five
 on every run?
 
-a) `ORDER BY customer_id`
+a) `ORDER BY random()`
 b) `ORDER BY order_id`
 c) no ORDER BY, only `LIMIT 5`
 d) `ORDER BY quarter`
@@ -256,16 +255,16 @@ b) The count of order rows alone, the one number every reload changes
 c) The delivered book's rows and distinct customers, the suite's own two counts
 d) The row count and the latest order date, so a late order shows up
 
-### Q15. Which route would catch a delivered filter that let the returned orders in?
+### Q15. Which route would catch a filter that let the cancelled orders in?
 
-Suppose the filter had let the 184 returned orders in, as `WHERE status <> 'cancelled'` does: the
-fingerprint's rupees would read Rs 17,26,46,250. The book holds Rs 19,84,00,000 in all, the returned
-orders Rs 3,80,55,960 and the cancelled orders Rs 2,57,53,750. Which route would disagree with the
-faulty Rs 17,26,46,250, and so catch the fault?
+Suppose the filter had let the 163 cancelled orders in: the fingerprint's rupees would read
+Rs 16,03,44,040. The book holds Rs 19,84,00,000 in all, the returned orders Rs 3,80,55,960 and the
+cancelled orders Rs 2,57,53,750. Which route would disagree with the faulty Rs 16,03,44,040, and so
+catch the fault?
 
 a) The book's rupees less the returned rupees and less the cancelled rupees
 b) Part 1's two quarters of revenue added, through the same filter
-c) The book's rupees less the cancelled rupees, the orders that never shipped
+c) The book's rupees less the returned rupees, the orders sent back after delivery
 d) The fingerprint's rows times its revenue per order, from the same query
 
 ## Which rules does the delivered suite keep, from the tables it reads to the letters it posts?

@@ -132,8 +132,8 @@ d) Between 120 and 215, since some members ordered twice
 Step 5 is written SELECT, FROM with the lookup, GROUP BY, ORDER BY. In which order does the database
 work through them?
 
-a) SELECT, then FROM with the lookup, then GROUP BY, then ORDER BY
-b) FROM with the lookup, then GROUP BY, then SELECT, then ORDER BY
+a) FROM with the lookup, then GROUP BY, then SELECT, then ORDER BY
+b) SELECT, then FROM with the lookup, then GROUP BY, then ORDER BY
 c) FROM with the lookup, then SELECT, then GROUP BY, then ORDER BY
 d) GROUP BY, then FROM with the lookup, then SELECT, then ORDER BY
 

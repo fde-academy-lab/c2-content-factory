@@ -109,9 +109,9 @@ Used at work whenever a count of people has to be confirmed without rerunning th
 The suite's half-year query prints 204 customers who bought through the stores. Kavya Nair, the team's
 senior analyst, wants it confirmed by a route that shares no code with that query. Three filters over
 one row per store customer give their own counts: 83 bought through the stores in Q1 only, 76 in Q2
-only and 45 in both. Which tie-out confirms the 204?
+only and 45 in both. Which statement about the three counts holds in full?
 
 a) 128 plus 121 is 249, so the half-year query undercounts the store's customers by 45
-b) 83 plus 76 is 159, since the 45 in both quarters were already counted in Q1's 83
+b) 83 plus 76 plus 45 is 204, so the half-year holds, though the three cannot rebuild Q1's 128 or Q2's 121
 c) 83 plus 76 plus 45 is 204, and 83 plus 45 and 76 plus 45 give back Q1's 128 and Q2's 121
 d) 128 plus 121 less twice the 45 is 159, since the 45 sit in both of the two quarter counts

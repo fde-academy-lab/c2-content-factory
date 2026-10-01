@@ -1,6 +1,6 @@
 # Which answers hold in the escalated case on the Monday suite over delivered orders, and why?
 
-Answers: 1b 2c 3a 4d 5a 6c 7d 8b 9b 10a 11d 12c 13b 14d 15a
+Answers: 1b 2c 3a 4d 5a 6c 7d 8b 9b 10a 11b 12c 13b 14d 15a
 
 Anand Iyer, Kalpa Retail's finance controller, signs revenue on Finance's definition, the orders that
 reached the customer and stayed there, and he asked for the Monday suite on that definition and
@@ -29,7 +29,7 @@ what it counts; every ratio is divided in numeric and multiplied back; an averag
 it; a wider window counts its customers again from the orders; and a sample is drawn in an order the
 rerun will repeat, beside a fingerprint of the book it read. The design items size how the sheet sets
 two definitions side by side and how a thin flag reaches it, name the fact that would let two counts
-be added, and work out which route would catch a filter that let the returned orders in.
+be added, and work out which route would catch a filter that let the cancelled orders in.
 
 ## Which numbers should you have reached, from the delivered book to the five traced orders?
 
@@ -61,8 +61,9 @@ keeps 653 orders.
 
 ### Q2. Which expression counts the customers who took delivery in a quarter, each once?
 
-Kind: choose the count. The key is c, "`count(DISTINCT customer_id)`, one per customer id however many
-rows carry it". It gives 205 in Q1 and 173 in Q2, where the delivered orders number 355 and 298.
+Kind: choose the count. The key is c, "`count(DISTINCT customer_id)`, since each customer id stands for
+one customer". It counts each id once however many rows carry it: 205 in Q1 and 173 in Q2, where the
+delivered orders number 355 and 298.
 
 - a, "`count(*)`, since each delivered row belongs to a customer who took delivery": counts rows, 355
   and 298, so a customer with three deliveries counts three times.
@@ -73,7 +74,7 @@ rows carry it". It gives 205 in Q1 and 173 in Q2, where the delivered orders num
 
 ### Q11. How should the sheet set delivered revenue beside booked revenue, sized in queries and rows?
 
-Kind: a design item, the best-fit way sized in queries and rows. The key is d, "One query grouped by
+Kind: a design item, the best-fit way sized in queries and rows. The key is b, "One query grouped by
 quarter, booked and delivered revenue as two columns of the same 2 rows". One query puts
 Rs 10,00,00,000 beside Rs 6,80,25,200 for Q1 and Rs 9,84,00,000 beside Rs 6,65,65,090 for Q2, on the
 same row, for example with `sum(amount)` and `sum(CASE WHEN status = 'delivered' THEN amount END)`, so
@@ -81,11 +82,11 @@ the reader compares the two definitions without moving between results.
 
 - a, "Two queries, one per definition, whose two results of 2 rows the analyst lines up by hand":
   right numbers, and the lining up by hand is the step Anand ruled out.
-- b, "One query grouped by quarter and status, 6 rows, which the analyst adds up into the two
-  definitions": the delivered rows are there, and booked revenue has to be added by hand from three
-  rows per quarter.
 - c, "The delivered query alone, 2 rows, since delivered revenue is the only one Finance signs": Anand
   asked whether the story changes, which needs the booked number beside it.
+- d, "One query grouped by quarter and status, 6 rows, which the analyst adds up into the two
+  definitions": the delivered rows are there, and booked revenue has to be added by hand from three
+  rows per quarter.
 
 ### Q3. How many rows will the delivered segment query return?
 
@@ -113,9 +114,9 @@ Dividing in numeric keeps the decimals: Retail-Plus 144 over 77 is 1.87 and 89 o
 
 ### Q5. Which clause lists the segment-quarters Kavya flags as too thin?
 
-Kind: choose the clause. The key is a, "`HAVING count(DISTINCT o.customer_id) < 30`, since the bar is
-on customers per group". HAVING keeps whole groups after they form, and the bar counts customers, so it
-returns Business Q2 on 26, Student Q1 on 12 and Student Q2 on 17.
+Kind: choose the clause. The key is a, "`HAVING count(DISTINCT o.customer_id) < 30`, since HAVING tests
+a group once formed". HAVING keeps whole groups after they form, and Kavya's bar counts customers, so
+it returns Business Q2 on 26, Student Q1 on 12 and Student Q2 on 17.
 
 - b, "`HAVING count(*) < 30`, since a thin group is one with few orders": counts orders, flags Student
   Q1 (19) and Q2 (28), and misses Business Q2's 26 customers behind 54 orders.
@@ -212,11 +213,12 @@ Kind: choose the fix. The key is b, `ORDER BY order_id`. No two orders share an 
 fixed by the ids alone: KR-00539, KR-00541, KR-00550, KR-00551 and KR-00552, Rs 5,870, before and
 after the reload.
 
-- a, `ORDER BY customer_id`: the 93 candidates belong to 76 customers, so the column does not fix
-  which five come back; the order id does.
+- a, `ORDER BY random()`: draws a new five on every run, so the analyst's rerun traces orders yours
+  never saw.
 - c, "no ORDER BY, only `LIMIT 5`": returns whichever five the database reaches first, which a reload
   can change.
-- d, `ORDER BY quarter`: every candidate is in Q2, so this orders nothing.
+- d, `ORDER BY quarter`: every candidate is in Q2, so this orders nothing and the five come back as
+  unordered as c.
 
 ### Q10. What should the fingerprint printed beside the delivered suite hold?
 
@@ -231,20 +233,20 @@ these three do not, the query moved; if these moved, the book did.
 - d, "The row count and the latest order date, so a late order shows up": catches a late order and
   misses a corrected amount for the same reason as c.
 
-### Q15. Which route would catch a delivered filter that let the returned orders in?
+### Q15. Which route would catch a filter that let the cancelled orders in?
 
 Kind: a design item, the independent second route, worked out from the amounts in the stem. The key is
 a, "The book's rupees less the returned rupees and less the cancelled rupees". Rs 19,84,00,000 less
-Rs 3,80,55,960 less Rs 2,57,53,750 is Rs 13,45,90,290, which sits Rs 3,80,55,960 below the faulty
-Rs 17,26,46,250, exactly the returned rupees the filter let in.
+Rs 3,80,55,960 less Rs 2,57,53,750 is Rs 13,45,90,290, which sits Rs 2,57,53,750 below the faulty
+Rs 16,03,44,040, exactly the cancelled rupees the filter let in.
 
-- b, "Part 1's two quarters of revenue added, through the same filter": Rs 8,74,31,680 plus
-  Rs 8,52,14,570 is Rs 17,26,46,250, the faulty number again, since it shares the fault.
-- c, "The book's rupees less the cancelled rupees, the orders that never shipped": Rs 19,84,00,000 less
-  Rs 2,57,53,750 is Rs 17,26,46,250; the route avoids the filter and still agrees with the fault,
-  because it writes down the same wrong definition.
+- b, "Part 1's two quarters of revenue added, through the same filter": Rs 8,05,93,520 plus
+  Rs 7,97,50,520 is Rs 16,03,44,040, the faulty number again, since it shares the fault.
+- c, "The book's rupees less the returned rupees, the orders sent back after delivery":
+  Rs 19,84,00,000 less Rs 3,80,55,960 is Rs 16,03,44,040; the route avoids the filter and still
+  agrees with the fault, because it writes down the same wrong definition.
 - d, "The fingerprint's rows times its revenue per order, from the same query": revenue per order is
-  the faulty rupees over the faulty 837 rows, so the product gives back Rs 17,26,46,250.
+  the faulty rupees over the faulty 816 rows, so the product gives back Rs 16,03,44,040.
 
 ## Which four wrong answers does the debrief replay, from thin by orders to a route that shares the fault?
 

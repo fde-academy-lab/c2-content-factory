@@ -1,6 +1,6 @@
 # Which answers hold in the chapter 2 set on whether two sources tell the same story, and why?
 
-Answers: 1b 2c 3d 4a 5b
+Answers: 1b 2c 3a 4a 5b
 
 Last week Meera Raghavan, Kalpa Retail's CEO, parked a Rs 12 crore acquisition budget on a file of 186
 orders that said customers held steady while each ordered less often. Chapter 2 set that file beside
@@ -74,18 +74,18 @@ Kind: predict the number, read from the exhibit. Source A goes from 100 orders, 
 Rs 10,00,000 to 90, 50 and Rs 9,90,000; source B from 400, 160 and Rs 40,00,000 to 360, 144 and
 Rs 39,60,000.
 
-The key is d, "Customers and orders per customer, flat in one and down 10 percent in the other". A
+The key is a, "Customers and orders per customer, flat in one and down 10 percent in the other". A
 keeps 50 customers (0.0 percent) while orders per customer go from 2.0 to 1.8 (down 10 percent); B
 loses customers from 160 to 144 (down 10 percent) while orders per customer stay at 2.5. Revenue per
 order rises 10 percent in both, from Rs 10,000 to Rs 11,000, and orders fall 10 percent in both, so
 0.9 times 1.1 is 0.99 on either side.
 
-- a, "None, since both revenues fell by the same 1.0 percent from Q1 to Q2 in either source": two
-  trees can multiply to the same total with different branches, which is what A and B do.
 - b, "Revenue per order alone, since B's orders are four times A's in each of the quarters": size is
   what the change removes, and revenue per order moves by the same 10 percent in both.
 - c, "Orders alone, since B lost 40 orders between the quarters while A lost only 10": reads the
   orders as counts, and as changes both fell 10 percent.
+- d, "None, since both revenues fell by the same 1.0 percent from Q1 to Q2 in either source": two
+  trees can multiply to the same total with different branches, which is what A and B do.
 
 ### Q4. What most likely explains a regional file whose customers held flat while the book's fell?
 

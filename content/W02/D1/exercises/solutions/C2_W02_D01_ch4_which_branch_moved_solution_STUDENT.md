@@ -1,6 +1,6 @@
 # Which answers hold in the chapter 4 set on which branch moved and what each Retail-Plus member spent, and why?
 
-Answers: 1a 2c 3a 4d 5c 6b
+Answers: 1a 2c 3a 4d 5c 6d
 
 Chapter 4 wrote the quarter comparison as named steps in one `WITH` query and read each branch of
 each segment's tree as Q2 over Q1. Retail-Plus, Kalpa's paid membership tier, saw its customers fall
@@ -48,9 +48,9 @@ single statements that write nothing, so both rerun whole; the rename is what se
   later steps' `segment`, which reads `book`'s column and not the customers table's.
 - c, "Named steps: 4 places, since every later step names the segment, against the nested version's
   2": the later steps name `book`'s column, which `c.tier AS segment` keeps as it is.
-- d, "Temporary tables: 1 place, in the first table, and the analyst can rerun them in a fresh
-  session": a temporary table vanishes when its session ends, so a fresh session finds no table to
-  read.
+- d, "Temporary tables: 1 place, in the first table, and nothing to rebuild when the analyst opens a
+  fresh session": a temporary table vanishes when its session ends, so every Monday's fresh session
+  has to build it again before the comparison can read it.
 
 ### Q2. How many times is a shared step computed each Monday, and when does a temporary table fit?
 
@@ -121,24 +121,27 @@ percent, the same change as its revenue.
 - d, "Customers who joined in Q2 spent more than the rest and pulled Q2's average up": when a
   customer joined does not enter either average; which customers bought in each quarter does.
 
-### Q6. What does a route that never averages give for Retail-Plus spend per member?
+### Q6. Which route that never averages could confirm Retail-Plus spend per member?
 
 Kind: a design item, the independent second route, computed in two steps. The tier holds 120 members
 and 13 of them bought nothing in either quarter, so 107 bought; Retail-Plus booked Rs 5,85,770 in Q1
 and Rs 4,13,380 in Q2.
 
-The key is b, "Rs 5,474 then Rs 3,863, over the 107 who bought, the fix's own levels". Rs 5,85,770 over
-107 is Rs 5,474 and Rs 4,13,380 over 107 is Rs 3,863. The route never builds a row per member and never
-averages, so a member the fix dropped or counted twice would have moved the fix's levels away from
-these, and they agree to the rupee.
+The key is d, "Each quarter's revenue over 120 less the 13 who bought nothing: Rs 5,474 then
+Rs 3,863". 120 less 13 is 107, and Rs 5,85,770 over 107 is Rs 5,474 and Rs 4,13,380 over 107 is
+Rs 3,863. The count comes from the customers table and a count of its own, never from the fix's step,
+so a step that held the wrong members would print levels this route does not reach; today they agree
+to the rupee.
 
-- a, "Rs 4,881 then Rs 3,445, over the tier's 120 members": revenue per tier member, a fair measure of
-  a different group, since it counts the 13 who bought nothing; its change is the same 29.4 percent,
-  and its levels cannot confirm the fix's.
-- c, "Rs 6,437 then Rs 5,439, each quarter's revenue over that quarter's 91 and 76 buyers": the plain
-  average again, each quarter over its own buyers, which leaves out whoever stopped.
-- d, "Rs 1,723 then Rs 1,216, each quarter's revenue over all 340 customers on the customer table":
-  divides by every segment's customers, so it is no longer spend per Retail-Plus member.
+- a, "Each quarter's revenue over the tier's 120 members: Rs 4,881 then Rs 3,445": revenue per tier
+  member, a fair measure of a different group, since it counts the 13 who bought nothing; its change is
+  the same 29.4 percent, and its levels cannot confirm the fix's.
+- b, "Each quarter's revenue over the 107 rows of the fix's own step: Rs 5,474 then Rs 3,863": the
+  right numbers today, read off a count the fix supplies. Had the step been built over all 120 members,
+  the fix would print Rs 4,881 and this route would print Rs 4,881 too, so it cannot catch a step with
+  the wrong members in it.
+- c, "Each quarter's revenue over that quarter's own 91 and 76 buyers: Rs 6,437 then Rs 5,439": the
+  plain average again, each quarter over its own buyers, which leaves out whoever stopped.
 
 ## Why is option a in item 6, the tier's 120 members, worth arguing about?
 

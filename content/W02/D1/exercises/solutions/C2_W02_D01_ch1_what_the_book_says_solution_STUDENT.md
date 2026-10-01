@@ -116,8 +116,8 @@ order rows or order ids, the 227 groups would disagree with it.
 - b, "Count Q2's rows with `count(customer_id)`, which must also give 227": it counts the 462 rows
   that carry a customer id, so the two numbers were never meant to agree.
 - c, "Divide Q2's 462 orders by its 2.04 orders per customer and round to a whole customer": 2.04 was
-  itself computed from the 227, so the route can only hand the 227 back, and the rounded 2.04 makes it
-  hand back 226 (462 over 2.04 is 226.47).
+  itself computed from the 227, so a wrong count would come back through it too; the route can only
+  repeat the first count, and today it misses even that by rounding, 462 over 2.04 being 226.47.
 
 ## Why is option c in item 4, the honest name cancelled_orders, worth arguing about?
 

@@ -13,10 +13,10 @@ answered here.
 
 Kalpa Retail sells through three channels: its app, its website and its stores. Booked revenue, every
 order at its amount whatever its status, was Rs 10,00,00,000 in Q1 (April to June 2026) and
-Rs 9,84,00,000 in Q2 (July to September 2026). Business, the corporate segment, places orders worth
-lakhs each. The other three segments, Retail-Core, Retail-Plus and Student, are Kalpa's consumers,
-whose orders are worth hundreds or a few thousand rupees. Marketing read the channel totals and wants
-budget moved from the web to the stores.
+Rs 9,84,00,000 in Q2 (July to September 2026). Business, the corporate segment, buys for companies,
+and its orders are worth lakhs each; Kalpa's consumers buy for themselves, and their orders are worth
+hundreds or a few thousand rupees. Marketing read the channel totals and wants budget moved from the
+web to the stores.
 
 The book is Kalpa's Postgres warehouse: `orders` (1,000 rows: order_id, customer_id, order_date,
 quarter, channel, amount, status) and `customers` (340 rows, one per customer: customer_id, segment,
@@ -35,8 +35,8 @@ Q1, less one, in percent.
 | web | 181 | Rs 3,79,02,050 | 150 | Rs 2,36,61,000 |
 
 **Who needs the answer.** Anand decides whether to back Marketing's request, and the channel heads
-will live with the budget it moves. A budget moved on a total that a different kind of order carries
-goes to a channel whose own consumers may be the ones leaving.
+will live with the budget it moves. If the reading behind it is wrong, a quarter's marketing budget
+leaves a channel that needed it for one that did not.
 
 **The questions on the way.**
 
@@ -52,8 +52,8 @@ markers and items 8 to 10 from this brief, in this shape:
 Post exactly this shape: xxxxxxxxxx
 ```
 
-Beside the letters, post one line for Anand that names the channel losing its consumers fastest, with
-its number.
+Beside the letters, post the line you would put on Anand's channel sheet about Marketing's request,
+with the number it rests on.
 
 ---
 
@@ -76,14 +76,14 @@ d) `GROUP BY channel, quarter`
 
 ### Q8. Which analysis answers Marketing's question, sized in rows?
 
-Marketing's question is whether a channel is losing its consumers. Kalpa has three channels, and every
-order is either a Business order or a consumer order. Which analysis answers the question, sized in
-rows?
+Marketing says the store is booming and the web is collapsing, and wants the budget moved from the
+web to the stores. The book holds three channels over two quarters. Which analysis tells Anand whether
+Marketing's reading holds, sized in rows?
 
-a) Twelve rows, each channel's Business and consumer orders apart per quarter, read as changes
-b) The six channel totals, since the budget follows a channel's revenue
-c) Three rows, each channel's half-year revenue, since two quarters of movement cancel out
-d) All 1,000 order rows exported, so Marketing can check the split for itself in its own spreadsheet
+a) The six channel totals, since the budget follows a channel's revenue
+b) Three rows, each channel's half-year revenue, since two quarters of movement cancel out
+c) Twelve rows, each channel's Business and consumer orders apart per quarter, read as changes
+d) All 1,000 order rows exported, so Marketing can rebuild any total it likes in its own spreadsheet
 
 ## Step 2. Which orders make up each channel's total?
 
@@ -92,10 +92,11 @@ is read on its own before the total is.
 
 Marker 2 in the notebook.
 
-### Q2. Which label splits each channel's orders into Business and consumer the way Anand's segments do?
+### Q2. Which label keeps every Business order on the Business side, next quarter as well as this one?
 
-The notebook labels every order as Business or consumer and groups by the label. Which label splits the
-orders the way Anand's segments do?
+The notebook labels every order as Business or consumer and groups by the label, and next quarter's
+sheet will run the same label on new orders. Which label keeps every Business order on the Business
+side, next quarter as well as this one?
 
 a) Business where the customer's segment is Business, consumer for the other three
 b) The customer's own segment name, four labels in each channel
@@ -116,7 +117,7 @@ expression counts them?
 
 a) `count(*)`, since each consumer order row belongs to a consumer
 b) `sum(1)`, since adding one per order reaches everyone who bought
-c) `count(DISTINCT o.customer_id)`, one per consumer however many rows
+c) `count(DISTINCT o.customer_id)`, since an id stands for one consumer
 d) `count(o.customer_id)`, since it counts the customer column rather than rows
 
 ### Q4. Which orders-per-consumer figure multiplies back to the orders?

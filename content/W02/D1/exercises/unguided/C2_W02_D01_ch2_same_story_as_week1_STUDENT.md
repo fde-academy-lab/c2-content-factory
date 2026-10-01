@@ -86,10 +86,10 @@ The two sources below are invented. Both show revenue down 1.0 percent from Q1 t
 
 Which leaves tell a different story from Q1 to Q2 in the two sources?
 
-a) None, since both revenues fell by the same 1.0 percent from Q1 to Q2 in either source
+a) Customers and orders per customer, flat in one and down 10 percent in the other
 b) Revenue per order alone, since B's orders are four times A's in each of the quarters
 c) Orders alone, since B lost 40 orders between the quarters while A lost only 10
-d) Customers and orders per customer, flat in one and down 10 percent in the other
+d) None, since both revenues fell by the same 1.0 percent from Q1 to Q2 in either source
 
 ### Q4. What most likely explains a regional file whose customers held flat while the book's fell?
 

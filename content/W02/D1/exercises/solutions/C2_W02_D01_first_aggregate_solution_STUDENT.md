@@ -1,6 +1,6 @@
 # Which answers hold in the guided build of the segment counts and revenue, and why?
 
-Answers: 1a 2d 3c 4b 5d
+Answers: 1a 2d 3c 4a 5d
 
 The guided exercise built one query a clause at a time, from the whole book to one row per segment and
 quarter with its orders, customers and booked revenue, while the trainer said aloud the order in which
@@ -15,7 +15,7 @@ will ask how any segment line was built, and the answer is the order the clauses
 
 - Which idea does the guided build test: the order the database works through a query's clauses?
 - Why does each of the five keys hold, from the lookup's 1,000 rows to Retail-Plus's larger orders?
-- Why is option a in item 4, the order the query is written in, worth arguing about?
+- Why is option b in item 4, the order the query is written in, worth arguing about?
 - Where does item 4 come back in today's interview drill?
 
 ## Which idea does the guided build test: the order the database works through a query's clauses?
@@ -63,11 +63,11 @@ them bought". Only members can buy as Retail-Plus, so the count can be no larger
 
 ### Q4. In which order does the database work through step 5's clauses?
 
-Kind: order the steps. The key is b, "FROM with the lookup, then GROUP BY, then SELECT, then ORDER BY".
+Kind: order the steps. The key is a, "FROM with the lookup, then GROUP BY, then SELECT, then ORDER BY".
 The rows must exist before they can be grouped, the groups must exist before anything is counted
 inside them, and the result must exist before it can be sorted.
 
-- a, "SELECT, then FROM with the lookup, then GROUP BY, then ORDER BY": the order the query is
+- b, "SELECT, then FROM with the lookup, then GROUP BY, then ORDER BY": the order the query is
   written in, and the database runs it in another.
 - c, "FROM with the lookup, then SELECT, then GROUP BY, then ORDER BY": computes the counts before the
   groups exist, so there would be nothing to count them in.
@@ -84,7 +84,7 @@ percent, even as its orders fell from 215 to 140.
   smaller one as a share.
 - c, Retail-Core: Rs 1,875 then Rs 1,898, up 1.2 percent.
 
-## Why is option a in item 4, the order the query is written in, worth arguing about?
+## Why is option b in item 4, the order the query is written in, worth arguing about?
 
 The order a query is written in is the order most people read it in, and on step 5 reading it that
 way gives the right numbers. It gives the wrong expectation in chapter 3, where a filter on a count

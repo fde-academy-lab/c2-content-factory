@@ -1,6 +1,6 @@
 # Which answers hold in the practice lab on row counts, running order and the returns suite, and why?
 
-Answers: 1b 2d 3c 4a 5a 6d 7b 8c 9d 10a 11b
+Answers: 1b 2d 3c 4a 5a 6d 7b 8c 9d 10c 11b
 
 The practice lab set asked for three habits on questions the chapters never ran: predict a query's
 row count before running it, say the order the database works through a query, defend one placement
@@ -135,16 +135,16 @@ under the customer column.
 ### Q10. Which rebuild from each customer's history confirms the half-year count of customers who returned an order?
 
 Kind: a design item, the independent second route, assembled from three history counts and checked
-against both quarter rows. The key is a, "24 plus 54 plus 52 is 130, and 24 plus 54 and 24 plus 52
+against both quarter rows. The key is c, "24 plus 54 plus 52 is 130, and 24 plus 54 and 24 plus 52
 rebuild your quarter rows". Every customer who returned an order sits in exactly one of the three
 histories, so they add to the half-year, 130, the same as the count from the orders. The same groups
 rebuild each quarter: 24 plus 54 is Q1's 78 and 24 plus 52 is Q2's 76. A wrong count on either side
 would break one of the three ties.
 
+- a, "The 184 returned orders, one customer for each, so the half-year holds 184 customers": counts
+  orders, and some customers returned more than one.
 - b, "54 plus 52 is 106, the customers who returned in one quarter only, so 106 in all": leaves out
   the 24 who returned in both quarters, who are customers of the half-year too.
-- c, "The 184 returned orders, one customer for each, so the half-year holds 184 customers": counts
-  orders, and some customers returned more than one.
 - d, "24 plus 54 for Q1 and 24 plus 52 for Q2, added together, which gives 154 customers": adds the
   two quarter rows, which counts the 24 who returned in both quarters twice.
 

@@ -82,9 +82,9 @@ room leaves.
 *Tests: counting customers who bought, each once, against counting order rows.*
 
 - count(*) AS customers with GROUP BY quarter
+- count(DISTINCT customer_id) with GROUP BY quarter  <- correct
 - count(customer_id), which skips missing ids, per quarter
 - count(DISTINCT order_id) with GROUP BY quarter
-- count(DISTINCT customer_id) with GROUP BY quarter  <- correct
 
 ---
 

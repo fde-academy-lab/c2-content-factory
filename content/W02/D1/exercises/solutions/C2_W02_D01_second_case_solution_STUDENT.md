@@ -1,6 +1,6 @@
 # Which answers hold in the second case on whether the store is booming and the web collapsing, and why?
 
-Answers: 1d 2a 3c 4b 5b 6d 7c 8a 9a 10b
+Answers: 1d 2a 3c 4b 5b 6d 7c 8c 9a 10b
 
 Marketing read Kalpa Retail's channel totals, the store up 61.1 percent and the web down 37.6 percent,
 and asked Anand Iyer, the finance controller, to move budget from the web to the stores. Business
@@ -58,24 +58,28 @@ quarter, whose revenue adds back to the book in each quarter.
 
 ### Q8. Which analysis answers Marketing's question, sized in rows?
 
-Kind: a design item, the best-fit analysis with its size. The key is a, "Twelve rows, each channel's
-Business and consumer orders apart per quarter, read as changes". Three channels, two kinds of order
-and two quarters make twelve rows, and reading each as a change shows which part of each channel moved.
+Kind: a design item, the best-fit analysis with its size. The key is c, "Twelve rows, each channel's
+Business and consumer orders apart per quarter, read as changes". Business's orders are worth lakhs and
+the consumers' hundreds, so a channel's total moves wherever a few corporate orders land; reading the
+two kinds apart is what tells Anand whether the channel's own customers grew. Three channels, two kinds
+of order and two quarters make twelve rows, and reading each as a change shows which part of each
+channel moved.
 
-- b, "The six channel totals, since the budget follows a channel's revenue": the totals are what
+- a, "The six channel totals, since the budget follows a channel's revenue": the totals are what
   Marketing already read, and a few corporate orders dominate them.
-- c, "Three rows, each channel's half-year revenue, since two quarters of movement cancel out": a
+- b, "Three rows, each channel's half-year revenue, since two quarters of movement cancel out": a
   half-year hides the change the question is about.
-- d, "All 1,000 order rows exported, so Marketing can check the split for itself in its own
+- d, "All 1,000 order rows exported, so Marketing can rebuild any total it likes in its own
   spreadsheet": moves the whole book out to answer a question twelve rows answer, which Anand ruled
   out.
 
-### Q2. Which label splits each channel's orders into Business and consumer the way Anand's segments do?
+### Q2. Which label keeps every Business order on the Business side, next quarter as well as this one?
 
 Kind: choose the definition. The key is a, "Business where the customer's segment is Business,
-consumer for the other three". Anand's segments live on the customer, so the label follows the
-customer's segment, with the three consumer segments under one label; 188 orders carry the Business
-label, the Business segment's own.
+consumer for the other three". A Business order is an order a corporate buyer places, whatever its
+size, and the segment lives on the customer, so a label that follows the customer's segment files
+every such order on the Business side this quarter and next; 188 orders carry the Business label, the
+Business segment's own.
 
 - b, "The customer's own segment name, four labels in each channel": keeps the four segments apart, so
   each channel has four kinds where the question asks for two.
@@ -88,8 +92,9 @@ label, the Business segment's own.
 
 ### Q3. Which expression counts each channel's consumers, each once?
 
-Kind: choose the count. The key is c, "`count(DISTINCT o.customer_id)`, one per consumer however many
-rows". It gives the app 111 consumers in Q1 behind 161 orders.
+Kind: choose the count. The key is c, "`count(DISTINCT o.customer_id)`, since an id stands for one
+consumer". It counts each consumer once however many orders they placed, and gives the app 111
+consumers in Q1 behind 161 orders.
 
 - a, "`count(*)`, since each consumer order row belongs to a consumer": counts orders, 161.
 - b, "`sum(1)`, since adding one per order reaches everyone who bought": adds one per row, 161 again.

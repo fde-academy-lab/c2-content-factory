@@ -228,9 +228,9 @@ Your half-year query counts the customers who returned an order straight from th
 filters over one row per such customer give their histories: 24 returned an order in both quarters,
 54 in Q1 only and 52 in Q2 only. Which rebuild confirms your count, and what does it give?
 
-a) 24 plus 54 plus 52 is 130, and 24 plus 54 and 24 plus 52 rebuild your quarter rows
+a) The 184 returned orders, one customer for each, so the half-year holds 184 customers
 b) 54 plus 52 is 106, the customers who returned in one quarter only, so 106 in all
-c) The 184 returned orders, one customer for each, so the half-year holds 184 customers
+c) 24 plus 54 plus 52 is 130, and 24 plus 54 and 24 plus 52 rebuild your quarter rows
 d) 24 plus 54 for Q1 and 24 plus 52 for Q2, added together, which gives 154 customers
 
 ### Q11. Which ordering and printout make the service team's sample auditable?
