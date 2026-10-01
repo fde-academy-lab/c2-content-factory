@@ -6,7 +6,7 @@ Name: ____________________    Marked by: ____________________    Items right: __
 
 ## What this paper is for
 
-This week you computed Anand's Monday numbers in the warehouse, set what Kalpa collected against what it booked, drew up Marketing's protect list with its flag on falling spend, built the growth team's table of customers in pandas, and carried the numbers to Monday's growth review in Excel. This paper puts those decisions to you again with no notes and no assistant, on the week's own tables, on six public cases and on the tables an AI team keeps. The room's score in each part, set beside the rating you give that part in step one, tells Monday's session where to start.
+This week you computed Anand's Monday numbers in the warehouse, set what Kalpa collected against what it booked, drew up Marketing's protect list with its flag on falling spend, built the growth team's table of customers in pandas, and carried the numbers to Monday's growth review in Excel. This paper puts those decisions to you again, on the week's own tables, on six public cases and on the tables an AI team keeps. The room's score in each part, set beside the rating you give that part in step one, tells Monday's session where to start.
 
 ## How this paper works
 
@@ -16,7 +16,7 @@ This week you computed Anand's Monday numbers in the warehouse, set what Kalpa c
 - A wrong answer costs nothing, so answer every item on the line under it.
 - Pen and this paper only: no laptop, no phone, no notes and no assistant.
 - Afterwards the papers are swapped and marked against the key, and the discussion takes the items the room missed most. The paper is ungraded and ranks nobody; the room's rates by part and by tag set Monday's revision.
-- Parts 1 to 4 and the workbook in Part 5 are set inside Kalpa Retail, where you work as a trainee engineer in the data and AI team of its Global Capability Centre, the in-house centre that builds Kalpa's data and AI systems. Anand Iyer is Kalpa Retail's finance controller, Kavya Nair the senior analyst on your team and Meera Raghavan the CEO; the head of Retail-Plus, the marketing lead, the growth team, the data platform lead and Meera's chief of staff are named by role. Six items draw on public cases at Facebook, Public Health England, genomics journals, an economics paper, JPMorgan and Uber, each with its source beside it. Part 6 imagines the AI team of a food-delivery company, and its tables and numbers are illustrative. Every number an item needs is on the page.
+- Parts 1 to 4 and the workbook in Part 5 are set inside Kalpa Retail, where you work as a trainee engineer in the data and AI team of its Global Capability Centre, the in-house centre that builds Kalpa's data and AI systems. Anand Iyer is Kalpa Retail's finance controller, Kavya Nair the senior analyst on your team and Meera Raghavan the CEO; the head of Retail-Plus, the marketing lead, the growth team, the data platform lead and Meera's chief of staff are named by role. Six items draw on public cases (Facebook, Public Health England, genomics journals, an economics paper, JPMorgan and Uber), each with its source beside it. Part 6 imagines the AI team of a food-delivery company, and its tables and numbers are illustrative. Every number an item needs is on the page.
 
 ## Step one, before Part 1
 
@@ -36,8 +36,8 @@ Your ratings: Part 1 ___ · Part 2 ___ · Part 3 ___ · Part 4 ___ · Part 5 ___
 | 1. Can the warehouse give Anand Monday numbers that his analyst can audit line by line? | whether you can write the Monday queries so every ratio, average and sample counts what it says | Q1 to Q6 (6) | 16 | 2 | 2 | 2 |
 | 2. Can Anand sign what Kalpa collected against what it booked, with nothing lost or counted twice? | whether you can join payments to orders without losing or repeating one, and hold what fails a check | Q7 to Q11 (5) | 19.5 | 0 | 1 | 4 |
 | 3. Which members should Marketing protect and call, and did July to September keep pace with the plan? | whether you can rank and flag members inside each segment and read a running total against its plan | Q12 to Q16 (5) | 17 | 0 | 2 | 3 |
-| 4. Can the growth team act on Monday's table of 340 customers without checking it first? | whether you can build and check a table of one row per customer through merges and pivots in pandas | Q17 to Q20 (4) | 16 | 0 | 0 | 4 |
-| 5. Which spreadsheet numbers can a director trust, in Monday's workbook and in three public cases? | whether you can build the workbook a director changes in the room and catch a spreadsheet's silent errors | Q21 to Q27 (7) | 22 | 0 | 4 | 3 |
+| 4. What must Monday's customer table check before the growth team acts on it? | whether you can build and check a table of one row per customer through merges and pivots in pandas | Q17 to Q20 (4) | 16 | 0 | 0 | 4 |
+| 5. Which numbers in Monday's workbook can a director trust, and where did three public cases go wrong? | whether you can build the workbook a director changes in the room and catch a wrong range, formula or base in a number | Q21 to Q27 (7) | 22 | 0 | 4 | 3 |
 | 6. Can a food-delivery company's AI team trust the numbers behind its model and budget decisions? | whether you can read an AI team's tables and code and say which decision a wrong number would change | Q28 to Q33 (6) | 22.5 | 0 | 1 | 5 |
 | Total | | 33 | 113 | 2 | 10 | 21 |
 
@@ -47,7 +47,7 @@ Your ratings: Part 1 ___ · Part 2 ___ · Part 3 ___ · Part 4 ___ · Part 5 ___
 
 *What it shows: whether you can write the Monday queries so every ratio, average and sample counts what it says. 6 items, about 16 minutes.*
 
-Anand Iyer, Kalpa Retail's finance controller, keeps the books every revenue figure has to match, and he asked the team for the same numbers every week: "I want these numbers every Monday, for every segment and channel, computed from the warehouse itself. No notebooks, no exports, nothing a person can mistype." The numbers are revenue, orders and customers for each segment, the groups Kalpa sells to (Business, its corporate buyers; Retail-Core, its everyday shoppers; Retail-Plus, the paid membership tier; and Student), and for each channel (app, web and store), and revenue means booked revenue, every order at its amount, whatever its status. The warehouse is Kalpa's Postgres database, and its two quarters of orders, called the book, are the one copy everybody reads; it stores April to June as quarter 'Q1' and July to September as 'Q2'. The saved queries that produce the numbers are the Monday suite. Anand signs the Monday sheet after his analyst has audited every query in the suite line by line, and the head of Retail-Plus reads the tier's line to decide which members the team works to keep, so a ratio or an average that counts the wrong people sends the tier's retention budget the wrong way.
+Anand Iyer, Kalpa Retail's finance controller, keeps the books every revenue figure has to match, and he asked the team for the same numbers every week: "I want these numbers every Monday, for every segment and channel, computed from the warehouse itself. No notebooks, no exports, nothing a person can mistype." The numbers are revenue, orders and customers for each segment, the groups Kalpa sells to (Business, its corporate buyers; Retail-Core, its everyday shoppers; Retail-Plus, the paid membership tier; and Student), and for each channel (app, web and store). Revenue means booked revenue: every order at its amount, whatever its status. The warehouse is Kalpa's Postgres database, and its two quarters of orders, called the book, are the one copy everybody reads; it stores April to June as quarter 'Q1' and July to September as 'Q2'. The saved queries that produce the numbers are the Monday suite. Anand signs the Monday sheet after his analyst has audited every query in the suite line by line, and the head of Retail-Plus reads the tier's line to decide which members the team works to keep, so a ratio or an average that counts the wrong people sends the tier's retention budget the wrong way.
 
 **Exhibit 1A.** The Retail-Plus branch of Anand's revenue tree, as the warehouse holds it: revenue is the product of the tree's three leaves, members who ordered, orders per member and revenue per order.
 
@@ -109,7 +109,7 @@ Retail-Plus has 120 members on its books, and from July to September 76 of them 
 
 a) An error, since avg cannot read a spend that is NULL
 b) 3445, the average over all 120 members on the books
-c) 5439, the average over the 76 members who ordered
+c) 5439, the average over the 76 members who placed an order
 d) NULL, since one missing spend leaves the whole average empty
 
 #### Q5 · Medium · circle one letter · Choose where it runs
@@ -150,7 +150,7 @@ Anand replied to the Monday numbers: "Booked revenue is not collected revenue. S
 
 ### Set 1
 
-**Situation.** The quarter from July to September, stored as quarter 'Q2', holds 462 orders booked at Rs 9,84,00,000. In the payments feed, 216 of them have one payment row; 188 have two rows, instalments 1 and 2 of one invoice; 28 have two rows that differ only in payment_id, because the gateway retried and posted instalment 1 twice; and 30 delivered orders have no payment row at all. Eight further payment rows carry an order_id that no order has.
+**Situation.** The quarter from July to September, stored as quarter 'Q2', holds 462 orders booked at Rs 9,84,00,000. In the payments feed, 216 of them have one payment row; 188 have two rows, instalments 1 and 2 of one invoice; 28 have two rows that differ only in payment_id, because the gateway retried and posted instalment 1 twice; and 30 delivered orders have no payment row at all. Every order with a payment row was paid in full. Eight further payment rows carry an order_id that no order has.
 
 **Exhibit 2A.** The quarter's orders by their payment rows, as the situation describes them.
 
@@ -195,7 +195,7 @@ f) Sum the payment rows to one collected figure for each order
 
 Order: ____________________
 
-**Exhibit 2C.** The analyst's query, with three of the quarter's orders and their payment rows written into it.
+**Exhibit 2C.** The analyst's query, with three illustrative orders and their payment rows written into it.
 
 ```sql
 WITH orders (order_id, amount) AS (VALUES
@@ -228,7 +228,7 @@ d) 4 rows, booked Rs 3,700
 
 #### Q10 · Medium · circle one letter · Decide what leaves tonight
 
-It is the end of the reporting day, and Anand expects the report tonight. His rule for a check that fails this late: booked always leaves, because it ties to the orders table alone; a collected figure that does not reconcile never leaves, and an open line goes with the report, naming the failed check, what it means and when it will close. On this report a channel's collected reconciles when its gap, booked less collected, equals its unpaid orders' booked value. What do you send?
+It is the end of the reporting day, and Anand expects the report tonight. His rule for a check that fails this late: booked always leaves, because it ties to the orders table alone; a collected figure that does not reconcile never leaves, and an open line goes with the report, naming the failed check, what it means and when it will close. No order on this report was paid short, so a channel's collected reconciles when its gap, booked less collected, equals its unpaid orders' booked value. What do you send?
 
 a) Booked and collected for every channel, with any unexplained gap added to that channel's unpaid list
 b) Booked for every channel, collected for app and web, and store's collected held back
@@ -259,7 +259,7 @@ e) Stop any file whose sheet holds exactly 65,535 data rows, the most the format
 
 *What it shows: whether you can rank and flag members inside each segment and read a running total against its plan. 5 items, about 17 minutes.*
 
-The marketing lead wrote to the team: "Retail-Plus frequency is the problem, so we want to protect our best members before they drift. Give us the top fifty customers by Q2 revenue in each segment, and flag anyone whose monthly spend has fallen for two months running. And Meera wants to see revenue accumulate week by week against the plan line, so we know by mid-quarter whether we are on track." Each segment's top fifty make its protect list, and Marketing spends its retention budget, a call and a renewal offer, on the members the lists name, so a list cut by the wrong rule, or a flag that misreads a member, rings the wrong people. Meera Raghavan, the CEO, decides at mid-quarter whether to hold the plan, push a campaign or move budget. The plan line sets Rs 75,69,230 of revenue for each of the quarter's 13 plan weeks, which start on Mondays from 6 July; plan to date adds up the plan weeks to the end of the one being read, and booked to date does the same for the orders.
+The marketing lead wrote to the team: "Retail-Plus frequency is the problem, so we want to protect our best members before they drift. Give us the top fifty customers by Q2 revenue in each segment, and flag anyone whose monthly spend has fallen for two months running. And Meera wants to see revenue accumulate week by week against the plan line, so we know by mid-quarter whether we are on track." Each segment's top fifty make its protect list, and Marketing spends its retention budget, a call and a renewal offer, on the members the lists name, so a list cut by the wrong rule, or a flag that misreads a member, rings the wrong people. Meera Raghavan, the CEO, decides at mid-quarter whether to hold the plan, push a campaign or move budget, and a false gap against the plan sends Marketing after it with discounts. The plan line sets Rs 75,69,230 of revenue for each of the quarter's 13 plan weeks, which start on Mondays from 6 July; plan to date adds up the plan weeks to the end of the one being read, and booked to date does the same for the orders.
 
 **Exhibit 3A.** Retail-Plus members at places 46 to 53 when sorted by revenue for July to September, highest first, with tied members in order of their ids.
 
@@ -278,10 +278,10 @@ The marketing lead wrote to the team: "Retail-Plus frequency is the problem, so 
 
 Retail-Plus had 76 members who ordered from July to September. Sorted by their revenue for the quarter, highest first, the top 45 each spent a different amount, all above Rs 3,600, and places 46 to 53 are in the table. The head of Retail-Plus set the rule for the protect list: "Ties matter. If two members spent the same, I want them ranked the same, and I want to know how many made the top fifty, not forty-nine because of a tie." The list keeps every member who spent at least as much as the fiftieth member in the table's order, and nobody who spent less. Which ranking gives that list, and how many members does it keep?
 
-a) DENSE_RANK, keeping every member ranked 50 or better: 52 members
+a) DENSE_RANK, keeping every member ranked 50 or better: 51 members
 b) ROW_NUMBER with member id as tiebreaker, keeping places 1 to 50: 50 members
 c) Whole ties only, cutting before any tie that crosses the fiftieth place: 49 members
-d) RANK, keeping every member ranked 50 or better: 51 members
+d) RANK, keeping every member whose rank is 50 or better: 51 members
 
 #### Q13 · Medium · circle one letter · Choose the approach
 
@@ -299,7 +299,7 @@ Marketing wants each Retail-Plus member's spend beside the member's share of the
 a) SELECT customer_id, spend, spend / sum(spend) OVER () FROM member_step
 b) SELECT customer_id, spend, spend / sum(spend) FROM member_step GROUP BY customer_id, spend
 c) SELECT customer_id, spend, spend / sum(spend) OVER (ORDER BY spend DESC) FROM member_step
-d) SELECT customer_id, spend, spend / sum(spend) OVER (PARTITION BY customer_id) FROM member_step
+d) SELECT customer_id, spend, spend / avg(spend) OVER () FROM member_step
 
 **Exhibit 3B.** Four Retail-Plus members' monthly spend in rupees, from the warehouse's orders.
 
@@ -342,15 +342,15 @@ The quarter closed at Rs 9,84,00,000 against a plan of Rs 9,83,99,990. Meera's c
 a) Furthest ahead in the week of 20 July, by about Rs 2.0 crore, and back level with the plan by the week of 31 August
 b) Behind the plan from mid-August until the last fortnight, after two strong fortnights in July
 c) Furthest ahead in the week of 3 August, by about Rs 2.2 crore, and about Rs 0.8 crore ahead in the week of 14 September
-d) Further ahead at every reading from the week of 20 July to the week of 14 September, and level with the plan only at the close
+d) The lead grew at every reading from the week of 20 July to the week of 14 September, and the quarter closed level with the plan
 
 ---
 
-## Part 4. Can the growth team act on Monday's table of 340 customers without checking it first? (Q17 to Q20)
+## Part 4. What must Monday's customer table check before the growth team acts on it? (Q17 to Q20)
 
 *What it shows: whether you can build and check a table of one row per customer through merges and pivots in pandas. 4 items, about 16 minutes.*
 
-Kalpa Retail's growth team, with the data platform lead, asked for one thing it would use every week: "One table, one row per customer, refreshed every Monday: how recently each customer bought, how often, how much, their segment, whether the monsoon sale reached them, and the flags we act on. Marketing's analysts live in Python, so build it in pandas, from the warehouse, and make it refresh in one run." The three numbers are recency, the days from a customer's last order to the data's last date, 28 September 2026; frequency, the orders placed; and spend, the rupees those orders booked. The monsoon sale was a campaign Kalpa ran in August 2026. Every Monday the growth team sends a win-back code to customers who have gone quiet and a first-order nudge to those who never ordered, straight from the table and with no analyst watching, so a customer missing from it gets no offer and a customer counted twice inflates every total built on it. Kavya Nair, the senior analyst, reviews the table before it leaves the team.
+Kalpa Retail's growth team, with the data platform lead, asked for one thing it would use every week: "One table, one row per customer, refreshed every Monday: how recently each customer bought, how often, how much, their segment, whether the monsoon sale reached them, and the flags we act on. Marketing's analysts live in Python, so build it in pandas, from the warehouse, and make it refresh in one run." The three numbers are recency, the days from a customer's last order to the data's last date, 28 September 2026; frequency, the orders placed; and spend, the rupees those orders booked. The monsoon sale was a campaign Kalpa ran in August 2026. Every Monday the growth team sends a win-back code to customers who have gone quiet and a first-order nudge to those who never ordered, straight from the table and with no analyst watching, so a customer missing from it gets no offer and a customer counted twice inflates every total built on it. Kavya Nair, the senior analyst, reviews the table before it leaves the team. The last two items take the same checks to a months view for the head of Retail-Plus and to a genomics lab's gene list.
 
 ### Set 2
 
@@ -374,7 +374,7 @@ b) 340 rows, and nothing more, since a left merge keeps the customer table's row
 c) 352 rows, and drop_duplicates() on the merged table to take out the extra rows
 d) 136 rows, and indicator=True on the merge to flag the rows before the pivot
 
-**Exhibit 4B.** Next Monday's feed from the campaign tool, its rows for three customers in the order it sends them, and the step the refresh now runs on the feed before the merge.
+**Exhibit 4B.** Next Monday's feed from the campaign tool, its rows for three customers, and the step the refresh now runs on the feed before the merge.
 
 | customer_id | campaign_id | exposed_date |
 |---|---|---|
@@ -442,11 +442,11 @@ d) 4 2
 
 ---
 
-## Part 5. Which spreadsheet numbers can a director trust, in Monday's workbook and in three public cases? (Q21 to Q27)
+## Part 5. Which numbers in Monday's workbook can a director trust, and where did three public cases go wrong? (Q21 to Q27)
 
-*What it shows: whether you can build the workbook a director changes in the room and catch a spreadsheet's silent errors. 7 items, about 22 minutes.*
+*What it shows: whether you can build the workbook a director changes in the room and catch a wrong range, formula or base in a number. 7 items, about 22 minutes.*
 
-Meera's chief of staff builds the deck for Monday's growth review and works only in Excel: "Monday's growth review deck needs three things I can open on my laptop without a login: the revenue tree by segment for both quarters, the top-fifty protect list with a lookup so I can find any member by id, and one number on the front page with its trend. Nothing that needs Python. If a director changes an assumption in the room, the sheet must recalculate in front of them." The directors read the front page first and may read nothing else, and the head of Retail-Plus sizes each city's retention budget from the protect list in the room, so a sheet that shows a wrong number with nothing red beside it misleads both. The three public cases after the workbook are spreadsheets whose numbers people relied on.
+Meera's chief of staff builds the deck for Monday's growth review and works only in Excel: "Monday's growth review deck needs three things I can open on my laptop without a login: the revenue tree by segment for both quarters, the top-fifty protect list with a lookup so I can find any member by id, and one number on the front page with its trend. Nothing that needs Python. If a director changes an assumption in the room, the sheet must recalculate in front of them." The directors read the front page first and may read nothing else, and the head of Retail-Plus sizes each city's retention budget from the protect list in the room, so a wrong total with nothing red beside it becomes a director's decision or a city's budget before any analyst sees it. The protect list in the workbook is Friday's: the fifty Retail-Plus members with the highest revenue across both quarters. The three public cases after the workbook are numbers people relied on: an economics paper's average, a bank's risk figure and a ride-hailing company's commission.
 
 **Exhibit 5A.** The chief of staff's workbook for Monday's review, and two rows of Friday's export: one row per payment, with the order's booked amount, order_amount, repeated on each.
 
@@ -468,7 +468,7 @@ flowchart LR
 | Item | To match | Letter | Match |
 |---|---|---|---|
 | Q21 (Medium) | Find any member by id, and print a plain message for an unknown id | a | SUBTOTAL with function number 109 |
-| Q22 (Medium) | A figure under the protect list that adds only the members a filter to Mumbai leaves on screen | b | VLOOKUP with its fourth argument left out |
+| Q22 (Medium) | A figure under the protect list that adds the spend of only the members a filter to Mumbai leaves on screen | b | VLOOKUP with its fourth argument left out |
 | Q23 (Medium) | Booked revenue by segment from Friday's export, in which an invoice paid in two instalments appears twice | c | a labelled input cell feeding a scenario line |
 | Q24 (Medium) | Let a director try Rs 5,00,000 for Retail-Plus in July to September, with the warehouse's figures untouched | d | XLOOKUP with its if_not_found argument set |
 |  |  | e | Remove Duplicates across every column |
@@ -490,7 +490,7 @@ Answers: Q21 ____    Q22 ____    Q23 ____    Q24 ____
 
 #### Q25 · Hard · show the working, then the answer · Reproduce the comparison
 
-In 2013 Herndon, Ash and Pollin rebuilt an influential 2010 paper by Reinhart and Rogoff from the authors' own working spreadsheet, and found that the paper's average growth for countries with public debt over 90 percent of GDP, the value of everything a country produces in a year, published as -0.1 percent, was 2.2 percent when properly calculated (PERI working paper 322, 2013). The illustrative sheet above goes to a review today. What does it report for the two columns, what do the six countries' figures give, and does its comparison hold? Show the working.
+In 2013 Herndon, Ash and Pollin rebuilt an influential 2010 paper by Reinhart and Rogoff from the authors' own working spreadsheet, and found that the paper's average growth for countries with public debt over 90 percent of GDP, the value of everything a country produces in a year, published as -0.1 percent, was 2.2 percent once a coding error in the spreadsheet, the exclusion of some available data and an unusual weighting of the averages were corrected (PERI working paper 322, 2013). The illustrative sheet above goes to a review today. What does it report for the two columns, what do the six countries' figures give, and does its comparison hold? Show the working.
 
 Working:
 
@@ -506,7 +506,7 @@ Answer: ____________________
 
 #### Q26 · Hard · show the working, then the answer · Work the risk figure
 
-JPMorgan's task force on the 2012 losses in its Chief Investment Office reported on a value-at-risk model, an estimate of how much a trading book can lose on a bad day, that ran through Excel spreadsheets filled by copying and pasting (JPMorgan Chase, 2013). Suppose the model's documentation defines a day's change as the difference between the new and old rates divided by their average, and that its value at risk moves in step with the size of those changes. The sheet above reports a value at risk of 70 million dollars against the desk's limit of 120 million dollars; both figures are illustrative. What value at risk should the sheet have reported, and is the desk inside its limit? Show the working.
+JPMorgan's task force on the 2012 losses in its Chief Investment Office reported on a value-at-risk model, an estimate of how much a trading book can lose on a bad day, that ran through Excel spreadsheets filled by copying and pasting (JPMorgan Chase, 2013). Suppose the model's documentation defines a day's change as the difference between the new and old rates divided by their average, and that its value at risk moves in proportion to the size of those changes. The sheet above reports a value at risk of 70 million dollars against the desk's limit of 120 million dollars; both figures are illustrative. What value at risk should the sheet have reported, and is the desk inside its limit? Show the working.
 
 Working:
 
@@ -534,14 +534,21 @@ Answer: ____________________
 
 *What it shows: whether you can read an AI team's tables and code and say which decision a wrong number would change. 6 items, about 22.5 minutes.*
 
-Suppose a food-delivery company runs a support assistant, a chatbot that answers customers and hands hard cases to a person. Its AI team scores each model version on a fixed set of test tickets, which is an evaluation run; it collects customers' ratings of the replies; and it logs every conversation, every handoff to a person, every call to the model and every visit. The team lead decides which model ships and which is retrained, the product lead sets the assistant's budget, and the finance partner pays the model's bill, which is charged by the token, a unit of text the model reads or writes. Each of them acts on one number from these tables, so a wrong number changes which model ships, which is retrained, what the assistant may spend or when its calls move to a cheaper model. The company, its tables and every number below are illustrative.
+Suppose a food-delivery company runs a support assistant, a chatbot that answers customers and hands hard cases to a person. Its AI team scores each model version on a fixed set of test tickets, which is an evaluation run, collects customers' ratings of the replies, and logs every conversation, every handoff to a person, every call to the model and every visit. The team lead decides which model ships and which is retrained, the product lead sets the assistant's budget, and the finance partner pays the model's bill, which is charged by the token, a unit of text the model reads or writes. A wrong number in these tables changes one of those decisions. The company, its tables and every number below are illustrative.
 
-**Exhibit 6A.** The assistant team's tables, as this part imagines them.
+**Exhibit 6A.** Who acts on which of the assistant team's tables, and the tables as this part imagines them.
+
+```mermaid
+flowchart TB
+  E["predictions, labels,<br/>eval_runs, replies"] --> L["Team lead: which model<br/>ships, which is retrained"]
+  H["conversations,<br/>handoffs, visits"] --> P["Product lead: the<br/>budget and the deck"]
+  K["calls"] --> F["Finance partner: when calls<br/>move to a cheaper model"]
+```
 
 | Table | One row per | Columns |
 |---|---|---|
 | predictions | test ticket | ticket, pred |
-| labels | label from the annotation vendor | ticket, label |
+| labels | label, set by hand at an outside firm | ticket, label |
 | eval_runs | evaluation run | model, run_id, finished_on, accuracy |
 | replies | reply to a customer | reply_id, model, rating |
 | conversations | conversation | conversation_id |
@@ -564,12 +571,12 @@ print(round((m["pred"] == m["label"]).mean(), 2))
 
 #### Q28 · Hard · circle one letter · Predict the accuracy
 
-The team scores a model that sorts support tickets into refund, late and other against labels from an annotation vendor, and ships a model only if it scores 0.5 or better. What does the code above print, and what happens to the model?
+The team scores a model that sorts support tickets into refund, late and other against labels that an outside firm set by hand, and ships a model only if it scores 0.5 or better. What does the code above print, and what happens to the model?
 
 a) 0.6, so the model clears the 0.5 bar and ships this week
 b) 0.71, so the model clears the bar with room to spare and ships
 c) 0.43, so the model falls short of the bar and is held back
-d) A MergeError, since two tickets repeat in the labels, so the model waits
+d) A MergeError, since the two frames differ in length, so the model waits
 
 **Exhibit 6C.** The table eval_runs: the team's evaluation runs, illustrative.
 
@@ -608,7 +615,7 @@ HAVING count(*) >= 3;
 
 Customers rate each reply from 1 to 5. The team lead asks for every model with at least three replies this week, beside how many of its replies were rated 2 or below, and will retrain every model on the list. What does the query above return, and which models are retrained?
 
-a) bot-a and bot-b, each beside its count of low ratings, so the lead retrains both
+a) bot-a and bot-b, each beside its low ratings, so the lead retrains both
 b) bot-a and bot-b, each beside its count of all its replies, so the lead retrains both
 c) bot-a, bot-b and bot-c, each beside its low ratings, so the lead retrains all three
 d) bot-a alone, beside its count of 3 low ratings, so the lead retrains bot-a
@@ -645,7 +652,7 @@ ORDER BY call_id;
 
 #### Q32 · Hard · circle one letter · Find the first routed call
 
-The model's bill is charged per token, so the finance partner routes every call to a cheaper model once tokens_so_far, read from the query above, passes 1,000. Which call is the first one routed to the cheaper model?
+The model's bill is charged per token, so the finance partner routes to the cheaper model every call whose tokens_so_far, read from the query above, is over 1,000. Which is the first call routed?
 
 a) Call 2
 b) Call 3

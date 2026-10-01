@@ -213,7 +213,7 @@ def prove(cur):
     zeroed = code_of("avg-spend").replace("sum(o.amount) AS spend", "coalesce(sum(o.amount), 0) AS spend")
     assert one(cur, zeroed)[0] == Decimal("3445")                      # option b, the head's figure
     show(4, "avg-spend", "c", "avg skips the 44 NULL spends: 5439 over 76; over 120 it is 3445",
-         "5439, the average over the 76 members who ordered")
+         "5439, the average over the 76 members who placed an order")
 
     # Q5 tool-choice: a judgement on Monday's rule, which names the figures it governs and leaves
     # exploration in a notebook (Monday's study notes, "Anand's ask, and what it rules out").
@@ -246,6 +246,15 @@ def prove(cur):
                     "(SELECT 1 FROM orders o WHERE o.order_id = p.order_id)")[0] == 8
     assert one(cur, """SELECT count(*) FROM orders o WHERE o.quarter = 'Q2' AND o.status = 'delivered'
                        AND NOT EXISTS (SELECT 1 FROM payments p WHERE p.order_id = o.order_id)""")[0] == 30
+    # "Every order with a payment row was paid in full": each paid order's payments, each retry's
+    # second row dropped, add up to its booked amount, so the gap is the unpaid list alone.
+    short = one(cur, """WITH d AS (SELECT DISTINCT ON (order_id, instalment_no) order_id, amount
+                                   FROM payments ORDER BY order_id, instalment_no, payment_id)
+                        SELECT count(*) FILTER (WHERE paid <> o.amount), count(*) FROM orders o
+                        JOIN (SELECT order_id, sum(amount) AS paid FROM d GROUP BY 1) x USING (order_id)
+                        WHERE o.quarter = 'Q2'""")
+    assert short == (0, 432)
+    assert "Every order with a payment row was paid in full." in ADD["join-counts"]["text"]
 
     # Q7 join-counts: run the exhibit as printed, and each distractor's reading.
     got = one(cur, code_of("join-counts"))
@@ -323,6 +332,7 @@ def prove(cur):
     # not reconcile is held, with the open line; a channel reconciles when its gap equals its list.
     assert "booked always leaves" in ADD["reporting-day"]["text"]
     assert "a collected figure that does not reconcile never leaves" in ADD["reporting-day"]["text"]
+    assert "No order on this report was paid short" in ADD["reporting-day"]["text"]
     show(10, "reporting-day", "c", "app and store close to the rupee; web's gap exceeds its list by Rs 21,750",
          "Booked for every channel, collected for app and store, and web's collected held back")
 
@@ -363,8 +373,11 @@ def prove(cur):
     assert rule - set(ranked[ranked.rn <= 50].customer_id) == {"C-0242"}              # b drops C-0242
     whole_ties = ranked[ranked.q2 > fiftieth]
     assert len(whole_ties) == 49                                                      # c
+    opts12 = options_of("rows-shipped")
+    assert opts12["a"].startswith("DENSE_RANK") and opts12["a"].endswith(": 51 members")
+    assert counts[1] == 52                              # a claims 51 for DENSE_RANK, which keeps 52
     show(12, "rows-shipped", "d", "RANK keeps the 51 members at or above the fiftieth's Rs 3,350",
-         "RANK, keeping every member ranked 50 or better: 51 members")
+         "RANK, keeping every member whose rank is 50 or better: 51 members")
 
     # Q13 bank 27: the whole-table top fifty and the reason the reworded stem gives.
     whole = frame(cur, """
@@ -381,7 +394,8 @@ def prove(cur):
     assert smallest_business / largest_retail >= 10
     assert "ten times the largest retail spend" in edits[27]["stem"]["text"]
     assert edits[27]["options"]["b"].startswith("A rank within PARTITION BY segment")
-    show(13, "bank 27", "b", "all 35 Business buyers top the list; the smallest is ten times any retail spend")
+    assert round(float(smallest_business / largest_retail), 2) == 10.35          # more than ten times
+    show(13, "bank 27", "b", "all 35 Business buyers top the list; the smallest is 10.35 times any retail spend")
 
     # Q14 share-window: the four queries on member_step, built from the warehouse.
     member_step = ("WITH member_step AS (SELECT o.customer_id, sum(o.amount) AS spend FROM orders o "
@@ -395,8 +409,8 @@ def prove(cur):
     assert abs(sum(results["a"]) - 1) < 1e-9 and len(results["a"]) == 76     # a: shares add to 1
     assert all(abs(s - 1) < 1e-9 for s in results["b"])                      # b: every share 1
     assert abs(results["c"][0] - 1) < 1e-9 and results["c"][1] < 1           # c: a running total
-    assert all(abs(s - 1) < 1e-9 for s in results["d"])                      # d: every share 1
-    show(14, "share-window", "a", "OVER () shares add to 1; GROUP BY and PARTITION BY give 1 each",
+    assert abs(sum(results["d"]) - 76) < 1e-9                                # d: adds to 76, not 1
+    show(14, "share-window", "a", "OVER () shares add to 1; GROUP BY gives 1 each; avg OVER () adds to 76",
          "SELECT customer_id, spend, spend / sum(spend) OVER () FROM member_step")
 
     # Q15 lag-gap: the exhibit's months are the warehouse's, the flag as the stem states it, the
@@ -679,6 +693,9 @@ def prove(cur):
     # Q28 eval-fanout: run the exhibit as printed, and the readings behind the distractors.
     assert run_python(code_of("eval-fanout")) == "0.43"
     assert (3 / 5, round(5 / 7, 2)) == (0.6, 0.71)                       # a, and b counting repeats right
+    scope28 = {}
+    exec(compile(code_of("eval-fanout").rsplit("\nprint", 1)[0], "<exhibit>", "exec"), scope28)
+    assert (len(scope28["preds"]), len(scope28["labels"]), len(scope28["m"])) == (5, 7, 7)   # d: no error
     try:
         run_python(code_of("eval-fanout").replace('on="ticket")', 'on="ticket", validate="many_to_one")'))
         raise AssertionError("validate did not raise")
@@ -707,7 +724,7 @@ def prove(cur):
         SELECT *, rank() OVER (PARTITION BY model ORDER BY finished_on DESC) AS rk
         FROM eval_runs) x WHERE rk = 1 ORDER BY model, run_id""")
     assert ranked29 == [("bot-a", 9), ("bot-b", 10), ("bot-b", 11)]            # d: two rows for bot-b
-    assert sorted(["11", "9"]) == ["11", "9"] and sorted([11, 9]) == [9, 11]   # text sorts '11' first
+    assert sorted([11, 10]) == [10, 11]                                        # run 11 sorts above run 10
     show(29, "latest-run", "a", "run 11 is bot-b's latest at 0.74 against bot-a's 0.78",
          "ROW_NUMBER partitioned by model, by finished_on descending, then run_id descending, "
          "keeping row 1: bot-b's latest scores 0.74, so bot-a stays")
@@ -741,6 +758,7 @@ def prove(cur):
     def first_over(totals):
         return next((k for k, t in enumerate(totals, 1) if t > 1000), None)
 
+    assert "every call whose tokens_so_far, read from the query above, is over 1,000" in ADD["token-peers"]["text"]
     peers = [r[1] for r in rows(cur, code_of("token-peers"))]
     assert peers == [400, 1200, 1200, 1400] and first_over(peers) == 2          # a
     tiebreak = code_of("token-peers").replace("OVER (ORDER BY day)", "OVER (ORDER BY day, call_id)")
@@ -752,7 +770,7 @@ def prove(cur):
     assert earlier == [0, 400, 400, 1200] and first_over(earlier) == 4          # c
     by_day = code_of("token-peers").replace("OVER (ORDER BY day)", "OVER (PARTITION BY day)")
     assert first_over([r[1] for r in rows(cur, by_day)]) is None                # d
-    show(32, "token-peers", "a", "peers read 1200 at call 2; with call_id the switch comes at call 3",
+    show(32, "token-peers", "a", "peers read 1,200 at call 2; with call_id the first is call 3",
          "Call 2")
 
     # Q33 weekly-users: the log worked four ways, and Kalpa's own distinct counts the reason cites.
