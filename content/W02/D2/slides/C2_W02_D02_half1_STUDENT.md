@@ -1516,10 +1516,13 @@ the retry.
 *What makes a retry a retry, and does the fixed list match its bar?*
 
 ```sql
-SELECT p.order_id, p.instalment_no, count(*) AS times_posted,
-       sum(p.amount) - max(p.amount) AS posted_twice
+SELECT p.order_id, p.instalment_no,
+       count(*) AS times_posted,
+       sum(p.amount) - max(p.amount)
+         AS posted_twice
 FROM tiny_payments p
-JOIN tiny_orders o ON o.order_id = p.order_id
+JOIN tiny_orders o
+  ON o.order_id = p.order_id
 GROUP BY p.order_id, p.instalment_no
 HAVING count(*) > 1;
 ```

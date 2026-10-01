@@ -440,7 +440,7 @@ grain of the payments CTE.
 
 ---
 
-## S20. What the case asks that the chapters did not
+## S20. Harder: Kalpa's data, your own picks and page
 *How is the escalated case harder than the six chapters?*
 
 ```cards
