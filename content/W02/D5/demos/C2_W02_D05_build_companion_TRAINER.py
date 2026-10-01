@@ -277,16 +277,16 @@ PAGE = r"""<!doctype html>
           </div></div>
         <div class="holder" id="c1Way" style="margin-top:10px"></div>
         <p class="line" id="c1WaySays"></p>
-        <p class="said" id="c1WaySaid">The card opens on directors who re-slice the tree in the room. Pick what Monday's
-          directors will do with it.</p>
+        <p class="said" id="c1WaySaid">This choice opens on directors who re-slice the tree in the room. Pick what
+          Monday's directors will do with it.</p>
       </div>
     </section>
 
     <section class="part" id="ch2">
       <p class="eyebrow">03 &middot; Chapter 2 &middot; The raw export, Q1 against Q2</p>
       <h2>Does the tree for both quarters tie to the warehouse once each order counts once, and where did Q2 fall?</h2>
-      <p class="lede">Only the raw export carries order dates, so only it can split the quarters, and it holds one row
-        per payment with the order's amount repeated on each. Monday's warehouse queries put Q1, April to June 2026, at
+      <p class="lede">Of Friday's two exports, only the raw one carries order dates, so only it can split the quarters,
+        and it holds one row per payment with the order's amount repeated on each. Monday's warehouse queries put Q1, April to June 2026, at
         Rs 10,00,00,000 on 538 orders and Q2, July to September 2026, at Rs 9,84,00,000 on 462 orders, and every number
         on the deck has to tie to those. Change how the pivot counts an order and watch the tie, the bridge and the
         leaves.</p>
@@ -818,6 +818,11 @@ PAGE = r"""<!doctype html>
   }
   function pct(x, d) { var p = Math.pow(10, d === undefined ? 1 : d); return (Math.round(x * p) / p).toFixed(d === undefined ? 1 : d); }
   function count(n) { return Math.round(n).toLocaleString("en-US"); }
+  function share(x) { return x < 0.1 ? x.toFixed(2) : pct(x); }
+  function pctOf(x) { return Math.abs(x) > 100 ? "more than 10,000" : pct(Math.abs(x) * 100); }
+  function scopeWords(scope) {
+    return scope === "All segments" ? "all segments" : scope === "All except Business" ? "all segments except Business" : scope;
+  }
   function sum(a) { return a.reduce(function (t, x) { return t + x; }, 0); }
   function press(group, on) { group.forEach(function (id) { $(id).setAttribute("aria-pressed", String(id === on)); }); }
   function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
@@ -965,8 +970,8 @@ PAGE = r"""<!doctype html>
          MUMBAI.length + " of 50; a director's Rs 500 voucher goes in a yellow input and costs " + R(500 * MUMBAI.length) +
          " for Mumbai. The Checks tab runs five checks, and its release holds whatever a failing check stands behind.",
       d: function () {
-        return K.columns(["the protect list, filtered to Mumbai"], [["SUM at the foot", [PROTECT_SUM]], ["SUBTOTAL(109) at the foot", [MUMBAI_SUM]]],
-          { fmt: R, width: 520, title: "One filtered list, two feet" });
+        return K.columns(["filtered to Mumbai"], [["SUM at the foot", [PROTECT_SUM]], ["SUBTOTAL(109) at the foot", [MUMBAI_SUM]]],
+          { fmt: R, width: 520, title: "The protect list filtered to Mumbai: one list, two feet" });
       } }
   ];
   var walkAt = 0;
@@ -993,7 +998,7 @@ PAGE = r"""<!doctype html>
   D.segments.forEach(function (s) { var o = document.createElement("option"); o.textContent = s; $("seg").appendChild(o); });
   var WAYS = {
     re: ["Hand them a PivotTable with each leaf beside it as a ratio of the pivot's sums. On this table that is 1 pivot and 8 leaf formulas, a director can re-slice by any of the 6 columns in seconds, and it recalculates when someone presses Refresh.", 0],
-    if: ["Hand them a SUMIFS grid. It takes 12 formulas reading 3,600 cells, and a city split adds 72 more, and every formula recalculates the moment a director's input changes, where a PivotTable waits for Refresh.", 1],
+    if: ["Hand them a SUMIFS grid. It takes 12 formulas reading 3,600 cells and a city split adds 72 more, and every formula recalculates the moment a director's input changes, where a PivotTable waits for Refresh.", 1],
     read: ["Paste the tied values. That takes 0 formulas, and it holds only while nobody asks a new question in the room.", 2],
     login: ["A live dashboard on the warehouse answers anything, and every director needs a login, which the chief of staff's brief rules out.", 3]
   };
@@ -1006,7 +1011,7 @@ PAGE = r"""<!doctype html>
     $("c1OpcD").textContent = x.orders + " orders over " + x.customers + " customers";
     $("c1Rpo").textContent = R(rpo);
     $("c1RpoD").textContent = avg ? "the average of " + x.customers + " customers' own ratios" : money(x.revenue) + " over " + x.orders + " orders";
-    $("c1Share").textContent = pct(x.share) + "%";
+    $("c1Share").textContent = share(x.share) + "%";
     $("c1ShareD").textContent = money(x.revenue) + ", its share of the table's revenue";
     $("c1Identity").textContent = avg
       ? x.customers + " customers × (" + x.orders + " / " + x.customers + ") orders each × " + R(rpo) + " an order comes to " + money(back)
@@ -1138,17 +1143,18 @@ PAGE = r"""<!doctype html>
     else if (wrong) ans.textContent = "The sheet shows " + R(row[3]) + (row[4] && row[4] <= 50 ? ", rank " + row[4] + " on the protect list" : ", a " + row[1] + " customer in " + row[2]) +
       ". That is " + row[0] + "'s row, returned for " + id + ", and nothing on the screen is red.";
     else ans.textContent = id + ": " + row[1] + ", " + row[2] + ", " + R(row[3]) + (row[4] && row[4] <= 50 ? ", rank " + row[4] + " of 50 on the protect list." : ", not on the protect list.");
-    $("c3Check").innerHTML = "<b>The check.</b> Asked " + id + ", returned " + (row ? row[0] : "nothing") + ": " +
-      (wrong ? '<span class="warn">a different member, so the lookup is wrong.</span>' : '<span class="ok">the lookup answers for the id asked.</span>');
+    $("c3Check").innerHTML = "<b>The check.</b> Asked " + id + ", returned " + (row ? row[0] : "\"not in the table\"") + ": " +
+      (wrong ? '<span class="warn">a different member, so the lookup is wrong.</span>'
+             : (row ? '<span class="ok">the lookup answers for the id asked.</span>' : '<span class="ok">the lookup says so when an id is missing.</span>'));
     var agree = l.count === 0 ? !row : !!row && row[0] === id;
     $("c3Second").innerHTML = "<b>A second route.</b> =COUNTIF(A:A, \"" + id + "\") finds " + l.count + (l.count === 1 ? " row" : " rows") +
       (l.count === 1 ? " and =SUMIFS(E:E, A:A, \"" + id + "\") adds " + R(l.exact[3]) : "") + ", which " +
       (agree ? '<span class="ok">agrees with the lookup.</span>' : '<span class="warn">disagrees with the lookup, so one of the two is wrong.</span>');
     $("c3Cut").textContent = R(D.plus[49]);
-    $("c3CutD").textContent = "rank 50; the fifty-first spent " + R(D.plus[50]) + ", and the fifty " + R(PROTECT_SUM);
-    var marks = [["cut-off, rank 50", D.plus[49], "good"]];
-    if (row && row[4] && row[4] <= 106 && row[1] === "Retail-Plus") marks.push([(wrong ? "returned for " + id : id) + ", rank " + row[4], row[3], wrong ? "bad" : "plain"]);
-    K.draw("c3Strip", K.strip(D.plus, { fmt: R, width: 880, hi: 30000, lit: D.plus.slice(0, 50).map(function (_, i) { return i; }), markers: marks,
+    $("c3CutD").textContent = "the fiftieth member's revenue; the fifty-first spent " + R(D.plus[50]) + ", and the fifty spent " + R(PROTECT_SUM) + " together";
+    var cuts = [["cut-off, rank 50", D.plus[49], "good"]];
+    if (row && row[4] && row[4] <= 106 && row[1] === "Retail-Plus") cuts.push([(wrong ? "returned for " + id : id) + ", rank " + row[4], row[3], wrong ? "bad" : "plain"]);
+    K.draw("c3Strip", K.strip(D.plus, { fmt: R, width: 880, hi: 30000, lit: D.plus.slice(0, 50).map(function (_, i) { return i; }), markers: cuts,
       title: "The 106 Retail-Plus members by revenue across the two quarters; the fifty on the protect list are dark" }));
   }
   $("lookId").addEventListener("change", function () {
@@ -1174,13 +1180,13 @@ PAGE = r"""<!doctype html>
   function ch4() {
     var n = cardNumbers(), ties = treeTies(), card = $("c4Card");
     var dir = n.change < 0 ? "down " : "up ";
-    var full = S.scope + ", Q2, July to September 2026: " + money(n.q2) + ", " + dir + pct(Math.abs(n.change) * 100) + " percent on Q1, April to June 2026 (" + money(n.q1) + ")";
+    var full = S.scope + ", Q2, July to September 2026: " + money(n.q2) + ", " + dir + pctOf(n.change) + " percent on Q1, April to June 2026 (" + money(n.q1) + ")";
     var text;
     if (!ties) text = "Hold the card: it reads a tree that does not tie to the warehouse, counted " + MODE_NAME[S.mode] + (S.exp === "early" ? " on the early export" : "") + ".";
     else if (S.form === "a") text = "Revenue " + money(n.q1 + n.q2);
     else if (S.form === "b") text = "Q2 revenue " + money(n.q2);
     else if (S.form === "c") text = full + ".";
-    else text = full + "; " + pct(n.q2 / n.comp * 100) + " percent of company revenue in Q2.";
+    else text = full + "; " + share(n.q2 / n.comp * 100) + " percent of company revenue in Q2.";
     card.className = "verdict line " + (!ties || S.form === "a" || S.base === "Q2" ? "bad" : "good");
     card.textContent = text;
     var segs = scopeSegs(S.scope);
@@ -1190,8 +1196,12 @@ PAGE = r"""<!doctype html>
         var moves = segs.map(function (s) { var a = T(s, "Q1").revenue, b = T(s, "Q2").revenue; return [s, b - a, (b - a) / a]; });
         var worstRs = moves.slice().sort(function (a, b) { return a[1] - b[1]; })[0];
         var worstPct = moves.slice().sort(function (a, b) { return a[2] - b[2]; })[0];
-        sentence = "Where the change sits: in rupees " + worstRs[0] + " carries " + money(-worstRs[1]) + " of the " + money(n.q1 - n.q2) +
-          " fall, and the steepest fall is " + worstPct[0] + ", down " + pct(-worstPct[2] * 100) + " percent.";
+        var risers = moves.filter(function (m) { return m[1] > 0; }).map(function (m) { return m[0]; });
+        var net = n.q1 - scopeQ(S.scope, "Q2", "revenue");
+        if (net <= 0 || worstRs[1] >= 0) sentence = "Where the change sits: " + scopeWords(S.scope) + " rose by " + money(-net) + " from Q1 to Q2.";
+        else sentence = "Where the change sits: in rupees the largest fall is " + worstRs[0] + "'s " + money(-worstRs[1]) +
+          (-worstRs[1] <= net ? ", out of a net fall of " + money(net) : ", more than the net fall of " + money(net) + " because " + risers.join(" and ") + " rose") +
+          ", and the steepest fall is " + worstPct[0] + ", down " + pct(-worstPct[2] * 100) + " percent.";
       } else {
         var a = T(segs[0], "Q1"), b = T(segs[0], "Q2");
         sentence = "Where the change sits: customers who ordered went from " + a.customers + " to " + b.customers + ", orders each from " +
@@ -1210,7 +1220,7 @@ PAGE = r"""<!doctype html>
     var right = (n.q2 - n.q1) / n.q1;
     $("c4Check").innerHTML = "<b>The check.</b> " + (S.base === "Q1"
       ? '<span class="ok">The change is measured on Q1, the earlier quarter.</span>'
-      : '<span class="warn">The change is divided by Q2, the later quarter: it reads ' + pct(Math.abs(n.change) * 100) + " percent where it moved " + pct(Math.abs(right) * 100) + " percent.</span>");
+      : '<span class="warn">The change is divided by Q2, the later quarter: it reads ' + pctOf(n.change) + " percent where it moved " + pctOf(right) + " percent.</span>");
     if (S.form === "d" && ties) {
       K.draw("c4Trend", K.line(MONTHS, [[S.scope, scopeMonths(S.scope), S.typed !== null ? "bad" : "plain"]], { fmt: money, width: 860,
         title: "The trend beside the number: " + S.scope + ", revenue by month, April to September 2026" }));
@@ -1224,7 +1234,7 @@ PAGE = r"""<!doctype html>
   Object.keys(FORMIDS).forEach(function (id) {
     $(id).addEventListener("click", function () { S.form = FORMIDS[id]; press(Object.keys(FORMIDS), id); $("c4Said").textContent = FORMSAY[S.form]; ch4(); });
   });
-  $("scope").addEventListener("change", function () { S.scope = this.value; $("c4Said").textContent = "The card now covers " + S.scope + "."; ch4(); });
+  $("scope").addEventListener("change", function () { S.scope = this.value; $("c4Said").textContent = "The card now covers " + scopeWords(S.scope) + "."; ch4(); });
   var BASEIDS = { baseQ1: "Q1", baseQ2: "Q2" };
   Object.keys(BASEIDS).forEach(function (id) {
     $(id).addEventListener("click", function () {
@@ -1236,12 +1246,12 @@ PAGE = r"""<!doctype html>
 
   /* ---------------------------------------------------------------- chapter 5 */
   var STEPS = [
-    ["Monday: the tree by segment and quarter", 0, "Finance audits it, and a GROUP BY anyone can rerun computes it."],
-    ["Chapter 2: counting each order once", 0, "A grain fix is cleaning, so the export should arrive at the order grain and the first-row flag becomes a check."],
-    ["Tuesday: booked against collected", 0, "It joins one order to several payments, which a lookup gets wrong and a query gets right."],
-    ["Wednesday: the top fifty with a tie rule", 0, "Finance and Marketing both rely on the rank, so it lives where it can be rerun and audited."],
-    ["Thursday: the customer table", 1, "It is the analyst's weekly iteration, and it stays in pandas until Finance relies on it."],
-    ["Friday: the pivot, the lookup and the card", 2, "Presenting, slicing and looking up on an export that ties is the workbook's last mile."],
+    ["Monday's tree by segment and quarter", 0, "Finance audits it, and a GROUP BY anyone can rerun computes it."],
+    ["Friday's count of each order once, the first-row flag", 0, "A grain fix is cleaning, so the export should arrive at the order grain and the first-row flag becomes a check."],
+    ["Tuesday's booked against collected", 0, "It joins one order to several payments, which a lookup gets wrong and a query gets right."],
+    ["Wednesday's top fifty with a tie rule", 0, "Finance and Marketing both rely on the rank, so it lives where it can be rerun and audited."],
+    ["Thursday's customer table", 1, "It is the analyst's weekly iteration, and it stays in pandas until Finance relies on it."],
+    ["Friday's pivot, lookup and card", 2, "Presenting, slicing and looking up on an export that ties is the workbook's last mile."],
     ["A director's what-if in the room", 2, "An assumption goes in a labelled yellow input beside the actual, never over it."]
   ];
   STEPS.forEach(function (s, i) { var o = document.createElement("option"); o.value = String(i); o.textContent = s[0]; $("step").appendChild(o); });
@@ -1269,7 +1279,7 @@ PAGE = r"""<!doctype html>
     kinds[st[1]] = "lit";
     K.draw("c5Rule", K.vflow(["the warehouse\nevery join, dedupe and rank Finance relies on", "pandas\nthe analyst's iteration until Finance relies on it",
       "the workbook\npresenting, slicing, looking up and what-ifs"], st[1],
-      { width: 300, kinds: kinds, edges: ["queried and exported", "an export that ties"], title: "Where the step lives: " + st[0] }));
+      { width: 300, kinds: kinds, edges: ["queried and exported", "an export that ties"], title: "Where it lives: " + st[0] }));
     $("c5RuleSays").textContent = st[0] + " lives in " + ["the warehouse", "pandas", "the workbook"][st[1]] + ". " + st[2];
   }
   var COLIDS = { colLookup: "lookup", colSum: "every" };
@@ -1308,7 +1318,8 @@ PAGE = r"""<!doctype html>
       R(visSum) + ", which " + (foot === visSum ? '<span class="ok">agrees with the foot.</span>' : '<span class="warn">disagrees with the foot.</span>');
     var v = isFinite(S.voucher) && S.voucher >= 0 ? S.voucher : 0;
     $("c6Cost").innerHTML = "<b>The what-if.</b> =B1*SUBTOTAL(103, A2:A51), with the voucher in yellow B1: " + R(v) + " × " + vis.length + " = <b>" + R(v * vis.length) +
-      "</b> for the members on screen; the whole list would cost " + R(v * 50) + ". The list's figures never change, because the assumption sits beside them.";
+      "</b> for the members on screen" + (vis.length < 50 ? ", where the whole list would cost " + R(v * 50) : "") +
+      ". The list's figures never change, because the assumption sits beside them.";
     K.draw("c6Feet", K.columns(["the foot, " + (S.foot === "sub" ? "SUBTOTAL(109)" : "SUM"), "what the rows on screen spent"], [[S.city, [foot, visSum]]],
       { fmt: R, lit: follows ? [] : [0], width: 420, title: "The foot against the rows on screen, " + S.city }));
     var html = '<table class="t"><tr><th class="num">Rank</th><th>City</th><th class="num">Revenue</th></tr>';
@@ -1319,7 +1330,11 @@ PAGE = r"""<!doctype html>
     html += '<tr><td colspan="2"><b>' + (S.foot === "sub" ? "SUBTOTAL(109)" : "SUM") + '</b></td><td class="num"><b>' + R(foot) + "</b></td></tr></table>";
     $("c6List").innerHTML = html;
   }
-  $("city").addEventListener("change", function () { S.city = this.value; $("c6Said").textContent = "A director filtered the list to " + S.city + "."; ch6(); checks(); });
+  $("city").addEventListener("change", function () {
+    S.city = this.value;
+    $("c6Said").textContent = S.city === "All cities" ? "A director cleared the filter, so all fifty members are on screen." : "A director filtered the list to " + S.city + ".";
+    ch6(); checks();
+  });
   var FOOTIDS = { footSub: "sub", footSum: "sum" };
   Object.keys(FOOTIDS).forEach(function (id) {
     $(id).addEventListener("click", function () {
@@ -1378,7 +1393,7 @@ PAGE = r"""<!doctype html>
     $("release").textContent = text;
     $("releaseStrip").className = "strip" + (kind ? " " + kind : "");
     var why = rows.filter(function (r) { return r[2] === "hold"; }).map(function (r) { return r[0].charAt(0).toLowerCase() + r[0].slice(1); });
-    $("releaseWhy").textContent = why.length ? "The checks that read HOLD: " + why.join("; ") + "." : "No check this page runs reads HOLD.";
+    $("releaseWhy").textContent = why.length ? "The checks that read HOLD: \"" + why.join("\", \"") + "\"." : "No check this page runs reads HOLD.";
   }
   var SRCIDS = { srcUnrun: "unrun", srcTies: "ties", srcShort: "short" };
   var SRCSAY = { unrun: "You have not told the page what your run found, so the source line waits for you.",
@@ -1396,7 +1411,7 @@ PAGE = r"""<!doctype html>
     press(Object.keys(COLIDS), "colSum"); press(Object.keys(EXPIDS), "expToday"); press(Object.keys(FOOTIDS), "footSub");
     press(Object.keys(SRCIDS), "srcUnrun");
     everything();
-    $("checksSaid").textContent = "Every panel is back at its honest setting: each order counted once, an exact lookup, SUBTOTAL(109) at the foot, nothing typed over, and your source run not yet told.";
+    $("checksSaid").textContent = "Every panel is back at its honest setting: each order counted once, an exact lookup, SUBTOTAL(109) at the foot and nothing typed over, with the source line waiting for your run.";
   });
 
   function everything() { ch1(); ch1Way(); ch2(); ch2Scale(); ch3(); ch4(); ch5(); ch6(); checks(); }
@@ -1514,7 +1529,7 @@ PAGE = r"""<!doctype html>
     openSeq("Experiment F, as a sequence", ["the filter", "SUM", "SUBTOTAL(109)"], [
       ["the filter", "SUM", "hide five rows"], ["SUM", "SUM", "adds all eight: Rs 60,000"],
       ["the filter", "SUBTOTAL(109)", "hide five rows"], ["SUBTOTAL(109)", "SUBTOTAL(109)", "adds 3: Rs 25,500"]],
-      "The filter changes what the eye sees, and only one of the two formulas follows the eye.");
+      "The filter changes which rows are on screen, and only SUBTOTAL(109) adds just those rows.");
   });
   drawF();
 
