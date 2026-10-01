@@ -177,9 +177,9 @@ run.
 160 customers, C-6000 to C-6159, under the platform's own ids, a separate population from Finance's
 order file (whose customers run C-2000 to C-5003). It records who received the sale, whatever the
 sale was aimed at, which is why it holds 30 Retail-Core customers although `campaigns.csv` targets
-Retail-Plus: the campaigns table is the plan, the list is what the platform sent. That story is this
-pack's own reading, logged in the provenance's invented list for a client zero v2.3 note; say it as
-the pack's reading if a learner presses on it. The retention offer is sized on Finance's 22
+Retail-Plus: the campaigns table is the plan, the list is what the platform sent. Client zero records
+that origin (section 1d, addendum `exposure-platform-list`, 1 October 2026), so say it plainly if a
+learner presses on it. The retention offer is sized on Finance's 22
 Retail-Plus members and the hold-back on the platform's 70.
 
 If a learner asks whether the data is rigged, answer with the question back: "What would you check?"

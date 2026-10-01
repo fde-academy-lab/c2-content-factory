@@ -97,7 +97,7 @@ each hold, and what is one row?
 
 | File | One row is | Rows | Why it bears on this question |
 |---|---|---|---|
-| `appointments` | One entry in a centre's visit register, Q3 only | 7,133 | Every visit, its centre, its day, its kind and whether the patient was seen |
+| `appointments` | One visit a booking brought to a centre, Q3 only | 3,685 | Every visit, its booking, its centre, its day, its kind and whether the patient was seen |
 | `sites` | One laboratory or patient service centre | 18 | Which metro each centre is in, and which sites are centres |
 
 Every group holds all ten files, and you may use any of them; these two are where this question
@@ -119,10 +119,10 @@ checked number.
 
 | Way | What the group does | Rows it touches | Hours | What it can get wrong | The Week 1 or 2 move it needs |
 |---|---|---|---|---|---|
-| A. Rank the twelve centres on the report's rate | Recomputes each centre's rate the way the report does and acts on the worst | 7,133 visits | Under 1 | Takes the report's ranking as the answer, with nothing checked | Week 2 Thursday: grouping a count by centre |
-| B. Recompute every rate on a definition you state and defend | Writes the rate's definition down, then compares KH-ATL-03 with the other eleven centres on it | 7,133 visits and 18 sites | About 2 | A sound definition can still leave a gap that chance produces, and this way says nothing about chance | Week 1 Monday: a metric defined before it is counted; Week 1 Thursday: how many people stand behind a percentage |
-| C. Ask whether chance could produce the gap | On the chosen definition, works out how often a centre with KH-ATL-03's number of visits would sit this far from the others by luck alone, with a permutation or binomial check | 7,133 visits | About 3, with B | Answers real or noise on whatever definition is fed into it, so a wrong definition gets a confident answer | Week 1 Thursday: real, or the wobble, and is it worth acting on |
-| D. Check the comparison is fair before running it | Lists what else differs between KH-ATL-03 and the other centres before comparing them, then compares like with like | 7,133 visits and 18 sites | About 2 | Can only rule out what the register records; a patient's own reason for missing a slot is not in the files | Week 1 Thursday: is the split fair, and do the two groups differ only in the thing tested |
+| A. Rank the twelve centres on the report's rate | Recomputes each centre's rate the way the report does and acts on the worst | 3,685 visits | Under 1 | Takes the report's ranking as the answer, with nothing checked | Week 2 Thursday: grouping a count by centre |
+| B. Recompute every rate on a definition you state and defend | Writes the rate's definition down, then compares KH-ATL-03 with the other eleven centres on it | 3,685 visits and 18 sites | About 2 | A sound definition can still leave a gap that chance produces, and this way says nothing about chance | Week 1 Monday: a metric defined before it is counted; Week 1 Thursday: how many people stand behind a percentage |
+| C. Ask whether chance could produce the gap | On the chosen definition, works out how often a centre with KH-ATL-03's number of visits would sit this far from the others by luck alone, with a permutation or binomial check | 3,685 visits | About 3, with B | Answers real or noise on whatever definition is fed into it, so a wrong definition gets a confident answer | Week 1 Thursday: real, or the wobble, and is it worth acting on |
+| D. Check the comparison is fair before running it | Lists what else differs between KH-ATL-03 and the other centres before comparing them, then compares like with like | 3,685 visits and 18 sites | About 2 | Can only rule out what the register records; a patient's own reason for missing a slot is not in the files | Week 1 Thursday: is the split fair, and do the two groups differ only in the thing tested |
 
 Which way leads, and which one checks it, is your group's call. Make it in Part 2 of the translation
 worksheet, `briefs/C2_W03_D01_translation_worksheet_STUDENT.md`, before anyone opens a notebook, and

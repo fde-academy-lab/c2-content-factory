@@ -3,7 +3,7 @@
 
 **Status: LOCKED.** Version 2.2, locked 13 September 2026. Every day pack builds against this file. Changes ship as a new version with a date and a note of what they invalidate.
 
-Addendum to v2.2, decided by the requester on 28 September 2026: the Global Capability Centre frame in section 1b. It adds a name and a framing and invalidates nothing below.
+Addenda to v2.2, each decided by the requester: the Global Capability Centre frame in section 1b (28 September 2026), which adds a name and a framing and invalidates nothing below; Kalpa Health serving the US in section 1c (30 September 2026); and the origin of Week 1 Thursday's exposure list in section 1d (1 October 2026), which changes no number.
 
 Version history: v1.0 proposed 9 September (company, units, entity model, spine dataset). v2.2 locked 13 September, superseding v2.1 the same day: the full nine-week ladder is fixed to the day, the stakeholder table adds Kavya Nair, Rohan Desai, Farhan Sheikh and Ananya Bose, the Build 2 and Build 3 sub-problems are seeded, and the reviews and tickets datasets have their entry days. v2.1: the week ladder is realigned to the 20-week plan's week focus (inference and causal reasoning sit in Week 1, Week 2 is data manipulation through a full Excel day), the named stakeholders are fixed, the campaigns table enters in Week 1, and the Kalpa Health sub-problems for Build 1 are seeded. v2.0: the storyline is now business-problem-first per the 10 September curriculum review, each day opens on a business question rather than a technique, three threads run across the modules, domain rotation is scheduled, three datasets are added, and planted defects are never shown to students.
 
@@ -91,6 +91,18 @@ seven reason categories modelled on the X12 claim adjustment reason codes: eligi
 missing or invalid information, medical necessity, prior authorization, non-covered service,
 duplicate claim and timely filing. The two quarters are calendar Q2 (April to June) and Q3 (July to
 September) of 2026.
+
+## 1d. Week 1 Thursday's exposure list (addendum, 1 October 2026)
+
+The requester settled on 1 October 2026 where Week 1 Thursday's exposure table comes from
+(addendum `exposure-platform-list` in `data/programme/facts.yaml`). It is the campaign platform's
+August list: the 160 customers the platform reports on for the monsoon sale, 60 of them marked
+exposed, under the platform's own customer ids, C-6000 to C-6159. Finance's order file keys its
+customers C-2000 to C-5003, so no row of the list matches an order, and the two are separate
+populations. The campaigns table is the plan, which aims the sale at Retail-Plus; the list records
+who received it, whatever the plan aimed at, so it marks 30 Retail-Core customers exposed beside 30
+Retail-Plus. The addendum gives the list an origin and changes no number in v2.2 or in that day's
+data.
 
 ## 2. The principle behind every day
 

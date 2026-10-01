@@ -98,7 +98,8 @@ renumber script is gone.
   the sale whatever the sale was aimed at: the campaigns table is the plan and the list is what the
   platform sent. For a client zero v2.3 note: the lock should name the exposure table as the
   platform's list keyed separately from the orders, and say that it records receipt, whatever the
-  target.
+  target. Settled on 1 October 2026, when the requester made it client-zero addendum
+  `exposure-platform-list`, section 1d of `docs/07_Client_Zero.md`.
 - The invented campaigns, stores and limits in the chapter sets' design items (for example the
   northern and southern stores, the campaign month at 40 against 33 percent, the Rs 4,500 limit on
   the hold-back), each labelled invented in its set's opening paragraph.

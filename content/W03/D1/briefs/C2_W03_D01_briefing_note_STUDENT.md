@@ -116,7 +116,7 @@ description, so what the files hold beyond it is yours to find.
 | `C2_W03_D01_booking_tests_STUDENT.csv` | The tests and panels on each booking | 51,456 |
 | `C2_W03_D01_claims_STUDENT.csv` | The billing system's export of claims | 11,356 |
 | `C2_W03_D01_remittances_STUDENT.csv` | The posting system: payers' remittances and the centres' card and cash desks | 11,343 |
-| `C2_W03_D01_appointments_STUDENT.csv` | The patient service centres' visit register for Q3 | 7,133 |
+| `C2_W03_D01_appointments_STUDENT.csv` | The patient service centres' visit register for Q3 | 3,685 |
 | `C2_W03_D01_campaign_STUDENT.csv` | Marketing's list for the free at-home collection offer | 2,381 |
 
 The rows exclude each file's header line. The files are in `data/` beside this note, and every group

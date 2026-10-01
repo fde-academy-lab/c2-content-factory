@@ -464,7 +464,7 @@ Fix every finding. A second round runs only when a fix changed a number, a key o
   - **The headline-claim sheet:** the claim, its denominator, its period and its caveat.
   - **The catch-up plan:** for a group that is behind.
   - **The trainer day sheet:** the day's question ladder and the grid.
-- `{EXISTS}`: Every file above exists from the first wave. The run sheet and the checkpoint guide still carry the India setting.
+- `{EXISTS}`: Every file above exists from the first wave. The run sheet and the checkpoint guide still carry the India setting. The visit register was drawn again from the bookings on 1 October 2026 (decision `build1-register-from-bookings`), so the checkpoint guide's no-show numbers and `internal/C2_W03_D03_numbers_INTERNAL.py` still carry the old register, and the script stops on its sub-problem 4 assertion until both follow the witness.
 
 #### Build 1 Thursday
 
@@ -475,7 +475,7 @@ Fix every finding. A second round runs only when a fix changed a number, a key o
   - **The mock brief (STUDENT):** the format, the timing and what the `W03/mock` rubric scores, and never the questions.
   - **The roster and the scoring sheet:** copying the `W03/mock` rubric.
   - **The trainer day sheet:** the day's question ladder and the grid.
-- `{EXISTS}`: Every file above exists from the first wave. The viva prompts and the question bank still carry the India setting.
+- `{EXISTS}`: Every file above exists from the first wave. The viva prompts and the question bank still carry the India setting, and the viva prompts and the provenance quote the old register's no-show numbers, which changed when the register was drawn again from the bookings on 1 October 2026 (decision `build1-register-from-bookings`).
 
 #### Build 1 Friday
 
@@ -486,7 +486,7 @@ Fix every finding. A second round runs only when a fix changed a number, a key o
   - **The GD scoring sheet and roster:** copying the `W03/gd` rubric.
   - **The cold demo checklist and the cold-run script:** run on the data pack, with the spine's rule for a demo that fails.
   - **The trainer day sheet:** the day's question ladder and the grid.
-- `{EXISTS}`: Every file above exists from the first wave. The ten GD cards, the prompts and the facilitation notes still carry the India setting. The cold-run script already pins the regenerated remittances file.
+- `{EXISTS}`: Every file above exists from the first wave. The ten GD cards, the prompts and the facilitation notes still carry the India setting. The cold-run script already pins the regenerated remittances, appointments and legacy bookings files. The day sheet's no-show row still quotes the old register, which changed on 1 October 2026 (decision `build1-register-from-bookings`).
 
 #### Build 1 Saturday
 
@@ -497,7 +497,7 @@ Fix every finding. A second round runs only when a fix changed a number, a key o
   - **The closure run sheet.**
   - **The week-close deck and its notes.**
   - **The mini project scoring and grade closure workbooks:** copying the `W03/mini-project` rubric, each applying the spine's rule for a demo that fails.
-- `{EXISTS}`: Every file above exists from the first wave. The panel's question bank and the week-close notes still carry the India setting.
+- `{EXISTS}`: Every file above exists from the first wave. The panel's question bank and the week-close notes still carry the India setting. Both, and `internal/C2_W03_SAT_witness_INTERNAL.py`, quote the old register's no-show numbers, which changed on 1 October 2026 (decision `build1-register-from-bookings`), so the witness reports five disagreements on sub-problem 4 until it follows the spine.
 
 ## 5. Done
 

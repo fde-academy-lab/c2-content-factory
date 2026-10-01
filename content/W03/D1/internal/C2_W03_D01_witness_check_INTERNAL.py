@@ -49,6 +49,7 @@ lines = load("booking_tests")
 claims = load("claims")
 postings = load("remittances")
 appointments = load("appointments")
+sites = load("sites")
 campaign = load("campaign")
 patients = load("patients")
 
@@ -379,12 +380,29 @@ X["gap_reversals"] = -sum(float(p_["paid_amount"]) for p_ in kept if p_["posting
 n_all, k_all, p_all = len(small_all), sum(1 for a in small_all if a["attended"] == "N"), W["others_rate_all_visits"]
 X["small_site_tail_probability_all_visits"] = sum(math.comb(n_all, j) * p_all ** j * (1 - p_all) ** (n_all - j)
                                                   for j in range(k_all, n_all + 1))
-# The register against the booking system, which the files do not reconcile.
-X["small_site_q3_bookings_old_system"] = sum(1 for r in copies.values()
-                                             if r[0]["site_code"] == small and r[0]["booking_date"] >= "2026-07-01")
-X["small_site_q3_walk_in_bookings"] = sum(1 for r in copies.values() if r[0]["site_code"] == small
-                                          and r[0]["booking_date"] >= "2026-07-01" and r[0]["channel"] == "walk-in")
-X["bookings_at_laboratories"] = sum(1 for r in copies.values() if r[0]["site_code"].endswith("-01"))
+# The register against the booking systems: every row names a booking at the same centre, in the old
+# export under its booking id or in the new system under its reference and site code.
+site_of_new = {s["new_system_code"]: s["site_code"] for s in sites if s["new_system_code"]}
+booked_at = {r["booking_id"]: r["site_code"] for r in legacy}
+booked_at.update({r["bkg_ref"]: site_of_new[r["site"]] for r in newsys})
+X["register_rows"] = len(appointments)
+X["register_rows_off_their_booking"] = sum(1 for a in appointments
+                                           if booked_at.get(a["booking_id"]) != a["site_code"])
+slots = {}
+for a in appointments:
+    if a["kind"] == "scheduled":
+        slots.setdefault(a["booking_id"], []).append(a)
+X["bookings_with_two_slots"] = sum(1 for v in slots.values() if len(v) == 2)
+# Counted per booking instead of per slot: a scheduled booking that missed a slot.
+missed_one = {b: any(a["attended"] == "N" for a in v) for b, v in slots.items()}
+small_bk = [b for b, v in slots.items() if v[0]["site_code"] == small]
+other_bk = [b for b, v in slots.items() if v[0]["site_code"] != small]
+X["small_site_scheduled_bookings"] = len(small_bk)
+X["small_site_bookings_missing_a_slot"] = sum(missed_one[b] for b in small_bk)
+X["others_share_missing_a_slot"] = sum(missed_one[b] for b in other_bk) / len(other_bk)
+n_b, k_b, p_b = len(small_bk), X["small_site_bookings_missing_a_slot"], X["others_share_missing_a_slot"]
+X["small_site_tail_probability_per_booking"] = sum(math.comb(n_b, j) * p_b ** j * (1 - p_b) ** (n_b - j)
+                                                   for j in range(k_b, n_b + 1))
 # New York, where Wednesday's parallel build slices.
 X["new_york_repeated_ids"] = sum(1 for v in repeated.values() if v[0]["metro"] == "New York")
 X["new_york_text_amounts"] = sum(1 for c in claims if c["metro"] == "New York" and not c["billed_amount"].isdigit())
@@ -400,7 +418,7 @@ DAY_SHEET = {
     "q2_billed": 970098, "q2_mean_claim": 176.13, "billed_growth_with_contract": 0.269,
     "billed_growth_without_contract": 0.083, "claim_refs_as_claim_ids": 216,
     "claim_refs_as_CLM_numbers": 2269, "claim_refs_as_bare_digits": 8858,
-    "next_worst_rate_all_visits": 0.096, "next_worst_rate_scheduled": 0.168,
+    "next_worst_rate_all_visits": 0.098, "next_worst_rate_scheduled": 0.185,
     "centres_in_register": 12, "lift_New York": 0.235, "lift_Chicago": -0.048,
     "lift_Philadelphia": 0.006, "gap_before_offer_Dallas": 0.014,
     "gap_before_offer_Atlanta": -0.052, "gap_before_offer_Phoenix": -0.061,
@@ -413,8 +431,10 @@ DAY_SHEET = {
     "accepted_without_home_booking_in_window": 689, "gap_billed_less_paid": 1399785.44,
     "gap_contractual": 883254.70, "gap_no_posting": 253165, "gap_denied": 222108,
     "gap_patient_shares": 32594.87, "gap_reversals": 8662.87,
-    "small_site_tail_probability_all_visits": 0.013, "small_site_q3_bookings_old_system": 340,
-    "small_site_q3_walk_in_bookings": 142, "bookings_at_laboratories": 3747,
+    "small_site_tail_probability_all_visits": 0.0014, "register_rows": 3685,
+    "register_rows_off_their_booking": 0, "bookings_with_two_slots": 253,
+    "small_site_scheduled_bookings": 64, "small_site_bookings_missing_a_slot": 15,
+    "others_share_missing_a_slot": 0.173, "small_site_tail_probability_per_booking": 0.13,
     "new_york_repeated_ids": 33, "new_york_text_amounts": 6, "new_york_fee_claims": 219,
 }
 
@@ -435,10 +455,10 @@ SPINE = {
     "denial_postings": 1137, "denial_rate_retail": 0.104, "denial_rate_Medicaid": 0.149,
     "denial_rate_commercial": 0.113, "denial_rate_Medicare": 0.088, "denial_rate_self-pay": 0.0,
     "denied_billed": 230132, "paid_net_of_double_posts": 801314, "billed_all": 2201099,
-    "small_site_rate_all_visits": 0.192, "others_rate_all_visits": 0.087,
-    "small_site_rate_scheduled": 0.200, "small_site_no_shows": 10,
-    "small_site_scheduled": 50, "others_rate_scheduled": 0.152,
-    "small_site_tail_probability": 0.22, "campaign_lift_aggregate": 0.090,
+    "small_site_rate_all_visits": 0.188, "others_rate_all_visits": 0.079,
+    "small_site_rate_scheduled": 0.190, "small_site_no_shows": 15, "small_site_walk_ins": 1,
+    "small_site_scheduled": 79, "others_rate_scheduled": 0.151,
+    "small_site_tail_probability": 0.21, "campaign_lift_aggregate": 0.090,
     "lift_Dallas": -0.108, "lift_Atlanta": -0.199, "lift_Phoenix": -0.130,
     "campaign_metros_prior_change": 0.069,
 }
@@ -464,8 +484,10 @@ for key, value in X.items():
         print(f"      {key}: {shown}")
         continue
     tol = 0.0006 if isinstance(want, float) and abs(want) < 1 else 0.6
-    if key in ("new_york_permutation_p_two_sided", "small_site_tail_probability_all_visits"):
+    if key in ("new_york_permutation_p_two_sided", "small_site_tail_probability_per_booking"):
         tol = 0.006
+    if key == "small_site_tail_probability_all_visits":
+        tol = 0.00006
     ok = abs(float(value) - want) <= tol
     fails += not ok
     print(f"{'PASS' if ok else 'FAIL'}  {key}: {shown} (day sheet {want})")
