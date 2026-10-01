@@ -68,8 +68,8 @@ The key is c, "The long table fits, at 540 rows by 3 columns, 1,620 cells, none 
 month by `groupby`". A trend is one number per month, and grouping the long table by month gives it
 from 540 rows with nothing empty.
 
-- a, "The wide table fits, at 150 rows by 13 columns, 1,950 cells, 1,260 of them empty, read along a
-  row": The member and twelve months make 13 columns, so 150 rows hold 1,950 cells, and 1,260 of the
+- a, "The wide table fits, at 150 rows by 13 columns, 1,950 cells, 1,260 of them empty, read along
+  each member's row": The member and twelve months make 13 columns, so 150 rows hold 1,950 cells, and 1,260 of the
   1,800 month cells are empty. It is read along a member's row, which is a comparison, and the trend
   needs its columns summed first.
 - b, "A query per month fits, with 12 columns written by hand, so a 13th month is an edit": Every

@@ -76,7 +76,7 @@ Invented projection: next year the tier has 150 members who order, in about 540 
 across 12 months. The head of Retail-Plus wants one slide: the tier's spend month by month, as a
 line. Which shape fits, and what does it hold?
 
-a) The wide table fits, at 150 rows by 13 columns, 1,950 cells, 1,260 of them empty, read along a row.
+a) The wide table fits, at 150 rows by 13 columns, 1,950 cells, 1,260 of them empty, read along each member's row.
 b) A query per month fits, with 12 columns written by hand, so a 13th month is an edit.
 c) The long table fits, at 540 rows by 3 columns, 1,620 cells, none empty, one total a month by `groupby`.
 d) The pivot indexed by order fits, with a row per order and 12 columns, nearly all of them empty.
