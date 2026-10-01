@@ -1,75 +1,83 @@
 # Which answers hold in the chapter 4 set on which branch moved and what each Retail-Plus member spent, and why?
 
-Answers: 1b 2c 3a 4d 5c 6a
+Answers: 1a 2c 3a 4d 5c 6b
 
 Chapter 4 wrote the quarter comparison as named steps in one `WITH` query and read each branch of
-each segment's tree as Q2 over Q1. Retail-Plus's customers fell to 0.835 of Q1, its orders per
-customer to 0.780 and its revenue per order rose to 1.084, which multiply back to its revenue ratio of
-0.706. Spend per member taken with a plain average said Rs 6,437 then Rs 5,439, down 15.5 percent,
-because each quarter's average covered only that quarter's buyers; with the zero written in for a
-member who bought nothing, the same 107 members spent Rs 5,474 then Rs 3,863, down 29.4 percent. The
-set tries the same reading on other segments and invented numbers. Three of the six items are design
-items: 1, 2 and 6.
+each segment's tree as Q2 over Q1. Retail-Plus, Kalpa's paid membership tier, saw its customers fall
+to 0.835 of Q1, its orders per customer to 0.780 and its revenue per order rise to 1.084, which
+multiply back to its revenue ratio of 0.706. Spend per member taken with a plain average said Rs 6,437
+then Rs 5,439, down 15.5 percent, because each quarter's average covered only that quarter's buyers;
+with the zero written in for a member who bought nothing, the same 107 members spent Rs 5,474 then
+Rs 3,863, down 29.4 percent. The set tries the same reading on other segments and invented numbers.
+Three of the six items are design items: 1, 2 and 6.
 
-**Who needs the answer.** You, checking your six letters after the lab or tonight. The head of
-Retail-Plus sets her retention effort from these lines, and a spend per member that half the fall
+**Who needs the answer.** You do, when you check your six letters after the lab or tonight. The head
+of Retail-Plus sets her retention effort from these lines, and a spend per member that half the fall
 has leaked out of tells her the tier is holding.
 
 **The questions on the way.**
 
-- Which idea does this set test?
-- Why is each key right, item by item?
-- Which wrong answer is worth arguing about?
-- Where does this show up at work?
+- Which idea does the chapter 4 set test: who is inside each number, and how a query is written for the analyst?
+- Why does each of the six keys hold, from the renamed column to the route that never averages?
+- Why is option a in item 6, the tier's 120 members, worth arguing about?
+- Where does GitLab's data team say to prefer named steps to subqueries?
 
-## Which idea does this set test?
+## Which idea does the chapter 4 set test: who is inside each number, and how a query is written for the analyst?
 
-A branch comparison is only as honest as the groups inside each number. The design items choose how
-to write a query an auditor reruns, name the fact that would change that choice, and confirm a
-per-member change over a group fixed from the customers table. The other items read which branch
-pulled a segment down, predict what two averages return when some members bought nothing, and explain
-a sheet on which members spent more while their segment's revenue fell.
+The set tests whether each number names the group inside it, and whether a query is written for the
+person who reruns it. The design items count the edits a renamed column costs each way of writing the
+comparison, count how often a shared step is computed under named steps and under a temporary table,
+and reach the fix's spend per member by a route that never averages. The other items read which
+branch pulled a segment down, predict what two averages return when some members bought nothing, and
+explain a sheet on which customers spent more while their segment's revenue fell.
 
-## Why is each key right, item by item?
+## Why does each of the six keys hold, from the renamed column to the route that never averages?
 
-### Q1. Which way should a four-step branch query be written for an analyst who reruns it in a fresh session?
+### Q1. Which way of writing the comparison needs fewer edits when a column is renamed?
 
-Kind: a design item, the best-fit way with its size in statements and rows written.
+Kind: a design item, the best-fit way sized in the places a rename forces the analyst to edit,
+counted from the two versions printed in the stem.
 
-The key is b, "Named steps in a WITH query: one statement and no rows written, read top to bottom".
-Each step carries a name and a comment and the next step reads it, so the analyst audits in the order
-the logic runs, and the whole query reruns as one statement in any session without writing anything.
+The key is a, "Named steps: 1 place against the nested version's 4, and each one reruns whole in a
+fresh session". Version A names `c.segment` in each subquery's SELECT and again in its GROUP BY, four
+places; version B names it once, in `book`, and the later steps read the step's own column. Both are
+single statements that write nothing, so both rerun whole; the rename is what separates them.
 
-- a, "Nested subqueries: one statement and no rows written, read from the innermost step outwards":
-  it runs the same, and a four-deep nest makes the auditor read backwards from the innermost step.
-- c, "Temporary tables: one statement per step and rows written at each step, read in order": four
-  statements that pass state between them, so no statement can be read or rerun on its own, and the
-  tables vanish with the session.
-- d, "Four queries stitched together in a notebook: four statements and every result moved out":
-  moves the results out of the warehouse into a notebook, which is what Anand ruled out.
+- b, "Nested subqueries: 2 places, one per subquery, against named steps' 4, so nested is easier to
+  keep": counts one place per subquery, where each subquery names the column twice, and counts the
+  later steps' `segment`, which reads `book`'s column and not the customers table's.
+- c, "Named steps: 4 places, since every later step names the segment, against the nested version's
+  2": the later steps name `book`'s column, which `c.tier AS segment` keeps as it is.
+- d, "Temporary tables: 1 place, in the first table, and the analyst can rerun them in a fresh
+  session": a temporary table vanishes when its session ends, so a fresh session finds no table to
+  read.
 
-### Q2. Which fact would make temporary tables the better way?
+### Q2. How many times is a shared step computed each Monday, and when does a temporary table fit?
 
-Kind: a design item, the fact that switches the choice.
+Kind: a design item, the fact that switches the choice, worked out as a count. The scale is invented:
+2 crore orders and twelve queries in one session, each starting from the same step.
 
-The key is c, "One step's result is read by many queries over millions of rows within one long
-session". Computing a heavy step once and letting many queries read it saves work, and that saving is
-a performance choice the platform lead would weigh. On a book of 1,000 orders read once a Monday it
-does not arise.
+The key is c, "12 times with named steps and once with a temporary table, so the temporary table fits
+a step this large". Postgres computes a `WITH` step once for each run of the statement that holds it,
+so twelve queries carrying the step compute it twelve times; a temporary table is built once in the
+session and read by all twelve. On Kalpa's 1,000 orders read once a Monday the difference never
+arises, which is why named steps fit the suite today.
 
-- a, "The analyst wants a comment above every step, and a WITH query has no place to carry one": a
-  `WITH` query carries a comment above each step, which is one of its strengths.
-- b, "The suite starts running in a brand new session every Monday, with nothing kept from the last
-  run": a fresh session is where temporary tables are weakest, since they vanish between sessions.
-- d, "The query grows from four steps to seven, too many for a single statement": a `WITH` query holds
-  seven named steps as easily as four.
+- a, "Once with named steps, since Postgres computes a WITH step only once, and 12 times with temporary
+  tables": a `WITH` step is computed once per statement, not once per session, and the temporary table
+  is the one built once.
+- b, "12 times either way, since a temporary table is rebuilt for every query that reads it": a
+  temporary table stays built for the rest of its session, so the queries after the first read rows
+  already written.
+- d, "Once either way, so named steps still fit, and they write nothing into the warehouse": writing
+  nothing is true, and each of the twelve statements still computes its own copy of the step.
 
 ### Q3. Which branch pulled Business's revenue down most, and does its row check itself?
 
 Kind: read the output. Business's branches are 0.972, 0.965 and 1.051 against a revenue ratio of
 0.986.
 
-The key is a, "Orders per customer, at 0.965, and the three branches multiply back to 0.986". Orders
+The key is a, "Orders per customer, at 0.965, and the three branches multiply back to its 0.986". Orders
 per customer fell 3.5 percent and customers 2.8 percent, while revenue per order rose 5.1 percent;
 0.972 times 0.965 times 1.051 is 0.986, so the row checks itself.
 
@@ -94,55 +102,58 @@ members is Rs 500.
 - b, "Rs 833 and Rs 833": assumes `coalesce` changes nothing, and it writes in two zeros.
 - c, "Rs 500 and Rs 833": swaps the two.
 
-### Q5. What explains a sheet that says Retail-Core members spent more each while Retail-Core's revenue fell?
+### Q5. What explains a sheet that says Retail-Core customers spent more each while Retail-Core's revenue fell?
 
 Kind: spot the plausible wrong output. The sheet says Rs 3,658 then Rs 3,815, up 4.3 percent, while
 Retail-Core's revenue fell 1.8 percent.
 
 The key is c, "Each average covers only that quarter's 102 or 96 buyers, two different groups".
-`avg` skips the members with no order in a quarter, so Q1's average is over 102 members and Q2's over
-96, and the 29 or 35 members who bought only in the other quarter drop out of each. Over the same 131
-members, with zeros written in, Retail-Core spent Rs 2,848 then Rs 2,796 each, down 1.8 percent, the
-same change as its revenue.
+`avg` skips the customers with no order in a quarter, so Q1's average is over 102 customers and Q2's
+over 96, and the 29 or 35 customers who bought only in the other quarter drop out of each. Over the
+same 131 customers, with zeros written in, Retail-Core spent Rs 2,848 then Rs 2,796 each, down 1.8
+percent, the same change as its revenue.
 
-- a, "Retail-Core's revenue per order rose 1.2 percent, and that lift reaches every member's spend":
-  the branch did rise 1.2 percent, and the customer branch fell 5.9 percent, so revenue per order
-  cannot turn a fall in revenue into a rise per member of a fixed group.
+- a, "Retail-Core's revenue per order rose 1.2 percent, and that lift reaches every customer's
+  spend": the branch did rise 1.2 percent, and the customer branch fell 5.9 percent, so revenue per
+  order cannot turn a fall in revenue into a rise per customer of a fixed group.
 - b, "The averages round to whole rupees, and the rounding moved the two apart": rounding moves an
   average by less than a rupee, and the gap is Rs 157.
-- d, "Members who joined in Q2 spent more than the rest and pulled Q2's average up": when a member
-  joined does not enter either average; which members bought in each quarter does.
+- d, "Customers who joined in Q2 spent more than the rest and pulled Q2's average up": when a
+  customer joined does not enter either average; which customers bought in each quarter does.
 
-### Q6. What does Retail-Plus spend per member come to over the tier's 120 members?
+### Q6. What does a route that never averages give for Retail-Plus spend per member?
 
-Kind: a design item, the independent second route, computed. Retail-Plus booked Rs 5,85,770 in Q1 and
-Rs 4,13,380 in Q2, and the tier has 120 members.
+Kind: a design item, the independent second route, computed in two steps. The tier holds 120 members
+and 13 of them bought nothing in either quarter, so 107 bought; Retail-Plus booked Rs 5,85,770 in Q1
+and Rs 4,13,380 in Q2.
 
-The key is a, "Rs 4,881 then Rs 3,445, down 29.4 percent". Rs 5,85,770 over 120 is Rs 4,881 and
-Rs 4,13,380 over 120 is Rs 3,445. The group is fixed from the customers table, so nobody's buying
-pattern can change who is inside it, and the change is the tier's revenue change, down 29.4 percent,
-the same as the fixed 107 gave in the chapter. Any group held the same in both quarters gives the same
-change.
+The key is b, "Rs 5,474 then Rs 3,863, over the 107 who bought, the fix's own levels". Rs 5,85,770 over
+107 is Rs 5,474 and Rs 4,13,380 over 107 is Rs 3,863. The route never builds a row per member and never
+averages, so a member the fix dropped or counted twice would have moved the fix's levels away from
+these, and they agree to the rupee.
 
-- b, "Rs 5,474 then Rs 3,863, down 29.4 percent": the chapter's numbers over the 107 members who
-  bought in the half-year; the change agrees, and the levels are over a different group from the one
-  the route names.
-- c, "Rs 6,437 then Rs 5,439, down 15.5 percent": revenue over each quarter's own buyers, 91 and then
-  76, the plain average that leaves out whoever stopped.
-- d, "Rs 1,723 then Rs 1,216, down 29.4 percent": divides by all 340 members on the book, most of whom
-  belong to other segments, so it is no longer spend per Retail-Plus member.
+- a, "Rs 4,881 then Rs 3,445, over the tier's 120 members": revenue per tier member, a fair measure of
+  a different group, since it counts the 13 who bought nothing; its change is the same 29.4 percent,
+  and its levels cannot confirm the fix's.
+- c, "Rs 6,437 then Rs 5,439, each quarter's revenue over that quarter's 91 and 76 buyers": the plain
+  average again, each quarter over its own buyers, which leaves out whoever stopped.
+- d, "Rs 1,723 then Rs 1,216, each quarter's revenue over all 340 customers on the customer table":
+  divides by every segment's customers, so it is no longer spend per Retail-Plus member.
 
-## Which wrong answer is worth arguing about?
+## Why is option a in item 6, the tier's 120 members, worth arguing about?
 
-Item 6, option b. It carries the right change, and some will argue that 107 is the better group,
-since the 13 members who bought nothing all half-year may have lapsed. That is a fair question for
-the head of Retail-Plus, and it changes the level, never the change: any fixed group moves by 29.4
-percent. The argument worth having is which level she quotes, and the answer is whichever group the
-sheet names beside the number.
+It carries the right change, 29.4 percent, and some will argue that the tier's 120 is the better base,
+since the head of Retail-Plus runs the whole tier, the 13 who bought nothing included. That is a fair
+question for her, and it changes the level, never the change: any group held the same in both quarters
+moves by 29.4 percent. The item asks for spend per member as the sheet defines it, over the members
+who bought, and a second route has to reach that level; the 120-member figure is revenue per tier
+member, and the sheet can carry it under its own name.
 
-## Where does this show up at work?
+## Where does GitLab's data team say to prefer named steps to subqueries?
 
 GitLab's data team writes in its SQL style guide that it prefers CTEs over sub-queries because "CTEs
 make SQL more readable ...", and asks that each CTE "perform a single, logical unit of work". The same
 guide asks that calculations carry a brief description of what is going on, which is the comment
-above each named step an auditor reads first.
+above each named step an auditor reads first. It also says not to use `USING` in joins, because it
+gives inaccurate results in Snowflake, the warehouse GitLab runs; on Postgres, `JOIN ... USING` is
+exact, which is why Kalpa's lookup line keeps it.

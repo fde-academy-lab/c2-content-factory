@@ -22,7 +22,7 @@ in, and `count(DISTINCT customer_id)` counts the different customer ids.
 | Table | Rows | Columns |
 |---|---|---|
 | orders | 1,000, one per order | order_id, customer_id, order_date, quarter, channel, amount, status |
-| customers | 340, one per member | customer_id, segment, city, country, joined_date |
+| customers | 340, one per customer | customer_id, segment, city, country, joined_date |
 
 | Quarter | Orders | Booked revenue | Customers who bought |
 |---|---|---|---|
@@ -37,10 +37,10 @@ cannot rerun and trust puts that decision back on her desk.
 **The questions on the way.**
 
 - How many rows leave the warehouse each Monday on each of three ways to produce the channel lines?
-- Which way fits a team with read access only, and which fact would change the choice?
+- Which of four facts would make a saved view better than the .sql file?
 - What do three counts return on eight cancelled orders?
 - Which change to the query answers the service head's question about customers who cancelled?
-- Which route confirms Q2's 227 customers without sharing the query's code?
+- Which second route could disagree with Q2's 227 customers if the count were wrong?
 
 **What you post.** One line of five letters in item order, no spaces, in this shape:
 
@@ -67,15 +67,16 @@ b) 1,000 for the export, 1,000 for the file and 6 for the view
 c) 1,000 for the export, 6 for the file and 6 for the view
 d) 1,000 for the export, 6 for the file and none for the view
 
-### Q2. Which way fits a team with read access only, and which fact would change the choice?
+### Q2. Which of four facts would make a saved view better than the .sql file?
 
-The platform lead has granted read access and nothing more, and the analyst must be able to rerun
-every channel line on the same book. Which way fits this Monday, and which fact would change it?
+The team runs the six channel lines from a .sql file on read access, and the analyst reruns the file
+on the same book every Monday. Four facts reach the team this month. Which one, on its own, makes a
+saved view the better way?
 
-a) The .sql file, which read access can run; a schema of the team's own, once the lines settle, would switch it to a view
-b) The export, since pandas is where the team works fastest; a slower laptop would switch it to the .sql file
-c) The saved view, since it follows a renamed column and guards the columns it reads; only losing read access would switch it back to a file
-d) The .sql file, since it moves the fewest rows of the three; a book ten times larger would switch it to a view
+a) The platform lead grants a schema, and the six lines have not changed in the last eight Mondays
+b) The book grows to 50,000 orders, and a saved view would send back the six lines faster than the file
+c) Anand adds a new cut of the channel lines every Monday for the next month, and wants each one kept
+d) The analyst asks for the six lines as a file she can open and check without a database
 
 ## How many customers stand behind a count?
 
@@ -113,20 +114,21 @@ for the service head says 163 customers cancelled an order in the half-year. Whi
 query answers the question the service head asked?
 
 a) `count(customer_id) AS customers`, since it counts the customer column
-b) `count(DISTINCT customer_id) AS customers`, which reads 125
+b) `count(DISTINCT customer_id) AS customers`, which reads 125 on the whole book
 c) `count(*) AS cancelled_orders`, since the 163 then carries an honest name
-d) `count(DISTINCT order_id) AS customers`, since no two rows share an order id
+d) `count(DISTINCT order_id) AS customers`, since no two order rows share one id
 
 ## How would you prove a count by a second route?
 
 Used at work whenever an auditor asks how you know a number on the sheet is right.
 
-### Q5. Which route confirms Q2's 227 customers without sharing the query's code?
+### Q5. Which second route could disagree with Q2's 227 customers if the count were wrong?
 
-Anand's analyst wants Q2's 227 customers who bought confirmed by a route that shares no code with the
-query that produced the number. Which route does that?
+Anand's analyst wants Q2's 227 customers who bought confirmed by a second route, one that would give
+a different number if `count(DISTINCT customer_id)` had counted the wrong thing. Q2 holds 462 order
+rows, and its orders per customer read 2.04. Which route could disagree?
 
-a) Run the same query a second time and compare the two results
-b) Count Q2's rows with `count(customer_id)` and set the result beside 227
-c) Pull Q2's 462 order rows into Python, put each customer id in a set, and count the set
-d) Divide Q2's booked revenue, Rs 9,84,00,000, by its revenue per order, Rs 2,12,987, and compare
+a) Run the same query after lunch and check that it prints 227 again
+b) Count Q2's rows with `count(customer_id)`, which must also give 227
+c) Divide Q2's 462 orders by its 2.04 orders per customer and round to a whole customer
+d) Group Q2's orders by `customer_id` and count the groups the query returns

@@ -9,18 +9,18 @@ rupees; Retail-Plus's revenue fell 29.4 percent and its orders fell from 215 to 
 and rounded on purpose: Retail-Plus went from 2.36 to 1.84, down 22.0 percent. The set carries those
 habits to new groups and new numbers. Two of the five items are design items: 1 and 4.
 
-**Who needs the answer.** You, checking your five letters after the lab or tonight. The head of
-Retail-Plus spends a retention budget on these lines, and a frequency nobody multiplied back is how
+**Who needs the answer.** You do, when you check your five letters after the lab or tonight. The head
+of Retail-Plus spends a retention budget on these lines, and a frequency nobody multiplied back is how
 that budget goes to the wrong segment.
 
 **The questions on the way.**
 
-- Which idea does this set test?
-- Why is each key right, item by item?
-- Which wrong answer is worth arguing about?
-- Where does this show up at work?
+- Which idea does the chapter 3 set test: one grouped query, and ratios that multiply back?
+- Why does each of the five keys hold, from the channel and status lines to the line for Anand?
+- Why is option a in item 5, Retail-Plus's 29.4 percent alone, worth arguing about?
+- Where did Eternal's one group total hold three businesses' growth?
 
-## Which idea does this set test?
+## Which idea does the chapter 3 set test: one grouped query, and ratios that multiply back?
 
 One grouped query answers every group at once, and every ratio it prints must multiply back to the
 counts it came from. The design items choose the way to produce a new cut of the book, sized in rows,
@@ -28,7 +28,7 @@ and the second route that could catch a wrong count behind a ratio. The other it
 groups a HAVING flag returns, correct a sheet of whole-number ratios, and choose the one line that
 says where a company-wide fall came from.
 
-## Why is each key right, item by item?
+## Why does each of the five keys hold, from the channel and status lines to the line for Anand?
 
 ### Q1. Which way produces every channel and status line each quarter, and how many rows does it return?
 
@@ -54,7 +54,7 @@ editing the query.
 Kind: predict the output from the table. The flag keeps the groups whose distinct customers number
 fewer than 40.
 
-The key is d, "Business and Student in both quarters, four groups". Business stands on 36 and 35
+The key is d, "Business and Student in both quarters, four groups under the new bar of 40". Business stands on 36 and 35
 customers and Student on 15 and 20, all under 40; Retail-Core (102 and 96) and Retail-Plus (91 and 76)
 clear the bar. Business books about 99 percent of the rupees on fewer than 40 customers a quarter,
 which is why its rates earn the flag.
@@ -120,7 +120,7 @@ order answer.
 - d, "No segment carried it, since the book's revenue fell only 1.6 percent overall": a small total
   change can hide a large one inside it, as Retail-Plus's 29.4 percent shows.
 
-## Which wrong answer is worth arguing about?
+## Why is option a in item 5, Retail-Plus's 29.4 percent alone, worth arguing about?
 
 Item 5, option a. The head of Retail-Plus may say option a is the line that matters, since a 29.4
 percent fall in the paid tier is the alarm and Business's 1.4 percent is noise on a large base. That
@@ -128,9 +128,10 @@ reading is fair for her decision. Anand's sheet serves Finance as well, and Fina
 nearly nine rupees in ten of the fall came from Business. A line that names only one of the two sends
 one reader away with half the story.
 
-## Where does this show up at work?
+## Where did Eternal's one group total hold three businesses' growth?
 
 Eternal, the group behind Zomato and Blinkit, reported consumer net order value up 54 percent year on
-year in its shareholders' letter of 22 July 2026, and the same letter splits it: food delivery a
-little over 20 percent, quick commerce 86 percent, going-out 60 percent. A group-wide number is
-several stories added together, and every business review asks the question in item 5.
+year in its shareholders' letter for the quarter to 30 June 2026, published on 22 July 2026, and the
+same letter gives each business its own line: food delivery a little over 20 percent, quick commerce
+86 percent, going-out 60 percent. Kalpa's 1.6 percent fall is the same kind of total, four segments'
+changes added, which is why item 5 asks for the line that names where it came from.

@@ -75,7 +75,7 @@ segment-quarters come back to be flagged?
 a) Student in both quarters, the two groups with fewer than 40 orders
 b) Student in both quarters, the two groups with fewer than 30 customers
 c) Business in both quarters, since its 99 percent of the rupees rests on few orders
-d) Business and Student in both quarters, four groups
+d) Business and Student in both quarters, four groups under the new bar of 40
 
 ## How often did each group's customers order?
 

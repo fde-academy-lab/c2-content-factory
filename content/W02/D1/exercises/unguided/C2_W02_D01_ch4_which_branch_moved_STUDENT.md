@@ -12,9 +12,9 @@ Kalpa Retail's revenue tree splits a segment's revenue into three branches that 
 customers who bought, orders per customer and revenue per order. Chapter 4 read each branch as its Q2
 value over its Q1 value (Q1 is April to June 2026, Q2 is July to September 2026), so a ratio under 1
 is a fall and the three ratios multiply back to the revenue ratio. Retail-Plus is Kalpa's paid
-membership tier, with 120 members on the customers table, and 107 of them bought at least once in the
-half-year. Spend per member is the rupees a member spent in a quarter, averaged over the tier's
-members. A query can be written three ways: nested subqueries, each written inside the next and read
+membership tier, with 120 members on the customers table. Spend per member is the rupees a Retail-Plus
+member spent in a quarter, averaged over the members who bought in either quarter, so both quarters
+are averaged over the same people. A query can be written three ways: nested subqueries, each written inside the next and read
 from the inside out; named steps, a `WITH` query in which each step has a name and the next step reads
 it, top to bottom in one statement; or temporary tables, which a session creates for its own use and
 which vanish when the session ends. In a table with one row per member, a member with no order in a
@@ -36,12 +36,12 @@ leaves some members out tells her the tier is holding up when it is not.
 
 **The questions on the way.**
 
-- Which way should a four-step branch query be written for an analyst who reruns it in a fresh session?
-- Which fact would make temporary tables the better way?
+- Which way of writing the comparison needs fewer edits when a column is renamed?
+- How many times is a shared step computed each Monday, and when does a temporary table fit?
 - Which branch pulled Business's revenue down most, and does its row check itself?
 - What do two averages return on five invented members' Q2 spend?
-- What explains a sheet that says Retail-Core members spent more each while Retail-Core's revenue fell?
-- What does Retail-Plus spend per member come to over the tier's 120 members?
+- What explains a sheet that says Retail-Core customers spent more each while Retail-Core's revenue fell?
+- What does a route that never averages give for Retail-Plus spend per member?
 
 **What you post.** One line of six letters in item order, no spaces, in this shape:
 
@@ -55,27 +55,52 @@ Post exactly this shape: xxxxxx
 
 Used at work whenever someone other than the author has to read, check and rerun a long query.
 
-### Q1. Which way should a four-step branch query be written for an analyst who reruns it in a fresh session?
+### Q1. Which way of writing the comparison needs fewer edits when a column is renamed?
 
-Anand's analyst audits the branch query line by line every Monday and reruns it in a fresh session.
-It has four steps: each order with its segment, each quarter's leaves per segment, each branch as Q2
-over Q1, and the check that the branches multiply back. Which way fits, sized in statements and rows
-written?
+Anand's analyst reruns the quarter comparison every Monday in a fresh session. Next month the platform
+team will rename the segment column of the customers table from `segment` to `tier`. The comparison
+can be written as version A, nested subqueries, or version B, named steps:
 
-a) Nested subqueries: one statement and no rows written, read from the innermost step outwards
-b) Named steps in a WITH query: one statement and no rows written, read top to bottom
-c) Temporary tables: one statement per step and rows written at each step, read in order
-d) Four queries stitched together in a notebook: four statements and every result moved out
+```sql
+-- Version A, nested subqueries
+SELECT q1.segment, q1.revenue AS q1_revenue, q2.revenue AS q2_revenue
+FROM  (SELECT c.segment, sum(o.amount) AS revenue
+       FROM orders o JOIN customers c USING (customer_id)
+       WHERE o.quarter = 'Q1' GROUP BY c.segment) AS q1
+JOIN  (SELECT c.segment, sum(o.amount) AS revenue
+       FROM orders o JOIN customers c USING (customer_id)
+       WHERE o.quarter = 'Q2' GROUP BY c.segment) AS q2 USING (segment);
 
-### Q2. Which fact would make temporary tables the better way?
+-- Version B, named steps
+WITH book AS (SELECT o.quarter, o.amount, c.segment
+              FROM orders o JOIN customers c USING (customer_id)),
+q1 AS (SELECT segment, sum(amount) AS revenue FROM book WHERE quarter = 'Q1' GROUP BY segment),
+q2 AS (SELECT segment, sum(amount) AS revenue FROM book WHERE quarter = 'Q2' GROUP BY segment)
+SELECT segment, q1.revenue AS q1_revenue, q2.revenue AS q2_revenue
+FROM q1 JOIN q2 USING (segment);
+```
 
-The analyst's choice from item 1 stands for this Monday. Which fact, if it arrived, would make
-temporary tables the better way to hold a step?
+In version B, `book` keeps the column's name for the steps after it, so `c.tier AS segment` in that one
+step would leave them as they are. Counting the places that name the customers table's column, how
+many must change in each version, and which way fits?
 
-a) The analyst wants a comment above every step, and a WITH query has no place to carry one
-b) The suite starts running in a brand new session every Monday, with nothing kept from the last run
-c) One step's result is read by many queries over millions of rows within one long session
-d) The query grows from four steps to seven, too many for a single statement
+a) Named steps: 1 place against the nested version's 4, and each one reruns whole in a fresh session
+b) Nested subqueries: 2 places, one per subquery, against named steps' 4, so nested is easier to keep
+c) Named steps: 4 places, since every later step names the segment, against the nested version's 2
+d) Temporary tables: 1 place, in the first table, and the analyst can rerun them in a fresh session
+
+### Q2. How many times is a shared step computed each Monday, and when does a temporary table fit?
+
+The scale in this item is invented. The platform lead plans to run the suite on the group's whole
+book of 2 crore orders, and twelve queries in one Monday session will each start from the same step,
+every order joined to its segment. With named steps, each query carries the step in its own `WITH`;
+with a temporary table, the session builds the step once and the twelve queries read it. How many
+times is the step computed each Monday under each way, and which way fits then?
+
+a) Once with named steps, since Postgres computes a WITH step only once, and 12 times with temporary tables
+b) 12 times either way, since a temporary table is rebuilt for every query that reads it
+c) 12 times with named steps and once with a temporary table, so the temporary table fits a step this large
+d) Once either way, so named steps still fit, and they write nothing into the warehouse
 
 ## Which branch of the tree moved?
 
@@ -86,7 +111,7 @@ Used at work whenever a change in revenue has to be traced to customers, frequen
 Business's revenue ratio is 0.986, a fall of 1.4 percent. Reading the Business row of the table at the
 top of this set, which branch pulled its revenue down most, and does the row check itself?
 
-a) Orders per customer, at 0.965, and the three branches multiply back to 0.986
+a) Orders per customer, at 0.965, and the three branches multiply back to its 0.986
 b) Customers who bought, at 0.972, since fewer buyers always hurt revenue the most
 c) Revenue per order, at 1.051, since it moved furthest from 1 of the three branches
 d) None of them, since a revenue ratio of 0.986 sits too close to 1 to read any branch
@@ -106,29 +131,33 @@ b) Rs 833 and Rs 833
 c) Rs 500 and Rs 833
 d) Rs 833 and Rs 500
 
-### Q5. What explains a sheet that says Retail-Core members spent more each while Retail-Core's revenue fell?
+### Q5. What explains a sheet that says Retail-Core customers spent more each while Retail-Core's revenue fell?
 
-A hurried sheet took `avg` of each quarter's column in a table with one row per Retail-Core member who
-bought in the half-year, 131 members. It says each member spent Rs 3,658 in Q1 and Rs 3,815 in Q2, up
-4.3 percent, while Retail-Core's revenue fell 1.8 percent. Of the 131, 102 bought in Q1 and 96 in Q2.
-What explains the rise on the sheet?
+A hurried sheet took `avg` of each quarter's column in a table with one row per Retail-Core customer
+who bought in the half-year, 131 customers. It says each customer spent Rs 3,658 in Q1 and Rs 3,815 in
+Q2, up 4.3 percent, while Retail-Core's revenue fell 1.8 percent. Of the 131, 102 bought in Q1 and 96
+in Q2. What explains the rise on the sheet?
 
-a) Retail-Core's revenue per order rose 1.2 percent, and that lift reaches every member's spend
+a) Retail-Core's revenue per order rose 1.2 percent, and that lift reaches every customer's spend
 b) The averages round to whole rupees, and the rounding moved the two apart
 c) Each average covers only that quarter's 102 or 96 buyers, two different groups
-d) Members who joined in Q2 spent more than the rest and pulled Q2's average up
+d) Customers who joined in Q2 spent more than the rest and pulled Q2's average up
 
-## How would a fixed group confirm the change?
+## How would a route that never averages confirm the level?
 
-Used at work whenever a per-member number needs a second route that no one's buying pattern can move.
+Used at work whenever a per-member number needs a second route that reaches the same level by a
+different query.
 
-### Q6. What does Retail-Plus spend per member come to over the tier's 120 members?
+### Q6. What does a route that never averages give for Retail-Plus spend per member?
 
-Kavya Nair, the team's senior analyst, wants Retail-Plus's spend per member confirmed by a route that
-fixes the group from the customers table: the tier's revenue in each quarter divided by the tier's 120
-members. Retail-Plus booked Rs 5,85,770 in Q1 and Rs 4,13,380 in Q2. What does the route give?
+The fix in chapter 4 averaged one row per member, with Rs 0 written on purpose for a quarter with no
+order, and printed Rs 5,474 then Rs 3,863. Kavya Nair, the team's senior analyst, wants those levels
+confirmed by a route that never averages: each quarter's Retail-Plus revenue divided by the members who
+bought in either quarter. Retail-Plus booked Rs 5,85,770 in Q1 and Rs 4,13,380 in Q2; the tier holds
+120 members on the customers table, and 13 of them bought nothing in either quarter. What does the
+route give?
 
-a) Rs 4,881 then Rs 3,445, down 29.4 percent
-b) Rs 5,474 then Rs 3,863, down 29.4 percent
-c) Rs 6,437 then Rs 5,439, down 15.5 percent
-d) Rs 1,723 then Rs 1,216, down 29.4 percent
+a) Rs 4,881 then Rs 3,445, over the tier's 120 members
+b) Rs 5,474 then Rs 3,863, over the 107 who bought, the fix's own levels
+c) Rs 6,437 then Rs 5,439, each quarter's revenue over that quarter's 91 and 76 buyers
+d) Rs 1,723 then Rs 1,216, each quarter's revenue over all 340 customers on the customer table

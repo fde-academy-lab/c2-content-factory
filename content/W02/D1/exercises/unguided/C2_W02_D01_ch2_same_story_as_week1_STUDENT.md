@@ -26,10 +26,10 @@ not support.
 **The questions on the way.**
 
 - Which comparison fits a store file that shares no ids with the warehouse, sized in the numbers it sets side by side?
-- Which comparison fits once Finance's file carries the warehouse's own order ids?
+- Which comparison finds three changed orders once Finance's file carries the warehouse's order ids?
 - Which leaves disagree when two invented sources show the same revenue change?
 - What most likely explains a regional file whose customers held flat while the book's fell?
-- Which rebuild of the app's Q2 customers from each customer's history holds, and what does it show?
+- Which rebuild of the app's customers from each customer's history holds, and what does it show?
 
 **What you post.** One line of five letters in item order, no spaces, in this shape:
 
@@ -52,20 +52,21 @@ revenue change from Q1 to Q2 matches the book's store change. Anand asks whether
 same story as the book. Which comparison fits?
 
 a) The two sources' revenue in each quarter, four numbers, since the change already agrees
-b) Every leaf in both quarters and both sources, twenty numbers read as changes
+b) Twenty numbers: all five leaves for each quarter of each source, compared as Q2 over Q1
 c) Order by order on the till number, 90 lookups against the book's store orders
 d) The store team's spreadsheet rerun on an export of the book's 324 store orders
 
-### Q2. Which comparison fits once Finance's file carries the warehouse's own order ids?
+### Q2. Which comparison finds three changed orders once Finance's file carries the warehouse's order ids?
 
-Finance's order file for Q2 arrives from Finance's own system carrying the warehouse's order ids, and
-it holds 462 orders, the same count as the book's Q2. Anand asks the same question of this file.
-Which comparison fits best now?
+Finance's order file for Q2 comes from Finance's own system, carries the warehouse's order ids and
+holds 462 orders, the same count as the book's Q2. The amounts in this item are invented: three of the
+file's orders differ from the book, one by Rs 500 more, one by Rs 300 less and one by Rs 200 less.
+Which comparison finds them, and what does the comparison of every leaf show?
 
-a) Every leaf as a change, since that comparison caught a moved leaf last week and needs no ids
-b) The two totals, since the order counts already agree at 462
-c) Order by order on the shared order id, which names each order that differs
-d) None, since two sources with the same count of orders cannot disagree
+a) The two totals, which agree to the rupee, so the file needs no further check
+b) Every leaf as a change, which shows Q2 revenue Rs 1,000 apart and so flags the file
+c) Order by order on the shared id, which names all three while every leaf agrees
+d) Every leaf as a change, which names the three orders through the revenue per order leaf
 
 ## Do the leaves agree when the revenue does?
 
@@ -107,14 +108,15 @@ d) The book counts a customer who bought in both quarters twice, once in each, s
 
 Used at work whenever a net movement goes on a sheet and someone asks who is behind it.
 
-### Q5. Which rebuild of the app's Q2 customers from each customer's history holds, and what does it show?
+### Q5. Which rebuild of the app's customers from each customer's history holds, and what does it show?
 
 On the book, the customers who bought through Kalpa's app fell from 133 in Q1 to 124 in Q2, a net fall
-of 9. Kavya Nair, the team's senior analyst, wants the 124 rebuilt from each app customer's own
-history, as a second route to the query. From those histories, 52 customers bought through the app in
-both quarters. Which rebuild holds, and what does it show?
+of 9. Kavya Nair, the team's senior analyst, wants both counts rebuilt a second way, from each app
+customer's own history. Three filters over one row per app customer give their own counts: 52 bought
+through the app in both quarters, 81 in Q1 only and 72 in Q2 only. Which rebuild holds, and what does
+it show?
 
-a) 133 less the net fall of 9 is 124, so the app lost 9 customers and kept the rest
-b) 133 less 81 who stopped, plus 72 who arrived, is 124, so 153 customers moved
-c) 52 who stayed plus 72 who arrived is 124, so the app kept its customers and added some
-d) 133 plus 124 less the 52 in both is 205, so 205 customers bought through the app in Q2
+a) 133 less the net fall of 9 is 124, so 9 customers left the app and every other customer stayed
+b) 52 plus 81 is 133 and 52 plus 72 is 124, so both quarters tie out and 153 customers moved
+c) 52 plus 72 is 124, so the app kept 52 and added 72, and Q1's 133 cannot be rebuilt
+d) 81 plus 72 plus 52 is 205, so 205 customers bought through the app in Q2
