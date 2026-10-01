@@ -918,3 +918,262 @@ Pages 5, 8, 14 and 17 close a part with space left, because each part starts on 
 - Bank 28 and bank 23 go to the tracker as the two issues written above.
 - The Week 1 paper and key are still stale under `python3 scripts/sync_programme.py --check`; they
   belong to the Week 1 session and were not touched here.
+
+## 1 October 2026, standard v3: every part named by its question, the paper in line with the rebuilt week, and one review
+
+This pass raises the paper to standard v3 under decisions `question-ladder`, `self-contained` and
+`humanizer` in `data/programme/facts.yaml`, against the Week 2 packs as merged on main on 1 October
+2026 (#220, #221, #222, #217 and #219), on branch `w02-sat-ladder` from main at 3ed8bf1. The paper's
+items, levels and minutes, set on 30 September 2026 after two blind sittings, stay; this pass changes
+wording and part names, brings every repeated number, term and rule in line with the rebuilt week,
+and fixes what one fresh review found. The paper's own decisions are `saturday-interview-grade`,
+`saturday-real-cases`, `saturday-edits-w1-w2`, `w2-set1-fold` and `plants-once-found`. No key moved.
+
+### The part questions
+
+| Part | The question it asks | Who needs the answer, as the opening says it |
+|---|---|---|
+| 1 | Can the warehouse give Anand Monday numbers that his analyst can audit line by line? | Anand, who signs the Monday sheet after his analyst audits every query in the Monday suite, and the head of Retail-Plus, whose retention budget follows the tier's line, so a ratio or average that counts the wrong people sends it the wrong way |
+| 2 | Can Anand sign what Kalpa collected against what it booked, with nothing lost or counted twice? | Anand, who signs the collected figure for the CEO's Monday page, and his collections team, who ring every customer on the unpaid list, so a dropped order goes unchased and a payment counted twice shows cash never received |
+| 3 | Which members should Marketing protect and call, and did July to September keep pace with the plan? | The marketing lead, whose retention budget, a call and a renewal offer, goes to the members the lists name, and Meera, who decides at mid-quarter whether to hold the plan, push a campaign or move budget, where a false gap sends Marketing after it with discounts |
+| 4 | What must Monday's customer table check before the growth team acts on it? | The growth team, who send win-back codes and first-order nudges straight from the table with no analyst watching, so a missing customer gets no offer and a customer counted twice inflates every total |
+| 5 | Which numbers in Monday's workbook can a director trust, and where did three public cases go wrong? | The directors, who read the front page first and may read nothing else, and the head of Retail-Plus, who sizes each city's retention budget from the protect list in the room, so a wrong total with nothing red beside it becomes a decision or a budget before any analyst sees it |
+| 6 | Can a food-delivery company's AI team trust the numbers behind its model and budget decisions? | The team lead, who decides which model ships and which is retrained, the product lead, who sets the assistant's budget, and the finance partner, who pays the bill by the token; Exhibit 6A draws who acts on which table |
+
+Parts 4 and 5 carry the names the review gave them (below): Part 4's first name, "Can the growth
+team act on Monday's table of 340 customers without checking it first?", answered itself, and
+Part 5's, "Which spreadsheet numbers can a director trust, in Monday's workbook and in three public
+cases?", called Uber's commission a spreadsheet.
+
+Read alone and in order, Parts 1 to 4 tell the week, from the Monday numbers in the warehouse, to
+collected against booked, to the protect list and the plan, to the growth team's table; Part 5
+carries the last mile to a director and to three public cases, and Part 6 carries the same
+checks to an invented AI team. Each opening quotes the stakeholder in the words the week's notes
+give, and each part's "what it shows" line now says what it shows about the learner.
+
+### The paper against the Week 2 packs on main
+
+Checked on 1 October 2026 against each day's day sheet, plant table and study notes on main at
+3ed8bf1, and recomputed on the warehouse (`content/W02/D1/data/C2_W02_D01_warehouse_v4_STUDENT.sql`,
+whose rows have not changed since the paper's last build; only its header comment did), Thursday's
+exposure feed and Friday's two exports. Every number the paper prints still matches the week; the
+changes are terms, quotations, rules and the labels of the plan weeks.
+
+| Q or place | Before | After | Where the week has it |
+|---|---|---|---|
+| Part 1 opening | Anand: "Compute them from the warehouse itself. No notebooks, no exports, nothing a person can mistype." | Anand's words as Monday gives them: "I want these numbers every Monday, for every segment and channel, computed from the warehouse itself. No notebooks, no exports, nothing a person can mistype."; revenue defined as booked revenue, every order at its amount, whatever its status; the book and the Monday suite named | Monday's notes, opening and glossary |
+| Part 2 opening | Booked as "the value of the orders customers placed", collected as "the cash that actually arrived"; Anand's ask reworded to "from July to September" | Anand's Tuesday words in full, the platform lead's "the payments feed sometimes double-posts when the gateway retries", collected as the cash that arrived, each payment counted once, a gateway retry as the same instalment of the same order posted twice, and the bridge from booked to collected | Tuesday's notes, the picture and the glossary; morning deck S2 |
+| Part 3 opening | The marketing lead's ask reworded; the plan line as "the revenue the growth plan expects by the end of each week", which is plan to date | The marketing lead's words in full; the plan line as Rs 75,69,230 for each of 13 plan weeks starting on Mondays from 6 July; plan to date and booked to date as accumulations to the end of the week read | Wednesday's notes, opening and "what the asks measure" |
+| Part 4 opening | A quotation from the data platform lead that no Week 2 file carries; "Marketing chooses"; recency as "days since the last order"; "monetary value" | The growth team's words, with the data platform lead, as Thursday gives them; recency counted to the data's last date, 28 September 2026; frequency and spend; the growth team decides who gets an offer | Thursday's notes, opening and chapters 1 and 6 |
+| Part 5 opening | The chief of staff's words cut and reworded, "by member code" | The chief of staff's words in full, "by id" and "Nothing that needs Python" included | Friday's notes, opening |
+| Q4 | "the average spend per member on the books" | "the average spend across all 120 members on the books, whether they ordered or not", since Monday's "spend per member" averages over the 107 who bought in either quarter; 5439 and 3445 unchanged | Monday's notes, chapter 4 and glossary |
+| Q7, Exhibit 2A | "28 have two identical rows"; "2 identical rows, the gateway's repeat" | "28 have two rows that differ only in payment_id, because the gateway retried and posted instalment 1 twice"; "instalment 1 posted twice, a retry". The warehouse's payments carry a primary key, payment_id, and all 50 retries differ in it alone | Tuesday's glossary, "Gateway retry"; the warehouse |
+| Q10 | The rule "send what reconciles and hold what does not" | Tuesday's chapter 6 rule: booked always leaves, because it ties to the orders table alone; a collected figure that does not reconcile never leaves, and an open line goes with the report naming the failed check, what it means and when it will close; a channel's collected reconciles when its gap equals its unpaid orders' booked value. Key c unchanged | Tuesday's notes, chapter 6; afternoon deck S17 |
+| Q11, Exhibit 2E | "Records in the lab's CSV", and option c on records | "Rows in the lab's CSV", and option c on rows, since the week counts rows sent against rows loaded and Tuesday tells the case with the BBC's account that each result took several rows. Key c, e unchanged | Tuesday's notes, chapter 3; Thursday's notes, chapter 6 |
+| Q12, Exhibit 3A | The head of Retail-Plus quoted as saying "rank them the same. Keep every member who spent at least as much as the fiftieth, and nobody who spent less"; "Row" and "rows 1 to 50" | The head's words as Wednesday gives them, "Ties matter. If two members spent the same, I want them ranked the same, and I want to know how many made the top fifty, not forty-nine because of a tie", with the cut at the fiftieth member's spend stated outside the quotation; "Place" and "places 1 to 50". Key d, 51, unchanged | Wednesday's notes, opening and chapter 3 |
+| Q16, Exhibit 3C | Readings labelled "Up to 12 Jul" to "Close, 30 Sep"; "booked so far" and "plan so far"; options dated 26 July, 9 August, 6 and 20 September; "one line for Monday's front page" | Readings labelled by plan week, "6 Jul" to "28 Sep, the close", as Wednesday's table names them; "booked to date" and "plan to date"; the caption says the first plan week carries the orders of 1 to 5 July; options dated by plan week (20 July, 3 August, 31 August, 14 September); "one sentence", since the week keeps "line" for the cut-off and the plan line. Key c and every value unchanged | Wednesday's notes, chapter 5; day sheet, the running total |
+| Q16 reason | The leads -0.25, +1.95, +2.17, +1.57, +0.73, +0.79, 0.00 crore; Rs 75.69 lakh a week | The same leads, read from the table, with the exact Rs 1,57,51,980 in the week of 17 August and Rs 79,70,130 in the week of 14 September beside them; Rs 75,69,230 a week | Wednesday's day sheet, the running total |
+| Q18 | "Marketing's rule is one exposure per customer" | "The growth team's rule", with the reason giving Thursday's sequence: sort by date, keep the first, merge with validate | Thursday's notes, chapter 2 |
+| Q19 reason | "the orders fell 29" | "fell 29.4", Thursday's chapter 3 | Thursday's notes, chapter 3 |
+| Q21 | "Find any member by member code" | "Find any member by id", the chief of staff's word | Friday's notes, opening and chapter 3 |
+| Key reasons | Traps cited by rounds: Monday's round 2 and round 3, Tuesday's round 1 and round 3, Wednesday's round 1 and "Wednesday's trap", Thursday's round 3 | The chapters the rebuilt week stages them in: integer division, Monday's chapter 3; the skip in avg, Monday's chapter 4; the fan-out, Tuesday's chapter 2; the WHERE that empties the unpaid list, Tuesday's chapter 4; the whole book numbered once, Wednesday's chapter 2; DENSE_RANK's 52, Wednesday's chapter 3; the averaging pivot, Thursday's chapter 3 | Each day's day sheet, the trap table |
+| Q30 reason | "The logical order is FROM ... ORDER BY" | Monday's run order, with LIMIT seventh | Monday's notes, the run order |
+| Stretch 1 answer | "an order paid in two instalments adds to collected in two different weeks" | On Kalpa's book every paid order was paid within two days of its order and both instalments land on the same day, yet 169 of the 648 payment rows on July to September orders fall in a week other than their order's | Tuesday's day sheet; the warehouse |
+| Stretch 2 answer | No count | 60 of the 107 Retail-Plus members who bought did so in both quarters | Monday's notes, chapter 5 |
+
+The figures the paper repeats and the week confirms, unchanged: the Retail-Plus leaf (215 and 140
+orders, 91 and 76 members, Rs 2,725 and Rs 2,953 an order, 2.36 to 1.84, down 22.0 percent); the
+LIMIT sample, Rs 3,900 then Rs 4,590; 120 members, Rs 4,13,380, 5439 and 3445; the quarter's 462
+orders and Rs 9,84,00,000; 216, 188, 28 and 30 orders by payment rows and 8 orphans; 678 and 648;
+Rs 20,750 posted twice and Rs 17,54,930 unpaid; each channel's booked, collected and unpaid list;
+the tie at fiftieth (C-0185 and C-0242 on Rs 3,350, C-0189 and C-0206 on Rs 3,480, C-0259 on
+Rs 3,200; 50, 51, 52 and 49); 35, 11, 4 and 0 on the whole-book list; Rs 2,25,000 and Rs 21,740; the
+four members' months; booked and plan to date at the seven readings; 340 customers, Rs 19,84,00,000,
+136 feed rows for 130 customers, 346 rows and Rs 45,800; C-0001's sends of 3 and 11 August and its
+order of 6 August, Rs 1,200; C-0194's Rs 16,740 for C-0195; Mumbai's Rs 1,56,790 against
+Rs 7,14,890; Rs 39.41 crore, 1,400 rows and Rs 19.84 crore; Rs 5,00,000 typed, down 14.6 against
+29.4; 244, 227 and 301 buyers; Rs 19.84 crore, Rs 9.84 crore and down 1.6 percent on the card.
+
+### What the paper needed to stand on its own
+
+- Terms explained where they first appear: booked revenue, the book and the Monday suite (Part 1);
+  the tree's three leaves (Exhibit 1A); collected, the gateway and a gateway retry, and the bridge
+  (Part 2); the open line and when a channel reconciles (Q10); places (Exhibit 3A); the plan line,
+  the plan week, plan to date and booked to date (Part 3 and Exhibit 3C); recency, frequency and
+  spend, the data's last date and the monsoon sale (Part 4); gene panels (Q20); GDP (Q25); the
+  token (Part 6).
+- Q4 states its base in the stem, all 120 members whether they ordered or not, so the item no
+  longer leans on what "per member" means in Monday's files.
+- No stem sends the reader to a class file. The key's reasons name the day and chapter where the
+  room met each trap, for the trainer; the STUDENT paper names none.
+
+### What the humanizer's read changed
+
+- In the paper: the purpose no longer says the paper "finds which of those decisions you can make
+  cold" and names the six public cases as such; the company row names every role an item uses;
+  Part 6's opening names who acts on each number and which decision it feeds, worded so that it
+  names no item's trap; Q33's product manager is the product lead the opening introduces.
+- In the key: every wrong-option reason now has a subject, where most had opened on a bare verb
+  ("Reads ...", "Assumes ...", "Counts ..."), and the openings vary inside each item; the closers
+  "what the database withholds is the promise" (Q2), "raising a limit only moves the cliff" (Q11),
+  "so it is read the way it was meant" (Q16), "fails without a sound" (Q25) and the "Yes to ...; no
+  to ..." pair (Q24) became plain statements; "quietly" left Q6's and Q18's interview lines; and
+  Q31's option (a) reason was reworded where the verify sweep read it as the banned contrast.
+- In the guide: the opening no longer claims that SQL carries more interview weight than any other
+  skill; the most-missed table names each miss in a sentence, as Week 1's guide does; the schedule
+  cells, anchor 6's "A window.", anchor 7's "validate, set to ..." and anchor 8's "Upstream of the
+  pivot ..." became sentences; the closer "Three hundred minutes in all ..." became a plain line;
+  the board's two-fragment slogan became one sentence.
+- Builder lines stay as the builder writes them, since this pass writes only under
+  `content/W02/SAT/`: "as a guide, not a limit", "never an obscure fact", "the most useful thing
+  this paper produces", the Set headings and the rules on the first page.
+
+### The plant rule
+
+Decision `plants-once-found` lets this paper name a planted value only when the room found it in
+class. Every planted value the STUDENT paper names was found in class.
+
+| Plant | Where the paper names it | Found in class |
+|---|---|---|
+| 30 unpaid Q2 orders and 28 gateway retries (Rs 17,54,930 and Rs 20,750) | Set 1 (216, 188, 28, 30), Q7, Q8's steps, Exhibit 2D's unpaid lists | Tuesday, chapter 4's empty cells, where each learner runs the Kalpa lists |
+| 8 payments with no order | Set 1 and Exhibit 2A | Tuesday, chapter 4's your-turn cell |
+| The tie at fiftieth in Retail-Plus, C-0185 and C-0242 on Rs 3,350 | Exhibit 3A and Q12 | Wednesday, chapter 3's own-run cell (S46) and the case's part 1 |
+| C-0161 and C-0171, whose spend fell in each month | Exhibit 3B and Q15 | Wednesday, chapter 6's last your-turn cell and the case's part 2 |
+| C-0216 and C-0185 stepping over an empty August | Exhibit 3B and Q15 | Wednesday, chapter 6 (C-0216 on S10; the seven flags over an empty month on S12) |
+| The six re-sent exposures, 136 rows for 130 customers, and C-0001's and C-0002's sends | Set 2, Exhibit 4A, Exhibit 4B, Q17 and Q18 | Thursday, chapter 2's your-turn cell, where the room ran the merge on Kalpa's feed |
+| The raw export at the payment grain, KR-00028's two rows | Exhibit 5A and Q23 | Friday, chapter 2 |
+
+The plants the paper does not name: the bulk order KR-00667, Wednesday's third falling member
+C-0175, and Friday's missing member C-0170 and its lookup on C-0169. Tuesday's day sheet keeps 188
+from 216 and 648 from 678 apart in Tuesday's learner files; the Saturday paper prints them together
+because the room computed both in class.
+
+### Option lengths
+
+After the relabelling of Q16 its key was the longest option, 119 characters against 115, and the
+audit failed it; option (d) was lengthened, and after the review it reads "The lead grew at every
+reading from the week of 20 July to the week of 14 September, and the quarter closed level with the
+plan", 127. The review then found four keys that were the lone shortest option, and each now has
+company: Q4's key reads "who placed an order", 57 characters against 51 to 60; Q12's options (a)
+and (d) both end on 51 members, so its key is 65 against 64 to 83; Q14's option (d) is a query of
+the key's own length, 70; and Q30's option (a) reads "each beside its low ratings", 71, so the
+key's 74 sits between. Across the 21 single-letter items the key ties for longest in four (Q7, Q9,
+Q19 and Q20, whose options are numbers of one length), ties for shortest in four (Q14, Q17, Q32 and
+Q33) and sits between in thirteen, and it is never the lone longest or the lone shortest. Key
+positions across the 22 lettered items: a 6, b 6, c 5, d 5 and e 1.
+
+### The review
+
+One fresh reviewer, read-only, on 1 October 2026: a blind sitting from the STUDENT paper with every
+code exhibit run on pandas 3.0.6 and Postgres 16, a read of the part headings alone, every number,
+quotation and chapter reference against the packs on main, and a language read against the
+humanizer's patterns. The blind sitting agreed with the key on all 33 items. It found no blocker and
+no wrong key, six major findings and the rest minor. Every finding was fixed or answered below, and
+no key moved.
+
+| Finding | Weight | What changed, or why it stands |
+|---|---|---|
+| Q32: "routes every call to a cheaper model once tokens_so_far ... passes 1,000" can be read as a moment after which later calls are routed, which makes (b) right | Major | The stem now routes "every call whose tokens_so_far, read from the query above, is over 1,000" and asks which is the first call routed; key (a) stays, and option (b)'s reason says call 3 is first only if each row takes its own step |
+| Q12: each option paired its function with that function's true count, so only (d) said 51, which anyone counts off Exhibit 3A | Major | Option (a) now reads "DENSE_RANK, keeping every member ranked 50 or better: 51 members" and (d) "RANK, keeping every member whose rank is 50 or better: 51 members", so the count narrows the item to two options and the choice turns on what DENSE_RANK does after the tie at 48; key (d) stays; the reasons, the guide's row and a proof assertion (option a claims 51, DENSE_RANK's cut keeps 52) follow |
+| Q28 (d): "since two tickets repeat in the labels" handed over half of a Hard item | Major | (d) reads "A MergeError, since the two frames differ in length, so the model waits"; its reason says frames of different lengths merge without complaint, and the proof merges the exhibit's 5 and 7 rows to 7 with no error |
+| Part 5's heading and opening called all three public cases spreadsheets, and Uber's is a commission on the wrong base | Major | Heading: "Which numbers in Monday's workbook can a director trust, and where did three public cases go wrong?"; its line: "catch a wrong range, formula or base in a number"; the opening names the cases as numbers people relied on: an economics paper's average, a bank's risk figure and a ride-hailing company's commission |
+| Exhibit 2C's caption called its orders "three of the quarter's orders", though its dates and instalments match nothing on Kalpa's book | Major | "three illustrative orders" |
+| Q10 stated the reconciliation rule against the unpaid list alone, narrower than Tuesday's bridge, which also takes off anything paid short | Major | Q10's stem: "No order on this report was paid short, so a channel's collected reconciles when ..."; Set 1's situation: "Every order with a payment row was paid in full", which the proof checks on the warehouse (0 of 432 paid orders short), so Q8's step (c) holds as written |
+| Q16 (d), "Further ahead at every reading ...", is true if read loosely | Minor | "The lead grew at every reading from the week of 20 July to the week of 14 September, and the quarter closed level with the plan" |
+| Q15 leaves the learner to infer that member_month has no row for a month with no order | Minor | The stem stays, since saying it gives the trap away; the guide's repair now says it |
+| Exhibit 4B's "in the order it sends them" underlined the mechanism Q18 tests | Minor | The caption reads "its rows for three customers" |
+| "annotation vendor" is used without explanation | Minor | Exhibit 6A: "label, set by hand at an outside firm"; Q28: "labels that an outside firm set by hand" |
+| "active users" in Q33 is not defined | Minor | Stands: a definition answers the item, and Monday's chapter 5 taught that a period counts each person once |
+| Q26's "moves in step with" does not give the proportion the arithmetic needs | Minor | "moves in proportion to" |
+| Q25 and Q26 are each answered by one visible cue | Minor | Stands: the cue is the skill each item tests, reading a range against its rows and a formula against its written definition, and this pass keeps items and levels |
+| Q1's key did not say whether "fell from 2.36 to 1.84" with no percentage earns the tick | Minor | It does; the reason now says so, and that a note of halving, or of 2 and 1, earns none |
+| Part 4's heading was a leading question, and Q19 and Q20 are not about that table | Minor | "What must Monday's customer table check before the growth team acts on it?"; the opening's last sentence says the last two items take the same checks to a months view for the head of Retail-Plus and to a genomics lab's gene list |
+| Part 3's opening named Meera's decision and not what a wrong reading costs | Minor | It adds Wednesday's line, a false gap against the plan sends Marketing after it with discounts |
+| Part 5's stated cost, "misleads both", was vague | Minor | "a wrong total with nothing red beside it becomes a director's decision or a city's budget before any analyst sees it" |
+| Part 6: "Each of them acts on one number" is untrue of the product lead | Minor | The opening names each person's decision and closes "A wrong number in these tables changes one of those decisions." |
+| Part 2 could name the Rs 9.84 crore at stake | Optional | Stands: Set 1's situation prints the quarter's Rs 9,84,00,000 a page later, and the opening already says what a dropped order and a double count cost |
+| Q26's reason cited Thursday, where Friday's notes carry the JPMorgan quotation itself | Minor | The reason keeps Thursday's chapter 4 for the second way to a number and adds Friday's notes and the report's "divided by their sum instead of their average" |
+| Q13's "ten times" is 10.35 | Minor | The key's reason says "more than ten times"; the stem's wording sits in `data/programme/paper_edits.yaml`, outside this pass's files (open points, below) |
+| The guide asked about "the 216 orders with two payment rows", where the paper's 216 is the one-row orders | Minor | The guide asks which orders with two payment rows are retries and how they differ from instalments; Q8's reason says the 216 two-row orders are the 188 instalment orders and the 28 retries together |
+| The guide's validate='many_to_one' against the key's 'one_to_one' in Q28 | Minor | The guide says 'one_to_one' |
+| Exhibit 2D is labelled illustrative though only web's collected departs from Kalpa's book | Minor | Stands: naming the altered cell points at the answer; the key's reason says web's collected is the one altered and that web's gap equals its list on Kalpa's book |
+| C-0185's empty August and Tuesday's "never print 188 beside 216" | Minor | No change: C-0185's gap is no plant row and the guide names it; decision `plants-once-found` governs the Saturday paper, as the plant table above records |
+| Purpose: "with no notes and no assistant" repeats the rules table | Minor | Cut |
+| Company row: the list of public cases | Minor | The cases sit in brackets after "Six items draw on public cases" |
+| Part 1's run-on sentence, and three sentence openings in a row on "The" | Minor | Split at "Revenue means booked revenue: every order at its amount, whatever its status." |
+| Q22: "adds only the members" | Minor | "adds the spend of only the members" |
+| Q27: the source is said to give the refund "on average" | Minor | Stands: CBS News of 24 May 2017 says "each affected driver would get a refund of about $900, which includes interest" (re-read on 1 October 2026), and the stem follows it |
+| The key's reasons ended on 18 verbless tails, "Run on PostgreSQL 16.14 ... on 1 October 2026." | Minor | The tails are gone, as Week 1's key carries none; the run is recorded in this file and in the proof script. The source citations' "checked on" fragments became clauses ("read on 30 September 2026") |
+| Q2's interview line, "returns some rows, never defined ones" | Minor | "returns whichever rows the database reaches first" |
+| Q9's interview line, "turns the LEFT JOIN back into an INNER one" | Minor | "back" is gone |
+| Q15's interview line had no main verb | Minor | "I build one row per customer per month, take LAG 1 and LAG 2 ..., check ..., and flag ..." |
+| Q5 and Q16 reasons opened on a vague "This" | Minor | "Option b ..." |
+| Q21 and Q23: "The spare beside it" | Minor | "The unused technique beside it in the match table", and the same in folded bank 31 |
+| Q29: "stored as text, '11' would sort below '9'" answers nobody | Minor | Cut, with the proof's assertion on it |
+| Q11: "which only a count of rows sent ... measures" contradicts keyed option (e) | Minor | "only" is gone |
+| Q33 (c): "how much the assistant must handle at once" | Minor | "how many users the busiest day brought" |
+| Guide: "the first paper whose items leave Kalpa" is false | Minor | "Like Week 1's paper, it also leaves Kalpa: six items come from public cases, and Part 6 imagines the tables an AI team keeps." |
+| Guide: "Led by the Academic TA." | Minor | "The Academic TA leads the day." |
+| Guide: "the marker decides nothing" | Minor | "the key decides every tick, and reading somebody else's answer against it is the exercise" |
+| Guide: "The paper carries no marks and ranks nobody" twice | Minor | Kept once, at the end |
+| Guide: "Five minutes an anchor, with the bridge anchor last." | Minor | "Each anchor takes five minutes, and the bridge anchor comes last." |
+| Guide, anchor 4: "(A row whose key is missing, which is the dropna default.)" | Minor | "(Rows whose key is missing, since groupby drops them by default.)" |
+| Guide, anchor 7: "(indicator=True and a count of the matches, Q20.)" | Minor | "The answer is indicator=True with a count of the matches, as in Q20." |
+| Guide: the Do and Do not cells lacked full stops | Minor | Added |
+| Guide: "genuinely" | Minor | Cut |
+| Guide, anchor 9: "a director explores" | Minor | Friday's words: the workbook owns the last mile, presenting, slicing, looking up and taking labelled what-ifs on an export that ties |
+| Q14's key was 19 characters shorter than every distractor | Minor | (d) reads "SELECT customer_id, spend, spend / avg(spend) OVER () FROM member_step", the key's length; its results add to 76, which the proof asserts, and (b)'s GROUP BY still tests the share of 1 |
+| Q12's and Q30's keys were each 6 characters short of the next option | Minor | Q12 as above; Q30's (a) reads "each beside its low ratings" |
+| Q25 repeats the Reinhart and Rogoff case a week after Week 1's paper spelled out its range | Minor | Stands for this pass, which keeps items; named for the requester below |
+| Q25's stem made the range error look like the whole cause | Minor | The stem now gives the three corrections the PERI abstract names, "a coding error in the spreadsheet, the exclusion of some available data and an unusual weighting of the averages" (abstract re-read on 1 October 2026) |
+| Part 6 opened on a table alone, with no drawn visual | Minor | Exhibit 6A opens with a drawing of who acts on which tables, two rows of three, above the table of tables; the opening lost a sentence so the part's first page still holds the opening, Exhibits 6A and 6B and Q28 |
+| "The protect list" is Wednesday's per-segment list in Part 3 and Friday's two-quarter list in Part 5 | Minor | Part 5's opening: "The protect list in the workbook is Friday's: the fifty Retail-Plus members with the highest revenue across both quarters." |
+
+### The proof run
+
+`internal/C2_W02_SAT_key_proofs_INTERNAL.py` ran on 1 October 2026 on PostgreSQL 16.14, pandas
+3.0.6 and Python 3.11.15, printed 33 PASS lines, Q1 to Q33, and the stretch line, ended
+"RESULT: PASS (33 items proved)" and dropped its scratch schema. The review added these checks:
+every paid order of July to September, each retry's second row dropped, adds up to its booked
+amount (0 of 432 short), and Set 1 says so; Q10's stem says no order was paid short; Q12's option
+(a) claims 51 for DENSE_RANK, whose cut keeps 52; Q13's ratio is 10.35; Q14's option (d) adds to
+76; Q28's frames of 5 and 7 rows merge to 7 rows with no error; and Q32's stem routes every call
+whose total is over 1,000, the reading the proof's first-over count takes. The keyed texts of Q4
+and Q12 follow their new wording, and the text-sort check left with the claim it tested.
+
+### The checks
+
+- `python3 scripts/verify.py content/W02/SAT` ends "RESULT: PASS (0 failures)": the names and the
+  style sweep pass on the folder's 10 files, the distractor audit on 22 items and the workbook's
+  recalculation on its 2 verdicts, with 1 decision flipped and re-asserted.
+- `python3 scripts/distractor_audit.py content/W02/SAT` passes after every wording change: 22
+  lettered items, key positions a 6, b 6, c 5, d 5 and e 1.
+- `python3 scripts/build_saturday_paper.py W02 --check` reports nothing stale, and
+  `python3 scripts/sync_programme.py --check` reports every output current, so the 30 September
+  note on Week 1's stale paper no longer holds.
+- The Word paper and key went through LibreOffice 24.2.7.2 to PDF and were read page by page. The
+  paper runs to 23 pages and the key to 25. Every exhibit prints on the page of the item that reads
+  it; Part 6's first page holds its opening, Exhibit 6A's drawing and table, Exhibit 6B and Q28;
+  page 6 holds Part 2's opening alone, because Set 1's situation, its drawing and Q7 travel
+  together; the answer sheet is page 23 and the key's marking grid page 25.
+- The diagrams were drawn with mermaid-cli 11.17.0, the major version `setup.sh` installs, from the
+  session's scratch space. The environment's own `mmdc` is 12.0.0, which draws flowchart nodes
+  taller and runs the paper to 24 pages.
+
+### Open points, and the shared files this pass would change
+
+- `data/programme/paper_edits.yaml`, bank 27's stem: "is ten times the largest retail spend"
+  should read "is more than ten times", since Rs 2,25,000 against Rs 21,740 is 10.35. The key's
+  reason says so already, and the proof's check of the stem's wording changes with it. Settled by
+  the orchestrating session on 1 October 2026: the stem reads "more than ten times", the paper,
+  the key and the workbook were rebuilt with mermaid-cli 11.17.0 (23 and 25 pages), and the key
+  proofs pass on all 33 items against the reloaded warehouse. The edit stays proposed, as before.
+- mermaid-cli: the environment holds 12.0.0 where `setup.sh` installs @11. A session that builds
+  this paper with 12 gets 24 pages, so either the environment returns to 11 or the Saturday
+  builder's diagrams are measured again under 12. Settled the same day: the papers are built with
+  11, the major version `setup.sh` pins, and 12 is not used for any committed file.
+- Q25 repeats the Reinhart and Rogoff case that the Week 1 paper's Part 4 used, where the stopped
+  range was spelled out. Another public case of a range that stops short would test the same skill
+  cold; that choice sits with the requester, since this pass keeps the items.
+- The proposed edits in `data/programme/paper_edits.yaml` (bank 2's stem, bank 27's stem and
+  options) still await the Programme Head.
