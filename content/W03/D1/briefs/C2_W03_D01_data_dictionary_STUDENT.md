@@ -1,188 +1,257 @@
-# Data dictionary: the ten Kalpa Health files
+# What does each of the ten Kalpa Health files hold, row by row and column by column?
 
-Written by Dr Menon's data team for the GCC's data and AI team. Each file is described the way its
-exporting system describes it: what the system says the file holds, how many rows came out, and what
-each column is meant to carry. Row counts exclude the header line. Sample values are copied from the
-files.
+Written by Dr Priya Menon's data team at Kalpa Health for the data and AI team at Kalpa's Global
+Capability Centre (GCC) in Bengaluru. Kalpa Health is a US diagnostics business: a laboratory and
+two patient service centres, where patients have blood drawn, in each of six US metro areas, billing
+patients' payers in dollars. It is fictional, and every name, price and number in these files is
+synthetic, so no real patient's information is in them.
 
-Kalpa Health and everyone in it are fictional, and every name, price and number in these files is
-synthetic.
+**Every file is the export taken on Friday 16 October 2026.** Nothing in any file is dated after
+that day. Q2 means April to June 2026 and Q3 means July to September 2026, the calendar quarters
+Kalpa Health reports in.
+
+**Who needs the answer.** Every group, before it counts anything. A group that mistakes what one row
+of a file stands for counts the wrong thing all week, and Dr Menon carries the wrong number to her
+board.
+
+**The questions on the way.** Which system wrote each file, and what period does it cover? What is
+one row of each file? What does each column carry, and in what unit? Which columns point from one
+file to another? What has the data team not checked?
 
 ---
 
-## Two things the data team already knows
+## Which system wrote each file, and what does one row of it stand for?
 
-1. **Two metros changed booking systems in Q3.**
-2. **The posting system has a different id format from the claims export.**
+**Who needs the answer.** Every group, at its first move. The grain of a file, what one row stands
+for, decides what a count of its rows means, and a count of the wrong grain reaches Dr Menon as a
+count of patients, bookings or tests that it is not.
 
-The team has not checked anything beyond these two. What else the files hold is yours to find.
-
----
-
-## The files at a glance
+**The questions on the way.** Which system exported each file? What does that system say one row
+is? How many rows came out, and over which dates?
 
 Every file is a comma-separated text file with a header row, in `data/`, named
-`C2_W03_D01_{file}_STUDENT.csv`.
+`C2_W03_D01_{file}_STUDENT.csv`. Row counts exclude the header line. The middle column says what
+each system says one row is; the data team has not checked that the files keep to it.
 
-| File | Exporting system | What the system says it holds | Rows |
-|---|---|---|---|
-| `patients` | The patient register | One row per registered patient | 6,700 |
-| `sites` | The site list | One row per site | 18 |
-| `test_catalogue` | The price list | One row per test or panel on sale | 16 |
-| `bookings_legacy` | The booking system in use since before Q2 | One row per booking, Q2 and Q3, every metro | 11,729 |
-| `bookings_newsys` | The new booking system | One row per booking taken in the new system | 153 |
-| `booking_tests` | The booking system's line table | One row per test, panel or panel component on a booking | 51,456 |
-| `claims` | The billing export | One row per claim billed, Q2 and Q3 | 11,356 |
-| `remittances` | The posting system: payers' remittances and the cash desks | One row per posting recorded | 11,343 |
-| `appointments` | The patient service centres' visit register | One row per visit to a patient service centre, Q3 | 7,133 |
-| `campaign` | The marketing team's offer list | One row per patient offered free at-home collection | 2,381 |
+| File | The system that wrote it | One row, as the system describes it | Rows | What it covers |
+|---|---|---|---|---|
+| `patients` | The patient register | One registered patient | 6,700 | Everyone registered when the file was exported |
+| `sites` | The site list | One site, a laboratory or a patient service centre | 18 | Every Kalpa Health site |
+| `test_catalogue` | The price list | One test or panel on sale | 16 | Twelve single tests and four panels |
+| `bookings_legacy` | The booking system in use since before Q2 | One booking | 11,729 | Bookings dated 1 April to 30 September 2026 |
+| `bookings_newsys` | The new booking system | One booking taken in the new system | 153 | Every booking the new system held at the export |
+| `booking_tests` | The booking systems' line table | One test, one panel, or one test inside a panel, on a booking | 51,456 | The bookings in both booking files |
+| `claims` | The billing system | One claim, the bill for one completed booking | 11,356 | Services dated 1 April to 30 September 2026 |
+| `remittances` | The posting system | One posting: money received, a denial, or money taken back | 11,343 | Postings recorded from 2 April to 16 October 2026 |
+| `appointments` | The patient service centres' visit register | One visit, or one booked slot, at a patient service centre | 7,133 | Visits dated 1 July to 30 September 2026, Q3 only |
+| `campaign` | Marketing's offer list | One patient sent the free at-home collection offer | 2,381 | Offers sent from 15 July to 4 August 2026 |
 
-Q2 is April to June 2026 and Q3 is July to September 2026, the calendar quarters Kalpa Health
-reports in.
+Laboratories keep no visit register, so `appointments` covers the twelve patient service centres
+only.
 
 ---
 
-## patients
+## What does each column carry, and in what unit?
 
-The patient register. One row per patient.
+**Who needs the answer.** Every group, before it sums or compares a column. A column read in the
+wrong unit or with the wrong meaning moves every number built on it, and nobody downstream can see
+the mistake.
 
-| Column | Type | What it carries | Sample values |
-|---|---|---|---|
-| `patient_id` | text | The patient's id in the register | `P-000001`, `P-002450` |
-| `metro` | text | The metro the patient is registered in | `Dallas`, `New York` |
-| `age_band` | text | The patient's age band | `18-34`, `50-64`, `65+` |
-| `sex` | text | Sex as recorded at registration | `F`, `M` |
-| `payer_type` | text | Who pays for the patient's tests | `commercial`, `Medicare`, `Medicaid`, `self-pay` |
-| `employer_account` | text | The employer account that books this patient, where one does; empty otherwise | empty |
+**The questions on the way.** What does each column of each file mean? Which columns are money, and
+in which currency? Which columns are dates? Which codes need a word of explanation before they can be
+read?
 
-## sites
+Each table below gives a column's name, its type as the system means to write it, and what it
+carries. Every money column is in US dollars.
 
-The site list. One row per site.
+### What does the patient register hold for each patient?
 
-| Column | Type | What it carries | Sample values |
-|---|---|---|---|
-| `site_code` | text | The site's code, as the booking system in use since before Q2 writes it | `KH-DAL-01`, `KH-PHX-02` |
-| `metro` | text | The metro the site is in | `Phoenix`, `Philadelphia` |
-| `kind` | text | `laboratory` or `patient service center` | `laboratory`, `patient service center` |
-| `new_system_code` | text | The site's code in the new booking system, for sites that use it; empty otherwise | `ORD-01`, `PHL-02` |
+| Column | Type | What it carries |
+|---|---|---|
+| `patient_id` | text | The patient's id in the register |
+| `metro` | text | The metro area the patient is registered in |
+| `age_band` | text | The patient's age band |
+| `sex` | text | Sex as recorded at registration |
+| `payer_type` | text | Who pays for the patient's tests: a commercial plan, Medicare, Medicaid or the patient (self-pay) |
+| `employer_account` | text | The employer account that books for this patient, where there is one; empty otherwise |
 
-## test_catalogue
+### What does the site list say about each site?
 
-The price list. Twelve single tests and four panels.
+| Column | Type | What it carries |
+|---|---|---|
+| `site_code` | text | The site's code in the booking system in use since before Q2, written `KH-` then a three-letter metro code then a two-digit number |
+| `metro` | text | The metro area the site is in |
+| `kind` | text | Whether the site is a laboratory or a patient service centre |
+| `new_system_code` | text | The site's code in the new booking system, for a site that has one; empty otherwise |
 
-| Column | Type | What it carries | Sample values |
-|---|---|---|---|
-| `code` | text | The test or panel code | `T-CBC`, `PNL-WEL` |
-| `name` | text | The name on the price list | `Complete blood count`, `Whole-body wellness panel` |
-| `list_price_usd` | number, dollars | The list price of one test or one panel | `45`, `299` |
-| `kind` | text | `test` or `panel` | `test`, `panel` |
+### What does the price list charge for each test and panel?
 
-## bookings_legacy
+| Column | Type | What it carries |
+|---|---|---|
+| `code` | text | The test or panel code, Kalpa Health's own; a code starting `T-` is a single test and one starting `PNL-` a panel |
+| `name` | text | The name on the price list |
+| `list_price_usd` | dollars | The list price of one test or one panel |
+| `kind` | text | Whether the line is a single test or a panel |
 
-The booking system Kalpa Health has used since before Q2. The export covers bookings dated from
-1 April to 30 September 2026.
+A panel is several tests ordered and priced under one name. Its list price is the panel's own price,
+which is not the sum of its tests' prices.
 
-| Column | Type | What it carries | Sample values |
-|---|---|---|---|
-| `booking_id` | text | The booking's id in this system | `KB0000001`, `KB0003502` |
-| `patient_id` | text | The patient, as the register writes the id | `P-001368`, `P-005866` |
-| `site_code` | text | The site that took the booking | `KH-PHX-01`, `KH-NYC-02` |
-| `metro` | text | The site's metro | `Phoenix`, `New York` |
-| `booking_date` | date, `YYYY-MM-DD` | The day the booking was made | `2026-05-27`, `2026-07-14` |
-| `channel` | text | How the patient booked | `walk-in`, `online`, `phone`, `at-home` |
-| `status` | text | Where the booking stands | `completed`, `cancelled` |
-| `updated_at` | date and time, `YYYY-MM-DD HH:MM` | When the row was last changed | `2026-05-27 18:40` |
+### What does the older booking system record for each booking?
 
-## bookings_newsys
+| Column | Type | What it carries |
+|---|---|---|
+| `booking_id` | text | The booking's id in this system |
+| `patient_id` | text | The patient, as the register writes the id |
+| `site_code` | text | The site that took the booking |
+| `metro` | text | The site's metro area |
+| `booking_date` | date | The day the booking was made |
+| `channel` | text | How the patient booked: walking in, online, by phone, or for a collection at home |
+| `status` | text | Whether the booking was completed or cancelled |
+| `updated_at` | date and time | When the row was last changed |
 
-The new booking system. It writes its own ids, its own site codes, its own channel and status codes,
-and dates month first.
+### What does the new booking system record for each booking?
 
-| Column | Type | What it carries | Sample values |
-|---|---|---|---|
-| `bkg_ref` | text | The booking's id in the new system | `NB/ORD/000001`, `NB/PHL/000012` |
-| `patient` | text | The patient's number, without the register's prefix | `004857`, `004699` |
-| `site` | text | The site, in the new system's codes (see `sites.new_system_code`) | `ORD-01`, `PHL-03` |
-| `metro` | text | The site's metro | `Chicago`, `Philadelphia` |
-| `created` | date, `MM/DD/YYYY` | The day the booking was made | `09/21/2026`, `09/20/2026` |
-| `channel` | text | How the patient booked | `WALKIN`, `WEB`, `CALL`, `MOBILEDRAW` |
-| `state` | text | Where the booking stands | `DONE`, `CXL` |
+The new system writes its own ids, its own site codes and its own channel and status codes.
 
-## booking_tests
+| Column | Type | What it carries |
+|---|---|---|
+| `bkg_ref` | text | The booking's id in the new system |
+| `patient` | text | The patient's register number, as the new system writes it |
+| `site` | text | The site, in the new system's codes; the site list's `new_system_code` column carries the same codes |
+| `metro` | text | The site's metro area |
+| `created` | date | The day the booking was made |
+| `channel` | text | How the patient booked, in the new system's codes for walking in, online, by phone and a collection at home |
+| `state` | text | Whether the booking was completed or cancelled, in the new system's codes |
 
-The booking system's line table: what was booked on each booking, in both systems. A test booked on
-its own is one `test` row. A panel is one `panel` row carrying the panel price, followed by one
-`component` row for each test inside it, priced at zero.
+### Which tests and panels sit on each booking?
 
-| Column | Type | What it carries | Sample values |
-|---|---|---|---|
-| `booking_id` | text | The booking, as either system writes its id | `KB0000001`, `NB/ORD/000001` |
-| `test_code` | text | The test, or the panel on a `panel` row | `T-URN`, `PNL-DB` |
-| `panel_code` | text | The panel this row belongs to; empty for a test booked on its own | `PNL-WEL`, `PNL-AGE` |
-| `quantity` | number | How many of this test or panel were booked | `1` |
-| `price_each` | number, dollars | The price charged for one | `30`, `299`, `0` |
-| `line` | text | `test`, `panel` or `component` | `test`, `panel`, `component` |
+The line table serves both booking systems. A test booked on its own is one row whose `line` is
+`test`. A panel is one row whose `line` is `panel`, carrying the panel's price, followed by one row
+whose `line` is `component` for each test inside it, priced at zero.
 
-## claims
+| Column | Type | What it carries |
+|---|---|---|
+| `booking_id` | text | The booking, as either booking system writes its id |
+| `test_code` | text | The test on a `test` or `component` row, or the panel on a `panel` row |
+| `panel_code` | text | The panel a `panel` or `component` row belongs to; empty for a test booked on its own |
+| `quantity` | whole number | How many of this test or panel were booked |
+| `price_each` | dollars | The price charged for one |
+| `line` | text | `test`, `panel` or `component`, as described above |
 
-The billing export. One claim per completed booking, billed to a payer at list price.
+### What does each claim bill, and to whom?
 
-| Column | Type | What it carries | Sample values |
-|---|---|---|---|
-| `claim_id` | text | The claim's id | `KH-CLM-000001`, `KH-CLM-000002` |
-| `booking_id` | text | The booking billed, as either system writes its id | `KB0000001`, `NB/PHL/000001` |
-| `service_date` | date, `YYYY-MM-DD` | The day of the service billed | `2026-04-01` |
-| `metro` | text | The metro of the site that did the work | `Dallas`, `Philadelphia` |
-| `payer_type` | text | The kind of payer billed | `commercial`, `Medicare`, `Medicaid`, `self-pay` |
-| `payer_id` | text | The payer billed, in Kalpa's own ids | `COM-C`, `MEDICARE`, `MEDICAID-TX`, `SELF` |
-| `billed_amount` | number, dollars | The claim total at list price | `85`, `299`, `149` |
-| `line_items` | number | How many lines the claim carries | `1`, `3` |
-| `employer_account` | text | The employer account billed, where the claim goes to one; empty otherwise | empty |
-| `denial_category` | text | The payer's reason, once a denial has been posted back; empty otherwise | `medical necessity`, `timely filing` |
+A claim is the bill Kalpa Health sends to whoever pays for a completed booking, at list price. The
+payer answers with a remittance, which the posting system records.
 
-## remittances
+| Column | Type | What it carries |
+|---|---|---|
+| `claim_id` | text | The claim's id in the billing system |
+| `booking_id` | text | The booking billed, as either booking system writes its id |
+| `service_date` | date | The day of the service billed |
+| `metro` | text | The metro area of the site that did the work |
+| `payer_type` | text | The kind of payer billed |
+| `payer_id` | text | The payer billed, in Kalpa Health's own payer ids, since no real payer is named |
+| `billed_amount` | dollars | The claim's total at list price |
+| `line_items` | whole number | How many lines the claim carries |
+| `employer_account` | text | The employer account billed, where the claim goes to one; empty otherwise |
+| `denial_category` | text | The payer's reason, once a denial has been posted back; empty otherwise |
 
-The posting system. Payers' remittances arrive as electronic remittance files (ERA); card and cash
-payments come from the patient service centres' desks. Every posting is recorded as its own row
-against the claim it is for.
+### What does each posting record, and against which claim?
 
-| Column | Type | What it carries | Sample values |
-|---|---|---|---|
-| `posting_id` | text | The posting's id in the system | `PST0000001`, `PST0000002` |
-| `claim_ref` | text | The claim the posting is for, as the payer or the desk recorded it | `000002`, `000003` |
-| `payer_id` | text | Who sent the money, in Kalpa's own ids | `COM-C`, `MEDICARE`, `SELF` |
-| `channel` | text | How the posting arrived | `ERA`, `card`, `cash` |
-| `billed_amount` | number, dollars | The claim's billed amount, as the payer or the desk recorded it | `85`, `299` |
-| `posting` | text | `payment` for money received, `denial` for a claim the payer refused, `reversal` for money taken back | `payment`, `denial`, `reversal` |
-| `allowed_amount` | number, dollars | What the payer allows for the claim | `23.80`, `140.53` |
-| `paid_amount` | number, dollars | The amount this posting moved | `23.80`, `112.42` |
-| `patient_responsibility` | number, dollars | What the patient owes on the claim | `0.00`, `28.11` |
-| `adjustment_amount` | number, dollars | The part of the billed amount neither paid nor owed | `61.20`, `158.47` |
-| `adjustment_group` | text | The adjustment's group code, as the remittance carries it | `CO`, `OA` |
-| `reason_category` | text | The adjustment's reason | `contractual adjustment`, `medical necessity` |
-| `posted_at` | date and time, `YYYY-MM-DD HH:MM` | When the system recorded the posting | `2026-05-07 17:18` |
+Payers' remittances arrive as electronic remittance files, which the posting system calls ERA; card
+and cash payments come from the patient service centres' desks. The system records every posting as
+a row of its own against the claim it is for.
 
-## appointments
+| Column | Type | What it carries |
+|---|---|---|
+| `posting_id` | text | The posting's id in the posting system |
+| `claim_ref` | text | The claim the posting is for, as the payer or the desk recorded it |
+| `payer_id` | text | Who sent the money or the decision, in Kalpa Health's own payer ids |
+| `channel` | text | How the posting arrived: an electronic remittance, a card payment or a cash payment |
+| `billed_amount` | dollars | The claim's billed amount, as the payer or the desk recorded it |
+| `posting` | text | `payment` for money received, `denial` for a claim the payer refused, `reversal` for money taken back |
+| `allowed_amount` | dollars | What the payer's contract allows for the claim, its share and the patient's together |
+| `paid_amount` | dollars | The money this posting moved; a reversal moves money back, so it is negative |
+| `patient_responsibility` | dollars | What the patient owes on the claim |
+| `adjustment_amount` | dollars | The part of the billed amount that neither the payer pays nor the patient owes |
+| `adjustment_group` | text | The remittance's group code for that part: `CO`, a contractual obligation Kalpa Health absorbs; `PR`, the patient's responsibility; `OA`, another adjustment; `PI`, a reduction the payer made |
+| `reason_category` | text | The adjustment's reason in words: a contractual adjustment, or one of the seven denial categories below |
+| `posted_at` | date and time | When the posting system recorded the posting |
 
-The patient service centres' visit register for Q3, all twelve patient service centres. Laboratories
-do not keep one.
+### What does the visit register record for each visit to a centre?
 
-| Column | Type | What it carries | Sample values |
-|---|---|---|---|
-| `appointment_id` | text | The visit's id in the register | `AP000001`, `AP000002` |
-| `site_code` | text | The patient service centre | `KH-DAL-02`, `KH-PHI-03` |
-| `visit_date` | date, `YYYY-MM-DD` | The day of the visit, or of the booked slot | `2026-07-01` |
-| `kind` | text | `scheduled` for a booked slot, `walk-in` for a patient who came without one | `scheduled`, `walk-in` |
-| `attended` | text | `Y` if the patient was seen, `N` if not | `Y`, `N` |
+| Column | Type | What it carries |
+|---|---|---|
+| `appointment_id` | text | The visit's id in the register |
+| `site_code` | text | The patient service centre |
+| `visit_date` | date | The day of the visit, or of the booked slot |
+| `kind` | text | `scheduled` for a slot booked ahead, `walk-in` for a patient who came without one |
+| `attended` | Y or N | `Y` if the patient was seen, `N` if not |
 
-## campaign
+### Whom did marketing send the at-home offer to, and who used it?
 
-The marketing team's list for the free at-home collection offer. One row per patient the offer was
-sent to.
+The offer was a free collection at home: a phlebotomist visits the patient and draws the sample
+there, with the visit's fee waived.
 
-| Column | Type | What it carries | Sample values |
-|---|---|---|---|
-| `patient_id` | text | The patient, as the register writes the id | `P-000002`, `P-000003` |
-| `metro` | text | The patient's registered metro | `Dallas`, `Phoenix` |
-| `offered_on` | date, `YYYY-MM-DD` | The day the offer was sent | `2026-07-22`, `2026-08-04` |
-| `took_up` | text | `Y` if the patient used a free collection, `N` if not | `Y`, `N` |
+| Column | Type | What it carries |
+|---|---|---|
+| `patient_id` | text | The patient, as the register writes the id |
+| `metro` | text | The patient's registered metro area |
+| `offered_on` | date | The day the offer was sent |
+| `took_up` | Y or N | `Y` if the patient used a free collection, `N` if not |
+
+### What do the seven denial categories mean?
+
+Kalpa Health's systems name every denial by one of seven categories, modelled on the claim
+adjustment reason codes that US payers put on a remittance. The domain dossier's section 6 gives a
+typical code for each and what the lab does next.
+
+| Category | What the payer is saying |
+|---|---|
+| eligibility or coverage | The patient was not covered by this payer for this service on that day |
+| missing or invalid information | The claim lacks information or carries an error |
+| medical necessity | The payer does not consider the test necessary for the patient's condition |
+| prior authorization | An approval the payer requires before the service was never obtained |
+| non-covered service | The patient's plan does not cover this service |
+| duplicate claim | The payer has already received this claim |
+| timely filing | The claim reached the payer after its filing deadline |
+
+---
+
+## Which columns point from one file to another?
+
+**Who needs the answer.** Every group that combines two files, since almost every question does. A
+group that joins on the wrong pair of columns, or never checks what its join kept and dropped, puts a
+number in front of Dr Menon that no file supports.
+
+**The questions on the way.** Which column in each file names a patient, a site, a booking, a claim
+or a test? Which pairs of columns are meant to refer to the same thing?
+
+Each row below pairs columns that the systems mean to refer to the same thing. Whether every value
+in one finds its partner in the other is not something the data team has checked.
+
+| The thing | Where it is defined | Where other files point to it |
+|---|---|---|
+| A patient | `patients.patient_id` | `bookings_legacy.patient_id`, `bookings_newsys.patient`, `campaign.patient_id` |
+| A site | `sites.site_code`, and `sites.new_system_code` for the new system | `bookings_legacy.site_code`, `appointments.site_code`, and `bookings_newsys.site` |
+| A booking | `bookings_legacy.booking_id` and `bookings_newsys.bkg_ref` | `booking_tests.booking_id`, `claims.booking_id` |
+| A claim | `claims.claim_id` | `remittances.claim_ref` |
+| A test or panel | `test_catalogue.code` | `booking_tests.test_code`, `booking_tests.panel_code` |
+| A payer | `claims.payer_id` | `remittances.payer_id` |
+
+---
+
+## What has the data team not checked?
+
+**Who needs the answer.** Every group, before it trusts this page. The data team wrote down what
+each system says it exports, and Dr Menon's heads have already been given different numbers from
+these same systems.
+
+**The questions on the way.** What did the data team check? What is left for your group?
+
+The data team checked one thing: that each file opens and its row count is the one in the first
+table. It has not checked any file against this page. Whether every row is what its system says it
+is, whether every value is in the type its column says, and whether every pointer finds its partner,
+are yours to find, and profiling each file before you count from it, the Week 1 Wednesday move, is
+how a group finds them. Every cleaning or matching call your group makes goes in the decisions log,
+`briefs/C2_W03_D01_decisions_log_STUDENT.xlsx`, with the rows it touched and its reason.

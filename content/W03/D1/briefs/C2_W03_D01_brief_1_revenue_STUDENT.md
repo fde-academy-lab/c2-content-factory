@@ -1,68 +1,170 @@
-# Brief 1: Where lab revenue comes from, and which branch is short
+# Brief 1: Which branch of Kalpa Health's billed revenue is short of the plan, and by how much?
 
-**For:** the group allocated sub-problem 1
+**For:** the group or groups allocated sub-problem 1
 **Client:** Dr Priya Menon, COO, Kalpa Health, and the finance head
-**Read first:** `C2_W03_D01_briefing_note_STUDENT.md`
+**Data:** the ten files in `data/`, exported on Friday 16 October 2026
 
-Kalpa Health and everyone in it are fictional.
+Kalpa Health and everyone in it are fictional, and every record in the files is synthetic.
+
+> "The board will ask me where the plan's growth went. Where does our lab revenue actually come
+> from, and which branch of it is short?"
+> The finance head, Kalpa Health
+
+**Who needs the answer.** The finance head, who writes the board's page on where the plan's growth
+went, and Dr Menon, who moves the second half's recovery effort onto the branch you name. A branch
+named wrongly sends staff and money to a part of the business that was never short, while the part
+that is short keeps falling.
+
+**The questions on the way.** What has Dr Menon asked, and where does this question sit in it? What
+do revenue, a test and a branch mean at Kalpa Health? Which files hold the answer, and how big is
+each? Which ways could a group find the short branch, and what does each cost? What will the panel
+ask, and what does a finished answer look like? What does your group ship, and when?
 
 ---
 
-## The question, as it was put
+## What has Dr Menon asked, and where does this question sit in it?
 
-> "The board will ask me where the plan's growth went. Where does our lab revenue actually come from, and which branch of it is short?"
-> The finance head, Kalpa Health
+**Who needs the answer.** Your group, before it picks a way. The finance head's question is one of
+five that together answer Dr Menon's, and an answer that ignores the other four repeats work or
+contradicts it.
 
-## The decision it feeds
+**The questions on the way.** What business is Kalpa Health? What does Dr Menon see? Which five
+questions did her heads ask, and which one is yours?
 
-Where Dr Menon puts the second half's recovery effort, and what she tells the board about the plan of
-18 percent. A branch named wrongly sends the recovery money to a part of the business that was never
-short, and the part that was keeps falling.
+Kalpa Health runs a laboratory and two patient service centres, the places where a phlebotomist
+draws a patient's blood, in each of six US metro areas: Dallas, Phoenix, New York, Chicago, Atlanta
+and Philadelphia. It bills its patients' payers in dollars: commercial health plans, Medicare (the
+federal programme for people aged 65 and over), Medicaid (each state's programme for people on low
+incomes) and patients who pay for themselves (self-pay). Its revenue-cycle and analytics work runs
+from Kalpa's Global Capability Centre (GCC) in Bengaluru, where you work as trainee engineers in the
+data and AI team. It reports in calendar quarters: Q2 is April to June 2026 and Q3 is July to
+September 2026.
 
-## The symptom, as the business sees it
+Its COO, Dr Priya Menon, has written to the team. Her dashboard shows test volumes up 5 percent from
+Q2 to Q3 against a plan of 18, and she cannot say which branch of the business is short. Five of her
+heads have each asked her a question, and each group takes one.
 
-Dr Menon's dashboard shows test volumes up 5 percent from Q2 to Q3 against a plan of 18. Each head she
-asks names a different cause and backs it with a different number, and nobody has yet shown her which
-of those causes the numbers support.
+| # | The question | Who asks |
+|---|---|---|
+| **1** | **Where does our lab revenue come from, and which branch of it is short? (yours)** | **The finance head** |
+| 2 | Bookings fell in two metros in Q3: how far, and why? | The patient service centres' operations head |
+| 3 | The claims and the posting system disagree: which claims are unpaid, and can the figure be trusted? | The finance head |
+| 4 | KH-ATL-03 has the worst no-show rate: is the centre really worse? | The patient service centres' operations head |
+| 5 | The free at-home collection offer "lifted bookings 9 percent": did it work? | The marketing head |
 
-## The files that bear on it
+Yours is the question nearest to Dr Menon's own: the other four each look at one part of the
+business, and yours asks which part is short.
 
-- `C2_W03_D01_claims_STUDENT.csv`
-- `C2_W03_D01_booking_tests_STUDENT.csv`
-- `C2_W03_D01_test_catalogue_STUDENT.csv`
-- `C2_W03_D01_bookings_legacy_STUDENT.csv`
-- `C2_W03_D01_bookings_newsys_STUDENT.csv`
-- `C2_W03_D01_patients_STUDENT.csv`
-- `C2_W03_D01_sites_STUDENT.csv`
+---
 
-Every group holds all ten files, and you may use any of them. The ones above are where this question
-starts.
+## What do revenue, a test and a branch mean at Kalpa Health?
 
-## What the panel will ask
+**Who needs the answer.** Everyone who reads your slide. The finance head says "revenue", Dr Menon's
+dashboard says "test volumes", and a group that silently swaps one for the other answers a question
+neither of them asked.
 
-The panel reads your one-slide answer and then asks questions like these. Every member should be able
+**The questions on the way.** What is billed revenue, and how does it differ from money collected?
+What are a booking, a test and a panel? What is a branch of a revenue tree?
+
+| Word | What it means at Kalpa Health | Where it lives in the files |
+|---|---|---|
+| Booking | One patient's visit to have one or more tests or panels done | `bookings_legacy`, `bookings_newsys` |
+| Test | One laboratory test, such as a complete blood count or vitamin D | `test_catalogue`, `booking_tests` |
+| Panel | Several tests ordered and priced under one name, such as the diabetes monitoring panel; its price is its own, below the sum of its tests' prices | `test_catalogue`, `booking_tests` |
+| Claim | The bill Kalpa Health sends to a payer for a completed booking, at list price | `claims` |
+| Payer | Whoever pays a claim: a commercial plan, Medicare, Medicaid or the patient (self-pay) | `claims.payer_type`, `claims.payer_id` |
+| Billed revenue, or gross charges | The dollars on the claims at Kalpa Health's list prices | `claims.billed_amount` |
+| Allowed amount | What a payer's contract permits for a claim, payer's and patient's shares together; it is usually well below the billed amount, and the difference is written off under the contract | `remittances.allowed_amount` |
+| Branch | One box of a revenue tree: a count or a ratio, such as bookings per patient, whose change can be set against the plan | Built by your group |
+
+Billed revenue is what Kalpa Health charges at list price, and the money that arrives is a smaller
+figure set by the payers' contracts. Both are honest numbers for different decisions, so your group
+says which one each branch is measured in. The domain dossier,
+`study-notes/C2_W03_D01_domain_us_healthcare_STUDENT.md`, follows one claim from the list price to
+the cash in its section 3, for more depth.
+
+---
+
+## Which files hold the answer, and how big is each?
+
+**Who needs the answer.** Your group, to plan its time. A way that touches every row of every file
+costs a day; one that touches a single file costs an hour.
+
+**The questions on the way.** Which files does the revenue question start from? How many rows does
+each hold, and what is one row?
+
+| File | One row is | Rows | Why it bears on this question |
+|---|---|---|---|
+| `claims` | One claim | 11,356 | The billed dollars, by payer, metro and service date |
+| `booking_tests` | One test, panel, or test inside a panel, on a booking | 51,456 | What was booked on each booking, and at what price |
+| `test_catalogue` | One test or panel on the price list | 16 | List prices, and which codes are panels |
+| `bookings_legacy` | One booking in the booking system in use since before Q2 | 11,729 | Bookings, patients, sites, channels and dates |
+| `bookings_newsys` | One booking in the new booking system | 153 | The same, in the new system's codes |
+| `patients` | One registered patient | 6,700 | Who the patients are, and who pays for them |
+| `sites` | One laboratory or patient service centre | 18 | Which metro each site is in |
+
+Every group holds all ten files, and you may use any of them; these seven are where this question
+starts. The data dictionary, `briefs/C2_W03_D01_data_dictionary_STUDENT.md`, gives every column.
+
+---
+
+## Which ways could a group find the short branch, and what does each cost?
+
+**Who needs the answer.** Your group, on Monday, when it chooses how to spend Wednesday and Thursday.
+A way chosen because it is familiar, and not because it fits the question, burns the build week on
+an answer the finance head cannot use.
+
+**The questions on the way.** What are the ways? How many rows does each touch, how many hours does
+it take, and what can it get wrong? Which Week 1 or 2 move does each need?
+
+The hours are our estimate for a group of four working together, from first file opened to a
+checked number.
+
+| Way | What the group does | Rows it touches | Hours | What it can get wrong | The Week 1 or 2 move it needs |
+|---|---|---|---|---|---|
+| A. Total the billed dollars | Sums the billed dollars on the claims for Q2 and for Q3 and compares the growth with 18 percent | 11,356 claims | About 1 | Says whether billed dollars grew, and never which branch is short, so it answers half the question | Week 1 Monday: which total is sales, and what each total counts |
+| B. Split the dollars by payer and by single test against panel | Totals billed dollars for each payer type and for single tests against panels, in each quarter | 11,356 claims and 51,456 booking lines | About 3 | Shows where the dollars sit; a change in the mix reads like a change in volume unless both quarters are split on the same definitions | Week 1 Tuesday: which segment moved, and did customers pay more or did the mix change; Week 2 Thursday: grouping in pandas |
+| C. Build the revenue tree | Breaks billed revenue into patients, bookings per patient, tests per booking and dollars per test, each box for Q2 and Q3, and finds the box furthest short of 18 percent | All seven files, about 81,000 rows | About 6 | Is only as right as each box's definition: a patient, a booking and a test must each be counted the same way in both quarters and in every file | Week 1 Monday: the revenue tree, every branch a count over a denominator; Week 2 Monday: the tree as queries |
+| D. Rebuild Dr Menon's 5 percent first, then the tree | Reproduces her dashboard's figure from the files before walking the tree, so the tree starts from the number she quotes | As C | About 7 | Least of the four, if every definition the group chooses is written down; costs an hour more than C | Week 1 Tuesday: confirm the number before explaining it; Week 1 Monday: which total, and what it counts |
+
+Which way leads, and which one checks it, is your group's call. Make it in Part 2 of the translation
+worksheet, `briefs/C2_W03_D01_translation_worksheet_STUDENT.md`, before anyone opens a notebook, and
+name the fact that would make you switch. Kavya Nair, the senior analyst on your team, will ask for
+a second way to the same number, so the call needs two of these ways.
+
+---
+
+## What will the panel ask, and what does a finished answer look like?
+
+**Who needs the answer.** Every member, since the panel may put any question to anyone. A group that
+knows only its own slice of the work loses marks one learner at a time.
+
+**The questions on the way.** Which questions will the panel ask? What earns full marks on each
+criterion of the mini project, for this question?
+
+### Which questions will the panel ask?
+
+The panel reads your one-slide answer, then asks questions like these. Every member should be able
 to answer each one from your own work.
 
-1. Which branch of Kalpa Health's revenue is short, and by how much against the plan?
-2. What did you count as one test, and why that and not something else?
+1. Which branch of Kalpa Health's billed revenue is short, and by how much against the plan of 18?
+2. What did you count as one test, and why that and not another way of counting?
 3. Which summary did you use for a typical claim, and why that one?
-4. Does your Q2 and Q3 revenue match the billing export, row for row? Show where every row went.
-5. Say your answer in one sentence Dr Menon can carry to the board, with its denominator and its caveat.
+4. Do your Q2 and Q3 billed dollars match the claims file, row for row? Show where every row went.
+5. Say your answer in one sentence Dr Menon can carry to the board, with its denominator and its
+   caveat.
 
-## What your group ships
+### What earns full marks on this question?
 
-Every group ships the same five things, whatever its question.
+| Criterion | Marks | Full marks on this question look like |
+|---|---|---|
+| The question translated | 8 | "Revenue" and "test volumes" are each defined in a line, saying what is counted, from which file and in which quarters, and the decision the answer feeds, where the recovery effort goes, is named |
+| The data made trustworthy | 10 | Every file the tree uses is profiled first; every row removed, converted or kept on purpose is in the decisions log with its reason; the tree's billed dollars reconcile to the claims file for each quarter |
+| The analysis | 10 | The tree runs from billed revenue down to the box that falls short, every box a count over a stated denominator, both quarters counted the same way, and the gap to 18 percent shown branch by branch |
+| The claim | 6 | One sentence names the branch, how far it falls short of the plan, on which denominator, for Q2 to Q3, with its caveat and one action Dr Menon can take |
+| Presentation and defence | 6 | The notebook runs cold on the raw files in front of the panel, and every member can defend the group's definition of one test |
 
-| What | What it holds |
-|---|---|
-| A presentation slot of 25 to 30 minutes, on Friday 23 October where the roster allows or on Saturday 24 October | Your answer to Dr Menon, a live demo run cold on your group's own copy of the Kalpa Health files, and the panel's questions. Every member answers; the panel may question anyone. |
-| The one-slide answer | The slide Dr Menon carries into her board meeting, in four parts: the claim, the evidence, the caveat and the action. |
-| The notebook or SQL | The code that reproduces every number on your slides from the raw files in `data/`, run top to bottom from a fresh start. A number the code does not produce is not in the answer. |
-| The decisions log | Every cleaning and matching decision in the Week 1 Wednesday shape (field, issue, rows, decision, reason), with each file's row count reconciled: rows in equals clean plus removed. Use `C2_W03_D01_decisions_log_STUDENT.xlsx`. |
-| The challenges log | Every time the group was stuck, what you tried and what you decided, dated as it happened. Use `C2_W03_D01_challenges_log_STUDENT.xlsx`; entry one goes in on Monday. |
-
-The mini project carries 40 marks, and the presentation is part of them. The panel scores it
-against this rubric:
+The rubric the panel scores against, as approved:
 
 <!-- sync:rubric:W03/mini-project -->
 **Mini project, 40 marks.** The first four criteria are scored once for the group, and every member receives those 34 marks; presentation and defence is scored for each learner on 6 marks, so a silent teammate cannot ride the group's score.
@@ -76,14 +178,35 @@ against this rubric:
 | Presentation and defence | 6 | The live demo runs cold, and every member answers a challenge on the caveat. |
 <!-- /sync:rubric:W03/mini-project -->
 
-The presentations run on Friday 23 October where the roster allows and on Saturday 24 October, when
-every Build 1 grade closes. The mock interview (30) and the group discussion (30) are scored
-separately: Mock R1 runs for every learner on Thursday 22 October, and the GD rounds run on Friday 23
-October and close on the morning of Saturday 24 October. The briefing note carries their rubrics.
+---
 
-## Before you open a file
+## What does your group ship, and when is each piece due?
 
-Write Dr Menon's question in your own words and map it onto the method you already own, in
-`C2_W03_D01_translation_worksheet_STUDENT.md`. Nobody hands you that mapping; making it is Monday's
-work. The files and every column in them are described in `C2_W03_D01_data_dictionary_STUDENT.md`.
-Nothing new is taught this week: everything you need is in your Weeks 1 and 2 notes.
+**Who needs the answer.** Your group, today, so that nothing is built on Friday that should have
+started on Monday.
+
+**The questions on the way.** What does every group ship? When is each piece seen? What happens if
+the live demo fails?
+
+| What | What it holds | When it is seen |
+|---|---|---|
+| The translation worksheet | Dr Menon's question in your words, the method that leads, your vocabulary map, your first three moves, the cost of an error and your one-sentence scope | Monday's close, when each group reads its scope aloud |
+| The challenges log | Every time the group was stuck, what you tried and what you decided, dated as it happened, in `briefs/C2_W03_D01_challenges_log_STUDENT.xlsx` | Entry one by Monday's close; read again in Thursday's viva |
+| The decisions log | Every cleaning and matching call in the Week 1 Wednesday shape (field, issue, rows, decision, reason), with each file's rows reconciled, in `briefs/C2_W03_D01_decisions_log_STUDENT.xlsx` | Kept from your first cleaning call; scored in the mini project |
+| The headline claim | One sentence with its number, denominator, period and caveat | Wednesday 21 October, at the day's close |
+| The notebook or SQL | The code that reproduces every number on your slide from the raw files in `data/`, run top to bottom from a fresh start; a number the code does not produce is not in the answer | The live demo |
+| The one-slide answer | The slide Dr Menon carries into her board meeting: the claim, the evidence, the caveat and the action | Your presentation |
+| A presentation slot of 25 to 30 minutes | Your answer, a live demo run cold on your own copy of the files, and the panel's questions; every member answers | Friday 23 October where the roster allows, or Saturday 24 October |
+
+**If the live demo fails.** The demo runs once, cold, on the raw files. If it fails, your group has
+two minutes to recover it live, as it would in front of a client. If it still fails, you present from
+your executed notebook, and the panel scores the live demo, inside presentation and defence, as not
+run cold. The other 34 marks are scored from the executed run, so a failed demo costs its own marks
+and never the analysis.
+
+The mock interview (30 marks) and the group discussion (30 marks) are scored apart from the project:
+Mock R1 runs for every learner on Thursday 22 October, and the group discussion rounds run on Friday
+23 October and close on the morning of Saturday 24 October. The briefing note,
+`briefs/C2_W03_D01_briefing_note_STUDENT.md`, carries their rubrics. Nothing new is taught this week:
+everything the build needs is in your Weeks 1 and 2 notes, and a question about the domain, such as
+what a phlebotomist does, is always fair to ask a trainer or a TA.
