@@ -48,7 +48,7 @@ The sentence carries four things, and the reason that connects them:
 | **The number** | The change or the level you found, in its unit: dollars, bookings, claims, visits, patients or a rate | It is what she will repeat |
 | **The denominator** | What every rate or average is out of, both sides of any comparison, in counts someone can check | A rate with no base cannot be checked or compared |
 | **The period** | Which weeks or quarters, and whether the windows are the same length | "Up 8 percent" over unequal windows is a different number from the pace |
-| **The caveat** | The one thing that would change the claim, on its own line below the sentence | A stated risk survives the panel; a hidden one does not |
+| **The caveat** | The one thing that would change the claim, on its own line below the sentence | The panel will ask what would change the claim, and a group that wrote it down answers in a sentence |
 
 The shape is Week 1 Thursday's note, claim first, because a COO reads the first line and may stop:
 
@@ -74,10 +74,10 @@ This morning's parallel build took one metro's billed revenue, New York's, from 
 revenue is the dollars on the claims at Kalpa Health's list prices, what it asked the payers for;
 the payers pay a contracted share of it weeks later, a road the domain dossier,
 `content/W03/D1/study-notes/C2_W03_D01_domain_us_healthcare_STUDENT.md`, follows from list price
-to cash in its section 3. The build kept one row per booking under an
-identity rule, one written rule for what makes two rows one record (here, one booking id is one
-booking), converted every amount, matched the claims one to one to the completed bookings and split
-billed revenue into claims times the mean claim, the average dollars on one claim.
+to cash in its section 3. The build kept one row per booking under an identity rule, one written
+rule for what makes two rows one record (here, one booking id is one booking), converted every
+amount, matched the claims one to one to the completed bookings and split billed revenue into
+claims times the mean claim, the average dollars on one claim.
 
 | Part | New York, Q2 against Q3 |
 |---|---|
@@ -98,7 +98,7 @@ version below is a plausible number the New York build met this morning.
 **The questions on the way.** What does each sentence count? Over which period? Could anyone rebuild
 it from the raw files?
 
-| The sentence | What is wrong with it | The test below it fails |
+| The sentence | What is wrong with it | The test it fails, from the next section |
 |---|---|---|
 | "New York grew 5.5 percent." | No unit, no base and no period: 5.5 percent of what, out of what, from when? | 2, 3 and 4 |
 | "New York's bookings grew 4.8 percent from Q2 to Q3." | It counted the export's rows as bookings; 33 bookings appear on two rows, and counted once each the bookings grew 6.8 percent | 2 |
@@ -125,7 +125,7 @@ bases? Do its windows match? Does it say what it cannot? Is it a claim and not a
 
 **Kavya's review.** A claim that passes all six has the count you started from, every row you set
 aside with its reason, and a second way to reach the same total. If one of the three is missing,
-say so in the caveat: a gap you state survives the panel, and a gap the panel finds costs the claim.
+say so in the caveat, so the panel hears it from your group first.
 
 ## What does your group say at the close if its claim is not ready?
 
@@ -139,9 +139,9 @@ A smaller claim that keeps its denominators and its caveat is a finished claim: 
 six, one quarter's count instead of a full tree. Week 1 Thursday's "not yet" is also an answer, if it
 says what would turn it, the way the New York build left its own open question: "Not yet: New York's
 mean claim fell $4.16, and we will know whether that is price or mix once the branch below the claim
-is opened." If your group has neither, name the blocker
-in one sentence: which of this morning's three checkpoint questions you still cannot answer, and what
-is in the way. The Academic TA starts the open build time at the tables that named one.
+is opened." If your group has neither, name the blocker in one sentence: which of this morning's
+three checkpoint questions you still cannot answer, and what is in the way. The Academic TA starts
+the open build time at the tables that named one.
 
 ## How is the claim scored, and when?
 

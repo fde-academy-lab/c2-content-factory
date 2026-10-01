@@ -10,23 +10,22 @@ where a phlebotomist draws patients' blood, in each of six US metro areas, billi
 payers in dollars (commercial health plans, Medicare, Medicaid and patients who pay for themselves).
 Its revenue-cycle and analytics work runs from Kalpa's Global Capability Centre (GCC) in Bengaluru,
 where you work as trainee engineers in the data and AI team. Q2 is April to June 2026 and Q3 is July
-to September 2026. Every term the questions use is explained beside them; the domain dossier,
-`content/W03/D1/study-notes/C2_W03_D01_domain_us_healthcare_STUDENT.md`, carries the whole business, with its
-words in section 6 and its numbers and their formulas in section 5, for more depth.
+to September 2026. The domain dossier,
+`content/W03/D1/study-notes/C2_W03_D01_domain_us_healthcare_STUDENT.md`, tells the whole business,
+with its words in section 6 and its numbers and their formulas in section 5.
 
 > "My dashboard says test volumes grew 5 percent from Q2 to Q3. The plan the board approved asks for
 > 18. Which branch of my business is short, and what do I do next?"
 > Dr Priya Menon, COO, Kalpa Health
 
-Five of Dr Menon's heads asked her a question, and on Monday each group took one. Today the files
-are opened in earnest: the checkpoint first, then the trainer's parallel build on a question no
-group holds, then build time, and at the day's close each group states its headline claim, one
-sentence Dr Menon can carry into her board meeting.
+Five of Dr Menon's heads asked her a question, and on Monday each group took one. Today each group
+builds on the files: the checkpoint first, then the trainer's parallel build on a question no group
+holds, then build time, and at the day's close each group states its headline claim, one sentence
+Dr Menon can carry into her board meeting.
 
 **Who needs the answer.** Your group first, then the Academic TA and the trainer. Tomorrow every
 member sits Mock R1 alone, with a viva on the group's own work, so a group that cannot answer its
-three questions this morning is stuck, and a blocker named today gets help today. A blocker found
-tomorrow costs the viva.
+three questions this morning is stuck, and a blocker named today gets help a day before the viva.
 
 **The questions on the way.** How does the checkpoint run, and what counts as an answer? What do
 all fifteen questions ask, whichever brief your group holds? What are the three questions for each
@@ -44,7 +43,7 @@ does an answer have to contain?
 
 | Rule | What it means |
 |---|---|
-| The order | Groups answer by question, 1 to 5, so the groups that share a question answer back to back. |
+| The order | Groups answer by brief, 1 to 5, so the groups that share a brief answer back to back. |
 | The time | Two minutes per group, three questions. The trainer stops a group at two minutes, mid-sentence if need be. |
 | Who speaks | One member per question, and a different member for each of the three. |
 | An answer | A number, the file it came from, and what you counted as one row or one record when you counted it. |
@@ -158,8 +157,8 @@ paid.
 > The patient service centres' operations head, Kalpa Health
 
 The visit register records each Q3 visit a booking brought to a patient service centre. A no-show is
-a visit the register marks as not attended, and the report's no-show rate is the share of a centre's
-Q3 visits marked that way.
+a visit the register records as not attended, and the report's no-show rate is the share of a centre's
+Q3 visits recorded that way.
 
 **Who needs the answer.** The operations head, who chooses between a receptionist, reminder calls
 and a closure notice; a centre closed on a rate read wrongly takes a neighbourhood's nearest blood

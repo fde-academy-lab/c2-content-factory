@@ -254,7 +254,7 @@ beyond the contract itself, and each belongs in the decisions log with a reason.
 
 **If a group finds a plant today.** Do not confirm it, praise it to the room or let it be announced.
 Say: "Write it in the challenges log with the count you saw, and say in your claim what it changes."
-Another group on the same brief finding it for itself is the lesson.
+Let another group on the same brief find it for itself.
 
 ## How does the trainer hear the headline claims at the close?
 

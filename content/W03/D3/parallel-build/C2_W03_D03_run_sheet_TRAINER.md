@@ -1,10 +1,10 @@
 # How does the trainer build New York's revenue tree in the open in sixty minutes, without spending any group's find?
 
-**TRAINER ONLY.** Nothing on this page reaches a learner: its last two sections name the plants the
-slice runs beside, with their witness numbers. The notebook is
-`parallel-build/C2_W03_D03_new_york_revenue_tree_STUDENT.ipynb`; it ships executed, and every
-number below is one of its saved outputs, recomputed from the raw files by
-`internal/C2_W03_D03_numbers_INTERNAL.py`.
+**TRAINER ONLY.** Nothing on this page reaches a learner, since it names the plants the slice runs
+beside, with their witness numbers. The notebook is
+`parallel-build/C2_W03_D03_new_york_revenue_tree_STUDENT.ipynb`; it ships executed, and every number
+on this page is one of its saved outputs or, in the plant table, a witness figure, each recomputed
+from the raw files by `internal/C2_W03_D03_numbers_INTERNAL.py`.
 
 The parallel build runs straight after the checkpoint, in the morning block. The row asks it to set
 the pace and show the method without handing over answers, so the trainer works a question no group
@@ -68,7 +68,7 @@ from `python3 data/generate_kalpa_health.py --witness` or the numbers script.
 
 | Plant | Where the slice touches it | What you do | What you never say |
 |---|---|---|---|
-| The old export repeats rows (sub-problem 2, and everyone's profile) | New York holds 33 of the 180 repeated ids, 26 of its extra rows in Q2 and 7 in Q3; the repeats are booked from 1 June to 26 September | Show the identity rule and log the cause as a question for the data team, which is the habit: a count that does not reconcile becomes a question, not a story | "Re-export", "mid-quarter", 180, or any link to the two metros whose bookings fell |
+| The old export repeats rows (sub-problem 2, and everyone's profile) | New York holds 33 of the 180 repeated ids, 26 of its extra rows in Q2 and 7 in Q3; the repeats are booked from 1 June to 26 September | Show the identity rule and log the cause as a question for the data team, which is the habit the room should copy: a count that does not reconcile becomes a dated question in the challenges log | "Re-export", "mid-quarter", 180, or any link to the two metros whose bookings fell |
 | Text amounts (sub-problem 1) | 6 of the 60 dollar-text amounts are New York's, $668 in Q2 and $235 in Q3 | Show coerce failing in silence and the strict conversion | 60, or the whole file's $10,559 that coerce hides |
 | A panel is one claim line, and the dashboard counts tests (the headline, for every group) | The mean-claim leaf | Stop the tree at the dashed box and never open `line_items` or `booking_tests`. If asked what a claim holds: "That is the next branch. Which file would tell you?" | Tests per claim, panel names, or anything about how the dashboard counts |
 | The employer contract (sub-problem 1) | Absent from New York: its largest claim is $410 | Profile New York's rows only, as the notebook does, and never profile the claims file whole | "Is New York typical?" gets "That is what your tree across metros will tell you." |
@@ -89,7 +89,7 @@ the slice.
 | A group says it has already done all this | Ask for its reconciliation in one line of arithmetic, rows in equal rows kept plus rows set aside. If it has one, the group goes back to its build and skips the rest of the demo. |
 | A learner wants to clean the 43 blank channels | Point at the log's kept row: the tree does not use channel, so leaving the blanks is a decision with a reason. |
 | A learner asks for the cells to copy | The notebook is in the repository. The cells answer New York's question and the briefs ask others, so what carries over is the order of the moves. |
-| Someone asks a question that would open a plant | Write it on the board as a question, say "That is your group's to answer", and go on. Modelling the question is the lesson; answering it spends another group's find. |
+| Someone asks a question that would open a plant | Write it on the board as a question, say "That is your group's to answer", and go on, since an answer from the front would spend another group's find. |
 
 ## Where does every number on this sheet come from?
 
