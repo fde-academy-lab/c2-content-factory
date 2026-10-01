@@ -5,7 +5,9 @@
 to standard v3 (decisions `chapter-standard`, `four-domains`, `question-ladder`, `self-contained`,
 `humanizer` and `opus-max`), from the day prompt in `prompts/week_revamp_W02_W03.md`, section 3, with
 the Week 2 Tuesday fills; finished on 1 October 2026 on branch `w02-d2-chapters` after merging main at
-f21ce02 (e613132), which carried the Week 1 v3 packs (#206 to #210) and the `c2kit.strip` fix (#213).
+f21ce02 (e613132), which carried the Week 1 v3 packs (#206 to #210) and the `c2kit.strip` fix (#213),
+and again at 9494bd3 (870ab77), which carried the cheat-sheet read-back (#214), the W03 D1 and W02 D4
+packs (#215, #217) and the deck builder's comment fix (#216), none of them touching this folder.
 
 ## Sources, in the order they were read
 
@@ -269,3 +271,22 @@ WHERE drops the order from the page and empties the list, so the two still agree
 2, 3, 5 and 6 name each trap without its answer; the lab's window ends on 30 June, which moves no
 figure; every notebook heading carries its ladder number; the escalated case's TODO 8 d is tested
 with its payment condition.
+
+## The proofs, run on 1 October 2026 on the pushed pack
+
+This session's container was fresh, so psycopg2-binary 2.9.13, SQLAlchemy 2.1.1, mermaid-cli 11.17.0
+and Carlito were installed again and the warehouse reloaded with `.devcontainer/load_warehouse.sh`
+(customers 340, orders 1,000, payments 1,428, refunds 12, campaign_exposure 136, plan_line 13); every
+tool version above held.
+
+| Proof | How it ran | Result |
+|---|---|---|
+| The gate, with every notebook run cold | `python3 scripts/verify.py content/W02/D2 --execute` | PASS, 0 failures: 59 files in their folders; 9 notebooks cold-run clean and the two TODO twins left to their solutions by design; 11 notebooks, 139 checks passing; 9 option sets audited; 28 companion controls clicked, none inert, no console error; both deck sources checked, 89 and 33 slides; 124 built slides rendered, none overflowing |
+| The programme sync | `python3 scripts/sync_programme.py --check` | Every output is current |
+| The companion | `python3 scripts/build_companion.py content/W02/D2 --check` | Library already current |
+| The SQL | The six `sql/` files and `data/C2_W02_D02_takehome_STUDENT.sql` through `psql -v ON_ERROR_STOP=1` on PostgreSQL 16.14 | All seven exit 0 with no error. The take-home book loads 120 orders, 125 payments and 2 refunds and gives 128 rows from the naive join, collected Rs 12,25,390, posted Rs 12,35,280 against orders and Rs 12,40,030 in the whole feed. The Kalpa figures of the data section recomputed equal |
+| The wrong letters | Each of the 36 wrong case letters run in an executed copy of its solution | 36 of 36 fail a check in their own part; none throws and none prints a count |
+| The decks | `scripts/build_deck.py` on both, rendered through LibreOffice 24.2.7.2 with Carlito | Every slide this round changed looked at, each fitting its frame |
+| The cheat sheet | Rebuilt in scratch with the merged builder, which reads every panel heading and strip term back from the PDF | Every heading and the six terms of its tight strip print; the shipped PDF differs from it only in how the verified date is written, so it stays |
+| The scanner | `tic_scan.py` on the folder and on both builders | 36 files and both builders clean |
+
