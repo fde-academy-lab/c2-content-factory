@@ -144,8 +144,10 @@ closely as whole clusters allow, and give the leader's room the larger share, si
 runs the GD rounds first. Where it can be done without splitting a sub-problem, put sub-problems 1
 (revenue) and 5 (the offer) before the leader, whose questions are a board's, and 2 (bookings), 3
 (billing) and 4 (no-shows) before the expert. The allocation of groups to questions was the Programme Head's on Monday, so this sheet
-assumes none, and Friday's draw already keeps the two Saturday GD groups out of their room's first
-two slots.
+assumes none. Friday's draw puts the Saturday GD groups no earlier than the drawn order's third slot,
+which does not keep them clear of their rounds once the clusters are split between rooms. When
+assigning rooms, the Programme Head checks that no GD group has a slot starting before minute 70, and
+moves its cluster to the other room, or the group's place inside the cluster, if one does.
 
 The day runs a morning of 180 minutes and an afternoon of 120, with lunch between them, 300 minutes
 of room time (`data/programme/facts.yaml`).
@@ -395,7 +397,7 @@ to a panel and take a challenge on your caveat."
 
 On the invented turnaround quarter the presentation format deck uses, in the trainee's voice: "I told
 the panel median turnaround, draw to result, fell from 22 to 18 hours from Q2 to Q3 on 9,400 tests.
-Challenged that the courier explains it, I restated the claim with its count; bounded it, since timed
+Challenged that half the gain was the courier's, I restated the claim with its count; bounded it, since timed
 from the sample's arrival Q3 reads 14 hours, so the courier sits inside the 18; and offered the test:
 time 200 samples at both ends next week."
 
@@ -417,7 +419,7 @@ fix improvised in the moment tends to cut a group's question time first.
 | A room is 20 minutes behind at the end of the morning | The reserve absorbs it; at the likely load each room has at least 50 minutes of reserve, and in the heaviest shapes the afternoon's first 30 does |
 | A GD round overruns | The next GD starts late and the expert's first slot slides with it; the leader's room does not move |
 | More GD rounds remain than this sheet plans | The Principal Advisor runs each extra round online, in parallel with the expert's, from minute 10 |
-| The leader is not in the room at the opening | The expert starts presentations in the expert's room at once, and the Principal Advisor takes the GDs online. The leader's room starts on arrival and slides by the delay: up to 30 minutes fits the likely load's reserve in either plan, and up to 20 the heaviest 2, 2, 2, 2 and 1 shape. The 3, 3 and 3 shape has no slack, so the leader's last slot moves to the afternoon's first 30 minutes and closure starts when it ends |
+| The leader is not in the room at the opening | The expert starts presentations in the expert's room at once, and the Principal Advisor takes the GDs online. The leader's room starts on arrival and slides by the delay: up to 30 minutes fits the likely load's reserve in either plan, and up to 20 the heaviest 2, 2, 2, 2 and 1 shape. The 3, 3 and 3 shape has no slack, so the leader's last slot moves to the afternoon's first 30 minutes, and closure starts once that slot, the room's quiet-member questions and the leader's signing are done, about 40 minutes in; the afternoon's 45 unused minutes absorb it |
 | The leader cannot come at all | The expert hears every group alone, the GD rounds go online with the Principal Advisor one after another from minute 10, the GD groups take the expert's last slots, and slots shrink: six slots of 28 run from minute 10 to 178 at the likely load; at the heaviest, nine slots of 26 (17, the full 8 of questions, a one-minute changeover) run six in the morning and three in the afternoon's first 78 minutes, closure keeps its 30 and the week close runs in 10 |
 | The leader has to leave before the last slot | The leader's unheard groups move to the expert's room after its own slots, before closure; the leader signs the scores already given before leaving |
 | A demo machine fails before the demo starts | A spare machine, and the demo runs in the slot; only if no spare works does the demo run cold in the room's reserve, before the same panel |

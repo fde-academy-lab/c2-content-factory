@@ -32,7 +32,7 @@ table?
 | | |
 |---|---|
 | **Length** | 15 minutes: 4 on what the week trained (the cover with S1, then S3, S4 and S6), 8 on the nine improvements (S8, S9), 3 on Monday (S11, S12). D2, D5, D7 and D10 are read alone. |
-| **If the day is late** | Run it in 10: say S3 in one minute, keep the eight minutes of improvements whole, and say the bridge in one sentence. |
+| **If the day is late** | Run it in 10: the cover and S1 in 30 seconds, S3 in one minute, skip S4 and S6, keep the eight minutes of improvements whole, and say the bridge in one sentence. |
 | **In hand** | The findings list the two chairs fill at the end of their rooms (below), and a board or a shared screen for the nine sentences. |
 
 

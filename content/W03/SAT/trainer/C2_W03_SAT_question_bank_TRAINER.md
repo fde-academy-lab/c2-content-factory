@@ -416,7 +416,7 @@ to what is still unpaid:
 | The employer claim with no posting | 1 | $180,000 | $180,000, if the employer pays its invoice in full |
 | Patient shares on paid commercial claims, owed by patients | 1,798 | | $32,594.87 |
 | Claims reversed after payment and unpaid since | 105 | $19,293 | $8,662.87, the payments taken back |
-| Before any denial is worked | | | About $256,372 |
+| Before the 1,137 denials with a posting are worked | | | About $256,372 |
 | Claims denied with a posting | 1,137 | $222,108 | Up to about $97,269, if every denial were overturned |
 
 A group that sums every CO adjustment on the de-duplicated postings gets $1,096,542.70 of
@@ -466,9 +466,11 @@ answer is `KH-CLM-000100`: pad the number to six digits and add the billing syst
 
 Group A says $1.4 million is uncollected and finance should chase payers; Group B says most of that
 gap was never owed, and the money to chase is $253,165 on 398 claims with no posting, plus the
-denials. Ask: "What would each of you tell the finance head to do on Monday?" The strong answer
+denials. Ask the second group, without quoting the first: "Another group read the same postings
+differently. What would you tell the finance head to do on Monday, and which part of the gap can the
+lab still collect?" The strong answer
 separates the $883,254.70 of contractual adjustments, which nobody chases, from what is still owed:
-about $256,372 at what the contracts allow before any denial is worked, $180,000 of it one
+about $256,372 at what the contracts allow before the 1,137 denials with a posting are worked, $180,000 of it one
 employer's invoice and one call, plus up to about $97,269 on denials worth appealing. Group B's
 $253,165 names the right claims at their billed value, an honest and narrower answer.
 
@@ -616,7 +618,8 @@ there book more often per head: 0.76 bookings each in the window against 0.45 in
 metros. That difference was there before the offer, 1.16 against 0.81 per head from 1 April to 14 July (1.43
 times), and it widened as the three metros rose: their bookings per day rose 6.9 percent in the two
 months before the offer (14 May to 14 July against 1 April to 13 May) and a further 7.4 percent into
-the offer's window, against 3.0 percent in New York, taking the difference to 1.68 times. So the
+the offer's window, while bookings per day in the other three metros fell 3.4 percent (New York up
+3.0, Chicago down 12.7 and Philadelphia down 2.9), taking the difference to 1.68 times. So the
 company-wide comparison mostly compares metros, and held at each metro's own rate, offered patients
 booked 9.6 percent less.
 
@@ -626,7 +629,7 @@ nothing in the files shows how patients were chosen. No single metro's gap is cl
 claim rests on the three metros together: 14.1 percent less, p about 0.007. New York's 23.5 percent
 more has p of about 0.03 on its own; six metros were tested, and multiplied by six (the Bonferroni
 correction) it is about 0.18, so it does not survive the correction. The files cannot show that New
-York is a false positive, only that it is no evidence of a lift.
+York is a false positive, only that, once six metros are counted, it is too weak to show a lift.
 
 ### Which wrong number would a hurried group give the marketing head?
 
@@ -755,7 +758,7 @@ voice, a wrong claim defended, or a group asking for the right answer?
 | What happens | What the panel does |
 |---|---|
 | The demo fails on its one cold run | The rule above holds: two minutes to recover live, then the executed notebook, the live demo scored as not run cold, and the 34 group marks scored from the executed run |
-| The demo machine fails before the demo starts (the hardware or the Codespace, not the group's code) | The Academic TA swaps in a spare machine; if none works, the group presents and runs its demo cold in the room's reserve, before the same panel |
+| The demo machine fails before the demo starts (the hardware or the Codespace, not the group's code) | The room's scribe swaps in a spare machine and the demo runs in the slot; only if no spare works does the group present and run its demo cold in the room's reserve, before the same panel |
 | The Codespace is on a later commit than Friday's frozen one | The scribe shows the panel the change; the panel decides whether the group presents from the frozen commit |
 | A group runs past 17 minutes | The scribe stops it at 17 and the panel moves to questions; the group keeps its full question time |
 | One member answers every question | Name the next person for each question, and put the quietest-member question to whoever has spoken least; the scribe flags anyone still silent for the separate questions in the room's reserve |
@@ -779,4 +782,4 @@ register was drawn from the bookings, and against the further figures this page 
 last place printed. It ends `RESULT: PASS (0 disagreements with the spine, the bank and the facts)`
 while the data pack is unchanged, and prints a FAIL line for every number that moves if it is ever
 regenerated. Monday's day sheet prints the retail denial rate as 10.4 percent; 1,175 of 11,355 is
-10.35 percent, which this page rounds to 10.3.
+10.348 percent, which rounds to 10.3.

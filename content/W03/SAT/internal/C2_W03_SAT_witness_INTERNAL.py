@@ -445,7 +445,8 @@ B["campaign_metros_window_change"] = per_day(CAMPAIGN_METROS, *OFFER) / per_day(
 others = [m for m in METROS if m not in CAMPAIGN_METROS]
 B["other_metros_window_change"] = per_day(others, *OFFER) / per_day(others, *PRE) - 1
 B["other_metros_prior_change"] = per_day(others, *PRE) / per_day(others, "2026-04-01", "2026-05-13") - 1
-B["window_change_New York"] = per_day(["New York"], *OFFER) / per_day(["New York"], *PRE) - 1
+for m in ("New York", "Chicago", "Philadelphia"):
+    B[f"window_change_{m}"] = per_day([m], *OFFER) / per_day([m], *PRE) - 1
 # The chance checks: shuffle who was offered inside a metro, 20,000 times, and count how often the
 # shuffled gap is at least as far from zero as the real one (two-sided). Week 1 Thursday's check.
 SHUFFLES, shuffler = 20000, np.random.default_rng(20261019)
@@ -625,6 +626,8 @@ BANK = {
     "bookings_per_head_window_campaign_metros": 0.76, "bookings_per_head_window_other_metros": 0.45,
     "bookings_per_head_ratio_window": 1.68, "bookings_per_head_before_campaign_metros": 1.16,
     "bookings_per_head_before_other_metros": 0.81, "bookings_per_head_ratio_before": 1.43,
+    "other_metros_window_change": -0.034, "window_change_Chicago": -0.127,
+    "window_change_Philadelphia": -0.029,
 }
 # The dates, ids and yes-or-no findings the TRAINER files state, compared exactly.
 FACTS = {
@@ -643,8 +646,8 @@ LOOSE = {"tail_probability": 0.006, "new_york_permutation_p_two_sided": 0.006,
          "permutation_p_Dallas": 0.01, "permutation_p_Atlanta": 0.006, "permutation_p_Phoenix": 0.01,
          "permutation_p_Chicago": 0.01, "permutation_p_Philadelphia": 0.01, "new_york_p_corrected_for_six": 0.02,
          "campaign_metros_pooled_p": 0.002}
-# The spine prints 10.4 percent for the claims file's 1,175 of 11,355, which is 10.35 and rounds to
-# 10.3; the pack prints 10.3 (denial_rate_retail_printed) and the provenance records the difference.
+# The spine prints 10.4 percent for the claims file's 1,175 of 11,355, which is 10.348 percent and
+# rounds to 10.3; the pack prints 10.3 (denial_rate_retail_printed) and the provenance records it.
 SPINE_ROUNDING = {"denial_rate_retail": 0.0006}
 
 def tolerance(key, want):

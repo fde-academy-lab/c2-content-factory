@@ -735,9 +735,9 @@ label: 5 | title: The check | body: The number on your slide appears in the outp
 
 ```notes
 SELF-STUDY, 1 minute. After the freeze, slide wording may change and no number may; an error found
-after the freeze is stated on the day as a caveat, with the right number. Before each slot a TA checks
-that the Codespace is on your frozen commit, and a later commit that changes code or a number is shown
-to the panel, which decides.
+after the freeze is stated on the day as a caveat, with the right number. Before each slot the room's
+scribe checks that the Codespace is on your frozen commit, and a later commit that changes code or a
+number is shown to the panel, which decides.
 Transition: what happens if it fails.
 ```
 
@@ -779,7 +779,7 @@ Transition: a question on the order of the day.
 ## D30. Question: in which order does the demo run?
 *In which order do five steps of a demo run, from Friday's commit to the fallback?*
 
-**Question.** Five steps, shuffled: (1) present from the executed notebook; (2) check that the Codespace is on Friday's frozen commit; (3) run all on the raw files, in front of the panel; (4) recover live, for up to two minutes; (5) restart the kernel, so no output is kept. In which order does a group take them on the day? Answer as a letter.
+**Question.** Five steps, shuffled: (1) present from the executed notebook; (2) check that the Codespace is on Friday's frozen commit; (3) run all on the raw files, in front of the panel; (4) recover live, for up to two minutes; (5) restart the kernel, so no output is kept. In which order do they run on the day? Answer as a letter.
 
 a) 5, 2, 3, 1, 4
 b) 2, 3, 5, 4, 1
@@ -798,7 +798,7 @@ Transition: the answer.
 
 | Option | What goes wrong, or why it holds |
 |---|---|
-| a | Restarts before checking the commit, and falls back to the notebook before the two minutes to recover |
+| a | Falls back to the executed notebook before the group has used its two minutes to recover |
 | b | Runs before the restart, so output kept from an earlier run can pass for a cold result |
 | c | Runs before the commit is checked, so the panel may watch code that Friday's freeze never held |
 | d | Holds: the frozen commit checked, a clean restart, the run, two minutes to recover, then the executed notebook |
