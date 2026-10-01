@@ -29,7 +29,7 @@ five that together answer Dr Menon's, and a centre losing its booked patients is
 her missing growth could be hiding.
 
 **The questions on the way.** What business is Kalpa Health? What does Dr Menon see? Which five
-questions did her heads ask, and which one is yours?
+questions did her heads ask, and which one is yours? Which real company faces the same question?
 
 Kalpa Health runs a laboratory and two patient service centres, the places where a phlebotomist
 draws a patient's blood, in each of six US metro areas: Dallas, Phoenix, New York, Chicago, Atlanta
@@ -55,6 +55,12 @@ heads have each asked her a question, and each group takes one.
 The operations head's monthly report ranks the twelve patient service centres by their no-show rate
 for Q3, and KH-ATL-03 sits at the bottom. The centre's manager says its patients are no different
 from anyone else's.
+
+### Which real company faces the same question?
+
+Quest Diagnostics' patient app lets patients schedule appointments at its centres and receive
+appointment reminders (Form 10-K for 2025), the same lever the operations head is weighing for
+KH-ATL-03. Kalpa Health is fictional, and Quest runs about 2,400 patient service centres.
 
 ---
 
@@ -107,7 +113,7 @@ decimals.
 **The questions on the way.** What are the ways? How many rows does each touch, how many hours does
 it take, and what can it get wrong? Which Week 1 or 2 move does each need?
 
-The hours are our estimate for a group of four working together, from first file opened to a
+The hours are estimates for a group of four working together, from the first file opened to a
 checked number.
 
 | Way | What the group does | Rows it touches | Hours | What it can get wrong | The Week 1 or 2 move it needs |
@@ -175,7 +181,9 @@ The rubric the panel scores against, as approved:
 started on Monday.
 
 **The questions on the way.** What does every group ship? When is each piece seen? What happens if
-the live demo fails?
+the live demo fails? How are the mock and the group discussion scored?
+
+### What does every group ship, and when is each piece seen?
 
 | What | What it holds | When it is seen |
 |---|---|---|
@@ -187,11 +195,15 @@ the live demo fails?
 | The one-slide answer | The slide Dr Menon carries into her board meeting: the claim, the evidence, the caveat and the action | Your presentation |
 | A presentation slot of 25 to 30 minutes | Your answer, a live demo run cold on your own copy of the files, and the panel's questions; every member answers | Friday 23 October where the roster allows, or Saturday 24 October |
 
-**If the live demo fails.** The demo runs once, cold, on the raw files. If it fails, your group has
+### What happens if the live demo fails?
+
+The demo runs once, cold, on the raw files. If it fails, your group has
 two minutes to recover it live, as it would in front of a client. If it still fails, you present from
 your executed notebook, and the panel scores the live demo, inside presentation and defence, as not
 run cold. The other 34 marks are scored from the executed run, so a failed demo costs its own marks
 and never the analysis.
+
+### How are the mock interview and the group discussion scored?
 
 The mock interview (30 marks) and the group discussion (30 marks) are scored apart from the project:
 Mock R1 runs for every learner on Thursday 22 October, and the group discussion rounds run on Friday

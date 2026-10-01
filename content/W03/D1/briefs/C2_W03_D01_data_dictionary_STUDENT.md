@@ -6,7 +6,7 @@ two patient service centres, where patients have blood drawn, in each of six US 
 patients' payers in dollars. It is fictional, and every name, price and number in these files is
 synthetic, so no real patient's information is in them.
 
-**Every file is the export taken on Friday 16 October 2026.** Nothing in any file is dated after
+Every file is the export taken on Friday 16 October 2026, and nothing in any file is dated after
 that day. Q2 means April to June 2026 and Q3 means July to September 2026, the calendar quarters
 Kalpa Health reports in.
 

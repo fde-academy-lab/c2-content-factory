@@ -130,7 +130,8 @@ LIVE, the Programme Head, 3 minutes. Read each row. The full words of each head 
 note, briefs/C2_W03_D01_briefing_note_STUDENT.md, which every learner has. Each group will own one
 row by the end of the allocation, and section 3 gives each row its own slide.
 Watch for learners who start explaining a row ("it must be the season"). Say: hold that and write it
-down as a hypothesis; a guess said aloud today is a guess the whole room hears.
+down as a hypothesis to test once the build starts, since a guess said aloud now steers every group
+that hears it.
 Transition: why this is a question you have answered before.
 ```
 

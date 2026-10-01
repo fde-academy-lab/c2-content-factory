@@ -64,9 +64,8 @@ My dashboard shows test volumes up 5 percent from Q2 to Q3. The plan the board a
 percent, so I am 13 percentage points short. Every head I ask names a different cause and backs it
 with a different number, and nobody has yet shown me which cause the numbers support.
 
-So, in one line: Kalpa Health is a US laboratory business in six metros, paid in dollars by four
-kinds of payer, and my 5 percent is my dashboard's growth in tests from Q2 to Q3, against a plan of
-18.
+Kalpa Health is a US laboratory business in six metros, paid in dollars by four kinds of payer, and
+my 5 percent is my dashboard's growth in tests from Q2 to Q3, against a plan of 18.
 
 ---
 
