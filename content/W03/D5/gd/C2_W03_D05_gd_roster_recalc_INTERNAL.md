@@ -2,7 +2,9 @@
 
 `scripts/xlsx_recalc.py` reads this file, rebuilds the roster through LibreOffice, asserts the
 verdicts as shipped, then flips three decisions and asserts that the verdicts move: the group count
-rising to the tracker's fifteen, a sub-problem 5 group drawing card 05, and rounds running long.
+rising to the tracker's fifteen, a sub-problem 5 group drawn to the slot carrying card 05, and
+rounds running long. Written by `internal/C2_W03_D05_build_gd_roster_INTERNAL.py`; rebuild both
+together.
 
 ```yaml
 workbook: C2_W03_D05_gd_roster_TRAINER.xlsx
@@ -13,6 +15,7 @@ verdicts:
   - {sheet: Check, cell: B12, expect: "every round ends inside its block"}
   - {sheet: Check, cell: B13, expect: "every group sits exactly one GD"}
   - {sheet: Roster, cell: H10, expect: "165"}
+  - {sheet: Roster, cell: M8, expect: "3 and 5"}
   - {sheet: "Friday block two", cell: B16, expect: "block two fits with 33 minutes of slack"}
 flips:
   - name: the Programme Head runs the tracker's fifteen groups

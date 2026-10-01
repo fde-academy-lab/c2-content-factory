@@ -1,93 +1,150 @@
-# Build 1 GD: facilitation notes for the chair
+# How does a chair run a 30-minute Build 1 GD round, and score each learner fairly?
 
-**TRAINER ONLY.** Written for the industry expert, who chairs the rounds in the room, and the Principal
-Advisor, who chairs a share of them online. Neither wrote this pack, so everything needed to run a
-round is on this page, and the numbers behind each card are in `C2_W03_D05_gd_prompts_TRAINER.md`.
+**TRAINER ONLY.** Written for the industry expert, who chairs stream A in the GD room, and the
+Principal Advisor, who chairs stream B online. Neither wrote this pack, so everything needed to run
+a round is on this page. The numbers behind each card, the move it asks for and what full marks
+look like on it are in `C2_W03_D05_gd_prompts_TRAINER.md`.
 
-## What the GD is, in two sentences to say to yourself before round one
+**Who needs the answer.** The two chairs and the two timekeepers. Two rooms that run the round
+differently score the same move differently, and the learners compare notes the same evening.
 
-The group discussion tests structured articulation under time pressure on Kalpa Health's problem
-space: can four trainee engineers turn a COO's messy question into a decision, a metric and one number,
-and hear each other while they do it. It is separate from the mini project and unprepared by design,
-so a group that tries to steer into its own build is steered back to the card.
+**The questions on the way.** What is the GD for? Who runs which room? How do the 30 minutes run?
+What does the chair say to open? Which moves count, and for which criterion? When does the chair
+step in? How does evidence become a score, and how are the levels kept fair? What goes wrong online?
+What does each card add?
 
-## The room
+---
 
-| Stream | Chair | Where | Who hosts |
+## What is the GD for, and what is it not?
+
+**Who needs the answer.** The chair, before round one, who is judging a skill and has no answer key.
+
+**The questions on the way.** What is being trained? Why is the card unseen? What is off limits?
+
+The group discussion trains structured articulation under time pressure on Kalpa Health's problem
+space: whether four trainee engineers can turn a COO's question into a decision, a metric and one
+number, and hear each other while they do it. It is separate from the mini project and unprepared
+by design. A group that steers into its own build is steered back to the card, and the chair never
+says what any group's data shows.
+
+## Who runs which room, and what does each room need?
+
+**Who needs the answer.** The trainer and the Academic TA, who set both rooms up before round one.
+
+**The questions on the way.** Who chairs and who keeps time? What goes on the table?
+
+| Stream | Chair | Where | Timekeeper and host |
 |---|---|---|---|
-| A | The industry expert | The GD room on campus | The trainer keeps time and hands out cards |
-| B | The Principal Advisor, online | A second room with one laptop at the head of the table, its camera taking in all four seats, and one speakerphone in the middle | The Academic TA keeps time, hands out cards and holds the laptop |
+| A | The industry expert | The GD room on campus | The trainer, who hands out the cards |
+| B | The Principal Advisor, online | A second room, with one laptop at the head of the table whose camera takes in all four seats, and one speakerphone in the middle | The Academic TA, who hands out the cards and holds the laptop |
 
-Four chairs round one table, the chair's seat (or the laptop) at the head. Print five copies of each
-card: four for the group and one for the chair. Pen and paper only; one phone calculator for the whole
-group, placed in the middle. No laptops, since the discussion is the product.
+Four chairs round one table, the chair's seat or the laptop at its head. Print five copies of each
+card, four for the group and one for the chair. Pen and paper, and one phone calculator for the
+group in the middle of the table; no laptops, since the discussion is the product.
 
-## The 30 minutes
+## How do the 30 minutes run?
+
+**Who needs the answer.** Both timekeepers, who hold every round to the same clock.
+
+**The questions on the way.** How long is each part? What does each person do in it? Why do levels
+4 and 5 read for longer?
 
 ```mermaid
 flowchart LR
-    O["<b>Open</b><br/>1 min"] --> R["<b>Read</b><br/>3 min"] --> D["<b>Discuss</b><br/>18 min"] --> Q["<b>Panel's two questions</b><br/>4 min"] --> N["<b>Notes and changeover</b><br/>4 min"]
+    O["<b>Open</b><br/>1 min"] --> R["<b>Read</b><br/>3 min, or 4<br/>at levels 4, 5"] --> D["<b>Discuss</b><br/>18 min, or 17"] --> Q["<b>Panel's two<br/>questions</b><br/>4 min"] --> N["<b>Notes and<br/>changeover</b><br/>4 min"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef dark fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class O,R,Q,N known
+    class D dark
 ```
 
 | Part | Minutes | What the chair does | What the timekeeper does |
 |---|---|---|---|
-| Open | 1 | Says the opening instruction below, word for word | Hands out the cards face down, then says "turn them over" |
-| Read | 3 | Silent; the group reads alone and may write | Calls "one minute" at two |
-| Discuss | 18 | Listens and writes; intervenes only on the triggers below | Shows a card at 5 minutes left and at 1 minute left, and calls time |
-| Panel's two questions | 4 | Asks the two questions for this card, each to a named learner, and lets one other learner add | Keeps each answer near a minute |
-| Notes and changeover | 4 | Writes the evidence notes while the group leaves and the next one sits | Collects the four cards and the group's paper, and brings the next group in |
+| Open | 1 | Says the opening instruction below, word for word, then the card's own line | Lays the cards face down, then says "turn them over" |
+| Read | 3, or 4 for cards 07 to 10 | Stays silent; the learners read alone and may write | Calls "one minute" before the end |
+| Discuss | 18, or 17 for cards 07 to 10 | Listens and writes evidence; steps in only on the triggers below | Shows a card at 5 minutes left and at 1 minute left, then calls time |
+| The panel's two questions | 4 | Asks the card's two questions, each to a named learner, the quietest learner among them, and lets one other learner add | Keeps each answer near a minute |
+| Notes and changeover | 4 | Finishes the evidence notes while the group leaves and the next sits | Collects the cards and the group's paper, and brings the next group in |
 
-## The opening instruction, the same for every card
+Cards 07 to 10 carry more exhibit, so they read for four minutes and discuss for seventeen; the
+cards say so themselves.
 
-> "You are Kalpa's GCC team, and Dr Menon has sent you the question on this card. You have three
-> minutes to read it alone and eighteen to reach a position as a group. When I call time I want one
-> position, the one number that carries it, and what would change your mind. If you cannot agree, tell
-> me where you split and why. The rows marked as the prompt's assumption are yours to challenge. I
-> will not answer questions about the numbers once you start, so read carefully."
+## What does the chair say to open every round?
 
-Then add the card's own line, given in each block below.
+**Who needs the answer.** Every group, which should hear the same instruction in both rooms.
 
-## The moves that show structure
+**The questions on the way.** What is the group asked to deliver? What will the chair not do?
 
-Listen for these in the order a discussion usually needs them. Write each one down with the learner who
-made it and the minute. They are what you describe back to the group if the Programme Head asks for
-feedback, and the evidence the scoring sheet is filled from. The right-hand column names the rubric
-criterion each move is evidence for.
+> "You are Kalpa's GCC team, and Dr Menon has sent you the question on this card. Read it alone,
+> then reach a position as a group. When I call time I want one position, the one number that
+> carries it, and what would change your mind. If you cannot agree, tell me where you split and
+> why. Any row marked as an assumption or an illustration is yours to challenge. I will not answer
+> questions about the numbers once you start, so read carefully."
+
+Then add the card's own line, given in the card-by-card section below.
+
+## Which moves show structure, and which criterion does each feed?
+
+**Who needs the answer.** The chair, whose notes are the only evidence the scores rest on.
+
+**The questions on the way.** What does each move sound like? Which criterion does it count toward?
+
+Listen for these in roughly the order a discussion needs them. Write each one down with the learner
+who made it and the minute.
 
 | Move | What it sounds like | Evidence for |
 |---|---|---|
-| Framing the decision | "So the choice is between A and B, and Dr Menon has to decide by the board meeting." | Structures the problem |
-| Naming the metric | "We should judge this on margin in the month, since revenue flatters the cut." | Structures the problem |
-| Putting numbers on one footing | "Marketing's nine lakh is revenue and finance's is margin, so let us convert." | Structures the problem |
+| Framing the decision | "So Dr Menon chooses between signing and walking, and she has to decide this month." | Structures the problem |
+| Naming the metric | "We should judge this on margin, since revenue flatters the cut." | Structures the problem |
+| Putting numbers on one footing | "The plan's forty percent is of its members' tests, and Houston's fifteen is of all tests, so let us convert." | Structures the problem |
+| Naming the Week 1 or 2 move | "This is the fair comparison from Week 1 Thursday: labs without the model, over the same months." | Structures the problem |
 | Using one number | "Break-even is 42 percent and they expect 40, so on their own numbers it loses." | Uses evidence |
-| Challenging an assumption | "The 16.7 percent comes from a sample of calls; how many calls?" | Uses evidence |
-| Stating what would change the mind | "If more than half the festive buyers are new, I would switch sides." | Lands a conclusion |
-| Bringing in a quiet voice | "You have not said anything about the older patients, what do you think?" | Engages |
-| Closing | "So our position is B, the number is 7.6 percent, and we change our mind if the comparison cities rose as much." | Lands a conclusion |
+| Challenging an assumption | "The one in six comes from sixty calls; that could be nine percent or twenty-eight." | Uses evidence |
+| Building on another member | "To take your point about margin further: at 40 percent we are still $360 down." | Engages |
+| Bringing in a quiet member | "You have not said anything about the older patients. Where do you land?" | Engages |
+| Stating what would change the mind | "If more than half the January buyers are new, I would switch sides." | Lands a conclusion |
+| Closing with the risk | "So our position is a pilot, the number is 24 percent, and the risk is a year's delay." | Lands a conclusion |
 
-## When to intervene, and the words to use
 
-Intervene at most twice in 18 minutes. Each intervention is written in the notes with the minute, so a
-group is never marked for a silence the chair created.
+## When does the chair step in, and with which words?
+
+**Who needs the answer.** The chair, who steps in at most twice in a discussion and writes each
+intervention down with its minute, so no learner is marked for a silence the chair created.
+
+**The questions on the way.** Which situations call for a word? What is the word?
 
 | What is happening | When | What to say |
 |---|---|---|
 | One voice dominates | The same learner has spoken for most of three minutes | "Hold that thought. [Name], you have not spoken yet; where do you land?" |
 | The room stalls | Thirty seconds of silence after the first five minutes | "Say what you would tell Dr Menon if she walked in now, even if you are not sure." |
 | Two camps, no movement | Past minute 12 with the same two positions repeated | "Each side: what number would make you switch?" |
-| The group argues about arithmetic | More than two minutes on one sum | "Agree the sum or agree to disagree on it; which way does it tip the decision?" |
+| The group argues about arithmetic | More than two minutes on one sum | "Agree the sum, or agree to disagree on it; which way does it tip the decision?" |
 | A learner steers into the group's own build | Any time | "Stay with the card. Your build is Saturday's conversation." |
 | A learner asks the chair a factual question | Any time after reading | "Use the card. If the card does not say, state your assumption out loud." |
 | A learner is talked over twice | Any time | "Let [Name] finish." |
 
-Never give an answer, confirm a number, say which position is right, or say anything about what the
-week's data shows. If a group asks whether its reading of the card is correct, say "that is the group's
-call."
+Never give an answer, confirm a number, say which position is right, or say anything about what
+the week's data shows. If a group asks whether its reading of the card is correct, say "that is the
+group's call".
 
-## The assessors' notes and the rubric
+## How does the chair keep evidence, and how does it become a score?
 
-Each learner is scored alone, on 30 marks, against the rubric the requester approved on 29 September
-2026. It renders here from `data/programme/facts.yaml`, so a change reaches this page with one sync:
+**Who needs the answer.** The chair, who scores each learner alone, and the Academic TA, who
+gathers both streams' notes before the close of block two.
+
+**The questions on the way.** What goes in the notes? When are scores entered? What is the rubric?
+
+Nothing is scored in the room. During the discussion the chair keeps one line per contribution: the
+minute, the learner's seat, what was said in their words and which move from the table above it
+was. Building on or challenging another member's point is evidence for Engages too, so note who
+answered whom. In the four-minute changeover the chair turns the notes into the four scores for
+each learner in `rubrics/C2_W03_D05_gd_scoring_sheet_TRAINER.xlsx`, which totals them and flags a
+score above a criterion's maximum. A learner who spoke once is scored on that once. The Principal
+Advisor's notes reach the Academic TA in the changeover, typed in the call's chat or sent as a photo
+of the page.
+
+The rubric, approved by the requester on 29 September 2026, renders here from
+`data/programme/facts.yaml`, so a change reaches this page with one sync:
 
 <!-- sync:rubric:W03/gd -->
 **Group discussion, 30 marks.** Each learner is scored alone.
@@ -100,176 +157,193 @@ Each learner is scored alone, on 30 marks, against the rubric the requester appr
 | Lands a conclusion | 6 | The discussion ends on a recommendation and its main risk. |
 <!-- /sync:rubric:W03/gd -->
 
-Nothing is scored in the room. During the round the chair keeps evidence: one line per learner per
-contribution, with the minute, what was said in their words, and which move from the table above it
-was. Building on or challenging another member's point is evidence for Engages too, so note who
-answered whom. In the four-minute changeover the chair turns the notes into the four scores for each
-learner in `rubrics/C2_W03_D05_gd_scoring_sheet_TRAINER.xlsx`, which totals them and flags a score
-above a criterion's maximum. A learner who spoke once gets scored on that once; a silence the chair
-created by intervening is written down and never held against anyone.
+The evidence page the chair writes on, printed one per round:
 
-The Principal Advisor's notes go to the Academic TA in the four-minute changeover, typed in the chat
-of the call or sent as a photo of the page, so both streams' notes sit in one place by the end of the
-block.
+| Minute | Seat | What was said, in their words | Move | Criterion |
+|---|---|---|---|---|
+| | | | | |
 
-## Online rounds: what goes wrong and the fix
+## How is a level 5 round scored fairly beside a level 1 round?
+
+**Who needs the answer.** The chair, whose later rounds meet harder cards, since the draw fixes which
+group sits which slot.
+
+**The questions on the way.** What does the rubric reward at every level? What does a harder card
+change?
+
+The rubric scores the moves, never the card. A level 1 group earns full marks under Uses evidence by
+defending its position with the break-even it computed; a level 5 group earns the same by defending
+its order of moves with the weeks of cash or the clause it read. A level 5 card has no clean answer,
+so Lands a conclusion is met by a recommendation with its main risk, even where the group names a
+split. A level 1 group earns nothing extra for arithmetic alone, and a level 5 group loses nothing
+for leaving a sum unfinished if its framing and its one number hold. The prompts file gives, for
+every card, what full marks look like on each criterion, and the chair reads that block before the
+round.
+
+## What goes wrong online, and what is the fix?
+
+**Who needs the answer.** The Principal Advisor and the Academic TA, who run stream B.
+
+**The questions on the way.** What fails, and who acts?
 
 | Problem | Fix |
 |---|---|
-| The Principal Advisor's audio drops | The Academic TA pauses the clock and the group keeps silent. Past two minutes, the TA reads the panel's two questions from this page, and the Principal Advisor scores from the TA's notes and the call recording if one runs. |
-| The camera misses a seat | Move the laptop, never the learners; every face in frame before the card is turned over. |
-| The group talks to the laptop and not to each other | The Principal Advisor says once: "Talk to each other, I am listening." |
+| The Principal Advisor's audio drops | The Academic TA pauses the clock and the group waits in silence. Past two minutes, the TA reads the card's two panel questions from this page, and the Principal Advisor scores from the TA's notes. |
+| The camera misses a seat | Move the laptop, never the learners; every face is in frame before the cards are turned over. |
+| The group talks to the laptop instead of to each other | The Principal Advisor says once: "Talk to each other; I am listening." |
 | The whole call fails before the round | Swap the round with the next stream A round on the roster and tell the trainer; the roster workbook recomputes the ends. |
 
-## Card by card
+---
 
-Each block carries the extra opening line, the panel's two questions (ask them to two different
-learners, and ask the quietest learner one of them), and what the strongest and the weakest
-discussions sound like.
+## What does each card add to the round?
 
-### Card 01: the festive price (level 1)
+**Who needs the answer.** The chair, who reads the card's block here in the minute before it opens.
 
-**Add to the opening:** "This is the warm-up round, and there is one trade-off in it. Find it."
+**The questions on the way.** Which line does the chair add? Which two questions follow the
+discussion? What do the strongest and the weakest discussions sound like?
+
+Each block carries the line added to the opening, the panel's two questions, and the strongest and
+the weakest discussion. After the two questions, if a minute remains, the chair may ask one learner
+"Which move from Weeks 1 and 2 did your group's argument use?", and an answer that names it is
+evidence for Structures the problem.
+
+### Card 01: should Kalpa cut the self-pay panel's price from $299 to $249?
+
+**Add to the opening:** "This is the first round, and the card has one trade-off in it. Find it."
 
 **The panel's two questions.**
-1. "What lift in bookings would make you change your answer?"
-2. "Are the festive buyers new patients, or this year's buyers coming a month early? What would you check?"
+1. "What lift in January panels would make you change your answer?"
+2. "Are January's extra buyers new patients, or people who would have come anyway? How would you tell?"
 
-**The strongest discussion** computes the margin in a normal month and at the lower price inside the
-first eight minutes, finds the break-even lift near 42 percent, and spends the rest on whether the 40
-percent is new demand; it closes on a position with a condition.
-**The weakest** argues "cheaper sells more" and "we lose money" at each other for 18 minutes and never
-multiplies anything.
+**The strongest discussion** works out the margin at both prices in the first eight minutes, finds
+the 42 percent break-even against the 40 expected, and spends the rest on who the extra buyers are,
+closing on a position with a condition. **The weakest** argues "cheaper sells more" against "we lose
+money" for eighteen minutes and never multiplies anything.
 
-### Card 02: the printed report (level 1)
+### Card 02: should Kalpa stop posting paper statements?
 
 **Add to the opening:** "One side of this is certain and one is a guess. Say which is which."
 
 **The panel's two questions.**
-1. "Your saving is certain and your loss is estimated. How would you check the estimate in a month?"
-2. "Who in the 25 percent aged 60 and over is most at risk, and what would you do for them?"
+1. "Your saving is certain and your loss is estimated. How would you check the estimate within a month?"
+2. "Why do older patients receive fewer statements than their share of the register?"
 
-**The strongest discussion** puts Rs 4.32 lakh against about Rs 1.5 lakh, then removes the risk by
-design (print on request, or at the clinic counter) and names how to measure who asks for print.
-**The weakest** decides on principle ("digital is the future", "older people matter") and never puts
-the two numbers side by side.
+**The strongest discussion** puts $19,800 against about $14,000, finds the 42 percent of older
+patients it would take to lose money, notices that the survey asked 120 people, and removes the risk
+by design with paper on request. **The weakest** decides on principle, "digital is the future" or
+"older people matter", and never sets the two numbers side by side, or applies the register's 25.4
+percent to the statements.
 
-### Card 03: same-day reports in every city (level 2)
+### Card 03: should Kalpa promise same-day results in all six metros?
 
-**Add to the opening:** "Two people you work for disagree. Decide who is right, city by city if you
+**Add to the opening:** "Two people you work for disagree. Decide who is right, metro by metro if you
 have to."
 
 **The panel's two questions.**
-1. "The operations head said two labs. How many did you find, and does the difference matter?"
+1. "The lab director said two labs. How many did you find, and does the difference matter?"
 2. "If you could buy one second shift, where would it go, and what would you advertise meanwhile?"
 
-**The strongest discussion** applies the 15 percent lift to every city, finds Bengaluru over 70 and
-Mumbai at 69, and proposes a promise staged by city, or a cut-off, with the shift cost against it.
-**The weakest** picks a side ("marketing is right") without running the six cities through the ceiling.
+**The strongest discussion** applies the 15 percent rise to every lab, finds New York over 70 and
+Dallas at 69, and proposes a staged promise or a cut-off time with the shift's cost against it.
+**The weakest** picks a side, or averages the six labs and finds room everywhere.
 
-### Card 04: closing the phone line (level 2)
+### Card 04: should Kalpa close its phone booking line?
 
-**Add to the opening:** "Watch whose estimate each number is."
+**Add to the opening:** "Watch whose estimate each number is, and how many people stand behind it."
 
 **The panel's two questions.**
 1. "What share of phone bookers would have to leave before closing the line loses money?"
-2. "The estimate came from a sample of calls. What would you ask about the sample before you believed it?"
+2. "The estimate came from 60 calls. What would you ask about them before you believed it?"
 
-**The strongest discussion** turns 15 percent into 3,450 bookings, finds one sixth at risk, compares
-Rs 8.6 lakh with Rs 6.5 lakh, and names the 12.6 percent break-even; it proposes a phased close with
-the app's assisted booking for older patients and a measure of who leaves.
-**The weakest** treats "25 percent of patients are over 60" as "25 percent of phone bookers are over 60"
-and builds the case on it.
+**The strongest discussion** turns 15 percent into 3,450 bookings, finds 575 at risk worth $48,875
+against $65,000, names the 22 percent break-even and says the sample of 60 cannot tell 17 from 22;
+it proposes a staged close and a measure of who leaves. **The weakest** treats the register's 25.4
+percent aged 65 and over as the share of phone bookers who leave, or treats one in six as exact.
 
-### Card 05: free home collection everywhere (level 3)
+### Card 05: is the vendor's "30 percent fewer denials" good enough to buy on?
 
-**Add to the opening:** "One number on this card carries the whole case. Decide how much you trust it."
-
-**The panel's two questions.**
-1. "The finance head asked for the 9 percent against the cities that did not get the offer. Why does that comparison matter, and what might it show?"
-2. "At what lift does the offer stop paying for itself?"
-
-**The strongest discussion** costs the offer at about Rs 10.6 lakh a year, finds the break-even lift
-near 7.6 percent, and says the decision depends on whether the 9 percent survives a fair comparison;
-it proposes the test before the rollout.
-**The weakest** takes the 9 percent as given and argues about brand, or rejects the offer on cost
-without asking what the 9 percent was measured against.
-
-Do not tell the group anything about the campaign's real effect, however close it gets. This card is
-never given to a sub-problem 5 group; the roster checks it.
-
-### Card 06: the no-show league table (level 3)
-
-**Add to the opening:** "The table is an illustration of the format, not Kalpa's figures. Decide
-whether the format is fair."
+**Add to the opening:** "One number on this card carries the whole case. Decide how much of it you
+believe."
 
 **The panel's two questions.**
-1. "Clinic F has 5 no-shows. What happens to its rank with one fewer?"
-2. "What would you print beside every rate so that a clinic manager believes the table?"
+1. "Against what would you compare the 30 percent, and what does that comparison give?"
+2. "What would you need to see at Kalpa before you signed, and how long would it take?"
 
-**The strongest discussion** notices the visits column before the rate column, shows that one patient
-moves F by more than 3 points, and proposes a version with the base beside each rate, a minimum
-volume, or a three-month trend.
-**The weakest** ranks the clinics as printed and argues about how to shame F politely.
+**The strongest discussion** compares the client lab with the fourteen labs that did not buy the
+model, notices that the payer's rule change alone could explain most of the fall, finds that Kalpa
+needs 24 percent, and proposes a pilot with half the claims held back. **The weakest** takes the 30
+percent as the model's effect and argues only about the price. This card is never given to a
+sub-problem 3 or 5 group; the roster checks it.
 
-If a group asks whether every clinic counts a visit the same way, write it down as the best question of
-the round and do not answer it. This card is never given to a sub-problem 4 group.
+### Card 06: should the lab director rank the six labs on turnaround?
 
-### Card 07: pricing a corporate health-check contract (level 4)
-
-**Add to the opening:** "Three people sent numbers. Before you choose, check that they are counting
-the same thing."
+**Add to the opening:** "The tables are an illustration of the report's format. Decide whether the
+ranking is fair."
 
 **The panel's two questions.**
-1. "The marketing head's families bring in nine lakh. Nine lakh of what?"
-2. "Give me your counter-offer in one sentence: price, payment terms and the window."
+1. "Phoenix is last on the table. Where does it rank on routine tests, and why the difference?"
+2. "What would you print beside each lab so that its manager believes the table?"
 
-**The strongest discussion** separates revenue from margin, converts the families to about Rs 5.1 lakh
-of margin, costs the 90-day wait, finds the 23 working days on one shift, and makes a counter-offer on
-all three terms.
-**The weakest** accepts Rs 1,100 because the logo and the families make up for it, adding revenue to
-margin without noticing.
+**The strongest discussion** reads the appendix before the ranking, finds that a quarter of
+Phoenix's work is batched tests and that it leads on routine work, and proposes a table by kind of
+test or at a common mix. **The weakest** ranks the labs as printed and argues about how hard to
+press Phoenix. If a group asks whether the other labs count a result the same way, write it down as
+the best question of the round and do not answer it. This card is never given to a sub-problem 4
+group.
 
-This card is never given to a sub-problem 1 or 3 group.
+### Card 07: where should the board's $2 million go?
 
-### Card 08: where the next Rs 2 crore goes (level 4, the spare)
-
-**Add to the opening:** "Every plan comes with a number. Put the three numbers on one footing before
-you pick."
-
-**The panel's two questions.**
-1. "Which of the three numbers would you test first, and how, before the money moves?"
-2. "Which plan's number rests on the weakest evidence?"
-
-**The strongest discussion** converts the three numbers to revenue in year one (Rs 27 lakh, Rs 60 lakh,
-Rs 41.4 lakh), then ranks them by the strength of the evidence behind each, and picks the plan whose
-claim can be checked soonest, or splits the money with a test.
-**The weakest** backs whichever head spoke last on the card, or averages the three.
-
-### Card 09: the insurer's cashless tie-up (level 5)
-
-**Add to the opening:** "This one has no clean answer. I am listening for how you choose."
+**Add to the opening:** "Three people sent numbers. Before you choose, check that they count the same
+thing."
 
 **The panel's two questions.**
-1. "The insurer says 40 percent, the marketing head says 20. What volume do you need to break even, and which number do you believe?"
-2. "Would you hand over the clinic-level figures? What would you give instead?"
+1. "The outreach lab books $3.2 million a year. What would Kalpa be paid for the same tests?"
+2. "Which plan's number rests on the weakest evidence, and how would you test it before the money moves?"
 
-**The strongest discussion** finds the existing policyholders who now pay less, reaches a break-even
-near 33 percent more volume, notices the payment delay eats most of the insurer's margin of safety,
-asks "40 percent of what", and makes a conditional offer: a volume floor, a review date, a smaller
-discount, or aggregate figures only.
-**The weakest** multiplies 40 percent more volume by the discounted price, calls it growth, and signs.
+**The strongest discussion** puts the three numbers on one footing, about $720,000, $216,000 and
+$501,600 a year, then ranks them by the strength of their evidence and by years to repay, and picks
+one plan with a test or splits the money. **The weakest** backs the biggest number, or the head who
+spoke last on the card.
 
-### Card 10: the sample mix-up (level 5)
+### Card 08: should Kalpa sign the plan's preferred-lab offer?
 
-**Add to the opening:** "A patient was harmed. Decide what Dr Menon says to the board, and what it costs."
+**Add to the opening:** "Every growth figure on this card is a percentage of something. Find what."
 
 **The panel's two questions.**
-1. "Two mislabels in 40,000 samples. How sure are you of the rate, and does your decision change if it is three times higher?"
-2. "What does it cost to avoid one wrong diagnosis with the second check, and is that cheap?"
+1. "The plan says 40 percent and the Houston lab says 15. Put them on one base: which is larger?"
+2. "Give me your counter-offer in one sentence: the cut, the floor and what you share."
 
-**The strongest discussion** separates the news story from the error rate, reaches about Rs 2 lakh per
-error avoided, says two events are too few to know the rate, and chooses a position that can survive
-the next incident: the check where the error happened, a fix at labelling, or the promise narrowed.
-**The weakest** picks the pause because it is visible, or dismisses the check because two in 40,000 is
-small, and never says what a missed diagnosis costs the patient.
+**The strongest discussion** finds the $16 margin falling to $11.20, the 42.9 percent break-even, and
+that the plan's 40 percent is 12 percent of all Dallas tests while Houston's 15 is half again on the
+members' base; it counters with terms. **The weakest** multiplies 1.40 by 0.88, calls it 23 percent
+growth and signs.
+
+### Card 09: what does Dr Menon do in the week the clearinghouse is down?
+
+**Add to the opening:** "This one has no clean answer. I am listening for the order of your moves and
+how you choose."
+
+**The panel's two questions.**
+1. "How many weeks of cash does Kalpa have, and when does each of your moves bring money in?"
+2. "Would you sign the second clearinghouse's draft as it is? What would you change first, and why?"
+
+**The strongest discussion** sets about four weeks of cash against three to five weeks to the first
+payment from a new clearinghouse, takes the Medicare advance as a bridge and never as a fix, keys
+the largest claims into the plans' websites meanwhile, and refuses the draft's use clause until it
+is cut back. **The weakest** treats the $82,500 as lost, or signs the draft because speed matters
+most, or waits for the outage to end. This card is never given to a sub-problem 3 group.
+
+### Card 10: should Kalpa move its Texas Medicaid claim work to Bengaluru?
+
+**Add to the opening:** "You work in the GCC. Argue this as Dr Menon would have to explain it to the
+state."
+
+**The panel's two questions.**
+1. "The clause forbids moving the information out of the US. Does logging in from Bengaluru to files kept in Dallas get round it?"
+2. "What could the team in Bengaluru do for these claims that needs no patient's record?"
+
+**The strongest discussion** treats the clause as a bound on every option, reads its remote-access
+sentence, sets the $40,000 saving against the contract and the 180 patients, and lands on keeping
+the patient-level work in the US, asking the state in writing and giving Bengaluru the work that
+needs no patient's record. **The weakest** moves the work because the saving beats the plans'
+payments, or drops the plans without a word about the patients.
