@@ -1231,8 +1231,8 @@ def ch3():
                        for s in segments for q in ("Q1", "Q2")],
                       caption="Two routes to orders per customer")
             kit.strip([float(v) for v in groups[("Retail-Plus", "Q2")]],
-                      markers=[("average 1.84", route2[("Retail-Plus", "Q2")], "good")],
-                      fmt=lambda v: f"{v:.0f}", lo=0, hi=6,
+                      markers=[("average", route2[("Retail-Plus", "Q2")], "good")],
+                      fmt=lambda v: f"{v:g}", lo=0, hi=8,
                       title="Retail-Plus Q2: each dot is one member's orders; their average is the ratio")
             '''),
         code(r'''
@@ -2149,7 +2149,7 @@ def ch6():
                       [(a["order_id"], b["order_id"]) for a, b in zip(fixed, python_five)],
                       caption=f"Two routes to the audit sample, from {len(candidates)} candidates")
             small = [num(r["amount"]) for r in candidates if num(r["amount"]) < 5000]
-            kit.strip(small, markers=[("the five, Rs 3,900 in all", 780, "good")], fmt=kit.rupees, lo=0, hi=5000,
+            kit.strip(small, markers=[("the five's average", 780, "good")], fmt=kit.rupees, lo=0, hi=5000,
                       lit=tuple(i for i, r in enumerate(r for r in candidates if num(r["amount"]) < 5000)
                                 if r["order_id"] in {f["order_id"] for f in fixed}),
                       title="The consumer-sized candidates, one dot each; the five sampled are drawn dark")
