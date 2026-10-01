@@ -7,18 +7,19 @@ Writes, beside each other in content/W03/SAT/rubrics/:
   C2_W03_SAT_mini_project_scoring_recalc_INTERNAL.md  the verdicts and flips scripts/xlsx_recalc.py asserts
 
 The rubric is copied from data/programme/facts.yaml (evaluation.rubrics.W03.events.mini-project),
-which the requester approved on 29 September 2026, so rerunning this after a sync keeps the sheet
-true. The first four criteria are scored once per group and every member receives them; presentation
+approved on 29 September 2026, so rerunning this after a sync keeps the sheet true. The first four criteria are scored once per group and every member receives them; presentation
 and defence is scored per learner.
 
-The sheet applies the spine's rule for a demo that fails (docs/detailing/W03_build1_spine.md): a
+The sheet applies the rule for a demo that fails, set on 29 September 2026 (docs/detailing/W03_build1_spine.md): a
 group's demo runs once, cold, on its raw files; if it fails, the group has two minutes to recover it
 live; if it still fails, the group presents from its executed notebook, the panel scores the live
 demo in presentation and defence as not run cold, and the other 34 marks are scored from the
 executed run. So the chair records each group's demo outcome; the group part is required whatever
 the outcome; and a member of a group whose demo still failed cannot carry full marks on presentation
 and defence, because the rubric's full marks there begin with "the live demo runs cold". How many
-marks short of full the panel gives is the panel's call, and the sheet sets no number.
+marks short of full the panel gives is the panel's call, and the sheet sets no number. The rule sets
+nothing for a demo recovered inside its two minutes, so the sheet leaves that to the panel's
+judgement as well.
 
 Seats: the cohort's 35 learners (facts.yaml, cohort.students) in nine groups, eight of four and G9 of
 three, as the grade closure workbook holds them.
@@ -92,9 +93,9 @@ def build():
     rm["A1"] = "How is each Build 1 group and each learner scored on the mini project? (TRAINER ONLY)"
     rm["A1"].font = font(bold=True, color=INK, size=14)
     rows = [
-        ("The rubric", f"Build 1's mini project rubric as the requester approved it on 29 September 2026, copied from data/programme/facts.yaml (evaluation.rubrics.W03) onto the Rubric sheet. {EVENT['scored']}"),
+        ("The rubric", f"Build 1's mini project rubric as approved on 29 September 2026, copied from data/programme/facts.yaml (evaluation.rubrics.W03) onto the Rubric sheet. {EVENT['scored']}"),
         ("Where to type", "Only the yellow cells. On Groups: the sub-problem, the panel, the day, the demo's outcome and the four group criteria. On Learners: whether the seat is in use and the presentation and defence score. Every other cell is a formula."),
-        ("When to score", "After the slot, never in front of the group, from the panel's evidence notes and the question bank (trainer/C2_W03_SAT_question_bank_TRAINER.md). A quiet member's presentation and defence score waits for the separate questions in the room's reserve; the group's 34 does not wait."),
+        ("When to score", "After the slot, never in front of the group, from the chair's notes of what each member said and the question bank (trainer/C2_W03_SAT_question_bank_TRAINER.md). A quiet member's presentation and defence score waits for the separate questions in the room's reserve; the group's 34 does not wait."),
         ("The demo rule", DEMO_RULE),
         ("How the sheet applies it", "Record each group's demo outcome on Groups. The group part is scored from the executed run whatever the outcome, so it is never left blank because a demo failed. A learner in a group whose demo still failed cannot carry full marks on presentation and defence, since the rubric's full marks there begin with a demo that runs cold; the Learners check flags it, and how far below full is the panel's call. A demo held up by a failed machine runs cold in the room's reserve before anyone's presentation and defence is scored, and its outcome replaces the machine entry."),
         ("Seats, never names", "35 seats, one per learner: eight groups of four and G9 of three. Relabel the seats if Monday's allocation put the group of three elsewhere. Mark an absent learner N in In use; the row then reads absent and drops out of the counts. The Programme Head records the absence and the decision in the grade closure workbook."),
@@ -154,7 +155,8 @@ def build():
         gs[f"L{i}"] = (f'=IF(E{i}="","record the demo\'s outcome",'
                        f'IF(E{i}="{FAILED}","the 34 stand on the executed run; presentation and defence scores the demo as not run cold",'
                        f'IF(E{i}="{MACHINE}","run the demo cold in the reserve, then record its outcome",'
-                       f'"the live demo counts as run cold")))')
+                       f'IF(E{i}="{RECOVERED}","the rule sets nothing for a recovery: the panel judges it within presentation and defence",'
+                       f'"the live demo ran cold"))))')
         for c in "ABCDEFGHIJKL":
             gs[f"{c}{i}"].border = BOX
         for c in "AJKL":
@@ -253,9 +255,15 @@ def manifest(t, v, glast, llast):
         f"    set: [{', '.join(group(3) + ['{sheet: Learners, cell: D3, value: 4}'])}]",
         "    verdicts:",
         "      - {sheet: Groups, cell: J3, expect: \"26\"}",
-        "      - {sheet: Groups, cell: L3, expect: \"the live demo counts as run cold\"}",
+        "      - {sheet: Groups, cell: L3, expect: \"the live demo ran cold\"}",
         "      - {sheet: Learners, cell: G3, expect: \"30\"}",
         "      - {sheet: Learners, cell: G4, expect: \"incomplete\"}",
+        "  - name: G1's demo recovered inside its two minutes",
+        f"    set: [{', '.join(group(3, outcome=RECOVERED) + ['{sheet: Learners, cell: D3, value: 6}'])}]",
+        "    verdicts:",
+        "      - {sheet: Groups, cell: L3, expect: \"the rule sets nothing for a recovery: the panel judges it within presentation and defence\"}",
+        "      - {sheet: Learners, cell: H3, expect: \"ok\"}",
+        "      - {sheet: Learners, cell: G3, expect: \"32\"}",
         "  - name: a group criterion above its maximum",
         "    set: [{sheet: Groups, cell: G3, value: 11}]",
         "    verdicts:",
@@ -308,7 +316,9 @@ if __name__ == "__main__":
 # 1. The empty template: Rubric totals read 40 and 34; the Summary verdict reads "35 learners still to
 #    score"; G1's demo rule reads "record the demo's outcome".
 # 2. G1 scored 6, 8, 7 and 5 after a cold demo, its first member 4: group part 26, that learner 30,
-#    the second member still "incomplete", and G1's rule reads "the live demo counts as run cold".
+#    the second member still "incomplete", and G1's rule reads "the live demo ran cold".
+# 2a. G1's demo recovered inside its two minutes, its first member on 6: the rule reads that the
+#    panel judges a recovery, the check reads ok and the learner's total is 32.
 # 3. A group criterion typed as 11 where the maximum is 10: the row's check and the verdict flag it.
 # 4. G1's demo still failed and its first member is given 6: the learner's check reads "full marks
 #    need a demo that ran cold" and the verdict counts one score breaking the demo rule.

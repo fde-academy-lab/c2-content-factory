@@ -17,9 +17,15 @@ flips:
     set: [{sheet: Groups, cell: F3, value: 6}, {sheet: Groups, cell: G3, value: 8}, {sheet: Groups, cell: H3, value: 7}, {sheet: Groups, cell: I3, value: 5}, {sheet: Groups, cell: E3, value: "ran cold"}, {sheet: Learners, cell: D3, value: 4}]
     verdicts:
       - {sheet: Groups, cell: J3, expect: "26"}
-      - {sheet: Groups, cell: L3, expect: "the live demo counts as run cold"}
+      - {sheet: Groups, cell: L3, expect: "the live demo ran cold"}
       - {sheet: Learners, cell: G3, expect: "30"}
       - {sheet: Learners, cell: G4, expect: "incomplete"}
+  - name: G1's demo recovered inside its two minutes
+    set: [{sheet: Groups, cell: F3, value: 6}, {sheet: Groups, cell: G3, value: 8}, {sheet: Groups, cell: H3, value: 7}, {sheet: Groups, cell: I3, value: 5}, {sheet: Groups, cell: E3, value: "recovered within two minutes"}, {sheet: Learners, cell: D3, value: 6}]
+    verdicts:
+      - {sheet: Groups, cell: L3, expect: "the rule sets nothing for a recovery: the panel judges it within presentation and defence"}
+      - {sheet: Learners, cell: H3, expect: "ok"}
+      - {sheet: Learners, cell: G3, expect: "32"}
   - name: a group criterion above its maximum
     set: [{sheet: Groups, cell: G3, value: 11}]
     verdicts:

@@ -9,10 +9,12 @@ Writes, beside each other in content/W03/SAT/rubrics/:
 The marks per event and the mini project rubric are copied from data/programme/facts.yaml
 (evaluation.rubrics.W03.events): the GD out of 30, the mini project out of 40 (34 for the group's
 four criteria and 6 for each learner's presentation and defence) and Mock R1 out of 30. The
-mini project arrives in its two parts, so the spine's rule for a demo that fails
-(docs/detailing/W03_build1_spine.md) can be applied at closure as well: a failed demo leaves the
+mini project arrives in its two parts, so the rule for a demo that fails, set on 29 September 2026
+(docs/detailing/W03_build1_spine.md), can be applied at closure as well: a failed demo leaves the
 group's 34 standing on the executed run, and a learner in a group whose demo still failed cannot
-close with full marks on presentation and defence. Every total and every check is a formula, so
+close with full marks on presentation and defence. Every member of a group carries the same group
+part, since the rubric gives each member the group's 34, so a seat whose group part differs from a
+teammate's, or reads ABSENT, is flagged. Every total and every check is a formula, so
 LibreOffice or Excel recomputes them as scores are entered. The lists of seats use the & operator
 over a helper column, never TEXTJOIN, so they compute in every spreadsheet the programme uses.
 """
@@ -43,6 +45,7 @@ GROUPS = [(f"G{g}", 4) for g in range(1, 9)] + [("G9", 3)]
 assert sum(n for _, n in GROUPS) == facts["cohort"]["students"]["value"]
 ABSENT = "ABSENT"
 FIRST = 6  # the first seat row on the Scores sheet
+LAST = FIRST + sum(n for _, n in GROUPS) - 1  # the last seat row
 RAN, RECOVERED, FAILED, MACHINE = ("ran cold", "recovered within two minutes",
                                    "still failed: presented from the executed notebook",
                                    "machine failed: demo waits for the reserve")
@@ -99,9 +102,9 @@ def build():
         ("Entered once", "Each score is typed once, by the scribe the run sheet names, from the assessor's signed sheet. A correction replaces the one cell and is never typed in a second place."),
         ("The demo rule", "A group's demo runs once, cold, on its raw files. If it fails, the group has two minutes to recover it live, as it would in front of a client. If it still fails, the group presents from its executed notebook, and the panel scores the live demo in presentation and defence as not run cold. The other 34 marks of the mini project are scored from the executed run, so a failed demo costs its own marks and never the analysis. Here: every group needs a final demo outcome on Demos; a seat whose group's demo still failed reads DEMO RULE if its presentation and defence is at full marks; and the group part is required whatever the outcome."),
         ("Seats, never names", "Seats are labelled by group and seat (G1-S1). The Programme Head keeps the seat-to-learner key outside this repository. Eight groups hold four seats and G9 holds three; relabel the seats if Monday's allocation put the group of three elsewhere."),
-        ("Status, per seat", "COMPLETE when all four scores are in, within their maximums and within the demo rule. NOT A SCORE means text other than ABSENT, or a negative number. OVER MAX means a score above its maximum. DEMO RULE means full marks on presentation and defence for a group whose demo still failed. MISSING names the scores still to enter. ABSENT names the events the learner missed when every other score is in."),
+        ("Status, per seat", "COMPLETE when all four scores are in, within their maximums and within the demo rule. NOT A SCORE means text other than ABSENT, ABSENT typed in the group part (which every member receives), or a negative number. OVER MAX means a score above its maximum. GROUP PART DIFFERS means this seat's group part is not the same number as a teammate's; the panel scored the group once, so one of the copies is wrong. DEMO RULE means full marks on presentation and defence for a group whose demo still failed. MISSING names the scores still to enter. ABSENT names the events the learner missed when every other score is in."),
         ("The verdict", "The Checks sheet reads READY TO SIGN only when every seat is COMPLETE or ABSENT, no seat label repeats, and every group's demo outcome is final. It lists the seats still short and the seats with an absence, by seat. The Sign-off sheet reads CLOSED only after that, with every role signed."),
-        ("An absence", "A learner who missed an event has ABSENT typed in that event's cell and the Programme Head's decision in Notes. The seat then counts as closed, carries no total, and is listed on the Checks sheet. No make-up rule is published, so this workbook sets none."),
+        ("An absence", "A learner who missed an event has ABSENT typed in that event's cell and the Programme Head's decision in Notes. For the mini project, ABSENT goes in the presentation and defence cell; the group part stays the group's number, since the rubric gives every member the 34. The seat then counts as closed, carries no total, and is listed on the Checks sheet. No make-up rule is published, so this workbook sets none."),
     ]
     for i, (a, b) in enumerate(rows, start=4):
         rm.cell(row=i, column=1, value=a).font = font(bold=True, color=INK)
@@ -148,7 +151,8 @@ def build():
         dm[f"C{i}"] = (f'=IF(B{i}="","record the outcome from the scoring sheet",'
                        f'IF(B{i}="{FAILED}","the group\'s 34 stand on the executed run; presentation and defence cannot be full marks",'
                        f'IF(B{i}="{MACHINE}","not final: the demo runs cold in the reserve first",'
-                       f'"no change: the live demo counts as run cold")))')
+                       f'IF(B{i}="{RECOVERED}","the rule sets nothing for a recovery: the panel judged it within presentation and defence",'
+                       f'"no change: the live demo ran cold"))))')
         for col in "ABC":
             dm[f"{col}{i}"].border = BOX
         dm[f"A{i}"].font = dm[f"C{i}"].font = font()
@@ -178,6 +182,7 @@ def build():
                    "Demo on the day", "Status", "Notes", "Short (helper)", "Absent (helper)"],
            [10, 8, 15, 24, 10, 12, 15, 10, 13, 11, 30, 34, 40, 12, 12])
     last = FIRST + sum(n for _, n in GROUPS) - 1
+    assert last == LAST
     r = FIRST
     for g, n in GROUPS:
         for s in range(1, n + 1):
@@ -191,7 +196,11 @@ def build():
             ws[k] = f'=IF({look}="","",{look})'
             cells = (e, f, g_, h)
             bad = ",".join([f'AND({x}<>"",NOT(ISNUMBER({x})),{x}<>"{ABSENT}")' for x in cells]
+                           + [f'AND({f}<>"",NOT(ISNUMBER({f})))']
                            + [f"AND(ISNUMBER({x}),{x}<0)" for x in cells])
+            # The group part is the group's: count the teammates whose number differs from this seat's.
+            differs = (f"AND(ISNUMBER({f}),SUMPRODUCT(($B${FIRST}:$B${LAST}=B{r})"
+                       f"*ISNUMBER($F${FIRST}:$F${LAST})*($F${FIRST}:$F${LAST}<>{f}))>0)")
             over = ",".join(f"AND(ISNUMBER({x}),{x}>{c}$4)" for x, c in zip(cells, "EFGH"))
             rule = f'AND(ISNUMBER({g_}),{k}="{FAILED}",{g_}>=$G$4)'
             missing = (f'"MISSING "&TRIM(IF({e}="","GD ","")&IF({f}="","group part ","")'
@@ -199,8 +208,9 @@ def build():
             absent = (f'"{ABSENT} "&TRIM(IF({e}="{ABSENT}","GD ","")&IF({f}="{ABSENT}","group part ","")'
                       f'&IF({g_}="{ABSENT}","presentation and defence ","")&IF({h}="{ABSENT}","mock",""))')
             nabs = f'COUNTIF({e}:{h},"{ABSENT}")'
-            ws[f"L{r}"] = (f'=IF(OR({bad}),"NOT A SCORE",IF(OR({over}),"OVER MAX",IF({rule},"DEMO RULE",'
-                           f'IF(COUNT({e}:{h})+{nabs}<4,{missing},IF({nabs}>0,{absent},"COMPLETE")))))')
+            ws[f"L{r}"] = (f'=IF(OR({bad}),"NOT A SCORE",IF(OR({over}),"OVER MAX",'
+                           f'IF({differs},"GROUP PART DIFFERS",IF({rule},"DEMO RULE",'
+                           f'IF(COUNT({e}:{h})+{nabs}<4,{missing},IF({nabs}>0,{absent},"COMPLETE"))))))')
             ws[f"I{r}"] = f'=IF(AND(ISNUMBER({f}),ISNUMBER({g_})),{f}+{g_},"")'
             ws[f"J{r}"] = f'=IF(L{r}="COMPLETE",{e}+{f}+{g_}+{h},"")'
             ws[f"N{r}"] = f'=IF(AND(L{r}<>"COMPLETE",LEFT(L{r},6)<>"{ABSENT}"),A{r}&", ","")'
@@ -264,6 +274,7 @@ def build():
         ("Seats with a score MISSING", f'=COUNTIF({S},"MISSING*")'),
         ("Seats with a score OVER MAX", f'=COUNTIF({S},"OVER MAX")'),
         ("Seats with NOT A SCORE", f'=COUNTIF({S},"NOT A SCORE")'),
+        ("Seats whose group part differs from a teammate's", f'=COUNTIF({S},"GROUP PART DIFFERS")'),
         ("Seats that break the DEMO RULE", f'=COUNTIF({S},"DEMO RULE")'),
         ("Seats with an event marked ABSENT", f'=COUNTIF({S},"{ABSENT}*")'),
         ("Groups with a final demo outcome", f"={FINAL}"),
@@ -330,7 +341,8 @@ def build():
     wb.save(OUT / BOOK)
     return dict(last=last, verdict=VERDICT, closure=c, end=end, short=SHORT, absences=ABSENCES,
                 absent_count=f"B{row['Seats with an event marked ABSENT']}",
-                rule_count=f"B{row['Seats that break the DEMO RULE']}", dlast=dlast)
+                rule_count=f"B{row['Seats that break the DEMO RULE']}", dlast=dlast,
+                differs_count="B" + str(row["Seats whose group part differs from a teammate's"]))
 
 
 def manifest(k):
@@ -346,6 +358,9 @@ def manifest(k):
     first_pd_6 = [x if "cell: G6," not in x else "{sheet: Scores, cell: G6, value: 6}" for x in full]
     absent_mock = full[:-1] + [f'{{sheet: Scores, cell: H{last}, value: "{ABSENT}"}}']
     no_mock_g1 = [x for x in full if "cell: H6," not in x]
+    g1_s2_differs = [x if "cell: F7," not in x else "{sheet: Scores, cell: F7, value: 16}" for x in full]
+    g1_s2_absent_group = [x if "cell: F7," not in x else f'{{sheet: Scores, cell: F7, value: "{ABSENT}"}}' for x in full]
+    g1_recovered = [f'{{sheet: Demos, cell: B4, value: "{RECOVERED}"}}'] + cold[1:]
     lines = [
         "# Recalc manifest: the Build 1 grade closure workbook",
         "",
@@ -395,6 +410,25 @@ def manifest(k):
         f"      - {{sheet: Scores, cell: I{FIRST}, expect: \"30\"}}",
         "      - {sheet: Demos, cell: C4, expect: \"the group's 34 stand on the executed run; presentation and defence cannot be full marks\"}",
         f"      - {{sheet: Checks, cell: {k['verdict']}, expect: \"READY TO SIGN\"}}",
+        "  - name: G1-S2's group part copied as 16 while its teammates carry 26",
+        f"    set: [{', '.join(g1_s2_differs + cold)}]",
+        "    verdicts:",
+        f"      - {{sheet: Scores, cell: L{FIRST + 1}, expect: \"GROUP PART DIFFERS\"}}",
+        f"      - {{sheet: Scores, cell: L{FIRST}, expect: \"GROUP PART DIFFERS\"}}",
+        f"      - {{sheet: Checks, cell: {k['differs_count']}, expect: \"4\"}}",
+        f"      - {{sheet: Checks, cell: {k['verdict']}, expect: \"NOT READY: 4 seats short\"}}",
+        "  - name: G1-S2's group part typed ABSENT, although every member receives the 34",
+        f"    set: [{', '.join(g1_s2_absent_group + cold)}]",
+        "    verdicts:",
+        f"      - {{sheet: Scores, cell: L{FIRST + 1}, expect: \"NOT A SCORE\"}}",
+        f"      - {{sheet: Scores, cell: L{FIRST}, expect: \"COMPLETE\"}}",
+        f"      - {{sheet: Checks, cell: {k['verdict']}, expect: \"NOT READY: 1 seats short\"}}",
+        "  - name: G1's demo recovered inside its two minutes",
+        f"    set: [{', '.join(full + g1_recovered)}]",
+        "    verdicts:",
+        "      - {sheet: Demos, cell: C4, expect: \"the rule sets nothing for a recovery: the panel judged it within presentation and defence\"}",
+        "      - {sheet: Demos, cell: C5, expect: \"no change: the live demo ran cold\"}",
+        f"      - {{sheet: Checks, cell: {k['verdict']}, expect: \"READY TO SIGN\"}}",
         "  - name: every score entered, G1's demo still waiting on a machine",
         f"    set: [{', '.join(full + g1_machine)}]",
         "    verdicts:",
@@ -442,3 +476,9 @@ if __name__ == "__main__":
 # 8. As 4, G9-S3's mock typed ABSENT: "ABSENT mock", the absence list "G9-S3", "READY TO SIGN".
 # 9. As 4, G1-S1's mock left empty: the short list "G1-S1", "NOT READY: 1 seats short".
 # 10. As 4, with every Signed cell set to Yes: closure reads "CLOSED".
+# 11. As 4, G1-S2's group part copied as 16: all four G1 seats read "GROUP PART DIFFERS", the count
+#     reads 4 and the verdict "NOT READY: 4 seats short".
+# 12. As 4, G1-S2's group part typed ABSENT: that seat reads "NOT A SCORE", G1-S1 stays COMPLETE, and
+#     the verdict reads "NOT READY: 1 seats short".
+# 13. As 4, G1's demo recovered inside its two minutes: the Demos sheet leaves the recovery to the
+#     panel's judgement, G2 reads "no change: the live demo ran cold", and the verdict "READY TO SIGN".
