@@ -5,8 +5,9 @@ Answers: 1b 2a 3b 4a 5c 6d
 ## What does this set test?
 
 The set tests which rows survive a join, counted by hand on tables the chapter never used, and which
-table a question has to start from. Items 3, 5 and 6 are design items: the join a different question needs,
-a row count predicted from the keys alone, and the one question an INNER join answers honestly.
+table a question has to start from. Items 3, 5 and 6 are design items: the join a different question
+needs, a row count predicted from the keys alone, and the one question an INNER join answers
+honestly.
 
 ## Why does each key hold, item by item?
 
@@ -29,5 +30,5 @@ that reads over 100 percent collected as a warning sign, whatever story explains
 ## Where does this pattern live in production?
 
 Razorpay's Orders API combines several payment attempts under one order, and fetching an order's
-payments returns every authorised or failed attempt for it (Razorpay documentation, checked 30 Sep
+payments returns every authorised or failed attempt for it (Razorpay documentation, checked 1 Oct
 2026), so every merchant reconciling the two lists makes this chapter's choice of join first.

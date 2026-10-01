@@ -5,9 +5,9 @@ Answers: 1b 2a 3c 4b 5a 6d
 ## What does this set test?
 
 The set tests the count that catches a dropped order, the bridge that separates two causes netted
-into one gap, and a second route whose blind spot differs from the first. Items 2, 5 and 6 are design items: the proof
-to run first under time pressure, where two independent methods part company, and what changes the
-form of the proof at the quarter's close.
+into one gap, and a second route whose blind spot differs from the first. Items 2, 5 and 6 are
+design items: the proof to run first under time pressure, where two independent methods part
+company, and what changes the form of the proof at the quarter's close.
 
 ## Why does each key hold, item by item?
 
@@ -28,7 +28,11 @@ the same draft. One of the two faults drops rupees and the other adds them.
 
 ## Where does this pattern live in production?
 
-Public Health England left 15,841 positive COVID-19 cases out of the daily figures reported between
-25 September and 2 October 2020 (GOV.UK, 4 October 2020); the BBC reported that the files were loaded
-into old XLS templates that held about 65,000 rows (BBC News, 5 October 2020), both checked 30 Sep
-2026. No row that arrived was wrong, and a count of rows sent against rows loaded would have caught it.
+Stripe's payout reconciliation report lets a merchant match each payout in the bank with "the batches
+of payments and other transactions that they relate to", itemizing every payment, refund, dispute and
+fee inside it (Stripe documentation, checked 1 Oct 2026). Public Health England left 15,841 positive
+COVID-19 cases out of the daily figures reported between 25 September and 2 October 2020 (GOV.UK,
+4 October 2020): the results were pulled into Excel templates in the old XLS format, each result took
+several rows of its roughly 65,000, so a template held about 1,400 cases and later cases were left off
+(BBC News, 5 October 2020; both checked 1 Oct 2026). No row that arrived was wrong, and a count of rows
+sent against rows loaded would have caught the loss.

@@ -109,5 +109,5 @@ d) each table summed alone equals the join's booked and posted
 ## Where does this skill come back?
 
 It comes back in chapter 3, which asks whether the fixed report still holds every order, and in the
-escalated case, where you choose the grain of the payments CTE on Kalpa's own Q2. The notebook for this chapter is
-`notebooks/C2_W02_D02_02_why_twice_booked_STUDENT.ipynb`.
+escalated case, where you choose the grain of the payments CTE on Kalpa's own Q2. The notebook for
+this chapter is `notebooks/C2_W02_D02_02_why_twice_booked_STUDENT.ipynb`.

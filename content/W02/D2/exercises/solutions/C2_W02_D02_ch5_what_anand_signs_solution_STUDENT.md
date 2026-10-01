@@ -5,8 +5,9 @@ Answers: 1b 2b 3c 4d 5c 6a
 ## What does this set test?
 
 The set tests how a NULL leaves a sum without a word, the one place `coalesce` has to sit, and a
-second route that is independent enough to disagree. Items 5 and 6 are design items: the page form sized on what a
-finance controller must act on and audit, and what a disagreement between two routes means.
+second route that is independent enough to disagree. Items 5 and 6 are design items: the page form
+sized on what a finance controller must act on and audit, and what a disagreement between two routes
+means.
 
 ## Why does each key hold, item by item?
 
@@ -30,5 +31,5 @@ business decides which meaning is right, and the query has to put the `coalesce`
 
 Infosys publishes days sales outstanding every quarter, money owed by customers over revenue per day:
 63 days for the quarter ended 30 June 2026, against 67 at 31 March 2026 and 70 a year earlier (the
-fact sheet furnished with its Form 6-K on 28 July 2026, checked 30 Sep 2026). Once a finance team
+fact sheet furnished with its Form 6-K on 28 July 2026, checked 1 Oct 2026). Once a finance team
 publishes its collections figure, it has to answer for every NULL behind that figure.

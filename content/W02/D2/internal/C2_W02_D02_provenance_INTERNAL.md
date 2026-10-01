@@ -136,27 +136,27 @@ Every page was fetched on 1 Oct 2026 and each quote compared word for word with 
 
 | Link | Role | Checked |
 |---|---|---|
-| https://razorpay.com/docs/payments/orders/ | Chapter 1: Orders API "combines multiple payment attempts for a single order"; order states created, attempted, paid | 200 with the India preference (a US request redirects to /docs/us/ with the same sentences); dateModified 31 Aug 2026 |
-| https://razorpay.com/docs/api/orders/fetch-payments/ | Chapter 1: "all the authorised or failed payments for that order" | 200; the sample response also shows a captured payment |
-| https://shopify.dev/docs/api/admin-rest/latest/resources/transaction | Chapter 2: "Transactions are created for every order that results in an exchange of money"; kinds authorization, capture, sale, void, refund | 200; the REST Admin API is "a legacy API as of October 1, 2024", which the deck notes and the notes say |
-| https://docs.getdbt.com/docs/build/join-logic | Chapter 2: the fan-out definition, quoted, and MetricFlow restricting fan-out joins | 200; "Last updated on Sep 8, 2026" |
-| https://docs.stripe.com/reports/payout-reconciliation | Chapter 3: the report "helps you match the payouts you receive in your bank account with the batches of payments and other transactions that they relate to"; the itemized file lists "every payment, refund, dispute, fee, and other balance transaction included in the payout" | 200 |
-| https://www.gov.uk/government/news/phe-statement-on-delayed-reporting-of-covid-19-cases | Chapter 3: 15,841 cases between 25 September and 2 October not included | 200; published 4 Oct 2020, updated 5 Oct 2020; the Wayback copy of 4 Oct 2020 carries the figure |
-| https://www.bbc.co.uk/news/technology-54423988 | Chapter 3: CSV files into XLS templates of about 65,000 rows, several rows per result, about 1,400 cases per template, "further cases were simply left off" | 200; Leo Kelion, 5 Oct 2020. "The rest never arrived" overstated this and was corrected |
-| https://docs.stripe.com/api/idempotent_requests | Chapter 4: "subsequent requests with the same key return the same result" | 200; API version 2026-08-26 on the page |
-| https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=11693&Mode=0 | Chapter 4: RBI/2019-20/67 of 20 Sep 2019, card not present, "Auto-reversal within T + 5 days", Rs 100 per day of delay, in effect from 15 Oct 2019 | 200; the PDF returned a bot check, so the table was compared with the Wayback copy of 16 Oct 2019, unchanged |
-| https://www.sec.gov/Archives/edgar/data/1067491/000106749126000038/exv99w04.htm | Chapter 5: Infosys DSO 63, 67 and 70 days on LTM revenues, Exhibit 99.4 to the Form 6-K filed 28 Jul 2026, accession 0001067491-26-000038 | 200 |
-| https://www.bbc.co.uk/news/business-53093305 | Chapter 6: EY unable to confirm the money existed, 18 Jun 2020 | 200 |
-| https://www.bbc.co.uk/news/business-53132953 | Chapter 6: "a prevailing likelihood" the 1.9 billion euros did not exist, 22 Jun 2020 | 200 |
-| https://www.bbc.co.uk/news/business-53176003 | Chapter 6: insolvency filing, 25 Jun 2020 | 200 |
-| https://www.irishtimes.com/business/financial-services/ey-failed-to-ask-for-wirecard-bank-statements-for-three-years-1.4289546 | Chapter 6: the FT's report that EY did not check with OCBC from 2016 to 2018 and relied on documents and screenshots | 200; Olaf Storbeck, 26 Jun 2020, copyright the Financial Times |
-| https://www.youtube.com/watch?v=aY7z4HcHm5M | Notes reading 1: Data with Baraa, "SQL Joins Basics (Visually Explained) \| INNER, LEFT, RIGHT, FULL \| #SQL Course 8" | 200 through oEmbed and the watch page; 40:18; published 20 Mar 2025 |
-| https://www.postgresql.org/docs/16/tutorial-join.html | Notes reading 2: 2.6 Joins Between Tables | 200 |
-| https://www.postgresql.org/docs/16/queries-table-expressions.html | Chapter 4 and notes reading 3: 7.2.1.1 Joined Tables, "a restriction placed in the ON clause is processed before the join, while a restriction placed in the WHERE clause is processed after the join. That does not matter with inner joins, but it matters a lot with outer joins." | 200 |
-| https://blog.jooq.org/the-difference-between-sqls-join-on-clause-and-the-where-clause/ | Notes reading 4 | 200; posted 9 Apr 2019, updated 16 Apr 2019 |
-| https://sqlbolt.com/lesson/select_queries_with_joins, .../select_queries_with_outer_joins, .../select_queries_with_nulls | Notes reading 5 and the take-home: lessons 6 to 8 | 200 each |
-| https://pgexercises.com/questions/joins/ | Notes reading 6 | 200; "Joins and Subqueries" |
-| https://www.pgtutorial.com/ | Trainer resource from the row | 200; its joins section is "Section 5. Joining Tables" |
+| https://razorpay.com/docs/payments/orders/ | Chapter 1: Orders API "combines multiple payment attempts for a single order"; order states created, attempted, paid | checked 1 Oct 2026, 200 with the India preference (a US request redirects to /docs/us/ with the same sentences); dateModified 31 Aug 2026 |
+| https://razorpay.com/docs/api/orders/fetch-payments/ | Chapter 1: "all the authorised or failed payments for that order" | checked 1 Oct 2026, 200; the sample response also shows a captured payment |
+| https://shopify.dev/docs/api/admin-rest/latest/resources/transaction | Chapter 2: "Transactions are created for every order that results in an exchange of money"; kinds authorization, capture, sale, void, refund | checked 1 Oct 2026, 200; the REST Admin API is "a legacy API as of October 1, 2024", which the deck notes and the notes say |
+| https://docs.getdbt.com/docs/build/join-logic | Chapter 2: the fan-out definition, quoted, and MetricFlow restricting fan-out joins | checked 1 Oct 2026, 200; "Last updated on Sep 8, 2026" |
+| https://docs.stripe.com/reports/payout-reconciliation | Chapter 3: the report "helps you match the payouts you receive in your bank account with the batches of payments and other transactions that they relate to"; the itemized file lists "every payment, refund, dispute, fee, and other balance transaction included in the payout" | checked 1 Oct 2026, 200 |
+| https://www.gov.uk/government/news/phe-statement-on-delayed-reporting-of-covid-19-cases | Chapter 3: 15,841 cases between 25 September and 2 October not included | checked 1 Oct 2026, 200; published 4 Oct 2020, updated 5 Oct 2020; the Wayback copy of 4 Oct 2020 carries the figure |
+| https://www.bbc.co.uk/news/technology-54423988 | Chapter 3: CSV files into XLS templates of about 65,000 rows, several rows per result, about 1,400 cases per template, "further cases were simply left off" | checked 1 Oct 2026, 200; Leo Kelion, 5 Oct 2020. "The rest never arrived" overstated this and was corrected |
+| https://docs.stripe.com/api/idempotent_requests | Chapter 4: "subsequent requests with the same key return the same result" | checked 1 Oct 2026, 200; API version 2026-08-26 on the page |
+| https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=11693&Mode=0 | Chapter 4: RBI/2019-20/67 of 20 Sep 2019, card not present, "Auto-reversal within T + 5 days", Rs 100 per day of delay, in effect from 15 Oct 2019 | checked 1 Oct 2026, 200; the PDF returned a bot check, so the table was compared with the Wayback copy of 16 Oct 2019, unchanged |
+| https://www.sec.gov/Archives/edgar/data/1067491/000106749126000038/exv99w04.htm | Chapter 5: Infosys DSO 63, 67 and 70 days on LTM revenues, Exhibit 99.4 to the Form 6-K filed 28 Jul 2026, accession 0001067491-26-000038 | checked 1 Oct 2026, 200 |
+| https://www.bbc.co.uk/news/business-53093305 | Chapter 6: EY unable to confirm the money existed, 18 Jun 2020 | checked 1 Oct 2026, 200 |
+| https://www.bbc.co.uk/news/business-53132953 | Chapter 6: "a prevailing likelihood" the 1.9 billion euros did not exist, 22 Jun 2020 | checked 1 Oct 2026, 200 |
+| https://www.bbc.co.uk/news/business-53176003 | Chapter 6: insolvency filing, 25 Jun 2020 | checked 1 Oct 2026, 200 |
+| https://www.irishtimes.com/business/financial-services/ey-failed-to-ask-for-wirecard-bank-statements-for-three-years-1.4289546 | Chapter 6: the FT's report that EY did not check with OCBC from 2016 to 2018 and relied on documents and screenshots | checked 1 Oct 2026, 200; Olaf Storbeck, 26 Jun 2020, copyright the Financial Times |
+| https://www.youtube.com/watch?v=aY7z4HcHm5M | Notes reading 1: Data with Baraa, "SQL Joins Basics (Visually Explained) \| INNER, LEFT, RIGHT, FULL \| #SQL Course 8" | checked 1 Oct 2026, 200 through oEmbed and the watch page; 40:18; published 20 Mar 2025 |
+| https://www.postgresql.org/docs/16/tutorial-join.html | Notes reading 2: 2.6 Joins Between Tables | checked 1 Oct 2026, 200 |
+| https://www.postgresql.org/docs/16/queries-table-expressions.html | Chapter 4 and notes reading 3: 7.2.1.1 Joined Tables: "a restriction placed in the ON clause is processed before the join, while a restriction placed in the WHERE clause is processed after the join", and the difference "matters a lot with outer joins" | checked 1 Oct 2026, 200 |
+| https://blog.jooq.org/the-difference-between-sqls-join-on-clause-and-the-where-clause/ | Notes reading 4 | checked 1 Oct 2026, 200; posted 9 Apr 2019, updated 16 Apr 2019 |
+| https://sqlbolt.com/lesson/select_queries_with_joins, .../select_queries_with_outer_joins, .../select_queries_with_nulls | Notes reading 5 and the take-home: lessons 6 to 8 | checked 1 Oct 2026, 200 each |
+| https://pgexercises.com/questions/joins/ | Notes reading 6 | checked 1 Oct 2026, 200; "Joins and Subqueries" |
+| https://www.pgtutorial.com/ | Trainer resource from the row | checked 1 Oct 2026, 200; its joins section is "Section 5. Joining Tables" |
 
 ## Tool versions
 

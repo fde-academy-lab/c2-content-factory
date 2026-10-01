@@ -31,5 +31,5 @@ it will follow.
 Wirecard's auditor, EY, refused to sign off on its 2019 accounts in June 2020, saying it was unable to
 confirm that the money existed, and people with first-hand knowledge told the Financial Times that
 from 2016 to 2018 the auditor had not checked directly with Singapore's OCBC Bank (BBC News, 18 June
-2020; the FT, republished by the Irish Times, 26 June 2020; both checked 30 Sep 2026). A check that
+2020; the FT, republished by the Irish Times, 26 June 2020; both checked 1 Oct 2026). A check that
 reads a company's own records back to it cannot fail.

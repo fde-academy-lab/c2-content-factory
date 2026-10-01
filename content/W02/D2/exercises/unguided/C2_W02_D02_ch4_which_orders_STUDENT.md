@@ -117,5 +117,5 @@ d) none of them, since a NULL id breaks every anti-join
 ## Where does this skill come back?
 
 It comes back in chapter 5, where the two lists sit beneath the page Anand signs, and in the
-escalated case, where you pick the anti-join condition and the retry grain on Kalpa's own Q2. The notebook for this chapter
-is `notebooks/C2_W02_D02_04_which_orders_STUDENT.ipynb`.
+escalated case, where you pick the anti-join condition and the retry grain on Kalpa's own Q2. The
+notebook for this chapter is `notebooks/C2_W02_D02_04_which_orders_STUDENT.ipynb`.

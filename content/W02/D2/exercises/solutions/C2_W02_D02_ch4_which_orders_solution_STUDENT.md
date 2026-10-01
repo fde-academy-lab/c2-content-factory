@@ -5,9 +5,9 @@ Answers: 1a 2c 3b 4c 5a 6b
 ## What does this set test?
 
 The set tests the anti-join, what a condition on the payments table does in WHERE and in ON, and the
-grain of a double payment, on tables the chapter never used. Items 4 and 6 are design items: which list a late
-payment belongs on under the day's definitions, and which way of writing the list survives a change
-to the feed.
+grain of a double payment, on tables the chapter never used. Items 4 and 6 are design items: which
+list a late payment belongs on under the day's definitions, and which way of writing the list
+survives a change to the feed.
 
 ## Why does each key hold, item by item?
 
@@ -30,6 +30,6 @@ its own one-line definition.
 ## Where does this pattern live in production?
 
 Stripe saves the result of the first request made with an idempotency key, and "subsequent requests
-with the same key return the same result" (Stripe API reference, Idempotent requests, checked 30 Sep
+with the same key return the same result" (Stripe API reference, Idempotent requests, checked 1 Oct
 2026), so a gateway retry cannot charge a customer twice. In a feed without that guarantee, the data
 team has to find the repeats by order and instalment.

@@ -131,7 +131,7 @@ extra row appears, and which question about Kalpa's feed that row answers.
 At work you check every prediction against the result, row by row.
 
 Now run the queries in `sql/C2_W02_D02_01_what_a_join_keeps_STUDENT.sql`, which builds the same two tables and runs each join. Tick every row you wrote
-correctly and circle every row you missed or invented. Keep the circled rows, since each one marks a
+correctly and circle every row you missed or invented. Keep the circled rows, since each one shows a
 place where your prediction and the join disagreed.
 
 ---

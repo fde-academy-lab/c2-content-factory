@@ -173,9 +173,9 @@ gap of any size is reported with the check that proves it.
 ## Which part is worth arguing about?
 
 In the stretch question, net of refunds is the money Kalpa kept, which is what Anand ultimately
-wants; collected is the money that arrived, which is what his question this morning asked. The report he
-signs can carry both columns if each is named, and a refund must never be subtracted from booked
-instead, or the gap would no longer be the unpaid list.
+wants; collected is the money that arrived, which is what his question this morning asked. The
+report he signs can carry both columns if each is named, and a refund must never be subtracted from
+booked instead, or the gap would no longer be the unpaid list.
 
 ## Where does this pattern live in production?
 

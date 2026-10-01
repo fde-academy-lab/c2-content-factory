@@ -60,9 +60,9 @@ it that tells you whether your pick holds, without showing you the answer. It st
 is intended. The empty cells are yours: they print the lists you are finding. At the end, post the
 eight letters in order."""
 
-HOW_S = """**How this notebook works.** Each part has a lettered TODO, a check after it and an empty cell where
-you read what you found. It stops at the first `__TODO1__` until you fill it, and that stop is
-intended. Post the four letters and your request to the platform lead at the end."""
+HOW_S = """**How this notebook works.** Each part has a lettered TODO, a check after it and an empty
+cell where you read what you found. It stops at the first `__TODO1__` until you fill it, and that
+stop is intended. Post the four letters and your request to the platform lead at the end."""
 
 SOLVED = """**How this solution works.** Every letter is filled in and the notebook runs cold from the top, with
 every check passing; under each step, a line says why the other letters fail. The empty cells stay
@@ -541,8 +541,8 @@ show(homes, "Part 1: where each payment row belongs")
 ## Part 2. Which payments match no order?
 
 The suspense list holds the payments whose order id is not in the orders table, with their ids,
-dates, methods and amounts. At work these are held in a suspense account until someone finds the order, or
-learns that the payment was never Kalpa's.
+dates, methods and amounts. At work these are held in a suspense account until someone finds the
+order, or learns that the payment was never Kalpa's.
 """),
         code(block(2) + f"""
 options_2 = {S_TODOS[2][1]!r}
@@ -578,8 +578,8 @@ print(len(orphans), "payments,", kit.rupees(sum(r["amount"] for r in orphans)))
 ## Part 3. Which instalments were posted more than once, in either quarter?
 
 Every order and instalment the feed posted more than once goes on the retry list, with the order's
-quarter beside it. At work the platform lead fixes the whole feed, which spans both quarters, so this list covers
-everything the feed holds.
+quarter beside it. At work the platform lead fixes the whole feed, which spans both quarters, so
+this list covers everything the feed holds.
 """),
         code(block(3) + f"""
 options_3 = {{

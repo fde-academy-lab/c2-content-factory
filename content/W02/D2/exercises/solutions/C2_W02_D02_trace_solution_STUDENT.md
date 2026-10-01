@@ -4,10 +4,10 @@ Answers: 1c 2a 3b 4d
 
 ## What does the trace test?
 
-Choosing a join means deciding what happens to the rows that do not match, and the grain of each table
-decides its row count before any number is summed. On paper, with five orders and seven payment rows, a learner
-can see every row a join keeps, drops and repeats, which is what makes the warehouse's 678 rows
-readable an hour later.
+Choosing a join means deciding what happens to the rows that do not match, and the grain of each
+table decides its row count before any number is summed. On paper, with five orders and seven
+payment rows, a learner can see every row a join keeps, drops and repeats, which is what makes the
+warehouse's 678 rows readable an hour later.
 
 ## What should your traced tables show?
 

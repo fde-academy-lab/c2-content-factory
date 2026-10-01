@@ -109,5 +109,5 @@ d) For paid orders only, how many days until the first payment?
 ## Where does this skill come back?
 
 It comes back in chapter 2 on Kalpa's Q2, where the same LEFT JOIN meets a key that repeats, and in
-the second case, where the platform lead's question starts from `payments`. The notebook for this chapter is
-`notebooks/C2_W02_D02_01_what_a_join_keeps_STUDENT.ipynb`.
+the second case, where the platform lead's question starts from `payments`. The notebook for this
+chapter is `notebooks/C2_W02_D02_01_what_a_join_keeps_STUDENT.ipynb`.

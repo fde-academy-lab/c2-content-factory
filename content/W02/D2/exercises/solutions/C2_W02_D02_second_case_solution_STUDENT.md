@@ -9,8 +9,8 @@ cells.
 ## What does the case test?
 
 The case tests the same joins turned round: a question about every row the feed holds starts from
-the payments. Items 3 and 4 are the design choices: how far the retry list must reach for the person who fixes the feed,
-and which dates tell the gateway team when the fault ran.
+the payments. Items 3 and 4 are the design choices: how far the retry list must reach for the person
+who fixes the feed, and which dates tell the gateway team when the fault ran.
 
 ## Why does each pick hold, item by item?
 
@@ -32,11 +32,11 @@ and window, and asks that the raw rows be kept until Finance has checked with th
 ## Which pick is worth arguing about?
 
 Anand asked about Q2, and a pair that has just built his page will reach for Q2 again in item 3,
-option a. The platform lead's fix changes the feed for both quarters, and a list that stops at Q2 leaves a
-repeat in Q1 for someone else to find next quarter.
+option a. The platform lead's fix changes the feed for both quarters, and a list that stops at Q2
+leaves a repeat in Q1 for someone else to find next quarter.
 
 ## Where does this case live in production?
 
 Stripe builds its API so that a request retried with the same idempotency key returns the first
-result and cannot charge twice (Stripe API reference, checked 30 Sep 2026); a feed without that
+result and cannot charge twice (Stripe API reference, checked 1 Oct 2026); a feed without that
 protection is the one a data team audits this way, from the payments side.

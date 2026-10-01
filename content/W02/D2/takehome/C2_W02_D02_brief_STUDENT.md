@@ -76,12 +76,12 @@ question about paid orders only, or about payments with no order.
 
 Allow about 20 minutes, and work the three SQLBolt join lessons in order:
 
-- Lesson 6, joins: https://sqlbolt.com/lesson/select_queries_with_joins (checked 30 Sep 2026)
-- Lesson 7, outer joins: https://sqlbolt.com/lesson/select_queries_with_outer_joins (checked 30 Sep 2026)
-- Lesson 8, NULLs: https://sqlbolt.com/lesson/select_queries_with_nulls (checked 30 Sep 2026)
+- Lesson 6, joins: https://sqlbolt.com/lesson/select_queries_with_joins (checked 1 Oct 2026)
+- Lesson 7, outer joins: https://sqlbolt.com/lesson/select_queries_with_outer_joins (checked 1 Oct 2026)
+- Lesson 8, NULLs: https://sqlbolt.com/lesson/select_queries_with_nulls (checked 1 Oct 2026)
 
 If you finish early, work the first three problems in the joins category of PostgreSQL Exercises,
-https://pgexercises.com/questions/joins/ (checked 30 Sep 2026).
+https://pgexercises.com/questions/joins/ (checked 1 Oct 2026).
 
 ---
 

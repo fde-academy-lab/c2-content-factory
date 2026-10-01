@@ -34,7 +34,7 @@ payment-only rows, because they have no quarter. Decide where the Q2 condition g
 sentence on why.
 
 Then practise on a second schema, the joins category of PostgreSQL Exercises,
-https://pgexercises.com/questions/joins/ (checked 30 Sep 2026). Work the questions in order, and
+https://pgexercises.com/questions/joins/ (checked 1 Oct 2026). Work the questions in order, and
 before running each one, write the row count you expect and the grain of each table in a comment.
 
 You have done it well if your three groups add up to the row count, and your sentence on the quarter

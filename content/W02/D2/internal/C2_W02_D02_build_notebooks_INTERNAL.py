@@ -61,56 +61,59 @@ DOSSIER = ("The retail story behind Anand's role, how a sale becomes cash and wh
            "domain dossier, `content/W01/D1/study-notes/C2_W01_D01_domain_retail_STUDENT.md`, "
            "sections 3 and 4.")
 
-# The real company per chapter, each fact checked on 30 Sep 2026; the provenance holds the URLs.
+# The real company per chapter, each fact checked on 1 Oct 2026; the provenance holds the URLs.
 COMPANY = {
     1: """**Who else faces this.** Razorpay, the Indian payment gateway, documents the same shape from a
 merchant's side. Its Orders API "combines multiple payment attempts for a single order"; an order
 stays attempted until a payment is captured and then moves to paid; and a merchant who asks for the
 payments of one order gets "all the authorised or failed payments for that order", so one order id
 appears once in the merchant's orders and several times in the payments list (Razorpay
-documentation, About Orders and Fetch Payments for an Order, checked 30 Sep 2026). Every merchant
+documentation, About Orders and Fetch Payments for an Order, checked 1 Oct 2026). Every merchant
 who puts the two lists side by side has to decide which rows a join keeps, drops or repeats.""",
     2: """**Who else faces this.** Shopify creates a transaction "for every order that results in an
 exchange of money", and one order can carry several: an authorization, which is money the customer
 has agreed to pay, a capture of that same money, a sale, a void or a refund (Shopify developer
-documentation, the REST Admin API's Transaction resource, checked 30 Sep 2026).
+documentation, the REST Admin API's Transaction resource, a legacy API since 1 October 2024, checked 1 Oct 2026).
 A report that adds every transaction of an order counts an authorised and captured payment twice.
 dbt Labs names the mechanism in its MetricFlow documentation: "Fan-out joins are when one row in a
 table is joined to multiple rows in another table, resulting in more output rows than input rows",
 and MetricFlow "restricts the use of fan-out and chasm joins" (docs.getdbt.com, Joins, last updated
-8 Sep 2026, checked 30 Sep 2026).""",
-    3: """**Who else faces this.** Public Health England left 15,841 positive COVID-19 cases out of the
-daily figures reported between 25 September and 2 October 2020 (PHE statement, GOV.UK, 4 October
-2020). The BBC reported the cause: the results arrived as CSV files and were loaded into templates
-in the old XLS format, which holds about 65,000 rows, so each template took only about 1,400 cases
-and the rest never arrived (BBC News, 5 October 2020; both checked 30 Sep 2026). No row that did
-arrive was wrong. A count of rows sent against rows loaded, run on the first day, would have caught
-it.""",
+8 Sep 2026, checked 1 Oct 2026).""",
+    3: """**Who else faces this.** Stripe's payout reconciliation report lets a merchant match each payout
+in the bank with "the batches of payments and other transactions that they relate to", itemizing
+every payment, refund, dispute and fee inside it (Stripe documentation, Payout reconciliation report,
+checked 1 Oct 2026). The public case of a missing-row failure is Public Health England, which left
+15,841 positive COVID-19 cases out of the daily figures reported between 25 September and 2 October
+2020 (PHE statement, GOV.UK, 4 October 2020). The results arrived as CSV files and were pulled into
+Excel templates in the old XLS format; each result took several rows, so a template held about 1,400
+cases, and once it was full further cases were left off (BBC News, 5 October 2020; both checked 1 Oct
+2026). No row that arrived was wrong. A count of rows sent against rows loaded, run on the first day,
+would have caught it.""",
     4: """**Who else faces this.** Stripe builds its payments API so that a retried request cannot charge
 twice: the client sends an idempotency key, Stripe saves the result of the first request made with
 it, and "subsequent requests with the same key return the same result" (Stripe API reference,
-Idempotent requests, checked 30 Sep 2026). India's regulator sets a deadline for the other side of
+Idempotent requests, checked 1 Oct 2026). India's regulator sets a deadline for the other side of
 the same problem. Under the Reserve Bank of India's circular of 20 September 2019, when a customer's
 account is debited for an online card payment and the merchant's system never receives the
 confirmation, the debit must be reversed automatically within five days of the transaction, with compensation of
-Rs 100 for every day of delay after that (RBI/2019-20/67, in force from 15 October 2019, checked 30
-Sep 2026). A payment posted twice can be money a customer is owed back.""",
+Rs 100 for every day of delay after that (RBI/2019-20/67, in force from 15 October 2019, checked 1
+Oct 2026). A payment posted twice can be money a customer is owed back.""",
     5: """**Who else faces this.** Infosys reports the gap between what it has billed and what it has
 collected every quarter, as days sales outstanding, which is money owed by customers divided by
 revenue per day: 63 days for the quarter ended 30 June 2026, against 67 at 31 March 2026 and 70 a
 year earlier, on the last twelve months' revenue (Infosys fact sheet, Exhibit 99.4 to the Form 6-K
-furnished to the US Securities and Exchange Commission on 28 July 2026, checked 30 Sep 2026). A finance team that
+furnished to the US Securities and Exchange Commission on 28 July 2026, checked 1 Oct 2026). A finance team that
 publishes a collections figure every quarter answers for it, which is the position Anand is in when
 he signs this report.""",
     6: """**Who else faces this.** Wirecard, a German payments company, collapsed in June 2020 over cash it
 reported and did not have. On 18 June its auditor, EY, refused to sign off on the accounts, saying it
 was unable to confirm that the money existed; on 22 June Wirecard said there was "a prevailing likelihood"
 that 1.9 billion euros of trust account balances did not exist; on 25 June it filed for insolvency
-(BBC News, 18, 22 and 25 June 2020, checked 30 Sep 2026). People with first-hand knowledge told the
+(BBC News, 18, 22 and 25 June 2020, checked 1 Oct 2026). People with first-hand knowledge told the
 Financial Times that from 2016 to 2018 the auditor had not checked directly with Singapore's OCBC
 Bank, where Wirecard claimed it had up to 1 billion euros in cash, and relied instead on documents
 and screenshots from a third-party trustee and from Wirecard itself (FT, republished by the Irish
-Times, 26 June 2020, checked 30 Sep 2026). A check that reads a company's own records
+Times, 26 June 2020, checked 1 Oct 2026). A check that reads a company's own records
 back to it cannot fail.""",
 }
 
@@ -712,9 +715,9 @@ def chapter2():
             "number from the warehouse before anyone else does, and you need it because the way "
             "chosen here carries every later chapter of the day.",
             ladder,
-            "Collected revenue for Q2 is set against booked revenue for Q2. Booked is every Q2 order at its "
-            "amount, whatever its status, Rs 9,84,00,000 over 462 orders, and collected can never "
-            "honestly exceed it.",
+            "Collected revenue for Q2 is set against booked revenue for Q2. Booked is every Q2 "
+            "order at its amount, whatever its status, Rs 9,84,00,000 over 462 orders, and "
+            "collected can never honestly exceed it.",
             "Chapter 1 traced five invented orders and seven invented payments. The LEFT JOIN with "
             "orders first was the only join that kept every booked order, and it still listed two "
             "orders twice: T-2, paid in two instalments, and T-3, whose payment the gateway posted "
@@ -1167,8 +1170,9 @@ def chapter3():
             "repeated payment can show a gap of zero, and nobody acts on a zero.",
             ladder,
             "The gap between booked and collected is at stake, with what can sit inside it: orders "
-            "never paid, orders paid short and payments posted twice. Collected is the cash that arrived, each "
-            "payment counted once; posted is every payment row the feed holds, repeats included.",
+            "never paid, orders paid short and payments posted twice. Collected is the cash that "
+            "arrived, each payment counted once; posted is every payment row the feed holds, "
+            "repeats included.",
             "Chapter 2 found that the first draft of collected, Rs 19,29,04,410 against Rs 9,84,00,000 "
             "booked, counted every two-instalment order twice, and fixed it by bringing payments to "
             "one row per order before the join: 462 Q2 orders in, 462 rows out, booked equal to "
@@ -1853,7 +1857,7 @@ It belongs in the ON clause. ON decides which payment rows count as a match, bef
 which joined rows survive, after it. The PostgreSQL manual says that a restriction placed in the ON
 clause "is processed before the join, while a restriction placed in the WHERE clause is processed
 after the join", and that the difference "matters a lot with outer joins" (PostgreSQL 16
-documentation, section 7.2.1.1, Joined Tables, checked 30 Sep 2026).
+documentation, section 7.2.1.1, Joined Tables, checked 1 Oct 2026).
 
 **Predict before you run.** With the dates moved into ON, how many rows does the join return, and
 which orders does the unpaid list hold? a) 6 rows, no orders; b) 7 rows, T-4; c) 7 rows, T-4 and T-9;
@@ -2228,8 +2232,8 @@ kit.bars([(f[0], f[1]) for f in forms], lit=[2], title="Lines Anand reads before
 kit.check("the statement form asks Anand to read one line per Q2 order", forms[3][1] == 462, f"{orders_q2} lines")"""),
         md("""
 **The best-fit call.** Form C fits best: the table by channel, with the reconciliation written above
-it and the two lists beneath. It is the smallest page on which Anand can both act, by channel and by order, and
-audit, since every figure ties back to the bridge. A alone hides where the gap sits; B tells the
+it and the two lists beneath. It is the smallest page on which Anand can both act, by channel and
+by order, and audit, since every figure ties back to the bridge. A alone hides where the gap sits; B tells the
 store team to chase without telling them whom; D answers everything and asks Anand to find it in
 462 lines.
 
@@ -2297,9 +2301,9 @@ rupee it booked, on every channel, and Anand signs a page that stands his collec
 
 **Why it is wrong.** An order nobody paid has no collected figure: its `collected` is NULL, since the
 LEFT JOIN found no payment for it. `booked - NULL` is NULL, which loses the booked amount, and
-`sum()` skips NULLs without saying so, the same way Monday's AVG skipped them. So the unpaid orders, the very orders the
-gap exists to show, drop out of the gap, and every paid order at Kalpa was paid in full, so what
-remains adds to zero.
+`sum()` skips NULLs without saying so, the same way Monday's AVG skipped them. So the unpaid
+orders, the very orders the gap exists to show, drop out of the gap, and every paid order at Kalpa
+was paid in full, so what remains adds to zero.
 
 **The check that catches it.** The gap column must equal booked less collected computed as two
 separate sums, which `sum()` handles correctly because each column is summed on its own; and no
@@ -2668,8 +2672,8 @@ kit.table(["Option", "Wrong reports it stops, of 5", "Time on Kalpa's Q2"],
 kit.bars([(k, v) for k, v in stops.items()], lit=[1], title="Wrong reports stopped, of the day's five")
 kit.check("the tie-back suite stops all five wrong reports", stops["C. tie-back"] == 5, f'{{stops["C. tie-back"]}} of 5')"""),
         md("""
-**The best-fit call.** Option C, the tie-back suite, fits best, with D beside it. The tie-back suite stops all five of
-the day's wrong reports and runs in milliseconds, because each check compares a figure on the report
+**The best-fit call.** Option C, the tie-back suite, fits best, with D beside it. The tie-back
+suite stops all five of the day's wrong reports and runs in milliseconds, because each check compares a figure on the report
 with the same figure computed from one table alone, where no join can multiply or drop anything.
 The Python recomputation reaches the numbers by a different tool and a different rule for counting a
 payment once, so an error in the SQL and the same error in the checks would still be caught.
@@ -2851,8 +2855,8 @@ the report against orders in the table. The tie-backs follow: booked recomputed 
 posted from `payments` alone, and each bar of the bridge equal to the total of its named list. The
 third layer is one independent recomputation, in another tool from the raw rows, or against the
 gateway's settlement file when there is one. The last tests the suite itself: run it against the
-known wrong reports, the fan-out, the dropped order, the NULL gap, and show that each fails. When a check fails late on
-reporting day, send what is reconciled, booked, which ties to orders alone, with the open line
+known wrong reports, the fan-out, the dropped order, the NULL gap, and show that each fails. When a
+check fails late on reporting day, send what is reconciled, booked, which ties to orders alone, with the open line
 stated, which check failed, what it means and when it will close; hold the collected figure; and
 tell the owner the same day. An unreconciled number never leaves with a PASS on it.
 

@@ -36,8 +36,8 @@ orders behind it and the channel that carries most of it, the repeats and their 
 ## Which pick is worth arguing about?
 
 In item 5, option b, grouping by order and date looks like it separates a retry, which lands on one
-day, from two instalments, which a learner expects on two days. On Kalpa's Q2 the two instalments of an
-order are paid on the same day, so the date adds nothing and the list still flags every
+day, from two instalments, which a learner expects on two days. On Kalpa's Q2 the two instalments of
+an order are paid on the same day, so the date adds nothing and the list still flags every
 two-instalment order. The instalment number is the only column that says which payment is which.
 
 ## Where does this case live in production?
