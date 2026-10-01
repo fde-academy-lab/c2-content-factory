@@ -11,9 +11,10 @@ membership tier, asked that members who spent the same be ranked the same and th
 many made it. Q2 is July to September 2026, and revenue is booked revenue, every order at its amount
 whatever its status.
 
-**Who needs the answer.** The trainer, closing the day, and every learner writing tonight's queries.
-Each item is one of the day's calls made in seconds, and an item most of the room misses is a call
-likely to reach Marketing wrong on Monday, so it is the one to say again before the room leaves.
+**Who needs the answer.** The trainer needs it to close the day, and every learner needs it before
+writing tonight's queries. Each item is one of the day's calls made in seconds, and an item most of the
+room misses is a call likely to reach Marketing wrong on Monday, so the trainer says it again before
+the room leaves.
 
 **The questions on the way.**
 

@@ -320,6 +320,21 @@ def ch1():
             kit.check("the export moves more rows than either query", sizing[3][1] > sizing[2][1], f"{sizing[3][1]} against 50")
             '''),
         md("""
+        **The day's picture.** GROUP BY keeps one row per group, so it answers how much each group
+        booked and keeps nothing below the group. A window keeps every row and adds one column beside
+        it, and each of Marketing's three asks needs that column: a member's place, a member's last
+        month, and the quarter's total so far.
+        """),
+        code(r'''
+            kit.tree({"label": "rows\none per member", "branches": [
+                ("", {"label": "GROUP BY\none row per group", "kind": "known", "branches": [
+                    ("", {"label": "how much per group\n4 rows for 4 segments", "kind": "known"})]}),
+                ("", {"label": "a window\nevery row kept, one column added", "kind": "lit", "branches": [
+                    ("", {"label": "each row beside its neighbours\nits place, its last month, the total so far",
+                          "kind": "lit"})]})]},
+                title="GROUP BY keeps one row per group; a window keeps every row and adds a column")
+            '''),
+        md("""
         ## 1. What did each member book in Q2?
 
         A ranked list of members needs one row per member first. The orders table holds one row per
@@ -2485,8 +2500,18 @@ def case():
                 return {"a": r["list_revenue"] / book, "b": r["listed"] / r["bought"],
                         "c": r["list_revenue"] / r["segment_total"], "d": None}[SHARE]
             shares = [(r["segment"], share_of(r)) for r in parts]
+            print("Shares computed for:", ", ".join(s for s, v in shares if v is not None))
+            '''),
+        code(r'''
+            TODO ONLY
             kit.bars([(s, round(100 * v, 1)) for s, v in shares if v is not None],
                      title="The share of each segment's Q2 revenue its list carries, percent", fmt=lambda v: f"{v:.1f}%")
+            '''),
+        code(r'''
+            SOLUTION ONLY
+            kit.bars([(s, round(100 * v, 1)) for s, v in shares if v is not None and s != "Retail-Plus"],
+                     title="The share each list carries: Business, Retail-Core and Student; Retail-Plus's is your run's",
+                     fmt=lambda v: f"{v:.1f}%")
             '''),
         code(r'''
             seg_rev = {r["segment"]: r["q2_revenue"] for r in rows(f"SELECT segment, sum(q2_revenue) AS q2_revenue FROM ({Q2_SPEND}) q2 GROUP BY 1")}

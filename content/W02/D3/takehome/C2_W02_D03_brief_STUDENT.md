@@ -63,16 +63,17 @@ bring.
 
 ## 1. How many Q2 orders, rupees and Retail-Core buyers does the sample hold?
 
-Where this is used at work: every ranked list and every running total is checked against the base it
-was built from, so the base is counted first.
+Where this is used at work: Kavya Nair, the senior analyst who checks every number before it leaves
+Kalpa's data team, reads a ranked list or a running total against the base it was built from, so
+the base is counted first.
 
 Count the Q2 orders, the Q2 total and the Retail-Core members who placed a Q2 order. Write one comment
 line saying which of these numbers your running total in section 5 must close on.
 
 ## 2. How many members does each tie rule put on a top twenty?
 
-Where this is used at work: a list cut at a number says how many it ships and why, before a manager
-asks.
+Where this is used at work: the head of Retail-Plus asked for the count beside the list, so a list
+cut at a number says how many it ships and why.
 
 Rank Retail-Core's members by Q2 revenue with ROW_NUMBER, RANK and DENSE_RANK in one query, compute
 the places in a named step, and count what a top twenty ships under each, plus "whole ties only", the
@@ -82,8 +83,8 @@ Then read the members either side of twentieth place with all three functions si
 
 ## 3. Which rule do you ship, and what do you tell Marketing about its count?
 
-Where this is used at work: a tie rule is a business decision, and the person who owns the list has
-to be able to repeat the reason.
+Where this is used at work: the marketing lead repeats the tie rule to the member team who make the
+calls, so the reason has to be one they can say.
 
 Choose the rule you would ship and write two comment lines: the count it ships and why, in words
 Marketing can repeat, and what the rule you rejected would have done to a member at the line. If your
@@ -93,8 +94,8 @@ advance and why it is a business reason.
 
 ## 4. Whose spend fell two months running, read three ways?
 
-Where this is used at work: a retention call goes to a customer whose own history shows the drift, and
-the definition of the drift is written down before the first call.
+Where this is used at work: the member team rings a customer only when that customer's own history
+shows the drift, so the definition is written down before the first call.
 
 Build one row per member per month. Flag a member whose September spend is below August's and August's
 below July's, three ways, and count each across the whole book before you apply it to your list:
@@ -111,7 +112,7 @@ placed no order, and why you did not fill that month with zero.
 
 ## 5. Where does this extract's Q2 stand against its plan line, at mid-quarter and at the close?
 
-Where this is used at work: a CEO reads the quarter while it runs, so the to-date figure has to be
+Where this is used at work: Meera reads the quarter while it runs, so the to-date figure has to be
 complete before anyone says ahead or behind.
 
 Accumulate Q2 booked revenue and the plan line, and read booked to date against plan to date at the end
@@ -122,8 +123,8 @@ the full plan weeks booked below their own week's plan.
 
 ## 6. What three sentences go to Marketing and Meera?
 
-Where this is used at work: the sentence a stakeholder carries into a meeting is the part of the
-analysis most people read.
+Where this is used at work: Meera and the marketing lead carry these sentences into the leadership
+meeting, where nobody reads the queries behind them.
 
 As a comment, three sentences: the tie rule and the count it ships; how many listed members carry the
 flag and what it means for a member with a month off; and where Q2 stood against plan at mid-quarter
@@ -131,8 +132,8 @@ and at the close, by its total and by its weekly run.
 
 ## 7. What ranking question would a Kalpa stakeholder ask, and what does its GROUP BY impostor return?
 
-Where this is used at work: an analyst who can name the question GROUP BY cannot answer chooses the
-right tool before writing any SQL.
+Where this is used at work: Kalpa's data team chooses between GROUP BY and a window before writing
+any SQL, by naming the question GROUP BY cannot answer.
 
 1. **From memory first, before you run anything.** In a comment, write what ROW_NUMBER, RANK and
    DENSE_RANK return for five invented members whose spend is Rs 9,000, Rs 8,000, Rs 8,000, Rs 8,000
@@ -147,8 +148,8 @@ right tool before writing any SQL.
 
 ## 8. Should Retail-Core's protect list rank members by how often they ordered in Q2?
 
-Where this is used at work: before a team argues over two definitions of "best customer", it measures
-how much the answer changes.
+Where this is used at work: before Marketing argues over two definitions of a best customer, the data
+team measures how much the list changes.
 
 This is the day's second case, on the day's own warehouse, forty minutes in pairs or alone. The brief,
 `exercises/unguided/C2_W02_D03_second_case_STUDENT.md`, carries the marketing lead's ask, the data and
@@ -157,8 +158,8 @@ lettered markers are the brief's first seven items. Post your ten letters with y
 
 ## 9. Which window clauses do three PostgreSQL Exercises problems need?
 
-Where this is used at work: reading somebody else's correct answer and saying why it works is half of
-reviewing a colleague's query.
+Where this is used at work: Kavya reviews a colleague's query by reading it and saying why it works,
+and these three answers are practice at that.
 
 PostgreSQL Exercises has no separate window functions category; its window questions sit in the
 Aggregation category. Do these three on the site's own database in the browser, each before you open

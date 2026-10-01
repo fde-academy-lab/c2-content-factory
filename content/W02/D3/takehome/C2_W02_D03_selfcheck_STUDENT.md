@@ -9,7 +9,7 @@ psql -d kalpa -f content/W02/D3/data/C2_W02_D03_takehome_STUDENT.sql
 ```
 
 **Who needs the answer.** You do, before Thursday's walk-through: a number that does not match below
-is a query to fix tonight, and the fix beside it says where most people go wrong.
+is a query to fix tonight, and the fix beside it names the usual cause.
 
 **The questions on the way.**
 - Do the base, the four tie counts, the three flags and the plan line match?
@@ -57,5 +57,5 @@ fails is a step to read again before you post your letters.
 
 Each line names a window clause you wrote. The third names the function the site's answer uses to keep
 every tied facility, says whether DENSE_RANK keeps the same rows at the top, and says what ROW_NUMBER
-would do to a facility that tied for the most slots. If your reason could apply to any query, it is not
-yet a reason.
+would do to a facility that tied for the most slots. A reason that would fit any query needs rewriting
+around the clause this one uses.
