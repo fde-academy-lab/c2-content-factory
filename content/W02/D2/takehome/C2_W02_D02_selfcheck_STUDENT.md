@@ -17,7 +17,7 @@ it. Work through the numbers first, then the questions on your writing.
 | 6 | Refunded | Rs 4,250 in all | A figure of minus Rs 4,250 is the stored sign; decide what your column means and say so |
 | 7 | Collected net of refunds, by channel | app Rs 1,80,310, store Rs 4,33,930, web Rs 6,06,900, and Rs 12,21,140 in all | Rs 12,29,640 means the negative refunds were subtracted and so added back |
 | 8 | The gap, booked less collected | Rs 4,72,210 | If your list of orders short of payment adds to more than the gap, an order whose money partly arrived sits on it at its full booked value |
-| 9 | Every payment row accounted for | Your buckets add to 125 rows and Rs 12,40,030 | A bucket that is missing is usually the payment with no order, or the second posting of a retry |
+| 9 | Every payment row accounted for | Your buckets add to 125 rows and Rs 12,40,030 | A bucket that is missing is usually a payment with no order, or the second posting of a retry |
 
 When all nine match, read your lists again with checkpoint 8 in mind. The gap is one number, and
 your classification in step 5 decides how many lists it splits into and what each list asks Anand to

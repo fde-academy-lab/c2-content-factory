@@ -93,7 +93,7 @@ the same problem. Under the Reserve Bank of India's circular of 20 September 201
 account is debited for an online card payment and the merchant's system never receives the
 confirmation, the debit must be reversed automatically within five days of the transaction, with compensation of
 Rs 100 for every day of delay after that (RBI/2019-20/67, in force from 15 October 2019, checked 1
-Oct 2026). A payment posted twice can be money a customer is owed back.""",
+Oct 2026).""",
     5: """**Who else faces this.** Infosys reports the gap between what it has billed and what it has
 collected every quarter, as days sales outstanding, which is money owed by customers divided by
 revenue per day: 63 days for the quarter ended 30 June 2026, against 67 at 31 March 2026 and 70 a
@@ -1480,7 +1480,7 @@ join must equal booked from `orders`; posted after the join must equal the payme
 total for the same orders. Any difference is explained as a named move in a bridge, with the rows
 behind it listed, or the join is wrong.
 
-**[D] Two errors cancel and the total looks right: how would you find them?** A total cannot prove itself, so count first: rows in against rows out finds a dropped or
+**[D] Two errors cancel and the total looks right: how would you find them?** A total that balances can still hide two errors, so count first: rows in against rows out finds a dropped or
 repeated row even when the rupees balance. Then split the difference into moves that each have a
 definition, so an unpaid order and a repeated payment each get their own bar, and each bar is checked
 against the list of orders behind it.
@@ -2897,10 +2897,22 @@ a place the other cannot see.
 
 ## 5. What does Anand get when a check fails at the end of reporting day?
 
-The day a check fails matters, because late on reporting day there may be no time to fix it. The
-team works to one rule: booked always leaves, because it ties to the orders table alone; an
-unreconciled collected figure never leaves; and the open line, which check failed, what it means and
-when it will be fixed, goes with it.
+The day a check fails matters, because late on reporting day there may be no time to fix it.
+
+**Predict before you run.** Which does the team send? a) nothing until the check is fixed; b) booked,
+which ties to orders alone, with the open line named and collected held; c) the collected figure with
+a footnote saying one check failed; d) last week's collected figure.
+"""),
+        code("""
+kit.tree({"label": "a check fails\\non reporting day", "branches": [
+    ("booked checks pass", {"label": "send booked\\nwith the open line", "kind": "good"}),
+    ("booked checks fail", {"label": "send booked from\\norders alone; hold collected", "kind": "bad"}),
+]}, taken=["booked checks pass"], title="The reporting-day rule: booked leaves, an unreconciled collected never does")"""),
+        md("""
+**What happened.** The answer is b. The team works to one rule: booked always leaves, because it ties
+to the orders table alone; an unreconciled collected figure never leaves; and the open line, which
+check failed, what it means and when it will be fixed, goes with it. Option c is the one people send,
+and it puts an unreconciled figure on the CEO's page.
 
 | The check that fails | What it means | What Anand gets that day | Who fixes it |
 |---|---|---|---|
@@ -2911,10 +2923,6 @@ when it will be fixed, goes with it.
 | Collected plus posted twice against posted | The feed changed, or a retry arrived in a new shape | Booked; collected held; the platform lead told the same day | The platform lead |
 """),
         code("""
-kit.tree({"label": "a check fails\\non reporting day", "branches": [
-    ("booked checks pass", {"label": "send booked\\nwith the open line", "kind": "good"}),
-    ("booked checks fail", {"label": "send booked from\\norders alone; hold collected", "kind": "bad"}),
-]}, taken=["booked checks pass"], title="The reporting-day rule: booked leaves, an unreconciled collected never does")
 owners = {"orders on the report equal orders in the table": "you", "booked equals booked from orders alone": "you",
           "the gap equals booked less collected": "you", "the gap equals the never-paid and paid-short lists": "you, with Kavya",
           "collected plus posted twice equals posted from payments alone": "the platform lead"}

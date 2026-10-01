@@ -1,6 +1,6 @@
-# What did Kalpa actually collect against what it booked in Q2, and how do we know nothing is counted twice? The Week 2 Tuesday day sheet
+# What did Kalpa actually collect against what it booked in Q2, and how do we know nothing is counted twice?
 
-**TRAINER ONLY.** Nothing on this page reaches a learner.
+**TRAINER ONLY. The Week 2 Tuesday day sheet.** Nothing on this page reaches a learner.
 
 Posts to <!-- sync:module:W02/D2 -->Module 1: Foundations of AI and Data<!-- /sync:module:W02/D2 -->, on <!-- sync:day-date:W02/D2 -->Tue 13 Oct 2026<!-- /sync:day-date:W02/D2 -->.
 

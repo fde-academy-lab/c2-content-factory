@@ -1,7 +1,6 @@
 # Which exercises does Week 2 Tuesday run, and when does each one run?
 
-The table lists every piece of work in the order it runs, with the take-home last. The day climbs
-one Kalpa case, Anand's booked against collected for Q2, in six chapters, and each chapter has a
+The day climbs one Kalpa case, Anand's booked against collected for Q2, in six chapters, and each chapter has a
 short set of its own: its first two items close the chapter live, and the rest open the TA-led
 practice lab or are worked tonight. Every stem is a question one of four people would ask: Anand
 Iyer, the finance controller; his analyst, who audits the statement; the data platform lead, who

@@ -1,9 +1,7 @@
 # What goes up on the board on Week 2 Tuesday, drawing by drawing?
 
-The board work in the order it is drawn, one drawing for the ask and one or two for each chapter. The
-deck, the notebooks, the companion page and the cheat sheet carry the same bridge, so the drawing a
-learner copies here is the one they meet everywhere else today. Every number on the tiny tables is
-invented.
+Every number on the tiny tables is invented, and the bridge drawn here is the one the deck, the
+notebooks, the companion page and the cheat sheet carry.
 
 ---
 

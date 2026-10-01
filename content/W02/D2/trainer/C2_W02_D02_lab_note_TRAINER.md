@@ -1,4 +1,4 @@
-# Where does the Week 2 Tuesday practice lab stall, and what does the TA say? (for the TA)
+# Where does the Week 2 Tuesday practice lab stall, and what does the TA say?
 
 The lab is `exercises/practice/C2_W02_D02_lab_STUDENT.md`, about 60 minutes of work, and its
 solution is `exercises/solutions/C2_W02_D02_lab_solution_STUDENT.md`. Release the solution when the
@@ -31,7 +31,7 @@ goes home with the take-home.
 | 3. The refund rate | Q10: most see one fault. Those who see the lost orders miss W-3 doubling, and those who see W-3 miss the lost orders. Q11: the 15.3 percent distractor catches everyone who fixed only the ON clause. | "Run it with SELECT * in place of the sums, and read the rows before the totals." |
 | 4. Q1 on the warehouse | The first query they write is `GROUP BY order_id HAVING COUNT(*) > 1`, which returns 234 Q1 orders, and some start writing a double-paid list from it. The second stall is the gap: Q1's gap is zero on every channel, and learners assume their query is broken. | "What makes a retry a retry, in columns?" For the zero gap: "Run the unpaid list. If it is empty, what must the gap be?" |
 
-## Which Q1 numbers should problem 4 reach? (the TA only)
+## Which Q1 numbers should problem 4 reach?
 
 These are the numbers a correct problem 4 produces. Do not read them to the room; let each learner's
 checks read true first.

@@ -1,6 +1,6 @@
 # Which extra should you take tonight: the stretch or the recovery?
 
-Both are optional and neither is graded. Pick the one that matches where you actually are, even when
+Both are optional and neither is graded. Pick the one that matches where you are, even when
 the other one sounds more appealing.
 
 ---

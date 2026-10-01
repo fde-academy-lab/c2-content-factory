@@ -1,7 +1,7 @@
 # What will Marketing ask tomorrow, and what should you think about before you arrive?
 
-Ships tonight. Fifteen minutes of reading and one check to run. Tomorrow opens on Marketing's request,
-and a room that has read this answers rather than catches up.
+Ships tonight. Fifteen minutes of reading and two checks to run. Tomorrow opens on Marketing's
+request, and a room that has read this can answer it from the first minute.
 
 ---
 

@@ -1,7 +1,8 @@
 # What did a second book collect net of refunds, by channel, and how do you prove it is not double-counted?
 
 The take-home has four parts, about two hours in all, and a fifth if the practice lab ran out of
-time. Part 1 is the day's case on a book you have not seen, and it is the part tomorrow opens on.
+time. Part 1 is the day's case on a book you have not seen, and the self-check marks it number by
+number.
 Part 2 is a join question of your own, and parts 3 and 4 are short. On a faculty day the tentative
 IITGN block W2-2 takes the afternoon's last two hours, so whatever the lab did not reach comes home as
 part 5.
@@ -16,6 +17,12 @@ tonight, with its own orders, payments and refunds across the same three channel
 > "Same question, one step further. For this book's Q2, tell me what we collected net of
 > refunds, by channel, and prove to me it is not double-counted. Then tell me the one thing you want
 > me to do about it."
+
+- **Booked** is every order in the book at its amount, whatever its status. **Collected** is the cash
+  that arrived, each payment counted once. **Posted** is every payment row the feed holds, repeats
+  included.
+- The **gap** is booked less collected, and **collected net of refunds** is collected less the money
+  that went back to customers.
 
 ---
 

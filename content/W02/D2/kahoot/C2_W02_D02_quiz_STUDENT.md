@@ -1,10 +1,9 @@
-# Which of Tuesday's ideas held? Eight Kahoot questions
+# Which of Tuesday's ideas held, in eight timed questions?
 
 Eight items, ungraded, scored on correctness and speed together. Item 7 reaches back to Monday, one
 level up: Monday separated WHERE from HAVING on one table, and today the same two clauses sit on
 either side of a join.
 
-Each item names what it tests, so an item dropped for time says what was lost.
 
 ---
 
@@ -26,7 +25,7 @@ Each item names what it tests, so an item dropped for time says what was lost.
 - 800, since a LEFT join keeps each order once
 - 1,600, since the two-payment orders double it all
 - 870, one extra row for each two-payment order  <- correct
-- 730, since the seventy repeated orders collapse
+- 940, two extra rows for each two-payment order
 
 ---
 
